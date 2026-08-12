@@ -1,6 +1,6 @@
 pkgbase = cuvs
 	pkgdesc = cuVS - a library for vector search and clustering on the GPU
-	pkgver = 26.06.00
+	pkgver = 26.08.00
 	pkgrel = 1
 	url = https://github.com/rapidsai/cuvs
 	arch = x86_64
@@ -17,20 +17,22 @@ pkgbase = cuvs
 	depends = rmm
 	depends = libraft
 	depends = dlpack
-	source = https://github.com/rapidsai/cuvs/archive/refs/tags/v26.06.00.tar.gz
+	source = https://github.com/rapidsai/cuvs/archive/refs/tags/v26.08.00.tar.gz
 	source = system-lib.patch
 	source = missing-pkg.patch
 	source = system-dlpack.patch
 	source = missing-include.patch
 	source = disable-warning.patch
 	source = fix-compile.patch
-	sha256sums = a5573690415f8ead4ff7bc10b42a1057ece4dd70f9bb5a22d271ebc757efe361
+	source = fix-cuco.patch
+	sha256sums = d924b594ba8c0b177353a8346698a88b19b7e64fda622c962b713a9db9aafe7d
 	sha256sums = d18e7391dfd2a7c4231b65d1fc89ece90d9c5f49e21bcb480cf6166f265b3541
 	sha256sums = 08089b4409698b5aeab59a248b7de325b9e8b9d788e2dcab7e22b88ec5194b0d
 	sha256sums = 4391f34eab05396af8a6c6dac3cf918ae4fe0200c7a302052225be22950d820b
 	sha256sums = 052865d777b4404ae68bd1272af301484adb70a8d9ab989287e2c59102011ac8
 	sha256sums = 926b6540d21e6c964528b0eb235cca26690c7504cf52eed4a8098404b855d880
 	sha256sums = 4a06a07695ef47815dda2d9a2f943440bd538b990ee7b34abf9e438fd006f231
+	sha256sums = ac118d0eca93b57049ec429e626237f2843d96a75d64e9a13e38f6859df67905
 
 pkgname = libcuvs
 

@@ -1,0 +1,12 @@
+--- cpp/src/core/bloom_filter.cu.orig	2026-08-06 13:12:34.252312001 +0800
++++ cpp/src/core/bloom_filter.cu	2026-08-06 15:11:25.366202155 +0800
+@@ -20,7 +20,8 @@
+ 
+ namespace {
+ 
+-using default_filter_policy = cuco::default_filter_policy<bloom_filter::key_type>;
++using default_filter_policy =
++  cuco::parametric_filter_policy<cuco::xxhash_64<bloom_filter::key_type>, std::uint32_t, 8, 8, 8, 1, 1, 8, false, false>;
+ 
+ constexpr auto kPatternBits   = default_filter_policy::pattern_bits;
+ constexpr auto kWordsPerBlock = default_filter_policy::words_per_block;
