@@ -1,0 +1,19 @@
+pkgbase = magicblast
+	pkgdesc = NCBI MagicBLAST: maps next-generation RNA/DNA reads to a genome or transcriptome
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://ncbi.github.io/magicblast/
+	arch = x86_64
+	license = Public Domain
+	depends = zlib
+	depends = bzip2
+	depends = xz
+	depends = icu
+	depends = libxml2
+	optdepends = blast+: makeblastdb for building search databases
+	options = !strip
+	options = !debug
+	source = https://ftp.ncbi.nlm.nih.gov/blast/executables/magicblast/1.7.2/ncbi-magicblast-1.7.2-x64-linux.tar.gz
+	sha256sums = 93301d1816fd87fe64bb48950be82e5bf02a45bea81d63fff78c11e9908f4604
+
+pkgname = magicblast
