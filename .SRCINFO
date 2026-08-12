@@ -1,0 +1,26 @@
+pkgbase = textract-bin
+	pkgdesc = Standalone desktop application for easy texture extraction & deskewing from images
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/simonsanchezart/textract
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = glib2
+	depends = dbus
+	depends = libsoup3
+	depends = libgcc
+	depends = hicolor-icon-theme
+	provides = textract=1.0.0
+	conflicts = textract
+	noextract = textract-1.0.0.deb
+	options = !debug
+	source = textract-1.0.0.deb::https://github.com/simonsanchezart/textract/releases/download/v1.0.0/Textract_1.0.0_amd64.deb
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/simonsanchezart/textract/4b4aa736b8b8ae92a18700f07ca913fcfc3ef77d/LICENSE
+	sha256sums = 4185b8bb905bd5c2ba9c8a805b8ea26da05d43fd3cf799322ae7d1de326a7063
+	sha256sums = a6d017f384c7e3587cb84784e8e3cb7d9557320a0cd6fbffb72488a4bd29c9c8
+
+pkgname = textract-bin
