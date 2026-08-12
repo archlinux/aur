@@ -7,7 +7,7 @@
 # Based on https://gitlab.archlinux.org/archlinux/packaging/packages/electrum/-/blob/6d9acc129748edcd352f41f33e98c0cee8637fc5/PKGBUILD by Santiago Torres-Arias <santiago@archlinux.org>
 
 pkgname=electrum-git
-pkgver=4.8.0.r1.g58ae11d88
+pkgver=4.8.1.r0.g1bfee7d19
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -19,14 +19,12 @@ depends=(
          'python'
          'python-ecdsa'
          'python-qrcode'
-         'python-protobuf'
          'python-dnspython'
          'python-qdarkstyle'
          'python-aiorpcx'
          'python-aiohttp'
          'python-aiohttp-socks'
          'python-certifi'
-         'python-bitstring'
          'python-attrs'
          'python-jsonpatch'
          'python-cryptography'
