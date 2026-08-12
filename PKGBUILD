@@ -3,7 +3,7 @@
 _pkgname=firedragon
 __pkgname=$_pkgname-catppuccin
 _rdns=org.garudalinux.$__pkgname
-_pkgver=13.0.1
+_pkgver=13.1.3
 _branding=catppuccin
 _gentoo=firefox-153-patches-01.tar.xz
 _gentoo_exclude=(0015-bgo-940031-wasm-support.patch)
@@ -16,85 +16,75 @@ pkgdesc="FireDragon is a cross-platform, feature-rich and privacy-focused web br
 url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
-depends=(
-  alsa-lib
-  at-spi2-core
-  bash
-  cairo
-  dbus
-  ffmpeg
-  fontconfig
-  freetype2
-  gdk-pixbuf2
-  glib2
-  glibc
-  gtk3
-  hicolor-icon-theme
-  libgcc
-  libpulse
-  libstdc++
-  libx11
-  libxcb
-  libxcomposite
-  libxdamage
-  libxext
-  libxfixes
-  libxrandr
-  libxss
-  libxt
-  mime-types
-  nspr
-  nss
-  pango
-  ttf-font
-)
-makedepends=(
-  cbindgen
-  clang
-  diffutils
-  imake
-  jack
-  lld
-  llvm
-  mesa
-  nasm
-  nodejs
-  onnxruntime
-  pnpm
-  python
-  rust
-  unzip
-  wasi-compiler-rt
-  wasi-libc
-  wasi-libc++
-  wasi-libc++abi
-  xorg-server-xvfb
-  yasm
-  zip
-)
-optdepends=(
-  'hunspell-en_US: Spell checking, American English'
-  'libnotify: Notification integration'
-  'networkmanager: Location detection via available WiFi networks'
-  'onnxruntime: Local machine learning features such as smart tab groups'
-  'speech-dispatcher: Text-to-Speech'
-  'xdg-desktop-portal: Screensharing with Wayland'
-)
+depends=(alsa-lib
+         at-spi2-core
+         bash
+         cairo
+         dbus
+         ffmpeg
+         fontconfig
+         freetype2
+         gdk-pixbuf2
+         glib2
+         glibc
+         gtk3
+         hicolor-icon-theme
+         libgcc
+         libpulse
+         libstdc++
+         libx11
+         libxcb
+         libxcomposite
+         libxdamage
+         libxext
+         libxfixes
+         libxrandr
+         libxss
+         libxt
+         mime-types
+         nspr
+         nss
+         pango
+         ttf-font)
+makedepends=(cbindgen
+             clang
+             diffutils
+             imake
+             jack
+             lld
+             llvm
+             mesa
+             nasm
+             nodejs
+             onnxruntime
+             pnpm
+             python
+             rust
+             unzip
+             wasi-compiler-rt
+             wasi-libc
+             wasi-libc++
+             wasi-libc++abi
+             xorg-server-xvfb
+             yasm
+             zip)
+optdepends=('hunspell-en_US: Spell checking, American English'
+            'libnotify: Notification integration'
+            'networkmanager: Location detection via available WiFi networks'
+            'onnxruntime: Local machine learning features such as smart tab groups'
+            'speech-dispatcher: Text-to-Speech'
+            'xdg-desktop-portal: Screensharing with Wayland')
 provides=($_pkgname)
 conflicts=($_pkgname)
 replaces=($__pkgname-next)
-options=(
-  !emptydirs
-  !lto
-  !makeflags
-)
+options=(!emptydirs
+         !lto
+         !makeflags)
 install=$_pkgname.install
 noextract=($_gentoo)
-source=(
-  $_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
-  https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo
-)
-sha256sums=('c61c07a3fa2a2929207c1c7d477b1b2f3063e33e32dbaf3ea2c6d774b1d750b7'
+source=($_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
+        https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo)
+sha256sums=('92a512208760b7718aac7624cc8a7b93b78a63ee9de79e358ed7197aa0c4a5f8'
             '9dc3e9423eea9b8bf16cd7cc2545a539717e9b32c1e4242a332988ff0add923e')
 
 prepare() {
