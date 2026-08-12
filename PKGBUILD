@@ -1,15 +1,15 @@
 # Maintainer: John Regan <john@jrjrtech.com>
 # Contributor: Daurnimator <quae@daurnimator.com>
 
-pkgname=('lua-cqueues' 'lua51-cqueues' 'lua52-cqueues' 'lua53-cqueues' 'lua54-cqueues')
+pkgname='lua-cqueues'
 pkgver=20200726
 _lua_compat_ver=0.15.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
+pkgdesc='Continuation Queues: Embeddable asynchronous networking, threading, and notification framework for Lua 5.5'
 url='http://25thandclement.com/~william/projects/cqueues.html'
 license=('MIT')
-makedepends=('lua' 'lua51' 'lua52' 'lua53' 'lua54')
-depends=('openssl')
+depends=("lua>=5.5" "lua<5.6" 'openssl')
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/wahern/cqueues/archive/rel-$pkgver.tar.gz"
   "lua-compat-5.3-${_lua_compat_ver}.tar.gz::https://github.com/lunarmodules/lua-compat-5.3/archive/refs/tags/v${_lua_compat_ver}.tar.gz"
@@ -43,47 +43,14 @@ prepare() {
 
 build() {
 	cd "cqueues-rel-$pkgver"
-	make prefix=/usr LUA_APIS='5.1 5.2 5.3 5.4 5.5'
+	make prefix=/usr LUA_APIS='5.5'
 }
 
-package_lua-cqueues() {
-	pkgdesc='Continuation Queues: Embeddable asynchronous networking, threading, and notification framework for Lua 5.3'
-
+package() {
 	cd "cqueues-rel-$pkgver"
 	make DESTDIR="$pkgdir" prefix=/usr LUA_APIS=5.5 install5.5
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_lua54-cqueues() {
-	pkgdesc='Continuation Queues: Embeddable asynchronous networking, threading, and notification framework for Lua 5.4'
-
-	cd "cqueues-rel-$pkgver"
-	make DESTDIR="$pkgdir" prefix=/usr LUA_APIS=5.4 install5.4
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_lua53-cqueues() {
-	pkgdesc='Continuation Queues: Embeddable asynchronous networking, threading, and notification framework for Lua 5.3'
-
-	cd "cqueues-rel-$pkgver"
-	make DESTDIR="$pkgdir" prefix=/usr LUA_APIS=5.3 install5.3
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_lua52-cqueues() {
-	pkgdesc='Continuation Queues: Embeddable asynchronous networking, threading, and notification framework for Lua 5.2'
-
-	cd "cqueues-rel-$pkgver"
-	make DESTDIR="$pkgdir" prefix=/usr LUA_APIS=5.2 install5.2
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_lua51-cqueues() {
-	pkgdesc='Continuation Queues: Embeddable asynchronous networking, threading, and notification framework for Lua 5.1'
-
-	cd "cqueues-rel-$pkgver"
-	make DESTDIR="$pkgdir" prefix=/usr LUA_APIS=5.1 install5.1
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 doc/cqueues.pdf "$pkgdir/usr/share/doc/$pkgname/cqueues.pdf"
 }
 
 sha512sums=(
