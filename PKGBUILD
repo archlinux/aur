@@ -4,12 +4,12 @@ _pkgname=diskonaut
 pkgname=diskonaut-kfkonrad-bin
 pkgver=1.0.2
 pkgrel=1
-pkgdesc=" Terminal disk space navigator 🔭 (kfknrad fork) (binary release)"
+pkgdesc=" Terminal disk space navigator (kfknrad fork) (binary release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kfkonrad/diskonaut"
 license=('MIT')
 depends=()
-provides=(diskonaut)
+provides=("diskonaut=$pkgver")
 conflicts=(diskonaut)
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/kfkonrad/$_pkgname/releases/download/v$pkgver/diskonaut_${pkgver}_x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/kfkonrad/$_pkgname/releases/download/v$pkgver/diskonaut_${pkgver}_aarch64-unknown-linux-musl.tar.gz")
