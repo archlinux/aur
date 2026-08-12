@@ -1,13 +1,13 @@
 pkgbase = maestro-dev
 	pkgdesc = End-to-end testing for Mobile and Web apps
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://maestro.dev
 	arch = any
 	license = Apache-2.0
 	depends = java-runtime-headless>=17
 	depends = bash
-	source = maestro-2.7.0.zip::https://github.com/mobile-dev-inc/maestro/releases/download/cli-2.7.0/maestro.zip
-	sha256sums = a4ccab6b604617e7aef6db4f885666056eabe5cfa32befaa3bc994041b8fcbb5
+	source = maestro-2.8.0.zip::https://github.com/mobile-dev-inc/maestro/releases/download/cli-2.8.0/maestro.zip
+	sha256sums = b3e561161904fb391875ca5834d5b22cf0b01c052dd1b408ad83e30d8f8951b3
 
 pkgname = maestro-dev
