@@ -13,7 +13,7 @@ optdepends=('tinymist-viewer-bin: standalone native preview client')
 provides=("tinymist=$pkgver")
 conflicts=('tinymist' 'tinymist-git' 'tinymist-nightly-bin')
 options=('!debug')
-source=("LICENSE::https://raw.githubusercontent.com/Myriad-Dreamin/$_pkgname/main/LICENSE")
+source=("LICENSE-$pkgver::https://raw.githubusercontent.com/Myriad-Dreamin/$_pkgname/v$pkgver/LICENSE")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::https://github.com/Myriad-Dreamin/$_pkgname/releases/download/v$pkgver/tinymist-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::https://github.com/Myriad-Dreamin/$_pkgname/releases/download/v$pkgver/tinymist-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("$_pkgname-$pkgver-armv7.tar.gz::https://github.com/Myriad-Dreamin/$_pkgname/releases/download/v$pkgver/tinymist-armv7-unknown-linux-gnueabihf.tar.gz")
@@ -33,7 +33,7 @@ package() {
   cd "$srcdir"
 
   install -Dm755 tinymist-*-unknown-linux-*/tinymist "$pkgdir/usr/bin/tinymist"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -Dm644 completions.bash "$pkgdir/usr/share/bash-completion/completions/tinymist"
   install -Dm644 completions.zsh "$pkgdir/usr/share/zsh/site-functions/_tinymist"
