@@ -173,7 +173,7 @@ pkgbase="linux-$_pkgsuffix"
 _major=7.1
 _minor=8
 #_minorc=$((_minor+1))
-#_rcver=rc7
+#_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=1
 pkgrel=1
@@ -209,7 +209,7 @@ makedepends=(
 
 _patchsource="https://raw.githubusercontent.com/cachyos/kernel-patches/master/${_major}"
 _cjktty_source="https://raw.githubusercontent.com/bigshans/cjktty-patches/master"
-_nv_ver=610.43.03
+_nv_ver=610.57.04
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(

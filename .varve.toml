@@ -1,0 +1,12 @@
+[[maintainers]]
+name = "ShinKouyo"
+email = "i@0x0f.dev"
+
+vcs = "none"
+
+[collect]
+exclude = ["*-debug*"]
+
+[aur]
+name = "linux-cachyos-cjktty"
+submit = true
