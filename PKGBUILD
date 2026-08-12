@@ -2,7 +2,7 @@
 
 _pkgname=xsystem4
 pkgname=${_pkgname}-git
-pkgver=1.0.0.r125.g234b04b
+pkgver=1.0.0.r223.g5bb36c7
 pkgver() {
   cd "$pkgname"
   git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -36,7 +36,7 @@ package() {
   echo "#######################################################################"
   echo "Regarding compatibility of xsystem4 to AliceSoft games:"
   echo "This should be compatible with AliceSoft games that's published"
-  echo "since DALK Gaiden (2002) to Rance 01 (2013). Any game that's"
+  echo "since DALK Gaiden (2002) to Rance IX (2014). Any game that's"
   echo "published after this that are either not a translation or a simple"
   echo "rerelease aren't compatible. Please read the game compatibility list"
   echo "for more details"
