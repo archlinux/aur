@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=unordered_dense
-pkgver=4.9.0
+pkgver=4.9.1
 pkgrel=1
 pkgdesc="A fast & densely stored hashmap and hashset based on robin-hood backward shift deletion"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(
     git
     )
 source=("git+https://github.com/martinus/unordered_dense.git#tag=v${pkgver}")
-sha256sums=('4a0e3378d1726c9c87403c82afbb793a87c45f3df3fc4828ec086e2a4c5df08f')
+sha256sums=('cc16619c151f669caeb057354a27481024630480bc00a0a552285042e89e804b')
 
 build() {
   local _flags=(
