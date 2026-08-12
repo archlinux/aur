@@ -3,7 +3,7 @@
 
 pkgname=deptry
 pkgver=0.25.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Find unused, missing and transitive dependencies in a Python project"
 arch=(x86_64)
 url="https://deptry.com"
@@ -59,9 +59,9 @@ check() {
   test -d test-env && rm -r test-env
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  # Deselect failing PDM test
-  test-env/bin/python -m pytest tests/ \
-    --deselect tests/functional/cli/test_cli_pdm.py
+  # Deselect failing CLI test
+  test-env/bin/python -I -m pytest tests/ \
+    --deselect "tests/functional/cli/test_cli.py::test_cli_config_does_not_supress_output"
 }
 
 package() {

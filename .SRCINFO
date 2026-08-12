@@ -1,7 +1,7 @@
 pkgbase = deptry
 	pkgdesc = Find unused, missing and transitive dependencies in a Python project
 	pkgver = 0.25.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://deptry.com
 	arch = x86_64
 	license = MIT
