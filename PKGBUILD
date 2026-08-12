@@ -1,31 +1,34 @@
 # Maintainer: Jozef Gaal <preklady@mayday.sk>
 pkgname=orphycleaner
-pkgver=1.1.4
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="OrphyCleaner is a lightweight GUI tool for Arch-based Linux that scans your home directory for orphaned or unused app folders."
-arch=('x86_64')
+pkgdesc="GUI tool to find and clean up orphaned and unused app folders in your home directory"
+arch=('x86_64' 'aarch64')
 url="https://github.com/dodog/orphycleaner"
-license=('AGPL3')
-depends=('python' 'tk')
-optdepends=('glib2: provides gio for moving deleted folders to Trash')
-source=("https://github.com/dodog/orphycleaner/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4103a5d0b89b1de697c4c4ff33bdec7d4554fc8c6e2c3615088f8f94a2bed7d7')
+license=('AGPL-3.0-only')
+depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'glib2' 'hicolor-icon-theme')
+optdepends=('yay: description lookups for AUR packages'
+            'paru: description lookups for AUR packages'
+            'flatpak: detect and describe Flatpak-related folders'
+            'xdg-utils: "Open Folder" action (xdg-open)') 
+source=("$pkgname-$pkgver.tar.gz::https://github.com/dodog/orphycleaner/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('da53b44f9babc4bfceaedde968894c7b8dec059609ee6ef31499c41df3293d7a')
+install='orphycleaner.install'
+
+_appid=sk.mayday.OrphyCleaner
 
 package() {
-    cd "$srcdir/$pkgname-${pkgver}" || return
+  cd "$srcdir/$pkgname-$pkgver"
 
-    # Install script
-    install -Dm755 orphycleaner.py "$pkgdir/usr/bin/orphycleaner"
+  install -Dm755 orphycleaner.py "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 "$_appid.desktop" "$pkgdir/usr/share/applications/$_appid.desktop"
 
-    # Desktop entry
-    install -Dm644 orphycleaner.desktop "$pkgdir/usr/share/applications/orphycleaner.desktop"
+  install -Dm644 icons/orphycleaner.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_appid.svg"
+  install -Dm644 icons/48x48.png   "$pkgdir/usr/share/icons/hicolor/48x48/apps/$_appid.png"
+  install -Dm644 icons/64x64.png   "$pkgdir/usr/share/icons/hicolor/64x64/apps/$_appid.png"
+  install -Dm644 icons/128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/$_appid.png"
+  # legacy fallback for tools that only check pixmaps, not the hicolor theme
+  install -Dm644 icons/128x128.png "$pkgdir/usr/share/pixmaps/$_appid.png"
 
-    # PNG icon (128x128 fallback)
-    install -Dm644 orphycleaner.png "$pkgdir/usr/share/pixmaps/orphycleaner.png"
-
-    # Scalable SVG icon
-    install -Dm644 "$srcdir/$pkgname-$pkgver/icons/orphycleaner.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/orphycleaner.svg"
-
-    # License
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

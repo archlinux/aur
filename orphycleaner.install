@@ -1,0 +1,9 @@
+#!/bin/bash
+
+post_upgrade() {
+    # Remove old desktop file if it exists
+    if [ -f /usr/share/applications/orphycleaner.desktop ]; then
+        rm -f /usr/share/applications/orphycleaner.desktop
+        echo "Removed old desktop file: orphycleaner.desktop"
+    fi
+}

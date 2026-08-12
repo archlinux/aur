@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=OrphyCleaner
+Comment=Scan your home directory for orphaned or unused application folders
+Exec=orphycleaner
+Icon=sk.mayday.OrphyCleaner
+Terminal=false
+Type=Application
+Categories=Utility;System;
+StartupNotify=true
+StartupWMClass=sk.mayday.OrphyCleaner
+Keywords=orphan;cleaner;config;folders;cache;uninstall;
