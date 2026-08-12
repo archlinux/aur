@@ -1,6 +1,6 @@
 # Maintainer: ilija <your-email@example.com>
 pkgname=ultralog-bin
-pkgver=2.10.1
+pkgver=2.12.0
 pkgrel=1
 pkgdesc="UltraLog: ClassicMiniDIY's prebuilt binary log viewer (prebuilt, from GitHub releases)"
 arch=('x86_64')

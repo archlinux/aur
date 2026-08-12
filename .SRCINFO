@@ -1,11 +1,11 @@
 pkgbase = ultralog-bin
 	pkgdesc = UltraLog: ClassicMiniDIY's prebuilt binary log viewer (prebuilt, from GitHub releases)
-	pkgver = 2.10.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/ClassicMiniDIY/UltraLog
 	arch = x86_64
 	license = GPL
-	source = ultralog-linux.tar.gz::https://github.com/ClassicMiniDIY/UltraLog/releases/download/v2.10.1/ultralog-linux.tar.gz
+	source = ultralog-linux.tar.gz::https://github.com/ClassicMiniDIY/UltraLog/releases/download/v2.12.0/ultralog-linux.tar.gz
 	source = license.txt
 	sha256sums = SKIP
 	sha256sums = SKIP
