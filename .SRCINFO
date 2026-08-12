@@ -1,7 +1,7 @@
 pkgbase = upnote-appimage
 	pkgdesc = Cross-platform note-taking application
 	pkgver = 9.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://getupnote.com/
 	arch = x86_64
 	license = custom

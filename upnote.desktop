@@ -7,5 +7,5 @@ Terminal=false
 Type=Application
 Icon=upnote
 StartupWMClass=UpNote
-Categories=Office;Utility;
+Categories=Office;
 MimeType=x-scheme-handler/upnote;

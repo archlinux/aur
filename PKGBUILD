@@ -9,7 +9,7 @@ _squashroot="squashfs-root"
 
 pkgname=${_sname}-appimage
 pkgver=9.21.0
-pkgrel=1
+pkgrel=2
 _appimageOrig="${_pkgname}-${pkgver}.AppImage"
 
 pkgdesc="Cross-platform note-taking application"
