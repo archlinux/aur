@@ -1,0 +1,11 @@
+[opengrep-bin]
+source = "git"
+git = "https://github.com/opengrep/opengrep.git"
+include_regex = "v\\d+\\.\\d+\\.\\d+"
+prefix = "v"
+sort_version_key = "vercmp"
+
+["opengrep-bin:_interfaces_commit"]
+source = "git"
+git = "https://github.com/opengrep/semgrep-interfaces.git"
+use_commit = true
