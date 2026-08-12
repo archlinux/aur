@@ -1,6 +1,6 @@
 pkgbase = oshot-bin
 	pkgdesc = A fast and lightweight screenshot tool for extracting text on the fly (binary files)
-	pkgver = 0.4.6
+	pkgver = 0.5.0_rc1
 	pkgrel = 1
 	url = https://github.com/Toni500github/oshot
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = oshot-bin
 	optdepends = wl-clipboard: Wayland clipboard
 	conflicts = oshot
 	conflicts = oshot-git
-	source = https://github.com/Toni500github/oshot/releases/download/v0.4.6/oshot-linux-v0.4.6.zip
-	source = https://github.com/Toni500github/oshot/raw/refs/tags/v0.4.6/LICENSE
-	source = https://github.com/Toni500github/oshot/raw/refs/tags/v0.4.6/oshot.desktop
-	sha256sums = 3d2b5167aca1b68b9868f42a609891a4595aa3597560218cd2dd87f5c56136e5
+	source = https://github.com/Toni500github/oshot/releases/download/v0.5.0-rc1/oshot-linux-v0.5.0-rc1.zip
+	source = https://github.com/Toni500github/oshot/raw/refs/tags/v0.5.0-rc1/LICENSE
+	source = https://github.com/Toni500github/oshot/raw/refs/tags/v0.5.0-rc1/oshot.desktop
+	sha256sums = 32bf8f27f34f4d3abc17b53a29c94103158787441d7c1c577c9e8997013e3c89
 	sha256sums = 4a509aaabf33b5edb9cc7eea738c3d732b99a78f48c6ae81bd8eeb487edbb8e6
 	sha256sums = 8857babab6f47f246abe66b025b84ce9224d777f7fa6e72b48a0b2eec4da275b
 
