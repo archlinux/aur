@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=codex-security
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="SDK and CLI for finding, validating, and fixing security vulnerabilities in code"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('nodejs>=22' 'git')
 makedepends=('npm' 'pnpm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/npm-v${pkgver}.tar.gz")
-sha256sums=('86c0544e837f7425048a2b0851ce5fafaba78cb2f59561277d779debcf77ae74')
+sha256sums=('5763e1e1bad41fbab70e7631530fc01e40e28555df673c5ef1fa13db8cc5446e')
 
 build() {
   cd "${pkgname}-npm-v${pkgver}/sdk/typescript"
