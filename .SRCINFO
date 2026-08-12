@@ -1,6 +1,6 @@
 pkgbase = stow-cm-bin
 	pkgdesc = Config manager (gnu-stow like)
-	pkgver = 0.24.1
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/someoneonsmile/stow-cm
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = stow-cm-bin
 	license = GPL2
 	provides = stow-cm
 	conflicts = stow-cm
-	source_x86_64 = https://github.com/someoneonsmile/stow-cm/releases/download/v0.24.1/stow-cm-x86_64-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/someoneonsmile/stow-cm/releases/download/v0.25.0/stow-cm-x86_64-linux-gnu.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/someoneonsmile/stow-cm/releases/download/v0.24.1/stow-cm-aarch64-linux-gnu.tar.gz
+	source_aarch64 = https://github.com/someoneonsmile/stow-cm/releases/download/v0.25.0/stow-cm-aarch64-linux-gnu.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = stow-cm-bin
