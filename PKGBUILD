@@ -1,5 +1,5 @@
 pkgname=file-manager-bin
-pkgver=0.1.6
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Linux desktop file manager written in Rust and Iced'
 arch=('x86_64')
@@ -8,6 +8,7 @@ license=('GPL-3.0-or-later')
 depends=(
     'acl'
     'alsa-lib'
+    'dav1d'
     'fontconfig'
     'glib2'
     'libnotify'
@@ -25,13 +26,15 @@ optdepends=(
     'gvfs-gphoto2: digital camera/GPhoto support'
     'gvfs-mtp: Android and media-player MTP support'
     'gvfs-smb: SMB network locations'
+    'libreoffice: Office document preview (provided by libreoffice-fresh or libreoffice-still)'
     'libsecret: saved network passwords'
+    'poppler: PDF and Office document preview'
     'udisks2: storage device discovery and management'
 )
 provides=('file-manager')
 conflicts=('file-manager')
 source_x86_64=("https://github.com/nsjsv/File_Manager/releases/download/v${pkgver}/file-manager-v${pkgver}-x86_64.tar.gz")
-sha256sums_x86_64=('7d3d030d22e4376bbd61ef769fa3709937f56c1a6a202cd710eb32b62232e05a')
+sha256sums_x86_64=('cc452cd777cc0e62993b2c8f756566d74ceca82d4ad3ceac64466f203191cb33')
 
 package() {
     cp -a "${srcdir}/file-manager-v${pkgver}-x86_64/usr" "${pkgdir}/"
