@@ -1,6 +1,6 @@
 # Maintainer: gonwe <gonwex@gmail.com>
 pkgname=doubao-desktop-bin
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Doubao AI Assistant - Tauri-based native desktop wrapper (ByteDance)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('doubao-desktop')
 _dlname="doubao-desktop-${pkgver}-x86_64.tar.gz"
 source=("${_dlname}::https://github.com/gonwe/doubao-desktop/releases/download/v${pkgver}/${_dlname}"
         "${pkgname}.desktop")
-sha256sums=('c6c32cb4c181944134453cd8b8fa297e767ba141c1354dd0e22fea0fd43ae0db'
+sha256sums=('4f24330c2dd0123c38c54dd1530818a378ef70a493148a75aa44ae4f02ee5a5d'
             'SKIP')
 
 package() {
