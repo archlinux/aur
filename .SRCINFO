@@ -1,6 +1,6 @@
 pkgbase = libdogleg-git
 	pkgdesc = Large-scale nonlinear least-squares optimization library for both sparse and dense problems
-	pkgver = v0.18.r0.gb17d917
+	pkgver = v0.18.r3.g7597773
 	pkgrel = 1
 	url = https://github.com/dkogan/libdogleg
 	arch = i686
