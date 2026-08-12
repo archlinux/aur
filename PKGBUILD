@@ -1,14 +1,14 @@
 # Maintainer: KIRILL100-10 (Kirill Nadtochaev) <Kirillnadtocaev@gmail.com>
 pkgname=temperature-converter-cli
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
-pkgdesc="Simple and lightweight CLI temperature converter with RU/EN localization"
+pkgdesc="Simple and lightweight CLI temperature converter with EN/RU/FR/GR localization"
 arch=('any')
 url="https://github.com/KIRILL100-10/temperature-converter-cli"
 license=('MIT')
 depends=('python')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KIRILL100-10/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('de5f7c81ec666300f2cb6a3d3672904b1eb2e12f02056b74abca8685cd2857ca')
+sha256sums=('6886ad7c74f96e02cacf261b77b3c621c3ac9481c6342ec75f1534e68186fb6a')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,4 +21,3 @@ package() {
     echo -e "#!/bin/sh\nexec python /usr/share/${pkgname}/main.py \"\$@\"" > "${pkgdir}/usr/bin/${pkgname}"
     chmod +x "${pkgdir}/usr/bin/${pkgname}"
 }
-
