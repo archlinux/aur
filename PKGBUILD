@@ -61,9 +61,10 @@ check() {
   appstreamcli validate --no-net "build/data/${_app_id}.metainfo.xml"
   desktop-file-validate "build/data/${_app_id}.desktop"
 
+  # cd "${pkgname%-git}"
   # export LIBGL_ALWAYS_SOFTWARE=1
   # python -m venv --clear --without-pip --system-site-packages test-env
-  # xvfb-run test-env/bin/python -P -m pytest
+  # xvfb-run test-env/bin/python -I -m pytest
 }
 
 package() {
