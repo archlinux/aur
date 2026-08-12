@@ -17,7 +17,7 @@ pkgname=(
 	$_basename-server
 	$_basename-unixd-clients
 )
-pkgver=1.10.4
+pkgver=1.11.0
 _realver=${pkgver/_/-}
 pkgrel=1
 pkgdesc='A identity management service and clients.'
@@ -29,7 +29,7 @@ arch=(x86_64 aarch64)
 license=(MPL-2.0)
 makedepends=(cargo systemd clang tpm2-tss lld)
 options=(!buildflags)
-sha256sums=('826f63b9b30bf653b08ecb830ba9ecb432745141803bc4a4f016b5d0085321da')
+sha256sums=('0a53e2e479080bbd9d26c6e6b1d66067540e22d8edc88b622ff71439162d9edb')
 
 
 build () {
