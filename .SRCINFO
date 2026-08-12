@@ -1,6 +1,6 @@
 pkgbase = linuxqq-appimage
 	pkgdesc = New Linux QQ based on Electron
-	pkgver = 3.2.32_20260730
+	pkgver = 3.2.32_20260812
 	pkgrel = 1
 	url = https://im.qq.com/linuxqq/
 	arch = x86_64
