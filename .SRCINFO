@@ -1,0 +1,19 @@
+pkgbase = omapic
+	pkgdesc = Horizontal & vertical image cut-outs like Snagit for Linux Wayland with Qt 6.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/sspaeti/Omapic
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = wl-clipboard
+	depends = xdg-desktop-portal
+	optdepends = xdg-desktop-portal-gtk: file open/save dialogs (or -kde / -gnome)
+	source = omapic-0.1.1.tar.gz::https://github.com/sspaeti/Omapic/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = ff56b23472e4f2b90bbaf0fe8b7553efb1e294fcd828c69390b99cbd813ad99c
+
+pkgname = omapic
