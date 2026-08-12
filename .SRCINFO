@@ -1,7 +1,7 @@
 pkgbase = qtscrcpy-bin
 	pkgdesc = Android real-time display control software.(Prebuilt version)
-	pkgver = 3.3.3
-	pkgrel = 5
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = https://blog.csdn.net/rankun1/article/details/87970523
 	arch = x86_64
 	license = Apache-2.0
@@ -9,13 +9,13 @@ pkgbase = qtscrcpy-bin
 	depends = qt5-wayland
 	depends = scrcpy
 	depends = android-sdk-platform-tools
-	provides = qtscrcpy=3.3.3
+	provides = qtscrcpy=4.1.0
 	conflicts = qtscrcpy
 	options = !strip
 	options = staticlibs
-	source = qtscrcpy-3.3.3-x86_64.AppImage::https://github.com/barry-ran/QtScrcpy/releases/download/v3.3.3/QtScrcpy-ubuntu-20.04-gcc_64.AppImage
+	source = qtscrcpy-4.1.0-x86_64.AppImage::https://github.com/barry-ran/QtScrcpy/releases/download/v4.1.0/QtScrcpy-ubuntu-x64-v4.1.0.AppImage
 	source = qtscrcpy.sh
-	sha256sums = 67e5d1ed99abef8595ceba83608cc551834e6914a1f187ad15a0e09d13bea611
+	sha256sums = a21c47ab0c5983fc9276c901a180d204a7dfd6d46f07c003b7a93f6a3990f893
 	sha256sums = e468cebce5ab345d61d109de5426e9263643f915d881599774402c89292f141f
 
 pkgname = qtscrcpy-bin

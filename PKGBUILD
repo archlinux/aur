@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qtscrcpy-bin
 _pkgname=QtScrcpy
-pkgver=3.3.3
-pkgrel=5
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="Android real-time display control software.(Prebuilt version)"
 arch=('x86_64')
 url="https://blog.csdn.net/rankun1/article/details/87970523"
@@ -21,10 +21,10 @@ depends=(
     'android-sdk-platform-tools'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-ubuntu-20.04-gcc_64.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-ubuntu-x64-v${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('67e5d1ed99abef8595ceba83608cc551834e6914a1f187ad15a0e09d13bea611'
+sha256sums=('a21c47ab0c5983fc9276c901a180d204a7dfd6d46f07c003b7a93f6a3990f893'
             'e468cebce5ab345d61d109de5426e9263643f915d881599774402c89292f141f')
 prepare() {
     sed -i -e "
