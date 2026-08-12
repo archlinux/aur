@@ -1,6 +1,6 @@
 pkgbase = python-numpy-mkl-tbb
 	pkgdesc = Scientific tools for Python, compiled with Intel MKL and TBB
-	pkgver = 2.5.1
+	pkgver = 2.5.2
 	pkgrel = 1
 	url = https://numpy.org
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = python-numpy-mkl-tbb
 	depends = python
 	depends = intel-oneapi-mkl
 	optdepends = python-threadpoolctl: for show_runtime() support
-	provides = python-numpy=2.5.1
+	provides = python-numpy=2.5.2
 	conflicts = python-numpy
 	conflicts = python-numpy-mkl
-	source = https://github.com/numpy/numpy/releases/download/v2.5.1/numpy-2.5.1.tar.gz
-	sha256sums = a48a113e6afea91f5608793bafa7ef2ad481fefbda87ec5069f483de61cb9fa3
+	source = https://github.com/numpy/numpy/releases/download/v2.5.2/numpy-2.5.2.tar.gz
+	sha256sums = d482d171c406ae88c5b19cad3b6a1c4c5209f886ab74bc44c2c865c23f52d860
 
 pkgname = python-numpy-mkl-tbb
