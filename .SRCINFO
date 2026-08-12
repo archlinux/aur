@@ -1,16 +1,16 @@
 pkgbase = xcrush-bin
 	pkgdesc = Unofficial build tool for creating custom Crush distributions with plugins
-	pkgver = 2026.07.30.1
+	pkgver = 2026.08.12.1
 	pkgrel = 1
 	url = https://github.com/aleksclark/crush-modules
 	license = MIT
 	conflicts = crush-modules
 	provides = xcrush
 	arch = aarch64
-	source_aarch64 = https://github.com/aleksclark/crush-modules/releases/download/2026.07.30.1/xcrush_2026.07.30.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 62be677be3101e5720ab96efbc7ca396c48408670ec3d28bb30f3807f3b0e748
+	source_aarch64 = https://github.com/aleksclark/crush-modules/releases/download/2026.08.12.1/xcrush_2026.08.12.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = e6d9d9370ad2c4eb40b4e2659b2990ce02dc3050b422fdf9826618ccdc5c1ee7
 	arch = x86_64
-	source_x86_64 = https://github.com/aleksclark/crush-modules/releases/download/2026.07.30.1/xcrush_2026.07.30.1_linux_x86_64.tar.gz
-	sha256sums_x86_64 = d98fbe686ae42f7238d29e4f0b6895ee75b556f001ddc9fcd96ee25b0da1e473
+	source_x86_64 = https://github.com/aleksclark/crush-modules/releases/download/2026.08.12.1/xcrush_2026.08.12.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = aa50c19870bda4b72230c9ffa781ae7a5596d6c736f026a276fcd4ab5be4e757
 	
 pkgname = xcrush-bin
