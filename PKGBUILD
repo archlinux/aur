@@ -2,7 +2,7 @@
 pkgname=python-libsass
 _name=libsass-python
 pkgver=0.23.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Sass/SCSS for Python"
 arch=('x86_64')
 url="https://sass.github.io/libsass-python"
@@ -50,7 +50,7 @@ check() {
   cd "$_name"
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python sasstests.py
+  test-env/bin/python -I sasstests.py
 }
 
 package() {
