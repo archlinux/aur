@@ -1,12 +1,12 @@
 # Maintainer: Luke Taylor <luket@pm.me>
 
 pkgname=fooyin-git
-pkgver=0.12.2.r30.g973135f
+pkgver=0.12.4.r2.ga1e7128
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/fooyin/fooyin"
 arch=(x86_64)
-license=(GPL-3.0-only)
+license=(GPL-3.0-or-later)
 depends=(
     glibc
     icu
