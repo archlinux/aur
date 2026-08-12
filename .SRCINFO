@@ -1,6 +1,6 @@
 pkgbase = antigravity-manager-bin
 	pkgdesc = A modern, unified desktop manager for LLM accounts, proxies, and AI quotas.
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/Draculabo/AntigravityManager
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = antigravity-manager-bin
 	depends = gtk3
 	provides = antigravity-manager
 	conflicts = antigravity-manager
-	source = https://github.com/Draculabo/AntigravityManager/releases/download/v0.19.0/Antigravity.Manager_0.19.0_amd64.deb
+	source = https://github.com/Draculabo/AntigravityManager/releases/download/v0.20.0/Antigravity.Manager_0.20.0_amd64.deb
 	sha256sums = 22cc1049cb5e6969c672842da61ff9760e361bd2787fbe7a20964f5f86fef4dd
 
 pkgname = antigravity-manager-bin
