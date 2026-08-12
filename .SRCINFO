@@ -1,6 +1,6 @@
 pkgbase = promptfoo
 	pkgdesc = Test and evaluate LLM outputs - AI red teaming, pentesting, and vulnerability scanning
-	pkgver = 0.121.20
+	pkgver = 0.122.0
 	pkgrel = 1
 	url = https://github.com/promptfoo/promptfoo
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = promptfoo
 	depends = nodejs
 	optdepends = python: for Python providers
 	optdepends = ollama: for local Ollama models
-	noextract = promptfoo-0.121.20.tgz
+	noextract = promptfoo-0.122.0.tgz
 	options = !strip
-	source = https://registry.npmjs.org/promptfoo/-/promptfoo-0.121.20.tgz
-	sha256sums = 2c2adf02a0a032d36cb95039560e5f77add6a64aeab4aa82dff4e39393e546f9
+	source = https://registry.npmjs.org/promptfoo/-/promptfoo-0.122.0.tgz
+	sha256sums = 5a4d0821d1e2ec5cd72f3eac724ce292df80e4de84214a648791a57423b15c7e
 
 pkgname = promptfoo
