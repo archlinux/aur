@@ -5,7 +5,7 @@
  GenericName[pl]=Aplikacja CAD
  GenericName[ru]=Система автоматизированного проектирования
 -Exec=AppRun - --single-instance %F
-+Exec=freecad
++Exec=freecad %F
  Terminal=false
  Type=Application
  Icon=org.freecad.FreeCAD

@@ -2,7 +2,7 @@
 # Original work by: Igor Moura <imp2@cin.ufpe.br>
 pkgname=freecad-weekly-appimage
 pkgver=1.2.0_2026.08.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A general purpose 3D CAD modeler"
 arch=('x86_64')
 url="https://www.freecad.org/"
@@ -19,8 +19,8 @@ source=("freecad-1.2.0_2026.08.12.AppImage::https://github.com/FreeCAD/FreeCAD/r
 
 sha256sums=(
   "1d6b52a5ebdec638263c273cea6af62194b76f81c0e2e721dd3af947e97ed0f7"
-  "0c5e634ad825f6eba37151fd1a12e496772874caad587fb009aa391984b87674"
-  "52085d2850053db11009365ebdc164e7764f52c3b0d00add4a3d8d8c82860174")
+  "b0bcc6509274e19ace7d4a076c77d9af80d70a590bb46ad5ac3a57068e714d52"
+  "cec2dab7f769f1c235c657dea36cdbdec5ad57d8db5ec57ee88db1cc75572fd5")
 prepare() {
   cd "${srcdir}"
   chmod +x freecad-${pkgver}.AppImage
