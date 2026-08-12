@@ -4,7 +4,7 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=GDevelop
-pkgver=5.6.276
+pkgver=5.6.279
 _electronversion=32
 pkgrel=1
 pkgdesc="A full-featured, no-code, open-source game development software.(Prebuilt version.Use system-wide electron)"
@@ -32,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}.AppImage")
 sha256sums=('0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('6003d0fcb800e02c7918b91779c04a79cf4270e5ecb6a62c6c4387ef94ffaef9')
-sha256sums_x86_64=('7b6ec6e8bd7b9657cf1d1bf50b29a9de6359b8f6abee1d0588f876b0ea909351')
+sha256sums_aarch64=('ab78703d060bcfaa9efa30005a051eedf85a011df57529bb0d9be1c43c1a236c')
+sha256sums_x86_64=('6684e7f6dc277b7425bbe3c40a957139fd88ee9eeea3532a41b9c4e46a08fe9e')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
