@@ -1,4 +1,5 @@
 pkg
 src
+python-wasmtime-[0-9]*/
 *.tar.zst
 *.whl
