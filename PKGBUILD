@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=imagenormalizer-bin
 _pkgname=ImageNormalizer
-pkgver=1.2026.07.18
+pkgver=1.2026.08.12
 pkgrel=1
 pkgdesc="A cross-platform command-line batch-processing tool that resizes and compresses images.(Prebuilt version)"
 arch=(
@@ -23,8 +23,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/${pkgver}/${_pkgname}_Linux_x64.tar.gz")
-sha256sums_aarch64=('1f131f4e721056847bee48a379eaa92da3e7762eaaa55dbc6992dfe48f390204')
-sha256sums_x86_64=('296c1c00826bcb0c0bd08fe672eafe87596bb56791ac002af6a68ca8e91d12fe')
+sha256sums_aarch64=('3b566fde5fa64855e6597aec168773144b6f9dd33be716c32ed1d113e1231de3')
+sha256sums_x86_64=('9c57b7da43d1d10767b8a2168059b93216ea9d0dbb84f2c5bbebb07d14e467df')
 package() {
     install -Dm755 "${srcdir}/${_pkgname}_Linux_"*/"${_pkgname}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/${_pkgname}_Linux_"*/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
