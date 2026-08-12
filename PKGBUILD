@@ -1,6 +1,6 @@
 # Maintainer: Gabriel <horizzon3507>
 pkgname=fat
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Fast, syntax-aware cat alternative written in Rust'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/fireflylabss/fat'
 license=('Apache-2.0')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1e61891f5e3abe2a63801bedaf707517faf7f58afcf035589fe0ce02945eb4a2')
+sha256sums=('0c0f15c8fa6abf0500039183fd7dbafc0926b6954eb084db10a00cf3d7bfaac3')
 
 build() {
   cd "fat-$pkgver"
