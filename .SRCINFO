@@ -11,7 +11,7 @@ pkgbase = tinymist-viewer-bin
 	provides = tinymist-viewer=0.15.2
 	conflicts = tinymist-viewer
 	options = !debug
-	source = LICENSE::https://raw.githubusercontent.com/Myriad-Dreamin/tinymist/main/LICENSE
+	source = LICENSE-0.15.2::https://raw.githubusercontent.com/Myriad-Dreamin/tinymist/v0.15.2/LICENSE
 	sha256sums = a9f29769fd3a7ee2976e6e161a93e16461fa305c088c4806242e50ec8ef86bce
 	source_x86_64 = tinymist-viewer-0.15.2-x86_64.tar.gz::https://github.com/Myriad-Dreamin/tinymist/releases/download/v0.15.2/tinymist-viewer-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = 8f7b08c5df9d1bf399483cb6dba914cca67e40b75f3072a3c18f1bf95c651508

@@ -12,7 +12,7 @@ depends=('libgcc')
 provides=("tinymist-viewer=$pkgver")
 conflicts=('tinymist-viewer')
 options=('!debug')
-source=("LICENSE::https://raw.githubusercontent.com/Myriad-Dreamin/$_pkgname/main/LICENSE")
+source=("LICENSE-$pkgver::https://raw.githubusercontent.com/Myriad-Dreamin/$_pkgname/v$pkgver/LICENSE")
 source_x86_64=("tinymist-viewer-$pkgver-x86_64.tar.gz::https://github.com/Myriad-Dreamin/$_pkgname/releases/download/v$pkgver/tinymist-viewer-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("tinymist-viewer-$pkgver-aarch64.tar.gz::https://github.com/Myriad-Dreamin/$_pkgname/releases/download/v$pkgver/tinymist-viewer-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("tinymist-viewer-$pkgver-armv7.tar.gz::https://github.com/Myriad-Dreamin/$_pkgname/releases/download/v$pkgver/tinymist-viewer-armv7-unknown-linux-gnueabihf.tar.gz")
@@ -25,5 +25,5 @@ package() {
   cd "$srcdir"
 
   install -Dm755 tinymist-viewer-*-unknown-linux-*/tinymist-viewer "$pkgdir/usr/bin/tinymist-viewer"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
