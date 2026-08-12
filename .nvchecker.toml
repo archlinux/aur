@@ -1,4 +1,5 @@
 [qtscrcpy]
 source = "git"
 git = "https://github.com/barry-ran/QtScrcpy.git"
+include_regex = 'v[\d.]+'
 prefix = "v"

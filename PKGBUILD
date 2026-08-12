@@ -2,11 +2,11 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 
 ## options
-: ${_install_path:=opt}
+: ${_install_path:=usr/lib}
 
 _pkgname="qtscrcpy"
 pkgname="$_pkgname"
-pkgver=3.3.3
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
@@ -33,7 +33,7 @@ source=(
   "$_pkgsrc_core"::"git+https://github.com/barry-ran/QtScrcpyCore.git"
 )
 sha256sums=(
-  'c453e712d1ddd252e859306f62646e7f2b9b0fb78907b41eb886b82a647f16c5'
+  '909c5e9e8c65f75a17eaa00de7eb88d314b2f5daa2e0c4b0c8a02ab9b3d82346'
   'SKIP'
 )
 
@@ -48,9 +48,9 @@ prepare() {
 
   # fix paths
   sed -E -e '/qputenv\("QTSCRCPY_ADB_PATH"/c qputenv("QTSCRCPY_ADB_PATH", "/usr/bin/adb");' \
-    -e '/qputenv\("QTSCRCPY_SERVER_PATH"/c qputenv("QTSCRCPY_SERVER_PATH", "/opt/qtscrcpy/scrcpy-server");' \
-    -e '/qputenv\("QTSCRCPY_KEYMAP_PATH"/c qputenv("QTSCRCPY_KEYMAP_PATH", "/opt/qtscrcpy/keymap");' \
-    -e '/qputenv\("QTSCRCPY_CONFIG_PATH"/c qputenv("QTSCRCPY_CONFIG_PATH", "/etc/qtscrcpy");' \
+    -e '/qputenv\("QTSCRCPY_SERVER_PATH"/c qputenv("QTSCRCPY_SERVER_PATH", "/usr/lib/qtscrcpy/scrcpy-server");' \
+    -e '/qputenv\("QTSCRCPY_KEYMAP_PATH"/c qputenv("QTSCRCPY_KEYMAP_PATH", "/usr/lib/qtscrcpy/keymap");' \
+    -e '/qputenv\("QTSCRCPY_CONFIG_PATH"/c qputenv("QTSCRCPY_CONFIG_PATH", "/usr/lib/qtscrcpy");' \
     -i QtScrcpy/main.cpp
 }
 
@@ -63,7 +63,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_SKIP_RPATH=ON
     -DQT_DESIRED_VERSION=6
-    -Wno-dev
+    -Wno-author
   )
 
   cmake "${_cmake_options[@]}"
@@ -82,15 +82,15 @@ package() {
 
   cp -r keymap "$pkgdir/$_install_path/$_pkgname/"
 
-  install -dm755 "$pkgdir/usr/bin"
+  mkdir -pm755 "$pkgdir/usr/bin"
   ln -s "/$_install_path/$_pkgname/sndcpy.sh" "$pkgdir/usr/bin/"
 
-  install -dm755 "$pkgdir/usr/share/doc/$_pkgname"
+  mkdir -pm755 "$pkgdir/usr/share/doc/$_pkgname"
   cp -r docs/* "$pkgdir/usr/share/doc/$_pkgname/"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << END
 #!/usr/bin/env sh
-exec /$_install_path/$_pkgname/QtScrcpy "\$@"
+exec "/$_install_path/$_pkgname/QtScrcpy" "\$@"
 END
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
