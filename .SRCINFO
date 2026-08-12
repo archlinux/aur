@@ -1,6 +1,6 @@
 pkgbase = clipsh
 	pkgdesc = Qt6 QML plugin for managing clipboard history via cliphist
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/Happilli/clipsh
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = clipsh
 	depends = qt6-declarative
 	depends = cliphist
 	depends = wl-clipboard
-	source = clipsh-1.0.5.tar.gz::https://github.com/Happilli/clipsh/archive/refs/tags/v1.0.5.tar.gz
-	sha256sums = cd6231f9291bf5eea85d53cd5c5aebbfa64b0858bd4617018f08370cc3757be8
+	source = clipsh-1.0.6.tar.gz::https://github.com/Happilli/clipsh/archive/refs/tags/v1.0.6.tar.gz
+	sha256sums = ee79587d84e26a6ee54287501d235c1b6d60bfc579691f62415c215b97b793ad
 
 pkgname = clipsh

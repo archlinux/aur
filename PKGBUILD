@@ -1,6 +1,6 @@
 # Maintainer: Happilli <https://github.com/Happilli>
 pkgname=clipsh
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Qt6 QML plugin for managing clipboard history via cliphist"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base' 'qt6-declarative' 'cliphist' 'wl-clipboard')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Happilli/clipsh/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cd6231f9291bf5eea85d53cd5c5aebbfa64b0858bd4617018f08370cc3757be8')
+sha256sums=('ee79587d84e26a6ee54287501d235c1b6d60bfc579691f62415c215b97b793ad')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
