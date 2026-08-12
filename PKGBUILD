@@ -4,13 +4,13 @@ _pkgname=mihomo-party
 pkgname=clash-party-bin
 pkgver=2.0.1
 _electronversion=43
-pkgrel=99
+pkgrel=2
 pkgdesc=":electron: Another Mihomo GUI.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
 )
-url="hhttps://mihomo.party"
+url="https://mihomo.party"
 _ghurl="https://github.com/mihomo-party-org/mihomo-party"
 license=('GPL-3.0-only')
 conflicts=(
@@ -20,6 +20,7 @@ conflicts=(
     "${pkgname%-bin}"
     "${pkgname%-bin}-git"
 )
+provides=("clash-party=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'mihomo'

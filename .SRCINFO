@@ -1,8 +1,8 @@
 pkgbase = clash-party-bin
 	pkgdesc = :electron: Another Mihomo GUI.(Prebuilt version.Use system-wide electron)
 	pkgver = 2.0.1
-	pkgrel = 99
-	url = hhttps://mihomo.party
+	pkgrel = 2
+	url = https://mihomo.party
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
@@ -10,6 +10,7 @@ pkgbase = clash-party-bin
 	depends = electron43
 	depends = mihomo
 	optdepends = libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
+	provides = clash-party=2.0.1
 	conflicts = mihomo-party
 	conflicts = mihomo-party-bin
 	conflicts = mihomo-party-git
