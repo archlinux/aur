@@ -2,8 +2,8 @@
 pkgname=imfile
 _pkgname=imFile
 _flathubname="io.github.${pkgname}_io.${pkgname}_desktop"
-pkgver=2.2.0
-_electronversion=42
+pkgver=2.3.2
+_electronversion=43
 _nodeversion=24
 pkgrel=1
 pkgdesc="A full-featured download manager.Forked from motrix.(Use system-wide electron)"
@@ -37,7 +37,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('0d9c31a6276bb16329d10486b94a3299488a01f716cca0fc4a705837fb290b06'
+sha256sums=('a7099fb4f2b6c44cb5af420e8db8c8fed3700a39375b9b740b754b9d4fef1268'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -123,8 +123,8 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
+    local _app_dir=$(_get_app_dir)
+    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
     rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/flathub/${_flathubname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
