@@ -3,7 +3,7 @@
 pkgbase=shelly-cli
 pkgname=('shelly-cli' 'shelly-cli-flatpak-backend')
 pkgver=3.0.4r4092.ga467c53
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
 license=('GPL-3.0-only')
@@ -13,6 +13,7 @@ makedepends=(
   'zig>=0.16.0'
   'flatpak'
   'go-md2man'
+  'ripgrep'
 )
 source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development")
 sha256sums=('SKIP')

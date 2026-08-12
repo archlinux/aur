@@ -9,6 +9,7 @@ pkgbase = shelly-cli
 	makedepends = zig>=0.16.0
 	makedepends = flatpak
 	makedepends = go-md2man
+	makedepends = ripgrep
 	conflicts = shelly
 	conflicts = shelly-git
 	conflicts = shelly-bin
