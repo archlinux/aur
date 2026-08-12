@@ -2,15 +2,15 @@
 
 pkgname=teamtype-git
 _pkgname=${pkgname%-git}
-pkgver=0.9.2.r0.ge05a267
-pkgrel=2
+pkgver=0.9.2.r31.g22ffa6a
+pkgrel=1
 pkgdesc='Peer-to-peer, editor-agnostic collaborative editing of local text files'
 arch=(x86_64)
 url="https://github.com/$_pkgname/$_pkgname"
 license=(AGPL-3.0-only)
 depends=(glibc # libc.so libm.so
-         libgcc libgcc_s.so
-         libgit2 libgit2.so
+         libgcc
+         libgit2
          zlib)
 makedepends=(cargo
              git)
@@ -33,7 +33,7 @@ _srcenv() {
 	export CARGO_HOME="$srcdir"
 	export CARGO_PROFILE_RELEASE_DEBUG=2
 	export CARGO_PROFILE_RELEASE_STRIP=false
-	export CARGO_PROFILE_RELEASE_LTO=true
+	export CARGO_PROFILE_RELEASE_LTO=thin
 	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	CFLAGS+=' -ffat-lto-objects'
@@ -57,6 +57,8 @@ check() {
 
 package() {
 	cd "$_pkgname/target"
+	depends+=(libgcc_s.so
+	           libgit2.so)
 	install -Dm755 -t "$pkgdir/usr/bin/" "release/$_pkgname"
 	pushd completions
 	install -Dm0644 -t "$pkgdir/usr/share/bash-completion/completions/" "$_pkgname.bash"

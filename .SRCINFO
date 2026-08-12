@@ -1,7 +1,7 @@
 pkgbase = teamtype-git
 	pkgdesc = Peer-to-peer, editor-agnostic collaborative editing of local text files
-	pkgver = 0.9.2.r0.ge05a267
-	pkgrel = 2
+	pkgver = 0.9.2.r31.g22ffa6a
+	pkgrel = 1
 	url = https://github.com/teamtype/teamtype
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -9,14 +9,18 @@ pkgbase = teamtype-git
 	makedepends = git
 	depends = glibc
 	depends = libgcc
-	depends = libgcc_s.so
 	depends = libgit2
-	depends = libgit2.so
 	depends = zlib
-	provides = teamtype=0.9.2.r0.ge05a267
+	provides = teamtype=0.9.2.r31.g22ffa6a
 	conflicts = teamtype
 	replaces = ethersync-git
 	source = git+https://github.com/teamtype/teamtype.git
 	sha256sums = SKIP
 
 pkgname = teamtype-git
+	depends = glibc
+	depends = libgcc
+	depends = libgit2
+	depends = zlib
+	depends = libgcc_s.so
+	depends = libgit2.so
