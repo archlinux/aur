@@ -2,10 +2,10 @@
 
 _name=tree-sitter-scala
 pkgname=python-tree-sitter-scala
-pkgver=0.26.0
-pkgrel=9
+pkgver=0.26.2
+pkgrel=1
 pkgdesc="Scala grammar for tree-sitter"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/tree-sitter/tree-sitter-scala"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
@@ -15,8 +15,8 @@ makedepends=(
     'python-wheel'
     'python-setuptools'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter/tree-sitter-scala/archive/refs/tags/v0.26.0.tar.gz")
-sha256sums=('ab3d79043b9b07dbda407ce4b9fcb07ece2b3e1892966eaf2092294b39745d52')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tree-sitter/tree-sitter-scala/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('347ea9f62880b1a32a12bf58ae040f35c866996e80aff5bf28797fa9a40e034c')
 
 build() {
     cd "${_name}-${pkgver}"
