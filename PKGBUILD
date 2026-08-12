@@ -2,7 +2,7 @@
 
 pkgbase=shelly-cli
 pkgname=('shelly-cli' 'shelly-cli-flatpak-backend')
-pkgver=3.0.1r3739.gb9a199b
+pkgver=3.0.4r4092.ga467c53
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
@@ -12,14 +12,16 @@ makedepends=(
   'pkgconf'
   'zig>=0.16.0'
   'flatpak'
+  'go-md2man'
 )
 source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development")
 sha256sums=('SKIP')
+conflicts=('shelly' 'shelly-git' 'shelly-bin')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
-  printf '3.0.1r%s.g%s' \
+  printf '3.0.4r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
 }
@@ -39,18 +41,23 @@ build() {
 
   for shell in bash fish zsh; do
     "${srcdir}/zig-out/bin/shelly" utility --completions "${shell}" \
-      > "${srcdir}/shelly-beta.${shell}"
+      > "${srcdir}/shelly.${shell}"
   done
+
+  "${srcdir}/zig-out/bin/shelly" utility --docs | go-md2man > "${srcdir}/shelly.1"
+  sed -i "s|^\\.TH .*|.TH \"SHELLY-BETA\" \"1\" \"\" \"Shelly CLI Beta ${pkgver}\" \"Shelly CLI Manual\"|" "${srcdir}/shelly.1"
+  printf '\n.SH AUTHORS\nSeafoam Labs.\n' >> "${srcdir}/shelly.1"
+
   sed -i \
     -e 's/_shelly/_shelly_beta/g' \
     -e 's/complete -F _shelly_beta shelly/complete -F _shelly_beta shelly-beta/' \
-    "${srcdir}/shelly-beta.bash"
+    "${srcdir}/shelly.bash"
   sed -i 's/complete -c shelly/complete -c shelly-beta/g' \
-    "${srcdir}/shelly-beta.fish"
+    "${srcdir}/shelly.fish"
   sed -i \
     -e 's/^#compdef shelly$/#compdef shelly-beta/' \
     -e 's/_shelly/_shelly-beta/g' \
-    "${srcdir}/shelly-beta.zsh"
+    "${srcdir}/shelly.zsh"
 }
 
 check() {
@@ -90,13 +97,15 @@ package_shelly-cli() {
   cd "${srcdir}/${pkgbase}"
 
   install -Dm755 "${srcdir}/zig-out/bin/shelly" \
-    "${pkgdir}/usr/bin/shelly-beta"
-  install -Dm644 "${srcdir}/shelly-beta.bash" \
+    "${pkgdir}/usr/bin/shelly"
+  install -Dm644 "${srcdir}/shelly.bash" \
     "${pkgdir}/usr/share/bash-completion/completions/shelly-beta"
-  install -Dm644 "${srcdir}/shelly-beta.fish" \
+  install -Dm644 "${srcdir}/shelly.fish" \
     "${pkgdir}/usr/share/fish/vendor_completions.d/shelly-beta.fish"
-  install -Dm644 "${srcdir}/shelly-beta.zsh" \
+  install -Dm644 "${srcdir}/shelly.zsh" \
     "${pkgdir}/usr/share/zsh/site-functions/_shelly-beta"
+  install -Dm644 "${srcdir}/shelly.1" \
+    "${pkgdir}/usr/share/man/man1/shelly-beta.1"
   install -Dm644 LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
