@@ -2,7 +2,7 @@
 # Contributor: Simon Conseil <contact+aur at saimon dot org>
 
 pkgname=pip-tools
-pkgver=7.6.0
+pkgver=7.6.1
 pkgrel=1
 pkgdesc='A set of tools to keep your pinned Python dependencies fresh'
 arch=(any)
@@ -15,7 +15,7 @@ source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$
         'pip-tools-bash-completion.sh'
         'pip-tools-zsh-completion.zsh'
         'pip-tools-fish-completion.fish')
-sha256sums=('c1c59f7844df4866fa9542d3f50d1f44be537ac0027cb50b2563d6a992853981'
+sha256sums=('695556edeb647eb94ee8345cc7108657fdb7fb16b3876623a399b4f61bbede01'
             '12d90c4aab717d58a435610a3cdc94aa925b4f89f9f9f700a05c8cfa058f7960'
             '63f8d032a742ae33903040477c777922ec06241383d165c93803f1b41316ff51'
             '9c60407e485e71ded1d695455378fa4f09e76ecb8556d21c31f8610cb47cf525')
