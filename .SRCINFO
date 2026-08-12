@@ -1,6 +1,6 @@
 pkgbase = obs-studio-themed-git
 	pkgdesc = A themed look for OBS Studio
-	pkgver = r7.2a5db44
+	pkgver = r8.abd7026
 	pkgrel = 1
 	url = https://codeberg.org/MorsMortium/obs-studio-themed
 	arch = x86_64
