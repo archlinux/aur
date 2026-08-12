@@ -2,8 +2,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=yoctopuce
-pkgver=2.1.15129
-pkgrel=1
+pkgver=2.1.15391
+pkgrel=5
 pkgdesc="C++ library for interfacing with Yoctopuce devices"
 arch=($CARCH)
 url="https://github.com/yoctopuce/yoctolib_cpp"
@@ -23,9 +23,9 @@ makedepends=(
 provides=('libyocto.so' 'libyapi.so')
 source=(
 	"${pkgname}::git+$url.git#tag=v$pkgver"
-	LICENSE
+	LICENSE.txt
 )
-sha256sums=('158f4ae28fcb2f3e6b12363c6b57f0cdd97d76d83b4ab6392fb633f5480cb675'
+sha256sums=('254090b9b645c912cbb171fa8bf05f29c819586e70523670f973293268a11d21'
             '2b22a5342677bd71e40e9fadab57146a8662ded89e97ac98b8726fb9a0e22e30')
 
 prepare() {
@@ -42,7 +42,7 @@ build() {
 
 package() {
 	# 	local x86_64=64bits i686=32bits armv7h=armhf
-	install -Dm644 ${srcdir}/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 ${srcdir}/LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
 	cd "${srcdir}/$pkgname"
 	# 	install -Dm644 "Binaries/linux/${CARCH}/"libyocto.so.* -t "$pkgdir/usr/lib/"
 	# 	install -Dm644 "Binaries/linux/${CARCH}/yapi/"libyapi.so.* -t "$pkgdir/usr/lib/"
