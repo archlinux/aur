@@ -1,3 +1,5 @@
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
+
 pkgname=python-jkey
 pkgver=0.3.2
 pkgrel=2
