@@ -1,3 +1,5 @@
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
+
 pkgname=igblast
 pkgver=1.22.0
 pkgrel=1
