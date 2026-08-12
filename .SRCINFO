@@ -1,5 +1,5 @@
 pkgbase = wine-cachyos-mr10060
-	pkgdesc = Wine with CachyOS patches and XDG Desktop Portal file dialogs (Wine MR !10060)
+	pkgdesc = Wine with CachyOS patches (loathingkernel) and XDG Desktop Portal file dialogs (Wine MR !10060)
 	pkgver = 10.0.20260425
 	pkgrel = 1
 	epoch = 2
