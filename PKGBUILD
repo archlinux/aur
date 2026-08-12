@@ -8,8 +8,8 @@ pkgdesc="Schema management and migration tool for SurrealDB (binary release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/surrealdb/surrealkit"
 license=('Apache-2.0')
-depends=()
-provides=(surrealkit)
+depends=('libgcc')
+provides=("surrealkit=$pkgver")
 conflicts=(surrealkit)
 source_x86_64=("https://github.com/surrealdb/$_pkgname/releases/download/v$pkgver/surrealkit-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("https://github.com/surrealdb/$_pkgname/releases/download/v$pkgver/surrealkit-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
