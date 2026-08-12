@@ -1,6 +1,6 @@
 pkgbase = ggml-core-llama.cpp
 	pkgdesc = Tensor library for machine learning (core runtime, from llama.cpp)
-	pkgver = 0.0.0.b10219
+	pkgver = 0.0.0.b10321
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
@@ -21,10 +21,10 @@ pkgbase = ggml-core-llama.cpp
 	conflicts = ggml
 	options = lto
 	options = !debug
-	source = llama.cpp-b10219.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b10219.tar.gz
+	source = llama.cpp-b10321.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b10321.tar.gz
 	source = ggml-h-ggml-max-name-128.patch
 	source = ggml.pc.in
-	sha256sums = 3cc20700e41497b871cd14848c1ae7fbf0a0ad07106265664a178cca38beaede
+	sha256sums = 06f0eae150fd8617bd3adfe2f773c12b74d23ef048a696a78b58d5ba73824e41
 	sha256sums = b3be0f6368ca8344e52e044f60dc81efb98e646e93ce3fe690f8d8b4750eb27a
 	sha256sums = 4df038e6d2f345fb8a930cb76014fd6a9fdeb793a6fa3593f436fc29e0589eee
 
