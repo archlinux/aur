@@ -1,6 +1,6 @@
 pkgbase = ripme
 	pkgdesc = Downloads albums in bulk
-	pkgver = 2.1.20
+	pkgver = 2.1.21
 	pkgrel = 1
 	url = https://github.com/RipMeApp/ripme
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = ripme
 	depends = java-runtime>=17
 	depends = bash
 	options = !debug
-	source = git+https://github.com/RipMeApp/ripme#tag=2.1.20-14-5a3070e4
-	sha256sums = 7c00708616a3918f486ead40609b24ad3e1a59a12c5303d51b1ffa38f6e2d595
+	source = git+https://github.com/RipMeApp/ripme#tag=2.1.21-17-0d8fc72f
+	sha256sums = abc6e852aa58cb6e9e157ac1ece6cb974e523339bf29211784f87ff737c21630
 
 pkgname = ripme
