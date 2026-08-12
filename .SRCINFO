@@ -1,0 +1,12 @@
+pkgbase = sash
+	pkgdesc = A small (static) UNIX Shell ()
+	pkgver = 3.8
+	pkgrel = 1
+	url = https://www.canb.auug.org.au/~dbell/
+	arch = x86_64
+	license = custom
+	depends = zlib-static
+	source = https://www.canb.auug.org.au/~dbell/programs/sash-3.8.tar.gz
+	sha512sums = e544721dbb5d13d2184531a2caa4b90fb29fc360e2b80f64adb2433cbe4e5588171f3567bde03b520fbe7cbd0f3007e0e9c9c41cb16570709b03cedc2dfbe291
+
+pkgname = sash
