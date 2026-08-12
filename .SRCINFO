@@ -1,0 +1,16 @@
+pkgbase = agent-toolkit
+	pkgdesc = Composable AI agent toolkit — loops, skills, profiles for Claude Code, Cursor, OpenCode, Windsurf, and more
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://github.com/ulises-jeremias/agent-toolkit
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.10
+	source = agent-toolkit-1.10.0.tar.gz::https://github.com/ulises-jeremias/agent-toolkit/archive/refs/tags/v1.10.0.tar.gz
+	sha256sums = be06653263e41ed1bb74bd6fbdeca499f262683bd0385b4fd03b0aa6484ea8f6
+
+pkgname = agent-toolkit
