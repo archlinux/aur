@@ -1,22 +1,24 @@
 # Maintainer: LazySeldi <197385604+LazySeldi@users.noreply.github.com>
 pkgname=lazydmi
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="CLI tool that uses lazybios for reading SMBIOS/DMI tables easily"
 arch=('x86_64' 'aarch64')
 url="https://github.com/LazySeldi/lazydmi"
-license=('LGPL2.1')
+license=('LGPL-2.1-or-later')
 depends=('lib-lazybios')
 makedepends=('gcc' 'make')
-source=("https://github.com/LazySeldi/lazydmi/releases/download/$pkgver/lazydmi$pkgver.tar.gz")
-sha256sums=('49026f4b31cd7759b914bb322c881fadbd9e38ec4ed2854444e09f2a433175a0')
+source=("https://github.com/LazySeldi/lazydmi/releases/download/$pkgver/lazydmi-$pkgver.tar.gz")
+sha256sums=('e7b339338943811a5e85abaf88e92e00aa623024a744ab532aac5aed29f7dc71')
 
 build() {
-  cd "$srcdir/$pkgname$pkgver"
-  make
+  make -C "$srcdir/lazydmi-$pkgver" \
+    PREFIX=/usr
 }
 
 package() {
-  cd "$srcdir/$pkgname$pkgver"
-  make install DESTDIR="$pkgdir" PREFIX="/usr"
+  make -C "$srcdir/lazydmi-$pkgver" \
+    DESTDIR="$pkgdir" \
+    PREFIX=/usr \
+    install
 }
