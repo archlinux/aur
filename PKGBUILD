@@ -3,14 +3,14 @@
 
 pkgname=godots-bin
 pkgver=1.4.2.stable
-pkgrel=2
+pkgrel=3
 pkgdesc="A hub for managing your Godot versions and projects."
 arch=('x86_64')
 url="https://github.com/MakovWait/godots"
 license=('MIT')
 provides=("godots=$pkgver-$pkgrel")
 conflicts=('godots')
-options=('!strip')
+options=('!strip' '!debug')
 depends=('unzip')
 source=("$pkgname-$pkgver-LinuxX11.zip::https://github.com/MakovWait/godots/releases/download/v$pkgver/LinuxX11.zip"
         "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/MakovWait/godots/refs/tags/v$pkgver/LICENSE"
