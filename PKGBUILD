@@ -1,38 +1,28 @@
 # Maintainer: devcxl <64475363+devcxl@users.noreply.github.com>
 
 pkgname=fcitx5-voice-input
-pkgver=0.3.1
-pkgrel=2
-_silero_vad_commit=dbacf536adadf42210f37ae50fbaf75f6235b3cf
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Fcitx5 voice input addon with OpenAI-compatible and Volcengine Doubao ASR"
 arch=('x86_64')
 url="https://github.com/devcxl/fcitx5-voice-input"
-license=('LGPL-3.0-only')
+license=('Apache')
 options=('!debug')
 depends=(
     'fcitx5'
-    'pipewire'
-    'libpulse'
     'jsoncpp'
     'curl'
     'onnxruntime-cpu'
     'zlib'
 )
-optdepends=()
+# 录音后端为可选依赖，至少安装其一（都不装则无法录音）
+optdepends=(
+    'pipewire: PipeWire capture backend (required for recording)'
+    'libpulse: PulseAudio capture backend (required for recording)'
+)
 makedepends=('cmake' 'pkg-config' 'gettext')
-source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/devcxl/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-    "silero_vad.onnx::https://raw.githubusercontent.com/snakers4/silero-vad/${_silero_vad_commit}/src/silero_vad/data/silero_vad.onnx"
-)
-sha256sums=(
-    '159cc541069fca9ca75c936aecfd06d2612184358ffcaceaf432914acaba5e17'
-    '1a153a22f4509e292a94e67d6f9b85e8deb25b4988682b7e174c65279d8788e3'
-)
-
-prepare() {
-    install -Dm644 "${srcdir}/silero_vad.onnx" \
-        "${srcdir}/${pkgname}-${pkgver}/third_party/silero-vad/src/silero_vad/data/silero_vad.onnx"
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/devcxl/fcitx5-voice-input/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('717ec8d44fb29a5d5893c4a4fd71f11f55a7b19d2d5e74e8e7c4c434e045f6d2')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
