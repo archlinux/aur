@@ -1,6 +1,6 @@
 pkgbase = zsh-history-search-multi-word-git
 	pkgdesc = Multi-word, syntax highlighted history searching for Zsh
-	pkgver = r315.5b44d8c
+	pkgver = r320.55d8e06
 	pkgrel = 1
 	url = https://github.com/zdharma-continuum/history-search-multi-word
 	arch = any

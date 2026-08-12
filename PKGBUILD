@@ -3,7 +3,7 @@
 _name='history-search-multi-word'
 
 pkgname="zsh-${_name}-git"
-pkgver=r315.5b44d8c
+pkgver=r320.55d8e06
 pkgrel=1
 pkgdesc='Multi-word, syntax highlighted history searching for Zsh'
 arch=('any')
