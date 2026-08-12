@@ -3,9 +3,9 @@
 _name=tree-sitter-groovy
 pkgname=python-tree-sitter-groovy
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Groovy grammar for tree-sitter"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/amaanq/tree-sitter-groovy"
 license=('MIT')
 depends=('python' 'python-tree-sitter')
