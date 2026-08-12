@@ -1,7 +1,7 @@
 pkgbase = widgie
 	pkgdesc = A lightweight widget library for applications which do not need a splashscreen.
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/manner/widgie
 	arch = x86_64
 	arch = aarch64
@@ -15,10 +15,29 @@ pkgbase = widgie
 	makedepends = xcb-util-image
 	makedepends = xorgproto
 	makedepends = flint
-	optdepends = ttf-dejavu-nerd: (or a nerd font) for icon support
-	conflicts = widgie-git
 	options = staticlibs
 	source = https://gitlab.com/manner/widgie/-/archive/0.3.8/widgie-0.3.8.tar.gz
 	sha256sums = f662d2bdde9c3fdce8f2b71b6b059e28497fa2648ee2bcaa9a656d348bc0a0e3
 
 pkgname = widgie
+	pkgdesc = A lightweight widget library for applications which do not need a splashscreen. (shared libraries)
+	depends = wayland
+	depends = libxkbcommon
+	depends = freetype2
+	depends = fontconfig
+	depends = libxkbcommon-x11
+	depends = libxcb
+	depends = xcb-util-image
+	optdepends = ttf-nerd-fonts-symbols: (or a nerd font) for icon support
+	conflicts = widgie-git
+
+pkgname = widgie-dev
+	pkgdesc = Development files (headers, static library) for widgie.
+	depends = widgie
+	conflicts = widgie-dev-git
+
+pkgname = widgie-apps
+	pkgdesc = Small applications written in widgie: widgie-menu, widgie-stopper, widgie-counter, widgie-calculator, pinentry-widgie.
+	depends = widgie
+	depends = flint
+	conflicts = widgie-apps-git
