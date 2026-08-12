@@ -22,6 +22,10 @@ ROLLBACK_HEALTH_SECS="${ROLLBACK_HEALTH_SECS:-5}"
 
 # ─── Path helpers ─────────────────────────────────────────────────────────────
 
+instance_root() {
+    echo "$SYSTEM_ROOT/${instance?instance not set}"
+}
+
 conf_file() {
     echo "$CONFIG_DIR/${instance?instance not set}.conf"
 }
@@ -101,14 +105,20 @@ upsert_conf_var() {
 load_instance_config() {
     local conf_file
     conf_file="$(conf_file)"
-    ASTRBOT_ROOT="$SYSTEM_ROOT/$instance"
-    ASTRBOT_HOME="$ASTRBOT_ROOT/home"
+    ASTRBOT_ROOT="$(instance_root)"
 
-    [ ! -f "$conf_file" ] && return 0
+    if [ ! -f "$conf_file" ]; then
+        ASTRBOT_HOME="$ASTRBOT_ROOT"
+        return 0
+    fi
     set -a
     # shellcheck disable=SC1090
     . "$conf_file"
     set +a
+
+    # Keep the historical variable as an alias for callers that source this
+    # library, but never create a second runtime tree below `$ASTRBOT_ROOT`.
+    ASTRBOT_HOME="$ASTRBOT_ROOT"
 }
 
 # ─── Port allocation ─────────────────────────────────────────────────────────
@@ -141,17 +151,63 @@ find_free_port() {
 
 # ─── Runtime environment ─────────────────────────────────────────────────────
 
+# Migrate the old `$ASTRBOT_ROOT/home` runtime tree without overwriting any
+# canonical path. New instances never create that directory. A non-empty
+# conflict is intentionally preserved so an administrator can decide whether
+# the two trees contain duplicate or distinct data.
+migrate_legacy_home() {
+    local root="$1"
+    local legacy_home="$root/home"
+    local source_path entry destination
+
+    [ -e "$legacy_home" ] || [ -L "$legacy_home" ] || return 0
+    if [ ! -d "$legacy_home" ] || [ -L "$legacy_home" ]; then
+        echo "⚠️  Refusing to migrate non-directory legacy runtime path: $legacy_home" >&2
+        return 0
+    fi
+
+    while IFS= read -r -d '' source_path; do
+        entry="${source_path##*/}"
+        destination="$root/$entry"
+
+        if [ -L "$source_path" ]; then
+            echo "⚠️  Preserving symlink in legacy runtime path: $source_path" >&2
+            continue
+        fi
+
+        if [ -e "$destination" ] || [ -L "$destination" ]; then
+            if [ -d "$source_path" ] &&
+                [ -z "$(find -P "$source_path" -mindepth 1 -maxdepth 1 -print -quit)" ]; then
+                rmdir -- "$source_path" || true
+            else
+                echo "⚠️  Preserving legacy path because the canonical path exists: $source_path" >&2
+            fi
+            continue
+        fi
+
+        mv -- "$source_path" "$destination" ||
+            echo "⚠️  Could not migrate legacy runtime path: $source_path" >&2
+    done < <(find -P "$legacy_home" -mindepth 1 -maxdepth 1 -print0)
+
+    rmdir -- "$legacy_home" 2>/dev/null || true
+}
+
 # Set up XDG and uv environment variables for an instance.
 # Call this before running any astrbot command in a subprocess.
 setup_runtime_env() {
-    runtime_root="${ASTRBOT_HOME:-$SYSTEM_ROOT/$instance/home}"
+    export ASTRBOT_ROOT="${ASTRBOT_ROOT:-$(instance_root)}"
+    migrate_legacy_home "$ASTRBOT_ROOT"
+
+    # AstrBot resolves its application data relative to the working directory
+    # (`data/`). Use the same instance root for HOME and the XDG tree so the
+    # package has one coherent runtime layout.
+    runtime_root="$ASTRBOT_ROOT"
     runtime_cache="$runtime_root/.cache"
     runtime_config="$runtime_root/.config"
     runtime_data="$runtime_root/.local/share"
     runtime_state="$runtime_root/.local/state"
 
     export HOME="$runtime_root"
-    export ASTRBOT_ROOT="${ASTRBOT_ROOT:-$SYSTEM_ROOT/$instance}"
     export XDG_CACHE_HOME="$runtime_cache"
     export XDG_CONFIG_HOME="$runtime_config"
     export XDG_DATA_HOME="$runtime_data"
@@ -872,7 +928,7 @@ HELP
 
 print_paths() {
     local root="${ASTRBOT_ROOT:-$SYSTEM_ROOT/$instance}"
-    local home_dir="${ASTRBOT_HOME:-$root/home}"
+    local home_dir="$root"
     local conf_file log_dir_value
 
     conf_file="$(conf_file)"
@@ -885,10 +941,15 @@ print_paths() {
     echo "ASTRBOT_ROOT=$root"
     echo "HOME_DIR=$home_dir"
     echo "WORKING_DIR=$home_dir"
+    echo "DATA_DIR=$root/data"
     echo "CONFIG_FILE=$conf_file"
     echo "VENV_DIR=$(venv_dir)"
     echo "CACHE_DIR=$CACHE_DIR"
-    echo "UV_CACHE_DIR=${HOME:-/var/lib/astrbot}/.cache/uv"
+    echo "XDG_CACHE_HOME=$root/.cache"
+    echo "XDG_CONFIG_HOME=$root/.config"
+    echo "XDG_DATA_HOME=$root/.local/share"
+    echo "XDG_STATE_HOME=$root/.local/state"
+    echo "UV_CACHE_DIR=$root/.cache/uv"
     echo "PYTHON_INSTALL_DIR=$CACHE_DIR/python"
     echo "LOG_DIR=$log_dir_value"
     echo "APP_DIR=$APP_DIR"

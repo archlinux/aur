@@ -4,7 +4,7 @@ pkgname=astrbot-git
 _pkgname=astrbot
 _srcname=AstrBot
 pkgver=4.27.2.r26.ga9bb8a64c
-pkgrel=1
+pkgrel=2
 
 pkgver() {
     # shellcheck disable=SC2154 # makepkg provides srcdir.

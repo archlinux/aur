@@ -8,7 +8,7 @@ User=astrbot
 Group=astrbot
 
 # Only set what the script cannot derive from the config file.
-# All XDG_*, runtime home, and UV paths are computed by setup_runtime_env()
+# All XDG_*, HOME, and UV paths are computed by setup_runtime_env()
 # (called inside run_astrbot before the Python process starts).
 Environment="ASTRBOT_SYSTEMD=1"
 Environment="ASTRBOT_DESKTOP_CLIENT=0"
@@ -16,8 +16,8 @@ Environment="ASTRBOT_DESKTOP_CLIENT=0"
 Environment="UV_PYTHON_INSTALL_DIR=/var/cache/astrbot/python"
 
 # Working directory: the instance root created by `astrbotctl init`.
-# The script derives all per-instance paths (ASTRBOT_HOME, XDG_*, etc.)
-# from the config file at /etc/astrbot/%i.conf.
+# The script derives all per-instance paths (HOME, XDG_*, data/, etc.) from
+# the instance root and the config file at /etc/astrbot/%i.conf.
 WorkingDirectory=/var/lib/astrbot/%i
 
 # astrbotctl run reads the config, sets up the full runtime environment,
@@ -33,7 +33,8 @@ PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=read-only
 
-# AstrBot writes to: instance data dir, and /opt/astrbot for Rust extension builds.
+# AstrBot writes to the instance root (including data/, HOME, and the venv),
+# and /opt/astrbot for Rust extension builds.
 # BindPaths + ReadWritePaths make these writable inside the namespace.
 BindPaths=/var/lib/astrbot/%i
 ReadWritePaths=/opt/astrbot
