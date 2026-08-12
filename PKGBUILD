@@ -1,6 +1,6 @@
 # Maintainer: gonwe <gonwex@gmail.com>
 pkgname=doubao-desktop-bin
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Doubao AI Assistant - Tauri-based native desktop wrapper (ByteDance)"
 arch=('x86_64')
@@ -15,32 +15,23 @@ conflicts=('doubao-desktop')
 _dlname="doubao-desktop-${pkgver}-x86_64.tar.gz"
 source=("${_dlname}::https://github.com/gonwe/doubao-desktop/releases/download/v${pkgver}/${_dlname}"
         "${pkgname}.desktop")
-sha256sums=('4f24330c2dd0123c38c54dd1530818a378ef70a493148a75aa44ae4f02ee5a5d'
+sha256sums=('77f56795baf3819a0fe2aeda2abdaf0a220fd6ec3d1403229436bad48804b3c2'
             'SKIP')
 
 package() {
     cd "$srcdir"
-
     _srcdir="doubao-desktop-${pkgver}-x86_64"
 
-    # Launcher wrapper script (handles Wayland compatibility)
-    install -Dm755 "${_srcdir}/doubao-desktop" \
-        "$pkgdir/usr/bin/doubao-desktop"
+    # Launcher wrapper script (Wayland compatibility)
+    install -Dm755 "${_srcdir}/doubao-desktop" "$pkgdir/usr/bin/doubao-desktop"
 
     # Tauri binary
-    install -Dm755 "${_srcdir}/doubao-desktop.bin" \
-        "$pkgdir/usr/bin/doubao-desktop.bin"
+    install -Dm755 "${_srcdir}/doubao-desktop.bin" "$pkgdir/usr/bin/doubao-desktop.bin"
 
     # Desktop entry
-    install -Dm644 "${pkgname}.desktop" \
-        "$pkgdir/usr/share/applications/doubao-desktop.desktop"
+    install -Dm644 "${pkgname}.desktop" "$pkgdir/usr/share/applications/doubao-desktop.desktop"
 
-    # SVG icon
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/icons/hicolor/scalable/apps/doubao-desktop.svg" << 'SVG'
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#4F46E5"/>
-  <text x="32" y="46" text-anchor="middle" font-size="36" font-family="sans-serif"
-        fill="white" font-weight="bold">豆</text>
-</svg>
-SVG
+    # PNG icon
+    install -Dm644 "${_srcdir}/doubao-desktop.png" \
+        "$pkgdir/usr/share/icons/hicolor/128x128/apps/doubao-desktop.png"
 }
