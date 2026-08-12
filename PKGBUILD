@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mojo-jwt'
-pkgver='1.01'
+pkgver='1.02'
 pkgrel='1'
 pkgdesc="JSON Web Token the Mojo way"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-cryptx>=0.029' 'perl-mojolicious>=5.00' 'perl>=5.010')
 makedepends=('perl-module-build-tiny')
 url='https://metacpan.org/release/Mojo-JWT'
-source=('http://search.cpan.org/CPAN/authors/id/J/JB/JBERGER/Mojo-JWT-1.01.tar.gz')
-md5sums=('e20c8acd989a2f70cb565d662ce73a0a')
-sha512sums=('a02a899b64f1e735f1c98780800e751a75998fda6e00f65fde722e33a6c0e7fa5a5ad8040def57b865cc44175ff971a532664986f6462832ccb3207f5e87befb')
-_distdir="Mojo-JWT-1.01"
+source=("http://search.cpan.org/CPAN/authors/id/J/JB/JBERGER/Mojo-JWT-${pkgver}.tar.gz")
+md5sums=('f29d2bdc255c4f4f1bd16bf3a11a3446')
+sha512sums=('6120d9f990948893bfd00a418a6e92b4997e7b6829b19a4746e2bbe30408ca55621114be2e7cb4fed29cc438bd1d45030ec5aec8638fe42799c58705c35b63b9')
+_distdir="Mojo-JWT-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
