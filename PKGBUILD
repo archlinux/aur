@@ -9,7 +9,7 @@
 # shellcheck disable=SC2148,SC2034,SC2154,SC2164
 
 pkgname=ffmpeg-headless
-pkgver=9.0
+pkgver=9.0.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -118,7 +118,7 @@ source=(
   "$pkgname::git+${_git_mirror}"
   # "https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
 )
-b2sums=('c15bec5d82a33d58d96bca03374b56bc1ffcfb9e9c705106eb05cba0dfd2d6003d3eb05bfc5b325ce1458fcff6bef93db75168da5640ea4dc5bd8b31294cfdd8')
+b2sums=('e22f57e76d587eecfdfe3ba0fbfaa37c6c95b43d4fc60da9d4feb11a2c87dcaf7ac891fbaa649289bec4ef40378743d61c77128b7127e8dc42d95f95a60aee69')
 validpgpkeys=('DD1EC9E8DE085C629B3E1846B18E8928B3948D64')   # Michael Niedermayer <michael@niedermayer.cc>
 
 # prepare() {
