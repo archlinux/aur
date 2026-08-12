@@ -1,6 +1,6 @@
 pkgbase = jz-bin
 	pkgdesc = The Jitzu programming language interpreter and shell
-	pkgver = 0.1.39
+	pkgver = 0.1.42
 	pkgrel = 1
 	url = https://github.com/jitzulang/jitzu
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = jz-bin
 	depends = glibc
 	provides = jz
 	conflicts = jz
-	source = https://github.com/jitzulang/jitzu/releases/download/v0.1.39/jitzu-0.1.39-linux-x64.zip
-	sha256sums = cc6ec5d95a31c6c4b88c15fbf55ccb51eb35c229256627768dfdbdade1f6e655
+	source = https://github.com/jitzulang/jitzu/releases/download/v0.1.42/jitzu-0.1.42-linux-x64.zip
+	sha256sums = 632c5aa12333ade5486d6da5a36d8825371f0f097101823638ce7d0e6df140ca
 
 pkgname = jz-bin
