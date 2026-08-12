@@ -3,7 +3,7 @@
 pkgname=beardrive-bin
 _pkgname=beardrive
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Synced file system for AI agents to mount, sync, and track folders'
 arch=('x86_64' 'aarch64')
 url='https://github.com/runbear-io/beardrive'
@@ -18,8 +18,6 @@ optdepends=(
 )
 
 _base="${url}/releases/download/v${pkgver}"
-source=('beardrive.service')
-sha256sums=('ce2c54a6701857102efe3fed7f3b627b7232daa0b61916698c45f6b8967c2da9')
 source_x86_64=("${_base}/beardrive_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${_base}/beardrive_${pkgver}_linux_arm64.tar.gz")
 sha256sums_x86_64=('96ee946708ff62f1d4f349fd06faeb1bd82d058eaff7c5f14d01903ecb70e240')
@@ -30,8 +28,6 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
     install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-    install -Dm644 "${srcdir}/beardrive.service" \
-        "${pkgdir}/usr/lib/systemd/user/beardrive.service"
 
     "${srcdir}/bdrive" completion bash | install -Dm644 /dev/stdin \
         "${pkgdir}/usr/share/bash-completion/completions/bdrive"
