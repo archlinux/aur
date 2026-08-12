@@ -1,14 +1,12 @@
 # Maintainer: yuna0x0 <yuna@yuna0x0.com>
 
-: ${_godot_version:=$(LC_ALL=C pacman -Si extra/godot | grep -Pom1 '^Version\s+:\s+\K\S+(?=-[0-9])').stable}
 pkgname=godots
 pkgver=1.4.2.stable
-pkgrel=1
+pkgrel=2
 pkgdesc="A hub for managing your Godot versions and projects."
 url="https://github.com/MakovWait/godots"
 license=('MIT')
 arch=('x86_64')
-conflicts=('godots-bin' 'godots-git')
 depends=('unzip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MakovWait/godots/archive/refs/tags/v$pkgver.tar.gz")
 makedepends=('godot' 'godot-export-templates-linux')
@@ -16,7 +14,9 @@ options=('!strip')
 sha256sums=('e7d49fe689770b69240d9b85f05b1fd81598f654fc49c31c972ef6720dee29df')
 
 build() {
-    sed -i "s|custom_template/release=\"\"|custom_template/release=\"/usr/share/godot/export_templates/${_godot_version}/linux_release.x86_64\"|" $pkgname-$pkgver/export_presets.cfg
+    local _template=(/usr/share/godot/export_templates/*/linux_release.x86_64)
+    [[ -f ${_template[-1]} ]] || return 1
+    sed -i "s|custom_template/release=\"\"|custom_template/release=\"${_template[-1]}\"|" "$pkgname-$pkgver/export_presets.cfg"
     cd "$pkgname-$pkgver"
 
     mkdir build
