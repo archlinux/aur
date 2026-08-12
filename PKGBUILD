@@ -1,6 +1,6 @@
 _pkgname=Linn
 pkgname=linn
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="GTK4 NetEase Cloud Music client built with Rust and Relm4"
 arch=('x86_64')
