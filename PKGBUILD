@@ -1,6 +1,6 @@
 # Maintainer: Retrovibed <engineering@retrovibe.space>
 pkgname=retrovibed
-pkgver=0.0.1785536866000
+pkgver=0.0.1786473734000
 pkgrel=1
 pkgdesc='Personal digital archiving and distribution platform with a built-in torrent client, media player, and at-cost cloud storage'
 url='https://retrovibe.space'
@@ -23,6 +23,7 @@ sha1sums=('SKIP')
 
 build() {
   install -d -m 755 "${srcdir}/.dist/usr/bin"
+  install -d -m 755 "${srcdir}/.dist/usr/lib/retrovibed"
 
   cp -r "${srcdir}/${pkgname}/.dist/linux/"* "${srcdir}/.dist"
 
