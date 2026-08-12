@@ -3,8 +3,8 @@
 
 _name=NeuralRack
 pkgbase=${_name,,}
-pkgname=($pkgbase $pkgbase-{clap,lv2,standalone,vst})
-pkgver=0.4.0
+pkgname=($pkgbase $pkgbase-{clap,lv2,standalone,vst,vst3})
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='A neural model and impulse response file loader'
 arch=(aarch64 x86_64)
@@ -15,7 +15,7 @@ depends=(glibc gcc-libs libx11)
 makedepends=(cairo jack libsndfile lv2 xxd)
 checkdepends=(lv2lint)
 source=("https://github.com/brummer10/$_name/releases/download/v$pkgver/$_name-v$pkgver-src.tar.xz")
-sha256sums=('697b5c01ff2f37f18f55854b94d5afd394b8e03cc4826f636172bfb6d82f1a07')
+sha256sums=('82b88d2aa20155d7522b7eea030b5e888eb1ca5559af47be9a4870fa5d6226f7')
 _plugin_uri="urn:brummer:$pkgbase"
 
 _pick() {
@@ -59,12 +59,13 @@ package_neuralrack() {
   make DESTDIR="$pkgdir" install
   install -vDm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
   cd "$pkgdir"
-  rm -rf $pkgbase-{clap,lv2,standalone,vst}
+  rm -rf $pkgbase-{clap,lv2,standalone,vst,vst3}
   _pick $pkgbase-clap usr/lib/clap/*
   _pick $pkgbase-lv2 usr/lib/lv2/*
   _pick $pkgbase-standalone usr/bin/*
   _pick $pkgbase-standalone usr/share/{applications,pixmaps}
   _pick $pkgbase-vst usr/lib/vst/*
+  _pick $pkgbase-vst3 usr/lib/vst3/*
 }
 
 package_neuralrack-clap() {
@@ -103,6 +104,17 @@ package_neuralrack-vst() {
   depends+=(libcairo.so libsndfile.so)
   optdepends=('vst-host: for loading the VST2 plugin')
   groups+=(vst-plugins)
+  mv -v $pkgname/* "$pkgdir"
+  cd $_name-v$pkgver
+  install -vDm 644 README.md $_name.png -t "$pkgdir"/usr/share/doc/$pkgname
+  install -vDm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+}
+
+package_neuralrack-vst3() {
+  pkgdesc+=" – VST3"
+  depends+=(libcairo.so libsndfile.so)
+  optdepends=('vst3-host: for loading the VST3 plugin')
+  groups+=(vst3-plugins)
   mv -v $pkgname/* "$pkgdir"
   cd $_name-v$pkgver
   install -vDm 644 README.md $_name.png -t "$pkgdir"/usr/share/doc/$pkgname
