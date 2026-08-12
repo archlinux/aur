@@ -1,6 +1,6 @@
 pkgbase = tasks-bin
 	pkgdesc = Tasks.org To-Do Lists & Reminders that's Powerful and flexible, Customizable and mutilingual, with Multiple sync options
-	pkgver = 15.8
+	pkgver = 15.9
 	pkgrel = 1
 	url = https://tasks.org
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tasks-bin
 	depends = zlib
 	provides = tasks
 	conflicts = tasks
-	source_x86_64 = https://github.com/tasks/tasks/releases/download/15.8/tasks-org-15.8.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = e148c86f67e4a4aecdb88e3775daeacf653a7f96135c6120e9be33680adc340c
+	source_x86_64 = https://github.com/tasks/tasks/releases/download/15.9/tasks-org-15.9.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = c742a8901418f99c61f8c6b56b41f0a21acabfad9aaf4f6f8f69060ec75bbd8e
 
 pkgname = tasks-bin
