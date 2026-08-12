@@ -1,9 +1,9 @@
 pkgbase = python-tree-sitter-go
 	pkgdesc = Go grammar for tree-sitter
 	pkgver = 0.25.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/tree-sitter/tree-sitter-go
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
