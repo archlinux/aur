@@ -12,7 +12,7 @@ options=()
 install=
 changelog=
 source=("${pkgname}::git+https://github.com/Stephen-Seo/SimpleArchiver.git#tag=${pkgver}")
-sha256sums=(SKIP)
+sha256sums=('fabedcbc7d9c4d9364373ef911f1d03193d1e6603b42bdf33b26427891fa1116')
 
 prepare() {
     cd "${pkgname}"
