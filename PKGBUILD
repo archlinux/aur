@@ -4,7 +4,7 @@
 
 pkgname=openlist-bin
 _pkgname=${pkgname%-bin}
-pkgver=4.2.4
+pkgver=4.2.5
 pkgrel=1
 pkgdesc="A new AList Fork to Anti Trust Crisis"
 arch=("x86_64" "aarch64" "loong64" "riscv64")
@@ -23,10 +23,10 @@ options=(!debug)
 sha256sums=('4bc1ccc08f17f5c9ce0fe7fc600ea9d5e1b034d52a776244c627bc13a3fa401d'
             'fe9c68aa8a6a27477049c839cb5818ba3ddbd88c6813dd2eacea73da70807905'
             'e2121760e533763ef0984c0891e2a175dc3b4a0ddb2005c6a9b45321d93d9bcb')
-sha256sums_x86_64=('f91322ccc92c6585391cb695f8587ba096416b611e975a126a43e1aeef29a50e')
-sha256sums_aarch64=('fae346aa1dc3cfe7b886a25cb00b086f8b764ecb98130b8b1bcfd45404735ef8')
-sha256sums_loong64=('76900d1ad4bcaf7c692fde22e02acfd640f6ead07f03a419f47a860e6ecb0155')
-sha256sums_riscv64=('5093e7831a9131ce64a21bee469fa596a2db707cbfaa8ff0206db87824b526cf')
+sha256sums_x86_64=('5a8e432e7b0d9d08a7c52be80bd793588fcec53739bd3967f92f24acbbdf8134')
+sha256sums_aarch64=('9c7bfbe411bd5f0ba7a148491b95c3b74575abd92e13af4e914b30ae6551d987')
+sha256sums_loong64=('e59bd61238f2c1fd9786d57cd5b0ea32943a0683e6211cf872e12e61e3c58204')
+sha256sums_riscv64=('645abb1a6560c2ba5cdfb388221bbc16e1a7e15b4ad74bd992aaa038d2e582b4')
 
 
 package() {
