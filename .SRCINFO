@@ -1,6 +1,6 @@
 pkgbase = unikey-wayland-bin
 	pkgdesc = Unikey Wayland Input Method for Vietnamese (Prebuilt)
-	pkgver = 2.0.8
+	pkgver = 2.0.10
 	pkgrel = 1
 	url = https://github.com/ubuntu2310fake/Unikey-Wayland
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = unikey-wayland-bin
 	conflicts = unikey-wayland
 	noextract = unikey-wayland-x86_64.pkg.tar.zst
 	noextract = unikey-wayland-aarch64.pkg.tar.zst
-	source_x86_64 = unikey-wayland-x86_64.pkg.tar.zst::https://github.com/ubuntu2310fake/Unikey-Wayland/releases/download/2.0.8/unikey-wayland-2.0.8-1-x86_64.pkg.tar.zst
+	source_x86_64 = unikey-wayland-x86_64.pkg.tar.zst::https://github.com/ubuntu2310fake/Unikey-Wayland/releases/download/2.0.10/unikey-wayland-2.0.10-1-x86_64.pkg.tar.zst
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = unikey-wayland-aarch64.pkg.tar.zst::https://github.com/ubuntu2310fake/Unikey-Wayland/releases/download/2.0.8/unikey-wayland-2.0.8-1-aarch64.pkg.tar.zst
+	source_aarch64 = unikey-wayland-aarch64.pkg.tar.zst::https://github.com/ubuntu2310fake/Unikey-Wayland/releases/download/2.0.10/unikey-wayland-2.0.10-1-aarch64.pkg.tar.zst
 	sha256sums_aarch64 = SKIP
 
 pkgname = unikey-wayland-bin
