@@ -9,7 +9,10 @@ pkgbase = autoremesher-bin
 	depends = hicolor-icon-theme
 	depends = libglvnd
 	depends = libx11
-	provides = autoremesher
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	provides = autoremesher=1.0.0
 	conflicts = autoremesher
 	options = !strip
 	source = autoremesher-bin-1.0.0.AppImage::https://github.com/huxingyi/autoremesher/releases/download/1.0.0/autoremesher-1.0.0.AppImage

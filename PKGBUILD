@@ -8,8 +8,8 @@ pkgdesc="Cross-platform automatic quad remeshing tool"
 arch=('x86_64')
 url="https://github.com/huxingyi/autoremesher"
 license=('MIT')
-depends=('fuse2' 'hicolor-icon-theme' 'libglvnd' 'libx11')
-provides=($_pkgname)
+depends=('fuse2' 'hicolor-icon-theme' 'libglvnd' 'libx11' 'libgcc' 'libstdc++' 'zlib')
+provides=("$_pkgname=$pkgver")
 conflicts=($_pkgname)
 options=('!strip')
 source=(
