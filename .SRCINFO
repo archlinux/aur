@@ -8,7 +8,6 @@ pkgbase = uutils-coreutils-git
 	makedepends = git
 	makedepends = pkgconf
 	makedepends = rust
-	depends = acl
 	depends = glibc
 	depends = libgcc
 	depends = oniguruma

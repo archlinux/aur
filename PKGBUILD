@@ -9,7 +9,7 @@ pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
 license=('MIT')
 arch=('x86_64')
-depends=(acl glibc libgcc oniguruma openssl systemd-libs)
+depends=(glibc libgcc oniguruma openssl systemd-libs)
 makedepends=(git pkgconf rust)
 provides=(coreutils)
 conflicts=({uutils-,}coreutils)
@@ -28,7 +28,7 @@ export RUSTFLAGS="${RUSTFLAGS} -C force-unwind-tables=no --cfg=linux_latest" # r
 [ $RUSTC_BOOTSTRAP = 1 ] && export CARGOFLAGS='-Zbuild-std=std,panic_abort --config=profile.release.panic=\"immediate-abort\" -Zpanic-immediate-abort'
 package(){
   cd ${pkgname%-git}
-  export CARGOFLAGS+=" --features feat_acl,feat_systemd_logind,openssl,feat_external_libstdbuf"
+  export CARGOFLAGS+=" --features feat_systemd_logind,openssl"
   export DESTDIR="$pkgdir" PREFIX=/usr PROFILE=release MULTICALL=y MANPAGES=n COMPLETIONS=n #LOCALES=n
   make install LIBSTDBUF_DIR=/usr/lib/${pkgname%-git} SKIP_UTILS="arch kill more uptime hostname" #expand factor unexpand pinky ptx sum shred shuf"
   make install PROG_PREFIX=uu- UTILS="arch kill more uptime hostname"
