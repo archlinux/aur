@@ -42,7 +42,7 @@ If `extra/ty` is already installed, pacman will offer to replace it. After
 install:
 
 ```sh
-ty --version        # ty 0.0.40
+ty --version        # ty 0.0.70
 ```
 
 ## Supported architectures
