@@ -1,11 +1,10 @@
 pkgbase = nowledge-mem-bin
 	pkgdesc = 你的智能体、AI 助手、代码工具，共享一套记忆
 	pkgver = 0.10.55
-	pkgrel = 2
+	pkgrel = 3
 	url = https://mem.nowledge.co
 	arch = x86_64
 	license = Proprietary
-	makedepends = zstd
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = libayatana-appindicator
