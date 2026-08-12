@@ -1,6 +1,6 @@
 pkgbase = motrix-next-bin
 	pkgdesc = A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust
-	pkgver = 3.9.6
+	pkgver = 3.9.7
 	pkgrel = 1
 	url = https://github.com/AnInsomniacy/motrix-next
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = motrix-next-bin
 	depends = webkit2gtk-4.1
 	source = LICENSE-MIT
 	sha256sums = 82e71190970399412c9e40fc3f4e2dc1cb070d56433ee7f25af7a4e67f401f0e
-	source_x86_64 = motrix-next-bin-3.9.6-x86_64.deb::https://github.com/AnInsomniacy/motrix-next/releases/download/v3.9.6/MotrixNext_3.9.6_amd64.deb
-	sha256sums_x86_64 = 2b0d3e3be747f4228e5b996f9def0a6ee90defe2a29c646152a02818b54ff0bc
-	source_aarch64 = motrix-next-bin-3.9.6-aarch64.deb::https://github.com/AnInsomniacy/motrix-next/releases/download/v3.9.6/MotrixNext_3.9.6_arm64.deb
-	sha256sums_aarch64 = 46d956073304c3211ba9eb9051b834dd416b732f28b9348658cbbca2e64e5f1a
+	source_x86_64 = motrix-next-bin-3.9.7-x86_64.deb::https://github.com/AnInsomniacy/motrix-next/releases/download/v3.9.7/MotrixNext_3.9.7_amd64.deb
+	sha256sums_x86_64 = 80dc85f46e8f940eedb0c0ce001b7928822e82613439566170230f23f33d7795
+	source_aarch64 = motrix-next-bin-3.9.7-aarch64.deb::https://github.com/AnInsomniacy/motrix-next/releases/download/v3.9.7/MotrixNext_3.9.7_arm64.deb
+	sha256sums_aarch64 = dad4daf4bfea2272452e27ac8eac3e7f8a3db3c36828ed4a69d8a71ac946a88c
 
 pkgname = motrix-next-bin
