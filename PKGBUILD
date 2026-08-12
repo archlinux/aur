@@ -1,11 +1,11 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep
-pkgver=2.8.2
-pkgrel=2.314
+pkgver=2.8.3
+pkgrel=1.314
 pkgdesc='A DjVu to PDF converter'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
-license=('GPL-3.0-or-later')
+license=('GPL-3.0-or-later AND CC0-1.0')
 checkdepends=(python-pytest)
 makedepends=(python-uv-build python-build python-installer python-click-man)
 depends=(python python-djvulibre-python
@@ -16,7 +16,7 @@ optdepends=(
   'jbig2enc: Advanced compression of bitonal images'
 )
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('0cb5afed79462f420362f54e1d3c7be59c943ec88268288df4374be9874cf11f')
+sha256sums=('171af7ecae10c60eb8e62c1c94f049f5a657c75b08c8c37b9b315b34f07d55c8')
 
 _fullsrcdir() {
     echo "$srcdir/$pkgname-$pkgver"

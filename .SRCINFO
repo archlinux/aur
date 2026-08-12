@@ -1,10 +1,10 @@
 pkgbase = dpsprep
 	pkgdesc = A DjVu to PDF converter
-	pkgver = 2.8.2
-	pkgrel = 2.314
+	pkgver = 2.8.3
+	pkgrel = 1.314
 	url = https://github.com/kcroker/dpsprep
 	arch = any
-	license = GPL-3.0-or-later
+	license = GPL-3.0-or-later AND CC0-1.0
 	checkdepends = python-pytest
 	makedepends = python-uv-build
 	makedepends = python-build
@@ -19,7 +19,7 @@ pkgbase = dpsprep
 	depends = python-pdfrw
 	optdepends = ocrmypdf: Optional OCR and advanced PDF optimization
 	optdepends = jbig2enc: Advanced compression of bitonal images
-	source = https://files.pythonhosted.org/packages/source/d/dpsprep/dpsprep-2.8.2.tar.gz
-	sha256sums = 0cb5afed79462f420362f54e1d3c7be59c943ec88268288df4374be9874cf11f
+	source = https://files.pythonhosted.org/packages/source/d/dpsprep/dpsprep-2.8.3.tar.gz
+	sha256sums = 171af7ecae10c60eb8e62c1c94f049f5a657c75b08c8c37b9b315b34f07d55c8
 
 pkgname = dpsprep
