@@ -1,3 +1,5 @@
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
+
 # Note: NCBI retired tbl2asn; table2asn is its official successor.
 # https://ftp.ncbi.nlm.nih.gov/asn1-converters/by_program/table2asn/
 
