@@ -21,7 +21,7 @@ pkgbase = python-fastembed
 	depends = python-pillow
 	depends = python-mmh3
 	depends = python-py-rust-stemmers
-	provides = python-fastembed
+	provides = python-fastembed=0.8.0
 	conflicts = python-fastembed
 	source = fastembed-0.8.0.tar.gz::https://github.com/qdrant/fastembed/archive/refs/tags/v0.8.0.tar.gz
 	sha256sums = dfbd66af91d80882fbbab922e7ab07cae4d611afa1930754a51a26c5fe08db84

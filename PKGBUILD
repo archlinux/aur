@@ -27,7 +27,7 @@ makedepends=(
   'python-wheel'
   'python-poetry-core'
 )
-provides=('python-fastembed')
+provides=("python-fastembed=$pkgver")
 conflicts=('python-fastembed')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/qdrant/fastembed/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('dfbd66af91d80882fbbab922e7ab07cae4d611afa1930754a51a26c5fe08db84')
