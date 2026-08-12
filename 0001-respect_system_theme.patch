@@ -1,73 +1,31 @@
 diff --git a/src/adw-style-manager.c b/src/adw-style-manager.c
-index 1119af72..5b4c0206 100644
 --- a/src/adw-style-manager.c
 +++ b/src/adw-style-manager.c
-@@ -70,6 +70,7 @@ struct _AdwStyleManager
-   GtkCssProvider *fonts_provider;
- 
-   AdwColorScheme color_scheme;
-+  GSettings *interface_settings;
-   gboolean dark;
-   gboolean changing_gtk_settings;
-   char *document_font_name;
-@@ -129,6 +130,56 @@ unregister_display (GdkDisplay *display)
-   g_hash_table_remove (display_style_managers, display);
+@@ -465,6 +465,23 @@ notify_high_contrast_cb (AdwStyleManager *self)
+   g_object_notify_by_pspec (G_OBJECT (self), props[PROP_HIGH_CONTRAST]);
  }
  
 +static void
-+adw_style_manager_theme_changed (GSettings       *settings,
-+                                 const char      *key,
-+                                 AdwStyleManager *self)
++adw_style_manager_theme_changed(GSettings *settings, const char *key, GdkDisplay *display)
 +{
-+  char *user_theme = NULL;
-+  char *color_scheme = NULL;
-+  char *user_icon_theme = NULL;
-+  const char *selected = NULL;
++  char* theme = g_settings_get_string(settings, "gtk-theme");
++  char* color_scheme = g_settings_get_string(settings, "color-scheme");
 +
-+  if (!self->display || !self->gtk_settings)
-+    return;
-+
-+  user_theme = g_settings_get_string (settings, "gtk-theme");
-+  if (user_theme && *user_theme) {
-+    selected = user_theme;
-+  } else {
-+    selected = "Adwaita-empty";
++  if(!theme) {
++    theme = "Adwaita-empty";
 +  }
 +
-+  self->changing_gtk_settings = TRUE;
-+  g_object_set (self->gtk_settings, "gtk-theme-name", selected, NULL);
-+  self->changing_gtk_settings = FALSE;
++  gboolean is_dark_variant = NULL != strstr(theme, "-dark") || NULL != strstr(theme, "-Dark") || 0 == strcmp(color_scheme, "prefer-dark");
 +
-+  user_icon_theme = g_settings_get_string (settings, "icon-theme");
-+  if (user_icon_theme && *user_icon_theme) {
-+    self->changing_gtk_settings = TRUE;
-+    g_object_set (self->gtk_settings, "gtk-icon-theme-name", user_icon_theme, NULL);
-+    self->changing_gtk_settings = FALSE;
-+  }
-+
-+  g_setenv ("GTK_THEME", selected, TRUE);
-+
-+  color_scheme = g_settings_get_string (settings, "color-scheme");
-+  if (color_scheme && *color_scheme) {
-+    if (g_strcmp0 (color_scheme, "prefer-dark") == 0)
-+      adw_style_manager_set_color_scheme (self, ADW_COLOR_SCHEME_PREFER_DARK);
-+    else if (g_strcmp0 (color_scheme, "force-dark") == 0)
-+      adw_style_manager_set_color_scheme (self, ADW_COLOR_SCHEME_FORCE_DARK);
-+    else if (g_strcmp0 (color_scheme, "force-light") == 0)
-+      adw_style_manager_set_color_scheme (self, ADW_COLOR_SCHEME_FORCE_LIGHT);
-+    else
-+      adw_style_manager_set_color_scheme (self, ADW_COLOR_SCHEME_PREFER_LIGHT);
-+  }
-+
-+  g_free (user_theme);
-+  g_free (user_icon_theme);
-+  g_free (color_scheme);
++  g_object_set(gtk_settings_get_for_display(display),
++               "gtk-theme-name", theme,
++               "gtk-application-prefer-dark-theme", is_dark_variant, NULL);
 +}
 +
  static void
- register_display (GdkDisplayManager *display_manager,
-                   GdkDisplay        *display)
-@@ -489,11 +540,8 @@ adw_style_manager_constructed (GObject *object)
+ adw_style_manager_constructed (GObject *object)
+ {
+@@ -471,27 +471,6 @@ adw_style_manager_constructed (GObject *object)
                               self,
                               G_CONNECT_SWAPPED);
  
@@ -76,36 +34,41 @@ index 1119af72..5b4c0206 100644
 -                    "gtk-theme-name", "Adwaita-empty",
 -                    NULL);
 -
-+    if (!adw_is_granite_present ()) {
-+      /* Providers: keep upstream setup */
-       self->provider = gtk_css_provider_new ();
-       gtk_css_provider_load_from_resource (self->provider,
-                                            "/org/gnome/Adwaita/styles/gtk.css");
-@@ -512,6 +560,19 @@ adw_style_manager_constructed (GObject *object)
-                                                   GTK_STYLE_PROVIDER_PRIORITY_THEME);
-     }
- 
-+    {
-+      GSettingsSchemaSource *src = g_settings_schema_source_get_default ();
-+      GSettingsSchema *schema = g_settings_schema_source_lookup (src, "org.gnome.desktop.interface", TRUE);
-+      if (schema) {
-+        self->interface_settings = g_settings_new_full (schema, NULL, NULL);
-+        adw_style_manager_theme_changed (self->interface_settings, "gtk-theme", self);
-+        g_signal_connect (self->interface_settings,
-+                          "changed",
-+                          G_CALLBACK (adw_style_manager_theme_changed),
-+                          self);
-+      }
-+    }
-+
+-      self->provider = gtk_css_provider_new ();
+-      gtk_style_context_add_provider_for_display (self->display,
+-                                                  GTK_STYLE_PROVIDER (self->provider),
+-                                                  GTK_STYLE_PROVIDER_PRIORITY_THEME);
+-
+-      self->accent_provider = gtk_css_provider_new ();
+-      gtk_style_context_add_provider_for_display (self->display,
+-                                                  GTK_STYLE_PROVIDER (self->accent_provider),
+-                                                  GTK_STYLE_PROVIDER_PRIORITY_THEME);
+-
+-      self->fonts_provider = gtk_css_provider_new ();
+-      gtk_style_context_add_provider_for_display (self->display,
+-                                                  GTK_STYLE_PROVIDER (self->fonts_provider),
+-                                                  GTK_STYLE_PROVIDER_PRIORITY_THEME);
+-    }
+-
      self->animations_provider = gtk_css_provider_new ();
      gtk_css_provider_load_from_string (self->animations_provider,
                                         "* { transition: none; }");
-@@ -581,6 +642,7 @@ adw_style_manager_dispose (GObject *object)
-   g_clear_object (&self->animations_provider);
-   g_clear_object (&self->accent_provider);
-   g_clear_object (&self->fonts_provider);
-+  g_clear_object (&self->interface_settings);
-   g_clear_pointer (&self->document_font_name, g_free);
-   g_clear_pointer (&self->monospace_font_name, g_free);
- 
+@@ -570,7 +566,18 @@ adw_style_manager_constructed (GObject *object)
+   update_dark (self);
+   update_fonts (self);
+   update_stylesheet (self, UPDATE_ALL);
++
++  if (self->display && !adw_is_granite_present () && !g_getenv ("GTK_THEME")) {
++    GSettingsSchemaSource *schema_source =
++      g_settings_schema_source_get_default();
++    GSettingsSchema *schema = g_settings_schema_source_lookup(
++      schema_source, "org.gnome.desktop.interface", true);
++    GSettings *interface_settings = g_settings_new_full(schema, NULL, NULL);
++
++    adw_style_manager_theme_changed(interface_settings, "gtk-theme", self->display);
++    g_signal_connect (interface_settings, "changed", G_CALLBACK (adw_style_manager_theme_changed), self->display);
++  }
+
+   if (self->provider) {
+     gtk_css_provider_load_from_resource (self->provider,
+                                          "/org/gnome/Adwaita/styles/gtk.css");
