@@ -1,0 +1,13 @@
+pkgbase = unordered_dense
+	pkgdesc = A fast & densely stored hashmap and hashset based on robin-hood backward shift deletion
+	pkgver = 4.9.0
+	pkgrel = 1
+	url = https://github.com/martinus/unordered_dense
+	arch = any
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	source = git+https://github.com/martinus/unordered_dense.git#tag=v4.9.0
+	sha256sums = 4a0e3378d1726c9c87403c82afbb793a87c45f3df3fc4828ec086e2a4c5df08f
+
+pkgname = unordered_dense
