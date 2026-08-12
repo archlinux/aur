@@ -1,6 +1,6 @@
 # Maintainer: Retrovibed <engineering@retrovibe.space>
 pkgname=retrovibed
-pkgver=0.0.1786559165000
+pkgver=0.0.1786566073000
 pkgrel=1
 pkgdesc='Personal digital archiving and distribution platform with a built-in torrent client, media player, and at-cost cloud storage'
 url='https://retrovibe.space'
