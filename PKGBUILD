@@ -7,7 +7,7 @@ pkgname=(
   letos
   letos-plugins
 )
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='Database manager for SQLite (formerly sqlitestudio)'
 arch=(x86_64)
@@ -27,13 +27,13 @@ makedepends=(
   tcl
 )
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/pawelsalawa/letos/archive/$pkgver.tar.gz)
-b2sums=('3a63022fe1c852046cf58d4cb4a21b96867115fee5ee18d6a242ff401d2c3eb6af8ecfbd5e6d76fb01b9537ef854427b60075089a3a3136ebe21bf71218169f7')
+b2sums=('5338b478b022d753aad8ac946b178002db6a07d3ad257cfd0be1d380b2c2437276111064dc37dcb9e99d7359a4885754ff5f9d6c2dcefb5ba15289825ce54164')
 
 build(){
   local _cmakeargs=(
     -DCMAKE_BUILD_TYPE=Release 
     -DCMAKE_INSTALL_PREFIX=/usr
-	-DSYS_PLUGINS_DIR=/lib/letos
+    -DSYS_PLUGINS_DIR=/lib/letos
   )
 #  CXXFLAGS+=' -DPLUGINS_DIR=\"/lib/letos\"' # also works!
 #  TODO: /lib/letos/styles
