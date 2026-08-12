@@ -3,7 +3,7 @@
 # AUR page: https://aur.archlinux.org/packages/tuitab-bin
 
 pkgname=tuitab-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Terminal tabular data explorer — CSV/JSON/YAML/TOML/Parquet/Excel/SQLite viewer (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ _base_url="https://github.com/denisotree/tuitab/releases/download/v${pkgver}"
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::${_base_url}/tuitab-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::${_base_url}/tuitab-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('e23dcc9b9147e10fce4c772bd10ea8e9173752f9e1d6dfd5909397c67a47dcc8')
-sha256sums_aarch64=('23796ab9a45469a94f919ee76d0df8af89afd293a1ed5c740d3b94cfa7dcc0a1')
+sha256sums_x86_64=('84916c35e18d5ced64a451faa4adb7e1a3cf9f5f731ea4d332809faed3286b63')
+sha256sums_aarch64=('3a8a51007d5ec09a7b2a315456c4b3225b92871de5786ba32d1ed49712ae0023')
 
 package() {
     local _src_dir="tuitab-v${pkgver}-${CARCH}-unknown-linux-gnu"
