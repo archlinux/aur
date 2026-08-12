@@ -1,9 +1,9 @@
 pkgbase = python-tree-sitter-verilog
 	pkgdesc = Verilog grammar for tree-sitter
 	pkgver = 1.0.3
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/tree-sitter/tree-sitter-verilog
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
