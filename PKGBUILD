@@ -10,8 +10,8 @@
 # Maintainer: Kordian Bruck <k@bruck.me>
 
 pkgname=android-studio
-pkgver=2026.1.3.7
-_vername="quail3"
+pkgver=2026.1.3.8
+_vername="quail3-patch1"
 pkgrel=1
 pkgdesc="The official Android IDE (Stable branch)"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ options=('!strip')
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-$_vername-linux.tar.gz"
         "$pkgname.desktop"
         "license.html")
-sha256sums=('36832122557ab73ca68dfd9bd989ddac40103ac003ca10e04c949a1f61578a67'
+sha256sums=('5bd5ee5d6e747b13f82fba3241380bd358cc2f4a847815c8e860757df13dc35f'
             '73cd2dde1d0f99aaba5baad1e2b91c834edd5db3c817f6fb78868d102360d3c4'
             '9a7563f7fb88c9a83df6cee9731660dc73a039ab594747e9e774916275b2e23e')
 
