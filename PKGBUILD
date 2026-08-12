@@ -2,7 +2,7 @@
 pkgname=rqlite
 pkgver=10.2.7
 pkgrel=1
-pkgdesc="rqlite is a lightweight, distributed relational database, which uses SQLite as its storage engine"
+pkgdesc="A lightweight, distributed relational database, which uses SQLite as its storage engine"
 arch=("x86_64" "armv7h" "aarch64")
 url="http://rqlite.io/"
 license=('MIT')
