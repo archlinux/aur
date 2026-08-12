@@ -1,13 +1,13 @@
 pkgbase = inkstitch
 	pkgdesc = An open source machine embroidery design platform based on Inkscape
-	pkgver = 3.2.2
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://inkstitch.org/
 	arch = x86_64
 	license = GPL
 	depends = inkscape
 	options = !strip
-	source = https://github.com/inkstitch/inkstitch/releases/download/v3.2.2/inkstitch-3.2.2-linux-x86_64.tar.xz
-	sha256sums = 3378d5bff4f70ffbf31beea22572d4191f1495d672f431f37fe8e060b773155f
+	source = https://github.com/inkstitch/inkstitch/releases/download/v3.3.0/inkstitch-3.3.0-linux-x86_64.tar.xz
+	b2sums = be0c86ac21b38cb566e5701151f01a7c7d6cda5062e3f2bca3b94cab2959ae21a2b771cd9450d6722287a3a902fc1ec4c0588ce215388e602e6aafccad96e1fe
 
 pkgname = inkstitch
