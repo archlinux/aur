@@ -1,0 +1,9 @@
+src/
+pkg/
+wine-cachyos/
+wine-gecko-*/
+wine-mono-*/
+*.tar.xz
+*.zip
+*.pkg.tar.*
+*.log
