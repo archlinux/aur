@@ -1,6 +1,6 @@
 pkgbase = insomnia-electron-bin
 	pkgdesc = Cross-platform HTTP and GraphQL Client
-	pkgver = 13.0.2
+	pkgver = 13.1.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kong/insomnia
@@ -11,13 +11,13 @@ pkgbase = insomnia-electron-bin
 	depends = electron41
 	provides = insomnia
 	conflicts = insomnia
-	source = https://raw.githubusercontent.com/Kong/insomnia/core@13.0.2/LICENSE
+	source = https://raw.githubusercontent.com/Kong/insomnia/core@13.1.0/LICENSE
 	source = insomnia.sh
 	source = insomnia.desktop
 	b2sums = f80a889547df667636d5b177cf98dbc66dece9263aa8da57003223d38ffad9e5ff24c0dde35e29a60bb41a1069e802a910314ae3711fe41594a0d3b6cb259ff2
 	b2sums = fc24b3075490bfed6f56aba46b33b50edcc9ead95e00d8209d38ed052f5d3514ea789a13c51eb1cf7d53807f6aa171c833222122634bfff6edc5c5f7936f1eff
 	b2sums = d7f795312b38ccd63cdc9a9333a5cdb3d1271b07d6855bc10c4711e143f0a30bd819cda931d99ed0090536ffa84b551a8d134299f614506b0e344c15afe19f6c
-	source_x86_64 = https://github.com/Kong/insomnia/releases/download/core@13.0.2/Insomnia.Core-13.0.2.tar.gz
-	b2sums_x86_64 = 6c1b268cff7b6521924e7de7a4c178a65ae940192950a6fad7c96007ba3b329d543662bf3b3583b38e1ad93bde539545b6f3104795175e7467ff4c23138ef113
+	source_x86_64 = https://github.com/Kong/insomnia/releases/download/core@13.1.0/Insomnia.Core-13.1.0.tar.gz
+	b2sums_x86_64 = 08ef4a61eff4e989da641a11ffdfa165e84931ea196e95ef70974b1419f6919558525f5e0e5d7189d00ca3fb4f0c14f0afd7a00006203f07861fb08169b91b1b
 
 pkgname = insomnia-electron-bin
