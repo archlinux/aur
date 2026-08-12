@@ -1,10 +1,10 @@
 pkgbase = figma-linux-next
 	pkgdesc = Unofficial Figma desktop app for Linux with native Wayland support and GPU acceleration
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/arximus88/figma-linux-next
 	arch = x86_64
-	license = MIT
+	license = GPL-2.0-only
 	makedepends = bun
 	makedepends = nodejs
 	depends = electron
@@ -15,10 +15,10 @@ pkgbase = figma-linux-next
 	conflicts = figma-linux
 	conflicts = figma-linux-bin
 	conflicts = figma-linux-git
-	source = figma-linux-next-0.15.0.tar.gz::https://github.com/arximus88/figma-linux-next/archive/refs/tags/v0.15.0.tar.gz
+	source = figma-linux-next-0.16.0.tar.gz::https://github.com/arximus88/figma-linux-next/archive/refs/tags/v0.16.0.tar.gz
 	source = figma-linux-next.desktop
 	source = figma-linux-next-launcher.sh
-	sha256sums = f0e70a4eafb45a42255c814dc90eed053d52eebdec06f36d9bdf22cf31a7b5e4
+	sha256sums = 541b0f5386cb2078a0237ebb1f2028ab791df3a8855e8f03311261ba982fcc10
 	sha256sums = SKIP
 	sha256sums = SKIP
 
