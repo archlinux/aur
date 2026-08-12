@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-full-llvm
 pkgver=9.0
-pkgrel=1
+pkgrel=2
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.1'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and LLVM lld'
@@ -153,6 +153,7 @@ makedepends=(
     'lv2'
     'nasm'
     'opencl-headers'
+    'spirv-headers'
     'vulkan-headers')
 provides=(
     'ffmpeg'
