@@ -5,7 +5,7 @@ pkgname=(
   minijinja-cli
   python-minijinja
 )
-pkgver=2.23.0
+pkgver=2.24.0
 _srcdir=minijinja-cli-${pkgver}
 pkgrel=1
 pkgdesc="A powerful but minimal dependency template engine for Rust compatible with Jinja/Jinja2"
@@ -80,4 +80,4 @@ package_python-minijinja() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
-sha256sums=('f6b9c1f946fc5f7e83431d4e5fac881971aa1bb9b7be36368b7c99ec6526f69f')
+sha256sums=('a369dfac2a72e807eb44004281dcd36d3b7df42f5b2148f04a928c7dc1abf8fc')
