@@ -1,7 +1,7 @@
 pkgbase = doubao-desktop-bin
 	pkgdesc = Doubao AI Assistant - Tauri-based native desktop wrapper (ByteDance)
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/gonwe/doubao-desktop
 	arch = x86_64
 	license = MIT
@@ -11,11 +11,11 @@ pkgbase = doubao-desktop-bin
 	depends = glib2
 	depends = libgl
 	depends = hicolor-icon-theme
-	provides = doubao-desktop=1.0.0
+	provides = doubao-desktop=1.0.1
 	conflicts = doubao-desktop
-	source = doubao-desktop-1.0.0-x86_64.tar.gz::https://github.com/gonwe/doubao-desktop/releases/download/v1.0.0/doubao-desktop-1.0.0-x86_64.tar.gz
+	source = doubao-desktop-1.0.1-x86_64.tar.gz::https://github.com/gonwe/doubao-desktop/releases/download/v1.0.1/doubao-desktop-1.0.1-x86_64.tar.gz
 	source = doubao-desktop-bin.desktop
-	sha256sums = d75c0e09d71175f47de16d735967db7ffbf2ec310bf96b4795a72d56ba250f8f
+	sha256sums = 964acc7aaaffa53f1ce1e6a35934ddedab0610ff4d7466b9420a3ad7daaceb76
 	sha256sums = SKIP
 
 pkgname = doubao-desktop-bin

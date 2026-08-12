@@ -1,7 +1,7 @@
 # Maintainer: gonwe <gonwex@gmail.com>
 pkgname=doubao-desktop-bin
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Doubao AI Assistant - Tauri-based native desktop wrapper (ByteDance)"
 arch=('x86_64')
 url="https://github.com/gonwe/doubao-desktop"
@@ -15,15 +15,21 @@ conflicts=('doubao-desktop')
 _dlname="doubao-desktop-${pkgver}-x86_64.tar.gz"
 source=("${_dlname}::https://github.com/gonwe/doubao-desktop/releases/download/v${pkgver}/${_dlname}"
         "${pkgname}.desktop")
-sha256sums=('d75c0e09d71175f47de16d735967db7ffbf2ec310bf96b4795a72d56ba250f8f'
+sha256sums=('964acc7aaaffa53f1ce1e6a35934ddedab0610ff4d7466b9420a3ad7daaceb76'
             'SKIP')
 
 package() {
     cd "$srcdir"
 
-    # Tauri binary
-    install -Dm755 "doubao-desktop-${pkgver}-x86_64/doubao-desktop" \
+    _srcdir="doubao-desktop-${pkgver}-x86_64"
+
+    # Launcher wrapper script (handles Wayland compatibility)
+    install -Dm755 "${_srcdir}/doubao-desktop" \
         "$pkgdir/usr/bin/doubao-desktop"
+
+    # Tauri binary
+    install -Dm755 "${_srcdir}/doubao-desktop.bin" \
+        "$pkgdir/usr/bin/doubao-desktop.bin"
 
     # Desktop entry
     install -Dm644 "${pkgname}.desktop" \
