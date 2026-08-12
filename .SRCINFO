@@ -1,7 +1,7 @@
 pkgbase = matchlock
 	pkgdesc = Lightweight Firecracker micro-VM sandbox for running AI agents securely
-	pkgver = 0.2.16
-	pkgrel = 2
+	pkgver = 0.2.17
+	pkgrel = 1
 	url = https://github.com/jingkaihe/matchlock
 	install = matchlock.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = matchlock
 	depends = kmod
 	depends = procps-ng
 	options = !debug
-	source = matchlock-0.2.16.tar.gz::https://github.com/jingkaihe/matchlock/archive/v0.2.16.tar.gz
-	sha256sums = a73fd65180f45fc741a9192645d1b585125d8cea6e4d66769725dda3b3a8de48
+	source = matchlock-0.2.17.tar.gz::https://github.com/jingkaihe/matchlock/archive/v0.2.17.tar.gz
+	sha256sums = 14c90611b745cbd7900336357b2a5b2413a87dca1a456db0cfcaf2dc8e14cdf9
 
 pkgname = matchlock
