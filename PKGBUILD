@@ -6,10 +6,10 @@ pkgname=(
     fcitx5-osk-git
     fcitx5-osk-kwin-launcher-git
 )
-_pkgver=0.2.0
-pkgver=0.2.0.r0.g96305da
+_pkgver=0.2.1
+pkgver=0.2.1.r0.g76a33b6
 pkgrel=1
-pkgdesc='An onscreen keyboard working with fcitx5'
+pkgdesc='An on-screen keyboard designed to work with Fcitx5, especially on KDE Plasma Wayland'
 url='https://github.com/fortime/fcitx5-osk'
 source=("git+https://github.com/fortime/fcitx5-osk")
 arch=('x86_64')

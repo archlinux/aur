@@ -1,6 +1,6 @@
 pkgbase = fcitx5-osk-git
-	pkgdesc = An onscreen keyboard working with fcitx5
-	pkgver = 0.2.0.r0.g96305da
+	pkgdesc = An on-screen keyboard designed to work with Fcitx5, especially on KDE Plasma Wayland
+	pkgver = 0.2.1.r0.g76a33b6
 	pkgrel = 1
 	url = https://github.com/fortime/fcitx5-osk
 	arch = x86_64
