@@ -9,7 +9,7 @@ _squashroot="squashfs-root"
 
 pkgname=${_sname}-appimage
 pkgver=9.21.0
-pkgrel=2
+pkgrel=3
 _appimageOrig="${_pkgname}-${pkgver}.AppImage"
 
 pkgdesc="Cross-platform note-taking application"
@@ -23,7 +23,7 @@ options=('!strip')
 source=("${_appimageOrig}::https://download.${_website}/app/${_pkgname}.AppImage"
         "${_deskfile}")
 sha256sums=('SKIP'
-            '82bc0521b26adb7aa6f24c11ee84f0763aa351db21d99a3a7cc4d62ade7d9a74')
+            '8977530cdac21641becea2b94f97a1ffc8995793008bafecf619cc9c112dcf57')
 noextract=("${_appimageOrig}")
 
 check() {

@@ -1,7 +1,7 @@
 === This package updates too often so this changelog contains only notable changes
 
 
-Wed Aug 12 2026 Anton Samartsev <kycko@archlinux.org> - 0:
+Wed Aug 12 2026 Anton Samartsev <kycko@archlinux.org> - 0:9.21.0-2
 - Remove "utility" category from the .desktop file, use only "office" one
 
 Tue Aug 11 2026 Anton Samartsev <kycko@archlinux.org> - 0:9.21.0-1
