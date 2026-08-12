@@ -71,16 +71,35 @@ backup=("$_protoncfg")
 
 ## sources
 url='https://github.com/GloriousEggroll/proton-ge-custom'
-source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}-${CARCH}.tar.gz"
+source=(
   'user_settings.py'
   'launcher.sh'
   'proton-ge-custom-bin.conf'
-  'pam_limits.conf')
-sha512sums=('SKIP'
+  'pam_limits.conf'
+)
+
+source_x86_64=(
+  "${_pkgver}_${pkgrel}-x86_64.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}-x86_64.tar.gz"
+)
+
+source_aarch64=(
+  "${_pkgver}_${pkgrel}-aarch64.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}-aarch64.tar.gz"
+)
+
+sha512sums=(
   '5d1a841d3f8f65f9e62742f84eeccfb198a0292a97ba9109f377a550a4de0e2913d1e17b3d90ecd37ac09411dc67e54662dc1be301554ce05fd128d842252deb'
   '78ede6d50f9c43407da511c8b37dcf60aae2ddbd461c0081f0d0ce3de08ace3a84dee86e9253acbac829b47c5818ef4e1a354ccb05feaa9853ce279dc3f903fd'
   'ac2bd634838ffe6b90f2637e229013f0993fc1013271dbeefd216dc262a8bb79e4a5ce15a75cbfcb0c3b521d32f4ebe1ed25a6b066b99cc327b60bd6d7212e6f'
-  '60bcb1ad899d108fca9c6267321d11871feae96b696e44607ef533becc6decb493e93cbe699382e8163ad83f35cfa003a059499c37278f31afeba4700be6e356')
+  '60bcb1ad899d108fca9c6267321d11871feae96b696e44607ef533becc6decb493e93cbe699382e8163ad83f35cfa003a059499c37278f31afeba4700be6e356'
+)
+
+sha512sums_x86_64=(
+  '8fb1f3ae65a8dc22efd8099ff489075f0eebddf01c445b423244589f6f0a1e19c01de5d1e722b97fc1ebaf6390c813052ed55290058f8d21f1353a36146f4a2c'
+)
+
+sha512sums_aarch64=(
+  'fa3048f55a70e4090a38e23d4182bcf4100c6cfbdb1a9b1b21aa01dfd2ba68ef6cc70f00242171c0f836d1e4753dfca146453baba6042f2d61ebef47d4f3cd84'
+)
 
 build() {
   ## patches
