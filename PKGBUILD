@@ -7,7 +7,7 @@
 
 pkgname=ddhx-git
 _pkgname=ddhx
-pkgver=v0.11.0.r2.g3ffdac4
+pkgver=0.11.0.r5.gcb1c02d
 pkgrel=1
 pkgdesc="Console hexadecimal file viewer"
 arch=('x86_64')
@@ -17,13 +17,13 @@ depends=('glibc' 'libgcc')
 makedepends=('git' 'dub' 'dmd')
 provides=("ddhx")
 conflicts=("ddhx")
-source=('git+https://github.com/dd86k/ddhx')
+source=('git+https://github.com/dd86k/ddhx.git')
 sha256sums=('SKIP')
 
 pkgver() {
   #cd "${srcdir}/${_pkgname}-${_pkgver}"
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+  git describe --long --tags 2>/dev/null | sed -n -e 's/\(^[^0-9]*\)\([^-]*.\)/\2r/g; s/-/./gp' ||
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
