@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electerm-git
-pkgver=3.15.86.r0.ge5e53cb
-_electronversion=41
+pkgver=5.1.6.r0.gae619e3
+_electronversion=42
 _nodeversion=24
 pkgrel=1
 pkgdesc="Terminal/ssh/telnet/serialport/sftp client.(Use system-wide electron)"
@@ -51,23 +51,21 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    export electronDist="/usr/lib/electron${_electronversion}"
-	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-	export HOME="${srcdir}/.electron-gyp"
-	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-	export NPM_CONFIG_MAXSOCKETS=32
-	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-		{
-			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-			export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-			export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-			export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-			export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-		}
-		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-	fi
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export HOME="${srcdir}/.electron-gyp"
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
+        }
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+    fi
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -name "package.json" -exec jq -r \
@@ -106,13 +104,13 @@ build() {
     NODE_ENV=production     npm run clean
     NODE_ENV=production     npm run compile
     NODE_ENV=production     npm run prepare-file
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.json"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname//-/.}/node_modules/@${pkgname%-git}/${pkgname%-git}-resource/build-res/appx/StoreLogo.png" \
         "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
