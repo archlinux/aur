@@ -1,6 +1,6 @@
 pkgbase = certbot-dns-dynadot
 	pkgdesc = A certbot DNS plugin to obtain certificates using dynadot.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/dmig/certbot-dns-dynadot
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = certbot-dns-dynadot
 	depends = python-requests
 	depends = certbot
 	provides = certbot-dns-dynadot
-	source = https://github.com/dmig/certbot-dns-dynadot/archive/refs/tags/0.2.0.tar.gz
+	source = https://github.com/dmig/certbot-dns-dynadot/archive/refs/tags/0.2.1.tar.gz
 	sha512sums = SKIP
 
 pkgname = certbot-dns-dynadot
