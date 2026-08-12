@@ -3,7 +3,7 @@
 
 pkgname=adb-gui-kit-bin
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple, modern GUI for ADB and Fastboot"
 arch=("$CARCH")
 url="https://github.com/Drenzzz/adb-gui-kit"
@@ -55,10 +55,10 @@ package() {
     fi
 
     # Create launcher script
-    cat <<'EOF' > "${pkgdir}/usr/bin/adb-gui-kit"
+    cat <<EOF > "${pkgdir}/usr/bin/adb-gui-kit"
 #!/bin/sh
 cd "/opt/${pkgname}"
-exec ./adb-gui-kit "$@"
+exec ./adb-gui-kit "\$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/adb-gui-kit"
 

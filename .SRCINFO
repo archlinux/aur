@@ -1,7 +1,7 @@
 pkgbase = adb-gui-kit-bin
 	pkgdesc = A simple, modern GUI for ADB and Fastboot
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Drenzzz/adb-gui-kit
 	arch = x86_64
 	license = LicenseRef-adb-gui-kit
