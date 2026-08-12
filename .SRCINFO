@@ -1,7 +1,7 @@
 pkgbase = godots
 	pkgdesc = A hub for managing your Godot versions and projects.
 	pkgver = 1.4.2.stable
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/MakovWait/godots
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = godots
 	makedepends = godot-export-templates-linux
 	depends = unzip
 	options = !strip
+	options = !debug
 	source = godots-1.4.2.stable.tar.gz::https://github.com/MakovWait/godots/archive/refs/tags/v1.4.2.stable.tar.gz
 	sha256sums = e7d49fe689770b69240d9b85f05b1fd81598f654fc49c31c972ef6720dee29df
 
