@@ -1,15 +1,3 @@
-## Important migration notice (Does not apply to PTB)
-
-Up until now, XPipe updates have automatically migrated data and supported legacy vaults since XPipe v1.0. Since then, quite a few issues have accumulated, so it is best action to fix those all at once. This will result in some incompatibilities and migration limitations when upgrading an existing install to v24+:
-
-- Upgrading directly to v24 is only possible from v23.9. If you are running an earlier version of XPipe, please update first to v23.9 and launch it once to initiate a vault migration. After that is done, you can upgrade to v24. If you skip this step, XPipe v24 will show a warning and exit.
-
-- Team vaults with more than 1 user assigned will be removed and reset to the original state where all connections are available to all users. The team vault system has been changed to role-based access control, which means that the old user system is no longer supported. You can create a new team vault with roles, which is a much better option now in v24.
-
-- The webtop has been completely overhauled and improved. It has been moved away from KasmVNC to Selkies, and upgraded to Ubuntu 26.04 with KDE6, which means that any old webtop envrionments can't be upgraded in place. Please create a new container with a new bind mounted volume for user data. The Kasm Workspace setup is also no longer supported as this required a KasmVNC-based container. With this inconvenience out of the way, Selkies is a much better option for the webtop, which you can see for yourself.
-
-- Custom desktop shortcuts and URLs for actions will no longer work as the format and executable shortcuts have changed. You will have to recreate any custom action desktop shortcuts
-
 ## Improved connection display
 
 The status display for connections has been improved to show all the information in a segmented display:
@@ -25,6 +13,10 @@ The overflow of these components has also been improved. If there is not enough 
 ![Connection Info Compress](https://xpipe.io/assets/images/BlogPage/connection-info-compress.png)
 
 This comes in handy for the webtop mobile version.
+
+The tags display has also been improved:
+
+![Connection Tags](https://xpipe.io/assets/images/BlogPage/connection-info-tags.png)
 
 ## Drag and drop organization
 
@@ -43,6 +35,30 @@ This ordering is persistent while the new manual sorting mode is active:
 ![Sort Mode](https://xpipe.io/assets/images/BlogPage/sort-status.png)
 
 You can still switch to the existing sort modes of last used and alphabetical at any time.
+
+## A new webtop
+
+The [XPipe webtop](https://github.com/xpipe-io/xpipe-webtop) has been completely overhauled and improved. It has been moved away from KasmVNC to Selkies, and upgraded to Ubuntu 26.04 with KDE6. The new container is more performant and far smaller due to a different approach for package management.
+
+![Webtop](https://xpipe.io/assets/images/BlogPage/webtop.png)
+
+The webtop is now integrated with the XPipe app, which has a built-in package installer. If you for example set a certain terminal or password manager in the settings menu, a dialog will open that lets you automatically install the associated application so that it is ready to use.
+
+The desktop environment itself has also been improved to better support mobile device screens. You can switch between desktop and mobile mode for an improved touchscreen experience with a built-in keyboard. The XPipe application is now more responsive and can handle smaller window sizes and portrait mode much better.
+
+![Webtop Mobile](https://xpipe.io/assets/images/BlogPage/webtop-mobile.png)
+
+## Reworked vaults and RBAC
+
+The old system of vault users (and optional groups for team vaults) has been completely redone. The encryption algorithms itself and the data format has changed, which requires a migration for old vaults.
+
+The new system allows you to create team vaults with user-defined roles to manage the access of identities and associated connections. To guarantee the cryptographic integrity of data that is made available to a select number of roles, the data is encrypted with a role-specific secret key for each role that should have access.
+
+![Roles List](https://xpipe.io/assets/images/BlogPage/roles-list.png)
+
+These secret keys are automatically retrieved from a linked password manager on vault unlock, meaning that the RBAC system of the vault is essentially built on top of the existing password manager RBAC your organization uses. The level of access to a role is then automatically defined via the availability of the role secret in your password manager. If you are given access to a new role in your password manager via your organization admin, you can just restart XPipe and you will have automatic access to the data of that role as well. Same goes with offboarding.
+
+![Roles Add](https://xpipe.io/assets/images/BlogPage/roles-add.png)
 
 ## Password manager listing
 
@@ -88,24 +104,35 @@ The latest release of the [apple container runtime](https://github.com/apple/con
 
 ## Other
 
-- There are now multiple new UI themes available for you to choose from
+- There are now multiple new UI themes available for you to choose from in the settings menu
 - The API endpoints for /connection/... have been renamed to /store/...
 - Add option to reinstall XPipe on Windows if an incremental update fails
-- The network scan dialog now supports choosing the broadcast address
+- The network scan dialog now supports choosing a broadcast address
 - File transfers in SFTP sessions now show the progress and speed
 - The custom agent setting now resolves environment variables in the socket path
 - The terminal prompts like starship will now check whether /tmp execution is disabled with noexec
-- The Windows Credentials password manager integration now also supports retrieving Windows credentials in addition to generic ones
 - RDP file entries have been replaced by a new RDP file import to create regular RDP connections from a file
-- Add support for the wayland versions of freerdp
+- Add support for the wayland and SDL versions of freerdp
 - You can now configure additional custom launch arguments/options for Remmina and FreeRDP in the settings menu
 - Improve key mapping settings for Hashicorp Vault and OpenBao
 - The search filter now also checks for any associated connection notes
 - Add proper StartupWMClass to linux desktop files
-- Make icons git repository clone not include entire history to reduce size
+- Make icons git repository clone not include entire git history to reduce size
 - KeePassXC will now automatically prompt for an unlock and wait instead of failing when the database is locked
 - Improve shell init failure handling when system interaction was disabled for limited devices
-
-## Fixes
-
+- Serial connections now also support being assigned to abstract hosts
 - Fix various rendering performance issues
+
+## Important migration notice (Does not apply to PTB)
+
+Up until now, XPipe updates have automatically migrated data and supported legacy vaults since XPipe v1.0. Since then, quite a few issues have accumulated, so it is best action to fix those all at once. This will result in some incompatibilities and migration limitations when upgrading an existing install to v24+:
+
+- Upgrading directly to v24 is only possible from v23.9. If you are running an earlier version of XPipe, please update first to v23.9 and launch it once to initiate a vault migration. After that is done, you can upgrade to v24. If you skip this step, XPipe v24 will show a warning and exit.
+
+- Team vaults with more than 1 user assigned will be removed and reset to the original state where all connections are available to all users. The team vault system has been changed to role-based access control, which means that the old user system is no longer supported. You can create a new team vault with roles, which is a much better option now in v24.
+
+- The webtop has been completely overhauled and improved. It has been moved away from KasmVNC to Selkies, and upgraded to Ubuntu 26.04 with KDE6, which means that any old webtop envrionments can't be upgraded in place. Please create a new container with a new bind mounted volume for user data. The Kasm Workspace setup is also no longer supported as this required a KasmVNC-based container. With this inconvenience out of the way, Selkies is a much better option for the webtop, which you can see for yourself.
+
+- Custom desktop shortcuts and URLs for actions will no longer work as the format and executable shortcuts have changed. You will have to recreate any custom action desktop shortcuts
+
+- Some HTTP API json schemas have changed, so you will have to check whether you API calls still work, and if not, adjust them a bit
