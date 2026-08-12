@@ -1,6 +1,6 @@
 pkgbase = claudex-bin
 	pkgdesc = Query, search, and analyze Claude Code sessions from the command line (prebuilt binary)
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/utensils/claudex
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = claudex-bin
 	optdepends = bash-completion: Bash tab completion
 	optdepends = zsh-completions: Zsh tab completion (also auto-found via /usr/share/zsh/site-functions)
 	optdepends = fish: Fish tab completion
-	provides = claudex=0.13.0
+	provides = claudex=0.13.1
 	conflicts = claudex
 	conflicts = claudex-git
 	options = !strip
-	source_x86_64 = https://github.com/utensils/claudex/releases/download/v0.13.0/claudex-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 45fe33a251062240135295f6e23ab7d9d1e7a5e1b6dc367c684974313f769847
-	source_aarch64 = https://github.com/utensils/claudex/releases/download/v0.13.0/claudex-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 01bde04d770a39b8c10ecdd52bd4029dda92e0347ba2ff88500be71d429affd7
+	source_x86_64 = https://github.com/utensils/claudex/releases/download/v0.13.1/claudex-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f430528b4a87fbc2effe7931db0cea4c97e4e298e353f76d72a265f986a9c84c
+	source_aarch64 = https://github.com/utensils/claudex/releases/download/v0.13.1/claudex-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 852a7f482203f2545ec93e650e5164140e989e4edc0fb60aecd8915c63b616e7
 
 pkgname = claudex-bin
