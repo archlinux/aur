@@ -1,0 +1,19 @@
+pkgbase = openstarbound-bin
+	pkgdesc = OpenStarbound Client (requires original Starbound game assets)
+	pkgver = 0.1.14
+	pkgrel = 1
+	url = https://github.com/OpenStarbound/OpenStarbound
+	arch = x86_64
+	license = custom
+	depends = glibc
+	optdepends = kdialog: GUI file picker fallback on KDE
+	optdepends = zenity: GUI file picker fallback on GNOME/GTK
+	optdepends = libnotify: Desktop notifications for asset discovery
+	provides = openstarbound
+	conflicts = openstarbound
+	source = openstarbound-0.1.14.zip::https://github.com/OpenStarbound/OpenStarbound/releases/download/v0.1.14/OpenStarbound-Linux-Clang-Client.zip
+	source = starbound.png
+	sha256sums = 72ac75f007d6f18186a8be7ee3cb4adc9396d8c2d41478a42a31dc867c29f2ee
+	sha256sums = c9c86ce8ee065e3a96e25778eb1212bf559affeef61c51f0ec4b2cad76ec9193
+
+pkgname = openstarbound-bin
