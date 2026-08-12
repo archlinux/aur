@@ -2,7 +2,7 @@
 
 pkgbase=libraft
 pkgname=(libraft python-pylibraft python-raft-dask)
-pkgver=26.06.00
+pkgver=26.08.00
 pkgrel=1
 pkgdesc="Reusable Accelerated Functions and Tools for Vector Search and More"
 url="https://github.com/rapidsai/raft"
@@ -27,13 +27,11 @@ source=(
     "system-lib-dask.patch"
     "missing-include.patch"
 )
-sha256sums=(
-    '5130b1028445602a4bad83973e5a26ab60284d7e61a9eaabec893a5fac59cb93'
-    '8bd0c372711f9320205179543bc2dbd7ff7b1b53e604dc4cef24fd140ee0e9a4'
-    '81c9650b01a8b3810aaa92923fd85d43fad64d1692e8eb25b7086754599f5e95'
-    'c1b4971c184c733d99c6abeec8ae24e6b5dc9bdd0780bc13a27934ba27f6e87e'
-    'b8b5368103ef4b43cab59f0427dfae2b89d5f22ad033bcf0e8a52b21c96dea6f'
-)
+sha256sums=('0cfde0970198653fd8734eb86e870981d8c7f7507fbfedc7dbd33fc6534e8009'
+            '8bd0c372711f9320205179543bc2dbd7ff7b1b53e604dc4cef24fd140ee0e9a4'
+            '81c9650b01a8b3810aaa92923fd85d43fad64d1692e8eb25b7086754599f5e95'
+            'c1b4971c184c733d99c6abeec8ae24e6b5dc9bdd0780bc13a27934ba27f6e87e'
+            'b8b5368103ef4b43cab59f0427dfae2b89d5f22ad033bcf0e8a52b21c96dea6f')
 
 prepare() {
     cd "$srcdir/raft-$pkgver"
