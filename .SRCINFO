@@ -1,9 +1,9 @@
 pkgbase = python-tree-sitter-objc
 	pkgdesc = Objc grammar for tree-sitter
 	pkgver = 3.0.2
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/tree-sitter-grammars/tree-sitter-objc
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
