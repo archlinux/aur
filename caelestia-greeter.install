@@ -46,7 +46,3 @@ EOF
 post_install() {
     _greeter_setup
 }
-
-post_upgrade() {
-    _greeter_setup
-}
