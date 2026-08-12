@@ -1,9 +1,9 @@
---- cpp/CMakeLists.txt	2026-06-04 03:08:02.000000000 +0800
-+++ cpp/CMakeLists.txt.new	2026-06-05 11:01:38.669979593 +0800
+--- cpp/CMakeLists.txt.orig	2026-08-06 12:02:56.547489249 +0800
++++ cpp/CMakeLists.txt	2026-08-06 12:04:37.883340326 +0800
 @@ -102,11 +102,13 @@
-   message(DEPRECATION "UCXX_ENABLE_RMM is deprecated and will be removed in a future release. "
-                       "Use UCXX_ENABLE_CCCL instead."
-   )
+        AND UCXX_BENCHMARKS_ENABLE_RMM
+       )
+ )
 -  include(cmake/thirdparty/get_rmm.cmake)
 +  find_package(rapids_logger REQUIRED)
 +  find_package(nvtx3 REQUIRED)
