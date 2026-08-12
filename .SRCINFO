@@ -1,12 +1,12 @@
 pkgbase = kune-icon-theme
 	pkgdesc = Custom Tela icon theme with Papirus apps and Sweet cursors
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Akr4ta/kune-icon-theme
 	arch = any
 	license = GPL3
 	makedepends = git
-	source = kune-icon-theme-1.0.1.tar.gz::https://github.com/Akr4ta/kune-icon-theme/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = d8f99c7971bb7bbbdfd886aa8927e5e99fc4d6bf8ce2032bc4017f7e804445a9
+	source = kune-icon-theme-1.1.0.tar.gz::https://github.com/Akr4ta/kune-icon-theme/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = d38f7620a708d5cb052d24cb9836c2190fd570d318e5bb42cbafcef2aa86d36f
 
 pkgname = kune-icon-theme
