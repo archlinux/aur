@@ -1,6 +1,6 @@
 pkgbase = sugarjar
 	pkgdesc = A git/github helper inspired by arcanist (and others)
-	pkgver = 3.0.1
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/jaymzh/sugarjar
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = sugarjar
 	depends = ruby-deep_merge
 	depends = ruby-rspec
 	depends = glab
-	source = https://github.com/jaymzh/sugarjar/archive/refs/tags/v3.0.1.tar.gz
-	sha256sums = 67c3a9475e6a37df5447a8346c51f5d62b9993b751280611dca8f05cd36403ad
+	source = https://github.com/jaymzh/sugarjar/archive/refs/tags/v4.0.0.tar.gz
+	sha256sums = 1b698e12a0dc641046669ca87ca71c80fd96520c4cb6d350287a0d44df0df86d
 
 pkgname = sugarjar
