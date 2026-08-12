@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=everhour-cli
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Everhour from the terminal — draft-first time tracking (CLI + TUI)"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=('everhour-cli-git' 'everhour-cli-bin')
 # GCC LTO bitcode in libring_core that the final rustc link can't resolve.
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Qu4tro/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('b446496cc577ef3b3f5cb4de2ef3b7e06bcb0b31c34c0953d5d48e7ef0b24467')
+sha256sums=('49f0c22742916369ed8590879b5f41062a69310f51090ec276665e5ff462609d')
 
 prepare() {
   cd "$pkgname-$pkgver"
