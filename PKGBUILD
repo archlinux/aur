@@ -2,7 +2,7 @@
 
 _pkgname=nimf
 pkgname=nimf-libhangul-git
-pkgver=1.3.0.r21.e022c81
+pkgver=1.4.19.r0.gefe873d
 pkgrel=1
 pkgdesc="Nimf is a lightweight, fast and extensible input method framework. (libhangul only)"
 arch=('any')
@@ -34,7 +34,7 @@ md5sums=('SKIP' )
 
 pkgver() {
 	cd "$srcdir/${_pkgname}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long | sed 's/^v//;s/-\([0-9]\+\)-g/.r\1.g/')"
 }
 
 
