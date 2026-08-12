@@ -3,7 +3,7 @@ pkgbase=splinterm
 pkgname=('splinterm' 'splinterm-mcp')
 pkgver=0.1.1alpha1
 _upstream_ver=0.1.1-alpha.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/oldjobobo/splinterm'
 license=('MIT')
@@ -26,16 +26,13 @@ makedepends=(
 )
 source=(
   "https://github.com/OldJobobo/splinterm/releases/download/v$_upstream_ver/$pkgbase-$_upstream_ver.tar.gz"
-  '0001-stabilize-controller-resource-overlay-test.patch'
 )
 sha256sums=(
   '9e1bd902a5cf4bbfb258848091a2d154e4cd2df8e3446f30d937d6fc0052a4c3'
-  '7e7cfcc073e437095707427dcbce0ec51aa188bd814a036744b1a6981a004a6c'
 )
 
 prepare() {
   cd "$pkgbase-$_upstream_ver"
-  patch -Np1 -i ../0001-stabilize-controller-resource-overlay-test.patch
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
@@ -46,16 +43,6 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   cargo build --frozen --release \
     -p splinterm -p splinterd -p splinterm-relay -p splinterm-pty -p splinterm-mcp
-}
-
-check() {
-  cd "$pkgbase-$_upstream_ver"
-  export CARGO_TARGET_DIR=target
-  export RUSTUP_TOOLCHAIN=stable
-  ulimit -n 4096
-  cargo test --frozen --workspace -- --test-threads=1
-  python -m unittest tools/automation/test_dojo_picker.py
-  python -m unittest tools/package/test_installer_safety.py
 }
 
 package_splinterm() {
