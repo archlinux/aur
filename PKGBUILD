@@ -1,6 +1,6 @@
 pkgname=ioruba-desktop
-pkgver=1.8.0
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 pkgdesc="Tactile audio mixer for Arduino-based Linux control"
 arch=('x86_64')
 url="https://github.com/bernardopg/ioruba"
@@ -10,13 +10,13 @@ makedepends=('npm' 'rust' 'cargo' 'pkgconf' 'webkit2gtk-4.1' 'gtk3' 'librsvg' 'p
 provides=('ioruba')
 conflicts=('ioruba' 'ioruba-desktop-bin')
 replaces=('ioruba')
-# !lto: makepkg injeta -flto=auto em CFLAGS; o crate cc entao compila o C/asm do
-# crate ring como bitcode GIMPLE em vez de objetos ELF nativos, e o link final
-# feito por rust-lld nao resolve os simbolos ring_core_0_17_*.
+# !lto: makepkg injeta -flto=auto em CFLAGS; o crate cc entao compila o
+# C/asm do crate ring como bitcode GIMPLE em vez de objetos ELF nativos,
+# e o link final via rust-lld nao resolve os simbolos ring_core_0_17_*.
 # !debug: nao publicamos pacote de debug symbols.
 options=('!lto' '!debug')
 source=("ioruba-${pkgver}.tar.gz::https://github.com/bernardopg/ioruba/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d24facd07d3f54f34be3679fabd8f7562f93e286eaadb33485327111befd6807')
+sha256sums=('4f52b569596c034ccd4233119751f35373a163fecfab5b565f91b87f6be195ac')
 
 prepare() {
   cd "ioruba-${pkgver}"
