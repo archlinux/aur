@@ -1,6 +1,6 @@
 pkgbase = unreal-engine-manager
 	pkgdesc = A Python-based Linux application for managing Unreal Engine installations.
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/matheusvilano/unreal-engine-manager/
 	install = package.install
@@ -15,7 +15,7 @@ pkgbase = unreal-engine-manager
 	conflicts = unreal-engine-4
 	conflicts = unreal-engine-git
 	conflicts = unreal-engine-bin
-	source = git+https://github.com/matheusvilano/unreal-engine-manager.git#tag=e4cb1bfecc360d2aa56696a529f8bb7400bbe311
+	source = git+https://github.com/matheusvilano/unreal-engine-manager.git#tag=f92800abb520da30c922c3055d3b585c33b3315c
 	sha256sums = SKIP
 
 pkgname = unreal-engine-manager
