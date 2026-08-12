@@ -3,8 +3,8 @@
 _name='alias-tips'
 
 pkgname="${_name}-git"
-pkgver=r109.45e4e97
-pkgrel=2
+pkgver=r121.41cb143
+pkgrel=1
 pkgdesc='An oh-my-zsh plugin to help remembering those aliases you defined once'
 arch=('any')
 license=('unknown')
