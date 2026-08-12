@@ -1,6 +1,6 @@
 pkgbase = zcode-bin
 	pkgdesc = ZCode - AI-powered code editor by ZAI
-	pkgver = 3.5.3
+	pkgver = 3.7.5
 	pkgrel = 1
 	url = https://zcode.z.ai/
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = zcode-bin
 	depends = ripgrep
 	depends = xdg-utils
 	options = !strip
-	source = zcode-3.5.3-x86_64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.5.3/linux-x64/ZCode-3.5.3-linux-x64.deb
+	source = zcode-3.7.5-x86_64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.7.5/linux-x64/ZCode-3.7.5-linux-x64.deb
 	source = LICENSE
 	source = zcode.sh
-	sha256sums = e6610065ed4a711efc139a60d373ffcc606a3c13e782306876e49fc07e336bc7
+	sha256sums = d3a7a7a07a8512d01c2d4b242644ae673028038f614567a854b940bbdf8da43e
 	sha256sums = SKIP
 	sha256sums = SKIP
 
