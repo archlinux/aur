@@ -1,6 +1,6 @@
 pkgbase = unikey-wayland
 	pkgdesc = Unikey Wayland Input Method for Vietnamese
-	pkgver = 2.0.8
+	pkgver = 2.0.10
 	pkgrel = 1
 	url = https://github.com/ubuntu2310fake/Unikey-Wayland
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = unikey-wayland
 	depends = libxkbcommon
 	depends = libx11
 	depends = libxtst
-	source = unikey-wayland-2.0.8.tar.gz::https://github.com/ubuntu2310fake/Unikey-Wayland/archive/refs/tags/2.0.8.tar.gz
+	source = unikey-wayland-2.0.10.tar.gz::https://github.com/ubuntu2310fake/Unikey-Wayland/archive/refs/tags/2.0.10.tar.gz
 	sha256sums = SKIP
 
 pkgname = unikey-wayland
