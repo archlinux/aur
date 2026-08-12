@@ -1,0 +1,23 @@
+From b5929435d01ea9dcb53970166a728292487a74e1 Mon Sep 17 00:00:00 2001
+From: daurnimator <quae@daurnimator.com>
+Date: Fri, 6 Mar 2026 15:06:48 +1100
+Subject: [PATCH] src/thread.c: remove unused initialisation of pointer
+
+With the assignment gcc gives a warning that it might be clobbered by longjmp
+---
+ src/thread.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/thread.c b/src/thread.c
+index af2d282..6d3e3eb 100644
+--- a/src/thread.c
++++ b/src/thread.c
+@@ -301,7 +301,7 @@ static void ct_release(struct cthread *ct) {
+ 
+ static void *ct_enter(void *arg) {
+ 	struct cthread *ct = arg, **ud;
+-	lua_State *L = NULL;
++	lua_State *L;
+ 	int error;
+ 
+ 	/*

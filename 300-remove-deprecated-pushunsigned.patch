@@ -1,0 +1,24 @@
+From 3ff56a9da722a13ac5ed12a6d4076fcb212acc3c Mon Sep 17 00:00:00 2001
+From: daurnimator <quae@daurnimator.com>
+Date: Tue, 17 Mar 2026 11:58:59 +1100
+Subject: [PATCH] src/socket.c: lua_pushunsigned was deprecated in 5.3
+
+---
+ src/socket.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/socket.c b/src/socket.c
+index 560983e..cf740dc 100644
+--- a/src/socket.c
++++ b/src/socket.c
+@@ -2404,8 +2404,8 @@ static lso_nargs_t lso_uncork(lua_State *L) {
+ static lso_nargs_t lso_pending(lua_State *L) {
+ 	struct luasocket *S = lso_checkself(L, 1);
+ 
+-	lua_pushunsigned(L, fifo_rlen(&S->ibuf.fifo));
+-	lua_pushunsigned(L, fifo_rlen(&S->obuf.fifo));
++	lua_pushinteger(L, fifo_rlen(&S->ibuf.fifo));
++	lua_pushinteger(L, fifo_rlen(&S->obuf.fifo));
+ 
+ 	return 2;
+ } /* lso_pending() */

@@ -1,0 +1,33 @@
+From f79274fe09d76650a886e9817876ddebcf846871 Mon Sep 17 00:00:00 2001
+From: daurnimator <quae@daurnimator.com>
+Date: Fri, 6 Mar 2026 15:14:39 +1100
+Subject: [PATCH] src/thread.c: use -1 for one bit bitfields
+
+This fixes a clang warning:
+> implicit truncation from 'int' to a one-bit wide bit-field changes value from 1 to -1
+---
+ src/thread.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/thread.c b/src/thread.c
+index 6d3e3eb..54c9866 100644
+--- a/src/thread.c
++++ b/src/thread.c
+@@ -478,7 +478,7 @@ static int ct_setfarg(lua_State *L, struct cthread *ct, struct cthread_arg *arg,
+ 		}
+ 
+ 		arg->v.pointer = EXTENSION (void *)f;
+-		arg->iscfunction = 1;
++		arg->iscfunction = -1;
+ 	} else {
+ 		lua_State *T;
+ 		luaL_Buffer B;
+@@ -629,7 +629,7 @@ static int ct_start(lua_State *L) {
+ #if LUA_VERSION_NUM >= 503
+ 			if (lua_isinteger(L, index)) {
+ 				arg->v.integer = lua_tointeger(L, index);
+-				arg->isinteger = 1;
++				arg->isinteger = -1;
+ 				arg->type = LUA_TNUMBER;
+ 				break;
+ 			}

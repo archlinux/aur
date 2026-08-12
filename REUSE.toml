@@ -1,0 +1,39 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".gitignore",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*sysusers.conf",
+    "*.tmpfiles",
+    "*tmpfiles.conf",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "100-add-lua-55.patch",
+    "200-fix-calloc-order.patch",
+    "201-remove-uneeded-initialization.patch",
+    "202-use-minus-one-for-1bit-fields.patch",
+    "300-remove-deprecated-pushunsigned.patch",
+    "400-fix-warning-about-unused-kfunction-args.patch",
+    "500-fix-compatible-pointer-signal.patch",
+    "600-fix-pushvfstring-can-return-null.patch",
+]
+SPDX-FileCopyrightText = "lua-cqueues contributors"
+SPDX-License-Identifier = "MIT"

@@ -1,0 +1,32 @@
+From 75ed9fdf11d2d15e9949a45253434b6a5c63581d Mon Sep 17 00:00:00 2001
+From: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+Date: Sat, 22 Nov 2025 21:50:13 +0100
+Subject: [PATCH] src/signal.c: fix incompatible-pointer
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+>src/signal.c:545:31: error: assignment to ‘__sighandler_t’ {aka ‘void (*)(int)’} from
+>incompatible pointer type ‘void (*)(void)’[-Wincompatible-pointer-types]
+>  545 |                 sa.sa_handler = &ls_noop;
+>        |                               ^
+
+Signed-off-by: Nicolas PARLANT <nicolas.parlant@parhuet.fr>
+---
+ src/signal.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/signal.c b/src/signal.c
+index e1e38fc..fe9d248 100644
+--- a/src/signal.c
++++ b/src/signal.c
+@@ -533,7 +533,8 @@ static int ls_default(lua_State *L) {
+ } /* ls_default() */
+ 
+ 
+-static void ls_noop() {
++static void ls_noop(int signum) {
++	(void)signum;
+ 	return;
+ } /* ls_noop() */
+ 

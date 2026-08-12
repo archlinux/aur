@@ -1,0 +1,22 @@
+From 85d727e292e0380fec247d996e2081e961aca00d Mon Sep 17 00:00:00 2001
+From: daurnimator <quae@daurnimator.com>
+Date: Wed, 18 Mar 2026 15:02:00 +1100
+Subject: [PATCH] src/cqueues.c: in lua 5.5 lua_pushvfstring can return NULL
+
+---
+ src/cqueues.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/cqueues.c b/src/cqueues.c
+index 22bf3f1..cfc2739 100644
+--- a/src/cqueues.c
++++ b/src/cqueues.c
+@@ -1267,7 +1267,7 @@ static cqs_error_t cqueue_tryalert(struct cqueue *Q) {
+ } /* cqueue_tryalert() */
+ 
+ static void err_setvfstring(lua_State *L, struct callinfo *I, const char *fmt, va_list ap) {
+-	lua_pushvfstring(L, fmt, ap);
++	if (NULL == lua_pushvfstring(L, fmt, ap)) lua_error(L);
+ 	I->error.value = lua_gettop(L);
+ } /* err_setvfstring() */
+ 

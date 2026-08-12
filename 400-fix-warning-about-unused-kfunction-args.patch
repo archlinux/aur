@@ -1,0 +1,33 @@
+From 7624ca5d95f98968700a97076064620db59bcded Mon Sep 17 00:00:00 2001
+From: daurnimator <quae@daurnimator.com>
+Date: Wed, 18 Mar 2026 14:22:22 +1100
+Subject: [PATCH] src/cqueues.c: fix warning about unused LUA_KFUNCTION
+ arguments
+
+---
+ src/cqueues.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/cqueues.c b/src/cqueues.c
+index c9d6299..22bf3f1 100644
+--- a/src/cqueues.c
++++ b/src/cqueues.c
+@@ -811,6 +811,9 @@ static int kpoll_wait(struct kpoll *kp, double timeout) {
+ 
+ #if LUA_VERSION_NUM >= 502
+ LUA_KFUNCTION(auxlib_tostringk) {
++	(void)status;
++	(void)ctx;
++
+ 	if (luaL_getmetafield(L, 1, "__tostring")) {
+ 		lua_pushfstring(L, "%s: %p", luaL_typename(L, 1), lua_topointer(L, 1));
+ 	} else {
+@@ -2208,6 +2211,8 @@ static double cqueue_timeout_(struct cqueue *Q) {
+ 
+ #if LUA_VERSION_NUM >= 502
+ LUA_KFUNCTION(cqueue_step_cont) {
++	(void)status;
++	(void)ctx;
+ #else
+ static int cqueue_step_cont(lua_State *L) {
+ #endif

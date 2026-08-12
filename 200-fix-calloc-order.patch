@@ -1,0 +1,22 @@
+From 574c9abdef3a664668bc81b75a3a45c59e74557a Mon Sep 17 00:00:00 2001
+From: daurnimator <quae@daurnimator.com>
+Date: Fri, 6 Mar 2026 15:06:04 +1100
+Subject: [PATCH] src/thread.c: fix order of calloc arguments
+
+---
+ src/thread.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/thread.c b/src/thread.c
+index fd7f932..af2d282 100644
+--- a/src/thread.c
++++ b/src/thread.c
+@@ -615,7 +615,7 @@ static int ct_start(lua_State *L) {
+ 
+ 	luaL_checktype(L, 1, LUA_TFUNCTION);
+ 
+-	if (!(ct->tmp.arg = calloc(sizeof *ct->tmp.arg, top)))
++	if (!(ct->tmp.arg = calloc(top, sizeof *ct->tmp.arg)))
+ 		goto syerr;
+ 
+ 	for (int index = 1; index <= top; index++) {
