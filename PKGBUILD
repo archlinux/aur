@@ -2,7 +2,7 @@
 # Maintainer: Dominik Zarsky <dzarsky@dzarsky.eu>
 
 pkgname='kubeconfig-manager-bin'
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='TUI + CLI for managing kubeconfig files and kubectl contexts'
 url='https://github.com/Loupeznik/kubeconfig-manager'
@@ -12,10 +12,10 @@ provides=('kubeconfig-manager')
 conflicts=('kubeconfig-manager')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Loupeznik/kubeconfig-manager/releases/download/v${pkgver}/kubeconfig-manager_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('989dda3f492b8a2a0951837945d36a38571bdbb9fff614ce949c6ff4b942dc7f')
+sha256sums_aarch64=('f0c3b54745f6ff063c4817e979fd27d03406af531010fd9c042faa52b5135b57')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Loupeznik/kubeconfig-manager/releases/download/v${pkgver}/kubeconfig-manager_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('c9764e613648a48000fc4a872bac6abc1b66f8e948f61a8fe11ebcdd18612ca1')
+sha256sums_x86_64=('1e924848ee3ddb47b1329e92723478575d8ae500a67e0dcdbfde99da73ac4e4a')
 
 package() {
   install -Dm755 "./kcm" "${pkgdir}/usr/bin/kcm"
