@@ -1,14 +1,17 @@
-pkgname='kyanite-git'
-pkgver=0.1.0
-pkgrel=3
+_basepkg=kyanite
+
+pkgname="${_basepkg}-git"
+pkgver=r263.dbe87df
+pkgrel=1
 pkgdesc='A lightweight, graphical text editor'
-arch=(any)
+arch=('x86_64' 'i686' 'aarch64' 'armv7')
 url='https://codeberg.org/pastthepixels/kyanite'
-source=("git+$url.git")
-license=('GPL-3.0-only')
+provides=("${_basepkg}")
+conflicts=("${_basepkg}")
+source=("${_basepkg}::git+${url}.git")
 makedepends=(
 	# For building
-	'rust'
+	'cargo'
 	'clang'
 	'git'
 )
@@ -22,23 +25,30 @@ depends=(
 sha256sums=('SKIP')
 
 pkgver() {
-	sed -nr 's/^version \= "(.*)"/\1/p' kyanite/Cargo.toml
+	cd "${srcdir}/${_basepkg}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+	cd "${srcdir}/${_basepkg}"
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
-	cd kyanite
-	cargo build --release
+	cd "${srcdir}/${_basepkg}"
+	cargo build --frozen --release
 }
 
 package() {
+	cd "${srcdir}/${_basepkg}"
 	# Install app
-	install -Dm 0755 kyanite/target/release/ky "$pkgdir/usr/bin/ky"
-	
+	install -Dm 0755 target/release/ky "${pkgdir}/usr/bin/ky"
+
 	# Copy Desktop Entry
-	install -Dm 0644 kyanite/resources/metadata/ca.potatoe.Kyanite.desktop "$pkgdir/usr/share/applications/ca.potatoe.Kyanite.desktop"
+	install -Dm 0644 resources/metadata/ca.potatoe.Kyanite.desktop "${pkgdir}/usr/share/applications/ca.potatoe.Kyanite.desktop"
 
 	# Copy Icons (thanks Spike!)
-	cd kyanite/resources/icons/hicolor
-	find . -type f -exec install -Dm 0644 "{}" "$pkgdir/usr/share/icons/hicolor/{}" \;
+	cd resources/icons/hicolor
+	find . -type f -exec install -Dm 0644 "{}" "${pkgdir}/usr/share/icons/hicolor/{}" \;
 }
-
