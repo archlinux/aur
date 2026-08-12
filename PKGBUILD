@@ -1,3 +1,5 @@
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
+
 # Hybrid deepTools package:
 #   * official-repo deps (numpy/scipy/matplotlib/plotly/numpydoc) -> pacman (depends)
 #   * everything else (deepTools + pysam/pyBigWig/py2bit/deeptoolsintervals) -> uv venv
