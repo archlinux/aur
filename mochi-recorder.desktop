@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=Mochi
-Comment=A modern Linux screen recorder with smooth animations like Screen Studio
-Exec=mochi
-Icon=mochi-recorder
-Terminal=false
-Type=Application
-Categories=AudioVideo;
