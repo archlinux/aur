@@ -1,0 +1,22 @@
+pkgbase = scope-monitor
+	pkgdesc = A multi-platform serial monitor with user-extensible features
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/matheuswhite/scope-rs
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	makedepends = git
+	makedepends = rust
+	makedepends = pkgconf
+	depends = libgcc_s.so
+	depends = openssl
+	depends = systemd-libs
+	provides = scope-monitor
+	provides = scope
+	conflicts = scope-monitor
+	conflicts = scope
+	options = !lto
+	source = scope-monitor::git+https://github.com/matheuswhite/scope-rs.git#tag=v0.5.1
+	sha256sums = d948dabb8807ed14a733aaeda8ebac4879fa7068a60f9b826dbf7d6fd3f557a3
+
+pkgname = scope-monitor
