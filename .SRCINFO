@@ -1,6 +1,6 @@
 pkgbase = oshot
 	pkgdesc = A fast and lightweight screenshot tool for extracting text on the fly
-	pkgver = 0.4.6
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Toni500github/oshot
 	arch = x86_64
