@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=cargo-packager-git
-pkgver=0.11.8.r9.g37a538e
-pkgrel=2
+pkgver=0.11.8.r10.gfc0d4dc
+pkgrel=1
 pkgdesc="A cli tool and library to generate installers or app bundles for your executables"
 arch=($CARCH)
 url="https://github.com/crabnebula-dev/cargo-packager"
@@ -10,10 +10,7 @@ license=('Apache-2.0 OR MIT')
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(
-    glibc
-    libgcc
-)
+depends=()
 makedepends=(
     git
     rust

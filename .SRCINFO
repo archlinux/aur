@@ -1,15 +1,13 @@
 pkgbase = cargo-packager-git
 	pkgdesc = A cli tool and library to generate installers or app bundles for your executables
-	pkgver = 0.11.8.r9.g37a538e
-	pkgrel = 2
+	pkgver = 0.11.8.r10.gfc0d4dc
+	pkgrel = 1
 	url = https://github.com/crabnebula-dev/cargo-packager
 	arch = x86_64
 	license = Apache-2.0 OR MIT
 	makedepends = git
 	makedepends = rust
 	makedepends = pkgconf
-	depends = glibc
-	depends = libgcc
 	provides = cargo-packager
 	conflicts = cargo-packager
 	options = !lto
