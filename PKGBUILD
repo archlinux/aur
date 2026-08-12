@@ -1,8 +1,8 @@
-# Maintainer: Damian Höster <damian dot hoester at posteo dot de>
+# Maintainer: Damian Höster <damian.hoester@posteo.de>
 
 _pkgname=zflame
 pkgname=$_pkgname-git
-pkgver=c19.7fc5859
+pkgver=0.r29.4bb890d
 pkgrel=1
 pkgdesc='🔥 Flamegraph Profiling'
 arch=(x86_64)
@@ -18,8 +18,9 @@ source=($_pkgname::git+$url.git)
 sha256sums=(SKIP)
 
 pkgver() {
-  cd $_pkgname
-  echo c$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "0.r%s.%s" \
+    "$(git -C $_pkgname rev-list --count HEAD)" \
+    "$(git -C $_pkgname rev-parse --short HEAD)"
 }
 
 build() {

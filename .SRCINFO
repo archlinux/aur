@@ -1,6 +1,6 @@
 pkgbase = zflame-git
 	pkgdesc = 🔥 Flamegraph Profiling
-	pkgver = c19.7fc5859
+	pkgver = 0.r29.4bb890d
 	pkgrel = 1
 	url = https://github.com/hendriknielaender/zflame
 	arch = x86_64
