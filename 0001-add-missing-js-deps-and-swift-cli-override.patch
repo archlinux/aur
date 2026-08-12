@@ -1,12 +1,22 @@
---- a/package.json	2026-07-02 22:08:30.000000000 +0200
-+++ b/package.json	2026-07-03 12:54:25.811707062 +0200
-@@ -169,8 +169,11 @@
+--- a/package.json	2026-08-12 22:35:53.865188173 +0200
++++ b/package.json	2026-08-12 22:34:52.589697626 +0200
+@@ -180,13 +180,20 @@
+     "tree-sitter-typescript": "^0.23.2",
+     "typescript": "^6.0.3",
+     "typescript-language-server": "^5.3.0",
+-    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.1",
++    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
++    "@codemirror/language": "^6.0.0",
++    "@codemirror/state": "^6.0.0",
++    "@codemirror/view": "^6.0.0",
++    "@lezer/highlight": "^1.0.0",
+     "vite-plus": "^0.2.1"
    },
    "overrides": {
      "next": "15.5.19",
 -    "vite": "npm:@voidzero-dev/vite-plus-core@0.1.24",
 -    "vitest": "4.1.9"
-+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.1",
++    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
 +    "vitest": "4.1.9",
 +    "tree-sitter-swift": {
 +      "tree-sitter-cli": "0.23.2"
