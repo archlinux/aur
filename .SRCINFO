@@ -1,0 +1,17 @@
+pkgbase = suzumushi-bin
+	pkgdesc = A calm, fully local terminal audio player for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nuggocto/suzumushi
+	arch = x86_64
+	license = Apache-2.0
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	provides = suzumushi=1.0.0
+	conflicts = suzumushi
+	options = !debug
+	source_x86_64 = suzumushi-v1.0.0-x86_64-unknown-linux-gnu.tar.xz::https://github.com/nuggocto/suzumushi/releases/download/v1.0.0/suzumushi-v1.0.0-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = abdea92340a22e6d526d4b0da131c9cb50054d7c12e64af355f294ac8de51581
+
+pkgname = suzumushi-bin
