@@ -1,0 +1,17 @@
+pkgbase = mani-bin
+	pkgdesc = A CLI tool that helps you manage multiple repositories
+	pkgver = 0.32.1
+	pkgrel = 1
+	url = https://manicli.com
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mani
+	conflicts = mani
+	options = !strip
+	source_x86_64 = mani-bin-0.32.1-x86_64.tar.gz::https://github.com/alajmo/mani/releases/download/v0.32.1/mani_0.32.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = b4aee0b35938bc76a387c4baa7b68cc11287ceca6a8e8b3de8fdc7fae182fb81
+	source_aarch64 = mani-bin-0.32.1-aarch64.tar.gz::https://github.com/alajmo/mani/releases/download/v0.32.1/mani_0.32.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 19d28407d2c81be9c2ba844dad4ef5ad59764a44be5356af8fa0e99ed5dab817
+
+pkgname = mani-bin
