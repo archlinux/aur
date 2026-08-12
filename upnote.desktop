@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=UpNote
 Comment=Cross-platform note-taking application
+Comment[ru]=Кроссплатформенное приложение заметок
 Exec=/usr/bin/upnote %U
 Terminal=false
 Type=Application

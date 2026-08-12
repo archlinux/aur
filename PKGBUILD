@@ -1,40 +1,58 @@
-# Maintainer: Syaddad Ali Sulaiman Hakim <contact@mail.whysadad.com>
-pkgname=upnote-appimage
+# Previous maintainer: Syaddad Ali Sulaiman Hakim <contact at mail dot whysadad dot com>
+# Current  maintainer: Anton Samartsev <kycko at archlinux dot org>
+
+_sname="upnote"
 _pkgname=UpNote
-pkgver=9.18.2
+_website="get${_sname}.com"
+_deskfile="${_sname}.desktop"
+_squashroot="squashfs-root"
+
+pkgname=${_sname}-appimage
+pkgver=9.21.0
 pkgrel=1
+_appimageOrig="${_pkgname}-${pkgver}.AppImage"
+
 pkgdesc="Cross-platform note-taking application"
 arch=('x86_64')
-url="https://getupnote.com/"
+url="https://${_website}/"
 license=('custom')
-provides=('upnote')
-conflicts=('upnote')
+provides=("${_sname}")
+conflicts=("${_sname}")
+makedepends=('desktop-file-utils')
 options=('!strip')
-source=("${_pkgname}-${pkgver}.AppImage::https://download.getupnote.com/app/UpNote.AppImage"
-        "upnote.desktop")
-sha256sums=('0a48a8e6733f3c7e61bdc9c2b0b21e18db3c0223c052a52ea3f623cc285de2c6'
-            '430e558daaf1a5eeaa65a3e2d1fc1841072d4dda9cb6d30504285efb3ae88f1e')
+source=("${_appimageOrig}::https://download.${_website}/app/${_pkgname}.AppImage"
+        "${_deskfile}")
+sha256sums=('SKIP'
+            '82bc0521b26adb7aa6f24c11ee84f0763aa351db21d99a3a7cc4d62ade7d9a74')
+noextract=("${_appimageOrig}")
+
+check() {
+  cd "$srcdir"
+  desktop-file-validate "${_deskfile}"
+}
 
 package() {
-	cd "$srcdir"
+  cd "$srcdir"
 
-	install -Dm755 "${_pkgname}-${pkgver}.AppImage" "$pkgdir/usr/bin/upnote"
-	install -Dm644 "upnote.desktop" "$pkgdir/usr/share/applications/upnote.desktop"
+  install -Dm755 "${_appimageOrig}" "$pkgdir/usr/bin/${_sname}"
+  install -Dm644 "${_deskfile}"     "$pkgdir/usr/share/applications/${_deskfile}"
 
-	chmod +x "${_pkgname}-${pkgver}.AppImage"
-	./"${_pkgname}-${pkgver}.AppImage" --appimage-extract &>/dev/null
+  chmod +x "${_appimageOrig}"
+  ./"${_appimageOrig}" --appimage-extract &>/dev/null
 
-	if [ -f "squashfs-root/upnote.png" ]; then
-		install -Dm644 "squashfs-root/upnote.png" "$pkgdir/usr/share/pixmaps/upnote.png"
-	elif [ -f "squashfs-root/upnote.svg" ]; then
-		install -Dm644 "squashfs-root/upnote.svg" "$pkgdir/usr/share/pixmaps/upnote.svg"
-	elif [ -f "squashfs-root/icon.png" ]; then
-	    install -Dm644 "squashfs-root/icon.png" "$pkgdir/usr/share/pixmaps/upnote.png"
-	else
-		msg2 "Warning: Could not automatically find an icon file (upnote.png/svg or icon.png) within the AppImage."
-		msg2 "         Desktop entry icon might be missing."
-	fi
+  local _icon_found=0
+  for _icon in "${_sname}.png" "${_sname}.svg" "icon.png"; do
+    if [ -f "${_squashroot}/${_icon}" ]; then
+      install -Dm644 "${_squashroot}/${_icon}" "$pkgdir/usr/share/pixmaps/${_sname}.${_icon##*.}"
+      _icon_found=1
+      break
+    fi
+  done
 
-	find squashfs-root -maxdepth 1 -iname 'LICENSE*' -print -exec install -Dm644 {} "$pkgdir/usr/share/licenses/$pkgname/LICENSE" \; || true
+  if [ "${_icon_found}" -eq 0 ]; then
+    msg2 "Warning: Could not automatically find an icon file (${_sname}.png/svg or icon.png) within the AppImage."
+    msg2 "         Desktop entry icon might be missing."
+  fi
 
+  find "${_squashroot}" -maxdepth 1 -iname 'LICENSE*' -print -exec install -Dm644 {} "$pkgdir/usr/share/licenses/$pkgname/LICENSE" \; || true
 }

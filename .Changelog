@@ -1,0 +1,8 @@
+=== This package updates too often so this changelog contains only notable changes
+
+
+Tue Aug 11 2026 Anton Samartsev <kycko@archlinux.org> - 0:9.21.0-1
+- Init build after getting the maintenance
+- Don't use checksums to avoid build failures due to often upstream updates
+- Add ru description into the .desktop file
+- Validate .desktop file before build
