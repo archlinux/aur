@@ -1,0 +1,17 @@
+pkgbase = drawness
+	pkgdesc = A freehand drawing QML plugin..
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Happilli/drawness
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = qt6-shadertools
+	depends = qt6-base
+	depends = qt6-declarative
+	source = drawness-1.0.0.tar.gz::https://github.com/Happilli/drawness/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 85282bc607016b6a0ded62667fcc82203ad9453fec35da80ba3ba5008bd2652a
+
+pkgname = drawness
