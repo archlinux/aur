@@ -16,6 +16,7 @@
 
 pkg/
 src/
+.idea/
 
 # End of https://www.gitignore.io/api/archlinuxpackages
 cphalcon
