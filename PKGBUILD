@@ -36,7 +36,7 @@ build() {
         -DAW_ENABLE_HUDF:BOOL=ON \
         -DAW_SPLIT_INCLUDES:BOOL=OFF \
         -DAW_INCLUDE_PREFIX:STRING="" \
-        -Wno-dev
+        -Wno-author
  cmake --build build
 }
 
