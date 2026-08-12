@@ -1,13 +1,13 @@
 pkgbase = holo-plymouth-themes
 	pkgdesc = Boot splash theme with optional progress bar, title, and messages
 	pkgver = 0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evlav/holo-plymouth-themes
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
 	makedepends = rsync
 	source = holo-plymouth-themes::git+https://github.com/evlav/holo-plymouth-themes#tag=v0.7
-	b2sums = 9579aa50fadd4383bd2f4e3d1c016067fadb5db1f9a12d1bb8354bf52e75078a7fda5af854b23f62febd7cfba0ad486058d04c4f792886c66c36c2af9938676b
+	b2sums = SKIP
 
 pkgname = holo-plymouth-themes
