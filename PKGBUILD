@@ -1,6 +1,6 @@
 # Maintainer: Nikita Kolmogorov <ubuntu@borodutch.com>
 pkgname=myground
-pkgver=0.1.96
+pkgver=0.1.98
 pkgrel=1
 pkgdesc='Self-hosting platform — hold your ground'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('docker')
 makedepends=('cargo' 'bun-bin')
 install=myground.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/backmeupplz/myground/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8cb7b09d5f2c7b0531fbec7363804da8e03b902575c14a21b53c3b4fe0d78161')
+sha256sums=('7b5ecc1c12a3dec1ef489fcc76ff2697b424d07dab797a57494c23c76229f188')
 
 prepare() {
   cd "$pkgname-$pkgver"
