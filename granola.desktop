@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Granola
+Comment=AI notepad for back-to-back meetings
+Exec=granola %U
+Icon=granola
+Terminal=false
+Categories=Office;Utility;
+StartupWMClass=granola
+MimeType=x-scheme-handler/granola;
