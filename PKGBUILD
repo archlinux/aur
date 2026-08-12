@@ -11,7 +11,7 @@
 # Linux (see companion/tennoworth-desktop/src/update.rs).
 
 pkgname=tennoworth
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Warframe inventory + market dashboard — see what's worth selling right now"
 arch=('x86_64')
@@ -31,13 +31,23 @@ makedepends=('cargo' 'bun' 'nodejs')
 install=tennoworth.install
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/desktop-v$pkgver.tar.gz")
-sha256sums=('48dfdc45b58757acdf4f98baacc76738f8109b760708b51dd90cb82a2e7891b5')
+sha256sums=('db6d06fc40d3280f8724c6bc4291792eb0f7f608ff2bb26079bf163974f95c49')
 
 _srcdir="tennoworth-desktop-v$pkgver"
 
 prepare() {
   cd "$_srcdir/prototype"
   bun install --frozen-lockfile
+
+  # Fetches every crate the lock names, up front, so build() can stay --frozen
+  # (= --locked --offline) with nothing left to download. It also fails HERE,
+  # in prepare, if the tarball's Cargo.lock disagrees with its Cargo.toml —
+  # which is what 0.3.5 and 0.3.6 shipped: the version bump edited Cargo.toml
+  # alone, and --frozen refuses to rewrite a lock. A named failure in prepare
+  # beats the same abort three minutes into a Rust build.
+  cd "$srcdir/$_srcdir/companion"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
