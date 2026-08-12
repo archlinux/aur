@@ -1,6 +1,6 @@
 pkgbase = neuralrack
 	pkgdesc = A neural model and impulse response file loader
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/brummer10/NeuralRack
 	arch = aarch64
@@ -16,8 +16,8 @@ pkgbase = neuralrack
 	depends = glibc
 	depends = gcc-libs
 	depends = libx11
-	source = https://github.com/brummer10/NeuralRack/releases/download/v0.4.0/NeuralRack-v0.4.0-src.tar.xz
-	sha256sums = 697b5c01ff2f37f18f55854b94d5afd394b8e03cc4826f636172bfb6d82f1a07
+	source = https://github.com/brummer10/NeuralRack/releases/download/v0.4.1/NeuralRack-v0.4.1-src.tar.xz
+	sha256sums = 82b88d2aa20155d7522b7eea030b5e888eb1ca5559af47be9a4870fa5d6226f7
 
 pkgname = neuralrack
 	arch = any
@@ -71,3 +71,14 @@ pkgname = neuralrack-vst
 	depends = libcairo.so
 	depends = libsndfile.so
 	optdepends = vst-host: for loading the VST2 plugin
+
+pkgname = neuralrack-vst3
+	pkgdesc = A neural model and impulse response file loader – VST3
+	groups = pro-audio
+	groups = vst3-plugins
+	depends = glibc
+	depends = gcc-libs
+	depends = libx11
+	depends = libcairo.so
+	depends = libsndfile.so
+	optdepends = vst3-host: for loading the VST3 plugin
