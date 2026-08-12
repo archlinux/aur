@@ -6,7 +6,7 @@
 # for change request, PLEASE MAKE A PR ON GITHUB REPO, keep commenting here would be ignored
 
 pkgname=siyuan-bin
-pkgver=3.7.3
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="auto upload to AUR when SiYuan stable release"
 arch=("x86_64")
@@ -43,6 +43,7 @@ package() {
     # AppImage
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
     install -Dm644 "${srcdir}/squashfs-root/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/squashfs-root/THIRD_PARTY_NOTICES.md" "${pkgdir}/opt/${pkgname}/THIRD_PARTY_NOTICES.md"
 
     # Desktop file
     install -Dm644 "${srcdir}/${_desktop_file}" \
@@ -59,4 +60,5 @@ package() {
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
     ln -s "/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s "/opt/${pkgname}/THIRD_PARTY_NOTICES.md" "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES.md"
 }
