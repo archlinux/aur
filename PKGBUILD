@@ -1,3 +1,5 @@
+# Maintainer: KevinCrrl <kevincrrl@tuta.io>
+
 pkgname=python-pkgbuild-parser
 pkgver=2.3.0
 pkgrel=1
