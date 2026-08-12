@@ -1,0 +1,21 @@
+pkgbase = bedrock-connect-git
+	pkgdesc = BedrockConnect as an AUR package (Not affiliated with the Developer)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Pugmatt/BedrockConnect
+	arch = any
+	license = GPL-3.0
+	checkdepends = java-environment-common
+	makedepends = maven
+	makedepends = xq
+	makedepends = java-environment-common
+	depends = java-runtime-common
+	options = !strip
+	source = git+https://github.com/Pugmatt/BedrockConnect.git
+	source = bedrockconnect.service
+	source = bedrockconnect.sysusers
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = bedrock-connect-git
