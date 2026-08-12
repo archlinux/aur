@@ -1,6 +1,6 @@
 pkgbase = jeeves-bin
 	pkgdesc = A TUI for AI agent sessions.
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/robinovitch61/jeeves
 	license = MIT
@@ -8,13 +8,13 @@ pkgbase = jeeves-bin
 	conflicts = jeeves
 	provides = jeeves
 	arch = aarch64
-	source_aarch64 = https://github.com/robinovitch61/jeeves/releases/download/v0.4.0/jeeves_0.4.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 852c6b11685a4f675974a0c959f86ca6132da290639fbb8b374fc4a0f1c1715b
+	source_aarch64 = https://github.com/robinovitch61/jeeves/releases/download/v0.5.0/jeeves_0.5.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = b3445f1aa18df3ac1713fe633ac892cf0edb656b8251e0d06f51e6a10fc0fc0f
 	arch = i686
-	source_i686 = https://github.com/robinovitch61/jeeves/releases/download/v0.4.0/jeeves_0.4.0_Linux_i386.tar.gz
-	sha256sums_i686 = 4b1ab9a083683efda4ffdeb35b4a1724bc8d3e301bdcb146a4b2d52172d1b82f
+	source_i686 = https://github.com/robinovitch61/jeeves/releases/download/v0.5.0/jeeves_0.5.0_Linux_i386.tar.gz
+	sha256sums_i686 = 69eaa683bcc62432aff9c44cc1b3a434eaa0f90802a5d60c7b332ecf432310a7
 	arch = x86_64
-	source_x86_64 = https://github.com/robinovitch61/jeeves/releases/download/v0.4.0/jeeves_0.4.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 1c79b271c26e01f85cba4c2896e1bc8b724c2756f7369f629fbe33d66b3fa9b1
+	source_x86_64 = https://github.com/robinovitch61/jeeves/releases/download/v0.5.0/jeeves_0.5.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 291071443e79d713bbd8a74d9b1f8a196ca640e636b99757b7b39a34230ade69
 	
 pkgname = jeeves-bin

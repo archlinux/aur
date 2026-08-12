@@ -2,7 +2,7 @@
 # Maintainer: Leo Robinovitch <leorobinovitch@gmail.com>
 
 pkgname='jeeves-bin'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A TUI for AI agent sessions.'
 url='https://github.com/robinovitch61/jeeves'
@@ -13,13 +13,13 @@ conflicts=('jeeves')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/robinovitch61/jeeves/releases/download/v${pkgver}/jeeves_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('852c6b11685a4f675974a0c959f86ca6132da290639fbb8b374fc4a0f1c1715b')
+sha256sums_aarch64=('b3445f1aa18df3ac1713fe633ac892cf0edb656b8251e0d06f51e6a10fc0fc0f')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/robinovitch61/jeeves/releases/download/v${pkgver}/jeeves_${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('4b1ab9a083683efda4ffdeb35b4a1724bc8d3e301bdcb146a4b2d52172d1b82f')
+sha256sums_i686=('69eaa683bcc62432aff9c44cc1b3a434eaa0f90802a5d60c7b332ecf432310a7')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/robinovitch61/jeeves/releases/download/v${pkgver}/jeeves_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('1c79b271c26e01f85cba4c2896e1bc8b724c2756f7369f629fbe33d66b3fa9b1')
+sha256sums_x86_64=('291071443e79d713bbd8a74d9b1f8a196ca640e636b99757b7b39a34230ade69')
 
 package() {
   install -Dm755 "./jeeves" "${pkgdir}/usr/bin/jeeves"
