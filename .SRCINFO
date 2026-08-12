@@ -1,6 +1,6 @@
 pkgbase = python315
 	pkgdesc = Major release 3.15 of the Python high-level programming language
-	pkgver = 3.15.0b4
+	pkgver = 3.15.0rc1
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = python315
 	optdepends = tk: for tkinter
 	optdepends = xz: for lzma
 	options = !emptydirs
-	source = https://www.python.org/ftp/python/3.15.0/Python-3.15.0b4.tar.xz
-	source = https://www.python.org/ftp/python/3.15.0/Python-3.15.0b4.tar.xz.sigstore
-	sha256sums = 93efb9c88d7b6633368e7f7b8f8db6e98988f7f761c09b77849447262841ce3a
+	source = https://www.python.org/ftp/python/3.15.0/Python-3.15.0rc1.tar.xz
+	source = https://www.python.org/ftp/python/3.15.0/Python-3.15.0rc1.tar.xz.sigstore
+	sha256sums = f84dad680ab2147417d2739355c2678f0f9acffe4ae8ef77895de1454b384b07
 	sha256sums = SKIP
 
 pkgname = python315
