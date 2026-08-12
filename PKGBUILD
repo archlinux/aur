@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=optivorbis-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Application for lossless, format-preserving, two-pass optimization and repair of Vorbis data"
 arch=('aarch64' 'x86_64')
