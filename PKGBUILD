@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/Gentleman-Programming/engram"
 license=('MIT')
 depends=()
-provides=(engram)
+provides=("engram=$pkgver")
 conflicts=(engram)
 source_x86_64=("$_pkgname-$pkgver-linux-amd64.tar.gz::https://github.com/Gentleman-Programming/$_pkgname/releases/download/v$pkgver/engram_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-linux-arm64.tar.gz::https://github.com/Gentleman-Programming/$_pkgname/releases/download/v$pkgver/engram_${pkgver}_linux_arm64.tar.gz")
