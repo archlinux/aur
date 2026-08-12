@@ -1,6 +1,6 @@
 pkgbase = slang-server
 	pkgdesc = SystemVerilog Slang Language Server Protocol
-	pkgver = 0.2.5
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/hudson-trading/slang-server
 	arch = x86_64
@@ -11,9 +11,7 @@ pkgbase = slang-server
 	makedepends = git
 	depends = fmt
 	depends = boost
-	conflicts = reflectcpp
-	conflicts = slang-verilog
-	source = git+https://github.com/hudson-trading/slang-server.git#tag=v0.2.5
+	source = git+https://github.com/hudson-trading/slang-server.git#tag=v0.2.10
 	sha256sums = SKIP
 
 pkgname = slang-server
