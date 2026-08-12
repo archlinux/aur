@@ -13,7 +13,7 @@ pkgbase = tidal-hifi-appimage
 	source = tidal-hifi-8.1.1.AppImage::https://github.com/Mastermindzh/tidal-hifi/releases/download/8.1.1/tidal-hifi-8.1.1.AppImage
 	source = tidal-hifi.desktop
 	source = icon.png
-	sha256sums = da85324fb676cd9ad75ca9c0ca382063237e8d723328c9e74720efbcfa2c7f21
+	sha256sums = 033c15d2c6f953bf90dd593707ed2dfc6f342aba2eb1c20a32995c19e828341c
 	sha256sums = 968b4218f6507746eb0c0a11e9ec4d53b2b4ac36a0c4bd8b89b505a27de8fa09
 	sha256sums = f06db681e02d8a82f1fdccbb9393e1ff42e12b8528f5eef787fda88b848449f3
 
