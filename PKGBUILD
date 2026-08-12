@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=clang-static-git
-pkgver=24.0.0_r592113.4869aae02ba8
+pkgver=24.0.0.r592294.c366d9319326
 pkgrel=1
 pkgdesc='Clang compiler and tools with libc++, runtimes, and statically linked LLVM components (git version)'
 arch=(x86_64)
@@ -64,17 +64,11 @@ source=(llvm-project::git+https://github.com/llvm/llvm-project.git)
 sha256sums=(SKIP)
 
 pkgver() {
-  cd llvm-project/cmake/Modules
-
-  # Matches output of `llvm-config --version` with dashes replaced by _
-  local _count=$(git rev-list --count HEAD)
-  local _hash=$(git rev-parse --short HEAD)
-  local _ver=$(awk -F 'MAJOR |MINOR |PATCH |)' \
-    'BEGIN { ORS="." ; i=0 } \
-           /set\(LLVM_VERSION_/ { print $2 ; i++ ; if (i==2) ORS="" } \
-           END { print "\n" }' \
-    LLVMVersion.cmake)
-  echo "${_ver}_r${_count}.${_hash}"
+  local _ver=$(grep -oP 'set\(LLVM_VERSION_(MAJOR|MINOR|PATCH)\s+\K\d+' \
+    llvm-project/cmake/Modules/LLVMVersion.cmake | paste -sd.)
+  printf '%s.r%s.%s' "$_ver" \
+    "$(git -C llvm-project rev-list --count HEAD)" \
+    "$(git -C llvm-project rev-parse --short HEAD)"
 }
 
 _get_distribution_components() {

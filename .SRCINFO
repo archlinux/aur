@@ -1,6 +1,6 @@
 pkgbase = clang-static-git
 	pkgdesc = Clang compiler and tools with libc++, runtimes, and statically linked LLVM components (git version)
-	pkgver = 24.0.0_r592113.4869aae02ba8
+	pkgver = 24.0.0.r592294.c366d9319326
 	pkgrel = 1
 	url = https://clang.llvm.org/
 	arch = x86_64
@@ -22,16 +22,16 @@ pkgbase = clang-static-git
 	optdepends = openmp: OpenMP support in clang with -fopenmp
 	optdepends = lib32-glibc: 32-bit compiler-rt sanitizer runtimes
 	optdepends = lib32-gcc-libs: 32-bit compiler-rt sanitizer runtimes
-	provides = clang=24.0.0_r592113.4869aae02ba8
-	provides = clang-format=24.0.0_r592113.4869aae02ba8
-	provides = clang-tools-extra=24.0.0_r592113.4869aae02ba8
-	provides = clang-analyzer=24.0.0_r592113.4869aae02ba8
-	provides = clangd=24.0.0_r592113.4869aae02ba8
-	provides = lld=24.0.0_r592113.4869aae02ba8
-	provides = compiler-rt=24.0.0_r592113.4869aae02ba8
-	provides = libc++=24.0.0_r592113.4869aae02ba8
-	provides = libc++abi=24.0.0_r592113.4869aae02ba8
-	provides = llvm-libunwind=24.0.0_r592113.4869aae02ba8
+	provides = clang=24.0.0.r592294.c366d9319326
+	provides = clang-format=24.0.0.r592294.c366d9319326
+	provides = clang-tools-extra=24.0.0.r592294.c366d9319326
+	provides = clang-analyzer=24.0.0.r592294.c366d9319326
+	provides = clangd=24.0.0.r592294.c366d9319326
+	provides = lld=24.0.0.r592294.c366d9319326
+	provides = compiler-rt=24.0.0.r592294.c366d9319326
+	provides = libc++=24.0.0.r592294.c366d9319326
+	provides = libc++abi=24.0.0.r592294.c366d9319326
+	provides = llvm-libunwind=24.0.0.r592294.c366d9319326
 	conflicts = clang
 	conflicts = clang-format
 	conflicts = clang-tools-extra
