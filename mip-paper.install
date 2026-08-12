@@ -1,5 +1,7 @@
 post_install() {
-  printf '%s\n' 'Run: mip-paper setup'
+  printf '%s\n' \
+    'Run: mip-paper setup [--image /path/to/image.jpg]' \
+    'Setup will report the active wallpaper and any remaining QWeather configuration.'
 }
 
 post_upgrade() {
