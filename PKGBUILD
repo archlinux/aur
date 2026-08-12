@@ -52,8 +52,8 @@ conflicts=('zz')
 options=('!debug' '!strip')
 source_x86_64=("$url/releases/download/v$pkgver/zz-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/zz-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('1e05a10d4deaf083b8b2e843044e03a6fd162aaa3c06b26ccb7755d3888c52ad')
-sha256sums_aarch64=('8a409ce099ff9684e2a88a834631eab2e93faf1548f27b415e6f2d8f5461c121')
+sha256sums_x86_64=('c1f4b241b6b5694f082b6c3d3ecfd78b9fe4daef39b5bc30819a9ffdc8721e02')
+sha256sums_aarch64=('cfcaec828f5a745118685cbd4a773beffa2d2c477dfa3b1c65a9dde136ed002b')
 
 package() {
     install -d "$pkgdir/usr"
