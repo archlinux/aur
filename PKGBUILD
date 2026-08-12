@@ -1,11 +1,11 @@
 # Maintainer: Remco Stoeten <remcostoeten@hotmail.com>
 pkgname=skriuw-bin
-pkgver=0.32.0
+pkgver=0.32.1
 pkgrel=1
 # v2 restarted versioning below v1's 0.25.0; the epoch keeps 1:0.5.0 sorting
 # above the old un-epoched versions so pacman treats it as an upgrade.
 epoch=1
-_tag=v2-v0.32.0
+_tag=v2-v0.32.1
 pkgdesc="A quiet writing workspace for notes, journaling, sharing, and planning"
 arch=('x86_64')
 url="https://github.com/remcostoeten/skriuw"
