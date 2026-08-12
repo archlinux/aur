@@ -4,7 +4,7 @@
 
 pkgname=godots-git
 pkgver=1.4.2.stable.r0.g8e4eb2b
-pkgrel=1
+pkgrel=2
 pkgdesc="A hub for managing your Godot versions and projects."
 url="https://github.com/MakovWait/godots"
 license=('MIT')
@@ -14,7 +14,7 @@ conflicts=('godots')
 depends=('unzip')
 source=("git+https://github.com/MakovWait/godots.git")
 makedepends=('git' 'godot' 'godot-export-templates-linux')
-options=('!strip')
+options=('!strip' '!debug')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,14 +23,13 @@ pkgver() {
 }
 
 build() {
-    local _template=(/usr/share/godot/export_templates/*/linux_release.x86_64)
-    [[ -f ${_template[-1]} ]] || return 1
-    sed -i "s|custom_template/release=\"\"|custom_template/release=\"${_template[-1]}\"|" "${pkgname%-git}/export_presets.cfg"
+    mkdir -p data/godot
+    ln -sfn /usr/share/godot/export_templates data/godot/export_templates
     cd "${pkgname%-git}"
 
-    mkdir build
-    rm -R tests
-    godot --headless --export-release "Linux/X11" build/godots
+    mkdir -p build
+    rm -rf tests
+    XDG_DATA_HOME="$srcdir/data" godot --headless --export-release "Linux/X11" build/godots
 }
 
 package() {
