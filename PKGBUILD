@@ -3,7 +3,7 @@
 # CI (aur-publish.yml) rewrites pkgver/pkgrel/sha256sums_* with ^-anchored sed:
 # keep those four assignments one-line and at column 0.
 pkgname=soundcloud-bin
-pkgver=8.4.9
+pkgver=8.4.10
 pkgrel=1
 pkgdesc="🎵🎵🎵 THE BEST SOUNDCLOUD DESKTOP APP FOR WINDOWS, LINUX & MACOS | AI WAVE | NO ADS | NO CAPTCHA | NO RESTRICTIONS"
 arch=('x86_64' 'aarch64')
@@ -22,10 +22,10 @@ sha256sums=('3bed3331b7048bac17cf50e249d560ccc9508c970da8d7b9283bf4f2e633a91d'
             '123e9a1e84eec9b29106ee83de9f5d24be17659468731babe22cf1faeb89bb3b')
 
 source_x86_64=("soundcloud-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver}/soundcloud-desktop_${pkgver}_amd64.deb")
-sha256sums_x86_64=('98558018b783d7597f8b457b2ea824bbff4c4517400dcb9c5548ed9780cb2f06')
+sha256sums_x86_64=('917d3b55b533833a31a84a9e06697565942bfa7bcfdee36822beb26f852bb97c')
 
 source_aarch64=("soundcloud-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/soundcloud-desktop_${pkgver}_arm64.deb")
-sha256sums_aarch64=('f40755979e6502ee600a4476536ba89f1b1a4c1735f36869c22987d2bc98c3c0')
+sha256sums_aarch64=('a0d1a355f632eebb71cc6864146f42383ecfca9559513468e97904f441e270e3')
 
 noextract=("soundcloud-${pkgver}-x86_64.deb"
            "soundcloud-${pkgver}-aarch64.deb")
