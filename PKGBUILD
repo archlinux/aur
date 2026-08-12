@@ -3,14 +3,17 @@
 pkgname='python-letterboxdpy'
 _name=${pkgname#python-}
 pkgver=6.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for Letterboxd data."
 arch=('any')
 url="https://github.com/nmcassa/letterboxdpy"
 license=('MIT')
 depends=(
   'python'
-  'python-requests'
+  'python-beautifulsoup4'
+  'python-lxml'
+  'python-curl_cffi'
+  'python-fastfingertips'
 )
 makedepends=(
   'python-build'
