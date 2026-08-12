@@ -2,12 +2,16 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com> (launcher script approach)
 pkgname=zcode-bin
 _pkgname=ZCode
-pkgver=3.7.5
+pkgver=3.7.6
 _electronversion=41
 pkgrel=1
-pkgdesc="ZCode - AI-powered code editor by ZAI"
-arch=('x86_64')
+pkgdesc="ZCode - AI-powered code editor by ZAI (Prebuilt version.Use system-wide electron)"
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://zcode.z.ai/"
+_dlurl="https://cdn-zcode.z.ai/zcode/electron/releases"
 license=('LicenseRef-ZCode')
 depends=(
     "electron${_electronversion}"
@@ -20,7 +24,8 @@ depends=(
     'nodejs'
     'libgcc'
     'ripgrep'
-    'xdg-utils'
+    'bfs'
+    'ugrep'
 )
 makedepends=(
     'asar'
@@ -29,45 +34,31 @@ options=(
     '!strip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/linux-x64/${_pkgname}-${pkgver}-linux-x64.deb"
-    "LICENSE"
+    "LICENSE.html::${url}/en/privacy"
     "${pkgname%-bin}.sh"
 )
-# First entry: upstream .deb, pinned by zcode-update-checker.sh on each update.
-# LICENSE and zcode.sh are local repo files tracked by git, kept as SKIP.
-sha256sums=('d3a7a7a07a8512d01c2d4b242644ae673028038f614567a854b940bbdf8da43e'
-            'SKIP'
-            'SKIP')
-
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_dlurl}/${pkgver}/linux-arm64/${_pkgname}-${pkgver}-linux-arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_dlurl}/${pkgver}/linux-x64/${_pkgname}-${pkgver}-linux-x64.deb")
+sha256sums=('c981acebd2dc42757bb6e0d3a6b8d7b993f63e66b3ac985401d893e8dc91319e'
+            'dad7cd53079a7ffbeee43f10aac5562a4d9f1c27752e2c5ae1a682616ab5b075')
+sha256sums_aarch64=('d853d961827ee08bc329be9a11769b4eb4ff19b16cd1cf8ce601ad80a3dda02c')
+sha256sums_x86_64=('7b960c18bdf87a799795dea3ce372e945df65414b164d9b7a41136bb5029eb86')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
-
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(_get_app_dir)
-    local _main_exe=""
-    if [[ -n "${_app_dir}" ]]; then
-        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
-    fi
-    if [[ -n "${_main_exe}" ]]; then
-        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
-        if [[ -n "${_elec_ver}" ]]; then
-            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
-                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
-            else
-                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
-            fi
-        fi
-    else
-        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
-    fi
+    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
+    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
 }
-
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
-
     # Substitute placeholders in launcher script
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -89,6 +80,8 @@ prepare() {
 
     # Use system ripgrep instead of bundled
     ln -sf "/usr/bin/rg" "${_app_dir}/resources/tools/ripgrep/rg"
+    ln -sf "/usr/bin/bfs" "${_app_dir}/resources/tools/bfs/bfs"
+    ln -sf "/usr/bin/ugrep" "${_app_dir}/resources/tools/ugrep/ugrep"
 
     # Remove unnecessary files to reduce package size
     rm -rf \
@@ -96,7 +89,6 @@ prepare() {
         "${_app_dir}/resources/app.asar.unpacked/node_modules/@lydell" \
         "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/"{bin,deps/winpty,prebuilds/{darwin-*,win32-*,linux-arm64}}
 }
-
 package() {
     # Install launcher script
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
@@ -118,5 +110,5 @@ package() {
     done
 
     # Install license
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE.html" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
