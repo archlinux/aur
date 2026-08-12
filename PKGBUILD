@@ -6,12 +6,14 @@ _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
 pkgver=0.31.0
 _pkgver="$pkgver-beta"
-pkgrel=1
+pkgrel=2
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('any')
 url="https://opentubex.org"
 license=('AGPL-3.0-or-later')
 depends=('electron43')
+optdepends=('ffmpeg: Use the system FFmpeg when installed before first launch; configurable later in Settings'
+            'yt-dlp: Use the system yt-dlp when installed before first launch; configurable later in Settings')
 makedepends=('git' 'npm' 'pnpm')
 source=("$pkgname-$pkgver.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}-beta.tar.gz"
         opentubex.desktop
