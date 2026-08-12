@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=mdns-browser
-pkgver=1.11.0
+pkgver=1.15.3
 pkgrel=1
 pkgdesc="A cross platform mDNS browsing app written in Rust using tauri and leptos"
 arch=('x86_64')
@@ -9,13 +9,19 @@ url="https://github.com/hrzlgnm/mdns-browser"
 license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1' 'openssl')
 conflicts=('mdns-browser-bin')
-makedepends=('cargo' 'cargo-auditable' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rust' 'rust-wasm' 'trunk')
+makedepends=('cargo' 'cargo-auditable' 'cargo-edit' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rust' 'rust-wasm' 'trunk' 'jq')
 options=('!strip' '!emptydirs')
-source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('6dd9219d56dd21605a02619d4a48d23ccdfd73c42466df51bd49e3ff9eb8061a')
-_builddir="$pkgname-$pkgname-v$pkgver"
+source=("v1.15.3.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v1.15.3.tar.gz")
+sha256sums=('0d443b136431df722d9f0bde4c5b48684cc5cf7917d63004311072b5eedb7210')
+_builddir="$pkgname-1.15.3"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
+    cargo set-version --package mdns-browser-ui "1.15.3"
+    cargo set-version --package mdns-browser "1.15.3"
+    cargo set-version --package models "1.15.3"
+    cargo set-version --package shared_constants "1.15.3"
+    jq --indent 4 ".version=\"1.15.3\"" src-tauri/tauri.conf.json > src-tauri/tauri.conf.json.new
+    mv src-tauri/tauri.conf.json.new src-tauri/tauri.conf.json
     cargo --locked install tauri-cli@2.11.4
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
     cargo fetch --locked --target wasm32-unknown-unknown
