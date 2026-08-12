@@ -2,7 +2,7 @@
 
 pkgname=wolvenkit-cli-bin
 pkgver=8.20.0 # renovate: datasource=github-releases depName=WolvenKit/WolvenKit
-pkgrel=1
+pkgrel=2
 pkgdesc='A modding tool for Cyberpunk 2077'
 arch=('x86_64')
 url='https://github.com/WolvenKit/WolvenKit'
@@ -10,17 +10,16 @@ license=('GPL-3.0-or-later')
 depends=('dotnet-runtime')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("https://github.com/WolvenKit/WolvenKit/releases/download/${pkgver}/WolvenKit.ConsoleLinux-${pkgver}.zip"
+source=("${url}/releases/download/${pkgver}/WolvenKit.ConsoleLinux-${pkgver}.zip"
 	"LICENSE::https://raw.githubusercontent.com/WolvenKit/WolvenKit/${pkgver}/LICENSE")
-sha256sums=('4c32df4e472e577c354c39c8d990d18a6177f641aa11bf8050430d2205de7930'
-	'589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2')
+b2sums=('47508b23aefee15760a707071859f04400748045e49ab08677a72a34024949fbe3395b55898fe8e30264f2fb215f7627419c6af2567db2756b0778cec43b3278'
+	'399283bc59e70998486f2ae7b0af9f2f241206dd660e50808be3cef500adef2a9e8d449304f506d93bd2281e6b0729b16145173591deeb105ef545b769453e10')
 
 package() {
-	mkdir -p "${pkgdir}/opt"
-	cp -r "${srcdir}" "${pkgdir}/opt/wolvenkit"
-	rm "${pkgdir}/opt/wolvenkit/WolvenKit.ConsoleLinux-${pkgver}.zip"
+	install -d "${pkgdir}/opt/wolvenkit" "${pkgdir}/usr/bin"
+	cp -a "${srcdir}/." "${pkgdir}/opt/wolvenkit/"
+	rm -f "${pkgdir}/opt/wolvenkit/WolvenKit.ConsoleLinux-${pkgver}.zip"
 	chmod +x "${pkgdir}/opt/wolvenkit/WolvenKit.CLI"
-	mkdir -p "${pkgdir}/usr/bin"
 	ln -s /opt/wolvenkit/WolvenKit.CLI "${pkgdir}/usr/bin/wolvenkit-cli"
 
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
