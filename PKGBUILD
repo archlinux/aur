@@ -3,29 +3,28 @@
 pkgname=gvm2-git
 _pkgname=gvm2
 pkgver=1.5.0.r0.gb8148b9
-pkgrel=1
+pkgrel=2
 pkgdesc='Go Version Manager (community reboot of moovweb/gvm)'
 arch=('any')
 url='https://github.com/brianrobt/gvm2'
 license=('MIT')
 depends=('bash' 'curl' 'git')
+makedepends=('git')
 optdepends=(
   'bison: required to compile Go from source'
   'gcc: required to compile Go from source'
 )
-provides=("gvm=${pkgver}")
-conflicts=('gvm-git')
+provides=("gvm=${pkgver}" 'gvm2')
+conflicts=('gvm2' 'gvm-git')
 install=gvm2-git.install
 source=(
   "git+${url}.git"
   'gvm2-setup'
   'gvm2.sh'
 )
-sha256sums=(
-  'SKIP'
-  '72cd6e88680dd24a6986a0e09d4fc5c454acd3fa17a5052916e44afbd14b12b0'
-  '8a14f812c3a9a768320841d1def02a99dcd32e65242ecb0d1aa2ab0e6232ebd5'
-)
+sha256sums=('SKIP'
+            '72cd6e88680dd24a6986a0e09d4fc5c454acd3fa17a5052916e44afbd14b12b0'
+            '8a14f812c3a9a768320841d1def02a99dcd32e65242ecb0d1aa2ab0e6232ebd5')
 
 pkgver() {
   cd "$_pkgname"

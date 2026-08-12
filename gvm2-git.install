@@ -5,7 +5,7 @@ post_install() {
   echo "Then open a new shell (or source ~/.gvm/scripts/gvm) and run:"
   echo "  gvm install go1.22.12"
   echo
-  echo "This package conflicts with AUR gvm-git (moovweb/gvm)."
+  echo "This package conflicts with AUR gvm2 (stable) and gvm-git (moovweb/gvm)."
   echo
 }
 

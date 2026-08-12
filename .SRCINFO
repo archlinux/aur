@@ -1,7 +1,7 @@
 pkgbase = gvm2-git
 	pkgdesc = Go Version Manager (community reboot of moovweb/gvm)
 	pkgver = 1.5.0.r0.gb8148b9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brianrobt/gvm2
 	install = gvm2-git.install
 	arch = any
@@ -13,6 +13,8 @@ pkgbase = gvm2-git
 	optdepends = bison: required to compile Go from source
 	optdepends = gcc: required to compile Go from source
 	provides = gvm=1.5.0.r0.gb8148b9
+	provides = gvm2
+	conflicts = gvm2
 	conflicts = gvm-git
 	source = git+https://github.com/brianrobt/gvm2.git
 	source = gvm2-setup
