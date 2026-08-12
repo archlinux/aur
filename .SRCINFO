@@ -1,6 +1,6 @@
 pkgbase = rd2qmd-bin
 	pkgdesc = A fast Rd-to-Quarto Markdown converter with intelligent link resolution.
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/eitsupi/rd2qmd
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = rd2qmd-bin
 	depends = libgcc
 	conflicts = rd2qmd
 	options = !debug
-	source_x86_64 = rd2qmd-bin-0.5.1.tar.gz::https://github.com/eitsupi/rd2qmd/releases/download/v0.5.1/rd2qmd-x86_64-unknown-linux-gnu.tar.xz
-	source_x86_64 = https://raw.githubusercontent.com/eitsupi/rd2qmd/refs/tags/v0.5.1/LICENSE.md
-	provides_x86_64 = rd2qmd=0.5.1
-	sha256sums_x86_64 = 52bf9b08391ad91fb65353f088bd8c27644b82d19762a15e7b875789324cc879
+	source_x86_64 = rd2qmd-bin-0.5.2.tar.gz::https://github.com/eitsupi/rd2qmd/releases/download/v0.5.2/rd2qmd-x86_64-unknown-linux-gnu.tar.xz
+	source_x86_64 = https://raw.githubusercontent.com/eitsupi/rd2qmd/refs/tags/v0.5.2/LICENSE.md
+	provides_x86_64 = rd2qmd=0.5.2
+	sha256sums_x86_64 = 866e44cbca26f7f35765b8fd4f6dbb75ce45987810472f2483c4d2b4940735bd
 	sha256sums_x86_64 = 1638fb54637ac20a35be392deaae32f54cf234a9c9b9ffc3177a2ba10750ea33
 
 pkgname = rd2qmd-bin
