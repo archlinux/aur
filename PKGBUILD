@@ -10,7 +10,10 @@
 #     frozen screencap + zoom lens, drops the hyprpicker dep),
 #     `mvpn` (native Mullvad VPN control — full CLI + GTK4 layer-shell
 #     panel; drives the `mullvad` daemon, optional), `mcal` (read-only
-#     calendar CLI over local .ics + remote iCal subscriptions)
+#     calendar CLI over local .ics + remote iCal subscriptions), `mtm`
+#     (native tmux session/layout/buffer/clipboard/plugin manager,
+#     Rust port of a bash tmux toolkit — also wired into the app
+#     launcher as the `mtm <session>` provider)
 #   * `mshell` first-party desktop shell (GTK4 + relm4 + layer-shell)
 #     and its `mshellctl` / `mshellshare` IPC siblings
 #   * `mwizard` first-launch setup wizard (writes the shell profile
@@ -29,7 +32,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r2186.4c27285c
+pkgver=r2252.f5ba4d03
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -141,6 +144,10 @@ optdepends=(
   "curl: used by the nip public-IP widget (already pulled by base)"
   # mlogind (TUI login manager)
   "fprintd: opt-in fingerprint login for mlogind (pam_fprintd)"
+  # mtm (native tmux manager)
+  "tmux: required by mtm's session/layout/buffer/kenp commands"
+  "fzf: interactive picker for mtm buffer/clip/speed"
+  "cliphist: mtm clip's clipboard-history backend"
 )
 # `provides` exposes the legacy compositor- and mshell-only package
 # names that older AUR helpers may pin. `conflicts` makes the
@@ -239,10 +246,12 @@ build() {
   # margo's zbus(async-io) artifact via feature unification.
   # mpower likewise: it's a tiny poller (serde + toml + anyhow, shells
   # out to powerprofilesctl) with no zbus/tokio, so it's safe here too.
+  # mtm (native tmux manager) is the same shape — clap + serde + toml +
+  # anyhow, shells out to tmux/fzf/git/tar, no zbus/tokio/gtk — safe here.
   cargo build --frozen --release \
     -p margo -p start-margo \
     -p mctl -p mlock -p mlayout -p mscreenshot -p mvisual -p mlogind -p mpower -p mplay \
-    -p mdots -p mcal
+    -p mdots -p mcal -p mtm
 
   # mshell trio + mpicker + mwizard. mpicker pulls
   # mshell-screenshot (→ wayle-* → zbus/tokio), so it has to
@@ -305,7 +314,7 @@ package() {
   for bin in \
       margo start-margo \
       mctl mlock mlayout mscreenshot mvisual mlogind mgreet mpower mplay \
-      mshell mshellctl mshellshare mpicker mwizard mkeys mvpn mdots mcal; do
+      mshell mshellctl mshellshare mpicker mwizard mkeys mvpn mdots mcal mtm; do
     install -Dm755 "$CARGO_TARGET_DIR/release/$bin" "$pkgdir/usr/bin/$bin"
   done
 
