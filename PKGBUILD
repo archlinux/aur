@@ -3,7 +3,7 @@
 
 pkgname=codex-desktop-app
 pkgver=26.803.81509
-pkgrel=2
+pkgrel=3
 pkgdesc="Official ChatGPT desktop app with Codex"
 arch=('x86_64' 'aarch64')
 url="https://chatgpt.com/codex/"
