@@ -1,13 +1,12 @@
 pkgbase = obsidian2web-bin
 	pkgdesc = lun-4's obsidian publish knockoff that generates (largely static) websites
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lun-4/obsidian2web
 	arch = x86_64
 	license = MIT
-	provides = obsidian2web=1.4.0-3
+	provides = obsidian2web=1.4.0-4
 	conflicts = obsidian2web
-	conflicts = obsidian2web-git
 	source = obsidian2web-bin-1.4.0::https://github.com/lun-4/obsidian2web/releases/download/1.4.0/obsidian2web-x86_64-linux
 	source = obsidian2web-bin-1.4.0-LICENSE::https://raw.githubusercontent.com/lun-4/obsidian2web/1.4.0/LICENSE
 	sha256sums = 9f7d13fc491b86afe75c2709d2ba2a1f64c063a007ba230d8e01318d43f7fe85
