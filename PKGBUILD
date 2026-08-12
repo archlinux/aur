@@ -2,7 +2,7 @@
 
 pkgname=nym-vpnd-nightly-bin
 pkgver=2026.13.0
-pkgrel=20260810
+pkgrel=20260812
 _release_tag="nym-vpn-v${pkgver}-nightly.${pkgrel}"
 pkgdesc="NymVPN daemon (Nightly)"
 arch=("x86_64" "aarch64")
@@ -23,9 +23,9 @@ source_x86_64=("${url}/releases/download/${_release_tag}/nym-vpn-core-v${pkgver}
                "nym-vpnd.service")
 source_aarch64=("${url}/releases/download/${_release_tag}/nym-vpn-core-v${pkgver}-nightly.${pkgrel}_linux_aarch64.tar.gz"
                 "nym-vpnd.service")
-b2sums_x86_64=('131e713f554750130bbf5c7eceb259fbbd8c871770e858db616e8ec87c8e9a9dcd95fc20f1774886f6daa2da5250ebb6e3b108bcd2f8ba64c2662156f9534085'
+b2sums_x86_64=('c8592df027f64c66accb30f47829c55a55bb2f0880d751bff7df872f96e04e1f99683d2d89eeebe63c08a0d6ec3abd9979ca2e364f323e98000581ad679834cd'
                'ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414')
-b2sums_aarch64=('54cd2f83dd8d0f51ff6d6575b52281e6afead56af46e77a5ca87e6a8332df7e4f0dd78d0267580538a1d441a0df19babf0589c390bf1ab7b874cdc6e8272784a'
+b2sums_aarch64=('0031497e1c868e89057b4394dc5a1105c5babf81ce488cd65543a92fc5bdc9104c613ef84b99a36a132bf03feb5e9a6914a240fa94a6d753ee7e34e7a31bae3f'
                 'ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414')
 
 package() {
