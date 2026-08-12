@@ -1,0 +1,21 @@
+pkgbase = mxpak-bin
+	pkgdesc = Mendix widget .mpk package manager
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/glendix-labs/mxpak
+	arch = any
+	license = MIT
+	depends = erlang-core
+	depends = erlang-inets
+	depends = erlang-ssl
+	provides = mxpak=0.2.6
+	conflicts = mxpak
+	noextract = mxp-0.2.6
+	options = !strip
+	options = !debug
+	source = mxp-0.2.6::https://github.com/glendix-labs/mxpak/releases/download/v0.2.6/mxp
+	source = LICENCE
+	sha256sums = 0ca1dfac36f4c121f81597cbd61e4f9a2415e84b1f17cf933911c6d186ac398e
+	sha256sums = ca382295b2ca8d5f61f35f03a5274919dc3e84144325b5b9f0e0d16b274661b0
+
+pkgname = mxpak-bin
