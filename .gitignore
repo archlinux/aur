@@ -1,9 +1,10 @@
-# Shipped into the AUR repo (packages.yml `assets:`). The deploy action uses
-# `git add --all` when assets are set, which would otherwise commit makepkg's
-# working artifacts — the downloaded release tarballs and the test-built
-# package. The AUR forbids those (max blob 488 KiB; scripts only), so keep
-# them invisible to git.
+# Shipped into the AUR repo (packages.yml and gui-publish.yml `assets:`). The
+# deploy action uses `git add --all` when assets are set, which would otherwise
+# commit makepkg's working artifacts — the downloaded release sources (the
+# CLI's tarballs, the GUI's .debs) and the test-built package. The AUR forbids
+# those (max blob 488 KiB; scripts only), so keep them invisible to git.
 *.tar.gz
+*.deb
 *.pkg.tar.zst
 src/
 pkg/
