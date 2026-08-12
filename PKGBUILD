@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 
 pkgname=qt-web-extractor
-pkgver=r38.20260720.5f0f620
+pkgver=r50.20260809.02f4e04
 pkgrel=1
 pkgdesc='Qt WebEngine based web content extractor with HTTP server'
 arch=('any')
@@ -24,6 +24,11 @@ pkgver() {
 build() {
     cd "${pkgname}"
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${pkgname}"
+    python -m unittest discover -s tests -v
 }
 
 package() {
