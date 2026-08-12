@@ -35,10 +35,6 @@ build() {
 	_sdk="$(readlink -f .fvm/flutter_sdk)"
 	_scripts="${PWD}/lib/scripts"
 
-	# 上游要求先给 Flutter SDK 打引擎补丁（patch.ps1 的 Linux 流程），
-	# 否则编译时会报 StandardBottomSheet 等类型不存在。补丁来自源码自带的
-	# lib/scripts/*.patch，beb2ad17... 是上游引用的一个 Flutter commit（text selection 修复）。
-	# fvm SDK 是共享的，所以构建前后都要 reset --hard 保证不影响其他使用 fvm 的项目。
 	local _patches=(modal_barrier text_selection mouse_cursor image_anim
 	                layout_builder navigation_drawer popup_menu fab
 	                null_safety_for_selectable_region selectable_region
