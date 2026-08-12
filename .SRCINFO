@@ -1,0 +1,19 @@
+pkgbase = skimmer-for-linux
+	pkgdesc = Native GTK4/libadwaita multi-channel CW skimmer (TCI client, spots, telnet cluster feed)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/OK1BR/skimmer-for-linux
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = desktop-file-utils
+	makedepends = gtk-update-icon-cache
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = libwebsockets
+	depends = fftw
+	source = skimmer-for-linux-0.2.0.tar.gz::https://github.com/OK1BR/skimmer-for-linux/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 4f35ab491f3a176ef397a350067243f9d197fdfaf0e50d6ca7c739910f770122
+
+pkgname = skimmer-for-linux
