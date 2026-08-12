@@ -3,7 +3,7 @@
 # Contributor: Dan Nixon <dan@dan-nixon.com>
 
 pkgname=qdmr-git
-pkgver=0.14.1.r15.g85d4dfd
+pkgver=0.15.1+r4+ge84d4b3
 pkgrel=1
 pkgdesc="A GUI application for configuring and programming cheap DMR radios - git version"
 arch=('x86_64')
@@ -22,8 +22,8 @@ pkgver() {
   cd "$srcdir/${pkgname%-git}"
   (
     set -o pipefail
-    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/+/g' ||
+      printf "r%s+%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
 
