@@ -4,7 +4,7 @@
 
 _pkgname="iriunwebcam"
 pkgname="$_pkgname-bin"
-pkgver=2.9.1
+pkgver=2.9.3
 pkgrel=1
 pkgdesc="Use your phone's camera as a wireless webcam in your PC"
 url="https://iriun.com/"
@@ -13,7 +13,6 @@ arch=('x86_64')
 
 optdepends=(
   'android-tools: adb'
-  'qt5-wayland'
 )
 
 source=(
@@ -21,9 +20,12 @@ source=(
   "LICENSE.iriun.txt" # extracted from mac archive
 )
 sha256sums=(
-  'b25a53c9eb53f7ac1a47b5ef7174990dd97f66269c7388603395c2c57f160b84'
+  '3635363ec642788aca1e5a3fd45ee978ab6f69ac0a0d2ab5d68ae11bc4a80cc9'
   'eb2ba875d0b419ab7d6327a933d619d1b9eed51f89d49e55ed789bf8f37f75be'
 )
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 options=("!emptydirs" "!debug")
 
@@ -32,18 +34,25 @@ package() {
     'alsa-lib'
     'avahi'
     'libdrm'
-    'qt5-base'
+    'qt6-base'
     'v4l2loopback-dkms'
   )
 
-  tar -xf "$srcdir/data.tar.zst" -C "$pkgdir"
+  bsdtar -xf "$srcdir/data.tar.zst" -C "$pkgdir"
 
   # binary
-  install -Dm755 "$pkgdir/usr/local/bin/iriunwebcam" -t "$pkgdir/usr/bin/"
-  rm -rf "$pkgdir/usr/local"
+  mkdir -pm755 "$pkgdir/usr/bin"
+  mv "$pkgdir/usr/local/bin/iriunwebcam" "$pkgdir/usr/bin/"
+
+  # spa plugin
+  mv "$pkgdir/usr/lib/x86_64-linux-gnu/spa-0.2" "$pkgdir/usr/lib/"
+
+  # config
+  mv "$pkgdir/etc/modprobe.d" "$pkgdir/usr/lib/"
+  mv "$pkgdir/etc/modules-load.d" "$pkgdir/usr/lib/"
 
   # fixes
-  sed -E -e 's&/usr/local/bin/&&' -i "$pkgdir/usr/share/applications/iriunwebcam.desktop"
+  sed -E -e 's&/.*/&&' -i "$pkgdir/usr/share/applications/iriunwebcam.desktop"
 
   # license
   install -Dm644 LICENSE.iriun.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
