@@ -1,6 +1,6 @@
 # Maintainer: Detrital <Detritalw@outlook.com>
 pkgname=bloret-launcher
-pkgver=27.1b1
+pkgver=27.1
 pkgrel=1
 pkgdesc="Be creative, be simple. Your Personal Innovative Open Source AI Minecraft Launcher. Relax, it's Bloret Launcher."
 arch=('any')
@@ -16,6 +16,7 @@ depends=(
     'python-toml'
     'python-qrcode'
     'python-pillow'
+    'python-darkdetect'
     'qt6-5compat'
     'qt6-declarative'
 )
@@ -24,17 +25,21 @@ optdepends=(
     'easytier: 局域网联机功能所需的 EasyTier 网络工具'
     'fcitx5-qt: Qt6 fcitx5 输入法前端（Linux 下中文输入/切换）'
     'fcitx5: fcitx5 输入法框架'
-    'python-websocket-client: Blora Agent 部分即时通讯连接器'
+    'python-websocket-client: Blora Agent 多平台即时通讯连接器'
+    'python-cryptography: 微信媒体加解密等安全相关功能'
+    'python-dingtalk-stream: 钉钉 Stream 连接器（AUR）'
+    'python-lark-oapi: 飞书 / Lark OpenAPI 连接器（AUR）'
+    'python-aiortc: BBBS Live WebRTC 支持（AUR）'
 )
 # RinUI is a git submodule and is empty in the GitHub source tarball.
-_rinui_commit=650c07ca87fcacbc351302f4e9697f094083015b
+_rinui_commit=5fa8d11bea1a35543811f058c3ee36baa050c1a7
 source=(
     "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "RinUI-${_rinui_commit}.tar.gz::https://github.com/Detritalw/Rin-UI/archive/${_rinui_commit}.tar.gz"
 )
 sha256sums=(
-    'cd88b5e7c7174cad5ba707edf146fee6114050358c1eee98bc4d1971ea46cbbc'
-    '1c08c3c52d8f9aa99458da2119164b35178137103a173e882060bfbceb053eb2'
+    'bf931f6282aea5595435bd38aceb080556d52d234d3db6019f02edec1f7dd7a9'
+    '765555972b85a8ac0ae1097cf8282c19bcf2e2c4940ae8a953d7132b3040b29e'
 )
 
 prepare() {
