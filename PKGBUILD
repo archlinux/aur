@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=hpm-isp
-pkgver=0.4.0
-pkgrel=1
+pkgver=0.5.0
+pkgrel=5
 pkgdesc="An ISP (In-system programming) tool for HPMicro MCUs"
 arch=($CARCH)
 url="https://github.com/tfx2001/hpm_isp"
@@ -11,8 +11,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 depends=(
-    gcc-libs
-    glibc
+    libgcc_s.so
     systemd-libs
 )
 makedepends=(
@@ -25,14 +24,14 @@ makedepends=(
 backup=()
 options=(!lto !debug)
 install=
-source=("${pkgname}::git+${url}.git#tag=${pkgver}")
-sha256sums=('9338ce2d8077763a4670d128f06c917e43aa83ec2ef735deba0036d30bc3d181')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('71388ced61472581637724a281907a980b1c645b7cd6be380068ab2225efeb74')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 

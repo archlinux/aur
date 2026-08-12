@@ -1,7 +1,7 @@
 pkgbase = hpm-isp
 	pkgdesc = An ISP (In-system programming) tool for HPMicro MCUs
-	pkgver = 0.4.0
-	pkgrel = 1
+	pkgver = 0.5.0
+	pkgrel = 5
 	url = https://github.com/tfx2001/hpm_isp
 	arch = x86_64
 	license = MIT
@@ -10,14 +10,13 @@ pkgbase = hpm-isp
 	makedepends = cmake
 	makedepends = openssl
 	makedepends = pkgconf
-	depends = gcc-libs
-	depends = glibc
+	depends = libgcc_s.so
 	depends = systemd-libs
 	provides = hpm-isp
 	conflicts = hpm-isp
 	options = !lto
 	options = !debug
-	source = hpm-isp::git+https://github.com/tfx2001/hpm_isp.git#tag=0.4.0
-	sha256sums = 9338ce2d8077763a4670d128f06c917e43aa83ec2ef735deba0036d30bc3d181
+	source = hpm-isp::git+https://github.com/tfx2001/hpm_isp.git#tag=v0.5.0
+	sha256sums = 71388ced61472581637724a281907a980b1c645b7cd6be380068ab2225efeb74
 
 pkgname = hpm-isp
