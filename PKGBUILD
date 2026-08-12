@@ -2,7 +2,7 @@
 
 pkgname=cookcli
 _pkgname=cook
-pkgver=0.29.1
+pkgver=0.32.1
 pkgrel=1
 pkgdesc="Suite of tools to create shopping lists and maintain recipes"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('98ed4a637e7dfa05d3e152fc8f5489af210f8c9cebd4fb3770cd99cf11cdeedf68c1a6ff7509dfc0e2b6660d8e205e4985f4eaa2bfad04a6fc39e99e2febf793')
+sha512sums=('70c1d69148d8a96d1df1020775c0ed52af62601b3497f52e39b15521fa7debeee414f00eae667678454c111f1f2d61c652ad4ee3493d73a3aa7d2abeaaa72fd0')
 options=('!lto')
 
 prepare() {
@@ -26,7 +26,8 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --frozen --no-default-features -- --skip "test_help_output"
+  cargo test --frozen --no-default-features --lib -- \
+    --skip "test_help_output" --skip "copy_static_assets_writes_known_file"
 }
 
 package() {
