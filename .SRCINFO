@@ -1,0 +1,23 @@
+pkgbase = enzo-bin
+	pkgdesc = Terminal video player with a graphical interface (prebuilt portable binary)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/MiguelRegueiro/enzo
+	arch = x86_64
+	license = MIT AND LGPL-2.1-or-later AND BSD-2-Clause
+	depends = freetype2
+	depends = fribidi
+	depends = gcc-libs
+	depends = glibc
+	depends = gnutls
+	depends = harfbuzz
+	depends = hicolor-icon-theme
+	depends = libpulse
+	depends = xz
+	depends = zlib
+	provides = enzo=1.1.0
+	conflicts = enzo
+	source = enzo-1.1.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/MiguelRegueiro/enzo/releases/download/v1.1.0/enzo-1.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 5f8912642de28dda10edbac26a038544265a162ac823fe24dfa43c5d43258561
+
+pkgname = enzo-bin
