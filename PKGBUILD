@@ -2,7 +2,7 @@
 
 pkgname=getsentry-cli-bin
 _pkgname=getsentry-cli
-pkgver=0.40.0
+pkgver=0.42.2
 pkgrel=1
 pkgdesc="Official Sentry developer CLI by getsentry/cli (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -22,8 +22,8 @@ noextract=(
 )
 
 sha256sums=('c51f382a888f8f59f54a72af01e2d72032f2ba8f31d8194f8bf489123438195a')
-sha256sums_x86_64=('9fe5fceda173a595d041480355d432d9fbc495ca4ba27c196db9a9d50b4c5c81')
-sha256sums_aarch64=('329ae081155e9f9065a56ead83feab3a88aaaede591098aef995785aaf169de1')
+sha256sums_x86_64=('65c19a006ba6440cd1e641eb74c8697a3afb6a213a2ad64b73a03ba75799fe10')
+sha256sums_aarch64=('ac7e2aba35e7909fd61d5122fff30fc7a9cd2474ff33e1448ed350f4b89ad315')
 
 package() {
     install -d "${pkgdir}/usr/bin"
