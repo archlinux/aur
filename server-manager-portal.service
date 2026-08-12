@@ -11,6 +11,8 @@ UMask=002
 EnvironmentFile=/etc/conf.d/server-manager-portal
 Environment=NODE_ENV=production
 Environment=CONFIG_DIR=/var/lib/server-manager-portal/config
+Environment=COLLEXIONS_APP_DIR=/usr/lib/server-manager-portal/collexions
+Environment=COLLEXIONS_EMBEDDED_PORT=15755
 WorkingDirectory=/usr/lib/server-manager-portal
 ExecStart=/usr/bin/node index.js
 Restart=on-failure
