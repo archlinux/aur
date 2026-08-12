@@ -1,6 +1,6 @@
 # Maintainer: Rijuyuezhu <rijuyuezhu@users.noreply.github.com>
 pkgname=fcitx-vinpst-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Prebuilt Rust voice-input addon for Fcitx 5 with native ASR and PipeWire capture'
 arch=('x86_64')
@@ -30,7 +30,7 @@ install=fcitx-vinpst.install
 
 _release_pkg="fcitx-vinpst-${pkgver}-1-x86_64.pkg.tar.zst"
 source_x86_64=("${_release_pkg}::${url}/releases/download/v${pkgver}/${_release_pkg}")
-sha256sums_x86_64=('62b51bf9467dc34b949c62e8cd0b22394a75b5de3788f33fb42f4319f4902d3c')
+sha256sums_x86_64=('b88326542ac31096f47b1b6f7d8e5511a085342fbd3951122f87d6454838afd0')
 noextract=("${_release_pkg}")
 
 package() {
