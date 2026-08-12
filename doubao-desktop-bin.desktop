@@ -8,4 +8,4 @@ Terminal=false
 Type=Application
 Categories=Network;Chat;ArtificialIntelligence;
 Keywords=doubao;豆包;AI;bytedance;chat;tauri;
-StartupWMClass=doubao-desktop
+StartupWMClass=doubao-desktop.bin

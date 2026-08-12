@@ -1,6 +1,6 @@
 # Maintainer: gonwe <gonwex@gmail.com>
 pkgname=doubao-desktop-bin
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Doubao AI Assistant - Tauri-based native desktop wrapper (ByteDance)"
 arch=('x86_64')
@@ -15,23 +15,19 @@ conflicts=('doubao-desktop')
 _dlname="doubao-desktop-${pkgver}-x86_64.tar.gz"
 source=("${_dlname}::https://github.com/gonwe/doubao-desktop/releases/download/v${pkgver}/${_dlname}"
         "${pkgname}.desktop")
-sha256sums=('77f56795baf3819a0fe2aeda2abdaf0a220fd6ec3d1403229436bad48804b3c2'
+sha256sums=('396a7a57615343f47c1b1bcfc66d94ae83248b2abd1da45c5c57c4b36fb090a8'
             'SKIP')
 
 package() {
     cd "$srcdir"
     _srcdir="doubao-desktop-${pkgver}-x86_64"
 
-    # Launcher wrapper script (Wayland compatibility)
     install -Dm755 "${_srcdir}/doubao-desktop" "$pkgdir/usr/bin/doubao-desktop"
-
-    # Tauri binary
     install -Dm755 "${_srcdir}/doubao-desktop.bin" "$pkgdir/usr/bin/doubao-desktop.bin"
-
-    # Desktop entry
     install -Dm644 "${pkgname}.desktop" "$pkgdir/usr/share/applications/doubao-desktop.desktop"
 
-    # PNG icon
-    install -Dm644 "${_srcdir}/doubao-desktop.png" \
-        "$pkgdir/usr/share/icons/hicolor/128x128/apps/doubao-desktop.png"
+    # Multiple icon sizes for all DEs/panels
+    for size in 48 64 128 256; do
+        install -Dm644 "${_srcdir}/${size}x${size}/doubao-desktop.png"             "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/doubao-desktop.png"
+    done
 }
