@@ -6,7 +6,7 @@ pkgbase = cephadm
 	arch = any
 	license = LGPL-2.0-or-later
 	depends = lvm2
-	depends = python>=3
+	depends = python
 	optdepends = podman: container backend
 	optdepends = docker: container backend
 	optdepends = chrony: time sync service
