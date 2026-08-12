@@ -1,7 +1,7 @@
 pkgbase = ferrumpix-bin
 	pkgdesc = Desktop photo manager and image editor built with Avalonia UI
 	pkgver = 0.9.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bitpainter75/FerrumPix
 	arch = x86_64
 	license = GPL-3.0-only
@@ -19,12 +19,12 @@ pkgbase = ferrumpix-bin
 	optdepends = libheif: HEIC/HEIF/AVIF-Dateien lesen
 	provides = ferrumpix
 	conflicts = ferrumpix
-	noextract = FerrumPix-0.9.27-1-linux-x64-aur.zip
+	noextract = FerrumPix-0.9.27-2-linux-x64-aur.zip
 	options = !strip
-	source = FerrumPix-0.9.27-1-linux-x64-aur.zip::https://github.com/Bitpainter75/FerrumPix/releases/download/0.9.27/FerrumPix-0.9.27-1-linux-x64-aur.zip
+	source = FerrumPix-0.9.27-2-linux-x64-aur.zip::https://github.com/Bitpainter75/FerrumPix/releases/download/0.9.27/FerrumPix-0.9.27-2-linux-x64-aur.zip
 	source = io.github.Bitpainter75.FerrumPix.desktop
 	source = io.github.Bitpainter75.FerrumPix.png
-	sha256sums = 0d9d274400ab2e95a9a4fbc34e6852c8e8ae83d9a490bfe7415e9814d911aabf
+	sha256sums = eaf2a0b90481f4ee3af445ef50a0769b642d2e073b1430989691c05c851583aa
 	sha256sums = 02a23d27b0ea478bc951de3baebc4b30ec303f679fb137322fdf56b957104321
 	sha256sums = c621a95fca97c22495bb05ae9753391c5523ac0fce8f16f64b3713515e664067
 
