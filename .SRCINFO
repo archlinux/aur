@@ -1,6 +1,6 @@
 pkgbase = python-tinydb
 	pkgdesc = TinyDB is a tiny, document oriented database optimized for your happiness :)
-	pkgver = 4.8.2
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = https://github.com/msiemens/tinydb
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-tinydb
 	makedepends = python-wheel
 	makedepends = python-poetry-core
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/tinydb/tinydb-4.8.2.tar.gz
-	sha256sums = f7dfc39b8d7fda7a1ca62a8dbb449ffd340a117c1206b68c50b1a481fb95181d
+	source = https://files.pythonhosted.org/packages/source/t/tinydb/tinydb-4.9.0.tar.gz
+	sha256sums = 6928b1fa785186bda7952a0ba05aaeedc883ede565ca9c7d608de44e5e75de70
 
 pkgname = python-tinydb
