@@ -1,6 +1,6 @@
 pkgbase = svxlink
 	pkgdesc = Advanced repeater controller and EchoLink software for Linux
-	pkgver = 25.05.1
+	pkgver = 26.05.1
 	pkgrel = 1
 	url = https://github.com/sm0svx/svxlink
 	install = svxlink.install
@@ -41,7 +41,7 @@ pkgbase = svxlink
 	backup = etc/svxlink/svxlink.d/ModulePropagationMonitor.conf
 	backup = etc/svxlink/svxlink.d/ModuleSelCallEnc.conf
 	backup = etc/svxlink/svxlink.d/ModuleTclVoiceMail.conf
-	source = https://github.com/sm0svx/svxlink/archive/25.05.1.tar.gz
-	sha256sums = 1cf152511394158f9ead60aff092a5f8fb0d0da5378a68e0a641652ef752887f
+	source = https://github.com/sm0svx/svxlink/archive/26.05.1.tar.gz
+	sha256sums = 78830607449cdf90f52142d8863a656bcc9777a0b90d709cd525b9455c1da63b
 
 pkgname = svxlink
