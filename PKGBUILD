@@ -8,8 +8,8 @@ _deskfile="${_sname}.desktop"
 _squashroot="squashfs-root"
 
 pkgname=${_sname}-appimage
-pkgver=9.21.0
-pkgrel=3
+pkgver=9.21.1
+pkgrel=1
 _appimageOrig="${_pkgname}-${pkgver}.AppImage"
 
 pkgdesc="Cross-platform note-taking application"
