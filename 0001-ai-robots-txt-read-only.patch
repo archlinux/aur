@@ -1,0 +1,12 @@
+diff --git a/iocaine-powder/embeds/iocaine.service b/iocaine-powder/embeds/iocaine.service
+index f5ce23c..6813845 100644
+--- a/iocaine-powder/embeds/iocaine.service
++++ b/iocaine-powder/embeds/iocaine.service
+@@ -50,5 +50,7 @@ SystemCallFilter=~@resources
+ CapabilityBoundingSet=CAP_NET_ADMIN
+ AmbientCapabilities=CAP_NET_ADMIN
+ 
++ReadOnlyPaths=-/usr/share/ai-robots-txt/robots.json
++
+ [Install]
+ WantedBy=multi-user.target

@@ -1,0 +1,8 @@
+post_install() {
+	echo 'This package comes with no default config. You must install one manually.'
+	echo 'Note this package is specifically designed to be activated through systemd socket activation. You should configure Iocaine to bind to "sd-listen:iocaine" in your configuration to ensure this functions properly.'
+	echo 'Configure your nginx server to connect to "/run/iocaine.sock". systemd will automatically start iocaine with proper permissions.'
+	echo 'For tips and sample configs, see https://iocaine.madhouse-project.org/documentation/3/configuration or the embedded files inside the iocaine binary.'
+	echo 'You can install a request handler by installing either iocaine-nsoe or iocaine-qmk for Nam Shub of Enki, or Quickly Mark and Kill, respectively.'
+}
+

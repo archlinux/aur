@@ -1,0 +1,12 @@
+[Unit]
+Description=iocaine, the deadliest poison known to AI - socket listener
+
+[Socket]
+ListenStream=/run/iocaine.sock
+SocketUser=http
+SocketGroup=http
+SocketMode=0600
+FileDescriptorName=iocaine
+
+[Install]
+WantedBy=sockets.target

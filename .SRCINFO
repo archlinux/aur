@@ -1,0 +1,29 @@
+pkgbase = iocaine-nginx
+	pkgdesc = The deadliest poison known to AI (with Unix socket optimized for nginx)
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://iocaine.madhouse-project.org/
+	install = iocaine.install
+	arch = x86_64
+	arch = i686
+	arch = armv7
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	makedepends = nftables
+	makedepends = clang
+	depends = nginx
+	optdepends = ai-robots-txt: automatically updated ai.robots.txt
+	provides = iocaine
+	conflicts = iocaine
+	conflicts = iocaine-git
+	options = !lto
+	source = iocaine::git+https://git.madhouse-project.org/iocaine/iocaine.git#tag=iocaine-3.5.0
+	source = iocaine.socket
+	source = 0001-ai-robots-txt-read-only.patch
+	sha256sums = 6560d53c573a4e8a16a03a27ae78145bea84a4fbc909a149b4498c4357308826
+	sha256sums = c141614c910f066797c4f55aa380f1d069489924cf608fe55797a48fbf2a3a04
+	sha256sums = 13470e7e6549b3a133f66a5005a23771af5fca08248a84d876a39172d1b555fe
+
+pkgname = iocaine-nginx
