@@ -16,7 +16,7 @@ source=(
     "raylib-6.0.tar.gz::https://github.com/raysan5/raylib/archive/refs/tags/6.0.tar.gz"
 )
 sha256sums=(
-    SKIP
+    '1c21f1f1d90d210bafac54474a6c2e9c58001355dfbe9c0d726abc44d4b05818'
     '2b3ee1e2120c7a0796b33062c7e9a694dd8a8caa56a96319ac8c8ecf54a90d0b'
 )
 
