@@ -3,13 +3,14 @@
 
 pkgname=softmaker-office-2026-bin
 pkgver=1502
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary office suite; word processing, spreadsheets, presentations"
 url="https://www.softmaker.com"
 arch=('x86_64')
 license=('LicenseRef-custom')
-depends=('bash' 'curl' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer' 'hicolor-icon-theme' 'libgcc'
-         'libgl' 'libstdc++' 'libx11' 'libxext' 'libxmu' 'libxmu' 'libxrandr' 'libxrender' 'zlib')
+depends=('bash' 'fontconfig' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer' 'gtk3'
+         'hicolor-icon-theme' 'libcups' 'libgcc' 'libgl' 'libstdc++' 'libx11' 'libxext'
+         'libxmu' 'libxrandr' 'libxrender' 'zlib')
 options=('!debug')
 source=('planmaker-2026.desktop'
         'presentations-2026.desktop'
