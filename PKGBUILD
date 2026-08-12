@@ -1,10 +1,6 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
-# Maintainer: Kyle Sferrazza <kyle.sferrazza@gmail.com>
-# Contributor: Tomasz Hamerla <tomasz.hamerla@outlook.com>
-
 pkgname=powershell-bin
 _pkgname=${pkgname%-bin}
-pkgver=7.6.3
+pkgver=7.6.4
 pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework (binary package)"
 arch=(x86_64 armv7h aarch64)
@@ -24,9 +20,9 @@ source_armv7h=("$_artifact::$url/releases/download/v$pkgver/powershell-$pkgver-l
 source_aarch64=("$_artifact::$url/releases/download/v$pkgver/powershell-$pkgver-linux-arm64.tar.gz")
 source_x86_64=("$_artifact::$url/releases/download/v$pkgver/powershell-$pkgver-linux-x64.tar.gz")
 noextract=("$_artifact")
-sha256sums_armv7h=('885FEC4143089832D9A1F3EF063E6F7CF3118E0078927BA49B3BEF5345997330')
-sha256sums_aarch64=('7A14A385ECA7DC5BEDC1C8AA3D8B765F449ADA30AABE5785A9FD331266EB062D')
-sha256sums_x86_64=('856D0765D2332377F9D7A4AEA76EFDFDE4DE51446E7738DDE2DFDA41DBA9E2A7')
+sha256sums_armv7h=('34b19245f0264eeeea94d382ffc033891095d9a2b6d0392ed66b909bf0d3dff1')
+sha256sums_aarch64=('d4ef2382fa452f2ccbdb48a01adbbce9ed64954872123970c16be6d086d1224b')
+sha256sums_x86_64=('4471b5a36bfe86ec7af8525d36bb1cacba0128e7aac22d05cc064bc00e604721')
 
 prepare() {
   mkdir -p "$_archive"
