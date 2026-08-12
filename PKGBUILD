@@ -7,7 +7,7 @@ pkgver=6.14.2
 pkgrel=1
 arch=('x86_64')
 url='https://sensu.io'
-license=('custom:MIT')
+license=('MIT')
 groups=('sensu-go' 'sensu')
 makedepends=('go' 'curl' 'jq')
 depends=('glibc')
@@ -29,7 +29,7 @@ sha256sums=('ae81e579426194aa70357292d489833e50d4fe0d5ece411e3402972c379d99f7'
 prepare() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
 
-    _pkgtagsha="$(curl -L https://api.github.com/repos/sensu/sensu-go/git/ref/tags/v${pkgver} | jq -r '.object.sha')"
+    _pkgtagsha="$(curl -sL https://api.github.com/repos/sensu/sensu-go/git/ref/tags/v${pkgver} | jq -r '.object.sha')"
     mkdir -p build/
 }
 
