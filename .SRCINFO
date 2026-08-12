@@ -1,7 +1,7 @@
 pkgbase = pastemax
 	pkgdesc = A simple tool to select files from a repository to copy/paste into an LLM
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kleneway/pastemax
 	arch = x86_64
 	license = MIT

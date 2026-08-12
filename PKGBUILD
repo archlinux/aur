@@ -1,7 +1,7 @@
 # Maintainer: petrouil
 pkgname=pastemax
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple tool to select files from a repository to copy/paste into an LLM'
 arch=('x86_64')
 url='https://github.com/kleneway/pastemax'
@@ -18,4 +18,6 @@ prepare() {
 
 package() {
     cp -a "${srcdir}/deb/." "${pkgdir}/"
+    install -Dm644 "${srcdir}/deb/usr/share/icons/hicolor/1024x1024/apps/pastemax.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/pastemax.png"
 }
