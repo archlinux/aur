@@ -1,6 +1,6 @@
 pkgbase = amiberry
 	pkgdesc = Optimized Amiga emulator
-	pkgver = 8.2.2
+	pkgver = 8.3.0
 	pkgrel = 2
 	url = https://github.com/BlitterStudio/amiberry
 	arch = x86_64
@@ -27,11 +27,11 @@ pkgbase = amiberry
 	depends = zlib
 	depends = libpng
 	depends = libglvnd
-	provides = amiberry=8.2.2
+	provides = amiberry=8.3.0
 	conflicts = amiberry-git
 	conflicts = amiberry-lite
-	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#tag=v8.2.2
-	sha256sums = 73c158e8a7ea69dc8583cfc1093f7bba112d62f57673ac2091c4dff685ab4249
+	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#tag=v8.3.0
+	sha256sums = fe57e685037a7caa7fc6c30f92e71980642a3ae9ea8d41ff9514f8f6ca6353eb
 	source_x86_64 = qemu-uae-linux-x86_64-11.0.1-amiberry.7.tar.xz::https://github.com/BlitterStudio/amiberry-qemu-uae/releases/download/v11.0.1-amiberry.7/qemu-uae-linux-x86_64.tar.xz
 	sha256sums_x86_64 = 62926ba5437d21e6daeea841bc103088c2f5849206681eb47e6d2bcabc9c8f52
 	source_aarch64 = qemu-uae-linux-aarch64-11.0.1-amiberry.7.tar.xz::https://github.com/BlitterStudio/amiberry-qemu-uae/releases/download/v11.0.1-amiberry.7/qemu-uae-linux-aarch64.tar.xz

@@ -2,8 +2,8 @@
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 pkgname=amiberry
-pkgver=8.2.2
-pkgrel=2
+pkgver=8.3.0
+pkgrel=1
 pkgdesc="Optimized Amiga emulator"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BlitterStudio/amiberry"
@@ -16,7 +16,7 @@ _qemu_ver=11.0.1-amiberry.7
 source=("${pkgname}::git+https://github.com/BlitterStudio/amiberry.git#tag=v$pkgver")
 source_aarch64=("qemu-uae-linux-aarch64-${_qemu_ver}.tar.xz::https://github.com/BlitterStudio/amiberry-qemu-uae/releases/download/v${_qemu_ver}/qemu-uae-linux-aarch64.tar.xz")
 source_x86_64=("qemu-uae-linux-x86_64-${_qemu_ver}.tar.xz::https://github.com/BlitterStudio/amiberry-qemu-uae/releases/download/v${_qemu_ver}/qemu-uae-linux-x86_64.tar.xz")
-sha256sums=('73c158e8a7ea69dc8583cfc1093f7bba112d62f57673ac2091c4dff685ab4249')
+sha256sums=('fe57e685037a7caa7fc6c30f92e71980642a3ae9ea8d41ff9514f8f6ca6353eb')
 sha256sums_x86_64=('62926ba5437d21e6daeea841bc103088c2f5849206681eb47e6d2bcabc9c8f52')
 sha256sums_aarch64=('6906cfc09c2478313c1eaddc941bc670db3d8bda63f418c69773415ebe429c8f')
 
