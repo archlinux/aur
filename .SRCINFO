@@ -1,11 +1,14 @@
 pkgbase = kometa
 	pkgdesc = A powerful tool designed to give you complete control over your Plex media libraries.
 	pkgver = 2.4.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kometa.wiki
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	depends = apprise
+	depends = python-jsonschema
+	depends = python-letterboxdpy
 	depends = python-arrapi
 	depends = python-dateutil
 	depends = python-cloudscraper

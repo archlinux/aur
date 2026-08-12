@@ -2,13 +2,16 @@
 
 pkgname=kometa
 pkgver=2.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful tool designed to give you complete control over your Plex media libraries.'
 url='https://kometa.wiki'
 arch=('any')
 license=('MIT')
 replaces=('plex-meta-manager')
 depends=(
+  'apprise'
+  'python-jsonschema'
+  'python-letterboxdpy'
   'python-arrapi'
   'python-dateutil'
   'python-cloudscraper'
