@@ -8,7 +8,7 @@
 # by hand.
 pkgname=sharkfin-keyboard-bin
 _pkgname=sharkfin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Configurator for Attack Shark and other ROYUAN keyboards'
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=('sharkfin-keyboard' 'sharkfin')
 # is what keeps namcap quiet; !strip would trade one warning for another.
 options=('!debug')
 source_x86_64=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb")
-b2sums_x86_64=('061c2741e7be995117da2e5e7e719ce40cd5f000e22fb735da161c4964034f1b19b3220bb346ea84219a4324df38291bf69ae85989803a31f59997c4cda4fde8')
+b2sums_x86_64=('c637d7c3b5d3b7570b1987db1028f43ae8f20786d2dc46e630fa6771b5b20335a4bace34940a3ca6ccb8cebdf5aa8f9fdf0bc172ea0bf8d6141d808f0e8919bd')
 
 package() {
   bsdtar -O -xf "${_pkgname}_${pkgver}_amd64.deb" data.tar.gz \
