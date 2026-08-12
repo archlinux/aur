@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 
 pkgname=pvz-portable
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A cross-platform community-driven reimplementation of Plants vs. Zombies: Game of the Year Edition, aiming to bring the 100% authentic PvZ experience to every platform."
 url="https://github.com/wszqkzqk/${pkgname}"
@@ -18,6 +18,7 @@ depends=(
     libvorbis
     mpg123
     sdl2-compat
+    zlib
 )
 makedepends=(
     cmake
@@ -30,7 +31,7 @@ source=(
     # See archlinux/README.md in the source tree for instructions.
     "file://Plants_vs._Zombies_1.2.0.1073_EN.zip"
 )
-sha256sums=('9214b7669c9de6d3914d90b9d3a238548239c1b12c0adba03cfd74e06dd1db20'
+sha256sums=('2df2eb528362bfe208207ca6e468bc5ea0d2c074f42149eb87097a36d9e1dcfe'
             'SKIP')
 
 pkgver() {
@@ -39,7 +40,7 @@ pkgver() {
 }
 
 build() {
-    cmake -B build -S "${pkgname}" \
+    cmake -G Ninja -B build -S "${pkgname}" \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr'
     cmake --build build
