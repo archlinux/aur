@@ -1,0 +1,17 @@
+pkgbase = markitdown-gui-appimage
+	pkgdesc = Desktop GUI for MarkItDown with queue-based multi-file conversion to Markdown (AppImage)
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/imadreamerboy/markitdown-gui
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	options = !strip
+	source = markitdown-gui-appimage-1.3.2.AppImage::https://github.com/imadreamerboy/markitdown-gui/releases/download/v.1.3.2/MarkItDown-Linux-1.3.2.AppImage
+	source = markitdown-gui.png::https://raw.githubusercontent.com/imadreamerboy/markitdown-gui/main/markitdowngui/resources/markitdown-gui.png
+	source = markitdown-gui.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/markitdown-gui/markitdown-gui.desktop
+	sha256sums = e1f0a3cb8b6037927591948f0c7c1082a887be37bcd05150a2c16420672f9ed1
+	sha256sums = 96a468a765aeffc2e65d43aabbd5edd52bbe053c70ec89b3f47bcf70eba843a2
+	sha256sums = f72153d735a2f38258edbadcc55a02f818ecd63dd2c6a2f0d04383ecb9813144
+
+pkgname = markitdown-gui-appimage
