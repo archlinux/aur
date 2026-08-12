@@ -1,7 +1,7 @@
 pkgbase = folder-manager-py
 	pkgdesc = A number-based folder management and auto-alignment tool
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jang1972/folder-manager-py
 	arch = any
 	license = GPL3

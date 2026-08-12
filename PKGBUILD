@@ -1,7 +1,7 @@
 # Maintainer: Michelle <michellejang1972@gmail.com>
 pkgname=folder-manager-py
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A number-based folder management and auto-alignment tool"
 arch=('any')
 url="https://github.com/jang1972/folder-manager-py"
