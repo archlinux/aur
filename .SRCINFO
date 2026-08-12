@@ -1,6 +1,6 @@
 pkgbase = python-paramz
 	pkgdesc = Parameterization Framework for parameterized model creation and handling
-	pkgver = 0.9.6
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/sods/paramz
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-paramz
 	optdepends = python-ipywidgets
 	optdepends = python-jupyter_client
 	optdepends = jupyter-notebook
-	source = https://github.com/sods/paramz/archive/v0.9.6.tar.gz
-	sha256sums = dc2f954ceceb9c67703e613e1c3dff63ecffcfb036bfc770a885ecce4d5b3083
+	source = https://github.com/sods/paramz/archive/v0.10.0.tar.gz
+	sha256sums = e8db01b771949169d71e425228dca1610f71ed86a7f675254f32414299c2c088
 
 pkgname = python-paramz

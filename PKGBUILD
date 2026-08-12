@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=python-paramz
-pkgver=0.9.6
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Parameterization Framework for parameterized model creation and handling"
 arch=("any")
@@ -12,7 +12,7 @@ depends=('python' 'python-numpy' 'python-scipy' 'python-six' 'python-decorator' 
 optdepends=('ipython' 'python-sphinx' 'python-ipykernel' 'python-ipywidgets' 'python-jupyter_client' 'jupyter-notebook')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("https://github.com/sods/paramz/archive/v${pkgver}.tar.gz")
-sha256sums=('dc2f954ceceb9c67703e613e1c3dff63ecffcfb036bfc770a885ecce4d5b3083')
+sha256sums=('e8db01b771949169d71e425228dca1610f71ed86a7f675254f32414299c2c088')
 
 build() {
     cd "paramz-${pkgver}"
