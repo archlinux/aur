@@ -1,8 +1,7 @@
 #!/bin/bash
-# deeptools: NO source array — package() fetches deepTools==$pkgver (plus pysam,
-# pyBigWig, py2bit, deeptoolsintervals) from PyPI at install time via
-# `uv pip install`. So there are NO checksums to refresh; only pkgver/pkgrel.
-# Version detection uses the PyPI JSON API.
+# deeptools: source-built from the pinned PyPI sdist (same strategy as jcvi).
+# Version detection via the PyPI JSON API; the sdist URL is version-templated
+# (no hash prefix), so checksum refresh is a single download + sed.
 set -e
 
 PKGNAME="deeptools"
@@ -29,10 +28,19 @@ fi
 
 echo "==> Updating to version $LATEST_VERSION..."
 
-# Sourceless recipe: package() pulls deepTools==$pkgver straight from PyPI,
-# so only pkgver/pkgrel change — no source, no sha256sums to refresh.
+TARBALL_URL="https://pypi.org/packages/source/d/deeptools/deeptools-$LATEST_VERSION.tar.gz"
+echo "Downloading $TARBALL_URL..."
+curl -sL "$TARBALL_URL" -o /tmp/deeptools-$LATEST_VERSION.tar.gz
+
+SHA256=$(sha256sum /tmp/deeptools-$LATEST_VERSION.tar.gz | awk '{print $1}')
+echo "SHA256: $SHA256"
+
+rm -f /tmp/deeptools-$LATEST_VERSION.tar.gz
+
+echo "==> Updating PKGBUILD..."
 sed -i "s/^pkgver=.*/pkgver=$LATEST_VERSION/" PKGBUILD
 sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
+sed -i "s/^sha256sums=.*/sha256sums=('$SHA256')/" PKGBUILD
 
 echo "==> Generating .SRCINFO..."
 makepkg --printsrcinfo > .SRCINFO
