@@ -1,5 +1,5 @@
 pkgname=mingw-w64-scotch
-pkgver=7.0.12
+pkgver=7.0.13
 pkgrel=1
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake' 'mingw-w64-wine')
 options=('staticlibs' '!buildflags' '!strip')
 license=('custom:CeCILL-C')
 source=("https://gitlab.inria.fr/scotch/scotch/-/archive/v${pkgver}/scotch-v${pkgver}.tar.gz")
-sha256sums=('870bf681e7e40b6b01c3890dbe7b27da2617660f1722541919a865a6729dcbf2')
+sha256sums=('6457d1f177fce9c07324b8c57ad1086402b0e61bd9ecf5c30b2b481944ea8fe7')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
