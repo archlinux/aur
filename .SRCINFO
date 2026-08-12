@@ -1,6 +1,6 @@
 pkgbase = fallegji-git
-	pkgdesc = TUI P2P group chat app, written in Rust, bound to LAN or VPN
-	pkgver = 1.0.1.r1.5ac4b57
+	pkgdesc = TUI P2P group chat app, written in Rust, bound to LAN, VPN or onion network
+	pkgver = 2.0.0.r0.40b3df3
 	pkgrel = 1
 	url = https://github.com/AshLink95/Fallegji
 	arch = x86_64
