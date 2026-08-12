@@ -1,6 +1,6 @@
 pkgbase = wpimath-git
 	pkgdesc = WPILib's mathematics and controls library
-	pkgver = 2027.0.0.alpha.6.r130.gb6effc4908
+	pkgver = 2027.0.0.alpha.6.r307.gb69b4bbb2f
 	pkgrel = 1
 	url = https://github.com/wpilibsuite/allwpilib
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = wpimath-git
 	license = MIT
 	makedepends = cmake
 	depends = eigen
-	depends = fmt
 	depends = protobuf
 	depends = sleipnirgroup-sleipnir
 	provides = wpimath

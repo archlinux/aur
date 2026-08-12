@@ -1,12 +1,12 @@
 # Maintainer: Tyler Veness <calcmogul at gmail dot com>
 
 pkgname=wpimath-git
-pkgver=2027.0.0.alpha.6.r130.gb6effc4908
+pkgver=2027.0.0.alpha.6.r307.gb69b4bbb2f
 pkgrel=1
 pkgdesc="WPILib's mathematics and controls library"
 arch=('x86_64')
 url='https://github.com/wpilibsuite/allwpilib'
-depends=('eigen' 'fmt' 'protobuf' 'sleipnirgroup-sleipnir')
+depends=('eigen' 'protobuf' 'sleipnirgroup-sleipnir')
 makedepends=('cmake')
 provides=('wpimath')
 conflicts=('wpimath')
@@ -28,7 +28,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DWPILIB_NO_WERROR=ON \
     -DWPILIB_USE_SYSTEM_EIGEN=ON \
-    -DWPILIB_USE_SYSTEM_FMTLIB=ON \
     -DWPILIB_USE_SYSTEM_SLEIPNIR=ON \
     -DWPILIB_WITH_BENCHMARK=OFF \
     -DWPILIB_WITH_CSCORE=OFF \
