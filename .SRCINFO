@@ -1,7 +1,7 @@
 pkgbase = python-requirements-parser
 	pkgdesc = A Pip requirements file parser.
 	pkgver = 0.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/madpah/requirements-parser
 	arch = any
 	license = Apache-2.0

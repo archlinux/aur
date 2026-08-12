@@ -3,7 +3,7 @@
 pkgname=python-requirements-parser
 _name=${pkgname#python-}
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Pip requirements file parser."
 arch=('any')
 url="https://github.com/madpah/requirements-parser"
@@ -26,7 +26,9 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-  pytest
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -I -m pytest
 }
 
 package() {
