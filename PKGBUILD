@@ -1,9 +1,9 @@
 pkgname=awlib-git
-pkgver=r2249.4d488895
+pkgver=2026.08.07.r47.g48dc12b2
 pkgrel=1
 pkgdesc="C++ helper library"
 arch=('i686' 'x86_64')
-depends=('glfw')
+depends=('glfw' 'libpng')
 makedepends=('git' 'cmake' 'gcc')
 url="https://git.absurdworlds.org/awlib.git"
 license=('LGPLv3')
@@ -31,6 +31,8 @@ build() {
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -DAW_ENABLE_GRAPHICS:BOOL=ON \
+        -DAW_ENABLE_IMAGE:BOOL=ON \
+        -DAW_ENABLE_MESH:BOOL=ON \
         -DAW_ENABLE_HUDF:BOOL=ON \
         -DAW_SPLIT_INCLUDES:BOOL=OFF \
         -DAW_INCLUDE_PREFIX:STRING="" \
