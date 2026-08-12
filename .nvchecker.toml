@@ -1,4 +1,5 @@
 [rapidraw]
 source = "git"
 git = "https://github.com/CyberTimon/RapidRAW.git"
+include_regex = 'v[\d.]+'
 prefix = "v"
