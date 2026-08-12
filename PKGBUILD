@@ -1,7 +1,7 @@
-# Maintainer: LaT-SKY <liujunzhe070611 at gmail dot com>
+# Maintainer: LaT-SKY <miprota at 163 dot com>
 pkgname=mip-paper
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic wallpaper engine for KDE Plasma 6 on Wayland'
 arch=('x86_64')
 url='https://github.com/LaT-SKY/mip-paper'
@@ -12,7 +12,7 @@ makedepends=('npm')
 options=('!strip')
 install=mip-paper.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LaT-SKY/mip-paper/releases/download/v0.2.0/mip-paper-0.2.0.tar.gz")
-sha256sums=('00a2325018d35b4b86087fe6b3c0f61e6ef5bbd21105f5dde4ce298f1e2f8135')
+sha256sums=('6c85045f920ce2cbbdfe2bde6c03e4782d6a0c3b0ee6214bd95701a4ffb214d8')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
