@@ -1,0 +1,18 @@
+pkgbase = sqliter
+	pkgdesc = japanese hiragana, katakana, kanji and event calendar manager plugin..
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Happilli/sqliter
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = cliphist
+	depends = wl-clipboard
+	source = sqliter-1.0.0.tar.gz::https://github.com/Happilli/sqliter/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 149c1ae4d2c1de2f10c77de0dfcd1498624f3d2f9ccfc0135ca4fae688bdbc15
+
+pkgname = sqliter
