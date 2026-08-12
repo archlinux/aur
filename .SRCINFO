@@ -1,19 +1,19 @@
 pkgbase = openmarch-bin
 	pkgdesc = A free and open source drill-writing app built on web frameworks.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = http://openmarch.com/
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = electron40
-	provides = openmarch=0.1.4
+	provides = openmarch=0.1.5
 	conflicts = openmarch
 	source = openmarch.sh
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = openmarch-0.1.4-aarch64.AppImage::https://github.com/OpenMarch/OpenMarch/releases/download/v0.1.4/OpenMarch-linux-arm64.AppImage
-	sha256sums_aarch64 = cd4f58f0502560c455baf89bc8e3247416e75ade5038f471b77d6e6e20617424
-	source_x86_64 = openmarch-0.1.4-x86_64.AppImage::https://github.com/OpenMarch/OpenMarch/releases/download/v0.1.4/OpenMarch-linux-x86_64.AppImage
-	sha256sums_x86_64 = 27794e81ed0da77067f4804bfac22465511db46d1a7ae4fa22f1478e0a178c84
+	source_aarch64 = openmarch-0.1.5-aarch64.AppImage::https://github.com/OpenMarch/OpenMarch/releases/download/v0.1.5/OpenMarch-linux-arm64.AppImage
+	sha256sums_aarch64 = 71fe6e8910087194a6e7838d22e9b2ebb045db01b588c2d5decff327e93d46ad
+	source_x86_64 = openmarch-0.1.5-x86_64.AppImage::https://github.com/OpenMarch/OpenMarch/releases/download/v0.1.5/OpenMarch-linux-x86_64.AppImage
+	sha256sums_x86_64 = c156c92d0222e5ddff89aaafd0a6afbdb0847ac57608a5f418e470d3f62fbbdc
 
 pkgname = openmarch-bin

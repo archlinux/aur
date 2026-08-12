@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openmarch-bin
 _pkgname=OpenMarch
-pkgver=0.1.4
+pkgver=0.1.5
 _electronversion=40
 pkgrel=1
 pkgdesc="A free and open source drill-writing app built on web frameworks.(Prebuilt version.Use system-wide electron)"
@@ -21,8 +21,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64.AppImage")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('cd4f58f0502560c455baf89bc8e3247416e75ade5038f471b77d6e6e20617424')
-sha256sums_x86_64=('27794e81ed0da77067f4804bfac22465511db46d1a7ae4fa22f1478e0a178c84')
+sha256sums_aarch64=('71fe6e8910087194a6e7838d22e9b2ebb045db01b588c2d5decff327e93d46ad')
+sha256sums_x86_64=('c156c92d0222e5ddff89aaafd0a6afbdb0847ac57608a5f418e470d3f62fbbdc')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -59,7 +59,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
