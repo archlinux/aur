@@ -1,6 +1,6 @@
 pkgbase = visigrid-bin
 	pkgdesc = Fast, native spreadsheet with GPU-accelerated rendering
-	pkgver = 0.25.1
+	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://visigrid.app
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = visigrid-bin
 	provides = visigrid
 	conflicts = visigrid
 	conflicts = visigrid-git
-	source = VisiGrid-0.25.1-linux-x86_64.tar.gz::https://github.com/VisiGrid/VisiGrid/releases/download/v0.25.1/VisiGrid-linux-x86_64.tar.gz
-	sha256sums = 9d54620d130a371d35c63edd736956d4052346f5e8bb26680a9618e8de949f20
+	source = VisiGrid-0.26.0-linux-x86_64.tar.gz::https://github.com/VisiGrid/VisiGrid/releases/download/v0.26.0/VisiGrid-linux-x86_64.tar.gz
+	sha256sums = 0d91b8dc9976b4cabfd22bfe0a277eb792d0b2f400424f300df5e01bd26521a7
 
 pkgname = visigrid-bin
