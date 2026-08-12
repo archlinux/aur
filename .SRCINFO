@@ -1,6 +1,6 @@
 pkgbase = alacrium-browser-bin
 	pkgdesc = Performance-focused Chromium browser tracking stable releases (prebuilt)
-	pkgver = 151.0.7922.108
+	pkgver = 151.0.7922.138
 	pkgrel = 1
 	url = https://github.com/brauliobo/alacrium
 	arch = x86_64
@@ -33,14 +33,14 @@ pkgbase = alacrium-browser-bin
 	optdepends = kdialog: native file dialogs in KDE
 	optdepends = kwallet: password storage in KDE
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
-	provides = alacrium-browser=151.0.7922.108
+	provides = alacrium-browser=151.0.7922.138
 	conflicts = alacrium-browser
-	noextract = alacrium-browser_151.0.7922.108_AVX.deb
+	noextract = alacrium-browser_151.0.7922.138_AVX.deb
 	options = !debug
 	options = !strip
-	source = https://github.com/brauliobo/alacrium/releases/download/M151.0.7922.108/alacrium-browser_151.0.7922.108_AVX.deb
-	source = LICENSE-da87c04519399ae99b2546ab2fc7b207e8381a07.md::https://raw.githubusercontent.com/brauliobo/alacrium/da87c04519399ae99b2546ab2fc7b207e8381a07/LICENSE.md
-	sha256sums = e120414e37f3bc76fe379e102d60626bfd909fb38c0b3ae98246d53745a95e35
+	source = https://github.com/brauliobo/alacrium/releases/download/M151.0.7922.138/alacrium-browser_151.0.7922.138_AVX.deb
+	source = LICENSE-126d37eeee0f6cdbd060b695901811e64eb3b039.md::https://raw.githubusercontent.com/brauliobo/alacrium/126d37eeee0f6cdbd060b695901811e64eb3b039/LICENSE.md
+	sha256sums = 10955ac2ba9d5f123f2c5664ccf759644e8ce409b584bec7822ad687a8b3dba5
 	sha256sums = 1d43c681d483ed1bf2e88507be7368eea8d1dedc503d39b8e17e701d0be00fe2
 
 pkgname = alacrium-browser-bin
