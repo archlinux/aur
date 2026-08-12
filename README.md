@@ -164,9 +164,20 @@ That runs the full test suite and, only if it passes, publishes to the AUR: a
 curated tree of packaging files only, never `tests/` or `.github/`. Use
 `v<version>-<rel>` for a packaging-only rebuild of a version already published.
 
-To rehearse without touching the AUR:
+Every pull request, and every push to `master`, runs the same release path in
+dry-run mode against the live AUR repository — which clones anonymously over
+HTTPS, so no credentials are involved — and prints the diff it would push. The
+publish logic is therefore exercised continuously rather than only during a
+release.
+
+To rehearse locally:
 
 ```sh
+# against the real AUR, read-only
+AUR_REMOTE=https://aur.archlinux.org/mkinitcpio-tailscale.git \
+  ./scripts/aur-publish.sh --dry-run --tag v1.2.0
+
+# or against a scratch repo, including the push
 git init --bare /tmp/fake-aur.git
 AUR_REMOTE=/tmp/fake-aur.git ./scripts/aur-publish.sh --tag v1.2.0
 ```
