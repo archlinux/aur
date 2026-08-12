@@ -1,0 +1,27 @@
+# Maintainer: Caitlyn Williams <caitlyn dot williams at proton dot me>
+
+pkgname=arduino-lint-bin
+pkgver=1.3.0
+pkgrel=1
+pkgdesc="A command line tool that checks for common problems in Arduino projects"
+arch=('x86' 'x86_64' 'armv7h' 'aarch64')
+url="https://github.com/arduino/arduino-lint"
+license=('GPL-3.0-only')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+options=('strip' '!libtool' '!staticlibs' '!emptydirs')
+
+source_x86=("arduino_lint_x86_${pkgver}.tar.gz::${url}/releases/download/${pkgver}/arduino-lint_${pkgver}_Linux_32bit.tar.gz")
+source_x86_64=("arduino_lint_x86_64_${pkgver}.tar.gz::${url}/releases/download/${pkgver}/arduino-lint_${pkgver}_Linux_64bit.tar.gz")
+source_armv7h=("arduino_lint_aarch32_${pkgver}.tar.gz::${url}/releases/download/${pkgver}/arduino-lint_${pkgver}_Linux_ARMv7.tar.gz")
+source_aarch64=("arduino_lint_aarch64_${pkgver}.tar.gz::${url}/releases/download/${pkgver}/arduino-lint_${pkgver}_Linux_ARM64.tar.gz")
+
+package() {
+	install -dm755 "${pkgdir}/usr/bin/"
+	cp -v "${srcdir}/arduino-lint" "${pkgdir}/usr/bin/"
+}
+
+sha256sums_x86=('1513e71afe92a21144a0117f317a6e0e1335183b2706b58e0e379883ba055c59')
+sha256sums_x86_64=('181671ca174988f2601e1cdf2b40a552682db8eaa047de33117e67e70338b63e')
+sha256sums_armv7h=('852c9385c7492043f4340a0fabe9e165da5d1ffdbfb06e295aacefe92e3bf1ab')
+sha256sums_aarch64=('d886fd734762f43b90990ff0ec12d65e088f74516db1a1a9c3c2de6b7fffdada')
