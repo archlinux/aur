@@ -1,0 +1,18 @@
+pkgbase = luatos-cli-bin
+	pkgdesc = LuatOS command-line toolkit (pure Rust) for flashing, logging, project management, firmware resources, and building
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/wendal/luatos-cli
+	arch = x86_64
+	license = MIT
+	depends = libudev.so
+	provides = luatos-cli
+	conflicts = luatos-cli
+	options = !strip
+	options = !debug
+	source = luatos-cli-x86_64-unknown-linux-gnu.tar.gz::https://github.com/wendal/luatos-cli/releases/download/v1.9.1/luatos-cli-x86_64-unknown-linux-gnu.tar.gz
+	source = luatos-cli-bin-1.9.1.LICENSE::https://raw.githubusercontent.com/wendal/luatos-cli/v1.9.1/LICENSE
+	sha256sums = 443ca8dbbc1d256f9a50d5682e49a0d51f3a0e5d8228f36d7226206e1b6a5a37
+	sha256sums = 974f32d6c076b5697134adc6075c9614f7d283c1a8676982519082d7a6fe45cf
+
+pkgname = luatos-cli-bin
