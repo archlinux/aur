@@ -1,6 +1,6 @@
 pkgbase = vsview-histogram
 	pkgdesc = A vsview plugin displaying video clips' histograms and other related visualizations
-	pkgver = 0.2.0.post1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = vsview-histogram
 	depends = vapoursynth-plugin-vsjetpack
 	depends = python-numpy
 	depends = python-numba
-	source = vsview-histogram::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=histogram/v0.2.0.post1
+	source = vsview-histogram::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=histogram/v0.3.0
 	sha256sums = SKIP
 
 pkgname = vsview-histogram
