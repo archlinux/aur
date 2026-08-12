@@ -1,7 +1,7 @@
 pkgbase = soundcloud-rpc-bin
 	pkgdesc = 🎵 A SoundCloud Client with Discord Rich Presence, Dark Mode, Last.fm, and AdBlock Support.(Prebuilt version.Use system-wide electron)
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/richardhbtz/soundcloud-rpc
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = soundcloud-rpc-bin
 	source = soundcloud-rpc-0.1.9-x86_64.AppImage::https://github.com/richardhbtz/soundcloud-rpc/releases/download/v0.1.9/soundcloud-0.1.9-installer-linux.AppImage
 	source = LICENSE-0.1.9::https://raw.githubusercontent.com/richardhbtz/soundcloud-rpc/v0.1.9/LICENSE
 	source = soundcloud-rpc.sh
-	sha256sums = 56ac3b1b8f9cf87a4b89064e5a1151268df47c203dd5394e712563bec0e3504e
+	sha256sums = 3700c8b5dd0595b8258d32916b48150e6957a49663cb8779a7e9ee65ae934103
 	sha256sums = de7ae1038162d14df6bc9ec2a6f717a46d0c57deba4e4fffe4cea07595b0c68d
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
