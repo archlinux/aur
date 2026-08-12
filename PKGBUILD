@@ -1,11 +1,11 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 #
-# Template. The release workflow fills in 0.1.0 and the checksums, then
-# pushes the result to the AUR. Edit this file, never the copy in the AUR
-# repository: that one is overwritten on every tag.
+# Written by the release workflow of
+# https://github.com/chmouel/liseur-desktop from packaging/aur/PKGBUILD.in.
+# Anything changed here is lost on the next release.
 
 pkgname=liseur-desktop-bin
-pkgver=0.1.0
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Snappy desktop EPUB reader, desktop counterpart of Liseur for Android"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ source_x86_64=("$_dl/liseur-desktop-$pkgver-linux-x64.tar.gz")
 source_aarch64=("$_dl/liseur-desktop-$pkgver-linux-arm64.tar.gz")
 sha256sums=('81bd234328535b3fe013f50b3447ac82b56a73cd9fc520f54b6c11d78d0084a0'
             '49c3d9e5b1961666908e27a598558bbc66936018bdac70972883e469d20cb260')
-sha256sums_x86_64=('8c7a673fb9aa3d5134aaff5741794ae9fbed95b3c8aa23044e1a63eb3520ea2f')
-sha256sums_aarch64=('d262364fd9aae140d9f68ea04eb9bf93cf7c00179c200f4f3496c18923150206')
+sha256sums_x86_64=('a1ac89463c43442232534eb9117e3145e5cd19495411e82a392fe82ebc8c9885')
+sha256sums_aarch64=('7fe3866cfd31288416c3724bcb31a56a22dd91ec7fd3ba65f71d56a4e9bdb775')
 
 package() {
   local _arch=x64
