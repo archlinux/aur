@@ -6,7 +6,7 @@
 # Contributor: sekret
 
 pkgname=roomeqwizard-beta
-pkgver=5.40.beta.131
+pkgver=5.40.beta.132
 pkgrel=1
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('x86_64' 'aarch64')
@@ -20,9 +20,9 @@ source=(
     "https://www.roomeqwizard.com/installers/REW_linux_no_jre_${pkgver//./_}-api.sh"
     "https://www.roomeqwizard.com/Sampledata.mdat"
 )
-sha512sums=('4bf98c465d0bab294a963a7fefccb4a3247f13cda3d413087433295240ebd5652309ab67f061ebd2bf9323b5b9972a293a1b11bd096e30122bdafd7dad1dd468'
-            '79214c2c9e35dc2dfbc926b37c058ed8a67edc156823c25b353492379aa542534997b0ca94676921252d6152bfe4fb1196c7c6df16645f14ce9ffbd8e9859770')
 
+sha512sums=('9d032925e8a3949aee90dc229a268159bf07cb8926f4123bc75fd0273114304bfe76bc1e8fb4c8cfa772f001d42741c12447bcf29cc2b96b92bef6a1c92402e5'
+            '79214c2c9e35dc2dfbc926b37c058ed8a67edc156823c25b353492379aa542534997b0ca94676921252d6152bfe4fb1196c7c6df16645f14ce9ffbd8e9859770')
 
 package() {
   export INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/default
