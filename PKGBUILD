@@ -4,11 +4,11 @@
 
 pkgname=shader-slang
 pkgver=2026.14.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
 arch=('x86_64')
-license=('Apache-2.0')
+license=('custom:Apache 2.0 with LLVM Exception')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	"lua::git+https://github.com/lua/lua#commit=3fe7be956f23385aa1950dc31e2f25127ccfc0ea"
@@ -102,6 +102,8 @@ build() {
 
 package() {
 	DESTDIR="$pkgdir" cmake --install build
+
+	install -Dm644 "slang-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	# Delete Unix backward compatibility symlink (libslang -> libslang-compiler)
 	rm -f "$pkgdir/usr/lib/libslang.so"
