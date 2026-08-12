@@ -2,9 +2,9 @@
 
 pkgbase=scopehal-apps
 pkgname=scopehal-apps
-_tagname=0.1.1
-pkgver=${_tagname//-/_}
-pkgrel=4
+_tagname=0.2-rc1
+pkgver=${_tagname//-/+}
+pkgrel=5
 epoch=
 pkgdesc="ngscopeclient and other client applications for libscopehal"
 arch=($CARCH)
@@ -24,7 +24,6 @@ depends=(
     libsigc++-3.0
     libstdc++
     libtirpc
-    libx11
     glfw
     glslang 
     hicolor-icon-theme
@@ -71,7 +70,7 @@ source=(
     "wayland-protocols::git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git"
     "imgui_markdown::git+https://github.com/juliettef/imgui_markdown.git"
 )
-sha256sums=('8c8203c03e10160a922b5b5104761089b79693d6ea585be32be5a07707142cf5'
+sha256sums=('4f97adf87312f261c197567c4270b3c488d8c032790b9c2cd9c29d5ceb7c0298'
             'SKIP'
             'SKIP'
             'SKIP'
