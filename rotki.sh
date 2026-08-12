@@ -1,4 +1,4 @@
 #!/bin/sh
-# When APPIMAGE is unset, the app hangs on the loading screen because the initial update-check promise never resolves.
-export APPIMAGE="/opt/rotki/rotki"
-exec /opt/rotki/rotki "$@"
+# APPIMAGE prevents electron-updater loading hang
+export APPIMAGE=1
+exec electron41 --require /usr/lib/rotki/resources-path.cjs /usr/lib/rotki/app.asar "$@"

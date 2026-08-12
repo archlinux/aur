@@ -2,16 +2,17 @@
 
 pkgname=rotki
 pkgver=1.43.2 # renovate: datasource=github-releases depName=rotki/rotki
-pkgrel=2
+pkgrel=3
 pkgdesc='A portfolio tracking, analytics, accounting and management application that protects your privacy'
 arch=('x86_64' 'aarch64')
 url='https://github.com/rotki/rotki'
 license=('AGPL-3.0-only')
-provides=("$pkgname")
+_electron=electron41
 conflicts=("$pkgname-bin")
 depends=(
-	'gtk3'
-	'nss'
+	"$_electron"
+	'zlib'
+	'hicolor-icon-theme'
 )
 makedepends=(
 	'python'
@@ -27,10 +28,12 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 	"rotki.sh"
 	"rotki.desktop"
+	"resources-path.cjs"
 )
-sha512sums=('7056697b15864f7fbed3d932b007453ec829a2ea4130c346f86a694f5215c43beaf7f3dd2d8ad33b7273db8ed65b8936ac8c4df668b8dfefdb45a829ebdbfe35'
-	'eb0bda9312d9b7f09d758c7b13dc60acb32af5119b63e526c04b52bf15630cc80d0a69d867aa062253c332592e5e6490ea63f8f765023032d4994a6a2fe05cca'
-	'ecaa5f356d0fabe9b6baa1432c6f047f9acfc75d5dc0e859dab06e182b34c9442cefcff1efac8cec826dc943c7f0f85e5809aea60dea21c99b41927f17e5117a')
+b2sums=('8c04bfcb727cc1720e362f896f83491fef6db99687574818aa65d799308533f2cfbf784bd781bf35d431553231fc69eb0812f3ec1761cabcf158f4548cb52671'
+	'd29df9c9116e94e650552b1bb36fcb546fff001609a264fb4e7fb211d9222d3f974a10bd3108f07d4b5012ebeee27303b422ca96d80f5f6eaf91ccc6a5e3e2d9'
+	'5a82adf633e21f6655532b9fb84c9e38135396e39ace6af82258c5f4ee102cde914ec51e1c33b5f110f7751df9cfa42b62c2ebe39bb174eb92fdfbbb62bb6fba'
+	'dd7658075a2181d7e41b5abc479b0b2beaad8f7ea0406555d805396aabadf5ed7c978d8a60f27fc1fb480ac0e173e52f05226cf44917d783f6fd76d144cca516')
 
 _ensure_local_nvm() {
 	which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
@@ -41,15 +44,19 @@ _ensure_local_nvm() {
 }
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver" || exit
+	cd "$srcdir/$pkgname-$pkgver"
 	_ensure_local_nvm
+
+	export RUSTUP_TOOLCHAIN=stable
+	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" \
+		--manifest-path ./colibri/Cargo.toml
 
 	uv sync --group packaging
 
 	# Rotki doesn't include pyinstaller as a UV dependency, so install it
 	uv pip install pyinstaller
 
-	cd frontend || exit
+	cd frontend
 	nvm install
 	nvm use
 	export CYPRESS_INSTALL_BINARY=0 # Avoid downloading Cypress binary during frontend install
@@ -57,11 +64,13 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver" || exit
+	cd "$srcdir/$pkgname-$pkgver"
 	_ensure_local_nvm
 
 	# Build colibri rust binary
+	export RUSTUP_TOOLCHAIN=stable
 	cargo build \
+		--frozen \
 		--target-dir build/colibri \
 		--manifest-path ./colibri/Cargo.toml \
 		--release
@@ -74,27 +83,38 @@ build() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver"
 	uv run pyinstaller --noconfirm --clean --distpath "${PWD}/build/backend" rotkehlchen.spec
 
-	# Build the Electron frontend and package into an unpacked directory (--dir)
-	cd frontend || exit
+	# Build the Electron frontend
+	cd frontend
 	nvm use
 	export ROTKI_VERSION="$pkgver"
 	pnpm run build
-	pnpm run electron:package -- --dir
+	pnpm run electron:package -- --dir \
+		-c.electronDist=/usr/lib/$_electron \
+		-c.electronVersion="$(cat /usr/lib/$_electron/version)"
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver" || exit
+	cd "$srcdir/$pkgname-$pkgver"
 
-	install -d "$pkgdir/opt/$pkgname" "$pkgdir/usr/bin"
+	_resources="frontend/app/build/linux-unpacked/resources"
 
-	# Move the unpacked electron app produced by electron-builder --dir
-	mv frontend/app/build/linux-unpacked/* "$pkgdir/opt/$pkgname/"
+	# App resources
+	install -d "$pkgdir/usr/lib/$pkgname"
+	install -Dm644 "$_resources/app.asar" "$pkgdir/usr/lib/$pkgname/app.asar"
+	cp -a "$_resources/backend" "$_resources/colibri" "$pkgdir/usr/lib/$pkgname/"
 
+	# Override process.resourcesPath for system electron
+	install -Dm644 "$srcdir/resources-path.cjs" "$pkgdir/usr/lib/$pkgname/resources-path.cjs"
+
+	# Launcher
 	install -Dm755 "$srcdir/rotki.sh" "$pkgdir/usr/bin/rotki"
 
+	# Desktop file
 	install -Dm644 "$srcdir/rotki.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
-	install -Dm644 frontend/app/public/assets/images/protocols/rotki.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/rotki.svg"
+	# Icon
+	install -Dm644 frontend/app/public/assets/images/protocols/rotki.svg \
+		"$pkgdir/usr/share/icons/hicolor/scalable/apps/rotki.svg"
 
 	# License
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
