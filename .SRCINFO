@@ -1,7 +1,7 @@
 pkgbase = jellyfin-ffmpeg-bin
 	pkgdesc = Jellyfin fork of ffmpeg (portable static build)
-	pkgver = 7.1.4
-	pkgrel = 3
+	pkgver = _p
+	pkgrel = 4
 	url = https://github.com/jellyfin/jellyfin-ffmpeg
 	arch = x86_64
 	arch = aarch64
