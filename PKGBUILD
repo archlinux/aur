@@ -1,6 +1,6 @@
 # Maintainer: thongor77 <magetriste@proton.me>
 pkgname=nmlinux
-pkgver=1.7.8
+pkgver=1.7.12
 pkgrel=1
 pkgdesc="A unified network toolkit for Linux and macOS — SSH, WinRM, topology, 29 modules"
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
 )
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://github.com/thongor77/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c2a9107a8f92e5bf64e1467fcc7a1b795ecc8e9942662d740a1b301e0fe52ca6')
+sha256sums=('54f084a62289a0bf98d45b53edae2e64b37c8ae6489b808958d27d962948815d')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -45,6 +45,7 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 data/nmlinux.desktop "${pkgdir}/usr/share/applications/nmlinux.desktop"
+    install -Dm644 data/nmlinux.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/nmlinux.png"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
