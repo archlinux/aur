@@ -2,9 +2,9 @@
 # Contributor: gilcu3
 
 pkgname=jellyfin-ffmpeg-bin
-pkgver="${pkgver}_p${_pkgrel_upstream}"
 _pkgver=7.1.4
 _pkgrel_upstream=3
+pkgver="${_pkgver}_p${_pkgrel_upstream}"
 pkgrel=4
 _debver="${_pkgver}-${_pkgrel_upstream}"
 pkgdesc='Jellyfin fork of ffmpeg (portable static build)'
