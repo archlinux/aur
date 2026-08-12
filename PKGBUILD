@@ -1,6 +1,13 @@
 # Maintainer: Frédéric Bogaerts <fred@netpack.pt>
 pkgname=xfb
-pkgver=3.1416
+# pacman compares the dot-separated segments as integers, not as decimals, so
+# 3.14159 outranks 3.1416 (14159 > 1416) and every rounded release looks like a
+# downgrade. The epoch overrides that comparison. It must never be removed or
+# lowered: dropping it would make the next release look older than this one to
+# every machine that installed it. Raise it only if the version ever has to go
+# backwards again.
+epoch=1
+pkgver=3.1417
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -151,16 +158,16 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v3.1416:"
-    echo "  - Pads: a new tab next to DJ with a grid of labelled, coloured pads"
-    echo "    that fire a jingle, a stab or a bed the moment you press them."
-    echo "    Eight banks, per-pad volume and looping, made for a touch screen"
-    echo "  - Portuguese and French translations are complete (1369/1369)"
-    echo "  - Every entry in every top menu now carries an icon"
-    echo "  - Tor is no longer bundled: it is installed on first use of the"
-    echo "    Torrents feature, with your consent, like the other optional tools"
-    echo "  - Fixed: the update check reported 'you have the latest version'"
-    echo "    even when a newer release was out"
+    echo "New in v3.1417:"
+    echo "  - Tab no longer traps you: the library tables and the playlist let"
+    echo "    focus leave again, and the arrow keys still move within them"
+    echo "  - Tab gets out of a multi-line notes field, back to the OK button"
+    echo "  - The Pads grid is a single stop in the tab chain instead of 24+;"
+    echo "    the arrows walk the grid and the stop follows the focused pad"
+    echo "  - The playlist reorders with Ctrl+Shift+Up/Down, announced for"
+    echo "    screen readers; until now that needed a mouse drag"
+    echo "  - This package carries an epoch (1:) so that pacman stops ranking"
+    echo "    3.14159 above 3.1416 and offers these upgrades again"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"
