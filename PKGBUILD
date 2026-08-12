@@ -1,5 +1,5 @@
 pkgname=fenriz-git
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A minimal tiling Wayland compositor built on wlroots and SceneFX"
 arch=('x86_64')
