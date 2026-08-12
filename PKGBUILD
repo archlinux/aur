@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=netpeek
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Mordern network scanner for GNOME"
 arch=(any)
@@ -23,7 +23,7 @@ makedepends=(
     ninja
     )
 source=("git+https://github.com/ZingyTomato/NetPeek.git#tag=v${pkgver}")
-sha256sums=('a62859b9eef7092251cbf4884c9259d115437ab289dd0dfcb3bc40ee5946ce1a')
+sha256sums=('57e96bc50c9fe2c0f224a8e69ca9e7540bec7348cbdfd78bfaf497aeab51a270')
 
 build() {
   cd NetPeek
