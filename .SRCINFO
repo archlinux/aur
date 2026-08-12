@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gdb-target
 	pkgdesc = Cross-debugger server for Win32 and Win64 using MinGW-w64 extracted from Debian package
 	pkgver = 17.2.1+13.4+b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://packages.debian.org/sid/all/gdb-mingw-w64-target
 	arch = i686
 	arch = x86_64
