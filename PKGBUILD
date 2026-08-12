@@ -1,6 +1,6 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 pkgname=nuclei-git
-pkgver=3.11.0.r6445.64bc83e
+pkgver=3.11.1.r6454.a3f1367
 pkgrel=1
 pkgdesc="Fast and customizable vulnerability scanner, git version"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -51,11 +51,9 @@ check() {
   export CGO_LDFLAGS="$LDFLAGS"
   export GOPATH="$srcdir"
   export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw'
-  _notest=(
-    'github\.com/projectdiscovery/nuclei/v3/lib' # Connects to an external host and gets an unexpected result
-  )
-  IFS='|' _grep="^(${_notest[*]})$"
-  go test $(go list ./... | grep -Pv "$_grep")
+  # Tests to skip
+  # - github.com/projectdiscovery/nuclei/v3/lib: Connects to an external host and gets an unexpected result
+  go test $(go list ./... | grep -v "nuclei/v3/lib$")
 }
 
 package() {
