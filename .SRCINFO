@@ -1,7 +1,7 @@
 pkgbase = qoder-cn-bin
 	pkgdesc = Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.8.1
-	pkgrel = 2
+	pkgver = 1.23.0
+	pkgrel = 1
 	url = https://qoder.com.cn
 	arch = x86_64
 	license = LicenseRef-custom
@@ -11,15 +11,15 @@ pkgbase = qoder-cn-bin
 	depends = python
 	optdepends = bash
 	optdepends = zsh
-	provides = qoder-cn=1.8.1
+	provides = qoder-cn=1.23.0
 	conflicts = qoder-cn
 	options = !emptydirs
 	options = !strip
-	source = qoder-cn-1.8.1.rpm::https://ide.qoder.com.cn/qoder/release/lastest/qoder-cn_x86_64.rpm
+	source = qoder-cn-1.23.0.rpm::https://ide.qoder.com.cn/qoder/release/lastest/qoder-cn_x86_64.rpm
 	source = LICENSE.html
 	source = qoder-cn.js
 	source = qoder-cn.sh
-	sha256sums = 0f930049c093909e20040d95fe6ff22577e78ecf6aba0e7b32436755c9435458
+	sha256sums = 93078924cf4858ade1f9d7ebce8d742cc63df298cabdf29e2abcf8978359230b
 	sha256sums = 64a79bddff14167a290d3547d7b4bd00cf693be6d11fb6b7018bca9d9d778ab4
 	sha256sums = 5956a85ba4da0a580d2e93197fd5de03eee3be3d541aab68562435a09a3e94fe
 	sha256sums = 700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599
