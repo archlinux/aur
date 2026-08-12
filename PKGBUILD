@@ -5,11 +5,11 @@
 
 pkgname=paper-velocity
 # curl -s "https://fill.papermc.io/v3/projects/velocity" | python3 -m json.tool
-_pkgver=3.5.0-SNAPSHOT
+_pkgver=4.1.0-SNAPSHOT
 # curl -s "https://fill.papermc.io/v3/projects/velocity/versions/${_pkgver}" | python3 -m json.tool
-_build=605
+_build=16
 # curl -s "https://fill.papermc.io/v3/projects/velocity/versions/${_pkgver}/builds/${_build}" | python3 -m json.tool
-_jar_sha256=0ec616020166465dacca3b790d3db2b246f8f7c13b3aaacaae60c825744a66e0
+_jar_sha256=aebade8be3b15d7c3c61514a50ce857cbf78ee87bd32e8d16d2352c6ca3e472f
 pkgver="${_pkgver//-/_}+b${_build}"
 pkgrel=1
 _mng_ver=1.0.0
@@ -17,7 +17,7 @@ pkgdesc="The modern, next-generation Minecraft server proxy."
 arch=('any')
 url="https://papermc.io/software/velocity"
 license=('GPL-3.0-or-later')
-depends=('java-runtime-headless>=16' 'tmux' 'sudo' 'bash' 'awk' 'sed')
+depends=('java-runtime-headless>=25' 'tmux' 'sudo' 'bash' 'awk' 'sed')
 optdepends=("netcat: required in order to suspend an idle server")
 conflicts=('paper-velocity-git')
 backup=('etc/conf.d/velocity')

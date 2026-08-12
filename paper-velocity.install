@@ -3,10 +3,11 @@ _user="velocity"
 _server_root="/srv/velocity"
 
 post_upgrade() {
-	echo "The management script switched from GNU screen to tmux."
-	echo "Manual intervention is needed to close the previous GNU screen sessions:"
-	echo "Use \`sudo -u ${_user} screen -S ${_game} -rx\` to attach to the ${_game} session and stop it."
-	echo "Do the same for the \`idle_server_${_game}\` session if one is running."
+	if (( $(vercmp "$2" 4.0.0) < 0 )); then
+		echo "Velocity 4 requires Java 25 or newer."
+		echo "Set the java path in SERVER_START_CMD in /etc/conf.d/${_game},"
+		echo "or use \`archlinux-java\` to change the system default."
+	fi
 }
 
 post_install() {
