@@ -1,7 +1,7 @@
 pkgbase = openshell
 	pkgdesc = The safe, private runtime for autonomous AI agents.
 	pkgver = 0.0.103
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NVIDIA/OpenShell
 	install = openshell.install
 	arch = x86_64

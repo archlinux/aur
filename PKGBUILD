@@ -1,8 +1,8 @@
-# Maintainer: Ross (chadsr) <git at ross dot ch>
+# Maintainer: chadsr <git at ross dot ch>
 
 pkgname=openshell
 pkgver=0.0.103 # renovate: datasource=github-releases depName=NVIDIA/OpenShell
-pkgrel=1
+pkgrel=2
 pkgdesc="The safe, private runtime for autonomous AI agents."
 arch=('x86_64' 'aarch64')
 url='https://github.com/NVIDIA/OpenShell'
@@ -26,13 +26,13 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('cb853741ae7acba3bc5235f7013f43710231433f69b814df70f4bc837b2a7d3c9f06149e654c46ce7b559bec8a21ccad564069c4e95f207d72200709f5a15529')
 
 prepare() {
-	cd "OpenShell-$pkgver" || exit
+	cd "OpenShell-$pkgver"
 
 	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	cd "OpenShell-$pkgver" || exit
+	cd "OpenShell-$pkgver"
 	export CARGO_TARGET_DIR=target
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export OPENSHELL_GIT_VERSION="$pkgver"
@@ -54,7 +54,7 @@ build() {
 }
 
 check() {
-	cd "OpenShell-$pkgver" || exit
+	cd "OpenShell-$pkgver"
 	export CARGO_TARGET_DIR=target
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export OPENSHELL_GIT_VERSION="$pkgver"
@@ -66,7 +66,7 @@ check() {
 }
 
 package() {
-	cd "OpenShell-$pkgver" || exit
+	cd "OpenShell-$pkgver"
 	install -Dm0755 target/release/openshell -t "$pkgdir/usr/bin/"
 	install -Dm0755 target/release/openshell-gateway -t "$pkgdir/usr/bin/"
 
