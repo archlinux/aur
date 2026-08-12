@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.1
+_pkgver=13.1.3
 _branding=dr460nized
 
 __pkgname=$_pkgname
@@ -15,71 +15,55 @@ pkgdesc="FireDragon is a cross-platform, feature-rich and privacy-focused web br
 url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
 arch=(x86_64 aarch64)
 license=(MPL-2.0)
-depends=(
-  alsa-lib
-  at-spi2-core
-  bash
-  cairo
-  dbus
-  ffmpeg
-  fontconfig
-  freetype2
-  gdk-pixbuf2
-  glib2
-  glibc
-  gtk3
-  hicolor-icon-theme
-  libgcc
-  libpulse
-  libstdc++
-  libx11
-  libxcb
-  libxcomposite
-  libxdamage
-  libxext
-  libxfixes
-  libxrandr
-  libxss
-  libxt
-  mime-types
-  nspr
-  nss
-  pango
-  ttf-font
-)
-makedepends=(
-  git
-)
-optdepends=(
-  'hunspell-en_US: Spell checking, American English'
-  'libnotify: Notification integration'
-  'networkmanager: Location detection via available WiFi networks'
-  'speech-dispatcher: Text-to-Speech'
-  'xdg-desktop-portal: Screensharing with Wayland'
-)
+depends=(alsa-lib
+         at-spi2-core
+         bash
+         cairo
+         dbus
+         ffmpeg
+         fontconfig
+         freetype2
+         gdk-pixbuf2
+         glib2
+         glibc
+         gtk3
+         hicolor-icon-theme
+         libgcc
+         libpulse
+         libstdc++
+         libx11
+         libxcb
+         libxcomposite
+         libxdamage
+         libxext
+         libxfixes
+         libxrandr
+         libxss
+         libxt
+         mime-types
+         nspr
+         nss
+         pango
+         ttf-font)
+makedepends=(git)
+optdepends=('hunspell-en_US: Spell checking, American English'
+            'libnotify: Notification integration'
+            'networkmanager: Location detection via available WiFi networks'
+            'speech-dispatcher: Text-to-Speech'
+            'xdg-desktop-portal: Screensharing with Wayland')
 provides=($_pkgname)
 conflicts=($_pkgname)
 replaces=($__pkgname-next-bin)
-options=(
-  !emptydirs
-)
+options=(!emptydirs)
 install=$_pkgname.install
-noextract=(
-  $__pkgname-v$_pkgver.linux-x64.tar.xz
-  $__pkgname-v$_pkgver.linux-arm64.tar.xz
-)
-source=(
-  $_pkgname::git+$url.git#tag=v$_pkgver
-)
-source_x86_64=(
-  $__pkgname-v$_pkgver.linux-x64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-x64.tar.xz
-)
-source_aarch64=(
-  $__pkgname-v$_pkgver.linux-arm64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-arm64.tar.xz
-)
-sha256sums=('1cd17a1fdaf804113f34eb1c231825ab02064253999e9cba391b4f03cfe5936e')
-sha256sums_x86_64=('66ba48750721cc6421c7a820fb97805cc182b6ce5a682aff658fe8b7c1c34931')
-sha256sums_aarch64=('168678afd202a167c18e753df6b5aaf05622a30c66902faa583600290e928125')
+noextract=($__pkgname-v$_pkgver.linux-x64.tar.xz
+           $__pkgname-v$_pkgver.linux-arm64.tar.xz)
+source=($_pkgname::git+$url.git#tag=v$_pkgver)
+source_x86_64=($__pkgname-v$_pkgver.linux-x64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-x64.tar.xz)
+source_aarch64=($__pkgname-v$_pkgver.linux-arm64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-arm64.tar.xz)
+sha256sums=('1a2da143383a19bb6bea809cebc9a620bac9828898c3a8903cee0625f3c56216')
+sha256sums_x86_64=('3516a889c9c82f91677ed67c4b4a67f9a1c200413c5d63fc9fbc5ebc4f2fdf47')
+sha256sums_aarch64=('70dedcff02fbd99af76980106d2c0469e37cdcc58b2758314a5860f5795291fb')
 
 package() {
   mkdir -p "$pkgdir/usr/lib"
