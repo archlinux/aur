@@ -1,11 +1,12 @@
-# Maintainer: Pierre-Loup A. Griffais (pgriffais@valvesoftware.com)
+# Maintainer: L1bT0rch <L1bT0rch@proton.me>
+# Contributor: Pierre-Loup A. Griffais (pgriffais@valvesoftware.com)
 
 pkgname=jupiter-hw-support
 _srctag=jupiter-20260807.1
 _srcver=${_srctag#jupiter-}
 pkgver=${_srcver//-/.}
-pkgrel=1
-arch=('any')
+pkgrel=2
+arch=(x86_64)
 url="https://github.com/evlav/jupiter-hw-support"
 pkgdesc="Jupiter HW support package"
 license=('MIT')
@@ -21,9 +22,9 @@ depends=('python-evdev'
          'plymouth'             # for the splash screen when firmware updates on boot up
         )
 optdepends=('grub-steamos')
-makedepends=('rsync' 'git' 'openssh' 'xorg-xcursorgen')
+makedepends=('rsync' 'git' 'xorg-xcursorgen')
 source=("git+https://github.com/evlav/jupiter-hw-support.git#tag=$_srctag")
-sha512sums=('2007167cd4a0f159609fad06fc1ba760841ac2adc305b56692804d97c3b8eb6eca901f58b7c7adb9871fe57019996617908be02cc626c65990bb2a12c2042e83')
+sha512sums=('SKIP')
 # Some pre-compiled binaries such as `rfp-cli` break when touched by `strip` :-\
 options+=('!strip')
 
