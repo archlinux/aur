@@ -2,7 +2,7 @@
 
 pkgbase=cuopt
 pkgname=(cuopt python-cuopt)
-pkgver=26.06.00
+pkgver=26.08.00
 pkgrel=1
 pkgdesc="NVIDIA cuOpt is an open-source GPU-accelerated optimization engine delivering near real-time solutions for complex decision-making challenges."
 url="https://github.com/NVIDIA/cuopt"
@@ -16,28 +16,27 @@ source=(
     "missing-pkg.patch"
     "fix-nvcc-dependent-value-type.patch"
 )
-sha256sums=(
-    '52687d3f8e662fe8ab26677cc057ffa7b444d1c8a6434f4bd74ed171590d0024'
-    '6cdead3b18e784c5b8654239be1bdb02862d4c37d5d4c2798f6d111c8ccb7829'
-    '162f42f35f0727f68f3890f454749e04f129b023c06e0fdf99122b1d4de3ca0c'
-    'cdc0181943c79531760ec98346b86b75e90ae2332d821bc4d7187ae8dd3fb77a'
-)
+sha256sums=('f2869097cc5a10984ccdbb140d3f813e918f7b006c80d5be7bd85f662a053bc7'
+            '6cdead3b18e784c5b8654239be1bdb02862d4c37d5d4c2798f6d111c8ccb7829'
+            '162f42f35f0727f68f3890f454749e04f129b023c06e0fdf99122b1d4de3ca0c'
+            'cdc0181943c79531760ec98346b86b75e90ae2332d821bc4d7187ae8dd3fb77a')
 
 prepare() {
     cd "$srcdir/$pkgbase-$pkgver"
     patch -p1 "cpp/CMakeLists.txt" < "$srcdir/system-lib.patch"
     patch -p1 "python/cuopt/CMakeLists.txt" < "$srcdir/missing-pkg.patch"
-    patch -p1 < "$srcdir/fix-nvcc-dependent-value-type.patch"
+    #patch -p1 < "$srcdir/fix-nvcc-dependent-value-type.patch"
 }
 
 
 build() {
     cd "$srcdir/$pkgbase-$pkgver"
     export CXXFLAGS+=" -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER -Wno-error=cpp"
-    export CUDAFLAGS+=" -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER -Wno-error=cpp"
+    export CUDAFLAGS+=" -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER -Wno-error=cpp -Wno-error=maybe-uninitialized"
     cmake -B build -S cpp \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_CUDA_HOST_COMPILER=g++ \
         -DCMAKE_CUDA_ARCHITECTURES="native" \
         -DBUILD_TESTS=OFF \
         -DFETCH_RAPIDS=OFF \
