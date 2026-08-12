@@ -1,6 +1,6 @@
 pkgbase = nls
 	pkgdesc = A modern ls with useful tables
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/nolight132/nls
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = nls
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/nolight132/nls.git#tag=v0.12.0
+	source = git+https://github.com/nolight132/nls.git#tag=v0.13.0
 	sha256sums = SKIP
 
 pkgname = nls
