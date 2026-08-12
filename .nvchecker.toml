@@ -1,0 +1,5 @@
+[python-deepspeed]
+source = 'github'
+github = 'liodon-ai/torchembed'
+use_latest_release = true
+prefix = 'v'

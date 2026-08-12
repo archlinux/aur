@@ -1,0 +1,16 @@
+pkgbase = python-torchembed
+	pkgdesc = A PyTorch library of modern embedding strategies missing from torch.nn
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/liodon-ai/torchembed
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-pytorch
+	optdepends = python-triton>=3.0: For GPU-accelerated kernels
+	source = https://github.com/liodon-ai/torchembed/archive/refs/tags/v0.3.1.tar.gz
+	sha384sums = af031975af9948cdda9a9886aa2c985720e059d74616367b35843882e925fe9e10f1da67013889401653ef68012a22f8
+
+pkgname = python-torchembed
