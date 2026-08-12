@@ -16,7 +16,7 @@ url="https://github.com/bnomei/tmux-mcp"
 arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=('tmux')
-provides=("${_pkgname}")
+provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-aarch64-unknown-linux-musl.tar.gz")

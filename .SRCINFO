@@ -7,7 +7,7 @@ pkgbase = tmux-mcp-rs-bin
 	arch = aarch64
 	license = MIT
 	depends = tmux
-	provides = tmux-mcp-rs
+	provides = tmux-mcp-rs=0.6.0
 	conflicts = tmux-mcp-rs
 	source = LICENSE::https://github.com/bnomei/tmux-mcp/raw/v0.6.0/LICENSE
 	sha256sums = 077d138387dd107179fec3cefab95ced64f27c20845d014488fc542c4093c962
