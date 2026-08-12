@@ -3,7 +3,7 @@
 
 pkgname=heroic-games-launcher-electron-git
 _pkgname=HeroicGamesLauncher
-pkgver=2.22.0.r8.g95c9fc7e6
+pkgver=2.22.1.r5.g37a9bef67
 pkgrel=1
 _electron=electron
 pkgdesc="Native GOG, Epic Games and Amazon games launcher. Development version (Git) using system Electron."
@@ -21,10 +21,8 @@ depends=(
 makedepends=("$_electron" 'git' 'pnpm')
 provides=('heroic-games-launcher')
 conflicts=('heroic-games-launcher')
-source=("git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git"
-        "fix-exec-heroic.patch")
-sha256sums=('SKIP'
-            '4950bb0cf71901f684cc0ef829ac51e887978ca1c3343c5d1ec1aed54d8478ec')
+source=("git+https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher.git")
+sha256sums=('SKIP')
 
 optdepends=(
     'gamemode: Optimise Linux system performance on demand'
@@ -43,8 +41,6 @@ pkgver() {
 
 prepare() {
     cd "$_pkgname"
-    # Ensures Steam shortcuts point to our wrapper instead of raw electron
-    patch -p1 -i "$srcdir/fix-exec-heroic.patch"
     # Fix desktop file for system integration
     sed -i "s/Exec=heroic-run /Exec=heroic /" "flatpak/com.heroicgameslauncher.hgl.desktop"
 }
