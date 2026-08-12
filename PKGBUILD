@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=actual-bin
 _pkgname=Actual
-pkgver=26.7.0
+pkgver=26.8.1
 _electronversion=41
 pkgrel=1
 pkgdesc="A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64.AppImage")
 sha256sums=('71e4b3053e4622e1f5fc5d8aa5336350de32ead39247924c596d659b89b47b6f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('d9470d8a74b2fe3fda6612eed257191b8b53176952b8bf53be1ae8420847e740')
-sha256sums_x86_64=('5c55cec1e1d5f9a982090c4dc95dfd8cba3b7d98b7616ca9e565f3a95d90568f')
+sha256sums_aarch64=('77843187fadde2b68e0682a3991db0512c4e2dfb0c1e71de2fb9929694603934')
+sha256sums_x86_64=('7c6998c8420c163eabe0985ad01309476849d9c2a3a3d0c7c87658ef6ce3ace6')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -60,13 +60,19 @@ prepare() {
     _check_electron_version
     local _app_dir=$(_get_app_dir)
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
-    rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/bcrypt/prebuilds/"{darwin-*,win32-*,linux-arm}
+    rm -rf \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/bcrypt/prebuilds/"{darwin-*,win32-*,linux-arm,freebsd-*} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/argon2/prebuilds/"{darwin-*,win32-*,linux-arm,freebsd-*}
     case "${CARCH}" in
         aarch64)
-            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/bcrypt/prebuilds/linux-x64"
+            rm -rf \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/bcrypt/prebuilds/linux-x64" \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/argon2/prebuilds/linux-x64"
             ;;
         x86_64)
-            rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/bcrypt/prebuilds/linux-arm64"
+            rm -rf \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/bcrypt/prebuilds/linux-arm64" \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/argon2/prebuilds/linux-arm64"
             ;;
     esac
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
@@ -75,7 +81,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"

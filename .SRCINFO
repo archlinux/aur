@@ -1,22 +1,22 @@
 pkgbase = actual-bin
 	pkgdesc = A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)
-	pkgver = 26.7.0
+	pkgver = 26.8.1
 	pkgrel = 1
 	url = https://actualbudget.org/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron41
-	provides = actual=26.7.0
+	provides = actual=26.8.1
 	conflicts = actual
 	conflicts = actual-appimage
-	source = LICENSE-26.7.0.txt::https://raw.githubusercontent.com/actualbudget/actual/v26.7.0/LICENSE.txt
+	source = LICENSE-26.8.1.txt::https://raw.githubusercontent.com/actualbudget/actual/v26.8.1/LICENSE.txt
 	source = actual.sh
 	sha256sums = 71e4b3053e4622e1f5fc5d8aa5336350de32ead39247924c596d659b89b47b6f
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = actual-26.7.0-aarch64.AppImage::https://github.com/actualbudget/actual/releases/download/v26.7.0/Actual-linux-arm64.AppImage
-	sha256sums_aarch64 = d9470d8a74b2fe3fda6612eed257191b8b53176952b8bf53be1ae8420847e740
-	source_x86_64 = actual-26.7.0-x86_64.AppImage::https://github.com/actualbudget/actual/releases/download/v26.7.0/Actual-linux-x86_64.AppImage
-	sha256sums_x86_64 = 5c55cec1e1d5f9a982090c4dc95dfd8cba3b7d98b7616ca9e565f3a95d90568f
+	source_aarch64 = actual-26.8.1-aarch64.AppImage::https://github.com/actualbudget/actual/releases/download/v26.8.1/Actual-linux-arm64.AppImage
+	sha256sums_aarch64 = 77843187fadde2b68e0682a3991db0512c4e2dfb0c1e71de2fb9929694603934
+	source_x86_64 = actual-26.8.1-x86_64.AppImage::https://github.com/actualbudget/actual/releases/download/v26.8.1/Actual-linux-x86_64.AppImage
+	sha256sums_x86_64 = 7c6998c8420c163eabe0985ad01309476849d9c2a3a3d0c7c87658ef6ce3ace6
 
 pkgname = actual-bin
