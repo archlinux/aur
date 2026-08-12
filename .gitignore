@@ -1,0 +1,6 @@
+# Ignore everything by default; allowlist what belongs in git.
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
