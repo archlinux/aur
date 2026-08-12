@@ -1,10 +1,10 @@
 pkgbase = python-isbnlib2
 	pkgdesc = Extract, clean, transform, hyphenate and metadata for ISBNs
 	pkgver = 3.11.21
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hans-fritz-pommes/isbnlib
 	arch = any
-	license = LGPL-3.0-only
+	license = LGPL-3.0-or-later
 	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
@@ -12,7 +12,7 @@ pkgbase = python-isbnlib2
 	depends = python
 	provides = python-isbnlib
 	conflicts = python-isbnlib
-	source = isbnlib-3.11.21.tar.gz::https://github.com/hans-fritz-pommes/isbnlib/archive/v3.11.21/isbnlib-.tar.gz
+	source = isbnlib-3.11.21.tar.gz::https://github.com/hans-fritz-pommes/isbnlib/archive/v3.11.21.tar.gz
 	sha256sums = fc67d64fbb0f9286973429ede2f182d0781874c7dc3fb81b06872acc7a55678e
 
 pkgname = python-isbnlib2
