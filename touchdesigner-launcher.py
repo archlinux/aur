@@ -248,6 +248,33 @@ def apply_font_dpi():
         print(f"  LogPixels DPI set to {dpi_val} (from TD_DPI)")
 
 
+def _tree_fingerprint(root: str) -> str | None:
+    """SHA-256 over relative paths + contents of a folder's DAT scripts.
+    Only .text/.table files are hashed: they carry the fix's logic and
+    survive the expand/collapse round-trip unchanged, while node metadata
+    (.n/.parm) can legitimately differ after a project save.
+    Returns None if the folder does not exist."""
+    import hashlib
+
+    if not os.path.isdir(root):
+        return None
+    h = hashlib.sha256()
+    for dirpath, dirnames, filenames in os.walk(root):
+        dirnames.sort()
+        for name in sorted(filenames):
+            if not (name.endswith(".text") or name.endswith(".table")):
+                continue
+            full = os.path.join(dirpath, name)
+            h.update(os.path.relpath(full, root).encode("utf-8", "surrogateescape"))
+            h.update(b"\x00")
+            try:
+                with open(full, "rb") as f:
+                    h.update(f.read())
+            except OSError:
+                continue
+    return h.hexdigest()
+
+
 def patch_toe(toe_path):
     """Patch a .toe file with wine_ui_fixes.tox."""
     toe_expand = f"{TD_DIR}/bin/toeexpand.exe"
@@ -289,6 +316,7 @@ def patch_toe(toe_path):
                     fix_entries.append(line)
 
     fix_dir = fix_src + ".dir"
+    fix_fp = _tree_fingerprint(os.path.join(fix_dir, "wine_ui_fixes"))
 
     rc, _, _ = wine_run([WINE, toe_expand, "z:" + toe_path])
     if rc == -1:
@@ -296,7 +324,12 @@ def patch_toe(toe_path):
         shutil.rmtree(tmp, True)
         return
 
-    needs_patch = not os.path.isdir(os.path.join(toe_dir, "wine_ui_fixes"))
+    injected_fp = _tree_fingerprint(os.path.join(toe_dir, "wine_ui_fixes"))
+    # Version-aware: repatch when missing or when the injected fix differs
+    if fix_fp is not None:
+        needs_patch = injected_fp != fix_fp
+    else:
+        needs_patch = injected_fp is None
     shutil.rmtree(toe_dir, True)
     shutil.rmtree(toe_toc, True)
 
@@ -320,12 +353,25 @@ def patch_toe(toe_path):
         for f in os.listdir(fix_dir):
             src = os.path.join(fix_dir, f)
             dst = os.path.join(toe_dir, f)
+            # Replace (not merge) so an outdated injected fix is fully refreshed
+            if os.path.lexists(dst):
+                if os.path.isdir(dst) and not os.path.islink(dst):
+                    shutil.rmtree(dst, ignore_errors=True)
+                else:
+                    os.remove(dst)
             if os.path.isdir(src):
                 shutil.copytree(src, dst, symlinks=True, dirs_exist_ok=True)
             else:
                 shutil.copy2(src, dst)
 
     if fix_entries:
+        # Drop stale fix entries from a previous injection first, otherwise
+        # duplicate .toc entries corrupt the collapsed .toe (dropped DATs or
+        # .2-suffixed duplicates)
+        with open(toe_toc) as f:
+            toc_lines = [ln for ln in f if "wine_ui_fixes" not in ln]
+        with open(toe_toc, "w") as f:
+            f.writelines(toc_lines)
         with open(toe_toc, "a") as f:
             for entry in fix_entries:
                 f.write(entry + "\n")
@@ -367,6 +413,53 @@ def resolve_path(path):
     return os.path.realpath(path) if os.path.isfile(path) else path
 
 
+def auto_patch_toe_files():
+    """Patch NewProject.toe files and the custom startup file, mirroring the
+    bash launcher. Without this, launching TD with no .toe argument would
+    never apply the font fix (only the explicit input path was patched)."""
+    drive_c = os.path.join(WINE_PREFIX, "drive_c")
+    if not os.path.isdir(drive_c):
+        return
+    for root, _dirs, files in os.walk(drive_c):
+        for f in files:
+            if f.lower() == "newproject.toe":
+                path = os.path.join(root, f)
+                if os.path.isfile(path):
+                    patch_toe(path)
+
+    # Custom startup file (pref mode 2), same logic as the bash launcher
+    pref = os.path.join(
+        WINE_PREFIX,
+        "drive_c",
+        "users",
+        "steamuser",
+        "AppData",
+        "Local",
+        "Derivative",
+        "TouchDesigner099",
+        "pref.txt",
+    )
+    if not os.path.isfile(pref):
+        return
+    mode = ""
+    fname = ""
+    try:
+        with open(pref, errors="replace") as f:
+            for line in f:
+                line = line.rstrip("\r\n")
+                parts = line.split("\t")
+                if line.startswith("general.startupfilemode") and len(parts) > 1:
+                    mode = parts[1].strip()
+                elif line.startswith("general.startupfilename") and len(parts) > 1:
+                    fname = parts[1].strip()
+    except OSError:
+        return
+    if mode == "2" and fname:
+        path = resolve_path(fname)
+        if path and os.path.isfile(path):
+            patch_toe(path)
+
+
 def main():
     if "--help" in sys.argv or "-h" in sys.argv or "--h" in sys.argv:
         print("Usage: touchdesigner [.toe file]")
@@ -390,6 +483,7 @@ def main():
         restore_license()
 
     input_path = resolve_path(sys.argv[1] if len(sys.argv) > 1 else None)
+    auto_patch_toe_files()
     if (
         input_path
         and os.path.isfile(input_path)
