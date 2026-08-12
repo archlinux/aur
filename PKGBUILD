@@ -1,7 +1,7 @@
 pkgbase=inkstitch
 pkgname=('python-pystitch' 'inkstitch')
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://inkstitch.org/"
 _pystitchver=1.0.1

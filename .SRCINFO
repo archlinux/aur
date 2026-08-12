@@ -1,6 +1,6 @@
 pkgbase = inkstitch
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://inkstitch.org/
 	arch = any
 	makedepends = gettext
