@@ -1,5 +1,12 @@
-*
-!PKGBUILD
-!.SRCINFO
-!.gitignore
-!LICENSE
+/*
+
+!/.varve.toml
+
+!/PKGBUILD
+!/.SRCINFO
+!/.gitignore
+
+!/LICENSE
+!/LICENSES/
+!/LICENSES/**
+!/REUSE.toml
