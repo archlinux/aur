@@ -1,6 +1,6 @@
 pkgbase = bb_launcher-bin
 	pkgdesc = Dedicated launcher/mod manager combo app for Bloodborne on shadPS4 (binary version)
-	pkgver = 16.04
+	pkgver = 16.10
 	pkgrel = 1
 	url = https://github.com/rainmakerv3/BB_Launcher
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = bb_launcher-bin
 	options = !zipman
 	options = !emptydirs
 	options = !debug
-	source = 16.04-BB_Launcher-qt-Downloader.AppImage::https://github.com/rainmakerv3/BB_Launcher/releases/download/Release16.04/BB_Launcher-qt-Downloader.AppImage
-	sha256sums = 8b10dbb04585f88c3444eaa01106a944f6cc7778d92b9778c117498e662bfffc
+	source = 16.10-BB_Launcher-qt-Downloader.AppImage::https://github.com/rainmakerv3/BB_Launcher/releases/download/Release16.10/BB_Launcher-qt-Downloader.AppImage
+	sha256sums = 8960a20dba9293ed0b789447ece9ef7d8b664c2c13e8f8d7dc1db20f21c6fe62
 
 pkgname = bb_launcher-bin
