@@ -3,7 +3,7 @@
 # Maintainer: Kaleb
 pkgname=rpcs3-bin
 _pkgname=rpcs3
-pkgver=0.0.41.19508
+pkgver=0.0.42.19734
 pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator (Latest Binary)'
 arch=('x86_64')
