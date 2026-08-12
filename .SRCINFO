@@ -1,6 +1,6 @@
 pkgbase = glycin-ng
 	pkgdesc = In-process image decoder without bwrap dependency or useless bloat
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/QaidVoid/glycin-ng
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = glycin-ng
 	provides = glycin
 	conflicts = glycin
 	replaces = glycin
-	source = glycin-ng::git+https://github.com/QaidVoid/glycin-ng.git#tag=0.3.1
+	source = glycin-ng::git+https://github.com/QaidVoid/glycin-ng.git#tag=0.4.0
 	source = glycin-2-header::https://raw.githubusercontent.com/GNOME/glycin/80463391d9e8f3f136f48e5fd6a63c0bf116e884/libglycin/include/glycin.h
 	sha256sums = SKIP
 	sha256sums = SKIP
