@@ -1,6 +1,6 @@
 pkgbase = skwd-wall
 	pkgdesc = Quickshell-based image, video & wallpaper engine wallpaper selector with color sorting, Matugen integration, and Wallhaven & Steam in-app browsing
-	pkgver = r102.737889e
+	pkgver = r103.53a858b
 	pkgrel = 1
 	url = https://github.com/liixini/skwd-wall
 	install = skwd-wall.install
