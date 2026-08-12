@@ -1,9 +1,9 @@
 pkgbase = python-tree-sitter-java
 	pkgdesc = Java grammar for tree-sitter
 	pkgver = 0.23.5
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/tree-sitter/tree-sitter-java
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
