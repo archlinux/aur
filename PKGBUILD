@@ -12,12 +12,12 @@ _pkgtype="-vfio-lts"
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.18.41
+pkgver=6.18.44
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
 license=('GPL-2.0-or-later')
-arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
+arch=('x86_64')
 
 makedepends=(
   bc
@@ -66,7 +66,7 @@ source=(
   1002-6.18.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
 )
 sha256sums=(
-  '17fc72f0f8d4a8a8633a5d20085f5d9c5a5ec51ee896a0b7ae1ec25da31273ea' # cksum
+  '0f72d938f06828e82c90405174fe572287db7bfe089e2fc46572a99a7f240d43' # cksum
   'SKIP'
   'SKIP'
   '0bb3b4cda53db35c10e0a34defb5f52f3c91895d7b4a9f93b3f40f5401a71e02'
@@ -80,20 +80,6 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF # Jan Alexander Steffens (heftig)
 )
-
-case "$CARCH" in
-  x86_64_v2)
-    _build_level=2
-    ;;
-  x86_64_v3)
-    _build_level=3
-    ;;
-  x86_64_v4)
-    _build_level=4
-    ;;
-  *) # no changes; may be user defined
-    ;;
-esac
 
 if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
   export KCFLAGS="-march=x86-64-v${_build_level::1} -O3"
