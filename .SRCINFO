@@ -1,0 +1,20 @@
+pkgbase = awlib-git
+	pkgdesc = C++ helper library
+	pkgver = r2249.4d488895
+	pkgrel = 1
+	url = https://git.absurdworlds.org/awlib.git
+	arch = i686
+	arch = x86_64
+	license = LGPLv3
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	depends = glfw
+	provides = awlib
+	conflicts = awlib
+	options = !strip
+	options = debug
+	source = git+https://github.com/absurdworlds/awlib.git
+	sha256sums = SKIP
+
+pkgname = awlib-git
