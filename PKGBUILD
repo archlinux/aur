@@ -8,8 +8,8 @@ pkgdesc='Fast, efficient, and composable clipboard manager for Linux'
 arch=('x86_64' 'aarch64')
 url='https://github.com/SUPERCILEX/clipboard-history'
 license=('Apache-2.0' 'AGPL-3.0-only')
-depends=('libglvnd' 'libx11' 'libxcursor' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'libxrender' 'wayland')
-provides=("${_pkgname}")
+depends=('libgcc' 'libglvnd' 'libx11' 'libxcursor' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'libxrender' 'wayland')
+provides=("${_pkgname}=$pkgver")
 conflicts=("${_pkgname}")
 install=${_pkgname}.install
 options=('!debug')
