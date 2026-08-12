@@ -75,9 +75,9 @@ MimeType=application/x-tmdx;application/x-tmvx;application/x-tmd;application/x-t
 
 
 Version=1.0
-Name=TextMaker 2024
-Icon=office2024-textmaker
-TryExec=/usr/bin/textmaker24
+Name=TextMaker 2026
+Icon=office2026-textmaker
+TryExec=/usr/bin/textmaker26
 StartupWMClass=tm
-Exec=/usr/bin/textmaker24 %F
-Path=/usr/share/office2024
+Exec=/usr/bin/textmaker26 %F
+Path=/usr/share/office2026
