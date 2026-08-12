@@ -1,6 +1,6 @@
 # Maintainer: Jean Simeoni <opensource@users.noreply.github.com>
 pkgname=ply-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Local-first package manager for coding-agent assets.'
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,10 @@ license=('GPL-3.0-only')
 depends=('git')
 provides=('ply')
 conflicts=('ply')
-source_x86_64=("ply-${pkgver}-x86_64.tar.xz::https://github.com/jeansimeoni/ply/releases/download/v0.2.1/ply-x86_64-unknown-linux-musl.tar.xz")
-source_aarch64=("ply-${pkgver}-aarch64.tar.xz::https://github.com/jeansimeoni/ply/releases/download/v0.2.1/ply-aarch64-unknown-linux-musl.tar.xz")
-sha256sums_x86_64=('534e1fe93f374e544fba539a27ccf29f88ef7bd4b0400a4cc0195f08ecf961ca')
-sha256sums_aarch64=('c98dfa212986fc364a8187429d39d079a7786046b0d89be2bb177c4cab4a5390')
+source_x86_64=("ply-${pkgver}-x86_64.tar.xz::https://github.com/jeansimeoni/ply/releases/download/v0.2.2/ply-x86_64-unknown-linux-musl.tar.xz")
+source_aarch64=("ply-${pkgver}-aarch64.tar.xz::https://github.com/jeansimeoni/ply/releases/download/v0.2.2/ply-aarch64-unknown-linux-musl.tar.xz")
+sha256sums_x86_64=('6f35d5fcc1bdf87dcc6e9972960fd6babd1efeb1895c9a23eb17980edbe7ca7b')
+sha256sums_aarch64=('3a40339b1dc54841362d06bf1f4271fff2f8e2f0caa2c7a0a3d3b9ab772160fe')
 
 package() {
     local archive=''
