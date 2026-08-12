@@ -1,5 +1,5 @@
 pkgbase = keychron-r6-udev
-	pkgdesc = udev rule for the Keychron R6 Keyboard (USB abd DFU modes)
+	pkgdesc = udev rule for the Keychron R6 Keyboard (USB and DFU modes)
 	pkgver = 1.0.0
 	pkgrel = 1
 	arch = any

@@ -3,7 +3,7 @@
 pkgname=keychron-r6-udev
 pkgver=1.0.0
 pkgrel=1
-pkgdesc='udev rule for the Keychron R6 Keyboard (USB abd DFU modes)'
+pkgdesc='udev rule for the Keychron R6 Keyboard (USB and DFU modes)'
 arch=('any')
 license=('Unlicense')
 source=('70-keychron-r6.rules')
