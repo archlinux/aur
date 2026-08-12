@@ -1,5 +1,5 @@
 pkgname=fenriz-bin
-pkgver=0.1.2
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A minimal tiling Wayland compositor built on wlroots and SceneFX (Binary Release)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ optdepends=('xorg-xwayland: X11 application support')
 provides=('fenriz')
 conflicts=('fenriz' 'fenriz-git')
 source=("${url}/releases/download/v${pkgver}/fenriz-${pkgver}.tar.gz")
-sha256sums=('cf052ad92e1722c4693c7a38adfae596290c4a98640a7e42ce4aec7a6f66e6b2')
+sha256sums=('e4151a51102a7f99ccd9f81f289260a03640c8eb5cfa336b24898c2e362eba7b')
 
 package() {
     cd "fenriz-${pkgver}"

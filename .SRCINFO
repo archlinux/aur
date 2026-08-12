@@ -1,6 +1,6 @@
 pkgbase = fenriz-bin
 	pkgdesc = A minimal tiling Wayland compositor built on wlroots and SceneFX (Binary Release)
-	pkgver = 0.1.2
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/zackb/fenriz
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = fenriz-bin
 	provides = fenriz
 	conflicts = fenriz
 	conflicts = fenriz-git
-	source = https://github.com/zackb/fenriz/releases/download/v0.1.2/fenriz-0.1.2.tar.gz
-	sha256sums = cf052ad92e1722c4693c7a38adfae596290c4a98640a7e42ce4aec7a6f66e6b2
+	source = https://github.com/zackb/fenriz/releases/download/v0.1.8/fenriz-0.1.8.tar.gz
+	sha256sums = e4151a51102a7f99ccd9f81f289260a03640c8eb5cfa336b24898c2e362eba7b
 
 pkgname = fenriz-bin
