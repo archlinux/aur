@@ -4,15 +4,17 @@
 # It's dependencies requiere to be build in this order:
 # wine -> vkd3d-valve -> wine-valve -> proton
 pkgname=legendary
-pkgver=0.20.34
-pkgrel=3
+pkgver=0.21.0
+pkgrel=1
 pkgdesc="A free and open-source replacement for the Epic Games Launcher "
 arch=('any')
 url="https://github.com/derrod/legendary"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 groups=()
 depends=(
+	"python"
 	"python-filelock"
+	"python-pycryptodomex"
 	"python-requests"
 )
 makedepends=(
@@ -35,7 +37,13 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=()
-sha256sums=('f0f31f1f09422901eaf71e4e8c1b873c80e1640236041fd05932eab656535b58')
+sha256sums=('fffe135163c5033c72f02c176df2d75d31a3a5bb588b81440b0c46a42fcb40aa')
+
+prepare() {
+	cd "$srcdir/$pkgname-$pkgver"
+
+	sed -i 's/\(uv_build.*\),<[^"]*/\1/' pyproject.toml
+}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
