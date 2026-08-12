@@ -1,9 +1,9 @@
-# Maintainer: Shayne Hartford <shayneehartford@gmail.com>
+# Maintainer: taotieren <admin@taotieren.com>
 
 _pkgname=smuview
 pkgname=${_pkgname}-git
-pkgver=0.0.4.r350.ga5ffb66
-pkgrel=2
+pkgver=0.0.4.r406.g7ea4b33
+pkgrel=1
 pkgdesc="SmuView is a Qt-based source measurement unit GUI for sigrok."
 arch=($CARCH)
 url="https://github.com/knarfS/$_pkgname"
@@ -20,7 +20,6 @@ depends=(
     qwt
     python
     python-time-machine
-    #     python-pdoc
 )
 makedepends=(
     asciidoctor
