@@ -2,6 +2,7 @@
 pkgname=splayer-next-bin
 pkgver=1.0.0
 pkgrel=7
+options=('!debug')
 pkgdesc="A modern cross-platform music player built with Electron, Vue 3, and TypeScript"
 arch=('x86_64')
 url="https://github.com/SPlayer-Dev/SPlayer-Next"
