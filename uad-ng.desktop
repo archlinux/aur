@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Icon=android-sdk
+Name=Universal Android Debloater Next Generation
+Exec=uad-ng
+Icon=uad-ng
+Terminal=false
+Hidden=false
+Categories=Development; Utility
+Comment=Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices
+Keywords=UAD
