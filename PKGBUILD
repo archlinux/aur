@@ -1,6 +1,6 @@
 # Maintainer: Dmitrij Vinokour <vinokour.dmitrij@gmail.com>
 pkgname=tcg-lightning-bin
-pkgver=0.1.36
+pkgver=0.1.37
 pkgrel=1
 pkgdesc="Magic: The Gathering deck building app with Scryfall, EDHREC, Archidekt, Commander Spellbook support and AI-powered suggestions"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'gtk3')
 provides=('tcg-lightning')
 conflicts=('tcg-lightning')
 source=("${pkgname}-${pkgver}.deb::https://github.com/Dimfred/tcg-lightning/releases/download/v${pkgver}/linux-tcg-lightning_${pkgver}_amd64.deb")
-sha256sums=('2cef2abb3a18a975874601c09b64bc99bd325c4fb2393503b4314ef9642f0a6c')
+sha256sums=('5a37b6068a305a2c56ac90953a2f02db380d757e0b5da96b5e4ac6956387d749')
 
 package() {
     # Extract the .deb package
