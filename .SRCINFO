@@ -1,23 +1,21 @@
 pkgbase = megalogviewer
 	pkgdesc = Viewer for TunerStudio/MegaSquirt logs
-	pkgver = 4.5.22
+	pkgver = 4.6.10
 	pkgrel = 1
 	arch = any
 	license = proprietary
 	makedepends = imagemagick>=7
 	depends = java-runtime
-	noextract = MegaLogViewer_v4.5.22.jar
+	noextract = MegaLogViewer_v4.6.10.jar
 	noextract = FieldMaps_v4.5.10_HD.zip
-	source = https://www.tunerstudio.com/downloads2/MegaLogViewerHD_v4.5.05.tar.gz
-	source = https://www.tunerstudio.com/appupdates/MegaLogViewer/MegaLogViewer_v4.5.22.jar
+	source = https://www.tunerstudio.com/downloads2/MegaLogViewerHD_v4.6.09.tar.gz
+	source = https://www.tunerstudio.com/appupdates/MegaLogViewer/MegaLogViewer_v4.6.10.jar
 	source = https://www.tunerstudio.com/appupdates/MegaLogViewer/FieldMaps_v4.5.10_HD.zip
-	source = https://www.tunerstudio.com/appupdates/MegaLogViewer/MegaLogViewer_v4.5.18.jar
 	source = megalogviewer.sh
 	source = megalogviewer.desktop
-	sha256sums = 99e8e8df9465d1ed89d8593d518955e72eff9f1c3ee5fae62ef9ef9abd89d034
-	sha256sums = 08628cd58008b7abbad4f28cb7bc51aabfcf41bc582d9901b45a6873403c701c
+	sha256sums = fcd5e4a48e0c36109ed8a39ab81231afa158ad55011a50332a0666ffbfc9a2c0
+	sha256sums = 148585d57f17101216a164e1bfe7d97ff0af502f4359fdfd049b3a350daefec8
 	sha256sums = 0f55ac67458cf0a2f3eaaea24a28467ed12008b3aa6f9d92ccd81cf25a3ab95b
-	sha256sums = fde12a0669c4297ba22d1809a522b6c6f2d5906072d702a226ef95b6875420e4
 	sha256sums = eff5b0c79e345d1b77b80908deba8805959a878e990601e91ac69a01b8582a5c
 	sha256sums = 6c6238646f60a076ebe0549228b59d7d9f20bc7019a0e7d8b5df2089ba50a396
 

@@ -1,13 +1,12 @@
 # Maintainer: Dan Fuhry <dan@fuhry.com>
 # Contributor: Daniel Tobias <https://aur.archlinux.org/account/dantob>
 pkgname=megalogviewer
-pkgver=4.5.22
+pkgver=4.6.10
 # EFI Analytics has a tendency to push minor updates bare jar files, zip files
 # with field mappings and properties files, and # let the distribution tarball
 # lag behind.
-_dist_version=4.5.05
+_dist_version=4.6.09
 _fieldmaps_version=4.5.10
-_properties_version=4.5.18
 pkgrel=1
 pkgdesc="Viewer for TunerStudio/MegaSquirt logs"
 arch=(any)
@@ -17,14 +16,12 @@ license=(proprietary)
 source=(https://www.tunerstudio.com/downloads2/MegaLogViewerHD_v${_dist_version}.tar.gz
         https://www.tunerstudio.com/appupdates/MegaLogViewer/MegaLogViewer_v${pkgver}.jar
         https://www.tunerstudio.com/appupdates/MegaLogViewer/FieldMaps_v${_fieldmaps_version}_HD.zip
-        https://www.tunerstudio.com/appupdates/MegaLogViewer/MegaLogViewer_v${_properties_version}.jar
         megalogviewer.sh
         megalogviewer.desktop
         )
-sha256sums=('99e8e8df9465d1ed89d8593d518955e72eff9f1c3ee5fae62ef9ef9abd89d034'
-            '08628cd58008b7abbad4f28cb7bc51aabfcf41bc582d9901b45a6873403c701c'
+sha256sums=('fcd5e4a48e0c36109ed8a39ab81231afa158ad55011a50332a0666ffbfc9a2c0'
+            '148585d57f17101216a164e1bfe7d97ff0af502f4359fdfd049b3a350daefec8'
             '0f55ac67458cf0a2f3eaaea24a28467ed12008b3aa6f9d92ccd81cf25a3ab95b'
-            'fde12a0669c4297ba22d1809a522b6c6f2d5906072d702a226ef95b6875420e4'
             'eff5b0c79e345d1b77b80908deba8805959a878e990601e91ac69a01b8582a5c'
             '6c6238646f60a076ebe0549228b59d7d9f20bc7019a0e7d8b5df2089ba50a396')
 noextract=("MegaLogViewer_v${pkgver}.jar"
