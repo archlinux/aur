@@ -1,8 +1,8 @@
 # Maintainer: grootar nigredo1999@gmail.com
 
 _pkgname=twitchdrops_miner
-pkgname="${_pkgname}"
-pkgver=dev.build.r0.gef22e41
+pkgname="twitch_drops_miner"
+pkgver=dev.build.r0.g602a0cc
 pkgrel=1
 pkgdesc="A multi-account Rust TUI tool for automatic Twitch Drops farming"
 arch=('x86_64' 'aarch64')
