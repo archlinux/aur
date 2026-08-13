@@ -3,7 +3,7 @@
 _pkgauthor=dlvhdr
 _pkgname=gh-enhance
 pkgname=${_pkgname}-bin
-pkgver=0.6.1
+pkgver=0.7.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A Blazingly Fast Terminal UI for GitHub Actions"
@@ -21,11 +21,11 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_linux-${_barch[0]}")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_linux-${_barch[1]}")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_linux-${_barch[2]}")
-sha256sums=('66b9e2a962d43b50a3f861c9de63f72962be4e91e98f515ff35a80dafdbf221b'
+sha256sums=('49d78b2c8ba85a6ae0524dbf53f5adf52b92acfa1a506561ba13ac5bcea646d7'
             '2963ff8f76a7cb32c80021856e4626c6fee8a8e48c1c32cb8c21ed2705dc3b44')
-sha256sums_x86_64=('01c91de1c9378e775ddeac809b956a3be08b2e7986383ee03f56e89cbad15aa5')
-sha256sums_i686=('48a3c9b4099285391f7562c1b15bef52590e358a3941348e104b3f3fd893729f')
-sha256sums_aarch64=('a168d87eb82d6217d4351d4928835318a6ecd2f3a35230b7e1f0a29dae702521')
+sha256sums_x86_64=('7f75df3c6390399546e1be94a79f1a18b0a9b241bc2a719ddf543c5e07822d13')
+sha256sums_i686=('c036b7a3f9510c6cd6d8d6101790058e9ce6878e25b3113eb7f23dacd4970a96')
+sha256sums_aarch64=('4ef59c3f6a76b8e549548cbce098419e20a0f407db94589bd823c221d4679b21')
 
 
 package() {
