@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=CCPlotR
-_pkgver=1.6.0
+_pkgver=1.10.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,7 +14,6 @@ depends=(
   r-complexheatmap
   r-dplyr
   r-forcats
-  r-ggbump
   r-ggh4x
   r-ggplot2
   r-ggraph
@@ -40,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9e8cf15d599c25a97e1e84abfeec0858')
-b2sums=('54663de86c79d8ef08d52fad6e0c3ec984e7378741a5c5594df0f748bd1751ef225fa1efc2f0c42760749c0399ce8b5b4d0c6d7e9382c196955cef1620ffbb34')
+md5sums=('ab48914aae7e41ed79fafe93a5ae9e0c')
+b2sums=('24936e0d768820e1cefafaf72b351ca291c854c647f9ee15a8e0988ae9cc87c17e184a6e6c51bef701c645c3302e8a1f4f5399cb931bb842bac4c4db9f15a9e9')
 
 build() {
   mkdir build
