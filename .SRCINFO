@@ -1,7 +1,7 @@
 pkgbase = nispor-git
 	pkgdesc = Unified interface for Linux network state querying
-	pkgver = 2.0.2.r9.g73281c8
-	pkgrel = 2
+	pkgver = 2.0.2.r10.g7c099ac
+	pkgrel = 1
 	url = https://github.com/nispor/nispor
 	arch = x86_64
 	license = Apache-2.0
