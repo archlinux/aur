@@ -1,0 +1,17 @@
+pkgbase = autocycler-bin
+	pkgdesc = A tool for combining multiple long-read assemblies into a consensus
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/rrwick/Autocycler
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = autocycler
+	conflicts = autocycler
+	options = !strip
+	options = !debug
+	source = https://github.com/rrwick/Autocycler/releases/download/v0.7.0/autocycler-linux-x86_64-musl-v0.7.0.tar.gz
+	source = https://raw.githubusercontent.com/rrwick/Autocycler/v0.7.0/LICENSE
+	sha256sums = 265a8d727d029c6d137d8fe4b020f3cc476b69d67443497c3c89475e8825b106
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+
+pkgname = autocycler-bin
