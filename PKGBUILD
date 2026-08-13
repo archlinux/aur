@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Xeva
-_pkgver=1.24.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Analysis of patient-derived xenograft (PDX) data'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('17c23b6df1abc1877b7f48f9452c36ae800814c5731da908be211f81d0a472b8')
+sha256sums=('4a95d82a7723dfbd40b97c9fadb3a7a9f03a0a39d69793dbfe987bb83d876e21')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
