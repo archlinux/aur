@@ -1,6 +1,6 @@
 pkgbase = r-genefu
 	pkgdesc = Computation of Gene Expression-Based Signatures in Breast Cancer
-	pkgver = 2.40.0
+	pkgver = 2.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/genefu
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-genefu
 	optdepends = r-rmeta
 	optdepends = r-survival
 	optdepends = r-xtable
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/genefu_2.40.0.tar.gz
-	sha256sums = 2b44b694308e41392bfd828953089e38e0b5f561bd52fb949c82e537a6a7bd33
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/genefu_2.44.0.tar.gz
+	sha256sums = 666654431aa3b65a30eb23983fe8d7bc6c5daba0c957ddf33e4e990d7333b858
 
 pkgname = r-genefu
