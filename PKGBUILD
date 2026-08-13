@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proActiv
-_pkgver=1.18.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -30,6 +30,7 @@ depends=(
   r-txdbmaker
 )
 optdepends=(
+  r-genomeinfodbdata
   r-gridextra
   r-knitr
   r-rmarkdown
@@ -37,8 +38,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2225380abcb528bb2ebc4c30cd93bf2c')
-b2sums=('fbaba7c12d7746fa7a852bf96b63ff95b7b0599f72b76b951042c2893c2086f0cb6516cc523b12ff8a1c5b9ab0cf244e5c083b34db2fd00f009d90f5e796843f')
+md5sums=('95c51151a664d88bd4b72ce329216219')
+b2sums=('ff4290926518b304393e48881c121fe3ad3d151b3e5ce25b21d7efae2ad235ac1bd20b850e8e6eb1d22582b09a8445bbe940a32c1881a813cdb65b7c24f31b59')
 
 build() {
   mkdir build
