@@ -19,7 +19,7 @@ source=("git+https://github.com/FunkinCrew/Funkin.git#tag=v$pkgver"
 sha256sums=("SKIP"
             "SKIP"
             "SKIP"
-            "c409b0fa9d1194801f7a0c90f711e4a1194467f1d2524417d3e08e8facbf8d32"
+            "cdfd6797fd2b2906cada32ad648a360e25f240bf58c3b1b37c15bf47674fe691"
             "fe2d70bffe9c8702c35da89e7fca84200bd05bee104d1014a1c444462527b6ba")
 
 prepare() {
