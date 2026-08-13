@@ -2,7 +2,7 @@
 
 pkgname='jsinflator-vst3'
 pkgver='2.0.3.2'
-pkgrel=2
+pkgrel=3
 pkgdesc='Open source copy of Sonox Inflator'
 arch=('x86_64')
 url='https://github.com/Kiriki-liszt/JS_Inflator'
@@ -13,6 +13,7 @@ depends=(
 makedepends=(
   'clang'
   'cmake'
+  'make'
   'vst3sdk'
   'wayland-protocols'
 )

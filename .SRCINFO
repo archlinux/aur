@@ -1,7 +1,7 @@
 pkgbase = jsinflator-vst3
 	pkgdesc = Open source copy of Sonox Inflator
 	pkgver = 2.0.3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Kiriki-liszt/JS_Inflator
 	arch = x86_64
 	groups = pro-audio
@@ -9,6 +9,7 @@ pkgbase = jsinflator-vst3
 	license = GPL-3.0-only
 	makedepends = clang
 	makedepends = cmake
+	makedepends = make
 	makedepends = vst3sdk
 	makedepends = wayland-protocols
 	source = jsinflator-vst3_2.0.3.2.zip::https://github.com/Kiriki-liszt/JS_Inflator/archive/refs/tags/v2.0.3.2.zip
