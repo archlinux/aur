@@ -1,6 +1,6 @@
 pkgbase = r-epivizrdata
 	pkgdesc = Data Management API for epiviz interactive visualization app
-	pkgver = 1.36.0
+	pkgver = 1.40.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/epivizrData
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = r-epivizrdata
 	optdepends = r-testthat
 	optdepends = r-txdb.mmusculus.ucsc.mm10.knowngene
 	optdepends = r-utils
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/epivizrData_1.36.0.tar.gz
-	sha256sums = ace12da3a1023704311090f8678435d69f79d59ffa7cb15efc741d30230da386
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/epivizrData_1.40.0.tar.gz
+	sha256sums = 6ddc193204d9e15c94fbb89114e92ab98aba73d58bc491ae4e0179f28c79edbc
 
 pkgname = r-epivizrdata
