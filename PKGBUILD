@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=rgsepd
-_pkgver=1.40.0
+_pkgver=1.44.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.44.0
 pkgrel=1
 pkgdesc='Gene Set Enrichment / Projection Displays'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('53cafabd2412e24048dc9906364b067299acb282aa144af14667ba9672eca383')
+sha256sums=('cbe7e1c18f8a27abada39ff5aaaab6c995931f6b15b0c818d3e5c4b314ca2288')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
