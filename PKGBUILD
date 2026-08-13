@@ -8,7 +8,7 @@ pkgbase=${_pkgbase}-bin
 pkgname=(${_pkgbase}-bin ${_pkgbase}-node-bin)
 pkgdesc="Distributed Scheduled Task Scheduler"
 
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,10 +24,10 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
                "${_pkgname}-node-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-node-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[1]}.tar.gz"
                 "${_pkgname}-node-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-node-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('b29eba9a6acfc5c52b81f8066e6b3b0b15fe0dfd80f39b10046ac3fd7fee046b'
-                   'b00d1cc5e0fa129ea96ae1fdb3aaca2c74f87b96508add7b442b5b592fe8604b')
-sha256sums_aarch64=('7628569ec96a96de1ff11970283ea10d663df2aad5db26df3d98e6a5b8349435'
-                    'c48da4204a1b2659e66285ca01cc8be6d53c9967e61f2e0597cf5461506f0b37')
+sha256sums_x86_64=('ec1d097c89a5034ae678c3e1afb4690ea0cd0683ed56f71d2ed07b5cc51bfb23'
+                   '2e46eeef9b031c061a4bef7002dee6f997513c3c5dafd538c513bbcc901ec8ae')
+sha256sums_aarch64=('941e45458cbfbdf6c0f8f476e7cc926886c02bcb7e4481d03911400942bdc2c9'
+                    '2f3dbeed608fe1d3a0a08e425b239b5c649e1ce03e52f734d466e976b3af82f0')
 
 
 case ${CARCH} in
