@@ -10,7 +10,7 @@
 
 pkgname=jennifer-git
 _realname=jennifer
-pkgver=0.24.0.r13.g1051069
+pkgver=0.24.0.r15.g437dabb
 pkgrel=1
 pkgdesc='Jennifer programming language interpreter (built from source)'
 arch=('x86_64' 'aarch64')
