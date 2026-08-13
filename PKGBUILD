@@ -1,4 +1,4 @@
-# Maintainer: omchab16
+# Maintainer: tyr4nux
 
 pkgname=python-pywhisker
 pkgver=1.0.0
