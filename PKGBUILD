@@ -1,7 +1,7 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy
-pkgver=5.3.11.35348084_45487630
+pkgver=5.3.12.35805101_a981f41f
 pkgrel=1
 pkgdesc="Work Smart，Not Hard"
 arch=('x86_64' 'aarch64')
@@ -34,7 +34,7 @@ sha256sums_x86_64=('53bee2cd02265b118392f7d99a4c72337f4a5003c0d0f9ee01646c19af59
 sha256sums_aarch64=('SKIP')
 changelog="changelog.md"
 
-options=(!strip)
+options=(!strip !debug)
 pkgver() {
     upstream=$(curl 'https://copilot.tencent.com/v2/update?platform=workbuddy-darwin-x64')
     _nfile=$(awk -F '"' '{for(i=1;i<=NF;i++){if($i=="url"){print $(i+2)}}}' <<<$upstream |cut -d'-' -f5,6)

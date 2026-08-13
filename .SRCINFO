@@ -1,6 +1,6 @@
 pkgbase = workbuddy
 	pkgdesc = Work Smart，Not Hard
-	pkgver = 5.3.11.35348084_45487630
+	pkgver = 5.3.12.35805101_a981f41f
 	pkgrel = 1
 	url = https://www.codebuddy.ai/agents
 	changelog = changelog.md
@@ -14,7 +14,8 @@ pkgbase = workbuddy
 	noextract = node-pty-x86_64.gz
 	noextract = node-pty-aarh64.gz
 	options = !strip
-	source = v5.3.11.35348084_45487630.zip::https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-5.3.11.35348084-45487630.zip
+	options = !debug
+	source = v5.3.12.35805101_a981f41f.zip::https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-5.3.12.35805101-a981f41f.zip
 	source = WorkBuddy.desktop
 	source = icon.svg
 	source = https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-13.0.3.tgz
