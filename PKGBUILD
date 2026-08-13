@@ -3,7 +3,7 @@
 
 pkgname=xinetd
 pkgver=2.3.15.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure replacement for inetd"
 arch=('x86_64')
 url="https://github.com/openSUSE/xinetd"
@@ -24,8 +24,12 @@ sha256sums=('2baa581010bc70361abdfa37f121e92aeb9c5ce67f9a71913cebd69359cc9654'
 
 build() {
   cd $pkgname-$pkgver
+  # GCC 15+/C23 treats empty () as (void); this old codebase uses K&R-style
+  # unprototyped function pointers and needs pre-C23 semantics.
+  export CFLAGS="${CFLAGS} -std=gnu17 -I/usr/include/tirpc"
+  export LDFLAGS="${LDFLAGS} -ltirpc"
   ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --without-libwrap
-  CFLAGS+=' -I/usr/include/tirpc' LDFLAGS+=' -ltirpc' make
+  make
 }
 
 package() {
