@@ -1,6 +1,6 @@
 pkgbase = r-knowseq
 	pkgdesc = KnowSeq R/Bioc package: The Smart Transcriptomic Pipeline
-	pkgver = 1.22.0
+	pkgver = 1.25.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/KnowSeq
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = r-knowseq
 	depends = r-sva
 	depends = r-xml
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/KnowSeq_1.22.0.tar.gz
-	sha256sums = fba6ab3145864579adf0e539b5a63bdf2d87defb95a7e2011192da6b0174694c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/KnowSeq_1.25.0.tar.gz
+	sha256sums = f92bec25af3cf8d1f0e7c66b6d663ad9ee92f3041b12d65d27cffc834212c6cd
 
 pkgname = r-knowseq
