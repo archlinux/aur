@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NanoStringNCTools
-_pkgver=1.16.2
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.2
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='NanoString nCounter Tools'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a216897957eb15340c0be0e8c8a4ce2476053348f61a67092e4621ef382a8780')
+sha256sums=('bf0c7167817fb638aab177d4b07053922d6eecd25eef57ff080efcd4ce0b29c0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
