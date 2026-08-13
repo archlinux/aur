@@ -1,6 +1,6 @@
 pkgbase = syswatch
 	pkgdesc = Single-host, read-only system diagnostics TUI — twelve tabs covering CPU, memory, disks, processes, GPU, power, services, network, plus a Timeline scrubber and an Insights anomaly engine
-	pkgver = 0.7.7
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/matthart1983/syswatch
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = syswatch
 	provides = syswatch
 	options = !lto
 	options = !strip
-	source = syswatch-0.7.7.crate::https://crates.io/api/v1/crates/syswatch/0.7.7/download
-	sha256sums = a44564f6560dc5c6ce6d75afb22337c3ba4101124f19d0fcccca0d0ebb518b11
+	source = syswatch-0.8.0.crate::https://crates.io/api/v1/crates/syswatch/0.8.0/download
+	sha256sums = 6fb50ba65b182b23f148e56b215cacc494e3399375bc58b2026888a341d483dd
 
 pkgname = syswatch

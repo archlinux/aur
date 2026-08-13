@@ -12,7 +12,7 @@ _appname=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Single-host, read-only system diagnostics TUI — twelve tabs covering CPU, memory, disks, processes, GPU, power, services, network, plus a Timeline scrubber and an Insights anomaly engine"
 
-pkgver=0.7.7
+pkgver=0.8.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -31,7 +31,7 @@ provides=("${_appname}")
 options=('!lto' '!strip')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('a44564f6560dc5c6ce6d75afb22337c3ba4101124f19d0fcccca0d0ebb518b11')
+sha256sums=('6fb50ba65b182b23f148e56b215cacc494e3399375bc58b2026888a341d483dd')
 
 prepare() {
   cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
