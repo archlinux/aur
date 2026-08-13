@@ -1,6 +1,6 @@
 pkgbase = taskdog
 	pkgdesc = Task management system with CLI/TUI and a REST API server (GTD, time tracking, schedule optimization)
-	pkgver = 0.26.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/Kohei-Wada/taskdog
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = taskdog
 	makedepends = uv
 	depends = python
 	options = !strip
-	source = taskdog-0.26.0.tar.gz::https://github.com/Kohei-Wada/taskdog/archive/refs/tags/v0.26.0.tar.gz
-	sha256sums = b1d3b6b492350695d221d22a863d5f258ac997179162cf3697d68a97076c9668
+	source = taskdog-0.27.0.tar.gz::https://github.com/Kohei-Wada/taskdog/archive/refs/tags/v0.27.0.tar.gz
+	sha256sums = 1fe27dff014c0a223a9d45e81f9a0d037f61039431d493d3066f1c6930c0a787
 
 pkgname = taskdog
