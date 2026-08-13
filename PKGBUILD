@@ -1,7 +1,7 @@
 # Maintainer: komaruworld <rtysus228 at gmail dot com>
 
 pkgname=mocktail-bin
-pkgver=0.1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Android x86-64 Roblox compatibility runtime for Linux (prebuilt)'
 arch=('x86_64')
@@ -38,7 +38,7 @@ options=('!debug' '!strip')
 _archive="mocktail-${pkgver}-${pkgrel}-${CARCH}.pkg.tar.zst"
 source=("${_archive}::https://github.com/komaruworld/mocktail/releases/download/${pkgver}/${_archive}")
 noextract=("${_archive}")
-sha256sums=('f8a44ca7bd35526035ce7d1902ff7a4b1981a7c36e54d82ce4fc655db6fdf0f3')
+sha256sums=('63072fa49b3776cb164b71067696cd195e77470be7e0374444d4e8548d1de35c')
 
 package() {
   bsdtar -xf "${srcdir}/${_archive}" -C "${pkgdir}" usr
