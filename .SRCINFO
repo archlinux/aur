@@ -6,6 +6,7 @@ pkgbase = miteiru-bin
 	arch = x86_64
 	license = CC-BY-NC-4.0
 	depends = electron41
+	depends = mecab
 	provides = miteiru=7.4.9
 	conflicts = miteiru
 	source = miteiru-7.4.9.deb::https://github.com/hockyy/miteiru/releases/download/v7.4.9/miteiru-7.4.9-linux-24.04-amd64.deb
