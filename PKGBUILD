@@ -8,7 +8,7 @@
 _pkgname="palemoon"
 pkgname="$_pkgname-gtk3-bin"
 epoch=1
-pkgver="34.3.1"
+pkgver=34.3.2.1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency"
 url="https://www.palemoon.org/"
@@ -16,13 +16,7 @@ license=('MPL-2.0')
 arch=('x86_64')
 
 depends=(
-  'alsa-lib'
-  'dbus-glib'
   'gtk3'
-  'hicolor-icon-theme'
-  'libxt'
-  'mime-types'
-  'nss'
 )
 optdepends=(
   'ffmpeg: record, convert, and stream audio and video'
@@ -38,7 +32,7 @@ source=(
   "https://rm-eu.palemoon.org/release/palemoon-${pkgver}.linux-x86_64-gtk3.tar.xz"{,.sig}
 )
 sha256sums=('b3803b30b5e6b9589387b7162cd24247da242fe77c0aed0d09bc51338d36d7d8'
-            '5e59facce62b4332ce134833a65bda4cbc6c234383780c676940b1eac75d0739'
+            '1c4d36b47fd9998a99057e34c3b83ebca61a402938ada1c9f25b30215d70c3b9'
             'SKIP')
 validpgpkeys=(
   '439F46F42C6AE3D23CF52E70865E6C87C65285EC' # T. Wine
