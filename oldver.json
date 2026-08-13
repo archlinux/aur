@@ -2,9 +2,9 @@
   "version": 2,
   "data": {
     "pi-ext-intercom": {
-      "version": "0.10.0",
-      "gitref": "refs/tags/v0.10.0",
-      "url": "https://github.com/nicobailon/pi-intercom/releases/tag/v0.10.0"
+      "version": "0.10.1",
+      "gitref": "refs/tags/v0.10.1",
+      "url": "https://github.com/nicobailon/pi-intercom/releases/tag/v0.10.1"
     }
   }
 }
