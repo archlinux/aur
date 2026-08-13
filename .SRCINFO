@@ -1,0 +1,14 @@
+pkgbase = macos-bigsur-sound-theme
+	pkgdesc = macOS Big Sur sound theme for Linux (personal use only)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/gxanshu/macos-bigsur-sound-theme-linux
+	arch = any
+	license = LicenseRef-apple-restricted-sound
+	options = !strip
+	source = macos-bigsur-sound-theme-1.0.2.tar.gz::https://github.com/gxanshu/macos-bigsur-sound-theme-linux/archive/refs/tags/1.0.2.tar.gz
+	source = apple-restricted-sound
+	sha256sums = 93d1ad6ceab354a571a21197aa1c5b0624cef21f5bf8c92f1596de64f67cc7d8
+	sha256sums = f5267b41dc88d668228f63901db7ca67be26de883859dc3462ae297f675934dd
+
+pkgname = macos-bigsur-sound-theme
