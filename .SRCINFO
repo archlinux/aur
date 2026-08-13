@@ -1,6 +1,6 @@
 pkgbase = r-geodiff
 	pkgdesc = Count model based differential expression and normalization on GeoMx RNA data
-	pkgver = 1.14.0
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/GeoDiff
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = r-geodiff
 	optdepends = r-dplyr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeoDiff_1.14.0.tar.gz
-	sha256sums = 1e2fcafdd2543b53dbc39236d809a366cebece443d4dc5f45ee4d7a6b59ef437
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/GeoDiff_1.18.0.tar.gz
+	sha256sums = 93f8b11d00e72855aacb4fab25f62210a46cdb5588af2bd7b225e649f09a3761
 
 pkgname = r-geodiff
