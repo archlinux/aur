@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=branchpointer
-_pkgver=1.34.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Prediction of intronic splicing branchpoints'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('d20aed2a8f9fe6def42cfa611f969c6d76aa97a8ff4c716a31920205b98d7458')
+sha256sums=('60cbe70236fe1bd978f47f93534b64952b973fa179ba25a4835c6597a94af144')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
