@@ -2,7 +2,7 @@
 
 pkgname="splinter"
 pkgdesc="A command-line FTP client that lets you define reusable upload, download, and server-delete actions in a .splinter file."
-pkgver=2.0.0
+pkgver=2.0.7
 pkgrel=1
 arch=("x86_64")
 url="https://splinter.seremtitus.co.ke/"
@@ -20,7 +20,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('9b394cf402ce403dc23a287605c184416a46b45d594e86fd1417885055b8cab5d2aa98a9d1270aa5840759cfde9d737644d6f8ec07be6ea04ca0d5f7c508eadc')
+b2sums=('1f71439781188a8e9f9a0677f12b9d5f40d2e5f0f67626a72c82f41243a1c4df80e15ba37c9ccdc2e397ef9f21def10b05020ef3d228a36ce4ec5057835f5d2a')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
