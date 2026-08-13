@@ -2,8 +2,8 @@
 # Contributor: Kristofers Solo <dev at kristofers dot xyz>
 
 pkgname=scalpel-poe-git
-pkgver=0.9.14.rc2.2.gd276a86
-pkgrel=2
+pkgver=1.0.2.rc1.4.g8975f52
+pkgrel=1
 pkgdesc="Path of Exile's First Fourth-Party Tool"
 arch=("x86_64")
 url="https://github.com/scalpelpoe/scalpel"
@@ -56,7 +56,7 @@ pkgver() {
 prepare() {
     _enter_builddir
 
-    npm ci
+    npm ci --allow-git=root
 }
 
 build() {
