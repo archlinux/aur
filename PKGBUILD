@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arrayQualityMetrics
-_pkgver=3.64.0
+_pkgver=3.68.0
 pkgname=r-${_pkgname,,}
-pkgver=3.64.0
+pkgver=3.68.0
 pkgrel=1
 pkgdesc='Quality metrics report for microarray data sets'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('97ee55cb23550099c6b71ade8e7e6aeaf82319f57cfcf05bf27a8ace0169e2cf')
+sha256sums=('7aef251eb2bac4a1ab9b6ed88484bba3ad0312cb92a4d1f6fecfef788dfc84c8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
