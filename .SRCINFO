@@ -1,0 +1,16 @@
+pkgbase = luajit-decompiler-git
+	pkgdesc = LuaJIT 字节码反编译器（Linux 原生版，C++23 + CMake）
+	pkgver = r35.eff7ebd
+	pkgrel = 1
+	url = https://github.com/PackageInstaller/luajit-decompiler
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	provides = luajit-decompiler
+	conflicts = luajit-decompiler
+	source = git+https://github.com/PackageInstaller/luajit-decompiler.git
+	sha256sums = SKIP
+
+pkgname = luajit-decompiler-git
