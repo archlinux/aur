@@ -1,18 +1,18 @@
 pkgbase = momw-tools-pack
 	pkgdesc = Metapackage with all the tools needed to automatically install and configure Modding-OpenMW.com modlists.
-	pkgver = 1.44
+	pkgver = 1.46
 	pkgrel = 1
 	url = https://modding-openmw.gitlab.io/momw-tools-pack/
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = delta-plugin
+	depends = delta-plugin-git
 	depends = umo
 	depends = momw-configurator
 	depends = tes3cmd
 	depends = s3lightfixes
 	depends = openmw-validator
-	depends = groundcoverify
-	depents = vfstool
+	depends = groundcoverify-git
+	depends = vfstool
 
 pkgname = momw-tools-pack
