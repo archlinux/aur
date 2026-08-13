@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=qeli-bin
-pkgver=0.7.14
+pkgver=0.7.15
 pkgrel=1
 pkgdesc='Self-hosted obfuscated VPN with anti-DPI masking and post-quantum crypto'
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
     'qeli.sysusers'
     'qeli.tmpfiles'
 )
-sha256sums=('2838930cd2e7563642fe8532c68bb7037ed9493cbeb6e5d59d52ed4bc6380942'
+sha256sums=('74cf78189f8917c48345c87803523df21abc9c9d945662038e75dfdedbd0c629'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             '02857c110cb5b4a482ab360760e5c29abf6e4eaf27ad0ca901d8a7b278c913c0'
             '18b66c713abb9eed1eab4655129c7347d8417a0ad9fc59b27dffeaf0f575c161')
