@@ -1,6 +1,6 @@
 pkgbase = python-copier
 	pkgdesc = Library and command-line utility for rendering projects templates
-	pkgver = 9.17.0
+	pkgver = 9.17.1
 	pkgrel = 1
 	url = https://github.com/copier-org/copier
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = python-copier
 	depends = python-questionary
 	depends = python-yaml
 	optdepends = git: VCS support
-	source = git+https://github.com/copier-org/copier.git#commit=02e1574
-	sha256sums = 83a5547a3b76b3eb54e6ea2147c1fa2d589bd3cf2e4684bde55dca7d62d1ef4f
+	source = git+https://github.com/copier-org/copier.git#commit=e8c85ce
+	sha256sums = f9435a09c6c4f846108a26edbfde6f5756d1acf8263b58b73d2740141e2f7e9c
 
 pkgname = python-copier
