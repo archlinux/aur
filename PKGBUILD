@@ -36,6 +36,9 @@ prepare() {
 build() {
   cd "${srcdir}/Python-${pkgver}"
 
+  export CFLAGS_NODIST="${CFLAGS_NODIST} -fno-semantic-interposition"
+  export LDFLAGS_NODIST="${LDFLAGS_NODIST} -fno-semantic-interposition"
+
   ./configure --prefix=/usr \
               --enable-shared \
               --with-computed-gotos \
