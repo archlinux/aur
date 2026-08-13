@@ -185,8 +185,31 @@ post_install() {
     echo " =============================================="
 }
 
+_detener_servicios_activos() {
+    # Cualquier instancia FRANKI corriendo al momento del upgrade sigue usando
+    # el venv viejo (ya importado en memoria) hasta que se reinicia. Bug real
+    # confirmado 2026-08-12: franki_os/cerebelo son socket-activated y
+    # respawnean solos con el venv nuevo en la siguiente conexion, pero
+    # franki_sinapsis_externa queda persistentemente activo -- y `enable --now`
+    # sobre un servicio YA corriendo (_enable_user_services, mas abajo) no lo
+    # reinicia. Se detienen aqui, antes de tocar el venv, para que el upgrade
+    # siempre termine con procesos frescos sobre las dependencias nuevas.
+    local _user="${SUDO_USER:-}"
+    [ -z "$_user" ] && return 0
+    local _uid; _uid=$(id -u "$_user" 2>/dev/null) || return 0
+    local _xdg="/run/user/$_uid"
+    runuser -l "$_user" -c "
+        export XDG_RUNTIME_DIR=$_xdg
+        export DBUS_SESSION_BUS_ADDRESS=unix:path=$_xdg/bus
+        systemctl --user stop franki_os.service 2>/dev/null || true
+        systemctl --user stop franki_cerebelo.service 2>/dev/null || true
+        systemctl --user stop franki_sinapsis_externa.service 2>/dev/null || true
+    " 2>/dev/null && echo " >> [FRANKI] Instancias activas detenidas -- se reiniciaran frescas con el venv nuevo." || true
+}
+
 post_upgrade() {
     echo " >> [FRANKI] Actualizando dependencias Python..."
+    _detener_servicios_activos
     _crear_venv
     _descargar_voces
     _enable_user_services
