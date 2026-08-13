@@ -1,14 +1,14 @@
 pkgbase = rebased-zh-bin
 	pkgdesc = Chinese language pack for Rebased
-	pkgver = 1.1.12
+	pkgver = 1.1.13
 	pkgrel = 1
 	url = https://github.com/DetachHead/rebased
 	arch = x86_64
 	license = Apache-2.0
-	depends = rebased-bin>=1.1.12-1
+	depends = rebased-bin>=1.1.13-1
 	provides = rebased-zh
 	options = !strip
-	source = localization-zh.jar::https://raw.githubusercontent.com/duanluan/aur-packages/main/packages/rebased-zh-bin/assets/1.1.12/localization-zh.jar
+	source = localization-zh.jar::https://raw.githubusercontent.com/duanluan/aur-packages/main/packages/rebased-zh-bin/assets/1.1.13/localization-zh.jar
 	sha256sums = 8183a6aec71d30de7fe3fa5ec56ae31608d9dba866dbff9bdc9e60cc95878ce8
 
 pkgname = rebased-zh-bin
