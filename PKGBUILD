@@ -9,13 +9,18 @@ srccount=${#_file_ids[@]}
 # Maintainer: Wesley Kennedy <wesley@gmx.it>
 pkgname=dedupe
 pkgdesc='Earn back file space by hardlinking unchanging duplicate files'
-pkgver=20260113
+pkgver=20260813
 pkgrel=1
 arch=(any)
 license=(GPL3)
 depends=('zsh>=5.9')
 optdepends=('b3sum: Faster hashing function') # faulting to b2sum since it's part of coreutils
-checkdepends=(curl unzip b3sum zstd)
+# compensate for the absolute STUPIDITY THAT MSYS2 IS, TRYING TO INTEGRATE
+# PACMAN BUT AT THE SAME TIME BREAKING DEPENDENCY STUFF BECAUSE OF TRYING TO
+# CATER TO A BUNCH OF (USELESS) ARCHITECTURES
+b3=b3sum
+[[ "$(uname)" = MSYS* ]] && why="$(pacman -Qqs b3sum | head -1)" && b3="$why"
+checkdepends=(curl unzip "$b3" zstd)
 validpgpkeys=('73311CF24AE4FF33')
 #function btoa() { xxd -r -p <<< "$1" | base64; }
 #function atob() { base64 -d <<< "$1" | xxd -p; }
@@ -106,7 +111,7 @@ check() {
 		}
 		rm -f "$tmpzip"
 	done
-	plain "Download time: `timefmt "`now`-start"`"
+	plain "Download time: $(timefmt "`now`-start")"
 	msg2 PERMS
 	chmod 666 -R "$tmpdir" # GnuWin32 has readonly files that get extracted
 	chmod +x dedupe

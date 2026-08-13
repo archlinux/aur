@@ -1,6 +1,6 @@
 pkgbase = dedupe
 	pkgdesc = Earn back file space by hardlinking unchanging duplicate files
-	pkgver = 20260113
+	pkgver = 20260813
 	pkgrel = 1
 	url = https://gist.githubusercontent.com/donnaken15/f95e8a143bb330fcf7d6268a4d6929e8
 	install = .INSTALL
