@@ -1,3 +1,30 @@
+AIMP v6.00.3080 Beta 5 (07.08.2026)
+===================================
++ General: native Linux x86-64 support
++ General: compatibility with Windows 11 on ARM
++ General: app appearance has been updated
++ General: the %StrPart macro has been added
++ General: the %Tag(A) macro has been added to access to custom tag field of playing track
++ General: an ability to move items in list via Ctrl+Shift+Top/Bottom/Home/End hotkeys
++ General: support for TLSv1.3
++ Sound engine: resampler algorithm has been improved
++ Player: an ability to abort connecting operation to Internet radiostation
++ Player: mouse wheel on the icon in notification area now adjusts volume
++ Tag editor: an ability to disable escaping the meta due batch file renaming
++ Tag editor: rename files - usability has been improved
++ Skin Engine: an ability to specify individual scaling factor for a window
++ Music Library: add the "not contain" operator
++ Music Library: grouping tree - ability to define few fields on single level using composite field
++ Music library: an ability to disable grouping by Ctrl+Click on cell value
++ Music library: new view in the table - rows with thumbnails
++ Plugins: InputFFmpeg - support for E-AC3
++ Plugins: InputFFmpeg - support for HE-AAC
++ Plugins: InputFFmpeg - support for MLP (streaming mode only)
++ Plugins: InputFFmpeg - the FFmpeg libraries has been updated to v7.11
++ Plugins: SACD - support for DSD1024
+- Fixed: music library - file modification date not updated after changing rating in file tags
+- Fixed: issues from incoming crash-reports
+
 AIMP v6.00.3078 Beta 5 (31.07.2026)
 ===================================
 + General: native Linux x86-64 support
