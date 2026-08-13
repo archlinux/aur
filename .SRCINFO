@@ -1,5 +1,5 @@
 pkgbase = zen-twilight-bin
-	pkgdesc = Unstable Nightly release of the Performance oriented Firefox-based web browser
+	pkgdesc = Official package for Zen's nightly release, a privacy-focused, feature packed Firefox-based web browser
 	pkgver = 1.22t.2026.08.11
 	pkgrel = 1
 	url = https://github.com/zen-browser/desktop
