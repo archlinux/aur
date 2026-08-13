@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=NormalyzerDE
-_pkgver=1.26.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='Evaluation of normalization methods and calculation of differential expression analysis statistics'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('211ed6eaa5e9c997a954d1fa51fbd4cc3670433ad9070328d3f16d0633a832d0')
+sha256sums=('1ecbe243b2fe2b83ac066616b2833ee7e397d7b198835b3ab70b34443df5b004')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
