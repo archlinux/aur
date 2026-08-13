@@ -1,51 +1,48 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_gitauthor=cesarferreira
-_gitname=pirata
-_appname=${_gitname}
-pkgname=${_appname}
+# Override download agent to bypass strict user-agent blocking
+DLAGENTS=('http::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --user-agent "PKGBUILD" -o %o %u'
+          'https::/usr/bin/curl -qgb "" -fLC - --retry 3 --retry-delay 3 --user-agent "PKGBUILD" -o %o %u')
+
+_pkgauthor=cesarferreira
+_pkgname=pirata
+_cratename=${_pkgname}
+pkgname=${_cratename}
 pkgdesc="Search and download torrents via the CLI"
 
-pkgver=0.1.0
-pkgrel=2
-_gitversion=main
-_gitcommit=35f9e954891aa567380e28f8badaa35978e3bbe2
+pkgver=0.1.1
+pkgrel=1
+_pkgvername=${pkgver}
 
 arch=('x86_64' 'aarch64')
+_barch=('x86_64' 'aarch64')
 
-_ghurl="https://github.com/${_gitauthor}/${_gitname}"
-_ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
-url=${_ghurl}
+url="https://github.com/${_pkgauthor}/${_pkgname}"
 
 license=('MIT')
 
-replaces=("pirate-ctl")
-provides=("${_appname}")
-conflicts=("${_appname}" "pirate-ctl")
+makedepends=('rust')
+depends=('glibc' 'gcc-libs')
 
-makedepends=('rust' 'openssl')
-depends=('glibc' 'libgcc')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
-options=(!strip)
-
-source=("git+${_ghurl}#commit=${_gitcommit}"
-		"LICENSE")
-sha256sums=('4350754f66f81b100ba3ef60e86901db8d35abff0d9a4c86f276e24285f84547'
-            '79b001a83730c4e2c57553f5609a458ccdf818a819de1c7f8ff0fbb8c16b9aa2')
+source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
+sha256sums=('a758f02763326021589c5126d79584f8f67b77aed183a6a0a086be4f6c99a91f')
 
 
 build() {
-	cd ${srcdir}/${_gitname} || exit 1
+	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
 	RUSTFLAGS="--remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
 }
 
 package() {
-	cd ${srcdir}/${_gitname} || exit 1
+	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
-	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "target/release/${_cratename%%-cli}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

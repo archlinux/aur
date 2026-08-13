@@ -1,23 +1,17 @@
 pkgbase = pirata
 	pkgdesc = Search and download torrents via the CLI
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.1
+	pkgrel = 1
 	url = https://github.com/cesarferreira/pirata
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = rust
-	makedepends = openssl
 	depends = glibc
-	depends = libgcc
+	depends = gcc-libs
 	provides = pirata
 	conflicts = pirata
-	conflicts = pirate-ctl
-	replaces = pirate-ctl
-	options = !strip
-	source = git+https://github.com/cesarferreira/pirata#commit=35f9e954891aa567380e28f8badaa35978e3bbe2
-	source = LICENSE
-	sha256sums = 4350754f66f81b100ba3ef60e86901db8d35abff0d9a4c86f276e24285f84547
-	sha256sums = 79b001a83730c4e2c57553f5609a458ccdf818a819de1c7f8ff0fbb8c16b9aa2
+	source = pirata-0.1.1.crate::https://crates.io/api/v1/crates/pirata/0.1.1/download
+	sha256sums = a758f02763326021589c5126d79584f8f67b77aed183a6a0a086be4f6c99a91f
 
 pkgname = pirata
