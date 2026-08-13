@@ -1,0 +1,22 @@
+pkgbase = kgamma2-git
+	pkgdesc = Adjust your monitor gamma settings in a Wayland session
+	pkgver = r17.beaa5f2885
+	pkgrel = 1
+	url = https://invent.kde.org/davidedmundson/kgamma2
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = kirigami
+	depends = ki18n
+	depends = lcms2
+	depends = libkscreen
+	depends = qt6-base
+	depends = qt6-declarative
+	conflicts = kgamma2
+	replaces = kgamma2
+	source = kgamma2::git+https://invent.kde.org/davidedmundson/kgamma2
+	sha256sums = SKIP
+
+pkgname = kgamma2-git
