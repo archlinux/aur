@@ -4,7 +4,7 @@
 
 pkgname=shader-slang
 pkgver=2026.14.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion'
 url='https://github.com/shader-slang/slang'
 arch=('x86_64')
@@ -95,6 +95,7 @@ build() {
 		-DSLANG_OVERRIDE_LUA_PATH="$srcdir" \
 		-DSLANG_OVERRIDE_CMARK_PATH="$srcdir" \
 		-DSLANG_SLANG_LLVM_FLAVOR=DISABLE \
+		-DSLANG_ENABLE_SLANG_PROXY=FALSE \
 		-DSLANG_ENABLE_GFX=FALSE
 
 	cmake --build build
@@ -104,7 +105,4 @@ package() {
 	DESTDIR="$pkgdir" cmake --install build
 
 	install -Dm644 "slang-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-	# Delete Unix backward compatibility symlink (libslang -> libslang-compiler)
-	rm -f "$pkgdir/usr/lib/libslang.so"
 }

@@ -1,7 +1,7 @@
 pkgbase = shader-slang
 	pkgdesc = Shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion
 	pkgver = 2026.14.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/shader-slang/slang
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
