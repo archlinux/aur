@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSstatsTMT
-_pkgver=2.16.0
+_pkgver=2.20.0
 pkgname=r-${_pkgname,,}
-pkgver=2.16.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='Protein Significance Analysis in shotgun mass spectrometry-based proteomic experiments with tandem mass tag (TMT) labeling'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('68af040608c452bbd3e2e96f0f5e19320ca96edaaf136deaf1493d81bb887d08')
+sha256sums=('603c8a99463584ef7928421c8c0cc43124a34b098fa112f185167d3978b246d0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
