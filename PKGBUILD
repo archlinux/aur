@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=escape
-_pkgver=2.2.3
+_pkgver=2.8.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,42 +10,43 @@ arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  r-aucell
-  r-biocparallel
-  r-dplyr
   r-ggdist
   r-ggplot2
+  r-matrixgenerics
+  r-summarizedexperiment
+)
+optdepends=(
+  r-aucell
+  r-biocparallel
+  r-biocstyle
+  r-delayedmatrixstats
+  r-dplyr
+  r-fgsea
   r-ggpointdensity
+  r-ggraph
   r-ggridges
   r-gseabase
   r-gsva
-  r-matrixgenerics
-  r-msigdbr
-  r-patchwork
-  r-reshape2
-  r-seuratobject
-  r-singlecellexperiment
-  r-stringr
-  r-summarizedexperiment
-  r-ucell
-)
-optdepends=(
-  r-biocstyle
   r-hexbin
+  r-igraph
+  r-irlba
   r-knitr
-  r-markdown
-  r-rcolorbrewer
+  r-msigdb
+  r-patchwork
   r-rlang
   r-rmarkdown
   r-scran
   r-seurat
+  r-seuratobject
+  r-singlecellexperiment
   r-spelling
+  r-stringr
   r-testthat
-  r-vdiffr
+  r-ucell
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('af1fa9eb8df3252a960cd70ba2f41873')
-b2sums=('05bbd9694bb753799b7b7a614e1a27203ff6d76c984e6e80051d358c40d90d87ac13c6c73c9c58288f8f1c6c00a47f7ed1f5733a38edab80485d30938d6db7e4')
+md5sums=('d6d019d875ac99da0568be20c87c4b53')
+b2sums=('cf13de1883ff28f6ea69dd7b11a5b1907dbe6c1074fb667a9f0cd72c1b7fbc03596701297583d0525efa253ed8657b1777415ae7646922f9ed9e652095fdcfac')
 
 build() {
   mkdir build
