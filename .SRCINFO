@@ -6,7 +6,6 @@ pkgbase = fluent-icon-theme
 	arch = any
 	license = GPL-3.0-only
 	depends = hicolor-icon-theme
-	provides = fluent-icon-theme-git
 	conflicts = fluent-icon-theme-git
 	options = !strip
 	source = https://github.com/vinceliuice/Fluent-icon-theme/archive/refs/tags/2026-07-27.tar.gz

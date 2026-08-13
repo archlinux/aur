@@ -18,7 +18,6 @@ license=('GPL-3.0-only')
 depends=(
   hicolor-icon-theme
 )
-provides=("$pkgname-git")
 conflicts=("$pkgname-git")
 options=('!strip')
 source=("$url/archive/refs/tags/$_pkgver.tar.gz")
