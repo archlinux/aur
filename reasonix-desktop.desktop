@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Reasonix Desktop
-Comment=DeepSeek-Reasonix Desktop client - AI chat interface for DeepSeek models
-Exec=reasonix-desktop %U
-Terminal=false
-Type=Application
-Icon=reasonix-desktop
-StartupWMClass=Reasonix
-Categories=Network;InstantMessaging;Chat;
