@@ -5,7 +5,7 @@
 # Contributor: Sir-Photch <sir-photch@posteo.me>
 
 pkgname=litellm
-pkgver=1.95.0
+pkgver=1.96.2
 pkgrel=1
 pkgdesc='Open Source AI Gateway for 100+ LLMs. Self-hosted. Enterprise-ready. Call any LLM in OpenAI format.'
 
@@ -99,7 +99,7 @@ depends=('python'
 options=(!lto !strip)
 
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('0ef126d52c7a559f8353e50d60fd0d5e7e6c8767ad54df25ddaf79b9edca1afc')
+sha256sums=('80d477ae092b05ce023b5084542cb3cb75999b52b1dd2e4d834fb348effc9399')
 
 
 prepare() {
