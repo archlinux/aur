@@ -1,6 +1,6 @@
 pkgbase = kache-git
 	pkgdesc = Content-addressed zero-copy build cache for Rust, C/C++ and more (latest git main)
-	pkgver = 0.14.1.r554.gb300a1d
+	pkgver = 0.14.2.r556.gcab8257
 	pkgrel = 1
 	url = https://github.com/kunobi-ninja/kache
 	arch = x86_64
