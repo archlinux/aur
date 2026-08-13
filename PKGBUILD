@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=ir-bin
-pkgver=0.3.0 # renovate: datasource=github-tags depName=r-lib/ir
+pkgver=0.4.0 # renovate: datasource=github-tags depName=r-lib/ir
 pkgrel=1
 pkgdesc="Run standalone R scripts from embedded dependency metadata"
 arch=('x86_64' 'aarch64')
@@ -23,5 +23,5 @@ package() {
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums_x86_64=('fb08c8b93b9a4389f26c940755e92afed805a33ffb68b1bfeee9c297602d0c51')
-sha256sums_aarch64=('e84d8ce730a9bc591f969b7c4b458b3778e89df352bbf932f6df4e8739f5e4bc')
+sha256sums_x86_64=('165563296b456a699fb41c67bce85e61dc6f33bdb69364acf7b12aa52ac90bb0')
+sha256sums_aarch64=('165563296b456a699fb41c67bce85e61dc6f33bdb69364acf7b12aa52ac90bb0')

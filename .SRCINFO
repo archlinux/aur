@@ -1,6 +1,6 @@
 pkgbase = ir-bin
 	pkgdesc = Run standalone R scripts from embedded dependency metadata
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/r-lib/ir
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = ir-bin
 	depends = libgcc
 	conflicts = ir
 	options = !debug
-	source_x86_64 = ir-bin-0.3.0.tar.gz::https://github.com/r-lib/ir/releases/download/v0.3.0/ir-x86_64-unknown-linux-gnu.tar.gz
-	provides_x86_64 = ir=0.3.0
-	sha256sums_x86_64 = fb08c8b93b9a4389f26c940755e92afed805a33ffb68b1bfeee9c297602d0c51
-	source_aarch64 = ir-bin-0.3.0.tar.gz::https://github.com/r-lib/ir/releases/download/v0.3.0/ir-aarch64-unknown-linux-gnu.tar.gz
-	provides_aarch64 = ir=0.3.0
-	sha256sums_aarch64 = e84d8ce730a9bc591f969b7c4b458b3778e89df352bbf932f6df4e8739f5e4bc
+	source_x86_64 = ir-bin-0.4.0.tar.gz::https://github.com/r-lib/ir/releases/download/v0.4.0/ir-x86_64-unknown-linux-gnu.tar.gz
+	provides_x86_64 = ir=0.4.0
+	sha256sums_x86_64 = 165563296b456a699fb41c67bce85e61dc6f33bdb69364acf7b12aa52ac90bb0
+	source_aarch64 = ir-bin-0.4.0.tar.gz::https://github.com/r-lib/ir/releases/download/v0.4.0/ir-aarch64-unknown-linux-gnu.tar.gz
+	provides_aarch64 = ir=0.4.0
+	sha256sums_aarch64 = 165563296b456a699fb41c67bce85e61dc6f33bdb69364acf7b12aa52ac90bb0
 
 pkgname = ir-bin
