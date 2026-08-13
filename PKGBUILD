@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=coseq
-_pkgver=1.32.1
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.1
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Co-Expression Analysis of Sequencing Data'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0d33f5cd77043055172661838a9f81ac9aedcb8383faa8cfabbd3d70e9bf89a8')
+sha256sums=('d6bd541941509333ff660998000676f21636fa36ec87ffc5ff6f21249c89df82')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
