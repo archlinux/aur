@@ -1,0 +1,19 @@
+pkgbase = easycut-git
+	pkgdesc = A simple software for doing basic video editing tasks
+	pkgver = r105.18fccaf
+	pkgrel = 1
+	url = https://github.com/tiandic/easyCut
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = base-devel
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-declarative
+	depends = qt6-multimedia
+	depends = ffmpeg
+	provides = easycut
+	source = easycut-git::git+https://github.com/tiandic/easyCut.git
+	sha256sums = SKIP
+
+pkgname = easycut-git
