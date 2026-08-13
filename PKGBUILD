@@ -3,8 +3,7 @@
 
 _name='powershell'
 pkgname="$_name-git"
-pkgver=7.7.0.preview.3.r11481.7c21596
-_major=${pkgver:0:1}
+pkgver=7.7.0.preview.3.r11499.3d8a5af
 pkgrel=1
 pkgdesc='A cross-platform automation and configuration tool/framework (git version)'
 arch=('x86_64')
@@ -131,34 +130,32 @@ check() {
   export DOTNET_HOME="$srcdir/dotnet"
   export NUGET_PACKAGES="$srcdir/.nuget"
   export PATH="$DOTNET_HOME:$PATH"
-  dotnet test -c Linux
+  dotnet test -c Linux -r linux-x64
 }
 
 package() {
   export NUGET_PACKAGES="$srcdir/.nuget"
   cd "$_name"
+  _major=${pkgver:0:1}
   _dn="$(jq -r .sdk.version global.json | awk -F. '{print $1 ".0"}')"
   mkdir -p "$pkgdir/opt/microsoft/$_name/$_major"
-  mkdir -p "bin/Linux/net$_dn/linux-x64/publish/Modules"
 
   # Modules
-  for dep in "$(grep PackageReference src/Modules/PSGalleryModules.csproj)"; do
-    _modname="$(echo $dep | awk -F\" '{print $2}')"
-    _modname="${_modname,,}"
-    _modver="$(echo $dep | awk -F\" '{print $4}' | awk -F. '{print $1 "." $2 "." $3}')"
-    cp -r "$NUGET_PACKAGES/$_modname/$_modver/" "bin/Linux/net$_dn/linux-x64/publish/Modules"
+  _deps="$(grep PackageReference src/Modules/PSGalleryModules.csproj | awk -F\" '{print $2 ":" $4}')"
+  for _dep in $_deps; do
+    IFS=: read -r _mod _ver <<< $_dep
+    cp -r "$NUGET_PACKAGES/${_mod,,}/$_ver" "src/$_name-unix/bin/Linux/net$_dn/linux-x64/Modules/$_mod"
   done
 
-  find "bin/Linux/net$_dn/linux-x64/publish/Modules" \( \
+  find "src/$_name-unix/bin/Linux/net$_dn/linux-x64/Modules" \( \
     -name "*.nupkg" \
     -o -name "*.nupkg.sha512" \
     -o -name "*.nupkg.metadata" \
     -o -name "*.nuspec" \
     -o -name "System.Runtime.InteropServices.RuntimeInformation.dll" \
-    -o -name "fullclr" \
   \) -delete
 
-  cp -ar "src/$_name-unix/bin/Linux/net$_dn/linux-x64/publish/"* "$pkgdir/opt/microsoft/$_name/$_major"
+  cp -ar "src/$_name-unix/bin/Linux/net$_dn/linux-x64/"* "$pkgdir/opt/microsoft/$_name/$_major"
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
   mkdir -p "$pkgdir/usr/bin"
