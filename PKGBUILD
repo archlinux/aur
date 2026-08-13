@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='Omron LUNA-I/LUNA-88K, Sharp X68030, and NEWS NWS-1750 emulator'
 pkgname=nono
-pkgver=1.7.0
+pkgver=1.8.2
 pkgrel=1
 url=http://www.pastel-flower.jp/~isaki/nono
 license=(custom)
@@ -9,7 +9,7 @@ arch=(x86_64)
 depends=(alsa-lib libbsd libkqueue libslirp termcap wxwidgets-gtk3)
 makedepends=(bmake freebsd-mk gettext)
 source=("${url}/archive/${pkgname}-${pkgver}.tar.gz")
-b2sums=('29b1af3aa083ca9d03f9d0bd1657fcf7dfb1c47d2cee5e3cb783bab68638f1b5d2ed2a12585a20df0f2ce3fd4ca92f3e212fa67ec309e737ef5342391d0ea4dc')
+b2sums=('1847d469216060468b333143a7a776a95a19b88f4f5194ec61ffe8a47bde9cd1f6678f0095327f37eb31ce6db4ba6950a9279f32beb5c98306b021b24f30165f')
 
 prepare ()
 {
@@ -34,7 +34,11 @@ build ()
 	sed -i "/^C\(C\|XX\)=/s,$, -I${srcdir}/include," \
 		Makefile.cfg
 
-	echo 'CXXFLAGS+= -Wno-error=template-id-cdtor -Wno-error=deprecated-declarations' >> Makefile.cfg
+	cat >> Makefile.cfg <<-EOF
+	CXXFLAGS+= -Wno-error=deprecated-declarations
+	CXXFLAGS+= -Wno-error=format-truncation
+	CXXFLAGS+= -Wno-error=template-id-cdtor
+	EOF
 
 	bmake -DNOTEST -m/usr/share/mk-freebsd
 }
