@@ -1,5 +1,5 @@
 [Unit]
-Description=Restart piped-backend.service.
+Description=Run piped-backend-restart.service periodically.
 
 [Timer]
 OnBootSec=1h

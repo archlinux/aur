@@ -1,5 +1,5 @@
 [Unit]
-Description=Run piped-backend-restart.service periodically
+Description=Restart piped-backend.service.
 After=piped-backend.service
 
 [Service]
