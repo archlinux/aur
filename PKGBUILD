@@ -1,8 +1,8 @@
 # Maintainer: Kcocoa <kamforzn2@proton.me>
 
 pkgname=cli-proxy-api-systemd-bin
-pkgver=7.2.119
-pkgrel=2
+pkgver=7.2.130
+pkgrel=1
 pkgdesc="Proxy server providing OpenAI, Gemini, Claude, and Codex compatible APIs (systemd config)"
 arch=('x86_64')
 url="https://github.com/router-for-me/CLIProxyAPI"
@@ -18,7 +18,7 @@ source=(
   'cli-proxy-api.sysusers'
   'cli-proxy-api.tmpfiles'
 )
-sha256sums=('d7ff48bb213d7fe86af7ea9778f547554753c8c30171b0471df6c9b4d1192aef'
+sha256sums=('690c512d567d1f250d69b5b16f0447eb92578847474f2d7555b561090dde699c'
             '76a8e4e87e78c696c5e59f786f35cf4e015dd0103802e4236b60ac9454bbbf05'
             '216ce81546d176c915838a42d555cd144b2b15fb8cd50dc17f14572a9e6e469a'
             '9903cf5950cdc24f23eee53890393ad2ab9ac6daaf8aedf59df30721ca6357be')
