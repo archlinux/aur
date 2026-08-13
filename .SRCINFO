@@ -18,6 +18,7 @@ pkgbase = hdf5-geant4
 	depends = libstdc++
 	depends = zlib
 	depends = openmpi
+	provides = hdf5-openmpi
 	provides = hdf5
 	conflicts = hdf5
 	replaces = hdf5-java

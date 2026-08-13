@@ -32,7 +32,7 @@ makedepends=(
   time
 )
 replaces=(hdf5-java)
-provides=(hdf5)
+provides=(hdf5-openmpi hdf5)
 conflicts=(hdf5)
 source=("git+https://github.com/HDFGroup/hdf5.git#tag=$pkgver")
 b2sums=('af4423ed498952aea2b38146f747abe0c95a4194a7518514832cad1faae51ff7575fe9e201ee654dc72b19a6bab215518c92a4bb262c883f41be7255d816fd37')
