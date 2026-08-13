@@ -1,12 +1,12 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_pkgauthor=src3s
-_pkgname=music
-_appname=radii5
+_pkgauthor=ohcass
+_pkgname=radii5
+_appname=${_pkgname}
 pkgname=${_appname}-bin
 pkgdesc="CLI music downloader powered by yt-dlp with parallel chunk downloading and automatic ID3 tagging"
 
-pkgver=1.0.3
+pkgver=0.3.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,10 +26,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}")
-sha256sums=('7eb3927b57a97e2a2a90ac94d79b0ff425ed0ff2cb7790219e51d11def66f9dd'
-            '92f1918e43f40716e17f4f3379a61ad142426831f9addf11d73ca7e8edf67ea1')
-sha256sums_x86_64=('97f76881dc1377003551ca62b9180906932939a0d7e2ba2dd956c55239fc0daa')
-sha256sums_aarch64=('74a351d0ce0afddfe9c39fd7eac6783efbe439b90209a49d94a30e29196f5e11')
+sha256sums=('d7b0d3b7d1fca6560af36eb968d2818a5b64064fbda3df44dcd01b1614d5d032'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+sha256sums_x86_64=('94d1d0c2e939af2236cfeca4c0a68c282b92f663799e1dd6b94e8230baf2a140')
+sha256sums_aarch64=('14e46fc00fa97d99c3620a2808330f65f0d62c26ec6df8123e0fa64c7452e544')
 
 
 package() {

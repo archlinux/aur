@@ -1,5 +1,5 @@
 [radii5-bin]
 source = "github"
-github = "src3s/music"
+github = "ohcass/radii5"
 use_latest_release = true
 prefix = "v"
