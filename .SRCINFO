@@ -1,6 +1,6 @@
 pkgbase = termrain-bin
 	pkgdesc = Terminal weather forecast and rain radar TUI (JMA + Open-Meteo + RainViewer - Kitty graphics)
-	pkgver = 0.3.2
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/iorinu/termrain
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = termrain-bin
 	provides = termrain
 	conflicts = termrain
 	options = !strip
-	source_x86_64 = termrain-x86_64-0.3.2.tgz::https://github.com/iorinu/termrain/releases/download/v0.3.2/termrain-v0.3.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 0068187ffd9ff4c82bac53f2641a92e96f89345e8a3c0b5d781f6290def6af7a
+	source_x86_64 = termrain-x86_64-0.3.4.tgz::https://github.com/iorinu/termrain/releases/download/v0.3.4/termrain-v0.3.4-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9ea2484c4cd6f016adfc9381595703b4555e5abdcc2114530b316a1f5aea700f
 
 pkgname = termrain-bin
