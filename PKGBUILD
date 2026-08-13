@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="🔮 Track all your AI coding agents (Claude Code, Codex, Cursor, ...) in tmux and jump to the one that needs you"
 
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,9 +28,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
-sha256sums=('ae5cd938c00242294ebaf6d794e83717c8e272fc65d40ae6bc6087fd03b6b1ca'
+sha256sums=('8a507ee1255d477045b8dd632af01768375104552177b1d1a55bd7081593263b'
             '1ab02a35c31af7c45c695a5f0d24581f0c6a21102ab311d9f037e84ad3566569')
-sha256sums_x86_64=('81e3efd95f2a8c761c575b2351399959485ae2ca25cffc017c1723fba3d0cf81')
+sha256sums_x86_64=('25d05e40703b579eb83b26427b69e03f4b394ff7276c01d07035481a0f94ed2e')
 
 
 package() {
