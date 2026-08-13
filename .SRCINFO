@@ -1,6 +1,6 @@
 pkgbase = skl-bin
 	pkgdesc = A minimal CLI tool to fetch and install agent skills
-	pkgver = 0.1.2
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/abogoyavlensky/skl
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = skl-bin
 	provides = skl
 	conflicts = skl
 	options = !strip
-	source = README-0.1.2.md::https://raw.githubusercontent.com/abogoyavlensky/skl/v0.1.2/README.md
-	source = LICENSE-0.1.2::https://raw.githubusercontent.com/abogoyavlensky/skl/v0.1.2/LICENSE
+	source = README-0.1.5.md::https://raw.githubusercontent.com/abogoyavlensky/skl/v0.1.5/README.md
+	source = LICENSE-0.1.5::https://raw.githubusercontent.com/abogoyavlensky/skl/v0.1.5/LICENSE
 	sha256sums = c7775ffbe4b7fe4b2cf46eede47189092d7149ed039f189e818856003e280cbf
 	sha256sums = 26ef0a9d298ba973d0b9bd3956e1f76e9d3c520f442e95917212e44905b1df94
-	source_x86_64 = skl-x86_64-0.1.2.tgz::https://github.com/abogoyavlensky/skl/releases/download/v0.1.2/skl_0.1.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7c20239137611f09deda80c623ebdc360344c0ec9174fb3a71e23401e36b7378
-	source_aarch64 = skl-aarch64-0.1.2.tgz::https://github.com/abogoyavlensky/skl/releases/download/v0.1.2/skl_0.1.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = e3436e89913017d3ec1c7eabbdaf062b06f1205b1195ba8b73a1aa0194e79548
+	source_x86_64 = skl-x86_64-0.1.5.tgz::https://github.com/abogoyavlensky/skl/releases/download/v0.1.5/skl_0.1.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = aca7cf35eaea458d766b4cc0c3fcc7f50d8d24cea50d0a5c585b941b229900e5
+	source_aarch64 = skl-aarch64-0.1.5.tgz::https://github.com/abogoyavlensky/skl/releases/download/v0.1.5/skl_0.1.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 628e9d34801eb30913ba5b83aef994873526cffa1ed0a59fde7c40a4c41fe6d9
 
 pkgname = skl-bin
