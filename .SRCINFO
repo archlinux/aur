@@ -1,0 +1,19 @@
+pkgbase = packager
+	pkgdesc = Turn a local .deb or .rpm into a pacman package
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/barscn/packager
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = pkgfile
+	depends = binutils
+	depends = libarchive
+	options = !lto
+	source = packager-0.1.0.tar.gz::https://github.com/barscn/packager/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = d81c1842d92d5d32bc66dec635bee09068bc87b89a7da43a622b0ff3565e80eb
+
+pkgname = packager
