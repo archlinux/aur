@@ -1,6 +1,6 @@
 pkgbase = issie
 	pkgdesc = An Interactive Schematic Simulator with Integrated Editor.
-	pkgver = 6.0.14
+	pkgver = 6.0.16
 	pkgrel = 1
 	url = https://tomcl.github.io/issie
 	arch = any
@@ -12,14 +12,11 @@ pkgbase = issie
 	makedepends = curl
 	makedepends = git
 	makedepends = jq
-	depends = nspr
-	depends = nss
-	depends = alsa-lib
-	depends = gtk3
 	depends = electron43
-	depends = python
 	conflicts = issie
-	source = issie-6.0.14::git+https://github.com/tomcl/issie#tag=v6.0.14
-	sha256sums = 0de8b5b6ade3aabdea308668a7332565c4ee52b0550fa65832bc01bf75de46ca
+	source = issie-6.0.16::git+https://github.com/tomcl/issie#tag=v6.0.16
+	source = issie.sh
+	sha256sums = b14f3f67cf228f713ecd555f775e01c755e5d04251ed6e16085aa4d1bb5e1f1a
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = issie
