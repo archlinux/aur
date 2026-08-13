@@ -60,7 +60,7 @@ keys in `/etc/initcpio/tailscale/`. Pass `--no-ssh` if you would rather run
 `dropbear` or `tinyssh` in the image instead.
 
 **Disable key expiry for that node** in the [machines
-list](https://login.tailscale.com/admin/machines). Node keys expire by default,
+list](https://console.tailscale.com/admin/machines). Node keys expire by default,
 and an expired initrd node cannot reach your tailnet, which you would discover
 while locked out of a machine that is waiting for its passphrase.
 
@@ -71,9 +71,9 @@ cannot do anything without an address. Add one of these alongside this hook:
 
 | initramfs | hook | package | configured by |
 | --------- | ---- | ------- | ------------- |
-| systemd   | `sd-network` | `mkinitcpio-systemd-extras` (AUR)   | `.network` files copied from `/etc/systemd/network` |
-| busybox   | `net`        | `mkinitcpio-nfs-utils` (core)       | the `ip=` kernel parameter |
-| busybox   | `netconf`    | [`mkinitcpio-extras`][extras] (AUR) | the `ip=` kernel parameter |
+| systemd   | `sd-network` | [`mkinitcpio-systemd-extras`][sdextras] (AUR) | `.network` files copied from `/etc/systemd/network` |
+| busybox   | `net`        | [`mkinitcpio-nfs-utils`][nfsutils] (core)     | the `ip=` kernel parameter |
+| busybox   | `netconf`    | [`mkinitcpio-extras`][extras] (AUR)           | the `ip=` kernel parameter |
 
 Both busybox hooks take the same parameter, and either works with this hook;
 they differ in what they can be told to do and where they come from:
@@ -348,6 +348,8 @@ AUR_REMOTE=/tmp/fake-aur.git ./scripts/aur-publish.sh --tag v1.2.0
 [aur]: https://aur.archlinux.org/packages/mkinitcpio-tailscale
 [releases]: https://github.com/dangra/mkinitcpio-tailscale/releases
 [extras]: https://aur.archlinux.org/packages/mkinitcpio-extras
+[sdextras]: https://aur.archlinux.org/packages/mkinitcpio-systemd-extras
+[nfsutils]: https://archlinux.org/packages/core/x86_64/mkinitcpio-nfs-utils/
 [1]: https://wiki.archlinux.org/title/Mkinitcpio
 [2]: https://tailscale.com
 [3]: https://wiki.archlinux.org/title/dm-crypt/Encrypting_an_entire_system#Configuring_mkinitcpio_2

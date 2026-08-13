@@ -180,7 +180,7 @@ fi
 info "tailscale successfully configured.
 
 Next steps:
-  * Disable key expiry for '${TS_HOSTNAME}' at https://login.tailscale.com/admin/machines
+  * Disable key expiry for '${TS_HOSTNAME}' at https://console.tailscale.com/admin/machines
   * Review ${TS_STATEDIR}/default.env (as root)
   * Edit /etc/mkinitcpio.conf and add 'tailscale'. A safe choice is to insert it right before 'sd-encrypt' or 'encrypt*' hooks
   * Add a network hook too -- 'sd-network' on a systemd image, 'net' or 'netconf' on a busybox one -- since nothing in mkinitcpio's stock hooks brings up an interface

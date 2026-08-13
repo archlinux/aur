@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-tailscale
 	pkgdesc = mkinitcpio hook to launch Tailscale on systemd or busybox based initramfs
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/dangra/mkinitcpio-tailscale
 	arch = any
@@ -11,6 +11,6 @@ pkgbase = mkinitcpio-tailscale
 	source = setup-initcpio-tailscale
 	sha256sums = b2652386f393f8689eaf06f16ddb4a89e766771e13ffd697a7231d74f226692e
 	sha256sums = 5d0b435001c31fa3b9ddd3f54e0c295895c1aac5b89a7c9f128201f750c8b40f
-	sha256sums = 425e423d4cc590168f7e48c626264b2d02720eb29ebc446ddbac372ee2c1399e
+	sha256sums = 384da262a6ff288ec115a3593fe10a696289c143dd55054e5c246dbda9be0e2a
 
 pkgname = mkinitcpio-tailscale
