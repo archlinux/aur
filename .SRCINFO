@@ -1,7 +1,7 @@
 pkgbase = python-requirements-detector
 	pkgdesc = Python tool to find and list requirements of a Python project
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prospector-dev/requirements-detector
 	arch = any
 	license = MIT

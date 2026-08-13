@@ -4,7 +4,7 @@
 pkgname=python-requirements-detector
 _name=${pkgname#python-}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python tool to find and list requirements of a Python project"
 arch=('any')
 url="https://github.com/prospector-dev/requirements-detector"
@@ -36,7 +36,7 @@ check() {
   cd "$_name-$pkgver"
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -P -m pytest
+  test-env/bin/python -I -m pytest
 }
 
 package() {
