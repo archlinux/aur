@@ -1,6 +1,6 @@
 pkgbase = r-languageserver
 	pkgdesc = Language Server Protocol
-	pkgver = 0.3.17
+	pkgver = 0.3.18
 	pkgrel = 1
 	url = https://cran.r-project.org/package=languageserver
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = r-languageserver
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/languageserver_0.3.17.tar.gz
-	sha256sums = 4aa5f6bfd9e9ba2c404a4c1ca75ef9204a4b5a3e9d2441ac85aa56f7c4cf8ccb
+	source = https://cran.r-project.org/src/contrib/languageserver_0.3.18.tar.gz
+	sha256sums = 747fdeaa4474e9424189544ce84622d146ab0cc09eaf6667000d3c8d88f079d9
 
 pkgname = r-languageserver

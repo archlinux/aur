@@ -2,9 +2,9 @@
 # Contributor: Robert Greener <me@r0bert.dev>
 
 _pkgname=languageserver
-_pkgver=0.3.17
+_pkgver=0.3.18
 pkgname=r-${_pkgname,,}
-pkgver=0.3.17
+pkgver=0.3.18
 pkgrel=1
 pkgdesc='Language Server Protocol'
 arch=('x86_64')
@@ -36,7 +36,7 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4aa5f6bfd9e9ba2c404a4c1ca75ef9204a4b5a3e9d2441ac85aa56f7c4cf8ccb')
+sha256sums=('747fdeaa4474e9424189544ce84622d146ab0cc09eaf6667000d3c8d88f079d9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
