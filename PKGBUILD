@@ -1,10 +1,10 @@
 # Maintainer: bolikcraft <bolikcraft@gmail.com>
 
 pkgname=vantah-bin
-pkgver=0.3.4
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Unofficial GUI and tray front-end for the AdGuard VPN CLI (adguardvpn-cli)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/bolikcraft/vantah"
 license=('GPL-3.0-or-later')
 # Сборка self-contained: рантайм .NET внутри бинаря, системными остаются только
@@ -18,11 +18,24 @@ optdepends=('adguardvpn-cli-bin: the AdGuard VPN CLI itself — Vantah is useles
 provides=('vantah')
 conflicts=('vantah')
 options=('!strip' '!debug')
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/vantah-$pkgver-linux-x64.tar.gz")
-sha256sums=('61a56f6bfc12020cc5fa4983cd0ef5f20b0e5b99e4f32f810fe28c472f2bc7e8')
+# Ассеты релиза названы по .NET RID (linux-x64 / linux-arm64), а не по $CARCH,
+# поэтому источники расписаны по архитектурам вручную.
+source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/vantah-$pkgver-linux-x64.tar.gz")
+source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/vantah-$pkgver-linux-arm64.tar.gz")
+
+sha256sums_x86_64=('6f78083aecbd14d0c620e254c3206281970731d526b1e7d0ac29961bf6e28799')
+sha256sums_aarch64=('a934df9ca31ea8e3922001a6f61a40034beb548f34fd6c4779723abc92891828')
 
 package() {
-  cd "vantah-$pkgver-linux-x64"
+  # Каталог внутри архива повторяет имя ассета, т.е. RID, а не $CARCH.
+  local _srcdir
+  case "$CARCH" in
+    x86_64)  _srcdir="vantah-$pkgver-linux-x64" ;;
+    aarch64) _srcdir="vantah-$pkgver-linux-arm64" ;;
+    *)       echo "unsupported CARCH: $CARCH" >&2; return 1 ;;
+  esac
+
+  cd "$_srcdir"
 
   # Бинарь в /usr/lib: он самодостаточный и не предназначен для запуска из PATH напрямую.
   install -Dm755 vantah "$pkgdir/usr/lib/vantah/vantah"
