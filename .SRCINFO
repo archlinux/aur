@@ -1,6 +1,6 @@
 pkgbase = r-airpart
 	pkgdesc = Differential cell-type-specific allelic imbalance
-	pkgver = 1.16.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/airpart
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = r-airpart
 	optdepends = r-roxygen2
 	optdepends = r-testthat
 	optdepends = r-tidyr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/airpart_1.16.0.tar.gz
-	sha256sums = 3950f8b4b336abf842919ccad5a103717a2b8270ab26569234fe0280faff5843
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/airpart_1.20.0.tar.gz
+	sha256sums = 11009bb104fe3e9f40da84a609cb83b4cdc96e75f7ba43e18ec470660a320fde
 
 pkgname = r-airpart
