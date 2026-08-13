@@ -4,7 +4,7 @@
 # Contributor: x-demon
 pkgname=nicotine-plus-git
 _app_id=org.nicotine_plus.Nicotine
-pkgver=3.3.10.r1049.gafdab98
+pkgver=3.3.10.r1066.gae548dd
 pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
@@ -56,7 +56,7 @@ check() {
   # Tests requiring an Internet connection are disabled
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -P -m pytest --deselect=test/unit/test_version.py
+  test-env/bin/python -I -m pytest --deselect=test/unit/test_version.py
 
   desktop-file-validate "data/${_app_id}.desktop"
   appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
