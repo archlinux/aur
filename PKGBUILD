@@ -2,7 +2,7 @@
 # Maintainer: Anyshift Engineering <engineering@anyshift.io>
 
 pkgname='anyshift-annie-bin'
-pkgver=0.8.31
+pkgver=0.8.32
 pkgrel=1
 pkgdesc='AI-powered infrastructure observability CLI'
 url='https://anyshift.io'
@@ -13,10 +13,10 @@ conflicts=('annie')
 depends=('glibc')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://annie-cli.anyshift.io/releases/${pkgver}/annie-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('4419f80add7001ed4d9fd2143b91375c01f7761f7121b869fa111d7828274989')
+sha256sums_aarch64=('a349875ba5582373c28a041135e63579d15ffa9e947adf60a8e2fa905a9c0ac5')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://annie-cli.anyshift.io/releases/${pkgver}/annie-${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('1f617af1cca0ef5033c6e509122cb2296059c4b544c9a9066a4091b298e38bb4')
+sha256sums_x86_64=('6aa8afcffc024c53bb3136c5538836d256d6c07f1092eea243d5a2386c7171e2')
 
 package() {
   install -Dm755 "./annie" "${pkgdir}/usr/bin/annie"
