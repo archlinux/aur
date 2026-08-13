@@ -2,7 +2,7 @@
 
 pkgname=python-pytest-localftpserver
 pkgdesc='PyTest plugin providing a local FTP server'
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 arch=('any')
 url='https://pytest-localftpserver.readthedocs.io/'
@@ -18,7 +18,7 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pypi::1}/$_pypi/$_pypi-$pkgver.tar.gz"
 )
 sha256sums=(
-  '15d8a70f3ceab51a399cabf49b8ce9579ea9aeda263d4493a833ac42d86ffa13'
+  '3190199592f87f47ffbf4da8a9ad7d208df0ab0089e744a5da540af507a23818'
 )
 
 build() {
