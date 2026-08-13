@@ -1,7 +1,7 @@
 pkgbase = jsrc
 	pkgdesc = Python library for bioinformatics and scientific computing
 	pkgver = 0.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/imjiaoyuan/jsrc
 	arch = any
 	license = MIT
@@ -9,11 +9,11 @@ pkgbase = jsrc
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools>=61.0
+	makedepends = uv
 	depends = python>=3.10
 	depends = python-numpy>=1.23
 	depends = python-matplotlib>=3.5
 	depends = python-opencv>=4.7
-	depends = python-biopython>=1.80
 	provides = python-jsrc=0.3.1
 	conflicts = python-jsrc
 	options = !strip
