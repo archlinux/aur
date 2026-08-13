@@ -1,7 +1,7 @@
 pkgname=deepseek-harness
 _npmver=0.1.0-rc.6
 pkgver=0.1.0rc.6
-pkgrel=1
+pkgrel=2
 pkgdesc='DeepSeek Harness CLI and agent harness'
 arch=('x86_64')
 url='https://github.com/deepseek-ai/deepseek-harness'
@@ -32,6 +32,7 @@ prepare() {
 
 package() {
   cp -a "$srcdir/npm-root/usr/." "$pkgdir/usr/"
+  install -Dm644 "$srcdir/package/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   find "$pkgdir/usr" -type d -exec chmod 755 {} +
   chown -R root:root "$pkgdir"
 }

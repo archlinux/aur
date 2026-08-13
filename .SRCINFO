@@ -1,7 +1,7 @@
 pkgbase = deepseek-harness
 	pkgdesc = DeepSeek Harness CLI and agent harness
 	pkgver = 0.1.0rc.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/deepseek-ai/deepseek-harness
 	arch = x86_64
 	license = MIT
