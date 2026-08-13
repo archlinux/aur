@@ -1,7 +1,7 @@
 # Maintainer: amgsk <y.amgsk@gmail.com>
 pkgname=kizami-bin
 _appname=kizami
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Tray-resident pomodoro timer with a mini window mode"
 arch=('x86_64')
@@ -14,7 +14,7 @@ _appimage="${_appname}-${pkgver}-linux-x86_64.AppImage"
 source=("${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/zabuton-app/kizami/v${pkgver}/LICENSE")
 noextract=("${_appimage}")
-sha256sums=('87df132c41654f7faff72c5c50b644552a13a45ee1a4bcf41fca13369e20b0f2'
+sha256sums=('211d39fde9ed89187262134db46ee5a705eb469f14bcbfb083a55e6f32754dfe'
             '34899600608d60479abff088841cd9d60a8552ff3017965da268efc5cffc5178')
 
 prepare() {
