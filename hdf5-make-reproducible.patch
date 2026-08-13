@@ -1,0 +1,24 @@
+diff --unified --recursive --text --new-file hdf5-hdf5_1.14.6.orig/src/H5build_settings.cmake.c.in hdf5-hdf5_1.14.6/src/H5build_settings.cmake.c.in
+--- hdf5-hdf5_1.14.6.orig/src/H5build_settings.cmake.c.in	2025-04-20 16:41:28.593995591 +0200
++++ hdf5-hdf5_1.14.6/src/H5build_settings.cmake.c.in	2025-04-20 16:41:41.495430205 +0200
+@@ -24,7 +24,7 @@
+     "                   HDF5 Version: @HDF5_PACKAGE_VERSION_STRING@\n"
+     "                  Configured on: @CONFIG_DATE@\n"
+     "                  Configured by: @CMAKE_GENERATOR@\n"
+-    "                    Host system: @CMAKE_HOST_SYSTEM@\n"
++    "                    Host system:\n"
+     "              Uname information: @CMAKE_SYSTEM_NAME@\n"
+     "                       Byte sex: @BYTESEX@\n"
+     "             Installation point: @CMAKE_INSTALL_PREFIX@\n"
+diff --unified --recursive --text --new-file hdf5-hdf5_1.14.6.orig/src/libhdf5.settings.cmake.in hdf5-hdf5_1.14.6/src/libhdf5.settings.cmake.in
+--- hdf5-hdf5_1.14.6.orig/src/libhdf5.settings.cmake.in	2025-04-20 16:41:28.595388674 +0200
++++ hdf5-hdf5_1.14.6/src/libhdf5.settings.cmake.in	2025-04-20 16:41:49.754212890 +0200
+@@ -6,7 +6,7 @@
+                    HDF5 Version: @HDF5_PACKAGE_VERSION_STRING@
+                   Configured on: @CONFIG_DATE@
+                   Configured by: @CMAKE_GENERATOR@
+-                    Host system: @CMAKE_HOST_SYSTEM@
++                    Host system:
+               Uname information: @CMAKE_SYSTEM_NAME@
+                        Byte sex: @BYTESEX@
+              Installation point: @CMAKE_INSTALL_PREFIX@
