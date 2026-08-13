@@ -6,7 +6,7 @@
 pkgname=mipsel-none-elf-gcc
 _pkgname=gcc
 _target="mipsel-none-elf"
-pkgver=16.1.0
+pkgver=16.2.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - C and C++ frontends (for baremetal MIPS)"
 url="https://www.gnu.org/software/gcc/"
@@ -17,13 +17,15 @@ makedepends=("gcc-ada>=${pkgver:0:2}")
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
 source=(https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz{,.sig})
 sha256sums=(
-  '50efb4d94c3397aff3b0d61a5abd748b4dd31d9d3f2ab7be05b171d36a510f79' # gcc-16.1.0.tar.xz
-  '33a851c045ea2ef6f580d82b2abfb1dc75d8b270727800028ca5f40c3b4a4246' # gcc-16.1.0.tar.xz.sig
+  'e6738e29597f733270731aa90600f37ffdc045079dfc27ec7e8192cc81085c3e' #  gcc-16.2.0.tar.xz
+  '43d73202dcede15d31001c6ba0d28723014ef57e4dc815631772daadbe23bcd2' #  gcc-16.2.0.tar.xz.sig
+
 )
 validpgpkeys=(
-  'D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62' # Jakub Jelinek <jakub@redhat.com>
+  D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
+  33C235A34C46AA3FFB293709A328C3A2C3C45C06  # Jakub Jelinek <jakub@redhat.com>
+  13975A70E63C361C73AE69EF6EEB81F8981C74C7  # Richard Guenther <richard.guenther@gmail.com>
 )
-
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
