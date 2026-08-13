@@ -5,7 +5,7 @@ _pkgname=animestan
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal weapon to search, watch, and keep track of animes"
 
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,9 +24,9 @@ depends=('glibc' 'libgcc')
 source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
-sha256sums=('b9787b219081450ef78f489fa6bdf5374b1fcf5fbcf9cb4b3100626edfb99ff9')
-sha256sums_x86_64=('1de0d76e4b6cd637e22ca4bb392b5bd9b2dc19966b8949643fce8e6079ac4380')
-sha256sums_aarch64=('8cb3fe36717cc8a9c21a85eb021a3e3f67b2bac73c8ee1cabcdfa39fee86aeb4')
+sha256sums=('79c7720975c343f6341cabeedcda67bcda81cf3d133e72c0d6eb961f1844af16')
+sha256sums_x86_64=('54d23987679b524ae44fe17ce702f67c84fc5d0c83ca3000bcca7d099118e663')
+sha256sums_aarch64=('55c99ca29bee240a3617ae327b5d64297c4a074dd1830ac4b94de6071eda7e16')
 
 
 package() {
