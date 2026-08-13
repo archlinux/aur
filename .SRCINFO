@@ -1,6 +1,6 @@
 pkgbase = katana-bin
 	pkgdesc = A next-generation crawling and spidering framework
-	pkgver = 1.6.1
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/projectdiscovery/katana
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = katana-bin
 	provides = katana
 	conflicts = katana
 	options = !strip
-	source_x86_64 = https://github.com/projectdiscovery/katana/releases/download/v1.6.1/katana_1.6.1_linux_amd64.zip
-	sha256sums_x86_64 = 503754f1bd370c3ef287df6998e317baed2dd75bdd13ea64034f09b80ca393f3
-	source_i686 = https://github.com/projectdiscovery/katana/releases/download/v1.6.1/katana_1.6.1_linux_386.zip
-	sha256sums_i686 = a9b7f78a7e571f39cb8cafc3b706d31989299517f09f0197f5fb0aa002c67a10
-	source_aarch64 = https://github.com/projectdiscovery/katana/releases/download/v1.6.1/katana_1.6.1_linux_arm64.zip
-	sha256sums_aarch64 = 663b4ed2c6559a7dacc819e816889940d567ff554ac3f543c8c8f9b50245cd45
+	source_x86_64 = https://github.com/projectdiscovery/katana/releases/download/v1.7.0/katana_1.7.0_linux_amd64.zip
+	sha256sums_x86_64 = fe1142d92f418549338ea46d67a472124878482e225d279e9a42700c75d76a4d
+	source_i686 = https://github.com/projectdiscovery/katana/releases/download/v1.7.0/katana_1.7.0_linux_386.zip
+	sha256sums_i686 = abe377b9c3c0f327bea7850d4bc4fd5faa9931056d48ac0f276077cd90044bba
+	source_aarch64 = https://github.com/projectdiscovery/katana/releases/download/v1.7.0/katana_1.7.0_linux_arm64.zip
+	sha256sums_aarch64 = 9a6885fe9fda850129b110e0f079d42529b0693dd81b59c316f04084935300f0
 
 pkgname = katana-bin
