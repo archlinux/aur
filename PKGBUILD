@@ -2,7 +2,7 @@
 _pkgver=0.5.0-rc1
 pkgname="oshot-bin"
 _pkgname="oshot"
-pkgver=${_pkgver//-/_}
+pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A fast and lightweight screenshot tool for extracting text on the fly (binary files)"
 arch=('x86_64' 'aarch64')
