@@ -1,6 +1,6 @@
 pkgname=arch-install-manager-git
 _pkgname=arch-install-manager
-pkgver=0.0.1.r21.g9348cde
+pkgver=0.0.1.r29.g529b5a9
 pkgrel=1
 pkgdesc="A Linux Mint inspired GTK4-based install and update manager for Arch Linux (latest git)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('flatpak: Flatpak package support'
             'snapper: pre-update Btrfs snapshots'
             'aur-scanner: scan AUR packages for security issues'
             'rate-mirrors: refresh and rank the pacman mirror list')
-source=("$pkgname::git+https://github.com/destbg/arch-install-manager.git#commit=9348cdef646c295fa6f2d168e403026a94ab4a8a")
+source=("$pkgname::git+https://github.com/destbg/arch-install-manager.git#commit=529b5a9a16928f2d282db627d7d8ac3230782fd5")
 sha256sums=('SKIP')
 
 pkgver() {
