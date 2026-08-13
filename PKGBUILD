@@ -3,7 +3,7 @@
 _pkgauthor=purpleclay
 _pkgname=gpg-import
 pkgname=${_pkgname}-bin
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Easily import a GPG key within any CI workflow'
 
@@ -21,9 +21,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${arch[0]}-unknown-linux-musl.tar.gz")
 source_aarch64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${arch[1]}-unknown-linux-musl.tar.gz")
 sha256sums=('5babf02a83e426450bd589ce25d16ca8387f7bd31077e444a4c6b00748332361'
-            '9a3ecfedc605550cf442e7a6b87f8c99ebe4879d0494586e8260cada8f064b96')
-sha256sums_x86_64=('edb96bc78949dc6d74f276c4b400b3252f0e7687d5a9448f5eb5a3e15c1b114a')
-sha256sums_aarch64=('6c966fa572ab9e190794ea74c86f012690cda5b9332898f73910507ecc7c62cc')
+            '15b97098cc3b25083653d574b084f050c0d2281e3d11e63c3874ec307ce0f741')
+sha256sums_x86_64=('70b08c105d0fd2a789204a540dd8ffc905638623d6cfccfef7830742edd6c81d')
+sha256sums_aarch64=('d17520a953fb9582b99af630a56dedaa5d81f3f1f59c59d802945e486a298803')
 
 package() {
   cd "${srcdir}/" || exit
