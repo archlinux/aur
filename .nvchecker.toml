@@ -1,0 +1,6 @@
+[fluent-icon-theme]
+source = "github"
+github = "vinceliuice/Fluent-icon-theme"
+use_max_tag = true
+from_pattern = '^(\d{4})-(\d{2})-(\d{2})$'
+to_pattern = '\1\2\3'

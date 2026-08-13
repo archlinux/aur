@@ -5,6 +5,7 @@
 !/PKGBUILD
 !/.SRCINFO
 !/.gitignore
+!/.nvchecker.toml
 
 !/LICENSE
 !/LICENSES/
