@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}
 pkgdesc="A lightweight, multi-layer Linux sandbox for secure, auditable code execution"
 
-pkgver=1
+pkgver=1.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ provides=("${_appname//-/_}")
 options=(!strip)
 
 source=("git+${url}.git#tag=${_gitversion}")
-sha256sums=('8abf2e80a8c0876c366fb75754f4998112d43291f7abb83f7817bcc641d4c353')
+sha256sums=('2fa4a4d5bfff2a0a133a7bae97314b6d0c46ae74630bef5d0a5da6c1d5aee636')
 
 
 prepare() {
