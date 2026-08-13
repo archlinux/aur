@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=cydar
-_pkgver=1.32.1
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.1
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Using Mass Cytometry for Differential Abundance Analyses'
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('37bd1b3f0a9e96b1d6ece5881ce7984f18b66b82d6634f0ab7173a9e09d84d51')
+sha256sums=('74c9e39750c83fecf523df7c6ad7abfb31e6b778aea2d6543507a2ae01dbe345')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
