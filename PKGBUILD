@@ -2,7 +2,7 @@
 pkgname=imfile
 _pkgname=imFile
 _flathubname="io.github.${pkgname}_io.${pkgname}_desktop"
-pkgver=2.3.2
+pkgver=2.3.4
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -37,7 +37,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('a7099fb4f2b6c44cb5af420e8db8c8fed3700a39375b9b740b754b9d4fef1268'
+sha256sums=('0e580b2206bbc07c6eadfcdb1efa156c2d32f73e71ab70505820a2ff0f11c44c'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
