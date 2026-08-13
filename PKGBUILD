@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CIMICE
-_pkgver=1.18.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='CIMICE-R: (Markov) Chain Method to Inferr Cancer Evolution'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-webshot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('40a096a55eaf68943f714f00f63aa257a22cc91e3691155f7e7ba4bb5f0bd482')
+sha256sums=('8e00a3d97722d9cd1ba9497e7cc43df987dc50606694dffd37cd64e333853b9f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
