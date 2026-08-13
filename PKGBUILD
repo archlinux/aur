@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=QuasR
-_pkgver=1.48.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,15 +10,12 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-2.0-only')
 depends=(
-  bzip2
-  curl
   r-annotationdbi
   r-biobase
   r-biocgenerics
   r-biocparallel
   r-biostrings
   r-bsgenome
-  r-genomeinfodb
   r-genomicfeatures
   r-genomicfiles
   r-genomicranges
@@ -27,8 +24,11 @@ depends=(
   r-rsamtools
   r-rtracklayer
   r-s4vectors
+  r-seqinfo
   r-shortread
   r-txdbmaker
+  bzip2
+  curl
   xz
   zlib
 )
@@ -38,6 +38,7 @@ makedepends=(
 optdepends=(
   r-biocstyle
   r-covr
+  r-genomeinfodbdata
   r-genomicalignments
   r-gviz
   r-knitr
@@ -46,8 +47,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('8c22163982d49624e6738ee5f2ce5a74')
-b2sums=('92a17f851af0b48e78d6dc5e54e08edff061cf7bb35655c22d1e26500eb1b34a5410182c9930acd5abf9f014e4122e8a2091e60f329e292a49cda5649f3fc67d')
+md5sums=('75ae709da1310fdb157cf187a4f51561')
+b2sums=('c329c28c1463d54030ad4982ce4b790c472652a311a6580966b25b2b4c1ddf8658f1c49ca047c661eba601bb6ef1a90fa9b8ba0a597ca563de7abc2e5d474f20')
 
 build() {
   mkdir build
