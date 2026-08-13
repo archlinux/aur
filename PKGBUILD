@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sitadela
-_pkgver=1.16.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,7 +14,6 @@ depends=(
   r-biocgenerics
   r-biomart
   r-biostrings
-  r-genomeinfodb
   r-genomicfeatures
   r-genomicranges
   r-iranges
@@ -22,19 +21,21 @@ depends=(
   r-rsqlite
   r-rtracklayer
   r-s4vectors
+  r-seqinfo
   r-txdbmaker
 )
 optdepends=(
   r-biocstyle
   r-bsgenome
+  r-genomeinfodb
   r-knitr
   r-rmarkdown
   r-rmysql
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7e02529ff9cfe0158cbf22d922e94809')
-b2sums=('4c12a79cf9901d32033787cef4d2fb2a2dd76b58646ced7b3886c777f31e2f1b5ffcb8b6fa80e02a2625f3d9177abb3e17f9ea3ca3b4e71a28078c38f9629160')
+md5sums=('3fa1ef86cdeeabba398725dcf3f8e327')
+b2sums=('8d5d44cd18f573531d355570aaca36f8ee091de8491ed78950d7ecfa42da56f6f48b1838b54c1c0efa23848ef79ed18c9d4eb9b8e56163b2d5af527cd5d15251')
 
 build() {
   mkdir build
