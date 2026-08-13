@@ -1,7 +1,7 @@
 # Maintainer: Maxime Lewandowski <lywel@lywel.link>
 
 pkgname=nsight-systems-bin
-pkgver=2026.3.1.157
+pkgver=2026.4.1.191
 pkgrel=1
 pkgdesc='System-wide statistical sampling profiler with tracing features (upstream .deb)'
 arch=(x86_64)
@@ -26,10 +26,8 @@ source=(
   "https://developer.nvidia.com/downloads/assets/tools/secure/nsight-systems/${_year}_${_month}/$_deb"
   nsight-systems.desktop
 )
-sha256sums=(
-  5ee19712bab10f3f1848493ffe808d1bf540b5c6bdf0e06ac9da867dab28935b
-  31fb773b641c477b0ccd4b6d081ddbb7acf390c1db6233439ad70deb321f7cc5
-)
+sha256sums=('8aeaf8c73401ccafb0b9bbe59981a6fcc97a038388462b15ef48ff75458aba19'
+            '31fb773b641c477b0ccd4b6d081ddbb7acf390c1db6233439ad70deb321f7cc5')
 
 package() {
   bsdtar -xf "$_deb"
