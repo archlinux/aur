@@ -1,0 +1,17 @@
+pkgbase = python-streamlit-calendar
+	pkgdesc = FullCalendar component for Streamlit apps
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/im-perativa/streamlit-calendar
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	depends = python-streamlit
+	source = https://files.pythonhosted.org/packages/source/s/streamlit_calendar/streamlit_calendar-1.4.0.tar.gz
+	sha256sums = 47bd4fe839fdcbc7f334cb3aec0b83556558357562bb58c5a9fdfe11cd4e7b80
+
+pkgname = python-streamlit-calendar
