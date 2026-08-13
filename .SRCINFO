@@ -1,6 +1,6 @@
 pkgbase = python-withoutbg
 	pkgdesc = AI-powered background removal with local and cloud options
-	pkgver = 1.0.6
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://withoutbg.com/
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-withoutbg
 	depends = python-requests
 	depends = python-tqdm
 	provides = withoutbg
-	source = https://files.pythonhosted.org/packages/source/w/withoutbg/withoutbg-1.0.6.tar.gz
-	sha256sums = 5d2504d706ba6730344bbcc9f7fe578c803b7c5eac31688c525d35fe51145514
+	source = https://files.pythonhosted.org/packages/source/w/withoutbg/withoutbg-1.1.1.tar.gz
+	sha256sums = 15282f880e3853a5100c93a5695de17bd04c91802afd52482863b23934a43b03
 
 pkgname = python-withoutbg
