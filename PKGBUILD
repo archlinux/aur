@@ -2,7 +2,7 @@
 
 pkgname=fcitx5-sime
 pkgver=2026.08.02
-pkgrel=1
+pkgrel=2
 _appver=0.15.4
 _enginever=2026.08.02
 pkgdesc="Sime Chinese input method for Fcitx5"
@@ -17,7 +17,7 @@ source=(
   "sime-model-${_enginever}.tar.zst::https://github.com/Ismantic/Sime/releases/download/v${_enginever}/sime-model-${_enginever}.tar.zst"
 )
 sha256sums=(
-  '0f32be757307d0c454be2e7b7ed0fd65d02b1b1a57a58c647e5d6a01d43b5a7a'
+  'c4508d1c78332ec408d14044a0fc68320268a65d0e3c8475ee08746e6ccb997f'
   '99ada6fb8b3cebb6731412365f91f8cf7153cdd6f702a3b8c651d8bb73452ed7'
   '61d3ab6e6f0be2e902b1fe10b54eacdead7baa70748bd2f30891eacb2e5d5fa6'
 )
