@@ -1,0 +1,16 @@
+pkgbase = hoppy-bin
+	pkgdesc = CLI for bunny.net cloud and edge services
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/ractive/hoppy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = hoppy
+	conflicts = hoppy
+	source_x86_64 = https://github.com/ractive/hoppy/releases/download/v0.7.0/hoppy-v0.7.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = e2df2ce040933a385b9ed5e753b10519c29ba2ea07fc5edc707ba0f4c8e6ba41
+	source_aarch64 = https://github.com/ractive/hoppy/releases/download/v0.7.0/hoppy-v0.7.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 031ff5c6a2ad788251df79ab6fd5a70ef90223ed76b8d06cc51479ab28456986
+
+pkgname = hoppy-bin
