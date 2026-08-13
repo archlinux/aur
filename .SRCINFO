@@ -1,6 +1,6 @@
 pkgbase = repofleet-bin
 	pkgdesc = An issue-centered CLI tool for organizing Git workflows
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/mehranzand/repofleet
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = repofleet-bin
 	provides = rf
 	conflicts = repofleet
 	options = !strip
-	source_x86_64 = repofleet-x86_64-0.7.2.tgz::https://github.com/mehranzand/repofleet/releases/download/v0.7.2/repofleet_linux_amd64.tar.gz
-	sha256sums_x86_64 = cfae765d5ab567ad623edcf48b63e7a166f1242ca7bdff07a09bfb8645d6ce66
-	source_aarch64 = repofleet-aarch64-0.7.2.tgz::https://github.com/mehranzand/repofleet/releases/download/v0.7.2/repofleet_linux_arm64.tar.gz
-	sha256sums_aarch64 = a20a1da77d6f07b6173ee47c3e08e821d15aa1a9237093ca5c512bcbe47c9412
+	source_x86_64 = repofleet-x86_64-0.7.3.tgz::https://github.com/mehranzand/repofleet/releases/download/v0.7.3/repofleet_linux_amd64.tar.gz
+	sha256sums_x86_64 = 94707ddd1efcf65310f84a10e21ebe045ce832d42dbd1cf0cdbc37c374313e2c
+	source_aarch64 = repofleet-aarch64-0.7.3.tgz::https://github.com/mehranzand/repofleet/releases/download/v0.7.3/repofleet_linux_arm64.tar.gz
+	sha256sums_aarch64 = c2882db3fff9570035e9137e8869455945815c02e8ac880bde36ccd3547d4fbc
 
 pkgname = repofleet-bin
