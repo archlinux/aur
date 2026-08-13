@@ -49,6 +49,14 @@ _crear_venv() {
     local VENV_NEW="${VENV}.new"
     rm -rf "$VENV_NEW"
 
+    # HOME: los scriptlets ALPM de pacman corren como root pero sin HOME
+    # necesariamente seteado a algo escribible -- confirmado 2026-08-12: el
+    # mismo `uv venv --seed` + `pip install -r requirements-core.txt` que aqui
+    # fallaba en ~15s (demasiado rapido para siquiera intentar descargar un
+    # paquete) funciono perfecto en una sesion `sudo bash -c` interactiva
+    # (donde HOME=/root ya esta seteado). uv/pip necesitan HOME para resolver
+    # su directorio de cache -- sin el, fallan rapido y en silencio relativo.
+    export HOME="${HOME:-/root}"
     # UV_PYTHON_INSTALL_DIR: instala Python en ruta de sistema accesible por todos.
     # Sin esto uv usa /root/.local/ (hook corre como root) que el servicio no puede leer.
     export UV_PYTHON_INSTALL_DIR="/usr/lib/franki/python"
