@@ -2,8 +2,8 @@
 variant=-smu
 pkgname=cyan-skillfish-governor$variant
 pkgver=0.4.12
-tag=v${pkgver::}
-pkgrel=2
+tag=v${pkgver}
+pkgrel=1
 pkgdesc="GPU governor for the AMD Cyan Skillfish APU"
 arch=('x86_64')
 url="https://github.com/filippor/cyan-skillfish-governor/tree/smu"
