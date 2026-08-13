@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=TOP
-_pkgver=1.8.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -49,8 +49,8 @@ optdepends=(
   r-tidyverse
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e7eea3f74f27ddabef17781a4ec84721')
-b2sums=('c3394df4ade2123e68b8e0eed8157d3fae3a26fc1494c3d87c96ec8d1008fbe203a36bd146868332057562c827dc744ef1b8566a3e56c69e0cf0fb9b3ded47b4')
+md5sums=('5fbc705683b64e9efdbe72cf0a791a30')
+b2sums=('9978faad1727a6ae56719b3bf36d9002f3e5aec4e7bdfcbb3377c86c44d805636dab43195846f5a9e02f2531d4d2dec843313e6bea8cbb41b4f2c9b78663fe4b')
 
 build() {
   mkdir build
