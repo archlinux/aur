@@ -1,0 +1,15 @@
+pkgbase = uutils-grep
+	pkgdesc = Rust implementation of grep
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/uutils/grep
+	arch = x86_64
+	license = MIT
+	makedepends = pkgconf
+	makedepends = rust
+	depends = gcc-libs
+	depends = oniguruma
+	source = https://github.com/uutils/grep/archive/refs/tags/0.1.0.tar.gz
+	b2sums = f89fdba09c13737ef28741eafb258abd8923d1842fd96cefa4147098318685d1e24707d12c86cd7d5ad295d190f996252e74a063235eb48f662462207a60a84d
+
+pkgname = uutils-grep
