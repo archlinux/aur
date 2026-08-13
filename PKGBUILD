@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affy
-_pkgver=1.88.0
+_pkgver=1.90.0
 pkgname=r-${_pkgname,,}
-pkgver=1.88.0
+pkgver=1.90.0
 pkgrel=1
 pkgdesc='Methods for Affymetrix Oligonucleotide Arrays'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-widgettools
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9e70755c9027b63b4ab4b435a0ff7ebeff880248a9a0311e265a3fcf4d0f354b')
+sha256sums=('9b1fb7f2aaee4a05c09e0269db80967c85f033740b6a5fcf1be075cdf006ed46')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
