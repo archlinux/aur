@@ -1,6 +1,6 @@
 pkgbase = retdec-git
 	pkgdesc = A retargetable machine-code decompiler based on LLVM
-	pkgver = v4.0.r251.g31ffc7c8
+	pkgver = v5.0.r81.g94505857
 	pkgrel = 1
 	url = https://retdec.com/
 	arch = i686
@@ -16,7 +16,8 @@ pkgbase = retdec-git
 	provides = retdec
 	conflicts = retdec
 	source = retdec-git::git+https://github.com/avast/retdec.git
+	source = gcc15.patch
 	sha256sums = SKIP
+	sha256sums = 06f610199a13b9832b152a7f62b6256f5b43a6d73927a9366c4cdca0289e32f0
 
 pkgname = retdec-git
-
