@@ -1,6 +1,6 @@
 pkgbase = r-mlr3measures
 	pkgdesc = Performance Measures for 'mlr3'
-	pkgver = 1.0.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=mlr3measures
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = r-mlr3measures
 	depends = r-mlr3misc
 	depends = r-prroc
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/mlr3measures_1.0.0.tar.gz
-	md5sums = 7b6e79358e173fa54c97c751c71b92ff
-	b2sums = 03a5633d68a9c05dbef31b05b9313f276b50bbe571abd8f63fd979cad8e5275bbd3e6665ef04ae635a40a7255778908ac539885bd6fa3556ab6876557c607464
+	source = https://cran.r-project.org/src/contrib/mlr3measures_1.3.0.tar.gz
+	md5sums = c126e9474f6e9fa90d187008c1ed2c2e
+	b2sums = 7eff9c8fcc60053a2c30c26903b3c661d4e7146f83e17b4c20f8e08358b62de1ffca903ede06fc64d0028d9ca3ac1b0745dbe5989cfc43bb98d01379750e8317
 
 pkgname = r-mlr3measures
