@@ -6,7 +6,7 @@
 
 pkgname=retdec-git
 pkgver=v5.0.r81.g94505857
-pkgrel=1
+pkgrel=2
 pkgdesc="A retargetable machine-code decompiler based on LLVM"
 arch=('i686' 'x86_64')
 url="https://retdec.com/"
@@ -29,6 +29,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/$pkgname"
+	git apply "$srcdir/gcc15.patch"
 	mkdir -p build && cd build
 	export CMAKE_POLICY_VERSION_MINIMUM=3.5
 	cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" "$srcdir/$pkgname"

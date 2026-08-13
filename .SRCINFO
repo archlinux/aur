@@ -1,7 +1,7 @@
 pkgbase = retdec-git
 	pkgdesc = A retargetable machine-code decompiler based on LLVM
 	pkgver = v5.0.r81.g94505857
-	pkgrel = 1
+	pkgrel = 2
 	url = https://retdec.com/
 	arch = i686
 	arch = x86_64
