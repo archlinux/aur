@@ -2,7 +2,7 @@
 # Contributor: Shuyuan Liu <liu_shuyuan at qq dot com>
 pkgname=issie
 _pkgname=Issie
-pkgver=6.0.16
+pkgver=6.0.17
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('b14f3f67cf228f713ecd555f775e01c755e5d04251ed6e16085aa4d1bb5e1f1a'
+sha256sums=('696782932355b43855a2c133977c134039fd2ee50bc3593fab899fa647a46597'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
