@@ -1,6 +1,6 @@
 # Maintainer: kekmacska <kekmacska2@proton.me>
 pkgname=saber-git
-pkgver=1.35.0.r1.gg4af5d81a
+pkgver=1.35.1+1.r0.gg34c57e51
 pkgrel=1
 pkgdesc="Saber Notes – A Flutter-based desktop note-taking app"
 arch=('x86_64')
@@ -12,7 +12,6 @@ depends=(
 )
 makedepends=(
   'git' 'flutter' 'svgo' 'oxipng'
-  # AUR: minify
 )
 provides=('saber')
 conflicts=('saber')
@@ -29,7 +28,7 @@ prepare() {
     cd "$srcdir/saber"
 
     svgo . -r --multipass
-    oxipng -o max -r -p -s -v -t 4 --timeout 150 ./{.github,assets,assets_raw,lib,linux,metadata,packages,submodules,test}
+    oxipng -o max -r -p -s -v -t $(nproc) -z --zi 100 --ziwi 10 --brute-level 5 --brute-lines 16 ./{.github,assets,assets_raw,lib,linux,metadata,packages,submodules,test}
 
     sed -i 's|^Icon=.*|Icon=saber|' flatpak/com.adilhanney.saber.desktop
 }
