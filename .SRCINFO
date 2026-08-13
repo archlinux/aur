@@ -1,6 +1,6 @@
 pkgbase = miteiru
 	pkgdesc = An open source Electron video player to learn Chinese,Cantonese,and Japanese.It can play all Youtube and HTML 5 supported format videos,and lots of supports on other subtitle formats.(Use system-wide electron)
-	pkgver = 7.4.3
+	pkgver = 7.4.9
 	pkgrel = 1
 	url = https://miteiru.hocky.id/
 	arch = any
@@ -13,12 +13,13 @@ pkgbase = miteiru
 	makedepends = git
 	makedepends = jq
 	depends = electron41
+	depends = mecab
 	optdepends = python-jieba
 	optdepends = pypinyin
 	conflicts = miteiru
-	source = miteiru-7.4.3::git+https://github.com/hockyy/miteiru#tag=v7.4.3
+	source = miteiru-7.4.9::git+https://github.com/hockyy/miteiru#tag=v7.4.9
 	source = miteiru.sh
-	sha256sums = 652553746ab60a0b3dd3fed45976d1a7cc5c34fc9a80eedffb431f047a15d741
+	sha256sums = c9aa7073b41ab1625133452260a9a765c2fa2b17bf5a07912f7a35dc5528048f
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = miteiru

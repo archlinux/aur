@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru
 _pkgname=Miteiru
-pkgver=7.4.3
+pkgver=7.4.9
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -13,7 +13,7 @@ license=("CC-BY-NC-4.0")
 conflicts=("${pkgname}")
 depends=(
     "electron${_electronversion}"
-    #'mecab'
+    'mecab'
 )
 makedepends=(
     'npm'
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('652553746ab60a0b3dd3fed45976d1a7cc5c34fc9a80eedffb431f047a15d741'
+sha256sums=('c9aa7073b41ab1625133452260a9a765c2fa2b17bf5a07912f7a35dc5528048f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -98,12 +98,16 @@ build() {
     _set_build_env
     _ensure_local_nvm
     NODE_ENV=production     npm run build:linux26
+    local _app_dir=$(_get_app_dir)
+    rm -rf \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/level/node_modules/classic-level/prebuilds/"{android-*,linux-arm*,darwin-*,win32-*} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/classic-level/prebuilds/"{android-*,linux-arm*,darwin-*,win32-*}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
+    local _app_dir=$(_get_app_dir)
+    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
