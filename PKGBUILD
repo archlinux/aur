@@ -44,7 +44,7 @@ build() {
 #   cd "$_name-$pkgver"
 #   python -m venv --clear --without-pip --system-site-packages test-env
 #   test-env/bin/python -m installer dist/*.whl
-#   test-env/bin/python -P -m pytest --ignore jaraco/vcs/__init__.py
+#   test-env/bin/python -I -m pytest --ignore jaraco/vcs/__init__.py
 # }
 
 package() {
