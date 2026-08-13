@@ -2,8 +2,8 @@
 
 pkgname=sonora
 pkgver=0.11.0
-pkgrel=2
-pkgdesc='A minimal native Spotify client built with Rust and GPUI'
+pkgrel=3
+pkgdesc='A native music streaming client, built with Rust and GPUI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nolight132/sonora'
 license=('GPL-3.0-or-later')
