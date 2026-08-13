@@ -9,10 +9,8 @@ url=https://github.com/uutils/sed
 license=('MIT')
 depends=(gcc-libs)
 makedepends=(rust)
-conflicts=(sed)
-provides=(sed)
-source=("https://github.com/uutils/sed/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('48356c208190ceb4e8bd98ffa98d4597111b000e471e4c8c284b0939f4bac3c1')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('4e8d6c2254b783d7995e9aae67e553d9cfbe11b6d391f8b32fe60b8381e9da61b2f3a83072d57159fe20676f0b4adc11e0bd26946cf04e25c618bc1fbc0aeb06')
 
 build(){
   cd sed-$pkgver
@@ -23,6 +21,6 @@ build(){
 
 package() {
   cd sed-$pkgver
-  install -Dm755 target/release-fast/sed -t "$pkgdir"/usr/bin
+  install -Dm755 target/release-fast/sed "$pkgdir"/usr/bin/uu-sed
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
