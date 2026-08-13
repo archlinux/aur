@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=HiCDOC
-_pkgver=1.8.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,7 +14,6 @@ depends=(
   r-biocparallel
   r-cowplot
   r-data.table
-  r-genomeinfodb
   r-genomicranges
   r-ggplot2
   r-gridextra
@@ -24,8 +23,8 @@ depends=(
   r-pbapply
   r-rcpp
   r-s4vectors
+  r-seqinfo
   r-summarizedexperiment
-  r-zlibbioc
   zlib
 )
 checkdepends=(
@@ -40,8 +39,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d6f9e9565f7fd00b7cc8bc1689c2111d')
-b2sums=('5b8de4eb4c53d40574ea78e804ef4b613291c0d2fbc4195635df4d8fdd7073ece13a0702d68c1da614a40b2292bd49aed61ca410381ee409d9f5f1d69b63a675')
+md5sums=('3c72b372a788851f70865cfe4ee7d2da')
+b2sums=('072ffd5ff20bfba95671b84c805796e6364578ca3919e221be1158c6005da055e7e25d3b93accc36a71444f864f6e71efcc764e7edea71d63c1284ec69087dd3')
 
 build() {
   mkdir build
