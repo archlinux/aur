@@ -16,9 +16,11 @@ sha256sums_x86_64=('d3700db2fcdf7a2d392ee015a74c8c70edc2fd148505343aea251c353d6c
 sha256sums_i386=('e3754c9f66b72dd443682436c2fdfd60b9a3ab592dec5a4e77a1eef31423543b')
 
 package() {
-  install -Dm755 gitql "${pkgdir}/usr/bin/gitql"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
-  ln -rsf "$pkgdir/usr/bin/gitql" "$pkgdir/usr/bin/git-ql"
+  ln -rsf "${pkgdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/git-ql"
 
-  install -Dm644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+
+  install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
