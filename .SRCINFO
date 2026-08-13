@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-vi
 	pkgdesc = Vietnamese language pack for Firefox Nightly
-	pkgver = 155.0a1.20260812.202037
+	pkgver = 155.0a1.20260813.095318
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-vi
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-vi-155.0a1.20260812.202037.xpi
-	source = firefox-nightly-i18n-vi-155.0a1.20260812.202037.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-155.0a1.vi.langpack.xpi
-	sha256sums = f4919618b8e9819672700fd11572dbde1a74a03ddb792781d4c94a86107659f2
+	noextract = firefox-nightly-i18n-vi-155.0a1.20260813.095318.xpi
+	source = firefox-nightly-i18n-vi-155.0a1.20260813.095318.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-155.0a1.vi.langpack.xpi
+	sha256sums = 2b674657258d28101d8bd159e195aa4c74fda1b27efeccae8629ecebcd5b98c4
 
 pkgname = firefox-nightly-i18n-vi
