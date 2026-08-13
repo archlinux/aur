@@ -1,6 +1,6 @@
 pkgbase = tinhorn-bin
 	pkgdesc = A terminal dice roller: shake the dice, watch em' fly, hear it bounce.
-	pkgver = 0.1.2
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/puradox/tinhorn
 	arch = x86_64
@@ -12,13 +12,13 @@ pkgbase = tinhorn-bin
 	provides = tinhorn
 	conflicts = tinhorn
 	options = !strip
-	source = README-0.1.2.md::https://raw.githubusercontent.com/puradox/tinhorn/v0.1.2/README.md
-	source = LICENSE-MIT-0.1.2::https://raw.githubusercontent.com/puradox/tinhorn/v0.1.2/LICENSE-MIT
-	source = LICENSE-APACHE-0.1.2::https://raw.githubusercontent.com/puradox/tinhorn/v0.1.2/LICENSE-APACHE
-	sha256sums = 1c1f2666f17946376a629ac29861dc0dc381e6467fb3991417f1ce60a953a7e7
+	source = README-0.2.2.md::https://raw.githubusercontent.com/puradox/tinhorn/v0.2.2/README.md
+	source = LICENSE-MIT-0.2.2::https://raw.githubusercontent.com/puradox/tinhorn/v0.2.2/LICENSE-MIT
+	source = LICENSE-APACHE-0.2.2::https://raw.githubusercontent.com/puradox/tinhorn/v0.2.2/LICENSE-APACHE
+	sha256sums = e71f2434e8efa05d99b0977e6b126259d6a2dfda4909c64d0a0276c1ffb2e276
 	sha256sums = 2a5d42337c1bd9e3046d9f596e6ee79e693d8a248d7cc8847334625decb79f4a
 	sha256sums = 8e1ae0be770b07175ec82b0f828fe8ab63a8ed1a767d3dbd3a56cf8186bd6340
-	source_x86_64 = tinhorn-x86_64-0.1.2.tgz::https://github.com/puradox/tinhorn/releases/download/v0.1.2/tinhorn-v0.1.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 4e5f02e16e6a916f0539795347a7c1f76f7b6137a75c5b0c10a9cbe080567fb6
+	source_x86_64 = tinhorn-x86_64-0.2.2.tgz::https://github.com/puradox/tinhorn/releases/download/v0.2.2/tinhorn-v0.2.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 79a910159d1223a48c5fe0042cb49508c1ed7f42b9463f02d842e5dc0cdec8f5
 
 pkgname = tinhorn-bin
