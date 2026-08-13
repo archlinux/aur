@@ -1,6 +1,6 @@
 pkgbase = python313
 	pkgdesc = Major release 3.13 of the Python programming language
-	pkgver = 3.13.14
+	pkgver = 3.13.15
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686
@@ -23,9 +23,9 @@ pkgbase = python313
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
-	source = https://www.python.org/ftp/python/3.13.14/Python-3.13.14.tar.xz
+	source = https://www.python.org/ftp/python/3.13.15/Python-3.13.15.tar.xz
 	validpgpkeys = 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 	validpgpkeys = E3FF2839C048B25C084DEBE9B26995E310250568
-	sha256sums = 639e43243c620a308f968213df9e00f2f8f62332f7adbaa7a7eeb9783057c690
+	sha256sums = 1e66a7945a48390ee4c2a4268a0e4185884059a13c4aab6d148aa208deea4a76
 
 pkgname = python313

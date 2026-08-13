@@ -2,7 +2,7 @@
 # Contributor: Tobias Kunze <r@rixx.de>
 
 pkgname=python313
-pkgver=3.13.14
+pkgver=3.13.15
 pkgrel=1
 _pybasever=3.13
 _pymajver=3
@@ -14,7 +14,7 @@ depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib' '
 makedepends=('bluez-libs' 'mpdecimal' 'gdb')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
-sha256sums=('639e43243c620a308f968213df9e00f2f8f62332f7adbaa7a7eeb9783057c690')
+sha256sums=('1e66a7945a48390ee4c2a4268a0e4185884059a13c4aab6d148aa208deea4a76')
 validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
