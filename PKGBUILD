@@ -2,7 +2,7 @@
 
 pkgname=c-lolcat
 _pkgname=lolcat
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="High-performance implementation of lolcat"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=()
 conflicts=('lolcat')
 provides=('lolcat')
 source=("https://github.com/jaseg/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('6ea43ee2b2bb2f15fc91812b72ebcdaa883052853ed8f055b6f8b38637bda909')
+sha256sums=('2af79bed90e0bda52ae500d16e7e7022037fad10c487c317e7f0ff17ec4b14f5')
 
 #prepare() {
 #    cd "${srcdir}/${pkgname}-${pkgver}"
