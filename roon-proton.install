@@ -15,8 +15,8 @@ post_upgrade() {
   cat <<'EOF'
 roon-proton was upgraded.
 
-If you use the laptop System Output zone, run
-"roon-proton endpoint mode system" as your desktop user once. This migrates the
-saved endpoint from the fixed-rate loopback relay to shared PipeWire output.
+If you use the laptop System Output zone, launch Roon normally. The first launch
+migrates the old fixed-rate relay to shared PipeWire output automatically. It
+keeps the existing Roon zone and does not change direct-mode endpoints.
 EOF
 }

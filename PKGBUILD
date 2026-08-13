@@ -1,7 +1,7 @@
 # Maintainer: massiveadam <51133980+massiveadam at users dot noreply dot github dot com>
 pkgname=roon-proton
 pkgver=0.2.0
-pkgrel=9
+pkgrel=10
 pkgdesc='Roon desktop controller and native audio endpoint for Arch Linux'
 arch=('x86_64')
 url='https://github.com/massiveadam/roon-wine'
@@ -38,7 +38,7 @@ source=(
   'roon-proton.modprobe.conf'
   'LICENSE'
 )
-sha256sums=('c7d030f0e8ac28650308d1c4439033bf032a6635f97feb5d2fbd8198c2349139'
+sha256sums=('9f593d5f48ffe6a21963415cae403d9109248b3b048789c1784ecf157aeac05a'
             '063eb4ed5c43dc3c3ad7f392dbcd688cf5a0faca345a0074271eb78b93375df3'
             'cdf20b663f91c5d9b44d314dfb805ac5e9bc1bb7fa9c4b2cc542a255655e3348'
             'aab5a24dff98029cbb17a40c27af62b14a114c58d1e398b02a02b4404b8af528'

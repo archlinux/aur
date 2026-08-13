@@ -24,6 +24,7 @@ readonly BRIDGE_DATA="$BRIDGE_HOME/data"
 readonly BRIDGE_SETTINGS="$BRIDGE_DATA/RAATServer/Settings"
 readonly BRIDGE_ARCHIVE="$CACHE_HOME/RoonBridge_linuxx64.tar.bz2"
 readonly BRIDGE_SERVICE="$HOME/.config/systemd/user/roonbridge-native.service"
+readonly LEGACY_SYSTEM_OUTPUT_LINK="$HOME/.config/systemd/user/default.target.wants/roon-system-output.service"
 readonly UMU_140_RUNNER='/usr/lib/roon-proton/roon-umu-run'
 
 display=auto
@@ -332,8 +333,19 @@ pipewire_endpoint_configured() {
 
 remove_legacy_system_output() {
   systemctl --user disable --now roon-system-output.service 2>/dev/null || true
+  rm -f -- "$LEGACY_SYSTEM_OUTPUT_LINK"
   rm -f -- "$BRIDGE_SERVICE.d/system-output.conf"
   systemctl --user daemon-reload
+}
+
+migrate_legacy_system_output() {
+  [[ -L $LEGACY_SYSTEM_OUTPUT_LINK ]] || return 0
+  note 'migrating the old fixed-rate System Output route to shared PipeWire'
+  if (endpoint_command mode system); then return 0; fi
+  mkdir -p "$(dirname "$LEGACY_SYSTEM_OUTPUT_LINK")"
+  [[ -L $LEGACY_SYSTEM_OUTPUT_LINK ]] || \
+    ln -s /usr/lib/systemd/user/roon-system-output.service "$LEGACY_SYSTEM_OUTPUT_LINK"
+  printf 'WARN: System Output migration failed; Roon will open and retry on the next launch\n' >&2
 }
 
 managed_launcher_pids() {
@@ -662,6 +674,7 @@ install_roon() {
 run_roon() {
   local exe selected
   exe=$(find_roon) || die "Roon is not installed; run 'roon-proton install'"
+  migrate_legacy_system_output
   selected=$(selected_display)
   require_display "$selected"
   [[ $runner == wine ]] && configure_prefix
