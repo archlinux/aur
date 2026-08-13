@@ -2,7 +2,7 @@
 
 pkgname=arch-manwarn-bin
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Rust-based pacman hook that blocks updates if unread Arch News posts require manual intervention (binary release)"
 arch=('x86_64')
 url="https://github.com/NLion74/arch-manwarn"
@@ -26,7 +26,7 @@ package() {
 
   install -Dm644 \
     "hooks/00-arch-manwarn.hook" \
-    "$pkgdir/usr/share/libalpm/hooks/arch-manwarn.hook"
+    "$pkgdir/usr/share/libalpm/hooks/00-arch-manwarn.hook"
 
   install -Dm644 \
     "LICENSE" \
