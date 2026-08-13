@@ -1,18 +1,18 @@
 pkgbase = qcalc-bin
-	pkgdesc = Quasar Calculator.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.12.0
+	pkgdesc = A multi-purpose calculator for productivity and accessibility.(Prebuilt version)
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/from104/qcalc
 	arch = x86_64
 	license = MIT
-	depends = electron41
-	provides = qcalc=0.12.0
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = qcalc=0.13.0
 	conflicts = qcalc
-	source = qcalc-0.12.0-x86_64.AppImage::https://github.com/from104/qcalc/releases/download/v0.12.0/QCalc-0.12.0-linux.AppImage
-	source = LICENSE-0.12.0::https://raw.githubusercontent.com/from104/qcalc/v0.12.0/LICENSE
-	source = qcalc.sh
-	sha256sums = 2db9f9fdb38a94f85f7dee5fb85c2e9f9720b9db3dabcdea2debb3f9492ec0e2
+	source = qcalc-0.13.0.rpm::https://github.com/from104/qcalc/releases/download/v0.13.0/Q.Calc-0.13.0-1.x86_64.rpm
+	source = LICENSE-0.13.0::https://raw.githubusercontent.com/from104/qcalc/v0.13.0/LICENSE
+	sha256sums = 099dc0daf5cf4c218b65705fff5875c470521662e8d447c10a0738ca0b3ea75c
 	sha256sums = 3987b48fb3c79907511fb74614201dbf40f9bff0cc691d4f2dbcad754cba519b
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = qcalc-bin
