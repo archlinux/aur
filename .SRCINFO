@@ -1,6 +1,6 @@
 pkgbase = nirilayout-git
 	pkgdesc = Quickly switch niri output configuration between different layouts (GTK switcher)
-	pkgver = r39.7b65fdb
+	pkgver = r41.5f2fd68
 	pkgrel = 1
 	url = https://github.com/Piero-93/nirilayout
 	arch = x86_64
