@@ -2,7 +2,7 @@
 
 _pkgname=dusklight
 pkgname=${_pkgname}-git
-pkgver=1.4.1.r0.gf5642f3
+pkgver=1.4.1.r137.g008a18c
 pkgrel=1
 pkgdesc="Dusklight brings a classic adventure to PC and mobile platforms with a variety of fixes and improvements."
 arch=('x86_64')
@@ -15,9 +15,11 @@ conflicts=(dusklight dusklight-bin)
 source=(
   "git+$url"
   "git+https://github.com/encounter/aurora.git"
+  "git+https://github.com/encounter/borealis.git"
 )
 
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -30,6 +32,7 @@ prepare() {
 
   git submodule init
   git config submodule.extern/aurora.url "${srcdir}/aurora"
+  git config submodule.extern/borealis.url "${srcdir}/borealis"
   git -c protocol.file.allow=always submodule update
 }
 
@@ -39,13 +42,8 @@ build() {
   cmake -B build -GNinja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_C_COMPILER=clang \
-    -DCMAKE_CXX_COMPILER=clang++ \
-    -DCMAKE_EXE_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
-    -DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} -fuse-ld=lld" \
-    -DCMAKE_C_FLAGS="${CFLAGS} -flto=thin -DNDEBUG" \
-    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -flto=thin -DNDEBUG" \
-    -DDUSK_ENABLE_UPDATE_CHECKER=OFF \
+    -DCMAKE_C_FLAGS="${CFLAGS} -DNDEBUG" \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG" \
     -DDUSK_PACKAGE_INSTALL=ON
 
   cmake --build build
@@ -55,8 +53,6 @@ package() {
   install -dm 755 "${pkgdir}/usr/bin"
 
   install -Dm 755 "${srcdir}/dusklight/build/dusklight" "${pkgdir}/opt/${_pkgname}/dusklight"
-  install -Dm 755 "${srcdir}/dusklight/build/libs/freeverb/libfreeverb.so" "${pkgdir}/opt/${_pkgname}/libfreeverb.so"
-  install -Dm 755 "${srcdir}/dusklight/build/librmlui.so" "${pkgdir}/opt/${_pkgname}/librmlui.so"
 
   install -dm 755 "${pkgdir}/usr/share/${_pkgname}"
   cp -r "${srcdir}/dusklight/res" "${pkgdir}/usr/share/${_pkgname}/res"
