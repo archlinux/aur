@@ -1,0 +1,22 @@
+pkgbase = zorite
+	pkgdesc = A local-first outliner and daily-journal note app (Logseq-style).
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/packetThrower/zorite
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = pkg-config
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = wayland
+	depends = libx11
+	depends = libxcb
+	depends = xcb-util-cursor
+	depends = fontconfig
+	depends = freetype2
+	options = !lto
+	source = https://github.com/packetThrower/zorite/archive/refs/tags/v0.10.1.tar.gz
+	sha256sums = 85453acf81c41060352fdc51876b55fb011dacff05b12f86bdf5771bf7c1807a
+
+pkgname = zorite
