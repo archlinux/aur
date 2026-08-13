@@ -1,6 +1,6 @@
 pkgbase = python-textual-drivers
 	pkgdesc = Drop-in Textual drivers with lock_stdin, register_event_handler, and kitty DnD support
-	pkgver = 0.7.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/NSPC911/textual-drivers
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-textual-drivers
 	makedepends = python-hatchling
 	depends = python
 	depends = python-textual
-	source = https://files.pythonhosted.org/packages/source/t/textual_drivers/textual_drivers-0.7.1.tar.gz
-	sha256sums = e6ba163d4d9829a26850eab97f653e574db54ab5530da130dda1dd0f280bb88a
+	source = https://files.pythonhosted.org/packages/source/t/textual_drivers/textual_drivers-0.10.2.tar.gz
+	sha256sums = d5fa783358bb8bd1c59a4e22a5becb7bb47002d70096492e087302be4a800f60
 
 pkgname = python-textual-drivers
