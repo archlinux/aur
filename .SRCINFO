@@ -1,6 +1,6 @@
 pkgbase = clip-cli-bin
 	pkgdesc = System clipboard bridge for the terminal - pipe content in, paste content out
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/someoneonsmile/clip
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = clip-cli-bin
 	provides = clip
 	conflicts = clip
 	conflicts = clip-bin
-	source_x86_64 = https://github.com/someoneonsmile/clip/releases/download/v2.0.0/clip-x86_64-linux-gnu
+	source_x86_64 = https://github.com/someoneonsmile/clip/releases/download/v3.0.0/clip-x86_64-linux-gnu
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/someoneonsmile/clip/releases/download/v2.0.0/clip-aarch64-linux-gnu
+	source_aarch64 = https://github.com/someoneonsmile/clip/releases/download/v3.0.0/clip-aarch64-linux-gnu
 	sha256sums_aarch64 = SKIP
 
 pkgname = clip-cli-bin

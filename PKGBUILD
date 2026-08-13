@@ -2,7 +2,7 @@
 pkgname=clip-cli-bin
 conflicts=('clip' 'clip-bin')
 provides=('clip')
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="System clipboard bridge for the terminal - pipe content in, paste content out"
 arch=('x86_64' 'aarch64')
