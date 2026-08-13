@@ -1,0 +1,29 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "0001-build-ignore-generated-libffi-include-shim.patch",
+    "0002-build-add-local-include-dir-for-libffi-on-arch.patch",
+    "0003-chore-add-upstream-license-text.patch",
+    "0004-fix-bootstrap-disable-_FORTIFY_SOURCE-in-Linux-C-imp.patch",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".gitignore",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*sysusers.conf",
+    "*.tmpfiles",
+    "*tmpfiles.conf",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = "openjai-git contributors"
+SPDX-License-Identifier = "0BSD"

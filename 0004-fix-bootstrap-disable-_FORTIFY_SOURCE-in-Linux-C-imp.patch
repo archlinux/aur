@@ -1,0 +1,36 @@
+From 3753b3839e216a254296f5be00cce04709b4ac75 Mon Sep 17 00:00:00 2001
+From: winlogon <walker84837@gmail.com>
+Date: Thu, 13 Aug 2026 10:22:37 +0200
+Subject: [PATCH 4/4] fix(bootstrap): disable _FORTIFY_SOURCE in Linux C import
+
+-Doptimize=ReleaseSafe builds failed because Zig sets _FORTIFY_SOURCE=2
+in release modes, which enables glibc's fortified open{at} macros inside
+platform_linux.zig's @cImport.
+
+Zig's C translator cannot resolve the __error__ calls those macros
+generate in fcntl2.h, so the C import aborts.
+
+Add @cDefine("_FORTIFY_SOURCE", "0") before the includes in that
+@cImport block.
+
+This suppresses the fortify macro expansion during header translation,
+while the real libc open/openat are still linked.
+---
+ bootstrap/rt/platform_linux.zig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/bootstrap/rt/platform_linux.zig b/bootstrap/rt/platform_linux.zig
+index 38cd1b0..98ffe74 100644
+--- a/bootstrap/rt/platform_linux.zig
++++ b/bootstrap/rt/platform_linux.zig
+@@ -1,6 +1,7 @@
+ const std = @import("std");
+ const builtin = @import("builtin");
+ const c = @cImport({
++    @cDefine("_FORTIFY_SOURCE", "0");
+     @cInclude("fcntl.h");
+     @cInclude("dirent.h");
+     @cInclude("unistd.h");
+-- 
+2.55.0
+

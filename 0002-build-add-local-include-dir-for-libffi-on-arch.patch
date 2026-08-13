@@ -1,0 +1,31 @@
+From 0d60b0a5179a63c78b88783b8e2a2d8388c9e54a Mon Sep 17 00:00:00 2001
+From: winlogon <walker84837@gmail.com>
+Date: Thu, 13 Aug 2026 08:56:29 +0200
+Subject: [PATCH 2/4] build: add local include dir for libffi on arch
+
+Arch ships libffi headers flat at <prefix>/include/ffi.h, but @cImport
+expects the namespaced <ffi/ffi.h>.
+
+Add a local include/ directory to the module include search path so a
+PKGBUILD can provide an adapter that redirects to the system header
+without patching the Zig source directly.
+---
+ bootstrap/build.zig | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/bootstrap/build.zig b/bootstrap/build.zig
+index 97bddb4..ffc3c30 100644
+--- a/bootstrap/build.zig
++++ b/bootstrap/build.zig
+@@ -190,6 +190,8 @@ fn configureLlvmImports(b: *std.Build, mod: *std.Build.Module, llvm_config: []co
+         b.run(&.{ llvm_config, "--includedir" }),
+         " \t\r\n",
+     )) });
++    // Provide a local adapter include dir that redirects to the system header.
++    mod.addIncludePath(.{ .cwd_relative = "include" });
+     mod.link_libc = true;
+ }
+ 
+-- 
+2.55.0
+

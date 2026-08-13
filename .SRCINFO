@@ -1,0 +1,32 @@
+pkgbase = openjai-git
+	pkgdesc = Open-source Jai-style systems programming language and compiler.
+	pkgver = 0.0.0.r264ba53
+	pkgrel = 1
+	url = https://github.com/withlang-dev/open-jai
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = zig
+	makedepends = lld
+	makedepends = llvm
+	depends = llvm-libs
+	depends = libffi
+	depends = gcc
+	depends = clang
+	provides = openjai
+	conflicts = openjai
+	options = !debug
+	source = git+https://github.com/withlang-dev/open-jai.git#commit=264ba53218bf0e55bbc328197b312fe704496224
+	source = 0001-build-ignore-generated-libffi-include-shim.patch
+	source = 0002-build-add-local-include-dir-for-libffi-on-arch.patch
+	source = 0003-chore-add-upstream-license-text.patch
+	source = 0004-fix-bootstrap-disable-_FORTIFY_SOURCE-in-Linux-C-imp.patch
+	source = openjai.sh
+	sha256sums = SKIP
+	sha256sums = 70f995b8e5e2cdebee6240826171753b4798c7a108b18f7411a3628b1d75050d
+	sha256sums = d15708ee35393a1dca48a2ddb014eceb6be1ae890d24b2244db69921674fb384
+	sha256sums = f08e43bc828fdc9ef9668fd63ad7df02c6f4b3d3852966b458ef4088de3ee761
+	sha256sums = 161a388d68cb144291d879efc68bdcb924ac21bb431e35748fc4471165e9793e
+	sha256sums = 17adc580681f43cefdcc378218917cafcb32331f3128341dd9484b2b30fbe4d1
+
+pkgname = openjai-git

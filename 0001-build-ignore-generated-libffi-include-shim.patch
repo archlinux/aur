@@ -1,0 +1,23 @@
+From 996d1b6223b27b44c2a9ae31e0d842e3880d106f Mon Sep 17 00:00:00 2001
+From: winlogon <walker84837@gmail.com>
+Date: Thu, 13 Aug 2026 08:51:09 +0200
+Subject: [PATCH 1/4] build: ignore generated libffi include shim
+
+---
+ .gitignore | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/.gitignore b/.gitignore
+index 9f90977..7842d6a 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -12,3 +12,6 @@ test/out/
+ **/.build/
+ .env
+ .logs
++
++# Generated libffi include shim (created by PKGBUILD prepare() on Arch)
++bootstrap/include/
+-- 
+2.55.0
+
