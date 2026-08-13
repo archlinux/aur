@@ -1,6 +1,6 @@
 pkgbase = dot-cli-git
 	pkgdesc = Declarative dotfiles CLI for macOS, Linux, WSL, and PowerShell (git head)
-	pkgver = 0.2.517
+	pkgver = 0.2.518
 	pkgrel = 1
 	url = https://github.com/sebastienrousseau/dotfiles
 	arch = any
@@ -19,6 +19,6 @@ pkgbase = dot-cli-git
 	conflicts = dot
 	conflicts = dotfiles
 	source = git+https://github.com/sebastienrousseau/dotfiles.git
-	sha256sums = a1c1faee2d7602f97455518fe243f66e5861c1640f51dba8473b93462349b2f1
+	sha256sums = f53d9178c9975c3aee371b6f3b88544cc97e699a86ff98caad885bb2a203f56b
 
 pkgname = dot-cli-git
