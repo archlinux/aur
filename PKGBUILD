@@ -1,117 +1,69 @@
+# vim:set ft=sh:
 # Maintainer: gitaarik <gitaarik@posteo.net>
-pkgname=doublecmd-gtk2
-pkgver=1.1.26
-pkgrel=1
-pkgdesc="File manager with two panels side by side (GTK version)"
-arch=('x86_64' 'i686')
-url="https://doublecmd.sourceforge.io/"
-license=('GPL2')
-depends=('gtk2')
-makedepends=('git' 'fpc' 'lazarus' 'dbus' 'glib2' 'libx11' 'gtk2')
-optdepends=(
-    'p7zip: support for 7zip archives'
-    'unrar: support for rar archives'
-    'zip: support for zip archives creation'
-    'unzip: support for zip archives extraction'
-    'cabextract: support for cab archives'
-    'squashfs-tools: support for squashfs images'
-    'cpio: support for cpio archives'
-    'rpm-tools: support for rpm archives'
-    'dpkg: support for deb archives'
-    'xz: support for xz/lzma archives'
-    'bzip2: support for bz2 archives'
-    'gzip: support for gz archives'
-    'tar: support for tar archives'
-    'libmediainfo: support for media file information'
-    'imagemagick: speed up thumbnail view'
-    'ffmpegthumbnailer: video thumbnails support'
-    'gvfs: support for various filesystems'
-    'pmount: mount removable devices as normal user'
-    'lua: scripting'
-)
-provides=('doublecmd')
-conflicts=('doublecmd' 'doublecmd-qt' 'doublecmd-gtk2-alpha-bin')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/doublecmd/doublecmd/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+# Contributor: BlackIkeEagle <ike DOT devolder AT gmail DOT com>
+# Contributor: Dmitriy Q atsip-help <at> yandex <dot> ru
 
-pkgver() {
-    git ls-remote --tags https://github.com/doublecmd/doublecmd.git | \
-        sed 's/.*refs\/tags\///; s/\^{}//' | \
-        grep -v -E '(alpha|beta|rc|pre)' | \
-        sed 's/^v//' | \
-        sort -V | \
-        tail -1
+# Upstream tarball/source-tree name; pkgbase must stay doublecmd-gtk2 to match the AUR repo.
+_pkgbase=doublecmd
+pkgname=doublecmd-gtk2
+pkgver=1.2.8
+pkgrel=1
+pkgdesc="twin-panel (commander-style) file manager (gtk2)"
+url="https://doublecmd.sourceforge.io/"
+arch=('x86_64')
+license=('GPL-2.0-or-later' 'LGPL-2.0-or-later' 'MIT' 'MPL-1.1' 'MPL-2.0' 'Apache-2.0' 'BSD-2-Clause' 'Zlib')
+depends=('gtk2' 'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info')
+makedepends=('lazarus' 'imagemagick' 'ffmpegthumbnailer')
+provides=("$_pkgbase")
+conflicts=('doublecmd-qt5' 'doublecmd-qt6' 'doublecmd-gtk')
+replaces=('doublecmd-qt' 'doublecmd-qt4')
+optdepends=(
+    'lua: scripting'
+    'unzip: support extracting zip archives'
+    'zip: support packing zip archives'
+    'p7zip: support for 7zip archives'
+    'libunrar: support for rar archives'
+    'imagemagick: preview xcf files'
+    'ffmpegthumbnailer: preview video files'
+    'mplayer: to make use of the wlxmplayer plugin'
+)
+source=(
+    "https://downloads.sourceforge.net/project/$_pkgbase/Double%20Commander%20Source/$_pkgbase-$pkgver-src.tar.gz"
+)
+sha512sums=('55432468baae690e58f3ae90d4a4a6bcd91233aee38225813f833b743d2ff1c19bc1f5d413e411c36a9480254d90336a75da7655daf857156cd3105de2586e7b')
+
+prepare() {
+    cp -a /usr/lib/lazarus ./
+
+    cd "$_pkgbase-$pkgver"
+    sed -e 's/LIB_SUFFIX=.*/LIB_SUFFIX=/g' -i install/linux/install.sh
+    sed -e "s@=\$(which lazbuild)@=\"\$(which lazbuild) --lazarusdir=$srcdir/lazarus\"@" -i build.sh
+    sed -e '/doublecmd.zdli/d' -i install/linux/install.sh
 }
 
 build() {
+    cd "$srcdir"
 
-    cd "${srcdir}/doublecmd-${pkgver}"
+    cp -a "$_pkgbase-$pkgver" "$_pkgbase-gtk2"
 
-    # Set up Lazarus configuration
-    mkdir -p ~/.lazarus
-
-    # Backup existing config if it exists
-    local config_file="$HOME/.lazarus/environmentoptions.xml"
-    local backup_made=false
-
-    if [ -f "$config_file" ]; then
-        cp "$config_file" "$config_file.pkgbuild.backup"
-        backup_made=true
-    fi
-
-    # Create temporary config for build
-    cat > "$config_file" << 'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<CONFIG>
-  <EnvironmentOptions>
-    <LazarusDirectory Value="/usr/lib/lazarus"/>
-  </EnvironmentOptions>
-</CONFIG>
-EOF
-
-    # Build GTK2 version
-    lcl=gtk2 ./build.sh release
-
-    # Restore original config if backup was made
-    if [ "$backup_made" = true ]; then
-        mv "$config_file.pkgbuild.backup" "$config_file"
-    fi
-
+    # build gtk2
+    cd "$srcdir/$_pkgbase-gtk2"
+    ./build.sh components gtk2
+    ./build.sh plugins gtk2
+    ./build.sh doublecmd gtk2
 }
 
 package() {
+    cd "$srcdir/$_pkgbase-gtk2"
+    ./install/linux/install.sh --install-prefix="$pkgdir"
 
-    cd "${srcdir}/doublecmd-${pkgver}"
-
-    # Install binaries
-    install -Dm755 doublecmd "${pkgdir}/usr/bin/doublecmd"
-
-    # Install plugins
-    install -d "${pkgdir}/usr/lib/doublecmd/plugins"
-    find plugins -name "*.wfx" -o -name "*.wcx" -o -name "*.wdx" -o -name "*.wlx" | \
-        xargs -I {} install -Dm644 {} "${pkgdir}/usr/lib/doublecmd/{}"
-
-    # Install language files
-    install -d "${pkgdir}/usr/share/doublecmd/language"
-    find language -name "*.po" | \
-        xargs -I {} install -Dm644 {} "${pkgdir}/usr/share/doublecmd/{}"
-
-    # Install pixmaps and icons
-    install -d "${pkgdir}/usr/share/doublecmd/pixmaps"
-    find pixmaps -name "*.png" -o -name "*.cur" | \
-        xargs -I {} install -Dm644 {} "${pkgdir}/usr/share/doublecmd/{}"
-
-    # Install desktop file
-    install -Dm644 install/linux/doublecmd.desktop "${pkgdir}/usr/share/applications/doublecmd.desktop"
-
-    # Install documentation
-    install -d "${pkgdir}/usr/share/doc/doublecmd"
-    cd doc
-    find -name "*.txt" | \
-        xargs -I {} install -Dm644 {} "${pkgdir}/usr/share/doc/doublecmd/{}"
-    cd ..
-
-    # Install man page
-    install -Dm644 install/linux/doublecmd.1 "${pkgdir}/usr/share/man/man1/doublecmd.1"
-
+    # install.sh only puts license texts under /usr/share/doublecmd/doc, which
+    # namcap does not accept for the non-standard identifiers in license=().
+    local _licdir="$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 LICENSE.md                                "$_licdir/LICENSE.md"
+    install -Dm644 components/kascrypt/Docs/MIT_license.txt  "$_licdir/MIT.txt"
+    install -Dm644 components/kascrypt/Hashes/Private/COPYING.txt "$_licdir/Zlib.txt"
+    install -Dm644 components/Image32/LICENSE.txt            "$_licdir/BSL-1.0.txt"
+    install -Dm644 components/gifview/LICENSE.txt            "$_licdir/MPL-2.0.txt"
+    install -Dm644 components/chsdet/Licence.txt             "$_licdir/LGPL-2.1.txt"
 }
