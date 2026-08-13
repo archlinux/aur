@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Global DNS propagation checker TUI"
 
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('9134532c109f16c805caef426d0651c1f08967f73f86a4739792c12434c1f5b0')
-sha256sums_aarch64=('fe4a792fd8d0bec516a8e18c915375760066e3448f41cb0220693ed0e26f59be')
+sha256sums_x86_64=('b2b293972463deee845ffd7c1c1217eff645bfd5f7ec549d99ba830dc4c0b598')
+sha256sums_aarch64=('95d3ad8e343fe8e4d34ab8b7a78dc42f2a9ff950ae141852f718314a6c3c717b')
 
 
 case ${CARCH} in
