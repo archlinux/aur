@@ -1,6 +1,6 @@
 pkgbase = alter-launcher
 	pkgdesc = Fast Wayland launcher, global search and clipboard history for Hyprland
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/yuukidach/alter
 	arch = x86_64
@@ -17,11 +17,11 @@ pkgbase = alter-launcher
 	optdepends = fd: fallback file search when plocate is unavailable
 	optdepends = hyprland: supported Wayland compositor and global shortcuts
 	optdepends = plocate: fast indexed file search
-	provides = alter=0.1.1
+	provides = alter=0.1.2
 	conflicts = alter
 	conflicts = alter-bin
 	options = !lto
-	source = alter-launcher-0.1.1.tar.gz::https://github.com/yuukidach/alter/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 3bc894cf565194870d797768b35732a3f97380a7efa25cc657ef057ba3aad0d1
+	source = alter-launcher-0.1.2.tar.gz::https://github.com/yuukidach/alter/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 595be04858f03b2cfc60aa8fea493c523210dd30412ee333ef7f41660b7ac669
 
 pkgname = alter-launcher
