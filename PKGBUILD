@@ -1,7 +1,7 @@
 # Maintainer: Burak Seckin <rectfc@gmail.com>
 
 pkgname=sidra-bin
-pkgver=0.3.5
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="An elegant Apple Music desktop client for Linux. No frippery, just quality."
 arch=('x86_64')
@@ -44,7 +44,7 @@ source_x86_64=(
     "${pkgname}-${pkgver}.AppImage::https://github.com/wimpysworld/sidra/releases/download/${pkgver}/Sidra-linux-x86_64.AppImage"
 )
 
-sha256sums_x86_64=('c54440c020c733226db74ae2d97dcf2a105513d46a721fce6ba76164c56d1830')
+sha256sums_x86_64=('02758fcbb9d691326ed1a8a71635398e0a2a999922d62a323702928f7ca602c4')
 
 prepare() {
     cd "${srcdir}"
@@ -109,6 +109,8 @@ DESKTOP
     # electron-builder populates usr/share/icons/hicolor inside the AppImage
     if [[ -d "squashfs-root/usr/share/icons" ]]; then
         cp -a squashfs-root/usr/share/icons "${pkgdir}/usr/share/"
+        # Fix directory permissions for icons (ensure they are world-readable)
+        chmod -R u=rwX,go=rX "${pkgdir}/usr/share/icons"
     fi
 
     # Also install any PNG at the AppImage root as a fallback
