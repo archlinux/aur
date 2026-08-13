@@ -1,0 +1,15 @@
+diff --git a/src/mtxcmm.c b/src/mtxcmm.c
+index 8f72279..b8e1d09 100644
+--- a/src/mtxcmm.c
++++ b/src/mtxcmm.c
+@@ -3571,7 +3571,9 @@ only need do IMG formatting because A is contained but can't contain IMG.
+ And since image nesting is resolved before this stage, we only need to
+ format simple IMG units holding their usual three ->args.
+ */
+-static void mtx_cmm_render_link_unit (MtxCmm *, MtxCmmParserUnit *, gchar *());
++static void mtx_cmm_render_link_unit (MtxCmm *self,
++                                      MtxCmmParserUnit *unit,
++                                      MtxCmmAImgFormatter *formatter);
+ static void
+ mtx_cmm_parser_merge_down_unit_arg_inlines (MtxCmm *self)
+ {
