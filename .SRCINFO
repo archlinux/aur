@@ -1,7 +1,7 @@
 pkgbase = onlyoffice
 	pkgdesc = An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents
 	pkgver = 9.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.onlyoffice.com/desktop.aspx
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -15,6 +15,7 @@ pkgbase = onlyoffice
 	makedepends = grunt-cli
 	makedepends = cmake
 	makedepends = p7zip
+	makedepends = patchelf
 	makedepends = ninja
 	makedepends = jdk11-openjdk
 	makedepends = libxml2-legacy
@@ -61,7 +62,7 @@ pkgbase = onlyoffice
 	source = onlyoffice-core-fonts::git+https://github.com/ONLYOFFICE/core-fonts#tag=v9.4.0.130
 	source = onlyoffice-document-templates::git+https://github.com/ONLYOFFICE/document-templates#tag=v9.4.0.130
 	source = onlyoffice.github.io::git+https://github.com/ONLYOFFICE/onlyoffice.github.io
-	source = https://github.com/ONLYOFFICE-data/build_tools_data/raw/refs/heads/master/cef/5414/linux_64/cef_binary.7z
+	source = cef_5414.tar.bz2::https://cef-builds.spotifycdn.com/cef_binary_109.1.18%2Bgf1c41e4%2Bchromium-109.0.5414.120_linux64_minimal.tar.bz2
 	source = git+https://chromium.googlesource.com/chromium/tools/depot_tools.git#commit=8dde9800ee2b8326ab11a87abd67d3bd9f8c8773
 	source = git+https://github.com/v8/v8#tag=9.0.257.43
 	source = git+https://github.com/unicode-org/icu.git#tag=release-74-2
@@ -96,7 +97,7 @@ pkgbase = onlyoffice
 	sha256sums = 55c1d70a8bdd8f818af8e4c784bfc03f0569fcb863cc6797f888b749153ed720
 	sha256sums = 4d9bf0039261bb531663603171b63a4a5339c4c0644e9859991d78ddbf446573
 	sha256sums = SKIP
-	sha256sums = dff9aa53c147fd0c6a03f57e17aef10b0cee3fe7c4dc18b3b1a8a7a20bf0a145
+	sha256sums = ba4b9ca37cb777b256fdf5e18c9bdbc66ebf060367e8542398676b42bbbc0e59
 	sha256sums = cd7a982bf79eae86a8b7727193e2a9feccd1388cd0cc474b8d786ac6dc695cfe
 	sha256sums = 8cd5a305b9ce85066094963a5d28ad221f9598b9e98e569bf47c61f570c2988b
 	sha256sums = 1370503ff352608f587486324bde040a9038f4cbf2d21085f821121dd49dbede
