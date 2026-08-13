@@ -1,6 +1,6 @@
 # Maintainer: Kevin McConnell
 pkgname=once-bin
-pkgver=0.1.10
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='CLI/TUI for installing and managing self-hosted web applications'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('docker')
 provides=('once')
 conflicts=('once')
 install=once.install
-options=('!strip')
+options=('!strip' '!debug')
 
 _arch_x86_64=amd64
 _arch_aarch64=arm64
@@ -22,8 +22,8 @@ source=("MIT-LICENSE-${pkgver}::https://raw.githubusercontent.com/basecamp/once/
 
 sha256sums=('fa0d1454375cbc7701bc13d916c3ae71e613b8ae718321641e678e09409393c4'
             'aa314fe79677eb5f120fcc3d4c42007a93ff7b1ef917382c0c1fdca5633ad46a')
-sha256sums_x86_64=('a153d298edad63c622c416fb694370892b7d135cf2213ed0d0586f05d560aa05')
-sha256sums_aarch64=('65d88f52e02f0d1e3f7aa09abfb6d68936126484acd4442ae993761aa002771e')
+sha256sums_x86_64=('0e4c385ee3da47eeee0827c5db2977b1440548f98477b040845a593f0062ad0f')
+sha256sums_aarch64=('5e7cc49ff24cf0b9f45393f9895dd9d502a901100508c91fc137ede45b8d8467')
 
 package() {
     install -Dm755 "once-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/once"
