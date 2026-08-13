@@ -2,13 +2,25 @@
 
 pkgname=oh-my-pi
 pkgver=17.2.15
-pkgrel=3
+pkgrel=4
 pkgdesc="A coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'oniguruma' 'opus' 'pcre2')
 makedepends=('bun' 'cargo' 'git')
+optdepends=(
+    'alsa-lib: ALSA fallback for live voice, STT, and TTS'
+    'at-spi2-core: Linux accessibility backend for the computer tool'
+    'chromium: system browser for the browser tool'
+    'git: repository integration and isolated task worktrees'
+    'julia: Julia eval backend'
+    'libpulse: PulseAudio/PipeWire-Pulse client backend for live voice, STT, and TTS'
+    'python: Python 3.10+ eval backend'
+    'sshfs: mount SSH remote workspaces'
+    'xdg-desktop-portal: Wayland ScreenCast and RemoteDesktop portals for the computer tool'
+    'xdg-desktop-portal-impl: compositor-specific backend for Wayland computer tool portals'
+)
 options=('!lto' '!strip')
 source=(
     "${pkgname}::git+https://github.com/can1357/oh-my-pi.git#tag=v${pkgver}"
@@ -21,6 +33,14 @@ sha256sums=('SKIP'
 )
 
 _variants=('baseline:x86-64-v2' 'modern:x86-64-v3')
+_cargo_features=()
+_enable_wayland_screencast=1
+
+if (( _enable_wayland_screencast )); then
+    depends+=('libpipewire')
+    makedepends+=('clang')
+    _cargo_features=(--features wayland-pipewire)
+fi
 
 prepare() {
     cd "${srcdir}/${pkgname}"
@@ -62,7 +82,7 @@ _build_native() {
     LIBOPUS_STATIC=0 \
     PCRE2_SYS_STATIC=0 \
     RUSTONIG_SYSTEM_LIBONIG=1 \
-        cargo build --frozen --profile ci --package pi-natives
+        cargo build --frozen --profile ci --package pi-natives "${_cargo_features[@]}"
 
     install -Dm755 target/ci/libpi_natives.so \
         "packages/natives/native/pi_natives.linux-x64-${_variant}.node"
