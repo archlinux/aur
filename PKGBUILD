@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=compcodeR
-_pkgver=1.44.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -56,8 +56,8 @@ optdepends=(
   r-tidytree
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9f675ee62816c80244be10b556a651b3')
-b2sums=('7e0e1c51d211755f1dd2b81834c0dd09d1171cc2ce4a05a0016cc890bf1c552cf5ea752bb649c9fa4708d64f6a8efb18d4ae1b18f4940f57fd15634fd522d177')
+md5sums=('da3170197ab6eb9d24295a3d8abc0840')
+b2sums=('263d1294550ab86fd7ea50f2202a65139a1b81e4962c898de2c0050394e0943833e150d3a60f1a26220a25746869070c3ad139db281fab288dc6b15f24a92952')
 
 build() {
   mkdir build
