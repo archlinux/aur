@@ -1,6 +1,6 @@
 pkgbase = hypersomnia-appimage
 	pkgdesc = Online shooter with relentless dynamics.
-	pkgver = 2.0.0-pre3
+	pkgver = 2.0.0.pre3
 	pkgrel = 1
 	url = https://hypersomnia.io
 	arch = x86_64
