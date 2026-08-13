@@ -1,7 +1,7 @@
 # Maintainer: Raimar Bühmann <raimar_at_buehmann dot de>
 
 pkgname=python-hoymiles-wifi
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc='Commandline tool and library for Hoymiles DTUs with HMS microinverters'
 url='https://github.com/suaveolent/hoymiles-wifi'
@@ -20,7 +20,7 @@ makedepends=(
 source=(
 	"$url/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha256sums=('3e1eeda541d3c9894866782a55644666a708e40903e8e935e807746f549d9f1a')
+sha256sums=('9246bcb9cdd91b17fa1cb16ad16690915460bd5c47183fa0206e1e46e882ac83')
 build() {
   cd "${pkgname/python-}-$pkgver"
   pushd hoymiles_wifi/protobuf

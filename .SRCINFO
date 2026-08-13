@@ -1,6 +1,6 @@
 pkgbase = python-hoymiles-wifi
 	pkgdesc = Commandline tool and library for Hoymiles DTUs with HMS microinverters
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/suaveolent/hoymiles-wifi
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-hoymiles-wifi
 	depends = python-protobuf
 	depends = python-crcmod
 	depends = python-cryptography
-	source = https://github.com/suaveolent/hoymiles-wifi/archive/refs/tags/v0.5.5.tar.gz
-	sha256sums = 3e1eeda541d3c9894866782a55644666a708e40903e8e935e807746f549d9f1a
+	source = https://github.com/suaveolent/hoymiles-wifi/archive/refs/tags/v0.5.6.tar.gz
+	sha256sums = 9246bcb9cdd91b17fa1cb16ad16690915460bd5c47183fa0206e1e46e882ac83
 
 pkgname = python-hoymiles-wifi
