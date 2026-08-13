@@ -1,0 +1,5 @@
+[pixfetch-bin]
+source = "github"
+github = "RubixDev/pixfetch"
+use_latest_release = true
+prefix = "v"
