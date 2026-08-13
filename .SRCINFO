@@ -1,7 +1,7 @@
 pkgbase = python-python-lorem
 	pkgdesc = Pythonic lorem ipsum generator
 	pkgver = 1.3.0.post3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jarryshaw.github.io/lorem
 	arch = any
 	license = BSD 3-Clause

@@ -2,23 +2,19 @@
 pkgname=python-python-lorem
 _name=${pkgname#python-python-}
 pkgver=1.3.0.post3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pythonic lorem ipsum generator"
 arch=('any')
 url="https://jarryshaw.github.io/lorem"
 license=('BSD 3-Clause')
-depends=(
-  'python'
-)
+depends=('python')
 makedepends=(
   'python-build'
   'python-installer'
   'python-setuptools'
   'python-wheel'
 )
-checkdepends=(
-  'python-pytest'
-)
+checkdepends=('python-pytest')
 source=("$_name-$pkgver.tar.gz::https://github.com/JarryShaw/lorem/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('9ab34c475e08a0131242d6cbf6a97b1d3b683836eb287761424ff820e9a02aa0')
 
@@ -29,7 +25,9 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-  pytest
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -I -m pytest
 }
 
 package() {
