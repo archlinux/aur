@@ -5,7 +5,7 @@ _pkgname=viu
 pkgname=${_pkgauthor}-bin
 pkgdesc="Viu, your browser anime experience, from the terminal."
 
-pkgver=3.3.7
+pkgver=3.5.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -30,9 +30,9 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pk
 sha256sums=('d51f35f349b21a35ea9da8d456ca7af6b43beae82f99dfbabff35ca6ba22a687'
             '55a6915ef017aad6704373e04e097ce7766b275fd3d4488e7bdd4b7fb5fc7a41'
             '8e3956955897b0cd9948b60447e40bea067b716db2fa64adb288e19ce1ca83b3'
-            'bb33c1c91f5136dcf91655d4737559d580590df1ef541fe00d279317209d8763'
+            '2ee4c86a7a3c841f5f07731cea906d0e9db0aab6cb7fd72f4e9ae02d2eb18418'
             '6b0382b16279f26ff69014300541967a356a666eb0b91b422f6862f6b7dad17e')
-sha256sums_x86_64=('87b6dd55586349ac0d5092744ce31e6e31cab8efc44f06850127aa953ea63125')
+sha256sums_x86_64=('3e71c4daa1b3a1403f75e2163de5915544b7728452cdf14ea6addbf5cff0201f')
 
 
 package() {
