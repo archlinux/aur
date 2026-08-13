@@ -1,0 +1,23 @@
+pkgbase = python-streamlit-authenticator
+	pkgdesc = User authentication component for Streamlit apps
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/mkhorasani/Streamlit-Authenticator
+	arch = any
+	license = LicenseRef-Proprietary
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-bcrypt
+	depends = python-captcha
+	depends = python-cryptography
+	depends = python-extra-streamlit-components
+	depends = python-pyjwt
+	depends = python-streamlit
+	depends = python-yaml
+	source = python-streamlit-authenticator-0.4.2.tar.gz::https://github.com/mkhorasani/Streamlit-Authenticator/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = ca156de88830bf53dc69f690f57b4ef75dd18c6f72b819c197672110570ff34f
+
+pkgname = python-streamlit-authenticator
