@@ -2,7 +2,7 @@
 
 pkgname=php-castor-bin
 _pkgname=castor
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='A lightweight and modern task runner, automate everything in PHP (static binary, PHP embedded)'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_x86_64=("$_pkgname-$pkgver-x86_64::$_url_base/castor.linux-amd64")
 source_aarch64=("$_pkgname-$pkgver-aarch64::$_url_base/castor.linux-arm64")
 
 sha256sums=('873ddfe436c906c14a9069c2358f2f81dd95d140c88a44c390419bcebc920409')
-sha256sums_x86_64=('6ba05579ca9f6546a22421e935fdab0f7d9e774cb05a25b10fe9f9528e1ab30a')
-sha256sums_aarch64=('9c0aa9827e99214a8a244dc41ea94eae651b979e852167f871799c5f22f1e2b7')
+sha256sums_x86_64=('4ee2df3d779d44b750f0c38375ccc4c1bd784965a1624dda6e30402576d0dc52')
+sha256sums_aarch64=('b140d82cd001fe08fcffe8ff2eaa82b1ba24286deeeeb671d5d20eb9e94c99b1')
 
 build() {
   cd "$srcdir"
