@@ -5,7 +5,7 @@
 _pkgname=arch-update
 pkgname=gnome-shell-extension-arch-update
 pkgver=66
-pkgrel=1
+pkgrel=2
 pkgdesc="Convenient indicator for Arch Linux updates in GNOME Shell."
 arch=('any')
 url="https://codeberg.org/RaphaelRochet/arch-update"
