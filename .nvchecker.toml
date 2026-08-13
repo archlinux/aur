@@ -1,0 +1,5 @@
+[picocrypt-bin]
+source = "github"
+github = "Picocrypt/Picocrypt"
+use_latest_release = true
+prefix = "v"
