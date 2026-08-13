@@ -1,6 +1,6 @@
 pkgbase = r-pvca
 	pkgdesc = Principal Variance Component Analysis (PVCA)
-	pkgver = 1.50.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pvca
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-pvca
 	depends = r-lme4
 	depends = r-vsn
 	optdepends = r-golubesets
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pvca_1.50.0.tar.gz
-	sha256sums = f7b1e94f1baee6de2ea7d039b098cf43878cf7c5ad05dbc71ae786feb3d5012e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pvca_1.52.0.tar.gz
+	sha256sums = b0cb870678138a2954cc95b7d317ae173be79b0a0ecc8d39b9ff3d30603f3218
 
 pkgname = r-pvca

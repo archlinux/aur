@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pvca
-_pkgver=1.50.0
+_pkgver=1.52.0
 pkgname=r-${_pkgname,,}
-pkgver=1.50.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='Principal Variance Component Analysis (PVCA)'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-golubesets
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f7b1e94f1baee6de2ea7d039b098cf43878cf7c5ad05dbc71ae786feb3d5012e')
+sha256sums=('b0cb870678138a2954cc95b7d317ae173be79b0a0ecc8d39b9ff3d30603f3218')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
