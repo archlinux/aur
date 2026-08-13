@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=zenith
-_pkgver=1.8.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,6 +10,7 @@ arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
+  r-dplyr
   r-enrichmentbrowser
   r-ggplot2
   r-gseabase
@@ -39,8 +40,8 @@ optdepends=(
   r-tweedeseqcountdata
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('65211ac331b8038c97aca4f4f8508a56')
-b2sums=('1b3b51df7bf1be673d30423d53a894a3709745955675678b2f6660ba05596001e135d5cff2f9ab13a198155f2971a11579330d032cabd537bd6433ca00fe92af')
+md5sums=('f8b7b672425d737622be4b2159aa28d5')
+b2sums=('7727976956aa464b3ec50c5369984e23a9e24e085efe789111c0979049445d1fc437aa2468ed895276b833f08277c8a2ffbda5173a6a5b4b299d24c9b0a54f09')
 
 build() {
   mkdir build
