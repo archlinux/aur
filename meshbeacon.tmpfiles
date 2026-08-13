@@ -1,0 +1,7 @@
+d /usr/share/webapps/meshbeacon/storage 0775 meshbeacon meshbeacon
+d /usr/share/webapps/meshbeacon/bootstrap/cache 0775 meshbeacon meshbeacon
+d /usr/share/webapps/meshbeacon/database 0775 meshbeacon meshbeacon
+Z /usr/share/webapps/meshbeacon/storage 0775 meshbeacon meshbeacon
+Z /usr/share/webapps/meshbeacon/bootstrap/cache 0775 meshbeacon meshbeacon
+Z /usr/share/webapps/meshbeacon/database 0775 meshbeacon meshbeacon
+z /usr/share/webapps/meshbeacon/.env 0600 meshbeacon meshbeacon

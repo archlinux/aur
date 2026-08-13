@@ -1,0 +1,26 @@
+post_install() {
+    echo "MeshBeacon has been installed to /usr/share/webapps/meshbeacon"
+    echo ""
+    echo "To complete the setup:"
+    echo "1. Edit /usr/share/webapps/meshbeacon/.env to set your configuration (APP_KEY, etc.)"
+    echo "   You can generate an APP_KEY by running:"
+    echo "   cd /usr/share/webapps/meshbeacon && sudo -u meshbeacon php artisan key:generate"
+    echo ""
+    echo "2. Run database migrations and seeds:"
+    echo "   cd /usr/share/webapps/meshbeacon && sudo -u meshbeacon php artisan migrate --seed"
+    echo ""
+    echo "3. Configure your web server (Nginx/Apache) to serve /usr/share/webapps/meshbeacon/public"
+    echo "   You can use php-fpm to process PHP files."
+    echo ""
+    echo "4. Enable and start the background services:"
+    echo "   systemctl enable --now meshbeacon-queue.service"
+    echo "   systemctl enable --now meshbeacon-mqtt.service"
+    echo "   systemctl enable --now meshbeacon-scheduler.service"
+}
+
+post_upgrade() {
+    echo "After upgrading MeshBeacon, remember to run migrations:"
+    echo "cd /usr/share/webapps/meshbeacon && sudo -u meshbeacon php artisan migrate"
+    echo "And restart the workers:"
+    echo "systemctl restart meshbeacon-queue.service meshbeacon-mqtt.service meshbeacon-scheduler.service"
+}
