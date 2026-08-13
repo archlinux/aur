@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-hardened
-_pkgver=7.1.7.hardened1
-_kernver=7.1.7
+_pkgver=7.1.8.hardened1
+_kernver=7.1.8
 _hardenedver=hardened1
-_pkgrel=1
+_pkgrel=2
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=7.1.7-hardened1-1-hardened
+_KERNNAME=7.1.8-hardened1-2-hardened
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-hardened"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -21,9 +21,9 @@ arch=(x86_64)
 license=(GPL2)
 options=('!strip')
 
-_kernpkg=linux-hardened-7.1.7.hardened1-1-x86_64.pkg.tar.zst
-_headerspkg=linux-hardened-headers-7.1.7.hardened1-1-x86_64.pkg.tar.zst
-_docspkg=linux-hardened-docs-7.1.7.hardened1-1-x86_64.pkg.tar.zst
+_kernpkg=linux-hardened-7.1.8.hardened1-2-x86_64.pkg.tar.zst
+_headerspkg=linux-hardened-headers-7.1.8.hardened1-2-x86_64.pkg.tar.zst
+_docspkg=linux-hardened-docs-7.1.8.hardened1-2-x86_64.pkg.tar.zst
 
 source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
         "https://archive.archlinux.org/packages/.all/${_headerspkg}"
@@ -31,9 +31,9 @@ source=("https://archive.archlinux.org/packages/.all/${_kernpkg}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('b1aff638853aa74a46bc211427233b21c58f71bf8e2ae242dbd35a636b4c173f'
-            'c2c87aa51574ad30b32cd47cd74289c940148f19e4d14a9b76dea40a5b99c3bb'
-            '23fdf694fc38e2cdedd9dc00b3a3b073f5e123ddae99264a86637207010f63d5')
+sha256sums=('3b558141611bc9398020a7a3916eac216eb010f1caa5deb0147c9e2fa4a9bc1a'
+            '9ee1d54a6717b2daa8a8793251ac507e9597850b1ff50848ea6458527da40d90'
+            'd774e85a339f8b733fd2b12c325a7e05401752b48d9b747c819dd5db6ce2af8b')
 
 package_linux-hardened-versioned-bin() {
   pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
@@ -51,7 +51,7 @@ package_linux-hardened-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux7.1.7.hardened1-1-hardened-bin() {
+package_linux7.1.8.hardened1-2-hardened-bin() {
   pkgdesc="The Security-Hardened Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
@@ -71,7 +71,7 @@ package_linux7.1.7.hardened1-1-hardened-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux7.1.7.hardened1-1-hardened-headers-bin() {
+package_linux7.1.8.hardened1-2-hardened-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Security-Hardened Linux kernel ${_KERNNAME}"
   depends=(binutils
            glibc
@@ -89,7 +89,7 @@ package_linux7.1.7.hardened1-1-hardened-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux7.1.7.hardened1-1-hardened-docs-bin() {
+package_linux7.1.8.hardened1-2-hardened-docs-bin() {
   pkgdesc="Documentation for the Security-Hardened Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
