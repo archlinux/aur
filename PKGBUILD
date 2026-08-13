@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RNAmodR.RiboMethSeq
-_pkgver=1.22.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="Detection of 2'-O methylations by RiboMethSeq"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('98456b1eac8900132430adfe342b513ae571ab43eaaddec5bfc66dd7e627676a')
+sha256sums=('d696aed5590519f2c8c2d308405b377337e7164246da389c84416871ed5291e0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
