@@ -1,6 +1,6 @@
 pkgbase = dockswain
 	pkgdesc = KDE Plasma 6 fleet health and Docker management widget over SSH
-	pkgver = 0.8.7
+	pkgver = 0.8.8
 	pkgrel = 1
 	url = https://github.com/Conqrex/Conqrex.Dockswain
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = dockswain
 	optdepends = python3: import servers from FileZilla
 	optdepends = konsole: open shells and exec into containers
 	optdepends = kate: edit remote files (nginx, compose) over SSH
-	source = dockswain-0.8.7.tar.gz::https://github.com/Conqrex/Conqrex.Dockswain/archive/refs/tags/v0.8.7.tar.gz
-	sha256sums = 3d7e8dddcad20450bc02ccf0e3eda52de6da6a12460f2bd9153b7e8d6b13bb54
+	source = dockswain-0.8.8.tar.gz::https://github.com/Conqrex/Conqrex.Dockswain/archive/refs/tags/v0.8.8.tar.gz
+	sha256sums = 85b6cb2612df50a0bcafb49b2e28760ed4f4f2eb2ee19ab4da47465d4ae5fd6d
 
 pkgname = dockswain
