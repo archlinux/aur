@@ -2,7 +2,7 @@
 pkgname=python-privy
 _name=privy
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy, fast lib to correctly password-protect your data"
 arch=('any')
 url="https://github.com/ofek/privy"
@@ -23,14 +23,17 @@ sha256sums=('e68679bb4006ce83206d9a7af1158cf4d56a2ed6861ee39276907be618dfb8d9'
             'd502748a33db7ade1318e37f0b5f219f478330ed74a673e387756e53fb516715')
 
 check() {
-  pytest
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer *.whl
+  test-env/bin/python -I -m pytest
 }
 
 package() {
   python -m installer --destdir="$pkgdir" *.whl
 
+  # Remove installed tests
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rf "$pkgdir/$site_packages/tests"
+  rm -rfv "$pkgdir/$site_packages/tests"
 
   install -Dm644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
 }
