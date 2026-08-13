@@ -26,6 +26,12 @@ makedepends=(
 source=("git+https://github.com/patx/micropie.git#tag=v$pkgver")
 sha256sums=('16ddafa15a6a19364212e33a1e6fa4a0181f73d0f7d3dc444b07ce854333cd13')
 
+prepare() {
+    cd "micropie"
+
+    sed -i -e 's|requires = \[.*\]|requires = \[\"flit_core\"]|g' "./pyproject.toml"
+}
+
 build() {
     cd "micropie"
 
