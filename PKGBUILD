@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IsoformSwitchAnalyzeR
-_pkgver=2.8.0
+_pkgver=2.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,7 +21,6 @@ depends=(
   r-dplyr
   r-edger
   r-futile.logger
-  r-genomeinfodb
   r-genomicranges
   r-ggplot2
   r-gridextra
@@ -38,6 +37,7 @@ depends=(
   r-rtracklayer
   r-s4vectors
   r-saturn
+  r-seqinfo
   r-stringr
   r-summarizedexperiment
   r-sva
@@ -54,8 +54,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('38363ce3a91427e534ea9b1c06ff3fd7')
-b2sums=('cc6f0b7bf43f9387d16a4caca7503999301f5c7872d09e0f9539f46aa27567622c9a11c388a0b46e9dc2bc8bd13a2e4ee7ebb8822161b8661df160e87b6e9710')
+md5sums=('f66ebe47879bcca563011c4dfbe0797c')
+b2sums=('e3e51127f6a782a2d1e6c89a1017e01c77f5705aea768be6adc64fb1568042e70c74ad9fc0aab0d4d65e381fa0ade276ad8ab0cfd7c0f459467a2ea575f140bd')
 
 build() {
   mkdir build
