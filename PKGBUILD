@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affycoretools
-_pkgver=1.80.0
+_pkgver=1.84.0
 pkgname=r-${_pkgname,,}
-pkgver=1.80.0
+pkgver=1.84.0
 pkgrel=1
 pkgdesc='Functions useful for those doing repetitive analyses with Affymetrix GeneChips'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('318529e7383e78c01d057e166984d96fac49d4b393568b37502d6af2e9f35219')
+sha256sums=('f7e56bcfe557efe603331dd7b7df774ed08146bd6975a6acc71e3c8619d19d68')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
