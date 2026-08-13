@@ -1,6 +1,6 @@
 pkgbase = antigravity-appimage
 	pkgdesc = An agentic development platform from Google, evolving the IDE into the agent-first era.(AppImage)
-	pkgver = 2.7.1
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://antigravity.google/
 	install = antigravity.install
@@ -34,9 +34,9 @@ pkgbase = antigravity-appimage
 	md5sums = d8847ea031513e6915aca4e366e8f071
 	md5sums = 18aea4c258e91759abb6a0e38eab1a9b
 	md5sums = 82d4a168a6801c4f87e83aabb7ea1bdf
-	source_x86_64 = Antigravity-2.7.1-x86_64.AppImage::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.7.1-5840911524036608/linux-x64/Antigravity.AppImage
-	md5sums_x86_64 = a8e877878753ba02d90e729070249524
-	source_aarch64 = Antigravity-2.7.1-x86_64.AppImage::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.7.1-5840911524036608/linux-arm/Antigravity.AppImage
-	md5sums_aarch64 = e1655b64f2e60cfe9247c2f25d0e5e89
+	source_x86_64 = Antigravity-2.8.0-x86_64.AppImage::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.8.0-5810824271495168/linux-x64/Antigravity.AppImage
+	md5sums_x86_64 = ada13c3a3e605ab26bb7e1e16a4a2483
+	source_aarch64 = Antigravity-2.8.0-x86_64.AppImage::https://storage.googleapis.com/antigravity-public/antigravity-hub/2.8.0-5810824271495168/linux-arm/Antigravity.AppImage
+	md5sums_aarch64 = 536123f681dba65988aca136d700ba4a
 
 pkgname = antigravity-appimage
