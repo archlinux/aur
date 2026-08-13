@@ -3,7 +3,7 @@
  
 pkgname="monado-multilib-git"
 _dirname="monado"
-pkgver=25.1.0.r577.g7c751d457
+pkgver=25.1.0.r712.g7c2b8f81a
 pkgrel=1
 pkgdesc='The open source OpenXR runtime. (32 bit support)'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ optdepends=('libuvc: optical tracking support (must be present at build time)'
             'openhmd: additional hardware support (Oculus Rift, Nolo) (must be present at build time)'
             'basalt-monado-git: experimental SLAM tracking through basalt'
             'percetto: tracing support for performance debugging (must be present at build time)')
-provides=("openxr-runtime" "monado=${pkgver}", "monado-git=${pkgver}", "libmonado=${pkgver}")
+provides=("openxr-runtime" "monado=${pkgver}" "monado-git=${pkgver}" "libmonado=${pkgver}")
 install=monado.install
 
 license=('BSL-1.0')

@@ -1,6 +1,6 @@
 pkgbase = monado-multilib-git
 	pkgdesc = The open source OpenXR runtime. (32 bit support)
-	pkgver = 25.1.0.r441.gfea2ceb6f
+	pkgver = 25.1.0.r712.g7c2b8f81a
 	pkgrel = 1
 	url = https://monado.dev
 	install = monado.install
@@ -39,9 +39,9 @@ pkgbase = monado-multilib-git
 	optdepends = basalt-monado-git: experimental SLAM tracking through basalt
 	optdepends = percetto: tracing support for performance debugging (must be present at build time)
 	provides = openxr-runtime
-	provides = monado=25.1.0.r441.gfea2ceb6f,
-	provides = monado-git=25.1.0.r441.gfea2ceb6f,
-	provides = libmonado=25.1.0.r441.gfea2ceb6f
+	provides = monado=25.1.0.r712.g7c2b8f81a
+	provides = monado-git=25.1.0.r712.g7c2b8f81a
+	provides = libmonado=25.1.0.r712.g7c2b8f81a
 	conflicts = monado
 	source = monado::git+https://gitlab.freedesktop.org/monado/monado.git#branch=main
 	md5sums = SKIP
