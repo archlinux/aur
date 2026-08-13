@@ -3,17 +3,16 @@
 # GPG Key: 28E1F22CFC60A1BA17B95D11CDEABF16DC0D8711
 
 pkgname=feel
-pkgver=1.3.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="记录当前感受的命令行工具"
 arch=('any')
 url="https://github.com/CamelliaTse/feel"
 license=('MIT')
 depends=('python')
-sha256sums=('SKIP')
-source=('feel::git+https://github.com/Camelliatse/feel.git')
+source=("https://github.com/CamelliaTse/feel/archive/refs/tags/v2.2.0.tar.gz")
+sha256sums=('9884d61d081da37b2c124aefc49b12998f87a612cddd24c54d28a6a52d184890')
 
 package() {
-    install -Dm755 "${srcdir}/feel/feel" "${pkgdir}/usr/bin/feel"
-    install -Dm 755 "${srcdir}/feel/feel.1" "${pkgdir}/usr/share/man/man1/feel.1"
+    install -Dm755 "${srcdir}/feel-${pkgver}/feel" "${pkgdir}/usr/bin/feel"
 }
