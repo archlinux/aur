@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=proBAMr
-_pkgver=1.42.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,11 +20,12 @@ depends=(
 )
 optdepends=(
   r-biocgenerics
+  r-genomeinfodbdata
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('425f498bfb7a246e768a84de8fa88741')
-b2sums=('44e1e6350f41d08add9ebcee418cd0b6995485a8af0e12472a479df2172610821ecab949ec2e7009689fbcd4590560c67605dc8b12b08a6b62db6f846fb8d56d')
+md5sums=('1b33d4c1f2ec911e0e5f66d380100e8e')
+b2sums=('fa4747f1c45dd0d84ba412c9f68601702fa711da2e52afabaeec123ab051bf1564c40daeb40bc764b6de990ce23e4c855baba32a40b511cfaca4ec99a014a710')
 
 build() {
   mkdir build
