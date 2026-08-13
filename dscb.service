@@ -1,0 +1,12 @@
+[Unit]
+Description=DSC Enterprise Discord Engine Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/dscb /var/lib/dscb/bot.dsc
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
