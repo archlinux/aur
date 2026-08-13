@@ -1,6 +1,6 @@
 pkgbase = xled-bin
 	pkgdesc = sed and awk for tabular data — regex transforms over Excel-style ranges on CSV/DSV.
-	pkgver = 0.8.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/excelano/xled
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = xled-bin
 	provides = xled
 	conflicts = xled
 	options = !strip
-	source_x86_64 = xled-x86_64-0.8.0.txz::https://github.com/excelano/xled/releases/download/v0.8.0/xled-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = e98ceda9be5216f38416a185424a721fcba3e416871e65329906cb60d4dc98f8
-	source_aarch64 = xled-aarch64-0.8.0.txz::https://github.com/excelano/xled/releases/download/v0.8.0/xled-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 4a621e62ea67339a17921fa3c7b51163f50d2eb9cc0815a9a883d83b43fec986
+	source_x86_64 = xled-x86_64-0.10.0.txz::https://github.com/excelano/xled/releases/download/v0.10.0/xled-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = b16cb58dfaaf4a57ace7c9b518ac1b148c92143250dea93030ae432809a4702e
+	source_aarch64 = xled-aarch64-0.10.0.txz::https://github.com/excelano/xled/releases/download/v0.10.0/xled-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 8a11ac5767427c63d001775266c1dd03e9b12965259bee3d610c428fe8f8a410
 
 pkgname = xled-bin
