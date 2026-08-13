@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MIRA
-_pkgver=1.28.0
+_pkgver=1.34.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.34.0
 pkgrel=1
 pkgdesc='Methylation-Based Inference of Regulatory Activity'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e3ae188dfa1cba18a628ba4fd835e1ba2040000f2e8abeac6c2d335f2192769c')
+sha256sums=('c79d025b7abdf88aa2b0aeb1a50464d9714347b7055187e2876fe83749f86cfd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
