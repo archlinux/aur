@@ -14,8 +14,6 @@ license=('MIT')
 depends=(gcc-libs)
 makedepends=(oniguruma pkgconf rust git)
 optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
-conflicts=(grep)
-provides=(grep)
 source=("uutils-grep::git+${url}.git")
 b2sums=('SKIP')
 
@@ -29,8 +27,6 @@ build(){
 package() {
   unset optdepends
   cd uutils-grep
-  install -Dm755 target/release/grep -t "$pkgdir"/usr/bin
-  echo -e echo -e '#!/bin/sh\nexec grep -E "$@"' | install -Dm755 /dev/stdin "$pkgdir"/usr/bin/egrep
-  echo -e echo -e '#!/bin/sh\nexec grep -F "$@"' | install -Dm755 /dev/stdin "$pkgdir"/usr/bin/fgrep
+  install -Dm755 target/release/grep "$pkgdir"/usr/bin/uu-grep
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/uutils-grep
 }
