@@ -2,11 +2,13 @@
 <component type="desktop-application">
   <id>com.dongpl.linglong-store.v2</id>
   <name>Linyaps Store Community Edition Nightly</name>
+  <name xml:lang="ar">متجر تطبيقات Linglong (الإصدار المجتمعي) Nightly</name>
   <name xml:lang="en">Linyaps Store Community Edition Nightly</name>
   <name xml:lang="es">Tienda de Aplicaciones Linyaps Edición Comunitaria Nightly</name>
   <name xml:lang="ru">Магазин Linyaps — ночная версия сообщества</name>
   <name xml:lang="zh-CN">玲珑应用商店社区版 Nightly</name>
   <summary>Nightly build for browsing, installing, and managing Linyaps applications</summary>
+  <summary xml:lang="ar">إصدار Nightly لتصفح تطبيقات Linglong وتثبيتها وإدارتها</summary>
   <summary xml:lang="en">Nightly build for browsing, installing, and managing Linyaps applications</summary>
   <summary xml:lang="es">Versión Nightly para explorar, instalar y gestionar aplicaciones Linyaps</summary>
   <summary xml:lang="ru">Ночная сборка для поиска, установки и управления приложениями Linyaps</summary>
@@ -16,6 +18,7 @@
   <launchable type="desktop-id">com.dongpl.linglong-store.v2.desktop</launchable>
   <description>
     <p>A desktop store for browsing, installing, and managing Linyaps applications.</p>
+    <p xml:lang="ar">متجر تطبيقات سطح المكتب لتصفح تطبيقات Linglong وتثبيتها وإدارتها.</p>
     <p xml:lang="en">A desktop store for browsing, installing, and managing Linyaps applications.</p>
     <p xml:lang="es">Una tienda de escritorio para explorar, instalar y gestionar aplicaciones Linyaps.</p>
     <p xml:lang="ru">Магазин для поиска, установки и управления приложениями Linyaps.</p>
