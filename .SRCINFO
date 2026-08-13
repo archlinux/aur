@@ -15,6 +15,7 @@ pkgbase = retdec-git
 	optdepends = graphviz
 	provides = retdec
 	conflicts = retdec
+	options = !debug
 	source = retdec-git::git+https://github.com/avast/retdec.git
 	source = gcc15.patch
 	sha256sums = SKIP

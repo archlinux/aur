@@ -14,6 +14,7 @@ license=('MIT')
 depends=('openssl' 'python' 'zlib')
 makedepends=('git' 'cmake')
 optdepends=('upx' 'graphviz')
+options=(!debug)
 provides=('retdec')
 conflicts=('retdec')
 source=("$pkgname::git+https://github.com/avast/retdec.git"
