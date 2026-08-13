@@ -1,0 +1,17 @@
+pkgbase = polypolish-bin
+	pkgdesc = Short-read polishing tool for bacterial genome assemblies
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/rrwick/Polypolish
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = polypolish
+	conflicts = polypolish
+	options = !strip
+	options = !debug
+	source = https://github.com/rrwick/Polypolish/releases/download/v0.7.1/polypolish-linux-x86_64-musl-v0.7.1.tar.gz
+	source = https://raw.githubusercontent.com/rrwick/Polypolish/v0.7.1/LICENSE
+	sha256sums = 36d4aba0a3165103dbe31f533c5c7993b9027373a8674ea91b1c863307f9ca7e
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
+
+pkgname = polypolish-bin
