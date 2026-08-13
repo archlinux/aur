@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qtscrcpy-bin
 _pkgname=QtScrcpy
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Android real-time display control software.(Prebuilt version)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-ubuntu-x64-v${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a21c47ab0c5983fc9276c901a180d204a7dfd6d46f07c003b7a93f6a3990f893'
+sha256sums=('bf1c2d4830e4036fb781ff876fbc37f96f31fec906b6832c9b2792cf4ee87289'
             'e468cebce5ab345d61d109de5426e9263643f915d881599774402c89292f141f')
 prepare() {
     sed -i -e "
