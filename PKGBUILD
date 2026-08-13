@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Rnits
-_pkgver=1.44.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -25,8 +25,8 @@ optdepends=(
   r-stringr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('68acbbfc0210ee45f9a1a181b0e3c983')
-b2sums=('a17a2a588910fc1c5f4a75ca9081b5779112ead1e5a60bda50f89cb15df292150c3314d0cc9a7046f8abd168d915fec9af7fb28245a3fd7deaface9be6297160')
+md5sums=('e41fafdf03a5511e36f706a6c5031c4a')
+b2sums=('b4c68f93a995fe0d440bfa6aae5d9b00952fb912a920999601153e558f1109d66135b668e97e2be0975b6766bc99f35474634bf0a01bc80711f3aa9154da89a8')
 
 build() {
   mkdir build
