@@ -1,6 +1,6 @@
 pkgbase = user-scanner
 	pkgdesc = Check username availability across multiple popular platforms
-	pkgver = 1.4.3.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/kaifcodec/user-scanner
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = user-scanner
 	provides = user-scanner
 	conflicts = python-user-scanner
 	replaces = python-user-scanner
-	source = https://files.pythonhosted.org/packages/source/u/user_scanner/user_scanner-1.4.3.1.tar.gz
-	sha256sums = d641af70e0e6b98c49037f8488109e1e94638fe79fe55892d4b0ac4038b51379
+	source = https://files.pythonhosted.org/packages/source/u/user_scanner/user_scanner-1.5.0.tar.gz
+	sha256sums = 46336b7468006b3b745fa4b14faefed42a2e08e67e861909d3d7e70fb568e0ce
 
 pkgname = user-scanner
