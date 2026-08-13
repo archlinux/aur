@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=COCOA
-_pkgver=2.22.0
+_pkgver=2.26.0
 pkgname=r-${_pkgname,,}
-pkgver=2.22.0
+pkgver=2.26.0
 pkgrel=1
 pkgdesc='Coordinate Covariation Analysis'
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('40ff82455debe994642f82c9bd118e40c1a449d142d481ca593a1f4276e6ee5e')
+sha256sums=('0e654e7e21108ccf3f6c94e697dea2cd62d13eadba28ec55d095205044a624b4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
