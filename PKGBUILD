@@ -1,7 +1,7 @@
 #!/bin/hint/bash
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 
-check_option "debug" "y" && BUILD_TYPE=Debug || BUID_TYPE=Release
+check_option "debug" "y" && BUILD_TYPE=Debug || BUILD_TYPE=Release
 
 ## Configuration env vars:
 _ver=4.1.0
