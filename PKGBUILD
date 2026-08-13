@@ -4,7 +4,7 @@
 
 pkgname=funkin
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A rhythm game made with HaxeFlixel"
 arch=(x86_64)
 url="https://github.com/FunkinCrew/Funkin"
@@ -43,7 +43,6 @@ build() {
   haxelib git haxelib https://github.com/FunkinCrew/haxelib.git
   echo n | haxelib run hmm reinstall
 
-  # echo y | haxelib run lime rebuild cpp
   # Set up Lime
   echo y | haxelib run lime rebuild cpp # FunkinCrew's Lime fork doesn't come with lime.ndll on Linux for whatever reason
   echo n | haxelib run lime setup # Decline prompt to add "lime" command
@@ -52,6 +51,10 @@ build() {
   pushd ${srcdir}/Funkin/.haxelib/lime/git
   git submodule update --init --recursive
   popd
+
+  # Discord RPC
+  touch ${srcdir}/Funkin/.env
+  grep DISCORD_CLIENT_ID ${srcdir}/Funkin/.env || echo 'DISCORD_CLIENT_ID=816168432860790794' >> ${srcdir}/Funkin/.env
   
   echo y | haxelib run lime rebuild linux -64 -release
 
