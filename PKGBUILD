@@ -11,7 +11,7 @@ _appname=unrot
 pkgname=${_cratename}
 pkgdesc="Find and interactively repair broken symlinks with fuzzy matching"
 
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -33,8 +33,8 @@ source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cr
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE"
 		"LICENSE-APACHE-${pkgver}::${_urlraw}/LICENSE-APACHE")
-sha256sums=('dab833abd1793698c82476bcd2af96ad3efee564effc87f4ea290f37953c1d72'
-            'f265a39150567f96d909f03b95fad8c13e3c5b4751e46d4febf7e425342640a8'
+sha256sums=('aa11687d1eb9cdb60b79ffd0d6a493a46f5a98f84c40f2c0e4d77354fcbaf704'
+            '318ae5bc9d6cb4ef2cec8652ef4d4efbe9a238c04ec0c2f3e44cb9f596835845'
             '5e066d90b93d7065d671c16c150d911e846887a2d1e9f0550f01009e744eb3b0'
             'b586944a185a37ea9e8867c4f373a162891c28123a2dadac4ae7a5d500b4bff7')
 
