@@ -1,8 +1,8 @@
 # Maintainer: oech3
 
 pkgname=chromium-ffmpeg
-_avcodec=62
-pkgver=8.1.2
+_avcodec=63 # seems compat with 62
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="Add codecs to Chromium M138+ (libavcodec ${_avcodec})"
 arch=('x86_64')
@@ -13,12 +13,12 @@ install=chromium-ffmpeg.install
 source=(
 $install ${pkgname}.hook ${url}releases/ffmpeg-${pkgver}.tar.xz
 "sigs.base64::${_url}/+/refs/heads/master/chromium/ffmpeg.sigs?format=TEXT"
-https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-8.1.1-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
+https://gitlab.archlinux.org/archlinux/packaging/packages/ffmpeg/-/raw/2-${pkgver}-1/0001-Add-av_stream_get_first_dts-for-Chromium.patch
 )
 
 b2sums=('abd7a259599872b1d499de65d4416ac454de3f473b27f7ec15f3472291bd474f861bbe231d3450d8297c2947d731a236aeb768f6e72d2bf90794876173f252f1'
         '371ab8750f8a27a2506af0379765d309031de83e4b7e2100fcef0bb130522ef0427998b0cdbc0b06fea924efb8c91e032c020d0f7643069fef48a83c40c51225'
-        'b37849fd89cdbc336700227c804d7642e0d2e4024359d15f4c3659cd41465145946b362fb61e0dc0141730f1d0352e2a2bf33d513213b2b3b68978be766b5914'
+        '85b3b175211dfc013ae5df3ffd2bf2a1fd68f682f6b63d1a1a3aa431b7a8b5ef15c41108a6fa1ef2b15e6677f182ab02e48e0b56d3f301ef8e1777a473e8dd82'
         '046f7fcb32ccd2d18a8a85a6ef4e1445cb6af682fb75999b12b60cd900fc4d37962dd86fc3f0201ec23ba296a834a01139ba379fabb33b1b49fa331a876593d5'
         'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d')
 depends=(glibc)
