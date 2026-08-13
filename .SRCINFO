@@ -1,6 +1,6 @@
 pkgbase = r-toast
 	pkgdesc = Tools for the analysis of heterogeneous tissues
-	pkgver = 1.22.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/TOAST
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-toast
 	optdepends = r-matrix
 	optdepends = r-matrixstats
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/TOAST_1.22.0.tar.gz
-	sha256sums = 0084649bb0a8886866444f4b08166a3be6d9cf8de09b0c3d20cfc5475e91287e
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/TOAST_1.26.0.tar.gz
+	sha256sums = cb4c9381a88aac5efde60be4a1ab32e94cd13535468d0b1e096335d769ca38e5
 
 pkgname = r-toast
