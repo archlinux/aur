@@ -3,21 +3,21 @@
 # Based on https://daveparrish.net/posts/2019-11-16-Better-AppImage-PKGBUILD-template.html
 
 pkgname=jagex-launcher
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Jagex Launcher for Linux'
 arch=('x86_64')
 url="https://osrs.runescape.com/download"
 # TODO: Figure out proper license
 # electron & chromium licenses are included, but no package license
-license=('custom')
+license=('LicenseRef-Jagex-EULA')
 depends=('zlib' 'hicolor-icon-theme' 'fuse2')
 provides=('jagex-launcher')
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://rs-launcher-updates.runescape.com/production/linux/x64/releases/$pkgver/jagex-launcher-beta-linux-x86_64.AppImage"
         "JAGEX-EULA")
-sha256sums=('2c799094c29db5b48ac5db02a7e6d6c199c1af208b53de74dac4a2a7a49f4ccb'
+sha256sums=('770db4cbc41d4bc3a7832882f6c607b459b6a3e969b46e7bfdbefcae9b31b43d'
             '9feba555717fe2e04335146cace192f48760e46670f4fa8248732fc4ea07e6fd')
 
 prepare() {
@@ -56,6 +56,6 @@ package() {
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
     ln -s "/opt/$pkgname/LICENSE.electron.txt" "$pkgdir/usr/share/licenses/$pkgname"
-    ln -s "/opt/$pkgname/LICENSEs.chromium.html" "$pkgdir/usr/share/licenses/$pkgname"
+    ln -s "/opt/$pkgname/LICENSES.chromium.html" "$pkgdir/usr/share/licenses/$pkgname"
     ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
