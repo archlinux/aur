@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-msgs10
-pkgver=10.3.2
-pkgrel=3
+pkgver=10.4.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Messages for Gazebo robot simulation."
@@ -26,7 +26,7 @@ makedepends=(
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz"
         "protobuf30.patch::https://github.com/gazebosim/gz-msgs/pull/499.patch")
-sha256sums=('ec4cd00b71f4db67c98d441e1b5431388f100d92bfa47046116b20104da5d679'
+sha256sums=('f76b393aaf372fbaf4e0396ee6b7e1efd86602ac24694476862e688d75d5a6a6'
             'b6467b4f7a2ead6c96c451865511ec3b8338033a128c84a09e20b0139050c779')
 
 prepare() {
