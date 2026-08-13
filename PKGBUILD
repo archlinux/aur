@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r19304.7001209
+pkgver=r19637.2f0f57a
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
@@ -15,10 +15,7 @@ makedepends=(
 	'git'
 	'libgl'
 	'libstdc++'
-	'libzip'
 	'rapidyaml>=0.11'
-	'xz'
-	'zstd'
 )
 provides=("$_pkgname=${pkgver#r}" 'libretro-pcsx2')
 conflicts=("$_pkgname" 'libretro-pcsx2')
@@ -35,7 +32,7 @@ source=(
 )
 b2sums=(
 	'SKIP'{,,,,,}
-	'b31072c060eb01db1e34d8169d9e68f58a2fcf720dd916fc50a404a149383bf8be6023a21f4947eae018471308fdd181b76f352926eab41c744885e49a8cee44'
+	'4a853b4057c63ebbf3fbe4cd314439e80dcb00fb54fcdf983b1e40b0dc8dc5f765d01fc9585d039369755c5a2b6c44657899f88d461836f2829540fb295ff2cf'
 )
 
 pkgver() {
@@ -61,7 +58,7 @@ prepare() {
 
 build() {
 	local options=(
-		-B build
+		-B ../build
 		-D CCACHE_FOUND=OFF
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
@@ -72,16 +69,15 @@ build() {
 		-D USE_SYSTEM_LIBS=ON
 		-W no-dev
 	)
-	cmake "${options[@]}" $_pkgname
-	cmake --build build
+	cd $_pkgname
+	cmake "${options[@]}"
+	cmake --build ../build
 }
 
 package() {
 	depends+=(
 		'libryml.so'
 		'libstdc++.so'
-		'libzip.so'
-		'libzstd.so'
 	)
 
 	# shellcheck disable=SC2154

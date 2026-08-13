@@ -1,5 +1,5 @@
 diff --git a/cmake/BuildParameters.cmake b/cmake/BuildParameters.cmake
-index 70fb5c2d2..e8777dfac 100644
+index e16d726cb..97b4a433f 100644
 --- a/cmake/BuildParameters.cmake
 +++ b/cmake/BuildParameters.cmake
 @@ -13,7 +13,7 @@ add_definitions(-DGIT_VERSION="${GIT_VERSION}")
@@ -10,9 +10,9 @@ index 70fb5c2d2..e8777dfac 100644
 +set(USE_SYSTEM_LIBS ON)
  add_definitions(-D__LIBRETRO__)
  optional_system_library(ryml)
- optional_system_library(zstd)
+ set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 diff --git a/common/StringUtil.h b/common/StringUtil.h
-index 67389b12b..607465983 100644
+index 5b23d1b9c..d8f0a27f2 100644
 --- a/common/StringUtil.h
 +++ b/common/StringUtil.h
 @@ -30,7 +30,7 @@
@@ -25,13 +25,13 @@ index 67389b12b..607465983 100644
  #define _M_ARM64 HAD_M_ARM64
  #undef HAD_M_ARM64
 diff --git a/pcsx2/GameDatabase.cpp b/pcsx2/GameDatabase.cpp
-index 8d5d03ccc..ff26df446 100644
+index 24367faa6..4027f36f0 100644
 --- a/pcsx2/GameDatabase.cpp
 +++ b/pcsx2/GameDatabase.cpp
-@@ -17,8 +17,8 @@
- #include <fstream>
+@@ -18,8 +18,8 @@
  #include <optional>
  
+ #include "../common/Threading.h"
 -#include "../3rdparty/rapidyaml/rapidyaml/src/ryml_std.hpp"
 -#include "../3rdparty/rapidyaml/rapidyaml/src/ryml.hpp"
 +#include <ryml_std.hpp>
