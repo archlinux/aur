@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=BOBaFIT
-_pkgver=1.12.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ed9a7ef0e6e268716e67e0f9cc3f551c')
-b2sums=('9bc606c10111293eb83f91bef821effa47aa3a0906263f066c1e415d2052f2dcb8b799769d6316b73b3ea243041f5f24b86feb91179488966edb278f48bca151')
+md5sums=('2bbb9629f898b05e78340d4e8882bf04')
+b2sums=('942a2818038c6e083144567f6727b0957fbb407070b5154142d22363e4febe40f642c2cb4569dcd092e75fe6d5c2ced5f636e08e529b3d5dbdffbae9d720c48f')
 
 build() {
   mkdir build
