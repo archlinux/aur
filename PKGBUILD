@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=rustunnel-bin
-pkgver=0.8.1
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='Self-hosted, secure tunnel server in Rust'
 arch=(x86_64)
@@ -12,11 +12,12 @@ provides=(rustunnel)
 conflicts=(rustunnel)
 _src='https://github.com/joaoh82/rustunnel'
 source=("$_src/releases/download/v$pkgver/rustunnel-v$pkgver-$arch-unknown-linux-gnu.tar.gz"{,.sha256}
-  "rustunnel-server-$pkgver::$_src/releases/download/v$pkgver/rustunnel-server-linux-$arch"{,.sha256}
+  "rustunnel-server-$pkgver::$_src/releases/download/v$pkgver/rustunnel-server-linux-$arch"
+  "rustunnel-server-$pkgver.sha256::$_src/releases/download/v$pkgver/rustunnel-server-linux-$arch.sha256"
   "$_src/raw/v$pkgver/LICENSE")
-b2sums=('666175ddaa82b34a860a81d5a0c8d20f185ad615895e04c2fc26ef61221ac08f800139fdab85f5b778a0620528c104e49e17b6f380045024e83277526cd0eb7a'
+b2sums=('5ae428760cb638e7d14319b3a41033546ac324e53521025dc119eb18287602788944e6ec9ca7c3d023c253cd14cd4f7ffc78acf3dfffc151f3532045a8685fd1'
         'SKIP'
-        '8118e00fe1ce45a190eded7befaeb32fad3e2ae545344164b8bcc0c5863e0020c628b810a60b051443bb9b95260dc009de16c9cab0966a2e770b039d627f321d'
+        '74b80cbeab084394db96a9e04b2a2e4f4eca170471b5f59651dad422c234529b866bccba6e63373d053b88ffcf596fd34558362d1e1571ec8d1e3622d47b53e5'
         'SKIP'
         'SKIP')
 
