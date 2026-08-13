@@ -13,7 +13,7 @@
 # filenames, so this package cannot be built against it).
 pkgname=pipewire-control-center
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 # NB the AUR rejects a pkgdesc over 255 characters ("pkgdesc field too long",
 # hook declined) — the first push of this package hit exactly that at 275. Keep
 # this line short; it is currently 241.
@@ -21,8 +21,16 @@ pkgdesc="GTK4/libadwaita control center for PipeWire — signal paths routing ap
 arch=('any')
 url="https://github.com/knightinfected/PipeWireController"
 license=('GPL-3.0-or-later')
+# python-cairo is REQUIRED, not optional: pwctl/ui/paths_page.py imports cairo
+# at module scope and app.py imports that page at startup, so without it the
+# application does not launch at all (ModuleNotFoundError: No module named
+# 'cairo'). It is only an *optdepend* of python-gobject, so it is absent on a
+# clean system — and present on most development machines, which is why this
+# was missed until a user reported it. Every Gtk.DrawingArea in the app needs
+# pycairo's foreign-struct converter regardless of the explicit import.
 depends=('pipewire' 'wireplumber' 'pipewire-pulse' 'gtk4' 'libadwaita'
-         'python' 'python-gobject' 'python-numpy' 'python-soundfile')
+         'python' 'python-gobject' 'python-cairo' 'python-numpy'
+         'python-soundfile')
 optdepends=('noise-suppression-for-voice: RNNoise noise-cancelling mic template'
             'lsp-plugins-ladspa: extra LADSPA plugins for chains and effect racks'
             'lsp-plugins-lv2: extra LV2 plugins for effect racks'
