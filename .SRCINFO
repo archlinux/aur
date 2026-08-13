@@ -1,27 +1,31 @@
 pkgbase = cherry-studio-electron-bin
 	pkgdesc = 🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://cherry-ai.com/
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
 	license = LicenseRef-custom
+	makedepends = asar
 	depends = electron41
 	depends = libevdev
 	depends = python
 	depends = python-yaml
 	depends = nodejs
+	depends = bun
+	depends = ripgrep
+	depends = uv
 	optdepends = ollama: Use your local LLM
-	provides = cherry-studio=2.0.3
+	provides = cherry-studio=2.0.4
 	conflicts = cherry-studio
-	source = LICENSE-2.0.3::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v2.0.3/LICENSE
+	source = LICENSE-2.0.4::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v2.0.4/LICENSE
 	source = cherry-studio-electron.sh
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = cherry-studio-electron-2.0.3-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.0.3/Cherry-Studio-2.0.3-aarch64.rpm
-	sha256sums_aarch64 = 5a7347ced07480efd6af9c6403eb84e6998abc400f2cafd0b1138a6e4763e9ec
-	source_x86_64 = cherry-studio-electron-2.0.3-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.0.3/Cherry-Studio-2.0.3-x86_64.rpm
-	sha256sums_x86_64 = 2369d18d1c8b42fab1540aa1df1748ec86db0880dd2a66256946967ee4b63703
+	source_aarch64 = cherry-studio-electron-2.0.4-aarch64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.0.4/Cherry-Studio-2.0.4-aarch64.rpm
+	sha256sums_aarch64 = 60e0ee3020393ed75b5712e27902a7bfb83604a0646d76b2df359c608345756e
+	source_x86_64 = cherry-studio-electron-2.0.4-x86_64.rpm::https://github.com/CherryHQ/cherry-studio/releases/download/v2.0.4/Cherry-Studio-2.0.4-x86_64.rpm
+	sha256sums_x86_64 = d359c2cfbc09aa9037be83b0bf48a9e6cd9c5c0b67f447fb021e7b0627a64a1c
 
 pkgname = cherry-studio-electron-bin
