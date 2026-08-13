@@ -1,0 +1,16 @@
+pkgbase = cfish-git
+	pkgdesc = A terminal aquarium screensaver: colorful fish swimming across your terminal, leaving bubble trails (git)
+	pkgver = 1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/joeyvigil/cfish
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = ncurses
+	provides = cfish=1.0.r0.g0000000
+	conflicts = cfish
+	source = cfish::git+https://github.com/joeyvigil/cfish.git
+	sha256sums = SKIP
+
+pkgname = cfish-git
