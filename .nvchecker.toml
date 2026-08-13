@@ -1,0 +1,3 @@
+[rget-cli]
+source = "cratesio"
+cratesio = "rget-cli"

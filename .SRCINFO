@@ -1,0 +1,17 @@
+pkgbase = rget-cli
+	pkgdesc = High-performance resumable download manager
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/cesarferreira/rget
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = rget
+	conflicts = rget
+	source = rget-0.3.2.crate::https://crates.io/api/v1/crates/rget-cli/0.3.2/download
+	sha256sums = 88185c3837a4c77913bca571655428113f752c2681232d59ff7531d2839b5a76
+
+pkgname = rget-cli
