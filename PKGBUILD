@@ -1,7 +1,7 @@
-# Maintainer: TODO <TODO>
+# Maintainer: Kaz Walker <me@kaz.codes>
 pkgname=qgroundcontrol-bin
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform ground control station for MAVLink drones (extracted from official AppImage)'
 arch=('x86_64')
 url='https://github.com/mavlink/qgroundcontrol'
@@ -41,13 +41,18 @@ package() {
     sed -i 's/^Exec=.*/Exec=qgroundcontrol/' \
         "$pkgdir/usr/share/applications/org.mavlink.qgroundcontrol.desktop"
 
-    # Icons (whichever sizes upstream actually ships)
+    # Icons (whichever sizes and formats upstream actually ships)
     local icon
-    for icon in squashfs-root/usr/share/icons/hicolor/*/apps/QGroundControl.png; do
+    for icon in squashfs-root/usr/share/icons/hicolor/*/apps/QGroundControl.*; do
+        [ -e "$icon" ] || continue
         install -Dm644 "$icon" "$pkgdir/usr/share/${icon#squashfs-root/usr/share/}"
     done
 
-    # AppStream metadata
-    install -Dm644 squashfs-root/usr/share/metainfo/org.mavlink.qgroundcontrol.metainfo.xml \
-        "$pkgdir/usr/share/metainfo/org.mavlink.qgroundcontrol.metainfo.xml"
+    # AppStream metadata; upstream has shipped this as both *.metainfo.xml
+    # (<= 5.0.8) and *.appdata.xml (>= 5.1.0), so take whatever is there
+    local meta
+    for meta in squashfs-root/usr/share/metainfo/*.xml; do
+        [ -e "$meta" ] || continue
+        install -Dm644 "$meta" "$pkgdir/usr/share/metainfo/${meta##*/}"
+    done
 }
