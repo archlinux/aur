@@ -1,4 +1,4 @@
-# Maintainer: Johnathan Corgan <jcorgan@corganlabs.com>
+# Maintainer: Johnathan Corgan <johnathan@corganlabs.com>
 pkgname=fips-git
 pkgver=0
 pkgrel=1
