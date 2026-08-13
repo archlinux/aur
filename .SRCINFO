@@ -1,6 +1,6 @@
 pkgbase = test-yourself
 	pkgdesc = A modern, highly-polished quiz and testing application
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/albibenni/test-yourself
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = test-yourself
 	depends = libayatana-appindicator
 	depends = libsodium
 	options = !lto
-	source = test-yourself-3.2.0.tar.gz::https://github.com/albibenni/test-yourself/archive/refs/tags/v3.2.0.tar.gz
+	source = test-yourself-3.2.1.tar.gz::https://github.com/albibenni/test-yourself/archive/refs/tags/v3.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = test-yourself
