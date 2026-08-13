@@ -6,7 +6,7 @@
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Tom K <tomk@runbox.com>
 
-pkgbase=hdf5
+_pkgbase=hdf5
 pkgname=hdf5-geant4
 pkgver=2.2.0
 pkgrel=1
@@ -33,10 +33,7 @@ makedepends=(
 )
 replaces=(hdf5-java)
 provides=(hdf5)
-conflicts=(
-  hdf5
-  hdf5-openmpi
-)
+conflicts=(hdf5)
 source=("git+https://github.com/HDFGroup/hdf5.git#tag=$pkgver")
 b2sums=('af4423ed498952aea2b38146f747abe0c95a4194a7518514832cad1faae51ff7575fe9e201ee654dc72b19a6bab215518c92a4bb262c883f41be7255d816fd37')
 
@@ -57,7 +54,7 @@ build() {
     -DHDF5_ENABLE_SZIP_ENCODING=ON
     -DHDF5_INSTALL_CMAKE_DIR=lib/cmake/hdf5
   )
-  cmake -S $pkgbase -B build-mpi "${common_cmake_args[@]}" \
+  cmake -S ${_pkgbase} -B build-mpi "${common_cmake_args[@]}" \
     -DALLOW_UNSUPPORTED=ON \
     -DCMAKE_CXX_COMPILER=mpicxx \
     -DCMAKE_C_COMPILER=mpicc \
@@ -97,6 +94,6 @@ check() {
 package() {
   DESTDIR="$pkgdir" cmake --install build-mpi
   rm -vr "$pkgdir/usr/share/LICENSE"
-  cd $pkgbase
+  cd ${_pkgbase}
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }

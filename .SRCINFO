@@ -1,4 +1,4 @@
-pkgbase = hdf5
+pkgbase = hdf5-geant4
 	pkgdesc = General purpose library and file format for storing scientific data (OpenMPI Thread-Safe version for Geant4, static linking with unsupported options enabled: Fortran and C++)
 	pkgver = 2.2.0
 	pkgrel = 1
@@ -20,7 +20,6 @@ pkgbase = hdf5
 	depends = openmpi
 	provides = hdf5
 	conflicts = hdf5
-	conflicts = hdf5-openmpi
 	replaces = hdf5-java
 	source = git+https://github.com/HDFGroup/hdf5.git#tag=2.2.0
 	b2sums = af4423ed498952aea2b38146f747abe0c95a4194a7518514832cad1faae51ff7575fe9e201ee654dc72b19a6bab215518c92a4bb262c883f41be7255d816fd37
