@@ -1,0 +1,17 @@
+pkgbase = mole-research-bin
+	pkgdesc = Deep-research agent with an enforced budget and verified quotes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lajosdeme/mole
+	license = Apache-2.0
+	conflicts = mole
+	conflicts = mole-bin
+	provides = mole
+	arch = aarch64
+	source_aarch64 = https://github.com/lajosdeme/mole/releases/download/v0.1.0/mole_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 88cbe3941e5a289a66ff94a873a8c8a9f61c47ec5d49bb182a941675a90b7484
+	arch = x86_64
+	source_x86_64 = https://github.com/lajosdeme/mole/releases/download/v0.1.0/mole_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = cf8000c742273830a156def416282b329ad5157a7339c7d387db5edf730f6e94
+	
+pkgname = mole-research-bin
