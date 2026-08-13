@@ -1,6 +1,6 @@
 pkgbase = r-cafe
 	pkgdesc = Chromosmal Aberrations Finder in Expression data
-	pkgver = 1.44.0
+	pkgver = 1.48.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/CAFE
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-cafe
 	optdepends = r-biocgenerics
 	optdepends = r-biocstyle
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/CAFE_1.44.0.tar.gz
-	sha256sums = 1a4512eae46dc79baea24ed9cc17817c50279e718c73a95ade19991f096e3111
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/CAFE_1.48.0.tar.gz
+	sha256sums = 74cf0fb0502d1f4921269b7b46caeb120464f8fa7639ecab9917f1cc435b55b9
 
 pkgname = r-cafe
