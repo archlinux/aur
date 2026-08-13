@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-box-git
-pkgver=2.2.0.rc.4.r77.g20f0a66
+pkgver=2.2.0.rc.4.r81.g39acf70
 pkgrel=1
 pkgdesc='玲珑（Linglong） is the container application toolkit of deepin.'
 arch=($CARCH)
