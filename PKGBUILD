@@ -5,12 +5,12 @@
 # through pacman without rebuilding electron.
 #
 # pkgver and both hashes are rewritten from the published assets by
-# packaging/ci-aur-publish.sh, so all three stay placeholders here. This file is never built
+# packaging/ci-arch-prepare.sh, so all three stay placeholders here. This file is never built
 # as committed, only after CI has filled it in. To build it by hand: set pkgver, run `updpkgsums`.
 
 pkgname=frenfoil-bin
 _pkgname=frenfoil
-pkgver=0.14.0
+pkgver=0.29.0
 pkgrel=1
 pkgdesc='Opinionated, e2e-only XMPP client, post-quantum by default'
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("${_pkgname}-${pkgver}-linux-x64.zip::${_relbase}/${_pkgname}-${pkgver}-
         "${_pkgname}-${pkgver}.desktop::${_rawbase}/${_pkgname}.desktop")
 # Placeholders, not SKIP: an unverified download is worse than a build that refuses to start.
 # CI substitutes the real hashes; building this dir by hand fails until `updpkgsums` is run.
-sha256sums=('a88e0f8579a98c4d8ca94d81928dfba6420f4ee1cf029526aa9b1480204f1efa' 'd6d95f8388758754049ab11eb9d645969f8dd42476b1aa57a5488e1d6039b6f6')
+sha256sums=('2b1c49f56728029ab16ee68336ff85cb196424e75a1908b87d7824dd937fe8fb' 'd6d95f8388758754049ab11eb9d645969f8dd42476b1aa57a5488e1d6039b6f6')
 
 package() {
 	install -dm755 "$pkgdir/opt/$_pkgname"
