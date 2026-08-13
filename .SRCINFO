@@ -7,9 +7,9 @@ pkgbase = deepseek-harness-bin
 	arch = x86_64
 	license = MIT
 	makedepends = npm
-	depends = nodejs>=22.19.0
+	depends = nodejs
+	depends = pnpm
 	provides = deepseek-harness
-	provides = dsh
 	conflicts = deepseek-harness
 	conflicts = deepseek-harness-git
 	options = !strip

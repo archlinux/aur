@@ -7,10 +7,10 @@ pkgdesc='DeepSeek Harness CLI and agent harness'
 arch=('x86_64')
 url='https://github.com/deepseek-ai/deepseek-harness'
 license=('MIT')
-depends=('nodejs>=22.19.0')
+depends=('nodejs' 'pnpm')
 makedepends=('npm')
 options=('!strip')
-provides=('deepseek-harness' 'dsh')
+provides=('deepseek-harness')
 conflicts=('deepseek-harness' 'deepseek-harness-git')
 source=("dsh-${_npmver}.tgz::https://registry.npmjs.org/@deepseek-ai/dsh/-/dsh-${_npmver}.tgz")
 sha256sums=('1b8a9a0ad3c7feaece47926e0bd37ca151c7ccfa997953afa5fd01261784eadc')
@@ -25,10 +25,12 @@ prepare() {
     --omit=dev \
     --no-audit \
     --no-fund \
+    --allow-scripts=@deepseek-ai/dsh-subprocess-local,koffi,node-pty \
     "$srcdir/dsh-${_npmver}.tgz"
 }
 
 package() {
   cp -a "$srcdir/npm-root/usr/." "$pkgdir/usr/"
-  chmod -R u+rwX,go+rX,go-w "$pkgdir/usr/lib/node_modules"
+  find "$pkgdir/usr" -type d -exec chmod 755 {} +
+  chown -R root:root "$pkgdir"
 }
