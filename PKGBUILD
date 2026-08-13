@@ -49,12 +49,19 @@ options=('!emptydirs')
 source=(
   "http://geant4-data.web.cern.ch/releases/geant4-v${pkgver}.tar.gz"
   'geant4-full.install'
+  'hdf5_2_2.patch'
 )
 sha256sums=(
   '5720f2bba6921027e206ad4f0a06f9bcc348adab36240e8b27710f20ce3e971a'
   '5fde7b80dcfa960407b1ecb2b2a2aa817250948cc32490d8ece48a5e5b4035c1'
+  'SKIP'
 )
 install="geant4-full.install"
+
+prepare() {
+  cd "${srcdir}"
+  patch -Np0 < hdf5_2_2.patch
+}
 
 build() {
 
