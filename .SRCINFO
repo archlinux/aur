@@ -1,7 +1,7 @@
 pkgbase = elasticsearch-head-git
 	pkgdesc = A web front end for an elastic search cluster
 	pkgver = 5.0.0.r32.g2d51fec
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mobz/elasticsearch-head
 	arch = any
 	license = Apache

@@ -4,7 +4,7 @@ _pkgname=elasticsearch-head
 
 pkgname=${_pkgname}-git
 pkgver=5.0.0.r32.g2d51fec
-pkgrel=1
+pkgrel=2
 pkgdesc="A web front end for an elastic search cluster"
 arch=('any')
 provides=("elasticsearch-head")
@@ -22,9 +22,7 @@ pkgver() {
 
 package() {
 	cd "${_pkgname}"
-	echo $PWD
-	ls -ahl .
-    npm install --cache "${srcdir}/npm-cache"  -g --user root --prefix "${pkgdir}/usr"
+	npm install --cache "${srcdir}/npm-cache" --global --prefix "${pkgdir}/usr"
 
     # Non-deterministic race in npm gives 777 permissions to random directories.
     # See https://github.com/npm/cli/issues/1103 for details.
