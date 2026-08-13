@@ -539,6 +539,20 @@ index 5ab1c21..c8870b3 100644
  set(app_SRCS
    plugin.cpp
    qt6ctproxystyle.cpp
+diff --git a/src/qt6ct-style/qt6ctproxystyle.cpp b/src/qt6ct-style/qt6ctproxystyle.cpp
+index 4effa37..1b8cc37 100644
+--- a/src/qt6ct-style/qt6ctproxystyle.cpp
++++ b/src/qt6ct-style/qt6ctproxystyle.cpp
+@@ -49,7 +49,8 @@ void Qt6CTProxyStyle::reloadSettings()
+ 
+     if(style != m_style)
+     {
+-        setBaseStyle(QStyleFactory::create(style));
++        //nullptr == infinite recursion
++        setBaseStyle(QStyleFactory::create(style) ?: new QCommonStyle);
+         m_style = style;
+     }
+ }
 diff --git a/src/qt6ct/CMakeLists.txt b/src/qt6ct/CMakeLists.txt
 index fb0e1f7..f11071f 100644
 --- a/src/qt6ct/CMakeLists.txt
