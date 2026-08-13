@@ -1,38 +1,37 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='6.0.1'
-_upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
-_source_type='pypi-releases'
-_pypi_package='sot'
-
-
-pkgname="${_pypi_package}"
-pkgver="${_upstreamver}"
+pkgname="sot"
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="Command-line System Obervation Tool"
-arch=('any')
+
+_pypi_package=${pkgname}
+_pypi_version=${pkgver}
+
 url='https://github.com/anistark/sot'
+arch=('any')
 license=('MIT')
 
 provides=("${_pypi_package}")
 replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
+
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 depends=('python' 'python-textual' 'python-distro' 'python-psutil' 'python-py-cpuinfo' 'python-rich')
 
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('151dace5fd7a0cfe5f67ca1d958324bbe91fb9581e148ab734c6fef4d3d5c240')
+sha256sums=('775629be8780787b27dbc31bfd9e85602a2c9492e9ed3b0327af76c1aeab202d')
 
 build() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
