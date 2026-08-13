@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=TREG
-_pkgver=1.10.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -34,8 +34,8 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('871bb50be403533bc358bbf9c96e0df4')
-b2sums=('ca54c0e73cab82090616c214a3260634fe8dae79b0ce7b14c9f367a6e0e70fd8aad036a0c188cab73ef67efcb63d1f7ac351378dae07be3e4f51044813886379')
+md5sums=('bf013b8aee9f43f49c172faae41f0236')
+b2sums=('b5926854209e5a8f1453a66bd45377d75c25a5a49881ae1be0d7b51f37ec53d6ce5b7a6a823d4795d526a37912d68a1f26d1124ed6b7661c4bd5414162f748d7')
 
 build() {
   mkdir build
