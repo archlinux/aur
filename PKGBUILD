@@ -10,8 +10,8 @@ pkgname=fritzing
 # We drop the "b" at the end of the version number. It probably means beta
 # while there is also "d" for development versions. This would not be correctly
 # parsed by `pkgver` anyway (d > b), so let's leave out the b suffix entirely.
-pkgver=1.0.7
-pkgrel=3
+pkgver=1.0.8
+pkgrel=1
 
 # Tag version can be obtained from github release page. Sometimes this is the
 # version number itself, sometimes some CD-magicnumber thing. There can be
@@ -20,7 +20,7 @@ pkgrel=3
 #_tagver=0.9.8
 
 # This is probably close to what has been released
-_gitrev=394a8bb4791424ffd99f99ebc330264d4becea63
+_gitrev=5aa56a510183c23084990a6b4481708cad24c15b
 
 # Parts come from a different respository and are not versioned anymore since
 # 2016. Sometimes we can get the revision by downloading the release build,
@@ -28,7 +28,7 @@ _gitrev=394a8bb4791424ffd99f99ebc330264d4becea63
 # release build seems to be hidden behind a paywall. Then we need to guess
 # based on the master branch of the fritzing-parts repository and the date when
 # the release archive was created.
-_partsrev=70a1773402e8c76a77795637de482a83db3ca6d7
+_partsrev=27535f2fd02097be9bed229b75aa8e9be282a4a0
 
 pkgdesc='PCB layout prototyping application'
 arch=('aarch64' 'i686' 'x86_64')
@@ -36,7 +36,7 @@ url=http://fritzing.org
 license=('GPL-3.0-only AND CC-BY-SA-3.0 AND BSL-1.0') # fritzing, fritzing-parts, svgpp
 install=fritzing.install
 makedepends=('boost' 'git' 'patchelf' 'qt6-tools')
-depends=('gcc-libs' 'glibc' 'libgit2' 'polyclipping' 'qt6-base' 'qt6-serialport' 'qt6-svg' 'quazip-qt6' 'ngspice' 'zlib')
+depends=('glibc' 'libgcc' 'libgit2' 'libstdc++' 'polyclipping' 'qt6-base' 'qt6-serialport' 'qt6-svg' 'quazip-qt6' 'ngspice' 'zlib')
 source=("git+https://github.com/fritzing/fritzing-app.git#commit=${_gitrev}"
         "git+https://github.com/fritzing/fritzing-parts.git#commit=${_partsrev}"
         svgpp-1.3.1.tar.gz::https://github.com/svgpp/svgpp/archive/refs/tags/v1.3.1.tar.gz

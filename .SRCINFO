@@ -1,7 +1,7 @@
 pkgbase = fritzing
 	pkgdesc = PCB layout prototyping application
-	pkgver = 1.0.7
-	pkgrel = 3
+	pkgver = 1.0.8
+	pkgrel = 1
 	url = http://fritzing.org
 	install = fritzing.install
 	arch = aarch64
@@ -12,9 +12,10 @@ pkgbase = fritzing
 	makedepends = git
 	makedepends = patchelf
 	makedepends = qt6-tools
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	depends = libgit2
+	depends = libstdc++
 	depends = polyclipping
 	depends = qt6-base
 	depends = qt6-serialport
@@ -22,8 +23,8 @@ pkgbase = fritzing
 	depends = quazip-qt6
 	depends = ngspice
 	depends = zlib
-	source = git+https://github.com/fritzing/fritzing-app.git#commit=394a8bb4791424ffd99f99ebc330264d4becea63
-	source = git+https://github.com/fritzing/fritzing-parts.git#commit=70a1773402e8c76a77795637de482a83db3ca6d7
+	source = git+https://github.com/fritzing/fritzing-app.git#commit=5aa56a510183c23084990a6b4481708cad24c15b
+	source = git+https://github.com/fritzing/fritzing-parts.git#commit=27535f2fd02097be9bed229b75aa8e9be282a4a0
 	source = svgpp-1.3.1.tar.gz::https://github.com/svgpp/svgpp/archive/refs/tags/v1.3.1.tar.gz
 	source = 0001-Quick-Dirty-patch-to-allow-finding-quazip-qt6-on-Arc.patch
 	source = 0002-Quick-Dirty-patch-to-allow-finding-ngspice-on-Arch-L.patch
