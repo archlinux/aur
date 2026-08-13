@@ -26,10 +26,10 @@ makedepends=(
 #  'python-sphinx'  ## docs
   'python-wheel'
 )
-#checkdepends=(
+# checkdepends=(
 #  'python-pytest'
 #  'xorg-server-xvfb'
-#)
+# )
 optdepends=(
   'scrot: screenshot tool'
   'tk: windowing tool kit'
@@ -42,10 +42,12 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-#check() {
-#  cd "$_name-$pkgver"
-#  PYTHONPATH=. xvfb-run pytest || :
-#}
+# check() {
+#   cd "$_name-$pkgver"
+#   python -m venv --clear --without-pip --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   xvfb-run test-env/bin/python -I -m pytest
+# }
 
 package() {
   cd "$_name-$pkgver"
