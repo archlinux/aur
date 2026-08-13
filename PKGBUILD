@@ -3,10 +3,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=extrafont
-_pkgver=0.19
+_pkgver=0.20
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Tools for Using Fonts"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,10 +17,12 @@ depends=(
 )
 optdepends=(
   r-fontcm
+  r-testthat
+  r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5b65dd0344de4d5e99842c602697b124')
-b2sums=('40ae50634c738ec98c9901320f186495673b761fcab7cbcedfe9ac5d401e54bafebd3b64a65443967e38179fcce979710c0614f8117c152c471016a02162f56d')
+md5sums=('a6e2919f9fe21223536da9cf9c4c57ae')
+b2sums=('35b8e688c96e91eeb4be3946622528a100302df80fb928c7551cb13470ca569a8b2e313a80af7a1dbfed6b28911446741e1834d72e9e9d8f570d8cbbcfe99da4')
 
 build() {
   mkdir build
