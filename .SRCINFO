@@ -1,0 +1,15 @@
+pkgbase = iocaine-qmk
+	pkgdesc = Iocaine config - Quickly Mark and Kill
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = https://iocaine.madhouse-project.org/
+	arch = any
+	license = MIT
+	depends = git
+	backup = etc/iocaine/quickly-mark-and-kill/init/pkg.roto
+	backup = etc/iocaine/quickly-mark-and-kill/main/pkg.roto
+	backup = etc/iocaine/quickly-mark-and-kill/README.md
+	source = iocaine::git+https://git.madhouse-project.org/iocaine/iocaine.git#tag=iocaine-3.5.0
+	sha256sums = SKIP
+
+pkgname = iocaine-qmk
