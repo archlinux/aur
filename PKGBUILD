@@ -18,7 +18,7 @@ source=("git+${url}"
 sha256sums=('SKIP'
             'ea0d3bb44c46223b8fbbfe06a5397ee103d77a74f6e29ed636d02bbfebe0f77a'
             '7e310112487f7a77b5fe7b5721e6f077edaeda8009b3881f39dee2ee584e1922')
-dest="/usr/share/webapps/piped/${_componentnameshort}"
+_dest="/usr/share/webapps/piped/${_componentnameshort}"
 
 pkgver() {
 	cd Piped
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 prepare() {
-	sed -i "s|/usr/share/nginx/html|${dest}|g" "${srcdir}/Piped/docker/nginx.conf"
+	sed -i "s|/usr/share/nginx/html|${_dest}|g" "${srcdir}/Piped/docker/nginx.conf"
 }
 
 build() {
@@ -44,8 +44,8 @@ package() {
 	install -Dm644 "${srcdir}/Piped/docker/nginx.conf" "${pkgdir}/usr/share/doc/piped/${_componentnameshort}/nginx.conf"
 	install -Dm644 "${srcdir}/config.properties" "${pkgdir}/usr/share/doc/piped/${_componentnameshort}/config.properties"
 
-	install -dm755 "${pkgdir}${dest}"
-	cp -ra ${srcdir}/Piped/dist/* "${pkgdir}${dest}"
-	chmod -R 755 "${pkgdir}${dest}"
+	install -dm755 "${pkgdir}${_dest}"
+	cp -ra ${srcdir}/Piped/dist/* "${pkgdir}${_dest}"
+	chmod -R 755 "${pkgdir}${_dest}"
 	install -Dm755 "${srcdir}/configure-piped-frontend.sh" "${pkgdir}/usr/bin/configure-piped-frontend"
 }
