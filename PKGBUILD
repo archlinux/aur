@@ -3,7 +3,7 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
 pkgver=24.04.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
@@ -76,9 +76,11 @@ build() {
 
 check() {
   cd "$pkgname"
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
 
   # Skip failing Gtk test
-  pytest -k 'not test_gtk' || :
+  test-env/bin/python -I -m pytest -k 'not test_gtk'
 }
 
 package() {
