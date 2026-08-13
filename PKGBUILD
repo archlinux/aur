@@ -2,7 +2,7 @@
 # Contributor: Jason Stryker <public at jasonstryker dot com>
 pkgname=protontricks-git
 pkgver=1.14.1.r13.g4c1c20a
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple wrapper that does winetricks things for Proton enabled games."
 arch=('any')
 url="https://github.com/Matoking/protontricks"
@@ -53,7 +53,7 @@ check() {
   cd "${pkgname%-git}"
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -P -m pytest
+  test-env/bin/python -I -m pytest
 
   desktop-file-validate "src/${pkgname%-git}/data/share/applications"/*.desktop
   appstreamcli validate --no-net "data/com.github.Matoking.${pkgname%-git}.metainfo.xml"
