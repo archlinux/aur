@@ -1,7 +1,7 @@
 pkgbase = srt-xtransmit
 	pkgdesc = A testing utility with support for SRT and UDP network protocols
-	pkgver = 0.2.0
-	pkgrel = 4
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/maxsharabayko/srt-xtransmit
 	arch = x86_64
 	license = MPL-2.0
@@ -18,17 +18,17 @@ pkgbase = srt-xtransmit
 	optdepends = python-bokeh: visualization scripts
 	optdepends = python-pandas: data analysis scripts
 	options = !lto
-	source = srt-xtransmit-0.2.0.tar.gz::https://github.com/maxsharabayko/srt-xtransmit/archive/refs/tags/v0.2.0.tar.gz
-	source = git+https://github.com/CLIUtils/CLI11.git#commit=0d06d21b56eadef9dcb24907ee2866b2b6f0babe
+	source = srt-xtransmit-0.3.0.tar.gz::https://github.com/maxsharabayko/srt-xtransmit/archive/refs/tags/v0.3.0.tar.gz
+	source = git+https://github.com/CLIUtils/CLI11.git#commit=37bb6edc5317e99af72ef48405e65d9ca5218861
 	source = git+https://github.com/Naios/function2.git#commit=3a0746bf5f601dfed05330aefcb6854354fce07d
 	source = git+https://github.com/nlohmann/json.git#commit=9cca280a4d0ccf0c08f47a99aa71d1b0e52f8d03
-	source = git+https://github.com/gabime/spdlog.git#commit=22a169bc319ac06948e7ee0be6b9b0ac81386604
-	source = git+https://github.com/maxsharabayko/srt.git#commit=6ab86d8acb85849859ac9aa020f95b2da44674d8
-	sha256sums = 3888847cd74f57b7535ecced0f8cd4ac53efb0403f9de897a8d6102915e9baec
-	sha256sums = e93509d4280de9378a666ccfd73fe9f1531e57017913d6120459a409e98aed90
+	source = git+https://github.com/gabime/spdlog.git#commit=79524ddd08a4ec981b7fea76afd08ee05f83755d
+	source = git+https://github.com/Haivision/srt.git#commit=c63c311e88aa55e430e3b7d94b89d790994f88c4
+	sha256sums = fbce517861ad9e137fa10d0e402a24f4ee6442e0d2f0f76830568bf46e411de8
+	sha256sums = 212e8298241135976b934f82d78d8687d587b83df7f97afb8cb2c1607eb854e7
 	sha256sums = 45e95da7de858ceb21e6792b3d9d9c37a9f6993bf4a3818cb2fc9a34b249e095
 	sha256sums = 758268d6b3c0fdcba8ec1d6f0ff35a59b2453f6c468ba4c075a42964d065472b
-	sha256sums = 55eeb14d48e119795d2493996f24d2b691c03fe2badcff41306bc5c08761fc19
-	sha256sums = 6fc3e352a93a34ffd84c33efb6b02dfd363d0c3334cb240a0c4ca46355140bd0
+	sha256sums = c62402f7e83d1ca5cab47687c0950d17b420ef2e149390a91f64df5a437ba9be
+	sha256sums = 477889e56ffe685d9009ac22f3721b44d1487cf57e78089ad8cc07da3d39bd89
 
 pkgname = srt-xtransmit
