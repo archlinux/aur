@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=screenCounter
-_pkgver=1.6.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -14,7 +14,6 @@ depends=(
   r-rcpp
   r-s4vectors
   r-summarizedexperiment
-  r-zlibbioc
   zlib
 )
 checkdepends=(
@@ -30,8 +29,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('20a49381e47c9974f07ea9f8e4031584')
-b2sums=('b378fedc3be441e655b4d78fc0ca312a36e10004c36c70c42be3e06bda2471e390910f288ef6681b2e02e051e3da490b62b9555a3866ef0b774b46cea63555c0')
+md5sums=('b0b4c0eb8ce3144339b358acac31f555')
+b2sums=('b2b8786e51d2beb31a0f48bbfbb604bd9638e99bf4ee7b08db0639033e554d03b1b88ded603891952855a13280afc3fe40cb62c190e7dbd8fc13c59fd3f24639')
 
 build() {
   mkdir build
