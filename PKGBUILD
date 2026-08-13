@@ -1,6 +1,7 @@
 pkgname=deepseek-harness-bin
 _npmver=0.1.0-rc.6
-pkgver=0.1.0_rc.6
+pkgver=0.1.0rc.6
+epoch=1
 pkgrel=1
 pkgdesc='DeepSeek Harness CLI and agent harness'
 arch=('x86_64')
