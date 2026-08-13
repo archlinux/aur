@@ -21,6 +21,7 @@ readonly BRIDGE_SHA512='7958ce2d07fb46e5e6b33296e564e2a5c2726acba756fb390144052c
 readonly BRIDGE_HOME="$DATA_HOME/native-endpoint"
 readonly BRIDGE_APP="$BRIDGE_HOME/RoonBridge"
 readonly BRIDGE_DATA="$BRIDGE_HOME/data"
+readonly BRIDGE_SETTINGS="$BRIDGE_DATA/RAATServer/Settings"
 readonly BRIDGE_ARCHIVE="$CACHE_HOME/RoonBridge_linuxx64.tar.bz2"
 readonly BRIDGE_SERVICE="$HOME/.config/systemd/user/roonbridge-native.service"
 readonly UMU_140_RUNNER='/usr/lib/roon-proton/roon-umu-run'
@@ -240,18 +241,13 @@ require_systemd_user() {
 }
 
 require_system_output() {
-  have pw-loopback || die 'System Output requires pipewire-audio; install it and try again'
-  have pw-cli || die 'System Output requires PipeWire command-line tools'
-  have pactl || die 'System Output requires pactl from libpulse'
-  systemctl --user start pipewire.socket pipewire-pulse.socket wireplumber.service \
-    >/dev/null 2>&1 || true
+  have python || die 'System Output requires Python'
+  [[ -r /usr/lib/alsa-lib/libasound_module_pcm_pipewire.so ]] || \
+    die 'System Output requires pipewire-audio; install it and try again'
+  systemctl --user start pipewire.socket wireplumber.service >/dev/null 2>&1 || true
   if ! systemctl --user is-active --quiet pipewire.service && \
       ! systemctl --user is-active --quiet pipewire.socket; then
     die 'System Output requires an active PipeWire user service or socket'
-  fi
-  if ! systemctl --user is-active --quiet pipewire-pulse.service && \
-      ! systemctl --user is-active --quiet pipewire-pulse.socket; then
-    die 'System Output requires an active pipewire-pulse user service or socket'
   fi
   if ! systemctl --user is-active --quiet wireplumber.service && \
       ! systemctl --user is-active --quiet pipewire-session-manager.service; then
@@ -261,16 +257,83 @@ require_system_output() {
     die 'snd-aloop is not loaded; reboot or run: sudo modprobe snd-aloop pcm_substreams=1'
 }
 
-ensure_loopback_capture() {
+configure_pipewire_endpoint() {
+  python - "$BRIDGE_SETTINGS" <<'PY'
+import json
+import os
+from pathlib import Path
+import sys
+
+settings = Path(sys.argv[1])
+target = None
+config = None
+configured = None
+configured_path = None
+
+for path in sorted(settings.glob("device_*.json")):
+    try:
+        candidate = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        continue
+    device = candidate.get("output", {}).get("device")
+    if device == "hw:CARD=Loopback,DEV=0":
+        target = path
+        config = candidate
+        break
+    if (
+        device == "plug:pipewire"
+        and candidate.get("output", {}).get("name") == "System Output (PipeWire)"
+    ):
+        configured_path = path
+        configured = candidate
+
+if target is None:
+    target = configured_path
+    config = configured
+
+if target is None or config is None:
+    raise SystemExit(1)
+
+config["output"] = {
+    "device": "plug:pipewire",
+    "type": "alsa",
+    "name": "System Output (PipeWire)",
+    "dsd_mode": "none",
+}
+config["volume"] = {"type": "software"}
+
+temporary = target.with_name(f".{target.name}.tmp")
+temporary.write_text(
+    json.dumps(config, separators=(",", ":")) + "\n",
+    encoding="utf-8",
+)
+os.chmod(temporary, target.stat().st_mode & 0o7777)
+os.replace(temporary, target)
+PY
+}
+
+ensure_pipewire_endpoint() {
   local attempt
-  pw-cli info roon-loopback-capture >/dev/null 2>&1 && return
-  note 'restarting user audio services once to load the Roon loopback configuration'
-  systemctl --user restart pipewire.service wireplumber.service pipewire-pulse.service
-  for ((attempt = 0; attempt < 20; attempt++)); do
+  for ((attempt = 0; attempt < 40; attempt++)); do
+    if configure_pipewire_endpoint; then return; fi
     sleep 0.25
-    pw-cli info roon-loopback-capture >/dev/null 2>&1 && return
   done
-  die 'PipeWire did not create roon-loopback-capture; inspect the PipeWire user logs'
+  die 'Roon Bridge did not create the first Loopback PCM settings; inspect its RAATServer log'
+}
+
+pipewire_endpoint_configured() {
+  local settings
+  for settings in "$BRIDGE_SETTINGS"/device_*.json; do
+    [[ -f $settings ]] || continue
+    grep -Eq '"device"[[:space:]]*:[[:space:]]*"plug:pipewire"' "$settings" && return
+  done
+  return 1
+}
+
+remove_legacy_system_output() {
+  systemctl --user disable --now roon-system-output.service 2>/dev/null || true
+  rm -f -- "$BRIDGE_SERVICE.d/system-output.conf"
+  systemctl --user daemon-reload
 }
 
 managed_launcher_pids() {
@@ -338,17 +401,19 @@ endpoint_command() {
         system)
           [[ -f $BRIDGE_SERVICE ]] || die "native endpoint is not installed; run 'roon-proton endpoint install'"
           require_system_output
-          ensure_loopback_capture
+          remove_legacy_system_output
           prepare_native_endpoint
-          systemctl --user enable --now roon-system-output.service roonbridge-native.service
+          systemctl --user enable --now roonbridge-native.service
+          ensure_pipewire_endpoint
+          systemctl --user restart roonbridge-native.service
           note 'system-output mode active'
           note 'relaunch Roon so its controller attaches to the native RAAT server'
           note 'in Roon, enable the first Loopback PCM and name it System Output (PipeWire)'
-          note 'leave the second Loopback PCM disabled; PipeWire chooses the physical output'
+          note 'Roon now plays through PipeWire; leave the second Loopback PCM disabled'
           ;;
         direct)
           [[ -f $BRIDGE_SERVICE ]] || die "native endpoint is not installed; run 'roon-proton endpoint install'"
-          systemctl --user disable --now roon-system-output.service 2>/dev/null || true
+          remove_legacy_system_output
           prepare_native_endpoint
           systemctl --user enable --now roonbridge-native.service
           note 'exclusive/direct ALSA mode active; relaunch Roon before selecting the direct endpoint'
@@ -638,8 +703,9 @@ doctor() {
   printf '%-20s %s\n' 'prefix' "$([[ -d $PREFIX ]] && echo present || echo missing)"
   printf '%-20s %s\n' 'Roon executable' "$(find_roon >/dev/null && echo present || echo missing)"
   printf '%-20s %s\n' 'native endpoint' "$(systemctl --user is-active roonbridge-native.service 2>/dev/null || echo inactive)"
-  if systemctl --user is-active --quiet roon-system-output.service 2>/dev/null; then
-    printf '%-20s %s\n' 'endpoint mode' 'System Output (PipeWire) via first Loopback PCM'
+  if systemctl --user is-active --quiet roonbridge-native.service 2>/dev/null && \
+      pipewire_endpoint_configured; then
+    printf '%-20s %s\n' 'endpoint mode' 'System Output via shared PipeWire device'
   elif systemctl --user is-active --quiet roonbridge-native.service 2>/dev/null; then
     printf '%-20s %s\n' 'endpoint mode' 'exclusive/direct ALSA'
   else
