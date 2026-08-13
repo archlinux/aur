@@ -2,7 +2,7 @@
 pkgname=python-async-tkinter-loop
 _name=${pkgname#python-}
 pkgver=0.10.4
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Asynchronous mainloop implementation for tkinter."
 arch=('any')
@@ -42,7 +42,7 @@ check() {
   cd "$_name-$pkgver"
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  PYTHONPATH=. dbus-run-session xvfb-run test-env/bin/python -P -m pytest
+  dbus-run-session xvfb-run test-env/bin/python -I -m pytest
 }
 
 package() {
