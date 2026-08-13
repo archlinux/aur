@@ -71,22 +71,30 @@ def _sphinx_tree():
     exact = '/usr/lib/python%d.%d/site-packages' % sys.version_info[:2]
     if os.path.isdir(os.path.join(exact, 'sphinx')):
         return exact
-    # Bundled python may lag the system one (e.g. after a distro python bump);
-    # that is a matter of when, not if. Fall forward to the *closest* newer tree
-    # -- never an older one (the failure mode above), and never the newest for
-    # its own sake, since every minor version of drift is more chance of sphinx
-    # using syntax or stdlib the bundled interpreter does not have. Compare
-    # numerically: '3.9' > '3.14' lexically, which is the original bug here.
-    newer = []
+    # No matching tree. Bundled and system python drift apart whenever one side
+    # bumps first, in either direction -- a matter of when, not if -- so fall
+    # back to a neighbouring tree instead of failing. Prefer the closest minor
+    # version, tie-breaking forward, and refuse anything more than max_drift
+    # older: a distro tree is at most a bump away, while a distant older tree is
+    # an orphaned pip install, which is how sphinx ends up importing a requests
+    # that does 'import cgi' (dropped from the stdlib in 3.13) and failing the
+    # build. Compare numerically -- '3.9' > '3.14' lexically, the original bug.
+    max_drift = 2
+    cands = []
     for p in glob.glob('/usr/lib/python3.*/site-packages'):
         m = re.fullmatch(r'/usr/lib/python3\.(\d+)/site-packages', p)
-        if m and int(m.group(1)) > sys.version_info[1] and os.path.isdir(os.path.join(p, 'sphinx')):
-            newer.append((int(m.group(1)), p))
-    if not newer:
-        raise SystemExit('python-sphinx not found in %s (nor any newer system python)' % exact)
-    best = min(newer)[1]
-    print('warning: no sphinx for python%d.%d, falling forward to %s' % (sys.version_info[:2] + (best,)),
-          file=sys.stderr)
+        if not m or not os.path.isdir(os.path.join(p, 'sphinx')):
+            continue
+        behind = sys.version_info[1] - int(m.group(1))
+        if behind > max_drift:
+            continue
+        cands.append((abs(behind), behind > 0, p))
+    if not cands:
+        raise SystemExit('python-sphinx not found in %s, nor in a system python within %d '
+                         'minor versions of it' % (exact, max_drift))
+    _, older, best = min(cands)
+    print('warning: no sphinx for python%d.%d, falling %s to %s'
+          % (sys.version_info[:2] + ('back' if older else 'forward', best)), file=sys.stderr)
     return best
 
 sys.path.append(_sphinx_tree())
