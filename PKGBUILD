@@ -1,5 +1,5 @@
 pkgname=topoglyph
-pkgver=0.2.2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Topology-to-glyph text-art rendering engine"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('ffmpeg')
 makedepends=('cargo' 'pkgconf' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Xuepoo/topoglyph/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2af5cc067efd4720b02859bd5da7f231ac65bd1bbe6653a7ab5930c8da22c9a9')
+sha256sums=('70c1b04b627803ec2998ca27fd52443f39dba23b1330964e0a8d250beafbd656')
 
 build() {
   cd "$pkgname-$pkgver"
