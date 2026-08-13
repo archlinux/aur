@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=txcutr
-_pkgver=1.14.0
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,6 +24,7 @@ depends=(
 optdepends=(
   r-biocstyle
   r-bsgenome.scerevisiae.ucsc.saccer3
+  r-genomeinfodbdata
   r-knitr
   r-refmanager
   r-rmarkdown
@@ -32,8 +33,8 @@ optdepends=(
   r-txdb.scerevisiae.ucsc.saccer3.sgdgene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a433d816f869fcfbd38779d9c1ed2c68')
-b2sums=('54afa32d8d84784601672fe41843f50a45b4ef6c5495400f94d484c4f39a7d1e55eed1fb9b79515cc641de5ec8840acef36380f325eb74548984366334fae237')
+md5sums=('229fbf7026073c5a08bf614e8aa3ba82')
+b2sums=('707b14c75db675ac82925043f6ddb985950ae7109065e7f136912768a9d9acc3d7563913ba82646d070d2f8c53b594cfa986fce7ed2d0685488cf53bb4e19bcd')
 
 build() {
   mkdir build
