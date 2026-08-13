@@ -3,7 +3,6 @@
 _pkgname=GTKCssLanguageServer
 pkgname=gtkcsslanguageserver-git
 _pkgver=0.1.0
-_commit=dcbe75012d2d26fbca2729cee014e4860e31fa53
 pkgver=0.1.0.r111.gdcbe750
 pkgrel=1
 pkgdesc="Language server for the GTK CSS flavor"
@@ -25,7 +24,7 @@ makedepends=(
 )
 provides=('gtkcsslanguageserver')
 conflicts=('gtkcsslanguageserver')
-source=("${_pkgname}::git+https://github.com/JCWasmx86/GTKCssLanguageServer.git#commit=${_commit}")
+source=("${_pkgname}::git+https://github.com/JCWasmx86/GTKCssLanguageServer.git")
 sha256sums=('SKIP')
 
 pkgver() {
