@@ -1,0 +1,18 @@
+pkgbase = amc
+	pkgdesc = Retrieve and filter the latest Pacman mirror list. Reimplementation of Reflector on Golang.
+	pkgver = 2026.08.13
+	pkgrel = 1
+	url = https://github.com/dpvpro/amc
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	optdepends = rsync: rate rsync mirrors
+	conflicts = reflector
+	conflicts = reflector-rs
+	backup = etc/xdg/amc/amc.conf
+	source = git+https://github.com/dpvpro/amc
+	sha256sums = SKIP
+
+pkgname = amc
