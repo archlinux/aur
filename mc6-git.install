@@ -1,0 +1,40 @@
+post_install() {
+    echo ":: mc6-git is installed alongside the stock mc and does not conflict with it."
+    echo
+    echo "   Launch: mc6 — file manager; mce6 — editor;"
+    echo "           mcv6 — viewer; mcd6 — file comparison."
+    echo
+    echo "   The user profile is fully isolated (MC_PROFILE_ROOT variable):"
+    echo "     settings: ~/.mc6/.config/mc"
+    echo "     cache:    ~/.mc6/.cache/mc"
+    echo "     data:     ~/.mc6/.local/share/mc"
+    echo
+    echo "   To change the profile root:"
+    echo "     export MC_PROFILE_ROOT=/path/to/profile"
+    echo
+    echo "   System files: /etc/mc6/mc (config), /usr/share/mc6/mc (data),"
+    echo "                 /usr/share/mc6/locale (translations),"
+    echo "                 /usr/lib/mc6/panel-plugins (panel plugins)."
+    echo
+    echo "   The configuration of the stock mc (~/.config/mc, /etc/mc) is untouched."
+    echo
+echo "=== ru_RU.UTF-8 ==="
+    echo ":: mc6-git установлен рядом со штатным mc и не конфликтует с ним."
+    echo
+    echo "   Запуск: mc6 — файловый менеджер; mce6 — редактор;"
+    echo "           mcv6 — просмотр; mcd6 — сравнение файлов."
+    echo
+    echo "   Профиль пользователя полностью изолирован (переменная MC_PROFILE_ROOT):"
+    echo "     настройки: ~/.mc6/.config/mc"
+    echo "     кэш:       ~/.mc6/.cache/mc"
+    echo "     данные:    ~/.mc6/.local/share/mc"
+    echo
+    echo "   Чтобы сменить корень профиля:"
+    echo "     export MC_PROFILE_ROOT=/путь/к/профилю"
+    echo
+    echo "   Системные файлы: /etc/mc6/mc (конфиги), /usr/share/mc6/mc (данные),"
+    echo "                    /usr/share/mc6/locale (локали),"
+    echo "                    /usr/lib/mc6/panel-plugins (панельные плагины)."
+    echo
+    echo "   Конфигурация штатного mc (~/.config/mc, /etc/mc) не затрагивается."
+}
