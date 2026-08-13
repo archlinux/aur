@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MethReg
-_pkgver=1.18.0
+_pkgver=1.21.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -60,8 +60,8 @@ optdepends=(
   r-viper
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('83ea175de92d2fdd55287c94ce07b8a4')
-b2sums=('5907f154c1e87e0ee9973cdb50e95604d78f3e12c79c122759ea953dbed7b4df60ebafe5b034ea349445a488d56ceda50dc2131c41bce2515d3c535e6a43e7e7')
+md5sums=('9f8055c0f9a9829b32cb9b24dab7d815')
+b2sums=('392f84a2089fcc10b51a1dea8d8a20b34b6cec78025c5de9a77c355339dce02731052e1ee0197641069b6f2d13ecab6d688b4618525862397396674d946ddeae')
 
 build() {
   mkdir build
