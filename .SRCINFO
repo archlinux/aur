@@ -1,0 +1,9 @@
+pkgbase = chat-control
+	pkgdesc = A totally real package that says lol
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://example.com/chat-control
+	arch = any
+	license = MIT
+
+pkgname = chat-control
