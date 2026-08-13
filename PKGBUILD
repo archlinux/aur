@@ -2,7 +2,7 @@
 
 _pkgauthor=Vladimir-csp
 pkgname=app2unit
-pkgver=1.4.2
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Utility to launch commands as systemd user units"
 
@@ -16,7 +16,7 @@ makedepends=('make' 'scdoc')
 depends=('sh' 'systemd' 'libnotify')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('0b75858ac71ca9f7b9618d2e87d12dd62221d3c3f401c4b7cb533aad3f1ddeff')
+sha256sums=('03c1206097a1596c0e49dc48b82d0b602cc9f38cc498542fe27ef613a050d6fc')
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}" || exit
