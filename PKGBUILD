@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biotmle
-_pkgver=1.32.1
+_pkgver=1.36.1
 pkgname=r-${_pkgname,,}
-pkgver=1.32.1
+pkgver=1.36.1
 pkgrel=1
 pkgdesc='Targeted Learning with Moderated Statistics for Biomarker Discovery'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('babaa246d0cc342516dacad0c0f64ba43c5a8ca1aca3b4bdc8c62d00050b2c72')
+sha256sums=('40ac7551a457900ae45578f79d352e568de1d63cfb8d588747807e9766f60f72')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
