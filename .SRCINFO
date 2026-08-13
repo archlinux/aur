@@ -1,6 +1,6 @@
 pkgbase = r-epivizrchart
 	pkgdesc = R interface to epiviz web components
-	pkgver = 1.30.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/epivizrChart
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-epivizrchart
 	optdepends = r-shiny
 	optdepends = r-summarizedexperiment
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/epivizrChart_1.30.0.tar.gz
-	sha256sums = c7f337cb787c2b9f04a42efd4e24f32cae245b4589ff59936fb596fffb3a4d44
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/epivizrChart_1.34.0.tar.gz
+	sha256sums = 7b89ebb248f4438bb85d1b4c0f1185ce815d01596afa9c2e671e0782de6fffb0
 
 pkgname = r-epivizrchart
