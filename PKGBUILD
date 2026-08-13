@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=regutools
-_pkgver=1.20.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='regutools: an R package for data extraction from RegulonDB'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c789d165fe5b8190092fccc2bd13df0961ac8e2c9a5314a6ef422386ac0b046b')
+sha256sums=('e65597d557b44e16fa78a17c3276e662a38d68095c8c99a26fcec15b4f5c5fc9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
