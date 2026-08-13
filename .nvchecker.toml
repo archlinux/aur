@@ -1,0 +1,5 @@
+[pget-bin]
+source = "github"
+github = "Code-Hex/pget"
+use_latest_release = true
+prefix = "v"
