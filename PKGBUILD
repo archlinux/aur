@@ -1,7 +1,5 @@
 # Maintainer: Joseph Vigil <joeyvigil109329@gmail.com>
 
-# NOTE: update `_repo` below once the upstream repository exists, then run
-#   makepkg --printsrcinfo > .SRCINFO
 _repo=https://github.com/joeyvigil/cfish
 
 pkgname=cfish-git
