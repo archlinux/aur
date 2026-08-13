@@ -10,6 +10,21 @@
 
 ### Dependencies:
 
+## [v16.0.0](https://github.com/fastly/cli/releases/tag/v16.0.0) (2026-08-13)
+
+### Bug Fixes:
+
+- fix(compute): Add bounds checking around starter kit selection to avoid a panic and provide a more useful error message ([#1879](https://github.com/fastly/cli/pull/1879))
+
+### Enhancements:
+
+- feat(compute/init): Offer all available starter kits for each language. ([#1846](https://github.com/fastly/cli/pull/1846))
+
+### Dependencies:
+
+- build(deps): `github.com/klauspost/compress` from 1.19.1 to 1.19.2 ([#1881](https://github.com/fastly/cli/pull/1881))
+- build(deps): `github.com/pierrec/lz4/v4` from 4.1.27 to 4.1.28 ([#1881](https://github.com/fastly/cli/pull/1881))
+
 ## [v15.6.0](https://github.com/fastly/cli/releases/tag/v15.6.0) (2026-08-07)
 
 ### Bug Fixes:
