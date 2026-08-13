@@ -5,8 +5,8 @@
 pkgname=sunloginclient
 _pkgname=awesun
 _debname=awesun
-pkgver=16.5.0.30560
-pkgrel=10
+pkgver=16.6.0.32198
+pkgrel=1
 pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64")
 url="https://sunlogin.oray.com"
@@ -22,12 +22,12 @@ provides=('sunlogin'
           'awesun')
 source=("runsunloginclient.service"
         'LICENSE::https://service.oray.com/question/1820.html')
-source_x86_64=("https://down.oray.com/sl/linux/${_debname}-${pkgver}-x86_64.deb")
+source_x86_64=("https://dw.oray.com/sl/linux/${_debname}_${pkgver}_amd64.deb")
 install="${pkgname}.install"
 options=(!strip emptydirs)
 sha256sums=('31a15b3da81917f13eab0e34a2ea7fb50b33af20e6cebf3779f188571d459501'
             'SKIP')
-sha256sums_x86_64=('eda3fffe6d5324afbc4f939f0cb85c08b7851efad3c01878621474ec7503d10f')
+sha256sums_x86_64=('76d2d534413a58a8bbf5c577b5e6178e3eaf8a685304c027af02fa4e922d5639')
 
 _opt_path="/opt/${_pkgname}"
 _orig_path="/usr/local/${_pkgname}"
@@ -35,6 +35,15 @@ _orig_path="/usr/local/${_pkgname}"
 build() {
   mkdir -p build
   tar -xf data.tar.xz -C build
+
+  # awesun's webview plugin dlopen()s both the libwebkit2gtk-4.0 and 4.1
+  # sonames. When webkit2gtk (the 4.0 ABI) is installed alongside
+  # webkit2gtk-4.1, the 4.0 soname may be resolved first and the
+  # login/register page renders blank. Redirect the 4.0 sonames to a
+  # non-existent "0.0" version so the loader falls back to the 4.1 ABI we
+  # depend on. Equal-length substitution keeps the ELF string table intact.
+  sed -i 's/libwebkit2gtk-4\.0\.so/libwebkit2gtk-0.0.so/g' \
+    "build/usr/local/${_pkgname}/lib/libwebview_linux_plugin.so"
 }
 
 package() {

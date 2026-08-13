@@ -1,7 +1,7 @@
 pkgbase = sunloginclient
 	pkgdesc = Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)
-	pkgver = 16.5.0.30560
-	pkgrel = 10
+	pkgver = 16.6.0.32198
+	pkgrel = 1
 	url = https://sunlogin.oray.com
 	install = sunloginclient.install
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = sunloginclient
 	source = LICENSE::https://service.oray.com/question/1820.html
 	sha256sums = 31a15b3da81917f13eab0e34a2ea7fb50b33af20e6cebf3779f188571d459501
 	sha256sums = SKIP
-	source_x86_64 = https://down.oray.com/sl/linux/awesun-16.5.0.30560-x86_64.deb
-	sha256sums_x86_64 = eda3fffe6d5324afbc4f939f0cb85c08b7851efad3c01878621474ec7503d10f
+	source_x86_64 = https://dw.oray.com/sl/linux/awesun_16.6.0.32198_amd64.deb
+	sha256sums_x86_64 = 76d2d534413a58a8bbf5c577b5e6178e3eaf8a685304c027af02fa4e922d5639
 
 pkgname = sunloginclient
