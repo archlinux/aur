@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-bin
-pkgver=2.1.5
+pkgver=2.3.15
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')
@@ -13,9 +13,8 @@ depends=(
     'librsvg'
     'sqlite'
     'zstd'
-)
-optdepends=(
-    'speech-dispatcher: Native TTS support (experimental)'
+    'speech-dispatcher'
+    'espeak-ng'
 )
 provides=(
     'shiorii'
@@ -36,7 +35,7 @@ conflicts=(
     'shiori-ebook-bin'
 )
 source=("Shiori_${pkgver}_linux_amd64.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v${pkgver}/Shiori_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('167064bf6d377211d5692143b10f613d6ff57c92df4343048391b094dcaf1834')
+sha256sums=('50ffed7bd4770cef7abc0f739554b8ccaba5ffccaf6084d84a23211a70b0834c')
 
 package() {
     bsdtar -xpf "${srcdir}/Shiori_${pkgver}_linux_amd64.tar.gz" -C "${pkgdir}"
