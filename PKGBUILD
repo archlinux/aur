@@ -1,8 +1,8 @@
-# Maintainer: Lumina <admin@archlinux.local>
+# Maintainer: brs.btls <lumina@archlinux.local>
 pkgname=dscb
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Enterprise-grade Discord Scripting Language (DSC) compiler and runtime"
+pkgdesc="A simple and fast custom Discord scripting language and runtime"
 arch=('any')
 url="https://aur.archlinux.org/packages/dscb"
 license=('MIT')
@@ -11,8 +11,8 @@ conflicts=('dscbot')
 provides=('dscbot')
 replaces=('dscbot')
 source=('dscb' 'dscb.service')
-sha256sums=('4dcc75045e807714a348ff405b7b642680c22c4438727b4203e05505ac851b5c'
-            '4a37177a7618f802828769f3ff70ae4e78b58e3e32a3795e0605d1d3492a4ace')
+sha256sums=('b34c28142e8e3f3cf83779b88309bb92d53aedf30455b1345393d1d1ca628c29'
+            '3e68dcebf2cdcd84f53a3028a8c552c2a8b375524da97f9757bb67ebe0bd0fbc')
 
 package() {
     install -Dm755 "${srcdir}/dscb" "${pkgdir}/usr/bin/dscb"

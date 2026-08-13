@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ==============================================================================
-# DISCORD SCRIPTING LANGUAGE (DSC) - FULL ENTERPRISE COMPILER & RUNTIME ENGINE
+# DISCORD SCRIPTING LANGUAGE (DSC) - COMPILER & RUNTIME ENGINE
 # ==============================================================================
 
 import sys
@@ -99,6 +99,9 @@ class Token:
         self.value = value
         self.line = line
         self.column = column
+
+    def __repr__(self):
+        return f"Token({self.type}, {repr(self.value)}, L{self.line}:C{self.column})"
 
 class Lexer:
     def __init__(self, source_code):
@@ -577,7 +580,7 @@ class DSCDiscordBot(commands.Bot):
         self.program_ast, self.interpreter = program_ast, Interpreter(self)
 
     async def setup_hook(self):
-        print("⚙️ Initializing Industrial DSC Runtime...")
+        print("⚙️ Initializing DSC Runtime...")
         await self.interpreter.register_ast(self.program_ast)
         print("✅ AST registration complete!")
 
@@ -607,7 +610,7 @@ class DSCDiscordBot(commands.Bot):
         traceback.print_exception(type(error), error, error.__traceback__)
 
 def main():
-    cli_parser = argparse.ArgumentParser(description="DSC: The Industrial-Grade Discord Programming Language Engine")
+    cli_parser = argparse.ArgumentParser(description="DSC: A Discord bot scripting language and runtime")
     cli_parser.add_argument("file", help="Path to .dsc script file (e.g., bot.dsc)")
     cli_parser.add_argument("-t", "--token", help="Discord Bot Token")
     cli_parser.add_argument("-p", "--prefix", default="$", help="Command prefix (default: $)")
