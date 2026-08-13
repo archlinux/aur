@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vlsm-interfacing-bin
 _pkgname='VLSM INTERFACING'
-pkgver=4.1.14
-_electronversion=41
+pkgver=4.1.15
+_electronversion=43
 pkgrel=1
 pkgdesc="Viral Load Sample Management - Machine Interfacing.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/deforay/vlsm-interfacing/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e66c77ffe3df4e74c074260efbdad088e7796e03e85b17cea1f2ecd54ba4b17d'
+sha256sums=('f2021681a8d21efbbe251cdb4f2359ecaa74420cbf6d2bb3cacb27227d1e0b99'
             '00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
