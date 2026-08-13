@@ -1,0 +1,19 @@
+pkgbase = poshanka-git
+	pkgdesc = Wayland-native popup renderer that subscribes to notred (or similar FDN daemon)
+	pkgver = r65.g5701400
+	pkgrel = 1
+	url = https://github.com/Gigas002/poshanka
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	depends = wayland
+	depends = cairo
+	depends = pango
+	optdepends = notred-git: default notification provider (notredctl CLI) that poshanka subscribes to
+	provides = poshanka
+	conflicts = poshanka
+	source = poshanka::git+https://github.com/Gigas002/poshanka.git
+	b2sums = SKIP
+
+pkgname = poshanka-git
