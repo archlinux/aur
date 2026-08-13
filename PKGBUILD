@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="To manage a AWS via TUI"
 
-pkgver=0.1.0
+pkgver=0.1.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('f34a46eae047f6609efe0f7f8b5f12d824044e41b61277fbee666bb3588b9911')
-sha256sums_aarch64=('20975ee6ec1374d6db0b177be0d73ecb331675972b4d5911136f31040aa2e0dc')
+sha256sums_x86_64=('a6ced048d40f8d0d98e97858a5e15a62c7287b900759f602b688e440504f8ae3')
+sha256sums_aarch64=('930aa00d9ba50b401376d7e6576d8832645d59dac7a873f499d1e45c1156f81b')
 
 
 package() {
