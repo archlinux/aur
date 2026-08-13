@@ -3,7 +3,7 @@
 _pkgauthor=sachaos
 _pkgname=todoist
 pkgname=${_pkgname}-bin
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='Todoist CLI Client, written in Golang.'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,10 +19,10 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_x86_64.tar
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_i386.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_Linux_arm64.tar.gz")
 sha256sums=('d570f605a0fcedf7c47c390807dc37a0ffbbce5e291c8ce4c684044ede428c6f'
-            '1511ff4a22b72ba6225bc9d0b13ec80fd69cf37f6b10bf5f4052eb6b7ba6291f')
-sha256sums_x86_64=('5a7e316c4106ee25015db514fa6676307755fc7c6871d3d7725acba1130555c2')
-sha256sums_i686=('15afc881ea229eb70cdb01d42cf9307440486aba2fb5e35689fcb1af38c73d21')
-sha256sums_aarch64=('dd1c0dca792fb75a65e2f640c45e1ee305b249e9b9aeda997e83fdd5c5fa9995')
+            'f759b9c6f2d438ad69f8fab08ad89cd7f700b60677ea0d450736ce9a959cbc59')
+sha256sums_x86_64=('a0bdb631ffa2a04769929f4dbc6e2db563093e18e985eb123826e356945c3a94')
+sha256sums_i686=('993c33139a2fab2372a0fc3959a2bccd8ad33967982ff57a7c14c99a16697d36')
+sha256sums_aarch64=('870335183a818fc4fbd008f4469bdbabc6c34ea74dbee599756d520d7e206ec6')
 
 
 package() {
