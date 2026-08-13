@@ -1,6 +1,6 @@
 pkgbase = letos-bin
 	pkgdesc = A free, open source, multi-platform SQLite database manager.(Prebuilt version)
-	pkgver = 4.0.1
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://letos.org/
 	arch = aarch64
@@ -10,14 +10,14 @@ pkgbase = letos-bin
 	depends = gtk3
 	depends = xcb-util-cursor
 	depends = tcl
-	provides = letos=4.0.1
+	provides = letos=4.0.3
 	conflicts = letos
 	options = !strip
 	source = letos.sh
 	sha256sums = 20628dc9251146409d2631a161d7e7e24d40e5c2555a5d170914c44420b40aea
-	source_aarch64 = letos-4.0.1-aarch64.AppImage::https://github.com/pawelsalawa/letos/releases/download/4.0.1/Letos-4.0.1-aarch64.AppImage
-	sha256sums_aarch64 = 990c5c5e64f4ba9123701bb1542101314a8ec3d8a64a6c201ca92f3c3d88e7bc
-	source_x86_64 = letos-4.0.1-x86_64.AppImage::https://github.com/pawelsalawa/letos/releases/download/4.0.1/Letos-4.0.1-x86_64.AppImage
-	sha256sums_x86_64 = 4af004fc95e0c5edd5affc6bba17047efd62e41580fe0037bbc64e7e5a2a3834
+	source_aarch64 = letos-4.0.3-aarch64.AppImage::https://github.com/pawelsalawa/letos/releases/download/4.0.3/Letos-4.0.3-aarch64.AppImage
+	sha256sums_aarch64 = daf3401c88c92c1d7103ab7bbc59089cb704c5a0d1c801a417431b90c71d14e9
+	source_x86_64 = letos-4.0.3-x86_64.AppImage::https://github.com/pawelsalawa/letos/releases/download/4.0.3/Letos-4.0.3-x86_64.AppImage
+	sha256sums_x86_64 = 498332084a1bd2bf711bc4e98a9bb7415c31afda969d2bf7240f92991e6abf26
 
 pkgname = letos-bin
