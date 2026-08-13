@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=termua-bin
 _pkgname=Termua
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="An open-source cross-platform terminal application built with GPUI and powered by the Alacritty / WezTerm terminal backends.(Prebuilt version)"
 arch=(
@@ -19,8 +19,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux.x86_64.rpm")
-sha256sums_aarch64=('6056b5956576c3511b9293bde2d09f82468d04559d816e38293c6449f8e10391')
-sha256sums_x86_64=('db1ee708d55a2492903ed7047687bb2b66240af25bb482c7b40ed73ed554e8e1')
+sha256sums_aarch64=('83682dc071a10c8f146b6474de1d167cdedaf0e904ed159fe831554cb3df5afc')
+sha256sums_x86_64=('d83719f88460505ead4feb553d2ddff039d6c03ccb3c454589dce0a8b234f682')
 package() {
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}"* -t "${pkgdir}/usr/bin"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
