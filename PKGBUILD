@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=metabCombiner
-_pkgver=1.20.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Method for Combining LC-MS Metabolomics Feature Measurements'
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b5d2f92c7c72eb406dc8e1106dc7fe7de19eed89ccc2f0ac3fbd5f79f10ee7ec')
+sha256sums=('c3b7a51d4b25fd0494db8389709539818602452c31bee66057df8b6b84e484af')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
