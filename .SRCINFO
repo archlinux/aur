@@ -1,6 +1,6 @@
 pkgbase = r-rnaagecalc
 	pkgdesc = A multi-tissue transcriptional age calculator
-	pkgver = 1.20.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RNAAgeCalc
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-rnaagecalc
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAAgeCalc_1.20.0.tar.gz
-	sha256sums = f7a8547a4bfaa21438bedda7e4e34b6933785bc2515cfd99ee097cc192291e4b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RNAAgeCalc_1.24.0.tar.gz
+	sha256sums = c63da382e867b51b8197c65f4f32208320a270d24fec8440727f7f67ec9fba02
 
 pkgname = r-rnaagecalc
