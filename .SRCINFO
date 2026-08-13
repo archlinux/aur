@@ -1,0 +1,15 @@
+pkgbase = octopulse
+	pkgdesc = KDE Plasma 6 widget to follow GitHub Actions across all your repos and orgs (live runs, re-run/cancel, dispatch, inline logs)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Conqrex/Conqrex.OctoPulse
+	arch = any
+	license = MIT
+	depends = plasma-workspace
+	depends = curl
+	optdepends = libsecret: keep the GitHub token in the keyring (secret-tool)
+	optdepends = libnotify: failure/recovery desktop notifications
+	source = octopulse-0.1.0.tar.gz::https://github.com/Conqrex/Conqrex.OctoPulse/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 938133f16b5f7cce18bf9525ff95d97752c1a46d3ca17f345f416eb9b7b6ed45
+
+pkgname = octopulse
