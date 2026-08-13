@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=CAGEfightR
-_pkgver=1.28.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Analysis of Cap Analysis of Gene Expression (CAGE) data using Bioconductor'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm9.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6949547d576934d15203083720cec7beefef3f31dc9cd4fc0f062e0ad0c9b6e5')
+sha256sums=('4d4347e9bf85f301b6b9c622faa38e87f1068dfae5b7717b449bf910c87dcc03')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
