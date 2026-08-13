@@ -1,6 +1,6 @@
 # Maintainer: Dr. Daniel Dumke <reinschrift@dumke.me>
 pkgname=reinschrift
-pkgver=0.25.0
+pkgver=0.25.8
 pkgrel=1
 pkgdesc="Manage your todos in plain Markdown — native GNOME app and CLI"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ options=('!lto')
 depends=('gtk4' 'libadwaita' 'alsa-lib' 'openssl' 'gcc-libs' 'glibc' 'hicolor-icon-theme')
 makedepends=('cargo' 'cmake' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('996114105e6986390eac741c8f0dc1bfdc321e0cba6266a0a4a77a8b98d6c3f0')
+sha256sums=('bc161c749cdac5189180f0d1e07b48fff7caf5a7a48887829ea0b5dd9c3e857c')
 
 prepare() {
   cd "ReinschriftTodo-$pkgver"
