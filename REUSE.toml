@@ -23,3 +23,10 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    ".varve.toml",
+]
+SPDX-FileCopyrightText = "foopkgs contributors"
+SPDX-License-Identifier = "0BSD"
