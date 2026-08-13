@@ -1,6 +1,6 @@
 pkgbase = lvce-bin
 	pkgdesc = VS Code inspired text editor that mostly runs in a webworker.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.100.17
+	pkgver = 0.100.22
 	pkgrel = 1
 	url = https://lvce-editor.github.io/lvce-editor
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = lvce-bin
 	license = MIT
 	depends = electron43
 	depends = nodejs
-	provides = lvce=0.100.17
+	provides = lvce=0.100.22
 	conflicts = lvce
 	options = !strip
 	options = !emptydirs
@@ -17,11 +17,11 @@ pkgbase = lvce-bin
 	source = lvce.sh
 	sha256sums = ada1a0303abece27be80372538645da5c5b4e9d60fcacc87b97da1c26b8931bc
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = lvce-0.100.17-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.100.17/lvce-v0.100.17_arm64.deb
-	sha256sums_aarch64 = dbd028d1bddea897f8db4edf1fcaf033f5b64e0ae7c9f517230fdbd6446b4488
-	source_armv7h = lvce-0.100.17-armv7h.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.100.17/lvce-v0.100.17_armhf.deb
-	sha256sums_armv7h = 674b7028ed72c327fffcf76e68716cb043347de375d0110b6c45c40ffca45119
-	source_x86_64 = lvce-0.100.17-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.100.17/lvce-v0.100.17_amd64.deb
-	sha256sums_x86_64 = a1d6546afeb4b0e4bda9549228ac2c885030d4d6836e5b639d69f7f681861380
+	source_aarch64 = lvce-0.100.22-aarch64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.100.22/lvce-v0.100.22_arm64.deb
+	sha256sums_aarch64 = 7ad80fcfc2afb09978ace660d7a65ae7b5e9418b83fe26ece72c6eeba3a4bfd3
+	source_armv7h = lvce-0.100.22-armv7h.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.100.22/lvce-v0.100.22_armhf.deb
+	sha256sums_armv7h = ce86bd9d8e3bbf611c8b468c6a59081e80410ef580ad5fa89c830dfc69d30be9
+	source_x86_64 = lvce-0.100.22-x86_64.deb::https://github.com/lvce-editor/lvce-editor/releases/download/v0.100.22/lvce-v0.100.22_amd64.deb
+	sha256sums_x86_64 = bfc67ae95b62410e76aacb111ecd2797e7e9b4f576efa3b0aae7a17b9dfd3e86
 
 pkgname = lvce-bin
