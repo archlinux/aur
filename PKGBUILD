@@ -1,7 +1,7 @@
 # Maintainer: winlogon <walker84837 at gmail.com>
 pkgname=openjai-git
 pkgver=0.0.0.r264ba53
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source Jai-style systems programming language and compiler."
 arch=('x86_64')
 url="https://github.com/withlang-dev/open-jai"
@@ -44,6 +44,11 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/open-jai"
+
+	# Reset any previous `git apply` so rebuilds (makepkg without --clean)
+	# don't fail on the already-patched repo.
+	git reset --hard HEAD
+	git clean -fd
 
 	# Portability patches
 	git apply "../0001-build-ignore-generated-libffi-include-shim.patch"

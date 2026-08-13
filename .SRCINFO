@@ -1,7 +1,7 @@
 pkgbase = openjai-git
 	pkgdesc = Open-source Jai-style systems programming language and compiler.
 	pkgver = 0.0.0.r264ba53
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/withlang-dev/open-jai
 	arch = x86_64
 	license = MIT
