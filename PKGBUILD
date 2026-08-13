@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=sitePath
-_pkgver=1.24.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='Phylogenetic pathway–dependent recognition of fixed substitutions and parallel mutations'
 arch=('x86_64')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4dd831be6c84aae0956efbd5c21f1661315802b1102cf419c9fcc518eb5252a3')
+sha256sums=('0f13ca3ffe473191df3fc851311fe70b9ed393a8d0e99e91e909ff3a810cc0dd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

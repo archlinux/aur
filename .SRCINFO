@@ -1,6 +1,6 @@
 pkgbase = r-sitepath
 	pkgdesc = Phylogenetic pathway–dependent recognition of fixed substitutions and parallel mutations
-	pkgver = 1.24.0
+	pkgver = 1.28.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/sitePath
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = r-sitepath
 	optdepends = r-magick
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/sitePath_1.24.0.tar.gz
-	sha256sums = 4dd831be6c84aae0956efbd5c21f1661315802b1102cf419c9fcc518eb5252a3
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/sitePath_1.28.0.tar.gz
+	sha256sums = 0f13ca3ffe473191df3fc851311fe70b9ed393a8d0e99e91e909ff3a810cc0dd
 
 pkgname = r-sitepath
