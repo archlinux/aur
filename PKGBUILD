@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aionui
 _pkgname=AionUi
-pkgver=2.1.54
+pkgver=2.1.55
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -31,7 +31,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('554d49e8a1b8e8a3251fad78bfb06f576be4861fedfa50a5c3b355829db74a77'
+sha256sums=('bf0f389938f3f1f1d0148d1df70302b79bdb6e86b502893a348954a48101a02d'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
