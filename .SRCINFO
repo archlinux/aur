@@ -1,6 +1,6 @@
 pkgbase = r-msa
 	pkgdesc = Multiple Sequence Alignment
-	pkgver = 1.44.0
+	pkgver = 1.44.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/msa
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-msa
 	optdepends = r-knitr
 	optdepends = r-phangorn
 	optdepends = r-seqinr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/msa_1.44.0.tar.gz
-	sha256sums = 709622993873395baafc8a43061c3b29608c1dad77e394eef1c34d3deea03370
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/msa_1.44.1.tar.gz
+	sha256sums = 922db8b2355196d561a7ceb5e09737460ea9d63ba311d60549253d577874e0e0
 
 pkgname = r-msa
