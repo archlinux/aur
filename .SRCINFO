@@ -1,0 +1,19 @@
+pkgbase = imagecompare
+	pkgdesc = Image Compare is a desktop image comparison and visual diff tool.
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/gimletlove/imagecompare
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = hicolor-icon-theme
+	optdepends = qt6-svg: SVG image support
+	optdepends = qt6-imageformats: WebP and TIFF image support
+	optdepends = kimageformats: AVIF, JPEG XL, HEIC/HEIF, and more
+	source = imagecompare-1.3.0-source.tar.gz::https://github.com/gimletlove/imagecompare/releases/download/v1.3.0/imagecompare-1.3.0-source.tar.gz
+	sha256sums = d5576488ae5700b59622b65ddee8b83eaad5a086a5c4afb8f54785454f66f79a
+
+pkgname = imagecompare
