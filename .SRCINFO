@@ -1,6 +1,6 @@
 pkgbase = sshpilot
 	pkgdesc = SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support.
-	pkgver = 5.7.2
+	pkgver = 5.8.0
 	pkgrel = 1
 	url = https://github.com/mfat/sshpilot
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = sshpilot
 	makedepends = desktop-file-utils
 	depends = python
 	depends = libadwaita
-	source = sshpilot-5.7.2.tar.gz::https://github.com/mfat/sshpilot/archive/refs/tags/v5.7.2.tar.gz
-	sha256sums = 0b5a6585f6e2ff9fef77f2edfb0410cebf9d0ac45b30b8d062e74a7fb0ca3977
+	source = sshpilot-5.8.0.tar.gz::https://github.com/mfat/sshpilot/archive/refs/tags/v5.8.0.tar.gz
+	sha256sums = c93e18e530c26221700474676a10590ae53632d7e6c7acd5d001c37cbbe07071
 
 pkgname = sshpilot
 	depends = python
