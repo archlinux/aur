@@ -1,7 +1,7 @@
 # Maintainer:  Daniel Graña <dangra at gmail dot com>
 
 pkgname=mkinitcpio-tailscale
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="mkinitcpio hook to launch Tailscale on systemd or busybox based initramfs"
 arch=("any")
