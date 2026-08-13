@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=EpiTxDb
-_pkgver=1.20.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -16,7 +16,6 @@ depends=(
   r-biostrings
   r-curl
   r-dbi
-  r-genomeinfodb
   r-genomicfeatures
   r-genomicranges
   r-httr
@@ -25,6 +24,7 @@ depends=(
   r-rex
   r-rsqlite
   r-s4vectors
+  r-seqinfo
   r-trnadbimport
   r-txdbmaker
   r-xml2
@@ -44,8 +44,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9827c37736f6802342731d6489de00b5')
-b2sums=('a9d9bf360d30bc20f983fa0ec46f0b01cfdc177453fc4e17e1074b3f16a4a5ec3e5fa65307b5d7dab556a41e1667dca018380d3376cad16545c453ca32fda7ca')
+md5sums=('087ad9d1ee14b1ec69c4dc45ede0ebae')
+b2sums=('e2f88b94bc1f675dc5cdbddc9a4e801dd8baf4948aa5a14baed43fe65271f8627bbe190ab3259338055e78a4786f7d45603211e542617968c6e3862970f7a4bc')
 
 build() {
   mkdir build
