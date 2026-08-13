@@ -1,6 +1,6 @@
 pkgbase = libadwaita-without-adwaita
 	pkgdesc = libadwaita; Includes a patch to not overwrite the system theme. Because the maintainer likely abandoned the pkg
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	epoch = 1
 	url = https://gnome.pages.gitlab.gnome.org/libadwaita
@@ -28,12 +28,12 @@ pkgbase = libadwaita-without-adwaita
 	depends = graphene
 	depends = gtk4
 	depends = pango
-	provides = libadwaita=1.9.2
+	provides = libadwaita=1.9.3
 	provides = libadwaita-1.so=0-64
 	conflicts = libadwaita
-	source = https://gitlab.gnome.org/GNOME/libadwaita/-/archive/1.9.2/libadwaita-1.9.2.tar.gz
+	source = https://gitlab.gnome.org/GNOME/libadwaita/-/archive/1.9.3/libadwaita-1.9.3.tar.gz
 	source = theming_patch.diff
-	sha256sums = 311fa22d60f73609e5662f27e0beb5f1188c24661acfe02b6faf0871cc75bec8
+	sha256sums = 3e4cf25e389a81ad2b73b6f43721b268acd77e393090af06e4dc477c4b39c523
 	sha256sums = SKIP
 
 pkgname = libadwaita-without-adwaita
