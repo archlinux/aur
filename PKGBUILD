@@ -1,7 +1,7 @@
 # Maintainer: Kreuder <mk@singular.de>
 pkgname=stenmark
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Your markdown librarian. A GTK4 Markdown reader, organizer and editor'
 arch=('any')
 url='https://github.com/mkay/stenmark'
@@ -16,8 +16,6 @@ depends=(
   'libadwaita'
   'webkitgtk-6.0'
 )
-conflicts=('marklite')
-replaces=('marklite')
 makedepends=(
   'meson'
   'gettext'
