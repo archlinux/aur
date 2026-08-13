@@ -14,11 +14,11 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-#checkdepends=(
-#  'python-pytest-black'
-#  'python-pytest'
-#  'python-pytest-pylint'  ## Dropped to AUR
-#)
+# checkdepends=(
+#   'python-pytest'
+#   'python-pytest-black'
+#   'python-pytest-pylint'
+# )
 source=("$_name-$pkgver.tar.gz::https://github.com/irgeek/StrEnum/archive/refs/tags/v$pkgver.tar.gz"
         'https://github.com/irgeek/StrEnum/pull/34.patch')
 sha256sums=('ab442e918760a39a3b07e7923c128ff13a0bbebc6a173cda67237acb738d7e49'
@@ -39,10 +39,12 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-#check() {
-#  cd "$_name-$pkgver"
-#  pytest
-#}
+# check() {
+#   cd "$_name-$pkgver"
+#   python -m venv --clear --without-pip --system-site-packages test-env
+#   test-env/bin/python -m installer dist/*.whl
+#   test-env/bin/python -I -m pytest
+# }
 
 package() {
   cd "$_name-$pkgver"
