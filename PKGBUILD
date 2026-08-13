@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=rmgarch
-_pkgver=1.3-9
+_pkgver=1.4-2
 pkgname=r-${_pkgname,,}
-pkgver=1.3.9
+pkgver=1.4.2
 pkgrel=1
 pkgdesc='Multivariate GARCH Models'
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=(
   r-zoo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3bb8d6cff7c292b0823b37699dc371f371d63016aa09fd69319a9c2b8904e169')
+sha256sums=('76ccc53bbb9f461411765531a13132a9fa40489c860bd406f4334bb23a2c660f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
