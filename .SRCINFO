@@ -1,0 +1,17 @@
+pkgbase = mlst
+	pkgdesc = Scan contig files against traditional PubMLST typing schemes
+	pkgver = 2.35.0
+	pkgrel = 1
+	url = https://github.com/tseemann/mlst
+	arch = any
+	license = GPL-2.0-only
+	depends = perl
+	depends = perl-list-moreutils
+	depends = perl-json
+	depends = perl-moo
+	depends = blast+
+	depends = any2fasta
+	source = mlst-2.35.0.tar.gz::https://github.com/tseemann/mlst/archive/v2.35.0.tar.gz
+	sha256sums = 9f1291ed02494b7a862e0d56d8f501f500d7a4a207fe4244962b743df1c3dcc4
+
+pkgname = mlst
