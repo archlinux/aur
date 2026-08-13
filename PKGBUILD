@@ -1,6 +1,6 @@
 # Maintainer: ChTBoner
 pkgname=qusb2snes-git
-pkgver=master
+pkgver=r605.e64baec
 pkgrel=1
 pkgdesc="A Qt based webserver for usb2snes"
 license=("GPL3")
@@ -24,7 +24,7 @@ md5sums=("SKIP"
 _projname="QUsb2snes"
 
 pkgver() {
-    cd "$srcdir/$_reponame"
+    cd "$srcdir/$_projname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
