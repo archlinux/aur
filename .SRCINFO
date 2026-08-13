@@ -7,6 +7,7 @@ pkgbase = courier-imap
 	arch = x86_64
 	arch = armv7h
 	license = GPL3
+	makedepends = procps-ng
 	depends = courier-maildrop
 	depends = gcc-libs
 	depends = gamin

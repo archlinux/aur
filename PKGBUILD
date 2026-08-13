@@ -11,6 +11,7 @@ pkgdesc="IMAP(s)/POP3(s) Server"
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL3')
 url="https://www.courier-mta.org/imap/"
+makedepends=('procps-ng')
 depends=('courier-maildrop' 'gcc-libs' 'gamin' 'gdbm' 'openssl' 'courier-unicode>=2.1' 'courier-authlib>=0.72.7')
 backup=('etc/courier-imap/imapd.cnf' 'etc/courier-imap/pop3d.cnf' \
         'etc/courier-imap/imapd' 'etc/courier-imap/imapd-ssl' \
