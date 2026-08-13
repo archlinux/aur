@@ -1,8 +1,8 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: arsalan rezazadeh  <arsalanrezazadeh4@gmail.com.com>
 pkgname=whitevpn-desktop
 pkgver=1.0.16
 pkgrel=1
-pkgdesc="WhiteDNS desktop client - Managed desktop client for WhiteDNS and StormDNS"
+pkgdesc="WhiteVpn desktop client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/WhiteDNS/WhiteVPN-Desktop"
 license=('custom:WhiteDNS')
