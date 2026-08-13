@@ -1,6 +1,6 @@
 # Maintainer: Jonghyo Lee <na1307@outlook.kr>
 pkgname=xwin-bin
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Allows downloading and repacking the MSVC CRT and Windows SDK for cross compilation'
 arch=(x86_64 aarch64)
@@ -10,8 +10,8 @@ provides=(xwin)
 conflicts=(xwin)
 source_x86_64=("https://github.com/Jake-Shadle/xwin/releases/download/$pkgver/xwin-$pkgver-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("https://github.com/Jake-Shadle/xwin/releases/download/$pkgver/xwin-$pkgver-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=(31e1033f30608ba6b821d17f1461042bd54c23424813c9b4e9ae15b6d32fa4cd)
-sha256sums_aarch64=(41466ca41e16fe7fc1b82a67babc7c3811021bf32de354b90b34d8c4edb153e2)
+sha256sums_x86_64=(d870eb4b2f390878af6da1ccd3cf321d22fcb72720984853b4be732ae597fc88)
+sha256sums_aarch64=(6d56d28537a86f37aa3d041318898f25ee3100c6b6ec332ad873c28faf37be23)
 
 package() {
     cd "$srcdir/xwin-$pkgver-$CARCH-unknown-linux-musl"
