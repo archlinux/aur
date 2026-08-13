@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Name=Axolotl Launcher
+GenericName=Minecraft Launcher
+GenericName[zh_CN]=Minecraft启动器
+Comment=Minecraft Java Edition Launcher
+Comment[zh_CN]=Minecraft Java版启动器
+Exec=axolotl-launcher %U
+Icon=red.ghs.axolotl
+Categories=Game;ArcadeGame;AdventureGame;Utility;
+MimeType=application/x-modrinth-modpack+zip;x-scheme-handler/axolotl;
+StartupWMClass=red.ghs.axolotl
+Terminal=false
+StartupNotify=true
+Keywords=minecraft;game;launcher;mod;modpack;
+Keywords[zh_CN]=我的世界;游戏;启动器;模组;整合包;
