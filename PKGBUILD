@@ -2,7 +2,7 @@
 
 _pkgauthor=leahneukirchen
 pkgname=snooze
-pkgver=0.5.1
+pkgver=0.6
 pkgrel=1
 pkgdesc="Run a command at a particular time"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 makedepends=('git' 'make' 'gcc')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('abb0df288e8fe03ae25453d5f0b723b03a03bcc7afa41b9bec540a7a11a9f93e')
+sha256sums=('3a4a2f3f00d42e30647d9af79c8e417990ced6c3f0565474b1ca717938b1e2ab')
 
 
 build() {
