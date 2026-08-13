@@ -1,6 +1,6 @@
 pkgbase = breeze-enhanced
 	pkgdesc = A fork of KDE Breeze decoration with additional options (gradient, opacity, macOS-like buttons)
-	pkgver = 6.4
+	pkgver = 6.5
 	pkgrel = 1
 	url = https://github.com/tsujan/BreezeEnhanced
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = breeze-enhanced
 	depends = kwin
 	depends = qt5-base
 	depends = extra-cmake-modules
-	source = breeze-enhanced::git+https://github.com/tsujan/BreezeEnhanced.git#tag=V6.4
+	source = breeze-enhanced::git+https://github.com/tsujan/BreezeEnhanced.git#tag=V6.5
 	sha256sums = SKIP
 
 pkgname = breeze-enhanced
