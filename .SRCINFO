@@ -1,6 +1,6 @@
 pkgbase = r-velociraptor
 	pkgdesc = Toolkit for Single-Cell Velocity
-	pkgver = 1.18.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/velociraptor
 	arch = any
@@ -30,8 +30,8 @@ pkgbase = r-velociraptor
 	optdepends = r-scran
 	optdepends = r-scrnaseq
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/velociraptor_1.18.0.tar.gz
-	md5sums = 990fd8378b89ad5f7ea72265adea8887
-	b2sums = 8da696e1d4ccab7515743597c096288d4f7f382491c6b2cf83c1be3c0b74be7cdbb02e934aeb510410a9391de3728ff66e7391f5ec1573517fc7f56a041a5699
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/velociraptor_1.22.0.tar.gz
+	md5sums = 77c9866e149023a7b30f96a6c27b04f1
+	b2sums = 5d51dec03bf878ad026d7cdf8be4d9deb10c53a9f8de43705fdb601a3ec1fceeed6a36e0af247ae4d49f1547862b4b575e5f6e764e728250ca304bd783650882
 
 pkgname = r-velociraptor
