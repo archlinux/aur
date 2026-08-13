@@ -5,7 +5,7 @@
 # Contributor: Sebastian Krämer <basti.kr@gmail.com>
 
 pkgname=python-qutip
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc="Open-source software for simulating the dynamics of open quantum systems"
 arch=(x86_64 aarch64)
@@ -42,7 +42,7 @@ optdepends=(
     'texlive-bin: Optional, Needed if using LaTeX in figures.'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('d776614364039bc414472687bec9fc6e01558496dbb5d32a51d826404d5995186017eb622a452a10fe2b3d20b418cf3dae5a6fc4defdcdba9d22550f1672c8d7')
+b2sums=('47c0ccea4f39a05151e001b859c26ec6f2d5836b3b91d377dd3a0d0ba39310e714dbbea15b7cfa966733818ea867feee28cf9250eb1eff3bb72e4bdcd069e906')
 
 _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
