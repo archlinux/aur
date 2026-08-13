@@ -1,7 +1,7 @@
 
 
 pkgname=uutils-tar-git
-pkgver=0.0.1.r338.1afcb44
+pkgver=0.0.1.r421.11c10da
 pkgver() {
   cd uutils-tar
   printf 0.0.1."r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
@@ -14,8 +14,8 @@ license=('MIT')
 depends=(gcc-libs)
 makedepends=(rust git)
 optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
-conflicts=(tar)
-provides=(tar)
+conflicts=(uutils-tar)
+provides=(uutils-tar)
 source=("uutils-tar::git+${url}.git")
 b2sums=('SKIP')
 
@@ -28,6 +28,6 @@ build(){
 package() {
   unset optdepends
   cd uutils-tar
-  install -Dm755 target/release-fast/tarapp "$pkgdir"/usr/bin/tar
+  install -Dm755 target/release-fast/tarapp "$pkgdir"/usr/bin/uu-tar
   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/uutils-tar
 }
