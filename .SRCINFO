@@ -25,7 +25,7 @@ pkgbase = yocto-uninative-tarball
 	options = !lto
 	options = !strip
 	options = !debug
-	source = glibc::git+https://git.launchpad.net/glibc#commit=16be1518495f1fa05481b0182c4e4c24927c62df
+	source = glibc::git+git://sourceware.org/git/glibc.git#commit=16be1518495f1fa05481b0182c4e4c24927c62df
 	source = 0003-nativesdk-glibc-Look-for-host-system-ld.so.cache-as-.patch
 	source = 0004-nativesdk-glibc-Fix-buffer-overrun-with-a-relocated-.patch
 	source = 0005-nativesdk-glibc-Raise-the-size-of-arrays-containing-.patch

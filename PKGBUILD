@@ -43,10 +43,26 @@ makedepends=('git' 'python' 'bison' 'patchelf' 'linux-api-headers'
 options=('staticlibs' '!lto' '!strip' '!debug')
 
 # sourceware.org is the upstream of record and is what Arch's own PKGBUILD
-# fetches. git.launchpad.net is used here only because sourceware has been
-# unreachable; it is a SHA-identical mirror, and #commit= pins the content
-# cryptographically, so which host serves the bytes cannot change what is built.
-_glibc_url='https://git.launchpad.net/glibc'
+# fetches. #commit= pins the content cryptographically, so which host serves
+# the bytes cannot change what is built - only whether the fetch completes.
+#
+# git:// rather than https://, which is the part that matters. sourceware rate
+# limits the HTTP endpoint: ls-remote succeeds but a clone returns 429, and once
+# tripped the limit covers the gitweb snapshot URLs too. Port 9418 is a separate
+# service with no such limit - the same ls-remote answers in 0.74 s there, and a
+# depth-1 fetch of this commit pulls 47 MB clean.
+#
+# This was git.launchpad.net for a while, on the grounds that sourceware was
+# unreachable. It was almost certainly this 429 misread as unreachability.
+# Launchpad has since become genuinely unroutable from here on both IPv4 and
+# IPv6 (133 s connect timeout), so the workaround now fails harder than what it
+# worked around. CI never noticed either problem, because GitHub's runners reach
+# both hosts fine - the local build was the only thing that ever broke.
+#
+# github.com/bminor/glibc is the usual fallback and is NOT usable: its master
+# stopped at 04e750e7 (2026-01-20) and it carries no release/2.44 branch or
+# glibc-2.44 tag, so it cannot serve this commit at all.
+_glibc_url='git://sourceware.org/git/glibc.git'
 
 # The prefix baked into the loader at build time. relocate_sdk.py rewrites it
 # in .interp, .sysdirs, .ldsocache and .gccrelocprefix when bitbake extracts the
