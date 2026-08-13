@@ -1,6 +1,6 @@
 pkgbase = openwhispr-appimage
 	pkgdesc = Voice-to-text dictation app with local Whisper/Parakeet and cloud models (AppImage)
-	pkgver = 1.8.1
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/OpenWhispr/openwhispr
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = openwhispr-appimage
 	provides = openwhispr
 	conflicts = openwhispr
 	options = !strip
-	source = OpenWhispr-1.8.1-linux-x86_64.AppImage::https://github.com/OpenWhispr/openwhispr/releases/download/v1.8.1/OpenWhispr-1.8.1-linux-x86_64.AppImage
-	sha256sums = f503c411bdb45eb6e134d625e39cff4e60b6774ffe0b3cdf90a8b410ecd1f6e6
+	source = OpenWhispr-1.8.3-linux-x86_64.AppImage::https://github.com/OpenWhispr/openwhispr/releases/download/v1.8.3/OpenWhispr-1.8.3-linux-x86_64.AppImage
+	sha256sums = fe90648d221634962bee2b6dc954d5781590cd9d345f412489e7e324d41767ce
 
 pkgname = openwhispr-appimage
