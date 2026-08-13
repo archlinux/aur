@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=borealis
-_pkgver=1.12.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -43,8 +43,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e91261c4971cdcb27e1c35f4e9e0d7e2')
-b2sums=('a96266a8473358405d7a08f0f4190a9c77a3e198d3c86d1f21c5f81711e6e0218b5cdec5ae6a9d1188a14c1bfac13441609b1152f9e79662b7728ac563fa1e7f')
+md5sums=('63a8cb12b8cc39165f4050ba7a66c74d')
+b2sums=('f875aa736d5d6248c7ccd71585480e79838115f1fdde78e91986226ce91363bdacbf8e7834620884fbfec08ea7a55f65e8d9f91abe4eca29efb8d83cde940aa3')
 
 build() {
   mkdir build
