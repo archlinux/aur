@@ -2,7 +2,7 @@
 pkgname=python-python-crontab
 _name=python-crontab
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Crontab module for reading and writing crontab files and accessing the system cron automatically and simply using a direct API."
 arch=('any')
 url="https://gitlab.com/doctormo/python-crontab"
@@ -33,9 +33,11 @@ build() {
 
 check() {
   cd "$_name-v$pkgver"
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
 
   # test_07_non_posix_shell - only for Windows
-  pytest -k "not test_07_non_posix_shell" || :
+  test-env/bin/python -I -m pytest -k "not test_07_non_posix_shell"
 }
 
 package() {
