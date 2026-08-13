@@ -24,7 +24,6 @@ backup=('etc/rbfeeder.ini')
 
 package() {
   bsdtar -xf data.tar.xz -C "$pkgdir/"
-  mv "$pkgdir/lib" "$pkgdir/usr/"
 
   install -Dm644 rbfeeder.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 rbfeeder.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
