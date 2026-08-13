@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DSS
-_pkgver=2.54.0
+_pkgver=2.60.0
 pkgname=r-${_pkgname,,}
-pkgver=2.54.0
+pkgver=2.60.0
 pkgrel=1
 pkgdesc='Dispersion shrinkage for sequencing data'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5081c2ca7c51857be043d580fe5e2f16e1502cbfb969c18f40b77aec69efbf0d')
+sha256sums=('aaec3e06731f87ffb24e9118e57a737949934ef12732218ead271f2ec1342d29')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
