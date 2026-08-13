@@ -2,7 +2,7 @@
 
 pkgname=scope-monitor
 pkgver=0.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc="A multi-platform serial monitor with user-extensible features"
 arch=($CARCH)
 url="https://github.com/matheuswhite/scope-rs"
@@ -12,7 +12,6 @@ conflicts=(${pkgname} ${pkgname%-monitor})
 replaces=()
 depends=(
     libgcc_s.so
-    openssl
     systemd-libs
 )
 makedepends=(
