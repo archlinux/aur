@@ -1,0 +1,18 @@
+pkgbase = ratgreet-git
+	pkgdesc = Terminal login greeter for greetd, built with Rust and ratatui
+	pkgver = r305.ga47bbee
+	pkgrel = 1
+	url = https://github.com/Gigas002/ratgreet
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = greetd
+	depends = gcc-libs
+	provides = ratgreet
+	conflicts = ratgreet
+	source = ratgreet::git+https://github.com/Gigas002/ratgreet.git
+	sha256sums = SKIP
+
+pkgname = ratgreet-git
