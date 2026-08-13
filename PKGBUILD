@@ -29,7 +29,7 @@ sha256sums=('SKIP'
             '782e6dbd367e7c29090175413ea55ab9f2a45bfbe2ee6f5078a420fab0891648'
             'bf322f3e05af49575bb76d8c866488cb07f47af7c31b6f762ae49de7a6657876'
             '2bd896ebfa6290fa0108ce9bdffa419bf8e03c1222a1d3f2d88d7e1cbb56613b')
-dest="/usr/share/webapps/piped/${_componentnameshort}"
+_dest="/usr/share/webapps/piped/${_componentnameshort}"
 
 pkgver() {
 	cd Piped-Backend
@@ -37,7 +37,7 @@ pkgver() {
 }
 
 prepare() {
-	sed -i "s|JARFILE|${dest}/piped-backend.jar|" piped-backend.sh
+	sed -i "s|JARFILE|${_dest}/piped-backend.jar|" piped-backend.sh
 	sed -i "s|CONFFILE|/etc/webapps/piped/${_componentnameshort}.properties|" tmpfiles.conf
 
 	cd Piped-Backend
@@ -66,6 +66,6 @@ package() {
 	install -Dm644 "${srcdir}/Piped-Backend/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "${srcdir}/nginx.conf" "${pkgdir}/usr/share/doc/piped/${_componentnameshort}/nginx.conf"
 
-	install -Dm755 "${srcdir}/Piped-Backend/build/libs/piped-1.0-all.jar" "${pkgdir}${dest}/piped-backend.jar"
+	install -Dm755 "${srcdir}/Piped-Backend/build/libs/piped-1.0-all.jar" "${pkgdir}${_dest}/piped-backend.jar"
 	install -Dm755 "${srcdir}/piped-backend.sh" "${pkgdir}/usr/bin/${_componentname}"
 }
