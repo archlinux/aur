@@ -7,6 +7,8 @@ arch=('any')
 url="https://github.com/tonikelope/megabasterd"
 license=('GPL3')
 depends=('java-runtime')
+provides=('megabasterd')
+conflicts=('megabasterd-bin')
 source=("${url}/releases/download/v${pkgver}/${_name}_${pkgver}.jar"
   "megabasterd.sh"
   "megabasterd.desktop"
