@@ -7,7 +7,7 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python310
-pkgver=3.10.19
+pkgver=3.10.21
 pkgrel=1
 _pybasever=${pkgver%.*}
 pkgdesc="The Python programming language (version 3.10)"
@@ -23,7 +23,7 @@ source=(
 	EXTERNALLY-MANAGED
 )
 sha256sums=(
-	"c8f4a596572201d81dd7df91f70e177e19a70f1d489968b54b5fbbf29a97c076"
+	"a0da1e72132e950154eca0f6f47d5db828454700de20e5113667940d81e0db04"
 	"d96bca8f7be0d1a83eb88f7c40924434168b1cb8a57870a55ad34207a3718c0a"
 )
 validpgpkeys=(
