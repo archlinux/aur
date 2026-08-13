@@ -1,5 +1,5 @@
 pkgname=topoglyph-bin
-pkgver=0.2.2
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Topology-to-glyph text-art rendering engine (Pre-compiled)"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ source_x86_64=("https://github.com/Xuepoo/topoglyph/releases/download/v$pkgver/t
 source_aarch64=("https://github.com/Xuepoo/topoglyph/releases/download/v$pkgver/topoglyph-linux-aarch64")
 
 sha256sums=('b611f7feb097dac1235bc2901046f36ff85e753b075b741412b6a0447ab20390')
-sha256sums_x86_64=('c15d0b7aea2c7fc8f112ab70a4fb29d5642860a62cfd60472704f189e31e58f7')
-sha256sums_aarch64=('e009513af40f5df1e5f5c48cd79ae4a27d04c89b373bbea373f935efbff316b4')
+sha256sums_x86_64=('e8b0516bb55aff8a6a0e7b7a9984402ad24a17466eba7a1cea65eb25778c7209')
+sha256sums_aarch64=('11603acca8f1356e066abc5e085cd2d0cb2e1da170319df5b8592364277af9f7')
 
 package() {
   install -Dm755 "$srcdir/topoglyph-linux-$CARCH" "$pkgdir/usr/bin/topoglyph"
