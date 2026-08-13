@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=fedup
-_pkgver=1.18.0
+_pkgver=1.19.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Fisher's Test for Enrichment and Depletion of User-Defined Pathways"
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b68f167dc8d801678fdee3e614962e72fa397ab9e55aaac222e14e0437226653')
+sha256sums=('d458ef3b26845f9aa90d7aec9dcd9db92352a45cdc17ffe35c7335cda82d2c42')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
