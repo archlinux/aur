@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=ghr
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='GitHub in your terminal'
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -12,7 +12,7 @@ options=(!lto !debug)
 provides=('ghr')
 conflicts=('ghr-git' 'ghr-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7c537e19a85261c4b93d41c06fff298cddac2f0015eb1826da726b3a22e3f843')
+sha256sums=('d5cfe1126633c989fd63ed07d89447ffcd33ae34a18ad7eceb28303b34ea21d9')
 
 prepare() {
     cd "$pkgname-$pkgver"
