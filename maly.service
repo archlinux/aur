@@ -10,18 +10,31 @@ Restart=on-failure
 RestartSec=2
 
 # Hardening: maly solo habla por sockets Unix (su propio IPC, el de mpv, y
-# D-Bus de sesión para MPRIS) y no necesita nada más. ReadWritePaths cubre
-# exactamente lo que el demonio escribe: config.toml (solo la primera vez,
-# si nadie corrió `maly` antes), library.db/session.json, y el lock+sockets
-# del runtime dir — todo lo demás queda de solo lectura (música incluida:
-# el demonio nunca escribe ahí). SIN ProtectHome: music_dir puede vivir
-# fuera de $HOME (un disco externo), y esa clave lo bloquearía enterito.
-# Verificado en vivo con una unit sandboxeada aparte (arranque, scan real,
-# apagado limpio con `maly kill`) antes de sumarlo acá — mismo hardening
+# D-Bus de sesión para MPRIS) y no necesita nada más. SIN ProtectHome:
+# music_dir puede vivir fuera de $HOME (un disco externo). Mismo hardening
 # que mallow-install.sh, solo cambia ExecStart (acá va a /usr/bin).
+#
+# RuntimeDirectory=/ConfigurationDirectory= (no ReadWritePaths a mano para
+# estos dos) son la forma correcta de darle acceso a $XDG_RUNTIME_DIR/maly
+# y $XDG_CONFIG_HOME/maly bajo ProtectSystem=strict: systemd las CREA antes
+# de arrancar el proceso y quedan exceptuadas del resto solo lectura solas.
+# La primera versión de este hardening usaba ReadWritePaths=%t/maly a mano,
+# que EXIGE que la ruta ya exista al armar el namespace — rompía en un boot
+# limpio, con /run/user/$UID/maly recién vacío todavía (status=226/NAMESPACE,
+# encontrado en producción).
+#
+# $XDG_DATA_HOME (biblioteca/sesión) no tiene una directiva de systemd
+# dedicada (solo cubre RUNTIME/CONFIGURATION/STATE/CACHE, y STATE apunta a
+# $XDG_STATE_HOME, no a $XDG_DATA_HOME), así que sigue yendo a mano — pero
+# con "-" al principio, que systemd documenta explícitamente para esto: si
+# la ruta no existe todavía, se ignora en vez de abortar el arranque.
 NoNewPrivileges=yes
 ProtectSystem=strict
-ReadWritePaths=%h/.config/maly %h/.local/share/maly %t/maly
+RuntimeDirectory=maly
+RuntimeDirectoryMode=0700
+ConfigurationDirectory=maly
+ConfigurationDirectoryMode=0700
+ReadWritePaths=-%h/.local/share/maly
 PrivateTmp=yes
 RestrictAddressFamilies=AF_UNIX
 RestrictNamespaces=yes

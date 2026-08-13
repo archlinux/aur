@@ -1,7 +1,7 @@
 # Maintainer: kitasael-burakku
 pkgname=maly
 pkgver=1.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Local terminal music player (daemon + TUI + CLI) with mpv backend, gapless playback and MPRIS2"
 arch=('x86_64' 'aarch64')
 url="https://github.com/kitasael-burakku/Malody-Mallow"
@@ -18,7 +18,7 @@ _pkgsrc=Malody-Mallow
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "maly.service")
 sha256sums=('1a613d79163f37752d93f02c08bf6b5fb39c0878f7b8c47c8fa322923fcdb96d'
-            '313045dc5286764b8329d006c7eed14590334e7c97dc7aec0558bc40e6f75cd0')
+            'cbcd9c2804135080db7d938ea839b985e41583e1849522fe5379b5b92b22c96a')
 
 prepare() {
 	cd "$_pkgsrc-$pkgver"
