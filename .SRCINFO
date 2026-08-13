@@ -1,0 +1,15 @@
+pkgbase = fluent-icon-theme
+	pkgdesc = Fluent design icon theme
+	pkgver = 20260727
+	pkgrel = 1
+	url = https://github.com/vinceliuice/Fluent-icon-theme
+	arch = any
+	license = GPL-3.0-only
+	depends = hicolor-icon-theme
+	provides = fluent-icon-theme-git
+	conflicts = fluent-icon-theme-git
+	options = !strip
+	source = https://github.com/vinceliuice/Fluent-icon-theme/archive/refs/tags/2026-07-27.tar.gz
+	b2sums = db7107417d8424b4cbe345228ef1c127a4bbe3ef2ee568c25be52017f7d5561ad4494c78086ad5f098e075bc2021e3aae87350c4175e5874d080164eaeeb4a41
+
+pkgname = fluent-icon-theme
