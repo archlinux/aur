@@ -1,7 +1,7 @@
 # Maintainer: James Tucker <jftucker@gmail.com>
 # Contributor: Chris Sutcliff <chris@sutcliff.me>
 pkgname=music-assistant-desktop-git
-pkgver=0.6.1.r0.g8328268
+pkgver=0.6.2.r1.g7360be5
 pkgrel=1
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
@@ -60,12 +60,9 @@ prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path src-tauri/Cargo.toml
 
-    # Fix desktop file to match actual icon name
-    sed -i 's/Icon=music-assistant$/Icon=music-assistant-companion/' music-assistant.desktop
-
-    # The in-repo .desktop also omits StartupWMClass, so the running window does
-    # not associate with the launcher entry. Tauri's own generated entry (see
-    # the upstream .deb) sets it. Drop this once upstream ships it.
+    # The in-repo .desktop omits StartupWMClass, so the running window does not
+    # associate with the launcher entry. Tauri's own generated entry (see the
+    # upstream .deb) sets it. Drop this once upstream ships it.
     grep -q '^StartupWMClass=' music-assistant.desktop ||
         echo 'StartupWMClass=music-assistant-companion' >> music-assistant.desktop
 }
@@ -101,9 +98,12 @@ package() {
     install -Dm644 -t "$pkgdir/usr/lib/Music Assistant/resources/translations" \
         src-tauri/resources/translations/*.json
 
-    # Install desktop file
+    # Install desktop file. Since 0.6.2 the MPRIS root object advertises
+    # DesktopEntry="Music Assistant", so the entry has to be installed under
+    # that basename for media controls to resolve the app. This matches the
+    # upstream .deb.
     install -Dm644 music-assistant.desktop \
-        "$pkgdir/usr/share/applications/music-assistant.desktop"
+        "$pkgdir/usr/share/applications/Music Assistant.desktop"
 
     # Install icons
     install -Dm644 src-tauri/icons/32x32.png \
