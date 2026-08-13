@@ -2,4 +2,5 @@
 source = "github"
 github = "huseyinbabal/taws"
 use_latest_release = true
-prefix = "v"
+from_pattern = 'v([0-9.]*)-rc\.[0-9]'
+to_pattern = '\1'

@@ -5,9 +5,9 @@ _pkgname=taws
 pkgname=${_pkgname}-bin
 pkgdesc="A terminal-based AWS resource viewer and manager"
 
-pkgver=1.2.1
-pkgrel=1
-_pkgvername=v${pkgver}
+pkgver=1.3.0
+pkgrel=8
+_pkgvername=v${pkgver}-rc.${pkgrel}
 
 arch=('x86_64' 'aarch64')
 _barch=('x86_64-unknown-linux-musl' 'aarch64-unknown-linux-musl')
@@ -25,9 +25,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
 sha256sums=('57dcba79753b55c060bb71a06abe9563afb742d31be067c0c0e735b5a58223f9'
-            '152d32827af2714c49a91b5940c8518793531637d0e2dba5b45f5bdf6972e4e5')
-sha256sums_x86_64=('59ddf32d9891ab7ccc9deafaa26060d23785ce0fe493d97be308b86e8d48b83a')
-sha256sums_aarch64=('2ab5809f9e6c2cb39fb815941eb26d722e7943340b32c0ef2572afbc937b913d')
+            'ce82a825a3422ddfa19738a804d579068b2ec7654479e400f0c26784e3676c86')
+sha256sums_x86_64=('021c935ad19a038cc5c59f436cb2b480ff9f981266c830ad20cc80d58250f8b5')
+sha256sums_aarch64=('e104794af55fbd51f654478a743e546c51cd3dbe2accbdd50198ac8ae22f21ea')
 
 
 package() {
