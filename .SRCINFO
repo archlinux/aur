@@ -1,6 +1,6 @@
 pkgbase = r-pdatk
 	pkgdesc = Pancreatic Ductal Adenocarcinoma Tool-Kit
-	pkgver = 1.16.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/PDATK
 	arch = any
@@ -40,7 +40,7 @@ pkgbase = r-pdatk
 	optdepends = r-msigdbr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/PDATK_1.16.0.tar.gz
-	sha256sums = 0bf28b2d2e296aaad8c850b828d19c14ac10a9689fa0cfb5b054f8b74ce3557f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/PDATK_1.20.0.tar.gz
+	sha256sums = 983c333e5f47c5b41da8e6fe4d58d8733f0d0654482d8cf88f3e99f2a577ee56
 
 pkgname = r-pdatk
