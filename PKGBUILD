@@ -2,13 +2,13 @@
 
 pkgname=sonora
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A minimal native Spotify client built with Rust and GPUI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nolight132/sonora'
 license=('GPL-3.0-or-later')
-depends=('alsa-lib' 'dbus' 'fontconfig' 'freetype2' 'libx11' 'libxcb' 'libxcursor'
-         'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'vulkan-icd-loader' 'wayland')
+depends=('alsa-lib' 'dbus' 'fontconfig' 'hicolor-icon-theme' 'libxcb' 'libxkbcommon'
+         'libxkbcommon-x11' 'vulkan-icd-loader' 'wayland')
 optdepends=('vulkan-radeon: Vulkan driver for AMD GPUs'
             'vulkan-intel: Vulkan driver for Intel GPUs'
             'nvidia-utils: Vulkan driver for NVIDIA GPUs')
