@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=alliedvision-vimba-x
-_pkgver=2026.1.0
+_pkgver=2026.2.0
 _pkgver_short=${_pkgver::6}
 _pkgver_short_dash=${_pkgver_short//./-}
 pkgver=$_pkgver
@@ -13,10 +13,10 @@ arch=('x86_64' 'aarch64')
 license=('custom')
 depends=('glibc' 'gcc-libs')
 makedepends=('cmake' 'gcc')
-source_x86_64=("https://allied-vision-web.atw.io/downloads/software/Vimba_X/VimbaX_Setup-${_pkgver_short_dash}-Linux64.tar.gz")
-source_aarch64=("https://allied-vision-web.atw.io/downloads/software/Vimba_X/VimbaX_Setup-${_pkgver_short_dash}-Linux_ARM64.tar.gz")
-sha256sums_x86_64=('74ca5b7dec96ae4845e54afc551cf2343f0beea6ac6d79811263da14781cc5c9')
-sha256sums_aarch64=('b8f08149ca77786a98dc412d3c1b588ea7849f5163cc85d622908dd3cb242860')
+source_x86_64=("https://www.alliedvision.com/downloads/software/Vimba_X/VimbaX_Setup-${_pkgver_short_dash}-Linux64.tar.gz")
+source_aarch64=("https://www.alliedvision.com/downloads/software/Vimba_X/VimbaX_Setup-${_pkgver_short_dash}-Linux_ARM64.tar.gz")
+sha256sums_x86_64=('45eb34db03e7311ad3cf309c89fc13ddba8b3fd860082a4698198731963faa44')
+sha256sums_aarch64=('bc223962fc393878c71a6efce8215ce231cc3089bb1a85fffc6fb6eeee43c091')
 
 
 build() {
