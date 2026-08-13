@@ -1,0 +1,21 @@
+pkgbase = python-streamlit-extras
+	pkgdesc = Collection of extra Streamlit components: metric cards, badges, colored headers, mentions
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/arnaudmiribel/streamlit-extras
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-plotly
+	depends = python-streamlit
+	optdepends = python-networkx: sigma_graph() layout algorithms and NetworkX graph input
+	optdepends = python-diagrams: diagrams() component
+	optdepends = python-great-tables: great_tables() component
+	source = https://files.pythonhosted.org/packages/source/s/streamlit_extras/streamlit_extras-1.6.0.tar.gz
+	sha256sums = d75bfabd2be35f1fba6bce3935d1c446cfcfbe03123478df1b5ba4a02a7c49c0
+
+pkgname = python-streamlit-extras
