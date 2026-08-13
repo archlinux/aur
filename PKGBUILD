@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SOMbrero
-_pkgver=1.4-2
+_pkgver=1.5.0
 pkgname=r-${_pkgname,,}
-pkgver=1.4.2
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='SOM Bound to Realize Euclidean and Relational Outputs'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f652dabe8a1ff8e1da50723059e8195b64cfb6a64849b448331873ae066f7c95')
+sha256sums=('d8c49366d9fa2a0d495839d481d85410c63c46a230c8e286dc667c16f07aa101')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
