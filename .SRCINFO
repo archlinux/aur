@@ -1,6 +1,6 @@
 pkgbase = python-smda
 	pkgdesc = Recursive diassembler optimized for CFG recovery from memory dumps
-	pkgver = 4.4.1
+	pkgver = 4.4.7
 	pkgrel = 1
 	url = https://github.com/danielplohmann/smda
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-smda
 	depends = python-dncil
 	depends = python-dnfile
 	depends = lief
-	source = python-smda-4.4.1.tar.gz::https://files.pythonhosted.org/packages/source/s/smda/smda-4.4.1.tar.gz
-	sha256sums = 7a14ce56fd7330f099d8cf269c57e332043c43d737fed90caa2919274fd5bbf9
+	source = python-smda-4.4.7.tar.gz::https://files.pythonhosted.org/packages/source/s/smda/smda-4.4.7.tar.gz
+	sha256sums = e4369270cac2bd6029d72fdc7fce2c9d33073077698eebeff325acdc49a38b9f
 
 pkgname = python-smda
