@@ -1,6 +1,6 @@
 pkgbase = python-jdatetime
 	pkgdesc = Jalali implementation of Python's datetime module
-	pkgver = 6.0.1
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://github.com/slashmili/python-jalali
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-jdatetime
 	makedepends = python-setuptools
 	depends = python
 	depends = python-jalali-core
-	source = python-jdatetime-6.0.1.tar.gz::https://github.com/slashmili/python-jalali/archive/v6.0.1.tar.gz
-	sha256sums = e7ae955973f45f7c7a5fca0693dd3fe4ffbd250221a6aa77cd357589b31baaff
+	source = python-jdatetime-6.1.0.tar.gz::https://github.com/slashmili/python-jalali/archive/v6.1.0.tar.gz
+	sha256sums = 8c9a7799b154572cf38cf733ebca6288770b65f85ca7a724f2ac6f7afa344b4f
 
 pkgname = python-jdatetime
