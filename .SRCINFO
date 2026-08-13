@@ -1,6 +1,6 @@
 pkgbase = r-ncdfflow
 	pkgdesc = ncdfFlow: A package that provides HDF5 based storage for flow cytometry data.
-	pkgver = 2.56.0
+	pkgver = 2.58.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ncdfFlow
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = r-ncdfflow
 	optdepends = r-knitr
 	optdepends = r-parallel
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ncdfFlow_2.56.0.tar.gz
-	sha256sums = 5a861b5f5d6c5a727cdceb7e40cb201d431935953495968b3158fdd63d606110
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ncdfFlow_2.58.0.tar.gz
+	sha256sums = 32143d45dd96d55d4f048ba76d5c4c1c6277d44a3725e645168ac01685b0f922
 
 pkgname = r-ncdfflow
