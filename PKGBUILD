@@ -3,7 +3,7 @@
 
 _pkgname="fanficfare"
 pkgname="$_pkgname-git"
-pkgver=4.59.0.r25.gafd53cf
+pkgver=4.60.0.r21.g81e5e1b
 pkgrel=1
 pkgdesc="Tool to make eBooks from stories on fanfiction and other websites"
 url="https://github.com/JimmXinu/FanFicFare"
@@ -46,7 +46,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '1224ccd3c8edcfb80abf7238b46081b3799773f32eadddcd82a0a4b0cdfe68d5'
+  '4f662dbfa1a6f58c99b52081bc16ed1936016d4ba9d24901bd7377e933e82b60'
 )
 
 provides=("$_pkgname")

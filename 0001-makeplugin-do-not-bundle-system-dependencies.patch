@@ -1,6 +1,6 @@
 --- a/makeplugin.py
 +++ b/makeplugin.py
-@@ -34,25 +34,10 @@
+@@ -34,25 +34,10 @@ if __name__=="__main__":
                    files,
                    exclude=exclude)
  
@@ -9,7 +9,7 @@
 -        'cloudscraper',
 -        'requests',
 -        'requests_toolbelt',
--        'requests_file.py',
+-        'requests_file',
 -        'urllib3',
 -        'certifi',
 -        'idna',
