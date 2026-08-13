@@ -1,6 +1,6 @@
 pkgbase = wastebin-bin
 	pkgdesc = wastebin is a pastebin 📝
-	pkgver = 3.7.1
+	pkgver = 3.7.2
 	pkgrel = 1
 	url = https://github.com/matze/wastebin
 	install = wastebin-bin.install
@@ -20,7 +20,7 @@ pkgbase = wastebin-bin
 	sha256sums = 04ad83550f915fd3d69a7748f9b0df67fe8ae80afe7c82a0db6f3a8c5f5a3880
 	sha256sums = 6c519dc412f2180bf2ea8b945d1ae71eae885ca0ab4986034deb840dee5ab83b
 	sha256sums = 498105f68faf1395d09783024a956d97dc652298675a9fe2b187d7389e3e48ee
-	source_x86_64 = wastebin-x86_64-3.7.1.tar.zst::https://github.com/matze/wastebin/releases/download/3.7.1/wastebin_3.7.1_x86_64-unknown-linux-musl.tar.zst
-	sha256sums_x86_64 = af80950c3d87ce05e2d92df2a4a109e8aa9e313c8629f73cc90ae8b1a4d5d65a
+	source_x86_64 = wastebin-x86_64-3.7.2.tar.zst::https://github.com/matze/wastebin/releases/download/3.7.2/wastebin_3.7.2_x86_64-unknown-linux-musl.tar.zst
+	sha256sums_x86_64 = 05698e91bbb37d77299941cb29226d932be07bf60457fda5739cbe622b8185c2
 
 pkgname = wastebin-bin
