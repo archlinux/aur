@@ -1,6 +1,6 @@
 # Maintainer: Nilesh Kevlani <njkevlani@gmail.com>
 pkgname=openlogi-bin
-pkgver=v0.6.24
+pkgver=v0.6.26
 pkgrel=1
 pkgdesc="A native, local-first alternative to Logitech Options+"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!emptydirs' '!strip')
 makedepends=('libarchive') # For bsdtar
 
 source=("https://github.com/AprilNEA/OpenLogi/releases/download/$pkgver/openlogi-$pkgver-linux-amd64.deb")
-sha256sums=('b851d84b007e9bf82b2705f3bbf7d23161a4a30d37a0417133865aefeb5134a4')
+sha256sums=('fe33b58432dc36b838267975bab31b5af5461fabfbbd4d1749ff211e1e72af6a')
 
 package() {
 	bsdtar -xf data.tar.gz -C "$pkgdir/"
