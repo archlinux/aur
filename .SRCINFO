@@ -1,0 +1,13 @@
+pkgbase = cfish
+	pkgdesc = A terminal aquarium screensaver: colorful fish swimming across your terminal, leaving bubble trails
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/joeyvigil/cfish
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ncurses
+	source = cfish-1.0.tar.gz::https://github.com/joeyvigil/cfish/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 35ea0ad1a2e524fab3effaa4275bc2f33ef36ab5808dd7cd8e3f81e3bf22933e
+
+pkgname = cfish
