@@ -45,7 +45,7 @@ build() {
 #   cd "$_name"
 #   python -m venv --clear --without-pip --system-site-packages test-env
 #   test-env/bin/python -m installer dist/*.whl
-#   test-env/bin/python -P -m pytest
+#   test-env/bin/python -I -m pytest
 # }
 
 package() {
