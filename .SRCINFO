@@ -1,6 +1,6 @@
 pkgbase = xfce4-settings-devel
 	pkgdesc = Settings manager for xfce (development snapshot)
-	pkgver = 4.21.2
+	pkgver = 4.21.3
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfce4-settings/start
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = xfce4-settings-devel
 	makedepends = xf86-input-libinput
 	makedepends = glib2-devel
 	depends = garcon
-	depends = libxfce4ui>=4.21.8
+	depends = libxfce4ui>=4.21.9
 	depends = xfconf
 	depends = libnotify
 	depends = libcanberra
@@ -28,11 +28,11 @@ pkgbase = xfce4-settings-devel
 	optdepends = xiccd: for displays support in xfce4-color-settings
 	optdepends = cups: for printers support in xfce4-color-settings
 	optdepends = sane: for scanners support in xfce4-color-settings
-	provides = xfce4-settings=4.21.2
+	provides = xfce4-settings=4.21.3
 	conflicts = xfce4-settings
-	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.21/xfce4-settings-4.21.2.tar.xz
+	source = https://archive.xfce.org/src/xfce/xfce4-settings/4.21/xfce4-settings-4.21.3.tar.xz
 	source = enable-antialias-by-default.patch
-	sha256sums = 064f72fb5ead25d9bd1724bea803f1017fc2287b32dc55eacf4f6e3d78e2b7e8
+	sha256sums = 2f620939359dc9737800adfcb88fa86cad89b02d83f182ad1704bbebcd86b609
 	sha256sums = fea2dd8ace227a7e3ebaea687eae43680595d8fd6e1ade532a1e62805c5f0f14
 
 pkgname = xfce4-settings-devel

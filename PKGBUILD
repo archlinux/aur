@@ -2,14 +2,14 @@
 
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-devel
-pkgver=4.21.2
+pkgver=4.21.3
 pkgrel=1
 pkgdesc="Settings manager for xfce (development snapshot)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
 license=('GPL-2.0-or-later')
 groups=('xfce4-devel')
-depends=('garcon' 'libxfce4ui>=4.21.8' 'xfconf' 'libnotify' 'libcanberra'
+depends=('garcon' 'libxfce4ui>=4.21.9' 'xfconf' 'libnotify' 'libcanberra'
          'colord' 'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra'
          'wayland' 'gtk-layer-shell')
 makedepends=('meson' 'xfce4-dev-tools' 'xf86-input-libinput' 'glib2-devel')
@@ -21,7 +21,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz"
         'enable-antialias-by-default.patch')
-sha256sums=('064f72fb5ead25d9bd1724bea803f1017fc2287b32dc55eacf4f6e3d78e2b7e8'
+sha256sums=('2f620939359dc9737800adfcb88fa86cad89b02d83f182ad1704bbebcd86b609'
             'fea2dd8ace227a7e3ebaea687eae43680595d8fd6e1ade532a1e62805c5f0f14')
 
 prepare() {
