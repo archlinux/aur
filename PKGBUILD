@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=miteiru-bin
-pkgver=6.3.0
-_electronversion=31
+pkgver=7.4.9
+_electronversion=41
 pkgrel=1
 pkgdesc="An open source Electron video player to learn Japanese. It has main language dictionary and tokenizer (morphological analyzer), heavily based on External software MeCab.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -11,15 +11,15 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    'mecab'
+    #'mecab'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-26.04-amd64.deb"
+    "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-24.04-amd64.deb"
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/hockyy/miteiru/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('7171499416c88c77f4566a60b03709b201a04075961b8d11bf058c8f15a5a1c6'
-            '87580187a0109eae08b4d79cc4bb8033dcd98907ca0cd4308f69de5dbe8d9c5c'
+sha256sums=('62b1ab139e346ebabd209c55c65ce2df87539351ae6c438989da930773dcb989'
+            '32b8056672bc415bbd3829a9a737d776795f6b73af61ce0934107ed81ee8a7a0'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -44,12 +44,16 @@ prepare() {
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i "s/\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    local _app_dir=$(_get_app_dir)
+    rm -rf \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/level/node_modules/classic-level/prebuilds/"{android-*,linux-arm*,darwin-*,win32-*} \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/classic-level/prebuilds/"{android-*,linux-arm*,darwin-*,win32-*}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
