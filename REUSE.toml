@@ -31,3 +31,10 @@ path = [
     ]
 SPDX-FileCopyrightText = "ShinKouyo <i@0x0f.dev>"
 SPDX-License-Identifier = "GPL-3.0-or-later"
+
+[[annotations]]
+path = [
+    ".varve.toml",
+]
+SPDX-FileCopyrightText = "foopkgs contributors"
+SPDX-License-Identifier = "0BSD"
