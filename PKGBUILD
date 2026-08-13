@@ -1,18 +1,18 @@
 # Maintainer: knedl1k <knedl1k At tuta Dot io>
 # Contributor: Polis Minus <polisminus2247@tuta.io>
 pkgname=activate-linux
-pkgver=1.1.0
+pkgver=1.2.0
 _pkg="$pkgname-$pkgver"
-pkgrel=3
+pkgrel=1
 pkgdesc="The \"Activate Windows\" watermark ported to Linux with Xlib and cairo in C"
 arch=("x86_64")
 url='https://github.com/MrGlockenspiel/activate-linux'
 makedepends=('make' 'clang' 'pkgconf')
-depends=('cairo' 'libx11' 'libxi' 'libxt' 'libxrandr' 'libxfixes' 'libxinerama' 'wayland' 'wayland-protocols')
+depends=('cairo' 'libx11' 'libxi' 'libxt' 'libxrandr' 'libxfixes' 'libxinerama' 'wayland' 'wayland-protocols' 'pango' 'libxext')
 optdepends=('libconfig')
 license=('GPL3')
 options=('!buildflags' '!makeflags')
-sha512sums=('629e2bba62f65db1351f0ae94e604b401c39021aaf429d26d31c3f984d05bdf06374797bec37416f119516d6d226599be04f68097659d19e05bf2dfb1971aba4')
+sha512sums=('d95e6c7739f84f80aa13537188952d1c93f549b4775142d822fe8ed31e2b34ab26b0b4cdb04eed112d93109e575fc2503c97c3f95e685d4d42a6644a7eaeae69')
 
 source=("https://github.com/MrGlockenspiel/activate-linux/archive/refs/tags/v$pkgver.tar.gz")
 
