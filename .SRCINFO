@@ -1,0 +1,17 @@
+pkgbase = powermiao8k-dkms
+	pkgdesc = DKMS kernel driver for the the Angry Miao INFINITY 8K Mouse battery and Dock (3151:5007)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TsFreddie/powermiao8k
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	source = git+https://github.com/TsFreddie/powermiao8k.git#tag=v1.0.0
+	source = dkms.conf
+	source = Makefile
+	sha256sums = SKIP
+	sha256sums = e3c7f32df73763fa90680720a1d213d9d62f8de5a1ba455818c22c66e92d70cd
+	sha256sums = a2c59cb89fcf0400af4fe1406148498c067f015136d0d7fffcd5eab4e5322488
+
+pkgname = powermiao8k-dkms
