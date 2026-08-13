@@ -1,0 +1,5 @@
+[loglit-bin]
+source = "github"
+github = "madmaxieee/loglit"
+use_latest_release = true
+prefix = "v"

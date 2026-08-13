@@ -1,0 +1,17 @@
+pkgbase = loglit-bin
+	pkgdesc = Syntax highlighting for any log stream/file
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/madmaxieee/loglit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = loglit
+	conflicts = loglit
+	options = !strip
+	source_x86_64 = loglit-x86_64-0.2.1.tgz::https://github.com/madmaxieee/loglit/releases/download/v0.2.1/loglit_0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1e71b8c4522bae3c27018b99879a7f79cb6544f836904640f2e24e822a3bfbc2
+	source_aarch64 = loglit-aarch64-0.2.1.tgz::https://github.com/madmaxieee/loglit/releases/download/v0.2.1/loglit_0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = b44ffa12e84d56b99499c898c91f5d079b62f35995592ec0ab8753ea5896edf6
+
+pkgname = loglit-bin
