@@ -7,9 +7,9 @@ _archive_suffix=cli
 pkgname=${_pkgname}-bin
 pkgdesc="A fast, configurable and intuitive fuzzy searcher"
 
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
-_pkgvername=${pkgver}
+_pkgvername=v${pkgver}
 
 arch=('x86_64' 'aarch64')
 _barch=('x86_64-unknown-linux-gnu' 'aarch64-unknown-linux-gnu')
@@ -28,11 +28,11 @@ source=("COMPLETION-${pkgver}.zsh::${_urlraw}/${_pkgname}-${_archive_suffix}/ass
 		"COMPLETION-${pkgver}.fish::${_urlraw}/${_pkgname}-${_archive_suffix}/assets/completions/${_execname}.fish")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_archive_suffix}-${_barch[0]}.tar.xz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_archive_suffix}-${_barch[1]}.tar.xz")
-sha256sums=('8ba99953c77a754bcac4343a321a507106b8be63b08d8702c30305457d6ff33f'
-            'c9fe8a0c6d5d535f3c7fe93103460560cb4b0d2ec199de713a8de3ba85145a39'
-            'b158014f43d0752789ab94e4b71b9898b221a00ae92c4ef92cc7ebe7db7cf757')
-sha256sums_x86_64=('111968eccfdb36decd1188350ac71ca7d816d267f970f34b7fb53d5368372c6c')
-sha256sums_aarch64=('e655c707ca086dc25923509717c871f0cb703a47ca041420ee86ee9aad949a53')
+sha256sums=('3f8a98d8d4d9d6fcd81069c0766272c028aeefe0163839d23ef956f9417f45b9'
+            '04224c79b0a1a54a37d5cf6c63bfc3bb9a497e757a870d6b68f88531c8c28607'
+            '279a2edd0c76037b4c75eba36a0f6170d45ed52137348f7cf0579429aefc42be')
+sha256sums_x86_64=('7d26ca4d868df8c70f4a5503caef3d053f2b76a3e2007a9b3c4732fb490a0949')
+sha256sums_aarch64=('afdc34fb9d378107c639d31348b9938e7d6225d6ad5d0f8fcef5031956263c23')
 
 
 case ${CARCH} in
