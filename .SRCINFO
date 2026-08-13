@@ -1,0 +1,15 @@
+pkgbase = memokeel
+	pkgdesc = KDE Plasma 6 widget for notes, to-dos, kanban boards, reminders, and tags
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Conqrex/Conqrex.MemoKeel
+	arch = any
+	license = MIT
+	depends = plasma-workspace
+	depends = jq
+	depends = file
+	optdepends = libnotify: fallback desktop notifications via notify-send
+	source = memokeel-0.2.0.tar.gz::https://github.com/Conqrex/Conqrex.MemoKeel/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = e961b52daebcfc0accbdeeb8665774a90b03b170c9bcc65a437b2bc84a911bac
+
+pkgname = memokeel
