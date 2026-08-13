@@ -1,6 +1,6 @@
 pkgbase = r-enrichmentbrowser
 	pkgdesc = Seamless navigation through combined results of set-based and network-based enrichment analysis
-	pkgver = 2.38.1
+	pkgver = 2.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/EnrichmentBrowser
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-enrichmentbrowser
 	optdepends = r-reportingtools
 	optdepends = r-rmarkdown
 	optdepends = r-statmod
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/EnrichmentBrowser_2.38.1.tar.gz
-	sha256sums = 07c4c02f92ab6005b09560c39d7bcef2f2c905d4dce52a5091b0ae59aad5370f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/EnrichmentBrowser_2.42.0.tar.gz
+	sha256sums = 5aa0ea797a6650dd17524db1360d59ba507e2cc27686c144de1abf43b64e441e
 
 pkgname = r-enrichmentbrowser
