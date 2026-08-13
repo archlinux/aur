@@ -1,8 +1,8 @@
 # Maintainer: komaruworld <rtysus228 at gmail dot com>
 
 pkgname=mocktail
-pkgver=0.1.0
-pkgrel=3
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Android x86-64 Roblox compatibility runtime for Linux'
 arch=('x86_64')
 url='https://github.com/komaruworld/mocktail'
@@ -42,9 +42,8 @@ makedepends=(
 optdepends=('gamemode: Feral GameMode integration')
 conflicts=('mocktail-bin' 'mocktail-git')
 options=('!debug')
-_commit=6aa22c257dbb451b7c58d7ad4608710feaa3faf7
 source=(
-  "mocktail::git+https://github.com/komaruworld/mocktail.git#commit=${_commit}"
+  "mocktail::git+https://github.com/komaruworld/mocktail.git#tag=${pkgver}"
 )
 sha256sums=(
   'SKIP'
