@@ -2,7 +2,7 @@
 # Maintainer: Raj Nakarja <raj@siliconwitchery.com>
 
 pkgname='superstack-bin'
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='The Superstack command line interface'
 url='https://github.com/siliconwitchery/superstack-cli'
@@ -12,10 +12,10 @@ provides=('superstack')
 conflicts=('superstack')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/siliconwitchery/superstack-cli/releases/download/v${pkgver}/superstack_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('a2bc16d23d1f40c39b0cec7dd1c2774254c2947f1a26c96165f186007453b42f')
+sha256sums_aarch64=('de96102892c72beab43f58eca84f42d40834b61a5ba644a0d4e3fb397045d02a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/siliconwitchery/superstack-cli/releases/download/v${pkgver}/superstack_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('6c12f7ea286d985f64248aaef2bb45a7c8ce004c2a9c19960f6b814c3db815cf')
+sha256sums_x86_64=('336fc7cf5c9dcebd56a16f17989340ae6358dc73f0dd1ab941bd1e73cad34c48')
 
 package() {
   install -Dm755 "./superstack" "${pkgdir}/usr/bin/superstack"
