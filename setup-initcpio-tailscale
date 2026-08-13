@@ -15,11 +15,22 @@ usage: ${CMD0} [option...]
 The setup script shouldn't require any arguments to get it working, but keep in mind that any extra argument is passed as-is to 'tailscale up'.
 See 'tailscale up --help' for available flags.
 
+Defaults:
+
+  --hostname    the current hostname plus an '-initrd' suffix, in this case "${TS_HOSTNAME}".
+
+  --ssh         Tailscale's built-in SSH server is enabled, so the initramfs is
+                reachable without a second ssh server in it. OpenSSH host keys
+                are generated alongside the node key so the image presents the
+                same identity on every boot.
+
+  --no-ssh      Turns that off, for images that run their own dropbear or
+                tinyssh instead. Only one of them can answer port 22 on the
+                tailnet, so don't enable both.
+
 i.e.:
 
-  ${CMD0} --hostname ${TS_HOSTNAME} --ssh --login-server=headscale.my.net --authkey=file:node.key
-
-The default value for '--hostname' is the current hostname plus '-initrd' suffix, in this case "${TS_HOSTNAME}".
+  ${CMD0} --hostname ${TS_HOSTNAME} --login-server=headscale.my.net --authkey=file:node.key
 
 If in doubt, run '$CMD0' without arguments.
 EOF
@@ -33,40 +44,93 @@ die() {
 }
 
 cleanup() {
-  if [[ -n "${SETUPDIR}" ]]; then
+  # Whatever brought us here, on the way out. Exiting 0 unconditionally, as this
+  # used to, reported every failure -- die() included -- as a successful setup.
+  local rc=$?
+  if [[ -n "${SETUPDIR:-}" ]]; then
     rm -rf "${SETUPDIR}"
   fi
   if [[ -n "$PID" ]]; then
-    kill "$PID" 2>/dev/null
+    kill "$PID" 2>/dev/null || true
   fi
-  exit 0
+  exit "$rc"
 }
 trap "cleanup" EXIT
 
-# Scan arguments looking for --hostname=VALUE
+# Scan the arguments for the two flags this script has an opinion about, and
+# note whether the user stated them so the defaults below only fill in gaps.
+#
+# Tailscale SSH is on unless asked otherwise: an initrd node exists to be logged
+# into, and enabling it here is what saves the image from needing a dropbear or
+# tinyssh of its own. '--no-ssh' is this script's own spelling -- 'tailscale up'
+# has no such flag -- so it is dropped from the arguments rather than passed on.
+TS_SSH=yes
 FOUND_HOSTNAME_IN_ARGS=no
 FOUND_SSH_IN_ARGS=no
+TS_ARGS=()
+WANT_HOSTNAME=no
+
 for arg in "$@"; do
-  if [[ $arg =~ ^(-h|--help|help)$ ]]; then
+  if [[ $WANT_HOSTNAME == yes ]]; then
+    # The value half of a space separated '--hostname NAME'.
+    WANT_HOSTNAME=no
+    TS_HOSTNAME=${arg//[\"\']/}
+    TS_ARGS+=("$arg")
+    continue
+  fi
+
+  # Matching is done with the leading dashes stripped: 'tailscale up' is a Go
+  # flag parser and takes '-ssh' and '--ssh' alike, so this script does too.
+  flag=${arg#-}
+  flag=${flag#-}
+
+  case $flag in
+  h | help)
     usage
     exit 0
-  fi
-  if [[ $arg =~ ^--hostname= ]]; then
-    TS_HOSTNAME=${arg#*=}
+    ;;
+  hostname)
+    FOUND_HOSTNAME_IN_ARGS=yes
+    WANT_HOSTNAME=yes
+    ;;
+  hostname=*)
+    TS_HOSTNAME=${flag#*=}
     TS_HOSTNAME=${TS_HOSTNAME//[\"\']/}
     FOUND_HOSTNAME_IN_ARGS=yes
-  fi
-  if [[ $arg =~ ^--ssh$ ]]; then
+    ;;
+  no-ssh)
+    TS_SSH=no
     FOUND_SSH_IN_ARGS=yes
-  fi
+    continue
+    ;;
+  ssh | ssh=*)
+    FOUND_SSH_IN_ARGS=yes
+    # The spellings Go's flag package accepts for a boolean.
+    case ${flag#ssh} in
+    '' | =1 | =t | =T | =true | =TRUE | =True) TS_SSH=yes ;;
+    *) TS_SSH=no ;;
+    esac
+    ;;
+  esac
+  TS_ARGS+=("$arg")
 done
+[[ $WANT_HOSTNAME == no ]] || die "--hostname needs a value"
+
+# Defaults are prepended, so an argument the user did pass always has the last
+# word with the flag parser on the other end.
+set -- "${TS_ARGS[@]}"
+[[ $FOUND_SSH_IN_ARGS == yes ]] || set -- --ssh "$@"
 [[ $FOUND_HOSTNAME_IN_ARGS == yes ]] || set -- --hostname="$TS_HOSTNAME" "$@"
 
 SETUPDIR="$(mktemp -d)"
 socket="${SETUPDIR}/tailscaled.sock"
 state="${SETUPDIR}/tailscaled.state"
 
-if [[ $FOUND_SSH_IN_ARGS == yes ]]; then
+if [[ $TS_SSH == yes ]]; then
+  # ssh-keygen -A writes into <prefix>/etc/ssh and will not create the directory
+  # itself. The keys are the initrd node's stable identity: generating them here,
+  # rather than letting the image make new ones on each boot, is what keeps a
+  # client from warning about a changed host key every time the machine reboots.
   mkdir -p "${SETUPDIR}/etc/ssh"
   ssh-keygen -A -f "${SETUPDIR}"
 fi
@@ -100,9 +164,17 @@ PORT="41641"
 FLAGS=""
 EOF
 
-if [[ -d "${SETUPDIR}/etc/ssh" ]]; then
+if [[ $TS_SSH == yes ]]; then
   $xsu install -o root -g root -m600 -Dt "${TS_STATEDIR}/ssh" "${SETUPDIR}/etc/ssh/"ssh_host_*_key
   $xsu install -o root -g root -m644 -Dt "${TS_STATEDIR}/ssh" "${SETUPDIR}/etc/ssh/"ssh_host_*_key.pub
+  ssh_note="  * Tailscale SSH is enabled, so you will log in with 'ssh root@${TS_HOSTNAME}'
+    and need no ssh server hook in the image. Re-run with '--no-ssh' to use your own"
+else
+  # Host keys left behind by an earlier run would otherwise be copied into every
+  # image built from here on, for an SSH server this node no longer runs.
+  $xsu rm -rf "${TS_STATEDIR}/ssh"
+  ssh_note="  * Tailscale SSH is disabled, so add an ssh server hook (dropbear or tinyssh)
+    to /etc/mkinitcpio.conf or you will have no way to enter the passphrase"
 fi
 
 info "tailscale successfully configured.
@@ -111,6 +183,8 @@ Next steps:
   * Disable key expiry for '${TS_HOSTNAME}' at https://login.tailscale.com/admin/machines
   * Review ${TS_STATEDIR}/default.env (as root)
   * Edit /etc/mkinitcpio.conf and add 'tailscale'. A safe choice is to insert it right before 'sd-encrypt' or 'encrypt*' hooks
+  * Add a network hook too -- 'sd-network' on a systemd image, 'net' or 'netconf' on a busybox one -- since nothing in mkinitcpio's stock hooks brings up an interface
+${ssh_note}
   * Run 'mkinitcpio -P' to rebuild initramfs
   * Check the README at https://github.com/dangra/mkinitcpio-tailscale for security considerations
 
