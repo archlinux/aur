@@ -1,0 +1,3 @@
+[disko-cli]
+source = "cratesio"
+cratesio = "disko-cli"

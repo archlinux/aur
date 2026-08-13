@@ -1,0 +1,21 @@
+pkgbase = disko-cli
+	pkgdesc = Disk usage TUI that shows what is full and what is using it
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/disko
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = openssl
+	makedepends = libgit2
+	depends = glibc
+	depends = gcc-libs
+	depends = libgit2
+	provides = disko
+	conflicts = disko
+	source = disko-0.8.0.crate::https://crates.io/api/v1/crates/disko-cli/0.8.0/download
+	sha256sums = f6d8f9b3d0c05786179e89045ef8220144d4497a3209c2ccb0f1165b6dbdf194
+
+pkgname = disko-cli
