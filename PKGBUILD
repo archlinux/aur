@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SOMNiBUS
-_pkgver=1.16.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -40,8 +40,8 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg38.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b2319cd864a842ba11007d3364243fc9')
-b2sums=('cb8084a59206f845658816114b0b2efad72221222944b5ef56dcb213c992498dd695ca19beeb04b07be69c5868399fbcfa5c2f35c097157a436d6125369eaeed')
+md5sums=('2a3d47efb84e87d5b15d3c281fadb420')
+b2sums=('1d00188aa88a77563b87c5a4f825ff77bbf9987703ddcceb984ced930a99037a74b74ac9f4cfba685441053552e2cb717e8c8881cf8d8f9d86acef59a0ac784a')
 
 build() {
   mkdir build
