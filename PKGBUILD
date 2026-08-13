@@ -61,9 +61,35 @@ class _StubModule(types.ModuleType):
         return stub
 sys.modules['calibre.utils.img'] = _StubModule('calibre.utils.img')
 
-# Add system sphinx to path
-for p in sorted(__import__('glob').glob('/usr/lib/python3.*/site-packages')):
-    sys.path.insert(0, p)
+# Add system sphinx to path. Use the site-packages tree matching the interpreter
+# calibre-debug is running: other trees may hold ABI-incompatible C extensions or
+# stale pure-Python packages (an orphaned python3.9 tree shadows requests with a
+# copy that does 'import cgi', removed from the stdlib in 3.13). Append rather
+# than prepend so nothing here can shadow calibre's frozen environment.
+def _sphinx_tree():
+    import glob, re
+    exact = '/usr/lib/python%d.%d/site-packages' % sys.version_info[:2]
+    if os.path.isdir(os.path.join(exact, 'sphinx')):
+        return exact
+    # Bundled python may lag the system one (e.g. after a distro python bump);
+    # that is a matter of when, not if. Fall forward to the *closest* newer tree
+    # -- never an older one (the failure mode above), and never the newest for
+    # its own sake, since every minor version of drift is more chance of sphinx
+    # using syntax or stdlib the bundled interpreter does not have. Compare
+    # numerically: '3.9' > '3.14' lexically, which is the original bug here.
+    newer = []
+    for p in glob.glob('/usr/lib/python3.*/site-packages'):
+        m = re.fullmatch(r'/usr/lib/python3\.(\d+)/site-packages', p)
+        if m and int(m.group(1)) > sys.version_info[1] and os.path.isdir(os.path.join(p, 'sphinx')):
+            newer.append((int(m.group(1)), p))
+    if not newer:
+        raise SystemExit('python-sphinx not found in %s (nor any newer system python)' % exact)
+    best = min(newer)[1]
+    print('warning: no sphinx for python%d.%d, falling forward to %s' % (sys.version_info[:2] + (best,)),
+          file=sys.stderr)
+    return best
+
+sys.path.append(_sphinx_tree())
 
 calibre_src = os.environ['CALIBRE_SRC']
 manual_dir = os.path.join(calibre_src, 'manual')
