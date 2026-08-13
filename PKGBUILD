@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RadioGx
-_pkgver=2.12.0
+_pkgver=2.16.0
 pkgname=r-${_pkgname,,}
-pkgver=2.12.0
+pkgver=2.16.0
 pkgrel=1
 pkgdesc='Analysis of Large-Scale Radio-Genomic Data'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('ea07eed3557b36ca70a3932b78ace2f2757fc1de3a135788d0442f75e3f71ecb')
+sha256sums=('25fed394c75ef6475987e5213543678bd65516efeb7f5a14ca9804cd0f5ada88')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
