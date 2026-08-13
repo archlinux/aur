@@ -1,0 +1,18 @@
+pkgbase = damas
+	pkgdesc = Checkers game: CLI, TUI and embedded web server in one binary
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/vmvarela/damas
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = damas
+	conflicts = damas
+	source = LICENSE::https://raw.githubusercontent.com/vmvarela/damas/v0.1.2/LICENSE
+	sha256sums = 17c9a39ccf9ca5789ef8f5317af6990e30d65dedc9a0b09f2fb8f2035fd9ca0f
+	source_x86_64 = damas-0.1.2-x86_64::https://github.com/vmvarela/damas/releases/download/v0.1.2/damas-x86_64-linux
+	sha256sums_x86_64 = d09a932dabef8ae6803b3df374f2562d366119590f5cdb4f9ce1245eb852d875
+	source_aarch64 = damas-0.1.2-aarch64::https://github.com/vmvarela/damas/releases/download/v0.1.2/damas-aarch64-linux
+	sha256sums_aarch64 = 043e828b42dafa27b61d636b4f49113797549f3c6f556bf4b13050ceab5e9347
+
+pkgname = damas
