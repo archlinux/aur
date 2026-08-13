@@ -2,7 +2,7 @@
 pkgname=geforcenow-electron-bin
 _pkgname="com.github.hmlendea.${pkgname%-bin}"
 _appname='GeForce NOW'
-pkgver=3.0.1
+pkgver=3.0.2
 _electronversion=39
 pkgrel=1
 pkgdesc="Linux Desktop client for Nvidia's GeForce NOW game streaming service.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_linux.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8d9784edb675a07757781689151085feb04a0c67aa7a471e253c820b9728a118'
+sha256sums=('3c4cd19ad4e4083dd00cb96ea3bc25d2f1f010715c345620a06604d2a745be9d'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
