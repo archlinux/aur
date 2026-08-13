@@ -1,0 +1,18 @@
+pkgbase = crewbeacon
+	pkgdesc = KDE Plasma 6 cockpit for AI quota, Paseo agents, attention, and usage
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Conqrex/Conqrex.CrewBeacon
+	arch = any
+	license = MIT
+	depends = plasma-workspace
+	depends = qt6-websockets
+	depends = python
+	depends = curl
+	depends = jq
+	depends = xdg-utils
+	optdepends = konsole: open agent sessions in a terminal
+	source = crewbeacon-0.1.0.tar.gz::https://github.com/Conqrex/Conqrex.CrewBeacon/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 382bdeb9803166152d04dcb588369a747bb8015003207d54fb769a40e7270358
+
+pkgname = crewbeacon
