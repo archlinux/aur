@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=deconvR
-_pkgver=1.14.2
+_pkgver=1.18.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.2
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Simulation and Deconvolution of Omic Profiles'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('62dd5cd6514e89a601006d6823a5dadbad9a19be00c964e31598ed266e7a4013')
+sha256sums=('59f87e92bc60e2cc3f223e10186d6825a18002a1c53a9a217c574e3592b6b41c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

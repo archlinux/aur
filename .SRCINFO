@@ -1,6 +1,6 @@
 pkgbase = r-deconvr
 	pkgdesc = Simulation and Deconvolution of Omic Profiles
-	pkgver = 1.14.2
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/deconvR
 	arch = any
@@ -37,7 +37,7 @@ pkgbase = r-deconvr
 	optdepends = r-roxygen2
 	optdepends = r-sessioninfo
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/deconvR_1.14.2.tar.gz
-	sha256sums = 62dd5cd6514e89a601006d6823a5dadbad9a19be00c964e31598ed266e7a4013
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/deconvR_1.18.0.tar.gz
+	sha256sums = 59f87e92bc60e2cc3f223e10186d6825a18002a1c53a9a217c574e3592b6b41c
 
 pkgname = r-deconvr
