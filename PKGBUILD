@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChIPQC
-_pkgver=1.44.0
+_pkgver=1.48.3
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.48.3
 pkgrel=1
 pkgdesc='Quality metrics for ChIPseq data'
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   r-biocstyle
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b7a40714940d62480266cbadd596fcdc115623a23d4096438fd11aa112f4bdfe')
+sha256sums=('f3b72858b9f591c28dea74bbdff8139cba625137a74f10f18911b9190290bd39')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
