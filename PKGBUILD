@@ -2,7 +2,7 @@
 # vim: ft=sh:
 
 pkgname=tabook
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Terminal-based e-book reader for FB2 and EPUB formats'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ optdepends=(
 # publishing to AUR.
 source_x86_64=("tabook-${pkgver}-linux-x64.tar.zst::https://github.com/zsh-ncursed/tabook/releases/download/v${pkgver}/tabook-${pkgver}-linux-x64.tar.zst")
 source_aarch64=("tabook-${pkgver}-linux-arm64.tar.zst::https://github.com/zsh-ncursed/tabook/releases/download/v${pkgver}/tabook-${pkgver}-linux-arm64.tar.zst")
-sha256sums_x86_64=('d27b8e15a60706ad6f2f8e3e9c9c2ecc60d305df70e5dfc1b1f5afd54b881c2b')
-sha256sums_aarch64=('8c0d49d181b47ca4507c7ec8f3e8bcdbbf0e793f93794d43c58e3a14eba220fa')
+sha256sums_x86_64=('fb9573e4f37295439c76a5f9f3bcea0edb0cca522b86feae3c82146bcecd14bf')
+sha256sums_aarch64=('9fc6469099afa7513e75c155578d437f0afc7e613dc479fc247294c83403aafe')
 
 package() {
   # The tarball carries tabook.bundle.mjs, node_modules/ (@tabook/native Rust
