@@ -1,6 +1,6 @@
 pkgbase = r-icetea
 	pkgdesc = Integrating Cap Enrichment with Transcript Expression Analysis
-	pkgver = 1.26.0
+	pkgver = 1.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/icetea
 	arch = any
@@ -29,7 +29,7 @@ pkgbase = r-icetea
 	optdepends = r-rmarkdown
 	optdepends = r-rsubread
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/icetea_1.26.0.tar.gz
-	sha256sums = c18a4a6fd3fe2e47aed47ef6f70f0c02c723e6018a454a3e9efe30c16931ad6d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/icetea_1.30.0.tar.gz
+	sha256sums = c3462a3436bb54a8bcbc56fdbee9d29c0901c6d7f1cf15e947874e32d8532f27
 
 pkgname = r-icetea
