@@ -1,0 +1,30 @@
+pkgbase = openclaw-esr
+	pkgdesc = Multi-channel AI gateway with extensible messaging integrations (extended stable release)
+	pkgver = 2026.6.33
+	pkgrel = 1
+	url = https://github.com/openclaw/openclaw
+	install = openclaw-esr.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=22
+	optdepends = 1password-cli: 1password skill
+	optdepends = curl: weather, openai-whisper-api skills
+	optdepends = ffmpeg: video-frames skill
+	optdepends = github-cli: github, gh-issues skills
+	optdepends = jq: session-logs, trello skills
+	optdepends = python-openai-whisper: openai-whisper skill
+	optdepends = ripgrep: session-logs skill
+	optdepends = tmux: tmux skill
+	optdepends = uv: nano-pdf skill
+	optdepends = go: for installing skill tools not packaged for Arch
+	provides = openclaw
+	conflicts = openclaw
+	noextract = openclaw-2026.6.33.tgz
+	options = !debug
+	options = !strip
+	source = openclaw-2026.6.33.tgz::https://registry.npmjs.org/openclaw/-/openclaw-2026.6.33.tgz
+	sha256sums = 96880d5a9fe3ef6b3d2ec0ac016e48f99fff7b1af4e22b7c814db6357c163952
+
+pkgname = openclaw-esr
