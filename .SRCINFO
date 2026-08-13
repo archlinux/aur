@@ -1,6 +1,6 @@
 pkgbase = keeperfx-tux
 	pkgver = 1.4.0.5425
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ForkedInTime/keeperfx-linux-alpha
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -45,26 +45,31 @@ pkgbase = keeperfx-tux
 
 pkgname = keeperfx-tux
 	pkgdesc = KeeperFX Tux Edition — native Linux build of the Dungeon Keeper engine remake
+	depends = libavformat.so
+	depends = libavcodec.so
+	depends = libswresample.so
+	depends = libswscale.so
+	depends = libavutil.so
+	depends = libopenal.so
+	depends = libspng.so
+	depends = libz.so
+	depends = libepoxy.so
+	depends = libminiupnpc.so
+	depends = libssl.so
+	depends = libcrypto.so
+	depends = libzstd.so
 	depends = sdl3
 	depends = sdl3_mixer
 	depends = sdl3_image
-	depends = ffmpeg
-	depends = openal
 	depends = luajit
-	depends = libspng
 	depends = minizip
-	depends = zlib
-	depends = libepoxy
-	depends = miniupnpc
 	depends = libnatpmp
-	depends = openssl
-	depends = zstd
 	depends = glibc
 	depends = gcc-libs
 	depends = bash
 	depends = hicolor-icon-theme
-	depends = keeperfx-tux-data=1.4.0.5425-1
-	depends = keeperfx-tux-launcher=1.4.0.5425-1
+	depends = keeperfx-tux-data=1.4.0.5425-2
+	depends = keeperfx-tux-launcher=1.4.0.5425-2
 	provides = keeperfx-tux=1.4.0.5425
 	conflicts = keeperfx-linux-alpha
 	conflicts = keeperfx-linux-alpha-git

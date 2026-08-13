@@ -15,7 +15,8 @@ _launcher_commit=21e3b13e8b9ef9199c8e01693d303d098aa66c07
 pkgbase=keeperfx-tux
 pkgname=('keeperfx-tux' 'keeperfx-tux-data' 'keeperfx-tux-launcher')
 pkgver=1.4.0.5425
-pkgrel=1
+# rel 2: rebuild against ffmpeg 9 and pick up the soname dependencies below.
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/ForkedInTime/keeperfx-linux-alpha"
 license=('GPL-2.0-or-later')
@@ -142,9 +143,22 @@ build() {
 package_keeperfx-tux() {
   pkgdesc="KeeperFX Tux Edition — native Linux build of the Dungeon Keeper engine remake"
   depends=(
-    'sdl3' 'sdl3_mixer' 'sdl3_image'
-    'ffmpeg' 'openal' 'luajit' 'libspng' 'minizip' 'zlib'
-    'libepoxy' 'miniupnpc' 'libnatpmp' 'openssl' 'zstd'
+    # Sonames, not package names. On a rolling distribution the package name is
+    # the wrong unit: an unversioned 'ffmpeg' let pacman move 8.1.2 -> 9.0 under
+    # an already-built package, every libav* soname the engine linked shifted at
+    # once, and the binary stopped loading -- with nothing said at upgrade time
+    # and the failure surfacing only as a "crash" when the user pressed Play.
+    # makepkg rewrites each of these from the built ELF into a versioned
+    # dependency ('libavformat.so=63-64'), so the next bump is refused by pacman
+    # before it happens: an explicit rebuild prompt instead of a broken install.
+    'libavformat.so' 'libavcodec.so' 'libswresample.so' 'libswscale.so'
+    'libavutil.so' 'libopenal.so' 'libspng.so' 'libz.so' 'libepoxy.so'
+    'libminiupnpc.so' 'libssl.so' 'libcrypto.so' 'libzstd.so'
+    # These four ship no soname in provides= at all, so they can only be named
+    # directly and stay exposed to the same failure. SDL3 holds its ABI at
+    # .so.0 by project policy and the other three are low-churn, which is why
+    # ffmpeg is the one that actually bit.
+    'sdl3' 'sdl3_mixer' 'sdl3_image' 'luajit' 'minizip' 'libnatpmp'
     # Implicit but real: the engine links these, the wrapper is a bash script,
     # and the icons need the hicolor theme hierarchy to exist.
     'glibc' 'gcc-libs' 'bash' 'hicolor-icon-theme'
