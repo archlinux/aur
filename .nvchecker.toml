@@ -1,0 +1,5 @@
+[quick-send-bin]
+source = "github"
+github = "israelyago/QuickSend"
+use_latest_release = true
+prefix = "app-v"

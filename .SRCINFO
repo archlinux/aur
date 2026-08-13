@@ -1,6 +1,6 @@
 pkgbase = quick-send-bin
 	pkgdesc = Send files peer to peer
-	pkgver = 0.2.1
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/israelyago/QuickSend
 	arch = x86_64
@@ -13,13 +13,13 @@ pkgbase = quick-send-bin
 	depends = pango
 	depends = cairo
 	depends = openssl
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = gdk-pixbuf2
 	depends = libsoup
 	depends = gtk3
-	provides = quick-send
+	provides = quicksend
 	conflicts = quick-send
-	source = https://github.com/israelyago/QuickSend/releases/download/app-v0.2.1/quick-send_0.2.1_amd64.deb
-	sha256sums = efa5bce7e4513328b47c4719b3427e0b75683d22feb73b186866113cc1abdecf
+	source = https://github.com/israelyago/QuickSend/releases/download/app-v0.3.4/quicksend_0.3.4_amd64.deb
+	sha256sums = 1a826e1af606e582444ade7c4f9a06ccdebc6f896523c0a751cfbd8de95cfdca
 
 pkgname = quick-send-bin
