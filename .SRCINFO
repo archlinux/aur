@@ -1,6 +1,6 @@
 pkgbase = r-normr
 	pkgdesc = Normalization and difference calling in ChIP-seq data
-	pkgver = 1.34.0
+	pkgver = 1.38.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/normr
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = r-normr
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/normr_1.34.0.tar.gz
-	sha256sums = 880edc65ac2eb1868174728b991cd104292c538a52c95c76a7e7b2da7d31c495
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/normr_1.38.1.tar.gz
+	sha256sums = 840acf6aee280821c19b84fa296e7712642b0199ce3a46912d075b3b1318cfbd
 
 pkgname = r-normr
