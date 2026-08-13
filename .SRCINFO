@@ -1,6 +1,6 @@
 pkgbase = r-ribodipa
 	pkgdesc = Differential pattern analysis for Ribo-seq data
-	pkgver = 1.16.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RiboDiPA
 	arch = x86_64
@@ -26,8 +26,8 @@ pkgbase = r-ribodipa
 	depends = r-txdbmaker
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RiboDiPA_1.16.0.tar.gz
-	md5sums = 8d4f447cb5646697ebefa102a1815bbe
-	b2sums = 9064448e27e7889e1ad2cbd7f24358b8b695229490983850e7b72ef2df075156f9571de330b683204d16c4f0bacb10efe1ebd308cd919c57e87b1e1d14889823
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RiboDiPA_1.20.0.tar.gz
+	md5sums = 849254a451b7561dd6a47fa75c9d4d3d
+	b2sums = 9f18710df86c4b41c017d9676043e871cc7ea189693976fe21d76bed0e35b3443282ea9654269e6aea6681d797814e09e5658d3b6f1070e32f4a0fe063f2cecf
 
 pkgname = r-ribodipa
