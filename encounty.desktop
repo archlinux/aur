@@ -5,5 +5,4 @@ Exec=/usr/bin/encounty %U
 Icon=encounty
 Type=Application
 Terminal=false
-Categories=Game;Utility;
-MimeType=x-scheme-handler/encounty;
+Categories=Game;
