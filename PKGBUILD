@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=panp
-_pkgver=1.80.0
+_pkgver=1.82.0
 pkgname=r-${_pkgname,,}
-pkgver=1.80.0
+pkgver=1.82.0
 pkgrel=1
 pkgdesc='Presence-Absence Calls from Negative Strand Matching Probesets'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   r-gcrma
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('dc6e467db546858a6f89b514921af500418181069225e3fef98873acd79d513f')
+sha256sums=('f202d95d976ab4bc38301804d31aaa13ea521aca975f4cad88073576297dacea')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
