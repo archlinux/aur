@@ -1,18 +1,14 @@
 # Maintainer: Floofy floofyiv9@proton.me
 pkgname=spencers-macro-git
-pkgver=3.2.1.r270.g1c2e3c0
+pkgver=3.3.0.r15.fe47b8f
 pkgrel=1
 pkgdesc="Spencer Macro Utilities (git version)"
 arch=('x86_64')
 url="https://github.com/Spencer0187/Spencer-Macro-Utilities"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=('spencers-macro')
-conflicts=('spencer-macro')
+conflicts=('spencers-macro')
 depends=(
-  'alsa-lib'
-  'libpulse'
-  'jack2'
-  'sndio'
   'libx11'
   'libxext'
   'libxrandr'
@@ -21,16 +17,16 @@ depends=(
   'libxi'
   'libxss'
   'libxtst'
+  'libxinerama'
   'libxkbcommon'
-  'libdrm'
-  'libxcb'
-  'mesa'
-  'dbus'
-  'ibus'
-  'systemd-libs'
-  'libthai'
-  'fribidi'
   'libglvnd'
+  'mesa'
+  'libpipewire'
+  'dbus'
+  'libei'
+  'systemd-libs'
+  'gcc-libs'
+  'glibc'
 )
 makedepends=(
   'base-devel'
@@ -38,6 +34,12 @@ makedepends=(
   'cmake'
   'pkg-config'
   'go'
+  'pipewire'
+  'libei'
+)
+optdepends=(
+  'pipewire: Wayland screen pixel reads via PipeWire ScreenCast'
+  'libei: Wayland RemoteDesktop EIS input support'
 )
 source=(
   "$pkgname::git+https://github.com/Spencer0187/Spencer-Macro-Utilities.git"
@@ -52,11 +54,12 @@ sha256sums=(
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  local ver
-  if ver=$(git describe --tags --long 2>/dev/null); then
-    printf '%s' "$ver" | sed -E 's/^[vV]//; s/-([0-9]+)-g/.r\1.g/'
+  if git describe --tags --long --match='[vV][0-9]*' 2>/dev/null |
+    grep -q .; then
+    git describe --tags --long --match='[vV][0-9]*' |
+      sed -E 's/^[vV]//; s/-([0-9]+)-g([0-9a-f]+)$/.r\1.\2/'
   else
-    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
 
@@ -67,33 +70,42 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  mkdir -p build && cd build
+
   export HOME="$srcdir/.gohome"
   export GOCACHE="$srcdir/.gocache"
-  mkdir -p "$HOME" "$GOCACHE"
+  export GOTMPDIR="$srcdir/.gotmp"
+  mkdir -p "$HOME" "$GOCACHE" "$GOTMPDIR"
 
-  cmake .. \
+  cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DSMU_BUNDLE_SDL3=ON \
-    -DSMU_LINK_SDL3_STATIC=OFF
-  cmake --build . --target package-linux-dir --parallel "$(nproc)"
+    -DSMU_LINK_SDL3_STATIC=OFF \
+    -DSMU_ENABLE_SOURCE_TREE_FALLBACK=OFF
+
+  cmake --build build --target package-linux-dir --parallel "$(nproc)"
 }
 
 package() {
+  # The package-linux-dir target writes here:
   local pkgDir="$srcdir/$pkgname/build/SpencerMacroUtilities"
   local instDir="$pkgdir/usr/lib/spencers-macro"
 
   install -d "$instDir"
-  cp -r "$pkgDir"/. "$instDir/"
-  chmod 755 "$instDir/suspend" "$instDir/nethelper" 2>/dev/null || true
+  cp -a "$pkgDir/." "$instDir/"
+
+  chmod 755 \
+    "$instDir/suspend" \
+    "$instDir/run.sh" \
+    "$instDir/scripts/install_linux_permissions.sh"
+  [[ -f "$instDir/nethelper" ]] && chmod 755 "$instDir/nethelper"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/spencers-macro" <<'EOF'
-#!/usr/bin/env bash
-set -euo pipefail
-cd /usr/lib/spencers-macro
-exec /usr/lib/spencers-macro/suspend "$@"
+#!/bin/bash
+exec /usr/lib/spencers-macro/run.sh "$@"
 EOF
 
-  install -Dm644 "$srcdir/spencers-macro.desktop" "$pkgdir/usr/share/applications/spencers-macro.desktop"
-  install -Dm644 "$srcdir/spencers-macro.png" "$pkgdir/usr/share/pixmaps/spencers-macro.png"
+  install -Dm644 "$srcdir/spencers-macro.desktop" \
+    "$pkgdir/usr/share/applications/spencers-macro.desktop"
+  install -Dm644 "$srcdir/spencers-macro.png" \
+    "$pkgdir/usr/share/pixmaps/spencers-macro.png"
 }
