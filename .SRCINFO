@@ -1,6 +1,6 @@
 pkgbase = python-invocation-tree
 	pkgdesc = Generate an invocation tree of functions calls
-	pkgver = 0.0.39
+	pkgver = 0.0.41
 	pkgrel = 1
 	url = https://github.com/bterwijn/invocation_tree
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-invocation-tree
 	makedepends = python-installer
 	depends = python
 	depends = python-graphviz
-	source = https://files.pythonhosted.org/packages/source/i/invocation_tree/invocation_tree-0.0.39.tar.gz
-	sha256sums = 0ceda5f1bb3fad3e8aed79c454f2556335bb8b0cc7ca6ae1552d16a4e5fcc34b
+	source = https://files.pythonhosted.org/packages/source/i/invocation_tree/invocation_tree-0.0.41.tar.gz
+	sha256sums = c2d31c1d0415d45c424670cf6cb335f6c4a445570507881a9e3f170f30ebd078
 
 pkgname = python-invocation-tree
