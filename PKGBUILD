@@ -1,7 +1,7 @@
 # Maintainer: Adiker
 
 pkgname=freetype2-qdoled-gen3
-pkgver=2.14.1
+pkgver=2.14.3
 pkgrel=1
 pkgdesc="freetype optimized for QD-OLED Gen3 panels (like AW2725D) subpixel layout"
 url="https://www.freetype.org/"
@@ -30,7 +30,7 @@ source=(
   0004-QD-OLED-subpixel.patch
   freetype2.sh
 )
-b2sums=('1dc62d337a93ca94f93496e60bdf9cbabed5867d66bb2f07669f1b5f81ef16f6cc57c401f51bb62d919680316f73902fafb6a167c45183872faaf984840b5ec7'
+b2sums=('26db1946b099abc73d9d249dc48303e70886e0b1cb7180d5b9538b3934dc677a1572a32573af6adabeeb1c1a2eef81f24399038d3d8e640c29bba77f6c8a3596'
         'b7e3b72e2d6aed548c1762a16ee08ac47a05caf29c5d37ef03c6791e6dbd109fdfef0b246540c35e968d54f2103b70e80eccff72ac54d34224c6d064aa53d720'
         'b83a599da8eef1c39a268482db8e82f03a2c9b68850a0ec782e9839e7b45a3b0f989d997647eb55e5b18f2fe0c988e73f0ec6c4eb4c0787689f9e0213faa4320'
         'd1620e2d1501833244b712e3bec2dff9324fa353d3cda41d568f52adf8b093ac6ccbe56acd98a3fbd7dff3d47bf57d6afbdaea39fe8dc02a6685eb5b4f1481cb'
