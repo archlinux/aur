@@ -1,6 +1,6 @@
 pkgbase = r-affydata
 	pkgdesc = Affymetrix Data for Demonstration Purpose
-	pkgver = 1.58.0
+	pkgver = 1.60.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/affydata
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = r-affydata
 	depends = r-affy
 	optdepends = r-hgu133acdf
 	optdepends = r-hgu95av2cdf
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/affydata_1.58.0.tar.gz
-	sha256sums = 7e31585a575d628d87e922c2679b32995ac5cab0d493321fe0a1c3a3041ad6cf
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/affydata_1.60.0.tar.gz
+	sha256sums = d165f4f668c8aba39c10253627add11c592137affb5e7e2c5f4789f42ed95342
 
 pkgname = r-affydata
