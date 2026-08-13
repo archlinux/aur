@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pmp
-_pkgver=1.20.0
+_pkgver=1.24.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Peak Matrix Processing and signal batch correction for metabolomics datasets'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('660abd487c2c4189ce4a881e94e0930985a8086128cd7483429a1c95d0550410')
+sha256sums=('7374f14eb039590dfc5ec689ab7c1ec9506fc237f34eee6191dd05cb7308a7c4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

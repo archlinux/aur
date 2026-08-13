@@ -1,6 +1,6 @@
 pkgbase = r-pmp
 	pkgdesc = Peak Matrix Processing and signal batch correction for metabolomics datasets
-	pkgver = 1.20.0
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/pmp
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-pmp
 	optdepends = r-magick
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/pmp_1.20.0.tar.gz
-	sha256sums = 660abd487c2c4189ce4a881e94e0930985a8086128cd7483429a1c95d0550410
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/pmp_1.24.0.tar.gz
+	sha256sums = 7374f14eb039590dfc5ec689ab7c1ec9506fc237f34eee6191dd05cb7308a7c4
 
 pkgname = r-pmp
