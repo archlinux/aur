@@ -1,6 +1,6 @@
 pkgbase = pshash-bin
 	pkgdesc = A functional pseudo-hash password generator
-	pkgver = 0.1.20.0
+	pkgver = 0.1.20.1
 	pkgrel = 1
 	url = https://github.com/thornoar/pshash
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = pshash-bin
 	provides = pshash
 	conflicts = pshash
 	options = !strip
-	source = LICENSE-0.1.20.0::https://raw.githubusercontent.com/thornoar/pshash/v0.1.20.0/LICENSE
-	source = README-0.1.20.0::https://raw.githubusercontent.com/thornoar/pshash/v0.1.20.0/README.md
+	source = LICENSE-0.1.20.1::https://raw.githubusercontent.com/thornoar/pshash/v0.1.20.1/LICENSE
+	source = README-0.1.20.1::https://raw.githubusercontent.com/thornoar/pshash/v0.1.20.1/README.md
 	sha256sums = 92e498dfdf4478c5d306c11af29b375797420464964efda7329d27a8025af6bb
-	sha256sums = fa7621e72d610fb4a6d4b9dc33fa522c21cdf2f8351c5796b934860d3166cd25
-	source_x86_64 = pshash-0.1.20.0::https://github.com/thornoar/pshash-bin/raw/refs/heads/master/pshash-static.0.1.20.0.x86_64-linux
-	sha256sums_x86_64 = e280fa6b225b1bc0114420b839182a18a4ccc882094dec0c1278ee8df231cc23
+	sha256sums = b95e68d91dc057e4eaed17d8a766c4a3619e25c6e9dfce6b5cfdd1946040fc13
+	source_x86_64 = pshash-0.1.20.1::https://github.com/thornoar/pshash-bin/raw/refs/heads/master/pshash-static.0.1.20.1.x86_64-linux
+	sha256sums_x86_64 = 74a029400ad2e7cc9e15149ca7fb545f09738a1f0e37f6082f5d011e2a64ecc3
 
 pkgname = pshash-bin
