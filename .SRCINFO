@@ -1,6 +1,6 @@
 pkgbase = r-fusesom
 	pkgdesc = A Correlation Based Multiview Self Organizing Maps Clustering For IMC Datasets
-	pkgver = 1.10.0
+	pkgver = 1.14.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/FuseSOM
 	arch = x86_64
@@ -25,8 +25,8 @@ pkgbase = r-fusesom
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-singlecellexperiment
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/FuseSOM_1.10.0.tar.gz
-	md5sums = 3155b95a89e4294a23ad6878a0701ed9
-	b2sums = 46c70e8a323c5451fbc8aa6ba5cc79d9c9f23f74ac3ccbcc6376c37104a5ce3fcdc81b9da993da0a4b92aef6dd60a67566190e2a4ffa1abe56f697014f82eb3f
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/FuseSOM_1.14.0.tar.gz
+	md5sums = 113fef0579fe37a493526b9f34b7564e
+	b2sums = da9f68190146403b309690021051fc34b0a3f1d6a0c17c22437113304b40cd2325286f789ca4a6bd9348156c86c84b62a5d054f0297d93a9aeb3d5fcd4faeb98
 
 pkgname = r-fusesom
