@@ -1,21 +1,21 @@
 pkgbase = colortxt-bin
 	pkgdesc = A local TXT novel reader that will color the content, bringing you a different reading experience!一款会给内容上色的本地 TXT 小说阅读器，带给你不一样的阅读体验(Prebuilt version.Use system-wide electron)
-	pkgver = 3.6.3
+	pkgver = 3.6.6
 	pkgrel = 1
 	url = https://github.com/ssnangua/ColorTxt
 	arch = aarch64
 	arch = x86_64
 	license = MPL-2.0
 	depends = electron35
-	provides = colortxt=3.6.3
+	provides = colortxt=3.6.6
 	conflicts = colortxt
-	source = LICENSE-3.6.3::https://raw.githubusercontent.com/ssnangua/ColorTxt/v3.6.3/LICENSE
+	source = LICENSE-3.6.6::https://raw.githubusercontent.com/ssnangua/ColorTxt/v3.6.6/LICENSE
 	source = colortxt.sh
 	sha256sums = 3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = colortxt-3.6.3-aarch64.AppImage::https://github.com/ssnangua/ColorTxt/releases/download/v3.6.3/colortxt-3.6.3-arm64.AppImage
-	sha256sums_aarch64 = 56ea6f23380ba46ec16b6349b1ebcc2d64a8c74838930a3d17a89ddae83e0ac1
-	source_x86_64 = colortxt-3.6.3-x86_64.AppImage::https://github.com/ssnangua/ColorTxt/releases/download/v3.6.3/colortxt-3.6.3-x86_64.AppImage
-	sha256sums_x86_64 = 7076776d49724bfc1b3a40e21539b3a5943d7ef85d28cb0214d21d3de9f30a2f
+	source_aarch64 = colortxt-3.6.6-aarch64.AppImage::https://github.com/ssnangua/ColorTxt/releases/download/v3.6.6/colortxt-3.6.6-arm64.AppImage
+	sha256sums_aarch64 = b23815f9477ea9d553522a4520fd2cd2a23e479be82655c0470e6e099b62e1ea
+	source_x86_64 = colortxt-3.6.6-x86_64.AppImage::https://github.com/ssnangua/ColorTxt/releases/download/v3.6.6/colortxt-3.6.6-x86_64.AppImage
+	sha256sums_x86_64 = 3398a94e9cda6bb697ca6377e9f705f1c463865b45568d138651f8f2cb4bc7ac
 
 pkgname = colortxt-bin
