@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affylmGUI
-_pkgver=1.84.0
+_pkgver=1.86.0
 pkgname=r-${_pkgname,,}
-pkgver=1.84.0
+pkgver=1.86.0
 pkgrel=1
 pkgdesc='GUI for limma Package with Affymetrix Microarrays'
 arch=('any')
@@ -24,7 +24,7 @@ depends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c9cad1f257ee02e40748f3e906c23767404dc8860be4d03b5011748d81e9ee66')
+sha256sums=('65c1037462bf51e8104ff6ea9f15fb5a32d8aeac7f21f36e7c6464ada9914b49')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
