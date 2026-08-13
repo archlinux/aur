@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=trezor-suite-bin
 _pkgname=Trezor-Suite
-pkgver=26.7.4
+pkgver=26.8.1
 _electronversion=42
 pkgrel=1
 pkgdesc="Desktop app for Trezor hardware wallets.(Prebuilt version.Use system-wide electron)"
@@ -13,7 +13,11 @@ url="https://trezor.io/trezor-suite"
 _ghurl="https://github.com/trezor/trezor-suite"
 license=('LicenseRef-T-RSL')
 provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
+conflicts=(
+    "${pkgname%-bin}"
+    "${pkgname%-bin}-appimage"
+)
+replaces=()
 depends=(
     "electron${_electronversion}"
     'trezor-udev'
@@ -29,8 +33,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('0bb9e6855d6aa4f013a87ed9ceb2ef47b6eddc44858cc85ed3faf5d53677f67a'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('c4412b73dbd457b55928c364ae7dc81a27f8824412ef74e1c14589df625d1512')
-sha256sums_x86_64=('666f58dcab10596f626fe22bc7df4e4027226f21fe5dc14bc5d66a5c0180dd3b')
+sha256sums_aarch64=('6ee0f8b30930f98d400c421107a2a4bde1c64c3d45c06b6e567f2638e726257d')
+sha256sums_x86_64=('e422c6c17682b7e824aec84c6ba054e49d6f2c21939a8971b8b4cad1bb8cf840')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -80,8 +84,8 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    local _app_dir=$(_get_app_dir)
+    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
