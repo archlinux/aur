@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly
 pkgname=('shelly' 'shelly-flatpak-backend')
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
@@ -12,7 +12,7 @@ makedepends=('git' 'pkgconf' 'gtk4' 'zig>=0.16' 'clang' 'gettext' 'flatpak' 'rip
 # Source tarball from GitHub release
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/archive/v${pkgver}.tar.gz")
 
-sha256sums=('e3f45ea0a8e2697e19a1a8d5be2dc7cbda6b56f0ba6212079fa2da9fc8d340e4')
+sha256sums=('3f7e231cc7522a1e7644cde1f848218f6a3260c44b45394513473752fa2e7e96')
 # GitHub replaces "+" with "-" in archive top-level directory names.
 _source_dir="Shelly-ALPM-${pkgver//+/-}"
 
