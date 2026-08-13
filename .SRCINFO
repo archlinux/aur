@@ -1,0 +1,17 @@
+pkgbase = python-extra-streamlit-components
+	pkgdesc = Extra UI components for Streamlit: tab bar, stepper bar, cookie manager, router
+	pkgver = 0.1.81
+	pkgrel = 1
+	url = https://github.com/Mohamed-512/Extra-Streamlit-Components
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-streamlit
+	source = https://files.pythonhosted.org/packages/source/e/extra_streamlit_components/extra_streamlit_components-0.1.81.tar.gz
+	sha256sums = eb9beb7bacfe8b3d238f1888a21c78ac6cfa569341be484bca08c3ea0b15f20d
+
+pkgname = python-extra-streamlit-components
