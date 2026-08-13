@@ -1,6 +1,6 @@
 pkgbase = cpa-usage-keeper-systemd-bin
 	pkgdesc = CPA usage persistence and analytics dashboard (prebuilt binary with systemd service)
-	pkgver = 1.14.2
+	pkgver = 1.14.4
 	pkgrel = 1
 	url = https://github.com/Willxup/cpa-usage-keeper
 	install = cpa-usage-keeper.install
@@ -18,9 +18,9 @@ pkgbase = cpa-usage-keeper-systemd-bin
 	sha256sums = bb8358668d819291ca111df9ba81dbbbcc7ee47f2bae22fce8da616aca2a2ad7
 	sha256sums = 881ae236ce3f3e5c1bf8aa806a288ac67accf1a0bb848fd4baa3d16df84d81a0
 	sha256sums = 69319d4ab7251749afddd8cdb697020a438b18e93edc6bfaac7db4ebe10608cd
-	source_x86_64 = cpa-usage-keeper-systemd-bin-1.14.2-amd64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.14.2/cpa-usage-keeper_v1.14.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6bcc5755ed342ed8a389ca4103dc2d57d1c1578d64b6b4726eb311de7d93f911
-	source_aarch64 = cpa-usage-keeper-systemd-bin-1.14.2-arm64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.14.2/cpa-usage-keeper_v1.14.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 4b29ab7c8f287052670ee2aebca7def8f7ae67835b535766a4b8a400fb9b1da0
+	source_x86_64 = cpa-usage-keeper-systemd-bin-1.14.4-amd64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.14.4/cpa-usage-keeper_v1.14.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 70370486eff075c371236a6ba0c76b68a1aaa6417a3d97ef684fb1591cafc799
+	source_aarch64 = cpa-usage-keeper-systemd-bin-1.14.4-arm64.tar.gz::https://github.com/Willxup/cpa-usage-keeper/releases/download/v1.14.4/cpa-usage-keeper_v1.14.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4f72783ce498a569ec73172c5be052a4f57033637b0678c03fdbc780f5570d10
 
 pkgname = cpa-usage-keeper-systemd-bin
