@@ -1,18 +1,18 @@
 pkgbase = trc-git
 	pkgdesc = Yandex Tracker CLI (git version)
-	pkgver = 0.2.r3.g1b1464d
+	pkgver = 0.3.2.r0.g42ab279
 	pkgrel = 1
-	url = https://github.com/fgazat/trc
+	url = https://github.com/GoldenDeals/trc
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	provides = trc=0.2.r3.g1b1464d
+	provides = trc=0.3.2.r0.g42ab279
 	conflicts = trc
 	options = !lto
-	source = trc::git+https://github.com/fgazat/trc.git
+	source = trc::git+https://github.com/GoldenDeals/trc.git
 	sha256sums = SKIP
 
 pkgname = trc-git

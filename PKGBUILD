@@ -2,11 +2,11 @@
 
 pkgname=trc-git
 _pkgname=trc
-pkgver=0.2.r3.g1b1464d
+pkgver=0.3.2.r0.g42ab279
 pkgrel=1
 pkgdesc='Yandex Tracker CLI (git version)'
 arch=('x86_64' 'aarch64')
-url='https://github.com/fgazat/trc'
+url='https://github.com/GoldenDeals/trc'
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
@@ -36,7 +36,7 @@ build() {
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=-linkmode=external"
 
-	go build -o build/$_pkgname .
+	go build -o build/$_pkgname ./cmd/trc
 
 	local shell
 	for shell in bash zsh fish; do
