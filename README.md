@@ -1,17 +1,18 @@
-# arch-manwarn-aur
+# arch-manwarn-bin-aur
 
-PKGBUILD Mirror
+PKGBUILD mirror for the `arch-manwarn-bin` AUR package.
 
-How to update package on the aur:
+How to update the package on the AUR:
 
-```
-# Edit PKGBUILD manually (update version, source, etc.)
+```bash
+# Edit PKGBUILD manually:
+# update pkgver, source, and sha256sums if necessary
 
 updpkgsums
 
 makepkg --printsrcinfo > .SRCINFO
 
-git add .
+git add PKGBUILD .SRCINFO README.md
 git commit -m "Update PKGBUILD version, checksums, and .SRCINFO"
 
 git push aur master

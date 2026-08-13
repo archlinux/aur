@@ -18,14 +18,14 @@ source=(
 sha256sums=('978a904290294ede22993d5549498fe3b35e0664dc14383d8dd470912cf75cf3')
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/arch-manwarn"
 
   install -Dm755 \
     "arch-manwarn" \
     "$pkgdir/usr/bin/arch-manwarn"
 
   install -Dm644 \
-    "hooks/arch-manwarn.hook" \
+    "hooks/00-arch-manwarn.hook" \
     "$pkgdir/usr/share/libalpm/hooks/arch-manwarn.hook"
 
   install -Dm644 \
