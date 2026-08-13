@@ -1,0 +1,9 @@
+[Unit]
+Description=Restart piped-backend.service.
+
+[Timer]
+OnBootSec=1h
+OnUnitActiveSec=1h
+
+[Install]
+WantedBy=timers.target

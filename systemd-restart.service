@@ -1,0 +1,7 @@
+[Unit]
+Description=Run piped-backend-restart.service periodically
+After=piped-backend.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl restart piped-backend.service
