@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="The fastest coding agent — desktop app and terminal edition"
 arch=('x86_64')
 url="https://www.codewithbullet.com/"
-license=('custom')
+license=('LicenseRef-custom')
 depends=(
   'alsa-lib'
   'at-spi2-core'
@@ -58,7 +58,10 @@ package() {
     chmod 4755 "${pkgdir}/opt/Bullet/chrome-sandbox"
   fi
 
-  # Install license
+  # Upstream ships no license of its own; install the bundled component
+  # notices so /usr/share/licenses/ is not empty for this custom license.
   install -Dm644 "${pkgdir}/opt/Bullet/LICENSE.electron.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
+  install -Dm644 "${pkgdir}/opt/Bullet/LICENSES.chromium.html" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
 }
