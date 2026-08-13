@@ -8,7 +8,7 @@
 
 pkgname=pikvm-bin
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PiKVM ATX power control — terminal UI and CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/j4y-w4lk3r/pikvm"
@@ -16,6 +16,8 @@ license=('MIT')
 provides=('pikvm')
 conflicts=('pikvm')
 optdepends=(
+    '1password-cli: auto-load pikvm1/pikvm2 credentials from 1Password'
+    'tailscale: resolve PiKVM host IPs from the tailnet'
     'fzf: fuzzy port/iso/script picker'
     'ffmpeg: ffplay HDMI stream view'
     'mpv: alternate HDMI stream view'
