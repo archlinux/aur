@@ -9,7 +9,7 @@ _suffix=browser
 pkgname="obs-studio-${_suffix}"
 _pkgver=32.2.0
 pkgver="${_pkgver//-/_}"
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -45,7 +45,7 @@ depends=(
   "libxcomposite" # Deps of the X11 capture plugin
   "libxkbcommon" # Deps of libobs, OBS Studio and CEF
   "luajit" # Deps of Scripting plugin
-  "mbedtls>=$_mbedtlsver" # Deps of OBS Studio and Outputs plugin
+  "mbedtls3>=$_mbedtlsver" # Deps of OBS Studio and Outputs plugin
   "pciutils" # Deps of FFmpeg plugin
   "python>=$_pythonver" # Deps of Scripting plugin
   "qrcodegencpp-cmake" # Deps of Websocket plugin
@@ -137,6 +137,11 @@ prepare() {
 
   # Keep sentinel file functional without messing with compile flags
   sed -i "s|#ifndef NDEBUG|#if 0|" frontend/utility/CrashHandler.cpp
+
+  # Ensure MbedTLS 3 is picked
+  sed -i "s|find_package(MbedTLS|find_package(MbedTLS 3...<4|" frontend/cmake/feature-whatsnew.cmake
+  sed -i "s|find_package(MbedTLS|find_package(MbedTLS 3...<4|" plugins/obs-outputs/CMakeLists.txt
+  rm cmake/finders/FindMbedTLS.cmake
 }
 
 build() {
@@ -151,6 +156,8 @@ build() {
     -DCEF_ROOT_DIR="$srcdir/cef_binary_6533_linux_${CARCH/%_v?/}" \
     -DOBS_VERSION_OVERRIDE="$_pkgver" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
+    -DCMAKE_INCLUDE_PATH="/usr/include/mbedtls3;/usr/include" \
+    -DMbedTLS_ROOT="/usr/lib/mbedtls3/cmake/MbedTLS" \
     -Wno-dev
 
   cmake --build build
