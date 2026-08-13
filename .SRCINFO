@@ -1,6 +1,6 @@
 pkgbase = python-rich-inquirer
 	pkgdesc = Interactive CLI prompts using Rich and readchar, inspired by python-inquirer
-	pkgver = 0.1.6
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/chosey0/rich-inquirer
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-rich-inquirer
 	depends = python-rich
 	depends = python-readchar
 	depends = python-rapidfuzz
-	source = https://files.pythonhosted.org/packages/source/r/rich_inquirer/rich_inquirer-0.1.6.tar.gz
-	sha256sums = cfa9f8f342ede0ac7483c609457a5aec2669ca25ef2a1b5bba861c01e61bc2f5
+	source = https://files.pythonhosted.org/packages/source/r/rich_inquirer/rich_inquirer-0.1.10.tar.gz
+	sha256sums = 3ded128f2f38f1f71d14455fd58a954c317bed512a6904d2e8281c26246bbcf3
 
 pkgname = python-rich-inquirer
