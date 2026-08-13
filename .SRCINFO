@@ -1,7 +1,7 @@
 pkgbase = hax
 	pkgdesc = Minimalist, terminal-native coding agent written in C
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OleksandrChekhovskyi/hax
 	arch = x86_64
 	arch = aarch64
