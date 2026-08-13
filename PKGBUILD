@@ -6,14 +6,14 @@ pkgname=(
   $pkgbase
   $pkgbase-server
 )
-pkgver=0.76.3
+pkgver=0.77.0
 pkgrel=1
 url='https://netbird.io'
 arch=(i686 pentium4 x86_64 arm armv7h armv6h aarch64 riscv64)
 makedepends=('go')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/netbirdio/netbird/archive/refs/tags/v$pkgver.tar.gz"
         "netbird-server.service")
-sha256sums=('09512367617d50bd11eed5be47da0020c79497adcb1be2f9b423209c86a86075'
+sha256sums=('f27f5f5f853b74891838a781eb7a18ba7475375cbf69e9f3bf5c3721a7f0a4c2'
             '6e42973058b2db1a167ac110692d02c57b93d29ce6f68d8d5f8b91babcd856c9')
 
 prepare() {
