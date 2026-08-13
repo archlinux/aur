@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=lemur
-_pkgver=1.6.1
+_pkgver=1.10.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,12 +10,10 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('MIT')
 depends=(
-  blas
   r-biocgenerics
   r-biocneighbors
   r-delayedmatrixstats
   r-glmgampoi
-  r-harmony
   r-hdf5array
   r-irlba
   r-limma
@@ -27,6 +25,7 @@ depends=(
   r-singlecellexperiment
   r-summarizedexperiment
   r-vctrs
+  blas
 )
 makedepends=(
   r-rcpparmadillo
@@ -40,14 +39,14 @@ optdepends=(
   r-dplyr
   r-edger
   r-knitr
-  r-rmarkdown
+  r-quarto
   r-testthat
   r-tidyverse
   r-uwot
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5dea419c3db2ad11d1762a8e8dbe5804')
-b2sums=('8c595f69348f6259e4c1c7684b7ca115baea0824cb9f3ad0cb03f3986f731ebb540176f61648cca4771a4dd26cc4350d7daabb88b8e54fb828d1e637f44c1360')
+md5sums=('9245f92c672547fad3ddf5a8f8d3d641')
+b2sums=('8e45cff6bfd3bfc77a55a81b1c8cf0fa490d0028e5710339d37183e9f5fe5cb3b6ea9209dfaafaf3f95c95a0e2c6b51a1f4bf4d23b29565e6e73b28ea3cbb047')
 
 build() {
   mkdir build
