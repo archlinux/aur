@@ -3,7 +3,7 @@
 # Maintainer: Denis Proskurin <dpvpro [AT] gmail [dot.] com>
 
 pkgname=dms
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="UPnP DLNA Digital Media Server"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -12,7 +12,7 @@ license=(BSD)
 depends=(glibc)
 makedepends=(go)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/anacrolix/dms/archive/v${pkgver}.tar.gz")
-sha256sums=('696f49409e4b079ca76ed0b836134f5d34558027ca1346b4d224353151def0d9')
+sha256sums=('a536c7b73eef88264732360bd508a7cfa0cb3a8a8bd1883e424bc7401f3fdb35')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
