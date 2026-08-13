@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=YAPSA
-_pkgver=1.34.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Yet Another Package for Signature Analysis'
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8bf45d6e1f47023751e135953348fecf1e207b1d696132f1b316aeeea22116c5')
+sha256sums=('087ee996c30c2cee9493fe218461b76bcf754885255d93a55d0bcaa8e36c307b')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
