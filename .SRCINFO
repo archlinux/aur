@@ -1,6 +1,6 @@
 pkgbase = parsync-bin
 	pkgdesc = Parallel rsync-like pull sync over SSH with resume
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/AlpinDale/parsync
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = parsync-bin
 	depends = libgcc
 	provides = parsync
 	conflicts = parsync
-	source_x86_64 = parsync-x86_64-0.2.0.tgz::https://github.com/AlpinDale/parsync/releases/download/v0.2.0/parsync-v0.2.0-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 5716b5a5b0f4496f94d4190c8d14c5ae71c906f081e587f78c2bafde24db50aa
-	source_aarch64 = parsync-aarch64-0.2.0.tgz::https://github.com/AlpinDale/parsync/releases/download/v0.2.0/parsync-v0.2.0-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 7a8b1974f0e7e3218935f2f510ffc4b3e7761212dae77ca43556e5e56750023f
+	source_x86_64 = parsync-x86_64-0.3.0.tgz::https://github.com/AlpinDale/parsync/releases/download/v0.3.0/parsync-v0.3.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 47e7ead4d64546aeaee106c37248c0d97b2e3caef2e24281919f01cc0178bade
+	source_aarch64 = parsync-aarch64-0.3.0.tgz::https://github.com/AlpinDale/parsync/releases/download/v0.3.0/parsync-v0.3.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 7d04f531bc393b3f0fd7e437108a7689818f7afa5c2e0c1af269ce9ef5d05375
 
 pkgname = parsync-bin

@@ -5,7 +5,7 @@ _pkgname=parsync
 pkgname=${_pkgname}-bin
 pkgdesc="Parallel rsync-like pull sync over SSH with resume"
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ depends=('glibc' 'libgcc')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('5716b5a5b0f4496f94d4190c8d14c5ae71c906f081e587f78c2bafde24db50aa')
-sha256sums_aarch64=('7a8b1974f0e7e3218935f2f510ffc4b3e7761212dae77ca43556e5e56750023f')
+sha256sums_x86_64=('47e7ead4d64546aeaee106c37248c0d97b2e3caef2e24281919f01cc0178bade')
+sha256sums_aarch64=('7d04f531bc393b3f0fd7e437108a7689818f7afa5c2e0c1af269ce9ef5d05375')
 
 
 package() {
