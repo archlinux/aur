@@ -1,0 +1,14 @@
+pkgbase = miniprot
+	pkgdesc = Protein-to-genome aligner with high splicing (intron) accuracy
+	pkgver = 0.18
+	pkgrel = 1
+	url = https://github.com/lh3/miniprot
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	provides = miniprot
+	conflicts = miniprot
+	source = miniprot-0.18.tar.gz::https://github.com/lh3/miniprot/archive/v0.18.tar.gz
+	sha256sums = e1b5c08571fa3a4aa225da8ec9c6e744cd116b4dc50d9e187114cffe336921ee
+
+pkgname = miniprot
