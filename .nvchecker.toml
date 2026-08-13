@@ -1,0 +1,5 @@
+[puffin-bin]
+source = "github"
+github = "siddhantac/puffin"
+use_latest_release = true
+prefix = "v"
