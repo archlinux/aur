@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=corral
-_pkgver=1.18.0
+_pkgver=1.22.0
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc='Correspondence Analysis for Single Cell Data'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2ddafcfe263ba6f03f03290ef1a3b8a8aeb0f1a8e054903628abc5f46f6fa82b')
+sha256sums=('c6de00d987e1e76ece24259a0166a5d53b9b571c85a1ad9b804ff0087f7206e0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
