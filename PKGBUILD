@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSstats
-_pkgver=4.16.1
+_pkgver=4.20.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,7 +10,6 @@ arch=(x86_64)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('Artistic-2.0')
 depends=(
-  blas
   r-checkmate
   r-data.table
   r-ggplot2
@@ -24,7 +23,9 @@ depends=(
   r-plotly
   r-preprocesscore
   r-rcpp
+  r-rlang
   r-statmod
+  blas
 )
 makedepends=(
   r-rcpparmadillo
@@ -32,16 +33,16 @@ makedepends=(
 optdepends=(
   r-biocstyle
   r-covr
+  r-kableextra
   r-knitr
   r-markdown
+  r-mockery
   r-rmarkdown
   r-tinytest
-  r-mockery
-  r-kableextra
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('966af9665c43bbf74e19f98f1aa1755d')
-b2sums=('968c1eb6f09a9895a5f3dab91896ba5f3105a29799faec2c9af5bd5a3d7a678b326d1253e76ad721bda7ffdb7ffd1213f0c82e3672747a28f12904a937eacd3a')
+md5sums=('48d2663cb141681cd8b2c314282334c0')
+b2sums=('a38bbe838a104a5e09dbdba8284b5d2936570fa105e860226da6e507e841c23314c2aa5934daeb0b6a778e38933c34a80b90ff9e2419ab5d558c279de65bec78')
 
 build() {
   mkdir build
