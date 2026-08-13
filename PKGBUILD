@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=bamsignals
-_pkgver=1.40.0
+_pkgver=1.44.1
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.44.1
 pkgrel=1
 pkgdesc='Extract read count signals from bam files'
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('aae3b6877437085ef67b5e07728d9e4f148e82bd05fbd2e24536e7c123d3552e')
+sha256sums=('e69033211615fd4f0dbcadec6c18867ecf001f0cf403f1df72036dd872d23b64')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
