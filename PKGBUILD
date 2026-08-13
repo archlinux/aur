@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SubCellBarCode
-_pkgver=1.26.0
+_pkgver=1.28.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.28.0
 pkgrel=1
 pkgdesc='SubCellBarCode: Integrated workflow for robust mapping and visualizing whole human spatial proteome'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('b078f04c2e30b7927ca07fb360f4516093ed0320a032e395904b3bfca57540b0')
+sha256sums=('c35ff007cb68134873fe911163d9aa0f136644f9c4a952f7ada2a96245df1b49')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
