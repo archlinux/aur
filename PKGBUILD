@@ -2,7 +2,7 @@
 
 pkgname=lmm-api-web-bin
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc='LMM API production web frontend (prebuilt)'
 arch=('any')
 url='https://github.com/LIghtJUNction/api.lmm.best'
@@ -20,12 +20,14 @@ source=(
   "${_artifact}::${_release_base}/${_artifact}"
   "${_artifact}.sha256::${_release_base}/${_artifact}.sha256"
   "${_artifact}.sigstore.json::${_release_base}/${_artifact}.sigstore.json"
+  'lmm-api-web-activate'
 )
 noextract=("${_artifact}")
 sha256sums=(
   '11049debe99afd497c4ce3229080ad8cce761ee437937a0bd7b66417d3b94ccb'
   '7fd14e0c67acd217a8f6d40514ea5ee6a15b3a4115a5ee4b527c80114b7ccbc5'
   'deee72b8a125c80ffb20d14721b40d32205bc787a3cb861df32e14bf4d0784db'
+  'd45a54f1d4119f944c8dda1858706c8d0ade8f083a33feb3d981dbcaf8dc13b6'
 )
 
 prepare() {
@@ -41,9 +43,10 @@ prepare() {
       "${url}/.github/workflows/release-web.yml@refs/tags/${_release_tag}" \
     --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' \
     "${_artifact}"
+  cp -- lmm-api-web-activate lmm-api-web-activate.local
   bsdtar -xf "${_artifact}"
   [[ -f ${srcdir}/dist/index.html ]]
-  [[ -x ${srcdir}/lmm-api-web-activate ]]
+  [[ -x ${srcdir}/lmm-api-web-activate.local ]]
   [[ -x ${srcdir}/frontend-release.sh ]]
   ! find "${srcdir}/dist" -type l -print -quit | grep -q .
 }
@@ -55,7 +58,7 @@ package() {
   find "${pkgdir}/usr/share/lmm-api-web/frontend-dist" -type d -exec chmod 0755 {} +
   find "${pkgdir}/usr/share/lmm-api-web/frontend-dist" -type f -exec chmod 0644 {} +
 
-  install -Dm0755 "${srcdir}/lmm-api-web-activate" \
+  install -Dm0755 "${srcdir}/lmm-api-web-activate.local" \
     "${pkgdir}/usr/lib/lmm-api-web/lmm-api-web-activate"
   install -Dm0755 "${srcdir}/frontend-release.sh" \
     "${pkgdir}/usr/lib/lmm-api-web/frontend-release.sh"
