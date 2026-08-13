@@ -1,6 +1,6 @@
 # Maintainer: Samuel Paredes <sam.paredes.g@gmail.com>
 pkgname=franki-os-git
-pkgver=r1064.9190e4f
+pkgver=r1067.b57f680
 pkgrel=1
 pkgdesc="Federated Recursive Artificial Neural Knowledge Interface - Neural OS"
 arch=('x86_64')
@@ -190,6 +190,10 @@ package() {
     # pensado para usarse tras reinstalar el paquete (ver comentario en el script)
     install -Dm755 "$srcdir/franki/backend/bin/franki-restart-all" \
         "$pkgdir/usr/bin/franki-restart-all"
+    # franki-stop-all: apagado completo (incluye Sinapsis Externa, WA/TG),
+    # sin relanzar la GUI -- ver comentario en el script
+    install -Dm755 "$srcdir/franki/backend/bin/franki-stop-all" \
+        "$pkgdir/usr/bin/franki-stop-all"
 
     # 9. Regla udev para uinput (Manos — captura de teclado/raton en Wayland)
     echo 'KERNEL=="uinput", GROUP="uinput", MODE="0660", OPTIONS+="static_node=uinput"' \
