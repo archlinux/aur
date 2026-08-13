@@ -1,0 +1,19 @@
+pkgbase = folia-major
+	pkgdesc = Lyrics Reimagine desktop app.(Use system-wide electron)
+	pkgver = 0.6.17
+	pkgrel = 1
+	url = https://folia-site.cielaniska.top/
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = jq
+	depends = electron43
+	source = folia-major-0.6.17.tar.gz::https://github.com/chthollyphile/folia-major/archive/refs/tags/v0.6.17.tar.gz
+	source = folia-major.sh
+	sha256sums = d2ecb93e6dd3c78291ad6814911311e31b1ba72cc85cd27f9832b577e2a0af38
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = folia-major
