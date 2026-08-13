@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://git.projekt-hirnfrei.de/diabolus/BareC
 sha256sums=('04b11561920101b0444e5427e50658886d1fc62018426586fe512e405f2dc0e6')  # Nach erstem Download ersetzen: sha256sum barecode-1.1.0.tar.gz
 
 build() {
-    cd "BareCode"
+    cd "barecode"
     cmake -B build \
         -G Ninja \
         -DCMAKE_BUILD_TYPE=Release \
