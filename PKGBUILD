@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=trackViewer
-_pkgver=1.44.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,6 +26,7 @@ depends=(
   r-rtracklayer
   r-s4vectors
   r-scales
+  r-seqinfo
   r-strawr
   r-txdbmaker
 )
@@ -43,8 +44,8 @@ optdepends=(
   r-variantannotation
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7aacff2683f4d8fed340223e70ed17dc')
-b2sums=('a060dfd2f55c6052bc529e72fc2dd61c73e94d6ee622f30185f18c59ed58f2ce1c3d8eaedefaa957d3f02092d4fd0d1bfb11577b3555c13b7811750dfaab4bf0')
+md5sums=('0617a9fc933cd1f220372919ddbd6391')
+b2sums=('89c170cf9e3ddcb0b703ff359cf8103b4d960f0299ae168639a699233c157bb6120a494dcbe9ae461a528cfb15a63cd553ae5c9b07263a83352e4aca67f82516')
 
 build() {
   mkdir build
