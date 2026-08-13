@@ -1,7 +1,7 @@
 # Maintainer: Raimar Buehmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=ais-catcher
-pkgver=0.65
+pkgver=0.70
 pkgrel=1
 pkgdesc='Receiver for Automatic Identifaction System of boats using an SDR device (RTL-SDR, AirSpy, HackRF, ...)'
 arch=('i686' 'x86_64')
@@ -25,14 +25,14 @@ optdepends=(
 	'bladerf: BladeRF backend'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9af45bda03a9dff0e9597f24411d0c390295f522bba8903cfdaa441b8b74e26d')
+sha256sums=('e74af11d28c2a9739d4dc5de390ca208959171dd729585744864c65eafba85b7')
 build() {
 	cd AIS-catcher-$pkgver
-	cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .
-	cd build
-	cmake --build .
+	cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
 package() {
 	cd AIS-catcher-$pkgver
 	DESTDIR="$pkgdir" cmake --install build
 }
+
