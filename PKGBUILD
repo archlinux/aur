@@ -1,24 +1,24 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=FCPS
-_pkgver=1.3.4
+_pkgver=1.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Fundamental Clustering Problems Suite"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('GPL-3.0-only')
 depends=(
-  pandoc
   r-datavisualizations
   r-ggplot2
   r-mclust
+  pandoc
 )
 optdepends=(
   r-abcanalysis
-  r-adpclust
   r-apcluster
+  r-aricode
   r-cclust
   r-cec
   r-clusterability
@@ -27,6 +27,7 @@ optdepends=(
   r-clustmixtype
   r-clustrd
   r-clustvarsel
+  r-consensusclusterplus
   r-databionicswarm
   r-dbscan
   r-dendextend
@@ -53,11 +54,11 @@ optdepends=(
   r-paralleldist
   r-partitioncomparison
   r-pdfcluster
+  r-pfclust
   r-plotly
   r-ppci
   r-prabclus
   r-pracma
-  r-prclust
   r-projectionbasedclustering
   r-protoclust
   r-r.utils
@@ -68,14 +69,13 @@ optdepends=(
   r-smacof
   r-sparcl
   r-spectrum
-  r-subspace
   r-tclust
   r-varsellcm
   r-yardstick
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('749ba6fd6322916b39cfcbc8843280a8')
-b2sums=('0d822e5c94194edca9738be6c939a190f1b66820a8df173fd99d301e7744b497312e467d4a903cd9421661159b5a502c799bf94e0e35caf8d1fb89f86a26ad99')
+md5sums=('fc43876737d1ef5dc3d25534baab9087')
+b2sums=('67e5dddad1ba3a579d3b12082d56cd043a4585242627dfd6173a7072178bdfa16deaee421c14d83faeb4210654991cfed2678f5f1d47d31e7f9e3ce5229f92e0')
 
 build() {
   mkdir build
