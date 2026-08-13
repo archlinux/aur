@@ -1,6 +1,6 @@
 pkgbase = hostman-bin
 	pkgdesc = A simple file host manager for various image hosting services
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/keircn/hostman
 	changelog = changelog.md
@@ -15,12 +15,12 @@ pkgbase = hostman-bin
 	provides = hostman
 	conflicts = hostman
 	source = fix_libncurses_x86_64.patch
-	source = MAN-1.2.6.1::https://raw.githubusercontent.com/keircn/hostman/v1.2.6/man/hostman.1
-	source = MAN-CONFIG-1.2.6.5::https://raw.githubusercontent.com/keircn/hostman/v1.2.6/man/hostman-config.5
-	sha256sums = e0e9081ab0803c530dbd3291b6d76b28a8837645b75e38aa64684267c76aec61
-	sha256sums = d01fa445be92a98ffad2d9efecd787666dd301a678c209756db8c9a74ff47dd1
+	source = MAN-1.2.7.1::https://raw.githubusercontent.com/keircn/hostman/v1.2.7/man/hostman.1
+	source = MAN-CONFIG-1.2.7.5::https://raw.githubusercontent.com/keircn/hostman/v1.2.7/man/hostman-config.5
+	sha256sums = b7851dffb7953f4ad33ad6b49b137d0a1ce3e00dec85bb5407b5f37d85cccfb7
+	sha256sums = 4f7cf901ba0fb7e9f3c655b72579b648c61798b1f3b888edd29dd3b9b865a9d8
 	sha256sums = b04f38243a5041fc3dce4e28924e13eb036e4750012eec032197e4b90dea0ad8
-	source_x86_64 = https://github.com/keircn/hostman/releases/download/v1.2.6/hostman-linux-x64.tar.gz
-	sha256sums_x86_64 = 2708dafa3f141c8c35d5390dfa6fc65816a6f09ca69ef47388e6a9552b2460cd
+	source_x86_64 = https://github.com/keircn/hostman/releases/download/v1.2.7/hostman-linux-x64.tar.gz
+	sha256sums_x86_64 = 4f4d919daca4ec5847294aa4d45ecfd0227a151035aac02b3432ccaec7f40ffd
 
 pkgname = hostman-bin
