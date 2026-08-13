@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=issie-bin
-pkgver=6.0.14
+pkgver=6.0.17
 _electronversion=43
 pkgrel=1
 pkgdesc="An intuitive cross-platform hardware design application."
@@ -13,19 +13,18 @@ _ghurl="https://github.com/tomcl/issie"
 license=('GPL-3.0-only')
 conflits=("${pkgname%-bin}")
 depends=(
-    'gtk3'
-    'alsa-lib'
-    'nss'
     "electron${_electronversion}"
 )
 makedepends=(
     'gendesk'
+    'asar'
 )
-noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.zip")
+source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.zip")
-sha256sums_aarch64=('54798586228f0b35dc4c14796cc1bcb7fa210f2c43b81bbd0cd443e7109d1de2')
-sha256sums_x86_64=('4a80924a361095bfc8ae08394e163115824f70f59a5fa8fc8826d84372776fab')
+sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_aarch64=('5b0229f75c4467ec7a572d48eb7d3a040e5fa59245f583619883215cdb8cbd80')
+sha256sums_x86_64=('2b5e3e5f3546b6633b64d8237a02ecae0c5ad646668baf5c73f8f369be77e968')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -40,22 +39,20 @@ _check_electron_version() {
         echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
-    install -Dm755 -d "${srcdir}/usr/lib/${pkgname%-bin}"
-    bsdtar -xf "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.zip" -C "${srcdir}/usr/lib/${pkgname%-bin}"
     _check_electron_version
-    local _app_dir=$(_get_app_dir)
-    _file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome_crashpad_handler chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
-        libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
-    for _files in "${_file_list[@]}";do
-        rm -rf "${_app_dir}/${_files}"
-        ln -sf "/usr/lib/electron${_electronversion}/${_files}" "${_app_dir}/${_files}"
-    done
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
         --pkgdesc="${pkgdesc}" \
         --categories="Utility" \
         --name="${pkgname%-bin}" \
         --exec="${pkgname%-bin} --no-sandbox %U"
+    local _app_dir=$(_get_app_dir)
     rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{android-*,darwin-*,win32-*}
     case "${CARCH}" in
         aarch64)
@@ -65,11 +62,20 @@ prepare() {
             rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/usb/prebuilds/"{linux-arm*,linux-ia32}
             ;;
     esac
+    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${_app_dir}/resources/app.asar"
+    # Fix: Inject 'const path = require("path");' at the top of index.js to fix "path is not defined" error
+    sed -i '1s/^/const path = require("path");\n/' "${srcdir}/app.asar.unpacked/build/index.js"
+    # Fix: Replace process.defaultApp with ELECTRON_IS_DEV env var for dev mode detection
+    sed -i 's/process\.defaultApp === true/process.env.ELECTRON_IS_DEV !== "0"/' "${srcdir}/app.asar.unpacked/build/index.js"
+    find "${srcdir}/app.asar.unpacked/build" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
+    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
 }
 package() {
-    cp -a "${srcdir}/usr" "${pkgdir}"
-    install -Dm755 -d "${pkgdir}/usr/bin"
-    ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/resources/static/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    local _app_dir=$(_get_app_dir)
+    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_app_dir}/resources/static/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
 }
