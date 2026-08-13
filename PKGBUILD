@@ -4,7 +4,7 @@
 pkgname=python-colored
 _name=${pkgname#python-}
 pkgver=2.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple python library for color and formatting to terminal"
 arch=('any')
 url="https://dslackw.gitlab.io/colored"
@@ -39,7 +39,7 @@ check() {
   cd "$_name-$pkgver"
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -P -m pytest
+  test-env/bin/python -I -m pytest
 }
 
 package() {
