@@ -4,7 +4,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _pkgname=recipes
-_pkgver=1.3.1
+_pkgver=1.3.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,13 +26,13 @@ depends=(
   r-magrittr
   r-purrr
   r-rlang
+  r-sparsevctrs
   r-tibble
   r-tidyr
   r-tidyselect
   r-timedate
   r-vctrs
   r-withr
-  r-sparsevctrs
 )
 checkdepends=(
   r-ddalpha
@@ -55,10 +55,13 @@ optdepends=(
   r-covr
   r-ddalpha
   r-dials
+  r-dimred
+  r-fastica
   r-ggplot2
   r-igraph
   r-kernlab
   r-knitr
+  r-mixomics
   r-modeldata
   r-parsnip
   r-rann
@@ -72,8 +75,8 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d35db42364aabb4cdeb02b958fae4b87')
-b2sums=('946cafc171b350dd44851aca621e91486a2d3283e8c02d5883f8224e3ab2d4f3faf96e1934d1ac4f647daef78ec1751c0b084c78f791c4cfebc34533f2feae90')
+md5sums=('4f4b2cb7b29f330ae61b1b3e8caee36c')
+b2sums=('0a1b50f84a99d7f6bd3b4032d211c99b3aaeedd5293808a3a38ae46ab8f39b81f2b7b56dfa2f1df2a464ed96cf3c646bcbf70e0295945cf74483b7c211ac5c96')
 
 build() {
   mkdir build
