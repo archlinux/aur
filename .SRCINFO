@@ -1,0 +1,14 @@
+pkgbase = tomloader
+	pkgdesc = Utility to create and manage systemd unit files
+	pkgver = v0.3.0
+	pkgrel = 1
+	url = https://codeberg.org/Loara/tomloader
+	arch = x86_64
+	license = EUPL-1.2
+	makedepends = cargo
+	depends = libgcc
+	depends = glibc
+	source = tomloader-622eef1ece2c6b5b66682e12db5eef41d9626102e40dfd5b2e90d2c1627a21fd::git+https://codeberg.org/Loara/tomloader.git#tag=622eef1ece2c6b5b66682e12db5eef41d9626102e40dfd5b2e90d2c1627a21fd
+	b2sums = b6c56262c514e4ceb10c36b8466516db040a5652dd6b5ef169ac9f750302e84520c5a8633a4d3a08546543194d54329c0883e3594f7a609f31aa5227c51ae633
+
+pkgname = tomloader
