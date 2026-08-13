@@ -2,7 +2,7 @@
 # Contributor: Michael Riegert <michael at eowyn net>
 
 pkgname=python-pycdlib
-pkgver=1.16.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Python library to read and write ISOs'
 arch=(any)
@@ -11,7 +11,7 @@ license=(LGPL-2.1-or-later)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('4665920ad8ae4df1a2436a8a77158736936c409e124f5409801f7250b0a8bf0a1b219031475e07e9a68cb469361b131a5fdf65191f7ab4a096cbab7e46ec833f')
+sha512sums=('8508f0077c4f24bcfb18fff7f371db7b4555543c0e53eff4457b18207589c4a60a1ec9bea66c8faa9ccfe17b6b7ab06ec79f9963ac28f06fd2144e1dc56c085a')
 
 build() {
     cd "pycdlib-$pkgver"
