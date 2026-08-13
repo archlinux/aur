@@ -2,7 +2,7 @@
 
 pkgbase=python-luwen
 pkgname=(python-luwen luwencpp)
-pkgver=0.8.5
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Python package for the tenstorrent system interface library"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/tenstorrent/luwen'
 license=('Apache')
 makedepends=(gcc rust make python python-pip maturin python-installer protobuf)
 depends=()
-provides=("python-luwen=$pkgver")
+provides=('python-luwen=0.8.5')
 source=("luwen::git+https://github.com/tenstorrent/luwen.git")
 sha256sums=('SKIP')
 
