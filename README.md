@@ -129,6 +129,30 @@ lsinitcpio -l /boot/initramfs-linux.img | grep tailscale
 tailscale status | grep -- -initrd    # from any other node on your tailnet
 ```
 
+### Give yourself more than 90 seconds
+
+On a systemd-based initramfs, whatever device `root=` names is a systemd device
+unit, and systemd gives up on a device after 90 seconds
+(`DefaultDeviceTimeoutSec`). That device only appears once the passphrase has
+been entered, so the clock is running while you are still reaching for a
+terminal. When it expires the mount jobs fail and the initramfs drops to
+emergency mode; the passphrase prompt is still there, but answering it no longer
+resumes the boot.
+
+Whether it bites depends on how `root=` is written. `systemd-cryptsetup`
+disables the timeout for the device it unlocks itself, so `root=/dev/mapper/root`
+is safe. `root=UUID=<filesystem uuid>`, or an LVM volume on top of LUKS, is not:
+that device unit is a different one, and it keeps the default. Removing the
+limit costs nothing where it was not needed, so add it to your boot loader entry
+either way:
+
+```text
+rootflags=x-systemd.device-timeout=0
+```
+
+This is a systemd-initramfs concern only — the busybox `encrypt` and
+`encryptssh` hooks have no such timeout.
+
 ### Tailscale SSH server
 
 Tailscale includes a built-in SSH server, and `setup-initcpio-tailscale` turns it

@@ -73,22 +73,36 @@ build() {
 
 help() {
 	cat <<-__EOF_HELP__
-		This hook enables tailscale service within initramfs.
+		This hook starts tailscaled inside the initramfs, so the machine joins your
+		tailnet before the root filesystem is unlocked.
 
-		It copies all required files and binaries to initramfs and runs the Tailscale agent.
-		Configuration is copied from the host into the initramfs per:
+		It copies the required files and binaries into the image. Configuration is
+		taken from the host:
 
-			* /etc/initcpio/tailscale/tailscaled.state to /var/lib/tailscale/tailscaled.state
+		   * /etc/initcpio/tailscale/tailscaled.state
+		     to /var/lib/tailscale/tailscaled.state
 
-			* /etc/initcpio/tailscale/default.env to /etc/default/tailscaled
+		   * /etc/initcpio/tailscale/default.env
+		     to /etc/default/tailscaled
 
-		It works with both, systemd and busybox init systems; whatever you choose remember to also configure a network hook -- nothing in mkinitcpio's stock hooks brings up an interface, and tailscaled cannot do anything without an address.
+		Run /usr/bin/setup-initcpio-tailscale first if you have not already: it
+		registers the initrd node and writes both files.
 
-		A ssh server hook is not needed: setup-initcpio-tailscale enables Tailscale's own SSH server unless it was run with '--no-ssh'.
+		Works with systemd and busybox init alike. On a systemd-based initramfs,
+		list 'tailscale' AFTER 'systemd'. This hook decides which kind of image it
+		is building by looking for helpers the 'systemd' hook defines, so listing it
+		earlier silently produces the busybox layout -- an image that builds cleanly
+		and never connects.
 
-		For systemd init, see 'sd-network' and 'sd-tinyssh' hooks provided by mkinitcpio-systemd-extras package.
+		Configure a network hook as well. None of mkinitcpio's stock hooks bring up
+		an interface, and tailscaled can do nothing without an address: 'sd-network'
+		(mkinitcpio-systemd-extras) for systemd init, 'net' (mkinitcpio-nfs-utils)
+		or 'netconf' (mkinitcpio-extras) for busybox init.
 
-		Run /usr/bin/setup-initcpio-tailscale if you haven't already to initialize the configuration files at /etc/initcpio/tailscale/.
+		An SSH server hook is not needed: setup-initcpio-tailscale enables
+		Tailscale's own SSH server. Only if you ran it with '--no-ssh' do you need
+		one of your own -- 'sd-tinyssh' (mkinitcpio-systemd-extras), or 'dropbear'
+		or 'tinyssh' (mkinitcpio-extras).
 
 		For more check https://github.com/dangra/mkinitcpio-tailscale
 	__EOF_HELP__
