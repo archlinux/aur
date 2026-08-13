@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-liberty
 pkgver=32.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
 url="https://github.com/obsproject/obs-studio"
@@ -39,7 +39,7 @@ depends=(
   "libxcomposite" # Deps of the X11 capture plugin
   "libxkbcommon" # Deps of libobs, OBS Studio and CEF
   "luajit" # Deps of Scripting plugin
-  "mbedtls>=$_mbedtlsver" # Deps of OBS Studio and Outputs plugin
+  "mbedtls3>=$_mbedtlsver" # Deps of OBS Studio and Outputs plugin
   "pciutils" # Deps of FFmpeg plugin
   "python>=$_pythonver" # Deps of Scripting plugin
   "qrcodegencpp-cmake" # Deps of Websocket plugin
@@ -114,25 +114,57 @@ prepare() {
 
 }
 
+# build() {
+#
+#   cmake -B build -S obs-studio \
+#     -DCMAKE_BUILD_TYPE=Release \
+#     -DCMAKE_INSTALL_PREFIX=/usr \
+#     -DCMAKE_INSTALL_LIBDIR=lib \
+#     -DENABLE_LIBFDK=ON \
+#     -DENABLE_JACK=ON \
+#     -DENABLE_SNDIO=ON \
+#     -DENABLE_AJA=OFF \
+#     -DENABLE_BROWSER=ON \
+#     -DENABLE_NVENC=ON \
+#     -DCEF_ROOT_DIR="$srcdir/${_cefver/%_v?/}" \
+#     -DOBS_VERSION_OVERRIDE="$pkgver" \
+#     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
+#     -Wno-dev
+#
+#   cmake --build build
+# }
+
 build() {
 
-  cmake -B build -S obs-studio \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DENABLE_LIBFDK=ON \
-    -DENABLE_JACK=ON \
-    -DENABLE_SNDIO=ON \
-    -DENABLE_AJA=OFF \
-    -DENABLE_BROWSER=ON \
-    -DENABLE_NVENC=ON \
-    -DCEF_ROOT_DIR="$srcdir/${_cefver/%_v?/}" \
-    -DOBS_VERSION_OVERRIDE="$pkgver" \
-    -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
-    -Wno-dev
+local cmake_options=(
+    -B build
+    -S obs-studio
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_INSTALL_LIBDIR=lib
+    -DENABLE_LIBFDK=ON
+    -DENABLE_JACK=ON
+    -DENABLE_SNDIO=ON
+    -DENABLE_AJA=OFF
+    -DENABLE_BROWSER=ON
+    -DENABLE_NVENC=ON
+    -DCEF_ROOT_DIR="$srcdir/${_cefver/%_v?/}"
+    -DOBS_VERSION_OVERRIDE="$pkgver"
+    -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON
 
+    # Support mbedtls 3
+    -DMbedTLS_DIR="/usr/lib/mbedtls3/cmake/MbedTLS"
+    -DMbedTLS_INCLUDE_DIR="/usr/include/mbedtls3"
+    -DMbedtls_LIBRARY="/usr/lib/mbedtls3/libmbedtls.so"
+    -DMbedcrypto_LIBRARY="/usr/lib/mbedtls3/libmbedcrypto.so"
+    -DMbedx509_LIBRARY="/usr/lib/mbedtls3/libmbedx509.so"
+
+    -Wno-dev
+)
+  cmake "${cmake_options[@]}"
   cmake --build build
 }
+
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
