@@ -1,7 +1,7 @@
 pkgbase = multica-desktop-bin
 	pkgdesc = The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills - Desktop GUI
 	pkgver = 0.4.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/multica-ai/multica
 	arch = x86_64
 	arch = aarch64
