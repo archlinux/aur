@@ -3,13 +3,13 @@
 
 _basename=koharu
 pkgname=${_basename}-bin
-pkgver=0.61.2
-pkgrel=2
+pkgver=0.66.4
+pkgrel=1
 pkgdesc="Manga translation tools"
 arch=("x86_64")
 url="https://github.com/mayocream/koharu"
 license=("GPL-3.0")
-depends=()
+depends=("gtk3" "gdk-pixbuf2" "glib2" "fontconfig" "openssl" "gcc-libs")
 optdepends=(
   "llama.cpp: local LLM"
   "stable-diffusion.cpp: local image impainting"
@@ -17,25 +17,13 @@ optdepends=(
 provides=("$_basename")
 conflicts=("$_basename")
 options=("!debug")
+makedepends=("libarchive")
 
-_execname="${_basename}-${pkgver}"
+source=("$_basename-${pkgver}.deb::https://github.com/mayocream/koharu/releases/download/${pkgver}/koharu_${pkgver}_amd64.deb")
 
-source=(
-  "$_execname::https://github.com/mayocream/koharu/releases/download/${pkgver}/koharu_linux_x64"
-  "koharu.desktop"
-  "koharu.png"
-)
-
-sha256sums=('3cc82727a584eed122fadff61e6d7244991b5ffcaa004ab3a4ff606e934dd944'
-            'cf0fde21f3a870444960834d8f321bc785e7848e3852c2d844f3c70d66f6b54b'
-            '31a76300030d9ae3e855180165966f76f710a9282cbb38796b5869881712eef0')
+sha256sums=('323e2a3f9bc38f96067e3e06364975dbc21983c6dc38706e1cfe43031e912545')
 
 package() {
-  install -Dm755 "$srcdir/$_execname" "$pkgdir/usr/bin/$_basename"
-
-  install -Dm644 "$srcdir/koharu.desktop" \
-    "$pkgdir/usr/share/applications/koharu.desktop"
-
-  install -Dm644 "$srcdir/koharu.png" \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/koharu.png"
+  bsdtar -xf "$srcdir/$_basename-${pkgver}.deb" data.tar.gz
+  bsdtar -xf data.tar.gz -C "$pkgdir"
 }

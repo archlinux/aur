@@ -1,9 +1,0 @@
-[Desktop Entry]
-Categories=
-Comment=Manga translation tools
-Exec=koharu
-StartupWMClass=koharu
-Icon=koharu
-Name=koharu
-Terminal=false
-Type=Application
