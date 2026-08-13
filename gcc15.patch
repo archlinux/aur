@@ -1,0 +1,12 @@
+diff --git a/include/retdec/demangler/borland_ast_parser.h b/include/retdec/demangler/borland_ast_parser.h
+index 32dd2d44..67585ed4 100644
+--- a/include/retdec/demangler/borland_ast_parser.h
++++ b/include/retdec/demangler/borland_ast_parser.h
+@@ -7,6 +7,7 @@
+ #ifndef RETDEC_BORLAND_AST_PARSER_H
+ #define RETDEC_BORLAND_AST_PARSER_H
+ 
++#include <cstdint>
+ #include <llvm/Demangle/StringView.h>
+ 
+ #include "retdec/demangler/context.h"
