@@ -1,7 +1,7 @@
 # Maintainer: VisorCraft Packages <packages@visorcraft.com>
 
 pkgname=mongrel
-pkgver=5.71.39
+pkgver=5.71.40
 pkgrel=1
 pkgdesc="Desktop control plane for databases, APIs, terminals, containers, and Kubernetes"
 arch=(x86_64)
@@ -14,7 +14,7 @@ source_x86_64=(
   "$pkgname-$pkgver.AppImage.sig::https://downloads.visorcraft.com/mongrel/$pkgver/Mongrel_${pkgver}_amd64.AppImage.sig"
 )
 sha256sums_x86_64=(
-  "0dc49a11fea8391a9a4d9474c433321c1db765ee950c9cd322549561e5131e65"
+  "472b18c87bcf3e002c7c6d7ed5093184db734715e36d7f3b2c1cfef4d8686756"
   "SKIP"
 )
 validpgpkeys=("1FEE29F48CBCAEDCA3A8A005ADDE097CAA99B277")
