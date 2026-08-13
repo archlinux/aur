@@ -3,7 +3,7 @@
 # Upstream author: Umputun <https://github.com/umputun>
 
 pkgname=revdiff-bin
-pkgver=1.11.1
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="TUI for reviewing diffs, files, and documents with inline annotations"
 arch=(x86_64 aarch64)
@@ -18,10 +18,10 @@ source=("LICENSE-MIT-$pkgver::$url/raw/v$pkgver/LICENSE"
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/revdiff_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/revdiff_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('155d97114b2d9b7f66181d0ba258aca57f97b8b957dd1662745bf57218c41ef3'
-            '85b8591a8aad9144f6bb87526a5f1847a5e7c4807113c3efff7774bca56e7c0c'
-            '7480dfc603fdcf3ac9ea2b660fd0c1a2ed1c6e4426476ba9c08f348798667990')
-sha256sums_x86_64=('7958a6bef723267fed18b0be96476bb767636afe966338ed7e370c0a506fd54c')
-sha256sums_aarch64=('87c522516e2d0ef113b74ff729a1e9072aad9958f1aeb6836b90d2b8fa2e0762')
+            'cde46c44fd8bd257356c624bbd4286c8597802b69c53ab474630e3c5d4804dbc'
+            '23318ee8bc3ae7aa5c95c7b87b6ac6056a0e5f202579bc974a14452307543d96')
+sha256sums_x86_64=('3b36478c3b9d6c6f5557515fed876e88ce1c3d14564714a3ed5aefb903cc7154')
+sha256sums_aarch64=('57ab7e55b7d5b9f0cd03935946d333a66ddc4fd4efe019b987e185a72fc354e1')
 
 package() {
     install -Dm755 revdiff -t "$pkgdir/usr/bin/"
