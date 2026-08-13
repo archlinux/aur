@@ -1,7 +1,7 @@
 pkgbase = nym-vpn-app-nightly-bin
 	pkgdesc = NymVPN desktop client (Nightly)
 	pkgver = 2026.13.0
-	pkgrel = 20260812
+	pkgrel = 20260813
 	url = https://github.com/nymtech/nym-vpn-client
 	arch = x86_64
 	license = GPL-3.0-only
@@ -18,10 +18,10 @@ pkgbase = nym-vpn-app-nightly-bin
 	provides = nym-vpn-app
 	conflicts = nym-vpn-app
 	options = !debug
-	source = https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.13.0-nightly.20260812/nym-vpn_2026.13.0-nightly.20260812_linux_x64
+	source = https://github.com/nymtech/nym-vpn-client/releases/download/nym-vpn-v2026.13.0-nightly.20260813/nym-vpn_2026.13.0-nightly.20260813_linux_x64
 	source = nym-vpn.desktop
 	source = nym-vpn.svg
-	b2sums = 89e28bddbb6306bfa27d5da6a83a9a7fb5def4ce9bc58b9f2b9c83df6e1dca58796babde6631daf9fe1605b5c90cbc3bc83ce9233e3dbd0e34b11d34abd63802
+	b2sums = f223629fd7eefaafd007d7b63f4df28c39fd5540a6be1c64bd1d0c993d72ca7ce9644f41c4e45e2114e91592984024e1b61062342002b901b7a47d52909c7cf0
 	b2sums = 06b6825c83001d825ae8d6a4d5020c52c82c6637ba4fb66ec546dc55aa30002c3c2503d0cc95850333810ec956450991fa8262962b93686e4155809b9bb11c5d
 	b2sums = 793a5566db349f6d17c6d9a148c8dcfb32e62c8daf62752de938772c48f47c76db6d9175ff1de6d51dc9b15ca55a926d4361b3bf616fef5ce8dd8ce99d2f9596
 
