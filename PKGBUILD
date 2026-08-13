@@ -1,19 +1,19 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=mvabund
-_pkgver=4.2.1
+_pkgver=4.2.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Statistical Methods for Analysing Multivariate Abundance Data"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('LGPL-2.1-or-later')
 depends=(
-  gsl
   r-rcpp
   r-statmod
   r-tweedie
+  gsl
 )
 makedepends=(
   r-rcppgsl
@@ -22,11 +22,15 @@ checkdepends=(
   r-testthat
 )
 optdepends=(
+  r-ecostats
+  r-knitr
+  r-rmarkdown
+  r-skimr
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5ff7cf64b64e2d8ca4df9c3d198d3cf4')
-b2sums=('ab7bd5a031fc6e83019990af229221f6662ec3a3b855b96d7a39594fd52a47949d95658472fab4ddbc86c016d3cdceb9755f0121456cd98a7adcc28a9a7514e7')
+md5sums=('462bac3abb84e46d1878d43143788e14')
+b2sums=('88af3573ce9b8a81584077566c3359693f4b7aea451f3771474c2eab4acb1f8a327b23b5506fd82b674a69e971f4a020e0329d22384f5998f1b3180fca195c43')
 
 build() {
   mkdir build
