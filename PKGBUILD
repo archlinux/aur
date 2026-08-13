@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MetCirc
-_pkgver=1.40.0
+_pkgver=1.42.0
 pkgname=r-${_pkgname,,}
-pkgver=1.40.0
+pkgver=1.42.0
 pkgrel=1
 pkgdesc='Navigating mass spectral similarity in high-resolution MS/MS metabolomics data'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('89a8837f69ecb5dfe19cdb8531940aabb1badcaca5e19bf8a5cd5e8bf99bfc97')
+sha256sums=('8f6dd0bfabd5c226d0bd9579018af4e2d27eb1aaee9638722c5a4d1c83d3438d')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
