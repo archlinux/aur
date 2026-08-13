@@ -1,7 +1,7 @@
 # Maintainer: gogamlg3
 pkgname=tg-ws-proxy-git
 _pkgname=tg-ws-proxy
-pkgver=1.9.1.r11.gb8a5634
+pkgver=1.10.0.r0.gb2a8074
 pkgrel=1
 pkgdesc="Local MTProto proxy server for partial bypassing of Telegram loading"
 arch=("any")
