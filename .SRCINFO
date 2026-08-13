@@ -1,6 +1,6 @@
 pkgbase = keeperfx-tux
 	pkgver = 1.4.0.5425
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/ForkedInTime/keeperfx-linux-alpha
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -32,16 +32,20 @@ pkgbase = keeperfx-tux
 	options = !lto
 	source = keeperfx-tux::git+https://github.com/ForkedInTime/keeperfx-linux-alpha.git#tag=v1.4.0.5425
 	source = keeperfx-tux-1.4.0.5425-full.7z::https://github.com/ForkedInTime/keeperfx-linux-alpha/releases/download/v1.4.0.5425/keeperfx-linux-alpha-x86_64-full.7z
-	source = keeperfx-tux-launcher::git+https://github.com/ForkedInTime/keeperfx-launcher-qt-linux.git#commit=21e3b13e8b9ef9199c8e01693d303d098aa66c07
+	source = keeperfx-tux-launcher::git+https://github.com/ForkedInTime/keeperfx-launcher-qt-linux.git#commit=b27ddd5d267484351d6cd4d9ca45a9113f1d586c
 	source = keeperfx-tux.sh
 	source = keeperfx-tux.desktop
 	source = keeperfx-tux-launcher.sh
+	source = keeperfx-tux.hook
+	source = keeperfx-tux-libcheck.sh
 	sha256sums = SKIP
 	sha256sums = a31e803e60bea582424b438bbaa1f05b360ea4ea0621c2545723a688103cdb2f
 	sha256sums = SKIP
 	sha256sums = 8b897f0e147061f14fb0618a2737faefec037f338a1cac40d559b558ac1eef0c
 	sha256sums = 72d72a8e7c1221208eed0622a6e323399ba8cb139ab8840d620ef2697623a1b4
 	sha256sums = 1001a296fc71263c3a64d22f9bdfc398954119f80df89f49a4b42f2769e169a1
+	sha256sums = ee2fc0f5b3d81dd55efe7d2aef6c4d67d18baff794114e3d6e334171842601eb
+	sha256sums = 37e0fcb5b46aa0b178380ea8f36aa62485b75b5425c1932c7ada7f4101efc870
 
 pkgname = keeperfx-tux
 	pkgdesc = KeeperFX Tux Edition — native Linux build of the Dungeon Keeper engine remake
@@ -68,8 +72,8 @@ pkgname = keeperfx-tux
 	depends = gcc-libs
 	depends = bash
 	depends = hicolor-icon-theme
-	depends = keeperfx-tux-data=1.4.0.5425-2
-	depends = keeperfx-tux-launcher=1.4.0.5425-2
+	depends = keeperfx-tux-data=1.4.0.5425-4
+	depends = keeperfx-tux-launcher=1.4.0.5425-4
 	provides = keeperfx-tux=1.4.0.5425
 	conflicts = keeperfx-linux-alpha
 	conflicts = keeperfx-linux-alpha-git

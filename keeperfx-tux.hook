@@ -1,0 +1,35 @@
+# Warn when a library update has left KeeperFX unable to start.
+#
+# The engine's other libraries are declared as sonames, so pacman refuses an
+# ABI-breaking upgrade of those before it happens and this hook has nothing to
+# add. The packages listed below publish no soname in provides=, so there is
+# nothing for pacman to compare and no upgrade for it to refuse -- they are the
+# gap this covers.
+#
+# PostTransaction is not a choice: a binary can only be tested against the new
+# libraries once they are installed. The hook cannot prevent the breakage, only
+# report it the moment it happens instead of leaving it to be discovered the
+# next time someone tries to play. The script itself reports whatever is
+# actually unresolved, so a library that is not listed here still gets named if
+# one of these upgrades happens to coincide with it.
+#
+# glibc and gcc-libs are deliberately absent: they upgrade constantly and hold
+# their ABI, so including them would print this hook's description on nearly
+# every transaction and train people to ignore it.
+
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = sdl3
+Target = sdl3_mixer
+Target = sdl3_image
+Target = luajit
+Target = minizip
+Target = libnatpmp
+Target = qt6-base
+Target = openssl
+
+[Action]
+Description = Checking that KeeperFX still runs against the updated libraries...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/keeperfx-tux-libcheck

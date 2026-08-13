@@ -11,12 +11,14 @@
 # is published. pkgver is the tag without the leading "v" and the "-alpha" suffix.
 _tag=v1.4.0.5425
 # The launcher is a separate repository with no tags, so it is pinned by commit.
-_launcher_commit=21e3b13e8b9ef9199c8e01693d303d098aa66c07
+_launcher_commit=b27ddd5d267484351d6cd4d9ca45a9113f1d586c
 pkgbase=keeperfx-tux
 pkgname=('keeperfx-tux' 'keeperfx-tux-data' 'keeperfx-tux-launcher')
 pkgver=1.4.0.5425
-# rel 2: rebuild against ffmpeg 9 and pick up the soname dependencies below.
-pkgrel=2
+# rel 4: ship the pacman hook that reports a library break the soname
+# dependencies below cannot catch, and pick up the launcher fix that stops a
+# crash report carrying a log the failing run never wrote.
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/ForkedInTime/keeperfx-linux-alpha"
 license=('GPL-2.0-or-later')
@@ -47,6 +49,8 @@ source=(
   'keeperfx-tux.sh'
   'keeperfx-tux.desktop'
   'keeperfx-tux-launcher.sh'
+  'keeperfx-tux.hook'
+  'keeperfx-tux-libcheck.sh'
 )
 noextract=("keeperfx-tux-${pkgver}-full.7z")
 sha256sums=(
@@ -56,6 +60,8 @@ sha256sums=(
   '8b897f0e147061f14fb0618a2737faefec037f338a1cac40d559b558ac1eef0c'
   '72d72a8e7c1221208eed0622a6e323399ba8cb139ab8840d620ef2697623a1b4'
   '1001a296fc71263c3a64d22f9bdfc398954119f80df89f49a4b42f2769e169a1'
+  'ee2fc0f5b3d81dd55efe7d2aef6c4d67d18baff794114e3d6e334171842601eb'
+  '37e0fcb5b46aa0b178380ea8f36aa62485b75b5425c1932c7ada7f4101efc870'
 )
 
 # Data trees taken from the release archive. It also contains the engine binary,
@@ -205,6 +211,16 @@ package_keeperfx-tux() {
   # Shipped as a template the wrapper copies into the game directory, because the
   # user edits it and it must not be overwritten by an upgrade.
   install -m644 config/keeperfx.cfg "${_share}/keeperfx.cfg"
+
+  # The soname dependencies above cover every library that publishes one, but
+  # six of the engine's do not and neither do the launcher's Qt and OpenSSL --
+  # for those pacman has nothing to compare and cannot refuse the upgrade. This
+  # hook cannot prevent that either; it reports it at the moment it happens,
+  # instead of leaving a broken install to be found the next time someone plays.
+  install -Dm755 "${srcdir}/keeperfx-tux-libcheck.sh" \
+    "${pkgdir}/usr/share/libalpm/scripts/keeperfx-tux-libcheck"
+  install -Dm644 "${srcdir}/keeperfx-tux.hook" \
+    "${pkgdir}/usr/share/libalpm/hooks/keeperfx-tux-libcheck.hook"
 
   install -Dm755 "${srcdir}/keeperfx-tux.sh" "${pkgdir}/usr/bin/keeperfx-tux"
   install -Dm644 "${srcdir}/keeperfx-tux.desktop" \
