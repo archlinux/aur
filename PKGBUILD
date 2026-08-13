@@ -1,6 +1,6 @@
 # Maintainer: Giosuel <arch@giosuel.ch>
 pkgname=containerlab-bin
-pkgver=0.78.0
+pkgver=0.78.1
 pkgrel=1
 pkgdesc='Container-based networking labs'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('BSD 3-Clause')
 
 source=("${pkgname/-bin/}-${pkgver}.tar.gz::https://github.com/srl-labs/containerlab/releases/download/v${pkgver}/containerlab_${pkgver}_Linux_amd64.tar.gz")
 
-sha256sums=('b0fa8a43c2e1916583883cca052251198817fe64b8b4ec5df266d82f5100a88a')
+sha256sums=('7d869754f126c94d8cbf8637312a2e661c1a872597536bfdda1e420b31cc2eb8')
 
 package() {
     install -Dm755 ${pkgname/-bin/} "$pkgdir"/usr/bin/${pkgname/-bin/}
