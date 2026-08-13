@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Parra Mazuecos <eduparra90@gmail.com>
 pkgname=vega-cli-bin
 _pkgname=vega
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Amazon Vega CLI (KeplerVersionManager) — installs and manages the Vega SDK in \$HOME/vega"
 arch=('x86_64')
