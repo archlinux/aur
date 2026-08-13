@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SomaticSignatures
-_pkgver=2.44.0
+_pkgver=2.48.0
 pkgname=r-${_pkgname,,}
-pkgver=2.44.0
+pkgver=2.48.0
 pkgrel=1
 pkgdesc='Somatic Signatures'
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bb473aeb4ffd1ca1d42dc71250e2669d8bbebfb30a1da6d6de507f64e62c3e81')
+sha256sums=('45e9c1f372c42e260f0da37a4a33c89f7ff3999e2c443528b02a392b990b2dd1')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
