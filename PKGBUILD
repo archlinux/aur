@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dkondor/${pkgname}/arch
 sha256sums=('8324efeea450b3bf5670b66f15a2a02ba87654fbd66752b1d57248a23f12da19')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+	:
 }	
 
 build() {
@@ -28,6 +28,5 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	DESTDIR="$pkgdir/" ninja -C build install
-
 	install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"	
 }
