@@ -1,6 +1,6 @@
 pkgbase = lark-cli-bin
 	pkgdesc = The official CLI for Lark/Feishu open platform
-	pkgver = 1.0.85
+	pkgver = 1.0.87
 	pkgrel = 1
 	url = https://github.com/larksuite/cli
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = lark-cli-bin
 	conflicts = lark-cli
 	source = LICENSE::https://github.com/larksuite/cli/raw/refs/heads/main/LICENSE
 	sha256sums = c969fc7e3af68e6bf40b0d8dd9c3dcc377eb685a2139535b203b39fdcad739ee
-	source_x86_64 = lark-cli-1.0.85-x86_64.tar.gz::https://github.com/larksuite/cli/releases/download/v1.0.85/lark-cli-1.0.85-linux-amd64.tar.gz
-	sha256sums_x86_64 = 78767460e6c8bb9811d9f28e8df7cd2721b14fdceb5b65ba42bf43e448c4bb78
-	source_aarch64 = lark-cli-1.0.85-aarch64.tar.gz::https://github.com/larksuite/cli/releases/download/v1.0.85/lark-cli-1.0.85-linux-arm64.tar.gz
-	sha256sums_aarch64 = b05ba05908dc711c3fb0f50cfd235072dfb04a3f23bb39d2f6e0ae2a496b8f16
+	source_x86_64 = lark-cli-1.0.87-x86_64.tar.gz::https://github.com/larksuite/cli/releases/download/v1.0.87/lark-cli-1.0.87-linux-amd64.tar.gz
+	sha256sums_x86_64 = 6027b1ddc12440400581bbdf9554850d8e119c7dd400439b1220e7a87b9673c5
+	source_aarch64 = lark-cli-1.0.87-aarch64.tar.gz::https://github.com/larksuite/cli/releases/download/v1.0.87/lark-cli-1.0.87-linux-arm64.tar.gz
+	sha256sums_aarch64 = fade9a22d363172a9c18a8287c99c80d6d106a2900f3fce4015e4e156c5fc776
 
 pkgname = lark-cli-bin
