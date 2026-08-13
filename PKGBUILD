@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="secfetch"
-pkgver=1.5.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Lightweight security state inspector for Linux"
 
@@ -16,7 +16,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 depends=('python')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('58b4a3e464c24dd5740ec0efe09560ad67e4f6727264915db16c5f89b8bcd832')
+sha256sums=('20da6a5b0926655286c127ec9ad2f6c7bed99a949c5b2eadc1f776a022206374')
 
 
 package() {
