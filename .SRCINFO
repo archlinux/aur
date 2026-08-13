@@ -1,0 +1,24 @@
+pkgbase = jsrc
+	pkgdesc = Python library for bioinformatics and scientific computing
+	pkgver = 0.3.1
+	pkgrel = 3
+	url = https://github.com/imjiaoyuan/jsrc
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=61.0
+	depends = python>=3.10
+	depends = python-numpy>=1.23
+	depends = python-matplotlib>=3.5
+	depends = python-opencv>=4.7
+	depends = python-biopython>=1.80
+	provides = python-jsrc=0.3.1
+	conflicts = python-jsrc
+	options = !strip
+	options = !debug
+	source = jsrc-0.3.1.tar.gz::https://github.com/imjiaoyuan/jsrc/archive/v0.3.1.tar.gz
+	sha256sums = 138e4664221830ce5023340cfcf49edbc97d94235ef53a0e05dd3a3d459fb0ec
+
+pkgname = jsrc
