@@ -1,7 +1,7 @@
 pkgbase = xinetd
 	pkgdesc = A secure replacement for inetd
 	pkgver = 2.3.15.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openSUSE/xinetd
 	arch = x86_64
 	license = custom
