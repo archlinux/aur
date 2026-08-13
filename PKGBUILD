@@ -13,13 +13,7 @@ source=("red.ghs.axolotl.xml")
 sha256sums=("a3c7ac4b8489dff5a8e558780765648dccc99c8a65b13e6dd11777de8352da7f")
 source_x86_64=("${url}/releases/download/v${pkgver}/Axolotl.Launcher_${pkgver}_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/Axolotl.Launcher_${pkgver}_arm64.deb")
-sha256sums_x86_64=(
-    'd6c54ab3f309f97d0759e9ac4784cdefe558c3d4d2e716481a5c6ac3377fd283'
-)
-sha256sums_aarch64=(
-    'd6c54ab3f309f97d0759e9ac4784cdefe558c3d4d2e716481a5c6ac3377fd283'
-)
-
+sha256sums_x86_64=('d6c54ab3f309f97d0759e9ac4784cdefe558c3d4d2e716481a5c6ac3377fd283')sha256sums_aarch64=('d6c54ab3f309f97d0759e9ac4784cdefe558c3d4d2e716481a5c6ac3377fd283')
 package() {
   cd "${srcdir}"
 
