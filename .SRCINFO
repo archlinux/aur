@@ -1,6 +1,6 @@
 pkgbase = shiorii-git
 	pkgdesc = Modern offline-first eBook library manager built with Tauri, React, and Rust
-	pkgver = 2.1.5
+	pkgver = 2.3.15
 	pkgrel = 1
 	url = https://github.com/vinayydv3695/Shiori
 	arch = x86_64
@@ -26,7 +26,8 @@ pkgbase = shiorii-git
 	depends = librsvg
 	depends = sqlite
 	depends = zstd
-	optdepends = speech-dispatcher: Native TTS support (experimental)
+	depends = speech-dispatcher
+	depends = espeak-ng
 	provides = shiorii
 	provides = shiori
 	provides = shiori-git

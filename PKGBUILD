@@ -1,7 +1,7 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiorii-git
 _pkgname=Shiori
-pkgver=2.1.5
+pkgver=2.3.15
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')
@@ -14,6 +14,8 @@ depends=(
     'librsvg'
     'sqlite'
     'zstd'
+    'speech-dispatcher'
+    'espeak-ng'
 )
 makedepends=(
     'git'
@@ -31,9 +33,6 @@ makedepends=(
     'librsvg'
     'sqlite'
     'zstd'
-)
-optdepends=(
-    'speech-dispatcher: Native TTS support (experimental)'
 )
 provides=(
     'shiorii'
