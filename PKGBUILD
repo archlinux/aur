@@ -10,8 +10,8 @@ makedepends=('git' 'npm')
 options=('!strip')
 provides=('deepseek-harness')
 conflicts=('deepseek-harness' 'deepseek-harness-bin')
-source=('git+https://github.com/deepseek-ai/deepseek-harness.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/deepseek-ai/deepseek-harness.git' 'aur-package.mjs')
+sha256sums=('SKIP' 'da872acd5c4c4a047bda1c95f021b9f744e619d8731ef7bd7615f219007e3a81')
 
 pkgver() {
   cd "$srcdir/deepseek-harness"
@@ -36,64 +36,9 @@ build() {
   pnpm exec tsx scripts/release/pack.ts --family vendor --out dist/aur-vendor
   pnpm exec tsx scripts/release/pack.ts --family dsh --out dist/aur-dsh
 
-  node - "$srcdir/runtime-tarballs.txt" <<'NODE'
-const fs = require('fs')
-const path = require('path')
-const cp = require('child_process')
-const packages = new Map()
-for (const dir of ['dist/aur-vendor', 'dist/aur-dsh']) {
-  for (const file of fs.readdirSync(dir).filter(file => file.endsWith('.tgz'))) {
-    const full = path.resolve(dir, file)
-    const manifest = JSON.parse(cp.execFileSync('bsdtar', ['-xOf', full, 'package/package.json'], { encoding: 'utf8' }))
-    packages.set(manifest.name, { file: full, manifest })
-  }
-}
-const seen = new Set()
-function visit(name) {
-  if (seen.has(name)) return
-  const entry = packages.get(name)
-  if (entry === undefined) return
-  seen.add(name)
-  for (const section of ['dependencies', 'peerDependencies']) {
-    for (const dependency of Object.keys(entry.manifest[section] ?? {})) visit(dependency)
-  }
-}
-visit('@deepseek-ai/dsh')
-const tarballs = [...seen].sort().map(name => packages.get(name).file)
-fs.writeFileSync(process.argv[2], `${tarballs.join('\n')}\n`)
-NODE
+  node "$srcdir/aur-package.mjs" "$srcdir"
 
-  rm -rf "$srcdir/npm-root"
-  mkdir -p "$srcdir/npm-root"
   cd "$srcdir/npm-root"
-  node - "$srcdir/runtime-tarballs.txt" <<'NODE'
-const fs = require('fs')
-const path = require('path')
-const cp = require('child_process')
-const tarballs = fs.readFileSync(process.argv[2], 'utf8').trim().split('\n')
-const dependencies = {}
-for (const tarball of tarballs) {
-  const manifest = JSON.parse(cp.execFileSync('bsdtar', ['-xOf', tarball, 'package/package.json'], { encoding: 'utf8' }))
-  const relative = path.relative(process.cwd(), tarball).replaceAll('\\', '/')
-  dependencies[manifest.name] = `file:${relative}`
-}
-const subprocessLocal = dependencies['@deepseek-ai/dsh-subprocess-local']
-if (subprocessLocal === undefined) throw new Error('runtime closure is missing @deepseek-ai/dsh-subprocess-local')
-fs.writeFileSync('package.json', `${JSON.stringify({
-  name: 'deepseek-harness-aur-build',
-  version: '0.0.0',
-  private: true,
-  dependencies,
-  allowScripts: {
-    [subprocessLocal]: true,
-    koffi: true,
-    'node-pty': true,
-    '@google/genai': false,
-    protobufjs: false,
-    'node-addon-require-builtin': false,
-  },
-}, null, 2)}\n`)
-NODE
   npm install --omit=optional --no-audit --no-fund --package-lock=false
   node node_modules/@deepseek-ai/dsh/lib/bin.js --version
 }

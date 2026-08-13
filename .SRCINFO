@@ -14,6 +14,8 @@ pkgbase = deepseek-harness-git
 	conflicts = deepseek-harness-bin
 	options = !strip
 	source = git+https://github.com/deepseek-ai/deepseek-harness.git
+	source = aur-package.mjs
 	sha256sums = SKIP
+	sha256sums = da872acd5c4c4a047bda1c95f021b9f744e619d8731ef7bd7615f219007e3a81
 
 pkgname = deepseek-harness-git
