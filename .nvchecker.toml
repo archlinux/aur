@@ -1,0 +1,5 @@
+[gitnuro-bin]
+source = "github"
+github = "JetpackDuba/Gitnuro"
+use_latest_release = true
+prefix = "v"
