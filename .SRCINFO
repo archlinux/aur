@@ -1,6 +1,6 @@
 pkgbase = hyprmoncfg-git
 	pkgdesc = Terminal-first monitor configurator and auto-switching daemon for Hyprland
-	pkgver = r177.2bf6d61
+	pkgver = r180.6884f3a
 	pkgrel = 1
 	url = https://github.com/crmne/hyprmoncfg
 	install = hyprmoncfg-git.install
@@ -10,6 +10,7 @@ pkgbase = hyprmoncfg-git
 	makedepends = git
 	makedepends = go
 	depends = hyprland
+	depends = xdg-terminal-exec
 	optdepends = systemd: user service for automatic profile switching
 	provides = hyprmoncfg
 	conflicts = hyprmoncfg
