@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=KEGGlincs
-_pkgver=1.36.0
+_pkgver=1.38.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.38.0
 pkgrel=1
 pkgdesc='Visualize all edges within a KEGG pathway and overlay LINCS data'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-knitr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6afe3e59cd36ca8742dff0b35a1fce1920efc6be5dd65222298639d3e14c0406')
+sha256sums=('3157fa1f8df60e7fc160ad8f6961184b05a8539450718bb336cb54701cd2eac9')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
