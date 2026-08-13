@@ -1,13 +1,13 @@
 pkgbase = chlink
 	pkgdesc = Companion PC CLI for Checkpoint wireless save transfer.
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/BernardoGiordano/Checkpoint
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0
 	makedepends = go
-	source = checkpoint-5.0.0.tar.gz::https://github.com/BernardoGiordano/Checkpoint/archive/v5.0.0.tar.gz
-	sha256sums = 709c5104246586b72df48d938bb366bcc26ae1cac803dda0aca72e67a3b3c314
+	source = checkpoint-5.1.0.tar.gz::https://github.com/BernardoGiordano/Checkpoint/archive/v5.1.0.tar.gz
+	sha256sums = dc85bcac15f76276df0041a6401df5cd2a0437146f7024c9d39972a712d92021
 
 pkgname = chlink
