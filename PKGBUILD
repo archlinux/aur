@@ -1,11 +1,17 @@
 # Maintainer: KillerOp007 <79337152+KillerOp007@users.noreply.github.com>
 #
 # Repackages the release .deb (same binary as every other platform).
-# Before pushing to the AUR: bump pkgver, then refresh sha256sums with
-# `updpkgsums` (or makepkg -g) against the published release assets.
+#
+# This is deliberately the LAST step of a release and lags the tree on
+# purpose: the checksums below are of published release assets, so bumping
+# pkgver before those assets exist produces a new version carrying old hashes,
+# which is worse than an obviously stale file. scripts/preflight.sh fails
+# while this lags, which is the reminder. See docs/RELEASING.md step 10.
+#
+#   updpkgsums && makepkg --printsrcinfo > .SRCINFO
 
 pkgname=rhythr-bin
-pkgver=0.4.1
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Unofficial community tool that renders Rhythia (.rhr) replays into pixel-accurate videos"
 arch=('x86_64')
@@ -20,7 +26,7 @@ source=(
   "LICENSE-$pkgver::https://raw.githubusercontent.com/KillerOp007/rhythr/v$pkgver/LICENSE"
 )
 noextract=("rhythr_${pkgver}_amd64.deb")
-sha256sums=('055240943ed534fd92b3781b8d0e1876e29d579038c4b9915cba94ac09b8e20b'
+sha256sums=('de7c0f6b3134dda0bbc0d52c8ceaa1a109dac561dee780f44965b9ccd92f02a5'
             '74f100c0e5ed1b3e3dd697ebb21c868526375dd03e9a1dd93c2e2609c1444bdc')
 
 package() {
