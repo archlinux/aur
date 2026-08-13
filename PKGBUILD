@@ -1,6 +1,6 @@
 pkgname=deepseek-harness-git
 pkgver=0.1.0rc.5.r12225.g47f9438
-pkgrel=2
+pkgrel=3
 pkgdesc='DeepSeek Harness CLI and agent harness (git)'
 arch=('x86_64')
 url='https://github.com/deepseek-ai/deepseek-harness'
