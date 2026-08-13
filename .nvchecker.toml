@@ -1,0 +1,5 @@
+[pipe-cutter-bin]
+source = "github"
+github = "juan-leon/pipe-cutter"
+use_latest_release = true
+prefix = "v"
