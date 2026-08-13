@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=Cormotif
-_pkgver=1.56.0
+_pkgver=1.58.0
 pkgname=r-${_pkgname,,}
-pkgver=1.56.0
+pkgver=1.58.0
 pkgrel=1
 pkgdesc='Correlation Motif Fit'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-limma
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('866c561eee5dc00038eb2310f0bfc827b1bcdc53f821a9e8783f3443496514ad')
+sha256sums=('66b81170d2bbdbafef133f608dc3ae8a796b9fa2b43493496bfa34995e757afe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
