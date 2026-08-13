@@ -1,0 +1,5 @@
+[quarantine-bin]
+source = "github"
+github = "zahash/quarantine"
+use_latest_release = true
+prefix = "v"
