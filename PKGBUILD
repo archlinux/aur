@@ -1,11 +1,11 @@
 # Maintainer: submit as i2pchat-bin on AUR (see packaging/aur/README.md)
 # Checksums: ./packaging/refresh-checksums.sh vX.Y.Z or sha256sum local zips after release.
 pkgname=i2pchat-bin
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Experimental peer-to-peer chat client for the I2P network (official AppImage, binary)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/MetanoicArmor/I2PChat"
+url="https://github.com/MetanoicArmor/I2PChat-ng"
 license=('AGPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'zlib')
 options=('!strip')
@@ -14,9 +14,9 @@ source_x86_64=("I2PChat-linux-x86_64-v${pkgver}.zip::${url}/releases/download/v$
                "${_icon}")
 source_aarch64=("I2PChat-linux-aarch64-v${pkgver}.zip::${url}/releases/download/v${pkgver}/I2PChat-linux-aarch64-v${pkgver}.zip"
                 "${_icon}")
-sha256sums_x86_64=('a169e23c31769abe939e64f6803472ade1efb15ec20b83e15fd81f2be870950a'
+sha256sums_x86_64=('f053a0f7cf7991c98fc172f0d4ff817b1c031fa77d56207df06955b8f3083ea6'
                    '2f27e90c85949ec4eabeaac6d12bca1449f679dbb10e4e9f07925e33b7d008b8')
-sha256sums_aarch64=('5cfec52578229bda2e811f4ce37a80599979673286cca71c3d5583d6dcc74f92'
+sha256sums_aarch64=('14029535079e6907ae0eb1c7b710fcd18f82044132db7e4d4242359fa7d99e46'
                     '2f27e90c85949ec4eabeaac6d12bca1449f679dbb10e4e9f07925e33b7d008b8')
 
 package() {
