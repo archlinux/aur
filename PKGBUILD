@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scGPS
-_pkgver=1.22.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -53,9 +53,9 @@ optdepends=(
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz"
         "fix-build.patch")
-md5sums=('3e2b3e74b781ada734394194fee46d16'
+md5sums=('5e22275120f0e47d9993d9df4848aba9'
          '10f827551e2b78263235e157e5b6a4b2')
-b2sums=('6b78e6463f1a1d440fb979c4d2234a39603b110fe5f5bd83bc85c5cbe51f4c5e1d38cf230e19c59fbe19c629d44f5564e2d92fb630330279838be29e20e8b833'
+b2sums=('ba2dee2c619ee45a20c7709dcc5a0c4b890bc00f81105151962798c2ab850ef100830d83525361c42d6c18246d745ccbe7a6c7847f3b3107eda15b02d90b7c8b'
         'e2f840b1d0e9a8897ac8233ce695ea40e658797e01ad46f50bb5e7528efcf3797ec402b22c92d0b8a16c96bd7f4146664b81f9e7998525057426b61d05693e89')
 
 prepare() {
