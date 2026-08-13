@@ -2,10 +2,10 @@
 
 pkgname="teams-for-linux-bin"
 pkgver=2.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Microsoft Teams for Linux client (binary version)"
 url="https://github.com/IsmaelMartinez/teams-for-linux"
-license=("GPL3")
+license=("GPL-3.0-only")
 arch=("x86_64" "aarch64" "armv7h")
 provides=("teams-for-linux")
 conflicts=("teams-for-linux"
