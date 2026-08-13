@@ -1,6 +1,6 @@
 pkgbase = synapse-http-antispam
 	pkgdesc = A Synapse module that forwards spam checking to an HTTP server.
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/maunium/synapse-http-antispam
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = synapse-http-antispam
 	depends = python
 	depends = python-twisted
 	depends = matrix-synapse
-	source = git+https://github.com/maunium/synapse-http-antispam.git#tag=v0.5.0
-	sha256sums = 9b02b1bdf8d28be1bbd823b654269a5647e8e407292b310a693e7733d85059b1
+	source = git+https://github.com/maunium/synapse-http-antispam.git#tag=v0.5.1
+	sha256sums = 1b026d58e1492f53d5dae25bfac05d66f4bfac9f05b8c2448c46816607b56490
 
 pkgname = synapse-http-antispam
