@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=OrganismDbi
-_pkgver=1.50.0
+_pkgver=1.54.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,7 +21,7 @@ depends=(
   r-iranges
   r-rbgl
   r-s4vectors
-  r-txdbmaker
+  r-seqinfo
 )
 optdepends=(
   r-annotationhub
@@ -29,17 +29,18 @@ optdepends=(
   r-biomart
   r-bsgenome.hsapiens.ucsc.hg19
   r-fdb.ucsc.trnas
+  r-genomeinfodbdata
   r-homo.sapiens
   r-knitr
-  r-mirbase.db
   r-rattus.norvegicus
   r-rmariadb
   r-rtracklayer
   r-runit
+  r-txdbmaker
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('76b2e1bf222089715a7e1c0a0c4f31be')
-b2sums=('b6aaaca6acfc39cf7e4de3bc4ea8d895b4fdd32976ebbff85b9d9e10de9d64e6f1602f13c2191a415c9b41a6488f1a0227f4060f5fe91bd3f194509e15755951')
+md5sums=('12819856cfba802a85768635f4d51346')
+b2sums=('c126cf663961b712de50e8f9f492416b5f79f57c4db47f9703c1ffbc2aca070a323ed1718d7685fd3df190f9aca50acb666a3508ee3fc2d146f1694dfccf9b5e')
 
 build() {
   mkdir build
