@@ -22,6 +22,8 @@ pkgbase = dosbox-x-sdl2
 	conflicts = dosbox-x-sdl2-git
 	options = !debug
 	source = https://github.com/joncampbell123/dosbox-x/archive/dosbox-x-v2026.07.02.tar.gz
+	source = ffmpeg9.patch
 	sha256sums = ca380ea617ce2d9165f379e6d01a481ec5a26fcf4fa31490e1e04ffdb4030730
+	sha256sums = e8c7786f078d5cc0eb97b9d21a6e85075f6583b6012eceb1b693df3aab435a28
 
 pkgname = dosbox-x-sdl2
