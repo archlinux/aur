@@ -1,6 +1,6 @@
 pkgbase = r-ggkegg
 	pkgdesc = Analyzing and visualizing KEGG information using the grammar of graphics
-	pkgver = 1.6.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ggkegg
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = r-ggkegg
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-annotationdbi
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggkegg_1.6.0.tar.gz
-	md5sums = 6fb58e5532b3978348b0b1a9ab57a2ad
-	b2sums = 39fb158aa736d7eb6e58be970a25504e7b067bf726bde3466f31670d00a6e06bdb727bb54d3267b6ca465882538cb7474bc3411e313be0573553e04cf20dbd7c
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ggkegg_1.10.0.tar.gz
+	md5sums = a6ed0fcd05bbfa97720a6b8ac55cc184
+	b2sums = b4118e2cc0a6c0872f08810e9812d5d91b7584c07b0b7f71f970efa8c11b4614e8f425031757f07782343f1ddf1d1c481919dab2309d8c6a65127a969860b000
 
 pkgname = r-ggkegg
