@@ -1,0 +1,26 @@
+pkgbase = nuvio-linux-git
+	pkgdesc = Nuvio Linux desktop media player — Linux native mpv playback (git)
+	pkgver = r2241.gb06b9c9c
+	pkgrel = 1
+	url = https://github.com/JJDizz1L/NuvioLinux
+	install = nuvio-linux-git.install
+	arch = x86_64
+	license = custom:commercial
+	makedepends = git
+	makedepends = jdk21-openjdk
+	makedepends = gcc
+	depends = mpv
+	depends = glibc
+	depends = gcc-libs
+	depends = libstdc++
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	depends = libxi
+	depends = libxtst
+	provides = nuvio-linux
+	conflicts = nuvio-linux
+	source = git+https://github.com/JJDizz1L/NuvioLinux.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = nuvio-linux-git
