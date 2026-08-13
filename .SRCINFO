@@ -1,6 +1,6 @@
 pkgbase = r-hyper
 	pkgdesc = An R Package For Geneset Enrichment Workflows
-	pkgver = 2.4.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/hypeR
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = r-hyper
 	optdepends = r-knitr
 	optdepends = r-testthat
 	optdepends = r-tidyverse
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/hypeR_2.4.0.tar.gz
-	sha256sums = fb23dd48570e60c58e84099da182d956ebe57732cc28a7de2b048723f0aa3489
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/hypeR_2.10.0.tar.gz
+	sha256sums = 0a615c6e123245e92ab743a12ca78aeffdfb3494d2f6b07533db64d186bd367a
 
 pkgname = r-hyper
