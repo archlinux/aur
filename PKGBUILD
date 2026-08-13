@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=affyPLM
-_pkgver=1.86.0
+_pkgver=1.88.0
 pkgname=r-${_pkgname,,}
-pkgver=1.86.0
+pkgver=1.88.0
 pkgrel=1
 pkgdesc='Methods for fitting probe-level models'
 arch=('x86_64')
@@ -24,7 +24,7 @@ optdepends=(
   r-mass
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e6beaed70aa510cd5eac9381f7c0041c5343e857d3e0e24f5608622630e20b1e')
+sha256sums=('61e605a685445b3f85780d18becc98c3f9161bdf92077343c4672a96d475a98e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
