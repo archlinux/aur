@@ -5,12 +5,14 @@ pkgbase = uutils-grep-git
 	url = https://github.com/uutils/grep
 	arch = x86_64
 	license = MIT
-	makedepends = oniguruma
 	makedepends = pkgconf
 	makedepends = rust
 	makedepends = git
 	depends = gcc-libs
+	depends = oniguruma
 	optdepends = rust-src: optimize with RUSTC_BOOTSTRAP=1
+	provides = uutils-grep
+	conflicts = uutils-grep
 	source = uutils-grep::git+https://github.com/uutils/grep.git
 	b2sums = SKIP
 

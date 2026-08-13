@@ -11,9 +11,11 @@ pkgdesc="Rust implementation of grep"
 arch=('x86_64')
 url="https://github.com/uutils/grep"
 license=('MIT')
-depends=(gcc-libs)
-makedepends=(oniguruma pkgconf rust git)
+depends=(gcc-libs oniguruma)
+makedepends=(pkgconf rust git)
 optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
+conflicts=(uutils-grep)
+provides=(uutils-grep)
 source=("uutils-grep::git+${url}.git")
 b2sums=('SKIP')
 
