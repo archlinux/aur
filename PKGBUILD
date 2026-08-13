@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ChIPseqR
-_pkgver=1.62.0
+_pkgver=1.66.0
 pkgname=r-${_pkgname,,}
-pkgver=1.62.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc='Identifying Protein Binding Sites in High-Throughput Sequencing Data'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
   r-timsac
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fca3ee5ae490f1d009c5e5dcb476fa950b46bacc2ba262d1e89ebdafccc03318')
+sha256sums=('38b4e0f41e3afc15fed2bfab0a81b3cb26504256fe6bde8824a9a80ca7864565')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

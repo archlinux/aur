@@ -1,6 +1,6 @@
 pkgbase = r-chipseqr
 	pkgdesc = Identifying Protein Binding Sites in High-Throughput Sequencing Data
-	pkgver = 1.62.0
+	pkgver = 1.66.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/ChIPseqR
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = r-chipseqr
 	depends = r-s4vectors
 	depends = r-shortread
 	depends = r-timsac
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPseqR_1.62.0.tar.gz
-	sha256sums = fca3ee5ae490f1d009c5e5dcb476fa950b46bacc2ba262d1e89ebdafccc03318
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/ChIPseqR_1.66.0.tar.gz
+	sha256sums = 38b4e0f41e3afc15fed2bfab0a81b3cb26504256fe6bde8824a9a80ca7864565
 
 pkgname = r-chipseqr
