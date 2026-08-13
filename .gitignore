@@ -1,0 +1,9 @@
+*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!LICENSES/
+LICENSES/*
+!LICENSES/0BSD.txt
+!PKGBUILD
+!REUSE.toml
