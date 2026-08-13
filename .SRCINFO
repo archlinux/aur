@@ -1,7 +1,7 @@
 pkgbase = python-streamlit-webrtc
 	pkgdesc = Real-time video and audio streams over the network, with Streamlit
 	pkgver = 0.77.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/whitphx/streamlit-webrtc
 	arch = any
 	license = MIT
@@ -16,7 +16,6 @@ pkgbase = python-streamlit-webrtc
 	depends = python-av
 	depends = python-packaging
 	depends = python-streamlit
-	optdepends = python-twilio: Twilio STUN/TURN server support
 	source = https://files.pythonhosted.org/packages/source/s/streamlit_webrtc/streamlit_webrtc-0.77.0.tar.gz
 	sha256sums = 2cb90e8c4ab9c4190c21e7e7cd3ac510f9fc541b2fca4c783e134fc85ccc5ccd
 
