@@ -3,7 +3,7 @@ pkgname=python-steam
 _name=${pkgname#python-}
 _pkgver=2.0.0-alpha1
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Python package for interacting with Steam"
 arch=('any')
 url="https://github.com/solsticegamestudios/steam"
@@ -66,7 +66,11 @@ build() {
 
 check() {
   cd "$_name-${_pkgver}"
-  pytest || :
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+
+  # Skip failing tests
+  test-env/bin/python -I -m pytest -k "not test_core_cm and not test_utils"
 }
 
 package() {
