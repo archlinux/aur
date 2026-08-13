@@ -1,0 +1,18 @@
+pkgbase = deepseek-harness
+	pkgdesc = DeepSeek Harness CLI and agent harness
+	pkgver = 0.1.0_rc.5
+	pkgrel = 1
+	url = https://github.com/deepseek-ai/deepseek-harness
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = pnpm>=11
+	depends = nodejs>=22.19.0
+	provides = dsh
+	conflicts = deepseek-harness-bin
+	conflicts = deepseek-harness-git
+	options = !strip
+	source = deepseek-harness-47f943859bef60e4160492346772ded9b24f765a.tar.gz::https://codeload.github.com/deepseek-ai/deepseek-harness/tar.gz/47f943859bef60e4160492346772ded9b24f765a
+	sha256sums = 534c9f1c9d30fea136026ecf7a23c2137e350f43558e2f1eff6218aef7b15b26
+
+pkgname = deepseek-harness
