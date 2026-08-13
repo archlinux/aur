@@ -2,7 +2,7 @@
 pkgname=python-jaraco.versioning
 _name=${pkgname#python-}
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="More sophisticated version manipulation (than packaging)"
 arch=('any')
 url="https://github.com/jaraco/jaraco.versioning"
@@ -38,7 +38,7 @@ check() {
   cd "$_name-$pkgver"
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -P -m pytest
+  test-env/bin/python -I -m pytest
 }
 
 package() {
