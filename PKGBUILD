@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             'eb122e1cf5149be5e89a2ebfb158f29f305427cb8b2061d6728c53ad1d1b89d4'
             '881a3ce33e4327919721e61f707bb1097a77077125c8c68766b2145ee0eadc58'
             'bb8105e1d76da20c138ad22c37e9e1be93a078ef9fbd9eedf10664399328b80b')
-dest="/usr/share/webapps/piped/${_componentnameshort}"
+_dest="/usr/share/webapps/piped/${_componentnameshort}"
 
 pkgver() {
 	cd 'piped-html-proxy'
@@ -54,6 +54,6 @@ package() {
 	install -Dm644 "${srcdir}/tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_componentname}.conf"
 	install -Dm644 "${srcdir}/systemd.service" "${pkgdir}/usr/lib/systemd/system/${_componentname}.service"
 
-	install -dm755 "${pkgdir}${dest}"
-	cp -r ${srcdir}/piped-html-proxy/{*.js{,on},node_modules} "${pkgdir}${dest}"
+	install -dm755 "${pkgdir}${_dest}"
+	cp -r ${srcdir}/piped-html-proxy/{*.js{,on},node_modules} "${pkgdir}${_dest}"
 }
