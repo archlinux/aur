@@ -1,12 +1,16 @@
 # Maintainer: Mr.Zero88 <huesmann.mats+aur@gmail.com>
 
 pkgname=xr-passthrough-layer-git
-pkgver=r26.dfa8de0
+pkgver=r38.e6c6008
 pkgrel=1
 pkgdesc="A OpenXR API layer adding camera passthrough support"
 arch=('x86_64')
 url="https://github.com/yshui/xr_passthrough_layer"
 license=('MIT')
+makedepends=(
+  cargo
+  git
+)
 source=(
   "xr-passthrough-layer::git+https://github.com/yshui/xr_passthrough_layer.git"
   "layer_manifest.json"
