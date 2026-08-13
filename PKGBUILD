@@ -2,7 +2,7 @@
 
 pkgname=nuclear-player-git
 _pkgname=nuclear-player
-pkgver=
+pkgver=0
 pkgrel=1
 pkgdesc='Nuclear is a free, open-source music player without ads or tracking.'
 arch=(x86_64)
@@ -16,21 +16,18 @@ optdepends=(
     'gst-plugins-ugly: Patented codec support'
     'gst-libav: FFmpeg-based codec support'
 )
-makedepends=('git' 'cargo' 'nodejs' 'openssl' 'libappindicator-gtk3' 'librsvg')
+makedepends=('git' 'cargo' 'nodejs' 'pnpm' 'openssl' 'libappindicator-gtk3' 'librsvg')
 source=("${pkgname}::git+https://github.com/nukeop/nuclear.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    git describe --long --tags 2>/dev/null \
-        | sed 's/^player@//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-        || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --tags --match 'player@*' \
+        | sed 's/^player@//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
     cd "${pkgname}"
-    corepack enable
-    corepack prepare pnpm@latest --activate
     pnpm install
     cd packages/player/src-tauri
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -40,9 +37,8 @@ build() {
     cd "${pkgname}"
     export CFLAGS+=" -ffat-lto-objects"
     export CXXFLAGS+=" -ffat-lto-objects"
-    pnpm --filter @nuclearplayer/player build:frontend
-    cd packages/player/src-tauri
-    cargo build --release
+    cd packages/player
+    pnpm tauri build --no-bundle
 }
 
 package() {
