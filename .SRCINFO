@@ -1,6 +1,6 @@
 pkgbase = jlivertool
 	pkgdesc = Simple Bilibili Danmaku Tool.Bilibili 弹幕机.
-	pkgver = 3.0.10
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://jlivertool.xinrea.cn/
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = jlivertool
 	depends = libxkbcommon-x11
 	provides = jlivertool
 	conflicts = jlivertool
-	source = jlivertool-3.0.10::git+https://github.com/Xinrea/JLiverTool#tag=v3.0.10
-	sha256sums = d83c0ad3daca71698a7d78d64252a9ed2d58c0b4459397ed1c56a56ebc3172bf
+	source = jlivertool-3.1.1::git+https://github.com/Xinrea/JLiverTool#tag=v3.1.1
+	sha256sums = 990b6c20e47ae1b415b2b59b08aa862d5a234d6b240c8d017c9b30d0d51718cf
 
 pkgname = jlivertool
