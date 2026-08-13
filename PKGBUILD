@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=transcriptR
-_pkgver=1.36.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.36.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='An Integrative Tool for ChIP- And RNA-Seq Based Primary Transcripts Detection and Quantification'
 arch=('any')
@@ -35,7 +35,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('20f06c62e7dc68c32be3c4330164fa2690ac2d252aaede218a19c07fa1f55ca0')
+sha256sums=('e3eddcdde030440cb7baa086554f2b210674b79540d528d1e50f7ad3efb2fb1c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
