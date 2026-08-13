@@ -6,15 +6,16 @@
 # of platform libraries (GTK, and — via linuxdeploy — libwayland-*), which then
 # get loaded ahead of the system's. On a rolling distro with a much newer Mesa,
 # the host's EGL resolves against those stale bundled Wayland libs, eglGetDisplay()
-# fails, and the app opens a blank window with no error. Linking against the
-# system's own webkit2gtk/gtk3/wayland/mesa makes that whole class of failure
-# impossible, which is exactly what this package does.
+# fails, and the app opens a blank window with no error (#111; affected releases
+# up to 0.2.1 — later AppImages exclude those libs). Linking against the system's
+# own webkit2gtk/gtk3/wayland/mesa makes that whole class of failure impossible,
+# which is exactly what this package does.
 #
 # CI renders pkgver and the checksums on each stable release; see packaging/aur/README.md.
 
 pkgname=srelens-bin
 _pkgname=srelens
-pkgver=0.2.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Kubernetes IDE — an MCP-native desktop workspace for operating clusters"
 arch=('x86_64')
@@ -48,7 +49,7 @@ source=(
   "LICENSE-$pkgver::https://raw.githubusercontent.com/srelens/srelens/$_pkgname-v$pkgver/LICENSE"
 )
 # Replaced with real hashes by `updpkgsums` in CI on every release.
-sha256sums=('43aa24076a77a011c5b4e1abbdf3d136dd36c9873aa36c7c787711f0ef588bf6'
+sha256sums=('94e5e79de3e99cff6490a61ebb77b2802e7a489eec10b04a191b79c6650671b8'
             'be310626d05ec2f34b6ad0e0b533134d0ece9eba938d7af30e82480102481cf4')
 
 package() {
