@@ -1,6 +1,6 @@
 pkgbase = gwm-cli
 	pkgdesc = Git Worktree Manager
-	pkgver = 1.6.1
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/kbrdn1/gwm-cli
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gwm-cli
 	depends = git
 	provides = gwm
 	options = !strip
-	source = gwm-1.6.1.tgz::https://github.com/kbrdn1/gwm-cli/archive/v1.6.1.tar.gz
-	sha256sums = ba6fb5f85d5d228772d00686bdeddf9351ed682b115792f715d4b32b50cd8c5d
+	source = gwm-1.7.1.tgz::https://github.com/kbrdn1/gwm-cli/archive/v1.7.1.tar.gz
+	sha256sums = 316fdf0bb0c41f85309579afa156c9ddd728a36234bba60d95b62dec5e70f035
 
 pkgname = gwm-cli
