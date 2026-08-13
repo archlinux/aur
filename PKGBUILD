@@ -3,7 +3,7 @@
 pkgbase=openixsuit-bin
 pkgname=openixsuit-bin
 _pkgname=OpenixSuit
-pkgver=0.4.11
+pkgver=0.5.0
 pkgrel=1
 arch=('x86_64')
 _name=${_pkgname}_${pkgver}_amd64
@@ -12,13 +12,12 @@ depends=(
     cairo
     gdk-pixbuf2
     glib2
-    glibc
     gtk3
     hicolor-icon-theme
-    libgcc
+    libgcc_s.so
     libsoup3
     libusb
-    webkit2gtk-4.1
+    libwebkit2gtk-4.1.so
 )
 makedepends=(libarchive)
 optdepends=(
@@ -34,7 +33,7 @@ url="https://github.com/YuzukiTsuru/OpenixSuit"
 install=${pkgname}.install
 source=("${url}/releases/download/v${pkgver}/${_name}.deb"
     ${pkgname}.install)
-sha256sums=('3e09b18b3de37a26103a757489f0b80a20c0aa045f45e0c9c1fe46f89279be79'
+sha256sums=('4e8b18f49fc7897b1b5c9c4754d28065318f607d163d66c1e04484aa199c87b7'
             '763f59e338643858260b27c93c510541616de1f81f4b7946c9dc81116bbba33f')
 # noextract=()
 
