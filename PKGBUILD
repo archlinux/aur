@@ -3,7 +3,7 @@
 _pkgauthor=timharek
 _pkgname=yr
 pkgname=${_pkgname}-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Get the weather delivered to your command-line"
@@ -19,8 +19,8 @@ source=("LICENSE-${pkgver}::${url}/blob/${_pkgvername}/LICENSE.md"
         "README-${pkgver}.md::${url}/blob/${_pkgvername}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/refs/download/${_pkgvername}/${_pkgname}-${_pkgvername}-linux-${_barch[0]}.tar.gz")
 sha256sums=('ae722945d7ed59cedb32ceca21ce674d4db89e362a182fe5f745eb52648c37b7'
-            'd35580bbb62d458031047617ac9d7d94a0276df20b4ace5e97b2791fee812748')
-sha256sums_x86_64=('b0b0bef81ab4bdbb0b614c0c859aaaf75b671e31aefb73737f9ed5cbc451b306')
+            '2083a088d0f74be424a509df7f3828da8f91d3e32a0d98e511a91aaeb160311d')
+sha256sums_x86_64=('2b640f86ffa4e8feeacfa0a2d4df9714bb38ceb6253a9a6691f0a2f6c6e22e00')
 
 
 package() {
