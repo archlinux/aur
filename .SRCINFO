@@ -1,0 +1,18 @@
+pkgbase = python-streamlit-echarts
+	pkgdesc = Display ECharts and pyecharts charts in Streamlit apps
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/andfanilo/streamlit-echarts
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-streamlit
+	optdepends = python-pyecharts: render pyecharts objects via st_pyecharts()
+	source = https://files.pythonhosted.org/packages/source/s/streamlit_echarts/streamlit_echarts-0.7.0.tar.gz
+	sha256sums = 831fffa4daba03b31afaf560aa5e5947b021ccf714e41c456c82301f9af06089
+
+pkgname = python-streamlit-echarts
