@@ -1,6 +1,6 @@
 pkgbase = payk-bin
 	pkgdesc = Keyboard-first TUI HTTP client
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/yusupkhemraev/payk
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = payk-bin
 	provides = payk
 	conflicts = payk
 	options = !strip
-	source = USAGE-0.4.1.md::https://raw.githubusercontent.com/yusupkhemraev/payk/v0.4.1/docs/usage.md
+	source = USAGE-0.4.2.md::https://raw.githubusercontent.com/yusupkhemraev/payk/v0.4.2/docs/usage.md
 	sha256sums = ea65a66110414bd34ab53b03ec41b4da5d0c0c5880cce7ae42c970d5a1e5af58
-	source_x86_64 = payk-x86_64-0.4.1.tgz::https://github.com/yusupkhemraev/payk/releases/download/v0.4.1/payk_0.4.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = c99c0cd4d14d5eca28c60cc6929e34d70a48c243e27b931bac06bf54f3949595
-	source_aarch64 = payk-aarch64-0.4.1.tgz::https://github.com/yusupkhemraev/payk/releases/download/v0.4.1/payk_0.4.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 54fa01da0736c5e970e831180183c51813fce1512c467def9108ad94ff42ecac
+	source_x86_64 = payk-x86_64-0.4.2.tgz::https://github.com/yusupkhemraev/payk/releases/download/v0.4.2/payk_0.4.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = c2589bc35fbea3dcbf51d6105a00a38b4485ea47e54f20b535fde88959e6cbd8
+	source_aarch64 = payk-aarch64-0.4.2.tgz::https://github.com/yusupkhemraev/payk/releases/download/v0.4.2/payk_0.4.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9a226f705fb4b4dae4854d6a857191dee9d2769996cdab539719b95e5de0b602
 
 pkgname = payk-bin
