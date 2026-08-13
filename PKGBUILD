@@ -2,7 +2,7 @@
 
 _pkgname=xfwl4
 pkgname=${_pkgname}-devel
-pkgver=4.21.0
+pkgver=4.21.1
 pkgrel=1
 pkgdesc="Wayland compositor for xfce4 (development snapshot)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -14,10 +14,10 @@ provides=("${_pkgname}=${pkgver}")
 depends=('gtk3' 'xfconf>=4.21.2' 'libxfce4ui>=4.21.4' 'libdisplay-info' 'libdrm' 'libinput' 'mesa' 'pixman'
          'seatd' 'libxkbcommon' 'xorg-xwayland')
 # Runtime only
-depends+=('xfwm4' 'xfce4-settings>=4.21.2' 'xfdesktop>=4.21.0')
+depends+=('xfwm4' 'xfce4-settings>=4.21.3' 'xfdesktop>=4.21.0' 'libxfce4windowing>=4.20.7')
 makedepends=('cargo' 'rust' 'meson' 'gettext')
 source=("https://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('1e2ba9c8aa21d1adf723e7d3ef22f38c474a2f0d557de8caa6fa1591a1f8fe3e')
+sha256sums=('fee9a4777009bdbee160fd9e247d99060a26ef933e942303f7689d19cf6441ff')
 
 build() {
   local meson_options=(

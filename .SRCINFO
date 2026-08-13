@@ -1,6 +1,6 @@
 pkgbase = xfwl4-devel
 	pkgdesc = Wayland compositor for xfce4 (development snapshot)
-	pkgver = 4.21.0
+	pkgver = 4.21.1
 	pkgrel = 1
 	url = https://gitlab.xfce.org/xfce/xfwl4
 	arch = x86_64
@@ -25,11 +25,12 @@ pkgbase = xfwl4-devel
 	depends = libxkbcommon
 	depends = xorg-xwayland
 	depends = xfwm4
-	depends = xfce4-settings>=4.21.2
+	depends = xfce4-settings>=4.21.3
 	depends = xfdesktop>=4.21.0
-	provides = xfwl4=4.21.0
+	depends = libxfce4windowing>=4.20.7
+	provides = xfwl4=4.21.1
 	conflicts = xfwl4
-	source = https://archive.xfce.org/src/xfce/xfwl4/4.21/xfwl4-4.21.0.tar.xz
-	sha256sums = 1e2ba9c8aa21d1adf723e7d3ef22f38c474a2f0d557de8caa6fa1591a1f8fe3e
+	source = https://archive.xfce.org/src/xfce/xfwl4/4.21/xfwl4-4.21.1.tar.xz
+	sha256sums = fee9a4777009bdbee160fd9e247d99060a26ef933e942303f7689d19cf6441ff
 
 pkgname = xfwl4-devel
