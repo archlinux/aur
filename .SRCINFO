@@ -1,6 +1,6 @@
 pkgbase = wayscriber-configurator
 	pkgdesc = GUI configurator for wayscriber (Iced)
-	pkgver = 0.9.22
+	pkgver = 0.9.23
 	pkgrel = 1
 	url = https://wayscriber.com
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = wayscriber-configurator
 	depends = glibc
 	depends = libxkbcommon
 	optdepends = wayscriber: integrate with the running daemon and CLI
-	source = wayscriber-0.9.22.tar.gz::https://github.com/devmobasa/wayscriber/archive/refs/tags/v0.9.22.tar.gz
-	sha256sums = b5ac78b5c4b03d1bfbef8e6758d03862748893b84b5abeb3f9fc12325e1f30aa
+	source = wayscriber-0.9.23.tar.gz::https://github.com/devmobasa/wayscriber/archive/refs/tags/v0.9.23.tar.gz
+	sha256sums = 38742cd3559bf6dea3a2a8f33eb2376abc20db4d3185c1e76248d1042f2d8cab
 
 pkgname = wayscriber-configurator
