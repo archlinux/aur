@@ -2,7 +2,7 @@
 pkgname=turtle
 _app_id="de.philippun1.$pkgname"
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage your git repositories with easy-to-use dialogs in Nautilus."
 arch=('any')
 url="https://gitlab.gnome.org/philippun1/turtle"
@@ -24,6 +24,7 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=(
+  'dbus'
   'python-pytest'
   'xorg-server-xvfb'
 )
@@ -37,10 +38,6 @@ conflicts=('turtlegit')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('67a81c0f7f7169be0d5bcd8a146767b5ad487dd2ce994d7c71c27aa46641fbb8')
 
-prepare() {
-  cd "$pkgname-$pkgver"
-}
-
 build() {
   cd "$pkgname-$pkgver"
   python -m build --wheel --no-isolation
@@ -48,7 +45,9 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  PYTHONPATH=./ dbus-run-session xvfb-run pytest
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  dbus-run-session xvfb-run test-env/bin/python -I -m pytest
 
   appstreamcli validate --no-net "data/${_app_id}.metainfo.xml"
   desktop-file-validate "data/${_app_id}.desktop"
