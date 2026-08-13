@@ -1,7 +1,7 @@
 # Maintainer: Good Vibes <good_vibes@fastmail.com>
 
 pkgname=deskreen-ce-bin
-pkgver=3.2.1
+pkgver=3.2.16
 pkgrel=1
 pkgdesc='Turn any device into a secondary screen for your computer - Community Edition (binary release)'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('deskreen-ce' 'deskreen')
 conflicts=('deskreen-ce' 'deskreen' 'deskreen-bin')
 source_x86_64=("deskreen-ce-$pkgver-amd64.deb::https://github.com/pavlobu/deskreen/releases/download/v$pkgver/deskreen-ce_${pkgver}_amd64.deb")
 source_aarch64=("deskreen-ce-$pkgver-arm64.deb::https://github.com/pavlobu/deskreen/releases/download/v$pkgver/deskreen-ce_${pkgver}_arm64.deb")
-b2sums_x86_64=('032b074a10cfb0b617094d9b85a1ca6727314281418e73e92e23ecc155502216c893abb76ceb129fb403fc93ce9e962756f82a24a556990e8b4bb497a10c7255')
-b2sums_aarch64=('48de973028a48f582dcaf2924520b7a0d98961780f789027d34d4731cd38ed4cb006917631a2d7506607ac71b1a70323fd5d92d5e78539890ede460e6207490b')
+b2sums_x86_64=('49145cab47c1f09c7f2b8d6f604945a3267e7310587a137d28cfe9f4e7818e71ca34b5a6daca937d60434997c2f63c77e5e351a1f71d15103c04c4a1298f2f29')
+b2sums_aarch64=('2eeb009a1fae7bb9d90dac39ae197a346db87e645adb2c5f778bae4dcd206395506cd61b700d634c14dc66da81817a5e9e6100217a44c8d605f502f4d752a75f')
 
 package() {
     depends=('avahi'
