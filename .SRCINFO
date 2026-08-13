@@ -1,6 +1,6 @@
 pkgbase = r-panelcn.mops
 	pkgdesc = CNV detection tool for targeted NGS panel data
-	pkgver = 1.28.0
+	pkgver = 1.34.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/panelcn.mops
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = r-panelcn.mops
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/panelcn.mops_1.28.0.tar.gz
-	sha256sums = 0a0351683fa65368e9354166295114c7cc369bebc4b3811cf9984c348390f883
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/panelcn.mops_1.34.0.tar.gz
+	sha256sums = 5efa6ced1e52a0da914d1c95f08f7e1933a98fc4022e5d4fc4fb799cb4853f3d
 
 pkgname = r-panelcn.mops
