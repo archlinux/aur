@@ -1,0 +1,21 @@
+pkgbase = year-tui
+	pkgdesc = Watch your year fill up, day by day
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/cesarferreira/year-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	makedepends = openssl
+	makedepends = libgit2
+	depends = glibc
+	depends = gcc-libs
+	depends = libgit2
+	provides = year
+	conflicts = year
+	source = year-tui-0.3.0.crate::https://crates.io/api/v1/crates/year-tui/0.3.0/download
+	sha256sums = b7706bb4d6a47dbf321793cf1140c04c38e22ab90f19726157ec57080b22a86c
+
+pkgname = year-tui
