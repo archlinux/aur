@@ -1,9 +1,8 @@
 # Maintainer: Hilary Jendrasiak SP5D <sylogista@sylogista.pl>
 
 pkgname="wsjtz-appimage"
-pkgver=2.5.4_1.22
-
-_pkgver=$(echo ${pkgver} | sed 's/_/-/')  # pkgver in PKGBUILD is not allowed to contain hyphens, but filename contains it
+pkgver=2.0.18
+epoch=1
 pkgrel=1
 pkgdesc="AppImage of WSJT-Z – fork of WSJT-X with automation features."
 arch=('x86_64')
@@ -11,9 +10,9 @@ url="https://github.com/SP5D/wsjtz-AppImage"
 license=("GPL3")
 depends=("fuse2")
 options=(!strip)
-source=("https://github.com/SP5D/wsjtz-AppImage/releases/download/v${_pkgver}/wsjtz-x86_64.AppImage")
+source=("https://github.com/SP5D/wsjtz-AppImage/releases/download/v${pkgver}/wsjtz-x86_64.AppImage")
 noextract=("wsjtz-x86_64.AppImage")
-sha256sums=('5a093a3346dbd012e0276718a88fac7845be80ddf0c6dffca4989fe3a0481153')
+sha256sums=('97dd612772f1c9498afc2c9c763c0c3cc78e0763d6eefabad5cfeb18f3e745f5')
 
 prepare() {
     chmod +x wsjtz-x86_64.AppImage
