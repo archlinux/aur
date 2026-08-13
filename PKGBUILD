@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=recoup
-_pkgver=1.36.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -15,7 +15,6 @@ depends=(
   r-biostrings
   r-circlize
   r-complexheatmap
-  r-genomeinfodb
   r-genomicalignments
   r-genomicfeatures
   r-genomicranges
@@ -26,6 +25,7 @@ depends=(
   r-rsqlite
   r-rtracklayer
   r-s4vectors
+  r-seqinfo
   r-stringr
   r-txdbmaker
 )
@@ -33,6 +33,7 @@ optdepends=(
   r-biocmanager
   r-biocstyle
   r-bsgenome
+  r-genomeinfodb
   r-knitr
   r-rmarkdown
   r-rmysql
@@ -40,8 +41,8 @@ optdepends=(
   r-zoo
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('df4105d40be95411e71577daa9c0a7e8')
-b2sums=('51df306468ace612be42c9eceaf0b9246f99d60f2af2346bebfab07cf094618fcebdc0a1474acf32e3dfb253841aefdb2bd47ca93cd4c54912b6632d1a5a3c09')
+md5sums=('21fad17fb247a8c3af890dab6076a589')
+b2sums=('c8d309ddd111080ec039e4af4b7037bab091506034afb5de1e3a0faa7b566e98dd3e18a2c85ae42d616404276a7c867b76d3177e8985fcf029caaea33ab062df')
 
 build() {
   mkdir build
