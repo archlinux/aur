@@ -1,6 +1,6 @@
 pkgbase = jlivertool-bin
 	pkgdesc = Bilibili 弹幕机.(Prebuilt version)
-	pkgver = 3.0.10
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = http://jlivertool.xinrea.cn/
 	arch = x86_64
@@ -10,12 +10,12 @@ pkgbase = jlivertool-bin
 	depends = gtk3
 	depends = openssl
 	depends = libxkbcommon-x11
-	provides = jlivertool=3.0.10
+	provides = jlivertool=3.1.1
 	conflicts = jlivertool
-	source = jlivertool-3.0.10.deb::https://github.com/Xinrea/JLiverTool/releases/download/v3.0.10/jlivertool_3.0.10_amd64.deb
-	source = LICENSE-3.0.10.md::https://raw.githubusercontent.com/Xinrea/JLiverTool/v3.0.10/LICENSE.md
+	source = jlivertool-3.1.1.deb::https://github.com/Xinrea/JLiverTool/releases/download/v3.1.1/jlivertool_3.1.1_amd64.deb
+	source = LICENSE-3.1.1.md::https://raw.githubusercontent.com/Xinrea/JLiverTool/v3.1.1/LICENSE.md
 	source = jlivertool.sh
-	sha256sums = 0c1c5d24d374d33308bb808a82cb770bcde88ebc69f66b63c2be043555193ae3
+	sha256sums = 2ee53d5b32ed7133681cb6aa58553587564f670a2f1c56257732eab3c25cfa1c
 	sha256sums = 5d86e387ac33cf32eee9c968d38483a30567690b843c3768b35fe4bc55b455a8
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 
