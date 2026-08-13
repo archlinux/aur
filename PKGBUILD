@@ -1,13 +1,13 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_npmname=project-registry
-_npmver=0.4.2
-
 _appname=projx
-pkgname=${_npmname}
+pkgname=project-registry
 pkgdesc="A developer CLI that starts projects from named templates backed by shell commands."
-pkgver=${_npmver}
+pkgver=0.7.0
 pkgrel=1
+
+_npmname=${pkgname}
+_npmver=${pkgver}
 
 arch=("x86_64")
 license=("MIT")
@@ -23,7 +23,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('cc3f8e43b0bd9c90046cdc9688c9e8268a7ff6689a4e1dba4a4ad27fd1178bb8578ee545af215105d5cd8a002c1c0bbb5616ae6e5627899a04f18aec0cda841a')
+b2sums=('eb69580ed6b0c01bda5f31f98879d6d1b2ba196766b90328f4c6d28be74722724ecb8dc3fb8daa038f868b2a121094a5aab96dc10cb7bb62b03443305dde8bec')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {

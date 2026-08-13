@@ -1,6 +1,6 @@
 pkgbase = project-registry
 	pkgdesc = A developer CLI that starts projects from named templates backed by shell commands.
-	pkgver = 0.4.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/HichemTab-tech/project-registry
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = project-registry
 	depends = python-pkg_resources
 	depends = gyp
 	provides = projx
-	noextract = project-registry-0.4.2.tgz
+	noextract = project-registry-0.7.0.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = project-registry-0.4.2.tgz::https://registry.npmjs.org/project-registry/-/project-registry-0.4.2.tgz
-	b2sums = cc3f8e43b0bd9c90046cdc9688c9e8268a7ff6689a4e1dba4a4ad27fd1178bb8578ee545af215105d5cd8a002c1c0bbb5616ae6e5627899a04f18aec0cda841a
+	source = project-registry-0.7.0.tgz::https://registry.npmjs.org/project-registry/-/project-registry-0.7.0.tgz
+	b2sums = eb69580ed6b0c01bda5f31f98879d6d1b2ba196766b90328f4c6d28be74722724ecb8dc3fb8daa038f868b2a121094a5aab96dc10cb7bb62b03443305dde8bec
 
 pkgname = project-registry
