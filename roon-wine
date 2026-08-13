@@ -45,6 +45,7 @@ Usage: roon-wine COMMAND [ARGUMENTS]
 Commands:
   setup [MODE]             Install, configure, and launch; MODE: system (default), desktop, direct
   install                  Create/repair the prefix and install Roon
+  update                   Install the pinned Roon build without deleting user data
   run                      Launch Roon
   configure                Apply display and audio configuration
   winecfg                  Open Wine configuration for the managed prefix
@@ -273,15 +274,15 @@ ensure_loopback_capture() {
 }
 
 managed_launcher_pids() {
-  local exe proc pid argument
-  exe=$(find_roon) || return 0
+  local proc pid argument
   for proc in /proc/[0-9]*/cmdline; do
     [[ -r $proc ]] || continue
     pid=${proc#/proc/}
     pid=${pid%/cmdline}
     [[ $pid != "$$" ]] || continue
     while IFS= read -r -d '' argument; do
-      if [[ $argument == "$exe" ]]; then
+      if [[ $argument == "$PREFIX"/drive_c/users/*/AppData/Local/Roon/Application/Roon.exe ||
+            $argument == "$PREFIX"/drive_c/users/*/AppData/Local/Roon/Application/[0-9]*/Roon.exe ]]; then
         printf '%s\n' "$pid"
         break
       fi
@@ -462,10 +463,55 @@ open_winecfg() {
 find_roon() {
   local candidate
   candidate=$(find "$PREFIX/drive_c/users" -type f \
-    -path '*/AppData/Local/Roon/Application/*' -iname 'Roon.exe' \
+    -path '*/AppData/Local/Roon/Application/Roon.exe' \
     -print 2>/dev/null | sort -V | tail -n 1 || true)
+  if [[ -z $candidate ]]; then
+    candidate=$(find "$PREFIX/drive_c/users" -regextype posix-extended -type f \
+      -regex '.*/AppData/Local/Roon/Application/[0-9]+/Roon[.]exe' \
+      -print 2>/dev/null | sort -V | tail -n 1 || true)
+  fi
   [[ -n $candidate ]] || return 1
   printf '%s\n' "$candidate"
+}
+
+activate_proton_payload() {
+  local payload=$1 application=$2 build=$3 name
+  for name in Roon.exe RAATServer.exe Roon.exe.config RAATServer.exe.config VERSION; do
+    [[ -f $payload/$name ]] || die "Roon payload is missing $name"
+  done
+
+  for name in Roon RAATServer; do
+    python - "$payload/$name.exe" "$application/$name.exe.new" \
+      "$build\\$name.dll" <<'PY'
+import os
+from pathlib import Path
+import shutil
+import sys
+
+source = Path(sys.argv[1])
+destination = Path(sys.argv[2])
+replacement = sys.argv[3].encode("ascii")
+needle = (source.stem + ".dll").encode("ascii")
+data = source.read_bytes()
+offset = data.find(needle)
+if offset < 0 or data.find(needle, offset + 1) >= 0:
+    raise SystemExit(f"could not locate one app-host path in {source.name}")
+padding = data[offset + len(needle):offset + len(replacement)]
+if any(padding):
+    raise SystemExit(f"app-host path is too long for {source.name}")
+shutil.copy2(source, destination)
+with destination.open("r+b") as output:
+    output.seek(offset)
+    output.write(replacement)
+os.chmod(destination, source.stat().st_mode)
+PY
+    mv -f -- "$application/$name.exe.new" "$application/$name.exe"
+  done
+
+  for name in Roon.exe.config RAATServer.exe.config VERSION; do
+    cp --preserve=mode,timestamps -- "$payload/$name" "$application/$name.new"
+    mv -f -- "$application/$name.new" "$application/$name"
+  done
 }
 
 install_proton_payload() {
@@ -493,6 +539,7 @@ install_proton_payload() {
     rm -rf -- "$staging"
     die 'Roon payload has an invalid build identifier'
   }
+  stop_managed_prefix
   destination="$PREFIX/drive_c/users/steamuser/AppData/Local/Roon/Application/$build"
   mkdir -p "$(dirname "$destination")"
   rm -rf -- "$destination.new"
@@ -500,6 +547,7 @@ install_proton_payload() {
   rm -rf -- "$destination"
   mv -- "$destination.new" "$destination"
   rm -rf -- "$staging"
+  activate_proton_payload "$destination" "$(dirname "$destination")" "$build"
   note "installed Roon controller build $build"
 }
 
@@ -635,7 +683,7 @@ main() {
   load_config
   case ${1:-help} in
     setup) setup_roon "${2:-system}" ;;
-    install) install_roon ;;
+    install|update) install_roon ;;
     run) run_roon ;;
     configure) configure_prefix ;;
     winecfg) open_winecfg ;;
