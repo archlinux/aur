@@ -21,7 +21,7 @@ index 8e838eaf..2011874e 100644
       * Grab ownership of device, ownership is required to do modeset.
       *
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-crtc.c b/kernel-open/nvidia-drm/nvidia-drm-crtc.c
-index 17958f8a..ce0b8334 100644
+index 37a4deb7..aac73ac9 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-crtc.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-crtc.c
 @@ -3152,6 +3152,7 @@ static void nv_drm_vblank_enable_fn(void *t)
@@ -67,7 +67,7 @@ index 17958f8a..ce0b8334 100644
      }
  
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-drv.c b/kernel-open/nvidia-drm/nvidia-drm-drv.c
-index df29f491..8c1fb7ac 100644
+index 30e363cf..be666fa8 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-drv.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-drv.c
 @@ -907,6 +907,56 @@ static void nv_drm_dev_unload(struct drm_device *dev)
@@ -522,7 +522,7 @@ index 0201b95c..3951204f 100644
      struct drm_property *nv_input_colorspace_property;
  
 diff --git a/kernel-open/nvidia-modeset/nvidia-modeset-linux.c b/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
-index 8c2cf374..721cbb69 100644
+index 4d5997ea..199ee204 100644
 --- a/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
 +++ b/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
 @@ -496,6 +496,9 @@ static inline unsigned long NVKMS_USECS_TO_JIFFIES(NvU64 usec)
@@ -535,45 +535,27 @@ index 8c2cf374..721cbb69 100644
  /*************************************************************************
   * User clients of NVKMS may need to be synchronized with suspend/resume
   * operations.  This depends on the state of the system when the NVKMS
-@@ -1215,6 +1218,25 @@ NvBool nvkms_open_gpu(NvU32 gpuId, NvBool reset_aware)
- }
- 
+@@ -1212,16 +1215,46 @@ NvBool nvkms_open_gpu(NvU32 gpuId, NvBool reset_aware)
  void nvkms_close_gpu(NvU32 gpuId, NvBool reset_aware)
-+{
-+    nvidia_modeset_stack_ptr stack = NULL;
+ {
+     nvidia_modeset_stack_ptr stack = NULL;
 +    const NvBool gpu_loss_lock_held = READ_ONCE(nvkms_gpu_loss_lock_held);
-+
-+    if (__rm_ops.alloc_stack(&stack) != 0) {
-+        return;
-+    }
-+
-+    __rm_ops.close_gpu(gpuId, stack, reset_aware);
-+
+ 
+     if (__rm_ops.alloc_stack(&stack) != 0) {
++        if (gpu_loss_lock_held) {
++            WRITE_ONCE(nvkms_gpu_loss_lock_held, NV_FALSE);
++            up(&nvkms_lock);
++        }
+         return;
+     }
+ 
+     __rm_ops.close_gpu(gpuId, stack, reset_aware);
+ 
 +    if (gpu_loss_lock_held) {
 +        WRITE_ONCE(nvkms_gpu_loss_lock_held, NV_FALSE);
 +        up(&nvkms_lock);
 +    }
 +
-+    __rm_ops.free_stack(stack);
-+}
-+
-+void nvkms_close_gpu_for_surprise_removal(NvU32 gpuId, NvBool reset_aware)
- {
-     nvidia_modeset_stack_ptr stack = NULL;
- 
-@@ -1222,11 +1244,38 @@ void nvkms_close_gpu(NvU32 gpuId, NvBool reset_aware)
-         return;
-     }
- 
-+    /*
-+     * User-space NVKMS ioctls hold nvkms_lock while they access NVDevEvo.
-+     * Keep the removal close under the same lock so nvFreeDevEvo() cannot
-+     * free the device while an ioctl still has a pointer to it.
-+     */
-+    down(&nvkms_lock);
-     __rm_ops.close_gpu(gpuId, stack, reset_aware);
-+    up(&nvkms_lock);
- 
      __rm_ops.free_stack(stack);
  }
  
@@ -601,10 +583,10 @@ index 8c2cf374..721cbb69 100644
  {
      return __rm_ops.enumerate_gpus(gpu_info);
 diff --git a/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h b/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
-index a634ec2b..e38ac479 100644
+index 2d20fd27..01ff3dcd 100644
 --- a/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
 +++ b/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
-@@ -317,6 +317,12 @@ void* nvkms_get_per_open_data(int fd);
+@@ -314,6 +314,12 @@ void* nvkms_get_per_open_data(int fd);
  NvBool nvkms_open_gpu(NvU32 gpuId, NvBool reset_aware);
  void nvkms_close_gpu(NvU32 gpuId, NvBool reset_aware);
  
@@ -617,7 +599,7 @@ index a634ec2b..e38ac479 100644
  
  /*!
   * Enumerate nvidia gpus.
-@@ -393,4 +399,3 @@ nvkms_register_backlight(NvU32 gpu_id, NvU32 display_id, void *drv_priv,
+@@ -390,4 +396,3 @@ nvkms_register_backlight(NvU32 gpu_id, NvU32 display_id, void *drv_priv,
  void nvkms_unregister_backlight(struct nvkms_backlight_device *nvkms_bd);
  
  #endif /* _NVIDIA_MODESET_OS_INTERFACE_H_ */
@@ -681,7 +663,7 @@ index 2d0d3034..c2558fd9 100644
  }
  
 diff --git a/kernel-open/nvidia-uvm/uvm_gpu.c b/kernel-open/nvidia-uvm/uvm_gpu.c
-index a4661a05..3a83133a 100644
+index 81d8f6f0..cd1078b0 100644
 --- a/kernel-open/nvidia-uvm/uvm_gpu.c
 +++ b/kernel-open/nvidia-uvm/uvm_gpu.c
 @@ -46,6 +46,7 @@
@@ -1043,7 +1025,7 @@ index 478c1aaf..dae09f31 100644
          // atomic64_read() doesn't imply any memory barriers and we need all
          // subsequent memory accesses in this thread to be ordered after the
 diff --git a/kernel-open/nvidia-uvm/uvm_pmm_gpu.c b/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
-index 34e56f22..3295442e 100644
+index 9fd3e62c..101b8eb7 100644
 --- a/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
 +++ b/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
 @@ -165,6 +165,7 @@
@@ -1069,7 +1051,7 @@ index 34e56f22..3295442e 100644
      nvUvmInterfacePmaFreePages(pmm->pma, &chunk->address, 1, UVM_CHUNK_SIZE_MAX, flags);
  
      uvm_up_read(&pmm->pma_lock);
-@@ -3120,7 +3129,10 @@ void uvm_pmm_gpu_deinit(uvm_pmm_gpu_t *pmm)
+@@ -3122,7 +3131,10 @@ void uvm_pmm_gpu_deinit(uvm_pmm_gpu_t *pmm)
      UVM_ASSERT(uvm_devmem_check_orphan_pages(pmm));
      release_free_root_chunks(pmm);
  
@@ -1452,10 +1434,10 @@ index cc0e1a2e..c1cadefb 100644
                          int (*get_relaxed_ordering_mode)(int *mode, void *data),
                          void (*put_relaxed_ordering_mode)(int mode, void *data),
 diff --git a/kernel-open/nvidia/nv.c b/kernel-open/nvidia/nv.c
-index b771a001..315a6b82 100644
+index 04a5c64b..7fb45346 100644
 --- a/kernel-open/nvidia/nv.c
 +++ b/kernel-open/nvidia/nv.c
-@@ -2218,14 +2218,49 @@ nvidia_close_callback(
+@@ -2222,14 +2222,49 @@ nvidia_close_callback(
  static void nvidia_close_deferred(void *data)
  {
      nv_linux_file_private_t *nvlfp = data;
@@ -1507,7 +1489,7 @@ index b771a001..315a6b82 100644
  }
  
  int
-@@ -2236,6 +2271,9 @@ nvidia_close(
+@@ -2240,6 +2275,9 @@ nvidia_close(
  {
      int rc;
      nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
@@ -1517,7 +1499,7 @@ index b771a001..315a6b82 100644
  
      nv_printf(NV_DBG_INFO,
                "NVRM: nvidia_close on GPU with minor number %d\n",
-@@ -2248,10 +2286,44 @@ nvidia_close(
+@@ -2252,10 +2290,44 @@ nvidia_close(
  
      NV_SET_FILE_PRIVATE(file, NULL);
  
@@ -1563,7 +1545,7 @@ index b771a001..315a6b82 100644
      }
  
      if (rc == 0)
-@@ -5320,6 +5392,8 @@ int nvidia_dev_get(NvU32 gpu_id, nvidia_stack_t *sp, NvBool reset_aware)
+@@ -5333,6 +5405,8 @@ int nvidia_dev_get(NvU32 gpu_id, nvidia_stack_t *sp, NvBool reset_aware)
  void nvidia_dev_put(NvU32 gpu_id, nvidia_stack_t *sp, NvBool reset_aware)
  {
      nv_linux_state_t *nvl;
@@ -1635,10 +1617,10 @@ index 8e838eaf..2011874e 100644
       * Grab ownership of device, ownership is required to do modeset.
       *
 diff --git a/src/nvidia-modeset/kapi/src/nvkms-kapi.c b/src/nvidia-modeset/kapi/src/nvkms-kapi.c
-index 51178eee..29da3a8f 100644
+index aed2312b..2742e2bd 100644
 --- a/src/nvidia-modeset/kapi/src/nvkms-kapi.c
 +++ b/src/nvidia-modeset/kapi/src/nvkms-kapi.c
-@@ -641,6 +641,78 @@ static void FreeDevice(struct NvKmsKapiDevice *device)
+@@ -643,6 +643,78 @@ static void FreeDevice(struct NvKmsKapiDevice *device)
      nvKmsKapiFree(device);
  }
  
@@ -1717,7 +1699,7 @@ index 51178eee..29da3a8f 100644
  NvBool nvKmsKapiAllocateSystemMemory(struct NvKmsKapiDevice *device,
                                       NvU32 hRmHandle,
                                       enum NvKmsSurfaceMemoryLayout layout,
-@@ -4138,6 +4210,7 @@ NvBool nvKmsKapiGetFunctionsTableInternal
+@@ -4140,6 +4212,7 @@ NvBool nvKmsKapiGetFunctionsTableInternal
  
      funcsTable->allocateDevice = AllocateDevice;
      funcsTable->freeDevice     = FreeDevice;
@@ -1726,10 +1708,10 @@ index 51178eee..29da3a8f 100644
      funcsTable->grabOwnership    = GrabOwnership;
      funcsTable->releaseOwnership = ReleaseOwnership;
 diff --git a/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h b/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
-index a634ec2b..e38ac479 100644
+index 2d20fd27..01ff3dcd 100644
 --- a/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
 +++ b/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
-@@ -317,6 +317,12 @@ void* nvkms_get_per_open_data(int fd);
+@@ -314,6 +314,12 @@ void* nvkms_get_per_open_data(int fd);
  NvBool nvkms_open_gpu(NvU32 gpuId, NvBool reset_aware);
  void nvkms_close_gpu(NvU32 gpuId, NvBool reset_aware);
  
@@ -1742,7 +1724,7 @@ index a634ec2b..e38ac479 100644
  
  /*!
   * Enumerate nvidia gpus.
-@@ -393,4 +399,3 @@ nvkms_register_backlight(NvU32 gpu_id, NvU32 display_id, void *drv_priv,
+@@ -390,4 +396,3 @@ nvkms_register_backlight(NvU32 gpu_id, NvU32 display_id, void *drv_priv,
  void nvkms_unregister_backlight(struct nvkms_backlight_device *nvkms_bd);
  
  #endif /* _NVIDIA_MODESET_OS_INTERFACE_H_ */
@@ -2447,10 +2429,10 @@ index 133c38ea..062ac441 100644
      NVDevEvoPtr pDevEvo,
      NVDeferredRequestFifoRec *pDeferredRequestFifo)
 diff --git a/src/nvidia/arch/nvalloc/unix/src/osapi.c b/src/nvidia/arch/nvalloc/unix/src/osapi.c
-index 894cd663..76f5f732 100644
+index a3d614d4..5d8ccd10 100644
 --- a/src/nvidia/arch/nvalloc/unix/src/osapi.c
 +++ b/src/nvidia/arch/nvalloc/unix/src/osapi.c
-@@ -400,6 +400,17 @@ void
+@@ -401,6 +401,17 @@ void
  RmLogGpuCrash(OBJGPU *pGpu)
  {
      NvBool bGpuIsLost, bGpuIsConnected;
@@ -2468,7 +2450,7 @@ index 894cd663..76f5f732 100644
  
      //
      // Re-evaluate whether or not the GPU is accessible. This could be called
-@@ -4513,7 +4524,30 @@ void NV_API_CALL rm_power_source_change_event(
+@@ -4555,7 +4566,30 @@ void NV_API_CALL rm_power_source_change_event(
          OBJGPU *pGpu = gpumgrGetGpu(0);
          if (pGpu != NULL)
          {
@@ -2499,7 +2481,7 @@ index 894cd663..76f5f732 100644
              if ((rmStatus = os_ref_dynamic_power(nv, NV_DYNAMIC_PM_FINE)) ==
                                                                           NV_OK)
              {
-@@ -4533,6 +4567,7 @@ void NV_API_CALL rm_power_source_change_event(
+@@ -4575,6 +4609,7 @@ void NV_API_CALL rm_power_source_change_event(
          }
      }
  
@@ -2507,7 +2489,7 @@ index 894cd663..76f5f732 100644
      if (rmStatus != NV_OK)
      {
          NV_PRINTF(LEVEL_ERROR,
-@@ -6065,7 +6100,30 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
+@@ -6117,7 +6152,30 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
          OBJGPU *pGpu = gpumgrGetGpu(0);
          if (pGpu != NULL)
          {
@@ -2538,7 +2520,7 @@ index 894cd663..76f5f732 100644
              if ((rmStatus = os_ref_dynamic_power(nv, NV_DYNAMIC_PM_FINE)) ==
                                                                           NV_OK)
              {
-@@ -6077,6 +6135,7 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
+@@ -6129,6 +6187,7 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
          rmapiLockRelease();
      }
  
@@ -3201,7 +3183,7 @@ index 9bfe6250..5db10366 100644
  }
  
 diff --git a/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c b/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c
-index 2bba5b53..269b47a2 100644
+index 361fde6f..f7dd6bbe 100644
 --- a/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c
 +++ b/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c
 @@ -898,10 +898,19 @@ NV_STATUS nvGpuOpsDestroySession(struct gpuSession *session)
@@ -3263,10 +3245,10 @@ index 0fa885c9..8a475c9b 100644
      // NV_PRINTF(LEVEL_INFO, "hClient %x: Freeing hResource: %x\n",
      //          pClient->hClient, pResourceRef->hResource);
 diff --git a/src/nvidia/src/libraries/resserv/src/rs_server.c b/src/nvidia/src/libraries/resserv/src/rs_server.c
-index 533b87e0..79bbcab7 100644
+index 854f54a0..6c7f5b85 100644
 --- a/src/nvidia/src/libraries/resserv/src/rs_server.c
 +++ b/src/nvidia/src/libraries/resserv/src/rs_server.c
-@@ -256,7 +256,7 @@ NV_STATUS serverFreeResourceTreeUnderLock(RsServer *pServer, RS_RES_FREE_PARAMS
+@@ -257,7 +257,7 @@ NV_STATUS serverFreeResourceTreeUnderLock(RsServer *pServer, RS_RES_FREE_PARAMS
              goto done;
  
          status = clientFreeResource(pResourceRef->pClient, pServer, pFreeParams);
@@ -3275,7 +3257,7 @@ index 533b87e0..79bbcab7 100644
  
          serverResLock_Epilogue(pServer, LOCK_ACCESS_WRITE, pLockInfo, &releaseFlags);
      }
-@@ -1372,7 +1372,7 @@ serverFreeResourceTree
+@@ -1379,7 +1379,7 @@ serverFreeResourceTree
          freeParams.bInvalidateOnly = bInvalidateOnly;
          freeParams.pSecInfo = pParams->pSecInfo;
          status = serverFreeResourceTreeUnderLock(pServer, &freeParams);
