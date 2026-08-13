@@ -1,6 +1,6 @@
 pkgbase = qusb2snes-git
 	pkgdesc = A Qt based webserver for usb2snes
-	pkgver = r605.e64baec
+	pkgver = r606.f4cfb86
 	pkgrel = 1
 	url = https://github.com/Skarsnik/QUsb2snes
 	install = .install
