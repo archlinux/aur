@@ -3,6 +3,7 @@
 # Contributor: James Brink <brink.james@gmail.com>
 # Contributor: X0rg
 
+VCSCLIENTS+=('git-lfs::git-lfs')
 _gitname=darling
 pkgbase=$_gitname-git
 pkgname=(
@@ -12,7 +13,7 @@ pkgname=(
     'darling-jsc-webkit-common-git' 'darling-jsc-git' 'darling-iosurface-git' 'darling-cli-devenv-gui-stubs-common-git'
     'darling-gui-stubs-git'
 )
-pkgver=r4302.c431326ef
+pkgver=r4378.7d9bea10d
 pkgrel=1
 arch=('x86_64')
 url="https://www.darlinghq.org"
@@ -35,6 +36,7 @@ makedepends=(
 
     # actual makedepends
     'cmake' 'clang' 'flex' 'bison' 'icu' 'pkg-config' 'llvm' 'libbsd' 'git' 'git-lfs' 'python' 'libxml2' 'vulkan-headers'
+    'makepkg-git-lfs-proto'
 )
 makedepends_x86_64=('gcc-multilib' 'lib32-gcc-libs')
 
@@ -171,7 +173,8 @@ source=('darling-libressl-2.2.9'::'git+https://github.com/darlinghq/darling-libr
         'git+https://github.com/darlinghq/darling-shell_cmds.git'
         'git+https://github.com/darlinghq/darling-SmartCardServices.git'
         'git+https://github.com/darlinghq/darling-sqlite.git'
-        'git+https://github.com/darlinghq/darling-swift.git'
+        # git-lfs forces us to specify the branch.
+        'git-lfs+https://github.com/darlinghq/darling-swift.git#branch=master'
         'git+https://github.com/darlinghq/darling-swift-corelibs-foundation.git'
         'git+https://github.com/darlinghq/darling-syslog.git'
         'git+https://github.com/darlinghq/darling-system_cmds.git'
@@ -415,6 +418,7 @@ prepare() {
 
     echo "Updating LFS files"
     cd "$srcdir/$_gitname/src/external/swift"
+    git lfs install --worktree
     git lfs pull
 
     echo "Creating build directory."
