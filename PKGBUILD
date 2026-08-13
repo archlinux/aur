@@ -2,8 +2,8 @@
 
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
 url='https://github.com/ChrisDKN/Amethyst-Mod-Manager'
@@ -35,6 +35,7 @@ depends=(
     'python-lz4'
     'python-py7zr'
     'python-zstandard'
+    'python-rarfile'
 
     # Modding tools
     'python-libloot'
@@ -49,7 +50,7 @@ makedepends=(
     'meson'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6feb8069101ff1be431c8631c88010870b1d0ce5f645677f4e0753df8f515267')
+sha256sums=('0908a6a32670d9579195bbf5861288709843bf2de1d10898f8bbca1abf461286')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
