@@ -1,7 +1,7 @@
 pkgbase = api-fox-bin
 	pkgdesc = Apifox API documentation, debugging, mocking, and automated testing tool
 	pkgver = 2.8.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apifox.com
 	arch = x86_64
 	arch = aarch64
