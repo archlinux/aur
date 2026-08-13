@@ -1,6 +1,6 @@
 pkgbase = hyprmoncfg
 	pkgdesc = Terminal-first monitor configurator and auto-switching daemon for Hyprland
-	pkgver = 1.10.1
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/crmne/hyprmoncfg
 	install = hyprmoncfg.install
@@ -12,9 +12,9 @@ pkgbase = hyprmoncfg
 	conflicts = hyprmoncfg-git
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/crmne/hyprmoncfg/releases/download/v1.10.1/hyprmoncfg_1.10.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = d4d2a9fdeb3f4aad1c3e7cd970fc9bf3eaec69593e321ecb421847f7b595f572
-	source_aarch64 = https://github.com/crmne/hyprmoncfg/releases/download/v1.10.1/hyprmoncfg_1.10.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = b19934f82fbc338f4f04dc3c50d4f4cd0d3e37a9d2563cf25ebc8ae5c3831613
+	source_x86_64 = https://github.com/crmne/hyprmoncfg/releases/download/v1.11.0/hyprmoncfg_1.11.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3ed33b211f62849b909f92f3b59aced88532abc8986c71c68678163f69ef5d39
+	source_aarch64 = https://github.com/crmne/hyprmoncfg/releases/download/v1.11.0/hyprmoncfg_1.11.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d8bf777bbf2fe8217d875e360a738aa3b4823da5cb8c9d4b460340b16d0d9205
 
 pkgname = hyprmoncfg
