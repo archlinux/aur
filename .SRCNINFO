@@ -1,0 +1,16 @@
+pkgbase = freedeb-cli
+	pkgdesc = AUR-like recipe manager for building and installing .deb packages
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/user14923929/freedeb-cli
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = gcc-libs
+	depends = bubblewrap
+	depends = dpkg
+	source = freedeb-cli-0.1.0.tar.gz::https://github.com/user14923929/freedeb-cli/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 93356bf33f691d0a055e59d80daf050e9c27bb9cd661f61c8e87db5bfa6649ea
+
+pkgname = freedeb-cli
