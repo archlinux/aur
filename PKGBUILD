@@ -1,7 +1,7 @@
 # Maintainer: Theodore Huang <teddyhuangnan@gmail.com>
 
 pkgname=vite-plus-git
-pkgver=0.2.0.r0.6f97f097de
+pkgver=0.2.9.r2.858ed05fdb
 pkgrel=1
 pkgdesc="The Unified Toolchain for the Web (git)"
 arch=("x86_64" "aarch64")
@@ -14,7 +14,7 @@ conflicts=("vite-plus-bin" "vite-plus")
 options=("!debug" "!lto")
 
 source=("git+https://github.com/voidzero-dev/vite-plus.git")
-sha256sums=("SKIP")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/vite-plus"
@@ -55,7 +55,7 @@ build() {
   local toolchain
   toolchain=$(_get_toolchain)
   export RUSTUP_TOOLCHAIN="$toolchain"
-  cargo build --release --frozen -p vite_global_cli
+  cargo build --release --frozen -p vp_global_cli
 }
 
 package() {
