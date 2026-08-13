@@ -1,5 +1,5 @@
 pkgname=fenriz-git
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="A fast, stable tiling Wayland compositor"
 arch=('x86_64')
