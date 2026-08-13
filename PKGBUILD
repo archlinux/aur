@@ -4,7 +4,7 @@
 
 pkgname=funkin-git
 pkgver=0.8.6.r0.gee9d492
-pkgrel=1
+pkgrel=2
 pkgdesc="A rhythm game made with HaxeFlixel"
 arch=(x86_64)
 url="https://github.com/FunkinCrew/Funkin"
@@ -28,7 +28,6 @@ pkgver() {
   cd "$srcdir/Funkin"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 
 prepare() {
   cd "$srcdir/Funkin"
@@ -59,7 +58,11 @@ build() {
   pushd ${srcdir}/Funkin/.haxelib/lime/git
   git submodule update --init --recursive
   popd
-  
+
+  # Discord RPC
+  touch ${srcdir}/Funkin/.env
+  grep DISCORD_CLIENT_ID ${srcdir}/Funkin/.env || echo 'DISCORD_CLIENT_ID=816168432860790794' >> ${srcdir}/Funkin/.env
+
   echo y | haxelib run lime rebuild linux -64 -release
 
   # Build Friday Night Funkin'
@@ -85,3 +88,4 @@ package() {
     cp "art/icons/icon$size.png" "$pkgdir/usr/share/icons/hicolor/${size}x$size/apps/funkin.png"
   done
 }
+
