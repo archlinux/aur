@@ -1,6 +1,6 @@
 pkgbase = workforest
 	pkgdesc = Git worktree forest management: per-branch worktrees with project-defined setup hooks
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ArkadyBuryakov/workforest
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = workforest
 	depends = python-yaml
 	depends = git
 	optdepends = fzf: interactive TUI (workforest tui)
-	source = workforest-0.1.2.tar.gz::https://github.com/ArkadyBuryakov/workforest/archive/v0.1.2.tar.gz
-	sha256sums = 95a99f296a3fac1ebf9e0b97f14a1a9d99add6a2eea66a38d3ef365280498f59
+	source = workforest-0.2.0.tar.gz::https://github.com/ArkadyBuryakov/workforest/archive/v0.2.0.tar.gz
+	sha256sums = dc1ba2518e2612714e023f7fc088aeaa37f9e0d5bffbcbc07c2dd15f109bb476
 
 pkgname = workforest
