@@ -2,7 +2,7 @@
 
 pkgname=arch-manwarn-bin
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust-based pacman hook that blocks updates if unread Arch News posts require manual intervention (binary release)"
 arch=('x86_64')
 url="https://github.com/NLion74/arch-manwarn"
