@@ -7,7 +7,7 @@ _pkgname=jid
 pkgname=${_pkgname}-bin
 pkgdesc="JSON Incremental Digger"
 
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -30,9 +30,9 @@ source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.zip::${url}/releases/download/
 
 sha256sums=('55df4cafaed09779fc86d697f5327c02c70fb699c02713bee5f830dc89a4b8d6'
             '3db4ceef736801baccfff1bc4d6ea64dc889dcc43cfc49151907ab98538f8c2d')
-sha256sums_i686=('dcd0cd7e232e8797ddf39b35eaba00aebcfef322682cb0a0169a8e9dee59a651')
-sha256sums_x86_64=('bed4bae81afe2ade4dfd997c1829b5de8e43eff2e057c3c463e76aef35614491')
-sha256sums_aarch64=('7cfb53fc09a44225dbc55adf1330639556f543292a33858dbb812680450d2449')
+sha256sums_i686=('350edd7644ebb7a8fbc6719207977e7399e6d139471fe7072cfe60e1fa2c62f8')
+sha256sums_x86_64=('e3731dfbf3948113df78b4ef642c4f85b7bd6732c11f66f71489cf9152a42701')
+sha256sums_aarch64=('ee4eb30853597c48d304b63fc6fb9e058ff2c039b296ce3506fc7b1a77a9b58b')
 
 
 package() {
