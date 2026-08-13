@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methylInheritance
-_pkgver=1.32.1
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.32.1
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Permutation-Based Analysis associating Conserved Differentially Methylated Elements Across Multiple Generations to a Treatment Effect'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('bdb7005a7a3acb2f839876037268e016ecbd723d05973cda71bedf2b98ac4baa')
+sha256sums=('d2fd77b9c01d9bcfc76dcc39566a9a8f40ee970796fe3501a47d541212dc22e3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
