@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MSPrep
-_pkgver=1.18.0
+_pkgver=1.21.1
 pkgname=r-${_pkgname,,}
-pkgver=1.18.0
+pkgver=1.21.1
 pkgrel=1
 pkgdesc='Package for Summarizing, Filtering, Imputing, and Normalizing Metabolomics Data'
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('55debab5accc9efbee1b05ea31efa268e422fe1b42d8b729919cfcd6bab4be5b')
+sha256sums=('ab070ff60eafd20ff4f8d7c86c8d08ca00cd2320ec71ccc8873af139962602b8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

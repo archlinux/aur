@@ -1,6 +1,6 @@
 pkgbase = r-msprep
 	pkgdesc = Package for Summarizing, Filtering, Imputing, and Normalizing Metabolomics Data
-	pkgver = 1.18.0
+	pkgver = 1.21.1
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MSPrep
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = r-msprep
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSPrep_1.18.0.tar.gz
-	sha256sums = 55debab5accc9efbee1b05ea31efa268e422fe1b42d8b729919cfcd6bab4be5b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MSPrep_1.21.1.tar.gz
+	sha256sums = ab070ff60eafd20ff4f8d7c86c8d08ca00cd2320ec71ccc8873af139962602b8
 
 pkgname = r-msprep
