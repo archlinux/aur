@@ -9,6 +9,7 @@ pkgbase = wstroke
 	makedepends = meson
 	makedepends = ninja
 	makedepends = vala
+	makedepends = boost
 	depends = wayfire>=0.10
 	depends = wayfire<0.11
 	depends = wlroots0.19
