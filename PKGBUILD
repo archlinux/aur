@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <lightjunction.me@gmail.com>
 
 pkgname=lmm-api-go-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='LMM API Go backend, native CLI, systemd service, and web frontend (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -33,14 +33,14 @@ source_aarch64=(
 )
 noextract=("${_artifact}-amd64.tar.gz" "${_artifact}-arm64.tar.gz")
 sha256sums_x86_64=(
-  'bbca3631737bfb2f9a5005e46a5d96e58d3081821970b048bc08b4ef2f55eeec'
-  '9c55abef24cfe1e493def071d3f015c0a2ff8eb91ea2cf7f565b36ea37a8db8e'
-  '256636e9792f13862a6e5a4edb9baf2adbdad0d323095dc3e80b5ced2708efa9'
+  'bea391fdc242f2aade2676f85ab73bbeb7e3d609361c5071f94645047363a3c2'
+  'b773f6877af5ef67090b2b2e47132fa3fe37b21a185b4d179ee4cd7522b054d5'
+  '16835a3290ee87f1a7f5bc01df8dc34869cb171980e8f4d77fe313ed1e3e409a'
 )
 sha256sums_aarch64=(
-  '3c84cff387d0f0b2c287589ed1cc60600dcfb8d9aa87ffac6b4ff69767730140'
-  'cca04a3be398fdbaf3f3b695946bb936034bf74b4af27d99b3fcfe05aad5d318'
-  '9bf6bf054b5623d8f2d5ff07b465c64d8831ae715d13b70c0c3dfaff5b6138b9'
+  '6a7dbc33b53caba666377e3f8fe562945857c899338ac3c21f178a31fbcef2ff'
+  'a349183ba5de717607152a4ff305383a6219aee750095f4856a6f66b9583ea0e'
+  '393a84ecfda67995907474f5d793489d193837d6faac9cd06e945de64d254c79'
 )
 
 case "${CARCH}" in
