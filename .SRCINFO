@@ -1,6 +1,6 @@
 pkgbase = vega-cli-bin
 	pkgdesc = Amazon Vega CLI (KeplerVersionManager) — installs and manages the Vega SDK in $HOME/vega
-	pkgver = 1.3.2
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://developer.amazon.com/docs/vega/latest/install-vega-sdk.html
 	install = vega-cli-bin.install
@@ -23,7 +23,7 @@ pkgbase = vega-cli-bin
 	conflicts = vvman
 	options = !strip
 	options = !debug
-	source = vega-1.3.2-linux-x86_64.tar.gz::https://kepler-static-artifacts.kepler.labcollab.net/2f/2fa7c110b21e71254dba2b5b8da6e5c2fcc8637bc20ccbc14f6175fa2c6f7285
+	source = vega-1.3.4-linux-x86_64.tar.gz::https://kepler-static-artifacts.kepler.labcollab.net/2f/2fa7c110b21e71254dba2b5b8da6e5c2fcc8637bc20ccbc14f6175fa2c6f7285
 	sha256sums = 2fa7c110b21e71254dba2b5b8da6e5c2fcc8637bc20ccbc14f6175fa2c6f7285
 
 pkgname = vega-cli-bin
