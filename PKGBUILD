@@ -3,9 +3,9 @@
 
 pkgname=fvwm
 pkgver=2.7.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Fvwm2 - a virtual window manager. Only gets serious bugfixes. New version is Fvwm3."
-arch=('x86_64')
+arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="http://www.fvwm.org"
 license=('GPL-2.0-or-later' 'custom')
 depends=('fribidi' 'perl' 'libstroke' 'libxpm' 'librsvg' 'libxinerama' 'libxcursor' 'python-xdg')
