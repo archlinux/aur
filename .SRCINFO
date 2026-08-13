@@ -1,20 +1,20 @@
 pkgbase = pikvm-bin
 	pkgdesc = PiKVM ATX power control — terminal UI and CLI
-	pkgver = 0.0.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/j4y-w4lk3r/pikvm
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	provides = pikvm
-	conflicts = pikvm
 	optdepends = fzf: fuzzy port/iso/script picker
 	optdepends = ffmpeg: ffplay HDMI stream view
 	optdepends = mpv: alternate HDMI stream view
 	optdepends = chafa: snapshot thumbnails (future grid view)
-	source_x86_64 = pikvm-bin-0.0.1-x86_64.tar.gz::https://github.com/j4y-w4lk3r/pikvm/releases/download/v0.0.1/pikvm_0.0.1_linux_x86_64.tar.gz
-	source_aarch64 = pikvm-bin-0.0.1-aarch64.tar.gz::https://github.com/j4y-w4lk3r/pikvm/releases/download/v0.0.1/pikvm_0.0.1_linux_arm64.tar.gz
-	sha256sums_x86_64 = SKIP
-	sha256sums_aarch64 = SKIP
+	provides = pikvm
+	conflicts = pikvm
+	source_x86_64 = pikvm-bin-0.3.0-x86_64.tar.gz::https://github.com/j4y-w4lk3r/pikvm/releases/download/v0.3.0/pikvm_0.3.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 62f8a94ebe1e89ff27300fb3534882febed8be67dec42fe0f98c2c3addf5ecb5
+	source_aarch64 = pikvm-bin-0.3.0-aarch64.tar.gz::https://github.com/j4y-w4lk3r/pikvm/releases/download/v0.3.0/pikvm_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = c331662cfc9b4fcd54b5461c7c31433fa6d389273ca8188be099db7e2818be14
 
 pkgname = pikvm-bin
