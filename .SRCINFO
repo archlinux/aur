@@ -1,6 +1,6 @@
 pkgbase = gtk4-git
 	pkgdesc = GObject-based multi-platform GUI toolkit
-	pkgver = 4.23.2.r198.g769140f
+	pkgver = 4.24.r82.g4a9f374
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gtk
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gtk4-git
 	makedepends = docbook-xsl
 	makedepends = gi-docgen
 	makedepends = git
-	makedepends = glib2-devel
+	makedepends = glib2-devel-git
 	makedepends = gobject-introspection
 	makedepends = libsysprof-capture
 	makedepends = meson
@@ -28,7 +28,7 @@ pkgbase = gtk4-git
 	depends = fontconfig
 	depends = fribidi
 	depends = gdk-pixbuf2
-	depends = glib2
+	depends = glib2-git
 	depends = graphene
 	depends = gst-plugins-bad-libs
 	depends = gst-plugins-base-libs
@@ -76,7 +76,7 @@ pkgbase = gtk4-git
 
 pkgname = gtk4-git
 	optdepends = evince: Default print preview command
-	provides = gtk4=1:4.23.2
+	provides = gtk4=1:4.24.r82
 	provides = libgtk-4.so
 	conflicts = gtk4
 
@@ -92,7 +92,7 @@ pkgname = gtk4-demos-git
 	depends = libepoxy
 	depends = librsvg
 	depends = pango
-	provides = gtk4-demos=1:4.23.2
+	provides = gtk4-demos=1:4.24.r82
 	conflicts = gtk4-demos
 
 pkgname = gtk-update-icon-cache-git
@@ -100,5 +100,5 @@ pkgname = gtk-update-icon-cache-git
 	depends = gdk-pixbuf2
 	depends = hicolor-icon-theme
 	depends = librsvg
-	provides = gtk-update-icon-cache=1:4.23.2
+	provides = gtk-update-icon-cache=1:4.24.r82
 	conflicts = gtk-update-icon-cache

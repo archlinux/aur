@@ -4,7 +4,7 @@
 
 _pkgname="gtk4"
 pkgbase="$_pkgname-git"
-pkgver=4.23.2.r198.g769140f
+pkgver=4.24.r82.g4a9f374
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit"
 url="https://gitlab.gnome.org/GNOME/gtk"
@@ -22,7 +22,7 @@ depends=(
   fontconfig
   fribidi
   gdk-pixbuf2
-  glib2
+  glib2-git # AUR
   graphene
   gst-plugins-bad-libs
   gst-plugins-base-libs
@@ -61,7 +61,7 @@ makedepends=(
   docbook-xsl
   gi-docgen
   git
-  glib2-devel
+  glib2-devel-git # AUR
   gobject-introspection
   libsysprof-capture
   meson
@@ -91,12 +91,12 @@ sha256sums=(
 
 pkgver() {
   cd "$_pkgsrc"
-  local _tag _version _revision _hash
-  _tag=$(git tag | grep -E '^[0-9].*' | sort -rV | head -1)
-  _version="${_tag:?}"
-  _revision=$(git rev-list --count --cherry-pick "$_tag"...HEAD)
-  _hash=$(git rev-parse --short=7 HEAD)
-  printf '%s.r%s.g%s' "${_version:?}" "${_revision:?}" "${_hash:?}"
+  local _pkgver=$(
+    git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+      | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  )
+  local _split=(${_pkgver//./ })
+  printf '%s.%s.r%s' "${_split[0]}" "$((_split[1] + 1))" "${_pkgver##*.r}"
 }
 
 prepare() {
@@ -135,7 +135,7 @@ _pick() {
 _package_gtk4() {
   optdepends=('evince: Default print preview command')
   provides=(
-    "gtk4=1:${pkgver%%.r*}"
+    "gtk4=1:${pkgver%%.g*}"
     'libgtk-4.so'
   )
   conflicts=('gtk4')
@@ -182,7 +182,7 @@ _package_gtk4-demos() {
     librsvg
     pango
   )
-  provides=("gtk4-demos=1:${pkgver%%.r*}")
+  provides=("gtk4-demos=1:${pkgver%%.g*}")
   conflicts=('gtk4-demos')
 
   mv demo/* "$pkgdir"
@@ -191,7 +191,7 @@ _package_gtk4-demos() {
 _package_gtk4-docs() {
   pkgdesc+=" (documentation)"
   depends=()
-  provides=("gtk4-docs=1:${pkgver%%.r*}")
+  provides=("gtk4-docs=1:${pkgver%%.g*}")
   conflicts=('gtk4-docs')
 
   mv docs/* "$pkgdir"
@@ -204,7 +204,7 @@ _package_gtk-update-icon-cache() {
     hicolor-icon-theme
     librsvg
   )
-  provides=("gtk-update-icon-cache=1:${pkgver%%.r*}")
+  provides=("gtk-update-icon-cache=1:${pkgver%%.g*}")
   conflicts=('gtk-update-icon-cache')
 
   mv guic/* "$pkgdir"
