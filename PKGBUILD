@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=wppi
-_pkgver=1.14.0
+_pkgver=1.19.0
 pkgname=r-${_pkgname,,}
-pkgver=1.14.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc='Weighting protein-protein interactions'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('fff5ba857197f71cc85220186e82926291ac21161a34df96a4e58689d006a96d')
+sha256sums=('16b77ce45c7a5975d9cd23b99ea2dddbe549e02610429ebb73afed40ca1ab1ea')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
