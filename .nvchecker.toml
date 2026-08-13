@@ -1,0 +1,5 @@
+[periodic-table-cli-js]
+source = "github"
+github = "spirometaxas/periodic-table-cli"
+use_latest_release = true
+prefix = "v"
