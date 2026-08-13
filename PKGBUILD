@@ -25,15 +25,9 @@ sha256sums=('85453acf81c41060352fdc51876b55fb011dacff05b12f86bdf5771bf7c1807a')
 
 build() {
   cd "$srcdir/zorite-$pkgver"
-  # 去掉二进制里嵌入的构建路径($srcdir + cargo 缓存),否则 makepkg 警告
-  # "contains reference to $srcdir",且路径泄露构建机信息。注意:
-  # rusqlite 的 bundled-sqlcipher-vendored-openssl 特性会把 openssl-src 的
-  # ENGINESDIR/MODULESDIR 等常量(含构建路径)编译进二进制,remap 管不到,
-  # 剩余 $srcdir 引用属于该特性的已知产物,仅元数据、运行时不使用。
+  # 重映射构建路径,避免二进制内嵌 $srcdir/cargo 缓存路径。openssl-src 的
+  # ENGINESDIR/MODULESDIR 常量残留属 rusqlite vendored-openssl 特性所致,仅元数据。
   export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/usr/src/zorite --remap-path-prefix=${CARGO_HOME:-$HOME/.cargo}=/usr/src/zorite-cargo"
-  # Full LTO (`lto = true`) fails to resolve tree-sitter/sqlcipher native
-  # symbols on some toolchains (missing under linker-plugin-lto). Disable it
-  # here so the graph links; binary is a bit larger/slower but stable.
   cargo build --release --locked --config 'profile.release.lto=false'
 }
 
