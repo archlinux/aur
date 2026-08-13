@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mogsa
-_pkgver=1.42.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Multiple omics data integrative clustering and gene set analysis'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   r-org.hs.eg.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('8562483c25bd8c0d0d92d4cf0d218c924aae0ce937579f443c4563a501edee8f')
+sha256sums=('67c6e01900811a34f05771ed479d62d98030b938ca05b940f12c4dd7e09f1b5a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
