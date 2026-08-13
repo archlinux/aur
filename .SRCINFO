@@ -1,0 +1,17 @@
+pkgbase = python-streamlit-option-menu
+	pkgdesc = Navigation/option menu component for Streamlit apps
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/victoryhb/streamlit-option-menu
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-streamlit
+	source = https://files.pythonhosted.org/packages/source/s/streamlit-option-menu/streamlit-option-menu-0.4.0.tar.gz
+	sha256sums = 48ec69d59e547fa2fa4bfae001620df8af56a80de2f765ddbb9fcbfb84017129
+
+pkgname = python-streamlit-option-menu
