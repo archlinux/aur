@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=qmtools
-_pkgver=1.12.0
+_pkgver=1.16.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -47,8 +47,8 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('2bdae137cef39a1072a8a777e168d056')
-b2sums=('1d43014dd8924185844ac81401b7fc858b53ab33a4b93b92275372a7a43ba6617f715fc40cfa53690387c725ccbe212b0465efcd80e097607664defe1c470404')
+md5sums=('884dbe9359586d512ddb4a4d3a1d210e')
+b2sums=('daf7bcad6d6ffd7ef37314006b75eb925c845895d74075a0d4a390184ebc3f727b3a680501c7ced1c330ebc6e4d83179d74bd203f8a6c4cbf4214bb89c50780c')
 
 build() {
   mkdir build
