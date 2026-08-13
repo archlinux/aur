@@ -2,13 +2,13 @@
 # Contributor: Leo Verto <leotheverto+aur@gmail.com>
 
 : ${_build_v4:=true}
+: ${_build_v5:=true}
 
 _pkgname="qlcplus"
-pkgbase="$_pkgname-git"
-pkgname=("${_pkgname}5-git")
-pkgver=5.2.0.r43.ge4d8a4a
+pkgname="$_pkgname-git"
+pkgver=5.2.2.r124.g8234fcc
 pkgrel=1
-pkgdesc="Q Light Controller Plus to control professional DMX lighting fixtures"
+pkgdesc="Q Light Controller Plus to control professional DMX lighting fixtures (v4/v5)"
 url="https://github.com/mcallegari/qlcplus"
 license=('Apache-2.0')
 arch=('x86_64' 'i686' 'armv7h')
@@ -68,17 +68,8 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -Wno-dev
+    -Wno-author
   )
-
-  local _cmake_5=(
-    -B build5
-    -Dqmlui=ON
-  )
-
-  echo "Building qlcplus5..."
-  cmake "${_cmake_common[@]}" "${_cmake_5[@]}"
-  cmake --build build5
 
   if [[ "${_build_v4::1}" == "t" ]]; then
     local _cmake_4=(
@@ -90,19 +81,32 @@ build() {
     cmake "${_cmake_common[@]}" "${_cmake_4[@]}"
     cmake --build build4
   fi
+
+  if [[ "${_build_v5::1}" == "t" ]]; then
+    local _cmake_5=(
+      -B build5
+      -Dqmlui=ON
+    )
+
+    echo "Building qlcplus5..."
+    cmake "${_cmake_common[@]}" "${_cmake_5[@]}"
+    cmake --build build5
+  fi
 }
 
-package_qlcplus5-git() {
-  DESTDIR="$pkgdir" cmake --install build5
-
-  # unwanted
-  rm "$pkgdir"/usr/lib/*.a
-}
-
-if [[ "${_build_v4::1}" == "t" ]]; then
-  pkgname+=("${_pkgname}4-git")
-
-  package_qlcplus4-git() {
+package() {
+  if [[ "${_build_v4::1}" == "t" ]]; then
     DESTDIR="$pkgdir" cmake --install build4
-  }
-fi
+  else
+    eval "pkgdesc='${pkgdesc/v4/}'"
+  fi
+
+  if [[ "${_build_v5::1}" == "t" ]]; then
+    DESTDIR="$pkgdir" cmake --install build5
+  else
+    eval "pkgdesc='${pkgdesc/v5/}'"
+  fi
+
+  eval 'pkgdesc="${pkgdesc/\(\//(}"'
+  eval 'pkgdesc="${pkgdesc/\/\)/)}"'
+}
