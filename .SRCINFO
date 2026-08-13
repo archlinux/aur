@@ -1,6 +1,6 @@
 pkgbase = easycut
 	pkgdesc = A simple software for doing basic video editing tasks
-	pkgver = r105.18fccaf
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/tiandic/easyCut
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = easycut
 	depends = qt6-declarative
 	depends = qt6-multimedia
 	depends = ffmpeg
-	source = easycut::git+https://github.com/tiandic/easyCut.git
-	sha256sums = SKIP
+	source = https://github.com/tiandic/easyCut/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 69756588976fbac14c1e4d2d42754e6d58ed396c6329b8f4345da2c3761729c3
 
 pkgname = easycut
