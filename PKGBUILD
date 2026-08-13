@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=GSEABenchmarkeR
-_pkgver=1.28.1
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.1
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='Reproducible GSEA Benchmarking'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4c3c3f9ff788d83ae0b889cfef00d9d7a5909fe6c1fa9489c9cbeba8c0fd3bc2')
+sha256sums=('20c2953e032da192b977f54152cc7bea486b24084ea7d7c555429f31ccfde5c2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
