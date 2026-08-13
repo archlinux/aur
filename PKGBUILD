@@ -8,6 +8,18 @@ arch=('x86_64' 'aarch64')
 url="https://omp.sh/"
 license=('MIT')
 depends=('glibc')
+optdepends=(
+    'alsa-lib: ALSA fallback for live voice, STT, and TTS'
+    'at-spi2-core: Linux accessibility backend for the computer tool'
+    'chromium: system browser for the browser tool'
+    'git: repository integration and isolated task worktrees'
+    'julia: Julia eval backend'
+    'libpulse: PulseAudio/PipeWire-Pulse client backend for live voice, STT, and TTS'
+    'python: Python 3.10+ eval backend'
+    'sshfs: mount SSH remote workspaces'
+    'xdg-desktop-portal: Wayland RemoteDesktop portal fallback for computer tool input'
+    'xdg-desktop-portal-impl: compositor-specific backend for Wayland computer tool input'
+)
 provides=("oh-my-pi")
 conflicts=("oh-my-pi")
 options=('!strip')
