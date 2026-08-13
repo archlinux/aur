@@ -1,6 +1,6 @@
 pkgbase = bootc
 	pkgdesc = Boot and upgrade via container images
-	pkgver = 1.16.7
+	pkgver = 1.16.8
 	pkgrel = 1
 	url = https://github.com/bootc-dev/bootc
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = bootc
 	depends = ostree
 	depends = zlib
 	depends = zstd
-	source = https://github.com/bootc-dev/bootc/releases/download/v1.16.7/bootc-1.16.7.tar.zstd
-	sha256sums = ba9d6938e0ca2652cad0735618c2d7bef9eeba609a918ac3d881e6f07bacd089
+	source = https://github.com/bootc-dev/bootc/releases/download/v1.16.8/bootc-1.16.8.tar.zstd
+	sha256sums = e60e2b23a6e21cbea06a4ba1657ee7cdf2374bef9adce34905067d45444efac4
 
 pkgname = bootc
