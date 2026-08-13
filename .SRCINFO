@@ -1,6 +1,6 @@
 pkgbase = libtslitex-git
 	pkgdesc = This is a C library to interface with the LiteX Firmware on Thunderscope over PCIe
-	pkgver = 0.0.1.alpha1.r74.gb2ddcbf
+	pkgver = 0.1.0.r0.g7b0e065
 	pkgrel = 1
 	url = https://github.com/EEVengers/libtslitex
 	arch = x86_64
@@ -15,9 +15,8 @@ pkgbase = libtslitex-git
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-pipx
-	depends = glibc
 	depends = json-c
-	depends = zlib
+	depends = libz.so
 	source = libtslitex-git::git+https://github.com/EEVengers/libtslitex.git
 	sha256sums = SKIP
 
