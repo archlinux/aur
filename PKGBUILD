@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=maskBAD
-_pkgver=1.54.0
+_pkgver=1.56.0
 pkgname=r-${_pkgname,,}
-pkgver=1.54.0
+pkgver=1.56.0
 pkgrel=1
 pkgdesc='Masking probes with binding affinity differences'
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=(
   r-hgu95av2probe
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2782198df7af9839a42fddbc43021eb8a6339f45851865634cca968936918b39')
+sha256sums=('05c21dd59b4a9927378413fb462276d8c85178b1f09fc9962c73cf005d7795a2')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
