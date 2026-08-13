@@ -1,6 +1,6 @@
 pkgbase = fastchess
 	pkgdesc = A chess cli tool to run engine vs engine matches
-	pkgver = 1.8.0
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/Disservin/fastchess
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = fastchess
 	depends = glibc
 	depends = gcc-libs
 	provides = fastchess
-	source = fastchess-1.8.0-alpha.tgz::https://github.com/Disservin/fastchess/archive/refs/tags/v1.8.0-alpha.tar.gz
-	sha256sums = c5f059a379786dfe0416808ec838f41d6491715158933661356905bd1f2dada9
+	source = fastchess-1.8.2-alpha.tgz::https://github.com/Disservin/fastchess/archive/refs/tags/v1.8.2-alpha.tar.gz
+	sha256sums = 9dad5dcea3009e65f3c9cfc6f901ab40d6b36d572368d95acea079812e3b9a88
 
 pkgname = fastchess
