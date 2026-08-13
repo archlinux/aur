@@ -1,6 +1,6 @@
 pkgbase = r-mlseq
 	pkgdesc = Machine Learning Interface for RNA-Seq Data
-	pkgver = 2.26.0
+	pkgver = 2.30.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/MLSeq
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = r-mlseq
 	optdepends = r-e1071
 	optdepends = r-kernlab
 	optdepends = r-knitr
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/MLSeq_2.26.0.tar.gz
-	sha256sums = 00ed49475984491aed2020580bf2b4ce98270a03d60f457fa377921f2ed92bac
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/MLSeq_2.30.0.tar.gz
+	sha256sums = 7618e9f4e6cfba7bd3673a8924d594a1cf13249cb820061e0f38f83fab31161a
 
 pkgname = r-mlseq
