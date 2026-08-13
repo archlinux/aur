@@ -1,0 +1,23 @@
+pkgbase = anvil-manager
+	pkgdesc = A self-hosted pacman GUI
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/Hamza-b93/anvil
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-fastapi
+	depends = uvicorn
+	depends = pacman-contrib
+	optdepends = yay: AUR search/install/remove support
+	optdepends = polkit: graphical authentication for privileged actions
+	provides = anvil
+	conflicts = anvil
+	source = anvil-manager-0.7.0.tar.gz::https://github.com/Hamza-b93/anvil/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = a23775a2bdfb2eb78fdd6260676426082d89323cec19bdee139c28fd5b597c8e
+
+pkgname = anvil-manager
