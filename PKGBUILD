@@ -1,7 +1,7 @@
 # Maintainer: willker <wz[dot]willker[at]gmail[dot]com> Fgaoxing <Fgaoxing0206@163.com>
 
 pkgname=axolotl-launcher
-pkgver=1.7.2
+pkgver=1.7.4
 pkgrel=1
 pkgdesc='A cross-platform Minecraft launcher'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=('771bd1624d427f537cb40cb61c15f870cbc0fb0e2fa4b8c7067ea0bf7d5e2bdf'
             'SKIP'
-            '0e5e26336cadd2957745befaa5bfb982e85fa39a49aa3c9ae00608afc326011a'
+            '9a98c15cb4f1a3cec9a893be5950600b1e6fa3b6029df3a2cae88b150636520b'
             'a3c7ac4b8489dff5a8e558780765648dccc99c8a65b13e6dd11777de8352da7f')
 options=('!strip')
 
