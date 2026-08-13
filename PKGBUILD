@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=MsExperiment
-_pkgver=1.12.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,7 +23,7 @@ optdepends=(
   r-biocstyle
   r-knitr
   r-msbackendsql
-  r-msdata
+  r-msdatahub
   r-mzr
   r-rmarkdown
   r-roxygen2
@@ -32,8 +32,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('209e50be728a1eae1792a9f6067ff698')
-b2sums=('3cdb3c487570262c6d1ff5864d354565929cc612335b35e29f96fe33f7f2dfd2ee179c3a74ee03afb17c98d02d7e13d85f1d15a81349f9025120b9e0d404fa00')
+md5sums=('b35110d81795d4d56bc678643cd5b5e2')
+b2sums=('57c2417d75b6e9b00a790840b1a858cf74d42608697759c7763f169e56b3cbe116ca645b595196d21819d5329a1b815f5e1c43aebb82dd0f52b3f64eef40efea')
 
 build() {
   mkdir build
