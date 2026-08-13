@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=pogos
-_pkgver=1.24.0
+_pkgver=1.32.0
 pkgname=r-${_pkgname,,}
-pkgver=1.24.0
+pkgver=1.32.0
 pkgrel=1
 pkgdesc='PharmacOGenomics Ontology Support'
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6395e731b80758ab1023c8ade62f6ede929d723731859c5a17ad3e16cbafacc4')
+sha256sums=('f817c1b6dfcb6c42ff1fa90a8e04f41ec8af3f180fe768af0f6ec932d268cf69')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
