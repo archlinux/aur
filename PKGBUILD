@@ -3,9 +3,9 @@
 
 pkgname=libstroke
 pkgver=0.5.1
-pkgrel=10
+pkgrel=11
 pkgdesc="A stroke (mouse gesture) translation library"
-arch=('x86_64')
+arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="https://sources.archlinux.org/other/packages/libstroke/"
 license=('GPL-2.0-only')
 depends=('glibc')

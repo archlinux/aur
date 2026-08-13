@@ -1,8 +1,11 @@
 pkgbase = libstroke
 	pkgdesc = A stroke (mouse gesture) translation library
 	pkgver = 0.5.1
-	pkgrel = 10
+	pkgrel = 11
 	url = https://sources.archlinux.org/other/packages/libstroke/
+	arch = i486
+	arch = i686
+	arch = pentium4
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = libx11
