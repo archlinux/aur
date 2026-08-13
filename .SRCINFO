@@ -1,6 +1,6 @@
 pkgbase = doubao-desktop-bin
-	pkgdesc = Doubao AI Assistant - Tauri-based native desktop wrapper (ByteDance)
-	pkgver = 1.0.6
+	pkgdesc = Unofficial Doubao desktop wrapper for Linux, built with Tauri
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/gonwe/doubao-desktop
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = doubao-desktop-bin
 	depends = hicolor-icon-theme
 	optdepends = noto-fonts-cjk: CJK system font
 	optdepends = adobe-source-han-sans-cn-fonts: CJK system font
-	provides = doubao-desktop=1.0.6
+	provides = doubao-desktop=1.0.7
 	conflicts = doubao-desktop
-	source = doubao-desktop-1.0.6-x86_64.tar.gz::https://github.com/gonwe/doubao-desktop/releases/download/v1.0.6/doubao-desktop-1.0.6-x86_64.tar.gz
+	source = doubao-desktop-1.0.7-x86_64.tar.gz::https://github.com/gonwe/doubao-desktop/releases/download/v1.0.7/doubao-desktop-1.0.7-x86_64.tar.gz
 	source = doubao-desktop-bin.desktop
-	sha256sums = 4817773c0e78fb5624cbbf28365fa40ba2d1330cd77ebbda5f4f249cce88d400
+	sha256sums = 427d249754d76069d748e11c0e3089e0c3abc26d3c782353b94c350c19aecbaf
 	sha256sums = SKIP
 
 pkgname = doubao-desktop-bin
