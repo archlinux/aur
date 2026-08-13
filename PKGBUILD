@@ -5,7 +5,7 @@ pkgver=1.3.26
 pkgrel=1
 pkgdesc="The fastest coding agent — desktop app and terminal edition"
 arch=('x86_64')
-url="https://github.com/trybullet/bullet-releases"
+url="https://www.codewithbullet.com/"
 license=('custom')
 depends=(
   'alsa-lib'
