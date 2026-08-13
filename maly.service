@@ -9,5 +9,29 @@ ExecStart=/usr/bin/maly daemon
 Restart=on-failure
 RestartSec=2
 
+# Hardening: maly solo habla por sockets Unix (su propio IPC, el de mpv, y
+# D-Bus de sesión para MPRIS) y no necesita nada más. ReadWritePaths cubre
+# exactamente lo que el demonio escribe: config.toml (solo la primera vez,
+# si nadie corrió `maly` antes), library.db/session.json, y el lock+sockets
+# del runtime dir — todo lo demás queda de solo lectura (música incluida:
+# el demonio nunca escribe ahí). SIN ProtectHome: music_dir puede vivir
+# fuera de $HOME (un disco externo), y esa clave lo bloquearía enterito.
+# Verificado en vivo con una unit sandboxeada aparte (arranque, scan real,
+# apagado limpio con `maly kill`) antes de sumarlo acá — mismo hardening
+# que mallow-install.sh, solo cambia ExecStart (acá va a /usr/bin).
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=%h/.config/maly %h/.local/share/maly %t/maly
+PrivateTmp=yes
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=yes
+LockPersonality=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+
 [Install]
 WantedBy=default.target
