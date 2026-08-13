@@ -1,6 +1,6 @@
 pkgbase = flair
 	pkgdesc = Tool for correction, isoform definition, and alternative splicing analysis of nanopore cDNA, native RNA, and PacBio sequencing reads
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/BrooksLabUCSC/flair
 	arch = any
@@ -34,7 +34,7 @@ pkgbase = flair
 	optdepends = python-matplotlib
 	optdepends = python-seaborn
 	options = !emptydirs
-	source = flair-brookslab-3.0.0::git+https://github.com/BrooksLabUCSC/flair.git#tag=v3.0.0
-	sha256sums = 2ccf517ab05b483ab54621a72c63e602d2e36a3110cc74a5584bb1f7bf75538f
+	source = flair-brookslab-3.0.1::git+https://github.com/BrooksLabUCSC/flair.git#tag=v3.0.1
+	sha256sums = ea9e2fc49722aa73fad4276d462380c0cf90ae536fa292f8d996b9d73314f530
 
 pkgname = flair
