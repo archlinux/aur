@@ -1,6 +1,6 @@
 pkgbase = rkd-dev-bin
 	pkgdesc = RKD desktop client (beta/development channel)
-	pkgver = 0.2.0_beta.19
+	pkgver = 0.2.0_beta.20
 	pkgrel = 1
 	url = https://git.rkd.nanoya.biz/rkd/releases
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = rkd-dev-bin
 	provides = rkd
 	conflicts = rkd
 	conflicts = rkd-bin
-	noextract = rkd-dev-bin-0.2.0_beta.19.deb
+	noextract = rkd-dev-bin-0.2.0_beta.20.deb
 	options = !strip
 	options = !debug
-	source = rkd-dev-bin-0.2.0_beta.19.deb::https://git.rkd.nanoya.biz/rkd/releases/releases/download/v0.2.0-beta.19/RKD-electron-rkd_0.2.0-beta.19_amd64.deb
-	sha256sums = f244c863ce64c4844bc08a1f4808cbf29e0bdde3d0eff95f6f61c9012911ec2d
+	source = rkd-dev-bin-0.2.0_beta.20.deb::https://git.rkd.nanoya.biz/rkd/releases/releases/download/v0.2.0-beta.20/RKD-electron-rkd_0.2.0-beta.20_amd64.deb
+	sha256sums = f7de3fc7140014ad49f8fa03fe5fb74dc8cdc0c89643bb303df29abe500aa204
 
 pkgname = rkd-dev-bin

@@ -13,7 +13,7 @@
 # — acceptable for a beta-tracking package.
 
 pkgname=rkd-dev-bin
-pkgver=0.2.0_beta.19
+pkgver=0.2.0_beta.20
 pkgrel=1
 pkgdesc="RKD desktop client (beta/development channel)"
 arch=(x86_64)
@@ -49,11 +49,11 @@ optdepends=('libayatana-appindicator: tray icon support')
 # uses the hyphenated form there even though the .deb's own control file
 # reports a tilde per Debian pre-release convention).
 # _tag: the Forgejo release tag the asset was uploaded under.
-_pkgver=0.2.0-beta.19
-_tag=v0.2.0-beta.19
+_pkgver=0.2.0-beta.20
+_tag=v0.2.0-beta.20
 
 source=("$pkgname-$pkgver.deb::https://git.rkd.nanoya.biz/rkd/releases/releases/download/${_tag}/RKD-electron-rkd_${_pkgver}_amd64.deb")
-sha256sums=('f244c863ce64c4844bc08a1f4808cbf29e0bdde3d0eff95f6f61c9012911ec2d')
+sha256sums=('f7de3fc7140014ad49f8fa03fe5fb74dc8cdc0c89643bb303df29abe500aa204')
 noextract=("$pkgname-$pkgver.deb")
 
 package() {
@@ -70,8 +70,18 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/rkd" "$pkgdir/usr/bin/$pkgname"
 
-  rm -f "$pkgdir/usr/share/applications/rkd.desktop"
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
+  # Installed as the shared rkd.desktop filename (not $pkgname.desktop) so
+  # it matches main.ts's app.setDesktopName("rkd") across every channel —
+  # that's what Chromium's GetXdgAppId() reports for the notification
+  # desktop-entry hint, and it has to match the installed filename exactly
+  # for OS notification history to resolve this app's identity (#570).
+  # Name=/Icon=/Exec= below stay per-channel; only the filename is shared —
+  # rkd-bin and rkd-dev-bin already conflicts= each other, so only one is
+  # ever actually installed at a time, no real collision here. Overwrites
+  # the .deb's own auto-generated rkd.desktop outright (install -Dm644
+  # doesn't need it removed first) — that one's Exec= points at /opt/RKD,
+  # wrong for this renamed /opt/$pkgname install.
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/rkd.desktop" <<EOF
 [Desktop Entry]
 Name=RKD (Dev)
 Comment=RKD desktop client (beta/development channel)
@@ -79,7 +89,7 @@ Exec=/opt/$pkgname/rkd %U
 Terminal=false
 Type=Application
 Icon=$pkgname
-StartupWMClass=RKD
+StartupWMClass=Rkd
 Categories=Network;
 EOF
 
