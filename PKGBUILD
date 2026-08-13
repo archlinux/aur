@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arrayhelpers
-_pkgver=1.1-0
+_pkgver=1.1-2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Convenience Functions for Arrays"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r-svunit
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d94d13f45d5f4c8a771c1c670a5368e6')
-b2sums=('7c92e9f149e880d27042d7253f33f2e966b97705c4bf84c4cabe430c087c31ffef58aa1ff1ac999341a641ae8f094ce28fa36e043de6f4b9a862274dab32505b')
+md5sums=('03cb11a7649f5742a5a3b69c640665b2')
+b2sums=('ad1be6cb5a8ee9a6ee08da4f959d86d2263d962f27779a00a60bbbab5a0df1929d75f6be96c53882b41889454824924048ba4d59c412bf67fc487837a3044327')
 
 build() {
   mkdir build
