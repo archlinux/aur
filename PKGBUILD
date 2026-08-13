@@ -2,7 +2,7 @@
 pkgname=python-rst.linker
 _name=${pkgname#python-}
 pkgver=2.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools for adding metadata and hyperlinks to reStructuredText"
 arch=('any')
 url="https://github.com/jaraco/rst.linker"
@@ -33,7 +33,7 @@ sha256sums=('0f45f2542e0888ebc6b611291ad7ee80448d3cf70b24cf587dabe5ca189cc8b5')
 prepare() {
   cd "${_name}-$pkgver"
 
-  # Skip coverage 
+  # Skip coverage
   sed -i '/pytest-cov/d' pyproject.toml
 }
 
@@ -45,7 +45,9 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-  PYTHONPATH=. pytest
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -I -m pytest
 }
 
 package() {
