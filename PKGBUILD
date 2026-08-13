@@ -1,7 +1,7 @@
 # Maintainer: Arslan <arslan@example.com>
 # Contributor: Freedownloadmanager Team <support@freedownloadmanager.org>
 
-pkgname=freedownloadmanager-bin
+pkgname=fdm-bin
 pkgver=6.34.4.6974
 pkgrel=1
 pkgdesc="Free Download Manager (FDM) - powerful modern download accelerator and organizer (binary release)"
