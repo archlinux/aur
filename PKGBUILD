@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=appreci8R
-_pkgver=1.26.0
+_pkgver=1.30.0
 pkgname=r-${_pkgname,,}
-pkgver=1.26.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc='appreci8R: an R/Bioconductor package for filtering SNVs and short indels with high sensitivity and high PPV'
 arch=('any')
@@ -46,7 +46,7 @@ optdepends=(
   r-org.hs.eg.db
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('6afe938260a011f3317be6f49bbd7c8032cfd1306f4f62214a1b2d39a99248c1')
+sha256sums=('aa89e7fd210075957da9518c558406eb816e1d2cb874f0c2d2f643a00e1415f3')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
