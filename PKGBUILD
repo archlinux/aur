@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=STATegRa
-_pkgver=1.44.0
+_pkgver=1.48.0
 pkgname=r-${_pkgname,,}
-pkgver=1.44.0
+pkgver=1.48.0
 pkgrel=1
 pkgdesc='Classes and methods for multi-omics data integration'
 arch=('any')
@@ -31,7 +31,7 @@ optdepends=(
   r-runit
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('7d764a177909c8b3cb9d87429e38763c11cae9463e97f4cec209397802faa41e')
+sha256sums=('2c6a1bf91628c600cc794d9784a8f096a71b64628a86846e73478cf7c8885b66')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
