@@ -2,7 +2,7 @@
 # Contributor: sukanka <su975853527@gmail.com>
 
 _pkgname=rugarch
-_pkgver=1.5-3
+_pkgver=1.5-6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e83f2dd5f0fd82ccf95ae284891460b9')
-b2sums=('d358266623696cd7a126e53666bbc5efbc7fc7db14a8d29a3d14380d531795899e038a56db20a761fc135dd9d9147f8e0c42176b483b3b336dbea24b36309170')
+md5sums=('0c429d69d4057608be01cdc495c3d00e')
+b2sums=('d5273111c22e8fd2b6fdae0cafa1c946ee53bfa720a5cacd49b90d64870d5bd052f345808493449266ea271bd7406409f4ef07833bc4f4c4fad77524fef6f76c')
 
 build() {
   mkdir build
