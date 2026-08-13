@@ -1,6 +1,6 @@
 pkgbase = r-spem
 	pkgdesc = S-system parameter estimation method
-	pkgver = 1.48.0
+	pkgver = 1.52.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/SPEM
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = r-spem
 	depends = r
 	depends = r-biobase
 	depends = r-rsolnp
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPEM_1.48.0.tar.gz
-	sha256sums = 1764c686a95c39a3e5ed618835a4eb60df8a3398e55491a193fb032bd209a67d
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/SPEM_1.52.0.tar.gz
+	sha256sums = 81d1d29b9b91ae9ae9259cacc5b28a916c568530d39e0dbc76b51a61f8d53804
 
 pkgname = r-spem
