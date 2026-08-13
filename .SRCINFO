@@ -1,0 +1,19 @@
+pkgbase = python-streamlit-pdf-viewer
+	pkgdesc = Embed and annotate PDF documents in Streamlit apps
+	pkgver = 0.0.30
+	pkgrel = 1
+	url = https://github.com/ScienciaLAB/streamlit-pdf-viewer
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-streamlit
+	source = https://files.pythonhosted.org/packages/source/s/streamlit_pdf_viewer/streamlit_pdf_viewer-0.0.30.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/lfoppiano/streamlit-pdf-viewer/v0.0.30/LICENSE
+	sha256sums = 316ac73e123652e1afc8ae4a7fa78a9f08c7999cc9c46cb1e3890b34305f770e
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+
+pkgname = python-streamlit-pdf-viewer
