@@ -1,16 +1,15 @@
 pkgbase = deepseek-harness-git
 	pkgdesc = DeepSeek Harness CLI and agent harness (git)
-	pkgver = 0.1.0.rc.5.r12225.g47f9438
-	pkgrel = 1
+	pkgver = 0.1.0rc.5.r12225.g47f9438
+	pkgrel = 2
 	url = https://github.com/deepseek-ai/deepseek-harness
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = npm
-	makedepends = pnpm>=11
-	depends = nodejs>=22.19.0
+	depends = nodejs
+	depends = pnpm
 	provides = deepseek-harness
-	provides = dsh
 	conflicts = deepseek-harness
 	conflicts = deepseek-harness-bin
 	options = !strip
