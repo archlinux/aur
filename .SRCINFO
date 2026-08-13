@@ -1,6 +1,6 @@
 pkgbase = mektu-bin
 	pkgdesc = Mektu — AI-powered email, task and calendar desktop client
-	pkgver = 0.1.0
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://mektu.io
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = mektu-bin
 	conflicts = mektu
 	options = !strip
 	options = !debug
-	source = mektu-bin-0.1.0.deb::https://mektu.io/downloads/mektu-linux-x86_64.deb
-	sha256sums = 9d081cdde174cbd9b1bf900038e604dda1d740071d9792d1b8e287c96aef8b0d
+	source = mektu-bin-0.2.12.deb::https://mektu.io/downloads/mektu-linux-x86_64.deb
+	sha256sums = 08b65a0cb9e4ed2895b3fdee0bf43b661192488bf0bf3edecf8f01340fde14f6
 
 pkgname = mektu-bin
