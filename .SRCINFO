@@ -1,6 +1,6 @@
 pkgbase = basalt-launcher-dev-bin
 	pkgdesc = A polished Minecraft launcher with practical instance and content management (development build)
-	pkgver = 1.0.0.dev.17.1
+	pkgver = 1.0.0.dev.18.1
 	pkgrel = 1
 	url = https://github.com/MegalithOfficial/basalt-launcher
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = basalt-launcher-dev-bin
 	conflicts = basalt-launcher-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = basalt-launcher-dev-bin-1.0.0.dev.17.1.deb::https://github.com/MegalithOfficial/basalt-launcher/releases/download/v1.0.0-dev.17.1/Basalt.Launcher_1.0.0_amd64.deb
-	sha256sums_x86_64 = c32a300ea7019f9e3946d2482bb55f617b3a4760d05c198ddb2c5d83d6aa8811
+	source_x86_64 = basalt-launcher-dev-bin-1.0.0.dev.18.1.deb::https://github.com/MegalithOfficial/basalt-launcher/releases/download/v1.0.0-dev.18.1/Basalt.Launcher_1.0.0_amd64.deb
+	sha256sums_x86_64 = 709952087ac77228fc7dff6fe4b4742a0b6f0ca5a2e5348be078e8ba00a81476
 
 pkgname = basalt-launcher-dev-bin
