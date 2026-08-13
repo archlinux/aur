@@ -1,7 +1,7 @@
 pkgname=vfstool-git
-pkgver=2.5.r2.gad0a7c3
+pkgver=0.9.0
 pkgrel=1
-pkgdesc='Application for OpenMW modlists designed to make ESP files which adjust the lighting values from all mods listed in openmw.cfg'
+pkgdesc='Application for OpenMW modlists designed to allow introspecting into and creating virtual filesystems, even for other games.'
 url='https://github.com/DreamWeave-MP/vfstool'
 license=('GPL')
 makedepends=('git' 'cargo')
