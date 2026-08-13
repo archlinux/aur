@@ -1,6 +1,6 @@
 pkgbase = koharu-bin
 	pkgdesc = Manga translation tools
-	pkgver = 0.66.4
+	pkgver = 0.66.6
 	pkgrel = 1
 	url = https://github.com/mayocream/koharu
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = koharu-bin
 	provides = koharu
 	conflicts = koharu
 	options = !debug
-	source = koharu-0.66.4.deb::https://github.com/mayocream/koharu/releases/download/0.66.4/koharu_0.66.4_amd64.deb
-	sha256sums = 323e2a3f9bc38f96067e3e06364975dbc21983c6dc38706e1cfe43031e912545
+	source = koharu-0.66.6.deb::https://github.com/mayocream/koharu/releases/download/0.66.6/koharu_0.66.6_amd64.deb
+	sha256sums = 95f48aa1292eeb663891bbdd114f9891b5510f2ed706b5dd53b40392880be1a0
 
 pkgname = koharu-bin
