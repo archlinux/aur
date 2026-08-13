@@ -3,7 +3,7 @@
 
 pkgname=intel-sgx-psw-bin
 pkgdesc='Intel® Software Guard Extensions Platform Software for Linux* OS'
-pkgver=2.30
+pkgver=2.30.1
 pkgrel=1
 url='https://github.com/intel/confidential-computing.sgx.sdk'
 arch=(x86_64)
@@ -18,10 +18,15 @@ optdepends=(
 provides=("intel-sgx-psw=${pkgver}")
 conflicts=('intel-sgx-psw')
 options=(!strip !debug)
-backup=('etc/aesmd.conf' 'etc/mpa_registration.conf' 'etc/qgs.conf' 'etc/sgx_default_qcnl.conf')
+backup=(
+  'etc/aesmd.conf'
+  'etc/mpa_registration.conf'
+  'etc/qgs.conf'
+  'etc/sgx_default_qcnl.conf'
+)
 source=("sgx_${pkgver}_debian_local_repo.tgz::https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/Debian13/sgx_debian_local_repo.tgz"
        'intel-sgx-sysusers.conf')
-b2sums=('18d61906b851196a0f955b1cdbf86f2d36e8914d0fab0608c1c8b9e0c7857d7b3eb2e104d2bb765ff718d162c810db9762350e75672fb2c85b7d07c3db7cba44'
+b2sums=('93bb0d60a1312adc66388cbe4dc250929eb29c10622833f83e371d279a6337bf77d0a9923852f87a612362bad34aab33a2287a414693e57514ebcd22b49e2445'
         'f0a1415f8e88ffe2fe189c56a701a9756f74947375f142aa3965679129d3182f1b380beea02d70e07cbe7c9443461b8cbb674193ae07f71d543d13a10ecaf7ff')
 
 # Move files to standard Arch Linux folders (namcap rule: directoryname).
