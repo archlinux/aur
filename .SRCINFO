@@ -1,0 +1,18 @@
+pkgbase = brother-hll1222
+	pkgdesc = Brother HL-L1222 CUPS driver
+	pkgver = 4.4.0
+	pkgrel = 1
+	url = https://support.brother.com/
+	install = brother-hll1222.install
+	arch = x86_64
+	license = LicenseRef-Brother
+	license = GPL-2.0-or-later
+	depends = cups
+	depends = ghostscript
+	depends = perl
+	options = !strip
+	options = !debug
+	source = https://download.brother.com/welcome/dlf106419/hll1222pdrv-4.4.0-2.x86_64.rpm
+	sha256sums = beed9c0d31eaf09297d6bfe5fa2eaaf291ca3deae5cf39883d7d4f7f03764ee8
+
+pkgname = brother-hll1222

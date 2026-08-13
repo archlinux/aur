@@ -1,0 +1,7 @@
+*.gz
+*.rpm
+*.tar
+*.pkg
+*.zst
+pkg/
+src/

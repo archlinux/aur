@@ -1,0 +1,13 @@
+post_install() {
+	echo 'Brother HL-L1222 PPD: /usr/share/cups/model/Brother/'
+	echo 'Add printer via http://localhost:631 or system-config-printer'
+	systemctl try-restart cups.service >/dev/null 2>&1 || true
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	systemctl try-restart cups.service >/dev/null 2>&1 || true
+}
