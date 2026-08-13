@@ -1,0 +1,16 @@
+pkgbase = jetdb-cli
+	pkgdesc = CLI tool for reading Microsoft Access (.mdb/.accdb) files
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/dominion525/jetdb
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = jetdb-cli-0.3.2.tar.gz::https://github.com/dominion525/jetdb/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = 564fae87fbfa550c70e0f9e1ae8ed9861b07df64436de1162a7e9eb615e4effe
+
+pkgname = jetdb-cli
