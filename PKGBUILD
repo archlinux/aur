@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methylCC
-_pkgver=1.22.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.22.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='Estimate the cell composition of whole blood in DNA methylation samples'
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
   r-tidyr
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('65764c6fbcc8425dee78c6c3a67bd6ec7cb0d797bff3d13a43c4341ca40f0e69')
+sha256sums=('6752f9a90e4c1bafc944903688c0711569c63ef1c827c1d016226eecb0f5e730')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
