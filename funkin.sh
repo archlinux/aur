@@ -16,7 +16,7 @@ fuse-overlayfs -o lowerdir="/usr/share/funkin",upperdir="data",workdir=".tmp/wor
 
 # Play Friday Night Funkin'
 cd ".tmp/merged"
-SDL_VIDEODRIVER="x11" ./Funkin # https://github.com/FunkinCrew/Funkin/issues/2498
+./Funkin # https://github.com/FunkinCrew/Funkin/issues/2498
 cd "../.."
 
 # Unmount overlay and delete temporary files
