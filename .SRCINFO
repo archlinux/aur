@@ -1,6 +1,6 @@
 pkgbase = python312
 	pkgdesc = Major release 3.12 of the Python high-level programming language
-	pkgver = 3.12.13
+	pkgver = 3.12.14
 	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686
@@ -23,9 +23,9 @@ pkgbase = python312
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
-	source = https://www.python.org/ftp/python/3.12.13/Python-3.12.13.tar.xz
+	source = https://www.python.org/ftp/python/3.12.14/Python-3.12.14.tar.xz
 	validpgpkeys = 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 	validpgpkeys = E3FF2839C048B25C084DEBE9B26995E310250568
-	sha256sums = c08bc65a81971c1dd5783182826503369466c7e67374d1646519adf05207b684
+	sha256sums = 5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a
 
 pkgname = python312

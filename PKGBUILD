@@ -2,7 +2,7 @@
 # Contributor: Tobias Kunze <r@rixx.de>
 
 pkgname=python312
-pkgver=3.12.13
+pkgver=3.12.14
 pkgrel=1
 _pybasever=3.12
 _pymajver=3
@@ -14,7 +14,7 @@ depends=('bzip2' 'expat' 'gdbm' 'libffi' 'libnsl' 'libxcrypt' 'openssl' 'zlib')
 makedepends=('bluez-libs' 'mpdecimal' 'gdb' 'tk')
 optdepends=('sqlite' 'mpdecimal: for decimal' 'xz: for lzma' 'tk: for tkinter')
 source=(https://www.python.org/ftp/python/${pkgver}/Python-${pkgver}.tar.xz)
-sha256sums=('c08bc65a81971c1dd5783182826503369466c7e67374d1646519adf05207b684')
+sha256sums=('5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a')
 validpgpkeys=(
     '0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D'  # Ned Deily (Python release signing key) <nad@python.org>
     'E3FF2839C048B25C084DEBE9B26995E310250568'  # Łukasz Langa (GPG langa.pl) <lukasz@langa.pl>
