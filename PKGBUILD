@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A real-time ASCII camera for your terminal"
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -21,14 +21,13 @@ license=('GPL-3.0')
 
 provides=("${_appname}")
 conflicts=("${_appname}")
-depends=('glibc' 'libgcc')
 
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('68d7f64f22c91ac42943ba44be4430ef09d12f64db5adba90b8010db416f286c')
-sha256sums_aarch64=('a15e76e8c740140c984eb5abb5d565a1b709fff3a98becfa3ae71fc77fba45e8')
+sha256sums_x86_64=('b2cc3d1a8f42cf97b687e87d20392d81a89f093ba86a99e40c80a3123eb97a21')
+sha256sums_aarch64=('9bcbdedea1953e6a4d6d5846acb308fd8971c7bd1694b43208c88c49fe2a40b8')
 
 
 package() {

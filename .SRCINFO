@@ -1,19 +1,17 @@
 pkgbase = termicam-bin
 	pkgdesc = A real-time ASCII camera for your terminal
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Megge06/TermiCam
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0
-	depends = glibc
-	depends = libgcc
 	provides = termicam
 	conflicts = termicam
 	options = !strip
-	source_x86_64 = termicam-x86_64-0.2.0.tgz::https://github.com/Megge06/TermiCam/releases/download/v0.2.0/termicam_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 68d7f64f22c91ac42943ba44be4430ef09d12f64db5adba90b8010db416f286c
-	source_aarch64 = termicam-aarch64-0.2.0.tgz::https://github.com/Megge06/TermiCam/releases/download/v0.2.0/termicam_Linux_arm64.tar.gz
-	sha256sums_aarch64 = a15e76e8c740140c984eb5abb5d565a1b709fff3a98becfa3ae71fc77fba45e8
+	source_x86_64 = termicam-x86_64-0.3.0.tgz::https://github.com/Megge06/TermiCam/releases/download/v0.3.0/termicam_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = b2cc3d1a8f42cf97b687e87d20392d81a89f093ba86a99e40c80a3123eb97a21
+	source_aarch64 = termicam-aarch64-0.3.0.tgz::https://github.com/Megge06/TermiCam/releases/download/v0.3.0/termicam_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9bcbdedea1953e6a4d6d5846acb308fd8971c7bd1694b43208c88c49fe2a40b8
 
 pkgname = termicam-bin
