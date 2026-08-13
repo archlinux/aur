@@ -1,6 +1,6 @@
 pkgbase = yay-sys-tray-git
 	pkgdesc = Arch Linux system tray update checker using yay (built from source)
-	pkgver = 1.4.0.70.7b01ea0
+	pkgver = 1.6.5.3.12145a1
 	pkgrel = 3
 	url = https://github.com/skint007/yay-sys-tray
 	install = yay-sys-tray-git.install
