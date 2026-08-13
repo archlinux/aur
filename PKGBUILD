@@ -1,6 +1,6 @@
 # Maintainer: Burhanverse <contact@burhanverse.eu.org>
 pkgname=fagram-bin
-pkgver=2.3.4
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="Telegram Desktop based messenger with Feature-rich modifications."
 arch=(x86_64)
@@ -52,9 +52,9 @@ provides=('fagram')
 conflicts=('fagram')
 options=(!debug)
 
-source=("https://github.com/fagramdesktop/fadesktop/releases/download/${pkgver}/fagram-${pkgver}.tar.gz")
+source=("https://github.com/fagramdesktop/fadesktop/releases/download/${pkgver}/fagram-${pkgver}.tar.zst")
 
-sha256sums=('0b50c31cb7ed288fb5503fb49cb4d9c7a951c3b3c1cb84b51b864eb551171819')
+sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
 package() {
     cd "${srcdir}/"
@@ -70,9 +70,11 @@ package() {
 
     # Application executable
     install -Dm755 "${srcdir}/usr/bin/fagram" "${pkgdir}/usr/bin/fagram"
+    install -Dm755 "${srcdir}/usr/bin/Updater" "${pkgdir}/usr/bin/Updater"
 
     # Remove RPATH informations
     chrpath --delete "${pkgdir}/usr/bin/fagram"
+    chrpath --delete "${pkgdir}/usr/bin/Updater"
 
     # Desktop launcher
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/org.fagram.png" "${pkgdir}/usr/share/pixmaps/fagram.png"
