@@ -1,0 +1,8 @@
+proton-cachyos
+proton-cargo
+wine-vapev4
+src
+pkg
+wine-*.tar.xz
+xalia*.zip
+*.pkg.tar.zst
