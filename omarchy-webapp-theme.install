@@ -1,0 +1,49 @@
+post_install() {
+  cat <<'EOF'
+
+  The native-messaging host is registered system-wide, but the per-user bits
+  (the omarchy theme-set hook and the browser --load-extension flag) can't be
+  installed from a package. Finish setup as your normal user:
+
+      omarchy-webapp-theme-setup
+
+  (Upgrading from omarchy-slack-theme? The setup also cleans up that old
+  wiring.) Then fully quit your browser -- closing the window isn't enough:
+
+      pkill brave    # or chromium / google-chrome-stable
+
+  Open app.slack.com, web.whatsapp.com, github.com, linear.app, discord.com
+  or outlook.office.com and switch omarchy themes; they should follow.
+
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+
+  Re-run 'omarchy-webapp-theme-setup' so the per-user wiring points at the new
+  files, then restart your browser.
+
+  Migrating from a git-checkout install? Retire the clone FIRST, then set up
+  the package -- in that order:
+
+      ./install.sh --uninstall            # in your clone
+      omarchy-webapp-theme-setup
+
+  Both use the same theme-set.d hook name, so doing it the other way round
+  used to leave you with no hook at all -- and with no hook there is no
+  SIGUSR1, which is the only thing that pushes theme changes.
+
+EOF
+}
+
+pre_remove() {
+  cat <<'EOF'
+
+  Removing the package leaves the per-user wiring behind. To clean it up, run
+  this BEFORE the package disappears:
+
+      omarchy-webapp-theme-setup --uninstall
+
+EOF
+}
