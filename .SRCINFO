@@ -1,6 +1,6 @@
 pkgbase = nautilus-my-computer
 	pkgdesc = My Computer for Nautilus, what GNOME Files should have always been
-	pkgver = 0.12.6
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/yannmasoch/nautilus-my-computer
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = nautilus-my-computer
 	makedepends = gettext
 	depends = python-nautilus
 	depends = libadwaita
-	source = nautilus-my-computer-0.12.6.tar.gz::https://github.com/yannmasoch/nautilus-my-computer/archive/refs/tags/v0.12.6.tar.gz
-	sha256sums = e91c34f527db23ef8d64e967b0fbb95f7369f6896c6fbc315c67eb05f99145a5
+	source = nautilus-my-computer-0.13.1.tar.gz::https://github.com/yannmasoch/nautilus-my-computer/archive/refs/tags/v0.13.1.tar.gz
+	sha256sums = 0e95a5285d6bdb2e1652244752996b36b7824df145840c9df148795a4b6dc095
 
 pkgname = nautilus-my-computer
