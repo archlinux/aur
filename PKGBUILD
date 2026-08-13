@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=DNAfusion
-_pkgver=1.10.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -10,7 +10,6 @@ arch=(any)
 url="https://bioconductor.org/packages/$_pkgname"
 license=('GPL-3.0-only')
 depends=(
-  r-bamsignals
   r-biocbaseutils
   r-biocgenerics
   r-genomicalignments
@@ -32,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('731f349e03269ff9bff7595b0329b33f')
-b2sums=('9870b5346cdb717a464747f6da86b75e35c258ee540a69e3e71511698d0ea50b8fe5be43c903e45b565aff89837cbee4cb44adfc16f257e7aa45e6f513fc97ff')
+md5sums=('6bb3ae0859f679e4e20ba2b7fbed3784')
+b2sums=('83de6069571264e17edd45b48dc755913d8be34b84aa8d9aacf49a4be0a143f4795e5d96e6eb81cd876b06f17fda5b57e75631a67de60ff960f7f3386dae42d3')
 
 build() {
   mkdir build
