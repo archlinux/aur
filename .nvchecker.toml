@@ -1,0 +1,5 @@
+[periodic-table-cli-py]
+source = "github"
+github = "spirometaxas/periodic-table-cli-py"
+use_latest_release = true
+prefix = "v"
