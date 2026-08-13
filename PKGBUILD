@@ -1,7 +1,7 @@
 # Maintainer: Max <max at swk-web.com>
 
 pkgname=brows3
-pkgver=0.2.43
+pkgver=0.2.44
 pkgrel=1
 pkgdesc="Super fast open-source S3 browser, S3 explorer, and desktop client for Amazon S3, MinIO, Cloudflare R2, Wasabi, and other S3-compatible storage"
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ makedepends=(
 )
 options=('!lto' '!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rgcsekaraa/brows3/archive/refs/tags/app-v${pkgver}.tar.gz")
-sha256sums=('d3b52d0bed3c644029d6087ed64c78e5682f3b21c9b4656baae6c224318ee247')
+sha256sums=('db309ab0f45f20032671754cc521d4cc28985f7f52490b3eb3f71eab17911431')
 
 prepare() {
   cd "$pkgname-app-v$pkgver"
