@@ -1,6 +1,6 @@
 pkgbase = ir
 	pkgdesc = Run standalone R scripts from embedded dependency metadata
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/r-lib/ir
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ir
 	conflicts = ir-bin
 	options = !lto
 	options = !debug
-	source = ir-0.3.0.tar.gz::https://github.com/r-lib/ir/archive/v0.3.0.tar.gz
-	sha512sums = 707568f14e59bb6e93cbc1bf1b16313e32803c895e59c1949713caecde066e1e4438c61cb923b1b28b64833642f5359ad59af6f62bf8b12d931cd48d2e8fb560
+	source = ir-0.4.0.tar.gz::https://github.com/r-lib/ir/archive/v0.4.0.tar.gz
+	sha512sums = 27843584a3881c3b9c3498e1b21db2afae75d9f577ff6658646a8d318fcc822416cfe74a54cadaebf76d850e1d4b255f325a8b36d178a7a689380f573b8be103
 
 pkgname = ir
