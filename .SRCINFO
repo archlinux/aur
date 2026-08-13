@@ -1,6 +1,6 @@
 pkgbase = hapi-git
 	pkgdesc = App for agentic coding - access coding agent anywhere (Built from source)
-	pkgver = 0.25.1
+	pkgver = 0.27.3
 	pkgrel = 1
 	url = https://github.com/tiann/hapi
 	install = hapi-git.install
@@ -10,7 +10,7 @@ pkgbase = hapi-git
 	depends = bun
 	provides = hapi
 	options = !strip
-	source = git+https://github.com/tiann/hapi.git#tag=v0.25.1
+	source = git+https://github.com/tiann/hapi.git#tag=v0.27.3
 	sha256sums = SKIP
 
 pkgname = hapi-git
