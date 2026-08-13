@@ -6,7 +6,7 @@ pkgver=3.12.14
 pkgrel=1
 _pybasever=3.12
 _pymajver=3
-pkgdesc="Major release 3.12 of the Python high-level programming language"
+pkgdesc="Major release 3.12 of the Python programming language"
 arch=('i686' 'x86_64' 'aarch64')
 license=('PSF-2.0')
 url="https://www.python.org/"
@@ -39,7 +39,9 @@ prepare() {
 build() {
   cd "${srcdir}/Python-${pkgver}"
 
-  CFLAGS="${CFLAGS} -fno-semantic-interposition -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer"
+  export CFLAGS_NODIST="${CFLAGS_NODIST} -fno-semantic-interposition"
+  export LDFLAGS_NODIST="${LDFLAGS_NODIST} -fno-semantic-interposition"
+
   ./configure ax_cv_c_float_words_bigendian=no \
               --prefix=/usr \
               --enable-shared \
