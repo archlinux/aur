@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pipgrip
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight pip dependency resolver with deptree preview functionality based on the PubGrub algorithm"
 arch=('any')
 url="https://github.com/ddelange/pipgrip"
@@ -46,7 +46,7 @@ check() {
   cd "$pkgname-$pkgver"
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  PYTHONPATH=src/ test-env/bin/python -P -m pytest
+  test-env/bin/python -I -m pytest
 }
 
 package() {
