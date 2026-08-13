@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=nuc980-nuwriter-git
-pkgver=r23.20fb730
-pkgrel=6
+pkgver=r24.8fb6cf8
+pkgrel=1
 epoch=
 pkgdesc="The Nu-writer Command Tool is a linux console application consisting of functions to access storage(eg. DRAM,NAND,SPINOR,SPINAND,SD) in a NUC980 family processors"
 arch=($CARCH)
@@ -10,11 +10,13 @@ url="https://gitee.com/OpenNuvoton/NUC980_NuWriter_CMD"
 license=('GPL-3.0-only')
 groups=()
 depends=(
-    glibc
-    libusb)
-makedepends=(git
+    libusb
+)
+makedepends=(
+    git
     automake
-    pkgconf)
+    pkgconf
+)
 checkdepends=()
 optdepends=()
 provides=('NUC980_NuWriter_CMD')
