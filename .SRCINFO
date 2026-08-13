@@ -1,6 +1,6 @@
 pkgbase = mcomix-rs
 	pkgdesc = A user-friendly, customizable comic book image viewer (Rust/GTK4 port)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/rippa-the-hutt/mcomix-rs
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = mcomix-rs
 	optdepends = mupdf-tools: for PDF support
 	conflicts = mcomix3
 	replaces = mcomix3
-	source = mcomix-rs-0.2.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/rippa-the-hutt/mcomix-rs/releases/download/v0.2.0/mcomix-rs-0.2.0-x86_64-unknown-linux-gnu.tar.gz
-	source = mcomix-rs-src-0.2.0.tar.gz::https://github.com/rippa-the-hutt/mcomix-rs/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 07486ff212955e26ef354c98e17e3d323a801612dd99d25de39be4fb26e6e884
-	sha256sums = 1671e0d003f1886992cbf9805116baa52115812b5074f2603c4d59bcbc751d76
+	source = mcomix-rs-0.3.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/rippa-the-hutt/mcomix-rs/releases/download/v0.3.0/mcomix-rs-0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	source = mcomix-rs-src-0.3.0.tar.gz::https://github.com/rippa-the-hutt/mcomix-rs/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 7e626c6a5d0e89e6037f70fb22458df9c61692b619fab6d5bc39b0247bbecc4a
+	sha256sums = 91948412c9ccd046444b408d329b51bb1a1bfa4cd9d2bfc751ea9f9c7244dfbd
 
 pkgname = mcomix-rs

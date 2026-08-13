@@ -4,7 +4,7 @@
 # release tag (e.g. v0.1.0).
 
 pkgname=mcomix-rs
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A user-friendly, customizable comic book image viewer (Rust/GTK4 port)"
 arch=('x86_64')
@@ -35,8 +35,8 @@ source=(
 )
 # Hashes are pinned for the current pkgver. When bumping pkgver to a new
 # release, regenerate them with:  updkgsums
-sha256sums=('07486ff212955e26ef354c98e17e3d323a801612dd99d25de39be4fb26e6e884'
-            '1671e0d003f1886992cbf9805116baa52115812b5074f2603c4d59bcbc751d76')
+sha256sums=('7e626c6a5d0e89e6037f70fb22458df9c61692b619fab6d5bc39b0247bbecc4a'
+            '91948412c9ccd046444b408d329b51bb1a1bfa4cd9d2bfc751ea9f9c7244dfbd')
 
 package() {
     # Binary from the release artifact.
