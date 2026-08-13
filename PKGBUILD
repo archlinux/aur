@@ -1,6 +1,6 @@
 # Maintainer: Jochem Kuipers <jochem@kuipers.cc>
 pkgname=breeze-enhanced
-pkgver=6.4
+pkgver=6.5
 pkgrel=1
 pkgdesc="A fork of KDE Breeze decoration with additional options (gradient, opacity, macOS-like buttons)"
 arch=('x86_64' 'aarch64')
