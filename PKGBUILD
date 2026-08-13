@@ -1,7 +1,7 @@
 # Maintainer: akirco earlfx@163.com
 pkgname=pigma-bin
 _pkgname=pigma
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="A netease cloud music client"
 arch=('x86_64')
