@@ -1,6 +1,6 @@
 pkgbase = r-bayesspace
 	pkgdesc = Clustering and Resolution Enhancement of Spatial Transcriptomes
-	pkgver = 1.18.4
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/BayesSpace
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = r-bayesspace
 	optdepends = r-spatiallibd
 	optdepends = r-testthat
 	optdepends = r-viridis
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/BayesSpace_1.18.4.tar.gz
-	sha256sums = f625642ae7934f55a916c9753b767801c9486861bafa55cb2448b06ba92ba085
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/BayesSpace_1.22.0.tar.gz
+	sha256sums = 05a09f41cd2186484bea1fc89774f8779a28fb0dd8eaf155fce54225961a5290
 
 pkgname = r-bayesspace
