@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=epivizrStandalone
-_pkgver=1.34.0
+_pkgver=1.40.0
 pkgname=r-${_pkgname,,}
-pkgver=1.34.0
+pkgver=1.40.0
 pkgrel=1
 pkgdesc='Run Epiviz Interactive Genomic Data Visualization App within R'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('2b1fad1f29d013063e36ca5e202f533fd2d23b46e1872e7a4c42a6453f852f0a')
+sha256sums=('5575e55abeb2fd1d58ba24766388c920046d92623600b82cd4e3fded3053b212')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
