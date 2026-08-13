@@ -6,7 +6,9 @@ post_install() {
     if command -v apparmor_parser >/dev/null 2>&1; then
         apparmor_parser -r /etc/apparmor.d/usr.bin.irlumed 2>/dev/null || true
     fi
-    systemctl enable --now irlumed.service 2>/dev/null || true
+    # The socket first: it is what makes /run/irlume.sock exist before the
+    # greeter authenticates (#244).
+    systemctl enable --now irlumed.socket irlumed.service 2>/dev/null || true
     # Watches greeter PAM files and re-applies irlume wiring after a distro
     # update strips it; idle until `irlume login enable` runs. The .service also
     # runs at boot to catch an offline strip and to adopt an existing wiring on
@@ -31,6 +33,11 @@ post_upgrade() {
     systemctl daemon-reload
     if command -v apparmor_parser >/dev/null 2>&1; then
         apparmor_parser -r /etc/apparmor.d/usr.bin.irlumed 2>/dev/null || true
+    fi
+    # Upgrading from a version without the socket unit: enable it, but only
+    # if the admin has not deliberately disabled the service.
+    if systemctl is-enabled --quiet irlumed.service 2>/dev/null; then
+        systemctl enable --now irlumed.socket 2>/dev/null || true
     fi
     systemctl try-restart irlumed.service 2>/dev/null || true
     # Ensure the self-heal units are enabled and run one reconcile: adopts an
@@ -58,7 +65,7 @@ EOF
 }
 
 pre_remove() {
-    systemctl disable --now irlumed.service 2>/dev/null || true
+    systemctl disable --now irlumed.socket irlumed.service 2>/dev/null || true
     systemctl disable --now irlume-reconcile.path 2>/dev/null || true
     systemctl disable --now irlume-reconcile.timer 2>/dev/null || true
     systemctl disable --now irlume-reconcile.service 2>/dev/null || true
