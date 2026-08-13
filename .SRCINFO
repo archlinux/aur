@@ -1,20 +1,20 @@
 pkgbase = localgo-bin
 	pkgdesc = LocalSend v2 protocol implementation. LAN file transfer CLI
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/bethropolis/localgo
+	arch = aarch64
+	arch = x86_64
 	license = MIT
 	optdepends = xclip: clipboard support on X11
 	optdepends = xsel: clipboard support on X11 (alternative)
 	optdepends = wl-clipboard: clipboard support on Wayland
+	provides = localgo
 	conflicts = localgo
 	conflicts = localgo-git
-	provides = localgo
-	arch = aarch64
-	source_aarch64 = https://github.com/bethropolis/localgo/releases/download/v0.6.5/localgo_0.6.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6ca60465af7de027beab3d04226fb792c0d3fd29e520173717a186f41d563dda
-	arch = x86_64
-	source_x86_64 = https://github.com/bethropolis/localgo/releases/download/v0.6.5/localgo_0.6.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = 22262b6fcd78c8092ccb9ab01847bb3701ccdee50b94d40fe069ef6974c24e48
-	
+	source_aarch64 = localgo-bin_0.6.6_aarch64.tar.gz::https://github.com/bethropolis/localgo/releases/download/v0.6.6/localgo_0.6.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = 47e2d8125dd9da212cdc97ecd252f9cb68e0a50bce18cbdd6443bded48ccb9af
+	source_x86_64 = localgo-bin_0.6.6_x86_64.tar.gz::https://github.com/bethropolis/localgo/releases/download/v0.6.6/localgo_0.6.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 048ebe94dfc78c1c969f64449466db65c09d28fb52b557624ee3b3baa9be9939
+
 pkgname = localgo-bin
