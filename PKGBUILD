@@ -3,7 +3,7 @@
 pkgauthor="PrashantDhuri08"
 pkgname="lanview"
 pkgdesc="Zero-config CLI to instantly preview full-stack web apps on your mobile device over LAN"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/${pkgauthor}/${pkgname}-cli"
@@ -20,7 +20,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('3992931f179446087bf2405f64db86cc23386eef88b18a019f37325dd015caa08cd38a8f99996492444605982474c522f8a18a399cb64746dd3bef3805cb7561')
+b2sums=('de3bed6f96f1271396182bb4f78e882e27912de333a9a2fd35830ec21dfaf6f093cebf51103723bcd00d507bb6c0850d0b09d1015bd7d891417a648673d3e13a')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
