@@ -2,8 +2,8 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=mesonlsp
-pkgver=5.0.3
-pkgrel=2
+pkgver=5.0.4
+pkgrel=1
 pkgdesc='Meson language server'
 arch=(x86_64)
 url=https://github.com/JCWasmx86/mesonlsp
@@ -38,20 +38,13 @@ source=(
   git+https://github.com/JCWasmx86/muon#commit=c0feb4deed2d4142f1af8f1a84c99b18721e560d
   git+https://github.com/JCWasmx86/tree-sitter-ini#commit=848b6269f7039739aebd169fbd3d5e6e34bef661
   git+https://github.com/JCWasmx86/tree-sitter-meson#commit=09665faff74548820c10d77dd8738cd76d488572
-  "fix-for-pkgconf3.patch"
 )
-b2sums=('795a41bbd26d720282d815b6c41e5b2aa3e7724c288d87fe10dafc7f75dc6a4e1ba25acbf6f58fd9b87433d6cdfb79f4c66a7a825ff591bd4a9b595426052649'
+b2sums=('30f0472914c014fcaebe05cd49705a925a69aa981192f2e8a79f970dd17cede7a347802b759280582af4705914b9c1823b3cb21fa9d6eafeb72308c483e53495'
         'a1bb73cac9898267aec9b019857581f2895351f3014727a297654a3c55a32d69e480e93c53a0089f342268049e0f23e9ba6c0ae1cefa703795e2655eacc74f8a'
         'e4e59dcd348ea3ec9fc6ce7f62f944b8f5b40370c5738e6453e45aa201eadb9eb0b58d9d08e7068b8b1a4a6c90e94d58fb7df81337124c8e96e6e418fce488ae'
         '85697c5ea0f44497b2929bda616955914d397744790f5adba3039b145f661339826c4c53b56e2e3cd77b197e5402bc358b39f892c13e77953cf8d42577a175ba'
         '83f0e5b4c34b6e5ac95aa8b610ea3a992edcab711a0174e77a64fee7c27f7b3a51450ce9b376cbac0c93b1aa7271017788b54805158552028bfe204fbd6d1558'
-        '517c4fbd80ab65375e5ebe13b57e65dc64460dda6a7d68a9998617bce94064e7fdd81c5428c55e31e785ae9b9d548dbff0818daad94fa1ffb256fe9a86804c6d'
-        '16b4d45164dc84351b2a1fdc4fe1a9823261db36c59c8570cb73df86201570f80ddffad14246359bba74ad0e6f242b414c574cf49f841d8035b16b5175352ede')
-
-prepare() {
-  cd mesonlsp
-  patch -Np1 -i ../fix-for-pkgconf3.patch
-}
+        '517c4fbd80ab65375e5ebe13b57e65dc64460dda6a7d68a9998617bce94064e7fdd81c5428c55e31e785ae9b9d548dbff0818daad94fa1ffb256fe9a86804c6d')
 
 build() {
   local meson_options=(
