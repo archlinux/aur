@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=TDbasedUFE
-_pkgver=1.8.0
+_pkgver=1.12.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -28,8 +28,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4da4e089c764dfd3bafbfa9ad2da7fb2')
-b2sums=('979ba84c74e64e92796741bb44b111781f08d3b10905ea9718e81e87545afc012960d721ce7b4185fd3f3d99381e36212f255f0b81608baaaca821896a63281a')
+md5sums=('b31ff6622ec70e9d12e14caffb14f7bc')
+b2sums=('143c85e835d8118d4cf8021abf691684fc5cefdf25c8e378d56b85398d33bc285d83e5d1c8ee359bacdc73106fc14b31cf7f5c9092d200b431f69ee997233711')
 
 build() {
   mkdir build
