@@ -1,6 +1,6 @@
 pkgbase = tac-writer
 	pkgdesc = Academic writing assistant using the Continuous Argumentation Technique (TAC)
-	pkgver = 1.4.4.4
+	pkgver = 1.4.4.6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/narayanls/tac-writer
