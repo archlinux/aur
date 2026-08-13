@@ -2,7 +2,7 @@
 pkgname=voltius-git
 _pkgname=voltius
 pkgver=0.24.0.r0.gd82e1842
-pkgrel=1
+pkgrel=2
 pkgdesc="Local-first SSH/SFTP/Serial client with E2EE sync, plugins, and no account required (main branch)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/VoltiusApp/voltius"
@@ -31,6 +31,7 @@ prepare() {
 }
 
 build() {
+  export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=/usr/bin/gcc
   cd "$_pkgname"
   export PATH="$srcdir/npm-global/bin:$PATH"
   export TAURI_SIGNING_PRIVATE_KEY="aur-build-dummy-key"
