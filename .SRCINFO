@@ -1,6 +1,6 @@
 pkgbase = r-rtcgatoolbox
 	pkgdesc = A new tool for exporting TCGA Firehose data
-	pkgver = 2.38.0
+	pkgver = 2.42.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RTCGAToolbox
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = r-rtcgatoolbox
 	optdepends = r-knitr
 	optdepends = r-readr
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RTCGAToolbox_2.38.0.tar.gz
-	sha256sums = 0110ed492613b8178fcf8b9b87a21d4d708cd9297198fb6788a9bc6aca0eceac
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RTCGAToolbox_2.42.0.tar.gz
+	sha256sums = c21e3e70cb5fb3f4d84fd260eea75b720f6079181221fdd04c3d66d890054f8c
 
 pkgname = r-rtcgatoolbox
