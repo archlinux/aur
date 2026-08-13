@@ -1,0 +1,27 @@
+pkgbase = osu-stable-arch-git
+	pkgdesc = Automated osu! Stable installer & low-latency PipeWire audio manager for Arch Linux
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/mizukika/osu-stable-arch-linux
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = wget
+	depends = curl
+	depends = unzip
+	depends = p7zip
+	depends = xdg-utils
+	depends = desktop-file-utils
+	depends = git
+	depends = cabextract
+	optdepends = wine: System Wine fallback
+	optdepends = winetricks: Windows components setup
+	optdepends = pipewire: Low-latency audio server
+	optdepends = wireplumber: PipeWire session manager
+	optdepends = realtime-privileges: Realtime group privileges
+	provides = osu-stable-arch
+	conflicts = osu-stable-arch
+	source = git+https://github.com/mizukika/osu-stable-arch-linux.git
+	sha256sums = SKIP
+
+pkgname = osu-stable-arch-git
