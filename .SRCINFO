@@ -1,8 +1,8 @@
 pkgbase = chat-control
-	pkgdesc = A totally real package that says lol
+	pkgdesc = Europe chat-control
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://example.com/chat-control
+	url = https://github.com/Momwhyareyouhere
 	arch = any
 	license = MIT
 

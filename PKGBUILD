@@ -3,9 +3,9 @@
 pkgname=chat-control
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A totally real package that says lol"
+pkgdesc="Europe chat-control"
 arch=('any')
-url="https://example.com/chat-control"
+url="https://github.com/Momwhyareyouhere"
 license=('MIT')
 depends=()
 source=()
