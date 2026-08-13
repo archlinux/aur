@@ -1,0 +1,52 @@
+pre_install() {
+    # Detect CachyOS installation
+    if grep -qi "cachyos" /etc/os-release 2>/dev/null; then
+        # Ensure interactive terminal access
+        if [ -c /dev/tty ]; then
+            exec < /dev/tty
+        else
+            echo ":: Non-interactive environment detected on CachyOS. Aborting installation."
+            exit 1
+        fi
+
+        echo "Are you currently using CachyOS? (y/N)"
+        read -r response
+        response=$(echo "$response" | tr '[:upper:]' '[:lower:]' | xargs)
+
+        if [ "$response" = "y" ] || [ "$response" = "yes" ]; then
+            cat << 'EOF'
+===============================================================================
+CACHYOS USER AGREEMENT AND WAIVER OF SUPPORT
+
+By proceeding with this installation on CachyOS, you hereby acknowledge,
+consent, and agree to the following terms and conditions:
+
+1. You fully waive any and all rights, claims, or expectations to receive 
+   technical support, assistance, guidance, or troubleshooting of any kind 
+   from the developers, maintainers, or contributors of this software.
+2. You accept that any issues, bugs, system instabilities, or damages 
+   encountered during or after the installation process are solely your 
+   own responsibility.
+3. Any requests for support submitted by you will be categorically ignored, 
+   dismissed, or summarily closed without further action or consideration.
+===============================================================================
+EOF
+            echo "Do you acknowledge and agree to these terms? (y/N)"
+            read -r agree
+            agree=$(echo "$agree" | tr '[:upper:]' '[:lower:]' | xargs)
+
+            if [ "$agree" != "y" ] && [ "$agree" != "yes" ]; then
+                echo ":: Installation aborted: Agreement declined."
+                exit 1
+            fi
+        else
+            # Detected via /etc/os-release but user denied running CachyOS
+            echo ":: CachyOS system detected via /etc/os-release. Aborting installation."
+            exit 1
+        fi
+    fi
+}
+
+pre_upgrade() {
+    pre_install
+}
