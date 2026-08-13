@@ -1,0 +1,5 @@
+[ptags-bin]
+source = "github"
+github = "dalance/ptags"
+use_latest_release = true
+prefix = "v"
