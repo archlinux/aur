@@ -36,8 +36,19 @@ _descargar_voces() {
 
 _crear_venv() {
     echo " >> [FRANKI] Creando entorno Python 3.11 en $VENV (via uv)..."
-    # Eliminar venv previo para garantizar recreacion limpia en cada upgrade
-    rm -rf "$VENV"
+    # Recreacion ATOMICA: se arma en un directorio temporal y solo se reemplaza
+    # el venv anterior (funcional) si el nuevo termina de instalar sus deps core
+    # con exito. Bug real confirmado 2026-08-12: el venv viejo se borraba
+    # incondicionalmente ANTES de intentar el nuevo, y un fallo de `pip install
+    # -r requirements-core.txt` (14s de scriptlet total -- fallo casi inmediato,
+    # ni siquiera alcanzo a intentar descargar paquetes) solo emitia un [ERROR]
+    # y seguia adelante sin abortar -- pacman reportaba la actualizacion como
+    # exitosa dejando un venv vacio (solo pip/setuptools de --seed). Resultado:
+    # franki_utils, franki_musculos (registro de tools) y el indice zvec rotos
+    # tras un upgrade que aparentaba haber funcionado.
+    local VENV_NEW="${VENV}.new"
+    rm -rf "$VENV_NEW"
+
     # UV_PYTHON_INSTALL_DIR: instala Python en ruta de sistema accesible por todos.
     # Sin esto uv usa /root/.local/ (hook corre como root) que el servicio no puede leer.
     export UV_PYTHON_INSTALL_DIR="/usr/lib/franki/python"
@@ -45,29 +56,39 @@ _crear_venv() {
     # en el sistema. Garantiza que la instalacion no falle por ausencia del interprete.
     export UV_PYTHON_DOWNLOADS=auto
     # --seed incluye pip en el venv (uv venv por defecto NO instala pip)
-    uv venv --python 3.11 --seed "$VENV" || {
+    uv venv --python 3.11 --seed "$VENV_NEW" || {
         echo " >> [ERROR] uv venv --python 3.11 fallo incluso con descarga automatica."
         echo "    Verifica conexion a internet o instala Python 3.11 manualmente:"
         echo "    pacman -S python311  (o equivalente en tu distro)"
+        echo " >> [FRANKI] Venv anterior preservado sin cambios: $VENV"
+        rm -rf "$VENV_NEW"
         return 1
     }
     echo " >> [FRANKI] Instalando dependencias Python..."
-    "$VENV/bin/pip" install --quiet -r "$REQ"
+    "$VENV_NEW/bin/pip" install --quiet -r "$REQ"
     local _exit=$?
     if [ $_exit -ne 0 ]; then
-        echo " >> [ERROR] pip install fallo (exit $_exit). Algunos modulos pueden estar ausentes."
-        echo " >> Ejecuta manualmente: sudo $VENV/bin/pip install -r $REQ"
+        echo " >> [ERROR] pip install fallo (exit $_exit). Venv anterior preservado SIN CAMBIOS: $VENV"
+        echo " >> Reintenta manualmente: sudo $VENV_NEW/bin/pip install -r $REQ"
+        echo " >> Cuando termine sin error, promuevelo con:"
+        echo "      sudo rm -rf $VENV && sudo mv $VENV_NEW $VENV"
+        return 1
     fi
     # --- EXTRAS OPERACIONALES (ligeros, sin deps de sistema — no-blocking) ---
     # Estos se auto-instalan porque son necesarios para funciones nucleares
     # del servicio en produccion (Telegram, WhatsApp, Cinema Engine).
     echo " >> [FRANKI] Instalando extras operacionales (yt-dlp, neonize, aiogram)..."
-    "$VENV/bin/pip" install --quiet 'yt-dlp' 2>/dev/null || \
-        echo " >> [WARN] yt-dlp fallo — instala manualmente: sudo $VENV/bin/pip install yt-dlp"
-    "$VENV/bin/pip" install --quiet 'neonize>=0.3.17' 'protobuf>=6.32.1,<7' 2>/dev/null || \
+    "$VENV_NEW/bin/pip" install --quiet 'yt-dlp' 2>/dev/null || \
+        echo " >> [WARN] yt-dlp fallo — instala manualmente: sudo $VENV_NEW/bin/pip install yt-dlp"
+    "$VENV_NEW/bin/pip" install --quiet 'neonize>=0.3.17' 'protobuf>=6.32.1,<7' 2>/dev/null || \
         echo " >> [WARN] neonize fallo — WhatsApp no disponible."
-    "$VENV/bin/pip" install --quiet 'aiogram>=3.0' 2>/dev/null || \
+    "$VENV_NEW/bin/pip" install --quiet 'aiogram>=3.0' 2>/dev/null || \
         echo " >> [WARN] aiogram fallo — bot Telegram no disponible."
+
+    # Deps core instaladas con exito -- recien aqui se reemplaza el venv anterior.
+    rm -rf "$VENV"
+    mv "$VENV_NEW" "$VENV"
+    echo " >> [FRANKI] Venv promovido: $VENV"
 
     # --- EXTRAS OPCIONALES PESADOS (requieren deps de sistema — NO se auto-instalan) ---
     # Instala solo los grupos que necesites con:
