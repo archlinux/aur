@@ -40,6 +40,7 @@ optdepends=(
   'tcsh'
   'geant4-lend'
   'dawn'
+  'hdf5-geant4'
 )
 url="http://geant4.cern.ch/"
 arch=('x86_64')
@@ -119,6 +120,7 @@ setenv G4URRPTDATA /opt/Geant4/Libraries/G4URRPT1.1" > Geant4.csh
     -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
     -DGEANT4_USE_PYTHON=ON \
     -DGEANT4_USE_TBB=ON \
+    -DGEANT4_USE_HDF5=OFF \
     -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
     -DGEANT4_INSTALL_DATADIR=/opt/Geant4/Libraries \
     ../geant4-v${pkgver}
