@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=derfinderPlot
-_pkgver=1.42.0
+_pkgver=1.46.0
 pkgname=r-${_pkgname,,}
-pkgver=1.42.0
+pkgver=1.46.0
 pkgrel=1
 pkgdesc='Plotting functions for derfinder'
 arch=('any')
@@ -40,7 +40,7 @@ optdepends=(
   r-txdb.hsapiens.ucsc.hg19.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('41e60a5b95b516994acea14e31b03fc8011fcd838f08a596a9c1ac2465e5528b')
+sha256sums=('1497f957d9626402b003b14c0a175a5cb8ceff8749f31a84dfc5f966c5d3008e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
