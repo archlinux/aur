@@ -1,0 +1,14 @@
+pkgbase = snp-dists
+	pkgdesc = Pairwise SNP distance matrix from a FASTA multiple sequence alignment
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/tseemann/snp-dists
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	provides = snp-dists
+	conflicts = snp-dists
+	source = snp-dists-1.2.0.tar.gz::https://github.com/tseemann/snp-dists/archive/v1.2.0.tar.gz
+	sha256sums = a786ee22e9744b421561bfa4dbac9f3149abca05edd5d48797566c25feea9bdc
+
+pkgname = snp-dists
