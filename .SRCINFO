@@ -1,12 +1,12 @@
 pkgbase = home-assistant-pyscript
 	pkgdesc = Pyscript adds rich Python scripting to HASS
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/custom-components/pyscript
 	arch = any
 	license = Apache-2.0
 	depends = home-assistant
-	source = home-assistant-pyscript-2.0.1.tar.gz::https://github.com/custom-components/pyscript/archive/2.0.1.tar.gz
-	b2sums = 196bbb9f43856ed3dc63abad0b75daf600cb6202358e3ad8b8358ef05b9f82f84ffe9e3401db69e72ed305ed9cb4104ccadca03e426c236e0a03811b9f19868f
+	source = home-assistant-pyscript-2.1.0.tar.gz::https://github.com/custom-components/pyscript/archive/2.1.0.tar.gz
+	b2sums = 3603db95fc9ff9ff8f2dbf964fa843dd5b7893abeaf52c95b4c7d3237d9e8e056bbf0ee980bfb8297e01ae1a828e218b8633cfe7b2673671b6325c695db72769
 
 pkgname = home-assistant-pyscript
