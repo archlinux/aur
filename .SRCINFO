@@ -1,7 +1,7 @@
 pkgbase = incron-next
-	pkgdesc = Maintainable fork for incron package. MRs are welcome
+	pkgdesc = Maintainable fork for incron package
 	pkgver = 0.5.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dpvpro/incron-next
 	arch = x86_64
 	license = GPL-3.0-or-later

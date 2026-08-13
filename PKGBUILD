@@ -2,8 +2,8 @@
 
 pkgname=incron-next
 pkgver=0.5.17
-pkgrel=1
-pkgdesc="Maintainable fork for incron package. MRs are welcome"
+pkgrel=2
+pkgdesc="Maintainable fork for incron package"
 arch=('x86_64')
 url="https://github.com/dpvpro/incron-next"
 license=('GPL-3.0-or-later')
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
   cd "${srcdir}"/$pkgname
-  make CXXFLAGS+=" --std=c++14"
+  make CXXFLAGS+=" --std=c++17"
 }
 
 package() {
