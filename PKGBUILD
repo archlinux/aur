@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RITAN
-_pkgver=1.28.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
-pkgver=1.28.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc='Rapid Integration of Term Annotation and Network resources'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('f453bbc24aa3dfc1e13cd55e40176e5a59f2600cac8a891c6396f687dbdb7ccb')
+sha256sums=('4d98b3a9c450bffcf0f8bab06eba25ff914b46550d0529b636907412036993b8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

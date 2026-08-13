@@ -1,6 +1,6 @@
 pkgbase = r-ritan
 	pkgdesc = Rapid Integration of Term Annotation and Network resources
-	pkgver = 1.28.0
+	pkgver = 1.36.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/RITAN
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = r-ritan
 	depends = r-ensdb.hsapiens.v86
 	optdepends = r-bgeedb
 	optdepends = r-rmarkdown
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/RITAN_1.28.0.tar.gz
-	sha256sums = f453bbc24aa3dfc1e13cd55e40176e5a59f2600cac8a891c6396f687dbdb7ccb
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/RITAN_1.36.0.tar.gz
+	sha256sums = 4d98b3a9c450bffcf0f8bab06eba25ff914b46550d0529b636907412036993b8
 
 pkgname = r-ritan
