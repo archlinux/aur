@@ -1,0 +1,7 @@
+[Unit]
+Description=Restart piped-proxy.service.
+After=piped-proxy.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/systemctl restart piped-proxy.service
