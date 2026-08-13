@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ecoCopula
-_pkgver=1.0.2
+_pkgver=1.0.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -29,13 +29,12 @@ optdepends=(
   r-labdsv
   r-rcolorbrewer
   r-rmarkdown
-  r-testthat
   r-tidygraph
   r-tidyr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('575012c6205ca194826e775a9060abbb')
-b2sums=('5e35b831095a79e7471ddd754429a066639ce442824a9b3b92806dd878707d5bd78b3327c370700c1a8f711f1c7a8f8b7a0c1c41176c62dd8fbad21da2d590cd')
+md5sums=('9d421f9399464dd2ac34f3610b4152d0')
+b2sums=('92cecd63d8bf345a77fbf89f13c6c7a5e50187603680d6bdeffdfd12c1ad0b4657371c7bda9d7abab731108de8557d9735e3260ce69d0c8d743e6635812a0d5a')
 
 build() {
   mkdir build
