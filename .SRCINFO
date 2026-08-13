@@ -1,6 +1,6 @@
 pkgbase = r-diffhic
 	pkgdesc = Differential Analyis of Hi-C Data
-	pkgver = 1.40.0
+	pkgver = 1.44.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/diffHic
 	arch = x86_64
@@ -30,7 +30,7 @@ pkgbase = r-diffhic
 	optdepends = r-bsgenome.ecoli.ncbi.20080805
 	optdepends = r-matrix
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/diffHic_1.40.0.tar.gz
-	sha256sums = c688808cce4bf9c094d3d1914b95ab98477b71720d91dd1ff969f6c6d5a15679
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/diffHic_1.44.0.tar.gz
+	sha256sums = a276cf80181956187a1068b3801a96eae0497c69ae773441655434cdb7af5c91
 
 pkgname = r-diffhic
