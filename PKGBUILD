@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=IntEREst
-_pkgver=1.32.0
+_pkgver=1.36.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('e7bde0f67566db81b8b1dbe3571153a2')
-b2sums=('1eca13714f4809f89229e6bbcfb41a04dcf120cc9eecbcea77b0518cce3ad4ececad7db2636f544bc825f03c8a22b7be47dd5f6cf8d8f29bc8c9446564a37471')
+md5sums=('0482cd177de6dc3a787b277429fd1a43')
+b2sums=('30bdcab4c40f4678c7bd1204e2a97b49c7f5898a649424e56a43c1d4a623c33b3fcd87a81cf622b917ef9e88f4d97fe7e1910de0ed71993cb10cb363f5163a23')
 
 build() {
   mkdir build
