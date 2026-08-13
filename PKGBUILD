@@ -5,7 +5,7 @@ _pkgname=lnko
 pkgname=${_pkgname}-bin
 pkgdesc="Simple stow-like dotfile linker"
 
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 _pkgvername=v${pkgver}
 

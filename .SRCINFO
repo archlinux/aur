@@ -1,6 +1,6 @@
 pkgbase = lnko-bin
 	pkgdesc = Simple stow-like dotfile linker
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/pgagnidze/lnko
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = lnko-bin
 	license = GPL-3.0-or-later
 	provides = lnko
 	conflicts = lnko
-	source = LICENSE-0.2.3::https://raw.githubusercontent.com/pgagnidze/lnko/v0.2.3/LICENSE
-	source = README-0.2.3.md::https://raw.githubusercontent.com/pgagnidze/lnko/v0.2.3/README.md
+	source = LICENSE-0.2.4::https://raw.githubusercontent.com/pgagnidze/lnko/v0.2.4/LICENSE
+	source = README-0.2.4.md::https://raw.githubusercontent.com/pgagnidze/lnko/v0.2.4/README.md
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
 	sha256sums = 81fc5b93658aad890f4f24fd7e2690756b7f75669f719b45100e7e400b8d6551
-	source_x86_64 = lnko-x86_64-0.2.3::https://github.com/pgagnidze/lnko/releases/download/v0.2.3/lnko-linux_x86_64
+	source_x86_64 = lnko-x86_64-0.2.4::https://github.com/pgagnidze/lnko/releases/download/v0.2.4/lnko-linux_x86_64
 	sha256sums_x86_64 = dac4d176667b90adef3de6a773abd5090592b70f3903e5b16d60188a212b86c0
-	source_aarch64 = lnko-aarch64-0.2.3::https://github.com/pgagnidze/lnko/releases/download/v0.2.3/lnko-linux_arm64
+	source_aarch64 = lnko-aarch64-0.2.4::https://github.com/pgagnidze/lnko/releases/download/v0.2.4/lnko-linux_arm64
 	sha256sums_aarch64 = 49750a21f5af5f1445ff30ef27a71e560f3901cc09f57e1600e51aba96014657
 
 pkgname = lnko-bin
