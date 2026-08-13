@@ -14,7 +14,7 @@
 # Validate via:  paru -S dot-cli-git
 
 pkgname=dot-cli-git
-pkgver=0.2.518
+pkgver=0.2.519
 pkgrel=1
 pkgdesc='Declarative dotfiles CLI for macOS, Linux, WSL, and PowerShell (git head)'
 arch=('any')
@@ -31,7 +31,7 @@ makedepends=('git')
 provides=('dot' 'dotfiles')
 conflicts=('dot' 'dotfiles')
 source=("git+${url}.git")
-sha256sums=('f53d9178c9975c3aee371b6f3b88544cc97e699a86ff98caad885bb2a203f56b')
+sha256sums=('788df65ec2b8be35b52a9b04f9aeff04dfaf6e728c9b1108cb8903f9fbd12f68')
 
 pkgver() {
   cd "${srcdir}/dotfiles" || return 1
