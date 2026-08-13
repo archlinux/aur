@@ -1,7 +1,7 @@
 pkgbase = autoremesher-git
 	pkgdesc = Cross-platform automatic quad remeshing tool
-	pkgver = r9616134
-	pkgrel = 2
+	pkgver = r04dacd6
+	pkgrel = 1
 	url = https://github.com/huxingyi/autoremesher
 	arch = x86_64
 	license = MIT
