@@ -1,0 +1,5 @@
+[rainbowpath-bin]
+source = "github"
+github = "Soft/rainbowpath"
+use_latest_release = true
+prefix = "v"
