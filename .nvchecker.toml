@@ -1,0 +1,5 @@
+[python-numdifftools]
+source = "github"
+github = "pbrod/numdifftools"
+use_max_tag = "true"
+prefix = "v"
