@@ -1,6 +1,6 @@
 pkgbase = saber-git
 	pkgdesc = Saber Notes – A Flutter-based desktop note-taking app
-	pkgver = 1.35.0.r1.gg4af5d81a
+	pkgver = 1.35.1+1.r0.gg34c57e51
 	pkgrel = 1
 	url = https://github.com/saber-notes/saber
 	arch = x86_64
