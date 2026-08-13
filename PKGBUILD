@@ -2,7 +2,7 @@
 pkgname=python-gevent-eventemitter
 _name=${pkgname#python-}
 pkgver=2.1
-pkgrel=5
+pkgrel=6
 pkgdesc="EventEmitter using gevent"
 arch=('any')
 url="https://github.com/rossengeorgiev/gevent-eventemitter"
@@ -30,7 +30,7 @@ check() {
   cd "$_name-$pkgver"
   python -m venv --clear --without-pip --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -P -m pytest
+  test-env/bin/python -I -m pytest
 }
 
 package() {
