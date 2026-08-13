@@ -1,0 +1,27 @@
+pkgbase = omp-release-bin
+	pkgdesc = oh-my-pi (omp): AI coding agent for the terminal -- hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (release binary)
+	pkgver = 17.2.12
+	pkgrel = 1
+	url = https://github.com/can1357/oh-my-pi
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	optdepends = bash-completion: bash tab-completion for omp
+	optdepends = chromium: browser tool (headless web automation)
+	optdepends = python: persistent Python eval cells
+	provides = oh-my-pi
+	conflicts = oh-my-pi
+	conflicts = oh-my-pi-bin
+	conflicts = omp
+	conflicts = omp-bin
+	options = !strip
+	options = !debug
+	source = LICENSE-17.2.12::https://raw.githubusercontent.com/can1357/oh-my-pi/v17.2.12/LICENSE
+	sha256sums = 545636e19386d3d4e0ae6d77354527499999c3ebfbca61b9fa5aa4ead7c0b308
+	source_x86_64 = omp-17.2.12-linux-x64::https://github.com/can1357/oh-my-pi/releases/download/v17.2.12/omp-linux-x64
+	sha256sums_x86_64 = 6c75331bf09d5a9e9433bd592b3ee993d751a15d5b7450c1a334cc0684996f30
+	source_aarch64 = omp-17.2.12-linux-arm64::https://github.com/can1357/oh-my-pi/releases/download/v17.2.12/omp-linux-arm64
+	sha256sums_aarch64 = f176edf8174db252abe1aa6e84df284e1b83b8dd7ef34ac7faf7884a5e172a4c
+
+pkgname = omp-release-bin
