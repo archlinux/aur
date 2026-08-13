@@ -1,7 +1,7 @@
 pkgbase = python-wn
 	pkgdesc = Wordnet interface library
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wn.readthedocs.io
 	arch = any
 	license = MIT

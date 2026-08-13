@@ -5,7 +5,7 @@
 pkgname=python-wn
 _name=${pkgname#python-}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wordnet interface library"
 arch=('any')
 url="https://wn.readthedocs.io"
@@ -34,7 +34,9 @@ build() {
 
 check() {
   cd "$_name-$pkgver"
-  PYTHONPATH=. pytest
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -I -m pytest
 }
 
 package() {
