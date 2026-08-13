@@ -1,11 +1,11 @@
 # Maintainer: submit as i2pchat-tui-bin on AUR (see packaging/aur/README.md)
 # Checksums: ./packaging/refresh-checksums.sh vX.Y.Z or sha256sum local zips after release.
 pkgname=i2pchat-tui-bin
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="I2PChat Textual TUI only (official Linux TUI zip, binary)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/MetanoicArmor/I2PChat"
+url="https://github.com/MetanoicArmor/I2PChat-ng"
 license=('AGPL-3.0-or-later')
 depends=('hicolor-icon-theme' 'zlib')
 conflicts=()
@@ -16,9 +16,9 @@ source_x86_64=("I2PChat-linux-x86_64-tui-v${pkgver}.zip::${url}/releases/downloa
                "${_icon}")
 source_aarch64=("I2PChat-linux-aarch64-tui-v${pkgver}.zip::${url}/releases/download/v${pkgver}/I2PChat-linux-aarch64-tui-v${pkgver}.zip"
                 "${_icon}")
-sha256sums_x86_64=('50ce23e8064bd59671784b7da82401193a26fc487df663b41999198d02388f82'
+sha256sums_x86_64=('149562634aa23ed75aea0fb511ecf53c8457309de923a258bffe84dff94fab14'
                    '2f27e90c85949ec4eabeaac6d12bca1449f679dbb10e4e9f07925e33b7d008b8')
-sha256sums_aarch64=('21b8637014f0a2e05e03953f7f08d341b72697e536e771d1f5dca546ecbf8f4a'
+sha256sums_aarch64=('d332c72bae950a3d753be77a8a33c33da0209efeb8a043ce13a6eaeb47ef62e7'
                     '2f27e90c85949ec4eabeaac6d12bca1449f679dbb10e4e9f07925e33b7d008b8')
 
 package() {
