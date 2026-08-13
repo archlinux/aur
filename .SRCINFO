@@ -1,6 +1,6 @@
 pkgbase = stremio-server-go-bin
 	pkgdesc = IPv6-capable, pure-Go drop-in for Stremio's streaming server with HLS transcoding and DLNA casting
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/M0Rf30/stremio-server-go
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = stremio-server-go-bin
 	source = stremio-server.env
 	sha256sums = db36d59eae51f133ef0eaf3100667172564ae69e377aeab897e625830be3bc84
 	sha256sums = 64e0d5fe57f94c7a80233c78b4c887fa429b5aa18cd91c2f5f51d91723120e55
-	source_x86_64 = stremio-server-go-0.11.0-x86_64.tar.gz::https://github.com/M0Rf30/stremio-server-go/releases/download/v0.11.0/stremio-server_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 211f22e642486f235793caeaf8375aa9837342dc74101fc6b31de9876de55a1b
-	source_aarch64 = stremio-server-go-0.11.0-aarch64.tar.gz::https://github.com/M0Rf30/stremio-server-go/releases/download/v0.11.0/stremio-server_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 6e2c66c93807b2308707d7e92f4d6302bcab0022d9ba9ad09c52fdbc3872cacf
-	source_armv7h = stremio-server-go-0.11.0-armv7h.tar.gz::https://github.com/M0Rf30/stremio-server-go/releases/download/v0.11.0/stremio-server_Linux_armv7.tar.gz
-	sha256sums_armv7h = 5771ab3656cb695c5d45331c75ec061d6ecc78950a8297459d57b4768d5125eb
+	source_x86_64 = stremio-server-go-0.12.0-x86_64.tar.gz::https://github.com/M0Rf30/stremio-server-go/releases/download/v0.12.0/stremio-server_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 12ba364e1ee5ff53709a6c9ea324c94f339cf88eef50a47d08658572c84030c2
+	source_aarch64 = stremio-server-go-0.12.0-aarch64.tar.gz::https://github.com/M0Rf30/stremio-server-go/releases/download/v0.12.0/stremio-server_Linux_arm64.tar.gz
+	sha256sums_aarch64 = deb245a9ce1dd3e1090738dc86ae3bbded72acd86170ccaa76dc62d0b623a7d5
+	source_armv7h = stremio-server-go-0.12.0-armv7h.tar.gz::https://github.com/M0Rf30/stremio-server-go/releases/download/v0.12.0/stremio-server_Linux_armv7.tar.gz
+	sha256sums_armv7h = 20bf3f9e7f33885312629eb4436ad3e4e935c4b5393bf36fb73c3731d9437676
 
 pkgname = stremio-server-go-bin
