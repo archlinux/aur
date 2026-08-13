@@ -17,7 +17,7 @@ depends=(
   'python-watchdog'
   'niri'
 )
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dybdeskarphet/niri-companion/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('c54e5f9ff460763a0a3e3cb04654e18b4576abfa8aec40d9451c0f24e10c11fc')
 
