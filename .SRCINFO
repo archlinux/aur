@@ -1,16 +1,16 @@
 pkgbase = vibe_player
 	pkgdesc = A music player for the Lyrion music server
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/GeoffClements/lms-player
 	arch = x86_64
 	arch = aarch64
-	license = MIT
+	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = clang
 	depends = libdbus
 	depends = libpipewire
-	source = vibe_player-0.8.0.tar.gz::https://github.com/GeoffClements/lms-player/archive/refs/tags/vibe-v0.8.0.tar.gz
-	sha256sums = 4151dbe6fc9358c10dd930e0138b122a4d6b08bf34bce712b425c35d3ec2a895
+	source = vibe_player-0.9.0.tar.gz::https://github.com/GeoffClements/lms-player/archive/refs/tags/vibe-v0.9.0.tar.gz
+	sha256sums = a60485440e097bc936a383c09318009df13665ec994ff58c5a582705d2df1880
 
 pkgname = vibe_player
