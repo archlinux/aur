@@ -3,7 +3,7 @@
 
 pkgname=python-habanero
 pkgver=2.9.2
-pkgrel=1
+pkgrel=2
 _name=${pkgname#python-}
 _name="${_name//-/_}"
 _src_folder="${_name}-${pkgver}"
