@@ -1,0 +1,17 @@
+pkgbase = opencode-personal-knowledge-bin
+	pkgdesc = Personal knowledge MCP server with vector database for the Opencode ecosystem (prebuilt npm distribution)
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://github.com/NocturnLabs/opencode-personal-knowledge
+	arch = x86_64
+	license = MIT
+	depends = bun
+	provides = opencode-personal-knowledge
+	conflicts = opencode-personal-knowledge
+	options = !strip
+	source = opencode-personal-knowledge-1.0.10.tgz::https://registry.npmjs.org/opencode-personal-knowledge/-/opencode-personal-knowledge-1.0.10.tgz
+	source = bun.lock
+	sha256sums = 4e36144c6093f1c1f94befa73567601a8f6b81fe6045681260069a93686b0c15
+	sha256sums = 17911d948af6523dcd238da1fe3cdd23e604678f17749538fab72254a7d08297
+
+pkgname = opencode-personal-knowledge-bin
