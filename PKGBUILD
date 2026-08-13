@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vlsm-interfacing-git
 _pkgname='VLSM INTERFACING'
-pkgver=4.1.7.r0.g0b4b95a
-_electronversion=41
+pkgver=4.1.15.r2.g1ae57ac
+_electronversion=43
 _nodeversion=22
 pkgrel=1
 pkgdesc="Viral Load Sample Management - Machine Interfacing.(Use system-wide electron)"
