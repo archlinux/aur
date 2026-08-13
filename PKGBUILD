@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=mumosa
-_pkgver=1.16.0
+_pkgver=1.20.0
 pkgname=r-${_pkgname,,}
-pkgver=1.16.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='Multi-Modal Single-Cell Analysis Methods'
 arch=('any')
@@ -41,7 +41,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('1d3f9eb1a7f5c04187288e43b85bc6736fd291806b96cf3e0cff723a8c718d69')
+sha256sums=('1a4b3bc12f42c509d27520bc02e18f742870c2250ac5704e70e4a3c472f90757')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
