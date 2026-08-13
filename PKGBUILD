@@ -5,7 +5,7 @@
 
 _pkgname=libxfce4ui
 pkgname=${_pkgname}-devel
-pkgver=4.21.8
+pkgver=4.21.9
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ makedepends=('gtk-doc' 'gobject-introspection' 'vala' 'xfce4-dev-tools' 'meson')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('e6caafc6fe5e07765e22dd849a19b21e5aa44f51c66fa1d7db74b94330bd457b')
+sha256sums=('d2072e0c3c27e39e1c38050c660f34806e34e8b1abba660684db586f8c4f7142')
 
 build() {
   local meson_options=(
