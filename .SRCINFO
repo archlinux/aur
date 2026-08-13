@@ -1,7 +1,7 @@
 pkgbase = fuse-emulator-utils
 	pkgdesc = ZX Spectrum emulator utils
 	pkgver = 1.4.6
-	pkgrel = 7
+	pkgrel = 8
 	url = http://fuse-emulator.sourceforge.net/fuse.php
 	arch = i686
 	arch = x86_64
