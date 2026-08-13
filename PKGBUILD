@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_gitname}
 pkgdesc="A fast, keyboard-driven task manager for the terminal, inspired by Taskwarrior but simpler."
 
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -23,7 +23,7 @@ makedepends=('go')
 depends=('glibc')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_gitauthor}/${pkgname}/archive/${_gitversion}.tar.gz")
-sha256sums=('5cb5bd50ae6ea4b13c73e78e0814397c2638f3c5c8e2154fc87b0a358d190806')
+sha256sums=('7445b7cabd9a1c152c741d780f1244a1e85e17ad13d808bc0435d8b1a4f40c4d')
 
 
 prepare() {
