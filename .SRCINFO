@@ -1,0 +1,29 @@
+pkgbase = confsync
+	pkgdesc = Backs up and restores Linux configuration files in a git repository, with a tray agent
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alikaya/confsync
+	install = confsync.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	depends = zlib-ng-compat
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = wayland
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxi
+	options = !lto
+	options = !debug
+	source = git+https://github.com/alikaya/confsync.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = confsync

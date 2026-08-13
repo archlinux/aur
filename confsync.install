@@ -1,0 +1,57 @@
+# pacman install/upgrade/removal messages.
+#
+# The agent ships "vendor enabled": the enablement symlink lives in
+# /usr/lib/systemd/user/graphical-session.target.wants/, so the user does not
+# need to run `systemctl --user enable`. pacman runs as root and cannot reach
+# the user's systemd instance, so starting it now is left to the user.
+
+post_install() {
+    cat <<'MSG'
+
+  confsync installed.
+
+    App   : "confsync" in your application menu (or run: confsync)
+    Agent : tray icon; starts automatically with the graphical session
+
+  To start the agent now, without re-opening your session:
+
+      systemctl --user start confsync-agent.service
+
+  If you do not want the agent (use "mask", not "disable", because the
+  enablement comes from the package):
+
+      systemctl --user mask confsync-agent.service
+
+MSG
+}
+
+post_upgrade() {
+    cat <<'MSG'
+
+  confsync upgraded. To move the running agent to the new version:
+
+      systemctl --user restart confsync-agent.service
+
+MSG
+}
+
+pre_remove() {
+    cat <<'MSG'
+
+  To stop the agent (the unit file goes away with the package):
+
+      systemctl --user stop confsync-agent.service
+
+MSG
+}
+
+post_remove() {
+    cat <<'MSG'
+
+  Your settings and backup repository were left in place:
+
+      ~/.config/confsync/settings.toml
+      ~/.local/share/confsync/
+
+MSG
+}
