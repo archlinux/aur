@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-arch-update
 	pkgdesc = Convenient indicator for Arch Linux updates in GNOME Shell.
 	pkgver = 66
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/RaphaelRochet/arch-update
 	arch = any
 	license = GPL-3.0-or-later
