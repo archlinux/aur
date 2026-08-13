@@ -2,17 +2,22 @@
 
 pkgname=mangobar-git
 pkgver=r2.667745d
-pkgrel=1.2
+pkgrel=1.3
 pkgdesc="A simple bar for mango wayland compositor"
 url="https://github.com/mangowm/mangobar"
 arch=("x86_64")
 license=("GPL-3.0")
 depends=(
-  fcft
-  pixman
+  alsa-lib
+  cairo
   cjson
+  fcft
+  gdk-pixbuf2
+  libpulse
+  pango
+  pixman
+  systemd-libs
   wayland
-  tllist
 )
 
 makedepends=(
@@ -47,4 +52,3 @@ build() {
 package() {
   DESTDIR="$pkgdir/" ninja -C build install
 }
-
