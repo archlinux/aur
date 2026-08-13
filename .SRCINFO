@@ -1,6 +1,6 @@
 pkgbase = python-yappi
 	pkgdesc = A tracing profiler that is multithreading, asyncio and gevent aware.
-	pkgver = 1.7.6
+	pkgver = 1.7.7
 	pkgrel = 1
 	url = https://github.com/sumerc/yappi
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = python-yappi
 	makedepends = python-setuptools
 	depends = python
 	optdepends = python-greenlet
-	source = python-yappi-1.7.6.tar.gz::https://github.com/sumerc/yappi/archive/refs/tags/v1.7.6.tar.gz
+	source = python-yappi-1.7.7.tar.gz::https://github.com/sumerc/yappi/archive/refs/tags/v1.7.7.tar.gz
 	source = pyproject.toml.add-console-script.patch
-	sha256sums = 3f9c586cf8f0293aa1574a2b58e69fe5c100969c04b6d30f5e76fed4cc0d441d
+	sha256sums = 84df70c7de26861ed624e7d321ec2d5ac26dae04d4f75ecc3e76b5c85248336e
 	sha256sums = afd256f3d0bf9651739e26fb5003572beea9b0029cd4d1cadf5cd0523440ae46
 
 pkgname = python-yappi
