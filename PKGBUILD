@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ccTensor
-_pkgver=1.0.2
+_pkgver=1.0.3
 pkgname=r-${_pkgname,,}
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
 pkgdesc='CUR/CX Tensor Decomposition'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cae2d0200507b892f2637338f98677d66a66828cc81d7e3f9b5d043b4bc72ce4')
+sha256sums=('76617f8118b002b56265da397b50161a50f2703539c85de6020f30ad76c162fd')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
