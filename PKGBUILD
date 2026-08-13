@@ -13,7 +13,7 @@ makedepends=('cmake' 'ninja')
 provides=('barecode')
 conflicts=('barecode-git')
 source=("$pkgname-$pkgver.tar.gz::https://git.projekt-hirnfrei.de/diabolus/BareCode/archive/v$pkgver.tar.gz")
-sha256sums=('04b11561920101b0444e5427e50658886d1fc62018426586fe512e405f2dc0e6')  # Nach erstem Download ersetzen: sha256sum barecode-1.1.0.tar.gz
+sha256sums=('8f19fe3ec7a037c91361f4281ee239fa9d56264f2b591651a8fbd16da26fef6a')  # Nach erstem Download ersetzen: sha256sum barecode-1.1.0.tar.gz
 
 build() {
     cd "barecode"
