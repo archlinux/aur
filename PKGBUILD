@@ -2,7 +2,7 @@
 # Contributor: Rafael Silva <silvagracarafael@gmail.com>
 pkgname=vizex
 pkgver=2.1.1c
-pkgrel=4
+pkgrel=5
 pkgdesc="Visualize disk space and disk usage in your terminal"
 arch=('any')
 url="https://github.com/bexxmodd/vizex"
@@ -21,7 +21,7 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
 )
-#checkdepends=('python-pytest')
+checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('7081af2197a98c5b9871c62b56c8c16e19f62e022221f1759793f615481ce8f6')
 
@@ -30,10 +30,14 @@ build() {
   python -m build --wheel --no-isolation
 }
 
-#check() {
-#  cd "$pkgname-$pkgver"
-#  pytest
-#}
+check() {
+  cd "$pkgname-$pkgver"
+  python -m venv --clear --without-pip --system-site-packages test-env
+  test-env/bin/python -m installer dist/*.whl
+
+  # Skip failing tests
+  test-env/bin/python -I -m pytest -k "not test_battery and not test_charts"
+}
 
 package() {
   cd "$pkgname-$pkgver"

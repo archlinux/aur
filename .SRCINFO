@@ -1,10 +1,11 @@
 pkgbase = vizex
 	pkgdesc = Visualize disk space and disk usage in your terminal
 	pkgver = 2.1.1c
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/bexxmodd/vizex
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
