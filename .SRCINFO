@@ -1,12 +1,11 @@
 pkgbase = specify-cli
 	pkgdesc = Bootstrap and manage Spec Kit projects
 	pkgver = 0.16.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/github/spec-kit
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-hatchling
@@ -40,10 +39,9 @@ pkgbase = specify-cli
 	optdepends = tabnine: Supported Agent
 	optdepends = visual-studio-code-bin: Visual Studio Code
 	optdepends = windsurf: Supported Agent, IDE-based
-	conflicts = spec-kit
 	conflicts = specify-cli-bin
 	options = !debug
-	source = git+https://github.com/github/spec-kit.git#tag=v0.16.2
-	b2sums = 5f1ef732dd24b3edf039db8619285afb6925783a08ae597810153175fa2b9086bf5494b191c48b37bc69f7b29c8027f4b45fbf8eb04526f6d8f5f76407d94825
+	source = https://github.com/github/spec-kit/archive/refs/tags/v0.16.2.tar.gz
+	b2sums = aa8f7066d504214cf76e989c67e024def4e9090d867f0a262994d99db3e05525cbfb534a1fd81d284eb4213710d39577a1b35be11e37acd5f3f82e25423a48e0
 
 pkgname = specify-cli

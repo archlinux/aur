@@ -2,7 +2,7 @@
 
 pkgname=specify-cli
 pkgver=0.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Bootstrap and manage Spec Kit projects'
 arch=('x86_64' 'aarch64')
 url='https://github.com/github/spec-kit'
@@ -20,7 +20,6 @@ depends=(
   'python-typer'
 )
 makedepends=(
-  'git'
   'python-build'
   'python-installer'
   'python-hatchling'
@@ -47,21 +46,18 @@ optdepends=(
   'visual-studio-code-bin: Visual Studio Code'
   'windsurf: Supported Agent, IDE-based'
 )
-conflicts=(
-  'spec-kit'
-  'specify-cli-bin'
-)
+conflicts=('specify-cli-bin')
 options=(!debug)
-source=("git+$url.git#tag=v$pkgver")
-b2sums=('5f1ef732dd24b3edf039db8619285afb6925783a08ae597810153175fa2b9086bf5494b191c48b37bc69f7b29c8027f4b45fbf8eb04526f6d8f5f76407d94825')
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('aa8f7066d504214cf76e989c67e024def4e9090d867f0a262994d99db3e05525cbfb534a1fd81d284eb4213710d39577a1b35be11e37acd5f3f82e25423a48e0')
 
 build() {
-  cd spec-kit
+  cd "spec-kit-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd spec-kit
+  cd "spec-kit-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 -t "$pkgdir/usr/share/licenses/specify-cli/" LICENSE
   install -Dm644 -t "$pkgdir/usr/share/doc/specify-cli/" {AGENTS.md,CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,DEVELOPMENT.md,README.md,README.zh-CN.md,SECURITY.md,SUPPORT.md,spec-driven.md}
