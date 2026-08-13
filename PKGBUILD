@@ -6,10 +6,8 @@ pkgdesc="A local-first outliner and daily-journal note app (Logseq-style)."
 arch=('x86_64')
 url="https://github.com/packetThrower/zorite"
 license=('GPL-3.0-or-later')
-# makepkg's global `lto` option injects -flto into CFLAGS/LDFLAGS, which makes
-# the C static libs (tree-sitter, sqlcipher) LTO objects that fail to resolve
-# symbols when the Rust binary links (rust-lld). Opt out here; combined with
-# profile.release.lto=false the graph links cleanly.
+# !lto: makepkg 的 -flto 使 C 静态库(tree-sitter/sqlcipher)在 rust-lld
+# 链接时符号解析失败,故关闭;上游 release 参数(codegen-units=1 等)不覆盖。
 options=('!lto')
 # gpui 的 Wayland + X11 + font-kit 运行时库。xcb 扩展
 # (randr/render/shape/xfixes/xkb) 都在 libxcb 包里；
@@ -25,9 +23,15 @@ sha256sums=('85453acf81c41060352fdc51876b55fb011dacff05b12f86bdf5771bf7c1807a')
 
 build() {
   cd "$srcdir/zorite-$pkgver"
+  # sccache 已安装时透明启用,加速重复构建;未安装则无副作用
+  if command -v sccache >/dev/null 2>&1; then
+    export RUSTC_WRAPPER=sccache
+  fi
   # 重映射构建路径,避免二进制内嵌 $srcdir/cargo 缓存路径。openssl-src 的
   # ENGINESDIR/MODULESDIR 常量残留属 rusqlite vendored-openssl 特性所致,仅元数据。
   export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/usr/src/zorite --remap-path-prefix=${CARGO_HOME:-$HOME/.cargo}=/usr/src/zorite-cargo"
+  # 仅覆盖 lto(原因见 options=('!lto'));上游其余 release 参数
+  # (codegen-units=1 等)保持原样,不覆盖。
   cargo build --release --locked --config 'profile.release.lto=false'
 }
 
