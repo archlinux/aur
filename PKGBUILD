@@ -13,7 +13,7 @@ license=('GPL-3.0-or-later')
 depends=('fakeroot' 'gnome-shell' 'pacman-contrib')
 conflicts=('gnome-shell-extensions-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ad9825b76636566692ba7d0301aa16b9fe261e541bfa25c2d749c68366d19718')
+sha256sums=('ac807b6b9ac772d691d8133383f301dd62bceb98b7db6a9fe4280f42a6c6402a')
 
 
 package() {
