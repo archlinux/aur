@@ -28,7 +28,7 @@ pkgbase = linux-lqx
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha512sums = d4d9c45261813559341c67ea53d4a47f5a04d1ad15e3c2b8222a09b5483380d2bfd31b8c675e144db2eb91f560d6cb28f66187a5ea4f24f6dfb82a4ad48064cc
 	sha512sums = SKIP
-	sha512sums = c42c878fd07fb3ea761da38c9130aaa40863c13671eb9786a8b6ef9dce5614c01e1deba41681c4ab8ddffe9ae38d2f1535454917f446fa04ef460f8f4a88c1c8
+	sha512sums = 0579e38eddba1c188dcddd937b0016f9358c9f04814329989e00fafc48991f20ebcb75afba2e20b0c81b50c24dfc1e99d37dab2d26e92abe6b4d733988ff269f
 
 pkgname = linux-lqx
 	pkgdesc = The Linux Liquorix kernel and modules
