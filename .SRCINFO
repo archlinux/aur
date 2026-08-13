@@ -1,0 +1,21 @@
+pkgbase = openscad-lsp-bin
+	pkgdesc = A LSP (Language Server Protocol) server for OpenSCAD.
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/Leathong/openscad-LSP
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	optdepends = openscad: OpenSCAD compiler
+	provides = openscad-lsp
+	conflicts = openscad-lsp
+	options = strip
+	options = !libtool
+	options = !staticlibs
+	options = !emptydirs
+	source_x86_64 = openscad-lsp_x86_64_2.0.1.tar.xz::https://github.com/Leathong/openscad-LSP/releases/download/v2.0.1/openscad-lsp-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = e51b7f84180d93a65387d3bbd00bb47ea1953af27d637c3698800f1b671005ea
+	source_aarch64 = openscad-lsp_aarch64_2.0.1.tar.xz::https://github.com/Leathong/openscad-LSP/releases/download/v2.0.1/openscad-lsp-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 6e5f572bbbd193a5a1b7f538b4fea0ef5f082a9cafb3f8e978dd86905e3bfb9d
+
+pkgname = openscad-lsp-bin
