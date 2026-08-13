@@ -2,8 +2,8 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=FMPy
 pkgname=python-${_base,,}
-_gitcommit=1a1cc37d15ad866cf85c6116fc7c520c11702521
-pkgver=0.3.30
+_gitcommit=5823133022409b08e13d3164b06374a4e5e56af8
+pkgver=0.3.31
 pkgrel=1
 pkgdesc="Simulate Functional Mockup Units (FMUs) in Python"
 url="https://github.com/CATIA-Systems/${_base}"
@@ -21,7 +21,7 @@ optdepends=('python-matplotlib: for plot results'
 source=(git+${url}.git#commit=${_gitcommit}
   git+https://github.com/ludocode/mpack.git
   git+https://github.com/modelica/Reference-FMUs.git)
-sha512sums=('f0d3fba70da87ce8b6beff670a9d2d9f8e3f6844b7849fc06b95d1096d07c79fb9a4b306b8112adaeb0913292b0577d05f707146c44475301e63e004d4a6b2fd'
+sha512sums=('47720d4df46bf0cd66ad68db31a0c38a884b2a242508a59a2c012539f6c19a96e258e6e5a4f7fefb6364355948c6abbf2b4b14e076879e7a69e72f2214171569'
             'SKIP'
             'SKIP')
 
