@@ -1,0 +1,3 @@
+[python-ollama-flow]
+source = "pypi"
+pypi = "ollama-flow"
