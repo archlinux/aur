@@ -1,14 +1,15 @@
 # Maintainer: craftycorvid <me@ivanff.com>
 #
 # AUR VCS package: builds Choir from the latest commit on the public repo's main branch.
+# (For the latest tagged release instead, see the choir-overlay package.)
 pkgname=choir-overlay-git
-pkgver=r65.g25f404f
+pkgver=r89.gd80841f
 pkgrel=1
-pkgdesc="Wayland Discord voice overlay for Vulkan games (not affiliated with Discord Inc.)"
+pkgdesc="Discord voice overlay for Vulkan + OpenGL games (not affiliated with Discord Inc.)"
 arch=('x86_64')
 url="https://github.com/craftycorvid/choir-overlay"
 license=('MIT')
-depends=('qt6-base' 'vulkan-icd-loader')
+depends=('qt6-base' 'qt6-svg' 'vulkan-icd-loader' 'libglvnd')
 makedepends=('git' 'meson' 'vulkan-headers')
 provides=('choir-overlay')
 conflicts=('choir-overlay')
