@@ -1,8 +1,8 @@
 # Maintainer: Thorsten Foltz <thorsten.foltz@live.com>
 pkgname=octa
-pkgver=0.16.1
+pkgver=0.17.0
 pkgrel=1
-pkgdesc="Multi-format data viewer/editor supporting parquet, csv, json, avro, xlsx and more"
+pkgdesc="Viewer, editor, CLI and MCP server for tabular data: 30+ formats, SQL, databases, cloud"
 arch=('x86_64')
 url="https://github.com/thorstenfoltz/octa"
 license=('MIT')
@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo' 'clang' 'cmake' 'nasm' 'pkgconf' 'asciidoctor')
 conflicts=('octa-bin')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('267d0e56017b403a896c60ab3ee7c070a88aef56a81f1e3ccdf1673d705d46c8')
+sha256sums=('dd386d6ba89e005a7e7cbf8095afcce3c0195e392a1d66a94766586cfcf1ef2c')
 
 prepare() {
     cd "$pkgname-$pkgver"
