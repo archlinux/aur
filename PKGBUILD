@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=spaSim
-_pkgver=1.10.0
+_pkgver=1.14.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -31,8 +31,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('eb8d64b8e246faafd96e8e2669893284')
-b2sums=('9ccb4c298acbfc1c8dfc0272f7f4c62823545f6baaeef96ab73e3256f43c5f2faeda8e0b23af6cb78993168196cdfa44a52e9c98bd5afe747af36fecf04be8d6')
+md5sums=('dc64074112258e3bba9e42e56f091463')
+b2sums=('572901cf50700941914aca5a6f4dc3294a7a955c55a9e5d33d99eac541d06a928462054d78e2dd664d84de23a8f1f09eb51c8fec98e8c1815ca94477e828fba2')
 
 build() {
   mkdir build
