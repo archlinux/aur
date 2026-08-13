@@ -1,6 +1,6 @@
 pkgbase = r-circrnaprofiler
 	pkgdesc = circRNAprofiler: An R-Based Computational Framework for the Downstream Analysis of Circular RNAs
-	pkgver = 1.20.0
+	pkgver = 1.26.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/circRNAprofiler
 	arch = any
@@ -41,7 +41,7 @@ pkgbase = r-circrnaprofiler
 	optdepends = r-roxygen2
 	optdepends = r-testthat
 	optdepends = r-venndiagram
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/circRNAprofiler_1.20.0.tar.gz
-	sha256sums = cb94795e70b97f9d4d4d4b3c747cb7c4f602f2f50eeb3095fa6d25f82bd05f7b
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/circRNAprofiler_1.26.0.tar.gz
+	sha256sums = d510b837d2564b7a079c0cfb7be7d7d5534833640030fee1480624bdf9535d4c
 
 pkgname = r-circrnaprofiler

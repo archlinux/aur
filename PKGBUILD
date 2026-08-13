@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=circRNAprofiler
-_pkgver=1.20.0
+_pkgver=1.26.0
 pkgname=r-${_pkgname,,}
-pkgver=1.20.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc='circRNAprofiler: An R-Based Computational Framework for the Downstream Analysis of Circular RNAs'
 arch=('any')
@@ -50,7 +50,7 @@ optdepends=(
   r-venndiagram
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cb94795e70b97f9d4d4d4b3c747cb7c4f602f2f50eeb3095fa6d25f82bd05f7b')
+sha256sums=('d510b837d2564b7a079c0cfb7be7d7d5534833640030fee1480624bdf9535d4c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
