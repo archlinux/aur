@@ -1,6 +1,6 @@
 pkgbase = desktop-plus
 	pkgdesc = GitHub Desktop fork with extra features and improvements.
-	pkgver = 3.6.4.3
+	pkgver = 3.6.4.4
 	pkgrel = 1
 	url = https://github.com/desktop-plus/desktop-plus
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = desktop-plus
 	makedepends = xorg-server-xvfb
 	makedepends = yarn
 	depends = curl
-	depends = libcurl-gnutls
 	depends = git
 	depends = gtk3
 	depends = libsecret
@@ -26,7 +25,7 @@ pkgbase = desktop-plus
 	optdepends = hub: CLI interface for GitHub
 	provides = desktop-plus
 	conflicts = desktop-plus
-	source = desktop-plus::git+https://github.com/desktop-plus/desktop-plus.git#tag=v3.6.4.3
+	source = desktop-plus::git+https://github.com/desktop-plus/desktop-plus.git#tag=v3.6.4.4
 	source = git+https://github.com/github/gemoji.git
 	source = git+https://github.com/github/gitignore.git
 	source = git+https://github.com/github/choosealicense.com.git
