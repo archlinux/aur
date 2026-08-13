@@ -1,6 +1,6 @@
 pkgbase = dalfox
 	pkgdesc = Powerful open-source XSS scanner and utility focused on automation
-	pkgver = 3.1.2
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/hahwul/dalfox
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dalfox
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = dalfox-3.1.2.tar.gz::https://github.com/hahwul/dalfox/archive/refs/tags/v3.1.2.tar.gz
+	source = dalfox-3.2.1.tar.gz::https://github.com/hahwul/dalfox/archive/refs/tags/v3.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = dalfox
