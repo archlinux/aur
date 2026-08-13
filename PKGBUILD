@@ -9,8 +9,8 @@
 #   * claudeep     : launcher for DeepSeek's Anthropic-compatible API
 #
 pkgname=clodex
-pkgver=r9.76bae79
-pkgrel=2
+pkgver=r17.832d88e
+pkgrel=1
 pkgdesc="Claude Code launchers for Codex subscriptions and the DeepSeek API"
 arch=('x86_64')
 url="https://github.com/Shiro836/clodex"
