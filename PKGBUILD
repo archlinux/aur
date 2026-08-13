@@ -1,11 +1,11 @@
 # Maintainer: Kreuder <mk@singular.de>
 pkgname=stenmark
-pkgver=0.5.1
+pkgver=0.7.1
 pkgrel=1
-pkgdesc='A lightweight GTK4 Markdown organizer and editor'
+pkgdesc='Your markdown librarian. A GTK4 Markdown reader, organizer and editor'
 arch=('any')
 url='https://github.com/mkay/stenmark'
-license=('MIT')
+license=('GPL-3.0-only')
 depends=(
   'python'
   'python-gobject'
@@ -20,9 +20,10 @@ conflicts=('marklite')
 replaces=('marklite')
 makedepends=(
   'meson'
+  'gettext'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mkay/stenmark/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3034cc3422ed7ff280d197abc432bd562afb22c3e96c8f4bbd41946f42aca75e')
+sha256sums=('dcd44cb1ce82cf743ee834962547feaeb301f4a7906a6be38fcbf7346f0d243f')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
@@ -32,4 +33,5 @@ build() {
 package() {
   meson install -C build --destdir "$pkgdir"
   install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgname-$pkgver/COPYRIGHT" "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
 }
