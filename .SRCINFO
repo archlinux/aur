@@ -1,6 +1,6 @@
 pkgbase = python-micropie
 	pkgdesc = An ultra micro ASGI web framework
-	pkgver = 0.28
+	pkgver = 0.32
 	pkgrel = 1
 	url = https://patx.github.io/micropie/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-micropie
 	depends = python-jinja
 	depends = python-orjson
 	depends = python-python-multipart
-	source = git+https://github.com/patx/micropie.git#tag=v0.28
-	sha256sums = 9206e936dc8cca9bbf11301285548d602ef22a39e95618f537b3b9d1ea923beb
+	source = git+https://github.com/patx/micropie.git#tag=v0.32
+	sha256sums = 16ddafa15a6a19364212e33a1e6fa4a0181f73d0f7d3dc444b07ce854333cd13
 
 pkgname = python-micropie
