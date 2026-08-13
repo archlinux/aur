@@ -2,7 +2,7 @@
 
 _pkgauthor=adrelanos
 pkgname=tor-ctrl
-pkgver=5.7
+pkgver=7.2
 pkgrel=1
 pkgdesc="Tor control port command line tool"
 arch=('x86_64')
@@ -12,20 +12,9 @@ license=('GPL-3.0-or-later')
 makedepends=('pandoc')
 depends=('bash' 'safe-rm')
 
-source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/${pkgver}-${pkgrel}.tar.gz")
-sha256sums=('801b72679c1ce14f90e36e53148d3345426f0071a921e8e2161422afe87286c3')
+source=("https://github.com/${_pkgauthor}/${pkgname}/archive/${pkgver}-${pkgrel}.tar.gz")
+sha256sums=('505d0442ede2beb80dfe20a05a47abdd7d472cc1daa8d62a0922352a238b371b')
 
-prepare() {
-	cd ${srcdir}/${pkgname}-${pkgver}-${pkgrel} || exit 1
-
-	git init
-}
-
-build() {
-	cd ${srcdir}/${pkgname}-${pkgver}-${pkgrel} || exit 1
-
-	./configure.sh man
-}
 
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}-${pkgrel} || exit 1
