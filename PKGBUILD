@@ -3,17 +3,23 @@
 
 pkgname=tabook
 _pkgname=tabook
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Terminal-based e-book reader for FB2 and EPUB formats'
-arch=('any')
+# The Rust native module (crates/tabook-native) is compiled per-architecture,
+# so the package is no longer arch-independent.
+arch=('x86_64' 'aarch64')
 url='https://github.com/zsh-ncursed/tabook'
 license=('MIT')
 depends=('nodejs>=18')
 # better-sqlite3 ships prebuilt .node binaries for x86_64 and aarch64;
 # stripping/debug-packing them fails on cross-arch files and gains nothing.
-options=(!strip !debug)
-makedepends=('npm' 'git' 'python' 'gcc' 'make')
+# !lto: makepkg's CFLAGS gets -flto, and the bundled sqlite3.c (compiled by
+# the cc crate into the native module) ends up as LTO bytecode that the final
+# cdylib link silently drops — the .node then has undefined sqlite3_* symbols.
+options=(!strip !debug !lto)
+# rust is needed for the napi build of the tabook-native module.
+makedepends=('npm' 'git' 'python' 'gcc' 'make' 'rust')
 optdepends=(
   'ueberzugpp: display book cover images in supported terminals'
   'zenity: graphical file picker for the `o` open-file dialog'
@@ -25,6 +31,14 @@ sha256sums=('SKIP')
 build() {
   cd "${srcdir}/${pkgname}"
   npm ci
+  # Compile the Rust core. npm ci links @tabook/native as a workspace
+  # symlink, so the resulting .node binary lands in crates/tabook-native
+  # where the runtime loads it.
+  npm run build:native
+  # Fail loudly if the binding is broken (a silent link failure would ship
+  # a .node with undefined symbols and the app would silently fall back to
+  # the pure-TS implementations).
+  node -e "require('./crates/tabook-native/index.cjs')" || exit 1
   npm run build
   npm prune --production
 }
@@ -35,6 +49,11 @@ package() {
   # App directory
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
   cp -r dist node_modules package.json "${pkgdir}/usr/lib/${pkgname}/"
+
+  # Native module: node_modules/@tabook/native is an npm-workspace symlink to
+  # ../../crates/tabook-native. cp -r preserves the symlink, so copy crates/
+  # into the package for it to resolve at runtime.
+  cp -r crates "${pkgdir}/usr/lib/${pkgname}/"
 
   # Strip better-sqlite3 prebuilds for other OSes — keep both linux-x64 and
   # linux-arm64 so the same package works on x86_64 and aarch64 (the runtime
