@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Hop from server to server without ever leaving your terminal."
 
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,9 +27,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums=('5cd9ac3dea49a1b811e10f47b953c7205a3fa50fb73a877fbc071362f80cf004')
-sha256sums_x86_64=('0cd2cd0577d0a316747fef47fc757ff8545a1fe4688c23226364cd2152743f21')
-sha256sums_aarch64=('283c289d02700fd4001c585133e3896c4221af4821de6eaf0eab29f46d927209')
+sha256sums=('2fb8c50086c0821f2819bab758fc842d0f77b15da177809980a6170d8272b633')
+sha256sums_x86_64=('74fc418dcd920d7f1ead2883caea9781b48ca70f0691b3d07317fda853cb8f22')
+sha256sums_aarch64=('394db1773166575412cac78f094baa2420e85908535e94e28c6a576006b236a4')
 
 
 package() {
