@@ -1,10 +1,11 @@
 pkgbase = turtle-git
 	pkgdesc = Manage your git repositories with easy-to-use dialogs in Nautilus.
-	pkgver = 0.14.r0.g45aece4
+	pkgver = 0.14.r2.g9ecb761
 	pkgrel = 1
 	url = https://gitlab.gnome.org/philippun1/turtle
 	arch = any
 	license = GPL-3.0-or-later
+	checkdepends = dbus
 	checkdepends = python-pytest
 	checkdepends = xorg-server-xvfb
 	makedepends = git
