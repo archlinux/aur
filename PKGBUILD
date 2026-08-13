@@ -1,7 +1,7 @@
 # Maintainer: Bill Auclair <screenshaver@proton.me>
 
 pkgname=screenshaver
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Next-generation Linux screensaver and wallpaper manager that renders ISF, ShaderToy and GLSL shaders"
 arch=('x86_64')
@@ -14,6 +14,9 @@ depends=(
     'sdl2_ttf'
     'libx11'
     'libxss'
+    'libglvnd'
+    'wayland'
+    'hicolor-icon-theme'
 )
 
 makedepends=(
@@ -25,7 +28,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
 )
 
-sha256sums=('d426ef22abfaad5fe1caf6b4da545a499726d9168c5756b8dd943a31c2ecdd76')
+sha256sums=('ae362530845601a13fbdd4e279ab6497346c00142d61b896c161021874025b4b')
 
 prepare() {
     cd "$pkgname-$pkgver"
