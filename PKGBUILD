@@ -13,7 +13,7 @@ conflicts=("teams-for-linux"
            "teams-for-linux-git"
            "teams-for-linux-wbundled-electron"
           )
-depends=("gtk3" "libxss" "nss")
+depends=('gtk3' 'libxss' 'nss' 'alsa-lib' 'nodejs')
 source_x86_64=("$url/releases/download/v$pkgver/teams-for-linux_${pkgver}_amd64.deb")
 source_aarch64=("$url/releases/download/v$pkgver/teams-for-linux_${pkgver}_arm64.deb")
 source_armv7h=("$url/releases/download/v$pkgver/teams-for-linux_${pkgver}_armv7l.deb")
