@@ -1,6 +1,6 @@
 pkgbase = waysip
 	pkgdesc = A wayland-native, blazing-fast area selection tool
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/waycrate/waysip
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = waysip
 	depends = cairo
 	depends = glib2
 	conflicts = waysip-git
-	source = waysip-0.6.1.tar.gz::https://github.com/waycrate/waysip/archive/refs/tags/v0.6.1.tar.gz
-	b2sums = a245d32b03ad7bc5dda40950d9d7762f36a8f8582ed266505c0b1c7cb59be981fcfa0b2f1cb46e0dabb092ea56d53301b295368420f74ed41330dc73978436f9
+	source = waysip-0.7.0.tar.gz::https://github.com/waycrate/waysip/archive/refs/tags/v0.7.0.tar.gz
+	b2sums = b63637ef5aea217096974a84181575ed15452ee0a157da83aa103cc4a488a9b725d3876cfabfe342f7ea7f426dc5576bf3b1b6d1cf8dbc9bd9c396c21fc2e788
 
 pkgname = waysip
