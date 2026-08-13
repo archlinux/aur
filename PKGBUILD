@@ -1,7 +1,7 @@
 # Maintainer: Christian Kühn (damachin3 at proton dot me)
 # Website: https://github.com/damachine/coolerdash
 pkgname=coolerdash-git
-pkgver=3.2.4.r0.g1b6045f
+pkgver=3.3.0.r0.g5b4415d
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -14,14 +14,12 @@ depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'ttf-roboto')
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('var/lib/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
-_commit=1b6045f87fbb1906106a92852c4e5b03103643b6
+_commit=5b4415dfc968126574082b6edf3318f071c93123
 source=("coolerdash-git::git+https://github.com/damachine/coolerdash.git#commit=${_commit}")
 sha256sums=('SKIP') # SKIP for git repo source builds
 
 pkgver() {
     cd "${srcdir}"/"${pkgname}"
-    # Fetch latest tags in git repo
-    git fetch --tags
     git describe --tags --long --match "v*" | sed -E 's/^v//; s/-([0-9]+)-g/\.r\1.g/; s/-/./g'
 }
 
