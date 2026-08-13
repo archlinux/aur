@@ -3,7 +3,7 @@
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=antigravity-ide
-pkgver=2.5.2
+pkgver=2.5.5
 pkgrel=1
 pkgdesc='An agentic development platform from Google, evolving the IDE into the agent-first era'
 arch=(aarch64 x86_64)
@@ -49,7 +49,7 @@ source=(antigravity-ide.sh
         antigravity-ide-url-handler.desktop
         antigravity-ide.appdata.xml
         antigravity-ide-workspace.xml)
-_build=6697361355964416
+_build=4923483625488384
 source_x86_64=($pkgname-$pkgver-x86_64.tar.gz::https://dl.google.com/release2/j0qc3/antigravity/stable/$pkgver-$_build/linux-x64/Antigravity%20IDE.tar.gz)
 source_aarch64=($pkgname-$pkgver-aarch64.tar.gz::https://dl.google.com/release2/j0qc3/antigravity/stable/$pkgver-$_build/linux-arm/Antigravity%20IDE.tar.gz)
 b2sums=('20a33a75e654ffb6535cd415d52b06559cb681da84eace78702fea50d5362ad23b478c8308bd4b7c48820d8a01c84b5643e754f561e0afa843a5495a694ca86e'
@@ -57,8 +57,8 @@ b2sums=('20a33a75e654ffb6535cd415d52b06559cb681da84eace78702fea50d5362ad23b478c8
         'ccd8e86e6acc9e542428377b3fadc743b8b2e7d59e6aa96c9aa21a8b743af9532aefdfdab062bb296515bdf0752e2b3208b888869bae4a55b4ddd07652d5f37f'
         '8d082784596cfe67fe48e409d780ae03f6e6c9aa999412d9b2a47bfcdb6357a08a5abf9c4fd90e2c49df5ecbd98c179c43a6bcc38e477aace24f4ba23a481a6c'
         'f6ed182fbf1463a24dc5545c71d7924b1e9b7c9832d25bfe09974a63c72385dfecbe0b609a492717348178ba6b61601f4ccea53d3f2942dd330567da40be6e95')
-b2sums_aarch64=('98025a200e0caa96e2459f7d81ca33ad4d1690c90270d1f310d73b01c7ccc07efbfb49ea2be1557f143224840cf9fb140ae2fefef2b4d54aa3db654f704385e4')
-b2sums_x86_64=('97ea78c89735b09b82f168704607891b11a3f8e59b051dd2ccdb79ce6ffddebc455417df73286486a65d30782a2fa04b5cd9b7442bdded68a85039e26a8580f5')
+b2sums_aarch64=('09e5454f9793c536eeb9d3b10a7a08203caada8046f6c04f7b470509bcfd99337a134c07d682459af31920028e87446860d3d2e23b1c25e554114948832fcadd')
+b2sums_x86_64=('c016152db0e08f3c49ee353481135c4285ac9f837da295021600464a41b7ee054d5e72ba0e1462d1c26e6bab0b06e1dcf6346f8df015acf2f1dc24ed03e65264')
 
 package() {
     install -d "$pkgdir/opt"
