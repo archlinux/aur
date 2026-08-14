@@ -4,9 +4,9 @@
 pkgbase=logitech-trueforce-dkms
 pkgname=('logitech-trueforce-dkms' 'logi-wheel' 'logi-wheel-gui')
 _dkmsname=logitech-trueforce
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
-pkgdesc="DKMS kernel driver for Logitech TrueForce direct-drive wheels (RS50, G PRO): force feedback, TrueForce texture routing, and wheel settings via sysfs"
+pkgdesc="DKMS kernel driver for Logitech racing wheels (RS50, G PRO, G923): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 arch=('x86_64')
 url="https://github.com/mescon/logitech-trueforce-linux-driver"
 # The kernel module and logi-ffb/logi-wheel/logi-tf-sim are GPL-2.0-only;
@@ -27,7 +27,7 @@ options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v0.18.0 release tarball. On the next version bump, regenerate:
 #   updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('2b2a3af31e8f5c1b45000ad7eeded832fdde5ddf5780d7e73753ef1d656d3a43')
+sha256sums=('af9f275cfdd9d9f8dd76802e15c0dba8f99be7ec4f2fff1ab907c877776a3e93')
 
 _src() {
 	echo "$srcdir/logitech-trueforce-linux-driver-$pkgver"
@@ -42,10 +42,15 @@ build() {
 	# logi-wheel-gui's MSRV (1.92, from Slint 1.17.1) is never a problem here;
 	# no version guard needed (contrast packaging/debian/rules).
 	cargo build --release --manifest-path "$(_src)/userspace/logi-wheel/Cargo.toml"
+	# logi-rpm-bridge: the small C bridge that feeds relayed game RPM to
+	# the driver's kernel texture merge; logi-launch starts and stops it
+	# around a game session.
+	cc -O2 -Wall -o "$(_src)/tools/logi-rpm-bridge" \
+		"$(_src)/tools/logi-rpm-bridge.c"
 }
 
 package_logitech-trueforce-dkms() {
-	pkgdesc="DKMS kernel driver for Logitech TrueForce direct-drive wheels (RS50, G PRO): force feedback, TrueForce texture routing, and wheel settings via sysfs"
+	pkgdesc="DKMS kernel driver for Logitech racing wheels (RS50, G PRO, G923): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 	license=('GPL-2.0-only')
 	# No dependency on logi-wheel. This package installs udev rule 73, and
 	# that rule dispatches /usr/bin/logi-g923-modeswitch, so the two have
@@ -173,6 +178,16 @@ package_logi-wheel() {
 	# unreachable for anyone who did not clone the repo.
 	install -Dm644 "$_src/tools/tf-range-proxy.dll" \
 		"$pkgdir/usr/share/logitech-trueforce/tf-range-proxy.dll"
+	# The dinput8 escape proxy logi-launch stages into an SDK game's own
+	# directory: it answers the SDK's range getters and relays the game's
+	# RPM telemetry for the kernel texture merge. Prebuilt, same reason
+	# as the range proxy above.
+	install -Dm644 "$_src/tools/dinput8-escape.dll" \
+		"$pkgdir/usr/share/logitech-trueforce/dinput8-escape.dll"
+	# The RPM feed for the kernel texture merge; logi-launch starts and
+	# stops it around a game session.
+	install -Dm755 "$_src/tools/logi-rpm-bridge" \
+		"$pkgdir/usr/bin/logi-rpm-bridge"
 	# The truck sims load this from inside the game rather than from a
 	# Proton prefix, so it ships beside the proxy rather than in bin.
 	install -Dm644 "$_src/userspace/logi-wheel/target/release/liblogi_tf_scs.so" \
