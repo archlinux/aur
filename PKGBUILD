@@ -2,7 +2,7 @@
 _projectname='kiota-python'
 _packagename='microsoft-kiota-authentication-azure'
 pkgname="python-$_packagename"
-pkgver='1.11.7'
+pkgver='1.11.8'
 pkgrel='1'
 pkgdesc='Microsoft Kiota Authentication Azure Library for Python'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 	'change-flit-upper-bound.diff'
 	'hardcode-version.diff'
 )
-b2sums=('58638e55dfc912e1dbc1a1f1965530bbbe931aba9ef9b8af3ab50c9d17e086e8ed34cf523addbe48f2cc447d6db1ba88d47ae265134bd636d796030b8d06fdd4'
+b2sums=('96875730f523d4ba4d5b6425cb9984ef2f648ac0a5c2a8294f132a9ffcd44e9d96a605c480484d074c073074f0ca4c8d5fc329f09b4ef377854ec6937b745be2'
         '16ee61f51327765110e0406c944ad89fcb74879cfdccfff1776c2c89167ac4287e349ea7a66b4c5e1290871d2bf03a765819f0b7600312cdba9f2b6311af6a0e'
         '6afb5c7062c12d3faa0e7f1819c456041910ee73a75a5e747f57732a24b713246bfce2577d60ddbc617540077d6bbdb856e5a907c90e43fc3519510902bc02eb')
 
