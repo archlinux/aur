@@ -1,12 +1,12 @@
 # Maintainer: Markus Maiwald <markus@maiwald.work>
 pkgname=sober-bin
-_upstream_version=0.8.2
+_upstream_version=0.9.0-beta
 pkgver="${_upstream_version//-/_}"
 pkgrel=1
 pkgdesc='Prevent AI-Slop: The Sober Raccoon is your local CodeRabbit: A Local-first repository governance assistant and code reviewer with deterministic review readiness'
 arch=('x86_64')
 # Marketing / product site (read about Sober). Source + releases: git.sovereign-society.org/Sober/sober
-url='https://sober-dev.pages.dev'
+url='https://sober-dev.app'
 license=('LSL-1.0')
 depends=('tree-sitter')
 provides=('sober')
@@ -20,12 +20,14 @@ conflicts=('sober')
 # SHA256SUMS itself uses SKIP: that file is rewritten when OCI/Debian image
 # assets are attached later; pinning its whole-file hash caused false AUR
 # failures. The binary line inside it stays stable for a given release.
+# Sources come from the sober-dist R2 layer (download-counter instrumented),
+# not the forge release page, so installs are visible in the /stats counters.
 source=(
-  "https://git.sovereign-society.org/Sober/sober/releases/download/v${_upstream_version}/sober_v${_upstream_version}_linux_amd64"
-  "https://git.sovereign-society.org/Sober/sober/releases/download/v${_upstream_version}/SHA256SUMS"
+  "https://pkg.sober-dev.app/ce/sober_v${_upstream_version}_linux_amd64"
+  "https://pkg.sober-dev.app/ce/SHA256SUMS"
 )
 sha256sums=(
-  'b3dbf568bec51d7ffc25f2a941b1164379de97e5f3a1f7862d0a6ff5832803ca'
+  '4cfb22834c24092b011c92435e8ebcbacc112b8d23c69592eb7f2fcde7fdf583'
   'SKIP'
 )
 
