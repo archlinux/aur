@@ -2,12 +2,12 @@
 # Contributor: Rudy Matela <rudy@matela.com.br>
 pkgname=kattis-problemtools
 pkgver=1.20260620
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to manage problem packages using the Kattis problem package format"
 arch=('x86_64')
 url="https://github.com/Kattis/problemtools"
 license=('MIT')
-depends=('python' 'python-yaml' 'python-unidecode' 'python-colorlog' 'python-nh3' 'python-pydantic' 'pandoc' 'gmp' 'plastex' 'ghostscript' 'texlive-fontsrecommended' 'texlive-langcyrillic' 'texlive-latexextra' 'texlive-plaingeneric' 'texlive-luatex' 'tidy')
+depends=('python' 'python-yaml' 'python-unidecode' 'python-colorlog' 'python-nh3' 'python-pydantic' 'pandoc' 'gmp' 'plastex' 'ghostscript' 'texlive-fontsrecommended' 'texlive-langcyrillic' 'texlive-latexextra' 'texlive-plaingeneric' 'texlive-luatex' 'tidy' 'pdf2svg')
 makedepends=('git' 'make' 'boost' 'python-setuptools')
 checkdepends=('python-pytest')
 provides=('problem2html'  'problem2pdf'  'verifyproblem')
