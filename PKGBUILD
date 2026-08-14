@@ -1,13 +1,13 @@
 # Maintainer: LIghtJUNction <lightjunction.me@gmail.com>
 pkgname=matchplane-git
-pkgver=0.1.2.r3.gd0e0135
+pkgver=0.1.3.r11.g0f30c39
 pkgrel=1
 pkgdesc='Federated AI matching infrastructure (development version)'
 arch=('x86_64')
 url='https://github.com/LIghtJUNction/matchplane'
 license=('LicenseRef-MatchPlane-Pending')
 depends=('ca-certificates' 'gcc-libs' 'glibc' 'openssl' 'zlib')
-makedepends=('cargo' 'cmake' 'curl' 'git' 'nodejs' 'npm' 'protobuf' 'rust')
+makedepends=('bun' 'cargo' 'cmake' 'curl' 'git' 'protobuf' 'rust')
 provides=('matchplane')
 conflicts=('matchplane' 'matchplane-bin')
 # makepkg's cross-language LTO drops native crypto symbols from SQLx's
@@ -23,19 +23,19 @@ pkgver() {
   local count revision
   count=$(git rev-list --count HEAD)
   revision=$(git rev-parse --short=7 HEAD)
-  printf '0.1.2.r%s.g%s' "$count" "$revision"
+  printf '0.1.3.r%s.g%s' "$count" "$revision"
 }
 
 build() {
   cd matchplane
-  npm ci --ignore-scripts --prefix web
-  npm run build --prefix web
+  bun install --frozen-lockfile --cwd web
+  bun run --cwd web build
   cargo build --release --locked --workspace --bins
 }
 
 check() {
   cd matchplane
-  npm test --prefix web
+  bun run --cwd web test
   cargo test --release --locked --workspace
 }
 
