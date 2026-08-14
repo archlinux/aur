@@ -4,7 +4,7 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname=selinux-gui
-pkgver=3.10
+pkgver=3.11
 pkgrel=1
 pkgdesc="SELinux GUI tools"
 groups=('selinux')
@@ -18,7 +18,7 @@ validpgpkeys=(
   '68D21823342A13683AEB3E4EFB4C685B5DC1C13E'  # Petr Lautrbach <lautrbach@redhat.com>
 )
 source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('4e98cf387f2e30d8f29fa58f4ff2889d07f294fade3da1216a0fceae831d8e8a'
+sha256sums=('1aa328c75ccedcd2ee6d1f8b3f3bb11080c05d8700f1de334795cb573293728c'
             'SKIP')
 
 build() {
