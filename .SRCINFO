@@ -1,4 +1,4 @@
-pkgbase = mcomix-rs
+pkgbase = mcomix-rs-bin
 	pkgdesc = A user-friendly, customizable comic book image viewer (Rust/GTK4 port)
 	pkgver = 0.3.1
 	pkgrel = 1
@@ -20,4 +20,4 @@ pkgbase = mcomix-rs
 	sha256sums = 900b9990af29cd16eefd6ec419e910d7b179b7296c5b05131861bdab79a6cd88
 	sha256sums = 436011ad5b90f48c0a3017a2a6f32b22419c7a95b21a4e7aee3e66e05f074995
 
-pkgname = mcomix-rs
+pkgname = mcomix-rs-bin
