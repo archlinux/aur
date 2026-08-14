@@ -190,6 +190,7 @@ function start {
     --add-opens=java.base/java.lang.reflect=io.questdb
     --add-opens=java.base/java.nio=io.questdb
     --add-opens=java.base/java.time.zone=io.questdb
+    --add-exports=java.base/jdk.internal.vm=io.questdb
     "
 
     JAVA_MAIN="io.questdb/io.questdb.ServerMain"
