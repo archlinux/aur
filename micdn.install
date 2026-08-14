@@ -26,6 +26,11 @@ post_upgrade() {
     echo "注意: v0.2.3 起 www <doc> 改为 name + npm|dir|zip 属性，并可选 try-file。"
     echo "      请对照 docs/release-v0.2.3.md 或 CHANGELOG 手动迁移 /etc/micdn/micdn.xml"
   fi
+
+  if [ -f /etc/micdn/micdn.xml ] && grep -qE '<doc[^>]*dir="|<doc[^>]*try-file="[^"]*/' /etc/micdn/micdn.xml 2>/dev/null; then
+    echo "注意: v0.3.0 起 www <doc> 不再支持 dir 挂载，try-file 不接受含 / 的路径（重复 doc name 会报错）。"
+    echo "      请对照 docs/release-v0.3.0.md 迁移 /etc/micdn/micdn.xml 后重启服务"
+  fi
 }
 
 pre_remove() {

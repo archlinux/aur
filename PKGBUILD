@@ -2,7 +2,7 @@
 # 维护目录：~/aur-packages/micdn
 
 pkgname=micdn
-pkgver=0.2.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Beangle minimal CDN (static, Maven, npm, blob, www)"
 arch=('x86_64')
@@ -21,8 +21,8 @@ source=(
   "micdn.sysusers"
   "micdn.tmpfiles"
 )
-sha256sums=('8187f3381a9efcfca603977feced1efec623ea87e9453f9be3915ff395dda870'
-            'f5feb564ee3d732263ef4b1b52e573f918b05b75b4063be6e85fbdc882830888'
+sha256sums=('SKIP'
+            '8333910bf21675e99d5545262f26ac5027c0210b58dd8ce10510c79b61be3de6'
             '346a3b0bdb0fd0737be566b1a9aba853fb9f1361b70ddc14e33719d57ce078f9'
             'd80affc81230b473551692a51165df4be18daf9b93d8d3d780711598f1c2405f')
 
@@ -46,7 +46,11 @@ package() {
   cd micdn
 
   install -Dm755 target/micdn "$pkgdir/usr/bin/micdn"
-  install -Dm644 scripts/package/micdn.xml "$pkgdir/usr/share/micdn/micdn.xml.default"
+  # v0.3.1 的 xi:include 展开会把注释示例行（<!-- <xi:include href="blob.xml"/> -->）当真实指令，
+  # 导致默认配置启动即 exit 2；上游保留此 bug，打包时剔除该行，保证全新安装默认配置可启动。
+  sed '/<xi:include href="blob.xml"/d' scripts/package/micdn.xml \
+    > "$pkgdir/usr/share/micdn/micdn.xml.default"
+  chmod 0644 "$pkgdir/usr/share/micdn/micdn.xml.default"
   install -Dm644 scripts/package/micdn.service "$pkgdir/usr/lib/systemd/system/micdn.service"
   install -Dm644 "$srcdir/micdn.sysusers" "$pkgdir/usr/lib/sysusers.d/micdn.conf"
   install -Dm644 "$srcdir/micdn.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/micdn.conf"
