@@ -3,7 +3,7 @@
 # Builds from a release tag. For the git version, change to waytify-git, source
 # from the repository, and add a pkgver() function.
 pkgname=waytify
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Media control for Waybar: MPRIS core, GTK4 layer-shell player window"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=('gtk4' 'gtk4-layer-shell' 'dbus' 'libpulse')
 makedepends=('cargo')
 optdepends=('waybar: the bar module, which is what most people came for')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('56382b8c8b0f1934f223e75f6b940478a93e4eead8faf323483c78fe95a2b25b')
+sha256sums=('571cbbda4ba8ddbf51c956a97d135d6c51998c4169b0ff8113131bd28ab5d0ba')
 
 prepare() {
   cd "$pkgname-$pkgver"

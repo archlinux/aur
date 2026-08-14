@@ -1,6 +1,6 @@
 pkgbase = waytify
 	pkgdesc = Media control for Waybar: MPRIS core, GTK4 layer-shell player window
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/IlyasKhallouki/waytify
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = waytify
 	depends = dbus
 	depends = libpulse
 	optdepends = waybar: the bar module, which is what most people came for
-	source = waytify-0.5.0.tar.gz::https://github.com/IlyasKhallouki/waytify/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 56382b8c8b0f1934f223e75f6b940478a93e4eead8faf323483c78fe95a2b25b
+	source = waytify-0.6.0.tar.gz::https://github.com/IlyasKhallouki/waytify/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 571cbbda4ba8ddbf51c956a97d135d6c51998c4169b0ff8113131bd28ab5d0ba
 
 pkgname = waytify
