@@ -29,17 +29,17 @@ build() {
 }
 
 check() {
-    cd "$srcdir/$_name-$pkgver"
+    cd "${srcdir}/${_name}-${pkgver}"
 
     # Install project
     # Install all extras, so we can check any incompatibility.
     uv --no-progress sync --frozen --all-extras --group test
 
     # Run local CLI
-    uv run -- ${_name} --version
+    uv run -- "${_name}" --version
 
     # Unittests
-    uv --no-progress run --frozen -- pytest -m once --cov --cov-report=term
+    uv --no-progress run --frozen -- pytest -m once --cov --cov-report=term --cov-fail-under=16
 
     # Check if it runs outside of UV environment
     python -m click_extra --version
@@ -52,7 +52,7 @@ package() {
 
     rm "$pkgdir/usr/.lock"
 
-    install -Dm0644 readme.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm0644 "readme.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-    install -Dm0644 license "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm0644 "license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
