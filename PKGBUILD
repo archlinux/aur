@@ -5,14 +5,14 @@
 # Contributor: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=0.9.2126.g623fdfe
+pkgver=0.9.2272.g5c1a2c4
 pkgrel=1
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=('x86_64')
 url="https://gitlab.com/CalcProgrammer1/OpenRGB"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'gcc-libs' 'qt6-base' 'libusb' 'hidapi-hotplug' 'mbedtls' 'hicolor-icon-theme')
-makedepends=('qt6-tools' 'git')
+depends=('glibc' 'gcc-libs' 'qt6-base' 'libusb' 'hidapi-hotplug' 'mbedtls3' 'hicolor-icon-theme')
+makedepends=('qt6-tools' 'git' 'pkg-config')
 optdepends=('i2c-nct6793-dkms: Nuvoton SMBus driver, needed for onboard RGB on certain ASUS Z270 and Z370 boards')
 provides=('openrgb')
 conflicts=('openrgb')
