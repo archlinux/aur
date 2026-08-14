@@ -1,6 +1,6 @@
 pkgbase = trolley-bin
 	pkgdesc = Run terminal apps anywhere
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/weedonandscott/trolley
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = trolley-bin
 	license = MIT
 	provides = trolley
 	conflicts = trolley
-	source = README-0.10.0.md::https://raw.githubusercontent.com/weedonandscott/trolley/v0.10.0/README.md
-	source = LICENSE-0.10.0::https://raw.githubusercontent.com/weedonandscott/trolley/v0.10.0/LICENSE
+	source = README-0.11.0.md::https://raw.githubusercontent.com/weedonandscott/trolley/v0.11.0/README.md
+	source = LICENSE-0.11.0::https://raw.githubusercontent.com/weedonandscott/trolley/v0.11.0/LICENSE
 	sha256sums = 8d536350f991f3fcf916b0d5e3414847420cb7b1ec4ec54a4712857070edd615
 	sha256sums = 2bb07097d1c114203af61b79528e410ce5849546f42650edb4bfcdbe74b137ef
-	source_x86_64 = trolley-x86_64-0.10.0.txz::https://github.com/weedonandscott/trolley/releases/download/v0.10.0/trolley-cli-x86_64-linux.tar.xz
-	sha256sums_x86_64 = f5d9ff9a6612cec3932e73ee8bb68656d0b123156f88df6fef0f73e21b2f3c34
-	source_aarch64 = trolley-aarch64-0.10.0.txz::https://github.com/weedonandscott/trolley/releases/download/v0.10.0/trolley-cli-aarch64-linux.tar.xz
-	sha256sums_aarch64 = 207a52ac7738f359bb8af1784632cac5c09d5f25fe082cf9789aa3745568efd9
+	source_x86_64 = trolley-x86_64-0.11.0.txz::https://github.com/weedonandscott/trolley/releases/download/v0.11.0/trolley-cli-x86_64-linux.tar.xz
+	sha256sums_x86_64 = d548ff705aa459fa79806ed11266e05420bd6cfaa1ee4b815b3093c66da59bc4
+	source_aarch64 = trolley-aarch64-0.11.0.txz::https://github.com/weedonandscott/trolley/releases/download/v0.11.0/trolley-cli-aarch64-linux.tar.xz
+	sha256sums_aarch64 = 86d94e5023475857a1981ecd61005505e0553e7fdae3e0039dbefa058ac7d7f1
 
 pkgname = trolley-bin
