@@ -3,7 +3,7 @@
 _pkgauthor=jpillora
 _pkgname=sshd-lite
 pkgname=${_pkgname}-bin
-pkgver=1.51.3
+pkgver=1.52.0
 pkgrel=1
 pkgdesc='A feature-light sshd(8) for Windows, Mac, and Linux'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -24,10 +24,10 @@ source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[2]}.gz")
 
 sha256sums=('048b252033c0c357931c3fd0619b978b05a3e51700b55d61cb1cedddaf997f89'
-            'f40c746ad8e584bc450b3e9cc7a83731bc85346f049ba409ce74981326376188')
-sha256sums_x86_64=('5831effde1397817672b654ed55d231356a54d0b0ef4c8e0b66cd4e261cb3a28')
-sha256sums_i686=('a6c43c4c8bbb3aa57c9780d54327a3df653933b862cb2cf99f52431495582909')
-sha256sums_aarch64=('f8d01233510855f41c4e5ac9e4c879d52a099174ba178222dc0f6c02439dc0c9')
+            '3e11414ac188b2f25cc8552919f3e19635da416b71fec05bf425ad8401063a77')
+sha256sums_x86_64=('bad96049ed1cc4bd59498eaab87ee65b6e24fa65ef31d3b26468960493cd1054')
+sha256sums_i686=('62d187017bed579ae263d1579deaa2307f1206d95ce9813dceb759299deadcf7')
+sha256sums_aarch64=('cf82c3a96713abbb929d0ec0c4f439e3f197a41c1fbdb75475e498d14a8d5823')
 
 
 package() {
