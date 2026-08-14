@@ -1,0 +1,5 @@
+[jobman-diagnose-bin]
+source = "github"
+github = "ryancswallace/Jobman-Diagnose"
+use_latest_release = true
+prefix = "v"

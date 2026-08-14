@@ -1,0 +1,21 @@
+pkgbase = jobman-diagnose-bin
+	pkgdesc = Deterministic and AI-assisted diagnostics for Jobman failures.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/ryancswallace/Jobman-Diagnose
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = jobman
+	provides = jobman-diagnose
+	conflicts = jobman-diagnose
+	options = !strip
+	source_x86_64 = jobman-diagnose-x86_64-0.6.0.tgz::https://github.com/ryancswallace/Jobman-Diagnose/releases/download/v0.6.0/jobman-diagnose_0.6.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 332efb386a704485f100664544a7b9a6642651d567d464e721c6c17c682e5884
+	source_i686 = jobman-diagnose-i686-0.6.0.tgz::https://github.com/ryancswallace/Jobman-Diagnose/releases/download/v0.6.0/jobman-diagnose_0.6.0_linux_386.tar.gz
+	sha256sums_i686 = a0d3e139dddca60f0a82749544d6ef3e8965187eb7047433278c62a16063a59f
+	source_aarch64 = jobman-diagnose-aarch64-0.6.0.tgz::https://github.com/ryancswallace/Jobman-Diagnose/releases/download/v0.6.0/jobman-diagnose_0.6.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = beb933a4e7af908ffd3e1ed7fbfb828cf42dad92d49d97ee729fe9743711f7ba
+
+pkgname = jobman-diagnose-bin
