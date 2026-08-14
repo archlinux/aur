@@ -2,7 +2,7 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='motoko'
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='Based on Go modules, update a dependency to a major version.'
 url='https://github.com/ldez/motoko'
@@ -12,7 +12,7 @@ provides=('motoko')
 conflicts=('motoko')
 makedepends=('go' 'git')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/ldez/motoko/releases/download/v${pkgver}/motoko-v${pkgver}-source.tar.gz")
-sha256sums=('2a019f78c7cd0157e529409092e775c782ea580e986fa2714a2e2a2bfee4198c')
+sha256sums=('e9353826a507800616bb26e60d540795cfe9a8fe83ba2c59afd503949e56794e')
 build() {
   export BUILD_DATE=$(date -u '+%Y-%m-%d_%I:%M:%S%p')
 
