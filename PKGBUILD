@@ -1,10 +1,10 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 
-# Its own AUR package rather than a split of `wdm`: WebKitGTK is the heaviest
+# Its own AUR package rather than a split of `wdm-wayland`: WebKitGTK is the heaviest
 # dependency in the project by a wide margin, and before the packaging was split
 # every wdm user built against it whether or not they wanted this greeter. wdm
 # depends on the virtual this provides, so pacman offers this as one of the
-# choices when `wdm` is installed on its own.
+# choices when `wdm-wayland` is installed on its own.
 pkgname=wdm-webkit-greeter
 pkgver=0.9.0
 pkgrel=1
@@ -16,7 +16,7 @@ depends=('gtk4' 'gtk4-layer-shell' 'webkitgtk-6.0')
 makedepends=('cargo' 'libxkbcommon' 'gtk4' 'gtk4-layer-shell' 'webkitgtk-6.0')
 provides=('wdm-greeter-implementation')
 source=("wdm-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# See the note in the `wdm` package: this is the checksum of the tarball GitHub
+# See the note in the `wdm-wayland` package: this is the checksum of the tarball GitHub
 # published, and all four wdm packages build from the same one.
 sha256sums=('49e70b577665bf4fb7c78f5d9319febaf0a8268a80bdb8eb01ff95ed0db8b9f7')
 
