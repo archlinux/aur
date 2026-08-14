@@ -1,0 +1,5 @@
+[tcpterm-bin]
+source = "github"
+github = "sachaos/tcpterm"
+use_latest_release = true
+prefix = "v"
