@@ -1,6 +1,6 @@
 pkgbase = semodule-utils
 	pkgdesc = SELinux module tools
-	pkgver = 3.10
+	pkgver = 3.11
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/selinux/wiki
 	arch = i686
@@ -10,11 +10,11 @@ pkgbase = semodule-utils
 	license = GPL2
 	depends = libsepol>=2.7
 	conflicts = policycoreutils<2.7
-	source = https://github.com/SELinuxProject/selinux/releases/download/3.10/semodule-utils-3.10.tar.gz
-	source = https://github.com/SELinuxProject/selinux/releases/download/3.10/semodule-utils-3.10.tar.gz.asc
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.11/semodule-utils-3.11.tar.gz
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.11/semodule-utils-3.11.tar.gz.asc
 	validpgpkeys = 63191CE94183098689CAB8DB7EF137EC935B0EAF
 	validpgpkeys = 68D21823342A13683AEB3E4EFB4C685B5DC1C13E
-	sha256sums = 1c2f14cc098cbb4d75912d131c5f747e70246e1042e72f2ab40e28f53cf45c10
+	sha256sums = 0c574e15413ff7ed660c45e011befe248bb89eaa273db6f56eb297d61deb2ed6
 	sha256sums = SKIP
 
 pkgname = semodule-utils
