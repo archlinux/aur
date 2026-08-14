@@ -50,7 +50,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/lib/opennow/native/opennow-streamer/bin"
 	mkdir -p "${pkgdir}/usr/lib/opennow/opennow-stable"
 	cp -a opennow-stable/dist-electron ${pkgdir}/usr/lib/opennow/opennow-stable
-	# force/set the app name to keep the previously created config dir
+	# force/set the app name to keep the previously created config dir; why does it ignore the package.json?
 	sed -i ${pkgdir}/usr/lib/opennow/opennow-stable/dist-electron/main/index.js -e '/import.*app/a app$1.setVersion("'$_pkgver'")\napp$1.setName("opennow-stable")'
 	cp -a opennow-stable/dist ${pkgdir}/usr/lib/opennow/opennow-stable
 	cp -a opennow-stable/package.json ${pkgdir}/usr/lib/opennow/opennow-stable
