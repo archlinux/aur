@@ -1,7 +1,7 @@
 # Maintainer: Jon Schlipf <jschlipf@gmx.com>
 pkgname=python-gdsfactory
 _origpkgname=gdsfactory
-pkgver=9.29.1
+pkgver=9.48.0
 pkgrel=1
 pkgdesc="python library to generate GDS layouts"
 arch=("x86_64")
@@ -16,6 +16,7 @@ depends=(
 	"python-trimesh"
 	"python-orjson"
 	"python-shapely"
+	"python-flit-core"
   )
 makedepends=(
 	"python-build"
@@ -24,8 +25,12 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/f9/cc/264550ed7effdf8411de782a155179c7eef9de57bdb547fed86ef717a78d/gdsfactory-9.29.1.tar.gz")
-sha256sums=("6806c8551c0fe086f95fa8c3c02c98691e96a894d5e58d6548b93ef06a7f6786")
+source=("https://files.pythonhosted.org/packages/d2/66/593cac08cf056f5d43b18ed5aba4f3da689731992dd1e28cc59c4f59278d/gdsfactory-9.48.0.tar.gz")
+sha256sums=('3fe3b23d77545f1ad33a217f393e92cccc5024ea43b24c3cfd5c0f4d2921f011')
+prepare() {
+  cd "${_origpkgname}-${pkgver}" || exit
+  sed -i 's/flit_core >=3\.2,<4/flit_core >=3.2/' pyproject.toml
+}
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
