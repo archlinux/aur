@@ -1,0 +1,27 @@
+pkgbase = refract-git
+	pkgdesc = Specialized audio CD-ripper optimized for track recovery
+	pkgver = 1.6.0.r0.ga350461
+	pkgrel = 1
+	url = https://github.com/Blobfolio/refract
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	makedepends = yasm
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	optdepends = zenity: for file dialogues
+	optdepends = xdg-desktop-portal-gnome: for file dialogues
+	optdepends = xdg-desktop-portal-gtk: for file dialogues
+	optdepends = xdg-desktop-portal-kde: for file dialogues
+	provides = refract
+	conflicts = refract
+	options = !lto
+	source = git+https://github.com/Blobfolio/refract.git
+	sha256sums = SKIP
+
+pkgname = refract-git
