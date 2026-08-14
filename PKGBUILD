@@ -12,7 +12,7 @@
 # so building requires network access (standard for Gradle AUR packages).
 
 pkgname=nuvio-linux-git
-pkgver=r2241.gb06b9c9c
+pkgver=r2250.g1f12c270
 pkgrel=1
 pkgdesc="Nuvio Linux desktop media player — Linux native mpv playback (git)"
 arch=('x86_64')
