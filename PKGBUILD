@@ -2,7 +2,7 @@
 # Contributor: Oleg Antonyan <oleg.b.antonyan@gmail.com>
 
 pkgname=mpz-qt5
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=0
 pkgdesc='Music player for the large local collections (Qt5 version)'
 arch=('x86_64')
@@ -12,11 +12,11 @@ depends=('qt5-multimedia' 'qt5-svg' 'qt5-x11extras' 'hicolor-icon-theme' 'yaml-c
 makedepends=('cmake')
 provides=('mpz')
 conflicts=('mpz')
-source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/olegantonyan/mpz/archive/41e5532873e339d72dc12a5218c80869b499c426.zip")
-sha256sums=('a59d7d14cf82c492a8424d614074d7acd1065697c51d5183aee76564ff19a26d')
+source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/olegantonyan/mpz/archive/51d9284c7323dfce896e0f24278007846ea26807.zip")
+sha256sums=('823bbf376f3fce664cc37184508c92b4b68f1228a9f3470e1a7706669da6a3eb')
 
 build() {
-    cd mpz-41e5532873e339d72dc12a5218c80869b499c426
+    cd mpz-51d9284c7323dfce896e0f24278007846ea26807
 
     rm -rf build
     mkdir build
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-    cd mpz-41e5532873e339d72dc12a5218c80869b499c426
+    cd mpz-51d9284c7323dfce896e0f24278007846ea26807
 
     cd build
     DESTDIR="$pkgdir" cmake --install .
