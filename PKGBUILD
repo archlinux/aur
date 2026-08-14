@@ -3,8 +3,8 @@
 
 _pkgname=hermes-agent
 pkgname=python-${_pkgname}
-tag=2026.8.3
-pkgver=0.20.0
+tag=2026.8.13
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere"
 arch=('any')
@@ -25,7 +25,6 @@ optdepends=('python-telegram-bot: Telegram messaging support'
             'python-faster-whisper: Local voice transcription'
             'python-sounddevice: Audio I/O for voice'
             'python-numpy: Numerical computing for voice/other'
-            'python-simple-term-menu: Interactive CLI menu'
             'python-slack-sdk: Slack integration'
             'python-qrcode: QR code generation for auth'
             'python-croniter: Cron scheduling support (upstream-required, AUR)'
@@ -47,15 +46,15 @@ source=(
     "0001-fix-daemon-pool-py314-ThreadPoolExecutor-API.patch"
 )
 sha256sums=(
-    '370542c7219faba6300905c3b419e14e6508a31ac698a1a5174e0386990834be'
+    '2b202b0cbcecfaeec85572b60d66cd481ca387248b592878bf92204de78abefe'
     '6b3357098d9e70eb33c95e2f7d12c2bdc016f6e7933b517d85f1399d50caea71'
 )
 
 prepare() {
   cd "${srcdir}/hermes-agent-${tag}"
-  # Arch Linux currently ships newer setuptools than upstream's build cap.
-  # The package builds with the distro setuptools, so relax the upper bound.
-  sed -i 's/setuptools>=77.0,<83/setuptools>=77.0/' pyproject.toml
+  # Relax upstream's exact build-system pin: `python -m build --no-isolation`
+  # validates requires against the system env, and Arch ships newer setuptools.
+  sed -i 's/requires = \["setuptools==83.0.0"\]/requires = ["setuptools>=83.0.0"]/' pyproject.toml
   # Python 3.14: ThreadPoolExecutor no longer has _initializer/_initargs
   patch -p1 < "${srcdir}/0001-fix-daemon-pool-py314-ThreadPoolExecutor-API.patch"
 }

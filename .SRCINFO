@@ -1,6 +1,6 @@
 pkgbase = python-hermes-agent
 	pkgdesc = The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere
-	pkgver = 0.20.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://github.com/NousResearch/hermes-agent
 	arch = any
@@ -47,7 +47,6 @@ pkgbase = python-hermes-agent
 	optdepends = python-faster-whisper: Local voice transcription
 	optdepends = python-sounddevice: Audio I/O for voice
 	optdepends = python-numpy: Numerical computing for voice/other
-	optdepends = python-simple-term-menu: Interactive CLI menu
 	optdepends = python-slack-sdk: Slack integration
 	optdepends = python-qrcode: QR code generation for auth
 	optdepends = python-croniter: Cron scheduling support (upstream-required, AUR)
@@ -63,9 +62,9 @@ pkgbase = python-hermes-agent
 	optdepends = python-defusedxml: XML hardening for WeCom
 	options = !strip
 	options = !debug
-	source = https://github.com/NousResearch/hermes-agent/archive/refs/tags/v2026.8.3.tar.gz
+	source = https://github.com/NousResearch/hermes-agent/archive/refs/tags/v2026.8.13.tar.gz
 	source = 0001-fix-daemon-pool-py314-ThreadPoolExecutor-API.patch
-	sha256sums = 370542c7219faba6300905c3b419e14e6508a31ac698a1a5174e0386990834be
+	sha256sums = 2b202b0cbcecfaeec85572b60d66cd481ca387248b592878bf92204de78abefe
 	sha256sums = 6b3357098d9e70eb33c95e2f7d12c2bdc016f6e7933b517d85f1399d50caea71
 
 pkgname = python-hermes-agent
