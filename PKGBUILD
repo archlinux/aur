@@ -9,8 +9,8 @@
 _pkgbase=hdf5
 pkgname=hdf5-geant4
 pkgver=2.2.0
-pkgrel=1
-pkgdesc="General purpose library and file format for storing scientific data (OpenMPI Thread-Safe version for Geant4, static linking with unsupported options enabled: Fortran and C++)"
+pkgrel=2
+pkgdesc="General purpose library and file format for storing scientific data (OpenMPI Thread-Safe version for Geant4 with unsupported options enabled: Fortran and C++)"
 arch=(x86_64)
 url="https://www.hdfgroup.org/hdf5"
 license=(BSD-3-Clause)
@@ -43,7 +43,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -Wno-dev
     -DHDF5_USE_GNU_DIRS=ON
-    -DBUILD_STATIC_LIBS=ON
+    -DBUILD_STATIC_LIBS=OFF
     -DHDF5_BUILD_CPP_LIB=ON
     -DHDF5_BUILD_HL_LIB=ON
     -DHDF5_BUILD_FORTRAN=ON

@@ -1,7 +1,7 @@
 pkgbase = hdf5-geant4
-	pkgdesc = General purpose library and file format for storing scientific data (OpenMPI Thread-Safe version for Geant4, static linking with unsupported options enabled: Fortran and C++)
+	pkgdesc = General purpose library and file format for storing scientific data (OpenMPI Thread-Safe version for Geant4 with unsupported options enabled: Fortran and C++)
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hdfgroup.org/hdf5
 	arch = x86_64
 	license = BSD-3-Clause
