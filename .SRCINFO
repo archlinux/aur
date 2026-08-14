@@ -1,13 +1,15 @@
 pkgbase = ioexplorer-git
 	pkgdesc = Wayland-native provider-oriented file manager for Wayland desktops
-	pkgver = r56.b0693a0
+	pkgver = r67.aaab7e1
 	pkgrel = 1
 	url = https://github.com/LucasionGS/ioexplorer
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = git
 	depends = gtk4
 	depends = glib2
+	depends = gtk4-layer-shell
 	optdepends = xdg-desktop-portal: use ioexplorer as a desktop portal FileChooser backend
 	optdepends = xdg-utils: set ioexplorer as the default directory handler with xdg-mime
 	source = ioexplorer-git::git+https://github.com/LucasionGS/ioexplorer.git

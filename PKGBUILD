@@ -1,12 +1,12 @@
 pkgname=ioexplorer-git
-pkgver=r56.b0693a0
+pkgver=r67.aaab7e1
 pkgrel=1
 pkgdesc='Wayland-native provider-oriented file manager for Wayland desktops'
 arch=('x86_64')
 url='https://github.com/LucasionGS/ioexplorer'
 license=('MIT')
-depends=('gtk4' 'glib2')
-makedepends=('cargo')
+depends=('gtk4' 'glib2' 'gtk4-layer-shell')
+makedepends=('cargo' 'git')
 optdepends=(
   'xdg-desktop-portal: use ioexplorer as a desktop portal FileChooser backend'
   'xdg-utils: set ioexplorer as the default directory handler with xdg-mime'
@@ -26,6 +26,7 @@ package() {
   install -Dm755 target/release/ioexplorer-spotlight "$pkgdir/usr/bin/ioexplorer-spotlight"
   install -Dm755 target/release/ioexplorer-file-manager "$pkgdir/usr/bin/ioexplorer-file-manager"
   install -Dm755 target/release/ioexplorer-portal "$pkgdir/usr/bin/ioexplorer-portal"
+  install -Dm755 target/release/ioexplorer-desktop "$pkgdir/usr/bin/ioexplorer-desktop"
   install -Dm644 data/io.github.ionix.IoExplorer.desktop "$pkgdir/usr/share/applications/io.github.ionix.IoExplorer.desktop"
   install -Dm644 data/io.github.ionix.IoExplorer.metainfo.xml "$pkgdir/usr/share/metainfo/io.github.ionix.IoExplorer.metainfo.xml"
   install -Dm644 data/icons/hicolor/scalable/apps/io.github.ionix.IoExplorer.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.ionix.IoExplorer.svg"
@@ -35,6 +36,7 @@ package() {
   install -Dm644 data/ioexplorer-portals.conf "$pkgdir/usr/share/doc/$pkgname/ioexplorer-portals.conf"
   install -Dm644 data/ioexplorer-spotlight.service "$pkgdir/usr/lib/systemd/user/ioexplorer-spotlight.service"
   install -Dm644 data/ioexplorer-portal.service "$pkgdir/usr/lib/systemd/user/ioexplorer-portal.service"
+  install -Dm644 data/ioexplorer-desktop.service "$pkgdir/usr/lib/systemd/user/ioexplorer-desktop.service"
 }
 
 post_install() {
@@ -44,5 +46,8 @@ post_install() {
   echo
   echo "Enable the Portal server with:"
   echo "  systemctl --user enable --now ioexplorer-portal.service"
+  echo
+  echo "Enable desktop icons with:"
+  echo "  systemctl --user enable --now ioexplorer-desktop.service"
   echo "------------------------------------------------------------"
 }
