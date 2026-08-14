@@ -1,16 +1,16 @@
 pkgbase = crush-extended-bin
 	pkgdesc = Unofficial Crush build with community plugins (acp, kuri, otlp, agent-status, periodic-prompts, subagents, tempotown, tavily)
-	pkgver = 2026.08.14.1
+	pkgver = 2026.08.14.2
 	pkgrel = 1
 	url = https://github.com/aleksclark/crush-modules
 	license = MIT
 	conflicts = crush
 	provides = crush
 	arch = aarch64
-	source_aarch64 = https://github.com/aleksclark/crush-modules/releases/download/2026.08.14.1/crush-extended_2026.08.14.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 30091e427867a1ec517d52fb14d8249e7183c84deef087d3e2da0a75f446b66a
+	source_aarch64 = https://github.com/aleksclark/crush-modules/releases/download/2026.08.14.2/crush-extended_2026.08.14.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 70885c55708220095b30dedd5da0e5b1f306c64a795ed90b685025b487ef69e8
 	arch = x86_64
-	source_x86_64 = https://github.com/aleksclark/crush-modules/releases/download/2026.08.14.1/crush-extended_2026.08.14.1_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 0124df36406bc7c6ff177dcb15d38464cc8d22dca453c8e0f70c92be66bb3295
+	source_x86_64 = https://github.com/aleksclark/crush-modules/releases/download/2026.08.14.2/crush-extended_2026.08.14.2_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 65576b9deee5e9d76a892bc76fcade5235c30342413b20d089903ba42dd0ba0c
 	
 pkgname = crush-extended-bin
