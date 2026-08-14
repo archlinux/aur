@@ -1,7 +1,7 @@
 pkgbase = jsrc
 	pkgdesc = Python library for bioinformatics and scientific computing
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/imjiaoyuan/jsrc
 	arch = any
 	license = MIT
