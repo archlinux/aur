@@ -28,7 +28,7 @@ source=(
     "io.github.wergosam.pachul.desktop"
     "io.github.wergosam.pachul-tray.desktop"
 )
-sha256sums=('HIER_ECHTE_CHECKSUMME_EINTRAGEN_NACH_TAG_v2.2.5'
+sha256sums=('eeca40f0ee2a6ab038f57c2b5b8ecf8142cbdce987602cb1cbe0b99d6ef65694'
             '355adac78b4a3e16647e50ef819858b36de0831c47d6f874e4a08a7f1bb83da2'
             'eb148625bfb4ad11b897e2c2e80722ebac0d4f34d94e8bda0f95a1169e88b194')
 
