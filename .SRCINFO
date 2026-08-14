@@ -12,6 +12,7 @@ pkgbase = vicinae-git
 	makedepends = ninja
 	makedepends = npm
 	makedepends = glaze
+	makedepends = wayland-protocols
 	makedepends = qt6-shadertools
 	makedepends = qt6-tools
 	depends = nodejs

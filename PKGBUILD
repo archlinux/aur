@@ -2,7 +2,7 @@
 # Maintainer: cilgin <cilgincc@outlook.com>
 
 pkgname=vicinae-git
-pkgver=0.24.0.r1.gdef25a3
+pkgver=0.25.0.r17.g194b398
 pkgrel=1
 pkgdesc="A focused launcher for your desktop — native, fast, extensible"
 arch=('x86_64' 'aarch64')
@@ -24,6 +24,7 @@ makedepends=(
   'ninja'
   'npm'
   'glaze'
+  'wayland-protocols'
   'qt6-shadertools'
   'qt6-tools'
 )
