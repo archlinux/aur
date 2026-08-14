@@ -1,7 +1,7 @@
 pkgbase = mlink-bin
 	pkgdesc = mLink - mBlock web version driver
 	pkgver = 1.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/yassinec.org/mlink-bin
 	install = mlink.install
 	arch = x86_64
