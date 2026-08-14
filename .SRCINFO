@@ -1,0 +1,16 @@
+pkgbase = ollama-studio-app-git
+	pkgdesc = A desktop frontend interface for Ollama
+	pkgver = r8.d015a10
+	pkgrel = 1
+	url = https://github.com/vsk11-12/ollama-studio-app
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = ollama
+	provides = ollama-studio-app
+	conflicts = ollama-studio-app
+	source = git+https://github.com/vsk11-12/ollama-studio-app.git
+	sha256sums = SKIP
+
+pkgname = ollama-studio-app-git
