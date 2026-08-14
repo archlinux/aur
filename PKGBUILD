@@ -2,11 +2,11 @@
 
 pkgname=par2deep
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create, verify and repair parity files in a file tree."
 arch=('any')
 url="https://github.com/brenthuisman/par2deep"
-license=('LGPL3')
+license=('LGPL-3.0-only')
 depends=('python')
 makedepends=('gendesk' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/brenthuisman/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
@@ -26,7 +26,7 @@ package() {
 		'python-tqdm'
 		'python-configargparse'
 		'python-send2trash'
-		'python-pyqt5'
+		'tk'
 		'python-darkdetect'
 		'par2cmdline')
 
@@ -34,5 +34,4 @@ package() {
 
 	cd "${_srcdir}"
 	python -m installer --destdir="$pkgdir" dist/*.whl
-	install -Dm644 'LICENSE' -t "$pkgdir/usr/share/licenses/${pkgname}"
 }
