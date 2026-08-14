@@ -3,7 +3,7 @@
 # release and installs it (no compilation). Bump pkgver to match a published
 # release tag (e.g. v0.1.0).
 
-pkgname=mcomix-rs
+pkgname=mcomix-rs-bin
 pkgver=0.3.0
 pkgrel=1
 pkgdesc="A user-friendly, customizable comic book image viewer (Rust/GTK4 port)"
