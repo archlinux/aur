@@ -20,12 +20,12 @@ md5sums=('SKIP'
 	 '033814f289ed954599d4ea1da0d2637a')
 
 pkgver() {
-    cd "$pkgname"
+    cd "ironwail"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/$pkgname/"
+	cd "$srcdir/ironwail/"
 	mkdir -p build
 	cd build
 	cmake ..
@@ -34,23 +34,23 @@ build() {
 
 package() {
 	# Navigate to launch script
-	cd "$srcdir/$pkgname"
-	install -Dm755 $srcdir/launch_ironwail.sh "$pkgdir"/usr/bin/$pkgname
+	cd "$srcdir/ironwail"
+	install -Dm755 $srcdir/launch_ironwail.sh "$pkgdir"/usr/bin/ironwail
 
 	# Navigate to built files
-	cd "$srcdir/$pkgname/"
+	cd "$srcdir/ironwail/"
 
 	# Create Destination Directories
 	install -d "${pkgdir}"/{usr/bin,/opt/ironwail}
 
 	# Install executable and PAK file
-	install -Dm755 build/ironwail "$pkgdir"/opt/$pkgname/ironwail
-	install -Dm644 Quake/ironwail.pak "$pkgdir"/opt/$pkgname/ironwail.pak
+	install -Dm755 build/ironwail "$pkgdir"/opt/ironwail/ironwail
+	install -Dm644 Quake/ironwail.pak "$pkgdir"/opt/ironwail/ironwail.pak
 
 	# Install icons and desktop file
 	for i in 16 24 32 48 64 72; do
-		install -Dm644 $srcdir/$pkgname/Misc/QuakeSpasm_512.png $pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/ironwail.png
+		install -Dm644 $srcdir/ironwail/Misc/QuakeSpasm_512.png $pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/ironwail.png
   	done
 
-	install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+	install -Dm644 $srcdir/ironwail.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 }
