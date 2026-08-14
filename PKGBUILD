@@ -1,7 +1,7 @@
 # Maintainer: dllud <dllud riseup net>
 
 pkgname=grin-wallet-bin
-pkgver=5.4.1
+pkgver=5.5.0
 pkgrel=1
 pkgdesc="Reference implementation of Grin's wallet."
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('grin-wallet')
 provides=('grin-wallet')
 options=(!strip)
 source=("https://github.com/mimblewimble/grin-wallet/releases/download/v${pkgver}/grin-wallet-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('499401d73aeee7a7dbe705b288c208d012440b539e0ae574adebf984d3de512a')
+sha256sums=('5d625e941985da15c96cdbb1f8412e2227e7a3ff024d45cb5939aae2111a2de4')
 
 package() {
   install -Dm755 -t "${pkgdir}/usr/bin" "${srcdir}/grin-wallet"
