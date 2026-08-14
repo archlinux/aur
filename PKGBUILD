@@ -2,7 +2,7 @@
 # Rendered and pushed automatically by .github/workflows/publish.yml;
 # @PLACEHOLDERS@ are substituted from the release tag and SHA256SUMS.
 pkgname=keyroost-bin
-pkgver=0.7.6
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="CLI + GUI for programming Token2 Molto2 TOTP tokens and managing FIDO2/OATH/OpenPGP/PIV security keys (prebuilt)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('keyroost' 'keyroostctl')
 conflicts=('keyroost')
 source=("keyroost-v$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/keyroost-v$pkgver-linux-x86_64.tar.gz"
         "70-keyroost-fido-$pkgver.rules::https://raw.githubusercontent.com/framefilter/keyroost/v$pkgver/udev/70-keyroost-fido.rules")
-sha256sums=('b72a86f7c28d2db97735e5bab08ede62ac34d5d18ab5093c8088b923af0f9154'
+sha256sums=('033e7378be357d49de0bcc1399761909fda1345a7f15877a5c0f2a4499d8e86c'
             '4e718383909598c88e140c86d56cbf7ebdc87ef0f3bb55aaaaa1ae238db91287')
 
 package() {
