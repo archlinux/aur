@@ -8,8 +8,6 @@ readonly root=${LMM_API_WEB_ROOT:-/srv/lmm-api-frontend}
 readonly source_dir=${LMM_API_WEB_SOURCE:-/usr/share/lmm-api-web/frontend-dist}
 readonly publisher=${LMM_API_WEB_PUBLISHER:-/usr/lib/lmm-api-web/frontend-release.sh}
 readonly revision_file=${LMM_API_WEB_REVISION_FILE:-/usr/share/doc/lmm-api-web-bin/REVISION}
-readonly probe_url=${LMM_API_WEB_PROBE_URL:-https://api.lmm.best/}
-readonly probe_resolve=${LMM_API_WEB_PROBE_RESOLVE:-api.lmm.best:443:127.0.0.1}
 readonly keep=${LMM_API_WEB_KEEP:-3}
 
 [[ -f $revision_file && ! -L $revision_file ]] || die 'release revision is unavailable'
@@ -69,22 +67,6 @@ fi
 nginx -t
 systemctl reload nginx.service
 systemctl is-active --quiet nginx.service
-probe_args=(
-  --fail
-  --silent
-  --show-error
-  --location
-  --connect-timeout 3
-  --max-time 10
-  --retry 5
-  --retry-delay 1
-  --retry-max-time 20
-  --retry-connrefused
-)
-if [[ -n $probe_resolve ]]; then
-  probe_args+=(--resolve "$probe_resolve")
-fi
-curl "${probe_args[@]}" "$probe_url" >/dev/null
 mutation_started=0
 trap - ERR
 printf 'active_web_release=%s\n' "$release"
