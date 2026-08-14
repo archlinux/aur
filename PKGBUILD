@@ -1,5 +1,5 @@
 pkgname=nm-sidebar
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='GTK4/libadwaita NetworkManager sidebar for Wayland desktops'
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
   'pkgconf'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7eee2809171bf5213d5f7fc2b85d047bd7de2aef3243832a55eba82c040bbf9c')
+sha256sums=('151463a72b67ee2f6efd65fde6569c312004c50e9c61871a2d27c40675ef6a92')
 
 _github_repo='Relz/network-manager-sidebar'
 _source_name="${_github_repo##*/}-$pkgver"
