@@ -2,7 +2,7 @@
 # Maintainer: combor <163394+combor@users.noreply.github.com>
 
 pkgname='baryon-mcp-bin'
-pkgver=0.4.2
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Read Proton Mail and save drafts through your local Proton Mail Bridge.'
 url='https://github.com/combor/baryon-mcp'
@@ -12,10 +12,10 @@ provides=('baryon-mcp')
 conflicts=('baryon-mcp')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/combor/baryon-mcp/releases/download/v${pkgver}/baryon-mcp_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('1c0c3d82554c501083e47552b540c0533f2305102b96f6a2edb0330662db330c')
+sha256sums_aarch64=('2c047a8488394ed588a5f5173887b09f6e9ba8dc58e4b8623cbb2bb5dd0526cb')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/combor/baryon-mcp/releases/download/v${pkgver}/baryon-mcp_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('28a8816cfa5af7c4f0d23e1a989f8fb6893572067c172774226a276c9076f936')
+sha256sums_x86_64=('5fe981ac5063c1d4ac583a50c4c45224bb8c79947a7a54eaf889f4c19c831e88')
 
 package() {
   install -Dm755 "./baryon-mcp" "${pkgdir}/usr/bin/baryon-mcp"
