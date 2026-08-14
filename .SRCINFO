@@ -1,6 +1,6 @@
 pkgbase = vtcode-bin
 	pkgdesc = An open-source coding agent with LLM-native code understanding and robust shell safety.
-	pkgver = 0.142.8
+	pkgver = 0.144.0
 	pkgrel = 1
 	url = https://github.com/vinhnx/VTCode
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = vtcode-bin
 	optdepends = ast-grep: for search runtime
 	optdepends = ghostty: for richer PTY snapshots
 	conflicts = vtcode
-	source = https://github.com/vinhnx/VTCode/releases/download/0.142.8/vtcode-0.142.8-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 9250d6bb59e1a85e2b5fc3526dcea1e229f8e039016b9d2ce601d52837013510
+	source = https://github.com/vinhnx/VTCode/releases/download/0.144.0/vtcode-0.144.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = eaf494b041ec7fb356c01331912ad2549c945dedb720aad5c4a6db581e12d3a8
 
 pkgname = vtcode-bin
