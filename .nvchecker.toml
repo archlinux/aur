@@ -1,0 +1,5 @@
+[serv-bin]
+source = "github"
+github = "xonixx/serv"
+use_latest_release = true
+prefix = "v"
