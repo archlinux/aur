@@ -3,7 +3,7 @@
 _Name="Lerc"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
-pkgver=4.1.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Limited Error Raster Compression library"
 arch=(
@@ -18,6 +18,9 @@ depends=(
   'libgcc'
   'libstdc++'
 )
+makedepends=(
+  'patchelf'
+)
 provides=(
   "${_pkgname}"
   "lib${_Name}.so"
@@ -30,11 +33,15 @@ source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
   "${_pkgsrc}-all.zip::${url}/releases/download/v${pkgver}/bin.zip"
 )
-sha256sums=('fe2860e10635166cd9f2144e429ec6b870d471e9957f5812ba2da0973770b022'
-            '957fe9f3733637688e3302c0b055ee1189f71ce4121b6f7a0ec5349b33971776')
+sha256sums=('a1fb593ed1fcb5b38800caf3c4454f872745202e961d00d745e53d81447e17c9'
+            '3b3e97c45409c94379cfcd01cac1bea375dbf971ab1aa5b64c85f2b82b804c3a')
 
 prepare() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}"
+  find "bin/linux" -type f -name 'lib*.so*' -exec \
+      patchelf --remove-rpath "{}" \;
+
+  cd "${_pkgsrc}"
   cp -v "${_Name}.pc.in" "${_Name}.pc"
   sed -e "s|@CMAKE_INSTALL_PREFIX@|/usr|g" \
       -e "s|@CMAKE_INSTALL_INCLUDEDIR@|include|g" \
