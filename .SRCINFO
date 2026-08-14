@@ -9,6 +9,7 @@ pkgbase = wstroke-git
 	makedepends = meson
 	makedepends = ninja
 	makedepends = vala
+	makedepends = boost
 	depends = wayfire-git
 	depends = wlroots0.20
 	depends = cairo
