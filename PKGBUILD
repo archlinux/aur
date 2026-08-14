@@ -1,6 +1,6 @@
 _pkgname=adwifi
 pkgname=$_pkgname-git
-pkgver=r0.g0000000
+pkgver=0.1.0.r44.g483f9fa
 pkgrel=1
 pkgdesc="A libadwaita Wi-Fi manager backed by iwd"
 arch=('any')
@@ -14,7 +14,7 @@ depends=(
     'libadwaita'
     'python-cairo'
     'iwd'
-    'speedtest-cli'
+    'ookla-speedtest-bin'
 )
 
 makedepends=(

@@ -1,6 +1,6 @@
 pkgbase = adwifi-git
 	pkgdesc = A libadwaita Wi-Fi manager backed by iwd
-	pkgver = r0.g0000000
+	pkgver = 0.1.0.r44.g483f9fa
 	pkgrel = 1
 	url = https://github.com/rzesm/adwifi
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = adwifi-git
 	depends = libadwaita
 	depends = python-cairo
 	depends = iwd
-	depends = speedtest-cli
+	depends = ookla-speedtest-bin
 	provides = adwifi
 	conflicts = adwifi
 	source = adwifi::git+https://github.com/rzesm/adwifi.git
