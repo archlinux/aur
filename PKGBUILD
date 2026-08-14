@@ -5,12 +5,12 @@
 
 pkgname=nghttp2
 pkgver=1.70.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Client, server and proxy programs from the nghttp2 library'
 arch=(x86_64)
 url='https://nghttp2.org/'
 license=(MIT)
-depends=(python libev libxml2 jansson jemalloc c-ares "libnghttp2>=$pkgver" systemd-libs)
+depends=('openssl>=1.1.1' 'libev>=4.11' 'zlib>=1.2.3' 'c-ares>=1.7.5' 'libxml2>=2.6.26' 'systemd-libs>=209' 'jansson>=2.5' 'jemalloc' "libnghttp2>=$pkgver")
 options=(!emptydirs)
 source=(https://github.com/nghttp2/nghttp2/releases/download/v$pkgver/nghttp2-$pkgver.tar.xz)
 backup=(
@@ -25,8 +25,9 @@ build() {
   autoreconf -i
   ./configure \
     --prefix=/usr \
+    --with-openssl \
     --disable-examples \
-    --enable-zerobleed
+    --enable-app
   make
 }
 
