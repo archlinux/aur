@@ -6,7 +6,7 @@
 # pushes to the AUR. Edit depends / package() etc. here — never in the
 # AUR repo directly.
 pkgname=mousehop
-pkgver=0.14.3
+pkgver=0.14.4
 pkgrel=1
 pkgdesc='Software KVM Switch / mouse & keyboard sharing software for Local Area Networks'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('libadwaita' 'gtk4' 'libx11' 'libxtst' 'glib2' 'glibc' 'gcc-libs' 'hico
 makedepends=('rust')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c510f02a72c081a7cd114fb92cf4ed1dd6f31ca851327b084e11ec70b4ea0a30')
+sha256sums=('c606498e60b7b0077f98fdfa0294e54f8df669d9a4ce3b23761eafb2b8d114e4')
 
 prepare() {
   cd "$pkgname-$pkgver"
