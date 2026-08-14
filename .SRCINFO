@@ -1,0 +1,23 @@
+pkgbase = magicpods
+	pkgdesc = Control center for your Bluetooth headphones (AirPods, Beats, Galaxy Buds)
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/steam3d/MagicPodsLinux
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-websockets
+	depends = qt6-svg
+	depends = hicolor-icon-theme
+	depends = magicpodscore
+	source = magicpods-1.0.2.tar.gz::https://github.com/steam3d/MagicPodsLinux/archive/refs/tags/1.0.2.tar.gz
+	source = app.magicpods.desktop
+	sha256sums = 0158b7f3def63c74626727376fb504e6995ce6fb7fb9e2990364cb6d0bc2560e
+	sha256sums = SKIP
+
+pkgname = magicpods
