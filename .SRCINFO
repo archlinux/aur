@@ -1,0 +1,11 @@
+pkgbase = win11fonts-auto
+	pkgdesc = replacement for broken ttf-ms-win10/11-fonts pkgs. saw this in a comment section of said pkgs and said why not make a pkgbuild.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = custom
+	depends = 7zip
+	source = https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26100.1742.240906-0331.ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso
+	sha256sums = 755a90d43e826a74b9e1932a34788b898e028272439b777e5593dee8d53622ae
+
+pkgname = win11fonts-auto
