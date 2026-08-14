@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@agentics.co.za>
 # ---
 pkgname=agentics-companion
-pkgver=0.1.82
+pkgver=0.1.83
 pkgrel=1
 pkgdesc="Agentics Companion - the local relay and voice daemon that links every Agentics surface to the hub"
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://agentics.co.za"
 license=('custom')
 depends=()
 options=('!strip' '!debug')
-source=("agentics-companion-0.1.82-x86_64::https://repo.agentics.co.za/x86_64/agentics-companion-0.1.82-x86_64")
-sha512sums=('7f3855f0ffd3e58ee0c5d90b977639ea1efd3a08647c60e595366cf22b2f0e89a8eaa6d7c37a90e5bbf3276cd70d32462894be64e3d730c488664f460f28cb64')
+source=("agentics-companion-0.1.83-x86_64::https://repo.agentics.co.za/x86_64/agentics-companion-0.1.83-x86_64")
+sha512sums=('fc0af5851a8b0955ae6690c49cbdba1c8b3dfaea66f60de8b2123d3a6d7158860908c33b339235de2d2120e66a4aa231d3a51f599c303e3b4eeb50170e05bb22')
 
 package() {
-  install -Dm755 "$srcdir/agentics-companion-0.1.82-x86_64" "$pkgdir/usr/bin/agentics-companion"
+  install -Dm755 "$srcdir/agentics-companion-0.1.83-x86_64" "$pkgdir/usr/bin/agentics-companion"
 }
