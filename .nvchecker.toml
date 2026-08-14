@@ -1,0 +1,6 @@
+[celestia-bin]
+source = "regex"
+url = "https://celestiaproject.space/arch.html"
+regex = "Celestia ([\\d\\.]*) on Arch Linux"
+from_pattern = '^([\d\.]*)$'
+to_pattern = '\1.0'
