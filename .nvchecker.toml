@@ -1,0 +1,5 @@
+[shd-bin]
+source = "github"
+github = "alttch/shd"
+use_latest_release = true
+prefix = "v"
