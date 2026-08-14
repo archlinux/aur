@@ -1,0 +1,18 @@
+pkgbase = riprip
+	pkgdesc = Specialized audio CD-ripper optimized for track recovery
+	pkgver = 0.5.9
+	pkgrel = 1
+	url = https://github.com/Blobfolio/riprip
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	depends = glibc
+	depends = libcdio
+	depends = libgcc
+	options = !lto
+	source = git+https://github.com/Blobfolio/riprip.git#tag=v0.5.9
+	sha256sums = 824a46b46b7fb63db3aac5364d3e8cedf6d89158d85f0aaa6a416e0e8d3bce27
+
+pkgname = riprip
