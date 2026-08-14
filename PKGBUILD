@@ -1,6 +1,6 @@
 # Maintainer: Floofy floofyiv9@proton.me
 pkgname=spencers-macro-git
-pkgver=3.3.0.r15.fe47b8f
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Spencer Macro Utilities (git version)"
 arch=('x86_64')
@@ -21,9 +21,7 @@ depends=(
   'libxkbcommon'
   'libglvnd'
   'mesa'
-  'libpipewire'
   'dbus'
-  'libei'
   'systemd-libs'
   'gcc-libs'
   'glibc'
@@ -32,12 +30,13 @@ makedepends=(
   'base-devel'
   'git'
   'cmake'
-  'pkg-config'
+  'pkgconf'
   'go'
   'pipewire'
   'libei'
 )
 optdepends=(
+  'libpipewire: Wayland screeb puxel reads via PipeWire ScreenCast'
   'pipewire: Wayland screen pixel reads via PipeWire ScreenCast'
   'libei: Wayland RemoteDesktop EIS input support'
 )
@@ -48,8 +47,8 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  'SKIP'
-  'SKIP'
+  'fba6f7ef7b4fe1dcba95ddab958fe8539c9d30f4b9c6d57a031a3bd95ed55a7e'
+  '07d189e9fa31108f3e81b4e57225364bdcbfceecf2eccaf8d8a9a3a19187740c'
 )
 
 pkgver() {
