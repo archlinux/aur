@@ -1,0 +1,27 @@
+diff --git a/lib/tests/fabrics/ofi/test_AudioBounceBuffer.cpp b/lib/tests/fabrics/ofi/test_AudioBounceBuffer.cpp
+index 40b8c429..62dfb13c 100644
+--- a/lib/tests/fabrics/ofi/test_AudioBounceBuffer.cpp
++++ b/lib/tests/fabrics/ofi/test_AudioBounceBuffer.cpp
+@@ -6,7 +6,7 @@
+ #include <cstdint>
+ #include <cstring>
+ #include <vector>
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch_all.hpp>
+ #include "AudioBounceBuffer.hpp"
+ 
+ using namespace mxl::lib::fabrics::ofi;
+diff --git a/lib/tests/fabrics/test_sliced.cpp b/lib/tests/fabrics/test_sliced.cpp
+index 1a63e20f..1db48d07 100644
+--- a/lib/tests/fabrics/test_sliced.cpp
++++ b/lib/tests/fabrics/test_sliced.cpp
+@@ -11,8 +11,8 @@
+ #include <stdexcept>
+ #include <string>
+ #include <utility>
+-#include <catch.hpp>
+ #include <unistd.h>
++#include <catch2/catch_all.hpp>
+ #include <fmt/base.h>
+ #include <mxl/fabrics.h>
+ #include "mxl/flow.h"

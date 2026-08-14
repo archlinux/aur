@@ -1,6 +1,6 @@
 pkgbase = mxl
 	pkgdesc = Dynamic Media Facility: Media Exchange Layer
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/dmf-mxl/mxl
 	arch = x86_64
@@ -16,16 +16,19 @@ pkgbase = mxl
 	depends = fmt
 	depends = gstreamer
 	depends = gst-plugins-base
-	provides = mxl=1.0.1
-	source = https://github.com/dmf-mxl/mxl/archive/refs/tags/v1.0.1.tar.gz
+	depends = libfabric
+	provides = mxl=1.1
+	source = https://github.com/dmf-mxl/mxl/archive/refs/tags/v1.1.0-rc1.tar.gz
 	source = picojson-include-path.patch
 	source = use-std-span.patch
 	source = remove-linker-test.patch
 	source = missing-algo-include.patch
-	sha256sums = 4f9a43a4731ef7ab58d0e6dd796659f0a693176abc8e5dd3709753230504241b
-	sha256sums = 361ccfec49df6e5fc6ad2de313c01e6e86dfd2e12e7e674d5180e7e9b295a2d0
+	source = catch2-include.patch
+	sha256sums = 78367f35d54554dc9dd3f423fc00a049a0d657d8141e60586e3d5baf64e89115
+	sha256sums = 2c1c2066049dd0d640f381fdc47ba6dd5e8116e1b0763f96cd7ca53d52476ed8
 	sha256sums = 3a9dc2d15ce92457a2b2204ebc211e7725b9810222a5a871bc452815d4861ab4
-	sha256sums = 0e54c360553b2145f842764bd05abfacd8d4aeb9d18dbec3db183c315476e2cf
+	sha256sums = 68740300500eeb0a9fd6f505c32964aad2c1ed4c8d77fb817f95bfb3001ac755
 	sha256sums = 32ef38db1954b949f673c2e32c0cc19503403ebc36489026306a76e03931a48b
+	sha256sums = 6ea87dfd27a47cd60ddcc7b7584f08f5cdfdae804312930163a91e37ea3082ac
 
 pkgname = mxl

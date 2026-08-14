@@ -1,5 +1,5 @@
 diff --git a/cmake/modules/Findpicojson.cmake b/cmake/modules/Findpicojson.cmake
-index d81d72f..ad19384 100644
+index d81d72fb..ad193840 100644
 --- a/cmake/modules/Findpicojson.cmake
 +++ b/cmake/modules/Findpicojson.cmake
 @@ -1,7 +1,7 @@
