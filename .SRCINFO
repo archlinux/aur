@@ -1,6 +1,6 @@
 pkgbase = amneziawg-linux-hardened
-	pkgdesc = AmneziaWG is a contemporary version of the popular VPN protocol, WireGuard.
-	pkgver = 3.0.20260731
+	pkgdesc = AmneziaWG prebuilt kernel module for linux-hardened (AWG 3.1)
+	pkgver = 3.1.20260812
 	pkgrel = 1
 	url = https://github.com/amnezia-vpn/amneziawg-linux-kernel-module
 	install = amneziawg-linux-hardened.install
@@ -8,11 +8,15 @@ pkgbase = amneziawg-linux-hardened
 	license = GPLv2
 	makedepends = linux-hardened
 	makedepends = linux-hardened-headers
-	provides = AMNEZIAWG-MODULE=3.0.20260731
-	source = amneziawg-linux-hardened-3.0.20260731.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v3.0.20260731.tar.gz
-	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.5.tar.xz
-	sha512sums = 39fb2cb3ba7844c7c39fa0d4f41a07f61bd40d66582d69aa34065ef539b81b6b476a0ec97228e424f886708a9d8074763e101d7d8a79ef95dee55d79d44201e4
-	sha512sums = 17f95307b6e86a0794df146d97256ba4783b7a494f5eb43aafc14d64367541874cec7f6e8c2ea724eca149db18e4bd5880bf28a8c5e47ae8a769776bbd955af8
+	provides = AMNEZIAWG-MODULE
+	conflicts = amneziawg-dkms
+	conflicts = amneziawg-linux
+	source = amneziawg-linux-hardened-3.1.20260812.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v3.1.20260812.tar.gz
+	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.8.tar.xz
+	source = kernel-7.1.5-udp-tunnel.patch
+	sha512sums = 2d53bcb822c3fe51e69c3167b1ffdb86b820b9f70f364d94e0c1ca8d131f91bc6b89db1a0fcfdefa5cc73580538d4b2c25586d66b7d5b7f86a3569d471a74a63
+	sha512sums = e17057478fd498fd4d83c4b6d3712fdfc3c6ae1d077114ea74ee41186cbd75add292f5e5f810fdf41242fd506a476d34447392b1c8194b5e8a6af1a59ac48a74
+	sha512sums = 1847bd087dbf42e683a92df9933e2634d63e76492ae0936a9496d95cc2ad36991486270e72eefbf39b24263ccd414c543ec7c1af133f17846e88832a3a3510bb
 
 pkgname = amneziawg-linux-hardened
 	depends = linux-hardened
