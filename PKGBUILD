@@ -2,7 +2,7 @@
 
 pkgname=axolotl-launcher
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform Minecraft launcher'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Mystic-Stars/Axolotl'
@@ -20,7 +20,7 @@ source=(
   'axolotl-launcher.desktop'
   'red.ghs.axolotl.xml'
 )
-sha256sums=('771bd1624d427f537cb40cb61c15f870cbc0fb0e2fa4b8c7067ea0bf7d5e2bdf'
+sha256sums=('0bd3003d2acec938e2221527188d7463ca3c1810392a490767c1382890f8d6d8'
             'SKIP'
             '9a98c15cb4f1a3cec9a893be5950600b1e6fa3b6029df3a2cae88b150636520b'
             'a3c7ac4b8489dff5a8e558780765648dccc99c8a65b13e6dd11777de8352da7f')
