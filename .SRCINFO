@@ -1,7 +1,7 @@
 pkgbase = whisper.cpp-cuda-bin
 	pkgdesc = Port of OpenAI's Whisper model in C/C++ with NVIDIA CUDA optimizations
 	pkgver = 1.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OneNoted/whisper.cpp-cuda-bin
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = whisper.cpp-cuda-bin
 	provides = whisper.cpp-cuda=1.9.2
 	conflicts = whisper.cpp
 	conflicts = whisper.cpp-cuda
-	source = whisper.cpp-cuda-bin-1.9.2-2-x86_64.tar.zst::https://github.com/OneNoted/whisper.cpp-cuda-bin/releases/download/v1.9.2-2/whisper.cpp-cuda-bin-1.9.2-2-x86_64.tar.zst
-	sha256sums = 5bbf5c1794b6544399f521de982d083754da61cf8175de14477caf510d19d38e
+	source = whisper.cpp-cuda-bin-1.9.2-3-x86_64.tar.zst::https://github.com/OneNoted/whisper.cpp-cuda-bin/releases/download/v1.9.2-3/whisper.cpp-cuda-bin-1.9.2-3-x86_64.tar.zst
+	sha256sums = 6b31141261eb03693982ec0e9219539472024ba818d35e0317826ed6329b1a43
 
 pkgname = whisper.cpp-cuda-bin
