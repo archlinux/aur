@@ -1,0 +1,5 @@
+[theattyr-bin]
+source = "github"
+github = "orhun/theattyr"
+use_latest_release = true
+prefix = "v"
