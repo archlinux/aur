@@ -1,7 +1,7 @@
 # Maintainer: Sapphic Angels <chloe@sapphic.moe>
 # Binary package PKGBUILD - installs from pre-built releases
 pkgname=chiri-bin
-pkgver=0.9.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A cross-platform CalDAV task management app. Currently in very early alpha! (binary release)"
 arch=('x86_64' 'aarch64')
@@ -35,11 +35,11 @@ source_aarch64=(
 )
 
 sha256sums_x86_64=(
-  '7fa307fc3f1f11148e3fdd944327ea4a787cadc55ef40e8ea02f828dc303cdcf'  # Update with actual checksum
+  'e7ca939c9fe03a04d815780e838ddeb4fa7eca7f1ead12dcf67254a09fe2d417'  # Update with actual checksum
   'SKIP'
 )
 sha256sums_aarch64=(
-  '73c1e53aa4779fd6352ab8b760979fcd615fdcab70f074fcba11b1e42878869d'  # Update with actual checksum
+  'c927d4573d97068433ee45444df08d80b6fedbe324ef9a92e1c326a4ca2974f3'  # Update with actual checksum
   'SKIP'
 )
 
