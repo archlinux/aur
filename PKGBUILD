@@ -1,9 +1,9 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 
-# Its own AUR package rather than a split of `wdm`, so that installing the GTK
+# Its own AUR package rather than a split of `wdm-wayland`, so that installing the GTK
 # greeter does not build the WebKitGTK one — and so that someone who wants
 # neither never has GTK4 in their build chroot. wdm depends on the virtual this
-# provides, so pacman offers this as one of the choices when `wdm` is installed
+# provides, so pacman offers this as one of the choices when `wdm-wayland` is installed
 # on its own.
 pkgname=wdm-gtk-greeter
 pkgver=0.9.0
@@ -18,7 +18,7 @@ depends=('gtk4' 'gtk4-layer-shell')
 makedepends=('cargo' 'libxkbcommon' 'gtk4' 'gtk4-layer-shell')
 provides=('wdm-greeter-implementation')
 source=("wdm-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# See the note in the `wdm` package: this is the checksum of the tarball GitHub
+# See the note in the `wdm-wayland` package: this is the checksum of the tarball GitHub
 # published, and all four wdm packages build from the same one.
 sha256sums=('49e70b577665bf4fb7c78f5d9319febaf0a8268a80bdb8eb01ff95ed0db8b9f7')
 
