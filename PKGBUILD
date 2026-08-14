@@ -1,6 +1,6 @@
 # Maintainer: Ismail Ivanov <ismailfilipov321@gmail.com>
 pkgname=deepfilternet-plus-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="AI noise suppression: LADSPA mic plugin for EasyEffects/PipeWire and deep-filter CLI (prebuilt)"
 arch=('x86_64')
@@ -13,8 +13,8 @@ source=("deep-filter-${pkgver}::${url}/releases/download/v${pkgver}/deep-filter-
         "libdeep_filter_ladspa-${pkgver}.so::${url}/releases/download/v${pkgver}/libdeep_filter_ladspa.so"
         "LICENSE-MIT-${pkgver}::${url}/raw/v${pkgver}/LICENSE-MIT"
         "LICENSE-APACHE-${pkgver}::${url}/raw/v${pkgver}/LICENSE-APACHE")
-sha256sums=('def2ee48c9adf6099ab96a4da640880a83bf65d5c5d3bcf97b446d6becde5e6f'
-            '851d3fc8622a40d2e779499a177b1c0afb25c7fe93d4e84b6c64868aa990bd82'
+sha256sums=('0252e94a5d388045e58f25799f4818210f1ed91639dccfe56eae0e5d0972b2da'
+            '7994ccd41d113d3f97fa1ab7cf4742af56c1b1e88f31d8a86395bd07eb019583'
             '24e6bb09c928af8d8e56268082f87413247ce36b39dd5d33add2f9893968065e'
             '1eaee808c5fb6b4e895ba30425285a5cdc5dd25bba2cd230f264c2200c331aec')
 
