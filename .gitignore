@@ -1,4 +1,4 @@
-# from https://github.com/github/gitignore/blob/master/ArchLinuxPackages.gitignore
+# from https://github.com/github/gitignore/blob/main/ArchLinuxPackages.gitignore
 *.tar
 *.tar.*
 *.rpm
