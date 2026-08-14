@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=zapzap-bin
-pkgver=7.4
+pkgver=7.4.1
 pkgrel=1
 pkgdesc="WhatsApp desktop client written in PyQt6 + PyQt6-WebEngine (upstream wheel)"
 arch=('any')
@@ -17,7 +17,7 @@ conflicts=('zapzap')
 source=("zapzap-${pkgver}-py3-none-any.whl::${url}/releases/download/${pkgver}/zapzap-${pkgver}-py3-none-any.whl"
         "${pkgname}-${pkgver}-src.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 noextract=("zapzap-${pkgver}-py3-none-any.whl")
-sha256sums=('12ebf416f4e20942e3455875d25557ea97d02aec8cfe249533ae5222c079a248' '8019709d523fbe4882108feb8557d97e7b03a52bb01db89bb397f2518b7dab17')
+sha256sums=('dda0f003c9415b80fdcd58b9bd88393ce56bc16c2645b4dc102a31f282a3ef0f' '3ec0f5be60fd6c542aa088770e941fad9376eed43a75fe76b8d3d7dc5ca1b35a')
 
 package() {
   local _entry _srctree="$srcdir/zapzap-${pkgver}"
