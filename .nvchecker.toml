@@ -1,0 +1,5 @@
+[stegify-bin]
+source = "github"
+github = "DimitarPetrov/stegify"
+use_latest_release = true
+prefix = "v"
