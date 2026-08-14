@@ -11,6 +11,7 @@ pkgbase = libselinux
 	license = libselinux-1.0
 	makedepends = pkgconf
 	makedepends = python
+	makedepends = python-build
 	makedepends = python-pip
 	makedepends = python-setuptools
 	makedepends = ruby

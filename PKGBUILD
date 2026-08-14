@@ -16,7 +16,7 @@ arch=('i686' 'x86_64' 'armv6h' 'aarch64')
 url='https://github.com/SELinuxProject/selinux'
 license=('libselinux-1.0')
 groups=('selinux')
-makedepends=('pkgconf' 'python' 'python-pip' 'python-setuptools' 'ruby' 'xz' 'swig')
+makedepends=('pkgconf' 'python' 'python-build' 'python-pip' 'python-setuptools' 'ruby' 'xz' 'swig')
 depends=('libsepol>=3.10' 'pcre2')
 optdepends=('python: python bindings'
             'ruby: ruby bindings')
@@ -31,6 +31,17 @@ source=("https://github.com/SELinuxProject/selinux/releases/download/${pkgver}/$
 sha256sums=('1ef216c5b56fb7e0a51cd2909787a175a17ee391e0467894807873539ebe766b'
             'SKIP'
             'afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+
+  # SWIG 4.5.0 dropped the PyString_* Python 2 compat macros from its
+  # runtime header, breaking the Python bindings build. Fixed upstream
+  # after the 3.11 tag:
+  # https://github.com/SELinuxProject/selinux/commit/fb518ff492cd6a286f35b415cbd7fd0f6e3faedb
+  # TODO: Remove this patch when updating to 3.12 or later.
+  sed -i 's/PyString_FromString/PyUnicode_FromString/g' src/selinuxswig_python.i
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
