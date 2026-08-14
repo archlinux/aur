@@ -1,7 +1,7 @@
 pkgbase = warp-ai-terminal-bin
 	pkgdesc = Blazingly fast, AI-powered terminal with modern UX
 	pkgver = 0.2026.08.12.21.54.stable_00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.warp.dev
 	arch = x86_64
 	arch = aarch64
