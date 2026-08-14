@@ -1,6 +1,6 @@
 pkgname="mypitch-git"
 pkgrel=1
-pkgver=0.16alpha.r8.g21745b3
+pkgver=1.0.r5.g6ffc42c
 pkgdesc="Simple functional ear trainer"
 arch=("x86_64")
 makedepends=("dotnet-sdk")
@@ -24,7 +24,7 @@ package() {
     cd $srcdir 
 	cat > mypitch.desktop <<EOF
 [Desktop Entry]
-Name=MyPitch
+Name=MyPitch.Desktop
 Comment=Simple Functional Ear Trainer
 Exec=MyPitch
 Icon=mypitch
@@ -34,10 +34,10 @@ GenericName=MyPitch
 Keywords=Music;Ear Training;
 EOF
 	install -d -m 755 $pkgdir/usr/share/applications && cp mypitch.desktop $pkgdir/usr/share/applications
-	cd $srcdir/MyPitch/MyPitch.Android
-	install -d "$pkgdir/usr/share/icons/hicolor/128x128/apps"
-	install -m644 logo.png \
-	"$pkgdir/usr/share/icons/hicolor/128x128/apps/mypitch.png"
+	cd "$srcdir/MyPitch/MyPitch.AppImg"
+	install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
+	install -m644 mypitch.svg \
+	    "$pkgdir/usr/share/icons/hicolor/scalable/apps/mypitch.svg"
 }
   
 
