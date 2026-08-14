@@ -1,12 +1,12 @@
 pkgbase = flyway
 	pkgdesc = Database migration utility written Java, supporting a wide range of databases
-	pkgver = 13.2.0
+	pkgver = 13.3.0
 	pkgrel = 1
 	url = https://github.com/flyway/flyway
 	arch = any
 	license = Apache-2.0
 	depends = java-environment>=17
-	source = https://github.com/flyway/flyway/releases/download/flyway-13.2.0/flyway-commandline-13.2.0-linux-x64.tar.gz
-	sha512sums = 9d4a1f058f1fcf56d794000ce3362ab7d60468b677ed32d7d81cb71d6010d2471830fea151bca8222301c0478394d54c3ba8699308774ba713ccc8f2103ffe81
+	source = https://github.com/flyway/flyway/releases/download/flyway-13.3.0/flyway-commandline-13.3.0-linux-x64.tar.gz
+	sha512sums = 39d1c285ebc8f64f1728ea60efe1fed5ba94055de6002e364fb53e19fc406fa876b57aa5b4481dd7413c626bab520f67cc14ee7e1ccd9dd636e5935ceca5d719
 
 pkgname = flyway
