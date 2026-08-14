@@ -1,13 +1,13 @@
 pkgbase = asset-manager-studio
 	pkgdesc = Project, Engine, Asset management for Epic UnrealEngine.  Manage, Download, install assets from Fab, Quixel, Cosmos to Unreal Engine
-	pkgver = 1.2.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://assetmanager.studio/
 	arch = x86_64
 	license = APACHE
 	provides = asset-manager-studio
 	conflicts = asset-manager-studio
-	source = https://assetmanager.studio/dl/1.2.0/asset-manager-studio_1.2.0_amd64.deb
-	sha256sums = d275ccd2fb1b33223218c686b6c43755b342a731d7d2338971f44e6e6fa05cdb
+	source = https://assetmanager.studio/dl/1.2.2/asset-manager-studio_1.2.2_amd64.deb
+	sha256sums = 5b63ad309c79839db79ee2c10af558ade6ae3e92633b247857d24f00ce39612c
 
 pkgname = asset-manager-studio
