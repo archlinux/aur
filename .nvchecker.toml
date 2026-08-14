@@ -1,0 +1,4 @@
+[skychart-bin]
+source = "regex"
+url = "https://www.ap-i.net/skychart/en/download"
+regex = "<th class=\"col0\" colspan=\"[\\d\\.]*\">Skychart ([\\d\\.]*) </th>"
