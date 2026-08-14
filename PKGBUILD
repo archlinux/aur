@@ -1,6 +1,6 @@
 # Maintainer: Jairo Galeano <jairogaleano@gmail.com>
 pkgname=timeshift-uki-hooks-git
-pkgver=v3.2.r0.g5f1cf19
+pkgver=v3.3.r0.g756975a
 pkgrel=1
 pkgdesc="Hooks inteligentes para Timeshift que sincronizan imágenes UKI (Unified Kernel Images) con snapshots Btrfs"
 arch=('any')
