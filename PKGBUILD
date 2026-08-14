@@ -2,12 +2,12 @@
 _pkgname=clipsync
 pkgname=linuxqq-clipsync-git
 pkgver=r23.a1d662a
-pkgrel=3
+pkgrel=4
 pkgdesc="修复Linuxqq以Wayland运行时的剪贴板异常。"
 arch=('x86_64')
 url="https://github.com/SHORiN-KiWATA/linuxqq-clipsync"
 license=('MIT')
-depends=('xclip' 'wl-clipboard' 'clipnotify')
+depends=('xclip-git' 'wl-clipboard' 'clipnotify')
 makedepends=('git' 'cargo')
 
 provides=('linuxqq-clipsync' 'clipsync' 'clipsync-git')
