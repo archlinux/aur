@@ -1,1 +1,18 @@
+pkgbase = dscb
+	pkgdesc = A simple and fast custom Discord scripting language and runtime
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://dscb.bearstool.com
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-discord
+	provides = dscbot
+	conflicts = dscbot
+	replaces = dscbot
+	source = dscb
+	source = dscb.service
+	sha256sums = 8f5feec675b76589e8b863a6e54c508bc33d71b55318a5a053d60e1c4aa2e7d6
+	sha256sums = 6e27a0f7124dfe7c9d616a7b9c9aee23218661d857a08ee5ae64b8b6728dd197
 
+pkgname = dscb
