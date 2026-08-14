@@ -1,8 +1,8 @@
 # Maintainer: cN3rd <cN3rd@users.noreply.github.com>
 
 pkgname=unity-cli-bin
-pkgver=1.0.0beta.3
-_pkgver=1.0.0-beta.3
+pkgver=1.0.0beta.5
+_pkgver=1.0.0-beta.5
 pkgrel=1
 pkgdesc='Standalone Unity CLI for installing editors, adding modules and managing projects'
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source=('LICENSE')
 source_x86_64=("$pkgname-$pkgver-x86_64::$_url/unity-linux-x64")
 source_aarch64=("$pkgname-$pkgver-aarch64::$_url/unity-linux-arm64")
 sha256sums=('a1cd22f2ed49a674f6d2c324e1a3f1abbf9c0607b83939c56ceddf32bbe9bac1')
-sha256sums_x86_64=('9b89aaa5a676e8e5bd6a3844a9398defb963bd3495186445a464a47057e54ea3')
-sha256sums_aarch64=('21da2bf98d16dbad55dd3bb187a01008acfe08396075e491880d97d818a9ef11')
+sha256sums_x86_64=('7fb0edbe2e6c889d38b0982c030713855edca82c3cda01758b0bd50a3ffd356a')
+sha256sums_aarch64=('757494c2fefd9bec1d88f42ebac77a4588d81963756dbae2ea770b297c38742b')
 noextract=("$pkgname-$pkgver-$CARCH")
 
 package() {
