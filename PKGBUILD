@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gpu-t
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A lightweight GPU-Z clone for Linux"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/lseurttyuu/GPU-T"
 license=('MIT')
 depends=(
   'clinfo'
-  'dotnet-runtime-9.0'
+  'dotnet-runtime-10.0'
   'fontconfig'
   'libva-utils'
   'mesa-utils'
@@ -17,15 +17,15 @@ depends=(
 )
 makedepends=(
   'desktop-file-utils'
-  'dotnet-sdk-9.0'
+  'dotnet-sdk-10.0'
 )
 optdepends=(
   'opencl-driver: packaged OpenCL driver'
-  'opengl-driver: packaged openGL driver'
+  'opengl-driver: packaged OpenGL driver'
   'vulkan-driver: packaged Vulkan driver'
 )
 source=("GPU-T-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('99437405890ff2995d5effceb8c79810eec9513cd29f5c50476c63701379785f')
+sha256sums=('0576cc86d51b5c5e93f6ea34a6b262bfa100880614a55aff5f40486d5e31ec51')
 
 prepare() {
   cd "GPU-T-$pkgver"
