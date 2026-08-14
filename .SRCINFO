@@ -1,7 +1,7 @@
 pkgbase = libreswan
 	pkgdesc = IPsec implementation with IKEv1 and IKEv2 keying protocols
-	pkgver = 5.3.2
-	pkgrel = 1
+	pkgver = 5.4
+	pkgrel = 0
 	url = https://libreswan.org/
 	install = libreswan.install
 	arch = i686
@@ -29,11 +29,11 @@ pkgbase = libreswan
 	backup = etc/ipsec.conf
 	backup = etc/ipsec.secrets
 	backup = etc/pam.d/pluto
-	source = https://download.libreswan.org/libreswan-5.3.2.tar.gz
+	source = https://download.libreswan.org/libreswan-5.4.tar.gz
 	source = tmpfiles.conf
-	md5sums = 4edbdfdd387126a90f606c210fb8d60b
+	md5sums = 7033ecec82837a5e97ec55da2ef58164
 	md5sums = 77399a739ee99f8bc54837684d7c39d5
-	sha256sums = fb918afa0bb92bd0430c1da861ef8068864d25d72130df0c6307a1f9da761088
+	sha256sums = d26340cf625316cc9127e05b392214a24a10889f4f1d9940c2ea64bab710a855
 	sha256sums = 78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573
 
 pkgname = libreswan

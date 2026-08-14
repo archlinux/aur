@@ -8,8 +8,8 @@
 set -u
 pkgname='libreswan'
 #pkgname+='-git'
-pkgver='5.3.2'
-pkgrel='1'
+pkgver='5.4'
+pkgrel='0'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
 arch=('i686' 'x86_64')
 arch+=('aarch64') # yjun naumovitch
@@ -30,9 +30,9 @@ source=(
   "https://download.libreswan.org/${pkgname}-${pkgver%%.r*}.tar.gz"
   'tmpfiles.conf'
 )
-md5sums=('4edbdfdd387126a90f606c210fb8d60b'
+md5sums=('7033ecec82837a5e97ec55da2ef58164'
          '77399a739ee99f8bc54837684d7c39d5')
-sha256sums=('fb918afa0bb92bd0430c1da861ef8068864d25d72130df0c6307a1f9da761088'
+sha256sums=('d26340cf625316cc9127e05b392214a24a10889f4f1d9940c2ea64bab710a855'
             '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
@@ -67,7 +67,7 @@ _bargs=(
   USE_DNSSEC=false
   USE_LABELED_IPSEC=false
   USE_LIBCAP_NG=true
-  USE_DH2=true # insecure modp1024
+  USE_DH2=false # insecure modp1024; broken in 5.4, see https://github.com/libreswan/libreswan/issues/2980
 
   USE_LEAK_DETECTIVE=false
   USE_XAUTH=true
