@@ -1,16 +1,16 @@
 # Maintainer: Markus Maiwald <markus@maiwald.tk>
 pkgname=prism-harness-suite
-pkgver=1.0.0_rc2
+pkgver=1.0.0_rc4.1
 pkgrel=1
-pkgdesc="PRISM Harness suite - small bundles sharing one Bun runtime (harness, loop, proxy, route, sober)"
+pkgdesc="PRISM harness suite for AI coding agents: doctrine rules, review steering, overnight loops, model routing and security gates on one Bun runtime"
 arch=('x86_64')
-url="https://git.sovereign-society.org/prism"
+url="https://getharness.app"
 license=('custom:LSL-1.0')
 depends=('bun')
 makedepends=('git' 'bun')
 provides=('prism-harness' 'prism-loop' 'prism-proxy' 'prism-route' 'prism-sober')
 conflicts=('prism-harness' 'prism-loop' 'prism-proxy' 'prism-route' 'prism-sober')
-source=("git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v1.0.0-rc.2")
+source=("git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v1.0.0-rc.4")
 sha256sums=('SKIP')
 
 build() {
@@ -32,7 +32,10 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
+  # git+https extracts the repo into "$srcdir/prism-harness/" — cd there
+  # so all paths align with build() (the build clones sibling components
+  # under "$srcdir/prism-harness/../$r" = "$srcdir/$r").
+  cd "$srcdir/prism-harness"
 
   # Install each component's built tree to /usr/lib/prism/<name> and wrapper in /usr/bin
   # This keeps node_modules for native deps (e.g. sharp in proxy) next to the code
@@ -42,9 +45,9 @@ package() {
   install -d "$pkgdir/usr/bin"
 
   for comp in prism-harness prism-loop prism-sober prism-proxy prism-route; do
-    srcdir_comp="$srcdir"
+    srcdir_comp="."
     if [ "$comp" != "prism-harness" ]; then
-      srcdir_comp="$srcdir/../$comp"
+      srcdir_comp="../$comp"
     fi
 
     if [ -d "$srcdir_comp/dist" ]; then
@@ -77,8 +80,14 @@ WRAP
     fi
   done
 
+  # Identity canon templates (scaffold by prism-harness init; reference doc for humans)
+  if [ -d "templates/identity" ]; then
+    install -d "$pkgdir/usr/lib/prism/prism-harness/templates/identity"
+    cp -r "templates/identity" "$pkgdir/usr/lib/prism/prism-harness/templates/" 2>/dev/null || true
+  fi
+
   # Install helper
-  if [ -f "prism-harness/install.sh" ]; then
-    install -Dm755 "prism-harness/install.sh" "$pkgdir/usr/share/doc/$pkgname/install.sh"
+  if [ -f "install.sh" ]; then
+    install -Dm755 "install.sh" "$pkgdir/usr/share/doc/$pkgname/install.sh"
   fi
 }
