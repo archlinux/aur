@@ -22,7 +22,7 @@ pkgbase = cockatrice-client-beta
 	conflicts = cockatrice-client-stable
 	conflicts = cockatrice-client-git
 	conflicts = cockatrice
-	source = cockatrice-3.1.0.94.tar.gz::https://github.com/Cockatrice/Cockatrice/archive/refs/tags/2026-08-08-Development-3.1.0-beta.4.zip
+	source = cockatrice-3.1.0.94.tar.gz::https://github.com/Cockatrice/Cockatrice/archive/refs/tags/2026-08-14-Development-3.1.0-beta.5.zip
 	sha256sums = SKIP
 
 pkgname = cockatrice-client-beta

@@ -32,7 +32,7 @@ conflicts=('cockatrice-client-stable' 'cockatrice-client-git' 'cockatrice')
 provides=('cockatrice-client')
 
 source=(
-    "cockatrice-${pkgver}.tar.gz::https://github.com/Cockatrice/Cockatrice/archive/refs/tags/2026-08-08-Development-3.1.0-beta.4.zip"
+    "cockatrice-${pkgver}.tar.gz::https://github.com/Cockatrice/Cockatrice/archive/refs/tags/2026-08-14-Development-3.1.0-beta.5.zip"
 )
 
 sha256sums=('SKIP')
