@@ -1,0 +1,15 @@
+pkgbase = sail-isa-spec
+	pkgdesc = Sail architecture definition language
+	pkgver = 0.20.2
+	pkgrel = 1
+	url = https://opam.ocaml.org
+	arch = x86_64
+	license = custom
+	depends = dune
+	depends = ocaml
+	depends = opam
+	options = !strip
+	source = git+https://github.com/rems-project/sail.git#branch=sail2
+	sha512sums = SKIP
+
+pkgname = sail-isa-spec
