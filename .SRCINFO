@@ -1,0 +1,18 @@
+pkgbase = dvdisaster-speed47
+	pkgdesc = Provides a margin of safety against data loss on CD and DVD media caused by aging or scratches, speed47 fork
+	pkgver = 0.79.10.pl6
+	pkgrel = 1
+	url = https://github.com/speed47/dvdisaster
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = cairo
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = pango
+	provides = dvdisaster
+	conflicts = dvdisaster
+	source = dvdisaster-speed47-0.79.10.pl6.tar.gz::https://github.com/speed47/dvdisaster/archive/refs/tags/v0.79.10-pl6.tar.gz
+	sha256sums = f302b92df53abde1fb239230fc4c8b1fc425405c0ba59da3e2ba85c30f5320cc
+
+pkgname = dvdisaster-speed47
