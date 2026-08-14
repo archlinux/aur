@@ -2,7 +2,7 @@
 
 pkgname=tidal-hifi-git
 pkgrel=1
-pkgver=8.1.1.r0.g666feef
+pkgver=8.1.2.r0.g1aadfcb
 pkgdesc="The web version of tidal.com running in electron with hifi support thanks to widevine"
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
@@ -83,6 +83,10 @@ package() {
     for iconPath in build/icons/[0-9]*x[0-9]*.png; do
         iconSize="${iconPath##*/}"
         iconSize="${iconSize%.png}"
+        # Only install icons whose name is a valid "WxH" size to avoid creating invalid hicolor directories.
+        if [[ ! "$iconSize" =~ ^[0-9]+x[0-9]+$ ]]; then
+            continue
+        fi
         install -Dm 644 "$iconPath" "${pkgdir}/usr/share/icons/hicolor/$iconSize/apps/tidal-hifi.png"
     done
     install -Dm 644 "${srcdir}/tidal-hifi.desktop" "${pkgdir}/usr/share/applications/tidal-hifi.desktop"
