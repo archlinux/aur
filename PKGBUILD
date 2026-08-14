@@ -8,7 +8,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=7.0.7
+pkgver=7.0.9
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -21,8 +21,10 @@ depends=(
   hunspell
   kcoreaddons
   libavif
+  libfido2
   libheif
   libjxl
+  libsrtp
   libvpx
   libxdamage
   minizip
@@ -59,6 +61,7 @@ makedepends=(
   qt6-shadertools
   range-v3
   tl-expected
+  vulkan-headers
 )
 optdepends=(
   'webkit2gtk: embedded browser features'
@@ -75,9 +78,11 @@ source=(
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
   '0001-revert-cmake-patch.patch'
 )
-sha256sums=('605828bfc2bec27ce4cc29800ac3b90006fda6b99ed49fa9b2fe715dcb75b0a9'
-            'SKIP'
-            'cf669c8a03f8ffcfb0898534c394324f9d59909e0526b86d63190d662a3dd861')
+sha256sums=(
+  'd1e9df4930fe2aea8d85aa15b4efa65b4bad52fad1ed0be451b133c5c0efe541'
+  'SKIP'
+  'cf669c8a03f8ffcfb0898534c394324f9d59909e0526b86d63190d662a3dd861'
+)
 
 prepare() {
   cd "$_pkgsrc"
@@ -92,13 +97,6 @@ prepare() {
       patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
-
-  # disable RHI; breaks image rendering
-  sed -E -e '/qputenv\("QT_WIDGETS_RHI"/d' -i \
-    Telegram/SourceFiles/core/launcher.cpp \
-    Telegram/SourceFiles/platform/linux/specific_linux.cpp \
-    Telegram/SourceFiles/platform/mac/specific_mac.mm \
-    Telegram/SourceFiles/platform/win/specific_win.cpp
 }
 
 build() {
@@ -112,7 +110,7 @@ build() {
     -DTD_E2E_ONLY=ON
     -DBUILD_SHARED_LIBS=OFF
     -DBUILD_TESTING=OFF
-    -Wno-dev
+    -Wno-author
   )
 
   cmake "${_cmake_tde2e[@]}"
@@ -131,7 +129,7 @@ build() {
     -DTDESKTOP_API_ID=611335
     -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
     -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF
-    -Wno-dev
+    -Wno-author
   )
 
   cmake "${_cmake_options[@]}"
@@ -146,6 +144,7 @@ package() {
       'libavformat.so'
       'libavutil.so'
       'libcrypto.so'
+      'libfido2.so'
       'libgio-2.0.so'
       'libglib-2.0.so'
       'libgobject-2.0.so'
@@ -159,6 +158,7 @@ package() {
       'libopus.so'
       'libpipewire-0.3.so'
       'libprotobuf-lite.so'
+      'libsrtp2.so'
       'libssl.so'
       'libswresample.so'
       'libswscale.so'

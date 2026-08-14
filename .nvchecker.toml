@@ -1,4 +1,5 @@
 [forkgram]
 source = "git"
 git = "https://github.com/Forkgram/tdesktop.git"
+include_prefix = 'v[\d.]+'
 prefix = "v"
