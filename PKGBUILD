@@ -1,8 +1,9 @@
+# Maintainer: Mark Collins <tera_1225 hat hotmail ðot com>
 # Contributor: Barry <brrtsm at gmail dot com>
 # Contributor: Joerg Schuck <joerg_schuck at web dot de>
 # Contributor: Tyler <tjb0607 at gmail dot com>
 # Contributor: Austin <doorknob60 at gmail dot com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gif2apng
 pkgver=1.9
