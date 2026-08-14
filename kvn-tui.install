@@ -27,7 +27,7 @@ print_upgrade_notice() {
     echo
     echo "If Omarchy previously started kvn-tui from Hyprland autostart, also run:"
     echo
-    echo "  kvn-tui --install-omarchy"
+    echo "  kvn-tui setup --omarchy"
     echo
     echo "======================================================================"
     echo

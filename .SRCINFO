@@ -1,6 +1,6 @@
 pkgbase = kvn-tui-bin
 	pkgdesc = Terminal VPN client for Arch Linux with vim navigation
-	pkgver = 0.20.0
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/yarikov/kvn-tui
 	install = kvn-tui.install
@@ -14,7 +14,7 @@ pkgbase = kvn-tui-bin
 	optdepends = xsel: clipboard integration on X11 (alternative)
 	provides = kvn-tui
 	conflicts = kvn-tui
-	source = https://github.com/yarikov/kvn-tui/releases/download/v0.20.0/kvn-tui-0.20.0-x86_64-linux.tar.gz
-	sha256sums = a6d538292295c26cde03b6cd5ba74cb207a08c5041b2b987c57e6740ebd13c9b
+	source = https://github.com/yarikov/kvn-tui/releases/download/v0.21.0/kvn-tui-0.21.0-x86_64-linux.tar.gz
+	sha256sums = f510aa0a6e35fa0a8b722ce5ef87765bf99fb188240467947a5d7e75e29eb7a5
 
 pkgname = kvn-tui-bin
