@@ -1,6 +1,6 @@
 pkgbase = libvirt-apparmor
 	pkgdesc = API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)
-	pkgver = 12.5.0
+	pkgver = 12.6.0
 	pkgrel = 1
 	epoch = 1
 	url = https://libvirt.org/
@@ -60,7 +60,7 @@ pkgbase = libvirt-apparmor
 	optdepends = qemu-emulators-full: Support of additional QEMU architectures
 	optdepends = radvd: IPv6 RAD support
 	optdepends = swtpm: TPM emulator support
-	provides = libvirt=12.5.0
+	provides = libvirt=12.6.0
 	provides = libvirt.so
 	provides = libvirt-admin.so
 	provides = libvirt-lxc.so
@@ -125,7 +125,7 @@ pkgbase = libvirt-apparmor
 	backup = etc/logrotate.d/libvirtd.lxc
 	backup = etc/logrotate.d/libvirtd.qemu
 	backup = etc/sasl2/libvirt.conf
-	source = libvirt-apparmor::git+https://gitlab.com/libvirt/libvirt.git#tag=v12.5.0
-	sha256sums = 78c8552dbe4fe062f7e0ee16c3a26ef9c4933d2cb8eb8483d98dbc01e2cb9656
+	source = libvirt-apparmor::git+https://gitlab.com/libvirt/libvirt.git#tag=v12.6.0
+	sha256sums = 3262853b887614cdee8a37f5bd72dca1d14a68ec0f2abd23e262a8641e86b96c
 
 pkgname = libvirt-apparmor

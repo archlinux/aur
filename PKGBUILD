@@ -7,7 +7,7 @@
 
 pkgname=libvirt-apparmor
 epoch=1
-pkgver=12.5.0
+pkgver=12.6.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ url="https://libvirt.org/"
 license=(
   'LGPL-2.1-or-later'
   'GPL-3.0-or-later' # libvirt_parthelper links to libparted
-) 
+)
 depends=(
   acl
   apparmor
@@ -148,7 +148,7 @@ backup=(
 source=(
   "${pkgname}::git+https://gitlab.com/libvirt/libvirt.git#tag=v${pkgver}"
 )
-sha256sums=('78c8552dbe4fe062f7e0ee16c3a26ef9c4933d2cb8eb8483d98dbc01e2cb9656')
+sha256sums=('3262853b887614cdee8a37f5bd72dca1d14a68ec0f2abd23e262a8641e86b96c')
 
 prepare() {
   cd ${pkgname}
