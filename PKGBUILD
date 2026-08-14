@@ -9,12 +9,12 @@ pkgname=cef-vaapi
 # To update this package, update the _cef_commit and _chromium_ver variables.
 # For the CEF versioning scheme, see
 # https://chromiumembedded.github.io/cef/branches_and_building#version-number-format
-pkgver=150.0.17
+pkgver=151.3.17
 # See https://github.com/chromiumembedded/cef/tree/<release branch>
 # Also see https://chromiumembedded.github.io/cef/branches_and_building
-_cef_commit=94c17267eb4595a1ad17fb67dee6cdb8ded41c6d
+_cef_commit=f059e67fa6aad5e8cce8bebea5df706ffddfb174
 # the chromium version must match CHROMIUM_BUILD_COMPATIBILITY.txt in the CEF repo
-_chromium_ver=150.0.7871.187
+_chromium_ver=151.0.7922.138
 _system_clang=1
 pkgrel=1
 pkgdesc="Chromium Embedded Framework (CEF), simple framework for embedding Chromium-based browsers in other applications (VAAPI-enabled variant)"
@@ -51,6 +51,7 @@ makedepends=(
   'compiler-rt'
   'git'
   'gn'
+  'go'
   'gperf'
   'java-runtime-headless'
   'lld'
@@ -78,9 +79,8 @@ source=("chromium-$_chromium_ver-lite.tar.xz::https://commondatastorage.googleap
   chromium-149-unbundle-minizip-undo-unicode.patch
   chromium-149-use-of-undeclared-identifier-ERROR.patch
   chromium-149-build-with-wasm-rollup.patch
-  chromium-150-fix-ar-unbundle.patch
-  chromium-150-fix-sysroot-path-error.patch
   chromium-150-revert-avx-flag-change.patch
+  chromium-151-dont-depends-on-histograms.xml-if-it-is-not-git-checkout.patch
   compiler-rt-adjust-paths.patch
   increase-fortify-level.patch
   glibc-2.42-baud-rate-fix.patch
@@ -89,19 +89,18 @@ source=("chromium-$_chromium_ver-lite.tar.xz::https://commondatastorage.googleap
   chromium-disable-font-tests.patch
   FindCEF.cmake
 )
-sha256sums=('63e1e8b3c40d1c9b51c55d27356f6d6b074e5c7f210e776290b1ef6d290a7df1'
-            'ec791113ae4a8d93ef9d7dd06b60e55990a5f7561575e890af5b53c793f7eab8'
+sha256sums=('aa0887342e2417ee3e0dc28ebb81252d209c095f04f5993f52163e60449f329e'
+            '74db7dea37b59e09e505805b38bdff0caf99ca1789f3ae1620cf9ace6b482e16'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             'c382830318c5b37826ecf44f3ba9def6be8affdad1bce819ecb83f3222ff4b3a'
             'b9e6339221efe03540ffb360c161d93604a1fc93a5a1c53e5e9849066f987d05'
-            '5ade4cdba7afebfcc09fa969f15bf27404579beac5b7bafb59a0214d407e4ad2'
+            'e25cf8fb60f5958127053c515b8decc2b45acceebf9a57654066d093df11f8e9'
             'c22338d13f12772cdbcb5cfc1ace94438b9f9c72353cdb165a3ff3ef3d677c78'
             '951514535be65f0e2f84e82305d96292be1da353c1427ba1048ea24be70003c4'
             'c4df27d25d298ac95d85e6f06b558b73bb67de5110a19a0228cb7f8519291ea5'
-            'f056d12571823d06c2a938158734fb4c7eeccb5c6f68228634d0c73d75feaa78'
-            '5c42260b11b87dd01c4ef11598033e9687bdf384af2e45adab2fd00964e977e8'
             '5f6ccb7b945c8a13c690493723bad816b36f2f25792d47e677b56f8200907e60'
+            '552ddcef0cf139927f54c9c728c68b0e385600107e5166449b29de75e5dfcd7f'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '1c1898f263eaacbc069a8e1a3e732852350350d1dad4cb1a6bba430e3b796cd0'
@@ -114,7 +113,7 @@ sha256sums=('63e1e8b3c40d1c9b51c55d27356f6d6b074e5c7f210e776290b1ef6d290a7df1'
 # Keys are the names in the above script; values are the dependencies in Arch
 declare -gA _system_libs=(
   [brotli]=brotli
-  #[dav1d]=dav1d
+  [dav1d]=dav1d
   #[ffmpeg]=ffmpeg    # YouTube playback stopped working in Chromium 120
   [flac]=flac
   [fontconfig]=fontconfig
@@ -281,17 +280,12 @@ prepare() {
 
   patch -Np1 -i ../chromium-149-use-of-undeclared-identifier-ERROR.patch
 
-  # Fix issue about missing AR file
-  # Credit: https://github.com/ungoogled-software/ungoogled-chromium/pull/3837
-  patch -Np1 -i ../chromium-150-fix-ar-unbundle.patch
-
-  # Fix issue about missing sysroot path
-  # Credit: https://github.com/ungoogled-software/ungoogled-chromium/pull/3837#issuecomment-4836756738
-  patch -Np1 -i ../chromium-150-fix-sysroot-path-error.patch
-
   # Fix issue about missing AVX functions
   # Credit: https://github.com/ungoogled-software/ungoogled-chromium/pull/3837
   patch -Np1 -i ../chromium-150-revert-avx-flag-change.patch
+
+  # Credit: https://github.com/ungoogled-software/ungoogled-chromium/pull/3883
+  patch -Np1 -i ../chromium-151-dont-depends-on-histograms.xml-if-it-is-not-git-checkout.patch
 
   # CEF: Remove sysroot requirement for non-x64 builds
   patch -Np1 -i ../cef-no-sysroot.patch
@@ -303,15 +297,20 @@ prepare() {
   echo 'clang_exe = "clang"' >>cef/tools/clang_util.py
 
   # Link to system tools required by the build
-  mkdir -p third_party/node/linux/node-linux-x64/bin \
+  mkdir -p \
+    third_party/node/linux/node-linux-x64/bin \
+    third_party/node/linux/node-linux-arm64/bin \
     third_party/jdk/current/bin \
-    third_party/rust-toolchain/bin
+    third_party/rust-toolchain/bin \
+    third_party/dawn/tools/golang/linux-amd64/bin \
+    third_party/dawn/tools/golang/linux-arm64/bin
 
   ln -s /usr/bin/node third_party/node/linux/node-linux-x64/bin/
+  ln -s /usr/bin/node third_party/node/linux/node-linux-arm64/bin/
   ln -s /usr/bin/java third_party/jdk/current/bin/
-
-  # the build uses system rust, but CEF checks for it here.
   ln -s /usr/bin/rustc third_party/rust-toolchain/bin/
+  ln -s /usr/bin/go third_party/dawn/tools/golang/linux-amd64/bin/
+  ln -s /usr/bin/go third_party/dawn/tools/golang/linux-arm64/bin/
 
   # remove x86_64 binary and use our own
   rm -f third_party/gperf/cipd/bin/gperf
@@ -444,7 +443,12 @@ build() {
 
   export GN_DEFINES="${_flags[*]}"
   # Only build Release config
-  export GN_OUT_CONFIGS="Release_GN_x64"
+  if [[ $CARCH == "aarch64" ]]; then
+    export GN_DEFINES+=' target_cpu="arm64"'
+    export GN_OUT_CONFIGS="Release_GN_arm64"
+  else
+    export GN_OUT_CONFIGS="Release_GN_x64"
+  fi
 
   # Facilitate deterministic builds (taken from build/config/compiler/BUILD.gn)
   CFLAGS+='   -Wno-builtin-macro-redefined'
@@ -473,16 +477,33 @@ build() {
   # https://crbug.com/957519#c122
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}
 
+  # aarch64: strip -march= as chromium sub-targets need their own arch flags
+  if [[ $CARCH == "aarch64" ]]; then
+    CFLAGS="${CFLAGS/-march=*([^ ]) }"
+    CXXFLAGS="${CXXFLAGS/-march=*([^ ]) }"
+  fi
+
   python3 cef/tools/gclient_hook.py
   sed -i '/__sanitizer_set_death_callback/d' v8/src/sandbox/testing.cc
-  ninja -C out/Release_GN_x64 libcef chrome_sandbox
+
+  if [[ $CARCH == "aarch64" ]]; then
+    ninja -C out/Release_GN_arm64 libcef chrome_sandbox
+  else
+    ninja -C out/Release_GN_x64 libcef chrome_sandbox
+  fi
 
   # Build the CEF binary distribution
+  if [[ $CARCH == "aarch64" ]]; then
+    local _distrib_arch_flag="--arm64-build"
+  else
+    local _distrib_arch_flag="--x64-build"
+  fi
+
   python3 cef/tools/make_distrib.py \
     --distrib-subdir=distrib \
     --output-dir=.. \
     --ninja-build \
-    --x64-build \
+    $_distrib_arch_flag \
     --minimal \
     --no-docs \
     --no-archive
