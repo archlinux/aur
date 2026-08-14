@@ -1,4 +1,5 @@
 DOC.md
 src/
 *.tar.gz
+*.tgz
 *.pkg.tar.zst
