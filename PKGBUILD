@@ -1,26 +1,25 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=amneziawg-go
-pkgdesc="AmneziaWG is a contemporary version of the popular VPN protocol, WireGuard. "
+pkgdesc="AmneziaWG userspace implementation (Go) — AWG 3.1"
 url="https://github.com/amnezia-vpn/amneziawg-go"
 arch=("x86_64")
-pkgver=3.0.3
+pkgver=3.1.20260814
 pkgrel=1
 license=('MIT')
 makedepends=('go')
-optdepends=('amneziawg-tools: Tools for configuration amneziawg')
+optdepends=('amneziawg-tools: tools for configuring AmneziaWG')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-go/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('07f9ec29e0b424360ce939398808c0f9c00f9b0a2485e27d3f2bc91d6a2722e3a456bdf986a42fd2f83c9a3aaff5bad8580c5f8dd00128d1b6ee49af8e8f6da1')
+sha512sums=('a2f7c03def872160df18a0df171e41d03d96a9f2867d4d54d3b4b2a133d64ea2b56149a3bca26eb457e71783d33d3d958328051a04f7a40273cdd676a0a01bde')
 
-build(){
-	cd ${pkgname}-${pkgver}/
-	make
+build() {
+  cd "${pkgname}-${pkgver}"
+  export GOFLAGS="-trimpath -mod=readonly -modcacherw"
+  make
 }
 
 package() {
-	cd ${pkgname}-${pkgver}/
-	make DESTDIR="$pkgdir/" install
-	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}/" install
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-
