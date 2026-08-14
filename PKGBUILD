@@ -8,7 +8,13 @@ pkgdesc="Provides a margin of safety against data loss on CD and DVD media cause
 arch=(x86_64)
 url="https://github.com/speed47/dvdisaster"
 license=(GPL-3.0-or-later)
-depends=(gtk3)
+depends=(
+    cairo
+    glib2
+    glibc
+    gtk3
+    pango
+    )
 makedepends=(git)
 provides=(dvdisaster)
 conflicts=(dvdisaster)
