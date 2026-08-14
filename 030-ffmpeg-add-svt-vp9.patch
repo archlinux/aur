@@ -1,6 +1,6 @@
 --- a/configure
 +++ b/configure
-@@ -299,6 +299,7 @@ External library support:
+@@ -298,6 +298,7 @@ External library support:
    --enable-libvorbis       enable Vorbis en/decoding via libvorbis,
                             native implementation exists [no]
    --enable-libvpx          enable VP8 and VP9 de/encoding via libvpx [no]
@@ -8,7 +8,7 @@
    --enable-libvvenc        enable H.266/VVC encoding via vvenc [no]
    --enable-libwebp         enable WebP encoding via libwebp [no]
    --enable-libx264         enable H.264 encoding via x264 [no]
-@@ -2103,6 +2104,7 @@ EXTERNAL_LIBRARY_LIST="
+@@ -2142,6 +2143,7 @@ EXTERNAL_LIBRARY_LIST="
      libvmaf
      libvorbis
      libvpx
@@ -16,7 +16,7 @@
      libvvenc
      libwebp
      libxevd
-@@ -3827,6 +3829,7 @@ libvpx_vp8_decoder_deps="libvpx"
+@@ -3885,6 +3887,7 @@ libvpx_vp8_decoder_deps="libvpx"
  libvpx_vp8_encoder_deps="libvpx"
  libvpx_vp9_decoder_deps="libvpx"
  libvpx_vp9_encoder_deps="libvpx"
@@ -24,7 +24,7 @@
  libvvenc_encoder_deps="libvvenc"
  libwebp_encoder_deps="libwebp"
  libwebp_anim_encoder_deps="libwebp"
-@@ -7423,6 +7426,7 @@ enabled libvpx            && {
+@@ -7490,6 +7493,7 @@ enabled libvpx            && {
      fi
  }
  
@@ -34,7 +34,7 @@
      enabled libwebp_encoder      && require_pkg_config libwebp "libwebp >= 0.2.0" webp/encode.h WebPGetEncoderVersion
 --- a/libavcodec/Makefile
 +++ b/libavcodec/Makefile
-@@ -1221,6 +1221,7 @@ OBJS-$(CONFIG_LIBVPX_VP8_DECODER)         += libvpxdec.o
+@@ -1218,6 +1218,7 @@ OBJS-$(CONFIG_LIBVPX_VP8_DECODER)         += libvpxdec.o
  OBJS-$(CONFIG_LIBVPX_VP8_ENCODER)         += libvpxenc.o
  OBJS-$(CONFIG_LIBVPX_VP9_DECODER)         += libvpxdec.o
  OBJS-$(CONFIG_LIBVPX_VP9_ENCODER)         += libvpxenc.o
@@ -44,9 +44,9 @@
  OBJS-$(CONFIG_LIBWEBP_ANIM_ENCODER)       += libwebpenc_common.o libwebpenc_animencoder.o
 --- a/libavcodec/allcodecs.c
 +++ b/libavcodec/allcodecs.c
-@@ -830,6 +830,7 @@ extern const FFCodec ff_libvpx_vp8_encoder;
+@@ -816,6 +816,7 @@ extern const FFCodec ff_libvpx_vp8_encoder;
  extern const FFCodec ff_libvpx_vp8_decoder;
- extern FFCodec ff_libvpx_vp9_encoder;
+ extern const FFCodec ff_libvpx_vp9_encoder;
  extern const FFCodec ff_libvpx_vp9_decoder;
 +extern const FFCodec ff_libsvt_vp9_encoder;
  extern const FFCodec ff_libvvenc_encoder;
@@ -54,7 +54,7 @@
  extern const FFCodec ff_libwebp_anim_encoder;
 --- /dev/null
 +++ b/libavcodec/libsvt_vp9.c
-@@ -0,0 +1,701 @@
+@@ -0,0 +1,700 @@
 +/*
 +* Scalable Video Technology for VP9 encoder library plugin
 +*
@@ -750,12 +750,8 @@
 +    .p.capabilities   = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_OTHER_THREADS,
 +    .caps_internal    = FF_CODEC_CAP_NOT_INIT_THREADSAFE |
 +                        FF_CODEC_CAP_AUTO_THREADS | FF_CODEC_CAP_INIT_CLEANUP,
-+    .p.pix_fmts       = (const enum AVPixelFormat[]){ AV_PIX_FMT_YUV420P,
-+                                                    AV_PIX_FMT_NONE },
++    CODEC_PIXFMTS(AV_PIX_FMT_YUV420P),
 +    .p.priv_class     = &class,
 +    .defaults         = eb_enc_defaults,
 +    .p.wrapper_name   = "libsvt_vp9",
 +};
--- 
-2.50.1
-

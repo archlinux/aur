@@ -357,9 +357,9 @@ if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
     "030-ffmpeg-add-svt-vp9.patch"
   )
   sha256sums+=(
-    'ff6dabc3cbef98d22cc8f081343d5c66b2564b3a898c2dbcc88baa5017d80232'
+    'e6fdcb8446b0a0c0967f125d2de5084a5bdb418a1a6608f808cff2c97fc9bd6a'
     'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-    '73e516bd771024f100983d0b7a5d43b49fd1e992c83e6caec445b7338e79e8c2'
+    'cc80568f7dab2094f4f3bede6d0f068f217161f924915b067b0d287cf53b0849'
   )
   _args+=(
     --enable-libsvthevc
@@ -392,7 +392,6 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     'libklvanc'
     liblc3
     libmysofa
-    libomxil-bellagio
     librabbitmq-c
     libraw1394
     lilv
@@ -413,7 +412,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     smbclient
     tesseract
     twolame
-    'uavs3d-git' # uavs3d >= 1.1.41 is required by ffmpeg so switch to uavs3d-git
+    uavs3d
     'vvenc'
     'vo-amrwbenc'
     'xavs'
@@ -431,7 +430,6 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-libaribb24
     --enable-libaribcaption
     --enable-libcaca
-    --enable-libcelt
     --enable-libcdio
     --enable-libcodec2
     --enable-libdavs2
@@ -470,7 +468,6 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-lv2
     --disable-ohcodec
     --enable-openal
-    --enable-omx
     --disable-pocketsphinx
     --enable-rkmpp
     --disable-whisper # whisper.cpp conflicts with imagemagick
