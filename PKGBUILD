@@ -1,8 +1,7 @@
-# Maintainer: Pasqual Troncone <pasqualtroncone at gmail dot com>
-# Co-Maintainer: AkitaOnRails <boss@akitaonrails.com>
+# Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=ai-jail
-pkgver=1.4.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Sandbox wrapper for AI coding agents"
 arch=('x86_64' 'aarch64')
@@ -20,7 +19,7 @@ optdepends=(
 options=('!debug')
 conflicts=('ai-jail-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4eb4cffb2ad52bc920f97ee89653722aaf0c3d5cde9e251834a291bb5f19f137')
+sha256sums=('b8a588709a294d77661d64b91b1b2efffb3f9b1c1310fc03815b572f2b887017')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -38,6 +37,9 @@ build() {
 check() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    # Pin CARGO_HOME to the real cargo cache (populated by prepare()/build())
+    export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
     export HOME="$srcdir/test-home"
     mkdir -p "$HOME"
     # Keep AUR builds robust across user kernels/containers: run the unit test
