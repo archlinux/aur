@@ -1,5 +1,5 @@
 pkgname=oranglauncher-bin
-pkgver=7.0.0
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="Orange Launcher for Arch Linux (prebuilt binary)"
 arch=(x86_64)
@@ -8,12 +8,12 @@ license=('MIT')
 depends=(glibc webkit2gtk-4.1 gtk3 python-gobject)
 provides=(oranglauncher)
 conflicts=(oranglauncher)
-source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/7.0.0-Linux/launcher_x64_linux_7.0.0.tar.gz"
+source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/7.1.0-Linux/launcher_x64_linux_7.1.0.tar.gz"
         "oranglauncher.desktop"
         "orange.png"
         "LICENSE"
         "oranglauncher-mime.xml")
-sha256sums=('dd6d6ff3ac1a2b5d84be533add51aa7f1b44e5345ee4f1e849e5d922c5505e25'
+sha256sums=('0dcca1ab105dcaa102f2e6eb1353fbfbb14383ee16d1f508aeb8e70c4f24de50'
             '23d8bec255eee86f4843603b5e46d1dada47ce30b05efb79fa1dd0ec4e781df0'
             'ddbe0ca155b67fcfc1fecdba1cbc6a3aac5a2011316bbb4a222e1f48f8987968'
             '3c8133c78d2e468f22643e465f8abcf4404742dc1b80c5eb64742039d70c5afa'
