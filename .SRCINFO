@@ -10,6 +10,9 @@ pkgbase = notesmd-cli-git
 	makedepends = git
 	makedepends = go
 	depends = glibc
+	provides = notesmd-cli
+	conflicts = notesmd-cli
+	replaces = obsidian-cli-git
 	source = notesmd-cli-git::git+https://github.com/Yakitrak/notesmd-cli
 	sha256sums = SKIP
 
