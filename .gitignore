@@ -1,3 +1,4 @@
 DOC.md
 vite-plus/
+*.tgz
 *.pkg.tar.zst
