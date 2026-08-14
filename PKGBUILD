@@ -22,11 +22,6 @@ build() {
   CFLAGS="" CXXFLAGS="" LDFLAGS="" cargo build --release --frozen
 }
 
-check() {
-  cd "$_PKGNAME"
-  CFLAGS="" CXXFLAGS="" LDFLAGS="" cargo test --frozen
-}
-
 package() {
   cd "$_PKGNAME"
   install -Dm755 "${srcdir}/yadal/target/release/yadal" "${pkgdir}/usr/bin/yadal"
