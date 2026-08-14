@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=MagicPods
+Comment=The control center for your Bluetooth headphones
+Exec=magicpods
+Icon=magicpods
+Terminal=false
+Categories=Utility;
+StartupWMClass=MagicPods
