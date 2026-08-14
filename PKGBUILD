@@ -2,8 +2,8 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
 pkgname=yaak-git
 # Update pkgver with: makepkg --nobuild --nodeps
-pkgver=2026.5.0.r0.g195f893
-pkgrel=3
+pkgver=2026.6.0.r0.gd0af512
+pkgrel=1
 pkgdesc='Fast, offline and Git-friendly API client for HTTP, GraphQL, WebSockets, SSE, and gRPC (Development version)'
 arch=(aarch64 armv7h i686 pentium4 x86_64)
 url='https://yaak.app/'
