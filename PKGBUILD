@@ -8,11 +8,12 @@ _opt_OpenSSL=''
 set -u
 pkgname='proftpd'
 #pkgname+='-git'
-pkgver=1.3.9a
+pkgver=1.3.9d
 pkgrel=1
 epoch='2'
 pkgdesc='High-performance, scalable FTP SSL TLS and SFTP server'
 arch=('x86_64' 'i686')
+arch+=('aarch64') # df8oe 2026-05-02
 url='http://www.proftpd.org/'
 license=('GPL')
 if [[ "${pkgver}" =~ ^([.0-9]+)([a-z])$ ]]; then
@@ -39,11 +40,11 @@ source=(
   'proftpd.service'
   'proftpd.tmpfiles'
 )
-md5sums=('9333020093faae6f02532c6e27078ebb'
+md5sums=('d7773e706687ffdaec3d56f285bd9aab'
          '4d7a3eedc1852d4fa9faafc072fb8320'
          'f7e0c3a402a845ba8d546b2801f77ed2'
          '907b149a120b046f05647c73502e23c9')
-sha256sums=('bc3c7c47033ecff29f010efc18315d5906eb942d2e673ebce0138a96f11af0b4'
+sha256sums=('68b094b1c57c775ad00ef469e9a87783dbbf31a85f98f48faf60becc2e84e4ec'
             'eaacf8df09c3d267cb08e962910af9cab50d1d5b007b232eb79b5240d8c5a721'
             '3a4558773ed747ab66b51551b6fc1732148e30908edc010f00a5e8675c817e64'
             '359cb8f5b30e66627929f7c50cbdd7dcc6919f7261f36eb617045210caf90abb')
