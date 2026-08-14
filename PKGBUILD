@@ -2,7 +2,7 @@
 
 pkgname='geant4-full'
 pkgver=11.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -23,17 +23,21 @@ conflicts=(
   'geant4'
   'geant4-debug'
   'geant4-abladata'
+  'geant4-channelingdata'
   'geant4-ensdfstatedata'
   'geant4-incldata'
   'geant4-ledata'
   'geant4-levelgammadata'
   'geant4-neutronhpdata'
   'geant4-neutronxsdata'
+  'geant4-nudexlibdata'
+  'geant4-particlehpdata'
   'geant4-particlexsdata'
   'geant4-piidata'
   'geant4-radioactivedata'
   'geant4-realsurfacedata'
   'geant4-saiddata'
+  'geant4-uurptdata'
 )
 optdepends=(
   'java-environment'
@@ -54,7 +58,7 @@ source=(
 sha256sums=(
   '5720f2bba6921027e206ad4f0a06f9bcc348adab36240e8b27710f20ce3e971a'
   '5fde7b80dcfa960407b1ecb2b2a2aa817250948cc32490d8ece48a5e5b4035c1'
-  'SKIP'
+  '2486b50adcf4a6ce08b1a5b38b72469926f5835a2b0322b2d962902918eff8a2'
 )
 install="geant4-full.install"
 
