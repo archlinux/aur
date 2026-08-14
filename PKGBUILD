@@ -2,17 +2,37 @@
 # Contributor: Evert Vorster <evorster@gmail.com>
 
 pkgname=vegastrike-engine-release-git
-pkgver=0.9.1.r15.g9edc3c116
+pkgver=0.9.1.r20.g01a771457
 pkgrel=1
 pkgdesc="A spaceflight simulator in massive universe"
 arch=(x86_64)
 url="https://www.vega-strike.org/"
 license=(GPL-3.0-or-later)
-depends=(boost-libs python freeglut gtk3 libvorbis openal sdl2 glu
-
-         # namcap implicit depends
-         glibc gcc-libs glib2 zlib libpng libglvnd expat libjpeg-turbo)
-makedepends=(git cmake boost)
+depends=(
+    boost-libs
+    expat
+    freeglut
+    glib2
+    glibc
+    glu
+    gtk3
+    libgcc
+    libglvnd
+    libjpeg-turbo
+    libpng
+    libstdc++
+    libvorbis
+    openal
+    python
+    sdl2
+    zlib
+    )
+makedepends=(
+    git
+    cmake
+    boost
+    #gtest
+    )
 provides=(vegastrike-engine)
 conflicts=(vegastrike-engine)
 source=("git+https://github.com/vegastrike/Vega-Strike-Engine-Source#branch=0.9.x"
