@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=librist-git
-pkgver=0.2.19rc1.r0.gf86b48b
+pkgver=0.2.20.r0.g4f45ef8
 pkgrel=1
 pkgdesc='A library that can be used to add the RIST protocol to applications (git version)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(
     'glibc'
     'libmicrohttpd'
     'lz4'
-    'mbedtls')
+    'mbedtls3')
 makedepends=(
     'cmake'
     'cmocka'
@@ -23,7 +23,7 @@ conflicts=('librist')
 source=('git+https://code.videolan.org/rist/librist.git'
         '010-librist-disable-multicast-tests.patch')
 sha256sums=('SKIP'
-            'e6b3a6f0f169455ead712c71c4e088bb3ae97bc19c890eb0c81aaafe867f4282')
+            'ce3c9e6065c13287ec55168a16722969b8741eb312972b5f574907671a86d858')
 
 prepare() {
     patch -d librist -Np1 -i "${srcdir}/010-librist-disable-multicast-tests.patch"
@@ -34,7 +34,8 @@ pkgver() {
 }
 
 build() {
-    arch-meson build librist
+    export CFLAGS+=' -isystem/usr/include/mbedtls3'
+    arch-meson build librist --cmake-prefix-path='/usr/lib/mbedtls3/cmake'
     meson compile -C build
 }
 
