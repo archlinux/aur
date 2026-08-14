@@ -2,11 +2,11 @@
 
 _pkgname=beets-yapl
 pkgname=beets-yapl-git
-pkgver=r7.d1179f9
+pkgver=r24.7ddc67f
 pkgrel=1
 pkgdesc="Beets plugin to handle yaml playlists"
 arch=('any')
-url="https://github.com/nichobi/$_pkgname"
+url="https://codeberg.org/nichobi/$_pkgname"
 license=('MIT')
 depends=('python' 'beets>=1.4.7')
 makedepends=('git')
@@ -27,4 +27,3 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
 }
-
