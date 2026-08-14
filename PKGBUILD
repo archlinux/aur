@@ -6,7 +6,7 @@ pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser vie
 arch=('any')
 url="https://github.com/thefangeddeity/hls-livecam-server"
 license=('GPL-3.0-or-later')
-depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow' 'python-numpy' 'python-pyfakewebcam' 'v4l2loopback-dkms' 'smartmontools' 'v4l-utils' 'wget' 'ttf-dejavu')
+depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow' 'python-numpy' 'python-opencv' 'python-pyfakewebcam' 'pyside6' 'v4l2loopback-dkms' 'smartmontools' 'v4l-utils' 'wget' 'ttf-dejavu')
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
@@ -23,6 +23,24 @@ package() {
     install -Dm755 pkg/usr/local/bin/hls-livecam-repair "$pkgdir/usr/local/bin/hls-livecam-repair"
     install -Dm755 pkg/usr/local/bin/hls-livecam-dark  "$pkgdir/usr/local/bin/hls-livecam-dark"
     install -Dm755 pkg/usr/local/bin/broadcast-api     "$pkgdir/usr/local/bin/broadcast-api"
+    install -Dm755 camdash-gui                         "$pkgdir/usr/local/bin/camdash-gui"
+
+    # ── Operator GUI ─────────────────────────────────────────────────────────
+    # gui/ lives at the repo root rather than under pkg/, deliberately: pkg/ is
+    # packaged wholesale into the .deb, and PySide6 is not available in Debian
+    # bookworm (the pyside6 split packages start at trixie), nor is there a
+    # display on the headless Debian node. Arch installs it from here; the deb
+    # simply never sees it.
+    for f in __init__ app probes tokens video widgets; do
+        install -Dm644 "gui/$f.py" "$pkgdir/usr/share/hls-livecam-server/gui/$f.py"
+    done
+    install -Dm644 gui/assets/icon_1024.png \
+                   "$pkgdir/usr/share/hls-livecam-server/gui/assets/icon_1024.png"
+    # The desktop entry is registered by hls-livecam-setup, which also prepares
+    # the per-user config dir the GUI persists window geometry into; shipping it
+    # to share/ keeps setup's copy source in the package.
+    install -Dm644 camdash-gui.desktop \
+                   "$pkgdir/usr/share/hls-livecam-server/camdash-gui.desktop"
 
     # ── Shared data ──────────────────────────────────────────────────────────
     install -Dm755 pkg/usr/share/hls-livecam-server/camdash \
