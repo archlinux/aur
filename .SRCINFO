@@ -11,7 +11,6 @@ pkgbase = timeshift-uki-hooks-git
 	depends = coreutils
 	depends = util-linux
 	makedepends = git
-	makedepends = debugedit
 	makedepends = fakeroot
 	provides = timeshift-uki-hooks
 	conflicts = timeshift-uki-hooks
