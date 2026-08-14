@@ -2,7 +2,7 @@
 
 _name="FlyingCarpet"
 pkgname="flying-carpet"
-pkgver=9.0.10
+pkgver=10.0.1
 pkgrel=1
 pkgdesc="File transfer between Android, iOS, Linux, macOS, and Windows over ad hoc WiFi"
 declare -Ag _arch=(
@@ -39,7 +39,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('49af81953c60a7df1967e5925c3a188b90bd9b22831aa164bd234d1f0a17b98fa4f9a321449fa13b8a59bcc2fd0bcf9c0d4d81439ff2c7a189c226251f340156')
+b2sums=('d1cdca0755e4814ddcdb69d7f1d23079211be045863df4f389e5d03390a2a2575f9b7fee66cf0aa687e824048edc351bdb9dbe07b20e4411a6e9b572e9043a80')
 
 _source() {
   export CARGO_HOME="${srcdir}/.cargo"
