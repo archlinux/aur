@@ -1,6 +1,6 @@
 pkgbase = strobengine
 	pkgdesc = A high-performance HTTP load testing engine with a Python API and a bare-metal Rust core
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/strobe-ops/strobengine
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = strobengine
 	depends = python-rich
 	depends = python-typer
 	provides = strobengine
-	source = strobengine-0.2.1.tar.gz::https://github.com/strobe-ops/strobengine/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 1dd08a25eeca3e914cc6552673d0f7fad48611aee4ef6b0ac6f017b9ca55e3c2
+	source = strobengine-0.3.0.tar.gz::https://github.com/strobe-ops/strobengine/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = bba1afd8718d4ec437367f41cadf3f4271449b301c2d554f47092541212daa3f
 
 pkgname = strobengine
