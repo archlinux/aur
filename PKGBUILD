@@ -2,9 +2,9 @@
 
 pkgname=ai-usagebar-bin
 _pkgname=ai-usagebar
-pkgver=0.22.0
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Waybar widget + TUI for AI plan usage (prebuilt binary)"
+pkgdesc="Omarchy/Waybar widgets + TUI for AI plan usage (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/akitaonrails/ai-usagebar"
 license=('MIT')
@@ -26,8 +26,8 @@ options=('!strip' '!debug')
 # Per-arch sources — pacman picks the matching one for the host arch.
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz")
-sha256sums_x86_64=('bb78c7a2a0bda1ee6d1d672174a3e0071d73fcab725b7c6a24811728f8606e01')
-sha256sums_aarch64=('c473ffe98a4ce79507a15f8076e612cc25c02d0845d3e02b79a72e3dfe5b5642')
+sha256sums_x86_64=('5ba965e73fd39fe956796065abd0c1f6797c4ae0939fbbbe6bf7972afafaae61')
+sha256sums_aarch64=('946e565ac4c2261da8d208fa304fa6e9c0ba47c62505a79dc5d9be166beb0d22')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/"                "ai-usagebar"
