@@ -4,8 +4,8 @@
 # Contributor: Federico Cassani <federico dot cassani at outlook dot com>
 pkgname=python-wn
 _name=${pkgname#python-}
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="Wordnet interface library"
 arch=('any')
 url="https://wn.readthedocs.io"
@@ -25,7 +25,7 @@ checkdepends=(
   'python-pytest-benchmark'
 )
 source=("$_name-$pkgver.tar.gz::https://github.com/goodmami/wn/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b5f7a9706b4cdb0cd364f1d184e381793d2d694e32fbb6cbddbb5bf4a5c67dcc')
+sha256sums=('562f2c447f78680c689d97811f90fded2f931974b5c16fa0a5c43084b05c49c4')
 
 build() {
   cd "$_name-$pkgver"
