@@ -1,6 +1,6 @@
 pkgbase = pi-coding-agent-bin
 	pkgdesc = Coding agent CLI with read, bash, edit, write tools and session management (prebuilt binary)
-	pkgver = 0.84.1
+	pkgver = 0.84.2
 	pkgrel = 1
 	url = https://github.com/earendil-works/pi
 	arch = x86_64
@@ -10,18 +10,18 @@ pkgbase = pi-coding-agent-bin
 	depends = gcc-libs
 	optdepends = git: repository-aware workflows and session integration
 	optdepends = ripgrep: faster in-repository search
-	provides = pi-coding-agent=0.84.1
+	provides = pi-coding-agent=0.84.2
 	provides = pi
 	conflicts = pi-coding-agent
 	conflicts = pi-coding-agent-git
 	options = !strip
 	options = !debug
 	options = !lto
-	source = pi-coding-agent-bin-0.84.1-LICENSE::https://raw.githubusercontent.com/earendil-works/pi/v0.84.1/LICENSE
+	source = pi-coding-agent-bin-0.84.2-LICENSE::https://raw.githubusercontent.com/earendil-works/pi/v0.84.2/LICENSE
 	sha256sums = 0457f5bcec3b3b211605dfb5d1a49042fd638f3686a410fe099c24a25af13c48
-	source_x86_64 = pi-coding-agent-bin-0.84.1-x86_64.tar.gz::https://github.com/earendil-works/pi/releases/download/v0.84.1/pi-linux-x64.tar.gz
-	sha256sums_x86_64 = 5634d7ebd18274b63af3371e942f342d74bea012389575c1d1ff15ce6ca80c2f
-	source_aarch64 = pi-coding-agent-bin-0.84.1-aarch64.tar.gz::https://github.com/earendil-works/pi/releases/download/v0.84.1/pi-linux-arm64.tar.gz
-	sha256sums_aarch64 = ab95c058a4651b5ff5d8c878e524edfb776263c7a444f325505f247c056eecfc
+	source_x86_64 = pi-coding-agent-bin-0.84.2-x86_64.tar.gz::https://github.com/earendil-works/pi/releases/download/v0.84.2/pi-linux-x64.tar.gz
+	sha256sums_x86_64 = 906fbe787fd225c4ac624fe7ebd5b1d55a60e0f5c7ef51795d231564f9ee1c13
+	source_aarch64 = pi-coding-agent-bin-0.84.2-aarch64.tar.gz::https://github.com/earendil-works/pi/releases/download/v0.84.2/pi-linux-arm64.tar.gz
+	sha256sums_aarch64 = d15372da9e4b4c5fef9fd15bed76d7f5f1720dd39fe7cde0ec62e5b65ad63ef1
 
 pkgname = pi-coding-agent-bin
