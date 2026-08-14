@@ -4,8 +4,8 @@
 # Contributor: Benjamin Hedrich <kiwisauce (a) pagenotfound (dot) de>
 
 pkgname=tvheadend-git
-pkgver=4.3.r2653.ge48cdd3
-pkgrel=1
+pkgver=4.3.r2758.g27295c5
+pkgrel=2
 pkgdesc='TV streaming server and DVR'
 #arch=(x86_64)
 arch=(aarch64 arm armv6h armv7h i686 x86_64)
@@ -14,9 +14,10 @@ license=(GPL-3.0-or-later)
 depends=(
   avahi ffmpeg libiconv libdvbcsa libfdk-aac libogg libtheora libvorbis libvpx
   openssl opus pcre2 pngquant uriparser x264 x265)
-makedepends=(git python)
+makedepends=(git python cmake wget) # cmake wget: for static builds
 optdepends=(
   'libhdhomerun: HDHomeRun support'
+  # 'npm: for Vue Web UI'
   'xmltv: alternative source of programme listings')
 options=(!buildflags !strip emptydirs)
 provides=("${pkgname%-git}")
@@ -32,29 +33,39 @@ sha256sums=(
   'a8e95cd2ec5626a47f49c0aa1f8524d6e155809cfbf6504b9a1484afdf62cfb7'
   '35786e211d4cbf6de213f28e7382378f27f3bef17458e8533ad43fed06e7f202')
 
-# Disable libav, if the FFmpeg version is not known to support libav.
-# Alternative to this function: '--enable-libav' on the './configure' line
-_print_libav_option() {
-  local ffmpeg_supported ffmpeg_installed libav_option
-
-  # Compare major version numbers of FFmpeg
-  ffmpeg_supported="$(awk '$1 == "FFMPEG" { print $3 }' Makefile.ffmpeg | sed 's/^ffmpeg-//' | cut -d'.' -f1)"
-  ffmpeg_installed="$(pacman -Q ffmpeg | awk '{ print $2 }' | sed 's/^ *//;s/r.*[.]//;s/.*://' | cut -d'.' -f1)"
-
-  # Check the version supported by this package (and allow lower versions).
-  # Optionally, check the version supported by Tvheadend
-  if ((ffmpeg_installed <= 8)) || ((ffmpeg_supported > 0 && ffmpeg_supported == ffmpeg_installed)); then
-    libav_option='--enable-libav'
-  else
-    libav_option='--disable-libav'
-  fi
-
-  echo -n "$libav_option"
-}
+# # Disable libav, if the FFmpeg version is not known to support libav.
+# # Alternative to this function: '--enable-libav' on the './configure' line
+# _print_libav_option() {
+#   local ffmpeg_supported ffmpeg_installed libav_option
+#
+#   # Compare major version numbers of FFmpeg
+#   ffmpeg_supported="$(awk '$1 == "FFMPEG" { print $3 }' Makefile.ffmpeg | sed 's/^ffmpeg-//' | cut -d'.' -f1)"
+#   ffmpeg_installed="$(pacman -Q ffmpeg | awk '{ print $2 }' | sed 's/^ *//;s/r.*[.]//;s/.*://' | cut -d'.' -f1)"
+#
+#   # Check the version supported by this package (and allow lower versions).
+#   # Optionally, check the version supported by Tvheadend
+#   if ((ffmpeg_installed <= 9)) || ((ffmpeg_supported > 0 && ffmpeg_supported == ffmpeg_installed)); then
+#     libav_option='--enable-libav'
+#   else
+#     libav_option='--disable-libav'
+#   fi
+#
+#   echo -n "$libav_option"
+# }
 
 pkgver() {
   git -C $pkgname describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
+# prepare() {
+#   cd $pkgname
+#
+#   # Patch for ffmpeg 9
+#   sed -i 's|.*self->channel_layouts = codec->[cm]h_layouts;.*||' src/transcoding/codec/codec.c
+#   sed -i 's|.*self->pix_fmts = codec->pix_fmts;.*||' src/transcoding/codec/codec.c    # Disables configured video profiles
+#   sed -i 's|.*self->sample_fmts = codec->sample_fmts;.*||' src/transcoding/codec/codec.c
+#   sed -i 's|.*self->sample_rates = codec->supported_samplerates.*||' src/transcoding/codec/codec.c
+# }
 
 build() {
   cd $pkgname
@@ -62,18 +73,20 @@ build() {
   #export CFLAGS+=' -w -Wno-error'
   export CFLAGS+=' -Wno-error=discarded-qualifiers -Wno-error=format-truncation -Wno-error=unused-but-set-variable'
 
-  local libav_option
-  libav_option="$(_print_libav_option)"
-  printf 'Checking for libav (FFmpeg transcoding) support: %s\n' "$libav_option"
+  # local libav_option
+  # libav_option="$(_print_libav_option)"
+  # printf 'Checking for libav (FFmpeg transcoding) support: %s\n' "$libav_option"
 
   local libhdhomerun_option=
   if pacman -Q libhdhomerun >/dev/null 2>&1; then
     libhdhomerun_option='--enable-hdhomerun_client'
   fi
 
+  # --disable-ffmpeg_static \
+  # --disable-libx265_static \
+  # "$libav_option" \
   ./configure \
     --datadir=/var/lib \
-    --disable-ffmpeg_static \
     --disable-hdhomerun_static \
     --disable-libfdkaac_static \
     --disable-libogg_static \
@@ -82,8 +95,7 @@ build() {
     --disable-libvorbis_static \
     --disable-libvpx_static \
     --disable-libx264_static \
-    --disable-libx265_static \
-    "$libav_option" \
+    --enable-libav \
     $libhdhomerun_option \
     --enable-avahi \
     --enable-pngquant \
