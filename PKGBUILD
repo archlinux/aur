@@ -2,7 +2,7 @@
 _projectname='kiota-python'
 _packagename='microsoft-kiota-http'
 pkgname="python-$_packagename"
-pkgver='1.11.7'
+pkgver='1.11.8'
 pkgrel='1'
 pkgdesc='Microsoft Kiota HTTP library'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 	'change-flit-upper-bound.diff'
 	'hardcode-version.diff'
 )
-b2sums=('19552779d0efa7ed7621275a9fcf78baef837e5666859e6d8c57da670f8d445e9cb51980522c38f28f7ebd5303249f381e1f50ef5e6d6465503330fb146aba37'
+b2sums=('69ea0b78ce2877b834f0fbbccba3a61a1c760a55f8bdf6a9b52409d740b216a8b84c13a1541fb2923e6d1922a11ede2c00359a2f3d289265f3c40b92bd142752'
         '448cb419f23a69d708f6b7fd809ee368cc8e99533657e9dc0371d0ee608bf0d98158629f5db87a3d03b27ccd249597aad44a5c852ee0fd8e184158f0a9450542'
         '08deb41334a3dcc512ed36ce5fa72f0343288158e235dca230c51a3463faf2c292504b86bc108a8c9bea92f68e069e8a71e8428831730be0a96e3e3615bb9919')
 
