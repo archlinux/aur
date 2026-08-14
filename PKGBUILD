@@ -10,7 +10,7 @@
 # (yututui-linux-x64.tar.gz, which contains the `ytt` binary), so there is no second
 # build and the bytes match the GitHub release one-to-one.
 pkgname=yututui-bin
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Fast, low-RAM YouTube Music player for your terminal (prebuilt binary)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=('xdg-utils: open the current track on the web'
             'xsel: copy text on X11 (alternative to xclip)')
 source=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/Ochichan/Yututui/releases/download/v$pkgver/yututui-linux-x64.tar.gz"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/Ochichan/Yututui/v$pkgver/LICENSE")
-sha256sums=('8e969bede38fcdafea5eb2c97597b4e7c4a861ca1fe1b1a8762d7c1443374d37'
+sha256sums=('16268bf7c777c068f703c94b73cec5a0ca62766dde3fe505cb08bef35b82dd9f'
             '4187ff1dba7402a773eb6d3d588ad540e4dcf40606237f004160ee67e019ddc8')
 
 package() {
