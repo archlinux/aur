@@ -1,6 +1,6 @@
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 pkgname=jj-fzf
-pkgver=0.38.0
+pkgver=0.42.0
 pkgrel=6
 pkgdesc=" Text UI for Jujutsu based on fzf, centering around the jj log with key bindings for common operations"
 arch=('any')

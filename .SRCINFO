@@ -1,6 +1,6 @@
 pkgbase = jj-fzf
 	pkgdesc = Text UI for Jujutsu based on fzf, centering around the jj log with key bindings for common operations
-	pkgver = 0.38.0
+	pkgver = 0.42.0
 	pkgrel = 6
 	url = https://github.com/tim-janik/jj-fzf
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = jj-fzf
 	makedepends = pandoc
 	depends = bash
 	depends = grep
-	depends = jujutsu>=0.38.0
+	depends = jujutsu>=0.42.0
 	depends = fzf>=0.67
-	source = git+https://github.com/tim-janik/jj-fzf.git#tag=v0.38.0
+	source = git+https://github.com/tim-janik/jj-fzf.git#tag=v0.42.0
 	sha256sums = SKIP
 
 pkgname = jj-fzf
