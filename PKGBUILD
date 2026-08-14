@@ -4,7 +4,7 @@
 pkgname=idescriptor
 _srcname=iDescriptor
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A free, open-source, and cross-platform iDevice management tool"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/${_srcname}/${_srcname}"
@@ -81,7 +81,7 @@ package() {
 	cd "${_srcname}/"
 	local _app_id="io.github.${pkgname}.${_srcname}"
 
-	install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
+	install -Dm755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${_srcname}"
 	install -Dm644 "${_app_id}.desktop" -t "${pkgdir}/usr/share/applications/"
 	install -Dm644 "${_app_id}.metainfo.xml" -t "${pkgdir}/usr/share/metainfo/"
 
