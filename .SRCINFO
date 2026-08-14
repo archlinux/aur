@@ -1,0 +1,23 @@
+pkgbase = librepods-rust-bin
+	pkgdesc = AirPods management application for Linux (Rust edition)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/librepods-org/librepods
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = bluez
+	depends = dbus
+	depends = libpulse
+	depends = hicolor-icon-theme
+	depends = glibc
+	provides = librepods
+	conflicts = librepods
+	conflicts = librepods-git
+	source = librepods-1::https://github.com/ImMALWARE/aur-librepods-rust-bin/releases/download/librepods-1/librepods
+	source = icon.png::https://raw.githubusercontent.com/ImMALWARE/aur-librepods-rust-bin/librepods-1/linux-rust/assets/icon.png
+	source = LICENSE::https://raw.githubusercontent.com/ImMALWARE/aur-librepods-rust-bin/librepods-1/LICENSE
+	sha256sums = 2cf9b4de280a74940265d902bb8f4429ef8318e5c2f61de1f23abffe575e4591
+	sha256sums = 6785d3943faa390146e641fcca5562862b45d25540b2f3f325d5904045246481
+	sha256sums = 20b067f86de375aae6db0f283ab2e65de24d537733b89bd58432c101259d84cf
+
+pkgname = librepods-rust-bin
