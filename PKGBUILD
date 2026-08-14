@@ -7,7 +7,7 @@
 # To bump after a new GitHub release:  make aur-bump VER=<new-version>
 
 pkgname=pikvm-bin
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="PiKVM ATX power control — terminal UI and CLI"
 arch=('x86_64' 'aarch64')
@@ -29,8 +29,8 @@ source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v
 
 # Replaced by `makepkg --skipinteg` during initial bootstrap; the real
 # checksums get filled in by `make aur-bump` for every release.
-sha256sums_x86_64=('d7101cca5bbe64f90136fb65d5014b34a42ce63daef1611d8cc47a73b5cef078')
-sha256sums_aarch64=('a47ca33fbe6999a3052a217ba9b8c64cf09d07ebb962bc6cc47916638b17a58c')
+sha256sums_x86_64=('f5c06deed59687d16d77be9710f7e5b4708416c48e4a1c362651495112eb6409')
+sha256sums_aarch64=('d8d44778e53b1e94c43ec3f91d87f7208f9ca5cf88772dedd222e343e37c7480')
 
 package() {
     install -Dm755 "${srcdir}/pikvm" "${pkgdir}/usr/bin/pikvm"
