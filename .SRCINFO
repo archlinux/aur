@@ -1,7 +1,7 @@
 pkgbase = pcsx2
 	pkgdesc = PlayStation 2 emulator
 	pkgver = 2.6.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2.install
 	arch = x86_64
@@ -22,8 +22,9 @@ pkgbase = pcsx2
 	makedepends = speexdsp
 	makedepends = 7zip
 	makedepends = patchelf
-	depends = ffmpeg
+	depends = hicolor-icon-theme
 	depends = kddockwidgets
+	depends = libegl
 	depends = libpcap
 	depends = libpng
 	depends = libwebp
@@ -38,11 +39,11 @@ pkgbase = pcsx2
 	optdepends = gstreamer: Backup sound player for RetroAchievements
 	options = !debug
 	options = lto
-	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git#commit=bc8151d2a46d4aba039ea5580afbfc7bfcf6d730
+	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git#tag=v2.6.3
 	source = pcsx2_patches::git+https://github.com/PCSX2/pcsx2_patches.git
-	source = plutovg::git+https://github.com/sammycage/plutovg.git#tag=v1.3.2
-	source = plutosvg::git+https://github.com/sammycage/plutosvg.git#tag=v0.0.7
-	sha256sums = SKIP
+	source = plutovg::git+https://github.com/sammycage/plutovg.git#tag=v1.3.3
+	source = plutosvg::git+https://github.com/sammycage/plutosvg.git#tag=v0.0.8
+	sha256sums = be244f680a26c86a01ea01c4bfc906f0c82512be3823dc0b00d54adb67cf5650
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

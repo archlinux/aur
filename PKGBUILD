@@ -1,23 +1,24 @@
 # Maintainer:
 
 : ${_build_deps:=true}
-: ${_ver_plutovg:=1.3.2}
-: ${_ver_plutosvg:=0.0.7}
+: ${_use_sodeps:=false}
 
-: ${_commit=bc8151d2a46d4aba039ea5580afbfc7bfcf6d730}
+: ${_ver_plutovg:=1.3.3}
+: ${_ver_plutosvg:=0.0.8}
 
 _pkgname="pcsx2"
 pkgname="$_pkgname"
 pkgver=2.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='PlayStation 2 emulator'
 url="https://github.com/PCSX2/pcsx2"
 license=('GPL-3.0-or-later')
 arch=('x86_64')
 
 depends=(
-  ffmpeg
+  hicolor-icon-theme
   kddockwidgets
+  libegl # dlopen
   libpcap
   libpng
   libwebp
@@ -26,7 +27,7 @@ depends=(
   qt6-base
   qt6-svg
   sdl3
-  shaderc
+  shaderc # dlopen
 )
 makedepends=(
   ## compiler
@@ -64,23 +65,21 @@ install="$_pkgname.install"
 
 _pkgsrc="$_pkgname"
 source=(
-  "$_pkgsrc"::"git+$url.git${_commit:+#commit=$_commit}"
+  "$_pkgsrc"::"git+$url.git#tag=v$pkgver"
   "pcsx2_patches"::"git+https://github.com/PCSX2/pcsx2_patches.git"
 )
 sha256sums=(
-  'SKIP'
+  'be244f680a26c86a01ea01c4bfc906f0c82512be3823dc0b00d54adb67cf5650'
   'SKIP'
 )
 
 if [ "${_build_deps::1}" != "t" ]; then
   eval "depends+=(
-    ## AUR
-    plutosvg
-    plutovg
+    plutosvg # AUR
+    plutovg  # AUR
   )"
 else
   eval "depends+=(
-    # plutosvg
     freetype2
   )"
 
@@ -133,7 +132,7 @@ build() (
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
     -DCMAKE_SKIP_RPATH=ON
-    -Wno-dev
+    -Wno-author
   )
 
   _cmake_plutovg=(
@@ -183,12 +182,28 @@ build() (
 )
 
 package() {
+  if [[ "${_use_sodeps::1}" == "t" ]]; then
+    eval "depends+=(
+      libcurl.so
+      libdbus-1.so
+      libfreetype.so
+      libjpeg.so
+      liblz4.so
+      libpcap.so
+      libpng16.so
+      libudev.so
+      libwebp.so
+      libz.so
+      libzstd.so
+    )"
+  fi
+
   DESTDIR="$pkgdir" cmake --install build_pcsx2
   ln -sf pcsx2-qt "$pkgdir/usr/bin/$_pkgname"
 
   install -Dm644 patches.zip -t "$pkgdir/usr/share/$_pkgname/resources/"
 
-  install -Dm644 pcsx2/bin/resources/icons/AppIconLarge.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  install -Dm644 pcsx2/bin/resources/icons/AppIconLarge.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
 
   install -Dm755 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
 [Desktop Entry]
@@ -206,8 +221,14 @@ Categories=Game;Emulator
 END
 
   if [[ "${_build_deps::1}" == t ]]; then
+    # vendored libraries
     mkdir -pm755 "$pkgdir/usr/lib/$_pkgname"
     cp "deps/usr/lib"/*.so* "$pkgdir/usr/lib/$_pkgname/"
+
+    # rpath
     patchelf --add-rpath "/usr/lib/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+    for i in "$pkgdir/usr/lib/$_pkgname"/*.so; do
+      patchelf --set-rpath '$ORIGIN' "$i"
+    done
   fi
 }
