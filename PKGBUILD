@@ -2,7 +2,7 @@
 # Contributor: Felix Kauselmann <licorn at gmail dot com>
 
 pkgname=yacreader-poppler-git
-pkgver=10.1.0.r0.g65ee651
+pkgver=10.2.0.r2.ge475661
 pkgrel=1
 pkgdesc="Comic reader for cross-platform reading and managing your digital comic collection, using poppler for PDF"
 arch=(x86_64)
@@ -28,6 +28,7 @@ makedepends=(
     vulkan-headers
     )
 optdepends=(
+    'libspeechd: text-to-speech plugin'
     'qt6-imageformats: Support for extra image formats'
     'qrencode: YACReaderLibrary server info qr codes'
     )

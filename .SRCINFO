@@ -1,6 +1,6 @@
 pkgbase = yacreader-poppler-git
 	pkgdesc = Comic reader for cross-platform reading and managing your digital comic collection, using poppler for PDF
-	pkgver = 10.1.0.r0.g65ee651
+	pkgver = 10.2.0.r2.ge475661
 	pkgrel = 1
 	url = https://github.com/YACReader/yacreader
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = yacreader-poppler-git
 	depends = qt6-declarative
 	depends = qt6-speech
 	depends = qt6-svg
+	optdepends = libspeechd: text-to-speech plugin
 	optdepends = qt6-imageformats: Support for extra image formats
 	optdepends = qrencode: YACReaderLibrary server info qr codes
 	provides = yacreader
