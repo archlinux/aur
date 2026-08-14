@@ -1,4 +1,4 @@
-pkgbase = ironwail
+pkgbase = ironwail-git
 	pkgdesc = A fork of the popular GLQuake descendant QuakeSpasm with a focus on high performance instead of maximum compatibility, with a few extra features sprinkled on top.
 	pkgver = 0.8.2.r0.g1eabd0df
 	pkgrel = 1
@@ -19,4 +19,4 @@ pkgbase = ironwail
 	md5sums = d9987f6cb32e318dff2e3172da6cc63c
 	md5sums = 033814f289ed954599d4ea1da0d2637a
 
-pkgname = ironwail
+pkgname = ironwail-git
