@@ -1,39 +1,53 @@
-# Maintainer: Mikhail <efklid@gmail.com>
-# shellcheck disable=SC2034,SC2154
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+
 pkgname=refract
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
-pkgdesc="GUI tool for ranking pacman mirrors on Arch Linux and Arch-based distributions"
-arch=('any')
-url="https://github.com/Labaman/refract"
-license=('GPL-3.0-or-later')
+pkgdesc="Specialized audio CD-ripper optimized for track recovery"
+arch=(x86_64)
+url="https://github.com/Blobfolio/refract"
+license=(WTFPL)
 depends=(
-    'python'
-    'python-requests'
-    'python-gobject'
-    'gtk4'
-    'polkit'
-)
-optdepends=(
-    'geoip: country auto-detection via geoiplookup'
-)
+    glibc
+    libgcc
+    libstdc++
+    )
 makedepends=(
-    'python-build'
-    'python-installer'
-    'python-hatchling'
-)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Labaman/refract/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ab5a32473111e352e1fa787fbca12314253e97abd300f2fb48c12f5f24a1e337')
+    git
+    cargo
+    clang
+    yasm
+    cmake # reported makedeps for codecs
+    ninja # reported makedeps for codecs
+    )
+optdepends=(
+    'zenity: for file dialogues'
+	'xdg-desktop-portal-gnome: for file dialogues'
+	'xdg-desktop-portal-gtk: for file dialogues'
+	'xdg-desktop-portal-kde: for file dialogues'
+	)
+options=(!lto)
+source=("git+https://github.com/Blobfolio/refract.git#tag=v${pkgver}")
+sha256sums=('23a9b0ff5b7f61183290fd71915c45453382b6005861d2de88e7ae642a3b2b5e')
+
+prepare() {
+  cd refract
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
-    cd "$pkgname-$pkgver" || return 1
-    python -m build --wheel --no-isolation
+  cd refract
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  cargo build --frozen --release
 }
 
 package() {
-    cd "$pkgname-$pkgver" || return 1
-    python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 refract.desktop "$pkgdir/usr/share/applications/refract.desktop"
-    install -Dm644 refract.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/refract.svg"
+  cd refract
+  install -D target/release/refract -t ${pkgdir}/usr/bin
+  install -D release/man/*.1 -t "${pkgdir}"/usr/share/man/man1/
+  #install -D release/completions/refract.bash -t "${pkgdir}"/usr/share/bash-completion/completions/
+
+  # todo install completions
 }
