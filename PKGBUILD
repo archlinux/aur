@@ -2,7 +2,7 @@
 
 pkgname=cyphergatevpn-bin
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="CypherGate VPN binary release"
 arch=('x86_64')
 url="https://github.com/Cypher-Monarch/CypherGate"
@@ -18,8 +18,8 @@ source=(
 )
 
 sha256sums=(
-  'b2736867d5b8ba80d8c2208e71d4f4925fa9abffe28f6ef134e0fd009d846cb5'
-  '0c1e13a55c89bcf6958f487e4154fb3a7efecf002f273e3d84a6df6cf466c6d5'
+  '6d80a2e569ccc7ec66f25b2794b89bd33b3c11a8b3229dd2256052ee8f060489'
+  '7d5beb36a5b026effd228a5f1d46b6c720c843ec4bab954d33c61c8875585b6d'
 )
 
 validpgpkeys=(
