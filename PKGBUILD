@@ -1,7 +1,7 @@
 # Maintainer: Alexander Inglessi <inglessi glsk net>
 
 pkgname=luxd
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Automatic display brightness daemon driven by configurable shell commands"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
 )
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b5c12669230b8d469ea9c5bc93701912a3b16be3e31f8d10f3aae2c2d88a34aa')
+sha256sums=('0ae39f7d40a83704109eec6732a98ca9a92e2f412a89dbc304b3d461848cb6e7')
 
 prepare() {
     cd "$pkgname"

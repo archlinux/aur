@@ -1,6 +1,6 @@
 pkgbase = luxd
 	pkgdesc = Automatic display brightness daemon driven by configurable shell commands
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://git.glsk.net/glsk/luxd
 	install = luxd.install
@@ -11,7 +11,7 @@ pkgbase = luxd
 	depends = gcc-libs
 	optdepends = libkscreen: monitor brightness control via kscreen-doctor
 	optdepends = iio-sensor-proxy: reads ambient light sensor
-	source = luxd-0.1.1.tar.gz::https://git.glsk.net/glsk/luxd/archive/v0.1.1.tar.gz
-	sha256sums = b5c12669230b8d469ea9c5bc93701912a3b16be3e31f8d10f3aae2c2d88a34aa
+	source = luxd-0.2.0.tar.gz::https://git.glsk.net/glsk/luxd/archive/v0.2.0.tar.gz
+	sha256sums = 0ae39f7d40a83704109eec6732a98ca9a92e2f412a89dbc304b3d461848cb6e7
 
 pkgname = luxd
