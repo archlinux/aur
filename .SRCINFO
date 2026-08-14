@@ -1,6 +1,6 @@
 pkgbase = mozkey-ibg-bin
 	pkgdesc = Mozkey IbG Japanese input method for Fcitx 5 (prebuilt)
-	pkgver = 0.10.1
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://github.com/kazormia296/mozkey-ibg
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = mozkey-ibg-bin
 	depends = hicolor-icon-theme
 	depends = llama-cpp
 	depends = qt6-base
-	provides = mozkey-ibg=0.10.1
+	provides = mozkey-ibg=0.10.4
 	conflicts = mozkey-ibg
 	options = !debug
 	options = !strip
-	source_x86_64 = mozkey-ibg-bin-0.10.1-x86_64.tar.xz::https://github.com/kazormia296/mozkey-ibg/releases/download/v0.10.1/mozkey-ibg-v0.10.1-archlinux-x86_64.tar.xz
-	sha256sums_x86_64 = 31e6133c6c8cf833a989061b22ca0571a27a35e034cfb3236723848b001dd6d0
+	source_x86_64 = mozkey-ibg-bin-0.10.4-x86_64.tar.xz::https://github.com/kazormia296/mozkey-ibg/releases/download/v0.10.4/mozkey-ibg-v0.10.4-archlinux-x86_64.tar.xz
+	sha256sums_x86_64 = 33b8f01927c35f512fd4a8bdca4c23165f6532766f21e0580673dc6679ef958f
 
 pkgname = mozkey-ibg-bin
