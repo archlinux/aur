@@ -1,6 +1,6 @@
 pkgbase = cyphergatevpn-bin
 	pkgdesc = CypherGate VPN binary release
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/Cypher-Monarch/CypherGate
 	install = cyphergatevpn-bin.install
@@ -11,10 +11,10 @@ pkgbase = cyphergatevpn-bin
 	provides = cyphergate-vpn
 	conflicts = cyphergate-vpn
 	options = !debug
-	source = CypherGate-Linux-v2.0.2.tar.xz::https://github.com/Cypher-Monarch/CypherGate/releases/download/v2.0.2/CypherGate-Linux-v2.0.2.tar.xz
-	source = CypherGate-Linux-v2.0.2.tar.xz.sig::https://github.com/Cypher-Monarch/CypherGate/releases/download/v2.0.2/CypherGate-Linux-v2.0.2.tar.xz.sig
+	source = CypherGate-Linux-v2.0.3.tar.xz::https://github.com/Cypher-Monarch/CypherGate/releases/download/v2.0.3/CypherGate-Linux-v2.0.3.tar.xz
+	source = CypherGate-Linux-v2.0.3.tar.xz.sig::https://github.com/Cypher-Monarch/CypherGate/releases/download/v2.0.3/CypherGate-Linux-v2.0.3.tar.xz.sig
 	validpgpkeys = 9ED87F6065033606670941AAC6C9B498797C980E
-	sha256sums = ae81c871a36185d8907a2b3bdb34fca317f059c506102bbce33b8fe0e2a6572c
-	sha256sums = 56881adae79ec770293db35f62c6c0e07bf31f1f9dd06678d25c33d3a83befc7
+	sha256sums = 3efe65bfc153786f5596cee9b9776f4a1087876fec2ff7708c51b9b2c5c352e2
+	sha256sums = 2feee3d4dc9b6fdf96ecf1dfb9157084b734012e7fd5aba96b56d91969dde28d
 
 pkgname = cyphergatevpn-bin
