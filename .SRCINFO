@@ -1,6 +1,6 @@
 pkgbase = yakuda-connect
 	pkgdesc = WiVRn VR management software with gaming optimization and OpenXR/OpenVR fixes
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/yakuda-stack/yakuda-connect
 	arch = any
@@ -16,14 +16,15 @@ pkgbase = yakuda-connect
 	optdepends = playerctl: Media-Tasten in der WayVR-Watch
 	optdepends = yay: Installation der Tools ueber den AUR
 	optdepends = flatpak: Installation einzelner Tools (ProtonPlus, Unity Hub) ueber Flathub
-	optdepends = fuse2: Ausfuehren von AppImage-Tools
+	optdepends = fuse2: AppImage-Tools mit klassischem Runtime (aeltere AppImages)
+	optdepends = fuse3: AppImage-Tools mit neuem type2-Runtime (Standard)
 	optdepends = libcap: VR-Prioritaet setzen (setcap/getcap)
 	optdepends = wivrn-server: VR-Streaming-Server (Kernfunktion)
 	optdepends = wivrn-dashboard: Konfigurationsoberflaeche fuer WiVRn
 	optdepends = opencomposite-git: OpenVR-Kompatibilitaet fuer VRChat & Co.
 	provides = yakuda-connect
 	conflicts = yakuda-connect-git
-	source = yakuda-connect-1.1.4.tar.gz::https://github.com/yakuda-stack/yakuda-connect/archive/refs/tags/v1.1.4.tar.gz
-	sha256sums = 5a2c554d72af235d5d1354bf87063381b2cdbc629a215eee96e6108a19d04b4f
+	source = yakuda-connect-1.1.5.tar.gz::https://github.com/yakuda-stack/yakuda-connect/archive/refs/tags/v1.1.5.tar.gz
+	sha256sums = 283dbbcaeedd792b47a41ed394db0fd64ae92a473411027d5e44ae011c22755f
 
 pkgname = yakuda-connect

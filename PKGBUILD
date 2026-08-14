@@ -11,7 +11,7 @@
 # Von dort wird gepusht — nicht von hier.
 
 pkgname=yakuda-connect
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="WiVRn VR management software with gaming optimization and OpenXR/OpenVR fixes"
 arch=('any')
@@ -28,7 +28,8 @@ optdepends=('iproute2: Headset-Verbindungserkennung (ss)'
             'playerctl: Media-Tasten in der WayVR-Watch'
             'yay: Installation der Tools ueber den AUR'
             'flatpak: Installation einzelner Tools (ProtonPlus, Unity Hub) ueber Flathub'
-            'fuse2: Ausfuehren von AppImage-Tools'
+            'fuse2: AppImage-Tools mit klassischem Runtime (aeltere AppImages)'
+            'fuse3: AppImage-Tools mit neuem type2-Runtime (Standard)'
             'libcap: VR-Prioritaet setzen (setcap/getcap)'
             'wivrn-server: VR-Streaming-Server (Kernfunktion)'
             'wivrn-dashboard: Konfigurationsoberflaeche fuer WiVRn'
@@ -38,7 +39,7 @@ conflicts=('yakuda-connect-git')
 # Tag-Format im Repo ist v<version> -> v1.1.2
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Wird von 'updpkgsums' im AUR-Ordner gesetzt — NICHT von Hand eintragen.
-sha256sums=('5a2c554d72af235d5d1354bf87063381b2cdbc629a215eee96e6108a19d04b4f')
+sha256sums=('283dbbcaeedd792b47a41ed394db0fd64ae92a473411027d5e44ae011c22755f')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -47,7 +48,9 @@ package() {
     # Programmdateien installieren (nur, was existiert).
     # tests/ und packaging/ gehoeren NICHT ins Paket.
     install -d "$dest"
-    for item in core ui assets starter.py; do
+    # locales/ ist PFLICHT: dort liegen seit v1.1.5 alle Texte der
+    # Oberflaeche. Fehlt der Ordner, bricht translations.py beim Start ab.
+    for item in core ui assets locales config starter.py; do
         [ -e "$item" ] && cp -r "$item" "$dest/"
     done
 
