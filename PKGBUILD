@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=afptool-rs
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A Rust tool for unpacking and packing RockChip firmware images (RKFW and RKAF formats)."
 arch=($CARCH)
@@ -11,8 +11,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 #replaces=(${pkgname})
 depends=(
-    glibc
-    libgcc
+    libgcc_s.so
 )
 makedepends=(
     rust
@@ -23,7 +22,7 @@ backup=()
 options=(!lto !debug !strip)
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('581afb2986fa199c7514140e9730fcb1a07534522ef4f474d71d8b1018a8ce97')
+sha256sums=('b1497b11ff01bcbe8f4bff82ef6f020f75495319c5efc829605c106290ace8d9')
 
 # pkgver() {
 #     cd "${srcdir}/${pkgname}"
