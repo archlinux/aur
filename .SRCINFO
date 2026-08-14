@@ -16,7 +16,7 @@ pkgbase = ironwail-git
 	source = launch_ironwail.sh
 	source = ironwail.desktop
 	md5sums = SKIP
-	md5sums = 0c943dae2a004295e70ec0310f9b2039
-	md5sums = 033814f289ed954599d4ea1da0d2637a
+	md5sums = a67afb89c99fceb7bb977fee40f6918d
+	md5sums = a7e88984a3acffe7c35247a65d551a3c
 
 pkgname = ironwail-git

@@ -16,8 +16,8 @@ source=("git+https://github.com/andrei-drexler/ironwail"
 	"launch_ironwail.sh"
 	"ironwail.desktop")
 md5sums=('SKIP'
-     '0c943dae2a004295e70ec0310f9b2039'
-	 '033814f289ed954599d4ea1da0d2637a')
+     'a67afb89c99fceb7bb977fee40f6918d'
+     'a7e88984a3acffe7c35247a65d551a3c')
 
 pkgver() {
     cd "ironwail"
