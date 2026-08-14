@@ -1,0 +1,24 @@
+pkgbase = vocal2midi-bin
+	pkgdesc = Singing voice to MIDI desktop application with native Rust inference workers
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/AntheaLaffy/Vocal2Midi-rs
+	arch = x86_64
+	license = Apache-2.0
+	depends = cairo
+	depends = dbus
+	depends = libgcc
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = vocal2midi=0.3.0
+	conflicts = vocal2midi
+	options = !debug
+	source_x86_64 = https://github.com/AntheaLaffy/Vocal2Midi-rs/releases/download/v0.3.0/vocal2midi-runtime-0.3.0-x86_64.tar.zst
+	sha256sums_x86_64 = 5be1c5c3f1b09e856f3bd291b818a53ca17355f44668e9e7bc496a082d2d2123
+
+pkgname = vocal2midi-bin
