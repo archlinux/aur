@@ -2,14 +2,29 @@
 # Contributor: Jeremy Symon <jtsymon@gmail.com>
 
 pkgname=itch-setup-git
-pkgver=1.26.0.r12.gc718b87
-pkgrel=2
+pkgver=1.30.0.r3.gcdacbdb
+pkgrel=1
 pkgdesc="Installer for the itch.io desktop app"
 arch=(x86_64)
 url="https://itch.io/"
 license=(MIT)
-depends=(gtk3)
-makedepends=(git go npm nodejs)
+depends=(
+    cairo
+    fontconfig
+    gdk-pixbuf2
+    glib2
+    glibc
+    gtk3
+    hicolor-icon-theme
+    pango
+    sh
+    )
+makedepends=(
+    git
+    go
+    npm
+    nodejs
+    )
 provides=(itch-setup)
 conflicts=(itch-setup)
 _itchver=25.5.1
@@ -24,24 +39,26 @@ sha256sums=('SKIP'
 options=(!lto)
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "itch-setup"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "itch-setup"
   npm install
 
-  go build \
-    -gcflags "all=-trimpath=${PWD}" \
-    -asmflags "all=-trimpath=${PWD}" \
-    -ldflags "-X main.Version=v${pkgver} -extldflags ${LDFLAGS}" \
-    -buildmode=pie \
-    .
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOPATH="${srcdir}"
+  export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
+
+  go build -ldflags "-compressdwarf=false -linkmode external" .
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "itch-setup"
   install -Dm755 itch-setup -t "${pkgdir}/usr/bin/"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
