@@ -1,6 +1,6 @@
 pkgbase = clickup-cli-bin
 	pkgdesc = A CLI for the ClickUp API, optimized for AI agents
-	pkgver = 0.15.4
+	pkgver = 0.15.5
 	pkgrel = 1
 	url = https://github.com/nicholasbester/clickup-cli
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = clickup-cli-bin
 	license = Apache-2.0
 	provides = clickup-cli
 	conflicts = clickup-cli
-	source_x86_64 = clickup-cli-0.15.4-x86_64.tar.gz::https://github.com/nicholasbester/clickup-cli/releases/download/v0.15.4/clickup-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 1378134d5435a41d49dfe70b7cdd71869ab63fbc02c97e9a69c5f79558a2108c
-	source_aarch64 = clickup-cli-0.15.4-aarch64.tar.gz::https://github.com/nicholasbester/clickup-cli/releases/download/v0.15.4/clickup-linux-arm64.tar.gz
-	sha256sums_aarch64 = 67e4989f735a34aa56769300271b485304c5ce6be7731c310582b34be1370ed3
+	source_x86_64 = clickup-cli-0.15.5-x86_64.tar.gz::https://github.com/nicholasbester/clickup-cli/releases/download/v0.15.5/clickup-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 09f9c7174d052f6755f00426d0f8494b30824e19d04bfdc4656fa9f65feba9a0
+	source_aarch64 = clickup-cli-0.15.5-aarch64.tar.gz::https://github.com/nicholasbester/clickup-cli/releases/download/v0.15.5/clickup-linux-arm64.tar.gz
+	sha256sums_aarch64 = 40ccea627c9fac007a35b9bfd5c55f966ee4dc9138af72856103a96bf24efcb2
 
 pkgname = clickup-cli-bin
