@@ -3,7 +3,7 @@
 # in graf's Forgejo repository via CI.
 
 pkgname=graf
-pkgver=0.5.48.alpha.2
+pkgver=0.7.0.alpha
 pkgrel=1
 pkgdesc='Sovereign-native Janus-native version control for operators and agents'
 arch=('x86_64')
@@ -15,11 +15,11 @@ checkdepends=('bash')
 provides=('graf')
 conflicts=('graf-git')
 
-_upstream_repo='https://git.sovereign-society.org/markus/graf'
-_upstream_tag='v0.5.48-alpha.2'
+_upstream_repo='https://git.sovereign-society.org/graf-vcs/graf'
+_upstream_tag='v0.7.0-alpha'
 
-source=("graf-0.5.48.alpha.2.tar.gz::https://git.sovereign-society.org/markus/graf/archive/v0.5.48-alpha.2.tar.gz")
-sha256sums=('20d87fc1c878b25b8384f3ba39ca7f11ade06014d4dcd60cd51eed9986c28148')
+source=("graf-0.7.0.alpha.tar.gz::https://git.sovereign-society.org/graf-vcs/graf/archive/v0.7.0-alpha.tar.gz")
+sha256sums=('0f236cfdeaba931c4aef77c22f91f82c82c33645a78bb97ea22aaa35b424020e')
 
 pkg_source_root() {
     local marker
