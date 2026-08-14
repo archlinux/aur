@@ -1,7 +1,7 @@
 pkgbase = lucid-spell
 	pkgdesc = LLM-powered desktop translator.
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/l1ngus/lucid-spell
 	arch = x86_64
 	license = MIT

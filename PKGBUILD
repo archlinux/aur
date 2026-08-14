@@ -1,7 +1,7 @@
 # Maintainer: l1ngus
 pkgname=lucid-spell
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2 # Увеличил pkgrel, чтобы AUR подхватил изменения
 pkgdesc="LLM-powered desktop translator."
 arch=('x86_64')
 url="https://github.com/l1ngus/lucid-spell"
@@ -15,7 +15,8 @@ depends=('webkit2gtk-4.1'
   'openssl')
 makedepends=('rust' 'cargo' 'nodejs' 'npm' 'pkgconf' 'openssl')
 
-# Отключаем strip, debug и lto на уровне makepkg
+# !strip и !debug запрещают makepkg трогать бинарник и создавать debug-пакет.
+# !lto автоматически убирает -flto=auto из CFLAGS, что спасает Rust от ошибок.
 options=('!strip' '!debug' '!lto')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -29,9 +30,7 @@ prepare() {
 build() {
   cd "$pkgname-$pkgver"
 
-  # Ручное удаление флагов больше не нужно, !lto делает это автоматически
-
-  # NO_STRIP=true убран, так как !strip в options делает это глобально для makepkg
+  export NO_STRIP=true
   npm run tauri build
 }
 
