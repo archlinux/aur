@@ -2,7 +2,7 @@
 
 pkgname='geant4-full-debug'
 pkgver=11.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulation toolkit for particle physics interactions - includes all the optional libraries"
 depends=(
   'cmake>=3.16'
@@ -22,24 +22,29 @@ conflicts=(
   'geant4_devel'
   'geant4'
   'geant4-debug'
-  'geant4-abladata'
+  'geant4-abladata' 
+  'geant4-channelingdata'
   'geant4-ensdfstatedata'
   'geant4-incldata'
-  'geant4-ledata'
+  'geant4-ledata'   
   'geant4-levelgammadata'
   'geant4-neutronhpdata'
   'geant4-neutronxsdata'
+  'geant4-nudexlibdata'
+  'geant4-particlehpdata'
   'geant4-particlexsdata'
-  'geant4-piidata'
+  'geant4-piidata'  
   'geant4-radioactivedata'
   'geant4-realsurfacedata'
   'geant4-saiddata'
+  'geant4-uurptdata'
 )
 optdepends=(
   'java-environment'
   'tcsh'
   'geant4-lend'
   'dawn'
+  'hdf5-geant4'
 )
 url="http://geant4.cern.ch/"
 arch=('x86_64')
@@ -48,10 +53,12 @@ options=('!emptydirs')
 source=(
   "http://geant4-data.web.cern.ch/releases/geant4-v${pkgver}.tar.gz"
   'geant4-full-debug.install'
+  'hdf5_2_2.patch'
 )
 sha256sums=(
   '5720f2bba6921027e206ad4f0a06f9bcc348adab36240e8b27710f20ce3e971a'
   '5fde7b80dcfa960407b1ecb2b2a2aa817250948cc32490d8ece48a5e5b4035c1'
+  '2486b50adcf4a6ce08b1a5b38b72469926f5835a2b0322b2d962902918eff8a2'
 )
 install="geant4-full-debug.install"
 
@@ -97,10 +104,19 @@ setenv G4URRPTDATA /opt/Geant4/Libraries/G4URRPT1.1" > Geant4.csh
   [ -d "${srcdir}"/build ] || mkdir "${srcdir}"/build
   cd "${srcdir}"/build
 
+  #check if hdf5-geant4 is installed, if so enable support, otherwise disable
+  _HDF5=OFF
+  if pacman -Q hdf5-geant4 &> /dev/null
+  then
+    _HDF5=ON
+  else
+    _HDF5=OFF
+  fi
+
   cmake \
     -DCMAKE_POLICY_VERSION_MINIMUM=4.0 \
     -DCMAKE_INSTALL_PREFIX=/opt/Geant4/Geant4-v${pkgver} \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DGEANT4_BUILD_MULTITHREADED=ON \
     -DGEANT4_INSTALL_DATA=ON \
     -DGEANT4_INSTALL_DATASETS_TENDL=ON \
@@ -119,6 +135,7 @@ setenv G4URRPTDATA /opt/Geant4/Libraries/G4URRPT1.1" > Geant4.csh
     -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
     -DGEANT4_USE_PYTHON=ON \
     -DGEANT4_USE_TBB=ON \
+    -DGEANT4_USE_HDF5=${_HDF5} \
     -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
     -DGEANT4_INSTALL_DATADIR=/opt/Geant4/Libraries \
     ../geant4-v${pkgver}
