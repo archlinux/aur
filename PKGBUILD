@@ -6,7 +6,7 @@ pkgname=(
   "${pkgbase}-docs"
   "${pkgbase}-examples"
 )
-pkgver=7.0.1
+pkgver=7.0.3
 pkgrel=1
 pkgdesc="A C++ Functional Terminal User Interface"
 arch=(
@@ -31,7 +31,7 @@ source=(
   "${pkgbase}_make_examples_installable.patch"
   "https://github.com/jothepro/doxygen-awesome-css/archive/refs/tags/v2.3.4/doxygen-awesome-css-2.3.4.tar.gz"
 )
-b2sums=('c9032d68b70c218fa4d298135f9fe7e92a7c2af26356af4e3e0f7405ebc4c157adfba374862c7682553c775f0466c6779a6dac606d1093fca96ab40eb5017f0e'
+b2sums=('d723a1df72338766d307eed91f3eb22dd3fa3dff6a90612d46c542f857cebeedad57da835891f5bbdc6c1b31681958d04150f1e6e7fed659bb66a036cf06bf6d'
         'bf9e78066ff1721f857350f9dcce6fa8ac17cfc2bb726afc6c7f75cc372832f7212cc4ad7eccefe6aa9eee72fff46958c63f485452f45dcd7b1b77b1c2b408fe'
         'c7e9e43b5d9b7f3ad825a150afa3976743f4d22fb0a443da8ed636b2323dc70137ac471ec24127dfbfa1556646967687cb9890e893c9aa3315ff7c365715f596'
         'eab70c020aa2e7254708e1938701bbc104a273b475f55f769e25aed02e0b0c8da50d62a659e384403a77ef27243cd6cd38360744e398596824f5e4f51ea6f569')
@@ -48,7 +48,7 @@ build() {
     -B "${_pkgsrc}/build"
     -S "${_pkgsrc}"
     -G 'Unix Makefiles'
-    -W no-dev
+    -W no-author
     -D BUILD_SHARED_LIBS:BOOL=ON
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
@@ -56,8 +56,8 @@ build() {
     -D FTXUI_BUILD_EXAMPLES:BOOL=ON
     -D FTXUI_BUILD_TESTS:BOOL=OFF
     -D FTXUI_BUILD_DOCS:BOOL=ON
-    -D FETCHCONTENT_FULLY_DISCONNECTED=ON
-    -D FETCHCONTENT_SOURCE_DIR_DOXYGEN-AWESOME-CSS="${srcdir}/doxygen-awesome-css-2.3.4"
+    -D FETCHCONTENT_FULLY_DISCONNECTED:BOOL=ON
+    -D FETCHCONTENT_SOURCE_DIR_DOXYGEN-AWESOME-CSS:PATH="${srcdir}/doxygen-awesome-css-2.3.4"
   )
   
   cd "${srcdir}"
