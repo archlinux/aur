@@ -1,7 +1,7 @@
 pkgbase = python-hatch-sbom
 	pkgdesc = Hatchling build hook plugin for generating Software Bill of Materials (SBOM)
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/hatch-sbom/
 	arch = x86_64
 	license = MIT
