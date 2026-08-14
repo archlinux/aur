@@ -1,16 +1,16 @@
 # Maintainer: l1a <634380+l1a@users.noreply.github.com>
 pkgname=retch
-pkgver=0.6.23
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A fast, feature-rich system information fetcher written in Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/l1a/retch"
 license=('GPL3')
 depends=('gcc-libs' 'glibc')
-makedepends=('cargo' 'mandown')
+makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf51f58b97adf6dda271eb197bea2cecac7e0fad0475f355962bb0a485f1a8bd')
+sha256sums=('3d1079e594091341136a272904e3526c69d9764be50dff3e3e96913d001f7691')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -22,10 +22,21 @@ build() {
   cd "$pkgname-$pkgver"
   export CARGO_HOME="$srcdir/cargo-home"
   cargo build --release --frozen
-  
-  # Generate man page
-  DATE=$(date +"%B %Y")
-  mandown docs/retch.1.md RETCH 1 | sed -e 's/\\fB\\fB/\\fB/g' -e 's/\\fP\\fP/\\fP/g' -e "s/\\.TH \"RETCH\" 1/\\.TH \"RETCH\" \"1\" \"\$DATE\" \"retch \$pkgver\" \"System Information Fetcher\"/" > docs/retch.1
+
+  # The man page is NOT regenerated here: docs/retch.1 is committed and ships in the release
+  # tarball already carrying the correct .TH footer for this tag (verified for v0.6.23:
+  # `.TH "RETCH" "1" "August 2026" "retch 0.6.23" ...`). package() installs that file directly.
+  #
+  # The mandown+sed pipeline this replaces was broken in two independent ways, both silent:
+  #   1. `sed -e 's/\\fB\\fB/\\fB/g'` never matched anything on any platform — GNU sed reads
+  #      `\\f` as the form-feed escape, not backslash-then-f, and groff output contains no form
+  #      feeds. Same defect the Justfile carried until retch v0.6.16, fixed there by matching
+  #      the backslash as `[\]` and carrying it out through a capture group.
+  #   2. `\$DATE` and `\$pkgver` are *literal* inside a bash double-quoted string, so the .TH
+  #      replacement wrote the dollar signs through verbatim and the installed page's footer
+  #      read `$DATE` / `retch $pkgver` rather than the date and version.
+  # Regenerating also made the packaged page depend on which mandown build ran, which is what
+  # made retch's own `just pr` man-regen check flip between machines.
 }
 
 check() {
@@ -40,7 +51,7 @@ package() {
   # Install binary
   install -Dm755 "target/release/retch" "$pkgdir/usr/bin/retch"
   
-  # Install man page
+  # Install the committed man page as shipped in the tarball (see build()).
   install -Dm644 "docs/retch.1" "$pkgdir/usr/share/man/man1/retch.1"
   
   # Install shell completions
