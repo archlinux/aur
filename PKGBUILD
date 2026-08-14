@@ -1,6 +1,6 @@
 # Maintainer: OneZ3r0 <onez3r0@outlook.com>
 pkgname=gaomontablet-m5-driver
-pkgver=16.0.0.37
+pkgver=16.0.0.49
 pkgrel=1
 pkgdesc="Official Gaomon Tablet Linux Driver (M5 V2)"
 arch=('x86_64')
@@ -14,8 +14,8 @@ install="${pkgname}.install"
 DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -A Mozilla/5.0 -e https://www.gaomon.cn/download -o %o %u')
 
 source=("https://driver.gaomon.cn/download/Driver/Linux/GaomonTablet_LinuxDriver_v${pkgver}.${CARCH}.tar.xz"
-        "LICENSE")
-sha256sums=('d3db3cad152049e6913ae744f497686a8c4b61ef91fe664c84ffe55ebc96bd01'
+    "LICENSE")
+sha256sums=('dfb157de665818eecb786b45bacc8bf6b737484ef240567c92a77a993bfe358b'
             '150b7f86555bd68e638ababa1895ba2e5caed4efaa380235b00db6f5b59ac1d9')
 
 package() {
@@ -62,7 +62,7 @@ package() {
     # The driver runs as a regular user and must write to files under /usr/lib.
     # Using tmpfiles.d is the standard Arch approach for closed-source drivers.
     install -Dm644 /dev/stdin \
-        "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf" << 'EOF'
+        "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf" <<'EOF'
 # Gaomon tablet driver — allow non-root driver process to write configuration.
 # Z adjusts permissions recursively (directory + all contents); z is non-recursive (single path).
 Z /usr/lib/gaomontablet/res 0777 root root -
