@@ -17,4 +17,4 @@ pkgbase = svg2oscad-git
 	source = git+https://catgirls.org.es/myaow/svg2oscad.git
 	sha256sums = SKIP
 
-pkgname = svg2oscad
+pkgname = svg2oscad-git
