@@ -1,7 +1,7 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
 pkgname=python-google-cloud-storage
-pkgver=3.13.0
+pkgver=3.13.1
 pkgrel=1
 pkgdesc='Google Cloud Storage API client library'
 arch=(any)
@@ -39,14 +39,13 @@ makedepends=(
 #  python-pytest
 #  python-pyyaml
 #)
-source=(${pkgname}-${pkgver}.tar.gz::${url/tree*}/archive/${_pkgname}-v${pkgver}.tar.gz)
-b2sums=('9a5f4419625ec0ed7359cda0be96002d9e4107469b1ac94cf75070bfa77cd9612b3cb6764e8ab6846c6d881686aca3d108aa370976697d7908669683bf57117e')
+source=(${pkgname}-${pkgver}.tar.gz::${url%/tree*}/archive/${_pkgname}-v${pkgver}.tar.gz)
+b2sums=('2558b4bd2c050d8cb9e856971cdac861457f3fafb6a552c84b4447a9abcc32d2ce75ce85f7f513c2c7df8418a33589307e9d1003e8ef4f72b970724e0a308fc3')
 
 build() {
   cd ${_reponame}-${_pkgname}-v${pkgver}/packages/${_pkgname}
 
-  python \
-    -m build \
+  python -m build \
     --wheel \
     --no-isolation
 
@@ -63,8 +62,7 @@ build() {
 package() {
   cd ${_reponame}-${_pkgname}-v${pkgver}/packages/${_pkgname}
 
-  python \
-    -m installer \
+  python -m installer \
     --destdir="${pkgdir}" \
     dist/*.whl
 
