@@ -1,6 +1,6 @@
 pkgbase = kikitan-translator-bin
 	pkgdesc = VRChat Live Translation Application
-	pkgver = 2.0.0alpha2
+	pkgver = 2.0.0alpha3
 	pkgrel = 1
 	url = https://github.com/YusufOzmen01/kikitan-translator
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = kikitan-translator-bin
 	depends = webkit2gtk-4.1
 	provides = kikitan-translator
 	conflicts = kikitan-translator
-	source = kikitan-translator-2.0.0-alpha2-LICENSE.md::https://github.com/YusufOzmen01/kikitan-translator/raw/refs/tags/v2.0.0-alpha2/LICENSE.md
-	source = kikitan-translator-2.0.0-alpha2-README.md::https://github.com/YusufOzmen01/kikitan-translator/raw/refs/tags/v2.0.0-alpha2/README.md
+	source = kikitan-translator-2.0.0-alpha3-LICENSE.md::https://github.com/YusufOzmen01/kikitan-translator/raw/refs/tags/v2.0.0-alpha3/LICENSE.md
+	source = kikitan-translator-2.0.0-alpha3-README.md::https://github.com/YusufOzmen01/kikitan-translator/raw/refs/tags/v2.0.0-alpha3/README.md
 	sha256sums = edfc2dce27e3ce366ae07f95298da8378b241708444ed9e18996a3f195426dd6
 	sha256sums = 7a24d010fffd2773c8bef649f512b6aead909bdee4154673f6c97d7db92057c8
-	source_x86_64 = com.github.yusufozmen01.kikitan-translator-2.0.0-alpha2.AppImage::https://github.com/YusufOzmen01/kikitan-translator/releases/download/v2.0.0-alpha2/com.github.yusufozmen01.kikitan-translator.AppImage
-	sha256sums_x86_64 = 71b74e87171f980f2ee93d3372fba3986f864992df2445a22e49d96a2225a640
+	source_x86_64 = com.github.yusufozmen01.kikitan-translator-2.0.0-alpha3.AppImage::https://github.com/YusufOzmen01/kikitan-translator/releases/download/v2.0.0-alpha3/com.github.yusufozmen01.kikitan-translator.AppImage
+	sha256sums_x86_64 = 75cc7778464a76e71747bdd3d69ac3e6fd1aa422e701909dec4cbc37b9bb97e7
 
 pkgname = kikitan-translator-bin
