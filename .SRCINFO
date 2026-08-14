@@ -4,12 +4,15 @@ pkgbase = z85-bin
 	pkgrel = 1
 	url = https://github.com/nirvam/z85
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = gcc-libs
 	provides = z85
 	conflicts = z85
 	options = !debug
-	source_x86_64 = z85-bin-0.1.0-x86_64.pkg.tar.zst::https://github.com/nirvam/z85/releases/download/v0.1.0/z85-0.1.0-1-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 28b0dfb5253913a40b9b2b43835268a23ce4a2eae06b47a2e39061100dfd7e22
+	source_x86_64 = z85-bin-0.1.0-x86_64.tar.gz::https://github.com/nirvam/z85/releases/download/v0.1.0/z85-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 30753e714e7312ab51b8c2c879f2bd6d45639f377addf490e41328635d02007f
+	source_aarch64 = z85-bin-0.1.0-aarch64.tar.gz::https://github.com/nirvam/z85/releases/download/v0.1.0/z85-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = fb05eb4af24384a1c11b691c2cb76b4a1fc20d7ec4a75ae87ee78a81a3c5648c
 
 pkgname = z85-bin
