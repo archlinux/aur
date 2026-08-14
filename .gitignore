@@ -1,0 +1,14 @@
+*
+!.github/
+!.github/build/
+!.github/build/PKGBUILD
+!.github/build/*.patch
+!.github/scripts/
+!.github/scripts/update-package.py
+!.github/workflows/
+!.github/workflows/release.yml
+!.gitignore
+!.SRCINFO
+!LICENSE
+!PKGBUILD
+!README.md
