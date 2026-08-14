@@ -2,7 +2,7 @@
 
 pkgauthor="wasi-master"
 pkgname="rich-tree"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A better tree command with beautiful icons and colors made in Python"
 
@@ -24,7 +24,7 @@ depends=('python' 'python-shellingham' 'python-questionary' 'python-rich' 'pytho
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4a35a6ceef3650f6bc22ffb050a740e3213b04813145f39826c43c189895e62a')
+sha256sums=('8528b5352d30dbd2a19941c172704cea5f89dd43af036d7d8300e5afed7e62a8')
 
 prepare() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/"

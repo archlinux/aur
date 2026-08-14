@@ -1,6 +1,6 @@
 pkgbase = rich-tree
 	pkgdesc = A better tree command with beautiful icons and colors made in Python
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/wasi-master/rich-tree
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = rich-tree
 	depends = python-rich
 	depends = python-rich-click
 	provides = rtree
-	source = https://files.pythonhosted.org/packages/source/r/rich_tree/rich_tree-1.1.0.tar.gz
-	sha256sums = 4a35a6ceef3650f6bc22ffb050a740e3213b04813145f39826c43c189895e62a
+	source = https://files.pythonhosted.org/packages/source/r/rich_tree/rich_tree-1.1.1.tar.gz
+	sha256sums = 8528b5352d30dbd2a19941c172704cea5f89dd43af036d7d8300e5afed7e62a8
 
 pkgname = rich-tree
