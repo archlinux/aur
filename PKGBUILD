@@ -1,8 +1,8 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
 pkgname=pomchat-bin
-pkgver=0.4.2
-pkgrel=1
+pkgver=0.4.3
+pkgrel=2
 provides=('pomchat')
 conflicts=('pomchat')
 pkgdesc='通过本地音频 + ASS字幕实现即时通讯聊天渲染并导出视频的桌面工具'
@@ -15,7 +15,7 @@ source=(
     "$url/raw/refs/tags/v$pkgver/LICENSE"
     "pomchat.desktop"
 )
-sha256sums=('7370142372b64df1ffc34e0284d0e8de4dfe00ce270b0eea75850e5d87766a5a'
+sha256sums=('750138205057a3c701eef0a3d47edaed0b3b94bcb956416a352d84bff3692cef'
             '6f83a3354bd403442a0391078b470b471c611157c5246061367ba9a93dd34836'
             '0440b7b0ecf812c826c12693f37eae6d7f1703130bd8409a8af170e2719c667f')
 
