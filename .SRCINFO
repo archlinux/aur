@@ -13,7 +13,7 @@ pkgbase = nimlaunch-bin
 	depends = sdl3_image
 	depends = ttf-dejavu
 	source = nimlaunch-0.10.2::https://github.com/Vyrnexis/NimLaunch/releases/download/v0.10.2/nimlaunch
-	source = LICENSE-0.10.2::https://github.com/Vyrnexis/NimLaunch/raw/tag/v0.10.2/LICENSE
+	source = LICENSE-0.10.2::https://raw.githubusercontent.com/Vyrnexis/NimLaunch/v0.10.2/LICENSE
 	sha256sums = 70adf361f2c25a6ba79bffeec8dc53599d2692129bade7cc6b9ec508efa53379
 	sha256sums = e034e1daf773989e34bacd11dc3a7014109b08d3c5b430089e7e4fa0c1ab12d2
 

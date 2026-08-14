@@ -11,7 +11,7 @@ depends=('sdl3' 'sdl3_ttf' 'sdl3_image' 'ttf-dejavu')
 provides=("nimlaunch")
 conflicts=("nimlaunch" "nimlaunch-git")
 source=("nimlaunch-${pkgver}::https://github.com/Vyrnexis/NimLaunch/releases/download/v${pkgver}/nimlaunch"
-        "LICENSE-${pkgver}::https://github.com/Vyrnexis/NimLaunch/raw/tag/v${pkgver}/LICENSE")
+        "LICENSE-${pkgver}::https://raw.githubusercontent.com/Vyrnexis/NimLaunch/v${pkgver}/LICENSE")
 sha256sums=('70adf361f2c25a6ba79bffeec8dc53599d2692129bade7cc6b9ec508efa53379'
             'e034e1daf773989e34bacd11dc3a7014109b08d3c5b430089e7e4fa0c1ab12d2')
 
