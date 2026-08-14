@@ -3,12 +3,13 @@
 
 pkgname=go2tv-bin
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cast media files to Smart TVs and Chromecast devices (pre-built binary)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/alexballas/go2tv"
 license=('MIT')
-depends=()
+# 预编译二进制动态链接了 libc/libm(glibc)、libGL.so.1(libglvnd)、libwayland-client.so.0(wayland)
+depends=('glibc' 'libglvnd' 'wayland')
 optdepends=('ffmpeg: transcoding support')
 provides=("go2tv=${pkgver}")
 conflicts=('go2tv')
