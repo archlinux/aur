@@ -4,7 +4,7 @@
 # wants the GTK or the WebKitGTK greeter should have Qt 6 and LayerShellQt in
 # their build chroot, and nobody who wants this one should have GTK4 or
 # WebKitGTK in theirs. wdm depends on the virtual this provides, so pacman offers
-# this as one of the choices when `wdm` is installed on its own.
+# this as one of the choices when `wdm-wayland` is installed on its own.
 #
 # The one package in the set that is not built with cargo. greeters/plasma is a
 # standalone CMake project that the Rust workspace deliberately does not know
@@ -48,7 +48,7 @@ makedepends=('cmake' 'ninja' 'pkgconf' 'wayland' 'catch2' 'qt6-base'
              'qt6-declarative' 'layer-shell-qt')
 provides=('wdm-greeter-implementation')
 source=("wdm-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# See the note in the `wdm` package: this is the checksum of the tarball GitHub
+# See the note in the `wdm-wayland` package: this is the checksum of the tarball GitHub
 # published, and all four wdm packages build from the same one. Never SKIP —
 # for a source that is a URL, SKIP means makepkg builds whatever arrives.
 sha256sums=('49e70b577665bf4fb7c78f5d9319febaf0a8268a80bdb8eb01ff95ed0db8b9f7')
