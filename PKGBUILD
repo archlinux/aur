@@ -1,6 +1,6 @@
 # Maintainer: phylliade
 pkgname=notion-cli
-pkgver=0.21.2
+pkgver=0.22.1
 pkgrel=1
 pkgdesc="Official Notion CLI (beta) — access your Notion workspace from any terminal"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ options=('!debug')
 # Upstream distributes via npm, but the tarball ships self-contained static
 # binaries per platform — no Node.js needed at runtime.
 source=("https://registry.npmjs.org/ntn/-/ntn-${pkgver}.tgz")
-sha256sums=('cfb6ca323ed3459307df57083812beb8025b8c12f1fc9ac3dc38be4cac2a3a98')
+sha256sums=('3a7a0a9d00db8462c39c0cc976e2696b6ba70f53409da5c2ee96d402880fbe97')
 
 _target() {
   case "$CARCH" in
