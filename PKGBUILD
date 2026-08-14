@@ -5,7 +5,7 @@ pkgdesc="A package for working with dynamic models compliant with the FMI standa
 url="https://github.com/modelon-community/PyFMI"
 arch=(x86_64)
 license=(LGPL-3.0-only)
-makedepends=(python-setuptools cython)
+makedepends=(python-build python-installer python-setuptools cython)
 depends=(glibc fmilib python python-numpy python-scipy python-assimulo)
 optdepends=('python-matplotlib: plots')
 options=(!lto)
@@ -16,7 +16,13 @@ prepare() {
   cd "${srcdir}"/PyFMI-PyFMI-${pkgver}
 }
 
+build() {
+  cd "${srcdir}"/PyFMI-PyFMI-${pkgver}
+  export FMIL_HOME=/usr
+  python -m build --wheel --no-isolation
+}
+
 package() {
   cd "${srcdir}"/PyFMI-PyFMI-${pkgver}
-  python setup.py build_ext ${MAKEFLAGS} install --root=${pkgdir} --fmil-home=/usr/
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
