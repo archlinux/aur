@@ -1,0 +1,17 @@
+pkgbase = libfaxtiff-git
+	pkgdesc = CCITT Group 3/4 fax codec extracted from libtiff
+	pkgver = r40.914a96a
+	pkgrel = 1
+	url = https://github.com/thinkoid/libfaxtiff
+	arch = x86_64
+	license = libtiff
+	makedepends = git
+	makedepends = meson
+	provides = libfaxtiff
+	conflicts = libfaxtiff
+	options = staticlibs
+	options = !lto
+	source = libfaxtiff::git+https://github.com/thinkoid/libfaxtiff.git
+	sha256sums = SKIP
+
+pkgname = libfaxtiff-git
