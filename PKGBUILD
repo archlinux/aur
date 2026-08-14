@@ -21,7 +21,7 @@ source=(
   "micdn.sysusers"
   "micdn.tmpfiles"
 )
-sha256sums=('SKIP'
+sha256sums=('26c77155f3df1b69cd7c56c80631dc220747219bf0049ff00c0a4daee1fe25f9'
             '8333910bf21675e99d5545262f26ac5027c0210b58dd8ce10510c79b61be3de6'
             '346a3b0bdb0fd0737be566b1a9aba853fb9f1361b70ddc14e33719d57ce078f9'
             'd80affc81230b473551692a51165df4be18daf9b93d8d3d780711598f1c2405f')
