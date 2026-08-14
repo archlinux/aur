@@ -1,40 +1,46 @@
-# Maintainer: Noel Jacob <noeljacob at gmail dot com>
+# Maintainer: yobson <aur at yobson dot xyz>
+# Maintainer: Noel Jacob <noeljacob 91 at gmail dot com>
 # Contributor: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun-git
-pkgver=1.0.36.r9080.02ad501
+pkgver=1.3.14.r1369.gf68e504
 pkgrel=1
-pkgdesc="Bun is a fast JavaScript all-in-one toolkit. This PKGBUILD builds from source, resulting into a minor binary depending on your CPU."
-arch=("x86_64")
+pkgdesc="Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one"
+arch=(x86_64 aarch64)
 url="https://github.com/oven-sh/bun"
 license=('MIT')
-makedepends=("bun" "llvm" "clang" "lld" "ccache" "cmake" "git" "go" "libiconv" "libtool" "make" "ninja" "pkg-config" "python" "rust" "sed" "unzip" "ruby")
-conflicts=("bun" "bun-bin")
-provides=("bun")
+depends=(libatomic libstdc++)
+makedepends=(bun clang21 cmake git lld21 llvm21 ninja rustup)
+conflicts=(bun bun-bin)
+provides=(bun)
 source=("$pkgname::git+https://github.com/oven-sh/bun.git")
-sha512sums=("SKIP")
+cksums=(SKIP)
 
 pkgver() {
-  cd "$pkgname"
-  release=$(git describe --tags `git rev-list --tags --max-count=1` | sed 's/^bun-v//')
-  version="r$(git rev-list --count HEAD).$(git rev-parse --short=7 HEAD)"
-  printf "$release.$version"
+    cd "$pkgname"
+    git describe --tags --long --abbrev=7 --match 'bun-v[0-9]*' |
+        sed 's/^bun-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+check() {
+    cd $pkgname
+    ./build/release/bun --version
+    echo 'console.log("ok")' | ./build/release/bun run -
 }
 
 build() {
-  cd "$pkgname"
-  bun setup
-  bun run build:release
+    cd "$pkgname"
+    bun scripts/build.ts \
+        --profile=release \
+        --static-libatomic=off
 }
 
 package() {
-  install -Dm755 $srcdir/$pkgname/build/bun $pkgdir/usr/bin/bun
-  ln -s /usr/bin/bun $pkgdir/usr/bin/bunx
+    cd $pkgname
+    install -vDm755 build/release/bun "$pkgdir/usr/bin/bun"
+    ln -vs /usr/bin/bun "$pkgdir/usr/bin/bunx"
+    install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.md
 
-  SHELL=zsh $pkgdir/usr/bin/bun completions > bun.zsh
-  SHELL=bash $pkgdir/usr/bin/bun completions > bun.bash
-  SHELL=fish $pkgdir/usr/bin/bun completions > bun.fish
-
-  install -Dm644 bun.zsh $pkgdir/usr/share/zsh/site-functions/_bun
-  install -Dm644 bun.bash $pkgdir/usr/share/bash-completion/completions/bun
-  install -Dm644 bun.fish $pkgdir/usr/share/fish/vendor_completions.d/bun.fish
+    install -vDm644 completions/bun.bash "$pkgdir/usr/share/bash-completion/completions/bun"
+    install -vDm644 completions/bun.fish "$pkgdir/usr/share/fish/vendor_completions.d/bun.fish"
+    install -vDm644 completions/bun.zsh "$pkgdir/usr/share/zsh/site-functions/_bun"
 }
