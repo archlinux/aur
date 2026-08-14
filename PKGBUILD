@@ -1,6 +1,6 @@
 # Maintainer: Aquib Javed <aquibjavedt007@gmail.com>
 pkgname=ice-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 epoch=
 pkgdesc="A simple CTF tool store."
