@@ -1,14 +1,20 @@
-# Auto-extracted from PKGBUILD url (works for any forge: GitHub, GitLab, Codeberg...)
+# AUR package maintenance automation (requires: bash, makepkg, updpkgsums)
 SHELL := /bin/bash
 .DELETE_ON_ERROR:
 
-UPSTREAM_URL    ?= $(shell sed -n "s/^url=//p" PKGBUILD | tr -d "\"'")
+UPSTREAM_URL    ?= $(shell sed -n "s/^url=//p" PKGBUILD | sed 's/[[:space:]]*#.*//' | tr -d "\"'")
 CURRENT_PKGVER  := $(shell awk -F= '/^pkgver=/ {print $$2; exit}' PKGBUILD)
 LATEST_UPSTREAM := $(shell git ls-remote --tags '$(UPSTREAM_URL).git' 2>/dev/null | grep -oP 'refs/tags/v\K[0-9]+\.[0-9]+\.[0-9]+' | sort -V | tail -1)
 AUR_REMOTE      ?= label
 AUR_BRANCH      ?= master
 
-.PHONY: help build check bump bump-dry publish release release-dry clean
+# Reusable validation for version variables
+define check-vars
+	@if [ -z "$(CURRENT_PKGVER)" ]; then echo "ERROR: pkgver not found in PKGBUILD"; exit 1; fi
+	@if [ -z "$(LATEST_UPSTREAM)" ]; then echo "ERROR: No version tags found at $(UPSTREAM_URL)"; exit 1; fi
+endef
+
+.PHONY: help build check bump bump-dry publish release release-dry clean nvcheck
 
 help:
 	@awk 'BEGIN {FS = ":.*##"} /^[a-zA-Z_-]+:.*##/ {printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -17,8 +23,7 @@ build: ## Build package
 	makepkg --noconfirm --noprogressbar
 
 check: ## Compare local pkgver against latest upstream release
-	@if [ -z "$(CURRENT_PKGVER)" ]; then echo "ERROR: pkgver not found in PKGBUILD"; exit 1; fi
-	@if [ -z "$(LATEST_UPSTREAM)" ]; then echo "ERROR: No version tags found at $(UPSTREAM_URL)"; exit 1; fi
+	$(check-vars)
 	@echo "current:  $(CURRENT_PKGVER)"
 	@echo "upstream: $(LATEST_UPSTREAM)"
 	@if [ "$(CURRENT_PKGVER)" = "$(LATEST_UPSTREAM)" ]; then \
@@ -27,9 +32,11 @@ check: ## Compare local pkgver against latest upstream release
 		echo "status:   UPDATE AVAILABLE ($(CURRENT_PKGVER) -> $(LATEST_UPSTREAM))"; \
 	fi
 
+nvcheck: ## Check for upstream updates via nvchecker
+	@nvchecker -c .nvchecker.toml && nvcmp -c .nvchecker.toml
+
 bump: ## Update PKGBUILD to latest upstream + regenerate .SRCINFO
-	@if [ -z "$(CURRENT_PKGVER)" ]; then echo "ERROR: pkgver not found in PKGBUILD"; exit 1; fi
-	@if [ -z "$(LATEST_UPSTREAM)" ]; then echo "ERROR: No version tags found at $(UPSTREAM_URL)"; exit 1; fi
+	$(check-vars)
 	@if [ "$(CURRENT_PKGVER)" = "$(LATEST_UPSTREAM)" ]; then \
 		echo "Already at $(CURRENT_PKGVER). Nothing to do."; \
 		exit 0; \
@@ -44,11 +51,10 @@ bump: ## Update PKGBUILD to latest upstream + regenerate .SRCINFO
 		exit 1; \
 	fi
 	@rm -f PKGBUILD.bak
-	@makepkg --printsrcinfo > .SRCINFO.tmp && mv .SRCINFO.tmp .SRCINFO
+	@makepkg --printsrcinfo > .SRCINFO.tmp && mv .SRCINFO.tmp .SRCINFO || { rm -f .SRCINFO.tmp; exit 1; }
 
 bump-dry: ## Preview what bump would do (no changes)
-	@if [ -z "$(CURRENT_PKGVER)" ]; then echo "ERROR: pkgver not found in PKGBUILD"; exit 1; fi
-	@if [ -z "$(LATEST_UPSTREAM)" ]; then echo "ERROR: No version tags found at $(UPSTREAM_URL)"; exit 1; fi
+	$(check-vars)
 	@echo "current:  $(CURRENT_PKGVER)"
 	@echo "upstream: $(LATEST_UPSTREAM)"
 	@if [ "$(CURRENT_PKGVER)" = "$(LATEST_UPSTREAM)" ]; then \
@@ -71,7 +77,11 @@ publish: ## Commit PKGBUILD + .SRCINFO and push to AUR
 		echo "No PKGBUILD/.SRCINFO changes to commit."; \
 	else \
 		pkgver=$$(awk -F= '/^pkgver=/ {print $$2; exit}' PKGBUILD); \
-		git commit -m "Update to $$pkgver" && git push $(AUR_REMOTE) HEAD:$(AUR_BRANCH); \
+		git commit -m "Update to $$pkgver" || { echo "ERROR: Commit failed"; exit 1; }; \
+		if ! git push "$(AUR_REMOTE)" HEAD:"$(AUR_BRANCH)"; then \
+			echo "WARNING: Push failed. Commit exists locally. Run 'git push' manually."; \
+			exit 1; \
+		fi; \
 	fi
 
 release: ## End-to-end: bump -> build -> publish (stops on first failure)
