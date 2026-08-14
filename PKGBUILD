@@ -3,16 +3,13 @@
 # release and installs it (no compilation). Bump pkgver to match a published
 # release tag (e.g. v0.1.0).
 
-pkgname=mcomix-rs-bin
-pkgver=0.3.0
+pkgname=mcomix-rs
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A user-friendly, customizable comic book image viewer (Rust/GTK4 port)"
 arch=('x86_64')
 url="https://github.com/rippa-the-hutt/mcomix-rs"
-license=('GPL-2.0-or-later')
-# mcomix-rs supersedes the Python mcomix3 package (same icons/desktop files).
-conflicts=('mcomix3')
-replaces=('mcomix3')
+license=('GPL2')
 depends=(
     'gtk4'
     'gdk-pixbuf2'
@@ -35,8 +32,8 @@ source=(
 )
 # Hashes are pinned for the current pkgver. When bumping pkgver to a new
 # release, regenerate them with:  updkgsums
-sha256sums=('7e626c6a5d0e89e6037f70fb22458df9c61692b619fab6d5bc39b0247bbecc4a'
-            '91948412c9ccd046444b408d329b51bb1a1bfa4cd9d2bfc751ea9f9c7244dfbd')
+sha256sums=('900b9990af29cd16eefd6ec419e910d7b179b7296c5b05131861bdab79a6cd88'
+            '436011ad5b90f48c0a3017a2a6f32b22419c7a95b21a4e7aee3e66e05f074995')
 
 package() {
     # Binary from the release artifact.
@@ -53,9 +50,9 @@ package() {
         "${pkgdir}/usr/share/mime/packages/mcomix-rs.xml"
 
     for d in 16x16 22x22 24x24 32x32 48x48 256x256; do
-        install -Dm644 "${linuxdir}/icons/${d}/apps/mcomix3.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${d}/apps/mcomix3.png" 2>/dev/null || true
-        for mime in application-x-cbz application-x-cbr application-x-cbt; do
+        install -Dm644 "${linuxdir}/icons/${d}/apps/mcomix-rs.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${d}/apps/mcomix-rs.png" 2>/dev/null || true
+        for mime in application-x-mcomix-cbz application-x-mcomix-cbr application-x-mcomix-cbt; do
             install -Dm644 "${linuxdir}/icons/${d}/mimetypes/${mime}.png" \
                 "${pkgdir}/usr/share/icons/hicolor/${d}/mimetypes/${mime}.png" 2>/dev/null || true
         done
