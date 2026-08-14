@@ -23,8 +23,10 @@ web:
 #   directories:
 #     - /path/to/music
 
-# Mesh/DHT rendezvous defaults are enabled in slskdN. Forward 50305/tcp and
-# 50305/udp when exposing mesh publicly. If a VPN rewrites public ports, set
+# Public BitTorrent DHT rendezvous and the mesh overlay are enabled by default.
+# Set feature.Dht and dht.enabled false to disable DHT cleanly. Forward
+# 50305/tcp and 50305/udp when exposing the mesh publicly. If a
+# VPN rewrites public ports, set
 # advertised_overlay_port manually or use vpn_port_sync after enabling the VPN
 # integration.
 # dht:

@@ -2,7 +2,7 @@
 # slskdn - Unofficial slskd fork with batteries-included Soulseek features
 pkgname=slskdn-bin
 _pkgname=slskd
-pkgver=2026073117.slskdn.293
+pkgver=2026081323.slskdn.304
 pkgrel=4
 pkgdesc="slskdN, an unofficial batteries-included fork of slskd with SongID, Discovery Graph, multi-source downloads, DHT mesh networking, auto-replace, wishlist, and security hardening."
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
 )
 noextract=("slskdn-${pkgver}-main-linux-glibc-x64.zip")
 # Note: First hash is SKIP (zip changes each release), others are static file hashes
-sha256sums=('SKIP' '123cb6af52ee33d04f308751929f662c1437221937eeca9a896a60f746074177' '4e5d4be130945d26fca280da86456926be3fb7631c42df9ac505051fc3ca4de6' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056' '949f950aeb0f24725c901ed9d73a4f679ae8eb4abdfaf108b80e62e6247b85e5')
+sha256sums=('SKIP' '123cb6af52ee33d04f308751929f662c1437221937eeca9a896a60f746074177' 'e1e85d364017e12ebf5392c419985538014b3c9cb3c9456ddccc3ac1f676c77e' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056' '949f950aeb0f24725c901ed9d73a4f679ae8eb4abdfaf108b80e62e6247b85e5')
 
 package() {
     local app_root="${pkgdir}/usr/lib/${_pkgname}"
