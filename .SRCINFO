@@ -1,14 +1,15 @@
 pkgbase = mkv-extractor-qt
 	pkgdesc = Graphical MKV demultiplexer
-	pkgver = 23.04.16a
+	pkgver = 26.04.29a
 	pkgrel = 1
-	url = http://forum.ubuntu-fr.org/viewtopic.php?id=1508741
+	url = https://github.com/Hizoka76/MKV-Extractor-Qt6
 	arch = any
 	license = GPL3
-	makedepends = qt5-tools
-	makedepends = imagemagick
-	depends = python-pyqt5
+	makedepends = git
+	makedepends = qt6-tools
+	depends = python-pyqt6
 	depends = mkvtoolnix-cli
+	depends = hicolor-icon-theme
 	optdepends = ffmpeg: for DTS conversion
 	optdepends = mkclean: MKV optimisation
 	optdepends = mkvalidator: MKV check
@@ -16,7 +17,7 @@ pkgbase = mkv-extractor-qt
 	optdepends = bdsup2subpp: SUP subtitle conversion
 	conflicts = mkv-extractor-gui
 	replaces = mkv-extractor-gui
-	source = https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/a63280bc706086f0873a7d6649ce9146deaebc5e.tar.gz
-	sha256sums = 74c02740900b441dc2ae8c90d62474f86b6a0d189c11fe20683cb9284cd64c91
+	source = mkv-extractor-qt-26.04.29a::git+https://github.com/Hizoka76/MKV-Extractor-Qt6.git#tag=v26.04.29
+	sha256sums = d5d83f7a626c03880c2ddf2fe83c962700099d52777881c78d6a094fd685ee2a
 
 pkgname = mkv-extractor-qt
