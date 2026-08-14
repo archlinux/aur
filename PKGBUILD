@@ -1,12 +1,12 @@
 # Maintainer: Hussein Hareb <hussein.hareb04@gmail.com>
 pkgname=hw-monitor
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A lightweight hardware monitor built with Tauri"
 arch=('x86_64')
 url="https://github.com/husseinhareb/hw-monitor"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'glib2' 'dbus' 'hicolor-icon-theme')
+depends=('webkit2gtk-4.1' 'gtk3' 'cairo' 'glib2' 'dbus' 'hicolor-icon-theme' 'polkit')
 optdepends=('nvidia-utils: NVIDIA GPU monitoring')
 conflicts=('hw-monitor-git')
 options=('!strip' '!debug')

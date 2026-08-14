@@ -1,6 +1,6 @@
 pkgbase = hw-monitor
 	pkgdesc = A lightweight hardware monitor built with Tauri
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/husseinhareb/hw-monitor
 	arch = x86_64
@@ -11,11 +11,12 @@ pkgbase = hw-monitor
 	depends = glib2
 	depends = dbus
 	depends = hicolor-icon-theme
+	depends = polkit
 	optdepends = nvidia-utils: NVIDIA GPU monitoring
 	conflicts = hw-monitor-git
 	options = !strip
 	options = !debug
-	source = hw-monitor-0.4.0.deb::https://github.com/husseinhareb/hw-monitor/releases/download/v0.4.0/hw-monitor_0.4.0_amd64.deb
+	source = hw-monitor-0.5.0.deb::https://github.com/husseinhareb/hw-monitor/releases/download/v0.5.0/hw-monitor_0.5.0_amd64.deb
 	sha256sums = SKIP
 
 pkgname = hw-monitor
