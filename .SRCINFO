@@ -1,7 +1,7 @@
 pkgbase = snout-cli-git
-	pkgdesc = for Face and Eye Tracking CLI Based on Project Babble
+	pkgdesc = Face and Eye Tracking CLI Based on Project Babble
 	pkgver = r146.95c5cc4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Darksecond/libsnout
 	arch = i686
 	arch = x86_64

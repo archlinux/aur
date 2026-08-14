@@ -3,8 +3,8 @@
 _pkgbase=snout-cli
 pkgver=r146.95c5cc4
 pkgname="${_pkgbase}-git"
-pkgrel=1
-pkgdesc='for Face and Eye Tracking CLI Based on Project Babble'
+pkgrel=2
+pkgdesc='Face and Eye Tracking CLI Based on Project Babble'
 url='https://codeberg.org/Darksecond/libsnout'
 license=('LicenseRef-Babble')
 
