@@ -1,17 +1,16 @@
-# Maintainer: Leo <i@setuid0.dev>
+# Maintainer: Leo <i@hardrain980.com>
 pkgname=payload-dumper-go
-pkgver=1.3.0
+pkgver=2.0.0
 pkgrel=1
-epoch=
 pkgdesc="An Android OTA payload dumper written in Go."
 arch=(x86_64)
 url="https://github.com/ssut/payload-dumper-go"
 license=(Apache-2.0)
 depends=('xz')
-makedepends=('go>=1.18')
+makedepends=('go>=1.25')
 options=(!buildflags)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ssut/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-md5sums=(SKIP)
+sha256sums=('e36f1df812fef68bff1a43ebf5596164fc06438dd63ce217fc16427037dd418e')
 
 prepare() {
 	export GOPATH="$srcdir"/gopath
