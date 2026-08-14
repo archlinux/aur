@@ -4,7 +4,7 @@
 
 pkgname=openai-codex-desktop
 pkgver=26.803.81509
-pkgrel=8
+pkgrel=9
 pkgdesc="Official ChatGPT desktop app with Codex"
 arch=('x86_64' 'aarch64')
 url="https://chatgpt.com/codex/"
@@ -59,10 +59,10 @@ _deb_x86_64="chatgpt_${pkgver}_amd64.deb"
 _deb_aarch64="chatgpt_${pkgver}_arm64.deb"
 source=('chatgpt-launcher.sh')
 source_x86_64=(
-  "${_deb_x86_64}::https://persistent.oaistatic.com/codex-app-prod/linux/deb/latest/chatgpt_amd64.deb"
+  "${_deb_x86_64}::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_${pkgver}_amd64.deb"
 )
 source_aarch64=(
-  "${_deb_aarch64}::https://persistent.oaistatic.com/codex-app-prod/linux/deb/latest/chatgpt_arm64.deb"
+  "${_deb_aarch64}::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_${pkgver}_arm64.deb"
 )
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
 sha256sums=('4e3ca9302600bed268f8fd3ba2c9ac2f1ceb99da139ed71c50db0289b118d06f')
