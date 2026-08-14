@@ -1,6 +1,6 @@
 pkgbase = bankai-bin
 	pkgdesc = Focused Electron workspace for persistent project shell sessions
-	pkgver = 0.2.63
+	pkgver = 0.2.64
 	pkgrel = 1
 	url = https://github.com/juicerq/bankai
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = bankai-bin
 	depends = git
 	provides = bankai
 	conflicts = bankai
-	noextract = bankai-0.2.63.AppImage
+	noextract = bankai-0.2.64.AppImage
 	options = !strip
 	options = !debug
-	source = bankai-0.2.63.AppImage::https://github.com/juicerq/bankai/releases/download/v0.2.63/Bankai-0.2.63.AppImage
-	sha256sums = f8821fc4202f788944287e3ef02feb0ef53640ab5f4a1a035131ff3ffc37a74d
+	source = bankai-0.2.64.AppImage::https://github.com/juicerq/bankai/releases/download/v0.2.64/Bankai-0.2.64.AppImage
+	sha256sums = a5a3c126d7d6b777a2f5d4b7833b33bc699608191cfd903de1a80875dca7e755
 
 pkgname = bankai-bin
