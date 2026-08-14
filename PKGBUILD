@@ -62,6 +62,11 @@ sha256sums=(
 )
 install="geant4-full-debug.install"
 
+prepare() {
+  cd "${srcdir}"
+  patch -Np0 < hdf5_2_2.patch
+}
+
 build() {
 
   cd "${srcdir}"
