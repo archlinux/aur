@@ -17,7 +17,25 @@ depends=(
   'tbb'
   'root'
 )
-provides=('geant4')
+provides=(
+  'geant4'
+  'geant4-abladata'
+  'geant4-channelingdata'
+  'geant4-ensdfstatedata'
+  'geant4-incldata'
+  'geant4-ledata'
+  'geant4-levelgammadata'
+  'geant4-neutronhpdata'
+  'geant4-neutronxsdata'
+  'geant4-nudexlibdata'
+  'geant4-particlehpdata'
+  'geant4-particlexsdata'
+  'geant4-piidata'
+  'geant4-radioactivedata'
+  'geant4-realsurfacedata'
+  'geant4-saiddata'
+  'geant4-uurptdata'
+)
 conflicts=(
   'geant4_devel'
   'geant4'
