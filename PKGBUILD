@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=SharedObject
-_pkgver=1.24.0
+_pkgver=1.26.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -23,8 +23,8 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('725707e5bf6c3d4d10911da3103c3318')
-b2sums=('6ce046078c85268487dd00301fae902e0dd92dcab1aeb8945bae49cc5e75066c1aec7a78a7a2a104fe69deafc9fa5acfae59c9ad636339bba630702902f866a6')
+md5sums=('e167b551f50a3b680febbc20c05b1e4e')
+b2sums=('37037752124b56d6655ed9495620d94d691024471105c923ccdbeeea5dcc6947dc5f1525a9ac32c2fd5a0add6bc5d9abe4460e293822d0919091c97c47d79f66')
 
 build() {
   mkdir build
