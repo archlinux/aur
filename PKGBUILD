@@ -6,7 +6,6 @@ pkgdesc="LLM-powered desktop translator."
 arch=('x86_64')
 url="https://github.com/l1ngus/lucid-spell"
 license=('MIT')
-options=('!debug')
 
 # webkit2gtk-4.1 — критически важен для Tauri v2
 depends=('webkit2gtk-4.1'
@@ -16,6 +15,7 @@ depends=('webkit2gtk-4.1'
   'libsoup3'
   'openssl') # Зависимости для сборки (Rust, Node.js)
 makedepends=('rust' 'cargo' 'nodejs' 'npm' 'pkgconf' 'openssl')
+options=('!debug')
 
 # Ссылка на архив с исходниками конкретного релиза
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
