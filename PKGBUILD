@@ -9,8 +9,8 @@ pkgbase="${_pkgbase}-bin"
 pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
-pkgver=4.5.0
-pkgrel=2
+pkgver=4.6.0
+pkgrel=1
 pkgdesc="A file encryption software that uses the Advanced Encryption Standard (AES)"
 arch=(
   'x86_64'
@@ -33,11 +33,11 @@ source_x86_64=(
   "${url}/download/v${pkgver%%.*}/linux/${_pkgbase}_gui-${pkgver}-Linux-x86_64.tar.gz.sig"
 )
 # https://www.aescrypt.com/linux_verification.html
-sha256sums=('485065e473d135df60f1aff9b2562712d59032b91c50a9f8a2d7e626a49a6541'
-            'de5692a10137d14b015a5e02adaf8e03653b91424237e8b5607c84788193f347'
-            'ce5fd758553187c6f32c6532e23ae2495c802b51fdb4c27327032efbcfa4632d'
+sha256sums=('930f62fa023210fdf4db189641278b8303ec20388e8a9f39683c9e71759bfbec'
+            'cf91cd5635ae9d9d4d50a2fa16f17edc58278573cbe4ca075d7278ce73a9381b'
+            '9f591bf27e251244e387c87b228e03f8b921d08332e2fb8407badcd0132d3581'
             '53cb3f833f03ad93abb5bfae54a80de49ecb3181018b0237edd5df913aa67434')
-sha256sums_x86_64=('3abc38f8240d8d10c7508d2c3ace4f303cbc6e665afd48826cda8187b4e68ed7'
+sha256sums_x86_64=('0f563cf34ebf803fa3a9e1e9319a18b5114e62ff3e81de84b7c87b95b07cf896'
                    'SKIP')
 validpgpkeys=(
   'C264DC0F1C13A4BB18CAAF1BE7BE982BCD50DDF4' # Terrapane Support <support@terrapane.com> (https://www.terrapane.com/terrapane.asc)
@@ -98,6 +98,7 @@ package_aescrypt_gui-bin() {
 
     'hicolor-icon-theme'
     'perl'
+    'which'
   )
   optdepends=(
     'kdialog: Qt-based password prompt'

@@ -1,23 +1,23 @@
 pkgbase = aescrypt-bin
 	pkgdesc = A file encryption software that uses the Advanced Encryption Standard (AES)
-	pkgver = 4.5.0
-	pkgrel = 2
+	pkgver = 4.6.0
+	pkgrel = 1
 	url = https://www.aescrypt.com
 	arch = x86_64
 	license = custom:Commercial
 	makedepends = gzip
-	source = aescrypt_cli-4.5.0-CHANGELOG.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.5.0/CHANGELOG.md
-	source = aescrypt_cli-4.5.0-README.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.5.0/README.md
-	source = aescrypt_gui-4.5.0-CHANGELOG.md::https://github.com/terrapane/aescrypt_gui/raw/refs/tags/v4.5.0/CHANGELOG.md
-	source = aescrypt_gui-4.5.0-README.md::https://github.com/terrapane/aescrypt_gui/raw/refs/tags/v4.5.0/README.md
+	source = aescrypt_cli-4.6.0-CHANGELOG.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.6.0/CHANGELOG.md
+	source = aescrypt_cli-4.6.0-README.md::https://github.com/terrapane/aescrypt_cli/raw/refs/tags/v4.6.0/README.md
+	source = aescrypt_gui-4.6.0-CHANGELOG.md::https://github.com/terrapane/aescrypt_gui/raw/refs/tags/v4.6.0/CHANGELOG.md
+	source = aescrypt_gui-4.6.0-README.md::https://github.com/terrapane/aescrypt_gui/raw/refs/tags/v4.6.0/README.md
 	validpgpkeys = C264DC0F1C13A4BB18CAAF1BE7BE982BCD50DDF4
-	sha256sums = 485065e473d135df60f1aff9b2562712d59032b91c50a9f8a2d7e626a49a6541
-	sha256sums = de5692a10137d14b015a5e02adaf8e03653b91424237e8b5607c84788193f347
-	sha256sums = ce5fd758553187c6f32c6532e23ae2495c802b51fdb4c27327032efbcfa4632d
+	sha256sums = 930f62fa023210fdf4db189641278b8303ec20388e8a9f39683c9e71759bfbec
+	sha256sums = cf91cd5635ae9d9d4d50a2fa16f17edc58278573cbe4ca075d7278ce73a9381b
+	sha256sums = 9f591bf27e251244e387c87b228e03f8b921d08332e2fb8407badcd0132d3581
 	sha256sums = 53cb3f833f03ad93abb5bfae54a80de49ecb3181018b0237edd5df913aa67434
-	source_x86_64 = https://www.aescrypt.com/download/v4/linux/aescrypt_gui-4.5.0-Linux-x86_64.tar.gz
-	source_x86_64 = https://www.aescrypt.com/download/v4/linux/aescrypt_gui-4.5.0-Linux-x86_64.tar.gz.sig
-	sha256sums_x86_64 = 3abc38f8240d8d10c7508d2c3ace4f303cbc6e665afd48826cda8187b4e68ed7
+	source_x86_64 = https://www.aescrypt.com/download/v4/linux/aescrypt_gui-4.6.0-Linux-x86_64.tar.gz
+	source_x86_64 = https://www.aescrypt.com/download/v4/linux/aescrypt_gui-4.6.0-Linux-x86_64.tar.gz.sig
+	sha256sums_x86_64 = 0f563cf34ebf803fa3a9e1e9319a18b5114e62ff3e81de84b7c87b95b07cf896
 	sha256sums_x86_64 = SKIP
 
 pkgname = aescrypt_cli-bin
@@ -25,8 +25,8 @@ pkgname = aescrypt_cli-bin
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	provides = aescrypt_cli=4.5.0
-	provides = aescrypt-bin=4.5.0
+	provides = aescrypt_cli=4.6.0
+	provides = aescrypt-bin=4.6.0
 	conflicts = aescrypt_cli
 	conflicts = aescrypt-bin
 	replaces = aescrypt-bin<=4.4.0-2
@@ -34,13 +34,14 @@ pkgname = aescrypt_cli-bin
 pkgname = aescrypt_gui-bin
 	pkgdesc = A file encryption software that uses the Advanced Encryption Standard (AES) (GUI)
 	arch = any
-	depends = aescrypt_cli-bin>=4.5.0-2
+	depends = aescrypt_cli-bin>=4.6.0-1
 	depends = hicolor-icon-theme
 	depends = perl
+	depends = which
 	optdepends = kdialog: Qt-based password prompt
 	optdepends = zenity: GTK-based password prompt
-	provides = aescrypt_gui=4.5.0
-	provides = aescrypt-gui-bin=4.5.0
+	provides = aescrypt_gui=4.6.0
+	provides = aescrypt-gui-bin=4.6.0
 	conflicts = aescrypt_gui
 	conflicts = aescrypt-gui-bin
 	replaces = aescrypt-gui-bin<=4.4.0-2
