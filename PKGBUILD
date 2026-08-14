@@ -1,16 +1,19 @@
 # Maintainer: Damon Petta <d at disassemble dot net>
 
 pkgname=batdoc
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
-pkgdesc='cat(1) for doc, docx, xls, xlsx, pptx, and pdf -- renders to markdown with bat'
+pkgdesc='cat(1) for doc, docx, xls, xlsx, pptx, pdf, and image files (OCR) -- renders to markdown with bat'
 arch=('x86_64')
 url='https://github.com/daemonp/batdoc'
 license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
+# Disable makepkg's -flto=auto injection: ring's C objects become GCC LTO
+# bitcode that rust-lld cannot link (undefined ring_core_* symbols).
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('f339aff7b0750d4bb0680a36f89ab2060cd871a479372d892dc9b75acf2f55da785b183d3f9ffb080b2c23b3863c078e48e83543d983a9e15c0bf693b3c2f948')
+b2sums=('e512ea89b192780ad5ebb5da5c4357b59426639a6a15b851d11247d2d443a55cfbafeefd2976a769dce1c093e696fbb5789710b51baecab17c12a330c30b2bf3')
 
 prepare() {
     cd "$pkgname-$pkgver"
