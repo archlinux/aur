@@ -17,8 +17,6 @@ provides=("${_pkgname%-rs}")
 conflicts=("${_pkgname%-rs}")
 makedepends=('help2man')
 
-changelog="changelog.md"
-
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/${_appver}/${_appname}-${_appver}-${arch[0]}-unknown-linux-musl.tar.gz")
@@ -42,9 +40,9 @@ package() {
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
+	install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${_appname}.1.gz"
+
 	install -Dm644 "README-${pkgver}" "$pkgdir/usr/share/doc/$pkgname/README.md"
 
 	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
-
-	install -Dm644 "MAN-${pkgver}.1.gz" "${pkgdir}/usr/share/man/man1/${_appname}.1.gz"
 }

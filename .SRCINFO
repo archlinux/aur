@@ -3,7 +3,6 @@ pkgbase = stegano-bin
 	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/steganogram/stegano-rs
-	changelog = changelog.md
 	arch = x86_64
 	arch = aarch64
 	license = MIT
