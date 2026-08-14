@@ -2,9 +2,9 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 
 pkgname="supercat"
-pkgver="0.5.8"
-pkgrel="2"
-pkgdesc="A program that colorizes text based on matching regular expressions/strings/characters."
+pkgver=0.5.8
+pkgrel=2
+pkgdesc="A program that colorizes text based on matching regular expressions/strings/characters"
 url="http://supercat.nosredna.net/"
 license=('GPL3')
 arch=('i686' 'x86_64')
@@ -24,7 +24,6 @@ package() {
     cd "${pkgname}-${pkgver}"
 
     make DESTDIR=${pkgdir} install
+
     install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim: set ts=4 sw=4 et syn=sh ft=sh:

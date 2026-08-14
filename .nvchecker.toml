@@ -1,0 +1,4 @@
+[supercat]
+source = "regex"
+url = "https://supercat.nosredna.net/"
+regex = "Download Latest Version \\(([\\d\\.]*) | [\\d-]\\):"
