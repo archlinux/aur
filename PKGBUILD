@@ -29,7 +29,7 @@
 pkgname=hermes-agent
 pkgver=0.20.1
 _tagver=2026.8.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
 url="https://github.com/NousResearch/hermes-agent"
@@ -149,6 +149,17 @@ package() {
   . "$_optdir/"
 
   echo "console.log('skipping build, using prebuilt dist/entry.js')" > "$_optdir/ui-tui/scripts/build.mjs"
+
+  # Ship the prebuilt TUI into hermes_cli/tui_dist/ so that
+  # _find_bundled_tui() finds it and skips the npm install step (which
+  # would fail with EACCES on the root-owned /opt tree).
+  # Note: hermes_cli is imported from /opt/hermes-agent/hermes_cli/ via
+  # the .pth file, NOT from the venv site-packages, so we copy there.
+  _tuidir="$_optdir/hermes_cli/tui_dist"
+  install -d "$_tuidir"
+  if [ -d "ui-tui/dist" ]; then
+    cp -a ui-tui/dist/* "$_tuidir/"
+  fi
 
   sed -i '1c#!/opt/hermes-agent/venv/bin/python3.11' $_optdir/venv/bin/hermes 
 

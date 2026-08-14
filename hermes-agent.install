@@ -17,25 +17,31 @@ sys.path.insert(0, "/opt/hermes-agent")
 from hermes_constants import get_hermes_home
 from datetime import datetime, timezone
 
-# Resolve the real user's home.  pacman runs as root so Path.home() is /root.
-# Prefer SUDO_USER, then the owner of an existing ~/.hermes, then the first
-# non-root user with a home directory.
+_OPTDIR = Path("/opt/hermes-agent")
+
+# Resolve the real user's hermes home.  pacman runs as root so Path.home()
+# is /root.  Ask the hermes CLI itself where it would look for config.yaml
+# — that directory is the hermes home.
 def _real_hermes_home() -> Path:
     # If HERMES_HOME is set, trust it
     override = os.environ.get("HERMES_HOME")
     if override:
         return Path(override)
 
-    # SUDO_USER / USER hints
-    for envvar in ("SUDO_USER", "USER"):
-        uname = os.environ.get(envvar)
-        if uname:
-            import pwd
-            try:
-                pw = pwd.getpwnam(uname)
-                return Path(pw.pw_dir) / ".hermes"
-            except KeyError:
-                pass
+    # Ask 'hermes config path' — it returns the resolved config.yaml path
+    # using the same logic as the CLI (HERMES_HOME env var, profile, etc.)
+    import subprocess
+    try:
+        result = subprocess.run(
+            [str(_OPTDIR / "venv/bin/hermes"), "config", "path"],
+            capture_output=True, text=True, timeout=10,
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            config_path = Path(result.stdout.strip())
+            if config_path.is_file() or config_path.parent.exists():
+                return config_path.parent
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        pass
 
     # Fallback: find any non-root ~/.hermes on the system
     import glob
@@ -46,7 +52,7 @@ def _real_hermes_home() -> Path:
     return get_hermes_home()
 
 _hermes_home = _real_hermes_home()
-_optdir = Path("/opt/hermes-agent")
+_optdir = _OPTDIR
 
 def _needs(msg):
     print(f"  {msg}")
@@ -99,6 +105,21 @@ if _src_wb.exists() and not _dst_wb.exists() and not _dst_wb.is_symlink():
     _dst_wb.symlink_to(str(_src_wb))
     _needs(f"Linked {_dst_wb}")
 
+# 6. Desktop build stamp (if prebuilt desktop app is present)
+#    Write the stamp in the user's ~/.hermes, NOT /root/.hermes.
+if os.path.isdir(os.path.join(str(_optdir), "apps", "desktop", "release", "linux-unpacked")):
+    import json as _json
+    from hermes_cli.main import _compute_desktop_content_hash
+    _stamp = _hermes_home / "desktop-build-stamp.json"
+    _stamp.parent.mkdir(parents=True, exist_ok=True)
+    _h = _compute_desktop_content_hash(Path("/opt/hermes-agent"))
+    _stamp.write_text(_json.dumps({
+        "contentHash": _h,
+        "sourceMode": False,
+        "builtAt": datetime.now(timezone.utc).isoformat(),
+    }, indent=2) + "\n")
+    print(f"  Desktop build stamp written to {_stamp}")
+
 print(f"==> Hermes home initialised at {_hermes_home}")
 PYEOF
 
@@ -106,33 +127,8 @@ PYEOF
  echo "==> Then run 'hermes setup' to configure your provider and other settings."
  echo "==> Run 'hermes doctor' to verify your setup."
 
- # If the desktop app was prebuilt, configure it:
- # 1. Write a build stamp so 'hermes desktop' skips the npm rebuild
- # 2. Set the setuid bit on chrome-sandbox (required by Electron on Linux)
+ # If the desktop app was prebuilt, configure chrome-sandbox setuid
  if [ -d "$_desktop_dir/release/linux-unpacked" ]; then
-   echo "==> Configuring prebuilt desktop app..."
-
-   # Write desktop build stamp using the same hash function that
-   # hermes_cli uses, so 'hermes desktop' sees the build as up-to-date
-   # and does not try to run npm install in the root-owned /opt tree.
-   $_optdir/venv/bin/python3 << 'PYEOF2'
-import sys, json
-sys.path.insert(0, "/opt/hermes-agent")
-from pathlib import Path
-from hermes_cli.main import _compute_desktop_content_hash, _desktop_stamp_path
-from datetime import datetime, timezone
-
-stamp = _desktop_stamp_path()
-stamp.parent.mkdir(parents=True, exist_ok=True)
-stamp.write_text(json.dumps({
-    "contentHash": _compute_desktop_content_hash(Path("/opt/hermes-agent")),
-    "sourceMode": False,
-    "builtAt": datetime.now(timezone.utc).isoformat(),
-}, indent=2) + "\n")
-print(f"  Desktop build stamp written to {stamp}")
-PYEOF2
-   2>/dev/null || echo "  (warning: could not write desktop stamp)"
-
    # Setuid on chrome-sandbox (Electron requires this on Linux)
    if [ -f "$_desktop_dir/release/linux-unpacked/chrome-sandbox" ]; then
      chown root:root "$_desktop_dir/release/linux-unpacked/chrome-sandbox" 2>/dev/null
