@@ -11,7 +11,7 @@ echo "==> Checking for new version..."
 
 LATEST_VERSION=""
 for _ in 1 2 3; do
-    LATEST_VERSION=$(curl -fsS --max-time 25 "$PYPI" | grep -oP '"version": "\K[^"]+' | head -1)
+    LATEST_VERSION=$(curl -fsS --max-time 25 "$PYPI" | grep -oP '"version":[[:space:]]*"\K[^"]+' | head -1)
     [ -n "$LATEST_VERSION" ] && break
     sleep 2
 done
