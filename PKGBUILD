@@ -56,6 +56,7 @@ makedepends=(
   'python'
   'range-v3'
   'tl-expected'
+  'vulkan-headers'
 )
 optdepends=(
   'geoclue: geoinformation support'
