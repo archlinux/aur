@@ -1,0 +1,5 @@
+[visualvault-bin]
+source = "github"
+github = "mikeleppane/visualvault"
+use_latest_release = true
+prefix = "v"
