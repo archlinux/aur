@@ -2,4 +2,5 @@ pkg/
 src/
 jbang-*.pkg.*
 jbang-*.tar
+jbang-*.zip
 LICENSE
