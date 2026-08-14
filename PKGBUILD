@@ -1,7 +1,7 @@
 # Maintainer: Monjaris ziyanovruzlu750@gmail.com
 pkgname=dotty
-pkgver=0.4.9
-pkgrel=7
+pkgver=0.6.7
+pkgrel=8
 pkgdesc="Dotfiles and config manager with profiles, written in C++"
 arch=('x86_64')
 url="https://github.com/Monjaris/dotty"
@@ -20,7 +20,7 @@ makedepends=(
   'xmake'
 )
 
-sha256sums=('c3f20cd25953379f03abf628238c4631b9fc47a4382a641f63e70b1b8c03bd7e')
+sha256sums=('2c3e58d55c7c7fcdc333ceeca64530699249ab3a2107fe831d93b15cc97fd391')
 
 build() {
     cd "$srcdir/dotty-${pkgver}"
