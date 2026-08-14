@@ -2,7 +2,7 @@
 
 pkgname=('lua-lapis' 'lua51-lapis' 'lua52-lapis' 'lua53-lapis' 'lua54-lapis')
 _pkgbase='lapis'
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 arch=('any')
 url='https://github.com/leafo/lapis'
@@ -112,5 +112,5 @@ package_lua54-lapis() {
 }
 
 sha512sums=(
-'64b375f683890b0becdb554f381f73de8c8dcc95d92c92c344ab48ea2b42ff258850aee446a248d7e6433c6cb5995ceda368fff4d0dfc57d4c01caee2e61aade'
+'d3ce0770351ae985489e55e998927e912e5a0cd47476631c9e74249f5273b1f0a4ec75e8acf6a81755bf18b9108d5ad283f65afe5c356ece25224c7dc21a523c'
 )
