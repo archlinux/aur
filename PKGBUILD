@@ -21,6 +21,11 @@ check() {
     #make check
 }
 
+build() {
+    cd "$srcdir/$pkgname"
+    make all
+}
+
 package() {
   cd "$srcdir/$pkgname"
   # FIXME: make install should take care of this https://github.com/tim-janik/jj-fzf/issues/7
