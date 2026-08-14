@@ -3,13 +3,23 @@
 # Contributor: Amos Wenger <amos@itch.io>
 
 pkgname=itch-setup-bin
-pkgver=1.29.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="Installer for the itch.io desktop app"
 arch=(x86_64)
 url="https://itch.io/"
 license=(MIT)
-depends=(gtk3)
+depends=(
+    cairo
+    fontconfig
+    gdk-pixbuf2
+    glib2
+    glibc
+    gtk3
+    hicolor-icon-theme
+    pango
+    sh
+    )
 _itchver=26.13.0
 source=("itch-${_itchver}.tar.gz::https://github.com/itchio/itch/archive/refs/tags/v${_itchver}.tar.gz"
         "itch-setup-LICENSE::https://raw.githubusercontent.com/itchio/itch-setup/master/LICENSE"
