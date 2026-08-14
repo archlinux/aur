@@ -1,5 +1,5 @@
 # Maintainer: Seraphim Pardee <me at srp dot life>
-pkgname=ironwail
+pkgname=ironwail-git
 pkgver=0.8.2.r0.g1eabd0df
 pkgrel=1
 pkgdesc="A fork of the popular GLQuake descendant QuakeSpasm with a focus on high performance instead of maximum compatibility, with a few extra features sprinkled on top."
