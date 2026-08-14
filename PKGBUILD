@@ -1,5 +1,5 @@
 # Maintainer: Floofy floofyiv9@proton.me
-pkgname=fleasion-git
+pkgname=fleasion
 pkgver=r515.f6e286c
 pkgrel=1
 pkgdesc="Roblox asset interceptor and replacer for Sober"
