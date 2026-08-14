@@ -1,0 +1,5 @@
+[shef-bin]
+source = "github"
+github = "eduardoagarcia/shef"
+use_latest_release = true
+prefix = "v"
