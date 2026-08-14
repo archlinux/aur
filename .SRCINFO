@@ -12,6 +12,7 @@ pkgbase = mangobar-git
 	depends = alsa-lib
 	depends = cairo
 	depends = cjson
+	depends = tllist
 	depends = fcft
 	depends = gdk-pixbuf2
 	depends = libpulse

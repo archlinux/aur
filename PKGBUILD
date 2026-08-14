@@ -11,6 +11,7 @@ depends=(
   alsa-lib
   cairo
   cjson
+  tllist
   fcft
   gdk-pixbuf2
   libpulse
