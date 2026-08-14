@@ -1,13 +1,13 @@
 pkgbase = agentics-companion
 	pkgdesc = Agentics Companion - the local relay and voice daemon that links every Agentics surface to the hub
-	pkgver = 0.1.79
+	pkgver = 0.1.82
 	pkgrel = 1
 	url = https://agentics.co.za
 	arch = x86_64
 	license = custom
 	options = !strip
 	options = !debug
-	source = agentics-companion-0.1.79-x86_64::https://repo.agentics.co.za/x86_64/agentics-companion-0.1.79-x86_64
-	sha512sums = 736ff3def7e15370185f22412152d9485b02cbb019390826a1de856418dfd140303cd5e9c64d7175276bfe410bb811bede5d8026793994760979b9981c33f55c
+	source = agentics-companion-0.1.82-x86_64::https://repo.agentics.co.za/x86_64/agentics-companion-0.1.82-x86_64
+	sha512sums = 7f3855f0ffd3e58ee0c5d90b977639ea1efd3a08647c60e595366cf22b2f0e89a8eaa6d7c37a90e5bbf3276cd70d32462894be64e3d730c488664f460f28cb64
 
 pkgname = agentics-companion
