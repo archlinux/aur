@@ -1,7 +1,7 @@
 # Maintainer: M1829 <m1829js@gmail.com>
 pkgname=mxset
 pkgver=1.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='An optimized hashset in GNU C99, using a SwissTable style open-addressing architecture.'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://codeberg.org/Muhamix/mxset'
