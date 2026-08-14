@@ -1,6 +1,6 @@
 pkgbase = zync-bin
 	pkgdesc = Open-source SSH client for developers & DevOps with SFTP, tunneling, and a modern terminal.
-	pkgver = 2.22.5
+	pkgver = 2.23.0
 	pkgrel = 1
 	url = https://zync.thesudoer.in/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = zync-bin
 	depends = openssl
 	provides = zync
 	conflicts = zync
-	source = https://github.com/zync-sh/zync/releases/download/v2.22.5/zync_2.22.5_amd64.deb
+	source = https://github.com/zync-sh/zync/releases/download/v2.23.0/zync_2.23.0_amd64.deb
 	source = https://github.com/zync-sh/zync/blob/main/LICENSE
-	sha256sums = bee683efa49424e6e7e15e3f72a2b24a695760d698ce2f7d87d5f04dc1163224
+	sha256sums = f1b15941c6d469594309b836744119545d1adf5dbefacbaffa241b3fa1df513d
 	sha256sums = f0d43dfea4c354d4c46f8380d7deb3d065701ad335c70fc7366a1c971ce32c60
 
 pkgname = zync-bin
