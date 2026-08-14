@@ -5,14 +5,14 @@ _name=NeuralRack
 pkgbase=${_name,,}
 pkgname=($pkgbase $pkgbase-{clap,lv2,standalone,vst,vst3})
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A neural model and impulse response file loader'
 arch=(aarch64 x86_64)
 url="https://github.com/brummer10/$_name"
 license=(BSD-3-Clause)
 groups=(pro-audio)
-depends=(glibc gcc-libs libx11)
-makedepends=(cairo jack libsndfile lv2 xxd)
+depends=()
+makedepends=(cairo freetype2 jack libsndfile lv2 xxd)
 checkdepends=(lv2lint)
 source=("https://github.com/brummer10/$_name/releases/download/v$pkgver/$_name-v$pkgver-src.tar.xz")
 sha256sums=('82b88d2aa20155d7522b7eea030b5e888eb1ca5559af47be9a4870fa5d6226f7')
@@ -30,6 +30,8 @@ _pick() {
 
 build() {
   cd $_name-v$pkgver
+  export CFLAGS+=" -Wno-unused-result"
+  export CXXFLAGS+=" -Wno-unused-result"
   make CXX=g++ STRIP=:
 }
 
@@ -54,7 +56,7 @@ check() {
 
 package_neuralrack() {
   arch=(any)
-  depends+=($pkgbase-{clap,lv2,standalone,vst})
+  depends+=($pkgbase-{clap,lv2,standalone,vst,vst3})
   cd $_name-v$pkgver
   make DESTDIR="$pkgdir" install
   install -vDm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
@@ -70,7 +72,7 @@ package_neuralrack() {
 
 package_neuralrack-clap() {
   pkgdesc+=" – CLAP"
-  depends+=(libcairo.so libsndfile.so)
+  depends+=(glibc libcairo.so libfreetype.so libgcc libsndfile.so libstdc++ libx11)
   optdepends=('clap-host: for loading the CLAP plugin')
   groups+=(clap-plugins)
   mv -v $pkgname/* "$pkgdir"
@@ -81,7 +83,7 @@ package_neuralrack-clap() {
 
 package_neuralrack-lv2() {
   pkgdesc+=" – LV2"
-  depends+=(libcairo.so libsndfile.so)
+  depends+=(glibc libcairo.so libfreetype.so libgcc libsndfile.so libstdc++ libx11)
   optdepends=('lv2-host: for loading the LV2 plugin')
   groups+=(lv2-plugins)
   mv -v $pkgname/* "$pkgdir"
@@ -92,7 +94,8 @@ package_neuralrack-lv2() {
 
 package_neuralrack-standalone() {
   pkgdesc+=" – JACK standalone"
-  depends+=(libasound.so libcairo.so libjack.so libsndfile.so)
+  depends+=(glibc libasound.so libcairo.so libfreetype.so libgcc libjack.so
+            libsndfile.so libstdc++ libx11)
   mv -v $pkgname/* "$pkgdir"
   cd $_name-v$pkgver
   install -vDm 644 README.md $_name.png -t "$pkgdir"/usr/share/doc/$pkgname
@@ -101,7 +104,7 @@ package_neuralrack-standalone() {
 
 package_neuralrack-vst() {
   pkgdesc+=" – VST2"
-  depends+=(libcairo.so libsndfile.so)
+  depends+=(glibc libcairo.so libfreetype.so libgcc libsndfile.so libstdc++ libx11)
   optdepends=('vst-host: for loading the VST2 plugin')
   groups+=(vst-plugins)
   mv -v $pkgname/* "$pkgdir"
@@ -112,7 +115,7 @@ package_neuralrack-vst() {
 
 package_neuralrack-vst3() {
   pkgdesc+=" – VST3"
-  depends+=(libcairo.so libsndfile.so)
+  depends+=(glibc libcairo.so libfreetype.so libgcc libsndfile.so libstdc++ libx11)
   optdepends=('vst3-host: for loading the VST3 plugin')
   groups+=(vst3-plugins)
   mv -v $pkgname/* "$pkgdir"
