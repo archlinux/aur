@@ -4,8 +4,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=waterfox-beta-bin
-pkgver=6.7.0.b2
-_relver=6.7.0-beta.2
+pkgver=6.7.0.b3
+_relver=6.7.0-beta.3
 pkgrel=1
 pkgdesc="Beta/modern generation of customizable privacy-conscious web browser."
 arch=('x86_64')
@@ -71,6 +71,6 @@ END
   ln -s /opt/waterfox/waterfox "${pkgdir}"/usr/bin/waterfox-g
 }
 
-sha512sums=('70b13df9c056a9e35d7a1f381ad7a788f6ecea7d7ef553cac171d56228ceda2190e5ef4ca7b0653374b456c30ca124634f45585c67313b31c1a2afb515e00d4e'
+sha512sums=('2802dd3740b27b13b729c7263abc4eb781bbc7d84a0b7f5efbafaf459df47aea4033d4392f0c93d0041022d0330f091b6a1f7bb54e242a37bd75e84de9d4ce30'
             'd0ff0445021b975d52eee7dac27dfdc0d170da07f8a8dc1676ba53387c2006f0598c163b36b07abdbb411cfb61bf52b8222fc5882bdfa8dfcd13d99cb44c92b6')
 # vim:set ts=2 sw=2 et:
