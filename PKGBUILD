@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=deepseek-reasonix-desktop-bin
-pkgver=1.25.0
+pkgver=1.25.1
 pkgrel=1
 # Reasonix Desktop is a Wails shell around WebKitGTK, not an Electron app —
 # upstream's own control file says so ("a Wails shell around the Go kernel")
@@ -45,7 +45,7 @@ _relurl="https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop
 # it drops the imagemagick resize step the old appicon.png handling needed.
 source=("${pkgname}-${pkgver}.deb::${_relurl}/Reasonix-linux-amd64.deb")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('2c221b9a10e51218211bab8c8a16d165d686a0ea35bde8f49f03fc6bfc0130d7')
+sha256sums=('faa962d5d60517ed6ce3494d24ff1d6f4126cab396adbb2a24c4075924a9bfd1')
 
 prepare() {
     # .deb is an ar archive of {debian-binary, control.tar.*, data.tar.*};
@@ -68,8 +68,8 @@ package() {
 
     # Deliberately not installed:
     #   usr/bin/reasonix — the CLI kernel; deepseek-reasonix-tui-bin owns that
-    #     path, so shipping it here would put the two packages in file conflict
-    #     (see optdepends).
+    #     path, so shipping it here would put the two packages in file
+    #     conflict. It is pulled in through depends=('reasonix') instead.
     #   usr/lib/reasonix/reasonix-update-helper + its polkit policy — they let
     #     the app install a .deb over itself through pkexec, which is wrong on
     #     Arch; upgrades go through pacman.
