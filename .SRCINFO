@@ -1,6 +1,6 @@
 pkgbase = fenriz-bin
 	pkgdesc = A fast, stable tiling Wayland compositor (Binary Release)
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/zackb/fenriz
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = fenriz-bin
 	provides = fenriz
 	conflicts = fenriz
 	conflicts = fenriz-git
-	source = https://github.com/zackb/fenriz/releases/download/v0.1.10/fenriz-0.1.10.tar.gz
-	sha256sums = c4393f532a97167adc0c643cddce8191fc228889da1550f58e138b68d5cb51ce
+	source = https://github.com/zackb/fenriz/releases/download/v0.1.11/fenriz-0.1.11.tar.gz
+	sha256sums = f61487ddd4184d15788ec50246069a42e751d06e7082218dd0360f9fe9590553
 
 pkgname = fenriz-bin
