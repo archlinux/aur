@@ -1,7 +1,7 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy
-pkgver=5.3.12.35805101_a981f41f
+pkgver=5.3.13.35923969_20fd9da5
 pkgrel=1
 pkgdesc="Work Smart，Not Hard"
 arch=('x86_64' 'aarch64')
@@ -21,12 +21,10 @@ _registry="https://registry.npmjs.org"
 source=(
   "v${pkgver}.zip::https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-${pkgver//_/-}.zip"
   WorkBuddy.desktop
-  icon.svg
   "${_registry}/better-sqlite3/-/better-sqlite3-13.0.3.tgz"
 )
 sha256sums=('SKIP'
             '6566e616904b2e168886c0523fbea7432a03e14d2e79fcb7b80ae88912e396a9'
-            'f7cd6f79585b139f7686e79cdfbc6e64a39adf34370467874569e4e827dd1b00'
             '77e0513dc1a469fb3bceec4c7fb5ad3f403109787eda05be047ec17fd56868cb')
 source_x86_64=("node-pty-x86_64.gz::${_registry}/@lydell/node-pty-linux-x64/-/node-pty-linux-x64-1.2.0-beta.14.tgz")
 source_aarhc64=("node-pty-aarh64.gz::${_registry}/@lydell/node-pty-linux-arm64/-/node-pty-linux-arm64-1.2.0-beta.14.tgz")
@@ -63,11 +61,10 @@ build() {
 
 package() {
     install -Dm644 WorkBuddy.desktop ${pkgdir}/usr/share/applications/workbuddy.desktop
-    install -Dm644 icon.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/workbuddy.svg
     cd WorkBuddy.app/Contents/Resources
     install -Dm644 app.asar.unpacked/resources/icon.png ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/workbuddy.png
+    install -Dm644 app.asar.unpacked/renderer/assets/logo-workbuddy-*.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/workbuddy.svg
     install -d ${pkgdir}/opt/workbuddy
-    #install -D app.asar ${pkgdir}/opt/workbuddy/app.asar
     cp -a app.asar.unpacked ${pkgdir}/opt/workbuddy/
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/workbuddy" <<EOF
 #!/usr/bin/bash
