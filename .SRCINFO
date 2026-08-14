@@ -1,0 +1,17 @@
+pkgbase = libccittfax-git
+	pkgdesc = CCITT Group 3/4 fax codec library
+	pkgver = r114.77d7c63
+	pkgrel = 1
+	url = https://github.com/thinkoid/libccittfax
+	arch = x86_64
+	license = WTFPL
+	makedepends = git
+	makedepends = meson
+	provides = libccittfax
+	conflicts = libccittfax
+	options = staticlibs
+	options = !lto
+	source = libccittfax::git+https://github.com/thinkoid/libccittfax.git
+	sha256sums = SKIP
+
+pkgname = libccittfax-git
