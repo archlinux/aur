@@ -3,7 +3,7 @@
 
 _name="srt"
 pkgname="lib32-${_name}"
-pkgver=1.5.5
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="Secure Reliable Transport library (32-bit)"
 arch=(
@@ -31,7 +31,7 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
 )
-b2sums=('5f40bc6bbe461e71062efc59d30aef394ba1eb10dc78b276d14f23e982f89ecf73f364bd345ecde86a9f586ed779b2b6bf651b79d5ddaa396e37cadaf9b78164')
+b2sums=('a14d9fb011c1276454d825ee4a52fa7738d5532ee9a131bd21398ba300db99c22a038dd808da11affdfa1deec90db87e9924f01d4f32c8a56c43a4c95d29aead')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
