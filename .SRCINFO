@@ -1,0 +1,22 @@
+pkgbase = snypr-git
+	pkgdesc = Screenshot, annotation, and live-drawing tool for Hyprland and wlroots compositors (git)
+	pkgver = 0.1.0.r1.g285434b
+	pkgrel = 1
+	url = https://github.com/noirbizarre/snypr
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = pkgconf
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = wayland
+	depends = hicolor-icon-theme
+	optdepends = libnotify: desktop notifications (any notification daemon, e.g. mako, dunst, swaync)
+	optdepends = waybar: StatusNotifierItem host for `snypr daemon --systray` (any SNI host works)
+	provides = snypr=0.1.0.r1.g285434b
+	conflicts = snypr
+	source = snypr::git+https://github.com/noirbizarre/snypr.git
+	sha256sums = SKIP
+
+pkgname = snypr-git
