@@ -4,7 +4,7 @@ _pkgname=OpenNOW
 pkgver=0.5.4
 #_pkgver=0.5.3-nightly.47.1
 _pkgver=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="custom GeForce Now client"
 url="https://opennow.zortos.me/"
 license=('MIT')
@@ -51,7 +51,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/lib/opennow/opennow-stable"
 	cp -a opennow-stable/dist-electron ${pkgdir}/usr/lib/opennow/opennow-stable
 	# force/set the app name to keep the previously created config dir
-	sed -i ${pkgdir}/usr/lib/opennow/opennow-stable/dist-electron/main/index.js -e '/import.*app/a app.setVersion("'$_pkgver'")\napp.setName("opennow-stable")'
+	sed -i ${pkgdir}/usr/lib/opennow/opennow-stable/dist-electron/main/index.js -e '/import.*app/a app$1.setVersion("'$_pkgver'")\napp$1.setName("opennow-stable")'
 	cp -a opennow-stable/dist ${pkgdir}/usr/lib/opennow/opennow-stable
 	cp -a opennow-stable/package.json ${pkgdir}/usr/lib/opennow/opennow-stable
 	# only install the required npm module
