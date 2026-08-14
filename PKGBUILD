@@ -5,7 +5,7 @@
 # https://github.com/zed-extensions/matlab?tab=readme-ov-file#installation-steps
 
 pkgname="matlab-language-server"
-pkgver=1.3.12
+pkgver=1.3.13
 pkgrel=1
 pkgdesc="Implementation of the Microsoft Language Server Protocol for the MATLAB language"
 arch=(
@@ -26,7 +26,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('45d872a893edd02f2ddd10a7b607e8d1cc1e9592be9ca648ba6029004c15fbbc')
+sha256sums=('ae751c1cbedba62bf395c3a07f9a964706afc39a76046fb733ffaf2a275081ea')
 
 _source() {
   export NPM_CONFIG_CACHE="${srcdir}/.npm"
