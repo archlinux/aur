@@ -1,0 +1,18 @@
+pkgbase = raddebugger-git
+	pkgdesc = Native graphical debugger for x86-64 Windows and Linux
+	pkgver = 0.9.28.r4493.g08d25fa3
+	pkgrel = 1
+	url = https://github.com/EpicGames/raddebugger
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = clang
+	makedepends = pkgconf
+	depends = freetype2
+	depends = libx11
+	depends = libxext
+	depends = mesa
+	source = git+https://github.com/EpicGames/raddebugger.git
+	sha256sums = SKIP
+
+pkgname = raddebugger-git
