@@ -1,0 +1,18 @@
+pkgbase = wg-ratatui-tui-git
+	pkgdesc = A WireGuard TUI interface built with Ratatui
+	pkgver = r7.0992ce2
+	pkgrel = 1
+	url = https://github.com/vsk11-12/wg-ratatui-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = wg-ratatui-tui
+	conflicts = wg-ratatui-tui
+	source = git+https://github.com/vsk11-12/wg-ratatui-tui.git
+	sha256sums = SKIP
+
+pkgname = wg-ratatui-tui-git
