@@ -1,5 +1,5 @@
 [Unit]
-Description=DSC Discord Bot Runtime Daemon
+Description=DSCB Discord Bot Runtime Daemon
 After=network.target
 
 [Service]

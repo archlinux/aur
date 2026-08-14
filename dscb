@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ==============================================================================
-# DISCORD SCRIPTING LANGUAGE (DSC) - COMPILER & RUNTIME ENGINE
+# DISCORD SCRIPTING LANGUAGE (DSCB) - COMPILER & RUNTIME ENGINE
 # ==============================================================================
 
 import sys
@@ -12,13 +12,26 @@ import re
 import json
 import time
 import datetime
+from datetime import datetime as dt, timezone, timedelta
 import traceback
 import math
 import subprocess
+import textwrap
 import discord
 from discord.ext import commands
 
-# --- PERSISTENT STORAGE ---
+# ==============================================================================
+# CONTROL FLOW EXCEPTIONS
+# ==============================================================================
+class ReturnSignal(Exception):
+    def __init__(self, value): self.value = value
+
+class BreakSignal(Exception): pass
+class ContinueSignal(Exception): pass
+
+# ==============================================================================
+# SECTION 1: PERSISTENT STORAGE ENGINE
+# ==============================================================================
 class DSLDatabase:
     def __init__(self, db_path="/tmp/dscb_database.json"):
         self.db_path = db_path
@@ -28,18 +41,14 @@ class DSLDatabase:
     def _load_from_disk(self):
         if os.path.exists(self.db_path):
             try:
-                with open(self.db_path, "r", encoding="utf-8") as f:
-                    return json.load(f)
-            except Exception:
-                return {}
+                with open(self.db_path, "r", encoding="utf-8") as f: return json.load(f)
+            except Exception: return {}
         return {}
 
     def save(self):
         try:
-            with open(self.db_path, "w", encoding="utf-8") as f:
-                json.dump(self.data, f, indent=4, ensure_ascii=False)
-        except Exception as err:
-            print(f"[DB ERROR] Failed to save database: {err}")
+            with open(self.db_path, "w", encoding="utf-8") as f: json.dump(self.data, f, indent=4, ensure_ascii=False)
+        except Exception as err: print(f"[DB ERROR] Failed to save database: {err}")
 
     def get(self, key, default=None): return self.data.get(str(key), default)
     def set(self, key, value): self.data[str(key)] = value; self.save()
@@ -51,11 +60,13 @@ class DSLDatabase:
         return False
     def all(self): return self.data.copy()
 
-# --- LEXER ---
+# ==============================================================================
+# SECTION 2: LEXICAL TOKEN DEFINITIONS & TOKENIZER
+# ==============================================================================
 TOKEN_SPECIFICATION = [
     ('COMMENT_BLOCK', r'/\*[\s\S]*?\*/'),
     ('COMMENT_LINE',  r'(//|#)[^\n]*'),
-    ('STRING',        r'"""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|"[^"\\]*(?:\\.[^"\\]*)*"|\'[^\'\\]*(?:\\.[^\'\\]*)*\''),
+    ('STRING',        r'"""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|"(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\''),
     ('ARROW',         r'=>'),
     ('EQ_COMPARE',    r'=='),
     ('NE_COMPARE',    r'!='),
@@ -68,7 +79,7 @@ TOKEN_SPECIFICATION = [
     ('HEX_NUMBER',    r'0x[0-9a-fA-F]+'),
     ('FLOAT_NUMBER',  r'\d+\.\d+'),
     ('INT_NUMBER',    r'\d+'),
-    ('KEYWORD',       r'\b(command|slash|on|embed|var|let|if|else|while|for|return|reply|send|kick|ban|mute|unmute|purge|python|py|true|false|null|none|and|or|not)\b'),
+    ('KEYWORD',       r'\b(command|slash|on|embed|var|let|fn|func|function|if|else|while|for|in|break|continue|return|reply|send|kick|ban|mute|unmute|purge|python|py|true|false|null|none|and|or|not)\b'),
     ('IDENTIFIER',    r'[a-zA-Z_][a-zA-Z0-9_]*'),
     ('EQUALS',        r'='),
     ('PLUS',          r'\+'),
@@ -82,6 +93,7 @@ TOKEN_SPECIFICATION = [
     ('DOT',           r'\.'),
     ('COMMA',         r','),
     ('COLON',         r':'),
+    ('SEMICOLON',     r';'),
     ('LPAREN',        r'\('),
     ('RPAREN',        r'\)'),
     ('LBRACE',        r'\{'),
@@ -95,74 +107,115 @@ TOKEN_SPECIFICATION = [
 
 class Token:
     def __init__(self, type_name, value, line, column):
-        self.type = type_name
-        self.value = value
-        self.line = line
-        self.column = column
-
-    def __repr__(self):
-        return f"Token({self.type}, {repr(self.value)}, L{self.line}:C{self.column})"
+        self.type, self.value, self.line, self.column = type_name, value, line, column
+    def __repr__(self): return f"Token({self.type}, {repr(self.value)}, L{self.line}:C{self.column})"
+    def __str__(self): return self.__repr__()
 
 class Lexer:
     def __init__(self, source_code):
-        cleaned = source_code.replace('“', '"').replace('”', '"')
-        cleaned = cleaned.replace('‘', "'").replace('’', "'")
-        cleaned = cleaned.replace('—', '-').replace('–', '-')
-        self.source_code = cleaned
-        self.tokens = []
+        cleaned = source_code.replace('“', '"').replace('”', '"').replace('‘', "'").replace('’', "'").replace('—', '-').replace('–', '-')
+        self.source_code, self.tokens = cleaned, []
 
     def tokenize(self):
-        master_pattern = '|'.join(f'(?P<{name}>{pattern})' for name, pattern in TOKEN_SPECIFICATION)
-        line_number = 1
-        line_start = 0
+        pos, line_number, line_start = 0, 1, 0
+        master_pattern = re.compile('|'.join(f'(?P<{name}>{pattern})' for name, pattern in TOKEN_SPECIFICATION))
+        py_block_pattern = re.compile(r'\b(python|py)\s*\{')
 
-        for match in re.finditer(master_pattern, self.source_code):
-            token_type = match.lastgroup
-            token_value = match.group()
-            column_number = match.start() - line_start + 1
+        while pos < len(self.source_code):
+            py_match = py_block_pattern.match(self.source_code, pos)
+            if py_match:
+                col_number = pos - line_start + 1
+                search_pos = py_match.end()
+                start_code = search_pos
+                brace_depth = 1
+                in_quote = None
+                while search_pos < len(self.source_code) and brace_depth > 0:
+                    ch = self.source_code[search_pos]
+                    if in_quote:
+                        if ch == '\\': search_pos += 2; continue
+                        elif self.source_code.startswith(in_quote, search_pos):
+                            search_pos += len(in_quote); in_quote = None; continue
+                    else:
+                        if self.source_code.startswith(('"""', "'''"), search_pos):
+                            in_quote = self.source_code[search_pos:search_pos+3]; search_pos += 3; continue
+                        elif ch in ('"', "'"): in_quote = ch
+                        elif ch == '{': brace_depth += 1
+                        elif ch == '}':
+                            brace_depth -= 1
+                            if brace_depth == 0: break
+                    search_pos += 1
+
+                raw_python_code = self.source_code[start_code:search_pos]
+                self.tokens.append(Token('PYTHON_BLOCK', raw_python_code, line_number, col_number))
+                newlines = self.source_code[pos:search_pos+1].count('\n')
+                line_number += newlines
+                if newlines > 0: line_start = self.source_code.rfind('\n', pos, search_pos+1) + 1
+                pos = search_pos + 1
+                continue
+
+            match = master_pattern.match(self.source_code, pos)
+            if not match: pos += 1; continue
+            token_type, token_value = match.lastgroup, match.group()
+            col_number = match.start() - line_start + 1
 
             if token_type == 'NEWLINE':
-                line_number += 1
-                line_start = match.end()
-                continue
+                line_number += 1; line_start = match.end(); pos = match.end(); continue
             elif token_type in ('WHITESPACE', 'COMMENT_LINE', 'COMMENT_BLOCK'):
                 if '\n' in token_value:
                     newlines = token_value.count('\n')
                     line_number += newlines
                     line_start = match.end() - len(token_value.split('\n')[-1])
-                continue
+                pos = match.end(); continue
             elif token_type == 'STRING':
                 if token_value.startswith(('"""', "'''")): token_value = token_value[3:-3]
                 elif token_value.startswith(('"', "'")): token_value = token_value[1:-1]
-                token_value = token_value.replace('\\n', '\n').replace('\\t', '\t').replace('\\"', '"').replace("\\'", "'")
-            elif token_type == 'MISMATCH':
-                continue
+                token_value = bytes(token_value, "utf-8").decode("unicode_escape", errors="ignore")
+            elif token_type == 'MISMATCH': pos = match.end(); continue
 
-            self.tokens.append(Token(token_type, token_value, line_number, column_number))
+            self.tokens.append(Token(token_type, token_value, line_number, col_number))
+            pos = match.end()
         return self.tokens
 
-# --- AST NODES ---
+# =========================================================
+# SECTION 3: AST NODE DEFINITIONS
+# =========================================================
 class ASTNode: pass
 class ProgramNode(ASTNode):
     def __init__(self, statements): self.statements = statements
 class CommandDefNode(ASTNode):
-    def __init__(self, name, body, line, col): self.name, self.body, self.line, self.col = name, body, line, col
+    def __init__(self, name, params, body, line, col): self.name, self.params, self.body, self.line, self.col = name, params, body, line, col
 class SlashDefNode(ASTNode):
-    def __init__(self, name, description, body, line, col): self.name, self.description, self.body, self.line, self.col = name, description, body, line, col
+    def __init__(self, name, description, params, body, line, col): self.name, self.description, self.params, self.body, self.line, self.col = name, description, params, body, line, col
 class EventDefNode(ASTNode):
     def __init__(self, event_name, parameters, body, line, col): self.event_name, self.parameters, self.body, self.line, self.col = event_name, parameters, body, line, col
+class FunctionDefNode(ASTNode):
+    def __init__(self, name, params, body, line, col): self.name, self.params, self.body, self.line, self.col = name, params, body, line, col
 class BlockNode(ASTNode):
     def __init__(self, statements): self.statements = statements
 class VarDeclNode(ASTNode):
     def __init__(self, name, initializer): self.name, self.initializer = name, initializer
+class AssignNode(ASTNode):
+    def __init__(self, target, value, op='='): self.target, self.value, self.op = target, value, op
 class ActionNode(ASTNode):
     def __init__(self, action_type, argument, line, col): self.action_type, self.argument, self.line, self.col = action_type, argument, line, col
 class IfNode(ASTNode):
     def __init__(self, condition, then_branch, else_branch=None): self.condition, self.then_branch, self.else_branch = condition, then_branch, else_branch
+class WhileNode(ASTNode):
+    def __init__(self, condition, body): self.condition, self.body = condition, body
+class ForNode(ASTNode):
+    def __init__(self, item_name, iterable, body): self.item_name, self.iterable, self.body = item_name, iterable, body
+class BreakNode(ASTNode): pass
+class ContinueNode(ASTNode): pass
+class ReturnNode(ASTNode):
+    def __init__(self, value=None): self.value = value
 class PythonBlockNode(ASTNode):
     def __init__(self, code_str, line, col): self.code_str, self.line, self.col = code_str, line, col
 class EmbedLiteralNode(ASTNode):
     def __init__(self, properties): self.properties = properties
+class ArrayLiteralNode(ASTNode):
+    def __init__(self, elements): self.elements = elements
+class DictLiteralNode(ASTNode):
+    def __init__(self, entries): self.entries = entries
 class BinaryOpNode(ASTNode):
     def __init__(self, left, operator, right): self.left, self.operator, self.right = left, operator, right
 class UnaryOpNode(ASTNode):
@@ -171,33 +224,31 @@ class CallNode(ASTNode):
     def __init__(self, callee, positional_args, keyword_args): self.callee, self.positional_args, self.keyword_args = callee, positional_args, keyword_args
 class MemberAccessNode(ASTNode):
     def __init__(self, target, member_name): self.target, self.member_name = target, member_name
+class IndexAccessNode(ASTNode):
+    def __init__(self, target, index_expr): self.target, self.index_expr = target, index_expr
 class LiteralNode(ASTNode):
     def __init__(self, value): self.value = value
 class IdentifierNode(ASTNode):
     def __init__(self, name): self.name = name
 
-# --- PARSER ---
+# =========================================================
+# SECTION 4: FULL PRATT / RECURSIVE DESCENT PARSER
+# =========================================================
 class Parser:
     def __init__(self, tokens): self.tokens, self.cursor = tokens, 0
-
     def peek(self, offset=0):
         pos = self.cursor + offset
         return self.tokens[pos] if pos < len(self.tokens) else Token('EOF', '', -1, -1)
-
     def consume(self, expected_type=None, expected_value=None):
         tok = self.peek()
-        if expected_type and tok.type != expected_type:
-            raise SyntaxError(f"Line {tok.line}:{tok.column} - Expected {expected_type}, got {tok.type} ({tok.value})")
-        if expected_value and tok.value != expected_value:
-            raise SyntaxError(f"Line {tok.line}:{tok.column} - Expected '{expected_value}', got '{tok.value}'")
+        if expected_type and tok.type != expected_type: raise SyntaxError(f"Line {tok.line}:{tok.column} - Expected {expected_type}, got {tok.type} ({repr(tok.value)})")
+        if expected_value and tok.value != expected_value: raise SyntaxError(f"Line {tok.line}:{tok.column} - Expected '{expected_value}', got '{tok.value}'")
         self.cursor += 1
         return tok
-
     def match(self, *expected_types):
         tok = self.peek()
         if tok.type in expected_types: self.cursor += 1; return tok
         return None
-
     def match_keyword(self, *keywords):
         tok = self.peek()
         if tok.type == 'KEYWORD' and tok.value in keywords: self.cursor += 1; return tok
@@ -205,66 +256,128 @@ class Parser:
 
     def parse(self):
         statements = []
-        while self.peek().type != 'EOF': statements.append(self.parse_top_level())
+        while self.peek().type != 'EOF':
+            if self.peek().type == 'SEMICOLON': self.consume(); continue
+            statements.append(self.parse_top_level())
         return ProgramNode(statements)
 
     def parse_top_level(self):
         tok = self.peek()
-        if tok.type == 'KEYWORD' and tok.value == 'command': return self.parse_command()
-        elif tok.type == 'KEYWORD' and tok.value == 'slash': return self.parse_slash()
-        elif tok.type == 'KEYWORD' and tok.value == 'on': return self.parse_event()
+        if tok.type == 'KEYWORD':
+            if tok.value == 'command': return self.parse_command()
+            elif tok.value == 'slash': return self.parse_slash()
+            elif tok.value == 'on': return self.parse_event()
+            elif tok.value in ('fn', 'func', 'function'): return self.parse_function()
         return self.parse_statement()
+
+    def parse_param_list(self):
+        params = []
+        if self.peek().type == 'LPAREN':
+            self.consume('LPAREN')
+            while self.peek().type not in ('RPAREN', 'EOF'):
+                p_name = self.consume_string_or_id()
+                default_val = None
+                if self.peek().type == 'EQUALS':
+                    self.consume('EQUALS')
+                    default_val = self.parse_expression()
+                params.append((p_name, default_val))
+                if self.peek().type == 'COMMA': self.consume('COMMA')
+            self.consume('RPAREN')
+        return params
 
     def parse_command(self):
         kw_tok = self.consume('KEYWORD', 'command')
         name_tok = self.consume_string_or_id()
+        params = self.parse_param_list()
         body = [self.parse_statement()] if self.peek().type == 'ARROW' and self.consume('ARROW') else self.parse_block()
-        return CommandDefNode(name_tok, body, kw_tok.line, kw_tok.column)
+        return CommandDefNode(name_tok, params, body, kw_tok.line, kw_tok.column)
 
     def parse_slash(self):
         kw_tok = self.consume('KEYWORD', 'slash')
         name_tok = self.consume_string_or_id()
         desc = self.consume('STRING').value if self.peek().type == 'STRING' else "Custom slash command"
+        params = self.parse_param_list()
         body = [self.parse_statement()] if self.peek().type == 'ARROW' and self.consume('ARROW') else self.parse_block()
-        return SlashDefNode(name_tok, desc, body, kw_tok.line, kw_tok.column)
+        return SlashDefNode(name_tok, desc, params, body, kw_tok.line, kw_tok.column)
 
     def parse_event(self):
         kw_tok = self.consume('KEYWORD', 'on')
         event_name = self.consume('IDENTIFIER').value
-        parameters = []
+        params = []
         if self.peek().type == 'LPAREN':
             self.consume('LPAREN')
             while self.peek().type not in ('RPAREN', 'EOF'):
-                parameters.append(self.consume('IDENTIFIER').value)
+                params.append(self.consume('IDENTIFIER').value)
                 if self.peek().type == 'COMMA': self.consume('COMMA')
             self.consume('RPAREN')
-        return EventDefNode(event_name, parameters, self.parse_block(), kw_tok.line, kw_tok.column)
+        return EventDefNode(event_name, params, self.parse_block(), kw_tok.line, kw_tok.column)
+
+    def parse_function(self):
+        kw_tok = self.consume()
+        fn_name = self.consume('IDENTIFIER').value
+        params = self.parse_param_list()
+        body = self.parse_block()
+        return FunctionDefNode(fn_name, params, body, kw_tok.line, kw_tok.column)
 
     def consume_string_or_id(self):
         tok = self.peek()
-        if tok.type in ('STRING', 'IDENTIFIER', 'KEYWORD'):
-            self.cursor += 1; return tok.value
+        if tok.type in ('STRING', 'IDENTIFIER', 'KEYWORD'): self.cursor += 1; return tok.value
         raise SyntaxError(f"Line {tok.line}:{tok.column} - Expected name, got {tok.type}")
 
     def parse_block(self):
         self.consume('LBRACE')
         stmts = []
-        while self.peek().type not in ('RBRACE', 'EOF'): stmts.append(self.parse_statement())
+        while self.peek().type not in ('RBRACE', 'EOF'):
+            if self.peek().type == 'SEMICOLON': self.consume(); continue
+            stmts.append(self.parse_statement())
         self.consume('RBRACE')
         return stmts
 
     def parse_statement(self):
         tok = self.peek()
+        if tok.type == 'PYTHON_BLOCK':
+            self.consume()
+            return PythonBlockNode(tok.value, tok.line, tok.column)
+
         if tok.type == 'KEYWORD':
             if tok.value in ('var', 'let'):
                 self.consume()
                 var_name = self.consume('IDENTIFIER').value
-                self.consume('EQUALS')
-                return VarDeclNode(var_name, self.parse_expression())
-            elif tok.value in ('python', 'py'): return self.parse_python()
+                initializer = LiteralNode(None)
+                if self.peek().type == 'EQUALS':
+                    self.consume('EQUALS')
+                    initializer = self.parse_expression()
+                return VarDeclNode(var_name, initializer)
+
+            elif tok.value in ('python', 'py'):
+                self.consume()
+                if self.peek().type == 'STRING':
+                    str_tok = self.consume('STRING')
+                    return PythonBlockNode(str_tok.value, str_tok.line, str_tok.column)
+
             elif tok.value in ('reply', 'send', 'kick', 'ban'):
                 action_kw = self.consume().value
                 return ActionNode(action_kw, self.parse_expression(), tok.line, tok.column)
+
+            elif tok.value == 'return':
+                self.consume()
+                if self.peek().type in ('RBRACE', 'EOF', 'SEMICOLON'): return ReturnNode(LiteralNode(None))
+                return ReturnNode(self.parse_expression())
+
+            elif tok.value == 'break': self.consume(); return BreakNode()
+            elif tok.value == 'continue': self.consume(); return ContinueNode()
+            elif tok.value == 'while':
+                self.consume()
+                cond = self.parse_expression()
+                body = self.parse_block()
+                return WhileNode(cond, body)
+            elif tok.value == 'for':
+                self.consume()
+                item_name = self.consume('IDENTIFIER').value
+                self.consume('KEYWORD', 'in')
+                iterable = self.parse_expression()
+                body = self.parse_block()
+                return ForNode(item_name, iterable, body)
             elif tok.value == 'if':
                 self.consume('KEYWORD', 'if')
                 cond = self.parse_expression()
@@ -273,24 +386,13 @@ class Parser:
                 if self.match_keyword('else'):
                     else_b = [self.parse_statement()] if self.peek().value == 'if' else self.parse_block()
                 return IfNode(cond, then_b, else_b)
-        return self.parse_expression()
 
-    def parse_python(self):
-        kw_tok = self.consume()
-        if self.peek().type == 'STRING':
-            return PythonBlockNode(self.consume('STRING').value, kw_tok.line, kw_tok.column)
-        elif self.peek().type == 'LBRACE':
-            self.consume('LBRACE')
-            captured, depth = [], 1
-            while depth > 0 and self.peek().type != 'EOF':
-                t = self.consume()
-                if t.type == 'LBRACE': depth += 1
-                elif t.type == 'RBRACE':
-                    depth -= 1
-                    if depth == 0: break
-                captured.append(t.value)
-            return PythonBlockNode(" ".join(captured), kw_tok.line, kw_tok.column)
-        raise SyntaxError(f"Line {kw_tok.line}:{kw_tok.column} - Expected Python code string or {{ block }}")
+        expr = self.parse_expression()
+        if self.peek().type in ('EQUALS', 'PLUSEQ', 'MINUSEQ'):
+            op_tok = self.consume()
+            val_expr = self.parse_expression()
+            return AssignNode(expr, val_expr, op_tok.value)
+        return expr
 
     def parse_embed(self):
         self.consume('KEYWORD', 'embed')
@@ -303,6 +405,15 @@ class Parser:
             if self.peek().type == 'COMMA': self.consume('COMMA')
         self.consume('RBRACE')
         return EmbedLiteralNode(props)
+
+    def parse_array_literal(self):
+        self.consume('LBRACKET')
+        elements = []
+        while self.peek().type not in ('RBRACKET', 'EOF'):
+            elements.append(self.parse_expression())
+            if self.peek().type == 'COMMA': self.consume('COMMA')
+        self.consume('RBRACKET')
+        return ArrayLiteralNode(elements)
 
     def parse_expression(self): return self.parse_logical_or()
 
@@ -353,15 +464,20 @@ class Parser:
     def parse_unary(self):
         op = self.match('BANG', 'MINUS') or self.match_keyword('not')
         if op: return UnaryOpNode(op.value, self.parse_unary())
-        return self.parse_call_and_member()
+        return self.parse_call_member_index()
 
-    def parse_call_and_member(self):
+    def parse_call_member_index(self):
         left = self.parse_primary()
         while True:
             if self.peek().type == 'DOT':
                 self.consume('DOT')
                 m = self.consume()
                 left = MemberAccessNode(left, m.value)
+            elif self.peek().type == 'LBRACKET':
+                self.consume('LBRACKET')
+                idx = self.parse_expression()
+                self.consume('RBRACKET')
+                left = IndexAccessNode(left, idx)
             elif self.peek().type == 'LPAREN':
                 self.consume('LPAREN')
                 pos_args, kw_args = [], {}
@@ -379,9 +495,12 @@ class Parser:
 
     def parse_primary(self):
         tok = self.peek()
+        if tok.type == 'PYTHON_BLOCK':
+            self.consume()
+            return PythonBlockNode(tok.value, tok.line, tok.column)
+
         if tok.type == 'KEYWORD':
             if tok.value == 'embed': return self.parse_embed()
-            if tok.value in ('python', 'py'): return self.parse_python()
             if tok.value in ('true', 'false'): return LiteralNode(self.consume().value == 'true')
             if tok.value in ('null', 'none'): self.consume(); return LiteralNode(None)
         if tok.type == 'STRING': return LiteralNode(self.consume('STRING').value)
@@ -389,6 +508,7 @@ class Parser:
         if tok.type == 'FLOAT_NUMBER': return LiteralNode(float(self.consume('FLOAT_NUMBER').value))
         if tok.type == 'INT_NUMBER': return LiteralNode(int(self.consume('INT_NUMBER').value))
         if tok.type in ('IDENTIFIER', 'KEYWORD'): return IdentifierNode(self.consume().value)
+        if tok.type == 'LBRACKET': return self.parse_array_literal()
         if tok.type == 'LPAREN':
             self.consume('LPAREN')
             expr = self.parse_expression()
@@ -396,7 +516,24 @@ class Parser:
             return expr
         raise SyntaxError(f"Line {tok.line}:{tok.column} - Unexpected token in expression: {tok}")
 
-# --- RUNTIME SCOPES ---
+class UserFunction:
+    def __init__(self, name, params, body, closure_scope, interpreter):
+        self.name, self.params, self.body = name, params, body
+        self.closure_scope, self.interpreter = closure_scope, interpreter
+
+    async def __call__(self, *args, **kwargs):
+        call_scope = self.closure_scope.spawn_child()
+        for idx, (p_name, default_expr) in enumerate(self.params):
+            if idx < len(args): call_scope.set(p_name, args[idx])
+            elif p_name in kwargs: call_scope.set(p_name, kwargs[p_name])
+            elif default_expr is not None:
+                default_val = await self.interpreter.eval(default_expr, call_scope)
+                call_scope.set(p_name, default_val)
+            else: call_scope.set(p_name, None)
+        try:
+            return await self.interpreter.eval_statements(self.body, call_scope)
+        except ReturnSignal as ret: return ret.value
+
 class ScopeFrame:
     def __init__(self, parent=None):
         self.bindings = {}
@@ -405,6 +542,10 @@ class ScopeFrame:
         if name in self.bindings: return self.bindings[name]
         return self.parent.get(name, default) if self.parent else default
     def set(self, name, value): self.bindings[name] = value
+    def assign(self, name, value):
+        if name in self.bindings: self.bindings[name] = value; return True
+        if self.parent and self.parent.assign(name, value): return True
+        self.bindings[name] = value; return True
     def spawn_child(self): return ScopeFrame(parent=self)
 
 class Interpreter:
@@ -418,10 +559,55 @@ class Interpreter:
         elif isinstance(node, IdentifierNode):
             val = scope.get(node.name)
             return val if val is not None else getattr(discord, node.name, None)
+        elif isinstance(node, ArrayLiteralNode): return [await self.eval(el, scope) for el in node.elements]
+        elif isinstance(node, DictLiteralNode): return {k: await self.eval(v, scope) for k, v in node.entries.items()}
         elif isinstance(node, VarDeclNode):
             val = await self.eval(node.initializer, scope)
             scope.set(node.name, val)
             return val
+        elif isinstance(node, FunctionDefNode):
+            fn_obj = UserFunction(node.name, node.params, node.body, scope, self)
+            scope.set(node.name, fn_obj)
+            return fn_obj
+        elif isinstance(node, AssignNode):
+            val = await self.eval(node.value, scope)
+            if isinstance(node.target, IdentifierNode):
+                if node.op == '+=': val = scope.get(node.target.name, 0) + val
+                elif node.op == '-=': val = scope.get(node.target.name, 0) - val
+                scope.assign(node.target.name, val)
+            elif isinstance(node.target, IndexAccessNode):
+                tgt = await self.eval(node.target.target, scope)
+                idx = await self.eval(node.target.index_expr, scope)
+                if node.op == '+=': val = tgt[idx] + val
+                elif node.op == '-=': val = tgt[idx] - val
+                tgt[idx] = val
+            elif isinstance(node.target, MemberAccessNode):
+                tgt = await self.eval(node.target.target, scope)
+                if isinstance(tgt, dict): tgt[node.target.member_name] = val
+                else: setattr(tgt, node.target.member_name, val)
+            return val
+        elif isinstance(node, ReturnNode):
+            val = await self.eval(node.value, scope) if node.value else None
+            raise ReturnSignal(val)
+        elif isinstance(node, BreakNode): raise BreakSignal()
+        elif isinstance(node, ContinueNode): raise ContinueSignal()
+        elif isinstance(node, WhileNode):
+            res = None
+            while await self.eval(node.condition, scope):
+                try: res = await self.eval_statements(node.body, scope.spawn_child())
+                except BreakSignal: break
+                except ContinueSignal: continue
+            return res
+        elif isinstance(node, ForNode):
+            res = None
+            iterable = await self.eval(node.iterable, scope)
+            for item in iterable:
+                loop_scope = scope.spawn_child()
+                loop_scope.set(node.item_name, item)
+                try: res = await self.eval_statements(node.body, loop_scope)
+                except BreakSignal: break
+                except ContinueSignal: continue
+            return res
         elif isinstance(node, MemberAccessNode):
             obj = await self.eval(node.target, scope)
             m = node.member_name
@@ -432,19 +618,44 @@ class Interpreter:
                 elif m == 'upper': return lambda: obj.upper()
                 elif m == 'lower': return lambda: obj.lower()
                 elif m == 'length': return len(obj)
+                elif m == 'split': return lambda sep=" ": obj.split(sep)
+                elif m == 'replace': return lambda old, new: obj.replace(old, new)
+                elif m in ('strip', 'trim'): return lambda: obj.strip()
+            elif isinstance(obj, list):
+                if m in ('append', 'push'): return lambda val: obj.append(val)
+                elif m == 'remove': return lambda val: obj.remove(val) if val in obj else None
+                elif m == 'pop': return lambda idx=-1: obj.pop(idx)
+                elif m == 'clear': return lambda: obj.clear()
+                elif m == 'contains': return lambda val: val in obj
+                elif m == 'length': return len(obj)
+                elif m == 'join': return lambda sep=" ": sep.join(str(x) for x in obj)
+            elif isinstance(obj, dict):
+                if m in obj: return obj[m]
+                if m == 'get': return lambda k, d=None: obj.get(k, d)
+                elif m == 'contains': return lambda k: k in obj
+                elif m in ('remove', 'delete'): return lambda k: obj.pop(k, None)
+                elif m == 'length': return len(obj)
             return getattr(obj, m)
+        elif isinstance(node, IndexAccessNode):
+            tgt = await self.eval(node.target, scope)
+            idx = await self.eval(node.index_expr, scope)
+            return tgt[idx]
         elif isinstance(node, CallNode):
             func = await self.eval(node.callee, scope)
             pos_args = [await self.eval(a, scope) for a in node.positional_args]
             kw_args = {k: await self.eval(v, scope) for k, v in node.keyword_args.items()}
-            if inspect.iscoroutinefunction(func): return await func(*pos_args, **kw_args)
+            if isinstance(func, UserFunction): return await func(*pos_args, **kw_args)
+            elif inspect.iscoroutinefunction(func): return await func(*pos_args, **kw_args)
             elif callable(func):
                 res = func(*pos_args, **kw_args)
                 return await res if inspect.isawaitable(res) else res
             raise TypeError(f"Object {repr(func)} is not callable.")
         elif isinstance(node, BinaryOpNode):
             l, r, op = await self.eval(node.left, scope), await self.eval(node.right, scope), node.operator
-            if op == '+': return l + r
+            if op == '+':
+                if isinstance(l, str) or isinstance(r, str): return str(l) + str(r)
+                if isinstance(l, list) and isinstance(r, list): return l + r
+                return l + r
             elif op == '-': return l - r
             elif op == '*': return l * r
             elif op == '/': return l / r
@@ -479,20 +690,34 @@ class Interpreter:
                 kwargs[k] = discord.Color(val) if k == 'color' and isinstance(val, int) else val
             return discord.Embed(**kwargs)
         elif isinstance(node, PythonBlockNode):
+            clean_code = textwrap.dedent(node.code_str)
+            indented = "\n".join("    " + line for line in clean_code.splitlines())
+
+            curr_s = scope
+            scope_vars = {}
+            while curr_s:
+                for k, v in curr_s.bindings.items():
+                    if k not in scope_vars: scope_vars[k] = v
+                curr_s = curr_s.parent
+
             py_scope = {
-                "discord": discord, "bot": self.bot,
+                "discord": discord, "commands": commands, "bot": self.bot,
                 "ctx": scope.get("ctx"), "interaction": scope.get("interaction"),
                 "author": scope.get("author") or scope.get("user"),
                 "guild": scope.get("guild"), "channel": scope.get("channel"),
-                "db": self.database,
+                "db": self.database, "scope": scope,
                 "reply": lambda a: scope.get('reply_fn')(a),
                 "send": lambda a: scope.get('send_fn')(a),
                 "os": __import__("os"), "sys": __import__("sys"),
                 "subprocess": __import__("subprocess"), "json": __import__("json"),
-                "math": math, "time": time, "datetime": datetime, "asyncio": asyncio
+                "math": math, "time": time, "datetime": datetime,
+                "dt": dt, "timezone": timezone, "timedelta": timedelta, "asyncio": asyncio
             }
-            exec("async def __run_python_script():\n" + "\n".join(f"    {l}" for l in node.code_str.splitlines()), py_scope)
+            py_scope.update(scope_vars)
+
+            exec("async def __run_python_script():\n" + indented, py_scope)
             return await py_scope["__run_python_script"]()
+
         elif isinstance(node, list): return await self.eval_statements(node, scope)
 
     async def eval_statements(self, statements, scope):
@@ -500,20 +725,39 @@ class Interpreter:
         for s in statements: res = await self.eval(s, scope)
         return res
 
+    def init_global_scope(self):
+        scope = ScopeFrame()
+        scope.set("discord", discord)
+        scope.set("commands", commands)
+        scope.set("bot", self.bot)
+        scope.set("db", self.database)
+        scope.set("len", lambda x: len(x))
+        scope.set("length", lambda x: len(x))
+        scope.set("list", lambda x=None: list(x) if x is not None else [])
+        scope.set("range", lambda *args: list(range(*args)))
+        scope.set("str", lambda x: str(x))
+        scope.set("int", lambda x: int(x))
+        scope.set("float", lambda x: float(x))
+        scope.set("bool", lambda x: bool(x))
+        scope.set("print", lambda *args: print(*args))
+        scope.set("min", min)
+        scope.set("max", max)
+        scope.set("abs", abs)
+        scope.set("round", round)
+        return scope
+
     async def register_ast(self, program_ast):
-        global_scope = ScopeFrame()
-        global_scope.set("discord", discord)
-        global_scope.set("bot", self.bot)
-        global_scope.set("db", self.database)
-
+        global_scope = self.init_global_scope()
         for stmt in program_ast.statements:
-            if isinstance(stmt, CommandDefNode): self._bind_command(stmt.name, stmt.body, global_scope)
-            elif isinstance(stmt, SlashDefNode): self._bind_slash(stmt.name, stmt.description, stmt.body, global_scope)
+            if isinstance(stmt, CommandDefNode): self._bind_command(stmt.name, stmt.params, stmt.body, global_scope)
+            elif isinstance(stmt, SlashDefNode): self._bind_slash(stmt.name, stmt.description, stmt.params, stmt.body, global_scope)
             elif isinstance(stmt, EventDefNode): self._bind_event(stmt.event_name, stmt.parameters, stmt.body, global_scope)
+            elif isinstance(stmt, FunctionDefNode): await self.eval(stmt, global_scope)
+            else: await self.eval(stmt, global_scope)
 
-    def _bind_command(self, cmd_name, cmd_body, global_scope):
+    def _bind_command(self, cmd_name, params, cmd_body, global_scope):
         @self.bot.command(name=cmd_name)
-        async def _dispatched_command(ctx):
+        async def _dispatched_command(ctx, *args):
             ch_name = getattr(ctx.channel, 'name', 'DirectMessage')
             async def safe_reply(msg):
                 try:
@@ -534,10 +778,18 @@ class Interpreter:
             s.set("author", ctx.author)
             s.set("guild", ctx.guild)
             s.set("channel", ctx.channel)
-            print(f"📩 [COMMAND EXECUTED] !{cmd_name} by {ctx.author} in #{ch_name}")
-            await self.eval(cmd_body, s)
+            s.set("args", list(args))
 
-    def _bind_slash(self, s_name, s_desc, s_body, global_scope):
+            for idx, (p_name, default_expr) in enumerate(params):
+                if idx < len(args): s.set(p_name, args[idx])
+                elif default_expr is not None: s.set(p_name, await self.eval(default_expr, s))
+                else: s.set(p_name, None)
+
+            print(f"📩 [COMMAND EXECUTED] !{cmd_name} by {ctx.author} in #{ch_name}")
+            try: await self.eval(cmd_body, s)
+            except ReturnSignal: pass
+
+    def _bind_slash(self, s_name, s_desc, params, s_body, global_scope):
         @self.bot.tree.command(name=s_name, description=s_desc)
         async def _dispatched_slash(interaction: discord.Interaction):
             ch_name = getattr(interaction.channel, 'name', 'DirectMessage')
@@ -557,7 +809,8 @@ class Interpreter:
             s.set("guild", interaction.guild)
             s.set("channel", interaction.channel)
             print(f"⚡ [SLASH EXECUTED] /{s_name} by {interaction.user}")
-            await self.eval(s_body, s)
+            try: await self.eval(s_body, s)
+            except ReturnSignal: pass
 
     def _bind_event(self, evt_name, params, body, global_scope):
         async def _event_handler(*args):
@@ -568,24 +821,24 @@ class Interpreter:
                     return await args[0].reply(embed=m if isinstance(m, discord.Embed) else None, content=None if isinstance(m, discord.Embed) else str(m))
                 s.set("reply_fn", safe_evt_reply)
                 s.set("send_fn", safe_evt_reply)
-            await self.eval(body, s)
+            try: await self.eval(body, s)
+            except ReturnSignal: pass
 
         if evt_name == 'message': self.user_events['message'] = _event_handler
         else: setattr(self.bot, f"on_{evt_name}", _event_handler)
 
-# --- BOT LIFECYCLE ---
 class DSCDiscordBot(commands.Bot):
     def __init__(self, prefix, program_ast):
         super().__init__(command_prefix=prefix, intents=discord.Intents.all(), help_command=None, case_insensitive=True)
         self.program_ast, self.interpreter = program_ast, Interpreter(self)
 
     async def setup_hook(self):
-        print("⚙️ Initializing DSC Runtime...")
+        print("⚙️ Initializing Full DSCB Runtime...")
         await self.interpreter.register_ast(self.program_ast)
         print("✅ AST registration complete!")
 
     async def on_ready(self):
-        print(f"✨ DSC Engine Active! Logged in as {self.user}")
+        print(f"✨ DSCB Engine Active! Logged in as {self.user}")
         asyncio.create_task(self.sync_application_tree())
 
     async def sync_application_tree(self):
@@ -610,7 +863,7 @@ class DSCDiscordBot(commands.Bot):
         traceback.print_exception(type(error), error, error.__traceback__)
 
 def main():
-    cli_parser = argparse.ArgumentParser(description="DSC: A Discord bot scripting language and runtime")
+    cli_parser = argparse.ArgumentParser(description="DSCB: A custom Discord bot scripting language and runtime")
     cli_parser.add_argument("file", help="Path to .dsc script file (e.g., bot.dsc)")
     cli_parser.add_argument("-t", "--token", help="Discord Bot Token")
     cli_parser.add_argument("-p", "--prefix", default="$", help="Command prefix (default: $)")
@@ -627,7 +880,7 @@ def main():
 
     with open(arguments.file, "r", encoding="utf-8") as source_file: source_code = source_file.read()
 
-    print("🔨 Compiling DSC source code...")
+    print("🔨 Compiling DSCB source code...")
     tokens = Lexer(source_code).tokenize()
     program_ast = Parser(tokens).parse()
     print("✅ Compilation successful! Starting Discord Client...")
