@@ -1,6 +1,6 @@
 pkgbase = ironclaw-bin
 	pkgdesc = IronClaw is an Agent OS focused on privacy, security and extensibility
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/nearai/ironclaw
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = ironclaw-bin
 	license = Apache-2.0
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/nearai/ironclaw/releases/download/ironclaw-v1.1.0/ironclaw-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 408920826755cc996dec4abc755d03d151144bea2fdbb2aecb7c36db0f2a5455
-	source_aarch64 = https://github.com/nearai/ironclaw/releases/download/ironclaw-v1.1.0/ironclaw-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = e6693cc3e752a9a580bc4525474b6a97dc52413cb4c9779a0239e87ac6539203
+	source_x86_64 = https://github.com/nearai/ironclaw/releases/download/ironclaw-v1.2.0/ironclaw-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 81feea64c17c79228b6b582934011ba96349cbd1c7ecd522780127400b6739e8
+	source_aarch64 = https://github.com/nearai/ironclaw/releases/download/ironclaw-v1.2.0/ironclaw-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = b406203faf462d27276127a2faa11ae0f1d55e00e3b8dd18832d65460c328453
 
 pkgname = ironclaw-bin
