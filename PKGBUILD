@@ -3,7 +3,7 @@
 pkgname=grokbot-linux-port
 pkgver=0.20.0
 pkgrel=1
-pkgdesc="Grok Bot desktop: wine-less Linux port"
+pkgdesc="Grok Bot desktop — wine-less Linux port (fuses win32 NSIS payload with Electron 42.1.0)"
 arch=('x86_64')
 url="https://github.com/Nichokas/grokbot-linux-port"
 license=('custom')
@@ -42,16 +42,19 @@ build() {
       local probe_dir
       probe_dir="$(mktemp -d)"
       tar -xzf "${tarball}" -C "${probe_dir}" 2>/dev/null || true
-      local nodes
-      nodes="$(find "${probe_dir}" -name '*.node' -print 2>/dev/null | head -n 20)"
-      if [[ -n "${nodes}" ]]; then
-        # Best-effort: detect PE/MZ header leftovers from win32 build (vs ELF)
-        if grep -q "MZ" <<<"$(head -c 2 "${probe_dir}"/Grok_Bot_*/resources/app.asar.unpacked/**/*.node 2>/dev/null | head -c 10 || true)"; then
-          echo "error: native .node modules appear to be win32 binaries — @electron/rebuild likely failed" >&2
-          echo "hint: re-run with GROKBOT_ALLOW_BROKEN_NATIVE=1 makepkg -si to bypass, or fix the rebuild toolchain" >&2
-          rm -rf "${probe_dir}"
-          exit 1
-        fi
+      # Fail if any Linux-loadable .node is still a Windows PE. Exemptions
+      # match port.sh: win32 prebuild dirs and napi-rs *.win32-*.node files
+      # are dead code on Linux (loaders filter them by platform).
+      local mz_live
+      mz_live="$(find "${probe_dir}" -name '*.node' -type f -exec sh -c \
+        'head -c 2 "$1" | grep -q MZ && printf "%s\n" "$1"' _ {} \; 2>/dev/null \
+        | grep -v -e '/prebuilds/win32-' -e '\.win32-[^/]*\.node$' || true)"
+      if [[ -n "${mz_live}" ]]; then
+        echo "error: loadable native .node modules appear to be win32 binaries — @electron/rebuild likely failed:" >&2
+        printf '%s\n' "${mz_live}" | head -n 10 >&2
+        echo "hint: re-run with GROKBOT_ALLOW_BROKEN_NATIVE=1 makepkg -si to bypass, or fix the rebuild toolchain" >&2
+        rm -rf "${probe_dir}"
+        exit 1
       fi
       rm -rf "${probe_dir}"
     fi
@@ -78,10 +81,15 @@ package() {
     exit 1
   fi
 
+  # Tarballs produced by older port.sh kept NSIS restrictive modes
+  # (drwx------ on app.asar.unpacked). cp -a preserves them; normalise so the
+  # installed tree is readable by the invoking user, not only root.
+  chmod -R u+rwX,go+rX,go-w "${staged}"
+
   install -dm755 "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin" \
-    "${pkgdir}/usr/share/applications" \
-    "${pkgdir}/usr/share/icons/hicolor/256x256/apps" \
-    "${pkgdir}/usr/share/licenses/${pkgname}"
+                 "${pkgdir}/usr/share/applications" \
+                 "${pkgdir}/usr/share/icons/hicolor/256x256/apps" \
+                 "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cp -a "${staged}/." "${pkgdir}/opt/${pkgname}/"
   chmod +x "${pkgdir}/opt/${pkgname}/grok-bot"
@@ -91,7 +99,7 @@ package() {
   ln -s "/opt/${pkgname}/grok-bot" "${pkgdir}/usr/bin/grokbot"
 
   # Desktop entry — use --no-sandbox only as fallback; the wrapper prefers sandbox when available
-  cat >"${pkgdir}/usr/share/applications/grok-bot.desktop" <<DESKTOP
+  cat > "${pkgdir}/usr/share/applications/grok-bot.desktop" <<DESKTOP
 [Desktop Entry]
 Name=Grok Bot
 GenericName=Grok Bot
@@ -110,11 +118,9 @@ DESKTOP
   for cand in \
     "${staged}/resources/app.asar.unpacked/dist/renderer/assets/app-icon-"*.png \
     "${staged}/resources/app.asar.unpacked/"*.png \
-    "${staged}/grok-bot.png"; do
-    [[ -f "${cand}" ]] && {
-      icon="${cand}"
-      break
-    }
+    "${staged}/grok-bot.png" \
+  ; do
+    [[ -f "${cand}" ]] && { icon="${cand}"; break; }
   done
   if [[ -z "${icon}" ]]; then
     icon="$(find "${staged}" -name 'app-icon*.png' -print -quit 2>/dev/null || true)"
@@ -124,7 +130,7 @@ DESKTOP
   fi
 
   # License placeholder — upstream EULA is inside app.asar; point there
-  cat >"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<LICENSE
+  cat > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<LICENSE
 Grok Bot is proprietary software. This AUR package redistributes no upstream
 binary itself in the -bin variant it fetches the official Windows distribution
 at build time (non-bin) or the prebuilt Linux tarball produced by

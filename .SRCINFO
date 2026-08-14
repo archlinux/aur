@@ -1,5 +1,5 @@
 pkgbase = grokbot-linux-port
-	pkgdesc = Grok Bot desktop: wine-less Linux port
+	pkgdesc = Grok Bot desktop — wine-less Linux port (fuses win32 NSIS payload with Electron 42.1.0)
 	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/Nichokas/grokbot-linux-port
