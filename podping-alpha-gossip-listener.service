@@ -1,6 +1,6 @@
 [Unit]
 Description=Podping Alpha Gossip Listener
-Documentation=https://github.com/Podcastindex-org/podping.alpha/tree/master/gossip-listener
+Documentation=https://github.com/Podcastindex-org/podping-gossipwatcher
 Wants=network-online.target
 After=network-online.target
 

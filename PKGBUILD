@@ -1,14 +1,14 @@
 # Maintainer: HeyCitizen <HeyCitizen@HeyCitizen.xyz>
 
 pkgname=podping-alpha-gossip-listener-git
-_pkgname=podping.alpha
-pkgver=r112.7facd0b
-pkgrel=3
+_pkgname=podping-gossipwatcher
+pkgver=r14.ea84450
+pkgrel=1
 pkgdesc="Decentralized podcast feed notification listener"
 arch=("x86_64" "aarch64")
-url="https://github.com/Podcastindex-org/podping.alpha"
+url="https://github.com/Podcastindex-org/podping-gossipwatcher"
 license=("MIT")
-depends=("gcc-libs" "glibc" "openssl")
+depends=("gcc-libs" "glibc")
 makedepends=("cargo" "gcc" "git")
 backup=("etc/conf.d/podping-alpha-gossip-listener")
 install="podping-alpha-gossip-listener.install"
@@ -47,13 +47,13 @@ _set_rust_linker() {
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}/gossip-listener"
+    cd "${srcdir}/${_pkgname}"
     _set_rust_linker
     cargo build --release
 }
 
 check() {
-    cd "${srcdir}/${_pkgname}/gossip-listener"
+    cd "${srcdir}/${_pkgname}"
     _set_rust_linker
     cargo check --release
 }
@@ -61,10 +61,12 @@ check() {
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    install -Dm755 "gossip-listener/target/release/gossip-listener" \
+    # Upstream renamed the crate and binary to podping-gossipwatcher; the
+    # installed name stays gossip-listener so the existing unit keeps working.
+    install -Dm755 "target/release/podping-gossipwatcher" \
         "${pkgdir}/usr/bin/gossip-listener"
 
-    install -Dm644 "gossip-listener/README.md" \
+    install -Dm644 "README.md" \
         "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
     install -Dm644 "LICENSE" \
