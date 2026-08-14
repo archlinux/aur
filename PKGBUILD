@@ -2,7 +2,7 @@
 
 _pkgname="ymir-emu"
 pkgname="$_pkgname-git"
-pkgver=0.3.3.r179.g2f135da
+pkgver=0.3.3.r311.g3e3e781
 pkgrel=1
 pkgdesc="Sega Saturn emulator"
 url="https://github.com/StrikerX3/Ymir"
@@ -10,21 +10,30 @@ license=('GPL-3.0-only')
 arch=('x86_64')
 
 depends=(
-  'librtmidi.so' # rtmidi
-  'miniz'
-  'sdl3'
+  libcurl.so
+  liblz4.so
+  librtmidi.so
+  libzstd.so
+  miniz
+  sdl3
 )
 makedepends=(
-  'cereal'
-  'chrono-date'
-  'cmake'
-  'cxxopts'
-  'git'
-  'libngtcp2'
-  'ninja'
-  'nlohmann-json'
-  'stb'
-  'tomlplusplus'
+  cmake
+  git
+  ninja
+
+  cereal
+  chrono-date
+  cxxopts
+  libngtcp2
+  nlohmann-json
+  tomlplusplus
+
+  # vulkan backend, unimplemented
+  directx-shader-compiler
+  spirv-tools
+  vulkan-headers
+  vulkan-icd-loader
 )
 
 provides=("$_pkgname")
@@ -33,12 +42,12 @@ conflicts=("$_pkgname")
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+$url.git"
-  "neargye-semver"::"git+https://github.com/Neargye/semver.git#tag=v1.0.0"
+  "neargye-semver"::"git+https://github.com/Neargye/semver.git#tag=v1.0.1"
   '0001_fix_for_semver_1.0.0.patch'
 )
 sha256sums=(
   'SKIP'
-  '83de76116a904754b906fff4628e81a724a8dcde6ee10a84b990a0798f82e911'
+  '16f7b5086b6223bf0aa057f198b77fe50672f279869f0914fddf53c1439319f0'
   '08b47f2a3f149b144908febe4ffda18f24419494011b1a72ee584a9396993f0d'
 )
 
@@ -90,9 +99,6 @@ END
   # don't force libzstd_static
   sed -E -e 's&(zstd::libzstd)_static\b&\1&' \
     -i vendor/libchdr/CMakeLists.txt
-
-  # fix type mismatch
-  sed -E -e '/m_m68kClockShift = std::min/s&4ull&uint64{4}&' -i libs/ymir-core/include/ymir/hw/scsp/scsp.hpp
 
   # use system lz4
   sed -E -e '/lz4/d' -i vendor/CMakeLists.txt
@@ -163,7 +169,7 @@ build() {
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -Wno-dev
+    -Wno-author
 
     -DYmir_ENABLE_DEVLOG=OFF
     -DYmir_ENABLE_IMGUI_DEMO=OFF
@@ -178,8 +184,6 @@ build() {
     # extra binaries
     -DYmir_ENABLE_SANDBOX=OFF
     -DYmir_ENABLE_YMDASM=OFF
-
-    -DStb_INCLUDE_DIR=/usr/include/stb
   )
 
   # Edit /etc/makepkg.conf to enable AVX2
@@ -220,6 +224,7 @@ Comment=$_pkgdesc
 Exec=$_pkgname
 Icon=$_pkgname
 StartupWMClass=$_pkgname
+Terminal=false
 Categories=Game;Emulator;
 END
 }
