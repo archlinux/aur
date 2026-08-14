@@ -1,6 +1,5 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=livechess-bin
-_pkgname=livechess
 pkgver=2.2
 pkgrel=1
 pkgdesc="DGT LiveChess software for DGT e-Boards"
@@ -8,26 +7,25 @@ arch=('x86_64')
 url="https://www.livechesscloud.com/software/"
 license=('custom')
 depends=('alsa-lib' 'cairo' 'fontconfig' 'freetype2' 'gcc-libs' 'gdk-pixbuf2' 'glib2'
-         'gtk3' 'nspr' 'nss' 'pango' 'libdrm' 'libx11' 'libxcb' 'libxcomposite'
-         'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr'
-         'libxrender' 'libxss' 'libxtst' 'util-linux-libs')
+         'gtk2' 'libxi' 'libxrender' 'libxtst' 'libx11' 'libxext' 'pango')
 provides=('livechess')
 conflicts=('livechess')
 options=('!strip')
+noextract=("DGT-LiveChess-${pkgver}-x86_64.deb")
 source=("https://download.livechesscloud.com/installer/${pkgver}/DGT-LiveChess-${pkgver}-x86_64.deb")
-sha256sums=('SKIP')
+sha256sums=('456abb65819bdb56cf0918b523b32cf3ea53a3c5ba6be933e666895279ecfe2f')
+
+prepare() {
+  bsdtar xf "DGT-LiveChess-${pkgver}-x86_64.deb"
+}
 
 package() {
-  # extract .deb contents
-  bsdtar -xf "${srcdir}/DGT-LiveChess-${pkgver}-x86_64.deb" -C "${srcdir}"
-  bsdtar -xf "${srcdir}/data.tar.xz" -C "${pkgdir}"
+  bsdtar xf data.tar.xz -C "${pkgdir}"
 
-  # fix permissions
   find "${pkgdir}" -type d -exec chmod 755 {} +
 
-  # install license if available
-  if [ -d "${pkgdir}/usr/share/doc/DGT-LiveChess" ]; then
+  if [ -f "${pkgdir}/usr/share/doc/DGT-LiveChess/copyright" ]; then
     install -Dm644 "${pkgdir}/usr/share/doc/DGT-LiveChess/copyright" \
-      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 2>/dev/null || true
+      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
 }
