@@ -1,0 +1,5 @@
+[tget-bin]
+source = "github"
+github = "sweetbbak/tget"
+use_latest_release = true
+prefix = "v"
