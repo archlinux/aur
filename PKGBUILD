@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A terminal text editor IDE"
 
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ optdepends=('git: Source Control Features' 'ripgrep: Workspace Search')
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_gitauthor}/${_gitname}/archive/${_gitversion}.tar.gz")
-sha256sums=('22114fceeaaf74c14bc18c9f8187ad6ae25299a78902484161e10d37c3c1cf60')
+sha256sums=('ce5303900065865a5ddb6261eee53817fc7e6581c3f94cadb107953c3d105006')
 
 
 prepare() {
