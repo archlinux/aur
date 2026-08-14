@@ -3,16 +3,36 @@
 
 pkgname=vegastrike-engine
 pkgver=0.9.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A spaceflight simulator in massive universe"
 arch=(x86_64)
 url="https://www.vega-strike.org/"
 license=(GPL-3.0-or-later)
-depends=(boost-libs python freeglut gtk3 libvorbis openal sdl2 glu
-
-         # namcap implicit depends
-         glibc gcc-libs glib2 zlib libpng libglvnd expat libjpeg-turbo)
-makedepends=(git cmake boost gtest)
+depends=(
+    boost-libs
+    expat
+    freeglut
+    glib2
+    glibc
+    glu
+    gtk3
+    libgcc
+    libglvnd
+    libjpeg-turbo
+    libpng
+    libstdc++
+    libvorbis
+    openal
+    python
+    sdl2
+    zlib
+    )
+makedepends=(
+    git
+    cmake
+    boost
+    #gtest
+    )
 source=("git+https://github.com/vegastrike/Vega-Strike-Engine-Source#tag=v${pkgver}"
         vegastrike-engine-boost-1.89.patch
 		vegastrike-engine-Add-missing-header.patch)
@@ -24,9 +44,16 @@ prepare() {
   cd Vega-Strike-Engine-Source
   patch -Np1 -i ../vegastrike-engine-Add-missing-header.patch
   patch -Np1 -i ../vegastrike-engine-boost-1.89.patch # remove boost_system
+
+  cd engine
+  sed -i 's|FIND_PACKAGE(Python3 3.6...<3.14|FIND_PACKAGE(Python3 3.7...<3.15|g' CMakeLists.txt
 }
 
 build(){
+  # Disable all warnings
+  export CFLAGS+=" -w"
+  export CXXFLAGS+=" -w"
+
   # buildtype None, enable ffmpeg, ogre will fail, not supported
   # https://github.com/vegastrike/Vega-Strike-Engine-Source/issues/777#issuecomment-1763235378
 
@@ -36,7 +63,7 @@ build(){
 	-DENABLE_PIE=ON
   )
 
-  cmake -B build -S "Vega-Strike-Engine-Source/engine" -Wno-dev \
+  cmake -B build -S "Vega-Strike-Engine-Source/engine" -Wno-author \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
