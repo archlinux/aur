@@ -5,11 +5,11 @@
 
 pkgname=gauche
 pkgver=0.9.15
-pkgrel=3
+pkgrel=4
 url='https://practical-scheme.net/gauche/'
 arch=(x86_64)
 pkgdesc='R7RS Scheme implementation (includes gosh)'
-depends=(libatomic_ops libxcrypt slib mbedtls)
+depends=(libatomic_ops libxcrypt slib)
 optdepends=(gdbm)
 makedepends=()
 license=(BSD)
@@ -21,7 +21,7 @@ build() {
   cd Gauche-$pkgver
   BUILD_GOSH=/usr/bin/gosh
   CFLAGS+=' -ffat-lto-objects -w'
-  ./configure --prefix=/usr --with-slib=/usr/share/slib --with-tls=mbedtls
+  ./configure --prefix=/usr --with-slib=/usr/share/slib --with-tls=mbedtls-internal
   make
 
   # Make sure the catalog file for slib is created.
