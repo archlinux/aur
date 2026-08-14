@@ -1,13 +1,13 @@
 # Maintainer: M1829 <m1829js@gmail.com>
 pkgname=mxset
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An optimized hashset in GNU C99, using a SwissTable style open-addressing architecture.'
 arch=('x86_64' 'i686' 'aarch64')
 url='https://codeberg.org/Muhamix/mxset'
 license=('LGPL-3.0-or-later')
 source=("$pkgname-$pkgver::https://codeberg.org/Muhamix/mxset/archive/v$pkgver.tar.gz")
-sha256sums=('a44e5cad1c043bd1a29d7c7819997b0afd2ee22352f011631bcfd82c66b5111c')
+sha256sums=('84153103472302054a8e7f9583877be528e153eb91b99c671541b1faaa3183b4')
 options=('staticlibs')
 conflicts=('mxset-cpp')
 
