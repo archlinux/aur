@@ -2,28 +2,28 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Kurt Marasco <celilo _at_ lavabit _dot_ com>
 # Contributor: Pascal Ernster <aur at hardfalcon dot net>
-_watch=('https://hiawatha.leisink.net/changelog' '\"version\">(\d[\d.]*\d+)<')
+_watch=('https://hiawatha.leisink.net/changelog' 'body' 'regex' '\"version\">(\d[\d.]*\d+)<' 'pkgver')
 
 pkgname=hiawatha
-pkgver=11.8
-pkgrel=1
+pkgver=12.2
+pkgrel=2
 pkgdesc="Secure and advanced webserver"
 url="https://hiawatha.leisink.net/"
 arch=('x86_64')
 license=('GPL2')
-depends=('libxslt' 'mbedtls' 'libxcrypt')
+depends=('libxslt' 'libxcrypt')
 optdepends=('php-fpm: PHP fastcgi'
             'php: letsencrypt/lefh')
-makedepends=('cmake')
+makedepends=('cmake' 'python')
 backup=('etc/hiawatha/hiawatha.conf'
         'etc/hiawatha/cgi-wrapper.conf'
         'etc/hiawatha/mimetype.conf')
-source=("https://hiawatha.leisink.net/files/$pkgname-$pkgver.tar.gz" 
+source=("https://hiawatha.leisink.net/files/download/$pkgname-$pkgver.tar.gz" 
         'hiawatha.conf.sample'
         'hiawatha.service'
         'lefh-renew.service'
         'lefh-renew.timer')
-sha256sums=('1376763750fb9a88a780bac6aba8707bc2a78f8ee089c62d433e50216a5183bd'
+sha256sums=('f0343f5bf0a200973ebdf16668ab8e845e78498682ca83b05b78b2cc78fbe736'
             '4671d2586cbe3cd6497b16ff422c6143cdab40641ef3c9c4988c478351a8f5e7'
             'b5a2671703b52eec376cfc4697b86aafa4f7fdd9b2b9203798e2117770bafa53'
             '2598480f8b249aaf7028ea66bac0195e1c017fb17c2c169b69e0b66413728457'
@@ -70,7 +70,7 @@ build() {
             -DLOG_DIR="/var/log/hiawatha" \
             -DPID_DIR="/run" \
             -DENABLE_TLS=ON \
-            -DUSE_SYSTEM_MBEDTLS=ON \
+            -DUSE_SYSTEM_MBEDTLS=OFF \
             -DENABLE_MONITOR=ON \
             -DWEBROOT_DIR="/srv/http/hiawatha" \
             -DWORK_DIR="/var/lib/hiawatha" \
@@ -88,6 +88,9 @@ build() {
   # Features disabled by default
   # -DENABLE_DEBUG
   # -DENABLE_TOMAHAWK
+
+  # Arch mbedtls is built without MBEDTLS_THREADING_{C,PTHREAD}, which
+  # Hiawatha requires. Use the bundled copy (installed to /usr/lib/hiawatha).
 }
 
 package() {
