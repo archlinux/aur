@@ -1,6 +1,6 @@
 pkgbase = matlab-proxy
 	pkgdesc = Open a MATLAB® desktop in a web browser tab
-	pkgver = 0.33.0
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://github.com/mathworks/matlab-proxy
 	arch = any
@@ -21,9 +21,9 @@ pkgbase = matlab-proxy
 	depends = python-urllib3
 	optdepends = xorg-server-xvfb: support graphical abilities like plots and figures in the MATLAB desktop
 	optdepends = fluxbox: support Simulink Online
-	provides = python-matlab-proxy=0.33.0
+	provides = python-matlab-proxy=0.34.0
 	conflicts = python-matlab-proxy
-	source = https://github.com/mathworks/matlab-proxy/archive/refs/tags/v0.33.0/matlab-proxy-0.33.0.tar.gz
-	sha256sums = 6846a7e724595a7dd011554a23779b145d1a1bc6ac007232b3bf227a66feb6dd
+	source = https://github.com/mathworks/matlab-proxy/archive/refs/tags/v0.34.0/matlab-proxy-0.34.0.tar.gz
+	sha256sums = 429dd04e3ba45f25cfb2f98082a345724d5a457b4ff24d039aa98bf957eaa6b6
 
 pkgname = matlab-proxy

@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="matlab-proxy"
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="Open a MATLAB® desktop in a web browser tab"
 arch=(
@@ -55,7 +55,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('6846a7e724595a7dd011554a23779b145d1a1bc6ac007232b3bf227a66feb6dd')
+sha256sums=('429dd04e3ba45f25cfb2f98082a345724d5a457b4ff24d039aa98bf957eaa6b6')
 
 _source() {
   export NPM_CONFIG_CACHE="${srcdir}/.npm"
