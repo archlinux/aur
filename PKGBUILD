@@ -1,5 +1,5 @@
 # Maintainer: iamzhz <iamzhz at foxmail dot com>
-# Contributor: wuziqian211 <wuziqian211 at 126 dot com>
+# Maintainer: wuziqian211 <wuziqian211 at 126 dot com>
 
 pkgname=tchmaterial-parser
 pkgver=4.0
