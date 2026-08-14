@@ -1,0 +1,5 @@
+[toru-bin]
+source = "github"
+github = "sweetbbak/toru"
+use_latest_release = true
+prefix = "v"
