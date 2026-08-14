@@ -1,0 +1,6 @@
+*.zip
+*.7z
+*.pkg.tar.*
+*.deb
+pkg/
+src/
