@@ -9,7 +9,13 @@ PYPI="https://pypi.org/pypi/deeptools/json"
 
 echo "==> Checking for new version..."
 
-LATEST_VERSION=$(curl -s "$PYPI" | grep -oP '"version": "\K[^"]+' | head -1)
+LATEST_VERSION=""
+for _ in 1 2 3; do
+    LATEST_VERSION=$(curl -fsS --max-time 25 "$PYPI" | grep -oP '"version": "\K[^"]+' | head -1)
+    [ -n "$LATEST_VERSION" ] && break
+    sleep 2
+done
+LATEST_VERSION=${LATEST_VERSION//[$'\t\r\n ']/}
 
 if [ -z "$LATEST_VERSION" ]; then
     echo "Error: Could not fetch latest version"
@@ -17,6 +23,7 @@ if [ -z "$LATEST_VERSION" ]; then
 fi
 
 CURRENT_VERSION=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
+CURRENT_VERSION=${CURRENT_VERSION//[$'\t\r\n ']/}
 
 echo "Current version: $CURRENT_VERSION"
 echo "Latest version:  $LATEST_VERSION"
@@ -42,6 +49,13 @@ sed -i "s/^pkgver=.*/pkgver=$LATEST_VERSION/" PKGBUILD
 sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
 sed -i "s/^sha256sums=.*/sha256sums=('$SHA256')/" PKGBUILD
 
+NEW_VERSION=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
+if [ "$NEW_VERSION" = "$CURRENT_VERSION" ]; then
+    echo "==> No version change; discarding edits."
+    git checkout -- PKGBUILD
+    exit 0
+fi
+
 echo "==> Generating .SRCINFO..."
 makepkg --printsrcinfo > .SRCINFO
 
@@ -50,6 +64,6 @@ git add PKGBUILD .SRCINFO
 git commit -m "Update to version $LATEST_VERSION"
 
 echo "==> Pushing to AUR..."
-git push
+GIT_SSH_COMMAND='ssh -4 -o ConnectTimeout=30' git push -u origin master
 
 echo "==> Done! Updated from $CURRENT_VERSION to $LATEST_VERSION"
