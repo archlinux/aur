@@ -1,6 +1,6 @@
 pkgbase = arcane-launcher
 	pkgdesc = Open-source, self-contained Battle.net launcher for World of Warcraft (no Battle.net client)
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://codeberg.org/symb0l/arcane-launcher
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = arcane-launcher
 	depends = libzip
 	depends = hicolor-icon-theme
 	optdepends = umu-launcher: launch games under Proton (recommended backend)
-	source = arcane-launcher-0.8.0.tar.gz::https://codeberg.org/symb0l/arcane-launcher/archive/v0.8.0.tar.gz
-	sha256sums = 9cc0215ee0574ab2f3491948cbdd0cb526794b5941b0020fc2d7a0e5c3f3e342
+	source = arcane-launcher-0.8.1.tar.gz::https://codeberg.org/symb0l/arcane-launcher/archive/v0.8.1.tar.gz
+	sha256sums = 2b500e7cb8212bb6b981cb32fe09a6d739e35e70f4e3c424af61b5d48febc47a
 
 pkgname = arcane-launcher
