@@ -4,7 +4,7 @@
 _pkgname=ImHex
 pkgname=${_pkgname,,}
 pkgver=1.38.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM'
 url='https://imhex.werwolv.net'
 license=('GPL-2.0-or-later')
@@ -27,7 +27,7 @@ b2sums=('481ba12521704923e5ea2588a2d046f7a5bac6a6e539ef14047243e4232452dd3ce2d99
 options=(!lto)
 
 build() {
-  export CXXFLAGS="$CXXFLAGS -Wno-inconsistent-missing-override"
+  export CXXFLAGS="$CXXFLAGS -Wno-inconsistent-missing-override -DFMT_DEPRECATED_HEAVY_CORE"
 
   cmake -B build -S "$_pkgname" \
     -Wno-dev \
