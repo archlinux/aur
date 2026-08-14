@@ -2,7 +2,7 @@
 
 _pkgname="protoc-gen-go"
 pkgname="${_pkgname}-bin"
-pkgver=1.36.11
+pkgver=1.36.12
 pkgrel=1
 pkgdesc="Go support for Google's protocol buffers"
 arch=(
@@ -39,9 +39,9 @@ source_x86_64=(
 )
 sha256sums=('12156774520d841d748bcd4acba1ad6b24952f2766ceb5e873c32653a9ab3a2e'
             '4835612df0098ca95f8e7d9e3bffcb02358d435dbb38057c844c99d7f725eb20')
-sha256sums_aarch64=('8760755b06cbfe6e64478bbe16b60e518d89d059ccaf667df05398d19636cbad')
-sha256sums_i686=('a2297f4bd8efc5ac716e614093cd43afdd867291dd6ae4942765cd3b2632c8f1')
-sha256sums_x86_64=('6ad8f8fc11b96dc4deb176f7ee84af40e15d32e4608594bcc3534b7824a3dc71')
+sha256sums_aarch64=('bf385e22e18661b044f7b96ec28384f3f76aa6da10e956b450ffb949306768de')
+sha256sums_i686=('218fec8945785359113c2fa2a8c4147d2455712a340baba0d795ae2653814ad4')
+sha256sums_x86_64=('14abe70d1557026d3dce6676b7a44d3ada91d79902c71cb075fbb8d315943320')
 
 package() {
   cd "${srcdir}"
