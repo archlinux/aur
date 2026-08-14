@@ -6,7 +6,7 @@ pkgdesc="Roblox asset interceptor and replacer for Sober"
 arch=('x86_64')
 url="https://github.com/fleasion/Fleasion"
 license=('GPL-3.0-only')
-provides=('fleasion')
+provides=('fleasion-git')
 conflicts=('fleasion')
 depends=(
   'python'
