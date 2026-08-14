@@ -6,7 +6,7 @@
 
 pkgname=frank-go
 _reponame=frank_go
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 pkgdesc="Beginner-friendly Go/Baduk trainer: tsumego practice, KataGo opponent, influence overlay (Sabaki fork)"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
     'katago-cuda: fastest GPU engine — only with a working CUDA/cuDNN setup (advanced)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3117f81e5a499507e8b121820a59cff587e1de556f7d2ba2e3cb4fdfa034e5bd')
+sha256sums=('b10d54359ab8d3b3102a90dffdc23c989734d5bb7d05fe2acee2e1b93aceaff5')
 
 build() {
     cd "$_reponame-$pkgver"
