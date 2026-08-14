@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=cachy-auto-update
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Unattended background updates for CachyOS, aware of battery, gaming and manual package management"
 arch=('any')
@@ -23,7 +23,7 @@ backup=('etc/cachy-auto-update/cachy-auto-update.conf'
         'etc/logrotate.d/cachy-auto-update')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('335baba769ce2598f0df4eee51d2da35fa7318d7d9497490078c5afd8d6c61e9')
+sha256sums=('535901d8b2a01eabfb1b64728da01f81f8be256912e01babd85b62cf7675206a')
 
 build() {
   # pass the version being packaged so `cachy-auto-update --version` cannot
