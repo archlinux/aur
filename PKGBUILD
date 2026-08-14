@@ -7,6 +7,7 @@ pkgdesc="LLM-powered desktop translator. (Binary)"
 arch=('x86_64')
 url="https://github.com/l1ngus/lucid-spell"
 license=('MIT') # Убедись, что лицензия совпадает с твоим репозиторием
+options=('!debug')
 
 # Оставляем только зависимости для запуска (runtime). Сборочные (rust, npm) убираем.
 depends=('webkit2gtk-4.1'
@@ -16,9 +17,8 @@ depends=('webkit2gtk-4.1'
   'libsoup3'
   'openssl')
 
-# Указываем, что пакет конфликтует с версией из исходников и предоставляет те же функции
-provides=("$_pkgname" "${_pkgname}-debug")
-conflicts=("$_pkgname" "${_pkgname}-debug")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 # Ссылка на скомпилированный .deb пакет из релизов GitHub.
 # ВАЖНО: Проверь точное название файла .deb, которое генерирует твой CI/CD, и при необходимости поправь URL.

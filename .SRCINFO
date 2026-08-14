@@ -12,9 +12,8 @@ pkgbase = lucid-spell-bin
 	depends = libsoup3
 	depends = openssl
 	provides = lucid-spell
-	provides = lucid-spell-debug
 	conflicts = lucid-spell
-	conflicts = lucid-spell-debug
+	options = !debug
 	source = https://github.com/l1ngus/lucid-spell/releases/download/v0.1.0/lucid-spell_0.1.0_amd64.deb
 	sha256sums = 39d75e63041586118936b5da9b51094a6c0410cfbaf576dd58a82644b0a776aa
 
