@@ -2,7 +2,7 @@
 _projectname='kiota-python'
 _packagename='microsoft-kiota-abstractions'
 pkgname="python-$_packagename"
-pkgver='1.11.7'
+pkgver='1.11.8'
 pkgrel='1'
 pkgdesc='Microsoft Kiota Abstractions Library for Python'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 	'change-flit-upper-bound.diff'
 	'hardcode-version.diff'
 )
-b2sums=('a74f966c7b77dd775d0b0ab2424ba7a695d83565da422bd5573951b06e7b32186ba824f6044a35d388d4947fc23ae131b88670c682d64ea16de936be3abefd40'
+b2sums=('a6cfc58004aa08b6c11e7785b5246804cf6c7e6bd17d953020935156932405a6539f63803b954e70c9f71f4457c4a643b49c9b7b30cace6844d7294b662fa448'
         '5a4b40bfb5ed4359ac9c22a2c87346dccfb66b7c8233e1d27785d1770ad03e54bbb14b034ba00bd38126679aa4fe20d440cae576215e5e41834cad2d206a5461'
         'ac5084e3f4fc4359850ae2ab2384d87c2110cde1acceb8fdc5b45e9f231bab534601e020c0d5615a3133330d7a10bdd64ef3b8294a7dc2504afab003494beb6f')
 
