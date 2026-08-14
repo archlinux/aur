@@ -2,12 +2,15 @@ post_install() {
   echo 'Splinterm public alpha installed for the documented Arch/Omarchy target.'
   echo 'Active Omarchy Quattro themes are discovered and reloaded automatically; no theme hook is required.'
   echo 'Add com.oldjobobo.splinterm.desktop to ~/.config/xdg-terminals.list when ready to make it preferred.'
+  echo 'Optional Omarchy screensaver integration: splinterm integration omarchy-screensaver enable'
 }
 
 post_upgrade() {
   echo 'Restart running user splinterd services after protocol upgrades; the launcher does this when ping negotiation fails.'
+  echo 'Check Omarchy screensaver integration: splinterm integration omarchy-screensaver status'
 }
 
 post_remove() {
   echo 'User-owned Splinterm configuration and runtime state were preserved.'
+  echo 'If enabled, ~/.local/bin/omarchy-launch-screensaver is now a harmless dangling link; move that exact link out of PATH before uninstall with: splinterm integration omarchy-screensaver disable'
 }
