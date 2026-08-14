@@ -1,6 +1,6 @@
 pkgbase = warp-terminal-oss-bin
 	pkgdesc = Warp, the Rust-based terminal for developers and teams (OSS build, prebuilt binary)
-	pkgver = r2076.5fb3144
+	pkgver = r2088.8eb5221
 	pkgrel = 1
 	url = https://github.com/leozeli/warp-terminal-oss-aur
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = warp-terminal-oss-bin
 	optdepends = kdialog: for file dialogs in KDE
 	optdepends = org.freedesktop.secrets: for securely storing passwords
 	options = !strip
-	source = warp-terminal-oss-r2076.5fb3144-x86_64.tar.gz::https://github.com/leozeli/warp-terminal-oss-aur/releases/download/r2076.5fb3144/warp-terminal-oss-x86_64.tar.gz
-	sha256sums = b8534348151425c3ba4cfa500cac36a88830dc455a4254540e59b52aa4737f20
+	source = warp-terminal-oss-r2088.8eb5221-x86_64.tar.gz::https://github.com/leozeli/warp-terminal-oss-aur/releases/download/r2088.8eb5221/warp-terminal-oss-x86_64.tar.gz
+	sha256sums = f0698b8f2c5fb960e8cf86d804f94685f761ba3d5ac91994652cc3a6af25c845
 
 pkgname = warp-terminal-oss-bin
