@@ -1,7 +1,7 @@
 pkgbase = grokbot-linux-port-bin
-	pkgdesc = Grok Bot desktop: wine-less Linux port (prebuilt tarball from GitHub)
+	pkgdesc = Grok Bot desktop — wine-less Linux port (prebuilt tarball from GitHub Releases)
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Nichokas/grokbot-linux-port
 	arch = x86_64
 	license = custom
@@ -29,6 +29,6 @@ pkgbase = grokbot-linux-port-bin
 	conflicts = grokbot-linux-port
 	conflicts = grok-bot
 	source = Grok_Bot_0.20.0_linux_x64.tar.gz::https://github.com/Nichokas/grokbot-linux-port/releases/download/v0.20.0/Grok_Bot_0.20.0_linux_x64.tar.gz
-	sha256sums = e210a150a58a01248ae2c8c032988cfe27a491c9b9ba070b048f0a5b1e90b35b
+	sha256sums = f3ba90d13894fce3522ff0521025d08938bcd649a46241badfe2b58ea7aa85ed
 
 pkgname = grokbot-linux-port-bin

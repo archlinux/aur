@@ -2,8 +2,8 @@
 # Binary variant — downloads the prebuilt Linux tarball from GitHub Releases.
 pkgname=grokbot-linux-port-bin
 pkgver=0.20.0
-pkgrel=1
-pkgdesc="Grok Bot desktop: wine-less Linux port (prebuilt tarball from GitHub)"
+pkgrel=2
+pkgdesc="Grok Bot desktop — wine-less Linux port (prebuilt tarball from GitHub Releases)"
 arch=('x86_64')
 url="https://github.com/Nichokas/grokbot-linux-port"
 license=('custom')
@@ -17,7 +17,7 @@ optdepends=('libnotify: desktop notifications')
 provides=('grokbot-linux-port' 'grok-bot' 'grokbot')
 conflicts=('grokbot-linux-port' 'grok-bot')
 source=("Grok_Bot_${pkgver}_linux_x64.tar.gz::https://github.com/Nichokas/grokbot-linux-port/releases/download/v${pkgver}/Grok_Bot_${pkgver}_linux_x64.tar.gz")
-sha256sums=('e210a150a58a01248ae2c8c032988cfe27a491c9b9ba070b048f0a5b1e90b35b')
+sha256sums=('f3ba90d13894fce3522ff0521025d08938bcd649a46241badfe2b58ea7aa85ed')
 
 package() {
   local staged
@@ -28,10 +28,33 @@ package() {
     exit 1
   fi
 
+  # Upstream tarball ships NSIS-derived restrictive modes (drwx------ on
+  # app.asar.unpacked); cp -a would preserve them and pacman would then
+  # install root-only directories. Normalise before copying.
+  chmod -R u+rwX,go+rX,go-w "${staged}"
+
+  # Refuse to package a tarball whose loadable native modules are still
+  # Windows PE binaries — they dlopen-fail at runtime with "invalid ELF
+  # header". Dead-on-Linux PE leftovers (win32 prebuild dirs, napi-rs
+  # *.win32-*.node filenames) are tolerated: Linux loaders never resolve them.
+  if [[ "${GROKBOT_ALLOW_BROKEN_NATIVE:-}" != "1" ]]; then
+    local mz_live
+    mz_live="$(find "${staged}" -name '*.node' -type f -exec sh -c \
+      'head -c 2 "$1" | grep -q MZ && printf "%s\n" "$1"' _ {} \; 2>/dev/null \
+      | grep -v -e '/prebuilds/win32-' -e '\.win32-[^/]*\.node$' || true)"
+    if [[ -n "${mz_live}" ]]; then
+      echo "error: loadable .node files in the tarball are win32 (MZ header) — upstream rebuild failed:" >&2
+      printf '%s\n' "${mz_live}" | head -n 10 >&2
+      echo "hint:  install grokbot-linux-port (builds from source) instead, or rebuild upstream via scripts/port.sh" >&2
+      echo "hint:  GROKBOT_ALLOW_BROKEN_NATIVE=1 makepkg -si forces a known-broken install (debug only)" >&2
+      exit 1
+    fi
+  fi
+
   install -dm755 "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin" \
-    "${pkgdir}/usr/share/applications" \
-    "${pkgdir}/usr/share/icons/hicolor/256x256/apps" \
-    "${pkgdir}/usr/share/licenses/${pkgname}"
+                 "${pkgdir}/usr/share/applications" \
+                 "${pkgdir}/usr/share/icons/hicolor/256x256/apps" \
+                 "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cp -a "${staged}/." "${pkgdir}/opt/${pkgname}/"
   # Some tarballs keep electron as 'grok-bot' already; normalize
@@ -43,7 +66,7 @@ package() {
   ln -sf "/opt/${pkgname}/grok-bot" "${pkgdir}/usr/bin/grok-bot"
   ln -sf "/opt/${pkgname}/grok-bot" "${pkgdir}/usr/bin/grokbot"
 
-  cat >"${pkgdir}/usr/share/applications/grok-bot.desktop" <<DESKTOP
+  cat > "${pkgdir}/usr/share/applications/grok-bot.desktop" <<DESKTOP
 [Desktop Entry]
 Name=Grok Bot
 GenericName=Grok Bot
@@ -60,10 +83,8 @@ DESKTOP
   local icon=""
   for cand in \
     "${staged}/resources/app.asar.unpacked/dist/renderer/assets/app-icon-"*.png \
-    "${staged}/grok-bot.png"; do [[ -f "${cand}" ]] && {
-      icon="${cand}"
-      break
-    }; done
+    "${staged}/grok-bot.png" \
+  ; do [[ -f "${cand}" ]] && { icon="${cand}"; break; } ; done
   if [[ -z "${icon}" ]]; then
     icon="$(find "${staged}" -name 'app-icon*.png' -print -quit 2>/dev/null || true)"
   fi
@@ -71,7 +92,7 @@ DESKTOP
     install -Dm644 "${icon}" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/grok-bot.png"
   fi
 
-  cat >"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<LICENSE
+  cat > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<LICENSE
 Grok Bot is proprietary software. This package fetches the prebuilt Linux
 tarball published at https://github.com/Nichokas/grokbot-linux-port/releases.
 See upstream terms at https://grok.com and inside resources/app.asar.
