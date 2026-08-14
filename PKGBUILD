@@ -1,6 +1,6 @@
 # Maintainer: OneZ3r0 <onez3r0@outlook.com>
 pkgname=yakit-bin
-pkgver=1.4.8_0703
+pkgver=1.4.8_0814
 pkgrel=1
 pkgdesc="Cyber Security ALL-IN-ONE Platform (official AppImage release)"
 arch=('x86_64')
@@ -15,10 +15,10 @@ _upstream_ver="${pkgver//_/-}"
 _appimage="Yakit-${_upstream_ver}-linux-amd64.AppImage"
 
 source=(
-  "${_appimage}::https://github.com/yaklang/yakit/releases/download/v${_upstream_ver}/${_appimage}"
+    "${_appimage}::https://github.com/yaklang/yakit/releases/download/v${_upstream_ver}/${_appimage}"
 )
 noextract=("${_appimage}")
-sha256sums=('6352565e1dc61e8b7787d1d9c807dc186127c50ef64b26bddc9d769f69f58f1d')
+sha256sums=('2580de8e1981f54d3dee78d14b93326d4b94cdbca5f9273d33dd182953e00613')
 
 prepare() {
     chmod +x "${srcdir}/${_appimage}"
@@ -27,7 +27,7 @@ prepare() {
 
     sed 's|^Exec=.*|Exec=/usr/bin/yakit %U|' \
         "${srcdir}/squashfs-root/yakit.desktop" \
-        > "${srcdir}/yakit.desktop"
+        >"${srcdir}/yakit.desktop"
 }
 
 package() {
