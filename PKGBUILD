@@ -1,7 +1,7 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=ffhevc
-pkgver=4.7.5
+pkgver=4.7.6
 pkgrel=1
 pkgdesc='Small script to encode to H.265/HEVC video using FFmpeg and libx265'
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=(
   'gpac: for MP4 cover art'
 )
 source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('7464a2f377e68f7a1d59f6b180ccf7a4971ceb0dc4469494f44e0cbd223bed3f')
+sha256sums=('ecc0fd240098a8e26c7cfe34f908abbd70531819dafd2258f4cf37ac5919fc49')
 
 package() {
   cd $pkgname-$pkgver
