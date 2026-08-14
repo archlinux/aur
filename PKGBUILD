@@ -2,7 +2,7 @@
 
 pkgname=jsrc
 pkgver=0.3.1
-pkgrel=4
+pkgrel=1
 pkgdesc="Python library for bioinformatics and scientific computing"
 arch=('any')
 url="https://github.com/imjiaoyuan/jsrc"
