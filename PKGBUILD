@@ -9,7 +9,7 @@ url="https://github.com/gbevin/SendMIDI"
 license=('GPL3')
 depends=('alsa-lib' 'curl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-md5sums=('f63980697310ebcb4aa6898df1f27436')
+md5sums=('722329cd39ef4e23e1c901a4bd7be61b')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver/Builds/LinuxMakefile"
