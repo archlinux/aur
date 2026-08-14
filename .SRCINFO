@@ -1,6 +1,6 @@
 pkgbase = arctern-bin
 	pkgdesc = ZFS snapshot and replication daemon with an embedded web console
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/okhsunrog/arctern
 	install = arctern-bin.install
@@ -9,19 +9,19 @@ pkgbase = arctern-bin
 	license = MIT
 	depends = openssh
 	depends = zfs-utils
-	provides = arctern=0.2.1
+	provides = arctern=0.2.2
 	conflicts = arctern
 	options = !strip
 	options = !debug
-	source = arctern.service::https://github.com/okhsunrog/arctern/raw/v0.2.1/packaging/systemd/arctern.service
-	source = example-config.toml::https://github.com/okhsunrog/arctern/raw/v0.2.1/docs/example-config.toml
-	source = LICENSE.upstream::https://github.com/okhsunrog/arctern/raw/v0.2.1/LICENSE
+	source = arctern.service::https://github.com/okhsunrog/arctern/raw/v0.2.2/packaging/systemd/arctern.service
+	source = example-config.toml::https://github.com/okhsunrog/arctern/raw/v0.2.2/docs/example-config.toml
+	source = LICENSE.upstream::https://github.com/okhsunrog/arctern/raw/v0.2.2/LICENSE
 	sha256sums = bb6a12ed2f3cba05f7d6827529bc34011f4c84d92718561d6f2520c8c7f9c1af
 	sha256sums = 82ec35300e5f169a0f8070ab1045fc0663aab70eaf722ffdde5913391ca94285
 	sha256sums = dab21a15eee1c4f6651312e755c6d1fb9e128c68d384dfda0d2ac29dad5c3ed9
-	source_x86_64 = arctern-0.2.1-x86_64.tar.gz::https://github.com/okhsunrog/arctern/releases/download/v0.2.1/arctern-x86_64-linux-musl.tar.gz
-	sha256sums_x86_64 = e7ca9dd3fa1e5351c956e8b396604f257921ef54a5f302e5e32376e92e5bea66
-	source_aarch64 = arctern-0.2.1-aarch64.tar.gz::https://github.com/okhsunrog/arctern/releases/download/v0.2.1/arctern-aarch64-linux-musl.tar.gz
-	sha256sums_aarch64 = 614b5ad85054d8358be105abecb7a55c05e667fb6e116d7e6b223a85c9d1b14f
+	source_x86_64 = arctern-0.2.2-x86_64.tar.gz::https://github.com/okhsunrog/arctern/releases/download/v0.2.2/arctern-x86_64-linux-musl.tar.gz
+	sha256sums_x86_64 = ebcc4bff0917b865d5dcee0f841566b419fc83a38828d73725234b5ac5d7f17d
+	source_aarch64 = arctern-0.2.2-aarch64.tar.gz::https://github.com/okhsunrog/arctern/releases/download/v0.2.2/arctern-aarch64-linux-musl.tar.gz
+	sha256sums_aarch64 = 31898ba2abff1467faefb07d14db75b7f61d89c3ace2eafd093c0218630a62ad
 
 pkgname = arctern-bin
