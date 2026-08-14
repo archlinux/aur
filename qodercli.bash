@@ -20,6 +20,7 @@ _qodercli() {
     local -r skill_subcommands="list enable disable install link uninstall"
     local -r hook_subcommands="migrate"
     local -r agent_subcommands="list"
+    local -r security_subcommands="scan"
 
     local -r model_choices="auto efficient gmodel kmodel lite mmodel performance q35model qmodel ultimate"
     local -r output_format_choices="text json stream-json"
@@ -95,6 +96,14 @@ _qodercli() {
                 agents|agent)
                     case "${words[j]}" in
                         list)
+                            subsubcmd="${words[j]}"
+                            break
+                            ;;
+                    esac
+                    ;;
+                security)
+                    case "${words[j]}" in
+                        scan)
                             subsubcmd="${words[j]}"
                             break
                             ;;
@@ -305,6 +314,16 @@ _qodercli() {
                 ;;
             agents|agent)
                 COMPREPLY=($(compgen -W "--setting-sources $help_flags" -- "$cur"))
+                ;;
+            security)
+                case "$subsubcmd" in
+                    scan)
+                        COMPREPLY=($(compgen -W "--all --report --fail-on --wait-timeout --config $help_flags" -- "$cur"))
+                        ;;
+                    *)
+                        COMPREPLY=($(compgen -W "$security_subcommands $help_flags" -- "$cur"))
+                        ;;
+                esac
                 ;;
             remote-control)
                 COMPREPLY=($(compgen -W "--name --spawn --capacity --directory --verbose $help_flags" -- "$cur"))

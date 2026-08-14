@@ -4,7 +4,7 @@
 
 _qodercli() {
     local -a qodercli_commands mcp_commands plugin_commands plugin_marketplace_commands
-    local -a skill_commands hook_commands agent_commands
+    local -a skill_commands hook_commands agent_commands security_commands
 
     qodercli_commands=(
         'mcp:Configure and manage MCP servers'
@@ -71,6 +71,7 @@ _qodercli() {
 
     hook_commands=('migrate:Migrate hooks from Claude Code to Qoder CLI')
     agent_commands=('list:List discovered agents')
+    security_commands=('scan:Scan a repository or selected paths for security issues')
 
     _arguments -C \
         '(- *)'{-h,--help}'[Show help]' \
@@ -297,6 +298,26 @@ _qodercli() {
                             _arguments -C '--setting-sources[Setting sources]:sources:(user project local)' '(- *)'{-h,--help}'[Show help]' '1:agent command:->agent_command' '*::agent arg:->agent_args' && return
                             case $state in
                                 agent_command) _describe -t agent_commands 'agent command' agent_commands ;;
+                            esac
+                            ;;
+                    esac
+                    ;;
+                security)
+                    case $next in
+                        scan)
+                            _arguments \
+                                '--all[Scan the whole repository]' \
+                                '--report[Generate a report; repeat for multiple formats or destinations]:format or path:' \
+                                '--fail-on[Exit non-zero at this severity or higher]:severity:(critical high medium low none)' \
+                                '--wait-timeout[Maximum seconds to wait for the scan result]:seconds:' \
+                                '--config[Use a qodersec configuration file]:file:_files' \
+                                '(- *)'{-h,--help}'[Show help]' \
+                                '*:path:_files'
+                            ;;
+                        *)
+                            _arguments -C '(- *)'{-h,--help}'[Show help]' '1:security command:->security_command' '*::security arg:->security_args' && return
+                            case $state in
+                                security_command) _describe -t security_commands 'security command' security_commands ;;
                             esac
                             ;;
                     esac

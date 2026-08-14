@@ -84,6 +84,21 @@ function __qodercli_plugin_marketplace_no_child
     test $found_marketplace -eq 1
 end
 
+function __qodercli_security_no_child
+    set -l cmd (commandline -opc)
+    set -l found_security 0
+    for word in $cmd[2..]
+        if test $found_security -eq 0
+            if test "$word" = security
+                set found_security 1
+            end
+        else if test "$word" = scan
+            return 1
+        end
+    end
+    test $found_security -eq 1
+end
+
 function __qodercli_using_plugin_marketplace_child
     set -l cmd (commandline -opc)
     set -l found_plugin 0
@@ -274,6 +289,12 @@ complete -c qodercli -n '__qodercli_using_top_command agents agent' -s h -l help
 complete -c qodercli -n '__qodercli_using_group_child agents,agent list' -s h -l help -d 'Show help'
 
 # Other top-level commands
+complete -c qodercli -n __qodercli_security_no_child -a scan -d 'Scan a repository or selected paths for security issues'
+complete -c qodercli -n '__qodercli_using_top_command security; and not __qodercli_security_no_child' -l all -d 'Scan the whole repository'
+complete -c qodercli -n '__qodercli_using_top_command security; and not __qodercli_security_no_child' -l report -r -d 'Generate a report'
+complete -c qodercli -n '__qodercli_using_top_command security; and not __qodercli_security_no_child' -l fail-on -r -a 'critical high medium low none' -d 'Exit non-zero at this severity or higher'
+complete -c qodercli -n '__qodercli_using_top_command security; and not __qodercli_security_no_child' -l wait-timeout -r -d 'Maximum seconds to wait for the scan result'
+complete -c qodercli -n '__qodercli_using_top_command security; and not __qodercli_security_no_child' -l config -r -F -d 'Use a qodersec configuration file'
 complete -c qodercli -n '__qodercli_using_top_command remote-control' -l name -r -d 'Environment display name'
 complete -c qodercli -n '__qodercli_using_top_command remote-control' -l spawn -r -a 'same-dir worktree' -d 'Session scheduling mode'
 complete -c qodercli -n '__qodercli_using_top_command remote-control' -l capacity -r -d 'Maximum concurrent sessions'
