@@ -105,6 +105,15 @@ setenv G4URRPTDATA /opt/Geant4/Libraries/G4URRPT1.1" > Geant4.csh
   [ -d "${srcdir}"/build ] || mkdir "${srcdir}"/build
   cd "${srcdir}"/build
 
+  #check if hdf5-geant4 is installed, if so enable support, otherwise disable
+  _HDF5=OFF
+  if pacman -Q hdf5-geant4 &> /dev/null
+  then
+    _HDF5=ON
+  else
+    _HDF5=OFF
+  fi
+
   cmake \
     -DCMAKE_POLICY_VERSION_MINIMUM=4.0 \
     -DCMAKE_INSTALL_PREFIX=/opt/Geant4/Geant4-v${pkgver} \
@@ -127,7 +136,7 @@ setenv G4URRPTDATA /opt/Geant4/Libraries/G4URRPT1.1" > Geant4.csh
     -DGEANT4_INSTALL_PACKAGE_CACHE=OFF \
     -DGEANT4_USE_PYTHON=ON \
     -DGEANT4_USE_TBB=ON \
-    -DGEANT4_USE_HDF5=OFF \
+    -DGEANT4_USE_HDF5=${_HDF5} \
     -DGEANT4_BUILD_TLS_MODEL=global-dynamic \
     -DGEANT4_INSTALL_DATADIR=/opt/Geant4/Libraries \
     ../geant4-v${pkgver}
