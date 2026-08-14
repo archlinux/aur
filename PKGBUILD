@@ -12,7 +12,7 @@
 # Maintainer: Jonas Ohland <jonas.ohland@gmail.com>
 
 pkgname=agedu
-pkgver=20241013
+pkgver=20260410
 _commit=.3622eda
 pkgrel=1
 pkgdesc="A UNIX utility for tracking down wasted disk space"
@@ -22,7 +22,7 @@ license=('custom:MIT')
 depends=('glibc')
 makedepends=('cmake')
 source=("https://www.chiark.greenend.org.uk/~sgtatham/agedu/agedu-${pkgver}${_commit}.tar.gz")
-sha256sums=('3f77cb2e4dd64c100f7a7b0789a6c06cc16f23e7fe78c1451f5020dd823cf2f8')
+sha256sums=('37be3c0de116b4fa44d390cca929248fd2e12586ef22aca9474a009c568e561c')
 
 build() {
   cd $pkgname-$pkgver${_commit}
