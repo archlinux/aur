@@ -3,3 +3,4 @@
 *.gz
 pkg/
 src/
+.table2asn.lastmod

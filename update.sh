@@ -1,10 +1,17 @@
 #!/bin/bash
-# table2asn ships an unversioned gzipped binary, so the version is read by
-# running the downloaded binary itself.
+# table2asn ships an unversioned gzipped binary; the version is only available
+# by running it. Skip the ~20MB download when the FTP Last-Modified is unchanged.
 set -e
 
 URL="https://ftp.ncbi.nlm.nih.gov/asn1-converters/by_program/table2asn/linux64.table2asn.gz"
 PKGNAME="table2asn"
+MARKER=".table2asn.lastmod"
+
+REMOTE_LM=$(curl -sIL "$URL" | awk -F': ' 'tolower($1)=="last-modified"{print $2}' | tr -d '\r')
+if [ -f "$MARKER" ] && [ "$(cat "$MARKER")" = "$REMOTE_LM" ]; then
+    echo "==> Already up to date (FTP file unchanged since last check)!"
+    exit 0
+fi
 
 echo "==> Checking for new version..."
 curl -sL "$URL" -o /tmp/${PKGNAME}.gz
@@ -19,6 +26,8 @@ if [ -z "$LATEST_VERSION" ]; then
     echo "Error: Could not determine version"
     exit 1
 fi
+
+echo "$REMOTE_LM" > "$MARKER"
 
 CURRENT_VERSION=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
 echo "Current version: $CURRENT_VERSION"
@@ -42,6 +51,6 @@ git add PKGBUILD .SRCINFO
 git commit -m "Update to version $LATEST_VERSION"
 
 echo "==> Pushing to AUR..."
-git push
+GIT_SSH_COMMAND='ssh -4 -o ConnectTimeout=30' git push -u origin master
 
 echo "==> Done! Updated from $CURRENT_VERSION to $LATEST_VERSION"
