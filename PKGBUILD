@@ -1,14 +1,14 @@
 # Maintainer: ikozyris <ikozyris1337@gmail.com>
 
 pkgname=kri
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.9
+pkgrel=1
 pkgdesc='Simple, compact & very fast text editor'
 arch=('x86_64')
 url="https://github.com/ikozyris/$pkgname"
 license=('GPL-3.0-or-later')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1b363108e330b9cff438ca9b1c4af6a48882efae4a86c9af3c9d3fbec450038e')
+sha256sums=('4551ee0112eed9d07bc2d991cb14899368a743c80f69a6a07c996ea7d884e570')
 makedepends=('gcc' 'make')
 depends=('gcc-libs' 'glibc' 'ncurses')
 
@@ -24,6 +24,6 @@ check() {
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm0755 "$pkgname" -t "$pkgdir/usr/bin"
+  make install
 #  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
