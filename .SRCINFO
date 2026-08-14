@@ -1,6 +1,6 @@
 pkgbase = ocaml-mdx
 	pkgdesc = Executable code blocks inside markdown files for OCaml
-	pkgver = 2.5.1
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/realworldocaml/mdx
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = ocaml-mdx
 	checkdepends = ocaml-lwt
 	makedepends = dune>=3.5.0
 	makedepends = cppo>=1.1.0
-	depends = ocaml>=4.08.0
 	depends = camlp-streams
 	depends = ocaml-astring
 	depends = ocaml-cmdliner>=1.1.0
@@ -18,13 +17,12 @@ pkgbase = ocaml-mdx
 	depends = ocaml-findlib
 	depends = ocaml-fmt>=0.8.7
 	depends = ocaml-logs>=0.7.0
-	depends = ocaml-re>=1.7.2
 	depends = ocaml-ocaml-version>=2.3.0
+	depends = ocaml-re>=1.7.2
+	depends = ocaml>=4.08.0
 	depends = zstd
 	options = !strip
-	source = ocaml-mdx-2.5.1.tar.gz::https://github.com/realworldocaml/mdx/archive/2.5.1.tar.gz
-	source = remove-result-dep.diff
-	b2sums = 95ed607564e33fa884aae7b7326257cd565acc67a2581ac4b9d88a710c6c77cc66375f8f019b5eae5a145617b681b0500a3fa81c0710d1304d731fbcc2013f3d
-	b2sums = ecf106081b4217a21724a645c2bd98beb27f2e9998bf32a64e8e770930701c65ec45903148e40ebe88dca639597f8e66dc232bd7281142466201a5138a764777
+	source = ocaml-mdx-2.6.0.tar.gz::https://github.com/realworldocaml/mdx/archive/2.6.0.tar.gz
+	b2sums = 12018cf84269c1ffe8389da0528cdac6b9512f4988d6319b3c7bbf4c20635c8d10bd357b5334cc567e95adf2d60ef6aaf9095bf467058d5dbe2dac82acf91a96
 
 pkgname = ocaml-mdx
