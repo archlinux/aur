@@ -3,7 +3,7 @@
 # Contributor: Spencer Muise <smuise@spencermuise.ca>
 
 pkgname=calibre-web
-pkgver=0.6.26
+pkgver=0.6.27
 pkgrel=1
 pkgdesc="Web app for browsing, reading and downloading eBooks stored in a Calibre database"
 arch=('any')
@@ -15,27 +15,30 @@ depends=(
   'python-apscheduler'
   'python-babel'
   'python-bleach'
-  'python-chardet'
-  'python-cryptography'
-  'python-flask'
   'python-flask-babel'
-  'python-flask-httpauth'
-  'python-flask-limiter'
   'python-flask-principal'
-  'python-flask-wtf'
-  'python-lxml'
-  'python-netifaces-plus'
+  'python-flask'
+  'python-iso639'
   'python-pycountry'
   'python-pypdf'
-  'python-magic'
   'python-pytz'
-  'python-regex'
   'python-requests'
   'python-sqlalchemy'
   'python-tornado'
-  'python-unidecode'
-  'python-urllib3'
   'python-wand'
+  'python-unidecode'
+  'python-lxml'
+  'python-flask-wtf'
+  'python-chardet'
+  'python-netifaces-plus'
+  'python-urllib3'
+  'python-flask-limiter'
+  'python-regex'
+  'python-nh3'
+  'python-magic'
+  'python-flask-httpauth'
+  'python-cryptography'
+  'python-certifi'
 )
 optdepends=(
   'python-jsonschema: kobo sync support'
@@ -51,7 +54,7 @@ source=(
   'calibre-web.sysusers'
   'calibre-web.tmpfiles'
 )
-sha256sums=('89cb08deafb8df662728e54d8d8f5f96622ea915e82320595c845b9fc6ad0f6b'
+sha256sums=('0f8790afa87d2755d762e687a16077e56dfa7a8272107990e19dddbefcd0f103'
             '216c5443424aa9b38b71c53186d0369d2eacd2cb03d742e01c881ab7bac9ea2d'
             'b5d6c225761244b6c698af0279c9501bb9514e3e2a5151ca6e3212a4f5d0d76a'
             '82fae88cbed6d69e5a04586293de81bdc55994a4fe003178c39b5a35f2c87c1a')
