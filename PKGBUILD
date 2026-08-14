@@ -1,8 +1,8 @@
-# Maintainer: Yassine CHERRADI <yassinec.org@protonmail.com>
+# Maintainer: Yassine CHERRADI <yassinec dot org at protonmail dot com>
 
 pkgname=mlink-bin
 pkgver=1.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="mLink - mBlock web version driver"
 arch=('x86_64')
 url="https://gitlab.com/yassinec.org/mlink-bin"
