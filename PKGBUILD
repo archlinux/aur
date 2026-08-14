@@ -1,14 +1,14 @@
 # Maintainer: Hristo Voyvodov <hristo.voyvodov@hotmail.com>
 
 pkgname=vmutils-bin
-pkgver=1.147.0
+pkgver=1.149.0
 pkgrel=1
 pkgdesc="Victoria Metrics utils"
 arch=('x86_64')
 url="https://docs.victoriametrics.com/victoriametrics/"
 license=('Apache-2.0')
 source=("https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v$pkgver/vmutils-linux-amd64-v$pkgver.tar.gz")
-sha256sums=('1e5da38c3d8d7af9c4fc0daa8a2103f2578c40ed81752d21f20a3bd6d0506b3f')
+sha256sums=('1ccaa92acf4f2fcba03d8c197f1b1da7194cc4777ecf45ab5b212bd6ed52be58')
 
 build() {
   # rename binaries
