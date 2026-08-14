@@ -6,4 +6,4 @@ Type=Application
 Icon=/usr/share/icons/hicolor/1024x1024/apps/deemix-app.png
 StartupWMClass=/usr/share/icons/hicolor/1024x1024/apps/deemix-app.png
 Comment=Modern Deezer music downloader
-Categories=Audio;
+Categories=Audio;AudioVideo
