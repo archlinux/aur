@@ -1,0 +1,18 @@
+pkgbase = ffdash-git
+	pkgdesc = Terminal UI for batch AV1 & VP9 video encoding with hardware acceleration, real-time progress monitoring, and full control over quality settings
+	pkgver = 0.3.2.r2.gb01e785
+	pkgrel = 1
+	url = https://github.com/bcherb2/ffdash
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = ffmpeg
+	depends = glibc
+	depends = libgcc
+	provides = ffdash
+	conflicts = ffdash
+	source = git+https://github.com/bcherb2/ffdash.git
+	sha256sums = SKIP
+
+pkgname = ffdash-git
