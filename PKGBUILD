@@ -3,7 +3,7 @@
 _binname="powder"
 _pkgname="powder-toy"
 pkgname="${_pkgname}-bin"
-pkgver=100.0.399
+pkgver=100.1.400
 pkgrel=1
 pkgdesc="Desktop version of the classic falling sand physics sandbox, simulates air pressure, velocity & heat!"
 arch=(
@@ -87,8 +87,8 @@ sha256sums=('1342b998099809a417ebd2495ce7b870225befe082ca3d19cd5e651f35ffe3d9'
             'e21498e46a3f1642b5d378ee0e63a3eb6f930778a04a25062ca8c781eab4c314'
             '7f4e5eaff3a84ad3973cc2d7aa0b0d8817559a500aecff84decc7a06357c11b3'
             'da002be13501b7d2ef0d0d470f35bc37d6f90805a7f084a00aa66f7c37ce2f81')
-sha256sums_aarch64=('c3bbf1b86847624bed0be8e61014f0a0861bbabecf8eddcf4483196b1496419c')
-sha256sums_x86_64=('68bbf771629d03c94d948b9169e0d7221d6597c3aecdb7229d1a9d3667cc3886')
+sha256sums_aarch64=('4e7295c81078273d4e2b1f807213ae4c6973a0d7a1e367373856602b2a12a3cc')
+sha256sums_x86_64=('5e28b1c911e8bb0c5fe42d50c33880c7db9fca3cdf098facb09e0afb7731d499')
 
 package() {
   cd "${srcdir}"
