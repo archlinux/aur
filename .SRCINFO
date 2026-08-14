@@ -1,12 +1,17 @@
 pkgbase = wthrr-bin
 	pkgdesc = Weather companion for the terminal
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ttytm/wthrr-the-weathercrab
 	arch = x86_64
 	license = MIT
 	provides = wthrr
 	conflicts = wthrr
+	options = !strip
+	source = README-1.2.1.md::https://raw.githubusercontent.com/ttytm/wthrr-the-weathercrab/v1.2.1/README.md
+	source = LICENSE-1.2.1::https://raw.githubusercontent.com/ttytm/wthrr-the-weathercrab/v1.2.1/LICENSE
+	sha256sums = 171379ef1164ba579a4db5d9f5d1d7feeee5f9ef5b44c41806117c83402181b0
+	sha256sums = 826a0a547dad7e4f1612b496b6129943ca40a67674939bcf9803cf52d8e9d6f1
 	source_x86_64 = https://github.com/ttytm/wthrr-the-weathercrab/releases/download/v1.2.1/wthrr-linux-x86_64.deb
 	sha256sums_x86_64 = 2740cb8d7375e37a12564528039380050280d8b8af6b29ea97a6a89333a9d42e
 

@@ -1,0 +1,5 @@
+[wthrr-bin]
+source = "github"
+github = "ttytm/wthrr-the-weathercrab"
+use_latest_release = true
+prefix = "v"
