@@ -1,7 +1,7 @@
 # Maintainer: Aydin
 
 pkgname=wiz-bin
-pkgver=0.22.2
+pkgver=0.24.4
 pkgrel=1
 pkgdesc="Wiz programming language"
 arch=('x86_64')
