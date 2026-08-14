@@ -2,7 +2,7 @@
 
 pkgname=lmm-api-web-bin
 pkgver=0.1.7
-pkgrel=2
+pkgrel=3
 pkgdesc='LMM API production web frontend (prebuilt)'
 arch=('any')
 url='https://github.com/LIghtJUNction/api.lmm.best'
@@ -27,7 +27,7 @@ sha256sums=(
   '11049debe99afd497c4ce3229080ad8cce761ee437937a0bd7b66417d3b94ccb'
   '7fd14e0c67acd217a8f6d40514ea5ee6a15b3a4115a5ee4b527c80114b7ccbc5'
   'deee72b8a125c80ffb20d14721b40d32205bc787a3cb861df32e14bf4d0784db'
-  'd45a54f1d4119f944c8dda1858706c8d0ade8f083a33feb3d981dbcaf8dc13b6'
+  '4019662f898399b04f9a9ee10a2821443aded4a6c01c89cd2f60f9a2a9b47141'
 )
 
 prepare() {

@@ -69,7 +69,18 @@ fi
 nginx -t
 systemctl reload nginx.service
 systemctl is-active --quiet nginx.service
-probe_args=(--fail --silent --show-error --location --max-time 15)
+probe_args=(
+  --fail
+  --silent
+  --show-error
+  --location
+  --connect-timeout 3
+  --max-time 10
+  --retry 5
+  --retry-delay 1
+  --retry-max-time 20
+  --retry-connrefused
+)
 if [[ -n $probe_resolve ]]; then
   probe_args+=(--resolve "$probe_resolve")
 fi
