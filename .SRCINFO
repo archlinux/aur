@@ -3,7 +3,6 @@ pkgbase = yukigram-desktop
 	pkgver = 7.0.9.0
 	pkgrel = 1
 	url = https://github.com/yukigram/yukigram
-	install = yukigram-desktop.install
 	arch = x86_64
 	license = GPL3
 	makedepends = boost

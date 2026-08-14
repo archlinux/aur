@@ -65,7 +65,6 @@ optdepends=(
   'webkitgtk-6.0: embedded browser features provided by webkitgtk-6.0 (gtk4)'
   'xdg-desktop-portal: desktop integration'
 )
-install="yukigram-desktop.install"
 
 _td_commit=51743dfd01dff6179e2d8f7095729caa4e2222e9
 source=(
