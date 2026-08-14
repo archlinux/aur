@@ -1,6 +1,6 @@
 # Maintainer: t4t5 <t4t5@hey.com>
 pkgname=rencal-bin
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A calendar for Omarchy"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('rencal')
 conflicts=('rencal')
 options=('!debug' '!strip')
 source=("rencal-$pkgver.deb::https://github.com/t4t5/rencal/releases/download/v$pkgver/renCal_${pkgver}_amd64.deb")
-sha256sums=('ebdd0fa4c69fa96ae007ae90d6fcd4c901f957e37a57317a23bee0760504ad56')
+sha256sums=('80b619b8c075257cf5aa62a66fe29746e1e4b3d0f1bf17ce2ed6709aaa274d3e')
 
 package() {
     cd "$srcdir"
