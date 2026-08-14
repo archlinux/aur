@@ -2,7 +2,7 @@
 
 _pkgname="oxker"
 pkgname="${_pkgname}-bin"
-pkgver=0.13.2
+pkgver=0.13.3
 pkgrel=1
 pkgdesc="A simple TUI to view & control Docker containers"
 arch=(
@@ -37,11 +37,11 @@ source_armv7h=(
 source_x86_64=(
   "${_pkgname}_${pkgver}_linux_x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_linux_x86_64.tar.gz"
 )
-sha256sums=('3c6d5ca4c89e0f1820b5717504f560fe91a39d300a0fd9d17ea84b38cee74bb3'
+sha256sums=('ae50e9fa5a2d6b44ad4f4e2d077d1b11d90b869171078bd5bca8a816fe7ea0aa'
             'b73cb1c664857dc71c358b7127f3601be7d625fa97fa2d7e3b1e09381e4d98f0')
-sha256sums_aarch64=('d28adead20ef1f30818088b993f7b2f036ddb6ec11e8f96803bbe7f0ff1a1ba0')
-sha256sums_armv7h=('d13454004a8bb2c44c3e5caee9aaa1cbface389db479af0f94dd7dd69bc2ec23')
-sha256sums_x86_64=('3775979640701248ff8e7bbb597a6dadc6cd05f8ee9cdfa6a82feb52b8f4dcbd')
+sha256sums_aarch64=('7ca94fe592571e275e4f4805ed8594d76d51094b89e08379dffb29cc5332e982')
+sha256sums_armv7h=('969fa31fdc265a156959291c6e1a265541f7be2663dc9f34716285042288e9f9')
+sha256sums_x86_64=('0331ae1b507275ebd8c1b837068815584e035256bd6689033d131c8168fa1806')
 
 package() {
   cd "${srcdir}"
