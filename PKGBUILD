@@ -7,32 +7,31 @@ arch=('x86_64')
 url="https://github.com/l1ngus/lucid-spell"
 license=('MIT')
 
-# webkit2gtk-4.1 — критически важен для Tauri v2
 depends=('webkit2gtk-4.1'
   'libayatana-appindicator'
   'gtk3'
   'glib2'
   'libsoup3'
-  'openssl') # Зависимости для сборки (Rust, Node.js)
+  'openssl')
 makedepends=('rust' 'cargo' 'nodejs' 'npm' 'pkgconf' 'openssl')
-options=('!debug')
 
-# Ссылка на архив с исходниками конкретного релиза
+# Отключаем strip, debug и lto на уровне makepkg
+options=('!strip' '!debug' '!lto')
+
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('426aa459f4c27c94e542192dde12e4e7a1a3ca335c95b7e47867697101362421')
 
 prepare() {
   cd "$pkgname-$pkgver"
-
   npm ci
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  export CFLAGS="${CFLAGS/ -flto=auto/}"
-  export CXXFLAGS="${CXXFLAGS/ -flto=auto/}"
-  export LDFLAGS="${LDFLAGS/ -flto=auto/}"
-  export NO_STRIP=true
+
+  # Ручное удаление флагов больше не нужно, !lto делает это автоматически
+
+  # NO_STRIP=true убран, так как !strip в options делает это глобально для makepkg
   npm run tauri build
 }
 
