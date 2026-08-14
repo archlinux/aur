@@ -21,6 +21,7 @@ pkgbase = cachy-auto-update
 	optdepends = flatpak: Flatpak updates
 	optdepends = libnotify: desktop notifications
 	optdepends = gearlever: AppImage updates
+	optdepends = python-gobject: progress bar in the desktop taskbar
 	backup = etc/cachy-auto-update/cachy-auto-update.conf
 	backup = etc/logrotate.d/cachy-auto-update
 	source = cachy-auto-update-1.1.2.tar.gz::https://github.com/Felitendo/cachy-auto-update/archive/refs/tags/v1.1.2.tar.gz

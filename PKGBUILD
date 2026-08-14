@@ -17,7 +17,8 @@ optdepends=('paru: AUR package updates'
             'base-devel: required to build AUR packages'
             'flatpak: Flatpak updates'
             'libnotify: desktop notifications'
-            'gearlever: AppImage updates')
+            'gearlever: AppImage updates'
+            'python-gobject: progress bar in the desktop taskbar')
 backup=('etc/cachy-auto-update/cachy-auto-update.conf'
         'etc/logrotate.d/cachy-auto-update')
 install="${pkgname}.install"
