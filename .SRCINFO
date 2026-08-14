@@ -1,0 +1,19 @@
+pkgbase = notepadng
+	pkgdesc = Notepad++-like editor for programmers and power users
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/kravich/notepadng
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = hicolor-icon-theme
+	depends = qscintilla-qt6
+	depends = qt6-5compat
+	depends = qt6-base
+	depends = qt6-svg
+	depends = uchardet
+	source = notepadng-0.1.0.tar.gz::https://github.com/kravich/notepadng/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 306ee08018e3972234347a65a07ff7ebcbfe9eb7bdc08600489935f86d958364
+
+pkgname = notepadng
