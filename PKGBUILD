@@ -6,21 +6,36 @@
 # Contributor: joel schaerer <joel.schaerer@laposte.net>
 
 pkgname=itk-lite
-pkgver=5.4.6
+pkgver=5.4.7
 pkgrel=1
 pkgdesc="Cross-platform system that provides developers with an extensive suite of software tools for image analysis"
 arch=(x86_64)
 url="https://itk.org/"
 license=(Apache-2.0)
-depends=(glibc libgcc libjpeg-turbo libpng zlib libtiff gdcm expat hdf5)
-makedepends=(cmake git eigen gtest)
-#options=(!lto)
+depends=(
+    expat
+    gdcm
+    glibc
+    hdf5
+    libgcc
+    libjpeg-turbo
+    libpng
+    libstdc++
+    libtiff
+    zlib
+    )
+makedepends=(
+    cmake
+    eigen
+    git
+    gtest
+    )
 provides=(itk insight-toolkit)
 conflicts=(itk insight-toolkit)
 source=("https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.gz"
         #"${pkgname}-${pkgver}.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v${pkgver}.tar.gz"
         )
-sha512sums=('27b66f7f52238f48de8fb6eb4855bcf7f95c601d08cb47663cc6783209a4c17c22a373839e1f8680699edeb9c303fda272c73e1594cc39f36e52babd5b0795ee')
+sha512sums=('5642b736fb209687d69e7064d96c9193589a8a862831627a66f7d169f3d7d9284637578c60785b4df967f0671b963b4ae465edf38d95b77b6bff01d16178d70a')
 
 build() {
   local _flags=(
