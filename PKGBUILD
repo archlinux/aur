@@ -3,7 +3,7 @@
 
 _pkgbase=ocp
 pkgname=('ocp' 'ocp-sdl3')
-pkgver=3.4.1
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
@@ -11,27 +11,33 @@ url="https://stian.cubic.org/project-ocp.php"
 license=('GPL')
 source=(${_pkgbase}::git+https://github.com/mywave82/opencubicplayer.git#tag=v${pkgver})
 sha256sums=('SKIP')
-optdepends=('libvorbis: Vorbis codec support'
-        'libmad: MPEG codec support'
-        'flac: FLAC codec support'
-        'libgme: Video game music emulation/playback support')
-makedepends=('alsa-lib'
-        'cjson'
-        'desktop-file-utils'
-        'freetype2'
-        'flac'
-        'git'
-        'ncurses'
-        'sdl3'
-        'xa'
-        'libgme'
-        'libancient'
-        'libdiscid'
-        'libmad'
-        'libjpeg-turbo'
-        'libpng'
-        'libvorbis'
-        'speex')
+optdepends=(
+    'libgme: Video game music emulation/playback support'
+    'opus: Opus codec support'
+    'speex: Video game voice emulation/playback support'
+)
+makedepends=(
+    'alsa-lib'
+    'bzip2'
+    'cjson'
+    'desktop-file-utils'
+    'freetype2'
+    'flac'
+    'git'
+    'libancient'
+    'libdiscid'
+    'libgme'
+    'libjpeg-turbo'
+    'libmad'
+    'libogg'
+    'libpng'
+    'libvorbis'
+    'ncurses'
+    'opus'
+    'speex'
+    'sdl3'
+    'xa'
+)
 
 prepare() {
         cd $_pkgbase
@@ -52,24 +58,30 @@ build() {
 
 package_ocp-sdl3() {
         provides=(${_pkgbase}=${pkgver})
-        conflicts=('ocp' 'ocp-sdl2' 'ocp-curses')
-        replaces=('ocp-sdl2')
+        conflicts=('ocp' 'ocp-sdl2' 'ocp-sdl3' 'ocp-curses')
+        replaces=('ocp-sdl3')
         install=${_pkgbase}.install
-        depends=('alsa-lib'
-                'bzip2'
-                'cjson'
-                'freetype2'
-                'hicolor-icon-theme'
-                'ncurses'
-                'sdl3'
-                'shared-mime-info'
-                'zlib'
-                'libancient'
-                'libdiscid'
-                'libjpeg-turbo'
-                'libpng'
-                'speex'
-                'ttf-unifont')
+        depends=(
+            'alsa-lib'
+            'bzip2'
+            'cjson'
+            'flac'
+            'freetype2'
+            'hicolor-icon-theme'
+            'libancient'
+            'libdiscid'
+            'libjpeg-turbo'
+            'libmad'
+            'libogg'
+            'libpng'
+            'libvorbis'
+            'ncurses'
+            'sdl3'
+            'shared-mime-info'
+            'ttf-unifont'
+            'zlib'
+        )
+
         cd $_pkgbase
         ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core --with-strip_lto_flags cross_compiling=yes\
         --without-sdl\
@@ -86,15 +98,23 @@ package_ocp-sdl3() {
 
 package_ocp() {
         provides=(${_pkgbase}=${pkgver})
-        conflicts=('ocp-sdl2' 'ocp-curses')
-        depends=('alsa-lib'
-                'bzip2'
-                'cjson'
-                'ncurses'
-                'zlib'
-                'libancient'
-                'libdiscid'
-                'speex')
+        conflicts=('ocp' 'ocp-sdl2' 'ocp-sdl3' 'ocp-curses')
+        depends=(
+            'alsa-lib'
+            'bzip2'
+            'cjson'
+            'flac'
+            'libancient'
+            'libdiscid'
+            'libjpeg-turbo'
+            'libmad'
+            'libogg'
+            'libpng'
+            'libvorbis'
+            'ncurses'
+            'zlib'
+        )
+
         cd $_pkgbase
         ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core --with-strip_lto_flags cross_compiling=yes\
         --without-x11\
