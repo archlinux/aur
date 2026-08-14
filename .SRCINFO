@@ -1,4 +1,4 @@
-pkgbase = fleasion-git
+pkgbase = fleasion
 	pkgdesc = Roblox asset interceptor and replacer for Sober
 	pkgver = r515.f6e286c
 	pkgrel = 1
@@ -36,11 +36,11 @@ pkgbase = fleasion-git
 	depends = qt6-base
 	provides = fleasion
 	conflicts = fleasion
-	source = fleasion-git::git+https://github.com/fleasion/Fleasion.git#branch=main-indev
+	source = fleasion::git+https://github.com/fleasion/Fleasion.git#branch=main-indev
 	source = fleasion.desktop
 	source = fleasion.png
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = fleasion-git
+pkgname = fleasion
