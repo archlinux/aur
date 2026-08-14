@@ -1,6 +1,6 @@
 pkgbase = hyprmonitor-git
 	pkgdesc = Auto-configures Hyprland monitors with an optional drag-and-drop GUI
-	pkgver = r53.f40bb77
+	pkgver = r65.cd05e40
 	pkgrel = 1
 	url = https://github.com/Janmuixi/hyprmonitors
 	arch = x86_64

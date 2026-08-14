@@ -1,6 +1,6 @@
 # Maintainer: Jan Muixi <jan.muixi@flanks.io>
 pkgname=hyprmonitor-git
-pkgver=r53.f40bb77
+pkgver=r65.cd05e40
 pkgrel=1
 pkgdesc="Auto-configures Hyprland monitors with an optional drag-and-drop GUI"
 arch=('x86_64')
@@ -30,5 +30,7 @@ package() {
   install -Dm755 target/release/hyprmonitor "$pkgdir/usr/bin/hyprmonitor"
   install -Dm755 target/release/hyprmonitor-gui "$pkgdir/usr/bin/hyprmonitor-gui"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 gui/assets/hyprmonitor.desktop "$pkgdir/usr/share/applications/hyprmonitor.desktop"
+  install -Dm644 gui/assets/hyprmonitor.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/hyprmonitor.svg"
 }
 
