@@ -1,7 +1,7 @@
 # Maintainer: MingxuanGame <MingxuanGame@outlook.com>
 pkgname="prismterminal"
 pkgver=1.1.29
-pkgrel=1
+pkgrel=2
 pkgdesc="棱镜终端 -- Meowpad 下一代配置器"
 arch=('x86_64')
 license=('unknown')
@@ -14,7 +14,7 @@ provides=("prismterminal")
 options=('!emptydirs')
 install='udev.install'
 source=(
-  "PrismTerminal_v${pkgver}.deb::https://support.kagamistudio.com/uploads/downloads/PrismTerminal/PrismTerminal-v1.1.29-linux64-22614e6100934200a5f357cfb9811568.deb"
+  "PrismTerminal_v${pkgver}.deb::https://support.kagamistudio.com/uploads/downloads/PrismTerminal/PrismTerminal-v1.1.29-linux64-3a4f7c1d49de4911881cde92569b88cc.deb"
   '70-prismterminal-hid.rules'
   'udev.install'
 )
