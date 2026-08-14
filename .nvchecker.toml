@@ -1,0 +1,5 @@
+[shclrz-bin]
+source = "github"
+github = "alexcoder04/shclrz"
+use_latest_release = true
+prefix = "v"
