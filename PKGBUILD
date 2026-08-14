@@ -7,7 +7,7 @@ arch=('x86_64' 'i686' 'aarch64')
 url='https://codeberg.org/Muhamix/mxset'
 license=('LGPL-3.0-or-later')
 source=("$pkgname-$pkgver::https://codeberg.org/Muhamix/mxset/archive/v$pkgver.tar.gz")
-sha256sums=('5ea7b8612647a3d4c3140931a7fc64c61f418d0ee7e511057df92f1186a90078')
+sha256sums=('3958d09310612afd0499ecdbb57dc6722a8ddf4ec9592b28641183580f0b4edd')
 options=('staticlibs')
 conflicts=('mxset-cpp')
 
