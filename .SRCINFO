@@ -1,6 +1,6 @@
 pkgbase = gnhf
 	pkgdesc = Before I go to bed, I tell my agents: good night, have fun
-	pkgver = 0.1.43
+	pkgver = 0.1.44
 	pkgrel = 1
 	url = https://github.com/kunchenguid/gnhf
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = gnhf
 	depends = nodejs
 	provides = gnhf
 	replaces = nodejs-gnhf
-	noextract = gnhf-0.1.43.tgz
+	noextract = gnhf-0.1.44.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = gnhf-0.1.43.tgz::https://registry.npmjs.org/gnhf/-/gnhf-0.1.43.tgz
-	b2sums = 810351ac8e47f8e9913989ed337c46e003e60fd6b6a987633e2ce5a9caa1d65713ddd113c4f484ec929b185953c4f733e14489a35eba28ede884644f3e1ab423
+	source = gnhf-0.1.44.tgz::https://registry.npmjs.org/gnhf/-/gnhf-0.1.44.tgz
+	b2sums = 6847694ea9076b830791362a89cd24fc2020e8611ab1b5122c8c3240201ec7b4341ef4aae419720044a0f7567a4d9fe3f0292d6c47b9f38a1bad9b7fbb56fa9d
 
 pkgname = gnhf
