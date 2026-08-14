@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_gitname}
 pkgdesc="Git TUI for the masses!!"
 
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -23,7 +23,7 @@ makedepends=('go')
 depends=('glibc' 'git')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_gitauthor}/${_gitname}/archive/${_gitversion}.tar.gz")
-sha256sums=('064e89c87b51c3ed0d00ca959fd52ecfcaad81b0db2127f4b1a91bd053d87408')
+sha256sums=('94aab8665250b26d8cd02ee3fc6b3c001fb583d133141114d2029b4c1c5070d8')
 
 
 prepare() {
