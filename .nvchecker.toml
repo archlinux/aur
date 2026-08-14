@@ -1,0 +1,5 @@
+[splash-bin]
+source = "github"
+github = "joshi4/splash"
+use_latest_release = true
+prefix = "v"

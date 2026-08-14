@@ -16,15 +16,15 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
-        "README-${pkgver}.md::${_urlraw}/README.md"
-        "AGENT-${pkgver}.md::${_urlraw}/AGENT.md")
+source=("README-${pkgver}.md::${_urlraw}/README.md"
+        "AGENT-${pkgver}.md::${_urlraw}/AGENT.md"
+        "LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_linux_${_barch[0]}")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_linux_${_barch[1]}")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_linux_${_barch[2]}")
-sha256sums=('72333f9d12356bf592af7d5f3ad5c96fdc667e61d4c999e7a44fb46044e2c0a3'
-            '17cd30271113feb232b43f04df6ed87cf1cf1fe29e584a8b6e9406502bcfa317'
-            '7f5fd7ff1af46441ffe943ae97db4f2e6d6f01304a9563a952a3895aff12f63a')
+sha256sums=('17cd30271113feb232b43f04df6ed87cf1cf1fe29e584a8b6e9406502bcfa317'
+            '7f5fd7ff1af46441ffe943ae97db4f2e6d6f01304a9563a952a3895aff12f63a'
+            '72333f9d12356bf592af7d5f3ad5c96fdc667e61d4c999e7a44fb46044e2c0a3')
 sha256sums_x86_64=('1f0fd2f773e5a1adab760751dfbd7d5bd55afa14cb95f6fdf7575a0c977f77d7')
 sha256sums_i686=('17118c46e776c1bb0605e74f94e9044252d48b176556f7053ff5ee21504cb32f')
 sha256sums_aarch64=('f981a38410c34fa3b4313d2e204f34f4103547cdde4a7b008b07a07989bcf73f')
