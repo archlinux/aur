@@ -9,18 +9,19 @@ release archive, so the AUR package name is `gitcommitgenerator-bin`.
 
 ## Release artifact expected by PKGBUILD
 
-Create a GitHub release named `v0.1.0` with this asset:
+For each upstream `vX.Y.Z` release, publish this asset:
 
 ```text
-gitcommitgenerator-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+gitcommitgenerator-vX.Y.Z-x86_64-unknown-linux-gnu.tar.gz
 ```
 
-The archive must contain these files at its top level:
+The archive must contain the executable at its top level:
 
 ```text
-gitcommitgenerator-v0.1.0-x86_64-unknown-linux-gnu/gitcommitgenerator
-gitcommitgenerator-v0.1.0-x86_64-unknown-linux-gnu/LICENSE
+gitcommitgenerator
 ```
+
+`PKGBUILD` downloads the license separately from the matching Git tag.
 
 After uploading the asset, replace `sha256sums_x86_64=('SKIP')` in `PKGBUILD`
 with the real checksum:

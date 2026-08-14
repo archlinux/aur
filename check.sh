@@ -25,7 +25,7 @@ makepkg --printsrcinfo > "$tmp_srcinfo"
 diff -u .SRCINFO "$tmp_srcinfo"
 
 grep -q '^pkgname=gitcommitgenerator-bin$' PKGBUILD || fail 'pkgname must match repository name'
-grep -q '^pkgver=0\.1\.0$' PKGBUILD || fail 'pkgver must match upstream Cargo.toml'
+grep -Eq '^pkgver=[0-9]+\.[0-9]+\.[0-9]+$' PKGBUILD || fail 'pkgver must be a stable upstream version'
 grep -q "provides=(\"\${_pkgname}=\${pkgver}\")" PKGBUILD || fail 'binary package must provide gitcommitgenerator'
 grep -q "conflicts=(\"\${_pkgname}\")" PKGBUILD || fail 'binary package must conflict with gitcommitgenerator'
 grep -q 'releases/download/v${pkgver}' PKGBUILD || fail 'source must use versioned GitHub releases'
@@ -46,12 +46,11 @@ trap 'rm -f "$tmp_srcinfo"; rm -rf "$package_tmp"' EXIT
 
   srcdir="${package_tmp}/src"
   pkgdir="${package_tmp}/pkg"
-  archive_dir="${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-gnu"
-  mkdir -p "$archive_dir" "$pkgdir"
+  mkdir -p "$srcdir" "$pkgdir"
 
-  printf '#!/bin/sh\nexit 0\n' > "${archive_dir}/${_pkgname}"
-  chmod +x "${archive_dir}/${_pkgname}"
-  printf 'MIT License\n' > "${archive_dir}/LICENSE"
+  printf '#!/bin/sh\nexit 0\n' > "${srcdir}/${_pkgname}"
+  chmod +x "${srcdir}/${_pkgname}"
+  printf 'MIT License\n' > "${srcdir}/LICENSE-${pkgver}"
 
   package
 
