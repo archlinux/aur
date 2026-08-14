@@ -1,0 +1,15 @@
+pkgbase = z85
+	pkgdesc = A base64-compatible Z85 CLI tool written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nirvam/z85
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	options = !debug
+	source = z85-0.1.0.tar.gz::https://github.com/nirvam/z85/archive/v0.1.0.tar.gz
+	sha256sums = dc1e1a1462cd850adc493a33ea0fe953a1d4d968313dcc8016b2de9e5da5f9c2
+
+pkgname = z85
