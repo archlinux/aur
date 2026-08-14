@@ -1,7 +1,7 @@
 # Maintainer: Hocking Lee <hockinglee@gmail.com>
 
 pkgname=cmux-tui
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="CMUX (3GPP TS 27.010) serial debugger TUI with dual-channel hex/ASCII view and millisecond timestamps"
 arch=('x86_64' 'aarch64')
