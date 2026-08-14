@@ -1,0 +1,14 @@
+post_install() {
+  systemd-sysusers matchplane.conf
+  systemd-tmpfiles --create matchplane.conf
+  systemctl daemon-reload
+  printf '%s\n' 'Configure /etc/matchplane/matchplane.env before enabling services.'
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  systemctl daemon-reload
+}
