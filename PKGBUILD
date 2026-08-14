@@ -1,7 +1,7 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-edfio
 _name=${pkgname#python-}
-pkgver=0.4.14
+pkgver=0.4.16
 pkgrel=1
 pkgdesc="Python package for reading and writing EDF and EDF+C files"
 arch=('any')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('python' 'python-numpy')
 makedepends=('python-build' 'python-hatchling' 'python-hatch-vcs' 'python-installer')
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('2951675e297dd4435baae18e965360aeddff9f5f3b20cc09ddc317326dbc3432')
+sha256sums=('d30cabe949d95f9ca6291dafac56c497cc1ecefc0b1c549edaf2c9a04475499c')
 
 build() {
     cd "$srcdir/$_name-$pkgver"

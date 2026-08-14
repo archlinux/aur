@@ -1,6 +1,6 @@
 pkgbase = python-edfio
 	pkgdesc = Python package for reading and writing EDF and EDF+C files
-	pkgver = 0.4.14
+	pkgver = 0.4.16
 	pkgrel = 1
 	url = https://github.com/the-siesta-group/edfio
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-edfio
 	makedepends = python-installer
 	depends = python
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/e/edfio/edfio-0.4.14.tar.gz
-	sha256sums = 2951675e297dd4435baae18e965360aeddff9f5f3b20cc09ddc317326dbc3432
+	source = https://files.pythonhosted.org/packages/source/e/edfio/edfio-0.4.16.tar.gz
+	sha256sums = d30cabe949d95f9ca6291dafac56c497cc1ecefc0b1c549edaf2c9a04475499c
 
 pkgname = python-edfio
