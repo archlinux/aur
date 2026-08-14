@@ -8,11 +8,11 @@
 
 pkgname=bakawm-git
 _pkgname=bakawm
-pkgver=r16.34e87a2
+pkgver=r17.3986190
 pkgrel=1
 pkgdesc="A Wayland window manager built with Rust and Smithay"
 arch=(aarch64 armv7h i686 riscv64 x86_64)
-url="https://codeberg.org/FuncSonicYEAH/bakawm"
+url="https://github.com/FuncSonicYEAH/bakawm"
 license=('GPL-3.0-or-later')
 depends=(
   libdisplay-info
@@ -24,18 +24,12 @@ depends=(
   mesa
   pixman
   seatd
+  wayland
 )
 makedepends=(
   cargo
   clang
   git
-  # libdisplay-info
-  # libinput
-  # libpipewire
-  # libxkbcommon
-  # mesa
-  # pixman
-  # seatd
 )
 optdepends=(
   'xorg-xwayland: X11 support'

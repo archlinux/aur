@@ -1,8 +1,8 @@
 pkgbase = bakawm-git
 	pkgdesc = A Wayland window manager built with Rust and Smithay
-	pkgver = r16.34e87a2
+	pkgver = r17.3986190
 	pkgrel = 1
-	url = https://codeberg.org/FuncSonicYEAH/bakawm
+	url = https://github.com/FuncSonicYEAH/bakawm
 	arch = aarch64
 	arch = armv7h
 	arch = i686
@@ -21,11 +21,12 @@ pkgbase = bakawm-git
 	depends = mesa
 	depends = pixman
 	depends = seatd
+	depends = wayland
 	optdepends = xorg-xwayland: X11 support
 	provides = bakawm
 	conflicts = bakawm
 	options = !buildflags
-	source = bakawm::git+https://codeberg.org/FuncSonicYEAH/bakawm
+	source = bakawm::git+https://github.com/FuncSonicYEAH/bakawm
 	b2sums = SKIP
 
 pkgname = bakawm-git
