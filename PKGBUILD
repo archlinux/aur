@@ -1,6 +1,6 @@
 # Maintainer: Tim Culverhouse <tim@timculverhouse.com>
 pkgname=monstar-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="wayland terminal based on libghostty"
 arch=('x86_64')
@@ -20,8 +20,8 @@ optdepends=(
   'noto-fonts-emoji: emoji support'
   'noto-fonts-cjk: CJK font support'
 )
-source=("monstar-1.0.0-x86_64-linux.tar.gz::https://github.com/rockorager/monstar/releases/download/v1.0.0/monstar-1.0.0-x86_64-linux.tar.gz")
-sha256sums=('d60944d16939ca5e0161c2c7dd183f28d4cee8101bb973f400c8521e38bef81f')
+source=("monstar-1.0.1-x86_64-linux.tar.gz::https://github.com/rockorager/monstar/releases/download/v1.0.1/monstar-1.0.1-x86_64-linux.tar.gz")
+sha256sums=('271fcf68d3e67350327eba43c061f0bd904ec4e5a7049ee60d7c9e79991d4bbc')
 
 build() {
   :
