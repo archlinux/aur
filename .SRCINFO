@@ -1,0 +1,18 @@
+pkgbase = badness-bin
+	pkgdesc = A language server, formatter, and linter for LaTeX
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/jolars/badness
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	provides = badness
+	conflicts = badness
+	options = !strip
+	source_x86_64 = badness-0.16.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jolars/badness/releases/download/v0.16.0/badness-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 4a2248c35be479518f0b8e57e93bc79f772ceaa7f95254342c9384d34d6954bc
+	source_aarch64 = badness-0.16.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/jolars/badness/releases/download/v0.16.0/badness-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 9ed3223d2551c1a67a991609ee6068dac8aa089104ad7a34ad6de80a08ff9832
+
+pkgname = badness-bin
