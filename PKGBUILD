@@ -2,7 +2,7 @@
 
 pkgname=godsvg-git
 pkgver=1.0.alpha13.7.gda354a12
-_godotver=4.5.1-stable
+_godotver=4.6-stable
 _godotname="Godot_v${_godotver}_linux.x86_64"
 _templatename="Godot_v${_godotver}_export_templates"
 pkgrel=1
