@@ -2,7 +2,7 @@
 
 _name="sysrescueusbwriter"
 pkgname="systemrescue-usbwriter"
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Tool to write SystemRescue to a USB memory stick"
 arch=(
@@ -31,7 +31,7 @@ source=(
   "${url}/-/archive/${pkgver}/${_pkgsrc}.tar.gz"
   "${pkgname}_no_appimage.patch"
 )
-sha256sums=('9cd306d5d7b5fc0ab9a154a424de7c87349d2d7a1550f1ac8bd2250c8d1b0ed4'
+sha256sums=('8070b76c265330b8bb8f17694f7c586f8845cc5a39b65308f5927abc13bf8d25'
             '505cde7c224cee62cbb71c40771c6ed5ea0b337719435a568d67c42fd81161ff')
 
 build() {
