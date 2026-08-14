@@ -3,7 +3,7 @@
 # Contributor: Alexis Janon <kardyne -at- gmail -dot- com>
 
 pkgname=ttf-tabler-icons
-pkgver=3.44.0
+pkgver=3.46.0
 pkgrel=1
 pkgdesc="A set of free MIT-licensed high-quality icons"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 
 source=("https://registry.npmjs.org/@tabler/icons-webfont/-/icons-webfont-${pkgver}.tgz"
   "${pkgname}-LICENSE::https://raw.githubusercontent.com/tabler/tabler-icons/v${pkgver}/LICENSE")
-sha256sums=('045d186a1169124d6d0571f7f2cfaced859b36a0811e86c7e181d1f2d4f431b2'
+sha256sums=('9664cd4fdbae3a25a523d9e4d2a922b2d9460495042e68f1087a55d63540aef4'
             'b740a1d46122672da62833e97f7e7c8a13fa85cbc7445b584b297cc00dde93db')
 
 package() {
