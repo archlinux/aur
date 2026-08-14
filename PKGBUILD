@@ -5,7 +5,8 @@ pkgrel=1
 pkgdesc="LLM-powered desktop translator."
 arch=('x86_64')
 url="https://github.com/l1ngus/lucid-spell"
-license=('MIT') # Замени на свою лицензию
+license=('MIT')
+options=('!debug')
 
 # webkit2gtk-4.1 — критически важен для Tauri v2
 depends=('webkit2gtk-4.1'
