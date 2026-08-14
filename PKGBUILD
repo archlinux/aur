@@ -40,7 +40,7 @@ depends=(
 )
 makedepends=('git')
 source=(
-  "$pkgname::git+https://github.com/fleasion/Fleasion.git#branch=main-indev"
+  "$pkgname::git+https://github.com/fleasion/Fleasion.git#branch=main"
   "fleasion.desktop"
   "fleasion.png"
 )

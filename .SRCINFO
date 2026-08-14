@@ -36,7 +36,7 @@ pkgbase = fleasion-git
 	depends = qt6-base
 	provides = fleasion-git
 	conflicts = fleasion
-	source = fleasion-git::git+https://github.com/fleasion/Fleasion.git#branch=main-indev
+	source = fleasion-git::git+https://github.com/fleasion/Fleasion.git#branch=main
 	source = fleasion.desktop
 	source = fleasion.png
 	sha256sums = SKIP
