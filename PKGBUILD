@@ -31,6 +31,7 @@ makedepends=(
   'curl'
   'qt6-shadertools'
   'qt6-tools'
+  'wayland-protocols'
 )
 install=vicinae.install
 provides=("vicinae")
