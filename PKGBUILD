@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction <lightjunction.me@gmail.com>
 pkgname=matchplane-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='Federated AI matching infrastructure (prebuilt binaries)'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('matchplane' 'matchplane-git')
 backup=('etc/matchplane/matchplane.env')
 install=matchplane.install
 source=("matchplane-${pkgver}-linux-x86_64.tar.zst::https://github.com/LIghtJUNction/matchplane/releases/download/v${pkgver}/matchplane-${pkgver}-linux-x86_64.tar.zst")
-sha256sums=('4ce67b3604d61c44c9413dbe8c72b1592250d11c8387e91f2cbff3103514f02a')
+sha256sums=('186526495d2b68a8da37c10bfd09e5b4477b5b81a902d98be887e69924e1c962')
 
 package() {
   cp -a "$srcdir/matchplane-${pkgver}-linux-x86_64/." "$pkgdir/"
