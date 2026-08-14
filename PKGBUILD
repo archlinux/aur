@@ -1,7 +1,7 @@
 # Maintainer: Darko Nikolic <dqrk0@proton.me>
 
 pkgname=python-aods
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='small and hackable build system for c'
 arch=('x86_64')
