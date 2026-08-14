@@ -5,8 +5,11 @@
 # stack. The GTK, WebKitGTK and Qt greeters are separate AUR packages precisely
 # so that installing one does not make you build the others, and so that `wdm`
 # itself never drags GTK4, WebKitGTK or Qt 6 into a build chroot.
-pkgbase=wdm
-pkgname=('wdm' 'wdm-greeter')
+# `wdm-wayland` rather than `wdm` because the AUR name `wdm` belongs to the
+# WINGs Display Manager. The binary, unit, and config paths are still `wdm`,
+# hence the provides/conflicts on the main package.
+pkgbase=wdm-wayland
+pkgname=('wdm-wayland' 'wdm-greeter')
 pkgver=0.9.0
 pkgrel=1
 pkgdesc='A Wayland display manager that is its own compositor'
@@ -63,7 +66,7 @@ check() {
   cargo test --frozen --release -p wdm -p wdm-greeter -p wdm-protocol
 }
 
-package_wdm() {
+package_wdm-wayland() {
   # wdm needs *a* greeter, and each of the four provides the virtual, so pacman
   # prompts for a choice when only `wdm` is requested. Three of the four now live
   # in other AUR packages; pacman resolves a virtual regardless of which pkgbase
@@ -84,6 +87,8 @@ package_wdm() {
   # nothing in the repositories provides it.
   depends=('libinput' 'seatd' 'systemd-libs' 'mesa' 'libdrm' 'libxkbcommon'
            'pam' 'wdm-greeter-implementation')
+  provides=('wdm')
+  conflicts=('wdm')
   optdepends=('wdm-gtk-greeter: GTK4 greeter'
               'wdm-webkit-greeter: WebKitGTK greeter, themed in HTML and CSS'
               'wdm-plasma-greeter: Qt6/QML greeter, themed in QML')
