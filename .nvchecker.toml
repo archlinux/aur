@@ -1,0 +1,5 @@
+[jobman-control-bin]
+source = "github"
+github = "ryancswallace/Jobman-Control"
+use_latest_release = true
+prefix = "v"

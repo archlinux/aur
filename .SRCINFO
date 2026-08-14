@@ -1,0 +1,21 @@
+pkgbase = jobman-control-bin
+	pkgdesc = Shared PostgreSQL-backed control plane for Jobman.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ryancswallace/Jobman-Control
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	depends = jobman
+	provides = jobman-control
+	conflicts = jobman-control
+	options = !strip
+	source_x86_64 = jobman-control-x86_64-0.1.1.tgz::https://github.com/ryancswallace/Jobman-Control/releases/download/v0.1.1/jobman-control_0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 5fcf30351755e8c0202b5c0fb5b0b29c8c8e22f44ee9b282cdc18feeff1bc3e8
+	source_i686 = jobman-control-i686-0.1.1.tgz::https://github.com/ryancswallace/Jobman-Control/releases/download/v0.1.1/jobman-control_0.1.1_linux_386.tar.gz
+	sha256sums_i686 = dcf5c9abf873e52c57d664617bcb855b3cde71d2c4d97fa64794ce06e381222d
+	source_aarch64 = jobman-control-aarch64-0.1.1.tgz::https://github.com/ryancswallace/Jobman-Control/releases/download/v0.1.1/jobman-control_0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = cc6f5c477d1bbe332f4444c25b1ab6946d02b9b9668b9853521a291c641ee109
+
+pkgname = jobman-control-bin
