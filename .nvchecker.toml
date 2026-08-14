@@ -1,0 +1,3 @@
+[zepto-bin]
+source = "cmd"
+cmd = "gh release list --repo joewalnes/zepto --limit 1 --json publishedAt --template '{{range .}}{{.publishedAt}}{{end}}' | sed 's/T.*//; s/-/./g'"
