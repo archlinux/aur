@@ -1,0 +1,5 @@
+[work-bin]
+source = "github"
+github = "jmelahman/work"
+use_latest_release = true
+prefix = "v"
