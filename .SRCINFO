@@ -1,7 +1,7 @@
 pkgbase = openloco
 	pkgdesc = An open source re-implementation of Chris Sawyer's Locomotion
-	pkgver = 26.07.1
-	pkgrel = 2
+	pkgver = 26.08
+	pkgrel = 1
 	url = https://github.com/OpenLoco/OpenLoco
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = openloco
 	depends = yaml-cpp
 	optdepends = libpipewire: audio output
 	optdepends = libpulse: audio output
-	source = openloco-26.07.1.tar.gz::https://github.com/OpenLoco/OpenLoco/archive/refs/tags/v26.07.1.tar.gz
-	sha256sums = 6d2e4b0248778102d80a2459fd820af06095f398768aeddfc0ce2bab16f2038d
+	source = openloco-26.08.tar.gz::https://github.com/OpenLoco/OpenLoco/archive/refs/tags/v26.08.tar.gz
+	sha256sums = e46dfa7a87879f3d2b4edd40eae025eb55dcad5abd3422a20fedfb65a19ed8ab
 
 pkgname = openloco

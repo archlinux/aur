@@ -2,8 +2,8 @@
 # Contributor: Mr.Smith1974
 
 pkgname=openloco
-pkgver=26.07.1
-pkgrel=2
+pkgver=26.08
+pkgrel=1
 pkgdesc="An open source re-implementation of Chris Sawyer's Locomotion"
 arch=(x86_64)
 url="https://github.com/OpenLoco/OpenLoco"
@@ -30,7 +30,7 @@ optdepends=(
     'libpulse: audio output'
     )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OpenLoco/OpenLoco/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6d2e4b0248778102d80a2459fd820af06095f398768aeddfc0ce2bab16f2038d')
+sha256sums=('e46dfa7a87879f3d2b4edd40eae025eb55dcad5abd3422a20fedfb65a19ed8ab')
 
 build() {
   export CXXFLAGS+=" -Wno-template-body"
