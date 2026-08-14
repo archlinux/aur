@@ -1,8 +1,8 @@
-# Maintainer: Yassine CHERRADI <yassinec.org@protonmail.com>
+# Maintainer: Yassine CHERRADI <yassinec dot org at protonmail dot com>
 
 pkgname=microbit-udev
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A udev rule that enables WebUSB/WebHID communication with the BBC micro:bit"
 arch=('any')
 url="https://gitlab.com/yassinec.org/microbit-udev"

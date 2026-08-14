@@ -1,7 +1,7 @@
 pkgbase = microbit-udev
 	pkgdesc = A udev rule that enables WebUSB/WebHID communication with the BBC micro:bit
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://gitlab.com/yassinec.org/microbit-udev
 	arch = any
 	license = MIT
