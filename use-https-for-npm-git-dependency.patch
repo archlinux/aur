@@ -1,0 +1,12 @@
+diff --git a/crates/notra-app/frontend/package-lock.json b/crates/notra-app/frontend/package-lock.json
+--- a/crates/notra-app/frontend/package-lock.json
++++ b/crates/notra-app/frontend/package-lock.json
+@@ -2131,7 +2131,7 @@
+     },
+     "node_modules/file-icons": {
+       "version": "2.1.47",
+-      "resolved": "git+ssh://git@github.com/file-icons/atom.git#28520868aee66e576145a0b18aa2cde5444a897a",
++      "resolved": "git+https://github.com/file-icons/atom.git#28520868aee66e576145a0b18aa2cde5444a897a",
+       "license": "MIT",
+       "dependencies": {
+         "atom-fs": "v0.2.1",

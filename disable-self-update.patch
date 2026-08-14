@@ -1,0 +1,21 @@
+diff --git a/crates/notra-app/frontend/src/main.ts b/crates/notra-app/frontend/src/main.ts
+--- a/crates/notra-app/frontend/src/main.ts
++++ b/crates/notra-app/frontend/src/main.ts
+@@ -2450,15 +2450,9 @@ async function initializeAppUpdate() {
+     return;
+   }
+ 
++  appUpdateStatus = "unsupported";
++  appUpdateDetail = `当前版本 ${appVersion} · 请通过系统软件包管理器更新`;
+   renderAppUpdateStatus();
+-  if (import.meta.env.DEV) {
+-    appUpdateStatus = "unsupported";
+-    appUpdateDetail = `当前版本 ${appVersion} · 开发模式不检查更新`;
+-    renderAppUpdateStatus();
+-    return;
+-  }
+-
+-  window.setTimeout(() => void checkForAppUpdate(false), 1800);
+ }
+ 
+ async function checkForAppUpdate(manual: boolean) {

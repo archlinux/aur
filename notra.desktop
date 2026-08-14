@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Notra
+Comment=Lightweight, fast text and Markdown editor
+Comment[zh_CN]=轻量、快速的文本与 Markdown 桌面编辑器
+Exec=notra %F
+Icon=notra
+Terminal=false
+Categories=Utility;TextEditor;
+MimeType=text/plain;text/markdown;
+Keywords=Text;Editor;Markdown;
+StartupWMClass=notra
