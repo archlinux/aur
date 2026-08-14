@@ -1,0 +1,5 @@
+[stew-bin]
+source = "github"
+github = "marwanhawari/stew"
+use_latest_release = true
+prefix = "v"
