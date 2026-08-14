@@ -3,7 +3,7 @@
 pkgname=grokbot-linux-port-bin
 pkgver=0.20.0
 pkgrel=1
-pkgdesc="Grok Bot desktop — wine-less Linux port (prebuilt tarball from GitHub Releases)"
+pkgdesc="Grok Bot desktop: wine-less Linux port (prebuilt tarball from GitHub)"
 arch=('x86_64')
 url="https://github.com/Nichokas/grokbot-linux-port"
 license=('custom')
@@ -29,9 +29,9 @@ package() {
   fi
 
   install -dm755 "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin" \
-                 "${pkgdir}/usr/share/applications" \
-                 "${pkgdir}/usr/share/icons/hicolor/256x256/apps" \
-                 "${pkgdir}/usr/share/licenses/${pkgname}"
+    "${pkgdir}/usr/share/applications" \
+    "${pkgdir}/usr/share/icons/hicolor/256x256/apps" \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cp -a "${staged}/." "${pkgdir}/opt/${pkgname}/"
   # Some tarballs keep electron as 'grok-bot' already; normalize
@@ -43,7 +43,7 @@ package() {
   ln -sf "/opt/${pkgname}/grok-bot" "${pkgdir}/usr/bin/grok-bot"
   ln -sf "/opt/${pkgname}/grok-bot" "${pkgdir}/usr/bin/grokbot"
 
-  cat > "${pkgdir}/usr/share/applications/grok-bot.desktop" <<DESKTOP
+  cat >"${pkgdir}/usr/share/applications/grok-bot.desktop" <<DESKTOP
 [Desktop Entry]
 Name=Grok Bot
 GenericName=Grok Bot
@@ -60,8 +60,10 @@ DESKTOP
   local icon=""
   for cand in \
     "${staged}/resources/app.asar.unpacked/dist/renderer/assets/app-icon-"*.png \
-    "${staged}/grok-bot.png" \
-  ; do [[ -f "${cand}" ]] && { icon="${cand}"; break; } ; done
+    "${staged}/grok-bot.png"; do [[ -f "${cand}" ]] && {
+      icon="${cand}"
+      break
+    }; done
   if [[ -z "${icon}" ]]; then
     icon="$(find "${staged}" -name 'app-icon*.png' -print -quit 2>/dev/null || true)"
   fi
@@ -69,7 +71,7 @@ DESKTOP
     install -Dm644 "${icon}" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/grok-bot.png"
   fi
 
-  cat > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<LICENSE
+  cat >"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<LICENSE
 Grok Bot is proprietary software. This package fetches the prebuilt Linux
 tarball published at https://github.com/Nichokas/grokbot-linux-port/releases.
 See upstream terms at https://grok.com and inside resources/app.asar.
