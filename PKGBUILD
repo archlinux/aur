@@ -2,7 +2,7 @@
 
 pkgname=lmm-api-web-bin
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='LMM API production web frontend (prebuilt)'
 arch=('any')
 url='https://github.com/LIghtJUNction/api.lmm.best'
@@ -20,7 +20,7 @@ source=(
   "${_artifact}::${_release_base}/${_artifact}"
   "${_artifact}.sha256::${_release_base}/${_artifact}.sha256"
   "${_artifact}.sigstore.json::${_release_base}/${_artifact}.sigstore.json"
-  'lmm-api-web-activate'
+  "lmm-api-web-activate::${url}/raw/refs/tags/${_release_tag}/packaging/aur/lmm-api-web-bin/lmm-api-web-activate"
 )
 noextract=("${_artifact}")
 sha256sums=(
@@ -43,7 +43,7 @@ prepare() {
       "${url}/.github/workflows/release-web.yml@refs/tags/${_release_tag}" \
     --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' \
     "${_artifact}"
-  cp -- lmm-api-web-activate lmm-api-web-activate.local
+  install -m0755 lmm-api-web-activate lmm-api-web-activate.local
   bsdtar -xf "${_artifact}"
   [[ -f ${srcdir}/dist/index.html ]]
   [[ -x ${srcdir}/lmm-api-web-activate.local ]]
