@@ -5,21 +5,27 @@
 # Contribute : Daniel Kamil Kozar <dkk089@gmail.com>
 
 pkgname=qpxtool-speed47-git
-pkgver=0.8.1.pl7.r1.gf35f02a
+pkgver=0.8.1.pl8.r0.gae6f7b4
 pkgrel=1
 pkgdesc="Access to all available Quality Checks (Q-Checks) on written and blank media, that are available for your drive, speed47 fork"
 arch=(x86_64)
 url="https://github.com/speed47/qpxtool"
 license=(GPL-2.0-or-later)
-depends=(qt6-base glibc libstdc++ libgcc libpng)
-makedepends=(git qt6-tools)
+depends=(
+    glibc
+    libgcc
+    libpng
+    libstdc++
+    qt6-base
+    )
+makedepends=(
+    git
+    qt6-tools
+    )
 provides=(qpxtool)
 conflicts=(qpxtool)
 source=("git+https://github.com/speed47/qpxtool.git")
 sha256sums=('SKIP')
-
-# NB Original upstream have not made any more commits after v0.8.1 on 2020.11.10
-# https://sourceforge.net/p/qpxtool/code/ci/master/tree/
 
 pkgver() {
   cd qpxtool
