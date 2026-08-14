@@ -1,6 +1,6 @@
 pkgbase = comhad
 	pkgdesc = S3 TUI client
-	pkgver = 0.1.2
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Eoin-McMahon/comhad
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = comhad
 	depends = openssl
 	provides = comhad
 	options = !lto
-	source = comhad-0.1.2.tgz::https://github.com/Eoin-McMahon/comhad/archive/v0.1.2.tar.gz
-	sha256sums = 05485401baf65d45c65dc890dcc083046b2cc0d32d2c753bf45f9c46f117eb76
+	source = comhad-0.2.1.tgz::https://github.com/Eoin-McMahon/comhad/archive/v0.2.1.tar.gz
+	sha256sums = f0667a657d7f759820a49c2aea7ede6a14c863296cf88ff9b99a4419ed38b647
 
 pkgname = comhad
