@@ -2,7 +2,7 @@
 
 _pkgname="DaBaDee"
 pkgname=${_pkgname,,}
-pkgver=1.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="DaBaDee is a simple deduplication tool/storage for files. It uses SHA256* to hash the files and store them in the storage, replacing the original path with a hardlink to the storage location."
 arch=(any)
@@ -12,9 +12,9 @@ license=("Apache-2.0")
 source=("${pkgname}_${pkgver}::${url}/releases/download/v${pkgver}/dabadee"
 		"LICENSE_${pkgver}::${_urlraw}/LICENSE"
 		"README_${pkgver}::${_urlraw}/README.md")
-sha256sums=('bbf06e67390cca45ffb7a97a23e71c83e19e0b52c93588f815ed11a118c718de'
+sha256sums=('b98a01d361f5d22440131d70b49fadc02141951f7007b1c268c72ce4c4c9976b'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
-            'efcd320dacd7dc24f2c1a1e8f15c92ea24e2954338200e2ebd6e697b44f1d891')
+            '2073cf33372add347c4cd0c4223624e0db3751112b0bdee86d91fb16a214c40a')
 
 build() {
   chmod +x ${pkgname}_${pkgver}
