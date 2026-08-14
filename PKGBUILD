@@ -14,7 +14,7 @@
 # above the release it came after and says on sight what it is.
 
 pkgname=viewport-chromium-git
-pkgver=0.1.5.r0.g0000000
+pkgver=0.1.5.r2.g4fa16d3
 pkgrel=1
 pkgdesc='Wayland compositor whose shell is a web page — Chromium, driven as a child process (git)'
 arch=('x86_64' 'aarch64')
@@ -87,8 +87,13 @@ source=("viewport::git+https://github.com/codebam/viewport.git")
 sha256sums=('SKIP')
 
 # The version, read off the checkout rather than written here: the last tag,
-# the distance from it, and the commit. makepkg runs this after fetching, so
-# the `pkgver=` above is only what an un-updated recipe reports.
+# the distance from it, and the commit.
+#
+# makepkg runs this after fetching and rewrites the `pkgver=` above with what
+# it returns, so the number in the recipe is whatever the last person to build
+# it saw — one commit behind by construction, which is what every VCS package
+# in the AUR carries. It is a marker, not a claim: what gets installed is
+# always what `main` says at build time.
 pkgver() {
   cd "$srcdir/viewport"
   git describe --long --tags --abbrev=7 \
