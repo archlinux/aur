@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wagner <philipp@wagnersnetz.de>
 pkgname=kst4contest-git
-pkgver=1.42.0.r234.gf8c04e7
+pkgver=1.42.0.r235.g2090347
 pkgrel=1
 pkgdesc="ON4KST Chat Client for VHF/UHF contest operation (git)"
 arch=('x86_64')
@@ -40,7 +40,7 @@ build() {
         --main-jar app.jar \
         --main-class kst4contest.view.Kst4ContestApplication \
         --module-path target/dist-libs \
-        --add-modules javafx.controls,javafx.graphics,javafx.fxml,javafx.web,javafx.media,java.sql,java.net.http,jdk.crypto.ec \
+        --add-modules javafx.controls,javafx.graphics,javafx.fxml,javafx.web,javafx.media,java.sql,java.net.http,jdk.crypto.ec,jdk.net \
         --dest dist
 }
 
