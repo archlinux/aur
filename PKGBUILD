@@ -2,7 +2,7 @@
 _projectname='kiota-python'
 _packagename='microsoft-kiota-serialization-text'
 pkgname="python-$_packagename"
-pkgver='1.11.7'
+pkgver='1.11.8'
 pkgrel='1'
 pkgdesc='Microsoft Kiota Text Serialization library'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 	'change-flit-upper-bound.diff'
 	'hardcode-version.diff'
 )
-b2sums=('ccb8793c500c8dc5901f93542c69fbdb15de7dac116ee9ae84c52374e0f0d6f88047213c27e72fef75e1a6ef42ac325d621ada719c0c551ec66d5e966939169d'
+b2sums=('b842bdd21897e4246b1fbe4ff38d67afdb8d2a678d9b5d099764996a19a5ed160c4251d34dfaa2d652abcaa891dc09e9806210c1c290417c0f318865acb87118'
         'e20e9f40b37ea3793af4ee61572499b9f17a5a3e14b353817633ac4f82afa9b4aa68ab302352e9830fd868d88c8600e185c23ab749cd2672ef11f1b0160e05f9'
         '713f73357aca8fc2696a658796db14a6c4dd548de0a81136ad9d2758d04133b5a9f65e2afb0ca029962dae7baa88057fb1446d55693d496e2f9b4fd3710ef2c8')
 
