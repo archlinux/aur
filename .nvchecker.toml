@@ -1,0 +1,5 @@
+[trasher-bin]
+source = "github"
+github = "ClementNerma/Trasher"
+use_latest_release = true
+prefix = "v"
