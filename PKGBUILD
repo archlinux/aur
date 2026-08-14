@@ -22,6 +22,8 @@ license=('MIT')
 provides=("${_appname}")
 conflicts=("${_appname}")
 
+optdepends=('jobman-diagnose')
+
 options=('!strip')
 
 backup=("etc/${_appname}/${_appname}.yml")
@@ -49,6 +51,7 @@ package() {
 	done
 
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 docs/CONFIGURATION.md "${pkgdir}/usr/share/doc/${pkgname}/CONFIGURATION.md"
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 THIRD_PARTY_NOTICES.md "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES.md"
