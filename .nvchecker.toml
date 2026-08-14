@@ -1,0 +1,5 @@
+[toggl-bin]
+source = "github"
+github = "sachaos/toggl"
+use_latest_release = true
+prefix = "v"
