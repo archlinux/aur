@@ -1,7 +1,7 @@
 # Maintainer: hyperpuncher
 
 pkgname=pi-ui-bin
-pkgver=0.26.1
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Minimal GUI for pi"
 arch=('x86_64' 'aarch64')
@@ -49,10 +49,10 @@ sha256sums=(
 )
 
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-x64.tar.zst")
-sha256sums_x86_64=('32c94a3c36dd313a75a5d7abbb8008d3cb942c404dc81c7226f1bf3f81977d56')
+sha256sums_x86_64=('07587f61df19f79bd1c33c413809dbfe732d8a2f275c17afb9abd12629355acc')
 
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-arm64.tar.zst")
-sha256sums_aarch64=('b20ea9109fc76c9b99654cbf70a0f6d7180fe599cbbf963861d9f863ebb89b09')
+sha256sums_aarch64=('ed15c382f73fa6766686255b099c6767ba13c5f125919d586fe412a1be19763d')
 
 package() {
   install -d "$pkgdir/usr/lib/pi-ui"
