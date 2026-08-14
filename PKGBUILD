@@ -134,9 +134,9 @@
 
 # Kernel version
 _kernel_major=7.1
-_kernel_minor=3
+_kernel_minor=8
 # Tachyon patches version
-_tachyon=7.1.3-1604
+_tachyon=7.1.8-1606
 # Source directory names
 _src_linux=linux-${_kernel_major}
 
@@ -165,7 +165,7 @@ source=(
 sha256sums=(
     "691f44797fbe790dc8a321604c927087526ad27b6d649925d60f8eed0a2564a0"
     "SKIP"
-    "bc6364665d624e8664b2c4261cc3d113547ffd7fbb83e67477709c3c879e61e7"
+    "5e309425a43b60962fca0629a870ddd287b91ae356dc625bf40df0b0c8c7a75c"
     "SKIP"
 )
 
