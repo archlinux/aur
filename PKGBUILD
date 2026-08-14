@@ -2,7 +2,7 @@
 
 pkgname=soteria-bin
 _pkgname=soteria
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A GTK-based polkit authentication agent (prebuilt binary)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
 )
 
 sha256sums=(
-  '9050e3d379734b0475aa8c86134c4b9c3821c896934cfb0250170eef678c2b3e'
+  'e7df28ea8a15549947af78c0d033a86f16069453b3284f61a481ecc2b9f37ad7'
   'SKIP'
   'SKIP'
 )

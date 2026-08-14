@@ -1,6 +1,6 @@
 pkgbase = soteria-bin
 	pkgdesc = A GTK-based polkit authentication agent (prebuilt binary)
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/ImVaskel/soteria
 	install = soteria-bin.install
@@ -11,10 +11,10 @@ pkgbase = soteria-bin
 	provides = soteria
 	conflicts = soteria
 	conflicts = soteria-git
-	source = soteria-0.3.1-linux-x86_64.tar.gz::https://github.com/ocean-sudo/soteria/releases/download/v0.3.1/soteria-0.3.1-linux-x86_64.tar.gz
+	source = soteria-0.3.2-linux-x86_64.tar.gz::https://github.com/ocean-sudo/soteria/releases/download/v0.3.2/soteria-0.3.2-linux-x86_64.tar.gz
 	source = soteria.service
 	source = soteria-bin.install
-	sha256sums = 9050e3d379734b0475aa8c86134c4b9c3821c896934cfb0250170eef678c2b3e
+	sha256sums = e7df28ea8a15549947af78c0d033a86f16069453b3284f61a481ecc2b9f37ad7
 	sha256sums = SKIP
 	sha256sums = SKIP
 
