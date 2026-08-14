@@ -2,7 +2,7 @@
 # Comaintainer: Nick Black <dankamongmen@gmail.com>
 
 pkgname=notcurses-git
-pkgver=v3.0.16.r6.ge6aeee519
+pkgver=v3.0.17.r22.gb26048eeb
 pkgrel=1
 pkgdesc="Blingful TUI/character graphics library"
 url="https://nick-black.com/dankwiki/index.php/Notcurses"
