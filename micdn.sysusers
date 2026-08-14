@@ -1,2 +1,2 @@
-g/beangle r
-u/micdn u r g/beangle - /var/lib/micdn - - "Micdn CDN server"
+g beangle -
+u micdn - "Micdn CDN server" /var/lib/micdn /usr/sbin/nologin

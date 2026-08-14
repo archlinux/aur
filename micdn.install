@@ -8,6 +8,15 @@ post_install() {
   systemd-sysusers micdn.conf 2>/dev/null || :
   systemd-tmpfiles --create micdn.conf 2>/dev/null || :
 
+  # 兜底：sysusers 解析失败或未生效时，确保服务依赖的 micdn/beangle 存在
+  if ! getent group beangle >/dev/null 2>&1; then
+    groupadd -r beangle 2>/dev/null || :
+  fi
+  if ! getent passwd micdn >/dev/null 2>&1; then
+    useradd -r -g beangle -d /var/lib/micdn -s /usr/sbin/nologin \
+      -c "Micdn CDN server" micdn 2>/dev/null || :
+  fi
+
   if [ -d /var/lib/micdn ]; then
     chown -R micdn:beangle /var/cache/micdn /var/lib/micdn /var/log/micdn 2>/dev/null || :
     chmod 2775 /var/cache/micdn /var/cache/micdn/asset /var/cache/micdn/www 2>/dev/null || :
