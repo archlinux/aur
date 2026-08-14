@@ -1,6 +1,6 @@
 pkgbase = matlab-terminal-server-bin
 	pkgdesc = Use a terminal in MATLAB® to run command-line interface tools (server)
-	pkgver = 0.3.0
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/matlab/terminal-in-matlab
 	arch = x86_64
@@ -8,17 +8,17 @@ pkgbase = matlab-terminal-server-bin
 	makedepends = slsa-verifier
 	depends = glibc
 	depends = matlab-release>=R2024b
-	provides = matlab-terminal-server=0.3.0
+	provides = matlab-terminal-server=0.3.3
 	conflicts = matlab-terminal-server
-	source = matlab-terminal-server-0.3.0-README.md::https://github.com/matlab/terminal-in-matlab/raw/refs/tags/v0.3.0/README.md
-	source = matlab-terminal-server-0.3.0-LICENSE.md::https://github.com/matlab/terminal-in-matlab/raw/refs/tags/v0.3.0/LICENSE.md
-	source = matlab-terminal-server-0.3.0-multiple.intoto.jsonl::https://github.com/matlab/terminal-in-matlab/releases/download/v0.3.0/multiple.intoto.jsonl
-	source = matlab-terminal-server-0.3.0-checksums.txt::https://github.com/matlab/terminal-in-matlab/releases/download/v0.3.0/checksums.txt
-	sha256sums = 859ccff34de643af437bb890ffc26ce31914070ccae70b9ada4d2ba936925560
+	source = matlab-terminal-server-0.3.3-README.md::https://github.com/matlab/terminal-in-matlab/raw/refs/tags/v0.3.3/README.md
+	source = matlab-terminal-server-0.3.3-LICENSE.md::https://github.com/matlab/terminal-in-matlab/raw/refs/tags/v0.3.3/LICENSE.md
+	source = matlab-terminal-server-0.3.3-multiple.intoto.jsonl::https://github.com/matlab/terminal-in-matlab/releases/download/v0.3.3/multiple.intoto.jsonl
+	source = matlab-terminal-server-0.3.3-checksums.txt::https://github.com/matlab/terminal-in-matlab/releases/download/v0.3.3/checksums.txt
+	sha256sums = 030cd967061d14496025bfc60fe61eb22cf48a34a2c2606b99cce9344520d19f
 	sha256sums = 9f70a402df6f13a7e8135705677b96ac1ade94f60ad9c29da9a1cce2a3dfdb9f
-	sha256sums = aae81235a37c2c272524223c75a77d62fdd7d8ee04a12b46e9f5cb93c65ebbcc
-	sha256sums = cb6be287c4caa6065bb7edf625c2f3f019c007dc99fd50bca9d4295f6466ca3e
-	source_x86_64 = matlab-terminal-server-0.3.0-glnxa64::https://github.com/matlab/terminal-in-matlab/releases/download/v0.3.0/matlab-terminal-server-glnxa64
-	sha256sums_x86_64 = 62cb2538d0dd3e72f630e3b9bbaffe63e2175c553633011aaeee9f474fc232ae
+	sha256sums = e8ca114a855173fa64e19b89445909918eb5d189f2d1a77634376f22c5b8a849
+	sha256sums = 4f29f8a3cfbc58548607f9097ef1c03ec9b27d62fd21f190e63dc361d6fb4c98
+	source_x86_64 = matlab-terminal-server-0.3.3-glnxa64::https://github.com/matlab/terminal-in-matlab/releases/download/v0.3.3/matlab-terminal-server-glnxa64
+	sha256sums_x86_64 = 008cb2930b9539db857cb59640c60df129d946f08c01262c49216284932ee306
 
 pkgname = matlab-terminal-server-bin

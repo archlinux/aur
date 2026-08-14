@@ -2,7 +2,7 @@
 
 _pkgname="matlab-terminal-server"
 pkgname="${_pkgname}-bin"
-pkgver=0.3.0
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Use a terminal in MATLAB® to run command-line interface tools (server)"
 arch=(
@@ -35,11 +35,11 @@ source=(
 source_x86_64=(
   "${_pkgsrc}-glnxa64::${url}/releases/download/v${pkgver}/${_pkgname}-glnxa64"
 )
-sha256sums=('859ccff34de643af437bb890ffc26ce31914070ccae70b9ada4d2ba936925560'
+sha256sums=('030cd967061d14496025bfc60fe61eb22cf48a34a2c2606b99cce9344520d19f'
             '9f70a402df6f13a7e8135705677b96ac1ade94f60ad9c29da9a1cce2a3dfdb9f'
-            'aae81235a37c2c272524223c75a77d62fdd7d8ee04a12b46e9f5cb93c65ebbcc'
-            'cb6be287c4caa6065bb7edf625c2f3f019c007dc99fd50bca9d4295f6466ca3e')
-sha256sums_x86_64=('62cb2538d0dd3e72f630e3b9bbaffe63e2175c553633011aaeee9f474fc232ae')
+            'e8ca114a855173fa64e19b89445909918eb5d189f2d1a77634376f22c5b8a849'
+            '4f29f8a3cfbc58548607f9097ef1c03ec9b27d62fd21f190e63dc361d6fb4c98')
+sha256sums_x86_64=('008cb2930b9539db857cb59640c60df129d946f08c01262c49216284932ee306')
 
 verify() {
   local source_array="source_${CARCH}[0]"
