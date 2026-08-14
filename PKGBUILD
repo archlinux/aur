@@ -2,7 +2,7 @@
 
 _pkgname="speedtest-go"
 pkgname="${_pkgname}-bin"
-pkgver=1.7.10
+pkgver=1.7.11
 pkgrel=1
 pkgdesc="CLI and Go API to test internet speed using speedtest.net"
 arch=(
@@ -57,16 +57,16 @@ source_riscv64=(
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz"
 )
-sha256sums_aarch64=('8aa7f95b1fd57ebf79960017aa52d9a07d4372693dbfd40fae84464122d7e425')
-sha256sums_armv5h=('a82c2557663d8c17734e78cf6f916659d16c44e7f7e23fa005a635c4dfe34c7e')
-sha256sums_armv6h=('860742356e639a550fb740c4e09391179e87ece79849d879aa77ce9edf2aeb71')
-sha256sums_armv7h=('3dd94ed28bf0bd8e052b214de098a19a15d3027820f3e81c8cc17084e8692f55')
-sha256sums_i686=('9f4ac3f94de6518d081c4903dc46927dcb683108cbf5d37c54035b3ddbbb8ac0')
-sha256sums_loong64=('f7db2d63d86e409e624e784be3a0fcf61a2af321849fce363102ff5d6fcda29c')
-sha256sums_powerpc64=('1f32f951bdebc897fbbbc87b6d8e91c95d664ca22c111aa174173d9ffb11c86e')
-sha256sums_powerpc64le=('4b72e4e1c06dff59e3a64dd99911f8813ed09afced98fde79df4fa352e781252')
-sha256sums_riscv64=('e8be88d07764fa459d2432d9e2bb1b6378a39d5f0e028062c706e90c1ea1d95f')
-sha256sums_x86_64=('f349b09e20c55e2445c38592c96807378f53c090cc6a52b8fb14346b40b32ff2')
+sha256sums_aarch64=('0cece989a5eb688f39bec33ea05fee9f82c5882c8aaa0fd580c9461583363fc4')
+sha256sums_armv5h=('3155c31059e6d7274a53843829f3c7c2a74e9eaaf3d2651bd0588f814ac2724b')
+sha256sums_armv6h=('fa1a1fd3175b2bd59118a04ace1639bbedbcacfbd84171bc46193c01bb373e34')
+sha256sums_armv7h=('e777996e33e40b78324f1ed6dcdba3a1279ff9eaa9fe8d9b4b0fe5965353f83f')
+sha256sums_i686=('51751fa102834133d820f428c1ae0e38f17577cdb726b09bc95d91a60dd997f5')
+sha256sums_loong64=('0d0a8a574335122cb7aef77ecd3c2841f4ea9e8d41d90ab265ed7c22418d6f86')
+sha256sums_powerpc64=('3ea06f788a11a3e2e3d87de64551cba64dde0d30779f724815288560639566d9')
+sha256sums_powerpc64le=('efb02fffbff427d67d18612f55af28528b5ca57fa52a8307eb01085e608cc491')
+sha256sums_riscv64=('ca68dd04166bd680bbdb9e581d1105aa21f764ceb5d1852451110604f8e74069')
+sha256sums_x86_64=('86055ee85fac5aaa27d132224a8296c1a416c4bf0a3809c07af39d97cd0cf96c')
 
 package() {
   cd "${srcdir}"
