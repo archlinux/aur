@@ -5,11 +5,11 @@ pkgver=0.20.2
 pkgrel=1
 pkgdesc="Sail architecture definition language"
 arch=('x86_64')
-url="https://opam.ocaml.org"
-license=(custom)
-depends=('dune' 'ocaml' 'opam')
+url="https://github.com/rems-project/sail"
+license=(BSD-2-Clause)
+depends=('ocaml')
 options=('!strip')
-makedepends=('git')
+makedepends=('git' 'dune' 'opam')
 source=("git+https://github.com/rems-project/sail.git#branch=sail2")
 sha512sums=('SKIP')
 
