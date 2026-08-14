@@ -5,7 +5,7 @@
 
 pkgname=snypr-git
 _pkgname=snypr
-pkgver=0.1.0.r1.g285434b
+pkgver=0.1.0.r2.gf591da1
 pkgrel=1
 pkgdesc="Screenshot, annotation, and live-drawing tool for Hyprland and wlroots compositors (git)"
 arch=('x86_64')
