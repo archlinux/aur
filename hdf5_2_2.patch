@@ -1,0 +1,11 @@
+--- geant4-v11.4.2/source/externals/g4tools/include/toolx/hdf5/hdf5_h	2026-06-16 13:33:25.000000000 +0100
++++ geant4-v11.4.2/source/externals/g4tools/include/toolx/hdf5/hdf5_h_new	2026-08-13 17:11:28.912826613 +0100
+@@ -6,7 +6,7 @@
+ 
+ #include <hdf5.h>
+ 
+-#if (H5_VERS_MAJOR>=1) && (H5_VERS_MINOR<=6)
++#if (H5_VERS_MAJOR==1) && (H5_VERS_MINOR==6)
+ #define toolx_H5Dopen           H5Dopen
+ #define toolx_H5Dcreate         H5Dcreate
+ #define toolx_H5Acreate         H5Acreate
