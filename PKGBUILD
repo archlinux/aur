@@ -1,6 +1,6 @@
 # Maintainer: sougstron
 pkgname=kanban4ai
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Native kanban board CLI and TUI driven by AI coding agents'
 arch=('x86_64' 'aarch64')
@@ -10,12 +10,13 @@ depends=('gcc-libs')
 makedepends=('cargo')
 optdepends=(
   'tmux: attachable background agent sessions'
+  'curl: subscription limits row for claude and grok'
   'libnotify: desktop notifications through notify-send'
   'wl-clipboard: paste images under Wayland'
   'xclip: paste images under X11'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('020a3e2e4b8b1d16b2b85f533371e72bd4a8a1bbf66cf108280a7044a0b538ad')
+sha256sums=('248d06f3a4982b539e08c79afca07a80433e8606e77b0748b687d04c79b94d31')
 
 prepare() {
   cd "$pkgname-$pkgver"
