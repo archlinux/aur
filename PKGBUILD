@@ -1,7 +1,7 @@
 # Maintainer: gcrtnst <52910071+gcrtnst@users.noreply.github.com>
 
 pkgname='pacorphan'
-pkgver='0.1.0'
+pkgver='0.2.0'
 pkgrel=1
 pkgdesc='A smarter alternative to "pacman -Qdt"'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'pacman')
 makedepends=('git' 'go')
 checkdepends=('util-linux')
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha256sums=('87340bfb9aea00209609f36aec7a3bbaab352f46a480a0e97915c45543b72110')
+sha256sums=('af092c8a4a37b20f5b6cfccdbbb9596ad710ebacbe3a94911ef7b33ce6fa4485')
 
 _gomodflags=(
   '-modcacherw'
@@ -72,4 +72,5 @@ package() {
 
   install -vDm755 -t "$pkgdir/usr/bin/" "build/$pkgname"
   install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+  install -vDm644 -t "$pkgdir/usr/share/man/man1/" man/man1/pacorphan.1
 }
