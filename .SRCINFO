@@ -1,0 +1,14 @@
+pkgbase = redukt
+	pkgdesc = Command-line tool for redacting sensitive data
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://git.glsk.net/glsk/redukt
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	source = redukt-0.1.2.tar.gz::https://git.glsk.net/glsk/redukt/archive/v0.1.2.tar.gz
+	sha256sums = 3f14a0eaf026450c1220047fc9c3abd3e78a11decac90c9c870ad99f1b3acacc
+
+pkgname = redukt
