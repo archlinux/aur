@@ -1,7 +1,7 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
 pkgname=python-google-cloud-bigquery
-pkgver=3.42.3
+pkgver=3.43.0
 pkgrel=1
 pkgdesc='Google BigQuery API client library'
 arch=(any)
@@ -40,7 +40,7 @@ optdepends=(
   'python-tqdm: tqdm support'
 )
 source=(${pkgname}-${pkgver}.tar.gz::${url%/tree*}/archive/${_pkgname}-v${pkgver}.tar.gz)
-b2sums=('bf20c6300209ec364e7769dc21796ced3911950fc958a6ed0c7e55e9f412cf1aa9cebe92f51e562aa2a7bac7d120cfd71614f4cd3bf9e40168cab193ee156e31')
+b2sums=('3d64e44a6a46438462b30ba780c0bf59dd97e49eff8f10ccdb82da24186f526b2a7c2b78e248265e42f62c789c95b9d89b0fba25881de08444f5c58759e8b5f3')
 
 build() {
   cd ${_reponame}-${_pkgname}-v${pkgver}/packages/${_pkgname}
