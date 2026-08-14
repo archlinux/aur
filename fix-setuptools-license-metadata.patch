@@ -1,0 +1,16 @@
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -8,12 +8,11 @@
+ description = "Multibase implementation for Python"
+ readme = "README.rst"
+ authors = [{ name = "Dhruv Baldawa", email = "dhruv@dhruvb.com" }]
+-license = { text = "MIT" }
++license = "MIT"
+ keywords = ["multibase"]
+ classifiers = [
+     "Development Status :: 2 - Pre-Alpha",
+     "Intended Audience :: Developers",
+-    "License :: OSI Approved :: MIT License",
+     "Natural Language :: English",
+     "Programming Language :: Python :: 3",
+     "Programming Language :: Python :: 3.10",
