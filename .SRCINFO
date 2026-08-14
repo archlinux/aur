@@ -1,6 +1,6 @@
 pkgbase = rgd
 	pkgdesc = Installed game detection utility for Linux
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/rolv-apneseth/rgd
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rgd
 	depends = sqlite
 	options = !debug
 	options = !lto
-	source = rgd-1.3.0.tar.gz::https://github.com/rolv-apneseth/rgd/archive/v1.3.0.tar.gz
-	sha512sums = e35520fbbf2d66a9fe740f52867d52819cb524765544bb04a683347d01aac235f1166a00650abd37a365523949d7f7a7059d6c0a97ca2de9531512ddd3ed7f30
+	source = rgd-1.4.0.tar.gz::https://github.com/rolv-apneseth/rgd/archive/v1.4.0.tar.gz
+	sha512sums = af125fbdf1c3960e748e9d084c5abd7ecccf5b5ab2f23df4354269af2913db2a94f6bda21e968af3a6a2794b7c4a9a6c19ab06ff08494defb7169c61d7269004
 
 pkgname = rgd
