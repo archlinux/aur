@@ -1,0 +1,25 @@
+pkgbase = mcomix-rs
+	pkgdesc = A user-friendly, customizable comic book image viewer (Rust/GTK4 port)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/rippa-the-hutt/mcomix-rs
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = gtk4
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = pango
+	depends = cairo
+	depends = xz
+	depends = bzip2
+	optdepends = unrar: for CBR/RAR archive support
+	optdepends = p7zip: for 7Zip/LHA archive support
+	optdepends = mupdf-tools: for PDF support
+	conflicts = mcomix3
+	replaces = mcomix3
+	source = mcomix-rs-0.3.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/rippa-the-hutt/mcomix-rs/releases/download/v0.3.0/mcomix-rs-0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	source = mcomix-rs-src-0.3.0.tar.gz::https://github.com/rippa-the-hutt/mcomix-rs/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 7e626c6a5d0e89e6037f70fb22458df9c61692b619fab6d5bc39b0247bbecc4a
+	sha256sums = 91948412c9ccd046444b408d329b51bb1a1bfa4cd9d2bfc751ea9f9c7244dfbd
+
+pkgname = mcomix-rs
