@@ -2,7 +2,7 @@
 
 pkgname=lmm-api-go-bin
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='LMM API Go backend, native CLI, systemd service, and web frontend (prebuilt)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/LIghtJUNction/api.lmm.best'
@@ -74,7 +74,8 @@ package() {
   ln -s lmm-api-go "${pkgdir}/usr/bin/lmm-api"
   install -Dm0644 "${bundle}/lmm-api.service" \
     "${pkgdir}/usr/lib/systemd/system/lmm-api.service"
-  install -Dm0600 "${bundle}/lmm-api-go.env" \
+  install -d -m0700 "${pkgdir}/etc/lmm-api-go"
+  install -m0600 "${bundle}/lmm-api-go.env" \
     "${pkgdir}/etc/lmm-api-go/lmm-api-go.env"
 
   install -d -m0755 "${pkgdir}/usr/share/lmm-api-go/frontend-dist"

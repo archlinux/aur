@@ -1,7 +1,7 @@
 pkgbase = lmm-api-go-bin
 	pkgdesc = LMM API Go backend, native CLI, systemd service, and web frontend (prebuilt)
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LIghtJUNction/api.lmm.best
 	arch = x86_64
 	arch = aarch64
