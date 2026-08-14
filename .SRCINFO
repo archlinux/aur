@@ -1,13 +1,16 @@
 pkgbase = python-httpagentparser
 	pkgdesc = Extracts OS browser information from the user agent string.
-	pkgver = 1.9.5
+	pkgver = 1.9.9
 	pkgrel = 1
-	url = http://pypi.python.org/pypi/httpagentparser
+	url = https://github.com/shon/httpagentparser/tree/master
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = git
 	depends = python
-	source = https://pypi.python.org/packages/source/h/httpagentparser/httpagentparser-1.9.5.tar.gz
-	sha256sums = 53cefd9d65990f6fe59c0378cad8ea1b9df8f770d2e8bd9d8762edae033be80a
+	source = git+https://github.com/shon/httpagentparser#tag=v1.9.9
+	sha256sums = cc68e584e05d53fee2590b3e5d63f3318ee1e94a8008dc57b58383131e00fb0a
 
 pkgname = python-httpagentparser
