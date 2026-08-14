@@ -1,6 +1,6 @@
 pkgbase = libggml-cuda-bin
 	pkgdesc = Tensor library for machine learning with OpenBLAS, Vulkan, and CUDA
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/OneNoted/libggml-cuda-bin
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = libggml-cuda-bin
 	depends = spirv-headers
 	depends = vulkan-driver
 	depends = vulkan-icd-loader
-	provides = libggml-cuda-bin=0.19.0-1
+	provides = libggml-cuda-bin=0.20.0-1
 	provides = libggml-cuda-bin=0.10.0-1
 	provides = libggml-cuda-bin=0.9.11-2
-	provides = libggml=0.19.0
-	provides = libggml-cuda-git=0.19.0
+	provides = libggml=0.20.0
+	provides = libggml-cuda-git=0.20.0
 	conflicts = libggml
 	conflicts = libggml-cuda-git
-	source = libggml-cuda-bin-0.19.0-1-x86_64.tar.zst::https://github.com/OneNoted/libggml-cuda-bin/releases/download/v0.19.0-1/libggml-cuda-bin-0.19.0-1-x86_64.tar.zst
-	sha256sums = 3c9d2976bfdcab183461e78b6501663e2e6faff503846f077a14acc49ccb759e
+	source = libggml-cuda-bin-0.20.0-1-x86_64.tar.zst::https://github.com/OneNoted/libggml-cuda-bin/releases/download/v0.20.0-1/libggml-cuda-bin-0.20.0-1-x86_64.tar.zst
+	sha256sums = b490242db410711f8b9755346b1cfd559466842dd8429db92fd2fa9f98b72bf8
 
 pkgname = libggml-cuda-bin
