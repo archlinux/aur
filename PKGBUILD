@@ -1,8 +1,8 @@
 # Maintainer: Shirow MIURA <shirowmiura at gmail dot com>
 
 pkgname=deltacp
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="A copy tool designed for incremental backup of block devices by utilizing reflink (CoW)"
 url="https://codeberg.org/sharow/deltacp"
 license=('MIT')
@@ -15,7 +15,7 @@ optdepends=(
 )
 options=(zipman !debug)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('3e1f446ac785783acb4c396adcfe75a6176471784255bd0790dfb81c18b50a4a')
+sha256sums=('a7f65efe1125dfd545fead925defc6f6ee08ab4500d0877e78dd8625fce758c4')
 
 build() {
     cd "${srcdir}/${pkgname}"
@@ -25,8 +25,8 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}"
 
-    install -Dm755 deltacp -t "${pkgdir}/usr/bin/"
+    install -Dm755 deltacp        -t "${pkgdir}/usr/bin/"
     install -Dm755 inspectextents -t "${pkgdir}/usr/bin/"
-    install -Dm644 deltacp.1 -t "${pkgdir}/usr/share/man/man1/"
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm644 deltacp.1      -t "${pkgdir}/usr/share/man/man1/"
+    install -Dm644 LICENSE        -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
