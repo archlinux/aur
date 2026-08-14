@@ -1,7 +1,7 @@
 # Maintainer: buding <1259085392z@gmail.com>
 pkgname=pixelterm-c
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance terminal image/video/book browser written in C, based on the Chafa library"
 arch=('x86_64' 'aarch64')
 url="https://github.com/zouyonghe/PixelTerm-C"
