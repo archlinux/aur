@@ -1,6 +1,6 @@
 pkgbase = pacorphan
 	pkgdesc = A smarter alternative to "pacman -Qdt"
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/gcrtnst/pacorphan
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pacorphan
 	makedepends = go
 	depends = glibc
 	depends = pacman
-	source = pacorphan::git+https://github.com/gcrtnst/pacorphan#tag=v0.1.0
-	sha256sums = 87340bfb9aea00209609f36aec7a3bbaab352f46a480a0e97915c45543b72110
+	source = pacorphan::git+https://github.com/gcrtnst/pacorphan#tag=v0.2.0
+	sha256sums = af092c8a4a37b20f5b6cfccdbbb9596ad710ebacbe3a94911ef7b33ce6fa4485
 
 pkgname = pacorphan
