@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: Marcello Haddeman <haddemanmarcello@gmail.com>
+# SPDX-License-Identifier: 0BSD
 #!/bin/sh
 # Ironwail comes with a ironwail.pak file that needs to be in the same directory as the executable.
 # Unfortunately creating a symbolic link to ironwail in /usr/bin causes it to not detect the .pak in the destination folder.
