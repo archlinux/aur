@@ -7,7 +7,7 @@ _archive_suffix=cli
 pkgname=${_pkgname}-bin
 pkgdesc="A fast, configurable and intuitive fuzzy searcher"
 
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -31,8 +31,8 @@ source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.txz::${url}/releases/download/
 sha256sums=('3f8a98d8d4d9d6fcd81069c0766272c028aeefe0163839d23ef956f9417f45b9'
             '04224c79b0a1a54a37d5cf6c63bfc3bb9a497e757a870d6b68f88531c8c28607'
             '279a2edd0c76037b4c75eba36a0f6170d45ed52137348f7cf0579429aefc42be')
-sha256sums_x86_64=('7d26ca4d868df8c70f4a5503caef3d053f2b76a3e2007a9b3c4732fb490a0949')
-sha256sums_aarch64=('afdc34fb9d378107c639d31348b9938e7d6225d6ad5d0f8fcef5031956263c23')
+sha256sums_x86_64=('ff11064a03586dcb250f4d59c18930df19dd6f2f492c7e7730a8850e6cf179a1')
+sha256sums_aarch64=('8bd8923eac7753972cd00572fc7b9152ca580d87ceb7cebff56f7939db48895b')
 
 
 case ${CARCH} in
