@@ -9,14 +9,19 @@ post_install() {
     fi
     update-desktop-database > /dev/null 2>&1 || true
 
-    for process_name in TrueConf trueconf; do
-        binpid=$(ps axco pid,command | awk -v name="${process_name}" '$2 == name {print $1}')
-        if [[ -n "${binpid}" ]]; then
-            for process in ${binpid}; do
-                kill -s 50 "${process}"
-            done
-        fi
-    done
+    binpid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
+    if [ -n "$binpid" ]; then
+        for process in $binpid; do
+            kill -s 50 "$process" 
+        done
+    fi
+
+    startupbin=$(ps axco pid,command | awk '$2 == "trueconf" {print $1; }')
+    if [ -n "$startupbin" ]; then
+        for process in $startupbin; do
+            kill -s 50 "$process "
+        done
+    fi
 }
 
 post_upgrade() {
@@ -24,12 +29,22 @@ post_upgrade() {
 }
 
 pre_remove() {
-    for process_name in TrueConf trueconf; do
-        binpid=$(ps axco pid,command | awk -v name="${process_name}" '$2 == name {print $1}')
-        if [[ -n "${binpid}" ]]; then
-            for process in ${binpid}; do
-                kill "${process}"
-            done
-        fi
-    done
+    binpid=$(ps axco pid,command | awk '$2 == "TrueConf" {print $1; }')
+    if [ -n "$binpid" ]; then
+        for process in $binpid; do
+            kill "$process" 
+        done
+    fi
+
+    startupbin=$(ps axco pid,command | awk '$2 == "trueconf" {print $1; }')
+    if [ -n "$startupbin" ]; then
+        for process in $startupbin; do
+            kill "$process"
+        done
+    fi
+
+    # Remove symlinks created by post_install
+    if [ -L /usr/bin/trueconf ]; then
+        rm -f /usr/bin/trueconf
+    fi
 }
