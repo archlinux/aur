@@ -1,6 +1,6 @@
 pkgbase = libselinux
 	pkgdesc = SELinux library and simple utilities
-	pkgver = 3.10
+	pkgver = 3.11
 	pkgrel = 1
 	url = https://github.com/SELinuxProject/selinux
 	arch = i686
@@ -17,21 +17,21 @@ pkgbase = libselinux
 	makedepends = ruby
 	makedepends = xz
 	makedepends = swig
-	depends = libsepol>=3.10
+	depends = libsepol>=3.11
 	depends = pcre2
 	optdepends = python: python bindings
 	optdepends = ruby: ruby bindings
-	provides = selinux-usr-libselinux=3.10-1
+	provides = selinux-usr-libselinux=3.11-1
 	conflicts = selinux-usr-libselinux
-	source = https://github.com/SELinuxProject/selinux/releases/download/3.10/libselinux-3.10.tar.gz
-	source = https://github.com/SELinuxProject/selinux/releases/download/3.10/libselinux-3.10.tar.gz.asc
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.11/libselinux-3.11.tar.gz
+	source = https://github.com/SELinuxProject/selinux/releases/download/3.11/libselinux-3.11.tar.gz.asc
 	source = libselinux.tmpfiles.d
 	validpgpkeys = 63191CE94183098689CAB8DB7EF137EC935B0EAF
 	validpgpkeys = 68D21823342A13683AEB3E4EFB4C685B5DC1C13E
-	sha256sums = 1ef216c5b56fb7e0a51cd2909787a175a17ee391e0467894807873539ebe766b
+	sha256sums = 73d419c6e20e874adaa4019372cbd097eecf4d276e13f27ec5e67d35c0bd203c
 	sha256sums = SKIP
 	sha256sums = afe23890fb2e12e6756e5d81bad3c3da33f38a95d072731c0422fbeb0b1fa1fc
 
 pkgname = libselinux
-	provides = selinux-usr-libselinux=3.10-1
+	provides = selinux-usr-libselinux=3.11-1
 	provides = libselinux.so
