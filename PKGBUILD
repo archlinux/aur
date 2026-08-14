@@ -38,16 +38,19 @@ depends=(
   'qwt'
   'qt6-base'
 )
+
 makedepends=('git')
+
 source=(
   "$pkgname::git+https://github.com/fleasion/Fleasion.git#branch=main"
   "fleasion.desktop"
   "fleasion.png"
 )
+
 sha256sums=(
   'SKIP'
-  'SKIP'
-  'SKIP'
+  '2f9fb1f5dccb20d493f7a5a6f7a3af9c60a3e590b27ba5103a8c4876a009b9a5'
+  'ba0477c31a69cda70f507928dce99eb620c30ead0f92a53293077fdfcd3ebccb'
 )
 
 pkgver() {
