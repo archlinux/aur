@@ -1,6 +1,6 @@
 pkgbase = nah-bin
 	pkgdesc = Safety guard that blocks catastrophic coding-agent tool calls before they run
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/manuelschipper/nah
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = nah-bin
 	license = MIT
 	provides = nah
 	conflicts = nah
-	source_x86_64 = nah-1.3.0-x86_64.tar.gz::https://github.com/manuelschipper/nah/releases/download/v1.3.0/nah-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 355218c285b3b08c0ca8103b7e2beae5b7a3074e6e76d6304994f1ab9e2b1365
-	source_aarch64 = nah-1.3.0-aarch64.tar.gz::https://github.com/manuelschipper/nah/releases/download/v1.3.0/nah-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 5d6aa0148598bb76ab9c59798bd974350f99ddba3126df3ce067b54f1957fd46
+	source_x86_64 = nah-1.3.1-x86_64.tar.gz::https://github.com/manuelschipper/nah/releases/download/v1.3.1/nah-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = ebef520073fd1a53f611fce24d40a92e1c7400d12c53f86ef3c34e8216a6dcee
+	source_aarch64 = nah-1.3.1-aarch64.tar.gz::https://github.com/manuelschipper/nah/releases/download/v1.3.1/nah-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 7a3272eb6e6affc79529d694442f254ca32495b08934fa255a68eb1b960d6643
 
 pkgname = nah-bin
