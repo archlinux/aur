@@ -1,0 +1,138 @@
+# Maintainer: Nichokas <https://github.com/Nichokas>
+# Co-maintained via https://github.com/Nichokas/grokbot-linux-port
+pkgname=grokbot-linux-port
+pkgver=0.20.0
+pkgrel=1
+pkgdesc="Grok Bot desktop — wine-less Linux port (fuses win32 NSIS payload with Electron 42.1.0)"
+arch=('x86_64')
+url="https://github.com/Nichokas/grokbot-linux-port"
+license=('custom')
+depends=(
+  'alsa-lib' 'gtk3' 'nss' 'libxss' 'libxtst' 'libxrandr'
+  'libxdamage' 'libxcomposite' 'libxfixes' 'libdrm' 'mesa'
+  'libxkbcommon' 'at-spi2-core' 'cairo' 'pango'
+  'expat' 'hicolor-icon-theme'
+)
+makedepends=('p7zip' 'curl' 'unzip' 'nodejs' 'npm' 'python' 'git')
+optdepends=('libnotify: desktop notifications')
+provides=('grok-bot' 'grokbot')
+conflicts=('grokbot-linux-port-bin' 'grok-bot')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nichokas/grokbot-linux-port/archive/v${pkgver}.tar.gz")
+sha256sums=('8d6c7d1a02c8be09e3ca99e7645a6f7841591d8da73d0f594ae2052f6106cc2a')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  rm -rf dist
+  # Prevent stale extraction from previous makepkg run shadowing the new build
+  rm -rf "${srcdir}/Grok_Bot_${pkgver}_linux_x64"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  # port.sh is intentionally best-effort for @electron/rebuild (still emits
+  # the tarball on failure for CI/local debugging). For AUR packaging the
+  # native modules must be Linux-rebuilt — fail the build if any .node
+  # remains Windows-built. Allow opt-out via GROKBOT_ALLOW_BROKEN_NATIVE=1.
+  bash scripts/port.sh "${pkgver}"
+  if [[ "${GROKBOT_ALLOW_BROKEN_NATIVE:-}" != "1" ]]; then
+    local tarball="dist/Grok_Bot_${pkgver}_linux_x64.tar.gz"
+    if [[ -f "${tarball}" ]]; then
+      # Heuristic: warn if the staged tree still contains win32 .node markers
+      # (port.sh logs the rebuild outcome; this catches the silent-still-tarball case)
+      local probe_dir
+      probe_dir="$(mktemp -d)"
+      tar -xzf "${tarball}" -C "${probe_dir}" 2>/dev/null || true
+      local nodes
+      nodes="$(find "${probe_dir}" -name '*.node' -print 2>/dev/null | head -n 20)"
+      if [[ -n "${nodes}" ]]; then
+        # Best-effort: detect PE/MZ header leftovers from win32 build (vs ELF)
+        if grep -q "MZ" <<< "$(head -c 2 "${probe_dir}"/Grok_Bot_*/resources/app.asar.unpacked/**/*.node 2>/dev/null | head -c 10 || true)"; then
+          echo "error: native .node modules appear to be win32 binaries — @electron/rebuild likely failed" >&2
+          echo "hint: re-run with GROKBOT_ALLOW_BROKEN_NATIVE=1 makepkg -si to bypass, or fix the rebuild toolchain" >&2
+          rm -rf "${probe_dir}"
+          exit 1
+        fi
+      fi
+      rm -rf "${probe_dir}"
+    fi
+  fi
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Always prefer the just-built tarball; never reuse a stale sibling dir
+  local tarball="dist/Grok_Bot_${pkgver}_linux_x64.tar.gz"
+  if [[ ! -f "${tarball}" ]]; then
+    echo "error: expected tarball ${tarball} not found after build" >&2
+    exit 1
+  fi
+  rm -rf "${srcdir}/Grok_Bot_${pkgver}_linux_x64"
+  tar -xzf "${tarball}" -C "${srcdir}"
+  local staged="${srcdir}/Grok_Bot_${pkgver}_linux_x64"
+  if [[ ! -d "${staged}" ]]; then
+    staged="$(find "${srcdir}" -maxdepth 1 -type d -name "Grok_Bot_${pkgver}_linux_x64" -print -quit 2>/dev/null || true)"
+  fi
+  if [[ -z "${staged}" || ! -d "${staged}" ]]; then
+    echo "error: staged app dir not found after build" >&2
+    exit 1
+  fi
+
+  install -dm755 "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin" \
+                 "${pkgdir}/usr/share/applications" \
+                 "${pkgdir}/usr/share/icons/hicolor/256x256/apps" \
+                 "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  cp -a "${staged}/." "${pkgdir}/opt/${pkgname}/"
+  chmod +x "${pkgdir}/opt/${pkgname}/grok-bot"
+
+  # Symlink for PATH
+  ln -s "/opt/${pkgname}/grok-bot" "${pkgdir}/usr/bin/grok-bot"
+  ln -s "/opt/${pkgname}/grok-bot" "${pkgdir}/usr/bin/grokbot"
+
+  # Desktop entry — use --no-sandbox only as fallback; the wrapper prefers sandbox when available
+  cat > "${pkgdir}/usr/share/applications/grok-bot.desktop" <<DESKTOP
+[Desktop Entry]
+Name=Grok Bot
+GenericName=Grok Bot
+Comment=Grok Bot desktop agent (Linux port)
+Exec=/opt/${pkgname}/grok-bot %U
+Icon=grok-bot
+Type=Application
+Categories=Utility;Development;
+StartupWMClass=grok-bot
+MimeType=x-scheme-handler/grokbot;
+Terminal=false
+DESKTOP
+
+  # Icon — best-effort hunt (packaged tarball may embed it inside app.asar)
+  local icon=""
+  for cand in \
+    "${staged}/resources/app.asar.unpacked/dist/renderer/assets/app-icon-"*.png \
+    "${staged}/resources/app.asar.unpacked/"*.png \
+    "${staged}/grok-bot.png" \
+  ; do
+    [[ -f "${cand}" ]] && { icon="${cand}"; break; }
+  done
+  if [[ -z "${icon}" ]]; then
+    icon="$(find "${staged}" -name 'app-icon*.png' -print -quit 2>/dev/null || true)"
+  fi
+  if [[ -n "${icon}" && -f "${icon}" ]]; then
+    install -Dm644 "${icon}" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/grok-bot.png"
+  fi
+
+  # License placeholder — upstream EULA is inside app.asar; point there
+  cat > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<LICENSE
+Grok Bot is proprietary software. This AUR package redistributes no upstream
+binary itself in the -bin variant it fetches the official Windows distribution
+at build time (non-bin) or the prebuilt Linux tarball produced by
+https://github.com/Nichokas/grokbot-linux-port. See upstream terms at
+https://grok.com and inside resources/app.asar.
+LICENSE
+
+  # chrome-sandbox: makepkg strips setuid by default. Keep 4755 and instruct
+  # namcap override via !strip where needed. Use install -m4755 explicitly.
+  if [[ -f "${pkgdir}/opt/${pkgname}/chrome-sandbox" ]]; then
+    chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
+  fi
+}
