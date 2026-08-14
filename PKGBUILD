@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="matlab-terminal-server"
-pkgver=0.3.0
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Use a terminal in MATLAB® to run command-line interface tools (server)"
 arch=(
@@ -23,7 +23,7 @@ _pkgsrc="${url##*/}"
 source=(
   "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('a06c1feac51861dc1db111821a57303d201e921615a4f01ec99be4c4f2d61774')
+sha256sums=('dd866591c2ca3e4274a2899a778a4a2b80c88c8c11b8364b8e9936b6d5396db6')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
