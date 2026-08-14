@@ -1,6 +1,6 @@
 # Maintainer: ezhkov <alexcez94@gmail.com>
 pkgname=voltius
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Local-first SSH/SFTP/Serial client with E2EE sync, plugins, and no account required"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/VoltiusApp/voltius/archive/refs/tags/v$pkgver.tar.gz"
   "$pkgname.desktop"
 )
-sha256sums=('943bcd671aa0ae2fad8c50c58069f133937225beb00dc7218e746aa19e1d34b7'
+sha256sums=('45d04384c148d5bea0eefbdcfd2efa02089578db5f902469b7a67ba147eca0ef'
             '101c1683674e94e286f06627f76d0422e506afd2579620d202710bd304693f44')
 
 prepare() {
@@ -25,6 +25,7 @@ prepare() {
 }
 
 build() {
+  export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=/usr/bin/gcc
   cd "voltius-$pkgver"
   export PATH="$srcdir/npm-global/bin:$PATH"
   export TAURI_SIGNING_PRIVATE_KEY="aur-build-dummy-key"
