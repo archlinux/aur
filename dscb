@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # ==============================================================================
-# DISCORD SCRIPTING LANGUAGE (DSCB) - COMPILER & RUNTIME ENGINE
+# DISCORD SCRIPTING LANGUAGE (DSCB) - COMPILER & RUNTIME ENGINE v1.2.0
 # ==============================================================================
 
 import sys
@@ -16,6 +16,7 @@ from datetime import datetime as dt, timezone, timedelta
 import traceback
 import math
 import subprocess
+import shlex
 import textwrap
 import discord
 from discord.ext import commands
@@ -33,8 +34,13 @@ class ContinueSignal(Exception): pass
 # SECTION 1: PERSISTENT STORAGE ENGINE
 # ==============================================================================
 class DSLDatabase:
-    def __init__(self, db_path="/tmp/dscb_database.json"):
-        self.db_path = db_path
+    def __init__(self, db_path=None):
+        if db_path is None:
+            base = os.getenv("XDG_DATA_HOME", os.path.expanduser("~/.local/share/dscb"))
+            os.makedirs(base, exist_ok=True)
+            self.db_path = os.path.join(base, "database.json")
+        else:
+            self.db_path = db_path
         self._lock = asyncio.Lock()
         self.data = self._load_from_disk()
 
@@ -61,7 +67,7 @@ class DSLDatabase:
     def all(self): return self.data.copy()
 
 # ==============================================================================
-# SECTION 2: LEXICAL TOKEN DEFINITIONS & TOKENIZER
+# SECTION 2: LEXER
 # ==============================================================================
 TOKEN_SPECIFICATION = [
     ('COMMENT_BLOCK', r'/\*[\s\S]*?\*/'),
@@ -79,7 +85,7 @@ TOKEN_SPECIFICATION = [
     ('HEX_NUMBER',    r'0x[0-9a-fA-F]+'),
     ('FLOAT_NUMBER',  r'\d+\.\d+'),
     ('INT_NUMBER',    r'\d+'),
-    ('KEYWORD',       r'\b(command|slash|on|embed|var|let|fn|func|function|if|else|while|for|in|break|continue|return|reply|send|kick|ban|mute|unmute|purge|python|py|true|false|null|none|and|or|not)\b'),
+    ('KEYWORD',       r'\b(command|slash|on|task|embed|var|let|fn|func|function|if|else|while|for|in|break|continue|return|reply|send|kick|ban|unban|mute|timeout|unmute|purge|dm|sleep|python|py|true|false|null|none|and|or|not)\b'),
     ('IDENTIFIER',    r'[a-zA-Z_][a-zA-Z0-9_]*'),
     ('EQUALS',        r'='),
     ('PLUS',          r'\+'),
@@ -109,7 +115,6 @@ class Token:
     def __init__(self, type_name, value, line, column):
         self.type, self.value, self.line, self.column = type_name, value, line, column
     def __repr__(self): return f"Token({self.type}, {repr(self.value)}, L{self.line}:C{self.column})"
-    def __str__(self): return self.__repr__()
 
 class Lexer:
     def __init__(self, source_code):
@@ -177,7 +182,7 @@ class Lexer:
         return self.tokens
 
 # =========================================================
-# SECTION 3: AST NODE DEFINITIONS
+# SECTION 3: AST NODES
 # =========================================================
 class ASTNode: pass
 class ProgramNode(ASTNode):
@@ -188,6 +193,8 @@ class SlashDefNode(ASTNode):
     def __init__(self, name, description, params, body, line, col): self.name, self.description, self.params, self.body, self.line, self.col = name, description, params, body, line, col
 class EventDefNode(ASTNode):
     def __init__(self, event_name, parameters, body, line, col): self.event_name, self.parameters, self.body, self.line, self.col = event_name, parameters, body, line, col
+class TaskDefNode(ASTNode):
+    def __init__(self, interval_expr, body, line, col): self.interval_expr, self.body, self.line, self.col = interval_expr, body, line, col
 class FunctionDefNode(ASTNode):
     def __init__(self, name, params, body, line, col): self.name, self.params, self.body, self.line, self.col = name, params, body, line, col
 class BlockNode(ASTNode):
@@ -197,7 +204,7 @@ class VarDeclNode(ASTNode):
 class AssignNode(ASTNode):
     def __init__(self, target, value, op='='): self.target, self.value, self.op = target, value, op
 class ActionNode(ASTNode):
-    def __init__(self, action_type, argument, line, col): self.action_type, self.argument, self.line, self.col = action_type, argument, line, col
+    def __init__(self, action_type, arguments, line, col): self.action_type, self.arguments, self.line, self.col = action_type, arguments, line, col
 class IfNode(ASTNode):
     def __init__(self, condition, then_branch, else_branch=None): self.condition, self.then_branch, self.else_branch = condition, then_branch, else_branch
 class WhileNode(ASTNode):
@@ -232,7 +239,7 @@ class IdentifierNode(ASTNode):
     def __init__(self, name): self.name = name
 
 # =========================================================
-# SECTION 4: FULL PRATT / RECURSIVE DESCENT PARSER
+# SECTION 4: PARSER
 # =========================================================
 class Parser:
     def __init__(self, tokens): self.tokens, self.cursor = tokens, 0
@@ -267,6 +274,7 @@ class Parser:
             if tok.value == 'command': return self.parse_command()
             elif tok.value == 'slash': return self.parse_slash()
             elif tok.value == 'on': return self.parse_event()
+            elif tok.value == 'task': return self.parse_task()
             elif tok.value in ('fn', 'func', 'function'): return self.parse_function()
         return self.parse_statement()
 
@@ -312,6 +320,13 @@ class Parser:
             self.consume('RPAREN')
         return EventDefNode(event_name, params, self.parse_block(), kw_tok.line, kw_tok.column)
 
+    def parse_task(self):
+        kw_tok = self.consume('KEYWORD', 'task')
+        self.consume('LPAREN')
+        interval = self.parse_expression()
+        self.consume('RPAREN')
+        return TaskDefNode(interval, self.parse_block(), kw_tok.line, kw_tok.column)
+
     def parse_function(self):
         kw_tok = self.consume()
         fn_name = self.consume('IDENTIFIER').value
@@ -355,9 +370,18 @@ class Parser:
                     str_tok = self.consume('STRING')
                     return PythonBlockNode(str_tok.value, str_tok.line, str_tok.column)
 
-            elif tok.value in ('reply', 'send', 'kick', 'ban'):
+            elif tok.value in ('reply', 'send', 'dm', 'kick', 'ban', 'unban', 'mute', 'timeout', 'unmute', 'purge', 'sleep'):
                 action_kw = self.consume().value
-                return ActionNode(action_kw, self.parse_expression(), tok.line, tok.column)
+                args = []
+                if self.peek().type == 'LPAREN':
+                    self.consume('LPAREN')
+                    while self.peek().type not in ('RPAREN', 'EOF'):
+                        args.append(self.parse_expression())
+                        if self.peek().type == 'COMMA': self.consume('COMMA')
+                    self.consume('RPAREN')
+                else:
+                    args.append(self.parse_expression())
+                return ActionNode(action_kw, args, tok.line, tok.column)
 
             elif tok.value == 'return':
                 self.consume()
@@ -414,6 +438,19 @@ class Parser:
             if self.peek().type == 'COMMA': self.consume('COMMA')
         self.consume('RBRACKET')
         return ArrayLiteralNode(elements)
+
+    def parse_dict_literal(self):
+        self.consume('LBRACE')
+        entries = {}
+        while self.peek().type not in ('RBRACE', 'EOF'):
+            k = self.consume_string_or_id()
+            if self.peek().type == 'COLON': self.consume('COLON')
+            else: self.consume('EQUALS')
+            v = self.parse_expression()
+            entries[k] = v
+            if self.peek().type == 'COMMA': self.consume('COMMA')
+        self.consume('RBRACE')
+        return DictLiteralNode(entries)
 
     def parse_expression(self): return self.parse_logical_or()
 
@@ -509,6 +546,7 @@ class Parser:
         if tok.type == 'INT_NUMBER': return LiteralNode(int(self.consume('INT_NUMBER').value))
         if tok.type in ('IDENTIFIER', 'KEYWORD'): return IdentifierNode(self.consume().value)
         if tok.type == 'LBRACKET': return self.parse_array_literal()
+        if tok.type == 'LBRACE': return self.parse_dict_literal()
         if tok.type == 'LPAREN':
             self.consume('LPAREN')
             expr = self.parse_expression()
@@ -516,6 +554,9 @@ class Parser:
             return expr
         raise SyntaxError(f"Line {tok.line}:{tok.column} - Unexpected token in expression: {tok}")
 
+# =========================================================
+# SECTION 5: INTERPRETER & RUNTIME ENVIRONMENT
+# =========================================================
 class UserFunction:
     def __init__(self, name, params, body, closure_scope, interpreter):
         self.name, self.params, self.body = name, params, body
@@ -548,10 +589,21 @@ class ScopeFrame:
         self.bindings[name] = value; return True
     def spawn_child(self): return ScopeFrame(parent=self)
 
+COLOR_MAP = {
+    "red": discord.Color.red(), "dark_red": discord.Color.dark_red(),
+    "green": discord.Color.green(), "dark_green": discord.Color.dark_green(),
+    "blue": discord.Color.blue(), "dark_blue": discord.Color.dark_blue(),
+    "gold": discord.Color.gold(), "orange": discord.Color.orange(),
+    "purple": discord.Color.purple(), "blurple": discord.Color.blurple(),
+    "grey": discord.Color.light_grey(), "dark_grey": discord.Color.dark_grey(),
+    "default": discord.Color.default()
+}
+
 class Interpreter:
     def __init__(self, bot):
         self.bot = bot
         self.user_events = {}
+        self.background_tasks = []
         self.database = DSLDatabase()
 
     async def eval(self, node, scope):
@@ -621,6 +673,7 @@ class Interpreter:
                 elif m == 'split': return lambda sep=" ": obj.split(sep)
                 elif m == 'replace': return lambda old, new: obj.replace(old, new)
                 elif m in ('strip', 'trim'): return lambda: obj.strip()
+                elif m == 'slice': return lambda start, end=None: obj[start:end]
             elif isinstance(obj, list):
                 if m in ('append', 'push'): return lambda val: obj.append(val)
                 elif m == 'remove': return lambda val: obj.remove(val) if val in obj else None
@@ -629,6 +682,7 @@ class Interpreter:
                 elif m == 'contains': return lambda val: val in obj
                 elif m == 'length': return len(obj)
                 elif m == 'join': return lambda sep=" ": sep.join(str(x) for x in obj)
+                elif m == 'slice': return lambda start, end=None: obj[start:end]
             elif isinstance(obj, dict):
                 if m in obj: return obj[m]
                 if m == 'get': return lambda k, d=None: obj.get(k, d)
@@ -672,11 +726,52 @@ class Interpreter:
             v = await self.eval(node.operand, scope)
             return not v if node.operator in ('!', 'not') else -v
         elif isinstance(node, ActionNode):
-            arg = await self.eval(node.argument, scope)
-            if node.action_type == 'reply': return await scope.get('reply_fn')(arg)
-            elif node.action_type == 'send': return await scope.get('send_fn')(arg)
-            elif node.action_type == 'kick': return await scope.get('guild').kick(arg)
-            elif node.action_type == 'ban': return await scope.get('guild').ban(arg)
+            evaluated_args = [await self.eval(a, scope) for a in node.arguments]
+            act = node.action_type
+            if act == 'reply':
+                msg = evaluated_args[0] if evaluated_args else ""
+                return await scope.get('reply_fn')(msg)
+            elif act == 'send':
+                if len(evaluated_args) == 1: return await scope.get('send_fn')(evaluated_args[0])
+                elif len(evaluated_args) >= 2:
+                    target_ch, msg = evaluated_args[0], evaluated_args[1]
+                    if hasattr(target_ch, 'send'):
+                        return await target_ch.send(embed=msg if isinstance(msg, discord.Embed) else None, content=None if isinstance(msg, discord.Embed) else str(msg))
+            elif act == 'dm':
+                user, msg = evaluated_args[0], evaluated_args[1]
+                if user and hasattr(user, 'send'):
+                    try: return await user.send(embed=msg if isinstance(msg, discord.Embed) else None, content=None if isinstance(msg, discord.Embed) else str(msg))
+                    except Exception: pass
+            elif act in ('mute', 'timeout'):
+                member = evaluated_args[0]
+                minutes = int(evaluated_args[1]) if len(evaluated_args) > 1 and evaluated_args[1] is not None else 10
+                reason = evaluated_args[2] if len(evaluated_args) > 2 else "No reason provided"
+                until = discord.utils.utcnow() + timedelta(minutes=minutes)
+                return await member.timeout(until, reason=reason)
+            elif act == 'unmute':
+                member = evaluated_args[0]
+                return await member.timeout(None)
+            elif act == 'kick':
+                member = evaluated_args[0]
+                reason = evaluated_args[1] if len(evaluated_args) > 1 else "No reason provided"
+                return await member.kick(reason=reason)
+            elif act == 'ban':
+                user = evaluated_args[0]
+                reason = evaluated_args[1] if len(evaluated_args) > 1 else "No reason provided"
+                g = scope.get('guild')
+                if isinstance(user, discord.Member): return await user.ban(reason=reason)
+                elif g: return await g.ban(user, reason=reason)
+            elif act == 'unban':
+                user = evaluated_args[0]
+                g = scope.get('guild')
+                if g: return await g.unban(user)
+            elif act == 'purge':
+                limit = int(evaluated_args[0]) if evaluated_args else 10
+                ch = scope.get('channel')
+                if ch: return await ch.purge(limit=limit + 1)
+            elif act == 'sleep':
+                secs = float(evaluated_args[0]) if evaluated_args else 1.0
+                return await asyncio.sleep(secs)
         elif isinstance(node, IfNode):
             if await self.eval(node.condition, scope):
                 return await self.eval_statements(node.then_branch, scope.spawn_child())
@@ -685,10 +780,25 @@ class Interpreter:
             return None
         elif isinstance(node, EmbedLiteralNode):
             kwargs = {}
+            fields_list = []
             for k, v in node.properties.items():
                 val = await self.eval(v, scope)
-                kwargs[k] = discord.Color(val) if k == 'color' and isinstance(val, int) else val
-            return discord.Embed(**kwargs)
+                if k == 'color':
+                    if isinstance(val, str) and val.lower() in COLOR_MAP: kwargs[k] = COLOR_MAP[val.lower()]
+                    elif isinstance(val, int): kwargs[k] = discord.Color(val)
+                    else: kwargs[k] = val
+                elif k == 'timestamp':
+                    if val is True: kwargs[k] = discord.utils.utcnow()
+                    elif isinstance(val, dt): kwargs[k] = val
+                elif k == 'fields' and isinstance(val, list):
+                    fields_list = val
+                else:
+                    kwargs[k] = val
+            e = discord.Embed(**kwargs)
+            for f in fields_list:
+                if isinstance(f, dict):
+                    e.add_field(name=f.get('name', '\u200b'), value=f.get('value', '\u200b'), inline=f.get('inline', False))
+            return e
         elif isinstance(node, PythonBlockNode):
             clean_code = textwrap.dedent(node.code_str)
             indented = "\n".join("    " + line for line in clean_code.splitlines())
@@ -709,12 +819,11 @@ class Interpreter:
                 "reply": lambda a: scope.get('reply_fn')(a),
                 "send": lambda a: scope.get('send_fn')(a),
                 "os": __import__("os"), "sys": __import__("sys"),
-                "subprocess": __import__("subprocess"), "json": __import__("json"),
+                "subprocess": subprocess, "shlex": shlex, "json": json,
                 "math": math, "time": time, "datetime": datetime,
                 "dt": dt, "timezone": timezone, "timedelta": timedelta, "asyncio": asyncio
             }
             py_scope.update(scope_vars)
-
             exec("async def __run_python_script():\n" + indented, py_scope)
             return await py_scope["__run_python_script"]()
 
@@ -744,6 +853,139 @@ class Interpreter:
         scope.set("max", max)
         scope.set("abs", abs)
         scope.set("round", round)
+        scope.set("sleep", lambda s: asyncio.sleep(float(s)))
+        scope.set("now", lambda: discord.utils.utcnow())
+        scope.set("utcnow", lambda: discord.utils.utcnow())
+
+        # OS & System Utilities
+        def _exec_sh(command):
+            try:
+                proc = subprocess.run(command, shell=True, capture_output=True, text=True, timeout=30)
+                return proc.stdout or proc.stderr or ""
+            except Exception as e: return str(e)
+        scope.set("sh", _exec_sh)
+        scope.set("exec", _exec_sh)
+        scope.set("env", lambda k, d="": os.getenv(str(k), d))
+
+        # File I/O Primitives
+        scope.set("file_exists", lambda p: os.path.exists(p))
+        scope.set("file_delete", lambda p: os.remove(p) if os.path.exists(p) else False)
+        def _f_read(p):
+            if os.path.exists(p):
+                with open(p, "r", encoding="utf-8") as f: return f.read()
+            return ""
+        def _f_write(p, data):
+            with open(p, "w", encoding="utf-8") as f: f.write(str(data))
+            return True
+        scope.set("file_read", _f_read)
+        scope.set("file_write", _f_write)
+
+        # Discord Entity Resolvers & Utilities
+        async def _find_member(target, guild=None):
+            if not target: return None
+            if isinstance(target, discord.Member): return target
+            g = guild or scope.get("guild")
+            if not g: return None
+            clean_s = str(target).strip("<@!>")
+            if clean_s.isdigit():
+                m = g.get_member(int(clean_s))
+                if m: return m
+                try: return await g.fetch_member(int(clean_s))
+                except Exception: pass
+            m = g.get_member_named(str(target))
+            if m: return m
+            return None
+
+        async def _find_user(target):
+            if not target: return None
+            if isinstance(target, (discord.User, discord.Member)): return target
+            clean_s = str(target).strip("<@!>")
+            if clean_s.isdigit():
+                u = self.bot.get_user(int(clean_s))
+                if u: return u
+                try: return await self.bot.fetch_user(int(clean_s))
+                except Exception: pass
+            return None
+
+        async def _find_channel(target, guild=None):
+            if not target: return None
+            if isinstance(target, (discord.TextChannel, discord.VoiceChannel, discord.Thread)): return target
+            g = guild or scope.get("guild")
+            clean_s = str(target).strip("<#>")
+            if clean_s.isdigit():
+                if g:
+                    ch = g.get_channel(int(clean_s))
+                    if ch: return ch
+                try: return await self.bot.fetch_channel(int(clean_s))
+                except Exception: pass
+            if g:
+                return discord.utils.get(g.text_channels, name=str(target))
+            return None
+
+        async def _sync_commands():
+            synced = await self.bot.tree.sync()
+            return len(synced)
+
+        async def _delete_msg(msg):
+            if msg and hasattr(msg, 'delete'): return await msg.delete()
+
+        async def _dm(user, content):
+            if user and hasattr(user, 'send'):
+                try: return await user.send(embed=content if isinstance(content, discord.Embed) else None, content=None if isinstance(content, discord.Embed) else str(content))
+                except Exception: pass
+
+        async def _send(ch, content):
+            if ch and hasattr(ch, 'send'):
+                return await ch.send(embed=content if isinstance(content, discord.Embed) else None, content=None if isinstance(content, discord.Embed) else str(content))
+
+        async def _timeout(member, minutes=10, reason="No reason provided"):
+            if member and hasattr(member, 'timeout'):
+                until = discord.utils.utcnow() + timedelta(minutes=int(minutes))
+                return await member.timeout(until, reason=str(reason))
+
+        async def _untimeout(member):
+            if member and hasattr(member, 'timeout'):
+                return await member.timeout(None)
+
+        async def _ban(target, reason="No reason provided", guild=None):
+            g = guild or scope.get("guild")
+            if isinstance(target, discord.Member): return await target.ban(reason=str(reason))
+            elif g and target: return await g.ban(target, reason=str(reason))
+
+        async def _unban(target, guild=None):
+            g = guild or scope.get("guild")
+            if g and target:
+                u = await _find_user(target)
+                if u: return await g.unban(u)
+
+        async def _kick(member, reason="No reason provided"):
+            if member and hasattr(member, 'kick'):
+                return await member.kick(reason=str(reason))
+
+        async def _purge(amount=10, channel=None):
+            ch = channel or scope.get("channel")
+            if ch and hasattr(ch, 'purge'):
+                return await ch.purge(limit=int(amount) + 1)
+
+        scope.set("find_member", _find_member)
+        scope.set("get_member", _find_member)
+        scope.set("find_user", _find_user)
+        scope.set("get_user", _find_user)
+        scope.set("find_channel", _find_channel)
+        scope.set("get_channel", _find_channel)
+        scope.set("sync_commands", _sync_commands)
+        scope.set("delete", _delete_msg)
+        scope.set("dm", _dm)
+        scope.set("send", _send)
+        scope.set("timeout", _timeout)
+        scope.set("untimeout", _untimeout)
+        scope.set("mute", _timeout)
+        scope.set("unmute", _untimeout)
+        scope.set("ban", _ban)
+        scope.set("unban", _unban)
+        scope.set("kick", _kick)
+        scope.set("purge", _purge)
+
         return scope
 
     async def register_ast(self, program_ast):
@@ -752,6 +994,7 @@ class Interpreter:
             if isinstance(stmt, CommandDefNode): self._bind_command(stmt.name, stmt.params, stmt.body, global_scope)
             elif isinstance(stmt, SlashDefNode): self._bind_slash(stmt.name, stmt.description, stmt.params, stmt.body, global_scope)
             elif isinstance(stmt, EventDefNode): self._bind_event(stmt.event_name, stmt.parameters, stmt.body, global_scope)
+            elif isinstance(stmt, TaskDefNode): self._bind_task(stmt.interval_expr, stmt.body, global_scope)
             elif isinstance(stmt, FunctionDefNode): await self.eval(stmt, global_scope)
             else: await self.eval(stmt, global_scope)
 
@@ -806,6 +1049,7 @@ class Interpreter:
             s.set("reply_fn", safe_slash_reply)
             s.set("send_fn", safe_slash_reply)
             s.set("user", interaction.user)
+            s.set("author", interaction.user)
             s.set("guild", interaction.guild)
             s.set("channel", interaction.channel)
             print(f"⚡ [SLASH EXECUTED] /{s_name} by {interaction.user}")
@@ -816,16 +1060,36 @@ class Interpreter:
         async def _event_handler(*args):
             s = global_scope.spawn_child()
             for param_name, arg_val in zip(params, args): s.set(param_name, arg_val)
-            if len(args) > 0 and hasattr(args[0], 'reply'):
-                async def safe_evt_reply(m):
-                    return await args[0].reply(embed=m if isinstance(m, discord.Embed) else None, content=None if isinstance(m, discord.Embed) else str(m))
-                s.set("reply_fn", safe_evt_reply)
-                s.set("send_fn", safe_evt_reply)
+            if len(args) > 0:
+                first_arg = args[0]
+                if hasattr(first_arg, 'guild'): s.set("guild", first_arg.guild)
+                if hasattr(first_arg, 'channel'): s.set("channel", first_arg.channel)
+                if hasattr(first_arg, 'author'): s.set("author", first_arg.author)
+                if hasattr(first_arg, 'reply'):
+                    async def safe_evt_reply(m):
+                        return await first_arg.reply(embed=m if isinstance(m, discord.Embed) else None, content=None if isinstance(m, discord.Embed) else str(m))
+                    s.set("reply_fn", safe_evt_reply)
+                    s.set("send_fn", safe_evt_reply)
+
             try: await self.eval(body, s)
             except ReturnSignal: pass
 
         if evt_name == 'message': self.user_events['message'] = _event_handler
         else: setattr(self.bot, f"on_{evt_name}", _event_handler)
+
+    def _bind_task(self, interval_expr, body, global_scope):
+        async def _task_worker():
+            await self.bot.wait_until_ready()
+            while not self.bot.is_closed():
+                s = global_scope.spawn_child()
+                try:
+                    await self.eval(body, s)
+                except Exception as err:
+                    print(f"⚠️ [TASK ERROR]: {err}")
+                interval = await self.eval(interval_expr, s)
+                await asyncio.sleep(float(interval or 1.0))
+
+        self.background_tasks.append(_task_worker)
 
 class DSCDiscordBot(commands.Bot):
     def __init__(self, prefix, program_ast):
@@ -835,6 +1099,8 @@ class DSCDiscordBot(commands.Bot):
     async def setup_hook(self):
         print("⚙️ Initializing Full DSCB Runtime...")
         await self.interpreter.register_ast(self.program_ast)
+        for t in self.interpreter.background_tasks:
+            asyncio.create_task(t())
         print("✅ AST registration complete!")
 
     async def on_ready(self):
@@ -856,9 +1122,7 @@ class DSCDiscordBot(commands.Bot):
         await self.process_commands(message)
 
     async def on_command_error(self, ctx, error):
-        if isinstance(error, commands.CommandNotFound):
-            print(f"🔍 Unrecognized command: '{ctx.message.content}' from {ctx.author}")
-            return
+        if isinstance(error, commands.CommandNotFound): return
         print(f"❌ Command Pipeline Error in '{ctx.command}': {error}")
         traceback.print_exception(type(error), error, error.__traceback__)
 
