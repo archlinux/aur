@@ -4,7 +4,7 @@
 # pkgver is replaced by prepare-aur.sh before publication
 
 pkgname=system-bridge-git
-pkgver=5.6.5.r5957.ge30590f
+pkgver=5.6.7.r6006.gf7fc966
 pkgrel=1
 pkgdesc="A bridge for your systems (git version)"
 makedepends=('git' 'mise')
@@ -22,6 +22,17 @@ optdepends=('pciutils: GPU model identification via lspci'
             'nvidia-utils: NVIDIA GPU metrics via nvidia-smi')
 provides=('system-bridge')
 options=('!strip')
+
+pkgver() {
+  cd "$pkgname"
+  local base_version last_tag major minor patch
+  last_tag="$(git describe --tags --abbrev=0 2>/dev/null || printf '%s\n' 'v0.0.0')"
+  base_version="${last_tag#v}"
+  base_version="${base_version%%-*}"
+  IFS=. read -r major minor patch <<<"$base_version"
+  printf '%s.%s.%s.r%s.g%s' "${major:-0}" "${minor:-0}" "$(( ${patch:-0} + 1 ))" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
   cd "$pkgname"
