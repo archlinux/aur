@@ -1,6 +1,6 @@
 pkgbase = ccusage-statusline-rs
 	pkgdesc = Fast statusline for Claude Code w/usage tracking, billing blocks, burn rate monitoring
-	pkgver = 1.10.1
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://github.com/ticpu/ccusage-statusline-rs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ccusage-statusline-rs
 	license = MIT
 	makedepends = cargo
 	options = !lto
-	source = https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.10.1/ccusage-statusline-rs-1.10.1.tar.xz
-	sha256sums = 558dfd3280ea5f4b8c598c9b000ced82a793c45b13535a29c9768c8dbeda9424
+	source = https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.13.0/ccusage-statusline-rs-1.13.0.tar.xz
+	sha256sums = 864a5f3e58047b489745716f0e15c993a2cbde45b6b3f825d515da0c1115d368
 
 pkgname = ccusage-statusline-rs
