@@ -1,7 +1,7 @@
 # Maintainer: Tom Davenport <1926694+tomdavenport@users.noreply.github.com>
 
 pkgname=cam-stream
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Low-latency V4L2 camera preview for Wayland desktops'
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
 )
 checkdepends=('jq')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('54792b4f6286b64739d91a04bfe5cf608dc12b848bf7d5dcc43cb80b7774c4d4')
+sha256sums=('c02ebac5ca0c365cd5ffc17017bad111342cbad6591f72212bb7d24b30bf3647')
 
 check() {
   cd "$pkgname-$pkgver"
