@@ -18,7 +18,7 @@ optdepends=('libnotify: desktop notifications')
 provides=('grok-bot' 'grokbot')
 conflicts=('grokbot-linux-port-bin' 'grok-bot')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nichokas/grokbot-linux-port/archive/v${pkgver}.tar.gz")
-sha256sums=('8d6c7d1a02c8be09e3ca99e7645a6f7841591d8da73d0f594ae2052f6106cc2a')
+sha256sums=('37fb7775c22e693b02f4b8528de107013272df538335de2183128ac8352e8100')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
