@@ -1,21 +1,18 @@
 pkgbase = cmigemo-git
 	pkgdesc = An implementation of Migemo in C
-	pkgver = 1.2.r49.ge0f6145
+	pkgver = 1.5.2.r35.gc7647c2
 	pkgrel = 1
-	url = https://www.kaoriya.net/software/cmigemo/
+	url = https://github.com/koron/cmigemo
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	makedepends = nkf
 	depends = glibc
 	provides = cmigemo
 	provides = libmigemo.so
 	conflicts = cmigemo
-	source = cmigemo::git+https://github.com/koron/cmigemo.git
-	source = https://skk-dev.github.io/dict/SKK-JISYO.L.gz
+	source = git+https://github.com/koron/cmigemo.git
 	sha256sums = SKIP
-	sha256sums = 4236e1ae2ba667520922fc5aa406f77d8e30f3590421d34f41f46af641bb48aa
 
 pkgname = cmigemo-git
