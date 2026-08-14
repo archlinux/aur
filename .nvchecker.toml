@@ -1,0 +1,5 @@
+[run-one]
+source = "github"
+github = "dustinkirkland/run-one"
+use_latest_release = true
+prefix = ""
