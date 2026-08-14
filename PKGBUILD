@@ -3,7 +3,7 @@
 # Maintainer: Jonathan Neidel <aur at jneidel dot com>
 
 pkgname='updatecli-bin'
-pkgver=0.119.0
+pkgver=0.120.1
 pkgrel=1
 pkgdesc='A declarative update policy engine.'
 url='https://www.updatecli.io'
@@ -13,10 +13,10 @@ provides=('updatecli')
 conflicts=('updatecli')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v${pkgver}/updatecli_Linux_arm64.tar.gz")
-sha256sums_aarch64=('7b1ea61c6e4ab7f5d9ec4e87b1e5a6aad1bb47405b91db4ed138fd8aa055310a')
+sha256sums_aarch64=('52fb346c469f4f3f7d084edccc8ad4ebf90cc8f68dfa4d924384b533904faa36')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/updatecli/updatecli/releases/download/v${pkgver}/updatecli_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('05a1eca3d677e638f2ff53dc967283ecf6cdb03b3904b7f47ed033feffb0a503')
+sha256sums_x86_64=('e2a17372253bcfcd0759ed6ddaaffef07f26ff2d5e8205d1cb1baa2cf4efab2c')
 
 package() {
   # bin
