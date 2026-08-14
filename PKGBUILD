@@ -16,7 +16,7 @@ depends=(
 	"python-cachetools"
 	"python-pydantic-settings"
 	"python-loguru"
-	"python-rectangle-packer-git"
+	"python-rectangle-packer"
 	"python-pydantic-extra-types"
   )
 makedepends=(
