@@ -1,7 +1,7 @@
 # Maintainer: dragon <drgn@fn.de>
 
 pkgname=upsies
-pkgver=2026.01.03
+pkgver=2026.08.09
 pkgrel=1
 pkgdesc='Media metadata aggregator'
 arch=('any')
@@ -31,7 +31,7 @@ depends=(
 )
 makedepends=(git python-{build,installer,wheel,setuptools})
 source=("git+$url#tag=v$pkgver")
-sha512sums=('6be837108067b3c6f4f8c19fd1402852f969381b9ae63df3910873e93151a092dd69f1339c988ded4d6ada5b2f016800756d34ff3ef4410fa9a73609dba6b0e5')
+sha512sums=('8a8641b163a19c80746468a3900b5fad2cae0249581139f9dc367becf9b17a9980baafe2c7a5efd25300ff9dc0029d3c9572cc8a9a4de779bb39f91403c8a491')
 
 
 build() {

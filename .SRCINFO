@@ -1,6 +1,6 @@
 pkgbase = upsies
 	pkgdesc = Media metadata aggregator
-	pkgver = 2026.01.03
+	pkgver = 2026.08.09
 	pkgrel = 1
 	url = https://codeberg.org/plotski/upsies
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = upsies
 	depends = python-unidecode
 	depends = mediainfo
 	depends = oxipng
-	source = git+https://codeberg.org/plotski/upsies#tag=v2026.01.03
-	sha512sums = 6be837108067b3c6f4f8c19fd1402852f969381b9ae63df3910873e93151a092dd69f1339c988ded4d6ada5b2f016800756d34ff3ef4410fa9a73609dba6b0e5
+	source = git+https://codeberg.org/plotski/upsies#tag=v2026.08.09
+	sha512sums = 8a8641b163a19c80746468a3900b5fad2cae0249581139f9dc367becf9b17a9980baafe2c7a5efd25300ff9dc0029d3c9572cc8a9a4de779bb39f91403c8a491
 
 pkgname = upsies
