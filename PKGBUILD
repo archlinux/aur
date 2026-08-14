@@ -1,7 +1,7 @@
 # Maintainer: solsTiCe d'Hiver <solsticedhiver@gmail.com>
 pkgname=opennow
 _pkgname=OpenNOW
-pkgver=0.5.3
+pkgver=0.5.4
 #_pkgver=0.5.3-nightly.47.1
 _pkgver=$pkgver
 pkgrel=1
@@ -9,7 +9,7 @@ pkgdesc="custom GeForce Now client"
 url="https://opennow.zortos.me/"
 license=('MIT')
 depends=('gtk3' 'cairo' 'pango' 'mesa' 'dbus' 'libx11' 'at-spi2-core' 'hicolor-icon-theme' 'nss' 'nspr' 'alsa-lib'
-	'electron43>=43.1.1' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-bad-libs' 'gst-libav' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
+	'electron43>=43.3.0' 'gstreamer' 'gst-plugins-base-libs' 'gst-plugins-bad-libs' 'gst-libav' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly')
 makedepends=('npm' 'imagemagick' 'libxcrypt-compat' 'cargo')
 # dependencies for rust opennow-streamer: cargo gstreamer gst-plugins-base-libs gst-plugins-bad-libs gst-libav gst-plugins-{good|bad|ugly}
 options=(!strip)
@@ -19,7 +19,7 @@ arch=('x86_64')
 source=(opennow-${pkgver}.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v${_pkgver}.tar.gz
 	opennow.desktop opennow)
 
-sha256sums=('46b49207c981c806589557fbd3687a905299102e7458cf8e081a0a2d0c575e23'
+sha256sums=('64d18a608b5ee22fc296e42e900b8042c1c4fe4d818a3c6a43c943d5307e8d50'
             '2ab63a0c3b39b7220bd1d16d5a61daf2578c8b3dadbbbcacd4287d8b568cd513'
             'd6e8f57fb06df8ec46d4e88f13dabadc8281cfc4122cc0c337f3efde9096a27f')
 
