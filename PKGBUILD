@@ -1,7 +1,7 @@
 # Maintainer: gogamlg3
 pkgname=tg-ws-proxy-bin
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Local MTProto proxy server for partial bypassing of Telegram loading"
 arch=("x86_64")
 url="https://github.com/Flowseal/tg-ws-proxy"
@@ -10,7 +10,7 @@ depends=("libappindicator" "libayatana-appindicator")
 optdepends=("wl-clipboard" "xclip" "xsel")
 makedepends=("imagemagick")
 conflicts=("tg-ws-proxy-git")
-source=("https://github.com/Flowseal/tg-ws-proxy/releases/download/v$pkgver/TgWsProxy_linux_amd64"
+source=("TgWsProxy_linux_amd64_${pkgver}::https://github.com/Flowseal/tg-ws-proxy/releases/download/v$pkgver/TgWsProxy_linux_amd64"
         "https://raw.githubusercontent.com/Flowseal/tg-ws-proxy/refs/tags/v$pkgver/icon.ico"
         "tg-ws-proxy.desktop"
         "tg-ws-proxy.service")
@@ -20,7 +20,7 @@ sha256sums=("bb14856f751b3d275b8507f8e55fd80678d2eb7f3f7ae93a448c805045c7811f"
             "e06f5ca3f96bde84404610dbee8df3bdf1017fa350cd6e09831d30d820d21e93"
             "34263521bef49c289d3956fb513780950a6f319cb6d4b0222034d32ab929f05d")
 
-_binname="TgWsProxy_linux_amd64"
+_binname="TgWsProxy_linux_amd64_${pkgver}"
 
 package() {
   cd "$srcdir"
