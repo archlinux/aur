@@ -2,7 +2,7 @@
 
 _pkgname=box64
 pkgname=${_pkgname}-git
-pkgver=0.3.8.r458.g0254fbdd8
+pkgver=0.4.5.1.r42.gb38a33c00
 pkgrel=1
 pkgdesc='Linux Userspace x86_64 Emulator with a twist'
 arch=('x86_64' 'aarch64' 'riscv64' 'powerpc64le')
@@ -28,16 +28,16 @@ pkgver() {
 build() {
     cd ${_pkgname}
     if [[ $CARCH == "aarch64" ]]; then
-        if [ -n "$(echo $name | grep RK3588)" ]; then
-              exargs="-DRK3588=1"
+        if [ -n "$(echo $name | grep RK3588)" -o `lspci | grep RK3588| wc -l` -gt 0 ]; then
+              exargs="-DRK3588=ON"
         elif [ -n "$(echo $name | grep RK3399)" ]; then
-              exargs="-DRK3399=1"
+              exargs="-DRK3399=ON"
         elif [ -n "$(echo $name | grep 'Cortex-A53')" ]; then
-              exargs="-DRPI3ARM64=1"
+              exargs="-DRPI3ARM64=ON"
         elif [ -n "$(echo $name | grep 'Cortex-A72')" ]; then
-              exargs="-DRPI4ARM64=1"
+              exargs="-DRPI4ARM64=ON"
         elif [ -n "$(echo $name | grep 'Cortex-A76')" ]; then
-              exargs="-DRPI5ARM64=1"
+              exargs="-DRPI5ARM64=ON"
         fi
         cmake -B build -S . \
               -DBOX32=ON \
