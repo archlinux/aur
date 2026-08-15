@@ -3,15 +3,14 @@
 pkgbase=openixcli-bin
 pkgname=openixcli-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 arch=('x86_64')
 _name=${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu
 options=(!strip !debug)
 depends=(
-    glibc
     hicolor-icon-theme
-    libgcc
+    libgcc_s.so
     libusb
 )
 makedepends=(libarchive)
@@ -27,7 +26,7 @@ pkgdesc="Open Source CLI Tools for Flash Allwinner Firmware to Devices"
 license=('MIT')
 url="https://github.com/YuzukiTsuru/OpenixCLI"
 source=("${url}/releases/download/v${pkgver}/${_name}.deb")
-sha256sums=('e17f695c205dff0603700bef8f2d5b2f849516eaf823d3afc78801c14622da3c')
+sha256sums=('8443064ea161bc99a4fda1f58a714fc40d8dc8f0269792f801930b91f5ea3124')
 # noextract=()
 
 # prepare() {
