@@ -1,6 +1,6 @@
 # Maintainer: Jon Tsiros <jon@brightblock.ai>
 #
-# Template. scripts/release-linux-remote.sh substitutes 0.5.8 / 7124ccc3c97dd4bc7bc13dcb489222f20a2881bc3d64dfc6e1142683d1188c5c and
+# Template. scripts/release-linux-remote.sh substitutes 0.5.9 / a34e1f2719c215cb10221659c81a3592ad777a081ed56d22c329e4b0fd2b74d8 and
 # runs `makepkg --printsrcinfo`; scripts/release-local.sh pushes the pair to
 # ssh://aur@aur.archlinux.org/hyprlayer-desktop-bin.git.
 #
@@ -9,7 +9,7 @@
 # — no Debian runtime is involved.
 
 pkgname=hyprlayer-desktop-bin
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc="Native desktop app for spec-driven development with coding agents"
 arch=('x86_64')
@@ -28,7 +28,7 @@ conflicts=('hyprlayer-desktop')
 options=('!strip' '!debug' '!emptydirs')
 _deb="Hyprlayer_${pkgver}_amd64.deb"
 source=("${_deb}::https://github.com/BrightBlock/hyprlayer-releases/releases/download/v${pkgver}/${_deb}")
-sha256sums=('7124ccc3c97dd4bc7bc13dcb489222f20a2881bc3d64dfc6e1142683d1188c5c')
+sha256sums=('a34e1f2719c215cb10221659c81a3592ad777a081ed56d22c329e4b0fd2b74d8')
 noextract=("${_deb}")
 
 package() {
