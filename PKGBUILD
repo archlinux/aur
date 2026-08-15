@@ -12,7 +12,7 @@ license=('GPL3')
 makedepends=('git')
 provides=('pachist')
 conflicts=('pachist')
-source=("pachist::git+https://github.com/shellkr/pachist.git#branch=master")
+source=("${_gitname}::git+${url}.git#branch=master")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,6 +22,8 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${_gitname}"
+
+  sed -i "s/@VERSION@/${pkgver}/" pachist
 
   install -D -m755 pachist -t "${pkgdir}/usr/bin"
   install -D -m644 zsh_pachist "${pkgdir}/usr/share/zsh/site-functions/_pachist"
