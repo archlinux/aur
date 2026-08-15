@@ -1,0 +1,17 @@
+pkgbase = python-aiowebostv
+	pkgdesc = Library to control webOS based LG TV devices
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/home-assistant-libs/aiowebostv
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-aiohttp
+	source = https://pypi.org/packages/source/a/aiowebostv/aiowebostv-0.9.1.tar.gz
+	sha256sums = 3968478fd56f32cea151ca2a3729b70be9269314f398a2ec00e0a09081ad8675
+
+pkgname = python-aiowebostv
