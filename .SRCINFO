@@ -1,6 +1,6 @@
 pkgbase = mattermost-plugin-calls
 	pkgdesc = enables voice calling and screen sharing functionality in Mattermost channels
-	pkgver = 1.12.2
+	pkgver = 1.12.3
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/mattermost/mattermost-plugin-calls
@@ -8,10 +8,10 @@ pkgbase = mattermost-plugin-calls
 	license = MIT
 	makedepends = jq
 	options = !strip
-	source = https://github.com/mattermost/mattermost-plugin-calls/releases/download/v1.12.2/mattermost-plugin-calls-v1.12.2-linux-amd64.tar.gz
-	source = https://github.com/mattermost/mattermost-plugin-calls/releases/download/v1.12.2/mattermost-plugin-calls-v1.12.2-linux-amd64.tar.gz.asc
+	source = https://github.com/mattermost/mattermost-plugin-calls/releases/download/v1.12.3/mattermost-plugin-calls-v1.12.3-linux-amd64.tar.gz
+	source = https://github.com/mattermost/mattermost-plugin-calls/releases/download/v1.12.3/mattermost-plugin-calls-v1.12.3-linux-amd64.tar.gz.asc
 	validpgpkeys = C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4
-	sha256sums = f9e2f566467b11dd982c9d0efa971fe061f2d4ae018d169db2f794ae54348eea
+	sha256sums = 76a144ec925271f5bbcab9ebcc8f82c5d350c4175a666aace9786e3d2c909cd5
 	sha256sums = SKIP
 
 pkgname = mattermost-plugin-calls
