@@ -1,16 +1,16 @@
 # Maintainer: Patrick Fischer <aur at pathin dot me>
 pkgname=onset-git
-pkgver=1.0.3.r0.gc8a61b9
+pkgver=2.0.0.r0.g807f49b
 pkgrel=1
 pkgdesc="Lightweight GTK4 autostart manager for Linux"
 arch=('x86_64' 'aarch64')
-url="https://github.com/xPathin/onset"
+url="https://github.com/kulmin/onset"
 license=('MIT')
 depends=('gtk4' 'libadwaita')
 makedepends=('rust' 'cargo' 'git')
 provides=('onset')
 conflicts=('onset')
-source=("git+https://github.com/xPathin/onset.git")
+source=("git+https://github.com/kulmin/onset.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -35,9 +35,9 @@ check() {
 package() {
     cd onset
     install -Dm755 "target/release/onset" "$pkgdir/usr/bin/onset"
-    install -Dm644 "data/com.github.xPathin.onset.desktop" \
-        "$pkgdir/usr/share/applications/com.github.xPathin.onset.desktop"
-    install -Dm644 "data/icons/hicolor/scalable/apps/com.github.xPathin.onset.svg" \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.xPathin.onset.svg"
+    install -Dm644 "data/com.github.kulmin.onset.desktop" \
+        "$pkgdir/usr/share/applications/com.github.kulmin.onset.desktop"
+    install -Dm644 "data/icons/hicolor/scalable/apps/com.github.kulmin.onset.svg" \
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.github.kulmin.onset.svg"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
