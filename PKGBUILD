@@ -1,7 +1,7 @@
 # Maintainer: OxiRoute maintainers <https://github.com/oxiroute/oxiroute/issues>
 
 pkgname=oxiroute-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Pingora-based HTTP, TCP, and RTMP proxy runtime (prebuilt binary)'
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip')
 _archive="oxiroute-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
 source=("${_archive}::${url}/releases/download/v${pkgver}/${_archive}")
 noextract=("${_archive}")
-sha256sums=('837b79316d1d81c8faa1fdd1f7f5727e3e722d152983d27252c5a734bd37529c')
+sha256sums=('7c236fe6ca92fd3ee73532a031f073a58852eb4ef0c539e3b79e449f8325f614')
 
 package() {
   bsdtar -xpf "${srcdir}/${_archive}" -C "${pkgdir}" \
