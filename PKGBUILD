@@ -1,9 +1,9 @@
 # Maintainer: Julian Houba <info@craftingdragon.ch>
 pkgname=opengrep
-pkgver=1.27.0
+pkgver=1.27.1
 pkgrel=1
 _memprof_limits_commit=c2cced325a93d2271379f0712db85867b29dbee1
-_semgrep_interfaces_commit=977c2a9b30e472c303930104414184c76bbadda8
+_semgrep_interfaces_commit=5e705660dc7381d4c4c247fa83c4c5860e61d555
 _semgrep_apex_commit=024974494b1042141388e1efda11cd5dbcc273e3
 _semgrep_bash_commit=aa7d8eec0714a1e1492a1dcbac32c883a58bb6da
 _semgrep_cairo_commit=a8e2d5d5dcf8345735b15268b76b24377103a188
