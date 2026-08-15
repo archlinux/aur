@@ -47,6 +47,6 @@ pkgbase = fagram-bin
 	conflicts = fagram
 	options = !debug
 	source = https://github.com/fagramdesktop/fadesktop/releases/download/2.3.6/fagram-2.3.6.tar.zst
-	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+	sha256sums = 68f044e3e879f6425ad00bd898e710809581cbb6a2e70319cd77a43f903a20df
 
 pkgname = fagram-bin
