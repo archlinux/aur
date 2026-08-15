@@ -2,14 +2,14 @@
 pkgname=wikimedia-midi-files
 pkgdesc="All MIDI files in the Wikimedia Commons collection."
 pkgver=0.1.20200327
-pkgrel=1
+pkgrel=2
 epoch=
-arch=(x86_64)
+arch=(any)
 url="https://commons.wikimedia.org/wiki/Category:MIDI_files"
 license=(FDL)
 groups=(midi-files)
-depends=(commons-category-downloader)
-makedepends=()
+depends=(jq)
+makedepends=('git' 'wget')
 checkdepends=()
 optdepends=()
 provides=()
@@ -20,14 +20,15 @@ options=()
 install=
 changelog=
 noextract=()
+source=("git+https://github.com/aucuparia/commons-category-downloader")
+md5sums=('SKIP')
 
 build() {
-  pwd
-  commons_category_downloader.sh "MIDI files"
+  cd commons-category-downloader
+  ./commons_category_downloader.sh "MIDI files"
 }
 
 package() {
-  pwd
   mkdir -p "$pkgdir"/usr/share/midi/wikimedia-midi-files
-  cp "*.mid" "$pkgdir"/usr/share/midi/wikimedia-midi-files
+  cp commons-category-downloader/*.mid "$pkgdir"/usr/share/midi/wikimedia-midi-files/
 }

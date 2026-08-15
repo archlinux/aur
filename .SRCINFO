@@ -1,12 +1,15 @@
 pkgbase = wikimedia-midi-files
 	pkgdesc = All MIDI files in the Wikimedia Commons collection.
 	pkgver = 0.1.20200327
-	pkgrel = 1
+	pkgrel = 2
 	url = https://commons.wikimedia.org/wiki/Category:MIDI_files
-	arch = x86_64
+	arch = any
 	groups = midi-files
 	license = FDL
-	depends = commons-category-downloader
+	makedepends = git
+	makedepends = wget
+	depends = jq
+	source = git+https://github.com/aucuparia/commons-category-downloader
+	md5sums = SKIP
 
 pkgname = wikimedia-midi-files
-
