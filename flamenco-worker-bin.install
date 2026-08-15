@@ -1,0 +1,11 @@
+post_install() {
+  printf '%s\n' \
+    'Flamenco Worker is not enabled automatically.' \
+    'Start it for a Unix user with:' \
+    '  systemctl enable --now flamenco-worker@USER.service' \
+    'Configuration help: /usr/share/doc/flamenco-worker-bin/README.Arch'
+}
+
+post_upgrade() {
+  post_install
+}

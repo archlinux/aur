@@ -1,0 +1,33 @@
+pkgbase = flamenco-bin
+	pkgdesc = Render farm management software for animation and visual effects
+	pkgver = 3.9.3
+	pkgrel = 1
+	url = https://flamenco.blender.org/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	source = https://flamenco.blender.org/downloads/flamenco-3.9.3-linux-amd64.tar.gz
+	source = flamenco-manager@.service
+	source = flamenco-worker@.service
+	source = README.Arch
+	source = flamenco-manager-bin.install
+	source = flamenco-worker-bin.install
+	sha256sums = c3cf18daac34cbfc34e87c8aee883da351c0d31fedd498f445b815698cf504f2
+	sha256sums = 951831a548eb67e181c6e3fa4e00863793815f56abb1c565ce5e3b929b26140f
+	sha256sums = 88d58aa2b60e78da7a0a6031dd57b566a69bcd8c14d42a898ad73a5031e2ff8a
+	sha256sums = d369edabb4d1c38eb0410df0e02ef8e9b79f2524b4e41e23591494cf15404d64
+	sha256sums = 6b1e22b3f3227dad86b56d779a7a7a3d02b566a301619891b999709d9b832d5e
+	sha256sums = 010a7595cdefde65d3da0d6df8f25633f31e2c73342bcd22146f24d17ee035c4
+
+pkgname = flamenco-manager-bin
+	pkgdesc = Manager for the Flamenco render farm system
+	install = flamenco-manager-bin.install
+	provides = flamenco-manager=3.9.3
+	conflicts = flamenco-manager
+
+pkgname = flamenco-worker-bin
+	pkgdesc = Worker for the Flamenco render farm system
+	install = flamenco-worker-bin.install
+	depends = ffmpeg
+	optdepends = blender: render Blender jobs
+	provides = flamenco-worker=3.9.3
+	conflicts = flamenco-worker

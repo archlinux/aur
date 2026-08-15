@@ -1,0 +1,26 @@
+[Unit]
+Description=Flamenco Worker (%i)
+Documentation=https://flamenco.blender.org/usage/quickstart/
+Documentation=https://flamenco.blender.org/usage/worker-configuration/
+Documentation=https://flamenco.blender.org/usage/worker-actions/
+Wants=network-online.target
+After=network-online.target remote-fs.target
+
+[Service]
+Type=simple
+User=%i
+CPUSchedulingPolicy=idle
+Nice=19
+StateDirectory=flamenco-worker-%i
+WorkingDirectory=/var/lib/flamenco-worker-%i
+Environment=FLAMENCO_HOME=/var/lib/flamenco-worker-%i
+ExecStart=/usr/bin/flamenco-worker -restart-exit-code 47
+RestartForceExitStatus=47
+Restart=on-failure
+RestartSec=5s
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

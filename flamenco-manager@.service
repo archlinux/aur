@@ -1,0 +1,21 @@
+[Unit]
+Description=Flamenco Manager (%i)
+Documentation=https://flamenco.blender.org/usage/quickstart/
+Documentation=https://flamenco.blender.org/usage/manager-configuration/
+Wants=network-online.target
+After=network-online.target remote-fs.target
+
+[Service]
+Type=simple
+User=%i
+StateDirectory=flamenco-manager-%i
+WorkingDirectory=/var/lib/flamenco-manager-%i
+ExecStart=/usr/bin/flamenco-manager
+Restart=on-failure
+RestartSec=5s
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target

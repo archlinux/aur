@@ -1,0 +1,19 @@
+version = 1
+SPDX-PackageName = "flamenco-bin"
+SPDX-PackageSupplier = "Snis <aur@snis.org>"
+SPDX-PackageDownloadLocation = "https://aur.archlinux.org/packages/flamenco-bin"
+
+[[annotations]]
+path = [
+  ".SRCINFO",
+  "PKGBUILD",
+  "README.Arch",
+  "REUSE.toml",
+  "flamenco-manager-bin.install",
+  "flamenco-manager@.service",
+  "flamenco-worker-bin.install",
+  "flamenco-worker@.service",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Snis"
+SPDX-License-Identifier = "0BSD"

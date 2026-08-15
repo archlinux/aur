@@ -1,0 +1,74 @@
+Flamenco on Arch Linux
+======================
+
+Getting started
+---------------
+
+These packages provide systemd template services. The instance name is the
+Unix user that runs Flamenco:
+
+  sudo systemctl enable --now flamenco-manager@myuser.service
+  sudo systemctl enable --now flamenco-worker@myuser.service
+
+Manager stores its configuration and state in:
+
+  /var/lib/flamenco-manager-myuser
+
+Worker uses:
+
+  /var/lib/flamenco-worker-myuser
+
+systemd creates these directories with the correct ownership. The services do
+not need a logged-in desktop session and are not enabled automatically.
+
+Configuration
+-------------
+
+Manager reads flamenco-manager.yaml from its directory, and Worker reads
+flamenco-worker.yaml from its directory. For example, a Worker can connect to
+a Manager with:
+
+  manager_url: http://manager-host:8080/
+
+Manager autodiscovery can be used instead. Restarting a Worker through
+Flamenco is already supported by the packaged service; there is no need to add
+restart_exit_code to the YAML file.
+
+The Worker service sets FLAMENCO_HOME to its local /var/lib directory. This is
+where Worker credentials and its task-update database live. Keep that directory
+local and unique to each Worker. Shared project and render storage is configured
+separately in Flamenco Manager.
+
+Network storage
+---------------
+
+Declare network filesystems in /etc/fstab and include _netdev. For example:
+
+  server:/export /mnt/render nfs4 _netdev 0 0
+
+The packaged services start after network-online.target and remote-fs.target.
+If a service must not start unless a particular path is mounted, add a systemd
+drop-in:
+
+  sudo systemctl edit flamenco-worker@myuser.service
+
+  [Unit]
+  RequiresMountsFor=/mnt/render
+
+There is normally no reason to change Flamenco's working directory or
+FLAMENCO_HOME just to use shared render storage.
+
+Documentation
+-------------
+
+  Quickstart:
+    https://flamenco.blender.org/usage/quickstart/
+
+  Manager configuration:
+    https://flamenco.blender.org/usage/manager-configuration/
+
+  Worker configuration:
+    https://flamenco.blender.org/usage/worker-configuration/
+
+  Worker shutdown and restart actions:
+    https://flamenco.blender.org/usage/worker-actions/
