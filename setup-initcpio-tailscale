@@ -28,6 +28,10 @@ Defaults:
                 tinyssh instead. Only one of them can answer port 22 on the
                 tailnet, so don't enable both.
 
+Instead of registering, '${CMD0} --check' verifies an existing setup without
+changing anything: configuration files present, 'tailscale' placed correctly
+in HOOKS=, and the built images actually carrying tailscaled.
+
 i.e.:
 
   ${CMD0} --hostname ${TS_HOSTNAME} --login-server=headscale.my.net --authkey=file:node.key
@@ -41,6 +45,121 @@ error() { printf >&2 "${CMD0} ERROR: %s\n" "$1"; }
 die() {
   error "$@"
   exit 1
+}
+
+# --- --check: read-only verification of an existing setup -------------------
+
+CHECK_RC=0
+chk_ok() { printf >&2 "${CMD0} OK   : %s\n" "$1"; }
+chk_warn() { printf >&2 "${CMD0} WARN : %s\n" "$1"; }
+chk_fail() {
+  printf >&2 "${CMD0} FAIL : %s\n" "$1"
+  CHECK_RC=1
+}
+
+# The effective HOOKS= array, resolved the way mkinitcpio resolves it: the
+# main file first, then the conf.d drop-ins in sorted order, later assignments
+# overriding earlier ones. The subshell keeps the sourcing contained.
+effective_hooks() {
+  (
+    HOOKS=()
+    for f in /etc/mkinitcpio.conf /etc/mkinitcpio.conf.d/*.conf; do
+      [[ -r $f ]] || continue
+      # shellcheck source=/dev/null
+      . "$f" 2>/dev/null
+    done
+    printf '%s\n' ${HOOKS[@]+"${HOOKS[@]}"}
+  )
+}
+
+run_check() {
+  local xsu=""
+  [[ "$(id -u)" != 0 ]] && xsu=sudo
+
+  # The configuration the install hook will copy into the image.
+  if $xsu test -s "${TS_STATEDIR}/tailscaled.state"; then
+    chk_ok "node key present at ${TS_STATEDIR}/tailscaled.state"
+  else
+    chk_fail "no node key at ${TS_STATEDIR}/tailscaled.state; run ${CMD0} to register one"
+  fi
+  if $xsu test -s "${TS_STATEDIR}/default.env"; then
+    chk_ok "daemon settings present at ${TS_STATEDIR}/default.env"
+  else
+    chk_fail "no ${TS_STATEDIR}/default.env; run ${CMD0} to write one"
+  fi
+  if $xsu test -s "${TS_STATEDIR}/ssh/ssh_host_ed25519_key"; then
+    chk_ok "SSH host keys present: the image will answer Tailscale SSH"
+  else
+    chk_warn "no SSH host keys (registered with --no-ssh?): the image needs its own ssh server hook"
+  fi
+
+  # Placement in HOOKS=. Wrong order fails silently at boot, so it is the one
+  # thing most worth checking; see the README for why each rule holds.
+  local hooks=() h i ts=-1 sd=-1 net=-1 enc=-1 encname=''
+  mapfile -t hooks < <(effective_hooks)
+  i=0
+  for h in "${hooks[@]}"; do
+    case $h in
+    tailscale) ts=$i ;;
+    systemd) sd=$i ;;
+    sd-network | net | netconf) net=$i ;;
+    sd-encrypt | encrypt | encryptssh)
+      enc=$i
+      encname=$h
+      ;;
+    esac
+    i=$((i + 1))
+  done
+
+  if ((ts < 0)); then
+    if ((${#hooks[@]} == 0)); then
+      chk_fail "could not read a HOOKS= array from /etc/mkinitcpio.conf"
+    else
+      chk_fail "'tailscale' is not in HOOKS=; add it after the network hook and before any encrypt hook"
+    fi
+  else
+    chk_ok "'tailscale' is in HOOKS="
+    if ((sd >= 0)) && ((sd > ts)); then
+      chk_fail "'tailscale' is listed before 'systemd': the hook builds the busybox layout there, which a systemd initramfs never runs"
+    fi
+    if ((enc >= 0)) && ((enc < ts)); then
+      chk_fail "'tailscale' is listed after '${encname}': boot blocks at the passphrase prompt before tailscaled ever starts"
+    fi
+    if ((net < 0)); then
+      chk_warn "no network hook (sd-network, net or netconf) in HOOKS=: tailscaled will have no address unless something else configures one"
+    elif ((net > ts)); then
+      chk_fail "the network hook is listed after 'tailscale'; move it before"
+    else
+      chk_ok "a network hook precedes 'tailscale'"
+    fi
+  fi
+
+  # Best effort: do built images actually carry the daemon? Skipped when the
+  # tools or images are not where this expects them.
+  local img found=0 checked=0
+  if command -v lsinitcpio >/dev/null; then
+    for img in /boot/initramfs-*.img; do
+      [[ -e $img ]] || continue
+      checked=1
+      if $xsu lsinitcpio -l "$img" 2>/dev/null | grep -q 'tailscaled$'; then
+        found=1
+        chk_ok "$img contains tailscaled"
+      else
+        chk_warn "$img does not contain tailscaled (built before the hook was added?)"
+      fi
+    done
+    ((checked)) || chk_warn 'no /boot/initramfs-*.img found to inspect'
+    if ((checked && !found)); then
+      chk_fail "no inspected image contains tailscaled; run 'mkinitcpio -P' and re-check"
+    fi
+  fi
+
+  if ((CHECK_RC == 0)); then
+    info 'all checks passed'
+  else
+    error 'some checks failed; see above'
+  fi
+  exit "$CHECK_RC"
 }
 
 cleanup() {
@@ -67,6 +186,7 @@ trap "cleanup" EXIT
 TS_SSH=yes
 FOUND_HOSTNAME_IN_ARGS=no
 FOUND_SSH_IN_ARGS=no
+FOUND_NETFILTER_IN_ARGS=no
 TS_ARGS=()
 WANT_HOSTNAME=no
 
@@ -88,6 +208,9 @@ for arg in "$@"; do
   h | help)
     usage
     exit 0
+    ;;
+  check)
+    run_check # exits
     ;;
   hostname)
     FOUND_HOSTNAME_IN_ARGS=yes
@@ -111,6 +234,9 @@ for arg in "$@"; do
     *) TS_SSH=no ;;
     esac
     ;;
+  netfilter-mode | netfilter-mode=*)
+    FOUND_NETFILTER_IN_ARGS=yes
+    ;;
   esac
   TS_ARGS+=("$arg")
 done
@@ -118,7 +244,14 @@ done
 
 # Defaults are prepended, so an argument the user did pass always has the last
 # word with the flag parser on the other end.
+#
+# netfilter-mode is a preference: it registers into the state file and is what
+# tailscaled applies when the image later loads that state. Off by default
+# because the initramfs node routes nothing and runs for minutes, and it is
+# what lets the install hook leave the whole netfilter userland out of the
+# image.
 set -- "${TS_ARGS[@]}"
+[[ $FOUND_NETFILTER_IN_ARGS == yes ]] || set -- --netfilter-mode=off "$@"
 [[ $FOUND_SSH_IN_ARGS == yes ]] || set -- --ssh "$@"
 [[ $FOUND_HOSTNAME_IN_ARGS == yes ]] || set -- --hostname="$TS_HOSTNAME" "$@"
 
@@ -127,6 +260,10 @@ socket="${SETUPDIR}/tailscaled.sock"
 state="${SETUPDIR}/tailscaled.state"
 
 if [[ $TS_SSH == yes ]]; then
+  # Checked before anything registers, so a missing openssh fails cleanly
+  # instead of via set -e halfway through, and names the way out.
+  command -v ssh-keygen >/dev/null ||
+    die "ssh-keygen not found: install openssh, or pass --no-ssh to skip Tailscale SSH"
   # ssh-keygen -A writes into <prefix>/etc/ssh and will not create the directory
   # itself. The keys are the initrd node's stable identity: generating them here,
   # rather than letting the image make new ones on each boot, is what keeps a
@@ -153,7 +290,17 @@ fi
 [[ "$(id -u)" != 0 ]] && xsu=sudo || xsu=""
 $xsu install -o root -g root -m600 -d "${TS_STATEDIR}"
 $xsu install -o root -g root -m644 -t "${TS_STATEDIR}" "${SETUPDIR}/tailscaled.state"
-$xsu tee "${TS_STATEDIR}/default.env" >/dev/null <<EOF
+
+# default.env is the user's to edit -- the next steps below say to -- and
+# re-running this script (a new key, switching --ssh) is no reason to reset
+# their PORT or FLAGS. Only a missing or empty file gets the defaults; empty
+# counts because the install hook refuses to build from an empty one anyway.
+# The test runs through $xsu: the state directory is not traversable by other
+# users, so a plain -s would read as absent whenever sudo is in play.
+if $xsu test -s "${TS_STATEDIR}/default.env"; then
+  info "keeping existing ${TS_STATEDIR}/default.env"
+else
+  $xsu tee "${TS_STATEDIR}/default.env" >/dev/null <<EOF
 # Set the port to listen on for incoming VPN packets.
 # Remote nodes will automatically be informed about the new port number,
 # but you might want to configure this in order to set external firewall
@@ -163,6 +310,7 @@ PORT="41641"
 # Extra flags you might want to pass to tailscaled.
 FLAGS=""
 EOF
+fi
 
 if [[ $TS_SSH == yes ]]; then
   $xsu install -o root -g root -m600 -Dt "${TS_STATEDIR}/ssh" "${SETUPDIR}/etc/ssh/"ssh_host_*_key

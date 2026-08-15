@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Runs from the libalpm hook after the tailscale package is installed or
+# upgraded; see libalpm-hook-tailscale (installed as
+# /usr/share/libalpm/hooks/mkinitcpio-tailscale.hook) for why.
+#
+# Exits quietly unless the tailscale mkinitcpio hook is both enabled and
+# configured: rebuilding an image that does not carry tailscaled would be
+# wasted work, and rebuilding one whose configuration is missing would fail
+# the whole transaction's hook run for a package that works fine without us.
+#
+# When a kernel upgrade sits in the same transaction, mkinitcpio's own hook
+# rebuilds as well and this one makes the rebuild happen twice. Detecting that
+# from here is not worth the fragility; the second run is merely slow.
+set -uo pipefail
+
+hook_enabled() {
+	local f
+	for f in /etc/mkinitcpio.conf /etc/mkinitcpio.conf.d/*.conf; do
+		[[ -r $f ]] || continue
+		# The configuration is a shell fragment and HOOKS= is an array; parsing
+		# it any way other than sourcing -- as mkinitcpio itself does -- would
+		# miss line continuations and quoting. A subshell keeps it contained.
+		# shellcheck disable=SC1090
+		if (
+			HOOKS=()
+			. "$f" 2>/dev/null
+			[[ " ${HOOKS[*]:-} " == *' tailscale '* ]]
+		); then
+			return 0
+		fi
+	done
+	return 1
+}
+
+hook_enabled || exit 0
+
+if ! [[ -s /etc/initcpio/tailscale/tailscaled.state ]]; then
+	echo "tailscale is in HOOKS= but /etc/initcpio/tailscale is not set up; not rebuilding the initramfs"
+	echo "run setup-initcpio-tailscale, then mkinitcpio -P"
+	exit 0
+fi
+
+exec mkinitcpio -P

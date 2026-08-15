@@ -1,0 +1,21 @@
+# Rebuild the initramfs when the tailscale package changes.
+#
+# The image carries its own copy of tailscaled, frozen at build time. A kernel
+# upgrade rebuilds every preset through mkinitcpio's own libalpm hook, and so
+# does an upgrade of this package (its files live under usr/lib/initcpio/,
+# which that hook watches) -- but an upgrade of only the tailscale package
+# touches nothing mkinitcpio watches, and the initramfs would keep booting the
+# old daemon until something else happened to rebuild it.
+#
+# The script skips the rebuild when the tailscale hook is not actually in use.
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = tailscale
+
+[Action]
+Description = Rebuilding initramfs images that bundle tailscaled...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/mkinitcpio-tailscale
