@@ -26,7 +26,10 @@ build() {
     cd "$srcdir/$pkgname"
     export GOPATH="$srcdir/go"
     export CGO_ENABLED=0
-    go build -mod=mod -ldflags="-s -w -X main.Version=${pkgver}" \
+    go build -mod=mod -ldflags="-s -w \
+        -X 'github.com/rclone/rclone/fs.VersionTag=v${pkgver}' \
+        -X 'github.com/rclone/rclone/fs.VersionSuffix=' \
+        " \
         -o rclone .
 }
 
