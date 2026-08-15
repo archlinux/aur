@@ -1,0 +1,18 @@
+pkgbase = chemcanvas-bin
+	pkgdesc = User-friendly 2D chemical structure drawing tool (precompiled AppImage release)
+	pkgver = 0.14.8
+	pkgrel = 1
+	url = https://github.com/ksharindam/chemcanvas
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	optdepends = fuse2: run the AppImage without the extract-and-run fallback
+	provides = chemcanvas
+	conflicts = chemcanvas
+	options = !strip
+	source_x86_64 = chemcanvas-bin-0.14.8.AppImage::https://github.com/ksharindam/chemcanvas/releases/download/v0.14.8/ChemCanvas-x86_64.AppImage
+	sha256sums_x86_64 = c8a048f5bd5a5a72bb378f00cb0cfb484685089a3d6f7e1498e24ab3484d37a6
+	source_aarch64 = chemcanvas-bin-0.14.8.AppImage::https://github.com/ksharindam/chemcanvas/releases/download/v0.14.8/ChemCanvas-aarch64.AppImage
+	sha256sums_aarch64 = a6b475fc89c7b1a8cdbe0a88ddb5ed0558ce1a83f8839fc191a03a1066c9c9a3
+
+pkgname = chemcanvas-bin
