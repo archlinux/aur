@@ -3,8 +3,8 @@
 
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-openblas"
-pkgver=1.9.1 # renovate: datasource=github-tags depName=ggml-org/whisper.cpp
-pkgrel=3
+pkgver=1.9.2
+pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with openblas run-time)"
 arch=('armv7h' 'aarch64' 'x86_64')
 url="https://github.com/ggml-org/whisper.cpp"
@@ -49,5 +49,5 @@ package() {
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-sha256sums=('147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447'
+sha256sums=('a6abd064fcca8b85e794d205abf328c522e9451db43a3eadc178b883b7d0e9cd'
             '5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad')

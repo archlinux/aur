@@ -1,7 +1,7 @@
 pkgbase = whisper.cpp-openblas
 	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with openblas run-time)
-	pkgver = 1.9.1
-	pkgrel = 3
+	pkgver = 1.9.2
+	pkgrel = 1
 	url = https://github.com/ggml-org/whisper.cpp
 	arch = armv7h
 	arch = aarch64
@@ -14,9 +14,9 @@ pkgbase = whisper.cpp-openblas
 	depends = sdl2-compat
 	provides = whisper.cpp
 	conflicts = whisper.cpp
-	source = whisper.cpp-1.9.1.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/v1.9.1.tar.gz
+	source = whisper.cpp-1.9.2.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/v1.9.2.tar.gz
 	source = disable-deprecated.patch
-	sha256sums = 147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447
+	sha256sums = a6abd064fcca8b85e794d205abf328c522e9451db43a3eadc178b883b7d0e9cd
 	sha256sums = 5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad
 
 pkgname = whisper.cpp-openblas
