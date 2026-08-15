@@ -2,7 +2,7 @@
 # vim: ft=sh:
 
 pkgname=tabook
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Terminal-based e-book reader for FB2 and EPUB formats'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ optdepends=(
 # release workflow before publishing to AUR.
 source_x86_64=("tabook-${pkgver}-linux-x64.tar.zst::https://github.com/zsh-ncursed/tabook/releases/download/v${pkgver}/tabook-${pkgver}-linux-x64.tar.zst")
 source_aarch64=("tabook-${pkgver}-linux-arm64.tar.zst::https://github.com/zsh-ncursed/tabook/releases/download/v${pkgver}/tabook-${pkgver}-linux-arm64.tar.zst")
-sha256sums_x86_64=('beb1808827505867fcf9183ac3af0b566ec7a5d4f006f8590757af0e7c98af51')
-sha256sums_aarch64=('2096b5269b1dd1fcd04bdd71f247e6048f1ddeebc2a853be4bdaf724003ddc69')
+sha256sums_x86_64=('096e159bdd50d33436da545eeb880d488ca26b86ba62432cfab0efeb35724c9d')
+sha256sums_aarch64=('4de594652ee42d8b9d6c8e0c64dece2a4b66d934e7b4fa925b5a2a158f3fa199')
 
 package() {
   # The tarball carries tabook.bundle.mjs, node_modules/ (@tabook/native Rust
@@ -37,6 +37,11 @@ package() {
 exec node /usr/lib/${pkgname}/tabook.bundle.mjs "\$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/tabook"
+
+  # Man page + shell completions (generated into the tarball at release time)
+  install -Dm644 "${srcdir}/man/tabook.1" "${pkgdir}/usr/share/man/man1/tabook.1"
+  install -Dm644 "${srcdir}/completions/tabook.bash" "${pkgdir}/usr/share/bash-completion/completions/tabook"
+  install -Dm644 "${srcdir}/completions/_tabook" "${pkgdir}/usr/share/zsh/site-functions/_tabook"
 
   # License
   install -Dm644 "${pkgdir}/usr/lib/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" 2>/dev/null || true
