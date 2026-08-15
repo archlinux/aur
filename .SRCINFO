@@ -1,0 +1,12 @@
+pkgbase = ipfs-cluster-hardening
+	pkgdesc = systemd hardening drop-in for IPFS Cluster
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/RubenKelevra/ipfs-cluster-hardening
+	arch = any
+	license = CC0-1.0
+	depends = ipfs-cluster-bin
+	source = ipfs-cluster-hardening-1.0.tar.gz::https://github.com/RubenKelevra/ipfs-cluster-hardening/archive/refs/tags/v1.0.tar.gz
+	b2sums = 8b7a539cb462d53b06632a7ab4b5927945f8639b8475e2838dc2f5ac5512543526b69458d2aaf76a02271f38a0aa87b514f1c1ad8a535cc31ca750b28412ddd6
+
+pkgname = ipfs-cluster-hardening
