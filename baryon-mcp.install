@@ -1,0 +1,11 @@
+post_install() {
+	echo "Run 'baryon-mcp setup' to store your Proton Bridge credentials,"
+	echo "pin Bridge's TLS certificate, and register baryon with Claude Code"
+	echo "and Codex. The Bridge password goes into the Secret Service keyring"
+	echo "when a provider is running (gnome-keyring, KWallet, or KeePassXC),"
+	echo "and into a mode-600 file under ~/.config/baryon-mcp otherwise."
+}
+
+post_upgrade() {
+	post_install
+}
