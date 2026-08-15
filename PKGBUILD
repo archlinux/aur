@@ -2,14 +2,14 @@
 
 pkgname=miru-zoom-git
 _pkgname=miru
-pkgver=r62.f6dfd68 # Dynamically updated by pkgver() below
+pkgver=r154.30f2b83
 pkgrel=1
 pkgdesc="A Wayland-based zoom daemon and control utility (development branch)"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Vaishnav-Sabari-Girish/miru"
+url="https://codeberg.org/Vaishnav-Sabari-Girish/miru"
 license=('MIT')
-depends=('wayland')
-makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'wayland-protocols')
+depends=('wayland' 'mesa' 'libffi')
+makedepends=('cmake' 'ninja' 'pkgconf' 'wayland-protocols' 'git')
 provides=('miru-zoom')
 conflicts=('miru-zoom')
 source=("${_pkgname}::git+${url}.git")
@@ -25,7 +25,6 @@ build() {
     -G Ninja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
-
   cmake --build build
 }
 
