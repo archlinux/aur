@@ -2,7 +2,7 @@
 # Created with assistance from Qwen 3.6 (Alibaba).
 
 pkgname=mikumikubeam-git
-pkgver=r42.224d905
+pkgver=r45.ad5d4de
 pkgrel=1
 pkgdesc="An open-source network stresser tool but it's Hatsune Miku (Git version)"
 arch=('x86_64')
@@ -15,8 +15,7 @@ conflicts=('mikumikubeam')
 options=('!debug' '!strip')
 install=mikumikubeam-git.install
 
-_commit=224d905571342e1a2f223061f347766c5a52170c
-source=("$pkgname::git+https://github.com/sammwyy/MikuMikuBeam.git#commit=$_commit")
+source=("$pkgname::git+https://github.com/sammwyy/MikuMikuBeam.git")
 sha256sums=('SKIP')
 
 pkgver() {
