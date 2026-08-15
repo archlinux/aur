@@ -1,7 +1,7 @@
 pkgbase = wine-gohryt-wayland-wow64
 	pkgdesc = Compatibility layer for running Windows programs. This is my custom build with special fixes for wayland, vulkan and wow64. No steam flickering, Unreal and Unity games are working properly without shaman dances. Now with gamepad and affinity design suite support.
-	pkgver = 11.14
-	pkgrel = 2
+	pkgver = 11.15
+	pkgrel = 1
 	url = https://www.winehq.org
 	install = wine.install
 	arch = x86_64
@@ -43,20 +43,20 @@ pkgbase = wine-gohryt-wayland-wow64
 	optdepends = libpulse: PulseAudio/PipeWire audio driver
 	optdepends = sdl2: game controller support
 	optdepends = vulkan-icd-loader: Vulkan support
-	provides = wine=11.14
-	provides = wine-mono=11.2.0
+	provides = wine=11.15
+	provides = wine-mono=11.3.0
 	provides = wine-gecko=2.47.4
 	conflicts = wine
 	conflicts = wine-staging
 	conflicts = wine-mono
 	conflicts = wine-gecko
-	noextract = wine-mono-11.2.0-x86.tar.xz
+	noextract = wine-mono-11.3.0-x86.tar.xz
 	noextract = wine-gecko-2.47.4-x86.tar.xz
 	noextract = wine-gecko-2.47.4-x86_64.tar.xz
 	options = lto
 	options = !debug
 	source = git+https://gitlab.winehq.org/gohryt/wine.git#branch=wayland-wow64
-	source = https://dl.winehq.org/wine/wine-mono/11.2.0/wine-mono-11.2.0-x86.tar.xz
+	source = https://dl.winehq.org/wine/wine-mono/11.3.0/wine-mono-11.3.0-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86_64.tar.xz
 	source = 30-win32-aliases.conf
