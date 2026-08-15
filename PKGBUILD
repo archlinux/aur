@@ -17,7 +17,7 @@
 # there and no WebKit is compiled here.
 
 pkgname=viewport-wpe-git
-pkgver=0.1.5.r74.ge9ceb62
+pkgver=0.1.6.r3.g4f93524
 pkgrel=1
 pkgdesc='Wayland compositor whose entire shell is a web page — the Smithay rewrite (git)'
 arch=('x86_64' 'aarch64')
