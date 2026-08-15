@@ -1,38 +1,30 @@
-## Features and enhancements
-* Added readiness checks for the distributor ([#5142](https://github.com/grafana/pyroscope/pull/5142)).
-* Added debug information list and delete APIs, including `profilecli` support ([#5217](https://github.com/grafana/pyroscope/pull/5217)).
-* Added dataset index generation in segment writer segments ([#5112](https://github.com/grafana/pyroscope/pull/5112)).
-* Added metastore cache hit/miss metrics ([#5156](https://github.com/grafana/pyroscope/pull/5156)).
-* Added distributor ingest parse duration histograms and per-tenant query bytes-fetched metrics ([#5107](https://github.com/grafana/pyroscope/pull/5107), [#5180](https://github.com/grafana/pyroscope/pull/5180)).
-* Added query frontend estimation accuracy metrics and log ratio output ([#5252](https://github.com/grafana/pyroscope/pull/5252)).
-* Added per-tenant limits for the number of recording rules ([#5247](https://github.com/grafana/pyroscope/pull/5247)).
-* Updated the Helm chart to default to the v2 storage architecture and added support for deploying extra Kubernetes manifests with `extraObjects` ([#5160](https://github.com/grafana/pyroscope/pull/5160), [#5097](https://github.com/grafana/pyroscope/pull/5097)).
-* Migrated monitoring dashboards to native histograms ([#5048](https://github.com/grafana/pyroscope/pull/5048)).
-
-## Bug fixes
-* Fixed an out-of-bounds panic in `clearAddresses` ([#5250](https://github.com/grafana/pyroscope/pull/5250)).
-* Fixed nil matcher handling for recording rule upserts ([#5134](https://github.com/grafana/pyroscope/pull/5134)).
-* Fixed tenant ID validation in store-gateway ([#5194](https://github.com/grafana/pyroscope/pull/5194)).
-* Fixed archive extraction issues, including zip-slip/tar-slip cleanup and file closure handling ([#5195](https://github.com/grafana/pyroscope/pull/5195), [#5206](https://github.com/grafana/pyroscope/pull/5206)).
-* Fixed label value cloning to avoid buffer reuse-after-free issues ([#5116](https://github.com/grafana/pyroscope/pull/5116)).
-* Fixed query read path edge cases, including unknown `QueryNode` panics, sub-millisecond step parameters, and range-series bucketing ([#5196](https://github.com/grafana/pyroscope/pull/5196), [#5137](https://github.com/grafana/pyroscope/pull/5137), [#5161](https://github.com/grafana/pyroscope/pull/5161)).
-* Fixed store-gateway ring route registration ([#5130](https://github.com/grafana/pyroscope/pull/5130)).
-* Fixed speedscope handling for unknown unit values by returning an error instead of panicking ([#5143](https://github.com/grafana/pyroscope/pull/5143)).
-* Fixed metastore shard cache reads and compaction worker histogram buckets ([#5189](https://github.com/grafana/pyroscope/pull/5189), [#5164](https://github.com/grafana/pyroscope/pull/5164)).
-* Fixed Helm chart rendering for `volumeClaimTemplates` by adding `apiVersion` and `kind` ([#5203](https://github.com/grafana/pyroscope/pull/5203)).
-
 ## Security updates
-* Updated UI dependencies for security fixes, including Vite, `tar`, `js-yaml`, `@babel/core`, `uuid`, and other transitive dependencies ([#5260](https://github.com/grafana/pyroscope/pull/5260), [#5263](https://github.com/grafana/pyroscope/pull/5263), [#5123](https://github.com/grafana/pyroscope/pull/5123), [#5181](https://github.com/grafana/pyroscope/pull/5181)).
-* Updated Go dependencies for security fixes, including `golang.org/x/net`, `golang.org/x/crypto`, `golang.org/x/image`, and `github.com/prometheus/prometheus` ([#5131](https://github.com/grafana/pyroscope/pull/5131), [#5197](https://github.com/grafana/pyroscope/pull/5197), [#5216](https://github.com/grafana/pyroscope/pull/5216), [#5113](https://github.com/grafana/pyroscope/pull/5113)).
-* Updated the Go toolchain directive for security coverage ([#5228](https://github.com/grafana/pyroscope/pull/5228)).
-* Hardened archive extraction paths and cleanup behavior ([#5195](https://github.com/grafana/pyroscope/pull/5195), [#5206](https://github.com/grafana/pyroscope/pull/5206)).
+* Updated `github.com/getkin/kin-openapi` to v0.144.0, addressing GHSA-r277-6w6q-xmqw ([#5416](https://github.com/grafana/pyroscope/pull/5416)).
+* Updated `google.golang.org/grpc` to v1.82.1, addressing GHSA-hrxh-6v49-42gf ([#5392](https://github.com/grafana/pyroscope/pull/5392), [#5393](https://github.com/grafana/pyroscope/pull/5393)).
+* Updated `golang.org/x/text` to v0.39.0, addressing CVE-2026-56852 ([#5383](https://github.com/grafana/pyroscope/pull/5383), [#5385](https://github.com/grafana/pyroscope/pull/5385)).
+* Updated `golang.org/x/net` to v0.56.0, addressing CVE-2026-46600 ([#5382](https://github.com/grafana/pyroscope/pull/5382), [#5384](https://github.com/grafana/pyroscope/pull/5384)).
+* Updated `github.com/klauspost/compress` to v1.18.7 ([#5429](https://github.com/grafana/pyroscope/pull/5429)).
+* UI: bumped `tar`, `js-yaml`, and `brace-expansion`, addressing CVE-2026-59871, CVE-2026-59873, CVE-2026-59874, and CVE-2026-59869 ([#5413](https://github.com/grafana/pyroscope/pull/5413), [#5424](https://github.com/grafana/pyroscope/pull/5424)).
+* UI: bumped `brace-expansion` to 1.1.18 and 5.0.9, addressing CVE-2026-14257 and CVE-2026-69152 ([#5466](https://github.com/grafana/pyroscope/pull/5466), [#5471](https://github.com/grafana/pyroscope/pull/5471)).
+* UI: refreshed the Yarn lockfile, removing the vulnerable `ip-address` package (CVE-2026-69192) and updating `postcss` (GHSA-r28c-9q8g-f849) ([#5419](https://github.com/grafana/pyroscope/pull/5419)).
 
-## Documentation updates
-* Added generated YAML examples and documentation for v2 configuration blocks ([#5151](https://github.com/grafana/pyroscope/pull/5151)).
-* Removed the public preview note from `pyroscope.receive_http` documentation ([#5176](https://github.com/grafana/pyroscope/pull/5176)).
-* Updated supported .NET versions to 8, 9, and 10 ([#5096](https://github.com/grafana/pyroscope/pull/5096)).
-* Refreshed README content and agent guides for the v2 layout, Go version, and tracing updates ([#5246](https://github.com/grafana/pyroscope/pull/5246), [#5183](https://github.com/grafana/pyroscope/pull/5183)).
-* Fixed a broken Grafana Cloud Profiles link in SDK guides ([#5132](https://github.com/grafana/pyroscope/pull/5132)).
+## Changelog
+* d8461d6ac7bf48c96aa3576c75c7bbbd7c04c5d2 build: remove go workspace and reduce Renovate to security-only updates (#5397) (#5403)
+* 496c887588c4a66c2281b0739db758968cc1ca80 chore(deps): lock file maintenance (#5419)
+* a3b2460fc0a8b1795ad52282c0838c20661f8236 docs: add v2.2 release notes (#5399) (#5401)
+* df3c0391b7dfc9c9577a55be4ebfcf2f0ac65d71 docs: add v2.2.1 release notes (#5468) (#5473)
+* 400510aa68d6b16010f74363f00b34840bbab763 docs: document Python memory profiling (#5406) (#5411)
+* 852c39ba30fc7101ecc91224dc8b38283d9cbe21 fix(deps): bump brace-expansion in /ui [security] (#5466) (#5471)
+* 0252239b6e7ffc9fc68f48b9c25fdc7e5e7b463e fix(deps): bump tar, js-yaml, brace-expansion in /ui [security] (#5413) (#5424)
+* 45045458f1906ae99d2ea46c67533569e93bd40f fix(security/critical/): update module github.com/getkin/kin-openapi to v0.144.0 [security] (#5416)
+* c7fdec866f4696fcb369d3c6e7f71af461325e9f fix(security/high/): update module google.golang.org/grpc to v1.82.1 [security] (#5392)
+* 097528efc50a9790b5117378c8435f8a337ad410 fix(security/high/api): update module google.golang.org/grpc to v1.82.1 [security] (#5393)
+* dc8c13f6b1fcec5b7e750df673a0b766e2b2d149 fix(security/unknown/): update module github.com/klauspost/compress to v1.18.7 [security] (#5429)
+* 1f4a845c4bb9a6fffeddb6a734f569e3c423e83a fix(security/unknown/): update module golang.org/x/net to v0.56.0 [security] (#5382)
+* 0e02e480dee2bb6ad80215eba78ba725b565985c fix(security/unknown/): update module golang.org/x/text to v0.39.0 [security] (#5383)
+* 290d232d07691ecf42f92835e1629da446b90c65 fix(security/unknown/api): update module golang.org/x/net to v0.56.0 [security] (#5384)
+* 32e1863eb3b1db82985e675c00c46b6d467ab3ed fix(security/unknown/api): update module golang.org/x/text to v0.39.0 [security] (#5385)
+* aafe99d2be7b2ddef47ae47d858edf9e8c796f56 fix(ui): adapt to prettier 3.9 and eslint-plugin-react-hooks 7.1 (#5438) (#5440)
 
 As always, feedback is more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
@@ -47,5 +39,7 @@ You can reach out to the team using:
 - [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
 ```bash
-  docker pull grafana/pyroscope:2.1.0
+  docker pull grafana/pyroscope:2.2.1
 ```
+
+
