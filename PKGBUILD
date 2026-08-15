@@ -5,7 +5,7 @@ pkgbase=ntfsprogs-plus
 pkgname=${pkgbase}
 _repo=ntfsprogs-plus/$pkgname
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='NTFS filesystem utilities.'
 arch=('x86_64')
 
