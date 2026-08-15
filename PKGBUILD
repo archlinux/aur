@@ -3,7 +3,7 @@
 _pkgname=celestia
 pkgname=$_pkgname-bin
 pkgver=1.7.0
-pkgrel=20
+pkgrel=21
 pkgdesc="Real-time space simulation"
 arch=('x86_64')
 url="https://celestiaproject.space/"
@@ -22,7 +22,7 @@ source=(
 	"$_download_url/$_target"
 	"$_pkgname.bash"
 )
-sha256sums=('3d05300b8b6213588185aaccc08370ffbea2002cf3328482635ebe01f222af20'
+sha256sums=('4ae826405f934818fed52e640812702a0465d4c10af6fc3f2bb5bbb4b854c728'
             '58672bcc02b5f50eb5dee22264b4ddb629a3927779941e359257927261021830')
 
 _squashfs_root="squashfs-root"
@@ -47,7 +47,7 @@ prepare() {
 package() {
 	mkdir -p $pkgdir/opt/$_pkgname
 	cp -arf ./$_squashfs_root $pkgdir/opt/$_pkgname
-	rm -rf $pkgdir/opt/$_pkgname/$_squashfs_root/etc/ $pkgdir/opt/$_pkgname/$_squashfs_root/usr/bin/gtk-update-icon-cache $pkgdir/opt/$_pkgname/$_squashfs_root/usr/bin/sh $pkgdir/opt/$_pkgname/$_squashfs_root/var
+	rm -rf $pkgdir/opt/$_pkgname/$_squashfs_root/etc/ $pkgdir/opt/$_pkgname/$_squashfs_root/usr/bin/gtk-update-icon-cache $pkgdir/opt/$_pkgname/$_squashfs_root/usr/bin/sh $pkgdir/opt/$_pkgname/$_squashfs_root/var $pkgdir/opt/$_pkgname/$_squashfs_root/root $pkgdir/opt/$_pkgname/$_squashfs_root/run $pkgdir/opt/$_pkgname/$_squashfs_root/sbin
 
 	install -Dm644 $pkgdir/opt/$_pkgname/$_squashfs_root/space.celestiaproject.$_pkgname.desktop -t $pkgdir/usr/share/applications/
 
