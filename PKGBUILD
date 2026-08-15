@@ -1,6 +1,6 @@
 # Maintainer: Kaiyasi <zengcode0315@gmail.com>
 pkgname=fcitx5-ari-ime
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Ari IME: Fcitx5 mixed Bopomofo/English input without mode switching"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('fcitx5' 'hicolor-icon-theme' 'libchewing')
 makedepends=('cmake' 'extra-cmake-modules')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('07555542f9996aaf1c89b2b0f5f0ca23dd0a61f73fc5da54731da6c2ca9d5bb7')
+sha256sums=('c69d13704138be38487e307fbac09e0af5bbd2e458273173a7677b1996e4497f')
 
 _srcdir="Ari-IME-$pkgver"
 
