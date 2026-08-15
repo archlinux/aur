@@ -3,7 +3,7 @@
 _branch=v18.0 # Upstream seems to use main in a non-standard way
 pkgname=gnome-shell-extension-tiling-shell-git
 pkgdesc="Extend GNOME Shell with advanced tiling window management"
-pkgver=r76.de91fb0
+pkgver=r82.885ebab
 pkgrel=1
 arch=('any')
 url="https://github.com/domferr/tilingshell"
