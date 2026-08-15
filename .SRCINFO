@@ -1,6 +1,6 @@
 pkgbase = cli-of-life
 	pkgdesc = Play Conway's Game of Life in your terminal
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/gabe565/cli-of-life
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = cli-of-life
 	license = Apache-2.0
 	makedepends = go
 	depends = glibc
-	source = cli-of-life-0.4.3.tar.gz::https://github.com/gabe565/cli-of-life/archive/refs/tags/v0.4.3.tar.gz
-	sha256sums = 4423f1582c9f0a9b7331a4944b4dd9b0614b61fdef847375b5a5bddbdef9f3fd
+	source = https://github.com/gabe565/cli-of-life/archive/refs/tags/v0.5.0/cli-of-life-0.5.0.tar.gz
+	sha256sums = a64e8910dea23e8243302936aab9f59f37b67e1b6fecf3536263355e45221de1
 
 pkgname = cli-of-life
