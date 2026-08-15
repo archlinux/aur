@@ -1,19 +1,19 @@
 pkgbase = saturn-bin
-	pkgdesc = Your go-to ToS Compliant Custom Deezer Client - Freezer Reborn
-	pkgver = 1.1.1
-	pkgrel = 2
-	url = https://github.com/SaturnMusic/PC
+	pkgdesc = Cross-platform deezer client made in Flutter
+	pkgver = 3.0.14
+	pkgrel = 1
+	url = https://github.com/Sheathed/Saturn
 	arch = x86_64
 	license = GPL3
-	makedepends = libarchive
 	depends = flac
+	depends = libayatana-appindicator
 	depends = libnotify
 	depends = libxtst
 	depends = nss
 	optdepends = libappindicator-gtk3
 	provides = saturnmusic
 	conflicts = saturn-git
-	source = https://github.com/SaturnMusic/PC/releases/download/v1.1.1/saturn_1.1.1_amd64.deb
-	sha256sums = 0b58bce227f0f05b96abb6f7532fc315dfffb53342d0ff0fade7b54107d99888
+	source = https://github.com/Sheathed/Saturn/releases/download/v3.0.14/saturn-3.0.14-linux.deb
+	sha256sums = 85eb5d70c5059368fb9374304aaf1b70b144a0ddb38d37d9dcc0b454ce85fa65
 
 pkgname = saturn-bin

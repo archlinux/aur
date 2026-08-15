@@ -1,34 +1,36 @@
 # Maintainer: Omansh Krishn <omansh@duck.com>
 
 pkgname=saturn-bin
-pkgver=1.1.1
-pkgrel=2
-pkgdesc="Your go-to ToS Compliant Custom Deezer Client - Freezer Reborn"
+pkgver=3.0.14
+pkgrel=1
+pkgdesc="Cross-platform deezer client made in Flutter"
 arch=('x86_64')
-url="https://github.com/SaturnMusic/PC"
+url="https://github.com/Sheathed/Saturn"
 license=('GPL3')
-depends=( flac libnotify libxtst nss )
-makedepends=( libarchive )
+depends=( flac libayatana-appindicator libnotify libxtst nss )
 optdepends=( libappindicator-gtk3 )
 provides=( 'saturnmusic' )
 conflicts=('saturn-git')
 
-source=( https://github.com/SaturnMusic/PC/releases/download/v${pkgver}/saturn_${pkgver}_amd64.deb )
+source=( "${url}/releases/download/v${pkgver}/saturn-${pkgver}-linux.deb" )
 
-sha256sums=('0b58bce227f0f05b96abb6f7532fc315dfffb53342d0ff0fade7b54107d99888')
+sha256sums=('85eb5d70c5059368fb9374304aaf1b70b144a0ddb38d37d9dcc0b454ce85fa65')
 
 package() {
 	cd "${srcdir}"
-	bsdtar -xf "${srcdir}/data.tar.xz"
+	tar -xf "${srcdir}/data.tar.zst"
 	install -dm755 "${pkgdir}/opt"
 	cp --preserve=mode -r 'opt' "${pkgdir}/"
 
-	for res in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256 512x512; do
+	install -dm755 "${pkgdir}/usr/bin"
+	ln -s "/opt/Saturn/Saturn" "${pkgdir}/usr/bin/saturn"
+
+	for res in 128x128 256x256; do
 		install -dm755 "${pkgdir}/usr/share/icons/hicolor/${res}/apps"
-		install -m644 "${srcdir}/usr/share/icons/hicolor/${res}/apps/saturn.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/saturn.png"
+		install -m644 "${srcdir}/usr/share/icons/hicolor/${res}/apps/Saturn.png" "${pkgdir}/usr/share/icons/hicolor/${res}/apps/saturn.png"
 	done
 
 	install -dm755 "${pkgdir}/usr/share/applications"
-	install -Dm644 "${srcdir}/usr/share/applications/saturn.desktop" "${pkgdir}/usr/share/applications/saturn.desktop"
+	install -Dm644 "${srcdir}/usr/share/applications/Saturn.desktop" "${pkgdir}/usr/share/applications/saturn.desktop"
 
 }
