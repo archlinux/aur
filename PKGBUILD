@@ -20,6 +20,8 @@ depends=(
   'ffmpeg'
   'qt6-multimedia'
   'python'
+  'python-dbus'
+  'python-gobject'
   'wlr-randr'
 )
 optdepends=(
@@ -67,4 +69,11 @@ package() {
   install -Dm644 Scripts/udev/80-atmosphera-uinput.rules "$pkgdir/usr/lib/udev/rules.d/80-atmosphera-uinput.rules"
   # polkit: allow active sessions/wheel to start that one service, no prompt
   install -Dm644 Scripts/polkit/atmosphera-keyd.rules "$pkgdir/usr/share/polkit-1/rules.d/atmosphera-keyd.rules"
+
+  # app.atmosphera.HwController — D-Bus-faced privileged helper (turbo toggle)
+  install -Dm755 Scripts/python/hw-controller.py "$pkgdir/usr/lib/atmosphera/hw-controller"
+  install -Dm644 Scripts/systemd/app.atmosphera.HwController.service "$pkgdir/usr/lib/systemd/system/app.atmosphera.HwController.service"
+  install -Dm644 Scripts/dbus/app.atmosphera.HwController.service "$pkgdir/usr/share/dbus-1/system-services/app.atmosphera.HwController.service"
+  install -Dm644 Scripts/dbus/app.atmosphera.HwController.conf "$pkgdir/etc/dbus-1/system.d/app.atmosphera.HwController.conf"
+  install -Dm644 Scripts/polkit/app.atmosphera.hwcontroller.policy "$pkgdir/usr/share/polkit-1/actions/app.atmosphera.hwcontroller.policy"
 }
