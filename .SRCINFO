@@ -1,6 +1,6 @@
 pkgbase = yuki-iptv
 	pkgdesc = IPTV player with EPG support, based on mpv and Qt
-	pkgver = 260815.5
+	pkgver = 260815.6
 	pkgrel = 1
 	url = https://github.com/itachi-re/yuki-iptv
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = yuki-iptv
 	depends = xdg-utils
 	optdepends = yt-dlp: playback of yt-dlp-supported stream URLs
 	optdepends = ffmpeg: recording support
-	source = yuki-iptv-260815.5.tar.gz::https://github.com/itachi-re/yuki-iptv/archive/refs/tags/v260815.5.tar.gz
-	sha256sums = f11a32eba98bcc3b7a6a87ea2075a2d2158f54033b68ca4e6016f7999d48d0b6
+	source = yuki-iptv-260815.6.tar.gz::https://github.com/itachi-re/yuki-iptv/archive/refs/tags/v260815.6.tar.gz
+	sha256sums = 55633a26127b0c0ecb751af54136f556ef17ff3de38bdc2a10cd5bd2f07c1adf
 
 pkgname = yuki-iptv
