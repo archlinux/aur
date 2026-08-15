@@ -93,7 +93,8 @@ check() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
   # https://github.com/syncthing/syncthing/issues/8785
   export HOME="$(mktemp -p "$PWD" -d testhome.XXX)"
-  export QT_QPA_PLATFORM=offscreen
+  # https://github.com/Martchus/syncthingtray/issues/455
+  export QT_QPA_PLATFORM=offscreen QT_QPA_PLATFORMTHEME=
   export SYNCTHING_PORT=$(ephemeral_port)
   export SYNCTHING_TEST_TIMEOUT_FACTOR=3
   ninja check || ninja check
