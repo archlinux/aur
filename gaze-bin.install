@@ -1,0 +1,108 @@
+function post_install() {
+#!/bin/sh
+# SPDX-FileCopyrightText: 2026 Gundu Labs
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -e
+
+configure_pam_sudo() {
+	pam_file=/etc/pam.d/sudo
+	[ -f "$pam_file" ] || return 0
+	grep -q "pam_gaze" "$pam_file" 2>/dev/null && return 0
+
+	tmp=$(mktemp)
+	awk '
+		/^[[:space:]]*auth[[:space:]]/ && !done {
+			print "auth        sufficient    pam_gaze.so"
+			done = 1
+		}
+		{ print }
+	' "$pam_file" > "$tmp" && install -m 644 "$tmp" "$pam_file"
+	rm -f "$tmp"
+
+	mkdir -p /etc/gaze
+	printf '%s\n' "$pam_file" > /etc/gaze/pam-arch.configured
+}
+
+configure_pam_polkit() {
+	pam_file=/etc/pam.d/polkit-1
+	[ -f "$pam_file" ] && return 0
+
+	cat > "$pam_file" <<-EOF
+	#%PAM-1.0
+	auth       sufficient   pam_gaze.so
+	auth       include      system-auth
+	account    include      system-auth
+	password   include      system-auth
+	session    include      system-auth
+	EOF
+	chmod 644 "$pam_file"
+
+	mkdir -p /etc/gaze
+	printf '%s\n' "$pam_file" > /etc/gaze/pam-arch.polkit-configured
+}
+
+configure_pam_sudo
+configure_pam_polkit
+
+if [ -d /run/systemd/system ]; then
+	systemctl daemon-reload >/dev/null 2>&1
+	dbus-send --system --type=method_call --dest=org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus.ReloadConfig >/dev/null 2>&1 || true
+	systemctl restart polkit >/dev/null 2>&1 || true
+fi
+
+}
+
+function post_upgrade() {
+#!/bin/sh
+# SPDX-FileCopyrightText: 2026 Gundu Labs
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -e
+
+configure_pam_sudo() {
+	pam_file=/etc/pam.d/sudo
+	[ -f "$pam_file" ] || return 0
+	grep -q "pam_gaze" "$pam_file" 2>/dev/null && return 0
+
+	tmp=$(mktemp)
+	awk '
+		/^[[:space:]]*auth[[:space:]]/ && !done {
+			print "auth        sufficient    pam_gaze.so"
+			done = 1
+		}
+		{ print }
+	' "$pam_file" > "$tmp" && install -m 644 "$tmp" "$pam_file"
+	rm -f "$tmp"
+
+	mkdir -p /etc/gaze
+	printf '%s\n' "$pam_file" > /etc/gaze/pam-arch.configured
+}
+
+configure_pam_polkit() {
+	pam_file=/etc/pam.d/polkit-1
+	[ -f "$pam_file" ] && return 0
+
+	cat > "$pam_file" <<-EOF
+	#%PAM-1.0
+	auth       sufficient   pam_gaze.so
+	auth       include      system-auth
+	account    include      system-auth
+	password   include      system-auth
+	session    include      system-auth
+	EOF
+	chmod 644 "$pam_file"
+
+	mkdir -p /etc/gaze
+	printf '%s\n' "$pam_file" > /etc/gaze/pam-arch.polkit-configured
+}
+
+configure_pam_sudo
+configure_pam_polkit
+
+if [ -d /run/systemd/system ]; then
+	systemctl daemon-reload >/dev/null 2>&1
+	dbus-send --system --type=method_call --dest=org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus.ReloadConfig >/dev/null 2>&1 || true
+	systemctl restart polkit >/dev/null 2>&1 || true
+fi
+
+}
+
