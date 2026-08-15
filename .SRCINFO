@@ -1,6 +1,6 @@
 pkgbase = matchplane-git
 	pkgdesc = Federated AI matching infrastructure (development version)
-	pkgver = 0.1.7.r19.g15a2c6c
+	pkgver = 0.1.8.r26.g42cdce6
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/matchplane
 	install = matchplane.install
@@ -23,7 +23,7 @@ pkgbase = matchplane-git
 	conflicts = matchplane-bin
 	options = !lto
 	backup = etc/matchplane/matchplane.env
-	source = matchplane::git+https://github.com/LIghtJUNction/matchplane.git
+	source = matchplane::git+https://github.com/LIghtJUNction/matchplane.git#commit=42cdce6a5cd63506c86f5d566bbb9302db938d5d
 	sha256sums = SKIP
 
 pkgname = matchplane-git
