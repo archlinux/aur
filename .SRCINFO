@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-tiling-shell-git
 	pkgdesc = Extend GNOME Shell with advanced tiling window management
-	pkgver = r76.de91fb0
+	pkgver = r82.885ebab
 	pkgrel = 1
 	url = https://github.com/domferr/tilingshell
 	arch = any
