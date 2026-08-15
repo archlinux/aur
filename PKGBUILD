@@ -1,7 +1,7 @@
 # Maintainer: Jim Philip <jimphilip394 at gmail dot com>
 pkgname=vencord-hook
 pkgver=1
-pkgrel=23
+pkgrel=24
 pkgdesc="Pacman hook to automatically install Vencord after Discord updates"
 arch=('any')
 url="https://github.com/Vencord/Installer.git"
@@ -13,10 +13,10 @@ source=("vencord-hook.hook"
 		"LICENSE-VENCORD"
 		"LICENSE-VENCORD-HOOK")
 sha256sums=('17e967e27e4d8df00e0721d429c88680abb61f06cabdf6425137172ec998ae3c'
-			'83be97d8f5175276b2f74ed0327185c1f5fe097c94c7cce6fbff83d48ccba200'
-			'87ace21becc3e90808b85976569464c07991f63dfa89cf7e8aeddae0203350b0'
-			'SKIP'
-			'SKIP')
+            '83be97d8f5175276b2f74ed0327185c1f5fe097c94c7cce6fbff83d48ccba200'
+            'a23ab1cdd3aae94eead3728291d9f7e1b34051a9dbf4d5691257a4eddb237bd5'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            'fa1a4dd7113304dce99f33615dca6f796dec5be6b48efb1d7a7160e726a619a5')
 install="vencord-hook.install"
 
 package() {

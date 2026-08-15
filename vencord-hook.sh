@@ -48,9 +48,10 @@ fi
 
 while IFS= read -r package || [ -n "$package" ]; do
 	config=${package//-/}
+	location=$SUDO_HOME/.config/$config/app-*/
 
-	echo_hook "Installing Vencord for $branch branch..."
-	vencordinstallercli -install -location $SUDO_HOME/.config/$config/app-*/ || {
+	echo_hook "Installing Vencord at $location"
+	vencordinstallercli -install -location $location || {
 		err_handler
 		exit 1
 	}
