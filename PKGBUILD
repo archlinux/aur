@@ -34,4 +34,5 @@ package() {
     install -Dm644 languages/lang_mod_es.sh "$pkgdir/usr/share/cly/languages/lang_mod_es.sh"
     install -Dm644 "components/infected_packages.txt" "$pkgdir/usr/share/cly/infected_packages.txt"
     install -Dm644 "components/aur_tag.sh" "$pkgdir/usr/share/cly/aur_tag.sh"
+    install -Dm644 "components/base_config" "$pkgdir/usr/share/cly/components/base_config"
 }
