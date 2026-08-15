@@ -50,11 +50,4 @@ sed -i "s/^sha256sums=.*/sha256sums=('$SHA256')/" PKGBUILD
 echo "==> Generating .SRCINFO..."
 makepkg --printsrcinfo > .SRCINFO
 
-echo "==> Committing changes..."
-git add PKGBUILD .SRCINFO
-git commit -m "Update to version $LATEST_VERSION"
-
-echo "==> Pushing to AUR..."
-git push
-
 echo "==> Done! Updated from $CURRENT_VERSION to $LATEST_VERSION"
