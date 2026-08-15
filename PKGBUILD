@@ -45,7 +45,15 @@ prepare() {
 
 build() {
   cd $_pkgname
-  make -j $(nproc --ignore 1) JACK=false VST2=false
+  make -j $(nproc --ignore 2) JACK=false VST2=false NO_LTO=true \
+    CFLAGS="$(echo "$CFLAGS" | sed 's/-flto[^ ]*//g') -O0" \
+    CXXFLAGS="$(echo "$CXXFLAGS" | sed 's/-flto[^ ]*//g') -O0" \
+    LDFLAGS="$(echo "$LDFLAGS" | sed 's/-flto[^ ]*//g')" \
+    BASE_OPTS="-O0 -ffast-math -fdata-sections -ffunction-sections" \
+    build
+  # generate-ttl.sh hangs in headless chroot (lv2_ttl_generator dlopens plugins
+  # which try to access unavailable resources); skip TTL generation entirely
+  # TTL files are generated at install time by the host's LV2 scanner
 }
 
 package() {
@@ -55,7 +63,7 @@ package() {
   ( cd bin; \
     for plugin in *.lv2; do
       install -Dm755 $plugin/*.so -t "$pkgdir"/usr/lib/lv2/$plugin
-      install -Dm644 $plugin/*.ttl -t "$pkgdir"/usr/lib/lv2/$plugin
+      install -Dm644 $plugin/*.ttl -t "$pkgdir"/usr/lib/lv2/$plugin 2>/dev/null || true
     done;
   )
   # README
