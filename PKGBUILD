@@ -19,7 +19,7 @@ depends=('ffmpeg'
          'taglib')
 provides=('youtube-to-mp3')
 conflicts=('youtube-to-mp3')
-source_x86_64=("${pkgname}-${pkgver}-${_build}-${pkgrel}.amd64.deb::https://schinfo.de/MediaHuman/YouTubeToMP3.amd64.deb")
+source_x86_64=("${pkgname}-${pkgver}-${pkgrel}.deb::https://www.mediahuman.com/de/download/YouTubeToMP3.amd64.deb")
 sha256sums_x86_64=('01164a60e055bb12dcda4a7a24d8cb0eb8893a71b9e49a6abb7ee57ae35e70ec')
 
 pkgver() {
