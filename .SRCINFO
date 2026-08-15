@@ -1,0 +1,23 @@
+pkgbase = mailove-git
+	pkgver = 2.5.r0.g4dc126e
+	pkgrel = 1
+	url = https://github.com/nekromoff/mailove
+	arch = any
+	license = LGPL-3.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = vulkan-headers
+	makedepends = svgo
+	depends = qt6-webengine
+	depends = qtkeychain-qt6
+	depends = kimap
+	depends = kmime
+	depends = ksmtp
+	depends = kcoreaddons
+	depends = qgpgme
+	depends = libglvnd
+	source = git+https://github.com/nekromoff/mailove.git
+	sha256sums = SKIP
+
+pkgname = mailove-git
