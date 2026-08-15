@@ -41,7 +41,7 @@ depends=(
   "libxcomposite" # Deps of the X11 capture plugin
   "libxkbcommon" # Deps of libobs, OBS Studio and CEF
   "luajit" # Deps of Scripting plugin
-  "mbedtls>=$_mbedtlsver" # Deps of OBS Studio and Outputs plugin
+  "mbedtls3>=$_mbedtlsver" # Deps of OBS Studio and Outputs plugin
   "pciutils" # Deps of FFmpeg plugin
   "python>=$_pythonver" # Deps of Scripting plugin
   "qrcodegencpp-cmake" # Deps of Websocket plugin
@@ -115,10 +115,15 @@ prepare() {
 }
 
 build() {
+  export PKG_CONFIG_PATH="/usr/lib/mbedtls3/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+  export CMAKE_PREFIX_PATH="/usr/lib/mbedtls3${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}"
+
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INCLUDE_PATH=/usr/include/mbedtls3 \
+    -DCMAKE_LIBRARY_PATH=/usr/lib/mbedtls3 \
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
@@ -128,8 +133,9 @@ build() {
     -DCEF_ROOT_DIR="$srcdir/${_cefver/%_v?/}" \
     -DOBS_VERSION_OVERRIDE="${_obsversion}" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
-    -Wno-dev \
-    -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations"
+    -DCMAKE_C_FLAGS="-I/usr/include/mbedtls3" \
+    -DCMAKE_CXX_FLAGS="-I/usr/include/mbedtls3 -Wno-error=deprecated-declarations" \
+    -Wno-dev
 
   cmake --build build
 }

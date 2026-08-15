@@ -38,7 +38,7 @@ pkgbase = teb-obs
 	depends = libxcomposite
 	depends = libxkbcommon
 	depends = luajit
-	depends = mbedtls>=3.6.1
+	depends = mbedtls3>=3.6.1
 	depends = pciutils
 	depends = python>=3.14
 	depends = qrcodegencpp-cmake
