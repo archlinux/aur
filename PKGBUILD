@@ -4,8 +4,8 @@
 _commit=HEAD
 _pkgname=Retro68
 pkgname=${_pkgname,,}-git
-pkgver=r1182.335fa54f6d
-pkgrel=4
+pkgver=r1184.f99ecb5aeb
+pkgrel=1
 pkgdesc="Cross-platform classic Macintosh 68k and PowerPC toolchain"
 arch=('x86_64')
 url="https://github.com/autc04/${_pkgname}"
