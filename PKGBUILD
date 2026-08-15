@@ -1,14 +1,14 @@
 # Maintainer: alufers <alufers[at]wp[dot]pl>
 
 pkgname=python-datastruct
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Combination of struct and dataclasses for easy parsing of binary formats'
 url='https://github.com/kuba2k2/datastruct'
 arch=('any')
 license=('MIT')
 depends=(
-  python
+  'python>=3.8'
 )
 makedepends=(
   python-build
@@ -17,8 +17,8 @@ makedepends=(
   python-wheel
 )
 source=(https://github.com/kuba2k2/${pkgname#python-}/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('887eb69b48f3dd2fec6fd8c2c3625b4877fcd3b4e4ea6c89e826bfa93b3f378d')
-b2sums=('aa044bbf3d28a8b7ac90558a678184879fb1da67d909a8dc10e1d7b55f0b60197d095d5fcad1cd104c4d9fd4d6a6c45c8363c3edf6a8ca60ca68003645545290')
+sha256sums=('019e6f4725aa340d9f6951948a67e842816552d5e8bc246f9db3149faa6c829e')
+b2sums=('cbb4a4246e4b0db47f6e9a8de0bf95528ffa73be4abbc4b1377ab510534eefe2b7210dae758a9457642c46f53bf888869d67ecf61ee8c2fc0bdd78b0b9e14e3e')
 
 build() {
   cd ${pkgname#python-}-${pkgver}
