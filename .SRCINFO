@@ -8,7 +8,10 @@ pkgbase = grubforge
 	depends = python
 	depends = python-textual
 	depends = python-rich
-	source = grubforge-1.0.3.tar.gz::https://github.com/jetomev/grubforge/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = e443c2d510768e279e9d7073720f0e6f9f8eb6a59fe248c93bfb4cafa378adbe
+	source = grubforge-1.0.3.tar.gz::https://github.com/jetomev/grubforge/releases/download/v1.0.3/grubforge-1.0.3.tar.gz
+	source = grubforge-1.0.3.tar.gz.asc::https://github.com/jetomev/grubforge/releases/download/v1.0.3/grubforge-1.0.3.tar.gz.asc
+	validpgpkeys = 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
+	sha256sums = 3591d864b2211aa8441abb8382d10190622b041d40af45ff90f4124d7d20e1aa
+	sha256sums = SKIP
 
 pkgname = grubforge

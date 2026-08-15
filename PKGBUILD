@@ -9,8 +9,13 @@ arch=('any')
 url="https://github.com/jetomev/grubforge"
 license=('GPL3')
 depends=('python' 'python-textual' 'python-rich')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e443c2d510768e279e9d7073720f0e6f9f8eb6a59fe248c93bfb4cafa378adbe')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
+sha256sums=('3591d864b2211aa8441abb8382d10190622b041d40af45ff90f4124d7d20e1aa'
+            'SKIP')
+# Javier (jetomev) release-signing key — import via:
+#   gpg --keyserver keys.openpgp.org --recv-keys 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
+validpgpkeys=('32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E')
 
 check() {
     cd "${srcdir}/${pkgname}-${pkgver}"
