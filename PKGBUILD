@@ -11,7 +11,7 @@
 # takes one engine in one form.
 
 pkgname=viewport-webkitgtk
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc='Wayland compositor whose shell is a web page — WebKitGTK, out of process'
 arch=('x86_64' 'aarch64')
@@ -27,7 +27,7 @@ license=('GPL-3.0-or-later')
 # how many commits past it, and which one — because naming a stale tag would be
 # a lie about what was built. At a release the two say the same thing and the
 # tag is the one anybody can check.
-_tag=v0.1.6
+_tag=v0.1.7
 
 depends=(
   'wayland'
