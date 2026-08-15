@@ -1,6 +1,6 @@
 pkgbase = fcitx5-ari-ime-bin
 	pkgdesc = Ari IME: prebuilt Fcitx5 mixed Bopomofo/English input method
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/kaiyasi/Ari-IME
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = fcitx5-ari-ime-bin
 	depends = hicolor-icon-theme
 	depends = gcc-libs
 	depends = glibc
-	provides = fcitx5-ari-ime=2.2.0
+	provides = fcitx5-ari-ime=2.2.1
 	conflicts = fcitx5-ari-ime
 	options = !debug
 	options = !strip
-	source = fcitx5-ari-ime-bin-2.2.0-x86_64.tar.zst::https://github.com/kaiyasi/Ari-IME/releases/download/v2.2.0/fcitx5-ari-ime-bin-2.2.0-x86_64.tar.zst
-	sha256sums = 32f2e2862cbcc608edd7f8e54508b9226c6a0a4e3ea06d9ec0ca0158f1c486a7
+	source = fcitx5-ari-ime-bin-2.2.1-x86_64.tar.zst::https://github.com/kaiyasi/Ari-IME/releases/download/v2.2.1/fcitx5-ari-ime-bin-2.2.1-x86_64.tar.zst
+	sha256sums = ecad732d2f8c5a3993c989e044e2a1c9f67954b10479cb254a6ee7f9b2a42c33
 
 pkgname = fcitx5-ari-ime-bin
