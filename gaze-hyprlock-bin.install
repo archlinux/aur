@@ -2,6 +2,7 @@ function post_install() {
 #!/bin/sh
 # SPDX-FileCopyrightText: 2026 Gundu Labs
 # SPDX-License-Identifier: GPL-3.0-or-later
+
 set -e
 
 cat <<'EOF'
@@ -28,6 +29,7 @@ function post_remove() {
 #!/bin/sh
 # SPDX-FileCopyrightText: 2026 Gundu Labs
 # SPDX-License-Identifier: GPL-3.0-or-later
+
 set -e
 
 cat <<'EOF'
@@ -36,6 +38,33 @@ Gaze hyprlock PAM service removed.
 If your hyprlock.conf still references module = hyprlock-gaze, hyprlock
 will fall back to its default PAM service. Update hyprlock.conf to remove
 the reference.
+EOF
+
+}
+
+function post_upgrade() {
+#!/bin/sh
+# SPDX-FileCopyrightText: 2026 Gundu Labs
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+set -e
+
+cat <<'EOF'
+
+Gaze hyprlock PAM service installed at /etc/pam.d/hyprlock-gaze
+To enable face unlock in hyprlock, add to ~/.config/hypr/hyprlock.conf:
+
+    auth {
+        pam {
+            module = hyprlock-gaze
+        }
+    }
+
+For simultaneous face + password mode, use:
+
+            module = hyprlock-gaze-simultaneous
+
+Docs: https://gaze.gundulabs.com/guide/hyprland
 EOF
 
 }
