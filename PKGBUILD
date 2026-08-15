@@ -115,15 +115,10 @@ prepare() {
 }
 
 build() {
-  export PKG_CONFIG_PATH="/usr/lib/mbedtls3/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
-  export CMAKE_PREFIX_PATH="/usr/lib/mbedtls3${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}"
-
   cmake -B build -S obs-studio \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INCLUDE_PATH=/usr/include/mbedtls3 \
-    -DCMAKE_LIBRARY_PATH=/usr/lib/mbedtls3 \
     -DENABLE_LIBFDK=ON \
     -DENABLE_JACK=ON \
     -DENABLE_SNDIO=ON \
@@ -133,9 +128,13 @@ build() {
     -DCEF_ROOT_DIR="$srcdir/${_cefver/%_v?/}" \
     -DOBS_VERSION_OVERRIDE="${_obsversion}" \
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
-    -DCMAKE_C_FLAGS="-I/usr/include/mbedtls3" \
-    -DCMAKE_CXX_FLAGS="-I/usr/include/mbedtls3 -Wno-error=deprecated-declarations" \
-    -Wno-dev
+    -DMbedTLS_DIR="/usr/lib/mbedtls3/cmake/MbedTLS" \
+    -DMbedTLS_INCLUDE_DIR="/usr/include/mbedtls3" \
+    -DMbedtls_LIBRARY="/usr/lib/mbedtls3/libmbedtls.so" \
+    -DMbedcrypto_LIBRARY="/usr/lib/mbedtls3/libmbedcrypto.so" \
+    -DMbedx509_LIBRARY="/usr/lib/mbedtls3/libmbedx509.so" \
+    -Wno-dev \
+    -DCMAKE_CXX_FLAGS="-Wno-error=deprecated-declarations"
 
   cmake --build build
 }
