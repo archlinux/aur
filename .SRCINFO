@@ -25,6 +25,7 @@ pkgbase = kometa
 	depends = python-schedule
 	depends = python-tmdbapis
 	depends = python-tenacity
+	depends = python-langcodes
 	optdepends = plex-media-server
 	replaces = plex-meta-manager
 	options = !emptydirs

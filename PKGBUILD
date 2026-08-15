@@ -28,6 +28,7 @@ depends=(
   'python-schedule'
   'python-tmdbapis'
   'python-tenacity'
+  'python-langcodes'
 )
 
 makedepends=('python-setuptools')
