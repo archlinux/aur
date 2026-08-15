@@ -1,6 +1,6 @@
 pkgbase = zine
 	pkgdesc = Fast, Scalable, Flexible Static Site Generator (SSG)
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://zine-ssg.io
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = zine
 	makedepends = anyzig
 	makedepends = git
 	depends = glibc
-	source = zine::git+https://github.com/kristoff-it/zine.git#tag=v0.12.0
-	b2sums = 7564cade446b264e33fba4de00399e8abb060851d4d3f9902aa24cc3cf68d0a0de416a996dcd1de86b57eec3ba8110b566c66d41789d8ce4232f11f269753f7e
+	source = zine::git+https://github.com/kristoff-it/zine.git#tag=v0.13.0
+	b2sums = 9937d81297f2c8f78f4f03b60df8438333f7e13750dbbdfa31c020279a4f1b956f6e8a9e8e28a902ab1832e45012ca5073185b0573bcc06d6184a562cba73b54
 
 pkgname = zine

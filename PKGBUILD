@@ -2,7 +2,7 @@
 
 _zig=anyzig
 pkgname="zine"
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="Fast, Scalable, Flexible Static Site Generator (SSG)"
 arch=(
@@ -26,7 +26,7 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
 )
-b2sums=('7564cade446b264e33fba4de00399e8abb060851d4d3f9902aa24cc3cf68d0a0de416a996dcd1de86b57eec3ba8110b566c66d41789d8ce4232f11f269753f7e')
+b2sums=('9937d81297f2c8f78f4f03b60df8438333f7e13750dbbdfa31c020279a4f1b956f6e8a9e8e28a902ab1832e45012ca5073185b0573bcc06d6184a562cba73b54')
 
 build() {
   local zig_options=(
@@ -67,6 +67,6 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   cp -vaT --no-preserve=ownership "build" "${pkgdir}"
 
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm644 "LICENSE"   -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
