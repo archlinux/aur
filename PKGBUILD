@@ -2,7 +2,7 @@
 
 _appname=music
 pkgname=nextcloud-app-music
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Music app for Nextcloud"
 arch=('any')
@@ -12,15 +12,17 @@ makedepends=('npm' 'perl' 'perl-locale-po' 'unzip' 'zip' 'yq')
 options=('!strip')
 groups=('nextcloud-apps')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('435439e10ff7a0df81182e4cb22ec93a8325bc8bd06ee1363cd354b847105df13808ea7e1115c24a96381d366af59945803293a483afc523deb353d9eec3f7c8')
+sha512sums=('9b88b2628fe34787a673208cd00da1c5b82c4537fe7c39db62c8551b330a3c1caeed9bb55c1f145e9b71c1a2aa3c757d81720aace73133878abbe926036436e9')
 
 prepare() {
     # Generate music.zip that is used when packaging
+    rm -rf "$_appname"
     mv "$_appname-$pkgver" "$_appname"
     zip -qr "$_appname.zip" "$_appname/"
     # Remove creation of music.zip using git
     cd "$_appname/build"
     sed -i 's/^git/#git/' release.sh
+    sed -i 's/npm install --deps/npm install/' Makefile
 }
 
 build() {
@@ -42,7 +44,6 @@ package() {
 
     cd "$_appname"
     _appsdir="$pkgdir/usr/share/webapps/nextcloud/apps"
-    _appdir="$_appsdir/$_appname"
 
     mkdir -p "$_appsdir"
     cp "../$_appname.zip" "$_appname.zip"
