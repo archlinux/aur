@@ -1,7 +1,7 @@
 # Maintainer: dim <mlrudasill@gmail.com>
 
 pkgname='caelestia-greeter-git'
-pkgver=1.0.1.r0.gf1e5b10
+pkgver=1.1.1.r0.gcb964ba
 pkgrel=1
 pkgdesc='A modern Material 3 Quickshell frontend for greetd matching the Caelestia design'
 arch=('x86_64')
