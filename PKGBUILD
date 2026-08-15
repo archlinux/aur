@@ -1,7 +1,7 @@
 # Maintainer: Lucasion <ion@ionnet.dev>
 # Note: Build with "PKGEXT='.pkg.tar.zst' makepkg" to avoid debug package conflicts
 pkgname=toxen3
-pkgver=2.9.1
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Toxen - A highly customizable music player with visualizers, audio effects, and storyboards"
 arch=('x86_64')
