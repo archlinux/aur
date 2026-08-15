@@ -1,0 +1,19 @@
+pkgbase = vinyl-player
+	pkgdesc = Elegant music player
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://codeberg.org/M23Snezhok/Vinyl
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-bad-libs
+	depends = gstreamer
+	depends = gtk4
+	depends = libadwaita
+	optdepends = gst-plugins-bad
+	source = git+https://codeberg.org/M23Snezhok/Vinyl.git#tag=v1.6.0
+	sha256sums = 4d183a4368d0a8c7e95ec2944ae0eebcccf8f48153ba4411e21e2a940afc2e39
+
+pkgname = vinyl-player

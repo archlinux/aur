@@ -1,0 +1,4 @@
+[vinyl-player]
+source = "git"
+git = "https://codeberg.org/M23Snezhok/Vinyl.git"
+prefix = "v"
