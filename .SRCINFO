@@ -1,6 +1,6 @@
 pkgbase = opengrep-bin
 	pkgdesc = Lightweight static analysis for many languages. Find bug variants with patterns that look like source code. Fork of semgrep (binary release)
-	pkgver = 1.27.0
+	pkgver = 1.27.1
 	pkgrel = 1
 	url = https://github.com/opengrep/opengrep
 	arch = x86_64
@@ -26,16 +26,16 @@ pkgbase = opengrep-bin
 	depends = python-typing_extensions
 	depends = python-urllib3
 	depends = python-wcmatch
-	provides = opengrep=1.27.0
+	provides = opengrep=1.27.1
 	conflicts = opengrep
 	options = !strip
-	source = opengrep-bin-1.27.0.tar.gz::https://github.com/opengrep/opengrep/archive/refs/tags/v1.27.0.tar.gz
-	source = semgrep-interfaces-977c2a9b30e472c303930104414184c76bbadda8.tar.gz::https://github.com/opengrep/semgrep-interfaces/archive/977c2a9b30e472c303930104414184c76bbadda8.tar.gz
-	sha256sums = 40d61828a8525ea34b8f0ada203e36a74a430e55bcdb4192be10a06f8a4dc72b
-	sha256sums = 5a9b104aa3fc30a3e8f74cd165bbab49bfe9868a496977a13f2531137dd2d6a3
-	source_x86_64 = opengrep-core_linux_x86_v1.27.0.tar.gz::https://github.com/opengrep/opengrep/releases/download/v1.27.0/opengrep-core_linux_x86.tar.gz
-	sha256sums_x86_64 = fda5bcfa3e576bb08033d1195636a01eb2c95e16ab8906145cdfa6ce49bcdaec
-	source_aarch64 = opengrep-core_linux_aarch64_v1.27.0.tar.gz::https://github.com/opengrep/opengrep/releases/download/v1.27.0/opengrep-core_linux_aarch64.tar.gz
-	sha256sums_aarch64 = c031e7f82f35c362ceb246df9e576e16d1ce346cb86503fc0d292a7c3ade4bda
+	source = opengrep-bin-1.27.1.tar.gz::https://github.com/opengrep/opengrep/archive/refs/tags/v1.27.1.tar.gz
+	source = semgrep-interfaces-5e705660dc7381d4c4c247fa83c4c5860e61d555.tar.gz::https://github.com/opengrep/semgrep-interfaces/archive/5e705660dc7381d4c4c247fa83c4c5860e61d555.tar.gz
+	sha256sums = a2bd9f9d596a2e5b5c73ada4caf5175ecae2fb91d6caa5e7d5e249f5be1b7884
+	sha256sums = 60a283e9a840f1be891ff0ab4794ba7555b443b8415be12bdcf4f92433329e66
+	source_x86_64 = opengrep-core_linux_x86_v1.27.1.tar.gz::https://github.com/opengrep/opengrep/releases/download/v1.27.1/opengrep-core_linux_x86.tar.gz
+	sha256sums_x86_64 = 8400d91cc6b0d05a8b68de01e5ad818f580e695a4267a12255129d83683e80a9
+	source_aarch64 = opengrep-core_linux_aarch64_v1.27.1.tar.gz::https://github.com/opengrep/opengrep/releases/download/v1.27.1/opengrep-core_linux_aarch64.tar.gz
+	sha256sums_aarch64 = 3c2625f4fc2e23a405e8f37c47e41ca0f4f309f199d1870f4a0522360f886b64
 
 pkgname = opengrep-bin
