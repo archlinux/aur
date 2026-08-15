@@ -10,7 +10,7 @@
 
 pkgname=js8call-improved
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Continued development of the JS8Call project"
 arch=('any')
 url="https://github.com/JS8Call-improved/JS8Call-improved/"
@@ -25,6 +25,7 @@ depends=(
     libxkbcommon-x11
     fftw
     boost
+    hamlib
 )
 options=(!lto)
 source=($pkgname-$pkgver.tar.gz::https://github.com/js8call-improved/js8call-improved/archive/refs/tags/release/$pkgver.tar.gz
