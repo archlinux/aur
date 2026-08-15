@@ -1,7 +1,7 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=rofi-games
-pkgver=1.17.4
+pkgver=1.17.5
 pkgrel=1
 pkgdesc='A rofi plugin which adds a mode to list available games for launch along with their box art'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL-3.0-only')
 depends=('rofi' 'cairo' 'glibc' 'gcc-libs' 'glib2' 'sqlite')
 makedepends=('rust' 'just')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6090526a0a7af491d2bfbdeb9d07081ad9286cedb8d508b8dfd053ab487a72e569c1beb750284dc17e1a74838ce77e2ec6c2387ad361c2504803f54ad9593490')
+sha512sums=('fca1bc3c2e8f4e87158ef461f811dacb0684965f74bf0867e6322b2ff23de0eaa8c7252357ac59b1457d0fa2722e56d9e016bea7d32f9f917831ceb7027cfdd7')
 options=(!debug !lto)
 
 prepare() {
