@@ -113,14 +113,14 @@ source=(
   "$_pkgname.desktop"
   '0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch'
   '0002-Fix-sandbox-to-build-with-glibc-2.43.patch'
-  '0003-Bug-2057577-DOM-Media-Add-FFmpeg-63-support.-r-alwu-.patch'
+  '0003-Add-FFmpeg-63-support.patch.xz'
 )
 sha256sums=('237123c36434e95a1a6f0c26620115108fc89f1d9a82ed420673df8b829c9673'
             'e3f532fb33a31233a9c24e6f649cfaf77c2d1a0d0d916960c7c1f3a6418db8b7'
             '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286'
             '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
             '404e780b1488625989c6dd8e2234e50ed01401b7cb1e99e79dee87f4f4f584f8'
-            '55aeec4d098990e91f881de32126ea91576b0d185e322b561241c513ea5b9fcd')
+            'e7d30072641dfea9c3bff025db7e3a2c60201e630c5253bda1f2b54a0b5501ae')
 
 prepare() {
   mkdir -p mozbuild

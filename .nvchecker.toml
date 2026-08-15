@@ -1,0 +1,5 @@
+[waterfox]
+source = "git"
+git = "https://github.com/BrowserWorks/waterfox.git"
+include_regex = '[\d.]+'
+exclude_regex = '^([^\d]|20|68).*$'
