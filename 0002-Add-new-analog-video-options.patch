@@ -1,4 +1,4 @@
-From 383b54b7dd78f8c48387cb151b68591e74d47ee2 Mon Sep 17 00:00:00 2001
+From 9a32ebb57ab3c0113e63d5441d7c16f3cd04d990 Mon Sep 17 00:00:00 2001
 From: Hans-Kristian Arntzen <post@arntzen-software.no>
 Date: Sat, 2 May 2026 15:34:15 +0200
 Subject: [PATCH] Add new analog video options.

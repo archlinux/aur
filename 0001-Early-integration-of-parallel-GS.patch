@@ -1,4 +1,4 @@
-From 8edd4f8cb2e6273de557878ab33e7f9f85721bfe Mon Sep 17 00:00:00 2001
+From 95d71ec11fbb41671529ab0fadd6300fa13142e7 Mon Sep 17 00:00:00 2001
 From: Hans-Kristian Arntzen <post@arntzen-software.no>
 Date: Sun, 23 Jun 2024 14:54:43 +0200
 Subject: [PATCH] Early integration of parallel-GS.
@@ -1164,7 +1164,7 @@ index 892f406a7..4b70ad003 100644
  {
  	/// Called when the GS is creating a render device.
 diff --git a/pcsx2/GS/GSState.cpp b/pcsx2/GS/GSState.cpp
-index 873621023..c297d2d3a 100644
+index e8b9f3711..d5c85dd65 100644
 --- a/pcsx2/GS/GSState.cpp
 +++ b/pcsx2/GS/GSState.cpp
 @@ -28,7 +28,7 @@ static __fi bool IsAutoFlushEnabled()
@@ -1177,7 +1177,7 @@ index 873621023..c297d2d3a 100644
  	int size = 0;
  
 diff --git a/pcsx2/GS/GSState.h b/pcsx2/GS/GSState.h
-index 470686d74..2891fe805 100644
+index 1b45bc2bb..cf53463a4 100644
 --- a/pcsx2/GS/GSState.h
 +++ b/pcsx2/GS/GSState.h
 @@ -22,7 +22,7 @@ public:

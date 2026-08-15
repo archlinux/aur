@@ -1,4 +1,4 @@
-From 35ecf01743d96b7c1df9517e8da8a0c69af4351f Mon Sep 17 00:00:00 2001
+From 3d366e2baa61c4e67979b9e9b27a0b6d5930307a Mon Sep 17 00:00:00 2001
 From: Hans-Kristian Arntzen <post@arntzen-software.no>
 Date: Fri, 29 May 2026 21:23:20 +0200
 Subject: [PATCH] Hook up ImGui UI support.
