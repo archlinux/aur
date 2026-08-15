@@ -20,6 +20,7 @@ pkgbase = unityhub
 	depends = zip
 	depends = unzip
 	depends = tar
+	depends = cpio
 	conflicts = unityhub-beta
 	options = !strip
 	source = unityhub-3.20.0.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub_3.20.0_amd64.deb

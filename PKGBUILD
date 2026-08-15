@@ -2,6 +2,7 @@
 # Contributor: Oscar Morante <oscar@mooistudios.com>
 # Contributor: sinasio <synasius@gmail.com>
 # Contributor: Marius Glo <marius@mgl.dev>
+# Contributor: Léo <aur@salut-c-leo.fr>
 
 pkgname=unityhub
 pkgver=3.20.0
@@ -10,7 +11,7 @@ pkgdesc="The Unity Hub is a standalone application that streamlines the way you 
 url="https://unity.com/"
 arch=('x86_64')
 license=('custom')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'libdrm' 'xdg-utils' 'libxcb' 'at-spi2-core' 'util-linux-libs' 'libsecret' 'zip' 'unzip' 'tar')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'libdrm' 'xdg-utils' 'libxcb' 'at-spi2-core' 'util-linux-libs' 'libsecret' 'zip' 'unzip' 'tar' 'cpio')
 source=(
   "$pkgname-$pkgver.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub_${pkgver}_amd64.deb"
   'license.txt'
