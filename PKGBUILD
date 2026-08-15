@@ -1,6 +1,6 @@
 # Maintainer: Leon Möller <jkhsjdhjs at totally dot rip>
 pkgname=p4lang-bmv2
-pkgver=1.15.4
+pkgver=1.15.5
 pkgrel=1
 pkgdesc="P4 reference software switch"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=('boost')
 source=("$pkgname-$pkgver::$url/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('4625a76610c70da76138084a3a02ddfc347040f95d1a18377feb393c9136dce8d26f4064bb4a4a67b20b714d92f419d75816b34eb4c84ede427fbb5cc3ce5a10')
+sha512sums=('7152f20142a1162f83c264453b856de239f3a1d978e878e341fbb2a6a0f69ebed7950b8e970a796303cb982e45e8a93bb4633184ae20ae5f5586a7448cda07c0')
 
 build() {
     cd "behavioral-model-$pkgver"
