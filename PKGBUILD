@@ -8,8 +8,8 @@ url="https://github.com/Universal-Debloater-Alliance/universal-android-debloater
 license=('GPL3')
 depends=('android-tools' 'fontconfig' 'vulkan-icd-loader')
 makedepends=('cargo' 'git')
-provides=('universal-android-debloater' 'uad-ng')
-conflicts=('universal-android-debloater' 'universal-android-debloater-bin' 'universal-android-debloater-git' 'uad-ng')
+provides=('universal-android-debloater')
+conflicts=('universal-android-debloater' 'universal-android-debloater-bin' 'universal-android-debloater-git')
 source=(
     "$pkgname::git+https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation.git"
     "uad-ng.desktop"
