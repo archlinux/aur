@@ -1,7 +1,8 @@
 [Trigger]
 Operation = Upgrade
-Type = Package
-Target = bettbox-compatible
+Type = File
+Target = /usr/bin/bettbox
+Target = /usr/bin/Bettbox
 
 [Action]
 Description = Restarting Bettbox...
