@@ -1,11 +1,13 @@
 pkgbase = papermc
 	pkgdesc = Next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance
-	pkgver = 1.21.11+b69
+	pkgver = 26.2+b112
 	pkgrel = 1
 	url = https://papermc.io/
 	install = papermc.install
 	arch = any
 	license = custom
+	makedepends = curl
+	makedepends = jq
 	depends = java-runtime-headless>=16
 	depends = tmux
 	depends = sudo
@@ -15,13 +17,13 @@ pkgbase = papermc
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
 	conflicts = papermc-git
-	noextract = papermc.1.21.11+b69.jar
+	noextract = papermc.26.2+b112.jar
 	backup = etc/conf.d/papermc
-	source = papermc.1.21.11+b69.jar::https://api.papermc.io/v2/projects/paper/versions/1.21.11/builds/69/downloads/paper-1.21.11-69.jar
-	source = LICENSE_1.21.11+b69.md::https://raw.githubusercontent.com/PaperMC/Paper/080a72f2/LICENSE.md
+	source = papermc.26.2+b112.jar::https://fill-data.papermc.io/v1/objects/bd3a58cf96874e5ea6643f5f6fe9b4f5bf9e34b795fa078c2f0ee8b98b2f907e/paper-26.2-112.jar
+	source = LICENSE_26.2+b112.md::https://raw.githubusercontent.com/PaperMC/Paper/caf76f1/LICENSE.md
 	source = minecraft-server-1.0.4.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.4.tar.gz
-	sha512sums = 005d95c5c7f552c4d20b7a600f7d25e9605aa48e43f81f57560c7748e058bbe4d3b1db36751dd9a68316ba02d84a927bda6da716dddba2ccbeb368027df57e7d
-	sha512sums = 97f099424d41066328451904b1c878b12e4113ec714df652d014acded862fa6c8bab4986a014a6e843cee1cd950fcf40533d4d2d76d9bf9ff82ae04fc087c91e
+	sha512sums = f2282fc3b59850ed9cfd62be62d45458e07c7680a78bf5b271dbd6aa6029f7e16f5821ae618bf8e397e59fd775a05def230cfdac253f7acd1d7648ba139713e1
+	sha512sums = 882be11c8e603c3b7afa1004c4e0d89673e509794d9b8766c91e8bbb53e36ed595d0761505455504d9fd4fa7c55b566bed39539e513b59e03ff8a4d1d6ed3cca
 	sha512sums = dd4d68ca061c97a1e3cb5c0bb68439f7d8d45b15092344f3c4dbd4f7f39fef433d566670ad440970061007d93055183b570c7bf98f09c111ecdf8ab0f208f556
 
 pkgname = papermc

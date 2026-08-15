@@ -1,11 +1,13 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=papermc
-# curl -X GET "https://api.papermc.io/v2/projects/paper" -H  "accept: application/json"
-_pkgver=1.21.11
-# curl -X GET "https://api.papermc.io/v2/projects/paper/versions/${_pkgver}" -H  "accept: application/json"
-_build=69
-_license_commit=080a72f2
+_papermc_api="https://fill.papermc.io/v3"
+_papermc_user_agent="papermc-arch/1.0 (https://aur.archlinux.org/packages/papermc)"
+# curl -sH "User-Agent: ${_papermc_user_agent}" "${_papermc_api}/projects/paper"
+_pkgver=26.2
+# curl -sH "User-Agent: ${_papermc_user_agent}" "${_papermc_api}/projects/paper/versions/${_pkgver}/builds"
+_build=112
+_license_commit=caf76f1
 pkgver="${_pkgver}+b${_build}"
 pkgrel=1
 _mng_ver=1.0.4
@@ -14,17 +16,19 @@ arch=('any')
 url="https://papermc.io/"
 license=('custom')
 depends=('java-runtime-headless>=16' 'tmux' 'sudo' 'bash' 'awk' 'sed')
+makedepends=('curl' 'jq')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 conflicts=('papermc-git')
 backup=('etc/conf.d/papermc')
 install="${pkgname}.install"
-source=("papermc.${pkgver}.jar"::"https://api.papermc.io/v2/projects/paper/versions/${_pkgver}/builds/${_build}/downloads/paper-${_pkgver}-${_build}.jar"
+_papermc_url="$(curl -fsSL -H "User-Agent: ${_papermc_user_agent}" "${_papermc_api}/projects/paper/versions/${_pkgver}/builds" | jq -r ".[] | select(.id == ${_build}) | .downloads[\"server:default\"].url")"
+source=("papermc.${pkgver}.jar"::"${_papermc_url}"
 	"LICENSE_${pkgver}.md"::"https://raw.githubusercontent.com/PaperMC/Paper/${_license_commit}/LICENSE.md"
 	"minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v${_mng_ver}.tar.gz")
 noextract=("papermc.${pkgver}.jar")
-sha512sums=('005d95c5c7f552c4d20b7a600f7d25e9605aa48e43f81f57560c7748e058bbe4d3b1db36751dd9a68316ba02d84a927bda6da716dddba2ccbeb368027df57e7d'
-            '97f099424d41066328451904b1c878b12e4113ec714df652d014acded862fa6c8bab4986a014a6e843cee1cd950fcf40533d4d2d76d9bf9ff82ae04fc087c91e'
+sha512sums=('f2282fc3b59850ed9cfd62be62d45458e07c7680a78bf5b271dbd6aa6029f7e16f5821ae618bf8e397e59fd775a05def230cfdac253f7acd1d7648ba139713e1'
+            '882be11c8e603c3b7afa1004c4e0d89673e509794d9b8766c91e8bbb53e36ed595d0761505455504d9fd4fa7c55b566bed39539e513b59e03ff8a4d1d6ed3cca'
             'dd4d68ca061c97a1e3cb5c0bb68439f7d8d45b15092344f3c4dbd4f7f39fef433d566670ad440970061007d93055183b570c7bf98f09c111ecdf8ab0f208f556')
 
 _game="papermc"
