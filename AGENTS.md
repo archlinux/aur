@@ -62,6 +62,10 @@ Reference sources:
 
 Compare with completion scripts. Update if CLI changed.
 
+Only run this audit after a version change (or a report of incorrect
+completions). It is an informational compatibility check: a failed help
+command must be recorded as skipped, not make the package update fail.
+
 ### 4. Validate
 
 ```bash
@@ -113,6 +117,12 @@ After a `pkgver` bump or when completions are reported incorrect, update all thr
    - https://docs.qoder.com/cli/using-cli
 2. Update all three scripts, following existing patterns in each file
 3. Validate syntax: `bash -n qodercli.bash && zsh -n qodercli.zsh && fish -n qodercli.fish`
+
+`wiki` is an authenticated external command: `qodercli wiki --help` exits
+non-zero when the CLI is not logged in. Do not run its subcommand help during
+an unauthenticated package check; retain `wiki` in the completion scripts from
+the root help output. More generally, run help probes independently (do not
+use `set -e` for them) and report authentication-gated probes as skipped.
 
 ### CLI Structure
 
