@@ -1,6 +1,6 @@
 # Maintainer: existyay <liujam826@gmail.com>
 pkgname=lx-music-shell
-pkgver=2.2.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Terminal music player with multi-source support and auto-reconnect"
 arch=("any")
@@ -35,7 +35,7 @@ backup=("etc/skel/.config/lx-music-shell/config"
         "etc/skel/.config/lx-music-shell/sources.list")
 options=()
 install=lx-music-shell.install
-source=("lx-music-shell-source-v2.2.1.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v2.2.1.tar.gz")
+source=("lx-music-shell-source-v3.0.0.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v3.0.0.tar.gz")
 sha256sums=("SKIP")
 
 prepare() {
@@ -74,6 +74,12 @@ package() {
     install -Dm755 install.sh "$pkgdir/usr/share/$pkgname/install.sh"
     install -Dm755 install-aur.sh "$pkgdir/usr/share/$pkgname/install-aur.sh"
 
+    # Install TUI modules and music sources (required by the TUI)
+    install -dm755 "$pkgdir/usr/share/$pkgname/lib"
+    install -m755 lib/*.sh lib/*.py "$pkgdir/usr/share/$pkgname/lib/"
+    install -dm755 "$pkgdir/usr/share/$pkgname/sources"
+    install -m755 sources/*.sh "$pkgdir/usr/share/$pkgname/sources/"
+
     # Create config directory skeleton
     install -dm755 "$pkgdir/etc/skel/.config/lx-music-shell"
 
@@ -81,7 +87,7 @@ package() {
     cat > "$pkgdir/etc/skel/.config/lx-music-shell/config" << 'EOFCONFIG'
 # LX-Music-Shell Configuration
 PLAYER_BACKEND="mpv"
-DEFAULT_SOURCE="kugou"
+DEFAULT_SOURCE="netease"
 SEARCH_LIMIT="20"
 PLAY_MODE="list"
 VOLUME="80"
