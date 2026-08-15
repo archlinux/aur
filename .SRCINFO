@@ -1,6 +1,6 @@
 pkgbase = linuxqq-nt
 	pkgdesc = New Linux QQ based on Electron
-	pkgver = 3.2.32_260730
+	pkgver = 3.2.32_260812
 	pkgrel = 1
 	epoch = 5
 	url = https://im.qq.com/linuxqq
@@ -16,20 +16,20 @@ pkgbase = linuxqq-nt
 	depends = pulse-native-provider
 	optdepends = libappindicator-gtk3: System tray support
 	optdepends = gjs: Screen sharing support
-	provides = linuxqq=3.2.32_260730
+	provides = linuxqq=3.2.32_260812
 	conflicts = linuxqq-nt-bwrap
 	conflicts = linuxqq
 	options = !strip
 	options = !debug
 	source = linuxqq.sh
 	source = linuxqq-get-url.sh
-	b2sums = bc9b456b857447a011f0bfb1571e41b4cd6e804ce12019f812f65dbc8a6d4ffea6099a951386129eafd2d1451313c09c49222ffe7fa90d65e02260e3a4e0f6dd
-	b2sums = 502ee4db4a97bb6c08a153f1d04d79b609b0b90c2fda5b0bb93b839f84f0c9e57e2354a1dec5898038476f48bcd1d81160176f6dc1f9e5c849742eb4d2f7591a
-	source_x86_64 = https://qqdl.gtimg.cn/qqfile/QQNT/9.9.33/release/c97651b2/QQ_3.2.32_260730_amd64_01.deb
-	b2sums_x86_64 = d13ee2873b86d68e6b1fb65836debfcc3c79627510dd6c83f85218ecaf1a6387373eb44cd74fe8d8bc4f8347a4decfd38ec7332a6252e809694f079068be08b3
-	source_aarch64 = https://qqdl.gtimg.cn/qqfile/QQNT/9.9.33/release/c97651b2/QQ_3.2.32_260730_arm64_01.deb
-	b2sums_aarch64 = 35474676dd624e2431d5dcc28295355d62968905a085b1c4e8340c5985500678889628109d6d719c53d3718dd870de2c02a1dea306943e76aca1822767021687
-	source_loong64 = https://qqdl.gtimg.cn/qqfile/QQNT/9.9.33/release/c97651b2/QQ_3.2.32_260730_loongarch64_01.deb
-	b2sums_loong64 = 55c34a9e3b832a2d0a4839879bf57a0a7e9e9f65e7a5701bdd09a2fcf06bc1505a6da76ec4073ddf71800f6548e94d3e736e304c8df95d627be083493c3be96e
+	b2sums = 714b68e91bdb5a24b5d92e9dd94490b32e0fb136de840fc87331f91ec5517db491c49dcf3f376083f4be79ed9da8795f60c0de34fb95ea868ae6130004b02991
+	b2sums = 4b91ac5dcab7b2f92084bab0c81573efcc00b4c2b006be7abb9d6a35bdfcfe640b3a48e79008a08534571598f17f999533941b1a0529531468d48a3d5fbb70df
+	source_x86_64 = https://qqdl.gtimg.cn/qqfile/QQNT/9.9.33/release/3f89efc5/QQ_3.2.32_260812_amd64_01.deb
+	b2sums_x86_64 = 1185004eb2c9539bde5feea59c8902a2f6f997cb0d215918bfd8b16b26000c6425529ea7309c54659e1dc00e022f7afc4feea16237f21ab6995900479eab1054
+	source_aarch64 = https://qqdl.gtimg.cn/qqfile/QQNT/9.9.33/release/3f89efc5/QQ_3.2.32_260812_arm64_01.deb
+	b2sums_aarch64 = b39bfa2d8e25fd4f85e17011a474cccd8b55a4ea2beb4f8582bcf9b2f3b889d5c393979abdfde80e224cfa5d73a5cfe7f5895051177113c4b8d40999f737d92d
+	source_loong64 = https://qqdl.gtimg.cn/qqfile/QQNT/9.9.33/release/3f89efc5/QQ_3.2.32_260812_loongarch64_01.deb
+	b2sums_loong64 = 636ca3472f33ec170c8aa77de1405f973eb8c29fab1101828318266958ff1f988e11f7cfda89998bb4b7278c12d9d71ee5953d6f6b7a136e890effb53ffe6706
 
 pkgname = linuxqq-nt
