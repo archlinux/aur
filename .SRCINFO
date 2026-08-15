@@ -1,20 +1,20 @@
 pkgbase = gotohp-bin
 	pkgdesc = Unofficial Google Photos Desktop GUI Client - binary version
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://github.com/xob0t/gotohp
 	arch = x86_64
 	license = MIT
 	depends = gtk4
 	depends = webkitgtk-6.0
 	provides = gotohp
-	provides = gotohp=0.8.1
+	provides = gotohp=0.9.0
 	conflicts = gotohp
 	conflicts = gotohp-git
 	options = !debug
-	source = gotohp_v0.8.1_x86_64.deb::https://github.com/xob0t/gotohp/releases/download/v0.8.1/gotohp_amd64.deb
-	source = gotohp.desktop::https://github.com/xob0t/gotohp/raw/refs/tags/v0.8.1/build/linux/desktop
-	sha256sums = 7946927254fca478afdd9300d64051ff485aad1c952ac6a9a4d23c95aa627845
+	source = gotohp_v0.9.0_x86_64.deb::https://github.com/xob0t/gotohp/releases/download/v0.9.0/gotohp_amd64.deb
+	source = gotohp.desktop::https://github.com/xob0t/gotohp/raw/refs/tags/v0.9.0/build/linux/desktop
+	sha256sums = ac6e1ddd8c10277d4e1bd1b91a2b098d9f0b0a2e8c2c05a7edd6ddec214926c8
 	sha256sums = f2ca2165f787496c7384cc132006402999e61026a4c2c7c8d71d587a5db8248e
 
 pkgname = gotohp-bin
