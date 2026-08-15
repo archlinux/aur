@@ -3,7 +3,7 @@
 
 pkgname=pachist-git
 _gitname=pachist
-pkgver=r51.3f5521b
+pkgver=r57.df540d1
 pkgrel=1
 pkgdesc="A small bash program to show installed package history in Arch Linux."
 arch=('any')
