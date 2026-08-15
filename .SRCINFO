@@ -1,0 +1,22 @@
+pkgbase = git-synchronizer-bin
+	pkgdesc = Easily synchronize your local branches and worktrees (prebuilt binary)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/noirbizarre/git-synchronizer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = git
+	provides = git-synchronizer=0.3.0
+	provides = git-sync
+	conflicts = git-synchronizer
+	options = !strip
+	options = !debug
+	source_x86_64 = git-synchronizer-bin-0.3.0-x86_64.tar.gz::https://github.com/noirbizarre/git-synchronizer/releases/download/v0.3.0/git-sync-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6b45f6afcc9cfdb44d9dd6de0c34cfe5812a0d624b26e798c3566c48699cac16
+	source_aarch64 = git-synchronizer-bin-0.3.0-aarch64.tar.gz::https://github.com/noirbizarre/git-synchronizer/releases/download/v0.3.0/git-sync-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 236a36ef8859967afb22efa85291522b083019cadc7fd6d6fac934fc7b6de94b
+
+pkgname = git-synchronizer-bin
