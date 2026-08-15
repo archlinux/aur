@@ -10,7 +10,7 @@ makedepends=('git')
 backup=()
 install=omazed.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aps6/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('1a4f712ff6598a01970479f7e8d40f2e46983f0ea66e3ff499c62d8ff39cc03b')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
