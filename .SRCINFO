@@ -1,0 +1,20 @@
+pkgbase = libnoidea-git
+	pkgdesc = Library to interact with Network Device Interface (NDI) streams (git version)
+	pkgver = r42.g5f1bcc1
+	pkgrel = 1
+	url = https://code.videolan.org/videolan/libnoidea/
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	depends = libmicrodns
+	provides = libnoidea
+	provides = libndi-git
+	conflicts = libnoidea
+	conflicts = libndi-git
+	replaces = libndi-git
+	source = git+https://code.videolan.org/videolan/libnoidea.git
+	sha256sums = SKIP
+
+pkgname = libnoidea-git
