@@ -1,18 +1,18 @@
 pkgbase = zine-bin
 	pkgdesc = Fast, Scalable, Flexible Static Site Generator (SSG)
-	pkgver = 0.12.0
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://zine-ssg.io
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	source = zine-0.12.0-README.md::https://github.com/kristoff-it/zine/raw/refs/tags/v0.12.0/README.md
-	source = zine-0.12.0-LICENSE::https://github.com/kristoff-it/zine/raw/refs/tags/v0.12.0/LICENSE
+	source = zine-0.13.0-README.md::https://github.com/kristoff-it/zine/raw/refs/tags/v0.13.0/README.md
+	source = zine-0.13.0-LICENSE::https://github.com/kristoff-it/zine/raw/refs/tags/v0.13.0/LICENSE
 	sha256sums = 96b5a11088711b87c4e23dfb89b85d1a258279d79307eef157209b5900edd82c
 	sha256sums = fce6401325da3777483f1567966de44f712d71bb5c7dcfc5cd15e292b968a7a2
-	source_aarch64 = zine-0.12.0-aarch64-linux-musl.tar.xz::https://github.com/kristoff-it/zine/releases/download/v0.12.0/aarch64-linux-musl.tar.xz
-	sha256sums_aarch64 = ac68520943c00c32d152e06e53f770ecb9946466cca5be368f4b9d6e544e36b9
-	source_x86_64 = zine-0.12.0-x86_64-linux-musl.tar.xz::https://github.com/kristoff-it/zine/releases/download/v0.12.0/x86_64-linux-musl.tar.xz
-	sha256sums_x86_64 = 0a6d7fe938d7c05e8a82120599dfd61299a4f3cf5efb6b4cae4c2549de9972d4
+	source_aarch64 = zine-0.13.0-aarch64-linux-musl.tar.xz::https://github.com/kristoff-it/zine/releases/download/v0.13.0/aarch64-linux-musl.tar.xz
+	sha256sums_aarch64 = 4182a5905d766fcdd6dd066ccfbd19ce8c203b8171bdb3571640941dc85f3c09
+	source_x86_64 = zine-0.13.0-x86_64-linux-musl.tar.xz::https://github.com/kristoff-it/zine/releases/download/v0.13.0/x86_64-linux-musl.tar.xz
+	sha256sums_x86_64 = c250e029d978901b0c9a38eab0a860ef9db875bf686fe0f0abf61f180c280dba
 
 pkgname = zine-bin
