@@ -1,6 +1,6 @@
 pkgbase = motrix-next-git
 	pkgdesc = A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust
-	pkgver = 3.9.7
+	pkgver = 3.9.7_0_gdc12e7d9
 	pkgrel = 1
 	url = https://github.com/AnInsomniacy/motrix-next
 	arch = x86_64
