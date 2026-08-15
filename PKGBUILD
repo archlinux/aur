@@ -2,13 +2,13 @@
 #
 # PiPedal only ships .deb packages; this PKGBUILD repacks the upstream
 # amd64 deb into an Arch package. The package is deliberately inert:
-# the deb's postinst step (pipedalconfig --install) enables services and
-# edits the GRUB boot configuration, so it is NOT run automatically.
+# the deb's postinst step (pipedalconfig --install) enables and starts
+# services, so it is NOT run automatically.
 # pipedal-bin.install only prints guidance; see README.md.
 
 pkgname=pipedal-bin
 pkgver=2.0.110
-pkgrel=1
+pkgrel=2
 pkgdesc="IoT guitar effect pedal for Raspberry Pi, with phone-friendly web interface"
 arch=('x86_64')
 url="https://rerdavies.github.io/pipedal/"
@@ -28,6 +28,7 @@ depends=(
   'gnupg'
   'icu'
   'iw'
+  'jack' # virtual: provided by jack2 or pipewire-jack (pacman prompts)
   'libbsd'
   'libcap'
   'libgcrypt'
@@ -48,8 +49,6 @@ depends=(
 )
 optdepends=(
   'authbind: only needed when the web UI serves on a port below 1024 (the default is port 80); use `pipedalconfig --install --port 8080` to avoid it (AUR)'
-  'jack2: low-latency JACK audio daemon (jackd) used by pipedal'
-  'pipewire-jack: alternative JACK implementation'
   'networkmanager: Wi-Fi hotspot and P2P session features'
   'lv2: use third-party LV2 effects plugins in addition to the bundled ToobAmp set'
 )

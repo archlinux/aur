@@ -19,6 +19,9 @@ into an Arch package. No compilation is involved.
   80, which requires root or authbind). Users can override in
   `/var/pipedal/config/config.json` or via `pipedalconfig --install
   --port <n>`.
+- **`jack` is required**: the virtual `jack` is provided by both
+  `jack2` and `pipewire-jack`; pacman resolves the dependency against
+  whichever is installed and prompts to pick one if neither is.
 - **`authbind` is optdepends**: only needed if the web UI serves on a
   port below 1024.
 - **`/usr/sbin` merged**: upstream ships admin binaries in `/usr/sbin`;
@@ -32,15 +35,19 @@ the .deb) assumes a **dedicated PiPedal machine**. On a general-purpose
 desktop it will, among other things:
 
 - enable and start the `pipedald` / `pipedaladmind` systemd services
-- edit `/etc/default/grub` and regenerate `grub.cfg` (adding
-  `preempt=voluntary` to the kernel command line)
 - create the `pipedal_d` user and `/var/pipedal`
 - add realtime limits (`rtprio 95`, memlock)
 - attempt Wi-Fi hotspot / P2P service setup when NetworkManager is
   present
 
-It is intentionally NOT run by this package. If the machine is dedicated
-to PiPedal, run `sudo pipedalconfig --install --port 8080` as root.
+It does not modify the boot configuration. Kernel real-time tuning
+(`preempt=voluntary` on the kernel command line) is handled by the
+separate interactive `pipedal_kconfig` tool, which nothing in this
+package ever runs.
+
+This package intentionally does not run the installer. If the machine
+is dedicated to PiPedal, run `sudo pipedalconfig --install --port 8080`
+as root.
 
 ## License
 
