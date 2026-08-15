@@ -3,7 +3,7 @@
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=exifcleaner-bin
-pkgver=4.0.0
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Clean metadata from images, videos, PDFs, and other files"
 url="https://github.com/szTheory/exifcleaner"
@@ -14,13 +14,12 @@ provides=("exifcleaner")
 conflicts=("exifcleaner")
 source=("$url/releases/download/v$pkgver/exifcleaner-$pkgver.x86_64.rpm"
         "$url/raw/v$pkgver/LICENSE")
-sha256sums=('c34b41b8434185d027098c18b9f529c6b5448216efb5573c917468ebdf18d134'
+sha256sums=('8d6386a0ee39891353bc678cb99360969986bb3eff9c14a660440f427dc1ae2f'
             'a74847d1e523991859009094dca82f704240d291dea5728a59de9e419cf104ac')
 
 package() {
   rm -dr usr/lib
-  mv opt "$pkgdir"
-  mv usr "$pkgdir"
+  mv opt usr "$pkgdir"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/exifcleaner"
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/opt/ExifCleaner/exifcleaner" "$pkgdir/usr/bin"

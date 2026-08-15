@@ -1,6 +1,6 @@
 pkgbase = exifcleaner-bin
 	pkgdesc = Clean metadata from images, videos, PDFs, and other files
-	pkgver = 4.0.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/szTheory/exifcleaner
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = exifcleaner-bin
 	depends = xdg-utils
 	provides = exifcleaner
 	conflicts = exifcleaner
-	source = https://github.com/szTheory/exifcleaner/releases/download/v4.0.0/exifcleaner-4.0.0.x86_64.rpm
-	source = https://github.com/szTheory/exifcleaner/raw/v4.0.0/LICENSE
-	sha256sums = c34b41b8434185d027098c18b9f529c6b5448216efb5573c917468ebdf18d134
+	source = https://github.com/szTheory/exifcleaner/releases/download/v4.2.0/exifcleaner-4.2.0.x86_64.rpm
+	source = https://github.com/szTheory/exifcleaner/raw/v4.2.0/LICENSE
+	sha256sums = 8d6386a0ee39891353bc678cb99360969986bb3eff9c14a660440f427dc1ae2f
 	sha256sums = a74847d1e523991859009094dca82f704240d291dea5728a59de9e419cf104ac
 
 pkgname = exifcleaner-bin
