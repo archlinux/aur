@@ -1,0 +1,21 @@
+pkgbase = appimagelauncher-beta-bin
+	pkgdesc = Helper app that 'makes your Linux desktop AppImage ready™.'
+	pkgver = 3.0.0_beta_3
+	pkgrel = 1
+	url = https://github.com/TheAssassin/AppImageLauncher
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = libappimage
+	depends = libbsd
+	depends = libxpm
+	depends = qt5-base
+	depends = shared-mime-info
+	provides = appimagelauncher
+	conflicts = appimagelauncher
+	source = https://github.com/TheAssassin/AppImageLauncher/releases/download/v3.0.0-beta-3/appimagelauncher_3.0.0-beta-2-gha287.96cb937_amd64.deb
+	sha256sums = 4117552105968a8011955d065b5fd55f547a2ed21dac1fe0a046ee9b60220c36
+
+pkgname = appimagelauncher-beta-bin
