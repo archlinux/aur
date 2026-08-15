@@ -3,7 +3,7 @@
 
 pkgname=trae-us
 pkgver=2.3.61406
-pkgrel=1
+pkgrel=3
 pkgdesc="AI-powered IDE by ByteDance (US CDN)"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
