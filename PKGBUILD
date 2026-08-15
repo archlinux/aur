@@ -143,8 +143,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DEPSON_OCR_INSTALL_PATH="/usr/share/epsonscan2-ocr" \
-        -DQT_VERSION_MAJOR=5 \
-        -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        -DQT_VERSION_MAJOR=5
         
   cmake --build build
 }
