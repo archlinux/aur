@@ -1,15 +1,15 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=fogpad.lv2-git
 pkgdesc="A reverb where reflections can be frozen, filtered, pitch shifted and disintegrated."
-pkgver=v1.0.0.r1.g618cbaf
+pkgver=v1.0.0.r5.g7f4db0b
 pkgrel=1
 epoch=
 arch=(x86_64)
 url="https://github.com/linuxmao-org/fogpad-port"
 license=(MIT)
 groups=(lv2-plugins)
-depends=('git' 'pkgconf' 'cairo' 'jack' 'mesa')
-makedepends=()
+depends=('pkgconf' 'cairo' 'jack' 'mesa')
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=()
@@ -34,6 +34,9 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
   git submodule update --init --recursive
+  # Patch: global.h defines maybe_unused macro that breaks GCC 16 system headers
+  # which use [[maybe_unused]] attribute on parameters. Rename to IGOR_UNUSED.
+  sed -i 's/maybe_unused/IGOR_UNUSED/g' plugins/Fogpad/sources/global.h
 }
 
 build() {
