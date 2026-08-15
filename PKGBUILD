@@ -1,9 +1,9 @@
-# Maintainer: Serge K <arch@phnx47.net>
+# Maintainer: Serge <arch@phnx47.net>
 
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=moon
-pkgver=2.4.6
+pkgver=2.5.0
 pkgrel=1
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
@@ -11,9 +11,8 @@ url="https://github.com/moonrepo/moon"
 arch=('x86_64' 'aarch64')
 depends=('gcc-libs' 'xz')
 makedepends=('cargo' 'protobuf')
-options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('31825024f63d4ac3b7d9f70415b4f9846781e7de41d9fca7f1dac06ae51afa05')
+sha256sums=('bf8264c16cf9489a5e4ab80324a1c60cccf63dc16389340dc3ff4b8cf08ccbfe')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -23,7 +22,9 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  export CFLAGS="${CFLAGS} -O0"
+
+  CFLAGS+=' -ffat-lto-objects'
+  CXXFLAGS+=' -ffat-lto-objects'
   cargo build --release --frozen
 
   "./target/release/${pkgname}" completions --shell bash >"completions/bash"
@@ -33,6 +34,7 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
+
   install -Dm 755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin"
   install -Dm 755 "target/release/${pkgname}x" -t "${pkgdir}/usr/bin"
 
