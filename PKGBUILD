@@ -13,7 +13,7 @@ depends=(
 	"libjpeg-turbo"
 )
 arch=("i686" "x86_64")
-url='https://github.com/DreamMaoMao/grim-freeze'
+url='https://github.com/DreamMaoMao/grimfreeze'
 source=("${pkgname%-*}::git+https://github.com/DreamMaoMao/grimfreeze.git")
 sha1sums=('SKIP')
 provides=('grim')
