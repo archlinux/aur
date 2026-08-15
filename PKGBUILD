@@ -3,7 +3,7 @@
 _branch=master
 _pkgname=svelte-language-server
 pkgname=${_pkgname}-git
-pkgver=r1925.84d54a14
+pkgver=r1944.0bab63ae
 pkgrel=1
 pkgdesc='Svelte Language Server, git master build'
 url="https://github.com/sveltejs/language-tools"
