@@ -2,7 +2,7 @@
 # Contributor: zerfithel <hazetlab@proton.me>
 
 pkgname=wordle-solver-git
-pkgver=1.2.8.96b7180
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="A fast wordle solver written in C99"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=()
 makedepends=('make' 'gcc' 'git')
 source=("git+https://github.com/emile-ross/wordle.git")
 sha256sums=('SKIP')
-provides=("wordle-solver")
+provides=("wordle-solver=$pkgver")
 conflicts=('wordle-solver')
 
 pkgver() {
@@ -34,4 +34,3 @@ package() {
 	install -d "$pkgdir/usr/share/wordle-solver/word_list_files"
 	install -m644 word_list_files/*.txt "$pkgdir/usr/share/wordle-solver/word_list_files/"
 }
-
