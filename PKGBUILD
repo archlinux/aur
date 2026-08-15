@@ -94,6 +94,7 @@ declare -gA _system_libs=(
 )
 declare -gA _system_make_libs=(
   [jsoncpp]=jsoncpp
+  [simdutf]=simdutf
 )
 _unwanted_bundled_libs=(
   third_party/brotli
@@ -123,6 +124,7 @@ _unwanted_bundled_libs=(
   third_party/libyuv
   third_party/openh264
   third_party/opus
+  third_party/simdutf
   third_party/snappy
   third_party/swiftshader/third_party/SPIRV-Headers
   third_party/swiftshader/third_party/SPIRV-Tools

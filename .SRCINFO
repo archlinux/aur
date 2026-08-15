@@ -31,6 +31,7 @@ pkgbase = cronet
 	makedepends = libgcc
 	makedepends = zstd
 	makedepends = zlib
+	makedepends = simdutf
 	makedepends = jsoncpp
 	depends = glibc
 	depends = nspr
