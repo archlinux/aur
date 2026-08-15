@@ -10,8 +10,8 @@ arch=(
   'aarch64'
   'armv7h'
   'i686'
-  'x86_64')
-
+  'x86_64'
+)
 url="https://github.com/projectdiscovery/${_pkgname}"
 license=(
   'MIT'
