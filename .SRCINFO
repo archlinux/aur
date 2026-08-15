@@ -23,6 +23,7 @@ pkgbase = bilihud-git
 	depends = python-keyring
 	depends = python-pillow
 	depends = qt6-base
+	depends = qt6-multimedia
 	depends = qt6-wayland
 	depends = layer-shell-qt
 	provides = bilihud
