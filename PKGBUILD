@@ -1,7 +1,7 @@
 # Maintainer: Akira <akira.uestc at gmail dot com>
 # Releases: https://persistent.oaistatic.com/codex-app-prod/linux/deb/dists/stable/main/binary-amd64/Packages
 
-pkgname=chatgpt-desktop-bin
+pkgname=chatgpt-desktop
 pkgver=26.810.52044
 pkgrel=1
 pkgdesc="ChatGPT desktop application for Linux (repackaged from the official binary)"

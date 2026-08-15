@@ -22,30 +22,30 @@ _chatgpt_load_apparmor_profile() {
 
   if [ ! -f "${_chatgpt_apparmor_profile}" ]; then
     printf '%s\n' \
-      "warning: chatgpt-desktop-bin: AppArmor profile is missing: ${_chatgpt_apparmor_profile}" >&2
+      "warning: chatgpt-desktop: AppArmor profile is missing: ${_chatgpt_apparmor_profile}" >&2
     return 0
   fi
 
   if [ ! -f "${_chatgpt_apparmor_abi}" ]; then
     printf '%s\n' \
-      "warning: chatgpt-desktop-bin: AppArmor ABI 4.0 is unavailable; profile was not loaded" >&2
+      "warning: chatgpt-desktop: AppArmor ABI 4.0 is unavailable; profile was not loaded" >&2
     return 0
   fi
 
   if _chatgpt_apparmor_profile_disabled; then
     printf '%s\n' \
-      "chatgpt-desktop-bin: AppArmor profile is disabled; not loading ${_chatgpt_apparmor_profile}"
+      "chatgpt-desktop: AppArmor profile is disabled; not loading ${_chatgpt_apparmor_profile}"
     return 0
   fi
 
   if [ -e "${_chatgpt_apparmor_profile}.pacnew" ]; then
     printf '%s\n' \
-      "warning: chatgpt-desktop-bin: ${_chatgpt_apparmor_profile}.pacnew was not loaded; review and merge it into the active profile" >&2
+      "warning: chatgpt-desktop: ${_chatgpt_apparmor_profile}.pacnew was not loaded; review and merge it into the active profile" >&2
   fi
 
   if ! apparmor_parser -r -W -T "${_chatgpt_apparmor_profile}"; then
     printf '%s\n' \
-      "warning: chatgpt-desktop-bin: failed to load AppArmor profile: ${_chatgpt_apparmor_profile}" >&2
+      "warning: chatgpt-desktop: failed to load AppArmor profile: ${_chatgpt_apparmor_profile}" >&2
   fi
 }
 
@@ -66,7 +66,7 @@ _chatgpt_remove_apparmor_profile() {
 
   if ! apparmor_parser -R "${_chatgpt_apparmor_profile}"; then
     printf '%s\n' \
-      "warning: chatgpt-desktop-bin: failed to remove AppArmor profile: ${_chatgpt_apparmor_profile}" >&2
+      "warning: chatgpt-desktop: failed to remove AppArmor profile: ${_chatgpt_apparmor_profile}" >&2
   fi
 }
 
