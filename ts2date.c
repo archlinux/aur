@@ -5,13 +5,13 @@
 
 
 int main(int argc, char *argv[]) {
-    if (argv[1]) {
+    if (argc == 2) {
         time_t arg = atoi(argv[1]);
         time_t ts = arg; 
         char *date = ctime(&ts);
         printf("%s", date);
     } else {
-        printf("\nTimestamp expected, usage: Filename <timestamp>");
+        printf("\nTimestamp expected, usage: ts2date <timestamp>");
         exit(1);
     }
 }
