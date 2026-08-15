@@ -1,5 +1,5 @@
 pkgname=lgtv-remote
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Desktop remote control for LG webOS TVs"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
     'python-hatchling'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c45e67493fda14e1fd54248f307e2632df6721b987dea065eee779cc21cb0567')
+sha256sums=('ee222b93df68d2f39c8e9e2d8d8a77079ad2758192457af1aeb71a9dea94ed92')
 
 build() {
     cd "${pkgname}-${pkgver}"
