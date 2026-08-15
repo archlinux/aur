@@ -7,7 +7,7 @@
 
 _gitname=cdesktopenv
 pkgname="${_gitname}"-git
-pkgver=2.5.3.108.ga128ceafc
+pkgver=2.5.3.116.g11d82e28b
 pkgrel=1
 pkgdesc="Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
