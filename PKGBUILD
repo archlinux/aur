@@ -2,22 +2,19 @@
 # Releases: https://persistent.oaistatic.com/codex-app-prod/linux/deb/dists/stable/main/binary-amd64/Packages
 
 pkgname=chatgpt-desktop-bin
-pkgver=26.810.41047
+pkgver=26.810.50856
 pkgrel=1
-pkgdesc="Official ChatGPT desktop app for Linux"
+pkgdesc="ChatGPT desktop application for Linux (repackaged from the official binary)"
 arch=('x86_64')
 url="https://chatgpt.com/download"
-license=('custom')
+license=('LicenseRef-custom')
 options=('!strip' '!debug')
 provides=(
   "chatgpt=${pkgver}"
-  "openai-codex-desktop=${pkgver}"
 )
 conflicts=(
   'chatgpt'
-  'openai-codex-desktop'
 )
-replaces=('openai-codex-desktop')
 
 depends=(
   'alsa-lib'
@@ -25,7 +22,6 @@ depends=(
   'cairo'
   'dbus'
   'expat'
-  'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
   'glibc'
@@ -33,8 +29,11 @@ depends=(
   'gtk3'
   'libcups'
   'libdrm'
+  'libgcc'
   'libglvnd'
   'libnotify'
+  'libpulse'
+  'libstdc++'
   'libusb'
   'libx11'
   'libxcb'
@@ -47,7 +46,6 @@ depends=(
   'mesa'
   'nspr'
   'nss'
-  'openssl'
   'pango'
   'systemd-libs'
   'sh'
@@ -55,22 +53,23 @@ depends=(
 )
 
 optdepends=(
-  'apparmor: support the bundled user-namespace profile'
-  'git: Git repository integration'
-  'gnome-keyring: Secret Service backend for credential storage'
-  'kde-cli-tools: file deletion support under KDE Plasma'
-  'libsecret: Secret Service credential storage support'
-  'pipewire: screen sharing under Wayland'
+  'apparmor: automatically load the bundled profile for Chromium user namespaces'
+  'git: enable Git repository integration'
+  'gtk4: use the GTK 4 backend with --gtk-version=4'
+  'kde-cli-tools: move deleted files to the Plasma trash through kioclient'
+  'org.freedesktop.secrets: securely store credentials with a Secret Service backend'
+  'pipewire: enable WebRTC screen sharing under Wayland'
 )
 
 backup=('etc/apparmor.d/chatgpt')
+install="${pkgname}.install"
 
 source_x86_64=(
   "chatgpt_${pkgver}_amd64.deb::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_${pkgver}_amd64.deb"
 )
 source=('chatgpt-launcher.sh')
 noextract=("chatgpt_${pkgver}_amd64.deb")
-sha256sums_x86_64=('78715fa3cd136ff67070daa76819adaecc5b42e99851559659645dce1fbf2af3')
+sha256sums_x86_64=('e3b47c1298e01e4a2aa54f120eb169834c6911bd295122bc43e5cd1642c1a4ba')
 sha256sums=('aab6b1105d7273443234e77412fbaa35ff9e04098ac63c2f73ae8e87afb43bd2')
 
 package() {
