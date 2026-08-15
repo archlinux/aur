@@ -1,6 +1,6 @@
 # Maintainer: taxin <taxin404@duck.com>
 pkgname=browsercode-bin
-pkgver=0.1.19
+pkgver=v0.1.20
 pkgrel=1
 pkgdesc="An AI coding agent that drives real browsers (opencode fork, adds browser_execute via CDP) — prebuilt binary"
 arch=('x86_64' 'aarch64')
