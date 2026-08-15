@@ -1,7 +1,7 @@
 # Maintainer: Brightbites <brightbites667@gmail.com>
 pkgname=tagstudio-bin
-pkgver=9.6.1
-pkgrel=3
+pkgver=9.6.2
+pkgrel=1
 pkgdesc="A User-Focused Photo & File Management System (pre-compiled)"
 arch=('x86_64')
 url="https://github.com/TagStudioDev/TagStudio"
@@ -22,9 +22,11 @@ optdepends=('ffmpeg: audio/video thumbnails and playback'
             )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/TagStudioDev/TagStudio/releases/download/v${pkgver}/tagstudio_v${pkgver}_linux_x86_64.tar.gz"
-        "tagstudio.desktop")
-sha256sums=('30ec6843a0c12f848de1c2f1ecc12d012425f3409a7693e9454b4a8b80fca764'
-            '34a0e7ac51e1de54d0df1baac9e65e4fa04182c663fbc6c3451fe8f8a9b09a8a')
+        "tagstudio.desktop"
+        "tagstudio.sh")
+sha256sums=('5d31e38a6a409db0f96689b9efad9169d9e00819e1d3507fa3701a91d49e031f'
+            'ecbf2c55fd51effbc2f35a7b89a609a500b52a9058c391211793e9474da7dd7c'
+            'e6ad29638c27bd383044e3ef1b5755f8cb10ad1b712e315c3e05071786f64860')
 
 package(){
     cd "$srcdir"
@@ -32,6 +34,13 @@ package(){
     #install the application itself
     install -dm755 "$pkgdir/usr/share/tagstudio/"
     cp -a * "$pkgdir/usr/share/tagstudio/"
+
+    #add to /usr/bin
+    chmod 755 "$pkgdir/usr/share/tagstudio/tagstudio.sh"
+    mkdir "$pkgdir/usr/bin"
+    mv "$pkgdir/usr/share/tagstudio/tagstudio.sh" "$pkgdir/usr/bin/tagstudio"
+
+    #cleanup
     rm "$pkgdir/usr/share/tagstudio/${pkgname}-${pkgver}.tar.gz"
     rm "$pkgdir/usr/share/tagstudio//tagstudio.desktop"
 

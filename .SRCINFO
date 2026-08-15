@@ -1,7 +1,7 @@
 pkgbase = tagstudio-bin
 	pkgdesc = A User-Focused Photo & File Management System (pre-compiled)
-	pkgver = 9.6.1
-	pkgrel = 3
+	pkgver = 9.6.2
+	pkgrel = 1
 	url = https://github.com/TagStudioDev/TagStudio
 	arch = x86_64
 	license = GPL-3.0-only
@@ -15,9 +15,11 @@ pkgbase = tagstudio-bin
 	depends = ripgrep
 	optdepends = ffmpeg: audio/video thumbnails and playback
 	optdepends = unrar: RAR based files thumbnails
-	source = tagstudio-bin-9.6.0.tar.gz::https://github.com/TagStudioDev/TagStudio/releases/download/v9.6.0/tagstudio_linux_x86_64.tar.gz
+	source = tagstudio-bin-9.6.2.tar.gz::https://github.com/TagStudioDev/TagStudio/releases/download/v9.6.2/tagstudio_v9.6.2_linux_x86_64.tar.gz
 	source = tagstudio.desktop
-	sha256sums = 30ec6843a0c12f848de1c2f1ecc12d012425f3409a7693e9454b4a8b80fca764
-	sha256sums = 34a0e7ac51e1de54d0df1baac9e65e4fa04182c663fbc6c3451fe8f8a9b09a8a
+	source = tagstudio.sh
+	sha256sums = 5d31e38a6a409db0f96689b9efad9169d9e00819e1d3507fa3701a91d49e031f
+	sha256sums = ecbf2c55fd51effbc2f35a7b89a609a500b52a9058c391211793e9474da7dd7c
+	sha256sums = e6ad29638c27bd383044e3ef1b5755f8cb10ad1b712e315c3e05071786f64860
 
 pkgname = tagstudio-bin
