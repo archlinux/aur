@@ -37,11 +37,4 @@ updpkgsums
 echo "==> Generating .SRCINFO..."
 makepkg --printsrcinfo > .SRCINFO
 
-echo "==> Committing changes..."
-git add PKGBUILD .SRCINFO
-git commit -m "Update to version $LATEST_VERSION"
-
-echo "==> Pushing to AUR..."
-GIT_SSH_COMMAND='ssh -4' git push origin master
-
 echo "==> Done! Updated from $CURRENT_VERSION to $LATEST_VERSION"
