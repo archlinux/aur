@@ -1,6 +1,6 @@
 pkgbase = worktree-aid
 	pkgdesc = Command line tool to add, remove, and change directories for git worktrees
-	pkgver = 1.9
+	pkgver = 1.10
 	pkgrel = 1
 	url = https://github.com/bulletmark/worktree-aid
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = worktree-aid
 	makedepends = python-setuptools-scm
 	depends = python>=3.10
 	depends = python-coolname
-	source = worktree-aid-1.9.tar.gz::https://github.com/bulletmark/worktree-aid/archive/1.9.tar.gz
-	sha1sums = 9974562046d26dbd208d90845f0bcc430ff211d7
+	source = worktree-aid-1.10.tar.gz::https://github.com/bulletmark/worktree-aid/archive/1.10.tar.gz
+	sha1sums = 03982f8c48f615961a1ea0bf5e2f1dd7bb6f74a7
 
 pkgname = worktree-aid
