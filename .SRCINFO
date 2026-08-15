@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-vulkan-git
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (with Vulkan optimizations)
-	pkgver = b10068
+	pkgver = b10242.r10.fe2adf0e72
 	pkgrel = 1
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
