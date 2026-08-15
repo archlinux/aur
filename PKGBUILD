@@ -7,7 +7,7 @@ pkgdesc="Cornelsen Offline Lernen Electron App"
 arch=('x86_64')
 url="https://www.cornelsen.de"
 license=('custom')
-depends=('electron')
+depends=('electron37')
 makedepends=('npm')
 source=("${pkgname}-${pkgver}.zip::https://ebook.cornelsen.de/uma20/public/v2/uma/offline/win"
         "${pkgname}.sh"
@@ -15,8 +15,8 @@ source=("${pkgname}-${pkgver}.zip::https://ebook.cornelsen.de/uma20/public/v2/um
         "icon16.png"
         "icon32.png"
         "icon96.png")
-b2sums=('04373e18c885017ec1233334264ca38ea1025446055d62eba3d207e0013b0bd13020e8e76be8791678d7ed9f1bc7037cdb8d4d771285c8ae4b0c9470cb67d210'
-        '2f1c802ebb340472a192316bdd9a7834dcb9e205e6a5fb186684c6142efc1033ff76c7238e9753b0bfa3f2daccebce6c709332b38b4a84440ffb42f316373531'
+b2sums=('80a1762e20039c727ee433c559cc0a64f21cf2a33b7e2039e6cc3944b0bcd61724a5f89ae7d7935d41ad40a2d31018f0ea9c039442767e638b8bc669ecf49193'
+        '9be125c58666538ccd056253a32daa1d55ce38ae72a97e1f5deebaef6c729e8b0a548f8478fa0b1f5b11d7759bc98b4cdd21db07d3b93dfea7cf4e2d760fc8e6'
         '8157b061d35da630252a8c402a98fb978fcad59fcfa813eb8b67dfeaae7e467051d659201e55b5d1811ae15eca49e47189a5a9840277f09876cf1d7021cfc1da'
         '8dd68d9cd90347b954da9280d2133bc45706eec1e74261bdf19f53b61150ee5168db20a0f217643230c4dc66fb840f9ef61fce5f6aff5853b1bebae4bc9f4c65'
         'b326c7f468c3cecb0e2618bae56092b7c6c5fa7e8f43f499645df01c2b468e74052bef51d48b36a8a7ade2fa12f9612591eaf38819998868271ec23abd366ad5'
@@ -104,11 +104,14 @@ const patches = [
         fromAlt2: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?cs.getSyncApiBaseUrl():cs.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(nc(y=>this.mapOfflinePdfIds(y)))}',
         toAlt2: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?cs.getSyncApiBaseUrl():cs.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(op(y=>s&&y.status===404?Es({}):r0(()=>y)),nc(y=>this.mapOfflinePdfIds(y)))}',
         fromAlt3: 'getProductAnnotations(i,s=!1){return this.http.get(`${s?cs.getSyncApiBaseUrl():cs.getApiBaseUrl()}/pspdf/annotations/${i}`).pipe(nc(y=>this.mapOfflinePdfIds(y)))}',
-        toAlt3: 'getProductAnnotations(i,s=!1){return this.http.get(`${s?cs.getSyncApiBaseUrl():cs.getApiBaseUrl()}/pspdf/annotations/${i}`).pipe(ip(y=>{if(s&&y.status===404)return _s({});throw y}),nc(y=>this.mapOfflinePdfIds(y)))}',
-        to: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(ip(y=>s&&y.status===404?hs({}):r0(()=>y)),Jl(y=>this.mapOfflinePdfIds(y)))}',
-        alreadyMarker: 's&&y.status===404?hs({}):r0(()=>y)',
-        alreadyMarker2: 's&&y.status===404?Es({}):r0(()=>y)',
-        alreadyMarker3: 'if(s&&y.status===404)return _s({})',
+        toAlt3: 'getProductAnnotations(i,s=!1){return this.http.get(`${s?cs.getSyncApiBaseUrl():cs.getApiBaseUrl()}/pspdf/annotations/${i}`).pipe(dp(y=>s&&y.status===404?ws({}):Q1(()=>y)),nc(y=>this.mapOfflinePdfIds(y)))}',
+        fromAlt4: 'getProductAnnotations(t,r=!1){return this.http.get(`${r?ps.getSyncApiBaseUrl():ps.getApiBaseUrl()}/pspdf/annotations/${t}`).pipe(zl(d=>this.mapOfflinePdfIds(d)))}',
+        toAlt4: 'getProductAnnotations(t,r=!1){return this.http.get(`${r?ps.getSyncApiBaseUrl():ps.getApiBaseUrl()}/pspdf/annotations/${t}`).pipe(dp(y=>r&&y.status===404?ws({}):Q1(()=>y)),zl(d=>this.mapOfflinePdfIds(d)))}',
+        to: 'getProductAnnotations(r,s=!1){return this.http.get(`${s?os.getSyncApiBaseUrl():os.getApiBaseUrl()}/pspdf/annotations/${r}`).pipe(dp(y=>s&&y.status===404?ws({}):Q1(()=>y)),Jl(y=>this.mapOfflinePdfIds(y)))}',
+        alreadyMarker: 's&&y.status===404?ws({}):Q1(()=>y)',
+        alreadyMarker2: 's&&y.status===404?ws({}):Q1(()=>y)',
+        alreadyMarker3: 's&&y.status===404?ws({}):Q1(()=>y)',
+        alreadyMarker4: 'r&&y.status===404?ws({}):Q1(()=>y)',
         required: false
     },
     {
@@ -119,11 +122,14 @@ const patches = [
         fromAlt2: 'isCompatibleWithOnline$(){return this.http.get(`${cs.getSyncApiBaseUrl()}/compatibility/offlineClients/${ZE}`).pipe(sa(r=>r.isCompatible))}',
         toAlt2: 'isCompatibleWithOnline$(){return this.http.get(`${cs.getSyncApiBaseUrl()}/compatibility/offlineClients/${ZE}`).pipe(sa(r=>r.isCompatible),op(r=>r.status===401?Es(!0):r0(()=>r)))}',
         fromAlt3: 'isCompatibleWithOnline$(){return this.http.get(`${cs.getSyncApiBaseUrl()}/compatibility/offlineClients/${QE}`).pipe(ta(i=>i.isCompatible))}',
-        toAlt3: 'isCompatibleWithOnline$(){return this.http.get(`${cs.getSyncApiBaseUrl()}/compatibility/offlineClients/${QE}`).pipe(ta(i=>i.isCompatible),ip(r=>{if(r.status===401)return _s(!0);throw r}))}',
-        to: 'isCompatibleWithOnline$(){return this.http.get(`${os.getSyncApiBaseUrl()}/compatibility/offlineClients/${GE}`).pipe(sa(r=>r.isCompatible),ip(r=>r.status===401?hs(!0):r0(()=>r)))}',
-        alreadyMarker: 'r.status===401?hs(!0):r0(()=>r)',
-        alreadyMarker2: 'r.status===401?Es(!0):r0(()=>r)',
-        alreadyMarker3: 'r.status===401)return _s(!0)',
+        toAlt3: 'isCompatibleWithOnline$(){return this.http.get(`${cs.getSyncApiBaseUrl()}/compatibility/offlineClients/${QE}`).pipe(ta(i=>i.isCompatible),dp(r=>r.status===401?ws(!0):Q1(()=>r)))}',
+        fromAlt4: 'isCompatibleWithOnline$(){return this.http.get(`${ps.getSyncApiBaseUrl()}/compatibility/offlineClients/${UE}`).pipe(Ea(t=>t.isCompatible))}',
+        toAlt4: 'isCompatibleWithOnline$(){return this.http.get(`${ps.getSyncApiBaseUrl()}/compatibility/offlineClients/${UE}`).pipe(Ea(t=>t.isCompatible),dp(s=>s.status===401?ws(!0):Q1(()=>s)))}',
+        to: 'isCompatibleWithOnline$(){return this.http.get(`${os.getSyncApiBaseUrl()}/compatibility/offlineClients/${GE}`).pipe(sa(r=>r.isCompatible),dp(r=>r.status===401?ws(!0):Q1(()=>r)))}',
+        alreadyMarker: 'r.status===401?ws(!0):Q1(()=>r)',
+        alreadyMarker2: 'r.status===401?ws(!0):Q1(()=>r)',
+        alreadyMarker3: 'r.status===401?ws(!0):Q1(()=>r)',
+        alreadyMarker4: 's.status===401?ws(!0):Q1(()=>s)',
         required: false
     }
 ];
@@ -134,7 +140,7 @@ for (const p of patches) {
     for (const filePath of jsFiles) {
         let txt = fs.readFileSync(filePath, 'utf8');
 
-        if (txt.includes(p.to) || (p.toAlt && txt.includes(p.toAlt)) || (p.toAlt2 && txt.includes(p.toAlt2)) || (p.toAlt3 && txt.includes(p.toAlt3)) || txt.includes(p.alreadyMarker) || (p.alreadyMarker2 && txt.includes(p.alreadyMarker2)) || (p.alreadyMarker3 && txt.includes(p.alreadyMarker3))) {
+        if (txt.includes(p.to) || (p.toAlt && txt.includes(p.toAlt)) || (p.toAlt2 && txt.includes(p.toAlt2)) || (p.toAlt3 && txt.includes(p.toAlt3)) || (p.toAlt4 && txt.includes(p.toAlt4)) || txt.includes(p.alreadyMarker) || (p.alreadyMarker2 && txt.includes(p.alreadyMarker2)) || (p.alreadyMarker3 && txt.includes(p.alreadyMarker3)) || (p.alreadyMarker4 && txt.includes(p.alreadyMarker4))) {
             patched = true;
             break;
         }
@@ -169,6 +175,13 @@ for (const p of patches) {
 
         if (p.fromAlt3 && p.toAlt3 && txt.includes(p.fromAlt3)) {
             txt = txt.replace(p.fromAlt3, p.toAlt3);
+            fs.writeFileSync(filePath, txt);
+            patched = true;
+            break;
+        }
+
+        if (p.fromAlt4 && p.toAlt4 && txt.includes(p.fromAlt4)) {
+            txt = txt.replace(p.fromAlt4, p.toAlt4);
             fs.writeFileSync(filePath, txt);
             patched = true;
             break;

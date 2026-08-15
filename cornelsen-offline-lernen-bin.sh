@@ -24,7 +24,7 @@ fi
 
 # Prefer a patched unpacked app only when explicitly requested.
 if [ "${CORNELSEN_USE_UNPACKED_APP:-0}" = "1" ] && [ -f "${dev_unpacked_app}/package.json" ]; then
-	exec electron --user-data-dir="${config_home}/${app_name}" "${dev_unpacked_app}" "$@"
+	exec electron37 --user-data-dir="${config_home}/${app_name}" "${dev_unpacked_app}" "$@"
 fi
 
-exec electron --user-data-dir="${config_home}/${app_name}" "${user_asar}" "$@"
+exec electron37 --user-data-dir="${config_home}/${app_name}" "${user_asar}" "$@"
