@@ -1,0 +1,4 @@
+[aps]
+source = "git"
+git = "https://github.com/Antiz96/aps.git"
+prefix = "v"
