@@ -1,6 +1,6 @@
 pkgbase = uad-ng-git
     pkgname = uad-ng-git
-    pkgver = r1.2.0.1234
+    pkgver = r1.2.0.53d2ef2
     pkgrel = 1
     pkgdesc = Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices (next generation, development git version)
     url = https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation
