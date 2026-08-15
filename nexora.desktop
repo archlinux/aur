@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Nexora
+GenericName=Music Player
+Comment=Open-source cross-platform desktop audio player
+Icon=audio-x-generic
+Type=Application
+Exec=/usr/bin/nexora
+Categories=AudioVideo;Audio;Player;
+Keywords=music;audio;player;
+Terminal=false
