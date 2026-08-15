@@ -1,0 +1,20 @@
+pkgbase = python-typer026
+	pkgdesc = Build great CLIs using Python type hints, compatibility release for Typer 0.26
+	pkgver = 0.26.8
+	pkgrel = 1
+	url = https://github.com/fastapi/typer
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pdm-backend
+	depends = python>=3.10
+	depends = python-annotated-doc>=0.0.2
+	depends = python-rich>=13.8.0
+	depends = python-shellingham>=1.3.0
+	provides = python-typer=0.26.8
+	conflicts = python-typer
+	source = typer-0.26.8.tar.gz::https://github.com/fastapi/typer/archive/refs/tags/0.26.8.tar.gz
+	b2sums = c445c2561665980bdfebfb57e36d5d18062188a4b504a2f9f0320b2bd21be7ff763077b138d3372f20a2b1e76090cd9046b0a5438e9145ff08fef54f2f172317
+
+pkgname = python-typer026
