@@ -23,9 +23,9 @@ pkgbase = clai-bin
 	sha256sums = bc5378230a80daace8ac9ea68f538fb33997fd2abf0fa5d91905365b6b8924dc
 	source_x86_64 = clai-1.10.22-x86_64::https://github.com/baalimago/clai/releases/download/v1.10.22/clai-v1.10.22-linux-arm64
 	sha256sums_x86_64 = 6ec8d716ba3f0bd4000f1548efd974f2e2d052fffa259994a3ee49e6118e97d8
-	source_i686 = clai-1.10.22-i686:::https://github.com/baalimago/clai/releases/download/v1.10.22/clai-v1.10.22-linux-386
+	source_i686 = clai-1.10.22-i686::https://github.com/baalimago/clai/releases/download/v1.10.22/clai-v1.10.22-linux-386
 	sha256sums_i686 = 49b3810040697dc0b6b157ba976fc92400da1498d9ca69eca98ab53befacabfb
-	source_aarch64 = clai-1.10.22-aarch64:::https://github.com/baalimago/clai/releases/download/v1.10.22/clai-v1.10.22-linux-arm64
+	source_aarch64 = clai-1.10.22-aarch64::https://github.com/baalimago/clai/releases/download/v1.10.22/clai-v1.10.22-linux-arm64
 	sha256sums_aarch64 = 6ec8d716ba3f0bd4000f1548efd974f2e2d052fffa259994a3ee49e6118e97d8
 
 pkgname = clai-bin

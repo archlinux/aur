@@ -6,22 +6,27 @@ pkgname="${_pkgname}-bin"
 pkgver=1.10.22
 pkgrel=1
 pkgdesc="Command line artificial intelligence - Your local LLM context-feeder"
-arch=('x86_64' 'i686' 'aarch64')
+
 url="https://github.com/baalimago/${_pkgname}"
+arch=('x86_64' 'i686' 'aarch64')
 license=('MIT')
+
 depends=('glibc')
 optdepends=('glow: for formatted markdown output when querying text responses')
+
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+
 _pkgsrc="${_pkgname}-${pkgver}"
+
 source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-EXAMPLES.md::${url}/raw/refs/tags/v${pkgver}/examples.md"
         "${_pkgsrc}-PROFILES-CODY.json::${url}/raw/refs/tags/v${pkgver}/examples/profiles/cody.json"
         "${_pkgsrc}-PROFILES-GOPHER.json::${url}/raw/refs/tags/v${pkgver}/examples/profiles/gopher.json"
         "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-${arch[0]}::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64")
-source_i686=("${_pkgsrc}-${arch[1]}:::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-386")
-source_aarch64=("${_pkgsrc}-${arch[2]}:::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64")
+source_i686=("${_pkgsrc}-${arch[1]}::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-386")
+source_aarch64=("${_pkgsrc}-${arch[2]}::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64")
 sha256sums=('00ec50a5f59799ccfb3be6bd7d64560bee2d6644ee463af432ab435d4505bf98'
             '23a4a7f91eb3e79a5ab446babd13d4a5a1d8e0cfb9ce6e23119bec32293437ec'
             '81abc6b6ae091984b5defa45e236462099a0f95afd211b5a39c7b70c8926decb'
