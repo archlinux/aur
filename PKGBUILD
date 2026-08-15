@@ -2,7 +2,7 @@
 
 _pypiname="teleprox"
 pkgname="python-${_pypiname}"
-pkgver=2.3.0
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="Simple python object proxies over TCP"
 arch=(
@@ -43,9 +43,9 @@ source=(
   "python-${_pkgsrc}-release.tar.gz::${url}/releases/download/v${pkgver}/${_pkgsrc}.tar.gz"
   "python-${_pkgsrc}-release.tar.gz.sigstore.json::${url}/releases/download/v${pkgver}/${_pkgsrc}.tar.gz.sigstore.json"
 )
-sha256sums=('248f203923d47c29df477ace7c92d9d7d9f1f535f686eef820566d13d7b2e153'
-            'c015101d3bc04ec630c5bbb4645a8d195eb3e3a58725fae0822c1b69460fd95e'
-            'db90600fef10fd7c8e7a487b3feb398f03741ad109538234f08f4a8df3508de2')
+sha256sums=('bc1327a59f7c385770aaf29e6d9fadc7fdb20215e66136d5baf4469cdaedc240'
+            '761d156a8016110019e40bbe4a1560e065680cdce5e8d7569ee2bea752dbb900'
+            '4cab95098b3c98edc537f8a2ee12a58717f865ef69f26c6352b9d91677dbbd65')
 
 verify() {
   cosign verify-blob \
