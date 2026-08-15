@@ -43,18 +43,17 @@ pkgver() {
         "$(git rev-parse --short HEAD)"
 }
 
-# We don't need to use the RUSTUP_HOME, rustup's wrapper prioritized RUSTUP_HOME already but just to be safe
 prepare() {
   export RUSTUP_HOME="$srcdir/rustup"
   export CARGO_HOME="$srcdir/cargo"
   rustup toolchain install stable --profile minimal
   rustup target add wasm32-unknown-unknown
-  $RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo install --locked cargo-leptos
+  rustup run stable cargo install --locked cargo-leptos
 }
 
 build() {
   cd "$srcdir/jas" || exit
-  $RUSTUP_HOME/toolchains/stable-x86_64-unknown-linux-gnu/bin/cargo leptos build --release
+  rustup run stable cargo leptos build --release
 }
 
 package() {
