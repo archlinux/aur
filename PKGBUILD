@@ -7,8 +7,8 @@
 
 pkgname=ffmpeg-whisper
 pkgver=9.0.1
-pkgrel=1
-pkgdesc='Complete solution to record, convert and stream audio and video, with vulkan whisper'
+pkgrel=2
+pkgdesc='Complete solution to record, convert and stream audio and video, with the whisper filter'
 arch=(x86_64)
 url=https://ffmpeg.org
 license=(GPL-3.0-only)
@@ -21,9 +21,9 @@ depends=(
   fontconfig
   freetype2
   fribidi
+  ggml-cpu
   glib2
   glibc
-  glslang
   gmp
   gnutls
   gsm
@@ -79,6 +79,7 @@ depends=(
   vid.stab
   vmaf
   vulkan-icd-loader
+  whisper-cpp
   x264
   x265
   xvidcore
@@ -86,7 +87,6 @@ depends=(
   zeromq
   zimg
   zlib
-  whisper.cpp
 )
 makedepends=(
   amf-headers
@@ -99,14 +99,18 @@ makedepends=(
   mesa
   nasm
   opencl-headers
+  spirv-headers
   vulkan-headers
-  whisper.cpp
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
   'frei0r-plugins: Frei0r video effects support'
+  'ggml-cuda: NVIDIA acceleration for the whisper filter'
+  'ggml-hip: AMD acceleration for the whisper filter'
+  'ggml-vulkan: Vulkan acceleration for the whisper filter'
   'intel-media-sdk: Intel QuickSync support (legacy)'
   'ladspa: LADSPA filters'
+  'nvidia-utils: Nvidia NVDEC/NVENC support'
   'onevpl-intel-gpu: Intel QuickSync support'
 )
 provides=(
