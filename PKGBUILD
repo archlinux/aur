@@ -2,13 +2,12 @@
 
 pkgname=motrix-next-bin
 pkgver=3.9.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust"
-arch=('x86_64' 'aarch64')
+arch=(x86_64 aarch64)
 url="https://github.com/AnInsomniacy/motrix-next"
-license=('MIT')
+license=(MIT)
 depends=(
-    aria2-next
     cairo
     gdk-pixbuf2
     gtk3
