@@ -8,6 +8,7 @@ pkgbase = ghr
 	arch = riscv64
 	license = MIT
 	makedepends = cargo
+	makedepends = llvm
 	depends = github-cli
 	provides = ghr
 	conflicts = ghr-git

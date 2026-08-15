@@ -7,8 +7,14 @@ arch=('x86_64' 'aarch64' 'riscv64')
 url='https://github.com/chenyukang/ghr'
 license=('MIT')
 depends=('github-cli')
-makedepends=('cargo')
-options=(!lto !debug)
+makedepends=(
+    'cargo'
+    'llvm'
+)
+options=(
+    !lto
+    !debug
+)
 provides=('ghr')
 conflicts=('ghr-git' 'ghr-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -23,6 +29,7 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export RUSTFLAGS='-C linker-features=-lld'
     cargo build --frozen --release
 }
 
