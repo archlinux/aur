@@ -14,7 +14,7 @@ makedepends=('go')
 depends=('glibc')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/heads/main.zip")
-sha256sums=('SKIP')
+sha256sums=('1423fe725cfa5fd208a3bcf1587392a3fa8d7af50c72368c463e7700714a86da')
 
 prepare() {
 	cd ${srcdir}/${pkgname}-main || exit 1

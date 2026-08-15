@@ -9,6 +9,6 @@ pkgbase = cmdfy
 	depends = glibc
 	provides = cmdfy
 	source = https://github.com/kesavan-vaisakh/cmdfy/archive/refs/heads/main.zip
-	sha256sums = SKIP
+	sha256sums = 1423fe725cfa5fd208a3bcf1587392a3fa8d7af50c72368c463e7700714a86da
 
 pkgname = cmdfy
