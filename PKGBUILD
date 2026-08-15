@@ -2,7 +2,7 @@
 
 _pkgname="zlint"
 pkgname="${_pkgname}-bin"
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A linter for the Zig programming language"
 arch=(
@@ -33,8 +33,8 @@ source_x86_64=(
 )
 sha256sums=('2477ab33e461d9a85f7d3ff54488807bd539d1b01b553788cded68d1880aa281'
             'a81bf938276a914da6413df0ef959bd889d3d5a66874f050e2a906ad63575e2e')
-sha256sums_aarch64=('6a023e6da22b90a1db411ce8666bf415a8df902d263cd7a64dbf98107cfb4c58')
-sha256sums_x86_64=('2485f4f744345e4b7c23a6023e96f0a22306d832f64ba3aeba08d35c90f81a71')
+sha256sums_aarch64=('4d8a55ca5267fbd9cec46e09def320c1c30e5322e28707a3b15ff05cbf244673')
+sha256sums_x86_64=('3290bd511d37e4f6ccca3621b9894cd6c378195cdaac27520d0bd894058b2b9b')
 
 package() {
   cd "${srcdir}"
