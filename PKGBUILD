@@ -2,7 +2,7 @@
 pkgname=deref-nightly-bin
 provides=('deref')
 conflicts=('deref' 'deref-bin')
-pkgver=0.1.0+nightly+20260814+8+g180eed14
+pkgver=0.1.0+nightly+20260815+8+g180eed14
 pkgrel=1
 pkgdesc="Replace symbolic links with real files / directories — nightly build"
 arch=('x86_64' 'aarch64')
