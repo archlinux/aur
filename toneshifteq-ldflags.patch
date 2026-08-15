@@ -1,0 +1,29 @@
+diff --git a/EQ12/Makefile b/EQ12/Makefile
+index 1a20e77..8b19086 100644
+--- a/EQ12/Makefile
++++ b/EQ12/Makefile
+@@ -111,6 +111,7 @@ endif
+ ifeq ($(TARGET), Linux)
+ 	# set compile flags
+ 	GUI_LDFLAGS += -I$(HEADER_DIR) -Wl,-Bstatic -L. $(UI_LIB) \
++	-fdata-sections -Wl,--gc-sections -Wl,--exclude-libs,ALL \
+ 	-Wl,-Bdynamic `$(PKGCONFIG) $(PKGCONFIG_FLAGS) --cflags --libs cairo x11` $(FT_LIBS)
+ 
+ 	CFLAGS += -Wall -funroll-loops `$(PKGCONFIG) $(PKGCONFIG_FLAGS) --cflags sndfile fftw3 `\
+@@ -122,7 +123,7 @@ ifeq ($(TARGET), Linux)
+ 	CXXFLAGS += -MMD -std=c++17 -fno-math-errno -fno-trapping-math -fPIC -D_OS_UNIX_ -DALVER=\"$(VER)\" $(CFLAGS) \
+ 	-fvisibility=hidden -fvisibility-inlines-hidden
+ 
+-	LDFLAGS += $(INCLUDES) -lm -pthread -lpthread -lstdc++ $(GUI_LDFLAGS) -fvisibility=hidden \
++	LDFLAGS += $(INCLUDES) -lm -pthread -lpthread -lstdc++ $(GUI_LDFLAGS) \
+ 	`$(PKGCONFIG) $(PKGCONFIG_FLAGS) --libs sndfile fftw3 fftw3f $(BACKEND) `
+ 	ifneq ($(MACOS)$(WINDOWS),true)
+ 		LDFLAGS += -lrt -lc
+@@ -235,6 +236,7 @@ ifneq ("$(wildcard ../bin/$(NAME)$(EXE))","")
+   ifeq ($(user),root)
+ 	$(QUIET)mkdir -p $(DESTDIR)$(DESKAPPS_DIR)
+ 	$(QUIET)cp ./Resources/$(NAME).desktop $(DESTDIR)$(DESKAPPS_DIR)/$(NAME).desktop
++	$(QUIET)mkdir -p $(DESTDIR)$(PIXMAPS_DIR)
+ 	$(QUIET)cp ./Resources/$(NAME).svg $(DESTDIR)$(PIXMAPS_DIR)/$(NAME).svg
+ 	$(QUIET)update-desktop-database || true
+   endif

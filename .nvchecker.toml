@@ -1,0 +1,5 @@
+[toneshifteq]
+source = "github"
+github = "brummer10/ToneShiftEQ"
+use_max_tag = true
+prefix = "v"
