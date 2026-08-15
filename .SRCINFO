@@ -1,6 +1,6 @@
 pkgbase = svg2oscad-git
 	pkgdesc = Convert SVG files to OpenSCAD paths
-	pkgver = r92.b9b0430
+	pkgver = 1.0_22_g51adb02
 	pkgrel = 1
 	url = https://catgirls.org.es/myaow/svg2oscad
 	arch = any
