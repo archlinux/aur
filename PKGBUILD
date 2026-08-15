@@ -8,7 +8,7 @@
 
 _pkgname="obs-studio"
 pkgname="$_pkgname-git"
-pkgver=32.1.2.r109.g84b8d16
+pkgver=32.2.2.r4.g1bf1379
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording"
 url="https://github.com/obsproject/obs-studio"
@@ -25,7 +25,7 @@ depends=(
   'librist'
   'libvpl'
   'libxcomposite'
-  'mbedtls'
+  'mbedtls3'
   'pciutils'
   'qrcodegencpp-cmake'
   'qt6-svg'
@@ -73,13 +73,16 @@ else
 fi
 
 provides=("$_pkgname=${pkgver%%.g*}")
-conflicts=("$_pkgname")
+conflicts=(
+  "$_pkgname"
+  'obs-studio-plugin-browser'
+)
 
 options=('!lto' '!strip')
 
 _source_main() {
   source=(
-    "$pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
+    "$_pkgname::git+https://github.com/obsproject/obs-studio.git#branch=master"
     "git+https://github.com/obsproject/obs-browser.git"
     "git+https://github.com/obsproject/obs-websocket.git"
   )
@@ -116,7 +119,7 @@ _source_main
 _source_cef
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   local _version=$(git tag | grep -Ev '.*[a-z]{2}.*' | sort -rV | head -1)
   local _revision=$(git rev-list --count --cherry-pick "$_version"...HEAD)
   local _hash=$(git rev-parse --short=7 HEAD)
@@ -124,22 +127,13 @@ pkgver() {
 }
 
 prepare() {
-  cd "$pkgname"
+  cd "$_pkgname"
   local gitconf="protocol.file.allow=always"
 
   git rm -r deps/libdshowcapture/src
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git config submodule.plugins/obs-websocket.url $srcdir/obs-websocket
   git -c $gitconf submodule update
-
-  # fix for Qt 6.10
-  sed -e 's&Qt::GuiPrivate&&' \
-    -i frontend/cmake/os-freebsd.cmake frontend/cmake/os-linux.cmake
-
-  sed -e '/GuiPrivate/d' \
-    -i plugins/aja-output-ui/CMakeLists.txt \
-    plugins/decklink-output-ui/CMakeLists.txt \
-    plugins/frontend-tools/CMakeLists.txt
 }
 
 build() (
@@ -149,17 +143,23 @@ build() (
 
   local _cmake_options=(
     -B build
-    -S "$pkgname"
+    -S "$_pkgname"
     -G Ninja
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DCMAKE_INSTALL_LIBDIR='lib'
+    -Wno-author
+
+    -DMbedTLS_INCLUDE_DIR="/usr/include/mbedtls3"
+    -DMbedtls_LIBRARY="/usr/lib/mbedtls3/libmbedtls.so"
+    -DMbedcrypto_LIBRARY="/usr/lib/mbedtls3/libmbedcrypto.so"
+    -DMbedx509_LIBRARY="/usr/lib/mbedtls3/libmbedx509.so"
+
     -DCEF_ROOT_DIR="$srcdir/$_cef_src"
     -DOBS_VERSION_OVERRIDE="${pkgver%%.r*}"
     -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON
     -DENABLE_BROWSER=ON # qrcodegencpp-cmake
     -DENABLE_LIBFDK=ON
-    -Wno-dev
 
     -DENABLE_AJA="${_plugin_aja:?}"
     -DENABLE_JACK=ON
