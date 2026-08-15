@@ -15,14 +15,24 @@ run_hook() (
   mkdir /dev/pts
   mount -t devpts none /dev/pts
 
-  # Launch tailscale agent in the background
+  # Userspace networking delivers inbound tailnet TCP by dialling the same
+  # port on 127.0.0.1. systemd brings lo up as PID 1; nothing in a busybox
+  # initramfs does, and with lo down a dropbear or tinyssh next to tailscaled
+  # is unreachable no matter what it listens on.
+  ip link set lo up
+
+  # Launch tailscale agent in the background. Userspace networking rather
+  # than a TUN device: see the install hook, which for the same reason no
+  # longer puts the tun module in the image.
   /usr/sbin/tailscaled --cleanup
   # FLAGS holds extra tailscaled arguments from default.env and is meant to
   # word-split; quoting it would pass the whole string as a single argument.
+  # It comes last so a --tun= the user put there wins over the default.
   # shellcheck disable=SC2086
   /usr/sbin/tailscaled \
     --state=/var/lib/tailscale/tailscaled.state \
     --socket=/run/tailscale/tailscaled.sock \
+    --tun=userspace-networking \
     --port="${PORT}" ${FLAGS} &
 
   echo "$!" >/run/tailscaled.pid

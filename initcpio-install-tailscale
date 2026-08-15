@@ -35,17 +35,28 @@ build() {
 	# tailscale requirements. No netfilter userland or modules: the node is
 	# registered with --netfilter-mode=off, since for the minutes the image
 	# runs -- one interface, no subnet routing, no exit node -- tailscaled has
-	# nothing to program into a firewall.
-	add_module tun
+	# nothing to program into a firewall. No tun module either: tailscaled runs
+	# with --tun=userspace-networking, its own in-process TCP/IP stack, which
+	# serves this node's whole traffic profile -- the Tailscale SSH server
+	# lives inside tailscaled, and inbound TCP for any other early ssh daemon
+	# is proxied to the same port on loopback. The image ends up needing no
+	# kernel module at all.
 	map add_binary getent tailscale tailscaled
 
 	if [[ $(type -t add_systemd_unit) == function ]]; then
 		add_systemd_unit tailscaled.service
+		# The ExecStart override restates the stock unit's command line (from
+		# the tailscale package's tailscaled.service) with the userspace
+		# networking flag appended; the empty ExecStart= clears the stock one
+		# first, as systemd requires for Type!=oneshot.
 		add_systemd_drop_in tailscaled.service override <<-EOU
 			[Unit]
 			DefaultDependencies=no
 			After=network-online.target
 			Wants=network-online.target
+			[Service]
+			ExecStart=
+			ExecStart=/usr/sbin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/run/tailscale/tailscaled.sock --tun=userspace-networking --port=\${PORT} \$FLAGS
 		EOU
 		add_symlink /etc/systemd/system/sysinit.target.wants/tailscaled.service \
 			/usr/lib/systemd/system/tailscaled.service

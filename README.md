@@ -187,6 +187,17 @@ sudo setup-initcpio-tailscale --no-ssh
 which also removes any host keys an earlier run left in
 `/etc/initcpio/tailscale/`, so they stop being copied into new images.
 
+Two things to know when running your own `dropbear` or `tinyssh` alongside.
+Inbound tailnet connections reach it through a proxy that dials the same port
+on `127.0.0.1`, so the daemon must listen on a wildcard or loopback address
+(one bound to a specific interface address will never see a connection); this
+hook brings `lo` up itself, since nothing else in a busybox image would. And
+log in as root: everything in an initramfs is owned by root, and
+`dropbear` refuses an `authorized_keys` it does not consider owned by the user
+logging in, so root is the login that works. That is the same reason the
+retired dropbear hooks used a `root_key`. The boot test exercises exactly this
+setup, dropbear included.
+
 Note: the Tailscale SSH server only accepts connections from within your
 tailnet. The node won't accept local connections unless the client is also part
 of your Tailscale network, which reduces exposure compared to a traditional SSH
@@ -281,17 +292,17 @@ make test        # lint, packaging, initramfs image contents
 make test-all    # adds the QEMU boot tests against a local headscale
 ```
 
-`make test-all` boots two images against a throwaway headscale (one systemd,
-one busybox, both registered the way the setup helper registers them when left
-alone) and checks each node comes online, then logs in over Tailscale SSH and
-compares the host key it is offered with the one `setup-initcpio-tailscale`
-generated. The `--no-ssh` opt-out is checked there too, on the configuration it
-writes rather than with a boot of its own. A single scenario can be run on its
-own:
+`make test-all` boots three images against a throwaway headscale: a systemd
+and a busybox one registered the way the setup helper registers them when left
+alone, checked by logging in over Tailscale SSH and comparing the host key
+offered with the one `setup-initcpio-tailscale` generated; and a busybox one
+registered `--no-ssh` with a dropbear standing in for the user's own early ssh
+daemon, which proves that path end to end: inbound tailnet TCP reaching a
+daemon next to tailscaled. A single scenario can be run on its own:
 
 ```sh
-./tests/container.sh 04     # both, the way CI runs them
-BOOT_SCENARIOS=busybox ./tests/container.sh 04
+./tests/container.sh 04     # all three, the way CI runs them
+BOOT_SCENARIOS=dropbear ./tests/container.sh 04
 ```
 
 ### Releasing
