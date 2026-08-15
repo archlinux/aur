@@ -21,8 +21,8 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/Cogfly"
-  sed -i 's/^Exec=Cogfly$/Exec=cogfly/' Cogfly.desktop
-  sed -i 's/^Icon=icon$/Icon=cogfly/' Cogfly.desktop
+  sed -i 's/^Exec=Cogfly$/Exec=cogfly/' resources/linux/Cogfly.desktop
+  sed -i 's/^Icon=icon$/Icon=cogfly/' resources/linux/Cogfly.desktop
   sed -i 's/^[[:space:]]*version = .*/version = "git"/' build.gradle.kts
 }
 
@@ -49,7 +49,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/cogfly"
 
-  install -Dm644 ${srcdir}/Cogfly/Cogfly.desktop \
+  install -Dm644 ${srcdir}/Cogfly/resources/linux/Cogfly.desktop \
     "${pkgdir}/usr/share/applications/cogfly.desktop"
   install -Dm644 ${srcdir}/Cogfly/icons/icon.png \
     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/cogfly.png"
