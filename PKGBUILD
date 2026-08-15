@@ -1,10 +1,9 @@
 # Maintainer: solsTiCe d'Hiver <solsticedhiver@gmail.com>
 pkgname=opennow
 _pkgname=OpenNOW
-pkgver=0.5.4
-#_pkgver=0.5.3-nightly.47.1
+pkgver=0.5.5
 _pkgver=$pkgver
-pkgrel=2
+pkgrel=1
 pkgdesc="custom GeForce Now client"
 url="https://opennow.zortos.me/"
 license=('MIT')
@@ -19,7 +18,7 @@ arch=('x86_64')
 source=(opennow-${pkgver}.tar.gz::https://github.com/OpenCloudGaming/OpenNOW/archive/refs/tags/v${_pkgver}.tar.gz
 	opennow.desktop opennow)
 
-sha256sums=('64d18a608b5ee22fc296e42e900b8042c1c4fe4d818a3c6a43c943d5307e8d50'
+sha256sums=('5c9baac5d30547c8b64de904648f66bd36980b449ccdbcc8957a7af9ba1b5984'
             '2ab63a0c3b39b7220bd1d16d5a61daf2578c8b3dadbbbcacd4287d8b568cd513'
             'd6e8f57fb06df8ec46d4e88f13dabadc8281cfc4122cc0c337f3efde9096a27f')
 
