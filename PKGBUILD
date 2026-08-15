@@ -1,6 +1,6 @@
 # Maintainer: Gabriel <horizzon3507>
 pkgname=optionfiles
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Minimal black and white terminal file manager with image previews'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('imagemagick: previews for JPEG, GIF, WebP, BMP and TIFF')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('03ced56208edcd1ebeddcdfd372fac114fd3f44adf9d420c298ac61bc14b69bf')
+sha256sums=('68119462d0127b3394e7cd32dc659280f502e61f6ff301a5a7a440bc1b6c9bcd')
 
 prepare() {
   cd "optionFiles-$pkgver"
