@@ -8,7 +8,7 @@
 _pkgname=neovim
 pkgname=neovim-nightly-bin
 pkgver=0.13.0+dev+1321+gb169d9376c
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs (nightly build)'
 arch=('x86_64' 'aarch64')
 url='https://neovim.io'
@@ -30,10 +30,6 @@ x86_64)
 	;;
 aarch64)
 	architecture="arm64"
-	;;
-*)
-	echo "Unsupported architecture: $CARCH"
-	exit 1
 	;;
 esac
 source=("$_pkgname-$_date.tar.gz::https://github.com/neovim/neovim/releases/download/nightly/nvim-linux-${architecture}.tar.gz"
