@@ -46,7 +46,7 @@ if [[ -z "$FFMPEG_OBS_SVT" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=9.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
@@ -177,7 +177,7 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=d32b387f2b0a484599d4587d651891f0c63c4238
+_tag=bf1b838f2ab88b4f8fd83443325c782ea0e0f7fa
 _deps_tag=2024-09-12
 source=(
   "ffmpeg-src::git+https://code.ffmpeg.org/FFmpeg/FFmpeg.git#tag=${_tag}"
