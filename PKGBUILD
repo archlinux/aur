@@ -1,6 +1,6 @@
 # Maintainer: deungjaho <deungjaho@gmail.com>
 pkgname=hydra-proxy
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Terminal AI proxy gateway for Antigravity accounts (OpenAI/Anthropic-compatible)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('go')
 provides=('hydra')
 conflicts=('hydra' 'hydra-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/deungjaho/hydra/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b7cc116be8c97bfc6f4e75e87181776ccdb93bd330f13cb68b86cbb5cd88010e')
+sha256sums=('12a3d3e61f572618acfb720037d476d4471625475f59913b5c00b4c133371fe9')
 
 build() {
     cd "${srcdir}/hydra-${pkgver}"
