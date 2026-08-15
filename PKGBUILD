@@ -126,6 +126,7 @@ build() {
   # Enable the upstream's target-specific, validated gfx1151 path only for a
   # single-target Strix Halo build.
   if [[ "${_gpu_targets}" == 'gfx1151' ]]; then
+    msg2 "Strix Halo optimizations enabled"
     _cmake_options+=(
       -DENGINE_HIP_STRIX_HALO_OPTIMIZATIONS=ON
     )
