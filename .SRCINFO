@@ -1,13 +1,13 @@
 pkgbase = powerliminalsplayer-appimage
 	pkgdesc = Plays multiple audios simultaneously at varying speeds
 	pkgver = 3.5.1
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/mysteryx93/NaturalGroundingPlayer/wiki/Powerliminals-Player
 	arch = x86_64
 	license = MIT
 	noextract = powerliminalsplayer-appimage-3.5.1.AppImage
 	options = !strip
 	source_x86_64 = powerliminalsplayer-appimage-3.5.1.AppImage::https://github.com/mysteryx93/HanumanInstituteApps/releases/download/v3.5.1/PowerliminalsPlayer-3.5.1_Linux_x64.AppImage
-	sha256sums_x86_64 = 6b9d15701398f99a9aec4e254e4b0f882792a4df323b98316aa6322c6f00ba6e
+	sha256sums_x86_64 = 69a1fde3df621a13db6dde0648453f3401839fcd548da59d22e5f62acff6494e
 
 pkgname = powerliminalsplayer-appimage
