@@ -1,27 +1,19 @@
 pkgname=forgecode-bin
-pkgver=2.12.16
+pkgver=2.13.21
 pkgrel=1
-pkgdesc="An AI-powered code assistant CLI tool"
+pkgdesc="CLI code assistant; pre-built upstream binary"
 arch=('x86_64' 'aarch64')
-url="https://github.com/antinomyhq/forgecode"
+url="https://github.com/tailcallhq/forgecode"
 license=('Apache-2.0')
 provides=('forge')
 conflicts=('forge')
-depends=(
-  'fzf'
-  'bat'
-  'fd'
-)
+depends=('fzf' 'bat' 'fd')
 _baseurl=https://github.com/tailcallhq/forgecode/releases/download/v${pkgver}
-source_x86_64=(
-  "forge::${_baseurl}/forge-x86_64-unknown-linux-gnu"
-)
-source_aarch64=(
-  "forge::${_baseurl}/forge-aarch64-unknown-linux-gnu"
-)
+source_x86_64=("forge::${_baseurl}/forge-x86_64-unknown-linux-gnu")
+source_aarch64=("forge::${_baseurl}/forge-aarch64-unknown-linux-gnu")
 source=("LICENSE")
-sha256sums_x86_64=('74a7b1b8782c1da0d430d74735f5653df8f3aa0709e757f477008cae9239bad8')
-sha256sums_aarch64=('28d2357f1d58ae73108bd7d7a1abdaf63268694ce02663d621e4dec11f9a5b59')
+sha256sums_x86_64=('300acf69e39ea5a452e6544f3191470317a14226b6b1a91821c95815e07a8b88')
+sha256sums_aarch64=('b9336b652c1233a07dea8eb4e864785e03c1d9706025768a19ac3b6646936539')
 sha256sums=('3c9f90350449325ae2b1355d6aae26df25be58f1cfcb8ed6a44b9c4b10c663f9')
 
 package() {
