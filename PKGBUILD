@@ -1,6 +1,6 @@
 # Maintainer: Andrew Marin <andrewmarin367@gmail.com>
 pkgname=vice-clipper
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Medal.tv-style game clip recorder for Linux — instant replay, session recording, and one-click sharing"
 arch=('x86_64')
@@ -27,6 +27,11 @@ depends=(
     'wl-clipboard'
     'xclip'
     'cloudflared'
+    # Focused-window detection for game tagging, auto playlists and Discord
+    # presence. Without these it silently detects nothing. Issue 152.
+    'xdotool'
+    'xorg-xprop'
+    'wmctrl'
 )
 optdepends=(
     'wf-recorder: Wayland fallback recording backend'
