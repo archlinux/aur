@@ -1,17 +1,17 @@
 pkgbase = splinterm-bin
-	pkgver = 0.1.0alpha3.2
+	pkgver = 0.1.0alpha3.3
 	pkgrel = 1
 	url = https://github.com/oldjobobo/splinterm
 	arch = x86_64
 	license = MIT
-	noextract = splinterm-0.1.0alpha3.2-x86_64.pkg.tar.zst
-	noextract = splinterm-mcp-0.1.0alpha3.2-x86_64.pkg.tar.zst
+	noextract = splinterm-0.1.0alpha3.3-x86_64.pkg.tar.zst
+	noextract = splinterm-mcp-0.1.0alpha3.3-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = splinterm-0.1.0alpha3.2-x86_64.pkg.tar.zst::https://github.com/OldJobobo/splinterm/releases/download/v0.1.0-alpha3.2/splinterm-647b0eaa83314d588ce7b5bf97e65578e6d0f96f-x86_64.pkg.tar.zst
-	source = splinterm-mcp-0.1.0alpha3.2-x86_64.pkg.tar.zst::https://github.com/OldJobobo/splinterm/releases/download/v0.1.0-alpha3.2/splinterm-mcp-647b0eaa83314d588ce7b5bf97e65578e6d0f96f-x86_64.pkg.tar.zst
-	sha256sums = 868729721fc901d7b6c507974f0817c3f9e21901f393dad9e6e695f0a41bd6c4
-	sha256sums = 2532a8171934a11ea1f6ac78b7021e4e9857fb68cc9ecb8932729c4f881dea1f
+	source = splinterm-0.1.0alpha3.3-x86_64.pkg.tar.zst::https://github.com/OldJobobo/splinterm/releases/download/v0.1.0-alpha3.3/splinterm-0c4276703eaa01b347fdbeb6327669b2b109e8b6-x86_64.pkg.tar.zst
+	source = splinterm-mcp-0.1.0alpha3.3-x86_64.pkg.tar.zst::https://github.com/OldJobobo/splinterm/releases/download/v0.1.0-alpha3.3/splinterm-mcp-0c4276703eaa01b347fdbeb6327669b2b109e8b6-x86_64.pkg.tar.zst
+	sha256sums = 5104941b47776b1a06aea044c50a4179afcc9fa6c843a663d47ac728d99bc456
+	sha256sums = a5b8e5ac5c583df75275881e2527940d3a999c20cb33e2521a366840d2abc4c2
 
 pkgname = splinterm-bin
 	pkgdesc = Persistent Wayland terminal for humans and bounded automation (prebuilt binary)
@@ -31,13 +31,13 @@ pkgname = splinterm-bin
 	depends = xdg-terminal-exec
 	optdepends = fcitx5: Wayland text-input support
 	optdepends = splinterm-mcp: explicitly configured MCP stdio adapter
-	provides = splinterm=0.1.0alpha3.2-1
+	provides = splinterm=0.1.0alpha3.3-1
 	conflicts = splinterm
 
 pkgname = splinterm-mcp-bin
 	pkgdesc = Policy-scoped MCP stdio adapter for Splinterm (prebuilt binary)
-	depends = splinterm=0.1.0alpha3.2-1
+	depends = splinterm=0.1.0alpha3.3-1
 	depends = gcc-libs
 	depends = glibc
-	provides = splinterm-mcp=0.1.0alpha3.2-1
+	provides = splinterm-mcp=0.1.0alpha3.3-1
 	conflicts = splinterm-mcp
