@@ -23,13 +23,6 @@ post_upgrade() {
     echo ""
     echo "   omazed setup"
     echo ""
-    echo "   This will:"
-    echo "   • Set the Zed theme once on first run"
-    echo "   • Migrate to omarchy hooks automatically"
-    echo ""
-    echo "If your wish to remove the old bundled themes then run:"
-    echo "rm -f ~/.config/zed/themes/{catppuccin,catppuccin-latte,everforest,flexoki-light,gruvbox,kanagawa,matte-black,nord,osaka-jade,ristretto,rose-pine,tokyo-night,ethereal,hackerman}.json"
-    echo ""
 }
 
 post_remove() {
