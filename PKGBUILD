@@ -1,6 +1,6 @@
 # Maintainer: Pete Jackson <pete@peteonrails.com>
 pkgname=omadex
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='Contact aggregator for Omarchy: one address layer over many address books'
 arch=('any')
@@ -32,7 +32,7 @@ checkdepends=(
   'ruff'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2428a0d49d7f16c42b2954f58af97f29897f243810db84fbb875761c7192d0d4')
+sha256sums=('05430e0735fdfa73dd8e8574388f2c5e14fd7f11509eb9b4ac0f77c5e3a483eb')
 
 build() {
   cd "$pkgname-$pkgver"
