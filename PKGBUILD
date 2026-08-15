@@ -1,4 +1,5 @@
-# Maintainer: alufers <alufers[at]wp[dot]pl>
+# Maintainer: GGORG <me at ggorg dot xyz>
+# Submitter: alufers <alufers[at]wp[dot]pl>
 
 pkgname=python-datastruct
 pkgver=2.0.0
