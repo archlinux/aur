@@ -1,0 +1,12 @@
+pkgbase = sigil-wm-bin
+	pkgdesc = Invisible structural watermark for images (binary release)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Xuepoo/sigil
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	source = sigil-0.1.0::https://github.com/Xuepoo/sigil/releases/download/v0.1.0/sigil-linux-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = sigil-wm-bin
