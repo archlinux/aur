@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OneChat
+Comment=Your last one chatbox app.
+Exec=onechat
+Icon=onechat
+Terminal=false
+Type=Application
+Categories=Network;Chat;
+Keywords=AI;Chat;LLM;
+StartupNotify=true
