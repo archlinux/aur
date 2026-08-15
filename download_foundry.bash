@@ -60,15 +60,13 @@ then
 fi
 
 if [ "$use_secret_service" ]; then
-	readarray -d'' -t creds < <(secret-tool lookup ${secret_id[@]} 2>/dev/null)
-	if [ -v creds[@] ]; then
-		new_credentials=1
-		username="${creds[0]}"
-		password="${creds[1]}"
-	fi
+	info=$(secret-tool search --unlock ${secret_id[@]} 2>&1)
+	username=$(<<<"$info" sed -n 's/^attribute.UserName = //ip')
+	password=$(<<<"$info" sed -n 's/^secret = //ip')
 fi
 
 if ! [ "$username" -a "$password" ]; then
+	new_credentials=1
 	read -rp "foundryvtt.com username: " username
 	read -srp "foundryvtt.com password: " password
 	printf '\n'
@@ -97,8 +95,12 @@ if [ "$http_code" != 302 ]; then
 	printf 'Failed to log in to foundryvtt.com.\n' 1>&2
 	exit 1
 elif [ "$use_secret_service" -a "$new_credentials" ]; then
-	printf '%s\0' "$username" "$password" | \
-		secret-tool store --label='download_foundry.bash credentials' ${secret_id[@]} 2>/dev/null
+	printf '%s' "$password" | \
+		secret-tool store \
+			--label='download_foundry.bash credentials' \
+			UserName "${username}" \
+			${secret_id[@]} \
+			2>/dev/null
 fi
 
 # Session cookie now in cookie jar, compute and GET download URL
