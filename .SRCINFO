@@ -1,7 +1,7 @@
 pkgbase = vidcom
 	pkgdesc = Archive your videos
-	pkgver = 0.82
-	pkgrel = 2
+	pkgver = 0.83
+	pkgrel = 1
 	url = https://github.com/seja-arctic-fox/vidcom
 	arch = x86_64
 	license = GPL-3.0-only
@@ -11,7 +11,7 @@ pkgbase = vidcom
 	depends = libadwaita
 	depends = jsoncpp
 	depends = ffmpeg
-	source = vidcom-0.82.tar.gz::https://github.com/seja-arctic-fox/vidcom/archive/refs/tags/v0.82.tar.gz
-	sha256sums = c4dd2fc558b0ff34507a59431bbb3bd94a2f6749b9bf41693c3d278a2624e6bd
+	source = vidcom-0.83.tar.gz::https://github.com/seja-arctic-fox/vidcom/archive/refs/tags/v0.83.tar.gz
+	sha256sums = f5fc0bd87ed7b7e4760225fe7f9a35bc6bf58e6f05b6aa9a58038a9509bc7198
 
 pkgname = vidcom
