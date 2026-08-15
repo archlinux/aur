@@ -1,8 +1,9 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
+# Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=kometa
 pkgver=2.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A powerful tool designed to give you complete control over your Plex media libraries.'
 url='https://kometa.wiki'
 arch=('any')
@@ -29,6 +30,7 @@ depends=(
   'python-tmdbapis'
   'python-tenacity'
   'python-langcodes'
+  'python-serializd'
 )
 
 makedepends=('python-setuptools')
