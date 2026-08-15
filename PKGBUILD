@@ -12,7 +12,7 @@
 # thirdparty/mpv.py -> mpv), not a verified dependency audit.
 
 pkgname=yuki-iptv
-pkgver=260815.4
+pkgver=260815.5
 pkgrel=1
 pkgdesc="IPTV player with EPG support, based on mpv and Qt"
 arch=('any')
@@ -34,7 +34,7 @@ optdepends=(
 )
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/itachi-re/yuki-iptv/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0eaac7ae9e6d13066d9bc9216f4ff2dbfd374e72acb0b3e8556ad106480036d7')
+sha256sums=('f11a32eba98bcc3b7a6a87ea2075a2d2158f54033b68ca4e6016f7999d48d0b6')
 
 # The repo checks in a pre-laid-out usr/ tree (same one debian/install
 # just points at with a bare "usr" line) — no compilation step, so
