@@ -1,27 +1,38 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="pdtm"
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="ProjectDiscovery's Open Source Tool Manager"
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=(
+  'aarch64'
+  'armv7h'
+  'i686'
+  'x86_64'
+)
 url="https://github.com/projectdiscovery/${pkgname}"
-license=('MIT')
-depends=('glibc')
-makedepends=('git' 'go')
+license=(
+  'MIT'
+)
+depends=(
+  'glibc'
+)
+makedepends=(
+  'git'
+  'go'
+)
 _pkgsrc="${url##*/}"
-source=("${_pkgsrc}::git+${url}.git#tag=v${pkgver}")
-b2sums=('eefcf26b5c8cf8adf6ba220f20a1033d20ac5482e763b26a88030046a0c2d4b53d94bc7e048fb08948691b2d4f82f664e82ec5552ebc0b457ac36b89cd7af37a')
+source=(
+  "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
+)
+b2sums=('03bd8e584111162fc1b2ce6d63f4207026f39f8e60f71af529368afb6e824495ee2817d369241ad178685cfd6f19ca7677fa9d412162c2657077655a1604d5c6')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  find "${GOMODCACHE}" -type d -exec chmod 755 {} +
-  find "${GOMODCACHE}" -type f -exec chmod 644 {} +
-
-  mkdir -p "build"
+  go mod download -modcacherw -x
+  go mod verify
 }
 
 build() {
