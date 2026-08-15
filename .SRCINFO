@@ -1,6 +1,6 @@
 pkgbase = memory-card-bin
 	pkgdesc = A desktop music player with a retro PS2/CRT aesthetic
-	pkgver = 1.4.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Sluicee/memory-card
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = memory-card-bin
 	provides = memory-card
 	conflicts = memory-card
 	options = !debug
-	source = memory-card-bin-1.4.0.deb::https://github.com/Sluicee/memory-card/releases/download/v1.4.0/Memory.Card_1.4.0_amd64.deb
-	sha256sums = 8be48e972ca278e38223084f03792d4fe792f8a1b11457de8df0b90262b1578a
+	source = memory-card-bin-2.0.0.deb::https://github.com/Sluicee/memory-card/releases/download/v2.0.0/Memory.Card_2.0.0_amd64.deb
+	sha256sums = ffd28fd31a6ecdcf92b460111387e39749a75330da51498bf535403a6b221cea
 
 pkgname = memory-card-bin
