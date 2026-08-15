@@ -1,6 +1,6 @@
 pkgbase = t3code-nightly-bin
 	pkgdesc = Nightly desktop control surface for local coding agents
-	pkgver = 0.0.34_nightly.20260815.1102
+	pkgver = 0.0.34_nightly.20260815.1104
 	pkgrel = 1
 	url = https://github.com/pingdotgg/t3code
 	arch = x86_64
@@ -35,15 +35,15 @@ pkgbase = t3code-nightly-bin
 	depends = xdg-utils
 	depends = zlib
 	optdepends = openai-codex: use the system-installed Codex CLI
-	provides = t3code-nightly=0.0.34_nightly.20260815.1102
+	provides = t3code-nightly=0.0.34_nightly.20260815.1104
 	conflicts = t3code-nightly
 	conflicts = t3code
 	options = !debug
 	options = !strip
-	source = T3-Code-0.0.34-nightly.20260815.1102-x86_64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v0.0.34-nightly.20260815.1102/T3-Code-0.0.34-nightly.20260815.1102-x86_64.AppImage
-	source = t3code-nightly-bin-0.0.34_nightly.20260815.1102.png::https://raw.githubusercontent.com/pingdotgg/t3code/v0.0.34-nightly.20260815.1102/assets/nightly/nightly-universal-1024.png
-	source = t3code-nightly-bin-0.0.34_nightly.20260815.1102-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v0.0.34-nightly.20260815.1102/LICENSE
-	sha256sums = 74d9c577fd4fe12a2f0b9cdf695ecf2d862a14541d85a4b7b5c4e612969ac66f
+	source = T3-Code-0.0.34-nightly.20260815.1104-x86_64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v0.0.34-nightly.20260815.1104/T3-Code-0.0.34-nightly.20260815.1104-x86_64.AppImage
+	source = t3code-nightly-bin-0.0.34_nightly.20260815.1104.png::https://raw.githubusercontent.com/pingdotgg/t3code/v0.0.34-nightly.20260815.1104/assets/nightly/nightly-universal-1024.png
+	source = t3code-nightly-bin-0.0.34_nightly.20260815.1104-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v0.0.34-nightly.20260815.1104/LICENSE
+	sha256sums = d0ef87c18dc05e264acf81972cdb13655dcdd89571025213cadba062e97e358a
 	sha256sums = 7e59b6394016ef83ed1e946847769e01bf36d4062c5c5af2577fd3e228285fd9
 	sha256sums = 935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43
 
