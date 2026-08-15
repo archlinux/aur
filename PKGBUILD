@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=comfy-desktop-bin
-pkgver=1.0.38
+pkgver=1.0.39
 pkgrel=1
 pkgdesc='Official desktop application for ComfyUI — install, run, and manage ComfyUI with GPU-ready environments'
 arch=('x86_64' 'aarch64')
@@ -44,8 +44,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Comfy-Org/Comfy-De
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_dl_base}/versions/${pkgver}/linux/deb/x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_dl_base}/versions/${pkgver}/linux/deb/arm64")
 sha256sums=('0cea5d109b4d245ea1110c205df0f825a1088c9e45e257514c1661c7c14f7bc3')
-sha256sums_x86_64=('c1b6b4f6a5a8498b26f14204438fe0112bb8164003e4d1bb3d787035c621e64c')
-sha256sums_aarch64=('3a1c866d61385a0c046a1cda2303232633f7e8041f17c4459018e79a8971b35b')
+sha256sums_x86_64=('d4788db90f2188ac543896535812bcac4259813692dd5446c5f316fb7490103d')
+sha256sums_aarch64=('366231b0a07b17c8ff82d60a8950f868a1f94c828ad66ef7084314e865cc08ce')
 
 latestver() {
     # HEAD 404s on this CDN and GitHub releases run ahead of the Linux build,
