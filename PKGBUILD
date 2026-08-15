@@ -2,7 +2,7 @@
 
 pkgname=cinnamon-aliveos
 pkgver=6.6.9
-pkgrel=8
+pkgrel=9
 pkgdesc="Cinnamon desktop environment for AliveOS (without Nemo, with Dory integration and custom enhancements)"
 arch=('x86_64')
 url="https://github.com/linuxmint/cinnamon"
@@ -13,7 +13,7 @@ depends=('accountsservice' 'at-spi2-core' 'bash' 'cairo' 'cinnamon-control-cente
          'evolution-data-server' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gnome-backgrounds' 'gnome-themes-extra' 'gsound' 'gstreamer' 'gtk3'
          'hicolor-icon-theme' 'libgcc' 'libgirepository' 'libglvnd' 'libibus'
-          'libical' 'libkeybinder3' 'libnm' 'libnotify' 'libsecret' 'libx11'
+          'libical' 'libkeybinder3' 'libnm' 'libnotify' 'libportal-gtk3' 'libsecret' 'libx11'
           'libxfixes' 'libxml2' 'muffin' 'network-manager-applet' 'pango'
           'papirus-icon-theme' 'polkit' 'python' 'python-cairo' 'python-gobject'
          'python-pam' 'python-pexpect' 'python-pillow' 'python-psutil'
@@ -46,8 +46,10 @@ source=("cinnamon-$pkgver-$pkgrel-x86_64.pkg.tar.zst::https://archlinux.org/pack
         'zenity-audio-device-dialog.py'
         'zenity-display-change-dialog.py'
         'zenity-polkit-dialog.py'
+        'zenity-keyring-dialog.py'
         'audioDeviceSelection.js'
         'polkitAuthenticationAgent.js'
+        'keyringPrompt.js'
         'patch-dialogs.py')
 sha256sums=('5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224'
             '1b46a3e8720269ba2c5abf3604835a7aff527abbb1bb401121f8626f74427255'
@@ -59,9 +61,11 @@ sha256sums=('5f09a128f937eff0edd78047eddeae911de1b216c49640e55338a21570c97224'
             '57656be9f89f5e93e388705cacf36199e94a703f15424f6f2002a853ecdd4a9e'
             '566c38d544d5ff71f6d32e64503af225539cc0a1e92a5a7dfed0058b891257c4'
             '03645d19a6638ebb3be5da436776edbb6668ed6d3e8aa53f333755577fb9558d'
-            'a18319c4d9a3f17eba494bb08301d8907ac6604c3c1d55bbeef0f10f5742a98a'
+            'b4cb9099aa3a264300ca51cb04ab0db04d8e3a161f0279bc1a2bca03b5feb05a'
+            'c01deee7b86de81c9f1ef604c342e33ff250c97b6f193b299324f4e07bedc1bc'
             'f3b2febe0c6a555c903ec9bc11e33dcebd267493a1c822305136d3ea2df9aeeb'
             'b9be55ba9602d0338b9efa6fbe6e5dbbea8fbd67453a7fed6270ee7a770262aa'
+            '049c98adab7c6295274c9c659ae1d5fdbe7761b46dac23e8b39f6b686a990537'
             '64e6a318cb09597ce9453cd596cc993522176640ac9c835ae3d63567098b2185')
 
 # Disable strip and debug to speed up repackaging
@@ -148,6 +152,10 @@ EOF
   install -Dm755 "$srcdir/zenity-polkit-dialog.py" \
     "$pkgdir/usr/bin/zenity-polkit-dialog.py"
 
+  # Install zenity keyring unlock/create dialog helper
+  install -Dm755 "$srcdir/zenity-keyring-dialog.py" \
+    "$pkgdir/usr/bin/zenity-keyring-dialog.py"
+
   # Install dialog patching script
   install -Dm755 "$srcdir/patch-dialogs.py" \
     "$pkgdir/usr/share/cinnamon/patch-dialogs.py"
@@ -200,6 +208,11 @@ PYEOF
   # Replace polkitAuthenticationAgent.js with GTK3 zenity-based agent
   if [ -f "$pkgdir/usr/share/cinnamon/js/ui/polkitAuthenticationAgent.js" ]; then
     cp "$srcdir/polkitAuthenticationAgent.js" "$pkgdir/usr/share/cinnamon/js/ui/polkitAuthenticationAgent.js"
+  fi
+
+  # Replace keyringPrompt.js with GTK3 zenity-based keyring dialog
+  if [ -f "$pkgdir/usr/share/cinnamon/js/ui/keyringPrompt.js" ]; then
+    cp "$srcdir/keyringPrompt.js" "$pkgdir/usr/share/cinnamon/js/ui/keyringPrompt.js"
   fi
 
   # Patch applet.js to use zenity for remove applet confirmation
