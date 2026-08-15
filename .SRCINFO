@@ -15,6 +15,6 @@ pkgbase = dcmfx
 	depends = glibc
 	options = !lto
 	source = dcmfx-0.49.0.tar.gz::https://github.com/dcmfx/dcmfx/archive/v0.49.0.tar.gz
-	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+	sha256sums = cf23404d4cd913260bf088ca911610d6d7997519edd473155375dbe98b5bc664
 
 pkgname = dcmfx
