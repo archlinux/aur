@@ -2,7 +2,7 @@
 
 _pkgname="vault-unseal"
 pkgname="${_pkgname}-bin"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Auto-unseal utility for Hashicorp Vault"
 arch=(
@@ -34,11 +34,11 @@ source_armv7h=(
 source_x86_64=(
   "${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}_linux_amd64"
 )
-sha256sums=('a2141e05140c5640eb6311ca5cc224ebd19a8c3cfde6ff70fc1fafb8462e00aa'
+sha256sums=('1758cb7648e7462b1fa4ca92894f353e1b581c867586817fa9f3a9028151a2ec'
             '22d93750efb7875342ea064b53b257af2ab534d304e3bf613e968edf018799eb')
-sha256sums_aarch64=('cfcfa38be106b9f581f9ca699f744075c3bb81ea7815c7629fb647ceef1e2601')
-sha256sums_armv7h=('e7d79ce76732e5d354d119bb568e11ae8406728f170f4f9bbcad5865d8f39357')
-sha256sums_x86_64=('91519d6fbbfc7b999f2dc885c3375f6209531b294bb8971a3e0942c5a9d5ed72')
+sha256sums_aarch64=('e9c689cf637525aabcb79f6d891f60efbb377038e95a2ffb7b84aa74bb80edae')
+sha256sums_armv7h=('a1a2ac33b57df4ac2cdc1301bbcb33370cbef2b585bb9a5d58b67525ddae93e7')
+sha256sums_x86_64=('1fea835ac69d34aa873dddfc3871099c916698cfe3d409b9bae7797c10808cad')
 
 package() {
   cd "${srcdir}"
