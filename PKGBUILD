@@ -26,6 +26,9 @@ depends=(
 makedepends=(
   'cargo'
   'pkgconf'
+  'meson'
+  'ninja'
+  'curl'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('489d09aa5d12f03593b488e5ff476dffed378fbc7cccbab75d459010a1abc1c2')
@@ -35,6 +38,9 @@ _srcdir="optionTerm-$pkgver"
 prepare() {
   cd "$_srcdir"
   export RUSTUP_TOOLCHAIN=stable
+  # Build the patched VTE (kitty graphics protocol) before cargo fetch;
+  # it installs into vte-dist/ and writes .cargo/config.toml.
+  bash scripts/build-vte.sh
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
