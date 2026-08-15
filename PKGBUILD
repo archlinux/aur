@@ -12,7 +12,7 @@ pkgname=(
 pkgver=5.9.99
 qt6ver="6.4.2-1"
 _patchver=''
-pkgrel=2
+pkgrel=3
 pkgdesc='A complete solution for viewing, creating and editing PDF files.'
 url='https://code-industry.net/free-pdf-editor/'
 _checksum=$(curl 'https://code-industry.net/checksum-information/' | grep -oP '[a-f0-9]{40}(?=.*master-pdf-editor-'"${pkgver}${_patchver}"'-qt6.x86_64.tar.gz)')
@@ -104,7 +104,7 @@ package_masterpdfeditor-qt6() {
 
     # Patch the desktop to use usr/bin launcher
     sed -i \
-        -e 's|^Exec=.*|Exec=/usr/bin/masterpdfeditor5 %f|' \
+        -e 's|^Exec=.*|Exec=/usr/bin/masterpdfeditor %f|' \
         -e 's|^Path=.*|Path=/opt/masterpdfeditor|' \
         -e 's|^Icon=.*|Icon=/opt/masterpdfeditor/masterpdfeditor5.png|' \
         "${_pkgname}${pkgver%%.*}.desktop"
