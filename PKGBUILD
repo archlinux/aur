@@ -1,7 +1,7 @@
 # Maintainer: dim <mlrudasill@gmail.com>
 
 pkgname='caelestia-greeter'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A modern Material 3 Quickshell frontend for greetd matching the Caelestia design'
 arch=('x86_64')
@@ -17,10 +17,10 @@ provides=('caelestia-greeter')
 conflicts=('caelestia-greeter-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         'caelestia-greeter.install')
-sha256sums=('3ae367d9c020b6bfedb5ab653691968f8224da0a6c497ffb27c0a1ae905cfc5f'
-            '06b3a1381ce4595938ca6a353a051aac9b1f4d9e4283e48a701f5cf5db30a437')
+sha256sums=('3073271f3920ee07b9faead977bb044e4993e2dcd644c54dba72386498e68546'
+            '8b309545141845dcefaa9300327d3e4cdba331bbc755c13ad6bff0609171e330')
 
-_builddir='Caelestia-Greeter-1.1.0'
+_builddir='Caelestia-Greeter-1.1.1'
 
 build() {
     cd "${srcdir}/${_builddir}"

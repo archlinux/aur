@@ -1,6 +1,6 @@
 pkgbase = caelestia-greeter
 	pkgdesc = A modern Material 3 Quickshell frontend for greetd matching the Caelestia design
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/dim-ghub/Caelestia-Greeter
 	install = caelestia-greeter.install
@@ -19,9 +19,9 @@ pkgbase = caelestia-greeter
 	optdepends = hyprland: kiosk compositor for the auto-deployed greetd config
 	provides = caelestia-greeter
 	conflicts = caelestia-greeter-git
-	source = caelestia-greeter-1.1.0.tar.gz::https://github.com/dim-ghub/Caelestia-Greeter/archive/refs/tags/v1.1.0.tar.gz
+	source = caelestia-greeter-1.1.1.tar.gz::https://github.com/dim-ghub/Caelestia-Greeter/archive/refs/tags/v1.1.1.tar.gz
 	source = caelestia-greeter.install
-	sha256sums = 3ae367d9c020b6bfedb5ab653691968f8224da0a6c497ffb27c0a1ae905cfc5f
-	sha256sums = 06b3a1381ce4595938ca6a353a051aac9b1f4d9e4283e48a701f5cf5db30a437
+	sha256sums = 3073271f3920ee07b9faead977bb044e4993e2dcd644c54dba72386498e68546
+	sha256sums = 8b309545141845dcefaa9300327d3e4cdba331bbc755c13ad6bff0609171e330
 
 pkgname = caelestia-greeter
