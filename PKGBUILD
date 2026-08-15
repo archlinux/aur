@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.41.0.r878.g94335ab87a
+pkgver=0.41.0.r921.g513d3407d4
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -152,10 +152,10 @@ replaces=('mpv' 'mpv-git' 'mpv-build-git' 'mpv-full-git' 'libmpv.so')
 options=('!emptydirs' 'lto')
 source=('mpv-build::git+https://github.com/mpv-player/mpv-build.git'
         'mpv::git+https://github.com/mpv-player/mpv.git'
-        'ffmpeg::git+https://git.ffmpeg.org/ffmpeg.git'
+        'ffmpeg::git+https://github.com/ffmpeg/ffmpeg.git'
         'libass::git+https://github.com/libass/libass.git'
         'libplacebo::git+https://code.videolan.org/videolan/libplacebo.git'
-        'ffnvcodec::git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git'
+        'ffnvcodec::git+https://github.com/ffmpeg/nv-codec-headers.git'
         'LICENSE'
         )
 sha256sums=('SKIP'
