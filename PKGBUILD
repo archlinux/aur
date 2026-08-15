@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vault-unseal"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Auto-unseal utility for Hashicorp Vault"
 arch=(
@@ -23,7 +23,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('627b10b221dce1efd01a7f858283b67fb9a2b214a36b7b9251a187e41b06e741')
+sha256sums=('2a3c0614f857ea4dc6527ea59ae0a9f8ac773a1d79ef454161746dcfd05728b6')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
