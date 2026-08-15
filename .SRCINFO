@@ -1,0 +1,18 @@
+pkgbase = cmd-git
+	pkgdesc = A faithful reimplementation of the Windows cmd.exe command interpreter for Unix.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ChenPi11/cmd
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = sh
+	provides = cmd
+	conflicts = cmd
+	options = !strip
+	source = git+https://github.com/ChenPi11/cmd.git
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cmd-git
