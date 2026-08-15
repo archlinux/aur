@@ -1,3 +1,4 @@
+# SPDX-License-Identifier: 0BSD
 # Maintainer: a-catgirl <paws@a-catgirl.dev>
 
 # pulls in `pandoc-cli` as a makedepend
