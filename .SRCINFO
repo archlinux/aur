@@ -7,6 +7,7 @@ pkgbase = j2lint
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
+	checkdepends = python-typing_extensions
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
