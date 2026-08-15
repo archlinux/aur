@@ -56,6 +56,7 @@ package() {
    install -vDm 0644 dane-proxy.tmpfiles               "$pkgdir"/usr/lib/tmpfiles.d/dane-proxy.conf
    install -vDm 0644 dane-without-root-client.1        "$pkgdir"/usr/share/man/man1/dane-without-root-client.1
    install -vDm 0644 dane-without-root-proxy.1         "$pkgdir"/usr/share/man/man1/dane-without-root-proxy.1
+   install -vDm 0755 -t "$pkgdir/etc/init.d/"          "dane-proxy"
    install -vDm 0755 -t "$pkgdir/usr/bin/"             "../target/release/$pkgname-proxy"
    install -vDm 0755 -t "$pkgdir/usr/bin/"             "../target/release/$pkgname-client"
    install -vDm 0644 -t "$pkgdir/usr/include/"         ../target/release/usr/include/dane_without_root/dane_without_root.h
