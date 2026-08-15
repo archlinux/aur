@@ -21,7 +21,7 @@ license=('MIT')
 
 depends=('glibc' 'zlib')
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${pkgname%-bin}")
 
 options=(!strip)
 
