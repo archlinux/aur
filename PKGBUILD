@@ -2,8 +2,8 @@
 
 _pkgname="vapoursynth-plugin-zsmooth"
 pkgname="${_pkgname}-bin"
-pkgver=0.19.0
-pkgrel=2
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="Zsmooth plugin for VapourSynth"
 arch=(
   'aarch64'
@@ -23,7 +23,7 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-_pkgsrc="${pkgname}-${pkgver}"
+_pkgsrc="${_pkgname}-${pkgver}"
 source=(
   "${_pkgsrc}-README.md::${url}/raw/refs/tags/${pkgver}/README.md"
   "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/${pkgver}/LICENSE"
@@ -34,16 +34,16 @@ source_aarch64=(
 source_x86_64=(
   "${pkgname}-${pkgver}-x86_64-linux-gnu.zip::${url}/releases/download/${pkgver}/zsmooth-x86_64-linux-gnu.zip"
 )
-sha256sums=('3629754f6d28beebf46605ed93489ab77a498b040270a3c0065e2d9637ddd6ec'
+sha256sums=('d6306977ccff39eabcc6c78875c092c689a37a85b78f77a4872dcdd4fe79064d'
             '4e8049adeaf266a580ff8738729a568465fded9a1bdf25396f234d2b8b07552f')
-sha256sums_aarch64=('d2c98451f969096589c727d06e8f2a779cbc8b30c0f356419a15dad403262cab')
-sha256sums_x86_64=('c9559367f4bdaf8cc3408cc8271e438c516196b5edea4305a69ded3e2d748dae')
+sha256sums_aarch64=('cc4c7a5f5d73b1f34c42a0e9e421c8f12df8b7d416211a8b19fde178a72e7103')
+sha256sums_x86_64=('3b4895f9b7b135fc41880d12010a7e8a298657722ca83282da7cbb9db663bc30')
 
 package() {
   local vapoursynth_plugin_dir="$(python -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")"
 
   cd "${srcdir}"
-	install -vDm755 "lib${_pkgname##*-}.so" -t "${pkgdir}${vapoursynth_plugin_dir}"
+  install -vDm755 "lib${_pkgname##*-}.so" -t "${pkgdir}${vapoursynth_plugin_dir}"
   install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -vDm644 "${_pkgsrc}-LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
