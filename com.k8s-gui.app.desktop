@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Development;
+Comment=Kubernetes GUI Client
+Exec=/usr/bin/rubick
+StartupWMClass=k8s-gui
+Icon=com.k8s-gui.app
+Name=Rubick
+Terminal=false
+Type=Application
+
