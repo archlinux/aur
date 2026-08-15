@@ -1,7 +1,7 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=gimoji
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='Easily add emojis to your git commit messages 🎉'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(glibc libgcc)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-b2sums=('e7f64f05edad6b6cb18d389c36666b79bfc23b53c9d09fe8b73e09a9a9cea3ee3f6295d15e4373bbc3b91c675ba427948ac2ecb730151a0a7e7b17450156b42f')
+b2sums=('a908a6a61a95514d2cb9ddc4b9861a950d46c1684a405e17e974d949416ef8fdc0b57d1a1b3bdb6eca287c84b800917a8154a63dfe88f22173ecc1e623db09fd')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
