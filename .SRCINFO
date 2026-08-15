@@ -1,6 +1,6 @@
 pkgbase = kefctl
 	pkgdesc = TUI controller for KEF W2 speakers (LSX II, LS50 Wireless II, LS60 Wireless)
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/douglas/kefctl
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kefctl
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = kefctl-0.6.0.tar.gz::https://github.com/douglas/kefctl/archive/v0.6.0.tar.gz
-	sha256sums = 863df0548b9057e2211a643356d0f8494204ecd2ed5ba1630a8f66fbfc3bb465
+	source = kefctl-0.7.0.tar.gz::https://github.com/douglas/kefctl/archive/v0.7.0.tar.gz
+	sha256sums = 147a1f5b082154eb386efd29b6ac23e7c0829c0aea7e59e09df0b431efb99d73
 
 pkgname = kefctl
