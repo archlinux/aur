@@ -1,9 +1,8 @@
 pkgbase = tensaku-bin
 	pkgdesc = Modern screenshot annotation tool for Wayland (prebuilt binary)
-	pkgver = 0.26.6
+	pkgver = 0.26.7
 	pkgrel = 1
 	url = https://github.com/jondkinney/tensaku
-	install = tensaku.install
 	arch = x86_64
 	arch = aarch64
 	license = MPL-2.0
@@ -12,12 +11,12 @@ pkgbase = tensaku-bin
 	depends = libadwaita
 	depends = libepoxy
 	depends = fontconfig
-	provides = tensaku=0.26.6
+	provides = tensaku=0.26.7
 	conflicts = tensaku
 	conflicts = tensaku-git
-	source_x86_64 = tensaku-v0.26.6-x86_64.tar.gz::https://github.com/jondkinney/tensaku/releases/download/v0.26.6/tensaku-v0.26.6-x86_64.tar.gz
-	sha256sums_x86_64 = 37e519405e808e7481450fd93f937d83813eb4e5e1a9e21ebf8238386810ebfe
-	source_aarch64 = tensaku-v0.26.6-aarch64.tar.gz::https://github.com/jondkinney/tensaku/releases/download/v0.26.6/tensaku-v0.26.6-aarch64.tar.gz
-	sha256sums_aarch64 = 8a35b447e4bfbfe9f937cd6cb4285d041dfdd479f9eb0d99edbf647e57b3c50a
+	source_x86_64 = tensaku-v0.26.7-x86_64.tar.gz::https://github.com/jondkinney/tensaku/releases/download/v0.26.7/tensaku-v0.26.7-x86_64.tar.gz
+	sha256sums_x86_64 = 14d56e435d90b433371f6462332c1eec0ac4cd115fc81a022a6bed861d10c2aa
+	source_aarch64 = tensaku-v0.26.7-aarch64.tar.gz::https://github.com/jondkinney/tensaku/releases/download/v0.26.7/tensaku-v0.26.7-aarch64.tar.gz
+	sha256sums_aarch64 = 66b27925969bae79de8ad3ba1381c1d5ec16e04dc718dd99693036589bc96dcb
 
 pkgname = tensaku-bin

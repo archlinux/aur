@@ -10,7 +10,7 @@
 # regenerates .SRCINFO, and pushes.
 pkgname=tensaku-bin
 _pkgname=tensaku
-pkgver=0.26.6
+pkgver=0.26.7
 pkgrel=1
 pkgdesc='Modern screenshot annotation tool for Wayland (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -19,12 +19,11 @@ license=('MPL-2.0')
 depends=('gtk4' 'gtk4-layer-shell' 'libadwaita' 'libepoxy' 'fontconfig')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname" "$_pkgname-git")
-install=tensaku.install
 source_x86_64=("$_pkgname-v$pkgver-x86_64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-x86_64.tar.gz")
 source_aarch64=("$_pkgname-v$pkgver-aarch64.tar.gz::https://github.com/jondkinney/$_pkgname/releases/download/v$pkgver/$_pkgname-v$pkgver-aarch64.tar.gz")
 # Placeholders — CI's updpkgsums overwrites with real per-arch hashes per release.
-sha256sums_x86_64=('37e519405e808e7481450fd93f937d83813eb4e5e1a9e21ebf8238386810ebfe')
-sha256sums_aarch64=('8a35b447e4bfbfe9f937cd6cb4285d041dfdd479f9eb0d99edbf647e57b3c50a')
+sha256sums_x86_64=('14d56e435d90b433371f6462332c1eec0ac4cd115fc81a022a6bed861d10c2aa')
+sha256sums_aarch64=('66b27925969bae79de8ad3ba1381c1d5ec16e04dc718dd99693036589bc96dcb')
 
 package() {
   # `make package` tarballs the install-staged tree, so we just need
