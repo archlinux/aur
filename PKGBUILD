@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=timeit
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="timeit, a precise command timing utility, builds from source"
 arch=('x86_64')
