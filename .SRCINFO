@@ -1,0 +1,17 @@
+pkgbase = hyprland-revolver-git
+	pkgdesc = Spinnable 8-chamber revolver desktop widget for illogical-impulse/Quickshell, loaded from your Steam library
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/minerofthesoal/hyprland-revolver
+	arch = any
+	license = MIT
+	depends = python
+	depends = bash
+	optdepends = quickshell: required to actually run the widget
+	optdepends = quickshell-git: alternative build of quickshell, either works
+	provides = hyprland-revolver
+	conflicts = hyprland-revolver
+	source = hyprland-revolver::git+https://github.com/minerofthesoal/hyprland-revolver.git
+	sha256sums = SKIP
+
+pkgname = hyprland-revolver-git
