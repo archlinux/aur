@@ -1,14 +1,11 @@
-# Maintainer: anon
+# Maintainer: maria-rcks <maria at kuuro dot net>
 
 pkgname=t3code-nightly-bin
-pkgver=0.0.34_nightly.20260814.1095
+pkgver=0.0.34_nightly.20260815.1097
 pkgrel=1
-pkgdesc='T3 Code nightly desktop app packaged from the upstream AppImage'
+pkgdesc='Nightly desktop control surface for local coding agents'
 arch=('x86_64')
-_upstream_tag='v0.0.34-nightly.20260814.1095'
-_upstream_version='0.0.34-nightly.20260814.1095'
-_appimage_name="T3-Code-${_upstream_version}-x86_64.AppImage"
-url='https://t3.codes'
+url='https://github.com/pingdotgg/t3code'
 license=('MIT')
 depends=(
   'alsa-lib'
@@ -16,13 +13,15 @@ depends=(
   'cairo'
   'dbus'
   'expat'
-  'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
+  'glibc'
   'gtk3'
   'hicolor-icon-theme'
   'libcups'
   'libdrm'
+  'libgcc'
+  'libstdc++'
   'libx11'
   'libxcb'
   'libxcomposite'
@@ -39,87 +38,65 @@ depends=(
   'xdg-utils'
   'zlib'
 )
-optdepends=(
-  'openai-codex: use the system-installed Codex CLI'
-)
-provides=("t3code-nightly=${pkgver}")
-conflicts=('t3code-nightly')
-options=('!debug' '!emptydirs' '!strip')
+optdepends=('openai-codex: use the system-installed Codex CLI')
+provides=("t3code-nightly=$pkgver")
+conflicts=('t3code-nightly' 't3code')
+options=('!debug' '!strip')
+
+_upstream_version="${pkgver/_nightly./-nightly.}"
+_appimage="T3-Code-${_upstream_version}-x86_64.AppImage"
 source=(
-  "${_appimage_name}::https://github.com/pingdotgg/t3code/releases/download/${_upstream_tag}/${_appimage_name}"
-  't3code-icon.png'
-  'LICENSE'
+  "$_appimage::https://github.com/pingdotgg/t3code/releases/download/v${_upstream_version}/$_appimage"
+  "${pkgname}-${pkgver}.png::https://raw.githubusercontent.com/pingdotgg/t3code/v${_upstream_version}/assets/nightly/nightly-universal-1024.png"
+  "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v${_upstream_version}/LICENSE"
 )
 sha256sums=(
-  'c4dea5bba9ed0b51b2f60f2d4a4867e61d62b57c50ea66f2792a73112e054566'
-  '52c86008b11f90f36b8a8f4cc43b1352d5fda9084c6e5691b806f5bca1a968b6'
-  '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43'
+  'c7021b4abba8b6946506cd1055291ebdb43afb79d71af3c91dbbfc30b121ebf1' # AppImage
+  '7e59b6394016ef83ed1e946847769e01bf36d4062c5c5af2577fd3e228285fd9' # icon
+  '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43' # upstream license
 )
 
 prepare() {
-  chmod +x "$srcdir/$_appimage_name"
+  chmod +x "$srcdir/$_appimage"
   rm -rf "$srcdir/squashfs-root"
-  "$srcdir/$_appimage_name" --appimage-extract >/dev/null
+  "$srcdir/$_appimage" --appimage-extract >/dev/null
 
-  if [[ ! -d "$srcdir/squashfs-root" ]]; then
-    echo "Failed to extract AppImage payload." >&2
+  if [[ ! -x "$srcdir/squashfs-root/AppRun" ||
+        ! -f "$srcdir/squashfs-root/chrome-sandbox" ]]; then
+    echo 'The AppImage payload is missing its launcher or Chromium sandbox.' >&2
     return 1
   fi
 }
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
-  cp -a "$srcdir/squashfs-root/." "$pkgdir/opt/$pkgname/"
+  cp -a --no-preserve=ownership "$srcdir/squashfs-root/." "$pkgdir/opt/$pkgname/"
+  chmod -R u=rwX,go=rX "$pkgdir/opt/$pkgname"
+  chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
 
-  # Preserve upstream execute bits while ensuring the payload stays readable.
-  chmod -R a+rX "$pkgdir/opt/$pkgname"
-
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/t3code-nightly" << 'EOF'
-#!/usr/bin/env bash
-set -euo pipefail
-
-appdir='/opt/t3code-nightly-bin'
-export APPDIR="$appdir"
-
-if [[ -z "${CODEX_CLI_PATH-}" ]] && command -v codex >/dev/null 2>&1; then
-  export CODEX_CLI_PATH="$(command -v codex)"
-fi
-
-export PATH="$appdir:$appdir/usr/bin:$appdir/usr/sbin:$PATH"
-export XDG_DATA_DIRS="$appdir/usr/share${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}"
-export GSETTINGS_SCHEMA_DIR="$appdir/usr/share/glib-2.0/schemas${GSETTINGS_SCHEMA_DIR:+:$GSETTINGS_SCHEMA_DIR}"
-
-extra_flags=()
-if [[ -n "${WAYLAND_DISPLAY-}" || "${XDG_SESSION_TYPE-}" == "wayland" ]]; then
-  extra_flags+=(--enable-features=UseOzonePlatform --ozone-platform=wayland --ozone-platform-hint=wayland)
-else
-  extra_flags+=(--ozone-platform-hint=auto)
-fi
-
-exec "$appdir/t3code" --no-sandbox "${extra_flags[@]}" "$@"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/t3code-nightly" <<'EOF'
+#!/bin/sh
+exec /opt/t3code-nightly-bin/AppRun "$@"
 EOF
-
   ln -s t3code-nightly "$pkgdir/usr/bin/t3-code-nightly-desktop"
 
-  install -Dm644 "$srcdir/t3code-icon.png" \
+  install -Dm644 "$srcdir/${pkgname}-${pkgver}.png" \
     "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/t3code-nightly.png"
-  ln -s t3code-nightly.png \
-    "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/t3-code-nightly-desktop.png"
-  install -Dm644 "$srcdir/t3code-icon.png" \
-    "$pkgdir/usr/share/pixmaps/t3code-nightly.png"
-  ln -s t3code-nightly.png "$pkgdir/usr/share/pixmaps/t3-code-nightly-desktop.png"
 
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/t3code-nightly.desktop" << 'EOF'
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/t3code.desktop" <<'EOF'
 [Desktop Entry]
 Name=T3 Code Nightly
-Comment=T3 Code nightly desktop build
+Comment=Nightly desktop control surface for local coding agents
 Exec=t3code-nightly %U
+TryExec=t3code-nightly
 Terminal=false
 Type=Application
 Icon=t3code-nightly
 StartupWMClass=t3code
 Categories=Development;
+MimeType=x-scheme-handler/t3code;
 EOF
 
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/${pkgname}-${pkgver}-LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
