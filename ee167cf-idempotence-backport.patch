@@ -1,0 +1,141 @@
+--- a/beartype/_util/cache/utilcachecall.py
++++ b/beartype/_util/cache/utilcachecall.py
+@@ -31,6 +31,9 @@
+ from functools import wraps
+ 
+ # ....................{ DECORATORS ~ callable              }....................
++_CALLABLE_CACHED_CACHE_CLEARERS = []
++'''Callables clearing all caches created by :func:`callable_cached`.'''
++
+ def callable_cached(func: CallableT) -> CallableT:
+     '''
+     **Memoize** (i.e., efficiently re-raise all exceptions previously raised by
+@@ -261,6 +264,15 @@
+         # Return this value.
+         return return_value
+ 
++    # Expose a narrow cache clearer for callers that must reset process-global
++    # memoized state, notably the hot-reload and test infrastructure.
++    def cache_clear() -> None:
++        args_flat_to_return_value.clear()
++        args_flat_to_exception.clear()
++
++    _callable_cached.cache_clear = cache_clear  # type: ignore[attr-defined]
++    _CALLABLE_CACHED_CACHE_CLEARERS.append(cache_clear)
++
+     # ....................{ RETURN                         }....................
+     # Return this wrapper.
+     return _callable_cached  # type: ignore[return-value]
+--- a/beartype/_util/cache/utilcacheclear.py
++++ b/beartype/_util/cache/utilcacheclear.py
+@@ -52,9 +52,13 @@
+         _forwardref_args_to_forwardref)
+     from beartype._check.forward.reference.fwdrefmeta import (
+         _forwardref_to_referent)
++    from beartype._util.cache.utilcachecall import (
++        _CALLABLE_CACHED_CACHE_CLEARERS)
+     from beartype._util.cache.utilcacheobjattr import clear_object_attr_caches
+ 
+     # Clear all relevant caches used throughout this subpackage.
++    for cache_clear in _CALLABLE_CACHED_CACHE_CLEARERS:
++        cache_clear()
+     clear_object_attr_caches()
+     _HINT_KEY_TO_WRAPPER.clear()
+     _forwardref_args_to_forwardref.clear()
+--- a/beartype_test/a00_unit/a60_check/a90_door/test_checkdoor.py
++++ b/beartype_test/a00_unit/a60_check/a90_door/test_checkdoor.py
+@@ -72,6 +72,7 @@
+     # ..................{ IMPORTS                            }..................
+     # Defer test-specific imports.
+     from beartype.door import is_bearable
++    from beartype._util.cache.utilcacheclear import clear_caches
+     from pytest import warns
+     from warnings import simplefilter
+ 
+@@ -86,44 +87,49 @@
+     simplefilter('always')
+ 
+     # ..................{ PASS                               }..................
+-    # For each predefined type hint and associated metadata...
+-    for hint_meta in hints_meta:
+-        # If it is *NOT* the case that...
+-        if not (
+-            # This hint is currently supported *AND*...
+-            hint_meta.is_supported and
+-            # This is type-checkable against at least one object.
+-            hint_meta.piths_meta
+-        # Then this hint is ignorable. Silently continue to the next.
+-        ):
+-            continue
+-        # Else, this hint is currently supported.
+-
+-        # Type hint to be type-checked.
+-        hint = hint_meta.hint
+-
+-        # Beartype dataclass configuring this type-check.
+-        conf = hint_meta.conf
+-
+-        # Object to be type-checked against this hint, arbitrarily selected from
+-        # the iterable of all such objects supplied with this hint. By the above
+-        # validation, this is guaranteed to be non-empty.
+-        pith = hint_meta.piths_meta[0]
+-
+-        # If this tester is expected to emit a warning for this hint...
+-        if hint_meta.warning_type is not None:
+-            # print(f'hint_meta: {hint_meta}\n')
+-
+-            # Call this tester under a context manager asserting this tester to
+-            # emit the expected warning.
+-            with warns(hint_meta.warning_type):
++    # Repeat this test to verify that clearing caches makes it independent of
++    # both prior tests and prior invocations in this Python process.
++    for _ in range(2):
++        clear_caches()
++
++        # For each predefined type hint and associated metadata...
++        for hint_meta in hints_meta:
++            # If it is *NOT* the case that...
++            if not (
++                # This hint is currently supported *AND*...
++                hint_meta.is_supported and
++                # This is type-checkable against at least one object.
++                hint_meta.piths_meta
++            # Then this hint is ignorable. Silently continue to the next.
++            ):
++                continue
++            # Else, this hint is currently supported.
++
++            # Type hint to be type-checked.
++            hint = hint_meta.hint
++
++            # Beartype dataclass configuring this type-check.
++            conf = hint_meta.conf
++
++            # Object to be type-checked against this hint, arbitrarily selected from
++            # the iterable of all such objects supplied with this hint. By the above
++            # validation, this is guaranteed to be non-empty.
++            pith = hint_meta.piths_meta[0]
++
++            # If this tester is expected to emit a warning for this hint...
++            if hint_meta.warning_type is not None:
++                # print(f'hint_meta: {hint_meta}\n')
++
++                # Call this tester under a context manager asserting this tester to
++                # emit the expected warning.
++                with warns(hint_meta.warning_type):
++                    is_bearable(pith, hint, conf=conf)
++                # print(f'Deprecated type hint {repr(hint)} warned!')
++            # Else, this tester is expected to emit *NO* warning for this hint. In
++            # this case, call this tester outside of such a context manager.
++            else:
+                 is_bearable(pith, hint, conf=conf)
+-            # print(f'Deprecated type hint {repr(hint)} warned!')
+-        # Else, this tester is expected to emit *NO* warning for this hint. In
+-        # this case, call this tester outside of such a context manager.
+-        else:
+-            is_bearable(pith, hint, conf=conf)
+-        # is_bearable(pith, hint, conf=conf)
++            # is_bearable(pith, hint, conf=conf)
+ 
+ # ....................{ TESTS ~ raisers                    }....................
+ # Prevent pytest from capturing and displaying all expected non-fatal

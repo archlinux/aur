@@ -2,4 +2,7 @@
 !.gitignore
 !.nvchecker.toml
 !.SRCINFO
+!LICENSE
 !PKGBUILD
+!numpy-2.5-backport.patch
+!ee167cf-idempotence-backport.patch

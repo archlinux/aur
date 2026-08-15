@@ -1,0 +1,238 @@
+--- a/beartype/_util/api/external/utilnumpy.py
++++ b/beartype/_util/api/external/utilnumpy.py
+@@ -26,6 +26,40 @@
+ )
+ from beartype._util.cache.utilcachecall import callable_cached
+ from string import digits
++
++# ....................{ TESTERS                            }....................
++def is_numpy_typing_ndarray(hint: object) -> bool:
++    '''
++    :data:`True` only if the passed object is the NumPy-specific
++    :obj:`numpy.typing.NDArray` type hint factory or a subscription of that
++    factory produced by NumPy >= 2.5.0.
++
++    NumPy >= 2.5.0 reimplemented this factory as a PEP 695-compliant type alias.
++    This tester intentionally avoids importing NumPy, which is an optional and
++    comparatively expensive dependency.
++    '''
++
++    hint_alias = hint
++    hint_alias_type = hint_alias.__class__
++    if not (
++        hint_alias_type.__qualname__ == 'TypeAliasType' and
++        hint_alias_type.__module__ in ('typing', 'typing_extensions')
++    ):
++        hint_alias = getattr(hint, '__origin__', None)
++
++        if hint_alias is None:
++            return False
++
++        hint_alias_type = hint_alias.__class__
++
++    return (
++        hint_alias_type.__qualname__ == 'TypeAliasType' and
++        hint_alias_type.__module__ in ('typing', 'typing_extensions') and
++        getattr(hint_alias, '__name__', None) == 'NDArray' and
++        getattr(hint_alias, '__module__', '').startswith('numpy.') and
++        repr(getattr(hint_alias, '__value__', None)).startswith(
++            'numpy.ndarray[')
++    )
+ 
+ # ....................{ GETTERS                            }....................
+ #FIXME: File an upstream NumPy issue politely requesting they publicize either:
+--- a/beartype/_util/hint/pep/utilpepsign.py
++++ b/beartype/_util/hint/pep/utilpepsign.py
+@@ -119,6 +119,7 @@
+     HINT_MODULE_NAME_TO_TYPE_BASENAME_TO_SIGN,
+ )
+ from beartype._data.hint.sign.datahintsigns import (
++    HintSignNumpyArray,
+     HintSignPep484585GenericSubbed,
+     HintSignPep484585GenericUnsubbed,
+     HintSignPep585BuiltinSubscriptedUnknown,
+@@ -129,6 +130,8 @@
+     HintSignUnpack,
+ )
+ from beartype._data.kind.datakindmap import FROZENDICT_EMPTY
++from beartype._util.api.external.utilnumpy import (
++    is_numpy_typing_ndarray)
+ from beartype._util.cache.utilcachecall import callable_cached
+ from beartype._util.hint.pep.proposal.pep484585.generic.pep484585gentest import (
+     is_hint_pep484585_generic_subbed,
+@@ -442,6 +445,11 @@
+ 
+     # Class of this hint.
+     hint_type = hint.__class__
++
++    # NumPy >= 2.5.0 exposes NDArray as a PEP 695 type alias. Preserve the
++    # NumPy-specific sign expected by this beartype release.
++    if is_numpy_typing_ndarray(hint):
++        return HintSignNumpyArray
+ 
+     #FIXME: [SPEED] Global all dict.get() bound methods called below, please.
+     #FIXME: [QA] Is this actually the case? Do non-physical classes dynamically
+--- a/beartype/_util/hint/pep/proposal/pep585.py
++++ b/beartype/_util/hint/pep/proposal/pep585.py
+@@ -24,6 +24,8 @@
+     TupleTypeVars,
+     TypeException,
+ )
++from beartype._util.api.external.utilnumpy import (
++    is_numpy_typing_ndarray)
+ from beartype._util.cache.utilcachecall import callable_cached
+ from beartype._util.kind.maplike.utilmapset import update_mapping_keys
+ from beartype._util.py.utilpyversion import IS_PYTHON_AT_LEAST_3_11
+@@ -119,6 +121,11 @@
+     bool
+         :data:`True` only if this object is a :pep:`585`-compliant type hint.
+     '''
++
++    # NumPy >= 2.5.0 exposes NDArray through TypeAliasType rather than the
++    # GenericAlias representation historically handled below.
++    if is_numpy_typing_ndarray(hint):
++        return True
+ 
+     # Avoid circular import dependencies.
+     from beartype._util.hint.pep.proposal.pep484585.generic.pep484585gentest import (
+--- a/beartype/_util/hint/pep/utilpeptest.py
++++ b/beartype/_util/hint/pep/utilpeptest.py
+@@ -29,6 +29,8 @@
+     HINT_SIGNS_TYPE_MIMIC,
+ )
+ from beartype._data.api.standard.datatyping import TYPING_MODULE_NAMES
++from beartype._util.api.external.utilnumpy import (
++    is_numpy_typing_ndarray)
+ from beartype._util.cache.utilcachecall import callable_cached
+ from beartype._util.module.utilmodget import get_object_module_name_or_none
+ from beartype._util.utilobject import get_object_type_unless_type
+@@ -574,4 +576,9 @@
+     #   exceptions with reliable messages across *ALL* Python versions.
+     #
+     # In short, there is no general-purpose clever solution. *sigh*
++    # NumPy >= 2.5.0 implements NDArray with a class defined by typing, but
++    # NDArray itself remains a third-party NumPy hint.
++    if is_numpy_typing_ndarray(hint):
++        return False
++
+     return hint_type.__module__ in TYPING_MODULE_NAMES
+--- a/beartype/_check/convert/_reduce/_nonpep/api/redapinumpy.py
++++ b/beartype/_check/convert/_reduce/_nonpep/api/redapinumpy.py
+@@ -29,6 +29,7 @@
+ from beartype._data.typing.datatypingport import Hint
+ from beartype._util.api.external.utilnumpy import (
+     get_numpy_dtype_type_abcs,
++    is_numpy_typing_ndarray,
+     make_numpy_dtype,
+ )
+ from beartype._util.cache.utilcachecall import callable_cached
+@@ -143,36 +144,32 @@
+     # Objects subscripting this hint if any *OR* the empty tuple otherwise.
+     hint_args = get_hint_pep_args(hint)
+ 
+-    # If this hint was *NOT* subscripted by exactly two arguments, this hint is
+-    # malformed as a typed NumPy array. In this case, raise an exception.
+-    if len(hint_args) != 2:
+-        raise BeartypeDecorHintNonpepNumpyException(
+-            f'{exception_prefix}typed NumPy array {repr(hint)} '
+-            f'not subscripted by exactly two arguments.'
+-        )
+-    # Else, this hint was subscripted by exactly two arguments.
+-
+-    # Data type subhint subscripting this hint. Yes, the "numpy.typing.NDArray"
+-    # type hint bizarrely encapsulates its data type argument into a private
+-    # "numpy._DTypeMeta" type subhint. Why? We have absolutely no idea, but we
+-    # have no say in the matter. NumPy, you're on notice for stupidity.
+-    hint_dtype_subhint = hint_args[1]
+-
+-    # Objects subscripting this subhint if any *OR* the empty tuple otherwise.
+-    hint_dtype_subhint_args = get_hint_pep_args(hint_dtype_subhint)
+-
+-    # If this hint was *NOT* subscripted by exactly one argument, this subhint
+-    # is malformed as a data type subhint. In this case, raise an exception.
+-    if len(hint_dtype_subhint_args) != 1:
+-        raise BeartypeDecorHintNonpepNumpyException(
+-            f'{exception_prefix}typed NumPy array {repr(hint)} '
+-            f'data type subhint {repr(hint_dtype_subhint)} '
+-            f'not subscripted by exactly one argument.'
+-        )
+-    # Else, this subhint was subscripted by exactly one argument.
+-
+-    # Data type-like object subscripting this subhint. Look, just do it.
+-    hint_dtype_like = hint_dtype_subhint_args[0]
++    # NumPy >= 2.5.0 subscriptions directly contain one dtype-like argument.
++    if is_numpy_typing_ndarray(hint) and getattr(
++        hint, '__origin__', None) is NDArray:
++        if len(hint_args) != 1:
++            raise BeartypeDecorHintNonpepNumpyException(
++                f'{exception_prefix}typed NumPy array {repr(hint)} '
++                f'not subscripted by exactly one argument.')
++
++        hint_dtype_like = hint_args[0]
++    # NumPy < 2.5.0 stores shape and a nested dtype argument.
++    else:
++        if len(hint_args) != 2:
++            raise BeartypeDecorHintNonpepNumpyException(
++                f'{exception_prefix}typed NumPy array {repr(hint)} '
++                f'not subscripted by exactly two arguments.')
++
++        hint_dtype_subhint = hint_args[1]
++        hint_dtype_subhint_args = get_hint_pep_args(hint_dtype_subhint)
++
++        if len(hint_dtype_subhint_args) != 1:
++            raise BeartypeDecorHintNonpepNumpyException(
++                f'{exception_prefix}typed NumPy array {repr(hint)} '
++                f'data type subhint {repr(hint_dtype_subhint)} '
++                f'not subscripted by exactly one argument.')
++
++        hint_dtype_like = hint_dtype_subhint_args[0]
+ 
+     # If this dtype-like is "typing.Any", this hint permissively matches *ALL*
+     # NumPy arrays rather than strictly matching *ONLY* appropriately typed
+--- a/beartype_test/a00_unit/data/hint/pep/api/_data_hintmodnumpy.py
++++ b/beartype_test/a00_unit/data/hint/pep/api/_data_hintmodnumpy.py
+@@ -113,7 +113,7 @@
+                     pith='Ine Gerrymander‐consigned electorate sangu‐',
+                     # Match that the exception message raised for this object
+                     # embeds the representation of the expected class.
+-                    exception_str_match_regexes=(r'\bnumpy\.ndarray\b',),
++                    exception_str_match_regexes=(r'\b(?:numpy\.ndarray|NDArray)\b',),
+                 ),
+             ),
+         ),
+@@ -140,7 +140,7 @@
+                     ),
+                     # Match that the exception message raised for this object
+                     # embeds the representation of the expected class.
+-                    exception_str_match_regexes=(r'\bnumpy\.ndarray\b',),
++                    exception_str_match_regexes=(r'\b(?:numpy\.ndarray|NDArray)\b',),
+                 ),
+             ),
+         ),
+@@ -164,7 +164,7 @@
+                     pith='Aggrandizing strifes with‐in',
+                     # Match that the exception message raised for this object
+                     # embeds the representation of the expected class.
+-                    exception_str_match_regexes=(r'\bnumpy\.ndarray\b',),
++                    exception_str_match_regexes=(r'\b(?:numpy\.ndarray|NDArray)\b',),
+                 ),
+                 # NumPy array containing only 64-bit integers.
+                 HintPithUnsatisfiedMetadata(
+@@ -193,7 +193,7 @@
+                     pith='Silver, ore, and almost dazedly aggro‐',
+                     # Match that the exception message raised for this object
+                     # embeds the representation of the expected class.
+-                    exception_str_match_regexes=(r'\bnumpy\.ndarray\b',),
++                    exception_str_match_regexes=(r'\b(?:numpy\.ndarray|NDArray)\b',),
+                 ),
+                 # NumPy array containing only 64-bit integers.
+                 HintPithUnsatisfiedMetadata(
+@@ -253,7 +253,7 @@
+                     ),
+                     # Match that the exception message raised for this object
+                     # embeds the representation of the expected class.
+-                    exception_str_match_regexes=(r'\bnumpy\.ndarray\b',),
++                    exception_str_match_regexes=(r'\b(?:numpy\.ndarray|NDArray)\b',),
+                 ),
+                 # 2-tuple of NumPy arrays containing only integers.
+                 HintPithUnsatisfiedMetadata(
