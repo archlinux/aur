@@ -2,25 +2,27 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=2.0.3
+pkgver=2.0.5
 _electron=electron41
 pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('x86_64')
 url="https://cherry-ai.com/"
 _ghurl="https://github.com/CherryHQ/cherry-studio"
+_arch_patch='6322998a'
 license=('MIT')
 depends=(
     "${_electron}"
+    bun
     imagemagick
-    ripgrep
     libevdev
+    mise
+    ripgrep
+    uv
 )
 makedepends=(
     'gendesk'
     'npm'
-    'jq'
-    'moreutils'
     'python'
     'python-setuptools'
     'pnpm'
@@ -28,13 +30,16 @@ makedepends=(
 )
 optdepends=(
     'ollama: use local LLM server'
+    fd
 )
 source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
+    "${pkgname}-${_arch_patch}.patch::https://github.com/sukanka/cherry-studio/commit/${_arch_patch}.patch"
 )
-sha256sums=('f9571d7b165d31b277a891c0c170bc22f86f12349f40ded5c855cb5efa7f1604'
-            '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463')
+sha256sums=('436c6125c4542df263dfa980d7284da933e8a3504973044267782204773b9fcf'
+            '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463'
+            'e2e5ae4218e1ae57a142e81a2512d0e65e23dccf47dff076bde41fc33aa93fa4')
 
 prepare() {
     sed -e "s|__ELECTRON__|${_electron}|g" -i "${srcdir}/${pkgname}.sh"
@@ -43,41 +48,30 @@ prepare() {
         --categories="Utility" --name="${_pkgname}" --exec="${pkgname} %U" \
         --custom="StartupWMClass=${_pkgname/ /}"
     cd "${srcdir}/${pkgname}-${pkgver}"
-    local electronDist="/usr/lib/${_electron}"
-    local electronVersion="$(<$electronDist/version)"
-    # electron@36.7.1 not found on npm,
-    # electronVersion="${electronVersion%.*}.0"
-    jq ".devDependencies.electron = \"$electronVersion\"" package.json |
-        jq ".build.electronDist = \"$electronDist\"" |
-        jq ".build.electronVersion = \"$electronVersion\"" |
-        sponge package.json
-
-    # jq '.resolutions."node-abi"="^4.12.0"' package.json | sponge package.json
-    jq 'del(.scripts.prepare)' package.json | sponge package.json
-
-    #  no auto update
-    sed -i package.json -e "s|electron-builder --dir|& --p never|g"
-
+    patch -Np1 -i "${srcdir}/${pkgname}-${_arch_patch}.patch"
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    local electronDist="/usr/lib/${_electron}"
+    local electronVersion="$(<"${electronDist}/version")"
     export HOME=${srcdir}
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export TMPDIR=${srcdir}
     export npm_config_nodedir=/usr
     export SHARP_IGNORE_GLOBAL_LIBVIPS=1
-    ELECTRON_SKIP_BINARY_DOWNLOAD=1 pnpm install
+    pnpm install
     export NODE_ENV=production
-    pnpm run build:unpack
+    pnpm run build
+    pnpm exec electron-builder --dir --publish never \
+        --config.electronDist="${electronDist}" \
+        --config.electronVersion="${electronVersion}"
 }
 _clean() {
     cd ${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked/node_modules
-    rm -rf "@libsql/linux-x64-musl"
-    rm -rf "@anthropic-ai/claude-agent-sdk/vendor/ripgrep"/{*-darwin,*-win32,arm64-linux}
-    find . -type d \( -name '*darwin*' -o -name '*musl*' \) -print -exec rm -r {} +
+    find . -type d \( -name '*darwin*' -o -name '*musl*' -o -name '*win32*' \) -print -prune -exec rm -r -- {} +
 
     if [[ $CARCH != "arm64" ]]; then
-        find . -type d \( -name '*arm64*' \) -print -exec rm -r {} +
+        find . -type d \( -name '*arm64*' \) -print -prune -exec rm -r -- {} +
     fi
 }
 package() {
@@ -88,6 +82,10 @@ package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     install -Dm644 "dist/linux-unpacked"/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
     cp -Pr --no-preserve=ownership "dist/linux-unpacked"/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    cp -Pr --no-preserve=ownership \
+        "dist/linux-unpacked"/resources/migrations \
+        "dist/linux-unpacked"/resources/provider-registry \
+        "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 "build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
