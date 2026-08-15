@@ -1,0 +1,45 @@
+pkgbase = mpv-omniphony-fel
+	pkgdesc = mpv (master snapshot) with the orender spatial audio decoder and Dolby Vision P7 FEL playback
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/mgth/mpv-omniphony
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = python
+	makedepends = git
+	depends = orender>=0.4.2
+	depends = ffmpeg>=2:9.0
+	depends = libass
+	depends = lua
+	depends = libx11
+	depends = mesa
+	depends = shaderc
+	depends = lcms2
+	depends = libdovi
+	depends = vulkan-icd-loader
+	depends = xxhash
+	optdepends = harletty-bridge: decode compressed/object-audio formats via the orender bridge plugin
+	provides = mpv=1:0.41.0
+	provides = libmpv.so=2-64
+	conflicts = mpv
+	conflicts = mpv-omniphony
+	source = mpv-omniphony-v0.4.3.tar.gz::https://github.com/mgth/mpv-omniphony/archive/refs/tags/v0.4.3.tar.gz
+	source = mpv-f4d13e1c2c91f3a56e589aef9cb44cbc02e26e47.tar.gz::https://github.com/mpv-player/mpv/archive/f4d13e1c2c91f3a56e589aef9cb44cbc02e26e47.tar.gz
+	source = libplacebo::git+https://code.videolan.org/videolan/libplacebo.git#commit=a7a18af88ff0a17c04840dcb3246047bb6b46df3
+	source = glad::git+https://github.com/Dav1dde/glad
+	source = jinja::git+https://github.com/pallets/jinja
+	source = markupsafe::git+https://github.com/pallets/markupsafe
+	source = Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers
+	source = fast_float::git+https://github.com/fastfloat/fast_float.git
+	sha256sums = 92f71a3d4bdf6ae9d6b29164333e32c4fc2f1b91593983c2e74bdaecca7d7eaf
+	sha256sums = ce0635d2f31740d6a116c5bca7f6798f09cc6a95f03752e845ce7da02070aff3
+	sha256sums = b7e37bb50668ba0d554a26db5ad21013c9dc3f9e84a2f8dd87a25114c73afdf8
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mpv-omniphony-fel
