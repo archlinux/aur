@@ -5,7 +5,7 @@
 # build time, so there is no pinned version for Renovate to bump.
 pkgname=kprompt-dash-git
 _pkgname=kprompt-dash
-pkgver=0.1.0.r0.g96f5e58
+pkgver=0.1.0.r1.gdcfd3ea
 pkgrel=1
 pkgdesc='Localhost read-only Kubernetes inventory UI for kprompt'
 arch=('x86_64' 'aarch64')

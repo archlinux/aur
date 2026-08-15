@@ -1,6 +1,6 @@
 pkgbase = kprompt-dash-git
 	pkgdesc = Localhost read-only Kubernetes inventory UI for kprompt
-	pkgver = 0.1.0.r0.g96f5e58
+	pkgver = 0.1.0.r1.gdcfd3ea
 	pkgrel = 1
 	url = https://github.com/kprompt/kprompt-dash
 	arch = x86_64
