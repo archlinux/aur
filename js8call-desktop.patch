@@ -1,7 +1,7 @@
-diff --git a/JS8Call.desktop b/JS8Call.desktop
+diff --git a/.github/workflows/misc/JS8Call.desktop b/.github/workflows/misc/JS8Call.desktop
 index 5eaf7041..a1afbab9 100644
---- a/JS8Call.desktop
-+++ b/JS8Call.desktop
+--- a/.github/workflows/misc/JS8Call.desktop
++++ b/.github/workflows/misc/JS8Call.desktop
 @@ -2,7 +2,7 @@
  Version=1.0
  Name=JS8Call
