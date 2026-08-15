@@ -2,7 +2,7 @@
 # Contributor: Bao Trinh <qubidt at gmail dot com>
 
 pkgname="neonmodem"
-pkgver=1.0.7
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A BBS-style command line client that supports Discourse, Lemmy, Lobsters and Hacker News as backends"
 arch=(
@@ -14,7 +14,9 @@ arch=(
 )
 url="https://neonmodem.com"
 _url="https://github.com/mrusme/${pkgname}"
-license=('GPL-3.0-only')
+license=(
+  'GPL-3.0-only'
+)
 depends=(
   'glibc'
 )
@@ -26,7 +28,7 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}?signed"
 )
-sha256sums=('141af1eb2220e1b1a48ce8d4921dd3257f91b2ac7a6134885f37297c548ddc48')
+sha256sums=('49b46d3f1c116b0926395fb3e760defba4c771a4d3bb245cdf0da260b2b137d0')
 validpgpkeys=(
   '4D3899AF73E7F5FE9B39C822272ED814BF63261F' # marius@xn--gckvb8fzb.com <marius@xn--gckvb8fzb.com>
 )
@@ -36,8 +38,9 @@ prepare() {
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -modcacherw -x
+  go mod verify
 
-  mkdir -p "build" "completions"
+  mkdir -p "completions"
 }
 
 build() {

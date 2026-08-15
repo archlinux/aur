@@ -1,6 +1,6 @@
 pkgbase = neonmodem
 	pkgdesc = A BBS-style command line client that supports Discourse, Lemmy, Lobsters and Hacker News as backends
-	pkgver = 1.0.7
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://neonmodem.com
 	arch = aarch64
@@ -12,8 +12,8 @@ pkgbase = neonmodem
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = neonmodem::git+https://github.com/mrusme/neonmodem.git#tag=v1.0.7?signed
+	source = neonmodem::git+https://github.com/mrusme/neonmodem.git#tag=v1.1.0?signed
 	validpgpkeys = 4D3899AF73E7F5FE9B39C822272ED814BF63261F
-	sha256sums = 141af1eb2220e1b1a48ce8d4921dd3257f91b2ac7a6134885f37297c548ddc48
+	sha256sums = 49b46d3f1c116b0926395fb3e760defba4c771a4d3bb245cdf0da260b2b137d0
 
 pkgname = neonmodem
