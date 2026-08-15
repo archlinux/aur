@@ -3,7 +3,7 @@
 # Reference copy — the canonical PKGBUILD lives in the AUR repository
 # (https://aur.archlinux.org/packages/nightlightd); keep the two in step.
 pkgname=nightlightd
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Zero-config screen colour temperature daemon for X11, with tray, panel and TUI clients"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'libgl' 'libx11' 'libxcursor' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'libxrandr')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ae1bbca13a6da3d7dc1dd85b7e0be64460951839f339eecddecbb226ecdd55ce')
+sha256sums=('b12628f48917b538f6605c22876693368259342d5781ceaedc0a768a0038a650')
 
 prepare() {
   cd "$pkgname-$pkgver"
