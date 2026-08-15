@@ -1,0 +1,25 @@
+[Unit]
+Description=IPFS Cluster instance %i
+Requires=ipfs@ipfs.service
+After=ipfs@ipfs.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+
+WorkingDirectory=/var/lib/ipfs-cluster/%i
+StateDirectory=ipfs-cluster/%i
+StateDirectoryMode=0700
+Environment=IPFS_LOGGING_FMT=nocolor
+SyslogIdentifier=ipfs-cluster@%i
+UMask=0077
+
+ExecStart=/usr/bin/ipfs-cluster-service -c /var/lib/ipfs-cluster/%i daemon
+
+Restart=on-failure
+RestartSec=5s
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
