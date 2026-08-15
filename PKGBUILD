@@ -1,6 +1,6 @@
 pkgname=terax-ai-bin
 pkgver=0.8.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern AI terminal powered by Tauri"
 arch=(x86_64)
 url="https://github.com/crynta/terax-ai"
