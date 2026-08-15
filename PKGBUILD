@@ -2,7 +2,7 @@
 
 _pkgname=svg2oscad
 pkgname=$_pkgname-git
-pkgver=r92.b9b0430
+pkgver=1.0_22_g51adb02
 pkgrel=1
 pkgdesc="Convert SVG files to OpenSCAD paths"
 arch=('any')
@@ -19,10 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-	local commits short
-	commits="$(git rev-list --count HEAD)"
-	short="$(git rev-parse --short HEAD)"
-	printf 'r%s.%s' "$commits" "$short"
+	git describe --tags --long | sed 's/^v//; s/-/_/g'
 }
 
 build() {
