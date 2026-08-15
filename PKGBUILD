@@ -2,9 +2,9 @@
 # Contributor: Ethan Geller (ethang@valvesoftware.com)
 
 pkgname=steamdeck-dsp
-_srctag=0.99
+_srctag=1.00
 pkgver=${_srctag#galileo-}
-pkgrel=3
+pkgrel=1
 arch=(x86_64)
 url="https://github.com/evlav/valve-hardware-audio-processing"
 pkgdesc="Steamdeck Audio Processing"
