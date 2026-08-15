@@ -1,0 +1,20 @@
+pkgbase = elan-lean-git
+	pkgdesc = Lean version manager
+	pkgver = 4.2.3.r2.g464c9d2
+	pkgrel = 1
+	url = https://github.com/leanprover/elan
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = curl
+	depends = glibc
+	depends = libgcc
+	depends = libcurl.so
+	provides = elan-lean=4.2.3.r2.g464c9d2
+	conflicts = elan-lean
+	source = git+https://github.com/leanprover/elan.git
+	sha256sums = SKIP
+
+pkgname = elan-lean-git
