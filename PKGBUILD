@@ -29,9 +29,11 @@ makedepends=(
   'meson'
   'ninja'
   'curl'
+  'git'
+  'gdk-pixbuf2'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('489d09aa5d12f03593b488e5ff476dffed378fbc7cccbab75d459010a1abc1c2')
+sha256sums=('e652d041cff76b529ed24ce91cb091330e40f9b38340c6e43e0fd7a6ed81ae52')
 
 _srcdir="optionTerm-$pkgver"
 

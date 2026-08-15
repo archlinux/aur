@@ -10,6 +10,8 @@ pkgbase = optionterm
 	makedepends = meson
 	makedepends = ninja
 	makedepends = curl
+	makedepends = git
+	makedepends = gdk-pixbuf2
 	depends = gcc-libs
 	depends = glib2
 	depends = glibc
@@ -23,6 +25,6 @@ pkgbase = optionterm
 	conflicts = option-term
 	replaces = option-term
 	source = optionterm-0.2.6.tar.gz::https://github.com/fireflylabss/optionTerm/archive/refs/tags/v0.2.6.tar.gz
-	sha256sums = 489d09aa5d12f03593b488e5ff476dffed378fbc7cccbab75d459010a1abc1c2
+	sha256sums = e652d041cff76b529ed24ce91cb091330e40f9b38340c6e43e0fd7a6ed81ae52
 
 pkgname = optionterm
