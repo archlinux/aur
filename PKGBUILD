@@ -1,12 +1,12 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
-pkgver=3.23.0
+pkgver=3.25.0
 pkgrel=1
 pkgdesc="Intelligent update advisor and wrapper for Arch Linux and derivatives"
 arch=('any')
 url="https://github.com/motorrin/arch-smart-update"
 license=('MIT')
-depends=('bash' 'python' 'pacman' 'tar' 'gawk' 'coreutils' 'curl' 'zstd' 'grep' 'sed')
+depends=('bash' 'python' 'pacman' 'pacman-contrib' 'tar' 'gawk' 'coreutils' 'curl' 'zstd' 'grep' 'sed')
 optdepends=(
     'reflector: for Arch Linux mirror updates'
     'cachyos-rate-mirrors: for CachyOS mirror updates'
@@ -17,17 +17,24 @@ optdepends=(
     'yay: AUR helper support'
     'paru: AUR helper support'
     'pikaur: AUR helper support'
+    'aura: AUR helper support'
     'rua: AUR helper support'
+    'trizen: AUR helper support'
+    'pacaur: AUR helper support'
+    'pakku: AUR helper support'
     'topgrade: for comprehensive system updates'
     'fakeroot: for running the background update checker without sudo'
     'libnotify: for desktop notifications in daemon mode'
-    'psmisc: for lock detection using fuser'
-    'util-linux: for terminal log capture using script'
+    'util-linux: for terminal log capture (script), state locking (flock) and detached execution (setsid)'
+    'xdg-utils: for opening Arch News links in default browser (xdg-open)'
+    'xdg-terminal-exec: for spawning default desktop terminal from notifications'
+    'flatpak: for cleaning unused runtimes during post-update cleanup'
     'gamemode: to postpone background checks when gaming'
     'snap-pac: for automatic Btrfs snapshots on update (if using snapper)'
+    'psmisc: for alternative pacman lock detection using fuser'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2199a8912232da670af9696de5ff6a6562e1ab0c5c843f085b1cfbd3ca9fdcfd')
+sha256sums=('ec73e7df0e4f65f685a28d9f80eb40c68896ee2062cc3be78a68ae0f5e208b4e')
 
 package() {
     cd "${pkgname}-${pkgver}"
