@@ -3,7 +3,7 @@
 
 pkgname=ots
 pkgver=9.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenType fonts sanitiser. Supports TTF, WOFF, WOFF2 and other formats'
 arch=(x86_64 i686)
 url=https://github.com/khaledhosny/ots
