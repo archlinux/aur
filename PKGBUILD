@@ -7,7 +7,7 @@ _alias=gtg
 pkgname=${_appname}-bin
 pkgdesc="A rust based tui an alternative to sourcetree"
 
-pkgver=2.5.7
+pkgver=2.5.8
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -33,7 +33,7 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 sha256sums=('061a22ea71e91a5d40872f099bc9802a01830cfb3f64b11363a5d3b28c64bb61'
             '218c40f12f8eb9be0e6cdf365bbbf3e4c0fded5319e1bbff631f747336188e43')
-sha256sums_x86_64=('7d61abc30e326bb3d8f7bddc1a798b7226264c3b48f0fc2db017110035a1d5a0')
+sha256sums_x86_64=('5fefa2547f0112d2e88fe4c869b69f14914027a271728d39a52d24988011ca0c')
 
 
 prepare() {
