@@ -58,6 +58,6 @@ package()
     install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     # Install the license.
-    rm "${pkgdir}"/usr/share/"${_pkgname}"/LICENSE
+    rm -r "${pkgdir:?}"/usr/share/"${_pkgname}"/
     install -Dm644 "${srcdir}"/"${_pkgname}"-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
