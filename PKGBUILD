@@ -7,9 +7,9 @@ _modules=(
 pkgbase="ttrpc"
 pkgname=(
   "${pkgbase}-common"
-  "${_modules[@]}"
+  # "${_modules[@]}"
 )
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 pkgdesc="GRPC for low-memory environments"
 arch=(
@@ -26,13 +26,14 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('8bcf96d6932971747dcfbc97993121fcf0d31cf5b530aefc653dc852651e4ae8')
+sha256sums=('16dba7a04c7eb11bc0f725d5ffaa8863d60113b711a1caacf7c99a543ac3960f')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -modcacherw -x
+  go mod verify
 }
 
 build() {
