@@ -18,10 +18,10 @@
 # `mpv-omniphony`. Install one or the other — both replace stock mpv.
 
 pkgname=mpv-omniphony-fel
-_tag=v0.4.3              # mpv-omniphony release tag (patches-master + ad_orender)
+_tag=v0.5.0              # mpv-omniphony release tag (patches-master + ad_orender)
 _mpvcommit=f4d13e1c2c91f3a56e589aef9cb44cbc02e26e47   # mpv master, FEL native
 _plcommit=a7a18af88ff0a17c04840dcb3246047bb6b46df3    # libplacebo master, PL_API_VER 370
-pkgver=0.4.3             # $_tag without the 'v'
+pkgver=0.5.0             # $_tag without the 'v'
 pkgrel=1
 pkgdesc="mpv (master snapshot) with the orender spatial audio decoder and Dolby Vision P7 FEL playback"
 arch=('x86_64')
@@ -29,7 +29,7 @@ url="https://github.com/mgth/mpv-omniphony"
 license=('GPL-3.0-or-later')
 # ffmpeg>=2:9.0: dovi_split BSF + DoVi stream group. shaderc/lcms2/libdovi/
 # vulkan-icd-loader/xxhash: runtime deps of the bundled libplacebo soname.
-depends=('orender>=0.4.2' 'ffmpeg>=2:9.0' 'libass' 'lua' 'libx11' 'mesa'
+depends=('orender>=0.5.0' 'ffmpeg>=2:9.0' 'libass' 'lua' 'libx11' 'mesa'
          'shaderc' 'lcms2' 'libdovi' 'vulkan-icd-loader' 'xxhash')
 optdepends=('harletty-bridge: decode compressed/object-audio formats via the orender bridge plugin')
 makedepends=('meson' 'ninja' 'python' 'git')
@@ -45,7 +45,7 @@ source=("mpv-omniphony-$_tag.tar.gz::https://github.com/mgth/mpv-omniphony/archi
         "markupsafe::git+https://github.com/pallets/markupsafe"
         "Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers"
         "fast_float::git+https://github.com/fastfloat/fast_float.git")
-sha256sums=('92f71a3d4bdf6ae9d6b29164333e32c4fc2f1b91593983c2e74bdaecca7d7eaf'
+sha256sums=('2dd50af0ce29c968bcb696b792ea8290030caab31d383b3407b0f4f83c8be71f'
             'ce0635d2f31740d6a116c5bca7f6798f09cc6a95f03752e845ce7da02070aff3'
             'b7e37bb50668ba0d554a26db5ad21013c9dc3f9e84a2f8dd87a25114c73afdf8'
             'SKIP'
