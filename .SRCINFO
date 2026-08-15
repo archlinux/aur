@@ -1,0 +1,24 @@
+pkgbase = grimfreeze-git
+	pkgdesc = Grab images from a Wayland compositor, with freeze selection
+	pkgver = 6ce568219c9f
+	pkgrel = 1
+	url = https://github.com/DreamMaoMao/grim-freeze
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = scdoc
+	makedepends = git
+	depends = pango
+	depends = wayland
+	depends = wayland-protocols
+	depends = libjpeg-turbo
+	provides = grim
+	conflicts = grim
+	conflicts = grim-git
+	options = debug
+	options = !strip
+	source = grimfreeze::git+https://github.com/DreamMaoMao/grimfreeze.git
+	sha1sums = SKIP
+
+pkgname = grimfreeze-git
