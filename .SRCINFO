@@ -1,6 +1,6 @@
 pkgbase = python-imagecodecs
 	pkgdesc = Image transformation, compression, and decompression codecs
-	pkgver = 2026.6.26
+	pkgver = 2026.8.16
 	pkgrel = 1
 	url = https://github.com/cgohlke/imagecodecs
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = python-imagecodecs
 	depends = zlib-ng
 	depends = zopfli
 	depends = zstd
-	source = imagecodecs-2026.6.26.tar.gz::https://github.com/cgohlke/imagecodecs/archive/v2026.6.26.tar.gz
-	sha256sums = 147e94bf73439ef147487b471d36ea78abd8b6395308f8d639cea7697bbeaee9
+	source = imagecodecs-2026.8.16.tar.gz::https://github.com/cgohlke/imagecodecs/archive/v2026.8.16.tar.gz
+	sha256sums = c230de11dc79c70ebdd046d331f13be9be3a1f5066a67ac45071e267dc9808a9
 
 pkgname = python-imagecodecs
