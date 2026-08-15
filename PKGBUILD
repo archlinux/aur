@@ -1,6 +1,6 @@
 # Maintainer: LIghtJUNction <lightjunction.me@gmail.com>
 pkgname=matchplane-git
-pkgver=0.1.5.r13.gdc8a30a
+pkgver=0.1.7.r19.g15a2c6c
 pkgrel=1
 pkgdesc='Federated AI matching infrastructure (development version)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ pkgver() {
   local count revision
   count=$(git rev-list --count HEAD)
   revision=$(git rev-parse --short=7 HEAD)
-  printf '0.1.5.r%s.g%s' "$count" "$revision"
+  printf '0.1.7.r%s.g%s' "$count" "$revision"
 }
 
 build() {
