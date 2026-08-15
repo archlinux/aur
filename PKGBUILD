@@ -42,7 +42,7 @@ source=(
   '0007-qt5-webengine-glibc-2.43-SYS_SECCOMP-as-enum@chromium.patch'
 )
 md5sums=('1d1c4743f5b9f6601681c81f0ed953d5'
-         '5fbf73d6c48235a94620231755481628'
+         '30e900a16d886c71a74d685d1c34dfdd'
          'a21aa28d235877e7dcc35055d67d417d'
          'ce4f3cb4a30f88136b1d3d1bcef40448'
          'f1ed8795356458457a311d0e3101ba28'
@@ -51,7 +51,7 @@ md5sums=('1d1c4743f5b9f6601681c81f0ed953d5'
          'bdddda5a578704eb56f5ceeaab49bd2f'
          '7c88da9ed56bd99eee3cdba5f197102c')
 sha256sums=('33cd20f4a87874f34ef3f9c8d767e006498acc3e6cff89a9c64a9e3387bbfaa5'
-            'bef1d9d0ed81778b31cbb5f592a66007bd60d1919f836529f9cd057edd9aacc1'
+            '619478e66fe16460694dfafddd8e0f3108ee48e85f714beb66aa49fa44475593'
             '5e3a3c4711d964d5152a04059a2b5c1d14bb13dd29bce370120f60e85b476b6f'
             '7cac28ba784d24b4abf6414079548ada165343af507ecd8e23cbe7e4f63ae52f'
             '6672741b64d896dc555c8ee42ca2329c4f20d5f406095a69fe72da44b3a142f4'
@@ -67,7 +67,7 @@ if : ; then
   #_srcdir='qtwebengine'
   #source[0]="git+https://github.com/qt/${_srcdir}.git#tag=v${pkgver}-lts"
   _srcdir87='qtwebengine-chromium-87-based'
-  _date87='20250423'
+  _date87='20260724'
   source[1]="${_srcdir87}-${_date87}.tgz::https://github.com/qt/qtwebengine-chromium/archive/refs/heads/87-based.tar.gz"
 else
   md5sums[0]='SKIP'
