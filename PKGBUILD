@@ -1,7 +1,7 @@
 # Maintainer: Barışcan Aslan <i.aslan.bariscan@gmail.com>
 
 pkgname=packager
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Turn a local .deb or .rpm into a pacman package'
 url='https://github.com/barscn/packager'
@@ -12,7 +12,7 @@ makedepends=('cargo')
 # Cargo.toml already enables rustc LTO; GCC LTO breaks crates like ring.
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/barscn/packager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d81c1842d92d5d32bc66dec635bee09068bc87b89a7da43a622b0ff3565e80eb')
+sha256sums=('8fa38f794e051576df7633f1c43732986069e0ff1a3ba69fa0011bcc4493da1d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
