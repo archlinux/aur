@@ -1,0 +1,18 @@
+pkgbase = cadical-git
+	pkgdesc = Simplified satisfiability solver
+	pkgver = 3.0.1.r0.gc6073042
+	pkgrel = 1
+	url = https://github.com/arminbiere/cadical
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = cadical=3.0.1.r0.gc6073042
+	conflicts = cadical
+	source = git+https://github.com/arminbiere/cadical.git
+	sha256sums = SKIP
+
+pkgname = cadical-git
