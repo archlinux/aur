@@ -51,6 +51,8 @@ package() {
                    "$pkgdir/usr/share/hls-livecam-server/hls-livecam-repair"
     install -Dm644 pkg/usr/share/hls-livecam-server/block_art.py \
                    "$pkgdir/usr/share/hls-livecam-server/block_art.py"
+    install -Dm644 pkg/usr/share/hls-livecam-server/cv_processor.py \
+                   "$pkgdir/usr/share/hls-livecam-server/cv_processor.py"
     install -Dm644 pkg/usr/share/hls-livecam-server/index.html \
                    "$pkgdir/usr/share/hls-livecam-server/index.html"
     install -Dm644 pkg/usr/share/hls-livecam-server/cams/cams.html \
