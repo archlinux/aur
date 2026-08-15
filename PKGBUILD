@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="j2lint"
-pkgver="1.2.0"
+pkgver="1.3.0"
 pkgrel="1"
 pkgdesc="Jinja2 linter."
 arch=("any")
@@ -16,7 +16,7 @@ depends=("python" "python-jinja" "python-rich")
 makedepends=("python-build" "python-installer" "python-setuptools")
 checkdepends=("python-pytest" "python-pytest-cov")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("e707057ad2487460cd607cf825f2369131df1004f88fd3299cd0494b98a3270587fb11a5a6e0627f3b1cb069ed69522c65b76cf1bf42c73460165f204f6fb8eb")
+sha512sums=("aeacf31a33d9a5734f6c595d7c9efb67b455101756a4e8902e9ec40d45087c54b3970c1c14cbaa1fa99d8daca0be537ce78ad5b7585169f2cc44349dbe8c9528")
 
 build()
 {
