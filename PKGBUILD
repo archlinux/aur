@@ -5,7 +5,7 @@ _epsonscan2_non_free_plugin_version='1.0.0.6'
 pkgname=epsonscan2
 pkgver=6.7.91.1
 _pkgver="$pkgver-1"
-pkgrel=2
+pkgrel=3
 arch=('armv7h' 'x86_64')
 pkgdesc="Epson scanner management utility"
 url="https://download-center.epson.com/"
@@ -101,6 +101,20 @@ prepare() {
            "$srcdir/$pkgname-$_pkgver/src/$file"
   done
 
+  # Disable building in debug mode
+  for file in CMakeLists.txt \
+              src/ES2Emulator/test/CMakeLists.txt \
+              src/ES2Emulator/Linux/CMakeLists.txt \
+              src/Controller/Test/CMakeLists.txt
+  do
+    sed -i '/CMAKE_BUILD_TYPE Debug/ s/^/#/' \
+           "$srcdir/$pkgname-$_pkgver/$file"
+  done
+
+  # Remove references to the source code in executables
+  sed -i "/add_subdir/ i add_compile_options(\"-fmacro-prefix-map=$(echo $srcdir)=.\")" \
+         "$srcdir/$pkgname-$_pkgver/CMakeLists.txt"
+
   # Prepare plugin files
   cd "$srcdir"/epsonscan2-bundle*/plugins
   ar x epsonscan2-non-free-plugin*.deb
@@ -129,7 +143,8 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DEPSON_OCR_INSTALL_PATH="/usr/share/epsonscan2-ocr" \
-        -DQT_VERSION_MAJOR=5
+        -DQT_VERSION_MAJOR=5 \
+        -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
         
   cmake --build build
 }
