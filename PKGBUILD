@@ -10,7 +10,7 @@
 # See this thread for details: https://gitlab.freedesktop.org/drm/xe/kernel/-/work_items/7513
 
 pkgbase=linux-lnl
-pkgver=7.0.11.arch1
+pkgver=7.1.8.arch1
 pkgrel=1
 pkgdesc='Linux'
 url='https://github.com/archlinux/linux'
@@ -56,17 +56,17 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
-b2sums=('e198c4edf9cc681c602e4c0bd8d92ff9d93433c95a525d8d94e5ad59aa9da2299a5048690841263e925835e3960d621fab137afd3522020f58d4fe1a09041ac7'
+b2sums=('84b59e5572d91f5ea1bb603aa7691851bd9549e1bf18a6bec8e27eb8a6e2de2e33da2ad3e3aad501c793e9756e70245a16545e76b65a44ee52b33ccf5c3dd8e7'
         'SKIP'
-        '17d5fbaf51a1930dbacadcf3eacc286e471e44fd1526516b7fa51f7e83b62c9d24e69e1cf9c5c111288160964b8e44d1138306de2ebc84b242e33f09d6d6e13a'
+        '308952977c15ac3ad976ff1d99d0d186814d4b03e1c8512fc3a4c0ac1ecce3f74be8f3900a7fd286492d4f930bedc089674bf713a278fa80c35413e0e6339f97'
         'SKIP'
         'c8c5a13af1381bce0b2f95492554de8b2809bc3dc18d6aa7a167195df76c53eb9daf8ed6da767c9c21845c73252619535ea8de302486e2ca394f913132790ae4')
-b2sums_x86_64=('a3569058fb5d86df604568f3746c98285b23bd5f4d69abc34df84e05b29c73b4a2c55f589259ec7375591c825d09525bf7d4f5c29d5e3a5209dfaabaf834795a')
+b2sums_x86_64=('b10d80423aa3eb65e2046bf5b1998f9a7bdbc97494c6881881f50ffcdb5fe2e242782f59dbb6402cd77ce64b988dbf295fd9fa54f20180c76fbe88b82e1dbc9d')
 
 # https://www.kernel.org/pub/linux/kernel/v7.x/sha256sums.asc
-sha256sums=('e56c8356dda01136a6041c6ef832bd0ec99bd2d35dff97832aa5ec10ed014304'
+sha256sums=('ff01dcb449279d5b4cfccdb01fee639cf5ff1803f1749a77844dd33915422c49'
             'SKIP'
-            '694e74e08031d1388c0ae7ba3e44d9dfcb1888ed45ae1eb97f9c4160953042e5'
+            '351cfb04db323bf5dd55ae8ce626650d20ba61441d202cadd8e198c6b9ef8f36'
             'SKIP'
             'fdc39f62f631bce91bac41a8b477b5d7c208eb0b75db9e69c5e8b6a5ba625324')
 
@@ -211,8 +211,8 @@ _package-headers() {
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  echo "Installing Rust files..."
   if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
+    echo "Installing Rust files..."
     install -Dt "$builddir/rust" -m644 rust/*.rmeta
     install -Dt "$builddir/rust" rust/*.so
   fi
