@@ -1,0 +1,17 @@
+pkgbase = python-serializd
+	pkgdesc = Python API library for Serializd.com
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/Velocidensity/serializd-py
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	depends = python
+	depends = python-httpx
+	depends = python-pydantic
+	source = python-serializd-0.1.4.tar.gz::https://github.com/Velocidensity/serializd-py/archive/000250165adfee8fe014b514381dc10dab7183d7.tar.gz
+	sha256sums = 0f0bba2a632019fe68ac4a6bdfdb88fb28b4961bb0020e6a99b6937ed74c45f2
+
+pkgname = python-serializd
