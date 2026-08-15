@@ -12,15 +12,15 @@
 # without a checkout of the mpv-omniphony repo.
 
 pkgname=mpv-omniphony
-_tag=v0.4.3              # mpv-omniphony release tag (patches + ad_orender)
+_tag=v0.5.0              # mpv-omniphony release tag (patches + ad_orender)
 _mpvver=0.41.0           # pinned upstream mpv release tag (without the 'v')
-pkgver=0.4.3             # $_tag without the 'v' (hyphens, if any, become '.')
+pkgver=0.5.0             # $_tag without the 'v' (hyphens, if any, become '.')
 pkgrel=1
 pkgdesc="mpv with the orender spatial audio decoder (object rendering via liborender)"
 arch=('x86_64')
 url="https://github.com/mgth/mpv-omniphony"
 license=('GPL-3.0-or-later')
-depends=('orender>=0.4.2' 'ffmpeg' 'libass' 'libplacebo' 'lua' 'libx11' 'mesa')
+depends=('orender>=0.5.0' 'ffmpeg' 'libass' 'libplacebo' 'lua' 'libx11' 'mesa')
 optdepends=('harletty-bridge: decode compressed/object-audio formats via the orender bridge plugin')
 makedepends=('meson' 'ninja' 'python')
 # Match the repo mpv's epoch (1:) so `mpv>=1:x` dependencies resolve, and
@@ -31,7 +31,7 @@ conflicts=('mpv')
 source=("mpv-$_mpvver.tar.gz::https://github.com/mpv-player/mpv/archive/v$_mpvver.tar.gz"
         "mpv-omniphony-$_tag.tar.gz::https://github.com/mgth/mpv-omniphony/archive/refs/tags/$_tag.tar.gz")
 sha256sums=('ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209'
-            '92f71a3d4bdf6ae9d6b29164333e32c4fc2f1b91593983c2e74bdaecca7d7eaf')
+            '2dd50af0ce29c968bcb696b792ea8290030caab31d383b3407b0f4f83c8be71f')
 
 _repo="mpv-omniphony-${_tag#v}"   # extracted repo tarball (src/, patches/)
 
