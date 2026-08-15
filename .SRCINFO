@@ -1,7 +1,7 @@
 pkgbase = amiberry
 	pkgdesc = Optimized Amiga emulator
 	pkgver = 8.3.0
-	pkgrel = 2
+	pkgrel = 1 
 	url = https://github.com/BlitterStudio/amiberry
 	arch = x86_64
 	arch = aarch64
