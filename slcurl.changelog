@@ -26,3 +26,6 @@ Changes since 0.2.1
     an issue with building using `make --shuffle=reverse`
 15. Added CURLPROXY options, e.g., SOCKS5
 16. Do not define CURLPROXY_HTTPS2 for libcurl versions older than 8.2.0
+17. src/Makefile.in: Use @docdir@ instead of a hard-coded value
+18. src/Makefile.in: Move the comment added in #17 to a separate line
+    to avoid install issues (Rafael Laboissière)
