@@ -1,7 +1,7 @@
 # Maintainer: Timo Crabbé <timocrabbe@gmail.com>
 pkgname=beidconnect
-pkgver=2.10.8.gb44810e
-pkgrel=1
+pkgver=2.12.3.g647fc99
+pkgrel=2
 pkgdesc="native messaging component for DSS signing services"
 arch=('x86_64')
 url="https://github.com/Fedict/fts-beidconnect"
