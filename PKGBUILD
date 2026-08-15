@@ -3,9 +3,9 @@
 pkgname=pilinara
 _pkgname=pilinara
 _srcname=PiliNara
-_pkgtag=2.1.0.2-beta4
+_pkgtag=2.1.0.2
 pkgver=2.1.0.2
-pkgrel=2
+pkgrel=3
 url="https://github.com/Starfallan/PiliNara"
 pkgdesc="PiliPlus 的第三方Fork版本，做了一些自用改动"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('pilinara-bin' 'pilinara-git')
 options=('!debug' '!strip')
 
 source_x86_64=("${_srcname}-${_pkgtag}.tar.gz::${url}/archive/refs/tags/${_pkgtag}.tar.gz")
-sha256sums_x86_64=('b14142475545817f3fdaf86c212fe79419564672063ec788d8f776a49fe8e4b8')
+sha256sums_x86_64=('fb2a24ab8af178a21e04af40ec0fc55efff2f8034da11fcb7f9f830e29c0241d')
 
 prepare() {
   cd "${_srcname}-${_pkgtag}/"
@@ -38,11 +38,10 @@ build() {
                   null_safety_for_selectable_region selectable_region
                   editable_text text_field scroll_position scrollable
                   scrollable_gesture draggable_scrollable_sheet scaffold
-                  text text_painter)
+                  text text_painter sliver refresh_indicator)
 
   printf "正在应用 Flutter 引擎补丁...\n"
   git -C "${_sdk}" reset --hard HEAD
-  git -C "${_sdk}" show beb2ad17004a1b118ff2bd09f55cee23198f6652 --binary | git -C "${_sdk}" apply
   for _patch in "${_patches[@]}"; do
     git -C "${_sdk}" apply "${_scripts}/${_patch}.patch"
   done
