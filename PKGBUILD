@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname=stegosaurus-lv2
 pkgname=${_pkgname}-git
-pkgver=r18.543a95d
+pkgver=r20.0063d67
 pkgrel=1
 pkgdesc="lv2 drum synthersizer without sampling (patched fork)"
 arch=(x86_64)
@@ -27,7 +27,17 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/stegosaurus"
-  ./waf configure --prefix=/usr
+  # Extract waf and patch removed 'imp' module for Python 3.12+
+  ./waf --help >/dev/null 2>&1 || true
+  wafdir=$(find . -maxdepth 1 -name '.waf*' -type d | head -1)
+  if [[ -n "$wafdir" ]]; then
+    sed -i 's/import os,re,imp,sys/import os,re,types,sys/' "$wafdir/waflib/Context.py"
+    sed -i 's/imp\.new_module/types.ModuleType/g' "$wafdir/waflib/Context.py"
+    sed -i "s/import imp;print(imp.get_tag())/import importlib;print('cpython')/" "$wafdir/waflib/Tools/python.py"
+    # Patch: 'rU' mode removed in Python 3.12+
+    find "$wafdir/waflib" -name '*.py' -exec sed -i "s/'rU'/'r'/g" {} +
+  fi
+  CFLAGS+=" -fcommon" ./waf configure --prefix=/usr
 }
 
 build() {
