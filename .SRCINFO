@@ -1,0 +1,21 @@
+pkgbase = lsoff-bin
+	pkgdesc = CLI / TUI that lists listening TCP/UDP ports
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yutat23/lsoff
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lsoff
+	conflicts = lsoff
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/yutat23/lsoff/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/yutat23/lsoff/v0.1.0/LICENSE
+	sha256sums = 817aecc2f572ed329c1e4ad96029fe31ff162880fd40ae54bc5a1a707a5b2568
+	sha256sums = 8fa6650c7c9bea4113c2981b4859e8b547ef5ceae3747d5aa3f5d2d7e6a5bad1
+	source_x86_64 = lsoff-x86_64-0.1.0::https://github.com/yutat23/lsoff/releases/download/v0.1.0/lsoff-linux-amd64
+	sha256sums_x86_64 = ff055362b64b48934e880382a3fdec82708fc332caafe8dc74bee15321f2eccc
+	source_aarch64 = lsoff-aarch64-0.1.0::https://github.com/yutat23/lsoff/releases/download/v0.1.0/lsoff-linux-arm64
+	sha256sums_aarch64 = a914f7ac6fcbd220e9aa66d32881cee1696757a65d571b10c91698ef71cca0b0
+
+pkgname = lsoff-bin

@@ -1,0 +1,5 @@
+[lsoff-bin]
+source = "github"
+github = "yutat23/lsoff"
+use_latest_release = true
+prefix = "v"
