@@ -4,9 +4,9 @@
 # Contributor: Guillaume ALAUX <guillaume@archlinux.org>
 
 pkgname=swt-bin
-pkgver=4.38
+pkgver=4.40
 pkgrel=1
-_date=202512010920
+_date=202606010713
 pkgdesc='An open source widget toolkit for Java'
 arch=('x86_64')
 url='https://www.eclipse.org/swt/'
@@ -18,7 +18,7 @@ optdepends=('glu: support for SWT GLCanvas'
 provides=('swt')
 conflicts=('swt')
 source=("https://download.eclipse.org/eclipse/downloads/drops4/R-${pkgver}-${_date}/swt-${pkgver}-gtk-linux-${arch}.zip")
-sha256sums=('596a63665225db4dbdfcb0e16702a99e7fee3b5a9409249767b7dbd2a7ba527f')
+sha256sums=('61f6378fbe3dfa94fda78392b851f4fd1238f4b9464e634f4b36294673f18707')
 
 package() {
   install -Dm644 "swt.jar" "$pkgdir/usr/share/java/swt-${pkgver}.jar"
