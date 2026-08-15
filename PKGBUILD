@@ -2,7 +2,7 @@
 
 pkgname=lungo-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="A simple systray applet to prevent the system from going idle or suspending on demand (bin version)"
 url="https://github.com/Antiz96/lungo"
@@ -26,14 +26,14 @@ source=("${_pkgname}-${pkgver}-off.svg::${_raw_url}/v${pkgver}/res/icons/${_pkgn
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64")
 sha256sums=('9db933d7991c233f434f4f51a09b5fbbb92b1b6a7f880dbabfa30415e8898808'
             '1f6491c754fa2f374d70890771a6ae14e2922659e157595c4c951c89b96c02db'
-            '245e859440aa76f8201e31f377ef24c72d3ad493f7ae681c7307e2db09029d14'
+            '0454effd0956729241da73692aa88d857e59d361200c2232c23defe3cb4b15ba'
             '629c04d6caee11a6783e9fd93c9b183edb1461164332abfd1bd16b5386ef53ca'
             '6cf4589aca0ffa81287f388202903c3005185ce41d660d68ec799f4c91cf8044'
             '3b313c2bf3138664a62c35453e2b11d4c06dae756ffb0d33a1efbb45feece39e'
-            '4f5b493bb68163a684ccc08c8f8b93c5bde6a6721bbbcf92eb6789f797852c5e'
+            'a961c29e3bc0ec6bd51e08f3afe0bb7103aedf52ce62859636a2ace6a21ad796'
             'e049c91bca7cdee19ba7b3cf74b4b8a814b69d72ba9723ee7e5de5291ca2c7aa'
             '6f93669e43d9119754763778626c08336841d9b2a7c66b8c332988ad5bb2cafe')
-sha256sums_x86_64=('75ebe50afcbc417eb00aa98a2da0ee0ba1e672fc9b73211e5388afbeed0ea72e')
+sha256sums_x86_64=('0faad208180e7105150f0b1f1ee9f1751dab75f5f83dead2e41169743f073a01')
 
 build() {
 	scdoc < "${_pkgname}-${pkgver}.1.scd" > "${_pkgname}.1"
