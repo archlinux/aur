@@ -2,13 +2,14 @@ post_install() {
   printf '%s\n' \
     'Configure ~/.config/sayall/config.json, then run:' \
     '  sayall setup' \
-    'This enables the services and configures Ctrl+Slash in Omarchy/Hyprland.'
+    'This enables the host service and configures Ctrl+Slash in Omarchy/Hyprland.'
 }
 
 post_upgrade() {
   printf '%s\n' \
-    "If upgrading outside 'sayall update', reapply saved setup with:" \
-    '  sayall setup'
+    'SayAll 0.2 uses one native host service. Complete the per-user migration with:' \
+    '  sayall setup' \
+    'This safely stops the retired daemon before starting the native host.'
 }
 
 post_remove() {

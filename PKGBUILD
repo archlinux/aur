@@ -1,9 +1,9 @@
 # Maintainer: Saiem Saeed <saiem.saeed7 at gmail dot com>
 
 pkgname=sayall-bin
-pkgver=0.1.6
+pkgver=0.2.11
 pkgrel=1
-pkgdesc='Wayland voice dictation daemon and recording HUD (prebuilt)'
+pkgdesc='Linux voice dictation application and CLI (prebuilt)'
 arch=('x86_64')
 url='https://github.com/saiemsaeed/sayall'
 license=('MIT')
@@ -17,26 +17,36 @@ depends=(
   'pipewire-audio'
   'wl-clipboard'
   'wtype'
+  'xdotool'
+  'xsel'
 )
 provides=("sayall=$pkgver")
 conflicts=('sayall' 'sayall-src' 'sayall-git')
 options=('!debug')
 install='sayall-bin.install'
 source=("sayall-$pkgver-linux-x86_64.tar.gz::$url/releases/download/v$pkgver/sayall-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('5162f63368fbfb62a5545e9128cfd56a2d7add46d062a67a3041072575285218')
+sha256sums=('9bf1e2ff0f832cb0614878b185a7d086240d9af9c82da3b4382878b2e89d665f')
 
 package() {
   local src="$srcdir/sayall-$pkgver-linux-x86_64"
 
+  [[ $("$src/bin/sayall" --version) == "sayall $pkgver" ]]
+  [[ $("$src/bin/sayall-hud" --version) == "sayall-hud $pkgver" ]]
+  [[ $("$src/lib/sayall/sayall-process" --version) == "sayall-process $pkgver" ]]
+
   install -Dm755 -t "$pkgdir/usr/bin" \
     "$src/bin/sayall" \
     "$src/bin/sayall-hud"
+  install -Dm755 "$src/lib/sayall/sayall-process" \
+    "$pkgdir/usr/lib/sayall/sayall-process"
 
-  install -Dm644 -t "$pkgdir/usr/lib/systemd/user" \
-    "$src/share/systemd/user/sayall.service" \
-    "$src/share/systemd/user/sayall-hud.service"
-  sed -i 's|%h/.local/bin/|/usr/bin/|g' \
-    "$pkgdir/usr/lib/systemd/user/sayall.service" \
+  install -Dm644 "$src/share/applications/dev.sayall.Hud.desktop" \
+    "$pkgdir/usr/share/applications/dev.sayall.Hud.desktop"
+  install -Dm644 "$src/share/icons/hicolor/scalable/apps/dev.sayall.Hud.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/dev.sayall.Hud.svg"
+  install -Dm644 "$src/share/systemd/user/sayall-hud.service" \
+    "$pkgdir/usr/lib/systemd/user/sayall-hud.service"
+  sed -i 's|ExecStart=%h/.local/bin/|ExecStart=/usr/bin/|' \
     "$pkgdir/usr/lib/systemd/user/sayall-hud.service"
 
   install -Dm644 -t "$pkgdir/usr/share/doc/sayall" \
