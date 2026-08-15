@@ -1,6 +1,6 @@
 pkgbase = xl-view
 	pkgdesc = Minimalist HDR image viewer optimized for large images.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/andrinbr/xl-view
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = xl-view
 	makedepends = cargo
 	depends = libgcc
 	depends = glibc
-	source = xl-view-0.1.0.tar.gz::https://github.com/andrinbr/xl-view/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = b13c6f246a01c30f9862e50ecf0ff2c01baa79303f8ec521aafbcdbb37234a3b
+	source = xl-view-0.2.0.tar.gz::https://github.com/andrinbr/xl-view/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 1bce9be4b2507375529da9e7b55e205f8cfc3215f1b58143a1f03cd1fea0d1f9
 
 pkgname = xl-view
