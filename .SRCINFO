@@ -1,0 +1,32 @@
+pkgbase = frida-tools
+	pkgdesc = CLI tools for Frida
+	pkgver = 14.10.4
+	pkgrel = 1
+	url = https://github.com/frida/frida-tools
+	arch = any
+	license = LGPL-2.0-or-later WITH WxWindows-exception-3.1
+	makedepends = meson
+	makedepends = ninja
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-colorama
+	depends = python-frida>=17.10.0
+	depends = python-frida<18
+	depends = python-prompt_toolkit
+	depends = python-pygments
+	depends = python-websockets>=16
+	depends = python-websockets<17
+	provides = python-frida-tools=14.10.4
+	conflicts = python-frida-tools
+	replaces = python-frida-tools
+	source = frida-tools-14.10.4.tar.gz::https://github.com/frida/frida-tools/archive/refs/tags/14.10.4.tar.gz
+	source = websockets-16.patch
+	b2sums = 1bdddf8a492d0312977b96f1b8366dd27660247bb3e7dfaf59bed94901fe71c9ce9d9bbb1be445d85ad174322b6b71a7a5f3bbebfc929cb7045b58f5763b6717
+	b2sums = 5a74d5c0b47acde240dd678db3f42a2487979af62619f7a26f524520e24a1d3e973833b18ee3851c6dde04d04984199e5ff13da411f73ed7580e4b547e27c22d
+
+pkgname = frida-tools

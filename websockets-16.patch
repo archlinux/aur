@@ -1,0 +1,22 @@
+--- a/setup.py
++++ b/setup.py
+@@ -27,7 +27,7 @@
+             "frida >= 17.10.0, < 18.0.0",
+             "prompt-toolkit >= 2.0.0, < 4.0.0",
+             "pygments >= 2.0.2, < 3.0.0",
+-            "websockets >= 13.0.0, < 14.0.0",
++            "websockets >= 16.0.0, < 17.0.0",
+         ],
+         license="wxWindows Library Licence, Version 3.1",
+         zip_safe=False,
+@@ -75,6 +75,10 @@
+ 
+ 
+ def detect_version() -> str:
++    version = os.environ.get("FRIDA_VERSION")
++    if version is not None:
++        return version
++
+     if in_source_package:
+         version_line = [
+             line for line in pkg_info.read_text(encoding="utf-8").split("\n") if line.startswith("Version: ")
