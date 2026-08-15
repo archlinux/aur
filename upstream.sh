@@ -26,7 +26,7 @@ pkg_get_update_params() {
 	local filename_x86_64="UniBarrage-linux-amd64.tar.gz"
 	local url_x86_64="${base_url}/${filename_x86_64}"
 
-	# Download and calculate SHA256 for x86_64
+	# Download and calculate SHA256 for x86_64 (required by update-package.sh contract)
 	local tmpdir tmpfile sha256
 	tmpdir="$(mktemp -d)"
 	tmpfile="${tmpdir}/${filename_x86_64}"
@@ -34,7 +34,6 @@ pkg_get_update_params() {
 	curl -fsSL --retry 3 --retry-delay 2 -o "${tmpfile}" "${url_x86_64}"
 	sha256="$(sha256sum "${tmpfile}" | awk '{print $1}')"
 
-	# Cleanup
 	rm -rf "${tmpdir}"
 
 	# Return: url filename pkgver hash_algo checksum
@@ -46,20 +45,25 @@ pkg_update_files() {
 	local filename="$2"
 	local pkgver="$3"
 	local hash_algo="$4"
-	local checksum="$5"
+	local checksum_x86="$5"
 	local pkgbuild="${PKG_DIR}/PKGBUILD"
 
-	# Generate URLs for all architectures
 	local base_url="${url%/*}"
 	local url_x86_64="${base_url}/UniBarrage-linux-amd64.tar.gz"
 	local url_aarch64="${base_url}/UniBarrage-linux-arm64.tar.gz"
 
-	# Update PKGBUILD
+	# Always refresh aarch64 checksum too (do not leave stale SKIP/old hash)
+	local tmpdir tmpfile checksum_arm
+	tmpdir="$(mktemp -d)"
+	tmpfile="${tmpdir}/UniBarrage-linux-arm64.tar.gz"
+	curl -fsSL --retry 3 --retry-delay 2 -o "${tmpfile}" "${url_aarch64}"
+	checksum_arm="$(sha256sum "${tmpfile}" | awk '{print $1}')"
+	rm -rf "${tmpdir}"
+
 	sed -i "s/^pkgver=.*/pkgver=${pkgver}/" "${pkgbuild}"
 	sed -i "s/^pkgrel=.*/pkgrel=1/" "${pkgbuild}"
 	sed -i "s|^source_x86_64=.*|source_x86_64=(\"UniBarrage-linux-amd64.tar.gz::${url_x86_64}\")|" "${pkgbuild}"
 	sed -i "s|^source_aarch64=.*|source_aarch64=(\"UniBarrage-linux-arm64.tar.gz::${url_aarch64}\")|" "${pkgbuild}"
-	sed -i "s/^${hash_algo}sums_x86_64=.*/${hash_algo}sums_x86_64=('${checksum}')/" "${pkgbuild}"
-
-	echo "Warning: Only x86_64 checksum updated. Please verify aarch64 manually." >&2
+	sed -i "s/^${hash_algo}sums_x86_64=.*/${hash_algo}sums_x86_64=('${checksum_x86}')/" "${pkgbuild}"
+	sed -i "s/^${hash_algo}sums_aarch64=.*/${hash_algo}sums_aarch64=('${checksum_arm}')/" "${pkgbuild}"
 }
