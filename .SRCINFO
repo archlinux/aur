@@ -1,6 +1,6 @@
 pkgbase = baryon-mcp-bin
 	pkgdesc = Read Proton Mail and save drafts through your local Proton Mail Bridge.
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/combor/baryon-mcp
 	license = BSD-3-Clause
@@ -10,10 +10,10 @@ pkgbase = baryon-mcp-bin
 	conflicts = baryon-mcp
 	provides = baryon-mcp
 	arch = aarch64
-	source_aarch64 = https://github.com/combor/baryon-mcp/releases/download/v0.4.5/baryon-mcp_0.4.5_linux_arm64.tar.gz
-	sha256sums_aarch64 = e300ca14cb9ba925cb57e195e4b55bd1c146626d337e671543cc54b9fe96874f
+	source_aarch64 = https://github.com/combor/baryon-mcp/releases/download/v0.4.6/baryon-mcp_0.4.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = d071697fd255309580d38b8738c5dec8fafac8779e7e304e6494f9535c8d7074
 	arch = x86_64
-	source_x86_64 = https://github.com/combor/baryon-mcp/releases/download/v0.4.5/baryon-mcp_0.4.5_linux_amd64.tar.gz
-	sha256sums_x86_64 = b4279426db1425cb792c51ab0ecb7ba5b261d247d890472147d81c32dc782c6e
+	source_x86_64 = https://github.com/combor/baryon-mcp/releases/download/v0.4.6/baryon-mcp_0.4.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = e61c6cf06a538302ab1bd7193ff94bf6c134b905f5e8512e60e740a7fa19405a
 	
 pkgname = baryon-mcp-bin
