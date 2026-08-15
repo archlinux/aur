@@ -14,7 +14,7 @@
 # above the release it came after and says on sight what it is.
 
 pkgname=viewport-chromium-git
-pkgver=0.1.5.r2.g4fa16d3
+pkgver=0.1.5.r74.ge9ceb62
 pkgrel=1
 pkgdesc='Wayland compositor whose shell is a web page — Chromium, driven as a child process (git)'
 arch=('x86_64' 'aarch64')
