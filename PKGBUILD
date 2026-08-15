@@ -18,7 +18,8 @@ optdepends=(
     "ddcutil: ddcutil backend support"
     "hyprsunset: hyprland backend support"
     "wayland"
-    "xsct: xsct backend support")
+    "xsct: xsct backend support"
+    "libnotify: desktop notifications support")
 sha256sums=("SKIP")
 
 if [[ $_generate_manual_page == "yes" ]]; then
