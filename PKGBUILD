@@ -1,9 +1,9 @@
 # Maintainer: Tom Davenport <1926694+tomdavenport@users.noreply.github.com>
 
 pkgname=cam-stream
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
-pkgdesc='Low-latency V4L2 camera preview for Wayland desktops'
+pkgdesc='Low-latency camera preview, screen recorder and RTMP(S) streamer for Wayland'
 arch=('any')
 url='https://github.com/tomdavenport/cam-stream'
 license=('MIT')
@@ -20,18 +20,25 @@ depends=(
   'v4l-utils'
 )
 optdepends=(
-  'hyprland: with jq, automatically position the preview window'
-  'jq: with Hyprland, automatically position the preview window'
+  'gpu-screen-recorder>=6.0.0: record the screen and stream to RTMP(S) destinations'
+  'ffmpeg: remux live-stream local copies to MP4'
+  'libsecret: provide secret-tool for stream-key storage'
+  'org.freedesktop.secrets: provide a keyring backend for stream-key storage'
+  'hyprland: with jq, position the preview and select capture targets'
+  'jq: with Hyprland, position the preview and select capture targets'
+  'slurp: select window and region capture targets'
+  'xdg-user-dirs: use the configured Videos directory for recordings'
   'psmisc: report processes using busy camera devices'
 )
-checkdepends=('jq')
+checkdepends=('jq' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c02ebac5ca0c365cd5ffc17017bad111342cbad6591f72212bb7d24b30bf3647')
+sha256sums=('7557c89bc7bd0b0cc6d8b775009c9e7fe3bfd492e4252ba791b8e37343cdf6c2')
 
 check() {
   cd "$pkgname-$pkgver"
   bash -n bin/cam-stream
   tests/test_cam_stream.sh
+  tests/test_studio.sh
 }
 
 package() {

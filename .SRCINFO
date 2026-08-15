@@ -1,11 +1,12 @@
 pkgbase = cam-stream
-	pkgdesc = Low-latency V4L2 camera preview for Wayland desktops
-	pkgver = 1.0.2
+	pkgdesc = Low-latency camera preview, screen recorder and RTMP(S) streamer for Wayland
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/tomdavenport/cam-stream
 	arch = any
 	license = MIT
 	checkdepends = jq
+	checkdepends = python
 	depends = bash>=5
 	depends = coreutils
 	depends = findutils
@@ -16,10 +17,16 @@ pkgbase = cam-stream
 	depends = sed
 	depends = util-linux
 	depends = v4l-utils
-	optdepends = hyprland: with jq, automatically position the preview window
-	optdepends = jq: with Hyprland, automatically position the preview window
+	optdepends = gpu-screen-recorder>=6.0.0: record the screen and stream to RTMP(S) destinations
+	optdepends = ffmpeg: remux live-stream local copies to MP4
+	optdepends = libsecret: provide secret-tool for stream-key storage
+	optdepends = org.freedesktop.secrets: provide a keyring backend for stream-key storage
+	optdepends = hyprland: with jq, position the preview and select capture targets
+	optdepends = jq: with Hyprland, position the preview and select capture targets
+	optdepends = slurp: select window and region capture targets
+	optdepends = xdg-user-dirs: use the configured Videos directory for recordings
 	optdepends = psmisc: report processes using busy camera devices
-	source = cam-stream-1.0.2.tar.gz::https://github.com/tomdavenport/cam-stream/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = c02ebac5ca0c365cd5ffc17017bad111342cbad6591f72212bb7d24b30bf3647
+	source = cam-stream-1.1.0.tar.gz::https://github.com/tomdavenport/cam-stream/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 7557c89bc7bd0b0cc6d8b775009c9e7fe3bfd492e4252ba791b8e37343cdf6c2
 
 pkgname = cam-stream
