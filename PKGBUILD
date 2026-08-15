@@ -1,48 +1,82 @@
-# Maintainer: Alexandros Theodotou <alex@zrythm.org>
-# and milk / milkii on Freenode
+# Maintainer: Alexandros Theodotou <alex at zrythm dot org>
+# Contributor: Milkii Brewster <milkii on Freenode IRC>
+# Based on the zrythm AUR package by Nikos Toutountzoglou et al.
+
 _pkgname=zrythm
-pkgname=$_pkgname-debug-git
-pkgver=2.0.0.ralpha.2.4.g27952188b
+pkgname=${_pkgname}-debug-git
+pkgver=1.0.0.r0.g8b3de7881
 pkgrel=1
-pkgdesc='a highly automated and intuitive digital audio workstation'
-arch=('x86_64' 'i686')
-url="https://www.zrythm.org"
-license=('AGPL3')
-depends=('git' 'gtk3' 'lilv' 'libx11' 'jack' 'libsndfile'
-  'libyaml'  'libsamplerate' 'alsa-lib' 'fftw' 'xdg-utils'
-  'rubberband' 'breeze-icons')
+pkgdesc='A highly automated and intuitive digital audio workstation (debug git build)'
+arch=('x86_64' 'aarch64')
+url="https://www.zrythm.org/"
+license=('AGPL-3.0-or-later')
+depends=(
+  'bash' 'boost-libs' 'cairo' 'carla-git' 'curl' 'dconf' 'fftw' 'file'
+  'fluidsynth' 'fontconfig' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc'
+  'graphene' 'gtk4' 'gtksourceview5' 'hicolor-icon-theme' 'libadwaita'
+  'libbacktrace' 'libcyaml' 'libglvnd' 'liblo' 'libpanel' 'libpulse'
+  'libsndfile' 'libsoxr' 'libx11' 'libxcursor' 'libxext' 'libxrandr'
+  'lsp-dsp-lib' 'pango' 'pcre2' 'pipewire-jack' 'qt5-base' 'rtaudio'
+  'rtmidi' 'rubberband' 'sdl2' 'vamp-plugin-sdk' 'xxhash' 'yyjson' 'zix' 'zstd'
+)
 makedepends=(
-  'python' 'gettext' 'sed'
-  'meson' 'ninja' 'help2man' 'python-sphinx'
-  'ladspa' 'lv2')
-optdepends=('portaudio: portaudio backend'
-            'qt5-base: for embedding qt5 plugin UIs')
-conflicts=()
-provides=()
+  'blueprint-compiler' 'boost' 'cmake' 'glib2-devel' 'guile' 'help2man'
+  'lilv' 'meson' 'sassc' 'git'
+)
+optdepends=(
+  'graphviz: for process graph export'
+  'jack: low latency audio/MIDI backend'
+  'libsoundio: alternative audio backend'
+  'portaudio: alternative audio backend'
+  'realtime-privileges: for real-time scheduling privileges'
+)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-git")
 source=("$_pkgname::git+https://github.com/zrythm/zrythm.git")
 md5sums=('SKIP')
 options=(debug !strip)
 
-pkgver () {
+pkgver() {
   cd "$srcdir/$_pkgname"
-  #printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  printf "%s" "$(git describe --tags | sed 's/-/\.r/' | sed 's/v//g' | sed 's/-/\./g')"
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "$srcdir/$_pkgname"
-  meson build --prefix=/usr -Denable_guile=true -Denable_jack=true -Denable_ffmpeg=true -Denable_graphviz=true -Denable_carla=true -Dmanpage=true 
-  ninja -C build
-}
 
-check() {
-  cd "$srcdir/$_pkgname"
-  ninja -C build test
+  local meson_options=(
+    -Dcarla=enabled
+    -Dopus=true
+    -Drtaudio=enabled
+    -Drtmidi=enabled
+    -Dsdl=enabled
+    -Dcheck_updates=false
+    -Dgraphviz=disabled
+    -Dportaudio=disabled
+    -Dsoundio=disabled
+    -Dstatic_deps=false
+    -Dcompletions=true
+    -Db_sanitize=none
+    -Ddebug=true
+    -Doptimization=0
+  )
+
+  arch-meson build "${meson_options[@]}"
+  meson compile -C build
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -vDm 644 AUTHORS CONTRIBUTING.md CHANGELOG.md README.md THANKS TRANSLATORS \
-    -t "${pkgdir}/usr/share/doc/${pkgname}/"
-  DESTDIR="${pkgdir}/" ninja -C build install
+
+  meson install -C build --destdir "$pkgdir"
+
+  install -Dm644 LICENSES/LicenseRef-ZrythmLicense.txt \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  if [[ -f "${pkgdir}/usr/share/fish/vendor_completions.d/zrythm.fish" ]]; then
+    sed -i "s|${srcdir}||g" "${pkgdir}/usr/share/fish/vendor_completions.d/zrythm.fish"
+  fi
 }
+
+# vim:set ts=2 sw=2 et:
