@@ -5,7 +5,7 @@
 # build time, so there is no pinned version for Renovate to bump.
 pkgname=kprompt-git
 _pkgname=kprompt
-pkgver=0.7.0.r44.g8869fc2
+pkgver=0.11.0.r9.gc7c48ec
 pkgrel=1
 pkgdesc='AI Kubernetes CLI: natural language to a reviewable plan, applied after approval'
 arch=('x86_64' 'aarch64')
