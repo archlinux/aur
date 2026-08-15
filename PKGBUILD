@@ -2,15 +2,20 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=alacrittyforge
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A terminal UI for managing and customizing the Alacritty terminal emulator — safely, intuitively, and beautifully"
 arch=('any')
 url="https://github.com/jetomev/alacrittyforge"
 license=('GPL3')
-depends=('python' 'python-textual' 'python-rich' 'python-tomli-w')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cfb930e7edb77aae74154181d615cf6d56d1641e21610c321c9c7b135828528d')
+depends=('python' 'python-textual' 'python-rich' 'python-tomli-w' 'python-forgekit>=0.3.0')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
+sha256sums=('46760c7dc0ebfafa6e8c23b1649fdb8a51619d4e93ed9079c8f158292fca37ab'
+            'SKIP')
+# Javier (jetomev) release-signing key — import via:
+#   gpg --keyserver keys.openpgp.org --recv-keys 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
+validpgpkeys=('32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E')
 
 check() {
     cd "${srcdir}/${pkgname}-${pkgver}"
