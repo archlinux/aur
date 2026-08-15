@@ -1,6 +1,8 @@
+# Maintainer: taotieren <admin@taotieren.com>
+
 pkgname=dpdk-lts
 pkgver=26.07
-pkgrel=1
+pkgrel=3
 pkgdesc='A set of libraries and drivers for fast packet processing'
 arch=($CARCH)
 url='http://dpdk.org'
@@ -9,11 +11,9 @@ license=(
 )
 provides=(${pkgname%-lts})
 conflicts=(${pkgname%-lts})
-options=()
 depends=(
   sh
   dtc
-  glibc
   jansson
   libarchive
   libatomic
@@ -22,6 +22,7 @@ depends=(
   libelf
   libpcap
   libxdp
+  libz.so
   isa-l
   numactl
   rdma-core
@@ -29,9 +30,7 @@ depends=(
   python
   python-scapy
   python-pefile
-  python-pkg_resources
   python-pyelftools
-  zlib
 )
 makedepends=(
   doxygen
@@ -40,7 +39,6 @@ makedepends=(
   meson
   man-db
   python-sphinx
-
 )
 checkdepends=()
 source=(
@@ -66,4 +64,5 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" ninja -C ${srcdir}/dpdk-$pkgver/build install
+  install -Dm644 ${srcdir}/dpdk-$pkgver/license/* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
