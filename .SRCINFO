@@ -1,0 +1,17 @@
+pkgbase = toff
+	pkgdesc = CLI shutdown timer with YouTube/media URL support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/abod8639/toff
+	install = toff.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = yt-dlp
+	depends = util-linux
+	optdepends = libnotify: desktop notifications on shutdown
+	optdepends = at: alternative scheduling backend (atd must be running)
+	source = toff-1.0.0.tar.gz::https://github.com/abod8639/toff/archive/v1.0.0.tar.gz
+	b2sums = 12657c407b3a4192244b290fa276b15d92e71cfc37daa04958bb8bac4c0a43c7cb490f9c4409465bfa9628466e07ac88a03896c5c4536092769e73167b18d856
+
+pkgname = toff
