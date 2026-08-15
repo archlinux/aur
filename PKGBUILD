@@ -1,7 +1,7 @@
 # Maintainer: Evan Chen <evan@evanchen.cc>
 
 pkgname=lastlint
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Linter for Evan Chen's LaTeX style guide"
 arch=(any)
@@ -20,4 +20,4 @@ package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
-b2sums=('d9be2f91ac9c74934270ececbfd0bb64d40077d66776ebcb7d3b7adfe0cb9ca3d7faffdea8e158c21e04fa658bef2124c23115ba7b46854795d547bc17ff248d')
+b2sums=('c8bd4aed41328cdc1c8d2dc1f3ada7a21f13e02fa5497588c4561980394c21aed44a9be18a7c2f9869d8febaf505fa905899e1103638d32cb973d1f165ac171e')
