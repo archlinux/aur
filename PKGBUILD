@@ -2,7 +2,7 @@
 
 _zig=zig
 pkgname="zigdown"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Parse and render Markdown-like content to the terminal, to HTML, or inside Neovim"
 arch=(
@@ -17,13 +17,13 @@ depends=(
   'glibc'
 )
 makedepends=(
-  "zig>=0.16"
+  "zig>=0.16.0"
 )
 _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('cbbffae3c4859668a8a3a00b23f487123eeec03ffad22a026c746198ae68474d9545b06f126191ff303aa22d550be551d6f53556bb179b8a7f6886a63f539ff8')
+b2sums=('948a767327343fc5d71763a3571240496c12ebb13a1e94a2fc50213427455e5feeac345a18b88f59159f3bf1b232cb024ced5536b2ed7401b9248fe728904ab1')
 
 build() {
   local zig_options=(
