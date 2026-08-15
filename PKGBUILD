@@ -1,6 +1,6 @@
 pkgname=cly
-pkgver=7.5.7
-pkgrel=1
+pkgver=7.5.8
+pkgrel=3
 pkgdesc="A semantic AUR helper wrapper for Arch Linux written in bash"
 arch=('any')
 url="https://github.com/xmlzitos154/cly"
@@ -24,14 +24,14 @@ package() {
     cd cly
     install -Dm755 modules/mod_main.sh "$pkgdir/usr/bin/cly"
     install -Dm644 README.md "$pkgdir/usr/share/doc/cly/README.md"
-    install -Dm644 modules/mod_01.sh "$pkgdir/usr/share/cly/mod_01.sh"
-    install -Dm644 modules/mod_02.sh "$pkgdir/usr/share/cly/mod_02.sh"
-    install -Dm644 modules/mod_03.sh "$pkgdir/usr/share/cly/mod_03.sh"
-    install -Dm644 modules/mod_04.sh "$pkgdir/usr/share/cly/mod_04.sh"
-    install -Dm644 modules/mod_05.sh "$pkgdir/usr/share/cly/mod_05.sh"
+    install -Dm644 modules/mod_01.sh "$pkgdir/usr/share/cly/execution-modules/mod_01.sh"
+    install -Dm644 modules/mod_02.sh "$pkgdir/usr/share/cly/execution-modules/mod_02.sh"
+    install -Dm644 modules/mod_03.sh "$pkgdir/usr/share/cly/execution-modules/mod_03.sh"
+    install -Dm644 modules/mod_04.sh "$pkgdir/usr/share/cly/execution-modules/mod_04.sh"
+    install -Dm644 modules/mod_05.sh "$pkgdir/usr/share/cly/execution-modules/mod_05.sh"
     install -Dm644 languages/lang_mod_pt.sh "$pkgdir/usr/share/cly/languages/lang_mod_pt.sh"
     install -Dm644 languages/lang_mod_en.sh "$pkgdir/usr/share/cly/languages/lang_mod_en.sh"
     install -Dm644 languages/lang_mod_es.sh "$pkgdir/usr/share/cly/languages/lang_mod_es.sh"
-    install -Dm644 "extra_files/infected_packages.txt" "$pkgdir/usr/share/cly/infected_packages.txt"
-    install -Dm644 "extra_files/aur_tag.sh" "$pkgdir/usr/share/cly/aur_tag.sh"
+    install -Dm644 "components/infected_packages.txt" "$pkgdir/usr/share/cly/infected_packages.txt"
+    install -Dm644 "components/aur_tag.sh" "$pkgdir/usr/share/cly/aur_tag.sh"
 }
