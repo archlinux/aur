@@ -2,21 +2,26 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=bitlaforge
-pkgver=0.1.3
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="A terminal UI for running solo Bitcoin mining as the lottery it really is — wraps minerd in a Catppuccin Mocha Textual TUI"
 arch=('any')
 url="https://github.com/jetomev/bitlaforge"
 license=('GPL3')
-depends=('python' 'python-textual' 'python-rich' 'python-tomli-w')
+depends=('python' 'python-textual' 'python-rich' 'python-tomli-w' 'python-forgekit>=0.2.1')
 # minerd is itself AUR-only (three flavours), so it can't be a hard depends=.
 # BitlaForge detects the missing case at runtime and guides the user to
-# install one via the Setup screen.
+# install one via Help → Install & Setup.
 optdepends=('cpuminer: pooler cpuminer (recommended) — provides /usr/bin/minerd'
             'cpuminer-multi: multi-algorithm cpuminer fork'
             'cpuminer-opt: heavily optimized multi-algo variant')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0e9cf5e871c724cb22796191ae51657849237632c4ace2778c51f18ca0894fbc')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
+sha256sums=('c31313f4e634603fcb7e858ca827529820f82df76e921da86178e918e6857ff4'
+            'SKIP')
+# Javier (jetomev) release-signing key — import via:
+#   gpg --keyserver keys.openpgp.org --recv-keys 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
+validpgpkeys=('32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E')
 
 check() {
     cd "${srcdir}/${pkgname}-${pkgver}"
