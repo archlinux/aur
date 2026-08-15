@@ -1,7 +1,7 @@
 # Maintainer: Paolo De Donato <dedonato 95 at hotmail dot it>
 
 pkgname=tomloader
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Utility to create and manage systemd unit files"
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="https://codeberg.org/Loara/tomloader"
 license=('EUPL-1.2')
 depends=('libgcc' 'glibc')
 makedepends=('cargo')
-_tag=622eef1ece2c6b5b66682e12db5eef41d9626102e40dfd5b2e90d2c1627a21fd
+_tag=124dc092b43b935aea6b0532c6b5dc71bb190b36512e1caa6c0b3aa2207c250c
 source=("$pkgname-$_tag::git+https://codeberg.org/Loara/tomloader.git#tag=$_tag")
-b2sums=('b6c56262c514e4ceb10c36b8466516db040a5652dd6b5ef169ac9f750302e84520c5a8633a4d3a08546543194d54329c0883e3594f7a609f31aa5227c51ae633')
+b2sums=('c46b4c7a2fcdbf5f956040db0dd5dedefc72a0397a6c7afa9b7f06d50a29d3c1f3cb65188068d2669dccc056bc922102789035f3785c38d4db7d91def3916379')
 
 pkgver() {
     cd "$srcdir/$pkgname-$_tag"
@@ -41,4 +41,5 @@ package() {
     install -Dm0755 "target/release/tomloader" "$pkgdir/usr/bin/tomloader"
     install -Dm0644 tomloader.info "$pkgdir/usr/share/info/tomloader.info"
     install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/tomloader/"
+    install -Dm0644 completitions/tomloader.fish "${pkgdir}/usr/share/fish/vendor_completions.d/tomloader.fish"
 }
