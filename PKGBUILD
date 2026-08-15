@@ -1,12 +1,12 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=jpgcrush
 pkgver=0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Lossless jpeg re-compressor."
 arch=('any')
 url="http://akuvian.org/"
 license=('custom:publicdomain')
-depends=('perl-file-slurp' 'libjpeg')
+depends=('perl-file-slurp' 'libjpeg.so')
 source=(http://akuvian.org/src/$pkgname.tar.gz)
 md5sums=('c3c5fb5f228e3f5cced70c6982e0a38e')
 
