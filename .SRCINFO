@@ -1,6 +1,6 @@
 pkgbase = box64
 	pkgdesc = Linux Userspace x86_64 Emulator with a twist
-	pkgver = 0.4.2
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/ptitSeb/box64
 	install = box64.install
@@ -13,10 +13,11 @@ pkgbase = box64
 	makedepends = cmake
 	makedepends = python
 	depends = gcc-libs
+	optdepends = gl4es: OpenGL 2 for GLES 2 devices
 	options = !strip
-	source = box64-0.4.2.tar.gz::https://github.com/ptitSeb/box64/archive/v0.4.2.tar.gz
+	source = box64-0.4.4.tar.gz::https://github.com/ptitSeb/box64/archive/v0.4.4.tar.gz
 	source = box64.install
-	sha256sums = c9d0db8a02fb9d586f3892caf83908cc92fbe3eb9a871cd868286cc932690d5e
+	sha256sums = 99c6de4f509e46ab1de15df740d0e0ea338a7790efa3f67510dfbb975cc24029
 	sha256sums = 7e94518dbd11121f150a51b64f4c0ec11f844a83f7b15205d28c1de63de699f2
 
 pkgname = box64
