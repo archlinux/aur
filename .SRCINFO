@@ -1,7 +1,7 @@
 pkgbase = pipedal-bin
 	pkgdesc = IoT guitar effect pedal for Raspberry Pi, with phone-friendly web interface
 	pkgver = 2.0.110
-	pkgrel = 2
+	pkgrel = 3
 	url = https://rerdavies.github.io/pipedal/
 	install = pipedal-bin.install
 	arch = x86_64

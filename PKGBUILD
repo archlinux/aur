@@ -8,7 +8,7 @@
 
 pkgname=pipedal-bin
 pkgver=2.0.110
-pkgrel=2
+pkgrel=3
 pkgdesc="IoT guitar effect pedal for Raspberry Pi, with phone-friendly web interface"
 arch=('x86_64')
 url="https://rerdavies.github.io/pipedal/"
@@ -72,6 +72,10 @@ package() {
   # runtime) and drop the directory.
   mv "${pkgdir}"/usr/sbin/* "${pkgdir}"/usr/bin/ 2>/dev/null || true
   rmdir "${pkgdir}"/usr/sbin 2>/dev/null || true
+
+  # Normalize directory permissions: the deb ships dirs at 775, but Arch
+  # convention is 755 (and polkit's rules.d must stay restricted).
+  find "${pkgdir}" -type d -exec chmod 755 {} +
 
   # Ship the upstream license bundle (Debian-style copyright file listing
   # the Expat/MIT main license plus BSD/Apache/MPL/GPL component licenses)
