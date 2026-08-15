@@ -20,10 +20,10 @@ sha256sums=('3968478fd56f32cea151ca2a3729b70be9269314f398a2ec00e0a09081ad8675')
 
 build() {
     cd "aiowebostv-${pkgver}"
-    python -m build --wheel --no-isolation
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
     cd "aiowebostv-${pkgver}"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 }
