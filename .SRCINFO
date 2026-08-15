@@ -1,7 +1,7 @@
 pkgbase = gif2apng
 	pkgdesc = Tool for disassembling apng files
 	pkgver = 1.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/gif2apng/
 	arch = i686
 	arch = x86_64

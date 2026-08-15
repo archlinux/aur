@@ -7,7 +7,7 @@
 
 pkgname=gif2apng
 pkgver=1.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for disassembling apng files"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/$pkgname/"
