@@ -1,7 +1,7 @@
 pkgbase = hinoirisetr
 	pkgdesc = A lightweight daemon that automatically adjusts your screen's color temperature and gamma based on the time of day
 	pkgver = 1.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.vavakado.xyz/me/hinoirisetr.git
 	arch = i686
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = hinoirisetr
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	makedepends = pandoc-cli
 	optdepends = ddcutil: ddcutil backend support
 	optdepends = hyprsunset: hyprland backend support
 	optdepends = wayland
 	optdepends = xsct: xsct backend support
+	optdepends = libnotify: desktop notifications support
 	source = git+https://git.vavakado.xyz/me/hinoirisetr.git
 	sha256sums = SKIP
 
