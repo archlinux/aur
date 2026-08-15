@@ -1,0 +1,9 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!LICENSE
+!config
+# Only our own patch. NOT *.patch — makepkg downloads dkms-clang.patch into this
+# directory as a source, and a wildcard would sweep it into the AUR repo.
+!0001-drm-xe-Fix-DPT-allocation-paths.patch

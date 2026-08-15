@@ -1,0 +1,32 @@
+Packaging sources for linux-cachyos-dpt
+=======================================
+
+The packaging sources in this repository (PKGBUILD, .SRCINFO, config) are a
+derivative work of the linux-cachyos packaging from
+
+    https://github.com/CachyOS/linux-cachyos
+
+which is licensed under the GNU General Public License, version 3. Those
+sources remain copyright of their respective authors — Peter Jung, Piotr
+Gorski, Vasiliy Stelmachenok and the other contributors credited at the top of
+the PKGBUILD — and this fork is distributed under the same terms.
+
+    SPDX-License-Identifier: GPL-3.0-only
+
+The full licence text is available at https://www.gnu.org/licenses/gpl-3.0.html
+and is shipped upstream as LICENSE.md.
+
+Modifications in this fork (the package rename, the added patch and its
+checksum, the maintainer header and description) are likewise GPL-3.0-only.
+
+Kernel and patch
+----------------
+
+The Linux kernel itself is licensed GPL-2.0-only.
+
+0001-drm-xe-Fix-DPT-allocation-paths.patch is a backport of upstream commit
+a196406a3831291598fe8e73245914f7acffdfe0 by Maarten Lankhorst
+<dev@lankhorst.se>, GPL-2.0-only. It is functionally identical to that commit;
+the sole difference is that __xe_pin_fb_vma_dpt() in the 7.1.x series takes a
+plain `unsigned int alignment` argument rather than `pin_params->alignment`,
+so the backport uses the former.

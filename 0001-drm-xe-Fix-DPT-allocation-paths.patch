@@ -1,0 +1,82 @@
+From: Maarten Lankhorst <dev@lankhorst.se>
+Date: Tue, 30 Jun 2026 15:55:20 +0200
+Subject: [PATCH] drm/xe: Fix DPT allocation paths.
+
+Remove the fallback for VRAM to system memory, I tested it and that
+doesn't work at all, only a black screen with pipe fault errors were
+observed.
+
+On systems with media GT, extra latency is added when accessing stolen
+memory when the GT is in MC6. Since we additionally aren't counting how
+much memory is used for stolen and we could in theory fill up the
+entire stolen area with DPT's, avoid using stolen and only use the
+default memory region.
+
+Using stolen may also result in random system hangs under load.
+
+Link: https://gitlab.freedesktop.org/drm/xe/kernel/-/work_items/7513
+Fixes: 775d0adc01a5 ("drm/xe/fbdev: Limit the usage of stolen for LNL+")
+Cc: <stable@vger.kernel.org> # v6.12+
+Reviewed-by: Matthew Auld <matthew.auld@intel.com>
+Link: https://patch.msgid.link/20260630135523.1775379-2-dev@lankhorst.se
+Signed-off-by: Maarten Lankhorst <dev@lankhorst.se>
+Acked-by: Matthew Brost <matthew.brost@intel.com> #teams
+---
+Packaging notes (below the --- separator, so git am strips them and the
+upstream author's trailer block stays intact):
+
+Backported from commit a196406a3831291598fe8e73245914f7acffdfe0. As of
+2026-08-15 that commit is in drm-tip and linux-next but has not reached
+Linus's tree; it missed the v7.2 merge window and is queued for 7.3, so no
+7.1.x stable release contains it.
+
+Applies with zero fuzz to 7.1.5 through 7.1.8. Functionally identical to the
+upstream commit; the sole difference is that __xe_pin_fb_vma_dpt() in the
+7.1.x series takes a plain `unsigned int alignment` argument rather than
+`pin_params->alignment`.
+
+This form is 7.1-only. It will not compile on 6.18 LTS, which has no
+XE_BO_FLAG_FORCE_WC; that series needs the flag dropped from the new call.
+
+--- a/drivers/gpu/drm/xe/display/xe_fb_pin.c
++++ b/drivers/gpu/drm/xe/display/xe_fb_pin.c
+@@ -161,31 +161,14 @@
+ 		dpt_size = ALIGN(intel_rotation_info_size(&view->rotated) * 8,
+ 				 XE_PAGE_SIZE);
+ 
+-	if (IS_DGFX(xe))
+-		dpt = xe_bo_create_pin_map_at_novm(xe, tile0,
+-						   dpt_size, ~0ull,
+-						   ttm_bo_type_kernel,
+-						   XE_BO_FLAG_VRAM0 |
+-						   XE_BO_FLAG_GGTT |
+-						   XE_BO_FLAG_PAGETABLE,
+-						   alignment, false);
+-	else
+-		dpt = xe_bo_create_pin_map_at_novm(xe, tile0,
+-						   dpt_size,  ~0ull,
+-						   ttm_bo_type_kernel,
+-						   XE_BO_FLAG_STOLEN |
+-						   XE_BO_FLAG_GGTT |
+-						   XE_BO_FLAG_PAGETABLE,
+-						   alignment, false);
+-	if (IS_ERR(dpt))
+-		dpt = xe_bo_create_pin_map_at_novm(xe, tile0,
+-						   dpt_size,  ~0ull,
+-						   ttm_bo_type_kernel,
+-						   XE_BO_FLAG_SYSTEM |
+-						   XE_BO_FLAG_GGTT |
+-						   XE_BO_FLAG_PAGETABLE |
+-						   XE_BO_FLAG_FORCE_WC,
+-						   alignment, false);
++	dpt = xe_bo_create_pin_map_at_novm(xe, tile0,
++					   dpt_size,  ~0ull,
++					   ttm_bo_type_kernel,
++					   XE_BO_FLAG_VRAM_IF_DGFX(tile0) |
++					   XE_BO_FLAG_GGTT |
++					   XE_BO_FLAG_PAGETABLE |
++					   XE_BO_FLAG_FORCE_WC,
++					   alignment, false);
+ 	if (IS_ERR(dpt))
+ 		return PTR_ERR(dpt);
+ 
