@@ -1,9 +1,9 @@
 # Maintainer: Saiem Saeed <saiem.saeed7 at gmail dot com>
 
 pkgname=sayall
-pkgver=0.1.6
+pkgver=0.2.11
 pkgrel=1
-pkgdesc='Wayland voice dictation daemon and recording HUD'
+pkgdesc='Linux voice dictation application and CLI'
 arch=('x86_64')
 url='https://github.com/saiemsaeed/sayall'
 license=('MIT')
@@ -17,6 +17,8 @@ depends=(
   'pipewire-audio'
   'wl-clipboard'
   'wtype'
+  'xdotool'
+  'xsel'
 )
 makedepends=('cargo' 'pkgconf' 'python' 'zig')
 conflicts=('sayall-bin' 'sayall-src' 'sayall-git')
@@ -28,7 +30,7 @@ source=(
   'websocket.zig-b70e733.tar.gz::https://github.com/karlseguin/websocket.zig/archive/b70e733bc0d0ba0a98ff5fe5ef64d3017c85f369.tar.gz'
 )
 sha256sums=(
-  'c899575373a8cf6dc18d2945f95261b1c1c46dc6bcff4504c843a166d0441669'
+  '64ef9aa9eeef2e5674ade12e6954d5ca1e2faeb8ebbf2fde390623c5c61d2fe2'
   '55e6b7d11c61a81bcf7482578e460da78719459dd4c8370f52033229ae529fe9'
 )
 
@@ -47,6 +49,7 @@ build() {
   export CARGO_TARGET_DIR="$srcdir/cargo-target"
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-cache"
   zig build -Doptimize=ReleaseFast
+  zig build process -Doptimize=ReleaseFast
   cargo build --frozen --release --manifest-path ui/linux/Cargo.toml
 }
 
@@ -57,6 +60,9 @@ check() {
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-cache"
   zig build test
   cargo test --frozen --manifest-path ui/linux/Cargo.toml
+  [[ $(zig-out/bin/sayall --version) == "sayall $pkgver" ]]
+  [[ $(zig-out/bin/sayall-process --version) == "sayall-process $pkgver" ]]
+  [[ $("$CARGO_TARGET_DIR/release/sayall-hud" --version) == "sayall-hud $pkgver" ]]
 }
 
 package() {
@@ -65,12 +71,14 @@ package() {
   install -Dm755 -t "$pkgdir/usr/bin" \
     "$src/zig-out/bin/sayall" \
     "$srcdir/cargo-target/release/sayall-hud"
+  install -Dm755 "$src/zig-out/bin/sayall-process" \
+    "$pkgdir/usr/lib/sayall/sayall-process"
 
-  install -Dm644 -t "$pkgdir/usr/lib/systemd/user" \
-    "$src/sayall.service" \
-    "$src/sayall-hud.service"
-  sed -i 's|%h/.local/bin/|/usr/bin/|g' \
-    "$pkgdir/usr/lib/systemd/user/sayall.service" \
+  install -Dm644 "$src/ui/linux/dev.sayall.Hud.desktop" \
+    "$pkgdir/usr/share/applications/dev.sayall.Hud.desktop"
+  install -Dm644 "$src/ui/linux/dev.sayall.Hud.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/dev.sayall.Hud.svg"
+  install -Dm644 "$src/sayall-hud.service" \
     "$pkgdir/usr/lib/systemd/user/sayall-hud.service"
 
   install -Dm644 -t "$pkgdir/usr/share/doc/sayall" \
