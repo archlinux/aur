@@ -1,7 +1,7 @@
 pkgbase = xml2rfc
 	pkgdesc = generates RFCs and IETF drafts from XML according to the DTD in RFC 2629
-	pkgver = 3.31.0
-	pkgrel = 3
+	pkgver = 3.34.0
+	pkgrel = 1
 	url = https://pypi.python.org/pypi/xml2rfc
 	arch = any
 	license = LicenseRef-BSD-3-Clause
@@ -14,13 +14,14 @@ pkgbase = xml2rfc
 	depends = python-intervaltree
 	depends = python-jinja
 	depends = python-lxml
+	depends = python-natsort
 	depends = python-platformdirs
 	depends = python-pycountry
 	depends = python-requests
 	depends = python-wcwidth
 	depends = python-yaml
 	optdepends = python-weasyprint: PDF support
-	source = https://files.pythonhosted.org/packages/source/x/xml2rfc/xml2rfc-3.31.0.tar.gz
-	sha256sums = 0a1d4ccc4425aed39b5f0f833a8eb1e0f9e8f1897d3441c3a15877dee36cf484
+	source = https://files.pythonhosted.org/packages/source/x/xml2rfc/xml2rfc-3.34.0.tar.gz
+	sha256sums = 173ad5cd21f7a2fddb0dbc19649bc8f73716dff5465e4e4fcd5bb21d5208ccf1
 
 pkgname = xml2rfc

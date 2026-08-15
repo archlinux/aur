@@ -2,8 +2,8 @@
 # Contributor: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=xml2rfc
-pkgver=3.31.0
-pkgrel=3
+pkgver=3.34.0
+pkgrel=1
 pkgdesc='generates RFCs and IETF drafts from XML according to the DTD in RFC 2629'
 url='https://pypi.python.org/pypi/xml2rfc'
 arch=(any)
@@ -14,6 +14,7 @@ depends=(
 	python-intervaltree
 	python-jinja
 	python-lxml
+	python-natsort
 	python-platformdirs
 	python-pycountry
 	python-requests
@@ -28,7 +29,7 @@ makedepends=(
 optdepends=('python-weasyprint: PDF support')
 license=(LicenseRef-BSD-3-Clause)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz")
-sha256sums=('0a1d4ccc4425aed39b5f0f833a8eb1e0f9e8f1897d3441c3a15877dee36cf484')
+sha256sums=('173ad5cd21f7a2fddb0dbc19649bc8f73716dff5465e4e4fcd5bb21d5208ccf1')
 
 build() {
   cd "$pkgname-$pkgver"
