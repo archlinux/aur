@@ -3,7 +3,7 @@
 _pkgauthor=d99kris
 _pkgname=heapusage
 pkgname=${_pkgname}
-pkgver=2.36
+pkgver=2.39
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Find memory leaks in Linux applications"
@@ -18,7 +18,7 @@ makedepends=('cmake' 'binutils')
 depends=('glibc' 'libgcc' 'libstdc++' 'libelf' 'bash')
 
 source=("https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('36f85ed08170ab5f5953414b27c4369dc8136132f49233084e17185a89f192af')
+sha256sums=('f45c5997e84e993d24bd2375bb8d0e77c0af5a11ba1db90a7080decc7a1ee979')
 
 
 prepare() {
