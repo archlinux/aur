@@ -1,6 +1,6 @@
 pkgbase = omadex
 	pkgdesc = Contact aggregator for Omarchy: one address layer over many address books
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/peteonrails/omadex
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = omadex
 	optdepends = omarchy: the Quickshell overlay and its launch helpers
 	optdepends = python-dbus: required by the iPhone source
 	optdepends = vdirsyncer: CardDAV contacts synced to a local vdir
-	source = omadex-1.0.1.tar.gz::https://github.com/peteonrails/omadex/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = df42db0160a99c9be51df208e3d06ec56fd188cf82243e28bebd43daf1061911
+	source = omadex-1.0.2.tar.gz::https://github.com/peteonrails/omadex/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 093aab9df20e4b26e6c9bc7952c0e7c319d3406ccd6a24841b60cc4cdc1b5a9a
 
 pkgname = omadex
