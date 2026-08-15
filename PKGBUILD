@@ -22,12 +22,12 @@ sha256sums=('SKIP')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    python -m build --wheel --no-isolation
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${pkgname}-${pkgver}"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 lgtv-remote.desktop \
         "$pkgdir/usr/share/applications/lgtv-remote.desktop"
