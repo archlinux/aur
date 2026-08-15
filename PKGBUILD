@@ -13,6 +13,7 @@ depends=(
   libgcc 
   glibc
 )
+optdepends=('start-stop-daemon: sysv support'
 makedepends=(cargo git curl pkgconf openssl)
 sha256sums=('03400a80c91e6adb59110b148b0deb2bbf58b05e20d7a9395c2aad567d3f4c27')
 source=("git+https://git.sr.ht/~yukikoo/dane_without_root?signed#tag=dane-${pkgver}")
