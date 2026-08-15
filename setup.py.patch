@@ -1,0 +1,32 @@
+diff --git a/setup.py b/setup.py
+index 5f65acca..9dd545c9 100644
+--- a/setup.py
++++ b/setup.py
+@@ -49,7 +49,7 @@ extras_require['all'] = list(set(all_extras))
+ if sys.platform.startswith("win"):
+     extra_compile_args = []
+ else:
+-    extra_compile_args = ["-O3", "-Wno-unused-function"]
++    extra_compile_args = ["-O2", "-Wno-unused-function"]
+ 
+ extensions = [
+     Extension("pyresample.ewa._ll2cr", sources=["pyresample/ewa/_ll2cr.pyx"],
+@@ -88,7 +88,7 @@ if __name__ == "__main__":
+     README = open('README.md', 'r').read()
+     setup(name='pyresample',
+           url='https://github.com/pytroll/pyresample',
+-          version=versioneer.get_version(),
++          version='$PKGVER',
+           cmdclass=cmdclass,
+           description='Geospatial image resampling in Python',
+           long_description=README,
+@@ -96,8 +96,7 @@ if __name__ == "__main__":
+           author='Thomas Lavergne',
+           author_email='t.lavergne@met.no',
+           package_dir={'pyresample': 'pyresample'},
+-          packages=find_packages(),
+-          package_data={'pyresample.test': ['test_files/*']},
++          packages=find_packages(exclude=['pyresample.test*']),
+           include_package_data=True,
+           python_requires='>=3.11',
+           setup_requires=['setuptools>=3.2'],
