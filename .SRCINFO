@@ -1,0 +1,32 @@
+pkgbase = python-saxonche-bin
+	pkgdesc = Official Python bindings for the SaxonC-HE XSLT, XQuery and XPath processor
+	pkgver = 13.0.0
+	pkgrel = 1
+	url = https://www.saxonica.com/html/saxon-c/index.html
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0 AND Apache-2.0 AND BSD-3-Clause AND X11 AND W3C-20150513
+	makedepends = python-installer
+	depends = python>=3.14
+	depends = python<3.15
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	provides = python-saxonche=13.0.0
+	conflicts = python-saxonche
+	noextract = saxonche-13.0.0-cp314-cp314-manylinux_2_24_x86_64.pypi.whl
+	noextract = saxonche-13.0.0-cp314-cp314-manylinux_2_24_aarch64.pypi.whl
+	source = SAXON-LICENSE.txt
+	source = JAMESCLARK.txt
+	source = JLINE2.txt
+	source = W3C-LICENSE.txt
+	b2sums = 0719ae14362c858005ce79de6e9e258f4d72d53c6bb28caa1e38483969dfc941e4cb517fd91241dd59b872594232a87f510a9f2f1ba801f99de304878a7e0998
+	b2sums = 4f3df2dbe3766828196839b2329eb362ba1c88f1f2871830b8ac0469feadb13cac0ebaca3c9ce151b2d4a68b6b056871d9a6befbe11fd1863c33593da7098e8d
+	b2sums = d2da14cb27b0242a2a86f86bfd29b7ab8ef297017c6b58dbe91f7c1c81684cf95c1a56a603035e69cb83f367284575eb483616bdd66a816a374606ffe5db0ea2
+	b2sums = 87a8912fd4da4ec6a627405205d7341aea440ca0c40b9201474dc5e645bf79fec74d9e42c7e72b3ab8eea873b2393c8b8dce6c644c671e968cc842ba310d5485
+	source_x86_64 = saxonche-13.0.0-cp314-cp314-manylinux_2_24_x86_64.pypi.whl::https://files.pythonhosted.org/packages/28/c6/f9e6cc024e5e899bcca4c4b730457c1990b2c62197d470867a3b7aef796b/saxonche-13.0.0-cp314-cp314-manylinux_2_24_x86_64.whl
+	b2sums_x86_64 = 6ecd710bcbe91ba238d6509a6da5ac48bb3edfd3a6c076e9e80ab349b221f33a4dbfa9d28a9c24400db6aa75c4b4c5c99573d869a3ab51f31b881bacba18abc8
+	source_aarch64 = saxonche-13.0.0-cp314-cp314-manylinux_2_24_aarch64.pypi.whl::https://files.pythonhosted.org/packages/b0/40/0ed698395b0fd216a6ef95c9fe1435648ca80a7ebf1289d422a6d97928a1/saxonche-13.0.0-cp314-cp314-manylinux_2_24_aarch64.whl
+	b2sums_aarch64 = c22151212c13665f7b4342ae0af70962e1c75f12409f132d32bfc080cfa9f9657a89ced41de1aa8a08153118c148498e49110ab70d1576f924ff587696ebf631
+
+pkgname = python-saxonche-bin
