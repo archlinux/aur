@@ -2,24 +2,25 @@
 
 _pkgname=moony.lv2
 pkgname=moony-lv2-git
-pkgver=0.29.1.r2493.54f6d76
+pkgver=0.41.255.r2825.32288d84
 pkgrel=1
 pkgdesc="Realtime Lua as programmable glue in LV2 - git master"
 arch=('i686' 'x86_64')
-url='http://open-music-kontrollers.ch/lv2/moony/'
+url='https://git.open-music-kontrollers.ch/~hp/moony.lv2'
 license=('Artistic2.0')
 groups=('lv2-plugins' 'pro-audio')
-depends=('libgl')
-makedepends=('git' 'lv2' 'meson' 'sord')
+depends=('cairo' 'fontconfig' 'libgl' 'libvterm' 'pixman')
+makedepends=('git' 'lv2' 'meson' 'sord' 'fontconfig' 'pixman' 'libvterm' 'cairo')
 provides=("${_pkgname}")
 conflicts=('moony-lv2' "${_pkgname}")
-source=("git+https://github.com/OpenMusicKontrollers/moony.lv2")
+source=("git+https://git.ventosus.ch/~hp/moony.lv2")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  printf "%s.r%s.%s" $(tail -n 1 VERSION) "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(grep -oP "^option\('version'.*value\s*:\s*'\K[^']+" meson_options.txt)" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
