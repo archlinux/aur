@@ -13,7 +13,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-pkgver=26.2+0.15.0+0.30.0+1.0.4
+pkgver=26.2+0.15.1+0.30.0+1.0.4
 pkgrel=1
 _ver=${pkgver//\+/_}
 
@@ -49,7 +49,7 @@ source=("minecraft-server-${_mng_ver}.tar.gz"::"https://github.com/Edenhofer/min
 		"quilt-installer-${_quilt_ver}.jar"::"https://maven.quiltmc.org/repository/release/org/quiltmc/quilt-installer/${_quilt_ver}/quilt-installer-${_quilt_ver}.jar")
 noextract=("quilt-${_pkgver}.jar")
 sha256sums=('55a9063d77e6fbb79b6e120c4a3faf78a129cc36b8874a895cc2261c3735130c'
-            'f0c6e04e7f3b932d801b9e783ae17c960ff3cadc0f0109d6cc9be5240e99d455')
+            '0a229138caa1b87fd8f5622038410696f98bb85871a279640e7002404c4d0dc2')
 
 prepare() {
 	java -Duser.home="${srcdir}" -jar "quilt-installer-${_quilt_ver}.jar" install server ${_minecraft_ver} ${_quilt_loader_ver} --download-server
