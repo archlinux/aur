@@ -1,0 +1,16 @@
+pkgbase = uad-ng-git
+    pkgname = uad-ng-git
+    pkgver = r1.2.0.1234
+    pkgrel = 1
+    pkgdesc = Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices (next generation, development git version)
+    url = https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation
+    license = ('GPL3')
+    arch = ('x86_64')
+    depends = ('android-tools' 'fontconfig' 'vulkan-icd-loader')
+    makedepends = ('cargo' 'git')
+    provides = ('universal-android-debloater' 'uad-ng')
+    conflicts = ('universal-android-debloater' 'universal-android-debloater-bin' 'universal-android-debloater-git' 'uad-ng')
+    source = git+https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation.git
+    source = uad-ng.desktop
+    source = uad-ng-logo.png::https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation/raw/main/resources/assets/logo-light.png
+    sha256sums = ('SKIP' 'SKIP' 'SKIP')
