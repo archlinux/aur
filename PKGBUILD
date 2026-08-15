@@ -6,7 +6,7 @@ pkgname=imgbrd-grabber-appimage
 _pkgname="${pkgname%-appimage}"
 _reponame=imgbrd-grabber
 _rdnsname=org.bionus.Grabber
-pkgver=7.13.0
+pkgver=7.14.0
 pkgrel=1
 pkgdesc='Very customizable imageboard/booru downloader with powerful filenaming features'
 arch=(x86_64)
@@ -27,7 +27,7 @@ source=(
   "https://github.com/Bionus/${_reponame}/releases/download/v${pkgver}/${_appimage}"
   "https://raw.githubusercontent.com/Bionus/${_reponame}/v${pkgver}/LICENSE"
 )
-sha256sums=('f9a9c1efcdb5afb621416ac3b53ca78f2d92073609e43c7f51641f37d2769579'
+sha256sums=('d283f33769e76141c8984ea6bc68970af58fed56b3b48e9666fabfa30af99d09'
             'cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30')
 
 prepare() {
