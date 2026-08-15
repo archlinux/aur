@@ -2,7 +2,7 @@
 
 pkgname=lungo-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.2.r16.7e7dd53
+pkgver=1.0.5.r31.83a5d4f
 pkgrel=1
 pkgdesc="A simple systray applet to prevent the system from going idle or suspending on demand (git version)"
 url="https://github.com/Antiz96/lungo"
@@ -45,6 +45,7 @@ package() {
 	install -Dm 755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 	install -Dm 644 "res/icons/${_pkgname}-off.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}-off.svg"
 	install -Dm 644 "res/icons/${_pkgname}-on.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_pkgname}-on.svg"
+	install -Dm 644 "res/desktop/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 	install -Dm 644 "res/desktop/${_pkgname}.desktop" "${pkgdir}/etc/xdg/autostart/${_pkgname}.desktop"
 	install -Dm 644 "res/completions/${_pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
 	install -Dm 644 "res/completions/${_pkgname}.zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"

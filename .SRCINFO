@@ -1,6 +1,6 @@
 pkgbase = lungo-git
 	pkgdesc = A simple systray applet to prevent the system from going idle or suspending on demand (git version)
-	pkgver = 1.0.2.r16.7e7dd53
+	pkgver = 1.0.5.r31.83a5d4f
 	pkgrel = 1
 	url = https://github.com/Antiz96/lungo
 	arch = x86_64
