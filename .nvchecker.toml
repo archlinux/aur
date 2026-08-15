@@ -1,0 +1,4 @@
+[protoc-gen-go-ttrpc]
+source = "git"
+git = "https://github.com/containerd/ttrpc.git"
+prefix = "v"
