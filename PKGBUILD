@@ -5,12 +5,16 @@
 
 _name="libdvdcss"
 pkgname="lib32-${_name}"
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Portable abstraction library for DVD decryption (32 bit)"
 url="https://www.videolan.org/developers/libdvdcss.html"
-arch=('x86_64')
-license=('GPL-2.0-or-later')
+arch=(
+  'x86_64'
+)
+license=(
+  'GPL-2.0-or-later'
+)
 depends=(
   "${_name}>=${pkgver}"
   'lib32-glibc' 
@@ -23,11 +27,15 @@ provides=(
   "${_name}.so"
 )
 _pkgsrc="${_name}-${pkgver}"
-source=("https://code.videolan.org/videolan/${_name}/-/archive/${pkgver}/${_pkgsrc}.tar.bz2")
-        # "https://download.videolan.org/pub/${_name}/${pkgver}/${_pkgsrc}.tar.bz2"
-        # "https://download.videolan.org/pub/${_name}/${pkgver}/${_pkgsrc}.tar.bz2.asc")
-sha256sums=('f204a9d8ac8a8414095d556373e5af9b95bb7cc72bf1467d936a48c961e8c474')
-# validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key
+source=(
+  "https://download.videolan.org/pub/${_name}/${pkgver}/${_pkgsrc}.tar.xz"
+  "https://download.videolan.org/pub/${_name}/${pkgver}/${_pkgsrc}.tar.xz.asc"
+)
+sha256sums=('7ea556c846b7bfc32d47b41cae56d1863a6b6d5f706bb162778d6f298490977c'
+            'SKIP')
+validpgpkeys=(
+  '65F7C6B4206BD057A7EB73787180713BE58D1ADC' # VideoLAN Release Signing Key
+)
 
 build() {
   export CFLAGS+=" -m32"
@@ -44,7 +52,7 @@ build() {
 
   cd "${srcdir}"
   arch-meson "${meson_options[@]}"
-  meson compile -C "${_pkgsrc}/build"
+  meson compile -C "${meson_options[1]}"
 }
 
 package() {
