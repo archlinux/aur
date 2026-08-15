@@ -1,57 +1,57 @@
 # Maintainer: Rafael Baboni Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgname=celestia
-pkgname=$_pkgname-bin
+pkgname=${_pkgname}-bin
 pkgver=1.7.0
-pkgrel=21
+pkgrel=22
 pkgdesc="Real-time space simulation"
 arch=('x86_64')
 url="https://celestiaproject.space/"
 license=('GPL-2.0')
 
-conflicts=($_pkgname)
-provides=($_pkgname)
-depends=(xcb-util-image gtk2 ki18n5 libimobiledevice-glue knotifications5 cairo kconfigwidgets5 dbus qt5-wayland kwayland5 libbluray kcrash5 openssl-1.1 libcanberra kwindowsystem5 gcc-libs xcb-util-renderutil libwebp libsm libssh libglvnd kwallet5 xz fontconfig kcodecs5 kdbusaddons5 libelf mesa nettle libxkbcommon-x11 karchive5 opus glibc lz4 libopenmpt xcb-util-keysyms bash libtheora libimobiledevice lame libtirpc libtasn1 libinput libxkbcommon util-linux-libs gnutls tslib alsa-lib at-spi2-core kjobwidgets5 gmp libpng gdk-pixbuf2 kcoreaddons5 luajit libepoxy openjpeg2 qt5-base libtool qt5-svg solid5 libjpeg-turbo libxcb kio5 libx11 kservice5 zstd libva kconfig5 libxslt sqlite speex libxtst kitemviews5 libvorbis libice libgcrypt libxml2 qt5-speech wayland kguiaddons5 kcompletion5 aom krb5 mpg123 mtdev kwidgetsaddons5 ncurses double-conversion libxrender qt5-quickcontrols2 pcre2 kglobalaccel5 libidn2 pixman sonnet5 perl xcb-util-wm libxext libpulse libproxy libsndfile kiconthemes5 twolame harfbuzz kxmlgui5 gsm acl libdbusmenu-qt5 libxi libgudev attr freetype2 kauth5 qt5-x11extras systemd-libs libp11-kit libdrm glib2 kbookmarks5 libvdpau pango libcap avahi libxcursor libcups libxfixes zlib qt5-declarative ktextwidgets5 libogg)
-makedepends=(libappimage)
+conflicts=("${_pkgname}")
+provides=("${_pkgname}" 'libcspice.so')
 
-_qtver=6
-_target="celestia-latest-x86_64.AppImage"
-_download_url="https://download.opensuse.org/repositories/home:/munix9:/celestia:/1.7/AppImage/"
+depends=('glibc' 'libstdc++' 'libepoxy' 'libavif' 'luajit' 'libjpeg-turbo' 'libpng' 'ffmpeg' 'icu' 'fmt' 'freetype2' 'qt6-base' 'meshoptimizer' 'gltfpack')
+
+_download_url="https://download.opensuse.org/repositories/home:/munix9:/celestia:/1.7/Arch/x86_64/"
+_archive_extension="pkg.tar.zst"
+_celestia_ui="qt6"
+
+_version_cspice="67-5.1"
+_version_celestia_app="git20260814+57cc951-1.1"
+_version_celestia_data="git20260810+e4d5d27-2.1"
 
 source=(
-	"$_download_url/$_target"
-	"$_pkgname.bash"
+	"$_download_url/celestia-data-${pkgver}~${_version_celestia_data}-any.${_archive_extension}"
+	"$_download_url/celestia-textures-hires-${pkgver}~${_version_celestia_data}-any.${_archive_extension}"
+	"$_download_url/celestia-textures-lores-${pkgver}~${_version_celestia_data}-any.${_archive_extension}"
+	"$_download_url/celestia-textures-medres-${pkgver}~${_version_celestia_data}-any.${_archive_extension}"
 )
-sha256sums=('4ae826405f934818fed52e640812702a0465d4c10af6fc3f2bb5bbb4b854c728'
-            '58672bcc02b5f50eb5dee22264b4ddb629a3927779941e359257927261021830')
+source_x86_64=(
+	"$_download_url/celestia-${pkgver}~${_version_celestia_app}-${arch[0]}.${_archive_extension}"
+	"$_download_url/libcelestia-${pkgver}~${_version_celestia_app}-${arch[0]}.${_archive_extension}"
+	"$_download_url/celestia-${_celestia_ui}-${pkgver}~${_version_celestia_app}-${arch[0]}.${_archive_extension}"
 
-_squashfs_root="squashfs-root"
+	"$_download_url/cspice-${_version_cspice}-${arch[0]}.${_archive_extension}"
+)
+sha256sums=('10efab553fe71aa14c65efbe78cff13e4bb3412beac49ffc5d90317d5aa340a7'
+            'b47135461dab58cb7d822c27c8589f2c540ad1cfc287e9ae6d11c61a4f7d2dd0'
+            '471916f02ac326ef4184f15001bda9dec605662a04ad6142d131dbc13b36adf1'
+            '12c1287f8d5ad7f297002ac2cf1727ec899114cbfda8c6181ca84e5ab6162358')
+sha256sums_x86_64=('f610b8f80c52844706a8dc08b47fcb1c58fe255c36315655866f0a7fc688b32e'
+                   '40a10d0b78752fc5bc27c62428af6e079f9386b84a31b7976cc4c16d8d940069'
+                   '9c157cf6a7fbd0c9402b9328e0a824441a1984183e41eafe7e3f5030cdeb1035'
+                   '81799e9355a50ad9915fe5eb54f72c2ff45caa29becc805c2dc006bb98024168')
+
 
 prepare() {
-	echo 'Extracting the AppImage (This may take some time)... '
-
-	rm -rf $_squashfs_root
-	chmod +x $_target
-	./$_target --appimage-extract >> /dev/null
-	chmod +x $_squashfs_root/AppRun
-
-	echo 'Done'
-
-	echo 'Adjusting...'
-
-	sed -i -e 's/Celestia \(.*\)/Celestia/g' -e 's/Space Simulator \(.*\)/Space Simulator/g' $_squashfs_root/space.celestiaproject.$_pkgname.desktop
-
-	echo 'Done'
+	sed -i -e 's/Celestia \(.*\)/Celestia/g' -e 's/Space Simulator \(.*\)/Space Simulator/g' "${srcdir}/usr/share/applications/space.celestiaproject.celestia_qt6.desktop"
 }
 
 package() {
-	mkdir -p $pkgdir/opt/$_pkgname
-	cp -arf ./$_squashfs_root $pkgdir/opt/$_pkgname
-	rm -rf $pkgdir/opt/$_pkgname/$_squashfs_root/etc/ $pkgdir/opt/$_pkgname/$_squashfs_root/usr/bin/gtk-update-icon-cache $pkgdir/opt/$_pkgname/$_squashfs_root/usr/bin/sh $pkgdir/opt/$_pkgname/$_squashfs_root/var $pkgdir/opt/$_pkgname/$_squashfs_root/root $pkgdir/opt/$_pkgname/$_squashfs_root/run $pkgdir/opt/$_pkgname/$_squashfs_root/sbin
+	cp -ra "${srcdir}/usr" "${pkgdir}/"
+	cp -ra "${srcdir}/etc" "${pkgdir}/"
 
-	install -Dm644 $pkgdir/opt/$_pkgname/$_squashfs_root/space.celestiaproject.$_pkgname.desktop -t $pkgdir/usr/share/applications/
-
-	install -Dm644 $pkgdir/opt/$_pkgname/$_squashfs_root/celestia.png -t $pkgdir/usr/share/icons/
-
-	install -Dm755 ./$_pkgname.bash $pkgdir/usr/bin/$_pkgname
+	ln -sf "/usr/bin/${_pkgname}-${_celestia_ui}" "${pkgdir}/usr/bin/${_pkgname}"
 }

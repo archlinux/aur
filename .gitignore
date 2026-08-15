@@ -3,5 +3,4 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-
-!celestia.bash
+!*.sh
