@@ -1,0 +1,26 @@
+post_install() {
+  echo "==> Setting up DWN..."
+
+  # Setup plugin in /etc/skel for new users if omarchy template exists
+  if [ -d "/etc/skel/.config/omarchy" ] && [ -d "/opt/dwn/plugins/dwn" ]; then
+    mkdir -p "/etc/skel/.config/omarchy/plugins/dwn"
+    cp -r /opt/dwn/plugins/dwn/* "/etc/skel/.config/omarchy/plugins/dwn/" 2>/dev/null || true
+    chmod +x "/etc/skel/.config/omarchy/plugins/dwn/dwn-ctl.sh" 2>/dev/null || true
+  fi
+
+  # Detect Quickshell / Omarchy environment
+  if command -v quickshell >/dev/null 2>&1 || [ -d "/usr/share/omarchy" ] || command -v omarchy >/dev/null 2>&1; then
+    echo "==> Quickshell / Omarchy detected."
+    echo "==> DWN Quickshell status bar plugin is bundled in /opt/dwn/plugins/dwn/"
+    echo "==> To enable in your Omarchy top bar, run:"
+    echo "    omarchy plugin enable dwn right"
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "==> DWN has been removed."
+}

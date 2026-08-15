@@ -1,15 +1,19 @@
 pkgbase = dwn-bin
-	pkgdesc = A Flutter-based image view and editor app for linux
-	pkgver = 1.1.0
+	pkgdesc = A simple, fast Linux download manager powered by aria2c with Omarchy theme & Quickshell support
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/mirarr-app/dwn
+	install = dwn.install
 	arch = x86_64
 	license = MIT
 	depends = gtk3
+	depends = aria2
+	optdepends = quickshell: status bar widget support
+	optdepends = omarchy: Omarchy shell integration
 	provides = dwn
 	conflicts = dwn
 	options = !debug
-	source = dwn-bin-1.1.0.tar.gz::https://github.com/mirarr-app/dwn/releases/download/1.1.0/dwn.tar.gz
+	source = dwn-bin-1.2.0.tar.gz::https://github.com/mirarr-app/dwn/releases/download/1.2.0/dwn.tar.gz
 	sha256sums = SKIP
 
 pkgname = dwn-bin
