@@ -1,5 +1,8 @@
 post_install() {
 	cat <<'EOF'
+This package targets Omarchy 4 (Arch Linux + Hyprland with the Lua config).
+It may work on other Hyprland setups, but only Omarchy 4 is tested.
+
 As each regular desktop user who will run Wispr Flow, execute:
   wispr-flow --setup
 Then run `wispr-flow --doctor`. If input devices are not accessible, reboot

@@ -2,8 +2,8 @@
 
 pkgname=wispr-flow-hyprland
 pkgver=1.6.447
-pkgrel=1
-pkgdesc='Unofficial Wispr Flow desktop client adapted for Arch Linux and Hyprland'
+pkgrel=2
+pkgdesc='Unofficial Wispr Flow desktop client packaged for Omarchy 4 (Hyprland Lua) on Arch'
 arch=('x86_64')
 url='https://github.com/kukapu/whsprflow-arch'
 license=('0BSD AND BSD-3-Clause AND LicenseRef-Proprietary AND MIT AND Unlicense')
@@ -56,7 +56,7 @@ conflicts=('wispr-flow')
 options=('!strip' '!debug')
 install=wispr-flow-hyprland.install
 
-_support_commit='091bcb9dcac2221be3d007d56eb98704e2407d61'
+_support_commit='71ea2acdf0588b7aa58b69d459a3857e12ce3a7f'
 _port_commit='6fb43cd809f8319a9e05da4b4e7a2d3264c126ab'
 _electron_version='42.3.0'
 _nupkg="WisprFlow-${pkgver}-full.nupkg"
@@ -74,7 +74,7 @@ source=(
 )
 noextract=("${_nupkg}" "${_electron_zip}")
 sha256sums=(
-  'a26c0b35682176888dbd9229b997e7aa69f05c7301d167612bd4a1d777714884'
+  'c701c97a9bb2640dec3b93b58c042479a2d266d800a4f28425371e447ebbe4f1'
   '365c68a8b3915a643a51634c298ac178cd0e441bd112707878f318cdef8dcac2'
   'c5a6175c74028c30b11c9a96a295df1b47780929ceaf3753a96ffa855b591f03'
   '487a667ca6a734b958c16cff1df74d9d44d2c18a6cccdb4dd51f6301a356c420'
@@ -131,7 +131,12 @@ check() {
     WISPR_LINUX_LOCAL_START_SOUND \
     WISPR_LINUX_LOCAL_STOP_SOUND \
     WISPR_LINUX_COMPACT_STATUS_WINDOW \
-    WISPR_LINUX_TRANSIENT_STATUS_HIDE
+    WISPR_LINUX_TRANSIENT_STATUS_HIDE \
+    WISPR_LINUX_STATUS_ZOOM \
+    WISPR_LINUX_STATUS_GEOMETRY \
+    WISPR_LINUX_STATUS_INTERACTIVE \
+    WISPR_LINUX_STATUS_HITTEST \
+    WISPR_LINUX_STATUS_TOUR
   do
     grep -qF "$marker" "$main_bundle"
   done
