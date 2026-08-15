@@ -1,7 +1,7 @@
 # Maintainer: qaidvoid
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=soar-bin
-pkgver=0.12.7
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="A fast, modern package manager for Static Binaries, Portable Formats (AppImage|AppBundle|FlatImage|Runimage) & More.(Prebuilt version)"
 arch=(
@@ -19,8 +19,8 @@ options=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-aarch64-linux.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-x86_64-linux.tar.gz")
-sha256sums_aarch64=('22f5502e04d32fd79ca9985b15a847be186315bab7d1f9b2d1af7e81f7b7c76b')
-sha256sums_x86_64=('f94747f12498142ec01f8af2b4d4be5db6ead9c8561eb22a5ee69f8361f2397b')
+sha256sums_aarch64=('f692beab446c2598576245eb790dd6ebbb59ecc0efef3a05cd68a21f80aa9d7e')
+sha256sums_x86_64=('595150fd253c2408940dca5edba0cb9904ae4ab8e72f1cebd88d77c871f5c3e4')
 package() {
     install -Dm755 "${srcdir}/release/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/release/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
