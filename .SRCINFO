@@ -1,0 +1,22 @@
+pkgbase = waybar-mechabar-git
+	pkgdesc = A customizable and modular Waybar configuration.
+	pkgver = r246.9d325c3
+	pkgrel = 1
+	url = https://github.com/sejjy/mechabar
+	arch = any
+	license = MIT
+	makedepends = git
+	optdepends = bluez-utils: Bluetooth.
+	optdepends = brightnessctl: Display brightness.
+	optdepends = fzf: Fuzzy finder.
+	optdepends = libpulse: Sound manipulation.
+	optdepends = networkmanager: Network.
+	optdepends = notification-daemon: Notifications.
+	optdepends = otf-commit-mono-nerd: Font.
+	optdepends = ttf-jetbrains-mono-nerd: Font.
+	optdepends = waybar: Status bar.
+	provides = waybar-mechabar
+	source = mechabar::git+https://github.com/sejjy/mechabar.git
+	sha512sums = SKIP
+
+pkgname = waybar-mechabar-git
