@@ -1,20 +1,20 @@
 pkgbase = gaze-bin
 	pkgdesc = Daemon, CLI, and PAM integration for Gaze
-	pkgver = 0.2.9
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://gaze.gundulabs.com
 	install = gaze-bin.install
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = opencv>=5.0
 	depends = opencv<5.1
+	depends = opencv>=5.0
 	depends = pam
 	depends = tpm2-tss
-	provides = gaze=0.2.9-1
+	provides = gaze=0.2.10-1
 	conflicts = gaze
 	backup = etc/dbus-1/system.d/com.gundulabs.Gaze.conf
 	backup = etc/gaze/config.toml
-	source = gaze-0.2.9-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-0.2.9-1-x86_64.pkg.tar.zst
-	sha256sums = 5d8f97686ca6e97d5ced7f3b02d8c6fa27117d0f87329499502552ea0ce2bc8a
+	source = gaze-0.2.10-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-0.2.10-1-x86_64.pkg.tar.zst
+	sha256sums = 8433a5961c151ea14e90122de021d9efe9ebc746d8cc4feb042921f771b907ff
 
 pkgname = gaze-bin

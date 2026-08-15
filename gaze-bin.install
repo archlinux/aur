@@ -2,6 +2,7 @@ function post_install() {
 #!/bin/sh
 # SPDX-FileCopyrightText: 2026 Gundu Labs
 # SPDX-License-Identifier: GPL-3.0-or-later
+
 set -e
 
 configure_pam_sudo() {
@@ -45,9 +46,10 @@ configure_pam_sudo
 configure_pam_polkit
 
 if [ -d /run/systemd/system ]; then
-	systemctl daemon-reload >/dev/null 2>&1
+	systemctl daemon-reload >/dev/null 2>&1 || true
 	dbus-send --system --type=method_call --dest=org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus.ReloadConfig >/dev/null 2>&1 || true
 	systemctl restart polkit >/dev/null 2>&1 || true
+	systemctl try-restart gazed >/dev/null 2>&1 || true
 fi
 
 }
@@ -56,6 +58,7 @@ function post_upgrade() {
 #!/bin/sh
 # SPDX-FileCopyrightText: 2026 Gundu Labs
 # SPDX-License-Identifier: GPL-3.0-or-later
+
 set -e
 
 configure_pam_sudo() {
@@ -99,9 +102,10 @@ configure_pam_sudo
 configure_pam_polkit
 
 if [ -d /run/systemd/system ]; then
-	systemctl daemon-reload >/dev/null 2>&1
+	systemctl daemon-reload >/dev/null 2>&1 || true
 	dbus-send --system --type=method_call --dest=org.freedesktop.DBus /org/freedesktop/DBus org.freedesktop.DBus.ReloadConfig >/dev/null 2>&1 || true
 	systemctl restart polkit >/dev/null 2>&1 || true
+	systemctl try-restart gazed >/dev/null 2>&1 || true
 fi
 
 }
