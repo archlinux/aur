@@ -5,14 +5,15 @@ post_install() {
     echo ":: To enable and start the service:"
     echo "   systemctl enable --now unified-hifi-control"
     echo ":: Web UI available at http://localhost:8088"
-    echo ":: Configuration: /etc/unified-hifi-control/"
+    echo ":: Configuration and state: /var/lib/unified-hifi-control/"
 }
 
 post_upgrade() {
     echo ":: Unified Hi-Fi Control upgraded"
-    if systemctl is-active --quiet unified-hifi-control; then
-        echo ":: Restarting service..."
-        systemctl restart unified-hifi-control
+    echo ":: Restart the service when convenient to run the new version"
+    if [[ -d /etc/unified-hifi-control ]]; then
+        echo ":: Legacy files remain in /etc/unified-hifi-control/"
+        echo ":: See the Arch installation guide for migration instructions"
     fi
 }
 
@@ -29,7 +30,6 @@ pre_remove() {
 
 post_remove() {
     echo ":: Unified Hi-Fi Control removed"
-    echo ":: Configuration files in /etc/unified-hifi-control/ were preserved"
-    echo ":: State data in /var/lib/unified-hifi-control/ was preserved"
+    echo ":: Configuration and state in /var/lib/unified-hifi-control/ were preserved"
     echo ":: Remove manually if no longer needed"
 }

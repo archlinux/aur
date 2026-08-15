@@ -13,14 +13,12 @@ RestartSec=10
 
 # Environment
 Environment=PORT=8088
-Environment=CONFIG_DIR=/etc/unified-hifi-control
-Environment=DATA_DIR=/var/lib/unified-hifi-control
+Environment=CONFIG_DIR=/var/lib/unified-hifi-control
 Environment=RUST_LOG=info
 
 # Run as dedicated user (created dynamically)
 DynamicUser=yes
 StateDirectory=unified-hifi-control
-ConfigurationDirectory=unified-hifi-control
 
 # Security hardening
 NoNewPrivileges=true

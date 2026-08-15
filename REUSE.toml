@@ -1,0 +1,10 @@
+version = 1
+SPDX-PackageName = "unified-hifi-control-bin"
+SPDX-PackageSupplier = "Muness Castle <muness@gmail.com>"
+SPDX-PackageDownloadLocation = "https://aur.archlinux.org/packages/unified-hifi-control-bin"
+
+[[annotations]]
+path = [".SRCINFO", "PKGBUILD", "REUSE.toml", "*.install", "*.service"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Muness Castle"
+SPDX-License-Identifier = "0BSD"
