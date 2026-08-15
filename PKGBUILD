@@ -8,7 +8,7 @@
 
 pkgname=knime-desktop
 _upstream_name="knime"
-pkgver=5.11.0
+pkgver=5.12.0
 pkgrel=1
 pkgdesc="A user-friendly graphical workbench for the entire data analysis process"
 url="http://www.knime.org/"
@@ -27,7 +27,7 @@ optdepends=('r: Required for R-scriptable nodes'
 options=('!emptydirs')
 
 source=("https://download.knime.org/analytics-platform/linux/${_upstream_name}_${pkgver}.linux.gtk.${arch}.tar.gz")
-sha256sums=('8ddae832a2a39baead5f4b45bcd2561c4a6e789405739913965cea66f157bec7')
+sha256sums=('1a13f21310059cfbf272d4f24c7fa86c473ebee350cfecd7798c10d97db94fab')
 
 prepare() {
     # Updated wrapper script for Wayland compatibility and file path migration.
