@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=tonepush-git
-pkgver=0.4.0.r0.8283a0d
+pkgver=0.4.1.r0.fa7ad09
 pkgrel=1
 pkgdesc="Open-source editor for Line 6 Helix and HX pedals, with a GUI and a scriptable CLI"
 arch=('x86_64' 'aarch64')

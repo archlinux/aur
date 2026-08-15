@@ -1,6 +1,6 @@
 pkgbase = tonepush-git
 	pkgdesc = Open-source editor for Line 6 Helix and HX pedals, with a GUI and a scriptable CLI
-	pkgver = 0.4.0.r0.8283a0d
+	pkgver = 0.4.1.r0.fa7ad09
 	pkgrel = 1
 	url = https://tonepush.rocks
 	install = tonepush-git.install
