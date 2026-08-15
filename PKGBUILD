@@ -1,6 +1,7 @@
 pkgname=mailove-git
 pkgver=2.5.r0.g4dc126e
 pkgrel=1
+pkgdesc="The fast KDE-only email client"
 arch=('any')
 url="https://github.com/nekromoff/mailove"
 license=('LGPL-3.0')
