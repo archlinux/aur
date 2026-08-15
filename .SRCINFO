@@ -1,0 +1,12 @@
+pkgbase = lenovo-logo-changer
+	pkgdesc = Personalize your Lenovo's UEFI boot logo with jpg/tga/pcx/gif/bmp/png
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/chnzzh/lenovo-logo-changer
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/chnzzh/lenovo-logo-changer/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 5e383bf2937faf4d4d6980682dac96368e8516b6f2f03d440dd7a578094ad675
+
+pkgname = lenovo-logo-changer
