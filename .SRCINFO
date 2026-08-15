@@ -1,0 +1,23 @@
+pkgbase = mc-vector-git
+	pkgdesc = Vector-06c floppy and hard disk image reader/writer for Midnight Commander
+	pkgver = 0.0.5.g2db9497
+	pkgrel = 1
+	url = https://github.com/ekundo/mc
+	install = mc-vector-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = mc
+	depends = cpmtools
+	depends = gawk
+	provides = mc-vector=0.0.5.g2db9497
+	conflicts = mc-vector
+	options = !debug
+	source = mc-vector-git::git+https://github.com/ekundo/mc.git#commit=2db9497
+	source = mc-vector.hook
+	source = mc-vector-register-ext
+	sha256sums = SKIP
+	sha256sums = 5babc6bf076dd846bc3b484d6538372fc30a42dd51f4547f488bc553affaecb0
+	sha256sums = ca8e9eae5f55c68cd9ff0aa5527bd31c1a3c6ad1ab2d00c88b2dca71b316a947
+
+pkgname = mc-vector-git

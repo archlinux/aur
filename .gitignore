@@ -1,0 +1,7 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!mc-vector-git.install
+!mc-vector.hook
+!mc-vector-register-ext

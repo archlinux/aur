@@ -1,0 +1,81 @@
+#!/bin/bash
+
+set -u
+
+ext_file=${MC_EXT_INI:-/etc/mc/mc.ext.ini}
+begin='# >>> mc-vector >>>'
+end='# <<< mc-vector <<<'
+
+usage() {
+  echo "usage: ${0##*/} add|remove" >&2
+  exit 2
+}
+
+block() {
+  cat << 'EOF'
+# >>> mc-vector >>>
+# Vector-06c disk images - https://github.com/ekundo/mc
+[fdd]
+Regex=\\.fdd$
+RegexIgnoreCase=true
+Open=%cd %p/ufdd://
+
+[hdd]
+Regex=\\.hdd$
+RegexIgnoreCase=true
+Open=%cd %p/uhdd://
+# <<< mc-vector <<<
+EOF
+}
+
+strip_block() {
+  sed "/^${begin}\$/,/^${end}\$/d" "$1"
+}
+
+stripped=""
+result=""
+trap 'rm -f "$stripped" "$result"' EXIT
+
+replace() {
+  chmod 644 "$result" && mv -f "$result" "$ext_file"
+}
+
+add() {
+  if ! grep -qE '^Version[[:space:]]*=' "$ext_file"; then
+    echo "${0##*/}: no Version= line in $ext_file, leaving it alone" >&2
+    exit 0
+  fi
+
+  stripped=$(mktemp "$ext_file.XXXXXX") || exit 1
+  result=$(mktemp "$ext_file.XXXXXX") || exit 1
+
+  strip_block "$ext_file" > "$stripped" || exit 1
+  {
+    sed -n '1,/^Version[[:space:]]*=/p' "$stripped"
+    block
+    sed '1,/^Version[[:space:]]*=/d' "$stripped"
+  } > "$result" || exit 1
+
+  replace
+}
+
+remove() {
+  grep -qF "$begin" "$ext_file" || exit 0
+
+  result=$(mktemp "$ext_file.XXXXXX") || exit 1
+  strip_block "$ext_file" > "$result" || exit 1
+  replace
+}
+
+[ $# -eq 1 ] || usage
+
+if [ ! -f "$ext_file" ]; then
+  echo "${0##*/}: $ext_file does not exist, nothing to do" >&2
+  exit 0
+fi
+
+case $1 in
+  add)    add ;;
+  remove) remove ;;
+  *)      usage ;;
+esac

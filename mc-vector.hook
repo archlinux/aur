@@ -1,0 +1,10 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = etc/mc/mc.ext.ini
+
+[Action]
+Description = Re-registering Vector-06c disk images in mc.ext.ini...
+When = PostTransaction
+Exec = /usr/share/mc-vector/register-ext add

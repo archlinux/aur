@@ -1,0 +1,27 @@
+_register() {
+  /usr/share/mc-vector/register-ext add
+}
+
+_notes() {
+  cat << 'EOF'
+==> Vector-06c images are registered in /etc/mc/mc.ext.ini; restart mc to pick them up.
+    If you have a personal ~/.config/mc/mc.ext.ini, mc reads that one INSTEAD of the
+    system file - copy the "# >>> mc-vector >>>" block over by hand.
+    For calling cpmtools by hand the v06 format is in /usr/share/mc-vector/diskdefs:
+    cd /usr/share/mc-vector && cpmls -f v06 /path/to/image.fdd
+EOF
+}
+
+post_install() {
+  _register
+  _notes
+}
+
+post_upgrade() {
+  _register
+}
+
+post_remove() {
+  [ -f /etc/mc/mc.ext.ini ] || return 0
+  sed -i '/^# >>> mc-vector >>>$/,/^# <<< mc-vector <<<$/d' /etc/mc/mc.ext.ini
+}
