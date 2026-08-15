@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=tonepush
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Open-source editor for Line 6 Helix and HX pedals, with a GUI and a scriptable CLI"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/tonepush"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/tonepush-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/tonepush-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('35c0c6fd8a802a13afa461c70b650dfdcd43274b92c873d993209c193bd1bc2f')
-sha256sums_aarch64=('a1c8fa6a859d9ce49ffe740c92ee23745f8f0b2157b9d82b648d7393e21c70d3')
+sha256sums_x86_64=('8ac4308601528540b4f2a1d442e98710c4fc8ac23e93a6f10af7c7c557c9d8f6')
+sha256sums_aarch64=('1a3aeb69085f68e80a85cbab728a48df4945380aed379dde2e680a7d77f07f7b')
 
 package() {
   local target
