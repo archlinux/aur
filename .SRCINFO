@@ -1,6 +1,6 @@
 pkgbase = hop-bin
 	pkgdesc = Hop from server to server without ever leaving your terminal.
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/p-arndt/hop
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = hop-bin
 	provides = hop
 	conflicts = hop
 	options = !strip
-	source = README-0.7.0.md::https://raw.githubusercontent.com/p-arndt/hop/v0.7.0/README.md
-	sha256sums = 2fb8c50086c0821f2819bab758fc842d0f77b15da177809980a6170d8272b633
-	source_x86_64 = hop-x86_64-0.7.0.tgz::https://github.com/p-arndt/hop/releases/download/v0.7.0/hop_0.7.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 74fc418dcd920d7f1ead2883caea9781b48ca70f0691b3d07317fda853cb8f22
-	source_aarch64 = hop-aarch64-0.7.0.tgz::https://github.com/p-arndt/hop/releases/download/v0.7.0/hop_0.7.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 394db1773166575412cac78f094baa2420e85908535e94e28c6a576006b236a4
+	source = README-0.8.0.md::https://raw.githubusercontent.com/p-arndt/hop/v0.8.0/README.md
+	sha256sums = 9db88352213effd0895df8b47611228b06752e2ba345237d7375960da96a2beb
+	source_x86_64 = hop-x86_64-0.8.0.tgz::https://github.com/p-arndt/hop/releases/download/v0.8.0/hop_0.8.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = af2aa6459f1e860bb4e587ce19b26abc808f4f8f9ae585b73ff6958d3513d66a
+	source_aarch64 = hop-aarch64-0.8.0.tgz::https://github.com/p-arndt/hop/releases/download/v0.8.0/hop_0.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 505ade3b83b29c76440b03e5d3a9657f2fd6e210ba6807525abfd9368629e543
 
 pkgname = hop-bin
