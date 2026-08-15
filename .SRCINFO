@@ -1,10 +1,12 @@
 pkgbase = flamenco-bin
 	pkgdesc = Render farm management software for animation and visual effects
 	pkgver = 3.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flamenco.blender.org/
 	arch = x86_64
 	license = GPL-3.0-or-later
+	options = !strip
+	options = !debug
 	source = https://flamenco.blender.org/downloads/flamenco-3.9.3-linux-amd64.tar.gz
 	source = flamenco-manager@.service
 	source = flamenco-worker@.service
