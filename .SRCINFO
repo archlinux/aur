@@ -1,6 +1,6 @@
 pkgbase = gnuradio-git
 	pkgdesc = General purpose DSP and SDR toolkit, with drivers for usrp and fcd.
-	pkgver = v3.11.0.0git.861.gd6bd59e94
+	pkgver = v3.11.0.0git.1100.gf06564b3c
 	pkgrel = 1
 	url = https://github.com/gnuradio/gnuradio
 	arch = i686
@@ -41,8 +41,8 @@ pkgbase = gnuradio-git
 	optdepends = python-lxml: Some GRC modules use lxml optionally for improved performance
 	optdepends = python-qtpy: GNU Radio Companion requires this for the Qt-based front end
 	optdepends = python-pygccxml: Required by blocktool
-	provides = gnuradio=v3.11.0.0git.861.gd6bd59e94
-	provides = gnuradio-companion=v3.11.0.0git.861.gd6bd59e94
+	provides = gnuradio=v3.11.0.0git.1100.gf06564b3c
+	provides = gnuradio-companion=v3.11.0.0git.1100.gf06564b3c
 	conflicts = gnuradio
 	conflicts = gnuradio-companion
 	source = git+https://github.com/gnuradio/gnuradio.git

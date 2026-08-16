@@ -5,7 +5,7 @@
 
 pkgname=gnuradio-git
 _gitname=gnuradio
-pkgver=v3.11.0.0git.861.gd6bd59e94
+pkgver=v3.11.0.0git.1100.gf06564b3c
 pkgrel=1
 pkgdesc="General purpose DSP and SDR toolkit, with drivers for usrp and fcd."
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ build() {
         -DENABLE_INTERNAL_VOLK=OFF \
         -DENABLE_GR_CTRLPORT=OFF \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DGR_PYTHON_DIR=/usr/lib/python3.13/site-packages \
+        -DGR_PYTHON_DIR=/usr/lib/python3.14/site-packages \
         -DQWT_LIBRARIES=/usr/lib/libqwt.so -Wno-dev ../
     make
 }
