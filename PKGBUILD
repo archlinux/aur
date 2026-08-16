@@ -13,7 +13,7 @@
 
 pkgname=yuki-iptv
 pkgver=260816.0
-pkgrel=1
+pkgrel=2
 pkgdesc="IPTV player with EPG support, based on mpv and Qt"
 arch=('any')
 url="https://github.com/itachi-re/yuki-iptv"
@@ -25,6 +25,8 @@ depends=(
   'python-requests'
   'python-unidecode'
   'python-orjson'
+  'python-chardet'
+  'python-gobject'
   'ttf-font'
   'xdg-utils'
 )
