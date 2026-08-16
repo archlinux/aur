@@ -1,6 +1,6 @@
 # Maintainer: patcito
 pkgname=prettymux
-pkgver=0.2.52
+pkgver=0.2.53
 pkgrel=1
 pkgdesc="GPU-accelerated terminal multiplexer"
 arch=('x86_64')
@@ -39,9 +39,9 @@ package() {
     "$pkgdir/usr/lib/prettymux/libghostty.so"
 
   # Ghostty color themes, so the terminal theme picker has something to apply.
-  install -d "$pkgdir/usr/share/ghostty/themes"
+  install -d "$pkgdir/usr/share/prettymux/themes"
   cp -a "$srcdir/ghostty/zig-out/share/ghostty/themes/." \
-    "$pkgdir/usr/share/ghostty/themes/" 2>/dev/null || true
+    "$pkgdir/usr/share/prettymux/themes/" 2>/dev/null || true
 
   # Data files
   install -Dm644 "$srcdir/prettymux/src/gtk/prettymux-shell-integration.sh" \
