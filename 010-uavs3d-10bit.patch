@@ -1,0 +1,5 @@
+--- a/source/CMakeLists.txt
++++ b/source/CMakeLists.txt
+@@ -121 +121 @@
+-set(libdir "lib")
++set(libdir "lib/uavs3d-10bit")
