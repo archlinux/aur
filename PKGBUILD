@@ -25,7 +25,7 @@ sha256sums=('7a85413f2bc354f4f8aa832b718af122e48965e9e0eb9012ee659c13c6385c93'
             'f62a8464414a65b1aac20820d4f4eeb0aa25e5c865aa4ba5914f1f10a41d336d')
 validpgpkeys=('6DAA6E64A76D2840571B4902528897B826403ADA'   # Werner Koch (dist signing 2020)
               'AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD')  # Niibe Yutaka (GnuPG Release Key)
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 
 prepare() {
   cd "${srcdir}/libgpg-error-${pkgver}"
