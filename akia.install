@@ -1,7 +1,9 @@
-#!/bin/sh
-
 post_install() {
-    printf "==> Start and enable pcscd.service for accessing smartcard readers\n"
+    cat <<'EOF'
+==> Akia needs the PC/SC smart card daemon. Enable it with:
+        systemctl enable --now pcscd.socket
+==> User config/data is stored under ~/.local/share/akia/
+EOF
 }
 
 post_upgrade() {

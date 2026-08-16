@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Akia
+GenericName=Smart Card Application
+GenericName[tr]=Akıllı Kart Uygulaması
+Comment=TÜBİTAK AKİS smart card application
+Comment[tr]=TÜBİTAK AKİS akıllı kart uygulaması
+Exec=akia %U
+Icon=akia
+Terminal=false
+Categories=Utility;Security;
+StartupNotify=true
+StartupWMClass=install4j-controller-Main
+Keywords=akis;smartcard;akilli;kart;tubitak;pkcs11;

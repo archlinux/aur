@@ -1,17 +1,29 @@
 pkgbase = akia
-	pkgdesc = PKCS#11 library and utility tools for Akis Smartcard
-	pkgver = 6.8.4
+	pkgdesc = TÜBİTAK AKİS smart card application
+	pkgver = 6.8.10
 	pkgrel = 1
-	url = https://akiskart.bilgem.tubitak.gov.tr/
+	url = https://akiskart.bilgem.tubitak.gov.tr/destek/
 	install = akia.install
 	arch = x86_64
-	license = custom
+	license = LicenseRef-custom
+	makedepends = icoutils
+	depends = java-runtime>=8
 	depends = pcsclite
 	depends = ccid
-	depends = java-environment
-	source = https://akiskart.bilgem.tubitak.gov.tr/wp-content/uploads/sites/33/2025/08/Akia_linux_6_8_4.deb_.zip
-	source = bilgem-tubitak-gov-tr-chain.pem
-	sha256sums = 0a45a4591915aabd90a33fa89ee82d39c40873aa15c6fb80350f508b5e74e1b4
-	sha256sums = ea799f417cac9516ead14331025aa41098d378438ef921190e16e009dd115c0e
+	depends = hicolor-icon-theme
+	optdepends = pcsc-tools: smart card reader debugging utilities
+	provides = akia-bin=6.8.10
+	conflicts = akia-bin
+	replaces = akia-bin
+	source = akia-6.8.10.deb.zip::https://akiskart.bilgem.tubitak.gov.tr/wp-content/uploads/sites/33/2026/06/Akia_linux_6_8_10.deb_.zip
+	source = akia.sh
+	source = akia.desktop
+	source = akia.install
+	source = LICENSE
+	sha256sums = 2a72bc7979835121ff1f3f4e68e45f5724afd0475a2a6c90c9293f90192efb92
+	sha256sums = f5854b72bc40f08747e5c9c7fa35fb890d28265eadb8efd9adb8dfda0d6bfa20
+	sha256sums = 2be59701fc5064051bb848eceb896bc90e25f5a141651576ce92c274fb01daf4
+	sha256sums = 82bda1d0f457d0e25db5186d1526b59daeb0cdab7db33a874fb3dc66bc87985a
+	sha256sums = 8c73c5a9978b14becc69df690ae870f46e409c8dc3ff1fe296099492557e16d5
 
 pkgname = akia
