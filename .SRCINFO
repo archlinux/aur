@@ -13,6 +13,7 @@ pkgbase = waybar-mechabar-git
 	optdepends = networkmanager: Network.
 	optdepends = notification-daemon: Notifications.
 	optdepends = otf-commit-mono-nerd: Font.
+	optdepends = pacman-contrib: Package manager.
 	optdepends = ttf-jetbrains-mono-nerd: Font.
 	optdepends = waybar: Status bar.
 	provides = waybar-mechabar

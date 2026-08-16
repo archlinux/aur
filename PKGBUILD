@@ -21,6 +21,7 @@ optdepends=("bluez-utils: Bluetooth."
     "networkmanager: Network."
     "notification-daemon: Notifications."
     "otf-commit-mono-nerd: Font."
+    "pacman-contrib: Package manager."
     "ttf-jetbrains-mono-nerd: Font."
     "waybar: Status bar.")
 makedepends=("git")
