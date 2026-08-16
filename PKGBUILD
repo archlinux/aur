@@ -1,7 +1,7 @@
 # Maintainer: WeeXnes <weexnes@weexnes.dev>
 
 pkgname=controlcenter-daemon
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="ControlCenter Daemon (standalone C# service)"
 arch=('x86_64')
