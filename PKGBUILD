@@ -20,7 +20,7 @@ source=(
 	"${pkgname}-i686-fix.patch")
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' \
 	-DFMT_DOC=OFF
 	-DCMAKE_CXX_STANDARD=23 )
