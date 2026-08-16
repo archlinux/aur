@@ -1,7 +1,7 @@
 pkgbase = vale-ls
 	pkgdesc = An implementation of the Language Server Protocol (LSP) for the Vale command-line tool.
-	pkgver = 0.4.0
-	pkgrel = 2
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/errata-ai/vale-ls
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = vale-ls
 	depends = glibc
 	depends = gcc-libs
 	depends = vale
-	source = vale-ls-0.4.0.tar.gz::https://github.com/errata-ai/vale-ls/archive/refs/tags/v0.4.0.tar.gz
-	b2sums = 6f9e1daa3e3bf22615203dc31cb2e0b646ca0e166ed63dd4626668d2da6448f404a866df115bdf34d392efdcf466e1c5d67c1de986bc6e1b0846263cfff93f79
+	source = vale-ls-0.5.0.tar.gz::https://github.com/errata-ai/vale-ls/archive/refs/tags/v0.5.0.tar.gz
+	b2sums = be64788f9cbc343b374ecca447f53e9c3b0f76ed7818b420644bbd31b5cd53f4df349ab25f5aff292ae27a35ada6fced16391adfeafa69d96be572188a8fba8a
 
 pkgname = vale-ls

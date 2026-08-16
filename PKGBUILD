@@ -1,8 +1,9 @@
-# Maintainer: Yuuki Rika <yvvki@duck.com>
+# Maintainer: tiziodcaio <d dot bass05 at pm dot me>
+# Contributor: Yuuki Rika <yvvki@duck.com>
 
 pkgname=vale-ls
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='An implementation of the Language Server Protocol (LSP) for the Vale command-line tool.'
 arch=(any)
 url='https://github.com/errata-ai/vale-ls'
@@ -15,17 +16,28 @@ makedepends=(cargo)
 
 _pkgsrc=$pkgname-$pkgver
 source=("$_pkgsrc.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('6f9e1daa3e3bf22615203dc31cb2e0b646ca0e166ed63dd4626668d2da6448f404a866df115bdf34d392efdcf466e1c5d67c1de986bc6e1b0846263cfff93f79')
+b2sums=('be64788f9cbc343b374ecca447f53e9c3b0f76ed7818b420644bbd31b5cd53f4df349ab25f5aff292ae27a35ada6fced16391adfeafa69d96be572188a8fba8a')
+
+prepare() {
+  cd $_pkgsrc
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target host-tuple
+}
 
 build() {
   CFLAGS+=' -ffat-lto-objects'
   cd $_pkgsrc
-  cargo build --release
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export OPENSSL_NO_VENDOR=1
+  export ZSTD_SYS_USE_PKG_CONFIG=1
+  cargo build --frozen --release
 }
 
 check() {
   cd $_pkgsrc
-  cargo test --release
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen
 }
 
 package() {
