@@ -23,6 +23,7 @@ pkgbase = dynamic-glacier-git
 	depends = upower
 	optdepends = kitty: WiFi settings via nmtui
 	optdepends = bluedevil: Bluetooth device wizard
+	optdepends = power-profiles-daemon: system power profile switching
 	provides = dynamic-glacier
 	conflicts = dynamic-glacier
 	source = dynamic-glacier::git+https://github.com/mavxa/DynamicGlacier.git#branch=main

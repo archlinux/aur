@@ -1,3 +1,5 @@
+# Maintainer: mavxa <mavxa at duck dot com>
+
 pkgname=dynamic-glacier-git
 pkgver=r15.gf0e6d20
 pkgrel=1
@@ -24,6 +26,7 @@ depends=(
 optdepends=(
   'kitty: WiFi settings via nmtui'
   'bluedevil: Bluetooth device wizard'
+  'power-profiles-daemon: system power profile switching'
 )
 makedepends=('git')
 provides=('dynamic-glacier')
