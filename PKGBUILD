@@ -3,7 +3,7 @@ pkgname=beyondallreason-git
 electronver=42
 pkgver=r4555.30fda84
 electronver=42
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest release of BYAR-Chobby, the launcher for Beyond All Reason - An open source RTS game built on top of the Spring RTS Engine"
 arch=(x86_64)
 url="https://beyondallreason.info"
@@ -22,7 +22,6 @@ b2sums=('SKIP'
         'SKIP'
         'f60a49716afae0ff71e76e497852ae6849407dcbf302a0098c914b1b75a672043beda334e2ac311a11237d6907ffa51ab035607786ad2adfcdc12cf58c78b21b'
         '29bad1442d12fe970722e2d4ab6f4daea47b8d3014b1d4dc11eab5b790329c434f7b109a21a396138313a10cd36821f9c711515ed4666466c71e7f0b90ff65c5')
-
 
 pkgver() {
   cd "BYAR-Chobby"
@@ -58,7 +57,7 @@ prepare() {
   jq '.build.linux.target="dir"' <<<$(<package.json) > package.json
   cat package.json
 
-  npm ci --ignore-scripts
+  npm ci --ignore-scripts --allow-git=all
 
   sed -i 's|\${process\.resourcesPath}/\.\.||g' src/spring_platform.js
 }

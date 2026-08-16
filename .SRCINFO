@@ -1,7 +1,7 @@
 pkgbase = beyondallreason-git
 	pkgdesc = The latest release of BYAR-Chobby, the launcher for Beyond All Reason - An open source RTS game built on top of the Spring RTS Engine
 	pkgver = r4555.30fda84
-	pkgrel = 1
+	pkgrel = 2
 	url = https://beyondallreason.info
 	arch = x86_64
 	license = GPL-2.0-or-later
