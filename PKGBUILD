@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A semantic code bookmarking system for humans and agents"
 
-pkgver=0.7.28
+pkgver=0.7.29
 pkgrel=1
 _gitversion=${pkgver}
 
@@ -26,7 +26,7 @@ depends=('bash' 'zlib')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-cli-${_barch[0]}.tar.xz")
-sha256sums_x86_64=('18022db41fd6a04b4ab823351a567423e4bea5be3af34597ed20866eeea4e24a')
+sha256sums_x86_64=('1d9963920701d6d0a9703d2616c0284e72258d6d23c9a281dc29863017bce8f2')
 
 
 case ${CARCH} in
