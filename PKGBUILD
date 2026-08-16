@@ -22,15 +22,35 @@ _tag=v0.5.0              # mpv-omniphony release tag (patches-master + ad_orende
 _mpvcommit=f4d13e1c2c91f3a56e589aef9cb44cbc02e26e47   # mpv master, FEL native
 _plcommit=a7a18af88ff0a17c04840dcb3246047bb6b46df3    # libplacebo master, PL_API_VER 370
 pkgver=0.5.0             # $_tag without the 'v'
-pkgrel=1
+pkgrel=2                 # -2: declare ffmpeg/libass/libdovi/... sonames (see depends)
 pkgdesc="mpv (master snapshot) with the orender spatial audio decoder and Dolby Vision P7 FEL playback"
 arch=('x86_64')
 url="https://github.com/mgth/mpv-omniphony"
 license=('GPL-3.0-or-later')
 # ffmpeg>=2:9.0: dovi_split BSF + DoVi stream group. shaderc/lcms2/libdovi/
 # vulkan-icd-loader/xxhash: runtime deps of the bundled libplacebo soname.
-depends=('orender>=0.5.0' 'ffmpeg>=2:9.0' 'libass' 'lua' 'libx11' 'mesa'
-         'shaderc' 'lcms2' 'libdovi' 'vulkan-icd-loader' 'xxhash')
+#
+# The `>=2:9.0` above is a *feature* floor (it says "old ffmpeg lacks dovi_split"),
+# not an ABI guard: a `>=` bound is satisfied by every future release, so it cannot
+# catch a soname bump. The bare `.so` entries below are the ABI guard — makepkg's
+# find_libdepends() rewrites each into `name.so=MAJOR-64` read from the binaries
+# built here (e.g. libavcodec.so=63-64), so pacman refuses an ffmpeg upgrade until
+# this package is rebuilt rather than letting the installed mpv break. The sibling
+# mpv-omniphony hit exactly that: built against ffmpeg 8, ffmpeg 9 landed, pacman
+# said nothing, mpv died with "cannot open shared object file: libavcodec.so.62".
+#
+# Deliberately NO 'libplacebo.so' here, unlike mpv-omniphony. This package ships
+# its own /usr/lib/libplacebo.so.371 and mpv links that, not the system .360 —
+# a bare 'libplacebo.so' would expand to `libplacebo.so=371-64`, which no package
+# provides, making this package uninstallable. Do not copy that entry over from
+# the sibling PKGBUILD. The pinned libplacebo is version-locked to this package
+# by construction, so it needs no external guard; its own runtime deps
+# (libdovi/shaderc/lcms2) do, and are listed.
+depends=('orender>=0.5.0' 'ffmpeg>=2:9.0' 'libass' 'luajit' 'libx11' 'mesa'
+         'shaderc' 'lcms2' 'libdovi' 'vulkan-icd-loader' 'xxhash'
+         'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+         'libavutil.so' 'libswresample.so' 'libswscale.so'
+         'libass.so' 'libdovi.so' 'libshaderc_shared.so' 'liblcms2.so')
 optdepends=('harletty-bridge: decode compressed/object-audio formats via the orender bridge plugin')
 makedepends=('meson' 'ninja' 'python' 'git')
 # Match the repo mpv's epoch (1:) and advertise the bundled libmpv soname,
