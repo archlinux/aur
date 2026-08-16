@@ -52,6 +52,80 @@ die() {
   exit 1
 }
 
+# How to escalate for the few writes under /etc: not at all as root, otherwise
+# the first of sudo/doas on PATH. Every use is a plain command prefix, which
+# both take alike. XSU overrides the choice for anything else that does too.
+xsu_pick() {
+  local c
+  [[ "$(id -u)" == 0 ]] && return 0
+  if [[ -n ${XSU:-} ]]; then
+    printf '%s' "$XSU"
+    return 0
+  fi
+  for c in sudo doas; do
+    if command -v "$c" >/dev/null; then
+      printf '%s' "$c"
+      return 0
+    fi
+  done
+  die "not root and neither sudo nor doas is available; re-run as root or set XSU"
+}
+
+# Everything that writes under /etc, in one place, running as plain root. The
+# unprivileged flow reaches it through a single elevated re-invocation
+# (--internal-install below), so this is the only code that needs auditing
+# for privilege and the user is prompted at most once.
+install_state() {
+  local setupdir=$1 ssh=$2 tun=$3
+
+  install -o root -g root -m600 -d "${TS_STATEDIR}"
+  install -o root -g root -m644 -t "${TS_STATEDIR}" "${setupdir}/tailscaled.state"
+
+  # default.env is the user's to edit -- the setup output says to -- and
+  # re-running this script (a new key, switching --ssh) is no reason to reset
+  # their PORT or FLAGS. Only a missing or empty file gets the defaults;
+  # empty counts because the install hook refuses to build from one anyway.
+  if [[ -s "${TS_STATEDIR}/default.env" ]]; then
+    info "keeping existing ${TS_STATEDIR}/default.env"
+  else
+    cat >"${TS_STATEDIR}/default.env" <<EOF
+# Set the port to listen on for incoming VPN packets.
+# Remote nodes will automatically be informed about the new port number,
+# but you might want to configure this in order to set external firewall
+# settings.
+PORT="41641"
+
+# Network stack for the initramfs tailscaled. Empty means userspace
+# networking, which needs no kernel module; an interface name (tailscale0)
+# means a kernel TUN device. Rebuild the initramfs after changing it, so the
+# tun module is added or removed to match.
+TUN="${tun}"
+
+# Extra flags you might want to pass to tailscaled.
+FLAGS=""
+EOF
+    chmod 644 "${TS_STATEDIR}/default.env"
+  fi
+
+  # An explicit --tun updates a kept default.env too: set the TUN line to
+  # this run's choice, leaving everything else the user may have edited
+  # alone. When the flag was not given, an existing file's TUN stays theirs.
+  if [[ -n $tun ]] && grep -q '^TUN=' "${TS_STATEDIR}/default.env"; then
+    sed -i "s|^TUN=.*|TUN=\"${tun}\"|" "${TS_STATEDIR}/default.env"
+  elif [[ -n $tun ]]; then
+    printf 'TUN="%s"\n' "$tun" >>"${TS_STATEDIR}/default.env"
+  fi
+
+  if [[ $ssh == yes ]]; then
+    install -o root -g root -m600 -Dt "${TS_STATEDIR}/ssh" "${setupdir}/etc/ssh/"ssh_host_*_key
+    install -o root -g root -m644 -Dt "${TS_STATEDIR}/ssh" "${setupdir}/etc/ssh/"ssh_host_*_key.pub
+  else
+    # Host keys left behind by an earlier run would otherwise be copied into
+    # every image built from here on, for a server this node no longer runs.
+    rm -rf "${TS_STATEDIR}/ssh"
+  fi
+}
+
 # --- --check: read-only verification of an existing setup -------------------
 
 CHECK_RC=0
@@ -78,21 +152,31 @@ effective_hooks() {
 }
 
 run_check() {
-  local xsu=""
-  [[ "$(id -u)" != 0 ]] && xsu=sudo
+  # Privileged from the first probe: the state directory is root-only. Same
+  # single-boundary rule as the install -- re-exec the whole check as root
+  # once rather than prefixing every probe, which keeps the body plain and
+  # asks an escalation tool for a password at most once.
+  if [[ "$(id -u)" != 0 ]]; then
+    local xsu self
+    xsu=$(xsu_pick)
+    self=$(readlink -f "$0" 2>/dev/null) || self=$0
+    # Unquoted on purpose: XSU may name a tool plus its arguments.
+    # shellcheck disable=SC2086
+    exec $xsu "$self" --check
+  fi
 
   # The configuration the install hook will copy into the image.
-  if $xsu test -s "${TS_STATEDIR}/tailscaled.state"; then
+  if [[ -s "${TS_STATEDIR}/tailscaled.state" ]]; then
     chk_ok "node key present at ${TS_STATEDIR}/tailscaled.state"
   else
     chk_fail "no node key at ${TS_STATEDIR}/tailscaled.state; run ${CMD0} to register one"
   fi
-  if $xsu test -s "${TS_STATEDIR}/default.env"; then
+  if [[ -s "${TS_STATEDIR}/default.env" ]]; then
     chk_ok "daemon settings present at ${TS_STATEDIR}/default.env"
   else
     chk_fail "no ${TS_STATEDIR}/default.env; run ${CMD0} to write one"
   fi
-  if $xsu test -s "${TS_STATEDIR}/ssh/ssh_host_ed25519_key"; then
+  if [[ -s "${TS_STATEDIR}/ssh/ssh_host_ed25519_key" ]]; then
     chk_ok "SSH host keys present: the image will answer Tailscale SSH"
   else
     chk_warn "no SSH host keys (registered with --no-ssh?): the image needs its own ssh server hook"
@@ -144,12 +228,15 @@ run_check() {
   # kernel device, the module has to be in the image too -- configured but not
   # rebuilt is exactly the silent break this mode can produce.
   local img found=0 checked=0 list tun
-  tun=$($xsu sh -c ". '${TS_STATEDIR}/default.env' 2>/dev/null; printf '%s' \"\${TUN:-}\"")
+  # The subshell keeps the sourcing contained, the same way the install hook
+  # reads it at build time.
+  # shellcheck source=/dev/null
+  tun=$(. "${TS_STATEDIR}/default.env" 2>/dev/null; printf '%s' "${TUN:-}")
   if command -v lsinitcpio >/dev/null; then
     for img in /boot/initramfs-*.img; do
       [[ -e $img ]] || continue
       checked=1
-      list=$($xsu lsinitcpio -l "$img" 2>/dev/null)
+      list=$(lsinitcpio -l "$img" 2>/dev/null)
       if grep -q 'tailscaled$' <<<"$list"; then
         found=1
         chk_ok "$img contains tailscaled"
@@ -191,6 +278,16 @@ cleanup() {
   exit "$rc"
 }
 trap "cleanup" EXIT
+
+# The elevated half of the flow: not part of the public interface, reached
+# only through the re-invocation above install_state. Everything it needs
+# arrives as arguments, so sudo's environment scrubbing has nothing to break.
+if [[ ${1:-} == --internal-install ]]; then
+  [[ "$(id -u)" == 0 ]] || die "--internal-install is internal and runs as root only"
+  [[ $# -eq 4 ]] || die "--internal-install expects <setupdir> <ssh> <tun>"
+  install_state "$2" "$3" "$4"
+  exit 0
+fi
 
 # Scan the arguments for the flags this script has an opinion about, and note
 # whether the user stated them so the defaults below only fill in gaps.
@@ -320,55 +417,24 @@ if ! tailscale --socket="$socket" up --qr --accept-risk=lose-ssh "$@"; then
   die "Failed to configure tailscale. Check daemon logs at /tmp/setup-initcpio-tailscale-daemon.log"
 fi
 
-[[ "$(id -u)" != 0 ]] && xsu=sudo || xsu=""
-$xsu install -o root -g root -m600 -d "${TS_STATEDIR}"
-$xsu install -o root -g root -m644 -t "${TS_STATEDIR}" "${SETUPDIR}/tailscaled.state"
-
-# default.env is the user's to edit -- the next steps below say to -- and
-# re-running this script (a new key, switching --ssh) is no reason to reset
-# their PORT or FLAGS. Only a missing or empty file gets the defaults; empty
-# counts because the install hook refuses to build from an empty one anyway.
-# The test runs through $xsu: the state directory is not traversable by other
-# users, so a plain -s would read as absent whenever sudo is in play.
-if $xsu test -s "${TS_STATEDIR}/default.env"; then
-  info "keeping existing ${TS_STATEDIR}/default.env"
+# The one escalation boundary of the whole flow: as root, install the state
+# directly; otherwise re-invoke this script once, elevated, and let the same
+# code run plainly there. One password prompt on any escalation tool.
+if [[ "$(id -u)" == 0 ]]; then
+  install_state "$SETUPDIR" "$TS_SSH" "$TS_TUN"
 else
-  $xsu tee "${TS_STATEDIR}/default.env" >/dev/null <<EOF
-# Set the port to listen on for incoming VPN packets.
-# Remote nodes will automatically be informed about the new port number,
-# but you might want to configure this in order to set external firewall
-# settings.
-PORT="41641"
-
-# Network stack for the initramfs tailscaled. Empty means userspace
-# networking, which needs no kernel module; an interface name (tailscale0)
-# means a kernel TUN device. Rebuild the initramfs after changing it, so the
-# tun module is added or removed to match.
-TUN="${TS_TUN}"
-
-# Extra flags you might want to pass to tailscaled.
-FLAGS=""
-EOF
-fi
-
-# An explicit --tun updates a kept default.env too: set the TUN line to this
-# run's choice, leaving everything else the user may have edited alone. When
-# the flag was not given, an existing file's TUN is theirs and stays.
-if [[ -n $TS_TUN ]] && $xsu grep -q '^TUN=' "${TS_STATEDIR}/default.env"; then
-  $xsu sed -i "s|^TUN=.*|TUN=\"${TS_TUN}\"|" "${TS_STATEDIR}/default.env"
-elif [[ -n $TS_TUN ]]; then
-  printf 'TUN="%s"\n' "$TS_TUN" | $xsu tee -a "${TS_STATEDIR}/default.env" >/dev/null
+  SELF=$(readlink -f "$0" 2>/dev/null) || SELF=$0
+  xsu=$(xsu_pick)
+  # Unquoted on purpose: XSU may name a tool plus its arguments.
+  # shellcheck disable=SC2086
+  $xsu "$SELF" --internal-install "$SETUPDIR" "$TS_SSH" "$TS_TUN" ||
+    die "the privileged install step failed; nothing was written"
 fi
 
 if [[ $TS_SSH == yes ]]; then
-  $xsu install -o root -g root -m600 -Dt "${TS_STATEDIR}/ssh" "${SETUPDIR}/etc/ssh/"ssh_host_*_key
-  $xsu install -o root -g root -m644 -Dt "${TS_STATEDIR}/ssh" "${SETUPDIR}/etc/ssh/"ssh_host_*_key.pub
   ssh_note="  * Tailscale SSH is enabled, so you will log in with 'ssh root@${TS_HOSTNAME}'
     and need no ssh server hook in the image. Re-run with '--no-ssh' to use your own"
 else
-  # Host keys left behind by an earlier run would otherwise be copied into every
-  # image built from here on, for an SSH server this node no longer runs.
-  $xsu rm -rf "${TS_STATEDIR}/ssh"
   ssh_note="  * Tailscale SSH is disabled, so add an ssh server hook (dropbear or tinyssh)
     to /etc/mkinitcpio.conf or you will have no way to enter the passphrase"
 fi

@@ -45,13 +45,16 @@ yay -S mkinitcpio-tailscale
 ### 1. Register the initrd node
 
 ```sh
-sudo setup-initcpio-tailscale
+setup-initcpio-tailscale
 ```
 
 The helper starts a throwaway `tailscaled` and prints a URL and QR code to
 authenticate with; it does not touch the Tailscale service your booted system
-runs. Any extra arguments are passed straight through to `tailscale up`, so
-flags like `--login-server=` work as usual.
+runs. No root needed up front: it escalates through `sudo` or `doas`,
+whichever is present, in a single elevated step for the final writes under
+`/etc/initcpio/tailscale/`, so you are asked for a password at most once. Any
+extra arguments are passed straight through to `tailscale up`, so flags like
+`--login-server=` work as usual.
 
 It registers a node named after your host with an `-initrd` suffix (a machine
 called `homeserver` appears as `homeserver-initrd`) with [Tailscale
@@ -59,8 +62,8 @@ SSH](#tailscale-ssh-server) turned on, and leaves the node key and the SSH host
 keys in `/etc/initcpio/tailscale/`. Pass `--no-ssh` if you would rather run
 `dropbear` or `tinyssh` in the image instead.
 
-**Disable key expiry for that node** in the [machines
-list](https://console.tailscale.com/admin/machines). Node keys expire by default,
+**Disable key expiry for that node** on the [Machines page of the Tailscale
+admin console](https://console.tailscale.com/admin/machines). Node keys expire by default,
 and an expired initrd node cannot reach your tailnet, which you would discover
 while locked out of a machine that is waiting for its passphrase.
 
@@ -126,7 +129,7 @@ Before rebooting a machine you cannot walk up to, confirm the setup end to
 end:
 
 ```sh
-sudo setup-initcpio-tailscale --check
+setup-initcpio-tailscale --check
 ```
 
 It verifies, without changing anything, that the configuration files exist,
@@ -181,7 +184,7 @@ ssh root@homeserver-initrd
 Turn it off with:
 
 ```sh
-sudo setup-initcpio-tailscale --no-ssh
+setup-initcpio-tailscale --no-ssh
 ```
 
 which also removes any host keys an earlier run left in
@@ -195,8 +198,11 @@ hook brings `lo` up itself, since nothing else in a busybox image would. And
 log in as root: everything in an initramfs is owned by root, and
 `dropbear` refuses an `authorized_keys` it does not consider owned by the user
 logging in, so root is the login that works. That is the same reason the
-retired dropbear hooks used a `root_key`. The boot test exercises exactly this
-setup, dropbear included.
+retired dropbear hooks used a `root_key`. And if your daemon really must bind
+an interface address, register with `--tun`: the initramfs then runs on a
+kernel TUN device (`tailscale0`) and inbound connections arrive through it the
+ordinary way. The boot test exercises all of this, dropbear and both network
+stacks included.
 
 Note: the Tailscale SSH server only accepts connections from within your
 tailnet. The node won't accept local connections unless the client is also part
