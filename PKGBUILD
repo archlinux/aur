@@ -16,7 +16,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/${_dirnam
 sha256sums=('e87dce08116151f6b6d7de6b6faf41498e87e6cf848ff16fa3bd5402190ad4a3')
 
 _srcdir="${_dirname}-vulkan-sdk-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 
 build() {
   for _arch in ${_architectures}; do
