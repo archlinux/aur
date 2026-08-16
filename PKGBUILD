@@ -1,16 +1,15 @@
-# Working example of Arch Linux PKGBUILD for NsCDE 2.X - Chinese Localization
+# Working example of Arch Linux PKGBUILD for NsCDE 2.X
 pkgname=nscde-zh
-pkgver=2.3.10
+pkgver=2.4
 pkgrel=1
-pkgdesc="Not so Common Desktop Environment: Modern and functional CDE based on FVWM - Chinese Localization"
-arch=(x86_64 aarch64)
-url="https://github.com/wenyinos/NsCDE-zh"
+pkgdesc="Not so Common Desktop Environment: Modern and functional CDE based on FVWM"
+arch=('x86_64' 'aarch64')
+url="https://github.com/WenYin-Community/NsCDE"
 license=('GPL')
-depends=('libxext' 'libx11' 'libxpm' 'stalonetray' 'xsettingsd' 'fvwm3' 'glibc' 'ksh93'
-'imagemagick' 'xorg-xprop' 'xorg-xrdb' 'xorg-xset' 'xorg-xdpyinfo'
-'xorg-xrandr' 'xterm' 'python' 'python-pyxdg' 'python-yaml'
-'python-psutil' 'python-pyqt5' 'xdotool' 'xdg-utils' 'gettext' 'groff' 'ttf-dejavu' 'noto-fonts-cjk'
-'qt5ct' 'qt6ct')
+depends=('libxext' 'libx11' 'libxpm' 'stalonetray' 'xsettingsd' 'fvwm3' 'glibc' 'ksh'
+'imagemagick' 'xorg-xprop' 'xorg-xrdb' 'xorg-xset' 'xorg-xdpyinfo' 'xorg-xrefresh'
+'xorg-xmodmap' 'xorg-xrandr' 'gcc' 'xterm' 'python3' 'python-pyxdg' 'python-yaml'
+'python-psutil' 'python-pyqt5' 'xdotool' 'xdg-utils' 'gettext' 'groff' 'ttf-dejavu')
 makedepends=('xorgproto' 'autoconf' 'automake')
 optdepends=('xclip: Copy screen, window of area shot to X11 clipboard'
 'xscreensaver: Enhanced X screensaver'
@@ -18,28 +17,26 @@ optdepends=('xclip: Copy screen, window of area shot to X11 clipboard'
 'dex: Run desktop definitions from $HOME/.config/autostart'
 'gtk2: Pixmap engine for theme and Qt gtk engine is here'
 'qt5-styleplugins: integrate gtk2 NsCDE theme with Qt5'
+'qt5ct: Qt5 Configuration Utility'
+'qt6ct: Qt6 Configuration Utility'
 'picom: X compositor that may fix tearing issues'
 'gkrellm: System monitor package fits nicely with NsCDE'
-'qterminal: Terminal emulator'
-'pcmanfm-qt: File manager and application manager'
-'gvim: Text editor'
-'pavucontrol-qt: Volume control'
-'arandr: Screen settings'
-'kcalc: Calculator')
-provides=('nscde-zh')
-source=($pkgname-$pkgver.tar.gz::https://github.com/wenyinos/NsCDE-zh/archive/refs/tags/v${pkgver}_zh.tar.gz)
+'wqy-bitmapfont: Chinese bitmap fonts for zh_CN locale support')
+# options=()
+provides=('nscde')
+source=("nscde-zh-$pkgver::git+https://github.com/WenYin-Community/NsCDE.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/NsCDE-zh-${pkgver}_zh"
+  cd "$pkgname-$pkgver"
 
-  autoreconf -ivf
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make
 }
 
 package() {
-  cd "$srcdir/NsCDE-zh-${pkgver}_zh"
+  cd "$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir/" install
 }
+
