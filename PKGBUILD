@@ -14,7 +14,7 @@ options=('staticlibs' '!strip' '!buildflags')
 source=("$_pkgname-$pkgver.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=('5556deb5081fb246ee92afae73efd943c889cef0cafea92b0b82422d6a18f289')
 
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -msse4.2' )
 _srcdir="${_pkgname}-${pkgver}"
