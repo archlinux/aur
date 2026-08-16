@@ -1,14 +1,14 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=ima2-gen
-pkgver=3.0.7
+pkgver=3.5.2
 pkgrel=1
 pkgdesc='Local OAuth image generation studio for GPT Image 2 workflows'
 arch=('x86_64')
 url='https://lidge-jun.github.io/ima2-gen/'
 license=('MIT')
 depends=('nodejs>=20' 'gcc-libs' 'glibc' 'ncurses')
-makedepends=('npm' 'node-gyp' 'python')
+makedepends=('npm')
 optdepends=(
   'python: ComfyUI bridge support'
   'python-numpy: ComfyUI bridge support'
@@ -17,7 +17,7 @@ optdepends=(
 )
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('35a04cd8bcacfc7151cea7869abda5e19bdfdc30853b37440baeb8a9d4d55ad2')
+sha256sums=('6140a5f4b5c2734422fb511b09100854ac20b28c1b5379945e0e2130358ef796')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 latestver() {
@@ -34,17 +34,13 @@ package() {
   install -Dm644 "${node_root}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # npm 12 refuses to run install scripts unless the package is listed in
-  # allow-scripts, and only warns when it skips them, so better-sqlite3's
-  # native binding is silently absent. Build it here from the amalgamation
-  # shipped in the tarball, against the headers from the nodejs package.
+  # better-sqlite3 >=13 ships a prebuilt linux-x64.node in its npm tarball
+  # (lib/binding.js loads it directly), so no native build is needed here.
   local sqlite_dir="${node_root}/node_modules/better-sqlite3"
-  ( cd "${sqlite_dir}" && npm_config_nodedir=/usr node-gyp rebuild --release )
-  [[ -f "${sqlite_dir}/build/Release/better_sqlite3.node" ]] || return 1
-  rm -f "${sqlite_dir}/build/Release/test_extension.node"
+  [[ -f "${sqlite_dir}/prebuilds/linux-x64.node" ]] || return 1
 
   find "${node_root}" -type f -name '*.node' \
-    \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*android*' -o -name '*freebsd*' -o -name '*arm64*' -o -name '*armv7*' -o -name '*armhf*' -o -name '*linux-arm*' -o -name '*-musl*' \) \
+    \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*android*' -o -name '*freebsd*' -o -name '*arm64*' -o -name '*armv7*' -o -name '*armhf*' -o -name '*linux-arm*' -o -name '*musl*' \) \
     -delete 2>/dev/null || true
 
   rm -rf "${node_root}/node_modules/@img/sharp-linuxmusl-x64" \
@@ -62,8 +58,4 @@ package() {
         "${node_root}/node_modules/trash/lib/windows-trash.exe" \
         "${node_root}/node_modules/trash/lib/windows.js" \
         "${node_root}/node_modules/trash/lib/wsl.js"
-
-  rm -rf "${node_root}/node_modules/better-sqlite3/build/Release/obj.target"
-  find "${node_root}/node_modules/better-sqlite3/build" -type f ! -name '*.node' -delete 2>/dev/null || true
-  find "${node_root}/node_modules/better-sqlite3/build" -type d -empty -delete 2>/dev/null || true
 }
