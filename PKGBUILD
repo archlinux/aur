@@ -4,18 +4,18 @@
 
 pkgname=riffdiff
 _pkgname=riff
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="A diff filter highlighting which line parts have changed"
 arch=('x86_64')
 url='https://github.com/walles/riff'
 license=('MIT')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}") # binary name conflicts with riff dependency manager
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('d360058f0e51d162235307498485f92dc57518877f5646f00521b97e92957bbe')
+sha256sums=('2d84d005f33444143eb8f68eb72024cd7eb9addd0b933665aaf44de7e071c175')
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
