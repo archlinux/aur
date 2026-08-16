@@ -1,13 +1,13 @@
 # Maintainer: Axel H. <noirbizarre@gmail.com>
 #
-# Prebuilt binary package. `0.4.0`, `c0daacfe0ab60b655e50cec97405fae806f71ecf63a92ac48e7473a64ea24c3e` and `f2de663d7ebe8692079d93343f0dbf491ddb16838958baf6f051a9c088262295`
+# Prebuilt binary package. `0.5.0`, `b6d7906ecc0b096a38facb45579c3fdac00073b7ca8968fb7ef43f7c683bf498` and `04b73177db3259d6fcf86eb3f901e1d419605ddcdac43ecc147d72613a01effb`
 # are substituted by .github/workflows/aur.yaml from the published release
 # assets, and the result is pushed to the AUR. Edit this template, never the
 # PKGBUILD in the AUR repository: that one is regenerated at every release.
 
 pkgname=git-tpl-bin
 _pkgname=git-tpl
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Git-native project templates (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -32,19 +32,35 @@ options=('!strip' '!debug')
 # tags without a `v` prefix, so the tag is `$pkgver` as-is.
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/git-tpl_${pkgver}_linux-amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/$pkgver/git-tpl_${pkgver}_linux-arm64.tar.gz")
-sha256sums_x86_64=('c0daacfe0ab60b655e50cec97405fae806f71ecf63a92ac48e7473a64ea24c3e')
-sha256sums_aarch64=('f2de663d7ebe8692079d93343f0dbf491ddb16838958baf6f051a9c088262295')
+sha256sums_x86_64=('b6d7906ecc0b096a38facb45579c3fdac00073b7ca8968fb7ef43f7c683bf498')
+sha256sums_aarch64=('04b73177db3259d6fcf86eb3f901e1d419605ddcdac43ecc147d72613a01effb')
 
-# Fetched separately because the release archive holds the binary and nothing
-# else, and MIT is not one of the licences Arch keeps in
-# /usr/share/licenses/common — so the package has to install the file itself.
+# Fetched separately because the release archive carries no licence file, and
+# MIT is not one of the licences Arch keeps in /usr/share/licenses/common — so
+# the package has to install the file itself.
 source=("LICENSE-$pkgver::$url/raw/$pkgver/LICENSE")
 sha256sums=('579ef5ffa922ce743ad6dd7ec4538389c7f66a2b945b7d6284e5b3ec04da156e')
 
 package() {
-	# The archive holds a single entry at its root, named exactly `git-tpl`.
-	# That name is load-bearing: Git resolves `git tpl` only through an
-	# executable called exactly `git-tpl` on PATH.
+	# The archive holds `git-tpl` at its root, named exactly that. The name is
+	# load-bearing: Git resolves `git tpl` only through an executable called
+	# exactly `git-tpl` on PATH.
 	install -Dm755 "$srcdir/git-tpl" "$pkgdir/usr/bin/git-tpl"
 	install -Dm644 "$srcdir/LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	# Beside the binary, the archive carries the man pages and the completion
+	# scripts, generated at release time. The man page is what makes
+	# `git tpl --help` work: Git execs `man git-tpl` for it, and without a page
+	# that fails with exit 16.
+	install -Dm644 -t "$pkgdir/usr/share/man/man1" "$srcdir"/man/man1/*.1
+
+	# Each under the name its shell looks for — zsh wants a leading underscore,
+	# bash wants none — because a completion script filed under the wrong name
+	# is one nothing ever sources.
+	install -Dm644 "$srcdir/completions/git-tpl.bash" \
+		"$pkgdir/usr/share/bash-completion/completions/git-tpl"
+	install -Dm644 "$srcdir/completions/git-tpl.zsh" \
+		"$pkgdir/usr/share/zsh/site-functions/_git-tpl"
+	install -Dm644 "$srcdir/completions/git-tpl.fish" \
+		"$pkgdir/usr/share/fish/vendor_completions.d/git-tpl.fish"
 }
