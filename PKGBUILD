@@ -28,7 +28,7 @@ sha256sums=('71af7b9799856d8b03619df3949e9c1be9703f8de0795af71399ba283cb27aac'
             'c4203584aed3c670c7aa2cb3774fe513088de3cee54c5b20f7ddea9fc673d1ef')
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-DMZ_FETCH_LIBS=OFF
 	-DMZ_OPENSSL=ON
