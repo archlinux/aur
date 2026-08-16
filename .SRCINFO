@@ -1,0 +1,25 @@
+pkgbase = python-saxonche
+	pkgdesc = Python bindings for libsaxonc (SaxonC-HE)
+	pkgver = 12.9.0
+	pkgrel = 1
+	url = https://github.com/Saxonica/Saxon-HE
+	arch = x86_64
+	arch = aarch64
+	license = MPL-2.0
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = libsaxonc=12.9.0
+	depends = gcc-libs
+	depends = glibc
+	depends = python>=3.9
+	source = SaxonCHE-source-12.9.0.zip::https://github.com/Saxonica/Saxon-HE/releases/download/SaxonHE12-9/SaxonCHE-source-12-9-0.zip
+	source = saxonche_setup.py
+	source = saxonche_verification.py
+	b2sums = 1e0d0fa166cbc783038fa21b2f24e64115568bdd482e6657f28c2615f6c96f5bebb1691904778e70033cab9a533a11cf80364f1ee8fb7e202d5c81d2cf408387
+	b2sums = 7a1df5210cae6ec9f04528c28f1190c48a77785617220ef62a5750d3183339bb141a2559f36038fbfffe9894c140c8787d50f67f9bbc7aa2f86240f255be1313
+	b2sums = 6179d43c19d04fd8467b2f7fdf42113f31a780d8458b198f1ca07cba0413e8c88773e68d2a825c9d50efdca7a778d23cc6caaa6390b938bcb6eb7475663a3edd
+
+pkgname = python-saxonche
