@@ -1,0 +1,25 @@
+pkgbase = aps-bin
+	pkgdesc = A fast and powerful patterns searcher for AUR package sources (bin version)
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/Antiz96/aps
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = scdoc
+	provides = aps
+	conflicts = aps
+	options = !strip
+	source = aps-1.3.1.bash::https://raw.githubusercontent.com/Antiz96/aps/v1.3.1/res/completions/aps.bash
+	source = aps-1.3.1.zsh::https://raw.githubusercontent.com/Antiz96/aps/v1.3.1/res/completions/aps.zsh
+	source = aps-1.3.1.fish::https://raw.githubusercontent.com/Antiz96/aps/v1.3.1/res/completions/aps.fish
+	source = aps-1.3.1.1.scd::https://raw.githubusercontent.com/Antiz96/aps/v1.3.1/doc/man/aps.1.scd
+	source = README-1.3.1.md::https://raw.githubusercontent.com/Antiz96/aps/v1.3.1/README.md
+	sha256sums = ae2cf86bdfb69f473f673d38835badfe0572b742f3ade2beb4dfce8c73560de9
+	sha256sums = 6e5336b41889014e3d97de9fe362b9abf3f41a8baab92900874a3ed81a93e7b1
+	sha256sums = 91bec3773e904d6aead58580c87bc57411c2cef59449d1376be84d21064b5cca
+	sha256sums = 17287e50294a22133cee7f597d28a7bdb41bbe30051387cdb1578b640096b2dd
+	sha256sums = 5470a369e1208a2971c49f5e2270f96928d442e9b8239dc98279d1cbf2aac06a
+	source_x86_64 = aps-1.3.1-x86_64::https://github.com/Antiz96/aps/releases/download/v1.3.1/aps-1.3.1-x86_64
+	sha256sums_x86_64 = 4b5f29a292c62e03ae13590d8f6c5f83eaac6cf135f2f65e6d6995904919ef42
+
+pkgname = aps-bin
