@@ -1,13 +1,13 @@
 # Maintainer: normen <normen@users.noreply.github.com>
 pkgname=whatscli
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc='A command line interface for WhatsApp, based on go-whatsmeow and tview'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/normen/whatscli'
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/normen/whatscli/archive/v${pkgver}.tar.gz")
-sha1sums=('c2dd90cd1038702ca39e979db657e7944e8da5df')
+sha1sums=('a32108fbda9c056143b686b3b1662db5b5c5feaf')
 
 build() {
     cd "${pkgname}-${pkgver}"
