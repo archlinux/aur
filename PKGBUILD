@@ -15,12 +15,32 @@ pkgname=mpv-omniphony
 _tag=v0.5.0              # mpv-omniphony release tag (patches + ad_orender)
 _mpvver=0.41.0           # pinned upstream mpv release tag (without the 'v')
 pkgver=0.5.0             # $_tag without the 'v' (hyphens, if any, become '.')
-pkgrel=1
+pkgrel=2                 # -2: declare ffmpeg/libass/libplacebo sonames (see depends)
 pkgdesc="mpv with the orender spatial audio decoder (object rendering via liborender)"
 arch=('x86_64')
 url="https://github.com/mgth/mpv-omniphony"
 license=('GPL-3.0-or-later')
-depends=('orender>=0.5.0' 'ffmpeg' 'libass' 'libplacebo' 'lua' 'libx11' 'mesa')
+# ffmpeg, libass and libplacebo are declared twice on purpose: once as packages
+# (so the right provider gets pulled in) and once as bare sonames. makepkg's
+# find_libdepends() rewrites every bare `.so` entry into `name.so=MAJOR-64`
+# read from the binaries actually built here (e.g. libavcodec.so=63-64), so a
+# soname bump in ffmpeg/libass/libplacebo makes pacman refuse the upgrade until
+# this package is rebuilt, instead of letting the installed mpv break.
+# This is not hypothetical: 0.4.2-1 was built against ffmpeg 8 (libavcodec.so.62),
+# ffmpeg 9 landed, pacman said nothing, and /usr/bin/mpv died at startup with
+# "error while loading shared libraries: libavcodec.so.62".
+# Deliberately no `ffmpeg>=2:9.0` floor here, unlike mpv-omniphony-fel: that
+# package's floor is a *feature* floor (dovi_split BSF + DoVi stream group) and
+# says nothing about ABI. mpv 0.41.0 builds against ffmpeg 8 and 9 alike, and a
+# `>=` floor would not have caught this bump anyway — the next one (libavcodec.so.64)
+# still satisfies `>=2:9.0`. Only the soname deps give ABI safety.
+# Only mpv's mandatory libraries are listed as sonames; feature-dependent ones
+# (libbluray, libcdio, lcms2...) vary with what is present at build time and
+# would just warn on builds that skip them.
+depends=('orender>=0.5.0' 'ffmpeg' 'libass' 'libplacebo' 'luajit' 'libx11' 'mesa'
+         'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
+         'libavutil.so' 'libswresample.so' 'libswscale.so'
+         'libass.so' 'libplacebo.so')
 optdepends=('harletty-bridge: decode compressed/object-audio formats via the orender bridge plugin')
 makedepends=('meson' 'ninja' 'python')
 # Match the repo mpv's epoch (1:) so `mpv>=1:x` dependencies resolve, and
