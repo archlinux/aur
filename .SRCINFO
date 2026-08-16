@@ -1,6 +1,6 @@
 pkgbase = respite
 	pkgdesc = A GTK3 media player (fork of Parole, Xfce deps removed)
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Twilight0/respite
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = respite
 	optdepends = gst-plugins-bad: additional codec support
 	optdepends = gst-libav: ffmpeg/libav decoder support
 	optdepends = yt-dlp: streaming URL support (YouTube, Dailymotion, Rumble, Odysee, Vimeo, Reddit, BiliBili, Archive.org, Twitch)
-	source = respite-1.2.3.tar.gz::https://github.com/Twilight0/respite/archive/refs/tags/v1.2.3.tar.gz
-	sha256sums = ddcc4ceaf7babfb42c2272f105d2f650fe3afd84255f4641cd1cf4adbde2b2db
+	source = respite-1.3.0.tar.gz::https://github.com/Twilight0/respite/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = a18e2cfcd3b8ac39551cb485975c19c39af0bf976806a8e1631b5ac6d02339df
 
 pkgname = respite
