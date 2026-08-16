@@ -5,10 +5,10 @@
 pkgname=mingw-w64-zstd
 _pkgname=zstd
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Zstandard - Fast real-time compression algorithm (mingw-w64)"
 url="https://facebook.github.io/zstd/"
-arch=('x86_64')
+arch=('any')
 license=('BSD-3-Clause OR GPL-2.0-or-later')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'ninja')
@@ -30,7 +30,7 @@ build() {
       -DCMAKE_INSTALL_PREFIX=/usr/${_arch} \
       -DCMAKE_INSTALL_LIBDIR=lib \
       -DZSTD_BUILD_CONTRIB=OFF \
-      -DZSTD_BUILD_STATIC=OFF \
+      -DZSTD_BUILD_STATIC=ON \
       -DZSTD_BUILD_TESTS=OFF \
       -DZSTD_PROGRAMS_LINK_SHARED=OFF \
       -DZSTD_BUILD_PROGRAMS=OFF \
@@ -50,4 +50,5 @@ package() {
     ${_arch}-strip -g "$pkgdir"/usr/${_arch}/lib/*.a
     popd
   done
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
