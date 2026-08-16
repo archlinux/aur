@@ -2,9 +2,9 @@
 
 pkgname=voicefox
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 epoch=1
-_tag="v0.34" # NOTE: temporary workaround, should be "v${pkgver}"
+_tag="${pkgver}"
 _srcdir="${pkgname}-${_tag#v}"
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64" "aarch64")
@@ -27,10 +27,14 @@ optdepends=(
 source=(
 	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
 )
-sha512sums=('3023f1304d9d31d60490b02b770031ae1ca26968b9f5cf9b5cf1690acec87325ad8ce57557e1c82dd272645a2d498415478b40d36b2c787e88ddb8fa128a6761')
+sha512sums=('05827aa853d1bac6682f3cd8629f6ffa2e8136b8fb35fc0cbc5f52c3f9e24550e446e534e9eedea2fd2c0e95221e83c48314745cea2a3ae050fd28120ed71057')
 
 prepare() {
 	cd "${_srcdir}"
+
+	# Upstream often doesn't update this
+	sed -i "s/^version = .*/version = \"${pkgver}\"/" Cargo.toml
+	cargo update --workspace --offline || true
 
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
