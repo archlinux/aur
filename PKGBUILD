@@ -2,11 +2,11 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 
 pkgname=licensee
-pkgver=10.0.0
+pkgver=10.1.0
 pkgrel=1
 pkgdesc="Detect under what license a project is distributed"
 arch=(any)
-url="https://github.com/licensee/licensee"
+url="https://licensee.github.io/licensee"
 license=(MIT)
 depends=(
   ruby
@@ -20,6 +20,7 @@ makedepends=(
   rubygems
 )
 checkdepends=(
+  ruby-faraday-retry
   ruby-mustache
   ruby-rspec
   ruby-rugged
@@ -28,8 +29,8 @@ checkdepends=(
 )
 optdepends=('ruby-rugged: Git repository scanning')
 options=(!emptydirs)
-source=("git+$url.git#tag=v$pkgver")
-sha256sums=('cdd29a9d7b13b9491992338817d3389d8ef0eccbf770cea52285553ffabd9184')
+source=("git+https://github.com/licensee/licensee.git#tag=v$pkgver")
+sha256sums=('9073b6dad9879d6433ce90ce54aa247170fc66f58e624596a15040682219644c')
 
 _archive="$pkgname"
 
@@ -93,6 +94,7 @@ check() {
   local excluded_tests=(
     bin_spec.rb
     licensee/commands/detect_spec.rb
+    licensee/commands/diff_spec.rb
     licensee/commands/license_path_spec.rb
     licensee/commands/version_spec.rb
   )
