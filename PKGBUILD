@@ -16,7 +16,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/Blosc/c-blosc/archive/refs
 sha256sums=('9fcd60301aae28f97f1301b735f966cc19e7c49b6b4321b839b4579a0c156f38')
 
 _srcdir="c-blosc-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE='Release'
 	-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG'
 	-DPREFER_EXTERNAL_LZ4=ON
