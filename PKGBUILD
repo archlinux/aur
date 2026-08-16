@@ -35,7 +35,9 @@ depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'glibc'
          'util-linux-libs' 'virtiofsd' 'xdg-desktop-portal' 'xdg-utils')
 
 # Cowork boots a VM; without these the app reports it unsupported and the rest
-# of the package still works. Kept optional so laptops don't carry QEMU.
+# of the package still works. Optional rather than required so that installing a
+# chat client never drags in a virtualisation stack a machine hasn't opted into.
+# Hosts that already run QEMU satisfy these with what they have.
 optdepends=('qemu-system-x86: Cowork agent VM'
             'edk2-ovmf: UEFI firmware for the Cowork agent VM'
             'gnome-keyring: credential storage via Secret Service'
@@ -97,12 +99,16 @@ prepare() {
     return 1
   fi
 
+  # Stanza state resets at each Package: head, so a stanza that carries no
+  # SHA256 cannot donate its version to the next one. Matching on its own rule
+  # rather than inside END keeps the match to a single line: awk's exit runs
+  # END on the way out, so printing in both places emits the hash twice.
   local signed
   signed=$(awk -v v="$pkgver" '
-      /^$/          { if (ver==v && sum!="") { print sum; exit } ver=""; sum=""; next }
-      $1=="Version:"{ ver=$2 }
-      $1=="SHA256:" { sum=$2 }
-      END           { if (ver==v && sum!="") print sum }' Packages)
+      $1=="Package:"    { ver=""; sum="" }
+      $1=="Version:"    { ver=$2 }
+      $1=="SHA256:"     { sum=$2 }
+      ver==v && sum!="" { print sum; exit }' Packages)
   if [[ $signed != "${sha256sums[0]}" ]]; then
     echo "==> ${pkgver} hash in the signed index (${signed:-none}) != pinned ${sha256sums[0]}" >&2
     return 1
@@ -135,10 +141,10 @@ package() {
   # Verified against edk2-ovmf 202605 on 2026-08-12.
   #
   # namcap reports these two as dangling, because edk2-ovmf is an optdepend
-  # rather than a depend — the alternative is forcing ~400 MB of QEMU onto
-  # hosts that will never run Cowork. Unresolved, the app reads no firmware
-  # and reports Cowork unsupported, which is accurate. CI allows exactly
-  # these two errors.
+  # rather than a depend — making it required would pull a virtualisation stack
+  # onto machines that never asked for one. Unresolved, the app reads no
+  # firmware and reports Cowork unsupported, which is accurate; where QEMU is
+  # already installed the links resolve. CI allows exactly these two errors.
   install -d "$pkgdir/usr/share/edk2"
   ln -s x64/OVMF_CODE.4m.fd "$pkgdir/usr/share/edk2/OVMF_CODE_4M.fd"
   ln -s x64/OVMF_VARS.4m.fd "$pkgdir/usr/share/edk2/OVMF_VARS_4M.fd"
