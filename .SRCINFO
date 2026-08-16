@@ -1,0 +1,19 @@
+pkgbase = rift-clipboard-bin
+	pkgdesc = Lightweight multi-format clipboard manager for Wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hyperpuncher/rift
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = rift
+	conflicts = rift
+	conflicts = rift-bin
+	source_x86_64 = rift-clipboard-bin-0.1.0-x86_64.tar.gz::https://github.com/hyperpuncher/rift/releases/download/v0.1.0/rift-linux-x64.tar.gz
+	sha256sums_x86_64 = b3072a47b129cee51ddb39c98d5b0f66825334e4a801bf9f3d1d576168fafe79
+	source_aarch64 = rift-clipboard-bin-0.1.0-aarch64.tar.gz::https://github.com/hyperpuncher/rift/releases/download/v0.1.0/rift-linux-arm64.tar.gz
+	sha256sums_aarch64 = 107851124102565ba1d43e66e98d06be33849f9eea694d5e387f276f5d87c58a
+
+pkgname = rift-clipboard-bin
