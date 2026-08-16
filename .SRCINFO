@@ -1,6 +1,6 @@
 pkgbase = lx-music-shell
 	pkgdesc = Terminal music player with multi-source support and auto-reconnect
-	pkgver = 3.11.1
+	pkgver = 3.12.0
 	pkgrel = 1
 	url = https://github.com/existyay/LX-Music-Shell
 	install = lx-music-shell.install
@@ -31,7 +31,7 @@ pkgbase = lx-music-shell
 	optdepends = wireless_tools: WiFi connection monitoring
 	backup = etc/skel/.config/lx-music-shell/config
 	backup = etc/skel/.config/lx-music-shell/sources.list
-	source = lx-music-shell-source-v3.11.1.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v3.11.1.tar.gz
+	source = lx-music-shell-source-v3.12.0.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v3.12.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = lx-music-shell
