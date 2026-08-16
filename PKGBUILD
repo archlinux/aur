@@ -20,7 +20,7 @@ sha256sums=('6cc4304fc850b9878709c6da48490c8929929aa5befda2966981cea78059ba6d'
             'SKIP')
 
 _srcdir="${_pkgname}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE='Release'
 	-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG'
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
