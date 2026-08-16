@@ -1,6 +1,6 @@
 pkgbase = metacubexd-desktop-bin
 	pkgdesc = MetaCubeXD Official Desktop Client (Precompiled version)
-	pkgver = 1.272.0
+	pkgver = 1.273.0
 	pkgrel = 1
 	url = https://github.com/MetaCubeX/metacubexd
 	arch = x86_64
@@ -34,11 +34,11 @@ pkgbase = metacubexd-desktop-bin
 	conflicts = metacubexd-desktop
 	conflicts = metacubexd-desktop-electron
 	conflicts = metacubexd-desktop-electron-bin
-	source = LICENSE::https://github.com/MetaCubeX/metacubexd/raw/v1.272.0/LICENSE
+	source = LICENSE::https://github.com/MetaCubeX/metacubexd/raw/v1.273.0/LICENSE
 	b2sums = e054b16548c555ae5bb461e634f18fd48956f976dbe546e6b0dae65954f12e19c99fa3f3b41fdb4faf5b9959266366e2430774d9bc072b22b09fffa09d231e37
-	source_x86_64 = metacubexd-desktop-bin-1.272.0-x64.pacman::https://github.com/MetaCubeX/metacubexd/releases/download/v1.272.0/MetaCubeXD-1.272.0-linux-x64.pacman
-	b2sums_x86_64 = cbad847adb9cec255483bf684cd6c5d9b3af8d166f690c8c66ca798f3d7f6b68bb0096abb1291f479ad2dfeb561061498b26287b63c2531d3282566c0f1e8a08
-	source_aarch64 = metacubexd-desktop-bin-1.272.0-aarch64.pacman::https://github.com/MetaCubeX/metacubexd/releases/download/v1.272.0/MetaCubeXD-1.272.0-linux-aarch64.pacman
-	b2sums_aarch64 = 3bf92e5d23f27bcbd3fd56255f4b625f1bcc1570ed79721481b4cf15b4057330c2a7efeb9a7fed7894d179ffdfdca4c9578577c83a54f022ed48f77b60e713b9
+	source_x86_64 = metacubexd-desktop-bin-1.273.0-x64.pacman::https://github.com/MetaCubeX/metacubexd/releases/download/v1.273.0/MetaCubeXD-1.273.0-linux-x64.pacman
+	b2sums_x86_64 = b6dc04b2be98517cbe36739a1c44f057a5086dd77a5db9b1f78d30f83df9c710b1a8ab370ef6c2a16c8644a329a1bad21f80875ac36230a91501c3d5632e0ec4
+	source_aarch64 = metacubexd-desktop-bin-1.273.0-aarch64.pacman::https://github.com/MetaCubeX/metacubexd/releases/download/v1.273.0/MetaCubeXD-1.273.0-linux-aarch64.pacman
+	b2sums_aarch64 = 5de3e4cca83eb435df4584f38f60ae648557fd00dbb993718ae2e159ce43f4a6f59be2c491fce8adb21d83f894d7a501530a5413a77cc4c9434ba3fb14f8cbfc
 
 pkgname = metacubexd-desktop-bin
