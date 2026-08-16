@@ -1,0 +1,23 @@
+Binary files a/.git/index and b/.git/index differ
+diff -Npur a/setup.sh b/setup.sh
+--- a/setup.sh	2026-05-24 12:14:04.596227842 -0600
++++ b/setup.sh	2026-05-24 12:14:43.717761757 -0600
+@@ -290,18 +290,6 @@ case "$ACTION" in
+         log_error "Symlinking script not found or is not executable. Skipping symlink creation."
+     fi
+ 
+-    # Refresh the GTK icon cache for installed themes.
+-    log_info ""
+-    log_info "--- Refreshing GTK Icon Cache ---"
+-    for theme_name in "${THEMES[@]}"; do
+-        if [[ ! -d "$TARGET_DIR/$theme_name" ]]; then
+-            log_error "  Theme directory '$theme_name' not found. Skipping."
+-            continue
+-        fi
+-        log_info "  - Refreshing $theme_name icon cache..."
+-        gtk-update-icon-cache "$TARGET_DIR/$theme_name" > /dev/null 2>&1
+-    done
+-
+     log_info ""
+     log_info "Papirus-Folder-Icons installed successfully."
+     log_info ""

@@ -1,0 +1,16 @@
+pkgbase = papirus-folder-icons
+	pkgdesc = An expanded set of custom folder icons for the Papirus Icon Theme using Font Awesome symbolics.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/benleppke/papirus-folder-icons
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = setconf
+	depends = papirus-icon-theme
+	options = !strip
+	source = https://gitlab.com/benleppke/papirus-folder-icons/-/archive/v0.1.0/papirus-folder-icons-v0.1.0.tar.gz
+	source = setup.patch
+	sha256sums = 42ddfe1eb0c62f3d2d457b3fe9c4b465827fa6f0b83e1ca7e1abf772db7c10cc
+	sha256sums = 587cdcf8ee81ab101a8880ca11a48e2cfa8456c31c87a2962583bd882931b215
+
+pkgname = papirus-folder-icons

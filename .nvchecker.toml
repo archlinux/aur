@@ -1,0 +1,4 @@
+[papirus-folder-icons]
+source = "git"
+git = "https://gitlab.com/benleppke/papirus-folder-icons.git"
+prefix = "v"
