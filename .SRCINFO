@@ -1,0 +1,15 @@
+pkgbase = rcm-fast
+	pkgdesc = rcm, but faster
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/fictionic/rcm-fast
+	arch = any
+	license = BSD
+	checkdepends = cram
+	provides = rcm
+	conflicts = rcm
+	conflicts = rcm-fast-git
+	source = https://github.com/fictionic/rcm-fast/releases/download/v2.0.0/rcm-fast-2.0.0.tar.gz
+	sha256sums = 20d5344ee7ef28bc1171505e3f4ac03eb130c2a1d9a26ab3956cda499f21aa35
+
+pkgname = rcm-fast
