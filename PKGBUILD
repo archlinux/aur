@@ -1,11 +1,12 @@
 # Maintainer: Akira <akira.uestc at gmail dot com>
-# Releases: https://persistent.oaistatic.com/codex-app-prod/linux/deb/dists/stable/main/binary-amd64/Packages
+# Releases (x86_64): https://persistent.oaistatic.com/codex-app-prod/linux/deb/dists/stable/main/binary-amd64/Packages
+# Releases (aarch64): https://persistent.oaistatic.com/codex-app-prod/linux/deb/dists/stable/main/binary-arm64/Packages
 
 pkgname=chatgpt-desktop
 pkgver=26.810.52044
-pkgrel=1
+pkgrel=2
 pkgdesc="ChatGPT desktop application for Linux (repackaged from the official binary)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://chatgpt.com/download"
 license=('LicenseRef-custom')
 options=('!strip' '!debug')
@@ -67,13 +68,31 @@ install="${pkgname}.install"
 source_x86_64=(
   "chatgpt_${pkgver}_amd64.deb::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_${pkgver}_amd64.deb"
 )
+source_aarch64=(
+  "chatgpt_${pkgver}_arm64.deb::https://persistent.oaistatic.com/codex-app-prod/linux/deb/pool/main/c/chatgpt/chatgpt_${pkgver}_arm64.deb"
+)
 source=('chatgpt-launcher.sh')
-noextract=("chatgpt_${pkgver}_amd64.deb")
+noextract=(
+  "chatgpt_${pkgver}_amd64.deb"
+  "chatgpt_${pkgver}_arm64.deb"
+)
 sha256sums_x86_64=('708a15a1bb76e2bb7f0e376e5145391fa277ad3a64057c1d32537bdc2a1b4e6e')
+sha256sums_aarch64=('6ebea681b1e494d218a199f638b4bc886e94e1458dd61079b1e390a6fb98fdd2')
 sha256sums=('aab6b1105d7273443234e77412fbaa35ff9e04098ac63c2f73ae8e87afb43bd2')
 
 package() {
-  bsdtar -xOf "${srcdir}/chatgpt_${pkgver}_amd64.deb" data.tar.xz |
+  local _deb_arch
+
+  case "${CARCH}" in
+    x86_64) _deb_arch='amd64' ;;
+    aarch64) _deb_arch='arm64' ;;
+    *)
+      printf 'Unsupported architecture: %s\n' "${CARCH}" >&2
+      return 1
+      ;;
+  esac
+
+  bsdtar -xOf "${srcdir}/chatgpt_${pkgver}_${_deb_arch}.deb" data.tar.xz |
     bsdtar --no-same-owner -xJf - -C "${pkgdir}"
 
   install -Dm755 "${srcdir}/chatgpt-launcher.sh" \
