@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=cannelloni
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="cannelloni is written in C++11 and uses UDP, TCP or SCTP to transfer CAN frames between two machines."
 arch=($CARCH)
@@ -12,8 +12,8 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 depends=(
-    gcc-libs
-    glibc
+    libgcc_s.so
+    libstdc++.so
     lksctp-tools
 )
 makedepends=(
@@ -27,7 +27,7 @@ optdepends=(
     'can-utils: Linux-CAN / SocketCAN user space applications'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0bdb32f53b3381656c97a2c723dd69b8eddb06d694e70656b1a9592cb7a93ea0')
+sha256sums=('21946af75429387788b26bd46bfdb34cd12afd4c310343f08de316935c9cc52b')
 options=()
 
 build() {
