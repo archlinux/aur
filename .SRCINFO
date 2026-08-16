@@ -1,0 +1,18 @@
+pkgbase = ucsc-liftover-bin
+	pkgdesc = UCSC liftOver: converts genome coordinates between assemblies
+	pkgver = 20250627
+	pkgrel = 1
+	url = https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = curl
+	depends = gcc-libs
+	options = !strip
+	options = !debug
+	source = https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/liftOver
+	source = LICENSE::https://raw.githubusercontent.com/ucscGenomeBrowser/kent/master/LICENSE
+	sha256sums = b7e295f3e06186ab34c89b2abdc58e98e55ac5aa158db4df1c6292b023a272bd
+	sha256sums = 793d774ec3941d88d5f93611639230030ea3e167282be144b6e5604bc5ad29a4
+
+pkgname = ucsc-liftover-bin
