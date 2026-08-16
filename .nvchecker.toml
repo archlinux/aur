@@ -1,0 +1,4 @@
+[myune_music-bin]
+source = "git"
+git = "https://github.com/xiaobaimc/myune_music.git"
+prefix = "v"
