@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal UI for managing git worktrees"
 
-pkgver=0.2.0
+pkgver=0.3.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('7aa67c367301bf9696bb74ed29452003813fab49a91ad307a840ad143eb257cd')
-sha256sums_aarch64=('6cca278ce4fff82f28f8cdb71137177c356b264ff3cebc22684ee685ff55d787')
+sha256sums_x86_64=('c2f123d1761c396cc28721eab0d0a7dd89cb9be9f1e7e38ac0b7753932927f0e')
+sha256sums_aarch64=('ba8cfcbcdc7b111426cd672b28815a1418c34caea83ba15421ae846df20b6a1b')
 
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = ktree-bin
 	pkgdesc = A terminal UI for managing git worktrees
-	pkgver = 0.2.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/alikazai/ktree
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = ktree-bin
 	provides = ktree
 	conflicts = ktree
 	options = !strip
-	source_x86_64 = ktree-x86_64-0.2.0.tgz::https://github.com/alikazai/ktree/releases/download/v0.2.0/ktree_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7aa67c367301bf9696bb74ed29452003813fab49a91ad307a840ad143eb257cd
-	source_aarch64 = ktree-aarch64-0.2.0.tgz::https://github.com/alikazai/ktree/releases/download/v0.2.0/ktree_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6cca278ce4fff82f28f8cdb71137177c356b264ff3cebc22684ee685ff55d787
+	source_x86_64 = ktree-x86_64-0.3.1.tgz::https://github.com/alikazai/ktree/releases/download/v0.3.1/ktree_linux_amd64.tar.gz
+	sha256sums_x86_64 = c2f123d1761c396cc28721eab0d0a7dd89cb9be9f1e7e38ac0b7753932927f0e
+	source_aarch64 = ktree-aarch64-0.3.1.tgz::https://github.com/alikazai/ktree/releases/download/v0.3.1/ktree_linux_arm64.tar.gz
+	sha256sums_aarch64 = ba8cfcbcdc7b111426cd672b28815a1418c34caea83ba15421ae846df20b6a1b
 
 pkgname = ktree-bin
