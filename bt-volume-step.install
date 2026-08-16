@@ -1,0 +1,10 @@
+post_install() {
+  cat <<'EOF'
+==> bt-volume-step ships a systemd user unit. Enable it for your session:
+==>
+==>     systemctl --user enable --now bt-volume-step
+==>
+==> Then use the volume control on a connected Bluetooth device a few times:
+==> the daemon measures that device's volume grid before it starts correcting.
+EOF
+}

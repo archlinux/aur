@@ -12,6 +12,11 @@ license=('BSD-3-Clause')
 depends=('python' 'libpulse')
 optdepends=('kconfig: follow the KDE Plasma volume step setting'
             'bluez-utils: device names in --show')
+# Arch packages never enable units themselves (the default preset is
+# "disable *"), and a user unit could not be enabled from a pacman transaction
+# anyway - it runs as root, without the user's session bus. Print the command
+# instead.
+install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('0b06ba55c3764271856a5a806c28dc71b0802f85fd3d706699834eb4249ed097')
 
