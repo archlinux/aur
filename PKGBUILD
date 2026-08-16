@@ -31,7 +31,7 @@ sha256sums=('0b14d6bdf5680488e3aede354b1e11be1444b3fc4a30fcf2ae06bd6b601466be')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/strukturag/${_pkgname}/archive/v${pkgver}.tar.gz")
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=(
 	-Wno-dev
 	-DCMAKE_BUILD_TYPE=Release
