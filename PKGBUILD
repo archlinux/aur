@@ -1,7 +1,7 @@
 # Maintainer: Tuomas Rinne <tuomas.rin@protonmail.com>
 
 pkgname=('hyprland-focused-booster')
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/tumrin/hyprland-focused-booster'
@@ -11,7 +11,7 @@ makedepends=('cargo')
 depends=('dmemcg-booster' 'glibc' 'systemd')
 install=hyprland-focused-booster.install
 source=("https://github.com/tumrin/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('779ceecb037b5a2df4dcfe7d17c7698f1386aef31089f9a1a2dc3995721d4696')
+sha256sums=('8d12fef3d9e150aae169a372affccc6d256b4c96b9901b96c142451569139eb9')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
