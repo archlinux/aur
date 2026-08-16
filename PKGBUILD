@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=('13c3327100a7b92e4c6a048db03ef07ee2db8e79baa4c517c6fae71e5b80034b')
 
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -msse4.2'
 	-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG -msse4.2'
