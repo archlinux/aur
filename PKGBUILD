@@ -14,6 +14,7 @@ url=https://www.veeam.com/products/downloads.html
 install=${pkgname}.install
 license=(custom:veeam)
 depends=(ncurses lvm2 fuse mlocate veeamblksnap-dkms)
+options=(!strip)
 source=("https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/veeam-$pkgver-1.el10.x86_64.rpm"
         "https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/veeam-libs-$pkgver-1.x86_64.rpm")
 sha256sums=('4f10c519927fc25067e8cfb82bc6fc56935ded278c5076d01dada051a4b8ca3d'

@@ -13,6 +13,7 @@ pkgbase = veeam
 	depends = veeamblksnap-dkms
 	noextract = veeam-13.1.1.4-1.el10.x86_64.rpm
 	noextract = veeam-libs-13.1.1.4-1.x86_64.rpm
+	options = !strip
 	backup = etc/veeam/veeam.ini
 	backup = usr/share/veeam/lpb_scheme.sql
 	backup = usr/share/veeam/db_upgrade.sql
