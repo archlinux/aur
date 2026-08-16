@@ -1,7 +1,7 @@
 # Maintainer: Eric Nielsen <ericbn at proton dot me>
 
 pkgname=zimfw
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
 pkgdesc='Zsh plugin manager'
 arch=('any')
@@ -9,7 +9,7 @@ url='https://zimfw.sh'
 license=('MIT')
 depends=('zsh>=5.2')
 source=("$pkgname-$pkgver.zsh.gz::https://github.com/zimfw/zimfw/releases/download/v$pkgver/zimfw.zsh.gz")
-sha256sums=('b948ef89a2f6fe565197e0fa898046337168c78bfcbae43601baeb9cd51f7038')
+sha256sums=('f8398d723475ae408221d9f04854c5153710d3f29f8fe30edeed733a5f4ca703')
 install=zimfw.install
 
 package() {
