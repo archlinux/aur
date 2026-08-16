@@ -1,6 +1,6 @@
 # Maintainer: Pete Jackson <pete@peteonrails.com>
 pkgname=omadex
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Contact aggregator for Omarchy: one address layer over many address books'
 arch=('any')
@@ -8,12 +8,18 @@ url='https://github.com/peteonrails/omadex'
 license=('MIT')
 depends=(
   'python'
+  # Contacts are encrypted at rest under a key kept in the desktop wallet.
+  # Without these the store cannot be opened at all, so they are not optional.
+  'python-cryptography'
+  'python-gobject'
+  'libsecret'
   'wl-clipboard'
   'xdg-utils'
 )
 optdepends=(
   'abook: plain-text address book source'
-  'blueferry-backend: iPhone phonebook source (needs the fork with ListContacts)'
+  'blueferry-backend: iPhone phonebook source (needs ListContacts support)'
+  'gnome-keyring: Secret Service provider for the storage key'
   'evolution-data-server: Evolution source, and any account attached to it'
   'neomutt: mail alias source, and composing to a contact'
   'notmuch: correspondent source, once a maildir is indexed'
@@ -32,7 +38,7 @@ checkdepends=(
   'ruff'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('05430e0735fdfa73dd8e8574388f2c5e14fd7f11509eb9b4ac0f77c5e3a483eb')
+sha256sums=('4881b673d68013db8c17c80f8c297799b654db4bfbf1308dea9d0ed67c643da8')
 
 build() {
   cd "$pkgname-$pkgver"
