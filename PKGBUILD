@@ -1,31 +1,32 @@
-# Maintainer: muio <muio at airmail dot cc>
+# Maintainer: tocic <tocic at protonmail dot ch>
+# Contributor: muio <muio at airmail dot cc>
 
 pkgname=cmake-init
-_name=${pkgname#python-}
 pkgver=0.41.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The missing CMake project initializer"
-arch=('any')
+arch=("any")
 url="https://github.com/friendlyanon/cmake-init"
-license=('GPL3')
-depends=('python3')
-makedepends=('python-setuptools')
+license=("GPL-3.0-or-later")
+depends=("python>=3.8")
+makedepends=("python-build" "python-installer" "python-setuptools")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/friendlyanon/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fa6ab1e39c2f20ccd5dc5e254d66059b9123a92c5af984bebc9950cec6715fad')
+b2sums=("09cb46986b93b576b2c3b1cd1f3b3de76878a40ade3366ca35ad72786148ac784f721af4acccd1a373e73808841391f14bfcaa4829b6a8573c7769a2eb85f982")
 
+# hack until https://github.com/friendlyanon/cmake-init/issues/148 is resolved 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver/package"
-  sed -i 's|license_files=.*|license_files=("COPYING",),|' setup.py
-  cp ../COPYING .
+  cd "${srcdir}/${pkgname}-${pkgver}/package"
+  sed -i 's|"License :: OSI Approved :: GNU General Public License v3 (GPLv3)",||' setup.py 
+  sed -i 's|license_files="\.\./COPYING"|license_files=("COPYING",)|' setup.py
+  ln -s ../COPYING COPYING
 }
 
 build() {
-  cd "$pkgname-$pkgver/package"
+  cd "${pkgname}-${pkgver}/package"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname-$pkgver/package"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cd "${pkgname}-${pkgver}/package"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 }
