@@ -15,7 +15,7 @@ options=('staticlibs' '!buildflags' '!strip')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/ebiggers/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('27bf62d71cd64728ff43a9feb92f2ac2f2bf748986d856133cc1e51992428c25')
 
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_C_FLAGS_RELEASE='-DNDEBUG' )
 _srcdir="${_pkgname}-${pkgver}"
