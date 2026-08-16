@@ -1,0 +1,22 @@
+pkgbase = music-tui-stable
+	pkgdesc = Terminal music player backed by MPD, with covers, synced lyrics and a visualizer.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/WindustH/music-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = mpd
+	depends = chafa
+	depends = sqlite
+	provides = music-tui
+	conflicts = music-tui
+	conflicts = music-tui-git
+	conflicts = music-tui-bin
+	options = !lto
+	source = music-tui::git+https://github.com/WindustH/music-tui.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = music-tui-stable
