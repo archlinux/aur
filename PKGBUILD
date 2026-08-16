@@ -15,6 +15,7 @@ depends=(
     'nss'
     'libxss'
     'alsa-lib'
+	'libayatana-appindicator'
 )
 
 makedepends=(

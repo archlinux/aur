@@ -14,6 +14,7 @@ pkgbase = linux-wallpaperengine-gui-git
 	depends = nss
 	depends = libxss
 	depends = alsa-lib
+	depends = libayatana-appindicator
 	provides = linux-wallpaperengine-gui
 	conflicts = linux-wallpaperengine-gui
 	conflicts = linux-wallpaperengine-gui-bin
