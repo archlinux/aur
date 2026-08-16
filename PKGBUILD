@@ -21,7 +21,7 @@ sha256sums=('ab5174b9b5c6236588e15a1aa1aaecb6658cdbe09501c7981ac8db276a24d9ab'
             '191d69061c56602de1610ebf03b44dcf75636006e7e60ef8105bee6472ec0caf')
 
 _srcdir="cryptopp-cmake-CRYPTOPP_${_srcver}"
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=(
 	-Wno-dev
 	-DCMAKE_BUILD_TYPE=Release
