@@ -21,7 +21,7 @@ sha256sums=('fe169dbbaae71a169a0a6a68dccb346616193252c1ca044217afa0d5d1dc436f'
             '1542ae0f12957dd20dc81b26197be2d1fab1a251493be3c64888d7a034c78ec7'
             'a7c57736232b778f77564862495d46be5a7349f379b2330d0342efe7ca7ffdb3')
 
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DOJPH_DISABLE_AVX2=ON # Tests crashing.
 	-DOJPH_DISABLE_AVX512=ON # Tests crashing.
