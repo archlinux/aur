@@ -1,6 +1,6 @@
 # Maintainer: LUCKY / LuckySingh1 <luckysingh71826@gmail.com>
 pkgname=chillpill-shell
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Lightweight and feature rich dynamic pill bar for Hyprland"
 depends=(
@@ -13,18 +13,20 @@ depends=(
        'qt6-multimedia'
        'qt6-wayland'
        'hyprland'
+       'pipewire'
 )
 optdepends=(
          'ttf-jetbrains-mono-nerd'
          'ttf-monocraft-nerd'
+         'qt6-imageformats'
 )
-makedepends=('tar' 'cmake' 'qt6-base')
+makedepends=('tar' 'cmake' 'qt6-base' 'python')
 arch=('x86_64')
 license=('GPL-3.0')
 options=('!debug')
 url="https://github.com/LUCKYS1NGHH/ChillPill-Shell"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LUCKYS1NGHH/ChillPill-Shell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('32a49408be78f7abcb6f6a6b0f4e7472cb6c445e3a0972d1c000c3fe661e6d27')
+sha256sums=('a026c0e3eb3a65e764f82ba8003420afc76c1f8ccdccbd8d462b0050878de49b')
 
 package() {
   cd "ChillPill-Shell-$pkgver"
@@ -48,6 +50,7 @@ package() {
   install -Dm755 launcher.sh "$pkgdir/usr/bin/chillpill-shell"
   install -Dm644 chillpill.desktop "$pkgdir/usr/share/applications/chillpill.desktop"
   install -Dm644 config.jsonc "$pkgdir/usr/share/chillpill-shell/config.jsonc.example"
+  install -Dm755 config_update.py "$pkgdir/usr/share/chillpill-shell/scripts/config_update.py"
 }
 
 install='chillpill-shell.install'

@@ -1,4 +1,31 @@
 post_install() {
   echo -e "\n\033[1;37mRun 'chillpill-shell' to start now.\033[0m"
-  echo -e '\033[1;32m==> Paste this line in your Hyprland (Lua) config file to auto start:\033[0m \033[1;36mhl.exec_cmd("chillpill-shell")\033[0m\n'
+  echo -e '\n\033[1;32m==> Paste this code in your Hyprland (Lua) config file to auto start:\033[0m'
+  echo -e '\n\033[1mhl.on("hyprland.start", function()'
+  echo -e '  hl.exec_cmd("chillpill-shell")'
+  echo -e 'end)\033[0m\n'
+  update_config
+}
+
+post_upgrade() {
+  update_config
+}
+
+update_config() {
+  local YOU="$(logname 2>/dev/null || echo "$SUDO_USER")"
+  local REAL_HOME="/home/$YOU"
+  local cfg="$REAL_HOME/.config/chillpill-shell/config.jsonc"
+  local example="/usr/share/chillpill-shell/config.jsonc.example"
+  local updater="/usr/share/chillpill-shell/scripts/config_update.py"
+
+  if [[ -f "$cfg" ]]; then
+     if [[ -f "$updater" ]]; then
+        echo "Config update script found, updating your config..."
+        python3 "$updater" "$YOU" || echo "Config file update failed."
+     else
+        echo "config_update.py missing in '/usr/share/chillpill-shell/scripts', skipping config update."
+     fi
+  else
+     install -Dm644 "$example" "$cfg"
+  fi
 }
