@@ -16,7 +16,9 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-options=(!strip)
+makedepends=('cosign')
+
+options=('!strip')
 
 _pkgsrc="${_pkgname}-${pkgver}"
 
