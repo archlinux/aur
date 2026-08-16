@@ -1,7 +1,7 @@
 pkgbase = project-plus-netplay
 	pkgdesc = A Mod of Super Smash Bros. Brawl with Netplay.
 	pkgver = v3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://projectplusgame.com/
 	arch = x86_64
 	license = GPL
