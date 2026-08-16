@@ -15,12 +15,13 @@ options=('staticlibs' '!buildflags' '!strip')
 source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('b4275d83fb95521510e389b8d13af10298ed5bed1c8e13efd961d91b1105e462')
 
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' -DIMATH_LIB_SUFFIX= )
 _srcdir="Imath-${pkgver}"
 
 prepare() {
 	cd "${_srcdir}"
+	sed -i 's/class IMATH_EXPORT_TYPE half/class half/' 'src/Imath/half.h'
 	sed -i -r \
 		-e 's/\$<TARGET_FILE:ImathTest>/ImathTest/' \
 		-e 's/\$<TARGET_FILE:ImathHalfCTest>/ImathHalfCTest/' \
