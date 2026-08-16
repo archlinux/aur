@@ -18,7 +18,7 @@ source=("${_pkgname}-${_tag}.tar.gz::${url}/archive/refs/tags/${_tag}.tar.gz")
 sha256sums=('81038794e20494556edbcc0fc70fa984d71d1b440f9c49adf2cbaaa60a519757')
 
 _srcdir="${_pkgname}-${_tag}"
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=(
 	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-DALLOW_EXTERNAL_SPIRV_TOOLS=ON )
