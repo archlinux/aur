@@ -8,7 +8,7 @@
 # approach as extra/digikam's opencv-5.patch.
 
 pkgname=digikam-quickfilter-git
-pkgver=9.2.0.r69179.980708c
+pkgver=9.2.0.r69180.d3e6144
 pkgrel=1
 pkgdesc='An advanced digital photo management application - quickfilter fork (git build)'
 arch=(x86_64)
