@@ -1,0 +1,36 @@
+# An alpm-scriptlet, sourced by pacman's bash.
+# shellcheck shell=bash
+#
+# Keeps a working setup working across the 2.0.0 behaviour change.
+#
+# Before 2.0.0 the initramfs tailscaled always ran on a kernel TUN device;
+# from 2.0.0 it runs on userspace networking unless default.env says
+# otherwise. For a machine set up before that boundary, "otherwise" is what
+# preserves its behaviour -- in particular a dropbear or tinyssh in the
+# image, which under userspace networking is only reachable through a
+# loopback proxy and only as root.
+#
+# So an upgrade from pre-2.0.0 pins TUN="tailscale0" into an existing
+# default.env, once, and says so. Fresh installs and machines that already
+# chose (a TUN= line exists, or setup has not run) are left alone. pacman
+# runs this before its post-transaction hooks, so the rebuild that mkinitcpio's
+# own hook triggers for this package's files already sees the pinned value.
+
+post_upgrade() {
+	local new=$1 old=$2
+	local env=/etc/initcpio/tailscale/default.env
+
+	(( $(vercmp "$old" 2.0.0) < 0 )) || return 0
+	[[ -s $env ]] || return 0
+	grep -q '^TUN=' "$env" && return 0
+
+	printf 'TUN="tailscale0"\n' >>"$env"
+	cat <<-EOF
+	:: mkinitcpio-tailscale now runs tailscaled on userspace networking by
+	   default. This machine was set up before $new, so TUN="tailscale0" was
+	   added to $env to keep its
+	   initramfs on the kernel TUN device it has been using.
+	   To adopt the new default instead, set TUN="" there and run
+	   'mkinitcpio -P'; see setup-initcpio-tailscale --help for the trade-off.
+	EOF
+}

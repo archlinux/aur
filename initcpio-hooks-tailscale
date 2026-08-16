@@ -25,14 +25,16 @@ run_hook() (
   # than a TUN device: see the install hook, which for the same reason no
   # longer puts the tun module in the image.
   /usr/sbin/tailscaled --cleanup
+  # TUN comes from default.env: empty means userspace networking, an
+  # interface name means a kernel TUN device (setup-initcpio-tailscale --tun).
   # FLAGS holds extra tailscaled arguments from default.env and is meant to
   # word-split; quoting it would pass the whole string as a single argument.
-  # It comes last so a --tun= the user put there wins over the default.
+  # It comes last so a --tun= the user put there wins over everything.
   # shellcheck disable=SC2086
   /usr/sbin/tailscaled \
     --state=/var/lib/tailscale/tailscaled.state \
     --socket=/run/tailscale/tailscaled.sock \
-    --tun=userspace-networking \
+    --tun="${TUN:-userspace-networking}" \
     --port="${PORT}" ${FLAGS} &
 
   echo "$!" >/run/tailscaled.pid

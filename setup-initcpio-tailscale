@@ -28,6 +28,11 @@ Defaults:
                 tinyssh instead. Only one of them can answer port 22 on the
                 tailnet, so don't enable both.
 
+  --tun[=name]  Give the initramfs tailscaled a kernel TUN device instead of
+                its userspace network stack, and put the tun module back in
+                the image at the next rebuild. Off by default; plain '--tun'
+                names the interface tailscale0.
+
 Instead of registering, '${CMD0} --check' verifies an existing setup without
 changing anything: configuration files present, 'tailscale' placed correctly
 in HOOKS=, and the built images actually carrying tailscaled.
@@ -135,17 +140,28 @@ run_check() {
   fi
 
   # Best effort: do built images actually carry the daemon? Skipped when the
-  # tools or images are not where this expects them.
-  local img found=0 checked=0
+  # tools or images are not where this expects them. When TUN= asks for a
+  # kernel device, the module has to be in the image too -- configured but not
+  # rebuilt is exactly the silent break this mode can produce.
+  local img found=0 checked=0 list tun
+  tun=$($xsu sh -c ". '${TS_STATEDIR}/default.env' 2>/dev/null; printf '%s' \"\${TUN:-}\"")
   if command -v lsinitcpio >/dev/null; then
     for img in /boot/initramfs-*.img; do
       [[ -e $img ]] || continue
       checked=1
-      if $xsu lsinitcpio -l "$img" 2>/dev/null | grep -q 'tailscaled$'; then
+      list=$($xsu lsinitcpio -l "$img" 2>/dev/null)
+      if grep -q 'tailscaled$' <<<"$list"; then
         found=1
         chk_ok "$img contains tailscaled"
       else
         chk_warn "$img does not contain tailscaled (built before the hook was added?)"
+      fi
+      if [[ -n $tun && $tun != userspace-networking ]] && grep -q 'tailscaled$' <<<"$list"; then
+        if grep -q '/tun\.ko' <<<"$list"; then
+          chk_ok "$img carries the tun module for TUN=\"$tun\""
+        else
+          chk_fail "$img lacks the tun module but default.env sets TUN=\"$tun\"; run 'mkinitcpio -P'"
+        fi
       fi
     done
     ((checked)) || chk_warn 'no /boot/initramfs-*.img found to inspect'
@@ -176,14 +192,21 @@ cleanup() {
 }
 trap "cleanup" EXIT
 
-# Scan the arguments for the two flags this script has an opinion about, and
-# note whether the user stated them so the defaults below only fill in gaps.
+# Scan the arguments for the flags this script has an opinion about, and note
+# whether the user stated them so the defaults below only fill in gaps.
 #
 # Tailscale SSH is on unless asked otherwise: an initrd node exists to be logged
 # into, and enabling it here is what saves the image from needing a dropbear or
-# tinyssh of its own. '--no-ssh' is this script's own spelling -- 'tailscale up'
-# has no such flag -- so it is dropped from the arguments rather than passed on.
+# tinyssh of its own. '--no-ssh' and '--tun' are this script's own spellings --
+# 'tailscale up' has neither -- so they are dropped from the arguments rather
+# than passed on.
+#
+# --tun opts back into a kernel TUN device for the initramfs tailscaled, which
+# otherwise runs on its own userspace network stack. It lands in default.env as
+# TUN=, where the runtime hooks read it and the install hook decides whether
+# the tun module belongs in the image.
 TS_SSH=yes
+TS_TUN=''
 FOUND_HOSTNAME_IN_ARGS=no
 FOUND_SSH_IN_ARGS=no
 FOUND_NETFILTER_IN_ARGS=no
@@ -224,6 +247,16 @@ for arg in "$@"; do
   no-ssh)
     TS_SSH=no
     FOUND_SSH_IN_ARGS=yes
+    continue
+    ;;
+  tun)
+    TS_TUN=tailscale0
+    continue
+    ;;
+  tun=*)
+    TS_TUN=${flag#*=}
+    TS_TUN=${TS_TUN//[\"\']/}
+    [[ -n $TS_TUN ]] || die "--tun= needs an interface name"
     continue
     ;;
   ssh | ssh=*)
@@ -307,9 +340,24 @@ else
 # settings.
 PORT="41641"
 
+# Network stack for the initramfs tailscaled. Empty means userspace
+# networking, which needs no kernel module; an interface name (tailscale0)
+# means a kernel TUN device. Rebuild the initramfs after changing it, so the
+# tun module is added or removed to match.
+TUN="${TS_TUN}"
+
 # Extra flags you might want to pass to tailscaled.
 FLAGS=""
 EOF
+fi
+
+# An explicit --tun updates a kept default.env too: set the TUN line to this
+# run's choice, leaving everything else the user may have edited alone. When
+# the flag was not given, an existing file's TUN is theirs and stays.
+if [[ -n $TS_TUN ]] && $xsu grep -q '^TUN=' "${TS_STATEDIR}/default.env"; then
+  $xsu sed -i "s|^TUN=.*|TUN=\"${TS_TUN}\"|" "${TS_STATEDIR}/default.env"
+elif [[ -n $TS_TUN ]]; then
+  printf 'TUN="%s"\n' "$TS_TUN" | $xsu tee -a "${TS_STATEDIR}/default.env" >/dev/null
 fi
 
 if [[ $TS_SSH == yes ]]; then
