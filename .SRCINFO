@@ -1,14 +1,14 @@
 pkgbase = trino-cli-bin
 	pkgdesc = Distributed SQL Query Engine for Big Data - Client
-	pkgver = 481
+	pkgver = 483
 	pkgrel = 1
 	url = https://trino.io/
 	arch = any
 	license = Apache
 	depends = java-runtime>=8
 	depends = sh
-	noextract = trino-cli-481
-	source = https://github.com/trinodb/trino/releases/download/481/trino-cli-481
-	sha256sums = 9532fb7a47dc54eec4041e86d980991236c131fd6e34983e40f735ccf60bad7f
+	noextract = trino-cli-483
+	source = https://github.com/trinodb/trino/releases/download/483/trino-cli-483
+	sha256sums = 182a1daca97bd14e7aa9b25cb62c6d0fd96fa80313e5431ac91da3184cebb601
 
 pkgname = trino-cli-bin
