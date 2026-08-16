@@ -2,7 +2,7 @@
 
 pkgname=saturn-bin
 pkgver=3.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform deezer client made in Flutter"
 arch=('x86_64')
 url="https://github.com/Sheathed/Saturn"
@@ -31,6 +31,8 @@ package() {
 	done
 
 	install -dm755 "${pkgdir}/usr/share/applications"
+	sed -i "s|Exec=.*|Exec=/opt/Saturn/Saturn %U|" "${srcdir}/usr/share/applications/Saturn.desktop"
+	sed -i "s|Icon=.*|Icon=saturn|" "${srcdir}/usr/share/applications/Saturn.desktop"
 	install -Dm644 "${srcdir}/usr/share/applications/Saturn.desktop" "${pkgdir}/usr/share/applications/saturn.desktop"
 
 }

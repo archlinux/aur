@@ -1,7 +1,7 @@
 pkgbase = saturn-bin
 	pkgdesc = Cross-platform deezer client made in Flutter
 	pkgver = 3.0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Sheathed/Saturn
 	arch = x86_64
 	license = GPL3
