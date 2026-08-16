@@ -1,7 +1,7 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=yay-friend-git
 _pkgname=yay-friend
-pkgver=0.1.0.r42.g72aa09e
+pkgver=0.5.0.r0.g4813085
 pkgrel=1
 pkgdesc="Security-focused wrapper around yay that uses Claude Code to analyze AUR PKGBUILDs for security entropy (git version)"
 arch=('x86_64' 'aarch64')
@@ -26,27 +26,33 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    printf "0.1.0.r%s.g%s" \
-        "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short HEAD)"
+    # Derived from the tag rather than a hardcoded base. The 0.1.0 that used to
+    # sit here was a number nobody was updating: upstream reported 0.1.0 for its
+    # first 42 commits for the same reason.
+    local described
+    # Captured before the pipe: `git describe | sed || fallback` reads sed's exit
+    # status, which is 0 even when git printed nothing, so the fallback would
+    # never fire and pkgver would come back empty.
+    if described="$(git describe --long --tags 2>/dev/null)" && [[ -n $described ]]; then
+        printf "%s" "$described" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    else
+        printf "0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    fi
 }
 
 build() {
     cd "$_pkgname"
     export CGO_ENABLED=0
     export GOPATH="$srcdir/gopath"
-    export GOFLAGS="-trimpath -mod=readonly -modcacherw"
 
-    local commit build_date
-    commit="$(git rev-parse --short HEAD)"
-    build_date="$(date -u -d "@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y-%m-%dT%H:%M:%SZ)"
-
-    go build \
-        -ldflags="-s -w \
-            -X github.com/aaronsb/yay-friend/internal/version.Version=${pkgver} \
-            -X github.com/aaronsb/yay-friend/internal/version.GitCommit=${commit} \
-            -X github.com/aaronsb/yay-friend/internal/version.BuildDate=${build_date}" \
-        -o "$_pkgname" ./cmd/yay-friend
+    # Upstream's Makefile owns the build flags. This used to keep its own copy of
+    # them -- one of four, which is how VERSION stayed pinned at 0.1.0 in some of
+    # them and not others. VERSION is passed explicitly because pkgver() computes
+    # the -git spelling, which is not what `git describe` alone would give.
+    make build \
+        VERSION="${pkgver}" \
+        GIT_COMMIT="$(git rev-parse --short HEAD)" \
+        GOFLAGS="-trimpath -mod=readonly -modcacherw"
 }
 
 package() {
