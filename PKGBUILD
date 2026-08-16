@@ -1,8 +1,8 @@
 # Maintainer: Andrew Marin <andrewmarin367@gmail.com>
 pkgname=vice-clipper
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
-pkgdesc="Medal.tv-style game clip recorder for Linux — instant replay, session recording, and one-click sharing"
+pkgdesc="Medal.tv-style game clip recorder for Linux: instant replay, session recording, and one-click sharing"
 arch=('x86_64')
 url="https://github.com/eklonofficial/Vice"
 license=('GPL-3.0-or-later')
