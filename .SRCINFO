@@ -1,0 +1,23 @@
+pkgbase = veilid
+	pkgdesc = Veilid headless node
+	pkgver = 0.5.7
+	pkgrel = 1
+	url = https://veilid.com
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = cargo
+	makedepends = protobuf
+	provides = veilid
+	conflicts = veilid
+	conflicts = veilid-git
+	conflicts = veiled-bin
+	options = !lto
+	source = https://gitlab.com/veilid/veilid/-/archive/v0.5.7/veilid-v0.5.7.tar.gz
+	source = veilid-server.sysusers
+	source = veilid-server.tmpfiles
+	sha512sums = 9ce5ad34c8528783f138f3e38ab4676d5814fbc76e1cd2aa31c45c6f8e1555392a6101fb07dd888fa92bc29f0aadb0331b64053243e86180e5b79d2165040ee5
+	sha512sums = 7ae2ed4eac36a6bcf4ee3c52e4d0a9a331fb678899282934027e0e67765d94a543f7ad190804c771b2180339ac017b85dbc38a9b07c48b625973c53267cad9ec
+	sha512sums = 8e1eadfbadd34c69633388d1b4ff16b7af44bb58097a206df6d058cae2f7566dbfdb41a422b63cbcea5cd6c539f37bdab918cca3186ccfff306f546a4ae40fbd
+
+pkgname = veilid
