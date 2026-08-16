@@ -2,7 +2,7 @@
 
 pkgname='libsaxonc'
 pkgver='12.9.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='SaxonC-HE XSLT, XQuery and XPath processor library for C/C++'
 url='https://github.com/Saxonica/Saxon-HE'
 license=('MPL-2.0 AND Apache-2.0 AND BSD-3-Clause AND X11 AND W3C-20150513 AND 0BSD AND (GPL-2.0-only WITH Classpath-exception-2.0)')
@@ -83,7 +83,14 @@ _gcc_target_options() {
 	awk '$1 ~ /^-m/ && $NF == "[enabled]" { sub(/^-m/, "", $1); print $1 }' <<< "${_output}" | sort -u
 }
 
-_native_image_march() {
+_gcc_preprocessor_defines() {
+	local _output
+
+	_output="$("${CC:-gcc}" "$@" -dM -E -x c /dev/null 2>&1)" || return 1
+	awk '$1 == "#define" { print $2 }' <<< "${_output}"
+}
+
+_native_image_march_x86_64() {
 	local _graal=$1
 	local _candidate
 	local _current
@@ -190,6 +197,96 @@ _native_image_march() {
 	printf '%s\n' 'compatibility'
 }
 
+_native_image_march_aarch64() {
+	local _graal=$1
+	local _base_target
+	local _line
+	local _macro
+	local _modifier
+	local _modifier_list
+	local _output
+	local _target
+	local -a _cflags=()
+	local -A _defined=()
+	local -A _supported=()
+	local -A _supported_modifiers=()
+
+	_output="$("${_graal}/bin/native-image" -march=list 2>&1)" || return 1
+	while IFS= read -r _line; do
+		if [[ "${_line}" =~ ^\'([^\']+)\'$ ]]; then
+			_supported["${BASH_REMATCH[1]}"]=1
+		elif [[ "${_line}" == *'feature modifiers are available:'* ]]; then
+			_modifier_list="${_line#*feature modifiers are available:}"
+			while IFS= read -r _modifier; do
+				[[ -n "${_modifier}" ]] && _supported_modifiers["${_modifier}"]=1
+			done < <(grep -oE "'[^']+'" <<< "${_modifier_list}" | tr -d "'")
+		fi
+	done <<< "${_output}"
+	[[ -n "${_supported[compatibility]:-}" ]] || {
+		printf 'GraalVM does not provide the compatibility machine target\n' >&2
+		return 1
+	}
+
+	if [[ -n "${PACKAGECARCH:-}" ]]; then
+		[[ "${PACKAGECARCH}" == 'aarch64' ]] || {
+			printf 'Unsupported PACKAGECARCH for GraalVM Native Image on aarch64: %s\n' "${PACKAGECARCH}" >&2
+			return 1
+		}
+		printf '%s\n' 'compatibility'
+		return 0
+	fi
+
+	read -r -a _cflags <<< "${CFLAGS:-}"
+	_output="$(_gcc_preprocessor_defines "${_cflags[@]}")" || return 1
+	while IFS= read -r _macro; do
+		[[ -n "${_macro}" ]] && _defined["${_macro}"]=1
+	done <<< "${_output}"
+
+	[[ -n "${_defined[__ARM_FP]:-}" && -n "${_defined[__ARM_NEON]:-}" ]] || {
+		printf 'Effective aarch64 CFLAGS disable FP or Advanced SIMD, which GraalVM Native Image requires\n' >&2
+		return 1
+	}
+
+	if [[ -n "${_defined[__ARM_FEATURE_CRC32]:-}" \
+		&& -n "${_defined[__ARM_FEATURE_ATOMICS]:-}" \
+		&& -n "${_supported[armv8.1-a]:-}" ]]; then
+		_base_target='armv8.1-a'
+	elif [[ -n "${_supported[armv8-a]:-}" ]]; then
+		_base_target='armv8-a'
+	else
+		_base_target='compatibility'
+	fi
+
+	_target="${_base_target}"
+	if [[ -n "${_defined[__ARM_FEATURE_AES]:-}" && -n "${_supported_modifiers[aes]:-}" ]]; then
+		_target+='+aes'
+	fi
+	if [[ "${_base_target}" != 'armv8.1-a' \
+		&& -n "${_defined[__ARM_FEATURE_ATOMICS]:-}" \
+		&& -n "${_supported_modifiers[lse]:-}" ]]; then
+		_target+='+lse'
+	fi
+
+	printf '%s\n' "${_target}"
+}
+
+_native_image_march() {
+	local _graal=$1
+
+	case "${CARCH}" in
+		x86_64)
+			_native_image_march_x86_64 "${_graal}"
+			;;
+		aarch64)
+			_native_image_march_aarch64 "${_graal}"
+			;;
+		*)
+			printf 'Unsupported CARCH for GraalVM Native Image: %s\n' "${CARCH}" >&2
+			return 1
+			;;
+	esac
+}
+
 prepare() {
 	local _saxonj_src="${srcdir}/saxonj-source-${_releasever_dashed}"
 
@@ -271,14 +368,12 @@ build() {
 		return 1
 	}
 
-	if [[ "${CARCH}" == 'x86_64' ]]; then
-		_native_march="$(_native_image_march "${_graal}")" || return 1
-		_native_image_march_args=("-march=${_native_march}")
-		if [[ -n "${PACKAGECARCH:-}" ]]; then
-			printf 'GraalVM machine target derived from PACKAGECARCH=%s: %s\n' "${PACKAGECARCH}" "${_native_march}"
-		else
-			printf 'GraalVM machine target derived from CFLAGS: %s\n' "${_native_march}"
-		fi
+	_native_march="$(_native_image_march "${_graal}")" || return 1
+	_native_image_march_args=("-march=${_native_march}")
+	if [[ -n "${PACKAGECARCH:-}" ]]; then
+		printf 'GraalVM machine target derived from PACKAGECARCH=%s: %s\n' "${PACKAGECARCH}" "${_native_march}"
+	else
+		printf 'GraalVM machine target derived from CFLAGS: %s\n' "${_native_march}"
 	fi
 
 	mkdir -p -- "${_saxonj_classes}" "${_saxonc_classes}" "${_native}" "${_objects}" "${_lib}"

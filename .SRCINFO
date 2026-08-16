@@ -1,7 +1,7 @@
 pkgbase = libsaxonc
 	pkgdesc = SaxonC-HE XSLT, XQuery and XPath processor library for C/C++
 	pkgver = 12.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Saxonica/Saxon-HE
 	arch = x86_64
 	arch = aarch64
