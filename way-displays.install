@@ -33,13 +33,7 @@ magen() {
 }
 
 post_install() {
-    yello "1.15.0"
-    blue  "New Features:"
-    plain "  ${magenta}#225${all_off} add warning: 'DP-1' will match eDP-1 and DP-1. Consider using regex '!^DP-1$' to exactly match. by ${cyan}@alex-courtis${all_off} in ${green}#226${all_off}"
-    plain "  ${magenta}#227${all_off} add IPC request/response schemas, change HZ from integer to number, minor schema version bumps by ${cyan}@alex-courtis${all_off} in ${green}#228${all_off}"
-    blue  "Bug Fixes:"
-    plain "  ${magenta}docs${all_off} fix broken links on manpage by ${cyan}@maricn${all_off} in ${green}#222${all_off}"
-    plain "  ${magenta}#227${all_off} restore 1.0.0 schemas by ${cyan}@alex-courtis${all_off} in ${green}#231${all_off}"
+    yello "${yello}Major Release 2.0.0:${all_off} https://github.com/alex-courtis/way-displays/wiki/Version-2.0.0-Changes"
 }
 
 post_upgrade() {
