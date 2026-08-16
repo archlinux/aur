@@ -15,7 +15,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/imageworks/pystring/archiv
 sha256sums=('020a603a757ba1e429f4b1ea6feb3afbe0fb34bcafa355032e1f1b8a0019d198')
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' )
 
 build() {
