@@ -8,7 +8,6 @@ pkgdesc="DiM's fork of Caelestia-CLI"
 arch=('any')
 url='https://github.com/dim-ghub/midnight-cli'
 license=('GPL-3.0-only')
-install="${pkgname}.install"
 
 depends=(
     'python'
@@ -27,7 +26,8 @@ depends=(
 )
 
 optdepends=(
-    'midnight-shell: shell control and screenshot function'
+    'midnight-shell-git: shell control and screenshot function'
+    'caelestia-shell-git: legacy shell support'
 )
 
 makedepends=(
@@ -38,9 +38,19 @@ makedepends=(
     'python-hatch-vcs'
 )
 
-provides=("${_pkgname}" 'dim-caelestia-cli-git' 'caelestia-cli')
-conflicts=("${_pkgname}" 'dim-caelestia-cli-git' 'caelestia-cli' 'caelestia-cli-git')
-replaces=('dim-caelestia-cli-git')
+provides=(
+    "${_pkgname}=${pkgver}"
+    "dim-caelestia-cli-git=${pkgver}"
+    "caelestia-cli=${pkgver}"
+    "caelestia-cli-git=${pkgver}"
+)
+conflicts=(
+    "${_pkgname}"
+    'dim-caelestia-cli-git'
+    'caelestia-cli'
+    'caelestia-cli-git'
+)
+replaces=('dim-caelestia-shell-git')
 
 source=("${pkgname}::git+https://github.com/dim-ghub/midnight-cli.git")
 sha256sums=('SKIP')
