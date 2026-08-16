@@ -2,7 +2,7 @@
 
 pkgname=aps-bin
 _pkgname="${pkgname%-bin}"
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="A fast and powerful patterns searcher for AUR package sources (bin version)"
 url="https://github.com/Antiz96/aps"
@@ -22,9 +22,9 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver
 sha256sums=('ae2cf86bdfb69f473f673d38835badfe0572b742f3ade2beb4dfce8c73560de9'
             '6e5336b41889014e3d97de9fe362b9abf3f41a8baab92900874a3ed81a93e7b1'
             '91bec3773e904d6aead58580c87bc57411c2cef59449d1376be84d21064b5cca'
-            '95a12ca0686e5c614350909997dda3b95cef4ac4906032cc0695526df681a9aa'
+            '3a33a9d3f30c3bf1b97df4fc228b93d15d5000ea7a6958b1e88fc82fda2e3a8a'
             '90884e15d4cd08db33eca45496228f082808641bfd17db5c00806efe2651aa7c')
-sha256sums_x86_64=('4796dc9b4744c5fbc1344edde483ed03e3505b9b3da83d601891c9b630be56dd')
+sha256sums_x86_64=('c0daba2e9fba9bfc5140cf6f50ecc3e5db400cc057f5c13c2d8ddea1be251efb')
 
 build() {
 	scdoc < "${_pkgname}-${pkgver}.1.scd" > "${_pkgname}.1"
