@@ -11,8 +11,8 @@
 # Contributor: Dhina17 <dhinalogu@gmail.com>
 
 pkgname=android-studio-system
-pkgver=2026.1.1.10
-_relname=quail1-patch2
+pkgver=2026.1.3.8
+_relname=quail3-patch1
 pkgrel=1
 pkgdesc="The official Android IDE (Stable branch)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ options=('!strip') # Removing it is a bit more violent but it removes 90MB of fi
 source=("https://dl.google.com/dl/android/studio/ide-zips/$pkgver/android-studio-$_relname-linux.tar.gz"
         "android-studio.desktop"
         "license.html")
-b2sums=('add83a328549401870044e843aa594c7efcaead55d62ee0b2af0e5de104f28f468fa960bf2d6663b7f74276f219af872696357e2ff0e4193da85caf9a790d9ba'
+b2sums=('b8da6b2c47fabde63bacbae9366dab4f8cc3571361a56ed5153cb59143232ab81569874006285848edc0cdeab85a2dd1e6ec8bfce6022e37f1dbe8d9cbbe01a5'
         '16940866032d710ce995cc6bb0b994875215df0f6191b09a3ece5d6c5750c4fb3d430c683f545154eeceecad10d70333d59302fe6c5efd97c3fc9e66f3009dca'
         '43b288fb81656cd72826a52620e41fbd0daa65d37246cb5b7dbff9c326022eabf18344513517b16134b557d6ae86535f44f863ebd06d6fe0410f92117c1a8c67')
 provides=("android-studio")
