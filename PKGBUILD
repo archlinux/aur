@@ -43,8 +43,20 @@ makedepends=(
     'qt6-shadertools'
 )
 
-provides=("${_pkgname}" 'dim-caelestia-shell-git' 'caelestia-shell' 'caelestia-shell-git')
-conflicts=("${_pkgname}" 'dim-caelestia-shell-git' 'caelestia-shell' 'caelestia-shell-git' 'noctalia-qs' 'noctalia-qs-git' 'dim-caelestia-shell-git-debug')
+provides=(
+    "${_pkgname}=${pkgver}"
+    "caelestia-shell=${pkgver}"
+    "caelestia-shell-git=${pkgver}"
+)
+conflicts=(
+    "${_pkgname}"
+    'dim-caelestia-shell-git'
+    'caelestia-shell'
+    'caelestia-shell-git'
+    'noctalia-qs'
+    'noctalia-qs-git'
+    'dim-caelestia-shell-git-debug'
+)
 replaces=('dim-caelestia-shell-git')
 
 source=("${pkgname}::git+https://github.com/dim-ghub/midnight-shell.git")

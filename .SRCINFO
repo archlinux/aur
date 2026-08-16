@@ -34,10 +34,9 @@ pkgbase = midnight-shell-git
 	depends = ttf-cascadia-code-nerd
 	depends = swappy
 	depends = libqalculate
-	provides = midnight-shell
-	provides = dim-caelestia-shell-git
-	provides = caelestia-shell
-	provides = caelestia-shell-git
+	provides = midnight-shell=r3082.aa0009e
+	provides = caelestia-shell=r3082.aa0009e
+	provides = caelestia-shell-git=r3082.aa0009e
 	conflicts = midnight-shell
 	conflicts = dim-caelestia-shell-git
 	conflicts = caelestia-shell
