@@ -2,13 +2,14 @@
 
 pkgname=voicefox-git
 _pkgname="${pkgname%-git}"
-pkgver=1.5.r0.g7157ce9
+pkgver=0.3.5.r0.ge93e6ff
 pkgrel=1
+epoch=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64")
 url="https://github.com/emoeem/voicefox"
 license=("MIT")
-options=(!lto) # ring's cc-compiled asm breaks with makepkg's -flto
+options=(!lto !debug) # ring's cc-compiled asm breaks with makepkg's -flto
 depends=(
 	"glibc"
 	"hicolor-icon-theme"
