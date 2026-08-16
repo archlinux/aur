@@ -1,16 +1,15 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=candle-git
-pkgver=11.2.r8.ga4798f6
+pkgver=11.2.r19.gc8a8774
 pkgrel=1
 pkgdesc="GRBL controller application with G-Code visualizer written in Qt"
 arch=($CARCH)
 url="https://github.com/Denvi/Candle"
 license=('GPL-3.0-only')
 depends=(
-	glibc
-	libgcc
-	libstdc++
+    libgcc_s.so
+    libstdc++.so
 	hicolor-icon-theme
 	qt5-base
 	qt5-multimedia
