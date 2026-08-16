@@ -1,19 +1,19 @@
 pkgbase = toxen3
 	pkgdesc = Toxen - A highly customizable music player with visualizers, audio effects, and storyboards
-	pkgver = 2.10.0
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://github.com/LucasionGS/Toxen3
 	arch = x86_64
 	license = MIT
-	makedepends = electron30-bin
-	makedepends = nodejs>=22
+	makedepends = electron43-bin
+	makedepends = nodejs>=22.12
 	makedepends = npm
 	depends = gtk3
 	depends = nss
 	depends = alsa-lib
 	options = !debug
 	options = !strip
-	source = toxen3-2.10.0.tar.gz::https://github.com/LucasionGS/Toxen3/archive/v2.10.0.tar.gz
+	source = toxen3-2.11.0.tar.gz::https://github.com/LucasionGS/Toxen3/archive/v2.11.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = toxen3
