@@ -14,7 +14,6 @@ pkgbase = akia-bin
 	optdepends = pcsc-tools: smart card reader debugging utilities
 	provides = akia=6.8.10
 	conflicts = akia
-	replaces = akia
 	source = akia-bin-6.8.10.deb.zip::https://akiskart.bilgem.tubitak.gov.tr/wp-content/uploads/sites/33/2026/06/Akia_linux_6_8_10.deb_.zip
 	source = akia.sh
 	source = akia.desktop

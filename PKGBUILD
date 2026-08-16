@@ -21,7 +21,6 @@ makedepends=(
 )
 provides=("akia=${pkgver}")
 conflicts=('akia')
-replaces=('akia')
 install="${pkgname%-bin}.install"
 
 # Upstream serves the .deb inside a WordPress-uploaded .zip whose path embeds
