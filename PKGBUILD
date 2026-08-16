@@ -1,13 +1,13 @@
 # Maintainer: Axel H. <noirbizarre@gmail.com>
 #
-# Prebuilt binary package. `0.5.0`, `b6d7906ecc0b096a38facb45579c3fdac00073b7ca8968fb7ef43f7c683bf498` and `04b73177db3259d6fcf86eb3f901e1d419605ddcdac43ecc147d72613a01effb`
+# Prebuilt binary package. `0.5.1`, `d560353841cc5955951e827483e46897abbdd03662328cd3c3058e67591a88e8` and `f9a6333c75a568bd147d811633b235e0115a1fc336e9a032d55affb0cf46db0e`
 # are substituted by .github/workflows/aur.yaml from the published release
 # assets, and the result is pushed to the AUR. Edit this template, never the
 # PKGBUILD in the AUR repository: that one is regenerated at every release.
 
 pkgname=git-tpl-bin
 _pkgname=git-tpl
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Git-native project templates (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -32,8 +32,8 @@ options=('!strip' '!debug')
 # tags without a `v` prefix, so the tag is `$pkgver` as-is.
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/$pkgver/git-tpl_${pkgver}_linux-amd64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/$pkgver/git-tpl_${pkgver}_linux-arm64.tar.gz")
-sha256sums_x86_64=('b6d7906ecc0b096a38facb45579c3fdac00073b7ca8968fb7ef43f7c683bf498')
-sha256sums_aarch64=('04b73177db3259d6fcf86eb3f901e1d419605ddcdac43ecc147d72613a01effb')
+sha256sums_x86_64=('d560353841cc5955951e827483e46897abbdd03662328cd3c3058e67591a88e8')
+sha256sums_aarch64=('f9a6333c75a568bd147d811633b235e0115a1fc336e9a032d55affb0cf46db0e')
 
 # Fetched separately because the release archive carries no licence file, and
 # MIT is not one of the licences Arch keeps in /usr/share/licenses/common — so
