@@ -5,7 +5,7 @@
 _pkgname=winboat
 pkgname=winboat-electron
 pkgver=0.9.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
@@ -29,7 +29,7 @@ makedepends=(
   'asar'
 )
 options=('!strip')
-source=("git+https://github.com/TibixDev/winboat.git#tag=v$pkgver")
+source=("git+https://github.com/winboat-org/winboat.git#tag=v$pkgver")
 sha256sums=('11051ae91c399ccc75ef69910d4e8a526f6cc50210f9c70525829d5017715cce')
 provides=('winboat')
 conflicts=('winboat')
@@ -41,7 +41,7 @@ prepare(){
   sed --in-place -e "s/process\.resourcesPath, \"/\"\/usr\/lib\/winboat\//g" ./src/renderer/lib/*.ts
 
   export npm_config_cache="$srcdir/npm_cache"
-  npm i
+  npm i --allow-git=all
 }
 
 build() {
