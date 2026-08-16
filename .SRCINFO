@@ -1,12 +1,13 @@
 pkgbase = magnolia-qda
 	pkgdesc = Free and open-source qualitative data analysis software.
 	pkgver = 1.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/caledavis/Magnolia
 	arch = x86_64
 	license = EUPL-1.2
 	makedepends = asar
 	makedepends = npm
+	depends = bash
 	depends = at-spi2-core
 	depends = electron39
 	depends = glibc

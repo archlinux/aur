@@ -4,13 +4,14 @@ pkgname=magnolia-qda
 _name=Magnolia
 pkgver=1.6.2
 _electron=electron39 # this is not what is used by upstream, but rather the nearest one in extra repo
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open-source qualitative data analysis software."
 arch=('x86_64')
 url="https://github.com/caledavis/$_name"
 license=('EUPL-1.2')
 options=(!debug !strip) # save time
 depends=(
+    bash
     at-spi2-core
     "$_electron"
     glibc
@@ -33,11 +34,14 @@ source=(
   "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
   "${pkgname}.desktop"
 )
-sha256sums=('2d82e2656b9148cbbe1e076e0b39646a7bab3bdce2b1e9c9552c72fa863db054'
-            'ae872917b09c435709d674cf1b66deff859cad2b8401240acdc1af2218917137')
+sha256sums=(
+    '2d82e2656b9148cbbe1e076e0b39646a7bab3bdce2b1e9c9552c72fa863db054'
+    'ae872917b09c435709d674cf1b66deff859cad2b8401240acdc1af2218917137'
+)
+
 build() {
     cd "${srcdir}/${_name}-$pkgver"
-    npm install
+    npm ci
     npm run build
     ./node_modules/.bin/electron-builder \
       --linux \
@@ -62,5 +66,5 @@ package() {
 #! /usr/bin/sh
 exec $_electron /usr/lib/$pkgname "\$@"
 EOD
-
+    
 }
