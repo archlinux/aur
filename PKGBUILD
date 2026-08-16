@@ -1,46 +1,51 @@
-# Maintainer: Christopher Cooper <christopher@cg505.com>
+# Maintainer: Ismet Togay <ismet.togay at gmail dot com>
+# Contributor: Christopher Cooper <christopher@cg505.com>
 pkgname=cursor-cli
-# extracted from https://cursor.com/install (managed by 'update-pkgver.sh')
-_upstream_ver='2026.07.23-e383d2b'
-# Baseline pkgver; update using './update-pkgver.sh'
-pkgver=2026.07.23.1.e383d2b
+pkgver=2026.08.11.1.e8db854
+# Upstream is YYYY.MM.DD-<hash>. pkgver cannot contain hyphens, and hashes are
+# not monotonically ordered, so pkgver is YYYY.MM.DD.<n>.<hash>: n resets to 1
+# on a new date and increments when the same date gets a new hash.
+# Derive the upstream version (YYYY.MM.DD-<hash>) from that pkgver.
+_upstream_ver="${pkgver%.*}"
+_upstream_ver="${_upstream_ver%.*}-${pkgver##*.}"
 pkgrel=1
+# epoch=1: bumped when switching from the original `20250808.0.<sha>` scheme
+# to the current `YYYY.MM.DD.<n>.<hash>` scheme (2025-08-09). Never decrease.
 epoch=1
-pkgdesc="Cursor Agent CLI - AI-powered code assistant"
+pkgdesc="CLI tool for Cursor, the AI-first coding agent"
 arch=('x86_64' 'aarch64')
 url="https://cursor.com"
 license=('LicenseRef-Cursor')
-depends=('gcc-libs' 'bash' 'glibc' 'nodejs' 'ripgrep')
+depends=('gcc-libs' 'git' 'zlib')
+options=('!strip')
 install=cursor-cli.install
-source=('Cursor-TOS')
+source=('Cursor-TOS'
+        'auto-update-block.patch')
 source_x86_64=("cursor-cli-${_upstream_ver}-x86_64.tar.gz::https://downloads.cursor.com/lab/${_upstream_ver}/linux/x64/agent-cli-package.tar.gz")
 source_aarch64=("cursor-cli-${_upstream_ver}-aarch64.tar.gz::https://downloads.cursor.com/lab/${_upstream_ver}/linux/arm64/agent-cli-package.tar.gz")
-b2sums=('7079c023e03ea4d78b067ed0f22b5cc1982c306721b2ea6be3c7f73bbbe0e8f05b148fd6571902b838464ee80a787ef7be73135c622f0a4fdb16c38429ced8d6')
-b2sums_x86_64=('98df7f3d41efd1178a114aef6beeeb00dfc8b33a592e9b699c4eaa6df530f9b85d37fecd818c175d7b1aa6f7543c35dc3d42c8899087ba0d211bcf747333316d')
-b2sums_aarch64=('71f0df95054f168a324f7bd57ae9850504f8bd0293e0620cf193de8729ef97a127f90e7e60ceb83e5908883cb412a448cc3e1600aeba3fe060bc0afded4e7853')
+b2sums=('d241ee9895bdb1c17514438fde8528222a8f2326568bd7a033d7a1b11432ce6b4575ff1a50625764bfe6bc6f8a9dc060f7439c3be7e95f8fd02912cdd37a011d'
+        '1928e04c713e13911ea607f84c3e4a2fed1f76af9795503811078f43d2b53c753e28b2233e553fc17e766831800fb0dbc272aad2a80b387f95ba6071d7d4116a')
+b2sums_x86_64=('4787401fbdf14e72e5f98cce70db932cdc6cc6030d3b5531adce715f95e1ddc5dfce029e0def8da06d676bbe9c5cc9ed94f49270fe107a0e4b17274716f9dead')
+b2sums_aarch64=('c499a9a75d46c6289d9c9011a72eef70964872aca9f7660406e566e11d188a87d194cfe2133a97a3a461d547b94dd4f2280b4ad9e8a1990ddcaddc78d7897ddc')
+
+prepare() {
+    # Block cursor-agent auto-updates by making its versions directory
+    # non-searchable (chmod -x; see auto-update-block.patch).
+    patch -Np1 -d "${srcdir}/dist-package" -i "${srcdir}/auto-update-block.patch"
+}
 
 package() {
-    # Create necessary directories
     install -dm755 "${pkgdir}/opt/cursor-agent"
     install -dm755 "${pkgdir}/usr/bin"
 
-    # Copy all files from the extracted package
+    # Copy all files from the extracted package (including upstream's
+    # bundled node and rg runtimes).
     cp -r "${srcdir}"/dist-package/* "${pkgdir}/opt/cursor-agent/"
-
-	# Replace node and rg with system versions
-	ln -sf "/usr/bin/node" "${pkgdir}/opt/cursor-agent/node"
-	ln -sf "/usr/bin/rg" "${pkgdir}/opt/cursor-agent/rg"
-
-    # Patch cursor-agent script to block auto-updates
-    sed -i '/^NODE_BIN=/a\
-    # Block cursor-agent auto-updates\
-    mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/cursor-agent/versions"\
-    chmod -x "${XDG_DATA_HOME:-$HOME/.local/share}/cursor-agent/versions"' "${pkgdir}/opt/cursor-agent/cursor-agent"
 
     # Create symlink in /usr/bin
     ln -s "/opt/cursor-agent/cursor-agent" "${pkgdir}/usr/bin/cursor-agent"
 
-	# Install license
-	# This is downloaded from https://cursor.com/terms-of-service
-	install -Dm644 Cursor-TOS "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # Install license
+    # This is downloaded from https://cursor.com/terms-of-service
+    install -Dm644 Cursor-TOS "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

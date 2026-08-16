@@ -1,0 +1,26 @@
+version = 1
+
+# Package source files written by the maintainer.
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    "update-pkgver.sh",
+    "cursor-cli.install",
+    "LICENSE",
+    "REUSE.toml",
+    "auto-update-block.patch",
+    "nvchecker.toml",
+    ".gitignore",
+]
+SPDX-FileCopyrightText = [
+    "2026 Ismet Togay <ismet.togay at gmail dot com>",
+    "2025-2026 Christopher Cooper <christopher@cg505.com>",
+]
+SPDX-License-Identifier = "0BSD"
+
+# Upstream Cursor Terms of Service, redistributed as the installed license.
+[[annotations]]
+path = "Cursor-TOS"
+SPDX-FileCopyrightText = "Anysphere, Inc."
+SPDX-License-Identifier = "LicenseRef-Cursor"

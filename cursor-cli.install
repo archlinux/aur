@@ -1,12 +1,19 @@
+# shellcheck shell=bash
+
+post_install() {
+    post_upgrade "$@"
+}
+
 post_upgrade() {
     cat << 'EOF'
 
-==> The AUR package will now block cursor-agent automatic updates.
-    Clean up old auto-update files from previous installations:
+==> cursor-agent updates are managed by your package manager.
+==> If a previous install allowed the CLI to self-update,
+    clean up the leftover files:
 
-  rm ~/.local/bin/cursor-agent
-  chmod +x ~/.local/share/cursor-agent/versions/
-  rm -r ~/.local/share/cursor-agent/versions/
+    rm -f ~/.local/bin/cursor-agent
+    chmod +x ~/.local/share/cursor-agent/versions/ 2>/dev/null
+    rm -rf ~/.local/share/cursor-agent/versions/
 
 EOF
 }

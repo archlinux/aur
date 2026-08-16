@@ -1,0 +1,15 @@
+# makepkg build trees
+src/
+pkg/
+
+# Built packages (any compressor: zst, xz, gz, bz2, …)
+*.pkg.tar*
+
+# Downloaded upstream tarballs from source= URLs
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.tar.zst
+
+# makepkg logs
+*.log

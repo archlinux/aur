@@ -1,0 +1,11 @@
+--- a/cursor-agent
++++ b/cursor-agent
+@@ -8,6 +8,8 @@
+   SCRIPT_DIR="$(dirname "$(readlink "$0" || echo "$0")")"
+ fi
+ NODE_BIN="$SCRIPT_DIR/node"
++# Block cursor-agent auto-updates
++[[ -n "${HOME:-}" ]] && mkdir -p "$HOME/.local/share/cursor-agent/versions" && chmod -x "$HOME/.local/share/cursor-agent/versions" || true
+ 
+ # Enable Node.js compile cache for faster CLI startup (requires Node.js >= 22.1.0)
+ # Cache is automatically invalidated when source files change
