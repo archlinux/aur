@@ -1,0 +1,27 @@
+pkgbase = mankala-git
+	pkgdesc = Mancala games for KDE
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://invent.kde.org/kbkmde/mankalanextgen
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = qt6-tools
+	depends = libgcc
+	depends = libstdc++
+	depends = ki18n
+	depends = kirigami
+	depends = mankalaengine
+	depends = qtkeychain-qt6
+	depends = qt6-multimedia
+	depends = qt6-networkauth
+	depends = qt6-base
+	provides = mankala
+	conflicts = mankala
+	replaces = mankala
+	source = git+https://invent.kde.org/srisharanvs/mankalanextgen.git
+	sha256sums = SKIP
+
+pkgname = mankala-git
