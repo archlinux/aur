@@ -3,7 +3,7 @@
 # pkgver / pkgrel / sha256sums are rewritten by scripts/publish-aur.sh at
 # release time (from the release branch). Edit the package body here, not those.
 pkgname=kopuz-bin
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="A modern music player (pre-built binary)"
 arch=('x86_64')
@@ -30,23 +30,23 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kopuz-org/kopuz/releases/download/v${pkgver}/kopuz_v${pkgver}_x86_64-linux.tar.gz")
-sha256sums=('02ccb0c24d047951bd2ed0d1acccdf3940c39ef1620eccfdc855a1d25ddcf936')
+sha256sums=('ee3464c2d23b1f52e2970cd17328a1aa84ecd288eae203f5195fe6fb586a9b4a')
 
 package() {
     cd "kopuz-linux-x86_64"
 
     install -Dm755 kopuz "$pkgdir/usr/bin/kopuz"
 
-    install -Dm644 "com.temidaradev.kopuz.desktop" \
-        "$pkgdir/usr/share/applications/com.temidaradev.kopuz.desktop"
+    install -Dm644 "moe.kopuz.kopuz.desktop" \
+        "$pkgdir/usr/share/applications/moe.kopuz.kopuz.desktop"
     sed -i "s|Exec=kopuz|Exec=/usr/bin/kopuz|" \
-        "$pkgdir/usr/share/applications/com.temidaradev.kopuz.desktop"
+        "$pkgdir/usr/share/applications/moe.kopuz.kopuz.desktop"
 
     install -Dm644 "logo.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.temidaradev.kopuz.png"
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/moe.kopuz.kopuz.png"
 
-    install -Dm644 "com.temidaradev.kopuz.metainfo.xml" \
-        "$pkgdir/usr/share/metainfo/com.temidaradev.kopuz.metainfo.xml"
+    install -Dm644 "moe.kopuz.kopuz.metainfo.xml" \
+        "$pkgdir/usr/share/metainfo/moe.kopuz.kopuz.metainfo.xml"
 
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
