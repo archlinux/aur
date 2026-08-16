@@ -1,7 +1,7 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=howdy-next-git
-pkgver=3.3.1.r21.g7ec044c
+pkgver=3.4.0.r0.gb0b3d29
 pkgrel=1
 pkgdesc="C++ rewrite of Howdy facial-recognition authentication on Linux"
 arch=('x86_64')
@@ -85,7 +85,8 @@ package() {
 	# Arch provides GPL-3.0-or-later through the licenses package.
 	rm "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	# Workaround for polkit 127+ breaking Howdy (boltgolt/howdy#1077).
+	# Relax polkit-agent-helper sandbox directives required by Howdy,
+	# as recommended by polkit (see polkit-agent-helper(8)).
 	install -Dm644 "$srcdir/polkit-agent-helper-howdy.conf" \
 		"$pkgdir/usr/lib/systemd/system/polkit-agent-helper@.service.d/10-howdy.conf"
 }
