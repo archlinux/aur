@@ -1,0 +1,11 @@
+bedGraphToBigWig
+wigToBigWig
+bigWigToBedGraph
+bigWigInfo
+bigWigAverageOverBed
+bigWigSummary
+fetchChromSizes
+LICENSE
+pkg/
+src/
+*.pkg.tar.*
