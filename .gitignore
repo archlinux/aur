@@ -1,0 +1,9 @@
+/pkg/
+/src/
+/*.pkg.tar.*
+/*.zip
+/*.whl
+/*.whl.*
+/*.jar
+/xmlresolver-LICENSE-*.md
+/jline-LICENSE-*.txt
