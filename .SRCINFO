@@ -1,0 +1,26 @@
+pkgbase = dell-powermanager-git
+	pkgdesc = Cross-platform Dell Power Manager re-implementation
+	pkgver = 0.13.0.r0.g2803dc0
+	pkgrel = 1
+	url = https://github.com/alexVinarskis/dell-powermanager
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = ninja
+	makedepends = gtk3
+	makedepends = sqlite
+	makedepends = libsecret
+	makedepends = curl
+	makedepends = git
+	makedepends = unzip
+	makedepends = xz
+	makedepends = zip
+	makedepends = glu
+	depends = dell-command-configure
+	provides = dell-powermanager
+	conflicts = dell-powermanager
+	source = git+https://github.com/alexVinarskis/dell-powermanager.git
+	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.47.0-stable.tar.xz
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = dell-powermanager-git
