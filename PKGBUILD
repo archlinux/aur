@@ -1,7 +1,7 @@
 # Maintainer: WeeXnes <weexnes@weexnes.dev>
 
 pkgname=controlcenter
-pkgver=1.9.1
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="ControlCenter Web Interface built with Nuxt (stable version)"
 arch=('any')
