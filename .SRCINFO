@@ -1,6 +1,6 @@
 pkgbase = graphics-creator
 	pkgdesc = Create titles and other visual effects
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/chocolateimage/graphics-creator
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = graphics-creator
 	depends = ktexteditor
 	depends = kwidgetsaddons
 	depends = kconfigwidgets
+	depends = kcolorscheme
 	depends = qt6-base
 	depends = fontconfig
 	depends = qt-advanced-docking-system
@@ -21,7 +22,7 @@ pkgbase = graphics-creator
 	depends = glibc
 	depends = libstdc++
 	depends = hicolor-icon-theme
-	source = graphics-creator-0.3.0.tar.gz::https://github.com/chocolateimage/graphics-creator/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = c24d000a49b604a9cc2d86812f73aeaba574104738dbc047ed1a1a396e47b0d3
+	source = graphics-creator-0.4.0.tar.gz::https://github.com/chocolateimage/graphics-creator/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = dffe3310a6b1e041044a22972e9ed730aa4b9b658e5ea577b6144efde8e5c1dc
 
 pkgname = graphics-creator
