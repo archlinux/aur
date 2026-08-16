@@ -16,7 +16,7 @@ source=("http://github.com/zeux/${_pkgname}/releases/download/v${pkgver}/${_pkgn
 sha256sums=('4cee1ca4aad395170f4c7a07824f3bdd41f28316c6e1e1090a1425b278ec0b4b')
 
 _srcdir="${_pkgname}-${_majordotminor}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' )
 
 build() {
