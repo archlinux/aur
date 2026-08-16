@@ -2,7 +2,7 @@
 
 _gpuarch=gfx120X-all
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
-pkgver=10.1.0a20260801
+pkgver=10.1.0a20260815
 pkgrel=1
 pkgdesc="AMD ROCm Nightly Release (RDNA4) - Monolithic Install"
 arch=('x86_64')
@@ -12,22 +12,21 @@ depends=('gcc-libs' 'python-pyelftools' 'python')
 
 # 官方源冲突列表：涵盖了 Core, Compilers, HIP, Math Libs, ML, Tools 等
 _rocm_packages=(
-    'hip-runtime-amd' 'hip-runtime-nvidia'
+    'hip-runtime-amd'
     'amdsmi' 'composable-kernel'
     'rocm-core' 'rocm-cmake' 'rocm-llvm' 'rocm-device-libs'
     'hsa-rocr' 'hsakmt-roct' 'hsa-amd-aqlprofile'
     'comgr' 'rocminfo' 'rocwmma' 'rocprofiler-register'
     'rocm-smi-lib' 'rocm-gdb' 'rocm-dbgapi'
-    'rocprofiler' 'roctracer' 'rocm-bandwidth-test'
+    'rocprofiler' 'roctracer'
     'rocm-opencl-runtime' 'rocm-opencl-sdk'
     'hipblas' 'hipblas-common' 'hipblaslt' 'rocblas'
-    'hipfft' 'rocfft'
+    'hipfft' 'rocfft' 'hipfftw'
     'hiprand' 'rocrand'
     'hipsolver' 'rocsolver'
     'hipsparse' 'hipsparselt' 'rocsparse'
     'rccl' 'rocalution' 'rocprim' 'rocthrust' 'hipcub'
-    'miopen-hip' 'migraphx' 'mivisionx' 'rpp'
-    'hipify-clang'
+    'hipify-clang' 'miopen-hip'
     'rocm-hip-sdk' 'rocm-hip-libraries' 'rocm-hip-runtime' 'rocm-ml-sdk' # Meta packages
 )
 
@@ -35,7 +34,7 @@ provides=("${_rocm_packages[@]}" opencl-driver "rocm=${pkgver}")
 conflicts=("${_rocm_packages[@]}" "rocm")
 options=('!strip' '!debug')
 source=("${url}/tarball-multi-arch/therock-dist-linux-${_gpuarch}-${pkgver}.tar.gz")
-sha256sums=('25d2b2a463861b87810585918855c7f34b469b5b2e144d2c41128f8db3949858')
+sha256sums=('26fa897e50132d14698c5c4afe19361de1eea869c589da56b8350cbae8ea94e5')
 
 noextract=("${source[@]##*/}")
 
