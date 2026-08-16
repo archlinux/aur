@@ -1,7 +1,7 @@
 pkgbase = hypryou
 	pkgdesc = Dynamic and elegant desktop setup inspired by Material You, featuring auto-generated colors, fluid animations, and customizable user experience.
 	pkgver = 2.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/koeqaife/hyprland-material-you
 	install = hypryou.install
 	arch = x86_64
@@ -50,6 +50,6 @@ pkgbase = hypryou
 	optdepends = satty: Screenshot editor
 	conflicts = hypryou-git
 	source = hyprland-material-you::git+https://github.com/koeqaife/hyprland-material-you.git#tag=v2.2.6
-	sha256sums = 495953e127be0b969856c2b2106b88da0f215ab82fa5f55a56e8ff66af9b70ee
+	sha256sums = 89d90ea347e0e3c86445013e9f6c835142ccc6a6c216993e5254009e14b298ce
 
 pkgname = hypryou
