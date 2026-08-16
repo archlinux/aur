@@ -1,7 +1,7 @@
 # Maintainer: Saiem Saeed <saiem.saeed7 at gmail dot com>
 
 pkgname=sayall
-pkgver=0.2.11
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Linux voice dictation application and CLI'
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
   'websocket.zig-b70e733.tar.gz::https://github.com/karlseguin/websocket.zig/archive/b70e733bc0d0ba0a98ff5fe5ef64d3017c85f369.tar.gz'
 )
 sha256sums=(
-  '64ef9aa9eeef2e5674ade12e6954d5ca1e2faeb8ebbf2fde390623c5c61d2fe2'
+  '4428e9a1faa0f181c6529caef8d53b73c1b1c2620c4d6455ce4f3ce5ba8fd398'
   '55e6b7d11c61a81bcf7482578e460da78719459dd4c8370f52033229ae529fe9'
 )
 
