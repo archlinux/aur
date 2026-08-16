@@ -1,0 +1,10 @@
+# ACPI processor cpufreq thermal cooling caches an absolute thermal_req
+# (= cpuinfo.max_freq sampled at update time) as a freq_qos MAX request. When
+# a boost-off profile (power-saver, cmax = nominal 3.0 GHz) pins it and boost
+# later returns (cmax = 5.19 GHz), thermal_req is not recomputed and clamps
+# scaling_max to base clock. Running the acpitz zones on the user_space
+# governor stops step_wise_manage from ever touching thermal_req. Critical
+# trips still fire (the thermal core handles them independently of the
+# governor) and the fan stays under asusd. Only one zone binds Processor
+# cooling; setting the others is a harmless no-op.
+SUBSYSTEM=="thermal", KERNEL=="thermal_zone*", ACTION=="add|change", ATTR{policy}="user_space"

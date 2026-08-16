@@ -1,12 +1,12 @@
 pkgbase = asus-proart-px13-quirks
-	pkgdesc = Userspace quirks for ASUS ProArt PX13 (HN7306EA): TAS2783/ACP UCM + PipeWire/WirePlumber drop-ins + MT7925 btusb autosuspend + TAS2783 firmware symlinks
-	pkgver = 7.0.11
-	pkgrel = 4
+	pkgdesc = Userspace quirks for ASUS ProArt PX13 (HN7306EA): TAS2783/ACP UCM + PipeWire/WirePlumber drop-ins + MT7925 btusb autosuspend + thermal cpufreq-cooling clamp fix + amdgpu PSR disable
+	pkgver = 7.1.8
+	pkgrel = 1
 	epoch = 1
 	url = https://aur.archlinux.org/packages/asus-proart-px13-quirks
 	arch = any
 	license = CC0-1.0
-	depends = linux-cachyos-px13>=7.0.11
+	depends = linux-cachyos-px13>=7.1.8
 	depends = alsa-ucm-conf=1.2.16.1
 	depends = pipewire
 	depends = wireplumber
@@ -20,13 +20,17 @@ pkgbase = asus-proart-px13-quirks
 	source = 51-amd-sdw-channels.conf
 	source = 99-echo-cancel.conf
 	source = btusb-no-autosuspend.conf
+	source = amdgpu-psr.conf
 	source = rt721-sdw-no-autosuspend.rules
+	source = 99-thermal-cpufreq-fix.rules
 	sha256sums = 8704e2350ece61e4fbfc6fab0e1555e9dadc4e50509f727c704cae137de7e372
 	sha256sums = 674154c05efa457991654fbb5c09bd0eb40139d8e22fd0b0e971500baf8eb012
 	sha256sums = e8f8d15e93e8b5921b26cacbe11d1ced9dc989bee584e8d44f6d52f189ba80ae
 	sha256sums = a426f056bb4fc3169fe68e8c08172379899e7f03edeb5199b5e7d6c06444444d
 	sha256sums = 2a68adee036530d1fa9e59fba0268d414c31f7c5d4b2ea1e93a11ceb469f4642
 	sha256sums = 289f0457bebb51a1a6e2f6a555ebea829b484be837361afc71f7a81fee1e323c
+	sha256sums = 6847fc95711d55ff848ac3cf96d2ac609443076ffe697049ea3b5f8d43e58586
 	sha256sums = aa36adef4d19feb795c68324276896bc710767b80820957d76f75911d151e755
+	sha256sums = 270374808d15c4b235d2fe772f9f402f2ac4db7c9f341e6347d4c10ec42f5a69
 
 pkgname = asus-proart-px13-quirks
