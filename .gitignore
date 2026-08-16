@@ -1,0 +1,9 @@
+# Build artifacts (makepkg)
+pkg/
+src/
+
+# Source archives
+*.tgz
+
+# Package files
+*.pkg.tar.*
