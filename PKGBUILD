@@ -1,6 +1,6 @@
 # Maintainer: Daniel Garcia <dgarcia@kabr.org>
 pkgname=kittenspaceagency-bin
-pkgver=2026.8.5.5168
+pkgver=2026.8.19.5261
 buildnum="${pkgver##*.}"
 pkgrel=1
 pkgdesc="Kitten Space Agency - EXPERIMENTAL"
@@ -9,16 +9,16 @@ url="https://files.ksa-archive.net"
 license=('custom')
 depends=('glibc' 'gcc-libs' 'dotnet-runtime-10.0')
 options=(!strip)
-source=("setup_ksa_v${pkgver}.tar.gz::$url/builds/${buildnum}/setup_ksa_v${pkgver}.tar.gz"
+source=("ksa_linux_v${pkgver}.tar.gz::$url/builds/${buildnum}/ksa_linux_v${pkgver}.tar.gz"
         "kittenspaceagency.png")
-sha256sums=('058c0381767aafb7001cc9eef1d393c0c4e888c7e0b2e147fffa623e0287c19d'
+sha256sums=('b6220d162b833067a303c310ec94dba5e6e06381de73ebbfd8ff58696da4cc7b'
             '4e10dedc70614419a5a2354642556d15fe331565d0d94a4fa41ab04dd8b24486')
 
 package() {
     install -dm755 "$pkgdir/opt/kittenspaceagency"
 
-    # Flatten linux-x64
-    cp -a "$srcdir/linux-x64/." "$pkgdir/opt/kittenspaceagency/"
+    # Extract game files
+    tar -xf "$srcdir/ksa_linux_v${pkgver}.tar.gz" -C "$pkgdir/opt/kittenspaceagency"
 
     # Fix permissions
     chmod 755 "$pkgdir/opt/kittenspaceagency/KSA"
@@ -27,6 +27,12 @@ package() {
     # Launcher
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/kittenspaceagency" <<'EOF'
 #!/bin/bash
+
+# Ensure ~/Documents exists
+if [[ ! -d "$HOME/Documents" ]]; then
+    mkdir -p "$HOME/Documents"
+fi
+
 cd /opt/kittenspaceagency
 exec ./KSA "$@"
 EOF
