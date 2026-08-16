@@ -1,6 +1,6 @@
 pkgbase = tabook
 	pkgdesc = Terminal-based e-book reader for FB2 and EPUB formats
-	pkgver = 0.3.4
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/zsh-ncursed/tabook
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = tabook
 	optdepends = ueberzugpp: display images in terminals without kitty-protocol support (alacritty, xterm, tmux)
 	optdepends = zenity: graphical file picker for the `o` open-file dialog
 	optdepends = kdialog: graphical file picker (KDE alternative to zenity)
-	source_x86_64 = tabook-0.3.4-linux-x64.tar.zst::https://github.com/zsh-ncursed/tabook/releases/download/v0.3.4/tabook-0.3.4-linux-x64.tar.zst
-	sha256sums_x86_64 = 096e159bdd50d33436da545eeb880d488ca26b86ba62432cfab0efeb35724c9d
-	source_aarch64 = tabook-0.3.4-linux-arm64.tar.zst::https://github.com/zsh-ncursed/tabook/releases/download/v0.3.4/tabook-0.3.4-linux-arm64.tar.zst
-	sha256sums_aarch64 = 4de594652ee42d8b9d6c8e0c64dece2a4b66d934e7b4fa925b5a2a158f3fa199
+	source_x86_64 = tabook-0.4.0-linux-x64.tar.zst::https://github.com/zsh-ncursed/tabook/releases/download/v0.4.0/tabook-0.4.0-linux-x64.tar.zst
+	sha256sums_x86_64 = 5eac85af789d2b88e73b53f6c5669ee12ba20e0641df1b975b82935e3d1b89dc
+	source_aarch64 = tabook-0.4.0-linux-arm64.tar.zst::https://github.com/zsh-ncursed/tabook/releases/download/v0.4.0/tabook-0.4.0-linux-arm64.tar.zst
+	sha256sums_aarch64 = c83654299637adca426b0cff747ee9566e0c6a9df09dae8177a8782d59be2cce
 
 pkgname = tabook
