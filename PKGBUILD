@@ -1,5 +1,5 @@
 pkgname=ttop
-pkgver=1.5.7
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="System monitoring tool with historical data service, triggers and top-like TUI"
 url="https://github.com/inv2004/ttop"
