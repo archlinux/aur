@@ -2,7 +2,7 @@
 # Maintainer: Shamz <cmshammaas@gmail.com>
 pkgname=hypryou
 _pkgname="hyprland-material-you"
-pkgver=2.2.5
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="Dynamic and elegant desktop setup inspired by Material You, featuring auto-generated colors, fluid animations, and customizable user experience."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/koeqaife/hyprland-material-you"
 install=hypryou.install
 license=('GPL3')
 source=("$_pkgname::git+https://github.com/koeqaife/hyprland-material-you.git#tag=v$pkgver")
-sha256sums=('6878be4ec8f6a463196d54179749d2d9b2c3197e14b345adbc3b74f8be1e0b2d')
+sha256sums=('495953e127be0b969856c2b2106b88da0f215ab82fa5f55a56e8ff66af9b70ee')
 depends=(
   'python'
   'dart-sass'
