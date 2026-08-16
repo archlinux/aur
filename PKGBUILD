@@ -1,7 +1,7 @@
 # Maintainer: Snowvy <a40166895@gmail.com>
 pkgname=golfetch-git
 pkgver=r36.g512e1f6
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist, suckless-style system fetch utility written in Go."
 arch=('x86_64') # I don't think program will work on ARM, so I wouldn't add any other (compile program for your processor if needed)
 url="https://github.com/snowvy01/golfetch"
@@ -22,7 +22,10 @@ pkgver() {
 }
 build() {
   cd "${srcdir}/${pkgname}"
-  export CGO_ENABLED=0
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
 
   go build \
     -trimpath \
