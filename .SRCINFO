@@ -1,0 +1,15 @@
+pkgbase = bt-volume-step
+	pkgdesc = Fixed volume steps for Bluetooth audio devices on PipeWire
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Felitendo/bt-volume-step
+	arch = any
+	license = BSD-3-Clause
+	depends = python
+	depends = libpulse
+	optdepends = kconfig: follow the KDE Plasma volume step setting
+	optdepends = bluez-utils: device names in --show
+	source = bt-volume-step-1.0.0.tar.gz::https://github.com/Felitendo/bt-volume-step/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 0b06ba55c3764271856a5a806c28dc71b0802f85fd3d706699834eb4249ed097
+
+pkgname = bt-volume-step
