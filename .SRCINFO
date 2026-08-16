@@ -1,0 +1,25 @@
+pkgbase = opons-voxd
+	pkgdesc = Local speech-to-text dictation for Linux (whisper.cpp, GTK3 tray app)
+	pkgver = 20260816.441ed9f
+	pkgrel = 1
+	url = https://github.com/boussou/opons-voxd
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = git
+	depends = gtk3
+	depends = libnotify
+	depends = xclip
+	depends = portaudio
+	depends = libxtst
+	source = opons-voxd::git+https://github.com/boussou/opons-voxd.git#commit=441ed9fc501881883706bf7d8c2f6868fc4397cf
+	source = whisper.cpp::https://github.com/ggerganov/whisper.cpp/archive/1fe009caeda75f69bc864d6370b10674e45a92bd.tar.gz
+	source = portaudio.h::https://raw.githubusercontent.com/PortAudio/portaudio/v19.7.0/include/portaudio.h
+	md5sums = c3c6a3867d14b81d3cc2af38bcc12e1e
+	md5sums = 06ae5d65d57a8e3a99cefdb38c2d1d4a
+	md5sums = b37feea97ab912bff55efb7e43b49cad
+
+pkgname = opons-voxd

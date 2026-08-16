@@ -168,3 +168,6 @@ EOF
     msg "opons-voxd: the Whisper model is not bundled (~1.5 GB for medium)."
     msg "Run 'opons-voxd-fetch-model' to download it (optional arg: tiny, small, large-v3-turbo)."
 }
+md5sums=('c3c6a3867d14b81d3cc2af38bcc12e1e'
+         '06ae5d65d57a8e3a99cefdb38c2d1d4a'
+         'b37feea97ab912bff55efb7e43b49cad')

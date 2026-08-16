@@ -2,7 +2,6 @@ src/
 pkg/
 *.pkg.tar.zst
 *.sig
-.SRCINFO
 *.log
 opons-voxd/
 whisper.cpp
