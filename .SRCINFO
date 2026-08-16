@@ -1,13 +1,14 @@
 pkgbase = framework-control
 	pkgdesc = Lightweight control surface for Framework laptops (Fan, Battery, Power, LEDs)
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ozturkkl/framework-control
 	install = framework-control.install
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = nodejs
+	makedepends = npm
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = framework-system: Framework CLI on PATH; otherwise auto-downloaded on first run

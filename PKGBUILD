@@ -2,14 +2,14 @@
 
 pkgname=framework-control
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight control surface for Framework laptops (Fan, Battery, Power, LEDs)"
 arch=('x86_64')
 url="https://github.com/ozturkkl/framework-control"
 license=('MIT')
 depends=('xdg-utils' 'hicolor-icon-theme')
 optdepends=('framework-system: Framework CLI on PATH; otherwise auto-downloaded on first run')
-makedepends=('rust' 'nodejs')
+makedepends=('rust' 'nodejs' 'npm')
 install=framework-control.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ozturkkl/framework-control/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('dccddf1a3c487424c90b4fb4290158915c51e86b29599223a4c4ff18efd3947d')
