@@ -2,7 +2,7 @@
 
 pkgname=atmosphera
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell"
 arch=('any')
 url="https://github.com/alexindigo/atmosphera"
@@ -11,6 +11,7 @@ makedepends=()
 depends=(
   'noctalia-qs'
   'qt6-dbusqml'
+  'qt6-xdgiconqml-git'
   'imagemagick'
   'brightnessctl'
   'ffmpeg'
@@ -23,8 +24,14 @@ optdepends=(
   'wlsunset: For supporting NightLight'
   'power-profiles-daemon: For power profile management'
   'ddcutil: For external display brightness control'
+  'qt6-niriqml: niri IPC integration (workspaces, windows, session config)'
+  'keyd: hardware-level keyboard remapping (bindings environments)'
+  'xremap-niri-bin: session-level app-scoped keymaps (macos bindings)'
+  'qt6-5compat: required by some registry plugins (e.g. cookie-clock)'
+  'qt6-websockets: required by some registry plugins (e.g. hassio)'
 )
 conflicts=('atmosphera-git')
+install=atmosphera.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('5f9a1ce89ae5dc06aa348c699f1194829c759d7703bcf924a3a1a2bdef845c6c')
 
@@ -33,4 +40,26 @@ package() {
 
   install -dm755 "$pkgdir/etc/xdg/quickshell/atmosphera"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/atmosphera/"
+  # Exclude dev tooling and temp files from the installed tree
+  rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/dev"
+  rm -rf "$pkgdir/etc/xdg/quickshell/atmosphera/tmp"
+
+  # Bake the packaged version for the shell's version detection
+  echo "$pkgver" > "$pkgdir/etc/xdg/quickshell/atmosphera/VERSION"
+
+  # Install dispatcher to PATH (handlers resolved via SELF_DIR auto-detect)
+  install -Dm755 Scripts/bash/atmosphera "$pkgdir/usr/local/bin/atmosphera"
+  # Multi-call symlinks: invoke as atmosphera-session etc. for backward compat
+  ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-session"
+  ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-settings"
+  ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-lock"
+
+  # keyd reload service (triggered via systemd D-Bus StartUnit by the shell)
+  install -Dm644 Scripts/systemd/atmosphera-keyd-reload.service "$pkgdir/usr/lib/systemd/system/atmosphera-keyd-reload.service"
+  # xremap user unit (env-gated by the shell via the user manager)
+  install -Dm644 Scripts/systemd/xremap-atmosphera.service "$pkgdir/usr/lib/systemd/user/xremap-atmosphera.service"
+  # uinput access for the input group (xremap's virtual keyboard output)
+  install -Dm644 Scripts/udev/80-atmosphera-uinput.rules "$pkgdir/usr/lib/udev/rules.d/80-atmosphera-uinput.rules"
+  # polkit: allow active sessions/wheel to start that one service, no prompt
+  install -Dm644 Scripts/polkit/atmosphera-keyd.rules "$pkgdir/usr/share/polkit-1/rules.d/atmosphera-keyd.rules"
 }
