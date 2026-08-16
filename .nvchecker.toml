@@ -1,0 +1,4 @@
+[nautilus-custom-icon-name]
+source = "git"
+git = "https://gitlab.com/benleppke/nautilus-custom-icon-name.git"
+prefix = "v"
