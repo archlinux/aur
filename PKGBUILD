@@ -94,9 +94,6 @@ _get_distribution_components() {
 }
 
 build() {
-  export CFLAGS+=" ${CPPFLAGS}"
-  export CXXFLAGS+=" ${CPPFLAGS}"
-
   local cmake_args=(
     -B _build
     -S llvm-project/llvm
@@ -161,7 +158,7 @@ package() {
 
   # Move scanbuild-py into site-packages and install Python bindings
   local _site_packages=$(
-    python -c "import site; print(site.getsitepackages()[0])"
+    python -c 'import site; print(site.getsitepackages()[0])'
   )
 
   if [[ -d "$pkgdir"/usr/lib/libear ]] ||
@@ -190,10 +187,10 @@ package() {
   fi
 
   # Move bash completion
-  local bash_completion_destdir="$pkgdir"/usr/share/bash-completion/completions
+  local _bash_completion_destdir="$pkgdir"/usr/share/bash-completion/completions
   if [[ -f "$pkgdir"/usr/share/clang/bash-autocomplete.sh ]]; then
-    install -d $bash_completion_destdir
+    install -d "$_bash_completion_destdir"
     mv "$pkgdir"/usr/share/clang/bash-autocomplete.sh \
-      $bash_completion_destdir/clang
+      "$_bash_completion_destdir"/clang
   fi
 }
