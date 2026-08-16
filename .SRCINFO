@@ -1,6 +1,6 @@
 pkgbase = clamav-gui
 	pkgdesc = Graphical user interface for clamav and freshclam with an integrated service menu for Konqueror/Dolphin to scan files directly from your file manager.
-	pkgver = 1.4.1
+	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/wusel1007/clamav-gui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = clamav-gui
 	depends = qt6-translations
 	depends = clamav
 	depends = desktop-file-utils
-	source = clamav-gui-1.4.1.tar.gz::https://github.com/wusel1007/clamav-gui/archive/refs/tags/v1.4.1.tar.gz
-	sha256sums = 40e10d4f352a833e924c63728af3114c424377bc9b2e64599ae50aa39acdb77b
+	source = git+https://github.com/wusel1007/clamav-gui.git#commit=24fa8b37e7da03d6e748135325e00e4bccd2691b
+	sha256sums = 44b4e222fd2476edc8d1fe5c2e5695dfc9d186847c67d7b06a8f26b27fe1d030
 
 pkgname = clamav-gui
