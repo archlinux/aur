@@ -1,7 +1,7 @@
 # Maintainer: Ameyama Izumi <souiken@oneamongus.ca>
 
 pkgname=bakaxl-bunny
-pkgver=4.0.0.bunny_5e366a5
+pkgver=4.0.0.bunny_aac68df
 pkgrel=1
 pkgdesc="Next Generation BakaXL Launcher. (none)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=(
 )
 
 source=("https://github.com/BakaXL-Launcher/BakaXL/releases/download/${pkgver//.bunny_/+bunny-}/bakaxl-${pkgver//.bunny_/+bunny-}-linux-${arch}.deb")
-sha256sums=('9f1fcde49587052b0348c8ee8e9b9b25d8d90924384ae7dfdaf85ddc18231ac4')
+sha256sums=('feb803cb133c47fae65a6494c7f9ea7969295bdfef80c27033f0d930ac4c5411')
 
 package() {
   bsdtar -xf "${srcdir}/bakaxl-${pkgver//.bunny_/+bunny-}-linux-${arch}.deb" -C "${srcdir}"
