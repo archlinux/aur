@@ -1,0 +1,15 @@
+[Unit]
+Description=Postie NZB uploader
+After=network.target
+
+[Service]
+Type=simple
+User=postie
+Group=postie
+Environment=GODEBUG=netdns=go
+ExecStart=/usr/bin/postie-web -p 8080
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+

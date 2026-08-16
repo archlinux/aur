@@ -1,0 +1,23 @@
+pkgbase = postie-bin
+	pkgdesc = NZB uploader
+	pkgver = 0.0.31
+	pkgrel = 1
+	url = https://github.com/javi11/postie
+	arch = x86_64
+	license = MIT
+	options = !strip
+	options = !debug
+	source = https://github.com/javi11/postie/releases/download/v0.0.31/postie-cli_v0.0.31_linux_amd64.tar.gz
+	source = https://github.com/javi11/postie/releases/download/v0.0.31/postie-web-linux-amd64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/javi11/postie/refs/heads/main/LICENSE
+	source = postie.service
+	source = postie.sysusers
+	source = postie.tmpfiles
+	sha256sums = 738fbee15284ed686a405bd4ecd32050a31e24cd4e723cf9b13d4e5e0428db69
+	sha256sums = a0243e19996172285535b304a81989bcfd86ebc95247a33795ce4061a959c70a
+	sha256sums = 18e2f19467d70b1305011e1afc0a569c959a75a0b610f9457f552fa410d6a3c7
+	sha256sums = d68ed9700bdab94c68ad28c6de4ffa478ac250817d59d9cca38a4511d8cf841d
+	sha256sums = 6e2c939ae4a5759117a42913e98783bd9189cf160ed299b02cb045fc3f838974
+	sha256sums = bbcf7e3fdd98c0d9f67bd40a21bb40e3c8c7404c9fdd594d74fcf9736025b354
+
+pkgname = postie-bin
