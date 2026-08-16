@@ -16,7 +16,7 @@ source=("${_pkgname}-${pkgver}.tar.gz"::"https://github.com/ultravideo/kvazaar/a
 sha256sums=('ddd0038696631ca5368d8e40efee36d2bbb805854b9b1dda8b12ea9b397ea951')
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=(
 	-Wno-dev
 	-DCMAKE_BUILD_TYPE=Release
