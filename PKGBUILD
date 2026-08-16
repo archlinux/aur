@@ -2,24 +2,24 @@
 # Contributor: Locez <locez@locez.com>
 
 pkgname=bilihud
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="B站弹幕阅读器 - 一个可以在游戏全屏时显示弹幕的Qt应用程序"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/locez/bilihud"
 license=('MIT')
 depends=(
-    'python>=3.10'
+    'python>=3.13'
     'python-pyqt6'
     'python-aiohttp'
     'python-qasync'
     'python-brotli'
-    'python-browser-cookie3' # AUR
     'python-pure-protobuf' # AUR
     'python-qrcode'
     'python-keyring'
     'python-pillow'
     'qt6-base'
+    'qt6-multimedia'
     'qt6-wayland'
     'layer-shell-qt'
 )
@@ -27,13 +27,15 @@ makedepends=(
     'git'
     'python-build'
     'python-installer'
-    'python-hatchling'
-    'python-hatch-build-scripts' # Needed for custom build hook
-    'python-wheel'
+    'python-scikit-build-core'
+    'cmake'
+    'ninja'
+    'gcc'
+    'pkgconf'
 )
 source=("git+$url.git#tag=v$pkgver"
         "git+https://github.com/xfgryujk/blivedm.git")
-sha256sums=('d4774fcb51af0f2062a656cd2ccbf3c6acf2ee2aadc6958fa66f0ab2e6241123'
+sha256sums=('8e9ca38fb8e165dee7418f751e52807b502ad9d37214c0dfb4ece40cd03ecd44'
             'SKIP')
 
 prepare() {
@@ -45,12 +47,19 @@ prepare() {
 
 build() {
     cd "$pkgname"
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation -Ccmake.define.BILIHUD_LAYER_SHELL=ON
 }
 
 package() {
     cd "$pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
+
+    local _bridge
+    _bridge=$(find "$pkgdir" -type f -name 'libbili-layer.so' -print -quit)
+    if [[ -z "$_bridge" ]]; then
+        error "Layer Shell bridge was not installed"
+        return 1
+    fi
 
     # Install desktop entry and icon if available
     if [ -f bilihud.desktop ]; then
