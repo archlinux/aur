@@ -1,0 +1,3 @@
+[auggie]
+source = "npm"
+npm = "@augmentcode/auggie"

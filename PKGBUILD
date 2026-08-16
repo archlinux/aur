@@ -1,50 +1,57 @@
-# Maintainer: Ismet Togay <ismet dot togay at gmail dot com>
+# Maintainer: Ismet Togay <ismet.togay at gmail dot com>
 pkgname=auggie
+_npmname=@augmentcode/auggie
 pkgver=0.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Augment Code's agentic AI CLI for context-aware code analysis and automation"
 arch=('any')
-url="https://github.com/augmentcode/auggie"
+url="https://www.augmentcode.com"
 license=('LicenseRef-auggie')
 depends=('nodejs>=20')
 makedepends=('npm')
-conflicts=('auggie-bin')
 provides=('auggie-bin')
+conflicts=('auggie-bin')
 replaces=('auggie-bin')
-source=("https://registry.npmjs.org/@augmentcode/auggie/-/auggie-${pkgver}.tgz"
-        "LICENSE")
-noextract=("auggie-${pkgver}.tgz")
-sha512sums=('2ccf32ce0a239457a546cecce7e0a4dcb5e64be84d9651e3f6fd2ce822aec198f620be685740b4d07d45df4b04dc07f7edf439d6b33ce4ed7c5d35d66ced9ef4'
-            '3d195f09523a15f7e406e345ba95015e05df571f5d7bdc7af1444922c2a3f3cf795292fb72897b51f3bbb006db5e947c7cb0ded8dcf09c32b80aef97db3f9910')
+source=("https://registry.npmjs.org/${_npmname}/-/${pkgname}-${pkgver}.tgz"
+        "auggie.js")
+noextract=("${pkgname}-${pkgver}.tgz")
+b2sums=('40776a4e76700c7c1eafc4df5c0f76c5c80edcc11f82ec664985f5665212f0e3db5ef742d710bdbaa5beb38a7de351a983e5735dbb5ea5103fa2793109c79824'
+        '38b4443caf787bf354e9b64fe09eb3f1e995fa6d58502ca4a3f8a094585d44aab4370e326009d1938a790afd291138c7906f7a66ef2995720c98382b779ef3b5')
+
+check() {
+  local _tmpdir="${srcdir}/check-src"
+  mkdir -p "${_tmpdir}"
+  tar -xf "${srcdir}/${pkgname}-${pkgver}.tgz" -C "${_tmpdir}"
+  local _ver
+  _ver="$(node "${_tmpdir}/package/augment.mjs" --version)"
+  [[ "${_ver}" == "${pkgver}"* ]]
+
+  # Wrapper must refuse self-upgrade without contacting the npm registry
+  local _out
+  _out="$(node "${srcdir}/auggie.js" update --skip-confirmation 2>&1)" && return 1
+  [[ "${_out}" == *"AUR helper"* ]]
+  _out="$(node "${srcdir}/auggie.js" --quiet update 2>&1)" && return 1
+  [[ "${_out}" == *"AUR helper"* ]]
+}
 
 package() {
-  # Use a local npm cache to avoid polluting the user's home directory
-  local _npm_cache="${srcdir}/npm-cache"
-  mkdir -p "${_npm_cache}"
-
-  # Install npm package globally into package directory
-  # Using --cache and --userconfig to isolate the build environment
+  # Keep npm cache out of $HOME
   npm install -g --prefix "${pkgdir}/usr" \
-    --cache "${_npm_cache}" \
+    --cache "${srcdir}/npm-cache" \
     --userconfig /dev/null \
+    --offline --ignore-scripts \
     --no-audit --no-fund \
-    "${srcdir}/auggie-${pkgver}.tgz"
+    "${srcdir}/${pkgname}-${pkgver}.tgz"
 
-  # Fix permissions (npm race condition gives 777 to random directories)
-  # See: https://github.com/npm/npm/issues/9359
+  # npm may chmod dirs 777 (https://github.com/npm/npm/issues/9359)
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +
-  find "${pkgdir}/usr/lib/node_modules" -type f -exec chmod 644 {} +
-  # node-pty's spawn-helper is a native executable helper (used on macOS);
-  # restore its exec bit stripped by the chmod above
-  find "${pkgdir}/usr/lib/node_modules" -type f -name 'spawn-helper' -exec chmod 755 {} +
-  # Ensure the CLI entry point is executable (chmod the real file, not the bin symlink)
-  chmod +x "${pkgdir}/usr/lib/node_modules/@augmentcode/auggie/augment.mjs"
 
-  # Install the proprietary software license
-  install -Dm644 "${pkgdir}/usr/lib/node_modules/@augmentcode/auggie/LICENSE.md" \
+  # Drop optional node-pty ELF prebuilds (invalid with arch=any)
+  rm -rf "${pkgdir}/usr/lib/node_modules/${_npmname}/node_modules"
+
+  # Block npm self-upgrade (AUGMENT_DISABLE_AUTO_UPDATE only stops the daemon)
+  install -Dm755 "${srcdir}/auggie.js" "${pkgdir}/usr/bin/auggie"
+
+  install -Dm644 "${pkgdir}/usr/lib/node_modules/${_npmname}/LICENSE.md" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
-
-  # Install the 0BSD license for the AUR packaging files
-  install -Dm644 "${srcdir}/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-AUR.md"
 }
