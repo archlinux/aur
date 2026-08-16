@@ -3,8 +3,8 @@
 
 _pkgname=xeve
 pkgname=xeve-llvm
-pkgver=0.5.1
-pkgrel=3
+pkgver=0.7.0
+pkgrel=2
 pkgdesc='MPEG-5 EVC (Essential Video Coding) encoder — built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://github.com/mpeg5/xeve/'
@@ -17,8 +17,8 @@ options=('!emptydirs')
 source=("https://github.com/mpeg5/xeve/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         '010-xeve-disable-werror.patch'
         '020-xeve-fix-pkg-config.patch')
-sha256sums=('238c95ddd1a63105913d9354045eb329ad9002903a407b5cf1ab16bad324c245'
-            'a43abf66e99c1daaee6de8f52f0d270fd89bdd52785f663a73209a1be96839aa'
+sha256sums=('f60950d063f52adf11ed7196c0bbb0503fa107b0e43af06bdc81fecc24f2a62e'
+            '0579f036b5f1543306c177054f749360740ac798bd2cbc20938d2717c8cd7ea2'
             '68ae77132ec2b3dd8de641d16f3d7cc0de819ddb116484809445666b4d215187')
 
 prepare() {
@@ -43,16 +43,13 @@ build() {
     export LDFLAGS="${LDFLAGS:-} -fuse-ld=lld"
     export CFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
     export CXXFLAGS+=" -ffile-prefix-map=${srcdir}=. -fdebug-prefix-map=${srcdir}=."
-    # https://github.com/mpeg5/xeve/issues/108
-    export CFLAGS+=' -mno-avx'
-    
     cmake -B build -S "${_pkgname}-${pkgver}" \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=lld' \
         -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=lld' \
-        -Wno-dev
+        -Wno-author
     cmake --build build
 }
 
