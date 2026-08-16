@@ -3,7 +3,7 @@ pkgname=hyprland-revolver-git
 _pkgname=hyprland-revolver
 pkgver=r1.0000000
 pkgrel=1
-pkgdesc="Spinnable 8-chamber revolver desktop widget for illogical-impulse/Quickshell, loaded from your Steam library"
+pkgdesc="Spinnable revolver desktop widget for illogical-impulse/Quickshell, loaded from Steam/PrismLauncher/MultiMC"
 arch=('any')
 url="https://github.com/minerofthesoal/hyprland-revolver"
 license=('MIT')
@@ -11,11 +11,14 @@ depends=('python' 'bash')
 optdepends=(
     'quickshell: required to actually run the widget'
     'quickshell-git: alternative build of quickshell, either works'
+    'prismlauncher: to chamber PrismLauncher instances instead of Steam games'
+    'multimc: to chamber MultiMC instances instead of Steam games (best-effort - see README)'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
+install=hyprland-revolver-git.install
 
 pkgver() {
     cd "$_pkgname"
@@ -31,7 +34,10 @@ package() {
     # themselves, as themselves, against their own ~/.config.
     install -d "$pkgdir/usr/share/$_pkgname/bin"
     install -d "$pkgdir/usr/share/$_pkgname/qml"
-    install -m755 bin/revolver_scan_steam.py "$pkgdir/usr/share/$_pkgname/bin/"
+    cp -r bin/revolver_lib "$pkgdir/usr/share/$_pkgname/bin/revolver_lib"
+    find "$pkgdir/usr/share/$_pkgname/bin/revolver_lib" -type f -name '*.py' -exec chmod 644 {} \;
+    install -m755 bin/revolver-scan "$pkgdir/usr/share/$_pkgname/bin/"
+    install -m755 bin/revolver-configure "$pkgdir/usr/share/$_pkgname/bin/"
     install -m755 bin/_patch_background.py "$pkgdir/usr/share/$_pkgname/bin/"
     install -m644 qml/RevolverBarrel.qml "$pkgdir/usr/share/$_pkgname/qml/"
     install -m755 install.sh "$pkgdir/usr/share/$_pkgname/install.sh"

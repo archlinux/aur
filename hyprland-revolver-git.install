@@ -1,0 +1,30 @@
+post_install() {
+    cat <<'EOF'
+
+==> hyprland-revolver is staged, but NOT set up yet.
+==>
+==> pacman/makepkg can only ever drop files under /usr - it runs as root
+==> and never touches your $HOME, so it can't patch your own Quickshell
+==> config for you. That one extra step is on you, as yourself:
+==>
+==>     hyprland-revolver-install
+==>
+==> Then reload quickshell (pkill -f "qs -c ii" && qs -c ii) and it'll be
+==> in Settings (Super+I) under Background -> "Widget: Revolver Barrel".
+
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+
+==> hyprland-revolver was upgraded. If you're coming from an older
+==> version, re-run the installer to pick up new settings/fields it adds
+==> (safe to run repeatedly - it only edits what's actually changed and
+==> keeps a .bak of anything it touches):
+==>
+==>     hyprland-revolver-install
+==>
+
+EOF
+}
