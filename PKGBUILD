@@ -16,7 +16,7 @@ conflicts=('eden' 'eden-beta' 'eden-bin' 'eden-preview-bin')
 depends=('libusb' 'libva' 'qt6-webengine' 'brotli' 'qt6-charts' 'hicolor-icon-theme'
 	'qt6-base' 'sdl3' 'quazip-qt6' 'qt6-multimedia' 'fmt' 'boost-libs' 'opus' 'libdrm'
 	'enet' 'cubeb' 'game-devices-udev' 'zlib' 'openssl' 'libx11' 'libgcc'
-	'libstdc++' 'lz4' 'glibc' 'zstd' 'cpp-httplib' 'cpp-jwt'
+	'libstdc++' 'lz4' 'glibc' 'zstd' 'cpp-jwt'
 )
 makedepends=('git' 'cmake' 'catch2' 'boost' 'spirv-headers' 'vulkan-headers'
 	     'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode'

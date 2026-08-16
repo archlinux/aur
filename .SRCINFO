@@ -47,7 +47,6 @@ pkgbase = eden-git
 	depends = lz4
 	depends = glibc
 	depends = zstd
-	depends = cpp-httplib
 	depends = cpp-jwt
 	optdepends = gamemode: Gamemoded support
 	provides = eden
