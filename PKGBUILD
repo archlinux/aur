@@ -2,11 +2,11 @@
 # Contributor: Simon Thorpe <simon at hivetechnology dot com dot au>
 pkgname=openmpt
 pkgver=1.32.11.00
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source audio module tracker"
 arch=('i686' 'x86_64')
 url="https://openmpt.org/"
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('wine')
 makedepends=('gendesk' 'imagemagick' 'unzip')
 optdepends=(

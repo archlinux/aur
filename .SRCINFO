@@ -1,11 +1,11 @@
 pkgbase = openmpt
 	pkgdesc = Open-source audio module tracker
 	pkgver = 1.32.11.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openmpt.org/
 	arch = i686
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = gendesk
 	makedepends = imagemagick
 	makedepends = unzip
