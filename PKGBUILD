@@ -3,7 +3,6 @@
 # Contributor: kazu0617 <archlinux at kazu0617 dot net>
 srcname=VRCX
 pkgname=vrcx-git
-pkgver=2026.02.11.r463.g92ae1c5
 pkgver=2026.07.18.r112.g2acab31
 pkgrel=1
 pkgdesc="Friendship management tool for VRChat (git version built with Electron)"
