@@ -17,7 +17,7 @@ optdepends=('libx11: for X11'
             'curl: FTP/SFTP upload destinations'
             'xdg-desktop-portal-kde: KDE portal backend for screenshots and screen recording'
             'xdg-desktop-portal-gtk: generic portal backend on non-KDE desktops'
-            'tesseract-data-eng: English OCR language data'
+            'tesseract-data-osd: OCR language data'
             'pipewire'
             'kguiaddons') #according to https://github.com/unisic/unisic/blob/main/CONTRIBUTING.md#building
 provides=(unisic)
