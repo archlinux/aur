@@ -1,0 +1,30 @@
+pkgbase = vrcx-0
+	pkgdesc = Fast, lightweight VRCX implementation built with Tauri and Rust
+	pkgver = 2.24.1
+	pkgrel = 1
+	url = https://github.com/Map1en/VRCX-0
+	arch = x86_64
+	license = GPL-3.0-only
+	license = MIT
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm>=11.5.0
+	makedepends = rust
+	depends = glibc
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = openssl
+	depends = webkit2gtk-4.1
+	depends = xdotool
+	options = !lto
+	source = VRCX-0-2.24.1.tar.gz::https://github.com/Map1en/VRCX-0/archive/refs/tags/v2.24.1.tar.gz
+	source = nodejs26-world-dialog-react-test.patch
+	source = nodejs26-game-log-react-test.patch
+	sha256sums = a8332ce399bd8f59fcbd56c5c5e4f6dfeed872f896a0fff7dd5c43de1747ffa2
+	sha256sums = 7bfe3f2e44c1c6075f754c724a395955b210cf841b7a0632af39a7130605f8a2
+	sha256sums = 53afd9a4c8ab3904f3e4b6872789d6e2c4237cb46430320ff09e46287e1c1e38
+
+pkgname = vrcx-0
