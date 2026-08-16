@@ -9,10 +9,10 @@ pkgname=cef-vaapi
 # To update this package, update the _cef_commit and _chromium_ver variables.
 # For the CEF versioning scheme, see
 # https://chromiumembedded.github.io/cef/branches_and_building#version-number-format
-pkgver=151.3.17
+pkgver=151.3.18
 # See https://github.com/chromiumembedded/cef/tree/<release branch>
 # Also see https://chromiumembedded.github.io/cef/branches_and_building
-_cef_commit=f059e67fa6aad5e8cce8bebea5df706ffddfb174
+_cef_commit=beff58dbc4d0fd12b3eafea8f5314ce22e649078
 # the chromium version must match CHROMIUM_BUILD_COMPATIBILITY.txt in the CEF repo
 _chromium_ver=151.0.7922.138
 _system_clang=1
@@ -90,7 +90,7 @@ source=("chromium-$_chromium_ver-lite.tar.xz::https://commondatastorage.googleap
   FindCEF.cmake
 )
 sha256sums=('aa0887342e2417ee3e0dc28ebb81252d209c095f04f5993f52163e60449f329e'
-            '74db7dea37b59e09e505805b38bdff0caf99ca1789f3ae1620cf9ace6b482e16'
+            'd04befd7a3375a8f3194bf945ae40a79c5241ce36bf222b49edd00da4902a281'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
             'c382830318c5b37826ecf44f3ba9def6be8affdad1bce819ecb83f3222ff4b3a'
