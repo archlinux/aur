@@ -1,2 +1,2 @@
 #!/bin/sh
-cd /opt/crown && ./crown-launcher "$@" &
+/opt/crown/crown-launcher "$@"
