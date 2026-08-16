@@ -17,7 +17,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/${_dirnam
 sha256sums=('54f2537df22313768da0317dda2abdaaab7711b4081c48c869a79db343d0ae70')
 
 _srcdir="${_dirname}-vulkan-sdk-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=(
   -Wno-dev
   -DCMAKE_BUILD_TYPE=Release
