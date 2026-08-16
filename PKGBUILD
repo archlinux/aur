@@ -2,7 +2,7 @@
 
 pkgname=mocktail
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Android x86-64 Roblox compatibility runtime for Linux'
 arch=('x86_64')
 url='https://github.com/komaruworld/mocktail'
@@ -42,7 +42,8 @@ makedepends=(
 )
 optdepends=('gamemode: Feral GameMode integration')
 conflicts=('mocktail-bin' 'mocktail-git')
-options=('!debug')
+# The 1.0.3 tag predates the source-level FORTIFY/LTO isolation fix.
+options=('!debug' '!lto')
 source=(
   "mocktail::git+https://github.com/komaruworld/mocktail.git#tag=${pkgver}"
 )
