@@ -1,7 +1,7 @@
 # Maintainer: l1ngus
 pkgname=lucid-spell
 pkgver=0.1.0
-pkgrel=2 # Увеличил pkgrel, чтобы AUR подхватил изменения
+pkgrel=1
 pkgdesc="LLM-powered desktop translator."
 arch=('x86_64')
 url="https://github.com/l1ngus/lucid-spell"
@@ -20,7 +20,7 @@ makedepends=('rust' 'cargo' 'nodejs' 'npm' 'pkgconf' 'openssl')
 options=('!strip' '!debug' '!lto')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('426aa459f4c27c94e542192dde12e4e7a1a3ca335c95b7e47867697101362421')
+sha256sums=('c050de8e0737f07ac7131cb6f0a69d0dcde3bdcd9f30d940e03f906cb1fb1756')
 
 prepare() {
   cd "$pkgname-$pkgver"
