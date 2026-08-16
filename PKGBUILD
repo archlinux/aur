@@ -3,9 +3,9 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=middleclick-autoscroll
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
-pkgdesc="Middle-click autoscroll for Chromium-based applications - Electron, CEF, Flatpaks, Spotify and Steam included"
+pkgdesc="Middle-click autoscroll in every application that supports it"
 arch=('any')
 url="https://github.com/Felitendo/middleclick-autoscroll"
 license=('GPL-3.0-or-later')
@@ -17,7 +17,7 @@ optdepends=('flatpak: cover Flatpak applications too'
             'desktop-file-utils: refresh the desktop database after a change')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aa4714daf81ace338ee66f6afa5628471d755557176c252fd9ff71642c3ac176')
+sha256sums=('b046fd59eec1dcd761fdb28cf13aedb400215e4eb6cd118989824d274990c6dd')
 
 build() {
   # pass the version being packaged so `middleclick-autoscroll --version`
