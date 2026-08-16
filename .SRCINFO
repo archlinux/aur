@@ -1,6 +1,6 @@
 pkgbase = franki-os-git
 	pkgdesc = Federated Recursive Artificial Neural Knowledge Interface - Neural OS
-	pkgver = r1067.2e2e99d
+	pkgver = r1070.5a98984
 	pkgrel = 1
 	url = https://gitlab.com/Umbra_HS/franki_os
 	install = franki.install
