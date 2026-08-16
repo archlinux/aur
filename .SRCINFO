@@ -1,6 +1,6 @@
 pkgbase = libaribcaption-llvm
 	pkgdesc = Caption decoder/renderer library for handling ARIB STD-B24 based TV broadcast captions — built with Clang and LLVM lld
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 2
 	url = https://github.com/xqq/libaribcaption/
 	arch = x86_64
@@ -9,11 +9,14 @@ pkgbase = libaribcaption-llvm
 	makedepends = cmake
 	makedepends = lld
 	makedepends = llvm
+	depends = glibc
 	depends = fontconfig
 	depends = freetype2
+	depends = libgcc
+	depends = libstdc++
 	provides = libaribcaption
 	conflicts = libaribcaption
-	source = https://github.com/xqq/libaribcaption/archive/v1.1.1/libaribcaption-1.1.1.tar.gz
-	sha256sums = 278d03a0a662d00a46178afc64f32535ede2d78c603842b6fd1c55fa9cd44683
+	source = https://github.com/xqq/libaribcaption/archive/v1.1.2/libaribcaption-1.1.2.tar.gz
+	sha256sums = 649b50bde99272b97c66af2a8400163e2f84eae072d252daa26baaaf0866a1c2
 
 pkgname = libaribcaption-llvm
