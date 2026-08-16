@@ -1,7 +1,7 @@
 # Maintainer: Robin Candau <antiz@archlinux.org>
 
 pkgname=aps
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="A fast and powerful patterns searcher for AUR package sources"
 url="https://github.com/Antiz96/aps"
@@ -11,7 +11,7 @@ depends=('glibc' 'libgcc')
 makedepends=('cargo' 'scdoc')
 options=(!lto) # aws-lc crates cause linking errors
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('181262a250fa26817263661f28e5e1bccbe2a793a33e22a532ea5e42049a1dd6')
+sha256sums=('937e1f06995b9b7e98f0132fe1f83aa33c0ca9f33568c7f937ad5729b50dea8b')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
