@@ -1,6 +1,6 @@
 # Maintainer: existyay <liujam826@gmail.com>
 pkgname=lx-music-shell
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Terminal music player with multi-source support and auto-reconnect"
 arch=("any")
@@ -14,7 +14,9 @@ depends=("bash>=4.4"
          "gawk"
          "ncurses"
          "procps-ng")
-optdepends=("alsa-utils: ALSA audio control"
+optdepends=("python-dbus: MPRIS desktop media controls"
+            "python-gobject: MPRIS desktop media controls"
+            "alsa-utils: ALSA audio control"
             "bluez: bluetooth support and monitoring"
             "bluez-utils: bluetoothctl for bluetooth device management"
             "ffmpeg: ffplay backend support and audio tools"
@@ -35,7 +37,7 @@ backup=("etc/skel/.config/lx-music-shell/config"
         "etc/skel/.config/lx-music-shell/sources.list")
 options=()
 install=lx-music-shell.install
-source=("lx-music-shell-source-v3.5.0.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v3.5.0.tar.gz")
+source=("lx-music-shell-source-v3.6.0.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v3.6.0.tar.gz")
 sha256sums=("SKIP")
 
 prepare() {
