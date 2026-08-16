@@ -1,12 +1,16 @@
 # Maintainer: Ron B <ronb1964@gmail.com>
 pkgname=talktype-appimage
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Voice dictation for Linux Wayland - press F8 to talk, powered by Whisper AI"
 arch=('x86_64')
 url="https://github.com/ronb1964/TalkType"
 license=('MIT')
-depends=('fuse2' 'ydotool' 'wl-clipboard')
+# libayatana-appindicator provides libayatana-appindicator3.so.1, which the
+# bundled AyatanaAppIndicator3 typelib loads at runtime. The AppImage does NOT
+# bundle this .so, so without the dependency the tray crashes on launch on a
+# clean Arch install (the same failure the .deb/.rpm dependency prevents).
+depends=('fuse2' 'ydotool' 'wl-clipboard' 'libayatana-appindicator')
 optdepends=(
     'pipewire-pulse: PipeWire audio support'
     'pulseaudio: PulseAudio support'
@@ -16,7 +20,7 @@ conflicts=('talktype')
 options=('!strip')
 source=("TalkType-v${pkgver}-x86_64.AppImage::https://github.com/ronb1964/TalkType/releases/download/v${pkgver}/TalkType-v${pkgver}-x86_64.AppImage"
         "talktype.desktop")
-sha256sums=('f1fb0d1a2626ac747039fb02a21fb01f01a321a4dfb72b3767fe071c9c982641'
+sha256sums=('4ff4de716e7ce82d2bd20791ef96c9c81c9905cd730f781a0bd840a8df3d8ae7'
             'SKIP')
 noextract=("TalkType-v${pkgver}-x86_64.AppImage")
 
