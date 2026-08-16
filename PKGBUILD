@@ -3,8 +3,8 @@
 
 _pkgname=xevd
 pkgname=xevd-llvm
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.7.0
+pkgrel=2
 pkgdesc='MPEG-5 EVC (Essential Video Coding) decoder — built with Clang and LLVM lld'
 arch=('x86_64')
 url='https://github.com/mpeg5/xevd/'
@@ -17,8 +17,8 @@ options=('!emptydirs')
 source=("https://github.com/mpeg5/xevd/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         '010-xevd-disable-werror.patch'
         '020-xevd-fix-pkg-config.patch')
-sha256sums=('8d55c7ec1a9ad4e70fe91fbe129a1d4dd288bce766f466cba07a29452b3cecd8'
-            '7253ce87e7b64b9c0100e7235193906aa96042aa1f2538cb0ce80baf90de047f'
+sha256sums=('febfdb532819bbf36b1b04e74d3ef328ad0f0f2db6224ddb7640fce6bd0014f4'
+            '36c82aded7c872240d7608e2928750f8f157d310367227d9d77713447428ef9b'
             '28e46788d188dbbd27c0b47d2c4510029491f434cccfa41967b60d94def36d4a')
 
 prepare() {
@@ -51,7 +51,7 @@ build() {
         -DCMAKE_EXE_LINKER_FLAGS:STRING='-fuse-ld=lld' \
         -DCMAKE_SHARED_LINKER_FLAGS:STRING='-fuse-ld=lld' \
         -DXEVD_APP_STATIC_BUILD:BOOL='OFF' \
-        -Wno-dev
+        -Wno-author
     cmake --build build
 }
 
