@@ -1,6 +1,6 @@
 pkgbase = python-atom
 	pkgdesc = Memory efficient Python objects
-	pkgver = 0.11.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/nucleic/atom
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = python-atom
 	makedepends = python-sphinx
 	makedepends = python-wheel
 	depends = python
-	source = python-atom-0.11.0.tar.gz::https://files.pythonhosted.org/packages/source/a/atom/atom-0.11.0.tar.gz
-	sha256sums = 4ab93fc3cc7b6a078253b116e9f6235d2913eb9bb49adbc31a258e1017f2aee0
+	source = python-atom-0.12.1.tar.gz::https://files.pythonhosted.org/packages/source/a/atom/atom-0.12.1.tar.gz
+	sha256sums = 2cbfb77939da28879a5432e3b201ac026be85c789c4e96de246a6f6a9f4be57a
 
 pkgname = python-atom
