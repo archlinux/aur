@@ -4,8 +4,8 @@
 # 构建的预编译资产，补上 Noto 字体后重新打包（避免让 AUR 用户本地编译）。
 
 pkgname=miyu
-pkgver=0.4.2
-pkgrel=3
+pkgver=0.4.3
+pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
 url='https://github.com/SHORiN-KiWATA/Miyu'
@@ -19,7 +19,7 @@ optdepends=(
   'bash: bash shell integration support'
   'zsh: zsh shell integration support'
 )
-_release_pkgrel=3
+_release_pkgrel=1
 _cjk_version='Sans2.004'
 _emoji_version='v2.051'
 source=(
@@ -30,7 +30,7 @@ source=(
   "NotoColorEmoji.LICENSE::https://raw.githubusercontent.com/googlefonts/noto-emoji/${_emoji_version}/LICENSE"
 )
 sha256sums=(
-  '4d4a75458e0a755132c54f83cea18883da49bb09559fce2f8255fd5a0785bb7b'
+  '991e2c02e664fe4df8dcdc009d34aa58a4974617f7fbd03147346c3fac3a2bd5'
   'b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a'
   '72a635cb3d2f3524c51620cdde406b217204e8a6a06c6a096ff8ed4b5fd6e27b'
   '6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2'
