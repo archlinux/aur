@@ -1,5 +1,5 @@
-# Maintainer: yan5xu <liuxiaopeng731@gmail.com>
-# Contributor: Burgess LEO
+# Maintainer: yan5xu <https://github.com/yan5xu/ququ>
+# Contributor: Burgess LEO <liuxiaopeng731@gmail.com>
 
 pkgname=ququ-bin
 _pkgname=ququ
