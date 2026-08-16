@@ -1,7 +1,7 @@
 # Maintainer: Wael Amrani Zerrifi <waelaz1983@gmail.com>
 
 pkgname=pacterm
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="A terminal-based Pac-Man game written in C++20"
 arch=('x86_64' 'aarch64')
