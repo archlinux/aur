@@ -6,7 +6,7 @@
 
 pkgname=sddm-fingerprint
 pkgver=0.21.0
-pkgrel=5
+pkgrel=6
 pkgdesc='SDDM with fingerprint + password parallel authentication (PR#1220 + parallel auth fix)'
 arch=(x86_64)
 url='https://github.com/sddm/sddm'

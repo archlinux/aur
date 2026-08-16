@@ -103,3 +103,60 @@ with open('src/daemon/Display.cpp', 'w') as f:
     f.write(content)
 
 print("Parallel auth fix applied.")
+
+with open('src/auth/Auth.cpp', 'r') as f:
+    content = f.read()
+
+content = content.replace(
+    "        bool fingerprintlogin { false };",
+    "        bool fingerprintlogin { false };\n        bool stoppedIntentionally { false };"
+)
+
+content = content.replace(
+    '''    void Auth::Private::childExited(int exitCode, QProcess::ExitStatus exitStatus) {
+        if (exitStatus != QProcess::NormalExit) {
+            qWarning("Auth: sddm-helper (%s) crashed (exit code %d)",
+                     qPrintable(child->arguments().join(QLatin1Char(' '))),
+                     HelperExitStatus(exitStatus));
+            Q_EMIT qobject_cast<Auth*>(parent())->error(child->errorString(), ERROR_INTERNAL);
+        }''',
+    '''    void Auth::Private::childExited(int exitCode, QProcess::ExitStatus exitStatus) {
+        if (exitStatus != QProcess::NormalExit && !stoppedIntentionally) {
+            qWarning("Auth: sddm-helper (%s) crashed (exit code %d)",
+                     qPrintable(child->arguments().join(QLatin1Char(' '))),
+                     HelperExitStatus(exitStatus));
+            Q_EMIT qobject_cast<Auth*>(parent())->error(child->errorString(), ERROR_INTERNAL);
+        }
+        stoppedIntentionally = false;'''
+)
+
+content = content.replace(
+    '''    void Auth::stop() {
+        if (d->child->state() == QProcess::NotRunning) {
+            return;
+        }
+
+        d->child->terminate();
+
+        // wait for finished
+        if (!d->child->waitForFinished(300))
+            d->child->kill();
+    }''',
+    '''    void Auth::stop() {
+        if (d->child->state() == QProcess::NotRunning) {
+            return;
+        }
+
+        d->stoppedIntentionally = true;
+        d->child->terminate();
+
+        // wait for finished
+        if (!d->child->waitForFinished(300))
+            d->child->kill();
+    }'''
+)
+
+with open('src/auth/Auth.cpp', 'w') as f:
+    f.write(content)
+
+print("Crash suppression fix applied.")
