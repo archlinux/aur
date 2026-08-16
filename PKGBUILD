@@ -29,7 +29,7 @@ sha256sums=('722601e01b78b7a12da4829cb450674935f404b0e508f3f20046fa77570e3272'
             '73697fbd06b3f51cfd0a2df3579fc8579725b2a927edefa736fdb1fb2a361337')
 
 _srcdir="${_repo}-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -msse4.2 -mxsave'
 	-DOCIO_BUILD_APPS=OFF
 	-DOCIO_BUILD_PYTHON=OFF
