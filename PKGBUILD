@@ -3,7 +3,7 @@
 pkgname=qt6-xdgiconqml-git
 _projname=xdgiconqml
 _release_ver=0.1.0.r0
-pkgver=57d4605
+pkgver=f70d64d
 pkgrel=1
 pkgdesc="Qt 6 QML plugin implementing the XDG Icon Theme Specification (v0.13) — git master"
 arch=('x86_64' 'aarch64')
