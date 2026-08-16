@@ -1,16 +1,18 @@
 # Maintainer: Basem Aljedai <baljedai@gmail.com>
 pkgname=omarchy-prayer
-pkgver=0.1.7
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Muslim prayer-time notifier for Omarchy: mako + adhan, waybar countdown, themed TUI, qibla, hijri, adhan catalog"
+pkgdesc="Muslim prayer-time notifier for Omarchy: notifications + adhan, Quickshell/waybar countdown widget, themed TUI, qibla, hijri, adhan catalog"
 arch=('any')
 url="https://github.com/mrCode/omarchy-prayer"
 license=('MIT')
-depends=('ruby' 'ruby-tomlrb' 'ruby-racc' 'libnotify' 'mako' 'waybar' 'mpv' 'curl' 'systemd')
-optdepends=('hyprland: reference window manager for bundled waybar integration')
+depends=('ruby' 'ruby-tomlrb' 'ruby-racc' 'libnotify' 'mpv' 'curl' 'systemd')
+optdepends=('waybar: bar widget on Omarchy 3 and other Hyprland setups'
+            'mako: notification daemon on Omarchy 3 and other Hyprland setups'
+            'hyprland: reference window manager')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c63f5b8193795267fba4d46c9be793f7e75598ed1cb95fdeafc28ab895a35d82')
+sha256sums=('a378ef735195dbd5bc3baae811bd10d1534560aa1c18673d05b68b43feb18467')
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -44,6 +46,12 @@ package() {
         "bin/${s}" > "${bindir}/${s}"
     chmod 755 "${bindir}/${s}"
   done
+
+  # Omarchy 4 Quickshell bar widget. The shell only scans
+  # ~/.config/omarchy/plugins/, so `omarchy-prayer setup` copies this into
+  # $HOME; pacman just ships the canonical source.
+  install -dm755 "${pkgdir}/usr/share/${pkgname}/shell-plugin"
+  cp -r share/omarchy-shell-plugin/. "${pkgdir}/usr/share/${pkgname}/shell-plugin/"
 
   # Systemd user units — rewrite ExecStart from the manual-install path
   # (%h/.local/bin/, used by ./install.sh) to the system path so the daily
