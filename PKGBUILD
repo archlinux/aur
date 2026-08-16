@@ -6,7 +6,7 @@
 
 pkgname=stm32cubeprog
 pkgver=2.23.0
-pkgrel=3
+pkgrel=4
 pkgdesc='An all-in-one multi-OS software tool for programming STM32 products.'
 arch=('x86_64')
 url='https://www.st.com/en/development-tools/stm32cubeprog.html'
@@ -18,6 +18,8 @@ depends=(
 )
 
 optdepends=(
+  'archlinux-java-run: System Java runtime for STM32CubeProgrammer (Wayland)'
+  'java-openjfx-bin: System JavaFX runtime for STM32CubeProgrammer (Wayland)'
   'stlink: udev rules for ST-LINK devices'
 )
 
@@ -30,12 +32,14 @@ provides=('stm32cubeprogrammer')
 options=('!strip' '!debug')
 
 source=(
-  "SetupSTM32CubeProgrammer_linux_64-${pkgver}.zip::https://www.st.com/cloudfront/publish/stm32cubeprg-lin-v${pkgver//./-}/${pkgver}/en/SetupSTM32CubeProgrammer_linux_64.zip"
+  "SetupSTM32CubeProgrammer_linux_64.zip::https://www.st.com/cloudfront/publish/stm32cubeprg-lin-v${pkgver//./-}/${pkgver}/en/SetupSTM32CubeProgrammer_linux_64.zip"
   'SLA0048_STM32CubeProg.pdf'
+  'STM32CubeProgrammer_Wayland'
 )
 
 sha256sums=('6a9e60a5a048c45eb3241f9bb66bdc2e6cbd0119fb2e42568dc059fc6167442a'
-            'c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702')
+  'c6d92c00dee63e0f4a54d8ea62f82a646243c3e1480142ae3e7f4ca5d77d5702'
+  '5a34b8b2345f1ef4dff221d8d529dc1ef78e3c1e1bfb86f35edaf865b2fc5b26')
 
 prepare() {
   cd "${srcdir}"
@@ -48,6 +52,15 @@ prepare() {
     --path "/opt/${pkgname}/bin" \
     --name "STM32CubeProgrammer" \
     --exec "/opt/${pkgname}/bin/STM32CubeProgrammer" \
+    --icon "${pkgname}" \
+    --categories "Development"
+
+  gendesk -f -n \
+    --pkgname "${pkgname}_wayland" \
+    --pkgdesc "${pkgdesc}" \
+    --path "/opt/${pkgname}/bin" \
+    --name "STM32CubeProgrammer (Wayland)" \
+    --exec "/opt/${pkgname}/bin/STM32CubeProgrammer_Wayland" \
     --icon "${pkgname}" \
     --categories "Development"
 
@@ -104,12 +117,18 @@ package() {
 
   # desktop entries
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}_wayland.desktop" \
+    "${pkgdir}/usr/share/applications/${pkgname}_wayland.desktop"
   install -Dm644 "${srcdir}/${pkgname}-trusted-package-creator.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}-trusted-package-creator.desktop"
+
+  install -Dm755 "${srcdir}/STM32CubeProgrammer_Wayland" \
+    "${pkgdir}/opt/${pkgname}/bin/STM32CubeProgrammer_Wayland"
 
   # command wrappers
   for entry in \
     'stm32cubeprogrammer:STM32CubeProgrammer' \
+    'stm32cubeprogrammer_wayland:STM32CubeProgrammer_Wayland' \
     'stm32_programmer_cli:STM32_Programmer.sh' \
     'stm32_keygen_cli:STM32_KeyGen_CLI' \
     'stm32_signingtool_cli:STM32_SigningTool_CLI' \

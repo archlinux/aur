@@ -1,0 +1,36 @@
+#!/bin/sh
+
+javafx_lib=$(
+  find /usr/lib/jvm -maxdepth 3 -type f -name javafx.properties -printf '%h\n' 2>/dev/null |
+    sort -V |
+    tail -n 1
+)
+
+if [ -z "${javafx_lib}" ] || [ ! -r "${javafx_lib}/javafx.controls.jar" ]; then
+  printf '%s\n' 'STM32CubeProgrammer (Wayland): system OpenJFX was not found. Install java-openjfx-bin.' >&2
+  exit 1
+fi
+
+javafx_version=$(sed -n 's/^javafx.version=//p' "${javafx_lib}/javafx.properties")
+javafx_major=${javafx_version%%.*}
+
+case ${javafx_major} in
+  ''|*[!0-9]*)
+    printf '%s\n' 'STM32CubeProgrammer (Wayland): could not determine the OpenJFX version.' >&2
+    exit 1
+    ;;
+esac
+
+if ! command -v archlinux-java-run >/dev/null 2>&1; then
+  printf '%s\n' 'STM32CubeProgrammer (Wayland): archlinux-java-run is not installed.' >&2
+  exit 1
+fi
+
+cd /opt/stm32cubeprog/bin || exit 1
+
+exec archlinux-java-run --min "${javafx_major}" -- \
+  --enable-native-access=javafx.graphics,ALL-UNNAMED \
+  --module-path "${javafx_lib}" \
+  --add-modules javafx.controls,javafx.fxml,javafx.web,javafx.swing \
+  -jar /opt/stm32cubeprog/bin/STM32CubeProgrammerLauncher \
+  "$@"
