@@ -2,7 +2,7 @@
 # Contributor: hoverth
 # Adapted from AUR package `organicmaps` by nesk_aur
 pkgname=comaps
-pkgver=2026.07.16_10
+pkgver=2026.08.07_3
 _tag="v${pkgver%%_*}-${pkgver##*_}"
 pkgrel=1
 pkgdesc="CoMaps: Offline Hike, Bike, Trails and Navigation"
