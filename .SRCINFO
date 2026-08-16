@@ -1,0 +1,22 @@
+pkgbase = ucsc-psl-bin
+	pkgdesc = UCSC PSL alignment utilities: pslToBed, pslReps, pslCDnaFilter
+	pkgver = 20250627
+	pkgrel = 1
+	url = https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = curl
+	depends = gcc-libs
+	options = !strip
+	options = !debug
+	source = https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/pslToBed
+	source = https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/pslReps
+	source = https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/pslCDnaFilter
+	source = LICENSE::https://raw.githubusercontent.com/ucscGenomeBrowser/kent/master/LICENSE
+	sha256sums = e962977fea079c874fbc8820ccad12a8e6900b31914c1dd9a6de1fed5992f090
+	sha256sums = eeb0400455cfe4debdefe1f74e268e154dbf7f1e08fba4fe84eed97d39f7968a
+	sha256sums = 92ab6a909769bca6ddd4facf3caffa165e0247229d223293124af6edbb8c7b4e
+	sha256sums = 793d774ec3941d88d5f93611639230030ea3e167282be144b6e5604bc5ad29a4
+
+pkgname = ucsc-psl-bin
