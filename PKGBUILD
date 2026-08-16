@@ -14,7 +14,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 source=("zimg-${pkgver}.tar.gz::https://github.com/sekrit-twc/zimg/archive/release-${pkgver}.tar.gz")
 sha256sums=('be89390f13a5c9b2388ce0f44a5e89364a20c1c57ce46d382b1fcc3967057577')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 
 prepare() {
   cd "${srcdir}/zimg-release-${pkgver}"
