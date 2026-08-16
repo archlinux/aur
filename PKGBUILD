@@ -1,8 +1,8 @@
-# Maintainer: Ismet Togay <ismet.togay+archlinux@gmail.com>
+# Maintainer: Ismet Togay <ismet.togay at gmail dot com>
 
 pkgname=uyap-editor-bin
 pkgver=5.4.19
-pkgrel=2
+pkgrel=3
 pkgdesc='UYAP Document and Template Editor (Turkish judicial system)'
 arch=('x86_64')
 url='https://uyap.gov.tr/UYAP-Editor'
