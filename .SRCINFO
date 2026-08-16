@@ -1,0 +1,18 @@
+pkgbase = qt6-xdgiconqml
+	pkgdesc = Qt 6 QML plugin implementing the XDG Icon Theme Specification (v0.13)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alexindigo/xdgiconqml
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-declarative
+	conflicts = qt6-xdgiconqml-git
+	conflicts = qt6-xdgiconqml-dbus
+	conflicts = qt6-xdgiconqml-dbus-git
+	source = qt6-xdgiconqml-0.1.0.tar.gz::https://github.com/alexindigo/xdgiconqml/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 4017958aaba9791e5799fc72ae8447ed0db4026de741ade50e4e94abe5b955e9
+
+pkgname = qt6-xdgiconqml
