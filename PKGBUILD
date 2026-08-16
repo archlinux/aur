@@ -4,7 +4,7 @@
 srcname=VRCX
 pkgname=vrcx-git
 pkgver=2026.02.11.r463.g92ae1c5
-pkgrel=1
+pkgrel=2
 pkgdesc="Friendship management tool for VRChat (git version built with Electron)"
 arch=('x86_64')
 url="https://github.com/vrcx-team/VRCX"
@@ -17,12 +17,10 @@ options=(!debug !lto)
 source=(
     "git+https://github.com/vrcx-team/VRCX.git"
     "vrcx.desktop"
-    "build.patch"
 )
 
 sha256sums=('SKIP'
-            '3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5'
-            'db8f2ca37e76cc81ab15f91005882248cd68b97f59f3c8a5bf54674d190ca5df')
+            '3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5')
 
 pkgver() {
   cd "$srcdir/VRCX"
