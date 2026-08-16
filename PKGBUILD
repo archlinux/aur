@@ -2,11 +2,11 @@
 _projectname=declaro
 pkgname="$_projectname-git"
 pkgver=0
-pkgrel=3
+pkgrel=4
 pkgdesc="a simple declarative wrapper for any package manager"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/mantinhas/$_projectname"
-license=('GPL')
+license=('GPL-1.0-or-later')
 depends=('pacman' 'bash' 'diffutils' 'sed' 'findutils' 'make' 'sudo' 'coreutils' 'tar' 'git')
 makedepends=('git')
 source=("git+$url.git")

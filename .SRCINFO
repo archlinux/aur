@@ -1,10 +1,10 @@
 pkgbase = declaro-git
 	pkgdesc = a simple declarative wrapper for any package manager
 	pkgver = 0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/mantinhas/declaro
-	arch = x86_64
-	license = GPL
+	arch = any
+	license = GPL-1.0-or-later
 	makedepends = git
 	depends = pacman
 	depends = bash
