@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-netcdf
 	pkgdesc = network Common Data Form interface for array-oriented data access and corresponding library (mingw-w64)
 	pkgver = 4.9.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.unidata.ucar.edu/software/netcdf/
 	arch = any
 	license = custom
@@ -11,6 +11,7 @@ pkgbase = mingw-w64-netcdf
 	depends = mingw-w64-curl
 	depends = mingw-w64-libxml2
 	depends = mingw-w64-dlfcn
+	depends = mingw-w64-libzip
 	options = staticlibs
 	options = !buildflags
 	options = !strip
