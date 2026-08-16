@@ -33,7 +33,7 @@ _ffsum="f53b9dc6942abda1185aa7d79048f59fc075020da36b4dd6b31f668b88714d01"
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="${_icver%%-*}"
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git"
 license=('MPL-2.0')
@@ -141,20 +141,23 @@ source=(
   0000-parallelize-makeicecat.diff
 
   # fix for python 3.14
-  5fcff175718cd308bc6d6f2996de14eb8a93e2a2.patch
-  23efd75219786d71acff0b4e7c1b0de297b84c4e.patch
-  b68b1f93a6e31188486458f32fbe37811257604f.patch
-  d4b3eb4f76e81f18c53863b1d55ee146d6ec7d10.patch
-  dbf9702ed87ea5c88c2a1ee615998532ac8f10cc.patch
+  1001-python_3.14-5fcff175718cd308bc6d6f2996de14eb8a93e2a2.patch
+  1002-python_3.14-23efd75219786d71acff0b4e7c1b0de297b84c4e.patch
+  1003-python_3.14-b68b1f93a6e31188486458f32fbe37811257604f.patch
+  1004-python_3.14-d4b3eb4f76e81f18c53863b1d55ee146d6ec7d10.patch
+  1005-python_3.14-dbf9702ed87ea5c88c2a1ee615998532ac8f10cc.patch
 
-  # Fix for glibc 2.43
+  # fix for glibc 2.43
   0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
   0002-Fix-sandbox-to-build-with-glibc-2.43.patch
 
-  # Fix for clang 22
+  # fix for clang 22
   0003-Use-wasm32-wasip1-target.patch
   0004-update-rust-bindgen-to-fix-clang22-build.patch.xz
   0005-skia-m142-update.patch.xz
+
+  # fix for ffmpeg 9
+  0006-Add-FFmpeg-63-support.patch.xz
 )
 sha256sums=(
   'SKIP'
@@ -170,6 +173,7 @@ sha256sums=(
   '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
   '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
   'e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760'
+  'e7d30072641dfea9c3bff025db7e3a2c60201e630c5253bda1f2b54a0b5501ae'
 )
 
 _make_icecat() (

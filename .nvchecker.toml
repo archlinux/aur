@@ -1,4 +1,5 @@
 [icecat]
-source = "regex"
-url = "https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git"
-regex = '([0-9]+\.[0-9]+\.[0-9]+)'
+source = "git"
+git = "https://https.git.savannah.gnu.org/git/gnuzilla.git"
+sort_version_key = 'vercmp'
+prefix = "v"
