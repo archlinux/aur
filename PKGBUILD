@@ -1,6 +1,6 @@
 # Maintainer: kitasael-burakku
 pkgname=maly
-pkgver=1.14.1
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Local terminal music player (daemon + TUI + CLI) with mpv backend, gapless playback and MPRIS2"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/kitasael-burakku/Malody-Mallow"
 license=('GPL-3.0-only')
 depends=('mpv')
 optdepends=(
-	'yt-dlp: descargar audio con maly get'
+	'yt-dlp: buscar y descargar música (maly get y ctrl+g en la TUI)'
 	'ffmpeg: postprocesado de maly get y duraciones (ffprobe) en el escaneo'
 	'pipewire: visualizador de espectro (pw-record)'
 	'pulseaudio: visualizador de espectro (parec), alternativa a pipewire'
@@ -17,7 +17,7 @@ makedepends=('go' 'git')
 _pkgsrc=Malody-Mallow
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "maly.service")
-sha256sums=('616dd39875607f2ec676357e7ec788844885a3c6daa625ebbf0c7396ec377321'
+sha256sums=('21b4b8dac3c2807b44e0c91b5cc298c8763aeca00782e764d802caa02e454a8d'
             'cbcd9c2804135080db7d938ea839b985e41583e1849522fe5379b5b92b22c96a')
 
 prepare() {
