@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-vulkan
 _pkgname=${pkgname%%-vulkan}
-pkgver=b10435
+pkgver=b10448
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with Vulkan GPU optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -42,7 +42,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('03728d025464feffee9caaae47fd253c2a13d7989d1e33e6e49b67b3ff07aa7b'
+sha256sums=('85791799efe44625718640e3dcedb6112a132018e38e61e43190b1ff37ade355'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
