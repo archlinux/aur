@@ -23,12 +23,13 @@ source=(
 )
 
 _dir="${_pkgname}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
-_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' )
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG'
+	-DCMAKE_POLICY_VERSION_MINIMUM='3.5' )
 
 prepare() {
 	cd "${_dir}"
-	
+
 	patch -uNp1 -i '../yamc-test-fix.patch'
 	sed -i 's/set(CMAKE_CXX_STANDARD 11)/set(CMAKE_CXX_STANDARD 20)/' 'CMakeLists.txt'
 	sed -i 's/set(CMAKE_CXX_STANDARD 11)/set(CMAKE_CXX_STANDARD 20)/' 'tests/CMakeLists.txt'
