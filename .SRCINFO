@@ -1,6 +1,6 @@
 pkgbase = lgtv-remote
 	pkgdesc = Desktop remote control for LG webOS TVs
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Zharkan/lgtv-remote
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = lgtv-remote
 	depends = python-qasync
 	depends = python-aiohttp
 	depends = python-aiowebostv
-	source = lgtv-remote-0.3.0.tar.gz::https://github.com/Zharkan/lgtv-remote/archive/v0.3.0.tar.gz
-	sha256sums = ee222b93df68d2f39c8e9e2d8d8a77079ad2758192457af1aeb71a9dea94ed92
+	source = lgtv-remote-0.4.0.tar.gz::https://github.com/Zharkan/lgtv-remote/archive/v0.4.0.tar.gz
+	sha256sums = 476c12b20908366c502fbe0083f824d3c457dd7d6cdd21d5f8861c44460b1200
 
 pkgname = lgtv-remote
