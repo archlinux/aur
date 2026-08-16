@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=Utility;Game;
+Comment=一个 ⌈ 更好用、更强大 ⌋ 的蔚蓝 Mod 管理器
+Comment[en]=An alternative mod manager for Celeste
+Exec=cele-mod
+Icon=cele-mod
+Name=CeleMod
+Name[en]=CeleMod
+StartupWMClass=cele-mod
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/celemod
