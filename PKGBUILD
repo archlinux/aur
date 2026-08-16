@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=clang-static-git
-pkgver=24.0.0.r592294.c366d9319326
+pkgver=24.0.0.r592588.f33323e92d8f
 pkgrel=1
 pkgdesc='Clang compiler and tools with libc++, runtimes, and statically linked LLVM components (git version)'
 arch=(x86_64)
@@ -69,6 +69,11 @@ pkgver() {
   printf '%s.r%s.%s' "$_ver" \
     "$(git -C llvm-project rev-list --count HEAD)" \
     "$(git -C llvm-project rev-parse --short HEAD)"
+}
+
+prepare() {
+  # Ensure LLVM embeds canonical upstream repository info in version strings.
+  git -C llvm-project remote set-url origin https://github.com/llvm/llvm-project.git
 }
 
 _get_distribution_components() {
