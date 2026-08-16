@@ -2,7 +2,7 @@
 # Contributor: Parker Reed <parker.l.reed@gmail.com>
 
 pkgname=sc-controller-git
-pkgver=0.6.2.r7.f32fa35e
+pkgver=0.6.6.r13.6b8bca9d
 pkgrel=1
 pkgdesc='User-mode driver, mapper and GTK3 based GUI for Steam Controller, DS4 and similar controllers'
 arch=('x86_64' 'aarch64')
@@ -15,12 +15,16 @@ depends=(
 	'python-cairo'
 	'python-evdev'
 	'python-gobject'
-	'python-hidraw-pure'
+	'python-ioctl-opt'
 	'python-libusb1'
 	'python-pylibacl'
 	'python-setuptools'
 	'python-vdf'
-	'xorg-xinput')
+	'xorg-xinput'
+)
+optdepends=(
+	'python-hidraw-pure: Use system library instead of vendored one'
+)
 makedepends=(
 	'git'
 	'python-poetry'
