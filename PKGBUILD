@@ -1,17 +1,18 @@
 # Maintainer: Kemal Ozturk <97kemalozturk at gmail dot com>
 
 pkgname=framework-control
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Lightweight control surface for Framework laptops (Fan, Battery, Power, LEDs)"
 arch=('x86_64')
 url="https://github.com/ozturkkl/framework-control"
 license=('MIT')
-depends=('xdg-utils' 'hicolor-icon-theme' 'framework-system')
-makedepends=('rust' 'cargo' 'nodejs' 'npm')
+depends=('xdg-utils' 'hicolor-icon-theme')
+optdepends=('framework-system: Framework CLI on PATH; otherwise auto-downloaded on first run')
+makedepends=('rust' 'nodejs')
 install=framework-control.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ozturkkl/framework-control/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('c2a118ea8c3e496fb3956526a0f5b2ad5debb85fcd6f30d4f96bd04dbd498f3c')
+sha256sums=('dccddf1a3c487424c90b4fb4290158915c51e86b29599223a4c4ff18efd3947d')
 
 _port=30912
 
