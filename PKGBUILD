@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=python-gguf-git
 _pkgname=gguf
-pkgver=b9209.r9.3a9c1b854d
+pkgver=b10442.r6.ad1de39e07
 pkgrel=1
 pkgdesc="GGUF file format library and model conversion tools for llama.cpp"
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=(
 optdepends=(
   'python-numpy: for numerical operations'
   'python-tqdm: for progress bars'
-  'python-torch: for convert_hf_to_gguf.py and convert_lora_to_gguf.py'
+  'python-pytorch: for convert_hf_to_gguf.py and convert_lora_to_gguf.py'
   'python-huggingface-hub: for --remote flag in convert_hf_to_gguf.py')
 provides=('python-gguf')
 conflicts=('python-gguf')
