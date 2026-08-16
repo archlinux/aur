@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.gitlab-ci.yml
+!.SRCINFO
+!PKGBUILD
+!README.md
+!kytyps5.desktop

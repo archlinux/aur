@@ -1,0 +1,135 @@
+# Nightly bump of kytyps5-nightly-bin to the newest upstream KytyPS5 release.
+#
+# Setup:
+#   1. Settings > CI/CD > Variables
+#        AUR_SSH_KEY       File,     private key of an SSH key registered on the
+#                                    AUR account that owns this package. Masked
+#                                    is not possible for multi-line keys; use a
+#                                    File variable and keep it Protected.
+#        GITLAB_PUSH_TOKEN Variable, project access token with write_repository,
+#                                    so the bump commit lands here too and the
+#                                    "already current" check below stays honest.
+#   2. Build > Pipeline schedules > add a daily schedule on the default branch.
+#
+# The asset is never downloaded: the checksum comes from the digest GitHub
+# publishes with the release, and source= points at the permanent
+# releases/download/<tag>/<asset> URL. The job fails rather than guess if that
+# digest is missing. Nothing is built before publishing, so a broken upstream
+# release reaches the AUR unverified -- a deliberate trade.
+
+image: archlinux:base-devel
+
+stages:
+  - bump
+
+bump:
+  stage: bump
+  interruptible: true
+  rules:
+    # Only ever run from the schedule or a manual "Run pipeline"; never on push.
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "web"
+  variables:
+    GIT_DEPTH: "0"
+    UPSTREAM_REPO: KytyPS5/KytyPS5
+  before_script:
+    - pacman -Sy --noconfirm --needed git jq openssh curl
+    # makepkg refuses to run as root, and it checks that before it handles
+    # --printsrcinfo, so the .SRCINFO regeneration needs a real user.
+    - useradd -m builder
+    - chown -R builder:builder "$CI_PROJECT_DIR"
+    - git config --global --add safe.directory "$CI_PROJECT_DIR"
+    - git config --global user.name "kytyps5-nightly-bot"
+    - git config --global user.email "mariodavo.20@gmail.com"
+    - install -dm700 ~/.ssh
+    - install -m600 "$AUR_SSH_KEY" ~/.ssh/aur
+    # Pinned rather than ssh-keyscan'd, so a hijacked DNS answer cannot get us
+    # to trust a new host key. Fingerprint SHA256:RFzBCUItH9LZS0cKB5UE6ceAYhBD5C8GeOBip8Z11+4
+    - >-
+      echo 'aur.archlinux.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuBKrPzbawxA/k2g6NcyV5jmqwJ2s+zpgZGZ7tpLIcN'
+      > ~/.ssh/known_hosts
+    - printf 'Host aur.archlinux.org\n  IdentityFile ~/.ssh/aur\n  IdentitiesOnly yes\n' > ~/.ssh/config
+  script:
+    - |
+      set -euo pipefail
+
+      # Not /releases/latest: upstream's Linux job fails often enough that the
+      # newest release regularly ships Windows and macOS assets only. Take the
+      # newest release that actually has a Linux tarball.
+      release=$(curl -fsSL "https://api.github.com/repos/$UPSTREAM_REPO/releases?per_page=30" |
+        jq '[.[] | select((.draft or .prerelease) | not)
+             | select(any(.assets[]; .name | endswith("-Linux-x86_64.tar.gz")))][0]')
+
+      if [ "$release" = "null" ]; then
+        echo "No recent release carries a Linux x86_64 asset." >&2
+        exit 1
+      fi
+
+      tag=$(jq -r '.tag_name' <<<"$release")
+      commit=$(jq -r '.target_commitish' <<<"$release")
+
+      # KytyPS5-2026-08-15-566a450 -> 2026.08.15.566a450
+      pkgver=${tag#KytyPS5-}
+      pkgver=${pkgver//-/.}
+
+      current=$(sed -n 's/^pkgver=//p' PKGBUILD)
+      if [ "$pkgver" = "$current" ]; then
+        echo "Already at $pkgver, nothing to do."
+        exit 0
+      fi
+      echo "Bumping $current -> $pkgver ($tag)"
+
+      # source= builds this name from $_tag, so make sure it still matches.
+      asset=$(jq -r '[.assets[] | select(.name | endswith("-Linux-x86_64.tar.gz"))][0].name' <<<"$release")
+      if [ "$asset" != "$tag-Linux-x86_64.tar.gz" ]; then
+        echo "Unexpected asset name $asset for tag $tag." >&2
+        exit 1
+      fi
+
+      tarball_sha=$(jq -r --arg n "$asset" \
+        '.assets[] | select(.name == $n) | .digest // "" | sub("^sha256:"; "")' <<<"$release")
+      if [ -z "$tarball_sha" ]; then
+        echo "No sha256 digest published for $asset; refusing to guess." >&2
+        exit 1
+      fi
+
+      raw="https://raw.githubusercontent.com/$UPSTREAM_REPO/$commit"
+      license_sha=$(curl -fsSL "$raw/LICENSE" | sha256sum | cut -d' ' -f1)
+      mit_sha=$(curl -fsSL "$raw/LICENSES/Kyty-MIT.txt" | sha256sum | cut -d' ' -f1)
+      desktop_sha=$(sha256sum kytyps5.desktop | cut -d' ' -f1)
+
+      sed -i \
+        -e "s/^pkgver=.*/pkgver=$pkgver/" \
+        -e "s/^pkgrel=.*/pkgrel=1/" \
+        -e "s/^_tag=.*/_tag=$tag/" \
+        -e "s/^_commit=.*/_commit=$commit/" \
+        PKGBUILD
+
+      # Replace the whole sha256sums=( ... ) block; order matches source=().
+      awk -v sums="$tarball_sha $license_sha $mit_sha $desktop_sha" '
+        /^sha256sums=\($/ {
+          print
+          split(sums, a, " ")
+          for (i = 1; i <= 4; i++) printf "  '\''%s'\''\n", a[i]
+          skip = 1
+          next
+        }
+        skip && /^\)$/ { skip = 0 }
+        skip { next }
+        { print }
+      ' PKGBUILD > PKGBUILD.new
+      mv PKGBUILD.new PKGBUILD
+
+      chown builder:builder PKGBUILD
+      runuser -u builder -- makepkg --printsrcinfo > .SRCINFO
+
+      # Sanity check: .SRCINFO must agree with the PKGBUILD we just wrote.
+      grep -qx "	pkgver = $pkgver" .SRCINFO
+      grep -qx "	sha256sums = $tarball_sha" .SRCINFO
+
+      git add PKGBUILD .SRCINFO
+      git commit -m "upgpkg: $CI_PROJECT_NAME $pkgver-1"
+
+      git push "ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git" "HEAD:master"
+      git push "https://oauth2:$GITLAB_PUSH_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git" \
+        "HEAD:$CI_DEFAULT_BRANCH"

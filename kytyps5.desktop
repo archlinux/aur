@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=KytyPS5
+GenericName=PlayStation 5 Emulator
+Comment=Run PlayStation 5 software with the KytyPS5 emulator
+Exec=kytyps5
+Icon=applications-games
+Terminal=false
+Categories=Game;Emulator;
+Keywords=ps5;playstation;emulator;kyty;kytyps5;
+StartupWMClass=launcher
