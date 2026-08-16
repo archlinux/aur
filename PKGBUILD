@@ -1,45 +1,54 @@
 # Maintainer: IO-ZetZor <swag100iq111@gmail.com>
 
 pkgname=visor
-pkgver=1.3
-pkgrel=2
+pkgver=1.4
+pkgrel=1
 pkgdesc="A minimal, fast, graphical UEFI boot manager"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/IO-ZetZor/Visor-BootManager"
-license=('BSD')
-depends=('gnu-efi')
-makedepends=('git')
+license=('BSD-2-Clause')
+depends=('bash')
+makedepends=('gnu-efi')
 optdepends=('sbctl: Secure Boot signing with sbctl'
             'efibootmgr: UEFI boot entry management'
             'python: kernel/initrd encryption (visor encrypt)'
             'python-pillow: font baking (make bakefont)')
 install=visor.install
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('e82244d2a83c725dd70780e1e91f92e42364a97c13ca58be53f2b6d5a0bbeced')
+
+_dir="Visor-BootManager-$pkgver"
 
 build() {
-  cd "$srcdir/Visor-BootManager-$pkgver"
-  make
+  cd "$srcdir/$_dir"
+  case "$CARCH" in
+    aarch64) make ARCH=aarch64 ;;
+    *)       make ARCH=x86_64  ;;
+  esac
 }
 
 package() {
-  cd "$srcdir/Visor-BootManager-$pkgver"
+  cd "$srcdir/$_dir"
 
-  # EFI binary
-  install -Dm644 visor_x64.efi "$pkgdir/usr/lib/visor/visor_x64.efi"
+  case "$CARCH" in
+    aarch64) _efi=visor_aa64.efi ;;
+    *)       _efi=visor_x64.efi  ;;
+  esac
+  install -Dm644 "$_efi" "$pkgdir/usr/lib/visor/$_efi"
 
-  # CLI
   install -Dm755 visor "$pkgdir/usr/bin/visor"
-
-  # Config example
   install -Dm644 boot.conf.example "$pkgdir/usr/share/visor/boot.conf.example"
+  install -Dm644 docs/boot.conf.schema.json "$pkgdir/usr/share/visor/boot.conf.schema.json"
 
-  # Assets
-  install -dm755 "$pkgdir/usr/share/visor"
-  [ -d assets/icons ] && cp -r assets/icons "$pkgdir/usr/share/visor/icons"
-  [ -d assets/backgrounds ] && cp -r assets/backgrounds "$pkgdir/usr/share/visor/backgrounds"
-  [ -f assets/logo.png ] && install -m644 assets/logo.png "$pkgdir/usr/share/visor/logo.png"
+  if [ -d assets/icons ]; then
+    cp -r assets/icons "$pkgdir/usr/share/visor/icons"
+  fi
+  if [ -d assets/backgrounds ]; then
+    cp -r assets/backgrounds "$pkgdir/usr/share/visor/backgrounds"
+  fi
+  if [ -f assets/logo.png ]; then
+    install -Dm644 assets/logo.png "$pkgdir/usr/share/visor/logo.png"
+  fi
 
-  # License
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
