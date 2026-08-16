@@ -1,7 +1,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 _pkg=wasmcloud
 pkgname=wasmcloud-bin
-pkgver=2.5.2
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Build, manage, and scale Wasm apps across any cloud, K8s, or edge"
 arch=(x86_64)
@@ -14,7 +14,7 @@ source=("$_src/raw/v$pkgver/LICENSE")
 _exe="$_pkg-$arch-$pkgver"
 source_x86_64=("$_exe::$_src/releases/download/v$pkgver/wash-x86_64-unknown-linux-gnu")
 sha256sums=('0d7e475818c32a6bad4c0715b1f23848d7e3544774e7d92d4797e076d80f3e04')
-sha256sums_x86_64=('fef1e14a645144c84b4518ff5c907510b28dcd050576b80bd2c1d9d0dba6f02a')
+sha256sums_x86_64=('3ae8143c5a93c2cb4b3bd0f7685a8aa02654fbe1430361ccbc839fe1174ac962')
 
 package() {
     install -Dm755 "$_exe" "$pkgdir/usr/bin/wash"
