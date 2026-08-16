@@ -2,7 +2,7 @@
 
 pkgname=deepcode-cli-bin
 _pkgname=deepcode-cli
-pkgver=0.1.34
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Terminal AI coding assistant optimized for the deepseek-v4 model (deep thinking, agent skills, MCP)"
 arch=('any')
@@ -20,9 +20,15 @@ _scope='@vegamo'
 # ships dist/cli.js bundled from TypeScript). Feed it to npm verbatim, so
 # leave it unextracted; the ::-rename embeds pkgver so makepkg never reuses
 # a stale cached tarball across version bumps.
-source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_scope}/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
+#
+# 0.2.0 stopped shipping a LICENSE inside the npm tarball altogether (0.1.33
+# had it at the module root, 0.1.34 under dist/), so pull the MIT text the
+# package.json still declares from the matching git tag instead.
+source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_scope}/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
+        "LICENSE-${pkgver}::https://raw.githubusercontent.com/lessweb/deepcode-cli/v${pkgver}/LICENSE")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('2d22f7727ae4b421794360b0b3747e182f5e0bda5370e5d7d52241ecdfe06454')
+sha256sums=('b52f9b3d6cdae42be873e9c4051a0343dbe66ed47a6b9c0966e8712cc2f0c8e5'
+            '7b1d5fa29a200220ca44b3355db5f1c7b91714fbbd76f42e7268104fa9efd380')
 
 package() {
     # npm resolves the dependency tree into the module's own node_modules and
@@ -34,11 +40,6 @@ package() {
         --no-audit --no-fund --omit=dev \
         "${srcdir}/${_pkgname}-${pkgver}.tgz"
 
-    # LICENSE moved across publish layouts: 0.1.33 shipped it at the module
-    # root, 0.1.34 keeps the dist/ prefix (dist/LICENSE). Take whichever exists.
-    local _mod="${pkgdir}/usr/lib/node_modules/${_scope}/${_pkgname}"
-    local _license="${_mod}/LICENSE"
-    [[ -f "${_license}" ]] || _license="${_mod}/dist/LICENSE"
-    install -Dm644 "${_license}" \
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
