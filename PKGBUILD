@@ -3,7 +3,7 @@
 _pkgauthor=walles
 _pkgname=riff
 pkgname=${_pkgname}diff-bin
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc='A diff filter highlighting which line parts have changed'
 
@@ -24,9 +24,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${_barch[0]}-linux")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}-${_barch[1]}-linux")
 sha256sums=('8fe11bd57802035aa8be7cb7382edd1e5f7e53cc6d2ca078271b59b1f94bde26'
-            'eb90777c642c349cb22ad78cffd57a13da2de7eea2bccdfe635084d497de7a48')
-sha256sums_x86_64=('e3fc15a8119660f45f97c760a6c4701a3d4344140d125c2367d1c9a99cc483d6')
-sha256sums_aarch64=('e6970bce4fe1d47204f6aee950eeca2f572d4936b95453860f7c72839b6e4ab3')
+            'fa622f9a15b96f5aebb65de430287cfaecb1bfd4ecae6ab5ce6b457c5964a307')
+sha256sums_x86_64=('f9c6cf02023b76182c9a9638916217054f4e9cf5a0b46b208f7ab96f6f8aa2e3')
+sha256sums_aarch64=('8732887eafd4913131a8afe5c78330afb5acf701a166b27e8ab2f9f2d2c931c2')
 
 
 package() {
