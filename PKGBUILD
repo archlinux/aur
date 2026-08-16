@@ -1,10 +1,10 @@
 # Maintainer: Charlie <c44014189@gmail.com>
 pkgname=framework-laptop-meta
-pkgver=1.0.3
-pkgrel=4
+pkgver=1.0.4
+pkgrel=5
 pkgdesc="Metapackage to install optimal utilities and tweaks for Framework laptops"
 arch=('any')
-url="https://aur.archlinux.org/packages/framework-laptop-meta"
+url="https://frame.work"
 license=('MIT')
 
 depends=(
@@ -25,10 +25,10 @@ optdepends=(
     'thermald: Intel management daemon to prevent throttling'
     'tlp: Alternative power management (disable power-profiles-daemon first)'
     'iio-sensor-proxy: Enables ambient light sensor for auto brightness'
-    'ectool-framework-git: Advanced control over fans, battery limits, and LEDs via EC'
+    'framework-system: CLI and service for controlling EC, charge limit,and expansion cards'
 )
 source=("LICENSE")
-sha256sums=('SKIP')
+sha256sums=('cbf0735220d8d7d758f2ea55cb82b7924a177538ff3331e5a62968f055dab627')
 
 
 package() {

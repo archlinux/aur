@@ -1,8 +1,8 @@
 pkgbase = framework-laptop-meta
 	pkgdesc = Metapackage to install optimal utilities and tweaks for Framework laptops
-	pkgver = 1.0.1
-	pkgrel = 3
-	url = https://aur.archlinux.org/packages/framework-laptop-meta
+	pkgver = 1.0.4
+	pkgrel = 5
+	url = https://frame.work
 	arch = any
 	license = MIT
 	depends = power-profiles-daemon
@@ -19,6 +19,8 @@ pkgbase = framework-laptop-meta
 	optdepends = thermald: Intel management daemon to prevent throttling
 	optdepends = tlp: Alternative power management (disable power-profiles-daemon first)
 	optdepends = iio-sensor-proxy: Enables ambient light sensor for auto brightness
-	optdepends = ectool-framework-git: Advanced control over fans, battery limits, and LEDs via EC
+	optdepends = framework-system: CLI and service for controlling EC, charge limit,and expansion cards
+	source = LICENSE
+	sha256sums = cbf0735220d8d7d758f2ea55cb82b7924a177538ff3331e5a62968f055dab627
 
 pkgname = framework-laptop-meta
