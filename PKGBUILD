@@ -2,7 +2,7 @@
 
 pkgname=voicefox
 pkgver=0.3.5
-pkgrel=2
+pkgrel=3
 epoch=1
 _tag="${pkgver}"
 _srcdir="${pkgname}-${_tag#v}"
@@ -32,11 +32,13 @@ sha512sums=('05827aa853d1bac6682f3cd8629f6ffa2e8136b8fb35fc0cbc5f52c3f9e24550e44
 prepare() {
 	cd "${_srcdir}"
 
+	export RUSTUP_TOOLCHAIN=stable
+
+	cargo update --workspace --offline || true
 	# Upstream often doesn't update this
 	sed -i "s/^version = .*/version = \"${pkgver}\"/" Cargo.toml
 	cargo update --workspace --offline || true
 
-	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 

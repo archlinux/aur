@@ -1,7 +1,7 @@
 pkgbase = voicefox
 	pkgdesc = A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks
 	pkgver = 0.3.5
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/emoeem/voicefox
 	arch = x86_64
