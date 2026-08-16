@@ -24,13 +24,14 @@ pkgbase = openmw-freefps-rubic0n-native-git
 	depends = libstdc++
 	depends = libxt
 	depends = lz4
-	depends = mygui
+	depends = mygui-openmw
 	depends = openal
-	depends = openscenegraph
+	depends = openscenegraph-openmw-git
 	depends = qt6-base
+	depends = qt6-declarative
 	depends = qt6-svg
 	depends = qt6-tools
-	depends = recastnavigation
+	depends = recastnavigation-openmw
 	depends = sdl2
 	depends = sqlite
 	depends = unshield
@@ -43,7 +44,7 @@ pkgbase = openmw-freefps-rubic0n-native-git
 	options = !debug
 	options = lto
 	options = strip
-	source = openmw-fps::git+https://gitgud.io/loregamer/openmw-fps.git#commit=5e3096851d5a60477a33c72122030551ff9a51cf
+	source = openmw-fps::git+https://gitgud.io/loregamer/openmw-fps.git#branch=master
 	source = rubic0n::git+https://github.com/DreamWeave-MP/rubic0n.git#branch=development
 	source = backport-background-lua-gc.patch
 	source = private-rubic0n-static.patch

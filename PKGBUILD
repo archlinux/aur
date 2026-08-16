@@ -17,13 +17,14 @@ depends=(
   'libstdc++'
   'libxt'
   'lz4'
-  'mygui'
+  'mygui-openmw'
   'openal'
-  'openscenegraph'
+  'openscenegraph-openmw-git'
   'qt6-base'
+  'qt6-declarative'
   'qt6-svg'
   'qt6-tools'
-  'recastnavigation'
+  'recastnavigation-openmw'
   'sdl2'
   'sqlite'
   'unshield'
@@ -36,12 +37,12 @@ conflicts=('openmw' 'openmw-git' 'openmw-stable-git')
 install="${pkgname}.install"
 options=('!debug' 'lto' 'strip')
 
-# FreeFPS is deliberately frozen on its audited OpenMW 0.51-based revision.
-# Rubic0n deliberately follows its development branch.
-_freefps_commit='5e3096851d5a60477a33c72122030551ff9a51cf'
-_freefps_revision=6
+# FreeFPS master and Rubic0n development are deliberately tracked.
+# This is the OpenMW commit from which the FreeFPS fork's own first-parent
+# history starts; it is only a pkgver() anchor, not a source pin.
+_freefps_base='673981c7f552089f1370d97fdac95e7221d4debc'
 source=(
-  "openmw-fps::git+https://gitgud.io/loregamer/openmw-fps.git#commit=${_freefps_commit}"
+  'openmw-fps::git+https://gitgud.io/loregamer/openmw-fps.git#branch=master'
   'rubic0n::git+https://github.com/DreamWeave-MP/rubic0n.git#branch=development'
   'backport-background-lua-gc.patch'
   'private-rubic0n-static.patch'
@@ -58,8 +59,10 @@ sha256sums=(
 pkgver() {
   local openmw_revision openmw_hash rubic0n_revision rubic0n_hash
 
-  # A makepkg working copy selected with #commit does not retain upstream tags.
-  openmw_revision="${_freefps_revision}"
+  git -C "${srcdir}/openmw-fps" merge-base --is-ancestor \
+    "${_freefps_base}" HEAD || return 1
+  openmw_revision="$(git -C "${srcdir}/openmw-fps" rev-list \
+    --first-parent --count "${_freefps_base}..HEAD")"
   openmw_hash="$(git -C "${srcdir}/openmw-fps" rev-parse --short=8 HEAD)"
   rubic0n_revision="$(git -C "${srcdir}/rubic0n" rev-list --count HEAD)"
   rubic0n_hash="$(git -C "${srcdir}/rubic0n" rev-parse --short=8 HEAD)"
@@ -106,6 +109,9 @@ build() {
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D OPENMW_LTO_BUILD=ON \
     -D OPENMW_RUBIC0N_ROOT="${srcdir}/rubic0n" \
+    -D OPENMW_USE_SYSTEM_BULLET=ON \
+    -D OPENMW_USE_SYSTEM_MYGUI=ON \
+    -D OPENMW_USE_SYSTEM_OSG=ON \
     -D OPENMW_USE_SYSTEM_RECASTNAVIGATION=ON
 
   cmake --build "${srcdir}/build"
