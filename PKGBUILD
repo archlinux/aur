@@ -1,0 +1,35 @@
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
+
+# Prebuilt UCSC Genome Browser binaries. Upstream files are unversioned, so
+# pkgver is the newest HTTP Last-Modified date (YYYYMMDD) across the group.
+
+pkgname=ucsc-genepred-bin
+pkgver=20251203
+pkgrel=1
+pkgdesc="UCSC genePred format converters: gtfToGenePred, genePredToGtf, gff3ToGenePred, genePredToBed, bedToGenePred"
+arch=('x86_64')
+url="https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/"
+license=('MIT')
+depends=('glibc' 'curl' 'gcc-libs')
+options=('!strip' '!debug')
+source=("https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/gtfToGenePred"
+        "https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/genePredToGtf"
+        "https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/gff3ToGenePred"
+        "https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/genePredToBed"
+        "https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/bedToGenePred"
+        "LICENSE::https://raw.githubusercontent.com/ucscGenomeBrowser/kent/master/LICENSE")
+sha256sums=('17932c3b0deb755e961a3f2cfbfef995113f770b334ff90f6359e860e2d3f949'
+            '7708f77da1ffab2bda9bcc8325376e585f5617a51e4be9663d8663ea54f07ab7'
+            '8a62fde0c395078ae173f36762bd554804ec1e86b9d737292dd504b05570e678'
+            '63aa33a60a1407aebe2d701b0d769e1e033fa575445e557140207a2878167ec3'
+            '203ae51ea0a3d767bbbbfd18511a4cf597b4e3703dcb93c84171fc26a9daaebb'
+            '793d774ec3941d88d5f93611639230030ea3e167282be144b6e5604bc5ad29a4')
+
+package() {
+    install -Dm755 "$srcdir/gtfToGenePred"  "$pkgdir/usr/bin/gtfToGenePred"
+    install -Dm755 "$srcdir/genePredToGtf"  "$pkgdir/usr/bin/genePredToGtf"
+    install -Dm755 "$srcdir/gff3ToGenePred" "$pkgdir/usr/bin/gff3ToGenePred"
+    install -Dm755 "$srcdir/genePredToBed"  "$pkgdir/usr/bin/genePredToBed"
+    install -Dm755 "$srcdir/bedToGenePred"  "$pkgdir/usr/bin/bedToGenePred"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
