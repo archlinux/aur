@@ -2,7 +2,7 @@
 
 pkgname=alter-launcher
 _srcname=alter
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 options=(!lto)
 pkgdesc="Fast Wayland launcher, global search and clipboard history for Hyprland"
@@ -28,7 +28,7 @@ conflicts=('alter' 'alter-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # The release workflow always replaces SKIP with the tag archive SHA-256 before
 # generating .SRCINFO or pushing to AUR.
-sha256sums=('595be04858f03b2cfc60aa8fea493c523210dd30412ee333ef7f41660b7ac669')
+sha256sums=('720b5e8bf560b91c8d627ca0d5a41c2fd69a75d63b754c0ce0b9f169bd046fde')
 
 prepare() {
     cd "$_srcname-$pkgver"
