@@ -2,7 +2,7 @@
 # Maintainer: Roman <roman@lerchster.dev>
 
 pkgname='proton-cli-bin'
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Unofficial, end-to-end encrypted CLI for Proton Mail, Drive, Calendar, Pass and Contacts.'
 url='https://github.com/roman-16/proton-cli'
@@ -13,15 +13,18 @@ conflicts=('proton-cli')
 optdepends=('gtk3: CAPTCHA/human-verification webview' 'webkit2gtk-4.1: CAPTCHA/human-verification webview')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/roman-16/proton-cli/releases/download/v${pkgver}/proton-cli_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('8e02ed4570d2add56d0ca0662fe57a33b348ec5f5bdcde80173ed8f77aad04f5')
+sha256sums_aarch64=('ed628571aa7adefa865fbb4f8bd64409784bafad5fd712b569274e697250e6be')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/roman-16/proton-cli/releases/download/v${pkgver}/proton-cli_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('af495054777c737902f0a544f6e6b93b747facea3546a9576ac5a341e14f5ed2')
+sha256sums_x86_64=('79306ebc0d135de029fb4ec27470f4fa2bff2b0dbb947317c2d3421e6187f4d8')
 
 package() {
-  install -Dm755 "./proton-cli" "${pkgdir}/usr/bin/proton-cli"
+  install -Dm755 "./proton" "${pkgdir}/usr/bin/proton"
+  ln -s proton "${pkgdir}/usr/bin/proton-cli"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/proton-cli-bin/LICENSE"
-  install -Dm644 "./completions/proton-cli.bash" "${pkgdir}/usr/share/bash-completion/completions/proton-cli"
+  install -Dm644 "./completions/proton.bash" "${pkgdir}/usr/share/bash-completion/completions/proton"
+  install -Dm644 "./completions/proton.bash" "${pkgdir}/usr/share/bash-completion/completions/proton-cli"
+  install -Dm644 "./completions/proton.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/proton.fish"
   install -Dm644 "./completions/proton-cli.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/proton-cli.fish"
-  install -Dm644 "./completions/proton-cli.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_proton-cli"
+  install -Dm644 "./completions/proton.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_proton"
 }
