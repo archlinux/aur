@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=laser
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A simple CD ripper for the GNOME desktop."
 arch=('any')
@@ -8,6 +8,7 @@ url="https://codeberg.org/andreasknoben/Laser"
 license=('GPL-3.0-or-later')
 depends=(
   'cd-discid'
+  'cdrdao'
   'gstreamer'
   'gst-plugins-ugly'
   'gtk4'
@@ -26,7 +27,7 @@ makedepends=(
   'meson'
 )
 source=("git+https://codeberg.org/andreasknoben/Laser.git#tag=v$pkgver")
-sha256sums=('16e62c4418dbbdc82c3554541cb0fb16b983af991efb67a7a37baa13658e54cc')
+sha256sums=('e219a58f2f89678247cdce315143ade4c30c0a077f92353bda3a5e911de42bb4')
 
 build() {
   arch-meson Laser build

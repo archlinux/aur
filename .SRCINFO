@@ -1,6 +1,6 @@
 pkgbase = laser
 	pkgdesc = A simple CD ripper for the GNOME desktop.
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://codeberg.org/andreasknoben/Laser
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = laser
 	makedepends = git
 	makedepends = meson
 	depends = cd-discid
+	depends = cdrdao
 	depends = gstreamer
 	depends = gst-plugins-ugly
 	depends = gtk4
@@ -20,7 +21,7 @@ pkgbase = laser
 	depends = python-gobject
 	depends = python-musicbrainzngs
 	depends = python-pycdio
-	source = git+https://codeberg.org/andreasknoben/Laser.git#tag=v0.4.0
-	sha256sums = 16e62c4418dbbdc82c3554541cb0fb16b983af991efb67a7a37baa13658e54cc
+	source = git+https://codeberg.org/andreasknoben/Laser.git#tag=v0.5.0
+	sha256sums = e219a58f2f89678247cdce315143ade4c30c0a077f92353bda3a5e911de42bb4
 
 pkgname = laser
