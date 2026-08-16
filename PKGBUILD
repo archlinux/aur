@@ -17,7 +17,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/apache/xerces-c/archive/v$
 sha256sums=('0f28ea2d7a0a3824d326c8bc4be26a3bb01dde289663beb6f15b241f80cbd3ae')
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' -Dtranscoder=icu )
 
 prepare() {
