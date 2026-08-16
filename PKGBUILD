@@ -2,7 +2,7 @@
 # Contributor: missing-aur project <https://github.com/Cleboost/missing-aur>
 
 pkgname=layerbase-bin
-pkgver=0.36.11
+pkgver=0.36.14
 pkgrel=1
 pkgdesc="A beautiful GUI for managing all your local databases. Create, query, backup, and monitor PostgreSQL, MySQL, MongoDB, Redis, and more. No terminal required. (precompiled binary)"
 url="https://layerbase.com"
@@ -13,7 +13,7 @@ options=("!strip")
 license=("LicenseRef-PolyForm-Noncommercial-1.0.0")
 
 source_x86_64=("layerbase-${pkgver}-amd64.deb::https://layerbase.com/api/download/linux?format=deb")
-sha256sums_x86_64=('8ce577a35e20a595623cbcee6df72acf08496f3e1c456cde9722876588f3a7ff')
+sha256sums_x86_64=('b7df2e0af10994b1ade4700a1ba0b5cbea1d1d55d20a715e40c557c0a4313451')
 
 package() {
   bsdtar -xOf "${srcdir}/layerbase-${pkgver}-amd64.deb" data.tar.xz | bsdtar -xf - -C "${pkgdir}"
