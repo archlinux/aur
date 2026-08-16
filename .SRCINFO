@@ -1,6 +1,6 @@
 pkgbase = zur
 	pkgdesc = An AUR helper written in Zig
-	pkgver = 0.7.5
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/hspak/zur
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = zur
 	provides = zur
 	conflicts = zur
 	conflicts = zur-git
-	source = https://github.com/hspak/zur/archive/refs/tags/0.7.5.tar.gz
-	sha256sums = 3ef3e303262c3d6675c7f4e6bf7a0f516441f9692fd4493607875f174993b041
+	source = https://github.com/hspak/zur/archive/refs/tags/0.8.0.tar.gz
+	sha256sums = d20066bb7db27e27a23f1105fe34702bdaea39b3364812c8d91531e6875fdd3a
 
 pkgname = zur
