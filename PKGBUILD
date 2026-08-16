@@ -15,7 +15,7 @@ depends=(
 )
 optdepends=('start-stop-daemon: sysv support'
 makedepends=(cargo git curl pkgconf openssl)
-sha256sums=('03400a80c91e6adb59110b148b0deb2bbf58b05e20d7a9395c2aad567d3f4c27')
+sha256sums=('24e3948d9eb940d4b57221c6dffc1569f3ca04e8baf81b10123543b4d847ad31')
 source=("git+https://git.sr.ht/~yukikoo/dane_without_root?signed#tag=dane-${pkgver}")
 validpgpkeys=('FB798BFB115895C9C95900649C2B29DD4A62ED27')
 backup=(
@@ -67,8 +67,8 @@ package() {
    install -vdm 0755 "$pkgdir"/etc/dane-proxy
    install -vDm 0644 dane-proxy.conf                   "$pkgdir"/etc/dane-proxy/dane-proxy.conf
    install -vDm 0644 valid_dane_domain.txt -t          "$pkgdir"/usr/share/dane-without-root
-   ln -sf "/usr/lib/libdane_without_root.so.0.1.35"    "$pkgdir/usr/lib/libdane_without_root.so.0.1"
-   ln -sf "/usr/lib/libdane_without_root.so.0.1.35"    "$pkgdir/usr/lib/libdane_without_root.so"
+   ln -sf "libdane_without_root.so.0.1.35"             "$pkgdir/usr/lib/libdane_without_root.so.0.1"
+   ln -sf "libdane_without_root.so.0.1.35"             "$pkgdir/usr/lib/libdane_without_root.so"
    touch "$pkgdir/etc/dane-proxy/valid_dane_domain.txt"
    touch "$pkgdir/etc/dane-proxy/known_hosts"
 }
