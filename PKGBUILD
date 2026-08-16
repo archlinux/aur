@@ -1,6 +1,6 @@
 pkgname=autoremesher-git
-pkgver=r4e136ea
-pkgrel=2
+pkgver=r6f38c14
+pkgrel=1
 pkgdesc="Cross-platform automatic quad remeshing tool"
 arch=(x86_64)
 url="https://github.com/huxingyi/autoremesher"
