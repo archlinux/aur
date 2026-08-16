@@ -15,7 +15,7 @@ source=("https://github.com/jbeder/${_pkgname}/archive/refs/tags/${_pkgname}-${p
 options=(staticlibs !strip !buildflags)
 sha384sums=('0952b637c27fb9e0e5c645dc80ac78f2fc0e6fd4085c302eb5aa32f1dfb79dfd1326d1380daf2926f2d6ee8d3f5fcbd9')
 
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' -DCMAKE_C_FLAGS_RELEASE='-DNDEBUG'
 	-DYAML_CPP_BUILD_TOOLS=OFF
