@@ -18,6 +18,6 @@ pkgbase = gitty-desktop
 	options = !lto
 	options = !debug
 	source = gitty-desktop-2026.8.4.tar.gz::https://git.cbsk-tech.de/Christoph/GitLite/archive/2026.8.4.tar.gz
-	sha256sums = d97dba8e08c68fa7b1884aad3df715f314a1afc116af93bd58cc894959e3a1cb
+	sha256sums = 006915fa1f74133d9175dcb89cf3100c6fe6822ae1bf19dc80f6e8dd90237c8e
 
 pkgname = gitty-desktop
