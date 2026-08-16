@@ -1,7 +1,7 @@
 # Maintainer: jin <mail@nvimer.org>
 pkgname=deepseek-reasonix-tui
 _pkgname=reasonix
-pkgver=1.25.1
+pkgver=1.25.3
 pkgrel=1
 pkgdesc="Cache-first DeepSeek coding agent for the terminal"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5cbed3d46bc45440f10ce683984d4ba5157cebf023e4d6e45e6a1cf874fcd7da')
+sha256sums=('9ee96afd0776d9bf306d16e90195f9e91acc48fe7481abe670f4b1d58ba60701')
 
 build() {
     cd "DeepSeek-Reasonix-$pkgver"
