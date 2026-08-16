@@ -1,0 +1,22 @@
+pkgbase = mankalaengine-git
+	pkgdesc = Engine used for creating computerized opponents for mancala variants
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://invent.kde.org/games/mankalaengine
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	makedepends = qt6-tools
+	depends = libgcc
+	depends = libstdc++
+	depends = ki18n
+	depends = qt6-base
+	provides = mankalaengine
+	conflicts = mankalaengine
+	replaces = mankalaengine
+	source = git+https://invent.kde.org/games/mankalaengine.git
+	sha256sums = SKIP
+
+pkgname = mankalaengine-git
