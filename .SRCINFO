@@ -1,13 +1,13 @@
 pkgbase = sigil-wm
 	pkgdesc = Invisible structural watermark for images
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/Xuepoo/sigil
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = cargo
-	source = sigil-0.1.0::https://github.com/Xuepoo/sigil/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	source = sigil-0.2.0::https://github.com/Xuepoo/sigil/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 66d7daa38bd8f799f8c1e79a3c598fef8051d1be8b8c1e16e5ef02c9f60686dd
 
 pkgname = sigil-wm
