@@ -1,7 +1,7 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=yay-friend-git
 _pkgname=yay-friend
-pkgver=0.5.0.r0.g4813085
+pkgver=0.6.0.r0.ga3ff03f
 pkgrel=1
 pkgdesc="Security-focused wrapper around yay that uses Claude Code to analyze AUR PKGBUILDs for security entropy (git version)"
 arch=('x86_64' 'aarch64')
