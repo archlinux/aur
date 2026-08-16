@@ -20,7 +20,7 @@ options=(!buildflags staticlibs !strip)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/googletest/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('ba0f5769ccf34acf1bc72d1f7e9ffb8202176d02b64f6f3d9047accfc0cf9026ff5a653d24935e2705fff8709566676452616c93ca0ca6277f1e21d79b58a10a')
 
-_architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE='Release'
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-Dgtest_hide_internal_symbols=ON
@@ -35,7 +35,7 @@ prepare() {
 }
 
 build() {
-	for _arch in "${_architectures[@]}"; do
+	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" \
 			-Dgtest_build_tests=OFF \
 			-Dgmock_build_tests=OFF \
@@ -51,7 +51,7 @@ build() {
 }
 
 #check() {
-#	for _arch in "${_architectures[@]}"; do
+#	for _arch in ${_architectures}; do
 #		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -Dgtest_build_tests=ON -Dgmock_build_tests=ON
 #		cmake --build "build-${_arch}"
 #		cp -f "build-${_arch}/bin"/* "build-${_arch}/googletest"
@@ -61,7 +61,7 @@ build() {
 #}
 
 package() {
-	for _arch in "${_architectures[@]}"; do
+	for _arch in ${_architectures}; do
 		DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
 		${_arch}-strip -g "$pkgdir"/usr/${_arch}/static/lib/*.a
 
