@@ -1,6 +1,6 @@
 pkgbase = alda
 	pkgdesc = A music programming language for musicians
-	pkgver = 2.4.3
+	pkgver = 2.4.5
 	pkgrel = 1
 	url = https://github.com/alda-lang/alda
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = alda
 	depends = java-runtime>=8
 	provides = alda
 	conflicts = alda-bin
-	source = alda-release-2.4.3.tar.gz::https://codeload.github.com/alda-lang/alda/tar.gz/refs/tags/release-2.4.3
+	source = alda-release-2.4.5.tar.gz::https://codeload.github.com/alda-lang/alda/tar.gz/refs/tags/release-2.4.5
 	source = alda-player
-	b2sums = 05b64f38d34d4c928f42131db23f420d4150c2774855eca38b0489f601aba73af972275cb34d3b59348eec075eb0a0be79f94eeecb2e0de6d332ba0fd0dbd01b
+	b2sums = 22be2bb1f2a18a69ec71bc368c3490a0fde2a99692d06db85a85cab9c87ed0c23325289dda200755975e963aaf25174337629b0b9062e3b5c99836924f15f99c
 	b2sums = 5d6bdd39c1178fd5504a308d95606a82bae781159128e3c5d79c989a253871b36f92123410479d8734df2dbf335ccab2f194d99503fddb76f9e86bb0ed8acee4
 
 pkgname = alda
