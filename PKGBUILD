@@ -2,7 +2,7 @@
 # Maintainer: Dmytro Aleksandrov <alkersan@gmail.com>
 
 pkgname=parquet-cli
-pkgver=1.17.1
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='Java based command line tools that aid in the inspection of the Parquet files'
 depends=('java-runtime>=8')
@@ -10,7 +10,7 @@ makedepends=('maven' 'java-environment>=8' 'java-environment<25')
 arch=('any')
 source=(
   "https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=parquet/apache-parquet-${pkgver}/apache-parquet-${pkgver}.tar.gz")
-sha256sums=('34f383691f0f9ec9a10afa22d740fa91943c6937e5318364f58984e2a9644237')
+sha256sums=('0d1ffb8877272c4284957a0337f849456f624121e5722fcd718776b71c00e0d4')
 
 url='https://github.com/apache/parquet-mr'
 license=('Apache')

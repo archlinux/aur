@@ -1,6 +1,6 @@
 pkgbase = parquet-cli
 	pkgdesc = Java based command line tools that aid in the inspection of the Parquet files
-	pkgver = 1.17.1
+	pkgver = 1.18.0
 	pkgrel = 1
 	url = https://github.com/apache/parquet-mr
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = parquet-cli
 	makedepends = java-environment>=8
 	makedepends = java-environment<25
 	depends = java-runtime>=8
-	source = https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=parquet/apache-parquet-1.17.1/apache-parquet-1.17.1.tar.gz
-	sha256sums = 34f383691f0f9ec9a10afa22d740fa91943c6937e5318364f58984e2a9644237
+	source = https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=parquet/apache-parquet-1.18.0/apache-parquet-1.18.0.tar.gz
+	sha256sums = 0d1ffb8877272c4284957a0337f849456f624121e5722fcd718776b71c00e0d4
 
 pkgname = parquet-cli
