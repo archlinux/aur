@@ -1,0 +1,16 @@
+pkgbase = linuwux-runtime-git
+	pkgdesc = LD_PRELOAD runtime that supplies Linux/Wine-side interpositions for Windows software
+	pkgver = 26.08.15.2.r148.g650bd34
+	pkgrel = 1
+	url = https://github.com/brcly/linuwux-runtime
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = gcc
+	depends = glibc
+	provides = linuwux-runtime
+	conflicts = linuwux-runtime
+	source = git+https://github.com/brcly/linuwux-runtime.git
+	sha256sums = SKIP
+
+pkgname = linuwux-runtime-git
