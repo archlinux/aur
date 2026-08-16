@@ -5,7 +5,7 @@ pkgver=0.1
 pkgrel=1
 pkgdesc='Mancala games for KDE'
 arch=(x86_64)
-url='https://invent.kde.org/kbkmde/mankalanextgen'
+url='https://invent.kde.org/srisharanvs/mankalanextgen'
 license=(GPL-3.0-or-later)
 depends=(libgcc
          libstdc++
