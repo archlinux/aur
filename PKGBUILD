@@ -32,6 +32,8 @@ optdepends=(
   'qt6-niriqml: niri IPC integration (workspaces, windows, session config)'
   'keyd: hardware-level keyboard remapping (bindings environments)'
   'xremap-niri-bin: session-level app-scoped keymaps (macos bindings)'
+  'qt6-5compat: required by some registry plugins (e.g. cookie-clock)'
+  'qt6-websockets: required by some registry plugins (e.g. hassio)'
 )
 provides=('atmosphera')
 conflicts=('atmosphera')
