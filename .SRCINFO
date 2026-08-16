@@ -1,6 +1,6 @@
 pkgbase = yay-friend-git
 	pkgdesc = Security-focused wrapper around yay that uses Claude Code to analyze AUR PKGBUILDs for security entropy (git version)
-	pkgver = 0.1.0.r23.ga8b32ff
+	pkgver = 0.1.0.r42.g72aa09e
 	pkgrel = 1
 	url = https://github.com/aaronsb/yay-friend
 	arch = x86_64
