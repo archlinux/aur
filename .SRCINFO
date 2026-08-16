@@ -1,6 +1,6 @@
 pkgbase = clip-cli-nightly-bin
 	pkgdesc = System clipboard bridge for the terminal — nightly build (pipe content in, paste content out)
-	pkgver = 3.0.0+nightly+20260815+1+g6afaaafc
+	pkgver = 3.0.0+nightly+20260816+2+gd83bba26
 	pkgrel = 1
 	url = https://github.com/someoneonsmile/clip
 	arch = x86_64
