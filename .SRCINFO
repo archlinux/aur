@@ -1,6 +1,6 @@
 pkgbase = rift-clipboard-bin
 	pkgdesc = Lightweight multi-format clipboard manager for Wayland
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/hyperpuncher/rift
 	install = rift.install
@@ -12,9 +12,9 @@ pkgbase = rift-clipboard-bin
 	provides = rift
 	conflicts = rift
 	conflicts = rift-bin
-	source_x86_64 = rift-clipboard-bin-0.2.0-linux-x64.tar.gz::https://github.com/hyperpuncher/rift/releases/download/v0.2.0/rift-linux-x64.tar.gz
-	sha256sums_x86_64 = 668bea96279bec933ea787c1418b1856804aca1ab320f543576b47d481a28ed8
-	source_aarch64 = rift-clipboard-bin-0.2.0-linux-arm64.tar.gz::https://github.com/hyperpuncher/rift/releases/download/v0.2.0/rift-linux-arm64.tar.gz
-	sha256sums_aarch64 = 1830a5d81ee644c55166b107451530daaebcdbe0a8a42d2ee0755dec2d6b6efd
+	source_x86_64 = rift-clipboard-bin-0.3.0-linux-x64.tar.gz::https://github.com/hyperpuncher/rift/releases/download/v0.3.0/rift-linux-x64.tar.gz
+	sha256sums_x86_64 = 9938e533e72a3181e24e2d0cacb17c7a6cebc1101d4528081f460e7148e4b7bd
+	source_aarch64 = rift-clipboard-bin-0.3.0-linux-arm64.tar.gz::https://github.com/hyperpuncher/rift/releases/download/v0.3.0/rift-linux-arm64.tar.gz
+	sha256sums_aarch64 = 4284a66fa2acf8fa9ce3f51128e048751c87d8e4f177988f7aca602b16e28683
 
 pkgname = rift-clipboard-bin

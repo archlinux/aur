@@ -1,7 +1,7 @@
 # Maintainer: hyperpuncher
 
 pkgname=rift-clipboard-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Lightweight multi-format clipboard manager for Wayland'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=('rift')
 conflicts=('rift' 'rift-bin')
 source_x86_64=("$pkgname-$pkgver-linux-x64.tar.gz::$url/releases/download/v$pkgver/rift-linux-x64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-linux-arm64.tar.gz::$url/releases/download/v$pkgver/rift-linux-arm64.tar.gz")
-sha256sums_x86_64=('668bea96279bec933ea787c1418b1856804aca1ab320f543576b47d481a28ed8')
-sha256sums_aarch64=('1830a5d81ee644c55166b107451530daaebcdbe0a8a42d2ee0755dec2d6b6efd')
+sha256sums_x86_64=('9938e533e72a3181e24e2d0cacb17c7a6cebc1101d4528081f460e7148e4b7bd')
+sha256sums_aarch64=('4284a66fa2acf8fa9ce3f51128e048751c87d8e4f177988f7aca602b16e28683')
 
 package() {
 	install -Dm755 rift "$pkgdir/usr/bin/rift"
