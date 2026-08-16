@@ -15,6 +15,9 @@ sha256sums=('de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5')
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
 
 prepare() {
+  # https://github.com/boostorg/cobalt/commit/cba276884d3fc5509475910283091a0031970f1f
+  curl -L https://github.com/boostorg/cobalt/commit/cba2768.patch | patch -p1 -d boost_${_boostver}/libs/cobalt
+
   for _arch in ${_architectures}; do
     source mingw-env "${_arch:3}"
 
