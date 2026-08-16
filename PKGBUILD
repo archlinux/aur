@@ -23,7 +23,7 @@ sha256sums=('f3d4f23af7f7914259f2f5dbd9cc1450d3ebe0b8c8163fd50fcac4a39c63fccd'
             'ed5a03ffecb0476aa02e90aba99f12d843bfd90748481d7b1ffc6d524bf4d952')
 
 _srcdir="${_pkgname}-Xalan-C_${_filever}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_STANDARD=17
 	-DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG -w -Wno-error=template-body'
