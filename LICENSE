@@ -1,0 +1,21 @@
+UYAP Editor — License Status
+============================
+
+Upstream publishes no license terms for UYAP Editor. The Debian package
+distributed by the Turkish Ministry of Justice (T.C. Adalet Bakanlığı)
+at https://uyap.gov.tr/UYAP-Editor and https://rayp.adalet.gov.tr/ does
+not include a LICENSE, COPYING, or equivalent file, and neither the
+upstream download page nor the .deb control metadata declares a license.
+
+This Arch Linux package (uyap-editor) is a binary redistribution of
+the official upstream .deb. The redistribution terms, reverse-engineering
+restrictions, and patent grants (if any) that apply to the included
+bytecode are unknown to the packager.
+
+The SPDX license identifier used in this package's PKGBUILD is
+`LicenseRef-UYAP`, which is the SPDX-compliant way to reference a
+license reference that does not correspond to a published SPDX identifier.
+
+If you are the upstream author or rights holder and can clarify the
+license of UYAP Editor, please contact the AUR maintainer so this
+package can be updated with accurate metadata.

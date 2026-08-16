@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=UYAP Sablon Editor
+Name[tr]=UYAP Sablon Editor
+GenericName=UYAP SABLON EDITOR
+GenericName[tr]=UYAP SABLON EDITOR
+Comment=
+Comment[tr]=
+Exec=uyap-sablon %f
+Icon=uyap-editor
+MimeType=application/usf;
+Categories=Office;X-UYAP;
+Terminal=false

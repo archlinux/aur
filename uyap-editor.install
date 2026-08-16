@@ -1,0 +1,46 @@
+_refresh_caches() {
+    update-desktop-database -q
+    update-mime-database -n /usr/share/mime
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}
+
+_check_java_installed() {
+    local d
+    for d in /usr/lib/jvm/java-11-* /usr/lib/jvm/java-8-*; do
+        [[ -d $d ]] && return 0
+    done
+    cat <<'EOF'
+==> Note: No Java 11 or Java 8 runtime found under /usr/lib/jvm/.
+==>       UYAP Editor may fail to launch until you install jre11-openjdk
+==>       (or jre8-openjdk). You may also set UYAP_EDITOR_JAVA to the
+==>       absolute path of a compatible java binary.
+EOF
+}
+
+_check_optdeps() {
+    pacman -T 'akia' >/dev/null 2>&1 && return 0
+    pacman -T 'cups' >/dev/null 2>&1 && return 0
+    cat <<'EOF'
+==> Note: Neither a smart-card middleware (akia / akia-bin) nor cups is
+==>       installed. UYAP Editor will launch, but:
+==>         * e-imza / judicial card login will be unavailable until you
+==>           install an `akia` provider (e.g. `akia-bin`).
+==>         * Printing will be unavailable until you install `cups`.
+EOF
+}
+
+post_install() {
+    _refresh_caches
+    _check_java_installed
+    _check_optdeps
+}
+
+post_upgrade() {
+    _refresh_caches
+    _check_java_installed
+    _check_optdeps
+}
+
+post_remove() {
+    _refresh_caches
+}
