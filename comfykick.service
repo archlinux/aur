@@ -5,6 +5,8 @@ Wants=network-online.target
 
 [Service]
 Type=simple
+Restart=on-failure
+RestartSec=10
 ExecStart=/bin/sh -c ' \
     [ -f "%h/.local/share/comfykick/comfykick.py" ] \
         && exec /usr/bin/python3 "%h/.local/share/comfykick/comfykick.py" \
