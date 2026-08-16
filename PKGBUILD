@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="💥 Blazing fast terminal file manager written in Rust, based on async I/O with true dual panel mode"
 
-pkgver=26.8.7
+pkgver=26.8.15
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.zip")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.zip")
-sha256sums_x86_64=('e687ab7f0fe0af75c525775336f5e678aa123563ad6fbaf4a59c76c75f0a6c15')
-sha256sums_aarch64=('b808188023733bba4be18946d9d297e8d2f3fc412422bf387f768dd0562478f5')
+sha256sums_x86_64=('2ebf84cac16738e9c729ca2b10d76778fda342d39260eda2deb93ac5dea7388f')
+sha256sums_aarch64=('c8d638ee1f3e1e1c1ceb0ac72715b62fc5bc24629a76c77c01b2535f41982ac0')
 
 
 case ${CARCH} in

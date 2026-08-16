@@ -1,6 +1,6 @@
 pkgbase = che-bin
 	pkgdesc = 💥 Blazing fast terminal file manager written in Rust, based on async I/O with true dual panel mode
-	pkgver = 26.8.7
+	pkgver = 26.8.15
 	pkgrel = 1
 	url = https://github.com/aroum/che
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = che-bin
 	provides = che
 	conflicts = che
 	options = !strip
-	source_x86_64 = che-x86_64-26.8.7.zip::https://github.com/aroum/che/releases/download/v26.8.7/che-v26.8.7-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = e687ab7f0fe0af75c525775336f5e678aa123563ad6fbaf4a59c76c75f0a6c15
-	source_aarch64 = che-aarch64-26.8.7.zip::https://github.com/aroum/che/releases/download/v26.8.7/che-v26.8.7-aarch64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = b808188023733bba4be18946d9d297e8d2f3fc412422bf387f768dd0562478f5
+	source_x86_64 = che-x86_64-26.8.15.zip::https://github.com/aroum/che/releases/download/v26.8.15/che-v26.8.15-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 2ebf84cac16738e9c729ca2b10d76778fda342d39260eda2deb93ac5dea7388f
+	source_aarch64 = che-aarch64-26.8.15.zip::https://github.com/aroum/che/releases/download/v26.8.15/che-v26.8.15-aarch64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = c8d638ee1f3e1e1c1ceb0ac72715b62fc5bc24629a76c77c01b2535f41982ac0
 
 pkgname = che-bin
