@@ -3,7 +3,7 @@
 _pkgauthor=nao1215
 _pkgname=gup
 pkgname=${_pkgname}-bin
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Update binaries installed by \"go install\" with goroutines"
@@ -26,13 +26,13 @@ source=("README-${pkgver}.md::${_urlraw}/README.md" "LICENSE-${pkgver}::${_urlra
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${url}/releases/download/${_pkgvername}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
 source_i686=("${_pkgsrc}-${arch[1]}.tgz::${url}/releases/download/${_pkgvername}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[2]}.tgz::${url}/releases/download/${_pkgvername}/${_pkgsrc//-/_}_${_barch[2]}.tar.gz")
-sha256sums=('a30da80cd3d9ebf3944864c5da6d4c13814966ce17fc649a3e346e670aa7abdd'
+sha256sums=('486b8ccca93e8ddc403d072b470decf7f4431b7218bcf7d53ad86c725dd58af0'
             '9342d2ca1f93313e4f2a06e19db82e4a94462fab17c82eda907226631bd62079'
-            '81fbaf69f2917f6941bdb9c622d5e6e06240e52a5a4c1bcb930cc5246e45108f'
-            '3a94e82d6f66e1104e019637f898fca11fc98758281b0937b8bccb8096e67392')
-sha256sums_x86_64=('d45843fc6fed99f8268b141b93aaa488b0beac773cffd918392a15334ccfca5e')
-sha256sums_i686=('e54cb0bf154b231398c4fe3d3e6e15dce19ac2b03a7d94f4c1847be5beb5fd66')
-sha256sums_aarch64=('b38a32e6dcdece3c40f6747ca0ca6036624c259be4f9fd43fb7893ee9d3119c6')
+            '9445fab309a1747097cacca69c63bc4b3967e8e39b9cd480c5f246544314953d'
+            'ba21b4d509d3c5872bec589600156f25698a47ee441862276220e7bbab2b5fd0')
+sha256sums_x86_64=('7ee0dbb3c043f7e2d1afd0b44bad2f4fdae647e7245246b9e0ff75524c48b76d')
+sha256sums_i686=('ea3f13e11b471bd15bbdd8e80e6d4d381fde58a03dde9894c92c0975baa8f597')
+sha256sums_aarch64=('562cbf136502ba5b93eb474a1f42d6e1e29b93abc5bd864c2c392e129538591e')
 
 
 verify() {
