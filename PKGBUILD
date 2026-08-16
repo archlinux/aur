@@ -14,7 +14,7 @@ _url="https://github.com/Project-Plus-Development-Team/Project-Plus-Dolphin/rele
 _tag='v3.2.0'
 _package="Project+.$_tag.Netplay.Linux.AppImage.zip"
 source=(
-	"$_package::$_url/download/$_tag/Project+.$_tag.Netplay.Linux.AppImage.zip"
+	"$_package::$_url/download/$pkgver/Project+.$_tag.Netplay.Linux.AppImage.zip"
 )
 sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
 
