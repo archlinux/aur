@@ -1,6 +1,6 @@
 pkgbase = ramolibre
 	pkgdesc = Organizador académico Local-First
-	pkgver = 2.5.0
+	pkgver = 2.5.1
 	pkgrel = 1
 	url = https://github.com/Ramo-Libre/Web
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ramolibre
 	depends = webkit2gtk-4.1
 	depends = cairo
 	depends = glib2
-	source = ramolibre::git+https://github.com/Ramo-Libre/Web.git#tag=v2.5.0
+	source = ramolibre::git+https://github.com/Ramo-Libre/Web.git#tag=v2.5.1
 	sha256sums = SKIP
 
 pkgname = ramolibre
