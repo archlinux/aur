@@ -2,7 +2,7 @@
 
 pkgname=python-jlc2kicadlib
 _name=${pkgname#python-}
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 epoch=
 pkgdesc="JLC2KiCad_lib is a python script that generate a component library (symbol, footprint and 3D model) for KiCad from the JLCPCB/easyEDA library."
@@ -27,7 +27,7 @@ makedepends=(
 options=('!strip')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name}-$pkgver.tar.gz")
 noextract=()
-sha256sums=('eb47928aec4d975677e6574f5b6a364049a230438ba83fb5345663eb628b24cc')
+sha256sums=('32cb874b68f2a6450c1493c2733e94195b43c9f8483e29904511a54e9335aa80')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
