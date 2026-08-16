@@ -4,7 +4,8 @@
 srcname=VRCX
 pkgname=vrcx-git
 pkgver=2026.02.11.r463.g92ae1c5
-pkgrel=2
+pkgver=2026.07.18.r112.g2acab31
+pkgrel=1
 pkgdesc="Friendship management tool for VRChat (git version built with Electron)"
 arch=('x86_64')
 url="https://github.com/vrcx-team/VRCX"
@@ -30,7 +31,6 @@ pkgver() {
             
 prepare() {
     cd "$srcdir/VRCX"
-    patch -p1 < "$srcdir/build.patch"
     echo "$pkgver" > Version
     echo "" > .no-updater
     # WORKAROUND: Upstream lock file is out of sync.
@@ -53,7 +53,7 @@ build() {
         -t:"Restore;Clean;Build" \
         -m -r linux-x64
     
-    npm run prod-linux --no-fund --loglevel=error
+    npm run prod --no-fund --loglevel=error
     npm run build-electron --no-fund --loglevel=error
 }
 
@@ -62,10 +62,10 @@ package() {
 
     install -dm755 "$pkgdir/opt/vrcx"
     cp -r build/linux-unpacked/* "$pkgdir/opt/vrcx/"
-    chmod +x "$pkgdir/opt/vrcx/vrcx"
+    chmod +x "$pkgdir/opt/vrcx/VRCX"
     
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/vrcx/vrcx" "$pkgdir/usr/bin/vrcx"
+    ln -s "/opt/vrcx/VRCX" "$pkgdir/usr/bin/vrcx"
     
     install -Dm644 "$srcdir/vrcx.desktop" "$pkgdir/usr/share/applications/vrcx.desktop"
     
