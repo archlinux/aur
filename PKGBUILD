@@ -2,25 +2,23 @@
 # Contributor: janosmiko <janosmiko@users.noreply.github.com>
 
 pkgname=lfk
-pkgver=0.16.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc='Lightning Fast Kubernetes navigator - keyboard-focused TUI for managing K8s clusters'
 url='https://github.com/janosmiko/lfk'
 arch=(aarch64 x86_64)
 license=(Apache-2.0)
-depends=(glibc)
+depends=(glibc kubectl)
 makedepends=(go)
 optdepends=(
-    'kubectl: Kubernetes CLI integration'
     'helm: Helm release management'
     'trivy: Container image vulnerability scanning')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e174f8a7dc31cf9b02ad6f021a78b548434a288e215d8e8f965f1c9cfbd8a7d9')
+sha256sums=('49a95c1bf5edb0d37dc7f8e409ed09ac697b2755584f525bbb930c361585059d')
 
 prepare() {
     cd "$pkgname-$pkgver"
     export GOPATH="$srcdir"
-    mkdir -p build
     go mod download -modcacherw
 }
 
@@ -31,9 +29,10 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"    
     cd "$pkgname-$pkgver"
-    go build -o build
+    go build -o lfk .
 }
 
+# TODO: figure out why tests can't find kubectl or root-level go.mod
 check() {
     cd "$pkgname-$pkgver"
     go test ./...
@@ -41,7 +40,7 @@ check() {
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 build/lfk -t "$pkgdir/usr/bin/"
+    install -Dm755 lfk -t "$pkgdir/usr/bin/"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
