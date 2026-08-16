@@ -1,6 +1,6 @@
 pkgbase = bosectl-qt-git
 	pkgdesc = Qt6 system tray app for controlling Bose headphones via the BMAP protocol (git version)
-	pkgver = 0.3.0.r0.g0000000
+	pkgver = 0.3.0.r3.g1bca24a
 	pkgrel = 1
 	url = https://github.com/aaronsb/bosectl-qt
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = bosectl-qt-git
 	depends = qt6-base
 	depends = bluez-libs
 	depends = bluez
+	depends = hicolor-icon-theme
 	provides = bosectl-qt
 	conflicts = bosectl-qt
 	source = git+https://github.com/aaronsb/bosectl-qt.git
