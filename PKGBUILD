@@ -25,7 +25,7 @@ source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('d5cb9e4ab6a1434c9d30fd645a4c1154ce6a16c711e48ca5643fa748d8f51c9920b5bdeb5496ccf0908c6f085b7afcbb0ed2b9387e1ab471ec262733eb6fde4d')
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release
 	-DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG -Wa,-mbig-obj'
 	-DOPENVDB_BUILD_PYTHON_MODULE=OFF
