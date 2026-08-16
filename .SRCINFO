@@ -1,6 +1,6 @@
 pkgbase = locator-bin
 	pkgdesc = Lightning fast indexing and searching tool for any directory/external drive
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/NotTanJune/locator
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = locator-bin
 	provides = lctr
 	conflicts = locator
 	options = !strip
-	source_x86_64 = lctr-x86_64-0.3.0.tgz::https://github.com/NotTanJune/locator/releases/download/v0.3.0/lctr-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 34df4af52c377c5b8d523f71bf1275099dd8845c4dee3d3fce09bd21c7618a71
+	source_x86_64 = lctr-x86_64-0.3.1.tgz::https://github.com/NotTanJune/locator/releases/download/v0.3.1/lctr-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = dfe8209a3cfd278a25b56c1ecb0b9f8d74e4d2fe21a66cec51cd3476650e931f
 
 pkgname = locator-bin

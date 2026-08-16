@@ -6,7 +6,7 @@ _appname=lctr
 pkgname=${_gitname}-bin
 pkgdesc="Lightning fast indexing and searching tool for any directory/external drive"
 
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc')
 options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('34df4af52c377c5b8d523f71bf1275099dd8845c4dee3d3fce09bd21c7618a71')
+sha256sums_x86_64=('dfe8209a3cfd278a25b56c1ecb0b9f8d74e4d2fe21a66cec51cd3476650e931f')
 
 
 package() {
