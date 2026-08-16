@@ -26,7 +26,10 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
-  bun run ./scripts/build-bin.ts
+  bun build \
+    --compile src/main.tsx \
+    --no-compile-autoload-bunfig \
+    --outfile dist/hunk
 }
 
 check() {
