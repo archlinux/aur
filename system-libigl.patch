@@ -1,0 +1,257 @@
+diff -ru PrusaSlicer-version_2.9.6.orig/bundled_deps/libigl/CMakeLists.txt PrusaSlicer-version_2.9.6/bundled_deps/libigl/CMakeLists.txt
+--- PrusaSlicer-version_2.9.6.orig/bundled_deps/libigl/CMakeLists.txt	2026-08-13 15:53:18.185354010 +0200
++++ PrusaSlicer-version_2.9.6/bundled_deps/libigl/CMakeLists.txt	2026-08-13 19:08:25.903954076 +0200
+@@ -7,7 +7,7 @@
+ 
+ if(libigl_FOUND)
+     message(STATUS "IGL found, using system version...")
+-    target_link_libraries(libigl INTERFACE igl::core)
++    target_link_libraries(libigl INTERFACE igl::igl_core)
+ else()
+     message(STATUS "IGL NOT found, using bundled version...")
+     target_include_directories(libigl SYSTEM BEFORE INTERFACE .)
+diff -ru PrusaSlicer-version_2.9.6.orig/src/libslic3r/AABBMesh.cpp PrusaSlicer-version_2.9.6/src/libslic3r/AABBMesh.cpp
+--- PrusaSlicer-version_2.9.6.orig/src/libslic3r/AABBMesh.cpp	2026-08-13 15:53:18.322432998 +0200
++++ PrusaSlicer-version_2.9.6/src/libslic3r/AABBMesh.cpp	2026-08-13 19:31:11.964315674 +0200
+@@ -40,7 +40,7 @@
+     void intersect_ray(const indexed_triangle_set &its,
+                        const Vec3d &               s,
+                        const Vec3d &               dir,
+-                       igl::Hit &                  hit)
++                       igl::Hit<float> &                  hit)
+     {
+         AABBTreeIndirect::intersect_ray_first_hit(its.vertices, its.indices,
+                                                   m_tree, s, dir, hit, m_triangle_ray_epsilon);
+@@ -49,7 +49,7 @@
+     void intersect_ray(const indexed_triangle_set &its,
+                        const Vec3d &               s,
+                        const Vec3d &               dir,
+-                       std::vector<igl::Hit> &     hits)
++                       std::vector<igl::Hit<float>> &     hits)
+     {
+         AABBTreeIndirect::intersect_ray_all_hits(its.vertices, its.indices,
+                                                  m_tree, s, dir, hits, m_triangle_ray_epsilon);
+@@ -158,7 +158,7 @@
+ AABBMesh::query_ray_hit(const Vec3d &s, const Vec3d &dir) const
+ {
+     assert(is_approx(dir.norm(), 1.));
+-    igl::Hit hit{-1, -1, 0.f, 0.f, 0.f};
++    igl::Hit<float> hit{-1, -1, 0.f, 0.f, 0.f};
+     hit.t = std::numeric_limits<float>::infinity();
+ 
+ #ifdef SLIC3R_HOLE_RAYCASTER
+@@ -187,23 +187,23 @@
+ AABBMesh::query_ray_hits(const Vec3d &s, const Vec3d &dir) const
+ {
+     std::vector<AABBMesh::hit_result> outs;
+-    std::vector<igl::Hit> hits;
++    std::vector<igl::Hit<float>> hits;
+     m_aabb->intersect_ray(*m_tm, s, dir, hits);
+ 
+     // The sort is necessary, the hits are not always sorted.
+     std::sort(hits.begin(), hits.end(),
+-              [](const igl::Hit& a, const igl::Hit& b) { return a.t < b.t; });
++              [](const igl::Hit<float>& a, const igl::Hit<float>& b) { return a.t < b.t; });
+ 
+     // Remove duplicates. They sometimes appear, for example when the ray is cast
+     // along an axis of a cube due to floating-point approximations in igl (?)
+     hits.erase(std::unique(hits.begin(), hits.end(),
+-                           [](const igl::Hit& a, const igl::Hit& b)
++                           [](const igl::Hit<float>& a, const igl::Hit<float>& b)
+                            { return a.t == b.t; }),
+                hits.end());
+ 
+     //  Convert the igl::Hit into hit_result
+     outs.reserve(hits.size());
+-    for (const igl::Hit& hit : hits) {
++    for (const igl::Hit<float>& hit : hits) {
+         outs.emplace_back(AABBMesh::hit_result(*this));
+         outs.back().m_t = double(hit.t);
+         outs.back().m_dir = dir;
+diff -ru PrusaSlicer-version_2.9.6.orig/src/libslic3r/AABBTreeIndirect.hpp PrusaSlicer-version_2.9.6/src/libslic3r/AABBTreeIndirect.hpp
+--- PrusaSlicer-version_2.9.6.orig/src/libslic3r/AABBTreeIndirect.hpp	2026-08-13 15:53:18.322432998 +0200
++++ PrusaSlicer-version_2.9.6/src/libslic3r/AABBTreeIndirect.hpp	2026-08-13 19:19:18.074189766 +0200
+@@ -261,7 +261,7 @@
+ 
+     template<typename VertexType, typename IndexedFaceType, typename TreeType, typename VectorType>
+     struct RayIntersectorHits : RayIntersector<VertexType, IndexedFaceType, TreeType, VectorType> {
+-		std::vector<igl::Hit>				 hits;
++		std::vector<igl::Hit<float>>				 hits;
+ 	};
+ 
+ 	//FIXME implement SSE for float AABB trees with float ray queries.
+@@ -401,7 +401,7 @@
+         RayIntersectorType 	   &ray_intersector,
+         size_t 				    node_idx,
+         Scalar                  min_t,
+-        igl::Hit 			   &hit)
++        igl::Hit<float> 			   &hit)
+ 	{
+         const auto &node = ray_intersector.tree.node(node_idx);
+         assert(node.is_valid());
+@@ -418,7 +418,7 @@
+ 		    		ray_intersector.vertices[face(0)], ray_intersector.vertices[face(1)], ray_intersector.vertices[face(2)], 
+                     t, u, v, ray_intersector.eps)
+ 		    	&& t > 0.) {
+-                hit = igl::Hit { int(node.idx), -1, float(u), float(v), float(t) };
++                hit = igl::Hit<float> { int(node.idx), -1, float(u), float(v), float(t) };
+ 				return true;
+ 		    } else
+ 		    	return false;
+@@ -426,8 +426,8 @@
+ 			// Left / right child node index.
+ 			size_t left  = node_idx * 2 + 1;
+ 			size_t right = left + 1;
+-			igl::Hit left_hit;
+-			igl::Hit right_hit;
++			igl::Hit<float> left_hit;
++			igl::Hit<float> right_hit;
+ 	        bool left_ret = intersect_ray_recursive_first_hit(ray_intersector, left,  min_t, left_hit);
+ 			if (left_ret && left_hit.t < min_t) {
+ 	    		min_t = left_hit.t;
+@@ -463,7 +463,7 @@
+ 		    		ray_intersector.vertices[face(0)], ray_intersector.vertices[face(1)], ray_intersector.vertices[face(2)], 
+                     t, u, v, ray_intersector.eps)
+ 		    	&& t > 0.) {
+-                ray_intersector.hits.emplace_back(igl::Hit{ int(node.idx), -1, float(u), float(v), float(t) });
++                ray_intersector.hits.emplace_back(igl::Hit<float>{ int(node.idx), -1, float(u), float(v), float(t) });
+ 			}
+ 	  	} else {
+ 			// Left / right child node index.
+@@ -736,7 +736,7 @@
+ 	// Direction of the ray.
+ 	const VectorType 					&dir,
+ 	// First intersection of the ray with the indexed triangle set.
+-	igl::Hit 							&hit,
++	igl::Hit<float> 							&hit,
+ 	// Epsilon for the ray-triangle intersection, it should be proportional to an average triangle edge length.
+ 	const double 						 eps = 0.000001)
+ {
+@@ -768,7 +768,7 @@
+ 	// Direction of the ray.
+ 	const VectorType 					&dir,
+ 	// All intersections of the ray with the indexed triangle set, sorted by parameter t.
+-	std::vector<igl::Hit> 				&hits,
++	std::vector<igl::Hit<float>> 				&hits,
+ 	// Epsilon for the ray-triangle intersection, it should be proportional to an average triangle edge length.
+ 	const double 						 eps = 0.000001)
+ {
+diff -ru PrusaSlicer-version_2.9.6.orig/src/libslic3r/BranchingTree/PointCloud.cpp PrusaSlicer-version_2.9.6/src/libslic3r/BranchingTree/PointCloud.cpp
+--- PrusaSlicer-version_2.9.6.orig/src/libslic3r/BranchingTree/PointCloud.cpp	2026-08-13 15:53:18.326378198 +0200
++++ PrusaSlicer-version_2.9.6/src/libslic3r/BranchingTree/PointCloud.cpp	2026-08-13 20:13:19.670540105 +0200
+@@ -54,8 +54,9 @@
+     Eigen::MatrixXi FI;
+     Eigen::MatrixXd V;
+     Eigen::MatrixXi F;
++    Eigen::MatrixXd P;
+     to_eigen_mesh(its, V, F);
+-    igl::random_points_on_mesh(N, V, F, B, FI);
++    igl::random_points_on_mesh(N, V, F, B, FI, P);
+ 
+     ret.reserve(size_t(N));
+     for (int i = 0; i < FI.size(); i++) {
+diff -ru PrusaSlicer-version_2.9.6.orig/src/libslic3r/GCode/ModelVisibility.cpp PrusaSlicer-version_2.9.6/src/libslic3r/GCode/ModelVisibility.cpp
+--- PrusaSlicer-version_2.9.6.orig/src/libslic3r/GCode/ModelVisibility.cpp	2026-08-13 15:53:18.334198818 +0200
++++ PrusaSlicer-version_2.9.6/src/libslic3r/GCode/ModelVisibility.cpp	2026-08-13 19:33:56.817193571 +0200
+@@ -125,7 +125,7 @@
+             [&triangles, &precomputed_sample_directions, model_contains_negative_parts, negative_volumes_start_index,
+                     &raycasting_tree, &result, &samples, &params](tbb::blocked_range<size_t> r) {
+                 // Maintaining hits memory outside of the loop, so it does not have to be reallocated for each query.
+-                std::vector<igl::Hit> hits;
++                std::vector<igl::Hit<float>> hits;
+                 for (size_t s_idx = r.begin(); s_idx < r.end(); ++s_idx) {
+                     result[s_idx] = 1.0f;
+                     const float decrease_step = 1.0f
+@@ -140,7 +140,7 @@
+                     for (const auto &dir : precomputed_sample_directions) {
+                         Vec3f final_ray_dir = (f.to_world(dir));
+                         if (!model_contains_negative_parts) {
+-                            igl::Hit hitpoint;
++                            igl::Hit<float> hitpoint;
+                             // FIXME: This AABBTTreeIndirect query will not compile for float ray origin and
+                             // direction.
+                             Vec3d final_ray_dir_d = final_ray_dir.cast<double>();
+diff -ru PrusaSlicer-version_2.9.6.orig/src/libslic3r/TriangleSelectorWrapper.cpp PrusaSlicer-version_2.9.6/src/libslic3r/TriangleSelectorWrapper.cpp
+--- PrusaSlicer-version_2.9.6.orig/src/libslic3r/TriangleSelectorWrapper.cpp	2026-08-13 15:53:18.349199108 +0200
++++ PrusaSlicer-version_2.9.6/src/libslic3r/TriangleSelectorWrapper.cpp	2026-08-13 20:16:38.135675284 +0200
+@@ -22,7 +22,7 @@
+ }
+ 
+ void TriangleSelectorWrapper::enforce_spot(const Vec3f &point, const Vec3f &origin, float radius) {
+-    std::vector<igl::Hit> hits;
++    std::vector<igl::Hit<float>> hits;
+     Vec3f dir = (point - origin).normalized();
+     static constexpr const auto eps_angle = 89.99f;
+     Transform3d trafo_no_translate = mesh_transform;
+@@ -32,7 +32,7 @@
+             Vec3d(dir.cast<double>()),
+             hits)) {
+         for (int hit_idx = hits.size() - 1; hit_idx >= 0; --hit_idx) {
+-            const igl::Hit &hit = hits[hit_idx];
++            const igl::Hit<float> &hit = hits[hit_idx];
+             Vec3f pos = origin + dir * hit.t;
+             Vec3f face_normal = its_face_normal(mesh.its, hit.id);
+             if ((point - pos).norm() < radius && face_normal.dot(dir) < 0) {
+diff -ru PrusaSlicer-version_2.9.6.orig/tests/libslic3r/test_aabbindirect.cpp PrusaSlicer-version_2.9.6/tests/libslic3r/test_aabbindirect.cpp
+--- PrusaSlicer-version_2.9.6.orig/tests/libslic3r/test_aabbindirect.cpp	2026-08-13 15:53:18.386745660 +0200
++++ PrusaSlicer-version_2.9.6/tests/libslic3r/test_aabbindirect.cpp	2026-08-13 20:19:20.046409113 +0200
+@@ -17,7 +17,7 @@
+     auto tree = AABBTreeIndirect::build_aabb_tree_over_indexed_triangle_set(tmesh.its.vertices, tmesh.its.indices);
+     REQUIRE(! tree.empty());
+ 
+-    igl::Hit hit;
++    igl::Hit<float> hit;
+ 	bool intersected = AABBTreeIndirect::intersect_ray_first_hit(
+ 		tmesh.its.vertices, tmesh.its.indices,
+ 		tree,
+@@ -28,7 +28,7 @@
+     REQUIRE(intersected);
+     REQUIRE(hit.t == Approx(5.));
+ 
+-    std::vector<igl::Hit> hits;
++    std::vector<igl::Hit<float>> hits;
+ 	bool intersected2 = AABBTreeIndirect::intersect_ray_all_hits(
+ 		tmesh.its.vertices, tmesh.its.indices,
+ 		tree,
+diff -ru PrusaSlicer-version_2.9.6.orig/tests/libslic3r/test_emboss.cpp PrusaSlicer-version_2.9.6/tests/libslic3r/test_emboss.cpp
+--- PrusaSlicer-version_2.9.6.orig/tests/libslic3r/test_emboss.cpp	2026-08-13 15:53:18.389199880 +0200
++++ PrusaSlicer-version_2.9.6/tests/libslic3r/test_emboss.cpp	2026-08-13 20:30:01.841622642 +0200
+@@ -76,7 +76,7 @@
+     return point + dir * (*t);
+ }
+ 
+-Vec3d calc_hit_point(const igl::Hit &          h,
++Vec3d calc_hit_point(const igl::Hit<float> &          h,
+                      const Vec3i &             triangle,
+                      const std::vector<Vec3f> &vertices)
+ {
+@@ -89,7 +89,7 @@
+     return v0 * c0 + v1 * c1 + v2 * c2;
+ }
+ 
+-Vec3d calc_hit_point(const igl::Hit &h, indexed_triangle_set &its)
++Vec3d calc_hit_point(const igl::Hit<float> &h, indexed_triangle_set &its)
+ {
+     return calc_hit_point(h, its.indices[h.id], its.vertices);
+ }
+@@ -376,7 +376,7 @@
+ 
+     Vec3d    ray_point(8, 1, 0);
+     Vec3d    ray_dir(0, 0, 1);
+-    igl::Hit hit;
++    igl::Hit<float> hit;
+     AABBTreeIndirect::intersect_ray_first_hit(its.vertices, its.indices, tree,
+                                               ray_point, ray_dir, hit);
+     Vec3d hp = Private::calc_hit_point(hit, its);
+diff -ru PrusaSlicer-version_2.9.6.orig/tests/libslic3r/test_quadric_edge_collapse.cpp PrusaSlicer-version_2.9.6/tests/libslic3r/test_quadric_edge_collapse.cpp
+--- PrusaSlicer-version_2.9.6.orig/tests/libslic3r/test_quadric_edge_collapse.cpp	2026-08-13 15:53:18.389199880 +0200
++++ PrusaSlicer-version_2.9.6/tests/libslic3r/test_quadric_edge_collapse.cpp	2026-08-13 20:24:09.835441862 +0200
+@@ -265,7 +265,7 @@
+     Eigen::MatrixXd U;
+     Eigen::MatrixXi G;
+     Eigen::VectorXi J, I;
+-    CHECK(igl::qslim(V, F, max_m, U, G, J, I));
++    CHECK(igl::qslim(V, F, max_m, false, U, G, J, I));
+ 
+     // convert to its
+     indexed_triangle_set its_out;

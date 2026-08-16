@@ -6,7 +6,7 @@
 _pkgname=prusa-slicer
 pkgname=$_pkgname-no-webkit
 pkgver=2.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r, without webkit support)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
@@ -17,7 +17,7 @@ depends=('gtk3' 'mpfr' 'gmp' 'blosc' 'boost-libs' 'curl'
          'wxwidgets-gtk3' 'z3' 'zlib' 'libstdc++' 'libgcc' 'glibc' 'dbus' 'imath'
          'glib2' 'pango' 'hicolor-icon-theme' 'imath')
 makedepends=('cmake' 'systemd' 'glu' 'ninja' 'git' 'python' 'boost' 'catch2'
-             'cereal' 'cgal' 'eigen3' 'nlohmann-json' 'glad')
+             'cereal' 'cgal' 'libigl' 'nlohmann-json' 'glad')
 options=('!makeflags')
 provides=('prusa-slicer')
 conflicts=('prusa-slicer')
@@ -31,6 +31,7 @@ source=(https://github.com/prusa3d/PrusaSlicer/archive/version_${pkgver/_/-}/${_
         allow_wayland.patch
         use_glad.patch
         catch2-missing-include.patch
+        system-libigl.patch
         remove-webkit-2.9.6.patch)
 sha256sums=('8f9f40d93838b912bd9ed35e598c0b7eabd08024cb18aa620c6aa9f9d49d0b57'
             '9cd41e83bf05f33b60a5ec99a166f10ac24a4f970dc7853ff67a9635fe21bdb7'
@@ -42,12 +43,19 @@ sha256sums=('8f9f40d93838b912bd9ed35e598c0b7eabd08024cb18aa620c6aa9f9d49d0b57'
             'ededd183348aa9448b78037bdf30e14fd944610b82e6fd97b2047ca2f490ce06'
             'de93af123efed90721784d5665e95eb4a757349e039caf009cd45db2ed3d81d6'
             '69764c5d4c671978eac069188d81dd5713f8188b2bf001fb12a02d8f8f099fba'
+            '1c666fbc960542b646ccbf1f33c7b9062988edc4d3d55507f3f42191b04dd588'
             'd2b67c85436f925e91aef91a13b115b5049235b79d78426bb6602525d721d070')
 
 prepare() {
   cd PrusaSlicer-version_${pkgver/_/-}
   # We want to use the system OpenVDB
   rm cmake/modules/FindOpenVDB.cmake
+
+  # Accept eigen 5
+  sed -e 's|Eigen3 3.3.7|Eigen3|' -i CMakeLists.txt
+
+  # Fix build with system libigl
+  patch -p1 -i ../system-libigl.patch
 
   # Dynamically link system OpenCASCADE
   sed -i -e 's/\(OpenCASCADE\).*\(REQUIRED\)/\1 \2/
@@ -117,7 +125,8 @@ build() {
       -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
       -DSLIC3R_FHS=ON \
       -DSLIC3R_PCH=OFF \
-      -DSLIC3R_GTK=3
+      -DSLIC3R_GTK=3 \
+      -Dlibigl_DIR=/usr/lib/cmake/igl/
   ninja -C build_${pkgver}
 }
 
