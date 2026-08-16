@@ -1,0 +1,24 @@
+pkgbase = patchy-image-editor-git
+	pkgdesc = PSD-oriented image editor built from the latest Git revision
+	pkgver = 0.89.r890.g2ef0358
+	pkgrel = 1
+	url = https://github.com/SethRobinson/Patchy
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-imageformats
+	depends = qt6-svg
+	optdepends = kimageformats: additional image formats, including HEIC/HEIF
+	optdepends = libheif: HEIC/HEIF codec support
+	provides = patchy-image-editor=0.89.r890.g2ef0358
+	conflicts = patchy-image-editor-bin
+	options = !debug
+	source = Patchy::git+https://github.com/SethRobinson/Patchy.git#branch=main
+	sha256sums = SKIP
+
+pkgname = patchy-image-editor-git
