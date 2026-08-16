@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="cocode"
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="A powerful command-line tool for analyzing and processing code repositories"
 
@@ -16,7 +16,7 @@ provides=("${_pypi_package}")
 makedepends=('python' 'python-click' 'python-rich' 'python-typer' 'python-typing_extensions' 'python-pygithub' 'python-pydantic' 'python-pathspec' 'pipelex')
 
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1fde03474edad4b99265611982e76692c6eea653e8a913f735ab813387cffac2')
+sha256sums=('ac29e098535eff0e8fd46dd9979c75199e29c48471a67b4f4a03065f23b6e58b')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
