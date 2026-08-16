@@ -1,31 +1,4 @@
 # Maintainer: Ismet Togay <ismet.togay+archlinux@gmail.com>
-#
-# UYAP Editor — Turkish judicial-system document/template editor.
-# Binary redistribution of upstream's Debian package from the Ministry
-# of Justice (Adalet Bakanlığı).
-#
-# Upstream landing pages:
-#   https://uyap.gov.tr/UYAP-Editor
-#   https://rayp.adalet.gov.tr/
-#
-# Per-release bump checklist:
-#   1. Visit https://uyap.gov.tr/UYAP-Editor and locate the new zip URL
-#      (pattern: uyapeditor_<version>_amd64.zip).
-#   2. Update pkgver to the upstream version (e.g. 5.4.17 → 5.4.19).
-#   3. Update the _zipurl variable below with the new URL.
-#   4. Run `updpkgsums` to refresh the zip checksum.
-#   5. Build with `makepkg -f` in a clean chroot and verify with namcap.
-#   6. Regenerate .SRCINFO: `makepkg --printsrcinfo > .SRCINFO`.
-#
-# If you edit ANY local file listed in source=() (notably
-# uyap-editor-bin.install, the .desktop files, uyap-editor.xml,
-# uyap-dokuman, uyap-sablon, LICENSE), you MUST:
-#   a. Run `updpkgsums` to refresh its sha256 entry.
-#   b. Bump pkgrel.
-#   c. Regenerate .SRCINFO *after* the sum update.
-#   d. Verify with `makepkg --verifysource -o`.
-# Skipping (a) causes "did not pass the validity check" at install
-# time — .SRCINFO regen does NOT recompute hashes.
 
 pkgname=uyap-editor-bin
 pkgver=5.4.19
