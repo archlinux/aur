@@ -1,0 +1,20 @@
+pkgbase = ucsc-bigbed-bin
+	pkgdesc = UCSC bigBed format utilities: bedToBigBed, bigBedToBed, bigBedInfo
+	pkgver = 20260407
+	pkgrel = 1
+	url = https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	options = !strip
+	options = !debug
+	source = https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/bedToBigBed
+	source = https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/bigBedToBed
+	source = https://hgdownload.soe.ucsc.edu/admin/exe/linux.x86_64/bigBedInfo
+	source = LICENSE::https://raw.githubusercontent.com/ucscGenomeBrowser/kent/master/LICENSE
+	sha256sums = 73e10feef3a685304d71c840058ae9a5113bdc4e134f161d3913cfebc5a2ec24
+	sha256sums = 9d1ea2158f5aa958fd8820fb7a2e5fb0947a9da7b183b8f9237429b8fbacd386
+	sha256sums = 0bd90a5a421d52da419ba5afb0d3e5a03244341ac416ada9358c7ccab159cf39
+	sha256sums = 793d774ec3941d88d5f93611639230030ea3e167282be144b6e5604bc5ad29a4
+
+pkgname = ucsc-bigbed-bin

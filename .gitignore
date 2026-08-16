@@ -1,0 +1,7 @@
+bedToBigBed
+bigBedToBed
+bigBedInfo
+LICENSE
+pkg/
+src/
+*.pkg.tar.*
