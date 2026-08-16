@@ -3,7 +3,7 @@
 pkgbase=gemmul8
 pkgname=('gemmul8-cuda' 'gemmul8-rocm')
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 pkgdesc='emulating GEMM using low-precision matrix engines, including int8 and fp8'
 url="https://github.com/RIKEN-RCCS/GEMMul8"
@@ -22,7 +22,7 @@ build() {
 check() {
 	cd GEMMul8-${pkgver}/test
 	make -j6
-	make run MODE="accuracy_rectangle GEMM D transA=N transB=N"
+	make run MODE="accuracy_rectangle GEMM D trans=A"
 }
 
 _package() {
@@ -43,7 +43,8 @@ package_gemmul8-cuda() {
 }
 
 package_gemmul8-rocm() {
-	depends=('hip-runtime-amd')
+	depends=('amdsmi' 'hipblaslt')
+	optdepends=('hip-runtime-amd')
 	provides=('gemmul8')
 	conflict=('gemmul8-cuda')
 
