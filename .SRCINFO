@@ -1,5 +1,5 @@
 pkgbase = wine-gohryt-wayland-wow64
-	pkgdesc = Compatibility layer for running Windows programs. This is my custom build with special fixes for wayland, vulkan and wow64. No steam flickering, Unreal and Unity games are working properly without shaman dances. Now with gamepad and affinity design suite support.
+	pkgdesc = Includes fixes for wayland + vulkan, gamepad, steam, unreal, unity, affinity.
 	pkgver = 11.15
 	pkgrel = 1
 	url = https://www.winehq.org
