@@ -1,6 +1,6 @@
 pkgbase = omarchy-cast
 	pkgdesc = Mirror or extend your Omarchy/Hyprland desktop to an AirPlay receiver (Apple TV)
-	pkgver = 0.2.9
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/mrCode/omarchy-cast
 	arch = any
@@ -27,11 +27,11 @@ pkgbase = omarchy-cast
 	depends = xdg-desktop-portal
 	depends = pipewire
 	optdepends = doubletake-git: AirPlay mirroring and extend support (the 0.4.0 release cannot capture on Hyprland)
-	optdepends = walker: device picker menu
-	optdepends = waybar: status indicator
+	optdepends = walker: device picker menu (older Omarchy; current Omarchy uses its own menu)
+	optdepends = waybar: status indicator (current Omarchy uses the bundled Quickshell widget)
 	optdepends = libnotify: desktop notifications on failure
 	optdepends = gst-plugins-ugly: software x264 encoding fallback
-	source = omarchy-cast-0.2.9.tar.gz::https://github.com/mrCode/omarchy-cast/archive/v0.2.9.tar.gz
-	sha256sums = 6b777d569983412424953ed195411b9f72446a902aae8af6862e915658512d56
+	source = omarchy-cast-0.3.0.tar.gz::https://github.com/mrCode/omarchy-cast/archive/v0.3.0.tar.gz
+	sha256sums = 3ac5f9c2b32bbdda14adf87ccf47b7d741415ef0cdeb22cb3b12806388383924
 
 pkgname = omarchy-cast
