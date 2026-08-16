@@ -1,7 +1,7 @@
 # Maintainer: Gesh <gesh@gesh.uni.cx>
 
 pkgname=python-types-pygments
-pkgver=2.20.0.20260408
+pkgver=2.20.0.20260728
 _name=${pkgname#python-}
 _name="${_name//-/_}"
 _src_folder="${_name}-${pkgver}"
@@ -15,7 +15,7 @@ makedepends=(
 license=('Apache-2.0')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('e8a56a3ab1aee7f4ed8f1876d2f62c96e0f41ede52405a7d30c888f3989d8f00')
+sha256sums=('dd0a49d84fd9e3f08ab3a3191779e4732a91bb1fad2e80178cf4574e8f35684d')
 
 build() {
     cd "${srcdir}/${_src_folder}"
