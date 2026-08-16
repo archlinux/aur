@@ -1,0 +1,20 @@
+pkgbase = aps-git
+	pkgdesc = A fast and powerful patterns searcher for AUR package sources (git version)
+	pkgver = 1.3.1.r36.7cf9f60
+	pkgrel = 1
+	url = https://github.com/Antiz96/aps
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = scdoc
+	depends = glibc
+	depends = libgcc
+	provides = aps
+	conflicts = aps
+	options = !lto
+	source = git+https://github.com/Antiz96/aps.git
+	sha256sums = SKIP
+
+pkgname = aps-git
