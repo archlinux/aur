@@ -1,7 +1,7 @@
 pkgname=openvox-agent-bin
 _pkgname=openvox-agent
 pkgver=8.28.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Agent of the OpenVox Automation Framework (non-modular)'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://voxpupuli.org/openvox/'
