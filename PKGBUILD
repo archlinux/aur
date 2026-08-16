@@ -4,7 +4,6 @@
 
 pkgname=smatch
 pkgver=1.75
-_fedora_spec_url="https://src.fedoraproject.org/rpms/smatch/raw/rawhide/f/smatch.spec"
 pkgrel=1
 pkgdesc="Static analysis tool for C programs that performs semantic analysis to detect bugs and vulnerabilities."
 arch=(x86_64)
