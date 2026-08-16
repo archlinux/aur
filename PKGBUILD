@@ -16,7 +16,7 @@ source=("double-conversion-${pkgver}.tar.gz::https://github.com/google/double-co
 sha256sums=('42fd4d980ea86426e457b24bdfa835a6f5ad9517ddb01cdb42b99ab9c8dd5dc9')
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' )
 
 build() {
