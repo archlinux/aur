@@ -1,6 +1,7 @@
 # Maintainer: Alex Indigo <ai@aegis.one>
 
 pkgname=1password-secret-service
+_projname=1password-secret-service
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Freedesktop Secret Service (org.freedesktop.secrets) provider backed by 1Password"
@@ -17,12 +18,12 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	export CGO_ENABLED=1
 	go build -trimpath -buildmode=pie -ldflags="-s -w" \
-		-o "${pkgname}" "./cmd/${pkgname}"
+		-o "${_projname}" "./cmd/${_projname}"
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${_projname}" "${pkgdir}/usr/bin/${_projname}"
 	install -Dm644 packaging/1password-secret-service.service \
 		"${pkgdir}/usr/lib/systemd/user/1password-secret-service.service"
 	install -Dm644 packaging/org.freedesktop.secrets.service \
