@@ -1,0 +1,7 @@
+faToTwoBit
+twoBitToFa
+twoBitInfo
+LICENSE
+pkg/
+src/
+*.pkg.tar.*
