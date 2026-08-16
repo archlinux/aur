@@ -4,14 +4,16 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r9781
+pkgver=r9846
 pkgrel=1
 pkgdesc="Digital DJ mixing software (latest development branch)."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://mixxx.org/"
 license=('GPL-2.0-or-later')
-groups=('pro-audio')
+groups=(pro-audio)
 depends=(
+	# TODO: Running into an error with the AUR version, let cmake download it.
+	#'libshout-idjc'
 	'chromaprint'
 	'ffmpeg'
 	'flac'
@@ -27,26 +29,24 @@ depends=(
 	'libmodplug'
 	'libmp4v2'
 	'libogg'
-	'libshout'
 	'libsndfile'
-	'libtheora'
 	'libusb'
 	'libvorbis'
 	'lilv'
+	'openssl'
 	'opusfile'
 	'portaudio'
 	'portmidi'
 	'protobuf'
 	'qt6-5compat'
 	'qt6-declarative'
-	'qt6-shadertools'
 	'qt6-svg'
 	'qt6-translations'
 	'qtkeychain-qt6'
 	'rubberband'
 	'soundtouch'
 	'sqlite'
-	'taglib1'
+	'taglib'
 	'ttf-opensans'
 	'ttf-ubuntu-font-family'
 	'upower'
@@ -54,16 +54,18 @@ depends=(
 	'zlib'
 )
 makedepends=(
-	'benchmark'
 	'cmake'
 	'git'
+	'glu'
 	'gtest'
 	'lv2'
 	'microsoft-gsl'
+	'qt6-shadertools'
 	'qt6-tools'
 )
 optdepends=(
 	'ccache: speed up rebuilds of the package'
+	'pipewire: native pipewire support'
 )
 provides=('mixxx')
 conflicts=('mixxx')
@@ -81,7 +83,16 @@ build() {
 		-D CMAKE_LINKER_TYPE=BFD
 		-D CMAKE_BUILD_TYPE=RelWithDebInfo
 		-D CMAKE_INSTALL_PREFIX=/usr
+		-D BUILD_BENCH=OFF
 		-D OPTIMIZE=native
+		-D CCACHE_SUPPORT=ON
+		-D CMAKE_C_FLAGS='-O2'
+		-D CMAKE_C_FLAGS_RELEASE='-DNDEBUG'
+		-D CMAKE_C_FLAGS_RELWITHDEBINFO='-g -DNDEBUG'
+		-D PIPEWIRE=ON
+		-D SITE=arch
+		# TODO: I'd like to do this, but libshout-idjc in the AUR Is old?
+		# -D FETCHCONTENT_FULLY_DISCONNECTED=ON
 		-S mixxx
 		-W no-dev
 	)
