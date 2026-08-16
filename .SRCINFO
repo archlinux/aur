@@ -12,6 +12,7 @@ pkgbase = veeam-6
 	depends = mlocate
 	depends = veeamblksnap-6-dkms
 	conflicts = veeam
+	conflicts = veeam-nosnap
 	noextract = veeam-6.3.2.1405-1.el10.x86_64.rpm
 	noextract = veeam-libs-6.3.2.1405-1.x86_64.rpm
 	backup = etc/veeam/veeam.ini
