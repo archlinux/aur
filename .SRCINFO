@@ -1,7 +1,7 @@
 pkgbase = atmosphera
 	pkgdesc = Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexindigo/atmosphera
 	install = atmosphera.install
 	arch = any
@@ -14,6 +14,8 @@ pkgbase = atmosphera
 	depends = ffmpeg
 	depends = qt6-multimedia
 	depends = python
+	depends = python-dbus
+	depends = python-gobject
 	depends = wlr-randr
 	optdepends = cliphist: For clipboard history support
 	optdepends = wlsunset: For supporting NightLight
