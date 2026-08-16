@@ -7,7 +7,7 @@ pkgname=xfb
 # every machine that installed it. Raise it only if the version ever has to go
 # backwards again.
 epoch=1
-pkgver=3.1417
+pkgver=3.1419
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -158,16 +158,22 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v3.1417:"
-    echo "  - Tab no longer traps you: the library tables and the playlist let"
-    echo "    focus leave again, and the arrow keys still move within them"
-    echo "  - Tab gets out of a multi-line notes field, back to the OK button"
-    echo "  - The Pads grid is a single stop in the tab chain instead of 24+;"
-    echo "    the arrows walk the grid and the stop follows the focused pad"
-    echo "  - The playlist reorders with Ctrl+Shift+Up/Down, announced for"
-    echo "    screen readers; until now that needed a mouse drag"
-    echo "  - This package carries an epoch (1:) so that pacman stops ranking"
-    echo "    3.14159 above 3.1416 and offers these upgrades again"
+    echo "New in v3.1419:"
+    echo "  - Spotify and Apple Music links can be downloaded: XFB reads the"
+    echo "    track list and fetches each song, single tracks or whole albums"
+    echo "    and playlists"
+    echo "  - A YouTube Mix link no longer drags in a thousand unrelated"
+    echo "    tracks; XFB says it is a radio and offers just the one track"
+    echo "  - A long playlist is never half-downloaded in silence: when a"
+    echo "    source hands back a short list, XFB says so and what is missing"
+    echo "  - Auto Mode with an empty playlist now puts a track up when you"
+    echo "    press Play, instead of doing nothing"
+    echo "  - Options: no more clipped or overlapping rows, and Spotify"
+    echo "    credentials can be entered for playlists over 100 tracks"
+    echo "  - The log no longer fills with braille-monitor chatter, and logs"
+    echo "    older than two weeks are cleaned up"
+    echo "  - About reports the version actually running; assorted typos"
+    echo "    fixed, with Portuguese and French fully translated"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"
