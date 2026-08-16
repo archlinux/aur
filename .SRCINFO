@@ -1,7 +1,7 @@
 pkgbase = sigil-wm
 	pkgdesc = Invisible structural watermark for images
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Xuepoo/sigil
 	arch = x86_64
 	arch = aarch64
