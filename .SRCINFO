@@ -1,7 +1,7 @@
 pkgbase = hyprism-bin
 	pkgdesc = A multiplatform Hytale launcher with mod manager and more! (binary version)
 	pkgver = 3.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/HyPrismTeam/HyPrism
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,6 +14,8 @@ pkgbase = hyprism-bin
 	provides = hyprism
 	conflicts = hyprism
 	conflicts = hyprism-git
+	replaces = hyprism
+	replaces = hyprism-git
 	options = !strip
 	source = hyprism-3.0.3.deb::https://github.com/HyPrismTeam/HyPrism/releases/download/v3.0.3/HyPrism-linux-amd64-3.0.3.deb
 	source = hyprism.desktop

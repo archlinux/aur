@@ -3,17 +3,12 @@
 _pkgname="hyprism"
 pkgname="hyprism-bin"
 pkgver="3.0.3"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A multiplatform Hytale launcher with mod manager and more! (binary version)"
 arch=("x86_64")
 url="https://github.com/HyPrismTeam/HyPrism"
 license=("GPL-3.0-only")
 
-provides=("hyprism")
-conflicts=(
-    "hyprism"
-    "hyprism-git"
-)
 depends=(
     "alsa-lib"
     "dbus"
@@ -21,6 +16,15 @@ depends=(
     "lttng-ust2.12"
     "mesa"
     "nss"
+)
+provides=("hyprism")
+conflicts=(
+    "hyprism"
+    "hyprism-git"
+)
+replaces=(
+    "hyprism"
+    "hyprism-git"
 )
 options=("!strip")
 
