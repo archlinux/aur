@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-URL="https://download.opensuse.org/repositories/home:/munix9:/celestia:/1.7/Arch/x86_64/"
-
+URL=$(grep -E '^\s*_download_url=' ./PKGBUILD | sed -E 's/_download_url=["'\'' ]*([^"'\'' ]*).*/\1/')
 URL_DATA=$(curl -sL "$URL")
 
 VERSION_APP=$(nvchecker -c ./.nvchecker.toml --logger json | jq -r 'select(.event == "updated") | .version')
