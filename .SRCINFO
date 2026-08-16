@@ -1,0 +1,20 @@
+pkgbase = respack
+	pkgdesc = Ab initio perturbation calculation software
+	pkgver = 20240804
+	pkgrel = 0
+	url = https://www.respack.org
+	arch = x86_64
+	license = GPL2
+	checkdepends = python
+	makedepends = gcc-fortran
+	makedepends = cmake
+	makedepends = gcc
+	depends = openmpi
+	depends = glibc
+	depends = libgfortran.so
+	depends = blas-openblas
+	depends = fftw
+	source = https://www.mns.kyutech.ac.jp/cgi-bin/respack.cgi?f=RESPACK-20240804.tar.gz
+	sha256sums = 5ece5425485d06369c7504c4a8fc34a5911ae955aa4b8a7d5bd92da8810c07a4
+
+pkgname = respack
