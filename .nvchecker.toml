@@ -1,3 +1,4 @@
 [lib32-gpm]
 source = "git"
 git = "https://github.com/telmich/gpm.git"
+exclude_regex = "^1\\.99\\..*"
