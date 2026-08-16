@@ -1,6 +1,6 @@
 pkgbase = apps2samsung-bin
 	pkgdesc = One-click app installer for Samsung TVs, projectors and smart monitors (Tizen) — Jellyfin, Moonlight and more
-	pkgver = 2.7.3
+	pkgver = 2.7.4
 	pkgrel = 1
 	url = https://apps2samsung.madebypatrick.nl
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = apps2samsung-bin
 	provides = apps2samsung
 	conflicts = apps2samsung
 	options = !strip
-	source_x86_64 = Apps2Samsung-v2.7.3-linux-x64.tar.gz::https://github.com/Apps2Samsung/Apps2Samsung/releases/download/v2.7.3/Apps2Samsung-v2.7.3-linux-x64.tar.gz
-	sha256sums_x86_64 = ddf829fc3d231fd4c1511ddaa54124236a0b50d1df6c9649895c9dea0aeb4be7
-	source_aarch64 = Apps2Samsung-v2.7.3-linux-arm64.tar.gz::https://github.com/Apps2Samsung/Apps2Samsung/releases/download/v2.7.3/Apps2Samsung-v2.7.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = 9c564e779233658aeb4312b05c68cc329803ee4bd24f46a4382f57b040ae15fb
+	source_x86_64 = Apps2Samsung-v2.7.4-linux-x64.tar.gz::https://github.com/Apps2Samsung/Apps2Samsung/releases/download/v2.7.4/Apps2Samsung-v2.7.4-linux-x64.tar.gz
+	sha256sums_x86_64 = 478cdc8468c666660933707b1f21482cae14cf77ee94a01050aae91929bd5cd5
+	source_aarch64 = Apps2Samsung-v2.7.4-linux-arm64.tar.gz::https://github.com/Apps2Samsung/Apps2Samsung/releases/download/v2.7.4/Apps2Samsung-v2.7.4-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9311abab163e711e4625816101927321942c4b36ec9057e936c23b8ac899a21c
 
 pkgname = apps2samsung-bin
