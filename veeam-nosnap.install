@@ -1,0 +1,49 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+_install_veeam_fips_module() {
+    local _openssl_path=/opt/veeam/veeamagentforlinux/openssl_fips_redistributable/3.1.2
+
+    msg_blue "Installing OpenSSL FIPS module..."
+
+    "$_openssl_path/bin/openssl" fipsinstall \
+        -quiet \
+        -out "$_openssl_path/ssl/fipsmodule.cnf" \
+        -module "$_openssl_path/lib/ossl-modules/fips.so"
+}
+
+pre_install() {
+    if ! getent group veeam >/dev/null; then
+        groupadd --system veeam
+    fi
+    mkdir -p /var/log/veeam/
+    mkdir -m 2775 /var/log/veeam/config
+    chgrp veeam /var/log/veeam/config
+}
+
+post_install() {
+    _install_veeam_fips_module
+    systemctl daemon-reload
+    systemctl enable veeamservice.service
+    systemctl restart veeamservice.service
+}
+
+post_upgrade() {
+    _install_veeam_fips_module
+    systemctl daemon-reload
+    systemctl restart veeamservice.service
+}
+
+pre_remove() {
+    systemctl stop veeamservice.service
+    systemctl disable veeamservice.service
+    /usr/sbin/veeamservice --uninstall || true
+}
+
+post_remove() {
+    rm -rf /var/lib/veeam /var/log/veeam
+}

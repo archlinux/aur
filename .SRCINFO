@@ -1,0 +1,27 @@
+pkgbase = veeam-nosnap
+	pkgdesc = Nosnap Veeam Agent for Linux
+	pkgver = 13.1.1.4
+	pkgrel = 1
+	url = https://www.veeam.com/products/downloads.html
+	install = veeam-nosnap.install
+	arch = x86_64
+	license = custom:veeam
+	depends = ncurses
+	depends = lvm2
+	depends = fuse
+	depends = mlocate
+	conflicts = veeam
+	conflicts = veeam-6
+	noextract = veeam-nosnap-13.1.1.4-1.el10.x86_64.rpm
+	noextract = veeam-libs-13.1.1.4-1.x86_64.rpm
+	options = !strip
+	backup = etc/veeam/veeam.ini
+	backup = usr/share/veeam/lpb_scheme.sql
+	backup = usr/share/veeam/db_upgrade.sql
+	backup = usr/share/veeam/db_scheme.sql
+	source = https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/veeam-nosnap-13.1.1.4-1.el10.x86_64.rpm
+	source = https://repository.veeam.com/backup/linux/agent-13/rpm/el/10/x86_64/veeam-libs-13.1.1.4-1.x86_64.rpm
+	sha256sums = 03bc4b4710ec650ee03ce47bf303bd51125c0de464d8385142f9b9446e7afb67
+	sha256sums = 90829a1d1dff15091245e1f672f40814006efdb46513631cbfe7dd804409b5c4
+
+pkgname = veeam-nosnap
