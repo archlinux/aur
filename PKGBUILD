@@ -1,6 +1,6 @@
 # Maintainer: existyay <liujam826@gmail.com>
 pkgname=lx-music-shell
-pkgver=3.10.2
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="Terminal music player with multi-source support and auto-reconnect"
 arch=("any")
@@ -37,7 +37,7 @@ backup=("etc/skel/.config/lx-music-shell/config"
         "etc/skel/.config/lx-music-shell/sources.list")
 options=()
 install=lx-music-shell.install
-source=("lx-music-shell-source-v3.10.2.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v3.10.2.tar.gz")
+source=("lx-music-shell-source-v3.11.0.tar.gz::https://github.com/existyay/LX-Music-Shell/archive/refs/tags/v3.11.0.tar.gz")
 sha256sums=("SKIP")
 
 prepare() {
