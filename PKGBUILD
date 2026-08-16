@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD (this PKGBUILD; the packaged software is LGPL-2.1-or-later)
 #
 # Template for the AUR `bdinfo-rs-gui-bin` package. The `gui-publish.yml` aur leg
-# replaces 3.0.0 / 5059b67b0731b2415072df49188489e05ccf9786b8650d1d0f2c75252c6366ff / 4864528213ef42014728e49ce765031d394e6f954a5012862f4661d990ba6b69 from the release's
+# replaces 4.0.0 / 172c01e521f835d1bf5ea26b7060b45692e8e7d90abe89f570e4790459b70ab6 / c1ea7234dde3f773dd56e5e0e9f4d433d69d247002ab535f05571158af821587 from the release's
 # verified SHA256SUMS, validates the result in an Arch container (`makepkg
 # --printsrcinfo` + `--verifysource`), and KSXGitHub/github-actions-deploy-aur
 # pushes it to the AUR. Repackages the prebuilt release `.deb`: the gui-v*
@@ -13,7 +13,7 @@ _pkgname=bdinfo-rs-gui
 # The AppStream component id, which names the installed desktop file, metainfo
 # file, and icons inside the .deb.
 _appid=io.github.agentjp.bdinfo-rs
-pkgver=3.0.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Native desktop GUI for bdinfo-rs, the memory-safe Blu-ray disc analyzer'
 arch=('x86_64' 'aarch64')
@@ -33,8 +33,8 @@ conflicts=('bdinfo-rs-gui')
 options=('!strip' '!debug')
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/gui-v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu.deb")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/gui-v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.deb")
-sha256sums_x86_64=('5059b67b0731b2415072df49188489e05ccf9786b8650d1d0f2c75252c6366ff')
-sha256sums_aarch64=('4864528213ef42014728e49ce765031d394e6f954a5012862f4661d990ba6b69')
+sha256sums_x86_64=('172c01e521f835d1bf5ea26b7060b45692e8e7d90abe89f570e4790459b70ab6')
+sha256sums_aarch64=('c1ea7234dde3f773dd56e5e0e9f4d433d69d247002ab535f05571158af821587')
 
 # No .install file: pacman's desktop-file-utils and hicolor-icon-theme hooks
 # refresh the desktop database and icon cache on install/remove; calling those
