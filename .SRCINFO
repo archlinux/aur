@@ -1,6 +1,6 @@
 pkgbase = nostr-vpn-git
 	pkgdesc = GTK4/libadwaita desktop client for Nostr VPN, a Tailscale-style private mesh VPN (git master)
-	pkgver = 4.1.7.r4.gae75600
+	pkgver = 4.1.7.r5.ge689af1
 	pkgrel = 1
 	url = https://github.com/mmalmi/nostr-vpn
 	arch = x86_64
