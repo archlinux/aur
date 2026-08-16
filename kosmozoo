@@ -1,0 +1,6 @@
+#!/bin/sh
+# kosmozoo launcher (packaged install): app files live in read-only
+# /usr/lib/kosmozoo; the server auto-detects that and keeps its writable
+# state (config.json, metadata.db, faceboxes_cache.json) in
+# ${XDG_STATE_HOME:-~/.local/state}/kosmozoo. Override with KOZMOZOO_STATE.
+exec /usr/bin/python3 -u /usr/lib/kosmozoo/server.py "$@"

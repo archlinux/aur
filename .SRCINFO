@@ -1,0 +1,16 @@
+pkgbase = kosmozoo-git
+	pkgdesc = Local ComfyUI image review/curation tool — zero-build SPA + Python stdlib server (git main)
+	pkgver = 0.1.0.r3.g6d66ac0
+	pkgrel = 1
+	url = https://github.com/alexindigo/kosmozoo
+	arch = any
+	license = LGPL-3.0-only
+	makedepends = git
+	depends = python
+	optdepends = python-pytorch: local anime face detection (run setup_facedetect.sh with KOZMOZOO_VENV)
+	provides = kosmozoo
+	conflicts = kosmozoo
+	source = kosmozoo-git::git+https://github.com/alexindigo/kosmozoo.git
+	sha256sums = SKIP
+
+pkgname = kosmozoo-git

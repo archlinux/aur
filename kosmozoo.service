@@ -1,0 +1,14 @@
+[Unit]
+Description=kosmozoo review server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/kosmozoo
+Restart=always
+RestartSec=2
+# Environment=KOZMOZOO_PORT=2084
+# Environment=KOZMOZOO_HOSTS=local=127.0.0.1:8188
+# Environment=KOZMOZOO_STATE=%h/.local/state/kosmozoo
+
+[Install]
+WantedBy=default.target
