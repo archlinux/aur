@@ -23,7 +23,7 @@ sha256sums=('8ebe37feddfc4e640541dce6a09d6144eae4606ac0dc1648e8f225d002c9531b'
             '766e09d98e852594fc3e918deb890c3cd92a2416ab4dea32be76283ecb64a32e')
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev
 	-DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-DNO_VERBOSE_VERSION=ON
