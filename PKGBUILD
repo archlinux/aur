@@ -1,7 +1,7 @@
 # Maintainer: Orion <128988082+Orion-zhen@users.noreply.github.com>
 
 pkgname=onechat-git
-pkgver=r109.7fe8f03
+pkgver=r118.670a90b
 pkgrel=1
 pkgdesc='Your last one chatbox app. (git)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
   'gdk-pixbuf2'
   'glib2'
   'glibc'
-  'gtk3'
+  'gtk4'
   'hicolor-icon-theme'
   'libgcc'
   'libxcb'
@@ -23,7 +23,7 @@ depends=(
   'vulkan-driver'
   'vulkan-icd-loader'
   'wayland'
-  'webkit2gtk-4.1'
+  'webkitgtk-6.0'
 )
 makedepends=('cargo' 'git')
 provides=('onechat')
