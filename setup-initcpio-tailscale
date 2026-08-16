@@ -223,6 +223,46 @@ run_check() {
     fi
   fi
 
+  # Key expiry, the one setup step nothing else can verify: an expired initrd
+  # node cannot reach the tailnet, and you would find out while locked out of
+  # a machine waiting for its passphrase. The booted system's own tailscale
+  # sees the initrd node as a peer, and a node with expiry disabled -- what
+  # the setup output asks for -- simply has no KeyExpiry. Every way this can
+  # be inapplicable is a warning: it is a courtesy check on someone else's
+  # control plane, not a verdict on this machine's configuration.
+  local expiry='' status=''
+  if ! command -v tailscale >/dev/null; then
+    chk_warn "tailscale is not installed here, so '${TS_HOSTNAME}' key expiry cannot be checked"
+  elif ! command -v jq >/dev/null; then
+    chk_warn "jq is not installed, so '${TS_HOSTNAME}' key expiry cannot be checked"
+  elif ! status=$(tailscale status --json 2>/dev/null); then
+    chk_warn "the system tailscale is not running, so '${TS_HOSTNAME}' key expiry cannot be checked"
+  else
+    expiry=$(printf '%s' "$status" |
+      jq -r --arg n "$TS_HOSTNAME" '[.Peer[]? | select(.HostName == $n)][0].KeyExpiry // ""' 2>/dev/null)
+    if [[ -z $expiry ]]; then
+      # No peer of that name, or one with expiry disabled. Telling them apart
+      # keeps a custom --hostname from reading as an all-clear.
+      if printf '%s' "$status" |
+        jq -e --arg n "$TS_HOSTNAME" '[.Peer[]? | select(.HostName == $n)] | length > 0' >/dev/null 2>&1; then
+        chk_ok "key expiry is disabled for '${TS_HOSTNAME}'"
+      else
+        chk_warn "'${TS_HOSTNAME}' is not among this tailnet's peers, so its key expiry cannot be checked (registered under another name? pass --hostname=)"
+      fi
+    else
+      local now left
+      now=$(date +%s)
+      left=$(($(date -d "$expiry" +%s 2>/dev/null || echo "$now") - now))
+      if ((left <= 0)); then
+        chk_fail "the key for '${TS_HOSTNAME}' expired on ${expiry%T*}; the node cannot reach your tailnet. Re-run ${CMD0}, then disable expiry at https://console.tailscale.com/admin/machines"
+      elif ((left < 14 * 86400)); then
+        chk_fail "the key for '${TS_HOSTNAME}' expires on ${expiry%T*}, in $((left / 86400)) days; disable expiry at https://console.tailscale.com/admin/machines"
+      else
+        chk_warn "the key for '${TS_HOSTNAME}' expires on ${expiry%T*}, in $((left / 86400)) days; disabling expiry is what keeps an initrd node reachable"
+      fi
+    fi
+  fi
+
   # Best effort: do built images actually carry the daemon? Skipped when the
   # tools or images are not where this expects them. When TUN= asks for a
   # kernel device, the module has to be in the image too -- configured but not
@@ -304,6 +344,7 @@ fi
 # the tun module belongs in the image.
 TS_SSH=yes
 TS_TUN=''
+DO_CHECK=no
 FOUND_HOSTNAME_IN_ARGS=no
 FOUND_SSH_IN_ARGS=no
 FOUND_NETFILTER_IN_ARGS=no
@@ -330,7 +371,10 @@ for arg in "$@"; do
     exit 0
     ;;
   check)
-    run_check # exits
+    # Deferred until the scan finishes: the check resolves the initrd node by
+    # hostname, and a --hostname given after --check has not been seen yet.
+    DO_CHECK=yes
+    continue
     ;;
   hostname)
     FOUND_HOSTNAME_IN_ARGS=yes
@@ -371,6 +415,10 @@ for arg in "$@"; do
   TS_ARGS+=("$arg")
 done
 [[ $WANT_HOSTNAME == no ]] || die "--hostname needs a value"
+
+# --check verifies and exits; TS_HOSTNAME is settled by now, so it knows which
+# node to look for.
+[[ $DO_CHECK == no ]] || run_check
 
 # Defaults are prepended, so an argument the user did pass always has the last
 # word with the flag parser on the other end.

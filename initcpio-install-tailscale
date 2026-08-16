@@ -22,7 +22,10 @@ build() {
 		fi
 	done
 	add_file ${setupdir}/default.env /etc/default/tailscaled
-	add_file ${setupdir}/tailscaled.state /var/lib/tailscale/tailscaled.state
+	# 0600 rather than add_file's default of the source's mode: the state file
+	# is the node key, and Tailscale SSH can grant unprivileged logins, whose
+	# session in the image could otherwise read it.
+	add_file ${setupdir}/tailscaled.state /var/lib/tailscale/tailscaled.state 0600
 
 	# Copy ssh host keys if they exist
 	if [[ -d ${setupdir}/ssh ]]; then

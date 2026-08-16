@@ -134,8 +134,9 @@ setup-initcpio-tailscale --check
 
 It verifies, without changing anything, that the configuration files exist,
 that `tailscale` sits correctly in `HOOKS=` (after `systemd`, after the
-network hook, before the encrypt hook), and that the built images actually
-contain `tailscaled`. Then confirm the node is live:
+network hook, before the encrypt hook), that the built images actually contain
+`tailscaled`, and (with `jq` installed and this machine on the tailnet) that
+the initrd node's key is not about to expire. Then confirm the node is live:
 
 ```sh
 tailscale status | grep -- -initrd    # from any other node on your tailnet
@@ -156,6 +157,12 @@ been entered, so the clock is running while you are still reaching for a
 terminal. When it expires the mount jobs fail and the initramfs drops to
 emergency mode; the passphrase prompt is still there, but answering it no longer
 resumes the boot.
+
+You are not cut off when that happens: the boot test lets a systemd image run
+past the timeout on purpose, and the node stays online and still answers SSH
+in emergency mode. So you can log in and finish the job by hand,
+`systemctl start initrd-root-fs.target` after unlocking the device. Better
+not to need to.
 
 Whether it bites depends on how `root=` is written. `systemd-cryptsetup`
 disables the timeout for the device it unlocks itself, so `root=/dev/mapper/root`
