@@ -1,0 +1,22 @@
+post_install() {
+    echo ""
+    echo "============================================================"
+    echo ""
+    echo " 1. Add your Apple Watch IRK:"
+    echo "      sudo nano /etc/watch-unlock-linux/irk"
+    echo "    See the GitHub README for how to extract the IRK"
+    echo ""
+    echo " 2. Enable and start the service:"
+    echo "      sudo systemctl enable --now apple-watch-unlock"
+    echo ""
+    echo " 3. Check status:"
+    echo "      sudo systemctl status apple-watch-unlock"
+    echo "      sudo journalctl -u apple-watch-unlock -f"
+    echo ""
+    echo "============================================================"
+    echo ""
+}
+
+pre_remove() {
+    systemctl disable --now apple-watch-unlock 2>/dev/null || true
+}

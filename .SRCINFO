@@ -1,0 +1,18 @@
+pkgbase = watch-unlock-linux
+	pkgdesc = Unlock your Linux session automatically with your Apple Watch via Bluetooth LE
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/DavidSt49/watch-unlock-linux
+	install = watch-unlock-linux.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-cryptography
+	depends = bluez
+	depends = bluez-utils
+	backup = etc/watch-unlock-linux/irk
+	source = watch-unlock-linux::git+https://github.com/DavidSt49/watch-unlock-linux.git
+	sha256sums = SKIP
+
+pkgname = watch-unlock-linux
