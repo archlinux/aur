@@ -1,0 +1,19 @@
+pkgbase = pkg-notify
+	pkgdesc = Lightweight Arch Linux package update checker with KDE Plasma notifications
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/gratzyuri-glitch/pkg-notify
+	arch = any
+	license = MIT
+	depends = bash
+	depends = coreutils
+	depends = gawk
+	depends = libnotify
+	depends = pacman-contrib
+	depends = util-linux
+	optdepends = paru: AUR package update checking
+	optdepends = yay: AUR package update checking
+	source = pkg-notify-1.1.0.tar.gz::https://github.com/gratzyuri-glitch/pkg-notify/archive/v1.1.0.tar.gz
+	sha256sums = eedb81e831342dbe34f65020688bcb122b06758f7830d5f5bdbe8fac67f62bf5
+
+pkgname = pkg-notify
