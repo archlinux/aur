@@ -1,7 +1,7 @@
 pkgbase = pi-agent-desktop-bin
 	pkgdesc = Desktop UI for browsing sessions and working with the pi coding agent (prebuilt binary)
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abcwyc/pi-agent-desktop
 	arch = x86_64
 	license = MIT

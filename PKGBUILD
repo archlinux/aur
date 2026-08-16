@@ -4,7 +4,7 @@ pkgname=pi-agent-desktop-bin
 _pkgname=pi-agent-desktop
 _appname='Pi Agent'
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop UI for browsing sessions and working with the pi coding agent (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/abcwyc/pi-agent-desktop'
@@ -25,6 +25,14 @@ package() {
   install -dm755 "${extract_dir}"
   bsdtar -C "${extract_dir}" -xf "${srcdir}/${_appname// /_}_${pkgver}_amd64.deb"
   bsdtar -C "${pkgdir}" -xf "${extract_dir}/data.tar.gz"
+
+  mv "${pkgdir}/usr/bin/${_pkgname}" \
+    "${pkgdir}/usr/lib/${_appname}/${_pkgname}"
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<'SCRIPT'
+#!/bin/sh
+export WEBKIT_DISABLE_DMABUF_RENDERER="${WEBKIT_DISABLE_DMABUF_RENDERER:-1}"
+exec '/usr/lib/Pi Agent/pi-agent-desktop' "$@"
+SCRIPT
 
   install -Dm644 "${srcdir}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
