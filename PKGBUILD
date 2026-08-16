@@ -1,7 +1,7 @@
 # Maintainer: Daniele <d bas dot so at poul.org>
 
 pkgname="kontainer"
-pkgver=1.4.1
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="A simple Kirigami GUI for Distrobox"
 url="https://github.com/DenysMb/Kontainer"
@@ -36,7 +36,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DBUILD_TESTING=OFF
-    -Wno-dev
+    -Wno-author
   )
 
   cmake "${_cmake_options[@]}"

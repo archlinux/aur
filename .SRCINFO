@@ -1,6 +1,6 @@
 pkgbase = kontainer
 	pkgdesc = A simple Kirigami GUI for Distrobox
-	pkgver = 1.4.1
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/DenysMb/Kontainer
 	arch = x86_64
