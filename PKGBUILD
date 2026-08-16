@@ -1,4 +1,11 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
+#
+# This recipe used to exist only in the AUR git repository, which made the AUR
+# the sole copy of it — nothing here could review it, and a change to this
+# project could not travel with the packaging change it needed. arch-repo reads
+# it from this branch now and publishes yay-friend-git from it.
+#
+# pkgrel is arch-repo's, and it overwrites it. pkgver is left to pkgver().
 pkgname=yay-friend-git
 _pkgname=yay-friend
 pkgver=0.6.0.r0.ga3ff03f
@@ -16,6 +23,11 @@ depends=(
 makedepends=(
     'go>=1.23'
 )
+# git is deliberately in depends() and not also in makedepends(). namcap warns
+# in both directions here: absent, "VCS source PKGBUILD needs additional
+# makedepends 'git'"; present in both, "Make dependency (git) already included
+# as dependency". depends() alone installs it at build time and is the one that
+# builds clean.
 optdepends=(
     'claude-code: default AI provider for security analysis (any `claude` CLI on PATH also works)'
 )
