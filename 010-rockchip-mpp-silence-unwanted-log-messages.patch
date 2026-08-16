@@ -13,7 +13,7 @@
      if (mpp_get_mpp_service_name()) {
 --- a/osal/mpp_soc.c
 +++ b/osal/mpp_soc.c
-@@ -1032,7 +1032,7 @@ static void read_soc_name(char *name, rk
+@@ -1114,7 +1114,7 @@ static void read_soc_name(char *name, rk
      rk_s32 fd = open(path, O_RDONLY);
  
      if (fd < 0) {

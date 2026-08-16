@@ -1,0 +1,8 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -138 +138 @@
+-if(GCC)
++if(GCC OR CLANG)
+@@ -181 +181 @@
+-endif(GCC)
++endif()
