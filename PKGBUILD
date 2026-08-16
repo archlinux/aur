@@ -4,7 +4,7 @@ _pkgname=range-v3
 pkgname=mingw-w64-${_pkgname}-git
 provides=("mingw-w64-${_pkgname}")
 conflicts=("mingw-w64-${_pkgname}")
-pkgver=0.12.0.r47.gca1388f
+pkgver=0.12.0.r49.g108f93c
 pkgrel=1
 pkgdesc='Experimental range library for C++11/14/17 (mingw-w64)'
 url="https://github.com/ericniebler/${_pkgname}"
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 source=("git+${url}.git")
 
 _dir="${_pkgname}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' \
          -DRANGES_CXX_STD=23 -DRANGE_V3_HEADER_CHECKS=OFF -DRANGE_V3_EXAMPLES=OFF -DRANGE_V3_PERF=OFF )
 
