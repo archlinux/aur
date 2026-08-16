@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+/tmp/
+*.pkg.tar.zst
+# core dump（微信等进程崩溃时误写到工作目录）
+core.*
+log/
+openunivpn/
+*.pkg.tar.zst
+pkg/
+src/

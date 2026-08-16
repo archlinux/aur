@@ -1,0 +1,20 @@
+post_install() {
+    cat << 'EOF'
+OpenUniVPN 已安装
+
+用法:
+  编辑 /etc/openunivpn/config.conf 填入用户名、密码和网关列表
+  sudo python3 /opt/openunivpn/client.py    # 启动 VPN (TUN 模式)
+
+或使用 systemd 自动管理:
+  sudo systemctl enable --now openunivpn   # 开机自启 + 启动
+  sudo systemctl status openunivpn         # 查看状态
+
+DNS 说明:
+  客户端通过 openresolv(resolvconf) 管理 VPN DNS。若未安装 openresolv
+  或 NetworkManager 未配置 rc-manager=resolvconf，则仅内网域名解析不可用，
+  不影响公网网络。如需完整支持，请自行安装 openresolv 并按需配置。
+EOF
+}
+
+post_upgrade() { post_install; }

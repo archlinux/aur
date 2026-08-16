@@ -1,0 +1,27 @@
+[Unit]
+Description=OpenUniVPN — H3C SecPath SSLVPN 开源替代客户端
+Documentation=https://github.com/tsaitang404/openunivpn
+After=network-online.target
+Wants=network-online.target
+# 限制失败重启频率，避免因认证失败（如未在公司内网）导致无限重启刷网络状态
+StartLimitIntervalSec=300
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=root
+Group=root
+SyslogIdentifier=openunivpn
+# 首次启动若缺少配置文件，从 example 复制（升级 pacman 不覆盖用户配置）
+ExecStartPre=/usr/bin/sh -c 'test -f /etc/openunivpn/config.conf || cp /etc/openunivpn/config.conf.example /etc/openunivpn/config.conf'
+# client.py 内部已完成认证（NetExtension + 双连接握手），无需其他前置
+ExecStart=/usr/bin/python3 /opt/openunivpn/client.py
+Restart=on-failure
+RestartSec=10
+# 清理 TUN 设备（"-" 前缀忽略失败；systemd 不支持 shell 重定向）
+ExecStopPost=-/usr/bin/ip link del cnem0
+# 安全加固（需写 /etc/resolv.conf 管理 VPN DNS，不能启用 ProtectSystem=full）
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
