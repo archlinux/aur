@@ -25,10 +25,7 @@ depends=(
     'fuzzel'
 )
 
-optdepends=(
-    'midnight-shell-git: shell control and screenshot function'
-    'caelestia-shell-git: legacy shell support'
-)
+optdepends=('midnight-shell-git: one of the reasons the cli exists')
 
 makedepends=(
     'git'
@@ -40,7 +37,6 @@ makedepends=(
 
 provides=(
     "${_pkgname}=${pkgver}"
-    "dim-caelestia-cli-git=${pkgver}"
     "caelestia-cli=${pkgver}"
     "caelestia-cli-git=${pkgver}"
 )
@@ -50,7 +46,7 @@ conflicts=(
     'caelestia-cli'
     'caelestia-cli-git'
 )
-replaces=('dim-caelestia-shell-git')
+replaces=('dim-caelestia-cli-git')
 
 source=("${pkgname}::git+https://github.com/dim-ghub/midnight-cli.git")
 sha256sums=('SKIP')
