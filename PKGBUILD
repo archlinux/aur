@@ -1,44 +1,69 @@
-# Maintainer: Bence Toth <oss at bnctth dot dev>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Bence Toth <oss at bnctth dot dev>
 # Based on Chocobo1's rpi-image-git package, thanks!
 
 pkgname=unraid-usb-creator-git
-pkgver=1.0.0.r19.g166e950
+pkgver=2.0.11.unraid.1.r0.g9c04d58
 pkgrel=1
 pkgdesc="Unraid os usb creator utility"
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url="https://github.com/unraid/usb-creator-next"
-license=('Apache')
-depends=('glibc' 'curl' 'hicolor-icon-theme' 'libarchive' 'openssl' 'qt5-base' 'qt5-declarative' 'qt5-quickcontrols2' 'qt5-svg' 'zlib')
-makedepends=('git' 'cmake' 'qt5-tools')
-provides=("unraid-usb-creator=$pkgver")
-conflicts=('unraid-usb-creator')
+license=(Apache-2.0)
+depends=(
+    acl
+    brotli
+    glibc
+    gnutls
+    hicolor-icon-theme
+    libgcc
+    libidn2
+    libstdc++
+    liburing
+    nettle
+    qt6-base
+    qt6-declarative
+    )
+makedepends=(
+    cmake
+    git
+    jemalloc
+    qt6-svg
+    qt6-tools
+    vulkan-headers
+    )
+provides=(unraid-usb-creator)
+conflicts=(unraid-usb-creator)
 source=("git+https://github.com/unraid/usb-creator-next.git")
 sha256sums=('SKIP')
 
+prepare() {
+  cd "usb-creator-next/src/dependencies"
+  # https://github.com/unraid/usb-creator-next/issues/123
+  sed -i 's|8.20.0|8.21.0|g' curl.cmake
+}
 
 pkgver() {
   cd "usb-creator-next"
-
-  _tag=$(git tag -l --sort -v:refname | sed '/rc[0-9]*/d' | head -n1)
-  _rev=$(git rev-list --count $_tag..HEAD)
-  _hash=$(git rev-parse --short HEAD)
-  printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "usb-creator-next"
+  # Disable all warnings
+  export CFLAGS+=" -w"
+  export CXXFLAGS+=" -w"
 
-  cmake \
-    -B "_build" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX="/usr" \
-    src
-  make -C "_build"
+  local _flags=(
+    -DFETCHCONTENT_QUIET:BOOL=OFF
+  )
+
+  cmake -B build -S "usb-creator-next/src" -Wno-author \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    "${_flags[@]}"
+
+  cmake --build build
 }
 
 package() {
-  cd "usb-creator-next"
-
-  make -C "_build" DESTDIR="$pkgdir" install
-  install -Dm644 "license.txt" -t "$pkgdir/usr/share/licenses/unraid-usb-creator"
+  DESTDIR="${pkgdir}" cmake --install build
 }
