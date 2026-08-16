@@ -12,6 +12,7 @@ pkgbase = bosectl-qt
 	depends = qt6-base
 	depends = bluez-libs
 	depends = bluez
+	depends = hicolor-icon-theme
 	source = bosectl-qt-0.3.0.tar.gz::https://github.com/aaronsb/bosectl-qt/archive/v0.3.0.tar.gz
 	source = bosectl::git+https://github.com/aaronsb/bosectl.git#commit=157c35717f23c6133bb208a0c11d868c3f2c49dd
 	sha256sums = efaaabcd84a3ee44eb0d296ea4ba1e9a6453981836ac1060ddc57ef2fb1591b3

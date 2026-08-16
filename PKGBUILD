@@ -10,6 +10,12 @@ depends=(
     'qt6-base'
     'bluez-libs'
     'bluez'
+    # CMake installs bosectl-qt.svg into
+    # /usr/share/icons/hicolor/scalable/apps, and that hierarchy is owned by
+    # hicolor-icon-theme. Nothing in this file mentions the icon, which is why
+    # the dependency was missed: the install comes from the build system, not
+    # from package().
+    'hicolor-icon-theme'
 )
 makedepends=(
     'cmake'
