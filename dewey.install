@@ -1,0 +1,12 @@
+post_install() {
+    echo ""
+    echo "==> dewey installed."
+    echo "==> Quick start:"
+    echo ""
+    echo "      dewey libraries"
+    echo "      dewey search \"moby dick\" --module gutenberg"
+    echo ""
+    echo "==> The bundled gutenberg and standard-ebooks modules live in the"
+    echo "==> source repository: https://github.com/tedwardd/dewey/tree/main/modules"
+    echo ""
+}

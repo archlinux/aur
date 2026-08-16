@@ -1,0 +1,18 @@
+pkgbase = dewey-bin
+	pkgdesc = Command-line framework for open ebook libraries (pre-built binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tedwardd/dewey
+	install = dewey.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = python
+	provides = dewey
+	conflicts = dewey
+	source_x86_64 = dewey-0.1.0-x86_64.tar.gz::https://github.com/tedwardd/dewey/releases/download/v0.1.0/dewey-linux-x86_64-v0.1.0.tar.gz
+	sha256sums_x86_64 = abd0600aeefd0e749b7cfc1943d243856d75356dfa56952afc52dc685cab49df
+	source_aarch64 = dewey-0.1.0-aarch64.tar.gz::https://github.com/tedwardd/dewey/releases/download/v0.1.0/dewey-linux-aarch64-v0.1.0.tar.gz
+	sha256sums_aarch64 = 17c9a21005bdb561ad77804312fd906d880ea4f8d1307e0a2e98fded3aab0dcf
+
+pkgname = dewey-bin
