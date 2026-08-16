@@ -14,9 +14,9 @@ source=('git+https://github.com/akosela/svgalib.git'
         '0002-remove-ldconfig-call-top-makefile.patch'
         '0003-remove-ldconfig-call-src-makefile.patch')
 md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+         'de12acfa01c667abb76164ad84380fdd'
+         'ca103df0772c1959b2db6eddb293a4a8'
+         '4a2162161ecae03a107402cb0b1933a2')
 
 prepare() {
     cd "${srcdir}/${_gitname}"

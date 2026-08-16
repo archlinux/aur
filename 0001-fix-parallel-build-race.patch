@@ -1,0 +1,10 @@
+--- a/Makefile	2026-08-13 20:36:28.494912183 +0200
++++ b/Makefile	2026-08-13 20:36:28.491463287 +0200
+@@ -298,7 +298,7 @@
+ 		fi; \
+ 	done
+
+-textutils: $(UTILDIRS)
++textutils: $(UTILDIRS) sharedlib/libvga.so.$(VERSION)
+ 	(cd utils; \
+ 	$(MAKE) -f $(SRCDIR)/utils/Makefile SRCDIR="$(SRCDIR)")

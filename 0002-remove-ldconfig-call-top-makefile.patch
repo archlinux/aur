@@ -1,0 +1,10 @@
+--- a/Makefile	2026-08-13 20:54:11.527145552 +0200
++++ b/Makefile	2026-08-13 20:55:27.060921641 +0200
+@@ -100,7 +100,6 @@
+ 		 ln -sf $$foo `echo $$foo | sed 's/\.so\..*/.so/'` ; \
+ 		 ln -sf $$foo `echo $$foo | sed 's/\.so\..*/.so.1/'` ); \
+ 	done
+-	-ldconfig
+
+ installstaticlib: static
+ 	@echo Installing static libraries in $(libdir).

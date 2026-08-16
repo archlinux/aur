@@ -1,0 +1,9 @@
+--- a/src/Makefile	2026-08-13 20:54:11.534403523 +0200
++++ b/src/Makefile	2026-08-13 20:55:27.076255857 +0200
+@@ -453,7 +453,6 @@
+
+ $(sharedlibdir)/libvga.so.$(VERSION): libvga.so.$(VERSION)
+ 	$(INSTALL_SHLIB) $< $(sharedlibdir)/$<
+-	-ldconfig
+
+ install: $(sharedlibdir)/libvga.so.$(VERSION)
