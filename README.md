@@ -34,7 +34,7 @@ The [ComfyUI](https://github.com/Comfy-Org/ComfyUI) is designed to be run from a
 
 - [`comfykick.py`](comfykick.py) → `~/.local/share/comfykick/comfykick.py`
 
-- [`comfykick-user.service`](comfykick-user.service) → `~/.config/systemd/user/comfykick.service` (or `$XDG_CONFIG_HOME/systemd/user/comfykick.service`)
+- [`comfykick.service`](comfykick.service) → `~/.config/systemd/user/comfykick.service` (or `$XDG_CONFIG_HOME/systemd/user/comfykick.service`)
 
 - [`comfykick.toml`](comfykick.toml) → `~/.config/comfykick/comfykick.toml` (or `$XDG_CONFIG_HOME/comfykick/comfykick.toml`)
 

@@ -782,6 +782,11 @@ def main() -> None:
     if shutil.which("uv") is None:
         die("'uv' is not installed or not in PATH.")
 
+    if Path(__file__).resolve() != (
+        Path("/usr/share") / PROJECT_NAME / f"{PROJECT_NAME}.py"
+    ):
+        log.warning("ComfyKick is running from [%s].", Path(__file__))
+
     log.info("Starting %s %s", PROJECT_NAME, PROJECT_VERSION)
 
     check_user_config(_USER_CONFIG_FILE)

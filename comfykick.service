@@ -5,7 +5,11 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 /usr/share/comfykick/comfykick.py
+ExecStart=/bin/sh -c ' \
+    [ -f "%h/.local/share/comfykick/comfykick.py" ] \
+        && exec /usr/bin/python3 "%h/.local/share/comfykick/comfykick.py" \
+        || exec /usr/bin/python3 /usr/share/comfykick/comfykick.py \
+'
 
 [Install]
 WantedBy=default.target
