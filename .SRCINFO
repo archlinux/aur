@@ -1,13 +1,13 @@
 pkgbase = acton-ai-bin
 	pkgdesc = An agentic AI framework built on the actor model — scriptable CLI with persistent sessions
-	pkgver = 0.30.0
+	pkgver = 0.31.0
 	pkgrel = 1
 	url = https://github.com/Govcraft/acton-ai
 	arch = x86_64
 	license = MIT
 	provides = acton-ai
 	conflicts = acton-ai
-	source = https://github.com/Govcraft/acton-ai/releases/download/v0.30.0/acton-ai-0.30.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 6228ed4cd7f6a312b51c820c3038e63ef540b1f8620a2d61ebd9b738d5ebafcc
+	source = https://github.com/Govcraft/acton-ai/releases/download/v0.31.0/acton-ai-0.31.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = c5096ef8d14aef79815de61fc379cb7c0b78ed85169e0d47ac346c9f7fcab435
 
 pkgname = acton-ai-bin
