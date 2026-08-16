@@ -2,9 +2,8 @@
 
 _pkgname=idnits
 pkgname="ietf-${_pkgname}"
-pkgver='3.0.0'
-_alpharel=74
-pkgrel=3
+pkgver='3.1.0'
+pkgrel=1
 pkgdesc='Check internet-drafts for submission nits'
 arch=('any')
 url='https://author-tools.ietf.org/idnits3/'
@@ -14,15 +13,14 @@ depends=(
 )
 makedepends=(
   'npm'
-  'jq'
 )
 
-source=("https://github.com/ietf-tools/${_pkgname}/archive/refs/tags/${pkgver}-alpha.${_alpharel}.tar.gz")
-sha256sums=('6d0f0c74585f15e3c8a8bb49908b44c4fa58f42bac9d4c6ab0824d6906e4b473')
-noextract=("${pkgver}-alpha.${_alpharel}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ietf-tools/${_pkgname}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('80a60387bac954fbbd1a4e1099492bfc2eba081b7776ecf7fadf11ba2dafed85')
+noextract=("${pkgname}-${pkgver}.tar.gz")
 
 package() {
-  npm install --cache "${srcdir}/npm-cache" -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgver}-alpha.${_alpharel}.tar.gz"
+  npm install --cache "${srcdir}/npm-cache" -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tar.gz"
 }
 
 # vim: ts=2 sw=2 et:
