@@ -1,0 +1,3 @@
+post_install() {
+	echo 'enable rift with: systemctl --user enable --now rift.service'
+}
