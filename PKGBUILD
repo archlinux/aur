@@ -2,7 +2,7 @@
 
 pkgname=openmw-freefps-rubic0n-native-git
 pkgver=0.51.0.r6.g5e309685.rubic0n.r3542.gf3ee18af
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenMW 0.51 FreeFPS build with private Rubic0n, background Lua GC, LTO, and native CPU tuning'
 arch=('x86_64')
 url='https://gitgud.io/loregamer/openmw-fps'
@@ -53,7 +53,7 @@ sha256sums=(
   'SKIP'
   '15a38f070c6401d34278d898fe6b344c899afe3500fdf7c024192f3e180bd638'
   'ed442d7dcaec98d88fe5a2b7597b4fb1806b35fde6eab6dac67060212432aa91'
-  '55d03cfa14047f437b8998234f0085d9d5cadd1eacc2593f77894fabaf2c034c'
+  '2299bf55ddeb4704834148c8cda6a7710816a10cceae471ff2d4323eba6f15b4'
 )
 
 pkgver() {
@@ -80,8 +80,8 @@ prepare() {
   # Add an explicit static-Rubic0n integration path to OpenMW's CMake build.
   patch -Np1 -i "${srcdir}/private-rubic0n-static.patch"
 
-  # -march=native defines AVX on modern hosts, but the MOC dispatch baseline
-  # translation unit intentionally rejects AVX/VEX code generation.
+  # Keep MOC's baseline dispatch unit free of AVX/VEX instructions and disable
+  # strict-aliasing assumptions for its non-conforming SIMD lane accessors.
   patch -Np1 -i "${srcdir}/maskedoc-native-baseline.patch"
 
   # Rubic0n enables Lua 5.2 compatibility. Its resource fixes OpenMW 0.51's

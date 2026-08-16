@@ -1,7 +1,7 @@
 pkgbase = openmw-freefps-rubic0n-native-git
 	pkgdesc = OpenMW 0.51 FreeFPS build with private Rubic0n, background Lua GC, LTO, and native CPU tuning
 	pkgver = 0.51.0.r6.g5e309685.rubic0n.r3542.gf3ee18af
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitgud.io/loregamer/openmw-fps
 	install = openmw-freefps-rubic0n-native-git.install
 	arch = x86_64
@@ -53,6 +53,6 @@ pkgbase = openmw-freefps-rubic0n-native-git
 	sha256sums = SKIP
 	sha256sums = 15a38f070c6401d34278d898fe6b344c899afe3500fdf7c024192f3e180bd638
 	sha256sums = ed442d7dcaec98d88fe5a2b7597b4fb1806b35fde6eab6dac67060212432aa91
-	sha256sums = 55d03cfa14047f437b8998234f0085d9d5cadd1eacc2593f77894fabaf2c034c
+	sha256sums = 2299bf55ddeb4704834148c8cda6a7710816a10cceae471ff2d4323eba6f15b4
 
 pkgname = openmw-freefps-rubic0n-native-git

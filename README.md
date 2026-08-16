@@ -21,7 +21,10 @@ portable binary package.
   input-driven Lua calls.
 - OpenMW and Rubic0n use `-march=native` and OpenMW uses its Release/LTO build.
   The baseline Masked Occlusion Culling source gets a required `-mno-avx`
-  exception; its AVX2 and AVX-512 dispatch units retain their own flags.
+  exception; its AVX2 and AVX-512 dispatch units retain their own flags. MOC
+  alone is compiled with `-fno-strict-aliasing` to prevent GCC 16 from
+  optimizing its non-conforming union-based SIMD lane accessors under
+  strict-aliasing assumptions.
 - The engine links against the same OpenMW-oriented dependency set used by
   `openmw-stable-git`: `openscenegraph-openmw-git`, `mygui-openmw`, and
   `recastnavigation-openmw`.
@@ -219,6 +222,11 @@ garbage collection instead of merely disabling the background worker.
 
 ## Troubleshooting and rollback
 
+- Package release 2 fixes strict-aliasing undefined behavior exposed by GCC 16
+  that could crash in `RasterizeTriangleBatch` when entering a dense exterior
+  with occlusion culling enabled. Rebuild and reinstall the package before
+  disabling culling as a workaround. Release 1 users can temporarily set
+  `occlusion culling = false` if they cannot rebuild immediately.
 - If objects disappear incorrectly, first use the conservative occluder tuning
   above. Set `occlusion culling = false` to establish whether FreeFPS culling
   is responsible.
@@ -241,6 +249,12 @@ scratch in an up-to-date Arch `base-devel` container with GCC 16.2.1 and CMake
 4.4.2. The full 1,198-target Ninja build and LTO link completed, `namcap`
 reported no errors, and an Xvfb smoke test returned OpenMW 0.51 revision
 `5e3096851d` cleanly.
+
+The occlusion fix was also tested against the read-only NEMAS Overhaul profile
+by starting directly in Seyda Neen with reverse-Z, terrain occlusion, static
+occlusion, and shadows enabled. The original build crashed deterministically
+in MOC's AVX2 rasterizer; the fixed Release/LTO build ran for the full
+90-second test window and shut down cleanly.
 
 The final `openmw` ELF has exported Lua API symbols but no dynamic dependency on
 `libluajit`; installing Arch's `luajit` beside the package was also tested. The
