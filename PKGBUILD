@@ -17,7 +17,7 @@ source=("https://downloads.sourceforge.net/${_pkgname}/${_pkgname}-${pkgver}.tar
 sha512sums=('f9b0654b179bfea9348b117f20ba9006166ed1d464c0e0d9ad3a1239cf3538c7c559b570bc31e3d217a0819bfe6e700b3a3beab38d0e27ff33f96eb7bd45e143')
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' )
 
 build() {
