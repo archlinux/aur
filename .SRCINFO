@@ -1,6 +1,6 @@
 pkgbase = opencie
 	pkgdesc = Digital signatures and verification with the Italian Electronic Identity Card (CIE)
-	pkgver = 0.2.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/M0Rf30/opencie
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = opencie
 	depends = opencie-pkcs11
 	depends = gtk3
 	depends = pcsclite
-	source = opencie-0.2.0.tar.gz::https://github.com/M0Rf30/opencie/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 9e09bba651ce2dc037a57f7b9646543849996a8febc4a2b385a1e695f705842c
+	source = opencie-0.3.1.tar.gz::https://github.com/M0Rf30/opencie/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = ba10b4f64c7d4b1a262cca1bdf3c84fabc7918c9874fc46dbda96e09e0d83af4
 
 pkgname = opencie
