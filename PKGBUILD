@@ -1,13 +1,13 @@
 # Maintainer: OxiRoute maintainers <https://github.com/oxiroute/oxiroute/issues>
 
 pkgname=oxiroute
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Pingora-based HTTP, TCP, and RTMP proxy runtime'
 arch=('x86_64')
 url='https://github.com/brauliobo/oxiroute'
 license=('Apache-2.0')
-depends=('ca-certificates' 'gcc-libs' 'glibc' 'openssl')
+depends=('ca-certificates' 'gcc-libs' 'glibc' 'openssl' 'systemd>=257')
 makedepends=('rust>=1.97')
 optdepends=('certbot: provide certificate lineages consumed by configured Certbot sources')
 backup=('etc/oxiroute/oxiroute.env'
@@ -22,15 +22,15 @@ source=("oxiroute-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/oxiroute
         'oxiroute.env'
         'oxiroute.kdl'
         'oxiroute.lua'
-        'README.md::https://raw.githubusercontent.com/brauliobo/oxiroute/2d9c5fe66cd096d7a1d8e3bada8d5784b5f97f6c/packaging/arch/README.md')
-sha256sums=('bc2b5a680a7aae181a4f5b8b9e6326043334247ab6355273d589078c5bfb0a54'
-             '5d93df51ac5690a336e40f624c3b27ba3a1d4ab8a218dbaac72a05a92819ac54'
+        'README.md')
+sha256sums=('fb8b984492a17db18e5c497bd4ae8262705e423675801e43328ad3e59205015e'
+             '574eab59174656b0813499ed1c9bca8be5a6e2cf69a98e8327f376e1c0b83b1b'
             'ece087105e74910e9d4a6c3551082828378ac5c62fc15e97a755a3bc93020e72'
              '502dbc96a4f316ff7375cf90da32457b6003723a744825f04cec8a624974a356'
              'c87c9ef586bbb68f69f5abc1c4616de35783fe5d5d2b07b0b6b4011b2b892f44'
             '57e5cb6cf58a38b6c5efd99e0b5a9a36bac3fafba438059a8396b07e9b6e80a9'
             'f55a08f56ff139b566afac6b0c9cbbc4ed08f69a7e04810128bfb8c98a0f0564'
-            '64068182bca24ac7b569e766b16ee83675c5acf2f67e46c709fc31d6caf290d4')
+             '9d30b8da9ba57f2a5cd28155e79694854aa3d788a208b437aaf5329cc2ef8d93')
 
 prepare() {
   cd "oxiroute-${pkgver}"
@@ -46,7 +46,7 @@ build() {
     --package oxiroute \
     --package oxiroute-supervisor-process \
     --target "${_target}" \
-    --jobs 4
+    --jobs 3
 }
 
 package() {

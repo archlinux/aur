@@ -1,6 +1,7 @@
 [Unit]
 Description=OxiRoute proxy server
 Documentation=https://github.com/brauliobo/oxiroute
+ConditionControlGroupController=v2
 Wants=network-online.target
 After=network-online.target
 
@@ -26,7 +27,9 @@ NoNewPrivileges=true
 LockPersonality=true
 PrivateDevices=true
 ProtectClock=true
-ProtectControlGroups=true
+Delegate=
+DelegateSubgroup=supervisor
+ProtectControlGroups=private
 ProtectHostname=true
 ProtectKernelLogs=true
 ProtectKernelModules=true
