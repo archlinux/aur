@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 epoch=1
 _tag="v0.34" # NOTE: temporary workaround, should be "v${pkgver}"
