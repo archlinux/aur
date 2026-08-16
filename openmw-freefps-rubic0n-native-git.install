@@ -1,0 +1,13 @@
+post_install() {
+  printf '%s\n' \
+    'openmw-freefps-rubic0n-native-git was compiled with -march=native.' \
+    'Do not copy this binary package to a machine with a different CPU.' \
+    'Rubic0n is statically linked; the system luajit package is unaffected.' \
+    'Background Lua GC is enabled by the default: [Lua] lua num threads = 1.' \
+    'Set lua num threads = 0 to return to synchronous Lua GC if needed.' \
+    'The incomplete persistent occluder cache remains disabled.'
+}
+
+post_upgrade() {
+  post_install
+}

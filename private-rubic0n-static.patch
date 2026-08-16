@@ -1,0 +1,32 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 80d6f4188d..20e1d48cbe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -494,11 +494,24 @@ find_package(ZLIB REQUIRED)
+ 
+ option(USE_LUAJIT "Switch Lua/LuaJit (TRUE is highly recommended)" TRUE)
++set(OPENMW_RUBIC0N_ROOT "" CACHE PATH "Use a statically built Rubic0n source tree instead of system LuaJIT")
+ if(USE_LUAJIT)
+-    find_package(LuaJit REQUIRED)
+-    set(LUA_INCLUDE_DIR ${LuaJit_INCLUDE_DIR})
+-    set(LUA_LIBRARIES ${LuaJit_LIBRARIES})
++    if(OPENMW_RUBIC0N_ROOT)
++        set(LUA_INCLUDE_DIR "${OPENMW_RUBIC0N_ROOT}/src")
++        set(_rubic0n_library "${OPENMW_RUBIC0N_ROOT}/src/libluajit.a")
++        if(NOT EXISTS "${LUA_INCLUDE_DIR}/luajit.h" OR NOT EXISTS "${_rubic0n_library}")
++            message(FATAL_ERROR "OPENMW_RUBIC0N_ROOT must point to a built Rubic0n source tree")
++        endif()
++        # A static LuaJIT needs its POSIX dependencies and exported Lua API
++        # symbols so Lua/C modules loaded at runtime continue to work.
++        set(LUA_LIBRARIES "${_rubic0n_library}" "-Wl,-E" ${CMAKE_DL_LIBS} m)
++        message(STATUS "Using private static Rubic0n: ${_rubic0n_library}")
++    else()
++        find_package(LuaJit REQUIRED)
++        set(LUA_INCLUDE_DIR ${LuaJit_INCLUDE_DIR})
++        set(LUA_LIBRARIES ${LuaJit_LIBRARIES})
++    endif()
+ else(USE_LUAJIT)
+     find_package(Lua REQUIRED)
+     add_compile_definitions(NO_LUAJIT)
+ endif(USE_LUAJIT)
+ if (NOT WIN32 AND NOT ANDROID)
