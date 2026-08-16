@@ -15,6 +15,8 @@ pkgbase = atmosphera-git
 	depends = ffmpeg
 	depends = qt6-multimedia
 	depends = python
+	depends = python-dbus
+	depends = python-gobject
 	depends = wlr-randr
 	optdepends = cliphist: For clipboard history support
 	optdepends = wlsunset: For supporting NightLight
@@ -23,6 +25,8 @@ pkgbase = atmosphera-git
 	optdepends = qt6-niriqml: niri IPC integration (workspaces, windows, session config)
 	optdepends = keyd: hardware-level keyboard remapping (bindings environments)
 	optdepends = xremap-niri-bin: session-level app-scoped keymaps (macos bindings)
+	optdepends = qt6-5compat: required by some registry plugins (e.g. cookie-clock)
+	optdepends = qt6-websockets: required by some registry plugins (e.g. hassio)
 	provides = atmosphera
 	conflicts = atmosphera
 	source = git+https://github.com/alexindigo/atmosphera.git#branch=main
