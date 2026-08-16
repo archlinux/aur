@@ -1,11 +1,10 @@
 pkgbase = gitty-desktop-bin
-	pkgdesc = A lightweight, modern Git client built with Tauri (prebuilt AppImage)
+	pkgdesc = A lightweight, modern Git client built with Tauri (prebuilt Arch package)
 	pkgver = 2026.8.4
 	pkgrel = 1
 	url = https://git.cbsk-tech.de/Christoph/GitLite
 	arch = x86_64
 	license = MIT
-	depends = fuse2
 	depends = git
 	depends = webkit2gtk-4.1
 	depends = gtk3
@@ -15,10 +14,9 @@ pkgbase = gitty-desktop-bin
 	depends = xdotool
 	provides = gitty-desktop
 	conflicts = gitty-desktop
+	noextract = gitty-desktop-2026.8.4-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = Gitty_2026.8.4_amd64.AppImage::https://git.cbsk-tech.de/Christoph/GitLite/releases/download/2026.8.4/Gitty_2026.8.4_amd64.AppImage
-	source = gitty-desktop.png::https://git.cbsk-tech.de/Christoph/GitLite/raw/tag/2026.8.4/src-tauri/icons/icon.png
-	sha256sums = 53c57b6a31622f3a4be10d2f310adfda7601fb44ea5f506aec488762159ba4e5
-	sha256sums = ef03b4ec9b111c938f7e23feaaef39dfa2d1bc7c934076529e81266e0d8a2606
+	source = gitty-desktop-2026.8.4-1-x86_64.pkg.tar.zst::https://git.cbsk-tech.de/Christoph/GitLite/releases/download/2026.8.4/gitty-desktop-2026.8.4-1-x86_64.pkg.tar.zst
+	sha256sums = a0f956b8a52a2ef4dddb1bc5a664f322d33a89841646581d005125b0844f8f58
 
 pkgname = gitty-desktop-bin
