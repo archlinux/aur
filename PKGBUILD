@@ -22,7 +22,7 @@ source=(
 sha256sums=('dd95fbea4b50e9e68fd042f540fb83157a0ff25053066c3439d4527de3621d34')
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG'
 	-DCMAKE_CXX_STANDARD=20
 	-DPTEX_SHA=$_commit_sha -DPTEX_VER=$pkgver )
