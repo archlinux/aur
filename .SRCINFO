@@ -1,7 +1,7 @@
 pkgbase = ironwail
 	pkgdesc = A fork of the popular GLQuake descendant QuakeSpasm with a focus on high performance instead of maximum compatibility, with a few extra features sprinkled on top.
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.8.2
+	pkgrel = 1
 	url = https://github.com/andrei-drexler/ironwail
 	arch = i686
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = ironwail
 	depends = flac
 	depends = libxmp
 	makedepends = cmake
-	source = ironwail-0.8.1.tar.gz::https://github.com/andrei-drexler/ironwail/archive/refs/tags/v0.8.1.tar.gz
+	source = ironwail-0.8.2.tar.gz::https://github.com/andrei-drexler/ironwail/archive/refs/tags/v0.8.2.tar.gz
 	source = launch_ironwail.sh
 	source = ironwail.desktop
-	md5sums = 800ef0730fd7c464bae806f09ff04c3d
+	md5sums = 6abd1dff4eeceaabada1eeb6361c3394
 	md5sums = d9987f6cb32e318dff2e3172da6cc63c
 	md5sums = 033814f289ed954599d4ea1da0d2637a
 
