@@ -1,7 +1,5 @@
-*
-!PKGBUILD
-!.SRCINFO
-!.gitignore
-!caddy.hook
-!caddy.sysusers
-!caddy.tmpfiles
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.tar.gz

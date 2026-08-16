@@ -1,0 +1,18 @@
+[Unit]
+Description=Caddy with Trojan (imgk/caddy-trojan)
+Documentation=https://caddyserver.com/docs/
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/caddy run --config /etc/caddy/Caddyfile
+ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile
+ExecStopPost=/usr/bin/rm -f /run/caddy/admin.socket
+TimeoutStopSec=30s
+LimitNOFILE=1048576
+
+[Install]
+WantedBy=multi-user.target

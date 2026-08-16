@@ -1,89 +1,72 @@
-# Maintainer: ZhangHua <zhanghuadedn at gmail dot com>
-# Contributor: Nicolas Stalder <n+archlinux@stalder.io>
+# Maintainer: tsaitang404 <tsaitang404@users.noreply.github.com>
+# Contributor: Based on AUR caddy-trojan
 
 pkgname=caddy-trojan
-pkgver=2.10.2
+pkgver=2.11.4
 pkgrel=1
-pkgdesc="Caddy web server with trojan support"
+pkgdesc='Fast web server with automatic HTTPS and trojan proxy support'
 arch=('x86_64' 'aarch64')
-url="https://github.com/imgk/caddy-trojan"
-license=('GPL-3.0-only')
-depends=("glibc")
-makedepends=('go')
+url='https://caddyserver.com'
+license=('Apache-2.0' 'GPL-3.0-only')
+depends=('glibc')
+makedepends=('go' 'xcaddy')
 provides=("caddy=${pkgver}")
-conflicts=("caddy")
-source=("caddy.hook"
-        "caddy.sysusers"
-        "caddy.tmpfiles"
-        "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/init/caddy.service"
-        "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/init/caddy-api.service"
-        "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/config/Caddyfile"
-        "https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/welcome/index.html"
-        "caddy-${pkgver}.tar.gz::https://github.com/caddyserver/caddy/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dfadb1f4a1f82024a11c110624680f98b3818305a16dd013363ca398020611ad'
-            'a9294eeba17a8fd57cf11cef21e2eb3719a016646eeac0764a0d9f9f380a40ef'
-            '99282b1a57857d23b97883dfd7dd147005956cc04405630d6e4d73bb7069f5ba'
-            '6c271e030644bd36a0c8956885934f16c928f88202bc126f12cde519ef9693ff'
-            'a794bbf7d890eb9e1231bbad251890f87870815a96e3820b28a71819ba9f9c14'
-            '66177d46fa761acb07208065db9b0274cb1b12c02ac43b9bfc9857b698b1ccfe'
-            '70a45d667679109cd6b25502554597f21536ee995ada0549251167bd171533b9'
-            'f63f46b7ae68ced0a5c2e31df1b6dfc7656117d162a1bc7fed4bd4afd14ddc8f')
+conflicts=('caddy' 'caddy-naiveproxy-trojan' 'caddy-trojan-imgk')
+backup=('etc/caddy/Caddyfile')
+source=("caddy-trojan.service"
+        "caddy.hook"
+        "Caddyfile::https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/config/Caddyfile"
+        "index.html::https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/welcome/index.html"
+        "caddy-api.service::https://raw.githubusercontent.com/caddyserver/dist/v${pkgver}/init/caddy-api.service")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
-prepare() {
-    local -a MODULES=(
-        #github.com/caddy-dns/route53
-        github.com/caddy-dns/cloudflare
-        github.com/caddy-dns/alidns
-        github.com/caddy-dns/vultr
-        #github.com/caddy-dns/dnspod
-        github.com/caddy-dns/duckdns
-        github.com/caddy-dns/gandi
-        github.com/hairyhenderson/caddy-teapot-module
-        github.com/caddyserver/transform-encoder
-        github.com/mholt/caddy-webdav
-        github.com/imgk/caddy-trojan
-        github.com/imgk/caddy-pprof
-        # Let caddy trust CDN's X-Forwarded-For header
-        # Only cloudflare is found now.
-        github.com/WeidiDeng/caddy-cloudflare-ip
-    )
-    cd "${srcdir}/caddy-${pkgver}/cmd/caddy"
-    for m in "${MODULES[@]}"
-    do
-        echo "Adding module $m..."
-        sed -i "/plug in Caddy modules here/a _ \"$m\"" main.go
-        go get -modcacherw "$m"
-    done
-    go get -modcacherw .
+check() {
+  "${srcdir}/caddy" version > /dev/null 2>&1
 }
+
 build() {
-    cd "${srcdir}/caddy-${pkgver}/cmd/caddy"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build .
+  cd "${srcdir}"
+  xcaddy build "v${pkgver}" \
+    --with github.com/imgk/caddy-trojan@latest
 
-    for i in zsh bash fish; do
-        ./caddy completion $i >caddy.${i}
-    done
-
+# 如需固定版本可改为 @v0.2.11-4
 }
 
 package() {
-    install -Dm755 "${srcdir}/caddy-${pkgver}/cmd/caddy/caddy" "${pkgdir}/usr/bin/caddy"
-    install -Dm644 "${srcdir}/caddy-${pkgver}/cmd/caddy/caddy.zsh" "${pkgdir}/usr/share/zsh/site-functions/_caddy"
-    install -Dm644 "${srcdir}/caddy-${pkgver}/cmd/caddy/caddy.bash" "${pkgdir}/usr/share/bash-completion/completions/caddy"
-    install -Dm644 "${srcdir}/caddy-${pkgver}/cmd/caddy/caddy.fish" -t "${pkgdir}/usr/share/fish/vendor_completions.d"
+  # 主二进制
+  install -Dm755 "${srcdir}/caddy" "${pkgdir}/usr/bin/caddy"
 
-    install -Dm644 "${srcdir}/Caddyfile" "${pkgdir}/usr/share/caddy/Caddyfile"
-    install -Dm644 "${srcdir}/index.html" "${pkgdir}/usr/share/caddy/index.html"
+  # Shell 补全
+  "${srcdir}/caddy" completion zsh > _caddy 2>/dev/null || true
+  "${srcdir}/caddy" completion bash > caddy.bash 2>/dev/null || true
+  "${srcdir}/caddy" completion fish > caddy.fish 2>/dev/null || true
 
-    install -Dm644 "${srcdir}/caddy.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
-    install -Dm644 "${srcdir}/caddy-api.service" "${pkgdir}/usr/lib/systemd/system/caddy-api.service"
-    install -Dm644 "${srcdir}/caddy.sysusers" "${pkgdir}/usr/lib/sysusers.d/caddy.conf"
-    install -Dm644 "${srcdir}/caddy.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/caddy.conf"
+  install -Dm644 _caddy "${pkgdir}/usr/share/zsh/site-functions/_caddy" 2>/dev/null || true
+  install -Dm644 caddy.bash "${pkgdir}/usr/share/bash-completion/completions/caddy" 2>/dev/null || true
+  install -Dm644 caddy.fish -t "${pkgdir}/usr/share/fish/vendor_completions.d" 2>/dev/null || true
 
-    install -Dm644 "${srcdir}/caddy.hook" "${pkgdir}/usr/share/libalpm/hooks/caddy-trojan.hook"
+  # 默认配置和欢迎页
+  install -Dm644 "${srcdir}/Caddyfile" "${pkgdir}/etc/caddy/Caddyfile"
+  install -Dm644 "${srcdir}/index.html" "${pkgdir}/usr/share/caddy/index.html"
+
+  # systemd 服务
+  install -Dm644 "${srcdir}/caddy-trojan.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
+  install -Dm644 "${srcdir}/caddy-api.service" "${pkgdir}/usr/lib/systemd/system/caddy-api.service"
+
+  #（无需 sysusers/tmpfiles，服务以 root 运行）
+
+  # ALPM hook：更新后重启服务
+  install -Dm644 "${srcdir}/caddy.hook" "${pkgdir}/usr/share/libalpm/hooks/caddy.hook"
+
+  # License
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<- EOF
+		This package includes:
+		- Caddy (Apache 2.0): https://github.com/caddyserver/caddy
+		- caddy-trojan (GPL 3.0): https://github.com/imgk/caddy-trojan
+		See /usr/share/licenses/${pkgname}/ for details.
+		EOF
 }
