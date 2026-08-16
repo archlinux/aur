@@ -15,6 +15,6 @@ pkgbase = lucid-spell-bin
 	conflicts = lucid-spell
 	options = !debug
 	source = https://github.com/l1ngus/lucid-spell/releases/download/v0.1.0/lucid-spell_0.1.0_amd64.deb
-	sha256sums = 39d75e63041586118936b5da9b51094a6c0410cfbaf576dd58a82644b0a776aa
+	sha256sums = f73195980a34930d0de708674bd9898de97e8da07952c7e56402cc1c2a153d24
 
 pkgname = lucid-spell-bin
