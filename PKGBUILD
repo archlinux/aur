@@ -27,7 +27,7 @@ source=(
 )
 
 _srcdir="LibRaw-${_pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG' -DENABLE_EXAMPLES=OFF )
 
 prepare() {
