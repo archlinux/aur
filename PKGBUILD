@@ -2,7 +2,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=mingw-w64-libtre-git
-pkgver=r251.7c80c34
+pkgver=r280.71bfcaf
 pkgrel=1
 arch=(any)
 pkgdesc="The approximate regex matching library and agrep command line tool (mingw-w64)"
@@ -18,13 +18,12 @@ source=("libtre"::"git+https://github.com/laurikari/tre.git"
 sha256sums=('SKIP'
             '72c87b956eade17ed5444c3c6eae7be09b93d145573f20017ec590d9c2516c52')
 
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
+
 pkgver() {
   cd "$srcdir/libtre"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-
-
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/libtre"
