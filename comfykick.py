@@ -416,10 +416,16 @@ def download_tarball(
     tarball_url: str, tarball_path: Path, github_token: str
 ) -> None:
     tmp_path = None
+    tmp_dir = tempfile.gettempdir()
+    prefix = "comfykick_downloading_"
     try:
+        for stale in Path(tmp_dir).glob(f"{prefix}*"):
+            if stale.is_file():
+                stale.unlink(missing_ok=True)
+
         with tempfile.NamedTemporaryFile(
-            prefix=f"comfykick_{tarball_path.name}_",
-            dir=tempfile.gettempdir(),
+            prefix=prefix,
+            dir=tmp_dir,
             delete=False,
         ) as tmp:
             tmp_path = Path(tmp.name)
