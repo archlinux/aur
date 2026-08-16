@@ -1,9 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=asciidoctor-web-pdf
-_tagname=1.0.0-beta.4
+_tagname=1.0.0
 pkgver=${_tagname//-/_}
-pkgrel=6
+pkgrel=1
 pkgdesc="A PDF converter for AsciiDoc based on web technologies. It allows complex layouts to be defined with CSS and JavaScript, while writing the content in AsciiDoc."
 arch=('any')
 url="https://github.com/Mogztter/asciidoctor-web-pdf"
@@ -36,7 +36,7 @@ backup=()
 options=()
 install=
 source=("${pkgname}-${_tagname}.tar.gz::${url}/archive/refs/tags/v${_tagname}.tar.gz")
-sha256sums=('54963d260e52dc4c167ca6b671fbf3ed9bc9173c207e93606300f22259e4af7d')
+sha256sums=('a22ae1d73a5ea1c5fba1adb97dc1ab5c39264a2a1140119723d403d62fba3e09')
 # noextract=("${pkgname}-${_tagname}.tar.gz")
 
 package() {
