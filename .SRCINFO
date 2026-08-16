@@ -1,0 +1,25 @@
+pkgbase = lito
+	pkgdesc = Module-first C++ build tool with manifest.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/litocpp/lito
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = clang
+	makedepends = lld
+	makedepends = git
+	makedepends = ninja
+	makedepends = llvm
+	depends = glibc
+	depends = lua
+	source = git+https://github.com/litocpp/lito.git#tag=v0.1.0
+	source = git+https://github.com/litocpp/rstd.git#commit=a802845810966d738b65a4f86331358eef0ec8c9
+	source = git+https://github.com/litocpp/luato.git#commit=1f5d81067e76c2c1d8399e0f2891e795bcc05325
+	source = 0001-cmake-Use-system-lua.patch
+	sha256sums = 228efb03f1e236336ce7d97c63cf2ae549961660cdd944f4f1fb89d1991f70f8
+	sha256sums = 7d588061ef962aa68d17e9742e0da0898206540ea15b4235090d738f13e9e3a7
+	sha256sums = 7273160016dbde906b5be74d82deb5ce8d14140c884558b35d8b144860390b5e
+	sha256sums = 8e9044f5bf17744ecc83e6a50739b3a653581cb6d5357761995aab688ca674a1
+
+pkgname = lito

@@ -1,0 +1,64 @@
+From 84280536d16267456cc08bb9de18fcfb02a37817 Mon Sep 17 00:00:00 2001
+From: Zhang Hua <zhanghua.00@qq.com>
+Date: Sun, 16 Aug 2026 11:20:25 +0800
+Subject: [PATCH] cmake: Use system lua
+
+---
+ CMakeLists.txt             | 8 ++++++++
+ src/ffi/lua/CMakeLists.txt | 6 ++++++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cbfdb33..492bf9f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -38,12 +38,20 @@ option(LUATO_BUILD_TESTS "Build standalone Luato contract tests" ${PROJECT_IS_TO
+ 
+ include(FetchContent)
+ 
++find_package(Lua 5.5.0)
++if(Lua_FOUND)
++  add_library(Lua::Lua INTERFACE IMPORTED)
++  set_target_properties(Lua::Lua
++    PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${LUA_INCLUDE_DIR}"
++               INTERFACE_LINK_LIBRARIES "${LUA_LIBRARIES}")
++else()
+ FetchContent_Declare(
+   lua
+   URL https://www.lua.org/ftp/lua-5.5.0.tar.gz
+   URL_HASH SHA256=57ccc32bbbd005cab75bcc52444052535af691789dba2b9016d5c50640d68b3d
+   DOWNLOAD_EXTRACT_TIMESTAMP TRUE)
+ FetchContent_MakeAvailable(lua)
++endif()
+ 
+ if(NOT TARGET rstd::rstd)
+   set(RSTD_BUILD_BENCHMARKS OFF CACHE BOOL "" FORCE)
+diff --git a/src/ffi/lua/CMakeLists.txt b/src/ffi/lua/CMakeLists.txt
+index 60608af..1163252 100644
+--- a/src/ffi/lua/CMakeLists.txt
++++ b/src/ffi/lua/CMakeLists.txt
+@@ -12,7 +12,9 @@ if(NOT luato_IS_TOP_LEVEL)
+             -Wunknown-attributes)
+ endif()
+ target_compile_definitions(luato.ffi.lua PRIVATE LUA_USE_LINUX)
++if(NOT TARGET Lua::Lua)
+ target_include_directories(luato.ffi.lua PRIVATE ${lua_SOURCE_DIR}/src)
++endif()
+ target_sources(
+   luato.ffi.lua
+   PUBLIC FILE_SET
+@@ -24,7 +26,11 @@ target_sources(
+          types.cppm
+          constants.cppm
+          functions.cppm)
++if(NOT TARGET Lua::Lua)
+ target_link_libraries(luato.ffi.lua PUBLIC luato.lua-runtime)
++else()
++  target_link_libraries(luato.ffi.lua PUBLIC Lua::Lua)
++endif()
+ set_target_properties(
+   luato.ffi.lua
+   PROPERTIES CXX_EXTENSIONS OFF
+-- 
+2.55.0
+
