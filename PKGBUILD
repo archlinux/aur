@@ -1,7 +1,7 @@
 # Maintainer: Evilleader evilleader91@gmail.com
 pkgname=optiscaler-client-bin
 pkgver=1.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="A modern manager for OptiScaler"
 arch=('x86_64')
 url="https://github.com/Optiscaler-Client/Optiscaler-Client"
@@ -11,8 +11,8 @@ provides=('optiscaler-client')
 conflicts=('optiscaler-client')
 options=(!strip)
 source=(
-  "optiscaler-client.zip::https://github.com/Optiscaler-Client/Optiscaler-Client/releases/download/OptiscalerClient-${pkgver}/OptiscalerClient-${pkgver}-linux-x64.zip"
-  "optiscaler-client.png::https://raw.githubusercontent.com/Optiscaler-Client/Optiscaler-Client/OptiscalerClient-${pkgver}/assets/icon.png"
+  "optiscaler-client-${pkgver}.zip::https://github.com/Optiscaler-Client/Optiscaler-Client/releases/download/OptiscalerClient-${pkgver}/OptiscalerClient-${pkgver}-linux-x64.zip"
+  "optiscaler-client-${pkgver}.png::https://raw.githubusercontent.com/Optiscaler-Client/Optiscaler-Client/OptiscalerClient-${pkgver}/assets/icon.png"
   "optiscaler-client.desktop"
 )
 # These are placeholders only. They are overwritten automatically every
@@ -28,7 +28,7 @@ package() {
   mkdir -p "$pkgdir/opt/optiscaler-client"
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/icons/hicolor/256x256/apps"
-  bsdtar -xf optiscaler-client.zip -C "$pkgdir/opt/optiscaler-client"
+  bsdtar -xf "optiscaler-client-${pkgver}.zip" -C "$pkgdir/opt/optiscaler-client"
   chmod +x "$pkgdir/opt/optiscaler-client/OptiscalerClient"
   install -Dm755 /dev/stdin "$pkgdir/usr/bin/optiscaler-client" << 'EOF'
 #!/bin/bash
@@ -36,6 +36,6 @@ exec /opt/optiscaler-client/OptiscalerClient "$@"
 EOF
   install -Dm644 optiscaler-client.desktop \
     "$pkgdir/usr/share/applications/optiscaler-client.desktop"
-  install -Dm644 optiscaler-client.png \
+  install -Dm644 "optiscaler-client-${pkgver}.png" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/optiscaler-client.png"
 }
