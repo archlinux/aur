@@ -1,6 +1,6 @@
 pkgbase = dsxtool-git
 	pkgdesc = A modular, interactive Linux setup tool powered by fzf (git version)
-	pkgver = 1.7.7.r0.gaf8d408
+	pkgver = 1.8.5.r1.ge98c74b
 	pkgrel = 1
 	url = https://github.com/csouzape/dsxtool
 	arch = any
