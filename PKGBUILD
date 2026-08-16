@@ -1,8 +1,9 @@
 # Maintainer: James Brink <brink.james@gmail.com>
+# Maintainer: Jeffrey Dilley <jeff.dilley@gmail.com>
 
 pkgname=mold-ai
 _binname=mold
-pkgver=0.20.2
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Local AI image generation CLI — FLUX, SD3.5, SD 1.5, SDXL, Z-Image, Flux.2, Qwen-Image, Wuerstchen, LTX Video, & LTX-2 diffusion models on your GPU (built from source, CUDA)"
 arch=('x86_64')
@@ -23,7 +24,7 @@ optdepends=(
 # `clang` + `lld` + `nasm` mirror the apt deps in .github/workflows/release.yml
 # build-linux-sm89 — candle-flash-attn and the H.264 decoder need them.
 makedepends=(
-  'rust>=1.85'
+  'rust>=1.93'
   'cargo'
   'cuda'
   'clang'
@@ -40,7 +41,7 @@ conflicts=('mold-ai-bin' 'mold-ai-git' 'mold')
 options=(!lto)
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('748081d36da2ee2d2c6c95d4587c4abc8f8c7b9438332b1826bd08a46a5ee4f4')
+sha256sums=('b0b20498d5e6ac0601c6fbd7181c9c6746b597b2c476c5fdcf30ca15b8f4f1cd')
 
 prepare() {
   cd "mold-${pkgver}"
@@ -55,9 +56,9 @@ prepare() {
 build() {
   cd "mold-${pkgver}"
   export CARGO_HOME="${srcdir}/cargo-home"
-  # Default to Ada Lovelace (sm_89, RTX 40-series). Blackwell users override
-  # via `CUDA_COMPUTE_CAP=120 paru -S mold-ai` (paru forwards env vars to
-  # makepkg) — see docs at https://github.com/utensils/mold/blob/main/website/guide/installation.md
+  # Default to Ada Lovelace (sm_89, RTX 40-series). Other users override with
+  # 86 for RTX 3090/A40, 100 for B200/B300, or 120 for RTX 50-series.
+  # paru forwards env vars to makepkg; see the installation guide.
   export CUDA_COMPUTE_CAP="${CUDA_COMPUTE_CAP:-89}"
   # makepkg runs in a minimal environment and does not source the user's
   # profile, so /opt/cuda/bin (where Arch's `cuda` package puts nvcc) is
@@ -73,9 +74,16 @@ build() {
   #             every transitive dep, including build-script deps that
   #             --frozen alone would still allow to download
   # Together they make AUR chroot builds fully reproducible.
+  local h3_feature=""
+  [[ "${CUDA_COMPUTE_CAP}" == "89" ]] && h3_feature=",h3"
   cargo build --release --frozen --offline \
     -p mold-ai \
-    --features cuda,preview,expand,tui,webp,mp4,metrics,mdns
+    --features "cuda${h3_feature},preview,expand,tui,webp,mp4,metrics,mdns"
+}
+
+check() {
+  cd "mold-${pkgver}"
+  ./scripts/verify-h3-release-exclusion.sh "target/release/${_binname}"
 }
 
 package() {
