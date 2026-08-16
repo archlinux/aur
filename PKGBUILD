@@ -1,7 +1,7 @@
 # Maintainer: komaruworld <rtysus228 at gmail dot com>
 
 pkgname=mocktail-git
-pkgver=1.0.2.r24.g9bdd737
+pkgver=1.0.2.r33.gbbe4546
 pkgrel=1
 pkgdesc='Android x86-64 Roblox compatibility runtime for Linux'
 arch=('x86_64')
@@ -34,6 +34,7 @@ depends=(
 makedepends=(
   'cmake>=3.20'
   'git'
+  'lld'
   'ninja'
   'nlohmann-json'
   'pkgconf'
