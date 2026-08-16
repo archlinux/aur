@@ -15,7 +15,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/google/${_pkgname}/archive
 sha256sums=('ee493ccf1b3038b4ef2fe024664c5eb2dc4bcc1f6b05b33e3909de0e19c81024')
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=(
 	-Wno-dev
 	-DCMAKE_BUILD_TYPE=Release
