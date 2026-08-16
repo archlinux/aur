@@ -36,7 +36,7 @@ source=("$_pkgname-$pkgver.tar.gz::https://github.com/OpenImageIO/oiio/archive/v
 sha256sums=('5af7221be05bbe69d7ec4eb74b5656c6d15b8d1a332410d6af937b1df48647c0')
 
 _srcdir="OpenImageIO-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-i686-w64-mingw32 x86_64-w64-mingw32}"
 _flags=(
 	-Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-DBUILD_DOCS=OFF
