@@ -9,9 +9,9 @@
 #   https://rayp.adalet.gov.tr/
 #
 # Per-release bump checklist:
-#   1. Visit https://rayp.adalet.gov.tr/ and locate the new zip URL
-#      (the filename contains a non-deterministic timestamp slug).
-#   2. Update pkgver to the upstream version (e.g. 5.4.16 → 5.4.17).
+#   1. Visit https://uyap.gov.tr/UYAP-Editor and locate the new zip URL
+#      (pattern: uyapeditor_<version>_amd64.zip).
+#   2. Update pkgver to the upstream version (e.g. 5.4.17 → 5.4.19).
 #   3. Update the _zipurl variable below with the new URL.
 #   4. Run `updpkgsums` to refresh the zip checksum.
 #   5. Build with `makepkg -f` in a clean chroot and verify with namcap.
@@ -28,7 +28,7 @@
 # time — .SRCINFO regen does NOT recompute hashes.
 
 pkgname=uyap-editor-bin
-pkgver=5.4.17
+pkgver=5.4.19
 pkgrel=1
 pkgdesc='UYAP Document and Template Editor (Turkish judicial system)'
 arch=('x86_64')
@@ -52,7 +52,7 @@ replaces=('uyap')
 options=('!strip')
 install="${pkgname}.install"
 
-_zipurl='https://rayp.adalet.gov.tr/resimler/2/dosya/uyapeditor-5417-amd6403-06-20263-09-pm.zip'
+_zipurl='https://rayp.adalet.gov.tr/resimler/2/dosya/uyapeditor_5.4.19_amd64.zip'
 
 source=(
     "${pkgname}-${pkgver}.zip::${_zipurl}"
@@ -64,7 +64,7 @@ source=(
     'LICENSE'
     "${pkgname}.install"
 )
-sha256sums=('df6974081a71a521e5290badab50fdc3d5083d6577ba58219e163bf1596fc258'
+sha256sums=('e58d667a7f0e3ba9448afb16de23220b23caf3debf4b5faeab1429d481acd572'
             'd9a8cdea5b14235c252ad21abd7ecdef5ce9347d85d624d4ce0d0da615d9d8cd'
             '6311a3cd1a68c7312d6633fdd8e00dd47988907722ac609d00d68762b430c1eb'
             '0cc1749ba298862da0a26172af44dbcc1396ad9f36ca160d6c6b0cbad6eae929'
