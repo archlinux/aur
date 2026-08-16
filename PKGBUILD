@@ -2,7 +2,7 @@
 
 pkgname=music-tui-bin
 _pkgname=music-tui
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Terminal music player backed by MPD, with covers, synced lyrics and a visualizer."
 arch=('x86_64')
@@ -13,9 +13,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-stable" "$_pkgname-git")
 options=('!strip')
 source=("$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/$_pkgname-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-# TODO: fill in the real checksum after publishing the v0.1.0 GitHub release
-# (the release workflow uploads the .sha256 sidecar next to the tarball).
-sha256sums=('SKIP')
+sha256sums=('ac8c18f09ee54e9717632c0c67e99a63e018600c75399e83a165ce7977e1722d')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver-x86_64-unknown-linux-gnu"
