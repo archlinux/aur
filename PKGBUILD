@@ -17,7 +17,7 @@ source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d8862955c6d74e5846b3f580b1605d2428b11d97a410d86e2fb13e857cd3a744')
 
 _srcdir="${_pkgname}-${pkgver}"
-_architectures='i686-w64-mingw32 x86_64-w64-mingw32'
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-DNDEBUG'
 	-DSPDLOG_BUILD_BENCH=OFF
 	-DSPDLOG_FMT_EXTERNAL=ON
