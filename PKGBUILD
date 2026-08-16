@@ -1,13 +1,13 @@
 # Maintainer: Da Chen <dachen@connect.hku.hk>
 pkgname=wayper
 pkgver=1.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland-first wallpaper manager with Wallhaven integration and MCP server"
 arch=('any')
 url="https://github.com/yuukidach/wayper"
 license=('MIT')
 depends=('python' 'python-click' 'python-httpx' 'python-pillow' 'awww'
-         'python-fastapi' 'uvicorn' 'python-multipart' 'python-send2trash')
+         'python-fastapi' 'uvicorn' 'python-send2trash')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 optdepends=(
     'hyprland: focused monitor detection'

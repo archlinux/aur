@@ -1,7 +1,7 @@
 pkgbase = wayper
 	pkgdesc = Wayland-first wallpaper manager with Wallhaven integration and MCP server
 	pkgver = 1.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yuukidach/wayper
 	arch = any
 	license = MIT
@@ -15,7 +15,6 @@ pkgbase = wayper
 	depends = awww
 	depends = python-fastapi
 	depends = uvicorn
-	depends = python-multipart
 	depends = python-send2trash
 	optdepends = hyprland: focused monitor detection
 	optdepends = python-mcp: MCP server for AI assistant integration
