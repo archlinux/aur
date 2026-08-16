@@ -96,7 +96,7 @@ _PATH_KEYS = (
 _API_TIMEOUT = 30
 _DOWNLOAD_TIMEOUT = 60
 
-_API_MAX_RETRIES = 3
+_NETWORK_MAX_RETRIES = 3
 _RETRY_DELAY = 60.0
 
 _CLEANUP_STALE_DAYS = 30
@@ -312,7 +312,7 @@ def _api_request(
         req.add_header("Authorization", f"Bearer {github_token}")
 
     last_exc = None
-    for attempt in range(_API_MAX_RETRIES + 1):
+    for attempt in range(_NETWORK_MAX_RETRIES + 1):
         try:
             with urllib.request.urlopen(
                 req,
@@ -326,7 +326,7 @@ def _api_request(
                 last_exc = exc
             else:
                 die(
-                    "HTTP error while requesting <%s>: %s %s (response: %s)",
+                    "HTTP error while requesting <%s>: %s %s [%s]",
                     url,
                     exc.code,
                     exc.reason,
@@ -341,7 +341,7 @@ def _api_request(
         except OSError as exc:
             last_exc = exc
 
-        if attempt < _API_MAX_RETRIES:
+        if attempt < _NETWORK_MAX_RETRIES:
             log.warning(
                 "Request to <%s> failed: %s; "
                 "retrying in %.1fs (attempt %d/%d)",
@@ -349,14 +349,14 @@ def _api_request(
                 last_exc,
                 _RETRY_DELAY,
                 attempt + 1,
-                _API_MAX_RETRIES,
+                _NETWORK_MAX_RETRIES,
             )
             time.sleep(_RETRY_DELAY)
 
     die(
         "Request to <%s> failed after %d attempt(s): %s",
         url,
-        _API_MAX_RETRIES + 1,
+        _NETWORK_MAX_RETRIES + 1,
         last_exc,
     )
 
@@ -415,52 +415,76 @@ def _resolve_version(
 def download_tarball(
     tarball_url: str, tarball_path: Path, github_token: str
 ) -> None:
-    tmp_path = None
     tmp_dir = tempfile.gettempdir()
     prefix = "comfykick_downloading_"
-    try:
-        for stale in Path(tmp_dir).glob(f"{prefix}*"):
-            if stale.is_file():
-                stale.unlink(missing_ok=True)
 
-        with tempfile.NamedTemporaryFile(
-            prefix=prefix,
-            dir=tmp_dir,
-            delete=False,
-        ) as tmp:
-            tmp_path = Path(tmp.name)
+    for stale in Path(tmp_dir).glob(f"{prefix}*"):
+        if stale.is_file():
+            stale.unlink(missing_ok=True)
 
-            req = urllib.request.Request(tarball_url)
-            if github_token:
-                req.add_header(
-                    "Authorization",
-                    f"Bearer {github_token}",
+    last_exc = None
+    for attempt in range(_NETWORK_MAX_RETRIES + 1):
+        tmp_path = None
+        try:
+            with tempfile.NamedTemporaryFile(
+                prefix=prefix,
+                dir=tmp_dir,
+                delete=False,
+            ) as tmp:
+                tmp_path = Path(tmp.name)
+
+                req = urllib.request.Request(tarball_url)
+                if github_token:
+                    req.add_header(
+                        "Authorization",
+                        f"Bearer {github_token}",
+                    )
+
+                with urllib.request.urlopen(
+                    req,
+                    timeout=_DOWNLOAD_TIMEOUT,
+                ) as resp:
+                    shutil.copyfileobj(resp, tmp, length=1024 * 64)
+
+            shutil.move(tmp_path, tarball_path)
+            return
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", errors="replace")
+            exc.close()
+            if exc.code in (403, 429) or exc.code >= 500:
+                last_exc = exc
+            else:
+                die(
+                    "HTTP error while downloading <%s>: %s %s [%s]",
+                    tarball_url,
+                    exc.code,
+                    exc.reason,
+                    body,
                 )
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            last_exc = exc
+        finally:
+            if tmp_path is not None:
+                tmp_path.unlink(missing_ok=True)
 
-            with urllib.request.urlopen(
-                req,
-                timeout=_DOWNLOAD_TIMEOUT,
-            ) as resp:
-                shutil.copyfileobj(resp, tmp, length=1024 * 64)
-
-        shutil.move(tmp_path, tarball_path)
-    except (urllib.error.URLError, OSError) as exc:
-        if tmp_path is not None:
-            tmp_path.unlink(missing_ok=True)
-
-        if isinstance(exc, urllib.error.HTTPError):
-            die(
-                "HTTP error while downloading <%s>: %s %s",
+        if attempt < _NETWORK_MAX_RETRIES:
+            log.warning(
+                "Failed to download <%s>: %s; "
+                "retrying in %.1fs (attempt %d/%d)",
                 tarball_url,
-                exc.code,
-                exc.reason,
+                last_exc,
+                _RETRY_DELAY,
+                attempt + 1,
+                _NETWORK_MAX_RETRIES,
             )
+            time.sleep(_RETRY_DELAY)
 
-        die(
-            "Failed to download <%s>: %s",
-            tarball_url,
-            exc,
-        )
+    die(
+        "Failed to download <%s> after %d attempt(s): %s",
+        tarball_url,
+        _NETWORK_MAX_RETRIES + 1,
+        last_exc,
+    )
 
 
 def _ensure_tarball(
