@@ -17,7 +17,7 @@ sha256sums=('8e00aa4e1749ee7244d08683ce2bb6fec7fd99baa6ef5d5f091274b318e6925e'
             'fc23bd3c9e62a28cb1c020cebc83ca7532a5a7a21c2e4748b72d13ac7716a851')
 
 _srcdir="${_pkgname}-v${pkgver}"
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 
 prepare() {
 	cd "$_srcdir"
