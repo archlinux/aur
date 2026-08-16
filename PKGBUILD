@@ -4,7 +4,7 @@ _dotnet_ver=8.0
 _reponame=SyncClipboard
 _pkgname="${_reponame,,}"
 pkgname="${_pkgname}-desktop"
-pkgver=3.1.9
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Cross-Platform Cipboard Syncing Solution (Desktop)"
 arch=("x86_64" "aarch64")
@@ -13,9 +13,11 @@ license=("MIT")
 depends=("aspnet-runtime-${_dotnet_ver}" "fontconfig" "libxinerama" "libxt" "libxtst" "wl-clipboard" "xclip")
 makedepends=("dotnet-sdk-${_dotnet_ver}" "librsvg")
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${_pkgname}.desktop")
-sha256sums=('447a0e81de714f459f14fb4588f2ca7660a29470362d628b8d2e6f9be5c30ca7'
-            '77a340cd087cbfd79fdbbb1d53a33288884c21cd0945b6ea4abfd0c6a298fc75')
+        "${_pkgname}.desktop"
+        "fix-split-ambiguity.patch")
+sha256sums=('a155f59752e911b36ea2dd019a79dccab7c4a10738e7a398aeeec1b596e4a4bc'
+            '77a340cd087cbfd79fdbbb1d53a33288884c21cd0945b6ea4abfd0c6a298fc75'
+            'e175c67f4abab57a272893d3fdef3732367f75c51b6d8d2b4eed6643da5dca12')
 case $CARCH in
     x86_64)  _dotnet_cpu=x64;;
     aarch64) _dotnet_cpu=arm64;;
@@ -23,6 +25,7 @@ esac
 
 prepare() {
     cd "${_reponame}-${pkgver}"
+    patch -p1 < "../fix-split-ambiguity.patch"
     cp -f build/linux/icons/icon.svg icon.svg
     rm -rf builddir &>/dev/null
 }

@@ -1,0 +1,11 @@
+--- a/src/SyncClipboard.Desktop/Utilities/LinuxWifiNetworkInfoProvider.cs
++++ b/src/SyncClipboard.Desktop/Utilities/LinuxWifiNetworkInfoProvider.cs
+@@ -64,7 +64,7 @@
+             }
+ 
+             var networks = new List<WifiNetworkInfo>();
+-            foreach (var line in output.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries))
++            foreach (var line in output.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries))
+             {
+                 var fields = line.Split(':', 3);
+                 if (fields.Length == 3 && fields[0] == "*" && !string.IsNullOrEmpty(fields[2]))
