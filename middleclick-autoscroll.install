@@ -1,0 +1,38 @@
+post_install() {
+  cat <<'EOF'
+
+  middleclick-autoscroll is installed but not active yet.
+
+    middleclick-autoscroll          interactive menu
+    middleclick-autoscroll enable   turn autoscroll on everywhere
+
+  Run it as your own user, not with sudo: it only ever writes inside your own
+  home directory, and there is nothing to configure by hand.
+
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+
+  Run `middleclick-autoscroll apply` (or just open the menu) if the version
+  marker in your generated launcher entries should be refreshed.
+
+EOF
+}
+
+pre_remove() {
+  # The changes live in each user's home directory and cannot be undone from a
+  # root-run hook, so say so while the command that does it still exists.
+  cat <<'EOF'
+
+  Before removing this package, run
+
+    middleclick-autoscroll disable
+
+  as each user that enabled it. That puts back every launcher entry, flag file
+  and Steam script it changed. Removing the package without it leaves those
+  changes in place with nothing left to undo them.
+
+EOF
+}

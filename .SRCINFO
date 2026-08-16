@@ -1,0 +1,25 @@
+pkgbase = middleclick-autoscroll
+	pkgdesc = Middle-click autoscroll for Chromium-based applications - Electron, CEF, Flatpaks, Spotify and Steam included
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Felitendo/middleclick-autoscroll
+	install = middleclick-autoscroll.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = gettext
+	makedepends = scdoc
+	depends = bash
+	depends = systemd
+	depends = coreutils
+	depends = gawk
+	depends = grep
+	depends = sed
+	depends = gettext
+	optdepends = flatpak: cover Flatpak applications too
+	optdepends = spotify-launcher: cover the official Spotify client
+	optdepends = steam: cover the Steam interface
+	optdepends = desktop-file-utils: refresh the desktop database after a change
+	source = middleclick-autoscroll-1.0.0.tar.gz::https://github.com/Felitendo/middleclick-autoscroll/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = aac78f97d6c9261f5a383016830e5e6fd2229a62dcdbfac3bddce363021704e4
+
+pkgname = middleclick-autoscroll
