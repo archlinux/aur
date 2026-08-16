@@ -1,6 +1,6 @@
 pkgbase = orion-beta
 	pkgdesc = Orion Beta web browser using native Arch Linux libraries
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://kagi.com/orion/
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = orion-beta
 	depends = vulkan-icd-loader
 	depends = webkitgtk-6.0
 	depends = xz
-	provides = orion-browser=0.4.1
+	provides = orion-browser=0.4.2
 	options = !debug
 	source = LICENSE
 	sha256sums = 18fd7c419da08efe8ef55acb05f411704ee6b4622879a98209416eb4b9f49e40
