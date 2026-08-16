@@ -1,0 +1,16 @@
+pkgbase = cli-music-player-lrc
+	pkgdesc = Terminal music player with LRC suport
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FlippantList428/CLI-Music-Player-with-LRC
+	arch = any
+	license = MIT
+	depends = python
+	depends = mpv
+	depends = python-mutagen
+	depends = python-pillow
+	depends = python-mpv
+	source = git+https://github.com/FlippantList428/CLI-Music-Player-with-LRC.git
+	sha256sums = SKIP
+
+pkgname = cli-music-player-lrc
