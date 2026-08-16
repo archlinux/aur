@@ -2,7 +2,7 @@
 
 pkgname=uyap-editor-bin
 pkgver=5.4.19
-pkgrel=1
+pkgrel=2
 pkgdesc='UYAP Document and Template Editor (Turkish judicial system)'
 arch=('x86_64')
 url='https://uyap.gov.tr/UYAP-Editor'
