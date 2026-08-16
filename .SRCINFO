@@ -1,6 +1,6 @@
 pkgbase = margo-git
 	pkgdesc = Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)
-	pkgver = r2252.f5ba4d03
+	pkgver = r2263.e78f7328
 	pkgrel = 1
 	url = https://github.com/kenanpelit/margo
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = margo-git
 	makedepends = git
 	makedepends = wayland-protocols
 	makedepends = gtk4-layer-shell
+	makedepends = mpv
 	depends = glibc
 	depends = gcc-libs
 	depends = libinput
@@ -58,9 +59,7 @@ pkgbase = margo-git
 	optdepends = swappy: post-capture annotation editor for mscreenshot
 	optdepends = satty: alternative annotation editor for mscreenshot
 	optdepends = wf-recorder: screen recording via wlr-screencopy
-	optdepends = yt-dlp: `mplay play`/`download` of YouTube + other streaming URLs
-	optdepends = playerctl: MPRIS media control for `mplay media` (Spotify/VLC/browsers)
-	optdepends = mpc: MPD control for `mplay media`
+	optdepends = yt-dlp: `mshellctl play play`/`download` of YouTube + other streaming URLs
 	optdepends = copyq: clipboard manager via wlr-data-control
 	optdepends = wl-clip-persist: keep clipboard alive after the producer exits
 	optdepends = networkmanager: NetworkManager backend for mshell network + ndns
@@ -78,10 +77,10 @@ pkgbase = margo-git
 	optdepends = tmux: required by mtm's session/layout/buffer/kenp commands
 	optdepends = fzf: interactive picker for mtm buffer/clip/speed
 	optdepends = cliphist: mtm clip's clipboard-history backend
-	provides = margo=r2252.f5ba4d03
+	provides = margo=r2263.e78f7328
 	provides = wayland-compositor
-	provides = mshell=r2252.f5ba4d03
-	provides = margo-mshell-git=r2252.f5ba4d03
+	provides = mshell=r2263.e78f7328
+	provides = margo-mshell-git=r2263.e78f7328
 	conflicts = margo
 	conflicts = margo-mshell-git
 	conflicts = mshell

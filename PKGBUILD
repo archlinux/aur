@@ -32,7 +32,7 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r2252.f5ba4d03
+pkgver=r2263.e78f7328
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
@@ -83,7 +83,7 @@ depends=(
   grim            # `mscreenshot` capture pipeline
   slurp
   wl-clipboard
-  mpv             # `mplay`: window control + libmpv.so for the wallpaper engine
+  mpv             # `mshellctl play`: mpv companion window control + libmpv.so for the wallpaper engine
   # ── mshell (gtk4 + relm4) ───────────────────────────────────────
   gtk4
   gtk4-layer-shell
@@ -111,6 +111,7 @@ makedepends=(
   # Headers needed at build time even though the linked libs come
   # from the runtime `depends` set above.
   gtk4-layer-shell
+  mpv             # mshellctl links libmpv directly (build.rs -lmpv) for the wallpaper engine
 )
 optdepends=(
   # Sessions & XDG plumbing
@@ -122,9 +123,7 @@ optdepends=(
   "swappy: post-capture annotation editor for mscreenshot"
   "satty: alternative annotation editor for mscreenshot"
   "wf-recorder: screen recording via wlr-screencopy"
-  "yt-dlp: \`mplay play\`/\`download\` of YouTube + other streaming URLs"
-  "playerctl: MPRIS media control for \`mplay media\` (Spotify/VLC/browsers)"
-  "mpc: MPD control for \`mplay media\`"
+  "yt-dlp: \`mshellctl play play\`/\`download\` of YouTube + other streaming URLs"
   # Clipboard managers — mshell clipboard widget + mshellshare paste
   "copyq: clipboard manager via wlr-data-control"
   "wl-clip-persist: keep clipboard alive after the producer exits"
@@ -250,7 +249,7 @@ build() {
   # anyhow, shells out to tmux/fzf/git/tar, no zbus/tokio/gtk — safe here.
   cargo build --frozen --release \
     -p margo -p start-margo \
-    -p mctl -p mlock -p mlayout -p mscreenshot -p mvisual -p mlogind -p mpower -p mplay \
+    -p mctl -p mlock -p mlayout -p mscreenshot -p mvisual -p mlogind -p mpower \
     -p mdots -p mcal -p mtm
 
   # mshell trio + mpicker + mwizard. mpicker pulls
@@ -274,6 +273,12 @@ build() {
   # mlogind's `[display] host = "gui"`) builds here too — it links the same
   # gtk4/gtk4-layer-shell stack as the shell, so it shares that resolution
   # rather than leaking GTK into margo's (zbus-only, no-tokio) graph.
+  # mshellctl also links libmpv directly now (its native mpv-companion +
+  # video-wallpaper engine, formerly the separate `mplay` binary — see
+  # the `mpv` makedepends/depends entries above) and pulls in
+  # wayland-client/khronos-egl/wayland-egl for the wallpaper engine's own
+  # EGL context; it already lives in this tokio/GTK group, so nothing
+  # else changes here.
   cargo build --frozen --release \
     --features mshell/wasm-plugins \
     -p mshell -p mshellctl -p mshellshare -p mpicker -p mwizard \
@@ -313,7 +318,7 @@ package() {
   local bin
   for bin in \
       margo start-margo \
-      mctl mlock mlayout mscreenshot mvisual mlogind mgreet mpower mplay \
+      mctl mlock mlayout mscreenshot mvisual mlogind mgreet mpower \
       mshell mshellctl mshellshare mpicker mwizard mkeys mvpn mdots mcal mtm; do
     install -Dm755 "$CARGO_TARGET_DIR/release/$bin" "$pkgdir/usr/bin/$bin"
   done
