@@ -15,7 +15,7 @@ source=("https://gitlab.xiph.org/xiph/speexdsp/-/archive/SpeexDSP-${pkgver}/spee
 sha256sums=('d17ca363654556a4ff1d02cc13d9eb1fc5a8642c90b40bd54ce266c3807b91a7')
 
 _srcdir="${_pkgname}-SpeexDSP-${pkgver}"
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 
 prepare() {
   cd "${_srcdir}"
