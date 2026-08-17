@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Rusty PSN
+GenericName=PSN downloader for PS3 updates
+Type=Application
+Comment=Update PS3 games
+Icon=playstation-store
+Path=/tmp
+Exec=rusty-psn-gui
+Terminal=false
+StartupNotify=false
+StartupWMClass=retroarch
+Keywords=emulator;xmb;
+Categories=Game;Emulator;
