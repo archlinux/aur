@@ -22,7 +22,12 @@ pkgrel=1
 pkgdesc="Format-decoder bridge plugin for the orender engine (loaded via dlopen at runtime)"
 arch=('x86_64')
 url="https://github.com/harletty/harletty-bridge"
-license=('Apache-2.0')
+# The bridge's own sources are Apache-2.0, but the library packaged here links
+# bridge_api/spdif/sys from Omniphony, which are GPL-3.0-or-later. What ships
+# in this package is therefore a combined work under the GPL. (The upstream
+# harletty CLI has no such dependency and stays Apache-2.0; it is not part of
+# this package.)
+license=('GPL-3.0-or-later' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 
@@ -57,9 +62,16 @@ package() {
     install -Dm755 target/release/libharletty_bridge.so \
         "$pkgdir/usr/lib/orender/libharletty_bridge.so"
 
-    # Apache-2.0 text is provided by the system `licenses` package; ship the
-    # upstream copy too if the checkout has one (avoid creating an empty dir).
+    # Both licences the shipped library is under: Apache-2.0 for the bridge's
+    # own sources, GPL-3.0-or-later for the combined work. Their texts are in
+    # the system `licenses` package, but a user holding only this .so should
+    # not have to go looking — the GPL requires the terms to travel with it.
     if [ -f LICENSE ]; then
-        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+        install -Dm644 LICENSE \
+            "$pkgdir/usr/share/licenses/$pkgname/LICENSE.Apache-2.0"
+    fi
+    if [ -f "$srcdir/Omniphony/LICENSE" ]; then
+        install -Dm644 "$srcdir/Omniphony/LICENSE" \
+            "$pkgdir/usr/share/licenses/$pkgname/LICENSE.GPL-3.0-or-later"
     fi
 }
