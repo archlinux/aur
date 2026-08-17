@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=11.2.0
 _xaliaver=0.4.9
-pkgrel=2
+pkgrel=3
 epoch=1
 
 source=(
@@ -31,137 +31,137 @@ arch=(x86_64 x86_64_v3)
 options=(!staticlibs !lto !debug emptydirs pestrip)
 license=('custom')
 depends=(
-  attr            lib32-attr
-#  blas            lib32-blas
+  attr
+#  blas
   cabextract
   desktop-file-utils
-  fontconfig      lib32-fontconfig
-  flac            lib32-flac
-  freetype2       lib32-freetype2
-  libgcc          lib32-gcc-libs
-  gettext         lib32-gettext
-  glib2           lib32-glib2
-  glibc           lib32-glibc
-#  lapack          lib32-lapack
-  libgudev        lib32-libgudev
-  libnsl          lib32-libnsl
-  libpcap         lib32-libpcap
-  libunwind       lib32-libunwind
-  libvpx          lib32-libvpx
-  libwebp         lib32-libwebp
-  libx11          lib32-libx11
-  libxcursor      lib32-libxcursor
-  libxext         lib32-libxext
-  libxkbcommon    lib32-libxkbcommon
-  libxml2         lib32-libxml2
-  libxi           lib32-libxi
-  libxrandr       lib32-libxrandr
-  mpg123          lib32-mpg123
-  pipewire        lib32-pipewire
+  fontconfig
+  flac
+  freetype2
+  libgcc
+  gettext
+  glib2
+  glibc
+#  lapack
+  libgudev
+  libnsl
+  libpcap
+  libunwind
+  libvpx
+  libwebp
+  libx11
+  libxcursor
+  libxext
+  libxkbcommon
+  libxml2
+  libxi
+  libxrandr
+  mpg123
+  pipewire
   python
   python-six
-  speex           lib32-speex
-  speexdsp        lib32-speexdsp
+  speex
+  speexdsp
 # Start of old steam-native-runtime
-  atk             lib32-atk
-  cairo           lib32-cairo
-  curl            lib32-curl
-  dbus-glib       lib32-dbus-glib
-  freeglut        lib32-freeglut
-  gdk-pixbuf2     lib32-gdk-pixbuf2
-  glu             lib32-glu
-  lcms2           lib32-lcms2
-  libcaca         lib32-libcaca
-  libcanberra     lib32-libcanberra
-  dbus            lib32-dbus
-  libdrm          lib32-libdrm
-  libice          lib32-libice
+  atk
+  cairo
+  curl
+  dbus-glib
+  freeglut
+  gdk-pixbuf2
+  glu
+  lcms2
+  libcaca
+  libcanberra
+  dbus
+  libdrm
+  libice
   libibus
-  libnm           lib32-libnm
-  libusb          lib32-libusb
-  libvdpau        lib32-libvdpau
-  libvorbis       lib32-libvorbis
-  libxft          lib32-libxft
-  libxmu          lib32-libxmu
-  libxrender      lib32-libxrender
-  libxtst         lib32-libxtst
-  nspr            lib32-nspr
-  openal          lib32-openal
-  pango           lib32-pango
-  sdl2-compat     lib32-sdl2-compat
-  pipewire        lib32-pipewire
+  libnm
+  libusb
+  libvdpau
+  libvorbis
+  libxft
+  libxmu
+  libxrender
+  libxtst
+  nspr
+  openal
+  pango
+  sdl2-compat
+  pipewire
   librsvg
-  libsm           lib32-libsm
-  libtheora       lib32-libtheora
-  vulkan-driver   lib32-vulkan-driver
+  libsm
+  libtheora
+  vulkan-driver
 # End of old steam-native-runtime
   unzip
-  wayland         lib32-wayland
-  xz              lib32-xz
+  wayland
+  xz
 )
 makedepends=(
   afdko
-  alsa-lib              lib32-alsa-lib
+  alsa-lib
   clang
   cmake
   ffmpeg
   fontforge
-  giflib                lib32-giflib
+  giflib
   git
   glib2-devel
   glslang 
-  gnutls                lib32-gnutls
-  gtk3                  lib32-gtk3
+  gnutls
+  gtk3
   libgphoto2
-  libpulse              lib32-libpulse
-  libva                 lib32-libva
-  libxcomposite         lib32-libxcomposite
-  libxinerama           lib32-libxinerama
-  libxxf86vm            lib32-libxxf86vm
+  libpulse
+  libva
+  libxcomposite
+  libxinerama
+  libxxf86vm
   lld
-  mesa                  lib32-mesa
-  mesa-libgl            lib32-mesa-libgl
+  mesa
+  mesa-libgl
   meson
   mingw-w64-gcc
   mingw-w64-tools
   nasm
   opencl-headers
-  opencl-icd-loader     lib32-opencl-icd-loader
-  pcsclite              lib32-pcsclite
+  opencl-icd-loader
+  pcsclite
   perl
   perl-json
   rsync
-  rust                  lib32-rust-libs
+  rust
   python-pefile
   python-setuptools-scm
   samba
   unixodbc
-  v4l-utils             lib32-v4l-utils
+  v4l-utils
   vulkan-headers
-  vulkan-icd-loader     lib32-vulkan-icd-loader
+  vulkan-icd-loader
   wayland-protocols
   wget
   xorg-util-macros
 )
 optdepends=(
-  alsa-lib              lib32-alsa-lib
-  alsa-plugins          lib32-alsa-plugins
+  alsa-lib
+  alsa-plugins
   ffmpeg
-  gnutls                lib32-gnutls
-  gtk3                  lib32-gtk3
+  gnutls
+  gtk3
   libgphoto2
-  libpulse              lib32-libpulse
-  libva                 lib32-libva
-  libxcomposite         lib32-libxcomposite
-  libxinerama           lib32-libxinerama
-  opencl-icd-loader     lib32-opencl-icd-loader
-  pcsclite              lib32-pcsclite
+  libpulse
+  libva
+  libxcomposite
+  libxinerama
+  opencl-icd-loader
+  pcsclite
   samba
   steam
   umu-launcher
   unixodbc
-  v4l-utils             lib32-v4l-utils
-  vulkan-icd-loader     lib32-vulkan-icd-loader
+  v4l-utils
+  vulkan-icd-loader
 )
 optdepends+=(
   NTSYNC-MODULE
@@ -266,7 +266,6 @@ prepare() {
         export RUSTUP_TOOLCHAIN=stable
         export CARGO_HOME="${SRCDEST}"/proton-cargo
         export CARGO_NET_GIT_FETCH_WITH_CLI=true
-        cargo fetch --locked --target i686-unknown-linux-gnu
         cargo fetch --locked --target x86_64-unknown-linux-gnu
     popd
     done
@@ -297,6 +296,7 @@ build() {
         --container-engine="none" \
         --proton-sdk-image="" \
         --build-name="${pkgname}" \
+        --enable-wow64 \
         --without-steamrt-depends \
         --without-tts
 
