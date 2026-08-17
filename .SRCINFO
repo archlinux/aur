@@ -1,6 +1,6 @@
 pkgbase = expac-git
 	pkgdesc = pacman database extraction utility
-	pkgver = 10.r1.gab14fef
+	pkgver = 10.r22.g8dc9ba4
 	pkgrel = 1
 	url = https://github.com/falconindy/expac
 	arch = x86_64

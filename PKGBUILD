@@ -2,7 +2,7 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=expac-git
-pkgver=10.r1.gab14fef
+pkgver=10.r22.g8dc9ba4
 pkgrel=1
 pkgdesc="pacman database extraction utility"
 arch=('x86_64')
@@ -20,18 +20,18 @@ pkgver() {
   git describe | sed 's/-/.r/;s/-/./g'
 }
 
-prepare() {
-  sed 's/^.\*.\?//;/DEALINGS/q' expac/src/expac.c > LICENSE
-}
-
 build() {
   arch-meson expac build
   meson compile -C build
 }
 
+check() {
+  meson test -C build        
+}
+
 package() {
   meson install -C build --destdir "$pkgdir"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 expac/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ft=sh syn=sh et
