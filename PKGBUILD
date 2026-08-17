@@ -4,7 +4,7 @@
 # Optional dependencies are dissociated from arch and need to be installed manually into venv. Although, many are installed by hermes lazyly when needed.
 # TODO: there needs to be a way to copy skills upon hermes package update, or, at least, to prompt the user to do so.
 #
-# Optional build flags (env vars or uncomment the inline defaults below):
+# Optional build flags:
 #   HERMES_BUILD_DESKTOP=1  Build the Electron desktop app (apps/desktop/) and ship it
 #                           inside the package.  This adds a significant build time cost
 #                           (Electron Chromium download + full TypeScript/Vite build) and
@@ -23,17 +23,13 @@
 #                             computer-use, acp, mistral, otlp, bedrock, vertex,
 #                             azure-identity, termux, termux-all, dingtalk, feishu,
 #                             google, youtube, web, cli, dev
+#                           Example:  HERMES_PIP_EXTRAS="anthropic,messaging,voice" makepkg -si
 #   HERMES_BUILD_WHATSAPP=1  Build the whatsapp-bridge Node.js dependencies.
 #                           Enable this if you use the WhatsApp integration.
-#
-# --- Inline defaults (uncomment to enable without env vars) ---
-# HERMES_BUILD_DESKTOP="1"
-# HERMES_PIP_EXTRAS=""
-# HERMES_BUILD_WHATSAPP="1"
 pkgname=hermes-agent
 pkgver=0.20.1
 _tagver=2026.8.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
 url="https://github.com/NousResearch/hermes-agent"

@@ -3,124 +3,99 @@ post_install() {
  local _optdir="/opt/$pkgname"
  local _desktop_dir="$_optdir/apps/desktop"
 
- # Use the venv Python to bootstrap the user's ~/.hermes directory.
- # The .install script runs as root (pacman), so \$HOME is /root.
- # hermes_constants.get_hermes_home() resolves HERMES_HOME or defaults
- # to Path.home()/.hermes — but Path.home() for root is /root.
- # Instead we find the real user from the hermes binary owner or SUDO_USER.
+ # Use the venv Python to bootstrap the user's ~/.hermes directory for all users.
+ # The .install script runs as root (pacman), so we need to set up per-user files.
  $_optdir/venv/bin/python3 << 'PYEOF'
-import os, sys, shutil, subprocess
+import os, sys, shutil, subprocess, json
 from pathlib import Path
-
-sys.path.insert(0, "/opt/hermes-agent")
-
-from hermes_constants import get_hermes_home
 from datetime import datetime, timezone
 
 _OPTDIR = Path("/opt/hermes-agent")
-
-# Resolve the real user's hermes home.  pacman runs as root so Path.home()
-# is /root.  Ask the hermes CLI itself where it would look for config.yaml
-# — that directory is the hermes home.
-def _real_hermes_home() -> Path:
-    # If HERMES_HOME is set, trust it
-    override = os.environ.get("HERMES_HOME")
-    if override:
-        return Path(override)
-
-    # Ask 'hermes config path' — it returns the resolved config.yaml path
-    # using the same logic as the CLI (HERMES_HOME env var, profile, etc.)
-    import subprocess
-    try:
-        result = subprocess.run(
-            [str(_OPTDIR / "venv/bin/hermes"), "config", "path"],
-            capture_output=True, text=True, timeout=10,
-        )
-        if result.returncode == 0 and result.stdout.strip():
-            config_path = Path(result.stdout.strip())
-            if config_path.is_file() or config_path.parent.exists():
-                return config_path.parent
-    except (subprocess.TimeoutExpired, FileNotFoundError):
-        pass
-
-    # Fallback: find any non-root ~/.hermes on the system
-    import glob
-    for d in glob.glob("/home/*/.hermes"):
-        return Path(d)
-
-    # Last resort: root's own
-    return get_hermes_home()
-
-_hermes_home = _real_hermes_home()
-_optdir = _OPTDIR
+_DESKTOP_DIR = _OPTDIR / "apps" / "desktop"
 
 def _needs(msg):
     print(f"  {msg}")
 
-# 1. Create directory structure (only missing dirs)
-_dirs = [
-    "cron", "sessions", "logs", "memories", "skills",
-    "pairing", "hooks", "image_cache", "audio_cache",
-    "whatsapp/session",
-]
-for d in _dirs:
-    p = _hermes_home / d
-    if not p.exists():
-        p.mkdir(parents=True, exist_ok=True)
-        _needs(f"Created {p}")
+# Get all users with UID >= 1000 and a home directory that exists
+import pwd
+min_uid = 1000
+processed = []
+for user in pwd.getpwent():
+    if user.pw_uid >= min_uid:
+        home_path = Path(user.pw_dir)
+        if home_path.is_dir():
+            processed.append(home_path)
 
-# 2. Seed config.yaml if not present
-_cfg = _hermes_home / "config.yaml"
-_ex_cfg = _optdir / "cli-config.yaml.example"
-if not _cfg.exists() and _ex_cfg.exists():
-    shutil.copy2(str(_ex_cfg), str(_cfg))
-    _needs(f"Seeded {_cfg}")
+if not processed:
+    print("==> No user homes found with UID >= 1000, skipping per-user setup.")
+else:
+    for home_path in processed:
+        _hermes_home = home_path / '.hermes'
+        print(f"==> Processing user home: {home_path}")
 
-# 3. Seed .env if not present
-_env = _hermes_home / ".env"
-_ex_env = _optdir / ".env.example"
-if not _env.exists() and _ex_env.exists():
-    shutil.copy2(str(_ex_env), str(_env))
-    _needs(f"Seeded {_env}")
+        # 1. Create directory structure (only missing dirs)
+        _dirs = [
+            "cron", "sessions", "logs", "memories", "skills",
+            "pairing", "hooks", "image_cache", "audio_cache",
+            "whatsapp/session",
+        ]
+        for d in _dirs:
+            p = _hermes_home / d
+            if not p.exists():
+                p.mkdir(parents=True, exist_ok=True)
+                _needs(f"Created {p}")
 
-# 4. Copy skills (only if ~/.hermes/skills is empty)
-_src_skills = _optdir / "skills"
-_dst_skills = _hermes_home / "skills"
-if _src_skills.is_dir() and _dst_skills.is_dir():
-    if not any(_dst_skills.iterdir()):
-        for item in _src_skills.iterdir():
-            dst = _dst_skills / item.name
-            if dst.exists():
-                continue
-            if item.is_dir():
-                shutil.copytree(str(item), str(dst), symlinks=True)
-            else:
-                shutil.copy2(str(item), str(dst))
-        _needs(f"Populated {_dst_skills} from upstream")
+        # 2. Seed config.yaml if not present
+        _cfg = _hermes_home / "config.yaml"
+        _ex_cfg = _OPTDIR / "cli-config.yaml.example"
+        if not _cfg.exists() and _ex_cfg.exists():
+            shutil.copy2(str(_ex_cfg), str(_cfg))
+            _needs(f"Seeded {_cfg}")
 
-# 5. Symlink whatsapp-bridge if not present
-_src_wb = _optdir / "scripts" / "whatsapp-bridge"
-_dst_wb = _hermes_home / "whatsapp-bridge"
-if _src_wb.exists() and not _dst_wb.exists() and not _dst_wb.is_symlink():
-    _dst_wb.symlink_to(str(_src_wb))
-    _needs(f"Linked {_dst_wb}")
+        # 3. Seed .env if not present
+        _env = _hermes_home / ".env"
+        _ex_env = _OPTDIR / ".env.example"
+        if not _env.exists() and _ex_env.exists():
+            shutil.copy2(str(_ex_env), str(_env))
+            _needs(f"Seeded {_env}")
 
-# 6. Desktop build stamp (if prebuilt desktop app is present)
-#    Write the stamp in the user's ~/.hermes, NOT /root/.hermes.
-if os.path.isdir(os.path.join(str(_optdir), "apps", "desktop", "release", "linux-unpacked")):
-    import json as _json
-    from hermes_cli.main import _compute_desktop_content_hash
-    _stamp = _hermes_home / "desktop-build-stamp.json"
-    _stamp.parent.mkdir(parents=True, exist_ok=True)
-    _h = _compute_desktop_content_hash(Path("/opt/hermes-agent"))
-    _stamp.write_text(_json.dumps({
-        "contentHash": _h,
-        "sourceMode": False,
-        "builtAt": datetime.now(timezone.utc).isoformat(),
-    }, indent=2) + "\n")
-    print(f"  Desktop build stamp written to {_stamp}")
+        # 4. Copy skills (only if ~/.hermes/skills is empty)
+        _src_skills = _OPTDIR / "skills"
+        _dst_skills = _hermes_home / "skills"
+        if _src_skills.is_dir() and _dst_skills.is_dir():
+            if not any(_dst_skills.iterdir()):
+                for item in _src_skills.iterdir():
+                    dst = _dst_skills / item.name
+                    if dst.exists():
+                        continue
+                    if item.is_dir():
+                        shutil.copytree(str(item), str(dst), symlinks=True)
+                    else:
+                        shutil.copy2(str(item), str(dst))
+                _needs(f"Populated {_dst_skills} from upstream")
 
-print(f"==> Hermes home initialised at {_hermes_home}")
+        # 5. Symlink whatsapp-bridge if not present
+        _src_wb = _OPTDIR / "scripts" / "whatsapp-bridge"
+        _dst_wb = _hermes_home / "whatsapp-bridge"
+        if _src_wb.exists() and not _dst_wb.exists() and not _dst_wb.is_symlink():
+            _dst_wb.symlink_to(str(_src_wb))
+            _needs(f"Linked {_dst_wb}")
+
+        # 6. Desktop build stamp (if prebuilt desktop app is present)
+        #    Write the stamp in the user's ~/.hermes, NOT /root/.hermes.
+        if os.path.isdir(os.path.join(str(_OPTDIR), "apps", "desktop", "release", "linux-unpacked")):
+            from hermes_cli.main import _compute_desktop_content_hash
+            _stamp = _hermes_home / "desktop-build-stamp.json"
+            _stamp.parent.mkdir(parents=True, exist_ok=True)
+            _h = _compute_desktop_content_hash(Path("/opt/hermes-agent"))
+            _stamp.write_text(json.dumps({
+                "contentHash": _h,
+                "sourceMode": False,
+                "builtAt": datetime.now(timezone.utc).isoformat(),
+            }, indent=2) + "\n")
+            _needs(f"Desktop build stamp written to {_stamp}")
+
+print(f"==> Processed {len(processed)} user home(s)")
 PYEOF
 
  echo "==> Add your API keys to ~/.hermes/.env"
