@@ -2,12 +2,12 @@
 
 pkgname=mint
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A refreshing language for the front-end web'
 arch=('x86_64')
 url='https://github.com/mint-lang/mint'
 license=('BSD')
-source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('ac74611b1cf4737ab00e255ccdf64c9c21fb88d1a76157f54b83126416ff3113')
 makedepends=('shards')
 conflicts=('mint-bin')
