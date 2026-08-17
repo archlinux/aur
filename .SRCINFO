@@ -1,6 +1,6 @@
 pkgbase = chan
-	pkgdesc = AI-native IDE with an embedded web editor
-	pkgver = 0.91.0
+	pkgdesc = Headless terminal multiplexer and workspace manager
+	pkgver = 0.92.0
 	pkgrel = 1
 	url = https://chan.app
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = chan
 	depends = systemd
 	conflicts = chan-desktop
 	options = !lto
-	source = chan-0.91.0.tar.gz::https://github.com/fiorix/chan/archive/v0.91.0.tar.gz
-	sha256sums = 0a6e73784e4d5c8607b7340be734366d01db3fdecf495a8aed18bf7cc906d825
+	source = chan-0.92.0.tar.gz::https://github.com/fiorix/chan/archive/v0.92.0.tar.gz
+	sha256sums = 97752aaa7e5cd698dba42805c73495cffcefc505b0aa2adf1ee469d44a51091b
 
 pkgname = chan
