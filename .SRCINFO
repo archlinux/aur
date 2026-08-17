@@ -1,6 +1,6 @@
 pkgbase = mebtty
 	pkgdesc = Self-hosted web terminal that brings server shells to the browser
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/mill413/mebtty
 	install = mebtty.install
@@ -13,10 +13,10 @@ pkgbase = mebtty
 	options = !debug
 	source = mebtty.tmpfiles
 	sha256sums = SKIP
-	source_x86_64 = mebtty-0.3.1-linux-amd64::https://github.com/mill413/mebtty/releases/download/v0.3.1/mebtty-0.3.1-linux-amd64
-	source_x86_64 = mebtty-0.3.1.service::https://github.com/mill413/mebtty/raw/v0.3.1/mebtty.service
-	source_x86_64 = mebtty-0.3.1.LICENSE::https://github.com/mill413/mebtty/raw/v0.3.1/LICENSE
-	sha256sums_x86_64 = 9841e1c3a3baddd59c7168b266ae849f73b4e3257ca5832ad1ceafc45409fb77
+	source_x86_64 = mebtty-0.3.2-linux-amd64::https://github.com/mill413/mebtty/releases/download/v0.3.2/mebtty-0.3.2-linux-amd64
+	source_x86_64 = mebtty-0.3.2.service::https://github.com/mill413/mebtty/raw/v0.3.2/mebtty.service
+	source_x86_64 = mebtty-0.3.2.LICENSE::https://github.com/mill413/mebtty/raw/v0.3.2/LICENSE
+	sha256sums_x86_64 = aeaabf8ce12b192c6c7a07301f70db375eaf948c3071cd37fa7841adb62fd985
 	sha256sums_x86_64 = c9b2bdd5a5654e6443265ee3d395087cd8d8e81c1adabe3fe0887316fecbb1bc
 	sha256sums_x86_64 = aeeb73fc1446b76daaf4b9735e56dec39185df9cc944bf38b9ab3b80a116fc1f
 
