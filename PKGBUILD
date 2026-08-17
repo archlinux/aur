@@ -2,7 +2,7 @@
 # Maintainer: wuziqian211 <wuziqian211 at 126 dot com>
 
 pkgname=tchmaterial-parser
-pkgver=4.1
+pkgver=4.0
 pkgrel=1
 pkgdesc="国家中小学智慧教育平台 资源下载工具，帮助您从国家中小学智慧教育平台中获取电子课本的 PDF 文件网址并进行下载，让您更方便地获取课本内容。"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
         "v$pkgver.tar.gz::https://github.com/happycola233/tchMaterial-parser/archive/refs/tags/v$pkgver.tar.gz"
         "tchmaterial-parser.desktop"
 )
-sha256sums=('b4e5b4c6768be08b66c9bc933a5cb4b3e842802fac1ea952e1a3d69c165fa929'
+sha256sums=('45b97363983c497b9e8b4c07c79e0f94265bc12f2fc758ada592006e22b66828'
             '806a543e1790762e4011820e21cbf021facb337a19a1c190bb806beb954530ec')
 
 build() {
