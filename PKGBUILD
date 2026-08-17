@@ -27,9 +27,9 @@
 #   HERMES_BUILD_WHATSAPP=1  Build the whatsapp-bridge Node.js dependencies.
 #                           Enable this if you use the WhatsApp integration.
 pkgname=hermes-agent
-pkgver=0.20.1
-_tagver=2026.8.13
-pkgrel=3
+pkgver=0.20.2
+_tagver=2026.8.16
+pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
 arch=('any')
 url="https://github.com/NousResearch/hermes-agent"
@@ -53,7 +53,7 @@ depends=(
 
 makedepends=('python311' 'nodejs' 'npm' 'rsync')
 source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz" "nosdistguard.patch")
-sha256sums=('2b202b0cbcecfaeec85572b60d66cd481ca387248b592878bf92204de78abefe'
+sha256sums=('655639384767611feee5ef5d6871e1a1b2294f7b1fd80fb401e9b888a418f4f9'
             'd4849e4997672e4f731770e622c03b1e5cb9ff899f3987df6dfee10346d8cf95')
 validpgpkeys=()
 install=hermes-agent.install
