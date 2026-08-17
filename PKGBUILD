@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=parqeye
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Peek inside Parquet files right from your terminal'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('parqeye')
 conflicts=('parqeye-bin')
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('2b8bc834d91594a708d2eea47f0e9ed2fe79b79dca1e9cad631d20b563a612c3')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
