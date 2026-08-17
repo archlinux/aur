@@ -3,17 +3,17 @@
 
 pkgname='openwebrx-plus-git'
 _pkgname='openwebrx'
-pkgver=1.2.118.r0.gf316b2db
+pkgver=1.2.121.r0.g74185618
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL-3.0-only')
-depends=('python-csdr-luarvique>=0.18.37' 'rtl-sdr' 'owrx_connector-luarvique' 'python-importlib-metadata' 'python-protobuf' 'python-pkg_resources')
+depends=('python-csdr-luarvique>=0.18.37' 'rtl-sdr' 'owrx_connector-luarvique' 'python-importlib-metadata' 'python-protobuf' 'python-setuptools')
 install=openwebrx-plus.install
 optdepends=(
     # decoding
-    'python-digiham: use digital voice modes'
+    'python-digiham>=0.6.11: use digital voice modes'
     'codecserver: decode audio data from digital voice modes using the AMBE codec, leagally trustworthy'
     'codecserver-softmbe: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec'
     'codecserver-mbelib-module: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec'
@@ -75,7 +75,7 @@ optdepends=(
     # hpsdr, no aur package yet
     # runds, no aur package yet
 )
-makedepends=('git' 'python-setuptools' 'python-distutils-extra')
+makedepends=('git' 'python-distutils-extra')
 source=(
     "$_pkgname"::"git+https://github.com/luarvique/openwebrx.git"
     'openwebrx-plus.sysusers'
