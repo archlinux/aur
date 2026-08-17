@@ -6,7 +6,7 @@
 
 pkgname=prettyzap-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Keyboard-first Electron shell around WhatsApp Web'
 arch=('x86_64')
 url='https://github.com/prettyletto/prettyzap'
@@ -37,6 +37,10 @@ package() {
   install -d "${pkgdir}/opt/prettyzap"
   cp -a "${srcdir}/squashfs-root/." "${pkgdir}/opt/prettyzap/"
   rm -f "${pkgdir}/opt/prettyzap/.DirIcon"
+  # AppImage extraction preserves its source-owner-only permissions. The
+  # package is installed system-wide, so normalize traversal/read permissions
+  # and retain executable bits for AppRun and Electron helper binaries.
+  chmod -R a+rX "${pkgdir}/opt/prettyzap"
 
   install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/prettyzap" <<'EOF'
 #!/bin/sh

@@ -1,7 +1,7 @@
 pkgbase = prettyzap-bin
 	pkgdesc = Keyboard-first Electron shell around WhatsApp Web
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prettyletto/prettyzap
 	arch = x86_64
 	license = MIT
