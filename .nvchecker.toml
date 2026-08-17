@@ -1,0 +1,4 @@
+[xfer9860]
+source = "httpheader"
+url = "https://sourceforge.net/projects/xfer9860/files/latest/download"
+regex = '^https://downloads\.sourceforge\.net/project/xfer9860/xfer9860/(\d+\.\d+\.\d+)/'
