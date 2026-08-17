@@ -7,6 +7,7 @@ pkgbase = supabase
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	makedepends = nodejs
 	depends = glibc
 	source = supabase-cli-2.114.0.tar.gz::https://github.com/supabase/cli/archive/refs/tags/v2.114.0.tar.gz
 	b2sums = ae02a1daff7d0d5f243af61cc30aeb0e6698168cdbca03c8495986b13a32280afdf0bf830410ee686cc00934c6ea2014b3a4ee1015e5a2bfb9650fa6e22a2aee

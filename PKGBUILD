@@ -10,7 +10,7 @@ url="https://supabase.com/docs/reference/cli/about"
 _url="https://github.com/${pkgname}/cli"
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
+makedepends=('go' 'nodejs')
 # checkdepends=('docker')
 _pkgsrc="cli-${pkgver}"
 _pkgdir="${_pkgsrc}/apps/cli-go"
@@ -44,7 +44,10 @@ build() {
     .
 
   for _sh in bash fish zsh powershell; do
-    ./"build/${pkgname}" completion "${_sh}" > "completions/${pkgname}.${_sh}"
+    node --experimental-strip-types --no-warnings --input-type=module -e "
+      import { legacyGenerateCompletionScript } from '${srcdir}/${_pkgsrc}/apps/cli/src/legacy/commands/completion/legacy-completion-scripts.ts';
+      process.stdout.write(legacyGenerateCompletionScript('${_sh}', { noDescriptions: false }));
+    " > "completions/${pkgname}.${_sh}"
   done
 }
 
