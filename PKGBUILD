@@ -1,7 +1,7 @@
 # Maintainer: Tom Davenport <1926694+tomdavenport@users.noreply.github.com>
 
 pkgname=cam-stream
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Low-latency camera preview, screen recorder and RTMP(S) streamer for Wayland'
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=(
 )
 checkdepends=('jq' 'python')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7557c89bc7bd0b0cc6d8b775009c9e7fe3bfd492e4252ba791b8e37343cdf6c2')
+sha256sums=('b7a623e60a72a19f8d206c37e5495e531382a1c4e25d14688e15933ed7db5e94')
 
 check() {
   cd "$pkgname-$pkgver"
