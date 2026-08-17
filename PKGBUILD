@@ -22,6 +22,16 @@ sha256sums=('0db8bf072c9ec895efc6aa3626c746f4ca020acc9b92e9b2292b56c8c9f8a943')
 # NATIVE_ARCH, which would bake the build machine's CPU capabilities into
 # the binary; ProstT5/ggml follow the same selection automatically.
 
+prepare() {
+  cd "$srcdir/$pkgname-${_tag}"
+  # cmake 4: drop CMP0060 OLD (upstream only needs it for static builds) and
+  # raise the pre-3.5 cmake_minimum_required calls cmake 4 refuses to load
+  sed -i '/cmake_policy(SET CMP0060 OLD)/d' CMakeLists.txt
+  sed -i 's/cmake_minimum_required(VERSION 2\.8\.12 FATAL_ERROR)/cmake_minimum_required(VERSION 3.15 FATAL_ERROR)/' lib/mmseqs/CMakeLists.txt
+  sed -i 's/cmake_minimum_required(VERSION 2\.8\.12)/cmake_minimum_required(VERSION 3.15)/' lib/mmseqs/lib/tinyexpr/CMakeLists.txt
+  sed -i 's/cmake_minimum_required(VERSION 3\.0 FATAL_ERROR)/cmake_minimum_required(VERSION 3.15 FATAL_ERROR)/' lib/foldcomp/CMakeLists.txt
+}
+
 build() {
   cd "$srcdir/$pkgname-${_tag}"
   cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DHAVE_SSE4_1=1
