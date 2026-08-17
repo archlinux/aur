@@ -3,7 +3,7 @@
 
 pkgname=bash-agent
 pkgver=4.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight coding agent that runs in your terminal - Bash/Go/Rust/C editions + tcode tmux UI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lloydzhou/bash-agent"
@@ -44,6 +44,12 @@ build() {
   cd "${srcdir}/bash-agent-${pkgver}"
   cp rust/target/release/rustagent dist/rustagent
 
+  # 3.5 Build Web agent（与 rust 段共用已清空的 CFLAGS，避免 ring 的 LTO 冲突）
+  cd "${srcdir}/bash-agent-${pkgver}/webagent"
+  cargo build --release -j "$(nproc)"
+  cd "${srcdir}/bash-agent-${pkgver}"
+  cp webagent/target/release/webagent dist/webagent
+
   # 4. Build C edition (cagent)
   # -Wno-stringop-truncation / -Wno-format-truncation: gcc 误报，buffer 大小实际够用
   cd c
@@ -62,6 +68,9 @@ package() {
 
   # Rust agent
   install -Dm755 dist/rustagent "${pkgdir}/usr/bin/rustagent"
+
+  # Web agent
+  install -Dm755 dist/webagent "${pkgdir}/usr/bin/webagent"
 
   # C agent
   install -Dm755 dist/cagent "${pkgdir}/usr/bin/cagent"
