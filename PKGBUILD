@@ -1,14 +1,14 @@
 # Maintainer: Thiago <killown.matrix@gmail.com>
 pkgname=flux-filemanager-git
 _pkgname=flux
-pkgver=0.1.0.r196.g44fbf0b
+pkgver=0.1.0.r448.g79ef4d4
 pkgrel=1
 pkgdesc="Modern and simple file manager written in Rust with Libadwaita"
 arch=('x86_64')
 url="https://github.com/killown/flux"
 license=('MIT')
 depends=('libadwaita' 'gtk4' 'dconf' 'sqlite')
-makedepends=('rust' 'cargo' 'git' 'clang' 'make')
+makedepends=('rust' 'cargo' 'git' 'clang' 'make' 'zstd' 'cmake' 'pkg-config')
 provides=('flux-fm' 'flux')
 conflicts=('flux-fm' 'flux')
 source=("${_pkgname}::git+${url}.git")
@@ -33,9 +33,9 @@ build() {
   cd "$_pkgname"
 
   export CARGO_HOME="$srcdir/cargo-home"
-
   export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
-
+  export PKG_CONFIG_PATH=/usr/lib/pkgconfig
+  export ZSTD_SYS_USE_PKG_CONFIG=1
   export LDFLAGS="${LDFLAGS/--as-needed/}"
 
   cargo build --release --frozen
