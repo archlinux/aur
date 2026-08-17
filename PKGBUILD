@@ -19,7 +19,7 @@ pkgver() {
   local tag hash
   tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
   hash=$(git rev-parse --short=7 HEAD 2>/dev/null || echo "0000000")
-  printf "%s" "$(echo "$tag" | sed 's/^v//').g${hash}"
+  printf "%s" "$(echo "$tag" | sed 's/^v//;s/-/./g').g${hash}"
 }
 
 package() {
