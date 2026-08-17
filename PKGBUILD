@@ -2,13 +2,13 @@
 
 pkgname=netrc
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility that allows users to manage netrc files'
 arch=('x86_64')
 url='https://github.com/dokku/netrc'
 license=('MIT')
 makedepends=('go')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d84385a254180c85d13c69b82803d08476bbc9404cb2449f3d1419fc96cb07ad')
 
 build() {
