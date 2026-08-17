@@ -1,6 +1,6 @@
 # Maintainer: Fgaoxing <fgaoxing0206@163.com>
 pkgname=axolotl-launcher-bin
-pkgver=1.8.0
+pkgver=1.8.2
 pkgrel=2
 pkgdesc="A free, cross-platform Minecraft launcher built on the Modrinth ecosystem"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ sha256sums=(
 )
 source_x86_64=("${url}/releases/download/v${pkgver}/Axolotl.Launcher_${pkgver}_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/Axolotl.Launcher_${pkgver}_arm64.deb")
-sha256sums_x86_64=('ff3552345d50057971bf509f3bd06638347c69342453ecdb01937393bf783534')
-sha256sums_aarch64=('ba248b402cc0c2a40aa07fdd8145e24ede8fb75bc499257f013ccd51f96a6aa3')
+sha256sums_x86_64=('51cfac94693e08c4a3290e15df2b6a1c8b509c151334d08aa02c1cfc7e663d1c')
+sha256sums_aarch64=('e7cca1abbe41f1c140e0a3ce0b6fdba3f02587a79b01265e5cf4ae1aaa00483a')
 package() {
   cd "${srcdir}"
 
