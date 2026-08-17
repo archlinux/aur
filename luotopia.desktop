@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Luotopia
+GenericName=Campus Client
+Comment=武汉大学一站式数字校园客户端
+Exec=luotopia
+Icon=luotopia
+Terminal=false
+Categories=Education;Utility;
+Keywords=WHU;campus;武汉大学;
+StartupNotify=true

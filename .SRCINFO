@@ -1,0 +1,24 @@
+pkgbase = luotopia-bin
+	pkgdesc = Luotopia campus client for Wuhan University
+	pkgver = 1.0.0+6
+	pkgrel = 1
+	url = https://github.com/ClosedWHU/Luotopia
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libsecret
+	depends = util-linux-libs
+	depends = xz
+	provides = luotopia
+	conflicts = luotopia
+	options = !strip
+	source = luotopia.desktop
+	sha256sums = 0c1a01832e156bfccf051eef400a7fd2b7ab5a7f300d56eed784c7b0f090254e
+	source_x86_64 = luotopia-bin-1.0.0+6-x86_64.tar.gz::https://github.com/ClosedWHU/Luotopia/releases/download/v1.0.0+6/luotopia-1.0.0-6-linux-x64.tar.gz
+	sha256sums_x86_64 = 742b9b1bffeaa26427c5a4eb5a5f38af17817319601266a3b6e65b0137c26c69
+	source_aarch64 = luotopia-bin-1.0.0+6-aarch64.tar.gz::https://github.com/ClosedWHU/Luotopia/releases/download/v1.0.0+6/luotopia-1.0.0-6-linux-arm64.tar.gz
+	sha256sums_aarch64 = ba7ce545bf87dd95658cbb65dc6b714afca136b8b0820f9960080a92af9c209e
+
+pkgname = luotopia-bin
