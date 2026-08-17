@@ -25,7 +25,7 @@ makedepends=('git' 'clang' 'cmake' 'ninja' 'go' 'rustup' 'fvm' 'patchelf')
 source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz" "restart-bettbox.hook" "bettbox.desktop")
 sha256sums=('9ae07bc91f5d44562af50fc5018ee843abbb7bda81805a05e0b78802dbe12add'
             'e911b882bc07c4c79941737bea45389c685cce8fb7dc77c632aebcf5e410ae5c'
-            'f5c33a2c9ccfff7de67b89b74d23ca66fe7b125e269b5751f5a67aa18ffc35d5')
+            'd7b7bdb64b1aabcedc8092a1498d743fad66d34b7f592194f805d039004d3e0f')
 prepare() {
 	cd "${_pkgname}-${_pkgver}"
 	fvm use 3.44.8
