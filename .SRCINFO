@@ -1,6 +1,6 @@
 pkgbase = python-lsp-ruff
 	pkgdesc = python-lsp-server plugin for extensive and fast linting using ruff
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://github.com/python-lsp/python-lsp-ruff
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-lsp-ruff
 	depends = python-cattrs
 	depends = python-lsprotocol
 	depends = python-tomli
-	source = python-lsp-ruff-2.3.2.tar.gz::https://github.com/python-lsp/python-lsp-ruff/archive/refs/tags/v2.3.2.tar.gz
-	sha256sums = ab88cd37992ac3002818e7ed6ab3ccbf8cd4bc2646ecbf10114c22c3959f8ccc
+	source = python-lsp-ruff-2.3.3.tar.gz::https://github.com/python-lsp/python-lsp-ruff/archive/refs/tags/v2.3.3.tar.gz
+	sha256sums = f77b16361c48517a90f1d3107069fd04714f651c9bb1b24859a507f8f1401cac
 
 pkgname = python-lsp-ruff
