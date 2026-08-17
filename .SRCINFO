@@ -1,7 +1,7 @@
 pkgbase = makemkv
 	pkgdesc = DVD and Blu-ray to MKV converter
 	pkgver = 1.18.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.makemkv.com
 	install = makemkv.install
 	arch = x86_64
@@ -15,10 +15,12 @@ pkgbase = makemkv
 	optdepends = java-runtime: bdjava https://www.makemkv.com/bdjava/
 	source = https://www.makemkv.com/download/makemkv-bin-1.18.4.tar.gz
 	source = https://www.makemkv.com/download/makemkv-oss-1.18.4.tar.gz
+	source = ffmpeg9.patch
 	source = makemkv.1
 	source = makemkvcon.1
 	sha256sums = cee56de0baa5531abed16bd862742d308d772b4ab4dae16ee865bf74f04a1608
 	sha256sums = 8590063648d42ec2a958b74573d7022f0f4c334e4e4fe7dd53b70c6e748ba453
+	sha256sums = d35ae9e841ac43297e17a08d8819b339c5058bbdfc150fab508a442365756929
 	sha256sums = 5573b2e4bade10d8cd258a7c235eb46f66ef8c8c97e5d5eb090c38fa0f94389b
 	sha256sums = f12c0facf2f0071a9f728b138986f0a4c2b4ff6ace2dfb2e96364e215e9fda6f
 
