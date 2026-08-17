@@ -1,6 +1,6 @@
 pkgbase = anvil-manager
 	pkgdesc = A self-hosted pacman GUI
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://github.com/Hamza-b93/anvil
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = anvil-manager
 	optdepends = polkit: graphical authentication for privileged actions
 	provides = anvil
 	conflicts = anvil
-	source = anvil-manager-0.7.5.tar.gz::https://github.com/Hamza-b93/anvil/archive/refs/tags/v0.7.5.tar.gz
-	sha256sums = 33e00bd277a4b6248e02e7d510dc12e163035abf1aabde5253b779049a7f24f0
+	source = anvil-manager-0.7.6.tar.gz::https://github.com/Hamza-b93/anvil/archive/refs/tags/v0.7.6.tar.gz
+	sha256sums = f83472474670a6f569176adaba46f13030a7fb85c6e716f78c79c41e6a4c1a3c
 
 pkgname = anvil-manager
