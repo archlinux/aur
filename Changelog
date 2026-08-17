@@ -1,17 +1,25 @@
 -------------------------------------------------------
  Changelog    : patricia26
- Tags         : 1.0.2 ➙ 1.1.1
-              : 2026-07-27 ➙ 2026-08-02
+ Tags         : 1.0.3 ➙ 1.2.0
+              : 2026-07-27 ➙ 2026-08-17
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-08-02   : 1.1.1
+ 2026-08-17   : 1.2.0
+              - **1.2.0**
+            
+                * Cython - initialize variable
+                  Can lead to UB.
+            
+                * Drop the Patricia26Int experimental class - too slow.
+
+ 2026-08-02   : 1.1.1, origin/master, origin/HEAD
               - **1.1.1**
             
                 * Fix for Python API reference doc.
                   File name change caused it to be dropped from the PDF.
 
- 2026-07-28   : 1.1.0, origin/master, origin/HEAD
+ 2026-07-28   : 1.1.0
               - Actually use 1.1.0 as the release tag instead of 1.0.4
 
  2026-07-28   : 1.0.4
@@ -30,6 +38,3 @@
 
  2026-07-27   : 1.0.3
               - Simplify meson.build using common compile and linker options for patricia26 library and the cython c-code
-
- 2026-07-27   : 1.0.2
-              - Add options to uv build --wheel
