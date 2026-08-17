@@ -1,0 +1,28 @@
+pkgbase = ccusage-statusline-rs-bin
+	pkgdesc = Fast statusline for Claude Code w/usage tracking, billing blocks, burn rate monitoring
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/ticpu/ccusage-statusline-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = ccusage-statusline-rs=1.13.0
+	conflicts = ccusage-statusline-rs
+	options = !strip
+	source = ccusage-statusline-rs-1.13.0.tar.xz::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.13.0/ccusage-statusline-rs-1.13.0.tar.xz
+	source = ccusage-statusline-rs-1.13.0.tar.xz.asc::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.13.0/ccusage-statusline-rs-1.13.0.tar.xz.asc
+	validpgpkeys = E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD
+	sha256sums = 864a5f3e58047b489745716f0e15c993a2cbde45b6b3f825d515da0c1115d368
+	sha256sums = SKIP
+	source_x86_64 = ccusage-statusline-rs-1.13.0-x86_64::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.13.0/ccusage-statusline-rs-linux-x86_64
+	source_x86_64 = ccusage-statusline-rs-1.13.0-x86_64.asc::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.13.0/ccusage-statusline-rs-linux-x86_64.asc
+	sha256sums_x86_64 = a8a0d195df3d137319cd2add271b712f88f5c7077019b5053cdfbc60e62d2c01
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = ccusage-statusline-rs-1.13.0-aarch64::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.13.0/ccusage-statusline-rs-linux-aarch64
+	source_aarch64 = ccusage-statusline-rs-1.13.0-aarch64.asc::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.13.0/ccusage-statusline-rs-linux-aarch64.asc
+	sha256sums_aarch64 = 8dd96a6415ff8b933f964975f5a811d36ac46b49cedaa97a6614c17d8388eab4
+	sha256sums_aarch64 = SKIP
+
+pkgname = ccusage-statusline-rs-bin
