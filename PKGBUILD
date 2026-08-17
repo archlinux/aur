@@ -2,12 +2,12 @@
 
 pkgname=procfile-util
 pkgver=0.20.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for interacting with Procfiles'
 arch=('x86_64')
 url='https://github.com/dokku/procfile-util'
 license=('MIT')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('5bb2ed30ce8c0d149a2534e4370165c934d46706beb0192af8b9ccf64f8bba32')
 makedepends=('go')
 
