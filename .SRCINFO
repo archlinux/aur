@@ -1,7 +1,7 @@
 pkgbase = thextech-bin
 	pkgdesc = SMBX engine.
-	pkgver = 1.3.7.2
-	pkgrel = 2
+	pkgver = 1.3.7.3
+	pkgrel = 1
 	url = https://github.com/Wohlstand/TheXTech
 	arch = i386
 	arch = i686
@@ -11,14 +11,14 @@ pkgbase = thextech-bin
 	license = GPL
 	makedepends = unzip
 	depends = sdl2
-	provides = thextech=1.3.7.2
-	source_i386 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.7.2/thextech-plain-runtime-v1.3.7.2-linux-generic-u16.04-i386.tar.gz
-	sha256sums_i386 = c40f5c7e94b4e8f6d408d7c755408b2a794e74b33a3feb3bf93d6f4406242be8
-	source_i686 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.7.2/thextech-plain-runtime-v1.3.7.2-linux-generic-u16.04-i386.tar.gz
-	sha256sums_i686 = c40f5c7e94b4e8f6d408d7c755408b2a794e74b33a3feb3bf93d6f4406242be8
-	source_x86_64 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.7.2/thextech-plain-runtime-v1.3.7.2-linux-generic-u20.04-amd64.tar.gz
-	sha256sums_x86_64 = e7f5fd8490a0ed90bb2862bb736539ba76ca492483b68e0545cb306ce327b54f
-	source_aarch64 = https://github.com/TheXTech/TheXTech/releases/download/v1.3.7.2/thextech-plain-runtime-v1.3.7.2-linux-generic-u20.04-aarch64.tar.gz
-	sha256sums_aarch64 = bb28c8e36c1b1e99aeddf1d8a403431405b300b2f1f3a916122f9d573302282d
+	provides = thextech=1.3.7.3
+	source_i386 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.7.3/thextech-plain-runtime-v1.3.7.3-linux-generic-u16.04-i386.tar.gz
+	sha256sums_i386 = 19d015ee0dd4ea64849209b2c3b3fd75a263c59777ac057ea7478f2a7178653b
+	source_i686 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.7.3/thextech-plain-runtime-v1.3.7.3-linux-generic-u16.04-i386.tar.gz
+	sha256sums_i686 = 19d015ee0dd4ea64849209b2c3b3fd75a263c59777ac057ea7478f2a7178653b
+	source_x86_64 = https://github.com/Wohlstand/TheXTech/releases/download/v1.3.7.3/thextech-plain-runtime-v1.3.7.3-linux-generic-u20.04-amd64.tar.gz
+	sha256sums_x86_64 = cf527acd4e900a8f239591916e3969586993bca5ff82615e5e36aab9f61c6462
+	source_aarch64 = https://github.com/TheXTech/TheXTech/releases/download/v1.3.7.3/thextech-plain-runtime-v1.3.7.3-linux-generic-u20.04-aarch64.tar.gz
+	sha256sums_aarch64 = bd22b0131540b57d3e4f1da42cfffbf19133ceb870df24b772467a10a6a711f4
 
 pkgname = thextech-bin
