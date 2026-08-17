@@ -1,0 +1,17 @@
+pkgbase = webcastmate-bin
+	pkgdesc = Multi-platform live protocol CLI (no browser): login -> go-live RTMP -> live.json
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/xifan2333/webcast-mate
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = webcastmate
+	conflicts = webcastmate
+	options = !strip
+	source_x86_64 = webcastmate-linux-amd64-0.1.0::https://github.com/xifan2333/webcast-mate/releases/download/v0.1.0/webcastmate-linux-amd64
+	sha256sums_x86_64 = e70e769677f28e7c81b824dd056b769922b6d259dd174c97446a9aa657058dfa
+	source_aarch64 = webcastmate-linux-arm64-0.1.0::https://github.com/xifan2333/webcast-mate/releases/download/v0.1.0/webcastmate-linux-arm64
+	sha256sums_aarch64 = SKIP
+
+pkgname = webcastmate-bin
