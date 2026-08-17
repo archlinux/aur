@@ -6,9 +6,10 @@
 
 pkgname=gamescope-lanczos-downscaling
 _pkgname=gamescope
-pkgver=3.16.25
+pkgver=0.2.0
 pkgrel=1
-pkgdesc='The SteamOS session compositing window manager, but now with Lanczos Downscaling and other goodies for supersampling on linux. I made this partially for Ross Scott (from Accursed Farms).'
+epoch=1
+pkgdesc='The SteamOS session compositing window manager, but now with Lanczos Downscaling and other goodies for supersampling on linux.'
 arch=(x86_64)
 url=https://github.com/ThomasEricB/gamescope-lanczos-downscaling
 license=(
@@ -67,14 +68,8 @@ makedepends=(
   catch2)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-commit=17baf4abd1ab3353fb705e4d0d023f84e870f7e8
 source=(
-  "$_pkgname::git+https://github.com/ValveSoftware/gamescope.git#commit=$commit"
-  "0001-Feat-Add-Ewa-Lanczos-Filter-based-on-Libplacebo.patch"
-  "0002-Feat-Add-Bilateral-Denoiser-based-on-KrigBilateral.patch"
-  "0003-Feat-Add-Hdeband-Filter-based-on-.glsl-by-an3223.patch"
-  "0004-Feat-Implement-Lanczos-based-on-Ruanformigoni-s-code.patch"
-  "0005-Fix-Compositor-not-respecting-requested-size.patch"
+  "$_pkgname::git+$url.git#tag=$pkgver"
   "1908.patch"
   "subprojects|glm::git+https://github.com/g-truc/glm.git#commit=0af55ccecd98d4e5a8d1fad7de25ba429d60e863"
   "subprojects|stb::git+https://github.com/nothings/stb.git#commit=5736b15f7ea0ffb08dd38af21067c314d6a3aae9")
@@ -135,12 +130,7 @@ source+=('thirdparty|SPIRV-Headers::git+https://github.com/KhronosGroup/SPIRV-He
          'subprojects|libliftoff::git+https://gitlab.freedesktop.org/emersion/libliftoff.git#commit=8b08dc1c14fd019cc90ddabe34ad16596b0691f4'
          'subprojects|wlroots::git+https://gitlab.freedesktop.org/wlroots/wlroots.git#commit=88a869855742281c98c22cab9641b317b8d065ef') # End
 
-sha512sums=('5d49125d5ae0459e481c903ccdcc42c08f19af3ba9b98afad5e20b14f59327e8ed7359cd7d18770028cd15fb0b1091c57f5520fc9d20ed2cf7178beedfb3f79a'
-            '5076efcb98b068c01bc887c0acd8fba61fb04d7a71a368602c2ea66dc6a429c4c1e7b0c41e379d392eeb1b802a26d356d10125f5fb8f1e44421ad3b36a019e6f'
-            '7ebe110f006acc71f54d2bb0a101180f40cf43423b8326137932730cfc72b38c4db409d5580d80f47617bd1dbde2abe8862eb5c9af75b6b85effb415b7ffcdef'
-            'b4368b3b44f8af235d8ad673345ef97e3cefc214030b9544f11f7ab8de37993a4aba18219ad26c387cb733e74872f1d2b3228f75b047391149dbc7a73b7086db'
-            '49685b3e889a28bfc4175c09f5b537bb33c321bf4d2dd1be42bbabf604f9563d9efa5c2a5190156a5a04fe24a2dda576774d608b6c442be10c30da10a6b29a3e'
-            '6bc3a1f572070efb4f095a9179d293844413156b0bcbddbc281c3fc4cc3abef5313ef721f61d4fa82124438c452c8ce05a86a0a507a72f48b06146be4a21f657'
+sha512sums=('677cac4dd730477e99f4c951a177a31d3f201e5a30575bbe07a9f85991687f1cc6a22629270568be67fde2ee6399c074f79a56c379228646077fbd98928ffef4'
             '42f3b58fc115993d82953df08e0595015e935df01e8bea0b66340698215b644bea2aabf845d353d717c23bebba236db6d548c82ac60322358089f95d8c27a09b'
             '16c0f045f0d0e223278d9cf3267a297eb33c30c773e67c5e863fb435cb24ff76cc886152e42f20dd759cd001398c8fb0bdfa2d7b1515a9ee0ac96c1741fa6eaa'
             '53ff8f7a4ae987b84398bf6b35bccb5aec5337d4e57660f599776eb62f692aa40be671e2c456f24de16c07d27272431b807ca3fd4a97d297bb2a8f35c3df665f'
