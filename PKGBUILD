@@ -2,8 +2,8 @@
 # Contributor: FabioLolix
 
 pkgname=exoscale-cli
-pkgver=1.97.0
-pkgrel=2
+pkgver=1.98.0
+pkgrel=1
 pkgdesc="Command-line tool for everything at Exoscale: compute, storage, dns"
 arch=('x86_64')
 url="https://github.com/exoscale/cli"
