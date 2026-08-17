@@ -5,6 +5,7 @@ from pathlib import Path
 import os
 import datetime
 import subprocess
+import re
 
 archive_config = Path("/etc/pacman-archive.toml")
 archive_d_dir = Path("/var/lib/pacman-archive")
@@ -12,9 +13,26 @@ archive_d_dir = Path("/var/lib/pacman-archive")
 #archive_d_dir = Path("./pacman-archive.d")
 
 def get_repo_list():
-    if result := subprocess.run(["pacman-conf", "--repo-list"], capture_output=True, text=True, check=True):
-        return result.stdout.splitlines()
-    return []
+    def _get_repo_list():
+        return subprocess.run(["pacman-conf", "--repo-list"], capture_output=True, text=True)
+    pattern = re.compile(r".*(/var/lib/pacman-archive/[a-zA-Z0-9_.-]+\.mirrorlist).*")
+    result = _get_repo_list()
+    try_number = 100
+    while result.returncode != 0 and ((try_number := try_number - 1) > 0):
+        if match := pattern.search(result.stderr):
+            if missing_mirrorlist := match.group(1):
+                Path(missing_mirrorlist).parent.mkdir(parents=True, exist_ok=True)
+                Path(missing_mirrorlist).touch(exist_ok=True)
+                result = _get_repo_list()
+                continue
+            else:
+                try_number=0
+        else:
+            try_number=0
+    if not try_number > 0:
+        print(result.stderr)
+        sys.exit(1)
+    return result.stdout.splitlines()
 
 def get_repo_last_modified(repo: str):
     pacman_lib_sync_path = Path("/var/lib/pacman/sync")

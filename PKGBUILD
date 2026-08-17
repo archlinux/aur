@@ -1,7 +1,7 @@
 # Maintainter: Ben Song <bensongsyz@gmail.com>
 pkgname="pacman-archive"
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This package will append proper archive url to mirrorlist"
 arch=('x86_64')
 license=('GPL')
@@ -14,7 +14,7 @@ source=(
 )
 sha256sums=(
     e6ce7bc1412cec6f7f111c1080e01f4d9c16e9968fe16b4f49ffbac519334231
-    50c88979c1fe5b831a24e9297a952b90b8bc21f2c43dc2e8636ee2f9734e8e4c
+    77860d83f795f2fcf933bc561020c19265925028a8da317be90f97762fcbd7f8
     9a3942d62968249c951f4a1a65b0514bd72459655502ffd9f16098f9304767a4
     997acd67ae1ae270c9fc69e7e777afe0d8710c1fea30e1ea1ef35da983d0b2f1
     SKIP
