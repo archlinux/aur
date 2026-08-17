@@ -1,7 +1,7 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Wayland application launcher — UI, daemon, and providers in one binary"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry"
@@ -16,7 +16,7 @@ optdepends=(
     'cliphist: clipboard history provider'
     'wl-clipboard: clipboard write and emoji copy'
     'fd: filesystem search provider (primary backend)'
-    'mlocate: filesystem search provider (fallback backend)'
+    'plocate: filesystem search provider (fallback backend)'
 )
 # v2.0 replaces the entire pre-collapse package set. paru/pacman -Syu
 # transparently swaps the old packages for owlry-2.0.0 via these arrays.
@@ -30,7 +30,7 @@ optdepends=(
 #     functionality returns in a later 2.x release.
 #   - owlry-plugin-scripts: replaced by user Lua config (D12), Phase 3+.
 #   - owlry-meta-*: superseded by the single owlry package.
-_v2_replaced=(
+_v2_retired=(
     'owlry-core'
     'owlry-lua'
     'owlry-rune'
@@ -61,23 +61,36 @@ _v2_replaced=(
     'owlry-meta-tools'
     'owlry-meta-full'
 )
-replaces=("${_v2_replaced[@]}")
-conflicts=("${_v2_replaced[@]}")
-provides=("${_v2_replaced[@]}")
+replaces=("${_v2_retired[@]}")
+conflicts=("${_v2_retired[@]}")
+
+# Only claim packages whose functionality is present in this build. The
+# remaining retired packages above stay in replaces/conflicts solely so
+# upgrades from the pre-v2 package split remain automatic.
+provides=(
+    'owlry-core'
+    'owlry-lua'
+    'owlry-plugin-clipboard'
+    'owlry-plugin-emoji'
+    'owlry-plugin-filesearch'
+    'owlry-plugin-ssh'
+    'owlry-plugin-systemd'
+    'owlry-plugin-websearch'
+    'owlry-plugin-calculator'
+    'owlry-plugin-converter'
+    'owlry-plugin-system'
+)
 
 install=owlry.install
-
-# Cargo's release profile strips the binary at compile time (strip = true
-# in workspace Cargo.toml), so there are no debug symbols left for makepkg
-# to extract into an owlry-debug subpackage. Disable debug splitting so the
-# build doesn't ship a 0-byte debug package.
-options=('!debug')
 
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-v$pkgver.tar.gz")
 b2sums=('9ba4b88bf51d86971a4ef78fb9be8504632adcb1e1b34b4e0f478b61cfde66c7fd15b3a2c1645439143cdd539eb20cc725fafee0893ed2a77d7f7e15f93269da')
 
 prepare() {
     cd "owlry"
+    # pkgver=2.4.0 still has `strip = true` in the tagged source. Remove it
+    # here so makepkg owns stripping and can produce a useful debug package.
+    sed -i '/^strip = true$/d' Cargo.toml
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
