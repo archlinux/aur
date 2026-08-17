@@ -1,0 +1,15 @@
+pkgbase = mmseqs2-bin
+	pkgdesc = Ultra fast and sensitive sequence search and clustering suite (precompiled binary)
+	pkgver = 18_8cc5c
+	pkgrel = 1
+	url = https://github.com/soedinglab/mmseqs2
+	arch = x86_64
+	license = GPL3
+	provides = mmseqs2=18_8cc5c
+	conflicts = mmseqs2
+	options = !strip
+	options = !debug
+	source = https://github.com/soedinglab/mmseqs2/releases/download/18-8cc5c/mmseqs-linux-avx2.tar.gz
+	sha256sums = bd9b0234da5949ad528d5b5f9ea4cda9c1e23dce14b46c0791d4d919a76e61ce
+
+pkgname = mmseqs2-bin
