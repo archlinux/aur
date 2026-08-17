@@ -3,7 +3,7 @@
 pkgname=iqtree-bin
 pkgver=3.1.3
 pkgrel=1
-pkgdesc="Efficient phylogenomic software by maximum likelihood (precompiled binary) https://doi.org/10.1093/molbev/msaa015"
+pkgdesc="Efficient phylogenomic software by maximum likelihood"
 _pkgname=iqtree3
 arch=('x86_64')
 url="https://github.com/iqtree/${_pkgname}"
