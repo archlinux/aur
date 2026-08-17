@@ -1,13 +1,13 @@
 pkgbase = gliderlabs-sigil
 	pkgdesc = Standalone string interpolator and template processor
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gliderlabs/sigil
 	arch = x86_64
 	license = BSD
 	makedepends = go
 	conflicts = sigil
-	source = https://github.com/gliderlabs/sigil/archive/refs/tags/v0.12.1.tar.gz
+	source = gliderlabs-sigil-0.12.1.tar.gz::https://github.com/gliderlabs/sigil/archive/refs/tags/v0.12.1.tar.gz
 	sha256sums = d6d2669cbf218fe52f4a4a74cb977c260a47910eb11e4e8685961fc49996f963
 
 pkgname = gliderlabs-sigil

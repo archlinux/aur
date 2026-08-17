@@ -2,14 +2,14 @@
 
 pkgname=gliderlabs-sigil
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone string interpolator and template processor'
 arch=('x86_64')
 url='https://github.com/gliderlabs/sigil'
 license=('BSD')
 # a package with the same name exists and provides a binary with the same name
 conflicts=('sigil')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d6d2669cbf218fe52f4a4a74cb977c260a47910eb11e4e8685961fc49996f963')
 makedepends=('go')
 
