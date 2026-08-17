@@ -33,8 +33,8 @@ check() {
 
 package() {
   cd "py$_name-$pkgver"
-  python -m installer -d "$pkgdir/" dist/*.whl
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
