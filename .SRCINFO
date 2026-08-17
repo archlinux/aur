@@ -19,6 +19,6 @@ pkgbase = aura-emerge
 	conflicts = aura-emerge-git
 	backup = etc/emerge/world.set
 	source = aura-emerge::git+https://github.com/Undercat037/aura-emerge.git#tag=v2.1.0
-	sha256sums = f891f5720e62d871fe6bafdb1007c6f3de3e5148624f910e706979fe4ccc932f
+	sha256sums = 839371b8c6144fe09ed532f5a0fb10610697b66dc519a581d61de725216cb1d5
 
 pkgname = aura-emerge
