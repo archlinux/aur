@@ -1,0 +1,20 @@
+pkgbase = mediacli-git
+	pkgdesc = Advanced console media suite around yt-dlp & FFmpeg with TUI and background queue
+	pkgver = r1.0.0
+	pkgrel = 1
+	url = https://github.com/Glob876/mediacli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = yt-dlp
+	depends = ffmpeg
+	optdepends = atomicparsley: Embedding artwork and tags into MP4/M4A
+	optdepends = deno: JavaScript runtime for yt-dlp signature decryption
+	provides = mediacli
+	conflicts = mediacli
+	source = git+https://github.com/Glob876/mediacli.git
+	sha256sums = SKIP
+
+pkgname = mediacli-git
