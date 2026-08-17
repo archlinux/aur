@@ -1,40 +1,45 @@
-# Maintainer: Maxime Gauduin <alucryd@gmail.com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=lib32-orc
-pkgver=0.4.23
+pkgver=0.4.42
 pkgrel=1
-pkgdesc='The Oild Runtime Compiler'
-arch=('x86_64')
-license=('custom')
-url='http://code.entropywave.com/projects/orc/'
-depends=('lib32-glibc' 'orc')
-makedepends=('valgrind')
-source=("http://gstreamer.freedesktop.org/data/src/orc/orc-${pkgver}.tar.xz")
-sha256sums=('767eaebce2941737b43368225ec54598b3055ca78b4dc50c4092f5fcdc0bdfe7')
+pkgdesc="Optimized Inner Loop Runtime Compiler (32-bit)"
+url="https://gstreamer.freedesktop.org/modules/orc.html"
+arch=(x86_64)
+license=(BSD-3-Clause)
+depends=(
+  'lib32-gcc-libs'
+  'lib32-glibc'
+  'orc'
+)
+makedepends=(
+  'git'
+  'meson'
+  'valgrind'
+)
+source=("git+https://gitlab.freedesktop.org/gstreamer/orc.git?signed#tag=$pkgver")
+b2sums=('65b8fc3a403fb0eeb89edf865f8631bc56997149ef8e09a6a20a5e36a2fea84ab1b5cc7e916e0016d3e49cdc188957279f16baba615648bc7c7dbaf7f57e791a')
+validpgpkeys=(
+  'D637032E45B8C6585B9456565D2EEE6F6F349D7C' # Tim-Philipp Müller <tim@centricular.com>
+)
 
 build() {
-  cd orc-${pkgver}
+  arch-meson orc build --cross-file lib32 -D hotdoc=disabled
+  meson compile -C build
+}
 
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-
-  ./configure \
-    --prefix='/usr' \
-    --libdir='/usr/lib32' \
-    --disable-static \
-    --enable-backend=mmx,sse,altivec
-  make
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd orc-${pkgver}
+  provides=(liborc{,-test}-${pkgver%.*}.so)
 
-  make DESTDIR="$pkgdir" install
-  rm -rf "${pkgdir}"/usr/{bin,include,share}
-
-  install -dm 755 "${pkgdir}"/usr/share/licenses
-  ln -s orc "${pkgdir}"/usr/share/licenses/lib32-orc
+  meson install -C build --destdir "$pkgdir"
+  rm -r "$pkgdir"/usr/{bin,include}
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 orc/COPYING
 }
 
-# vim: ts=2 sw=2 et:
+# vim:set sw=2 sts=-1 et:

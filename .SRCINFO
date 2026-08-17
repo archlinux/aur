@@ -1,15 +1,20 @@
 pkgbase = lib32-orc
-	pkgdesc = The Oild Runtime Compiler
-	pkgver = 0.4.23
+	pkgdesc = Optimized Inner Loop Runtime Compiler (32-bit)
+	pkgver = 0.4.42
 	pkgrel = 1
-	url = http://code.entropywave.com/projects/orc/
+	url = https://gstreamer.freedesktop.org/modules/orc.html
 	arch = x86_64
-	license = custom
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = meson
 	makedepends = valgrind
+	depends = lib32-gcc-libs
 	depends = lib32-glibc
 	depends = orc
-	source = http://gstreamer.freedesktop.org/data/src/orc/orc-0.4.23.tar.xz
-	sha256sums = 767eaebce2941737b43368225ec54598b3055ca78b4dc50c4092f5fcdc0bdfe7
+	source = git+https://gitlab.freedesktop.org/gstreamer/orc.git?signed#tag=0.4.42
+	validpgpkeys = D637032E45B8C6585B9456565D2EEE6F6F349D7C
+	b2sums = 65b8fc3a403fb0eeb89edf865f8631bc56997149ef8e09a6a20a5e36a2fea84ab1b5cc7e916e0016d3e49cdc188957279f16baba615648bc7c7dbaf7f57e791a
 
 pkgname = lib32-orc
-
+	provides = liborc-0.4.so
+	provides = liborc-test-0.4.so
