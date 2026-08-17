@@ -1,4 +1,5 @@
 /src/
 /pkg/
-/sshcommand
+/sshcommand-*.*.*
+/sshcommand-*.*.*-LICENSE
 /*.pkg.tar.zst
