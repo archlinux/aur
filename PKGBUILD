@@ -3,7 +3,7 @@
 
 pkgname=grok-build-bin
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="SpaceXAI's coding agent harness and TUI. Fullscreen, mouse interactive, extensible."
 arch=(
   'x86_64' 
@@ -37,7 +37,7 @@ b2sums=(
 package() {
 
   install -Dm755 "$srcdir/grok-$pkgver-$CARCH" "$pkgdir/usr/bin/grok"
-  install -Dm644 "$srcdir/LICENSE.grok" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.grok"
+  install -Dm644 "$srcdir/LICENSE.grok" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "$srcdir/requirements.toml" "$pkgdir/etc/grok/requirements.toml"
 
   install -d "$pkgdir/usr/share/bash-completion/completions"
