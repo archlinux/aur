@@ -1,4 +1,6 @@
 /pkg/
 /src/
 /vllm/
+/vllm-flash-attn/
+/flash-attn-cutlass/
 python-vllm-cuda-*

@@ -1,6 +1,6 @@
 pkgbase = python-vllm-cuda
 	pkgdesc = high-throughput and memory-efficient inference and serving engine for LLMs
-	pkgver = 0.20.1
+	pkgver = 0.27.1
 	pkgrel = 1
 	url = https://github.com/vllm-project/vllm
 	arch = x86_64
@@ -64,8 +64,12 @@ pkgbase = python-vllm-cuda
 	optdepends = python-xgrammar: flexible structured generation
 	provides = python-vllm
 	conflicts = python-vllm
-	source = git+https://github.com/vllm-project/vllm#tag=v0.20.1
+	source = git+https://github.com/vllm-project/vllm#tag=v0.27.1
+	source = vllm-flash-attn::git+https://github.com/vllm-project/flash-attention.git#commit=28e862d21806bc3580207aa0ad4e2759151e9827
+	source = flash-attn-cutlass::git+https://github.com/NVIDIA/cutlass.git#commit=62750a2b75c802660e4894434dc55e839f322277
 	source = 121.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
