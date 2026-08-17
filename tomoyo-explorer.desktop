@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=MyBSD Tomoyo Explorer
+GenericName=File Manager
+Comment=Classic BSD/Unix Ruby GTK 1.2 File Manager
+Exec=tomoyo-explorer %U
+Icon=tomoyo-explorer
+Terminal=false
+Type=Application
+Categories=System;FileManager;Utility;
+StartupNotify=true
