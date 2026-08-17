@@ -1,7 +1,7 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy dot nl>
 # Contributor: Bart Verhoeven <nepherte at archlinux dot us>
 pkgname=timblserver
-pkgver=1.19
+pkgver=1.20
 pkgrel=1
 pkgdesc="Tilburg Memory Based Learner Server."
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ options=(!libtool)
 url="http://languagemachines.github.io/timbl"
 _gituser="LanguageMachines"
 _gitname="timblserver"
-source=(https://github.com/LanguageMachines/timblserver/archive/v1.19.tar.gz)
-md5sums=(53048487bd7e02b6642f1ab16c7d857f)
+source=(https://github.com/LanguageMachines/timblserver/archive/v1.20.tar.gz)
+md5sums=(c2b0d1ab60e09ede3b6f0607e1fcdee1)
 
 build() {
   cd $srcdir/$pkgname-$pkgver
