@@ -1,12 +1,12 @@
 pkgname=any-listen-desktop
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='A cross-platform private music playback service'
 arch=('x86_64')
 url='https://github.com/any-listen/any-listen-desktop'
 license=('custom:AGPL-3.0-based')
 
-_electron=electron41
+_electron=electron42
 _srcdir="${pkgname}-${pkgver}"
 
 depends=(
