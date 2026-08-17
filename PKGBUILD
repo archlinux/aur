@@ -1,6 +1,6 @@
 # Maintainer: Maarten van Gompel <proycon at anaproy dot nl>
 pkgname=frog
-pkgver=0.34
+pkgver=0.35.1
 pkgrel=1
 pkgdesc="Frog is an integration of memory-based natural language processing (NLP) modules developed for Dutch. It includes a tokenizer, part-of-speech tagger, lemmatizer, morphological analyser, named entity recognition, shallow parser and dependency parser."
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ options=(!libtool)
 _gituser="LanguageMachines"
 _gitname="frog"
 url="http://languagemachines.github.io/frog"
-source=(https://github.com/LanguageMachines/frog/archive/v0.34.tar.gz)
-md5sums=(a46bab6931508676dfc53acda9924a33)
+source=(https://github.com/LanguageMachines/frog/archive/v0.35.1.tar.gz)
+md5sums=(45a52e8d618fcab65efd0e60342c8950)
 
 build() {
   cd $srcdir/$pkgname-$pkgver

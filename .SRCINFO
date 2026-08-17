@@ -1,6 +1,6 @@
 pkgbase = frog
 	pkgdesc = Frog is an integration of memory-based natural language processing (NLP) modules developed for Dutch. It includes a tokenizer, part-of-speech tagger, lemmatizer, morphological analyser, named entity recognition, shallow parser and dependency parser.
-	pkgver = 0.34
+	pkgver = 0.35.1
 	pkgrel = 1
 	url = http://languagemachines.github.io/frog
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = frog
 	depends = mbt>=3.10
 	depends = mbtserver
 	options = !libtool
-	source = https://github.com/LanguageMachines/frog/archive/v0.34.tar.gz
-	md5sums = a46bab6931508676dfc53acda9924a33
+	source = https://github.com/LanguageMachines/frog/archive/v0.35.1.tar.gz
+	md5sums = 45a52e8d618fcab65efd0e60342c8950
 
 pkgname = frog
