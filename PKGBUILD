@@ -23,7 +23,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A post-modern terminal file explorer"
 
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 _gitversion=v$(format_version "${pkgver}")
 
@@ -48,10 +48,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.zip")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.zip::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.zip")
-sha256sums=('7e331c8d7ad76b984c11c23de3b860e9f93cae4bad82c264475788a5fc6866ac'
+sha256sums=('1be30be2f444a2bf1082d0c8a0102c9452b0bd4dae71e5243438b86434126aef'
             'b1f7cd544c998e25bcc990abc8c1f7c46d01b3a2ec61efb454ea932cbcc69445')
-sha256sums_x86_64=('7e917729ccb022414e58348d8866ef69d68aa1c729c6f2cecb528fd60edaea5f')
-sha256sums_aarch64=('5627bb3dd297ad007b4b09cd427bc0236600670dd34519df88d931e263ade039')
+sha256sums_x86_64=('9d7b38c98509a9bc2d4475ae23fe5a9dd0c2f09865e62b9fdb37a46f28070cc3')
+sha256sums_aarch64=('509416e503ef4d99d3f3d945c0ba7e17833f72c00ccfd132a6f7b798f8638eaa')
 
 noextract=("${source_x86_64[@]%%::*}" "${source_i686[@]%%::*}" "${source_aarch64[@]%%::*}")
 
