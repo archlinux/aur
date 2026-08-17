@@ -2,7 +2,7 @@
 
 pkgname=rubick-kubernetes
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern cross-platform Kubernetes GUI client"
 arch=(x86_64)
 url="https://github.com/Dudude-bit/rubick"

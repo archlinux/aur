@@ -1,7 +1,7 @@
 pkgbase = rubick-kubernetes
 	pkgdesc = Modern cross-platform Kubernetes GUI client
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dudude-bit/rubick
 	arch = x86_64
 	license = GPL-3.0-or-later
