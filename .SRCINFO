@@ -1,0 +1,17 @@
+pkgbase = dev-proxy
+	pkgdesc = Simulate API failures, throttling, and chaos, all from your command line
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/dotnet/dev-proxy
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	depends = dotnet-runtime-10.0
+	depends = aspnet-runtime-10.0
+	depends = gcc-libs
+	depends = glibc
+	conflicts = dev-proxy-bin
+	source = dev-proxy-3.2.0.tar.gz::https://github.com/dotnet/dev-proxy/archive/refs/tags/v3.2.0.tar.gz
+	sha256sums = c9c2c85e1543aecc81fbc0f4f3c8fb93719319c0d00f6138c440bfc37d552a70
+
+pkgname = dev-proxy
