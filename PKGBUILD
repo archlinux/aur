@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A minimal CLI password manager designed to be simple, dependency-light, and transparent"
 
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ provides=("${_appname}")
 options=(!strip)
 
 source=("git+${url}.git#tag=v$pkgver")
-sha256sums=('c53eea87f7865472f9fbe3f3b9098af8b60fa1c8af1a6b73157dd6ec26a02c18')
+sha256sums=('ee53e3a1bb831d86ba2f7772a5ac00aa7786c76dae8cd74a19bed5c380c6e1f6')
 
 
 build() {
