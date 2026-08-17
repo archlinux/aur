@@ -1,7 +1,7 @@
 # Maintainer: Alex3236 <me@alex3236.moe>
 
 pkgname=pineapple-notepad-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A Qt 6, KDE Framework and Scintilla-based Cross-Platform Notepad++ Alternative"
 arch=('x86_64')
@@ -33,8 +33,8 @@ source=(
     "EULA::https://raw.githubusercontent.com/BLumia/pineapple-notepad/master/LICENSE"
 )
 sha256sums=(
-    '9a8ee052f4d9799c5e29c837940cc78c49a9c6e2fb1b649ee954289bb4f8400a'
-    '74af71e40370d7eebf418b665180a68201f12d61ed9b9d04625b295320e37615'
+    'dd76e1f1e1893b47e57fe606aefc7ae61b64e092214825d67812587050c4e4ff'
+    '3fa76f7b7065028caa41a18687df79774defc041cb1552cc0d363a48dee63104'
     'SKIP'
 )
 
