@@ -1,5 +1,5 @@
 pkgname=msvc-wine-git
-pkgver=18.7.3.514f8ea
+pkgver=18.9.0.514f8ea
 pkgrel=1
 pkgdesc='MSVC compiler with CMake toolchains. Compiler work in Wine64'
 arch=('x86_64')
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
 			'f6e7660c2ecf32fedd16dbe7a8765ce902bdad21d7329fa57870b979ad682dd7'
 			'ea2bda01685600ecf044c5685558cb3fea9f20025deb288ba5270b5bb715d97f'
 			'4fdcd74149980bb502a97befac0d5d7dc513b8dcaaf7d899fc1af4e75332da3a'
-			'8624137bc158f39245d5e77d0bff7c6b67ac2f3d56f7e39bfaa25cc20192d989'
+			'215e00ac4ed8f2c03029341f5a95aecfa9bbd86e3dbc968a98075b7715f8fd04'
 			'7536e54ce31880cff6029e6414a94361998aaa82e7cafecc7d7e25c981736632'
 			'0355c500cf493f4a77c7d3789fc79e701331fd9e9899552da1a0f04e9bf53c7c'
 			'35b91ef0a8f5d19b58729f7028652a14b02bb53d55c0a60ac11b92e3eb8ec032'
