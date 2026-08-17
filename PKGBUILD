@@ -2,14 +2,16 @@
 
 pkgname=chaptereditor
 pkgver=1.45
-pkgrel=1
+pkgrel=2
 pkgdesc='An extended chapter editor for Matroska (and other formats)'
 arch=(x86_64)
 url=https://forum.doom9.org/showthread.php?t=169984
 license=()
 depends=()
 makedepends=(7zip)
-_url="https://forum.videohelp.com/attachments/82994-1729438370"
+#_url="https://forum.videohelp.com/attachments/82994-1729438370"
+# Mirrored due to VideoHelp anti-bot measures
+_url="https://codefloe.com/damian101/chaptereditor-mirror/raw/branch/main"
 source=(
   $pkgname-v$pkgver.7z::"$_url/cE-L($pkgver).7z"
   $pkgname.desktop
@@ -21,7 +23,7 @@ sha256sums=(
 )
 
 prepare() {
-  7z x $pkgname-v$pkgver.7z -o$pkgname-v$pkgver >/dev/null
+  7z x -y $pkgname-v$pkgver.7z -o$pkgname-v$pkgver >/dev/null
 }
 
 package() {
