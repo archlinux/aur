@@ -1,8 +1,8 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-git
-pkgver=2020.06.r2855.g8538610fa
+pkgver=2020.06.r3679.ge45ab27ca
 pkgrel=1
-pkgdesc="C++11/C++14 graphics middleware for games and data visualization (Git version)"
+pkgdesc="C++11 graphics middleware for games and data visualization (Git version)"
 arch=('i686' 'x86_64')
 url="https://magnum.graphics"
 license=('MIT')
