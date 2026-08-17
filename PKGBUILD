@@ -12,7 +12,7 @@
 
 pkgname=inm
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native manager for Incus virtual machines with the SPICE console embedded in the app"
 arch=('x86_64')
 url="https://github.com/loyalpartner/inm"
@@ -24,6 +24,19 @@ sha256sums=('67d17ce4cb4d033983639c708a30feb798dea6b5dc62c8a1980005c19f664ea1')
 
 build() {
     cd "${pkgname}-${pkgver}"
+    # The `ring` crate compiles part of itself as C/assembly via the `cc`
+    # crate, which picks up $CFLAGS automatically. Arch's default
+    # -flto=auto there makes that C code come out as GCC LTO bitcode
+    # instead of real object code, which rust-lld can't read — every
+    # ring_core_* symbol then looks "undefined" at the final link, even
+    # though the archive is right there. Rust has its own LTO knobs (Cargo
+    # profile settings); this flag was never meant for it. Verified this is
+    # the actual cause, not a guess: stripping it from CFLAGS/CXXFLAGS/
+    # LDFLAGS turns a build that fails 100% of the time in a clean chroot
+    # into one that succeeds 100% of the time, same source, same lockfile.
+    export CFLAGS="${CFLAGS//-flto=auto/}"
+    export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
+    export LDFLAGS="${LDFLAGS//-flto=auto/}"
     cargo build --release --locked
 }
 

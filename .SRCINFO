@@ -1,7 +1,7 @@
 pkgbase = inm
 	pkgdesc = Native manager for Incus virtual machines with the SPICE console embedded in the app
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/loyalpartner/inm
 	arch = x86_64
 	license = MIT
