@@ -1,0 +1,17 @@
+pkgbase = lyn-git
+	pkgdesc = Weather forecasting CLI powered by the Norwegian Meteorological Institute
+	pkgver = 1.4.1.r14.gc1fc103
+	pkgrel = 1
+	url = https://sr.ht/~timharek/lyn/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = lyn
+	conflicts = lyn
+	source = lyn::git+https://git.sr.ht/~timharek/lyn
+	sha256sums = SKIP
+
+pkgname = lyn-git
