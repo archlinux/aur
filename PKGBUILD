@@ -1,8 +1,8 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-examples-git
-pkgver=2020.06.r155.g7710aec6
+pkgver=2020.06.r347.ge48ba889
 pkgrel=1
-pkgdesc="Examples for the Magnum C++11/C++14 graphics engine (Git version)"
+pkgdesc="Examples for the Magnum C++11 graphics engine (Git version)"
 arch=('i686' 'x86_64')
 url="https://magnum.graphics"
 license=('custom:Public Domain')
