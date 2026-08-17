@@ -1,7 +1,7 @@
 # Maintainer: Anatolii Vorona <vorona.tolik@gmail.com>
 pkgbase=openlawsvpn
 pkgname=(openlawsvpn-daemon openlawsvpn-cli openlawsvpn-gui)
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="AWS Client VPN client with SAML/SSO support — pure Go stack"
 arch=(x86_64 aarch64 powerpc64le)
@@ -11,7 +11,7 @@ makedepends=(go rust gtk4 libadwaita openssl)
 install=openlawsvpn.install
 _srcdir="go-openlawsvpn-pkg-$pkgver-$pkgrel"
 source=("$pkgbase-$pkgver-$pkgrel.tar.gz::https://github.com/openlawsvpn/go-openlawsvpn/archive/refs/tags/pkg/$pkgver-$pkgrel.tar.gz")
-sha256sums=('fafe2ee8690021e17d854097418cbba37459580435bf7ceb7aa75a44eba25471')
+sha256sums=('ca03d4997c72e64eaa70919e9df350781ff945fa7f4baa357b68d19ad43c0290')
 
 prepare() {
     cd "$_srcdir"
@@ -26,6 +26,9 @@ build() {
     CGO_ENABLED=0 go build -trimpath -o bin/openlawsvpn-cli ./cmd/cli
     cd gui-gtk
     cargo build --release --offline
+    cargo tree --locked --offline --edges normal,build --prefix none \
+        --no-dedupe --format $'{p}\t{l}' | LC_ALL=C sort -u \
+        > LICENSE.dependencies
 }
 
 package_openlawsvpn-daemon() {
@@ -94,4 +97,8 @@ package_openlawsvpn-gui() {
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.openlawsvpn.gui.svg"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 gui-gtk/notice.txt \
+        "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
+    install -Dm644 gui-gtk/LICENSE.dependencies \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE.dependencies"
 }
