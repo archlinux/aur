@@ -1,7 +1,7 @@
 pkgbase = dahdi-linux-git
 	pkgdesc = DAHDI drivers for Asterisk (Digium, OpenVox, Allo and Yeastar cards)
-	pkgver = 3.4.0.rc1.r20.gd1c842a
-	pkgrel = 5
+	pkgver = 3.4.0.rc1.r21.g276c914
+	pkgrel = 1
 	url = https://www.asterisk.org
 	install = dahdi.install
 	arch = x86_64
@@ -36,7 +36,7 @@ pkgbase = dahdi-linux-git
 	source = https://downloads.digium.com/pub/telephony/firmware/releases/dahdi-fwload-vpmadt032-1.25.0.tar.gz
 	sha256sums = SKIP
 	sha256sums = 9236a448e6d50b44eded550091460c08ff8a6d5a1643311baa2ac856f88a111c
-	sha256sums = 67bb74c83198946fee1aac138f9aa03d4c23b197813951ea254de69671ada4e6
+	sha256sums = a1a01781e7aca3513d3b3a90fba8247a4d42c19433c65d03c6eec5bf03e9fd61
 	sha256sums = d5b6ab6851e431afcfec2ecc39d95fa88fe3939ffdb2e3d4f28a43cabf30e95b
 	sha256sums = e039af8bec36407b74e1dd9ebdd49ba077469eda79d4e6093721ed2836d4536f
 	sha256sums = 5064f9877b8aec99b19fd57988216fe1a9c0b7c07853dd3b32b5a55ab7b418e6
@@ -58,5 +58,5 @@ pkgbase = dahdi-linux-git
 pkgname = dahdi-linux-git
 	depends = dahdi-tools
 	depends = libusb
-	depends = linux=7.0.5.arch1-1
+	depends = linux=7.1.8.arch1-3
 	depends = perl
