@@ -1,13 +1,13 @@
 pkgbase = akia
 	pkgdesc = TÜBİTAK AKİS smart card application
 	pkgver = 6.8.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://akiskart.bilgem.tubitak.gov.tr/destek/
 	install = akia.install
 	arch = x86_64
-	license = LicenseRef-custom
+	license = LicenseRef-proprietary
 	makedepends = icoutils
-	depends = java-runtime>=8
+	depends = java-runtime>=11
 	depends = pcsclite
 	depends = ccid
 	depends = hicolor-icon-theme
@@ -18,12 +18,10 @@ pkgbase = akia
 	source = akia-6.8.10.deb.zip::https://akiskart.bilgem.tubitak.gov.tr/wp-content/uploads/sites/33/2026/06/Akia_linux_6_8_10.deb_.zip
 	source = akia.sh
 	source = akia.desktop
-	source = akia.install
 	source = LICENSE
-	sha256sums = 2a72bc7979835121ff1f3f4e68e45f5724afd0475a2a6c90c9293f90192efb92
-	sha256sums = f5854b72bc40f08747e5c9c7fa35fb890d28265eadb8efd9adb8dfda0d6bfa20
-	sha256sums = 2be59701fc5064051bb848eceb896bc90e25f5a141651576ce92c274fb01daf4
-	sha256sums = 82bda1d0f457d0e25db5186d1526b59daeb0cdab7db33a874fb3dc66bc87985a
-	sha256sums = 8c73c5a9978b14becc69df690ae870f46e409c8dc3ff1fe296099492557e16d5
+	b2sums = 0d9253f138541a551d5c52c173770b53d6aa72d210bc35fe5fed9de1fe22d4c1f202109b96a1b584ced47bf4ccd3ecc3f6ce554f306650f01f577245fe29cc58
+	b2sums = bbce8a6c1f30cd4cdf9ebb6261a7c3d31eca35ce143285aa8d77f3d7c6a2651000c30c06e29438f2b15b23a732a711f6f3d07b41a1de6f76a9f0366311e35705
+	b2sums = b0bfeebf718462aba0e105ade22a0b03385758e2d21229ae07bc5b038d8a0a9b061b8cb092770bcc8514b935fa0223360819cb640ead84ba6f33dcad58fa287e
+	b2sums = e803d8f083834c7c09a6845592f20be09301ca5b82e5493f02435276b7ff43335296db07f7f7a76cbd09924a0079b2952d28060589f735a01368ea41112ef867
 
 pkgname = akia

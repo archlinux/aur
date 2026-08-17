@@ -1,7 +1,5 @@
 #!/bin/sh
-# Launcher for Akia (TÜBİTAK AKİS smart card application).
-# Uses system Java; resolves libakisp11.so via java.library.path; keeps
-# runtime writes inside XDG data dir (app historically writes next to jar).
+# System Java launcher: PKCS#11 export (JRE 17+), JNA library path, XDG cwd.
 
 set -eu
 
@@ -10,6 +8,7 @@ mkdir -p "$akia_data"
 cd "$akia_data"
 
 exec /usr/bin/java \
+    --add-exports jdk.crypto.cryptoki/sun.security.pkcs11.wrapper=ALL-UNNAMED \
     -Djava.library.path=/usr/lib/akia \
     -jar /usr/share/java/akia/akia.jar \
     "$@"

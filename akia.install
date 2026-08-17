@@ -3,9 +3,6 @@ post_install() {
 ==> Akia needs the PC/SC smart card daemon. Enable it with:
         systemctl enable --now pcscd.socket
 ==> User config/data is stored under ~/.local/share/akia/
+    (or $XDG_DATA_HOME/akia if that variable is set)
 EOF
-}
-
-post_upgrade() {
-    post_install
 }
