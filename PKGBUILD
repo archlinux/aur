@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=tldraw-offline-bin
 pkgver=1.13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A local whiteboard for you and your agents"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tldraw/tldraw-offline"
@@ -51,25 +51,25 @@ package() {
             local _entry
             for _entry in squashfs-root/*; do
                 case "$(basename "${_entry}")" in
-                    AppRun|usr|'@tldesktop.desktop'|'@tldesktop.png') continue ;;
+                    AppRun|usr|tldraw-offline.desktop|tldraw-offline.png) continue ;;
                 esac
                 cp -a "${_entry}" "${_appdir}/"
             done
 
-            install -Dm644 squashfs-root/@tldesktop.desktop \
-                "${pkgdir}/usr/share/applications/@tldesktop.desktop"
-            install -Dm644 squashfs-root/resources/app.asar.unpacked/resources/Icon-1024.png \
-                "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/@tldesktop.png"
-            install -Dm644 squashfs-root/usr/share/mime/@tldesktop.xml \
-                "${pkgdir}/usr/share/mime/packages/@tldesktop.xml"
+            install -Dm644 squashfs-root/tldraw-offline.desktop \
+                "${pkgdir}/usr/share/applications/tldraw-offline.desktop"
+            install -Dm644 squashfs-root/tldraw-offline.png \
+                "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/tldraw-offline.png"
+            install -Dm644 squashfs-root/usr/share/mime/packages/tldraw-offline.xml \
+                "${pkgdir}/usr/share/mime/packages/tldraw-offline.xml"
             ;;
     esac
 
     sed -i 's|^Exec=.*|Exec=tldraw-offline %U|' \
-        "${pkgdir}/usr/share/applications/@tldesktop.desktop"
+        "${pkgdir}/usr/share/applications/tldraw-offline.desktop"
 
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s '/opt/tldraw offline/@tldesktop' "${pkgdir}/usr/bin/tldraw-offline"
+    ln -s '/opt/tldraw offline/tldraw-offline' "${pkgdir}/usr/bin/tldraw-offline"
 
     install -Dm644 "${pkgdir}/opt/tldraw offline/LICENSE.electron.txt" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"

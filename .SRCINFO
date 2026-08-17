@@ -1,7 +1,7 @@
 pkgbase = tldraw-offline-bin
 	pkgdesc = A local whiteboard for you and your agents
 	pkgver = 1.13.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tldraw/tldraw-offline
 	arch = x86_64
 	arch = aarch64
