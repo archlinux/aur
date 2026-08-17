@@ -3,7 +3,7 @@
 
 _name=deepmerge
 pkgname=python-deepmerge
-pkgver=2.1.0
+pkgver=3.0
 pkgrel=1
 pkgdesc="A deep merging tool for Python core data structures"
 arch=(any)
@@ -24,8 +24,8 @@ makedepends=(
 checkdepends=(python-pytest)
 options=('!strip' '!debug')
 source=($_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('53aacb267e6c556b1d015825e238e3225b4ef9db80e9fc11898f81a67163bacb82f22c7828582a63b952564ccc124339dd5e74524b0d2d784076c2d442879ffd')
-b2sums=('bf77b3e586469d65d0d1e7d6f6ffdd83b907a8f68194cde070eb99598cccd796b837558faaa3905be39a05438fbf324b263e15097262bd89381c6fdbf2d9934b')
+sha512sums=('54d5d05a24a664e1678ebe654785eca286bf0c41edda34c14ab3d4507f8c20ffe553379462b378f5fa244911e224beaa8dae0ef63b88777c1ef27bc3036e6956')
+b2sums=('0fea763e2ab571095298f85d9eb45463a3af3664dcb8aecf7a77738b6c58f9f54b3b1e3110dcced97ec2b3bc12506b21afdf0d31526f30a0997321f1f1930884')
 
 build() {
   cd $_name-$pkgver
