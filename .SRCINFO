@@ -1,6 +1,6 @@
 pkgbase = dewey
 	pkgdesc = Command-line framework for open ebook libraries
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/tedwardd/dewey
 	install = dewey.install
@@ -11,7 +11,7 @@ pkgbase = dewey
 	makedepends = python
 	provides = dewey
 	conflicts = dewey-bin
-	source = dewey-0.1.0.tar.gz::https://github.com/tedwardd/dewey/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 4542e37fb6a782e551b48e954ffd23bcd71621630d91c4dbb98856e19398541e
+	source = dewey-0.2.0.tar.gz::https://github.com/tedwardd/dewey/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = cdd6ddfb1f8d0674a6bcb278ca0bc22394d5863f9d42135e13068c018eb58616
 
 pkgname = dewey

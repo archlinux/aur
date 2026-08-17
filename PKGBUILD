@@ -1,6 +1,6 @@
 # Maintainer: Ted W. <ted.l.wood@gmail.com>
 pkgname=dewey
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Command-line framework for open ebook libraries"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ provides=('dewey')
 conflicts=('dewey-bin')
 install=dewey.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tedwardd/dewey/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4542e37fb6a782e551b48e954ffd23bcd71621630d91c4dbb98856e19398541e')
+sha256sums=('cdd6ddfb1f8d0674a6bcb278ca0bc22394d5863f9d42135e13068c018eb58616')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
