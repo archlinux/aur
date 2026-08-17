@@ -3,7 +3,7 @@
 pkgname=omarchy-world-clock-bin
 _pkgname=omarchy-world-clock
 _target=x86_64-unknown-linux-gnu
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="World clock widget for Omarchy"
 arch=('x86_64')
@@ -20,7 +20,7 @@ install="$pkgname.install"
 source_x86_64=(
   "${_pkgname}-${pkgver}-x86_64.tar.gz::$url/releases/download/v${pkgver}/${_pkgname}-${_target}.tar.gz"
 )
-sha256sums_x86_64=('90a3c0947318cfbfb5c60cf97443983db11a46ce6b586e442352d930be9f364d')
+sha256sums_x86_64=('9ebb3956f8af06b9e9057170db41257d761e5c3f10faf03e418da87ed922edd7')
 
 package() {
   install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
