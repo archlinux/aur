@@ -1,6 +1,6 @@
 pkgbase = abciview
 	pkgdesc = Unofficial ABC iview desktop application.
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/abciview
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = abciview
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/linuxbombay/abciview/application/-/archive/1.0.5/application-1.0.5.tar.bz2
-	sha256sums = e491b8ee4433b1cbd996b38bb2c87dc7114843f4e47da18bb38887de3246e12d
+	source = https://gitlab.com/linuxbombay/abciview/application/-/archive/1.0.6/application-1.0.6.tar.bz2
+	sha256sums = 95e6032f85cfa7931e303ebb5a34a380f929221ad0c896abe1c11221fc0f499d
 
 pkgname = abciview
