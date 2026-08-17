@@ -1,0 +1,26 @@
+post_install() {
+	echo ""
+	echo "  ┌─────────────────────────────────────────────────────┐"
+	echo "  │  Unsloth Desktop                                    │"
+	echo "  └─────────────────────────────────────────────────────┘"
+	echo ""
+	echo "  Launch it from your application menu, or run:"
+	echo ""
+	echo "    unsloth-studio"
+	echo ""
+	echo "  On first launch it builds a per-user Python environment"
+	echo "  under ~/.unsloth/studio (uv, Python, PyTorch, llama.cpp)."
+	echo "  This downloads several GB and takes a while."
+	echo ""
+	echo "  Its automatic system-dependency step only supports apt, so"
+	echo "  on Arch install the optional build tools yourself if you"
+	echo "  want them: pacman -S --needed git cmake gcc"
+	echo ""
+}
+
+post_upgrade() {
+	echo ""
+	echo "  Unsloth Desktop has been upgraded. It refreshes"
+	echo "  ~/.unsloth/studio on the next launch."
+	echo ""
+}
