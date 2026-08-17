@@ -1,6 +1,6 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=pipette-desktop-bin
-pkgver=0.4.16
+pkgver=0.4.17
 pkgrel=1
 pkgdesc="Pipette — Vial-compatible keyboard configurator (AppImage)"
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxtst' 'mesa' 'libappindicator-gtk3
 options=('!strip')
 _appimage="${pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::https://github.com/darakuneko/pipette-desktop/releases/download/v${pkgver}/Pipette-linux-x86_64.AppImage")
-sha256sums=('9649808be888df03e9c2aecddbfe2e28db221effed3a5d87cb3cb4ba22187d4f')
+sha256sums=('5223411d6b2c36127c6e3b7c8c8009778401b1079a2784e491edec17f7656af2')
 
 prepare() {
   cd "$srcdir"
