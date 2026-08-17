@@ -1,13 +1,14 @@
 pkgbase = mingw-w64-boost
 	pkgdesc = Free peer-reviewed portable C++ source libraries (mingw-w64)
 	pkgver = 1.91.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.boost.org/
 	arch = any
 	license = BSL-1.0
 	makedepends = mingw-w64-gcc
 	makedepends = mingw-w64-wine
 	makedepends = mingw-w64-environment
+	depends = mingw-w64-zlib
 	depends = mingw-w64-zstd
 	depends = mingw-w64-bzip2
 	depends = mingw-w64-dlfcn
