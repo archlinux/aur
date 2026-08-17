@@ -1,7 +1,7 @@
 pkgbase = deepseek-reasonix-desktop
 	pkgdesc = Reasonix desktop — a Wails shell around the DeepSeek-native AI coding agent
 	pkgver = 1.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esengine/DeepSeek-Reasonix
 	arch = x86_64
 	arch = aarch64
