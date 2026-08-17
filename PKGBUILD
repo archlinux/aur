@@ -3,7 +3,7 @@
 pkgname=libloot
 _pkgname=loot
 # https://github.com/loot/libloot/releases
-pkgver=0.29.5
+pkgver=0.29.6
 pkgrel=1
 pkgdesc="A library for the Load Order Optimisation Tool for Starfield, The Elder Scrolls (Morrowind and later) and Fallout (3 and later) games"
 arch=('x86_64')
@@ -23,7 +23,7 @@ makedepends=(
 	#'uv' # docs
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('013a9056b14469aa250080edd9894b5ed71f478b04eaef85fc92bee91bd8eac7')
+sha256sums=('ffc89682b0d362ac8569efff8ad6392cd670203f34aeb7e3a0cbebab1700a840')
 build() {
 	# Build docs - Doxygen needs to be installed for C++
 	# They are half a gig, so they are disabled
