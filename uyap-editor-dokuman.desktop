@@ -1,11 +1,12 @@
 [Desktop Entry]
 Type=Application
 Name=UYAP Dokuman Editor
-Name[tr]=UYAP Dokuman Editor
-GenericName=UYAP DOKUMAN EDITOR
-GenericName[tr]=UYAP DOKUMAN EDITOR
-Comment=
-Comment[tr]=
+Name[tr]=UYAP Doküman Editörü
+GenericName=Document Editor
+GenericName[tr]=Belge Düzenleyici
+Comment=Edit UYAP court documents (.udf)
+Comment[tr]=UYAP mahkeme belgelerini düzenle (.udf)
+TryExec=uyap-dokuman
 Exec=uyap-dokuman %f
 Icon=uyap-editor
 MimeType=application/udf;

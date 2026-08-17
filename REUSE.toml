@@ -1,0 +1,16 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    ".SRCINFO",
+    ".gitignore",
+    "README.md",
+    "uyap-dokuman",
+    "uyap-sablon",
+    "*.desktop",
+    "uyap-editor.xml",
+    "LicenseRef-proprietary.txt",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "0BSD"

@@ -1,0 +1,23 @@
+UYAP Editor
+
+Copyright (c) T.C. Adalet Bakanlığı
+(Ministry of Justice of the Republic of Türkiye)
+
+All rights reserved. The official site footer states
+"Tüm Hakları Saklıdır."
+
+Upstream distributes a closed-source Debian package
+(uyapeditor) with no LICENSE, COPYING, EULA, or copyright
+file. The .deb control metadata does not declare a license.
+
+  https://uyap.gov.tr/UYAP-Editor
+  https://rayp.adalet.gov.tr/
+
+This package uses the SPDX identifier LicenseRef-proprietary.
+This file is a packager notice, not a license grant from the
+rights holder.
+
+The upstream archive also bundles third-party Java libraries
+(including JDOM, Java Advanced Imaging, sqlite-jdbc, JNA,
+Apache FOP, and others). Those components remain under their
+own licenses.

@@ -2,30 +2,29 @@
 
 pkgname=uyap-editor
 pkgver=5.4.19
-pkgrel=1
+pkgrel=2
 pkgdesc='UYAP Document and Template Editor (Turkish judicial system)'
 arch=('x86_64')
 url='https://uyap.gov.tr/UYAP-Editor'
-license=('LicenseRef-UYAP')
+# Upstream publishes no license; site footer is "all rights reserved".
+license=('LicenseRef-proprietary')
 depends=(
     'java-runtime<=11'
-    'pcsclite'
     'bash'
     'hicolor-icon-theme'
     'shared-mime-info'
     'desktop-file-utils'
 )
 optdepends=(
-    'akia: smart-card / e-imza login for judicial authentication (AKIS middleware; provided by akia or akia-bin)'
+    'akia: e-imza / AKİS smart-card login (pulls pcsclite and ccid)'
     'cups: printing documents from the editor'
 )
 conflicts=('uyap-editor-bin' 'uyapeditor' 'uyap')
 provides=('uyap-editor-bin')
 replaces=('uyap-editor-bin' 'uyap')
 options=('!strip')
-install="${pkgname}.install"
 
-_zipurl='https://rayp.adalet.gov.tr/resimler/2/dosya/uyapeditor_5.4.19_amd64.zip'
+_zipurl="https://rayp.adalet.gov.tr/resimler/2/dosya/uyapeditor_${pkgver}_amd64.zip"
 
 source=(
     "${pkgname}-${pkgver}.zip::${_zipurl}"
@@ -34,32 +33,22 @@ source=(
     'uyap-editor-dokuman.desktop'
     'uyap-editor-sablon.desktop'
     'uyap-editor.xml'
-    'LICENSE'
-    "${pkgname}.install"
+    'LicenseRef-proprietary.txt'
 )
-sha256sums=('e58d667a7f0e3ba9448afb16de23220b23caf3debf4b5faeab1429d481acd572'
-            'd9a8cdea5b14235c252ad21abd7ecdef5ce9347d85d624d4ce0d0da615d9d8cd'
-            '6311a3cd1a68c7312d6633fdd8e00dd47988907722ac609d00d68762b430c1eb'
-            '0cc1749ba298862da0a26172af44dbcc1396ad9f36ca160d6c6b0cbad6eae929'
-            '8b4572bd43a1a5dc824fa1cc90369d77973455d5c4f76a1daaa43e258f2ccd8f'
-            '57258cbf56e59f1adb3d036ebf5dfa14c12cb3d3cf9e52995bca1907d08ac135'
-            'c6d648e283f12a1d834489c0a5b5386f6e9570ca1057aa8ff6b51d0b39d54993'
-            '2279f85020d5b82acc391799f310f8cef6e694c874d767b341c6145838d9d6a7')
+noextract=("${pkgname}-${pkgver}.zip")
+b2sums=('af88a9583d1e7ec4247e9b6abd5d73b8609915009f9d1d67ea3c54ce0f5f71923b696f016cd42e8ad418af5ebdfea0ff49fb9e16cf364f59f17516d02f81517a'
+        '15e0db01c11f2a308283cadd84d20c736a885e6ceabb7564312cae444249659ef197b1a37df7401e5a304c41090626bc53fbd8cbe74a4ee7ff7668dd08600158'
+        '82323e47cdf4bcded12aeb1d932dd74ef66dc78cbb4c478ef568117bf55ba18b0ec116614e56c86e412f5e2421f1691b5819b9297c47b9d5fe93ccc106073fe0'
+        '07ee3c59fc38f05e69d4cd5384cd8bc6cea4e2e24ec633660567517d97194e95e60d8a8867bd4c3e2941ad42d7180f7ed506a28d6d4a67d3f072ce7766d63b8f'
+        '16a61d454e6589de6f6bb2dd237db52a6f267a1be7d139219d015bcb86f53f97b236632750f3089fb4d0a58188fff531c8462d1e24e6c7d6e47b6db9ffcfc55e'
+        '4513dcb48b64c80ca848d7e68607d0263da8a2797074815f4d2fbb3f364b9d0faf159f9339f0dbf990338315765203c718c82f02ac21a5f9a95fd824346ee2ef'
+        'e8313c8fc193116705154f4ceed536e2758a1534b7e3575c01bda299d1e706afad0098f1bd3a709b2a2fd76e4f4343681c2f2958486e30acfd544dfee6b3ca16')
 
 prepare() {
-    cd "${srcdir}"
-
-    bsdtar -xf "${pkgname}-${pkgver}.zip"
-
-    local _deb
-    _deb=$(find . -maxdepth 3 -type f -name "uyapeditor_${pkgver}_amd64.deb" -print -quit)
-    if [[ -z ${_deb} ]]; then
-        echo "error: uyapeditor_${pkgver}_amd64.deb not found inside upstream zip" >&2
-        return 1
-    fi
+    bsdtar -xf "${pkgname}-${pkgver}.zip" "uyapeditor_${pkgver}_amd64.deb"
 
     mkdir -p deb-payload
-    bsdtar -xf "${_deb}" -C deb-payload
+    bsdtar -xf "uyapeditor_${pkgver}_amd64.deb" -C deb-payload
     bsdtar -xf deb-payload/data.tar.xz -C deb-payload
 }
 
@@ -81,8 +70,8 @@ package() {
     install -Dm644 "${srcdir}/uyap-editor.xml" \
         "${pkgdir}/usr/share/mime/packages/uyap-editor.xml"
 
-    install -Dm644 "${srcdir}/LICENSE" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LicenseRef-proprietary.txt" \
+        -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
     local _size
     for _size in 16x16 32x32 48x48 128x128 256x256; do

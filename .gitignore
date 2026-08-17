@@ -1,17 +1,12 @@
-# makepkg working/output directories
 /src/
 /pkg/
-
-# Built packages and signatures
-*.pkg.tar.zst
-*.pkg.tar.zst.sig
-*.pkg.tar.xz
-*.pkg.tar.xz.sig
-
-# makepkg-downloaded upstream sources
+*.pkg.tar
+*.pkg.tar.*
+*.src.tar.*
 uyap-editor-*.zip
-
-# Editor / OS debris
+uyapeditor_*.zip
+uyapeditor_*.deb
 *~
 *.swp
+.*.swp
 .DS_Store

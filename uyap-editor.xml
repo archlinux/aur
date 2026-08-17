@@ -5,7 +5,8 @@
         <comment xml:lang="tr">Uyap Dokuman Editor</comment>
         <acronym>UDF</acronym>
         <expanded-acronym>Uyap Document File</expanded-acronym>
-        <generic-icon name="uyap-editor"/>
+        <icon name="uyap-editor"/>
+        <generic-icon name="x-office-document"/>
         <glob pattern="*.udf"/>
     </mime-type>
 
@@ -14,7 +15,8 @@
         <comment xml:lang="tr">Uyap Sablon Editor</comment>
         <acronym>USF</acronym>
         <expanded-acronym>Uyap Template File</expanded-acronym>
-        <generic-icon name="uyap-editor"/>
+        <icon name="uyap-editor"/>
+        <generic-icon name="text-x-generic-template"/>
         <glob pattern="*.usf"/>
     </mime-type>
 </mime-info>
