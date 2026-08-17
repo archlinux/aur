@@ -1,6 +1,6 @@
 # Maintainer: slatkin@woims.net
 pkgname=mbv
-pkgver=0.17.1
+pkgver=0.17.4
 pkgrel=1
 pkgdesc="Terminal client for Emby media server"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('mpv' 'openssl')
 optdepends=('cava: audio visualizer support')
 source=("${pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/slatkin/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('914e40bf0c70fb65f50832e9b0d449010a225eba6fa34fe70e1bd5a4029ab42a')
+sha256sums=('55c267d9e94e6946c300469dba3cdb56869e3ff8f44eee84801bb8a8686dafa5')
 
 package() {
     cd "${pkgname}-${pkgver}"
