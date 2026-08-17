@@ -1,6 +1,6 @@
 pkgbase = astramarket-bin
 	pkgdesc = Unified Linux marketplace with Flatpak, Pacman, AUR, and AppImage support (precompiled binary)
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/dim-ghub/AstraMarket
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = astramarket-bin
 	provides = astra
 	conflicts = astramarket
 	conflicts = astramarket-git
-	source = astramarket-bin-1.0.4.tar.gz::https://github.com/dim-ghub/AstraMarket/releases/download/v1.0.4/astra-v1.0.4-linux-x86_64.tar.gz
-	sha256sums = b5bec6e9f3e03af9ef6f9aa3140640f9434402e1e454d5fbca0d23fe05d6c120
+	source = astramarket-bin-1.1.0.tar.gz::https://github.com/dim-ghub/AstraMarket/releases/download/v1.1.0/astra-v1.1.0-linux-x86_64.tar.gz
+	sha256sums = 81686ca8b5db6618a3b7563166046b0ec9bcada3420ec9abb23eab01cc16a081
 
 pkgname = astramarket-bin
