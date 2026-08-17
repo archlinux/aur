@@ -1,0 +1,17 @@
+pkgbase = foldcomp-bin
+	pkgdesc = Compress and index protein structures with torsion angles (precompiled binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/steineggerlab/foldcomp
+	arch = x86_64
+	license = MIT
+	provides = foldcomp=1.0.0
+	conflicts = foldcomp
+	options = !strip
+	options = !debug
+	source = https://github.com/steineggerlab/foldcomp/releases/download/v1.0.0/foldcomp-linux-x86_64.tar.gz
+	source = LICENSE.txt::https://raw.githubusercontent.com/steineggerlab/foldcomp/v1.0.0/LICENSE.txt
+	sha256sums = 2ef00e512a5ee354f1e4e911cd1375482aabfa3afff01cfe8afa705414ed74ff
+	sha256sums = 493e3708ecf691a99bda8eec772ac11a12c1abf39def5f4e0297bd1f82039de3
+
+pkgname = foldcomp-bin
