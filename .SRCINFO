@@ -1,0 +1,24 @@
+pkgbase = mrdocs-git
+	pkgdesc = C++ documentation generator (git version; built with LLVM matching system clang)
+	pkgver = 0.8.0.r209.faea11b9c.clang24.0.0.f33323e9
+	pkgrel = 1
+	url = https://www.mrdocs.com
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = python
+	depends = fmt
+	depends = gcc-libs
+	depends = glibc
+	depends = zstd
+	provides = mrdocs
+	conflicts = mrdocs
+	source = mrdocs::git+https://github.com/cppalliance/mrdocs.git
+	source = llvm-project::git+https://github.com/llvm/llvm-project.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mrdocs-git
