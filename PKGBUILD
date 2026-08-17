@@ -3,7 +3,7 @@
 pkgname=tomoyo-explorer-bin
 pkgver=1.00_ALPHA
 _tagver=v1.00-ALPHA
-pkgrel=1
+pkgrel=2
 pkgdesc="Classic BSD/Unix Ruby GTK 1.2 Graphical File Manager by Ariff Abdullah (skywizard)"
 arch=('x86_64')
 url="https://github.com/9M2PJU/MyBSD-Tomoyo-Explorer"
@@ -16,7 +16,7 @@ options=(!strip)
 source=("tomoyo-explorer-${pkgver}.AppImage::https://github.com/9M2PJU/MyBSD-Tomoyo-Explorer/releases/download/${_tagver}/MyBSD_Tomoyo_Explorer-x86_64.AppImage"
         "tomoyo-explorer.desktop"
         "LICENSE")
-sha256sums=('6083349435bd4989bf9d14a64067f329be33658d154bef22468b075d9b601636'
+sha256sums=('6d37eb596d95c145002440ed26982c4c3d9733eda11369367a42a2d553264972'
             'b3079b0120fc7dff4490bc08b509f46771319cc7b60b9752e69bcd3c1fb17405'
             '8d7c6f9c0e48a97a52a1fa19dba6fb5113fd59e0271a54228b04686ce16be8c4')
 
