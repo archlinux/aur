@@ -1,7 +1,7 @@
 pkgbase = mihomo-webui-config
 	pkgdesc = Mihomo and MetaCubeXD integration with safe subscription updates
 	pkgver = 0.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/ntr5uki/mihomo-config-setup
 	install = mihomo-webui-config.install
 	arch = any
