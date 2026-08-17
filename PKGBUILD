@@ -18,7 +18,7 @@ _url_github="https://github.com/${pkgauthor}/${pkgname}"
 url="${_url_github}"
 
 provides=("${execname}")
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-poetry')
 depends=('python' 'python-pygments' 'python-textual' 'python-click' 'python-rich' 'python-rich-rst' 'python-requests')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
