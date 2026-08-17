@@ -1,6 +1,6 @@
 pkgbase = naviserver
 	pkgdesc = A versatile multiprotocol (httpd et al) server written in C/Tcl
-	pkgver = 5.0.0
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://github.com/naviserver-project/naviserver
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = naviserver
 	depends = tdom>=0.8.3
 	depends = nsf>=1.6.8
 	depends = systemd
-	source = http://download.sourceforge.net/sourceforge/naviserver/naviserver-5.0.0.tar.gz
+	source = http://download.sourceforge.net/sourceforge/naviserver/naviserver-5.1.0.tar.gz
 	source = naviserver.service
-	md5sums = 9af101a76b27ced786f2e6df0ee9fc25
+	md5sums = c4f758530223479c158d29f825563b4b
 	md5sums = 28fd20ff41798834ca22f12e98991210
 
 pkgname = naviserver
