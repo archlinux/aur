@@ -1,0 +1,16 @@
+pkgbase = ngpost
+	pkgdesc = Command line and GUI Usenet poster
+	pkgver = 4.16
+	pkgrel = 1
+	url = https://github.com/mbruel/ngPost
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = qt6-base
+	optdepends = par2cmdline: par2 creation
+	optdepends = parpar: faster par2 creation
+	optdepends = rar: archive uploads using rar
+	optdepends = 7zip: archive uploads using 7zip
+	source = ngPost-4.16.tar.gz::https://github.com/mbruel/ngPost/archive/refs/tags/v4.16.tar.gz
+	sha256sums = 6c8a3e8ce1a23b2a6d3aa978c191c588c4fbe7b53197cb6a8f48884fbdf805e2
+
+pkgname = ngpost
