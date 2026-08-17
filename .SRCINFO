@@ -1,7 +1,7 @@
 pkgbase = openscap
 	pkgdesc = Open Source Security Compliance Solution
 	pkgver = 1.4.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.open-scap.org/
 	arch = x86_64
 	arch = aarch64

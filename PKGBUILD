@@ -5,7 +5,7 @@
 # Contributor: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 pkgname=openscap
 pkgver=1.4.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Open Source Security Compliance Solution'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url='https://www.open-scap.org/'
@@ -53,6 +53,10 @@ sha512sums=('c69736bee997e50a04aff8e4f22da880f342190e1289c5df0fb73b7af34833d3bd9
 prepare() {
 	sed -i 's|:/usr/local/bin$|:/usr/local/bin:/usr/bin/vendor_perl|' \
 		"$pkgname-$pkgver/tests/test_common.sh.in"
+	sed -i -e 's/PyInt_Check/PyLong_Check/g' \
+		-e 's/PyInt_AsLong/PyLong_AsLong/g' \
+		-e 's/PyString_AsString/PyBytes_AsString/g' \
+		"$pkgname-$pkgver/swig/openscap.i"
 }
 
 build() {
