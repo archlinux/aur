@@ -25,8 +25,9 @@ web:
 
 # Public BitTorrent DHT rendezvous and the mesh overlay are enabled by default.
 # Set feature.Dht and dht.enabled false to disable DHT cleanly. Forward
-# 50305/tcp and 50305/udp when exposing the mesh publicly. If a
-# VPN rewrites public ports, set
+# 50305/tcp and 50300/udp when exposing the mesh publicly -- dht_port shares
+# the soulseek.listen_port number since TCP and UDP are separate port spaces.
+# If a VPN rewrites public ports, set
 # advertised_overlay_port manually or use vpn_port_sync after enabling the VPN
 # integration.
 # dht:
@@ -35,7 +36,7 @@ web:
 #   overlay_port: 50305
 #   advertised_overlay_port: 0
 #   vpn_port_sync: disabled
-#   dht_port: 50305
+#   dht_port: 50300
 
 # integrations:
 #   vpn:
