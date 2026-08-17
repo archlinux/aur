@@ -1,0 +1,20 @@
+pkgbase = aperant-appimage
+	pkgdesc = Autonomous multi-session AI coding (AppImage)
+	pkgver = 2.7.6
+	pkgrel = 1
+	url = https://github.com/AndyMik90/Aperant
+	arch = x86_64
+	license = AGPL3
+	depends = fuse2
+	provides = aperant
+	provides = auto-claude
+	conflicts = aperant
+	options = !strip
+	source = aperant-appimage-2.7.6.AppImage::https://github.com/AndyMik90/Aperant/releases/download/v2.7.6/Auto-Claude-2.7.6-linux-x86_64.AppImage
+	source = aperant.png::https://raw.githubusercontent.com/AndyMik90/Aperant/main/apps/frontend/resources/icons/256x256.png
+	source = aperant.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/aperant/aperant.desktop
+	sha256sums = 21832b15cb6420d56dc57ad2738a76a8ceee15342aac618bc1dc060cffb346e0
+	sha256sums = 8bcebaf7cfb1997ade68fa8dc18ff8c59c545f7609502d4479abe2713c95bbce
+	sha256sums = 8f751ed3709c0052b483f138cf67d1e7b0c91112fd5131a8885c0dde8bd40145
+
+pkgname = aperant-appimage
