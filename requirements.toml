@@ -1,0 +1,41 @@
+# /etc/grok/requirements.toml
+# System-wide policy pins – cannot be overridden by systems/users managed_config or users config.
+
+[sandbox]
+profile = "strict"
+
+[ui]
+disable_bypass_permissions_mode = true
+permission_mode = "ask"
+
+[features]
+telemetry = false
+remote_fetch = false
+
+[permission]
+rules = [
+  { action = "deny", tool = "bash", pattern = "rm -rf *" },
+  { action = "deny", tool = "bash", pattern = "rm -r *" },
+  { action = "deny", tool = "bash", pattern = "sudo *" },
+  { action = "deny", tool = "bash", pattern = "su *" },
+  { action = "deny", tool = "bash", pattern = "chmod *" },
+  { action = "deny", tool = "bash", pattern = "chown *" },
+  { action = "deny", tool = "bash", pattern = "dd *" },
+  { action = "deny", tool = "bash", pattern = "mkfs*" },
+  { action = "deny", tool = "bash", pattern = "fdisk *" },
+  { action = "deny", tool = "bash", pattern = "parted *" },
+  { action = "deny", tool = "bash", pattern = "shutdown*" },
+  { action = "deny", tool = "bash", pattern = "reboot*" },
+  { action = "deny", tool = "bash", pattern = "poweroff*" },
+  { action = "deny", tool = "bash", pattern = "kill -9 *" },
+  { action = "deny", tool = "bash", pattern = "pkill *" },
+  { action = "deny", tool = "bash", pattern = "killall *" },
+
+  { action = "deny", tool = "bash", pattern = "curl *" },
+  { action = "deny", tool = "bash", pattern = "wget *" },
+  { action = "deny", tool = "bash", pattern = "scp *" },
+  { action = "deny", tool = "bash", pattern = "rsync *" },
+  { action = "deny", tool = "bash", pattern = "nc *" },
+  { action = "deny", tool = "bash", pattern = "ncat *" },
+  { action = "deny", tool = "bash", pattern = "ssh *" }
+]
