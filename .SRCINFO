@@ -1,6 +1,6 @@
 pkgbase = omarchy-imageview
 	pkgdesc = Image viewer and browser for the Omarchy desktop
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/limehawk/omarchy-imageview
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = omarchy-imageview
 	depends = libheif
 	optdepends = perl-image-exiftool: lossless JPEG/TIFF rotation
 	options = !lto
-	source = omarchy-imageview-0.3.0.tar.gz::https://github.com/limehawk/omarchy-imageview/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 8e8d3b76141d1262a37af246a189ac14da72e64e8e7d9b40fcc6888d4067964c
+	source = omarchy-imageview-0.3.1.tar.gz::https://github.com/limehawk/omarchy-imageview/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = d98c221a29c731e73b1ed90fe08f9dfd0a2c2192c5944b713307578a6efc9f2a
 
 pkgname = omarchy-imageview
