@@ -2,13 +2,13 @@
 # Contributor: Vlad Frolov <frolvlad@gmail.com>
 
 pkgname=owlink-git
-pkgver=r44.8e4e840
-pkgrel=12
+pkgver=r45.da255a7
+pkgrel=1
 pkgdesc='An open Apple Wireless Direct Link (AWDL) implementation written in C'
 arch=($CARCH)
 url=https://owlink.org/
 license=('GPL-3.0-only')
-depends=('glibc' 'libpcap' 'libev' 'libnl')
+depends=('libpcap' 'libev' 'libnl')
 makedepends=('cmake' 'git' 'ninja' 'python')
 provides=('owlink' 'owl' 'owl-git')
 conflicts=('owlink' 'owl' 'owl-git')
