@@ -1,0 +1,25 @@
+pkgbase = unsloth-desktop-bin
+	pkgdesc = Unsloth Desktop - train and run open models locally (prebuilt)
+	pkgver = 0.1.800.beta
+	pkgrel = 1
+	url = https://unsloth.ai/
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = dbus
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = curl
+	optdepends = git: fetches the triton_kernels training speedup during setup
+	optdepends = cmake: build llama.cpp from source instead of using the prebuilt
+	optdepends = gcc: build llama.cpp from source instead of using the prebuilt
+	optdepends = rocminfo: AMD GPU gfx arch detection; without it setup guesses from PCI IDs
+	optdepends = amdsmi: AMD GPU gfx arch detection; without it setup guesses from PCI IDs
+	options = !strip
+	source = https://github.com/unslothai/unsloth/releases/download/v0.1.800-beta/Unsloth-Desktop-0_1_800_beta-Ubuntu.deb
+	sha256sums = a8b2224b4dc4e463ee5cdff7ac38f4a1178cab5138b77b3141aeb9f6237160a0
+
+pkgname = unsloth-desktop-bin
