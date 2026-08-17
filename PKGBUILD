@@ -1,16 +1,16 @@
 # Maintainer: Joshua Alexander <j-alexander3375@users.noreply.github.com>
 
 pkgname=lotus-lang
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A systems programming language with type-first syntax, LLVM backend, and an interactive REPL"
 arch=('x86_64')
 url="https://github.com/j-alexander3375/Lotus"
 license=('MIT')
-depends=('llvm' 'clang' 'sdl3')
+depends=('llvm>=22' 'llvm<23' 'clang' 'sdl3')
 makedepends=('go>=1.20')
 source=("lotus-lang-${pkgver}.tar.gz::https://github.com/j-alexander3375/Lotus/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0781157581b7c6058ccc19235076f4311272253c451fc782c602ccab400a066f')
+sha256sums=('eab681a6867a24730cdda0e311deea96c7292cbfbbafa3a108d556c5381de9ea')
 
 build() {
     cd "${srcdir}/Lotus-${pkgver}"
@@ -34,8 +34,9 @@ check() {
     cd ..
 
     # Verify LLVM compilation and basic execution on examples
-    ./lotus examples/control_flow_if.lts -o /tmp/lotus_check_if && /tmp/lotus_check_if || true
-    ./lotus examples/control_flow_for.lts -o /tmp/lotus_check_for && /tmp/lotus_check_for || true
+    # (flags must come before the input file)
+    ./lotus -o /tmp/lotus_check_if examples/control_flow_if.lts && /tmp/lotus_check_if
+    ./lotus -o /tmp/lotus_check_for examples/control_flow_for.lts && /tmp/lotus_check_for
 }
 
 package() {
