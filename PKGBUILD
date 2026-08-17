@@ -21,10 +21,8 @@ source=(
     "https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname-$pkgver.tar.bz2"
     "$pkgname-$pkgver.patch"
 )
-sha256sums=(
-    'bc245995a6987fe4706144b4e95af6391d94d82e226ca2bf3d799b9ec733d7ac'
-    '199532c548b0e123b9db9d866c1d0bcdd3af5fbd9b2db498a454ec202a07faa6'
-)
+sha256sums=('bc245995a6987fe4706144b4e95af6391d94d82e226ca2bf3d799b9ec733d7ac'
+            '78b9ebd14df4d3d7d6f66359ca6b0aa24c1b98ca470cab2d48d16edd910700be')
 
 prepare() {
     cd "$pkgname-$pkgver"
