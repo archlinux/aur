@@ -1,21 +1,28 @@
 pkgbase = thrm-bin
 	pkgdesc = Flydigi BS-series laptop cooler controller (prebuilt)
-	pkgver = 3.6.2
+	pkgver = 3.6.5
 	pkgrel = 1
 	url = https://github.com/TIANLI0/THRM
 	arch = x86_64
 	license = MIT
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
 	depends = gtk3
+	depends = libx11
+	depends = libsoup3
+	depends = systemd-libs
 	depends = webkit2gtk-4.1
-	depends = hidapi
 	optdepends = bluez: BS1 BLE support
-	provides = thrm
+	provides = thrm=3.6.5
 	conflicts = thrm
 	options = !strip
 	options = !debug
-	source = https://github.com/TIANLI0/THRM/releases/download/v3.6.2/THRM-linux-amd64-portable.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/TIANLI0/THRM/v3.6.2/LICENSE
-	sha256sums = 3d146a8e42a58d076f9719d3b4af2e653e5b4ae5b3fcbda22a8fb3c33c7bbf4f
+	source = https://github.com/TIANLI0/THRM/releases/download/v3.6.5/THRM-linux-amd64-portable.tar.gz
+	source = thrm.desktop::https://raw.githubusercontent.com/TIANLI0/THRM/v3.6.5/packaging/linux/thrm.desktop
+	source = LICENSE::https://raw.githubusercontent.com/TIANLI0/THRM/v3.6.5/LICENSE
+	sha256sums = b7d24a08bc14b8bdcdc7a35d942680596708b6d4802c837226f94964449f3677
+	sha256sums = 4144920f63b10e483bcf5f69094e8ccfc1af01f76836d6785ceca3ee66e4bb28
 	sha256sums = bb4f94dbe3dcfdc66e27d35cae627a73c9e8f66ec792971e569d272893b08ac6
 
 pkgname = thrm-bin
