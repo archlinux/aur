@@ -1,7 +1,7 @@
 # Maintainer: amgsk <y.amgsk@gmail.com>
 pkgname=meguri-bin
 _appname=Meguri
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Local video and image browser with thumbnails, search, and playback"
 arch=('x86_64')
@@ -14,7 +14,7 @@ _appimage="${_appname}-${pkgver}-linux-x86_64.AppImage"
 source=("${_appimage}::${url}/releases/download/v${pkgver}/${_appimage}"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/zabuton-app/meguri/v${pkgver}/LICENSE")
 noextract=("${_appimage}")
-sha256sums=('70d8a0e41410e2ccfe2a4781dd373048dfad0ef70d104251ccf956bd94c51c11'
+sha256sums=('1edc62c0475b8849872fb89feb5a501b7c0e3a93c57bfa9b491cec13922c0404'
             '34899600608d60479abff088841cd9d60a8552ff3017965da268efc5cffc5178')
 
 prepare() {
