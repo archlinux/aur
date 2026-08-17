@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 
 pkgname=rubick-kubernetes
-pkgver=4.0.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc="Modern cross-platform Kubernetes GUI client"
 arch=(x86_64)
@@ -10,10 +10,10 @@ license=('GPL-3.0-or-later')
 groups=()
 depends=("kubectl" "gtk3" "webkit2gtk-4.1")
 makedepends=("git" "bun" "cargo-tauri")
-_commit=eaa7aa78855e264e6daed812f154682b1e5d6bcf
+_commit=41bd4da5c0d9a0f6c66f1f52a4663ef848133e48
 source=("$pkgname::git+$url.git#commit=$_commit"
         "com.k8s-gui.app.desktop")
-sha256sums=('bccbd1acee6a00cca3122392d275d69c3dc56ea0757d853c36cc8fc65b9f7d60'
+sha256sums=('07e4386a779c9cd77aa0081848e8766fd950c6d3e677bdac9169921259fb2cbf'
             '82f31d2a4c5fa49a3e7c52378c94fe16a62e3adb0082eed9cd9f2787849deb00')
 
 pkgver() {
