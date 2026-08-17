@@ -1,8 +1,8 @@
 # Maintainer: ralf <ralf.wierzbicki@gmail.com>
 pkgname=asteroidz
-pkgver=0.25.1
+pkgver=0.25.2
 pkgrel=1
-pkgdesc='wlroots compositor with HDR10 and dwm-style tags (GLES2 daily driver, experimental Vulkan renderer)'
+pkgdesc='wlroots compositor with HDR10, dwm-style tags and its own Vulkan renderer'
 arch=('x86_64')
 url='https://github.com/asteroidzman/asteroidz'
 license=('GPL3' 'MIT' 'CC0')
@@ -13,20 +13,24 @@ depends=(
   'xcb-util-wm' 'libxcb'
   # asteroidz-scenefx is GONE, not merely un-packaged. Its scene graph is now
   # asteroidz source (src/scene/), so there is no subproject, no static library
-  # and no ABI marker to keep in lockstep. What
-  # remains are the libraries IT pulls in, which the static link now makes
-  # asteroidz's own runtime dependencies:
-  'libglvnd'   # libEGL, libGLESv2 -- the GLES2 renderer
+  # and no ABI marker to keep in lockstep. Two of the libraries it used to pull
+  # in are asteroidz's own direct link now, and are listed for that reason:
   'mesa'       # libgbm
   'lcms2'      # colour management
+  # NOT a direct link: libEGL/libGLESv2 do not appear in asteroidz's NEEDED at
+  # all -- they arrive through libwlroots-0.20, whose own GLES renderer
+  # asteroidz never selects. Listed because the runtime still resolves them,
+  # not because anything here composites with GLES.
+  'libglvnd'
 )
 makedepends=('meson' 'ninja' 'wayland-protocols' 'vulkan-headers' 'glslang' 'git')
 optdepends=(
   'xorg-xwayland: run X11 applications under XWayland'
 )
-# Default session runs the GLES2 renderer (the daily driver); an
-# "Asteroidz (Vulkan, experimental)" session (WLR_RENDERER=vulkan) is also
-# installed, pending future wlroots enhancements. One binary, both renderers.
+# Two sessions install, and both run AVK -- asteroidz's own Vulkan renderer,
+# which is the only renderer there is. "Asteroidz (AVK native Vulkan)" is the
+# session to use; "Asteroidz (AVK + Vulkan validation)" adds the validation
+# layers for acceptance runs and is markedly slower.
 source=("git+$url.git#tag=$pkgver")
 sha256sums=('SKIP')
 
