@@ -1,0 +1,90 @@
+# Maintainer: duanluan <duanluan@outlook.com>
+
+pkgname=codepilot-bin
+_pkgname=codepilot
+_appname=CodePilot
+pkgver=0.67.1
+pkgrel=1
+pkgdesc='Multi-model AI agent desktop client (prebuilt binary)'
+arch=('x86_64' 'aarch64')
+url='https://github.com/op7418/CodePilot'
+license=('BUSL-1.1')
+depends=(
+  'alsa-lib'
+  'at-spi2-core'
+  'cairo'
+  'dbus'
+  'expat'
+  'glib2'
+  'glibc'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libcups'
+  'libgcc'
+  'libnotify'
+  'libsecret'
+  'libstdc++'
+  'libx11'
+  'libxcb'
+  'libxcomposite'
+  'libxdamage'
+  'libxext'
+  'libxfixes'
+  'libxkbcommon'
+  'libxrandr'
+  'libxss'
+  'libxtst'
+  'mesa'
+  'nspr'
+  'nss'
+  'pango'
+  'systemd-libs'
+  'util-linux-libs'
+  'xdg-utils'
+)
+optdepends=('org.freedesktop.secrets: secret storage backend')
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}" 'codepilot-appimage')
+options=('!strip')
+source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/op7418/CodePilot/v${pkgver}/LICENSE")
+source_x86_64=("${_appname}-${pkgver}-amd64.deb::https://github.com/op7418/CodePilot/releases/download/v${pkgver}/${_appname}-${pkgver}-amd64.deb")
+source_aarch64=("${_appname}-${pkgver}-arm64.deb::https://github.com/op7418/CodePilot/releases/download/v${pkgver}/${_appname}-${pkgver}-arm64.deb")
+noextract=("${_appname}-${pkgver}-amd64.deb" "${_appname}-${pkgver}-arm64.deb")
+sha256sums=('e77188ca224977d67c57d8c9cfe595b2bfb4146423cb2c016f8502dd15f8b6cf')
+sha256sums_x86_64=('3693360b71ed00355f9c5d5e190aef1998a67c4de3f2baddee56e797cd7b6d51')
+sha256sums_aarch64=('efe51c28f5c8416cfdb8efacf11241d82985deb9f52c36587c3ddd7cfe01841c')
+
+package() {
+  local deb_arch
+  local extract_dir="${srcdir}/deb-extract-${CARCH}"
+  local data_archives
+
+  case "${CARCH}" in
+    x86_64) deb_arch='amd64' ;;
+    aarch64) deb_arch='arm64' ;;
+    *)
+      printf 'unsupported architecture: %s\n' "${CARCH}" >&2
+      return 1
+      ;;
+  esac
+
+  rm -rf "${extract_dir}"
+  install -dm755 "${extract_dir}"
+  bsdtar -C "${extract_dir}" -xf \
+    "${srcdir}/${_appname}-${pkgver}-${deb_arch}.deb"
+
+  data_archives=("${extract_dir}"/data.tar.*)
+  if (( ${#data_archives[@]} != 1 )) || [[ ! -f "${data_archives[0]}" ]]; then
+    printf 'unable to locate the Debian data archive\n' >&2
+    return 1
+  fi
+  bsdtar -C "${pkgdir}" -xf "${data_archives[0]}"
+
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -s "/opt/${_appname}/${_pkgname}" \
+    "${pkgdir}/usr/bin/${_pkgname}"
+
+  chmod 0755 "${pkgdir}/opt/${_appname}/chrome-sandbox"
+  install -Dm644 "${srcdir}/LICENSE-${pkgver}" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
