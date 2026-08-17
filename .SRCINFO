@@ -1,0 +1,20 @@
+pkgbase = utools-wayland-bin
+	pkgdesc = uTools with a native Wayland global-hotkey wake-up crash workaround
+	pkgver = 7.8.0
+	pkgrel = 1
+	url = https://github.com/acgq/utools-wayland-fix
+	arch = x86_64
+	license = LicenseRef-uTools
+	depends = electron22
+	provides = utools=7.8.0
+	conflicts = utools
+	conflicts = utools-bin
+	options = !strip
+	source = utools-7.8.0.deb::https://open.u-tools.cn/download/utools_7.8.0_amd64.deb
+	source = patch-native.js
+	source = LICENSE.uTools.html
+	sha256sums = 38fd1a7d1b558c55756e1436bd58e7d6fd46eb0271319a4af2113a6188e1857b
+	sha256sums = 535581aa117704314113ffba02727bde37c87322ebf3e733d8a0c1977ef4e912
+	sha256sums = 986625f2970528f051391a41b1ede526de70c896209fc5bf818934b88cc12cfd
+
+pkgname = utools-wayland-bin
