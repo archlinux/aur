@@ -2,7 +2,7 @@
 # Contributor: amgsk <y.amgsk@gmail.com>
 
 pkgname=meguri
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Local video and image browser with thumbnails, search, and playback"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=("$_electron" nodejs)
 makedepends=(npm asar)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         meguri.sh)
-sha256sums=('495a1c0329814b5e26f0a3036dbfeec60bf54bbf01720638221f8e4ee7e14914'
+sha256sums=('e62c0b2dd94ba4057a2f502f21263753cb12620f92c02e7a171da2a1833332fc'
             '0c2e669b166935140ae542a53aa2b56c71a902e145555848bda5a88605e843c7')
 
 prepare() {
