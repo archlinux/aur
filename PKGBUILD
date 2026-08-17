@@ -1,7 +1,7 @@
 # Maintainer: Josephine Pfeiffer <hi@josie.lol>
 pkgname=cockpit-pacman-git
 pkgver=0.3.7.r71.g8068a61
-pkgrel=1
+pkgrel=2
 pkgdesc='Cockpit plugin for Arch Linux package management using alpm.rs'
 arch=('x86_64')
 url='https://github.com/pfeifferj/cockpit-pacman'
@@ -11,9 +11,10 @@ makedepends=('cargo' 'git' 'npm' 'openssh')
 provides=("cockpit-pacman=${pkgver%%.r*}")
 conflicts=('cockpit-pacman')
 options=(!lto)
-source=("git+https://github.com/pfeifferj/cockpit-pacman.git" 'allowed_signers')
+source=("git+https://github.com/pfeifferj/cockpit-pacman.git" 'allowed_signers' 'github-web-flow.gpg')
 sha256sums=('SKIP'
-            'ef3f3920123082bf6de19cc9acdea21ebfb09e6056bdf2cf763d07597b9b2312')
+            'ef3f3920123082bf6de19cc9acdea21ebfb09e6056bdf2cf763d07597b9b2312'
+            '6e8af687f60cf3f403151c8fb1b26e95e6f9e424ca60cc8f3787bd4466a3ef84')
 
 pkgver() {
     cd "${pkgname%-git}"
@@ -22,7 +23,12 @@ pkgver() {
 
 verify() {
     cd "${pkgname%-git}"
-    git -c gpg.ssh.allowedSignersFile="$PWD/../allowed_signers" verify-commit HEAD
+    local keyring="$srcdir/gnupg"
+    install -dm700 "$keyring"
+    GNUPGHOME="$keyring" gpg --batch --quiet --import "$PWD/../github-web-flow.gpg"
+    GNUPGHOME="$keyring" git -c gpg.format=ssh \
+        -c gpg.ssh.allowedSignersFile="$PWD/../allowed_signers" \
+        verify-commit HEAD
 }
 
 prepare() {

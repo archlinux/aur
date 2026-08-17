@@ -1,7 +1,7 @@
 pkgbase = cockpit-pacman-git
 	pkgdesc = Cockpit plugin for Arch Linux package management using alpm.rs
 	pkgver = 0.3.7.r71.g8068a61
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pfeifferj/cockpit-pacman
 	arch = x86_64
 	license = GPL-3.0-only
@@ -22,7 +22,9 @@ pkgbase = cockpit-pacman-git
 	options = !lto
 	source = git+https://github.com/pfeifferj/cockpit-pacman.git
 	source = allowed_signers
+	source = github-web-flow.gpg
 	sha256sums = SKIP
 	sha256sums = ef3f3920123082bf6de19cc9acdea21ebfb09e6056bdf2cf763d07597b9b2312
+	sha256sums = 6e8af687f60cf3f403151c8fb1b26e95e6f9e424ca60cc8f3787bd4466a3ef84
 
 pkgname = cockpit-pacman-git
