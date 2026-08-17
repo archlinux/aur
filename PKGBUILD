@@ -15,11 +15,11 @@ sha256sums=('55405cc338962f770279d718c1dabec293a51dde4989c0c2590da3c303105471')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  go build -trimpath -o "$pkgname" "./$pkgname"
+  go build -trimpath -o "$srcdir/$pkgname" "./$pkgname"
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
