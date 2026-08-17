@@ -1,6 +1,6 @@
 pkgbase = kuna-git
 	pkgdesc = An agent-first decompiler designed to be refined by other agents (git version)
-	pkgver = 1.121.r121.g0123456
+	pkgver = 1.152.r152.a6507e95
 	pkgrel = 1
 	url = https://github.com/Noelo-Lab/kuna
 	arch = x86_64
