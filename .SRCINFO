@@ -1,0 +1,27 @@
+pkgbase = ediary-bin
+	pkgdesc = A free, time-based diary and personal document manager
+	pkgver = 1.0.beta2
+	pkgrel = 2
+	url = https://www.haoxg.net
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	makedepends = libarchive
+	depends = cairo
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glibc
+	depends = gtk3
+	depends = libx11
+	depends = pango
+	depends = zlib
+	provides = ediary=1.0.beta2
+	conflicts = ediary
+	noextract = ediary_1.0~beta2-2_amd64.deb
+	options = !debug
+	options = !strip
+	source = ediary-terms.html::https://www.haoxg.net/terms-of-service.php
+	sha256sums = 12f5b1c35eedcfc192b6e4a059955946b8635dcabd67e024bd9b0c27edd6b2d1
+	source_x86_64 = ediary_1.0~beta2-2_amd64.deb::https://down.haoxg.net/download/ediary/linux/ediary_1.0~beta2-2_amd64.deb
+	sha256sums_x86_64 = 4afebc465db89d43629ad4470988493ccc818d1239e96eb317a6b5f04028e80c
+
+pkgname = ediary-bin
