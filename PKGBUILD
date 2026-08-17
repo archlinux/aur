@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=freerouting-zh-cn-git
-pkgver=2.2.0.r0.g6688a42
-pkgrel=3
+pkgver=2.3.0.r177.g4dd7dad
+pkgrel=1
 _jrever=25
 _jdkver=25
 pkgdesc="Advanced PCB autorouter"
@@ -38,7 +38,7 @@ pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     (
         set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --exclude=pre-refactor-2026 --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
