@@ -1,4 +1,4 @@
-# Maintainer: jmcb <joelsgp@protonmail.com>
+# Maintainer: imcb <irismessage@protonmail.com>
 
 pkgname='vlc-plugin-pipewire'
 pkgver='3.0'
@@ -7,8 +7,11 @@ pkgrel=1
 pkgdesc="PipeWire audio plugins for VLC"
 arch=('x86_64')
 url="https://www.remlab.net/vlc-plugin-pipewire/"
-license=('GPL3')
-depends=('vlc' 'pipewire')
+license=('GPL-3.0-only')
+depends=(
+    'vlc'
+    'pipewire'
+)
 makedepends=()
 checkdepends=()
 optdepends=()
