@@ -1,0 +1,21 @@
+pkgbase = neoarch
+	pkgdesc = NeoArch Package Manager for Arch Linux (stable release, use 'neoarch-git' for latest dev builds)
+	pkgver = 3.0.0beta
+	pkgrel = 1
+	url = https://github.com/Sanjaya-Danushka/Neoarch
+	install = neoarch.install
+	arch = any
+	license = MIT
+	depends = python-pyqt6
+	depends = python-requests
+	depends = python-keyring
+	depends = qt6-svg
+	depends = flatpak
+	depends = nodejs
+	depends = npm
+	provides = neoarch
+	conflicts = neoarch-git
+	source = https://github.com/Sanjaya-Danushka/Neoarch/archive/refs/tags/v3.0.0beta.tar.gz
+	sha256sums = SKIP
+
+pkgname = neoarch
