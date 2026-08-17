@@ -1,6 +1,6 @@
 pkgbase = hyprosd-git
 	pkgdesc = Simple Hyprland OSD for volume, brightness, Caps Lock, and Num Lock
-	pkgver = 0.2.0.r10.g227d411
+	pkgver = 0.2.0.r14.gf7ddc21
 	pkgrel = 1
 	url = https://github.com/jameswylde/hyprosd
 	arch = x86_64
