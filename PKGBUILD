@@ -2,13 +2,15 @@
 
 pkgname=plugn
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Hook system that lets users extend your application with plugins'
 arch=('x86_64')
 url='https://github.com/dokku/plugn'
 license=('MIT')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4d4c62e3c8d14289afc9ad187b7cb8086dab753efe94dd0ae6d23da311ea065a')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/dokku/plugn/refs/tags/v${pkgver}/LICENSE")
+sha256sums=('4d4c62e3c8d14289afc9ad187b7cb8086dab753efe94dd0ae6d23da311ea065a'
+            '53e5aa5031ccdfb11c748e9f626650fca882501618167a690631f76b71c26aaa')
 makedepends=('go')
 
 build() {
@@ -27,5 +29,5 @@ package() {
   cd "${pkgname}-${pkgver}"
 
   install -Dm755 "${pkgname}-build" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 ${pkgname}-${pkgver}-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
