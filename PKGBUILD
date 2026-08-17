@@ -18,7 +18,7 @@ backup=('etc/emerge/world.set')
 #git tag -a v1.27.0 -m "..." && git push origin v1.27.0
 source=("$pkgname::git+https://github.com/Undercat037/aura-emerge.git#tag=v$pkgver")
 #updpkgsums
-sha256sums=('20390408d9fae22d749ea13573eb84624d7b2eeec30a390078efa0945350862d')
+sha256sums=('f891f5720e62d871fe6bafdb1007c6f3de3e5148624f910e706979fe4ccc932f')
 
 build() {
   cd "aura-emerge-main"
