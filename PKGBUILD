@@ -2,29 +2,34 @@
 
 pkgbase=cardwire
 pkgname=cardwire
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='GPU manager for Linux using eBPF LSM hooks'
 arch=('x86_64')
 url='https://github.com/OpenGamingCollective/cardwire'
 license=('GPL3')
-depends=('hwdata' 'dbus' 'systemd' 'upower')
-makedepends=('cargo' 'bpf-linker' 'rustup')
+depends=('hwdata' 'dbus' 'sqlite' 'systemd' 'upower')
+makedepends=('rust' 'rust-src' 'bpf-linker' 'libxcb')
 source=("https://github.com/OpenGamingCollective/cardwire/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5f2da91d4d62cee8c2ca962cbdc4cad69399bdb36e9cc7fadaa351533c2b1820')
+sha256sums=('eba92c952f002767abead1391d9d2d229e3637a756ac4786759a0012b7e96649')
 
 prepare(){
 	cd "${pkgbase}-${pkgver}"
-	rustup toolchain install nightly-2026-08-04 --component rust-src
 	cargo fetch --locked
 }
-options=('!lto')
-build(){
-	cd "${pkgbase}-${pkgver}"
-	export CARGO_TARGET_DIR=target
-	export RUSTFLAGS="$RUSTFLAGS --remap-path-prefix=$srcdir=/usr/src"
 
+build(){
+
+	cd "${pkgbase}-${pkgver}"
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+	export RUSTC_BOOTSTRAP=1
+	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release --bins
+}
+
+check(){
+	cd "${pkgbase}-${pkgver}"
+	cargo test --frozen --all-features
 }
 
 package(){
