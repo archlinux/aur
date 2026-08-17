@@ -4,8 +4,8 @@
 # Based on the brscan4 PKGBUILD by Harey
 
 pkgname=brscan5
-pkgver=1.6.2_0
-pkgrel=2
+pkgver=1.7.0_0
+pkgrel=1
 pkgdesc='SANE drivers from Brother for compatible models'
 arch=('i686' 'x86_64')
 license=('GPL' 'custom:Brother')
@@ -13,8 +13,8 @@ url="http://support.brother.com"
 depends=('sane' 'libusb-compat')
 optdepends=('gtk2: for running brscan_gnetconfig')
 source=()
-sha256sums_i686=('0fb59e0eb74f6c46568e314f6c6d5c8da22acdeb9b637519fdb922663be889c7')
-sha256sums_x86_64=('a14b991dafd0279cc92c981154901178825174b8ac2123868037b3614b8f905e')
+sha256sums_i686=('e74ef3a5529ebf3b26d6139ce15d75374a4538ba2efd48c28b209b0d705e5ec7')
+sha256sums_x86_64=('197f63a52e89b8744f5a3c2d843abb3b76d003d5d4830bdfe675c44841a6c72b')
 source_i686=("https://download.brother.com/welcome/dlf104035/${pkgname}-${pkgver/_/-}.i386.rpm")
 source_x86_64=("https://download.brother.com/welcome/dlf104036/${pkgname}-${pkgver/_/-}.x86_64.rpm")
 install="brscan5.install"
@@ -46,7 +46,7 @@ package() {
 
   cd "$pkgdir/usr/lib" || exit 1
   mv "$pkgdir/opt/brother/scanner/brscan5/libLxBsScanCoreApi.so.3.2.6" "$pkgdir/usr/lib"
-  ln -sf "libLxBsScanCoreApi.so.3.2.1" "libLxBsScanCoreApi.so.3"
+  ln -sf "libLxBsScanCoreApi.so.3.2.6" "libLxBsScanCoreApi.so.3"
   ln -sf "libLxBsScanCoreApi.so.3" "libLxBsScanCoreApi.so"
 
   libs=(libLxBsNetDevAccs libLxBsDeviceAccs libLxBsUsbDevAccs)
