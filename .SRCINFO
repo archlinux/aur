@@ -1,0 +1,15 @@
+pkgbase = foldmason-bin
+	pkgdesc = Multiple protein structure alignment at scale (precompiled binary)
+	pkgver = 4_dd3c235
+	pkgrel = 1
+	url = https://github.com/steineggerlab/foldmason
+	arch = x86_64
+	license = GPL3
+	provides = foldmason=4_dd3c235
+	conflicts = foldmason
+	options = !strip
+	options = !debug
+	source = https://github.com/steineggerlab/foldmason/releases/download/4-dd3c235/foldmason-linux-avx2.tar.gz
+	sha256sums = 7e6f6bd264defda742882ec167eedaad1185c0a83a32646b1ec83fa6c5b86f05
+
+pkgname = foldmason-bin
