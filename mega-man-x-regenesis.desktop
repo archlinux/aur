@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Mega Man X Regenesis
+Comment=A fan-made Mega Man X game set in an alternate timeline where Sigma has won
+Exec=mega-man-x-regenesis
+Icon=mega-man-x-regenesis
+Terminal=false
+Categories=Game;ActionGame;
+Keywords=megaman;

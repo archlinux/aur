@@ -1,0 +1,4 @@
+*.pkg.tar*
+*.x86_64
+src/
+pkg/
