@@ -4,7 +4,7 @@
 
 pkgname=moon
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
 url="https://github.com/moonrepo/moon"
@@ -16,6 +16,7 @@ sha256sums=('b98c4d1385c7adc6a87de5292f36f27893ae596b630c7d8cee8b9b0a1f4fa9b0')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
+
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
   mkdir -p completions
 }
@@ -30,6 +31,7 @@ build() {
   "./target/release/${pkgname}" completions --shell bash >"completions/bash"
   "./target/release/${pkgname}" completions --shell zsh >"completions/zsh"
   "./target/release/${pkgname}" completions --shell fish >"completions/fish"
+  "./target/release/${pkgname}" completions --shell nushell >"completions/nushell"
 }
 
 package() {
@@ -43,4 +45,5 @@ package() {
   install -Dm 644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -Dm 644 "completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
   install -Dm 644 "completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm 644 "completions/nushell" "${pkgdir}/usr/share/nushell/vendor/autoload/${pkgname}.nu"
 }

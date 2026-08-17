@@ -1,7 +1,7 @@
 pkgbase = moon
 	pkgdesc = Task runner and repo management tool for the web ecosystem
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moonrepo/moon
 	arch = x86_64
 	arch = aarch64
