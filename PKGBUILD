@@ -2,7 +2,7 @@
 # Maintainer: Karan Sharma <hello@mrkaran.dev>
 
 pkgname='nomctx-bin'
-pkgver=0.2.7
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Faster way to switch between clusters and namespaces in nomad'
 url='https://github.com/mr-karan/nomctx'
@@ -11,11 +11,11 @@ license=('MIT')
 provides=('nomctx')
 conflicts=('nomctx')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/mr-karan/nomctx/releases/download/v0.2.7/nomctx_Linux_arm64.tar.gz")
-sha256sums_aarch64=('b11ba86e733d3be32b61e08a8b4822da91f33f84f422f665969ae3f204527d15')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/mr-karan/nomctx/releases/download/v${pkgver}/nomctx_Linux_arm64.tar.gz")
+sha256sums_aarch64=('787697982517b526ec41b3ad9177c4a144e41f2335f4b152340b6295447a0b16')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/mr-karan/nomctx/releases/download/v0.2.7/nomctx_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('c240c8419ca5df733949923008abbf5687485560d2eec07200a29a84280f5aac')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/mr-karan/nomctx/releases/download/v${pkgver}/nomctx_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('ff01c7f0d2c26f64f40dcde11de3ac761b9aa897cc21269c82e3144c7e4121fa')
 
 package() {
   # bin
