@@ -3,7 +3,7 @@ _system_libs=true
 _self_contained=false
 
 pkgname=clonedash-git
-pkgver=2026.307.76.r9.gd8a01ccd
+pkgver=2026.609.81.r90.g88f35505
 pkgrel=1
 pkgdesc="An open-source, from scratch clone of Muse Dash (a parkour rhythm game)."
 arch=("x86_64")
@@ -57,7 +57,8 @@ build() {
     cd "$srcdir/CloneDash"
     dotnet publish --no-restore --configuration=Release \
         --self-contained="$_self_contained" \
-        --runtime="$_rid"
+        --runtime="$_rid" \
+        -p:GeneratePackageOnBuild=false
 }
 
 package() {
