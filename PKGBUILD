@@ -2,7 +2,7 @@
 
 pkgname=silo-bin
 _pkgname=silo
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Self-hosted Dropbox in one binary - SeaDrive-compatible, SQLite-backed, TUI-managed (prebuilt)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgv
 
 sha256sums=('e987aa2f85f1d50f8a2a545e9646e577338966ae45e0386aaf913b0dec655f6a'
             '4a98ad92a32910eee400d060dd585888e02f5fd0249ee37b3d6c76de756fd550')
-sha256sums_x86_64=('4d2b3a5d6180c36e44cd4561dff35f8bafe5de3f8b78377d95ad3a295ca3a5a0')
-sha256sums_aarch64=('eef9a0053046a2f13698ed3ec13a4118a2a021f4edbaca66bd24c4cb75c03d12')
+sha256sums_x86_64=('f27b6743c2f620e951cee3d202af975fd848bcf6af140916bd3b812da19e8f13')
+sha256sums_aarch64=('1c8f8ff418abfc275eddf2e39c4280015f400d337dbf945e32e2309c812eb772')
 
 package() {
 	install -Dm755 "$srcdir/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
