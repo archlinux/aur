@@ -1,0 +1,20 @@
+post_install() {
+    cat <<'EOF'
+==> AI Usage Monitor installed system-wide.
+
+    Add it: right-click the panel -> Add Widgets -> search "AI Usage".
+    If it does not show up yet, restart the shell:  plasmashell --replace &
+
+    Credentials and per-provider toggles live in the widget's config dialog
+    (right-click the widget -> Configure). Claude needs no key when Claude Code
+    is signed in locally; the other providers are documented in
+    /usr/share/doc/plasma6-applets-ai-usage/README.md
+EOF
+}
+
+post_upgrade() {
+    cat <<'EOF'
+==> Restart plasmashell to pick up the new widget version:
+        plasmashell --replace &
+EOF
+}
