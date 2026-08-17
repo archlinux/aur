@@ -35,7 +35,7 @@ package() {
   sed -i 's|aurora_home.py|-m neoarch|' "$pkgdir/opt/neoarch/bin/neoarch.sh"
   # Install desktop file
   install -Dm644 "$pkgdir/opt/neoarch/packaging/aurora.desktop" "$pkgdir/usr/share/applications/neoarch.desktop"
-  sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch/Neoarch|g' "$pkgdir/usr/share/applications/neoarch.desktop"
+  sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch|g' "$pkgdir/usr/share/applications/neoarch.desktop"
   sed -i 's|Icon=.*|Icon=neoarch|' "$pkgdir/usr/share/applications/neoarch.desktop"
   # Install icon
   install -Dm644 "$pkgdir/opt/neoarch/assets/icons/icon.png" "$pkgdir/usr/share/pixmaps/neoarch.png"
