@@ -1,8 +1,8 @@
 # Maintainer: NekoLOvO <nekolying@gmail.com>
 
 pkgname=lm-studio-bin
-pkgver=0.4.20
-pkgrel=1
+pkgver=0.4.21
+pkgrel=2
 pkgdesc="Discover, download, and run LLMs locally. Use the chat UI or local server to experiment and develop with local LLMs (Official binary package with bundled Electron)"
 arch=('x86_64')
 url="https://lmstudio.ai"
@@ -26,7 +26,7 @@ source=(
     "https://installers.lmstudio.ai/linux/x64/${pkgver}-${pkgrel}/LM-Studio-${pkgver}-${pkgrel}-x64.deb"
 )
 sha256sums=('f36b30a1c02919f7fa1831406da8695c888588099d1ceb69efc326bd73d38f29'
-            'bab75f0a6b32e329042d07f377b5127727fde2ce24f8a4138f695e347ad1e605')
+            '16631c7cb37eb39bade7941365dc1f89fb6c8e139f12ba9df94a8ddd63115ed5')
 install="lm-studio.install"
 options=("!strip")
 
