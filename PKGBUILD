@@ -3,7 +3,7 @@
 pkgname=hd-idle-go
 _pkgname=hd-idle
 pkgver=1.21
-pkgrel=1
+pkgrel=2
 pkgdesc='Hard Disk Idle Spin-Down Utility - enhanced reimplementation of hd-idle'
 arch=('x86_64'
       'armv7h'
@@ -17,7 +17,7 @@ provides=('hd-idle')
 conflicts=('hd-idle')
 optdepends=('logrotate')
 makedepends=('go')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 prepare(){
   cd "${_pkgname}-${pkgver}"
