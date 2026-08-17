@@ -6,6 +6,7 @@ pkgbase = python-jwt-gehirn
 	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest>=6.0
+	checkdepends = python-pytest-cov
 	checkdepends = python-freezegun
 	makedepends = python-build
 	makedepends = python-wheel

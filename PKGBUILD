@@ -5,7 +5,7 @@ pkgname="$_name-gehirn"
 pkgver=1.4.0
 pkgrel=1
 pkgdesc="JSON Web Token library for Python"
-arch=(any)
+arch=('any')
 url="https://github.com/GehirnInc/$_name"
 license=('Apache-2.0')
 depends=(
@@ -20,6 +20,7 @@ makedepends=(
 )
 checkdepends=(
   'python-pytest>=6.0'
+  'python-pytest-cov'
   'python-freezegun'
 )
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
@@ -37,8 +38,8 @@ check() {
 
 package() {
   cd "$_name-$pkgver"
-  python -m installer -d "$pkgdir/" dist/*.whl
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
