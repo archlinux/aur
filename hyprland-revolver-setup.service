@@ -1,0 +1,23 @@
+[Unit]
+Description=One-time setup for the Hyprland Revolver Barrel widget
+
+[Service]
+Type=oneshot
+ExecStart=/usr/share/hyprland-revolver/install.sh --auto
+# Not "yes" - each new login is a fresh systemd --user instance, so this
+# is expected to genuinely re-run every session. install.sh is fast and
+# idempotent (a few surgical text patches + one directory scan) and
+# stays silent unless something actually changed, so that's fine - the
+# alternative (RemainAfterExit=yes) would just mean it never re-checks
+# after a package upgrade adds something new until you restart the unit
+# by hand.
+RemainAfterExit=no
+
+[Install]
+# default.target (not graphical-session.target) deliberately - not every
+# Hyprland setup wires up session-target integration, but a systemd
+# --user instance reaching its default.target on login is close to
+# universal on an Arch/systemd system. Running install.sh outside a
+# graphical session is harmless: it just no-ops (see install.sh's
+# QS_DIR/BG_FILE checks) if there's no Quickshell config to patch yet.
+WantedBy=default.target

@@ -5,7 +5,10 @@ post_install() {
 ==>
 ==> pacman/makepkg can only ever drop files under /usr - it runs as root
 ==> and never touches your $HOME, so it can't patch your own Quickshell
-==> config for you. That one extra step is on you, as yourself:
+==> config for you directly. Instead, a systemd --user unit is now
+==> enabled that will do it automatically the next time you log in.
+==>
+==> Don't want to wait for that? Run it yourself right now, as yourself:
 ==>
 ==>     hyprland-revolver-install
 ==>
@@ -18,10 +21,9 @@ EOF
 post_upgrade() {
     cat <<'EOF'
 
-==> hyprland-revolver was upgraded. If you're coming from an older
-==> version, re-run the installer to pick up new settings/fields it adds
-==> (safe to run repeatedly - it only edits what's actually changed and
-==> keeps a .bak of anything it touches):
+==> hyprland-revolver was upgraded. The systemd --user unit will pick up
+==> anything new (new settings fields, etc.) automatically next login -
+==> or run it now if you don't want to wait:
 ==>
 ==>     hyprland-revolver-install
 ==>

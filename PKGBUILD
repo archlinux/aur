@@ -45,6 +45,18 @@ package() {
     install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
+    # Enabled-by-default systemd --user unit: pacman/makepkg run as root
+    # and can only ever stage files under /usr, so they can't run
+    # install.sh themselves (it patches your own $HOME as you). This
+    # unit is how that last step actually gets to run unattended anyway -
+    # as *you*, in *your* systemd --user session, the next time you log
+    # in - instead of just telling you to run a command by hand.
+    install -Dm644 hyprland-revolver-setup.service \
+        "$pkgdir/usr/lib/systemd/user/hyprland-revolver-setup.service"
+    install -d "$pkgdir/usr/lib/systemd/user/default.target.wants"
+    ln -s ../hyprland-revolver-setup.service \
+        "$pkgdir/usr/lib/systemd/user/default.target.wants/hyprland-revolver-setup.service"
+
     # Thin wrapper so `hyprland-revolver-install` is on $PATH after pacman -S;
     # it just execs the real installer, which resolves bin/ and qml/
     # relative to its own path via BASH_SOURCE.
