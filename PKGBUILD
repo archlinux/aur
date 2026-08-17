@@ -10,7 +10,7 @@ url='https://github.com/voxpupuli/hiera-eyaml-gpg'
 license=(MIT)
 depends=(
   ruby
-  gpgme
+  ruby-gpgme
   ruby-hiera-eyaml
 )
 makedepends=(
