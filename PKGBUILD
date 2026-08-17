@@ -2,7 +2,7 @@
 # Backup contact: admin@azccriminal.space
 pkgname=auto-cpufreq-rust-git
 _pkgname=auto-cpufreq-rust
-pkgver=3.2.2.r0.gec72edc
+pkgver=3.2.5.r0.g1e6700a
 pkgrel=1
 pkgdesc='Automatic CPU speed & power optimizer (Rust port)'
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 prepare() {
-    cd "$srcdir/$_pkgname/auto-cpufreq"
+    cd "$srcdir/$_pkgname"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
