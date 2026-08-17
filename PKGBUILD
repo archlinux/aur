@@ -1,6 +1,6 @@
 # Maintainer: LaT-SKY <miprota at 163 dot com>
 pkgname=mip-paper
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc='Dynamic wallpaper engine for KDE Plasma 6 on Wayland'
 arch=('x86_64')
@@ -11,8 +11,8 @@ optdepends=('geoclue: automatic location through XDG Desktop Portal')
 makedepends=('npm')
 options=('!strip')
 install=mip-paper.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/LaT-SKY/mip-paper/releases/download/v0.3.7/mip-paper-0.3.7.tar.gz")
-sha256sums=('d5c3676c81b1114061407292c79cff1811c03fc15d41625bd4add15891a5a9f9')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/LaT-SKY/mip-paper/releases/download/v0.3.8/mip-paper-0.3.8.tar.gz")
+sha256sums=('eedc04e2e96b0a7c79fa93cc58947ffed82dbb22b77fb5d4475ce27da48d86b3')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -23,13 +23,10 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   install -d "$pkgdir/usr/lib/mip-paper"
-  cp -a bin config resources scripts src assets node_modules package.json     "$pkgdir/usr/lib/mip-paper/"
+  cp -a bin config kwin resources scripts src assets node_modules package.json     "$pkgdir/usr/lib/mip-paper/"
 
   install -Dm755 packaging/mip-paper "$pkgdir/usr/bin/mip-paper"
   install -Dm644 resources/mip-paper-packaged.service     "$pkgdir/usr/lib/systemd/user/mip-paper.service"
-
-  install -d "$pkgdir/usr/share/kwin/scripts/mip-paper"
-  cp -a kwin/mip-paper/. "$pkgdir/usr/share/kwin/scripts/mip-paper/"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/mip-paper/LICENSE"
   install -Dm644 assets/ATTRIBUTION.md     "$pkgdir/usr/share/licenses/mip-paper/default-wallpaper-ATTRIBUTION"

@@ -5,5 +5,7 @@ post_install() {
 }
 
 post_upgrade() {
-  printf '%s\n' 'Restart active user instances with: mip-paper restart'
+  printf '%s\n' \
+    'Refresh the per-user KWin coordinator with: mip-paper setup' \
+    'Restart active user instances with: mip-paper restart'
 }
