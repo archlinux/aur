@@ -35,7 +35,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 
-	install -Dm755 target/release/k8s-gui "${pkgdir}/usr/bin/rubick"
+	install -Dm755 target/release/Rubick "${pkgdir}/usr/bin/rubick"
 	install -Dm755 "${srcdir}/com.k8s-gui.app.desktop" "${pkgdir}/usr/share/applications/com.k8s-gui.app.desktop"
 	install -dm755 "${pkgdir}/usr/share/icons/hicolor"
 	for i in 32 64 128 256; do
