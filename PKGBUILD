@@ -2,7 +2,7 @@
 _pkggen=komodo
 _pkgcat=periphery
 pkgname=${_pkggen}-${_pkgcat}
-pkgver=2.2.0
+pkgver=2.3.2
 pkgrel=0
 epoch=0
 pkgdesc='Periphery server for the komodo monitor'
@@ -21,7 +21,7 @@ source=(
     'komodo-peripheryd.tmpfiles'
     'periphery.config.toml'
 )
-sha256sums=('363d0d4a26e4ad9957f9b2826af7e7e32d3148e20b3fdc34b94f51777139e2a1'
+sha256sums=('070b1d94c47cc06171d7a9b246bb56cf8ca703aa4e4cbbf32fc8882f78a888f6'
             'b03c59288a25abdb3e84a58c30bb4996ef3b046b7aa60133a7ebe3fdea81475a'
             '08aa0be0c76bcfb0ea6e73a08db5d619eb7f3dd76fa1ff74888ed9a13eb36d4d'
             '51976440fb2005c6f05b6fff2b0498d6a37f7b968396db23fd91527af82f699a'
