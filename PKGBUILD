@@ -1,6 +1,6 @@
 # Maintainer: KercyDing <dkx215417@gmail.com>
 pkgname=only-bin
-pkgver=0.0.7
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A deterministic cross-platform task runner"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('only')
 conflicts=('only-git')
 source_x86_64=("only-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/only-linux-amd64")
 source_aarch64=("only-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/only-linux-arm64")
-sha256sums_x86_64=('9ec3f171da08d8a5738578a53b3e6522c6f5d5753f1115c69a0e4b271b2dd8fc')
-sha256sums_aarch64=('c9d723bab4a957fcb7ca6cf96d8da189850849a8b0868f8ca8310c8680c6c1b3')
+sha256sums_x86_64=('196c3a2331130c2fd256135f7e31154ee938df5f7efc79d13ffcaefa7ba84bff')
+sha256sums_aarch64=('90fccb1645c73fe1967fbd0c96cc36f5b01e564efe670decfadbbf0e7cbce325')
 
 package() {
     install -Dm755 "${srcdir}/only-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/only"
