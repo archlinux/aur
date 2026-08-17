@@ -1,7 +1,7 @@
 # Maintainer: Uri Ramirez <urirocky@no.email>
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 pkgname=smfc
-pkgver=6.1.0
+pkgver=6.2.0
 pkgrel=1
 pkgdesc="Supermicro fan control systemd service for Linux (home) servers"
 arch=('any')

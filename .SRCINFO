@@ -1,6 +1,6 @@
 pkgbase = smfc
 	pkgdesc = Supermicro fan control systemd service for Linux (home) servers
-	pkgver = 6.1.0
+	pkgver = 6.2.0
 	pkgrel = 1
 	url = https://github.com/petersulyok/smfc
 	install = smfc.install
@@ -22,7 +22,7 @@ pkgbase = smfc
 	optdepends = rocm-smi-lib: AMD GPU fan controller (gpu_type=amd)
 	backup = etc/smfc/smfc.conf
 	backup = etc/default/smfc
-	source = smfc-6.1.0.tar.gz::https://github.com/petersulyok/smfc/archive/refs/tags/v6.1.0.tar.gz
+	source = smfc-6.2.0.tar.gz::https://github.com/petersulyok/smfc/archive/refs/tags/v6.2.0.tar.gz
 	sha256sums = 5123d001638a5842cfd12a8513acf663c05d055f2ef390e45bd3fb5ac6e0f027
 
 pkgname = smfc
