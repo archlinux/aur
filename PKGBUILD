@@ -3,7 +3,7 @@
 _pkgname='typio'
 _pkgauthor='sepandhaghighi'
 pkgname="python-${_pkgname}"
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Make Your Terminal Type Like a Human"
 
@@ -16,7 +16,7 @@ depends=('python')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('414f9bdece03612e3c4886fcd8bc08ad51bbdaf02a2c8bad33247f26e4197902')
+sha256sums=('302e0bc2e5063770ef492025988d1d5d96bfa1a5f7636dea4693fc4fd268a832')
 
 _pypi_package=${_pkgname}
 _pypi_version=${pkgver}
