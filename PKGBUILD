@@ -1,6 +1,6 @@
 # Maintainer: szern <szern@aporianet.com>
 pkgname=panafanpwr
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Panasonic CF-series laptop power and fan control"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('python' 'python-jeepney' 'power-profiles-daemon' 'acpi_call')
 install=panafanpwr.install
 backup=('etc/panafanpwrd.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~szern/panafanpwr/archive/v${pkgver}.tar.gz")
-sha256sums=('50efa7a36223b1269a3e0ddd9447f26b3f5382280dc5c3abe8aede934ea7dee1')
+sha256sums=('21a6143ff259e8c01eaf95bf6edec39b711f9a04cdb9eb7cca08cca5257241ed')
 
 package() {
     cd "panafanpwr-v${pkgver}"
