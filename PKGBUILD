@@ -2,7 +2,7 @@
 
 pkgname=plugn
 pkgver=0.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Hook system that lets users extend your application with plugins'
 arch=('x86_64')
 url='https://github.com/dokku/plugn'
@@ -26,8 +26,6 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-
-  install -Dm755 "${pkgname}-build" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 "${pkgname}-${pkgver}/${pkgname}-build" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 ${pkgname}-${pkgver}-LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
