@@ -9,6 +9,9 @@ pkgbase = ccusage-statusline-rs
 	makedepends = cargo
 	options = !lto
 	source = https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.13.0/ccusage-statusline-rs-1.13.0.tar.xz
+	source = https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.13.0/ccusage-statusline-rs-1.13.0.tar.xz.asc
+	validpgpkeys = E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD
 	sha256sums = 864a5f3e58047b489745716f0e15c993a2cbde45b6b3f825d515da0c1115d368
+	sha256sums = SKIP
 
 pkgname = ccusage-statusline-rs

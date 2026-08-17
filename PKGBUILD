@@ -9,8 +9,11 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 options=('!lto')
-source=("https://github.com/ticpu/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('864a5f3e58047b489745716f0e15c993a2cbde45b6b3f825d515da0c1115d368')
+validpgpkeys=('E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD')
+source=("https://github.com/ticpu/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
+        "https://github.com/ticpu/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz.asc")
+sha256sums=('864a5f3e58047b489745716f0e15c993a2cbde45b6b3f825d515da0c1115d368'
+            'SKIP')
 
 build() {
     cd "$pkgname-$pkgver"
