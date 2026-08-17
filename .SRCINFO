@@ -1,6 +1,6 @@
 pkgbase = codex-security
 	pkgdesc = SDK and CLI for finding, validating, and fixing security vulnerabilities in code
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/openai/codex-security
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = codex-security
 	makedepends = pnpm
 	depends = nodejs>=22
 	depends = git
-	source = codex-security-0.1.12.tar.gz::https://github.com/openai/codex-security/archive/refs/tags/npm-v0.1.12.tar.gz
-	sha256sums = 53b2e0a7731893047d3a1963b8d9c3f36aaf15201812bd998bbb29b74800a13e
+	source = codex-security-0.1.13.tar.gz::https://github.com/openai/codex-security/archive/refs/tags/npm-v0.1.13.tar.gz
+	sha256sums = 291bb477780d12e950bd8079e2bf09769375693aaef9a86fe59dc32ef1d1ef5c
 
 pkgname = codex-security
