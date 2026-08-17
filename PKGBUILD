@@ -1,6 +1,6 @@
 # Maintainer: Ron <thefangeddeity>
 pkgname=hls-livecam-server
-pkgver=5.5.1
+pkgver=5.6.0
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
-sha256sums=('93cf1b62efbbc7b33f0f76f3bd0e2e6337b9a6efb9f9220d0d374a4e37b73f11'
+sha256sums=('1772e365b4c3e66aa79a1804fe80597c2d51fe9237b88ff3f40680816a508287'
             'SKIP')
 
 package() {
@@ -53,6 +53,8 @@ package() {
                    "$pkgdir/usr/share/hls-livecam-server/block_art.py"
     install -Dm644 pkg/usr/share/hls-livecam-server/cv_processor.py \
                    "$pkgdir/usr/share/hls-livecam-server/cv_processor.py"
+    install -Dm644 pkg/usr/share/hls-livecam-server/cv_detect.py \
+                   "$pkgdir/usr/share/hls-livecam-server/cv_detect.py"
     install -Dm644 pkg/usr/share/hls-livecam-server/index.html \
                    "$pkgdir/usr/share/hls-livecam-server/index.html"
     install -Dm644 pkg/usr/share/hls-livecam-server/cams/cams.html \
