@@ -5,7 +5,7 @@
 # shell on the Electron version it was tested with across Arch derivatives.
 
 pkgname=prettyzap-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=2
 pkgdesc='Keyboard-first Electron shell around WhatsApp Web'
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=("PrettyZap-${pkgver}.AppImage::https://github.com/prettyletto/prettyzap/
         'prettyzap.svg'
         'prettyzap.desktop'
         'LICENSE')
-sha256sums=('73978745e29bd58479f26c1ed406909e29f04ab0a7fe9b518ad4c0326a08f873'
+sha256sums=('04d446888a6e7245b83bc82de6b35fd7cb8ab4934870360cb91bdef08fece9c8'
            'dc32d09b142dec2ace99bafae3f9e374e863c70d64e529ad815ac6ba51eb605a'
            '4a8aa9bd6ce4b408c04553cc4984bd6bf64c5a2e726d8f5af3e8b50efffc6d99'
            'e1353e4dde193ae18c47ba11139aad7e907f4609ae23e866d206e1d01e9f37b3')
