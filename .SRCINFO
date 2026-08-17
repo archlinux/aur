@@ -1,5 +1,5 @@
 pkgbase = paml-bin
-	pkgdesc = Phylogenetic analysis by maximum likelihood (precompiled binary) https://doi.org/10.1093/molbev/msm088
+	pkgdesc = Phylogenetic analysis by maximum likelihood
 	pkgver = 4.10.10
 	pkgrel = 1
 	url = https://github.com/abacus-gene/paml
