@@ -1,6 +1,6 @@
 pkgbase = timbl
 	pkgdesc = Tilburg Memory-Based Learner, implementations of k-nearest neighbour classification
-	pkgver = 6.10
+	pkgver = 7.0
 	pkgrel = 1
 	url = https://languagemachines.github.io/timbl/
 	install = timbl.install
@@ -14,7 +14,7 @@ pkgbase = timbl
 	depends = libxml2
 	depends = ticcutils>=0.24
 	options = !libtool
-	source = https://github.com/LanguageMachines/timbl/archive/v6.10.tar.gz
-	md5sums = 72294d59d09c7bd6499ca262bb00f798
+	source = https://github.com/LanguageMachines/timbl/archive/v7.0.tar.gz
+	md5sums = 48d585d1a6010f928d0ef95181f69db3
 
 pkgname = timbl
