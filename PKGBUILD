@@ -2,8 +2,8 @@
 
 pkgname=qmd
 _npmname="@tobilu/qmd"
-pkgver=2.5.3
-pkgrel=2
+pkgver=2.8.3
+pkgrel=1
 pkgdesc="On-device search engine for markdown files with BM25, vector, and LLM-powered search"
 arch=('x86_64')
 url="https://github.com/tobi/qmd"
@@ -18,7 +18,7 @@ source=(
   'qmd-update-user.timer'
 )
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('5c6084e9bdf041c47a55402e3b17bf8dd6d0262c39556261cd723d5f3d280c4e'
+sha256sums=('2e60829913a0c646234a905cefd61043167a1392fdcfd19bc54f890af89ca0f0'
             '97eba751e88f82877313ae7e8c4267495ead7a1e1e0b459c4fce4a2aa482893d'
             '19ab38a6a49cb78a0a1dac8c53569cf838131dea11c5dccb93e3a0c310daaf48')
 
