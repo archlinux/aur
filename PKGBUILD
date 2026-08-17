@@ -1,6 +1,6 @@
 # Maintainer: OldJobobo <aur at oldjobobo dot com>
 pkgname=thpm-git
-pkgver=1.0.0rc19.r1.g1675629
+pkgver=1.0.0rc20.r0.g3782e91
 pkgrel=1
 pkgdesc='Omarchy 4-native manager for external theme integrations (git)'
 arch=('any')
@@ -23,12 +23,12 @@ pkgver() {
 
 build() {
     cd thpm
-    python -m build --wheel --no-isolation
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
     cd thpm
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 -t "$pkgdir/usr/share/thpm/templates" assets/templates/*
     install -Dm644 -t "$pkgdir/usr/share/thpm/qml" assets/qml/*
     install -Dm755 assets/hooks/90-thpm "$pkgdir/usr/share/thpm/hooks/90-thpm"
