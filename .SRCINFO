@@ -1,6 +1,6 @@
 pkgbase = wails
 	pkgdesc = Create desktop apps using Go and Web Technologies
-	pkgver = 2.12.0
+	pkgver = 2.14.0
 	pkgrel = 2
 	url = https://github.com/wailsapp/wails
 	install = wails.install
@@ -11,8 +11,8 @@ pkgbase = wails
 	depends = npm
 	depends = gtk3
 	optdepends = docker
-	source = https://github.com/wailsapp/wails/archive/v2.12.0/wails-2.12.0.tar.gz
-	sha512sums = d48cae44069dfd7a0ee73508182bc7e6e595a98e248b150cbec3b5bcfbe86a19fc4b27c0c30520fb1908112ffd23362ddeea24ab036a7643de9e25381e73aea2
-	b2sums = eeee1f5f72e3324d053fb8de7237073efbe830eb35e363d31789c2790a627c59dc55e78468a2977104c70d7c03329e4287fb65b143395fa977612a5cb6b0642c
+	source = https://github.com/wailsapp/wails/archive/v2.14.0/wails-2.14.0.tar.gz
+	sha512sums = 2c92f5e6802d5f2e7e4b15a6e87154125af6e0f75cc577630316a468db2293ad90227be0488088aa00cf8884cff32da2185e4a4de86b74b5de4b797bb6de1df1
+	b2sums = dcb1480244513cbe0b4003d869145478c58640a30e843fa25da44cfb0d0331ce27f5dcef63a69163159c4bed4d5a7628ecc8d7d2bef7f3f538439cd74bfcb449
 
 pkgname = wails
