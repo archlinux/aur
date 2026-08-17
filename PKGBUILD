@@ -1,7 +1,7 @@
 # Maintainer: Remenod <pixel_borne_0o@icloud.com>
 
 pkgname=duet-httpfs-git
-pkgver=1.0.0.r0.g2fc92b5
+pkgver=1.0.0.r1.ga234024
 pkgrel=1
 pkgdesc='FUSE filesystem for the SD card of a Duet RepRapFirmware controller (git)'
 arch=('x86_64' 'aarch64' 'armv7h')
