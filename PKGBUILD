@@ -1,6 +1,6 @@
 # Maintainer: Limehawk <128890849+limehawk@users.noreply.github.com>
 pkgname=omarchy-imageview
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Image viewer and browser for the Omarchy desktop"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('perl-image-exiftool: lossless JPEG/TIFF rotation')
 makedepends=('rust' 'cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/limehawk/omarchy-imageview/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1bb0a15f8db6684a9043791d9fa2bc806d09e4475d56c34d240b2141a6e99948')
+sha256sums=('8e8d3b76141d1262a37af246a189ac14da72e64e8e7d9b40fcc6888d4067964c')
 
 build() {
     cd "$pkgname-$pkgver"
