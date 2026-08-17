@@ -1,0 +1,53 @@
+From 0020000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: distsystem <dev@dist.systems>
+Date: Tue, 16 Jun 2026 20:30:00 +0800
+Subject: [PATCH] usb: xhci-pci: reset-on-resume quirk for AMD Strix Halo xHCI
+
+On the ASUS ProArt PX13 (AMD Strix Halo), s2idle resume intermittently
+hangs for ~10 seconds with the on-APU xHCI controller (1022:1587):
+
+  xhci_hcd 0000:c4:00.4: xHCI host not responding to stop endpoint command
+  xhci_hcd 0000:c4:00.4: xHCI host controller not responding, assume dead
+  xhci_hcd 0000:c4:00.4: HC died; cleaning up
+  PM: resume of devices complete after 10424 msecs
+
+The controller comes back from s2idle in a bad state and never
+acknowledges the Stop Endpoint command. The command-timeout watchdog
+(~5s) then fails to abort the command ring (~5s) and declares the host
+dead, blocking the dpm_resume barrier for the full ~10s and freezing the
+desktop before it thaws.
+
+This is the same broken state-restore-on-resume already quirked for
+earlier AMD APU xHCI controllers (Raven 0x15e0/0x15e1, Raven2 0x15e5).
+Strix Halo 0x1587 is a new member of that family and is missing from the
+quirk table. Reset the controller on resume instead of restoring its
+state, exactly as done for Raven2 0x15e5 above; devices on it
+re-enumerate (~1-2s) rather than the host dying.
+
+Not yet upstream; same symptom tracked at FrameworkComputer
+SoftwareFirmwareIssueTracker issue #163.
+
+Signed-off-by: distsystem <dev@dist.systems>
+---
+ drivers/usb/host/xhci-pci.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/usb/host/xhci-pci.c b/drivers/usb/host/xhci-pci.c
+--- a/drivers/usb/host/xhci-pci.c
++++ b/drivers/usb/host/xhci-pci.c
+@@ -328,6 +328,15 @@
+ 		xhci->quirks |= XHCI_RESET_ON_RESUME;
+ 	}
+ 
++	/* AMD Strix Halo USB 3.1 xHCI (1022:1587) does not respond to the
++	 * Stop Endpoint command on s2idle resume; the controller comes back
++	 * in a bad state, the command times out and the host is declared
++	 * dead, stalling dpm_resume for ~10s. Reset the controller on resume
++	 * instead of restoring state (same fix as Raven2 0x15e5 above).
++	 */
++	if (pdev->vendor == PCI_VENDOR_ID_AMD && pdev->device == 0x1587)
++		xhci->quirks |= XHCI_RESET_ON_RESUME;
++
+ 	if (pdev->vendor == PCI_VENDOR_ID_AMD && pdev->device == 0x43f7)
+ 		xhci->quirks |= XHCI_DEFAULT_PM_RUNTIME_ALLOW;
+ 

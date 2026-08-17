@@ -1,0 +1,39 @@
+From: distsystem <dev@dist.systems>
+Subject: [PATCH] drm/amdgpu/vpe: keep DPM0 idle-gate on Strix Halo PMFW 100.6.0
+
+Upstream 3ac635367eb5 ("drm/amd: Check that VPE has reached DPM0 in idle
+handler") reschedules VPE power-down until VPE has reached DPM0, so
+PowerDownVpe never fires into a busy SMU after resume. But it gates that
+behaviour behind vpe_need_dpm0_at_power_down(): for VPE IP 6.1.1 it only
+applies when pm.fw_version < 0x0a640500.
+
+The ASUS ProArt PX13 (Strix Halo) reports VPE IP 6.1.1 and SMU PMFW
+100.6.0 (pm.fw_version 0x0a640600) - one step above that gate - yet still
+soft-locks for tens of seconds after resume on the same PowerDownVpe ->
+"SMU: No response msg_reg: 32" path. The PMFW assumption that >=
+0x0a640500 is fixed does not hold here, so the upstream fix is compiled
+in but never engages on PX13.
+
+Force the DPM0 wait for VPE 6.1.1 regardless of PMFW version. The check
+is a no-op once VPE is already at DPM0, so it only adds the reschedule
+when actually needed. Replaces our earlier 0019 (raise VPE_IDLE_TIMEOUT
+to 2s); the condition-based DPM0 wait is the upstream-preferred mechanism.
+
+--- a/drivers/gpu/drm/amd/amdgpu/amdgpu_vpe.c
++++ b/drivers/gpu/drm/amd/amdgpu/amdgpu_vpe.c
+@@ -326,7 +326,14 @@
+ {
+ 	switch (amdgpu_ip_version(adev, VPE_HWIP, 0)) {
+ 	case IP_VERSION(6, 1, 1):
+-		return adev->pm.fw_version < 0x0a640500;
++		/*
++		 * PX13 (Strix Halo) ships SMU PMFW 100.6.0 (pm.fw_version
++		 * 0x0a640600), >= upstream's 0x0a640500 gate, yet still wedges
++		 * the SMU on PowerDownVpe after resume - the firmware check
++		 * wrongly assumes >= 0x0a640500 is fixed. Force the DPM0 wait
++		 * on this VPE regardless of PMFW version.
++		 */
++		return true;
+ 	default:
+ 		return false;
+ 	}

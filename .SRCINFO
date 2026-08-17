@@ -1,7 +1,7 @@
 pkgbase = linux-cachyos-px13
 	pkgdesc = Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements. + TAS2783 codec patches for ASUS ProArt PX13 (HN7306EA)
-	pkgver = 7.0.11
-	pkgrel = 3
+	pkgver = 7.1.8
+	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
 	license = GPL-2.0-only
@@ -30,10 +30,10 @@ pkgbase = linux-cachyos-px13
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.11-1/cachyos-7.0.11-1.tar.gz
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0.11-1/cachyos-7.0.11-1.tar.gz.asc
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.1.8-1/cachyos-7.1.8-1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.1.8-1/cachyos-7.1.8-1.tar.gz.asc
 	source = config
-	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/misc/dkms-clang.patch
+	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.1/misc/dkms-clang.patch
 	source = 0001-ALSA-tas2783-sdw-add-Playback-to-volume-control.patch
 	source = 0002-Names-to-match-snd_soc_dai_driver-playback-capturest.patch
 	source = 0003-removed-unused-fields.patch
@@ -52,13 +52,15 @@ pkgbase = linux-cachyos-px13
 	source = 0016-cleanup-controls.patch
 	source = 0017-ASoC-rt721-sdca-enable-jack-detect-irq-on-AMD-ACP70.patch
 	source = 0018-async-codec-resume.patch
-	source = 0019-drm-amdgpu-vpe-increase-VPE_IDLE_TIMEOUT-for-strix-halo.patch
+	source = 0019-drm-amdgpu-vpe-keep-dpm0-idle-gate-on-strix-halo.patch
+	source = 0020-usb-xhci-pci-reset-on-resume-quirk-for-amd-strix-halo.patch
 	validpgpkeys = E18447AC260021D31F3FF6C4C8A2A4774B8B63C4
 	validpgpkeys = E8B9AA39F054E30E8290D492C3C4820857F654FE
-	b2sums = e37b762176e39b36bb607bd34817ed1579055c4c59edfabd377064ac8321503d0cdad6777aead4eb93f390561ab02a55da02d812a8a42f4785a5061fd1e38fc8
+	b2sums = 6a198c07f5b3ff24e35972c0c25a30f4ec72ec4b986a926ec57aa3fa045bd72dc15845a3651b134715a1cd5efb62a1bb8800a19dc80cef2e0de70d01245e5eb0
 	b2sums = SKIP
-	b2sums = 7bb5113dbc67e8e2ce5c5473ae1b08973af5adba0a6a14c64a213bb116e5a172d40b7c274b85ad15553511484ee1f120e0372251e242c6f87ce6920235f0c136
+	b2sums = a81b1a49b7fd277a8a1395e38696c435489808399527dc49436c9b36940d5c652c523622efe68d34dd191669d8838ab4c041000331279ccf77cdc11dc4baaca2
 	b2sums = c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
@@ -95,7 +97,7 @@ pkgname = linux-cachyos-px13
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-lto=7.0.11-3
+	provides = linux-cachyos-lto=7.1.8-1
 	replaces = linux-cachyos-lto
 
 pkgname = linux-cachyos-px13-headers
@@ -114,5 +116,5 @@ pkgname = linux-cachyos-px13-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-lto-headers=7.0.11-3
+	provides = linux-cachyos-lto-headers=7.1.8-1
 	replaces = linux-cachyos-lto-headers
