@@ -1,13 +1,14 @@
-# Maintainer: zlicdt <xkicdt1@gmail.com>
+# Maintainer: Misaka 19465 <19465@misakanet.team>
+# Thanks to the original maintainer zlicdt <xkicdt1@gmail.com>.
 
-pkgname=open-orpheus
-pkgver=0.16.0
+pkgname=open-orpheus-bin
+pkgver=0.16.2
 pkgrel=1
+_upstream_pkgname=open-orpheus
 pkgdesc="An open-source implementation of Netease Cloud Music's Orpheus browser host."
 arch=('x86_64')
 url="https://github.com/YUCLing/open-orpheus"
 license=('MIT')
-arch=('x86_64')
 depends=(
     'gtk3'
     'libnotify'
@@ -20,21 +21,22 @@ depends=(
 )
 optdepends=('kde-cli-tools')
 makedepends=('libarchive')
+provides=("${_upstream_pkgname}=${pkgver}")
+conflicts=("${_upstream_pkgname}")
 source=(
-    "${pkgname}_${pkgver}_amd64.deb::https://github.com/YUCLing/open-orpheus/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb"
+    "${_upstream_pkgname}_${pkgver}_amd64.deb::https://github.com/YUCLing/open-orpheus/releases/download/v${pkgver}/${_upstream_pkgname}_${pkgver}_amd64.deb"
     "LICENSE"
 )
 sha256sums=(
-    'bdcb4559b1f1488ec9ba4dfd4cf15a1b41b1bc3abb26963cf9f828650f037ffd'
+    'd91aa12916a86da1f6fa0d2f0a2c4a219c7dc9463591493b3d6c30a473fa15dd'
     '4499595d653b7a9e65001bb09239e6fb5d33e650d1f9db808ce87905021e9ff8'
 )
 
 prepare() {
-    ar x ${pkgname}_${pkgver}_amd64.deb
+    ar x "${srcdir}/${_upstream_pkgname}_${pkgver}_amd64.deb"
 }
 
-# Thank for wustdsh's suggestion
 package() {
-    bsdtar -xf data.tar.zst -C ${pkgdir} --no-same-owner
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/%{pkgname}/LICENSE"
+    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}" --no-same-owner
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
