@@ -3,9 +3,9 @@
 
 _pkgname=hermes-agent
 pkgname=python-${_pkgname}
-tag=2026.8.13
-pkgver=0.20.1
-pkgrel=2
+tag=2026.8.16
+pkgver=0.20.2
+pkgrel=1
 pkgdesc="The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere"
 arch=('any')
 url="https://github.com/NousResearch/${_pkgname}"
@@ -46,7 +46,7 @@ source=(
     "0001-fix-daemon-pool-py314-ThreadPoolExecutor-API.patch"
 )
 sha256sums=(
-    '2b202b0cbcecfaeec85572b60d66cd481ca387248b592878bf92204de78abefe'
+    '655639384767611feee5ef5d6871e1a1b2294f7b1fd80fb401e9b888a418f4f9'
     '6b3357098d9e70eb33c95e2f7d12c2bdc016f6e7933b517d85f1399d50caea71'
 )
 
@@ -55,10 +55,6 @@ prepare() {
   # Relax upstream's exact build-system pin: `python -m build --no-isolation`
   # validates requires against the system env, and Arch ships newer setuptools.
   sed -i 's/requires = \["setuptools==83.0.0"\]/requires = ["setuptools>=83.0.0"]/' pyproject.toml
-  # Upstream 0.20.1 forgot to declare registration_lifecycle in
-  # [tool.setuptools] py-modules; hermes_cli/plugins.py imports it at
-  # startup, so the wheel would ship without it and crash on launch.
-  sed -i 's/^  "mcp_serve",$/  "mcp_serve",\n  "registration_lifecycle",/' pyproject.toml
   # Python 3.14: ThreadPoolExecutor no longer has _initializer/_initargs
   patch -p1 < "${srcdir}/0001-fix-daemon-pool-py314-ThreadPoolExecutor-API.patch"
 }
