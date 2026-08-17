@@ -1,7 +1,7 @@
 # Maintainer: dim <mlrudasill@gmail.com>
 
 pkgname='astramarket-bin'
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Unified Linux marketplace with Flatpak, Pacman, AUR, and AppImage support (precompiled binary)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('flatpak: Flatpak package support'
 provides=('astramarket' 'astra')
 conflicts=('astramarket' 'astramarket-git')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/astra-v$pkgver-linux-x86_64.tar.gz")
-sha256sums=('977caaea4f885e42190af24530f83dd33747bbbef62b893f784dfd03211cdb61')
+sha256sums=('b8c1c59b855f6ac507ece70d0c39f50768f6c8f8f1b7221618c317dfec979b6a')
 
 package() {
     cd "${srcdir}/astra-v${pkgver}-linux-x86_64"
