@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "aura-emerge-main"
+  cd "aura-emerge"
   local bin="target/release/aura-emerge"
 
   _gen_or_die() {
