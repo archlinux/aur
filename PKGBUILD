@@ -2,7 +2,7 @@
 
 pkgname="monsoon-emulator"
 pkgver="0.2.9"
-pkgrel=1
+pkgrel=2
 pkgdesc="A work-in-progress NES emulator"
 arch=('x86_64')
 url="https://github.com/EmIsGreat/Monsoon-Emulator"
@@ -48,19 +48,19 @@ build() {
     cd "Monsoon-Emulator-$pkgver"
 
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --profile native -p monsoon-frontend
+    cargo build --frozen --profile full_release -p monsoon-frontend
 
     cd "../Monsoon-Emulator-${_cli_pkg_ver}"
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --profile native -p monsoon-cli
+    cargo build --frozen --profile full_release -p monsoon-cli
 }
 
 package() {
-	mv "Monsoon-Emulator-${_cli_pkg_ver}/target/native/cli" "Monsoon-Emulator-${_cli_pkg_ver}/target/native/${pkgname%-emulator}-cli"
-	mv "Monsoon-Emulator-${pkgver}/target/native/frontend" "Monsoon-Emulator-${pkgver}/target/native/${pkgname%-emulator}-frontend"
+	mv "Monsoon-Emulator-${_cli_pkg_ver}/target/full_release/cli" "Monsoon-Emulator-${_cli_pkg_ver}/target/full_release/${pkgname%-emulator}-cli"
+	mv "Monsoon-Emulator-${pkgver}/target/full_release/frontend" "Monsoon-Emulator-${pkgver}/target/full_release/${pkgname%-emulator}-frontend"
 
-    install -Dm0755 -t "$pkgdir/usr/bin/" "Monsoon-Emulator-${_cli_pkg_ver}/target/native/${pkgname%-emulator}-cli"
-    install -Dm0755 -t "$pkgdir/usr/bin/" "Monsoon-Emulator-${pkgver}/target/native/${pkgname%-emulator}-frontend"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "Monsoon-Emulator-${_cli_pkg_ver}/target/full_release/${pkgname%-emulator}-cli"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "Monsoon-Emulator-${pkgver}/target/full_release/${pkgname%-emulator}-frontend"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "$srcdir/monsoon.desktop" "$pkgdir/usr/share/applications/monsoon.desktop"
 }
