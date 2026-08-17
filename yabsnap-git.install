@@ -1,34 +1,32 @@
 post_install() {
-  systemctl --quiet daemon-reload
-
   # If SELINUX environment, enable execution of the binary.
   $(which selinuxenabled 2>/dev/null) && restorecon -R src/ /usr/share/yabsnap
 
-  echo "yabsnap post-installation notice -"
-  echo
-  echo "  Create a config:"
-  echo "    For example, for \"root\" partition it will be:"
-  echo "           sudo yabsnap create-config root"
-  echo "    This will create a file /etc/yabsnap/configs/root.conf"
-  echo "    REQUIRED: Edit the config to change the source field, to point to"
-  echo "    a btrfs mounted directory. E.g. source = /, or source = /home."
-  echo
-  echo "  Also, ensure that the service is enabled:"
-  echo "    sudo systemctl enable --now yabsnap.timer"
-  echo
-  echo "  Running yabsnap will also remind you of any missing steps."
+  cat <<EOF
+yabsnap post-installation notice -
+
+  Create a config:
+    For example, for "root" partition it will be:
+           yabsnap create-config root
+    This will create a file /etc/yabsnap/configs/root.conf
+    REQUIRED: Edit the config to change the source field, to point to
+    a btrfs mounted directory. E.g. source = /, or source = /home.
+
+  Also, ensure that the service is enabled:
+    systemctl enable --now yabsnap.timer
+
+  Running yabsnap will also remind you of any missing steps.
+EOF
 }
 
 post_upgrade() {
-  systemctl --quiet daemon-reload
-}
-
-pre_remove() {
-  systemctl --quiet --no-reload disable --now yabsnap.timer
+  # Starting 2.2.10, we switched to .opt-1.pyc and own them.
+  # (2026-06-15) Starting 2.4.1, we pivoted back to .pyc.
+  # Drop all .opt-1.pyc, but not .pyc.
+  find /usr/share/yabsnap -type f -name "*.opt-1.pyc" ! -name "*.pyc" -exec rm -f {} +
 }
 
 post_remove() {
-  systemctl --quiet daemon-reload
   # Since .pycache files may be created here, which won't be removed by pacman.
   rm -fr /usr/share/yabsnap
 }

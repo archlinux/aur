@@ -1,13 +1,14 @@
 # Maintainer: Arnab Bose <hirak99+arch@gmail.com>
 pkgname=yabsnap-git
-pkgver=r313.0d242f0
+pkgver=r384.c62289a
 pkgrel=1
 pkgdesc="Btrfs automated snapshot manager."
 arch=('any')
 url="https://github.com/hirak99/yabsnap"
 license=('Apache')
-depends=('python3')
-makedepends=('rsync')
+depends=('bash' 'btrfs-progs' 'python')
+optdepends=('rsync: rsync based snapshot support' 'python-textual: for the TUI interface')
+makedepends=('tar')
 provides=("yabsnap=${pkgver}")
 conflicts=('yabsnap')
 source=("$pkgname::git+https://github.com/hirak99/yabsnap")
@@ -21,7 +22,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-check() {
+build() {
   cd "$pkgname"/artifacts
   # One-time action to do after downloading the package.
   gzip -c "$pkgname_main".manpage > "$pkgname_main".1.gz
@@ -50,10 +51,10 @@ package() {
   install -Dm 644 "$pkgname_main".1.gz                          -t "$pkgdir"/usr/share/man/man1/
   cd ../src
   install -Dm 755 "$pkgname_main".sh -t "$DEST"/
-  # Note: The -O compiles to .opt-1.pyc. Starting with v2.2.10, we use -O, and
-  # we own the files.
-  # See point 2 in https://aur.archlinux.org/packages/yabsnap#comment-1034857
-  python -O -m compileall -d /usr/share/"$pkgname_main" "$DEST"
+  # Goal: Own the byte codes since non-root execution cannot create them.
+  # Note (2025-08-03, v2.2.0): Added -O -m to compile to .opt-1.pyc.
+  # Note (2026-06-15, v2.4.1): Dropped the -O. Will compile to .pyc.
+  python -m compileall -d /usr/share/"$pkgname_main" "$DEST"
   install -d "$pkgdir"/usr/bin
   ln -s /usr/share/"$pkgname_main"/"$pkgname_main".sh "$pkgdir"/usr/bin/"$pkgname_main"
 }
