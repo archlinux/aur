@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.38.27
-pkgrel=1
+pkgrel=2
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('x86_64')
 url='https://github.com/dokku/dokku'
@@ -38,7 +38,7 @@ depends=(
   'sshcommand'
   'unzip'
 )
-source=("${url}/archive/v${pkgver}.zip"
+source=("${pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip"
         "${pkgname}.install"
         "cron_command.patch"
         "fix_go_work_missing_builds.patch")
