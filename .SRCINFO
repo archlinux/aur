@@ -1,5 +1,5 @@
 pkgbase = strdust-bin
-	pkgdesc = A tandem repeat genotyper for long reads
+	pkgdesc = Tandem repeat genotyper for long reads
 	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/wdecoster/STRdust
