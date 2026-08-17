@@ -6,7 +6,7 @@
 # when a user explicitly requests them.
 
 pkgname=mxcli
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Unofficial community package for the mxcli Mendix development CLI"
 arch=('x86_64' 'aarch64')
@@ -14,11 +14,11 @@ url="https://github.com/mendixlabs/mxcli"
 license=('Apache-2.0')
 makedepends=(
   'antlr4>=4.13.2'
-  'go>=1.26.5'
+  'go>=1.26.6'
 )
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('70ced29b8d4a01d11ab788cbb171ab4478a30aa54d6c6594b9c99eeaffe74c4c')
+sha256sums=('ae13f97db93eb8c2a64adf5b3a78bab7f305f94e1c12e1408bb9a3bdfe2adcdb')
 
 build() {
   cd "$pkgname-$pkgver"
