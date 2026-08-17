@@ -1,0 +1,24 @@
+pkgbase = tuber-rs-bin
+	pkgdesc = CLI and TUI to view and manage Tuber and Beanstalkd queues (prebuilt)
+	pkgver = 0.14.2
+	pkgrel = 1
+	url = https://github.com/tuberq/tuber-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = tuber-cli=0.14.2
+	provides = tuber-tui=0.14.2
+	conflicts = tuber-cli
+	conflicts = tuber-tui
+	options = !strip
+	options = !debug
+	source_x86_64 = tuber-cli-0.14.2-x86_64.tar.gz::https://github.com/tuberq/tuber-rs/releases/download/v0.14.2/tuber-cli-x86_64-unknown-linux-musl.tar.gz
+	source_x86_64 = tuber-tui-0.14.2-x86_64.tar.gz::https://github.com/tuberq/tuber-rs/releases/download/v0.14.2/tuber-tui-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 07b08d3200fa87f259df01761d3a01d58afdc92706654f2e88d94dc38c28227e
+	sha256sums_x86_64 = 0a4cb181cdec7e9751096fbc9e23d4203b8d735d76ac3eb7408cd0a51ff970fa
+	source_aarch64 = tuber-cli-0.14.2-aarch64.tar.gz::https://github.com/tuberq/tuber-rs/releases/download/v0.14.2/tuber-cli-aarch64-unknown-linux-musl.tar.gz
+	source_aarch64 = tuber-tui-0.14.2-aarch64.tar.gz::https://github.com/tuberq/tuber-rs/releases/download/v0.14.2/tuber-tui-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 167877e5da06f3c7ded49be3cbdad411d2620aaa0d57a51ff3fe2f606e6821e2
+	sha256sums_aarch64 = f53f16045c558ade13ed6d3dd7b4a5f11032684496a1171ae8fce2fcc764abac
+
+pkgname = tuber-rs-bin
