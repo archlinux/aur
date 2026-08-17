@@ -1,18 +1,16 @@
 pkgbase = lib32-cdparanoia
 	pkgdesc = Compact Disc Digital Audio extraction tool
 	pkgver = 10.2
-	pkgrel = 2
-	url = http://www.xiph.org/paranoia/
+	pkgrel = 5
+	url = https://www.xiph.org/paranoia/
 	arch = x86_64
 	license = GPL
-	makedepends = gcc-multilib
 	depends = cdparanoia
+	depends = lib32-gcc-libs
 	depends = lib32-glibc
-	options = !makeflags
-	source = http://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
-	source = gcc.patch
-	sha256sums = 005db45ef4ee017f5c32ec124f913a0546e77014266c6a1c50df902a55fe64df
-	sha256sums = 9a3f3802856e96080fb30562a10899ef3378723e85f289fa29619b21d6051575
+	source = https://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
+	source = lib32-cdparanoia-gcc.patch
+	b2sums = 295065388e45371329ea7b04bac03c90fd854478d34eb46fa95db03054a1a21effe7863e5065a9148e558796c352d5087b6ef1c3c4c20342e66abd7d2c9eef85
+	b2sums = 6ef27a8a1f0faa257196e96d006780c4894236ee3300bf5e6a2863c6fc50023cb82f586a31c2873744bf04b15fd98eb4f8cd87a428a7c2cd0a99d652f42d5740
 
 pkgname = lib32-cdparanoia
-
