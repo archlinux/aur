@@ -14,12 +14,12 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('977a8fdb86a8ed5e8304b89d5a432536e3c42681edb5b9e3018e687be59d918f')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  go build -trimpath -o "$pkgname" "./$pkgname"
+  cd "$srcdir/LexicMap-$pkgver"
+  go build -trimpath -o "$srcdir/$pkgname" "./$pkgname"
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+  cd "$srcdir/LexicMap-$pkgver"
+  install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
