@@ -1,7 +1,7 @@
 # Maintainer: Lourenço Vales <lvales@excipio.tech>
 
 pkgname=gnmic
-pkgver=0.46.0
+pkgver=0.47.0
 pkgrel=1
 pkgdesc='gNMI CLI client and collector'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('325ba31b59fe255f1265dc01ec721c17bef3479ed4fcd12bbc4ddf525ba1e5a0')
+sha256sums=('bf6eee469cdba77fd0751d96e5dfdb0bb0dc439b28986fadc77e1ac2e54426d8')
 
 prepare() {
   cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = gnmic
 	pkgdesc = gNMI CLI client and collector
-	pkgver = 0.46.0
+	pkgver = 0.47.0
 	pkgrel = 1
 	url = https://github.com/openconfig/gnmic
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gnmic
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = gnmic-0.46.0.tar.gz::https://github.com/openconfig/gnmic/archive/v0.46.0.tar.gz
-	sha256sums = 325ba31b59fe255f1265dc01ec721c17bef3479ed4fcd12bbc4ddf525ba1e5a0
+	source = gnmic-0.47.0.tar.gz::https://github.com/openconfig/gnmic/archive/v0.47.0.tar.gz
+	sha256sums = bf6eee469cdba77fd0751d96e5dfdb0bb0dc439b28986fadc77e1ac2e54426d8
 
 pkgname = gnmic
