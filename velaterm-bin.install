@@ -1,0 +1,36 @@
+post_install() {
+  cat <<'EOF'
+
+VelaTerm is installed as a pacman-managed package.
+
+  Wayland: this package installs the binary without the AppImage's bundled Debian
+  libraries, so it runs as a native Wayland client instead of under XWayland. Do not
+  set GDK_BACKEND to work around anything -- it is inherited by every shell and agent
+  VelaTerm spawns.
+
+  CLI shims: on first launch VelaTerm writes 'vela', 'vspawn' and 'vopen' helper
+  commands into a directory on your PATH.
+
+  Auto-update: the built-in Tauri updater fetches from velaterm.com and would try to
+  replace /usr/bin/velaterm, which it cannot write. Turn auto-update off in Settings so
+  it stops erroring, and update through this package instead.
+
+  Remote access: off by default. When enabled it exposes a shell on your network, so
+  keep it bound to loopback and reach it over your tailnet:
+
+    velaterm --serve --port 8799 --local-http
+    tailscale serve --bg 8799
+
+  That gives a real Let's Encrypt certificate on your *.ts.net name instead of the
+  self-signed one, and leaves the tailnet as the only path in.
+
+  Headless hosts: the same binary serves without a display server, but this package
+  pulls in webkit2gtk for the desktop window. On a server, build upstream with
+  --no-default-features for a GUI-less vela-server instead.
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}

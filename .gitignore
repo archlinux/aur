@@ -1,0 +1,8 @@
+# AUR repos track only the packaging files.
+*.AppImage
+LICENSE-*
+src/
+pkg/
+squashfs-root/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
