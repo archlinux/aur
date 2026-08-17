@@ -1,35 +1,37 @@
 # Maintainer: Undercat037 <deltacatdeveloper@gmail.com>
 pkgname=aura-emerge
-pkgver=1.33.1
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="Portage-like wrapper for Arch Linux using Aura"
+pkgdesc="Gentoo-style emerge for Arch Linux - installs from official repos, the AUR, and ABS, scans PKGBUILDs for supply-chain red flags before building, and runs untrusted build steps inside a `bwrap` sandbox."
 arch=('x86_64')
 url="https://github.com/Undercat037/aura-emerge"
 license=('GPL-3.0')
-depends=('aura')
-optdepends=('devtools: for --abs support (build from ABS source via pkgctl)' 'gnupg: for PGP verification when building from ABS' 'bubblewrap: sandboxed --abs builds (falls back to unsandboxed with --no-sandbox)')
-makedepends=('rust' 'cargo' 'git')
-conflicts=('portage' 'portage-git')
+depends=('git' 'sudo')
+optdepends=('devtools: for --abs support (pkgctl repo clone)'
+            'gnupg: for PGP verification when building from ABS'
+            'bubblewrap: sandboxed builds (falls back to unsandboxed with --no-sandbox)')
+makedepends=('rust' 'cargo')
+conflicts=('portage' 'portage-git' 'aura-emerge-git')
 provides=('portageq')
 install=aura-emerge.install
 backup=('etc/emerge/world.set')
-#git tag -a v1.27.0 -m "..." && git push origin v1.27.0
-source=("$pkgname::git+https://github.com/Undercat037/aura-emerge.git#tag=v$pkgver")
-#updpkgsums
-sha256sums=('98be06687d03770e5c2c9fe080f887506e082d2fc09ebb9104e1314e68139ac5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Undercat037/aura-emerge/archive/refs/heads/main.tar.gz")
+sha256sums=('20390408d9fae22d749ea13573eb84624d7b2eeec30a390078efa0945350862d')
+
 build() {
-  cd "$pkgname"
+  cd "aura-emerge-main"
   cargo build --release
 }
+
 package() {
-  cd "$pkgname"
+  cd "aura-emerge-main"
   local bin="target/release/aura-emerge"
 
   _gen_or_die() {
     local out="$1"
     shift
     if ! "$bin" "$@" >"$out" || [ ! -s "$out" ]; then
-      error "\"$bin $*\" produced no output — refusing to package an empty file"
+      error "\"$bin $*\" produced no output - refusing to package an empty file"
       return 1
     fi
   }
