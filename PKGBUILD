@@ -4,7 +4,7 @@
 
 pkgname=mingw-w64-libarchive
 _pkgname=libarchive
-pkgver=3.7.4
+pkgver=3.8.9
 pkgrel=1
 pkgdesc="library that can create and read several streaming archive formats (mingw-w64)"
 arch=(any)
@@ -14,7 +14,7 @@ depends=(mingw-w64-crt mingw-w64-bzip2 mingw-w64-expat mingw-w64-lz4 mingw-w64-l
 makedepends=('mingw-w64-configure')
 options=('!buildflags' '!debug' 'staticlibs' '!strip')
 source=("https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('f887755c434a736a609cbd28d87ddbfbe9d6a3bb5b703c22c02f6af80a802735')
+sha256sums=('888c934f9d95648ecb9163dc8e23ab80a476ecb81a8f1154704a227b5b676dde')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -23,8 +23,11 @@ build() {
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
-        --without-xml2 \
-        ..
+      --enable-shared \
+      --enable-static \
+      --without-libiconv-prefix \
+      --without-xml2 \
+      ..
     make
     popd
   done
