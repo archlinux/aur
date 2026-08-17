@@ -5,7 +5,7 @@
 
 pkgname=pachul
 pkgver=2.2.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern, graphical Pacman/AUR front end for Arch Linux built with GTK4 and libadwaita"
 arch=('any')
 url="https://github.com/wergosam/Pachul"
