@@ -1,5 +1,5 @@
 pkgbase = foldcomp-bin
-	pkgdesc = Compress and index protein structures with torsion angles (precompiled binary)
+	pkgdesc = Compress and index protein structures with torsion angles
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/steineggerlab/foldcomp
