@@ -1,0 +1,20 @@
+pkgbase = kenn-forge-bin
+	pkgdesc = Local maintainer console for pull requests, issues, reviews, activity, and local workspaces.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/kenn-io/forge
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kenn-forge
+	conflicts = kenn-forge
+	source = README-0.2.0.md::https://raw.githubusercontent.com/kenn-io/forge/v0.2.0/README.md
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/kenn-io/forge/v0.2.0/LICENSE
+	sha256sums = c050fefa411634786f122e05d02980f67ce61251e1c9f6a7176586f617a85187
+	sha256sums = cb03f5511781719ba3f56d474ada3f08d221f620e2ff384175690fc54122f6ba
+	source_x86_64 = forge-x86_64-0.2.0.tgz::https://github.com/kenn-io/forge/releases/download/v0.2.0/forge_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 06e5fe553fbb51d6b5cc9801ccd97d321020f5b7b4c0474b5b7ad1e9fb9e84af
+	source_aarch64 = forge-aarch64-0.2.0.tgz::https://github.com/kenn-io/forge/releases/download/v0.2.0/forge_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 5f4732608c21fd8829f42bccbf77ecf4274df913345e4b0aa98db97c72c90fe3
+
+pkgname = kenn-forge-bin

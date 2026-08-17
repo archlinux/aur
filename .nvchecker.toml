@@ -1,0 +1,5 @@
+[kenn-forge-bin]
+source = "github"
+github = "kenn-io/forge"
+use_latest_release = true
+prefix = "v"
