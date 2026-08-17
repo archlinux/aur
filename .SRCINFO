@@ -1,7 +1,7 @@
 pkgbase = harness-session-manager
 	pkgdesc = Terminal session manager for AI coding harnesses
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nidalJaafar/harness-session-manager
 	arch = x86_64
 	license = MIT
