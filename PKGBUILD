@@ -5,7 +5,7 @@
 
 pkgname=ffmpeg-amd-full
 pkgver=9.0
-pkgrel=1
+pkgrel=2
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac for AMD)'
@@ -76,7 +76,6 @@ depends=(
     'libtheora'
     'libva'
     'libvorbis'
-    'libvpl'
     'libvpx'
     'libx11'
     'libxcb'
@@ -108,12 +107,12 @@ depends=(
     'speex'
     'srt'
     'svt-av1'
-    # 'svt-hevc'
+    'svt-hevc'
     'svt-jpeg-xs-git'
-    # 'svt-vp9'
+    'svt-vp9'
     'tesseract'
     'twolame'
-    'uavs3d-git'
+    'uavs3d'
     'v4l-utils'
     'vapoursynth' # loaded on-demand by dlopen()
     'vid.stab'
@@ -160,9 +159,9 @@ conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'git+https://github.com/lensfun/lensfun.git'
         "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
-        # '010-ffmpeg-add-svt-hevc.patch'
-        # "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        # '030-ffmpeg-add-svt-vp9.patch'
+        '010-ffmpeg-add-svt-hevc.patch'
+        "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+        '030-ffmpeg-add-svt-vp9.patch'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         'LICENSE')
@@ -170,17 +169,20 @@ sha256sums=('7f607a00dd0d28a729d5a4811205812eef01cf6ef6155025febb6f36a9062d52'
             'SKIP'
             'SKIP'
             'a6abd064fcca8b85e794d205abf328c522e9451db43a3eadc178b883b7d0e9cd'
-            'd0a94e18cd8e17a8c4630a711a5f3563ab091f3eaee89df24a3566ed6496f734'
+            'e6fdcb8446b0a0c0967f125d2de5084a5bdb418a1a6608f808cff2c97fc9bd6a'
+            'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
+            'cc80568f7dab2094f4f3bede6d0f068f217161f924915b067b0d287cf53b0849'
+            'cd1aa93e78800247b4516a01ef391106acb362957bd1e56f85d64906343cddac'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
     rm -f "ffmpeg-${pkgver}/libavcodec"/libsvt_{hevc,vp9}.c
-    # patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
-    # patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    # patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
-    # patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
 }
 
@@ -211,8 +213,8 @@ build() {
         -e 's/\(-llensfun\)/\1 -lglib-2.0 -lstdc++/' \
         -e '/Cflags: /s/$/ -DCONF_LENSFUN_STATIC/' "${_pkgconfigdir}/lensfun.pc"
     
-    # whisper.cpp AUR package conflicts with imagemagick at the time of writing
-    # building it locally as a static library for the time being, as imagemagick is a commonly used package (high usage in pkgstats)
+    # using whisper-cpp package from the official repositories will cause a circular dependency with ffmpeg,
+    # building it locally as a static library for the time being
     cmake -B build/whisper.cpp -S "whisper.cpp-${_whispercpp_ver}" \
         "${_cmake_opts[@]}" \
         -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
@@ -314,7 +316,9 @@ build() {
         --enable-libsrt \
         --enable-libssh \
         --enable-libsvtav1 \
+        --enable-libsvthevc \
         --enable-libsvtjpegxs \
+        --enable-libsvtvp9 \
         --disable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
