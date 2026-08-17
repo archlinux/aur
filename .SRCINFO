@@ -1,7 +1,7 @@
 pkgbase = acarsdec
 	pkgdesc = Multi-channel ACARS decoder
 	pkgver = 4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/f00b4r0/acarsdec
 	arch = x86_64
 	license = GPL-2.0-only
@@ -9,6 +9,7 @@ pkgbase = acarsdec
 	depends = airspy
 	depends = alsa-lib
 	depends = cjson
+	depends = libacars
 	depends = libsndfile
 	depends = rtl-sdr
 	depends = soapysdr
