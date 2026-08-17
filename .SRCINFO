@@ -1,0 +1,17 @@
+pkgbase = foldseek-bin
+	pkgdesc = Fast and sensitive comparison of large protein structure sets (precompiled binary)
+	pkgver = 10_941cd33
+	pkgrel = 1
+	url = https://github.com/steineggerlab/foldseek
+	arch = x86_64
+	license = GPL3
+	provides = foldseek=10_941cd33
+	conflicts = foldseek
+	options = !strip
+	options = !debug
+	source = https://github.com/steineggerlab/foldseek/releases/download/10-941cd33/foldseek-linux-avx2.tar.gz
+	source = LICENSE.md::https://raw.githubusercontent.com/steineggerlab/foldseek/10-941cd33/LICENSE.md
+	sha256sums = e6a3e3860e76b0b7b858736f627fe680d4d7f0fc7298301d8a92b9f711d74ac7
+	sha256sums = d62f065830aa3739cc031156b9690805c7b2e811b4a178c8b4acd8725d561c94
+
+pkgname = foldseek-bin
