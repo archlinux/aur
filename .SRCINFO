@@ -1,0 +1,19 @@
+pkgbase = veet
+	pkgdesc = Universal Linux application uninstaller & deep-clean residual purger
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/swadhinbiswas/veet
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = ttf-nerd-fonts-symbols: for glyph icons without patching base font
+	optdepends = ttf-jetbrains-mono-nerd: recommended modern mono font with glyph icons
+	optdepends = flatpak: for Flatpak app management
+	optdepends = snapd: for Snap package management
+	optdepends = pacman: for Arch package management
+	source = veet-1.0.3.tar.gz::https://github.com/swadhinbiswas/veet/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 3a8c858a3290b806074d1416896e1aaa433aab9462234b3ad1bdc2eaedc13cb8
+
+pkgname = veet
