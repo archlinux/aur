@@ -1,6 +1,6 @@
 # Maintainer: Stanisław Jasiewicz <stjasiewicz@protonmail.com>
 pkgname=neverwinter.nim-bin
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A nim-lang library and utility collection to read and write data files used by Neverwinter Nights 1"
 arch=('any')
@@ -8,8 +8,8 @@ url="https://github.com/niv/neverwinter.nim"
 license=('MIT')
 conflicts=('neverwinter.nim')
 provides=('neverwinter.nim')
-source=("https://github.com/niv/neverwinter.nim/releases/download/$pkgver/neverwinter-x86_64-linux-gnu.zip")
-md5sums=('4e945c03a401c6840350585a483cad5f')
+source=("neverwinter-x86_64-linux-gnu_${pkgver}.zip::https://github.com/niv/neverwinter.nim/releases/download/$pkgver/neverwinter-x86_64-linux-gnu.zip")
+md5sums=('48bc8511231cce98b2b9a64017f9b4e1')
 
 package() {
     install -Dm 755 "nwn_twoda" -t "$pkgdir/usr/bin"
