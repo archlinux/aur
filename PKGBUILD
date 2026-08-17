@@ -56,6 +56,8 @@ conflicts=(
     'noctalia-qs'
     'noctalia-qs-git'
     'dim-caelestia-shell-git-debug'
+
+    'polkit-gnome' # it has a built in polkit
 )
 replaces=('dim-caelestia-shell-git')
 

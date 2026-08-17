@@ -44,6 +44,7 @@ pkgbase = midnight-shell-git
 	conflicts = noctalia-qs
 	conflicts = noctalia-qs-git
 	conflicts = dim-caelestia-shell-git-debug
+	conflicts = polkit-gnome
 	replaces = dim-caelestia-shell-git
 	source = midnight-shell-git::git+https://github.com/dim-ghub/midnight-shell.git
 	sha256sums = SKIP
