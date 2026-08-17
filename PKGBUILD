@@ -5,7 +5,7 @@
 _pkgname=moon
 pkgname="${_pkgname}-bin"
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Task runner and repo management tool for the web ecosystem'
 license=('MIT')
 provides=("${_pkgname}")
@@ -25,6 +25,7 @@ prepare() {
   "./${_pkgname}" completions --shell bash >"completions/bash"
   "./${_pkgname}" completions --shell zsh >"completions/zsh"
   "./${_pkgname}" completions --shell fish >"completions/fish"
+  "./${_pkgname}" completions --shell nushell >"completions/nushell"
 }
 
 package() {
@@ -38,4 +39,5 @@ package() {
   install -Dm 644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
   install -Dm 644 "completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
   install -Dm 644 "completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+  install -Dm 644 "completions/nushell" "${pkgdir}/usr/share/nushell/vendor/autoload/${_pkgname}.nu"
 }
