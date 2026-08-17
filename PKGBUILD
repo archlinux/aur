@@ -1,6 +1,6 @@
 # Maintainer: ralf <ralf.wierzbicki@gmail.com>
 pkgname=asteroidz
-pkgver=0.20.8
+pkgver=0.25.0
 pkgrel=1
 pkgdesc='wlroots compositor with HDR10 and dwm-style tags (GLES2 daily driver, experimental Vulkan renderer)'
 arch=('x86_64')
@@ -11,9 +11,9 @@ depends=(
   'cjson' 'pango' 'gdk-pixbuf2' 'libdrm' 'systemd-libs'
   'vulkan-icd-loader'
   'xcb-util-wm' 'libxcb'
-  # asteroidz-scenefx is NOT a dependency any more: it lives in-tree at
-  # subprojects/asteroidz-scenefx and is linked statically, so there is no
-  # libasteroidz-scenefx-0.5.so to install or keep in version lockstep. What
+  # asteroidz-scenefx is GONE, not merely un-packaged. Its scene graph is now
+  # asteroidz source (src/scene/), so there is no subproject, no static library
+  # and no ABI marker to keep in lockstep. What
   # remains are the libraries IT pulls in, which the static link now makes
   # asteroidz's own runtime dependencies:
   'libglvnd'   # libEGL, libGLESv2 -- the GLES2 renderer
