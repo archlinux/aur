@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=PrettyZap
+Comment=Keyboard-first WhatsApp Web desktop shell
+Exec=prettyzap
+Icon=prettyzap
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
+StartupWMClass=PrettyZap
+Keywords=WhatsApp;Chat;Messaging;
