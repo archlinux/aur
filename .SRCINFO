@@ -1,5 +1,5 @@
 pkgbase = ttf-ms-win11
-	pkgver = 10.0.26200.8737
+	pkgver = 10.0.26200.9168
 	pkgrel = 1
 	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
 	arch = any
