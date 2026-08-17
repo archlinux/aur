@@ -1,12 +1,3 @@
-Only in b: config.log
-Only in b: .sconf_temp
-Only in b: .sconsign.dblite
-Only in b: SConstruct.orig
-Only in b: SConstruct.rej
-Only in b/src: Casio9860.o
-Only in b/src: downloadfile.o
-Only in b/src: getinfo.o
-Only in b/src: optimizememory.o
 diff '--color=auto' --unified --recursive --text a/src/SConstruct b/src/SConstruct
 --- a/src/SConstruct	2023-05-10 20:24:53.017829272 +0100
 +++ b/src/SConstruct	2023-05-10 20:24:41.417718309 +0100
@@ -135,8 +126,3 @@ diff '--color=auto' --unified --recursive --text a/src/SConstruct b/src/SConstru
  xfer9860 = default_env.Program(target = dist, source = srclist + objlist, LIBS = liblist)
  # makes sure to remove both binaries, and logfiles
  Clean(xfer9860, [dist, bindist, 'config.log', '../config.log'])
-Only in b/src: uploadfile.o
-Only in b/src: usbio.o
-Only in b/src: xfer9860
-Only in b/src: xfer9860.o
-Only in b: xfer9860
