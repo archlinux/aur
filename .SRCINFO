@@ -1,5 +1,5 @@
 pkgbase = oarfish-bin
-	pkgdesc = A suite of tools for working with long-read transcriptome data (RNA-seq) from PacBio and Oxford Nanopore
+	pkgdesc = Suite of tools for working with long-read transcriptome data (RNA-seq) from PacBio and Oxford Nanopore
 	pkgver = 0.10.3
 	pkgrel = 1
 	url = https://github.com/COMBINE-lab/oarfish
