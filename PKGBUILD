@@ -3,13 +3,13 @@
 
 pkgname=mint-bin
 pkgver=0.29.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A refreshing language for the front-end web'
 arch=('x86_64')
 url='https://github.com/mint-lang/mint'
 license=('BSD')
 source=("${url}/releases/download/${pkgver}/mint-${pkgver}-linux-${arch}"
-        "https://raw.githubusercontent.com/mint-lang/mint/master/LICENSE")
+        "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/mint-lang/mint/refs/tags/${pkgver}/LICENSE")
 sha256sums=('24c45acd79a957f3788798b4f090869ac150fa3c00fb4754f9e0181957f8dcf1'
             '6b4ecb1a9202a35540d0405ddd88439bb4644a127afc02ee26428ca5d5c0bd9f')
 noextract=("mint-${pkgver}-linux-${arch}"
@@ -20,5 +20,5 @@ package() {
   cd "${srcdir}"
 
   install -Dm755 "mint-${pkgver}-linux-${arch}" "${pkgdir}/usr/bin/mint"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/mint/LICENSE"
+  install -Dm644 ${pkgname}-${pkgver}-LICENSE "${pkgdir}/usr/share/licenses/mint/LICENSE"
 }
