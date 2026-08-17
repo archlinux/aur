@@ -1,6 +1,6 @@
 pkgbase = eltclsh
 	pkgdesc = interactive shell for the TCL programming language
-	pkgver = 1.17
+	pkgver = 1.20
 	pkgrel = 1
 	url = http://homepages.laas.fr/mallet/soft/shell/eltclsh
 	arch = i686
@@ -12,8 +12,7 @@ pkgbase = eltclsh
 	depends = tcl
 	depends = tk
 	depends = libedit
-	source = http://distfiles.openrobots.org/eltclsh/eltclsh-1.17.tar.gz
-	md5sums = e698f5969970feafeff934b1294a37c0
+	source = http://distfiles.openrobots.org/eltclsh/eltclsh-1.20.tar.gz
+	sha256sums = 5f87964f4100a707f34f9414c6c35f64f3626c1ff29c78e665ad2a5fd4011e43
 
 pkgname = eltclsh
-

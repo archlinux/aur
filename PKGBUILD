@@ -1,6 +1,6 @@
 # Maintainer: tequa
 pkgname=eltclsh
-pkgver=1.17
+pkgver=1.20
 pkgrel=1
 epoch=
 pkgdesc="interactive shell for the TCL programming language"
@@ -23,7 +23,7 @@ source=(
     "http://distfiles.openrobots.org/eltclsh/$pkgname-$pkgver.tar.gz"
 )
 noextract=()
-md5sums=('e698f5969970feafeff934b1294a37c0')
+sha256sums=('5f87964f4100a707f34f9414c6c35f64f3626c1ff29c78e665ad2a5fd4011e43')
 validpgpkeys=()
 
 #prepare() {
