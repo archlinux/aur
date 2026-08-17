@@ -1,19 +1,19 @@
 # Maintainer: Christoph Brandau <c.brandau91@googlemail.com>
 
 pkgname=gitty-desktop
-pkgver=2026.8.4
+pkgver=2026.8.5
 pkgrel=1
 pkgdesc="A lightweight, modern Git client built with Tauri"
 arch=('x86_64')
 url="https://git.cbsk-tech.de/Christoph/GitLite"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'git' 'hicolor-icon-theme' 'libappindicator-gtk3' 'librsvg' 'xdotool')
+depends=('webkit2gtk-4.1' 'gtk3' 'git' 'git-lfs' 'hicolor-icon-theme' 'libappindicator-gtk3' 'librsvg' 'xdotool')
 makedepends=('rust' 'nodejs' 'npm')
 options=('!lto' '!debug')
 
-_tag=2026.8.4
+_tag=2026.8.5
 source=("gitty-desktop-${pkgver}.tar.gz::${url}/archive/${_tag}.tar.gz")
-sha256sums=('006915fa1f74133d9175dcb89cf3100c6fe6822ae1bf19dc80f6e8dd90237c8e')
+sha256sums=('df942f8ed937536d30745225a6fbf3a734c77aae7ff279da7dc326e6cbb214c9')
 
 prepare() {
   cd "$srcdir/gitlite"
