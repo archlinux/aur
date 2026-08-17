@@ -2,7 +2,7 @@
 # Maintainer: k0kubun <takashikkbn@gmail.com>
 pkgname=xremap-kde-bin
 pkgdesc='Dynamic key remapper for X11 and Wayland (KDE Wayland Version)'
-pkgver=0.15.10
+pkgver=0.15.11
 pkgrel=1
 
 provides=('xremap')
@@ -13,8 +13,8 @@ options=('!debug')
 
 source=("LICENSE-$pkgver::https://raw.githubusercontent.com/xremap/xremap/v$pkgver/LICENSE")
 sha256sums=('60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343')
-sha256sums_x86_64=('e21ad5597fa2a8b9e851d3cfb7a1b3745b3626cb00ff948807e3754ac2dd3d6b')
-sha256sums_aarch64=('239a2ed2a1182c4e048e7bf82e43ead21f4ca9188b03763c028c2ed3f68d0767')
+sha256sums_x86_64=('d78f23c87e6157d7f9cd29007e8fc925695bab72d251304263caea64e50000f2')
+sha256sums_aarch64=('875825813e386eee4ea66e26f5a48306933ec8c94b2ee4c49ea7a628812f41a1')
 
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::https://github.com/xremap/xremap/releases/download/v$pkgver/xremap-linux-x86_64-kde.zip")
 
