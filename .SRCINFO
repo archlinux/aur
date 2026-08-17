@@ -14,6 +14,6 @@ pkgbase = veet
 	optdepends = snapd: for Snap package management
 	optdepends = pacman: for Arch package management
 	source = veet-1.0.3.tar.gz::https://github.com/swadhinbiswas/veet/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = 3a8c858a3290b806074d1416896e1aaa433aab9462234b3ad1bdc2eaedc13cb8
+	sha256sums = af2d46c849cd5ee49e30169bf6ec2f309d285bc1db69ac7a5d5ff77b3be02527
 
 pkgname = veet
