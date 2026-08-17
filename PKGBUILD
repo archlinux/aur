@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=opencie-pkcs11
-pkgver=1.0.13 # renovate: datasource=github-tags depName=M0Rf30/opencie-pkcs11
+pkgver=1.0.14 # renovate: datasource=github-tags depName=M0Rf30/opencie-pkcs11
 pkgrel=1
 _podofover=1.1.1 # renovate: datasource=github-tags depName=podofo/podofo
 pkgdesc="Native PKCS#11 library for the Italian Electronic Identity Card (CIE)"
