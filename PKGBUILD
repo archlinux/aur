@@ -1,12 +1,12 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=magnum-extras-git
-pkgver=2020.06.r93.g12733b1
+pkgver=2020.06.r1410.gc7f116f3
 pkgrel=1
-pkgdesc="Extras for the Magnum C++11/C++14 graphics engine (Git version)"
+pkgdesc="Extras for the Magnum C++11 graphics engine (Git version)"
 arch=('i686' 'x86_64')
 url="https://magnum.graphics"
 license=('MIT')
-depends=('magnum-git')
+depends=('magnum-git' 'magnum-plugins-git')
 makedepends=('cmake' 'git' 'ninja')
 provides=('magnum-extras')
 conflicts=('magnum-extras')
