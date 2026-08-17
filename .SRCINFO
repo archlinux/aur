@@ -18,7 +18,7 @@ pkgbase = aura-emerge
 	conflicts = portage-git
 	conflicts = aura-emerge-git
 	backup = etc/emerge/world.set
-	source = aura-emerge-2.1.0.tar.gz::https://github.com/Undercat037/aura-emerge/archive/refs/heads/main.tar.gz
+	source = aura-emerge::git+https://github.com/Undercat037/aura-emerge.git#tag=v2.1.0
 	sha256sums = 20390408d9fae22d749ea13573eb84624d7b2eeec30a390078efa0945350862d
 
 pkgname = aura-emerge

@@ -15,7 +15,9 @@ conflicts=('portage' 'portage-git' 'aura-emerge-git')
 provides=('portageq')
 install=aura-emerge.install
 backup=('etc/emerge/world.set')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Undercat037/aura-emerge/archive/refs/heads/main.tar.gz")
+#git tag -a v1.27.0 -m "..." && git push origin v1.27.0
+source=("$pkgname::git+https://github.com/Undercat037/aura-emerge.git#tag=v$pkgver")
+#updpkgsums
 sha256sums=('20390408d9fae22d749ea13573eb84624d7b2eeec30a390078efa0945350862d')
 
 build() {
