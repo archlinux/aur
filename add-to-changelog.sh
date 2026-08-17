@@ -13,7 +13,7 @@
 #
 # Usage:
 #   ./add-to-changelog.sh
-#
+
 set -euo pipefail
 
 # Check prerequisites
@@ -39,12 +39,16 @@ if [[ ! -f changelog.md ]]; then
   exit 1
 fi
 
+# PKGBUILDs normally get CARCH from makepkg.
+# Define it here so the PKGBUILD can also be sourced directly.
+export CARCH="${CARCH:-$(uname -m)}"
+
 # Source the PKGBUILD to evaluate variables
 # shellcheck disable=SC1091
 source PKGBUILD
 
-# Get the actual version (may need expansion)
-version=$(eval echo "${_pkgver}")
+# Get the resolved upstream version
+version="${_pkgver}"
 
 if [[ -z "$version" ]]; then
   echo "Error: Could not determine version from PKGBUILD" >&2
@@ -55,20 +59,28 @@ echo "Fetching release notes for $version..."
 
 # Fetch release data from GitHub API
 api_url="https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/tags/$version"
-release_body=$(curl -sL "$api_url" | jq -r '.body')
+release_body=$(curl -fsSL "$api_url" | jq -r '.body // empty')
 
-if [[ "$release_body" == "null" || -z "$release_body" ]]; then
+if [[ -z "$release_body" ]]; then
   echo "Error: Could not fetch release notes for version $version" >&2
   echo "Check that the release exists: https://github.com/GloriousEggroll/proton-ge-custom/releases/tag/$version" >&2
+  exit 1
+fi
+
+# Avoid adding the same release twice
+if grep -Fxq "## $version" changelog.md; then
+  echo "Error: $version already exists in changelog.md" >&2
   exit 1
 fi
 
 {
   echo "## $version"
   echo
-  echo "$release_body" | tr -d '\r' # DOS line endings to Unix
+  printf '%s\n' "$release_body" | tr -d '\r'
   echo
   cat changelog.md
-} > changelog.md.tmp && mv changelog.md.tmp changelog.md
+} > changelog.md.tmp
+
+mv changelog.md.tmp changelog.md
 
 echo "✓ Added $version release notes to changelog.md"

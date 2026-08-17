@@ -1,3 +1,7 @@
+## GE-Proton11-5
+
+HOTFIX: Fix broken Easy-Anticheat loading.
+
 ## GE-Proton10-34
 
 Proton:

@@ -3,6 +3,7 @@
 # Contributor:  floriplum <floriplum@mailbox.org>
 # Contributor:  various people submitting to 'chaotic-aur' repo
 # Contributor:        barfin (aka RogueGirl) <barfin@protonmail.com>
+# Credits:            felipec (thanks for your cleanup gist https://gist.github.com/felipec/86dcbe352d9f01bdc43c89bb5846e1bd)
 
 ## pkginfo
 pkgdesc='A fancy custom distribution of Valves Proton with various patches'
@@ -17,28 +18,13 @@ provides=('proton' "proton-ge-custom=${pkgver/_/.}")
 conflicts=('proton-ge-custom' 'proton-ge-bin')
 
 ## dependencies
-depends=('python')
+depends=(
+  'python'
+)
+
 optdepends=(
-  'vulkan-icd-loader'
-  'lib32-vkd3d'
+  'vulkan-icd-loader: dxvk dependency'
   'lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes'
-  # libav support #
-  'lib32-libva'
-  'lib32-libtheora'
-  'lib32-libvdpau'
-  # gstreamer support #
-  'gst-plugins-bad-libs'
-  'lib32-gst-plugins-base-libs'
-  'libjpeg-turbo'
-  'graphene'
-  'lib32-libjpeg-turbo'
-  'lib32-libgudev'
-  'lib32-mpg123'
-  'libsoup'
-  # other libs #
-  'lib32-openssl'
-  'lib32-libusb'
-  # other #
   'kdialog: KDE splash dialog support'
   'zenity: GNOME splash dialog support'
   'python-kivy: splash dialog support (big picture mode)'
@@ -47,6 +33,8 @@ optdepends=(
   'winetricks: protonfixes backend - highly recommended'
   'wine: support for 32bit prefixes'
   'xboxdrv: gamepad driver service'
+  'lapack: Vosk speech recognition support'
+  'lib32-lapack: Vosk speech recognition support for 32bit applications'
 )
 
 ## makepkg options
