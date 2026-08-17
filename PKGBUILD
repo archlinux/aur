@@ -12,7 +12,7 @@ provides=('lookapp')
 conflicts=('lookapp' 'look')
 options=(!strip !debug)
 source=("$pkgname-$pkgver.deb::https://github.com/kunkka19xx/look/releases/download/v${pkgver}/Look_${pkgver}_amd64.deb")
-sha256sums=('8cb26664f6c764efb3e8b0c2208d6a4354f3f3f1801a71ab9ea080feaca0abe6')
+sha256sums=('b3b6914a7cdc0c2627d953fa8de2c62771c901b2067f2b507fc5485f04376693')
 noextract=("$pkgname-$pkgver.deb")
 
 package() {
