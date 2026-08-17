@@ -2,7 +2,7 @@
 pkgname=clip-cli-nightly-bin
 conflicts=('clip' 'clip-bin' 'clip-cli-bin')
 provides=('clip')
-pkgver=3.0.0+nightly+20260816+2+gd83bba26
+pkgver=3.0.0+nightly+20260817+2+gd83bba26
 pkgrel=1
 pkgdesc="System clipboard bridge for the terminal — nightly build (pipe content in, paste content out)"
 arch=('x86_64' 'aarch64')
