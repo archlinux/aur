@@ -1,0 +1,16 @@
+[Unit]
+Description=Silo file server
+Documentation=https://github.com/dkam/silo
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# Optional: put SILO_HOST, SILO_PORT, SILO_DATA_DIR, SILO_ADMIN_EMAIL etc. here.
+EnvironmentFile=-%h/.config/silo/env
+ExecStart=/usr/bin/silo serve
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
