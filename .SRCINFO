@@ -1,6 +1,6 @@
 pkgbase = libfolia
 	pkgdesc = C++ library for FoLiA (Format for Linguistic Annotation)
-	pkgver = 2.21
+	pkgver = 2.22
 	pkgrel = 1
 	url = https://proycon.github.io/folia
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = libfolia
 	depends = icu
 	depends = libxml2
 	options = !libtool
-	source = https://github.com/LanguageMachines/libfolia/archive/v2.21.tar.gz
-	md5sums = e29a2c46f2837a4dcad6237373b7ed6d
+	source = https://github.com/LanguageMachines/libfolia/archive/v2.22.tar.gz
+	md5sums = 09b026e0791f2b44860fea3b25dc979c
 
 pkgname = libfolia
