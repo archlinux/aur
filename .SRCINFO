@@ -1,7 +1,7 @@
 pkgbase = deepseek-reasonix-desktop-bin
 	pkgdesc = Reasonix Desktop - Wails/WebKitGTK desktop client for DeepSeek-Reasonix
 	pkgver = 1.26.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/esengine/DeepSeek-Reasonix
 	arch = x86_64
 	license = MIT

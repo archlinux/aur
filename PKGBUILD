@@ -2,7 +2,7 @@
 
 pkgname=deepseek-reasonix-desktop-bin
 pkgver=1.26.0
-pkgrel=1
+pkgrel=2
 # Reasonix Desktop is a Wails shell around WebKitGTK, not an Electron app —
 # upstream's own control file says so ("a Wails shell around the Go kernel")
 # and the binary links libwebkit2gtk-4.1 / libjavascriptcoregtk-4.1.
@@ -79,17 +79,24 @@ package() {
     # is required" — no release asset ships a reasonix-cli). The .deb omits it,
     # which is why sourcing from the .deb avoids the problem by construction.
 
+    # Installed as Reasonix.desktop, not upstream's reasonix.desktop: the
+    # window's Wayland app_id is "Reasonix", and a compositor resolves a
+    # window's icon by loading <app_id>.desktop and reading its Icon= key.
+    # Under the lowercase name that lookup misses, so KWin falls back to
+    # QIcon::fromTheme("wayland") and the task switcher shows the generic
+    # Wayland icon (the panel's task manager still looked right, because it
+    # additionally matches on StartupWMClass). Verified on Plasma 6/Wayland.
     install -Dm644 usr/share/applications/reasonix.desktop \
-        "${pkgdir}/usr/share/applications/reasonix.desktop"
+        "${pkgdir}/usr/share/applications/Reasonix.desktop"
 
-    # Upstream sets StartupWMClass=reasonix-desktop, but the app_id the window
-    # reports on Wayland is "Reasonix"; leaving upstream's value means the
-    # compositor can't match the window to this entry and shows no icon.
+    # Upstream sets StartupWMClass=reasonix-desktop, which matches neither the
+    # app_id nor anything else the window reports; correct it to Reasonix so
+    # the StartupWMClass-based matchers agree with the filename above.
     sed -i 's/^StartupWMClass=.*/StartupWMClass=Reasonix/' \
-        "${pkgdir}/usr/share/applications/reasonix.desktop"
+        "${pkgdir}/usr/share/applications/Reasonix.desktop"
     grep -q '^StartupWMClass=Reasonix$' \
-        "${pkgdir}/usr/share/applications/reasonix.desktop" || {
-        printf 'ERROR: failed to rewrite StartupWMClass in reasonix.desktop\n' >&2
+        "${pkgdir}/usr/share/applications/Reasonix.desktop" || {
+        printf 'ERROR: failed to rewrite StartupWMClass in Reasonix.desktop\n' >&2
         return 1
     }
 
