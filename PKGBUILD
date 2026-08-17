@@ -4,10 +4,10 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full-git
-pkgver=8.2.r125331.g87bd15dc3c
+pkgver=9.1.r126178.ga48e31e501
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_whispercpp_ver='1.8.4'
+_whispercpp_ver='1.9.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD, including libfdk-aac; git version)'
 arch=('x86_64')
 url='https://ffmpeg.org/'
@@ -21,6 +21,7 @@ depends=(
     'cairo'
     'chromaprint-fftw'
     'codec2'
+    'curl'
     'dav1d'
     'davs2'
     'flite1'
@@ -30,7 +31,6 @@ depends=(
     'fribidi'
     'glib2'
     'glibc'
-    'glslang'
     'gnutls'
     'gsm'
     'harfbuzz'
@@ -90,7 +90,7 @@ depends=(
     'openapv'
     'opencolorio'
     'opencore-amr'
-    'opencv'
+    'opencv4'
     'openh264'
     'openjpeg2'
     'opus'
@@ -112,7 +112,7 @@ depends=(
     'svt-vp9'
     'tesseract'
     'twolame'
-    'uavs3d-git'
+    'uavs3d'
     'v4l-utils'
     'vapoursynth' # loaded on-demand by dlopen()
     'vid.stab'
@@ -138,6 +138,7 @@ makedepends=(
     'cmake'
     'decklink-sdk'
     'git'
+    'glslang'
     'gmp'
     'libgl'
     'lv2'
@@ -168,19 +169,19 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
         'LICENSE')
 sha256sums=('SKIP'
             'SKIP'
-            'b26f30e52c095ccb75da40b168437736605eb280de57381887bf9e2b65f31e66'
-            'fb7e7a831722d6de684d0e1c441819d2af68b58998f5ba3953530b00031ff83a'
+            'a6abd064fcca8b85e794d205abf328c522e9451db43a3eadc178b883b7d0e9cd'
+            '4a4ae8f17065236ebb1c3606c1617e16f35ee451d8c1d5165d31b753da73f2df'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '4faaff961565503d2b3b2c1ec12081ce5b48d740a0b896de9e0dae24f1c48815'
-            'd0a94e18cd8e17a8c4630a711a5f3563ab091f3eaee89df24a3566ed6496f734'
+            '32a0bef461482582673f35f101d96357f5e78ed0fd550ecdc2eefe8f7b3de090'
+            '57db0ce758e1599fadaa21066405a0f8783aaaed2587273a6308382f9fc0dcb4'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 
 prepare() {
     rm -f ffmpeg/libavcodec/libsvt_{hevc,vp9}.c
-    # patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
-    # patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    # patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
 }
@@ -200,8 +201,9 @@ build() {
         '-GUnix Makefiles'
         '-DBUILD_SHARED_LIBS:BOOL=OFF'
         '-DCMAKE_BUILD_TYPE:STRING=None'
+        '-DCMAKE_POSITION_INDEPENDENT_CODE=ON'
         "-DCMAKE_INSTALL_PREFIX:PATH=${_stagingdir}"
-        '-Wno-dev')
+        '-Wno-author')
     
     # ffmpeg requires lensfun git master, but lensfun-git package wrongly installs its files to non-standard locations:
     # https://aur.archlinux.org/cgit/aur.git/commit/?h=lensfun-git&id=7b7a2d4890df59cde62c7dbfde3cefd7868a2707
@@ -217,8 +219,8 @@ build() {
         -e 's/\(-llensfun\)/\1 -lglib-2.0 -lstdc++/' \
         -e '/Cflags: /s/$/ -DCONF_LENSFUN_STATIC/' "${_pkgconfigdir}/lensfun.pc"
     
-    # whisper.cpp AUR package conflicts with imagemagick at the time of writing
-    # building it locally as a static library for the time being, as imagemagick is a commonly used package (high usage in pkgstats)
+    # using whisper-cpp package from the official repositories will cause a circular dependency with ffmpeg,
+    # building it locally as a static library for the time being
     cmake -B build/whisper.cpp -S "whisper.cpp-${_whispercpp_ver}" \
         "${_cmake_opts[@]}" \
         -DWHISPER_BUILD_EXAMPLES:BOOL='OFF' \
@@ -228,7 +230,6 @@ build() {
     cd ffmpeg
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
-       
     # fix build of libavfilter/asrc_flite.c with gcc 14
     export CFLAGS+=' -Wno-error=incompatible-pointer-types'
     
@@ -267,6 +268,7 @@ build() {
         --enable-libcaca \
         --enable-libcdio \
         --enable-libcodec2 \
+        --enable-libcurl \
         --enable-libdav1d \
         --enable-libdavs2 \
         --enable-libdc1394 \
@@ -277,7 +279,6 @@ build() {
         --enable-libfontconfig \
         --enable-libfreetype \
         --enable-libfribidi \
-        --enable-libglslang \
         --enable-libgme \
         --enable-libgsm \
         --enable-libharfbuzz \
@@ -314,7 +315,6 @@ build() {
         --enable-librsvg \
         --enable-librubberband \
         --enable-librtmp  \
-        --disable-libshaderc \
         --enable-libshine \
         --enable-libsmbclient \
         --enable-libsnappy \
@@ -323,7 +323,9 @@ build() {
         --enable-libsrt \
         --enable-libssh \
         --enable-libsvtav1 \
+        --enable-libsvthevc \
         --enable-libsvtjpegxs \
+        --enable-libsvtvp9 \
         --disable-libtensorflow \
         --enable-libtesseract \
         --enable-libtheora \
