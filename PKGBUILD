@@ -16,7 +16,7 @@ optdepends=(
     'pacman: for Arch package management'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('af2d46c849cd5ee49e30169bf6ec2f309d285bc1db69ac7a5d5ff77b3be02527')
+sha256sums=('eaf5210cddce93d324feb803606d0a7a3656761c02c84b41cc6ab1a6438d95f4')
 
 build() {
     cd "$pkgname-$pkgver"
