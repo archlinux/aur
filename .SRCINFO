@@ -1,0 +1,12 @@
+pkgbase = minibwa
+	pkgdesc = Successor of bwa-mem for short-read alignment
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/lh3/minibwa
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source = https://github.com/lh3/minibwa/releases/download/v0.7/minibwa-0.7.tar.bz2
+	sha256sums = ea5f974a03fbd5f5dd3c7d4323d6e63917c440d26767bf649d008cebb96c7701
+
+pkgname = minibwa
