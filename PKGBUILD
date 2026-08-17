@@ -1,8 +1,8 @@
 # Maintainer: Richard Fakenberg (OK1BR) <rifak@protonmail.com>
 # AUR package for the tagged release.
 pkgname=sdr-for-linux
-_pkgtag=0.3.0
-pkgver=0.3.0
+_pkgtag=0.4.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Modern GTK4 SDR application for HPSDR / ANAN transceivers (piHPSDR engine, WDSP)"
 # aarch64 not claimed until verified on ARM (CI builds x86_64 only).
@@ -15,7 +15,7 @@ depends=('gtk4' 'libadwaita' 'fftw' 'openssl' 'zlib' 'libpipewire'
 # (no opus API used) — build-only, so makedepends not depends.
 makedepends=('meson' 'opus')
 source=("$pkgname-$_pkgtag.tar.gz::$url/archive/refs/tags/v$_pkgtag.tar.gz")
-sha256sums=('a04e7aba27d89aaae8f25d964a2e570da1bf3784a4e21a3d222afb3874bbbc83')
+sha256sums=('c372ad438bb6599b79de62f43bc1f07710f5e7c2f7851941af39ad9b4cb5ff82')
 
 build() {
   arch-meson "$pkgname-$_pkgtag" build
