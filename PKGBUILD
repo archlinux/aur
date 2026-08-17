@@ -4,7 +4,7 @@
 _name="QCEngine"
 _pkgname="${_name,,}"
 pkgname="python-${_pkgname}"
-pkgver=0.50.0
+pkgver=0.50.1
 pkgrel=1
 pkgdesc='Quantum chemistry program executor and IO standardizer (QCSchema) for quantum chemistry'
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
   'python-psutil'
   'python-py-cpuinfo'
   'python-pydantic'
+  'python-pydantic-settings'
   'python-yaml'
   # AUR
   'python-qcelemental'
@@ -42,7 +43,7 @@ optdepends=(
 )
 checkdepends=('python-pydantic-settings' 'python-pytest')
 source=("git+https://github.com/MolSSI/${_name}.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('cb8a16bdc15dc4438392781280385a82b344ae7375b1722aa7e94a91cdad85d0')
 
 build() {
   cd "${srcdir}/${_name}"
