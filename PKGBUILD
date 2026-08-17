@@ -20,12 +20,10 @@ conflicts=('proton-ge-custom' 'proton-ge-bin')
 depends=('python')
 optdepends=(
   'vulkan-icd-loader'
-  'lib32-openal'
   'lib32-vkd3d'
   'lib32-vulkan-icd-loader: dxvk dependency for 32bit prefixes'
   # libav support #
   'lib32-libva'
-  'lib32-speex'
   'lib32-libtheora'
   'lib32-libvdpau'
   # gstreamer support #
