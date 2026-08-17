@@ -2,7 +2,7 @@
 
 pkgname=mangatan-bin
 _pkgname=mangatan
-pkgver=1.1.0
+pkgver=1.2.6
 pkgrel=1
 pkgdesc="Read manga and light novels, and watch anime"
 arch=('x86_64')
@@ -28,8 +28,13 @@ depends=(
   'mpv'
   'pango'
   'webkit2gtk-4.1'
+  'xdg-user-dirs'
   'xdg-utils'
   'zlib-ng-compat'
+)
+
+optdepends=(
+  'mangatan-extension-server: Mihon extension support via the Mihon bridge'
 )
 
 provides=('mangatan' 'mangayomi')
@@ -55,7 +60,7 @@ sha256sums=(
   'e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052'
 )
 sha256sums_x86_64=(
-  '1a2c0b110489817ec42ceacf0325b929d89e0a1875d3689e8122dc54148243b3'
+  'd9a9fd39d880b7475432a9bee30aec8dadff70cb316288366660a364d3f607e9'
 )
 
 package() {
