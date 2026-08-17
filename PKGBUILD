@@ -2,7 +2,7 @@
 # Contributor: Mr.Smith1974
 
 _pkgname=flightgear
-_pkgver=2024.1.6
+_pkgver=2024.1.7
 _appimage="FlightGear-${_pkgver}-x86_64.AppImage"
 _desktopfile="org.flightgear.FlightGear.desktop"
 
@@ -19,7 +19,7 @@ optdepends=('qt5-base: fgfs --launcher'
             'flightgear-data: game data files')
 options=(!strip)
 source=("${_appimage}::https://gitlab.com/flightgear/fgmeta/-/releases/${_pkgver}/downloads/flightgear-${_pkgver}-linux-amd64.AppImage")
-sha256sums=('e54a406df69c2ce9f31d25e3563fc7bb54f4d741f2e4ecb2bba266a3abb050a9')
+sha256sums=('14a1830928674699112b9d66ea9ea47268a6abd9a1f5820cb3d298e13402b91c')
 
 
 prepare() {
