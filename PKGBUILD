@@ -17,6 +17,9 @@ source=("git+https://invent.kde.org/network/$_name.git")
 md5sums=('SKIP')
 
 build() {
+	# Default to parallel build unless the user already set MAKEFLAGS
+	: "${MAKEFLAGS:=-j$(nproc)}"
+	export MAKEFLAGS
 	mkdir -p "$srcdir/build"
 	cd "$srcdir/build"
 	cmake "$srcdir/$_name" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
