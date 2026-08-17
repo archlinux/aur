@@ -21,7 +21,7 @@ source=("$pkgname::git+https://github.com/Undercat037/aura-emerge.git#tag=v$pkgv
 sha256sums=('f891f5720e62d871fe6bafdb1007c6f3de3e5148624f910e706979fe4ccc932f')
 
 build() {
-  cd "aura-emerge-main"
+  cd "aura-emerge"
   cargo build --release
 }
 
