@@ -2,18 +2,18 @@
 # Contributor: Erik Bročko <erik.brocko@letemsvetemapplem.eu>
 
 pkgname=csdr-luarvique
-pkgver=0.18.37
+pkgver=0.18.38
 pkgrel=1
 pkgdesc="A simple DSP library and command-line tool for Software Defined Radio."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/luarvique/csdr"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'libsamplerate' 'fftw')
 makedepends=('git' 'cmake')
 conflicts=('csdr')
-provides=('csdr')
+provides=('csdr' 'libcsdr++.so=0.18-64')
 source=("$pkgname"::"git+https://github.com/luarvique/csdr.git#tag=${pkgver}")
-md5sums=('8bc5b06ff5b590b8f42e4e1766c1d0ba')
+md5sums=('7390e13e83837ad442da6abffc40729b')
 
 build() {
     cmake -B build -S "$srcdir/$pkgname" \

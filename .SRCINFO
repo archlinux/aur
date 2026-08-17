@@ -1,20 +1,21 @@
 pkgbase = csdr-luarvique
 	pkgdesc = A simple DSP library and command-line tool for Software Defined Radio.
-	pkgver = 0.18.37
+	pkgver = 0.18.38
 	pkgrel = 1
 	url = https://github.com/luarvique/csdr
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
 	depends = libsamplerate
 	depends = fftw
 	provides = csdr
+	provides = libcsdr++.so=0.18-64
 	conflicts = csdr
-	source = csdr-luarvique::git+https://github.com/luarvique/csdr.git#tag=0.18.37
-	md5sums = 8bc5b06ff5b590b8f42e4e1766c1d0ba
+	source = csdr-luarvique::git+https://github.com/luarvique/csdr.git#tag=0.18.38
+	md5sums = 7390e13e83837ad442da6abffc40729b
 
 pkgname = csdr-luarvique
