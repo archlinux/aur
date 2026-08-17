@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!tuber.service
+!tuber.sysusers
+!tuber.env

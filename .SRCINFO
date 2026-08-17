@@ -1,0 +1,29 @@
+pkgbase = tuber-bin
+	pkgdesc = A fast job queue server with unique jobs, concurrency controls, and job group pipelines (prebuilt)
+	pkgver = 0.13.0
+	pkgrel = 1
+	url = https://github.com/tuberq/tuber
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = tuber=0.13.0
+	conflicts = tuber
+	options = !strip
+	options = !debug
+	backup = etc/tuber/tuber.env
+	source = tuber-0.13.0-LICENSE::https://github.com/tuberq/tuber/raw/v0.13.0/LICENSE
+	source = tuber.service
+	source = tuber.sysusers
+	source = tuber.env
+	sha256sums = cca40b7a8fd2a8da7ef86cf38e28462744f1ae92b49d1786c343d99155561e43
+	sha256sums = 53505fbe3d7d52c14dbef6513dcc9fe1fd3b095d65a5f995162b9ac06d7b75de
+	sha256sums = 4964dedd39d417f365b69c6aff72d12591e693c40f6cf9a16650cd2fef2e09df
+	sha256sums = d8e50bc673cb4cbb55df3f027cd75fddf1b16115d73a1b8106eba30fe5394c8c
+	source_x86_64 = tuber-0.13.0-x86_64.tar.gz::https://github.com/tuberq/tuber/releases/download/v0.13.0/tuber-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 39dff3e800c5ecce5535b498d5b777697da2dc173ebb5d18bf9d8b09ff737e68
+	source_aarch64 = tuber-0.13.0-aarch64.tar.gz::https://github.com/tuberq/tuber/releases/download/v0.13.0/tuber-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1af548fa2c81f15d4651e68c1d28371090b8634322ada08ff8a82c93073e0a82
+
+pkgname = tuber-bin

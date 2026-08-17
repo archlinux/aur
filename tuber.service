@@ -1,0 +1,44 @@
+[Unit]
+Description=Tuber job queue server
+Documentation=https://github.com/tuberq/tuber
+After=network.target
+
+[Service]
+Type=simple
+User=tuber
+Group=tuber
+EnvironmentFile=/etc/tuber/tuber.env
+ExecStart=/usr/bin/tuber server
+Restart=on-failure
+RestartSec=5
+
+# WAL and TOAST live here; systemd creates it as /var/lib/tuber owned by tuber.
+StateDirectory=tuber
+StateDirectoryMode=0750
+
+LimitNOFILE=65536
+
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectClock=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ProtectProc=invisible
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target
