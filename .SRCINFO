@@ -1,6 +1,6 @@
 pkgbase = firefox-browser-violentmonkey
 	pkgdesc = Web Extension for saving a faithful copy of a complete web page in a single HTML file
-	pkgver = 2.40.0
+	pkgver = 2.48.0
 	pkgrel = 1
 	url = https://github.com/Violentmonkey/Violentmonkey
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = firefox-browser-violentmonkey
 	makedepends = zip
 	makedepends = git
 	makedepends = jq
-	makedepends = yarn
-	source = source::git+https://github.com/Violentmonkey/Violentmonkey.git#tag=v2.40.0
-	b2sums = 6448b8afa5276f2940b60621a51c3c5701a94ef41aade376a1e377d83debc42d74a995a1546f4eec16a18e4240b31dda315214b207408fc2251c386c183bd541
+	makedepends = pnpm
+	source = source::git+https://github.com/Violentmonkey/Violentmonkey.git#tag=v2.48.0
+	b2sums = b62ff08396c71d7416a3fd7ba2a137804f822b35bca6c046e6acd0c7849a4db71024e6c994fc69e1caf76edbeda249b490ba3fd9799d8452f7f00cdb677c265a
 
 pkgname = zen-browser-violentmonkey
 

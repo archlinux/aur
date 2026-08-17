@@ -2,27 +2,27 @@
 
 pkgname=(zen-browser-violentmonkey firefox-extension-violentmonkey)
 pkgbase=firefox-browser-violentmonkey
-pkgver=2.40.0
+pkgver=2.48.0
 pkgrel=1
 arch=('any')
 url='https://github.com/Violentmonkey/Violentmonkey'
 license=('MIT')
 groups=('zen-browser-addons')
 pkgdesc='Web Extension for saving a faithful copy of a complete web page in a single HTML file'
-makedepends=('nodejs' 'npm' 'unzip' 'zip' 'git' 'jq' 'yarn')
+makedepends=('nodejs' 'npm' 'unzip' 'zip' 'git' 'jq' 'pnpm')
 source=("source::git+https://github.com/Violentmonkey/Violentmonkey.git#tag=v${pkgver}")
-b2sums=('6448b8afa5276f2940b60621a51c3c5701a94ef41aade376a1e377d83debc42d74a995a1546f4eec16a18e4240b31dda315214b207408fc2251c386c183bd541')
+b2sums=('b62ff08396c71d7416a3fd7ba2a137804f822b35bca6c046e6acd0c7849a4db71024e6c994fc69e1caf76edbeda249b490ba3fd9799d8452f7f00cdb677c265a')
 
 prepare() {
-  cd "${srcdir}/source"
-  yarn
+	cd "${srcdir}/source"
+	pnpm install --frozen-lockfile
 }
 
 build() {
-    cd "${srcdir}/source"
-    yarn build
-    cd dist
-    zip ../addon.zip -r .
+	cd "${srcdir}/source"
+	pnpm build
+	cd dist
+	zip ../addon.zip -r .
 }
 
 package_firefox-extension-violentmonkey() {
