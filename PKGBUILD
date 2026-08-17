@@ -1,5 +1,5 @@
 pkgname=cli-music-player-lrc
-pkgver=1.0.0
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Terminal music player with LRC suport"
 arch=('any')

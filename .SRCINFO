@@ -1,6 +1,6 @@
 pkgbase = cli-music-player-lrc
 	pkgdesc = Terminal music player with LRC suport
-	pkgver = 1.0.0
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/FlippantList428/CLI-Music-Player-with-LRC
 	arch = any
