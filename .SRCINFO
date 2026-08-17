@@ -1,7 +1,7 @@
 pkgbase = python-csdr-luarvique
 	pkgdesc = Python bindings for the csdr library.
-	pkgver = 0.18.37
-	pkgrel = 3
+	pkgver = 0.18.38
+	pkgrel = 2
 	url = https://github.com/luarvique/pycsdr
 	arch = x86_64
 	arch = aarch64
@@ -10,12 +10,10 @@ pkgbase = python-csdr-luarvique
 	makedepends = python-setuptools
 	depends = python
 	depends = gcc-libs
-	depends = csdr-luarvique>=0.18.37
+	depends = csdr-luarvique>=0.18.38
 	provides = python-csdr
 	conflicts = python-csdr
-	source = python-csdr-luarvique::git+https://github.com/luarvique/pycsdr#tag=0.18.37
-	source = fix-gcc16-designated-initializers.patch
-	md5sums = bfbd199d68fd2e16ce167a326e8e54b7
-	md5sums = 59ad728f657e435ecfd31b2c247f4995
+	source = python-csdr-luarvique::git+https://github.com/luarvique/pycsdr#tag=0.18.38
+	md5sums = 2c2a6031f2997cd0cfb5d658093143ba
 
 pkgname = python-csdr-luarvique
