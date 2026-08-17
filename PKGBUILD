@@ -1,6 +1,6 @@
 # Maintainer: loteran <https://github.com/loteran>
 pkgname=arctis-sound-manager
-pkgver=1.2.34
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Linux GUI for SteelSeries Arctis headsets — all GG/Sonar features: mixer, EQ, ANC, mic processing, surround"
 arch=('any')
@@ -46,11 +46,29 @@ optdepends=(
     # engine). The signed pacman repo ships a build of it, so it's one
     # `pacman -S noise-suppression-for-voice` away; on the AUR, paru offers it.
     'noise-suppression-for-voice: RNNoise mic noise cancellation (ClearCast)'
+    # ── Clips (opt-in) ───────────────────────────────────────────────────
+    # Deliberately not in depends(), unlike swh-plugins above. Clips ships
+    # off, and the toggle that turns it on (Settings → Clips) installs these
+    # through pkexec with the same package names — so an install that only
+    # wants the mixer and the EQ never pulls a screen recorder's encoders,
+    # and one that wants Clips is one dialog away from having them.
+    'python-gobject: clip capture (Gst/Gio bindings)'
+    'gstreamer: clip capture'
+    'gst-plugin-pipewire: clip capture — pipewiresrc, the portal screen stream'
+    'gst-plugins-base: clip capture — appsrc, audioconvert/audioresample, opusenc'
+    'gst-plugins-good: clip capture — pulsesrc, matroskamux'
+    'gst-plugins-ugly: clip capture — x264enc, the software encoder fallback'
+    'ffmpeg: clip thumbnails, track levels and export'
+    # Hardware H.264 encoders. Purely a performance choice on top of that: the
+    # capture probes for these and falls back to x264enc, so their absence
+    # costs CPU, not the feature.
+    'gst-plugin-va: hardware H.264 encoding on Intel/AMD GPUs'
+    'gst-plugins-bad: hardware H.264 encoding on NVIDIA GPUs (nvcodec)'
 )
 makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('19599f35268bfbaec379b78db1e06bf346ddad05d03e4ff58fe47e515892c98b')
+sha256sums=('5f45cc9dfeb8f47469565f44457f8d62946c30d02bc89c828f8e26f6a1f2948c')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
@@ -93,8 +111,12 @@ package() {
         "$pkgdir/usr/lib/systemd/user/arctis-video-router.service"
     install -Dm644 systemd/arctis-stream-guard.service \
         "$pkgdir/usr/lib/systemd/user/arctis-stream-guard.service"
-    install -Dm644 systemd/arctis-gui.service \
-        "$pkgdir/usr/lib/systemd/user/arctis-gui.service"
+    # The tray unit is named for the desktop entry, not the project — that is
+    # what gives the process a portal app id and lets the clip shortcut bind.
+    # The old arctis-gui.service is not shipped any more; the .install script
+    # disables and removes what earlier versions left enabled.
+    install -Dm644 systemd/app-ArctisManager.service \
+        "$pkgdir/usr/lib/systemd/user/app-ArctisManager.service"
 
     # dinit user service templates (Artix Linux / dinit init systems)
     install -Dm644 dinit/arctis-manager \

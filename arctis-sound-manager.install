@@ -1,3 +1,28 @@
+# The tray unit was renamed to app-ArctisManager.service: xdg-desktop-portal
+# reads a non-sandboxed process's app id off the unit its cgroup names, and
+# under arctis-gui.service that id came out empty — the GlobalShortcuts portal
+# then refuses the session and the clip shortcut never binds. An install that
+# left the old unit enabled would keep starting the tray the broken way, and a
+# user-level copy of it shadows the packaged unit even when disabled, so both
+# the enable and the file have to go.
+_asm_migrate_gui_unit() {
+    REAL_USER="${SUDO_USER:-}"
+    [ -n "$REAL_USER" ] || return 0
+    REAL_UID=$(id -u "$REAL_USER") || return 0
+    XDG_RUNTIME_DIR="/run/user/$REAL_UID"
+    [ -S "$XDG_RUNTIME_DIR/bus" ] || return 0
+
+    su -l "$REAL_USER" -c "
+        XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR
+        DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus
+        export XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS
+        systemctl --user disable --now arctis-gui.service >/dev/null 2>&1 || true
+        rm -f \"\$HOME/.config/systemd/user/arctis-gui.service\"
+        systemctl --user daemon-reload >/dev/null 2>&1 || true
+        systemctl --user enable --now app-ArctisManager.service >/dev/null 2>&1 || true
+    " >/dev/null 2>&1 || true
+}
+
 post_install() {
     # Reload udev rules
     udevadm control --reload-rules 2>/dev/null || true
@@ -42,6 +67,8 @@ post_install() {
         fi
     fi
 
+    _asm_migrate_gui_unit
+
     echo "==> Arctis Sound Manager installed!"
     echo ""
 }
@@ -54,6 +81,8 @@ post_upgrade() {
     # executing the version it loaded at startup until something restarts it.
     [ -x /usr/lib/arctis-sound-manager/restart-user-services.sh ] && \
         /usr/lib/arctis-sound-manager/restart-user-services.sh || true
+
+    _asm_migrate_gui_unit
 
     echo "==> Arctis Sound Manager upgraded to $(pacman -Q arctis-sound-manager | awk '{print $2}')."
     echo ""
@@ -95,7 +124,7 @@ post_remove() {
         export XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS
 
         # Stop services (best-effort — units may already be gone with the package)
-        for unit in arctis-manager.service arctis-video-router.service arctis-stream-guard.service arctis-gui.service filter-chain.service; do
+        for unit in arctis-manager.service arctis-video-router.service arctis-stream-guard.service app-ArctisManager.service arctis-gui.service filter-chain.service; do
             systemctl --user disable --now \"\$unit\" >/dev/null 2>&1 || true
         done
 
@@ -108,6 +137,7 @@ post_remove() {
         rm -f \"\$HOME/.config/systemd/user/arctis-manager.service\"
         rm -f \"\$HOME/.config/systemd/user/arctis-video-router.service\"
                 rm -f \"\$HOME/.config/systemd/user/arctis-stream-guard.service\"
+        rm -f \"\$HOME/.config/systemd/user/app-ArctisManager.service\"
         rm -f \"\$HOME/.config/systemd/user/arctis-gui.service\"
 
         # The user-level desktop entry asm-setup writes (it shadows the
