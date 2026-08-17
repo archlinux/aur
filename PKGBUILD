@@ -1,17 +1,11 @@
-# Maintainer: YOUR NAME <YOUR_EMAIL>
+# Maintainer: 13905069 <2270638422@qq.com>
 # Contributor: DocZeus <harshit@kshoonya.com>
 #
 # AUR package for NV Broadcast — unofficial NVIDIA Broadcast for Linux.
 # https://github.com/Hkshoonya/nvidia-broadcast-linux
-#
-# pyrnnoise is bundled as a pre-built wheel because it is not available
-# in the Arch repositories or AUR.  When upgrading this package, run
-#   updpkgsums
-# to refresh the checksum of the pyrnnoise wheel if the upstream version
-# changes.
 
 pkgname=nvbroadcast-bin
-pkgver=1.1.9
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Unofficial NVIDIA Broadcast for Linux — AI-powered virtual camera with background removal, blur, replacement, video enhancement, and noise cancellation. GPU accelerated. Open source.'
 arch=('x86_64')
@@ -30,15 +24,17 @@ depends=(
   'libpulse'
   'psmisc'
   'python>=3.11'
+  'python-click'
   'python-gobject'
+  'python-mediapipe-bin'
   'python-numpy'
-  'python-pillow'
-  'python-opencv'
-  'python-psutil'
-  'python-scipy'
   'python-onnx'
   'python-onnxruntime-opt-cuda'
-  'python-mediapipe-bin'
+  'python-pillow'
+  'python-protobuf'
+  'python-psutil'
+  'python-scipy'
+  'python-opencv'
 )
 makedepends=(
   'python-build'
@@ -49,25 +45,27 @@ makedepends=(
 conflicts=('python-pyrnnoise')
 optdepends=(
   'libayatana-appindicator: system tray icon'
-  'python-pip: in-app installer for GPU-accelerated modes (CuPy, TensorRT)'
+  'python-pip: in-app installer for optional GPU/meeting runtimes (CuPy, TensorRT, faster-whisper)'
 )
 source=(
   "$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
   "pyrnnoise-0.4.3-py3-none-manylinux1_x86_64.whl::https://files.pythonhosted.org/packages/04/51/993a25a8b5220e23e0a31ff98747b8fce4685336e0fc4e8e156feab5c4f1/pyrnnoise-0.4.3-py3-none-manylinux1_x86_64.whl"
 )
 sha256sums=(
-  'bdfa82534c2c8f0bd01f50992797019b047c3a3c6903e0b431118afbf4f37470'
+  '8b8168366349aea5242e49e17bae8ae26547bcbca79fcf000d4b2e45b13349b6'
   '1b094777e73797c5dd647782902c691ebb9a3c456c878e742597f5b55535a3db'
 )
 install=nvbroadcast.install
 
 build() {
   cd "$srcdir"/nvidia-broadcast-linux-*/
+  export PYTHONNOUSERSITE=1
   python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir"/nvidia-broadcast-linux-*/
+  export PYTHONNOUSERSITE=1
 
   # Install pyrnnoise wheel (not in repositories or AUR)
   python -m installer --destdir="$pkgdir" "$srcdir"/pyrnnoise-*.whl
@@ -98,9 +96,10 @@ WantedBy=graphical-session.target
 SVC
 
   # v4l2loopback config — auto-loaded by kernel; user can override in /etc/modprobe.d/
+  # card_label matches upstream VIRTUAL_CAM_LABEL ("NVbroadcast") since v1.2.0
   install -Dm644 /dev/stdin \
     "$pkgdir/usr/lib/modprobe.d/nvbroadcast.conf" \
-    <<< 'options v4l2loopback devices=1 video_nr=10 card_label="NVIDIA Broadcast" exclusive_caps=1 max_buffers=4'
+    <<< 'options v4l2loopback devices=1 video_nr=10 card_label="NVbroadcast" exclusive_caps=1 max_buffers=4'
   install -Dm644 /dev/stdin \
     "$pkgdir/usr/lib/modules-load.d/nvbroadcast.conf" \
     <<< 'v4l2loopback'

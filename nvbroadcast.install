@@ -7,7 +7,7 @@ post_install() {
 
   To load now without rebooting:
     sudo modprobe v4l2loopback devices=1 video_nr=10 \
-      card_label="NVIDIA Broadcast" exclusive_caps=1 max_buffers=4
+      card_label="NVbroadcast" exclusive_caps=1 max_buffers=4
 
   To override the v4l2loopback options, copy the config to /etc/modprobe.d/
   and edit:
