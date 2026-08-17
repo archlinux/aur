@@ -1,6 +1,6 @@
 pkgname=alt-sendme
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Peer-to-peer file and folder transfer app without cloud storage"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tonyantony300/alt-sendme"
@@ -12,7 +12,7 @@ depends=(
   'glib2'
   'gtk3'
   'hicolor-icon-theme'
-  'libayatana-appindicator'
+  'libappindicator-gtk3'
   'pango'
   'webkit2gtk-4.1'
 )
