@@ -1,6 +1,6 @@
 pkgbase = zenoh-c
 	pkgdesc = C API for Zenoh
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://zenoh.io/
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = zenoh-c
 	makedepends = ninja
 	makedepends = rust
 	options = !debug
-	options = !lto
-	source = https://github.com/eclipse-zenoh/zenoh-c/archive/1.9.0.tar.gz
-	sha256sums = 6d66b1d1c725700148a6ea90faf93aa99c72db71a348bf30f5838b5a1be192d9
+	source = https://github.com/eclipse-zenoh/zenoh-c/archive/1.10.0.tar.gz
+	sha256sums = c7bb6d90d6cbf1f612850e9bf00eaa27c47acd54247629c6de80b64e655607be
 
 pkgname = zenoh-c

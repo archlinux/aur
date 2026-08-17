@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=zenoh-c
-pkgver=1.9.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc="C API for Zenoh"
 arch=('any')
@@ -10,21 +10,25 @@ license=('Apache-2.0')
 depends=()
 makedepends=('cmake' 'ninja' 'rust')
 source=("https://github.com/eclipse-zenoh/zenoh-c/archive/$pkgver.tar.gz")
-sha256sums=('6d66b1d1c725700148a6ea90faf93aa99c72db71a348bf30f5838b5a1be192d9')
+sha256sums=('c7bb6d90d6cbf1f612850e9bf00eaa27c47acd54247629c6de80b64e655607be')
 
-# Disable LTO: https://github.com/briansmith/ring/issues/1444
-options=(!debug !lto)
+_builddir="build-${pkgver}"
+
+# Discussion on LTO: https://github.com/briansmith/ring/issues/1444
+options=(!debug)
 
 build() {
-  cmake -GNinja -B build -S "$pkgname-$pkgver" \
+  CFLAGS+=' -fno-lto'
+  CXXFLAGS+=' -fno-lto'
+  cmake -GNinja -B "${_builddir}" -S "$pkgname-$pkgver" \
            -DCMAKE_BUILD_TYPE='None' \
            -DCMAKE_INSTALL_PREFIX='/usr' \
            -DCMAKE_INSTALL_LIBEXECDIR="lib/$pkgname" \
            -DZENOHC_BUILD_WITH_UNSTABLE_API:BOOL=ON \
            -DZENOHC_BUILD_WITH_SHARED_MEMORY:BOOL=ON
-  cmake --build build
+  cmake --build "${_builddir}"
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
+  DESTDIR="$pkgdir" cmake --install "${_builddir}"
 }
