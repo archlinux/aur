@@ -4,7 +4,7 @@
 
 _name=dblab
 pkgname=${_name}-bin
-pkgver=0.48.0
+pkgver=0.48.1
 pkgrel=1
 pkgdesc="Interactive client for PostgreSQL, MySQL, SQLite3, Oracle and SQL Server"
 provides=("${_name}")
@@ -14,8 +14,8 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/danvergara/dblab"
 source_x86_64=("${_name}_${pkgver}_${arch[0]}.tgz::${url}/releases/download/v${pkgver}/${_name}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${_name}_${pkgver}_${arch[1]}.tgz::${url}/releases/download/v${pkgver}/${_name}_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('298b8864bdf005e097ff1fcaa1a6894fa3817378915a00082f970c8c18299dc5')
-sha256sums_aarch64=('d5b3483c9a23ec8b3a0c9bf6dbfd39b9e1988c68641eac93a4a49b73bf91581d')
+sha256sums_x86_64=('d5032fdfe6ae46ba2ff73da17c7313235ba3478794109234c318d60337f64a4f')
+sha256sums_aarch64=('32e610756256a6183328b6abdc2f9a84f3678b71415ccbb17e174b694a931357')
 
 package() {
     install -Dm 0755 ${_name} ${pkgdir}/usr/bin/${_name}
