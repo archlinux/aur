@@ -1,5 +1,5 @@
 pkgbase = taxonkit-bin
-	pkgdesc = A practical and efficient NCBI Taxonomy toolkit in Go
+	pkgdesc = Cross-platform and efficient toolkit for rapid taxonomic operations on BARCODE, ASV, OTU or any biological sequences with taxonomy annotation
 	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/shenwei356/taxonkit
