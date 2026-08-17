@@ -7,10 +7,10 @@ pkgname=(
 )
 pkgbase=mullvad-vpn-beta
 _pkgver=2026.4
-_channel=beta
+_channel=stable
 _rel=1
-pkgver=${_pkgver}.${_channel}${_rel}  # beta
-# pkgver=${_pkgver}.${_channel}  # stable
+# pkgver=${_pkgver}.${_channel}${_rel}  # beta
+pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=24
 pkgdesc="The Mullvad VPN client app for desktop - beta channel"
@@ -34,14 +34,14 @@ makedepends=(
   'typescript'
 )
 source=(
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-  # "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+  # "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgbase%-beta}.sh"
 )
-sha256sums=('efdf74017fab271049e73ddc282de6eddc8a7c0edf98cb3e7f802f1ce5afdc03'
+sha256sums=('bbdbf41b3e1dd7117171bd323652823881e4a5a5737b8d6f6015c757891678b6'
             'SKIP'
             'f3976a76352b09677487569a8538819fd393dbd6c8dbc6345f3022a08054faa9'
             '0cd7bccb05af010cc26cb0a0bb91cb68f279c4d64d7ace35e1902f020bf50311'
@@ -154,7 +154,6 @@ package_mullvad-vpn-beta() {
   cd mullvadvpn-app
   install -d "$pkgdir/opt/Mullvad VPN"
   cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN/"
-  chmod 4755 "$pkgdir/opt/Mullvad VPN/chrome-sandbox"
   install -Dm755 "$srcdir/${pkgname%-beta}.sh" "$pkgdir/usr/bin/${pkgname%-beta}"
 
   install -d "$pkgdir/usr/share/doc/$pkgname"
