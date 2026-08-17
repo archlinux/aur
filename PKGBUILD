@@ -1,7 +1,7 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="Lightweight Wayland application launcher — UI, daemon, and providers in one binary"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry"
@@ -84,13 +84,10 @@ provides=(
 install=owlry.install
 
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-v$pkgver.tar.gz")
-b2sums=('9ba4b88bf51d86971a4ef78fb9be8504632adcb1e1b34b4e0f478b61cfde66c7fd15b3a2c1645439143cdd539eb20cc725fafee0893ed2a77d7f7e15f93269da')
+b2sums=('933307ae58d2996e948e3a35c2e26de76ab755e5f8882923cda98ed67c163b6efa76521d06df98375c878d9b41f16c192298bba6b41296e834408156b2583594')
 
 prepare() {
     cd "owlry"
-    # pkgver=2.4.0 still has `strip = true` in the tagged source. Remove it
-    # here so makepkg owns stripping and can produce a useful debug package.
-    sed -i '/^strip = true$/d' Cargo.toml
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
