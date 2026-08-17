@@ -1,0 +1,16 @@
+pkgbase = xautocfg-git
+	pkgdesc = Automatic keyboard repeat rate configuration for new keyboards
+	pkgver = v1.2.r4.gf226174
+	pkgrel = 1
+	url = https://github.com/SFTtech/xautocfg
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libx11
+	depends = libxi
+	depends = xorgproto
+	conflicts = xautocfg
+	source = git+https://github.com/SFTtech/xautocfg
+	sha256sums = SKIP
+
+pkgname = xautocfg-git
