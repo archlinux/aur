@@ -1,7 +1,7 @@
 pkgbase = ruby-hiera-eyaml-gpg
 	pkgdesc = GPG Encryption backend for Hiera
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/voxpupuli/hiera-eyaml-gpg
 	arch = any
 	license = MIT

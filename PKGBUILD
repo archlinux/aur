@@ -3,7 +3,7 @@
 _gemname=hiera-eyaml-gpg
 pkgname=ruby-$_gemname
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='GPG Encryption backend for Hiera'
 arch=(any)
 url='https://github.com/voxpupuli/hiera-eyaml-gpg'
