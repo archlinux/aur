@@ -7,8 +7,7 @@ arch=('x86_64')
 url="https://github.com/Undercat037/aura-emerge"
 license=('GPL-3.0')
 depends=('aura')
-optdepends=('devtools: for --abs support (build from ABS source via pkgctl)'
-  'gnupg: for PGP verification when building from ABS')
+optdepends=('devtools: for --abs support (build from ABS source via pkgctl)' 'gnupg: for PGP verification when building from ABS' 'bubblewrap: sandboxed --abs builds (falls back to unsandboxed with --no-sandbox)')
 makedepends=('rust' 'cargo' 'git')
 conflicts=('portage' 'portage-git')
 provides=('portageq')

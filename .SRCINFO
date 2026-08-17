@@ -12,6 +12,7 @@ pkgbase = aura-emerge
 	depends = aura
 	optdepends = devtools: for --abs support (build from ABS source via pkgctl)
 	optdepends = gnupg: for PGP verification when building from ABS
+	optdepends = bubblewrap: sandboxed --abs builds (falls back to unsandboxed with --no-sandbox)
 	provides = portageq
 	conflicts = portage
 	conflicts = portage-git
