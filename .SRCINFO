@@ -1,0 +1,16 @@
+pkgbase = yadqt-git
+	pkgdesc = Produce simple Qt dialogs from the command line, similar to YAD for gtk
+	pkgver = 0
+	pkgrel = 1
+	url = https://keithdhedger.github.io/pages/yadqt/yadqt.html
+	arch = any
+	license = GPL-3.0
+	makedepends = make
+	makedepends = autoconf
+	makedepends = oxipng
+	depends = qt6-base
+	provides = yadqt
+	source = git+https://github.com/KeithDHedger/YadQt.git
+	sha256sums = SKIP
+
+pkgname = yadqt-git
