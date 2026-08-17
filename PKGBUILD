@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=parqeye-bin
-pkgver=0.0.2
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Peek inside Parquet files right from your terminal'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ _x86_64_target='x86_64-unknown-linux-gnu'
 _aarch64_target='aarch64-unknown-linux-gnu'
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.xz::${url}/releases/download/v${pkgver}/parqeye-${_x86_64_target}.tar.xz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.xz::${url}/releases/download/v${pkgver}/parqeye-${_aarch64_target}.tar.xz")
-sha256sums_x86_64=('68d03738b0bbe6c70e45008cffd7f1bda194dad921c97359de87b2ab43f51fc3')
-sha256sums_aarch64=('a8ae74222514bb8ae61fa58065cc59f5b82b7b31fbc57433ef2ef88b3a085dc1')
+sha256sums_x86_64=('fdc2cf96e1b975b05bc9b0c208b47de13dd1cbc14cb2e1f11de4e379d8e2426b')
+sha256sums_aarch64=('b01487e1117ee65fad779007b91c2a7d31028304bdf96b48ebdeaea4339329fc')
 
 _target() {
     case "$CARCH" in

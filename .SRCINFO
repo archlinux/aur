@@ -1,6 +1,6 @@
 pkgbase = parqeye-bin
 	pkgdesc = Peek inside Parquet files right from your terminal
-	pkgver = 0.0.2
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/kaushiksrini/parqeye
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = parqeye-bin
 	depends = gcc-libs
 	provides = parqeye
 	conflicts = parqeye
-	source_x86_64 = parqeye-bin-0.0.2-x86_64.tar.xz::https://github.com/kaushiksrini/parqeye/releases/download/v0.0.2/parqeye-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 68d03738b0bbe6c70e45008cffd7f1bda194dad921c97359de87b2ab43f51fc3
-	source_aarch64 = parqeye-bin-0.0.2-aarch64.tar.xz::https://github.com/kaushiksrini/parqeye/releases/download/v0.0.2/parqeye-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = a8ae74222514bb8ae61fa58065cc59f5b82b7b31fbc57433ef2ef88b3a085dc1
+	source_x86_64 = parqeye-bin-0.1.0-x86_64.tar.xz::https://github.com/kaushiksrini/parqeye/releases/download/v0.1.0/parqeye-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = fdc2cf96e1b975b05bc9b0c208b47de13dd1cbc14cb2e1f11de4e379d8e2426b
+	source_aarch64 = parqeye-bin-0.1.0-aarch64.tar.xz::https://github.com/kaushiksrini/parqeye/releases/download/v0.1.0/parqeye-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = b01487e1117ee65fad779007b91c2a7d31028304bdf96b48ebdeaea4339329fc
 
 pkgname = parqeye-bin
