@@ -2,11 +2,12 @@
 
 pkgname=svg_to_ico
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert SVG icons into Windows ICO files"
 arch=(x86_64)
 license=('MIT')
 url="https://github.com/Ortham/svg_to_ico"
+depends=('libgcc')
 makedepends=('rust')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Ortham/${pkgname}/archive/${pkgver}.tar.gz")
 sha256sums=('23def49f56aef5c40ed86f8aad559d7bba87fc40a301e803252c6a9791abd72b')
