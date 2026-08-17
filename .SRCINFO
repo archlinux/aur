@@ -1,5 +1,5 @@
 pkgbase = seqkit-bin
-	pkgdesc = A cross-platform and ultrafast toolkit for FASTA/Q file manipulation in Golang
+	pkgdesc = Cross-platform and ultrafast toolkit for FASTA/Q file manipulation in Golang
 	pkgver = 2.13.0
 	pkgrel = 1
 	url = https://bioinf.shenwei.me/seqkit
