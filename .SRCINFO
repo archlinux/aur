@@ -1,6 +1,6 @@
 pkgbase = astramarket
 	pkgdesc = Unified Linux marketplace with Flatpak, Pacman, AUR, and AppImage support
-	pkgver = 1.0.4
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/dim-ghub/AstraMarket
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = astramarket
 	makedepends = ninja
 	makedepends = pkgconf
 	makedepends = qt6-shadertools
+	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-shadertools
@@ -21,7 +22,7 @@ pkgbase = astramarket
 	provides = astra
 	conflicts = astramarket-bin
 	conflicts = astramarket-git
-	source = astramarket-1.0.4.tar.gz::https://github.com/dim-ghub/AstraMarket/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = 325643d216cbbae4bc13d8236265ac0a8099aeb350fea76b95780ffe3fd56c1e
+	source = astramarket-1.1.0.tar.gz::https://github.com/dim-ghub/AstraMarket/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 015d95d9aa79e6a083d1eb718397f40102d2c56e39196a6e89f076ff8e5a7ef7
 
 pkgname = astramarket
