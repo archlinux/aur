@@ -1,71 +1,113 @@
-#!/bin/bash
+#!/bin/python
+import sys
+import tomllib
+from pathlib import Path
+import os
+import datetime
+import subprocess
 
-get_last_update_date(){
-    local last_sync_date="0"
-    local db_last_modified_date
+archive_config = Path("/etc/pacman-archive.toml")
+archive_d_dir = Path("/var/lib/pacman-archive")
+#archive_config = Path("./pacman-archive.toml")
+#archive_d_dir = Path("./pacman-archive.d")
 
-    while read -r db_file; do
-        db_last_modified_date="$(date +%s -r "$db_file")"
-        #echo "$db_last_modified_date"
-        if [ "$last_sync_date" -lt "$db_last_modified_date" ];then
-            last_sync_date="$db_last_modified_date"
-        fi
-    done < <(find /var/lib/pacman/sync -name '*.db')
+def get_repo_list():
+    if result := subprocess.run(["pacman-conf", "--repo-list"], capture_output=True, text=True, check=True):
+        return result.stdout.splitlines()
+    return []
 
-    if [ "$last_sync_date" -eq 0 ];then
-        {
-            echo "Failed to get last update date from /var/lib/pacman/sync"
-            echo "exit"
-        } >&2
-        return 1
-    fi
+def get_repo_last_modified(repo: str):
+    pacman_lib_sync_path = Path("/var/lib/pacman/sync")
 
-    y="$(date +%Y --date="@$last_sync_date")"
-    m="$(date +%m --date="@$last_sync_date")"
-    d="$(date +%d --date="@$last_sync_date")"
-    export y m d
-}
-
-get_current_archive_date(){
-    local mirrorlist_a="$1"
-    if ! [ -e "$mirrorlist_a" ];then
-        y=0
-        m=0
-        d=0
+    db_path = pacman_lib_sync_path / Path(repo + ".db")
+    try:
+        mtime = os.stat(db_path).st_mtime
+    except FileNotFoundError:
         return
-    fi
-    # shellcheck disable=2016
-    read -r y m d < <(sed -n 's#^Server = https://archive.archlinux.org/repos/\([0-9]*\)/\([0-9]*\)/\([0-9]*\)/$repo/os.*#\1 \2 \3#p' "$mirrorlist_a")
-    export y m d
-}
+    return datetime.datetime.fromtimestamp(mtime)
 
-main(){
-    local mirrorlist_a=/etc/pacman.d/mirrorlist.archive
+def replace_server_list_vars(url: str, mtime: datetime.datetime):
+    new_url = url
+    new_url = new_url.replace("$year",  mtime.strftime("%Y"))
+    new_url = new_url.replace("$month", mtime.strftime("%m"))
+    new_url = new_url.replace("$day",   mtime.strftime("%d"))
+    return new_url
 
-    local y m d
-    get_current_archive_date "$mirrorlist_a"
-    old_y="$y"
-    old_m="$m"
-    old_d="$d"
+def print_archive_info(config_o, db_date: dict[str, datetime.datetime]):
+    info = "pacman archive has been updated:\n"
+    length=0
+    for repo in config_o.keys():
+        length=max(length, len(repo))
+    for repo in config_o.keys():
+        info +="    {:>{}}: {}\n".format(repo, 11, str(db_date[repo].date()))
+        for line in config_o[repo]:
+            info += "    {:>{}}  {}".format("", length, line)
+    print(info, end="")
 
-    local y m d
-    if ! get_last_update_date;then
-        return 1
-    fi
-    new_y="$y"
-    new_m="$m"
-    new_d="$d"
+def main():
+    # repo in repos:
+    # 1. repo in pacman config
+    repos = get_repo_list()
+    #print(repos)
 
-    if [ "$old_y/$old_m/$old_d" = "$new_y/$new_m/$new_d" ];then
+    # repo in repos:
+    # 1. repo in pacman config
+    # 2. repo has been synchronized, ie db exist
+    db_date: dict[str, datetime.datetime] = {}
+    for repo in repos.copy():
+        mtime = get_repo_last_modified(repo)
+        if mtime is None:
+            repos.remove(repo)
+            continue
+        db_date[repo] = mtime
+    #print(repos)
+
+    # repo in repos:
+    # 1. repo in pacman config
+    # 2. repo has been synchronized, ie db exist
+    # 3. repo in pacman-archive config
+    with open(archive_config, "rb") as f:
+        config_i = tomllib.load(f)
+    config_o = {}
+    for repo in repos.copy():
+        # if there is no archive config for the repo
+        if repo not in config_i.keys():
+            repos.remove(repo)
+            continue
+
+        servers_a = config_i.get(repo, {}).get("Server", [])
+        existing_archive_config=[]
+        for url in servers_a:
+            server = replace_server_list_vars(url, db_date[repo])
+            existing_archive_config.append("Server = {}\n".format(server))
+        config_o[repo] = existing_archive_config
+
+    if len(repos) == 0:
         return 0
-    fi
+    #print(repos)
 
-    cat << EOF > "$mirrorlist_a"
-Server = https://archive.archlinux.org/repos/$new_y/$new_m/$new_d/\$repo/os/\$arch
-EOF
+    # compare with existing config
+    for repo in repos:
+        try:
+            with open(archive_d_dir / (repo + ".mirrorlist"), "r+") as f:
+                existing_archive_config = f.readlines()
+        except FileNotFoundError:
+            existing_archive_config = []
+        if config_o[repo] == existing_archive_config:
+            config_o.pop(repo)
 
-    chmod +r "$mirrorlist_a"
-    sync "$mirrorlist_a"
-    echo "pacman archive mirrorlist.archive has been update to $new_y/$new_m/$new_d"
-}
-main "$@"
+    if len(config_o) == 0:
+        return 0
+
+    for repo in config_o.keys():
+        lines = config_o.get(repo, [])
+        with open(archive_d_dir / (repo + ".mirrorlist"), "w+") as f:
+            f.writelines(lines)
+
+    print_archive_info(config_o, db_date)
+
+    return 0
+
+if __name__ == '__main__':
+    sys.exit(main())
+

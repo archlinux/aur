@@ -10,19 +10,50 @@ post_install(){
     To make the generated mirrorlist take effect, append the following line in
     core/extra repositories in /etc/pacman.conf
 
-    Include = /etc/pacman.d/mirrorlist.archive
+    Include = /var/lib/pacman-archive/<repo>.mirrorlist
+
+    where <repo> is core, extra, ...
 
 EOF
 }
 pre_remove(){
-    rm -f /etc/pacman.d/mirrorlist.archive
-
+    rm -f /var/lib/pacman-archive/*.mirrorlist
     cat << EOF
 
-    /etc/pacman.d/mirrorlist.archive has been removed, please remove the
+    /var/lib/pacman-archive/ has been removed, please remove the
     following line in /etc/pacman.conf
+
+    Include = /var/lib/pacman-archive/<repo>.mirrorlist
+
+    where <repo> is core, extra, ...
+
+EOF
+}
+
+post_upgrade(){
+    update-mirrorlist-archive
+    # shellcheck disable=2034
+    local n_ver="$1"
+    local o_ver="$2"
+    if [ "$(vercmp "$o_ver" 0.2.0-1)" -le 0 ];then
+        rm -f /etc/pacman.d/mirrorlist.archive
+        cat << EOF
+
+    To support unofficial repositories, we abandoned using a single mirrorlist
+    /etc/pacman.d/mirrorlist.archive and instead created separate mirrorlists
+    for different repositories. The mirrorlists are named as
+    /var/lib/pacman-archive/<repo>.mirrorlist
+
+    You need to modify the following lines in /etc/pacman.conf
 
     Include = /etc/pacman.d/mirrorlist.archive
 
+    into
+
+    Include = /var/lib/pacman-archive/<repo>.mirrorlist
+
+    where <repo> is core, extra, ...
+
 EOF
+    fi
 }

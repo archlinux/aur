@@ -1,0 +1,52 @@
+[core]
+Server = [
+    "https://archive.archlinux.org/repos/$year/$month/$day/$repo/os/$arch"
+]
+[core-staging]
+Server = [
+    "https://archive.archlinux.org/repos/$year/$month/$day/$repo/os/$arch"
+]
+[core-testing]
+Server = [
+    "https://archive.archlinux.org/repos/$year/$month/$day/$repo/os/$arch"
+]
+[extra]
+Server = [
+    "https://archive.archlinux.org/repos/$year/$month/$day/$repo/os/$arch"
+]
+[extra-staging]
+Server = [
+    "https://archive.archlinux.org/repos/$year/$month/$day/$repo/os/$arch"
+]
+[extra-testing]
+Server = [
+    "https://archive.archlinux.org/repos/$year/$month/$day/$repo/os/$arch"
+]
+[gnome-unstable]
+Server = [
+    "https://archive.archlinux.org/repos/$year/$month/$day/$repo/os/$arch"
+]
+[kde-unstable]
+Server = [
+    "https://archive.archlinux.org/repos/$year/$month/$day/$repo/os/$arch"
+]
+[multilib]
+Server = [
+    "https://archive.archlinux.org/repos/$year/$month/$day/$repo/os/$arch"
+]
+[multilib-staging]
+Server = [
+    "https://archive.archlinux.org/repos/$year/$month/$day/$repo/os/$arch"
+]
+[multilib-testing]
+Server = [
+    "https://archive.archlinux.org/repos/$year/$month/$day/$repo/os/$arch"
+]
+[sources]
+Server = [
+    "https://archive.archlinux.org/repos/$year/$month/$day/$repo/os/$arch"
+]
+[archlinuxcn]
+Server = [
+    "https://archive.repo.archlinuxcn.org/repos/$year/$month/$day/$arch"
+]

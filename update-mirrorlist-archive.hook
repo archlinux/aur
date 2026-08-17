@@ -5,6 +5,6 @@ Type = Package
 Target = *
 
 [Action]
-Description = checking /etc/pacman.d/mirrorlist.archive
+Description = checking archive mirrorlist
 When = PreTransaction
 Exec = /usr/bin/update-mirrorlist-archive
