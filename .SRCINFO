@@ -1,6 +1,6 @@
 pkgbase = hermes-decomp-bin
 	pkgdesc = A powerful decompiler that lets you reverse-engineer React Native mobile apps by converting their compiled Hermes bytecode (.hbc) files back into readable JavaScript
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/SymbioticSec/hermes-decomp
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = hermes-decomp-bin
 	provides = hermes-decomp
 	conflicts = hermes-decomp
 	options = !debug
-	source_x86_64 = hermes-decomp-0.2.1-x86_64.tar.gz::https://github.com/SymbioticSec/hermes-decomp/releases/download/v0.2.1/hermes-decomp-v0.2.1-linux-x86_64.tar.gz
-	source_x86_64 = hermes-decomp-0.2.1-LICENSE::https://raw.githubusercontent.com/SymbioticSec/hermes-decomp/v0.2.1/LICENSE
-	sha256sums_x86_64 = f10c879e5b63c5fbff66fb57a3dc4a4a8ca226197fb4aaeec0ac2ce67100acb3
+	source_x86_64 = hermes-decomp-0.2.2-x86_64.tar.gz::https://github.com/SymbioticSec/hermes-decomp/releases/download/v0.2.2/hermes-decomp-v0.2.2-linux-x86_64.tar.gz
+	source_x86_64 = hermes-decomp-0.2.2-LICENSE::https://raw.githubusercontent.com/SymbioticSec/hermes-decomp/v0.2.2/LICENSE
+	sha256sums_x86_64 = ffbe444bc6a9dd260f1d96d26ce5ee1c943103dac96aa99b8a053438e3e3fc9e
 	sha256sums_x86_64 = 8fcd18a6a1e3739ce61f6e836d5fc01de38f3777d89accb234bd4cdc990eda66
 
 pkgname = hermes-decomp-bin
