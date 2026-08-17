@@ -2,7 +2,7 @@
 pkgname=aura-emerge
 pkgver=2.1.0
 pkgrel=1
-pkgdesc="Gentoo-style emerge for Arch Linux - installs from official repos, the AUR, and ABS, scans PKGBUILDs for supply-chain red flags before building, and runs untrusted build steps inside a `bwrap` sandbox."
+pkgdesc="Gentoo-style emerge for Arch Linux - installs from official repos, the AUR, and ABS, scans PKGBUILDs for supply-chain red flags before building, and runs untrusted build steps inside a bwrap sandbox."
 arch=('x86_64')
 url="https://github.com/Undercat037/aura-emerge"
 license=('GPL-3.0')
