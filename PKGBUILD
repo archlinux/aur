@@ -2,12 +2,12 @@
 
 pkgname=docker-container-healthchecker
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Runs healthchecks against local docker containers'
 arch=('x86_64')
 url='https://github.com/dokku/docker-container-healthchecker'
 license=('BSD')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('c7a95a4a3cc9a9b4bad895e1a7b9349a9eaab1caefa4d33e67ec56f78ad0c7dd')
 makedepends=('go')
 
