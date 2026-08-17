@@ -3,7 +3,7 @@
 
 pkgname=mold-ai
 _binname=mold
-pkgver=0.22.2
+pkgver=0.22.3
 pkgrel=1
 pkgdesc="Local AI image generation CLI — FLUX, SD3.5, SD 1.5, SDXL, Z-Image, Flux.2, Qwen-Image, Wuerstchen, LTX Video, & LTX-2 diffusion models on your GPU (built from source, CUDA)"
 arch=('x86_64')
@@ -41,7 +41,7 @@ conflicts=('mold-ai-bin' 'mold-ai-git' 'mold')
 options=(!lto)
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0645610d091a55107725088fac2be2cb4227b5ceabdf9215c21c51f897409c71')
+sha256sums=('bbfb380c3fa4b498ac913b100523e53cd8e893996c2b1027ae4f2284e4d608f5')
 
 prepare() {
   cd "mold-${pkgver}"
