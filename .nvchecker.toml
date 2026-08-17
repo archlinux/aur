@@ -1,0 +1,4 @@
+[vlc-plugin-pipewire]
+source = "git"
+git = "https://git.remlab.net/git/vlc-plugin-pipewire.git"
+prefix = "v"
