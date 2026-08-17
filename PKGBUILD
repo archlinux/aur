@@ -1,11 +1,12 @@
-pkgname=alt-sendme
-pkgver=0.6.0
-pkgrel=3
+pkgname=dashbeam
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="Peer-to-peer file and folder transfer app without cloud storage"
 arch=('x86_64' 'aarch64')
-url="https://github.com/tonyantony300/alt-sendme"
+url="https://github.com/tonyantony300/dashbeam"
 license=('AGPL3')
 options=('!lto')
+
 depends=(
   'cairo'
   'gdk-pixbuf2'
@@ -16,6 +17,7 @@ depends=(
   'pango'
   'webkit2gtk-4.1'
 )
+
 makedepends=(
   'cargo'
   'clang'
@@ -25,18 +27,33 @@ makedepends=(
   'rust-wasm'
   'wasm-bindgen'
 )
+
 optdepends=(
   'xdg-utils'
 )
+
+provides=(
+  "alt-sendme=${pkgver}"
+)
+
 conflicts=(
+  'alt-sendme'
   'alt-sendme-bin'
   'alt-sendme-git'
+  'dashbeam-bin'
+  'dashbeam-git'
 )
+
+replaces=(
+  'alt-sendme'
+)
+
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
+
 sha256sums=(
-  '2ce6a47fd07e945c63158ea511b7bf061eb6804890bf22a507bcf6cf54ef1e4c'
+  '2817ec2936f0a59e589440292fa3405476240040db765d5ad942c6a4b19875df'
 )
 
 prepare() {
@@ -78,7 +95,7 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  local _built_bin="src-tauri/target/release/AltSendme"
+  local _built_bin="src-tauri/target/release/DashBeam"
   if [[ ! -x "${_built_bin}" ]]; then
     echo "Could not find built binary at ${_built_bin}" >&2
     return 1
@@ -99,14 +116,14 @@ package() {
   cat >"${pkgdir}/usr/share/applications/${pkgname}.desktop" <<EOF
 [Desktop Entry]
 Type=Application
-Name=AltSendme
-Comment=Send files and folders directly without cloud storage
+Name=Dashbeam
+Comment=Send files and folders anywhere in the world without storing in cloud - any size, any format, no accounts, no restrictions (previously Altsendme)
 Exec=${pkgname}
 Icon=${pkgname}
 Terminal=false
 Categories=Network;FileTransfer;
 Keywords=file;folder;transfer;send;receive;p2p;peer-to-peer;
 StartupNotify=true
-StartupWMClass=alt-sendme
+StartupWMClass=dashbeam
 EOF
 }

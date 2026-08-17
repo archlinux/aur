@@ -1,8 +1,8 @@
-pkgbase = alt-sendme
+pkgbase = dashbeam
 	pkgdesc = Peer-to-peer file and folder transfer app without cloud storage
-	pkgver = 0.6.0
-	pkgrel = 3
-	url = https://github.com/tonyantony300/alt-sendme
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/tonyantony300/dashbeam
 	arch = x86_64
 	arch = aarch64
 	license = AGPL3
@@ -22,10 +22,15 @@ pkgbase = alt-sendme
 	depends = pango
 	depends = webkit2gtk-4.1
 	optdepends = xdg-utils
+	provides = alt-sendme=0.6.2
+	conflicts = alt-sendme
 	conflicts = alt-sendme-bin
 	conflicts = alt-sendme-git
+	conflicts = dashbeam-bin
+	conflicts = dashbeam-git
+	replaces = alt-sendme
 	options = !lto
-	source = alt-sendme-0.6.0.tar.gz::https://github.com/tonyantony300/alt-sendme/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = 2ce6a47fd07e945c63158ea511b7bf061eb6804890bf22a507bcf6cf54ef1e4c
+	source = dashbeam-0.6.2.tar.gz::https://github.com/tonyantony300/dashbeam/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = 2817ec2936f0a59e589440292fa3405476240040db765d5ad942c6a4b19875df
 
-pkgname = alt-sendme
+pkgname = dashbeam
