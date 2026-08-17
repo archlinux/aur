@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
+# Maintainer: flear <teymurzadehuseyn14@gmail.com>
 pkgname=flerp
-pkgver=0.5.1
-_rev='35c31c791e4da13b32bca06266ce2b732fa0e35f'
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='A terminal UI for exploring and analyzing text files, PDFs, and images'
 arch=(
@@ -26,7 +26,7 @@ conflicts=('flerp-git')
 source=(
     "$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
 )
-sha256sums=('37fd40692522f95f390bd51813adac6db30b333eba2f6c10ef3f4797388a4868')
+sha256sums=('6500378f0af29681827c15c8a52c719f954a84e779c873611cd1f831a142bac1')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -43,8 +43,8 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm0755 target/release/flerp "$pkgdir/usr/bin/flerp"
-    # install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-    # install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 README.MD -t "$pkgdir/usr/share/doc/$pkgname/"
 }
 
 # vim: ts=4 sw=4 et:
