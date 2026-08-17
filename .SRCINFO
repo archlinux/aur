@@ -1,6 +1,6 @@
 pkgbase = log-for-linux
 	pkgdesc = Native GTK4/libadwaita ham radio logbook (ADIF, contests, Cabrillo, TCI, WSJT-X)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/OK1BR/log-for-linux
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = log-for-linux
 	depends = glib2
 	depends = sqlite
 	depends = libwebsockets
-	source = log-for-linux-0.2.0.tar.gz::https://github.com/OK1BR/log-for-linux/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 7d31ec947257fd28bb0417979a21913e2c48f6a9d5fd89dba265a3f56c31d7f3
+	source = log-for-linux-0.3.0.tar.gz::https://github.com/OK1BR/log-for-linux/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 8d21d548ac6a4484af734bef614e42a97f53baa1c9de57476b4e7fd32fe8ff8c
 
 pkgname = log-for-linux

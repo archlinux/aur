@@ -1,8 +1,11 @@
 # Maintainer: Richard Fakenberg (OK1BR) <rifak@protonmail.com>
-# AUR package for the tagged release.
+# AUR package for the tagged release — aur.archlinux.org/packages/log-for-linux
+# Bump: raise _pkgtag, `updpkgsums`, verify with a full makepkg (check() runs
+# the meson gates), then push this file plus `makepkg --printsrcinfo > .SRCINFO`
+# to ssh://aur@aur.archlinux.org/log-for-linux.git.
 pkgname=log-for-linux
-_pkgtag=0.2.0
-pkgver=0.2.0
+_pkgtag=0.3.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Native GTK4/libadwaita ham radio logbook (ADIF, contests, Cabrillo, TCI, WSJT-X)"
 arch=('x86_64')
@@ -13,7 +16,7 @@ depends=('gtk4' 'libadwaita' 'glib2' 'sqlite' 'libwebsockets')
 # tools at meson-configure time even though DESTDIR skips the actual refresh.
 makedepends=('meson' 'desktop-file-utils' 'gtk-update-icon-cache')
 source=("$pkgname-$_pkgtag.tar.gz::$url/archive/refs/tags/v$_pkgtag.tar.gz")
-sha256sums=('7d31ec947257fd28bb0417979a21913e2c48f6a9d5fd89dba265a3f56c31d7f3')
+sha256sums=('8d21d548ac6a4484af734bef614e42a97f53baa1c9de57476b4e7fd32fe8ff8c')
 
 build() {
   arch-meson "$pkgname-$_pkgtag" build
