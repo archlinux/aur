@@ -1,4 +1,4 @@
-# bettbox-compatible
+# bettbox
 
 Bettbox 是一款使用 Mihomo (Clash Meta) 内核、基于 FlClash 早期版本进行重构的多平台代理客户端
 

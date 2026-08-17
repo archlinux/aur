@@ -1,4 +1,4 @@
-[bettbox-compatible]
+[bettbox]
 source = 'git'
 git = 'https://github.com/appshubcc/Bettbox.git'
 include_regex = '^v\d+\.\d+\.\d+(-pre\d+)?$'
