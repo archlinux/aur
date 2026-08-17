@@ -1,6 +1,6 @@
 # Maintainer: OldJobobo <aur at oldjobobo dot com>
 pkgname=thpm
-pkgver=1.0.0rc19
+pkgver=1.0.0rc20
 pkgrel=1
 pkgdesc='Omarchy 4-native manager for external theme integrations'
 arch=('any')
@@ -14,16 +14,16 @@ replaces=('theme-hook-plugin-manager')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 install=thpm.install
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5e90ddfa02cf15dd7133ed03f165f0822b35e3b84e2de086dca03ec4d8e18ad9')
+sha256sums=('ff7233cdd29e05162c362bad7d8caf09c61b563d4a592d132c39d28ebc0a1cd4')
 
 build() {
     cd "$pkgname-$pkgver"
-    python -m build --wheel --no-isolation
+    /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 -t "$pkgdir/usr/share/thpm/templates" assets/templates/*
     install -Dm644 -t "$pkgdir/usr/share/thpm/qml" assets/qml/*
     install -Dm755 assets/hooks/90-thpm "$pkgdir/usr/share/thpm/hooks/90-thpm"
