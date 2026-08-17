@@ -22,18 +22,19 @@ depends=(
 	'libkeybinder3'
 )
 makedepends=('git' 'clang' 'cmake' 'ninja' 'go' 'rustup' 'fvm' 'patchelf')
-source=("restart-bettbox.hook" "bettbox.desktop" "$_pkgname::git+$url.git#tag=v${_pkgver}")
-sha256sums=('421d4029f00b0a11ef596d5ac94789c2b33b968bc6c0c78dc496d2afb9dc1de2')
-
+source=("${_pkgname}-${_pkgver}.tar.gz::${url}/archive/v${_pkgver}.tar.gz" "restart-bettbox.hook" "bettbox.desktop")
+sha256sums=('9ae07bc91f5d44562af50fc5018ee843abbb7bda81805a05e0b78802dbe12add'
+            'e911b882bc07c4c79941737bea45389c685cce8fb7dc77c632aebcf5e410ae5c'
+            'f5c33a2c9ccfff7de67b89b74d23ca66fe7b125e269b5751f5a67aa18ffc35d5')
 prepare() {
-	cd "$_pkgname"
+	cd "${_pkgname}-${_pkgver}"
 	fvm use 3.44.8
 	fvm flutter --disable-analytics
 	fvm flutter --no-version-check pub get
 }
 
 build () {
-	cd "$_pkgname"
+	cd "${_pkgname}-${_pkgver}"
 	# cargokit (code_forge plugin) requires FLUTTER_ROOT for its dart
 	export FLUTTER_ROOT="$(pwd)/.fvm/flutter_sdk"
 	local app_env=pre
@@ -52,7 +53,7 @@ build () {
 # $_flutter_arch are used in PKGBUILD anymore.
 # Replace the build() above with:
 # build() {
-# 	cd "$_pkgname"
+# 	cd "${_pkgname}-${_pkgver}"
 # 	export FLUTTER_ROOT="$(pwd)/.fvm/flutter_sdk"
 # 	local app_env=pre
 # 	[[ "$pkgver" != *pre* ]] && app_env=stable
@@ -61,7 +62,7 @@ build () {
 # }
 
 package () {
-	cd "$_pkgname"
+	cd "${_pkgname}-${_pkgver}"
 	pushd "build/linux/$_flutter_arch/release"
 	install -Dm755 "bundle/${_pkgname}" -t "${pkgdir}/usr/lib/${pkgname}/"
 	install -Dm755 "bundle/BettboxCore" -t "${pkgdir}/usr/lib/${pkgname}/"

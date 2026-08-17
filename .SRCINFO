@@ -22,9 +22,11 @@ pkgbase = bettbox
 	conflicts = bettbox-compatible-bin
 	conflicts = bettbox-bin
 	options = !lto
+	source = Bettbox-1.18.10.tar.gz::https://github.com/appshubcc/Bettbox/archive/v1.18.10.tar.gz
 	source = restart-bettbox.hook
 	source = bettbox.desktop
-	source = Bettbox::git+https://github.com/appshubcc/Bettbox.git#tag=v1.18.10
-	sha256sums = 421d4029f00b0a11ef596d5ac94789c2b33b968bc6c0c78dc496d2afb9dc1de2
+	sha256sums = 9ae07bc91f5d44562af50fc5018ee843abbb7bda81805a05e0b78802dbe12add
+	sha256sums = e911b882bc07c4c79941737bea45389c685cce8fb7dc77c632aebcf5e410ae5c
+	sha256sums = f5c33a2c9ccfff7de67b89b74d23ca66fe7b125e269b5751f5a67aa18ffc35d5
 
 pkgname = bettbox
