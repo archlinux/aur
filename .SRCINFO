@@ -1,6 +1,6 @@
 pkgbase = ucto
 	pkgdesc = An advanced rule-based (regular-expression) and unicode-aware tokenizer for various languages. Tokenization is an essential first step in any NLP pipeline.
-	pkgver = 0.35
+	pkgver = 0.36
 	pkgrel = 1
 	url = https://languagemachines.github.io/ucto
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = ucto
 	depends = libfolia>=2.19
 	depends = uctodata>=0.8
 	options = !libtool
-	source = https://github.com/LanguageMachines/ucto/archive/v0.35.tar.gz
-	md5sums = 8baa7734a4c0b927fa33a29276000ffc
+	source = https://github.com/LanguageMachines/ucto/archive/v0.36.tar.gz
+	md5sums = df466fd8ee6ca1c8f99a1ae2fe7bcaf3
 
 pkgname = ucto
