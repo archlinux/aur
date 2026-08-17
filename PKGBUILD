@@ -1,6 +1,6 @@
 # Maintainer: CodeTease
 pkgname=zzzsleep-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A fancy sleep command written in Rust 💤"
 url="https://github.com/CodeTease/zzz"
@@ -11,10 +11,10 @@ conflicts=('zzzsleep')
 arch=()
 arch+=('x86_64')
 source_x86_64=("${url}/releases/download/v${pkgver}/zzz-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('ac73dba0b8cb32f82e0f7572ef1b12861f690b4aded16fcdeb0588c01735a8e6')
+sha256sums_x86_64=('26bcbf3a749911d9ed84831f52ac8dfa39840f313056df09f4e80aa9d6c4f1b2')
 arch+=('aarch64')
 source_aarch64=("${url}/releases/download/v${pkgver}/zzz-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('4f10da3532bf9af37eaabf2432b5fa56d25f565a85834b88f3883c4a99f85ada')
+sha256sums_aarch64=('42d5bb60fcdff0bb59f83533c6cda8403822470050f8fc3ebcc0a0b63d69eda7')
 
 package() {
     local bin_path=$(find "$srcdir" -type f -name "zzz" -executable | head -n 1)
