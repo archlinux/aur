@@ -1,0 +1,21 @@
+pkgbase = rulesync
+	pkgdesc = Generate configuration files for AI coding agents from unified sources
+	pkgver = 16.12.0
+	pkgrel = 1
+	url = https://github.com/dyoshikawa/rulesync
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = bun
+	makedepends = git
+	makedepends = nodejs>=22
+	makedepends = pnpm>=11
+	depends = glibc
+	depends = icu
+	optdepends = git: Use the git transport for remote rules and skills
+	conflicts = rulesync-bin
+	options = !strip
+	source = rulesync::git+https://github.com/dyoshikawa/rulesync.git#commit=9745cf98efdd669cc6ed16eec68535585a654511
+	sha256sums = SKIP
+
+pkgname = rulesync
