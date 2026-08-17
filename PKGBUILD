@@ -1,6 +1,6 @@
 # Maintainer: Psychotoxic <psychotoxic@gmx.de>
 pkgname=psysonic
-pkgver=1.50.0
+pkgver=1.51.0
 pkgrel=1
 pkgdesc="Desktop music player for Subsonic API-compatible servers (Navidrome, Gonic, etc.)"
 arch=('x86_64')
@@ -11,6 +11,16 @@ depends=(
   'gtk3'
   'openssl'
   'alsa-lib'
+  # Internet radio is the one playback path that does not go through the Rust
+  # audio engine: it plays in a WebView <audio> element, so WebKitGTK decodes it
+  # through GStreamer. webkit2gtk-4.1 lists these only as optdepends, which
+  # pacman does not install, and without them there is no autoaudiosink at all —
+  # playing a station blanks the whole window.
+  'gst-plugins-good'  # autodetect (autoaudiosink) + mpg123 (MP3 stations)
+  'gst-plugins-bad'   # faad (AAC / HE-AAC stations)
+)
+optdepends=(
+  'gst-libav: additional codecs for internet radio stations'
 )
 makedepends=(
   'npm'
