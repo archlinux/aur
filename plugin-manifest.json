@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "prettyletto.prettyzap",
+  "name": "PrettyZap",
+  "version": "0.2.0",
+  "author": "PrettyZap",
+  "license": "MIT",
+  "description": "Native Omarchy bar control for PrettyZap: open, hide, theme, and quit WhatsApp Web.",
+  "kinds": ["bar-widget"],
+  "entryPoints": {
+    "barWidget": "Widget.qml"
+  },
+  "barWidget": {
+    "displayName": "PrettyZap",
+    "description": "A native bar icon with popup controls for PrettyZap visibility, settings, theme, and quit.",
+    "category": "Messaging",
+    "aliases": ["whatsapp", "pz"],
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "launchCommand": "uwsm-app -- prettyzap",
+      "icon": "glyph"
+    },
+    "schema": [
+      {
+        "key": "launchCommand",
+        "type": "string",
+        "label": "Launch command",
+        "description": "How PrettyZap is launched when no existing D-Bus instance is available.",
+        "defaultValue": "uwsm-app -- prettyzap"
+      },
+      {
+        "key": "icon",
+        "type": "string",
+        "label": "Icon style",
+        "description": "brand (PrettyZap logo) or glyph (WhatsApp symbol).",
+        "defaultValue": "glyph"
+      }
+    ]
+  }
+}

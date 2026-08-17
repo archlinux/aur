@@ -1,0 +1,10 @@
+{
+  // Optional PrettyZap entry for the Omarchy command menu.
+  // Copy this object into ~/.config/omarchy/extensions/omarchy-menu.jsonc
+  // only if you want a dedicated menu action in addition to the desktop app.
+  "apps.prettyzap": {
+    "icon": "󰭹",
+    "label": "PrettyZap",
+    "action": "uwsm-app -- prettyzap"
+  }
+}
