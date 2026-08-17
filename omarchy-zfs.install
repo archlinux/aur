@@ -1,0 +1,152 @@
+# omarchy-zfs package install scriptlet.
+# Runs as root; no sudo needed. All internal pacman calls set
+# OMARCHY_ALLOW_DIRECT_PACMAN=1 so the Quattro update guard doesn't reject them.
+
+ARCHZFS_KEY="DDF7DB817396A49B2A2723F7403BD972F75D9D76"
+
+_is_zfs_root() {
+  [[ "$(findmnt -n -o FSTYPE / 2>/dev/null || true)" == "zfs" ]]
+}
+
+_configure_archzfs() {
+  # Skip if some ZFS-providing repo is already configured.
+  if grep -qE '^\[(archzfs|cachyos|cachyos-v3|cachyos-v4|chaotic-aur)\]' /etc/pacman.conf; then
+    return 0
+  fi
+  echo ":: omarchy-zfs: configuring [archzfs] package source"
+  if ! pacman-key --list-keys "$ARCHZFS_KEY" &>/dev/null; then
+    pacman-key --recv-keys "$ARCHZFS_KEY" || return 0
+    pacman-key --lsign-key "$ARCHZFS_KEY" || return 0
+  fi
+  cat >>/etc/pacman.conf <<'EOF'
+
+# Added by omarchy-zfs -- canonical ZFS package source
+[archzfs]
+Server = https://archzfs.com/$repo/$arch
+EOF
+  OMARCHY_ALLOW_DIRECT_PACMAN=1 pacman -Sy --noconfirm || true
+}
+
+_ensure_hostid() {
+  # /etc/hostid gets embedded in the initramfs by zfs's mkinitcpio install hook.
+  # It MUST match the ROOT POOL's hostid, or the pool refuses to import on boot
+  # (or needs -f). A bare `zgenhostid` writes the GLIBC hostid, which on systems
+  # that import via `spl.spl_hostid=` on the cmdline does NOT match the pool ->
+  # boot-critical mismatch. So derive the hostid from the pool (authoritative).
+  command -v zdb &>/dev/null && command -v zgenhostid &>/dev/null || return 0
+  local pool poolid hex cur
+  pool="$(zfs list -H -o name / 2>/dev/null | cut -d/ -f1)"
+  [[ -n "$pool" ]] || return 0                    # no ZFS root imported (e.g. chroot) -> leave it
+  poolid="$(zdb -C "$pool" 2>/dev/null | awk '/hostid:/{print $2; exit}')"
+  [[ "$poolid" =~ ^[0-9]+$ ]] || return 0
+  hex="$(printf '%08x' "$poolid" 2>/dev/null)" || return 0
+  cur="$([[ -f /etc/hostid ]] && hexdump -e '1/4 "%08x"' /etc/hostid 2>/dev/null)"
+  if [[ "$cur" != "$hex" ]]; then
+    echo ":: omarchy-zfs: setting /etc/hostid to match pool '$pool' (0x$hex)"
+    zgenhostid -f "0x$hex" || true
+  fi
+}
+
+_cleanup_legacy_unowned() {
+  # Pre-package ("git checkout") era files that SHADOW this package's own
+  # hooks/tools: /etc/pacman.d/hooks overrides /usr/share/libalpm/hooks (same
+  # basename), and /usr/local/bin precedes /usr/bin on PATH. The kernel-guard
+  # symlink also dangles after the Quattro migration moves the checkout, which
+  # can abort future kernel upgrades. Remove them -- but ONLY if unowned by any
+  # package, so we never delete something a package legitimately ships.
+  local f
+  for f in /etc/pacman.d/hooks/00-zfs-autosnap.hook \
+           /etc/pacman.d/hooks/90-omarchy-zfs-kernel-guard.hook \
+           /usr/local/bin/zfs-autosnap \
+           /usr/local/bin/omarchy-zfs-kernel-compat-check \
+           /usr/local/bin/omarchy-zfs-scrub; do
+    if { [[ -e "$f" ]] || [[ -L "$f" ]]; } && ! pacman -Qo "$f" &>/dev/null; then
+      echo ":: omarchy-zfs: removing legacy unowned $f (shadowed package version)"
+      rm -f "$f"
+    fi
+  done
+}
+
+_mask_snapper_units() {
+  # Our omarchy dep drags in snapper + limine-snapper-sync; on ZFS they're
+  # inert. Mask them so they don't error on a system with no snapper config.
+  # Masking also survives omarchy's snapper.sh trying to re-enable them --
+  # `systemctl enable` on a masked unit fails, and snapper.sh swallows it.
+  local unit
+  for unit in limine-snapper-sync.service snapper-cleanup.timer snapper-timeline.timer; do
+    if systemctl list-unit-files "$unit" &>/dev/null; then
+      systemctl mask "$unit" &>/dev/null || true
+    fi
+  done
+}
+
+_guard_bootorder() {
+  # Supersedes the old warn-only check (decision 7.5 said "mask and ignore,
+  # revisit after testing" -- testing found limine-install actively front-loads
+  # its own NVRAM entry during `omarchy update`, and a Limine boot on ZFS is a
+  # dead boot, so a passive warning at install time was never going to help).
+  if command -v omarchy-zfs-bootorder-guard &>/dev/null; then
+    omarchy-zfs-bootorder-guard || true
+  fi
+}
+
+_common() {
+  if ! _is_zfs_root; then
+    echo ":: omarchy-zfs: root is not ZFS -- ZFS tooling installed but inactive."
+    return 0
+  fi
+  _cleanup_legacy_unowned
+  _configure_archzfs
+  _ensure_hostid
+  _mask_snapper_units
+  # Drop the stale btrfs snapper config omarchy's installer leaves behind --
+  # without this, `omarchy update`'s first step (omarchy-snapshot create)
+  # fails on ZFS and aborts every update.
+  if command -v omarchy-zfs-snapper-guard &>/dev/null; then
+    omarchy-zfs-snapper-guard || true
+  fi
+  # Re-assert the zfs mkinitcpio hook and regenerate initramfs + ZBM.
+  if command -v omarchy-zfs-ensure-mkinitcpio &>/dev/null; then
+    omarchy-zfs-ensure-mkinitcpio || true
+  fi
+  systemctl enable --now omarchy-zfs-scrub.timer &>/dev/null || true
+  _guard_bootorder
+}
+
+post_install() {
+  _common
+  cat <<'EOF'
+
+omarchy-zfs installed.
+  * Pre-upgrade snapshots:   00-zfs-autosnap.hook (config: /etc/omarchy-zfs/autosnap.conf)
+  * Kernel/zfs-dkms guard:   90-omarchy-zfs-kernel-guard.hook
+  * Initramfs self-heal:     zz-omarchy-zfs-ensure-mkinitcpio.hook (runs after every upgrade)
+  * Snapper self-heal:       zz-omarchy-zfs-snapper-guard.hook (keeps `omarchy update` working)
+  * BootOrder self-heal:     zz-omarchy-zfs-bootorder-guard.hook (keeps ZBM first in NVRAM)
+  * Monthly scrub:           omarchy-zfs-scrub.timer (enabled)
+  * ZBM config reference:    /etc/zfsbootmenu/config.yaml.example
+  * Hibernation (ZFS zvol):  omarchy-zfs-hibernation-{setup,remove,available}
+
+Verify before your next reboot (grep for the MODULE, not a bare 'zfs' -- a
+clobbered initramfs still contains incidental files like fsck.zfs/libzfs):
+  lsinitcpio /boot/initramfs-linux.img | grep -q 'zfs\.ko' && echo "zfs module present (bootable)"
+EOF
+}
+
+post_upgrade() {
+  _common
+}
+
+post_remove() {
+  systemctl disable --now omarchy-zfs-scrub.timer &>/dev/null || true
+  local unit
+  for unit in limine-snapper-sync.service snapper-cleanup.timer snapper-timeline.timer; do
+    systemctl unmask "$unit" &>/dev/null || true
+  done
+  if [[ "$(findmnt -n -o FSTYPE / 2>/dev/null || true)" == "zfs" ]]; then
+    echo ":: omarchy-zfs: NOTE - leaving /etc/mkinitcpio.conf.d/zz-omarchy-zfs.conf in place."
+    echo "   Removing it and regenerating the initramfs on a ZFS root would drop the"
+    echo "   zfs hook and make the system unbootable. Remove it by hand only if you are"
+    echo "   migrating off ZFS."
+  fi
+}
