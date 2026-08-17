@@ -1,6 +1,6 @@
 pkgbase = carafe
 	pkgdesc = A KDE Plasma-native game launcher for Windows games via Proton/UMU
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/SlowNicoFish/carafe
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = carafe
 	depends = qt6-declarative
 	depends = kirigami
 	depends = kcoreaddons
-	source = carafe-0.1.2.tar.gz::https://github.com/SlowNicoFish/carafe/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 0f163f33f3b9eb510a8b5860aba82c2b88ef0cdf866b226449bd42bd1e5ba3be
+	source = carafe-0.1.3.tar.gz::https://github.com/SlowNicoFish/carafe/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 5fac1df239776b5b106ba2d9320b37b7b5e355f0cd5fd8acc0527ee391ba96ee
 
 pkgname = carafe
