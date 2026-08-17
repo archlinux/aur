@@ -1,6 +1,6 @@
 pkgbase = duet-httpfs
 	pkgdesc = Mount the SD card of a Duet RepRapFirmware controller over its HTTP API
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Remenod/duet3d-driver-fuse
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = duet-httpfs
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	source = duet-httpfs-1.0.0.tar.gz::https://github.com/Remenod/duet3d-driver-fuse/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 8d72e4df54f9299e3356a5d1f9eaca7929c2323b266c6ed74f160048da3e2b15
+	source = duet-httpfs-1.0.1.tar.gz::https://github.com/Remenod/duet3d-driver-fuse/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 4cb823d5c9e8065a088d256cbaad967795a3ca08723c8d0bd7d4759daf584802
 
 pkgname = duet-httpfs

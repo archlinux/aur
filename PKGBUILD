@@ -1,7 +1,7 @@
 # Maintainer: Remenod <pixel_borne_0o@icloud.com>
 
 pkgname=duet-httpfs
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Mount the SD card of a Duet RepRapFirmware controller over its HTTP API"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -29,7 +29,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Remenod/duet3d-driver-fuse/
 # Placeholder: run `updpkgsums` in this directory to fill in the real hash once
 # the v1.0.0 tag is pushed. makepkg refuses to build until this is replaced;
 # never use SKIP for a non-VCS source.
-sha256sums=('8d72e4df54f9299e3356a5d1f9eaca7929c2323b266c6ed74f160048da3e2b15')
+sha256sums=('4cb823d5c9e8065a088d256cbaad967795a3ca08723c8d0bd7d4759daf584802')
 
 build() {
   cd "$srcdir/duet3d-driver-fuse-$pkgver"
