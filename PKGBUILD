@@ -23,22 +23,22 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/Neoarch"
+  cd "$srcdir"
   # Install to /opt/neoarch
   install -d "$pkgdir/opt/neoarch"
-  cp -r . "$pkgdir/opt/neoarch/"
+  cp -r Neoarch "$pkgdir/opt/neoarch/"
   # Make scripts executable
-  chmod +x "$pkgdir/opt/neoarch/scripts/install_arch_deps.sh"
-  chmod +x "$pkgdir/opt/neoarch/bin/neoarch.sh"
-  chmod +x "$pkgdir/opt/neoarch/scripts/install_desktop_entry.sh"
+  chmod +x "$pkgdir/opt/neoarch/Neoarch/scripts/install_arch_deps.sh"
+  chmod +x "$pkgdir/opt/neoarch/Neoarch/bin/neoarch.sh"
+  chmod +x "$pkgdir/opt/neoarch/Neoarch/scripts/install_desktop_entry.sh"
   # Fix entry point reference from aurora_home.py to -m neoarch
-  sed -i 's|aurora_home.py|-m neoarch|' "$pkgdir/opt/neoarch/bin/neoarch.sh"
+  sed -i 's|aurora_home.py|-m neoarch|' "$pkgdir/opt/neoarch/Neoarch/bin/neoarch.sh"
   # Install desktop file
-  install -Dm644 "$pkgdir/opt/neoarch/packaging/aurora.desktop" "$pkgdir/usr/share/applications/neoarch.desktop"
-  sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch|g' "$pkgdir/usr/share/applications/neoarch.desktop"
+  install -Dm644 "$pkgdir/opt/neoarch/Neoarch/packaging/aurora.desktop" "$pkgdir/usr/share/applications/neoarch.desktop"
+  sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch/Neoarch|g' "$pkgdir/usr/share/applications/neoarch.desktop"
   sed -i 's|Icon=.*|Icon=neoarch|' "$pkgdir/usr/share/applications/neoarch.desktop"
   # Install icon
-  install -Dm644 "$pkgdir/opt/neoarch/assets/icons/icon.png" "$pkgdir/usr/share/pixmaps/neoarch.png"
+  install -Dm644 "$pkgdir/opt/neoarch/Neoarch/assets/icons/icon.png" "$pkgdir/usr/share/pixmaps/neoarch.png"
   # Install license
-  install -Dm644 "$pkgdir/opt/neoarch/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgdir/opt/neoarch/Neoarch/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
