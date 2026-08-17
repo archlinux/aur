@@ -3,7 +3,7 @@
 
 _pkgname="pdtm"
 pkgname="${_pkgname}-bin"
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="ProjectDiscovery's Open Source Tool Manager"
 arch=(
@@ -37,10 +37,10 @@ source_i686=(
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip"
 )
-sha256sums_aarch64=('0538814579772038b404c9ffa9ac97461537385fdcf564b82cab420b66a08a7a')
-sha256sums_armv7h=('5883f08c873fa963658b536715f8e3d2d6cd543f579617097613da4f6c986739')
-sha256sums_i686=('4fd030941093bb520dd707d29013dd2f74c7dbc8b60941c818b2c3b12a14fc4b')
-sha256sums_x86_64=('82d3affda3539b11876bc7e1cc4d30a31cc0ceb3b9577053db800ff00b18f0fc')
+sha256sums_aarch64=('47d46a383c8ee68aee754fbfc82d074331105864f94431281aac5a418e6de1dd')
+sha256sums_armv7h=('65e3f3b05a05c289969ae9e8d47ffdca58f061dc0f976fc0610bc04f18dd2d05')
+sha256sums_i686=('0cc5deee145fdf51db359b7ec3793695ae8302c52fc0544fe2e8692158a408cf')
+sha256sums_x86_64=('3daa3fddc0cb1b6938d12d917c60150faee2b69b62ac27aa598d8c9267a537c7')
 
 package() {
   cd "${srcdir}"
