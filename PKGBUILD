@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=cdhist
-pkgver=4.6
+pkgver=4.7
 pkgrel=1
 pkgdesc="Linux shell cd history"
 url="https://github.com/bulletmark/$pkgname"
@@ -11,7 +11,7 @@ makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 install="install.sh"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('258ebec3ad3efa810b1cc58beb2848b6d8567919')
+sha1sums=('6efc124a8597a68baf18478da6b3ab8d40f0bca2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
