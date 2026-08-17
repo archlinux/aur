@@ -3,4 +3,3 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!0001-cmake-Use-system-lua.patch
