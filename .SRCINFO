@@ -1,6 +1,6 @@
 pkgbase = unsloth-git
-	pkgdesc = Web UI for training and running open models locally
-	pkgver = 0.1.37.beta.r41.g726abd5
+	pkgdesc = Local UI to run and train LLMs and diffusion models
+	pkgver = 0.1.800.beta.r56.g0ac2e79
 	pkgrel = 1
 	url = https://github.com/unslothai/unsloth
 	install = setup.install
@@ -20,7 +20,9 @@ pkgbase = unsloth-git
 	conflicts = unsloth
 	source = unsloth::git+https://github.com/unslothai/unsloth.git
 	source = unsloth-setup
+	source = unsloth-studio.desktop
 	sha256sums = SKIP
 	sha256sums = 14444b022bd50269d474df655e74c3309959c1bd312214b7b431ed341b26a222
+	sha256sums = 7eb6fb0d8576c26ab9e647dc4a69b546fc8f9a972a66a0f7f44eec0695610b6f
 
 pkgname = unsloth-git

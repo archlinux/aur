@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Unsloth Studio
+GenericName=Model Training Studio
+Comment=Train and run open models locally
+TryExec=unsloth
+Exec=unsloth studio -p 8888
+Icon=unsloth-studio
+Terminal=true
+Categories=Development;
+Keywords=LLM;AI;ML;fine-tuning;training;inference;unsloth;
+StartupNotify=false
