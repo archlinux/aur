@@ -1,6 +1,6 @@
 # Maintainer: Arkady Buryakov <arkady@buryakov.pro>
 pkgname=workforest
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Git worktree forest management: per-branch worktrees with project-defined setup hooks"
 arch=(any)
@@ -10,7 +10,7 @@ depends=(python python-yaml git)
 makedepends=(python-build python-installer python-wheel python-hatchling)
 optdepends=('fzf: interactive TUI (workforest tui)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('47062e51ae374a9afce50ee0be6c39b08da6c96064450b3c2c58566d05fb7078')
+sha256sums=('0f1800613d6fe942b0b76582e08f646a3287e28e0e6baa492b2540ad145d19de')
 
 build() {
   cd "$pkgname-$pkgver"
