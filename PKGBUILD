@@ -2,7 +2,7 @@
 
 # shellcheck disable=SC2164
 
-_pkgver=v0.32.1
+_pkgver=v0.32.2
 pkgver="${_pkgver#v}"
 pkgrel=1
 
@@ -26,7 +26,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python
 optdepends=('python-docstring-parser')
 
 source=("git+${url}#tag=${_pkgver}")
-sha256sums=('2c8d77183c553ce77f343c833925c02d5b8ef7f3ddb34a98ad563807129e35a2')
+sha256sums=('e660a57e3d7a06beacf7c21e07c6aeb40b36803ed4c17c922d9d556c467a536c')
 
 prepare() {
 	git -C "${_pkgname}" clean -dfx # Clean out old wheels etc.
