@@ -1,6 +1,6 @@
 # Maintainer: Swadhin Biswas <swadhinbiswas@users.noreply.github.com>
 pkgname=veet-git
-pkgver=1.0.3.r0.g83d43ef
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Universal Linux application uninstaller & deep-clean residual purger (VCS git version)"
 arch=('x86_64' 'aarch64')

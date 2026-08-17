@@ -1,6 +1,6 @@
 pkgbase = veet-git
 	pkgdesc = Universal Linux application uninstaller & deep-clean residual purger (VCS git version)
-	pkgver = 1.0.3.r0.g83d43ef
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/swadhinbiswas/veet
 	arch = x86_64
