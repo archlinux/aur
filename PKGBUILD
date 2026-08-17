@@ -15,7 +15,7 @@ _pkgname=proton-rtsp
 pkgname=${_pkgname}-bin
 pkgver=11.0_20260609
 pkgrel=2
-epoch=2
+epoch=3
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 provides=('proton' "proton-rtsp=${pkgver/_/.}")
@@ -24,11 +24,9 @@ conflicts=('proton-rtsp')
 ## dependencies
 depends=('python'
   'vulkan-icd-loader'
-  'lib32-openal'
   'lib32-vkd3d'
   # libav support #
   'lib32-libva'
-  'lib32-speex'
   'lib32-libtheora'
   'lib32-libvdpau'
   # gstreamer support #
