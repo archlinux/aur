@@ -1,4 +1,4 @@
-[nvchecker]
+[modsecurity-crs]
 source = "git"
 git = "https://github.com/coreruleset/coreruleset.git"
 prefix = "v"
