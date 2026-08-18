@@ -1,0 +1,39 @@
+pkgbase = crossmacro-git
+	pkgdesc = Development snapshot of CrossMacro mouse and keyboard macro automation
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/alper-han/CrossMacro
+	install = crossmacro.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = dotnet-sdk>=10.0
+	makedepends = clang
+	makedepends = zlib
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = zlib
+	depends = openssl
+	depends = fontconfig
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	depends = polkit
+	depends = libxtst
+	depends = shadow
+	depends = systemd
+	depends = systemd-libs
+	depends = libxkbcommon
+	depends = icu
+	provides = crossmacro
+	conflicts = crossmacro
+	options = !strip
+	source = crossmacro::git+https://github.com/alper-han/CrossMacro.git#commit=a23dd3b6662c7c53b783d87151994692ef4a5ce4
+	source = crossmacro.sysusers
+	source = crossmacro-modules.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = crossmacro-git
