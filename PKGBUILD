@@ -3,13 +3,13 @@
 
 pkgname=abcpp
 pkgver=1.4.6
-pkgrel=4
+pkgrel=5
 pkgdesc='A preprocessor designed for, but not limited to, ABC music files'
 url='https://abcplus.sourceforge.net/#abcpp'
 license=(GPL2)
 arch=(aarch64 x86_64)
 depends=(glibc)
-groups=(abc pro-audio)
+groups=(abc-notation pro-audio)
 source=("https://sourceforge.net/projects/abcplus/files/$pkgname/$pkgname-$pkgver.tar.gz"
         'abcpp-makefile-cflags.patch')
 sha256sums=('05a9a7f81b35aff8f1b03ad0c41539508812ec1e52d2f584a180d3c12e35edc1'

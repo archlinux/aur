@@ -1,0 +1,5 @@
+[abcpp]
+source = "regex"
+url = "https://abcplus.sourceforge.net/"
+regex = 'abcpp-(\d+\.\d+(?:\.\d+)?).tar.gz'
+encoding = "utf-8"
