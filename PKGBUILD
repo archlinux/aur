@@ -6,6 +6,7 @@
 # depends on the virtual this provides, so pacman offers this as one of the
 # choices when `wdm-wayland` is installed on its own.
 pkgname=wdm-webkit-greeter
+backup=('etc/wdm/webkit-greeter.toml')
 pkgver=0.9.0
 pkgrel=1
 pkgdesc='WebKitGTK greeter for wdm, with themes written in HTML, CSS and JavaScript'
@@ -49,6 +50,11 @@ check() {
 package() {
   cd "$_src"
   install -Dm755 target/release/wdm-webkit-greeter "$pkgdir/usr/lib/wdm/wdm-webkit-greeter"
+
+  # Fully commented out, so the defaults are also the documentation. In
+  # backup= so pacman delivers a changed default as a .pacnew instead of
+  # clobbering an edited one.
+  install -Dm644 packaging/webkit-greeter.toml.example "$pkgdir/etc/wdm/webkit-greeter.toml"
 
   # Themes are data, not documentation: the greeter refuses to start without the
   # one it was pointed at, and the default is the worked example of the
