@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=wnr-bin
-pkgver=1.33.0
+pkgver=1.34.0
 _electronversion=22
 pkgrel=1
 pkgdesc="Work/Rest Timer. Stricter. Prettier. More features.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/RoderickQiu/wnr/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('970c173b333cf326057e96a642978ebb99bd86e980572f338a3b43126be35bce'
+sha256sums=('179c9bcd0005333248a1f3b5361157ceac30dd107d6f22630931a8a12bba475b'
             '1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
