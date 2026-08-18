@@ -2,7 +2,7 @@
 
 pkgname=byparr
 _name=Byparr
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="A Python based proxy that greatly increases the chance challenges will be bypassed."
 arch=('any')
@@ -31,7 +31,7 @@ source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz"
         'byparr.service'
         'byparr.sysusers')
 
-sha256sums=('5ca62a88fff1d31178d636bf62a0a76c7e61100ac4ff64683e69558f50ac9381'
+sha256sums=('e71246efb5e6908f1297efc98b97793f406b404eb8248682f6be1aa458d44bb9'
             '270d7b655db58366d6ec533aa7565e8eaf685adbcb7e0bf17548ca505aed2d31'
             '3c332dc86e413980402663b57f35653b34047d9d01d069b35c15cf60e68ee5d2')
 

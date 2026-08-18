@@ -1,6 +1,6 @@
 pkgbase = byparr
 	pkgdesc = A Python based proxy that greatly increases the chance challenges will be bypassed.
-	pkgver = 3.0.3
+	pkgver = 3.0.4
 	pkgrel = 1
 	url = https://github.com/ThePhaseless/Byparr
 	arch = any
@@ -23,10 +23,10 @@ pkgbase = byparr
 	depends = python-ua-parser
 	depends = python-ua-parser-builtins
 	depends = python-language-tags
-	source = byparr-3.0.3.tar.gz::https://github.com/ThePhaseless/Byparr/archive/v3.0.3.tar.gz
+	source = byparr-3.0.4.tar.gz::https://github.com/ThePhaseless/Byparr/archive/v3.0.4.tar.gz
 	source = byparr.service
 	source = byparr.sysusers
-	sha256sums = 5ca62a88fff1d31178d636bf62a0a76c7e61100ac4ff64683e69558f50ac9381
+	sha256sums = e71246efb5e6908f1297efc98b97793f406b404eb8248682f6be1aa458d44bb9
 	sha256sums = 270d7b655db58366d6ec533aa7565e8eaf685adbcb7e0bf17548ca505aed2d31
 	sha256sums = 3c332dc86e413980402663b57f35653b34047d9d01d069b35c15cf60e68ee5d2
 
