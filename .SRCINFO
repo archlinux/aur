@@ -1,20 +1,17 @@
 pkgbase = minizinc-ide
-	pkgdesc = Simple IDE for writing and running MiniZinc models
-	pkgver = 2.9.3
+	pkgdesc = Integrated development environment for the high-level constraint modelling language MiniZinc
+	pkgver = 2.10.0
 	pkgrel = 1
-	url = http://www.minizinc.org/ide/
-	install = minizinc-ide.install
+	url = https://github.com/MiniZinc/MiniZincIDE
 	arch = x86_64
-	license = MPL2
-	provides = minizinc
-	conflicts = libminizinc
-	conflicts = minizinc-ide-edge
-	options = !strip
-	source = minizinc-ide.desktop
-	source = https://raw.githubusercontent.com/MiniZinc/MiniZincIDE/master/resources/icon.png
-	source = https://github.com/MiniZinc/MiniZincIDE/releases/download/2.9.3/MiniZincIDE-2.9.3-bundle-linux-x86_64.tgz
-	sha256sums = 9928044890140a0f0e6f17df8b5f11acfea0b4fd7a8f494309a38b37bb7d71c2
-	sha256sums = eaa69a6d1b8a3e307d1b400b74273995abb914fbe1246c65fc9b3955b2094023
-	sha256sums = c91173aad2bc2d5dda19e8436428201417beae348a66ab2ce934de6763b444e0
+	license = MPL-2.0
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-websockets
+	source = git+https://github.com/MiniZinc/MiniZincIDE.git#tag=2.10.0
+	sha256sums = dd1a6db6ec1fb2840b2e43e349922dfef0048846e7ef7fde2293bf2ff1043974
 
 pkgname = minizinc-ide
