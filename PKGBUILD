@@ -1,11 +1,11 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy
-pkgver=5.3.13.35923969_20fd9da5
+pkgver=5.3.14.36279234_825709d4
 pkgrel=1
-pkgdesc="Work Smart，Not Hard"
+pkgdesc="腾讯云代码助手推出的 AI Agent 办公工具(中国版）"
 arch=('x86_64' 'aarch64')
-url="https://www.codebuddy.ai/agents"
+url="https://www.workbuddy.cn/app"
 license=('custom')
 depends=('electron')
 makedepends=('asar'
@@ -24,10 +24,10 @@ source=(
   "${_registry}/better-sqlite3/-/better-sqlite3-13.0.3.tgz"
 )
 sha256sums=('SKIP'
-            '6566e616904b2e168886c0523fbea7432a03e14d2e79fcb7b80ae88912e396a9'
+            'cd04f9e6b3460d6a3513902b807936a90999d2c4f56f34447f7e8727a8832138'
             '77e0513dc1a469fb3bceec4c7fb5ad3f403109787eda05be047ec17fd56868cb')
-source_x86_64=("node-pty-x86_64.gz::${_registry}/@lydell/node-pty-linux-x64/-/node-pty-linux-x64-1.2.0-beta.14.tgz")
-source_aarhc64=("node-pty-aarh64.gz::${_registry}/@lydell/node-pty-linux-arm64/-/node-pty-linux-arm64-1.2.0-beta.14.tgz")
+source_x86_64=("node-pty-x86_64.tgz::${_registry}/@lydell/node-pty-linux-x64/-/node-pty-linux-x64-1.2.0-beta.14.tgz")
+source_aarhc64=("node-pty-aarh64.tgz::${_registry}/@lydell/node-pty-linux-arm64/-/node-pty-linux-arm64-1.2.0-beta.14.tgz")
 sha256sums_x86_64=('53bee2cd02265b118392f7d99a4c72337f4a5003c0d0f9ee01646c19af59fa1f')
 sha256sums_aarch64=('SKIP')
 changelog="changelog.md"
@@ -39,9 +39,9 @@ pkgver() {
     sed 's/-/_/' <<<${_nfile%.*}
 }
 
-noextract=("node-pty-x86_64.gz" "node-pty-aarh64.gz")
+noextract=("node-pty-x86_64.tgz" "node-pty-aarh64.tgz")
 prepare() {
-    tar xzf node-pty-${CARCH}.gz -C WorkBuddy.app/Contents/Resources/
+    tar xzf node-pty-${CARCH}.tgz -C WorkBuddy.app/Contents/Resources/
 }
 
 build() {
