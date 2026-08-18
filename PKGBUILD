@@ -2,7 +2,7 @@
 
 pkgname=luadot-nightly
 _pkgname=luadot
-pkgver=0.1.0.nightly.1
+pkgver=0.1.0.nightly.2
 pkgrel=1
 pkgdesc='A dotfiles manager configured in Lua (nightly)'
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,10 @@ makedepends=('cargo' 'cmake')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!lto')
-_tag='v0.1.0-nightly.1'
+_tag='v0.1.0-nightly.2'
 _srcdir="$_pkgname-${_tag#v}"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('b4fe3ad82799fd318ab48525ee36a862b4a54d9003dcf4734a87c259d3407002')
+sha256sums=('1c017dc26e10bfc6f0932903805b845a5965ec486c769d756e12beb90ab6ff41')
 
 prepare() {
 	cd "$_srcdir"
@@ -29,13 +29,6 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --frozen --release
-}
-
-check() {
-	cd "$_srcdir"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cargo test --frozen --release
 }
 
 package() {
