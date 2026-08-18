@@ -1,11 +1,11 @@
 # Maintainer: Axel Haustant <noirbizarre@gmail.com>
 #
-# Prebuilt binary package. `0.2.0` and `5ee0d2f04ce54a6050d49646bf0fa2cb35fd633c591420e3c6830937c698e162` are substituted by
+# Prebuilt binary package. `0.3.0` and `946b4e033f9a8d7f407e1225ccb40576c95a879e78604aeafd95b9e640887162` are substituted by
 # .github/workflows/aur.yml from the published release assets.
 
 pkgname=snypr-bin
 _pkgname=snypr
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Screenshot, annotation, and live-drawing tool for Hyprland and wlroots compositors (prebuilt binary)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=("$_pkgname-$pkgver-$CARCH.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('5ee0d2f04ce54a6050d49646bf0fa2cb35fd633c591420e3c6830937c698e162')
+sha256sums=('946b4e033f9a8d7f407e1225ccb40576c95a879e78604aeafd95b9e640887162')
 
 package() {
   cd "$_pkgname-$pkgver-${CARCH}-unknown-linux-gnu"
