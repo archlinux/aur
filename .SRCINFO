@@ -1,6 +1,6 @@
 pkgbase = gz-transport15
 	pkgdesc = Transport library for component communication based on publication/subscription and service calls.
-	pkgver = 15.0.2
+	pkgver = 15.1.0
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-transport
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = gz-transport15
 	depends = protobuf
 	depends = zeromq
 	provides = gz-transport=15
-	source = https://github.com/gazebosim/gz-transport/archive/gz-transport15_15.0.2.tar.gz
-	sha256sums = c8483883f6dae93e154c1d189962f5dea0ca88c846a1463f16bb80063ec39b0f
+	source = https://github.com/gazebosim/gz-transport/archive/gz-transport15_15.1.0.tar.gz
+	sha256sums = 8191adf883aaea97d3eba95b7a0f4fba9c0407b5e44ae5c23b673522fb827334
 
 pkgname = gz-transport15
