@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=miniupnpd-iptables-legacy
-pkgver=2.3.10
+pkgver=2.3.11
 pkgrel=1
 pkgdesc="Lightweight UPnP IGD daemon (iptables-legacy backend)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ conflicts=('miniupnpd')
 backup=('etc/miniupnpd/miniupnpd.conf')
 source=("miniupnpd-$pkgver-src.tar.gz::https://github.com/miniupnp/miniupnp/releases/download/miniupnpd_${pkgver//./_}/miniupnpd-$pkgver.tar.gz"
         "miniupnpd-$pkgver-src.tar.gz.sig::https://github.com/miniupnp/miniupnp/releases/download/miniupnpd_${pkgver//./_}/miniupnpd-$pkgver.tar.gz.sig")
-sha256sums=('f9c34ed3632fb60cd248dd5897bd98479a103a75688b056ca2f069e68ab32987'
+sha256sums=('91994b127da735b2c97f19992e34420648c0e8c4ace8a4bcb0596e7685c48678'
             'SKIP')
 validpgpkeys=('751E9FF6944A3B36A5432216DB511043A31ACAAF')  # miniupnp <miniupnp@free.fr>
 
