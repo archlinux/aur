@@ -25,7 +25,7 @@ _renderer=gl
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r72314.5fdea9f1c30
+pkgver=r72345.d81c9184b1a
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -57,7 +57,7 @@ _gitname=xbmc
 _codename=master
 
 # upstream pull requests to apply
-_prs=(28977)
+_prs=()
 
 # Found on their respective github release pages. One can check them against
 # what is pulled down when not specifying them in the cmake step.
