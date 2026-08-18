@@ -1,6 +1,6 @@
 pkgbase = file-manager-bin
 	pkgdesc = Linux desktop file manager written in Rust and Iced
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/nsjsv/File_Manager
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = file-manager-bin
 	optdepends = udisks2: storage device discovery and management
 	provides = file-manager
 	conflicts = file-manager
-	source_x86_64 = https://github.com/nsjsv/File_Manager/releases/download/v0.2.2/file-manager-v0.2.2-x86_64.tar.gz
-	sha256sums_x86_64 = af984887b30bbe2b1741c2e59f274248a7d221d635161e07b28fb48be76af940
+	source_x86_64 = https://github.com/nsjsv/File_Manager/releases/download/v0.2.3/file-manager-v0.2.3-x86_64.tar.gz
+	sha256sums_x86_64 = 99d7d251f0bef0150ee502d5767242a7c0d9dda8a1ee6b01ab1b4970b2729a54
 
 pkgname = file-manager-bin
