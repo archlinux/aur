@@ -1,18 +1,17 @@
 pkgname='python-pptree'
 _name='pptree'
-pkgver=2.0
+pkgver=3.1
 pkgrel=1
-pkgdesc='Python tree pretty-print '
+pkgdesc='Pretty print trees'
 url="https://github.com/clemtoy/${_name}"
 makedepends=('python')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('fbb8c42f7fab308103d93a81b769e472')
+sha256sums=('4dd0ba2f58000cbd29d68a5b64bac29bcb5a663642f79404877c0059668a69f6')
 
 build() {
 	cd "${srcdir}/${_name}-${pkgver}"
-	sed -i 's/include_dirs/include_path/' setup.py
 	python setup.py build
 }
 
