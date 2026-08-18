@@ -1,6 +1,6 @@
 pkgbase = miniupnpd-nft
 	pkgdesc = Lightweight UPnP IGD daemon (native nft backend)
-	pkgver = 2.3.10
+	pkgver = 2.3.11
 	pkgrel = 1
 	url = http://miniupnp.free.fr
 	arch = i686
@@ -15,13 +15,14 @@ pkgbase = miniupnpd-nft
 	depends = libmnl
 	depends = libnftnl
 	depends = util-linux-libs
-	provides = miniupnpd=2.3.10
+	optdepends = nftables
+	provides = miniupnpd=2.3.11
 	conflicts = miniupnpd
 	backup = etc/miniupnpd/miniupnpd.conf
-	source = miniupnpd-2.3.10-src.tar.gz::https://github.com/miniupnp/miniupnp/releases/download/miniupnpd_2_3_10/miniupnpd-2.3.10.tar.gz
-	source = miniupnpd-2.3.10-src.tar.gz.sig::https://github.com/miniupnp/miniupnp/releases/download/miniupnpd_2_3_10/miniupnpd-2.3.10.tar.gz.sig
+	source = miniupnpd-2.3.11-src.tar.gz::https://github.com/miniupnp/miniupnp/releases/download/miniupnpd_2_3_11/miniupnpd-2.3.11.tar.gz
+	source = miniupnpd-2.3.11-src.tar.gz.sig::https://github.com/miniupnp/miniupnp/releases/download/miniupnpd_2_3_11/miniupnpd-2.3.11.tar.gz.sig
 	validpgpkeys = 751E9FF6944A3B36A5432216DB511043A31ACAAF
-	sha256sums = f9c34ed3632fb60cd248dd5897bd98479a103a75688b056ca2f069e68ab32987
+	sha256sums = 91994b127da735b2c97f19992e34420648c0e8c4ace8a4bcb0596e7685c48678
 	sha256sums = SKIP
 
 pkgname = miniupnpd-nft
