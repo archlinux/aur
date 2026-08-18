@@ -28,6 +28,7 @@ makedepends=(
   'extra-cmake-modules'
   'git'
   'ninja'
+  'vulkan-headers'
 )
 
 _pkgsrc="kwin-effect-luminvert"
