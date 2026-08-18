@@ -2,7 +2,7 @@
 
 pkgname=tidal-hifi-git
 pkgrel=1
-pkgver=8.1.2.r0.g1aadfcb
+pkgver=8.1.3.r0.gb1326db
 pkgdesc="The web version of tidal.com running in electron with hifi support thanks to widevine"
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
