@@ -1,8 +1,8 @@
 # Maintainer: axel10 <https://github.com/axel10/vynody>
 pkgname=vynody-bin
 _pkgname=vynody
-pkgver=1.17.0
-pkgrel=2
+pkgver=1.17.1
+pkgrel=1
 pkgdesc="Cross-platform local music/audio player with synced lyrics and audio tag editor"
 arch=('x86_64')
 url="https://github.com/axel10/vynody"
@@ -28,7 +28,7 @@ options=('!strip')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source_x86_64=("${pkgname}-${pkgver}.deb::${url}/releases/download/${pkgver}/${_pkgname}-linux-${pkgver}-amd64.deb")
-sha256sums_x86_64=('bcd4ce4e20c5b5a0c471591eb74956bfbac6c01637b2449a8111e0de4f2a5fad')
+sha256sums_x86_64=('e146c0fbb16c8bcab16890156641a96db80b2cab62bc6de44b8167ddc91729f5')
 
 package() {
   local data_archive
