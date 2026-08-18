@@ -1,0 +1,14 @@
+/*
+
+!/PKGBUILD
+!/keys/
+!/keys/**
+!/.SRCINFO
+!/.gitignore
+
+!/LICENSE
+!/LICENSES/
+!/LICENSES/**
+!/REUSE.toml
+
+!/config
