@@ -10,7 +10,7 @@
 # byte for byte what the source package would have produced.
 
 pkgname=viewport-webkitgtk-bin
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc='Wayland compositor whose shell is a web page — WebKitGTK, out of process (binary release)'
 arch=('x86_64')
@@ -85,7 +85,7 @@ options=('!strip' '!debug')
 # Downloaded under a name that is not *.pkg.tar.*, so the artifact sitting in
 # the build directory is not mistaken for the package this recipe produced.
 source_x86_64=("$pkgname-$pkgver.tar.zst::$url/releases/download/v$pkgver/viewport-webkitgtk-$pkgver-$_pkgrel-$CARCH.pkg.tar.zst")
-sha256sums_x86_64=('8c69164ea0a51a9b1f788874482a30853796f486a778bda74e644f73cc150874')
+sha256sums_x86_64=('a3a95f61de03c13e8ce98168d5d59182bf3a0fa4194cf2870ae5b8735ca84e4e')
 
 package() {
   # The source is an Arch package, so makepkg has already unpacked a $pkgdir
