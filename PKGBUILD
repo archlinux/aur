@@ -3,16 +3,16 @@
 # Contributor: Nicholas Wang <me AT nicho1as DOT wang>
 
 pkgname=('python-timezonefinder')
-pkgdesc="Fast and lightweight project for looking up the timezone for a given lat/lng"
-pkgver=8.1.0
+pkgdesc="python package for finding the timezone of any point on earth (coordinates) offline"
+pkgver=8.2.5
 pkgrel=1
-url="https://github.com/MrMinimal64/timezonefinder"
+url="https://github.com/jannikmi/timezonefinder"
 license=('MIT')
 arch=('any')
 depends=('python-h3' 'python-numpy' 'python-cffi' 'python-flatbuffers')
-makedepends=('python-build' 'python-installer' 'python-setuptools'  'python-poetry-core')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-poetry-core')
 source=("https://github.com/jannikmi/timezonefinder/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('d780b6749c60df57cbe46df947534c2f42ba3aadf08c366aa7ff2cc104e2c2b6acef50e185964e5a2951b1e72ef168df80fc7fae1090cc20f0e1b0cc4eaedff5')
+b2sums=('d8f41cd6deb333592e9419a1a249cca6ff5e4c2fb760b6c2e5ca61b7a4d56a6e2ad84abd63c385c0282631f4b362815377100b8da0d5b0199e4608bd62e010da')
 
 build() {
   python -m build --no-isolation --wheel --outdir ${srcdir}/dist/ ${srcdir}/timezonefinder-${pkgver}
