@@ -1,14 +1,14 @@
 # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
 pkgname=yadaw-bin
 _pkgname=yadaw
-pkgver=0.9.2
-_tag=v0.9.2
-pkgrel=2
+pkgver=0.10.3
+_tag=v0.10.3
+pkgrel=1
 pkgdesc="Yet Another mini-DAW - a lightweight sfx tool in pure Rust (binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mlm-games/yadaw"
 license=('GPL3')
-depends=('alsa-lib' 'lilv' 'suil' 'sratom' 'libx11' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi')
+depends=('alsa-lib' 'libx11' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi')
 optdepends=(
   'pipewire-pulse: for PipeWire audio support'
   'pulseaudio: for PulseAudio audio support'
@@ -22,8 +22,8 @@ source_aarch64=("${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https:/
 
 source=("icon.png::https://raw.githubusercontent.com/mlm-games/yadaw/refs/heads/master/fastlane/metadata/android/en-US/images/icon.png")
 
-sha256sums_x86_64=('1897a349e3fad0d41c9d526a6367accc2423828d8ca7a1ea62f970ecdf553d70')
-sha256sums_aarch64=('b250a08ddb2f228c584ba5b6eced6ead948f14969104ad436d0b877ea5204d3f')
+sha256sums_x86_64=('c728a223e7e5a40dd04dcc3557c6cf69309acfec0206c35b9cf3216a1c9a2af8')
+sha256sums_aarch64=('5e048aac54de7efb39b610bea730b9294c62e25c8eb7b5d1d1e59d8a97afe637')
 sha256sums=('SKIP') # for icon.png
 
 package() {
