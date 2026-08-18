@@ -4,19 +4,19 @@
 # Michael Lass <bevan at bi-co dot net>
 
 _major=25
-_minor=1.3
+_minor=2.4
 
 # In the versioning scheme of GraalVM since JDK 25, three version numbers are
 # relevant:
-# - GraalVM release version: "GraalVM 25 Innovation 1" or 25i1
-# - Graal compiler version: "graal 25.1.3"
-# - Base JDK version: "jdk 25.0.3"
+# - GraalVM release version: "GraalVM 25 Innovation 2" or 25i2
+# - Graal compiler version: "graal 25.2.4"
+# - Base JDK version: "jdk 25.0.4"
 # We track the first (Graal compiler version) with this package since it is what
 # they use in their release notes <https://www.graalvm.org/release-notes/25.1/>.
 
-_release=25i1
-_jdkver=25.0.3
-_build=+9.1
+_release=25i2
+_jdkver=25.0.4
+_build=+7.1
 
 pkgname="jdk${_major}-graalvm-ce-bin"
 pkgver="${_major}.${_minor}"
@@ -43,8 +43,8 @@ options=('staticlibs' !debug !strip)
 install=install_jdk25-graalvm-ce.sh
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/graalvm-community-jdk-${_release}-${_jdkver}_linux-x64_bin.tar.gz")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-${pkgver}/graalvm-community-jdk-${_release}-${_jdkver}_linux-aarch64_bin.tar.gz")
-sha256sums_x86_64=('e9cd1637be853e105f8b09125b4b19fbce385696465d782cbca8bb80e1df8f0d')
-sha256sums_aarch64=('5e79978983439d28506ebef82254fe9f98995121208dc8be77c604f4ad5bc579')
+sha256sums_x86_64=('3f4a89de8eaa96f2ed677f09957c7e872cd8467aad3537f8b5394c1b8c4b942e')
+sha256sums_aarch64=('22286f7ecd21b9aedb3226b9bf797469e1bd3eefc491e12ef3dd49b452d230b7')
 
 _jvmdir=/usr/lib/jvm/java-${_major}-graalvm-ce
 _jdkdir="graalvm-community-${pkgver}${_build}"
