@@ -1,6 +1,6 @@
 pkgbase = mcstatus
 	pkgdesc = Provides an easy way to query Minecraft servers for any information they can expose.
-	pkgver = 14.0.0
+	pkgver = 14.1.0
 	pkgrel = 1
 	url = https://github.com/py-mine/mcstatus
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = mcstatus
 	depends = python-dnspython
 	depends = python-asyncio-dgram
 	depends = python-typing_extensions
-	source = mcstatus-14.0.0.tar.gz::https://files.pythonhosted.org/packages/source/m/mcstatus/mcstatus-14.0.0.tar.gz
-	sha256sums = 92141abd6037c2e18e910061f895a23918e6e6bfd462cfba0a3b9bd0ed893942
+	source = mcstatus-14.1.0.tar.gz::https://files.pythonhosted.org/packages/source/m/mcstatus/mcstatus-14.1.0.tar.gz
+	sha256sums = 4f9bd17ecf29b3bad9af8811b33126e996e197526d1d72554dc4f1f7e86a2fb0
 
 pkgname = mcstatus
