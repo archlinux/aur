@@ -11,8 +11,8 @@ pkgbase = dewey-bin
 	provides = dewey
 	conflicts = dewey
 	source_x86_64 = dewey-0.2.0-x86_64.tar.gz::https://github.com/tedwardd/dewey/releases/download/v0.2.0/dewey-linux-x86_64-v0.2.0.tar.gz
-	sha256sums_x86_64 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums_x86_64 = 9bf06484be314578a005f8da5cee3073449ca84cccc13df9f17aeb7a08ffb937
 	source_aarch64 = dewey-0.2.0-aarch64.tar.gz::https://github.com/tedwardd/dewey/releases/download/v0.2.0/dewey-linux-aarch64-v0.2.0.tar.gz
-	sha256sums_aarch64 = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums_aarch64 = a9475e7de2a5be68c1096e152b3f97d517cfef6b3509aecdf5e151fb69d16555
 
 pkgname = dewey-bin
