@@ -4,7 +4,7 @@
 pkgbase=logitech-trueforce-dkms
 pkgname=('logitech-trueforce-dkms' 'logi-wheel' 'logi-wheel-gui')
 _dkmsname=logitech-trueforce
-pkgver=0.37.1
+pkgver=0.38.0
 pkgrel=1
 pkgdesc="DKMS kernel driver for Logitech racing wheels (RS50, G PRO, G923): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 arch=('x86_64')
@@ -27,7 +27,7 @@ options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v0.18.0 release tarball. On the next version bump, regenerate:
 #   updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('2c3e85a4d16c58e844d44cfea17c5e75cbd527dcc2776eb7ccc04cf1a4332fc1')
+sha256sums=('5248d6c495d2d501ed83f14074fb51cb1726b574f6be3f9dd014e9926ef3bf2b')
 
 _src() {
 	echo "$srcdir/logitech-trueforce-linux-driver-$pkgver"
@@ -53,7 +53,7 @@ package_logitech-trueforce-dkms() {
 	pkgdesc="DKMS kernel driver for Logitech racing wheels (RS50, G PRO, G923): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 	license=('GPL-2.0-only')
 	# No dependency on logi-wheel. This package installs udev rule 73, and
-	# that rule dispatches /usr/bin/logi-g923-modeswitch, so the two have
+	# that rule dispatches /usr/bin/logi-wheel-modeswitch, so the two have
 	# to arrive together or the rule silently does nothing and a G923 Xbox
 	# edition stays in console mode looking like dead hardware. Depending
 	# on logi-wheel fixed that and created a cycle, since logi-wheel
@@ -65,7 +65,7 @@ package_logitech-trueforce-dkms() {
 	# belonged anyway.
 	depends=('dkms' 'usbutils')
 	optdepends=('oversteer: GUI to configure wheel settings'
-	            'usb_modeswitch: switch the G923 Xbox edition (c26d) into PC mode on plug-in')
+	            'usb_modeswitch: switch an Xbox edition (G923 c26d, RS50 c275) into PC mode on plug-in')
 	provides=("$_dkmsname")
 	conflicts=("$_dkmsname")
 	install=$pkgbase.install
@@ -105,14 +105,14 @@ package_logitech-trueforce-dkms() {
 	# competing driver that won the bind race, PID-scoped only.
 	install -Dm644 "$_src/udev/72-logitech-g923-rebind.rules" \
 		"$pkgdir/usr/lib/udev/rules.d/72-logitech-g923-rebind.rules"
-	# G923 Xbox edition (c26d) boot-mode switch: needs usb_modeswitch
+	# Xbox editions (G923 c26d, RS50 c275) boot-mode switch: needs usb_modeswitch
 	# (optdepends above), a no-op without it.
-	install -Dm644 "$_src/udev/73-logitech-g923-xbox-modeswitch.rules" \
-		"$pkgdir/usr/lib/udev/rules.d/73-logitech-g923-xbox-modeswitch.rules"
+	install -Dm644 "$_src/udev/73-logitech-xbox-modeswitch.rules" \
+		"$pkgdir/usr/lib/udev/rules.d/73-logitech-xbox-modeswitch.rules"
 	# The helper that rule dispatches. Same package, so the rule can never
 	# be installed without it.
-	install -Dm755 "$_src/tools/g923-xbox-modeswitch.sh" \
-		"$pkgdir/usr/bin/logi-g923-modeswitch"
+	install -Dm755 "$_src/tools/xbox-modeswitch.sh" \
+		"$pkgdir/usr/bin/logi-wheel-modeswitch"
 
 	# softdep ordering hint for the G923 PIDs, plus a narrow blacklist of
 	# the standalone new-lg4ff DKMS fork (see the file for why that one
@@ -197,6 +197,11 @@ package_logi-wheel() {
 	# Prebuilt because no distro builder ships a Rust Windows target.
 	install -Dm644 "$_src/tools/logi-tf-relay.exe" \
 		"$pkgdir/usr/share/logitech-trueforce/logi-tf-relay.exe"
+	# The recorded TrueForce init burst logi-launch replays when
+	# LOGI_TF_REARM is set. Without it that recovery path silently
+	# cannot work on this channel alone.
+	install -Dm644 "$_src/tools/tf-init.bin" \
+		"$pkgdir/usr/share/logitech-trueforce/tf-init.bin"
 
 	# G923 Xbox mode-switch helper, dispatched by udev rule 73. Must not be
 	# run from the udev worker itself; see the rule's own comment.
