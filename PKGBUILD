@@ -2,8 +2,8 @@
 pkgname=stoat-desktop-git
 _pkgname=Stoat
 _debname="chat.stoat.${_pkgname}Desktop"
-pkgver=1.4.2.r0.g730cc3d
-_electronversion=40
+pkgver=1.5.1.r1.g09f1bc0
+_electronversion=43
 _nodeversion=24
 pkgrel=1
 pkgdesc="Stoat for Desktop.(Use system-wide electron)"
@@ -85,7 +85,6 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-git}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _set_build_env
     _ensure_local_nvm
