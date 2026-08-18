@@ -1,7 +1,7 @@
 pkgbase = nvitop
 	pkgdesc = Interactive NVIDIA-GPU process viewer and GPU process management
 	pkgver = 1.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XuehaiPan/nvitop
 	arch = any
 	license = Apache-2.0
@@ -10,7 +10,7 @@ pkgbase = nvitop
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
-	depends = python-pynvml
+	depends = python-nvidia-ml-py
 	depends = python-psutil
 	depends = python-typing_extensions
 	depends = ncurses
