@@ -2,8 +2,8 @@
 # Maintainer: Eric Lee <well dot dragonfly dot aaww at mask dot me>
 
 pkgname=grok-build-bin
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="SpaceXAI's coding agent harness and TUI. Fullscreen, mouse interactive, extensible."
 arch=(
   'x86_64' 
@@ -24,8 +24,8 @@ source=(
   "requirements.toml"
 )
 
-b2sums_x86_64=('79a1fa9bcace912194d15260e3cd391fc860826df2c2dc7b6abc8f3669192812f60856a2913ea5e3f5c898af7c5ec2e9bbc782e18737fe5a50f73c120710ff6e')
-b2sums_aarch64=('65bf89e91d863723803c24b4a4d0292346dd7dc711d1819b413410e0f14c545ef4deb544d0515a9012273705908151d21f02ddd8e7abc1f2455333d531d6b70a')
+b2sums_x86_64=('0465acf98f47b9613d2bc963ab8c132e52e0e062f7ce7a8578459e49030352f9a7663ecf0427beb1e2387d9119854880d241f65b75ef34603da856da0915af58')
+b2sums_aarch64=('dc05a307d094bd563ca6ff3c3f9ed97ea8acc37ffabe70acb771bb61fc8509d52cea8c6b9cbf539f0533a4c704bb9062f77e42e440da47abad342f6b001a12f0')
 b2sums=(
   'd71170807c24118616aa2c4a1c2927bd4408ed6a7694bb02ad007aa5fad8939d42f586d576c1fd3d4e505e0eeb715443cdadcf268750807c860eb28c23ba53fa'
   '4d37a050b4fa861b2ee076940908f4dfef7419e6297425bb3dfe6c26fcb9440b01befff1837451b9bed194ee45a3f52e30b040bd356b32a5bb178ede6aea694e'
