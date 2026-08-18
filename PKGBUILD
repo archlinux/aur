@@ -1,6 +1,6 @@
 # Maintainer: Adam Kovari <adam@kovari.eu>
 pkgname=yona-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Yona programming language compiler targeting LLVM"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('yona')
 conflicts=('yona')
 options=('!strip')
 source=("$pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/yona-lang/yonac-llvm/releases/download/v$pkgver/yona-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('f26ced8884cbe1ad9dea199f519f8491096d0018df81a7405fd1069d86fae869')
+sha256sums=('da9275426ab98575d4d9026819d391e9ad35a065ed7a615acb9e30ac9c4332e1')
 
 package() {
   cd "yona-${pkgver}-linux-x86_64"
