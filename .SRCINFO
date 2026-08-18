@@ -1,0 +1,7 @@
+pkgbase = symlink-ping6-ping
+	pkgdesc = Simply creates a symlink for ping6 that points to ping
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+
+pkgname = symlink-ping6-ping
