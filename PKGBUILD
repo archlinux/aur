@@ -3,7 +3,7 @@
 # Contributor: axiom <hello@axiom.co>
 
 pkgname='axiom-bin'
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='Powerful log analytics from the comfort of your command-line'
 url='https://axiom.co'
@@ -12,17 +12,17 @@ license=('MIT')
 provides=('axiom-bin')
 conflicts=('axiom-bin' 'axiom-git')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.16.0/axiom_0.16.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('f7ce7c955cb2178d9af88cb8446f41a2e22c91eed90c0dc1ad7d25d791636923')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/axiomhq/cli/releases/download/v${pkgver}/axiom_${pkgver}_linux_arm64.tar.gz")
+sha256sums_aarch64=('abc8a5aebde9c7d22a85f62d82f6a2bbabb7660cc39303f5133bf62dbd97cee1')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.16.0/axiom_0.16.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('2e99b55bbdfb8756cda6cf0fc063e936790b53345c6609079e63be8a5a5692f4')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/axiomhq/cli/releases/download/v${pkgver}/axiom_${pkgver}_linux_armv7.tar.gz")
+sha256sums_armv7h=('17ef9f5c32210366b0ce259395b5cf715ea661e3fef3d6b92635a7cf653b94af')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.16.0/axiom_0.16.0_linux_386.tar.gz")
-sha256sums_i686=('304b34a8adad14a4e9a43ee9e5e2dffd6222173018b2aa74928877f25b2fffa8')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/axiomhq/cli/releases/download/v${pkgver}/axiom_${pkgver}_linux_386.tar.gz")
+sha256sums_i686=('fa33d6a88e973cf72954a56943f8173831b587b86ef2ff1047b870d8f296a925')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.16.0/axiom_0.16.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('458ea87f218795585f0d62aa8fa75ed8435b4426888af18a350222f47c0dacd5')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/axiomhq/cli/releases/download/v${pkgver}/axiom_${pkgver}_linux_amd64.tar.gz")
+sha256sums_x86_64=('4b600e0705820d7228d9964647b41d9f88c48e81873b5546afac64998e830758')
 
 package() {
   case "$CARCH" in
