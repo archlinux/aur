@@ -1,6 +1,6 @@
 # Maintainer: munenick <https://github.com/MuNeNICK>
 pkgname=hypr-rdp
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Native RDP server for Hyprland"
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=(
     'libva-mesa-driver: VA-API hardware encoding for AMD GPUs'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MuNeNICK/hypr-rdp/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7cbe5cfe925335515df93a224c939d3f48ed9595a01455e47d64cfaf40dce26b')
+sha256sums=('e81e640c99070f803882bf61198a5e3a733dc54724b857850559014cd3fcf20c')
 
 prepare() {
     cd "$pkgname-$pkgver"
