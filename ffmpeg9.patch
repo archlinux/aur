@@ -1,0 +1,272 @@
+diff '--color=auto' -rdN -U5 a/libffabi/src/ffabi.c b/libffabi/src/ffabi.c
+--- a/libffabi/src/ffabi.c	2024-05-14 12:23:17.000000000 -0400
++++ b/libffabi/src/ffabi.c	2026-08-18 09:56:44.000000000 -0400
+@@ -209,12 +209,11 @@
+ {
+     av_frame_free(&ctx->frame);
+     av_packet_free(&ctx->pck);
+ 
+     if (ctx->avctx) {
+-        avcodec_close(ctx->avctx);
+-        av_free(ctx->avctx);
++        avcodec_free_context(&ctx->avctx);
+     }
+ 
+     av_free(ctx);
+ 
+     return 0;
+@@ -372,11 +371,11 @@
+         return NULL;
+     }
+ #endif
+ 
+     ctx->avctx->profile = (info->profile != FFM_PROFILE_UNKNOWN) ?
+-        info->profile : FF_PROFILE_UNKNOWN;
++        info->profile : AV_PROFILE_UNKNOWN;
+ 
+     if ((CodecFlags&FFM_CODEC_FLAG_GLOBAL_HEADER)!=0)
+         ctx->avctx->flags |= AV_CODEC_FLAG_GLOBAL_HEADER;
+ 
+     if (argp) {
+@@ -418,12 +417,11 @@
+     av_packet_free(&ctx->pck);
+     av_frame_free(&ctx->frame);
+     av_freep(&ctx->frame_extended_data);
+ 
+     if (ctx->avctx) {
+-        avcodec_close(ctx->avctx);
+-        av_free(ctx->avctx);
++        avcodec_free_context(&ctx->avctx);
+     }
+ 
+     av_free(ctx);
+ 
+     return 0;
+@@ -450,11 +448,11 @@
+         channels = ctx->avctx->channels;
+         ctx->frame->channels = ctx->avctx->channels;
+         ctx->frame->channel_layout = ctx->avctx->channel_layout;
+ #else
+         r = av_channel_layout_copy(&ctx->frame->ch_layout, &ctx->avctx->ch_layout);
+-        if (!r) return r;
++        if (r!=0) return r;
+         channels = ctx->avctx->ch_layout.nb_channels;
+ #endif
+         ctx->frame->nb_samples = nb_samples;
+         ctx->frame->pts = pts;
+         ctx->frame->linesize[0] = frame_size;
+@@ -531,94 +529,153 @@
+ #ifndef FFABI_HAVE_OLD_CHANNEL_LAYOUT
+ static int set_codec_info_extended(FFM_CodecInfo* info, const AVCodec* codec)
+ {
+     char* exinfo;
+     size_t len;
+-    unsigned int count_ch_layouts_in = 0;
++    int count_ch_layouts_in = 0;
+     unsigned int count_ch_layouts_out = 0;
+-    uint64_t*   channel_layouts;
++    uint64_t* channel_layouts;
++    const AVChannelLayout* ch_layouts = NULL;
+     unsigned int i;
++    int ret;
+ 
+     len = strlen(codec->name);
+     if (len >= FFM_CODEC_INFO_NAME_MAX_LENGTH) return -1;
+ 
+-    if (NULL != codec->ch_layouts) {
+-        while (0 != codec->ch_layouts[count_ch_layouts_in].nb_channels)
+-        {
+-            count_ch_layouts_in++;
+-        }
+-    }
++    ret = avcodec_get_supported_config(
++        NULL, codec, AV_CODEC_CONFIG_CHANNEL_LAYOUT, 0,
++        (const void**)&ch_layouts, &count_ch_layouts_in
++    );
++
++    if (ret < 0) return -1;
++
++    exinfo = (char*)ffabi_memalign(
++        sizeof(uint64_t),
++        FFM_CODEC_INFO_NAME_MAX_LENGTH +
++        FFM_CODEC_INFO_EXMARK_LENGTH +
++        ((count_ch_layouts_in + 1) * sizeof(uint64_t))
++    );
+ 
+-    exinfo = (char*)ffabi_memalign(sizeof(uint64_t), (FFM_CODEC_INFO_NAME_MAX_LENGTH + FFM_CODEC_INFO_EXMARK_LENGTH + ((count_ch_layouts_in+1)*sizeof(uint64_t))));
+     if (NULL == exinfo) return -1;
+ 
+     memcpy(exinfo, codec->name, len + 1);
+-    memcpy(exinfo + FFM_CODEC_INFO_NAME_MAX_LENGTH, FFM_CODEC_INFO_EXMARK_MAGIC, FFM_CODEC_INFO_EXMARK_LENGTH);
+-    channel_layouts = (uint64_t*)(exinfo + FFM_CODEC_INFO_NAME_MAX_LENGTH + FFM_CODEC_INFO_EXMARK_LENGTH);
++    memcpy(exinfo + FFM_CODEC_INFO_NAME_MAX_LENGTH,
++           FFM_CODEC_INFO_EXMARK_MAGIC,
++           FFM_CODEC_INFO_EXMARK_LENGTH);
++
++    channel_layouts = (uint64_t*)(
++        exinfo +
++        FFM_CODEC_INFO_NAME_MAX_LENGTH +
++        FFM_CODEC_INFO_EXMARK_LENGTH
++    );
+ 
+     info->name = exinfo;
+     info->channel_layouts = channel_layouts;
+ 
+-    for (i = 0; i < count_ch_layouts_in; i++)
+-    {
+-        if (AV_CHANNEL_ORDER_NATIVE != codec->ch_layouts[i].order) continue;
+-        channel_layouts[count_ch_layouts_out++] = codec->ch_layouts[i].u.mask;
++    for (i = 0; i < (unsigned int)count_ch_layouts_in; i++) {
++        if (AV_CHANNEL_ORDER_NATIVE != ch_layouts[i].order)
++            continue;
++
++        channel_layouts[count_ch_layouts_out++] =
++            ch_layouts[i].u.mask;
+     }
++
+     channel_layouts[count_ch_layouts_out] = 0;
+ 
+     return 0;
+ }
+ #endif
+ 
+-int __cdecl ffm_audio_get_codec_information(FFM_CodecInfo* info, const char* name, int encode)
++int __cdecl ffm_audio_get_codec_information(
++    FFM_CodecInfo* info,
++    const char* name,
++    int encode)
+ {
+     AVCodec* codec;
++    const int* sample_rates = NULL;
++    const enum AVSampleFormat* sample_fmts = NULL;
++#ifndef FFABI_HAVE_OLD_CHANNEL_LAYOUT
++    const AVChannelLayout* ch_layouts = NULL;
++#endif
++    int num_sample_rates = 0;
++    int num_sample_fmts = 0;
++#ifndef FFABI_HAVE_OLD_CHANNEL_LAYOUT
++    int num_ch_layouts = 0;
++#endif
++    int ret;
+     int i;
+ 
+     memset(info, 0, sizeof(*info));
+ 
+     if (encode) {
+-        codec = (AVCodec*) avcodec_find_encoder_by_name(name);
++        codec = (AVCodec*)avcodec_find_encoder_by_name(name);
+     } else {
+-        codec = (AVCodec*) avcodec_find_decoder_by_name(name);
++        codec = (AVCodec*)avcodec_find_decoder_by_name(name);
+     }
+ 
+-    if (!codec) {
++    if (!codec)
+         return ffmerr(1, encode);
+-    }
+ 
+     info->name = codec->name;
+     info->long_name = codec->long_name;
+-    info->sample_rates = codec->supported_samplerates;
++
++    ret = avcodec_get_supported_config(
++        NULL, codec, AV_CODEC_CONFIG_SAMPLE_RATE, 0,
++        (const void**)&sample_rates, &num_sample_rates
++    );
++
++    if (ret < 0)
++        return ffmerr(2, 0);
++
++    info->sample_rates = sample_rates;
++
+ #ifdef FFABI_HAVE_OLD_CHANNEL_LAYOUT
+     info->channel_layouts = codec->channel_layouts;
+ #else
+-    if (NULL == codec->ch_layouts) {
++    ret = avcodec_get_supported_config(
++        NULL, codec, AV_CODEC_CONFIG_CHANNEL_LAYOUT, 0,
++        (const void**)&ch_layouts, &num_ch_layouts
++    );
++
++    if (ret < 0)
++        return ffmerr(2, 0);
++
++    if (NULL == ch_layouts) {
+         info->channel_layouts = NULL;
+     } else {
+-        if (set_codec_info_extended(info, codec)) {
++        if (set_codec_info_extended(info, codec))
+             return ffmerr(2, 0);
+-        }
+     }
+ #endif
++
+     info->id = codec->id;
+     info->capabilities = codec->capabilities;
++
+     if (codec->profiles) {
+-        for (i=0;i<32;i++) {
+-            if (codec->profiles[i].profile==FF_PROFILE_UNKNOWN)
++        for (i = 0; i < 32; i++) {
++            if (codec->profiles[i].profile == AV_PROFILE_UNKNOWN)
+                 break;
+-            info->profiles_names[i]=codec->profiles[i].name;
+-            info->profiles_values[i]=codec->profiles[i].profile;
+-            info->profiles_count = i+1;
++
++            info->profiles_names[i] = codec->profiles[i].name;
++            info->profiles_values[i] = codec->profiles[i].profile;
++            info->profiles_count = i + 1;
+         }
+     }
+-    if (codec->sample_fmts) {
+-        for (i=0;i<16;i++) {
+-            if (codec->sample_fmts[i]==AV_SAMPLE_FMT_NONE)
+-                break;
+-            info->sample_formats[i]=(uint8_t)back_translate_sample_fmt(codec->sample_fmts[i]);
+-            info->sample_formats_count = i+1;
++
++    ret = avcodec_get_supported_config(
++        NULL, codec, AV_CODEC_CONFIG_SAMPLE_FORMAT, 0,
++        (const void**)&sample_fmts, &num_sample_fmts
++    );
++
++    if (ret < 0)
++        return ffmerr(2, 0);
++
++    if (sample_fmts) {
++        for (i = 0; i < num_sample_fmts && i < 16; i++) {
++            info->sample_formats[i] =
++                (uint8_t)back_translate_sample_fmt(sample_fmts[i]);
++            info->sample_formats_count = i + 1;
+         }
+     }
+ 
+     return 0;
+ }
+@@ -653,10 +710,11 @@
+     if (!pctx) {
+         err=ffmerr(3,0); goto ret;
+     }
+ 
+     rest = size;
++    outbuf_size = 0;
+     while(rest) {
+         err = av_parser_parse2(pctx,avctx,&outbuf,&outbuf_size,
+             data,rest,0,0,0);
+         if ( (err<0) || (err>rest) ) {
+             err=ffmerr(4,(unsigned int)err); goto ret;
+@@ -693,12 +751,11 @@
+     if (pctx) {
+         av_parser_close(pctx);
+     }
+ 
+     if (avctx) {
+-        avcodec_close(avctx);
+-        av_free(avctx);
++        avcodec_free_context(&avctx);
+     }
+     return err;
+ }
+ 
+ int __cdecl ffm_mpa_decode_header(uint32_t hdr,FFM_AudioInfo* info,uint32_t* layer,uint32_t* frame_size,uint32_t* bitrate)
