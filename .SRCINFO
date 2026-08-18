@@ -1,17 +1,18 @@
 pkgbase = todometer-bin
 	pkgdesc = A simple, meter-based to-do list built with Electron and React.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://cassidoo.github.io/todometer/
 	arch = x86_64
 	license = MIT
-	depends = electron40
-	provides = todometer=3.0.2
+	depends = electron43
+	depends = nodejs
+	provides = todometer=3.0.3
 	conflicts = todometer
-	source = todometer-3.0.2-x86_64.AppImage::https://github.com/cassidoo/todometer/releases/download/v3.0.2/todometer-3.0.2.AppImage
-	source = LICENSE-3.0.2::https://raw.githubusercontent.com/cassidoo/todometer/v3.0.2/LICENSE
+	source = todometer-3.0.3-x86_64.AppImage::https://github.com/cassidoo/todometer/releases/download/v3.0.3/todometer-3.0.3.AppImage
+	source = LICENSE-3.0.3::https://raw.githubusercontent.com/cassidoo/todometer/v3.0.3/LICENSE
 	source = todometer.sh
-	sha256sums = d2cb7f69da9e13cd669651005010f25d750fa255d06d60696eaa750f18e85214
+	sha256sums = 6f6a051bb750d65f9959d8eb1ce50ea79028741b63d23fa222f11e49b5338ac7
 	sha256sums = dd1ce85f63e9ef4db9503a1f8abd2c0e3eb592bc5dd1fbb6f4968e2c07618dbc
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
