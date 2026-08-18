@@ -4,7 +4,7 @@
 
 pkgname=mingw-w64-frei0r-plugins
 _pkgname=frei0r-plugins
-pkgver=3.2.3
+pkgver=3.3.2
 pkgrel=1
 pkgdesc='Collection of video effect plugins (mingw-w64)'
 arch=(any)
@@ -24,17 +24,20 @@ makedepends=(
   git
 )
 source=("git+https://github.com/dyne/frei0r#tag=v$pkgver"
-        'sse2-guard.patch')
-b2sums=('ba23c7ca9c3f4364fe34f4f5c7aaf41003185b7b2b71bf78097404d5f2e567d2d215c23c91d2a0e2c18457874faf6503b758acd0b8316e5a8dfbc66e1065ba39'
-        'b5158b6ad08849484d2c1df1ea002a0d547bc06c765af60397bc5349c49b76efc63d843eedb6dcb521a5c0d496e027b944d5750dd1a4e7d633bea38acf9e8037')
+        'sse2-guard.patch'
+        'opencv-5.patch')
+b2sums=('9319a669f3a46e3e5419821abb374374e8a3cf6f54033e20d8424ee2cf53e9a730517d80e58de157c69c1f877b39138a85fbc5b85000a52b6ebe05c6c3f2bc67'
+        'b5158b6ad08849484d2c1df1ea002a0d547bc06c765af60397bc5349c49b76efc63d843eedb6dcb521a5c0d496e027b944d5750dd1a4e7d633bea38acf9e8037'
+        '8a4d4b1e87b5c5ba553a687dc74d6d8b7af1566fba5ed59175cc9867894f0776442acfff8d0dbebe5b72a1f23ad8de80bd8853bfc4f024a250e6c666b28b5384')
 validpgpkeys=(6113D89CA825C5CEDD02C87273B35DA54ACB7D10) # Denis Roio (Jaromil)
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 
 prepare() {
   cd "${srcdir}/frei0r"
 
   patch -Np1 -i "${srcdir}/sse2-guard.patch"
+  patch -p1 -i "${srcdir}/opencv-5.patch"
 }
 
 build() {
