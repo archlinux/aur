@@ -1,13 +1,13 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=noteminder-bin
 _pkgname=NoteMinder
-pkgver=1.4.0
+pkgver=1.4.1
 _electronversion=27
 pkgrel=1
 pkgdesc="A sleek, minimal note-taking desktop app that docks at the edge of your screen and supports rich text editing, color-coding, and intelligent reminders.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
-    'x86_64'
+    #'x86_64'
 )
 url="https://github.com/hypn05/NoteMinder"
 license=('MIT')
@@ -21,11 +21,10 @@ source=(
     "${pkgname%-bin}.sh"
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-arm64.AppImage")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
+#source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('ff674cc0e327d0ee1662950ea33c666c4cbd61126063902e56e0cfaae1917bd7'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('93eb20add172ee451568d870159a72f2c77d28000781679651d51139ed9b018e')
-sha256sums_x86_64=('9ffc62a963b3ac8b8636d1e5f7828a93c039dc3d7968377d51bd90686cbff721')
+sha256sums_aarch64=('b84a8eae3240adb5ff6946313d9b63df49689553dcbc2ac4f458c7e349be6a92')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
