@@ -2,7 +2,7 @@
 
 _pkgbase=sifter
 pkgname="$_pkgbase"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Catalog photos, videos and audio into a date-structured library by capture date'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 options=('!lto')
 source=("$_pkgbase::git+https://github.com/SelfRef/sifter.git#tag=v$pkgver")
-sha256sums=('d5726857de9f19eb2b20a2422c90e71da32a1f40b13daaa70e739d42b09caca2')
+sha256sums=('b7bf62bbeb053feceb7fbfa91baf79d103e678caa25290cc5253fe1fa9f381c6')
 
 prepare() {
 	cd "$_pkgbase"
