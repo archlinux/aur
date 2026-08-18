@@ -1,22 +1,22 @@
 pkgbase = godot-launcher-bin
 	pkgdesc = A companion app for Godot Engine development that lets you quickly manage and launch projects while maintaining per-project editor settings.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.10.1
+	pkgver = 1.11.1
 	pkgrel = 1
 	url = https://godotlauncher.org/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	makedepends = asar
-	depends = electron41
-	provides = godot-launcher=1.10.1
+	depends = electron43
+	provides = godot-launcher=1.11.1
 	conflicts = godot-launcher
-	source = LICENSE-1.10.1.txt::https://raw.githubusercontent.com/godotlauncher/launcher/v1.10.1/LICENSE.txt
+	source = LICENSE-1.11.1.txt::https://raw.githubusercontent.com/godotlauncher/launcher/v1.11.1/LICENSE.txt
 	source = godot-launcher.sh
 	sha256sums = 982e513d86e81b53d35a4c757a54ce36c7b77752feeaac2dfaab3ddd0c86d7b1
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = godot-launcher-1.10.1-aarch64.rpm::https://github.com/godotlauncher/launcher/releases/download/v1.10.1/Godot_Launcher-1.10.1-linux_aarch64.rpm
-	sha256sums_aarch64 = fa3e1e8d29d7d195fe080dfb539ed1500a2d531e3ad38def72199adcf800803d
-	source_x86_64 = godot-launcher-1.10.1-x86_64.rpm::https://github.com/godotlauncher/launcher/releases/download/v1.10.1/Godot_Launcher-1.10.1-linux_x86_64.rpm
-	sha256sums_x86_64 = 40e3f45c6dda5cc3956a3d31cfa5830895fc2fd7317f85233f919d0c4a6a3f0f
+	source_aarch64 = godot-launcher-1.11.1-aarch64.rpm::https://github.com/godotlauncher/launcher/releases/download/v1.11.1/Godot_Launcher-1.11.1-linux_aarch64.rpm
+	sha256sums_aarch64 = 7a9b1a4e90082443af2aef14fd71bca557d6dc25895831aa675fde79400e828e
+	source_x86_64 = godot-launcher-1.11.1-x86_64.rpm::https://github.com/godotlauncher/launcher/releases/download/v1.11.1/Godot_Launcher-1.11.1-linux_x86_64.rpm
+	sha256sums_x86_64 = 2e386e31e90936b9b3c243209319d40de45f71dc0e28cc14451b3280dfe16cba
 
 pkgname = godot-launcher-bin

@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=godot-launcher-bin
 _pkgname='Godot Launcher'
-pkgver=1.10.1
-_electronversion=41
+_debname=org.godotlauncher.launcher
+pkgver=1.11.1
+_electronversion=43
 pkgrel=1
 pkgdesc="A companion app for Godot Engine development that lets you quickly manage and launch projects while maintaining per-project editor settings.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -28,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /_}-${pkgver}-linux_x86_64.rpm")
 sha256sums=('982e513d86e81b53d35a4c757a54ce36c7b77752feeaac2dfaab3ddd0c86d7b1'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('fa3e1e8d29d7d195fe080dfb539ed1500a2d531e3ad38def72199adcf800803d')
-sha256sums_x86_64=('40e3f45c6dda5cc3956a3d31cfa5830895fc2fd7317f85233f919d0c4a6a3f0f')
+sha256sums_aarch64=('7a9b1a4e90082443af2aef14fd71bca557d6dc25895831aa675fde79400e828e')
+sha256sums_x86_64=('2e386e31e90936b9b3c243209319d40de45f71dc0e28cc14451b3280dfe16cba')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -54,8 +55,13 @@ prepare() {
     sed -i -e "
         s/\"\/opt\/${_pkgname}\/${_pkgname}\"/${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
-    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    " "${srcdir}/usr/share/applications/${_debname}.desktop"
+    sed -i "s/${_debname}/${pkgname%-bin}/g" "${srcdir}/usr/share/metainfo/${_debname}.metainfo.xml"
     local _app_dir=$(_get_app_dir)
+    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${_app_dir}/resources/app.asar"
+    find "${srcdir}/app.asar.unpacked/dist-electron" -type f -exec sed -i "s/${_debname}.desktop/${pkgname%-bin}.desktop/g" {} +
+    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
 }
 package() {
@@ -70,6 +76,7 @@ package() {
 		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
 	done
     install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/metainfo/${_debname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.metainfo.xml"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
