@@ -1,15 +1,17 @@
 pkgbase = roslyn-language-server
 	pkgdesc = A Language Server Protocol (LSP) implementation for C# powered by Roslyn
-	pkgver = 11.0.100
+	pkgver = 5.11.0_1.26380.4
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/dotnet/roslyn/tree/main/src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer
 	arch = x86_64
 	license = MIT
 	makedepends = dotnet-sdk-10.0
+	makedepends = moreutils
 	depends = dotnet-runtime-10.0
-	source = roslyn-11.0.100.tar.gz::https://github.com/dotnet/roslyn/archive/refs/tags/v11.0.100.tar.gz
+	source = roslyn-dc1db3e.tar.gz::https://github.com/dotnet/roslyn/archive/dc1db3e7dee178e2744a73eb06dce107c07fa7b1.tar.gz
 	source = cache-path.patch
-	sha256sums = 2a4974b11ad36481e5641a7a06d2aca8c242905466dadbac2a2d88e3ef989cdc
+	sha256sums = 7f3412e7ac80e0ef2f197fdd8868d9d6847dba8d07d311cd1b5afbf53af361d9
 	sha256sums = 1b97b5899e102286759dc4e10675d2524b1c104d0164c3c604402618ad09f0d4
 
 pkgname = roslyn-language-server

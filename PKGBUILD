@@ -1,23 +1,27 @@
 # Maintainer: Aikawa Yataro <aikawayataro at protonmail dot com>
 
 pkgname=roslyn-language-server
-pkgver=11.0.100
+pkgver=5.11.0_1.26380.4
 pkgrel=1
+epoch=1
 pkgdesc="A Language Server Protocol (LSP) implementation for C# powered by Roslyn"
 arch=('x86_64')
 url='https://github.com/dotnet/roslyn/tree/main/src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer'
 license=('MIT')
 depends=(dotnet-runtime-10.0)
-makedepends=(dotnet-sdk-10.0)
+makedepends=(dotnet-sdk-10.0 moreutils)
 
-source=("roslyn-$pkgver.tar.gz::https://github.com/dotnet/roslyn/archive/refs/tags/v$pkgver.tar.gz"
+# from nuget package metadata
+_commit=dc1db3e7dee178e2744a73eb06dce107c07fa7b1
+source=("roslyn-${_commit:0:7}.tar.gz::https://github.com/dotnet/roslyn/archive/$_commit.tar.gz"
         'cache-path.patch')
-sha256sums=('2a4974b11ad36481e5641a7a06d2aca8c242905466dadbac2a2d88e3ef989cdc'
+sha256sums=('7f3412e7ac80e0ef2f197fdd8868d9d6847dba8d07d311cd1b5afbf53af361d9'
             '1b97b5899e102286759dc4e10675d2524b1c104d0164c3c604402618ad09f0d4')
 
 prepare() {
-    cd "roslyn-$pkgver/src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer"
+    cd "roslyn-$_commit/src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer"
 
+    jq '.sdk.version="10.0"' < "../../../global.json" | sponge "../../../global.json"
     patch --strip=1 --input=../../../../cache-path.patch
 
     export NUGET_PACKAGES="$PWD/nuget"
@@ -28,7 +32,7 @@ prepare() {
 }
 
 build() {
-    cd "roslyn-$pkgver/src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer"
+    cd "roslyn-$_commit/src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer"
 
     export NUGET_PACKAGES="$PWD/nuget"
     export DOTNET_NOLOGO=true
@@ -38,7 +42,7 @@ build() {
 }
 
 package() {
-    cd "roslyn-$pkgver/src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer"
+    cd "roslyn-$_commit/src/LanguageServer/Microsoft.CodeAnalysis.LanguageServer"
 
     install -d "$pkgdir/opt/$pkgname/"
     install -d "$pkgdir/usr/bin/"
