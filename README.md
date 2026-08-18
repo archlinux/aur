@@ -142,13 +142,18 @@ the initrd node's key is not about to expire. Then confirm the node is live:
 tailscale status | grep -- -initrd    # from any other node on your tailnet
 ```
 
+The image carries only what boots: `tailscaled`, not the `tailscale` CLI,
+which nothing in early userspace executes and which costs about a quarter of
+the image. To have it available for debugging from the emergency shell, set
+`CLI="yes"` in `/etc/initcpio/tailscale/default.env` and rebuild.
+
 From here on the image looks after itself: the package ships a pacman hook
 that reruns `mkinitcpio -P` whenever the `tailscale` package is upgraded, since
 the image carries its own copy of `tailscaled` that would otherwise stay at
 the old version until the next kernel update. The hook does nothing on
 machines where `tailscale` is not in `HOOKS=`.
 
-### Give yourself more than 90 seconds
+### 5. Give yourself more than 90 seconds
 
 On a systemd-based initramfs, whatever device `root=` names is a systemd device
 unit, and systemd gives up on a device after 90 seconds
@@ -157,14 +162,6 @@ been entered, so the clock is running while you are still reaching for a
 terminal. When it expires the mount jobs fail and the initramfs drops to
 emergency mode; the passphrase prompt is still there, but answering it no longer
 resumes the boot.
-
-You are not cut off when that happens: the boot test lets a systemd image run
-past the timeout on purpose, and the node stays online and still answers SSH
-in emergency mode. So you can log in and finish the job by hand,
-`systemctl start initrd-root-fs.target` after unlocking the device. Better
-not to need to. A busybox image behaves the same way for a different reason:
-its init tears tailscaled down before deciding the boot failed, so this hook
-starts it again on the way into the emergency shell.
 
 Whether it bites depends on how `root=` is written. `systemd-cryptsetup`
 disables the timeout for the device it unlocks itself, so `root=/dev/mapper/root`
@@ -178,9 +175,16 @@ rootflags=x-systemd.device-timeout=0
 ```
 
 This is a systemd-initramfs concern only; the busybox `encrypt` and
-`encryptssh` hooks have no such timeout.
+`encryptssh` hooks have no such timeout. And even when the timeout fires you
+are not cut off: the boot test lets a systemd image run past it on purpose,
+and the node stays online and still answers SSH in emergency mode, so you can
+log in and finish the job by hand with
+`systemctl start initrd-root-fs.target` after unlocking the device. A busybox
+image is covered too, for a different reason: its init tears tailscaled down
+before deciding the boot failed, so this hook starts it again on the way into
+the emergency shell.
 
-### Tailscale SSH server
+## Tailscale SSH server
 
 Tailscale includes a built-in SSH server, and `setup-initcpio-tailscale` turns it
 on unless told otherwise, so you need no `dropbear`, `tinyssh`, or other SSH
@@ -190,7 +194,29 @@ server inside the initramfs. Logging in is then:
 ssh root@homeserver-initrd
 ```
 
-Turn it off with:
+The server only accepts connections from within your tailnet. The node won't
+accept local connections unless the client is also part of your Tailscale
+network, which reduces exposure compared to a traditional SSH server reachable
+from everywhere.
+
+The setup helper also generates OpenSSH host keys and stores them alongside
+the node key, so the initramfs presents the same host key every time and your
+client does not warn about a changed identity.
+
+Works on systemd- and busybox-based initramfs alike, though the second needs a
+hand: Tailscale's SSH server has to resolve the user you log in as, and of the
+hooks mkinitcpio ships only `systemd` writes a user database into the image. On
+a busybox-based initramfs this hook therefore writes a minimal one itself:
+`root`, with `/bin/sh` as the shell, since that is what such an image actually
+contains. Where a database already exists it is left untouched, so a
+systemd-based image keeps the richer one mkinitcpio built. The same database
+is what lets a `dropbear` or `tinyssh` in the image accept logins at all;
+without one they greet the connection and then refuse it with
+`Permission denied (publickey)`.
+
+### Bringing your own SSH server
+
+Turn Tailscale SSH off with:
 
 ```sh
 setup-initcpio-tailscale --no-ssh
@@ -199,54 +225,57 @@ setup-initcpio-tailscale --no-ssh
 which also removes any host keys an earlier run left in
 `/etc/initcpio/tailscale/`, so they stop being copied into new images.
 
-Two things to know when running your own `dropbear` or `tinyssh` alongside.
-Inbound tailnet connections reach it through a proxy that dials the same port
-on `127.0.0.1`, so the daemon must listen on a wildcard or loopback address
-(one bound to a specific interface address will never see a connection); this
-hook brings `lo` up itself, since nothing else in a busybox image would. And
-log in as root: everything in an initramfs is owned by root, and
-`dropbear` refuses an `authorized_keys` it does not consider owned by the user
-logging in, so root is the login that works. That is the same reason the
-retired dropbear hooks used a `root_key`. And if your daemon really must bind
-an interface address, register with `--tun`: the initramfs then runs on a
-kernel TUN device (`tailscale0`) and inbound connections arrive through it the
-ordinary way. The boot test exercises all of this, dropbear and both network
-stacks included.
-
-Note: the Tailscale SSH server only accepts connections from within your
-tailnet. The node won't accept local connections unless the client is also part
-of your Tailscale network, which reduces exposure compared to a traditional SSH
-server reachable from everywhere.
-
-The helper also generates OpenSSH host keys and stores them alongside the node
-key, so the initramfs presents the same host key every time and your client does
-not warn about a changed identity.
-
-Works on systemd- and busybox-based initramfs alike, though the second needs a
-hand: Tailscale's SSH server has to resolve the user you log in as, and of the
-hooks mkinitcpio ships only `systemd` writes a user database into the image. On
-a busybox-based initramfs this hook therefore writes a minimal one itself:
-`root`, with `/bin/sh` as the shell, since that is what such an image actually
-contains. Where a database already exists it is left untouched, so a
-systemd-based image keeps the richer one mkinitcpio built.
-
-That also fixes the same problem for other SSH servers in early userspace.
-Without a user database `dropbear` and `tinyssh` start, accept the connection,
-and then refuse every login with `Permission denied (publickey)`. The old
-standalone hooks never wrote one, and the maintained `mkinitcpio-extras` fork
-does so only if you turn its root-shell option on. This hook writes one whenever
-the image has none, so they work either way, and skips it when a database is
-already there, so the two cannot collide.
-
 **Run one SSH server, not two.** When Tailscale SSH is enabled, tailscaled
 answers port 22 on the tailnet itself, so a dropbear or tinyssh in the same
 initramfs never sees those connections; it still answers on other interfaces,
 but not on the address you would actually reach it at. Either keep the default
 and use Tailscale SSH, or register with `--no-ssh` and use your own daemon.
 
-The test suite covers this end to end on both branches: it boots the image, logs
-in over Tailscale SSH from a second node on a throwaway tailnet, and checks the
-host key offered is the one `setup-initcpio-tailscale` generated.
+Two things your daemon needs. Inbound tailnet connections reach it through a
+proxy that dials the same port on `127.0.0.1`, so it must listen on a wildcard
+or loopback address (one bound to a specific interface address will never see
+a connection); this hook brings `lo` up itself, since nothing else in a
+busybox image would. And log in as root: everything in an initramfs is owned
+by root, and `dropbear` refuses an `authorized_keys` it does not consider
+owned by the user logging in, so root is the login that works. That is the
+same reason the retired dropbear hooks used a `root_key`. If your daemon
+really must bind an interface address, register with `--tun`: the initramfs
+then runs on a kernel TUN device (`tailscale0`) and inbound connections arrive
+through it the ordinary way.
+
+The test suite covers all of this end to end: every scenario boots under QEMU
+and is logged into from a second node on a throwaway tailnet, Tailscale SSH
+and dropbear alike, over both network stacks, with the host key offered
+checked against the expected one.
+
+## Using headscale
+
+Nothing here assumes Tailscale's hosted control plane. Register against your
+own [headscale][hs] the way you would any node:
+
+```sh
+setup-initcpio-tailscale --login-server=https://headscale.example.net
+```
+
+or non-interactively with a pre-auth key:
+
+```sh
+setup-initcpio-tailscale --login-server=https://headscale.example.net \
+    --authkey=file:node.key
+```
+
+One Tailscale-ism to translate: key expiry is headscale's to manage, not the
+Tailscale admin console's, so the console URL in the setup output and in
+`--check`'s advice does not apply to you. `headscale nodes list` shows each
+node's expiry, and how it is set (and whether it applies at all) depends on
+your headscale version and configuration; the probe in `--check` reads the
+booted system's view of the tailnet and works against headscale all the same.
+
+Tailscale SSH needs an `ssh` policy in headscale's ACLs before the node
+accepts a session; the [Security considerations](#security-considerations)
+example below is valid headscale policy. This is not a theoretical
+combination: the test suite boots every scenario against a throwaway
+headscale, so the path you are on is the one CI exercises.
 
 ## Security considerations
 
@@ -257,10 +286,10 @@ to extract the node key and impersonate your initrd node on your tailnet.
 Mitigations:
 
 - Restrict what the initramfs node can access with Tailscale ACLs and tags. Tag
-  the initrd node in the Machines panel and limit its permissions.
+  the initrd node in the admin console and limit its permissions.
 - Prefer granting the initrd node only the minimal access required (for example,
   only allow SSH from a narrow set of client tags).
-- If a node is ever compromised, remove it from the Tailscale admin panel
+- If a node is ever compromised, remove it from the admin console
   immediately and recreate the initramfs/node key.
 
 Example ACL snippet to restrict initrd nodes (adapt to your tailnet):
@@ -300,75 +329,17 @@ If you suspect compromise:
 
 ## Development
 
-Run the test suite in a throwaway Arch container:
+The test suite runs in a throwaway Arch container and never touches your
+system:
 
 ```sh
 make test        # lint, packaging, initramfs image contents
-make test-all    # adds the QEMU boot tests against a local headscale
+make test-all    # adds the QEMU boot matrix against a local headscale
 ```
 
-`make test-all` boots one image per scenario against a throwaway headscale,
-covering both init branches and every combination the setup helper can
-register: Tailscale SSH and `--no-ssh` with a dropbear standing in for the
-user's own daemon, each over userspace networking and over the `--tun` kernel
-device. Every boot is checked by logging in from a second node and comparing
-the host key offered with the expected one. A single scenario can be run on
-its own:
-
-```sh
-./tests/container.sh 04     # all of them, the way CI runs them
-BOOT_SCENARIOS=dropbeartun ./tests/container.sh 04
-```
-
-### Releasing
-
-`PKGBUILD` in this repository is a **template, not a finished package
-definition**. `pkgver`, `pkgrel` and `sha256sums` are placeholders, and
-`.SRCINFO` is not tracked at all; they are generated at release time by
-`scripts/aur-stage.sh`. Running `makepkg` directly here produces a package
-labelled `0.0.0`; use `make build` instead, which stages a complete definition
-first.
-
-A release is cut by pushing a tag. The tag is the only source of truth for the
-version:
-
-| Tag        | Publishes    |
-| ---------- | ------------ |
-| `v1.2.0`   | `1.2.0-1`    |
-| `v1.2.0-2` | `1.2.0-2`    |
-
-```sh
-git tag v1.2.0 && git push origin v1.2.0
-```
-
-That runs the full test suite and, only if it passes, publishes to the AUR: a
-curated tree of packaging files only, never `tests/` or `.github/`. Use
-`v<version>-<rel>` for a packaging-only rebuild of a version already published.
-
-Once the AUR push has landed, the same workflow opens a [GitHub
-release][releases] for the tag, with the built `.pkg.tar.zst` attached. That
-package comes from the staged tree, not from the test suite's artifact, which is
-deliberately labelled `9.9.9-3`. Tags and releases go back to `0.1-6`; the ones
-before `1.2.0` were published by hand and were tagged after the fact, so they
-carry notes but no package.
-
-Every pull request, and every push to `master`, runs the same release path in
-dry-run mode against the live AUR repository, which it clones anonymously over
-HTTPS so no credentials are involved, and prints the diff it would push. The
-publish logic is therefore exercised continuously rather than only during a
-release.
-
-To rehearse locally:
-
-```sh
-# against the real AUR, read-only
-AUR_REMOTE=https://aur.archlinux.org/mkinitcpio-tailscale.git \
-  ./scripts/aur-publish.sh --dry-run --tag v1.2.0
-
-# or against a scratch repo, including the push
-git init --bare /tmp/fake-aur.git
-AUR_REMOTE=/tmp/fake-aur.git ./scripts/aur-publish.sh --tag v1.2.0
-```
+Everything else a contributor needs -- what ships, the template PKGBUILD,
+the boot scenarios, how releases are cut -- is in
+[CONTRIBUTING.md](https://github.com/dangra/mkinitcpio-tailscale/blob/master/CONTRIBUTING.md).
 
 ## Prior work and big thanks
 
@@ -386,6 +357,7 @@ AUR_REMOTE=/tmp/fake-aur.git ./scripts/aur-publish.sh --tag v1.2.0
 [gh3]: https://github.com/classabbyamp
 [gh4]: https://github.com/wolegis
 [aur]: https://aur.archlinux.org/packages/mkinitcpio-tailscale
+[hs]: https://headscale.net
 [releases]: https://github.com/dangra/mkinitcpio-tailscale/releases
 [extras]: https://aur.archlinux.org/packages/mkinitcpio-extras
 [sdextras]: https://aur.archlinux.org/packages/mkinitcpio-systemd-extras

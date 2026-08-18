@@ -48,12 +48,20 @@ build() {
 	# kernel TUN device, and then the module has to travel along. The value is
 	# read in a subshell: default.env is user-edited configuration, and none
 	# of its other assignments belong in this hook's environment.
-	local tun
+	local tun cli
 	# shellcheck source=/dev/null
 	tun=$(. "${setupdir}/default.env" 2>/dev/null; printf '%s' "${TUN:-}")
+	# shellcheck source=/dev/null
+	cli=$(. "${setupdir}/default.env" 2>/dev/null; printf '%s' "${CLI:-}")
 	[[ -z $tun ]] && tun=userspace-networking
 	[[ $tun == userspace-networking ]] || add_module tun
-	map add_binary getent tailscale tailscaled
+	map add_binary getent tailscaled
+	# The tailscale CLI is 22MB that nothing in the boot path executes -- the
+	# daemon runs standalone and Tailscale SSH lives inside it -- so it stays
+	# out unless default.env asks (CLI="yes"), for debugging from the
+	# emergency shell. Measured on a systemd image: 31.5MB compressed with it,
+	# 22.9MB without.
+	[[ -n $cli ]] && add_binary tailscale
 
 	if [[ $(type -t add_systemd_unit) == function ]]; then
 		add_systemd_unit tailscaled.service

@@ -106,6 +106,12 @@ PORT="41641"
 # tun module is added or removed to match.
 TUN="${tun}"
 
+# Set to "yes" to also copy the tailscale CLI into the image, for debugging
+# from the emergency shell (tailscale status, tailscale ping). Costs about a
+# quarter of the image; nothing in the boot itself uses it. Rebuild after
+# changing.
+CLI=""
+
 # Extra flags you might want to pass to tailscaled.
 FLAGS=""
 EOF
@@ -296,13 +302,15 @@ run_check() {
   # tools or images are not where this expects them. When TUN= asks for a
   # kernel device, the module has to be in the image too -- configured but not
   # rebuilt is exactly the silent break this mode can produce.
-  local img found=0 checked=0 list tun tsbin
+  local img found=0 checked=0 list tun cli tsbin
   # What a rebuild would put in the image, for the staleness comparison below.
   tsbin=$(command -v tailscaled 2>/dev/null || printf '')
   # The subshell keeps the sourcing contained, the same way the install hook
   # reads it at build time.
   # shellcheck source=/dev/null
   tun=$(. "${TS_STATEDIR}/default.env" 2>/dev/null; printf '%s' "${TUN:-}")
+  # shellcheck source=/dev/null
+  cli=$(. "${TS_STATEDIR}/default.env" 2>/dev/null; printf '%s' "${CLI:-}")
   if command -v lsinitcpio >/dev/null; then
     for img in /boot/initramfs-*.img; do
       [[ -e $img ]] || continue
@@ -326,6 +334,13 @@ run_check() {
           chk_ok "$img carries the tun module for TUN=\"$tun\""
         else
           chk_fail "$img lacks the tun module but default.env sets TUN=\"$tun\"; run 'mkinitcpio -P'"
+        fi
+      fi
+      if [[ -n $cli ]] && grep -q 'tailscaled$' <<<"$list"; then
+        if grep -q 'bin/tailscale$' <<<"$list"; then
+          chk_ok "$img carries the tailscale CLI for CLI=\"$cli\""
+        else
+          chk_fail "$img lacks the tailscale CLI but default.env sets CLI=\"$cli\"; run 'mkinitcpio -P'"
         fi
       fi
     done
