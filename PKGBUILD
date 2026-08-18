@@ -48,7 +48,7 @@ prepare() {
   jq '.build.linux.target="dir"' <<<$(<package.json) > package.json
   cat package.json
 
-  npm ci --ignore-scripts
+  npm ci --ignore-scripts --allow-git=all
 
   sed -i 's|\${process\.resourcesPath}/\.\.||g' src/spring_platform.js
 }
