@@ -1,6 +1,6 @@
 # Maintainer: kirarahoshiiii
 pkgname=fpvtop
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="btop-style live terminal monitor for Betaflight flight controllers over MSP"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-pyserial')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6eac328a6ee944fadc39ed6f80881b911da3acd21a2f73e451a8d725fd78d7d2')
+sha256sums=('1dadcc35616b56ac40129db4134e5fbfea55b3cdc5c2e83991142341d4c9350e')
 
 build() {
     cd "$pkgname-$pkgver"
