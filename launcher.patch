@@ -1,10 +1,9 @@
---- Plex.sh	2025-08-09 02:56:11.000000000 +0200
-+++ Plex.sh	2025-11-07 10:39:05.459774681 +0100
+--- Plex.sh	2026-08-13 04:31:28.000000000 -0400
++++ "Plex (copy).sh"	2026-08-18 13:12:31.866175569 -0400
 @@ -1,6 +1,15 @@
  #!/bin/sh
  BASE_DIR=$(dirname "$(readlink -f "$0")")
--export LD_LIBRARY_PATH=$BASE_DIR/lib/:$BASE_DIR:$LD_LIBRARY_PATH
-+# export LD_LIBRARY_PATH=$BASE_DIR/lib/:$BASE_DIR:$LD_LIBRARY_PATH
+ export LD_LIBRARY_PATH=$BASE_DIR/lib/:$BASE_DIR:$LD_LIBRARY_PATH
 +
 +export APPIMAGE_ORIGINAL_LC_ALL=$LC_ALL
 +export APPIMAGE_ORIGINAL_QML_IMPORT_PATH=$QML_IMPORT_PATH
@@ -32,18 +31,18 @@
  # Disable wayland unless the user has set the value before
  export DISABLE_WAYLAND=${DISABLE_WAYLAND:-1}
  
-@@ -37,9 +54,7 @@
- export PLEX_MEDIA_SERVER_RESOURCES=$BASE_DIR/resources
- 
- # For MPV to get hardware decoding
+@@ -39,9 +56,7 @@
+ # For MPV to get hardware decoding. The bundle only ships the Intel VAAPI drivers, so the
+ # graphics-core22 provider supplies the rest (AMD, nouveau). libva takes a colon-separated
+ # list and skips entries that do not exist, so naming both is safe.
 -if [ -n "$SNAP" ]; then
--  export LIBVA_DRIVERS_PATH=${SNAP}/lib/dri
+-  export LIBVA_DRIVERS_PATH=${SNAP}/lib/dri:${SNAP}/graphics/dri
 -fi
 +export LIBVA_DRIVERS_PATH=${SNAP:-${BASE_DIR}}/lib/dri
  
  # SESSION_MANAGER often causes issues with Qt so we unset it. Setting PLEX_KEEP_SESSION_MANAGER
  # will override this behavior.
-@@ -47,4 +62,5 @@
+@@ -49,4 +64,5 @@
    unset SESSION_MANAGER
  fi
  

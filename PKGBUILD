@@ -4,10 +4,10 @@
 # Contributor: Adam Hellberg <sharparam@sharparam.com>
 
 pkgname=plex-desktop
-pkgver=1.112.0.359
-_pkghash=0d79a49f
+pkgver=1.115.0.426
+_pkghash=4e960a1d
 _snapid=qc6MFRM433ZhI1XjVzErdHivhSOhlpf0
-_snaprev=87
+_snaprev=88
 _execwrapper=appimage-exec-wrapper
 pkgrel=1
 pkgdesc="Plex desktop client for linux"
@@ -74,12 +74,12 @@ source=("${pkgname}_${_snaprev}.snap::https://api.snapcraft.io/api/v1/snaps/down
   "iconpatch.patch"
   "launcher.patch"
   "${_execwrapper}::git+https://invent.kde.org/brauch/appimage-exec-wrapper.git#commit=f8be7f43cfd5d4e81c8c888256b4efc1b269bb4c")
-sha256sums=('b1ff3f3eeefc77cdfa2f0362f46ce00683235e7ef1873f90c09328d893a9b944'
+sha256sums=('9490b70598c7a23c884d45cd58db557bf1d3e5a4c37926e3bb09422ccaaea39e'
             '8abc2b1ca77a458bbbcdeb6af5d85316260977370fa2518d017222b3584d9653'
             '2215f6bb3a2bbe50ceb3bedcb93f53d11f6a51ec7512f08f68af91da8253261b'
             '565178841c318fb4926acf65a68df6dae484c0b705be6dd736858e7408a261d5'
             'ba597b7083d64e3ffbcd610aec269a53cc404e4e6ec2a4d31064b5dbe75afb8b'
-            'f2e52b94e31cc2ed7b4e070024b4db9c7fce5e9909960a102100348167c6a288'
+            'dc5638aaedbd5629524c19ccb751ba58518c25508a50b26fa227ba6796fa37e5'
             '5ffb1d27fcd19f75e97e1df5cc82bf791896ef326f207c8a6dd058999f858c05')
 noextract=("${pkgname}_${_snaprev}.snap")
 options=(!debug)
@@ -102,8 +102,8 @@ package() {
   done
   install -Dm755 "${_snapdir}/Plex.sh" "${pkgdir}/opt/${pkgname}/Plex.sh"
 
-  install -Dm644 "${_snapdir}/usr/lib/x86_64-linux-gnu/libwebp.so.6.0.2" \
-    "${pkgdir}/opt/${pkgname}/lib/libwebp.so.6"
+  install -Dm644 "${_snapdir}/usr/lib/x86_64-linux-gnu/libwebp.so.7.1.3" \
+    "${pkgdir}/opt/${pkgname}/lib/libwebp.so.7"
 
   install -Dm644 "$_execwrapper"/exec.so "${pkgdir}/opt/${pkgname}"/lib/exec.so
 
