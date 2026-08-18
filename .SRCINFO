@@ -1,0 +1,12 @@
+pkgbase = swissfer
+	pkgdesc = Command line interface for Swisstransfer.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/Blutsh/swissfer
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	source = https://github.com/Blutsh/Swish/archive/refs/tags/2.0.0.tar.gz
+	sha256sums = 426c118fd97aa9d829e50a1728b724f19ca5c1f91f6e7872f40cd10677c619d3
+
+pkgname = swissfer
