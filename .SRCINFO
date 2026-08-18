@@ -1,6 +1,6 @@
 pkgbase = cursor-appimage
 	pkgdesc = Cursor AI code editor (AppImage, extracted)
-	pkgver = 3.15.6
+	pkgver = 3.16.29
 	pkgrel = 1
 	url = https://www.cursor.com
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = cursor-appimage
 	provides = cursor
 	conflicts = cursor-bin
 	options = !strip
-	source = Cursor-3.15.6.AppImage::https://downloads.cursor.com/production/a1f686545fd0ce8917bbd2449f733551a9bce420/linux/x64/Cursor-3.15.6-x86_64.AppImage
-	sha512sums = 94338a19f3c280554b99f15e931243157eace057e227f37983465e1dcbf834e46e1395a3e77155d6a1e2cab82245649190a9282251842b5acbf91ae4273506f7
+	source = Cursor-3.16.29.AppImage::https://downloads.cursor.com/production/6246455961129c32969845e00aa25d87ae926ec9/linux/x64/Cursor-3.16.29-x86_64.AppImage
+	sha512sums = 1c53f2c3782b6cd283c4c3110c0fe855ca487df9369b205984c59f67225a686b72b80bd083102d161f333fa29523504ece413308e8518519a6cfdc81f8733db9
 
 pkgname = cursor-appimage
