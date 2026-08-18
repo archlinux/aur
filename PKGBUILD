@@ -1,37 +1,39 @@
 # Maintainer: sgtaziz <sgtaziz013 at google dot com>
 pkgname=lianli-linux-git
-pkgver=0.4.7
+pkgver=0.8.5.r0.ga56f6bf
 pkgrel=1
-pkgdesc="Open-source Linux replacement for L-Connect 3 - fan control, RGB, LCD streaming for Lian Li devices"
+pkgdesc="Open-source Linux replacement for L-Connect 3 for Lian Li devices"
 arch=('x86_64')
 url="https://github.com/sgtaziz/lian-li-linux"
 license=('MIT')
-depends=('libusb' 'ffmpeg' 'fontconfig' 'mesa' 'libxkbcommon' 'wayland' 'libx11' 'libinput' 'libdrm' 'libjpeg-turbo' 'evdi-dkms')
-makedepends=('git' 'rust' 'cargo' 'clang' 'cmake' 'pkg-config' 'nasm')
+depends=('libusb' 'ffmpeg' 'evdi-dkms' 'webkit2gtk-4.1' 'gtk3' 'glib2' 'libsoup3')
+makedepends=('git' 'cargo' 'clang' 'cmake' 'nasm' 'npm')
 provides=('lianli-linux')
 conflicts=('lianli-linux')
 source=("git+${url}.git")
 sha256sums=('SKIP')
-install=lianli-linux.install
-options=('!debug' '!lto' 'strip')
+options=('!lto')
 
 pkgver() {
   cd lian-li-linux
-  (git describe --tags --abbrev=0 2>/dev/null || git rev-parse --short HEAD) | sed 's/^v//'
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd lian-li-linux
-  git submodule update --init --recursive
-  /usr/bin/cargo fetch --locked --target "$(/usr/bin/rustc -vV | sed -n 's/host: //p')"
+  git submodule update --init --recursive --depth=1
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
   cd lian-li-linux
-  export CARGO_PROFILE_RELEASE_STRIP=symbols
+
+  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  export SLINT_NO_QT=1
-  RUSTC=/usr/bin/rustc /usr/bin/cargo build --frozen --release
+  export CARGO_PROFILE_RELEASE_STRIP=symbols
+  cargo build --frozen --release
 }
 
 package() {
@@ -42,10 +44,17 @@ package() {
   install -Dm755 target/release/lianli-gui "$pkgdir/usr/bin/lianli-gui"
 
   # udev rules
-  install -Dm644 packaging/udev/99-lianli.rules "$pkgdir/usr/lib/udev/rules.d/99-lianli.rules"
+  install -Dm644 packaging/udev/60-lianli.rules "$pkgdir/usr/lib/udev/rules.d/60-lianli.rules"
 
-  # Systemd user service (enabled globally by the install hook)
+  # System user/group for the optional system service
+  install -Dm644 packaging/sysusers.d/lianli.conf "$pkgdir/usr/lib/sysusers.d/lianli.conf"
+
+  # Shared cross-mode lock file (prevents user + system daemons running at once)
+  install -Dm644 packaging/tmpfiles.d/lianli.conf "$pkgdir/usr/lib/tmpfiles.d/lianli.conf"
+
+  # Systemd services: per-user + system service, user enables either
   install -Dm644 packaging/systemd/lianli-daemon.service "$pkgdir/usr/lib/systemd/user/lianli-daemon.service"
+  install -Dm644 packaging/systemd/lianli-daemon-system.service "$pkgdir/usr/lib/systemd/system/lianli-daemon-system.service"
 
   # Auto-load the evdi kernel module at boot so udev can grant user access to it
   install -Dm644 packaging/modules-load.d/lianli-evdi.conf "$pkgdir/usr/lib/modules-load.d/lianli-evdi.conf"
