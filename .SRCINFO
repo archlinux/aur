@@ -1,7 +1,7 @@
 pkgbase = dash-player-bin
 	pkgdesc = A video player designed specifically for English learning.(Prebuilt version)一款专为英语学习打造的视频播放器
-	pkgver = 6.0.1
-	pkgrel = 2
+	pkgver = 6.3.2
+	pkgrel = 1
 	url = https://dash-player.solidspoon.xyz/
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -9,12 +9,12 @@ pkgbase = dash-player-bin
 	depends = electron39
 	depends = ffmpeg
 	depends = yt-dlp
-	provides = dash-player=6.0.1
+	provides = dash-player=6.3.2
 	conflicts = dash-player
-	source = dash-player-6.0.1.rpm::https://github.com/solidSpoon/DashPlayer/releases/download/v6.0.1/dash-player-6.0.1-1.x86_64.rpm
-	source = LICENSE-6.0.1::https://raw.githubusercontent.com/solidSpoon/DashPlayer/v6.0.1/LICENSE
+	source = dash-player-6.3.2.rpm::https://github.com/solidSpoon/DashPlayer/releases/download/v6.3.2/dash-player-6.3.2-1.x86_64.rpm
+	source = LICENSE-6.3.2::https://raw.githubusercontent.com/solidSpoon/DashPlayer/v6.3.2/LICENSE
 	source = dash-player.sh
-	sha256sums = b1a6ed00935948d2bb909347f13df365748b201f4be54e526a65d259a61d29f0
+	sha256sums = e8bbe1eacb94f9452be215a4e200cbe885ceae4ecdfb9c118258b4c339c4d948
 	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
