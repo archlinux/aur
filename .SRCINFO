@@ -1,6 +1,6 @@
 pkgbase = tchmaterial-parser
 	pkgdesc = 国家中小学智慧教育平台 资源下载工具，帮助您从国家中小学智慧教育平台中获取电子课本的 PDF 文件网址并进行下载，让您更方便地获取课本内容。
-	pkgver = 4.0
+	pkgver = 4.2
 	pkgrel = 1
 	url = https://github.com/happycola233/tchMaterial-parser
 	arch = any
@@ -14,12 +14,11 @@ pkgbase = tchmaterial-parser
 	depends = python-pillow
 	depends = python-psutil
 	depends = python-requests
-	depends = python-pyperclip
 	depends = python-pypdf
 	depends = python-sv-ttk
-	source = v4.0.tar.gz::https://github.com/happycola233/tchMaterial-parser/archive/refs/tags/v4.0.tar.gz
+	source = v4.2.tar.gz::https://github.com/happycola233/tchMaterial-parser/archive/refs/tags/v4.2.tar.gz
 	source = tchmaterial-parser.desktop
-	sha256sums = 45b97363983c497b9e8b4c07c79e0f94265bc12f2fc758ada592006e22b66828
+	sha256sums = 0038a9a9b74b2f04aa7a40a0424c0e271f00bfd4e9a57354550e3cbd07a35fab
 	sha256sums = 806a543e1790762e4011820e21cbf021facb337a19a1c190bb806beb954530ec
 
 pkgname = tchmaterial-parser
