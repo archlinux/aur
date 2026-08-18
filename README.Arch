@@ -1,0 +1,48 @@
+UniFi Endpoint on Arch Linux
+============================
+
+Launching
+---------
+
+Launch `unifi-endpoint` from a terminal or use the desktop entry. The Arch
+launcher starts `UniFi-Endpoint-Daemon.socket` on demand; the package does not
+enable user services automatically.
+
+To keep the socket active from login for the current user, run:
+
+    systemctl --user enable --now UniFi-Endpoint-Daemon.socket
+
+VPN and DNS
+-----------
+
+WireGuard VPN requires a `resolvconf` provider. When systemd-resolved is in use,
+`systemd-resolvconf` is strongly recommended. Using openresolv against a
+systemd-resolved-managed `/etc/resolv.conf` can make `wg-quick` reject DNS
+updates and roll the tunnel back.
+
+After a failed full-tunnel connection, verify that DNS still works before
+retrying. If necessary, disconnect the tunnel in UniFi Endpoint and inspect:
+
+    journalctl --user -u UniFi-Endpoint-Daemon.service
+    resolvectl status
+
+SSL inspection
+--------------
+
+VPN and WiFi features do not require membership in the `unifi-endpoint` group.
+Installing or removing a workspace CA for SSL inspection does. To authorize the
+current user for those machine-wide trust-store operations, run:
+
+    sudo usermod -aG unifi-endpoint "$(id -un)"
+
+A workspace CA installed for SSL inspection becomes trusted system-wide. This
+package maps the CA path expected by UniFi Endpoint to Arch's p11-kit anchor
+directory and refreshes the trust store with `update-ca-trust`.
+
+Removal
+-------
+
+Package removal stops the Endpoint GUI, daemon, and VPN processes; removes
+Endpoint-created NetworkManager keyfiles and CA anchors; and refreshes the
+system trust store. User application state under the user's home directory is
+not removed.

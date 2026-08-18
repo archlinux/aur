@@ -1,0 +1,149 @@
+# shellcheck shell=bash
+# SPDX-License-Identifier: 0BSD
+
+_active_users() {
+  command -v loginctl >/dev/null 2>&1 || return 0
+  loginctl list-users --no-legend 2>/dev/null | awk '{print $2}'
+}
+
+_reload_user_managers() {
+  local user
+
+  _active_users | while IFS= read -r user; do
+    [ -n "${user}" ] || continue
+    systemctl --user --machine "${user}@.host" daemon-reload \
+      >/dev/null 2>&1 || true
+  done
+}
+
+_stop_user_service() {
+  local user
+
+  _active_users | while IFS= read -r user; do
+    [ -n "${user}" ] || continue
+    systemctl --user --machine "${user}@.host" stop \
+      UniFi-Endpoint-Daemon.service >/dev/null 2>&1 || true
+  done
+}
+
+_disable_user_units() {
+  local user
+
+  _active_users | while IFS= read -r user; do
+    [ -n "${user}" ] || continue
+    systemctl --user --machine "${user}@.host" disable --now \
+      UniFi-Endpoint-Daemon.socket >/dev/null 2>&1 || true
+    systemctl --user --machine "${user}@.host" disable \
+      UniFi-Endpoint-Daemon.service >/dev/null 2>&1 || true
+  done
+
+  # Clean up a global enablement left by a direct DEB conversion or an older
+  # package revision. This package never creates it itself.
+  systemctl --global disable UniFi-Endpoint-Daemon.socket \
+    >/dev/null 2>&1 || true
+  systemctl --global disable UniFi-Endpoint-Daemon.service \
+    >/dev/null 2>&1 || true
+}
+
+_reload_integrations() {
+  systemctl reload NetworkManager >/dev/null 2>&1 || true
+  systemctl reload polkit >/dev/null 2>&1 || true
+  _reload_user_managers
+}
+
+_ensure_group() {
+  getent group unifi-endpoint >/dev/null 2>&1 || \
+    groupadd --system unifi-endpoint
+}
+
+_teardown_runtime() {
+  if [ -f /run/UniFi-Endpoint/wg/ui-vpn.conf ] && \
+      command -v wg-quick >/dev/null 2>&1; then
+    wg-quick down /run/UniFi-Endpoint/wg/ui-vpn.conf \
+      >/dev/null 2>&1 || true
+  elif command -v ip >/dev/null 2>&1 && \
+      ip link show ui-vpn >/dev/null 2>&1; then
+    ip link delete dev ui-vpn >/dev/null 2>&1 || true
+  fi
+
+  rm -f /run/UniFi-Endpoint/wg/ui-vpn.conf
+  rm -f /etc/NetworkManager/system-connections/unifi-endpoint-vpn.nmconnection
+  rm -f /etc/NetworkManager/system-connections/unifi-endpoint-vpn
+
+  if command -v pkill >/dev/null 2>&1; then
+    pkill -TERM -f /usr/lib/UniFi-Endpoint/utunnel >/dev/null 2>&1 || true
+    sleep 1
+    pkill -KILL -f /usr/lib/UniFi-Endpoint/utunnel >/dev/null 2>&1 || true
+  fi
+
+  nmcli connection reload >/dev/null 2>&1 || true
+}
+
+_cleanup_persistent_state() {
+  rm -f /etc/NetworkManager/system-connections/UniFi-Endpoint-WiredAuth-*.nmconnection
+  rm -f /etc/NetworkManager/system-connections/UniFi-Endpoint-Wifi-*.nmconnection
+  rm -f /etc/NetworkManager/conf.d/90-unifi-endpoint-no-connectivity.conf
+  rm -f /etc/NetworkManager/conf.d/90-unifi-endpoint-vpn-dns.conf
+
+  rm -f /etc/ca-certificates/trust-source/anchors/UniFi-Endpoint-*.crt
+  update-ca-trust extract >/dev/null 2>&1 || true
+
+  rm -rf /run/UniFi-Endpoint
+  rm -rf /etc/pki/unifi-endpoint
+  rm -rf /var/lib/unifi-endpoint
+
+  nmcli connection reload >/dev/null 2>&1 || true
+}
+
+post_install() {
+  _ensure_group
+  rm -f /etc/NetworkManager/conf.d/unmanaged-unifi-endpoint.conf
+  _reload_integrations
+
+  printf '%s\n' \
+    'Launch UniFi Endpoint from the desktop menu or with: unifi-endpoint' \
+    'For SSL inspection CA management, add your user to the unifi-endpoint group.' \
+    'See /usr/share/doc/unifi-endpoint/README.Arch for details.'
+}
+
+pre_upgrade() {
+  _teardown_runtime
+  _stop_user_service
+}
+
+post_upgrade() {
+  _ensure_group
+  rm -f /etc/NetworkManager/conf.d/unmanaged-unifi-endpoint.conf
+  _reload_integrations
+
+  printf '%s\n' 'Restart the UniFi Endpoint GUI to use the upgraded version.'
+}
+
+pre_remove() {
+  if command -v pkill >/dev/null 2>&1; then
+    pkill -TERM -f /usr/lib/UniFi-Endpoint/UIDSTD.Avalonia \
+      >/dev/null 2>&1 || true
+    sleep 1
+    pkill -KILL -f /usr/lib/UniFi-Endpoint/UIDSTD.Avalonia \
+      >/dev/null 2>&1 || true
+  fi
+
+  _teardown_runtime
+  _disable_user_units
+  _cleanup_persistent_state
+}
+
+post_remove() {
+  _cleanup_persistent_state
+
+  getent group unifi-endpoint >/dev/null 2>&1 && \
+    groupdel unifi-endpoint >/dev/null 2>&1 || true
+
+  if [ -f /etc/apparmor.d/wg-quick ] && \
+      command -v apparmor_parser >/dev/null 2>&1; then
+    apparmor_parser --replace --write-cache /etc/apparmor.d/wg-quick \
+      >/dev/null 2>&1 || true
+  fi
+
+  _reload_integrations
+}
