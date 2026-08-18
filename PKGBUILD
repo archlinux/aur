@@ -3,7 +3,7 @@
 # Contributor: Pierre-Luc Rigaux 
 pkgname=sysd-manager
 pkgver=2.20.10
-pkgrel=4
+pkgrel=5
 pkgdesc="A systemd GUI to manage service, timer, socket and other units."
 arch=("x86_64" "aarch64")
 url="https://github.com/plrigaux/sysd-manager"
@@ -50,7 +50,7 @@ package() {
 	install -vDm644 "./target/loc/io.github.plrigaux.sysd-manager.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
 	
 	install -vDm644 "./data/schemas/io.github.plrigaux.sysd-manager.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
-    glib-compile-schemas "$pkgdir/usr/share/glib-2.0/schemas"
+    #glib-compile-schemas "$pkgdir/usr/share/glib-2.0/schemas"
 
 	cp -vr "./target/locale" "$pkgdir/usr/share/" 
 
