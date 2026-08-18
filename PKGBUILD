@@ -22,15 +22,17 @@ source=("git+https://github.com/azerothcore/${_pkgname}.git#branch=master"
 		"acore-auth-server.service"
 		"acore-world-server.service"
 		"acore_setup"
-		"attach-world")
+		"attach-world"
+		"acore_mod")
 sha512sums=('SKIP'
             'b71132ace8a0710b22038716258ed4ecaba81074c7a9c69951440049b955d95e3dd1f8ca81305832ec8f2bea32672f06a19a3b5a569ca3152eb9a4e7a1f7d72c'
             '40fa719a7fc331210eb12266717e8cd8789390462f3cdd026a6917b0f15f177708dbf6e524b26dc0523381fa51901d21000c49132c27643a48cb9a592856adca'
             'e2507661acdc8eef4dc733dc945e4e6bac188694f103dff2c165e8812a61a1196038cc31f602c5f89df2723d70c9fddbef0f35b4af698b17c74cab2d5a86cba9'
-            'b284a274735c3d7217743753091a0fc2936b270bf80f9fd6909ccf6fe13d35329e13b768bd90b16ffd87a2cdd9c600b157593a6a7c117335fc0b945d8d7edce5')
+            'b284a274735c3d7217743753091a0fc2936b270bf80f9fd6909ccf6fe13d35329e13b768bd90b16ffd87a2cdd9c600b157593a6a7c117335fc0b945d8d7edce5'
+            '36813d7ae1ab6ce2aefb7f18aa48bc764b2520bfbc515b75b519ff71f7bcd257eba69d78725df9752f761165c813d245fbbd65ebd90fd209ee9d03ec4f66148b')
 
 install='azerothcore-wotlk-git.install'
-#backup=('usr/share/azerothcore/acore.json')
+backup=('etc/azerothcore/acore_mod.conf')
 makedepends=('git' 'cmake' 'clang' 'boost' 'openssl' 'lld')
 # Core execution dependencies
 depends=('boost-libs' 'readline' 'openssl' 'openbsd-netcat')
@@ -108,6 +110,31 @@ prepare() {
 	# Apply any patches here, if needed
 	cd "${srcdir}/${_pkgname}"
 
+	# If any modules were here previously, remove the symbolic link
+	# Force the system to go to the source folder before cleaning links
+	cd "$srcdir/azerothcore-wotlk"
+	if [ -d "src/modules/" ]; then
+		find src/modules/ -type l -delete
+	fi
+
+	# Re-create the module links to build with
+    if [ -d "$user_dropzone" ] && [ "$(ls -A $user_dropzone)" ]; then
+        echo " -> Custom user modules detected in /usr/src/acore-modules/!"
+        
+        # Loop through every directory the user cloned into the dropzone
+        for mod_dir in "$user_dropzone"/*; do
+            if [ -d "$mod_dir" ]; then
+                local mod_name=$(basename "$mod_dir")
+                echo "    + Mapping C++ build target symlink: ${mod_name}"
+                
+                # Create a 0-byte symlink pointing CMake directly to the live clone path for compilation
+                ln -s "$mod_dir" "src/modules/${mod_name}"
+            fi
+        done
+    else
+        echo " -> Module dropzone is empty. Building standard stock core layout."
+    fi
+
 	# jemalloc is broken in master. AzerothCore is replacing jemalloc, so this is temporary.
 	# Skip the patch when the source tree is already in the patched state.
 	if ! grep -q 'throw std::bad_alloc();' deps/jemalloc/src/jemalloc_cpp.cpp; then
@@ -147,6 +174,10 @@ package() {
 	# Directs files into Arch's strict isolated filesystem staging area
   	DESTDIR="${pkgdir}" cmake --install build
 
+	install -d -m 1777 "${pkgdir}/usr/src/acore-modules"
+	install -d "${pkgdir}/usr/share/azerothcore/data/sql/updates"
+	install -Dm 755 "${srcdir}/acore_mod" "${pkgdir}/usr/bin/acore_mod"
+
 	install -d "${pkgdir}/usr/bin"
 	install -Dm644 "${srcdir}/attach-world" "${pkgdir}/usr/bin/attach-world"
 
@@ -176,6 +207,10 @@ package() {
 	# install -Dm755 "${srcdir}/${_pkgname}/apps/installer/main.sh" "${pkgdir}/usr/share/azerothcore/apps/installer/main.sh"
 	# install -Dm755 "${srcdir}/${_pkgname}/deps/semver_bash/semver.sh" "${pkgdir}/usr/share/azerothcore/deps/semver_bash/semver.sh"
 	# install -Dm755 "${srcdir}/${_pkgname}/acore.json" "${pkgdir}/usr/share/azerothcore/acore.json"
+
+	# Save the absolute, persistent build path to a static file.
+    echo "ACORE_BUILD_DIR=\"${srcdir}/${_pkgname}\"" > "${pkgdir}/etc/azerothcore/acore_mod.conf"
+    echo "ACORE_DROPZONE=\"/usr/src/acore-modules\"" >> "${pkgdir}/etc/azerothcore/acore_mod.conf"
 
 	# Install SQL data files into the runtime tree
   	install -dm755 "${pkgdir}/usr/share/azerothcore/data/sql"

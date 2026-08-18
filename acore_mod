@@ -1,0 +1,162 @@
+#!/bin/bash
+# Structural typography markers for clean terminal scannability
+BOLD='\033[1m'
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # Reset formatting
+
+echo "======================================================================="
+echo -e " ⚔️  ${BOLD}AZEROTHCORE AUTOMATED MODULAR COMPILER ASSISTANT${NC}"
+echo "======================================================================="
+echo -e "${BOLD}WHAT THIS TOOL WILL DO:${NC}"
+echo " 1. Scan your passive module directory for newly staged modifications."
+echo " 2. Generate side-by-side database migration symlinks in your live core."
+echo " 3. Initiate a fast incremental C++ compilation of your server binary."
+echo " 4. Safely restart your background services to apply changes."
+echo ""
+echo -e "${BOLD}TARGET DROPAWAY DIRECTORIES:${NC}"
+echo " • Active Module Source: /usr/src/acore-modules/"
+echo " • Live Database Updates: /usr/share/azerothcore/data/sql/updates/"
+echo ""
+echo -e "${RED}${BOLD}⚠️  WARNING AND NOTICE:${NC}"
+echo " This action WILL trigger an incremental re-compilation of the server code."
+echo " The background 'acore-world-server' daemon WILL be restarted on completion,"
+echo " which will temporarily disconnect any active players currently logged in."
+echo "======================================================================="
+
+# --- 5-SECOND COUNTDOWN INTERRUPT LAYOUT ---
+echo -n " Starting deployment in: "
+for i in {5..1}; do
+    echo -n "$i... "
+    sleep 1
+done
+echo "🚀 EXECUTING!"
+echo "-----------------------------------------------------------------------"
+
+# 1. DYNAMIC LOCATION DISCOVERY: Locate the active PKGBUILD workspace folder
+if [ -f "./PKGBUILD" ]; then
+    # Best Case: User is running the script directly from inside their build folder
+    BUILD_DIR="$(pwd)"
+else
+    echo " -> Querying server binary strings for historical compilation mapping..."
+    
+    # Extract the compilation path directly from the installed server binary metadata
+    TARGET_BINARY="/usr/bin/worldserver"
+    
+    if [ -f "$TARGET_BINARY" ]; then
+        # Grab the absolute source path by scanning for the unique 'azerothcore-wotlk' folder signature
+        COMP_PATH=$(strings "$TARGET_BINARY" 2>/dev/null | grep -m 1 "/azerothcore-wotlk/")
+        
+        if [ -n "$COMP_PATH" ]; then
+            # Cleanly strip away everything after the main AUR package parent directory
+            BUILD_DIR=$(echo "$COMP_PATH" | sed 's|/src/.*||')
+        fi
+    fi
+fi
+
+# Sanity check: verify the target folder structure is valid before running compilation
+if [ -z "$BUILD_DIR" ] || [ ! -d "$BUILD_DIR" ] || [ ! -f "$BUILD_DIR/PKGBUILD" ]; then
+    echo -e "${RED}❌ Error: Could not locate your active package build folder workspace.${NC}"
+    echo "          The cached source folder may have been cleared by your AUR helper."
+    echo "          Please run this command from inside your cloned azerothcore-wotlk-git directory."
+    exit 1
+fi
+
+echo " -> Target workspace locked: $BUILD_DIR"
+
+# --- PURPOSEFUL RUNTIME SYMLINK MAPPING PHASE ---
+echo " -> Re-aligning live production database update maps..."
+
+# Safely remove old module level symlinks inside your true production directory
+sudo find /usr/share/azerothcore/data/sql/updates/ -type l -delete
+
+# Define the absolute C++ build targets destination path inside the makepkg workspace
+CPP_MODULES_TARGET="${BUILD_DIR}/src/azerothcore-wotlk/modules"
+
+echo " -> Re-aligning C++ build workspace target maps..."
+# Safely clear out any old broken symbolic links from your compilation path
+if [ -d "$CPP_MODULES_TARGET" ]; then
+    find "$CPP_MODULES_TARGET/" -type l -delete
+else
+    # Force create it if a clean workspace environment wiped it out
+    mkdir -p "$CPP_MODULES_TARGET"
+fi
+
+# Scan the user's permanent dropzone and map BOTH SQL and C++ source code structures
+USER_DROPZONE="/usr/src/acore-modules"
+NEW_CONFS_DEPLOYED=false
+
+if [ -d "$USER_DROPZONE" ] && [ "$(ls -A $USER_DROPZONE)" ]; then
+    for mod_dir in "$USER_DROPZONE"/*; do
+        if [ -d "$mod_dir" ]; then
+            MOD_NAME=$(basename "$mod_dir")
+            
+            # --- PHASE A: SQL DATABASE MAPPING ---
+            SQL_SOURCE="${mod_dir}/data/sql"
+            if [ -d "$SQL_SOURCE" ]; then
+                echo "    + Linking production schema stream: ${MOD_NAME}_sql"
+                sudo ln -s "$SQL_SOURCE" "/usr/share/azerothcore/data/sql/updates/${MOD_NAME}_sql"
+            fi
+            
+            # --- PHASE B: C++ CODE COMPILATION MAPPING ---
+            echo "    + Mapping C++ build target symlink: ${MOD_NAME}"
+            ln -s "$mod_dir" "${CPP_MODULES_TARGET}/${MOD_NAME}"
+
+            # --- PHASE C: AUTOMATED CONFIGURATION DEPLOYMENT ---
+            CONF_DIST=$(find "$mod_dir" -name "*.conf.dist" -print -quit)
+            if [ -n "$CONF_DIST" ]; then
+                CONF_NAME=$(basename "$CONF_DIST" .dist)
+                LIVE_CONF_TARGET="/etc/azerothcore/$CONF_NAME"
+                
+                if [ ! -f "$LIVE_CONF_TARGET" ]; then
+                    echo "    + Deploying fresh configuration template: $CONF_NAME"
+                    sudo cp "$CONF_DIST" "$LIVE_CONF_TARGET"
+                    sudo chmod 644 "$LIVE_CONF_TARGET"
+                    NEW_CONFS_DEPLOYED=true
+                else
+                    echo "    • Preserving existing active configuration: $CONF_NAME"
+                fi
+            fi
+        fi
+    done
+fi
+
+# --- CLEAN INCREMENTAL COMPILATION PHASE ---
+echo " -> Executing purposeful incremental C++ compilation sweep..."
+cd "$BUILD_DIR"
+
+# Flush the specific CMake configurations cache file to force detection
+if [ -f "build/CMakeCache.txt" ]; then
+    echo "    - Flushing static configuration cache maps..."
+    rm -f "build/CMakeCache.txt"
+fi
+
+# -e guarantees makepkg freezes your local source code commits and skips internet fetching
+if ! makepkg -edfi --noconfirm; then
+    echo -e "${RED}❌ Error: Incremental compilation phase failed. Check output traces above.${NC}"
+    exit 1
+fi
+
+echo " -> Cycling active background service components to apply modules..."
+sudo systemctl restart acore-world-server
+
+echo "======================================================================="
+echo -e " 🎉 ${BOLD}SYSTEM INCREMENTAL RE-INTEGRATION COMPLETE!${NC}"
+echo "======================================================================="
+echo " The C++ modules have been compiled and the background service restarted."
+echo " Check your scrolling server status updates using:"
+echo "     sudo journalctl -u acore-world-server -n 30 --no-pager"
+echo ""
+
+# --- CONFIGURATION CHECKS WARNING BANNER ---
+echo -e "${YELLOW}${BOLD}🔔 IMPORTANT: ACTIONS MANDATORILY REQUIRED BY THE USER:${NC}"
+if [ "$NEW_CONFS_DEPLOYED" = true ]; then
+    echo -e " 1. ${BOLD}New configuration templates (.conf) were generated${NC} in /etc/azerothcore/."
+    echo "    Please verify their internal settings before player entry."
+else
+    echo -e " 1. Check ${BOLD}/etc/azerothcore/${NC} to see if your module generated configuration files."
+fi
+echo -e " 2. Please check your module's ${BOLD}Git repository instructions${NC} for required changes:"
+echo "    • Some modules require custom database strings manually added to worldserver.conf."
+echo "    • If you modify config structures, you MUST run 'acore_mod' again to apply."
+echo "======================================================================="
