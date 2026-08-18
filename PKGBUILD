@@ -2,12 +2,12 @@
 
 pkgname=suzumushi-bin
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A calm, fully local terminal audio player for Linux'
 arch=('x86_64')
 url='https://github.com/nuggocto/suzumushi'
 license=('Apache-2.0')
-depends=('alsa-lib' 'glibc' 'libgcc' 'pipewire' 'dbus')
+depends=('alsa-lib' 'dbus' 'glibc' 'libgcc' 'libpipewire')
 provides=("suzumushi=$pkgver")
 conflicts=('suzumushi')
 options=('!debug')

@@ -1,15 +1,15 @@
 pkgbase = suzumushi-bin
 	pkgdesc = A calm, fully local terminal audio player for Linux
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nuggocto/suzumushi
 	arch = x86_64
 	license = Apache-2.0
 	depends = alsa-lib
+	depends = dbus
 	depends = glibc
 	depends = libgcc
-	depends = pipewire
-	depends = dbus
+	depends = libpipewire
 	provides = suzumushi=1.1.1
 	conflicts = suzumushi
 	options = !debug
