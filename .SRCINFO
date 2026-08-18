@@ -1,6 +1,6 @@
 pkgbase = todometer-git
 	pkgdesc = A simple, meter-based to-do list built with Electron and React.(Use system-wide electron)
-	pkgver = 3.0.0.r0.g232499e
+	pkgver = 3.0.3.r0.g0769fb0
 	pkgrel = 1
 	url = https://cassidoo.github.io/todometer/
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = todometer-git
 	makedepends = gendesk
 	makedepends = curl
 	makedepends = jq
-	depends = electron40
-	provides = todometer=3.0.0
+	depends = electron43
+	provides = todometer=3.0.3
 	conflicts = todometer
 	source = todometer.git::git+https://github.com/cassidoo/todometer.git
 	source = todometer.sh
