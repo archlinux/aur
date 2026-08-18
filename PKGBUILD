@@ -3,7 +3,7 @@
 
 pkgname=open-orpheus-bin
 pkgver=0.16.2
-pkgrel=1
+pkgrel=2
 _upstream_pkgname=open-orpheus
 pkgdesc="An open-source implementation of Netease Cloud Music's Orpheus browser host."
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
     'mesa'
     'libxcb'
 )
-optdepends=('kde-cli-tools')
+optdepends=('kde-cli-tools: enable trash integration')
 makedepends=('libarchive')
 provides=("${_upstream_pkgname}=${pkgver}")
 conflicts=("${_upstream_pkgname}")
