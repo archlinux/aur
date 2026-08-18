@@ -11,6 +11,7 @@ pkgbase = ccusage-statusline-rs-bin
 	provides = ccusage-statusline-rs=1.13.0
 	conflicts = ccusage-statusline-rs
 	options = !strip
+	options = !debug
 	source = ccusage-statusline-rs-1.13.0.tar.xz::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.13.0/ccusage-statusline-rs-1.13.0.tar.xz
 	source = ccusage-statusline-rs-1.13.0.tar.xz.asc::https://github.com/ticpu/ccusage-statusline-rs/releases/download/v1.13.0/ccusage-statusline-rs-1.13.0.tar.xz.asc
 	validpgpkeys = E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD

@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-options=('!strip')
+options=('!strip' '!debug')
 validpgpkeys=('E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD')
 source=("$_pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.xz"
         "$_pkgname-$pkgver.tar.xz.asc::$url/releases/download/v$pkgver/$_pkgname-$pkgver.tar.xz.asc")
