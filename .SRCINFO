@@ -1,0 +1,19 @@
+pkgbase = sifter-git
+	pkgdesc = Catalog photos, videos and audio into a date-structured library by capture date
+	pkgver = 0.1.0.r1.g03565fd
+	pkgrel = 1
+	url = https://github.com/SelfRef/sifter
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	provides = sifter
+	conflicts = sifter
+	options = !lto
+	source = sifter::git+https://github.com/SelfRef/sifter.git
+	sha256sums = SKIP
+
+pkgname = sifter-git
