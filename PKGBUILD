@@ -7,7 +7,7 @@
 # choices when `wdm-wayland` is installed on its own.
 pkgname=wdm-webkit-greeter
 backup=('etc/wdm/webkit-greeter.toml')
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='WebKitGTK greeter for wdm, with themes written in HTML, CSS and JavaScript'
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ provides=('wdm-greeter-implementation')
 source=("wdm-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # See the note in the `wdm-wayland` package: this is the checksum of the tarball GitHub
 # published, and all four wdm packages build from the same one.
-sha256sums=('49e70b577665bf4fb7c78f5d9319febaf0a8268a80bdb8eb01ff95ed0db8b9f7')
+sha256sums=('94fbfae480ddd21b18e2c7e5472e135a5a5577dcb172ace989d520170622443b')
 
 # The tarball is the whole workspace whatever the pkgbase is, so the source
 # directory is named for the project rather than for this package.
