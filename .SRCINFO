@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop-bin
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 31.0.2
+	pkgver = 31.1.8
 	pkgrel = 1
 	url = https://www.drawio.com
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = drawio-desktop-bin
 	provides = drawio-desktop
 	provides = drawio-desktop-bin
 	conflicts = drawio-desktop
-	source = LICENSE-31.0.2::https://raw.githubusercontent.com/jgraph/drawio-desktop/refs/heads/dev/LICENSE
+	source = LICENSE-31.1.8::https://raw.githubusercontent.com/jgraph/drawio-desktop/refs/heads/dev/LICENSE
 	sha256sums = b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1
-	source_x86_64 = drawio-desktop-bin-31.0.2-x86_64.deb::https://github.com/jgraph/drawio-desktop/releases/download/v31.0.2/drawio-amd64-31.0.2.deb
-	sha256sums_x86_64 = 5f7869224fa2fec20d8bf2e3c88e6f21e687f7ab7582eb4c145de6e12d2c56dd
-	source_aarch64 = drawio-desktop-bin-31.0.2-aarch64.deb::https://github.com/jgraph/drawio-desktop/releases/download/v31.0.2/drawio-arm64-31.0.2.deb
-	sha256sums_aarch64 = 081760255d5e02be640f559e8d8e558bf6c54687278661575c098bf66abbbd5b
+	source_x86_64 = drawio-desktop-bin-31.1.8-x86_64.deb::https://github.com/jgraph/drawio-desktop/releases/download/v31.1.8/drawio-amd64-31.1.8.deb
+	sha256sums_x86_64 = f4c49ed84422ea4afd95818f53c54bc666e57b33bd036d468c7096619b47ffd9
+	source_aarch64 = drawio-desktop-bin-31.1.8-aarch64.deb::https://github.com/jgraph/drawio-desktop/releases/download/v31.1.8/drawio-arm64-31.1.8.deb
+	sha256sums_aarch64 = 62a9ea636accada76076bd5a20f61b707e0e8093d3fd28c6583518663ca795d6
 
 pkgname = drawio-desktop-bin
