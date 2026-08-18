@@ -7,7 +7,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.4.5
+pkgver=3.4.6
 _electronversion=37
 _nodeversion=22
 pkgrel=1
