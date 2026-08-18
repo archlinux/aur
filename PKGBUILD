@@ -1,7 +1,7 @@
 # Maintainer: maria-rcks <maria at kuuro dot net>
 
 pkgname=t3code-nightly-bin
-pkgver=0.0.34_nightly.20260818.1127
+pkgver=0.0.34_nightly.20260818.1128
 pkgrel=1
 pkgdesc='Nightly desktop control surface for local coding agents'
 arch=('x86_64')
@@ -47,12 +47,10 @@ _upstream_version="${pkgver/_nightly./-nightly.}"
 _appimage="T3-Code-${_upstream_version}-x86_64.AppImage"
 source=(
   "$_appimage::https://github.com/pingdotgg/t3code/releases/download/v${_upstream_version}/$_appimage"
-  "${pkgname}-${pkgver}.png::https://raw.githubusercontent.com/pingdotgg/t3code/v${_upstream_version}/assets/nightly/nightly-universal-1024.png"
   "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v${_upstream_version}/LICENSE"
 )
 sha256sums=(
-  '363282697b505e69cd11f3d0a8a29c1e71049c5221a33c8af2d2121a796f0efa' # AppImage
-  '7e59b6394016ef83ed1e946847769e01bf36d4062c5c5af2577fd3e228285fd9' # icon
+  '7d9b9adc889eebd76db1f284e8dc0e5cc6f5a7d1bb37b2d4bdd18dd5a1b73d8b' # AppImage
   '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43' # upstream license
 )
 
@@ -80,8 +78,13 @@ exec /opt/t3code-nightly-bin/AppRun "$@"
 EOF
   ln -s t3code-nightly "$pkgdir/usr/bin/t3-code-nightly-desktop"
 
-  install -Dm644 "$srcdir/${pkgname}-${pkgver}.png" \
-    "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/t3code-nightly.png"
+  # Icon lookup only sees sizes registered in hicolor's index.theme (max 512x512).
+  local icon size_dir
+  for icon in "$srcdir"/squashfs-root/usr/share/icons/hicolor/*/apps/t3code.png; do
+    size_dir="${icon%/apps/t3code.png}"
+    install -Dm644 "$icon" \
+      "$pkgdir/usr/share/icons/hicolor/${size_dir##*/}/apps/t3code-nightly.png"
+  done
 
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/t3code.desktop" <<'EOF'
 [Desktop Entry]
