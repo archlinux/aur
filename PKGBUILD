@@ -3,7 +3,7 @@
 # Contributor: Javier Tiá <javier dot tia at gmail dot com>
 pkgname=vnote-bin
 _pkgname=VNote
-pkgver=4.3.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc="A Qt-based, free and open source note-taking application, focusing on Markdown now.(Prebuilt version)"
 arch=('x86_64')
@@ -32,24 +32,24 @@ options=(
     '!staticlibs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage.zip"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f27466d55242c5d3b30d1a1df05d47fba44b1102ef6e0adb22bedcef1a8abc48'
+sha256sums=('6451770512d3c90911f78a23215a9d5d2701ca5e9bebf4fd3d2de6a440fb2472'
             '7feea40a0bd1a6668b2acf9adccf1678fb1f0c00f02fd688699cc51e92ca95da')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${pkgname%-bin}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    rm -rf "${srcdir}/squashfs-root"
-    if [ ! -x "${srcdir}/${_pkgname}-${pkgver}-linux-x64.AppImage" ];then
-        chmod +x "${srcdir}/${_pkgname}-${pkgver}-linux-x64.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
     if [ -d "${srcdir}/squashfs-root" ];then
         rm -rf "${srcdir}/squashfs-root"
     fi
-    "${srcdir}/${_pkgname}-${pkgver}-linux-x64.AppImage" --appimage-extract > /dev/null
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
+    find "${srcdir}/squashfs-root/usr/share/doc" -type f -exec chmod 644 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
