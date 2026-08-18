@@ -103,7 +103,7 @@ prepare() {
     for _lib in \
         VirtualKeyboard \
         libCardAPI.so \
-        libpkcs11_x64.so \
+        "libpkcs11_x${_upstream_arch:(-2)}.so" \
         ; do
         mv {unused-libs,squashfs-root}/lib/"${_lib}"
     done
