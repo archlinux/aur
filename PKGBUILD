@@ -1,16 +1,17 @@
 # Maintainer: Kirara <kiraralarpsec@gmail.com>
 pkgname=fpvtester
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Automated Betaflight flight controller QC, inspection and configuration over MSP"
 arch=('any')
 url="https://github.com/kirarahoshiiii/fpv-tester"
 license=('MIT')
 depends=('python' 'python-pyserial')
-optdepends=('tk: graphical interface via fpvtester-gui')
+optdepends=('tk: graphical interface via fpvtester-gui'
+            'dfu-util: flashing firmware with --firmware')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('618756ec28bae95d827bef93333f7080cd1bb79820aae109125811cc13ff4f45')
+sha256sums=('716693da5b6b4308f84b8ff0981aef008caef3ec35823b07a3db89ee8bd45561')
 
 build() {
     cd "fpv-tester-$pkgver"
