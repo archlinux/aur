@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stremio-web-desktop-bin
 _pkgname='Stremio Web Desktop'
-pkgver=634
+pkgver=639
 _subver=1.0.0
 _electronversion=33
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${_subver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f2996702894ef3512512d2b030b3cb5d4d10f7448a442c0fb85312a42a34d5f7'
+sha256sums=('3e4d781f0a950a57a6031c4203e37ac3268667da28093555003add9c975c01c8'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
