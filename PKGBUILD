@@ -7,15 +7,15 @@ pkgname=("${_pkgname}-git"
          "${_pkgname}-host-git"
          "obs-plugin-${_pkgname}-git")
 epoch=2
-pkgver=B7.r649.g9469c087
+pkgver=B7.r782.g7b059ad6
 pkgrel=1
 pkgdesc="An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough"
 url="https://looking-glass.io/"
 arch=('x86_64')
 license=('GPL-2.0-or-later')
-makedepends=('binutils' 'cmake' 'fontconfig' 'git' 'libegl' 'libpipewire'
-             'libpulse' 'libsamplerate' 'libxi' 'libxpresent' 'libxss'
-             'obs-studio' 'spice-protocol' 'wayland-protocols')
+makedepends=('binutils' 'cmake' 'fontconfig' 'fuse3' 'git' 'libegl'
+             'libpipewire' 'libpulse' 'libsamplerate' 'libxi' 'libxpresent'
+             'libxss' 'obs-studio' 'spice-protocol' 'wayland-protocols')
 source=("${_pkgname}::git+https://github.com/gnif/LookingGlass.git"
         "LGMP::git+https://github.com/gnif/LGMP.git"
         "PureSpice::git+https://github.com/gnif/PureSpice.git"
@@ -84,7 +84,7 @@ build() {
 
 package_looking-glass-git() {
 	pkgdesc="A client application for accessing the LookingGlass IVSHMEM device of a VM"
-	depends=('binutils' 'fontconfig' 'gcc-libs' 'glibc' 'gmp' 'hicolor-icon-theme'
+	depends=('binutils' 'fontconfig' 'fuse3' 'gcc-libs' 'glibc' 'gmp' 'hicolor-icon-theme'
 	         'libegl' 'libgl' 'libpipewire' 'libpulse' 'libsamplerate' 'libunwind' 'libx11'
 	         'libxcursor' 'libxfixes' 'libxi' 'libxinerama' 'libxkbcommon' 'libxpresent'
 	         'libxss' 'nettle' 'wayland' 'zlib' 'zstd')
