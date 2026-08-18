@@ -2,7 +2,7 @@
 
 _gpuarch=gfx120X-all
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
-pkgver=10.1.0a20260815
+pkgver=10.1.0a20260817
 pkgrel=1
 pkgdesc="AMD ROCm Nightly Release (RDNA4) - Monolithic Install"
 arch=('x86_64')
@@ -21,7 +21,7 @@ _rocm_packages=(
     'rocprofiler' 'roctracer'
     'rocm-opencl-runtime' 'rocm-opencl-sdk'
     'hipblas' 'hipblas-common' 'hipblaslt' 'rocblas'
-    'hipfft' 'rocfft' 'hipfftw'
+    'hipfft' 'rocfft' 'hipdnn'
     'hiprand' 'rocrand'
     'hipsolver' 'rocsolver'
     'hipsparse' 'hipsparselt' 'rocsparse'
@@ -34,7 +34,7 @@ provides=("${_rocm_packages[@]}" opencl-driver "rocm=${pkgver}")
 conflicts=("${_rocm_packages[@]}" "rocm")
 options=('!strip' '!debug')
 source=("${url}/tarball-multi-arch/therock-dist-linux-${_gpuarch}-${pkgver}.tar.gz")
-sha256sums=('26fa897e50132d14698c5c4afe19361de1eea869c589da56b8350cbae8ea94e5')
+sha256sums=('6e7275682e2b085ae3ae66a6b2bba197f22644f8b5951980b97f4b557a440e84')
 
 noextract=("${source[@]##*/}")
 
