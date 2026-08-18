@@ -1,6 +1,6 @@
 pkgbase = papers-git
 	pkgdesc = Document viewer for PDF and other document formats aimed at the GNOME desktop
-	pkgver = 50.beta.r12.gc9daa37
+	pkgver = 51.beta.r11.ga65a3db
 	pkgrel = 1
 	url = https://apps.gnome.org/Papers/
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = papers-git
 	depends = dconf
 	depends = djvulibre
 	depends = exempi
-	depends = gcc-libs
+	depends = libgcc
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc

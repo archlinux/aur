@@ -3,7 +3,7 @@
 
 pkgname=papers-git
 _reponame=papers
-pkgver=50.beta.r12.gc9daa37
+pkgver=51.beta.r11.ga65a3db
 pkgrel=1
 pkgdesc='Document viewer for PDF and other document formats aimed at the GNOME desktop'
 arch=(x86_64)
@@ -15,7 +15,7 @@ depends=(
   dconf
   djvulibre
   exempi
-  gcc-libs
+  libgcc
   gdk-pixbuf2
   glib2
   glibc
@@ -63,11 +63,11 @@ prepare() {
   cd "$_reponame"
 
   CARGO_HOME="$srcdir/build/cargo-home" \
-    cargo fetch --locked --target "$(rustc --print host-tuple)"
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
-  arch-meson "$_reponame" build
+  arch-meson "$_reponame" build -Dtests=false
   meson compile -C build
 }
 
