@@ -1,7 +1,7 @@
 pkgbase = idescriptor
 	pkgdesc = A free, open-source, and cross-platform iDevice management tool
 	pkgver = 0.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/iDescriptor/iDescriptor
 	arch = x86_64
 	arch = aarch64
@@ -32,7 +32,6 @@ pkgbase = idescriptor
 	depends = ffmpeg
 	depends = gstreamer
 	depends = gst-plugins-base-libs
-	depends = gst-plugin-qmlgl
 	depends = gst-plugin-qml6
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
