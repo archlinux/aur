@@ -1,6 +1,6 @@
 pkgbase = vcvrack-computerscare
 	pkgdesc = Computerscare VCV Rack modules
-	pkgver = 2.3.3
+	pkgver = 2.3.7
 	pkgrel = 1
 	url = https://github.com/freddyz/computerscare-vcv-modules
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = vcvrack-computerscare
 	makedepends = zstd
 	depends = gcc-libs
 	depends = vcvrack
-	source = vcvrack-computerscare-2.3.3.tar.gz::https://github.com/freddyz/computerscare-vcv-modules/archive/refs/tags/v2.3.3.tar.gz
-	sha256sums = fd796202edf39104da72b5443c14177f8845ffad6090e4f7b55ce6e8e6642b1a
+	source = vcvrack-computerscare-2.3.7.tar.gz::https://github.com/freddyz/computerscare-vcv-modules/archive/refs/tags/v2.3.7.tar.gz
+	sha256sums = ce1430d38c7739424f9aee6f763c9a233019024fb0698f7cc5bff53c71210313
 
 pkgname = vcvrack-computerscare
