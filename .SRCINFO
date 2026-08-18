@@ -1,0 +1,16 @@
+pkgbase = niri-ocr
+	pkgdesc = CleanShot X-style OCR text capture for niri: select a region, get text in clipboard
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Beefsizzle/niri-ocr
+	arch = any
+	license = MIT
+	depends = tesseract
+	depends = tesseract-data-eng
+	depends = wl-clipboard
+	depends = libnotify
+	depends = niri>=25.11
+	source = niri-ocr-1.0.0.tar.gz::https://github.com/Beefsizzle/niri-ocr/archive/v1.0.0.tar.gz
+	sha256sums = cac6402cf78ea1d0af31b1b9c749707c79c439755ec7644a696e05cef628aa46
+
+pkgname = niri-ocr
