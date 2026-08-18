@@ -3,20 +3,20 @@
 
 pkgname=mpz-qt5
 pkgver=2.1.4
-pkgrel=0
+pkgrel=3
 pkgdesc='Music player for the large local collections (Qt5 version)'
 arch=('x86_64')
 url="https://github.com/olegantonyan/mpz"
 license=('GPL3')
-depends=('qt5-multimedia' 'qt5-svg' 'qt5-x11extras' 'hicolor-icon-theme' 'yaml-cpp' 'taglib' 'libmpdclient' 'cpptrace', 'libebur128', 'sqlite3')
+depends=('qt5-multimedia' 'qt5-svg' 'qt5-x11extras' 'hicolor-icon-theme' 'yaml-cpp' 'taglib' 'libmpdclient' 'cpptrace' 'libebur128' 'sqlite3')
 makedepends=('cmake')
 provides=('mpz')
 conflicts=('mpz')
-source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/olegantonyan/mpz/archive/558b1581265f41584022040f88da8eb54ab60ab9.zip")
-sha256sums=('f78f1eda8e70dcf2b7b73e9316ddfaaa3c2fe053e39919d54e01d31940883643')
+source=("$pkgname-$pkgver-$pkgrel.zip::https://github.com/olegantonyan/mpz/archive/829ea75d58d20b42e41a8a420ea08336717aad18.zip")
+sha256sums=('476ecb95ada30ab39ecd4cd03fa3707fcd5cb1a7e4bc852e13ebbe2e1d6e0bb7')
 
 build() {
-    cd mpz-558b1581265f41584022040f88da8eb54ab60ab9
+    cd mpz-829ea75d58d20b42e41a8a420ea08336717aad18
 
     rm -rf build
     mkdir build
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-    cd mpz-558b1581265f41584022040f88da8eb54ab60ab9
+    cd mpz-829ea75d58d20b42e41a8a420ea08336717aad18
 
     cd build
     DESTDIR="$pkgdir" cmake --install .
