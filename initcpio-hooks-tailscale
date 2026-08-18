@@ -6,25 +6,13 @@
 # file with busybox ash as well.
 # shellcheck shell=bash
 
-run_hook() (
-  echo "Starting Tailscale"
+# The daemon's command line, shared by first launch and emergency restart. A
+# subshell, so sourcing the user-edited default.env leaks nothing into /init.
+_tailscale_launch() (
   # Written into the image by the install hook; not present at lint time.
   # shellcheck source=/dev/null
   . /etc/default/tailscaled
 
-  mkdir /dev/pts
-  mount -t devpts none /dev/pts
-
-  # Userspace networking delivers inbound tailnet TCP by dialling the same
-  # port on 127.0.0.1. systemd brings lo up as PID 1; nothing in a busybox
-  # initramfs does, and with lo down a dropbear or tinyssh next to tailscaled
-  # is unreachable no matter what it listens on.
-  ip link set lo up
-
-  # Launch tailscale agent in the background. Userspace networking rather
-  # than a TUN device: see the install hook, which for the same reason no
-  # longer puts the tun module in the image.
-  /usr/sbin/tailscaled --cleanup
   # TUN comes from default.env: empty means userspace networking, an
   # interface name means a kernel TUN device (setup-initcpio-tailscale --tun).
   # FLAGS holds extra tailscaled arguments from default.env and is meant to
@@ -40,9 +28,54 @@ run_hook() (
   echo "$!" >/run/tailscaled.pid
 )
 
-run_cleanuphook() {
-  local pid
+run_hook() {
+  echo "Starting Tailscale"
+
+  mkdir /dev/pts
+  mount -t devpts none /dev/pts
+
+  # Userspace networking delivers inbound tailnet TCP by dialling the same
+  # port on 127.0.0.1. systemd brings lo up as PID 1; nothing in a busybox
+  # initramfs does, and with lo down a dropbear or tinyssh next to tailscaled
+  # is unreachable no matter what it listens on.
+  ip link set lo up
+
+  # Launch tailscale agent in the background. Userspace networking rather
+  # than a TUN device: see the install hook, which for the same reason no
+  # longer puts the tun module in the image.
   /usr/sbin/tailscaled --cleanup
+  _tailscale_launch
+}
+
+run_cleanuphook() {
+  local pid i
+  # Kill first and give the daemon a moment to run its own teardown; only
+  # then --cleanup. The old order ran --cleanup under a live daemon, which
+  # could reinstate kernel-TUN routes right after they were removed and leak
+  # them past switch_root into the booted system's own tailscaled.
   pid=$(cat /run/tailscaled.pid 2>/dev/null)
-  [[ -z $pid ]] || kill "$pid"
+  if [ -n "$pid" ]; then
+    kill "$pid" 2>/dev/null
+    i=0
+    while kill -0 "$pid" 2>/dev/null && [ "$i" -lt 20 ]; do
+      i=$((i + 1))
+      sleep 0.1
+    done
+  fi
+  /usr/sbin/tailscaled --cleanup
+}
+
+run_emergencyhook() {
+  local pid
+  # /init runs the cleanup hooks before it decides whether the boot worked,
+  # so by the time it bails out to the emergency shell the daemon above has
+  # already been killed -- the one moment this node most needs reaching. A
+  # pre-mount break lands here too, before any cleanup, hence the liveness
+  # check rather than an unconditional start.
+  pid=$(cat /run/tailscaled.pid 2>/dev/null)
+  if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null; then
+    return 0
+  fi
+  echo "Restarting Tailscale for the emergency shell"
+  _tailscale_launch
 }

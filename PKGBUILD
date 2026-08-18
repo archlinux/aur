@@ -1,7 +1,7 @@
 # Maintainer:  Daniel Graña <dangra at gmail dot com>
 
 pkgname=mkinitcpio-tailscale
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="mkinitcpio hook to launch Tailscale on systemd or busybox based initramfs"
 arch=("any")
@@ -18,11 +18,11 @@ source=("initcpio-hooks-tailscale"
   "setup-initcpio-tailscale"
   "libalpm-hook-tailscale"
   "libalpm-script-tailscale")
-sha256sums=('2f4134503e86c586ef4b1114163c4c830eb0744b853c2229736b77e18f0bf86d'
-            '8da8517f58145bec941bd45cd8d38982e395b5fd316cb9c3c98908f8d544b2dd'
-            '0b91128d1db2acbca70f111e013f500780c47358071c3007fa12e91021477ff7'
+sha256sums=('00f3d983c9444de563060b8a549a5709be479aa97211646ef7b03550d876a4a4'
+            'c7831ef61aec269d33fec1e77f0d8103211c2903c32952d1c9aba4a31a64ada3'
+            'a6c24657a5c9a621b8a5ff22386b3a7156180b39dbb3efca62c060dacc9f4736'
             '2a68c473a701af5a33e538ac9b6533c1fac6e7191d093b0f8b878071f66d639f'
-            '394d750bdb5c5e8817bdc7698551e515069bee8c44f69fd4baebf934b49ba7ad')
+            '135f0c80535004166b9aa09b3e91dab433f8cc15a34e0c479a411d34448cb678')
 
 package() {
   install -m 644 -D "${srcdir}/initcpio-hooks-tailscale" "${pkgdir}/usr/lib/initcpio/hooks/tailscale"

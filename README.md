@@ -162,7 +162,9 @@ You are not cut off when that happens: the boot test lets a systemd image run
 past the timeout on purpose, and the node stays online and still answers SSH
 in emergency mode. So you can log in and finish the job by hand,
 `systemctl start initrd-root-fs.target` after unlocking the device. Better
-not to need to.
+not to need to. A busybox image behaves the same way for a different reason:
+its init tears tailscaled down before deciding the boot failed, so this hook
+starts it again on the way into the emergency shell.
 
 Whether it bites depends on how `root=` is written. `systemd-cryptsetup`
 disables the timeout for the device it unlocks itself, so `root=/dev/mapper/root`

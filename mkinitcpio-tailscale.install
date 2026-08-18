@@ -24,6 +24,12 @@ post_upgrade() {
 	[[ -s $env ]] || return 0
 	grep -q '^TUN=' "$env" && return 0
 
+	# A default.env whose last line has no newline -- an editor's doing, since
+	# this file is the user's to edit -- would otherwise take the pin onto
+	# that line: FLAGS=""TUN="tailscale0" sources as a single assignment,
+	# leaving TUN unset and putting a stray argument on tailscaled's command
+	# line, so the machine this is meant to protect boots with no tailnet.
+	[[ -z $(tail -c1 "$env") ]] || printf '\n' >>"$env"
 	printf 'TUN="tailscale0"\n' >>"$env"
 	cat <<-EOF
 	:: mkinitcpio-tailscale now runs tailscaled on userspace networking by

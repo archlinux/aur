@@ -35,7 +35,9 @@ Defaults:
 
 Instead of registering, '${CMD0} --check' verifies an existing setup without
 changing anything: configuration files present, 'tailscale' placed correctly
-in HOOKS=, and the built images actually carrying tailscaled.
+in HOOKS=, the built images actually carrying tailscaled, and the node's key
+not about to expire. Pass '--hostname' with it to check a node registered
+under a name other than the default.
 
 i.e.:
 
@@ -78,8 +80,11 @@ xsu_pick() {
 install_state() {
   local setupdir=$1 ssh=$2 tun=$3
 
-  install -o root -g root -m600 -d "${TS_STATEDIR}"
-  install -o root -g root -m644 -t "${TS_STATEDIR}" "${setupdir}/tailscaled.state"
+  install -o root -g root -m700 -d "${TS_STATEDIR}"
+  # 0600: the state file is the node key. The directory above already keeps
+  # everyone but root out, so this is the belt to that pair of braces -- it
+  # survives a loosened directory, a copy, or a backup that flattens modes.
+  install -o root -g root -m600 -t "${TS_STATEDIR}" "${setupdir}/tailscaled.state"
 
   # default.env is the user's to edit -- the setup output says to -- and
   # re-running this script (a new key, switching --ssh) is no reason to reset
@@ -113,6 +118,11 @@ EOF
   if [[ -n $tun ]] && grep -q '^TUN=' "${TS_STATEDIR}/default.env"; then
     sed -i "s|^TUN=.*|TUN=\"${tun}\"|" "${TS_STATEDIR}/default.env"
   elif [[ -n $tun ]]; then
+    # An editor that left no final newline would otherwise glue this onto
+    # the last line: FLAGS=""TUN="tailscale0" sources as one assignment,
+    # leaving TUN unset and a stray argument on tailscaled's command line.
+    [[ -s ${TS_STATEDIR}/default.env && -z $(tail -c1 "${TS_STATEDIR}/default.env") ]] ||
+      printf '\n' >>"${TS_STATEDIR}/default.env"
     printf 'TUN="%s"\n' "$tun" >>"${TS_STATEDIR}/default.env"
   fi
 
@@ -147,7 +157,15 @@ effective_hooks() {
       # shellcheck source=/dev/null
       . "$f" 2>/dev/null
     done
-    printf '%s\n' ${HOOKS[@]+"${HOOKS[@]}"}
+    # HOOKS may be a plain string rather than an array -- Arch shipped that
+    # form for years and a .pacnew upgrade leaves it in place, and mkinitcpio
+    # accepts both (arrayize_config). Joining and re-splitting on spaces
+    # reads either the same way; hook names have no spaces to lose. Without
+    # it a scalar config looks like a single hook named
+    # "base udev ... filesystems" and nothing matches.
+    local -a split=()
+    IFS=' ' read -r -a split <<<"${HOOKS[*]:-}" || true
+    printf '%s\n' ${split[@]+"${split[@]}"}
   )
 }
 
@@ -160,9 +178,12 @@ run_check() {
     local xsu self
     xsu=$(xsu_pick)
     self=$(readlink -f "$0" 2>/dev/null) || self=$0
-    # Unquoted on purpose: XSU may name a tool plus its arguments.
+    # --hostname travels with it: the deferral above exists so an explicit
+    # name reaches this check, and dropping it here would put the default
+    # back in the child. It is settled by now, so passing it is always right.
+    # Unquoted $xsu on purpose: XSU may name a tool plus its arguments.
     # shellcheck disable=SC2086
-    exec $xsu "$self" --check
+    exec $xsu "$self" --check --hostname="$TS_HOSTNAME"
   fi
 
   # The configuration the install hook will copy into the image.
@@ -250,10 +271,18 @@ run_check() {
         chk_warn "'${TS_HOSTNAME}' is not among this tailnet's peers, so its key expiry cannot be checked (registered under another name? pass --hostname=)"
       fi
     else
-      local now left
+      local now left when
       now=$(date +%s)
-      left=$(($(date -d "$expiry" +%s 2>/dev/null || echo "$now") - now))
-      if ((left <= 0)); then
+      if ! when=$(date -d "$expiry" +%s 2>/dev/null); then
+        # A timestamp this date cannot read is not an expired key; treating
+        # it as one would tell the user to re-register a healthy node.
+        chk_warn "cannot parse the key expiry '${expiry}' reported for '${TS_HOSTNAME}'; check it by hand"
+        when=''
+      fi
+      left=$(( ${when:-now} - now ))
+      if [[ -z $when ]]; then
+        :
+      elif ((left <= 0)); then
         chk_fail "the key for '${TS_HOSTNAME}' expired on ${expiry%T*}; the node cannot reach your tailnet. Re-run ${CMD0}, then disable expiry at https://console.tailscale.com/admin/machines"
       elif ((left < 14 * 86400)); then
         chk_fail "the key for '${TS_HOSTNAME}' expires on ${expiry%T*}, in $((left / 86400)) days; disable expiry at https://console.tailscale.com/admin/machines"
@@ -267,7 +296,9 @@ run_check() {
   # tools or images are not where this expects them. When TUN= asks for a
   # kernel device, the module has to be in the image too -- configured but not
   # rebuilt is exactly the silent break this mode can produce.
-  local img found=0 checked=0 list tun
+  local img found=0 checked=0 list tun tsbin
+  # What a rebuild would put in the image, for the staleness comparison below.
+  tsbin=$(command -v tailscaled 2>/dev/null || printf '')
   # The subshell keeps the sourcing contained, the same way the install hook
   # reads it at build time.
   # shellcheck source=/dev/null
@@ -280,6 +311,13 @@ run_check() {
       if grep -q 'tailscaled$' <<<"$list"; then
         found=1
         chk_ok "$img contains tailscaled"
+        # The pacman hook rebuilds when the tailscale package is upgraded, so
+        # an image older than the installed daemon means that never happened:
+        # the hook disabled, or a rebuild that failed. It still boots, with
+        # whatever the old tailscaled was missing.
+        if [[ -n $tsbin && $img -ot $tsbin ]]; then
+          chk_warn "$img predates the installed tailscaled, so it carries an older one; run 'mkinitcpio -P'"
+        fi
       else
         chk_warn "$img does not contain tailscaled (built before the hook was added?)"
       fi
@@ -345,6 +383,7 @@ fi
 TS_SSH=yes
 TS_TUN=''
 DO_CHECK=no
+DUMP_ARGS=no
 FOUND_HOSTNAME_IN_ARGS=no
 FOUND_SSH_IN_ARGS=no
 FOUND_NETFILTER_IN_ARGS=no
@@ -356,6 +395,16 @@ for arg in "$@"; do
     # The value half of a space separated '--hostname NAME'.
     WANT_HOSTNAME=no
     TS_HOSTNAME=${arg//[\"\']/}
+    TS_ARGS+=("$arg")
+    continue
+  fi
+
+  # Only dash-prefixed tokens are candidate flags. A bare word can be the
+  # value of a pass-through flag written in its space-separated form --
+  # '--exit-node tun' -- and swallowing it as one of ours would eat the value
+  # and leave the flag dangling. Bare 'help' keeps working by name.
+  if [[ $arg != -* ]]; then
+    [[ $arg == help ]] && { usage; exit 0; }
     TS_ARGS+=("$arg")
     continue
   fi
@@ -390,6 +439,12 @@ for arg in "$@"; do
     FOUND_SSH_IN_ARGS=yes
     continue
     ;;
+  internal-print-args)
+    # A seam for tests/01-lint.sh: print what the scan decided and stop,
+    # before anything registers or writes. Internal, like --internal-install.
+    DUMP_ARGS=yes
+    continue
+    ;;
   tun)
     TS_TUN=tailscale0
     continue
@@ -416,10 +471,6 @@ for arg in "$@"; do
 done
 [[ $WANT_HOSTNAME == no ]] || die "--hostname needs a value"
 
-# --check verifies and exits; TS_HOSTNAME is settled by now, so it knows which
-# node to look for.
-[[ $DO_CHECK == no ]] || run_check
-
 # Defaults are prepended, so an argument the user did pass always has the last
 # word with the flag parser on the other end.
 #
@@ -432,6 +483,16 @@ set -- "${TS_ARGS[@]}"
 [[ $FOUND_NETFILTER_IN_ARGS == yes ]] || set -- --netfilter-mode=off "$@"
 [[ $FOUND_SSH_IN_ARGS == yes ]] || set -- --ssh "$@"
 [[ $FOUND_HOSTNAME_IN_ARGS == yes ]] || set -- --hostname="$TS_HOSTNAME" "$@"
+
+if [[ $DUMP_ARGS == yes ]]; then
+  printf 'hostname=%s\nssh=%s\ntun=%s\ncheck=%s\nargv=%s\n' \
+    "$TS_HOSTNAME" "$TS_SSH" "$TS_TUN" "$DO_CHECK" "$*"
+  exit 0
+fi
+
+# --check verifies and exits. It comes after the defaults so the dump above
+# can observe what --check would have used, and needs nothing from them.
+[[ $DO_CHECK == no ]] || run_check
 
 SETUPDIR="$(mktemp -d)"
 socket="${SETUPDIR}/tailscaled.sock"

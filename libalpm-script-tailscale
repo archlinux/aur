@@ -14,22 +14,23 @@
 set -uo pipefail
 
 hook_enabled() {
-	local f
-	for f in /etc/mkinitcpio.conf /etc/mkinitcpio.conf.d/*.conf; do
-		[[ -r $f ]] || continue
-		# The configuration is a shell fragment and HOOKS= is an array; parsing
-		# it any way other than sourcing -- as mkinitcpio itself does -- would
-		# miss line continuations and quoting. A subshell keeps it contained.
-		# shellcheck disable=SC1090
-		if (
-			HOOKS=()
+	# The configuration is a shell fragment and HOOKS= is an array; parsing it
+	# any way other than sourcing -- as mkinitcpio itself does -- would miss
+	# line continuations and quoting. Sourced cumulatively, main file then
+	# drop-ins, because later assignments override earlier ones: a drop-in
+	# that redefines HOOKS= without tailscale has disabled the hook, and a
+	# per-file check would keep rebuilding for it anyway. A scalar HOOKS="..."
+	# is legal too (mkinitcpio's arrayize_config splits it); ${HOOKS[*]} reads
+	# the same either way. The subshell keeps the sourcing contained.
+	(
+		HOOKS=()
+		for f in /etc/mkinitcpio.conf /etc/mkinitcpio.conf.d/*.conf; do
+			[[ -r $f ]] || continue
+			# shellcheck disable=SC1090
 			. "$f" 2>/dev/null
-			[[ " ${HOOKS[*]:-} " == *' tailscale '* ]]
-		); then
-			return 0
-		fi
-	done
-	return 1
+		done
+		[[ " ${HOOKS[*]:-} " == *' tailscale '* ]]
+	)
 }
 
 hook_enabled || exit 0
