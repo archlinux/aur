@@ -6,6 +6,7 @@
 # provides, so pacman offers this as one of the choices when `wdm-wayland` is installed
 # on its own.
 pkgname=wdm-gtk-greeter
+backup=('etc/wdm/gtk-greeter.toml')
 pkgver=0.9.0
 pkgrel=1
 pkgdesc='GTK4 greeter for wdm'
@@ -53,5 +54,9 @@ check() {
 package() {
   cd "$_src"
   install -Dm755 target/release/wdm-gtk-greeter "$pkgdir/usr/lib/wdm/wdm-gtk-greeter"
+  # Fully commented out, so the defaults are also the documentation. In
+  # backup= so pacman delivers a changed default as a .pacnew instead of
+  # clobbering an edited one.
+  install -Dm644 packaging/gtk-greeter.toml.example "$pkgdir/etc/wdm/gtk-greeter.toml"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -13,6 +13,7 @@ pkgbase = wdm-gtk-greeter
 	depends = gtk4
 	depends = gtk4-layer-shell
 	provides = wdm-greeter-implementation
+	backup = etc/wdm/gtk-greeter.toml
 	source = wdm-0.9.0.tar.gz::https://github.com/quinnjr/wdm/archive/refs/tags/v0.9.0.tar.gz
 	sha256sums = 49e70b577665bf4fb7c78f5d9319febaf0a8268a80bdb8eb01ff95ed0db8b9f7
 
