@@ -1,4 +1,4 @@
-pkgbase = unifi
+pkgbase = unifi-no-ads
 	pkgdesc = Centralized management system for Ubiquiti UniFi AP
 	pkgver = 10.5.67
 	pkgrel = 1
@@ -10,7 +10,9 @@ pkgbase = unifi
 	depends = fontconfig
 	depends = java-runtime-headless=25
 	depends = mongodb
+	provides = unifi
 	conflicts = tomcat-native
+	conflicts = unifi
 	source = UniFi-10.5.67.zip::https://dl.ui.com/unifi/10.5.67/UniFi.unix.zip
 	source = mongod
 	source = unifi.service
@@ -24,4 +26,4 @@ pkgbase = unifi
 	b2sums = bd254ddbd4b52acca50b41dffe7ae1e2e5250f15574fc371d36dc133215f3a268623b0b5b12e73932c856bf90a69a178ba91530ffa8b08c0da51f51911b2ef92
 	b2sums = 84f2a201143b3e44ba09d1009818db507d8f261d495a86ce239bcbacee059aad5c63af1b43638b126be743ff7c660f0871eb2b4efe2031e2f64bc23f172052e0
 
-pkgname = unifi
+pkgname = unifi-no-ads

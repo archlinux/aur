@@ -1,7 +1,9 @@
-# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Maintainer: Maxwell Pray <synthead@gmail.com>
+# Contributor: Frederik Schwan <freswa at archlinux dot org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@archlinux.org>
 
-pkgname=unifi
+_pkgname=unifi
+pkgname=$_pkgname-no-ads
 pkgver=10.5.67
 pkgrel=1
 pkgdesc='Centralized management system for Ubiquiti UniFi AP'
@@ -15,7 +17,8 @@ depends=(
   'java-runtime-headless=25'
   'mongodb'
 )
-conflicts=('tomcat-native')
+conflicts=('tomcat-native' 'unifi')
+provides=('unifi')
 source=("UniFi-${pkgver}.zip::https://dl.ui.com/unifi/${pkgver}/UniFi.unix.zip"
         mongod
         unifi.service
@@ -59,13 +62,16 @@ package() {
   ln -s ../../../var/log/unifi "${pkgdir}"/usr/lib/unifi/logs
 
   # readme
-  install -Dm644 UniFi/readme.txt "${pkgdir}"/usr/share/doc/${pkgname}/README
+  install -Dm644 UniFi/readme.txt "${pkgdir}"/usr/share/doc/${_pkgname}/README
 
   # license
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${_pkgname}/LICENSE
 
   # systemd
-  install -Dm644 ${pkgname}.service "${pkgdir}"/usr/lib/systemd/system/${pkgname}.service
-  install -Dm644 ${pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
-  install -Dm644 ${pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
+  install -Dm644 ${_pkgname}.service "${pkgdir}"/usr/lib/systemd/system/${_pkgname}.service
+  install -Dm644 ${_pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${_pkgname}.conf
+  install -Dm644 ${_pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${_pkgname}.conf
+
+  # Remove JS that presents ads to the user.
+  sed -Ei '/return n&&r\?.+\.aF\.Root/s/return n/return !1/' "$pkgdir/usr/lib/unifi/webapps/ROOT/app-unifi/react/js"/swai.*.js
 }
