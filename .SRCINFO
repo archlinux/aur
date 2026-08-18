@@ -1,0 +1,21 @@
+pkgbase = kudu-bin
+	pkgdesc = A modern, open-source system cleaner for Windows, macOS, and Linux
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/AdventDevInc/kudu
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = alsa-lib
+	depends = mesa
+	depends = fuse2
+	provides = kudu
+	conflicts = kudu
+	noextract = kudu-bin-2.1.0.deb
+	options = !strip
+	source_x86_64 = kudu-bin-2.1.0.deb::https://github.com/AdventDevInc/kudu/releases/download/v2.1.0/Kudu-2.1.0-amd64.deb
+	sha256sums_x86_64 = a03b0eafdd61f24df5f260966b3156b3682f7f2413407b4ac46f8a2c2af60668
+
+pkgname = kudu-bin
