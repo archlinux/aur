@@ -1,0 +1,18 @@
+pkgbase = nanobot-ai-bin
+	pkgdesc = Python framework for building personal AI agents with tools, memory and WebUI
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/HKUDS/nanobot
+	install = nanobot-ai-bin.install
+	arch = x86_64
+	license = MIT
+	depends = python
+	provides = nanobot-ai
+	conflicts = nanobot-ai
+	noextract = nanobot_ai-0.3.0-py3-none-any.whl
+	options = !strip
+	options = !emptydirs
+	source = nanobot_ai-0.3.0-py3-none-any.whl::https://files.pythonhosted.org/packages/f6/66/27c946147a2e9d0f2e00507e475edcb19a73d09e3061dbd4ef05059f7cdf/nanobot_ai-0.3.0-py3-none-any.whl
+	sha256sums = fb24fa5754661a2704d3b04f592ca7536be83caff062ef2b47989e867129cbe0
+
+pkgname = nanobot-ai-bin

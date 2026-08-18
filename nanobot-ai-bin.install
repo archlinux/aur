@@ -1,0 +1,27 @@
+post_install() {
+  echo ""
+  echo "==> nanobot-ai has been installed!"
+  echo ""
+  echo "    Run 'nanobot' to start the interactive agent."
+  echo ""
+  echo "    Configuration lives in ~/.nanobot/ (created on first run)."
+  echo "    Add your model provider API keys to ~/.nanobot/nanobot.toml."
+  echo ""
+  echo "    The WebUI, tools, memory and multi-agent features are"
+  echo "    documented upstream:"
+  echo "    https://github.com/HKUDS/nanobot"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo ""
+  echo "==> nanobot-ai removed."
+  echo "    Configuration and data in ~/.nanobot/ are NOT deleted."
+  echo "    Remove them manually if no longer needed:"
+  echo "      rm -rf ~/.nanobot"
+  echo ""
+}
