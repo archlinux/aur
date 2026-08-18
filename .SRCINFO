@@ -1,0 +1,15 @@
+pkgbase = openbolt
+	pkgdesc = OpenVoxProject OpenBolt, a community implementation of puppet-bolt.
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = https://github.com/OpenVoxProject/openbolt
+	arch = x86_64
+	license = Apache-2.0
+	depends = libxcrypt-compat
+	conflicts = puppet-bolt
+	options = staticlibs
+	options = !strip
+	source = https://apt.voxpupuli.org/pool/openvox8/o/openbolt/openbolt_5.6.0-1+debian13_amd64.deb
+	sha512sums = 6166052cfca50c2f23a9a264a37525208a318eabef4a8bd8255284bce87781c6e4d1691001b6c4d8b5e8c0514c2c7aa71e1da92c9bf82c48b29885a2455fd26c
+
+pkgname = openbolt
