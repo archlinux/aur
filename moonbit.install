@@ -9,7 +9,9 @@ post_install() {
 ▀   ▀  ▀▀▀   ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀▀▀   ▀   ▀     ▀
 
 EOF
-    echo "==> MoonBit v1.4.0 installed successfully!"
+    echo "==> moonbit v${1} installed successfully!"
+    echo ""
+    echo "Search for moonbit in your application menu, or run it directly:"
     echo ""
     echo "Usage:"
     echo "  moonbit                    # Interactive TUI"
@@ -47,14 +49,19 @@ post_upgrade() {
 ▀   ▀  ▀▀▀   ▀▀▀  ▀   ▀ ▀▀▀▀  ▀▀▀▀▀   ▀   ▀     ▀
 
 EOF
-    echo "==> MoonBit upgraded to v1.4.0!"
+    echo "==> moonbit upgraded to v${1}!"
     echo ""
-    echo "New in v1.4.0: safer systemd automation, deep app-cache targets,"
-    echo "category include/exclude controls, and better scan logging."
-    echo "  moonbit scan --list-categories --mode deep"
-    echo "  moonbit scan --mode deep --include-category 'opencode Caches'"
-    echo "  sudo systemctl enable --now moonbit-daemon.service"
+    echo "See the changelog for what changed in this release:"
+    echo "  https://github.com/Nomadcxx/moonbit/releases/tag/v${1%%-*}"
     echo ""
+    if [ -f /usr/local/bin/moonbit ]; then
+        echo "!!  A stale binary remains at /usr/local/bin/moonbit."
+        echo "    This package now installs to /usr/bin/moonbit (packaged files do"
+        echo "    not belong in /usr/local). The old file was left by the"
+        echo "    from-source installer and will shadow this one on most PATHs."
+        echo "    Remove it with:  sudo rm /usr/local/bin/moonbit"
+        echo ""
+    fi
     echo "If you have enabled timers, they will continue running."
     echo "Check status: systemctl list-timers moonbit-*"
     echo "              systemctl status moonbit-daemon.service"
@@ -62,9 +69,29 @@ EOF
 }
 
 pre_remove() {
-    echo "==> Disabling MoonBit services..."
+    echo "==> Disabling moonbit services..."
     systemctl disable --now moonbit-scan.timer 2>/dev/null || true
     systemctl disable --now moonbit-clean.timer 2>/dev/null || true
     systemctl disable --now moonbit-daemon.service 2>/dev/null || true
     systemctl daemon-reload
+}
+
+post_remove() {
+    systemctl daemon-reload 2>/dev/null || true
+
+    echo ""
+    echo "==> moonbit binary and systemd units removed."
+    echo ""
+    echo "    Deliberately kept (they may hold the only copy of deleted files,"
+    echo "    or your configuration):"
+    echo "      /var/log/moonbit           audit log"
+    echo "      /var/lib/moonbit           daemon state"
+    echo "      ~/.config/moonbit          configuration"
+    echo "      ~/.cache/moonbit           scan cache"
+    echo "      ~/.local/share/moonbit     backups of previously deleted files"
+    echo ""
+    echo "    To remove them as well:"
+    echo "      sudo rm -rf /var/log/moonbit /var/lib/moonbit"
+    echo "      rm -rf ~/.config/moonbit ~/.cache/moonbit ~/.local/share/moonbit"
+    echo ""
 }
