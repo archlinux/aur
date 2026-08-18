@@ -1,6 +1,6 @@
 pkgbase = fclock
 	pkgdesc = Rude Pebble-style word clock TUI
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/cesarferreira/fclock
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = fclock
 	depends = gcc-libs
 	provides = fclock
 	conflicts = fclock
-	source = fclock-0.2.0.crate::https://crates.io/api/v1/crates/fclock/0.2.0/download
-	sha256sums = 52afd6ca3df15fe7ae5c5a5990a4a53df8ea51b2970f281717d9d4dea2dd5256
+	source = fclock-0.2.1.crate::https://crates.io/api/v1/crates/fclock/0.2.1/download
+	sha256sums = 3c9da5cdb4c66de82e3c1239d5593dd00d922be43d9420652afc1dec307713fd
 
 pkgname = fclock

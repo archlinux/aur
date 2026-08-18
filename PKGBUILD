@@ -10,7 +10,7 @@ _cratename=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Rude Pebble-style word clock TUI"
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('52afd6ca3df15fe7ae5c5a5990a4a53df8ea51b2970f281717d9d4dea2dd5256')
+sha256sums=('3c9da5cdb4c66de82e3c1239d5593dd00d922be43d9420652afc1dec307713fd')
 
 
 build() {
