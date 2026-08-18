@@ -6,7 +6,7 @@ pkgname=simplescreenrecorder
 pkgver=0.4.4.79.ge73e
 # Pin commit until the next upstream release
 _commit=e73e07664121ac30836872bca76194c6570e04c8
-pkgrel=1
+pkgrel=2
 pkgdesc="A feature-rich screen recorder that supports X11 and OpenGL."
 arch=("x86_64")
 url="https://www.maartenbaert.be/simplescreenrecorder/"
@@ -36,8 +36,9 @@ build() {
         -DWITH_QT6=TRUE \
         -DWITH_QT5=FALSE
 
-    cmake --build build --parallel
+    cmake --build build
 }
+
 package() {
     cd ssr/build
     make DESTDIR="$pkgdir" install
