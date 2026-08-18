@@ -48,7 +48,7 @@ build() {
         fi
     fi
 
-    export CFLAGS="-O3 -march=znver4 -mtune=znver4 \
+    export CFLAGS="-O3 -march=native -mtune=native \
                     -falign-functions=32 -falign-loops=32 \
                     -fno-math-errno -fno-trapping-math \
                     -fno-semantic-interposition \
