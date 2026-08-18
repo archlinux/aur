@@ -3,7 +3,7 @@
 
 pkgname=mingw-w64-libopenmpt
 _pkgname=libopenmpt
-pkgver=0.8.7
+pkgver=0.8.8
 pkgrel=1
 pkgdesc="A library to render tracker music to a PCM audio stream (mingw-w64)"
 arch=(any)
@@ -23,12 +23,12 @@ options=(!strip !buildflags staticlibs !debug)
 makedepends=(autoconf-archive mingw-w64-configure mingw-w64-gcc mingw-w64-wine)
 source=($_pkgname-$pkgver.tar.gz::https://lib.openmpt.org/files/libopenmpt/src/$_pkgname-$pkgver+release.autotools.tar.gz
         sf_wchar_open.patch)
-sha512sums=('f0284238a0c1a7892ef948d1a719a13ce817bd0bd0c28a01e92263ca1511442ec836958186fa36c546cc9ca60453f714f9453e0774d910b79233c8698446073d'
+sha512sums=('10f84c68a02ab3ad292bce4ceef4d8c0afc5127e52164ebe9f96c26d3b4833e9fe25370341f98de6682053624a957a3e8d874a34d16b246cef6ba12d225c61a6'
             '3db33e13e383420ae09e189462ac1b57fe8f49d3a6bdd365bda7ae47f549567b86cc25e497935ec516a919ab4447db3b76ab21fc943b51cd9bcf9da247601c7e')
-b2sums=('ef97f94e46b40cfc2087550659e13a6354abc7f85ac8ffa664414eb52011f4f6bce4fa5088d2ea0bf02c3193a78c6963f418d9b3a976c9c5699289dca18cb04e'
+b2sums=('0690b10136155d25966796a0d9dbdc11b566ae212a98eb7e65b302a4b269340816c567b3df69f8a964e4aa2df651b59522d72012dfcaf101cbb7d62cc114c6e6'
         '24c7f85efd34243c6730d563a0f4910e9fd5b26ff44700ba56df90a054ffaea932829986f96a75e2a67244829fb46526c36eb0959b047e6430f063fd3032399a')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 
 prepare() {
   cd $_pkgname-$pkgver+release.autotools
