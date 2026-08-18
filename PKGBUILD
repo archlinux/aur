@@ -1,20 +1,20 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=smaragd
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Native desktop authoring tool for writers'
 arch=(x86_64)
 url="https://github.com/ljantzen/$pkgname"
 license=(GPL-3.0-only)
 depends=(glibc # libc.so libm.so
-         libgcc libgcc_s.so)
+         libgcc)
 makedepends=(cargo)
 checkdepends=(git)
 optdepends=('git: VCS integration')
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('0f0c258b3eb39ad40c579d271941b5135e8afd4f37758c2e23928bafc73d9e79')
+sha256sums=('10d96464c72040929b9d66c3d68e7395ccba368a7088762a639976925f775896')
 
 _srcenv() {
 	cd "$_archive"
@@ -45,6 +45,7 @@ check() {
 }
 
 package() {
+	depends+=(libgcc_s.so)
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
