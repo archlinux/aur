@@ -1,7 +1,7 @@
 pkgbase = optiscaler-client-bin
 	pkgdesc = A modern manager for OptiScaler
-	pkgver = 1.0.6
-	pkgrel = 4
+	pkgver = 1.0.6.1
+	pkgrel = 1
 	url = https://github.com/Optiscaler-Client/Optiscaler-Client
 	arch = x86_64
 	license = GPL3
@@ -12,10 +12,10 @@ pkgbase = optiscaler-client-bin
 	provides = optiscaler-client
 	conflicts = optiscaler-client
 	options = !strip
-	source = optiscaler-client-1.0.6.zip::https://github.com/Optiscaler-Client/Optiscaler-Client/releases/download/OptiscalerClient-1.0.6/OptiscalerClient-1.0.6-linux-x64.zip
-	source = optiscaler-client-1.0.6.png::https://raw.githubusercontent.com/Optiscaler-Client/Optiscaler-Client/OptiscalerClient-1.0.6/assets/icon.png
+	source = optiscaler-client-1.0.6.1.zip::https://github.com/Optiscaler-Client/Optiscaler-Client/releases/download/OptiscalerClient-1.0.6.1/OptiscalerClient-1.0.6.1-linux-x64.zip
+	source = optiscaler-client-1.0.6.1.png::https://raw.githubusercontent.com/Optiscaler-Client/Optiscaler-Client/OptiscalerClient-1.0.6.1/assets/icon.png
 	source = optiscaler-client.desktop
-	sha256sums = 775a1834874428d8b262a4b6820de49629073e6d3c5a7f3641e1fd8d48d9a678
+	sha256sums = 52a1075891363a500e005bbb7aec46f51fbff7efa290bc9334e6c0416c24576c
 	sha256sums = 6cbd9f7a125322895f5d2081c274a24580ea4c499e96e7c0624174b41f5abe06
 	sha256sums = 1fee9e445e1633a393d5cb27b415dbf432aa2d6195fcd92b8e05cd79fe6bf955
 
