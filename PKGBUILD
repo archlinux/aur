@@ -1,8 +1,8 @@
 # Mantainer: Martin Wehrmeyer
 
 pkgname=dosbox-x-debugger-additions-git
-pkgver=20669.a273b663c
-pkgrel=1
+pkgver=2026.08.02
+pkgrel=2
 pkgdesc="This is my fork of dosbox-x-git with custom additions to the debugger. Probably uninteresting to anyone else."
 arch=(i686 x86_64)
 url="http://dosbox.sourceforge.net"
@@ -27,9 +27,9 @@ pkgver() {
 
 build() {
   cd "$srcdir/dosbox-x"
-  sed -i -e 's/-j3/-j$(nproc)/g' build
+  sed -i -e 's/-j3/-j$(nproc)/g' build-debug
   sed -i 's|"$LIBS -lavcodec -lavformat -lavutil -lswscale "`pkg-config libavcodec --libs`|`pkg-config libavcodec libavformat libavutil libswscale libswresample --libs`"$LIBS"|' configure.ac
-  PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./build
+  PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./build-debug
 }
 
 package() {
