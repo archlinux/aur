@@ -1,6 +1,6 @@
 pkgbase = youtube-music-for-desktop-bin
 	pkgdesc = Unofficial Youtube Music Desktop App, with LastFM support.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.7.3
+	pkgver = 1.7.6
 	pkgrel = 1
 	url = https://youtube-music.app/
 	arch = aarch64
@@ -8,15 +8,15 @@ pkgbase = youtube-music-for-desktop-bin
 	license = CC0-1.0
 	depends = electron43
 	depends = nodejs
-	provides = youtube-music-for-desktop=1.7.3
+	provides = youtube-music-for-desktop=1.7.6
 	conflicts = youtube-music-for-desktop
-	source = LICENSE-1.7.3::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v1.7.3/LICENSE
+	source = LICENSE-1.7.6::https://raw.githubusercontent.com/Venipa/ytmdesktop2/v1.7.6/LICENSE
 	source = youtube-music-for-desktop.sh
 	sha256sums = 33c4de6d76721945c9346b3b1024fe56f2fbb6bebbb0e761656232520a6defa6
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = youtube-music-for-desktop-1.7.3-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.7.3/YouTube-Music-for-Desktop-1.7.3-arm64.AppImage
-	sha256sums_aarch64 = d68e01a4eeb6b91258a2604d9812274fdca9d6ed82e6f4490ac4403338a634d6
-	source_x86_64 = youtube-music-for-desktop-1.7.3-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.7.3/YouTube-Music-for-Desktop-1.7.3.AppImage
-	sha256sums_x86_64 = 99ea1f03698565766232a56952201acc4d05a5a1c864eaa694461f4ac82ea49e
+	source_aarch64 = youtube-music-for-desktop-1.7.6-aarch64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.7.6/YouTube-Music-for-Desktop-1.7.6-arm64.AppImage
+	sha256sums_aarch64 = 12cb8876fcdb6a09a3b3d231536ed91541842541862d2517a953e13d9190f26d
+	source_x86_64 = youtube-music-for-desktop-1.7.6-x86_64.AppImage::https://github.com/Venipa/ytmdesktop2/releases/download/v1.7.6/YouTube-Music-for-Desktop-1.7.6.AppImage
+	sha256sums_x86_64 = bb4e108a65d9fb2952cdc523bb45f6f49e2ef7e7861b955e06488daf019063bb
 
 pkgname = youtube-music-for-desktop-bin
