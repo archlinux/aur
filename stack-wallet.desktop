@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Stack Wallet
+Comment=Multicoin cryptocurrency wallet
+Exec=stack-wallet %u
+Icon=stack-wallet
+Terminal=false
+Categories=Utility;Finance;
+Keywords=crypto;wallet;bitcoin;monero;
