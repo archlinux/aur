@@ -1,6 +1,6 @@
 pkgbase = crib-bin
 	pkgdesc = Dev containers without the ceremony
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/fgrehm/crib
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = crib-bin
 	optdepends = podman: for Podman runtime
 	provides = crib
 	options = !strip
-	source = crib-bin-0.9.1.tar.gz::https://github.com/fgrehm/crib/releases/download/v0.9.1/crib_linux_amd64.tar.gz
-	sha256sums = 8e52b4725d030861c47821492b79c560688ddd9e0c0fbf5ce9d93a051683dcbc
+	source = crib-bin-0.10.0.tar.gz::https://github.com/fgrehm/crib/releases/download/v0.10.0/crib_linux_amd64.tar.gz
+	sha256sums = 9a6655fd7f0158ffb088575f24e6652a56d33126d17d09b4fd44e9c4ff4200ec
 
 pkgname = crib-bin

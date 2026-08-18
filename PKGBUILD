@@ -1,7 +1,7 @@
 # Maintainer: Acuilan Gabriel <acuilangabriel at gmail dot com>
 
 pkgname=crib-bin
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Dev containers without the ceremony"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip')
 source=(
     "$pkgname-${pkgver}.tar.gz::https://github.com/fgrehm/crib/releases/download/v${pkgver}/crib_linux_amd64.tar.gz"
 )
-sha256sums=('8e52b4725d030861c47821492b79c560688ddd9e0c0fbf5ce9d93a051683dcbc')
+sha256sums=('9a6655fd7f0158ffb088575f24e6652a56d33126d17d09b4fd44e9c4ff4200ec')
 
 package() {
     install -Dm755 "crib" "${pkgdir}/usr/bin/crib"
