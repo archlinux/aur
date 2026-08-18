@@ -1,6 +1,6 @@
 pkgbase = nimlaunch-bin
 	pkgdesc = NimLaunch in SDL3 for native X11 and Wayland (keyboard-first launcher) - Pre-built binary
-	pkgver = 0.10.2
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/Vyrnexis/NimLaunch
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = nimlaunch-bin
 	depends = sdl3_ttf
 	depends = sdl3_image
 	depends = ttf-dejavu
-	source = nimlaunch-0.10.2::https://github.com/Vyrnexis/NimLaunch/releases/download/v0.10.2/nimlaunch
-	source = LICENSE-0.10.2::https://raw.githubusercontent.com/Vyrnexis/NimLaunch/v0.10.2/LICENSE
-	sha256sums = 70adf361f2c25a6ba79bffeec8dc53599d2692129bade7cc6b9ec508efa53379
+	source = nimlaunch-0.11.0::https://github.com/Vyrnexis/NimLaunch/releases/download/v0.11.0/nimlaunch
+	source = LICENSE-0.11.0::https://raw.githubusercontent.com/Vyrnexis/NimLaunch/v0.11.0/LICENSE
+	sha256sums = 6e56d0395c8a886528c88212e29e38bc6b408a11abc48c49b744c5e15b4863d9
 	sha256sums = e034e1daf773989e34bacd11dc3a7014109b08d3c5b430089e7e4fa0c1ab12d2
 
 pkgname = nimlaunch-bin
