@@ -2,7 +2,7 @@ pkgbase = mankala-git
 	pkgdesc = Mancala games for KDE
 	pkgver = 0.1
 	pkgrel = 1
-	url = https://invent.kde.org/srisharanvs/mankalanextgen
+	url = https://invent.kde.org/srisharanvs/mankala
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
@@ -21,7 +21,7 @@ pkgbase = mankala-git
 	provides = mankala
 	conflicts = mankala
 	replaces = mankala
-	source = git+https://invent.kde.org/srisharanvs/mankalanextgen.git
+	source = git+https://invent.kde.org/srisharanvs/mankala.git
 	sha256sums = SKIP
 
 pkgname = mankala-git
