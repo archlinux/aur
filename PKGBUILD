@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-launch9
-pkgver=9.0.0
-pkgrel=2
+pkgver=9.0.1
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Run and manage programs and plugins."
@@ -31,7 +31,7 @@ optdepends=(
 )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('4f1bd0ac59cf9da897307ceaf781eefe498afb7d3175dc72b9689e6fca727ad6')
+sha256sums=('3dfe32cac8b1f5d7cb89592964c89c5401c19dc475b4f8b0833fc16bdf517594')
 
 prepare() {
   cd "${_pkgbase}-${pkgname}_${pkgver}"
