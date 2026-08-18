@@ -1,6 +1,6 @@
 pkgbase = nostrord-bin
 	pkgdesc = Nostr NIP-29 group messaging client
-	pkgver = 2.5.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/Nostrord/nostrord
 	install = nostrord-bin.install
@@ -12,7 +12,7 @@ pkgbase = nostrord-bin
 	depends = freetype2
 	provides = nostrord
 	conflicts = nostrord
-	source = nostrord-2.5.0.deb::https://github.com/Nostrord/nostrord/releases/download/v2.5.0/nostrord-2.5.0-linux-amd64.deb
-	sha256sums = ba524cc5c29215ee513ce257c5ca7f95bd79df23be4e338b600aa1446109dc5b
+	source = nostrord-2.8.0.deb::https://github.com/Nostrord/nostrord/releases/download/v2.8.0/nostrord-2.8.0-linux-amd64.deb
+	sha256sums = 96f4ebae61490f1413ffb4b0579c09f787d213ef4b3ccc43228a82acfe5b76ef
 
 pkgname = nostrord-bin
