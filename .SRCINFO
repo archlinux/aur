@@ -1,6 +1,6 @@
 pkgbase = amphitheatre-desktop-bin
 	pkgdesc = Open source GUI application that enables you to interact with Amphitheatre.(Prebuilt version)
-	pkgver = 0.11.12
+	pkgver = 0.11.13
 	pkgrel = 1
 	url = https://github.com/amphitheatre-app/desktop
 	arch = aarch64
@@ -9,13 +9,13 @@ pkgbase = amphitheatre-desktop-bin
 	license = Apache-2.0
 	depends = glibc>=2.38
 	depends = libgcc
-	provides = amphitheatre-desktop=0.11.12
+	provides = amphitheatre-desktop=0.11.13
 	conflicts = amphitheatre-desktop
-	source_aarch64 = amphitheatre-desktop-0.11.12-aarch64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.12/amphitheatre-desktop-linux-arm64.rpm
-	sha256sums_aarch64 = 37c0c60b97dd8e06a3553822229c5168c3cc100fb7c8449248c521a4d606a558
-	source_i686 = amphitheatre-desktop-0.11.12-i686.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.12/amphitheatre-desktop-linux-i386.rpm
-	sha256sums_i686 = 9e3c87eacc633e4309c35da78f439e1ae21b3c1d11c1ad608ce86b0abb95e862
-	source_x86_64 = amphitheatre-desktop-0.11.12-x86_64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.12/amphitheatre-desktop-linux-amd64.rpm
-	sha256sums_x86_64 = 0ca9a19097caa98344e0eedded89628354be89a6259f0423b077fd3fc0ea9687
+	source_aarch64 = amphitheatre-desktop-0.11.13-aarch64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.13/amphitheatre-desktop-linux-arm64.rpm
+	sha256sums_aarch64 = f4ee230d64e7c187b4f4ec23d800f7accb5adfa2b0eac222617b97153b83223f
+	source_i686 = amphitheatre-desktop-0.11.13-i686.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.13/amphitheatre-desktop-linux-i386.rpm
+	sha256sums_i686 = 018888d628e0937533430a37959f932dc4ac72f63bc0e0211a90a8cbe8fe9140
+	source_x86_64 = amphitheatre-desktop-0.11.13-x86_64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.13/amphitheatre-desktop-linux-amd64.rpm
+	sha256sums_x86_64 = 3e0fe99e5c4410b72336d7b172cf0d0f4389d7ca3a5af742881cd5980c91119b
 
 pkgname = amphitheatre-desktop-bin
