@@ -1,0 +1,26 @@
+pkgbase = ngpost-hydro74000
+	pkgdesc = Command line and GUI Usenet poster - Hydro74000 fork
+	pkgver = 5.4.2
+	pkgrel = 1
+	url = https://github.com/Hydro74000/ngPost
+	arch = any
+	license = GPL-3.0-only
+	makedepends = qtkeychain-qt6
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-charts
+	depends = openssl
+	optdepends = par2cmdline: par2 creation
+	optdepends = parpar: faster par2 creation
+	optdepends = rar: archive uploads using rar
+	optdepends = 7zip: archive uploads using 7zip
+	optdepends = openvpn: VPN support
+	optdepends = wireguard-tools: VPN support
+	optdepends = polkit: VPN support
+	optdepends = qtkeychain-qt6: VPN support
+	provides = ngpost
+	conflicts = ngpost
+	source = ngPost-5.4.2.tar.gz::https://github.com/Hydro74000/ngPost/archive/refs/tags/v5.4.2.tar.gz
+	sha256sums = bab1b06d7e1965b99d5aec87fb63d1df30d43831a7abc906ec714580b24d79cc
+
+pkgname = ngpost-hydro74000
