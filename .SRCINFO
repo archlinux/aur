@@ -11,6 +11,9 @@ pkgbase = easycrypt-bin
 	depends = gmp
 	depends = mpfr
 	depends = why3-bin
+	options = !strip
+	options = !debug
+	options = !lto
 	source = easycrypt_2026.07-1_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/e/easycrypt/easycrypt_2026.07-1_amd64.deb
 	sha256sums = 0a801ef86be76a6e46960c9f2a391e0915d88d53b46019c8a54f5717698c30cb
 

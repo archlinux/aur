@@ -8,6 +8,10 @@ arch=('x86_64')
 url="https://github.com/EasyCrypt/easycrypt"
 license=('MIT')
 
+# Prebuilt, already-stripped binaries: skip strip/debug to avoid
+# "gdb-add-index: No index was created" noise and an empty -debug package
+options=('!strip' '!debug' '!lto')
+
 # Runtime dependencies available in official repositories
 depends=(
   'ocaml'
@@ -51,10 +55,21 @@ package() {
     rm -f "$pkgdir/usr/share/doc/$_pkgname/changelog.Debian"*
   fi
 
-  # Install license file if provided
-  if [ -f "$pkgdir/usr/share/doc/$_pkgname/copyright" ]; then
+  # Install the MIT license under the package's own name.
+  # The Debian copyright file is empty, so use the real LICENSE shipped
+  # in the docs directory and fall back to copyright only if it is missing.
+  if [ -s "$pkgdir/usr/doc/$_pkgname/LICENSE" ]; then
+    install -Dm644 \
+      "$pkgdir/usr/doc/$_pkgname/LICENSE" \
+      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  elif [ -s "$pkgdir/usr/share/doc/$_pkgname/copyright" ]; then
     install -Dm644 \
       "$pkgdir/usr/share/doc/$_pkgname/copyright" \
-      "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   fi
+
+  # Drop the empty Debian copyright stub
+  rm -f "$pkgdir/usr/share/doc/$_pkgname/copyright"
+  rmdir --ignore-fail-on-non-empty \
+    "$pkgdir/usr/share/doc/$_pkgname" "$pkgdir/usr/share/doc" 2>/dev/null || true
 }
