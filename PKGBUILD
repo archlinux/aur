@@ -9,7 +9,7 @@
 
 pkgname=abcm2ps
 pkgver=8.14.15
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert ABC music notation files to PostScript from the command line'
 arch=(x86_64 aarch64)
 url='http://moinejf.free.fr/'
@@ -17,7 +17,7 @@ license=(GPL-3.0-or-later)
 depends=(glibc)
 makedepends=(freetype2 glib2 pango python-docutils)
 checkdepends=(adobe-source-han-sans-cn-fonts)
-groups=(abc pro-audio)
+groups=(abc-notation pro-audio)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lewdlime/$pkgname/archive/v$pkgver.tar.gz"
         'abcm2ps-include-strings.patch')
 sha256sums=('5f02ac6203c4226cfbc6206935dca715ed7c45328535ee23e776c9da0219c822'

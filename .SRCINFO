@@ -1,11 +1,11 @@
 pkgbase = abcm2ps
 	pkgdesc = Convert ABC music notation files to PostScript from the command line
 	pkgver = 8.14.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://moinejf.free.fr/
 	arch = x86_64
 	arch = aarch64
-	groups = abc
+	groups = abc-notation
 	groups = pro-audio
 	license = GPL-3.0-or-later
 	checkdepends = adobe-source-han-sans-cn-fonts
