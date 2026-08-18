@@ -1,6 +1,6 @@
 pkgbase = backup-warden
 	pkgdesc = Streamline your backup management with ease and simplicity
-	pkgver = 1.0.15
+	pkgver = 1.0.16
 	pkgrel = 1
 	url = https://github.com/charles-001/backup-warden
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = backup-warden
 	provides = backup-warden
 	conflicts = python-backup-warden
 	replaces = python-backup-warden
-	source = backup-warden-1.0.15.tar.gz::https://github.com/charles-001/backup-warden/archive/refs/tags/1.0.15.tar.gz
-	sha256sums = e858fba08f6b37a5900b9ad38ae90c4bee18102386bdd35ff9104be3564aed0f
+	source = backup-warden-1.0.16.tar.gz::https://github.com/charles-001/backup-warden/archive/1.0.16.tar.gz
+	sha256sums = 7b51bc50fd1271c09801a934ed5ba8a51c0c3f21796cd042fc6e994462a481cd
 
 pkgname = backup-warden
