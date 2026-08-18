@@ -4,7 +4,7 @@
 pkgbase=logitech-trueforce-dkms
 pkgname=('logitech-trueforce-dkms' 'logi-wheel' 'logi-wheel-gui')
 _dkmsname=logitech-trueforce
-pkgver=0.37.0
+pkgver=0.37.1
 pkgrel=1
 pkgdesc="DKMS kernel driver for Logitech racing wheels (RS50, G PRO, G923): force feedback, TrueForce texture routing, and wheel settings via sysfs"
 arch=('x86_64')
@@ -27,7 +27,7 @@ options=('!lto')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v0.18.0 release tarball. On the next version bump, regenerate:
 #   updpkgsums && makepkg --printsrcinfo > .SRCINFO
-sha256sums=('53032173eddeafeabd531caf04bcdf0dad99a937be4a4d948c337d4b2dca27bc')
+sha256sums=('2c3e85a4d16c58e844d44cfea17c5e75cbd527dcc2776eb7ccc04cf1a4332fc1')
 
 _src() {
 	echo "$srcdir/logitech-trueforce-linux-driver-$pkgver"
