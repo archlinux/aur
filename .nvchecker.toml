@@ -1,0 +1,5 @@
+[readmarks-bin]
+source = "github"
+github = "adsellor/readmarks"
+use_latest_release = true
+prefix = "v"
