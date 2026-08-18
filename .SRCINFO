@@ -1,6 +1,6 @@
 pkgbase = skriuw-bin
 	pkgdesc = A quiet writing workspace for notes, journaling, sharing, and planning
-	pkgver = 0.34.0
+	pkgver = 0.39.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/remcostoeten/skriuw
@@ -14,7 +14,7 @@ pkgbase = skriuw-bin
 	conflicts = skriuw
 	options = !strip
 	options = !emptydirs
-	source = skriuw-0.34.0.deb::https://github.com/remcostoeten/skriuw/releases/download/v2-v0.34.0/Skriuw_0.34.0_amd64.deb
+	source = skriuw-0.39.0.deb::https://github.com/remcostoeten/skriuw/releases/download/v2-v0.39.0/Skriuw_0.39.0_amd64.deb
 	sha256sums = SKIP
 
 pkgname = skriuw-bin
