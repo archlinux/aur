@@ -1,0 +1,5 @@
+[postero-bin]
+source = "github"
+github = "kriuchkov/postero"
+use_latest_release = true
+prefix = "v"
