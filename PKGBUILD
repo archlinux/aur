@@ -1,47 +1,44 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
+# Maintainer:  Radu Potop <radu at wooptoo dot com>
+# Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Maarten Baert
 
 pkgname=simplescreenrecorder
-pkgver=0.4.4
-pkgrel=4
+pkgver=0.4.4.79.ge73e
+# Pin commit until the next upstream release
+_commit=e73e07664121ac30836872bca76194c6570e04c8
+pkgrel=1
 pkgdesc="A feature-rich screen recorder that supports X11 and OpenGL."
 arch=("x86_64")
 url="https://www.maartenbaert.be/simplescreenrecorder/"
-license=("GPL3")
-depends=("qt5-base" "qt5-x11extras"
+license=("GPL-3.0-only")
+depends=("qt6-base"
     "ffmpeg" "alsa-lib" "libpulse" "jack" "libgl" "glu"
     "libx11" "libxext" "libxfixes" "libxi" "libxinerama"
     "desktop-file-utils" "gtk-update-icon-cache")
 optdepends=("lib32-simplescreenrecorder: OpenGL recording of 32-bit applications")
-makedepends=("git" "cmake" "qt5-tools")
-source=("git+https://github.com/MaartenBaert/ssr.git#tag=$pkgver"
-         ffmpeg7.patch::https://patch-diff.githubusercontent.com/raw/MaartenBaert/ssr/pull/1036.patch)
-sha256sums=('9c7c3a9984800671bfb280ccbbc91e98d4993ea4465ab8f8c73b9ac65bd4c69c'
-            'a1d4a2c1d5cfcf6a327cc98e47e6cd76dd2fd03b33ca9e7fcaba971570fae914')
+makedepends=("git" "cmake" "qt6-tools")
+source=("git+https://github.com/MaartenBaert/ssr.git#commit=$_commit")
+sha256sums=('e514e25394a8de049786b9bed411e0ea1f234d1cfb5da2bb9d52c86bc59aa910')
 
 install=simplescreenrecorder.install
 
-prepare() {
-  cd ssr
-  mkdir -p build
-
-  patch -p1 -i ../ffmpeg7.patch # Fix build with ffmpeg 7
+pkgver() {
+    cd ssr
+    git describe --abbrev=4 --always --tags | sed 's/-/./g'
 }
 
 build() {
-  cd ssr/build
-  export CMAKE_POLICY_VERSION_MINIMUM=3.5
-  # fPIC is only required for qt5 + gcc5
-  #CXXFLAGS="$CXXFLAGS -fPIC"
-  #./configure --prefix=/usr --disable-assert --with-qt5
-  #./configure --prefix=/usr --disable-assert
-  #  -DLRELEASE='/usr/bin/lrelease-qt4' \
-  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release \
-    -DWITH_QT5=on \
-    -DCMAKE_INSTALL_LIBDIR='lib' ../
-  make
+    cd ssr
+    cmake -S . -B build \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
+        -DCMAKE_INSTALL_LIBDIR="lib" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DWITH_QT6=TRUE \
+        -DWITH_QT5=FALSE
+
+    cmake --build build --parallel
 }
 package() {
-  cd ssr/build
-  make DESTDIR="$pkgdir" install
+    cd ssr/build
+    make DESTDIR="$pkgdir" install
 }

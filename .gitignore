@@ -1,0 +1,5 @@
+*.sig
+*.tar.gz
+*.tar.xz
+*.tar.zst
+ssr/

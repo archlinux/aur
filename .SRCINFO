@@ -1,16 +1,15 @@
 pkgbase = simplescreenrecorder
 	pkgdesc = A feature-rich screen recorder that supports X11 and OpenGL.
-	pkgver = 0.4.4
-	pkgrel = 4
+	pkgver = 0.4.4.79.ge73e
+	pkgrel = 1
 	url = https://www.maartenbaert.be/simplescreenrecorder/
 	install = simplescreenrecorder.install
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = cmake
-	makedepends = qt5-tools
-	depends = qt5-base
-	depends = qt5-x11extras
+	makedepends = qt6-tools
+	depends = qt6-base
 	depends = ffmpeg
 	depends = alsa-lib
 	depends = libpulse
@@ -25,9 +24,7 @@ pkgbase = simplescreenrecorder
 	depends = desktop-file-utils
 	depends = gtk-update-icon-cache
 	optdepends = lib32-simplescreenrecorder: OpenGL recording of 32-bit applications
-	source = git+https://github.com/MaartenBaert/ssr.git#tag=0.4.4
-	source = ffmpeg7.patch::https://patch-diff.githubusercontent.com/raw/MaartenBaert/ssr/pull/1036.patch
-	sha256sums = 9c7c3a9984800671bfb280ccbbc91e98d4993ea4465ab8f8c73b9ac65bd4c69c
-	sha256sums = a1d4a2c1d5cfcf6a327cc98e47e6cd76dd2fd03b33ca9e7fcaba971570fae914
+	source = git+https://github.com/MaartenBaert/ssr.git#commit=e73e07664121ac30836872bca76194c6570e04c8
+	sha256sums = e514e25394a8de049786b9bed411e0ea1f234d1cfb5da2bb9d52c86bc59aa910
 
 pkgname = simplescreenrecorder
