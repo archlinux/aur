@@ -33,7 +33,7 @@ makedepends=(
   'gdk-pixbuf2'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('02d99e80dcd3df75b69c9d92c6983bcc7c64d59ebeded89aea2377d9abbfba19')
+sha256sums=('585525c29da0845934c62c6e5346dd33c2a7fc6d0bb3d1f61b772abdfffea0dc')
 
 _srcdir="optionTerm-$pkgver"
 
