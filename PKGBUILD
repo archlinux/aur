@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=issie-bin
-pkgver=6.0.17
+pkgver=6.0.21
 _electronversion=43
 pkgrel=1
 pkgdesc="An intuitive cross-platform hardware design application."
@@ -23,8 +23,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-arm64.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64.zip")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('5b0229f75c4467ec7a572d48eb7d3a040e5fa59245f583619883215cdb8cbd80')
-sha256sums_x86_64=('2b5e3e5f3546b6633b64d8237a02ecae0c5ad646668baf5c73f8f369be77e968')
+sha256sums_aarch64=('85e80f50993e7fd920e4601c2f30e8558c8b86d02eca84f5f4fbcc772675a45f')
+sha256sums_x86_64=('0d6eb21f4c5ea5e8faa1b9a857d728c85a75411b36843ba2292ddf5ccee6a264')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
