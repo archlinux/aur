@@ -21,7 +21,7 @@ provides=('llm-leaders')
 conflicts=('llm-leaders')
 source_x86_64=("https://github.com/mohamadkhani/llm-leaders/releases/download/v${pkgver}/llm-leaders-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 # Checksum is injected by CI from the built tarball (real b2sum, not SKIP).
-b2sums_x86_64=('3375428bc85768ed12d399faf3a461d0613d02767db06817b3956bd8967231f223e154cb19de9d22411722b8e7911968b50a04e4ab368451d68f9f19873bdf71')
+b2sums_x86_64=('47d0c872049ab396263bb0e85ba2b4c6361b48700278efa6126da1725a6619d3bf786575473737664ab8a929a0bf9d03acdbb3a17d3041215190e0392e6a3492')
 
 package() {
   install -Dm755 "$srcdir/llm-leaders" "$pkgdir/usr/bin/llm-leaders"
