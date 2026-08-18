@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-transport13
-pkgver=13.5.0
-pkgrel=2
+pkgver=13.6.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Transport library for component communication based on publication/subscription and service calls."
@@ -26,7 +26,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('eb07437111c84ccaa45df85c18705af81dfce61cc1dec5e023335fbd6eb22fde')
+sha256sums=('8c69165728368c568a6b44844cc47a3bd8a2f9b2cd3387f8f9af115d640ee609')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
