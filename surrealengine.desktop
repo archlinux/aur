@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Name=Surreal Engine
+GenericName=Surreal Engine
+Comment=Unreal Engine 1 Reimplementation
+Exec=/usr/bin/surrealengine
+TryExec=/usr/bin/surrealengine
+Icon=surreal-engine
+Terminal=false
+Type=Application
+Categories=Game;

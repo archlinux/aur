@@ -51,4 +51,12 @@ package() {
   install -Dm644 "${srcdir}/SurrealEngine/README.md" "${pkgdir}/usr/share/doc/surrealengine/readme.md"
   install -Dm644 "${srcdir}/SurrealEngine/Docs/Building.md" "${pkgdir}/usr/share/doc/surrealengine/building.md"
   install -Dm644 "${srcdir}/SurrealEngine/Docs/Status.md" "${pkgdir}/usr/share/doc/surrealengine/status.md"
+
+  # Copy the application entries
+  install -Dm755 "${srcdir}/../surrealengine.desktop" "${pkgdir}/usr/share/applications/surrealengine.desktop"
+  install -Dm755 "${srcdir}/../surrealeditor.desktop" "${pkgdir}/usr/share/applications/surrealeditor.desktop"
+
+  # Copy over the Engine and Editor icons
+  install -Dm644 "${srcdir}/SurrealEngine/Assets/surreal-engine-icon.svg" "${pkgdir}/usr/share/icons/surreal-engine.svg"
+  install -Dm644 "${srcdir}/SurrealEngine/Assets/surreal-editor-icon.svg" "${pkgdir}/usr/share/icons/surreal-editor.svg"
 }
