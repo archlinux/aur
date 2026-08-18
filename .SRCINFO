@@ -1,21 +1,21 @@
 pkgbase = altair-bin
 	pkgdesc = A beautiful feature-rich GraphQL Client for all platforms.(Prebuilt version.Use system-wide electron)
-	pkgver = 8.5.7
+	pkgver = 8.5.9
 	pkgrel = 1
 	url = https://altairgraphql.dev/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = electron33
-	provides = altair=8.5.7
+	depends = electron38
+	provides = altair=8.5.9
 	conflicts = altair
-	source = LICENSE-8.5.7::https://raw.githubusercontent.com/altair-graphql/altair/v8.5.7/packages/altair-core/LICENSE
+	source = LICENSE-8.5.9::https://raw.githubusercontent.com/altair-graphql/altair/v8.5.9/packages/altair-core/LICENSE
 	source = altair.sh
 	sha256sums = a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = altair-8.5.7-aarch64.AppImage::https://github.com/altair-graphql/altair/releases/download/v8.5.7/altair_8.5.7_arm64_linux.AppImage
-	sha256sums_aarch64 = f58cf972456a97a968f23945b496b354e0af79dca74f97c25f7001b596c5bee1
-	source_x86_64 = altair-8.5.7-x86_64.AppImage::https://github.com/altair-graphql/altair/releases/download/v8.5.7/altair_8.5.7_x86_64_linux.AppImage
-	sha256sums_x86_64 = fef93ca2f72372b68429136f3b28a6260285999c7dbe0fa89062d38080b6941c
+	source_aarch64 = altair-8.5.9-aarch64.AppImage::https://github.com/altair-graphql/altair/releases/download/v8.5.9/altair_8.5.9_arm64_linux.AppImage
+	sha256sums_aarch64 = 9f371b65f1b197bb9cc0d70c160ab12c59b0f9e23e4588ca4035389f0c3ec9f2
+	source_x86_64 = altair-8.5.9-x86_64.AppImage::https://github.com/altair-graphql/altair/releases/download/v8.5.9/altair_8.5.9_x86_64_linux.AppImage
+	sha256sums_x86_64 = f12d800ec9cfa1f5153bcbd41a1da9152edfe76141dced42c9e188570d1213aa
 
 pkgname = altair-bin
