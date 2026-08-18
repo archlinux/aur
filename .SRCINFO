@@ -1,6 +1,6 @@
 pkgbase = dpi-checkers-bin
 	pkgdesc = Checkers to test your internet provider for censorship
-	pkgver = 0.8.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/hyperion-cs/dpi-checkers
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = dpi-checkers-bin
 	provides = dpi-checkers
 	conflicts = dpi-checkers
 	options = !strip
-	source_x86_64 = https://github.com/hyperion-cs/dpi-checkers/releases/download/dpich-v0.8.0/dpich-v0.8.0-linux-amd64.zip
-	sha256sums_x86_64 = 0b43a5af85577b73dbc40ff197426f91a0bcd16b94ce742bc28ac665eb348d2e
-	source_aarch64 = https://github.com/hyperion-cs/dpi-checkers/releases/download/dpich-v0.8.0/dpich-v0.8.0-linux-arm64.zip
-	sha256sums_aarch64 = d63dd143a020b920c1d506b0db359baead2541ebcf0557a31b355221ca6f4777
+	source_x86_64 = https://github.com/hyperion-cs/dpi-checkers/releases/download/dpich-v0.11.0/dpich-v0.11.0-linux-amd64.zip
+	sha256sums_x86_64 = 60d1b99326805b5173ab7d97d4e3dde1a86ec96cea02789f5a5e305775ad3732
+	source_aarch64 = https://github.com/hyperion-cs/dpi-checkers/releases/download/dpich-v0.11.0/dpich-v0.11.0-linux-arm64.zip
+	sha256sums_aarch64 = 243f94f4807454e96c5dd96010933c61638f12e7834a3e25f93548f0e8b57127
 
 pkgname = dpi-checkers-bin
