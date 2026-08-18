@@ -3,7 +3,7 @@
 # Contributor: Wei-Ning Huang <aitjcize@gmail.com>
 
 pkgname=cppman
-pkgver=0.5.7
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="C++ 98/11/14/17/20 manual pages for Linux, with source from cplusplus.com and cppreference.com."
 arch=('any')
@@ -14,8 +14,8 @@ depends=(python python-beautifulsoup4 python-html5lib)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 optdepends=("vim: For using vim as a pager"
             "perl: for bash/zsh completion")
-source=("$url/archive/$pkgver.tar.gz")
-b2sums=('cde95de96c1e9c436b5f2372d1e681512163110ce713e799124821d436ff20ca9d1ab73d74d3d72136fba27a36ccf912f1c52a2433cbeded2f721d97b8896cc6')
+source=("$url/archive/v$pkgver.tar.gz")
+b2sums=('4335e20b995cb215a776b0f52a8027064b0cb79d03480e5d0e1bf96199560e255ec569de5636206ea96e4b86ac3dd6c89056393fef87f515d86f6e496932c75b')
 
 build() {
     cd $pkgname-$pkgver
