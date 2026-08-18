@@ -2,9 +2,9 @@
 # Maintainer: david4958606 <david.wang at sakisakura dot moe>
 _pkgname=mihomo-party
 pkgname=clash-party-bin
-pkgver=2.0.1
+pkgver=2.0.2
 _electronversion=43
-pkgrel=2
+pkgrel=1
 pkgdesc=":electron: Another Mihomo GUI.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -33,8 +33,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-x86_64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('f0016df171ad08a12076df3ddf965c7fdd2229659560eed89f8162b6a075aee5')
-sha256sums_x86_64=('b0d638a3e2e7326bb3d12093fed8618871b35c961cc43bd120537c90ff74915c')
+sha256sums_aarch64=('0479e0455901d047867a02aa51d9bf81bb4e8759d0b8578d9e198849c4d30830')
+sha256sums_x86_64=('72f140325ba1988426bb61f5d38707f69bcb4da98c6d131ad86332ef835e0ada')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }

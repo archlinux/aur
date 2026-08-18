@@ -1,7 +1,7 @@
 pkgbase = clash-party-bin
 	pkgdesc = :electron: Another Mihomo GUI.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://mihomo.party
 	arch = aarch64
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = clash-party-bin
 	depends = electron43
 	depends = mihomo
 	optdepends = libappindicator-gtk3: Allow mihomo-party to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
-	provides = clash-party=2.0.1
+	provides = clash-party=2.0.2
 	conflicts = mihomo-party
 	conflicts = mihomo-party-bin
 	conflicts = mihomo-party-git
@@ -18,9 +18,9 @@ pkgbase = clash-party-bin
 	conflicts = clash-party-git
 	source = clash-party.sh
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = clash-party-2.0.1-aarch64.rpm::https://github.com/mihomo-party-org/mihomo-party/releases/download/v2.0.1/clash-party-linux-2.0.1-aarch64.rpm
-	sha256sums_aarch64 = f0016df171ad08a12076df3ddf965c7fdd2229659560eed89f8162b6a075aee5
-	source_x86_64 = clash-party-2.0.1-x86_64.rpm::https://github.com/mihomo-party-org/mihomo-party/releases/download/v2.0.1/clash-party-linux-2.0.1-x86_64.rpm
-	sha256sums_x86_64 = b0d638a3e2e7326bb3d12093fed8618871b35c961cc43bd120537c90ff74915c
+	source_aarch64 = clash-party-2.0.2-aarch64.rpm::https://github.com/mihomo-party-org/mihomo-party/releases/download/v2.0.2/clash-party-linux-2.0.2-aarch64.rpm
+	sha256sums_aarch64 = 0479e0455901d047867a02aa51d9bf81bb4e8759d0b8578d9e198849c4d30830
+	source_x86_64 = clash-party-2.0.2-x86_64.rpm::https://github.com/mihomo-party-org/mihomo-party/releases/download/v2.0.2/clash-party-linux-2.0.2-x86_64.rpm
+	sha256sums_x86_64 = 72f140325ba1988426bb61f5d38707f69bcb4da98c6d131ad86332ef835e0ada
 
 pkgname = clash-party-bin
