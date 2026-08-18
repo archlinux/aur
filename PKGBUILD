@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry
-pkgver=2.5.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Lightweight Wayland application launcher — UI, daemon, and providers in one binary"
 arch=('x86_64')
@@ -15,6 +15,11 @@ makedepends=('cargo')
 optdepends=(
     'cliphist: clipboard history provider'
     'wl-clipboard: clipboard write and emoji copy'
+    'rofimoji: emoji, kaomoji, and Unicode character picker'
+    'xdotool: optional X11 rofimoji typer'
+    'wtype: optional Wayland rofimoji typer'
+    'ydotool: optional fallback Wayland rofimoji typer'
+    'wl-ime-type: optional Wayland IME rofimoji typer'
     'fd: filesystem search provider (primary backend)'
     'plocate: filesystem search provider (fallback backend)'
 )
@@ -84,7 +89,7 @@ provides=(
 install=owlry.install
 
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-v$pkgver.tar.gz")
-b2sums=('56de66a4dc0fabccab21bce6466e237cef0e2b1bf7904214145e3eb695eb3501d8397410ac76b215b3d0230e1b9ffd2ffd5ae64fe94daf5ed1b0999ae5448fee')
+b2sums=('cb51cf15a454684e257f08d7f68de85b26a3706e5e93885469e137dbdceb3879b8637c1f83d7b80757567239ee44cc5c9e54c66d2a5361315cdaa0f591eb9083')
 
 prepare() {
     cd "owlry"
