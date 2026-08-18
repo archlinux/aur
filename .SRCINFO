@@ -1,0 +1,19 @@
+pkgbase = luadot-nightly
+	pkgdesc = A dotfiles manager configured in Lua (nightly)
+	pkgver = 0.1.0.nightly.1
+	pkgrel = 1
+	url = https://github.com/ItzTas/luadot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	provides = luadot=0.1.0.nightly.1
+	conflicts = luadot
+	options = !lto
+	source = luadot-nightly-0.1.0.nightly.1.tar.gz::https://github.com/ItzTas/luadot/archive/refs/tags/v0.1.0-nightly.1.tar.gz
+	sha256sums = b4fe3ad82799fd318ab48525ee36a862b4a54d9003dcf4734a87c259d3407002
+
+pkgname = luadot-nightly
