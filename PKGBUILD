@@ -1,6 +1,6 @@
 pkgname='mesh-client'
-pkgver=5.24.1
-pkgrel=1
+pkgver=5.28.0
+pkgrel=2
 pkgdesc='Cross-platform Electron desktop client for Meshtastic, MeshCore, and Reticulum (LXMF) on macOS, Linux, and Windows with BLE, USB serial, Wi-Fi/TCP, MQTT, local SQLite history, routing diagnostics, and 16-language UI.'
 arch=('x86_64')
 url='https://github.com/Colorado-Mesh/mesh-client'
@@ -19,9 +19,9 @@ depends=(
     'dbus'
     'cups'
 )
-_deb_package="mesh-client_5.24.1_amd64.deb"
-source=("$_deb_package::https://github.com/Colorado-Mesh/mesh-client/releases/download/v5.24.1/$_deb_package")
-md5sums=('1c8997efa68f482bf3669b48a650989f')
+_deb_package="mesh-client_5.28.0_amd64.deb"
+source=("$_deb_package::https://github.com/Colorado-Mesh/mesh-client/releases/download/v5.28.0/$_deb_package")
+sha256sums=('95f7383348550e5aa3e0f14cf50f22da8a802eadc853d75028ae527bdf0b61c0')
 package() {
     cd "$srcdir"
     ar x "$_deb_package"
