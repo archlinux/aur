@@ -6,7 +6,7 @@
 _pkgname=opentubex
 _ghurl='https://github.com/OpenTubeX/OpenTubeX'
 pkgname=${_pkgname}-bin
-pkgver=0.31.3
+pkgver=0.32.0
 pkgrel=1
 pkgdesc="A highly customizable, privacy-focused desktop YouTube client"
 arch=('x86_64' 'aarch64')
@@ -33,5 +33,5 @@ package() {
     ln -s "/opt/OpenTubeX/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-sha256sums_x86_64=('4bc4e2b3efecd311a1bb529a7ed148c28270eed469af62bed502eea5382e07e7')
-sha256sums_aarch64=('4c12761d1a93c7621a216473e21339d87ad7f13794c9b6516eafd39d9ce11cc6')
+sha256sums_x86_64=('9f61702a9579ffcc4cc52ab1bec8b9e3c32ee9ce6a41f4c70321da44511122dd')
+sha256sums_aarch64=('d70825b8d809ce98eb4bbd962363dc8c4755328c87c0b7d5e08b6d82321a2e92')
