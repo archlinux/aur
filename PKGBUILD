@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=profilarr
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Configuration Management Platform for Radarr/Sonarr"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   profilarr.sysusers
   profilarr.tmpfiles
 )
-sha256sums=('e24d9af12252af1189ba65b3a49417563618d2268a4ae82196d285043ffea030'
+sha256sums=('45e70ddfdca57c929e9df61b8c41d4c6ee465412c85a133e77c9d9d0de5d4283'
             '78e0fc2bb22b9d68a45451eb1c5fba394c0bb90e20d3a11e215dddd3a6463976'
             '7129166a5a4d5b08d830c9556252eaf7f05d0a4f31b0da708d8d4bccfea78d2d'
             '111c8a11133470edb6b155a5e42aec7d904176e7f633d8f1922f1b1b57daade2'
