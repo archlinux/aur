@@ -12,6 +12,6 @@ pkgbase = crosshair-overlay
 	depends = python-cairo
 	depends = gdk-pixbuf2
 	source = crosshair-overlay-0.3.5.tar.gz::https://github.com/m39d/crosshair-overlay/archive/refs/tags/v0.3.5.tar.gz
-	sha256sums = b68f848b48fbee09624dfabb39ccbc7b1629b0fd60b2f6871dbdef85eb17da11
+	sha256sums = ebc492ff24e5ac7a59f9385f0ae474982c75eb07a889889966b5224d3c6de1ef
 
 pkgname = crosshair-overlay
