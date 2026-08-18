@@ -1,0 +1,16 @@
+pkgbase = youtrack-tui-bin
+	pkgdesc = Read-only terminal UI for browsing YouTrack issues
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/omartelo/youtrack-tui
+	license = MIT
+	conflicts = youtrack-tui
+	provides = youtrack-tui
+	arch = aarch64
+	source_aarch64 = https://github.com/omartelo/youtrack-tui/releases/download/v0.2.0/youtrack-tui-0.2.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9eeb4198478fbe3c59da09266d94f5dde63a265ea59005c6d4e00a7ddb45f9c8
+	arch = x86_64
+	source_x86_64 = https://github.com/omartelo/youtrack-tui/releases/download/v0.2.0/youtrack-tui-0.2.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 926e6c1bf333e3f7dafacb2966360b6f2cd70ffb0839c417ca93de6931b46837
+	
+pkgname = youtrack-tui-bin
