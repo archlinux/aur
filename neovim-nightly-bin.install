@@ -2,12 +2,12 @@ post_install() {
 	echo ":: The Neovim executable is called 'nvim'."
 	echo ":: If you are already familiar with Vim, see ':help nvim-from-vim'"
 	echo "   to get started."
-	echo ":: If you have any questions, check the following page first:"
-	echo "   https://github.com/neovim/neovim/wiki/FAQ"
+	echo ":: If you have any questions, see ':help faq' or:"
+	echo "   https://neovim.io/doc/user/faq/"
 }
 
 post_upgrade() {
-	echo ":: Check the following page to see whether this upgrade"
-	echo "   includes any breaking changes:"
-	echo "   https://github.com/neovim/neovim/wiki/Following-HEAD"
+	echo ":: This is a nightly (development) build. To see breaking changes"
+	echo "   in unreleased features, see ':help news-breaking-dev' or:"
+	echo "   https://neovim.io/doc/user/news/#news-breaking-dev"
 }
