@@ -1,5 +1,5 @@
 pkgname=photoslop-git
-pkgver=0.1.0.r154.g3cadf94
+pkgver=0.1.0.r187.g8a7ad18
 pkgrel=1
 pkgdesc="Photoslop – a simple image editor written in Python (git version)"
 arch=('any')
@@ -25,7 +25,7 @@ prepare() {
 build() {
     cd "$srcdir/Photoslop"
     export PYTHONOPTIMIZE=1
-        BASE_CFLAGS="-O3 -march=native -mtune=native \
+    BASE_CFLAGS="-O3 -march=native -mtune=native \
         -falign-functions=32 -falign-loops=32 \
         -fno-math-errno -fno-trapping-math \
         -fno-semantic-interposition \
@@ -36,7 +36,7 @@ build() {
         -fdata-sections"
 
     BASE_CXXFLAGS="$BASE_CFLAGS"
-    BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -flto -fno-plt"
+    BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -Wl,-O3 -flto -fno-plt"
 
     # Clang-only flags
     CLANG_EXTRA_CFLAGS="-fstrict-vtable-pointers -fno-asynchronous-unwind-tables"
