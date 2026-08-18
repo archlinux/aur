@@ -10,7 +10,7 @@ _cratename=${_pkgname}-cli
 pkgname=${_cratename}
 pkgdesc="Disk usage TUI that shows what is full and what is using it"
 
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('f6d8f9b3d0c05786179e89045ef8220144d4497a3209c2ccb0f1165b6dbdf194')
+sha256sums=('6d3f119fba21fee335fe4ca476ea163461a98e9e9ab21560fc8a178bff8ad502')
 
 
 build() {
