@@ -68,7 +68,7 @@ check() {
 
 package_wdm-wayland() {
   # wdm needs *a* greeter, and each of the four provides the virtual, so pacman
-  # prompts for a choice when only `wdm` is requested. Three of the four now live
+  # prompts for a choice when only `wdm-wayland` is requested. Three of the four now live
   # in other AUR packages; pacman resolves a virtual regardless of which pkgbase
   # provides it, and `wdm-greeter` below satisfies it with no toolkit at all.
   # The greeters deliberately do not depend on wdm in return: that would make
@@ -87,7 +87,10 @@ package_wdm-wayland() {
   # nothing in the repositories provides it.
   depends=('libinput' 'seatd' 'systemd-libs' 'mesa' 'libdrm' 'libxkbcommon'
            'pam' 'wdm-greeter-implementation')
-  provides=('wdm')
+  # conflicts and no provides: the AUR name `wdm` belongs to the unrelated
+  # WINGs Display Manager, which this package collides with on disk but is
+  # not a substitute for. Nothing in this project depends on the name either
+  # — the greeters depend on the virtual `wdm-greeter-implementation`.
   conflicts=('wdm')
   optdepends=('wdm-gtk-greeter: GTK4 greeter'
               'wdm-webkit-greeter: WebKitGTK greeter, themed in HTML and CSS'

@@ -30,7 +30,6 @@ pkgname = wdm-wayland
 	optdepends = wdm-gtk-greeter: GTK4 greeter
 	optdepends = wdm-webkit-greeter: WebKitGTK greeter, themed in HTML and CSS
 	optdepends = wdm-plasma-greeter: Qt6/QML greeter, themed in QML
-	provides = wdm
 	conflicts = wdm
 	backup = etc/pam.d/wdm
 	backup = etc/wdm/wdm.toml
