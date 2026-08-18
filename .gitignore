@@ -1,0 +1,7 @@
+# Include-only: build artifacts and local helpers are ignored by default
+/*
+!/.gitignore
+!/.nvchecker.toml
+!/.SRCINFO
+!/PKGBUILD
+!/update-pkg.sh

@@ -8,8 +8,11 @@ url="https://github.com/ticpu/claude-conversation-search-mcp"
 license=('GPL-3.0-only')
 makedepends=('cargo')
 options=('!lto')
-source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('c1deae87afd920648b56c63bd83be21dce771988962b1cab062ed497e4bf31e6')
+validpgpkeys=('E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD')
+source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
+        "$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz.asc")
+sha256sums=('c1deae87afd920648b56c63bd83be21dce771988962b1cab062ed497e4bf31e6'
+            'SKIP')
 
 build() {
     cd "$pkgname-$pkgver"

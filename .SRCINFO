@@ -9,6 +9,9 @@ pkgbase = claude-conversation-search
 	makedepends = cargo
 	options = !lto
 	source = https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.5.0/claude-conversation-search-1.5.0.tar.xz
+	source = https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.5.0/claude-conversation-search-1.5.0.tar.xz.asc
+	validpgpkeys = E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD
 	sha256sums = c1deae87afd920648b56c63bd83be21dce771988962b1cab062ed497e4bf31e6
+	sha256sums = SKIP
 
 pkgname = claude-conversation-search
