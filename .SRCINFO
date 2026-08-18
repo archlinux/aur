@@ -1,6 +1,6 @@
 pkgbase = spark-store
 	pkgdesc = A community powered app store.
-	pkgver = 5.2.1.0
+	pkgver = 5.3.0.2
 	pkgrel = 1
 	url = https://www.spark-app.store/
 	install = spark-store.install
@@ -27,9 +27,9 @@ pkgbase = spark-store
 	depends = gtk3
 	options = !strip
 	options = !debug
-	source_x86_64 = https://www.gitlink.org.cn/shenmo7192/spark-store/releases/download/5.2.1.0/spark-store_5.2.1.0_amd64.deb
-	sha256sums_x86_64 = 88ae82ce4e487ff0e1f7172cc089bdc50332d5abf8183ddae4b9e6650cac2d55
-	source_aarch64 = https://www.gitlink.org.cn/shenmo7192/spark-store/releases/download/5.2.1.0/spark-store_5.2.1.0_arm64.deb
-	sha256sums_aarch64 = 8d4d5e0f03e3dea0bb8a4f1647a67cb2907f4c0071d02cd7eeb05b0a10fd3fb3
+	source_x86_64 = https://www.gitlink.org.cn/shenmo7192/spark-store/releases/download/5.3.0.2/spark-store_5.3.0.2_amd64.deb
+	sha256sums_x86_64 = 36c7ad9e29723efa3dc030876a6f0f62ff2b39c3d152235a555ea675b4e8499b
+	source_aarch64 = https://www.gitlink.org.cn/shenmo7192/spark-store/releases/download/5.3.0.2/spark-store_5.3.0.2_arm64.deb
+	sha256sums_aarch64 = 43ae9a26c3f2a2f66ebfd1c20d6227c1469cf2a9161dec8f906a10d707d30fd4
 
 pkgname = spark-store
