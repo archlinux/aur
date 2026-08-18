@@ -1,8 +1,8 @@
 # Maintainer: vani-tty1 <giovannirafanan609@gmail.com>
 pkgname=memerist-git
-pkgver=1.1.0.r10.g0b00518
+pkgver=2.0.0.r1.g82df562
 pkgrel=1
-pkgdesc="A modern meme editor built with GTK 4 and Libadwaita (git version)"
+pkgdesc="VSC package for memerist"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vani-tty1/memerist"
 license=('GPL-3.0-or-later')
