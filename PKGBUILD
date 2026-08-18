@@ -7,7 +7,7 @@
 
 pkgname=rambox-pro-bin
 _pkgname=rambox
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc='Workspace browser to manage many web applications in one place'
 arch=('x86_64')
@@ -32,7 +32,7 @@ sha256sums=(
   # eula sum
   '0c94e0c1690afe9414a7ead793bb63417da16b143209d3fed8999370a237d137'
   # deb file sum
-  'adc6a3e9a2f71d0444fd3df37fdf307f5461774ae7346c1da2ae5ee454428885'
+  'e687fc692dc57abf219e3168d62fb7e3d38b68a4270696779c208fc44917d39e'
 )
 
 build() {
