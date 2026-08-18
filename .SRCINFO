@@ -1,7 +1,7 @@
 pkgbase = yt-collate
 	pkgdesc = Efficient, well-rounded YouTube Music TUI client
 	pkgver = 0.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/indigo0445/yt-collate
 	arch = any
 	license = MIT
