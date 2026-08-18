@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: aur.chaotic.cx
 # Contributor: Carl Smedstad <carl.smedstad at protonmail dot com>
 # Contributor: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Antonio Rojas <arojas@archlinux.org>
