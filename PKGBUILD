@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Corey Hinshaw <corey@electrickite.org>
 pkgname=system76-firmware-git
-pkgver=1.0.76.r17.g0337bd4
+pkgver=1.0.78.r0.gb3395ae
 pkgrel=1
 pkgdesc="System76 Firmware Tool and Daemon"
 arch=('x86_64' 'aarch64')
@@ -37,7 +37,7 @@ pkgver() {
 prepare() {
   cd "${pkgname%-git}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target host-tuple
+  cargo fetch --target host-tuple
 
   # Install Systemd & Dbus service to proper directories
   patch -Np1 -i ../makefile.patch
