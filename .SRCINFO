@@ -1,0 +1,17 @@
+pkgbase = pemdash
+	pkgdesc = Fast GTK calculator overlay with proper operator precedence
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/pemdash
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = gtk4
+	options = !strip
+	source_x86_64 = pemdash-0.1.1-1-x86_64.tar.gz::https://github.com/skorotkiewicz/pemdash/releases/download/v0.1.1/pemdash-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a5b64068f5b44123abff8c8e27f482cc9e547ebe49c7c581e77cb84955d75f1e
+	source_aarch64 = pemdash-0.1.1-1-aarch64.tar.gz::https://github.com/skorotkiewicz/pemdash/releases/download/v0.1.1/pemdash-v0.1.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e0aeb154db23949b2c8dab5950d531febb28ae74f4eb3b632fd91ff3670b4d6c
+
+pkgname = pemdash
