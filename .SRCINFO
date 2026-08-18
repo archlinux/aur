@@ -1,0 +1,13 @@
+pkgbase = htagcli-bin
+	pkgdesc = Command-line tool for viewing and editing tags in audio files
+	pkgver = 0.1.2.0
+	pkgrel = 1
+	url = https://github.com/jecaro/htagcli
+	arch = x86_64
+	license = MIT
+	provides = htagcli
+	conflicts = htagcli
+	source = htagcli-0.1.2.0.tar.gz::https://github.com/jecaro/htagcli/releases/download/v0.1.2.0/htagcli.tar.gz
+	sha256sums = 2b4d0e1790efb47e7ed22a9653f1208748323f4f38e4cf9a628501849e5b1b24
+
+pkgname = htagcli-bin
