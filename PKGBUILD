@@ -9,9 +9,9 @@ url="https://github.com/henrygd/beszel"
 license=('MIT')
 optdepends=(
   'rocm-smi-lib: AMD GPU metrics via rocm-smi'
-  'intel-gpu-tools: Intel GPU metrics via intel_gpu_top'
+  'intel-gpu-tools: Intel i915 driver GPU metrics via intel_gpu_top'
   'smartmontools: SMART metrics via smartctl'
-  'nvtop: Generic GPU metrics via nvtop')
+  'nvtop: Generic and Intel xe driver GPU metrics via nvtop')
 provides=('beszel-agent')
 conflicts=('beszel-agent')
 backup=('etc/beszel-agent.conf')
