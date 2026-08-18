@@ -2,7 +2,8 @@
 
 _gitauthor=aroum
 _gitname=che
-_appname=${_gitname}
+_appname=che
+_appalias=ch
 pkgname=${_appname}-bin
 pkgdesc="💥 Blazing fast terminal file manager written in Rust, based on async I/O with true dual panel mode"
 
@@ -19,8 +20,8 @@ url=${_ghurl}
 
 license=('MIT')
 
-provides=("${_appname}")
-conflicts=("${_appname}")
+provides=("${_appname}" "${_appalias}")
+conflicts=("${pkgname%-bin}")
 depends=('glibc' 'libgcc')
 
 options=('!strip')
@@ -45,6 +46,7 @@ package() {
 	cd "${srcdir}/${_gitname}-${_gitversion}-${_CARCH}/" || exit
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 "${_appalias}" "${pkgdir}/usr/bin/${_appalias}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 

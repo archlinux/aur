@@ -9,6 +9,7 @@ pkgbase = che-bin
 	depends = glibc
 	depends = libgcc
 	provides = che
+	provides = ch
 	conflicts = che
 	options = !strip
 	source_x86_64 = che-x86_64-26.8.15.zip::https://github.com/aroum/che/releases/download/v26.8.15/che-v26.8.15-x86_64-unknown-linux-gnu.zip
