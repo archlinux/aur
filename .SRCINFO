@@ -1,17 +1,16 @@
 pkgbase = stockholm-trekkers-playlist-maker-bin
-	pkgdesc = An Electron app for making video playlists.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.0.9
+	pkgdesc = An Electron app for making video playlists.(Prebuilt version)
+	pkgver = 4.3.1
 	pkgrel = 1
-	url = https://github.com/viggoStrom/Stockholm-Trekkers-Playlist-Maker
+	url = https://github.com/VenaStrom/Stockholm-Trekkers-Playlist-Maker
 	arch = x86_64
 	license = MIT
-	depends = electron37
-	provides = stockholm-trekkers-playlist-maker=3.0.9
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = stockholm-trekkers-playlist-maker=4.3.1
 	conflicts = stockholm-trekkers-playlist-maker
-	options = !emptydirs
-	source = stockholm-trekkers-playlist-maker-3.0.9.deb.zip::https://github.com/viggoStrom/Stockholm-Trekkers-Playlist-Maker/releases/download/v3.0.9/stockholm-trekkers-playlist-maker_3.0.9_amd64.deb
-	source = stockholm-trekkers-playlist-maker.sh
-	sha256sums = a1f99f1cf256476f368bf9de97072f72716c472742a86bb671747351f498a325
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source = stockholm-trekkers-playlist-maker-4.3.1.deb::https://github.com/VenaStrom/Stockholm-Trekkers-Playlist-Maker/releases/download/v4.3.1/Stockholm.Trekkers.Playlist.Maker_4.3.1_amd64.deb
+	sha256sums = 50f0b543ea9745ebe95eec183f7bf318b9343428b97c95c9202e2ef0ca098861
 
 pkgname = stockholm-trekkers-playlist-maker-bin

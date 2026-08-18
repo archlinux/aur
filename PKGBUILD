@@ -1,48 +1,33 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stockholm-trekkers-playlist-maker-bin
 _pkgname='Stockholm Trekkers Playlist Maker'
-pkgver=3.0.9
-_electronversion=37
+pkgver=4.3.1
 pkgrel=1
-pkgdesc="An Electron app for making video playlists.(Prebuilt version.Use system-wide electron)"
+pkgdesc="An Electron app for making video playlists.(Prebuilt version)"
 arch=('x86_64')
-url="https://github.com/viggoStrom/Stockholm-Trekkers-Playlist-Maker"
+url="https://github.com/VenaStrom/Stockholm-Trekkers-Playlist-Maker"
 license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
+    'gtk3'
+    'gdk-pixbuf2'
+    'webkit2gtk-4.1'
 )
-options=(
-    '!emptydirs'
-)
-source=(
-    "${pkgname%-bin}-${pkgver}.deb.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
-    "${pkgname%-bin}.sh"
-)
-sha256sums=('a1f99f1cf256476f368bf9de97072f72716c472742a86bb671747351f498a325'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-_get_electron_version() {
-    _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
-}
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname// /.}_${pkgver}_amd64.deb")
+sha256sums=('50f0b543ea9745ebe95eec183f7bf318b9343428b97c95c9202e2ef0ca098861')
 prepare() {
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app/g
-        s/@cfgdirname@/${pkgname%-bin}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " "${srcdir}/${pkgname%-bin}.sh"
     bsdtar -xf "${srcdir}/data."*
-    _get_electron_version
-    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    sed -i "s/Categories=/Categories=AudioVideo;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app" "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname%}"
+    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/usr/lib/${_pkgname}/video-assets/"* -t "${pkgdir}/usr/lib/${_pkgname}/video-assets"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+		_extension="${_i##*.}"
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
