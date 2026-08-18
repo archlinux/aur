@@ -2,7 +2,7 @@
 pkgname=ttkmusicplayer-bin
 _pkgname=TTKMusicPlayer
 pkgver=4.3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TTKMusicPlayer imitates Kugou UI, the music player uses of qmmp core library based on Qt.(Prebuilt version)支持网易云音乐、酷我音乐、酷狗音乐"
 arch=('x86_64')
 url="https://github.com/Greedysky/TTKMusicPlayer"
@@ -14,13 +14,14 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'qt5-multimedia'
-    'qt5-webengine'
     'qt5-x11extras'
     'qt5-base'
     'alsa-lib'
     'qt5-declarative'
-    'openssl-1.0'
-    'libpng12'
+    'nspr'
+    'nss'
+    'portaudio'
+    'libxrandr'
 )
 makedepends=(
     'p7zip'
@@ -32,7 +33,7 @@ source=(
     "${pkgname%-bin}.desktop"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('dc8da22868efceaca967b5a2024720a481d945ba37633cb73f38ead607ebf18c'
+sha256sums=('8d9606099794c8e6acf55f23b52861cafb35511b7a03d09d8494e6f18f0f2142'
             '26293cbcc216f141d1ec7346c225d13a14f689b4b1ab81e37da73f279082214d'
             '47c425909880e36e68f338a022b066e2a4f2f51ab4ab575532e54eca2520f779')
 prepare() {
