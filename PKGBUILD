@@ -1,9 +1,9 @@
 # Maintainer: James Bowling <kf5u AT pm DOT me>
 pkgname=wsjtx-improved
 _pkgname=wsjtx
-pkgver=3.1.0
-pkgrel=260522
-_build=260522
+pkgver=3.2.0
+pkgrel=260818
+_build=260818
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wsjt-x-improved/"
@@ -33,8 +33,8 @@ install=wsjtx-improved.install
 provides=('wsjtx')
 conflicts=('wsjtx')
 source=("https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v$pkgver/Source%20code/$_pkgname-${pkgver}_improved_PLUS_${_build}.tgz")
-md5sums=('d7f3eb3f03f753e8244428cdefb3c5e2')
-sha1sums=('b6c8ea864627d030fe1d425e76f259c997b2f283')
+md5sums=('7e750f24164fa0f14e497ebc8b26ad00')
+sha1sums=('991e8f41432ae8343f5adf6c8a00c7a256f60d83')
 options=(!lto)
 prepare() {
 	tar xzf ${_pkgname}-${pkgver}_improved_PLUS_${_build}.tgz
