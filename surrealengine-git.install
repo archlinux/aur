@@ -1,10 +1,6 @@
 post_install() {
 	cat <<- EOF
-		:: You need the legit copies of UE1 games you want to play installed.
-		:: You can either run them from the command line like such:
-		:: surrealengine /path/to/UE1game
-		:: Or copy the surrealengine executable into the system folders of the
-		:: said UE1 games
+		:: You need the legitimate copies of UE1 games you want to play installed.
 	EOF
 }
 
