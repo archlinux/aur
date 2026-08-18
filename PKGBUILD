@@ -12,6 +12,9 @@
 # fail on every machine without Qt — so there is no `cargo fetch --locked` and no
 # RUSTUP_TOOLCHAIN here, and rust is not a build dependency at all.
 pkgname=wdm-plasma-greeter
+# The CMake install rules place /etc/wdm/plasma-greeter.ini; backup= is what
+# keeps pacman from clobbering an edited one on upgrade.
+backup=('etc/wdm/plasma-greeter.ini')
 # All four wdm packages share a pkgver, because they are built from one tarball
 # and share one checksum. v0.8.0 was the first release containing
 # greeters/plasma, so nothing earlier than that is installable here.
