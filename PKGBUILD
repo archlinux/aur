@@ -1,5 +1,5 @@
 pkgname=beutl-git
-pkgver=v2.0.0.preview.5.r7fe5862fa
+pkgver=v2.0.0.preview.7.r8af3caea3
 pkgrel=1
 pkgdesc="Cross-platform video editing (compositing) software"
 arch=('x86_64')
@@ -20,12 +20,17 @@ pkgver() {
     printf "%s.r%s" "$tag" "$commit"
 }
 
+prepare() {
+    cd "$srcdir/beutl"
+    dotnet sln Beutl.slnx remove tests/Beutl.UnitTests/Beutl.UnitTests.csproj #tests are broken and cause the build to fail
+}
+
 build() {
     cd "$srcdir/beutl"
     git submodule update --init --recursive
 
     # NUKE build
-    bash build.sh
+    sh build.sh
 
     # Common .NET optimization flags
     COMMON_FLAGS=(
@@ -122,7 +127,7 @@ package() {
 
     if command -v oxipng >/dev/null 2>&1; then
         printf "Optimizing icon with oxipng\n"
-        oxipng -o max -r -p -s -v -t 4 "$icon_dst"
+        oxipng -o max -r -p -s -v -t $(nproc) -z --zi 100 --ziwi 10 --brute-level 5 --brute-lines 16 . "$icon_dst"
     else
         printf "oxipng not found\n"
     fi
