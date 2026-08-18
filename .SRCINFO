@@ -1,6 +1,6 @@
 pkgbase = gz-math9
 	pkgdesc = General purpose math library for robot applications.
-	pkgver = 9.1.0
+	pkgver = 9.2.0
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-math
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = gz-math9
 	depends = gz-utils=4
 	provides = gz-math=9
 	conflicts = gz-math
-	source = https://github.com/gazebosim/gz-math/archive/gz-math9_9.1.0.tar.gz
-	sha256sums = d6d266a2a5094b977a3cfec4646efb2eede5fd36781a53faaa37ba416da5cdaf
+	source = https://github.com/gazebosim/gz-math/archive/gz-math9_9.2.0.tar.gz
+	sha256sums = fed32da2ac16b96c45e87ceb03b0fae6cbc8a860c8341bd9a2549dffee1c1f59
 
 pkgname = gz-math9
