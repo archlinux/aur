@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Jan Claussen <jan dot claussen10 at web dot de>
 pkgname=webos-dev-manager-bin
-pkgver=1.99.18
+pkgver=1.99.19
 pkgrel=1
 pkgdesc="Device/DevMode Manager for webOS TV.(Prebuilt version)"
 arch=(
@@ -20,8 +20,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm")
 sha256sums=('5111c45e21dd8590d5b44093045778946195d3036c83416db69498a12be0e912')
-sha256sums_aarch64=('df34d4ff2c516e0fac7a4be18b8c090b8fb9569698eec9efa3bca4aa43f19f6c')
-sha256sums_x86_64=('bb7d77b7a91dd4d9319204ac4664a5c7e4b0cad6cfbfa12e1b976a12dcd13609')
+sha256sums_aarch64=('3cc7e24d87d140dbc78d8b2f872a8e200940e5708f6cc53dab1f4e20f4c292e0')
+sha256sums_x86_64=('56571af6668f314180f649c9f8ebf2c38368cad744ee5618ce358df7568e306d')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
@@ -33,9 +33,10 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    _icon_sizes=(32x32 128x128 256x256@2)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
-            -t "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps"
-    done
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+		_extension="${_i##*.}"
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
 }
