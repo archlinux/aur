@@ -2,7 +2,7 @@
 
 _name=pyephem
 pkgname=("python-${_name}-git")
-pkgver=4.1.5.r2.g1499fa9
+pkgver=4.2.1.r2.g114dbd0
 pkgrel=1
 pkgdesc="Ephem python package for performing high-precision astronomy computations"
 arch=('i686' 'x86_64')
@@ -23,11 +23,11 @@ pkgver() {
 
 build() {
   cd "${_name}"
-  python setup.py build
+  python -m pip wheel --no-build-isolation --no-deps -w dist .
 }
 
 package() {
   cd "${_name}"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  PYTHONOPTIMIZE=1 python -m pip install --no-build-isolation --no-deps --root="$pkgdir" --prefix=/usr dist/*.whl
 }
 
