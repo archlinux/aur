@@ -4,7 +4,7 @@
 # fills in the version and checksum placeholders and pushes the result (with a
 # regenerated .SRCINFO) to the AUR on every release.
 pkgname=carrier
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Distraction-free desktop client for Facebook Messenger"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/kristofferR/Carrie
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::https://github.com/kristofferR/Carrier/releases/download/v${pkgver}/Carrier_${pkgver}_lin_x64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::https://github.com/kristofferR/Carrier/releases/download/v${pkgver}/Carrier_${pkgver}_lin_arm.deb")
 sha256sums=('957e3579dea42e66b0d3cdea831c3b93edaaa8a3566e4115efd11959f60c0d9d')
-sha256sums_x86_64=('84bc72e1d2289bd84681290e9097ae71a08dec335c7a44a7880051acfdd43a4e')
-sha256sums_aarch64=('cece1c9aac9733fb279012ef74ab5f5be71060eb3c47c7e766a139e8e62367e9')
+sha256sums_x86_64=('06bd7926e38b1a353d652e3be685aefb3f1916e1409e22af5dd700946fa9ba3a')
+sha256sums_aarch64=('e423707ea48c29a639ee4a1eb156d2cf5e618ec839d53e2af78e976a02e09390')
 
 package() {
     # makepkg already extracted the .deb into srcdir; unpack its payload.
