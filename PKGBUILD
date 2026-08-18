@@ -1,6 +1,6 @@
 pkgname=deepseek-harness-git
-pkgver=0.1.0rc.5.r12225.g47f9438
-pkgrel=3
+pkgver=0.1.0rc.7.r12404.g99f6f02
+pkgrel=1
 pkgdesc='DeepSeek Harness CLI and agent harness (git)'
 arch=('x86_64')
 url='https://github.com/deepseek-ai/deepseek-harness'
@@ -39,7 +39,7 @@ build() {
   node "$srcdir/aur-package.mjs" "$srcdir"
 
   cd "$srcdir/npm-root"
-  npm install --omit=optional --no-audit --no-fund --package-lock=false
+  npm install --include=optional --no-audit --no-fund --package-lock=false
   node node_modules/@deepseek-ai/dsh/lib/bin.js --version
 }
 
