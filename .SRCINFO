@@ -1,21 +1,21 @@
 pkgbase = kprompt-bin
 	pkgdesc = AI Kubernetes CLI: natural language to a reviewable plan, applied after approval
-	pkgver = 0.9.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://kprompt.ai
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	optdepends = helm: plan Helm chart installs and upgrades
-	provides = kprompt=0.9.0
+	provides = kprompt=0.11.0
 	conflicts = kprompt
 	options = !strip
 	options = !debug
-	source = kprompt-0.9.0-NOTICE::https://raw.githubusercontent.com/kprompt/kprompt/v0.9.0/NOTICE
+	source = kprompt-0.11.0-NOTICE::https://raw.githubusercontent.com/kprompt/kprompt/v0.11.0/NOTICE
 	sha256sums = 3513bb19225b1e4d2f6ee1f8e5247b62063cefc71bd513beef65afc1e0f39150
-	source_x86_64 = https://github.com/kprompt/kprompt/releases/download/v0.9.0/kprompt_0.9.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2e105ad8f88777c71ac3a01c16481d16ecd32e3725b2d13ba33473b7efc4a445
-	source_aarch64 = https://github.com/kprompt/kprompt/releases/download/v0.9.0/kprompt_0.9.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 16240f5e4ce2f3caa73341af0ace607660e851ce9193443d0f517de6ef97af05
+	source_x86_64 = https://github.com/kprompt/kprompt/releases/download/v0.11.0/kprompt_0.11.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2a4fa7ed182e22769f501764e4642db2eb609224ef57deeb0b209ef9b12969b8
+	source_aarch64 = https://github.com/kprompt/kprompt/releases/download/v0.11.0/kprompt_0.11.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3b775cf290c199b302fd223d52dc22be26386ef10da59f7bb89a908ead5f037d
 
 pkgname = kprompt-bin
