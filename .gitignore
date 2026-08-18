@@ -1,0 +1,7 @@
+# AUR 构建产物
+pkg/
+src/
+*.pkg.tar.*
+*.tar.gz
+*.tar.xz
+*.tar.zst

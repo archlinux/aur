@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Tuack-GUI
+GenericName=Tuack-NG 图形化前端
+Comment=美观、跨平台的 Tuack-NG 图形化前端
+Exec=/usr/lib/tuack-gui/tuack-gui
+Icon=tuack-gui
+Terminal=false
+Categories=Development;Utility;
+StartupWMClass=tuack-gui
