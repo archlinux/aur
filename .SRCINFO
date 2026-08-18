@@ -1,0 +1,21 @@
+pkgbase = trovekit-bin
+	pkgdesc = An open-source, lightweight, fully offline, cross-platform toolbox.(Prebuilt version)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/1595901624/TroveKit
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = trovekit=1.0.0
+	conflicts = trovekit
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/1595901624/TroveKit/v1.0.0/LICENSE
+	sha256sums = 86d1a389dfd76a18037ccf9c2b8852a268f6b52e1400ccaf14f6bd1ee96c21b6
+	source_aarch64 = trovekit-1.0.0-aarch64.rpm::https://github.com/1595901624/TroveKit/releases/download/v1.0.0/TroveKit-1.0.0-1.aarch64.rpm
+	sha256sums_aarch64 = 811ccd0a0d86205528c377f2be2d63307ae2ca2f39f4a8f735acc88ecc3e3a9d
+	source_x86_64 = trovekit-1.0.0-x86_64.rpm::https://github.com/1595901624/TroveKit/releases/download/v1.0.0/TroveKit-1.0.0-1.x86_64.rpm
+	sha256sums_x86_64 = 34df41d9fe67f21a7ad65c68e55bb07549a81df317ffe0df7690e3917ab32388
+
+pkgname = trovekit-bin
