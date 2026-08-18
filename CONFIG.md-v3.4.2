@@ -1,0 +1,1357 @@
+# Hotkey HUB
+
+## Config
+
+Root configuration schema that defines the entire setup including remote PCs, shortcuts, RGB settings, and macros. All sections must follow their respective schemas strictly.
+
+_Object containing the following properties:_
+
+| Property                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Type                      | Default |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------ | :------ |
+| **`ips`** (\*)          | Maps PC names to IP addresses or host names. If port is omited default is usedExample value: {"PC1": "192.168.1.100", "PC2": "domain.name", "PC3: "domain.or.ip:5000"} Each key identifies a remote PC, value is its IP/Domain. The address must be accessible from this PC. For internet access, use VPN or tunneling (e.g. ngrok.com).                                                                                                                                                                 | [Ips](#ips)               |         |
+| `clientPort`            | HTTPS port for secure client PC connections. Must be accessible and not blocked by firewalls. Default is 5000 if not specified.                                                                                                                                                                                                                                                                                                                                                                          | `number`                  | `5000`  |
+| `rgb`                   | RGB keyboard lighting for shortcut feedback. Changes key colors during execution. You need to run openrgb server for it, which you can download from https://openrgb.org. Run the application, go to the SDK server tab and click on Start server. Needs OpenRGB server and compatible keyboard, the supported keyboards are here: https://openrgb.org/devices.html. For Linux just install openrgb via your package manager and run the openrgb from root with you default service manager like systemd | [Rgb](#rgb)               |         |
+| **`variables`** (\*)    | Variable definitions for configuration. Values can be any type (numeric strings auto-convert to integers). Use {$ref: "varName"} to reference.                                                                                                                                                                                                                                                                                                                                                           | [Variables](#variables)   |         |
+| `name`                  | Name of this schema to print in logs                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | `string`                  |         |
+| **`combinations`** (\*) | Array of shortcut definitions that map keyboard combinations to command sequences. Each shortcut must have a unique key combination. This is the main configuration that defines what happens when specific keys are pressed.                                                                                                                                                                                                                                                                            | [Shortcuts](#shortcuts)   |         |
+| `macros`                | A map of macros where a key is the macro name and value is its body                                                                                                                                                                                                                                                                                                                                                                                                                                      | [MacrosList](#macroslist) |         |
+
+_(\*) Required._
+
+## Ips
+
+Maps PC names to IP addresses or host names. If port is omited default is usedExample value: {"PC1": "192.168.1.100", "PC2": "domain.name", "PC3: "domain.or.ip:5000"} Each key identifies a remote PC, value is its IP/Domain. The address must be accessible from this PC. For internet access, use VPN or tunneling (e.g. ngrok.com).
+
+_Object record with dynamic keys:_
+
+- _keys of type_ `string`
+- _values of type_ `string`
+
+## Shortcut
+
+This allows to bind a shortcut to a commands list and define execution behaviour. E.g. press `alt+1` on local PC to send a mouseClick on a remote one
+
+_Object containing the following properties:_
+
+| Property            | Description                                                                                                                                | Type                                                                             | Default      |
+| :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------- | :----------- |
+| `delayAfter`        | Delay (ms) after each command. Ensures commands have time to complete.                                                                     | `number`                                                                         |              |
+| `delayBefore`       | Delay (ms) before each command. Helps coordinate timing between different shortcuts.                                                       | `number`                                                                         |              |
+| **`name`** (\*)     | Name shown during startup. Helps identify the shortcut's purpose.                                                                          | `string`                                                                         |              |
+| **`shortCut`** (\*) | Keyboard shortcut format: Modifier+Key (e.g., Alt+1, Ctrl+Shift+A). Needs at least one modifier. Max 3 modifiers (e.g., Ctrl+Alt+Shift+S). | `string`                                                                         |              |
+| **`commands`** (\*) | Commands to run when shortcut triggered. Executes in order unless parallel execution specified.                                            | _Array of [UnknownCommand](#unknowncommand) items_                               |              |
+| `behaviour`         | Controls the the behaviour of the process when you press again the shortcut and the old process is still running.                          | `'stacking' \| 'pausable' \| 'restart'` _or_ [BehaviourObject](#behaviourobject) | `'stacking'` |
+
+_(\*) Required._
+
+## UnknownCommand
+
+A command that would be executed on this machine
+
+_Union of the following possible types:_
+
+- [RemoteCommand](#remotecommand)
+- [GetInfoCommand](#getinfocommand)
+- [LocalCommand](#localcommand)
+
+## RemoteCommand
+
+One of the commands that would be sent to a remote machine specified in destination property
+
+_Union of the following possible types:_
+
+- [KeyboardCommands](#keyboardcommands)
+- [MouseCommands](#mousecommands)
+- [ProcessCommands](#processcommands)
+- [WindowCommands](#windowcommands)
+
+## KeyboardCommands
+
+Keyboard-related remote commands
+
+_Union of the following possible types:_
+
+- [KeyPressRemoteCommand](#keypressremotecommand)
+- [TypeTextRemoteCommand](#typetextremotecommand)
+- [SetKeyboardLayoutRemoteCommand](#setkeyboardlayoutremotecommand)
+
+## MouseCommands
+
+Mouse-related remote commands
+
+_Union of the following possible types:_
+
+- [MouseMoveClickRemoteCommand](#mousemoveclickremotecommand)
+- [MouseMoveRemoteCommand](#mousemoveremotecommand)
+- [MouseClickRemoteCommand](#mouseclickremotecommand)
+- [LeftMouseClickRemoteCommand](#leftmouseclickremotecommand)
+
+## ProcessCommands
+
+Process-related remote commands
+
+_Union of the following possible types:_
+
+- [KillExeByNameRemoteCommand](#killexebynameremotecommand)
+- [KillExeByPidRemoteCommand](#killexebypidremotecommand)
+- [LaunchExeRemoteCommand](#launchexeremotecommand)
+
+## WindowCommands
+
+Window-related remote commands
+
+_Union of the following possible types:_
+
+- [SetWindowBoundsRemoteCommand](#setwindowboundsremotecommand)
+- [FocusProcessWindowRemoteCommand](#focusprocesswindowremotecommand)
+- [FocusWindowRemoteCommand](#focuswindowremotecommand)
+
+## LocalCommand
+
+Allows to control flow (if/loops/thread) for other commands
+
+_Union of the following possible types:_
+
+- [MacroCallLocalCommand](#macrocalllocalcommand)
+- [ExpressionLocalCommand](#expressionlocalcommand)
+- [TransactionLocalCommand](#transactionlocalcommand)
+- [ThreadsLocalCommand](#threadslocalcommand)
+- [LoopLocalCommand](#looplocalcommand)
+- [IfLocalCommand](#iflocalcommand)
+- [ExceptionLocalCommand](#exceptionlocalcommand)
+- [ShuffleLocalCommand](#shufflelocalcommand)
+- [PrintLocalCommand](#printlocalcommand)
+- [ReloadConfigLocalCommand](#reloadconfiglocalcommand)
+- [PromptLocalCommand](#promptlocalcommand)
+
+## ExceptionLocalCommand
+
+Allows to execute statements in try block and fail silently by keeping next commands after this command executing
+
+_Object containing the following properties:_
+
+| Property       | Description                                                                                            | Type                                               |
+| :------------- | :----------------------------------------------------------------------------------------------------- | :------------------------------------------------- |
+| **`try`** (\*) | Commands to execute if the condition is true                                                           | _Array of [UnknownCommand](#unknowncommand) items_ |
+| `catch`        | Execute this commands on catch block. If catch is omited, commands in the try block will fail silently | _Array of [UnknownCommand](#unknowncommand) items_ |
+| `finally`      | Execute this command after try block, whether it fails/succeed                                         | _Array of [UnknownCommand](#unknowncommand) items_ |
+
+_(\*) Required._
+
+## ExpressionLocalCommand
+
+Allows to create/assign a variable by expression.
+
+_Object containing the following properties:_
+
+| Property                  | Description                                                 | Type                                          |
+| :------------------------ | :---------------------------------------------------------- | :-------------------------------------------- |
+| **`assignVariable`** (\*) |                                                             | [VariableValue](#variablevalue) _or_ `string` |
+| **`expression`** (\*)     | JS like expression that evaluates to some values. E.g. x*2. | `string`                                      |
+
+_(\*) Required._
+
+## IfLocalCommand
+
+Conditional execution of commands based on a boolean condition. If the condition is true, executes the "then" commands, otherwise executes the "else" commands if they exist.
+
+_Object containing the following properties:_
+
+| Property        | Description                                                 | Type                                               |
+| :-------------- | :---------------------------------------------------------- | :------------------------------------------------- |
+| **`if`** (\*)   | JS like expression that evaluates to some values. E.g. x*2. | `string`                                           |
+| **`then`** (\*) | Commands to execute if the condition is true                | _Array of [UnknownCommand](#unknowncommand) items_ |
+| `else`          | Optional commands to execute if the condition is false      | _Array of [UnknownCommand](#unknowncommand) items_ |
+
+_(\*) Required._
+
+## LoopLocalCommand
+
+Allow to run same commands multiple time or in iteration or loop
+
+_Object containing the following properties:_
+
+| Property            | Description                                                                                                                                                                                                                                                                                                                                | Type                                               |
+| :------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------- |
+| **`commands`** (\*) | Sequence of commands to repeat in the loop. Each iteration will execute all commands in order.                                                                                                                                                                                                                                             | _Array of [UnknownCommand](#unknowncommand) items_ |
+| **`loop`** (\*)     | Number of times to repeat the commands sequence. Positive number: Executes that many iterations. Negative number: Runs indefinitely until manually stopped. If the parent command is pausable, pressing the shortcut again will exit the loop.If string is passed evaluated that string as expresssion and repeat the loop while it's true | `number \| string`                                 |
+
+_(\*) Required._
+
+## MacroCallLocalCommand
+
+Executes a predefined macro, which is a reusable sequence of commands. Similar to a function call, macros can accept parameters through variables. This helps avoid duplicating complex command sequences and makes configurations more maintainable.
+
+_Object containing the following properties:_
+
+| Property         | Description                                                                                                                                                                   | Type                                                              |
+| :--------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------- |
+| **`macro`** (\*) | Name of the macro to execute, which must match a key defined in the macros section. Macros help reduce configuration repetition by reusing command sequences.                 | `string`                                                          |
+| `variables`      | Variables to pass to the macro. Object where keys are variable names and values are their values. Values must match the JSON Schema defined in the macro's variables section. | [MacroCallLocalCommandVariables](#macrocalllocalcommandvariables) |
+| `delayAfter`     | Delay (ms) after command completes, before next command. Ensures command has time to take effect.                                                                             | [VariableValue](#variablevalue) _or_ `number`                     |
+| `delayBefore`    | Delay (ms) before executing command. Helps create precisely timed sequences.                                                                                                  | [VariableValue](#variablevalue) _or_ `number`                     |
+
+_(\*) Required._
+
+## PrintLocalCommand
+
+Print the expressions to log
+
+_Object containing the following properties:_
+
+| Property         | Description                                                 | Type     |
+| :--------------- | :---------------------------------------------------------- | :------- |
+| **`print`** (\*) | JS like expression that evaluates to some values. E.g. x*2. | `string` |
+
+_(\*) Required._
+
+## PromptLocalCommand
+
+Prompts the user in the CLI of this app for input and assigns the result to a variable.
+
+_Object containing the following properties:_
+
+| Property          | Description                                                                            | Type                              |
+| :---------------- | :------------------------------------------------------------------------------------- | :-------------------------------- |
+| **`prompt`** (\*) | Prompt question configuration. Check https://github.com/terkelg/prompts for more info  | [PromptQuestion](#promptquestion) |
+
+_(\*) Required._
+
+## ReloadConfigLocalCommand
+
+Reloads config or loads config from a new place
+
+_Union of the following possible types:_
+
+- _Object with properties:_<ul><li>**`reloadConfig`** (\*): `string` (_min length: 1_) - Path to a new config. Leave it empty to use current path</li><li>`reloadVariables`: `string` - Path to a variable config file. Leave it empty to use current path</li></ul>
+- _Object with properties:_<ul><li>`reloadConfig`: `string` - Path to a new config. Leave it empty to use current path</li><li>**`reloadVariables`** (\*): `string` (_min length: 1_) - Path to a variable config file. Leave it empty to use current path</li></ul>
+
+## ShuffleLocalCommand
+
+Allow to run same commands in specific order
+
+_Object containing the following properties:_
+
+| Property            | Description                                                                                                                                                                                 | Type                                               |
+| :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------- |
+| **`commands`** (\*) | Sequence of commands to repeat in the loop. Each iteration will execute all commands in order.                                                                                              | _Array of [UnknownCommand](#unknowncommand) items_ |
+| **`shuffle`** (\*)  | Random = shuffle array so it takes next element randomly. Reverse = each time it changes the order from first to last, then from last to first. Straight = Default order from first to last | `'random' \| 'reverse' \| 'straight'`              |
+
+_(\*) Required._
+
+## ThreadsLocalCommand
+
+Allows to execute commands in parallel. Or in threads.
+
+_Object containing the following properties:_
+
+| Property           | Description                                                                                           | Type                                         |
+| :----------------- | :---------------------------------------------------------------------------------------------------- | :------------------------------------------- |
+| **`threads`** (\*) | Command sequences to run in parallel. Each thread runs sequentially while threads run simultaneously. | _Array of [ThreadLocal](#threadlocal) items_ |
+
+_(\*) Required._
+
+## TransactionLocalCommand
+
+Run commands in a transaction. Prevents concurrent transactions with same name. Uses PC name for remote commands. Ensures atomic execution.
+
+_Object containing the following properties:_
+
+| Property               | Description                                                                                                                                                                                       | Type                                                  |
+| :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------- |
+| **`commands`** (\*)    | Commands to execute atomically in this transaction. All commands either succeed or fail together.                                                                                                 | _Array of [UnknownCommand](#unknowncommand) items_    |
+| **`transaction`** (\*) | Unique name for the transaction. Helps with logging and debugging transaction execution.If transaction is null, all commands in this block would run despite other commands on the destination pc | [VariableValue](#variablevalue), `string` _or_ `null` |
+
+_(\*) Required._
+
+## GetInfoCommand
+
+Allows to execute getRequest on remote schema and assign it to a variable
+
+_Union of the following possible types:_
+
+- [PingCommand](#pingcommand)
+- [GetMonitorCommands](#getmonitorcommands)
+- [GetProcessCommands](#getprocesscommands)
+- [GetWindowCommands](#getwindowcommands)
+
+## GetMonitorCommands
+
+Allows to get information about display and its windows
+
+_Union of the following possible types:_
+
+- [GetMonitorsCommand](#getmonitorscommand)
+- [GetMonitorInfoCommand](#getmonitorinfocommand)
+
+## GetProcessCommands
+
+Handles processes
+
+_Union of the following possible types:_
+
+- [GetPidsByNameCommand](#getpidsbynamecommand)
+- [GetProcessInfoCommand](#getprocessinfocommand)
+
+## GetWindowCommands
+
+Allows to get information about windows, transform and move them
+
+_Union of the following possible types:_
+
+- [GetWindowCommand](#getwindowcommand)
+- [GetWindowsIdByPidCommand](#getwindowsidbypidcommand)
+- [GetActiveWindowCommand](#getactivewindowcommand)
+- [GetWindowsIdByMutliplePidsCommand](#getwindowsidbymutliplepidscommand)
+
+## PingCommand
+
+Pings this client to test whether it's working
+
+_Object containing the following properties:_
+
+| Property                  | Description                                                                                                                                                                                                                                      | Type                                          |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------- |
+| **`destination`** (\*)    | Remote PC from ips or aliases section to send this command to                                                                                                                                                                                    | [VariableValue](#variablevalue) _or_ `string` |
+| **`get`** (\*)            |                                                                                                                                                                                                                                                  | `'ping'`                                      |
+| **`assignVariable`** (\*) | Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = ["a","b"], then a = 1, b = 2. If array length missmatch, an exception is thrown | `Array<string> \| string`                     |
+
+_(\*) Required._
+
+## FocusProcessWindowRemoteCommand
+
+Brings a window to front and gives it focus by process ID. Useful for window automation and ensuring windows are active.
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                                                                |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------- |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string`                                       |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number`                                       |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number`                                       |
+| **`performOnRemote`** (\*) |                                                                                                   | `'focusProcessWindow'`                                                              |
+| **`variables`** (\*)       |                                                                                                   | [FocusProcessWindowRemoteCommandVariable](#focusprocesswindowremotecommandvariable) |
+
+_(\*) Required._
+
+## FocusProcessWindowRemoteCommandVariable
+
+_Object containing the following properties:_
+
+| Property       | Description                                                                                                           | Type                                          |
+| :------------- | :-------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------- |
+| **`pid`** (\*) | Process ID (PID) of the window to focus. Can be obtained from findPidsByName command or launch command with assignId. | `number` _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## FocusWindowRemoteCommand
+
+Brings a window to the foreground and gives it focus based on its window ID. Window IDs can be retrieved using findProcessWindows or findProcessesWindows commands.
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                                                  |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------- |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string`                         |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number`                         |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number`                         |
+| **`performOnRemote`** (\*) |                                                                                                   | `'focusWindow'`                                                       |
+| **`variables`** (\*)       |                                                                                                   | [FocusWindowRemoteCommandVariable](#focuswindowremotecommandvariable) |
+
+_(\*) Required._
+
+## FocusWindowRemoteCommandVariable
+
+_Object containing the following properties:_
+
+| Property       | Description                                                                                   | Type                                          |
+| :------------- | :-------------------------------------------------------------------------------------------- | :-------------------------------------------- |
+| **`wid`** (\*) | Window ID to focus. Can be obtained from findProcessWindows or findProcessesWindows commands. | `number` _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## KeyPressRemoteCommand
+
+Simulates keyboard input on the remote PC by sending key press events. Supports single keys, key combinations, and modifier keys with customizable timing and randomness. Use this for automating keyboard input or triggering keyboard shortcuts.
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                                            |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------- |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string`                   |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number`                   |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number`                   |
+| **`performOnRemote`** (\*) |                                                                                                   | `'keyPress'`                                                    |
+| **`variables`** (\*)       |                                                                                                   | [KeyPressRemoteCommandVariable](#keypressremotecommandvariable) |
+
+_(\*) Required._
+
+## KeyPressRemoteCommandVariable
+
+_Object containing the following properties:_
+
+| Property            | Description                                                                                                                                 | Type                                                                               | Default |
+| :------------------ | :------------------------------------------------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------- | :------ |
+| **`key`** (\*)      | Key(s) to press. Can be a single key or array of keys for multiple presses.                                                                 | [Key](#key) _or_ _Array of [Key](#key) items_ _or_ [VariableValue](#variablevalue) |         |
+| `duration`          | How long to hold the key down in milliseconds. Recommended minimum 50ms to ensure reliable key registration.                                | `number` (_≥50_) _or_ [VariableValue](#variablevalue)                              |         |
+| `durationDeviation` | Adds randomness to key press duration. Value is the maximum +/- deviation in milliseconds. Useful for simulating human-like input patterns. | `number` (_≥0_) _or_ [VariableValue](#variablevalue)                               | `0`     |
+| `holdKeys`          | Modifier keys to hold (e.g., Alt for Alt+1, Ctrl+Shift for Ctrl+Shift+A). Can be a key or key array.                                        | [Key](#key) _or_ _Array of [Key](#key) items_ _or_ [VariableValue](#variablevalue) |         |
+
+_(\*) Required._
+
+## KillExeByNameRemoteCommand
+
+Terminates all processes with the specified executable name. Use with caution - kills all instances of the program.
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                                                      |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------ |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string`                             |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number`                             |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number`                             |
+| **`performOnRemote`** (\*) |                                                                                                   | `'killExeByName'`                                                         |
+| **`variables`** (\*)       |                                                                                                   | [KillExeByNameRemoteCommandVariable](#killexebynameremotecommandvariable) |
+
+_(\*) Required._
+
+## KillExeByNameRemoteCommandVariable
+
+_Object containing the following properties:_
+
+| Property        | Description                                                                                                | Type                                          |
+| :-------------- | :--------------------------------------------------------------------------------------------------------- | :-------------------------------------------- |
+| **`name`** (\*) | Name of the executable file to terminate. Example: "Chrome.exe". Case-sensitive on some operating systems. | `string` _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## KillExeByPidRemoteCommand
+
+Terminates a specific process by its PID on the remote PC. More precise than killByName as it targets a single specific process.
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                                                    |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------- |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string`                           |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number`                           |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number`                           |
+| **`performOnRemote`** (\*) |                                                                                                   | `'killExeByPid'`                                                        |
+| **`variables`** (\*)       |                                                                                                   | [KillExeByPidRemoteCommandVariable](#killexebypidremotecommandvariable) |
+
+_(\*) Required._
+
+## KillExeByPidRemoteCommandVariable
+
+_Object containing the following properties:_
+
+| Property       | Description                                                                                      | Type                                          |
+| :------------- | :----------------------------------------------------------------------------------------------- | :-------------------------------------------- |
+| **`pid`** (\*) | Process ID (PID) of the process to terminate. Example: 1234. Must be a valid running process ID. | `number` _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## LaunchExeRemoteCommand
+
+Starts a program on a remote PC.
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                                              |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------- |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string`                     |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number`                     |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number`                     |
+| **`performOnRemote`** (\*) |                                                                                                   | `'launchExe'`                                                     |
+| `assignVariable`           | If provided, would assign launched process id to this variable                                    | `string` _or_ [VariableValue](#variablevalue)                     |
+| **`variables`** (\*)       |                                                                                                   | [LaunchExeRemoteCommandVariable](#launchexeremotecommandvariable) |
+
+_(\*) Required._
+
+## LaunchExeRemoteCommandVariable
+
+_Object containing the following properties:_
+
+| Property         | Description                                                                                                                                                    | Type                                                 | Default |
+| :--------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------- | :------ |
+| **`path`** (\*)  | Full absolute path to the executable file to run on the remote PC.                                                                                             | `string` _or_ [VariableValue](#variablevalue)        |         |
+| `arguments`      | Command-line arguments to pass to the executable. Each array element is a separate argument.                                                                   | `Array<string>` _or_ [VariableValue](#variablevalue) | `[]`    |
+| `waitTillFinish` | Blocks current execution context until this timeout passes or process is finished, whichever comes first.                                                      | `boolean` _or_ [VariableValue](#variablevalue)       | `false` |
+| `waitTimeout`    | Awaits this timeout to pass to get processs id. If waitTillFinish is true, awaits maxium of this timeout. If process failed to finish before it, throws error. | `number` _or_ [VariableValue](#variablevalue)        | `300`   |
+
+_(\*) Required._
+
+## LeftMouseClickRemoteCommand
+
+Performs a left mouse click at the current cursor position without moving the mouse. Use when cursor is already positioned.
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                          |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :-------------------------------------------- |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string` |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number` |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number` |
+| **`performOnRemote`** (\*) |                                                                                                   | `'leftMouseClick'`                            |
+
+_(\*) Required._
+
+## MouseClickRemoteCommand
+
+Performs a left mouse click at the current cursor position without moving the mouse. Use when cursor is already positioned.
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                                                  |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------- |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string`                         |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number`                         |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number`                         |
+| **`performOnRemote`** (\*) |                                                                                                   | `'mouseClick'`                                                        |
+| **`variables`** (\*)       |                                                                                                   | [MouseClickRemoteCommandVariables](#mouseclickremotecommandvariables) |
+
+_(\*) Required._
+
+## MouseClickRemoteCommandVariables
+
+_Object containing the following properties:_
+
+| Property          | Description                  | Type                                                                 |
+| :---------------- | :--------------------------- | :------------------------------------------------------------------- |
+| **`button`** (\*) | Identifier of a mouse button | `'LEFT' \| 'RIGHT' \| 'MIDDLE'` _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## MouseMoveClickRemoteCommand
+
+Moves mouse cursor to specified screen coordinates and performs a left-click. Combines movement and clicking into one action.
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                                                        |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------- |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string`                               |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number`                               |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number`                               |
+| **`performOnRemote`** (\*) |                                                                                                   | `'mouseMoveLeftClick'`                                                      |
+| **`variables`** (\*)       |                                                                                                   | [MouseMoveClickRemoteCommandVariable](#mousemoveclickremotecommandvariable) |
+
+_(\*) Required._
+
+## MouseMoveClickRemoteCommandVariable
+
+_Object containing the following properties:_
+
+| Property             | Description                                       | Type                                          | Default |
+| :------------------- | :------------------------------------------------ | :-------------------------------------------- | :------ |
+| **`x`** (\*)         | X coordinate for mouse cursor.                    | `number` _or_ [VariableValue](#variablevalue) |         |
+| **`y`** (\*)         | Y coordinate for mouse cursor.                    | `number` _or_ [VariableValue](#variablevalue) |         |
+| `pixelsPerIteration` | Pixels to move per iteration for smooth movement. | `number` _or_ [VariableValue](#variablevalue) | `20`    |
+
+_(\*) Required._
+
+## MouseMoveRemoteCommand
+
+Moves mouse cursor to specified screen coordinates.
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                                                        |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------- |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string`                               |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number`                               |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number`                               |
+| **`performOnRemote`** (\*) |                                                                                                   | `'mouseMove'`                                                               |
+| **`variables`** (\*)       |                                                                                                   | [MouseMoveClickRemoteCommandVariable](#mousemoveclickremotecommandvariable) |
+
+_(\*) Required._
+
+## SetKeyboardLayoutRemoteCommand
+
+Simulates keyboard input on the remote PC by sending key press events. Supports single keys, key combinations, and modifier keys with customizable timing and randomness. Use this for automating keyboard input or triggering keyboard shortcuts.
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                                            |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------- |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string`                   |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number`                   |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number`                   |
+| **`performOnRemote`** (\*) |                                                                                                   | `'setKeyboardLayout'`                                           |
+| **`variables`** (\*)       |                                                                                                   | [KeyboardLayoutCommandVariable](#keyboardlayoutcommandvariable) |
+
+_(\*) Required._
+
+## SetWindowBoundsRemoteCommand
+
+Sets window width height and x y position
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                                                          |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------- |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string`                                 |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number`                                 |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number`                                 |
+| **`performOnRemote`** (\*) |                                                                                                   | `'setWindowBounds'`                                                           |
+| **`variables`** (\*)       |                                                                                                   | [SetWindowBoundsRemoteCommandVariable](#setwindowboundsremotecommandvariable) |
+
+_(\*) Required._
+
+## SetWindowBoundsRemoteCommandVariable
+
+_Object containing the following properties:_
+
+| Property          | Description | Type                                                                                       |
+| :---------------- | :---------- | :----------------------------------------------------------------------------------------- |
+| **`wid`** (\*)    | Window id   | `number` _or_ [VariableValue](#variablevalue)                                              |
+| **`bounds`** (\*) |             | [WindowPropertiesVariable](#windowpropertiesvariable) _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## TypeTextRemoteCommand
+
+Types text on the remote PC.
+
+_Object containing the following properties:_
+
+| Property                   | Description                                                                                       | Type                                                            |
+| :------------------------- | :------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------- |
+| **`destination`** (\*)     | Remote PC from ips or aliases section to send this command to                                     | [VariableValue](#variablevalue) _or_ `string`                   |
+| `delayAfter`               | Delay (ms) after command completes, before next command. Ensures command has time to take effect. | [VariableValue](#variablevalue) _or_ `number`                   |
+| `delayBefore`              | Delay (ms) before executing command. Helps create precisely timed sequences.                      | [VariableValue](#variablevalue) _or_ `number`                   |
+| **`performOnRemote`** (\*) |                                                                                                   | `'typeText'`                                                    |
+| **`variables`** (\*)       |                                                                                                   | [TypeTextRemoteCommandVariable](#typetextremotecommandvariable) |
+
+_(\*) Required._
+
+## TypeTextRemoteCommandVariable
+
+_Object containing the following properties:_
+
+| Property            | Description                                                                                                | Type                                                 | Default |
+| :------------------ | :--------------------------------------------------------------------------------------------------------- | :--------------------------------------------------- | :------ |
+| **`text`** (\*)     | Any string to type                                                                                         | `string` _or_ [VariableValue](#variablevalue)        |         |
+| `keyDelay`          | Delay between keystroke in milliseconds. By default types as fast as possible, around 40ms per char        | `number` _or_ [VariableValue](#variablevalue)        | `100`   |
+| `keyDelayDeviation` | Deviation for randomness of delay. E.g if keyDelay = 100 and deviation = 0.2. Then value would be 80-120ms | `number` (_>0_) _or_ [VariableValue](#variablevalue) | `0.1`   |
+
+_(\*) Required._
+
+## MacroCallLocalCommandVariables
+
+Variables to pass to the macro. Object where keys are variable names and values are their values. Values must match the JSON Schema defined in the macro's variables section.
+
+_Object record with dynamic keys:_
+
+- _keys of type_ `string`
+- _values of type_ `any` _or_ [VariableValue](#variablevalue)
+ (_optional_)
+
+## GetActiveWindowCommand
+
+Get information about current active window
+
+_Object containing the following properties:_
+
+| Property                  | Description                                                                                                                                                                                                                                      | Type                                          |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------- |
+| **`destination`** (\*)    | Remote PC from ips or aliases section to send this command to                                                                                                                                                                                    | [VariableValue](#variablevalue) _or_ `string` |
+| **`get`** (\*)            |                                                                                                                                                                                                                                                  | `'getActiveWindow'`                           |
+| **`assignVariable`** (\*) | Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = ["a","b"], then a = 1, b = 2. If array length missmatch, an exception is thrown | `Array<string> \| string`                     |
+
+_(\*) Required._
+
+## GetMonitorInfoCommand
+
+Get monitor info
+
+_Object containing the following properties:_
+
+| Property                  | Description                                                                                                                                                                                                                                      | Type                                                |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------- |
+| **`destination`** (\*)    | Remote PC from ips or aliases section to send this command to                                                                                                                                                                                    | [VariableValue](#variablevalue) _or_ `string`       |
+| **`get`** (\*)            |                                                                                                                                                                                                                                                  | `'getMonitorInfo'`                                  |
+| **`assignVariable`** (\*) | Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = ["a","b"], then a = 1, b = 2. If array length missmatch, an exception is thrown | `Array<string> \| string`                           |
+| **`variables`** (\*)      |                                                                                                                                                                                                                                                  | [MonitorVariablesCommand](#monitorvariablescommand) |
+
+_(\*) Required._
+
+## GetMonitorsCommand
+
+List monitors
+
+_Object containing the following properties:_
+
+| Property                  | Description                                                                                                                                                                                                                                      | Type                                          |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------- |
+| **`destination`** (\*)    | Remote PC from ips or aliases section to send this command to                                                                                                                                                                                    | [VariableValue](#variablevalue) _or_ `string` |
+| **`get`** (\*)            |                                                                                                                                                                                                                                                  | `'getMonitors'`                               |
+| **`assignVariable`** (\*) | Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = ["a","b"], then a = 1, b = 2. If array length missmatch, an exception is thrown | `Array<string> \| string`                     |
+
+_(\*) Required._
+
+## GetPidsByNameCommand
+
+Gets list of process ids that match criteria
+
+_Object containing the following properties:_
+
+| Property                  | Description                                                                                                                                                                                                                                      | Type                                                            |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------- |
+| **`destination`** (\*)    | Remote PC from ips or aliases section to send this command to                                                                                                                                                                                    | [VariableValue](#variablevalue) _or_ `string`                   |
+| **`get`** (\*)            |                                                                                                                                                                                                                                                  | `'getPidsByName'`                                               |
+| **`assignVariable`** (\*) | Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = ["a","b"], then a = 1, b = 2. If array length missmatch, an exception is thrown | `Array<string> \| string`                                       |
+| **`variables`** (\*)      |                                                                                                                                                                                                                                                  | [GetPidsByNameCommandVariables](#getpidsbynamecommandvariables) |
+
+_(\*) Required._
+
+## GetPidsByNameCommandVariables
+
+_Object containing the following properties:_
+
+| Property        | Description                                                                                                 | Type                                          |
+| :-------------- | :---------------------------------------------------------------------------------------------------------- | :-------------------------------------------- |
+| **`name`** (\*) | Name of the executable file to search for. Example: "Chrome.exe". Case-sensitive on some operating systems. | `string` _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## GetProcessInfoCommand
+
+Get process's main window
+
+_Object containing the following properties:_
+
+| Property                  | Description                                                                                                                                                                                                                                      | Type                                                              |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------- |
+| **`destination`** (\*)    | Remote PC from ips or aliases section to send this command to                                                                                                                                                                                    | [VariableValue](#variablevalue) _or_ `string`                     |
+| **`get`** (\*)            |                                                                                                                                                                                                                                                  | `'getProcessInfo'`                                                |
+| **`assignVariable`** (\*) | Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = ["a","b"], then a = 1, b = 2. If array length missmatch, an exception is thrown | `Array<string> \| string`                                         |
+| **`variables`** (\*)      |                                                                                                                                                                                                                                                  | [GetProcessInfoCommandVariables](#getprocessinfocommandvariables) |
+
+_(\*) Required._
+
+## GetProcessInfoCommandVariables
+
+_Object containing the following properties:_
+
+| Property       | Type                                                      |
+| :------------- | :-------------------------------------------------------- |
+| **`pid`** (\*) | `number` (_int, >0_) _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## GetWindowCommand
+
+Get information about window with specified window id
+
+_Object containing the following properties:_
+
+| Property                  | Description                                                                                                                                                                                                                                      | Type                                                  |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------- |
+| **`destination`** (\*)    | Remote PC from ips or aliases section to send this command to                                                                                                                                                                                    | [VariableValue](#variablevalue) _or_ `string`         |
+| **`get`** (\*)            |                                                                                                                                                                                                                                                  | `'getWindow'`                                         |
+| **`assignVariable`** (\*) | Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = ["a","b"], then a = 1, b = 2. If array length missmatch, an exception is thrown | `Array<string> \| string`                             |
+| **`variables`** (\*)      |                                                                                                                                                                                                                                                  | [WindowIdVariablesCommand](#windowidvariablescommand) |
+
+_(\*) Required._
+
+## GetWindowsIdByMultiplePidsCommandVariables
+
+_Object containing the following properties:_
+
+| Property        | Type                                                             |
+| :-------------- | :--------------------------------------------------------------- |
+| **`pids`** (\*) | `Array<number (_int, >0_)>` _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## GetWindowsIdByMutliplePidsCommand
+
+Get all windows with their IDs for a concrete process id
+
+_Object containing the following properties:_
+
+| Property                  | Description                                                                                                                                                                                                                                      | Type                                                                                      |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------- |
+| **`destination`** (\*)    | Remote PC from ips or aliases section to send this command to                                                                                                                                                                                    | [VariableValue](#variablevalue) _or_ `string`                                             |
+| **`get`** (\*)            |                                                                                                                                                                                                                                                  | `'getWindowsIdByMultiplePids'`                                                            |
+| **`assignVariable`** (\*) | Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = ["a","b"], then a = 1, b = 2. If array length missmatch, an exception is thrown | `Array<string> \| string`                                                                 |
+| **`variables`** (\*)      |                                                                                                                                                                                                                                                  | [GetWindowsIdByMultiplePidsCommandVariables](#getwindowsidbymultiplepidscommandvariables) |
+
+_(\*) Required._
+
+## GetWindowsIdByPidCommand
+
+Get all windows with their IDs for a concrete process id
+
+_Object containing the following properties:_
+
+| Property                  | Description                                                                                                                                                                                                                                      | Type                                                                    |
+| :------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------- |
+| **`destination`** (\*)    | Remote PC from ips or aliases section to send this command to                                                                                                                                                                                    | [VariableValue](#variablevalue) _or_ `string`                           |
+| **`get`** (\*)            |                                                                                                                                                                                                                                                  | `'getWindowsIdByPid'`                                                   |
+| **`assignVariable`** (\*) | Assign result to a variable. If array is passsed then the result is gonna be destruted into corresponding variable. E.g. if result is [1,2] and assignVariable = ["a","b"], then a = 1, b = 2. If array length missmatch, an exception is thrown | `Array<string> \| string`                                               |
+| **`variables`** (\*)      |                                                                                                                                                                                                                                                  | [GetWindowsIdByPidCommandVariables](#getwindowsidbypidcommandvariables) |
+
+_(\*) Required._
+
+## GetWindowsIdByPidCommandVariables
+
+_Object containing the following properties:_
+
+| Property       | Type                                                      |
+| :------------- | :-------------------------------------------------------- |
+| **`pid`** (\*) | `number` (_int, >0_) _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## BehaviourObject
+
+_Object containing the following properties:_
+
+| Property        | Description                                                                                                                                                                                                                                                                                                                                                                  | Type                                    |
+| :-------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------- |
+| `groupWith`     | If type is "restart" or "pausable" then groupWith will restart/pause all shortcuts with the same name                                                                                                                                                                                                                                                                        | `string`                                |
+| **`type`** (\*) | Stacking = Current process will keep running and new one will spawn as well. Since all executable items run in transaction by default.The next iteration will wait until current is finished. The default behaviour<br />Pausable = Current process will stop running and new one won't start.<br />Restart = Current process will stop running and new one will start<br /> | `'stacking' \| 'pausable' \| 'restart'` |
+
+_(\*) Required._
+
+## Choice
+
+A single selectable option for select, multiselect, and autocomplete prompts.
+
+_Object containing the following properties:_
+
+| Property         | Description                                                                      | Type                          |
+| :--------------- | :------------------------------------------------------------------------------- | :---------------------------- |
+| **`title`** (\*) | Display text shown to the user.                                                  | `string`                      |
+| `value`          | Value returned when this choice is selected. Defaults to its index in the array. | `string \| number \| boolean` |
+| `description`    | Optional hint/description shown when this choice is highlighted.                 | `string`                      |
+| `disabled`       | Disables selection of this choice.                                               | `boolean`                     |
+| `selected`       | Pre-selects this choice (multiselect only).                                      | `boolean`                     |
+
+_(\*) Required._
+
+## GlobalDelay
+
+Global delays config between commands. If ommited commands will run instantly after each other
+
+_Never type._
+
+## Key
+
+One of the keyboard keys.
+
+_Enum, one of the following possible values:_
+
+<details>
+<summary><i>Expand for full list of 139 values</i></summary>
+
+- `'0'`
+- `'1'`
+- `'2'`
+- `'3'`
+- `'4'`
+- `'5'`
+- `'6'`
+- `'7'`
+- `'8'`
+- `'9'`
+- `'a'`
+- `'b'`
+- `'c'`
+- `'d'`
+- `'e'`
+- `'f'`
+- `'g'`
+- `'h'`
+- `'i'`
+- `'j'`
+- `'k'`
+- `'l'`
+- `'m'`
+- `'n'`
+- `'o'`
+- `'p'`
+- `'q'`
+- `'r'`
+- `'s'`
+- `'t'`
+- `'u'`
+- `'v'`
+- `'w'`
+- `'x'`
+- `'y'`
+- `'z'`
+- `'f1'`
+- `'f2'`
+- `'f3'`
+- `'f4'`
+- `'f5'`
+- `'f6'`
+- `'f7'`
+- `'f8'`
+- `'f9'`
+- `'f10'`
+- `'f11'`
+- `'f12'`
+- `'f13'`
+- `'f14'`
+- `'f15'`
+- `'f16'`
+- `'f17'`
+- `'f18'`
+- `'f19'`
+- `'f20'`
+- `'f21'`
+- `'f22'`
+- `'f23'`
+- `'f24'`
+- `'backspace'`
+- `'delete'`
+- `'return'`
+- `'enter'`
+- `'tab'`
+- `'escape'`
+- `'space'`
+- `'insert'`
+- `'print_screen'`
+- `'home'`
+- `'end'`
+- `'page_up'`
+- `'page_down'`
+- `'up'`
+- `'down'`
+- `'left'`
+- `'right'`
+- `'caps_lock'`
+- `'num_lock'`
+- `'scroll_lock'`
+- `'add'`
+- `'subtract'`
+- `'multiply'`
+- `'divide'`
+- `'clear'`
+- `'numpad_0'`
+- `'numpad_1'`
+- `'numpad_2'`
+- `'numpad_3'`
+- `'numpad_4'`
+- `'numpad_5'`
+- `'numpad_6'`
+- `'numpad_7'`
+- `'numpad_8'`
+- `'numpad_9'`
+- `'numpad_decimal'`
+- `','`
+- `'.'`
+- `'/'`
+- `';'`
+- `'''`
+- `'['`
+- `']'`
+- `'\'`
+- `'-'`
+- `'='`
+- `'`'`
+- `'audio_mute'`
+- `'audio_vol_down'`
+- `'audio_vol_up'`
+- `'audio_play'`
+- `'audio_stop'`
+- `'audio_pause'`
+- `'audio_prev'`
+- `'audio_next'`
+- `'audio_rewind'`
+- `'audio_forward'`
+- `'audio_repeat'`
+- `'audio_random'`
+- `'lights_mon_up'`
+- `'lights_mon_down'`
+- `'lights_kbd_toggle'`
+- `'lights_kbd_up'`
+- `'lights_kbd_down'`
+- `'menu'`
+- `'pause'`
+- `'control'`
+- `'right_control'`
+- `'alt'`
+- `'right_alt'`
+- `'shift'`
+- `'right_shift'`
+- `'meta'`
+- `'right_meta'`
+- `'win'`
+- `'right_win'`
+- `'cmd'`
+- `'right_cmd'`
+- `'fn'`
+
+</details>
+
+## KeyboardLayoutCommandVariable
+
+_Object containing the following properties:_
+
+| Property          | Description     | Type                                                                             |
+| :---------------- | :-------------- | :------------------------------------------------------------------------------- |
+| **`layout`** (\*) | Keyboard layout | [KeyboardLayoutValue](#keyboardlayoutvalue) _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## KeyboardLayoutValue
+
+Keyboard layout
+
+_Enum, one of the following possible values:_
+
+<details>
+<summary><i>Expand for full list of 164 values</i></summary>
+
+- `'us'`
+- `'en'`
+- `'gb'`
+- `'au'`
+- `'nz'`
+- `'ie'`
+- `'za'`
+- `'de'`
+- `'at'`
+- `'ch'`
+- `'li'`
+- `'fr'`
+- `'be'`
+- `'lu'`
+- `'mc'`
+- `'es'`
+- `'mx'`
+- `'cl'`
+- `'ve'`
+- `'pe'`
+- `'ec'`
+- `'uy'`
+- `'py'`
+- `'bo'`
+- `'it'`
+- `'sm'`
+- `'va'`
+- `'pt'`
+- `'nl'`
+- `'sr'`
+- `'no'`
+- `'dk'`
+- `'fi'`
+- `'is'`
+- `'pl'`
+- `'cz'`
+- `'sk'`
+- `'hu'`
+- `'hr'`
+- `'ba'`
+- `'rs'`
+- `'me'`
+- `'mk'`
+- `'bg'`
+- `'ro'`
+- `'md'`
+- `'ee'`
+- `'lv'`
+- `'lt'`
+- `'mt'`
+- `'tr'`
+- `'az'`
+- `'ru'`
+- `'by'`
+- `'ua'`
+- `'kz'`
+- `'kg'`
+- `'tj'`
+- `'uz'`
+- `'tm'`
+- `'mn'`
+- `'gr'`
+- `'ar'`
+- `'ae'`
+- `'bh'`
+- `'dz'`
+- `'eg'`
+- `'iq'`
+- `'jo'`
+- `'kw'`
+- `'ly'`
+- `'ma'`
+- `'om'`
+- `'qa'`
+- `'sa'`
+- `'sy'`
+- `'tn'`
+- `'ye'`
+- `'fa'`
+- `'ir'`
+- `'ur'`
+- `'pk'`
+- `'il'`
+- `'he'`
+- `'cn'`
+- `'zh'`
+- `'tw'`
+- `'hk'`
+- `'mo'`
+- `'jp'`
+- `'ja'`
+- `'kr'`
+- `'ko'`
+- `'th'`
+- `'vn'`
+- `'vi'`
+- `'kh'`
+- `'km'`
+- `'lo'`
+- `'my'`
+- `'ms'`
+- `'id'`
+- `'ph'`
+- `'tl'`
+- `'sg'`
+- `'bn'`
+- `'bd'`
+- `'hi'`
+- `'in'`
+- `'ta'`
+- `'te'`
+- `'ml'`
+- `'kn'`
+- `'gu'`
+- `'or'`
+- `'pa'`
+- `'as'`
+- `'ne'`
+- `'si'`
+- `'lk'`
+- `'mm'`
+- `'am'`
+- `'et'`
+- `'sw'`
+- `'ke'`
+- `'tz'`
+- `'zu'`
+- `'xh'`
+- `'af'`
+- `'ha'`
+- `'ng'`
+- `'sn'`
+- `'bf'`
+- `'ci'`
+- `'gn'`
+- `'td'`
+- `'cf'`
+- `'cm'`
+- `'cg'`
+- `'cd'`
+- `'mg'`
+- `'dj'`
+- `'eo'`
+- `'la'`
+- `'eu'`
+- `'ca'`
+- `'gl'`
+- `'cy'`
+- `'ga'`
+- `'gd'`
+- `'br'`
+- `'oc'`
+- `'co'`
+- `'sc'`
+- `'fur'`
+- `'rm'`
+- `'lb'`
+- `'fo'`
+- `'kl'`
+- `'se'`
+- `'smj'`
+- `'sma'`
+- `'smn'`
+- `'sms'`
+
+</details>
+
+## MacroDefinition
+
+A reusable command sequence that can accept variables. Similar to a function that runs a predefined set of commands.
+
+_Object containing the following properties:_
+
+| Property            | Description                                       | Type                                                                        | Default |
+| :------------------ | :------------------------------------------------ | :-------------------------------------------------------------------------- | :------ |
+| **`commands`** (\*) | Set of commands for this macro                    | _Array of [UnknownCommand](#unknowncommand) items_                          |         |
+| `variables`         | Set of variable JSON Schema descriptors for macro | [MacroDefinitionVariablesDescription](#macrodefinitionvariablesdescription) |         |
+| `requiredVariables` | List of required variables                        | `Array<string>`                                                             | `[]`    |
+
+_(\*) Required._
+
+## MacroDefinitionVariableValue
+
+JSON Schema for the variable value. Supports standard JSON Schema: {"type": "string"}, {"type": "number"}, {"type": "object", "properties": {...}}, {"type": "array", "items": {...}}, {"anyOf": [...]}, {} (any value). Use "default" to provide a default value (also marks the variable as optional). Use "x-optional": true to mark as optional without a default value.
+
+_Object record with dynamic keys:_
+
+- _keys of type_ `string`
+- _values of type_ `any`
+
+## MacroDefinitionVariablesDescription
+
+Set of variable JSON Schema descriptors for macro
+
+_Object record with dynamic keys:_
+
+- _keys of type_ `string`
+- _values of type_ [MacroDefinitionVariableValue](#macrodefinitionvariablevalue)
+ (_optional_)
+
+## MacrosList
+
+A map of macros where a key is the macro name and value is its body
+
+_Object record with dynamic keys:_
+
+- _keys of type_ `string`
+- _values of type_ [MacroDefinition](#macrodefinition)
+ (_optional_)
+
+## MonitorVariablesCommand
+
+_Object containing the following properties:_
+
+| Property       | Type                                                      |
+| :------------- | :-------------------------------------------------------- |
+| **`mid`** (\*) | `number` (_int, ≥0_) _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## PromptQuestion
+
+Prompt question configuration. Check https://github.com/terkelg/prompts for more info 
+
+_Object containing the following properties:_
+
+| Property         | Description                                                                                                 | Type                                                                                                                                                                       |
+| :--------------- | :---------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`type`** (\*)  | Type of prompt to display.                                                                                  | `'text' \| 'password' \| 'invisible' \| 'number' \| 'confirm' \| 'list' \| 'toggle' \| 'select' \| 'multiselect' \| 'autocomplete' \| 'date' \| 'autocompleteMultiselect'` |
+| **`name`** (\*)  | Variable name to asssign stored result                                                                      | `string`                                                                                                                                                                   |
+| `message`        | Prompt message displayed to the user.                                                                       | `string`                                                                                                                                                                   |
+| `initial`        | Default value pre-filled when the prompt opens.                                                             | `string \| number \| boolean`                                                                                                                                              |
+| `style`          | Render style for text input. "password" masks input, "invisible" hides it like sudo. Defaults to "default". | `'default' \| 'password' \| 'invisible' \| 'emoji'`                                                                                                                        |
+| `min`            | Minimum allowed value (number prompt).                                                                      | `number`                                                                                                                                                                   |
+| `max`            | Maximum allowed value (number prompt).                                                                      | `number`                                                                                                                                                                   |
+| `float`          | Allow floating point input (number prompt). Defaults to false.                                              | `boolean`                                                                                                                                                                  |
+| `round`          | Round float values to this many decimal places (number prompt). Defaults to 2.                              | `number`                                                                                                                                                                   |
+| `increment`      | Step size when using arrow keys (number prompt). Defaults to 1.                                             | `number`                                                                                                                                                                   |
+| `separator`      | String used to split input into an array (list prompt). Defaults to ",".                                    | `string`                                                                                                                                                                   |
+| `active`         | Label for the active/on state (toggle prompt). Defaults to "on".                                            | `string`                                                                                                                                                                   |
+| `inactive`       | Label for the inactive/off state (toggle prompt). Defaults to "off".                                        | `string`                                                                                                                                                                   |
+| `choices`        | Array of choices for select, multiselect, and autocomplete prompts.                                         | _Array of [Choice](#choice) items_                                                                                                                                         |
+| `hint`           | Hint text displayed to the user below the prompt.                                                           | `string`                                                                                                                                                                   |
+| `warn`           | Message shown when a disabled choice is selected.                                                           | `string`                                                                                                                                                                   |
+| `instructions`   | Instruction text shown above choices. Set to false to hide (multiselect).                                   | `string \| boolean`                                                                                                                                                        |
+| `optionsPerPage` | Number of choices visible at once (multiselect). Defaults to 10.                                            | `number`                                                                                                                                                                   |
+| `limit`          | Maximum number of autocomplete results to show. Defaults to 10.                                             | `number`                                                                                                                                                                   |
+| `clearFirst`     | First Escape keypress clears the input instead of exiting (autocomplete).                                   | `boolean`                                                                                                                                                                  |
+| `fallback`       | Message shown when no autocomplete match is found. Defaults to the initial value.                           | `string`                                                                                                                                                                   |
+| `mask`           | Format mask for date input, e.g. "YYYY-MM-DD HH:mm:ss".                                                     | `string`                                                                                                                                                                   |
+
+_(\*) Required._
+
+## Rgb
+
+RGB keyboard lighting for shortcut feedback. Changes key colors during execution. You need to run openrgb server for it, which you can download from https://openrgb.org. Run the application, go to the SDK server tab and click on Start server. Needs OpenRGB server and compatible keyboard, the supported keyboards are here: https://openrgb.org/devices.html. For Linux just install openrgb via your package manager and run the openrgb from root with you default service manager like systemd
+
+_Object containing the following properties:_
+
+| Property              | Description                                                                                                                                                                                                                                                                                                                                                                                           | Type                                            | Default                                                                                                                                 |
+| :-------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------- |
+| **`deviceName`** (\*) | Device name of the keyboard. You can extract it with "openrgb --list-devices" command. Select the name after number. Also you can check in openrgb UI in Devices Tab.                                                                                                                                                                                                                                 | `string`                                        |                                                                                                                                         |
+| `clientName`          | Name of this client when connecting to openrg                                                                                                                                                                                                                                                                                                                                                         | `string`                                        | `'RPC'`                                                                                                                                 |
+| `onLed`               | Color for the keyboard Key when this shorcut is run                                                                                                                                                                                                                                                                                                                                                   | `string` (_regex: `/^#?(?:[0-9A-Fa-f]{6})$/u`_) | `'#00FF00'`                                                                                                                             |
+| `offLed`              | Color for the keyboard Key when this shorcut is not running                                                                                                                                                                                                                                                                                                                                           | `string` (_regex: `/^#?(?:[0-9A-Fa-f]{6})$/u`_) | `'#000000'`                                                                                                                             |
+| `errorLed`            | Color for the keyboard Key when the shortcut has finished running but was resulted with error                                                                                                                                                                                                                                                                                                         | `string` (_regex: `/^#?(?:[0-9A-Fa-f]{6})$/u`_) | `'#FF0000'`                                                                                                                             |
+| `serverPort`          | Port of the openrgb server                                                                                                                                                                                                                                                                                                                                                                            | `number`                                        | `6742`                                                                                                                                  |
+| `serverAddr`          | Address of the openrgb server                                                                                                                                                                                                                                                                                                                                                                         | `string`                                        | `'localhost'`                                                                                                                           |
+| `keyMapFn`            | Mapping of openRGB provided keyboard "key" schema. In other words input: openRgb keyboard provider key name. Output should be a string a type of "key" schema.This should be a JS expression that accept variable "x" and evaluates to a string. Allows to properly setup mapping in order to avoid exceptions like "key XXX is not present in keymap". Default value works for keyboard brand HyperX | `string`                                        | `'x.toLowerCase().replace(" arrow", "").replace("pause/break", "pause").replace("key: ", "").replace(" (ansi)", "").replace(" ", "_")'` |
+
+_(\*) Required._ (_optional_)
+
+## Shortcuts
+
+Array of shortcut definitions that map keyboard combinations to command sequences. Each shortcut must have a unique key combination. This is the main configuration that defines what happens when specific keys are pressed.
+
+_Array of [Shortcut](#shortcut) items._
+
+## ThreadLocal
+
+_Object containing the following properties:_
+
+| Property            | Description                                   | Type                                               |
+| :------------------ | :-------------------------------------------- | :------------------------------------------------- |
+| **`name`** (\*)     | name of the thread, required for req-id log,  | `string` (_max length: 10, min length: 1_)         |
+| **`commands`** (\*) | list of commands in this thread               | _Array of [UnknownCommand](#unknowncommand) items_ |
+
+_(\*) Required._
+
+## VariableValue
+
+Reference to a variable from a variables definition section. The value will be replaced at runtime with either:
+1. A matching variable from variables.json
+2. A matching environment variable
+3. A variable created during execution (e.g., from assignId or expression commands)
+
+_Object containing the following properties:_
+
+| Property        | Type     |
+| :-------------- | :------- |
+| **`$ref`** (\*) | `string` |
+
+_(\*) Required._
+
+## Variables
+
+Variable definitions for configuration. Values can be any type (numeric strings auto-convert to integers). Use {$ref: "varName"} to reference.
+
+_Never type._
+
+## WindowIdVariablesCommand
+
+_Object containing the following properties:_
+
+| Property       | Type                                                      |
+| :------------- | :-------------------------------------------------------- |
+| **`wid`** (\*) | `number` (_int, >0_) _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
+
+## WindowProperties
+
+Definition of window location and size
+
+_Object containing the following properties:_
+
+| Property          | Description | Type     |
+| :---------------- | :---------- | :------- |
+| **`x`** (\*)      | x position  | `number` |
+| **`y`** (\*)      | y position  | `number` |
+| **`width`** (\*)  | width       | `number` |
+| **`height`** (\*) | height      | `number` |
+
+_(\*) Required._
+
+## WindowPropertiesVariable
+
+_Object containing the following properties:_
+
+| Property          | Description | Type                                          |
+| :---------------- | :---------- | :-------------------------------------------- |
+| **`x`** (\*)      | x position  | `number` _or_ [VariableValue](#variablevalue) |
+| **`y`** (\*)      | y position  | `number` _or_ [VariableValue](#variablevalue) |
+| **`width`** (\*)  | width       | `number` _or_ [VariableValue](#variablevalue) |
+| **`height`** (\*) | height      | `number` _or_ [VariableValue](#variablevalue) |
+
+_(\*) Required._
