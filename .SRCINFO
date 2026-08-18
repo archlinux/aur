@@ -1,6 +1,6 @@
 pkgbase = mbv
 	pkgdesc = Terminal client for Emby media server
-	pkgver = 0.17.6
+	pkgver = 0.17.9
 	pkgrel = 1
 	url = https://github.com/slatkin/mbv
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mbv
 	depends = mpv
 	depends = openssl
 	optdepends = cava: audio visualizer support
-	source = mbv-0.17.6-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.17.6/mbv-0.17.6-linux-x86_64.tar.gz
-	sha256sums = 44753bf7006480b073a31aa29a7ce2b0b0f5d196d001cb7325501746a1240886
+	source = mbv-0.17.9-linux-x86_64.tar.gz::https://github.com/slatkin/mbv/releases/download/v0.17.9/mbv-0.17.9-linux-x86_64.tar.gz
+	sha256sums = bedaada3f9029def90566751e8039a0efee69cd2806a58317302ec6e834d0f65
 
 pkgname = mbv

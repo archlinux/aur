@@ -1,6 +1,6 @@
 # Maintainer: slatkin@woims.net
 pkgname=mbv
-pkgver=0.17.6
+pkgver=0.17.9
 pkgrel=1
 pkgdesc="Terminal client for Emby media server"
 arch=('x86_64')
@@ -9,12 +9,14 @@ license=('MIT')
 depends=('mpv' 'openssl')
 optdepends=('cava: audio visualizer support')
 source=("${pkgname}-${pkgver}-linux-x86_64.tar.gz::https://github.com/slatkin/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('44753bf7006480b073a31aa29a7ce2b0b0f5d196d001cb7325501746a1240886')
+sha256sums=('bedaada3f9029def90566751e8039a0efee69cd2806a58317302ec6e834d0f65')
 
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 "mbvd" "${pkgdir}/usr/bin/mbvd"
+    install -Dm644 "mbv.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
     install -Dm644 "mbv.lua" "${pkgdir}/usr/share/${pkgname}/scripts/mbv.lua"
     for script in mbv_*.lua; do
         install -Dm644 "${script}" "${pkgdir}/usr/share/${pkgname}/scripts/${script}"
