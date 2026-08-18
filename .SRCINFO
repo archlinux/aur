@@ -1,0 +1,18 @@
+pkgbase = fpvtester
+	pkgdesc = Automated Betaflight flight controller QC, inspection and configuration over MSP
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/kirarahoshiiii/fpv-tester
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyserial
+	optdepends = tk: graphical interface via fpvtester-gui
+	source = fpvtester-2.0.0.tar.gz::https://github.com/kirarahoshiiii/fpv-tester/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 618756ec28bae95d827bef93333f7080cd1bb79820aae109125811cc13ff4f45
+
+pkgname = fpvtester
