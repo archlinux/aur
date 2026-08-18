@@ -1,6 +1,6 @@
 pkgbase = openanime-bin
 	pkgdesc = Unofficial OpenAnime Linux istemcisi - WebGPU/Vulkan destekli
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/tuanapi/OpenAnime-Linux
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = openanime-bin
 	depends = alsa-lib
 	provides = openanime
 	conflicts = openanime
-	noextract = OpenAnime-1.1.5.AppImage
+	noextract = OpenAnime-1.1.6.AppImage
 	options = !strip
-	source = OpenAnime-1.1.5.AppImage::https://github.com/tuanapi/OpenAnime-Linux/releases/download/v1.1.5/OpenAnime-1.1.5.AppImage
+	source = OpenAnime-1.1.6.AppImage::https://github.com/tuanapi/OpenAnime-Linux/releases/download/v1.1.6-1/OpenAnime-1.1.6.AppImage
 	sha256sums = SKIP
 
 pkgname = openanime-bin
