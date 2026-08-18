@@ -6,7 +6,7 @@
 
 pkgname=unityhub
 pkgver=3.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations."
 url="https://unity.com/"
 arch=('x86_64')
@@ -29,7 +29,7 @@ install='unityhub.install'
 package() {
   tar -xf 'data.tar.zst' -C "$pkgdir/"
   mkdir -p "$pkgdir/usr/bin"
-  ln -sf "$pkgdir/usr/lib/unityhub/unityhub" "$pkgdir/usr/bin/unityhub"
+  ln -sf "/usr/lib/unityhub/unityhub" "$pkgdir/usr/bin/unityhub"
 
   install -Dm644 "$srcdir/license.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
   install -Dm644 "$srcdir/services-config.json" "$pkgdir/usr/share/unity3d/config/services-config.json"
