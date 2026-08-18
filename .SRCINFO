@@ -8,7 +8,6 @@ pkgbase = notse
 	makedepends = make
 	makedepends = go
 	provides = notse
-	conflicts = notse
 	options = !strip
 	source = notse-0.3.0.tgz::https://github.com/RahulSandhu/notse/archive/v0.3.0.tar.gz
 	sha256sums = be689555bbebb62203e171f51f5be59c91c9365e8f7667c0a79c6ccd77d1555b
