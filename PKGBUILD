@@ -6,7 +6,7 @@
 # Contributor: Matheus <matheusgwdl@protonmail.com>
 
 pkgname="dprint-plugin-toml"
-pkgver="0.7.0"
+pkgver="0.8.0"
 pkgrel="1"
 pkgdesc="TOML code formatting plugin for dprint."
 arch=("any")
@@ -15,7 +15,7 @@ license=("MIT")
 depends=("dprint")
 makedepends=("rust" "rust-wasm")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=("68199fc02efd59e297921a913fd5461f9545700669227f1e1f32c18d49ff9a6c5bf324795aab770cbc64fe71569400c7c260d0a0f8a325687bb8393d2f2a6c11")
+sha512sums=("4db8933148d078c1e731a1f5aabafacba8cf8354d57aacecd696e71df54b5227c059a7c1cbdeb628f9d7dff9c8d1a9a12551e3608a3a80d9882a12a36d2f3853")
 
 prepare()
 {
