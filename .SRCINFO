@@ -1,0 +1,12 @@
+pkgbase = sccache-shims
+	pkgdesc = Create sccache shims for every detected C/C++/Rust/CUDA compiler
+	pkgver = 1.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = sccache
+	provides = sccache-shims
+	options = !strip
+	options = !debug
+
+pkgname = sccache-shims
