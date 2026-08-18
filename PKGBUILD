@@ -7,7 +7,7 @@
 # Contributor: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=nnn-emoji
-pkgver=5.2
+pkgver=5.3
 pkgrel=1
 pkgdesc="The fastest terminal file manager ever written (with emoji as file icons)."
 arch=('x86_64')
@@ -27,7 +27,7 @@ license=('BSD')
 provides=(nnn)
 conflicts=(nnn)
 source=("nnn-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f166eda5093ac8dcf8cbbc6224123a32c53cf37b82c5c1cb48e2e23352754030')
+sha256sums=('79ee69f3ced7c0778d207df76b4d4d680636975ccda002eeb19d0917fcba3d36')
 
 prepare() {
     sed -i 's/install: all/install:/' "nnn-${pkgver}/Makefile"
