@@ -2,7 +2,7 @@
 # Official downloads: https://chatgpt.com/codex/
 
 pkgname=chatgpt-desktop-app-bin
-pkgver=26.814.41407
+pkgver=26.814.41957
 pkgrel=1
 pkgdesc="Official ChatGPT desktop app with Codex"
 arch=('x86_64' 'aarch64')
@@ -66,8 +66,8 @@ source_aarch64=(
 )
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
 sha256sums=('56a14509725adb2ab66c6218295030f56470ecd4ca66fb47b6355809903b7382')
-sha256sums_x86_64=('053d5ace91c48a17146aef02ca4abb00a2b1e94ffd15ca01891fd84a8227ca80')
-sha256sums_aarch64=('223dfd7f72a515737a5065a780485f3d6a7a8df40fca4f86d028fb953f6749bf')
+sha256sums_x86_64=('4778b26a7abd08647214d5b05c17bd3ebe2d9688d146dabf017c1a2faf93ac7d')
+sha256sums_aarch64=('8c40b31419dd4f4a8eb292d40dc3f8a418807dfe8c0101ae7164fa4ee415f818')
 
 package() {
   cd "${srcdir}"
