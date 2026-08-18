@@ -1,0 +1,5 @@
+[mdmost-bin]
+source = "github"
+github = "oetiker/mdmost"
+use_latest_release = true
+prefix = "v"
