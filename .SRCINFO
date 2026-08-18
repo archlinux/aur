@@ -1,7 +1,7 @@
 pkgbase = gz-sim10
 	pkgdesc = Open source robotics simulator
-	pkgver = 10.3.0
-	pkgrel = 2
+	pkgver = 10.5.0
+	pkgrel = 1
 	url = https://github.com/gazebosim/gz-sim
 	arch = any
 	license = Apache-2.0
@@ -28,7 +28,7 @@ pkgbase = gz-sim10
 	depends = sdformat=16
 	depends = tinyxml2
 	provides = gz-sim=10
-	source = https://github.com/gazebosim/gz-sim/archive/gz-sim10_10.3.0.tar.gz
-	sha256sums = 54d486b17972883fa3fbb27a843eaf7d20f1a111fe07664362bcfa6ff3ac283e
+	source = https://github.com/gazebosim/gz-sim/archive/gz-sim10_10.5.0.tar.gz
+	sha256sums = 48fa00274bf822a780771df5dc07c14ea449cfba732fb9ef9bdff833ae4920b7
 
 pkgname = gz-sim10

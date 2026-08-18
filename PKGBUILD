@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-sim10
-pkgver=10.3.0
-pkgrel=2
+pkgver=10.5.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Open source robotics simulator"
@@ -37,7 +37,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('54d486b17972883fa3fbb27a843eaf7d20f1a111fe07664362bcfa6ff3ac283e')
+sha256sums=('48fa00274bf822a780771df5dc07c14ea449cfba732fb9ef9bdff833ae4920b7')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
