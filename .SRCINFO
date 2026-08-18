@@ -1,6 +1,6 @@
 pkgbase = only-git
 	pkgdesc = A deterministic cross-platform task runner (git version)
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/KercyDing/only
 	arch = x86_64
