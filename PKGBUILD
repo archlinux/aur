@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail dote com>
 pkgname=owasp-core-ruleset
 _name=coreruleset
-pkgver=4.28.0
+pkgver=4.29.0
 pkgrel=1
 pkgdesc="OWASP ModSecurity Core Rule Set"
 arch=('any')
@@ -16,8 +16,8 @@ source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
 	"mod_security_recommended.conf::${_modsec_url}/modsecurity.conf-recommended"
 	"${_modsec_url}/unicode.mapping"
         "${pkgname}.install")
-sha256sums=('57bcf52bf451bee26ad5436a4958332e85f06895dd00bf86fce4cc78fe09b4d2'
-            'c1a834e94d3e9228da5c8faad1ec2ff2d76bd62dc3a77770d20bd505960e8861'
+sha256sums=('2236b0249e7e299e5cce8c67c3c7e3eb2fea77b8cbcf3abc46eb7ee54071d84f'
+            'de1bca07540d323ff103c08c9d0a9b0d7f14ac31502b5b3b62fc0f6dfecb829d'
             '5e4500ef82e45c49d8edd9513648939710d6c8cc2d5997513b32866dc5d9be23'
             '185172d4dafa4c1cc2fad1748801326d6bb4270d441c717daac1f7184f746b1f')
 backup=('etc/httpd/conf/extra/mod_security_recommended.conf')

@@ -1,6 +1,6 @@
 pkgbase = owasp-core-ruleset
 	pkgdesc = OWASP ModSecurity Core Rule Set
-	pkgver = 4.28.0
+	pkgver = 4.29.0
 	pkgrel = 1
 	url = https://github.com/coreruleset/coreruleset/
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = owasp-core-ruleset
 	depends = apache
 	depends = modsecurity
 	backup = etc/httpd/conf/extra/mod_security_recommended.conf
-	source = owasp-core-ruleset-4.28.0.zip::https://github.com/coreruleset/coreruleset//archive/refs/tags/v4.28.0.zip
+	source = owasp-core-ruleset-4.29.0.zip::https://github.com/coreruleset/coreruleset//archive/refs/tags/v4.29.0.zip
 	source = mod_security_recommended.conf::https://github.com/owasp-modsecurity/ModSecurity/raw/refs/heads/v2/master//modsecurity.conf-recommended
 	source = https://github.com/owasp-modsecurity/ModSecurity/raw/refs/heads/v2/master//unicode.mapping
 	source = owasp-core-ruleset.install
-	sha256sums = 57bcf52bf451bee26ad5436a4958332e85f06895dd00bf86fce4cc78fe09b4d2
-	sha256sums = c1a834e94d3e9228da5c8faad1ec2ff2d76bd62dc3a77770d20bd505960e8861
+	sha256sums = 2236b0249e7e299e5cce8c67c3c7e3eb2fea77b8cbcf3abc46eb7ee54071d84f
+	sha256sums = de1bca07540d323ff103c08c9d0a9b0d7f14ac31502b5b3b62fc0f6dfecb829d
 	sha256sums = 5e4500ef82e45c49d8edd9513648939710d6c8cc2d5997513b32866dc5d9be23
 	sha256sums = 185172d4dafa4c1cc2fad1748801326d6bb4270d441c717daac1f7184f746b1f
 
