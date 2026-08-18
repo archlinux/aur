@@ -2,7 +2,7 @@
 # https://github.com/axpdev-lab/aeroftp
 
 pkgname=aeroftp-bin
-pkgver=4.1.6
+pkgver=4.1.7
 pkgrel=1
 pkgdesc="Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 26 protocols)"
 arch=('x86_64')
@@ -43,15 +43,21 @@ source=(
     "${pkgname}-${pkgver}.deb.sigstore.json::https://github.com/axpdev-lab/aeroftp/releases/download/v${pkgver}/AeroFTP_${pkgver}_amd64.deb.sigstore.json"
 )
 sha256sums=(
-    'eb4a00f69f2f68169c607c84aae124662b61f69be8ec5dfe171e95ac2010d822'
+    'cf08337156217194fcf186c94b79683e622b313649500902574dc21affeb2c77'
     'SKIP'
 )
 
-# The MimeType line that the .deb's postinst appends at install time. pacman never
-# runs a Debian postinst, so package() has to apply it. Tauri 2 does not propagate
-# fileAssociations into the generated .desktop file, so the file inside data.tar
-# carries no MimeType at all. Keep this in sync with src-tauri/scripts/deb-postinst.sh.
-_mimetypes='application/x-aerovault;application/x-aeroftp;application/x-aeroftp-keystore;application/x-aerozip;application/x-aeroftp-script;x-scheme-handler/ftp;x-scheme-handler/ftps;x-scheme-handler/sftp;'
+# The desktop-entry edits the .deb's postinst applies at install time. pacman never
+# runs a Debian postinst, so package() has to apply them. Tauri 2 does not propagate
+# fileAssociations into the generated .desktop file, and its bundle category is a
+# fixed macOS-style enum, so the file inside data.tar carries no MimeType, no
+# Keywords, and Categories=Utility. Keep all three in sync with
+# src-tauri/scripts/deb-postinst.sh (REQUIRED_DESKTOP_MIMES and the loop below it).
+# The archive types are what feeds the in-app File associations panel; without them
+# Arch users get the AeroFTP-owned formats only.
+_mimetypes='application/x-aerovault application/x-aeroftp application/x-aeroftp-keystore application/x-aerozip application/x-aeroftp-script application/zip application/x-7z-compressed application/vnd.rar application/x-rar-compressed application/x-tar application/x-compressed-tar application/gzip application/x-xz application/x-bzip2 x-scheme-handler/ftp x-scheme-handler/ftps x-scheme-handler/sftp'
+_categories='Network;FileTransfer;'
+_keywords='ftp;sftp;ftps;webdav;s3;transfer;file;sync;cloud;encryption;'
 
 prepare() {
     cd "${srcdir}"
@@ -75,17 +81,44 @@ package() {
     cd "${srcdir}"
     bsdtar -xf data.tar.* -C "${pkgdir}/"
 
-    # Restore the file associations the postinst would have added. Without this
-    # no .aerovault/.aeroftp/.aerozip/.aeroftp-keystore/.aeroftp-script file
-    # opens with AeroFTP on Arch.
-    local _desktop
+    # Restore the desktop-entry edits the postinst would have made. Without the
+    # MimeType line no .aerovault/.aeroftp/.aerozip/.aeroftp-keystore/
+    # .aeroftp-script file opens with AeroFTP on Arch and the archive formats are
+    # missing from the File associations panel; without Categories the launcher
+    # files AeroFTP under Utility instead of Network > FileTransfer.
+    local _desktop _mime _line
     for _desktop in \
         "${pkgdir}/usr/share/applications/AeroFTP.desktop" \
         "${pkgdir}/usr/share/applications/com.aeroftp.AeroFTP.desktop" \
         "${pkgdir}/usr/share/applications/aeroftp.desktop"
     do
         [ -f "${_desktop}" ] || continue
-        grep -q '^MimeType=' "${_desktop}" || printf 'MimeType=%s\n' "${_mimetypes}" >> "${_desktop}"
+
+        # Merge, rather than only handling the absent case: a future Tauri release
+        # may start emitting a partial MimeType line, and a blind append would
+        # then leave the extra types unregistered without failing the build.
+        _line=''
+        if grep -q '^MimeType=' "${_desktop}"; then
+            _line="$(grep -m1 '^MimeType=' "${_desktop}" | sed 's/^MimeType=//; s/;*$//')"
+        fi
+        for _mime in ${_mimetypes}; do
+            case ";${_line};" in
+                *";${_mime};"*) ;;
+                *) _line="${_line:+${_line};}${_mime}" ;;
+            esac
+        done
+        if grep -q '^MimeType=' "${_desktop}"; then
+            sed -i "s|^MimeType=.*|MimeType=${_line};|" "${_desktop}"
+        else
+            printf 'MimeType=%s;\n' "${_line}" >> "${_desktop}"
+        fi
+
+        if grep -q '^Categories=' "${_desktop}"; then
+            sed -i "s|^Categories=.*|Categories=${_categories}|" "${_desktop}"
+        else
+            printf 'Categories=%s\n' "${_categories}" >> "${_desktop}"
+        fi
+        grep -q '^Keywords=' "${_desktop}" || printf 'Keywords=%s\n' "${_keywords}" >> "${_desktop}"
     done
 
     # The in-app updater downloads a .deb and installs it through pkexec, which
