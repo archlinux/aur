@@ -1,0 +1,22 @@
+pkgbase = sysdvr-client
+	pkgdesc = Stream switch games to your PC via USB or network
+	pkgver = 6.3
+	pkgrel = 1
+	url = https://github.com/exelix11/SysDVR
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = dotnet-sdk-9.0
+	depends = ffmpeg
+	depends = sdl2
+	depends = sdl2_image
+	depends = libusb
+	depends = libstdc++
+	depends = libgcc
+	depends = glibc
+	depends = dotnet-runtime-9.0
+	optdepends = cimguisdl2cross: GUI support
+	source = https://github.com/exelix11/SysDVR/archive/refs/tags/v6.3.tar.gz
+	sha256sums = b527b6b0cb64242f5f9c0f60a87a8893b44f2f5af3c9117f0669513a99bb0e17
+
+pkgname = sysdvr-client
