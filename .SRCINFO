@@ -1,6 +1,6 @@
 pkgbase = openwork
 	pkgdesc = An Open source alternative to Claude Cowork
-	pkgver = 0.18.27
+	pkgver = 0.18.28
 	pkgrel = 1
 	url = https://github.com/different-ai/openwork
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = openwork
 	depends = dbus
 	depends = hicolor-icon-theme
 	options = !strip
-	source_x86_64 = openwork-0.18.27-x64.tar.gz::https://github.com/different-ai/openwork/releases/download/v0.18.27/openwork-linux-x64-0.18.27.tar.gz
-	sha256sums_x86_64 = 42495aeedb538f86d944dca796bd4e522c1e15bd0d8404959fddd61a3109082e
-	source_aarch64 = openwork-0.18.27-arm64.tar.gz::https://github.com/different-ai/openwork/releases/download/v0.18.27/openwork-linux-arm64-0.18.27.tar.gz
-	sha256sums_aarch64 = cf621589d0b0970a6619c4e0bd672276cb27c6fa7c78ed16775651d255d97673
+	source_x86_64 = openwork-0.18.28-x64.tar.gz::https://github.com/different-ai/openwork/releases/download/v0.18.28/openwork-linux-x64-0.18.28.tar.gz
+	sha256sums_x86_64 = 8195d9a71d76b2e73b59934ad861d982a5e6e159af15bad716524fa3ef430f9e
+	source_aarch64 = openwork-0.18.28-arm64.tar.gz::https://github.com/different-ai/openwork/releases/download/v0.18.28/openwork-linux-arm64-0.18.28.tar.gz
+	sha256sums_aarch64 = 9f47d1cb5d7f417d5512e8a71439ca019715b74d3bd3d0145564c8db5425b7f4
 
 pkgname = openwork
