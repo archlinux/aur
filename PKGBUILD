@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-msgs12
-pkgver=12.0.1
+pkgver=12.0.2
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -25,7 +25,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('09d3579251cc8a7806964fbf9190c596b5a62aeec5c3f9e9e41f3f5578bd0b7c')
+sha256sums=('886e32cc3fe57237e56a0026e1468bd26b728a58c1b867f78ba3f153483e70dc')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
