@@ -43,7 +43,7 @@ build() {
         -fdata-sections"
 
     BASE_CXXFLAGS="$BASE_CFLAGS"
-    BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -flto -fno-plt"
+    BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -Wl,-O3 -flto -fno-plt"
 
     # Clang-only flags
     CLANG_EXTRA_CFLAGS="-fstrict-vtable-pointers -fno-asynchronous-unwind-tables"
