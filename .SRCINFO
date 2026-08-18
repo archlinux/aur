@@ -1,7 +1,7 @@
 pkgbase = jasmin-compiler-bin
 	pkgdesc = Compiler for the Jasmin language for high-assurance and high-speed cryptography
 	pkgver = 2026.03.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jasmin-lang/jasmin
 	arch = x86_64
 	license = MIT

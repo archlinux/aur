@@ -2,7 +2,7 @@
 
 pkgname=jasmin-compiler-bin
 pkgver=2026.03.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiler for the Jasmin language for high-assurance and high-speed cryptography"
 arch=('x86_64')
 url="https://github.com/jasmin-lang/jasmin"
