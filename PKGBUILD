@@ -7,7 +7,7 @@ _alias=fn
 pkgname=${_appname}-bin
 pkgdesc="Notes at the speed of thought"
 
-pkgver=1.2.8
+pkgver=1.2.9
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,9 +31,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums=('615316580b8311c8f632a02241f295cc5039eb92b6c54503db1540cc8c1f2048'
+sha256sums=('1ebe4b06fe5821e578afb7b6919b98813fafec58ca83306ad40a7b8eab4cd4f2'
             'ba46e6aacd72ecd88d752f3633eaf283730e94c8f523847c432a91723a72cd0f')
-sha256sums_x86_64=('c5af3114a8a0152170f13473e0bee7328ff81b9d00ef2d9c592ea245c8cb2d43')
+sha256sums_x86_64=('373d3aa64612cc9914397982fd0c9b8dfdfb43528d9c47feb823820e26e128da')
 
 
 prepare() {
