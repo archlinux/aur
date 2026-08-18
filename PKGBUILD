@@ -1,9 +1,10 @@
-# Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
+# Maintainer: Jose Cardoso <archlinux.org@josecardoso.com>
+# Contributor: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
 _pkggit=terramate
 
 pkgname=terramate-bin
-pkgver=0.14.7
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="Terramate is a tool for managing multiple Terraform stacks that comes with support for change detection and code generation."
 arch=('x86_64')
@@ -15,8 +16,10 @@ source=(
   "https://github.com/terramate-io/${_pkggit}/releases/download/v${pkgver}/${_pkggit}_${pkgver}_linux_x86_64.tar.gz"
   "https://github.com/terramate-io/${_pkggit}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('ea4af9ba034ca25be9aaa09cc3b33c2d182be986ce12bb5c5b1681aa22ef83e4'
-            '36d71ed54634af2f61958bcf139db5509f1307064716fc1aa180ab97d3a9b668')
+sha256sums=(
+  'd519f118bbf2db1156df186f4162ef10d317d906af941ee6945300f777963776'
+  '697ddb9f02995e1f2fed07c2eb230c47cc85de5f167fac86f2da02048ed695a2'
+)
 
 depends=()
 makedepends=()
