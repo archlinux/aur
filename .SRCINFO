@@ -14,6 +14,7 @@ pkgbase = openanime-bin
 	conflicts = openanime
 	noextract = OpenAnime-1.1.6.AppImage
 	options = !strip
+	options = !debug
 	source = OpenAnime-1.1.6.AppImage::https://github.com/tuanapi/OpenAnime-Linux/releases/download/v1.1.6-1/OpenAnime-1.1.6.AppImage
 	sha256sums = SKIP
 
