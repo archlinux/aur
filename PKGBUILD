@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=cheatengine-bin
 pkgver=7.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Memory scanner/debugger for game hacking and reverse engineering"
 arch=('x86_64')
 url="https://cheatengine.org"
@@ -99,6 +99,7 @@ Name=Cheat Engine
 Comment=Memory scanner/debugger for game hacking and reverse engineering
 Exec=cheatengine
 Icon=cheatengine
+StartupWMClass=cheatengine-x86_64
 Terminal=false
 Type=Application
 Categories=Development;Debugger;

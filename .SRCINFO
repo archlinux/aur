@@ -1,7 +1,7 @@
 pkgbase = cheatengine-bin
 	pkgdesc = Memory scanner/debugger for game hacking and reverse engineering
 	pkgver = 7.7
-	pkgrel = 3
+	pkgrel = 4
 	url = https://cheatengine.org
 	arch = x86_64
 	license = LicenseRef-CheatEngine
