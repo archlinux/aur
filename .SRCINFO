@@ -1,7 +1,7 @@
 pkgbase = celemod
 	pkgdesc = An alternative mod manager for Celeste
 	pkgver = 1.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/std-microblock/CeleMod
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -9,7 +9,6 @@ pkgbase = celemod
 	makedepends = cmake
 	makedepends = nodejs>=20
 	makedepends = pnpm
-	makedepends = rust-nightly
 	depends = gcc-libs
 	depends = glib2
 	depends = gtk3
@@ -22,6 +21,6 @@ pkgbase = celemod
 	source = disable-self-update.patch
 	sha256sums = 85c16bc87bdcd7cdab4789f2bc0b375c03199f7786de0f078d4e54915a75c5b7
 	sha256sums = 683c5ab3017cb560d715576e0eb0342833f22b52ad17d9594499dfd2a7655c42
-	sha256sums = 9e15105a6ba14a14b6e766689662841195096d2b2ae9bad3568520d69f689778
+	sha256sums = 0de0b5e93d462d4f27ca7a37f93a95013c82f0cc643ebd7dfc4c0bfc780fa186
 
 pkgname = celemod

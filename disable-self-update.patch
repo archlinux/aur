@@ -1,6 +1,6 @@
 diff -ruN a/src/celemod-ui/src/components/SelfUpdate.tsx b/src/celemod-ui/src/components/SelfUpdate.tsx
---- a/src/celemod-ui/src/components/SelfUpdate.tsx	2026-08-14 22:36:52.443910868 +0800
-+++ b/src/celemod-ui/src/components/SelfUpdate.tsx	2026-08-14 22:36:52.446616173 +0800
+--- a/src/celemod-ui/src/components/SelfUpdate.tsx	2026-08-16 22:46:07.666007449 +0800
++++ b/src/celemod-ui/src/components/SelfUpdate.tsx	2026-08-16 22:46:07.667225283 +0800
 @@ -7,6 +7,8 @@
  import { getLatestUpdateInfo } from "../api/updateInfo";
  
@@ -11,73 +11,13 @@ diff -ruN a/src/celemod-ui/src/components/SelfUpdate.tsx b/src/celemod-ui/src/co
      .split("")
      .filter((v) => v === "." || !isNaN(parseInt(v)))
 diff -ruN a/src-tauri/src/backend.rs b/src-tauri/src/backend.rs
---- a/src-tauri/src/backend.rs	2026-08-14 22:36:52.443313539 +0800
-+++ b/src-tauri/src/backend.rs	2026-08-14 22:36:52.445986268 +0800
-@@ -4632,66 +4632,14 @@
+--- a/src-tauri/src/backend.rs	2026-08-16 22:46:07.666717284 +0800
++++ b/src-tauri/src/backend.rs	2026-08-16 22:52:17.823572392 +0800
+@@ -4632,6 +4632,15 @@
  
  #[tauri::command]
  fn do_self_update(url: String, on_event: Channel<IpcEvent>) {
--    std::thread::spawn(move || {
--        let tmp = std::env::temp_dir().join(if cfg!(windows) {
--            "cele-mod.exe"
--        } else {
--            "cele-mod"
--        });
--        let cancel_flag = Arc::new(AtomicBool::new(false));
--        let result = ureq::download_file_with_progress(
--            &url,
--            tmp.to_string_lossy().as_ref(),
--            &mut |progress| {
--                send_event(
--                    &on_event,
--                    vec![
--                        serde_json::json!("downloading"),
--                        serde_json::json!(progress.progress),
--                    ],
--                )
--            },
--            false,
--            &cancel_flag,
--        );
--        match result {
--            Ok(()) => {
--                let current_exe = match std::env::current_exe() {
--                    Ok(path) => path,
--                    Err(error) => {
--                        send_event(
--                            &on_event,
--                            vec![
--                                serde_json::json!("failed"),
--                                serde_json::json!(error.to_string()),
--                            ],
--                        );
--                        return;
--                    }
--                };
--                let mut command = std::process::Command::new(&tmp);
--                command.arg("/update").arg(current_exe);
--                if let Err(error) = command.spawn() {
--                    send_event(
--                        &on_event,
--                        vec![
--                            serde_json::json!("failed"),
--                            serde_json::json!(error.to_string()),
--                        ],
--                    );
--                } else {
--                    std::process::exit(0);
--                }
--            }
--            Err(error) => send_event(
--                &on_event,
--                vec![
--                    serde_json::json!("failed"),
--                    serde_json::json!(error.to_string()),
--                ],
--            ),
--        }
--    });
-+    let _ = url;
++    let _ = &url;
 +    send_event(
 +        &on_event,
 +        vec![
@@ -85,6 +25,7 @@ diff -ruN a/src-tauri/src/backend.rs b/src-tauri/src/backend.rs
 +            serde_json::json!("Self-update is disabled in the AUR version; use your package manager to update it."),
 +        ],
 +    );
- }
- #[cfg(test)]
- mod miaonet_settings_tests {
++    return;
+     std::thread::spawn(move || {
+         let tmp = std::env::temp_dir().join(if cfg!(windows) {
+             "cele-mod.exe"
