@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-rendering10
-pkgver=10.0.1
+pkgver=10.0.2
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -29,7 +29,7 @@ optdepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('d9a666e2109872f48dcde1a5b89d5aa40376d4ea90eccbfeefcd9bd0d2a00f13')
+sha256sums=('a19a773c09f96b1eab80b336cc39ec09a49107a3c355f13b867b68863378702c')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
