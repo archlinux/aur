@@ -10,7 +10,7 @@
 
 _pkgname="beekeeper-studio"
 pkgname="$_pkgname-bin"
-pkgver=6.0.0
+pkgver=6.0.4
 pkgrel=1
 pkgdesc="Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more"
 arch=('x86_64' 'aarch64')
@@ -34,8 +34,8 @@ noextract=(
     "${_pkgname}-${pkgver}-aarch64.tar.xz"
 )
 sha256sums=('9e83b98f1773a830db2b30043051d4e179fea73cdb0168feb7b2965ee6075ebf')
-sha256sums_x86_64=('159cb6efe450f779f16687a039d3a751237471b0eed592b0a92cb8c786dcdf42')
-sha256sums_aarch64=('9af8ca9d533ac559951cdcf2d4ad205f293682cdc30768054ac22544eacd3cd1')
+sha256sums_x86_64=('777e33c598440f86391afb8b0eefa257b21ba650a257853c6167fdc2c4c57dd2')
+sha256sums_aarch64=('6979d9c8da7b6a2e619b29fa80ca8beec1fe844c92fc5145f7bb95262464b26f')
 options=(!strip)
 
 package() {
