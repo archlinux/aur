@@ -9,9 +9,9 @@
 # Tencent's proprietary CodeBuddy service license, NOT this MIT notice.
 
 pkgname=codebuddy-ide-cn
-_cb_ver=4.10.4
-_cb_build=33993995
-_cb_hash=1ba59196
+_cb_ver=4.11.1
+_cb_build=36020259
+_cb_hash=b72e1c95
 pkgver="${_cb_ver}.${_cb_build}"
 pkgrel=1
 pkgdesc='腾讯云代码助手CodeBuddy IDE，是一款辅助编码工具。'
@@ -42,7 +42,7 @@ options=('!strip' '!debug')
 
 # Helper repository pinned to a specific commit so the conversion
 # logic is reproducible. Bump together with pkgver if needed.
-_helper_commit='478d3d9c623fd9adfc39f926930dc50164af7e83'
+_helper_commit='e15c1a77e7eeace8dfaa1ca595143e734a5e315b'
 
 source=(
     "codebuddy-cn_${pkgver}_amd64.deb::https://download.codebuddy.cn/aiide/linux-x64/CodeBuddy-linux-x64-${pkgver}-${_cb_hash}-cn.deb"
@@ -55,8 +55,8 @@ noextract=(
     "codebuddy-cn_${pkgver}_amd64.deb"
 )
 
-sha256sums=('62bf225bc096751ad51ac2dcd63c0c71f5361e8d1e754639e9b55bd1f38f4605'
-            '3821300f3e9a1e36aaa287eab2d264e5b330fa19bc36370efee951dcbbdfd8d9'
+sha256sums=('54a51b2d7fb3f1eec695cb1608b8adf4260adeb820a4f896ba720447175ac4a3'
+            'fc60e1247fc30e4710f2aec657f538136dd70f3d9f471a47dbc606ef6ae2e325'
             'b3260549a765c478dc33680c7b9a1a30e5a038456e340d6d25f7748390724241')
 
 prepare() {
