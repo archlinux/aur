@@ -1,21 +1,24 @@
 pkgbase = matchplane-bin
 	pkgdesc = Federated AI matching infrastructure (prebuilt binaries)
-	pkgver = 0.1.8
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/matchplane
 	install = matchplane.install
 	arch = x86_64
-	license = LicenseRef-MatchPlane-Pending
+	license = MIT
+	depends = bubblewrap
 	depends = ca-certificates
 	depends = gcc-libs
+	depends = git
 	depends = glibc
+	depends = nodejs>=22.12.0
 	depends = openssl
 	depends = zlib
 	provides = matchplane
 	conflicts = matchplane
 	conflicts = matchplane-git
 	backup = etc/matchplane/matchplane.env
-	source = matchplane-0.1.8-linux-x86_64.tar.zst::https://github.com/LIghtJUNction/matchplane/releases/download/v0.1.8/matchplane-0.1.8-linux-x86_64.tar.zst
-	sha256sums = f0f4a995d2f25a5a10ecad38124c6d806747ea1b437959128e753e91065cee3a
+	source = matchplane-0.1.10-linux-x86_64.tar.zst::https://github.com/LIghtJUNction/matchplane/releases/download/v0.1.10/matchplane-0.1.10-linux-x86_64.tar.zst
+	sha256sums = 77d4f0d2bd67490181b3d327765c5be024e3e5da7ddfaaf0e16062a079f98797
 
 pkgname = matchplane-bin
