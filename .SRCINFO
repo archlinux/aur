@@ -1,0 +1,19 @@
+pkgbase = cimguisdl2cross-bin
+	pkgdesc = exelix11's fork of cimgui for SDL2 cross-platform use
+	pkgver = r2
+	pkgrel = 1
+	url = https://github.com/exelix11/CimguiSDL2Cross
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = libgcc
+	depends = libstdc++
+	depends = sdl2
+	depends = glibc
+	provides = cimguisdl2cross
+	provides = cimgui
+	conflicts = cimguisdl2cross
+	conflicts = cimgui
+	source = https://github.com/exelix11/CimguiSDL2Cross/releases/download/r2/linux-x64.zip
+	sha256sums = d36d08d90e6f9c03a89c8e0739ffe8a49c4af004ed6755fc8b1a506598f6da4f
+
+pkgname = cimguisdl2cross-bin
