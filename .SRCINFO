@@ -1,6 +1,6 @@
 pkgbase = cargonaut-git
 	pkgdesc = Rust-native, terminal, keyboard-first dual-pane file manager — Norton Commander & Midnight Commander reimagined for 2026
-	pkgver = 0
+	pkgver = 0.2.0.r0.g6dd9912
 	pkgrel = 1
 	url = https://github.com/mohnkhan/cargonaut
 	arch = any

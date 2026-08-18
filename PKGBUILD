@@ -31,7 +31,7 @@ build() {
         -C link-arg=-Wl,--icf=safe \
         -C link-arg=-Wl,--gc-sections \
         -C link-arg=-Wl,--as-needed \
-        -C link-arg=-Wl,-O2 \
+        -C link-arg=-Wl,-O3 \
   "
 
   cargo build --release
