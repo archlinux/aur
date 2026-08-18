@@ -5,7 +5,7 @@
 _pkgname=beekeeper-studio
 
 pkgname=beekeeper-studio-appimage
-pkgver=6.0.0
+pkgver=6.0.4
 pkgrel=1
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source=(
 source_x86_64=("Beekeeper-Studio-${pkgver}-x86_64.AppImage::https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v${pkgver}/Beekeeper-Studio-${pkgver}.AppImage")
 source_aarch64=("Beekeeper-Studio-${pkgver}-aarch64.AppImage::https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v${pkgver}/Beekeeper-Studio-${pkgver}-arm64.AppImage")
 sha256sums=('05559651711dc746837dadcbdc5f3176e1cdde3b1de5a8c3ac95e4709a297d1d')
-sha256sums_x86_64=('4439d270ae1bcebd023da198217a582ba202cdcd82f67a9a8733f76bf272d508')
-sha256sums_aarch64=('b6f6a91359a09b11a1e524bb24aeab7fa2ee89e863303106818aa4c7dd9fa882')
+sha256sums_x86_64=('a7274113e9c96679afe8195417dfd3dc3410649040c904f16736d136e9425c37')
+sha256sums_aarch64=('4060de56e7927005906dad53fb43d04d396732ec7776cb13a72b3ec68e114335')
 options=(!strip)
 _appimage=./Beekeeper-Studio-${pkgver}-${CARCH}.AppImage
 noextract=(
