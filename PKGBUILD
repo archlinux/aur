@@ -76,6 +76,9 @@ package() {
   mkdir -p "${pkgdir}/usr/lib/sabnzbd"
   cp -r "${srcdir}/SABnzbd-${pkgver}/"* "${pkgdir}/usr/lib/sabnzbd"
 
+  # remove tests folder
+  rm -rf "${pkgdir}/usr/lib/sabnzbd/tests"
+
   find "${pkgdir}/usr/lib/sabnzbd" -type d -exec chmod 755 {} \;
   find "${pkgdir}/usr/lib/sabnzbd" -type f -exec chmod 644 {} \;
   chmod 755 "${pkgdir}/usr/lib/sabnzbd/SABnzbd.py"
