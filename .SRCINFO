@@ -1,6 +1,6 @@
 pkgbase = fpvtop
 	pkgdesc = btop-style live terminal monitor for Betaflight flight controllers over MSP
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/kirarahoshiiii/fpvtop
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = fpvtop
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pyserial
-	source = fpvtop-0.1.1.tar.gz::https://github.com/kirarahoshiiii/fpvtop/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = f968acbd4f071f46ff69ead7a41364449bc2dcdf930541c49577c9fca36cc840
+	source = fpvtop-0.2.0.tar.gz::https://github.com/kirarahoshiiii/fpvtop/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 6eac328a6ee944fadc39ed6f80881b911da3acd21a2f73e451a8d725fd78d7d2
 
 pkgname = fpvtop
