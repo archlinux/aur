@@ -1,6 +1,6 @@
 # Maintainer: Wind-DeterMinati <bugsoc@qq.com>
 pkgname=xenon-mdt
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A Mindustry Launcher built on the HMCL UI - supports 5 client variants, mods, saves, servers and ScriptAgent"
 arch=('x86_64')
