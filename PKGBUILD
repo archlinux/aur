@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=2.0.5
+pkgver=2.0.7
 _electronversion=41
 pkgrel=1
 pkgdesc="🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
@@ -27,6 +27,7 @@ depends=(
     'bun'
     'ripgrep'
     'uv'
+    'mise'
 )
 makedepends=(
     'asar'
@@ -42,8 +43,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-x86_64.rpm")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('432ad81c1910dd8795c85fd5e6997a2f6f06ca34ffe36459d61fda3525267f3c')
-sha256sums_x86_64=('cd3ed43dd7fe49d0bdd5b2d5dd290a7c1b6e35fd9d138df55dac2d952bf53d62')
+sha256sums_aarch64=('b28e82eafb858b33a4de15fd80d0be08e826d573323ee55fbff5c7aa95e46e4e')
+sha256sums_x86_64=('cf79a13aa26324f958c02c33537c34f9503ec87d78152613ff74b6db1741fe69')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -82,6 +83,7 @@ prepare() {
             ln -sf "/usr/bin/rg" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/rg"
             ln -sf "/usr/bin/uv" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/uv"
             ln -sf "/usr/bin/uvx" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/uvx"
+            ln -sf "/usr/bin/mise" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/mise"
             ;;
         x86_64)
             _arch_rem="arm64-*"
@@ -89,12 +91,13 @@ prepare() {
             ln -sf "/usr/bin/rg" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/rg"
             ln -sf "/usr/bin/uv" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/uv"
             ln -sf "/usr/bin/uvx" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/uvx"
+            ln -sf "/usr/bin/mise" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/mise"
             ;;
     esac
     find "${_app_dir}/resources" -type d \( \
         -name "*darwin*" -o \
         -name "*win32*" -o \
-        -name "${_arch_rem}" \
+        -name "*-${_arch_rem}" \
     \) -exec rm -rf {} +
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
 }
