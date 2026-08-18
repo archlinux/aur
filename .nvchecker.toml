@@ -1,0 +1,5 @@
+[hypa-ttfx-bin]
+source = "github"
+github = "Hypabolic/Hypa-TTFX"
+use_latest_release = true
+prefix = "v"

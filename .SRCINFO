@@ -1,0 +1,23 @@
+pkgbase = hypa-ttfx-bin
+	pkgdesc = Hypa Terminal Text Effects
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/Hypabolic/Hypa-TTFX
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ttfx
+	conflicts = ttfx
+	options = !strip
+	source = README-0.3.1.md::https://raw.githubusercontent.com/Hypabolic/Hypa-TTFX/v0.3.1/README.md
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/Hypabolic/Hypa-TTFX/v0.3.1/LICENSE
+	sha256sums = 1bb3ff24275a91cce4ad6a8df4f181e20253b70a7db33995e1c04cb256d73112
+	sha256sums = 0b0072e3ef3ef2d067615d7c777f65b17bc10c15c888fb2ce19f36e1366f386a
+	source_x86_64 = ttfx-x86_64-0.3.1::https://github.com/Hypabolic/Hypa-TTFX/releases/download/v0.3.1/ttfx-linux-x64
+	sha256sums_x86_64 = 985bbe662107f7f6e9d20c84ac6ea8d81e8e9a8f30d5fbbfdcee7bcea2b8566b
+	source_aarch64 = ttfx-aarch64-0.3.1::https://github.com/Hypabolic/Hypa-TTFX/releases/download/v0.3.1/ttfx-linux-arm64
+	sha256sums_aarch64 = 74415655f3491ce7564b8d735ef7f1f54ba1e29717d4427f30e7ce9b3dc7f07f
+
+pkgname = hypa-ttfx-bin
