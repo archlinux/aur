@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-common7
-pkgver=7.2.0
-pkgrel=3
+pkgver=7.3.1
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Gazebo Common, a component of Gazebo, provides a set of libraries that cover many different use cases."
@@ -26,11 +26,11 @@ makedepends=(
   'gz-cmake=5'
   )
 provides=("${_pkgbase}=${_pkgmaj}")
-source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}-pre1.tar.gz")
-sha256sums=('ab6cc8dc67657be6f8b56a50a42e3943b7f6450f9cf0d360599e12acba2fd509')
+source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
+sha256sums=('90e7d2e8e62788111b6005431383c855759c2e6e12417270b1f1f3804c60bacb')
 
 build() {
-  cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}-pre1" \
+  cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
            -DCMAKE_BUILD_TYPE='None' \
            -DCMAKE_INSTALL_PREFIX='/usr' \
            -DCMAKE_INSTALL_LIBEXECDIR="lib/$pkgname" \
