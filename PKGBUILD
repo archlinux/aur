@@ -1,6 +1,6 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgbase=commafeed
-pkgver=7.3.0
+pkgver=7.3.1
 pkgrel=1
 pkgdesc="Google Reader inspired self-hosted personal RSS reader (native standalone version)"
 url="https://github.com/Athou/commafeed"
@@ -11,7 +11,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Athou/${pkgbase}/archiv
         "${pkgbase}.service"
         "sysusers.conf"
         "tmpfiles.conf")
-sha256sums=('73cd5662ab2a5f08c9c5bb4138a552ba1c68d8438f077b5056eb018fcd9f8058'
+sha256sums=('660b0af192b60b09e9b368543891ae1eaf06754dbb5d2abdb60fb84ea15398b7'
             'c529ea4c76383e10f8e6609af3e9765f42d4ba5fce761fc045cdbcfb5e5ce9e8'
             'eaa6119233a119392d492d5a3fa279ac713cf6e05d77ac05642443cdfa9d9eba'
             'c670c7e524e6b4fa7c9ffd2f5b3b4f8ae370188522b94ab4d0fa3a5d6f58642f')
