@@ -17,6 +17,9 @@ depends=(
 
 makedepends=('binutils' 'tar')
 
+# Upstream ships fully stripped binaries: skip strip/debug package generation
+options=('!strip' '!debug')
+
 # Debian packages
 _pkgname="jasmin-compiler"
 
@@ -46,15 +49,21 @@ package() {
     [ -f "$f" ] && tar -xf "$f" -C "$pkgdir"
   done
 
-  # Remove Debian-specific changelog files
-  if [ -d "$pkgdir/usr/share/doc/$_pkgname" ]; then
-    rm -f "$pkgdir/usr/share/doc/$_pkgname/changelog.Debian"*
-  fi
+  # Shared libraries must be executable
+  chmod 755 "$pkgdir"/usr/lib/*.so
 
-  # Install license file if present
-  if [ -f "$pkgdir/usr/share/doc/$_pkgname/copyright" ]; then
-    install -Dm644 \
-      "$pkgdir/usr/share/doc/$_pkgname/copyright" \
-      "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  fi
+  # Remove Debian-specific changelog files
+  rm -f "$pkgdir"/usr/share/doc/*/changelog.Debian* \
+        "$pkgdir"/usr/share/doc/*/changelog.gz
+
+  # Upstream ships an empty debian/copyright, the real license lives in /usr/doc
+  install -Dm644 "$pkgdir/usr/doc/jasmin/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Move docs out of the non-standard /usr/doc
+  install -Dm644 "$pkgdir/usr/doc/jasmin/README.md" \
+    "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  rm -rf "$pkgdir/usr/doc"
+  rm -f "$pkgdir/usr/share/doc/$_pkgname/copyright" \
+        "$pkgdir/usr/share/doc/libapron/copyright"
 }
