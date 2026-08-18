@@ -9,7 +9,7 @@ qt="qt${QT_VER}"
 pkgname=openboard
 pkgver=1.7.7
 _src_folder="OpenBoard-${pkgver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive whiteboard software for schools and universities"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
@@ -23,13 +23,16 @@ depends+=(quazip-${qt})  #drop internal quazip and use system one.
 depends+=(poppler) #replace internal xpdf with poppler and drop freetype/xpdf from deps
 makedepends=('cmake' ${qt}-tools)
 source=("openboard-${pkgver}.tar.gz::https://github.com/OpenBoard-org/OpenBoard/archive/v${pkgver}.tar.gz"
-        "openboard-support-poppler-26.04.patch::https://github.com/OpenBoard-org/OpenBoard/commit/b68a0bed3caa5dfcfb9bbbb72cc8d78d95533eb3.patch")
+        "openboard-support-poppler-26.04.patch::https://github.com/OpenBoard-org/OpenBoard/commit/b68a0bed3caa5dfcfb9bbbb72cc8d78d95533eb3.patch"
+        "openboard-support-ffmpeg-9.patch::https://github.com/OpenBoard-org/OpenBoard/commit/41ba5bdcb2d6d10106eccec579e0e2db93c5e9e5.patch")
 sha256sums=('2ea0989b8c304f64a124c09eb5e3cc71808c395f0942a26d5a3f79d4125df969'
-            '0056e6ec3ba5b7f96498e426bb15cde9908047280f20b285833e86b57c78477e')
+            '0056e6ec3ba5b7f96498e426bb15cde9908047280f20b285833e86b57c78477e'
+            'b4a327c0ae7c5a997901a390270bb4cd06d96e5c7b6511ddfdbeec982a1d9a3c')
 
 prepare() {
   cd "$srcdir"/$_src_folder
   patch -p1 -i ../openboard-support-poppler-26.04.patch
+  patch -p1 -i ../openboard-support-ffmpeg-9.patch
 }
 
 build() {
