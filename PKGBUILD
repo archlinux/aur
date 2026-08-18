@@ -2,15 +2,15 @@
 pkgbase=mesee-git
 _pkgname=mesee
 pkgname=('mesee-x11-git' 'mesee-wayland-git')
-pkgver=0.1.0.r0.geec16f5
-pkgrel=3
+pkgver=0.2.1.r0.g150577f
+pkgrel=1
 pkgdesc="Modular screen-capture daemon and OCR translator client"
 arch=('x86_64')
 url="https://github.com/MatieBaal/mesee"
 license=('MIT')
 
 makedepends=('gcc' 'make' 'go' 'git' 'wayland' 'libx11' 'tesseract')
-source=("git+$url.git#tag=v0.1.0")
+source=("git+$url.git#tag=v0.2.1")
 sha256sums=('SKIP')
 options=('!debug')
 

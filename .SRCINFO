@@ -1,7 +1,7 @@
 pkgbase = mesee-git
 	pkgdesc = Modular screen-capture daemon and OCR translator client
-	pkgver = 0.1.0.r0.geec16f5
-	pkgrel = 3
+	pkgver = 0.2.1.r0.g150577f
+	pkgrel = 1
 	url = https://github.com/MatieBaal/mesee
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = mesee-git
 	makedepends = libx11
 	makedepends = tesseract
 	options = !debug
-	source = git+https://github.com/MatieBaal/mesee.git#tag=v0.1.0
+	source = git+https://github.com/MatieBaal/mesee.git#tag=v0.2.1
 	sha256sums = SKIP
 
 pkgname = mesee-x11-git
