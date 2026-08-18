@@ -1,5 +1,5 @@
 pkgname=vidmetric-git
-pkgver=r1.0.0
+pkgver=10e4a68
 pkgrel=1
 pkgdesc="A high-performance Qt-based GUI for visual comparison and technical metric analysis of video files, powered by FFmpeg and ab-av1"
 arch=('x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 prepare(){
     cd VidMetric
     if command -v oxipng >/dev/null 2>&1; then
-        oxipng -o max -r -p -s -v -t 4 resources
+        oxipng -o max -r -p -s -v -t $(nproc) -z --zi 100 --ziwi 10 --brute-level 5 --brute-lines 16 resources
     else
         echo "WARNING: oxipng not found. Skipping icon optimization."
     fi
@@ -48,14 +48,19 @@ build() {
         fi
     fi
 
-    export CFLAGS="-O3 -march=native -mtune=native \
-        -funroll-loops -falign-functions=32 -falign-loops=32 \
-        -fno-math-errno -fno-trapping-math \
-        -fno-semantic-interposition -Wall -pipe \
-        -fomit-frame-pointer -fno-plt -flto"
+    export CFLAGS="-O3 -march=znver4 -mtune=znver4 \
+                    -falign-functions=32 -falign-loops=32 \
+                    -fno-math-errno -fno-trapping-math \
+                    -fno-semantic-interposition \
+                    -fomit-frame-pointer -fno-plt \
+                    -pipe -flto -Wall -Wno-unused \
+                    -fstrict-aliasing -fno-rtti -fno-exceptions \
+                    -fstrict-vtable-pointers -fno-asynchronous-unwind-tables \
+                    -fmerge-all-constants -ffunction-sections \
+                    -fdata-sections"
 
     export CXXFLAGS="$CFLAGS"
-    export LDFLAGS="-fno-plt -flto $ld_extra_flags"
+    export LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -Wl,-O3 -flto -fno-plt $ld_extra_flags"
 
     cmake -B build -S . \
         -DCMAKE_BUILD_TYPE=Release \
@@ -66,7 +71,7 @@ build() {
         -DCMAKE_EXE_LINKER_FLAGS="$LDFLAGS" \
         -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS"
 
-    cmake --build build --target VidMetric -j$(nproc)
+    cmake --build build --target VidMetric --parallel $(nproc)
 }
 
 package() {

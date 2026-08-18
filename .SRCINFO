@@ -1,6 +1,6 @@
 pkgbase = vidmetric-git
 	pkgdesc = A high-performance Qt-based GUI for visual comparison and technical metric analysis of video files, powered by FFmpeg and ab-av1
-	pkgver = r1.0.0
+	pkgver = 10e4a68
 	pkgrel = 1
 	url = https://github.com/j-convey/VidMetric
 	arch = x86_64
