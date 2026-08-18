@@ -8,8 +8,8 @@ arch=('any')
 license=('GPL-3.0-only')
 url='https://unisic.app/'
 source=('git+https://github.com/unisic/unisic.git')
-makedepends=(cmake make svgo pkgconf)
-depends=(qt6-base qt6-declarative qt6-svg qt6-wayland ffmpeg wl-clipboard xdg-desktop-portal plasma-wayland-protocols)
+makedepends=(cmake make svgo pkgconf plasma-wayland-protocols)
+depends=(qt6-base qt6-declarative qt6-svg qt6-wayland ffmpeg wl-clipboard xdg-desktop-portal)
 optdepends=('libx11: for X11'
             'libxext: for X11'
             'libxfixes: for X11'
