@@ -2,11 +2,15 @@
 
 pkgname=why3-bin
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Software verification platform for deductive program verification"
 arch=('x86_64')
 url="https://gitlab.inria.fr/why3/why3"
 license=('LGPL2.1')
+
+# Prebuilt Debian binaries: no debug symbols to extract and nothing to strip,
+# so skip both to avoid a wall of gdb-add-index/readelf errors during makepkg
+options=('!strip' '!debug')
 
 # Runtime dependencies — most must be provided by Arch packages
 depends=(
@@ -44,7 +48,7 @@ package() {
 
   # Strip Debian-specific docs
   if [ -d "$pkgdir/usr/share/doc/${_pkgname}" ]; then
-    rm -f "$pkgdir/usr/share/doc/${pkgname}/changelog.Debian"*
+    rm -f "$pkgdir/usr/share/doc/${_pkgname}/changelog.Debian"*
   fi
 
   # Install license if present
