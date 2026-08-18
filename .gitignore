@@ -1,3 +1,8 @@
-src/
-pkg/
-chirp-next-*
+# Ignore everything by default.
+*
+
+# Files intentionally tracked in the AUR repository.
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!chirp-next.install

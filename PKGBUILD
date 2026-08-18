@@ -1,12 +1,13 @@
-# Maintainer: WT5A <K5TRP[at]onlyhams[dot]ca>
-# Maintainer: Helmut Stult <hst[at]e-mail[dot]de>
+# Maintainer: Gary S Martin (K6AE) <gsm--3782cielo+chirp[at]martin-fam[dot]net>
 # Thanks to the maintainer(s) of chirp-daily
+# Contributor: WT5A <K5TRP[at]onlyhams[dot]ca>
+# Contributor: Helmut Stult <hst[at]e-mail[dot]de>
 # Contributor: 0b100100 <0b100100 at protonmail dot ch>
 # Contributor: Ashley Roll (ash@digitalnemesis.com)
 # Contributor: Erez Raviv (erezraviv@gmail.com)
 
 pkgname=chirp-next
-pkgver=20260731
+pkgver=20260814
 pkgrel=1
 epoch=1
 pkgdesc="GUI tool for programming ham radios"
@@ -21,13 +22,12 @@ options=(!emptydirs)
 conflicts=('chirp' 'chirp-daily')
 provides=(chirp)
 install=$pkgname.install
-source=("${pkgname}-${pkgver}.tar.gz::https://schinfo.de/chirp/chirp-${pkgver}.tar.gz")
-# Checksums: https://archive.chirpmyradio.com/chirp_next/next-$pkgver/SHA1SUM
-sha1sums=('0925e876c58321adecc6b83fae2b973e4e48486b')
+source=("https://github.com/GaryScottMartin/chirp-next-mirror/releases/download/${pkgver}/chirp-${pkgver}.tar.gz")
+# Checksums: https://github.com/GaryScottMartin/chirp-next-mirror/releases/download/20260814/checksums.txt
+sha256sums=('1a315df9268f766f7e47424c9edadde29854928c2d78a962449814cc833efe3b')
 
 # User-Agent override workaround for nitpicky Cloudflare config; see:
 # https://wiki.archlinux.org/title/Nonfree_applications_package_guidelines#Custom_DLAGENTS
-DLAGENTS=("https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 build() {
     cd "chirp-${pkgver}"
