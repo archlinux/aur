@@ -2,7 +2,7 @@
 
 _srcname=YadQt
 pkgname=yadqt-git
-pkgver=0
+pkgver=1.0.2.r5.g683eafc
 pkgrel=1
 pkgdesc='Produce simple Qt dialogs from the command line, similar to YAD for gtk'
 arch=('any')
@@ -38,7 +38,7 @@ build() {
             -fdata-sections -fvisibility=hidden"
 
     BASE_CXXFLAGS="$BASE_CFLAGS"
-    BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -flto -fno-plt"
+    BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -Wl,-O3 -flto -fno-plt"
 
     # Clang-only flags
     CLANG_EXTRA_CFLAGS="-fstrict-vtable-pointers -fno-asynchronous-unwind-tables"
