@@ -1,10 +1,10 @@
 # Maintainer: Axel Haustant <noirbizarre@gmail.com>
 #
-# Source package. `0.2.0` and `2bc94a85ce895fd0af7fab032842996e2e9e88b67259e68d80f1bb6bb64af71c` are substituted by
+# Source package. `0.3.0` and `6cd100a70516b4ce1eab9e46fbd8c040d1cf5d07daee29d3d9f2e58c1b1cce83` are substituted by
 # .github/workflows/aur.yml from the published release assets.
 
 pkgname=snypr
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Screenshot, annotation, and live-drawing tool for Hyprland and wlroots compositors"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=(
   'waybar: StatusNotifierItem host for `snypr daemon --systray` (any SNI host works)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2bc94a85ce895fd0af7fab032842996e2e9e88b67259e68d80f1bb6bb64af71c')
+sha256sums=('6cd100a70516b4ce1eab9e46fbd8c040d1cf5d07daee29d3d9f2e58c1b1cce83')
 
 build() {
   cd "$pkgname-$pkgver"

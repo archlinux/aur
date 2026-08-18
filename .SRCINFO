@@ -1,6 +1,6 @@
 pkgbase = snypr
 	pkgdesc = Screenshot, annotation, and live-drawing tool for Hyprland and wlroots compositors
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/noirbizarre/snypr
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = snypr
 	depends = desktop-file-utils
 	optdepends = libnotify: desktop notifications (any notification daemon, e.g. mako, dunst, swaync)
 	optdepends = waybar: StatusNotifierItem host for `snypr daemon --systray` (any SNI host works)
-	source = snypr-0.2.0.tar.gz::https://github.com/noirbizarre/snypr/releases/download/0.2.0/snypr-0.2.0.tar.gz
-	sha256sums = 2bc94a85ce895fd0af7fab032842996e2e9e88b67259e68d80f1bb6bb64af71c
+	source = snypr-0.3.0.tar.gz::https://github.com/noirbizarre/snypr/releases/download/0.3.0/snypr-0.3.0.tar.gz
+	sha256sums = 6cd100a70516b4ce1eab9e46fbd8c040d1cf5d07daee29d3d9f2e58c1b1cce83
 
 pkgname = snypr
