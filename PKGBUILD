@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=echo-music-bin
 _pkgname=EchoMusic
-pkgver=2.2.8
+pkgver=2.3.0
 _electronversion=43
 pkgrel=1
 pkgdesc="A minimalist third-party Kugou concept music player. (Prebuilt version. Use system-wide electron)🎉 一个简约的第三方酷狗概念版音乐播放器"
@@ -20,21 +20,8 @@ provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
     'nodejs'
-    'libcdio'
-    'libcaca'
-    'libxss'
-    'libcdio-paranoia'
-    'ffmpeg4.4'
-    'zimg'
-    'libvdpau'
-    'libass'
-    'pipewire-jack'
     'python'
-    'libdvdnav'
-    'libarchive'
-    'uchardet'
-    'vulkan-icd-loader'
-    'libsixel'
+    'libpipewire'
 )
 makedepends=(
     'asar'
@@ -48,10 +35,10 @@ source=(
 )
 source_aarch64=( "${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-aarch64.rpm")
 source_x86_64=( "${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.rpm")
-sha256sums=('8b9f721a54a564c55de17c8082a2a6466568309b5a026a989f12a711bb78edbf'
+sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('347ca8b405adc18536a6db1d7a368f19f6f242c25552f3a87afd1a4637b8122c')
-sha256sums_x86_64=('d4b51d52d6ffa19e3d89358e8c9d2636f56f95159c064cfa5398eea070e93e1c')
+sha256sums_aarch64=('2f38b1c51913d9563108912c066c177dd4f363dd79c74879bde51d08a06ab0fc')
+sha256sums_x86_64=('515bfb409913cc89e4e7772bdc52df52147e5e114f1ad79261abd90c59c2619d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
