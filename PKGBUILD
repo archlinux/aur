@@ -13,7 +13,7 @@ optdepends=(
 backup=('etc/darktable-nas/darktable-nas.conf.example')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('b65ae2dfabf9716500a94166f55fee3b49433fa7d93bf43fbe2b4b59158672b2')
-
+patch=("fix-nas-retry.patch")
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     make DESTDIR="$pkgdir" PREFIX=/usr install
