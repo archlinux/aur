@@ -1,9 +1,11 @@
 # Maintainer: Serge <arch@phnx47.net>
 
+# Auto Upgrade: https://github.com/phnx47/pkgbuilds
+
 _pkgname=proto
 pkgname="${_pkgname}-bin"
 pkgver=0.60.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Pluggable multi-language version manager'
 license=('MIT')
 provides=("${_pkgname}")
@@ -19,19 +21,24 @@ sha256sums_aarch64=('bf04fec624b76dcf935ac4753e1ced8fc6a105ec1eb5abd6690f5ece308
 
 prepare() {
   cd "proto_cli-${CARCH}-unknown-linux-gnu"
+
   mkdir -p completions
   "./${_pkgname}" completions --shell bash >"completions/bash"
   "./${_pkgname}" completions --shell zsh >"completions/zsh"
   "./${_pkgname}" completions --shell fish >"completions/fish"
+  "./${_pkgname}" completions --shell nushell >"completions/nushell"
 }
 
 package() {
   cd "proto_cli-${CARCH}-unknown-linux-gnu"
+
   install -Dm 755 "${_pkgname}" -t "${pkgdir}/usr/bin"
   install -Dm 755 "${_pkgname}-shim" -t "${pkgdir}/usr/bin"
+
   install -Dm 644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
   install -Dm 644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
   install -Dm 644 "completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
   install -Dm 644 "completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+  install -Dm 644 "completions/nushell" "${pkgdir}/usr/share/nushell/vendor/autoload/${_pkgname}.nu"
 }
