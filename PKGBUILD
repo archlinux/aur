@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=vinyl-player
 _app_id=page.codeberg.M23Snezhok.Vinyl
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Elegant music player"
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
 )
 optdepends=('gst-plugins-bad')
 source=("git+https://codeberg.org/M23Snezhok/Vinyl.git#tag=v$pkgver")
-sha256sums=('4d183a4368d0a8c7e95ec2944ae0eebcccf8f48153ba4411e21e2a940afc2e39')
+sha256sums=('7bd6f7ca7c5d9d01432967f2c84cd6a54b5912d8f93b21f35f3d334f7eaf1590')
 
 prepare() {
   cd Vinyl
