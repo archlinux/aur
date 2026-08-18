@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-bin
 _pkgname=PostyBirb
-pkgver=4.0.43
+pkgver=4.0.45
 _electronversion=41
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-rpm-x86_64.rpm")
 sha256sums=('f549ac630b1a4e0e8a80ae21c37d1c7d63f00e1cd155d5f747a5315b54ae2e31'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('69fafcd1075b333380492d5cb883965bab93ae0b2639ac69b9f667f9c133cfb5')
-sha256sums_x86_64=('f64203b9db27d20ad3bac08d336ac9aafe711606eb89c9de23b83da3459fd863')
+sha256sums_aarch64=('f5c89595a5056fd8ca9f1aec484764b79c38312298a359a0780343a9939da786')
+sha256sums_x86_64=('0d267ed82715f55c841b38673ab272b0d9e1e46d9019da16fa3132bf8eac11e9')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
