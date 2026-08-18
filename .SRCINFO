@@ -1,0 +1,22 @@
+pkgbase = flow5
+	pkgdesc = Potential flow solver with built-in pre- and post-processing for wings, planes, hydrofoils and sails (successor to xflr5)
+	pkgver = 7.57
+	pkgrel = 1
+	url = https://flow5.tech
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = opencascade
+	depends = openblas
+	depends = gmsh
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	provides = libXFoil.so
+	provides = libflow5-lib.so
+	provides = libflow5-io-lib.so
+	source = flow5-7.57.tar.gz::https://github.com/techwinder/flow5/archive/refs/tags/v7.57.tar.gz
+	sha256sums = 1dfcb4e7898b4d94a2b784ad5139aa09763a5faa0e3481243608c956805f9a2c
+
+pkgname = flow5
