@@ -26,12 +26,16 @@ source=("$pkgname.xpi::$_url/$_source")
 if [[ ! -v FAKEROOTKEY ]]; then
     download_file "$_url/SHA512SUMS" > /dev/null 2>&1
     download_file "$_url/SHA512SUMS.asc" > /dev/null 2>&1
-    # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
+    export GNUPGHOME="$PWD/gpg"
+    mkdir -m0700 "$GNUPGHOME"
+    gpgconf -K keyboxd
+    curl -sLf "https://archive.mozilla.org/pub/firefox/nightly/latest-mozilla-central/KEY" | gpg -q --import || exit 1
+    # https://blog.mozilla.org/security/2026/08/10/updated-gpg-key-for-signing-firefox-and-thunderbird-releases/
     moz_gpg_key=14F26682D0916CDD81E37B6D61B7B526D98F0353
-    gpg -q --recv-keys $moz_gpg_key || exit 1
+    gpg --list-keys $moz_gpg_key >/dev/null 2>&1 || exit 1
     gpg --verify SHA512SUMS.asc 2>/dev/null || exit 1
     sha512sums=($(grep -Po "^.+(?=  $_source)" SHA512SUMS))
-    rm SHA512SUMS SHA512SUMS.asc
+    rm -rf "$GNUPGHOME" SHA512SUMS SHA512SUMS.asc
 fi
 
 build() {

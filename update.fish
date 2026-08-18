@@ -2,7 +2,7 @@
 
 function cleanup
     echo $argv
-    rm -f SHA512SUMS SHA512SUMS.asc
+    rm -rf gpg SHA512SUMS SHA512SUMS.asc
     git restore PKGBUILD .SRCINFO
     exit 1
 end
