@@ -1,6 +1,6 @@
 pkgbase = jn-bin
 	pkgdesc = A filebased CLI notetaker
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/joereynolds/jn
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = jn-bin
 	depends = glibc
 	provides = jn
 	conflicts = jn
-	source = README-1.3.1.md::https://raw.githubusercontent.com/joereynolds/jn/v1.3.1/README.md
-	sha256sums = 1466eae289b746dd074e02cabce63e103d55189e2b3da3a776a123ace61f893e
-	source_x86_64 = jn-x86_64-1.3.1::https://github.com/joereynolds/jn/releases/download/v1.3.1/jn-linux
-	sha256sums_x86_64 = 8685f4ce590c8b73d6035cfec3ea459b90ecccb10f6cb8457f6825a6987d325c
+	source = README-1.4.0.md::https://raw.githubusercontent.com/joereynolds/jn/v1.4.0/README.md
+	sha256sums = b77fa0ca55af20ceedd4cbe061916c03fa0e51cabd70f86cfde02494d46b120c
+	source_x86_64 = jn-x86_64-1.4.0::https://github.com/joereynolds/jn/releases/download/v1.4.0/jn-linux
+	sha256sums_x86_64 = 58a42e89ffb042cebece1035f1766c242720de649eca58c6c3e877c1a51425ee
 
 pkgname = jn-bin
