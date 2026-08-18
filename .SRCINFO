@@ -1,0 +1,17 @@
+pkgbase = cdwifi-autoaccept
+	pkgdesc = Guarded automatic acceptance for the CDWiFi captive portal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Mr-Tao/cdwifi-autoaccept
+	arch = any
+	license = Apache-2.0
+	depends = bash
+	depends = curl>=8.4
+	depends = grep
+	depends = networkmanager>=1.16
+	depends = python>=3.11
+	depends = systemd>=247
+	source = cdwifi-autoaccept-0.1.0.tar.gz::https://github.com/Mr-Tao/cdwifi-autoaccept/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = e4df62a258d1ba29145f972307c9e9b8eabe416119b3378573877e6618d6219d
+
+pkgname = cdwifi-autoaccept
