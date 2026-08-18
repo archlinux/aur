@@ -127,8 +127,13 @@ package_wdm-greeter() {
   # provides, and naming wdm here would make the pair circular.
   depends=('libxkbcommon')
   provides=('wdm-greeter-implementation')
+  backup=('etc/wdm/greeter.toml')
 
   cd "$_src"
   install -Dm755 target/release/wdm-greeter "$pkgdir/usr/lib/wdm/wdm-greeter"
+  # Fully commented out, so the defaults are also the documentation. In
+  # backup= above so pacman delivers a changed default as a .pacnew instead
+  # of clobbering an edited one.
+  install -Dm644 packaging/greeter.toml.example "$pkgdir/etc/wdm/greeter.toml"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

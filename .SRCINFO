@@ -39,3 +39,4 @@ pkgname = wdm-greeter
 	pkgdesc = Reference greeter for wdm, software-rendered with no toolkit
 	depends = libxkbcommon
 	provides = wdm-greeter-implementation
+	backup = etc/wdm/greeter.toml
