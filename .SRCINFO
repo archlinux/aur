@@ -1,7 +1,7 @@
 pkgbase = vynody-bin
 	pkgdesc = Cross-platform local music/audio player with synced lyrics and audio tag editor
 	pkgver = 1.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/axel10/vynody
 	arch = x86_64
 	license = GPL-3.0-or-later
