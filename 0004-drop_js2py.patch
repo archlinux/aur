@@ -1,0 +1,235 @@
+diff --git a/cloudscraper/__init__.py b/cloudscraper/__init__.py
+index 18ee84c..fddf064 100644
+--- a/cloudscraper/__init__.py
++++ b/cloudscraper/__init__.py
+@@ -132,7 +132,7 @@ class CloudScraper(Session):
+         self.delay = kwargs.pop('delay', None)
+         self.captcha = kwargs.pop('captcha', {})
+         self.doubleDown = kwargs.pop('doubleDown', True)
+-        self.interpreter = kwargs.pop('interpreter', 'js2py')  # Default to js2py for better compatibility
++        self.interpreter = kwargs.pop('interpreter', 'nodejs')
+ 
+         # Request hooks
+         self.requestPreHook = kwargs.pop('requestPreHook', None)
+diff --git a/cloudscraper/interpreters/js2py.py b/cloudscraper/interpreters/js2py.py
+deleted file mode 100644
+index 3d69667..0000000
+--- a/cloudscraper/interpreters/js2py.py
++++ /dev/null
+@@ -1,86 +0,0 @@
+-from __future__ import absolute_import
+-
+-import js2py
+-import logging
+-import base64
+-
+-from . import JavaScriptInterpreter
+-
+-from .encapsulated import template
+-from .jsunfuck import jsunfuck
+-
+-# ------------------------------------------------------------------------------- #
+-
+-
+-class ChallengeInterpreter(JavaScriptInterpreter):
+-
+-    # ------------------------------------------------------------------------------- #
+-
+-    def __init__(self):
+-        super(ChallengeInterpreter, self).__init__('js2py')
+-
+-    # ------------------------------------------------------------------------------- #
+-
+-    def eval(self, body, domain):
+-        try:
+-            jsPayload = template(body, domain)
+-
+-            # Check js2py version compatibility
+-            try:
+-                test_result = js2py.eval_js('(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]')
+-                if test_result == '1':
+-                    logging.warning('WARNING - Please upgrade your js2py https://github.com/PiotrDabkowski/Js2Py, applying work around for the meantime.')
+-                    jsPayload = jsunfuck(jsPayload)
+-            except Exception as version_error:
+-                if 'bytecode' in str(version_error).lower():
+-                    logging.warning(f'js2py version compatibility issue detected: {version_error}')
+-                    logging.warning('Attempting to continue with basic js2py functionality...')
+-                else:
+-                    raise version_error
+-
+-            def atob(s):
+-                return base64.b64decode('{}'.format(s)).decode('utf-8')
+-
+-            # Disable pyimport to prevent sys variable conflicts
+-            js2py.disable_pyimport()
+-
+-            # Create a clean context with minimal globals to avoid variable conflicts
+-            context = js2py.EvalJs({'atob': atob})
+-
+-            # Add necessary globals that might be missing
+-            context.execute('''
+-                var window = this;
+-                var global = this;
+-                var self = this;
+-                if (typeof console === 'undefined') {
+-                    var console = {
+-                        log: function() {},
+-                        warn: function() {},
+-                        error: function() {}
+-                    };
+-                }
+-            ''')
+-
+-            result = context.eval(jsPayload)
+-            return result
+-
+-        except Exception as e:
+-            logging.error(f'js2py evaluation failed: {str(e)}')
+-            # Try to extract a more specific error message
+-            if 'sys' in str(e) and 'not associated with a value' in str(e):
+-                logging.error('js2py sys variable conflict detected. This may be due to a js2py version issue.')
+-                # Try a fallback approach
+-                try:
+-                    # Create a completely isolated context
+-                    isolated_context = js2py.EvalJs()
+-                    isolated_context.execute('var atob = function(s) { return ""; };')  # Dummy atob
+-                    result = isolated_context.eval(jsPayload)
+-                    return result
+-                except Exception as fallback_error:
+-                    logging.error(f'Fallback js2py evaluation also failed: {str(fallback_error)}')
+-            raise
+-
+-
+-# ------------------------------------------------------------------------------- #
+-
+-ChallengeInterpreter()
+diff --git a/cloudscraper/interpreters/js2py_interpreter.py b/cloudscraper/interpreters/js2py_interpreter.py
+deleted file mode 100644
+index 1e6642b..0000000
+--- a/cloudscraper/interpreters/js2py_interpreter.py
++++ /dev/null
+@@ -1,87 +0,0 @@
+-from __future__ import absolute_import
+-
+-import re
+-import js2py
+-import logging
+-
+-from ..exceptions import CloudflareSolveError
+-from . import JavaScriptInterpreter
+-
+-# ------------------------------------------------------------------------------- #
+-
+-
+-class ChallengeInterpreter(JavaScriptInterpreter):
+-
+-    def __init__(self):
+-        super(ChallengeInterpreter, self).__init__('js2py')
+-        # Disable pyimport to prevent sys variable conflicts
+-        js2py.disable_pyimport()
+-        self.js_engine = js2py.EvalJs()
+-
+-    # ------------------------------------------------------------------------------- #
+-
+-    def eval(self, body, domain):
+-        try:
+-            # Extract the challenge script
+-            js_challenge = re.search(
+-                r"setTimeout\(function\(\){\s+(var s,t,o,p,b,r,e,a,k,i,n,g,f.+?\r?\n[\s\S]+?a\.value =.+?)\r?\n",
+-                body,
+-                re.DOTALL
+-            )
+-            
+-            if not js_challenge:
+-                js_challenge = re.search(
+-                    r"setTimeout\(function\(\){\s+(var (?:s,t,o,p,b,r,e|t,r,a,n,s),a,c,k,e,d.+?\r?\n[\s\S]+?a\.value =.+?)\r?\n",
+-                    body,
+-                    re.DOTALL
+-                )
+-                
+-            if not js_challenge:
+-                raise CloudflareSolveError("Unable to find Cloudflare challenge script")
+-                
+-            js_challenge = js_challenge.group(1)
+-            
+-            # Make the challenge script executable in a JS context
+-            challenge = js_challenge
+-            
+-            # Remove DOM manipulation code that js2py can't handle
+-            challenge = re.sub(r"document\.getElementById\(.*?\)", "{ value: 0 }", challenge)
+-            challenge = re.sub(r"document\.createElement\(.*?\)", "{ firstChild: { href: 'https://" + domain + "/' } }", challenge)
+-            challenge = re.sub(r"\.innerHTML", ".innerHTML = ''", challenge)
+-            challenge = re.sub(r"\.value", ".value", challenge)
+-            challenge = re.sub(r"\.submit\(\)", "", challenge)
+-            
+-            # Add domain info for the challenge
+-            challenge = "var location = { href: 'https://" + domain + "/' };\n" + challenge
+-            
+-            # Add necessary globals to prevent variable conflicts
+-            self.js_engine.execute('''
+-                var window = this;
+-                var global = this;
+-                var self = this;
+-                if (typeof console === 'undefined') {
+-                    var console = {
+-                        log: function() {},
+-                        warn: function() {},
+-                        error: function() {}
+-                    };
+-                }
+-            ''')
+-
+-            # Execute the challenge in js2py
+-            self.js_engine.execute(challenge)
+-
+-            # Extract the answer from the JS context
+-            if hasattr(self.js_engine, 'a') and hasattr(self.js_engine.a, 'value'):
+-                return self.js_engine.a.value
+-
+-            raise CloudflareSolveError("Failed to extract answer from Cloudflare challenge")
+-            
+-        except Exception as e:
+-            logging.error(f"Error solving Cloudflare challenge: {str(e)}")
+-            raise CloudflareSolveError(f"Error solving Cloudflare challenge: {str(e)}")
+-
+-
+-# ------------------------------------------------------------------------------- #
+-
+-ChallengeInterpreter()
+diff --git a/pyproject.toml b/pyproject.toml
+index 9b0419f..c10206b 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -54,7 +54,6 @@ dependencies = [
+     "pyOpenSSL>=24.0.0",
+     "pycryptodome>=3.20.0",
+     "websocket-client>=1.7.0",
+-    "js2py>=0.74",
+     "brotli>=1.1.0",
+     "certifi>=2024.2.2"
+ ]
+diff --git a/requirements.txt b/requirements.txt
+index 3b238f7..ec15a16 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -5,6 +5,5 @@ pyparsing >= 3.1.0
+ pyOpenSSL >= 24.0.0
+ pycryptodome >= 3.20.0
+ websocket-client >= 1.7.0
+-js2py >= 0.74
+ brotli >= 1.1.0
+-certifi >= 2024.2.2
+\ No newline at end of file
++certifi >= 2024.2.2
+diff --git a/setup.py b/setup.py
+index 13a8989..b7a9662 100644
+--- a/setup.py
++++ b/setup.py
+@@ -41,7 +41,6 @@ setup(
+         'pyOpenSSL >= 24.0.0',
+         'pycryptodome >= 3.20.0',
+         'websocket-client >= 1.7.0',
+-        'js2py >= 0.74',
+         'brotli >= 1.1.0',
+         'certifi >= 2024.2.2'
+     ],

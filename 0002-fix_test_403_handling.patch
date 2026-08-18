@@ -1,0 +1,16 @@
+diff --git a/tests/test_modern.py b/tests/test_modern.py
+index ddb23f5..e55cc91 100644
+--- a/tests/test_modern.py
++++ b/tests/test_modern.py
+@@ -101,9 +101,11 @@ class TestCloudScraper:
+         mock_response = Mock()
+         mock_response.status_code = 403
+         mock_response.is_redirect = False
++        mock_response.text = "403"
+         mock_request.return_value = mock_response
+ 
+         scraper = cloudscraper.create_scraper(
++            session_refresh_interval=5,
+             auto_refresh_on_403=True,
+             max_403_retries=1
+         )
