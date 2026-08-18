@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 禁用 core dump，避免子进程（backupDisk / uploadDownload）在退出析构阶段因官方代码缺陷触发段错误刷屏系统日志
+ulimit -c 0
+
 REAL_HOME="$HOME"
 
 MCLOUD_SANDBOX="$REAL_HOME/.local/share/mcloud_env"
