@@ -19,13 +19,13 @@ sha256sums=('ecf53c83987bbb52b0fd0363180b7a81f02251c9406573c81dad6e4d5e3a590a'
             '509f39e01c009fa2abb064704bbe855a3e0969cb9c18c7174f4e097191b39350')
 
 prepare() {
-  cd "$pkgname-main"
+  cd "$pkgname-${pkgver}"
 
   mkdir -p build/
 }
 
 build() {
-  cd "$pkgname-main"
+  cd "$pkgname-${pkgver}"
 
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CFLAGS="$CFLAGS"
@@ -37,13 +37,13 @@ build() {
 }
 
 check() {
-  cd "$pkgname-main"
+  cd "$pkgname-${pkgver}"
 
   go test ./...
 }
 
 package() {
-  cd "$pkgname-main"
+  cd "$pkgname-${pkgver}"
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
