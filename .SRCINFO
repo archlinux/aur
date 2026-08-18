@@ -1,11 +1,12 @@
 pkgbase = uap-core
 	pkgdesc = Regex file for BrowserScope's user agent parser
-	pkgver = 0.6.9
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/ua-parser/uap-core
 	arch = any
-	license = Apache
-	source = https://github.com/ua-parser/uap-core/archive/v0.6.9.tar.gz
-	sha256sums = 65cee73f992afb035120f146be1f1c91b4a12cda58e29e14d3ef249bd9327a19
+	license = Apache-2.0
+	makedepends = git
+	source = git+https://github.com/ua-parser/uap-core#tag=v0.18.0
+	sha256sums = 20659cd539f7db03632088471fa72bd431dc092bbf324741b541cad0d85ef94f
 
 pkgname = uap-core

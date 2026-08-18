@@ -1,15 +1,17 @@
-# Maintainer: Clar Fon <them@lightdark.xyz>
+# Maintainer:  Thorsten Töpper <atsutane-aur at freethoughts dot de>
+# Contributor: Clar Fon <them@lightdark.xyz>
 
 pkgname=uap-core
-pkgver=0.6.9
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Regex file for BrowserScope's user agent parser"
 arch=('any')
 url='https://github.com/ua-parser/uap-core'
-license=('Apache')
-source=("https://github.com/ua-parser/uap-core/archive/v${pkgver}.tar.gz")
-sha256sums=('65cee73f992afb035120f146be1f1c91b4a12cda58e29e14d3ef249bd9327a19')
+license=('Apache-2.0')
+makedepends=('git')
+source=("git+https://github.com/ua-parser/uap-core#tag=v${pkgver}")
+sha256sums=('20659cd539f7db03632088471fa72bd431dc092bbf324741b541cad0d85ef94f')
 
 package() {
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/regexes.yaml" "${pkgdir}/usr/share/uap-core/regexes.yaml"
+  install -Dm644 "${srcdir}/${pkgname}/regexes.yaml" "${pkgdir}/usr/share/uap-core/regexes.yaml"
 }
