@@ -1,16 +1,16 @@
 pkgbase = sshush-bin
 	pkgdesc = Interactive TUI for SSH keys, the agent, and ~/.ssh/config
-	pkgver = 0.9.3
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/s-johri/sshush
 	license = MIT
 	conflicts = sshush
 	provides = sshush
 	arch = aarch64
-	source_aarch64 = https://github.com/s-johri/sshush/releases/download/v0.9.3/sshush_linux_arm64.tar.gz
-	sha256sums_aarch64 = 237f4717a5cf4476349be1751fb625afe320363cf031902c6fb41481fc78d704
+	source_aarch64 = https://github.com/s-johri/sshush/releases/download/v0.10.0/sshush_linux_arm64.tar.gz
+	sha256sums_aarch64 = ebdeaaa46a6bc03b0525706510a79fdb4947c19515a9348d63edc8328ae26063
 	arch = x86_64
-	source_x86_64 = https://github.com/s-johri/sshush/releases/download/v0.9.3/sshush_linux_amd64.tar.gz
-	sha256sums_x86_64 = e5d5f7005c9aba8d9a7441cf59c3a7c6b46d7d24ecc5359e5860e3d0529e3603
+	source_x86_64 = https://github.com/s-johri/sshush/releases/download/v0.10.0/sshush_linux_amd64.tar.gz
+	sha256sums_x86_64 = a3764520848504a031e1dca4ef903513039270345e39780e35eb393cbec38547
 	
 pkgname = sshush-bin
