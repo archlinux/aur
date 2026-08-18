@@ -1,5 +1,5 @@
 pkgname=firefox-extension-adguard
-pkgver=5.4.3.1
+pkgver=5.5.0.5
 #_tag=v${pkgver%.*}+${pkgver##*.}.build.20251216080045
 _tag=v$pkgver
 pkgrel=1
@@ -10,13 +10,14 @@ license=("GPL-3.0-only")
 groups=("firefox-addons")
 makedepends=("pnpm" "git" "jq" "nodejs-lts-jod")
 source=("AdguardBrowserExtension-$pkgver.tar.gz::https://github.com/AdguardTeam/AdguardBrowserExtension/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('8dd598bed60f5f5dc847fb1d8518496a23307e3705a3d4a7971ce48d64d093a9')
+sha256sums=('8228292c70437201745c097df62aefac02548f46cf45a71087d86b614539b5ac')
 _version=${_tag//+/-}
 _version=${_version#v}
 
 prepare() {
     cd "$srcdir/AdguardBrowserExtension-${_version}"
-    pnpm install --silent --ignore-scripts
+    sed -i 's/<11/<12/' package.json
+    pnpm install --ignore-scripts
 }
 build() {
     cd "$srcdir/AdguardBrowserExtension-${_version}"
