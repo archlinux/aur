@@ -4,7 +4,7 @@
 
 pkgname=proto
 pkgver=0.60.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Pluggable multi-language version manager'
 arch=('x86_64' 'aarch64')
 url='https://github.com/moonrepo/proto'
@@ -12,7 +12,6 @@ license=('MIT')
 depends=('gcc-libs' 'git' 'unzip' 'gzip' 'xz')
 optdepends=('rustup: support for Rust toolchains')
 makedepends=('cargo')
-#options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('f78d203d292224603e831f0f03cc35e612bf48a1de1697ab34fea86ea97bfe21')
 
@@ -33,6 +32,7 @@ build() {
   "./target/release/${pkgname}" completions --shell bash >"completions/bash"
   "./target/release/${pkgname}" completions --shell zsh >"completions/zsh"
   "./target/release/${pkgname}" completions --shell fish >"completions/fish"
+  "./target/release/${pkgname}" completions --shell nushell >"completions/nushell"
 }
 
 package() {
@@ -46,4 +46,5 @@ package() {
   install -Dm 644 "completions/bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
   install -Dm 644 "completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
   install -Dm 644 "completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+  install -Dm 644 "completions/nushell" "${pkgdir}/usr/share/nushell/vendor/autoload/${pkgname}.nu"
 }
