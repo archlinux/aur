@@ -19,7 +19,7 @@ url=${_ghurl}
 
 license=('MIT')
 
-makedepends=('make' 'cargo' 'pandoc')
+makedepends=('make' 'cargo' 'pandoc-cli')
 provides=("${_appname}")
 
 options=('!strip')
