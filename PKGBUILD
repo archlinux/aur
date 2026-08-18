@@ -2,7 +2,7 @@
 
 _pkgname=humanlayer
 pkgname=humanlayer-bin
-pkgver=0.31.62
+pkgver=0.31.63
 pkgrel=1
 pkgdesc="HumanLayer CLI - daemon management and authentication for HumanLayer coding sessions"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=('humanlayer' 'humanlayer-git')
 options=('!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tgz::https://registry.npmjs.org/@humanlayer/cli-linux-x64/-/cli-linux-x64-${pkgver}.tgz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tgz::https://registry.npmjs.org/@humanlayer/cli-linux-arm64/-/cli-linux-arm64-${pkgver}.tgz")
-sha256sums_x86_64=('f9c3d9171d938a2597ff4eedf4ec498c0eb6c337f04265594a31de0d4bfc5542')
-sha256sums_aarch64=('c9ea2f614e1e525d1d21fc45d878a3612b1f4e4d6d96be9359ae76a110dca9e0')
+sha256sums_x86_64=('ae6d0eb9c3865ab57b22a5ee214b4e15b77ac2bb121dd4d9e4af11815d91877f')
+sha256sums_aarch64=('7a5347277460bb6c60d4bf702dcd9b5db1b3206e5af0c7132f771f1f333bad3b')
 
 latestver() {
   curl -s "https://registry.npmjs.org/@humanlayer/cli/latest" | \
