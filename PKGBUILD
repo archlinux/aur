@@ -5,7 +5,7 @@ _pkgname=dusage
 pkgname=${_pkgname}-bin
 pkgdesc="A command line disk usage information tool"
 
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -24,8 +24,8 @@ depends=('gcc-libs' 'glibc')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}-${_str_arch}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[1]}-${_str_arch}.tar.gz")
-sha256sums_x86_64=('6d31179d81bc2bc63e5307090323c58b2e692feb1f6aefe089f56a2ef509f429')
-sha256sums_aarch64=('305bb775e8f4f051abb8f77d5826a721e347313af0a85716e737a7be4aa56f38')
+sha256sums_x86_64=('b72b5da7fbfa7307f8d6277351f00eb3b178f9f4dda8eecbbd79065228811fbc')
+sha256sums_aarch64=('e466e9d3857436f08bf62e402e9bff625534cc944723832918fbe454daef867a')
 
 
 package() {
