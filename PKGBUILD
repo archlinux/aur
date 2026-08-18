@@ -10,7 +10,7 @@ pkgdesc="A super \"coolorful\" shell for Hyprland! (latest-commit version)"
 license=('BSD-3-Clause')
 url="https://github.com/retrozinndev/colorshell"
 pkgrel=1
-pkgver=2.1.3.r27.gfdf2e95
+pkgver=2.1.3.r34.gaa6771b
 arch=('any')
 sha256sums=('SKIP')
 provides=("$_pkgname")
@@ -38,6 +38,8 @@ depends=(
     'pipewire'
     'python-pywal16'
     'bash'
+    'gtk4'
+    'libadwaita'
     'libastal-4'
     'libastal-io'
     'libastal-apps'
