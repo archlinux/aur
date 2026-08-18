@@ -1,7 +1,7 @@
 pkgbase = python-frida-bin
 	pkgdesc = Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 3 binary version from PyPi
-	pkgver = 17.16.4
-	pkgrel = 2
+	pkgver = 17.17.0
+	pkgrel = 1
 	url = https://www.frida.re
 	arch = i686
 	arch = x86_64
@@ -12,19 +12,19 @@ pkgbase = python-frida-bin
 	depends = python
 	optdepends = python-typing_extensions: for Python <3.11
 	optdepends = rustup: for injecting Rust code into targets
-	provides = python-frida=17.16.4
+	provides = python-frida=17.17.0
 	conflicts = python-frida
 	conflicts = python2-frida
 	options = !debug
-	source = frida-17.16.4-COPYING::https://raw.githubusercontent.com/frida/frida/refs/tags/17.16.4/COPYING
+	source = frida-17.17.0-COPYING::https://raw.githubusercontent.com/frida/frida/refs/tags/17.17.0/COPYING
 	sha256sums = 5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2
-	source_i686 = https://files.pythonhosted.org/packages/cp37/f/frida/frida-17.16.4-cp37-abi3-manylinux_2_5_i686.whl
-	sha256sums_i686 = 009f4866d43623e2f895adb1a8e450d25fd54c05bd04c8a4ebc507034b48751f
-	source_x86_64 = https://files.pythonhosted.org/packages/cp37/f/frida/frida-17.16.4-cp37-abi3-manylinux_2_5_x86_64.whl
-	sha256sums_x86_64 = 56b80ef108e072ae2ebbe626ec3da79280a8070f045fde65ceb16533aa68de1c
-	source_armv7l = https://files.pythonhosted.org/packages/cp37/f/frida/frida-17.16.4-cp37-abi3-manylinux_2_17_armv7l.whl
-	sha256sums_armv7l = 1a91c82d35fc41e56f2281d6be01be39fdbada75f266d80562473923a4b7879a
-	source_aarch64 = https://files.pythonhosted.org/packages/cp37/f/frida/frida-17.16.4-cp37-abi3-manylinux_2_17_aarch64.whl
-	sha256sums_aarch64 = 55bd03195002fac83184acdd5028b86d03b052e5747ab1dbdfaa005765f7979a
+	source_i686 = https://files.pythonhosted.org/packages/cp37/f/frida/frida-17.17.0-cp37-abi3-manylinux_2_5_i686.whl
+	sha256sums_i686 = 5462a24f293f87ce326bad5438b2fcec7248d3593df80e11c94e6baa82b53a51
+	source_x86_64 = https://files.pythonhosted.org/packages/cp37/f/frida/frida-17.17.0-cp37-abi3-manylinux_2_5_x86_64.whl
+	sha256sums_x86_64 = 6d99ad19e84a2bf58262b36893005bd9017005a7b7bebd4554e9b755836078a9
+	source_armv7l = https://files.pythonhosted.org/packages/cp37/f/frida/frida-17.17.0-cp37-abi3-manylinux_2_17_armv7l.whl
+	sha256sums_armv7l = 6a5b747d155d82acfb72a893e705a9978db212a10f5c22a747065edd3cdcfca1
+	source_aarch64 = https://files.pythonhosted.org/packages/cp37/f/frida/frida-17.17.0-cp37-abi3-manylinux_2_17_aarch64.whl
+	sha256sums_aarch64 = 82ddfa720588a0429fd3dd8e75ccf5c722d57da3d5544d1ba420741c032ba7a8
 
 pkgname = python-frida-bin
