@@ -1,6 +1,6 @@
 pkgbase = openanime
 	pkgdesc = Unofficial OpenAnime Linux client - Compiled from source (WebGPU/Vulkan support)
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/tuanapi/OpenAnime-Linux
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = openanime
 	depends = libxkbfile
 	provides = openanime
 	conflicts = openanime-bin
-	source = git+https://github.com/tuanapi/OpenAnime-Linux.git#tag=v1.1.5
+	source = git+https://github.com/tuanapi/OpenAnime-Linux.git#tag=v1.1.6-1
 	sha256sums = SKIP
 
 pkgname = openanime
