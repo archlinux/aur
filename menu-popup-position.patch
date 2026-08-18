@@ -1,0 +1,58 @@
+# zzzfm-dpup patch: desktop context menu position (Wayland)
+# EN: The desktop context menu (right-click on an empty area, on an icon,
+#     or the Menu key) was opened via the deprecated gtk_menu_popup(), which
+#     cannot anchor the popup to the pointer on Wayland, so labwc showed the
+#     menu in the center of the screen. Replaced with gtk_menu_popup_at_pointer()
+#     so the menu appears near the cursor.
+# RU: Контекстное меню рабочего стола (правый клик по пустому месту, по
+#     иконке или клавиша Menu) открывалось через устаревший gtk_menu_popup(),
+#     который под Wayland не привязывает меню к курсору, и labwc показывал
+#     его по центру экрана. Заменено на gtk_menu_popup_at_pointer() — меню
+#     появляется рядом с курсором.
+--- a/src/desktop/desktop-window.c
++++ b/src/desktop/desktop-window.c
+@@ -1235,7 +1235,7 @@
+ }
+ 
+ 
+-void show_desktop_menu( DesktopWindow* self, guint event_button, guint32 event_time ) {
++void show_desktop_menu( DesktopWindow* self, GdkEvent* event ) {
+     GtkMenu* popup;
+     DesktopItem *item;
+     GList* l;
+@@ -1252,7 +1252,7 @@
+     }
+     else
+         popup = GTK_MENU( ptk_file_menu_new( self, NULL, NULL, NULL, vfs_get_desktop_dir(), NULL ) );
+-    gtk_menu_popup( popup, NULL, NULL, NULL, NULL, event_button, event_time );
++    gtk_menu_popup_at_pointer( popup, event );
+ }
+ 
+ 
+@@ -1344,7 +1344,7 @@
+                     popup = GTK_MENU(ptk_file_menu_new( self, NULL, file_path, item->fi, vfs_get_desktop_dir(), sel ));
+                     g_free( file_path );
+ 
+-                    gtk_menu_popup( popup, NULL, NULL, NULL, NULL, evt->button, evt->time );    // howdy      a popup named "popup" eh
++                    gtk_menu_popup_at_pointer( popup, (GdkEvent*)evt );    // howdy      a popup named "popup" eh
+                 }
+             }
+             goto out;
+@@ -1355,7 +1355,7 @@
+             {
+                 if( ! app_settings.show_wm_menu ) /* if our desktop menu is used */
+                 {
+-                    show_desktop_menu( self, evt->button, evt->time );
++                    show_desktop_menu( self, (GdkEvent*)evt );
+                     goto out;   // don't forward the event to root win
+                 }
+             }
+@@ -2519,7 +2519,7 @@
+                 select_item( desktop, desktop->focus, TRUE );
+             return TRUE;
+         case GDK_KEY_Menu:
+-            show_desktop_menu( desktop, 0, event->time );
++            show_desktop_menu( desktop, (GdkEvent*)event );
+             return TRUE;
+         }
+     }

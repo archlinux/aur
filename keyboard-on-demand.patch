@@ -1,0 +1,20 @@
+# zzzfm-dpup patch: desktop keyboard input (Wayland)
+# EN: The desktop window was created with GTK_LAYER_SHELL_KEYBOARD_MODE_NONE,
+#     so the compositor never gave it keyboard focus and arrow-key icon
+#     navigation, Enter/Space and the Menu key did not work. Switched to
+#     KEYBOARD_MODE_ON_DEMAND: clicking the desktop gives it keyboard focus.
+# RU: Окно рабочего стола создавалось с GTK_LAYER_SHELL_KEYBOARD_MODE_NONE,
+#     поэтому компоновщик не давал ему клавиатурный фокус и не работали
+#     навигация по иконкам стрелками, Enter/Space и клавиша Menu.
+#     Включён KEYBOARD_MODE_ON_DEMAND: клик по рабочему столу даёт фокус.
+--- a/src/desktop/desktop-window.c
++++ b/src/desktop/desktop-window.c
+@@ -419,7 +419,7 @@
+ #ifdef HAVE_LAYER_SHELL
+     } else {
+         gtk_layer_init_for_window( GTK_WINDOW( self ) );
+-        gtk_layer_set_keyboard_mode( GTK_WINDOW( self ), GTK_LAYER_SHELL_KEYBOARD_MODE_NONE );
++        gtk_layer_set_keyboard_mode( GTK_WINDOW( self ), GTK_LAYER_SHELL_KEYBOARD_MODE_ON_DEMAND );
+         gtk_layer_set_namespace( GTK_WINDOW( self ), "desktop" );
+         gtk_layer_set_layer( GTK_WINDOW( self ), GTK_LAYER_SHELL_LAYER_BACKGROUND );
+         gtk_layer_set_anchor( GTK_WINDOW( self ), GTK_LAYER_SHELL_EDGE_LEFT, TRUE );
