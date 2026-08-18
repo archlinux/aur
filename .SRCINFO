@@ -1,6 +1,6 @@
 pkgbase = edk2-ovmf-fedora
-	pkgdesc = Firmware for Virtual Machines (x86_64) with Secure Boot enabled — from Fedora 44
-	pkgver = 20260213
+	pkgdesc = Firmware for Virtual Machines (x86_64) with Secure Boot enabled — from Fedora 45
+	pkgver = 20260508
 	pkgrel = 1
 	url = https://packages.fedoraproject.org/pkgs/edk2/edk2-ovmf/
 	install = edk2-ovmf-fedora.install
@@ -9,7 +9,7 @@ pkgbase = edk2-ovmf-fedora
 	license = BSD-2-Clause-Patent
 	license = MIT
 	license = LicenseRef-Fedora-Public-Domain
-	source = https://kojipkgs.fedoraproject.org/packages/edk2/20260213/4.fc44/noarch/edk2-ovmf-20260213-4.fc44.noarch.rpm
-	sha256sums = 09aaf8eea949070e864233d09480a7e88cb3b51f58c8adb9bb2e2176bddb0083
+	source = https://kojipkgs.fedoraproject.org/packages/edk2/20260508/14.fc45/noarch/edk2-ovmf-20260508-14.fc45.noarch.rpm
+	sha256sums = 533ea4bffb8490bd25ad0ec73bcdeafd8e37cebcb0b13dc15a8eb98e46288853
 
 pkgname = edk2-ovmf-fedora
