@@ -33,7 +33,7 @@ makedepends=(
   'gdk-pixbuf2'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b796d2f60fd0b9de35980c65d8ef699d7f744489931f57c1771ca692753aa9b5')
+sha256sums=('02d99e80dcd3df75b69c9d92c6983bcc7c64d59ebeded89aea2377d9abbfba19')
 
 _srcdir="optionTerm-$pkgver"
 
@@ -65,6 +65,13 @@ package() {
   install -Dm755 "target/release/optionterm" "$pkgdir/usr/bin/optionterm"
   # The command was called option-term up to 0.1.6; keep it working.
   ln -s optionterm "$pkgdir/usr/bin/option-term"
+  # Bundle the patched VTE (kitty graphics protocol). The binary's RUNPATH
+  # searches $ORIGIN/../lib/optionterm, so this patched lib takes precedence
+  # over the distro's stock libvte-2.91-gtk4.
+  install -Dm755 "vte-dist/lib/libvte-2.91-gtk4.so.0" \
+    "$pkgdir/usr/lib/optionterm/libvte-2.91-gtk4.so.0"
+  ln -s libvte-2.91-gtk4.so.0 \
+    "$pkgdir/usr/lib/optionterm/libvte-2.91-gtk4.so"
   install -Dm644 "packaging/io.option.terminal.desktop" \
     "$pkgdir/usr/share/applications/io.option.terminal.desktop"
   install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

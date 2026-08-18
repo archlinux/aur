@@ -25,6 +25,6 @@ pkgbase = optionterm
 	conflicts = option-term
 	replaces = option-term
 	source = optionterm-0.2.6.tar.gz::https://github.com/fireflylabss/optionTerm/archive/refs/tags/v0.2.6.tar.gz
-	sha256sums = b796d2f60fd0b9de35980c65d8ef699d7f744489931f57c1771ca692753aa9b5
+	sha256sums = 02d99e80dcd3df75b69c9d92c6983bcc7c64d59ebeded89aea2377d9abbfba19
 
 pkgname = optionterm
