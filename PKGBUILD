@@ -2,7 +2,7 @@
 pkgname=bili-music
 _pkgname='Bili Music'
 _zhsname='午夜黑胶'
-pkgver=0.3.3
+pkgver=0.3.4
 _nodeversion=20
 pkgrel=1
 pkgdesc="A desktop music player based on Tauri v2 + Rust, which uses the music area of Bilibili as a music library to listen to songs."
@@ -25,7 +25,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('69f3fe9b4e1e366aee8a58bea885d57ef708358598f93cec23be8e0a0f467106')
+sha256sums=('7fed7965ff4d8b3a9bfd93b1010548c56b046e97e0f92741e03f6dac5d87f87b')
 _set_build_env() {
     export CARGO_HOME="${srcdir}/.cargo"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
