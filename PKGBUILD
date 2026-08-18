@@ -3,18 +3,18 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver=1.2.119
+pkgver=1.2.121
 pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
 license=('AGPL-3.0-only')
-depends=('python-csdr-luarvique>=0.18.37' 'rtl-sdr' 'owrx_connector-luarvique' 'python-importlib-metadata' 'python-protobuf' 'python-pkg_resources')
-makedepends=('python-setuptools' 'python-distutils-extra')
+depends=('python-csdr-luarvique>=0.18.37' 'rtl-sdr' 'owrx_connector-luarvique' 'python-importlib-metadata' 'python-protobuf' 'python-setuptools')
+makedepends=('python-distutils-extra')
 install="${pkgname}".install
 optdepends=(
     # decoding
-    'python-digiham: use digital voice modes'
+    'python-digiham>=0.6.11: use digital voice modes'
     'codecserver: decode audio data from digital voice modes using the AMBE codec, leagally trustworthy'
     'codecserver-softmbe: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec'
     'codecserver-mbelib-module: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec'
@@ -81,7 +81,7 @@ source=(
     'openwebrx-plus.sysusers'
     'openwebrx-plus.tmpfiles'
 )
-sha256sums=('ac563ad7bb322b44a8e1506b4f5c2a47029e98ddfd491fb494fd60ed04150a35'
+sha256sums=('e918865a50b498ea62027ff349df3eec710b79eccf670096ecc8741765b2ce42'
             '4f618a2fd96bca7359a6d52a0ae996d08ab30d94d9d2717f1e353f2296ee0fd7'
             'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade')
 provides=('openwebrx')
