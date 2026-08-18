@@ -3,7 +3,7 @@
 pkgauthor=babashka
 pkgname=nbb
 pkgdesc="Scripting in Clojure on Node.js using SCI"
-pkgver=1.5.211
+pkgver=1.5.212
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/${pkgauthor}/${pkgname}"
@@ -21,7 +21,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('45e6879a38db582aecee64ad4b7cb8a6a504fb3e29aa2ce0c8d964630789142fa570e0f6370370c770dd02626b4bc8037e49c09cc90fe621b6fd10d907f1bb8f')
+b2sums=('b5252e2755dfbc3a69a8c836fa51b54570f2febaf7f62235c3e32a2851c5424bb1d5c3699a35dfd66c055bb479c68b5d7ba0ae7bb19fd23d4794e67afc7bcacd')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
