@@ -1,6 +1,6 @@
 pkgbase = unisic-git
 	pkgdesc = Screenshot & screen-recorder for Linux
-	pkgver = 0.8.4.r6.g3bdd702
+	pkgver = 0.8.4.r15.ga01aeb2
 	pkgrel = 1
 	url = https://unisic.app/
 	arch = any
@@ -16,6 +16,7 @@ pkgbase = unisic-git
 	depends = ffmpeg
 	depends = wl-clipboard
 	depends = xdg-desktop-portal
+	depends = plasma-wayland-protocols
 	optdepends = libx11: for X11
 	optdepends = libxext: for X11
 	optdepends = libxfixes: for X11

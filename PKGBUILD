@@ -1,7 +1,7 @@
 # Maintainer: kekmacska
 
 pkgname=unisic-git
-pkgver=0.8.4.r6.g3bdd702
+pkgver=0.8.4.r15.ga01aeb2
 pkgrel=1
 pkgdesc='Screenshot & screen-recorder for Linux'
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 url='https://unisic.app/'
 source=('git+https://github.com/unisic/unisic.git')
 makedepends=(cmake make svgo pkgconf)
-depends=(qt6-base qt6-declarative qt6-svg qt6-wayland ffmpeg wl-clipboard xdg-desktop-portal)
+depends=(qt6-base qt6-declarative qt6-svg qt6-wayland ffmpeg wl-clipboard xdg-desktop-portal plasma-wayland-protocols)
 optdepends=('libx11: for X11'
             'libxext: for X11'
             'libxfixes: for X11'
@@ -49,7 +49,7 @@ build() {
             -fdata-sections -fvisibility=hidden"
 
     BASE_CXXFLAGS="$BASE_CFLAGS"
-    BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -flto -fno-plt"
+    BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -Wl,-O3 -flto -fno-plt"
 
     # Clang-only flags
     CLANG_EXTRA_CFLAGS="-fstrict-vtable-pointers -fno-asynchronous-unwind-tables"
