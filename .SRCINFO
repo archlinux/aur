@@ -1,0 +1,16 @@
+pkgbase = sifter-bin
+	pkgdesc = Catalog photos, videos and audio into a date-structured library by capture date
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/SelfRef/sifter
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	provides = sifter
+	conflicts = sifter
+	source_x86_64 = sifter-v0.1.0-x86_64-linux.tar.gz::https://github.com/SelfRef/sifter/releases/download/v0.1.0/sifter-v0.1.0-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 88a88d4e81b5da5304a744765a8b04a2f59a0524603090d9aa840227a8264b50
+	source_aarch64 = sifter-v0.1.0-aarch64-linux.tar.gz::https://github.com/SelfRef/sifter/releases/download/v0.1.0/sifter-v0.1.0-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 22e8694dc4b28074ec06774fbea31cd8fa8a1df8b0469adc4df933d7d2a9a64d
+
+pkgname = sifter-bin
