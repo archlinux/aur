@@ -2,7 +2,7 @@
 # Contributor: Jacqueline Fisher <jcfisher@reality-overwritten.net>
 pkgname=postybirb
 _pkgname=PostyBirb
-pkgver=4.0.43
+pkgver=4.0.45
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -40,7 +40,7 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    export electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export HOME="${srcdir}/.electron-gyp"
@@ -101,7 +101,7 @@ build() {
     _set_build_env
     _ensure_local_nvm
     NODE_ENV=production     yarn run build:prod
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.yml
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder.yml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
