@@ -1,6 +1,6 @@
 pkgbase = only-bin
 	pkgdesc = A deterministic cross-platform task runner
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/KercyDing/only
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = only-bin
 	license = MIT
 	provides = only
 	conflicts = only-git
-	source_x86_64 = only-0.3.0-x86_64::https://github.com/KercyDing/only/releases/download/v0.3.0/only-linux-amd64
-	sha256sums_x86_64 = 30fb13275bbf059035d6a248f45b0bdcc5338990195b93c65e844a10edd5f1ab
-	source_aarch64 = only-0.3.0-aarch64::https://github.com/KercyDing/only/releases/download/v0.3.0/only-linux-arm64
-	sha256sums_aarch64 = 1592c5fdc9c82fd1dca1722a84bdf06d667bc3336afe32317740e64beb6d18c8
+	source_x86_64 = only-0.3.1-x86_64::https://github.com/KercyDing/only/releases/download/v0.3.1/only-linux-amd64
+	sha256sums_x86_64 = ec65d8787dfdede44a2fca3d4923b59e503bb1ca3483b266626d278ac9a2b437
+	source_aarch64 = only-0.3.1-aarch64::https://github.com/KercyDing/only/releases/download/v0.3.1/only-linux-arm64
+	sha256sums_aarch64 = 3a391001ca280810d3068f743b51f0489b08132b693c2a26267d1ac6428ad4d3
 
 pkgname = only-bin
