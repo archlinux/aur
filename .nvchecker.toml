@@ -1,0 +1,6 @@
+[rubick]
+source = "github"
+github = "Dudude-bit/rubick"
+prefix = "v"
+exclude_regex = ".*(alpha|beta|rc).*"
+use_latest_release = true
