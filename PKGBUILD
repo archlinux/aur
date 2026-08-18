@@ -2,7 +2,7 @@
 
 _name=openai-agents
 pkgname=python-$_name
-pkgver=0.19.2
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="OpenAI Agents SDK."
 arch=('any')
@@ -32,7 +32,7 @@ optdepends=('python-numpy: voice' 'python-websockets: voice'
             'python-boto3: s3'
             'python-temporalio: temporal' 'python-textual: temporal')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a8b3dd9a7cdd3364402678f3796e7ac5d22272c177ab5cfdce510b4c987e6dde')
+sha256sums=('5d26ef0a56a1f6bc8edb05a53bfb3aa27ec2f18da1b0c83ea6431626f9d9931d')
 
 build() {
   cd "$srcdir"/$_name-python-$pkgver
@@ -45,6 +45,9 @@ check() {
     --disable-warnings
   )
   cd "$srcdir"/$_name-python-$pkgver
+  local wheel
+  wheel=$(ls dist/*.whl)
+  bsdtar -xf "$wheel" -C src '*.dist-info/*'
   PYTHONPATH=$PWD/src OPENAI_API_KEY=fake-for-tests pytest "${pytest_options[@]}" tests
 }
 
