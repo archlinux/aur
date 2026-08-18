@@ -1,0 +1,31 @@
+post_install() {
+	cat <<'EOF'
+==> SecureEye is installed but not yet active. To finish setup:
+
+    1. Start the daemon:
+         systemctl enable --now secureeye-authd.service
+    2. Enrol a face model:
+         sudo secureEye add
+    3. Enable the PAM module (Arch has no pam-auth-update), e.g. for sudo add
+       this line at the top of /etc/pam.d/sudo:
+         auth  sufficient  pam_secureEye.so
+       Keep a root shell open while testing so a misconfiguration cannot lock
+       you out.
+
+    Configuration lives in /etc/secureEye/config.ini.
+EOF
+	if [ "$(uname -m)" != "x86_64" ]; then
+		cat <<'EOF'
+==> python-mediapipe is x86_64 only. On this architecture set
+      detector_backend = dlib
+    in /etc/secureEye/config.ini before first use.
+EOF
+	fi
+}
+
+post_upgrade() {
+	if [ "$(vercmp "$2" 0.1.2)" -lt 0 ]; then
+		post_install
+	fi
+	systemctl try-restart secureeye-authd.service >/dev/null 2>&1 || true
+}
