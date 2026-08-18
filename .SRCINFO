@@ -1,12 +1,12 @@
 pkgbase = pdfcpu
 	pkgdesc = A PDF processor written in Go.
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/pdfcpu/pdfcpu
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = go
-	source = pdfcpu-0.14.0.tar.gz::https://github.com/pdfcpu/pdfcpu/archive/v0.14.0.tar.gz
-	b2sums = a6b9db92ab220996b9743e4bf65521411d6faf13de627cc5c590c128a3a112573178252bfc9fcd539499a991ad5c1f4e1f8ed032e6cae2026277f04658151038
+	source = pdfcpu-0.15.0.tar.gz::https://github.com/pdfcpu/pdfcpu/archive/v0.15.0.tar.gz
+	b2sums = c28e2e45c5fefa400deed7a548286249b6811a3e5ea6d5802255d0e67e4b8885a901ee56e1e18f55a848d7e2b4d40ae643a3fd6f1fac12b46cefb0a7dfb090a7
 
 pkgname = pdfcpu
