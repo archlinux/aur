@@ -17,4 +17,16 @@ post_upgrade() {
         echo ":: graphical-session.target. If you have it enabled, run:"
         echo "::   systemctl --user reenable vice.service"
     fi
+    # 2.8.0 added StartLimit settings to the unit's [Unit] section. systemd
+    # keeps the old unit file in memory until it is told to re-read it, and a
+    # plain restart does not do that.
+    if [ "$(vercmp "$2" 2.8.0)" -lt 0 ]; then
+        echo ":: The service file changed. To pick it up:"
+        echo "::   systemctl --user daemon-reload"
+    fi
+    # The daemon holds the old Python in memory until it restarts, and nothing
+    # here can reach the user's session bus to do it for them.
+    echo ":: A running daemon keeps the previous version until it restarts:"
+    echo "::   systemctl --user restart vice.service"
+    echo ":: Opening Vice does the same thing on its own."
 }
