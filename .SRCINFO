@@ -1,7 +1,7 @@
 pkgbase = pixelterm-c
 	pkgdesc = A high-performance terminal image/video/book browser written in C, based on the Chafa library
 	pkgver = 1.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zouyonghe/PixelTerm-C
 	arch = x86_64
 	arch = aarch64
