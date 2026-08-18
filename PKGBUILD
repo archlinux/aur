@@ -1,15 +1,16 @@
 
 pkgname=soundcloud-desktop-bin
 pkgver=8.4.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial desktop app for Soundcloud"
 arch=(x86_64 aarch64)
 url="https://github.com/zxcloli666/SoundCloud-Desktop"
 license=(MIT)
 depends=(
-    webkit2gtk-4.1
-    libappindicator
+    ffmpeg
     gtk3
+    libappindicator
+    webkit2gtk-4.1
     )
 source=("LICENSE-soundcloud-desktop-${pkgver}::https://github.com/zxcloli666/SoundCloud-Desktop/raw/${pkgver}/LICENSE")
 source_x86_64=("https://github.com/zxcloli666/SoundCloud-Desktop/releases/download/${pkgver}/soundcloud-desktop_${pkgver}_amd64.deb")
@@ -21,4 +22,7 @@ sha256sums_aarch64=('4f038e22daf8fdd7d35783a6199844e4105e7231d2151670a850c8d79c4
 package() {
   bsdtar -xf data.tar.gz -C "${pkgdir}/"
   install -Dm644 "LICENSE-soundcloud-desktop-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Fails to start with nvidia cards, same as https://aur.archlinux.org/packages/armbian-imager-bin#comment-1069531
+  sed -i 's/^Exec=/Exec=env WEBKIT_DISABLE_DMABUF_RENDERER=1 /' "${pkgdir}/usr/share/applications/soundcloud-desktop.desktop"
 }
