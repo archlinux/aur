@@ -1,11 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=intrigue-bin
 _pkgname=Intrigue
-pkgver=1.5.0
+pkgver=1.6.0
 _electronversion=41
 pkgrel=1
 pkgdesc="Organize literature into ideas, fast.(Prebuilt version.Use system-wide electron)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://github.com/shaunabanana/intrigue"
 license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
@@ -17,12 +20,12 @@ options=(
     '!strip'
     '!emptydirs'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    "${pkgname%-bin}.sh"
-)
-sha256sums=('e13242ff127236180e0d6d815a742ae556d419ad66fe8232ca5f926cdd7db180'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-arm64-${pkgver}.AppImage")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-Linux-x86_64-${pkgver}.AppImage")
+sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_aarch64=('32119ecc28af6f9cef7e327d1801a6fa920c98b267ae75f8be598a76fbbf65ad')
+sha256sums_x86_64=('9f1911e66ddf59c3f60cf9a5334f03f5712654236f93aa4f000a5f8c5248508f')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
