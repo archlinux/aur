@@ -10,6 +10,7 @@ depends=('gtk3' 'nss' 'libxss' 'alsa-lib' 'libxtst' 'libxkbfile')
 makedepends=('nodejs' 'npm' 'git')
 provides=("${pkgname}")
 conflicts=("${pkgname}-bin")
+options=('!debug')
 source=("git+https://github.com/tuanapi/OpenAnime-Linux.git#tag=v${pkgver}-${pkgrel}")
 sha256sums=('SKIP')
 

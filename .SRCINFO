@@ -17,6 +17,7 @@ pkgbase = openanime
 	depends = libxkbfile
 	provides = openanime
 	conflicts = openanime-bin
+	options = !debug
 	source = git+https://github.com/tuanapi/OpenAnime-Linux.git#tag=v1.1.6-1
 	sha256sums = SKIP
 
