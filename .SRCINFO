@@ -1,0 +1,17 @@
+pkgbase = organise-git
+	pkgdesc = Automatically sort and move files into designated directories (Git version)
+	pkgver = 1.0.0.r0.g1234567
+	pkgrel = 1
+	url = https://github.com/rafael-hacker/organise
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = nlohmann-json
+	makedepends = git
+	depends = gcc-libs
+	provides = organise
+	conflicts = organise
+	source = git+https://github.com/rafael-hacker/organise.git
+	sha256sums = SKIP
+
+pkgname = organise-git
