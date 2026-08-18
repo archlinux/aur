@@ -1,7 +1,7 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=pipette-desktop-keychron-bin
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Pipette — Vial-compatible keyboard configurator (AppImage). Keychron fork"
 arch=("x86_64")
 url="https://github.com/Tymon3310/pipette-desktop"
