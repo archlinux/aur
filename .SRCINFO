@@ -1,6 +1,6 @@
 pkgbase = ivar
 	pkgdesc = Mount the repos a feature spans into one directory, on one branch, for one agent session
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/mnzsss/ivar
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ivar
 	conflicts = ivar-bin
 	options = !lto
 	options = !debug
-	source = ivar-0.1.0.tar.gz::https://github.com/mnzsss/ivar/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = ab01c20e98b05a67d2c20ec21055202e8e0ecb9f772ad618662bb38e2b93dd59
+	source = ivar-0.2.0.tar.gz::https://github.com/mnzsss/ivar/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 440d5c7523ec67e874f56414022b7222447b42d9295938bc4c03c1d2660f9e4e
 
 pkgname = ivar
