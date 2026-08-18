@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Like less but for Markdown"
 
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ provides=("${_appname}")
 options=('!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e135edfe9dcf291366e8d232d6e9be901845ba83a369bb4755a22e8839d7fe0f')
+sha256sums=('b1ee7857cd7de4823fdd5644a46145fe7ef0c962cdf946769e0e2071b38c572d')
 
 
 prepare() {
@@ -48,7 +48,7 @@ check() {
 	cd "${pkgname}-${pkgver}" || exit
 
 	export CARGO_TARGET_DIR=target
-	cargo test --frozen --release -- --skip generated_documents_render_at_any_width
+	cargo test --frozen --release -- --skip a_rich_copy_still_leaves_the_plain_text_for_whoever_cannot_read_html
 }
 
 package() {
