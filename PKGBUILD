@@ -2,7 +2,7 @@
 #
 
 pkgname=check_mk-agent
-pkgver=2.4.0p30
+pkgver=2.4.0p35
 pkgrel=1
 pkgdesc='Agent to send information to a Check_MK server'
 arch=(any)
@@ -13,7 +13,7 @@ source=("${pkgname}-check_mk_agent.linux-${pkgver}::https://raw.githubuserconten
         "${pkgname}-check_mk_caching_agent.linux-${pkgver}::https://raw.githubusercontent.com/tribe29/checkmk/v${pkgver}/agents/check_mk_caching_agent.linux"
         'check_mk.socket'
         'check_mk@.service')
-sha256sums=('c231e7c0001c5abf9b8eaf02ab77e481e7d8c5a762672603979012d8c9e1f92e'
+sha256sums=('c82521fc555d08445ce16bc8ba7111032e76f2eb2166bd58fd5aa1bc7054decb'
             '54bb693ef89cf65fa53440384b238e507193d5770f803854746335ccb2dd7162'
             'a891bb3020f20ff8e6c1672e58607dd5545923bfce6420911fd1c967ec500b08'
             '7a8507af8fd92a7acc68c34d6a7525b67e0c0419ef8a99cd620d459837c7d1e8')
