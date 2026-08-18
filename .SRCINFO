@@ -1,6 +1,6 @@
 pkgbase = kwin-effect-luminvert-git
 	pkgdesc = KWin Desktop Effect to invert the luminance of window contents while preserving colors
-	pkgver = 0.1.0.r0.gef185ef
+	pkgver = 17b
 	pkgrel = 1
 	url = https://github.com/mertemba/kwin-effect-luminvert
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = kwin-effect-luminvert-git
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = ninja
+	makedepends = vulkan-headers
 	depends = kwin
 	depends = qt6-base
 	depends = kcoreaddons
@@ -18,7 +19,7 @@ pkgbase = kwin-effect-luminvert-git
 	depends = gcc-libs
 	depends = ki18n
 	depends = glibc
-	provides = kwin-effect-luminvert=0.1.0
+	provides = kwin-effect-luminvert=17b
 	conflicts = kwin-effect-luminvert
 	source = kwin-effect-luminvert::git+https://github.com/mertemba/kwin-effect-luminvert.git
 	sha256sums = SKIP
