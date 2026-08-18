@@ -26,6 +26,7 @@ openmpi
 pybind11
 pyside6
 pyside6-tools
+python-defusedxml
 python-yaml
 python-matplotlib
 python-packaging

@@ -28,6 +28,7 @@ pkgbase = freecad-weekly
 	depends = pybind11
 	depends = pyside6
 	depends = pyside6-tools
+	depends = python-defusedxml
 	depends = python-yaml
 	depends = python-matplotlib
 	depends = python-packaging
