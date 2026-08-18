@@ -1,11 +1,11 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=syng-bin
 _pkgname=Syng
-pkgver=2.0.0_beta_6
+pkgver=2.1.0
 _zhsname='词应'
-pkgrel=2
+pkgrel=1
 pkgdesc="A free, open source, cross-platform, Chinese-To-English dictionary for desktops.(Prebuilt version)"
-arch=("x86_64")
+arch=('x86_64')
 url="https://getsyng.com/"
 _ghurl="https://github.com/sotch-pr35mac/syng"
 license=(
@@ -16,28 +16,30 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
-    'webkit2gtk'
+    'webkit2gtk-4.1'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver//_/-}/${pkgname%-bin}-2_0.0.6_amd64.deb"
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/sotch-pr35mac/syng/v${pkgver//_/-}/LICENSE-CC-CEDICT"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
+    "LICENSE-${pkgver}::https://raw.githubusercontent.com/sotch-pr35mac/syng/v${pkgver}/LICENSE-CC-CEDICT"
 )
-sha256sums=('dc3d1c2f8a63c97bbf55b122e10002a178194153cc2ba33c78ac6caf3ee949fc'
+sha256sums=('780e97b2fc3ffee6d992e26368da5a0a1a8148b3625af45beae0c3ec0f78c683'
             '997e0e57760a71dfc656727d5bc14149bae55f907990f8c75650673924434f0c')
 prepare() {
-    bsdtar -xf "${srcdir}/data."*
     sed -i -e "
-        s/${pkgname%-bin}-2/${pkgname%-bin}/g
+        s/Exec=${_pkgname}/Exec=${pkgname%-bin}/
+        s/Icon=${_pkgname}/Icon=${pkgname%-bin}/
         3i\Name[zh_CN]=${_zhsname}
-    " "${srcdir}/usr/share/applications/${pkgname%-bin}-2.desktop"
+    " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
-    install -Dm755 "${srcdir}/usr/bin/${pkgname%-bin}-2" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}-2.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    _icon_sizes=(32x32 128x128 256x256@2)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}-2.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname%-bin}.png"
-    done
+    install -Dm755 "${srcdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/lib/${_pkgname}/resources/licenses/"* -t "${pkgdir}/usr/lib/${_pkgname}/resources/licenses"
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+		_extension="${_i##*.}"
+		_icon_path="${_i#*share/icons/}"
+		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
+		install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
+	done
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
