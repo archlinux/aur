@@ -3,7 +3,7 @@
 
 _pkgname="claugram-desktop"
 pkgname="$_pkgname-git"
-pkgver=0.r24982.5def774526
+pkgver=0.r24983.5d34672586
 pkgrel=1
 pkgdesc="A fork of Telegram Desktop focused on: Trust, UX, ToS compliance, Staying current"
 url="https://github.com/alexto9090/claugram"
@@ -128,7 +128,7 @@ build() {
       -fdata-sections"
 
   BASE_CXXFLAGS="$BASE_CFLAGS"
-  BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -flto -fno-plt"
+  BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -Wl,-O3 -flto -fno-plt"
 
   # Clang-only flags
   CLANG_EXTRA_CFLAGS="-fstrict-vtable-pointers -fno-asynchronous-unwind-tables"
