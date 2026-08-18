@@ -1,8 +1,8 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=sdrconnect
-pkgver=1.0.9
-build=d34bf923c
+pkgver=1.0.10
+build=93b44446f
 build_rigcontrol=74fbbe8
 pkgrel=1
 pkgdesc="SDR receiver for SDRplay devices"
@@ -25,15 +25,15 @@ source=("sdrconnect.desktop"
 	"67-sdrplay.rules"
 	"sdrconnect.service")
 sha256sums=('8324e5e61e08e8fead2d0b5bf9f1926d3013c34f9f550ee41b182c4dcf0dd5a0'
-	    '212ed5b5f82c722aa9e4b86cb4248de9f29fdbdd3853dce9dbbd34d8d0486819'
-	    'a597f836a5727d5394152545efd2acecb9728a9908572b7e10703f830828a403'
-	    '5d85766d4b21846a8e567f15464ea1dbcc475f0881fe813146af19fc4e753cbf'
-	    'b39086ca99ef4b2242ff9edef93258c99d478fd37a8ba64319843928e316c61b'
-	    '0ac0db2d91ebfe442a80e0f5fb153ec0f93864abf5ae15c6163d9c3abc103498')
-sha256sums_aarch64=('81ec345bdc2f2267f03c084930d5a2d2a4ef81ac989e508ba744757f4292488d'
-		    'dc355cdce93fe86a2ba8580ba3236de31f76f29c5931a381bc34fa58b4f088fa')
-sha256sums_x86_64=('1823fdb01076969cda9475363c41f5e7e2bdf447a2efb063abad68908f47e1b3'
-		   'befb242ff4139885d57dadcff058b5459933c14f0e6ef176db804b62f144318f')
+            '212ed5b5f82c722aa9e4b86cb4248de9f29fdbdd3853dce9dbbd34d8d0486819'
+            'a597f836a5727d5394152545efd2acecb9728a9908572b7e10703f830828a403'
+            '5d85766d4b21846a8e567f15464ea1dbcc475f0881fe813146af19fc4e753cbf'
+            'b39086ca99ef4b2242ff9edef93258c99d478fd37a8ba64319843928e316c61b'
+            '0ac0db2d91ebfe442a80e0f5fb153ec0f93864abf5ae15c6163d9c3abc103498')
+sha256sums_aarch64=('fb97167f30982dbb5ee538e95ea57467c44bc625b4930cb28d98976dbfadd1e9'
+                    'dc355cdce93fe86a2ba8580ba3236de31f76f29c5931a381bc34fa58b4f088fa')
+sha256sums_x86_64=('343914da15ba18399552bb9100a7ea113caa46fed70679a0e690ea93636dc80f'
+                   'befb242ff4139885d57dadcff058b5459933c14f0e6ef176db804b62f144318f')
 
 package() {
 	cd "${srcdir}"
