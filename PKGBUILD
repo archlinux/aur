@@ -1,7 +1,7 @@
 # Maintainer: Norbert Preining <norbert@preining.info>
 _UpstreamPkgName=NVEnc
 pkgname=${_UpstreamPkgName,,}
-pkgver=9.28
+pkgver=9.32
 pkgrel=1
 pkgdesc="NVIDIA Video Codec based command line encoder"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('cuda>=10' 'ffmpeg' 'libass' 'vapoursynth' 'libdovi' 'onnxruntime-opt-cuda')
 makedepends=('git' 'gcc15' 'cargo-c' 'meson' 'ninja')
 source=(git+${url}.git#tag=${pkgver} onnxruntime-find.patch)
-sha256sums=('c09f4930905b64d56c7a0a4cd3aa6d58ad7b87fe54ec6dc09f5fb7dc8d768813'
+sha256sums=('2088dcaf41015eb106c8f7854f4aa3d3a58c15963c881ce0fb91acd7941cfd06'
             '206794b06a69ee057638efeaa124e1ca92282ce8a2efa8799cfd4094b4819bd5')
 
 build() {
@@ -22,7 +22,7 @@ build() {
 	patch -p1 <$srcdir/onnxruntime-find.patch
 	git submodule init
 	git submodule update
-	meson setup ./build --prefix=/usr --buildtype=release -Denable_vapoursynth=false
+	meson setup ./build --prefix=/usr --buildtype=release -Denable_vapoursynth=false -Dlibass_static=false
 	ninja -C build
 }
 
