@@ -1,6 +1,6 @@
 # Maintainer: toxdes <hi@toxdes.com>
 pkgname=mousr-git
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Keyboard-driven mouse control for Wayland"
 arch=('x86_64' 'aarch64')
