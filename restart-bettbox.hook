@@ -1,8 +1,8 @@
 [Trigger]
 Operation = Upgrade
-Type = File
-Target = /usr/bin/bettbox
-Target = /usr/bin/Bettbox
+Type = Path
+Target = usr/bin/bettbox
+Target = usr/bin/Bettbox
 
 [Action]
 Description = Restarting Bettbox...
