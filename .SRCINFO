@@ -1,5 +1,5 @@
 pkgbase = mousr-bin
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	pkgdesc = Keyboard-driven mouse control for Wayland
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = mousr-bin
 	depends = wayland
 	depends = libxkbcommon
 	source_x86_64 = mousr-${pkgver}-x86_64.tar.gz::https://packages.toxdes.com/releases/mousr_${pkgver}_amd64.tar.gz
-	sha256sums_x86_64 = 007c04b215dc0c850b70855d827dfb4968f9f0802957bf716d6d725f041ea640
+	sha256sums_x86_64 = 65c274f19a4d01eacf9c385af45da8363cc5846e7152b3d74caa07f6ae64c324
 	source_aarch64 = mousr-${pkgver}-aarch64.tar.gz::https://packages.toxdes.com/releases/mousr_${pkgver}_arm64.tar.gz
-	sha256sums_aarch64 = 56b803faa3649093989c1dfea336bea394d3cd5ac595413f624243b158e3da96
+	sha256sums_aarch64 = 541da79f385ddc9069924944db6ff9fb125b7bdf7eb08a9bf1a09e3acb82326a
 
 pkgname = mousr-bin
