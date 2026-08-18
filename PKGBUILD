@@ -5,7 +5,7 @@ _pkgname=SQLark
 pkgver=4.0.1
 _subver=226481
 _electronversion=40
-pkgrel=1
+pkgrel=2
 pkgdesc="SQLark is a powerful SQL query tool that provides a user-friendly interface for database management and analysis."
 arch=(
 	'aarch64'
@@ -17,7 +17,6 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
     "electron${_electronversion}"
-	'python'
     'libxml2-legacy'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://download.sqlark.com/fullPackage/Linux/${_subver}/${_pkgname}_V${pkgver}_linux_arm64.rpm")
@@ -39,7 +38,7 @@ _check_electron_version() {
 }
 prepare() {
 	_check_electron_version
-	sed -i "s/Exec=\/opt\/${pkgname%-bin}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+	sed -i "s/Exec=\/opt\/${pkgname%-bin}\//Exec=/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 	_file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
 		libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
 	for _files in "${_file_list[@]}";do

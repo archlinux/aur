@@ -1,13 +1,12 @@
 pkgbase = sqlark-bin
 	pkgdesc = SQLark is a powerful SQL query tool that provides a user-friendly interface for database management and analysis.
 	pkgver = 4.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sqlark.com/
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-scancode-commercial-license
 	depends = electron40
-	depends = python
 	depends = libxml2-legacy
 	provides = sqlark=4.0.1
 	conflicts = sqlark
