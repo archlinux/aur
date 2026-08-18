@@ -1,7 +1,7 @@
 # Maintainer: NewYearPrism
 
-_ggml_version=0.19.0
-_ggml_sha256sum=cfb6512adda2853e6500a7c5b23f326987cb4c723e9f8f93c6c5a7e7e4861648
+_ggml_version=0.20.0
+_ggml_sha256sum=85bdb8c38cf9e3074177713e34add52e57c1d310239de864e627d429dea3b51a
 pkgname=ggml-hip-backend
 pkgver=${_ggml_version}
 pkgrel=1
@@ -34,7 +34,7 @@ source=(
 )
 sha256sums=(
     ${_ggml_sha256sum}
-    b5b80ba3647d207a653dee190461b92e3792b0c5c610549d2ef4f48de0ad8565
+    78bb5e4a55846ac3627e7cb7c74ef28edd1e2b541b16c8189f2e4591953dea90
 )
 
 prepare() {
