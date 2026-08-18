@@ -3,8 +3,8 @@
 
 _pkgname=hermes-agent
 pkgname=python-${_pkgname}
-tag=2026.8.16
-pkgver=0.20.2
+tag=2026.8.16.2
+pkgver=0.20.3
 pkgrel=1
 pkgdesc="The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere"
 arch=('any')
@@ -46,7 +46,7 @@ source=(
     "0001-fix-daemon-pool-py314-ThreadPoolExecutor-API.patch"
 )
 sha256sums=(
-    '655639384767611feee5ef5d6871e1a1b2294f7b1fd80fb401e9b888a418f4f9'
+    '0e8e38da0b2b130cdaed97303f943f8c58c579a842ea44e9a1deae827eb1d7d8'
     '6b3357098d9e70eb33c95e2f7d12c2bdc016f6e7933b517d85f1399d50caea71'
 )
 
