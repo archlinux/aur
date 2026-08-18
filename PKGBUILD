@@ -2,7 +2,7 @@
 pkgname=mautrix-telegram-bin
 provides=('mautrix-telegram')
 conflicts=('mautrix-telegram')
-pkgver=0.2607.0
+pkgver=0.2608.0
 pkgrel=1
 pkgdesc="A Matrix-Telegram puppeting bridge (binary release)"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -16,13 +16,13 @@ source=("${pkgname/-bin}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
         sysusers-mautrix-telegram.conf
         mautrix-telegram.tmpfiles
 	mautrix-telegram.service)
-sha256sums=('99770569df04ee37d9082c62c0731565e123f26c53f0513f774bb3b382a747c0'
+sha256sums=('aa7506fddc11d0b96756be97f75e4936224634072c5a45bd506d8bbab9ef253c'
             '918db359125a6952e5fd138444f6a69d942e1ac79387bc59833b1cf9393a476b'
             'b5d32d45e5619ce7dca0e885262768852a868d20147572629644775fdaef3fab'
             '833506358e65cd8af721db030da97c4193f1d209c0a07bfb86b4564346f6624a')
-sha256sums_x86_64=('28bd1fa3cfd7f20db54e42d78c67a26b6b7b5cbd74a216ccace9b9cc5ff01733')
-sha256sums_armv7h=('973dfa6ddb16183abf818a39bfb99f116d2ed130eec8764b2a6f1ed8b3811d8a')
-sha256sums_aarch64=('5067473dbc1f89edfa5aa36bcfee0a2e3e8e69477cc30a68672b4d971f173033')
+sha256sums_x86_64=('e8d6fed1deaec5d9bcb8eb93e084362309d5d454d6af2ec73de32ca0daaf3db5')
+sha256sums_armv7h=('824fbdefe7a70aeb3c2faaccffc62e896c18e42ebed3b336cf3fed03e202c67b')
+sha256sums_aarch64=('b5e179fd6f1bba48e73102590f7c5e92599244ec6fae1740306a52c3bd5780b0')
 backup=("etc/${pkgname/-bin}/mautrix-telegram.yaml")
 
 
