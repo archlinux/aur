@@ -2,7 +2,7 @@
 
 pkgname=luadot-nightly
 _pkgname=luadot
-pkgver=0.1.0.nightly.3
+pkgver=0.1.0.nightly.4
 pkgrel=1
 pkgdesc='A dotfiles manager configured in Lua (nightly)'
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,10 @@ makedepends=('cargo' 'cmake')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!lto')
-_tag='v0.1.0-nightly.3'
+_tag='v0.1.0-nightly.4'
 _srcdir="$_pkgname-${_tag#v}"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('5729f7b877705ccc94a312b6ec814dcc63f9d32fcbb8e942424cd73f2108f817')
+sha256sums=('7b37e48525836f5253b5f98fd3b3d7f590047dcc079317d12e567c8b65e896db')
 
 prepare() {
 	cd "$_srcdir"
