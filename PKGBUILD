@@ -1,6 +1,6 @@
 # Maintainer: KercyDing <dkx215417@gmail.com>
 pkgname=only-git
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A deterministic cross-platform task runner (git version)"
 arch=('x86_64' 'aarch64')
