@@ -1,6 +1,6 @@
 pkgbase = cocode
 	pkgdesc = A powerful command-line tool for analyzing and processing code repositories
-	pkgver = 0.9.1
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/Pipelex/cocode
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = cocode
 	makedepends = python-pathspec
 	makedepends = pipelex
 	provides = cocode
-	source = cocode-0.9.1.tar.gz::https://github.com/Pipelex/cocode/archive/refs/tags/v0.9.1.tar.gz
-	sha256sums = ac29e098535eff0e8fd46dd9979c75199e29c48471a67b4f4a03065f23b6e58b
+	source = cocode-0.10.0.tar.gz::https://github.com/Pipelex/cocode/archive/refs/tags/v0.10.0.tar.gz
+	sha256sums = c4810dcef1e1b216fd33f9e2227183046dc0292cd08ef341e89490a5cbb8a087
 
 pkgname = cocode
