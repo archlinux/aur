@@ -1,0 +1,20 @@
+pkgbase = ivar
+	pkgdesc = Mount the repos a feature spans into one directory, on one branch, for one agent session
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mnzsss/ivar
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = git
+	optdepends = github-cli: authentication and pull requests without exporting a token
+	conflicts = ivar-bin
+	options = !lto
+	options = !debug
+	source = ivar-0.1.0.tar.gz::https://github.com/mnzsss/ivar/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ab01c20e98b05a67d2c20ec21055202e8e0ecb9f772ad618662bb38e2b93dd59
+
+pkgname = ivar
