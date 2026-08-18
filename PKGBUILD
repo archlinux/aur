@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-downloader-git
 _pkgname=Ghost-Downloader
-pkgver=4.0.1.r0.g82b6536
+pkgver=4.3.1.r6.ga771acd
 pkgrel=1
 pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide.多线程下载器 协程下载器."
 arch=('any')
@@ -16,22 +16,20 @@ depends=(
     'xcb-util-wm'
     'xcb-util-image'
     'gtk3'
-    'libxkbcommon-x11'
     'qt6-base'
+    'libxkbcommon-x11'
+    'python'
+    'python-loguru'
     'ffmpeg'
     'libtorrent-rasterbar'
-    'libimagequant'
-    'python-loguru'
-    'libraqm'
-    'libavif'
-    'libxslt'
+    'qt6-webengine'
 )
 makedepends=(
     'git'
     'python-pip'
     'gendesk'
     'patchelf'
-    'libtorrent-rasterbar'
+    'uv'
 )
 source=(
     "${pkgname%-git}.git::git+${url}"
@@ -59,14 +57,13 @@ prepare() {
         --exec="${pkgname%-git} %U"
     python -m venv --system-site-packages ./
     source ./bin/activate
-    sed -i '/^libtorrent/d' requirements.txt
-    pip install --timeout=300 -r requirements.txt
     pip install -U nuitka
+    uv sync
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     source ./bin/activate
-    python scripts/deploy.py
+    uv run scripts/deploy.py
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
