@@ -8,7 +8,7 @@ _deskfile="${_sname}.desktop"
 _squashroot="squashfs-root"
 
 pkgname=${_sname}-appimage
-pkgver=9.21.1
+pkgver=9.21.2
 pkgrel=1
 _appimageOrig="${_pkgname}-${pkgver}.AppImage"
 
