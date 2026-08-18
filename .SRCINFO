@@ -1,6 +1,6 @@
 pkgbase = nscde-zh
 	pkgdesc = Not so Common Desktop Environment: Modern and functional CDE based on FVWM
-	pkgver = 2.4.3.4
+	pkgver = 2.4.3.3
 	pkgrel = 1
 	url = https://github.com/WenYin-Community/NsCDE
 	arch = x86_64
@@ -48,7 +48,7 @@ pkgbase = nscde-zh
 	optdepends = picom: X compositor that may fix tearing issues
 	optdepends = gkrellm: System monitor package fits nicely with NsCDE
 	provides = nscde
-	source = nscde-zh-2.4.3.4::git+https://github.com/WenYin-Community/NsCDE.git#tag=2.4.3.4
+	source = nscde-zh-2.4.3.3::git+https://github.com/WenYin-Community/NsCDE.git#tag=2.4.3.3
 	sha256sums = SKIP
 
 pkgname = nscde-zh
