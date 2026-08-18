@@ -1,7 +1,7 @@
 # Maintainer: Christopher Auer <christopher AT auer DOT team>
 
 pkgname=eilmeldung
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="a TUI RSS reader based on the news-flash library"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('libxml2' 'openssl' 'sqlite3' 'libsixel')
 conflicts=('eilmeldung-git' 'eilmeldung-bin' )
 makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('b4d19c0d4eb3e3f44a04e4cb0e54f714f391f7a2bd85ea9a5284b04108e9a134')
+sha256sums=('26fa6822891e69248fe25467091329b7fe63f39073dcabd5f903b457ccc7e28e')
 arch=('x86_64')
 options=('!lto')
 
