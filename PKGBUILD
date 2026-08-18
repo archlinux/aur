@@ -1,6 +1,6 @@
 # Maintainer: kekmacska
 pkgname=svt-av1-tritium-git
-pkgver=4.1.0.r54.gd4d06e127
+pkgver=4.1.0.r54.g80214914c
 pkgrel=1
 pkgdesc="SVT-AV1-Tritium is a fork of SVT-AV1-HDR with PSYEX + Essential features"
 arch=('x86_64')
@@ -40,22 +40,18 @@ build() {
   cd "$pkgname/Build/linux"
 
   # Safe optimizations for video encoders
-  CFLAGS="-O3 -march=native -mtune=native \
-        -funroll-loops \
-        -falign-functions=32 -falign-loops=32 \
-        -fomit-frame-pointer \
-        -fno-math-errno -fno-trapping-math \
-        -fno-semantic-interposition -fno-plt \
-        -fstrict-aliasing -fstrict-enums \
-        -fmerge-all-constants \
-        -fno-exceptions -fno-rtti \
-        -fno-unwind-tables -fno-asynchronous-unwind-tables \
-        -fvectorize -fslp-vectorize \
-        -fwhole-program-vtables \
-        -flto \
-        -Wall -pipe"
+  CFLAGS="-O3 -march=znver4 -mtune=znver4 \
+          -falign-functions=32 -falign-loops=32 \
+          -fno-math-errno -fno-trapping-math \
+          -fno-semantic-interposition \
+          -fomit-frame-pointer -fno-plt \
+          -pipe -flto -Wall -Wno-unused \
+          -fstrict-aliasing -fno-rtti -fno-exceptions \
+          -fstrict-vtable-pointers -fno-asynchronous-unwind-tables \
+          -fmerge-all-constants -ffunction-sections \
+          -fdata-sections"
   export CXXFLAGS="$CFLAGS"
-  export LDFLAGS="-flto -fno-plt -Wl,-O2 -Wl,--as-needed -Wl,-z,now"
+  export LDFLAGS="-flto -fno-plt -Wl,-O3 -Wl,--as-needed -Wl,-z,now"
 
   bash build.sh \
     --asm=nasm \
