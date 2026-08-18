@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bar-lobby-bin
 _pkgname=BeyondAllReason
-pkgver=0.16.0
+pkgver=0.16.1
 _electronversion=37
 pkgrel=1
 pkgdesc="a new WIP lobby for the RTS game Beyond All Reason.(Prebuilt version.Use system-wide electron)"
@@ -39,7 +39,7 @@ source=(
     "Unlicense-${pkgver}.txt::https://raw.githubusercontent.com/beyond-all-reason/bar-lobby/v${pkgver}/LICENSES/Unlicense.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cfb3e244d06af0d66995e65c848b0816180aa64bf91ca1bf5c60a0fcde27597d'
+sha256sums=('17bca57e6455b2eef198b38a1909c10aa890043375ec2248514ff953b7b3b2f3'
             'aacbf85b939d752b122a6d2eb50650796b7ccf4d38d72bd9ef8b5c47022cdbe8'
             '4f3c4a321eb0c73182eee7afa3fe0111e24dec193f2d6febcf4207f26af26839'
             'ea55e798a1b601516093201441b474c7499b37db0e8920d7b96a21c2d67465b6'
