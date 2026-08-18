@@ -4,14 +4,16 @@ _pkgname=Vesktop
 name=vesktop
 pkgname=vesktop-electron
 pkgdesc="An Electron-based Discord app with Vencord & improved Linux support using system provided electron. Unsupported"
-pkgver=1.6.5
-pkgrel=4
+pkgver=1.6.7
+pkgrel=1
+
+_electron=electron43
 
 arch=("x86_64" "aarch64")
 url="https://github.com/Vencord/Vesktop"
 license=('GPL-3.0-only')
 
-depends=('electron40')
+depends=("${_electron}")
 makedepends=('pnpm' 'npm')
 optdepends=(
   'libnotify: Notifications'
@@ -23,17 +25,22 @@ conflicts=('vesktop')
 
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/Vencord/Vesktop/archive/v${pkgver}.tar.gz" "vesktop.desktop" "vesktop.sh")
 
-sha256sums=('4bb9b5e1acaf17a5f145931008fe4015f9b8c1116b769e1a55a68d5483f238fc'
+sha256sums=('8c0dbd65e85f46797bc89591a92f8677e2565ea51cd96f661f1dd5da74c819d1'
             '455c00b862aa0a7e18ca8e23d65d5c5ee4506cdfb15f1bf6f622cce39827de46'
-            '70ed888d801838ff2bea2b707bddb81fa403de11c7157503ad5e5f06037348f7')
+            '6fff721118efbe5a33e8ece228683a712ea06979dbdecf2a4ef7db2357a1e4d9')
 
-build() {
+prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
 
   # Use system's electron
-  sed -i "/linux/s/^/        \"electronDist\": \"\\/usr\\/lib\\/electron40\",\n/" package.json
+  sed -i "/linux/s/^/        \"electronDist\": \"\\/usr\\/lib\\/${_electron}\",\n/" package.json
 
   pnpm i --frozen-lockfile
+}
+
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  pnpm buildLibVesktop
   pnpm package:dir
 }
 
