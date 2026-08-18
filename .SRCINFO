@@ -1,6 +1,6 @@
 pkgbase = zzzsleep-bin
 	pkgdesc = A fancy sleep command written in Rust 💤
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/CodeTease/zzz
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = zzzsleep-bin
 	conflicts = zzzsleep
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/CodeTease/zzz/releases/download/v0.2.0/zzz-0.2.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 26bcbf3a749911d9ed84831f52ac8dfa39840f313056df09f4e80aa9d6c4f1b2
-	source_aarch64 = https://github.com/CodeTease/zzz/releases/download/v0.2.0/zzz-0.2.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 42d5bb60fcdff0bb59f83533c6cda8403822470050f8fc3ebcc0a0b63d69eda7
+	source_x86_64 = https://github.com/CodeTease/zzz/releases/download/v0.3.0/zzs-0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 416bb58efc8b98b56e4c2ca2337ac02d98e53336f545ac304a40cd47614307ca
+	source_aarch64 = https://github.com/CodeTease/zzz/releases/download/v0.3.0/zzs-0.3.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 582931697cc6a8753d0d9d98ce8fe0d76ace5963476017d81eaf48aec8b74217
 
 pkgname = zzzsleep-bin
