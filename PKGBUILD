@@ -1,7 +1,7 @@
 # Maintainer: Firefly Labs <fireflylabss@users.noreply.github.com>
 
 pkgname=optionterm
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='Sidebar-first GTK4 terminal with tiling splits and Adwaita preferences'
 arch=('x86_64')
@@ -33,7 +33,7 @@ makedepends=(
   'gdk-pixbuf2'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0e316acf2b88c64d19cab940a521261e79ca7a1a549f0ea5751cbcfc27e2b008')
+sha256sums=('862f8ba55ab89302a38cb5f141b58f93b13c2655fb1ba47fe3bd4669e6663a21')
 
 _srcdir="optionTerm-$pkgver"
 
