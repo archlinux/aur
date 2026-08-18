@@ -1,7 +1,7 @@
 pkgbase = dosbox-x-debugger-additions-git
 	pkgdesc = This is my fork of dosbox-x-git with custom additions to the debugger. Probably uninteresting to anyone else.
-	pkgver = 20669.a273b663c
-	pkgrel = 1
+	pkgver = 2026.08.02
+	pkgrel = 2
 	url = http://dosbox.sourceforge.net
 	install = dosbox-x.install
 	arch = i686
