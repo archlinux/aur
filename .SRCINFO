@@ -1,6 +1,6 @@
 pkgbase = rustdesk-git
 	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!
-	pkgver = 1.4.2.r10726.g878e1ff
+	pkgver = 1.4.9.r11328.gb0008ed
 	pkgrel = 1
 	url = https://rustdesk.com/
 	install = rustdesk-git.install
@@ -33,7 +33,6 @@ pkgbase = rustdesk-git
 	depends = alsa-lib
 	depends = libva
 	depends = libappindicator-gtk3
-	depends = pam
 	depends = gst-plugins-base
 	depends = gst-plugin-pipewire
 	depends = pulse-native-provider
@@ -62,7 +61,7 @@ pkgbase = rustdesk-git
 	optdepends = libva-intel-driver: h264 support for Intel Quick Sync GPUs (<= Haswell)
 	optdepends = libva-mesa-driver: h264 h265/HEVC support for AMD and NVIDIA GPUs
 	optdepends = libva-utils: vainfo query codec support
-	provides = rustdesk=1.4.2
+	provides = rustdesk=1.4.9
 	conflicts = rustdesk
 	noextract = meson-1.8.2.tar.gz
 	noextract = pkgconf-pkgconf-pkgconf-2.5.1.tar.gz

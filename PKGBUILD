@@ -4,7 +4,7 @@
 # Contributor: Rojikku <RojikkuNoKami at gmail dot com>
 # Contributor: Tech <technetium1337 at gmail dot com>
 
-# rm -rf ~/.cache/vcpkg ~/.cargo
+# rm -rf ~/.cache/vcpkg ~/.cargo ~/.pub-cache
 
 # 0 for PKGBUILD commands which may go out of date
 # 1 for build.py which should stay current
@@ -16,19 +16,19 @@ _opt_BUILD_PY=0
 # $1 is the complex version, could be 1.4.1.r10629.g7a3e67e
 # $2 is the simple version, always 3 dotted numbers 1.4.1
 _vercmp() {
-  local pla pra rv='0' i
-  IFS='.' read -ra pla <<< "${1##.r*}"
-  IFS='.' read -ra pra <<< "$2"
-  for ((i = 0 ; i < "${#pra[@]}" ; i++ )); do
-    if [ "${pla[i]}" -lt "${pra[i]}" ]; then
-      rv='-1'
+  local _pla _pra _rv='0' _i
+  IFS='.' read -ra _pla <<< "${1##.r*}"
+  IFS='.' read -ra _pra <<< "$2"
+  for ((_i = 0 ; _i < "${#_pra[@]}" ; _i++ )); do
+    if [ "${_pla[_i]}" -lt "${_pra[_i]}" ]; then
+      _rv='-1'
       break
-    elif [ "${pla[i]}" -gt "${pra[i]}" ]; then
-      rv='1'
+    elif [ "${_pla[_i]}" -gt "${_pra[_i]}" ]; then
+      _rv='1'
       break
     fi
   done
-  printf '%s' "${rv}"
+  printf '%s' "${_rv}"
 }
 #_vercmp '1.3.7' '1.4.1'; exit 1
 #_vercmp '1.4.1.r10629.g7a3e67e' '1.4.1'; exit 1
@@ -76,15 +76,31 @@ _opt_NICE='nice -n1'
 # 1.2.7 hwcodec v0.6.0 builtin       (https://github.com/21pages/hwcodec#89879f2f)
 # 1.3.0 hwcodec v0.7.0 vcpkg::ffmpeg (https://github.com/rustdesk-org/hwcodec#6abd1898)
 # restored in 1.4.1
+# To get H264 H265/HEVC rustdesk must be compiled with vcpkg::ffmpeg build modified by rustdesk.
 #
-# To get H264 H265, rustdesk must be compiled with vcpkg::ffmpeg build modified by rustdesk.
-# libva and appropriate libva hardware driver must be installed and rebooted. See optdepends.
-# Client supports all soft codecs and compiled in hardware codecs.
-# Client hardware decode support (VAEntrypointVLD) preferred but not required.
-# Host offers all encode software codecs and only hardware codecs supported by hardware (VAEntrypointEncSlice).
-# Linux host may disable H265 even if supported by hardware. https://github.com/rustdesk/rustdesk/discussions/4095
-# Linux client does support H265, verified by connecting to a Windows host >= Skylake or Android.
-# Use libva-utils::vainfo to list supported hardware codecs VAProfileH264Main or VAProfileHEVCMain
+# Client and host soft codecs VP8 VP9 AV1 supported on all platforms.
+# Client and host hardware codecs H264 H265 require
+#   Install hardware codec library package matched to the CPU or video card. restart rustdesk.
+#   See optdepends for which package to use.
+# Host hardware codecs require
+#   CPU or video card support
+# Use vainfo from libva-utils to list supported hardware codecs.
+#      VAProfileH264Main               : VAEntrypointVLD
+#      VAProfileH264Main               : VAEntrypointEncSlice
+#      VAProfileHEVCMain               : VAEntrypointVLD
+#      VAProfileHEVCMain               : VAEntrypointEncSlice
+# Client requires hardware codec library. Codec decode support (VAEntrypointVLD) is not required.
+# Host requires hardware codec library and hardware encode support (VAEntrypointEncSlice).
+# Linux host may disable H265 even if supported by hardware.
+# https://github.com/rustdesk/rustdesk/discussions/4095
+# Linux client without H265 decode does support H265,
+# verified by connecting to a Windows host >= Skylake or Android.
+
+# H264 and H265 have quality issues affected by both client and host.
+# One client will see heavy pixelation and green rectangles. Another
+# client will be perfect. Switch between different codecs to improve quality.
+# I find the best quality in this order: AV1, VP9, VP8, H264, H265
+
 # https://wiki.archlinux.org/title/Hardware_video_acceleration
 _fn_hwcodec() {
   _opt_hwcodec_py=()
@@ -107,10 +123,10 @@ set -u
 _pkgname='rustdesk'
 pkgname="${_pkgname}"
 pkgname+="-git"
-pkgver=1.4.2.r10726.g878e1ff
+pkgver=1.4.9.r11328.gb0008ed
 pkgrel=1
-_sfx='-pr1-5c9b4ab'
-#_sfx=''
+_sfx=''
+#_sfx='-pr1-998b758'
 _HBB=( # dates are retrieved from git fetch; tig. Every version gets a specific hbb.
   '1.3.7:20250120-49c6b24a7a8c39d4448e07b743007ef1a3febd43'
   '1.3.8:20250223-7cf11f7b771e27ecbd14fd1dd0ced55a64f40eb5'
@@ -118,6 +134,13 @@ _HBB=( # dates are retrieved from git fetch; tig. Every version gets a specific 
   '1.4.0:20250509-6e556f7e1751a3a709cd5cca0df7268ba3cb1c48'
   '1.4.1:20250718-f91459c4ab80fc3cfdef0882b2af51f984bc914c'
   '1.4.2:20250904-9e7696c7d4e346508ba68e801a53c6d1f1748fb5'
+  '1.4.3:20251008-5ed0afde0841659e2fb37ae7acaddc005fa1a8d3'
+  '1.4.4:20251117-a86eda749e6fa33c282bab680e6b504d3ad87539'
+  '1.4.5:20251117-073403edbf1fffcb3acfe8cbe7582ee873b23398'
+  '1.4.6:20260302-48c37de3e6c4e399af6f51ca20e8e3e1fd037976'
+  '1.4.7:20260601-df6badca5bf81b4e9836256cf8e31c993ad70dd1'
+  '1.4.8:20260604-387603f47cbb15c0d3dc3d67ae3396d3eb707daf'
+  '1.4.9:20260702-7e1c392c62d39c364127307cd408421dd5f8cfb0'
 )
 _pkgver="${pkgver%.r*}"
 _pkgverhbb="$(_fn_VCL "${_pkgver}" -eq "${_HBB[@]}")"; unset _HBB; test "$(_vercmp "${_pkgver}" '1.3.7')" -lt 0 -o ! -z "${_pkgverhbb}" || exit 1
@@ -127,8 +150,7 @@ url='https://rustdesk.com/'
 _giturl='https://github.com/rustdesk/rustdesk'
 _giturlhbb='https://github.com/rustdesk/hbb_common'
 license=('AGPL-3.0-only')
-_dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
-#_dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libvdpau' 'libappindicator-gtk3' 'pam' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
+_dpr=('gtk3' 'xdotool' 'libxcb' 'libxfixes' 'alsa-lib' 'libva' 'libappindicator-gtk3' 'gst-plugins-base' 'gst-plugin-pipewire') # from res/PKGBUILD/depends
 depends=("${_dpr[@]}" 'pulse-native-provider' 'gst-plugins-base-libs')
 depends+=('hicolor-icon-theme' 'xdg-utils')
 depends+=('xdg-user-dirs')
@@ -309,6 +331,7 @@ unset _fk
 _vcpkg=(libvpx libyuv opus aom)
 
 _prepare_vc() {
+  local -
   msg '_prepare_vc'
   set -u
   mkdir -p "${_srcdirvc}/downloads"
@@ -342,11 +365,11 @@ print(data_loaded.get('env').get('VCPKG_COMMIT_ID'))
     set +u
     false
   fi
-  set +u
 }
 
 # Same elements in same order
 _dpr_check() {
+  local -
   msg '_dpr_check'
   set -u
   pushd "${_srcdir}" > /dev/null
@@ -365,10 +388,10 @@ _dpr_check() {
     done
   )
   popd > /dev/null
-  set +u
 }
 
 _flutter_check() {
+  local -
   set +u; msg '_flutter_check'; set -u
   if [ "${_opt_FLUTTER}" -ne 0 ]; then
     pushd "${_srcdir}"
@@ -422,6 +445,7 @@ print(data_loaded.get('env').get('FLUTTER_RUST_BRIDGE_VERSION'))
 }
 
 _mod_py() {
+  local -
   if [ "$(grep -c -F -e 'os.system' 'build.py')" -gt 1 ]; then
     local _lf=$'\n'
     local _nc='
@@ -450,6 +474,7 @@ _fn_setvars() {
 }
 
 prepare() {
+  local -
   _dpr_check
   #rm -rf ~/'.cache/vcpkg/archives' ~/'.vcpkg'
   _prepare_vc
@@ -478,8 +503,8 @@ prepare() {
 # https://github.com/flutter/flutter/issues/59533
 # Gets rid of all the unnecessary downloads
 
-#_FBIN="${_FBIN}"
-#export PATH="\${PATH/\${_FBIN}:/}"
+_FBIN="${_FBIN}"
+export PATH="\${PATH/\${_FBIN}:/}"
 
 echo '#flutter --no-version-check' "\$@"
 ${srcdir}/flutter/bin/flutter --no-version-check "\$@"
@@ -490,8 +515,8 @@ EOF
 
 # dart doesn't do a version check. Let's reveal the commands.
 
-#_FBIN="${_FBIN}"
-#export PATH="\${PATH/\${_FBIN}:/}"
+_FBIN="${_FBIN}"
+export PATH="\${PATH/\${_FBIN}:/}"
 
 echo '#dart' "\$@"
 ${srcdir}/flutter/bin/dart "\$@"
@@ -539,10 +564,10 @@ EOF
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; cp -pr "${_srcdirfrb}" 'fa'; ln -s "${_srcdirfrb}" 'fb'; false
   #cd '..'; cp -pr "${_srcdirvc}" 'va'; ln -s "${_srcdirvc}" 'vb'; false
   #diff -pNaru5 'a' 'b' > "0000-$RANDOM@domain.patch"
-  set +u
 }
 
 build() {
+  local -
   msg2 'Build vcpkg'
   set -u
   unset VCPKG_DOWNLOADS
@@ -609,7 +634,6 @@ build() {
     fi
     set +x
   fi
-  set +u
 }
 
 # This rebuilds the entire package
@@ -619,6 +643,7 @@ check_disabled() {
 }
 
 package() {
+  local -
   set -u
   cd "${_srcdir}"
 
@@ -673,6 +698,5 @@ X-Desktop-File-Install-Version=0.23
 Name=Open a New Window
 EOF
   install -Dm644 'LICENCE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-  set +u
 }
 set +u
