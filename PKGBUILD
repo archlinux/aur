@@ -21,7 +21,7 @@ license=('MIT')
 provides=("${_appname}")
 conflicts=("${_appname}")
 
-options=(!strip)
+options=('!strip')
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
