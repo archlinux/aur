@@ -1,6 +1,6 @@
 pkgbase = nnn-emoji-git
 	pkgdesc = The fastest terminal file manager ever written (with emoji as file icons).
-	pkgver = 5.1.r29.gb81109d1
+	pkgver = 5.3.r7.g64dbbc0c
 	pkgrel = 1
 	url = https://github.com/jarun/nnn
 	arch = x86_64
