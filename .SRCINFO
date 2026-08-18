@@ -1,0 +1,16 @@
+pkgbase = culo-git
+	pkgdesc = ncurses-less terminal editor with nano keybindings. extremely fast and small, mostly compatible with nano syntax highlighting
+	pkgver = 0.r249.g816757a
+	pkgrel = 1
+	url = https://github.com/rofl0r/culo
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = make
+	provides = culo
+	source = culo::git+https://github.com/rofl0r/culo.git
+	source = nano-syntax::git+https://github.com/galenguyer/nano-syntax-highlighting.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = culo-git
