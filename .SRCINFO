@@ -1,6 +1,6 @@
 pkgbase = voltius
 	pkgdesc = Local-first SSH/SFTP/Serial client with E2EE sync, plugins, and no account required
-	pkgver = 0.26.1
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/VoltiusApp/voltius
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = voltius
 	depends = libsecret
 	depends = hicolor-icon-theme
 	options = !lto
-	source = voltius-0.26.1.tar.gz::https://github.com/VoltiusApp/voltius/archive/refs/tags/v0.26.1.tar.gz
+	source = voltius-0.27.0.tar.gz::https://github.com/VoltiusApp/voltius/archive/refs/tags/v0.27.0.tar.gz
 	source = voltius.desktop
-	sha256sums = bc4599cc8d074a050070f0ddc8ee33d7ea69a5fe4ec00e21e8424b36ae206098
+	sha256sums = 61b661a234dd6c3435102baef8d20bc8644d05c751249af55feb8eea36b6287c
 	sha256sums = 101c1683674e94e286f06627f76d0422e506afd2579620d202710bd304693f44
 
 pkgname = voltius
