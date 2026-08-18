@@ -1,9 +1,9 @@
 # Maintainer: dbas.so <d dot bass05 at proton dot me>
 pkgname=beyondallreason-git
 electronver=42
-pkgver=r4555.30fda84
+pkgver=r4620.e0217bd
 electronver=42
-pkgrel=2
+pkgrel=1
 pkgdesc="The latest release of BYAR-Chobby, the launcher for Beyond All Reason - An open source RTS game built on top of the Spring RTS Engine"
 arch=(x86_64)
 url="https://beyondallreason.info"
@@ -20,7 +20,7 @@ conflicts=(beyondallreason)
 
 b2sums=('SKIP'
         'SKIP'
-        'f60a49716afae0ff71e76e497852ae6849407dcbf302a0098c914b1b75a672043beda334e2ac311a11237d6907ffa51ab035607786ad2adfcdc12cf58c78b21b'
+        '2b38725afa65f4e54606df379fa0184345611c76336c205db2fd1c5ab8f6fe42e10c8a002599325f790207f52de0ba9bd5022f813d7a436f6b2378af9d33d638'
         '29bad1442d12fe970722e2d4ab6f4daea47b8d3014b1d4dc11eab5b790329c434f7b109a21a396138313a10cd36821f9c711515ed4666466c71e7f0b90ff65c5')
 
 pkgver() {
