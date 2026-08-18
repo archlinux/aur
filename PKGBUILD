@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-physics9
-pkgver=9.3.0
+pkgver=9.4.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -30,7 +30,7 @@ optdepends=(
 )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('154b67338a2f047fc3d0dc509f8d03b10d53961ea0744d361695a393fd67bff4')
+sha256sums=('31f2b4862590c1133fc8ca55efe019477c0bc51cc6a13d0a820a94162ba012ff')
 
 _build_dir="${_pkgbase}-${pkgname}_${pkgver}/build"
 
