@@ -2,7 +2,7 @@
 
 pkgname=socket-cli
 _pkgname=socket
-pkgver=1.1.119
+pkgver=1.1.158
 pkgrel=1
 pkgdesc='Socket CLI — find and fix vulnerabilities, malware and supply chain risks in your dependencies'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('npm: socket-npm and socket-npx wrappers'
             'socket-patch: support for the "socket patch" command (separate Rust binary)')
 provides=('socket')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-$pkgver.tgz")
-sha256sums=('5904d6833005ca78353467f233726cfcbad2acea39f1cf515a6cca57d9599364')
+sha256sums=('6b983c01aa841fecf132db39d09caeef8636ee6d00bcaa35358bb8f2d059fde8')
 
 package() {
   local instdir="$pkgdir/usr/lib/$pkgname"

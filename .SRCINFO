@@ -1,6 +1,6 @@
 pkgbase = socket-cli
 	pkgdesc = Socket CLI — find and fix vulnerabilities, malware and supply chain risks in your dependencies
-	pkgver = 1.1.119
+	pkgver = 1.1.158
 	pkgrel = 1
 	url = https://github.com/SocketDev/socket-cli
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = socket-cli
 	optdepends = yarn: socket-yarn wrapper
 	optdepends = socket-patch: support for the "socket patch" command (separate Rust binary)
 	provides = socket
-	source = socket-cli-1.1.119.tgz::https://registry.npmjs.org/socket/-/socket-1.1.119.tgz
-	sha256sums = 5904d6833005ca78353467f233726cfcbad2acea39f1cf515a6cca57d9599364
+	source = socket-cli-1.1.158.tgz::https://registry.npmjs.org/socket/-/socket-1.1.158.tgz
+	sha256sums = 6b983c01aa841fecf132db39d09caeef8636ee6d00bcaa35358bb8f2d059fde8
 
 pkgname = socket-cli
