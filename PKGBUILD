@@ -1,31 +1,53 @@
-# Maintainer: Douglas Creager <dcreager at dcreager dot net>
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
 
 pkgname=pi-coding-agent
-pkgver=0.83.0
+pkgver=0.84.2
 pkgrel=1
-pkgdesc='A terminal-based coding agent with multi-model support, mid-session model switching, and a simple CLI for headless coding tasks'
+pkgdesc="Coding agent CLI with read, bash, edit, write tools and session management"
 arch=('x86_64' 'aarch64')
-url='https://pi.dev/'
+url="https://github.com/earendil-works/pi"
 license=('MIT')
-options=(!debug !strip)
+depends=('glibc' 'gcc-libs')
+makedepends=('bun' 'nodejs' 'npm')
+optdepends=(
+    'git: repository-aware workflows and session integration'
+    'ripgrep: faster in-repository search'
+)
+provides=('pi')
+conflicts=('pi-coding-agent-bin' 'pi-coding-agent-git')
+options=('!strip' '!debug')
+source=("pi-${pkgver}-source.tar.gz::${url}/releases/download/v${pkgver}/pi-${pkgver}-source.tar.gz")
+sha256sums=('96a9efad258fa6fa89f661bbf830c356dd3baf6cd06c6543ce4e8253c143460e')
 
-source_x86_64=("pi-linux-$pkgver.tar.gz::https://github.com/earendil-works/pi/releases/download/v$pkgver/pi-linux-x64.tar.gz")
-sha256sums_x86_64=("b0625eb623197b0afe20c870d21ef2f34481f1504e5777df3f698a66c7636f5f")
-source_aarch64=("pi-linux-$pkgver.tar.gz::https://github.com/earendil-works/pi/releases/download/v$pkgver/pi-linux-arm64.tar.gz")
-sha256sums_aarch64=("b84f9016610c738dd9440df62f649880dbe9951db97a7ae936cbf292850e9802")
-noextract=("pi-linux-$pkgver.tar.gz")
-
-makedepends=("tar")
+build() {
+  cd "$srcdir/pi-$pkgver"
+  case "$CARCH" in
+    x86_64)  platform=linux-x64 ;;
+    aarch64) platform=linux-arm64 ;;
+  esac
+  # Official recipe (scripts/build-binaries.sh): npm ci, tsgo build of all
+  # workspace packages with bundled model data, then bun build --compile into
+  # a standalone binary. --skip-deps keeps the single current-platform build
+  # (npm ci already installs the matching clipboard binding).
+  ./scripts/build-binaries.sh --platform "$platform" --skip-deps --offline-model-data --out "$srcdir/build"
+}
 
 package() {
-    mkdir -p "$srcdir/pi-linux-$pkgver"
-    tar xCf "$srcdir/pi-linux-$pkgver" "pi-linux-$pkgver.tar.gz"
-    install -d "$pkgdir/opt"
-    cp -dr --no-preserve=ownership "$srcdir/pi-linux-$pkgver/pi" "$pkgdir/opt/pi-coding-agent"
+  # makepkg re-sources the PKGBUILD for the fakeroot package() step, so the
+  # platform chosen in build() is not available here — recompute it.
+  case "$CARCH" in
+    x86_64)  platform=linux-x64 ;;
+    aarch64) platform=linux-arm64 ;;
+  esac
+  cd "$srcdir/build/$platform"
+  # The compiled binary resolves its sibling assets (package.json,
+  # node_modules, theme, export-html, wasm) relative to the real binary path,
+  # so ship the bundle untouched under /opt and expose it via /usr/bin/pi.
+  install -d "$pkgdir/opt/$pkgname"
+  cp -a --no-preserve=ownership . "$pkgdir/opt/$pkgname/"
 
-    install -d "$pkgdir/usr/bin"
-    ln -s ../../opt/pi-coding-agent/pi "$pkgdir/usr/bin/pi"
+  install -d "$pkgdir/usr/bin"
+  ln -s "../../opt/$pkgname/pi" "$pkgdir/usr/bin/pi"
 
-    cd "$pkgdir/opt/pi-coding-agent"
-    install -Dm644 README.md CHANGELOG.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 "$srcdir/pi-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
