@@ -4,10 +4,10 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=patch_30Mar2026.r102.g7e52522
+pkgver=patch_4Jul2026.r770.g4db85d8
 pkgrel=1
-pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
-url="https://lammps.sandia.gov/"
+pkgdesc="Public development project of the LAMMPS MD software package"
+url="https://github.com/lammps/lammps"
 arch=('x86_64')
 license=('GPL')
 depends=('fftw' 'openmpi' 'ffmpeg' 'libpng' 'python')

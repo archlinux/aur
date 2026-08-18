@@ -1,8 +1,8 @@
 pkgbase = lammps-git
-	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
-	pkgver = patch_30Mar2026.r102.g7e52522
+	pkgdesc = Public development project of the LAMMPS MD software package
+	pkgver = patch_4Jul2026.r770.g4db85d8
 	pkgrel = 1
-	url = https://lammps.sandia.gov/
+	url = https://github.com/lammps/lammps
 	arch = x86_64
 	license = GPL
 	makedepends = cmake>=3.1
