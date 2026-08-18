@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=airgorah-bin
 _appname="com.martin-olivier.${pkgname%-bin}"
-pkgver=0.7.4
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A WiFi auditing software that can perform deauth attacks and passwords cracking.(Prebuilt version)"
 arch=(
@@ -26,8 +26,8 @@ optdepends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_aarch64.pkg.tar.zst")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pkg.tar.zst::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_x86_64.pkg.tar.zst")
-sha256sums_aarch64=('e42293328940316f7f5ce6fe5266af9248c364b4c957d6b0776787cfa14a7d7d')
-sha256sums_x86_64=('827f9a0dfa312f072bbcf7c9f34db9f86428c687d2ebd6b38978e5f43ca9d13d')
+sha256sums_aarch64=('609f745e46e6079ea406d356eb505b1db042aba4cd5a30d78e5f95d8e59c4616')
+sha256sums_x86_64=('2efd4f1f5b85cc997033d221a620564d1ad6e70fdbaea47a1100b988a303d1d7')
 prepare() {
     sed -i "s/\/usr\/share\/pixmaps\/${pkgname%-bin}.png/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
