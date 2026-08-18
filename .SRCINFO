@@ -1,22 +1,21 @@
 pkgbase = another-redis-desktop-manager-bin
 	pkgdesc = A faster, better and more stable Redis desktop manager [GUI client].Prebuilt version.Use system-wide electron.
-	pkgver = 1.7.2
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://github.com/qishibo/AnotherRedisDesktopManager
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = electron12
-	depends = java-runtime
-	provides = another-redis-desktop-manager=1.7.2
+	depends = electron12-bin
+	provides = another-redis-desktop-manager=1.7.4
 	conflicts = another-redis-desktop-manager
-	source = LICENSE-1.7.2::https://raw.githubusercontent.com/qishibo/AnotherRedisDesktopManager/v1.7.2/LICENSE
+	source = LICENSE-1.7.4::https://raw.githubusercontent.com/qishibo/AnotherRedisDesktopManager/v1.7.4/LICENSE
 	source = another-redis-desktop-manager.sh
 	sha256sums = c0bca7c1b149b2d86d21b24413a7fd05eaf0b4a8ae9ab361da095c9b287e6ae0
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = another-redis-desktop-manager-1.7.2-aarch64.AppImage::https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.7.2/Another-Redis-Desktop-Manager-linux-1.7.2-arm64.AppImage
-	sha256sums_aarch64 = fd2c093fb9f1a203a67840500595e261e2661ada21e1cb4f4e532cf0204239b2
-	source_x86_64 = another-redis-desktop-manager-1.7.2-x86_64.AppImage::https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.7.2/Another-Redis-Desktop-Manager-linux-1.7.2-x86_64.AppImage
-	sha256sums_x86_64 = 25befbc2864c5b8c431f1d9d6db820a87e8c2b72930322580874a3c5f823b189
+	source_aarch64 = another-redis-desktop-manager-1.7.4-aarch64.AppImage::https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.7.4/Another-Redis-Desktop-Manager-linux-1.7.4-arm64.AppImage
+	sha256sums_aarch64 = 70d0f8ac686c8c67324ff41d827b45237bc3cfb23d27a24246b2065e707d91e3
+	source_x86_64 = another-redis-desktop-manager-1.7.4-x86_64.AppImage::https://github.com/qishibo/AnotherRedisDesktopManager/releases/download/v1.7.4/Another-Redis-Desktop-Manager-linux-1.7.4-x86_64.AppImage
+	sha256sums_x86_64 = 089ae6c4592e1a804c38d299cd2979d1f84c58ba704d70f9c981cf0eebfa7316
 
 pkgname = another-redis-desktop-manager-bin

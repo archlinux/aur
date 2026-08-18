@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=another-redis-desktop-manager-bin
 _pkgname=Another-Redis-Desktop-Manager
-pkgver=1.7.2
+pkgver=1.7.4
 _electronversion=12
 pkgrel=1
 pkgdesc="A faster, better and more stable Redis desktop manager [GUI client].Prebuilt version.Use system-wide electron."
@@ -14,8 +14,7 @@ license=('MIT')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
 depends=(
-    "electron${_electronversion}"
-    'java-runtime'
+    "electron${_electronversion}-bin"
 )
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/qishibo/AnotherRedisDesktopManager/v${pkgver}/LICENSE"
@@ -25,8 +24,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/dow
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-linux-${pkgver}-x86_64.AppImage")
 sha256sums=('c0bca7c1b149b2d86d21b24413a7fd05eaf0b4a8ae9ab361da095c9b287e6ae0'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('fd2c093fb9f1a203a67840500595e261e2661ada21e1cb4f4e532cf0204239b2')
-sha256sums_x86_64=('25befbc2864c5b8c431f1d9d6db820a87e8c2b72930322580874a3c5f823b189')
+sha256sums_aarch64=('70d0f8ac686c8c67324ff41d827b45237bc3cfb23d27a24246b2065e707d91e3')
+sha256sums_x86_64=('089ae6c4592e1a804c38d299cd2979d1f84c58ba704d70f9c981cf0eebfa7316')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -57,7 +56,8 @@ prepare() {
     _check_electron_version
     local _app_dir=$(_get_app_dir)
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
-    find "${_app_dir}/resources" -type d -exec chmod 755 {} \;
+    rm -rf "${_app_dir}/resources/app.asar.unpacked/node_modules/font-list/libs/"{darwin,win32}
+    find "${_app_dir}/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
