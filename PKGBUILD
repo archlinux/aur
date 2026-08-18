@@ -8,14 +8,9 @@ arch=('x86_64')
 url="https://github.com/melpomenex/incrementum-tauri"
 license=('Apache-2.0')
 depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'gcc-libs' 'glibc' 'zstd')
-optdepends=(
-    'notebooklm-py: NotebookLM integration for AI-powered flashcard generation'
-    'python-notebooklm: Alternative NotebookLM package'
-)
 options=('!strip' '!lto' '!debug')
 provides=('incrementum')
 conflicts=('incrementum')
-
 source=("https://github.com/melpomenex/incrementum-tauri/releases/download/v${pkgver}/incrementum-${pkgver}-1-x86_64.pkg.tar.zst")
 sha256sums=('74739fa253bf71d85a548f163ee7f8e0ace05346227f454ff7d0e988fa4a1061')
 
