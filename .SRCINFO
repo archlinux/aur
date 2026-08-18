@@ -7,10 +7,11 @@ pkgbase = sanic
 	arch = aarch64
 	license = MIT
 	makedepends = go
+	depends = glibc
 	source = sanic.service
 	source = sanic.sysusers
 	source = sanic.tmpfiles
-	source = https://gitlab.com/xengi/sanic/-/archive/0.0.1/sanic-0.0.1.tar.gz?ref_type=tags
+	source = sanic-0.0.1.tar.gz::https://gitlab.com/xengi/sanic/-/archive/0.0.1/sanic-0.0.1.tar.gz?ref_type=tags
 	sha256sums = ecf53c83987bbb52b0fd0363180b7a81f02251c9406573c81dad6e4d5e3a590a
 	sha256sums = 23b7b98ac6ca3e071f099aa15411f7a451d93b55e5396020cf74ee8ce79defa4
 	sha256sums = fb2834c0753c16f824986ad3c87de01f307ddf5cc8c04fd427e8abbf1863b52c

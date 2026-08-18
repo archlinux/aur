@@ -9,10 +9,11 @@ arch=('x86_64' 'aarch64')
 url=https://gitlab.com/xengi/sanic
 license=('MIT')
 makedepends=('go')
+depends=('glibc')
 source=("$pkgname.service"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles"
-        "${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz?ref_type=tags")
+        "${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz?ref_type=tags")
 sha256sums=('ecf53c83987bbb52b0fd0363180b7a81f02251c9406573c81dad6e4d5e3a590a'
             '23b7b98ac6ca3e071f099aa15411f7a451d93b55e5396020cf74ee8ce79defa4'
             'fb2834c0753c16f824986ad3c87de01f307ddf5cc8c04fd427e8abbf1863b52c'
