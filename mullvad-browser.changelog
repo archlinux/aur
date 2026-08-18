@@ -1,3 +1,13 @@
+Mullvad Browser 15.0.20 - August 18 2026
+ * All Platforms
+   * Updated Firefox to 140.14.0esr
+   * Updated uBlock Origin to 1.73.0
+   * Bug 570: Rebase Mullvad Browser stable onto 140.14.0esr [mullvad-browser]
+   * Bug 45219: Backport Security Fixes from Firefox 154 [tor-browser]
+ * Build System
+   * All Platforms
+     * Bug 41850: Update keyring/torbrowser.gpg for new subkey and updated expiration date of the main key [tor-browser-build]
+
 Mullvad Browser 15.0.19 - July 21 2026
  * All Platforms
    * Updated Firefox to 140.13.0esr
