@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=methylumi
-_pkgver=2.58.0
+_pkgver=2.58.1
 pkgname=r-${_pkgname,,}
-pkgver=2.58.0
+pkgver=2.58.1
 pkgrel=1
 pkgdesc='Handle Illumina methylation data'
 arch=('any')
@@ -48,7 +48,7 @@ optdepends=(
   r-xtable
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c073a33ead7cbb59acd0eb68b8ceae9443c463ab2546e1a284492f2f634a8b53')
+sha256sums=('2fab9ebd42f5792f50a6bd20207a10c44b0797199805083077a42d42d523ae34')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
