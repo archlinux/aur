@@ -1,0 +1,5 @@
+[claude-conversation-search-bin]
+source = "github"
+github = "ticpu/claude-conversation-search-mcp"
+use_latest_release = true
+prefix = "v"
