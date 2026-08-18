@@ -1,8 +1,8 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-msgs11
-pkgver=11.1.0
-pkgrel=2
+pkgver=11.2.0
+pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
 pkgdesc="Messages for Gazebo robot simulation."
@@ -25,7 +25,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('1eaa47500aa8a6fa65bcf76cf8d03c78d298e6da730ee2371b119dff732b639d')
+sha256sums=('c752b2d446511788fa9eb5cf9a7128d129f9e5fb3f678d737d2a2927679f3c9f')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
