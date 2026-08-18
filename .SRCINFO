@@ -1,7 +1,7 @@
 pkgbase = surrealengine-git
 	pkgdesc = Unreal Engine 1 reimplementation (Git version)
 	pkgver = r2222.a43494d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dpjudas/SurrealEngine
 	arch = x86_64
 	license = zlib AND MIT AND LGPL3 (for SurrealVideo) AND various others
