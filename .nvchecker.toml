@@ -1,0 +1,5 @@
+[che]
+source = "github"
+github = "aroum/che"
+use_latest_release = true
+prefix = "v"
