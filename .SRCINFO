@@ -1,0 +1,27 @@
+pkgbase = vynody-bin
+	pkgdesc = Cross-platform music player built with Flutter
+	pkgver = 1.17.0
+	pkgrel = 1
+	url = https://github.com/axel10/vynody
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = cairo
+	depends = dbus
+	depends = fontconfig
+	depends = freetype2
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = libepoxy
+	depends = pango
+	depends = hicolor-icon-theme
+	optdepends = ffmpeg: Audio decoding support
+	provides = vynody=1.17.0
+	conflicts = vynody
+	options = !strip
+	source_x86_64 = vynody-bin-1.17.0.deb::https://github.com/axel10/vynody/releases/download/v1.17.0/vynody-linux-1.17.0-amd64.deb
+	sha256sums_x86_64 = bcd4ce4e20c5b5a0c471591eb74956bfbac6c01637b2449a8111e0de4f2a5fad
+
+pkgname = vynody-bin
