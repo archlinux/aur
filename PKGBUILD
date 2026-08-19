@@ -2,7 +2,7 @@
 
 _name=igua
 pkgname=${_name}
-pkgver=0.2.2
+pkgver=0.2.3
 _version=${pkgver}
 pkgrel=1
 pkgdesc="Iterative Gene clUster Analysis, a high-throughput method for gene cluster family identification."
@@ -13,7 +13,7 @@ depends=('python' 'python-scipy' 'python-gb-io' 'python-rich' 'python-numpy' 'py
 makedepends=('python-maturin' 'python-build' 'python-installer')
 optdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${_version}.tar.gz")
-sha256sums=(302bf9bab8d2308ef17b7962a2d8b5b437a198aefc4055fe94d9a35b3a31205f)
+sha256sums=(a9f0cf5fc18dd42fd4a3278b8d5e74a26473c5c24c082e425263b36436acb155)
 
 build() {
     cd "${srcdir}/${_name}-${_version}"
