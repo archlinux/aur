@@ -23,7 +23,9 @@ sha256sums_aarch64=('d66e8398e34777765b14af2245c51315c3cc054ab0b781f7390630b6bc6
 
 package(){
   # Extract package data
-  tar xpvf "${srcdir}/data.tar.xz" --xattrs-include='*' --numeric-owner -C "${pkgdir}"
+  data_archive=$(find ${srcdir} -name  data.tar.*)
+  [[ -z "${data_archive}" ]] && { error "data.tar.* not found in ${srcdir}"; return 1; }
+  tar xpvf "${data_archive}" --xattrs-include='*' --numeric-owner -C "${pkgdir}"
 
   # Modify files
   cd "${pkgdir}"
