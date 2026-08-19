@@ -1,6 +1,6 @@
 pkgbase = posthog-cli-bin
 	pkgdesc = PostHog CLI tool for feature flags, experiments, and analytics
-	pkgver = 0.11.3
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/PostHog/posthog
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = posthog-cli-bin
 	depends = zlib
 	provides = posthog-cli
 	conflicts = posthog-cli
-	source_x86_64 = posthog-cli-bin-0.11.3-x86_64.tar.gz::https://github.com/PostHog/posthog/releases/download/posthog-cli/v0.11.3/posthog-cli-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 3125329d2377e44023259812075e40d5b17afc0cc07b6ce3ed72a58356ad0a69
-	source_aarch64 = posthog-cli-bin-0.11.3-aarch64.tar.gz::https://github.com/PostHog/posthog/releases/download/posthog-cli/v0.11.3/posthog-cli-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 7dbbf532bf87ef025a88445e7c310951a1a2f604c0f5683288bd14226ef2a25b
+	source_x86_64 = posthog-cli-bin-0.13.0-x86_64.tar.gz::https://github.com/PostHog/posthog/releases/download/posthog-cli/v0.13.0/posthog-cli-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9c2a579983cc3373ade95153e545ba6cf830e5c8b4f7ac86c00712e8e0a1c6eb
+	source_aarch64 = posthog-cli-bin-0.13.0-aarch64.tar.gz::https://github.com/PostHog/posthog/releases/download/posthog-cli/v0.13.0/posthog-cli-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 207299312eb08808ab3f18231dcdb976d30c7e00d507a6dc892b58852d23a12a
 
 pkgname = posthog-cli-bin
