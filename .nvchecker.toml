@@ -1,0 +1,4 @@
+[squawk-cli]
+source = "git"
+git = "https://github.com/sbdchd/squawk.git"
+prefix = "v"
