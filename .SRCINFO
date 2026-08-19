@@ -1,22 +1,25 @@
 pkgbase = godl
 	pkgdesc = Godot project and version manager
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
-	url = https://github.com/sockeye-d/godl
+	url = https://codeberg.org/fishn/godl
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	depends = git
 	depends = qt6-base
-	depends = qt6-declarative
-	depends = kdeclarative
-	depends = kirigami
-	depends = kirigami-addons
-	depends = breeze-icons
-	depends = qqc2-desktop-style
+	depends = kcoreaddons
+	depends = kconfig
 	depends = kconfigwidgets
-	source = git+https://github.com/sockeye-d/godl.git#tag=v1.3.1
+	depends = karchive
+	depends = kwidgetsaddons
+	depends = kxmlgui
+	depends = kcolorscheme
+	optdepends = scons: for godot-cpp project development
+	source = git+https://codeberg.org/fishn/godl.git#tag=v1.4.0
+	source = git+https://invent.kde.org/fishy/kitemviews#commit=52fe8223f50dbe72f37f885ab0a870a6145dd2c4
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = godl
