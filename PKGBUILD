@@ -1,12 +1,12 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
-_version=1.0+1192
+_version=1.0+1196
 
 _pkgbase=${_basename}-nightly
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=2
+pkgrel=1
 pkgdesc="JItsi meet COnference FOcus nightly binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -68,9 +68,9 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('620f2a43f6631aae30c0a1a2dd060770daa60f4c755e96a6c41fc9959fea290a'
+sha256sums=('f5013c16d558922e27dcb9ef1743e6dcf7ba2a97b82c80fcc1805eedaae21103'
             '77f2e2d62e9fe38188f41b063496cc10970cc989ed620a64a2251d986d6ac253'
-            '1781804018fe7618a4440550197aac9ab1f7417b5ae545874f4ba1f2ec3ad9f8'
+            '6dce91c02633f2dfe550555f90fee84426c6c303c437bfe0400a373e4bca56ad'
             'b22a8df91cde1956969bd3a6fd293bea01be54713649ed0fd39e847b1eb61886'
             '7a96fcef5673cd0ee41d7e1c78bf7b6dca3fbf94d9e0ef8af2db146fc4f16c87'
             'c258808de5031c0d72df0aedfd521d07e6c442cd152e75737bdc1d758545521e'
