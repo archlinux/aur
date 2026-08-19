@@ -1,6 +1,6 @@
 pkgbase = sqlitebrowser-git
 	pkgdesc = DB Browser for SQLite
-	pkgver = continuous.r0.g9cee4e5d
+	pkgver = continuous.r0.g1debae53
 	pkgrel = 1
 	url = http://sqlitebrowser.org/
 	install = sqlitebrowser.install

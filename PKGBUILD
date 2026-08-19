@@ -7,7 +7,7 @@
 # Contributor: Michael Fellinger <m.fellinger@gmail.com>
 
 pkgname=sqlitebrowser-git
-pkgver=continuous.r0.g9cee4e5d
+pkgver=continuous.r0.g1debae53
 pkgrel=1
 pkgdesc="DB Browser for SQLite"
 arch=('i686' 'x86_64')
@@ -29,23 +29,38 @@ pkgver() {
 build() {
     cd "$srcdir/$pkgname"
 
-    CFLAGS="-O3 -march=native -mtune=native \
-        -funroll-loops \
-        -falign-functions=32 -falign-loops=32 \
-        -fno-semantic-interposition \
-        -fno-math-errno -fno-trapping-math \
-        -fomit-frame-pointer -fno-plt \
-        -Wall -pipe -flto=auto"
+    BASE_CFLAGS="-O3 -march=native -mtune=native \
+            -falign-functions=32 -falign-loops=32 \
+            -fno-math-errno -fno-trapping-math \
+            -fno-semantic-interposition \
+            -fomit-frame-pointer -fno-plt \
+            -pipe -flto -Wall -Wno-unused \
+            -fstrict-aliasing \
+            -fmerge-all-constants -ffunction-sections \
+            -fdata-sections -fvisibility=hidden"
 
-	CXXFLAGS="-O3 -march=native -mtune=native \
-			-funroll-loops \
-			-falign-functions=32 -falign-loops=32 \
-			-fno-semantic-interposition \
-			-fno-math-errno -fno-trapping-math \
-			-fomit-frame-pointer -fno-plt \
-			-Wall -pipe -flto=auto"
+    BASE_CXXFLAGS="$BASE_CFLAGS"
+    BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -Wl,-O3 -flto -fno-plt"
 
-	LDFLAGS="-fno-plt -flto=auto"
+    # Clang-only flags
+    CLANG_EXTRA_CFLAGS="-fstrict-vtable-pointers -fno-asynchronous-unwind-tables"
+    CLANG_EXTRA_CXXFLAGS="$CLANG_EXTRA_CFLAGS"
+    CLANG_EXTRA_LDFLAGS="-fuse-ld=lld"
+
+    # Detect compiler
+    if command -v clang >/dev/null 2>&1; then
+        export CC=clang
+        export CXX=clang++
+        export CFLAGS="$BASE_CFLAGS $CLANG_EXTRA_CFLAGS"
+        export CXXFLAGS="$BASE_CXXFLAGS $CLANG_EXTRA_CXXFLAGS"
+        export LDFLAGS="$BASE_LDFLAGS $CLANG_EXTRA_LDFLAGS"
+    else
+        export CC=gcc
+        export CXX=g++
+        export CFLAGS="$BASE_CFLAGS"
+        export CXXFLAGS="$BASE_CXXFLAGS"
+        export LDFLAGS="$BASE_LDFLAGS"
+    fi
 
     cmake \
         -DQT_MAJOR=Qt6 \
@@ -57,7 +72,7 @@ build() {
         -DCMAKE_SHARED_LINKER_FLAGS="$LDFLAGS" \
         .
 
-    make
+    make -j$(nproc)
 }
 
 package() {
