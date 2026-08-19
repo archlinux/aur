@@ -1,10 +1,11 @@
 pkgbase = voicefox-bin
 	pkgdesc = A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks
-	pkgver = 0.3.5
+	pkgver = 0.3.6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/emoeem/voicefox
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = glibc
 	depends = hicolor-icon-theme
@@ -12,16 +13,16 @@ pkgbase = voicefox-bin
 	depends = openssl
 	depends = mpv
 	optdepends = nodejs>=23.5.0: support for custom JS music source
-	provides = voicefox=0.3.5
+	provides = voicefox=0.3.6
 	conflicts = voicefox
 	conflicts = voicefox-git
 	options = !debug
-	source = voicefox-0.3.5.zip::https://github.com/emoeem/voicefox/releases/download/0.3.5/voicefox-linux-x86_64.zip
-	source = voicefox-0.3.5-LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/0.3.5/LICENSE
-	source = voicefox-0.3.5-512.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/0.3.5/icons/512.png
-	source = voicefox-0.3.5-1024.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/0.3.5/icons/1024.png
-	source = voicefox-0.3.5-desktop::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/0.3.5/assets/voicefox.desktop
-	sha512sums = ddb8fcb24c3dcfccef11b8e1350efe5bd27d2c4802fa29eaf45dbcde3313bef9a110d67c0a1e459108fda0cc55003d00314445d039174513cd6df4db7259d5db
+	source = voicefox-0.3.6::https://github.com/emoeem/voicefox/releases/download/v0.3.6/voicefox-linux-x86_64
+	source = voicefox-0.3.6-LICENSE::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/v0.3.6/LICENSE
+	source = voicefox-0.3.6-512.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/v0.3.6/icons/512.png
+	source = voicefox-0.3.6-1024.png::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/v0.3.6/icons/1024.png
+	source = voicefox-0.3.6-desktop::https://raw.githubusercontent.com/emoeem/voicefox/refs/tags/v0.3.6/assets/voicefox.desktop
+	sha512sums = 4fa04c2fd2e09c9c466450f21d524c8951821f2ff0d93a7bd92fb8cb2e3254818ac7d5a7806c0e1f60d9b42c651df7ea9db010fe17c7ed59c2b4cb7bd7bc89ac
 	sha512sums = e65d0d2522762bf43fa7c79e47c4b867dc7126e8402b8981ff6357b3d7e7968b34f9058d0426d24115a90bf4165bba86ce5414bd29f2df0355ebfa349e266814
 	sha512sums = 980a563b61ebd519a5346de26b67d6782830f6183ad2b4c42ac3e85d0ebd1b4341a1041976cb06c10d1eed346d9f4c009341753f560db63882a5df56e180471b
 	sha512sums = 4749d0f3d9cff9caec6c9dbd18f9ff571905e22d4669fb504e8c2b778dead770d2b5ddbbf0bdadc7b60ca9317f25579e97a016888f38c1b8ade6a476e09a3e6e
