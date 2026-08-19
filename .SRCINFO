@@ -1,6 +1,6 @@
 pkgbase = openarm-can
 	pkgdesc = A C++ library for CAN communication with OpenArm robotic hardware, supporting Damiao motors over CAN/CAN-FD interfaces.
-	pkgver = 1.2.9
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/enactic/openarm_can
 	arch = x86_64
@@ -18,16 +18,15 @@ pkgbase = openarm-can
 	makedepends = python-scikit-build-core
 	makedepends = python-setuptools
 	depends = sh
-	depends = libgcc
-	depends = libstdc++
-	depends = glibc
+	depends = libgcc_s.so
+	depends = libstdc++.so
 	depends = python
 	depends = python-can
 	depends = python-numpy
 	optdepends = dm-tools: DM-USB2FDCAN (Damiao 达妙) host computer software supports DM-USB2FDCAN series CAN cards
 	optdepends = kh-ucanfd: KunHong UCANFD Linux driver
-	source = openarm-can::git+https://github.com/enactic/openarm_can.git#tag=1.2.9
-	sha256sums = 382e824a80b9cc786069a03fc3a5d8a404bc3ff319b428e29167bf806442c8a4
+	source = openarm-can::git+https://github.com/enactic/openarm_can.git#tag=1.3.0
+	sha256sums = c2ffaef96bab9f9138478ee591426e015cb15aaa808001d1574ede130b0aa7bf
 
 pkgname = openarm-can
 	arch = x86_64
