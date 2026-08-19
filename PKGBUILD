@@ -7,7 +7,7 @@
 test ! -d FreeCAD -a -d ../freecad-git/FreeCAD && ln -s ../freecad-git/FreeCAD .
 
 pkgname=freecad-weekly
-pkgver=26.3.0dev.08.12
+pkgver=26.3.0dev.08.19
 pkgrel=1
 pkgdesc='A general purpose 3D CAD modeler - git checkout of last weekly-yyyy.MM.DD tag'
 arch=('x86_64')
@@ -94,7 +94,11 @@ pkgver() {
     # While checking version convention history, PACKAGE_VERSION_NAME seems
     # lost since FreeCAD source commit 0026a35886cf7b62d5fa5861ba1e52f7434f84e2
   fi
-  weekdate=${lastweeklytag#weekly-2[0-9]*.} # E.g. 06.24 for weekly-2026.06.24
+  if [ "${minor}" -eq 1 ] ; then
+    weekdate=${lastweeklytag#weekly-} # E.g. 2026.08.18 for weekly-2026.08.18 version 27.1dev
+  else
+    weekdate=${lastweeklytag#weekly-2[0-9]*.} # E.g. 06.24 for weekly-2026.06.24
+  fi
   printf "%d.%d.%d%s.%s" $major $minor $patch $suffix $weekdate
 }
 
