@@ -7,10 +7,10 @@ prjname=pot
 reponame=pot-desktop
 pkgver=3.0.7
 pkgrel=1
-pkgdesc="一个跨平台的划词翻译软件"
+pkgdesc="A cross-platform software for text translation."
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/pot-app/pot-desktop"
-license=('GPL3')
+license=('GPL-3.0-only')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator' 'xdotool' 'libxcb' 'libxrandr' 'tesseract' 'tessdata')
@@ -26,6 +26,5 @@ sha512sums_aarch64=('842b271945ccb2d11c7793984c72577e75530e580ab553672d94647a63e
 sha512sums_armv7h=('e8143f193a342f81d98d1e335157053e07e8cb4fa2f17e704f99a607767a03a462e628d0a40c6bcd63aa1b0653ca460d5dffdc0c85966590c839cffea645e31d')
 
 package() {
-    tar xpf data.tar.gz -C ${pkgdir}
-    chown -R root:root ${pkgdir}
+    bsdtar -xf data.tar.gz -C "${pkgdir}"
 }

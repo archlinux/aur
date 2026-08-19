@@ -1,5 +1,5 @@
 pkgbase = pot-translation-bin
-	pkgdesc = 一个跨平台的划词翻译软件
+	pkgdesc = A cross-platform software for text translation.
 	pkgver = 3.0.7
 	pkgrel = 1
 	url = https://github.com/pot-app/pot-desktop
@@ -7,7 +7,7 @@ pkgbase = pot-translation-bin
 	arch = i686
 	arch = aarch64
 	arch = armv7h
-	license = GPL3
+	license = GPL-3.0-only
 	depends = webkit2gtk
 	depends = gtk3
 	depends = libayatana-appindicator
