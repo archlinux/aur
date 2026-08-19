@@ -277,6 +277,16 @@ example below is valid headscale policy. This is not a theoretical
 combination: the test suite boots every scenario against a throwaway
 headscale, so the path you are on is the one CI exercises.
 
+## Void Linux
+
+Only the packaging here is Arch's: the hook itself is distro-neutral, and Void
+supports mkinitcpio as a first-class alternative to dracut, so this project
+runs there too, busybox images only since Void has no systemd. Void's own
+repos also carry a leaner hook under the same name. What transfers, what
+does not, and how to install by hand is covered in
+[docs/void-port.md](docs/void-port.md); CI builds and inspects images with
+Void's mkinitcpio on every change.
+
 ## Security considerations
 
 The Tailscale node key is stored in plaintext inside the initramfs. Initramfs is

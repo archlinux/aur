@@ -6,8 +6,8 @@ build() {
 	# Bumping _builderrors is how a hook actually aborts the build; mkinitcpio
 	# declares and consumes it, and its own acpi_override hook does the same.
 	# shellcheck disable=SC2034
-	if ! pacman -Qi tailscale >/dev/null 2>&1; then
-		error "Package tailscale not installed"
+	if ! command -v tailscaled >/dev/null 2>&1; then
+		error "tailscaled not found; install the tailscale package"
 		builderrors=$((++_builderrors))
 		return 1
 	fi
@@ -141,9 +141,10 @@ help() {
 		actually carry tailscaled, and that the node's key is not about to
 		expire -- without changing anything.
 
-		Once set up, upgrades of the tailscale package rebuild the initramfs on
-		their own through a pacman hook, so the image never keeps booting an old
-		tailscaled.
+		Once set up, on Arch Linux upgrades of the tailscale package rebuild the
+		initramfs on their own through a pacman hook, so the image never keeps
+		booting an old tailscaled. On other distributions run 'mkinitcpio -P'
+		after a tailscale upgrade yourself.
 
 		For more check https://github.com/dangra/mkinitcpio-tailscale
 	__EOF_HELP__
