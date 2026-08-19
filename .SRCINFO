@@ -1,0 +1,19 @@
+pkgbase = leenky-bin
+	pkgdesc = Leenky, a desktop clipboard URL collector for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mikelexp/Leenky
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = libxcb
+	depends = libxkbcommon-x11
+	depends = xcb-util-cursor
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
+	source = https://github.com/mikelexp/Leenky/releases/download/v0.1.0/leenky-0.1.0-linux-x86_64.tar.gz
+	sha256sums = e494bd8def4d9d2d6b66e7fe2ecd33a3e548548ad5cb7ec7e1b414d5b3005ff3
+
+pkgname = leenky-bin
