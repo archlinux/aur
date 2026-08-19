@@ -13,7 +13,7 @@ pkgbase = jotawm-git
 	provides = jotawm
 	provides = jotawm-session
 	conflicts = jotawm
-	source = git+file:///home/jotalea/workspace/jotawm-packaging/jotawm-git
+	source = git+file:///tmp/local-repo
 	sha256sums = SKIP
 
 pkgname = jotawm-git
