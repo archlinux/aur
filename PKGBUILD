@@ -3,7 +3,7 @@
 _pkgauthor=jdx
 _pkgname=pitchfork
 pkgname=${_pkgname}-bin
-pkgver=2.21.0
+pkgver=2.22.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Daemons with DX"
@@ -23,8 +23,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/downloa
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-gnu.tar.gz")
 sha256sums=('5ba5d69f83674602525196efe44114e546cf3440d363603961076e52b9647a5a'
             '51812a1ad8301567b8e0539e7feb24d523d73044c67dd532914f1b6ac1a0cf85')
-sha256sums_x86_64=('aedb05279060ee4a3d786dda98d14e7662d3b7bba01fee70309796f9e04c2588')
-sha256sums_aarch64=('aa05b24c0ffdcc8d7421285a6a9a32951b50d90911a286f362fecf9cf4211402')
+sha256sums_x86_64=('fd682a6efccd6d39a532157c26c306585cde07370fd96ddc2bfa6904248a977f')
+sha256sums_aarch64=('7f9af294f0867e6b39f51d0ebeb9b30c900dedd2fa1faee56f23aedb5e9b8f75')
 
 
 package() {
