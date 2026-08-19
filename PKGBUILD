@@ -103,7 +103,9 @@ package_joplin() {
     # Install the package
     cd "${srcdir}/joplin-${pkgver}/packages/app-cli/build"
     npm pack
-    npm install -g --install-links --prefix "${pkgdir}/usr" *.tgz
+    npm install -g --install-links --prefix "${pkgdir}/usr" \
+        --allow-scripts=keytar,sharp,sqlite3 \
+        *.tgz
 
     # Fix permissions set by npm
     chown -R root:root "${pkgdir}"
