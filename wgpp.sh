@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # script: wg++ (WebGrab+Plus)
 # author: Nikos Toutountzoglou, nikos.toutou@protonmail.com
-# rev.date: 2025-09-14
+# rev.date: 2026-08-18
 
-VERSION="5.5.0"
+VERSION="5.6.0"
 
 # Variables
 WGPP_USR=$(whoami)
@@ -95,33 +95,45 @@ setupCustFolder() {
 }
 
 genFolder() {
-    # Create a new configuration folder if it doesn't exist
+    # Create a configuration folder if it doesn't exist.
+    # A folder is considered "already configured" only when it holds the
+    # install.sh marker (i.e. install.sh or WebGrab++.config.xml present).
+    if [[ -d "$WGPP_CFGDIR" && -f "$WGPP_CFGDIR/WebGrab++.config.xml" ]]; then
+        printf "[ info ] Configuration folder '%s' already exists.\n" "$WGPP_CFGDIR"
+        printf "[ info ] Use a different directory or delete the existing one first.\n"
+        exit 1
+    fi
+
+    # Populate the configuration folder (create it if missing, or fill an
+    # empty one -- e.g. one just created by -d/--dir)
     if [[ ! -d "$WGPP_CFGDIR" ]]; then
         printf "[ info ] Creating new configuration folder '%s'...\n" "$WGPP_CFGDIR"
         if ! cp -r "$WGPP_SYS" "$WGPP_CFGDIR"; then
             printf "[ critical ] Failed to copy system files to '%s'\n" "$WGPP_CFGDIR"
             exit 1
         fi
-        
-        cd "$WGPP_CFGDIR" || {
-            printf "[ critical ] Cannot access '%s' directory\n" "$WGPP_CFGDIR"
-            exit 1
-        }
-        
-        if ! sudo -u "$WGPP_USR" ./install.sh; then
-            printf "[ critical ] Installation script failed\n"
+    else
+        printf "[ info ] Populating configuration folder '%s'...\n" "$WGPP_CFGDIR"
+        if ! cp -r "$WGPP_SYS"/. "$WGPP_CFGDIR"; then
+            printf "[ critical ] Failed to copy system files to '%s'\n" "$WGPP_CFGDIR"
             exit 1
         fi
-        
-        printf "[ info ] Configuration folder '%s' created successfully.\n" "$WGPP_CFGDIR"
-        printf "[ info ] Configure 'WebGrab++.config.xml' and run '%s' to generate EPG data.\n" "$WGPP_EXE"
-        printf "[ info ] SiteIni.Pack updates are now handled automatically by the application.\n"
-        exit 0
-    else
-        printf "[ info ] Configuration folder '%s' already exists.\n" "$WGPP_CFGDIR"
-        printf "[ info ] Use a different directory or delete the existing one first.\n"
+    fi
+
+    cd "$WGPP_CFGDIR" || {
+        printf "[ critical ] Cannot access '%s' directory\n" "$WGPP_CFGDIR"
+        exit 1
+    }
+    
+    if ! sudo -u "$WGPP_USR" ./install.sh; then
+        printf "[ critical ] Installation script failed\n"
         exit 1
     fi
+    
+    printf "[ info ] Configuration folder '%s' created successfully.\n" "$WGPP_CFGDIR"
+    printf "[ info ] Configure 'WebGrab++.config.xml' and run '%s' to generate EPG data.\n" "$WGPP_EXE"
+    printf "[ info ] SiteIni.Pack updates are now handled automatically by the application.\n"
+    exit 0
 }
 
 runScript() {
