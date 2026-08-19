@@ -4,9 +4,10 @@ This directory is a **git submodule** of the `allium-tools` monorepo, tracking t
 repo at `ssh://aur@aur.archlinux.org/allium-tools.git`. It holds the two files the AUR
 serves: `PKGBUILD` and the generated `.SRCINFO`.
 
-The package builds `allium` from the release source tarball on GitHub, so a new AUR
-release is only ever "point at a newer tag and refresh the checksum". Nothing here needs
-to change when the code changes — only when the version does.
+The package builds both commands from the release source tarball on GitHub: `allium`, the
+Rust CLI, and `allium-lsp`, the language server. A new AUR release is only ever "point at
+a newer tag and refresh the checksum" — nothing here needs to change when the code
+changes, only when the version does.
 
 ## Releasing a new version
 
@@ -58,8 +59,23 @@ If the `PKGBUILD` itself changes without the version moving — a new dependency
 - **`pkgname` doubles as the tarball directory.** GitHub's archive unpacks to
   `allium-tools-${pkgver}`, which is why `build()` and `package()` can use
   `${pkgname}-${pkgver}` directly. If the repo is ever renamed, that coupling breaks.
-- **`provides=('allium')`** is the binary name, not a package name — the package is
-  `allium-tools`, the command it installs is `allium`.
+- **`provides`** lists binary names, not package names — the package is `allium-tools`,
+  the commands it installs are `allium` and `allium-lsp`.
+- **`allium-lsp` is a Node script, not a native binary.** esbuild bundles it, and it loads
+  `allium_wasm.js` and `allium_wasm_bg.wasm` as siblings of its own realpath. All three go
+  to `/usr/lib/allium-lsp/` with a symlink at `/usr/bin/allium-lsp`; installing the script
+  on its own yields a server that starts, advertises every capability, and then silently
+  reports no diagnostics.
+- **Building the server needs the wasm toolchain and the network.** `wasm-pack` generates
+  `packages/allium-parser-wasm` from `crates/allium-wasm` before `npm ci` can resolve the
+  workspace, hence `rust-wasm`, `wasm-pack` and `binaryen` next to `npm` in `makedepends`.
+  `wasm-opt` comes from `binaryen` on `PATH`, but the `wasm-bindgen` CLI is downloaded into
+  `~/.cache/.wasm-pack`: it has to match the `wasm-bindgen` crate version exactly, and the
+  `wasm-bindgen` package in `extra` tracks a different one. Between that and `npm ci`,
+  `build()` needs the network — makepkg permits it, a `--nonetwork` chroot build does not.
+- **`nodejs` is a hard dependency for CLI-only users too.** Splitting `allium-lsp` into its
+  own pkgname would spare them the runtime dep, but not the build: makepkg builds the
+  pkgbase once either way, so the wasm and npm steps would still run.
 - **The submodule clones over HTTPS, which is read-only.** `.gitmodules` in the monorepo
   uses `https://aur.archlinux.org/allium-tools.git` so `--recurse-submodules` works for
   people without an AUR account. To push, set the SSH URL locally, once:
