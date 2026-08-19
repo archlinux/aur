@@ -2,7 +2,7 @@
 pkgname=sober-bin
 _upstream_version=0.10.0-beta.3
 pkgver="${_upstream_version//-/_}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Prevent AI-Slop: The Sober Raccoon is your local CodeRabbit: A Local-first repository governance assistant and code reviewer with deterministic review readiness'
 arch=('x86_64')
 # Marketing / product site (read about Sober). Source + releases: git.sovereign-society.org/Sober/sober
@@ -48,7 +48,20 @@ prepare() {
   # Exact artifact line (hash + two spaces/tabs + filename).
   line="$(grep -E "^[0-9a-fA-F]{64}[[:space:]]+${bin}\$" SHA256SUMS || true)"
   if [[ -z "${line}" ]]; then
+    # SHA256SUMS is a moving file fetched with hash SKIP, so a copy cached
+    # by makepkg (SRCDEST) or a CDN edge can predate this release. Re-fetch
+    # once — the query string busts edge caches — before declaring the
+    # release broken.
+    echo "note: ${bin} missing from local SHA256SUMS — refetching manifest" >&2
+    if command -v curl >/dev/null 2>&1; then
+      curl -fsSL "https://pkg.sober-dev.app/ce/SHA256SUMS?ref=${_upstream_version}" \
+        -o SHA256SUMS || true
+    fi
+    line="$(grep -E "^[0-9a-fA-F]{64}[[:space:]]+${bin}\$" SHA256SUMS || true)"
+  fi
+  if [[ -z "${line}" ]]; then
     echo "error: ${bin} is not listed in upstream SHA256SUMS" >&2
+    echo "hint: stale cached manifest — retry with fresh sources: paru -S ${pkgname} --redownload" >&2
     echo "------- SHA256SUMS -------" >&2
     cat SHA256SUMS >&2 || true
     return 1
