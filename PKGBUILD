@@ -1,6 +1,6 @@
 # Maintainer: gonwe <gonwex@gmail.com>
 pkgname=doubao-desktop-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Unofficial Doubao desktop wrapper for Linux, built with Tauri"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('doubao-desktop')
 _dlname="doubao-desktop-${pkgver}-x86_64.tar.gz"
 source=("${_dlname}::https://github.com/gonwe/doubao-desktop/releases/download/v${pkgver}/${_dlname}"
         "${pkgname}.desktop")
-sha256sums=('493c46ef9bda450d47282650e8f99d5986991762dfe64b7e64b45113558ec206'
+sha256sums=('36157f8fae05a1aec85a27a47463a5068f563bb356ceba163ddad60aa454b6b2'
             'SKIP')
 
 package() {
