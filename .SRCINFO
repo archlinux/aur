@@ -1,6 +1,6 @@
 pkgbase = lito
 	pkgdesc = Module-first C++ build tool with manifest.
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/litocpp/lito
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = lito
 	makedepends = llvm
 	depends = glibc
 	depends = lua
-	source = git+https://github.com/litocpp/lito.git#tag=v0.2.1
-	source = git+https://github.com/litocpp/rstd.git#commit=99e7d045c8bd340ba942ca742a66b89ede02fa4c
-	source = git+https://github.com/litocpp/luato.git#commit=a5cfe5dbb67ab9161ba26776c93d7ef7141c838a
-	sha256sums = 482a4a39bf1a0053ccea7580620c5f0d45016a1f14fcd97b9d7b10997949716e
-	sha256sums = ad116a5f2d52ddb6e5d4e970a6e992bb720d425a2a10d3df4d60e635505ec3af
-	sha256sums = 80df4d8e8f7e38e8170df32d37933fadc8ec83c1543231a369180442efd514ba
+	source = git+https://github.com/litocpp/lito.git#tag=v0.3.0
+	source = git+https://github.com/litocpp/rstd.git#commit=a852e89dc7b2c7fae6cc4c89d1f76afbac55be82
+	source = git+https://github.com/litocpp/luato.git#commit=3b10ff2caf2efddcdcdc7196240627cbd3346af5
+	sha256sums = 417582aa551810ef30d7f712424447d988f1d58af3fcc62735a3dad58e098575
+	sha256sums = d6f977ace1bea2ee52bcebb6dd715108eb925d30dc8fb9367c3d23003a683ea1
+	sha256sums = eac5a1320e6c6a2953ec195d71f57424afa6c7b4149664889dacaa65bf78e350
 
 pkgname = lito

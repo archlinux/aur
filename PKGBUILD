@@ -1,9 +1,9 @@
 # Check CMakeLists.txt
-_rstd_commit=99e7d045c8bd340ba942ca742a66b89ede02fa4c
-_luato_commit=a5cfe5dbb67ab9161ba26776c93d7ef7141c838a
+_rstd_commit=a852e89dc7b2c7fae6cc4c89d1f76afbac55be82
+_luato_commit=3b10ff2caf2efddcdcdc7196240627cbd3346af5
 
 pkgname=lito
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Module-first C++ build tool with manifest."
 arch=(x86_64)
@@ -14,9 +14,9 @@ makedepends=(cmake clang lld git ninja llvm)
 source=("git+https://github.com/litocpp/lito.git#tag=v$pkgver"
         "git+https://github.com/litocpp/rstd.git#commit=$_rstd_commit"
         "git+https://github.com/litocpp/luato.git#commit=$_luato_commit")
-sha256sums=('482a4a39bf1a0053ccea7580620c5f0d45016a1f14fcd97b9d7b10997949716e'
-            'ad116a5f2d52ddb6e5d4e970a6e992bb720d425a2a10d3df4d60e635505ec3af'
-            '80df4d8e8f7e38e8170df32d37933fadc8ec83c1543231a369180442efd514ba')
+sha256sums=('417582aa551810ef30d7f712424447d988f1d58af3fcc62735a3dad58e098575'
+            'd6f977ace1bea2ee52bcebb6dd715108eb925d30dc8fb9367c3d23003a683ea1'
+            'eac5a1320e6c6a2953ec195d71f57424afa6c7b4149664889dacaa65bf78e350')
 
 build() {
     # ld.lld: error: undefined symbol: open(char const*, int pass_dynamic_object_size1, unsigned int)
