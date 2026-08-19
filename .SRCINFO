@@ -1,6 +1,6 @@
 pkgbase = cloudflare-wrangler
 	pkgdesc = Command-line interface for building and deploying Cloudflare Workers
-	pkgver = 4.123.0
+	pkgver = 4.124.0
 	pkgrel = 1
 	url = https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler
 	arch = x86_64
@@ -9,15 +9,17 @@ pkgbase = cloudflare-wrangler
 	license = Apache-2.0
 	makedepends = npm
 	depends = nodejs>=22
+	depends = glibc
+	depends = gcc-libs
 	optdepends = git: required by `wrangler init` and template scaffolding
 	provides = wrangler2
 	conflicts = wrangler
-	noextract = wrangler-4.123.0.tgz
+	noextract = wrangler-4.124.0.tgz
 	options = !strip
-	source = wrangler-4.123.0.tgz::https://registry.npmjs.org/wrangler/-/wrangler-4.123.0.tgz
-	source = LICENSE-APACHE-4.123.0::https://raw.githubusercontent.com/cloudflare/workers-sdk/c576a8271503cc51babc1a8d0f2ef7d384f78742/LICENSE-APACHE
-	source = LICENSE-MIT-4.123.0::https://raw.githubusercontent.com/cloudflare/workers-sdk/c576a8271503cc51babc1a8d0f2ef7d384f78742/LICENSE-MIT
-	sha256sums = 762e002dae5fb41027855065aafd8f6703bdf358437cf37946aafe5092add9cc
+	source = wrangler-4.124.0.tgz::https://registry.npmjs.org/wrangler/-/wrangler-4.124.0.tgz
+	source = LICENSE-APACHE-4.124.0::https://raw.githubusercontent.com/cloudflare/workers-sdk/8ee43f60b279f2bd61228bb3d560d7b6e4b9856a/LICENSE-APACHE
+	source = LICENSE-MIT-4.124.0::https://raw.githubusercontent.com/cloudflare/workers-sdk/8ee43f60b279f2bd61228bb3d560d7b6e4b9856a/LICENSE-MIT
+	sha256sums = f728c4987ff101beedc38aa76dabca9467ea47ace3604b2ff2582b437f7dd415
 	sha256sums = 62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a
 	sha256sums = 9bb3b077cc8628334bab25961223dd8207252c8a56aa054195be38f1c042aaf4
 
