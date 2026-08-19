@@ -3,12 +3,12 @@ pkgname=turingcodec-git
 pkgver=89.5d44bd7
 pkgrel=1
 pkgdesc="Turing HEVC codec by BBC (git version) with GCC16/Boost fixes"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/bbc/turingcodec"
 license=('GPL2')
 depends=('boost')
-makedepends=('git' 'cmake' 'make' 'gcc')
-source=("git+https://github.com/bbc/turingcodec.git"
+makedepends=('git' 'cmake' 'make' 'gcc' 'pkgconf')
+source=("git+$url.git"
         "turingcodec-fixes.patch")
 sha256sums=('SKIP'
             '09cedd1098863f19c37364c2180db0991b1c5ac00c6b5afdd506c9f6c4c05fbd')
@@ -27,6 +27,7 @@ prepare() {
 
     # -fstrict-aliasing (which is automatically enabled at O2 and O3) causes segfaults
     # -fno-exceptions -fno-rtti break the build
+
 build() {
     cd "$srcdir/turingcodec"
 
@@ -46,7 +47,6 @@ build() {
              -fcode-hoisting \
              -fmerge-constants \
              -fivopts \
-             -fsection-anchors \
              -fweb \
              -fconserve-stack \
              -fdelete-null-pointer-checks \
@@ -71,7 +71,6 @@ build() {
              -fno-unsafe-math-optimizations \
              -fno-finite-math-only \
              -fomit-frame-pointer \
-             -fno-strict-enums \
              -floop-interchange \
              -floop-strip-mine \
              -floop-block \
@@ -99,7 +98,6 @@ build() {
              -ftree-dse \
              -ftree-reassoc \
              -ftree-vrp \
-             -fstrict-enums \
              -fipa-pure-const \
              -fipa-reference \
              -fipa-modref \
@@ -109,7 +107,9 @@ build() {
              -fipa-cp \
              -fipa-ra \
              -fipa-profile \
-             -fipa-icf"
+             -flto=auto"
+
+    _cxxflags="-std=gnu++14 -fstrict-enums -fno-operator-names"
 
     _ldflags="-Wl,--as-needed \
             -Wl,--gc-sections \
@@ -120,17 +120,24 @@ build() {
             -Wl,--relax \
             -Wl,--hash-style=both \
             -Wl,--strip-discarded \
-            -Wl,--discard-locals"
+            -Wl,--discard-locals \
+            -flto=auto"
+
+    export CC=gcc
+    export CXX=g++
 
     mkdir -p build/release
     cd build/release
 
     CFLAGS="$_cflags" \
-    CXXFLAGS="$_cflags -std=gnu++11" \
+    CXXFLAGS="$_cflags $_cxxflags" \
     LDFLAGS="$_ldflags" \
-    cmake -DUSE_SYSTEM_BOOST=ON \
+    cmake "$srcdir/turingcodec" \
+          -DUSE_SYSTEM_BOOST=ON \
           -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-          ../..
+          -DCMAKE_C_STANDARD=11 \
+          -DCMAKE_CXX_STANDARD=11 \
+          -Wno-author
 
     make -j"$(nproc)"
 }
@@ -141,15 +148,6 @@ package() {
     # binaries
     install -Dm755 turing/turing "$pkgdir/usr/bin/turing"
     install -Dm755 havoc/havoc "$pkgdir/usr/bin/havoc"
-
-    # libraries
-    if [[ -f libturing.a ]]; then
-        install -Dm644 libturing.a "$pkgdir/usr/lib/libturing.a"
-    fi
-
-    if [[ -f havoc/libhavoc.a ]]; then
-        install -Dm644 havoc/libhavoc.a "$pkgdir/usr/lib/libhavoc.a"
-    fi
 
     # pkgconfig
     if [[ -f turing.pc ]]; then
