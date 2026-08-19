@@ -1,5 +1,6 @@
 [Unit]
 Description=Model swapping for llama.cpp (or any local OpenAPI compatible server)
+Documentation=https://github.com/mostlygeek/llama-swap
 
 [Service]
 DynamicUser=yes
