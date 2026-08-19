@@ -1,6 +1,6 @@
 pkgbase = vectomancy-bin
 	pkgdesc = Image-to-Equation Converter CLI (Pre-compiled)
-	pkgver = 8.0.0
+	pkgver = 8.1.0
 	pkgrel = 1
 	url = https://github.com/Xuepoo/vectomancy
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = vectomancy-bin
 	depends = vulkan-icd-loader
 	provides = vectomancy
 	conflicts = vectomancy
-	source = LICENSE-8.0.0::https://raw.githubusercontent.com/Xuepoo/vectomancy/v8.0.0/LICENSE
+	source = LICENSE-8.1.0::https://raw.githubusercontent.com/Xuepoo/vectomancy/v8.1.0/LICENSE
 	sha256sums = b611f7feb097dac1235bc2901046f36ff85e753b075b741412b6a0447ab20390
-	source_x86_64 = https://github.com/Xuepoo/vectomancy/releases/download/v8.0.0/vectomancy-linux-x86_64
-	sha256sums_x86_64 = e040dec1dd8148bfbd81977bade4996191a3d23a51615b9924c191b9bdfe087f
-	source_aarch64 = https://github.com/Xuepoo/vectomancy/releases/download/v8.0.0/vectomancy-linux-aarch64
-	sha256sums_aarch64 = b277c567330ac69462584014609e3de3ef931d1dbe201826798c3e7778ab0330
+	source_x86_64 = https://github.com/Xuepoo/vectomancy/releases/download/v8.1.0/vectomancy-linux-x86_64
+	sha256sums_x86_64 = cc91a96c91feb6c052c73936dbe371eecb63c95e90202841d33d44143fef7ede
+	source_aarch64 = https://github.com/Xuepoo/vectomancy/releases/download/v8.1.0/vectomancy-linux-aarch64
+	sha256sums_aarch64 = f66fb7adcfbf2c19ffc8099c37164eba9606c3d06da3f96fa16e85811adc00f3
 
 pkgname = vectomancy-bin
