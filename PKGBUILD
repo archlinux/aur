@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A blazing-fast, Rust-powered CLI engine that makes solving LeetCode problems from the terminal a first-class developer experience"
 
-pkgver=1.0.18
+pkgver=1.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,8 +29,8 @@ source=("LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.xz")
 sha256sums=('79536e46cb36efdcc053b0505358b4635eaed1ba94bb1e671cc51c2bc0224b7c')
-sha256sums_x86_64=('adccc4f3b3a46c5c5de888f41019ded2302e2ae7969745639adf0e370c359271')
-sha256sums_aarch64=('0fe0ae89e2a1e2c1612bb22e6b21e0d9c824a097b5a0b18ce6a434ba24f45623')
+sha256sums_x86_64=('889d35ba5e5a47f1a49b618644c77f8a80abf20b8c7f1fe79dc54572ac5c6460')
+sha256sums_aarch64=('9fc8ffd79c233a3eefc0e0e014a3c25f4ae6e07bd42def77e479526ffee523c9')
 
 
 case ${CARCH} in
