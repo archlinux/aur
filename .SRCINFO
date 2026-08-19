@@ -1,7 +1,7 @@
 pkgbase = epiclang-bin
 	pkgdesc = Script to call clang with Epitech's C style checking extension
 	pkgver = 20260803220850
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/~epitech/+archive/ubuntu/ppa
 	arch = x86_64
 	license = GPL2
