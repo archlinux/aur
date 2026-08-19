@@ -1,4 +1,4 @@
-# Maintainer: Alex <alex@simhammer.com>
+# Maintainer: vizh <alex@alexbangert.dev>
 
 pkgname=simhammer-bin
 pkgver=4.1.0
