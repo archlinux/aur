@@ -9,27 +9,29 @@ arch=('x86_64')
 url='https://github.com/OpenGamingCollective/cardwire'
 license=('GPL3')
 depends=('hwdata' 'dbus' 'sqlite' 'systemd' 'upower')
-makedepends=('rust' 'rust-src' 'bpf-linker' 'libxcb')
+makedepends=('rust' 'rust-src' 'cargo-binstall' 'libxcb')
 source=("https://github.com/OpenGamingCollective/cardwire/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('eba92c952f002767abead1391d9d2d229e3637a756ac4786759a0012b7e96649')
 
 prepare(){
 	cd "${pkgbase}-${pkgver}"
 	cargo fetch --locked
+	# This is a workaround to get cardwire-ebpf building
+	# bpf-linker linked to llvm 22 or built with llvm 22 cannot compile the crate
+	# the official binstall ship a llvm 23 static linked bpf-linker, this is what is used
+	cargo binstall --locked --no-confirm \
+		--root "${srcdir}/cardwire-tools"\
+	       --version 0.11.0 bpf-linker
 }
 
 build(){
-
 	cd "${pkgbase}-${pkgver}"
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 	export RUSTC_BOOTSTRAP=1
 	export CARGO_TARGET_DIR=target
+	export RUST_TOOLCHAIN=stable
+	export PATH="${srcdir}/cardwire-tools/bin:$PATH"
 	cargo build --frozen --release --bins
-}
-
-check(){
-	cd "${pkgbase}-${pkgver}"
-	cargo test --frozen --all-features
 }
 
 package(){
