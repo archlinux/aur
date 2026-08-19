@@ -1,6 +1,6 @@
 pkgbase = ziggity
 	pkgdesc = ⚡️ Ziggity an ultra fast, keyboard driven terminal UI for Git, written in Zig.
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/simoarpe/ziggity
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ziggity
 	depends = git
 	provides = ziggity
 	options = !strip
-	source_x86_64 = ziggity-x86_64-0.19.0::https://github.com/simoarpe/ziggity/archive/v0.19.0.tar.gz
-	sha256sums_x86_64 = 4dc93f40dcb17a6fa1e4df3074680eaded8b8121304f6400b741c9103fef6e04
+	source_x86_64 = ziggity-x86_64-0.20.0::https://github.com/simoarpe/ziggity/archive/v0.20.0.tar.gz
+	sha256sums_x86_64 = 870f3c50650a2d2eaae443faed05b91164afbb0b33f724947e9609c893dc2602
 
 pkgname = ziggity
