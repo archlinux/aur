@@ -1,8 +1,8 @@
 # Maintainer: aisuneko icecat <iceneko@protonmail.ch>
 pkgname=kelivo-bin
-pkgver=1.1.17
-pkgrel=61.1
-pkgrel_ver=61
+pkgver=1.2.2
+pkgrel=66.1
+pkgrel_ver=66
 pkgdesc="A Flutter LLM Chat Client"
 arch=("x86_64")
 url="https://github.com/Chevey339/kelivo"
@@ -12,7 +12,7 @@ provides=('kelivo')
 conflicts=('kelivo')
 source=("https://github.com/Chevey339/kelivo/releases/download/v$pkgver/Kelivo_linux_$pkgver+$pkgrel_ver.tar.gz"
 		"kelivo.desktop")
-sha256sums=("63005bb9f798d8fa53511dbb0fd8cf5566f29c8b576e7cb5478b7e41b20533ac"
+sha256sums=("ab3059cc629a1da4689d14ca7371a43d6595938898c1c570a5521d59b611805f"
 			"24bc2c4cf189b1a6494a89f5e97b296bc6e13f6d68dbac0963b7372bf1acfe89")
 
 package() {
