@@ -7,7 +7,7 @@ arch=('aarch64' 'x86_64')
 url="https://github.com/vercel-labs/fx"
 license=('Apache-2.0')
 provides=('fx-agent')
-conflicts=('fx-agent')
+conflicts=('fx-agent' 'fx')
 depends=()
 options=('!debug')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::https://github.com/vercel-labs/fx/releases/download/v${pkgver}/fx-linux-aarch64.tar.gz")
@@ -20,7 +20,5 @@ latestver() {
 }
 
 package() {
-    _bin="$(find "$srcdir" -maxdepth 3 -type f -executable | head -1)"
-    [ -n "$_bin" ] || { echo "error: no executable in $srcdir (tarball extracted?)"; exit 1; }
-    install -Dm755 "$_bin" "${pkgdir}/usr/bin/fx-agent"
+    install -Dm755 "${srcdir}/fx" "${pkgdir}/usr/bin/fx"
 }

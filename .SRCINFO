@@ -8,6 +8,7 @@ pkgbase = fx-agent-bin
 	license = Apache-2.0
 	provides = fx-agent
 	conflicts = fx-agent
+	conflicts = fx
 	options = !debug
 	source_aarch64 = fx-agent-0.0.3-aarch64.tar.gz::https://github.com/vercel-labs/fx/releases/download/v0.0.3/fx-linux-aarch64.tar.gz
 	sha256sums_aarch64 = 867eb2d669693ae0b5e3453a571230ba3b67465626d566cbca83ae8432b1e03a
