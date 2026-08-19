@@ -1,7 +1,7 @@
 # Maintainer:  Jason Kercher <jkercher 43 at gmail dot com>
 
 pkgname=linuxcnc-git
-pkgver=2.9.8.r4867.gfc8828c3bc
+pkgver=2.9.10.r5116.g0bb86dd667
 pkgrel=1
 pkgdesc="Controls CNC machines. It can drive milling machines, lathes, 3d printers, laser cutters, plasma cutters, robot arms, hexapods, and more (formerly EMC2)"
 arch=($CARCH)
@@ -39,6 +39,7 @@ depends=(
   libxss
   systemd-libs
   pango
+  pybind11
   python
   python-cairo
   python-configobj
