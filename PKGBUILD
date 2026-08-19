@@ -1,7 +1,7 @@
 # Maintainer: Keith Raghubar <aur.archlinux.org.buckskin000@passmail.net>
 
 pkgname=sysforge-git
-pkgver=3.0.0.r0.g0000000  # updated dynamically by pkgver()
+pkgver=3.1.0.r0.g0000000  # updated dynamically by pkgver()
 pkgrel=1
 pkgdesc="Arch Linux build and maintenance suite for system setup and package management with compiler-optimized builds (git)"
 arch=('any')
@@ -111,6 +111,8 @@ package() {
         "$pkgdir/usr/share/libalpm/hooks/sysforge-toolchain.hook"
     install -Dm644 etc/pacman.d/hooks/sysforge-buildstate.hook \
         "$pkgdir/usr/share/libalpm/hooks/sysforge-buildstate.hook"
+    install -Dm644 etc/pacman.d/hooks/sysforge-artifacts.hook \
+        "$pkgdir/usr/share/libalpm/hooks/sysforge-artifacts.hook"
     install -Dm755 tools/pacman-hook-helper.sh \
         "$pkgdir/usr/lib/sysforge/pacman-hook-helper.sh"
 }
