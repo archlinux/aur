@@ -1,5 +1,5 @@
 pkgname=rdopng-git
-pkgver=1.0.9.11.gdb77a33
+pkgver=1.0.9.r11.gdb77a33
 pkgrel=1
 pkgdesc="Rate-Distortion Optimized Lossy PNG/QOI Encoding Tool"
 arch=('x86_64')
@@ -10,32 +10,47 @@ source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/rdopng"
-  git describe --tags --long 2>/dev/null | sed 's/^v//;s/-/./g' || \
-    printf "0.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${pkgname%-*}"
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
   cd "${srcdir}/rdopng"
 
-  local _cflags="-O3 -march=native -mtune=native \
-    -funroll-loops -falign-functions=32 -falign-loops=32 \
-    -fno-math-errno -fno-trapping-math \
-    -fno-semantic-interposition -Wall -pipe \
-    -fomit-frame-pointer -fno-plt -flto"
+    BASE_CFLAGS="-O3 -march=native -mtune=native \
+            -falign-functions=32 -falign-loops=32 \
+            -fno-math-errno -fno-trapping-math \
+            -fno-semantic-interposition \
+            -fomit-frame-pointer -fno-plt \
+            -pipe -flto -Wall -Wno-unused \
+            -fstrict-aliasing -fno-rtti -fno-exceptions \
+            -fmerge-all-constants -ffunction-sections \
+            -fdata-sections -fvisibility=hidden"
 
-  local _cxxflags="-O3 -march=native -mtune=native \
-    -funroll-loops -falign-functions=32 -falign-loops=32 \
-    -fno-math-errno -fno-trapping-math \
-    -fno-semantic-interposition -Wall -pipe \
-    -fomit-frame-pointer -fno-plt -flto"
+    BASE_CXXFLAGS="$BASE_CFLAGS"
+    BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -Wl,-O3 -flto -fno-plt"
 
-  local _ldflags="-fno-plt -flto"
+    # Clang-only flags
+    CLANG_EXTRA_CFLAGS="-fstrict-vtable-pointers -fno-asynchronous-unwind-tables"
+    CLANG_EXTRA_CXXFLAGS="$CLANG_EXTRA_CFLAGS"
+    CLANG_EXTRA_LDFLAGS="-fuse-ld=lld"
 
-  cmake . \
-    -DCMAKE_C_FLAGS="${_cflags}" \
-    -DCMAKE_CXX_FLAGS="${_cxxflags}" \
-    -DCMAKE_EXE_LINKER_FLAGS="${_ldflags}"
+    # Detect compiler
+    if command -v clang >/dev/null 2>&1; then
+        export CC=clang
+        export CXX=clang++
+        export CFLAGS="$BASE_CFLAGS $CLANG_EXTRA_CFLAGS"
+        export CXXFLAGS="$BASE_CXXFLAGS $CLANG_EXTRA_CXXFLAGS"
+        export LDFLAGS="$BASE_LDFLAGS $CLANG_EXTRA_LDFLAGS"
+    else
+        export CC=gcc
+        export CXX=g++
+        export CFLAGS="$BASE_CFLAGS"
+        export CXXFLAGS="$BASE_CXXFLAGS"
+        export LDFLAGS="$BASE_LDFLAGS"
+    fi
+
+  cmake .
 
   make -j"$(nproc)"
 }

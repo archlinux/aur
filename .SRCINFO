@@ -1,6 +1,6 @@
 pkgbase = rdopng-git
 	pkgdesc = Rate-Distortion Optimized Lossy PNG/QOI Encoding Tool
-	pkgver = 1.0.9.11.gdb77a33
+	pkgver = 1.0.9.r11.gdb77a33
 	pkgrel = 1
 	url = https://github.com/richgel999/rdopng
 	arch = x86_64
