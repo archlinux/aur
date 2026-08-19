@@ -4,7 +4,7 @@
 pkgname=epiclang-bin
 _pkgname=epiclang
 pkgver=20260803220850
-pkgrel=1
+pkgrel=2
 pkgdesc="Script to call clang with Epitech's C style checking extension"
 arch=('x86_64')
 url="https://launchpad.net/~epitech/+archive/ubuntu/ppa"
@@ -23,7 +23,6 @@ package () {
     tar xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
 
     sed -i 's/clang-20/\/usr\/lib\/llvm20\/bin\/clang/g' "$pkgdir/usr/bin/epiclang.py"
-    sed -i 's/python3.13/python3.14 python3.13/g' "$pkgdir/usr/bin/epiclang"
     chmod +x "$pkgdir/usr/bin/epiclang"
 
     # cleanup temporary files extracted from the .deb
