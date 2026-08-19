@@ -2,7 +2,7 @@
 
 pkgbase=fcitx5-pinyin-mihoyo-yukari0201
 pkgname=()
-pkgver=20260731 # renovate: datasource=github-releases depName=Yukari0201/fcitx5-pinyin-mihoyo
+pkgver=20260819 # renovate: datasource=github-releases depName=Yukari0201/fcitx5-pinyin-mihoyo
 pkgrel=1
 pkgdesc="Fcitx 5 / Rime / Rime Wanxiang Pinyin Dictionaries for miHoYo Games from wiki.biligame.com"
 arch=('any')
@@ -23,18 +23,18 @@ source=(
     "${url}/releases/download/${pkgver}/wanxiang_zenlesszonezero.dict.yaml"
 )
 
-sha256sums=('8d827919ff4fd789d0c297ec06a5dfef10737d144f7cb618af669ceae4c20f35'
+sha256sums=('c8521085b5b472af2521ec1790c809899a3d313dcb6613165dcc9bda915987f9'
             '99150a9be7da6761095e4ba0fee2c8d34883b9fb6cc9e5c0cc1044b09e0529cf'
-            '7355a57b170f3ce23025ecaacd88111d16c170a1421d0a7a64634e5689e6c27f'
+            'd51d79affcf14ee9a3c8d68d29dfc30cba7071572127b0f5e71918e8b71610ff'
             '99150a9be7da6761095e4ba0fee2c8d34883b9fb6cc9e5c0cc1044b09e0529cf'
-            'f040393267cd33475ccad02287a102ff59b222d29fea74dc11bd1cd0447361be'
-            'e839f7e18fdb1cbde87cbccf2c02c25ee1295d3f52e55b7ab45387ec0dbf2eb7'
-            '44f641133d08d73877522024fd95da4773cc7127fd9dc0b2f3c5f33f87f63124'
-            '6ab28639d72052b03dc1d92744525013b0a765d4af9c8300e139d7a5fa82349b'
-            'a7117b4fd3f12fb979bb8a7cc7337439b3397e1c312257df411b0d128daf8cfb'
-            'd86dfbaf34ebe766691364a2afc19432b9881cdd34ba072a3d1fc84b44b5eca9'
-            '9992413485e3a36eb3cc54da8b586f438d426972933a657901b657b31a28205b'
-            '7663ea08364e6b57f20524f14fc213ec5eeea21a682a7011b30d2554d1bfa067')
+            '938a07fd6cbf684fe2025fae2d37f5c961330c1a379be10caa7b71c7cc3aca0d'
+            '5864f4e95eba9303edd4153b14e2f75404b30ca091988cf2d98e041099af62fe'
+            '64265c9a5ae16b7ddcdda67a5741182a37e54678274d05c3fe2e3a71a3bb09f0'
+            '9abbea50de521f6260a6665a5453b0f7e999e640ac58a218a81675a848fb5a6e'
+            '594d9a3a6ddb2448a1f2b6d6052f306eb0bfbac375f5d386d2f64d6184f1f20c'
+            '2716f69dca19da742443c94d14790b5b94cc147610d5d6eeee1c640e9963383c'
+            'cd04449287f255b5f1ff9610abb750cfb9db28041979af3fb8f0fea1e66e0381'
+            '8080e2c08e536137e08d936feaa7fb238412b9f11cb94193a9c41be487fa1b74')
 
 # 游戏名
 declare -A _games=(
