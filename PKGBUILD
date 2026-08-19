@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=cheatengine-bin
-pkgver=7.7
-pkgrel=4
+pkgver=7.7.1
+pkgrel=1
 pkgdesc="Memory scanner/debugger for game hacking and reverse engineering"
 arch=('x86_64')
 url="https://cheatengine.org"
@@ -11,9 +11,9 @@ makedepends=('python')
 provides=('cheatengine')
 conflicts=('cheatengine')
 options=('!strip' '!debug')
-source=("CheatEngineLinux${pkgver/./}.zip::https://cheatengine.org/download/CheatEngineLinux${pkgver/./}.zip"
+source=("CheatEngineLinux${pkgver//./}.zip::https://cheatengine.org/download/CheatEngineLinux${pkgver//./}.zip"
         "user-overlay.lua")
-sha256sums=('1e3c312061a270e67c67cf215cc1640027270bdea66fd2793dd156414992f6d4'
+sha256sums=('0fb0d9043ae856acde03b5b871a2f3627ebcf674aeacd045f86d56d91a07f177'
             '7b0341d55bb5e16d473783eb7a5ab29552e3a91ab3f9a3f0aa9f79cebafe29c5')
 
 _instdir="usr/lib/cheatengine"
