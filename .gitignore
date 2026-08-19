@@ -1,0 +1,4 @@
+/marko-git/
+pkg/
+src/
+*.pkg.tar.*
