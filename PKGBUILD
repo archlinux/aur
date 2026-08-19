@@ -4,7 +4,7 @@
 
 pkgname=odin-git
 _pkgname=odin
-pkgver=r16294.94cc5d9e6
+pkgver=r18821.7a6f70ba3
 pkgrel=1
 pkgdesc="A fast, concise, readable, pragmatic and open sourced programming language."
 arch=(x86_64)
@@ -33,9 +33,10 @@ build() {
 check() {
     cd "${_pkgname}"
 
-    make -C vendor/stb/src
-    make -C vendor/cgltf/src
-    make -C vendor/miniaudio/src
+    vendor/stb/src/build_stb.sh
+    vendor/cgltf/src/build_cgltf.sh
+    vendor/miniaudio/src/build_miniaudio.sh
+    vendor/kb_text_shape/src/build_unix.sh
 
     CC=clang LD=wasm-ld vendor/box2d/build_box2d.sh
 
