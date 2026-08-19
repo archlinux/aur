@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=zind
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Dynamic structural API indexer for Zig"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ depends=('zig>=0.16.0' 'zig<0.17.0')
 makedepends=('zig>=0.16.0' 'zig<0.17.0' 'scdoc')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tsukumoakito/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 validpgpkeys=('66B227EC5F67D7B4F8C6C1C7E98764DF6FCE8857')
-sha256sums=('4b6a28a73fdb75d84e2b542bb41934941a0ee2d4d8c3c84af7239a4d02e803ba')
+sha256sums=('20f2ff2b2bf775bf4bbaa4823c35130c4a45db5c27df609d2578f1bde2c0e8d6')
 
 build() {
     cd "${pkgname}-${pkgver}"
