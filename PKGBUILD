@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <support@lmm.best>
 
 pkgname=lmm-api-go-bin
-pkgver=0.1.28
+pkgver=0.1.30
 pkgrel=1
 pkgdesc='LMM API Go backend, native CLI, systemd service, and web frontend (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -33,14 +33,14 @@ source_aarch64=(
 )
 noextract=("${_artifact}-amd64.tar.gz" "${_artifact}-arm64.tar.gz")
 sha256sums_x86_64=(
-  'dcdc55661903647e5fe425ff33f84b6c87187ba120f44cc6aa96e009f4a67d60'
-  'c6da3abd8848bc8c680808f51fe7eae47e8e442a37eddf69e3f003c48110edb5'
-  'f53fa567cc70d7bc5c9e2f1695efb4fe7109cf9bec7de6f726453e33c0c31926'
+  '745177bf59bd3f49c978d88c8d7bb55fd18ee28912403fd3ad0edb5116b88376'
+  '9e64970f05006a7812aab5d6ada2dfc34161712cbc58a74a2c59f3aeffe8a942'
+  '7bc191d1b4928b3253c45f74b4aedda542ad59a997ccedba1ee8a0a8e3869d74'
 )
 sha256sums_aarch64=(
-  'd26a7d2e0e593ae424cf514b1a9d498b8e57ddf3bca33ae45d5f76f22765fdf3'
-  '0db6f36139fca6a37aa5f7ff2b05307f27977ffb43e4c9fa2ba02c0ba9679a1c'
-  '724df51b9d03cd9cf0e663713b9db32a1ba00e519564b7244eb7e03c2ce2b4a1'
+  '3358ab85b3f1bf84c451c7859e634437a812f72efc1ff767c7fc3c6db878d629'
+  '892ec3cc3cef4b54d1d19bfda8173875ea86785e36551ac41fe0875d8968fee9'
+  '8983289004750d001413b1c8401d30855f52d35aa82f6af77efa4fe6fbae9865'
 )
 
 case "${CARCH}" in
@@ -83,6 +83,12 @@ package() {
     "${pkgdir}/usr/share/lmm-api-go/frontend-dist/"
   find "${pkgdir}/usr/share/lmm-api-go/frontend-dist" -type d -exec chmod 0755 {} +
   find "${pkgdir}/usr/share/lmm-api-go/frontend-dist" -type f -exec chmod 0644 {} +
+
+  install -d -m0755 "${pkgdir}/usr/share/lmm-api-go/edge-policy"
+  cp -R --no-preserve=ownership,mode,timestamps -- "${bundle}/edge-policy/." \
+    "${pkgdir}/usr/share/lmm-api-go/edge-policy/"
+  find "${pkgdir}/usr/share/lmm-api-go/edge-policy" -type d -exec chmod 0755 {} +
+  find "${pkgdir}/usr/share/lmm-api-go/edge-policy" -type f -exec chmod 0644 {} +
 
   for file in LICENSE NOTICE THIRD-PARTY-LICENSES.md; do
     install -Dm0644 "${bundle}/${file}" "${pkgdir}/usr/share/licenses/${pkgname}/${file}"
