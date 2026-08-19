@@ -3,7 +3,7 @@
 pkgname=sony-headphones-omarchy
 pkgver=0.2.1
 pkgrel=1
-pkgdesc="Native Sony Sound Connect headphones service and CLI for the Omarchy plugin"
+pkgdesc="Native Sony Sound Connect headphones service and CLI for Linux"
 arch=('x86_64')
 url="https://github.com/VyomJain6904/sony-headphones-omarchy"
 license=('MIT')

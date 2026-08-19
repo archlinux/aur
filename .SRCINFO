@@ -1,5 +1,5 @@
 pkgbase = sony-headphones-omarchy
-	pkgdesc = Native Sony Sound Connect headphones service and CLI for the Omarchy plugin
+	pkgdesc = Native Sony Sound Connect headphones service and CLI for Linux
 	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/VyomJain6904/sony-headphones-omarchy
