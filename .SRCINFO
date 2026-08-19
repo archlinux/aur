@@ -1,0 +1,16 @@
+pkgbase = launtui-bin
+	pkgdesc = A keyboard-driven launcher for the terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/siliconwitch/launtui
+	license = MIT
+	conflicts = launtui
+	provides = launtui
+	arch = aarch64
+	source_aarch64 = https://github.com/siliconwitch/launtui/releases/download/v0.1.0/launtui_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 674ef2f87298c12ed886b1981a3ea60ec10b6f12944dde609655ac6c1956bddb
+	arch = x86_64
+	source_x86_64 = https://github.com/siliconwitch/launtui/releases/download/v0.1.0/launtui_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = f6e5e874cb7076d209059fba7da5e766955a341a841ffde56fa110b0079cfec9
+	
+pkgname = launtui-bin
