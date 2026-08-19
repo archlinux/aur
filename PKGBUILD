@@ -2,8 +2,8 @@
 pkgname=muzaiten-bin
 # Date-based, matching the release artifact (YYYY.MM.DD.N.g<sha>).
 # Bump this, _release_tag, and sha256sums for every published release.
-pkgver=2026.07.19.1.g4f746ea
-_release_tag=2026.07.19
+pkgver=2026.08.19.15.g5d28378
+_release_tag=2026.08.19
 pkgrel=1
 pkgdesc="Native music player for local libraries, with ratings and scrobbling"
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=('muzaiten')
 conflicts=('muzaiten' 'muzaiten-git')
 options=('!strip')  # build-release.sh already strips the native executables
 source=("muzaiten-${pkgver}-${CARCH}.tar.zst::https://github.com/11xx/muzaiten/releases/download/${_release_tag}/muzaiten-${pkgver}-${CARCH}.tar.zst")
-sha256sums=('2d3ef5be165801726e06532505eaff36447cbc0da40c70659dc1c812eac75e86')
+sha256sums=('c83055455e8811102cb38163db07dc8d98396db9488a224fb9b852fe1de792bb')
 
 package() {
     # The tarball is a prefixed tree (usr/bin, usr/share/...) staged by
