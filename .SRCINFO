@@ -1,0 +1,17 @@
+pkgbase = simhammer-bin
+	pkgdesc = Desktop client for SimHammer, a SimulationCraft interface
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://simhammer.com
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	options = !strip
+	source = simhammer-bin-4.1.0.AppImage::https://github.com/sortbek/simcraft/releases/download/v4.1.0/SimHammer-4.1.0.AppImage
+	source = simhammer-bin.desktop
+	source = simhammer
+	sha256sums = 7249045128e735a5d375d94bd31c26f4ec8800496407fd00c08ea5d0a807ffaf
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = simhammer-bin

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SimHammer
+Comment=SimulationCraft desktop interface
+Exec=simhammer
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupWMClass=SimHammer
