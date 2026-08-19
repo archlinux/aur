@@ -2,7 +2,7 @@
 
 pkgname=voicefox-git
 _pkgname="${pkgname%-git}"
-pkgver=0.3.5.r0.ge93e6ff
+pkgver=0.3.6.r0.g414a277
 pkgrel=1
 epoch=1
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=(
 	"git"
-	"rust"
+	"cargo"
 )
 optdepends=(
 	"nodejs>=23.5.0: support for custom JS music source"
