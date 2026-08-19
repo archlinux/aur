@@ -110,7 +110,7 @@ package() {
   _rust_setup
 
   if [[ "${_use_sodeps::1}" == "t" ]]; then
-    eval "depends=(
+    eval "depends+=(
       libatk-1.0.so
       libcairo.so
       libepoxy.so
