@@ -1,7 +1,7 @@
 # Maintainer: tiouoo <tiouo@qq.com>
 
 pkgname=portal-mc-commit-bin
-pkgver=0.40.18.22
+pkgver=0.40.19.40
 pkgrel=1
 pkgdesc="Portal - Minecraft launcher/manager (commit build, prerelease)"
 arch=('x86_64')
@@ -14,9 +14,9 @@ options=('!strip' '!emptydirs')
 _appimg="Portal.AppImage"
 source_x86_64=(
     "$_appimg::https://github.com/tiouoo/Portal/releases/download/publish-commit/Portal.linux.x64.AppImage"
-    "portal-mc.svg::https://raw.githubusercontent.com/tiouoo/Portal/main/assets/Icon-Pattern.svg"
+    "portal-mc.svg::https://portal.tiouo.cc/portal-logo.svg"
 )
-sha256sums_x86_64=('aa12ef1a3431e9cb1b9882add60b575ff163bc680b61f87d3428f5be13c0f6d4' 'SKIP')
+sha256sums_x86_64=('14d3ae2ad7f79cac73d0a5cde87b5ec5ae4393204726a84b658489148ba3d9ab' 'SKIP')
 noextract=("$_appimg")
 
 package() {
