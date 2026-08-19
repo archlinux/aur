@@ -1,5 +1,5 @@
 pkgname=rutile-bin
-pkgver=0.6.0
+pkgver=0.6.3
 pkgrel=1
 pkgdesc='GNOME-native terminal emulator with split tiling and synchronized input (pre-built binary)'
 url='https://github.com/yatoub/Rutile'
@@ -10,8 +10,8 @@ provides=('rutile')
 conflicts=('rutile')
 source=("https://github.com/yatoub/Rutile/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("rutile-${pkgver}-linux-x86_64::https://github.com/yatoub/Rutile/releases/download/v${pkgver}/rutile-linux-x86_64")
-b2sums=(eaa5b054255309ae85b6297099f07b88e49613f02f8a0d7fd1145c4a84661629e5086a77454bc7957cb1ae1bb7433db4b301b9ac1f86049274853750796cab8f)
-b2sums_x86_64=(f2e48cfbcba3ba94571e4e58ef710ec208e94f6a702181a5be8aa8edfd761da3e1d66f53b703d64c6c00e7c314fdd0b3069165611fe040b57ecc92033dbf6c7c)
+b2sums=(e07732259d3aa985f17bc9e917a5d84740e95e2389ef0cecfa169efbdda4f57b2b653c0351daaa10b2cda1e398f6cbb5cdbd10c01dfa3b26d545a9e9a6e860e4)
+b2sums_x86_64=(b1a12b84e7a22824c79b8da24fb2ae69dc0997e118038329e1352e4db1671000517c458e422335973ddee2c8fa82ad594bd20b74bdf20987aa540f0323bd7c8c)
 
 package() {
     install -Dm0755 "rutile-${pkgver}-linux-x86_64" "$pkgdir/usr/bin/rutile"
