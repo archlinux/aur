@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jicofo-git
-pkgver=1.0.1184+0+g72d22deda
+pkgver=1.0.1196+0+g7ebb13dc3
 pkgrel=1
 pkgdesc="JItsi Meet COnference FOcus git build"
 arch=('any')
@@ -22,6 +22,7 @@ backup=(
 )
 source=(
         "$pkgname::git+https://github.com/jitsi/jicofo"
+	      "jicofo.conf"
         "config"
         "service"
         "sysusers.conf"
@@ -53,7 +54,9 @@ package() {
 
         install -dm700 "${CONFDIR}"
         install -Dm600 -t "${CONFDIR}" "lib/logging.properties"
-        install -Dm600 "jicofo-selector/src/main/resources/reference.conf" "${CONFDIR}/jicofo.conf"
+        install -Dm600 "jicofo/src/main/resources/reference.conf" "${CONFDIR}/jicofo_default.conf"
+        install -Dm600 "jicofo-common/src/main/resources/reference.conf" "${CONFDIR}/jicofo_default_common.conf"
+        install -Dm600 "jicofo-selector/src/main/resources/reference.conf" "${CONFDIR}/jicofo_default_selector.conf"
         install -Dm755 -t "${DESTDIR}" "resources/jicofo.sh"
         sed -i 's@/var/log/jitsi@/var/log/'${pkgname}'@' "${CONFDIR}/logging.properties"
 
@@ -61,10 +64,12 @@ package() {
         install -Dm600 -t "${CONFDIR}" "config"
         install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
+        install -Dm600 "jicofo.conf" "${CONFDIR}/jicofo.conf"
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 sha256sums=('SKIP'
+            '77f2e2d62e9fe38188f41b063496cc10970cc989ed620a64a2251d986d6ac253'
             '657bb19d1e84ead55197afde304c3a84c304a01844279299a6c6267c9e0bdbee'
             '89df67e9b062f0a9657e3c72d5c4432763702e20596603b599f178431027d62d'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
