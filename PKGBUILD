@@ -44,12 +44,8 @@ build() {
   cmake -B build -S ${pkgname%} \
     -DBUILD_TESTING=OFF
   cmake --build build
-  DESTDIR=smodtemp cmake --install build
-  PKG_CONFIG_PATH=smodtemp/usr/lib/pkgconfig/ cmake -B build_smodglow/ -DKWIN_BUILD_WAYLAND=ON -DCMAKE_CXX_FLAGS="-I../smodtemp/usr/include -L../smodtemp/usr/lib/qt6/plugins/org.kde.kdecoration3" -S ${pkgname%}/smodglow
-  cmake --build build_smodglow
 }
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  DESTDIR="$pkgdir" cmake --install build_smodglow
 }
