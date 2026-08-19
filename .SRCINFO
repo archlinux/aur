@@ -1,0 +1,19 @@
+pkgbase = radio-noise-key-generator
+	pkgdesc = Passwords and keys from RTL-SDR radio noise — SP 800-90B health tests, measured entropy credit, SHAKE-256, getrandom() always mixed in
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/OK1BR/radio-noise-key-generator
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = desktop-file-utils
+	makedepends = gtk-update-icon-cache
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = libgcrypt
+	depends = rtl-sdr
+	source = radio-noise-key-generator-0.1.0.tar.gz::https://github.com/OK1BR/radio-noise-key-generator/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 5521d04bdc76fd863eb75e878e90c486fb61690e8099d371ab755980d7abedae
+
+pkgname = radio-noise-key-generator
