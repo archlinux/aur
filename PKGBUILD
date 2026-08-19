@@ -2,7 +2,7 @@
 
 pkgname=mistral-vibe
 pkgver=2.24.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimal CLI coding agent by Mistral'
 arch=('x86_64')
 url='https://github.com/mistralai/mistral-vibe'
@@ -88,6 +88,11 @@ check() {
     # ACP initialize and CLI onboarding), which times out the e2e and ACP
     # tests. Force a non-blocking in-memory backend.
     export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+
+    # tests/tools/test_bash.py asserts on the English strerror text of a
+    # failing `cat`. Since v2.23.0 the bash tool no longer pins LC_ALL for
+    # spawned shells, so a translated builder locale breaks that test.
+    export LC_MESSAGES=C
 
     # These two tests exercise scripts/install.sh and assume no `uv`/`vibe`
     # binary in /usr/bin or /bin. They fail on a builder that already has
