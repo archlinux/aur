@@ -1,6 +1,6 @@
 pkgbase = silo-bin
 	pkgdesc = Self-hosted Dropbox in one binary - SeaDrive-compatible, SQLite-backed, TUI-managed (prebuilt)
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/dkam/silo
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = silo-bin
 	license = AGPL-3.0-only
 	options = !strip
 	options = !debug
-	source = silo-0.4.3-LICENSE.txt::https://github.com/dkam/silo/raw/v0.4.3/LICENSE.txt
+	source = silo-0.4.4-LICENSE.txt::https://github.com/dkam/silo/raw/v0.4.4/LICENSE.txt
 	source = silo.service
 	sha256sums = e987aa2f85f1d50f8a2a545e9646e577338966ae45e0386aaf913b0dec655f6a
 	sha256sums = 4a98ad92a32910eee400d060dd585888e02f5fd0249ee37b3d6c76de756fd550
-	source_x86_64 = silo-0.4.3-x86_64.tar.gz::https://github.com/dkam/silo/releases/download/v0.4.3/silo-v0.4.3-linux-amd64.tar.gz
-	sha256sums_x86_64 = a183e14d398897909f3eb4b30dc45c89f0cbc8c36e289b2c85ef917af741b5fe
-	source_aarch64 = silo-0.4.3-aarch64.tar.gz::https://github.com/dkam/silo/releases/download/v0.4.3/silo-v0.4.3-linux-arm64.tar.gz
-	sha256sums_aarch64 = 601faf095dfa7f42b7b553f3789e9b9da0f32606eeb537e1966c0c6ec169d81a
+	source_x86_64 = silo-0.4.4-x86_64.tar.gz::https://github.com/dkam/silo/releases/download/v0.4.4/silo-v0.4.4-linux-amd64.tar.gz
+	sha256sums_x86_64 = fb29c17d5f5ac5689bcd9437cbf90c2d03aeb8043be8d5debe741ac3433fdd34
+	source_aarch64 = silo-0.4.4-aarch64.tar.gz::https://github.com/dkam/silo/releases/download/v0.4.4/silo-v0.4.4-linux-arm64.tar.gz
+	sha256sums_aarch64 = 02acc44fe4dc5a24fad3320a1eadc994d203b3d6cf971fb9eb7e021d77759342
 
 pkgname = silo-bin
