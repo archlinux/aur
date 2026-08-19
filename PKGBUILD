@@ -3,10 +3,10 @@
 
 pkgname=litehtml0.9
 pkgver=0.9
-pkgrel=3
+pkgrel=4
 pkgdesc='Fast and lightweight HTML/CSS rendering engine'
 url='http://www.litehtml.com/'
-arch=(x86_64)
+arch=('x86_64' 'aarch64')
 license=(BSD-3-Clause)
 depends=(glibc
          gumbo-parser

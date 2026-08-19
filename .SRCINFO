@@ -1,9 +1,10 @@
 pkgbase = litehtml0.9
 	pkgdesc = Fast and lightweight HTML/CSS rendering engine
 	pkgver = 0.9
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.litehtml.com/
 	arch = x86_64
+	arch = aarch64
 	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = git
