@@ -1,51 +1,62 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@proton.me>
-
 pkgname=claude-crab
-pkgver=1.1.1
+pkgver=2.0.1
 pkgrel=1
-pkgdesc="Clawd walks above your KDE Plasma panel and animates to what Claude Code is doing"
+pkgdesc="A crab that walks above your panel while Claude Code works"
 arch=('x86_64')
 url="https://github.com/quinnjr/claude-crab"
 license=('MIT')
-# qt6-wayland is not pulled in by layer-shell-qt, which depends only on
-# qt6-base and wayland -- but without the Qt Wayland platform plugin the app
-# cannot start on the only session it properly supports.
-# hicolor-icon-theme owns the directories the icons install into.
-# namcap reports qt6-wayland as possibly unneeded; it cannot see that the
-# dependency is on the QPA plugin, loaded at runtime rather than linked.
-depends=(
-  'qt6-base'
-  'qt6-declarative'
-  'qt6-wayland'
-  'layer-shell-qt'
-  'hicolor-icon-theme'
-  # claude-crab-hooks is a stdlib-only Python script installed to /usr/bin, so
-  # this is a runtime dependency and not merely a build one.
-  'python'
-)
-# Pillow renders the sprite sheets and icons at build time; they are generated
-# rather than shipped, so the art and its manifest cannot drift apart.
-makedepends=('cmake' 'ninja' 'python-pillow')
+# Rendering is pure Rust (skia-rs), so there is no Qt or KDE dependency any
+# more. wayland is needed by the layer-shell backend, and the floating backend
+# talks to the GPU through wgpu, which loads Vulkan at runtime.
+depends=('wayland' 'vulkan-icd-loader' 'fontconfig')
+makedepends=('cargo' 'python' 'python-pillow')
 checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e368fb48f07e5bdd2f2b0dcd0088b9a10a701d2b64c5fd67e39febb29d3148aa')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('18cf5d2ef1917db910eb2c776ebce7dc075fecc59cd7f18cddf987b9bc9f94fc')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
 
 build() {
-  cmake -B build -S "$pkgname-$pkgver" -G Ninja \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -Wno-dev
-  cmake --build build
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
 }
 
 check() {
-  ctest --test-dir build --output-on-failure
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --release
+  # The Python helpers ship alongside the binary and have their own suites.
+  python -m pytest -q tests/
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install build
-  install -Dm644 "$pkgname-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "$pkgname-$pkgver/README.md" \
-    "$pkgdir/usr/share/doc/$pkgname/README.md"
+  cd "$pkgname-$pkgver"
+
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 tools/crab_hooks.py "$pkgdir/usr/bin/claude-crab-hooks"
+
+  install -Dm644 packaging/claude-crab.service \
+    "$pkgdir/usr/lib/systemd/user/claude-crab.service"
+  install -Dm644 packaging/dev.quinnjr.claude-crab.desktop \
+    "$pkgdir/usr/share/applications/dev.quinnjr.claude-crab.desktop"
+  install -Dm644 packaging/dev.quinnjr.claude-crab.metainfo.xml \
+    "$pkgdir/usr/share/metainfo/dev.quinnjr.claude-crab.metainfo.xml"
+
+  # Icons are rendered by the build script from the same code as the sprite,
+  # so they cannot drift from the character.
+  local icondir
+  icondir=$(find target/release/build -type d -name icons -print -quit)
+  for size in 32 48 64 128 256; do
+    install -Dm644 "$icondir/$size.png" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/dev.quinnjr.claude-crab.png"
+  done
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
