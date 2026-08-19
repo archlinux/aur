@@ -1,0 +1,13 @@
+pkgbase = asm-top-git
+	pkgdesc = A lightweight system monitoring tool written in pure x86-64 assembly for Linux. (similiar to top command just without processes)
+	pkgver = 0.3.1.r4.gf04e1cf
+	pkgrel = 1
+	url = https://github.com/c0m4r/asm-top
+	arch = x86_64
+	license = CC0-1.0
+	makedepends = nasm
+	makedepends = make
+	source = git+https://github.com/c0m4r/asm-top.git
+	sha256sums = SKIP
+
+pkgname = asm-top-git
