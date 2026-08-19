@@ -1,6 +1,6 @@
 pkgbase = vernier-git
 	pkgdesc = Cross-platform pixel-measurement overlay in Rust (latest main)
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/jondkinney/vernier
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = vernier-git
 	optdepends = wl-clipboard: copy screenshots / measurements to the clipboard
 	optdepends = libnotify: post-capture notifications
 	optdepends = xdg-desktop-portal-hyprland: global hotkey via the GlobalShortcuts portal
-	provides = vernier=0.4.2
+	provides = vernier=0.4.3
 	conflicts = vernier
 	conflicts = vernier-bin
 	options = !lto
