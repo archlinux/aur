@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=clang-static-git
-pkgver=24.0.0.r592588.f33323e92d8f
+pkgver=24.0.0.r593101.86d1e003b74c
 pkgrel=1
 pkgdesc='Clang compiler and tools with libc++, runtimes, and statically linked LLVM components (git version)'
 arch=(x86_64)
@@ -39,6 +39,7 @@ provides=(
   clang-analyzer=$pkgver
   clangd=$pkgver
   lld=$pkgver
+  llvm=$pkgver
   compiler-rt=$pkgver
   libc++=$pkgver
   libc++abi=$pkgver
@@ -51,6 +52,7 @@ conflicts=(
   clang-analyzer
   clangd
   lld
+  llvm
   compiler-rt
   libc++
   libc++abi
@@ -81,12 +83,15 @@ _get_distribution_components() {
   ninja -C _build -t targets | grep -Po 'install-\K.*(?=-stripped:)' |
     while read -r target; do
       case $target in
-      clang-libraries | distribution) continue ;;
+      clang-libraries | lld-libraries | distribution | LLVMgold | LTO | Remarks) continue ;;
       clang | clangd | clang-* | \
         lld | lld-* | ld.lld | \
+        llvm-* | llc | opt | dsymutil | yaml2obj | obj2yaml | FileCheck | sancov | sanstats | \
         compiler-rt | compiler-rt-* | clang_rt* | \
-        builtins | runtimes | scan-build | scan-view | \
-        cxx | cxx-* | cxxabi | cxxabi-*) ;;
+        builtins | runtimes | scan-build | scan-build-py | scan-view | \
+        opt-viewer | find-all-symbols | modularize | pp-trace | offload-arch | diagtool | \
+        libclang | libclang-headers | libclang-python-bindings | \
+        cxx | cxx-* | cxxabi | cxxabi-* | unwind | unwind-*) ;;
       *) continue ;;
       esac
       echo $target
@@ -136,9 +141,10 @@ check() {
 package() {
   DESTDIR="$pkgdir" ninja -C _build $NINJAFLAGS install-distribution
 
-  # Remove files that conflict with the llvm package
-  rm -f "$pkgdir"/usr/bin/clang-offload-packager
-  rm -f "$pkgdir"/usr/bin/llvm-offload-binary
+  # Remove files that conflict with system llvm-libs
+  rm -f "$pkgdir"/usr/lib/LLVMgold.so
+  rm -f "$pkgdir"/usr/lib/libLTO.so*
+  rm -f "$pkgdir"/usr/lib/libRemarks.so*
 
   # Remove LLVM libunwind files that conflict with system (gcc) libunwind
   rm -f "$pkgdir"/usr/lib/libunwind.so
