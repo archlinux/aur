@@ -1,0 +1,21 @@
+pkgbase = linyaps-box-rust-git
+	pkgdesc = Linyaps OCI runtime implemented in Rust A command-compatible Rust implementation of the Linyaps OCI runtime
+	pkgver = 2.3.0.rust.1.r4.g7cbcb6c
+	pkgrel = 1
+	url = https://github.com/guanzi008/linyaps-box-rust
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = pkgconf
+	depends = libgcc_s.so
+	provides = linyaps-box-rust
+	provides = linyaps-box
+	conflicts = linyaps-box-rust
+	conflicts = linyaps-box
+	options = !lto
+	options = !debug
+	source = git+https://github.com/guanzi008/linyaps-box-rust.git
+	sha256sums = SKIP
+
+pkgname = linyaps-box-rust-git
