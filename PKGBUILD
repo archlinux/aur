@@ -27,11 +27,6 @@ options=("!debug" "!strip")
 : "${source_x86_64[@]}"
 : "${url}"
 
-# Upstream uses Debian architecture naming convention. Let's prepare a variable for that.
-_upstream_arch=
-[[ "$CARCH" == "x86_64" ]] && _upstream_arch="amd64"
-[[ "$CARCH" == "i686" ]] && _upstream_arch="i386"
-
 package() {
 	depends=(
 		glibc
@@ -52,7 +47,7 @@ package() {
 	: "${pkgdir:?}"
 	: "${srcdir:?}"
 
-	ar p "${srcdir}/disig-web-signer_${_pkgver}_${_upstream_arch}.deb" data.tar.xz | tar -xJ -C "${pkgdir}"
+	bsdtar -xf data.tar.xz -C "${pkgdir}"
 
 	# The libraries are provided by the system.
 	rm -r "${pkgdir}"/opt/disig/websigner/{bin/qt.conf,lib,plugins,share/doc/*/}
