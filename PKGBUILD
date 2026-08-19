@@ -1,7 +1,7 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('aeroshell-libplasma-git')
-pkgver=6.7.0_18030.rd1c5ad5a1
+pkgver=6.7.4_18049.rda45ff7
 pkgrel=1
 pkgdesc="Plasma library and runtime components, with AeroShell patches"
 arch=(x86_64)

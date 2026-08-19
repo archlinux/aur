@@ -1,6 +1,6 @@
 pkgbase = aeroshell-libplasma-git
 	pkgdesc = Plasma library and runtime components, with AeroShell patches
-	pkgver = 6.7.0_18030.rd1c5ad5a1
+	pkgver = 6.7.4_18049.rda45ff7
 	pkgrel = 1
 	url = https://gitgud.io/aeroshell/libplasma
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = aeroshell-libplasma-git
 	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
-	makedepends = plasma-wayland-protocols
 	makedepends = wayland-protocols
+	makedepends = plasma-wayland-protocols
 	depends = gcc-libs
 	depends = glibc
 	depends = plasma-activities
