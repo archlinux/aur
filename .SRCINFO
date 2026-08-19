@@ -1,6 +1,6 @@
 pkgbase = helius-bin
 	pkgdesc = Local-first personal finance tracker for with a Rust CLI/TUI, SQLite ledger, budgets, recurring bills, reconciliation, and cashflow forecasting
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/Helius-Finance/helius-finance-tracker
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = helius-bin
 	conflicts = helius
 	conflicts = helius-finance-tracker
 	options = !strip
-	source_x86_64 = helius-x86_64-1.4.2.tgz::https://github.com/Helius-Finance/helius-finance-tracker/releases/download/v1.4.2/helius-v1.4.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a8448595a38f93c473ffd1bc1209cda33e61665344a7f914870598f85ac9f98c
+	source_x86_64 = helius-x86_64-1.4.3.tgz::https://github.com/Helius-Finance/helius-finance-tracker/releases/download/v1.4.3/helius-v1.4.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 363994dbfee7c231edbfc1ca67528853503cdeb3f38fa576870eaa8fdfe81191
 
 pkgname = helius-bin
