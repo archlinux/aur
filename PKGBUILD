@@ -1,6 +1,6 @@
 # Maintainer: indyfive11 <203553604+indyfive11@users.noreply.github.com>
 pkgname=bastionfw
-pkgver=1.5.18
+pkgver=1.5.19
 pkgrel=1
 pkgdesc="Modular, layered Linux firewall framework with an operator CLI, optional AI analysis layer, and an intelligent setup wizard"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   'conntrack-tools: LAN-client relay verification (L6)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0d3577238fa72f29360d0929998baa55f5821d480279305fd581928a80c2103d')
+sha256sums=('7701f70b1a958f7e2435ec9e8973892800f2c32e687d65a38919accc48638936')
 
 build() {
   cd "bastion-$pkgver"
@@ -30,4 +30,5 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 man/bastion.1 "$pkgdir/usr/share/man/man1/bastion.1"
 }
