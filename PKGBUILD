@@ -1,7 +1,7 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('aerothemeplasma-desktop-x11-git')
-pkgver=6.7.0_724.r5fd2458
+pkgver=6.7.4_735.rc9afeb7
 pkgrel=1
 pkgdesc="X11 session for AeroThemePlasma"
 arch=(any)

@@ -1,6 +1,6 @@
 pkgbase = aerothemeplasma-desktop-x11-git
 	pkgdesc = X11 session for AeroThemePlasma
-	pkgver = 6.7.0_724.r5fd2458
+	pkgver = 6.7.4_735.rc9afeb7
 	pkgrel = 1
 	url = https://github.com/aeroshell-desktop/aerothemeplasma
 	arch = any
