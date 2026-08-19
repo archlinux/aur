@@ -1,14 +1,15 @@
 # Maintainer: Maciej Dems <macdems@gmail.com>
 pkgname=z-library-bin
-pkgver=3.1.0
-pkgrel=2
+pkgver=3.2.1
+pkgrel=1
 pkgdesc="Z-library application"
 arch=('x86_64')
 url="https://z-lib.fm/z-access  "
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'at-spi2-core' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3')
 license=('ISC')
 #source=("zlibrary-setup-latest_${pkgver}.deb::https://s3proxy.cdn-zlib.sk/te_public_files/soft/linux/zlibrary-setup-latest.deb")
-source=("https://s3proxy-alp.cdn-zlib.sk/swfs_second_public_files/soft/desktop/Z-Library_${pkgver}_amd64.deb")
+#source=("https://s3proxy-alp.cdn-zlib.sk/swfs_second_public_files/soft/desktop/Z-Library_${pkgver}_amd64.deb")
+source=("https://dln1.ncdn.ec/general-files/soft/desktop/Z-Library_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
 
 prepare() {
