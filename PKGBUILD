@@ -3,7 +3,7 @@
 _pkgname=rubick
 pkgname=${_pkgname}-kubernetes-bin
 pkgver=4.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Modern cross-platform Kubernetes GUI client (prebuilt version)"
 arch=(x86_64)
 url="https://github.com/Dudude-bit/rubick"
@@ -11,14 +11,13 @@ license=('GPL-3.0-or-later')
 depends=("kubectl" "cairo" "desktop-file-utils" "gdk-pixbuf2" "glib2" "gtk3" "hicolor-icon-theme" "libsoup3" "pango" "webkit2gtk-4.1")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-_assets_ref=81809b080d05e6e890ee642bff848611ebf79242
 source=(
 	"com.k8s-gui.app.desktop"
-	"rubick-icon-256.png::https://github.com/Dudude-bit/rubick/raw/${_assets_ref}/src-tauri/icons/256x256.png"
-	"rubick-icon-128.png::https://github.com/Dudude-bit/rubick/raw/${_assets_ref}/src-tauri/icons/128x128.png"
-	"rubick-icon-64.png::https://github.com/Dudude-bit/rubick/raw/${_assets_ref}/src-tauri/icons/64x64.png"
-	"rubick-icon-32.png::https://github.com/Dudude-bit/rubick/raw/${_assets_ref}/src-tauri/icons/32x32.png"
-	"rubick-icon.svg::https://github.com/Dudude-bit/rubick/raw/${_assets_ref}/src-tauri/icons/icon.svg"
+	"${_pkgname}-icon-256.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/256x256.png"
+	"${_pkgname}-icon-128.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/128x128.png"
+	"${_pkgname}-icon-64.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/64x64.png"
+	"${_pkgname}-icon-32.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/32x32.png"
+	"${_pkgname}-icon.svg::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/icon.svg"
 )
 source_x86_64=(
 	"${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/Rubick_${pkgver}_amd64.deb"
