@@ -1,6 +1,6 @@
 pkgbase = clin-rs
 	pkgdesc = Feature-packed TUI note management app inspired by Obsidian
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/reekta92/clin-rs
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = clin-rs
 	depends = libgcc
 	depends = libgit2
 	options = !lto
-	source = clin-rs-0.11.0.tar.gz::https://github.com/reekta92/clin-rs/archive/v0.11.0.tar.gz
-	sha256sums = 2e1e9c28e4531b84b177e3edbfbbd5b244a21013687b5975dfc277a4648ed366
+	source = clin-rs-0.11.1.tar.gz::https://github.com/reekta92/clin-rs/archive/v0.11.1.tar.gz
+	sha256sums = 431e7d31229f1f4ba03cca0226cfddf51f62a2f9b4c71817947e5dc2c5357646
 
 pkgname = clin-rs
