@@ -4,8 +4,8 @@
 #https://comate-ide.bj.bcebos.com/updates/stable/linux/x64/latest.json
 pkgname=comate-bin
 _pkgname=Comate
-pkgver=3.2.2
-_version=4318e1d3aa81935708fe621c4121287d83f5bd68-262762091
+pkgver=3.6.0
+_version=e637b9df58e9775b2edb7e5611d79b6f5e59d835-266458711
 _electronversion=39
 pkgrel=1
 pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)"
@@ -43,12 +43,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/${_version}/${_pkgname}-linux-x64.tar.gz")
-sha256sums=('463871c6f4f1ca35328f02d6c81aaeec1d6aa998e4ca5c6c206c39a8f6cf3ae0'
+sha256sums=('c9bc9010f6936dacbad05f7ef4373ee06dc4f013ad8a99892affc3bf51f381ff'
             'df2535dcf1679b8681a27f35a445c08300d34b0336af0dea07f0fbcd5ef5e946'
             '0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d'
             '787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
-sha256sums_x86_64=('2a3475ab89a8b7415f24da0e5f8dbb8e6b7da0c7e4cae622a521441ab161e562')
+sha256sums_x86_64=('4e3980007708bf0439c50821d7382d3b775bd25212870dfe6f73a673fe41c104')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
