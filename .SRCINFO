@@ -1,6 +1,6 @@
 pkgbase = python-nvidia-riva-client
 	pkgdesc = Python implementation of the Riva Client API.
-	pkgver = 2.26.0
+	pkgver = 2.27.0
 	pkgrel = 1
 	url = https://github.com/nvidia-riva/python-clients
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = python-nvidia-riva-client
 	depends = python-grpcio-tools
 	depends = python-websockets
 	depends = python-protobuf
-	noextract = nvidia_riva_client-2.26.0-py3-none-any.whl
-	source = https://files.pythonhosted.org/packages/py3/n/nvidia-riva-client/nvidia_riva_client-2.26.0-py3-none-any.whl
-	sha256sums = 16ffc98266fa7be7261e0675de6b7028e7f973c2ac3dfd679668148ff497cc0c
+	noextract = nvidia_riva_client-2.27.0-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/py3/n/nvidia-riva-client/nvidia_riva_client-2.27.0-py3-none-any.whl
+	sha256sums = a18b0fa274417455b4fe2db126a340b8e7bfd362de838e05cb64af37c23c7ef3
 
 pkgname = python-nvidia-riva-client

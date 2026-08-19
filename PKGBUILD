@@ -2,7 +2,7 @@
 
 _name=nvidia-riva-client
 pkgname=python-$_name
-pkgver=2.26.0
+pkgver=2.27.0
 pkgrel=1
 pkgdesc='Python implementation of the Riva Client API.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-grpcio' 'python-grpcio-tools' 'python-websockets' 'pyt
 makedepends=('python-installer')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
 noextract=("${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('16ffc98266fa7be7261e0675de6b7028e7f973c2ac3dfd679668148ff497cc0c')
+sha256sums=('a18b0fa274417455b4fe2db126a340b8e7bfd362de838e05cb64af37c23c7ef3')
 
 package() {
   python -m installer --destdir="$pkgdir" *.whl
