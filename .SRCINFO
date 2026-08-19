@@ -1,11 +1,13 @@
 pkgbase = ps4rpc-go
 	pkgdesc = Fork of PS4RPD - Discord Rich Presence (RPC) for PS4 with GoldHEN, written in Go
-	pkgver = 2.1.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/Diramix/ps4rpc-go
 	install = ps4rpc-go.install
 	arch = x86_64
 	optdepends = systemd: run as a background user service
+	source = ps4rpc-2.1.0::https://github.com/Diramix/ps4rpc-go/releases/download/v2.1.0/ps4rpc-linux-amd64
+	source = ps4rpc-go.service
 	sha256sums = SKIP
 	sha256sums = SKIP
 
