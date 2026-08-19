@@ -1,0 +1,27 @@
+pkgbase = linyaps-rust-git
+	pkgdesc = Linyaps package manager implemented in Rust A command-compatible Rust implementation of the Linyaps package manager
+	pkgver = 1.14.0.rust.1.r6.g38b279b
+	pkgrel = 1
+	url = https://github.com/guanzi008/linyaps-rust
+	install = linyaps-rust.install
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = pkgconf
+	depends = sh
+	depends = libgcc_s.so
+	depends = hicolor-icon-theme
+	depends = linyaps-box-rust
+	provides = linyaps-rust
+	provides = linyaps
+	conflicts = linyaps-rust
+	conflicts = linyaps
+	options = !lto
+	options = !debug
+	source = git+https://github.com/guanzi008/linyaps-rust.git
+	source = linyaps-rust.install
+	sha256sums = SKIP
+	sha256sums = 8dee25390fcf12a621dd50fcf3b8545ff8ec69aa961f5e0264e57c0eeaf1b0eb
+
+pkgname = linyaps-rust-git
