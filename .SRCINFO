@@ -1,6 +1,6 @@
 pkgbase = qcalc-bin
 	pkgdesc = A multi-purpose calculator for productivity and accessibility.(Prebuilt version)
-	pkgver = 0.13.0
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/from104/qcalc
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = qcalc-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = qcalc=0.13.0
+	provides = qcalc=0.13.1
 	conflicts = qcalc
-	source = qcalc-0.13.0.rpm::https://github.com/from104/qcalc/releases/download/v0.13.0/Q.Calc-0.13.0-1.x86_64.rpm
-	source = LICENSE-0.13.0::https://raw.githubusercontent.com/from104/qcalc/v0.13.0/LICENSE
-	sha256sums = 099dc0daf5cf4c218b65705fff5875c470521662e8d447c10a0738ca0b3ea75c
+	source = qcalc-0.13.1.rpm::https://github.com/from104/qcalc/releases/download/v0.13.1/QCalc-0.13.1-1.x86_64.rpm
+	source = LICENSE-0.13.1::https://raw.githubusercontent.com/from104/qcalc/v0.13.1/LICENSE
+	sha256sums = 72ecead47b759234c82da28e5bcd8d2541aedd9ee82055a4e2a6fa63396aede6
 	sha256sums = 3987b48fb3c79907511fb74614201dbf40f9bff0cc691d4f2dbcad754cba519b
 
 pkgname = qcalc-bin
