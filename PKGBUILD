@@ -4,7 +4,6 @@ _commit_hash='095c73f04bc24f51dcb4a0155a5f10f87f768a8c'
 pkgname="mozhi-git"
 pkgver=r243.095c73f
 pkgrel=1
-epoch=1
 provides=('mozhi')
 conflicts=('mozhi' 'mozhi-bin')
 pkgdesc="Alternative frontend for multiple translation engines, a maintained fork‑rewrite of SimplyTranslate‑Web with API, webapp and CLI support"

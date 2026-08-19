@@ -2,7 +2,6 @@ pkgbase = mozhi-git
 	pkgdesc = Alternative frontend for multiple translation engines, a maintained fork‑rewrite of SimplyTranslate‑Web with API, webapp and CLI support
 	pkgver = r243.095c73f
 	pkgrel = 1
-	epoch = 1
 	url = https://codeberg.org/aryak/mozhi
 	arch = any
 	license = GNU
