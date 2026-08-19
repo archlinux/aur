@@ -1,19 +1,19 @@
 pkgbase = bananas-bin
 	pkgdesc = Simple peer-to-peer screen sharing tool without account or server requirements.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.0.22
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://getbananas.net/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron31
-	source = LICENSE-0.0.22::https://raw.githubusercontent.com/mistweaverco/bananas/v0.0.22/LICENSE
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/mistweaverco/bananas/v0.2.0/LICENSE
 	source = bananas.sh
 	sha256sums = 5ba8d10757c4ce9b880422e3746897d89b27647febd1f70ab5021f9ac10ade95
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = bananas-0.0.22-aarch64.deb::https://github.com/mistweaverco/bananas/releases/download/v0.0.22/bananas_arm64.deb
-	sha256sums_aarch64 = 6bb740cdc0f44002dde14df6c9748f5ff3372ff85a2441eeed26948b99073631
-	source_x86_64 = bananas-0.0.22-x86_64.deb::https://github.com/mistweaverco/bananas/releases/download/v0.0.22/bananas_amd64.deb
-	sha256sums_x86_64 = 5deccf01a60d4c7e684a914690cf9b22c6e82ed32ede6415083ea2937aac5915
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+	source_aarch64 = bananas-0.2.0-aarch64.deb::https://github.com/mistweaverco/bananas/releases/download/v0.2.0/bananas_arm64.deb
+	sha256sums_aarch64 = b547055c8d3868a0c07ae4ea9a53d97c98c3ba17e96329a7e34dd0a3f07d59ce
+	source_x86_64 = bananas-0.2.0-x86_64.deb::https://github.com/mistweaverco/bananas/releases/download/v0.2.0/bananas_amd64.deb
+	sha256sums_x86_64 = 04927b9df7fef29739cbda9bde285c923743253ec464251abd09badd2d754495
 
 pkgname = bananas-bin
