@@ -1,6 +1,6 @@
 # Maintainer: Rudolf Schmidt <info@rudolfschmidt.com>
 pkgname=simplex-desktop-fixed-bin
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="The first messaging platform that has no user identifiers — desktop GUI client"
 arch=('x86_64')
@@ -34,7 +34,7 @@ provides=('simplex-desktop' 'simplex-desktop-bin')
 conflicts=('simplex-desktop' 'simplex-desktop-bin')
 options=('!debug' '!strip')
 source=("simplex-desktop-${pkgver}.deb::https://github.com/simplex-chat/simplex-chat/releases/download/v${pkgver}/simplex-desktop-ubuntu-24_04-${CARCH}.deb")
-sha256sums=('f70f44d512d4b2446b52b1573fafc17e9cf65ddef7c9128b49ca43cf628210f2')
+sha256sums=('82a47af6d4e52782c4d67643413f3357ab8fbc133792de702af9ec729e6644b7')
 
 package() {
     cd "${srcdir}"
