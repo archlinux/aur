@@ -7,7 +7,7 @@ _appalias=msb
 pkgname=${_appname}-bin
 pkgdesc="Easy, fast and local-first microVM runtime"
 
-pkgver=0.6.11
+pkgver=0.6.12
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -37,8 +37,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appalias}-${_barch[1]}")
 sha256sums=('874ba994774c7712d6a580c2c7185193702227e0b5f134ef1bd50b1da1fb9d49'
             'a276ca3381fefb9cde42fccae847856085c76027557d62eee83f057eb6c53433')
-sha256sums_x86_64=('ca25e307a1d29b0d4ccfd5218bcceb32439a286a0efbc2ccf8e9b87602cc39b9')
-sha256sums_aarch64=('fec21d42c79835b9011bf41487e1a7a0bb79e807077448ea41affd7d7bfb017e')
+sha256sums_x86_64=('91744be90b8c816b2fdbf3d80aa78432b9038627922d36da2cf8ebe8e52c1547')
+sha256sums_aarch64=('cf0028762e425aa1781da8c151eb07a0c370667b2e026e326e0dda88cc75a8b7')
 
 
 prepare() {
