@@ -6,15 +6,30 @@ pkgname=simplescreenrecorder
 pkgver=0.4.4.79.ge73e
 # Pin commit until the next upstream release
 _commit=e73e07664121ac30836872bca76194c6570e04c8
-pkgrel=2
+pkgrel=3
 pkgdesc="A feature-rich screen recorder that supports X11 and OpenGL."
 arch=("x86_64")
 url="https://www.maartenbaert.be/simplescreenrecorder/"
 license=("GPL-3.0-only")
-depends=("qt6-base"
-    "ffmpeg" "alsa-lib" "libpulse" "jack" "libgl" "glu"
-    "libx11" "libxext" "libxfixes" "libxi" "libxinerama"
-    "desktop-file-utils" "gtk-update-icon-cache")
+depends=(
+    "alsa-lib"
+    "desktop-file-utils"
+    "ffmpeg"
+    "glu"
+    "gtk-update-icon-cache"
+    "jack2"
+    "libglvnd"
+    "libpipewire"
+    "libpulse"
+    "libvorbis"
+    "libx11"
+    "libxext"
+    "libxfixes"
+    "libxi"
+    "libxinerama"
+    "libxkbcommon"
+    "qt6-base"
+)
 optdepends=("lib32-simplescreenrecorder: OpenGL recording of 32-bit applications")
 makedepends=("git" "cmake" "qt6-tools")
 source=("git+https://github.com/MaartenBaert/ssr.git#commit=$_commit")
