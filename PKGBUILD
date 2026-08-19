@@ -1,14 +1,15 @@
 pkgname=tether-git
-pkgver=0.1.7
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A Wayland-native local file transfer and clipboard sync tool over mDNS"
 arch=('x86_64')
 url="https://github.com/zackb/tether"
 license=('MIT')
-depends=('gtk3' 'libnotify' 'openssl' 'wayland' 'avahi')
+depends=('gtk3' 'libnotify' 'openssl' 'wayland' 'avahi' 'glib2' 'bluez' 'bluez-utils' 'bluez-obex')
 makedepends=('cmake' 'ninja' 'git')
 provides=('tether')
 conflicts=('tether' 'tether-bin')
+install=tether.install
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
