@@ -1,0 +1,25 @@
+pkgbase = blam-bin
+	pkgdesc = Fast and lightweight LOC counter (Bazillion Lines Analyzed in Milliseconds)
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/prevter/blam
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = blam
+	conflicts = blam
+	noextract = blam-bin-2.2.2-x86_64.tar.gz
+	noextract = blam-bin-2.2.2-x86_64-v3.tar.gz
+	source_x86_64 = blam-bin-2.2.2-x86_64.tar.gz::https://github.com/prevter/blam/releases/download/v2.2.2/blam-v2.2.2-linux-amd64-glibc.tar.gz
+	source_x86_64 = blam-bin-2.2.2-x86_64-v3.tar.gz::https://github.com/prevter/blam/releases/download/v2.2.2/blam-v2.2.2-linux-amd64-v3-glibc.tar.gz
+	source_x86_64 = LICENSE-2.2.2.md::https://raw.githubusercontent.com/prevter/blam/v2.2.2/LICENSE.md
+	sha256sums_x86_64 = a425ced347d1cd06a983939e2eff38e99979feb598cbe1820985540bad415ce1
+	sha256sums_x86_64 = da281c668bf0ef5a7ad8222a8e8d6f74e8d2ba6ccd1c86ef110dd7def102c7b0
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = blam-bin-2.2.2-aarch64.tar.gz::https://github.com/prevter/blam/releases/download/v2.2.2/blam-v2.2.2-linux-aarch64-glibc.tar.gz
+	source_aarch64 = LICENSE-2.2.2.md::https://raw.githubusercontent.com/prevter/blam/v2.2.2/LICENSE.md
+	sha256sums_aarch64 = 6bd329467bcd8193ce8db5daf38a8ed3dcf4a04c0ffb25b11c2a58acb9bf4055
+	sha256sums_aarch64 = SKIP
+
+pkgname = blam-bin
