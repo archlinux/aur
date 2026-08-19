@@ -6,7 +6,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}
 pkgdesc="A fast, lightweight, command-line Steam launcher and library manager written in Rust"
 
-pkgver=0.1.33
+pkgver=0.1.34
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ depends=('glibc' 'libgcc' 'xz' 'bzip2' 'openssl')
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_gitversion}.tar.gz")
-sha256sums=('c91a1a5703352bd58df19e92f505509a5ed1c828d8240634c6fc730a1dddd112')
+sha256sums=('db8930c18b0bc0cec34f860da13fa7a76b1c56b3c8e7076887f7de87d61ddfe4')
 
 
 prepare() {
@@ -41,6 +41,14 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	cargo build --release --frozen
+}
+
+check() {
+	cd ${srcdir}/${_gitname}-${pkgver} || exit 1
+
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	cargo test --frozen --release
 }
 
 package() {
