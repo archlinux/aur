@@ -1,0 +1,17 @@
+pkgbase = yt-dlp-standalone-bin
+	pkgdesc = A feature-rich command-line audio/video downloader (standalone binary)
+	pkgver = 2026.07.04
+	pkgrel = 1
+	url = https://github.com/yt-dlp/yt-dlp
+	arch = x86_64
+	license = Unlicense
+	depends = glibc
+	depends = zlib
+	provides = yt-dlp
+	conflicts = yt-dlp
+	source = yt-dlp-bin::https://github.com/yt-dlp/yt-dlp/releases/download/2026.07.04/yt-dlp_linux
+	source = yt-dlp.tar.gz::https://github.com/yt-dlp/yt-dlp/releases/download/2026.07.04/yt-dlp.tar.gz
+	sha256sums = 6bbb3d314cde4febe36e5fa1d55462e29c974f63444e707871834f6d8cc210ae
+	sha256sums = 31c32457d1a573a341bb0929386c624fe47339a5338829e6e9c9454bdfa7397a
+
+pkgname = yt-dlp-standalone-bin
