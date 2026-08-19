@@ -1,7 +1,7 @@
 # Maintainer: Firefly Labs <fireflylabss@users.noreply.github.com>
 
 pkgname=optionterm
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc='Sidebar-first GTK4 terminal with tiling splits and Adwaita preferences'
 arch=('x86_64')
@@ -33,14 +33,14 @@ makedepends=(
   'gdk-pixbuf2'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e42a9d7e416d6a833800101a20c9209d51bd668a6afa65ef7a9e19abecb6733a')
+sha256sums=('b9974b4f2db0a240052fa55df656a9540e8134376937d4ea0994c8d023b656ac')
 
 _srcdir="optionTerm-$pkgver"
 
 prepare() {
   cd "$_srcdir"
   export RUSTUP_TOOLCHAIN=stable
-  # Build the patched VTE (kitty graphics protocol) before cargo fetch;
+  # Build the pinned FoxTerminal VTE fork before cargo fetch;
   # it installs into vte-dist/ and writes .cargo/config.toml.
   bash scripts/build-vte.sh
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -65,8 +65,8 @@ package() {
   install -Dm755 "target/release/optionterm" "$pkgdir/usr/bin/optionterm"
   # The command was called option-term up to 0.1.6; keep it working.
   ln -s optionterm "$pkgdir/usr/bin/option-term"
-  # Bundle the patched VTE (kitty graphics protocol). The binary's RUNPATH
-  # searches $ORIGIN/../lib/optionterm, so this patched lib takes precedence
+  # Bundle the pinned FoxTerminal VTE fork. The binary's RUNPATH searches
+  # $ORIGIN/../lib/optionterm, so this Kitty-capable lib takes precedence
   # over the distro's stock libvte-2.91-gtk4.
   install -Dm755 "vte-dist/lib/libvte-2.91-gtk4.so.0" \
     "$pkgdir/usr/lib/optionterm/libvte-2.91-gtk4.so.0"
