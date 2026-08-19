@@ -1,18 +1,29 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@proton.me>
 pkgname=claude-crab
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A crab that walks above your panel while Claude Code works"
 arch=('x86_64')
 url="https://github.com/quinnjr/claude-crab"
 license=('MIT')
 # Rendering is pure Rust (skia-rs), so there is no Qt or KDE dependency any
-# more. wayland is needed by the layer-shell backend, and the floating backend
-# talks to the GPU through wgpu, which loads Vulkan at runtime.
-depends=('wayland' 'vulkan-icd-loader' 'fontconfig')
-makedepends=('cargo' 'python' 'python-pillow')
+# more. Nothing is linked at runtime: the layer-shell backend speaks the
+# Wayland protocol in pure Rust, wgpu loads Vulkan at runtime, and
+# smithay-client-toolkit dlopens libxkbcommon.
+# hicolor-icon-theme owns the directories the icons install into.
+depends=(
+  'wayland'
+  'vulkan-icd-loader'
+  'fontconfig'
+  'libxkbcommon'
+  'hicolor-icon-theme'
+  # claude-crab-hooks is a stdlib-only Python script installed to /usr/bin, so
+  # this is a runtime dependency and not merely a build one.
+  'python'
+)
+makedepends=('cargo' 'python-pillow')
 checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('18cf5d2ef1917db910eb2c776ebce7dc075fecc59cd7f18cddf987b9bc9f94fc')
 
 prepare() {
