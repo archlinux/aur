@@ -2,7 +2,7 @@
 
 pkgname=jupyterhub-idle-culler
 pkgdesc="JupyterHub service to cull and shut down idle users and notebook servers"
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 url="https://github.com/jupyterhub/jupyterhub-idle-culler"
 license=('BSD-3-Clause')
@@ -12,6 +12,7 @@ depends=(
   'python-dateutil'
   'python-packaging'
   'python-tornado'
+  'python-traitlets'
 )
 makedepends=(
   'git'
@@ -32,10 +33,17 @@ checkdepends=(
 _pyname=jupyterhub_idle_culler
 source=(
   "git+https://github.com/jupyterhub/$pkgname.git#tag=$pkgver"
+  'pull_request_107.patch::https://patch-diff.githubusercontent.com/raw/jupyterhub/jupyterhub-idle-culler/pull/107.patch'
 )
 sha256sums=(
-  '8dc992a7e5437b29f3a8c4b65a11e3556ed2ffc3f22d660389b484f539829230'
+  'c450182241461998a719d45846c2f7aea154e3f4e3cb964e336c3616a1fcda70'
+  'ad0cc9a0a908eb712cb2d8845741f217b27e85742a7e88690bce9aafa2be46c5'
 )
+
+prepare() {
+  cd "$pkgname"
+  git apply -v "$srcdir/pull_request_107.patch"  # Fixes failures during test cleanup
+}
 
 build() {
   cd "$pkgname"
