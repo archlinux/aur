@@ -20,7 +20,7 @@
 
 pkgname=biri-git
 pkgver=26.04.r308.g999613f
-pkgrel=1
+pkgrel=2
 pkgdesc="Niri compositor soft-fork with several added quality of life features"
 arch=(x86_64 aarch64)
 url="https://github.com/barrulus/${pkgname%-git}"
@@ -39,7 +39,7 @@ optdepends=('fuzzel: application launcher similar to rofi drun mode'
             'gnome-keyring: implements the secret portal, for certain apps to work'
             'polkit-gnome: when apps need to ask for root permissions')
 provides=("niri=${pkgver}")
-conflicts=("niri-bin" "niri")
+conflicts=("niri-bin" "niri" "niri-git")
 options=(!debug !lto !strip)
 source=("${pkgname%-git}::git+$url.git")
 b2sums=('SKIP')
@@ -49,8 +49,10 @@ pkgver() {
   # This fork doesn't push tags to its own remote, but its history is a
   # direct continuation of upstream niri's, so pull niri's tags in to
   # describe against instead.
-  git remote get-url upstream &>/dev/null || git remote add upstream "https://github.com/YaLTeR/niri.git"
-  git fetch -q upstream 'refs/tags/*:refs/tags/*'
+  git remote get-url upstream &>/dev/null || git remote add upstream "https://github.com/niri-wm/niri.git"
+  # Don't abort in offline/network-isolated builds
+  # where the tags are already cached from a previous fetch.
+  git fetch -q upstream 'refs/tags/*:refs/tags/*' 2>/dev/null || true
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
@@ -83,4 +85,12 @@ package() {
   install -Dm644 "resources/niri.desktop"                    -t "${pkgdir}/usr/share/wayland-sessions/"
   install -Dm644 "resources/niri-portals.conf"               -t "${pkgdir}/usr/share/xdg-desktop-portal/"
   install -Dm644 "resources/niri"{.service,-shutdown.target} -t "${pkgdir}/usr/lib/systemd/user/"
+
+  # Bundle the shader collection so users have a local copy to seed
+  # ~/.config/biri/ from (see resources/shaders/README.md).
+  local shaderdir="${pkgdir}/usr/share/doc/niri/shaders"
+  cp -r resources/shaders "${shaderdir}"
+  find "${shaderdir}" -type d -exec chmod 755 {} +
+  find "${shaderdir}" -type f -exec chmod 644 {} +
+  chmod 755 "${shaderdir}"/scripts/*
 }

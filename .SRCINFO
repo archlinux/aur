@@ -1,7 +1,7 @@
 pkgbase = biri-git
 	pkgdesc = Niri compositor soft-fork with several added quality of life features
 	pkgver = 26.04.r308.g999613f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/barrulus/biri
 	arch = x86_64
 	arch = aarch64
@@ -32,6 +32,7 @@ pkgbase = biri-git
 	provides = niri=26.04.r308.g999613f
 	conflicts = niri-bin
 	conflicts = niri
+	conflicts = niri-git
 	options = !debug
 	options = !lto
 	options = !strip
