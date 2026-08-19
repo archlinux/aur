@@ -1,6 +1,6 @@
 pkgbase = orchestrator
 	pkgdesc = MySQL replication topology management and HA
-	pkgver = 3.2.6.23
+	pkgver = 3.2.6.24
 	pkgrel = 1
 	url = https://github.com/percona/orchestrator
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = orchestrator
 	depends = bash
 	conflicts = orchestrator-bin
 	options = !lto
-	source = orchestrator-3.2.6-23.tar.gz::https://github.com/percona/orchestrator/archive/refs/tags/v3.2.6-23.tar.gz
-	sha256sums = 859b75e3fa878e5aa73bc841ea356287ab81d87289dbcaacafdcb830fce48ac8
+	source = orchestrator-3.2.6-24.tar.gz::https://github.com/percona/orchestrator/archive/refs/tags/v3.2.6-24.tar.gz
+	sha256sums = 16008daf9ae7b5a3293633142e51352c0033c7dc83a93b1e2238e4d528472066
 
 pkgname = orchestrator
