@@ -1,6 +1,6 @@
 pkgbase = source2viewer-git
 	pkgdesc = Valve's Source 2 resource file format parser, decompiler, and exporter.
-	pkgver = 19.2.r0.gc722083
+	pkgver = 20.0.r8.g4f49e93
 	pkgrel = 1
 	url = https://github.com/ValveResourceFormat/ValveResourceFormat
 	install = source2viewer-git.install

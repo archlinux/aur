@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=source2viewer-git
-pkgver=19.2.r0.gc722083
+pkgver=20.0.r8.g4f49e93
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
@@ -62,7 +62,7 @@ then
 	mkdir -p "\$HOME/.${pkgname::-4}/wine"
 	wineboot -u
 fi
-cd "\$HOME/.${pkgname::-4}"
+cd "\$HOME/.${pkgname::-4}" || exit
 DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/${pkgname::-4}.exe "\$@"
 EOF
 	cat >> "$pkgdir/usr/bin/${pkgname::-3}wine" <<-EOF
