@@ -1,7 +1,7 @@
 pkgbase = madbfs-bin
 	pkgdesc = Mount Android phones on Linux with adb (userspace filesystem for Android via adb using FUSE)
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mrizaln/madbfs
 	arch = x86_64
 	license = MIT

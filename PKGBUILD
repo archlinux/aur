@@ -2,7 +2,7 @@
 # Contributor and author of madbfs: Muhammad Rizal Nurromdhoni <mrizaln2000 at gmail dot com>
 pkgname=madbfs-bin
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mount Android phones on Linux with adb (userspace filesystem for Android via adb using FUSE)"
 arch=(x86_64)
 url="https://github.com/mrizaln/madbfs"
@@ -20,7 +20,7 @@ sha256sums=('6bb7acce00e84c47f64e45dfa206b7fa738f7d94c78b805edfbbfc90f5acb777'
 
 package(){
 	chrpath -d "${srcdir}/madbfs/madbfs"
-	install -Dm755 "${srcdir}/madbfs/madbfs" "${pkgdir}/usr/bin/madbfs-bin"
+	install -Dm755 "${srcdir}/madbfs/madbfs" "${pkgdir}/usr/bin/madbfs"
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/madbfs/MIT.txt"
 	install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/madbfs/README.md"
 }
