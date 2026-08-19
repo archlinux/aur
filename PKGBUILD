@@ -3,17 +3,17 @@
 pkgbase=115-browser-bin
 pkgname=115-browser-bin
 _pkgname=115br
-pkgver=36.0.0
+pkgver=36.0.1
 pkgrel=1
 arch=('x86_64')
 options=(!strip !debug)
 depends=(
     dbus
     expat
-    gcc-libs
     glib2
-    glibc
+    libgcc_s.so
     libidn2
+    libstdc++.so
     sh
     zlib
 )
@@ -33,10 +33,10 @@ source=(
 source_x86_64=(
     "${pkgname}-${pkgver}.deb::https://down.115.com/client/115pc/lin/115br_v${pkgver}.deb"
 )
-sha256sums=('e65199037614ec40eae799f013d007a9252d1b870ec9406fffd7f0aaee3951f1'
+sha256sums=('7a1c438a53cd10ad78b9ea150521f12e6d97e10cf07f07d38d4f0a65f22cafcf'
             'cfe25e4d5d8236b3b68089fbc4b56aaa7db1d0a560905f1faf004bc5e4534245'
             'ce0e3cdf98637003986feb9abb198cf04135333116f44e1642ba438d344a6a2e')
-sha256sums_x86_64=('139fb4e36d7f48f1e179317e5ad2bd8b12879e71d3c4ff99da26865661b4fc48')
+sha256sums_x86_64=('a26f84625b5c1ca1a7f6e2eb5a89327c49627fb7f04db1b71e27c48904b88d8b')
 noextract=("${pkgname}-${pkgver}.deb")
 
 prepare() {
