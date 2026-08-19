@@ -1,6 +1,6 @@
 pkgbase = dotnet-core-rc-bin
 	pkgver = 10.0.11.sdk400
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dotnet.microsoft.com
 	arch = aarch64
 	arch = x86_64
@@ -43,14 +43,16 @@ pkgname = dotnet-runtime-rc-bin
 	optdepends = lttng-ust2.12: CoreCLR tracing
 	provides = dotnet-runtime-rc=10.0.11.sdk400
 	provides = dotnet-runtime-10.0=10.0.11.sdk400
+	provides = dotnet-runtime=10.0
 	conflicts = dotnet-runtime-rc
 	conflicts = dotnet-runtime-10.0
 
 pkgname = aspnet-runtime-rc-bin
 	pkgdesc = The ASP.NET Core runtime
-	depends = dotnet-runtime-rc-bin>=:10.0.11.sdk400-1
+	depends = dotnet-runtime-rc-bin>=:10.0.11.sdk400-2
 	provides = aspnet-runtime-rc=10.0.11.sdk400
 	provides = aspnet-runtime-10.0=10.0.11.sdk400
+	provides = aspnet-runtime=10.0
 	conflicts = aspnet-runtime-rc
 	conflicts = aspnet-runtime-10.0
 
@@ -58,23 +60,26 @@ pkgname = dotnet-targeting-pack-rc-bin
 	pkgdesc = The .NET Core targeting pack
 	provides = dotnet-targeting-pack-rc=10.0.11.sdk400
 	provides = dotnet-targeting-pack-10.0=10.0.11.sdk400
+	provides = dotnet-targeting-pack=10.0
 	conflicts = dotnet-targeting-pack-rc
 	conflicts = dotnet-targeting-pack-10.0
 
 pkgname = aspnet-targeting-pack-rc-bin
 	pkgdesc = The ASP.NET Core targeting pack
-	depends = dotnet-targeting-pack-rc-bin>=:10.0.11.sdk400-1
+	depends = dotnet-targeting-pack-rc-bin>=:10.0.11.sdk400-2
 	provides = aspnet-targeting-pack-rc=10.0.11.sdk400
 	provides = aspnet-targeting-pack-10.0=10.0.11.sdk400
+	provides = aspnet-targeting-pack=10.0
 	conflicts = aspnet-targeting-pack-rc
 	conflicts = aspnet-targeting-pack-10.0
 
 pkgname = dotnet-sdk-rc-bin
 	pkgdesc = The .NET Core SDK
-	depends = dotnet-runtime-rc-bin>=:10.0.11.sdk400-1
-	depends = dotnet-targeting-pack-rc-bin>=:10.0.11.sdk400-1
+	depends = dotnet-runtime-rc-bin>=:10.0.11.sdk400-2
+	depends = dotnet-targeting-pack-rc-bin>=:10.0.11.sdk400-2
 	optdepends = aspnet-targeting-pack-rc-bin: Build ASP.NET Core applications
 	provides = dotnet-sdk-rc=10.0.11.sdk400
 	provides = dotnet-sdk-10.0=10.0.11.sdk400
+	provides = dotnet-sdk=10.0
 	conflicts = dotnet-sdk-rc
 	conflicts = dotnet-sdk-10.0

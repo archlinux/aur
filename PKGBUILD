@@ -14,7 +14,7 @@ pkgver=10.0.11.sdk400
 _runtimever="$(sed -E 's/\.sdk[0-9]+([A-Za-z]+)/-\1./g; s/\.sdk.*//' <<< "${pkgver}")"
 _dotnetver="$(cut -d. -f1,2 <<< "${_runtimever%%-*}")"
 _sdkver="$(sed -E 's/([0-9]+)\.sdk([0-9]+)([A-Za-z]+)/\2-\3./g; s/[0-9]+\.sdk//g' <<< "${pkgver}")"
-pkgrel=1
+pkgrel=2
 declare -Ag _arch=(
   ['aarch64']='arm64'
   ['armv7h']='arm'
@@ -118,6 +118,7 @@ package_dotnet-runtime-rc-bin() {
   provides=(
     "${pkgname%-bin}=${pkgver}"
     "${pkgname%${_suffix}-bin}-${_dotnetver}=${pkgver}"
+    "${pkgname%${_suffix}-bin}=${_dotnetver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -147,6 +148,7 @@ package_aspnet-runtime-rc-bin() {
   provides=(
     "${pkgname%-bin}=${pkgver}"
     "${pkgname%${_suffix}-bin}-${_dotnetver}=${pkgver}"
+    "${pkgname%${_suffix}-bin}=${_dotnetver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -173,6 +175,7 @@ package_dotnet-targeting-pack-rc-bin() {
   provides=(
     "${pkgname%-bin}=${pkgver}"
     "${pkgname%${_suffix}-bin}-${_dotnetver}=${pkgver}"
+    "${pkgname%${_suffix}-bin}=${_dotnetver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -203,6 +206,7 @@ package_aspnet-targeting-pack-rc-bin() {
   provides=(
     "${pkgname%-bin}=${pkgver}"
     "${pkgname%${_suffix}-bin}-${_dotnetver}=${pkgver}"
+    "${pkgname%${_suffix}-bin}=${_dotnetver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -236,6 +240,7 @@ package_dotnet-sdk-rc-bin() {
   provides=(
     "${pkgname%-bin}=${pkgver}"
     "${pkgname%${_suffix}-bin}-${_dotnetver}=${pkgver}"
+    "${pkgname%${_suffix}-bin}=${_dotnetver}"
   )
   conflicts=(
     "${pkgname%-bin}"
