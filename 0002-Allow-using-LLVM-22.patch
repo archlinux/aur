@@ -1,4 +1,4 @@
-From c927beace6e21e10aed680268c95f9f96efabc7c Mon Sep 17 00:00:00 2001
+From ed1b74aa93c1a818b73311caa021bb2dab0e4687 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 11 Mar 2026 01:07:36 +0100
 Subject: [PATCH 2/2] Allow using LLVM 22
@@ -54,5 +54,5 @@ index be8e01c62..8b1983212 100644
  
  #include <cstdio>
 -- 
-2.54.0
+2.55.0
 
