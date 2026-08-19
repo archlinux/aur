@@ -1,7 +1,7 @@
 pkgbase = darkice
 	pkgdesc = Reads live audio from backends, encodes it and streams it to a server
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.darkice.org/
 	arch = aarch64
 	arch = armv6h
@@ -23,8 +23,10 @@ pkgbase = darkice
 	depends = glibc
 	source = darkice-1.6.tar.gz::https://github.com/rafael2k/darkice/archive/refs/tags/v1.6.tar.gz
 	source = darkice@.service
+	source = darkice-faac-2.patch::https://github.com/rafael2k/darkice/pull/216.patch
 	sha256sums = 52807d887d60646776110b63543d3845ebe9ed52d3eea44bed7c4bdd95b6575e
 	sha256sums = 7c65f92c885ed7e141d3289fd8e108dc3d7c19d5c4b3f948e7ce3ad6c653cd12
+	sha256sums = cb6bf03a9d2aea167f499bb08d8395c0bfbf9e20eaef090be900e229918ad0d5
 
 pkgname = darkice
 	depends = gcc-libs

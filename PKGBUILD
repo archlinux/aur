@@ -8,7 +8,7 @@
 
 pkgname=darkice
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Reads live audio from backends, encodes it and streams it to a server'
 arch=(aarch64 armv6h armv7h x86_64)
 url='http://www.darkice.org/'
@@ -16,9 +16,17 @@ license=(GPL-3.0-or-later)
 depends=(gcc-libs glibc)
 makedepends=(alsa-lib faac flac jack lame libfdk-aac libpulse libsamplerate libvorbis twolame opus)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rafael2k/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
-        'darkice@.service')
+        'darkice@.service'
+        'darkice-faac-2.patch::https://github.com/rafael2k/darkice/pull/216.patch')
 sha256sums=('52807d887d60646776110b63543d3845ebe9ed52d3eea44bed7c4bdd95b6575e'
-            '7c65f92c885ed7e141d3289fd8e108dc3d7c19d5c4b3f948e7ce3ad6c653cd12')
+            '7c65f92c885ed7e141d3289fd8e108dc3d7c19d5c4b3f948e7ce3ad6c653cd12'
+            'cb6bf03a9d2aea167f499bb08d8395c0bfbf9e20eaef090be900e229918ad0d5')
+
+prepare() {
+  cd $pkgname-$pkgver/darkice/trunk
+
+  patch -p2 -N -r - -i "$srcdir"/darkice-faac-2.patch
+}
 
 build() {
   cd $pkgname-$pkgver/darkice/trunk
