@@ -1,7 +1,7 @@
 # Maintainer: Matthias Volk <m.volk at tue dot nl>
 # Contributor: Sascha Wunderlich <archlinux at saschawunderlich dot de>
 pkgname=stormchecker
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="A modern probabilistic model checker"
 arch=(i686 x86_64 aarch64)
@@ -9,12 +9,18 @@ url="https://www.stormchecker.org"
 license=('GPL-3.0-or-later')
 depends=(boost cln ginac glpk gmp hwloc libarchive xerces-c z3)
 makedepends=(cmake)
-optdepends=('spot: support for LTL formulas')
+optdepends=(
+    'gurobi: additional LP solver',
+    'highs: additional LP solver',
+    'mathsat-5: additional SMT solver',
+    'soplex: additional LP solver',
+    'spot: support for LTL formulas'
+)
 provides=()
 conflicts=(stormchecker-git)
 replaces=()
 source=("storm-$pkgver.tar.gz::https://github.com/stormchecker/storm/archive/$pkgver.tar.gz")
-sha256sums=(0d87f5ec0bf7295bc859134a11118444100978f1e3c49aed87ce41cb5f0a7ae5)
+sha256sums=('ab5d7df2049ab683c3062f58d4201f960f8295bb9c702a2352305b7c7c597010')
 
 build() {
 	mkdir -p "storm-$pkgver/build"
