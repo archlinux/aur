@@ -1,6 +1,6 @@
 # Maintainer: Diramix <39developer@diram1x.ru>
 pkgname=ps4rpc-go
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Fork of PS4RPD - Discord Rich Presence (RPC) for PS4 with GoldHEN, written in Go"
 arch=('x86_64')
