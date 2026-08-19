@@ -1,12 +1,12 @@
 # Maintainer: Axel Haustant <noirbizarre@gmail.com>
 #
-# Prebuilt binary package. `0.4.0`, `c12cc60b1bcf6edfedf8d64a9d6ca128b47256f308aecd288a3d9dc0ecf87fab` and `4c3a587d9d93f2423a1630398fd1a2d53d6413a0987af4f72f38bc081457c6f9`
+# Prebuilt binary package. `0.5.0`, `18fbb9ec2f3918f5a7deafaa5d87b7551d051c7e45c4beb1f274ab2866271104` and `41dcdde22ea5ad64e1b2cbe83bef232b4d96d3d92d816fce54b348a19c845ba4`
 # are substituted by .github/workflows/aur.yml from the published release
 # assets.
 
 pkgname=git-wipe-bin
 _pkgname=git-wipe
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Wipe out merged local branches and worktrees (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ options=('!strip' '!debug')
 # cache unambiguous across releases.
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/git-wipe-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/git-wipe-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('c12cc60b1bcf6edfedf8d64a9d6ca128b47256f308aecd288a3d9dc0ecf87fab')
-sha256sums_aarch64=('4c3a587d9d93f2423a1630398fd1a2d53d6413a0987af4f72f38bc081457c6f9')
+sha256sums_x86_64=('18fbb9ec2f3918f5a7deafaa5d87b7551d051c7e45c4beb1f274ab2866271104')
+sha256sums_aarch64=('41dcdde22ea5ad64e1b2cbe83bef232b4d96d3d92d816fce54b348a19c845ba4')
 
 package() {
   # The archives carry no leading directory, so their contents — `git-wipe`,
