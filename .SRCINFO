@@ -1,9 +1,9 @@
 pkgbase = wak-git
 	pkgdesc = wak -- an awk implementation for toybox and standalone
-	pkgver = 24.10.24.ge8302cd
+	pkgver = 24.10.r24.ge8302cd
 	pkgrel = 1
-	url = https://github.com/raygard/wak.git
-	arch = x86_64
+	url = https://github.com/raygard/wak
+	arch = any
 	license = 0BSD
 	makedepends = git
 	makedepends = clang
