@@ -1,6 +1,6 @@
 pkgbase = devkitty
 	pkgdesc = Swiss army knife for developers.(Use system-wide electron)
-	pkgver = 4.1.2
+	pkgver = 4.1.3
 	pkgrel = 1
 	url = https://devkitty.app/
 	arch = any
@@ -15,6 +15,6 @@ pkgbase = devkitty
 	depends = electron41
 	conflicts = devkitty
 	source = devkitty.sh
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = devkitty
