@@ -2,7 +2,7 @@ pkgbase = bitbucket-cli
 	pkgdesc = A powerful command-line interface for Bitbucket Cloud - manage repos, PRs, issues, and pipelines from your terminal with OAuth 2.0
 	pkgver = 0.3.18
 	pkgrel = 1
-	url = https://github.com/pegasusheavy/bitbucket-cli
+	url = https://github.com/quinnjr/bitbucket-cli
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = bitbucket-cli
 	optdepends = kwallet: store credentials in KDE Wallet via Secret Service
 	provides = bitbucket
 	options = !lto
-	source = bitbucket-cli-0.3.18.tar.gz::https://github.com/pegasusheavy/bitbucket-cli/archive/refs/tags/v0.3.18.tar.gz
+	source = bitbucket-cli-0.3.18.tar.gz::https://github.com/quinnjr/bitbucket-cli/archive/refs/tags/v0.3.18.tar.gz
 	sha256sums = 69a4e88c1f39cb1622aba31293723f1bb9e87937a40076523fef8c77af4734b0
 
 pkgname = bitbucket-cli
