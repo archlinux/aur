@@ -1,7 +1,7 @@
 pkgbase = shorin-niri-git
 	pkgdesc = Shorin Niri Desktop Environment
 	pkgver = r209.c821453
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/shorin-niri
 	arch = any
 	license = GPL
@@ -95,7 +95,6 @@ pkgbase = shorin-niri-git
 	optdepends = ddcutil-service: DDC util
 	optdepends = python-pywalfox: Firefox theming
 	optdepends = waypaper: Wallpaper setter
-	optdepends = niri-sidebar-git: Sidebar
 	optdepends = wl-longshot-git: Screenshot tool
 	optdepends = shorin-screenrec-menu-git: Screen record menu
 	optdepends = shorin-proton-wrapper-git: Proton wrapper for Windows executables
