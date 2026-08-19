@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=e-search-bin
 _pkgname=eSearch
-pkgver=15.3.4
-_electronversion=40
+pkgver=15.4.2
+_electronversion=43
 pkgrel=1
 pkgdesc="Screenshot,OCR search,translate,search for picture paste the picture on the screen,screen recorder.(Prebuilt version.Use system-wide electron)截屏,离线OCR,搜索翻译,以图搜图,贴图,录屏,滚动截屏."
 arch=(
@@ -33,8 +33,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux-x64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('2a7a4434889adab45adb8597c2308d5dd0bde50d05baa6d029a390ec17d8a64d')
-sha256sums_x86_64=('2da20620cb0f1467839bc7f41199dc2bf9a2968d0f5df39bd2db1334e9a26b68')
+sha256sums_aarch64=('812f14a225432a1308f0c8037e4bd9739421c10978ccaf00a67fa2f5bb60099a')
+sha256sums_x86_64=('9eebbe8668ed804877bd81f6dfd5270ba94f0d43c141384fc03bf1d00277b695')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
