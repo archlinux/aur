@@ -8,7 +8,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=6.9.4.r2.gc14efc2
+pkgver=7.0.9.r1.g8e18cb7
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -21,8 +21,10 @@ depends=(
   hunspell
   kcoreaddons
   libavif
+  libfido2
   libheif
   libjxl
+  libsrtp
   libvpx
   libxdamage
   minizip
@@ -52,12 +54,14 @@ makedepends=(
   git
   glib2-devel
   gobject-introspection
+  gperf    # for tde2e
   jemalloc # gio error when absent
   libtg_owt
   ninja
   qt6-shadertools
   range-v3
   tl-expected
+  vulkan-headers
 )
 optdepends=(
   'webkit2gtk: embedded browser features'
@@ -69,128 +73,84 @@ conflicts=("$_pkgname")
 
 options=('!lto')
 
-_source_telegram() {
-  _pkgsrc="$_pkgname"
-  source=("$_pkgsrc"::"git+$url.git${_commit:+#commit=$_commit}")
-  sha256sums=('SKIP')
+_pkgsrc="$_pkgname"
+_pkgsrc_tdlib="telegram-tdlib"
 
-  _prepare_telegram() (
-    echo "Preparing telegram..."
-    cd "$_pkgsrc"
-    git rm -r 'Telegram/ThirdParty/hunspell'
-    git rm -r 'Telegram/ThirdParty/kcoreaddons'
-    git rm -r 'Telegram/ThirdParty/lz4'
-    git rm -r 'Telegram/ThirdParty/range-v3'
-    git submodule update --init --recursive --depth=1
-
-    local src
-    for src in "${source[@]}"; do
-      src="${src%%::*}"
-      src="${src##*/}"
-      src="${src%.zst}"
-      if [[ $src == *.patch ]]; then
-        printf '\nApplying patch: %s\n' "$src"
-        patch -Np1 -F100 -i "${srcdir:?}/$src"
-      fi
-    done
-  )
-
-  _build_telegram() (
-    echo "Building telegram..."
-    local _cmake_options=(
-      -B build
-      -S "$_pkgsrc"
-      -G Ninja
-      -DCMAKE_BUILD_TYPE=None
-      -DCMAKE_INSTALL_PREFIX=/usr
-      -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
-      -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON
-      -DTDESKTOP_API_ID=611335
-      -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
-      -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF
-      -Dtg_owt_DIR="$srcdir/build_tg_owt"
-      -Wno-dev
-    )
-
-    cmake "${_cmake_options[@]}"
-    cmake --build build
-  )
-}
+source=(
+  "$_pkgsrc"::"git+$url.git${_commit:+#commit=$_commit}"
+  "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
+)
+sha256sums=(
+  'SKIP'
+  'SKIP'
+)
 
 _source_tg_owt() {
-  makedepends+=(
-    yasm
-  )
+  if [[ "${_build_tg_owt::1}" != "t" ]]; then
+    return
+  fi
+
+  makedepends+=(yasm)
 
   _pkgsrc_tgowt="telegram-tg_owt"
   source+=("$_pkgsrc_tgowt"::"git+https://github.com/desktop-app/tg_owt.git")
   sha256sums+=('SKIP')
-
-  _prepare_tg_owt() (
-    echo "Preparing tg_owt..."
-    cd "$_pkgsrc_tgowt"
-    git submodule update --init --recursive --depth=1
-  )
-
-  _build_tg_owt() (
-    export CXXFLAGS+=" -include cstdint"
-
-    echo "Building tg_owt..."
-    local _cmake_tg_owt=(
-      -B "build_tg_owt"
-      -S "$_pkgsrc_tgowt"
-      -G Ninja
-      -DCMAKE_BUILD_TYPE=None
-      -DTG_OWT_PACKAGED_BUILD=ON
-      -DBUILD_SHARED_LIBS=OFF
-      -Wno-dev
-    )
-
-    cmake "${_cmake_tg_owt[@]}"
-    cmake --build "build_tg_owt"
-  )
 }
 
-_source_tdlib() {
-  makedepends+=('gperf')
+_prepare_tg_owt() (
+  if [[ "${_build_tg_owt::1}" != "t" ]]; then
+    return
+  fi
 
-  _pkgsrc_tdlib="telegram-tdlib"
-  source+=("$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git")
-  sha256sums+=('SKIP')
+  echo "Preparing tg_owt..."
+  git -C "$_pkgsrc_tgowt" submodule update --init --recursive --depth=1
+)
 
-  _build_tde2e() (
-    echo "Building tde2e..."
-    local _cmake_tde2e=(
-      -B "build_tde2e"
-      -S "$_pkgsrc_tdlib"
-      -G Ninja
-      -DCMAKE_BUILD_TYPE=None
-      -DCMAKE_INSTALL_PREFIX=/usr
-      -DTD_E2E_ONLY=ON
-      -DBUILD_SHARED_LIBS=OFF
-      -DBUILD_TESTING=OFF
-      -Wno-dev
-    )
+_build_tg_owt() (
+  if [[ "${_build_tg_owt::1}" != "t" ]]; then
+    return
+  fi
 
-    cmake "${_cmake_tde2e[@]}"
-    cmake --build "build_tde2e"
-    DESTDIR="$srcdir/deps" cmake --install "build_tde2e"
+  export CXXFLAGS+=" -include cstdint"
+
+  echo "Building tg_owt..."
+  local _cmake_tg_owt=(
+    -B "build_tg_owt"
+    -S "$_pkgsrc_tgowt"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DTG_OWT_PACKAGED_BUILD=ON
+    -DBUILD_SHARED_LIBS=OFF
+    -Wno-author
   )
-}
 
-_source_telegram
-_source_tdlib
+  cmake "${_cmake_tg_owt[@]}"
+  cmake --build "build_tg_owt"
+)
 
-if [[ "${_build_tg_owt::1}" == "t" ]]; then
-  _source_tg_owt
-fi
+_source_tg_owt
 
 prepare() {
-  _prepare_telegram
+  _prepare_tg_owt
 
-  if [[ "${_build_tg_owt::1}" == "t" ]]; then
-    _prepare_tg_owt
-  fi
+  echo "Preparing telegram..."
+  cd "$_pkgsrc"
+  git rm -r 'Telegram/ThirdParty/hunspell'
+  git rm -r 'Telegram/ThirdParty/kcoreaddons'
+  git rm -r 'Telegram/ThirdParty/lz4'
+  git rm -r 'Telegram/ThirdParty/range-v3'
+  git submodule update --init --recursive --depth=1
+
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    if [[ $src == *.patch ]]; then
+      printf '\nApplying patch: %s\n' "$src"
+      patch -Np1 -F100 -i "${srcdir:?}/$src"
+    fi
+  done
 }
 
 pkgver() {
@@ -200,12 +160,43 @@ pkgver() {
 }
 
 build() {
-  if [[ "${_build_tg_owt::1}" == "t" ]]; then
-    _build_tg_owt
-  fi
+  _build_tg_owt
 
-  _build_tde2e
-  _build_telegram
+  echo "Building tde2e..."
+  local _cmake_tde2e=(
+    -B "build_tde2e"
+    -S "$_pkgsrc_tdlib"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DTD_E2E_ONLY=ON
+    -DBUILD_SHARED_LIBS=OFF
+    -DBUILD_TESTING=OFF
+    -Wno-author
+  )
+
+  cmake "${_cmake_tde2e[@]}"
+  cmake --build "build_tde2e"
+  DESTDIR="$srcdir/deps" cmake --install "build_tde2e"
+
+  echo "Building telegram..."
+  local _cmake_options=(
+    -B build
+    -S "$_pkgsrc"
+    -G Ninja
+    -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
+    -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON
+    -DTDESKTOP_API_ID=611335
+    -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
+    -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF
+    -Dtg_owt_DIR="$srcdir/build_tg_owt"
+    -Wno-author
+  )
+
+  cmake "${_cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
@@ -216,6 +207,7 @@ package() {
       'libavformat.so'
       'libavutil.so'
       'libcrypto.so'
+      'libfido2.so'
       'libgio-2.0.so'
       'libglib-2.0.so'
       'libgobject-2.0.so'
@@ -229,6 +221,7 @@ package() {
       'libopus.so'
       'libpipewire-0.3.so'
       'libprotobuf-lite.so'
+      'libsrtp2.so'
       'libssl.so'
       'libswresample.so'
       'libswscale.so'
