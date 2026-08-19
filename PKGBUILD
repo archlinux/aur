@@ -2,11 +2,11 @@
 
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=0.9.4.r2.gdcc1983
+pkgver=0.9.4.r45.g0799366
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
-url="https://github.com/bazaar-org/bazaar"
+url="https://gitlab.gnome.org/World/bazaar"
 license=('GPL-3.0-only')
 depends=(
   'appstream'
@@ -39,7 +39,7 @@ optdepends=('krunner-bazaar: krunner integration' 'malcontent: parental controls
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
-  "${_pkgname}::git+https://github.com/bazaar-org/bazaar.git"
+  "${_pkgname}::git+https://gitlab.gnome.org/World/bazaar.git"
   "libdex::git+https://gitlab.gnome.org/GNOME/libdex.git#tag=1.2.beta"
 )
 sha256sums=('SKIP'
