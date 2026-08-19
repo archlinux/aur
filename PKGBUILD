@@ -1,7 +1,7 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('aeroshell-workspace-git')
-pkgver=6.7.0_19.r39e96c7
+pkgver=6.7.4_20.r00a39ba
 pkgrel=1
 pkgdesc="Various components required by AeroShell-based desktops"
 arch=(x86_64)
