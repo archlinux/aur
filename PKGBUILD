@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=source2viewer-bin
 pkgname=(source2viewer-bin source2viewer-cli-bin)
-pkgver=19.2
+pkgver=20.0
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -15,11 +15,11 @@ source_x86_64=(cli-linux-x64-${pkgver}.zip::"$url/releases/download/$pkgver/cli-
 "Source2Viewer-${pkgver}.exe::$url/releases/download/$pkgver/Source2Viewer.exe")
 source_armv7h=(cli-linux-arm-${pkgver}.zip::"$url/releases/download/$pkgver/cli-linux-arm.zip")
 source_aarch64=(cli-linux-arm64-${pkgver}.zip::"$url/releases/download/$pkgver/cli-linux-arm64.zip")
-sha256sums=('6f1b59fc9e480ea65fb7cd7a667758e6105988a13d1b96edbc64f274f691522d')
-sha256sums_x86_64=('30d86dfd72bf35c8a38015c81bd92f0b04b1f49304e73a5d734c875803b2685b'
-                   'a6673ebcd735212f8769e6991562377ad7fb10f7ff089c5fa20c1554a1476e8c')
-sha256sums_armv7h=('2300298d5eac8ac14ce61990dcf41b8a60bc59ad376cfc275193f878488526e7')
-sha256sums_aarch64=('a8bf4f9d01ceba82d798b10d7df33770a46b14e70f1fcfb86d3c06fb461f1406')
+sha256sums=('f8a9e4d91442b08bb9a32f5d3d59905d70b09fb568078d537b5320d38dd73ffa')
+sha256sums_x86_64=('3e8af47cd6ce52e8068904f2aa1dda23c56a6b96a8310b25090f0711cda76a8a'
+                   '8d1149516e3f973e1f0d73aa4a73b764d3f6bb44d93ba4b417f8d34af2a2f670')
+sha256sums_armv7h=('5348f5b6cc2eb5686f15c19b07803b3723977b72b0efe6df5e22baa987279f48')
+sha256sums_aarch64=('adcfeac823e25ebdaebe0b6c4b3132546afa3978d23fca37bb522da1fe5cb2e5')
 
 
 package_source2viewer-cli-bin() {
@@ -61,7 +61,7 @@ then
 	mkdir -p "\$HOME/.${pkgname::-4}/wine"
 	wineboot -u
 fi
-cd "\$HOME/.${pkgname::-4}"
+cd "\$HOME/.${pkgname::-4}" || exit
 DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/${pkgname::-4}.exe "\$@"
 EOF
 	cat >> "$pkgdir/usr/bin/${pkgname::-3}wine" <<-EOF
