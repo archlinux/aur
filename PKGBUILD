@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="TUI RSS Reader and Bookmarker"
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,9 +27,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('d8dce5033228a4642e30838e58bcfc5bcb59723d03162bb5ffc32004cbfb5a7d')
-sha256sums_x86_64=('cc437d7c4d12d0b9e4a036278d9fd47c9469baa0ce0503af03db3bd6cff8edc0')
-sha256sums_aarch64=('96f8aae352b4ad11fb69430676f74b8b1959e2b5366d294a513539e7d337dda5')
+sha256sums=('eb6258826319fa9f1cbed5666376e6ceb91eeac50c8eff75eedf27d8364783ef')
+sha256sums_x86_64=('6a86820ddc1af6c340e0e23238a655c6d8ab538337003d4afa38d4d7eb578ab4')
+sha256sums_aarch64=('a0e37594036a95c6bf440d2f4b9b87707f38ecae95db0774be33cf3d9400aed5')
 
 
 package() {
