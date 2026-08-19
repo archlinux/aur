@@ -4,7 +4,7 @@
 # Contributor: regreddit <nik.martin@gmail.com>
 
 pkgname=mixxx-git
-pkgver=r9846
+pkgver=r9850
 pkgrel=1
 pkgdesc="Digital DJ mixing software (latest development branch)."
 arch=('i686' 'x86_64' 'aarch64')
@@ -12,56 +12,58 @@ url="https://mixxx.org/"
 license=('GPL-2.0-or-later')
 groups=(pro-audio)
 depends=(
-	# TODO: Running into an error with the AUR version, let cmake download it.
-	#'libshout-idjc'
-	'chromaprint'
-	'ffmpeg'
-	'flac'
-	'glib2'
-	'glibc'
-	'hidapi'
-	'lame'
-	'libebur128'
-	'libglvnd'
-	'libid3tag'
-	'libkeyfinder'
-	'libmad'
-	'libmodplug'
-	'libmp4v2'
-	'libogg'
-	'libsndfile'
-	'libusb'
-	'libvorbis'
-	'lilv'
-	'openssl'
-	'opusfile'
-	'portaudio'
-	'portmidi'
-	'protobuf'
-	'qt6-5compat'
-	'qt6-declarative'
-	'qt6-svg'
-	'qt6-translations'
-	'qtkeychain-qt6'
-	'rubberband'
-	'soundtouch'
-	'sqlite'
-	'taglib'
-	'ttf-opensans'
-	'ttf-ubuntu-font-family'
-	'upower'
-	'wavpack'
-	'zlib'
+	glibc
+	hicolor-icon-theme
+	hidapi
+	lame
+	libebur128
+	libgcc
+	libkeyfinder
+	libmad
+	libmodplug
+	libmp4v2
+	libstdc++
+	libx11
+	openssl
+	opus
+	opusfile
+	qt6-5compat
+	qt6-base
+	qt6-declarative
+	qt6-multimedia
+	qt6-svg
+	qtkeychain-qt6
+	soundtouch
+	sqlite
+	taglib
+	upower
+	wavpack
 )
 makedepends=(
-	'cmake'
-	'git'
-	'glu'
-	'gtest'
-	'lv2'
-	'microsoft-gsl'
-	'qt6-shadertools'
-	'qt6-tools'
+	chromaprint
+	cmake
+	faad2
+	ffmpeg
+	flac
+	git
+	glib2
+	glu
+	gperftools
+	gtest
+	libid3tag
+	libogg
+	libsndfile
+	libusb
+	libvorbis
+	lilv
+	lv2
+	microsoft-gsl
+	qt6-shadertools
+	qt6-tools
+	portaudio
+	portmidi
+	protobuf
+	rubberband
 )
 optdepends=(
 	'ccache: speed up rebuilds of the package'
@@ -98,7 +100,6 @@ build() {
 	)
 
 	export QT_NO_PRIVATE_MODULE_WARNING=ON
-	export PKG_CONFIG_PATH=/usr/lib/taglib1/pkgconfig
 	cmake "${cmake_options[@]}"
 	cmake --build build --parallel "$(nproc)" --target mixxx
 }
@@ -109,6 +110,24 @@ check() {
 }
 
 package() {
+	depends+=(
+		chromaprint libchromaprint.so
+		flac libFLAC.so
+		ffmpeg libavcodec.so libavformat.so libavutil.so
+		glib2 libgobject-2.0.so
+		libglvnd libOpenGL.so
+		libid3tag libid3tag.so
+		libogg libogg.so
+		libsndfile libsndfile.so
+		libusb libusb-1.0.so
+		libvorbis libvorbis.so libvorbisenc.so libvorbisfile.so
+		lilv liblilv-0.so
+		portaudio libportaudio.so
+		portmidi libportmidi.so
+		protobuf libprotobuf-lite.so
+		rubberband librubberband.so
+	)
+
 	DESTDIR="$pkgdir" cmake --install build
 }
 
