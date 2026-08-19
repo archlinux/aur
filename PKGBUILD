@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://github.com/Dudude-bit/rubick"
 license=('GPL-3.0-or-later')
 groups=()
-depends=("kubectl" "gtk3" "webkit2gtk-4.1")
+depends=("kubectl" "cairo" "desktop-file-utils" "gdk-pixbuf2" "glib2" "gtk3" "hicolor-icon-theme" "libsoup3" "pango" "webkit2gtk-4.1")
 makedepends=("bun" "cargo-tauri")
 source=("${_pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
         "com.k8s-gui.app.desktop")
