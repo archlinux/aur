@@ -1,5 +1,5 @@
 pkgname=mingw-w64-coacd
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="Approximate Convex Decomposition for 3D Meshes (mingw-w64)"
 license=('MIT')
@@ -9,7 +9,7 @@ depends=(mingw-w64-crt)
 makedepends=(mingw-w64-cmake mingw-w64-cdt)
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://github.com/SarahWeiii/CoACD/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9357bd6da525127ce538f6f0a3996e33573089848449bd70a2ae0c9bb82966c6')
+sha256sums=('0e9e875fc55e6e399d4691cc4a47e36d0f64d076937de6f78bc7c4aa28bb472b')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
