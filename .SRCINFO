@@ -1,6 +1,6 @@
 pkgbase = pvs-studio-bin
 	pkgdesc = Static code analyzer for C and C++
-	pkgver = 7.43.107281.803
+	pkgver = 8.00.109087.832
 	pkgrel = 1
 	url = https://pvs-studio.com/en/pvs-studio/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = pvs-studio-bin
 	provides = pvs-studio
 	conflicts = pvs-studio
 	options = !debug
-	source = pvs-studio-7.43.107281.803-x86_64.tgz::https://files.pvs-studio.com/pvs-studio-7.43.107281.803-x86_64.tgz
-	sha256sums = 79c6699ebe446b6b8e63a8331fe1f00a637b6dac1d14a0fef76fec1b9309c083
+	source = pvs-studio-8.00.109087.832-x86_64.tgz::https://files.pvs-studio.com/pvs-studio-8.00.109087.832-x86_64.tgz
+	sha256sums = b136ccfcbefb4da9aae1220340ea1a30219a14478a699a168bb16b680a656368
 
 pkgname = pvs-studio-bin
