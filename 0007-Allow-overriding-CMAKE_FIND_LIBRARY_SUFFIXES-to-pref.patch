@@ -1,7 +1,7 @@
-From fd1db5637f26f2d0b878040382625201fce4e057 Mon Sep 17 00:00:00 2001
+From 673f1912eb48eb9ee923ee71096d43b586d9e1ee Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 8 Nov 2020 00:34:09 +0100
-Subject: [PATCH 07/25] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
+Subject: [PATCH 07/24] Allow overriding CMAKE_FIND_LIBRARY_SUFFIXES to prefer
  static libraries
 
 Change-Id: Ibb688ac503ecdf1dd3bd838890efdfc01bf706aa
@@ -10,7 +10,7 @@ Change-Id: Ibb688ac503ecdf1dd3bd838890efdfc01bf706aa
  1 file changed, 4 insertions(+)
 
 diff --git a/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake b/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
-index 3a1920beb72..9eb5bf89853 100644
+index 3ae0292309a..affdbc15c96 100644
 --- a/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
 +++ b/cmake/QtBuildInternals/QtBuildInternalsConfig.cmake
 @@ -4,6 +4,10 @@
