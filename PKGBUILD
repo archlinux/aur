@@ -4,9 +4,9 @@
 
 pkgname=fomalhaut-theme-nocturne
 _upstream_name=fomalhaut
-_upstream_ver=0.0.2
-_source_ref=96a7b5785c540050484f09f3bf4b8f6a486a542c
-pkgver=0.0.2
+_upstream_ver=0.0.3
+_source_ref=71c0a28a60690550a4904a419962a150734e0090
+pkgver=0.0.3
 pkgrel=1
 pkgdesc='Official Nocturne theme for Fomalhaut'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
 )
 makedepends=('npm')
 source=("${_upstream_name}-${_source_ref}.tar.gz::${url}/archive/${_source_ref}.tar.gz")
-sha256sums=('eeff7bbc8c5a34b9d82c878e2c580c223988de0a56b970987b0db2c8275147a6')
+sha256sums=('8e732f4d1b9490ea3104506c4197f763036896c76b5daf2258436d64d234baac')
 
 _source_dir="${_upstream_name}-${_source_ref}"
 

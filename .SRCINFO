@@ -1,6 +1,6 @@
 pkgbase = fomalhaut-theme-nocturne
 	pkgdesc = Official Nocturne theme for Fomalhaut
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/noctisynth/fomalhaut
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = fomalhaut-theme-nocturne
 	makedepends = npm
 	optdepends = greetd-fomalhaut: use Nocturne as the greeter theme
 	optdepends = fomalhaut-lock: use Nocturne as the locker theme
-	source = fomalhaut-96a7b5785c540050484f09f3bf4b8f6a486a542c.tar.gz::https://github.com/noctisynth/fomalhaut/archive/96a7b5785c540050484f09f3bf4b8f6a486a542c.tar.gz
-	sha256sums = eeff7bbc8c5a34b9d82c878e2c580c223988de0a56b970987b0db2c8275147a6
+	source = fomalhaut-71c0a28a60690550a4904a419962a150734e0090.tar.gz::https://github.com/noctisynth/fomalhaut/archive/71c0a28a60690550a4904a419962a150734e0090.tar.gz
+	sha256sums = 8e732f4d1b9490ea3104506c4197f763036896c76b5daf2258436d64d234baac
 
 pkgname = fomalhaut-theme-nocturne
