@@ -30,7 +30,7 @@ conflicts=(
 source=(
 	"$pkgname::git+https://github.com/ferdium/ferdium-app#tag=${apptag}"
 )
-sha512sums=('SKIP')
+sha512sums=('e77815c2b9901eff882210ca4645604d76c71fc83d2ab07999d9df959337751099a8888dfc3602ca68a569a6286d67b99e05369168efba8c885dbd67460b5024')
 
 _sourcedirectory="$pkgname"
 

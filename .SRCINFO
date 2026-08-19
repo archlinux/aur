@@ -41,6 +41,6 @@ pkgbase = ferdium-nightly
 	options = !strip
 	options = !debug
 	source = ferdium-nightly::git+https://github.com/ferdium/ferdium-app#tag=v7.1.3-nightly.17
-	sha512sums = SKIP
+	sha512sums = e77815c2b9901eff882210ca4645604d76c71fc83d2ab07999d9df959337751099a8888dfc3602ca68a569a6286d67b99e05369168efba8c885dbd67460b5024
 
 pkgname = ferdium-nightly
