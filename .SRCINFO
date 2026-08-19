@@ -1,14 +1,12 @@
 pkgbase = homerhevc-git
 	pkgdesc = HOMER (Hevc Open Mpeg EncodeR) is an open-source HEVC encoder to encode YUV420 video sequences to the HEVC(H.265) stream format (git version)
-	pkgver = r245.825e370
+	pkgver = 3.0.r2.g825e370
 	pkgrel = 1
 	url = https://www.homerhevc.com
 	arch = any
 	license = LGPL2.1
 	makedepends = git
 	makedepends = make
-	makedepends = gcc
-	makedepends = cmake
 	source = git+https://github.com/jcasal-homer/HomerHEVC.git
 	md5sums = SKIP
 
