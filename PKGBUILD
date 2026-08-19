@@ -1,6 +1,6 @@
 # Maintainer: Markus Möslinger <markus.moeslinger@socra.dev>
 pkgname=fzp-bin
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Fuzzy project selector for git repositories'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(fzf gawk coreutils ncurses util-linux eza glow)
 provides=('fzp' 'findgit')
 conflicts=('fzp' 'fzp-git')
 source=("fzp-${pkgver}-${pkgrel}.pkg.tar.zst::https://gitlab.com/socradev/fzp/-/releases/${pkgver}/downloads/packages/fzp-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('bab2086808721743393e5a35b73c68587a14db434b4f74c0a3f3dca85e72393b')
+sha256sums=('0cb3b0667cff454d7edcf0281f2fc8d6e541aa0b39aa9834e6984ece99bcbd10')
 
 package() {
     # Extract the pre-built package directly into pkgdir,
