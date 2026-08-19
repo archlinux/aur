@@ -1,6 +1,6 @@
 pkgbase = mcdu-bin
 	pkgdesc = Modern disk usage analyzer with TUI and developer cleanup tools
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/mikalv/mcdu
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = mcdu-bin
 	depends = libgcc
 	provides = mcdu
 	conflicts = mcdu
-	source = README-0.5.0.md::https://raw.githubusercontent.com/mikalv/mcdu/v0.5.0/README.md
-	source = LICENSE-0.5.0::https://raw.githubusercontent.com/mikalv/mcdu/v0.5.0/LICENSE
-	sha256sums = 02120b88e8b9a86f6a2f3139383757c52c231232b7fd029c0e22a987037f4c3b
+	source = README-0.6.0.md::https://raw.githubusercontent.com/mikalv/mcdu/v0.6.0/README.md
+	source = LICENSE-0.6.0::https://raw.githubusercontent.com/mikalv/mcdu/v0.6.0/LICENSE
+	sha256sums = 93afb7ad95f95406c9b8ff27eb50b73eda819ff59b51a0f6c2ac25469e714f4f
 	sha256sums = bd1361bc699c139a98fab81ba56f92692c7b407c2bbe041c30557f36fd8ecf5a
-	source_x86_64 = mcdu-x86_64-0.5.0.tgz::https://github.com/mikalv/mcdu/releases/download/v0.5.0/mcdu-linux-x86_64-gnu.tar.gz
-	sha256sums_x86_64 = edb57833af92abd73fca4cc4cff16226367e906a3a69038580c4b766797dbdd3
+	source_x86_64 = mcdu-x86_64-0.6.0.tgz::https://github.com/mikalv/mcdu/releases/download/v0.6.0/mcdu-linux-x86_64-gnu.tar.gz
+	sha256sums_x86_64 = e0d785390d0a210cb9ca07456ffb084714c73ad6c1d823447bfa4d1d18887008
 
 pkgname = mcdu-bin

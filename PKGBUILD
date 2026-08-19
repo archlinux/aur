@@ -5,7 +5,7 @@ _pkgname=mcdu
 pkgname=${_pkgname}-bin
 pkgdesc="Modern disk usage analyzer with TUI and developer cleanup tools"
 
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,9 +24,9 @@ depends=('glibc' 'libgcc')
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
-sha256sums=('02120b88e8b9a86f6a2f3139383757c52c231232b7fd029c0e22a987037f4c3b'
+sha256sums=('93afb7ad95f95406c9b8ff27eb50b73eda819ff59b51a0f6c2ac25469e714f4f'
             'bd1361bc699c139a98fab81ba56f92692c7b407c2bbe041c30557f36fd8ecf5a')
-sha256sums_x86_64=('edb57833af92abd73fca4cc4cff16226367e906a3a69038580c4b766797dbdd3')
+sha256sums_x86_64=('e0d785390d0a210cb9ca07456ffb084714c73ad6c1d823447bfa4d1d18887008')
 
 
 package() {
