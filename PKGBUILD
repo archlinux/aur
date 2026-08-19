@@ -5,7 +5,7 @@ pkgver=0.3.0
 pkgrel=1
 pkgdesc='A fast, GPU-accelerated disk-usage treemap visualizer'
 arch=(x86_64)
-url='https://github.com/Fopull-LLC/StorageSifter'
+url=https://fopull.com/storage-sifter
 license=(MIT)
 depends=(alsa-lib
          glibc
@@ -19,7 +19,7 @@ depends=(alsa-lib
          wayland)
 makedepends=(cargo)
 optdepends=('xdg-utils: open file manager/links from within the app')
-source=($url/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
+source=(https://github.com/Fopull-LLC/StorageSifter/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
 b2sums=('7e0c513518aaab89cde4afd54ee2d3c21d614279f61ca7dbb467c21def9d1448191fc68d0c8cc46e81edcea6d7c24cd67ff3c4e1f895a4cd3eedad794326e0f8')
 
 prepare() {
