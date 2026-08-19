@@ -1,12 +1,10 @@
 pkgbase = sjpeg-git
 	pkgdesc = SJPEG image encoder (alternative jpeg encoder)
-	pkgver = r330.46da5ae
+	pkgver = r353.bfdb140
 	pkgrel = 1
 	url = https://github.com/webmproject/sjpeg
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = clang
-	makedepends = lld
 	makedepends = make
 	makedepends = freeglut
 	makedepends = mesa
@@ -17,7 +15,7 @@ pkgbase = sjpeg-git
 	depends = glibc
 	depends = freeglut
 	depends = mesa
-	source = sjpeg::git+https://github.com/webmproject/sjpeg
+	source = sjpeg::git+https://github.com/webmproject/sjpeg.git
 	sha256sums = SKIP
 
 pkgname = sjpeg-git
