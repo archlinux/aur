@@ -2,7 +2,7 @@ pkgbase = muzaiten-git
 	pkgdesc = Native music player for local libraries, with ratings and scrobbling
 	pkgver = 0.0.0
 	pkgrel = 3
-	url = https://codeberg.org/11xx/muzaiten
+	url = https://github.com/11xx/muzaiten
 	arch = x86_64
 	license = Unlicense
 	makedepends = git
@@ -28,7 +28,7 @@ pkgbase = muzaiten-git
 	provides = muzaiten
 	conflicts = muzaiten
 	conflicts = muzaiten-bin
-	source = muzaiten-git::git+https://codeberg.org/11xx/muzaiten.git
+	source = muzaiten-git::git+https://github.com/11xx/muzaiten.git
 	sha256sums = SKIP
 
 pkgname = muzaiten-git

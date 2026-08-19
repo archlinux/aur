@@ -4,7 +4,7 @@ pkgver=0.0.0
 pkgrel=3
 pkgdesc="Native music player for local libraries, with ratings and scrobbling"
 arch=('x86_64')
-url="https://codeberg.org/11xx/muzaiten"
+url="https://github.com/11xx/muzaiten"
 license=('Unlicense')
 depends=('qt6-base' 'qt6-multimedia' 'taglib' 'chromaprint' 'gstreamer' 'gst-plugins-base-libs' 'glib2' 'zstd' 'python')
 makedepends=('git' 'cmake' 'ninja' 'pkgconf')
@@ -17,7 +17,7 @@ optdepends=('gst-plugins-good: extra audio decoders and sinks'
             'muzaiten-features-clap: optional semantic audio analysis and search provider')
 provides=('muzaiten')
 conflicts=('muzaiten' 'muzaiten-bin')
-source=("$pkgname::git+https://codeberg.org/11xx/muzaiten.git")
+source=("$pkgname::git+https://github.com/11xx/muzaiten.git")
 sha256sums=('SKIP')
 
 pkgver() {
