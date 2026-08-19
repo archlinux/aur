@@ -1,7 +1,7 @@
 pkgbase = livechess-bin
 	pkgdesc = DGT LiveChess software for DGT e-Boards
 	pkgver = 2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.livechesscloud.com/software/
 	arch = x86_64
 	license = custom

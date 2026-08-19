@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=livechess-bin
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="DGT LiveChess software for DGT e-Boards"
 arch=('x86_64')
 url="https://www.livechesscloud.com/software/"
@@ -28,4 +28,9 @@ package() {
     install -Dm644 "${pkgdir}/usr/share/doc/DGT-LiveChess/copyright" \
       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
+
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/livechess" << 'EOF'
+#!/bin/sh
+exec /opt/DGTLiveChess/DGTLiveChess "$@"
+EOF
 }
