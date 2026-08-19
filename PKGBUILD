@@ -3,7 +3,7 @@
 pkgname=linyaps-box-rust
 _tagname=2.3.0-rust.1
 pkgver=${_tagname//-/+}
-pkgrel=1
+pkgrel=2
 pkgdesc="Linyaps OCI runtime implemented in Rust A command-compatible Rust implementation of the Linyaps OCI runtime"
 arch=($CARCH)
 url="https://github.com/guanzi008/linyaps-box-rust"
@@ -23,7 +23,7 @@ optdepends=()
 backup=()
 options=(!lto !debug)
 install=
-source=("${pkgname}::git+${url}.git#tag=v${_tagname}")
+source=("git+${url}.git#tag=v${_tagname}")
 sha256sums=('675733aa729070ad6d09a49c562a34ecdf41a6a6d0feef752868bd03604f9ff8')
 
 prepare() {
