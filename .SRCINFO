@@ -1,7 +1,7 @@
 pkgbase = linyaps-rust-git
 	pkgdesc = Linyaps package manager implemented in Rust A command-compatible Rust implementation of the Linyaps package manager
 	pkgver = 1.14.0.rust.1.r6.g38b279b
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/guanzi008/linyaps-rust
 	install = linyaps-rust.install
 	arch = x86_64
