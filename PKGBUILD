@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=lakefs-bin
-pkgver=1.85.0
+pkgver=1.86.0
 pkgrel=1
 pkgdesc="Data version control for your data lake | Git for data"
 arch=(x86_64 aarch64)
@@ -11,8 +11,8 @@ provides=('lakefs')
 conflicts=('lakefs')
 source_x86_64=("$_src/releases/download/v$pkgver/lakeFS_${pkgver}_Linux_x86_64.tar.gz")
 source_aarch64=("$_src/releases/download/v$pkgver/lakeFS_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_x86_64=('63207607be489be590c91cb4ee2b1729241f94b15d2f8fca78da4df21b2044bd')
-sha256sums_aarch64=('1507fcc90c333c6f7af97d7e24bedb27d3b33dd0049a2fc2849cf5d8f9aebe5a')
+sha256sums_x86_64=('dc02b075ddcbb0984f96f6be2e0e08d74bd0967920ec89dd00a97b5d400ad8eb')
+sha256sums_aarch64=('a214e8713775e604f9e7ea3726fc808ccc9770ebb75a3b60ed362f1406312547')
 
 package() {
     install -Dm755 lakefs lakectl -t "$pkgdir/usr/bin/"
