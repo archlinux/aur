@@ -3,7 +3,7 @@
 pkgname=linyaps-rust
 _tagname=1.14.0-rust.1
 pkgver=${_tagname//-/+}
-pkgrel=1
+pkgrel=4
 pkgdesc="Linyaps package manager implemented in Rust A command-compatible Rust implementation of the Linyaps package manager"
 arch=($CARCH)
 url="https://github.com/guanzi008/linyaps-rust"
@@ -66,12 +66,18 @@ package() {
 
     export RUSTUP_TOOLCHAIN=stable
     #     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
-    find target/release \
-        -maxdepth 1 \
-        -executable \
-        -type f \
-        -exec install -vDm0755 -t "$pkgdir/usr/bin/" {} +
-    # install -vDm0755 target/release/${pkgname%-monitor} -t "$pkgdir/usr/bin/"
+    # find target/release \
+    #     -maxdepth 1 \
+    #     -executable \
+    #     -type f \
+    #     -exec install -vDm0755 -t "$pkgdir/usr/bin/" {} +
+    
+    install -vDm0755 target/release/ll-cli -t $pkgdir/usr/bin/
+    install -vDm0755 target/release/llpkg -t $pkgdir/usr/bin/
+    install -vDm0755 target/release/ll-init -t $pkgdir/usr/libexec/linglong/
+    install -vDm0755 target/release/ll-driver-detect -t $pkgdir/usr/libexec/linglong/
+    install -vDm0755 target/release/ll-package-manager -t $pkgdir/usr/libexec/linglong/
+    install -vDm0755 target/release/ll-system-helper -t $pkgdir/usr/libexec/linglong/
     install -vDm0644 packaging/debian/linglong.conf -t ${pkgdir}/usr/lib/sysctl.d/
     # install -vDm0644 debian/linglong.conf -t ${pkgdir}/usr/lib/sysctl.d/
     # install -vDm0644 debian/*.1 -t ${pkgdir}/usr/share/man/man1/
