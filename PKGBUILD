@@ -1,9 +1,9 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=ownfoil-git
-pkgver=r375.13da9c3
-pkgrel=2
-pkgdesc='Switch library manager, with a self-hosted Tinfoil Shop'
+pkgver=r587.639a8a3
+pkgrel=1
+pkgdesc=i'Switch library manager, with a self-hosted Tinfoil Shop'
 arch=('any')
 url='https://github.com/a1ex4/ownfoil'
 license=('custom')
@@ -11,19 +11,21 @@ provides=('ownfoil')
 conflicts=('ownfoil')
 depends=(
   'python'
-  'python-croniter'
   'python-flask'
+  'python-flask-sock'
   'python-flask-login'
   'python-flask-migrate'
   'python-flask-sqlalchemy'
   'python-yaml'
+  'python-nstools'
   'python-requests'
-  'python-unzip-http'
   'python-watchdog'
   'python-werkzeug'
   'python-zstandard'
-  'nsz-git' # git version because #217 pull request is important
-            # latest 4.6.1 release does not include it
+  'python-setproctitle'
+  'python-strawberry-graphql'
+  'gunicorn'
+  'nsz'
 )
 source=("git+https://github.com/a1ex4/ownfoil"
         'ownfoil.service'
@@ -31,7 +33,7 @@ source=("git+https://github.com/a1ex4/ownfoil"
         'ownfoil.tmpfiles'
 )
 sha256sums=('SKIP'
-            '528de3cc691edb57a44e512024832a1a1d0947dbbcda84e487b033150edc6193'
+            '6125cf80726fc954208f5daf6dfce3836f94ed019d307454185ca7414021f11f'
             'aee7a6c72d655e29365fe266165ffb714666507a9536871500ced59e0f5d992f'
             'abe899a8eecb080f3b938c2441e09838a539f6bfc00e8207ade74bb18c1a5a12')
 
