@@ -1,12 +1,12 @@
 pkgbase = exa-mcp-server
 	pkgdesc = MCP server exposing Exa web search and web crawling tools
-	pkgver = 3.4.0
+	pkgver = 3.4.1
 	pkgrel = 1
 	url = https://exa.ai/docs/reference/exa-mcp
 	arch = any
 	license = MIT
 	depends = nodejs
-	source = https://registry.npmjs.org/exa-mcp-server/-/exa-mcp-server-3.4.0.tgz
-	sha256sums = cbc24567086756cde087eee8d8f617b7c423b1761e068e2b52e167b013e63f19
+	source = https://registry.npmjs.org/exa-mcp-server/-/exa-mcp-server-3.4.1.tgz
+	sha256sums = 62379fab5750cbc8334f096ff986ab1b7152488afffab5b0e275995310b6e978
 
 pkgname = exa-mcp-server

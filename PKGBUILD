@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=exa-mcp-server
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="MCP server exposing Exa web search and web crawling tools"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://exa.ai/docs/reference/exa-mcp"
 license=('MIT')
 depends=('nodejs')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('cbc24567086756cde087eee8d8f617b7c423b1761e068e2b52e167b013e63f19')
+sha256sums=('62379fab5750cbc8334f096ff986ab1b7152488afffab5b0e275995310b6e978')
 
 latestver() {
     curl -fsSL "https://registry.npmjs.org/${pkgname}/latest" | jq -r '.version'
