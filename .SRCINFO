@@ -1,7 +1,7 @@
 pkgbase = waveloggate-git
 	pkgdesc = CAT and WSJT-X Bridge for WaveLog
 	pkgver = 2.1.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/wavelog/WaveLogGate
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = waveloggate-git
 	source = WaveLogGate.sh
 	source = WaveLogGate.desktop
 	source = wavelog_icon_only.png
-	sha256sums = SKIP
+	sha256sums = f73c682195ac71b590585973aa2a1e32c07e811f1876cc461104bc10cfa585dc
 	sha256sums = 1f42c3eedc034ef363388224d05284b686ba94769650e1a2359f304c849197cb
 	sha256sums = 593e1c6e902130d0c911e34f5d26f1e4d2703327b814c94ae82be04e1c2d80bb
 	sha256sums = aa5da810c4c84cbde4b79445e2fb1195c61d4f9b5c85eafa4bc2867b3d16a39d
