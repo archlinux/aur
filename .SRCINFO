@@ -1,7 +1,7 @@
 pkgbase = jicofo
 	pkgdesc = JItsi Meet COnference FOcus
 	pkgver = 1.0.1189
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	install = install
 	arch = any
@@ -18,11 +18,13 @@ pkgbase = jicofo
 	backup = etc/jicofo/logging.properties
 	backup = etc/jicofo/jicofo.conf
 	source = jicofo::git+https://github.com/jitsi/jicofo#tag=1189
+	source = jicofo.conf
 	source = config
 	source = service
 	source = sysusers.conf
 	source = tmpfiles.conf
 	sha256sums = 405bcfb8fd1a3e0af21787fbb09afd2f408dc1af5f719c59989273cc030c67f7
+	sha256sums = 77f2e2d62e9fe38188f41b063496cc10970cc989ed620a64a2251d986d6ac253
 	sha256sums = b69f9485ba55b53fe6d1a8b5e4a37c542641cb205c6f5c0b2cf89d236cc6b562
 	sha256sums = 902229d135e9b949da318f539cbe8f266bdd4e32e514f37d8782ad4562dc791b
 	sha256sums = 0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440
