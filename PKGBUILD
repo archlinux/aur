@@ -3,7 +3,7 @@
 # Contributor: Aleks Clark <aleks dot clark at gmail dot com>
 
 pkgname='crush-a2a-bin'
-pkgver=2026.08.18.1
+pkgver=2026.08.19.1
 pkgrel=1
 pkgdesc='Unofficial Crush build with the A2A v1.0 protocol plugin (a2a, kuri, otlp, agent-status, periodic-prompts, subagents, tempotown, tavily)'
 url='https://github.com/aleksclark/crush-modules'
@@ -13,10 +13,10 @@ provides=('crush-a2a')
 conflicts=('crush-modules')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aleksclark/crush-modules/releases/download/${pkgver}/crush-a2a_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('86ea6129aaface529c260ae147b1a1504d9960a70a296b9fe9da618ead500c2d')
+sha256sums_aarch64=('a7f2cec7adf81c8be2a4a9d5c6be6782c325d76c414bfb65de00c1d8407b8caf')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aleksclark/crush-modules/releases/download/${pkgver}/crush-a2a_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('e7abe05842ca8b8fe17168f00277c5213c83004a50d69a21c33da5bc31875bbb')
+sha256sums_x86_64=('5be5469583425e8dae264cb5240ab2b51eabed934a41f328a0c12988444ac863')
 
 package() {
   # bin
