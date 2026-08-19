@@ -1,12 +1,13 @@
 pkgbase = laravel-bin
-	pkgdesc = Laravel installation based on the official herd lite installer (https://php.new/install/linux/8.4). Only includes the laravel executable
-	pkgver = 5.30.0
+	pkgdesc = Laravel installation based on the official herd lite installer. Only includes the laravel executable.
+	pkgver = 5.31.1
 	pkgrel = 1
-	url = https://download.herdphp.com/resources/laravel
-	install = laravel-bin.install
+	url = https://laravel.com/
 	arch = x86_64
 	license = MIT
 	depends = php
 	depends = composer
+	source = https://download.herdphp.com/resources/laravel
+	b2sums = e51386d0ea0bd5a3120ae12125c4fd461ceeb16d151b652997a23659d5f546f81e38690050912388853d9af554c4524259a43a0c9874c643f20f4b7b0ac95ca5
 
 pkgname = laravel-bin
