@@ -1,4 +1,6 @@
 [disig-web-signer]
 source = "httpheader"
 url = "https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_amd64.deb"
-regex = 'disig-web-signer_([\d\.]+)-'
+regex = 'disig-web-signer_(.+)_'
+from_pattern = "-"
+to_pattern = "_"

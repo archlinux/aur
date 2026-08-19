@@ -3,15 +3,15 @@
 # Contributor: Fedor Piecka <teplavoda at gmail dot com>
 
 pkgname=disig-web-signer
-pkgver=2.5.5
-_upstream_pkgrel=1
-pkgrel=2
+pkgver=2.5.5_1
+_pkgver="${pkgver//_/-}"
+pkgrel=1
 pkgdesc="Slovak eID Web Signer by Disig"
 arch=('i686' 'x86_64')
 license=('LicenseRef-custom')
 url="https://qesportal.sk/"
-source_x86_64=("https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_${pkgver}-${_upstream_pkgrel}_amd64.deb")
-source_i686=("https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_${pkgver}-${_upstream_pkgrel}_i386.deb")
+source_x86_64=("https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_${_pkgver}_amd64.deb")
+source_i686=("https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_${_pkgver}_i386.deb")
 sha256sums_i686=('82cd99ddbbaff71ee3f6cc1f45ca506253a1a56e4d522d915b405add3643c3a4')
 sha256sums_x86_64=('f96101ddb9ffbb39810466d71c1196b416b29b221b65334aef66d9280fe7e521')
 options=("!debug" "!strip")
@@ -52,7 +52,7 @@ package() {
 	: "${pkgdir:?}"
 	: "${srcdir:?}"
 
-	ar p "${srcdir}/disig-web-signer_${pkgver}-${_upstream_pkgrel}_${_upstream_arch}.deb" data.tar.xz | tar -xJ -C "${pkgdir}"
+	ar p "${srcdir}/disig-web-signer_${_pkgver}_${_upstream_arch}.deb" data.tar.xz | tar -xJ -C "${pkgdir}"
 
 	# The libraries are provided by the system.
 	rm -r "${pkgdir}"/opt/disig/websigner/{bin/qt.conf,lib,plugins,share/doc/*/}
