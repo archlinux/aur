@@ -4,7 +4,7 @@
 #
 _pkgname=3dslicer
 pkgname=3dslicer-qt6-git
-pkgver=5.10.0.r292.785744ed8c
+pkgver=5.12.3.r85.511762355d
 pkgrel=1
 pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research, qt6 version'
 arch=('x86_64')
@@ -53,20 +53,20 @@ makedepends=(
   qt6-tools
   subversion
 )
-options=(!emptydirs !strip)
+options=(!emptydirs !strip !lto)
 provides=(3dslicer=${pkgver})
 conflicts=(3dslicer)
 source=("${_pkgname}::git+https://github.com/Slicer/Slicer.git"
         "${_pkgname}.svg::https://www.slicer.org/assets/img/3D-Slicer-Mark.svg"
         "0001-fix-building-with-ctk.patch"
         "0001-BUG-Fix-export-macro-for-non-Windows-platforms.patch"
-        "0002-ENH-Update-PythonQt-to-use-forked-repository.patch"
+        "slicer-vtk-regex-version-script-name.patch"
 )
 sha512sums=('SKIP'
             '3422d244f819a7ec4c475d3d8a90c79fcb73738920c0830b100c6342ca24d5be607ba60ee3d91892402036a0adf31d5ab7c8fc83f451121a7b537f7de5306014'
-            'fa03a2d951d484f786db273daaa8f305db23b15cd02674540b485fe1557af3cf2bf63dc7bb0e645bef9dc1d07e5e337c5a105d053315851b6d09c2576c4154ff'
+            'c66e7bc1cf5e0ac9f860aaa8cc9a5795c73c6c4d1e0957fba2fc464ce112fbfeb96e8f2c9a8133dae2cb3c772431b3b0b77f8a4efbbd77dd9e795ac2b70cb5eb'
             '9e47a73e11cb0c6d054679a2bfb720859c70c689b546deaa6e4f976d5796c6cd8a68dd1625e416ca836ae2b037e3b72c31a1b30d297ceafd477610fc0a32669c'
-            '3ccd5b91bb43a554454537ad3c59d3431b68792faead9571b5a6ba981a095eb36d054afb28bee91fdf85d378608e5c87262573e75d35ef0f9de174f5b74dc689')
+            '3ac8a9e98953ddbffa28dcac5f67156670e24a190433e580e00691856f805602a995104c0e6bdf388289b9a2d0ba6e6a19b4bbea89da71a19d080e8dd7981307')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -80,6 +80,7 @@ pkgver() {
 
 prepare() {
   patch -p1 -d ${srcdir}/${_pkgname} -i ${srcdir}/0001-fix-building-with-ctk.patch
+  patch -p1 -d ${srcdir}/${_pkgname} -i "${srcdir}/slicer-vtk-regex-version-script-name.patch"
   echo "Creating desktop file"
   gendesk -f -n --pkgname ${_pkgname} \
     --categories "Graphics;MedicalSoftware;Science;" \

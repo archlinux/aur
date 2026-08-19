@@ -3,6 +3,15 @@ From: Hu Butui <hot123tea123@gmail.com>
 Date: Fri, 3 Apr 2026 23:15:08 +0800
 Subject: [PATCH] fix building with ctk
 
+Apply the CTK export-macro fix inside the CTK ExternalProject so that the
+importing side uses Q_DECL_IMPORT on non-Windows platforms. Arch Qt6 defines
+QT_USE_PROTECTED_VISIBILITY, so Q_DECL_EXPORT expands to
+__attribute__((visibility("protected"))) and shared libraries referencing
+protected symbols defined in another shared library fail to link ("undefined
+protected symbol", R_X86_64_PC32 relocations). The PythonQt fork patch is not
+applied anymore: the CTK revision pinned by Slicer already builds its own
+patched PythonQt.
+
 Signed-off-by: Hu Butui <hot123tea123@gmail.com>
 ---
  SuperBuild/External_CTK.cmake | 1 +
@@ -16,10 +25,9 @@ index bcec67cdeb..7b2a22c180 100644
      ${${proj}_EP_ARGS}
      GIT_REPOSITORY "${Slicer_${proj}_GIT_REPOSITORY}"
      GIT_TAG "${Slicer_${proj}_GIT_TAG}"
-+    PATCH_COMMAND git apply --verbose ${CMAKE_SOURCE_DIR}/../0001-BUG-Fix-export-macro-for-non-Windows-platforms.patch && git apply --verbose ${CMAKE_SOURCE_DIR}/../0002-ENH-Update-PythonQt-to-use-forked-repository.patch
++    PATCH_COMMAND git apply --verbose ${CMAKE_SOURCE_DIR}/../0001-BUG-Fix-export-macro-for-non-Windows-platforms.patch
      SOURCE_DIR ${EP_SOURCE_DIR}
      BINARY_DIR ${EP_BINARY_DIR}
      CMAKE_CACHE_ARGS
 -- 
 2.54.0
-
