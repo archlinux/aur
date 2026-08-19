@@ -1,0 +1,5 @@
+[gitcomet-bin]
+source = "github"
+github = "Auto-Explore/GitComet"
+use_latest_release = true
+prefix = "v"
