@@ -1,7 +1,7 @@
 pkgbase = grimmory
 	pkgdesc = Self hosted ebook reader and library
 	pkgver = 3.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://grimmory.org/
 	arch = x86_64
 	license = AGPL-3.0
