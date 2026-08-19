@@ -1,6 +1,6 @@
 pkgbase = fcitx5-lotus-git
 	pkgdesc = Vietnamese input method for fcitx5
-	pkgver = 3.5.0.r825.g276267b
+	pkgver = 3.5.2.r884.g80688dd
 	pkgrel = 1
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = fcitx5-lotus-git
 	makedepends = git
 	makedepends = libx11
 	makedepends = python
+	makedepends = librsvg
 	source = git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev
 	source = git+https://github.com/LotusInputMethod/bamboo-core.git
 	sha256sums = SKIP
