@@ -3,7 +3,7 @@
 
 pkgname=ultracopier
 _pkgname=Ultracopier
-pkgver=3.1.0.1
+pkgver=3.1.0.2
 pkgrel=1
 pkgdesc="Ultracopier acts as a replacement for files copy dialogs. Main features include: play/pause, speed limitation, on-error resume, error/collision management"
 url='https://ultracopier.herman-brule.com'
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base' 'hicolor-icon-theme')
 makedepends=('qt6-tools')
 source=("$pkgname-$pkgver.tgz::https://github.com/alphaonex86/Ultracopier/archive/$pkgver.tar.gz")
-b2sums=('18cf99d6390074980c75bffeac32c96131c60b2f2edf45f78db8c0dfb875e384a9e88183eb09f0a6d0af8f45dfde026528c22cc53a8078a0305c733a49c2fa3e')
+b2sums=('699ec702973a50919732febbf6294251124ca7ed157f96152fb4e0d539d5e0c3fe20621d740377b0f36e0fe952478ae363d756d08405b448e2816f3d47bd9c9c')
 
 prepare() {
 	find "$_pkgname-$pkgver" -name "*.ts" -exec lrelease {} \;
@@ -21,7 +21,8 @@ prepare() {
 build() {
 	cd "$_pkgname-$pkgver"
 	# fix  warning: ‘void QCheckBox::stateChanged(int)’ is deprecated: Use checkStateChanged() instead [-Wdeprecated-declarations]
-	sed -i 's|stateChanged|checkStateChanged|' plugins/Themes/Oxygen{,2}/{ThemesFactory,interface}.cpp
+	# sed -i 's|stateChanged|checkStateChanged|' plugins/Themes/Oxygen{,2}/{ThemesFactory,interface}.cpp
+	CXXFLAGS+=' -Wno-deprecated-declarations -Wno-conversion'
 	qmake6 ultracopier.pro \
 		QMAKE_CFLAGS="$CFLAGS" \
 		QMAKE_CXXFLAGS="$CXXFLAGS" \
