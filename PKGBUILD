@@ -3,13 +3,12 @@
 _pkgname=rubick
 pkgname=${_pkgname}-kubernetes-bin
 pkgver=4.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern cross-platform Kubernetes GUI client (prebuilt version)"
 arch=(x86_64)
 url="https://github.com/Dudude-bit/rubick"
 license=('GPL-3.0-or-later')
-depends=("kubectl" "gtk3" "webkit2gtk-4.1")
-makedepends=("bun" "cargo-tauri")
+depends=("kubectl" "cairo" "desktop-file-utils" "gdk-pixbuf2" "glib2" "gtk3" "hicolor-icon-theme" "libsoup" "pango" "webkit2gtk-4.1")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 _assets_ref=81809b080d05e6e890ee642bff848611ebf79242
