@@ -4,7 +4,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-qt6-multimedia
-_qtver=6.11.1
+_qtver=6.11.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -22,8 +22,8 @@ groups=(mingw-w64-qt6)
 _pkgfqn="qtmultimedia-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
         '0001-Fix-compile-flags-of-resonance-audio-for-mingw-w64.patch')
-sha256sums=('390f8e52ddee3aca5c4de7eead900c84c4fa61ff6d1f0ebea9c7543365c09b0a'
-            '8e90f36fcbd8dadc903577e53eb4327fe93ba2625ce8626603a545ad96c7475f')
+sha256sums=('967b5e02ec6b793cdb360622cd6e703132836af983208d678dae4b50f109cd9f'
+            'bdcf61c4ce59a3d1bf8a5d5eaa3eda225a5064e60e26fa3790dc94f8f65ea46b')
 
 _architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
 
