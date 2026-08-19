@@ -1,7 +1,7 @@
 # Maintainer: tiouoo <tiouo@qq.com>
 
 pkgname=portal-mc-commit-bin
-pkgver=0.40.20.33
+pkgver=0.40.22.39
 pkgrel=1
 pkgdesc="Portal - Minecraft launcher/manager (commit build, prerelease)"
 arch=('x86_64')
@@ -11,29 +11,29 @@ depends=('fuse2' 'hicolor-icon-theme' 'xdg-utils')
 provides=("portal-mc=$pkgver")
 conflicts=('portal-mc' 'portal-mc-nightly-bin' 'portal-mc-bin')
 options=('!strip' '!emptydirs')
-_appimg="Portal-0.40.20.33.AppImage"
+_appimg="Portal-0.40.22.39.AppImage"
 source_x86_64=(
-    "$_appimg::https://github.com/tiouoo/Portal/releases/download/publish-commit/Portal.linux.x64.0.40.20.33.AppImage"
-    "portal-mc.png::https://portal.tiouo.cc/portal-logo.png"
+    "$_appimg::https://github.com/tiouoo/Portal/releases/download/publish-commit/Portal.linux.x64.AppImage"
+    "portal.png::https://portal.tiouo.cc/portal-logo.png"
 )
-sha256sums_x86_64=('46faf9f6ac9baccb16623542a95c612739b09e2e299fea779015173b3c239c76' 'SKIP')
+sha256sums_x86_64=('SKIP' 'SKIP')
 noextract=("$_appimg")
 
 package() {
-    install -Dm755 "$srcdir/$_appimg" "$pkgdir/opt/portal-mc/Portal.AppImage"
-    install -Dm755 /dev/stdin "$pkgdir/usr/bin/portal-mc" <<'EOF'
+    install -Dm755 "$srcdir/$_appimg" "$pkgdir/opt/portal/Portal.AppImage"
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/portal" <<'EOF'
 #!/bin/sh
-exec /opt/portal-mc/Portal.AppImage "$@"
+exec /opt/portal/Portal.AppImage "$@"
 EOF
-    install -Dm644 "$srcdir/portal-mc.png" \
-        "$pkgdir/usr/share/icons/hicolor/512x512/apps/portal-mc.png"
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/portal-mc.desktop" <<'EOF'
+    install -Dm644 "$srcdir/portal.png" \
+        "$pkgdir/usr/share/icons/hicolor/512x512/apps/portal.png"
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/portal.desktop" <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=Portal
 Comment=Portal - Minecraft launcher/manager
-Icon=portal-mc
-Exec=portal-mc %U
+Icon=portal
+Exec=portal %U
 Terminal=false
 Categories=Game;
 MimeType=x-scheme-handler/portal;application/zip;application/x-zip-compressed;
