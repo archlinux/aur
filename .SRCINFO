@@ -37,8 +37,6 @@ pkgbase = pcsx2
 	depends = freetype2
 	optdepends = alsa-utils: Sound player for RetroAchievements
 	optdepends = gstreamer: Backup sound player for RetroAchievements
-	options = !debug
-	options = lto
 	source = pcsx2::git+https://github.com/PCSX2/pcsx2.git#tag=v2.6.3
 	source = pcsx2_patches::git+https://github.com/PCSX2/pcsx2_patches.git
 	source = plutovg::git+https://github.com/sammycage/plutovg.git#tag=v1.3.3

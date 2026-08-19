@@ -1,10 +1,12 @@
 # Maintainer:
 
-: ${_build_deps:=true}
-: ${_use_sodeps:=false}
+: ${_build_ffmpeg:=true}
+: ${_build_pluto:=true}
 
 : ${_ver_plutovg:=1.3.3}
 : ${_ver_plutosvg:=0.0.8}
+
+: ${_use_sodeps:=false}
 
 _pkgname="pcsx2"
 pkgname="$_pkgname"
@@ -60,7 +62,10 @@ optdepends=(
   'gstreamer: Backup sound player for RetroAchievements'
 )
 
-options=('!debug' 'lto')
+if [[ "${_build_ffmpeg::1}" != "t" ]]; then
+  eval "depends+=(ffmpeg)"
+fi
+
 install="$_pkgname.install"
 
 _pkgsrc="$_pkgname"
@@ -73,7 +78,7 @@ sha256sums=(
   'SKIP'
 )
 
-if [ "${_build_deps::1}" != "t" ]; then
+if [ "${_build_pluto::1}" != "t" ]; then
   eval "depends+=(
     plutosvg # AUR
     plutovg  # AUR
@@ -110,6 +115,11 @@ prepare() {
   sed -E -e '/CMAKE_INSTALL_FULL_DATADIR/s@/PCSX2\b@/'"${_pkgname}@" \
     -i pcsx2/CMakeLists.txt \
     cmake/BuildParameters.cmake
+
+  # force vendored ffmpeg
+  if [[ "${_build_ffmpeg::1}" == "t" ]]; then
+    sed -E -e '/find_package\(FFMPEG/d' -i cmake/SearchForStuff.cmake
+  fi
 }
 
 pkgver() {
@@ -123,7 +133,7 @@ build() (
   CXX=clang++
   CFLAGS="${CFLAGS/auto/thin}"
   CXXFLAGS="${CXXFLAGS/auto/thin}"
-  LDFLAGS="$(sed -E -e 's&\S*fuse-ld\S*&&g' <<< "$LDFLAGS") -fuse-ld=lld"
+  LDFLAGS+=" -fuse-ld=lld"
 
   local _cmake_options _cmake_plutovg _cmake_plutosvg
   _cmake_options=(
@@ -159,7 +169,7 @@ build() (
   )
 
   local _deps i _source _options
-  if [[ "${_build_deps::1}" == t ]]; then
+  if [[ "${_build_pluto::1}" == t ]]; then
     _deps=(
       plutovg
       plutosvg
@@ -220,7 +230,7 @@ StartupWMClass=$_pkgname
 Categories=Game;Emulator
 END
 
-  if [[ "${_build_deps::1}" == t ]]; then
+  if [[ "${_build_pluto::1}" == t ]]; then
     # vendored libraries
     mkdir -pm755 "$pkgdir/usr/lib/$_pkgname"
     cp "deps/usr/lib"/*.so* "$pkgdir/usr/lib/$_pkgname/"
