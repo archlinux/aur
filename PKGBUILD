@@ -4,7 +4,7 @@
 _name='QCElemental'
 _pkgname="${_name,,}"
 pkgname="python-${_pkgname}"
-pkgver=0.50.4
+pkgver=0.51.0
 pkgrel=1
 pkgdesc='Periodic table, physical constants, and molecule parsing for quantum chemistry'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
 )
 checkdepends=('python-pytest')
 source=("git+https://github.com/MolSSI/${_pkgname}.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('d066cdd4de34fab0e05e33f07ff15702d8afa79a219ed6e393642a69f9edd321')
 
 build() {
   cd "${srcdir}/${_pkgname}"
