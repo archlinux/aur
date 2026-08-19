@@ -1,0 +1,21 @@
+pkgbase = mozhi-git
+	pkgdesc = Alternative frontend for multiple translation engines, a maintained fork‑rewrite of SimplyTranslate‑Web with API, webapp and CLI support
+	pkgver = r243.095c73f
+	pkgrel = 1
+	epoch = 1
+	url = https://codeberg.org/aryak/mozhi
+	arch = any
+	license = GNU
+	provides = mozhi
+	conflicts = mozhi
+	conflicts = mozhi-bin
+	options = !strip
+	options = !debug
+	source = git+https://codeberg.org/aryak/mozhi.git#commit=095c73f04bc24f51dcb4a0155a5f10f87f768a8c
+	source = mozhi-server.service
+	source = mozhi-server.sysusers
+	sha256sums = 3b10a63e7cdeb44ece88940600abbeecbb7631fcb4a34b6c887d98889b3a6976
+	sha256sums = b2c186227e9d3633a2313336ebdd51f5a88d56ed95db3203c0038b87706d669f
+	sha256sums = da0d865d56bc7a183c0c5925f22070e12c3a5614cfcf48b5d55d5ce7a4e7279a
+
+pkgname = mozhi-git

@@ -1,0 +1,13 @@
+[Unit]
+Description=Mozhi Server (user)
+
+[Service]
+User=mozhi
+Group=mozhi
+ExecStart=/usr/bin/mozhi serve -p 3010
+TimeoutSec=30
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

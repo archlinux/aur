@@ -1,0 +1,7 @@
+.idea
+*
+!.SRCINFO
+!.gitignore
+!PKGBUILD
+!mozhi-server.service
+!mozhi-server.sysusers
