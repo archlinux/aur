@@ -25,7 +25,7 @@ conflicts=("$_pkgname")
 source=("$url/releases/download/v$pkgver/${_pkgname}_${pkgver}_amd64.deb")
 
 # На этапе настройки оставь SKIP. Мы сгенерируем актуальный хэш автоматически.
-sha256sums=('db1aa48381479edb67ab8e65d8f2c7e8860008bc81a0ab3c6e7dcef7481eb3eb')
+sha256sums=('78ab98e7ec73535daf0c29ef157de760a90cf7312c531a68577f6a2de33eacef')
 
 package() {
   # При сборке makepkg автоматически скачивает .deb и распаковывает его базовую структуру в папку src/.
