@@ -3,7 +3,7 @@
 # shellcheck disable=SC2164
 
 pkgver=2.2.4.r6.g8445d99
-pkgrel=1
+pkgrel=2
 
 _pkgname=casual-pre-loader
 pkgname="${_pkgname}-git"
