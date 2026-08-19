@@ -5,7 +5,7 @@ _pkgname=pilinara
 _srcname=PiliNara
 _pkgtag=2.1.0.2
 pkgver=2.1.0.2
-pkgrel=3
+pkgrel=4
 url="https://github.com/Starfallan/PiliNara"
 pkgdesc="PiliPlus 的第三方Fork版本，做了一些自用改动"
 arch=('x86_64')
@@ -16,11 +16,18 @@ provides=('pilinara')
 conflicts=('pilinara-bin' 'pilinara-git')
 options=('!debug' '!strip')
 
-source_x86_64=("${_srcname}-${_pkgtag}.tar.gz::${url}/archive/refs/tags/${_pkgtag}.tar.gz")
-sha256sums_x86_64=('fb2a24ab8af178a21e04af40ec0fc55efff2f8034da11fcb7f9f830e29c0241d')
+source_x86_64=("${_srcname}-${_pkgtag}.tar.gz::${url}/archive/refs/tags/${_pkgtag}.tar.gz"
+               "0001-fix-refresh-layout-semantics.patch"
+               "0002-linux-disable-impeller.patch")
+sha256sums_x86_64=('fb2a24ab8af178a21e04af40ec0fc55efff2f8034da11fcb7f9f830e29c0241d'
+                   'bafcecdf440e34392e8baafd07249a8a980706ee1c49017bc1ad5ff839fa9baa'
+                   '5f7ef4e3dcb51a286b64a42de80b508b882b73ffa3ca676cdffecb56ca29da2d')
 
 prepare() {
   cd "${_srcname}-${_pkgtag}/"
+  # 临时修复：RefreshLayout 布局协议违规 + Linux 禁用 Impeller
+  patch -Np1 < "${srcdir}/0001-fix-refresh-layout-semantics.patch"
+  patch -Np1 < "${srcdir}/0002-linux-disable-impeller.patch"
   fvm install
   fvm flutter --disable-analytics
   fvm flutter --no-version-check pub get
