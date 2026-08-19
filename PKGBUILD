@@ -5,7 +5,7 @@
 # already belongs to an unrelated project (github.com/uros-5/jinja-lsp), same
 # collision as crates.io — see ../README.md.
 pkgname=jinja-lsp-plus-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Language server for Jinja templates — diagnostics, navigation, completions, hover, and formatting"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ options=('!lto' '!strip')
 source_x86_64=("jinja-lsp-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/alex-oleshkevich/jinja-lsp/releases/download/v${pkgver}/jinja-lsp-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("jinja-lsp-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/alex-oleshkevich/jinja-lsp/releases/download/v${pkgver}/jinja-lsp-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('6401483f175c2fa411c073c5f6cd8c62809495ac098b4ad8336178948ff91293')
-sha256sums_aarch64=('d76f5c371803dfb09109b30da2eecc8aab887220ea6bb31d19210d34c4a80417')
+sha256sums_x86_64=('a63710aa0629131da31e5b57df2cd141f7310d545d8ce985b941c3de30ad3ceb')
+sha256sums_aarch64=('abcc3365e82662baaffe5a41a5e21a1e8d279c4cbc060b078caa1c1d21eb6292')
 
 package() {
   install -Dm755 "$srcdir/jinja-lsp" "$pkgdir/usr/bin/jinja-lsp"
