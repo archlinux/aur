@@ -1,7 +1,7 @@
 # Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 
 pkgname=vrcx-0
-pkgver=2.24.1
+pkgver=2.24.2
 pkgrel=1
 pkgdesc='Fast, lightweight VRCX implementation built with Tauri and Rust'
 arch=('x86_64')
@@ -30,9 +30,9 @@ source=(
   'nodejs26-world-dialog-react-test.patch'
   'nodejs26-game-log-react-test.patch'
 )
-sha256sums=('a8332ce399bd8f59fcbd56c5c5e4f6dfeed872f896a0fff7dd5c43de1747ffa2'
+sha256sums=('5c912571a9459b1c2221e26b6bbef53b4f6cefd546c4cdc845050add2f2a31b9'
             '7bfe3f2e44c1c6075f754c724a395955b210cf841b7a0632af39a7130605f8a2'
-            '53afd9a4c8ab3904f3e4b6872789d6e2c4237cb46430320ff09e46287e1c1e38')
+            '7a1ce445cf38aef839e4eee0f3b6d96f0412551525ca53fbcf79279a7493049b')
 prepare() {
   cd "VRCX-0-${pkgver}"
 
@@ -106,7 +106,7 @@ package() {
 
   install -Dm644 LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 LICENSE-MIT \
+  install -Dm644 LICENSES/MIT.txt \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
   install -Dm644 src-tauri/resources/licenses/THIRD_PARTY_NOTICES.txt \
     "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES.txt"

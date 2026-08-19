@@ -1,6 +1,6 @@
 pkgbase = vrcx-0
 	pkgdesc = Fast, lightweight VRCX implementation built with Tauri and Rust
-	pkgver = 2.24.1
+	pkgver = 2.24.2
 	pkgrel = 1
 	url = https://github.com/Map1en/VRCX-0
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = vrcx-0
 	depends = webkit2gtk-4.1
 	depends = xdotool
 	options = !lto
-	source = VRCX-0-2.24.1.tar.gz::https://github.com/Map1en/VRCX-0/archive/refs/tags/v2.24.1.tar.gz
+	source = VRCX-0-2.24.2.tar.gz::https://github.com/Map1en/VRCX-0/archive/refs/tags/v2.24.2.tar.gz
 	source = nodejs26-world-dialog-react-test.patch
 	source = nodejs26-game-log-react-test.patch
-	sha256sums = a8332ce399bd8f59fcbd56c5c5e4f6dfeed872f896a0fff7dd5c43de1747ffa2
+	sha256sums = 5c912571a9459b1c2221e26b6bbef53b4f6cefd546c4cdc845050add2f2a31b9
 	sha256sums = 7bfe3f2e44c1c6075f754c724a395955b210cf841b7a0632af39a7130605f8a2
-	sha256sums = 53afd9a4c8ab3904f3e4b6872789d6e2c4237cb46430320ff09e46287e1c1e38
+	sha256sums = 7a1ce445cf38aef839e4eee0f3b6d96f0412551525ca53fbcf79279a7493049b
 
 pkgname = vrcx-0

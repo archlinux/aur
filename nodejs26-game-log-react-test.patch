@@ -3,9 +3,9 @@
 @@ -1,15 +1,18 @@
  // @vitest-environment jsdom
  
--import { renderHook, waitFor } from '@testing-library/react';
-+import { act, renderHook, waitFor } from '@testing-library/react';
- import { beforeEach, describe, expect, it, vi } from 'vitest';
+-import { cleanup, renderHook, waitFor } from '@testing-library/react';
++import { act, cleanup, renderHook, waitFor } from '@testing-library/react';
+ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
  
  const mocks = vi.hoisted(() => ({
 +    favoriteFriendIds: [] as string[],
@@ -33,9 +33,11 @@
          })
  }));
  
-@@ -72,11 +75,12 @@ describe('useGameLogRows', () => {
+@@ -75,11 +78,14 @@ describe('useGameLogRows', () => {
      });
  
++    afterEach(cleanup);
++
      it('loads the complete configured table result instead of one page', async () => {
 -        renderHook(() =>
 +        const filters: string[] = [];
