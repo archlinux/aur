@@ -1,12 +1,12 @@
 pkgbase = plasma6-applets-vutronmusic-lyrics
-	pkgver = 25.12.21
+	pkgver = 26.8.19
 	pkgrel = 1
 	url = https://github.com/cmachsocket/org.kde.plasma.vutronmusic-lyrics
 	arch = any
 	license = GPL-3.0-or-later
 	depends = plasma-desktop
 	depends = kdeplasma-addons
-	source = https://github.com/cmachsocket/org.kde.plasma.vutronmusic-lyrics/archive/refs/tags/v25.12.21.tar.gz
-	sha256sums = cafb3c60daac9b22410726ac375e78e9ec86228754e0a7462f560f6d7b0c3276
+	source = https://github.com/cmachsocket/org.kde.plasma.vutronmusic-lyrics/archive/refs/tags/v26.8.19.tar.gz
+	sha256sums = 6cb9559495395d4a7ebd1ec943559098cd49ed5c8fb68de4e90ecbf00d39ecc6
 
 pkgname = plasma6-applets-vutronmusic-lyrics
