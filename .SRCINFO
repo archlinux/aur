@@ -1,6 +1,6 @@
 pkgbase = kptools-bin
 	pkgdesc = Patching and hooking the Linux kernel with only a stripped Linux kernel image.
-	pkgver = 0.13.4
+	pkgver = 0.13.5
 	pkgrel = 1
 	url = https://github.com/bmax121/KernelPatch
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = kptools-bin
 	depends = glibc
 	depends = zlib
 	provides = kptools
-	conflicts = kptools=0.13.4
-	source_x86_64 = kptools::https://github.com/bmax121/KernelPatch/releases/download/0.13.4/kptools-linux
-	sha256sums_x86_64 = c324a46487d8d1520377a936b6aeff75f8c6ed5d41e8202cb6bcda3b73cd91fa
+	conflicts = kptools=0.13.5
+	source_x86_64 = kptools::https://github.com/bmax121/KernelPatch/releases/download/0.13.5/kptools-linux
+	sha256sums_x86_64 = 93feb6340126983246bd9a654255f8ae8eb73ac56d1974156d33999a551a1f82
 
 pkgname = kptools-bin
