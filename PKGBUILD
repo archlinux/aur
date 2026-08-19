@@ -26,13 +26,7 @@ pkgver() {
 }
 prepare() {
   cd "$_pkg_groupname" || exit
-  # GOPATH 必须放在源码目录之外，否则 swag --parseDependency 会遍历到
-  # $GOPATH/pkg/mod/ 下 golang.org/x/tools 的 testdata 中的故意写坏的 .go 文件
-  # shellcheck disable=SC2154
-  # export GOPATH="${srcdir}/go"
-  # export GOCACHE="${srcdir}/go-build"
   export GOPRIVATE=codeberg.org/aryak/libmozhi
-  # export GO111MODULE=on
   go mod download -modcacherw
   go run github.com/swaggo/swag/cmd/swag@latest init --parseDependency
 }
