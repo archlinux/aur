@@ -1,5 +1,5 @@
 pkgname=coacd
-pkgver=1.0.12
+pkgver=1.0.13
 pkgrel=1
 pkgdesc="Approximate Convex Decomposition for 3D Meshes"
 license=('MIT')
@@ -10,7 +10,7 @@ optdepends=('python-trimesh: for Python bindings')
 makedepends=(cmake cdt)
 options=(!lto)
 source=("https://github.com/SarahWeiii/CoACD/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('9357bd6da525127ce538f6f0a3996e33573089848449bd70a2ae0c9bb82966c6')
+sha256sums=('0e9e875fc55e6e399d4691cc4a47e36d0f64d076937de6f78bc7c4aa28bb472b')
 
 prepare () {
   cd CoACD-$pkgver
