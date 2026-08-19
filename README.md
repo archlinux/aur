@@ -69,6 +69,9 @@ The instance starts automatically during system boot, runs as the selected
 user, uses that user's home directory, and listens on
 `http://127.0.0.1:30177`. A graphical login is not required.
 
+Pacman prints the enablement command after a fresh installation and after an
+upgrade or reinstall. It does not enable the service automatically.
+
 Check its status or follow its logs with:
 
 ```bash

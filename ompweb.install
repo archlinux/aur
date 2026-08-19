@@ -1,4 +1,4 @@
-post_install() {
+_show_service_notice() {
   cat <<'EOF'
 ==> To run ompweb automatically in the background after boot, enable the
 ==> systemd service template for your user:
@@ -8,4 +8,12 @@ post_install() {
 ==> Replace YOUR_USERNAME with the account that owns the omp sessions.
 ==> The service listens on http://127.0.0.1:30177 by default.
 EOF
+}
+
+post_install() {
+  _show_service_notice
+}
+
+post_upgrade() {
+  _show_service_notice
 }

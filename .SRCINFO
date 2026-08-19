@@ -1,7 +1,7 @@
 pkgbase = ompweb
 	pkgdesc = Web UI for the oh-my-pi coding agent
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kahme247/ompweb
 	install = ompweb.install
 	arch = x86_64
