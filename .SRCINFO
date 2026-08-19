@@ -1,6 +1,6 @@
 pkgbase = eez-studio-appimage
 	pkgdesc = Cross-platform low-code GUI and automation
-	pkgver = 0.28.0
+	pkgver = 0.29.0
 	pkgrel = 1
 	url = https://github.com/eez-open/studio/releases
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = eez-studio-appimage
 	depends = alsa-lib
 	depends = python
 	options = !strip
-	source = eez-studio-appimage-0.28.0.AppImage::https://github.com/eez-open/studio/releases/download/v0.28.0/EEZ-Studio-0.28.0.AppImage
-	sha256sums = f81b30dc60bf4e98250745e1914dd9e90a956ef0e282debc12410e4ae3536426
+	source = eez-studio-appimage-0.29.0.AppImage::https://github.com/eez-open/studio/releases/download/v0.29.0/EEZ-Studio-0.29.0.AppImage
+	sha256sums = 25bf62a1ed6e598901901c29e859f995ca768a451779e105463dca336b497552
 
 pkgname = eez-studio-appimage
