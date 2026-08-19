@@ -25,6 +25,6 @@ pkgbase = wlr-utils
 	optdepends = xdg-desktop-portal-wlr: screencast portal that drives wlr-chooser
 	options = !lto
 	source = wlr-utils-1.7.0.tar.gz::https://github.com/sjourdois/wlr-utils/archive/refs/tags/v1.7.0.tar.gz
-	sha256sums = 6f13fb7e12db75e8fd17e80b0f1664ca607e886bb3963d7630930e15db61bc32
+	sha256sums = 918e1e7cc9d398abe6c84884cbe07d2309d8e80a66c60c216aaa2465ef6dc7d7
 
 pkgname = wlr-utils

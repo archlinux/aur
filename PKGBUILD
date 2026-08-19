@@ -20,7 +20,7 @@ optdepends=('noto-fonts-cjk: render CJK (Japanese/Chinese/Korean) text'
             'tesseract-data-fra: French OCR for `wlr-peek ocr`'
             'xdg-desktop-portal-wlr: screencast portal that drives wlr-chooser')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6f13fb7e12db75e8fd17e80b0f1664ca607e886bb3963d7630930e15db61bc32')
+sha256sums=('918e1e7cc9d398abe6c84884cbe07d2309d8e80a66c60c216aaa2465ef6dc7d7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
