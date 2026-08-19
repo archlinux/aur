@@ -56,6 +56,35 @@ trusted reverse proxy or VPN. See the
 [upstream documentation](https://github.com/kahme247/ompweb#quick-start) for
 all options and security guidance.
 
+## systemd service
+
+The package includes the `ompweb@.service` system service template. Enable one
+instance for the user that owns the omp sessions:
+
+```bash
+sudo systemctl enable --now "ompweb@${USER}.service"
+```
+
+The instance starts automatically during system boot, runs as the selected
+user, uses that user's home directory, and listens on
+`http://127.0.0.1:30177`. A graphical login is not required.
+
+Check its status or follow its logs with:
+
+```bash
+systemctl status "ompweb@${USER}.service"
+journalctl -u "ompweb@${USER}.service" -f
+```
+
+Disable the instance with:
+
+```bash
+sudo systemctl disable --now "ompweb@${USER}.service"
+```
+
+Only one instance can use the default port. Use a systemd override with a
+different `ExecStart` port before enabling additional user instances.
+
 ## Package contents
 
 - The application and locked runtime dependencies are installed under
@@ -64,6 +93,8 @@ all options and security guidance.
 - The upstream MIT license is installed under `/usr/share/licenses/ompweb/`.
 - `package-lock.json` is retained in the installed application for dependency
   provenance.
+- `/usr/lib/systemd/system/ompweb@.service` provides an optional background
+  service that runs as the selected user.
 
 ## Reproducible runtime bundle
 

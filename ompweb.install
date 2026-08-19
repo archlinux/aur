@@ -1,0 +1,11 @@
+post_install() {
+  cat <<'EOF'
+==> To run ompweb automatically in the background after boot, enable the
+==> systemd service template for your user:
+==>
+==>   sudo systemctl enable --now ompweb@YOUR_USERNAME.service
+==>
+==> Replace YOUR_USERNAME with the account that owns the omp sessions.
+==> The service listens on http://127.0.0.1:30177 by default.
+EOF
+}

@@ -1,0 +1,16 @@
+[Unit]
+Description=ompweb web interface for %i
+Documentation=https://github.com/kahme247/ompweb
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=~
+Environment=OMP_WEB_NO_OPEN=1
+ExecStart=/usr/bin/ompweb --no-open --hostname 127.0.0.1 --port 30177
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
