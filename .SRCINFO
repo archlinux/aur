@@ -1,6 +1,6 @@
 pkgbase = microsandbox
 	pkgdesc = Easy, fast and local-first microVM runtime
-	pkgver = 0.6.10
+	pkgver = 0.6.11
 	pkgrel = 1
 	url = https://github.com/superradcompany/microsandbox
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = microsandbox
 	provides = microsandbox
 	provides = msb
 	options = !lto
-	source = microsandbox-0.6.10.crate::https://crates.io/api/v1/crates/microsandbox/0.6.10/download
-	sha256sums = 5cfb7f787106cc6684d57cdf27d6d9d693711929d53678ac387d399103620eab
+	source = microsandbox-0.6.11.crate::https://crates.io/api/v1/crates/microsandbox/0.6.11/download
+	sha256sums = e37776900cb5b292897257aea82eae588d51b006b84a62bf06d7cd158a1bdbf6
 
 pkgname = microsandbox
