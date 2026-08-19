@@ -1,6 +1,6 @@
 pkgbase = python-aws_sdk_transcribe_streaming
 	pkgdesc = aws_sdk_transcribe_streaming client.
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://pypi.org/project/aws_sdk_transcribe_streaming
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-aws_sdk_transcribe_streaming
 	depends = python-smithy-core
 	depends = python-smithy-http
 	depends = python-awscrt
-	source = https://files.pythonhosted.org/packages/source/a/aws_sdk_transcribe_streaming/aws_sdk_transcribe_streaming-0.8.0.tar.gz
-	sha256sums = b946b2f8f2ab9a84914cdb69732cf94b87e222756d6d5506ac8bef173503fa45
+	source = https://files.pythonhosted.org/packages/source/a/aws_sdk_transcribe_streaming/aws_sdk_transcribe_streaming-0.9.0.tar.gz
+	sha256sums = 4ba05b89fb33f308b08abfd8678b668da325bc8967553d582c8e119f60ccf982
 
 pkgname = python-aws_sdk_transcribe_streaming
