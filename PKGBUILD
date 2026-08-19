@@ -1,4 +1,4 @@
-# Maintainer: GI Jack <GI_Jack@hackermail.com>
+# Maintainer: Network Jack <Network_Jack@null.net>
 # Poached from: ArchStrike <team@archstrike.org>
 
 pkgname=dirble
