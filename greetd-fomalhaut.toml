@@ -5,5 +5,5 @@
 vt = 1
 
 [default_session]
-command = "dbus-run-session cage -s -m last -d -- /usr/bin/fomalhaut"
+command = "dbus-run-session cage -s -m last -d -- fomalhaut"
 user = "greeter"
