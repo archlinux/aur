@@ -1,0 +1,4 @@
+[cronet]
+source = "git"
+git = "https://chromium.googlesource.com/chromium/src.git"
+include_regex = '144\.\d+\.\d+\.\d+'
