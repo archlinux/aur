@@ -1,0 +1,18 @@
+post_install() {
+  printf '%s\n' \
+    'Enable the Sony Headphones user service for your account with:' \
+    '  systemctl --user enable --now sony-headphones.service' \
+    'Install and enable the QML interface separately through the Omarchy plugin manager.'
+}
+
+post_upgrade() {
+  printf '%s\n' \
+    'Restart the Sony Headphones user service for your account with:' \
+    '  systemctl --user restart sony-headphones.service'
+}
+
+post_remove() {
+  printf '%s\n' \
+    'The Omarchy plugin and per-user state were preserved.' \
+    'Remove the plugin with omarchy plugin remove and delete the state directory only if desired.'
+}
