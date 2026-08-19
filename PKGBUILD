@@ -4,7 +4,7 @@
 # release version, pkgrel, source location, and checksum into the AUR metadata.
 
 pkgname=chan-desktop
-pkgver=0.93.0
+pkgver=0.94.0
 pkgrel=1
 pkgdesc='Desktop terminal multiplexer and workspace manager'
 # Native CI builds both architectures; aarch64 is observed-only for v0.73.0.
@@ -12,7 +12,7 @@ arch=('x86_64' 'aarch64')
 url='https://chan.app'
 license=('Apache-2.0')
 # The GTK/WebKit stack is soname-derived. systemd carries the packaged user
-# unit's runtime plus `chan devserver --service=systemd`, xdg-utils the
+# unit's runtime plus `chan devserver start --service=systemd`, xdg-utils the
 # `chan://` scheme handler, and gcc-libs the libgcc_s.so.1 the binary links;
 # namcap's soname-only analysis cannot see the first two.
 depends=(
@@ -33,8 +33,8 @@ conflicts=('chan')
 # Cargo owns thin LTO. makepkg's additional -flto=auto reaches native C/C++
 # dependencies and can leave rustc unable to resolve their symbols at link time.
 options=(!lto)
-source=('chan-0.93.0.tar.gz::https://github.com/fiorix/chan/archive/v0.93.0.tar.gz')
-sha256sums=('8ec2c11a16c11a1651a7dc6cc3fe4f0acd6ed9421a06dcec9753e079ef65cb41')
+source=('chan-0.94.0.tar.gz::https://github.com/fiorix/chan/archive/v0.94.0.tar.gz')
+sha256sums=('5af2513e090480f0e5104977638d747b7e1bd8a8c0711397092365977b82046b')
 
 # RUSTUP_TOOLCHAIN keeps the tree's rust-toolchain.toml pin from making a
 # rustup-provided cargo download a second toolchain mid-build, per Arch's Rust
