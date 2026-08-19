@@ -4,7 +4,7 @@ pkgver=9.0.19.sdk317
 _runtimever="${pkgver%.sdk*}"
 _dotnetver="${_runtimever%.*}"
 _sdkver="${_dotnetver}.${pkgver##"${_runtimever}.sdk"}"
-pkgrel=1
+pkgrel=2
 
 pkgbase="dotnet-core-${_dotnetver}-bin"
 pkgname=(
@@ -70,6 +70,7 @@ package_dotnet-runtime-9.0-bin() {
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
+    "${pkgname%-${_dotnetver}-bin}=${_dotnetver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -96,6 +97,7 @@ package_aspnet-runtime-9.0-bin() {
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
+    "${pkgname%-${_dotnetver}-bin}=${_dotnetver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -122,6 +124,7 @@ package_dotnet-targeting-pack-9.0-bin() {
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
+    "${pkgname%-${_dotnetver}-bin}=${_dotnetver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -149,6 +152,7 @@ package_aspnet-targeting-pack-9.0-bin() {
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
+    "${pkgname%-${_dotnetver}-bin}=${_dotnetver}"
   )
   conflicts=(
     "${pkgname%-bin}"
@@ -179,6 +183,7 @@ package_dotnet-sdk-9.0-bin() {
   )
   provides=(
     "${pkgname%-bin}=${pkgver}"
+    "${pkgname%-${_dotnetver}-bin}=${_dotnetver}"
   )
   conflicts=(
     "${pkgname%-bin}"
