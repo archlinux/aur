@@ -5,8 +5,8 @@ _pkgname='ferdium'
 pkgname="ferdium-nightly"
 _electron='electron43'
 _electronpackage='electron43'
-pkgver='7.1.3.nightly.17'
-apptag='v7.1.3-nightly.17'
+pkgver='7.1.3.nightly.20'
+apptag='v7.1.3-nightly.20'
 pkgrel=0
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest nightly release).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -30,7 +30,7 @@ conflicts=(
 source=(
 	"$pkgname::git+https://github.com/ferdium/ferdium-app#tag=${apptag}"
 )
-sha512sums=('e77815c2b9901eff882210ca4645604d76c71fc83d2ab07999d9df959337751099a8888dfc3602ca68a569a6286d67b99e05369168efba8c885dbd67460b5024')
+sha512sums=('d848fe587aaca0f4b6d4b37111d6cb8c17de4d09553f7dc5ba721a3558c9750d4cfd41c37c65cc2b9f4f21d01052cbc8caf7743202fdb2ca92df65dd0b622c3d')
 
 _sourcedirectory="$pkgname"
 
