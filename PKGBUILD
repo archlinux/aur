@@ -1,7 +1,7 @@
 # Maintainer: gambarim <gambarim@pm.me>
 
 pkgname=buzz-bin
-pkgver=0.5.3
+pkgver=0.5.17
 pkgrel=1
 pkgdesc='Self-hostable workspace where humans and AI agents build together, on a relay you own'
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=(
 options=('!strip' '!debug')
 conflicts=('buzz-appimage')
 source=("https://github.com/block/buzz/releases/download/desktop-v${pkgver}/Buzz_${pkgver}_amd64.deb")
-sha256sums=('ae20163ef481ccbf3531b9806996d7580a3a24f9258a54698c75fdcb8b16f14b')
+sha256sums=('cf28de6ba023fdb6eb676f183579e1df4d83bc29b4ebfa6c26ad8e3f327e0fef')
 
 package() {
   cd "${srcdir}"
