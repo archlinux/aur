@@ -14,6 +14,6 @@ pkgbase = radio-noise-key-generator
 	depends = libgcrypt
 	depends = rtl-sdr
 	source = radio-noise-key-generator-0.1.0.tar.gz::https://github.com/OK1BR/radio-noise-key-generator/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 5521d04bdc76fd863eb75e878e90c486fb61690e8099d371ab755980d7abedae
+	sha256sums = cebc02e804a7fd25406a6ba2e6ecb1d05004ec605a04ca14422b855c5b9a735d
 
 pkgname = radio-noise-key-generator
