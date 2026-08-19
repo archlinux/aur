@@ -1,6 +1,6 @@
 pkgbase = unciv-bin
 	pkgdesc = Open-source remake of Civilization V
-	pkgver = 4.21.9_patch1
+	pkgver = 4.21.10
 	pkgrel = 0
 	url = https://github.com/yairm210/Unciv
 	arch = any
@@ -10,11 +10,11 @@ pkgbase = unciv-bin
 	depends = xorg-xrandr
 	provides = unciv
 	conflicts = unciv
-	noextract = Unciv-4.21.9-patch1.jar
-	source = Unciv-4.21.9-patch1.jar::https://github.com/yairm210/Unciv/releases/download/4.21.9-patch1/Unciv.jar
-	source = Unciv-4.21.9-patch1.png::https://raw.githubusercontent.com/yairm210/Unciv/4.21.9-patch1/extraImages/Icons/Unciv%20icon%20v5.png
-	source = Unciv-4.21.9-patch1.zip::https://github.com/yairm210/Unciv/releases/download/4.21.9-patch1/linuxFilesForJar.zip
-	md5sums = b2ca6f5785970a290301c237f4f676fe
+	noextract = Unciv-4.21.10.jar
+	source = Unciv-4.21.10.jar::https://github.com/yairm210/Unciv/releases/download/4.21.10/Unciv.jar
+	source = Unciv-4.21.10.png::https://raw.githubusercontent.com/yairm210/Unciv/4.21.10/extraImages/Icons/Unciv%20icon%20v5.png
+	source = Unciv-4.21.10.zip::https://github.com/yairm210/Unciv/releases/download/4.21.10/linuxFilesForJar.zip
+	md5sums = 80d87467f8aa0c254727655daaabeb7c
 	md5sums = c3f79bbc7e80620b3cdc4f90f21f4d68
 	md5sums = 176821274572d274ac6b2b14a943b73f
 
