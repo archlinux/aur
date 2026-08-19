@@ -7,7 +7,6 @@ pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	license = GPL3
 	makedepends = git
 	makedepends = meson
-	makedepends = glib2
 	depends = gnome-shell
 	depends = nautilus
 	optdepends = file-roller: Work with compressed files

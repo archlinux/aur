@@ -14,7 +14,7 @@ arch=('any')
 url="https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding"
 license=('GPL3')
 depends=('gnome-shell' 'nautilus')
-makedepends=('git' 'meson' 'glib2')
+makedepends=('git' 'meson')
 optdepends=(
   'file-roller: Work with compressed files'
   'webkitgtk-6.0: HTML widget support'
