@@ -1,7 +1,7 @@
-From 4227fa0bbe4463fc587e2a72600484bcff590697 Mon Sep 17 00:00:00 2001
+From da9445d5dda198ef654584979d1827743d7a2415 Mon Sep 17 00:00:00 2001
 From: Assam Boudjelthia <assam.boudjelthia@qt.io>
 Date: Tue, 28 Apr 2026 16:39:42 +0300
-Subject: [PATCH 23/25] Android: implement system locale in QtCore directly
+Subject: [PATCH 23/24] Android: implement system locale in QtCore directly
 
 The Android system locale backend lived in the QPA platform
 plugin as QAndroidSystemLocale, a QSystemLocale subclass.
@@ -34,10 +34,10 @@ Change-Id: I86e95ce142419abcdb09b9f1ce1093cfa4be47a3
  delete mode 100644 src/plugins/platforms/android/qandroidsystemlocale.h
 
 diff --git a/src/corelib/CMakeLists.txt b/src/corelib/CMakeLists.txt
-index 2743b00b2ee..003253f33d4 100644
+index 9a2a2cd685a..cee98ce6e00 100644
 --- a/src/corelib/CMakeLists.txt
 +++ b/src/corelib/CMakeLists.txt
-@@ -942,7 +942,7 @@ qt_internal_extend_target(Core CONDITION APPLE
+@@ -941,7 +941,7 @@ qt_internal_extend_target(Core CONDITION APPLE
          text/qlocale_mac.mm
  )
  
@@ -46,7 +46,7 @@ index 2743b00b2ee..003253f33d4 100644
      SOURCES
          text/qlocale_unix.cpp
  )
-@@ -1197,6 +1197,7 @@ qt_internal_extend_target(Core CONDITION ANDROID
+@@ -1196,6 +1196,7 @@ qt_internal_extend_target(Core CONDITION ANDROID
          platform/android/qandroidtypeconverter_p.h
          platform/android/qandroiditemmodelproxy_p.h platform/android/qandroiditemmodelproxy.cpp
          platform/android/qandroidmodelindexproxy_p.h platform/android/qandroidmodelindexproxy.cpp
@@ -310,7 +310,7 @@ index 00000000000..8af8690d948
 +
 +QT_END_NAMESPACE
 diff --git a/src/plugins/platforms/android/CMakeLists.txt b/src/plugins/platforms/android/CMakeLists.txt
-index 7c78252f4c8..33bd7e36a85 100644
+index b07e75b70e7..b02e86b27bf 100644
 --- a/src/plugins/platforms/android/CMakeLists.txt
 +++ b/src/plugins/platforms/android/CMakeLists.txt
 @@ -34,7 +34,6 @@ qt_internal_add_plugin(QAndroidIntegrationPlugin
@@ -330,10 +330,10 @@ index 7c78252f4c8..33bd7e36a85 100644
          ${CMAKE_CURRENT_SOURCE_DIR}
          ${QtBase_SOURCE_DIR}/src/3rdparty/android
 diff --git a/src/plugins/platforms/android/qandroidplatformintegration.cpp b/src/plugins/platforms/android/qandroidplatformintegration.cpp
-index f282ad6795c..9d18aa807c4 100644
+index 79ca61eb49d..d50acb2abcd 100644
 --- a/src/plugins/platforms/android/qandroidplatformintegration.cpp
 +++ b/src/plugins/platforms/android/qandroidplatformintegration.cpp
-@@ -25,7 +25,6 @@
+@@ -28,7 +28,6 @@
  #include "qandroidplatformscreen.h"
  #include "qandroidplatformservices.h"
  #include "qandroidplatformtheme.h"
@@ -341,8 +341,8 @@ index f282ad6795c..9d18aa807c4 100644
  
  #include <QGuiApplication>
  #include <QOffscreenSurface>
-@@ -234,8 +233,6 @@ QAndroidPlatformIntegration::QAndroidPlatformIntegration(const QStringList &para
-     m_androidPlatformClipboard = new QAndroidPlatformClipboard();
+@@ -241,8 +240,6 @@ QAndroidPlatformIntegration::QAndroidPlatformIntegration(const QStringList &para
+     m_androidPlatformDrag = new QAndroidPlatformDrag();
  #endif
  
 -    m_androidSystemLocale = new QAndroidSystemLocale;
@@ -350,7 +350,7 @@ index f282ad6795c..9d18aa807c4 100644
  #if QT_CONFIG(accessibility)
          m_accessibility = new QAndroidPlatformAccessibility();
  #endif // QT_CONFIG(accessibility)
-@@ -440,7 +437,6 @@ QAndroidPlatformIntegration::~QAndroidPlatformIntegration()
+@@ -447,7 +444,6 @@ QAndroidPlatformIntegration::~QAndroidPlatformIntegration()
  
      delete m_androidPlatformNativeInterface;
      delete m_androidFDB;
@@ -359,7 +359,7 @@ index f282ad6795c..9d18aa807c4 100644
  #ifndef QT_NO_CLIPBOARD
      delete m_androidPlatformClipboard;
 diff --git a/src/plugins/platforms/android/qandroidplatformintegration.h b/src/plugins/platforms/android/qandroidplatformintegration.h
-index 3f647c1ef0d..0e86dd2e9b0 100644
+index 8083ad3e597..eab1265c973 100644
 --- a/src/plugins/platforms/android/qandroidplatformintegration.h
 +++ b/src/plugins/platforms/android/qandroidplatformintegration.h
 @@ -24,7 +24,6 @@
@@ -370,8 +370,8 @@ index 3f647c1ef0d..0e86dd2e9b0 100644
  class QPlatformAccessibility;
  
  struct AndroidStyle;
-@@ -147,7 +146,6 @@ private:
-     QPlatformClipboard *m_androidPlatformClipboard;
+@@ -155,7 +154,6 @@ private:
+     QPlatformDrag *m_androidPlatformDrag = nullptr;
  #endif
  
 -    QAndroidSystemLocale *m_androidSystemLocale;
