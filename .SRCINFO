@@ -16,6 +16,6 @@ pkgbase = ezbar
 	optdepends = noto-fonts-emoji: emoji glyphs in the bar
 	options = !lto
 	source = ezbar-0.1.17.tar.gz::https://github.com/birdayz/ezbar/archive/refs/tags/v0.1.17.tar.gz
-	sha256sums = 5fd3bd0514e63766d206c6bc17489d6cbc97c2d961e5507b7f50854c9ffc7b8c
+	sha256sums = 89ea72d2b83c3b0ac19b9104db5ad8559ceb16d23029eb1a5fcb82431229969e
 
 pkgname = ezbar

@@ -16,7 +16,7 @@ makedepends=('cargo')
 optdepends=('sway: the wlroots compositor ezbar targets'
             'noto-fonts-emoji: emoji glyphs in the bar')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5fd3bd0514e63766d206c6bc17489d6cbc97c2d961e5507b7f50854c9ffc7b8c')
+sha256sums=('89ea72d2b83c3b0ac19b9104db5ad8559ceb16d23029eb1a5fcb82431229969e')
 
 prepare() {
     cd "$pkgname-$pkgver"
