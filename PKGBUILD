@@ -2,7 +2,7 @@
 
 pkgbase=scopehal-apps
 pkgname=scopehal-apps
-_tagname=0.2.1
+_tagname=0.2.2
 pkgver=${_tagname//-/+}
 pkgrel=1
 epoch=
@@ -70,7 +70,7 @@ source=(
     "wayland-protocols::git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git"
     "imgui_markdown::git+https://github.com/juliettef/imgui_markdown.git"
 )
-sha256sums=('e46c0669ea1384ab4c8e56cd2fc60931fea1c0bb53de18fdd3edfc91d54c16e6'
+sha256sums=('0cf732ca404794deecff51c73def0ad64765ed5daa31b2cd2f069f9627cac5ae'
             'SKIP'
             'SKIP'
             'SKIP'

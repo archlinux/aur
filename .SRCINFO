@@ -1,6 +1,6 @@
 pkgbase = scopehal-apps
 	pkgdesc = ngscopeclient and other client applications for libscopehal
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/ngscopeclient/scopehal-apps
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = scopehal-apps
 	optdepends = linux-gpib
 	provides = scopehal-apps
 	conflicts = scopehal-apps
-	source = scopehal-apps::git+https://github.com/ngscopeclient/scopehal-apps.git#tag=v0.2.1
+	source = scopehal-apps::git+https://github.com/ngscopeclient/scopehal-apps.git#tag=v0.2.2
 	source = lib::git+https://github.com/ngscopeclient/scopehal.git
 	source = xptools::git+https://github.com/ngscopeclient/xptools.git
 	source = log::git+https://github.com/ngscopeclient/logtools.git
@@ -50,7 +50,7 @@ pkgbase = scopehal-apps
 	source = nativefiledialog-extended::git+https://github.com/btzy/nativefiledialog-extended.git
 	source = wayland-protocols::git+https://gitlab.freedesktop.org/wayland/wayland-protocols.git
 	source = imgui_markdown::git+https://github.com/juliettef/imgui_markdown.git
-	sha256sums = e46c0669ea1384ab4c8e56cd2fc60931fea1c0bb53de18fdd3edfc91d54c16e6
+	sha256sums = 0cf732ca404794deecff51c73def0ad64765ed5daa31b2cd2f069f9627cac5ae
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
