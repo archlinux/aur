@@ -1,13 +1,14 @@
 pkgbase = x264-patmanmod-git
 	pkgdesc = Patman-modified x264 build with shared library, PIC, LTO, and system-libx264
-	pkgver = latest
+	pkgver = 0.165.3223+40.r3.g0f48e006
 	pkgrel = 1
+	epoch = 3
 	url = https://github.com/Patman86/x264-Mod-by-Patman
-	arch = x86_64
+	arch = any
 	license = GPL
 	makedepends = git
+	makedepends = make
 	makedepends = nasm
-	depends = glibc
 	provides = x264
 	provides = libx264
 	provides = libx264.so
