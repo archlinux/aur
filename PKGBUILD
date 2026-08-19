@@ -6,7 +6,7 @@
 pkgname=atlauncher
 _upstreamname=ATLauncher
 pkgrel=1
-pkgver=3.4.41.1
+pkgver=3.4.41.2
 pkgdesc="A launcher for Minecraft which integrates multiple different modpacks to allow you to download and install
 modpacks easily and quickly."
 arch=('any')
@@ -23,7 +23,7 @@ source=("$_upstreamname-$pkgver.tar.gz::https://github.com/ATLauncher/ATLauncher
     "atlauncher.png"
     "atlauncher.svg")
 
-sha256sums=('90d613e7cee87f435c63a62920e63e6b3f8002fa7afe9f85b4d590140132da05'
+sha256sums=('9101d972824b02b628422bd9fdcf544c6a172175d4c059d52bce257b267b2873'
             '5fd73a6159b9407a732f5956f58b3c9a890699fe14760c6e4f93f9876a32e635'
             '0cc9c38febd814680fbd936e7a0f3ca28adbf54f7d210559d2d53fe70791033d'
             'dd370888c78fdb652d656d97e4a7f7e8c90aa8d75d4f4d01d0bd32e95c327c47'
