@@ -1,6 +1,6 @@
 pkgbase = vi-sql-bin
 	pkgdesc = Terminal UI for SQL databases
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/kopecmaciej/vi-sql
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = vi-sql-bin
 	provides = vi-sql
 	conflicts = vi-sql
 	options = !strip
-	source_x86_64 = vi-sql-x86_64-0.2.1.tgz::https://github.com/kopecmaciej/vi-sql/releases/download/v0.2.1/vi-sql_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 7354a5188d9268b8d286088adbb65eb371b00d1b359b0a6498bb8e94fe920541
-	source_aarch64 = vi-sql-aarch64-0.2.1.tgz::https://github.com/kopecmaciej/vi-sql/releases/download/v0.2.1/vi-sql_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 9629e27de591c117ca6b40b651c83cc8d65849be809815f4e20d7e0cd81fa7a3
+	source_x86_64 = vi-sql-x86_64-0.3.0.tgz::https://github.com/kopecmaciej/vi-sql/releases/download/v0.3.0/vi-sql_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 7e2e88181e09e117dd0404b33cb42fbb7c1ae403189f237b65943a1093ed3c3f
+	source_aarch64 = vi-sql-aarch64-0.3.0.tgz::https://github.com/kopecmaciej/vi-sql/releases/download/v0.3.0/vi-sql_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 81ed716387fbd1edfd71047971760100fc87e26b39fc35168fe4b616ff55763d
 
 pkgname = vi-sql-bin
