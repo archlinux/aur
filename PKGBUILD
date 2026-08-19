@@ -1,6 +1,6 @@
 # Maintainer: kekmacska <kekmacska2@proton.me>
 pkgname=subrandr-git
-pkgver=1.4.0.r0.gb32d97f
+pkgver=1.4.0.r11.g98fd361
 pkgrel=1
 pkgdesc="A subtitle rendering library for SRV3 (YouTube) and WebVTT (development build)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ build() {
         -C strip=symbols \
         -C lto=no \
         -C link-arg=-fno-plt \
-        -C link-arg=-Wl,-O1 \
+        -C link-arg=-Wl,-O3 \
         -C link-arg=-Wl,--as-needed \
         -C link-arg=-Wl,--sort-common \
         -C link-arg=-Wl,--gc-sections

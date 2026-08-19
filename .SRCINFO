@@ -1,6 +1,6 @@
 pkgbase = subrandr-git
 	pkgdesc = A subtitle rendering library for SRV3 (YouTube) and WebVTT (development build)
-	pkgver = 1.4.0.r0.gb32d97f
+	pkgver = 1.4.0.r11.g98fd361
 	pkgrel = 1
 	url = https://github.com/afishhh/subrandr
 	arch = x86_64
