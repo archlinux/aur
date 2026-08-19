@@ -1,6 +1,6 @@
 pkgbase = git-wipe
 	pkgdesc = Wipe out merged local branches and worktrees
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/noirbizarre/git-wipe
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = git-wipe
 	provides = git-synchronizer
 	conflicts = git-synchronizer
 	replaces = git-synchronizer
-	source = git-wipe-0.4.0.tar.gz::https://github.com/noirbizarre/git-wipe/releases/download/v0.4.0/git-wipe-0.4.0.tar.gz
-	sha256sums = bf02ff7385d022516a0d5a8e599341d4ef5b9b9002c6ccb5d9c172b02dbf016d
+	source = git-wipe-0.5.0.tar.gz::https://github.com/noirbizarre/git-wipe/releases/download/v0.5.0/git-wipe-0.5.0.tar.gz
+	sha256sums = 61f50314a7ec89a0c3898e1fc573e6e50042da22d6650c179d7b743dc182e3c8
 
 pkgname = git-wipe
