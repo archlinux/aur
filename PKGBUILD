@@ -1,8 +1,8 @@
 # Maintainer: email@ricardo.band
 
 pkgname=projen
-pkgver=0.101.31
-pkgrel=2
+pkgver=0.101.32
+pkgrel=1
 pkgdesc="Define and maintain complex project configuration through code. Synthesizes project configuration files from a well-typed definition written in JavaScript."
 arch=('any')
 url="https://github.com/projen/projen/"
@@ -13,7 +13,7 @@ optdepends=('bash-completion: Bash completion'
             'zsh: zsh completion')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('70cc16027139f86e61907d90b9593d0568696ebf5a38cbad0440d6c341e3347c')
+sha256sums=('731af4b9a5dfd2f66ed0e6d38e0431a4a2a0c01164fc8c952c7e598fd0d7de5d')
 
 package() {
     npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
