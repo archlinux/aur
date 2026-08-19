@@ -2,7 +2,7 @@
 # Contributor: Shuyuan Liu <liu_shuyuan at qq dot com>
 pkgname=issie
 _pkgname=Issie
-pkgver=6.0.23
+pkgver=6.1.0
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('9f9493ae155a657765fd3a67fa73c68709599e17a93b22e589113792f862664f'
+sha256sums=('1a8a4e4c461b3d4bb1bc24458459676552068b857e9119d09542e5b52ec7e91c'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -100,7 +100,7 @@ prepare() {
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <packageSources>
-    <add key="nuget.cn" value="https://nuget.cdn.azure.cn/v3/index.json" />
+    <add key="huaweicloud" value="https://repo.huaweicloud.com/repository/nuget/v3/index.json" />
     <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
   </packageSources>
 </configuration>
