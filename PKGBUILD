@@ -5,7 +5,7 @@
 
 _android_arch=x86
 pkgname=android-$_android_arch-qt6-quick3d
-_qtver=6.11.1
+_qtver=6.11.2
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -21,10 +21,11 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtquick3d-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('c76b85de3f8aa2a4bee64987acfef560675c1b378b92076c7c6264613e5b456f')
+sha256sums=('3ab8e1f08edb26373a37cf9d42c23e7d092c1334566b953fbb51cb1b936737b4')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
+  export ANDROID_MINIMUM_PLATFORM=24
   source android-env ${_android_arch}
   export QT_ANDROID_JAR_PATH=${ANDROID_PREFIX}/jar
   android-${_android_arch}-cmake -G Ninja -B build-$_android_arch -S $_pkgfqn \
