@@ -5,7 +5,6 @@ pkgbase = zeptoclaw-bin
 	url = https://zeptoclaw.com
 	arch = x86_64
 	license = Apache-2.0
-	depends = hicolor-icon-theme
 	provides = zeptoclaw
 	conflicts = zeptoclaw
 	source = zeptoclaw-0.9.2-x86_64.sha256::https://github.com/qhkm/zeptoclaw/releases/download/v0.9.2/zeptoclaw-linux-x86_64.sha256

@@ -6,7 +6,6 @@ pkgdesc="Fast, small, secure, and local-first personal AI assistant infrastructu
 arch=(x86_64)
 url="https://zeptoclaw.com"
 license=(Apache-2.0)
-depends=(hicolor-icon-theme)
 provides=(zeptoclaw)
 conflicts=(zeptoclaw)
 source=("zeptoclaw-$pkgver-$CARCH.sha256::https://github.com/qhkm/zeptoclaw/releases/download/v$pkgver/zeptoclaw-linux-x86_64.sha256")
