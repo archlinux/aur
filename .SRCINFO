@@ -1,13 +1,13 @@
 pkgbase = jm-git
 	pkgdesc = JM H.264 reference encoder/decoder, development build
-	pkgver = 19.0.r110.g8b34eee
+	pkgver = 19.1.r10.g8b34eee
 	pkgrel = 1
 	url = https://vcgit.hhi.fraunhofer.de/jvet/JM
 	arch = x86_64
 	license = ITU
 	makedepends = cmake
-	makedepends = gcc
 	makedepends = make
+	depends = openmp
 	source = git+https://vcgit.hhi.fraunhofer.de/jvet/JM.git
 	md5sums = SKIP
 
