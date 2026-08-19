@@ -3,7 +3,7 @@
 # AUR page: https://aur.archlinux.org/packages/tuitab
 
 pkgname=tuitab
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="Terminal tabular data explorer — CSV/JSON/YAML/TOML/Parquet/Excel/SQLite viewer"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('68784c6928a93848e832498546a88d1a006fd46dca7470919d38a7550c28ead2')
+sha256sums=('44af84e58072b597a784edf0c10bfb6671edda2ef70fed2ddc252b094019a625')
 
 prepare() {
     cd "$pkgname-$pkgver"
