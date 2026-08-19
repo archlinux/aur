@@ -1,0 +1,19 @@
+diff --git a/src/gtk/gftp-gtk.c b/src/gtk/gftp-gtk.c
+index 394ea29..df767bf 100644
+--- a/src/gtk/gftp-gtk.c
++++ b/src/gtk/gftp-gtk.c
+@@ -1485,6 +1485,14 @@ main (int argc, char **argv)
+ {
+   GtkWidget *ui;
+ 
++  /* Both the X11 WM_CLASS and the Wayland xdg_toplevel app_id are derived
++     from g_get_prgname(), which defaults to argv[0] - "gftp-gtk". Desktop
++     shells look up gftp-gtk.desktop, find nothing, and show no icon; the
++     installed files are gftp.desktop and the "gftp" themed icon. Wayland has
++     no per-window pixel icon protocol, so gtk_window_set_icon() cannot
++     compensate there. Name the process after the desktop file instead. */
++  g_set_prgname ("gftp");
++
+   /* We override the read color functions because we are using a GdkColor 
+      structures to store the color. If I put this in lib/config_file.c, then 
+      the core library would be dependant on Gtk+ being present */

@@ -1,0 +1,150 @@
+diff --git a/po/ru.po b/po/ru.po
+index 12e5bb8..3607967 100644
+--- a/po/ru.po
++++ b/po/ru.po
+@@ -2581,6 +2581,145 @@ msgstr ""
+ "\n"
+ 
+ #, c-format
++
++#: lib/protocol_smb.c
++msgid "SMB"
++msgstr "SMB"
++
++#: lib/protocol_smb.c
++msgid "SMB operation timeout (seconds)"
++msgstr "Тайм-аут операций SMB (секунды)"
++
++#: lib/protocol_smb.c
++msgid "Abort SMB operations after this many seconds (0 disables the timeout)"
++msgstr ""
++"Прерывать операции SMB через указанное число секунд (0 отключает тайм-аут)"
++
++#: lib/protocol_smb.c
++msgid "Require SMB signing"
++msgstr "Требовать подпись SMB"
++
++#: lib/protocol_smb.c
++msgid "Require SMB2/SMB3 message signing"
++msgstr "Требовать подпись сообщений SMB2/SMB3"
++
++#: lib/protocol_smb.c
++msgid "Require SMB3 encryption"
++msgstr "Требовать шифрование SMB3"
++
++#: lib/protocol_smb.c
++msgid "Require SMB3 transport encryption"
++msgstr "Требовать шифрование транспорта SMB3"
++
++#: lib/protocol_smb.c
++msgid "Unknown SMB error"
++msgstr "Неизвестная ошибка SMB"
++
++#: lib/protocol_smb.c
++msgid "Could not initialize SMB context"
++msgstr "Не удалось инициализировать контекст SMB"
++
++#: lib/protocol_smb.c
++msgid "Error connecting to %s: Could not initialize SMB context\n"
++msgstr "Ошибка подключения к %s: не удалось инициализировать контекст SMB\n"
++
++#: lib/protocol_smb.c
++msgid "Error parsing %s: %s\n"
++msgstr "Ошибка разбора %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Authentication failed for %s: %s\n"
++msgstr "Ошибка аутентификации для %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid ""
++"If the server requires SMB signing, anonymous and guest sessions cannot be "
++"signed. Supply real credentials, using DOMAIN;user for a domain account.\n"
++msgstr ""
++"Если сервер требует подпись SMB, анонимные и гостевые сеансы подписать "
++"нечем. Укажите реальные учётные данные, а для доменной учётной записи "
++"используйте вид ДОМЕН;пользователь.\n"
++
++#: lib/protocol_smb.c
++msgid "Error connecting to %s: %s\n"
++msgstr "Ошибка подключения к %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error changing to SMB share %s: %s\n"
++msgstr "Ошибка перехода к ресурсу SMB %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error closing SMB file before changing share: %s\n"
++msgstr "Ошибка закрытия файла SMB перед сменой ресурса: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error disconnecting SMB share %s: %s\n"
++msgstr "Ошибка отключения от ресурса SMB %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error restoring SMB share %s: %s\n"
++msgstr "Ошибка восстановления ресурса SMB %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error opening SMB directory %s: %s\n"
++msgstr "Ошибка открытия каталога SMB %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error listing SMB directory %s: %s\n"
++msgstr "Ошибка чтения каталога SMB %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error listing SMB shares: %s\n"
++msgstr "Ошибка получения списка ресурсов SMB: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error opening SMB file %s: %s\n"
++msgstr "Ошибка открытия файла SMB %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error reading SMB file: %s\n"
++msgstr "Ошибка чтения файла SMB: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error writing SMB file: %s\n"
++msgstr "Ошибка записи файла SMB: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error closing SMB file: %s\n"
++msgstr "Ошибка закрытия файла SMB: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error truncating SMB file %s: %s\n"
++msgstr "Ошибка усечения файла SMB %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error creating SMB directory %s: %s\n"
++msgstr "Ошибка создания каталога SMB %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error removing SMB directory %s: %s\n"
++msgstr "Ошибка удаления каталога SMB %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error deleting SMB file %s: %s\n"
++msgstr "Ошибка удаления файла SMB %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error renaming SMB file %s to %s: %s\n"
++msgstr "Ошибка переименования файла SMB %s в %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error stating SMB path %s: %s\n"
++msgstr "Ошибка получения сведений о пути SMB %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error getting size of SMB path %s: %s\n"
++msgstr "Ошибка получения размера пути SMB %s: %s\n"
++
++#: lib/protocol_smb.c
++msgid "Error getting size of SMB file %s: %s\n"
++msgstr "Ошибка получения размера файла SMB %s: %s\n"
++
+ #~ msgid "gFTP Error: Bad bookmarks file name %s\n"
+ #~ msgstr "Ошибка gFTP: Неправильное название файла закладок %s\n"
+ 

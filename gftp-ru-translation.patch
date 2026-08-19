@@ -1,0 +1,838 @@
+--- a/po/ru.po
++++ b/po/ru.po
+@@ -4,15 +4,16 @@
+ # Valek Filippov  <frob@df.ru>, 2001-2002, 2004.
+ # Vitaly Lipatov <lav@altlinux.ru>, 2002, 2003, 2004.
+ # Alexander Orlov <alxorlov@pochta.ru>, 2007.
++# sfs <sfslinux@gmail.com>, 2026.
+ msgid ""
+ msgstr ""
+ "Project-Id-Version: gftp-2.0.19\n"
+ "Report-Msgid-Bugs-To: \n"
+ "POT-Creation-Date: 2026-03-30 05:17+0100\n"
+-"PO-Revision-Date: 2007-03-24 11:17+0300\n"
+-"Last-Translator: Alexander Orlov <alxorlov@pochta.ru>\n"
+-"Language-Team: none\n"
+-"Language: \n"
++"PO-Revision-Date: 2026-08-13 18:05+0300\n"
++"Last-Translator: sfs <sfslinux@gmail.com>\n"
++"Language-Team: Russian <ru@li.org>\n"
++"Language: ru\n"
+ "MIME-Version: 1.0\n"
+ "Content-Type: text/plain; charset=UTF-8\n"
+ "Content-Transfer-Encoding: 8bit\n"
+@@ -145,15 +146,10 @@
+ "хранились открытым текстом."
+ 
+ #: lib/config_file.c:740
+-#, fuzzy
+ msgid ""
+ "gFTP. Warning: Any comments that you add to this file WILL be overwritten. "
+ "If a entry has a (*) in it's comment, you can't change it inside gFTP"
+-msgstr ""
+-"Конфигурационный файл для gFTP. Авторское право (C) 1998-2007 Brian Masney "
+-"<masneyb@gftp.org>. Внимание!: Любые комментарии, которые вы добавите к "
+-"этому файлу, БУДУТ перезаписаны. Если запись содержит (*) в комментарии, вы "
+-"не имеете возможности изменить её содержимое через gFTP"
++msgstr "Конфигурационный файл для gFTP. Авторское право (C) 1998-2007 Brian Masney <masneyb@gftp.org>. Внимание: любые комментарии, которые вы добавите к этому файлу, БУДУТ перезаписаны. Если запись содержит (*) в комментарии, вы не сможете изменить её содержимое через gFTP"
+ 
+ #: lib/config_file.c:1104 lib/protocols.c:378
+ #, c-format
+@@ -291,11 +287,11 @@
+ 
+ #: lib/options.h:75
+ msgid "Colored messages in log window"
+-msgstr ""
++msgstr "Цветные сообщения в окне журнала"
+ 
+ #: lib/options.h:77
+ msgid "May not look good in some themes"
+-msgstr ""
++msgstr "Может плохо выглядеть в некоторых темах"
+ 
+ #: lib/options.h:79
+ msgid "Do one transfer at a time"
+@@ -318,27 +314,24 @@
+ msgstr "Сохранять права на файлы"
+ 
+ #: lib/options.h:90
+-#, fuzzy
+ msgid "Preserve file permissions of transferred files"
+-msgstr "Сохранять права на перемещаемых файлах."
++msgstr "Сохранять права доступа передаваемых файлов"
+ 
+ #: lib/options.h:92
+ msgid "Preserve file time"
+ msgstr "Сохранять время файлов"
+ 
+ #: lib/options.h:95
+-#, fuzzy
+ msgid "Preserve file times of transferred files"
+-msgstr "Сохранять время на перемещаемых файлах."
++msgstr "Сохранять время передаваемых файлов"
+ 
+ #: lib/options.h:97
+ msgid "Refresh after each file transfer"
+ msgstr "Обновлять после каждой передачи"
+ 
+ #: lib/options.h:100
+-#, fuzzy
+ msgid "Refresh the listbox after each file is transferred"
+-msgstr "Обновлять список файлов после каждой передачи."
++msgstr "Обновлять список файлов после каждой передачи"
+ 
+ #: lib/options.h:102
+ msgid "Sort directories first"
+@@ -448,11 +441,10 @@
+ msgstr "Размер блока передачи:"
+ 
+ #: lib/options.h:154
+-#, fuzzy
+ msgid ""
+ "The block size that is used when transferring files. This should be a "
+ "multiple of 1024."
+-msgstr "Размер блока используемый при предаче файлов. Должен быть кратен 1024."
++msgstr "Размер блока, используемый при передаче файлов. Должен быть кратен 1024."
+ 
+ #: lib/options.h:157
+ msgid "Default Protocol:"
+@@ -464,12 +456,12 @@
+ 
+ #: lib/options.h:161
+ msgid "IP version:"
+-msgstr ""
++msgstr "Версия IP:"
+ 
+ #: lib/options.h:163
+ msgid ""
+ "IP version to use. (ipv4/ipv6 or leave empty to use whatever is available)"
+-msgstr ""
++msgstr "Используемая версия IP (ipv4/ipv6; оставьте пустым, чтобы использовать любую доступную)"
+ 
+ #: lib/options.h:167
+ msgid ""
+@@ -692,13 +684,12 @@
+ "можете написать %pu"
+ 
+ #: lib/protocol_ftp.c:74
+-#, fuzzy
+ msgid "Use FTP proxy server"
+-msgstr "Тип прокси-сервера:"
++msgstr "Использовать FTP-прокси-сервер"
+ 
+ #: lib/protocol_ftp.c:77
+ msgid "You must specify a FTP proxy hostname, port and probably other details"
+-msgstr ""
++msgstr "Вы должны указать имя хоста FTP-прокси, порт и, возможно, другие параметры"
+ 
+ #: lib/protocol_ftp.c:79
+ msgid "Passive file transfers"
+@@ -725,19 +716,13 @@
+ msgstr "Передать файлы в текстовом режиме"
+ 
+ #: lib/protocol_ftp.c:87
+-#, fuzzy
+ msgid ""
+ "If you are transferring a text file from Windows to UNIX box or vice versa, "
+ "then you should enable this. Each system represents newlines differently for "
+ "text files. If you are transferring from UNIX to UNIX, then it is safe to "
+ "leave this off. If you are downloading binary data, you will want to disable "
+ "this."
+-msgstr ""
+-"Если вы передаёте текстовый файл из Windows-системы в UNIX-систему или "
+-"наоборот, тогда вам требуется отметить этот пункт. Каждая система "
+-"представляет символы новых строк для текстовых файлов по-разному. Если вы "
+-"передаёте из UNIX в UNIX, тогда лучше снять отметку этого пункта. Если вы "
+-"передаёте двоичные данные, вы обязательно должны отключить этот режим."
++msgstr "Если вы передаёте текстовый файл из Windows-системы в UNIX-систему или наоборот, вам следует включить эту опцию. Каждая система представляет символы перевода строки для текстовых файлов по-разному. Если вы передаёте из UNIX в UNIX, эту опцию можно безопасно отключить. Если вы загружаете двоичные данные, эту опцию следует отключить."
+ 
+ #: lib/protocol_ftp.c:501 lib/protocol_ftp.c:510 lib/protocol_ftp.c:521
+ #: lib/protocol_ftp.c:1384
+@@ -751,9 +736,11 @@
+ msgstr "Отключение от сервера %s\n"
+ 
+ #: lib/protocol_ftp.c:883
+-#, fuzzy, c-format
+ msgid "Invalid response '%s'\n"
+-msgstr "Неправильный отклик EPSV '%s'\n"
++msgstr ""
++"Неправильный ответ '%s'"
++"\n"
++"\n"
+ 
+ #: lib/protocol_ftp.c:1557
+ msgid "total"
+@@ -773,13 +760,13 @@
+ "компиляции. Отменяем соединение.\n"
+ 
+ #: lib/protocol_ftps.c:282
+-#, fuzzy
+ msgid ""
+ "FTPSi (Implicit SSL) Support unavailable since SSL support was not compiled "
+ "in. Aborting connection.\n"
+ msgstr ""
+-"Поддержка FTPS недоступна, так как не была включена поддержка SSL при "
+-"компиляции. Отменяем соединение.\n"
++"Поддержка FTPS (Implicit SSL) недоступна, поскольку поддержка SSL не была включена при компиляции. Прерываем соединение."
++"\n"
++"\n"
+ 
+ #: lib/protocol_http.c:197 lib/protocol_http.c:870
+ #, c-format
+@@ -806,7 +793,7 @@
+ #. unknown
+ #: lib/protocol_http.c:581 lib/protocol_http.c:582
+ msgid "-"
+-msgstr ""
++msgstr "-"
+ 
+ #: lib/protocol_http.c:846 lib/sshv2.c:902
+ msgid "Received wrong response from server, disconnecting\n"
+@@ -1000,6 +987,9 @@
+ #: lib/socket-connect.c:138
+ msgid "Unknown host. Maybe you misspelled it?\n"
+ msgstr ""
++"Неизвестный хост. Возможно, вы ошиблись в его написании?"
++"\n"
++"\n"
+ 
+ #: lib/socket-connect.c:158 lib/socket-connect.c:341
+ #, c-format
+@@ -1007,13 +997,18 @@
+ msgstr "Сбой при создании сокета: %s\n"
+ 
+ #: lib/socket-connect.c:177
+-#, fuzzy, c-format
+ msgid "Cannot create a connection: %s\n"
+-msgstr "Невозможно создать соединение для передачи данных: %s\n"
++msgstr ""
++"Невозможно создать соединение: %s"
++"\n"
++"\n"
+ 
+ #: lib/socket-connect.c:212
+ msgid "FTP Proxy is enabled but no proxy server has been specified\n"
+ msgstr ""
++"FTP-прокси включён, но прокси-сервер не указан"
++"\n"
++"\n"
+ 
+ #: lib/socket-connect.c:248
+ #, c-format
+@@ -1021,9 +1016,11 @@
+ msgstr "Попытка %s:%d\n"
+ 
+ #: lib/socket-connect.c:251
+-#, fuzzy, c-format
+ msgid "Trying %s:%d (%s)\n"
+-msgstr "Попытка %s:%d\n"
++msgstr ""
++"Попытка подключения к %s:%d (%s)"
++"\n"
++"\n"
+ 
+ #: lib/socket-connect.c:284
+ #, c-format
+@@ -1158,23 +1155,22 @@
+ #. SSH_FX_OP_UNSUPPORTED
+ #: lib/sshv2.c:607
+ msgid "Invalid file handle"
+-msgstr ""
++msgstr "Недопустимый дескриптор файла"
+ 
+ #. SSH_FX_INVALID_HANDLE
+ #: lib/sshv2.c:608
+ msgid "Invalid file path"
+-msgstr ""
++msgstr "Недопустимый путь к файлу"
+ 
+ #. SSH_FX_NO_SUCH_PATH
+ #: lib/sshv2.c:609
+ msgid "File already exists"
+-msgstr ""
++msgstr "Файл уже существует"
+ 
+ #. SSH_FX_FILE_ALREADY_EXISTS
+ #: lib/sshv2.c:610
+-#, fuzzy
+ msgid "Write-protected filesystem"
+-msgstr "локальная файловая система"
++msgstr "Файловая система защищена от записи"
+ 
+ #: lib/sshv2.c:624
+ #, c-format
+@@ -1237,9 +1233,11 @@
+ msgstr "%d: Состояние %s\n"
+ 
+ #: lib/sshv2.c:684
+-#, fuzzy, c-format
+ msgid "%d: Rename %s\n"
+-msgstr "%d: Открыть %s\n"
++msgstr ""
++"%d: Переименовать %s"
++"\n"
++"\n"
+ 
+ #: lib/sshv2.c:703
+ #, c-format
+@@ -1340,6 +1338,9 @@
+ #: lib/sslcommon.c:373
+ msgid "Could not initialize SSL Context\n"
+ msgstr ""
++"Не удалось инициализировать контекст SSL"
++"\n"
++"\n"
+ 
+ #: lib/sslcommon.c:380
+ msgid "Error loading default SSL certificates\n"
+@@ -1415,11 +1416,11 @@
+ msgstr "Вам необходимо указать название для закладки."
+ 
+ #: src/gtk/bookmarks.c:368
+-#, fuzzy
+ msgid "Cannot add bookmark because that name already exists\n"
+ msgstr ""
+-"Добавить закладку: невозможно добавить закладку \"%s\"; такое название уже "
+-"есть\n"
++"Невозможно добавить закладку: такое имя уже существует"
++"\n"
++"\n"
+ 
+ #: src/gtk/bookmarks.c:425
+ msgid "New Folder"
+@@ -1459,46 +1460,38 @@
+ #: src/gtk/chmod_dialog.c:132 src/gtk/gtkui_transfer.c:243
+ #: src/gtk/menu-items.c:127 src/gtk/menu-items.c:341 src/gtk/misc-gtk.c:767
+ #: src/gtk/options_dialog.c:721
+-#, fuzzy
+ msgid "_Cancel"
+ msgstr "Отменить"
+ 
+ #: src/gtk/bookmarks.c:570 src/gtk/bookmarks_edit_entry.c:210
+ #: src/gtk/menu-items.c:128 src/gtk/menu-items.c:342
+-#, fuzzy
+ msgid "_Save"
+-msgstr "Сохранить журнал"
++msgstr "_Сохранить"
+ 
+ #: src/gtk/bookmarks.c:683
+-#, fuzzy
+ msgid "New _Folder..."
+ msgstr "Новая папка"
+ 
+ #: src/gtk/bookmarks.c:687
+-#, fuzzy
+ msgid "New _Item..."
+-msgstr "/Файл/Новый _элемент..."
++msgstr "Новый элемент"
+ 
+ #: src/gtk/bookmarks.c:694
+-#, fuzzy
+ msgid "_Delete"
+ msgstr "Удалить"
+ 
+ #: src/gtk/bookmarks.c:698
+-#, fuzzy
+ msgid "_Properties"
+-msgstr "/Файл/_Свойства..."
++msgstr "_Свойства"
+ 
+ #: src/gtk/bookmarks.c:702 src/gtk/view_dialog.c:339
+-#, fuzzy
+ msgid "_Close"
+-msgstr "/Файл/_Закрыть"
++msgstr "_Закрыть"
+ 
+ #. special menuitem that becomes the parent of menu_file, displays "_File"
+ #: src/gtk/bookmarks.c:710
+-#, fuzzy
+ msgid "_File"
+-msgstr "/_Файл"
++msgstr "_Файл"
+ 
+ #. empty path - it can only be the root node
+ #: src/gtk/bookmarks.c:856
+@@ -1507,7 +1500,7 @@
+ 
+ #: src/gtk/bookmarks_edit_entry.c:169
+ msgid "A bookmark with that description already exists."
+-msgstr ""
++msgstr "Закладка с таким описанием уже существует."
+ 
+ #: src/gtk/bookmarks_edit_entry.c:206
+ msgid "Edit Entry"
+@@ -1563,7 +1556,6 @@
+ 
+ #: src/gtk/chmod_dialog.c:135 src/gtk/gtkui_transfer.c:245
+ #: src/gtk/misc-gtk.c:730 src/gtk/misc-gtk.c:745 src/gtk/options_dialog.c:723
+-#, fuzzy
+ msgid "_OK"
+ msgstr "OK"
+ 
+@@ -1650,10 +1642,16 @@
+ #: src/gtk/gftp-gtk.c:194
+ msgid "-- Colors enabled\n"
+ msgstr ""
++"-- Цвета включены"
++"\n"
++"\n"
+ 
+ #: src/gtk/gftp-gtk.c:194
+ msgid "-- Colors disabled\n"
+ msgstr ""
++"-- Цвета отключены"
++"\n"
++"\n"
+ 
+ #: src/gtk/gftp-gtk.c:244 src/gtk/gftp-gtk.c:260
+ msgid "Open Location"
+@@ -1665,255 +1663,208 @@
+ 
+ #. name                    stock_id               "label"                  accel             tooltip  callback
+ #: src/gtk/gftp-gtk.c:440
+-#, fuzzy
+ msgid "g_FTP"
+-msgstr "/_FTP"
++msgstr "g_FTP"
+ 
+ #: src/gtk/gftp-gtk.c:441
+-#, fuzzy
+ msgid "_Preferences..."
+-msgstr "/Файл/_Свойства..."
++msgstr "_Настройки..."
+ 
+ #: src/gtk/gftp-gtk.c:442
+-#, fuzzy
+ msgid "_Quit"
+-msgstr "/FTP/_Выйти"
++msgstr "_Выйти"
+ 
+ #: src/gtk/gftp-gtk.c:444
+-#, fuzzy
+ msgid "_Local"
+-msgstr "/_Локально"
++msgstr "_Локально"
+ 
+ #: src/gtk/gftp-gtk.c:445 src/gtk/gftp-gtk.c:465
+-#, fuzzy
+ msgid "_Open Location..."
+ msgstr "Открыть адрес"
+ 
+ #: src/gtk/gftp-gtk.c:446 src/gtk/gftp-gtk.c:466
+-#, fuzzy
+ msgid "D_isconnect"
+-msgstr "/Локально/О_тсоединиться"
++msgstr "О_тсоединиться"
+ 
+ #: src/gtk/gftp-gtk.c:447 src/gtk/gftp-gtk.c:467
+-#, fuzzy
+ msgid "Change _Filespec"
+ msgstr "Изменить фильтр отбора файлов"
+ 
+ #: src/gtk/gftp-gtk.c:448 src/gtk/gftp-gtk.c:468
+-#, fuzzy
+ msgid "_Show selected"
+-msgstr "/Локально/_Показать выделенное"
++msgstr "_Показать выделенное"
+ 
+ #: src/gtk/gftp-gtk.c:449 src/gtk/gftp-gtk.c:469
+ msgid "Navigate _Up"
+-msgstr ""
++msgstr "Перейти _вверх"
+ 
+ #: src/gtk/gftp-gtk.c:450 src/gtk/gftp-gtk.c:470
+-#, fuzzy
+ msgid "Select _All"
+ msgstr "Выделить всё"
+ 
+ #: src/gtk/gftp-gtk.c:451 src/gtk/gftp-gtk.c:471
+-#, fuzzy
+ msgid "Select All Files"
+-msgstr "/Локально/Выделить все файлы"
++msgstr "Выделить все файлы"
+ 
+ #: src/gtk/gftp-gtk.c:452 src/gtk/gftp-gtk.c:472 src/gtk/gtkui_transfer.c:450
+ msgid "Deselect All"
+ msgstr "Снять выделение"
+ 
+ #: src/gtk/gftp-gtk.c:453 src/gtk/gftp-gtk.c:473
+-#, fuzzy
+ msgid "Save Directory Listing..."
+ msgstr "Сохранить перечень файлов в каталоге"
+ 
+ #: src/gtk/gftp-gtk.c:454 src/gtk/gftp-gtk.c:474
+-#, fuzzy
+ msgid "Send SITE Command.."
+-msgstr "/Локально/Послать команду SITE"
++msgstr "Послать команду SITE"
+ 
+ #: src/gtk/gftp-gtk.c:455 src/gtk/gftp-gtk.c:475
+-#, fuzzy
+ msgid "_Change Directory"
+-msgstr "/Локально/Изменить _каталог"
++msgstr "Изменить _каталог"
+ 
+ #: src/gtk/gftp-gtk.c:456 src/gtk/gftp-gtk.c:476
+-#, fuzzy
+ msgid "_Permissions..."
+-msgstr "/Локально/Изменить _права"
++msgstr "Изменить _права..."
+ 
+ #: src/gtk/gftp-gtk.c:457 src/gtk/gftp-gtk.c:477
+-#, fuzzy
+ msgid "_New Folder..."
+ msgstr "Новая папка"
+ 
+ #: src/gtk/gftp-gtk.c:458 src/gtk/gftp-gtk.c:478
+-#, fuzzy
+ msgid "Rena_me..."
+ msgstr "Переименовать"
+ 
+ #: src/gtk/gftp-gtk.c:459 src/gtk/gftp-gtk.c:479
+-#, fuzzy
+ msgid "_Delete..."
+ msgstr "Удалить"
+ 
+ #: src/gtk/gftp-gtk.c:460 src/gtk/gftp-gtk.c:480
+-#, fuzzy
+ msgid "_Edit..."
+ msgstr "Правка"
+ 
+ #: src/gtk/gftp-gtk.c:461 src/gtk/gftp-gtk.c:481
+-#, fuzzy
+ msgid "_View..."
+-msgstr "/Локально/_Просмотреть"
++msgstr "Просмотр"
+ 
+ #: src/gtk/gftp-gtk.c:462 src/gtk/gftp-gtk.c:482
+-#, fuzzy
+ msgid "_Refresh"
+ msgstr "Обновить"
+ 
+ #: src/gtk/gftp-gtk.c:464
+-#, fuzzy
+ msgid "_Remote"
+-msgstr "/_Удалённо"
++msgstr "_Удалённо"
+ 
+ #: src/gtk/gftp-gtk.c:484
+-#, fuzzy
+ msgid "_Bookmarks"
+-msgstr "/Закладки"
++msgstr "Закладки"
+ 
+ #: src/gtk/gftp-gtk.c:485
+-#, fuzzy
+ msgid "Add _Bookmark"
+ msgstr "Добавить закладку"
+ 
+ #: src/gtk/gftp-gtk.c:488
+-#, fuzzy
+ msgid "_Transfer"
+-msgstr "/_Передача"
++msgstr "_Передача"
+ 
+ #: src/gtk/gftp-gtk.c:489
+ msgid "_Start"
+-msgstr ""
++msgstr "_Начать"
+ 
+ #: src/gtk/gftp-gtk.c:490
+ msgid "St_op"
+-msgstr ""
++msgstr "_Остановить"
+ 
+ #: src/gtk/gftp-gtk.c:491
+-#, fuzzy
+ msgid "Skip _Current File"
+-msgstr "/Передача/Пропустить _текущий файл"
++msgstr "Пропустить _текущий файл"
+ 
+ #: src/gtk/gftp-gtk.c:492
+-#, fuzzy
+ msgid "_Remove File"
+-msgstr "/Передача/_Удалить файл"
++msgstr "_Удалить файл"
+ 
+ #: src/gtk/gftp-gtk.c:493
+-#, fuzzy
+ msgid "Move File _Up"
+-msgstr "/Передача/Переместить файл в_верх"
++msgstr "Переместить файл в_верх"
+ 
+ #: src/gtk/gftp-gtk.c:494
+-#, fuzzy
+ msgid "Move File _Down"
+-msgstr "/Передача/Переместить файл в_низ"
++msgstr "Переместить файл в_низ"
+ 
+ #: src/gtk/gftp-gtk.c:495
+-#, fuzzy
+ msgid "_Retrieve Files"
+-msgstr "/Передача/_Получить файлы"
++msgstr "_Получить файлы"
+ 
+ #: src/gtk/gftp-gtk.c:496
+-#, fuzzy
+ msgid "_Put Files"
+-msgstr "/Передача/_Выложить файлы"
++msgstr "_Выложить файлы"
+ 
+ #: src/gtk/gftp-gtk.c:498
+-#, fuzzy
+ msgid "L_og"
+-msgstr "/_Журнал"
++msgstr "_Журнал"
+ 
+ #: src/gtk/gftp-gtk.c:499
+-#, fuzzy
+ msgid "_Clear"
+-msgstr "/Журнал/_Очистить"
++msgstr "_Очистить"
+ 
+ #: src/gtk/gftp-gtk.c:500
+-#, fuzzy
+ msgid "_View"
+ msgstr "Просмотр"
+ 
+ #: src/gtk/gftp-gtk.c:501
+-#, fuzzy
+ msgid "_Save..."
+-msgstr "/Журнал/_Сохранить"
++msgstr "_Сохранить..."
+ 
+ #: src/gtk/gftp-gtk.c:503
+-#, fuzzy
+ msgid "Tool_s"
+-msgstr "/_Инструменты"
++msgstr "_Инструменты"
+ 
+ #: src/gtk/gftp-gtk.c:504
+-#, fuzzy
+ msgid "C_ompare Windows"
+ msgstr "Сравнить окна"
+ 
+ #: src/gtk/gftp-gtk.c:505
+-#, fuzzy
+ msgid "_Clear Cache"
+-msgstr "/Инструменты/_Очистить кэш"
++msgstr "_Очистить кэш"
+ 
+ #: src/gtk/gftp-gtk.c:507
+-#, fuzzy
+ msgid "_Help"
+-msgstr "/Справка"
++msgstr "_Справка"
+ 
+ #: src/gtk/gftp-gtk.c:508
+-#, fuzzy
+ msgid "_About"
+ msgstr "О программе"
+ 
+ #: src/gtk/gftp-gtk.c:512
+-#, fuzzy
+ msgid "Colored messages"
+-msgstr "Неверное сообщение"
++msgstr "Цветные сообщения"
+ 
+ #: src/gtk/gftp-gtk.c:517
+-#, fuzzy
+ msgid "Window _1"
+-msgstr "/FTP/Окно _1"
++msgstr "Окно _1"
+ 
+ #: src/gtk/gftp-gtk.c:518
+-#, fuzzy
+ msgid "Window _2"
+-msgstr "/FTP/Окно _2"
++msgstr "Окно _2"
+ 
+ #: src/gtk/gftp-gtk.c:521
+-#, fuzzy
+ msgid "_Ascii"
+-msgstr "/FTP/_Текстовые данные"
++msgstr "_Текстовые данные"
+ 
+ #: src/gtk/gftp-gtk.c:522
+-#, fuzzy
+ msgid "_Binary"
+-msgstr "/FTP/_Двоичные данные"
++msgstr "_Двоичные данные"
+ 
+ #: src/gtk/gftp-gtk.c:787
+-#, fuzzy
+ msgid "_Host:"
+-msgstr "_Сервер: "
++msgstr "_Сервер:"
+ 
+ #: src/gtk/gftp-gtk.c:827
+-#, fuzzy
+ msgid "_User:"
+-msgstr "_Пользователь: "
++msgstr "_Пользователь:"
+ 
+ #: src/gtk/gftp-gtk.c:847
+-#, fuzzy
+ msgid "Pass:"
+-msgstr "Пароль: "
++msgstr "Пароль:"
+ 
+ #: src/gtk/gftp-gtk.c:906
+ msgid "Command: "
+@@ -1924,9 +1875,11 @@
+ msgstr "Ошибка: вы должны указать сервер для подключения\n"
+ 
+ #: src/gtk/gftp-gtk.c:1469
+-#, fuzzy
+ msgid "** Connect to remote server on startup is enabled\n"
+-msgstr "Подключаться к удалённому каталогу при запуске"
++msgstr ""
++"** Включено подключение к удалённому серверу при запуске"
++"\n"
++"\n"
+ 
+ #: src/gtk/gtkui.c:61
+ msgid "Refresh"
+@@ -1961,9 +1914,11 @@
+ msgstr "Введите название для создаваемого каталога:"
+ 
+ #: src/gtk/gtkui.c:367
+-#, fuzzy
+ msgid "Operation canceled...a file with the new name already exists\n"
+-msgstr "Действие отменено... вы должны ввести строку\n"
++msgstr ""
++"Операция отменена... файл с новым именем уже существует"
++"\n"
++"\n"
+ 
+ #: src/gtk/gtkui.c:387 src/gtk/gtkui.c:396 src/gtk/misc-gtk.c:742
+ msgid "Rename"
+@@ -2105,7 +2060,7 @@
+ 
+ #: src/gtk/menu-items.c:393
+ msgid "A multithreaded ftp client"
+-msgstr ""
++msgstr "Многопоточный ftp-клиент"
+ 
+ #: src/gtk/menu-items.c:469
+ msgid "Compare Windows"
+@@ -2116,9 +2071,8 @@
+ msgstr "Удалить"
+ 
+ #: src/gtk/menu-items.c:554
+-#, fuzzy, c-format
+ msgid "Are you sure you want to delete the %ld selected item(s)"
+-msgstr "Вы уверены, что хотите удалить эти %ld каталог(ов)?"
++msgstr "Вы действительно хотите удалить выбранные %ld объект(ов)?"
+ 
+ #: src/gtk/menu-items.c:556
+ msgid "Delete Files/Directories"
+@@ -2139,17 +2093,17 @@
+ #: src/gtk/misc-gtk.c:331
+ #, c-format
+ msgid " [ %d Files (%s) ] "
+-msgstr ""
++msgstr " [ %d файл(ов) (%s) ] "
+ 
+ #: src/gtk/misc-gtk.c:334
+ #, c-format
+ msgid " [ %d Dirs ] "
+-msgstr ""
++msgstr " [ %d каталог(ов) ] "
+ 
+ #: src/gtk/misc-gtk.c:337
+ #, c-format
+ msgid " [ %d Links ] "
+-msgstr ""
++msgstr " [ %d ссылок ] "
+ 
+ #: src/gtk/misc-gtk.c:357
+ msgid "All Files"
+@@ -2190,7 +2144,7 @@
+ 
+ #: src/gtk/misc-gtk.c:733
+ msgid "C_reate"
+-msgstr ""
++msgstr "_Создать"
+ 
+ #: src/gtk/misc-gtk.c:736
+ msgid "Change"
+@@ -2205,9 +2159,8 @@
+ msgstr "Ход работы"
+ 
+ #: src/gtk/transfer.c:181
+-#, fuzzy
+ msgid "Remote path"
+-msgstr "/Удалённо/sep"
++msgstr "Удалённый путь"
+ 
+ #: src/gtk/transfer.c:248
+ msgid "There are no file transfers selected\n"
+@@ -2319,19 +2272,26 @@
+ msgstr "Правка"
+ 
+ #: src/gtk/view_dialog.c:55
+-#, fuzzy, c-format
+ msgid "View directory: %s %s\n"
+-msgstr "%d: Создать каталог %s\n"
++msgstr ""
++"Просмотр каталога: %s %s"
++"\n"
++"\n"
+ 
+ #: src/gtk/view_dialog.c:58
+ #, c-format
+ msgid "Couldn't execute command: %s\n"
+ msgstr ""
++"Не удалось выполнить команду: %s"
++"\n"
++"\n"
+ 
+ #: src/gtk/view_dialog.c:63
+-#, fuzzy, c-format
+ msgid "View: %s is a remote directory. Cannot view it.\n"
+-msgstr "Просмотр: %s -- это каталог. Его невозможно просмотреть.\n"
++msgstr ""
++"Просмотр: %s — это удалённый каталог. Его невозможно просмотреть."
++"\n"
++"\n"
+ 
+ #: src/gtk/view_dialog.c:68
+ #, c-format
+@@ -2612,13 +2572,13 @@
+ msgstr "Невозможно выкачать %s c %s\n"
+ 
+ #: src/uicommon/gftpui.c:1589
+-#, fuzzy, c-format
+ msgid ""
+ "There were %d files or directories that could not be transferred. Check the "
+ "log for which items were not properly transferred.\n"
+ msgstr ""
+-"%d файл(ов) или каталог(ов) не могут быть переданы. Проверьте журнал чтобы "
+-"узнать, какие элементы не были переданы."
++"Не удалось передать %d файл(ов) или каталог(ов). Проверьте журнал, чтобы узнать, какие элементы не были переданы."
++"\n"
++"\n"
+ 
+ #, c-format
+ #~ msgid "gFTP Error: Bad bookmarks file name %s\n"
+@@ -3064,3 +3024,4 @@
+ 
+ #~ msgid "Apply"
+ #~ msgstr "Применить"
++
+
+--- a/docs/gftp.desktop
++++ b/docs/gftp.desktop
+@@ -1,8 +1,11 @@
+ [Desktop Entry]
+ Name=gFTP
++Name[ru]=gFTP
+ Comment=Download and upload files using multiple file transfer protocols
+ Comment[fr]=Télécharge des fichiers en utilisant le protocole FTP
++Comment[ru]=Скачивание и загрузка файлов по нескольким протоколам передачи файлов
+ GenericName=gFTP
++GenericName[ru]=FTP-клиент
+ Exec=gftp
+ Terminal=false
+ Type=Application

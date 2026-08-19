@@ -1,0 +1,35 @@
+pkgbase = gftp-smb-git
+	pkgdesc = Free multithreaded file transfer client, with an SMB/CIFS backend and an updated Russian translation
+	pkgver = 2.9.1b.r53.gf64d27b
+	pkgrel = 1
+	url = https://www.gftp.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	depends = glibc
+	depends = gtk3
+	depends = libsmb2
+	depends = openssl
+	depends = readline
+	provides = gftp=2.9.1b.r53.gf64d27b
+	provides = gftp-git=2.9.1b.r53.gf64d27b
+	conflicts = gftp
+	conflicts = gftp-git
+	source = git+https://github.com/masneyb/gftp.git
+	source = gftp-ru-translation.patch
+	source = gftp-cifs.patch
+	source = gftp-wayland-icon.patch
+	source = gftp-smb-ru.patch
+	source = README.ru.md
+	source = README.md
+	sha256sums = SKIP
+	sha256sums = 5b957f66ccd1d612d6c99dc343dc5ebec919b32009185e24aa58a6db48d933b4
+	sha256sums = c023db3bc194760c3282bc2047837be13923d937bb04c72d89d8fa75ccb6dcc7
+	sha256sums = 436e43a77508b7205ef195465061b2492b9b66879c427bf9721885c69620455f
+	sha256sums = 50be56e1831810921775404a85797a7621b3472bd60b01ea5595cc1e51fc52c6
+	sha256sums = 022236af1ba0a3f9e40066b640d8e8b7288355d6ba155f24229107b104a1fdbf
+	sha256sums = 9b1aa7914212e65de1fe8664a586953bce7ee14eedb6b4b9d7ed4b9a46f25eb6
+
+pkgname = gftp-smb-git

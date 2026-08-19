@@ -1,0 +1,1587 @@
+diff --git a/README.md b/README.md
+index 3ef18dd..afc287c 100644
+--- a/README.md
++++ b/README.md
+@@ -18,6 +18,7 @@ The gFTP file transfer client. http://www.gftp.org
+   - FTPSi (ftpsi://) (Implicit TLS, default port: 990)
+   - SSH2 SFTP (ssh2://) - requires OpenSSH client: `ssh`
+   - FSP (fsp://) (UDP File Service Protocol)
++  - SMB/CIFS (smb://) (SMB2/SMB3 only, requires libsmb2)
+ 
+ 
+ ## How do I install gFTP?
+diff --git a/lib/gftp.h b/lib/gftp.h
+index 439a65e..6d42933 100644
+--- a/lib/gftp.h
++++ b/lib/gftp.h
+@@ -710,6 +710,9 @@ time_t parse_time (char *str, char **endpos);
+ #define GFTP_PROTOCOL_BOOKMARK    5
+ #define GFTP_PROTOCOL_HTTP        6
+ #define GFTP_PROTOCOL_HTTPS       7
++#ifdef USE_SMB
++#define GFTP_PROTOCOL_SMB        8
++#endif
+ 
+ #define GFTP_IS_CONNECTED(request) ((request) != NULL && \
+                                              ((request)->datafd > 0 || \
+@@ -737,6 +740,11 @@ void http_register_module  (void);
+ int https_init             (gftp_request * request);
+ void https_register_module (void);
+ 
++#ifdef USE_SMB
++int smb_init (gftp_request * request);
++void smb_register_module (void);
++#endif
++
+ /* sshv2.c */
+ int sshv2_init (gftp_request * request);
+ void sshv2_register_module (void);
+diff --git a/lib/meson.build b/lib/meson.build
+index e58e60c..ef369a6 100644
+--- a/lib/meson.build
++++ b/lib/meson.build
+@@ -11,6 +11,7 @@ sources = [
+     'protocol_localfs.c',
+     'protocol_http.c',
+     'protocol_https.c',
++    'protocol_smb.c',
+     'pty.c',
+     'sshv2.c',
+     'sslcommon.c',
+@@ -25,6 +26,9 @@ libgftp_deps = [glib, pthread]
+ if get_option('ssl') and ssl.found()
+     libgftp_deps += ssl
+ endif
++if get_option('smb') and smb2.found()
++    libgftp_deps += smb2
++endif
+ if have_gettext
+     libgftp_deps += gftp_intl_dep
+ endif
+diff --git a/lib/options.h b/lib/options.h
+index 58421d2..9eec810 100644
+--- a/lib/options.h
++++ b/lib/options.h
+@@ -275,6 +275,9 @@ supported_gftp_protocols gftp_protocols[] =
+   { "HTTP",  http_init,  http_register_module,  "http",   80, 0, 1 }, /* hidden */
+   { "HTTPS", https_init, https_register_module, "https", 443, 0, 1 }, /* hidden */
+ 
++#ifdef USE_SMB
++  { "SMB", smb_init, smb_register_module, "smb", 445, 1, 1 },
++#endif
+   { NULL, NULL, NULL, NULL, 0, 0, 0 }
+ };
+ 
+diff --git a/lib/protocol_smb.c b/lib/protocol_smb.c
+new file mode 100644
+index 0000000..697f32e
+--- /dev/null
++++ b/lib/protocol_smb.c
+@@ -0,0 +1,1469 @@
++#include "gftp.h"
++
++#ifdef USE_SMB
++
++#include <errno.h>
++#include <poll.h>
++#include <smb2/smb2.h>
++#include <smb2/libsmb2.h>
++#include <smb2/libsmb2-raw.h>
++#include <smb2/libsmb2-share-enum.h>
++
++typedef struct {
++  struct smb2_context *smb2;
++  struct smb2_url *url;
++  char *share;
++  char *cur_dir;
++  struct smb2dir *dir;
++  struct srvsvc_NetrShareEnum_rep *share_enum_reply;
++  uint32_t share_enum_index;
++  struct smb2fh *fh;
++  off_t offset;
++} smb_protocol_data;
++
++static GMutex smb_ctx_mutex;
++
++static gftp_config_vars config_vars[] =
++{
++  {"", N_("SMB"), gftp_option_type_notebook, NULL, NULL,
++   GFTP_CVARS_FLAGS_SHOW_BOOKMARK, NULL, GFTP_PORT_GTK, NULL},
++
++  /* Input-type options must precede the checkboxes. Only the checkbox printer
++     starts a fresh GtkTable (options_dialog.c, _print_option_type_checkbox);
++     _gen_input_widget() attaches into whatever table is current, so an int or
++     text option listed after a checkbox lands in a cell the checkbox already
++     occupies and the two are drawn on top of each other. */
++  {"smb_timeout_seconds", N_("SMB operation timeout (seconds)"),
++   gftp_option_type_int, GINT_TO_POINTER (0), NULL,
++   GFTP_CVARS_FLAGS_SHOW_BOOKMARK,
++   N_("Abort SMB operations after this many seconds (0 disables the timeout)"),
++   GFTP_PORT_ALL, NULL},
++  {"smb_require_signing", N_("Require SMB signing"),
++   gftp_option_type_checkbox, GINT_TO_POINTER (0), NULL,
++   GFTP_CVARS_FLAGS_SHOW_BOOKMARK,
++   N_("Require SMB2/SMB3 message signing"), GFTP_PORT_ALL, NULL},
++  {"smb_require_encryption", N_("Require SMB3 encryption"),
++   gftp_option_type_checkbox, GINT_TO_POINTER (0), NULL,
++   GFTP_CVARS_FLAGS_SHOW_BOOKMARK,
++   N_("Require SMB3 transport encryption"), GFTP_PORT_ALL, NULL},
++  {NULL, NULL, 0, NULL, NULL, 0, NULL, 0, NULL}
++};
++
++int smb_connect (gftp_request * request)
++{
++  if (request->datafd > 0)
++    return (0);
++
++  smb_protocol_data *spd = request->protocol_data;
++  struct smb2_url *parsed_url;
++  const char *directory, *path, *component_end, *error;
++  char *server, *url, *share, *username, *user, *separator;
++  intptr_t require_encryption, require_signing, timeout_seconds;
++  int auth_failure, ret, result;
++
++  g_return_val_if_fail (request->hostname != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++
++  if (request->port == 0 || request->port == 445)
++    server = g_strdup (request->hostname);
++  else
++    server = g_strdup_printf ("%s:%u", request->hostname, request->port);
++
++  directory = request->directory != NULL ? request->directory : "";
++  while (*directory == '/')
++    directory++;
++
++  component_end = strchr (directory, '/');
++  if (*directory == '\0')
++    {
++      share = g_strdup ("IPC$");
++      path = "";
++    }
++  else
++    {
++      if (component_end == NULL)
++        {
++          share = g_strdup (directory);
++          path = "";
++        }
++      else
++        {
++          share = g_strndup (directory, component_end - directory);
++          path = component_end + 1;
++          while (*path == '/')
++            path++;
++        }
++    }
++
++  url = g_strdup_printf ("smb://%s/%s/%s", server, share, path);
++
++  g_mutex_lock (&smb_ctx_mutex);
++  spd->smb2 = smb2_init_context ();
++  g_mutex_unlock (&smb_ctx_mutex);
++  if (spd->smb2 == NULL)
++    {
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error connecting to %s: Could not initialize SMB context\n"),
++                                 url);
++      g_free (url);
++      g_free (share);
++      g_free (server);
++      return (GFTP_ERETRYABLE);
++    }
++
++  parsed_url = smb2_parse_url (spd->smb2, url);
++  if (parsed_url == NULL)
++    {
++      error = smb2_get_error (spd->smb2);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error parsing %s: %s\n"), url,
++                                 error != NULL ? error : _("Unknown SMB error"));
++      g_mutex_lock (&smb_ctx_mutex);
++      smb2_destroy_context (spd->smb2);
++      g_mutex_unlock (&smb_ctx_mutex);
++      spd->smb2 = NULL;
++      g_free (url);
++      g_free (share);
++      g_free (server);
++      return (GFTP_EFATAL);
++    }
++
++  username = g_strdup (request->username != NULL ? request->username : "");
++  separator = strchr (username, ';');
++  if (separator != NULL)
++    {
++      *separator = '\0';
++      user = separator + 1;
++      smb2_set_domain (spd->smb2, username);
++    }
++  else
++    user = username;
++
++  smb2_set_user (spd->smb2, user);
++  smb2_set_password (spd->smb2,
++                     request->password != NULL ? request->password : "");
++
++  gftp_lookup_request_option (request, "smb_require_signing",
++                              &require_signing);
++  gftp_lookup_request_option (request, "smb_require_encryption",
++                              &require_encryption);
++  gftp_lookup_request_option (request, "smb_timeout_seconds",
++                              &timeout_seconds);
++  smb2_set_sign (spd->smb2, (int) require_signing);
++  smb2_set_seal (spd->smb2, (int) require_encryption);
++  smb2_set_timeout (spd->smb2, (int) timeout_seconds);
++
++  ret = smb2_connect_share (spd->smb2, server, share, user);
++  if (ret != 0)
++    {
++      error = smb2_get_error (spd->smb2);
++      auth_failure = (ret == -EACCES || ret == -EPERM) &&
++                     (error == NULL || strstr (error, "Socket connect failed") == NULL);
++      if (auth_failure)
++        {
++          request->logging_function (gftp_logging_error, request,
++                                     _("Authentication failed for %s: %s\n"), url,
++                                     error != NULL ? error : _("Unknown SMB error"));
++          /*
++           * libsmb2 closes the context before reporting a session-setup
++           * failure, so a follow-up read on the closed socket overwrites the
++           * real cause with "Read from socket failed, errno:9". The detail
++           * above is therefore often useless; state the usual cause instead.
++           */
++          request->logging_function (gftp_logging_error, request,
++                                     _("If the server requires SMB signing, anonymous and guest sessions cannot be signed. Supply real credentials, using DOMAIN;user for a domain account.\n"));
++        }
++      else
++        request->logging_function (gftp_logging_error, request,
++                                   _("Error connecting to %s: %s\n"), url,
++                                   error != NULL ? error : _("Unknown SMB error"));
++      smb2_destroy_url (parsed_url);
++      g_mutex_lock (&smb_ctx_mutex);
++      smb2_destroy_context (spd->smb2);
++      g_mutex_unlock (&smb_ctx_mutex);
++      spd->smb2 = NULL;
++      request->datafd = -1;
++      g_free (username);
++      g_free (url);
++      g_free (share);
++      g_free (server);
++      result = auth_failure ? GFTP_EFATAL : GFTP_ERETRYABLE;
++      return (result);
++    }
++
++  if (spd->url != NULL)
++    smb2_destroy_url (spd->url);
++  g_free (spd->share);
++  g_free (spd->cur_dir);
++  spd->url = parsed_url;
++  spd->share = g_strdup (share);
++  spd->cur_dir = g_strdup (path);
++  request->datafd = smb2_get_fd (spd->smb2);
++
++  g_free (username);
++  g_free (url);
++  g_free (share);
++  g_free (server);
++  return (0);
++}
++
++void smb_disconnect (gftp_request * request)
++{
++  smb_protocol_data *spd;
++
++  g_return_if_fail (request != NULL);
++
++  request->datafd = -1;
++  spd = request->protocol_data;
++  if (spd == NULL || spd->smb2 == NULL)
++    return;
++
++  smb2_disconnect_share (spd->smb2);
++  g_mutex_lock (&smb_ctx_mutex);
++  smb2_destroy_context (spd->smb2);
++  g_mutex_unlock (&smb_ctx_mutex);
++  spd->smb2 = NULL;
++  spd->dir = NULL;
++  spd->fh = NULL;
++}
++
++void smb_destroy (gftp_request * request)
++{
++  smb_protocol_data *spd;
++
++  g_return_if_fail (request != NULL);
++
++  spd = request->protocol_data;
++  if (spd == NULL)
++    return;
++
++  if (spd->smb2 != NULL)
++    smb_disconnect (request);
++  if (spd->url != NULL)
++    smb2_destroy_url (spd->url);
++  spd->url = NULL;
++  g_free (spd->share);
++  spd->share = NULL;
++  g_free (spd->cur_dir);
++  spd->cur_dir = NULL;
++}
++
++void smb_swap_socks (gftp_request * dest, gftp_request * source)
++{
++  smb_protocol_data *dspd = dest->protocol_data;
++  smb_protocol_data *sspd = source->protocol_data;
++
++  dspd->smb2 = sspd->smb2;
++  sspd->smb2 = NULL;
++  dspd->url = sspd->url;
++  sspd->url = NULL;
++  dspd->share = sspd->share;
++  sspd->share = NULL;
++  dspd->cur_dir = sspd->cur_dir;
++  sspd->cur_dir = NULL;
++}
++
++static int
++smb_error_result (gftp_request * request, int ret)
++{
++  smb_protocol_data *spd = request->protocol_data;
++  const char *error;
++  int error_number;
++
++  /*
++   * Never call smb2_get_nterror(): it is declared in <smb2/libsmb2.h> but is
++   * absent from lib/libsmb2.syms, so builds applying that export list (Arch's
++   * package) fail to link. No exported call reads an NT status back off the
++   * context, so a non-negative ret carries no errno and stays retryable.
++   */
++  if (ret < 0)
++    error_number = -ret;
++  else
++    error_number = 0;
++
++  error = smb2_get_error (spd->smb2);
++  if (ret == -1 || (error != NULL && g_str_has_prefix (error, "Poll failed")))
++    {
++      /*
++       * Known, accepted limitation: Stop/cancel cannot cleanly abort a
++       * libsmb2 sync call. SIGINT/SIGALRM interrupts its poll() with an
++       * outstanding PDU (and may strand sync callback data), so the context
++       * is dead and must never be reused. Prefer smb2_set_timeout() for a
++       * cooperative operation bound.
++       */
++      request->datafd = -1;
++      spd->dir = NULL;
++      spd->share_enum_reply = NULL;
++      spd->share_enum_index = 0;
++      spd->fh = NULL;
++      spd->offset = 0;
++      g_mutex_lock (&smb_ctx_mutex);
++      smb2_destroy_context (spd->smb2);
++      g_mutex_unlock (&smb_ctx_mutex);
++      spd->smb2 = NULL;
++    }
++
++  switch (error_number)
++    {
++    case EACCES:
++    case EPERM:
++    case ENOENT:
++    case ENOTDIR:
++    case EINVAL:
++      return (GFTP_EFATAL);
++    default:
++      return (GFTP_ERETRYABLE);
++    }
++}
++
++static char *
++smb_error_message_with_fallback (smb_protocol_data * spd,
++                                 uint32_t fallback_status)
++{
++  const char *detail, *status_name;
++  uint32_t status;
++
++  detail = smb2_get_error (spd->smb2);
++  status = fallback_status;
++
++  status_name = status != 0 ? nterror_to_str (status) : NULL;
++
++  if (status_name != NULL && *status_name != '\0')
++    {
++      if (detail != NULL && *detail != '\0' &&
++          strstr (detail, status_name) == NULL)
++        return (g_strdup_printf ("%s; %s", status_name, detail));
++      if (detail != NULL && *detail != '\0')
++        return (g_strdup (detail));
++      return (g_strdup (status_name));
++    }
++
++  if (detail != NULL && *detail != '\0')
++    return (g_strdup (detail));
++  return (g_strdup (_("Unknown SMB error")));
++}
++
++static char *
++smb_error_message (smb_protocol_data * spd)
++{
++  return (smb_error_message_with_fallback (spd, 0));
++}
++
++typedef struct {
++  int complete;
++  int status;
++} smb_connect_result;
++
++static void
++smb_connect_callback (struct smb2_context *smb2, int status,
++                      void *command_data, void *private_data)
++{
++  smb_connect_result *result = private_data;
++
++  (void) smb2;
++  (void) command_data;
++  result->status = status;
++  result->complete = 1;
++}
++
++static int
++smb_wait_for_connect (smb_protocol_data * spd, smb_connect_result * result)
++{
++  struct pollfd pfd;
++  int ret, seconds_waited = 0;
++
++  while (!result->complete)
++    {
++      pfd.fd = smb2_get_fd (spd->smb2);
++      if (pfd.fd < 0)
++        return (GFTP_EFATAL);
++      pfd.events = smb2_which_events (spd->smb2);
++      pfd.revents = 0;
++
++      ret = poll (&pfd, 1, 1000);
++      if (ret < 0)
++        return (-errno);
++      if (ret == 0)
++        {
++          if (++seconds_waited >= 15)
++            return (-ETIMEDOUT);
++          continue;
++        }
++      if (smb2_service (spd->smb2, pfd.revents) < 0 &&
++          smb2_get_fd (spd->smb2) >= 0)
++        return (-EIO);
++    }
++
++  return (result->status);
++}
++
++static int
++smb_connect_new_share (smb_protocol_data * spd, const char *server,
++                       const char *share, const char *user)
++{
++  smb_connect_result result = { 0, 0 };
++  int ret;
++
++  ret = smb2_connect_share_async (spd->smb2, server, share, user,
++                                  smb_connect_callback, &result);
++  if (ret < 0)
++    return (ret);
++  return (smb_wait_for_connect (spd, &result));
++}
++
++static int
++smb_finish_disconnect (smb_protocol_data * spd)
++{
++  struct pollfd pfd;
++  int ret, seconds_waited = 0;
++
++  while (smb2_get_fd (spd->smb2) >= 0)
++    {
++      pfd.fd = smb2_get_fd (spd->smb2);
++      pfd.events = smb2_which_events (spd->smb2);
++      pfd.revents = 0;
++
++      ret = poll (&pfd, 1, 1000);
++      if (ret < 0)
++        return (-errno);
++      if (ret == 0)
++        {
++          if (++seconds_waited >= 15)
++            return (-ETIMEDOUT);
++          continue;
++        }
++      if (smb2_service (spd->smb2, pfd.revents) < 0 &&
++          smb2_get_fd (spd->smb2) >= 0)
++        return (-EIO);
++    }
++
++  return (0);
++}
++
++static int
++smb_probe_share (gftp_request * request, const char *server,
++                 const char *share, const char *user, char **error_message)
++{
++  struct smb2_context *probe;
++  const char *separator;
++  char *domain;
++  int ret;
++
++  g_mutex_lock (&smb_ctx_mutex);
++  probe = smb2_init_context ();
++  g_mutex_unlock (&smb_ctx_mutex);
++  if (probe == NULL)
++    {
++      *error_message = g_strdup (_("Could not initialize SMB context"));
++      return (GFTP_ERETRYABLE);
++    }
++
++  separator = request->username != NULL ? strchr (request->username, ';') : NULL;
++  if (separator != NULL)
++    {
++      domain = g_strndup (request->username, separator - request->username);
++      smb2_set_domain (probe, domain);
++      g_free (domain);
++    }
++  smb2_set_user (probe, user);
++  smb2_set_password (probe,
++                     request->password != NULL ? request->password : "");
++
++  ret = smb2_connect_share (probe, server, share, user);
++  if (ret < 0)
++    *error_message = g_strdup (smb2_get_error (probe));
++  else
++    smb2_disconnect_share (probe);
++
++  g_mutex_lock (&smb_ctx_mutex);
++  smb2_destroy_context (probe);
++  g_mutex_unlock (&smb_ctx_mutex);
++
++  if (ret == 0)
++    return (0);
++  if ((ret == -EACCES || ret == -EPERM) &&
++      (*error_message == NULL ||
++       strstr (*error_message, "Socket connect failed") == NULL))
++    return (GFTP_EFATAL);
++  return (GFTP_ERETRYABLE);
++}
++
++static int
++smb_chdir (gftp_request * request, const char *directory)
++{
++  smb_protocol_data *spd;
++  const char *error, *path, *separator, *user;
++  char *candidate, *normalized, *probe_error, *server, *share;
++  int ret, rollback_ret, result;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (directory != NULL, GFTP_EFATAL);
++
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++
++  if (*directory == '/')
++    candidate = g_strdup (directory);
++  else if (request->directory != NULL)
++    candidate = g_strconcat (request->directory, "/", directory, NULL);
++  else
++    candidate = g_strdup_printf ("/%s/%s", spd->share, directory);
++
++  if (*candidate != '/')
++    {
++      char *absolute = g_strconcat ("/", candidate, NULL);
++
++      g_free (candidate);
++      candidate = absolute;
++    }
++
++  normalized = gftp_expand_path (request, candidate);
++  g_free (candidate);
++
++  path = normalized;
++  while (*path == '/')
++    path++;
++
++  separator = strchr (path, '/');
++  if (*path == '\0')
++    {
++      share = g_strdup ("IPC$");
++      path = "";
++    }
++  else if (separator == NULL)
++    {
++      share = g_strdup (path);
++      path = "";
++    }
++  else
++    {
++      share = g_strndup (path, separator - path);
++      path = separator + 1;
++    }
++
++  if (g_ascii_strcasecmp (share, spd->share) == 0)
++    {
++      g_free (spd->cur_dir);
++      spd->cur_dir = g_strdup (path);
++      g_free (request->directory);
++      request->directory = normalized;
++      g_free (share);
++      return (0);
++    }
++
++  if (spd->dir != NULL)
++    {
++      smb2_closedir (spd->smb2, spd->dir);
++      spd->dir = NULL;
++    }
++  if (spd->fh != NULL)
++    {
++      ret = smb2_close (spd->smb2, spd->fh);
++      spd->fh = NULL;
++      if (ret < 0)
++        {
++          error = smb2_get_error (spd->smb2);
++          request->logging_function (gftp_logging_error, request,
++                                     _("Error closing SMB file before changing share: %s\n"),
++                                     error != NULL ? error : _("Unknown SMB error"));
++          g_free (share);
++          g_free (normalized);
++          return (smb_error_result (request, ret));
++        }
++    }
++
++  if (request->port == 0 || request->port == 445)
++    server = g_strdup (request->hostname);
++  else
++    server = g_strdup_printf ("%s:%u", request->hostname, request->port);
++  user = request->username != NULL ? request->username : "";
++  separator = strchr (user, ';');
++  if (separator != NULL)
++    user = separator + 1;
++
++  probe_error = NULL;
++  result = smb_probe_share (request, server, share, user, &probe_error);
++  if (result < 0)
++    {
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error changing to SMB share %s: %s\n"),
++                                 share,
++                                 probe_error != NULL ? probe_error :
++                                 _("Unknown SMB error"));
++      g_free (probe_error);
++      g_free (server);
++      g_free (share);
++      g_free (normalized);
++      return (result);
++    }
++
++  ret = smb2_disconnect_share (spd->smb2);
++  request->datafd = -1;
++  if (ret == 0)
++    ret = smb_finish_disconnect (spd);
++  if (ret < 0)
++    {
++      error = smb2_get_error (spd->smb2);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error disconnecting SMB share %s: %s\n"),
++                                 spd->share,
++                                 error != NULL ? error : _("Unknown SMB error"));
++      result = smb_error_result (request, ret);
++      g_free (server);
++      g_free (share);
++      g_free (normalized);
++      return (result);
++    }
++
++  /*
++   * Mandatory before reconnecting a used context: smb2_disconnect_share()
++   * only closes the socket, and smb2_connect_share_async() resets nothing but
++   * server/share/user. The stale session_id, message_id, tree ids and signing
++   * keys would then ride a brand-new TCP connection, which real servers answer
++   * with RST (ECONNRESET). smb2_close_context() clears exactly those fields.
++   */
++  smb2_close_context (spd->smb2);
++
++  ret = smb_connect_new_share (spd, server, share, user);
++  if (ret < 0)
++    {
++      error = smb2_get_error (spd->smb2);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error changing to SMB share %s: %s\n"),
++                                 share,
++                                 error != NULL ? error : _("Unknown SMB error"));
++      result = smb_error_result (request, ret);
++
++      if (spd->smb2 == NULL)
++        {
++          g_free (server);
++          g_free (share);
++          g_free (normalized);
++          return (result);
++        }
++
++      smb2_close_context (spd->smb2);
++      rollback_ret = smb_connect_new_share (spd, server, spd->share, user);
++      if (rollback_ret == 0)
++        request->datafd = smb2_get_fd (spd->smb2);
++      else
++        {
++          error = smb2_get_error (spd->smb2);
++          request->logging_function (gftp_logging_error, request,
++                                     _("Error restoring SMB share %s: %s\n"),
++                                     spd->share,
++                                     error != NULL ? error : _("Unknown SMB error"));
++        }
++
++      g_free (server);
++      g_free (share);
++      g_free (normalized);
++      return (result);
++    }
++
++  g_free (spd->share);
++  spd->share = share;
++  g_free (spd->cur_dir);
++  spd->cur_dir = g_strdup (path);
++  g_free (request->directory);
++  request->directory = normalized;
++  request->datafd = smb2_get_fd (spd->smb2);
++  g_free (server);
++  return (0);
++}
++
++static int
++smb_list_files (gftp_request * request)
++{
++  smb_protocol_data *spd;
++  char *error;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++
++  if (spd->dir != NULL)
++    {
++      smb2_closedir (spd->smb2, spd->dir);
++      spd->dir = NULL;
++    }
++  if (spd->share_enum_reply != NULL)
++    {
++      smb2_free_data (spd->smb2, spd->share_enum_reply);
++      spd->share_enum_reply = NULL;
++    }
++
++  if (strcmp (spd->share, "IPC$") == 0)
++    {
++      spd->share_enum_index = 0;
++      spd->share_enum_reply = smb2_share_enum_sync (spd->smb2, SHARE_INFO_1);
++      if (spd->share_enum_reply == NULL)
++        {
++          error = smb_error_message (spd);
++          request->logging_function (gftp_logging_error, request,
++                                     _("Error listing SMB shares: %s\n"),
++                                     error);
++          g_free (error);
++          return (smb_error_result (request, 0));
++        }
++
++      return (0);
++    }
++
++  spd->dir = smb2_opendir (spd->smb2, spd->cur_dir);
++  if (spd->dir == NULL)
++    {
++      error = smb_error_message (spd);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error listing SMB directory %s: %s\n"),
++                                 request->directory, error);
++      g_free (error);
++      return (smb_error_result (request, 0));
++    }
++
++  return (0);
++}
++
++static int
++smb_get_next_file (gftp_request * request, gftp_file * fle, int fd)
++{
++  smb_protocol_data *spd;
++  struct smb2dirent *entry;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (fle != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++
++  (void) fd;
++  if (spd->share_enum_reply != NULL)
++    {
++      struct srvsvc_SHARE_INFO_1_CONTAINER *shares;
++      struct srvsvc_SHARE_INFO_1 *share;
++
++      shares = &spd->share_enum_reply->ses.ShareEnum.Level1;
++      if (spd->share_enum_index >= shares->EntriesRead)
++        {
++          smb2_free_data (spd->smb2, spd->share_enum_reply);
++          spd->share_enum_reply = NULL;
++          spd->share_enum_index = 0;
++          return (0);
++        }
++
++      share = &shares->share_info_1[spd->share_enum_index++];
++      fle->file = g_strdup (share->netname);
++      fle->size = 0;
++      fle->datetime = 0;
++      fle->st_mode = S_IFDIR | S_IRUSR | S_IWUSR | S_IXUSR |
++                     S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH;
++      fle->user = g_strdup (_("-"));
++      fle->group = g_strdup (_("-"));
++      return (1);
++    }
++
++  g_return_val_if_fail (spd->dir != NULL, GFTP_EFATAL);
++  do
++    entry = smb2_readdir (spd->smb2, spd->dir);
++  while (entry != NULL &&
++         (strcmp (entry->name, ".") == 0 || strcmp (entry->name, "..") == 0));
++
++  if (entry == NULL)
++    return (0);
++
++  fle->file = g_strdup (entry->name);
++  fle->size = (off_t) entry->st.smb2_size;
++  fle->datetime = (time_t) entry->st.smb2_mtime;
++  if (entry->st.smb2_type == SMB2_TYPE_DIRECTORY)
++    fle->st_mode = S_IFDIR | S_IRUSR | S_IWUSR | S_IXUSR |
++                   S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH;
++  else
++    fle->st_mode = S_IFREG | S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
++  fle->user = g_strdup (_("-"));
++  fle->group = g_strdup (_("-"));
++  return (1);
++}
++
++static int
++smb_stat_filename (gftp_request * request, const char * filename,
++                   mode_t * mode, off_t * filesize)
++{
++  smb_protocol_data *spd;
++  struct smb2_stat_64 st;
++  const char *relative;
++  char *error, *path;
++  int ret;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (filename != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++
++  relative = filename;
++  if (*relative == '/')
++    {
++      while (*relative == '/')
++        relative++;
++      if (g_str_has_prefix (relative, spd->share) &&
++          (relative[strlen (spd->share)] == '/' ||
++           relative[strlen (spd->share)] == '\0'))
++        {
++          relative += strlen (spd->share);
++          while (*relative == '/')
++            relative++;
++        }
++      path = g_strdup (relative);
++    }
++  else if (spd->cur_dir != NULL && *spd->cur_dir != '\0')
++    path = g_build_filename (spd->cur_dir, filename, NULL);
++  else
++    path = g_strdup (filename);
++
++  ret = smb2_stat (spd->smb2, path, &st);
++  if (ret < 0)
++    {
++      error = smb_error_message (spd);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error stating SMB path %s: %s\n"), path,
++                                 error);
++      g_free (error);
++      g_free (path);
++      return (smb_error_result (request, ret));
++    }
++
++  if (st.smb2_type == SMB2_TYPE_DIRECTORY)
++    *mode = S_IFDIR | S_IRUSR | S_IWUSR | S_IXUSR |
++            S_IRGRP | S_IXGRP | S_IROTH | S_IXOTH;
++  else
++    *mode = S_IFREG | S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
++  *filesize = (off_t) st.smb2_size;
++  g_free (path);
++  return (0);
++}
++
++static off_t
++smb_get_file_size (gftp_request * request, const char * filename)
++{
++  smb_protocol_data *spd;
++  struct smb2_stat_64 st;
++  const char *relative;
++  char *error, *path;
++  int ret;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (filename != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++
++  relative = filename;
++  if (*relative == '/')
++    {
++      while (*relative == '/')
++        relative++;
++      if (g_str_has_prefix (relative, spd->share) &&
++          (relative[strlen (spd->share)] == '/' ||
++           relative[strlen (spd->share)] == '\0'))
++        {
++          relative += strlen (spd->share);
++          while (*relative == '/')
++            relative++;
++        }
++      path = g_strdup (relative);
++    }
++  else if (spd->cur_dir != NULL && *spd->cur_dir != '\0')
++    path = g_build_filename (spd->cur_dir, filename, NULL);
++  else
++    path = g_strdup (filename);
++
++  ret = smb2_stat (spd->smb2, path, &st);
++  if (ret < 0)
++    {
++      error = smb_error_message (spd);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error getting size of SMB path %s: %s\n"),
++                                 path, error);
++      g_free (error);
++      g_free (path);
++      return (smb_error_result (request, ret));
++    }
++
++  g_free (path);
++  return ((off_t) st.smb2_size);
++}
++
++static off_t
++smb_get_file (gftp_request * request, const char * filename, off_t startsize)
++{
++  smb_protocol_data *spd;
++  struct smb2_stat_64 st;
++  const char *relative;
++  char *error, *path;
++  int ret;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (filename != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++
++  relative = filename;
++  if (*relative == '/')
++    {
++      while (*relative == '/')
++        relative++;
++      if (g_str_has_prefix (relative, spd->share) &&
++          (relative[strlen (spd->share)] == '/' ||
++           relative[strlen (spd->share)] == '\0'))
++        {
++          relative += strlen (spd->share);
++          while (*relative == '/')
++            relative++;
++        }
++      path = g_strdup (relative);
++    }
++  else if (spd->cur_dir != NULL && *spd->cur_dir != '\0')
++    path = g_build_filename (spd->cur_dir, filename, NULL);
++  else
++    path = g_strdup (filename);
++
++  spd->fh = smb2_open (spd->smb2, path, O_RDONLY);
++  if (spd->fh == NULL)
++    {
++      error = smb_error_message (spd);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error opening SMB file %s: %s\n"), path,
++                                 error);
++      g_free (error);
++      g_free (path);
++      return (smb_error_result (request, 0));
++    }
++
++  ret = smb2_fstat (spd->smb2, spd->fh, &st);
++  if (ret < 0)
++    {
++      error = smb_error_message (spd);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error getting size of SMB file %s: %s\n"),
++                                 path, error);
++      g_free (error);
++      ret = smb_error_result (request, ret);
++      if (spd->smb2 != NULL)
++        smb2_close (spd->smb2, spd->fh);
++      spd->fh = NULL;
++      spd->offset = 0;
++      g_free (path);
++      return (ret);
++    }
++
++  spd->offset = startsize;
++  g_free (path);
++  return ((off_t) st.smb2_size);
++}
++
++static ssize_t
++smb_get_next_file_chunk (gftp_request * request, char * buf, size_t size)
++{
++  smb_protocol_data *spd;
++  const char *error;
++  size_t chunk, max_read;
++  int64_t end;
++  ssize_t ret;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (buf != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->fh != NULL, GFTP_EFATAL);
++
++  end = smb2_lseek (spd->smb2, spd->fh, 0, SEEK_END, NULL);
++  if (end < 0)
++    return (smb_error_result (request, (int) end));
++  if (spd->offset >= end)
++    return (0);
++
++  max_read = smb2_get_max_read_size (spd->smb2);
++  chunk = size < max_read ? size : max_read;
++  ret = smb2_pread (spd->smb2, spd->fh, (uint8_t *) buf, chunk,
++                    spd->offset);
++  if (ret < 0)
++    {
++      error = smb2_get_error (spd->smb2);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error reading SMB file: %s\n"),
++                                 error != NULL ? error : _("Unknown SMB error"));
++      return (smb_error_result (request, (int) ret));
++    }
++
++  spd->offset += ret;
++  return (ret);
++}
++
++static int
++smb_put_file (gftp_request * request, const char * filename, off_t startsize,
++              off_t totalsize)
++{
++  smb_protocol_data *spd;
++  const char *relative;
++  char *error, *path;
++  int flags, ret, result;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (filename != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++
++  (void) totalsize;
++  relative = filename;
++  if (*relative == '/')
++    {
++      while (*relative == '/')
++        relative++;
++      if (g_str_has_prefix (relative, spd->share) &&
++          (relative[strlen (spd->share)] == '/' ||
++           relative[strlen (spd->share)] == '\0'))
++        {
++          relative += strlen (spd->share);
++          while (*relative == '/')
++            relative++;
++        }
++      path = g_strdup (relative);
++    }
++  else if (spd->cur_dir != NULL && *spd->cur_dir != '\0')
++    path = g_build_filename (spd->cur_dir, filename, NULL);
++  else
++    path = g_strdup (filename);
++
++  flags = O_WRONLY | O_CREAT;
++  if (startsize == 0)
++    flags |= O_TRUNC;
++  spd->fh = smb2_open (spd->smb2, path, flags);
++  if (spd->fh == NULL)
++    {
++      error = smb_error_message (spd);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error opening SMB file %s: %s\n"), path,
++                                 error);
++      g_free (error);
++      g_free (path);
++      return (smb_error_result (request, 0));
++    }
++
++  if (startsize == 0)
++    {
++      ret = smb2_ftruncate (spd->smb2, spd->fh, 0);
++      if (ret < 0)
++        {
++          error = smb_error_message (spd);
++          request->logging_function (gftp_logging_error, request,
++                                     _("Error truncating SMB file %s: %s\n"),
++                                     path, error);
++          g_free (error);
++          result = smb_error_result (request, ret);
++          if (spd->smb2 != NULL)
++            smb2_close (spd->smb2, spd->fh);
++          spd->fh = NULL;
++          spd->offset = 0;
++          g_free (path);
++          return (result);
++        }
++    }
++
++  spd->offset = startsize;
++  g_free (path);
++  return (0);
++}
++
++static ssize_t
++smb_put_next_file_chunk (gftp_request * request, char * buf, size_t size)
++{
++  smb_protocol_data *spd;
++  const char *error;
++  size_t chunk, max_write;
++  ssize_t ret;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (buf != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->fh != NULL, GFTP_EFATAL);
++
++  max_write = smb2_get_max_write_size (spd->smb2);
++  chunk = size < max_write ? size : max_write;
++  ret = smb2_pwrite (spd->smb2, spd->fh, (uint8_t *) buf, chunk,
++                     spd->offset);
++  if (ret < 0)
++    {
++      error = smb2_get_error (spd->smb2);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error writing SMB file: %s\n"),
++                                 error != NULL ? error : _("Unknown SMB error"));
++      return (smb_error_result (request, (int) ret));
++    }
++
++  spd->offset += ret;
++  return (ret);
++}
++
++static int
++smb_mkdir (gftp_request * request, const char * directory)
++{
++  smb_protocol_data *spd;
++  const char *relative;
++  char *error, *path;
++  int ret;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (directory != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++
++  relative = directory;
++  if (*relative == '/')
++    {
++      while (*relative == '/')
++        relative++;
++      if (g_str_has_prefix (relative, spd->share) &&
++          (relative[strlen (spd->share)] == '/' ||
++           relative[strlen (spd->share)] == '\0'))
++        {
++          relative += strlen (spd->share);
++          while (*relative == '/')
++            relative++;
++        }
++      path = g_strdup (relative);
++    }
++  else if (spd->cur_dir != NULL && *spd->cur_dir != '\0')
++    path = g_build_filename (spd->cur_dir, directory, NULL);
++  else
++    path = g_strdup (directory);
++
++  ret = smb2_mkdir (spd->smb2, path);
++  if (ret < 0)
++    {
++      error = smb_error_message (spd);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error creating SMB directory %s: %s\n"),
++                                 path, error);
++      g_free (error);
++      g_free (path);
++      return (smb_error_result (request, ret));
++    }
++
++  g_free (path);
++  return (0);
++}
++
++static int
++smb_rmdir (gftp_request * request, const char * directory)
++{
++  smb_protocol_data *spd;
++  struct smb2dir *dir;
++  struct smb2dirent *entry;
++  const char *relative;
++  char *error, *path;
++  int ret;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (directory != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++
++  relative = directory;
++  if (*relative == '/')
++    {
++      while (*relative == '/')
++        relative++;
++      if (g_str_has_prefix (relative, spd->share) &&
++          (relative[strlen (spd->share)] == '/' ||
++           relative[strlen (spd->share)] == '\0'))
++        {
++          relative += strlen (spd->share);
++          while (*relative == '/')
++            relative++;
++        }
++      path = g_strdup (relative);
++    }
++  else if (spd->cur_dir != NULL && *spd->cur_dir != '\0')
++    path = g_build_filename (spd->cur_dir, directory, NULL);
++  else
++    path = g_strdup (directory);
++
++  dir = smb2_opendir (spd->smb2, path);
++  if (dir == NULL)
++    {
++      error = smb_error_message (spd);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error opening SMB directory %s: %s\n"),
++                                 path, error);
++      g_free (error);
++      g_free (path);
++      return (smb_error_result (request, 0));
++    }
++  do
++    entry = smb2_readdir (spd->smb2, dir);
++  while (entry != NULL &&
++         (strcmp (entry->name, ".") == 0 || strcmp (entry->name, "..") == 0));
++  smb2_closedir (spd->smb2, dir);
++  if (entry != NULL)
++    {
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error removing SMB directory %s: %s\n"),
++                                 path, g_strerror (ENOTEMPTY));
++      g_free (path);
++      return (smb_error_result (request, -ENOTEMPTY));
++    }
++
++  ret = smb2_rmdir (spd->smb2, path);
++  if (ret < 0)
++    {
++      error = smb_error_message (spd);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error removing SMB directory %s: %s\n"),
++                                 path, error);
++      g_free (error);
++      g_free (path);
++      return (smb_error_result (request, ret));
++    }
++
++  g_free (path);
++  return (0);
++}
++
++static int
++smb_rmfile (gftp_request * request, const char * filename)
++{
++  smb_protocol_data *spd;
++  const char *relative;
++  char *error, *path;
++  int ret;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (filename != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++
++  relative = filename;
++  if (*relative == '/')
++    {
++      while (*relative == '/')
++        relative++;
++      if (g_str_has_prefix (relative, spd->share) &&
++          (relative[strlen (spd->share)] == '/' ||
++           relative[strlen (spd->share)] == '\0'))
++        {
++          relative += strlen (spd->share);
++          while (*relative == '/')
++            relative++;
++        }
++      path = g_strdup (relative);
++    }
++  else if (spd->cur_dir != NULL && *spd->cur_dir != '\0')
++    path = g_build_filename (spd->cur_dir, filename, NULL);
++  else
++    path = g_strdup (filename);
++
++  ret = smb2_unlink (spd->smb2, path);
++  if (ret < 0)
++    {
++      error = smb_error_message (spd);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error deleting SMB file %s: %s\n"), path,
++                                 error);
++      g_free (error);
++      g_free (path);
++      return (smb_error_result (request, ret));
++    }
++
++  g_free (path);
++  return (0);
++}
++
++static int
++smb_rename (gftp_request * request, const char * oldname,
++            const char * newname)
++{
++  smb_protocol_data *spd;
++  const char *relative;
++  char *error, *newpath, *oldpath;
++  int ret;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (oldname != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (newname != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  g_return_val_if_fail (spd != NULL, GFTP_EFATAL);
++  g_return_val_if_fail (spd->smb2 != NULL, GFTP_EFATAL);
++
++  relative = oldname;
++  if (*relative == '/')
++    {
++      while (*relative == '/')
++        relative++;
++      if (g_str_has_prefix (relative, spd->share) &&
++          (relative[strlen (spd->share)] == '/' ||
++           relative[strlen (spd->share)] == '\0'))
++        {
++          relative += strlen (spd->share);
++          while (*relative == '/')
++            relative++;
++        }
++      oldpath = g_strdup (relative);
++    }
++  else if (spd->cur_dir != NULL && *spd->cur_dir != '\0')
++    oldpath = g_build_filename (spd->cur_dir, oldname, NULL);
++  else
++    oldpath = g_strdup (oldname);
++
++  relative = newname;
++  if (*relative == '/')
++    {
++      while (*relative == '/')
++        relative++;
++      if (g_str_has_prefix (relative, spd->share) &&
++          (relative[strlen (spd->share)] == '/' ||
++           relative[strlen (spd->share)] == '\0'))
++        {
++          relative += strlen (spd->share);
++          while (*relative == '/')
++            relative++;
++        }
++      newpath = g_strdup (relative);
++    }
++  else if (spd->cur_dir != NULL && *spd->cur_dir != '\0')
++    newpath = g_build_filename (spd->cur_dir, newname, NULL);
++  else
++    newpath = g_strdup (newname);
++
++  ret = smb2_rename (spd->smb2, oldpath, newpath);
++  if (ret < 0)
++    {
++      error = smb_error_message_with_fallback (
++        spd, ret == -EEXIST ? SMB2_STATUS_OBJECT_NAME_COLLISION : 0);
++      request->logging_function (gftp_logging_error, request,
++                                 _("Error renaming SMB file %s to %s: %s\n"),
++                                 oldpath, newpath, error);
++      g_free (error);
++      g_free (newpath);
++      g_free (oldpath);
++      return (smb_error_result (request, ret));
++    }
++
++  g_free (newpath);
++  g_free (oldpath);
++  return (0);
++}
++
++static int
++smb_end_transfer (gftp_request * request)
++{
++  smb_protocol_data *spd;
++  const char *error;
++  int ret;
++
++  g_return_val_if_fail (request != NULL, GFTP_EFATAL);
++  spd = request->protocol_data;
++  if (spd != NULL && spd->smb2 != NULL && spd->dir != NULL)
++    {
++      smb2_closedir (spd->smb2, spd->dir);
++      spd->dir = NULL;
++    }
++  if (spd != NULL && spd->smb2 != NULL && spd->share_enum_reply != NULL)
++    {
++      smb2_free_data (spd->smb2, spd->share_enum_reply);
++      spd->share_enum_reply = NULL;
++      spd->share_enum_index = 0;
++    }
++  if (spd != NULL && spd->smb2 != NULL && spd->fh != NULL)
++    {
++      ret = smb2_close (spd->smb2, spd->fh);
++      spd->fh = NULL;
++      spd->offset = 0;
++      if (ret < 0)
++        {
++          error = smb2_get_error (spd->smb2);
++          request->logging_function (gftp_logging_error, request,
++                                     _("Error closing SMB file: %s\n"),
++                                     error != NULL ? error :
++                                     _("Unknown SMB error"));
++          return (smb_error_result (request, ret));
++        }
++    }
++
++  return (0);
++}
++
++void
++smb_register_module (void)
++{
++  gftp_register_config_vars (config_vars);
++}
++
++int smb_init (gftp_request * request)
++{
++  smb_protocol_data *spd;
++
++  request->protonum = GFTP_PROTOCOL_SMB;
++
++  /* lib/gftp.h:702-712 - the #define must equal the gftp_protocols[] index or gFTP segfaults */
++  g_assert (gftp_protocols[GFTP_PROTOCOL_SMB].init == smb_init);
++  g_assert (g_strcmp0 (gftp_protocols[GFTP_PROTOCOL_SMB].url_prefix, "smb") == 0);
++
++  request->url_prefix = gftp_protocols[GFTP_PROTOCOL_SMB].url_prefix;
++
++  request->init = smb_init;
++  request->copy_param_options = NULL;
++  request->read_function = NULL;
++  request->write_function = NULL;
++  request->destroy = smb_destroy;
++  request->connect = smb_connect;
++  request->post_connect = NULL;
++  request->disconnect = smb_disconnect;
++  request->get_file = smb_get_file;
++  request->put_file = smb_put_file;
++  request->transfer_file = NULL;
++  request->get_next_file_chunk = smb_get_next_file_chunk;
++  request->put_next_file_chunk = smb_put_next_file_chunk;
++  request->end_transfer = smb_end_transfer;
++  request->abort_transfer = NULL;
++  request->stat_filename = smb_stat_filename;
++  request->list_files = smb_list_files;
++  request->get_next_file = smb_get_next_file;
++  request->get_file_size = smb_get_file_size;
++  request->chdir = smb_chdir;
++  request->rmdir = smb_rmdir;
++  request->rmfile = smb_rmfile;
++  request->mkdir = smb_mkdir;
++  request->rename = smb_rename;
++  request->chmod = NULL;
++  request->set_file_time = NULL;
++  request->site = NULL;
++  request->parse_url = NULL;
++  request->set_config_options = NULL;
++  request->swap_socks = smb_swap_socks;
++
++  request->always_connected = 0;
++  request->need_hostport = 1;
++  request->need_username = 1;
++  request->need_password = 1;
++  request->use_cache = 0;
++  request->use_local_encoding = 0;
++
++  spd = g_malloc0 (sizeof (*spd));
++  request->protocol_data = spd;
++
++  return (gftp_set_config_options (request));
++}
++
++#endif
++
++typedef int smb_translation_unit_not_empty;
+diff --git a/meson.build b/meson.build
+index 32e8fd9..cfe1d6c 100644
+--- a/meson.build
++++ b/meson.build
+@@ -59,6 +59,12 @@ if get_option('ssl') and ssl.found()
+     libdeps += ssl
+ endif
+ 
++smb2 = dependency('libsmb2', required: get_option('smb'))
++if get_option('smb') and smb2.found()
++    add_project_arguments('-DUSE_SMB="1"', language:'c')
++    libdeps += smb2
++endif
++
+ gtk_dep = []
+ if get_option('gtkport')
+     if get_option('gtk3')
+diff --git a/meson_options.txt b/meson_options.txt
+index ddac332..d1c9cca 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -4,3 +4,4 @@ option('gtkport', type : 'boolean', value : true)
+ option('textport', type: 'boolean', value: true)
+ option('gtkwarnings', type: 'boolean', value: false)
+ option('ssl', type : 'boolean', value : true)
++option('smb', type : 'boolean', value : false)
+diff --git a/po/POTFILES b/po/POTFILES
+index bd2d8d5..3624aa9 100644
+--- a/po/POTFILES
++++ b/po/POTFILES
+@@ -14,6 +14,7 @@ lib/protocol_http.c
+ lib/protocol_http.h
+ lib/protocol_https.c
+ lib/protocol_localfs.c
++lib/protocol_smb.c
+ lib/protocols.c
+ lib/pty.c
+ lib/socket-connect.c
