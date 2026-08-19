@@ -1,9 +1,9 @@
 pkgbase = hmp3-git
 	pkgdesc = Helix MP3 encoder
-	pkgver = 7f7dfc7
+	pkgver = 5.2.4.r0.g7f7dfc7
 	pkgrel = 1
 	url = https://github.com/maikmerten/hmp3
-	arch = x86_64
+	arch = any
 	license = RCSL
 	makedepends = git
 	makedepends = make

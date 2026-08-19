@@ -1,51 +1,57 @@
 pkgname=hmp3-git
-pkgver=7f7dfc7
+pkgver=5.2.4.r0.g7f7dfc7
 pkgrel=1
 pkgdesc="Helix MP3 encoder"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/maikmerten/hmp3"
-license=('RCSL')
+license=('RCSL') #custom
 depends=()
-makedepends=('git' 'make' 'ffmpeg')
+makedepends=('git' 'make')
 source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/hmp3"
-    git describe --always | sed 's/^v//; s/-/./g'
+  cd "${pkgname%-*}"
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g;s/v//g'
 }
 
 build() {
     cd "$srcdir/hmp3"
 
-    # Generate a tiny WAV sample for PGO
-    ffmpeg -f lavfi -i "sine=frequency=1000:duration=1" -ac 2 -ar 44100 "$srcdir/sample.wav" -y
+    BASE_CFLAGS="-O3 -march=native -mtune=native \
+            -falign-functions=32 -falign-loops=32 \
+            -fno-math-errno -fno-trapping-math \
+            -fno-semantic-interposition \
+            -fomit-frame-pointer -fno-plt \
+            -pipe -flto -Wall -Wno-unused \
+            -fstrict-aliasing -fno-rtti -fno-exceptions \
+            -fmerge-all-constants -ffunction-sections \
+            -fdata-sections -fvisibility=hidden"
 
-    # 1) PGO: profile-generate build
-    make clean || true
-    make -j"$(nproc)" \
-        CFLAGS="-O3 -march=native -mtune=native \
-                -funroll-loops -falign-functions=32 -falign-loops=32 \
-                -fno-math-errno -fno-trapping-math \
-                -fno-semantic-interposition -Wall -pipe \
-                -fomit-frame-pointer -fno-plt \
-                -fprofile-generate" \
-        LDFLAGS="-fprofile-generate"
+    BASE_CXXFLAGS="$BASE_CFLAGS"
+    BASE_LDFLAGS="-Wl,--icf=safe -Wl,--gc-sections -Wl,-O3 -flto -fno-plt"
 
-    # 2) PGO: generate profile by encoding sample audio
-    ./builds/release/hmp3 "$srcdir/sample.wav" "$srcdir/sample.mp3"
+    # Clang-only flags
+    CLANG_EXTRA_CFLAGS="-fstrict-vtable-pointers -fno-asynchronous-unwind-tables"
+    CLANG_EXTRA_CXXFLAGS="$CLANG_EXTRA_CFLAGS"
+    CLANG_EXTRA_LDFLAGS="-fuse-ld=lld"
 
-    # 3) PGO: profile-use optimized build
-    make clean || true
-    make -j"$(nproc)" \
-        CFLAGS="-O3 -march=native -mtune=native \
-                -funroll-loops -falign-functions=32 -falign-loops=32 \
-                -fno-math-errno -fno-trapping-math \
-                -fno-semantic-interposition -Wall -pipe \
-                -fomit-frame-pointer -fno-plt \
-                -fprofile-use -fprofile-correction \
-                -flto=thin" \
-        LDFLAGS="-fprofile-use -fprofile-correction -flto=thin"
+    # Detect compiler
+    if command -v clang >/dev/null 2>&1; then
+        export CC=clang
+        export CXX=clang++
+        export CFLAGS="$BASE_CFLAGS $CLANG_EXTRA_CFLAGS"
+        export CXXFLAGS="$BASE_CXXFLAGS $CLANG_EXTRA_CXXFLAGS"
+        export LDFLAGS="$BASE_LDFLAGS $CLANG_EXTRA_LDFLAGS"
+    else
+        export CC=gcc
+        export CXX=g++
+        export CFLAGS="$BASE_CFLAGS"
+        export CXXFLAGS="$BASE_CXXFLAGS"
+        export LDFLAGS="$BASE_LDFLAGS"
+    fi
+
+    make -j"$(nproc)"
 }
 
 package() {
