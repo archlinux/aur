@@ -1,13 +1,13 @@
 pkgbase = shorkfetch
 	pkgdesc = A cute shark-themed Linux fetch tool designed with speed, consistent output and vintage PC CPU & GPU support in mind
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/sharktastica/shorkfetch
 	arch = x86_64
 	arch = i686
 	license = GPLv3
 	depends = gcc
-	source = shorkfetch-0.5.0.tar.gz::https://github.com/sharktastica/shorkfetch/archive/refs/tags/0.5.0.tar.gz
+	source = shorkfetch-0.6.0.tar.gz::https://github.com/sharktastica/shorkfetch/archive/refs/tags/0.6.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = shorkfetch
