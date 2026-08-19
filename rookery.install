@@ -1,0 +1,10 @@
+post_install() {
+    echo "Setting CAP_SYS_RESOURCE capabilities on /usr/bin/rookery..."
+    setcap 'cap_sys_resource+eip' usr/bin/rookery
+}
+
+post_upgrade() {
+    post_install "$1"
+}
+
+# vim:set ts=2 sw=2 et:

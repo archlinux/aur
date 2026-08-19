@@ -1,0 +1,19 @@
+[Unit]
+Description=Rookery Inference Daemon
+After=network.target
+Documentation=https://github.com/lance0/rookery
+
+[Service]
+Type=simple
+Restart=on-failure
+KillSignal=SIGTERM
+RestartSec=5
+TimeoutStopSec=45
+OOMScoreAdjust=-900
+StandardOutput=journal
+StandardError=journal
+Environment=RUST_LOG=rookery=info
+ExecStart=/usr/bin/rookeryd
+
+[Install]
+WantedBy=default.target

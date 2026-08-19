@@ -1,0 +1,5 @@
+[rookery-bin]
+source = "github"
+github = "lance0/rookery"
+use_latest_release = true
+prefix = "v"
