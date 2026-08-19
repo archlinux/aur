@@ -1,28 +1,14 @@
 # Maintainer:
 # Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
-## links
-# https://desmume.org
-# https://github.com/TASVideos/desmume
-
-## options
-: ${_build_level:=1}
-: ${_build_git:=true}
-
-unset _pkgtype
-[[ "${_build_level::1}" == "2" ]] && _pkgtype+="-x64v2"
-[[ "${_build_level::1}" == "3" ]] && _pkgtype+="-x64v3"
-[[ "${_build_level::1}" == "4" ]] && _pkgtype+="-x64v4"
-[[ "${_build_git::1}" == "t" ]] && _pkgtype+="-git"
-
 _pkgname="desmume"
-pkgname="$_pkgname${_pkgtype:-}"
-pkgver=0.9.14.r271.g60714f6
-pkgrel=2
+pkgname="$_pkgname-git"
+pkgver=0.9.14.r422.gb391594
+pkgrel=1
 pkgdesc="Nintendo DS emulator"
 url="https://github.com/TASVideos/desmume"
 license=('GPL-2.0-or-later')
-arch=('aarch64' 'x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4')
+arch=('aarch64' 'x86_64')
 
 depends=(
   'gtk3'
@@ -33,77 +19,27 @@ depends=(
   'zlib'
 )
 makedepends=(
-  'clang'
   'git'
-  'intltool'
-  'lld'
   'mesa'
   'meson'
 )
 
-case "$CARCH" in
-  x86_64_v2)
-    _build_level=2
-    ;;
-  x86_64_v3)
-    _build_level=3
-    ;;
-  x86_64_v4)
-    _build_level=4
-    ;;
-  *) # no changes; may be user defined
-    ;;
-esac
-
-if [ "${_build_git::1}" == "t" ]; then
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
-  _commit="master"
-
-  pkgver() {
-    cd "$_pkgsrc"
-    local _file _hash _ver _rev
-    _file="desmume/src/version.cpp"
-    read -r _hash _ver < <(
-      NL=$(awk '/^#define DESMUME_VERSION_STRING /{n=NR}END{print n}' "$_file")
-
-      git blame -L "$NL,+1" -- "$_file" \
-        | awk '{print $1" "$(NF-5) }' \
-        | sed -E -e 's&"&&g'
-    )
-    _rev=$(git rev-list --count --cherry-pick "$_hash"...HEAD)
-
-    printf "%s.r%s.g%s" "${_ver:?}" "${_rev:?}" "${_hash::7}"
-  }
-fi
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
 _pkgsrc="$_pkgname"
-source=("$_pkgsrc"::"git+$url.git#commit=$_commit")
+source=("$_pkgsrc"::"git+$url.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$_pkgsrc"
+  git tag -f prerelease_0_9_14 60714f6d2281d8817b58969c29ec871cf8dbc4f2
+  git describe --long --tags --abbrev=7 --match='*release_[0-9]*[0-9]' \
+    --exclude='*_*[a-zA-Z]*' --exclude='*-*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/[-_]/./g'
+}
+
 build() {
-  export CC CXX CFLAGS CXXFLAGS LDFLAGS
-  CC=clang
-  CXX=clang++
-
-  local _ldflags=(${LDFLAGS})
-  LDFLAGS="${_ldflags[@]//*fuse-ld*/} -fuse-ld=lld"
-
-  if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
-    local _cflags _cxxflags
-    _cflags=(
-      -march=x86-64-v${_build_level::1} -mtune=generic -O3
-      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CFLAGS}")
-    )
-    CFLAGS="${_cflags[@]}"
-
-    _cxxflags=(
-      -march=x86-64-v${_build_level::1} -mtune=generic -O3
-      $(sed -E -e 's&-(march|mtune)=\S+\b&&g' -e 's&-O[0-9]+\b&&g' <<< "${CXXFLAGS}")
-    )
-    CXXFLAGS="${_cxxflags[@]}"
-  fi
-
   local _pkgsrc="$_pkgsrc/desmume/src/frontend/posix"
 
   local _meson_args=(
