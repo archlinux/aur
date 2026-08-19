@@ -2,8 +2,8 @@
 pkgname=aviutl-package-manager-bin
 _pkgname=apm
 _appname='AviUtl Package Manager'
-pkgver=3.10.0
-_electronversion=34
+pkgver=3.11.0
+_electronversion=39
 pkgrel=1
 pkgdesc="A software that assists in the installation of AviUtl itself and its plugins and scripts.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('aa4bbcd1260ab43640b91a5d125de80d02d3a1bbfe4c02a576bfcf6b1dd04780'
+sha256sums=('d67fc44fd4d6b73184a2681d06f96d8a7ecb23468db03f0d5c84fe30c29287bb'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -48,14 +48,14 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     local _app_dir=$(_get_app_dir)
-    rm -rf "${_app_dir}/resources/app.asar.unpacked/.webpack/renderer/main_window/native_modules/"{mac,win,win-7zip,linux/{arm*,ia32}}
-    ln -sf "/usr/bin/7za" "${_app_dir}/resources/app.asar.unpacked/.webpack/renderer/main_window/native_modules/linux/x64/7za"
+    rm -rf "${_app_dir}/resources/app.asar.unpacked/.webpack/main/native_modules/"{mac,win,win-7zip,linux/{arm*,ia32}}
+    ln -sf "/usr/bin/7za" "${_app_dir}/resources/app.asar.unpacked/.webpack/main/native_modules/linux/x64/7za"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/doc/${_pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
