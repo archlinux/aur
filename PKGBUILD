@@ -29,8 +29,8 @@ pkgver() {
 }
 
 build() {
-  cmake -B build -S ${pkgname%}/smodglow \
-    -DBUILD_TESTING=OFF
+  cmake -B build -S ${pkgname%} \
+    -DBUILD_TESTING=OFF -DBUILD_DECORATION=OFF -DBUILD_EFFECTX11=ON
   cmake --build build
 }
 
