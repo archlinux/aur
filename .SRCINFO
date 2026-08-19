@@ -1,6 +1,6 @@
 pkgbase = r-fpc
 	pkgdesc = Flexible Procedures for Clustering
-	pkgver = 2.2.14
+	pkgver = 2.2.15
 	pkgrel = 1
 	url = https://cran.r-project.org/package=fpc
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = r-fpc
 	optdepends = r-mvtnorm
 	optdepends = r-pdfcluster
 	optdepends = r-tclust
-	source = https://cran.r-project.org/src/contrib/fpc_2.2-14.tar.gz
-	sha256sums = 654e87f31ba98e56bd437a8325dcd52a54309c8f40eda6e0996423dc6d54320a
+	source = https://cran.r-project.org/src/contrib/fpc_2.2-15.tar.gz
+	sha256sums = 4361424308d85d51ea0898d62dea0b7c30a52c01d1062db0714f99f0f83597ca
 
 pkgname = r-fpc
