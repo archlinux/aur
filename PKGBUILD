@@ -1,7 +1,7 @@
 # Maintainer: shorin <2433516202@qq.com>
 pkgname=shorin-niri-git
 pkgver=r209.c821453
-pkgrel=1
+pkgrel=2
 pkgdesc="Shorin Niri Desktop Environment"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-niri"
@@ -37,7 +37,7 @@ optdepends=(
     'strace: System call tracer' 'xdg-terminal-exec: XDG terminal' 'kitty: Terminal emulator' 'firefox: Web browser'
     'fastfetch: System info' 'btop: Resource monitor' 'gdu: Disk usage' 'opencode: Code opener'
     'shorin-contrib-git: Shorin tools' 'linuxqq-clipsync-git: Clipboard sync' 'ddcutil-service: DDC util'
-    'python-pywalfox: Firefox theming' 'waypaper: Wallpaper setter' 'niri-sidebar-git: Sidebar'
+    'python-pywalfox: Firefox theming' 'waypaper: Wallpaper setter' 
     'wl-longshot-git: Screenshot tool' 'shorin-screenrec-menu-git: Screen record menu' 'shorin-proton-wrapper-git: Proton wrapper for Windows executables'
     'fcitx5: Input method' 'rime-wanxiang-gram-zh-hans: better ime model' 'fcitx5-configtool: Fcitx5 config' 'fcitx5-gtk: Fcitx5 GTK' 'fcitx5-qt: Fcitx5 QT'
     'fcitx5-rime: Fcitx5 Rime' 'rime-ice-git: Rime dict' 'rime-wubi: Rime wubi' 'rime-llm-translator-git: Rime LLM translator'
