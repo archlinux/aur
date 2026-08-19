@@ -1,6 +1,6 @@
 pkgbase = momw-tools-pack
 	pkgdesc = Metapackage with all the tools needed to automatically install and configure Modding-OpenMW.com modlists.
-	pkgver = 1.46
+	pkgver = 1.50
 	pkgrel = 1
 	url = https://modding-openmw.gitlab.io/momw-tools-pack/
 	arch = i686

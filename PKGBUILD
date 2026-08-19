@@ -1,5 +1,5 @@
 pkgname=momw-tools-pack
-pkgver=1.46
+pkgver=1.50
 pkgrel=1
 pkgdesc="Metapackage with all the tools needed to automatically install and configure Modding-OpenMW.com modlists."
 arch=('i686' 'x86_64')
