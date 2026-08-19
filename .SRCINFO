@@ -1,6 +1,6 @@
 pkgbase = ai-jail
 	pkgdesc = Sandbox wrapper for AI coding agents
-	pkgver = 1.17.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/akitaonrails/ai-jail
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ai-jail
 	optdepends = docker: Docker socket passthrough for sandboxed agents
 	conflicts = ai-jail-bin
 	options = !debug
-	source = ai-jail-1.17.0.tar.gz::https://github.com/akitaonrails/ai-jail/archive/refs/tags/v1.17.0.tar.gz
-	sha256sums = b8a588709a294d77661d64b91b1b2efffb3f9b1c1310fc03815b572f2b887017
+	source = ai-jail-1.19.0.tar.gz::https://github.com/akitaonrails/ai-jail/archive/refs/tags/v1.19.0.tar.gz
+	sha256sums = fc39f286db24b0acc74604d772aeb4a5de5e04b0334e7cd987996cb2c62f4b13
 
 pkgname = ai-jail

@@ -1,7 +1,7 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=ai-jail
-pkgver=1.17.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Sandbox wrapper for AI coding agents"
 arch=('x86_64' 'aarch64')
@@ -19,24 +19,24 @@ optdepends=(
 options=('!debug')
 conflicts=('ai-jail-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b8a588709a294d77661d64b91b1b2efffb3f9b1c1310fc03815b572f2b887017')
+sha256sums=('fc39f286db24b0acc74604d772aeb4a5de5e04b0334e7cd987996cb2c62f4b13')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTUP_TOOLCHAIN=1.97.1
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTUP_TOOLCHAIN=1.97.1
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 
 check() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTUP_TOOLCHAIN=1.97.1
     export CARGO_TARGET_DIR=target
     # Pin CARGO_HOME to the real cargo cache (populated by prepare()/build())
     export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
