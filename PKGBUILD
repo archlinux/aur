@@ -141,6 +141,10 @@ build() (
   CFLAGS="${CFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
   CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=?/_FORTIFY_SOURCE=2}"
 
+  # ensure extra/mbedtls is not used
+  CFLAGS+=" -I/usr/include/mbedtls3"
+  CXXFLAGS=" -I/usr/include/mbedtls3"
+
   local _cmake_options=(
     -B build
     -S "$_pkgname"
