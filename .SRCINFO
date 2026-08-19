@@ -1,7 +1,7 @@
 pkgbase = soundshed-guitar-git
 	pkgdesc = A guitar/bass effects app and plugin.
 	pkgver = r904.f219ebb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/webprofusion/soundshed-guitar
 	arch = x86_64
 	arch = aarch64

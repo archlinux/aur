@@ -2,7 +2,7 @@
 _name=soundshed-guitar
 pkgname=$_name-git
 pkgver=r904.f219ebb
-pkgrel=1
+pkgrel=2
 pkgdesc="A guitar/bass effects app and plugin."
 arch=(x86_64 aarch64)
 url="https://github.com/webprofusion/$_name"
@@ -37,7 +37,7 @@ build() {
   cd $_name
   _arch=${CARCH/86_/}
   _arch=${_arch/arch/rm}
-  bash ./build_linux.sh --arch $_arch --lv2
+  bash ./build_linux.sh --arch $_arch --no-zip
 }
 
 package() {
