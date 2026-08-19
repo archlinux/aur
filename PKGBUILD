@@ -1,5 +1,5 @@
 # Maintainer: Michał Walenciak <michalwalenciak@gmail.com>
-# Previous maintainer: Andrew Rabert <ar@nullsum.net>
+# Contributor: Andrew Rabert <ar@nullsum.net>
 
 pkgname=jellyfin-desktop-git
 pkgver=0.r2117.4e1010b
