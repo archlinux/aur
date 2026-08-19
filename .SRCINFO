@@ -1,18 +1,18 @@
 pkgbase = python-pdbpp-git
 	pkgdesc = pdb++, a drop-in replacement for pdb
-	pkgver = 0.10.2.r206.gb326f14
+	pkgver = 0.12.1.r1.g93db837
 	pkgrel = 1
-	url = https://github.com/pdbpp/pdbpp
+	url = https://github.com/bretello/pdbpp
 	arch = any
 	license = BSD
 	depends = python
 	depends = python-fancycompleter
 	depends = python-pygments
 	optdepends = python-pyrepl-git
-	provides = python-pdbpp
+	provides = python-pdbpp=0.12.1.r1.g93db837
 	conflicts = python-pdbpp
 	options = !emptydirs
-	source = git+https://github.com/pdbpp/pdbpp.git
+	source = python-pdbpp::git+https://github.com/bretello/pdbpp.git
 	sha256sums = SKIP
 
 pkgname = python-pdbpp-git
