@@ -1,10 +1,10 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=voicefox
-pkgver=0.3.5
-pkgrel=3
+pkgver=0.3.6
+pkgrel=1
 epoch=1
-_tag="${pkgver}"
+_tag="v${pkgver}"
 _srcdir="${pkgname}-${_tag#v}"
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64" "aarch64")
@@ -19,7 +19,7 @@ depends=(
 	"mpv"
 )
 makedepends=(
-	"rust"
+	"cargo"
 )
 optdepends=(
 	"nodejs>=23.5.0: support for custom JS music source"
@@ -27,14 +27,13 @@ optdepends=(
 source=(
 	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
 )
-sha512sums=('05827aa853d1bac6682f3cd8629f6ffa2e8136b8fb35fc0cbc5f52c3f9e24550e446e534e9eedea2fd2c0e95221e83c48314745cea2a3ae050fd28120ed71057')
+sha512sums=('aeed9a3e55c0e437b0892ba4156bb1648322b07410be30947c5b1175dc36d1c7aada94b037821fa42367783e48b174ae3a0b07d5d9a3e398285a606e3a7a58a7')
 
 prepare() {
 	cd "${_srcdir}"
 
 	export RUSTUP_TOOLCHAIN=stable
 
-	cargo update --workspace --offline || true
 	# Upstream often doesn't update this
 	sed -i "s/^version = .*/version = \"${pkgver}\"/" Cargo.toml
 	cargo update --workspace --offline || true
