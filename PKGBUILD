@@ -3,7 +3,7 @@ pkgbase=git-credential-manager
 pkgname=("$pkgbase"
          "${pkgbase}-extras")
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A secure Git credential helper built on .NET that runs on Windows, macOS, and Linux"
 arch=(i686 x86_64)
 url="https://github.com/git-ecosystem/git-credential-manager"
@@ -43,9 +43,19 @@ build() {
         _rid="linux-x86"
     fi
 
+    # Restore serially: multiple projects use the same generated out/.../obj
+    # directory, so .NET 10's parallel restore can race creating project.assets.json.
+    dotnet restore Git-Credential-Manager.sln \
+        --runtime $_rid \
+        --disable-parallel \
+        -p:Configuration=LinuxRelease \
+        -p:ImportByWildcardBeforeSolution=false \
+        -p:NuGetAudit=false
+
     # -p:ImportByWildcardBeforeSolution=false bypasses NETSDK1134 safely,
     # letting us build the entire solution for our targeted architecture.
     dotnet build Git-Credential-Manager.sln \
+        --no-restore \
         --configuration LinuxRelease \
         --runtime $_rid \
         -p:ImportByWildcardBeforeSolution=false \
@@ -66,6 +76,7 @@ check() {
     fi
 
     LANG=C dotnet test Git-Credential-Manager.sln \
+        --no-restore \
         --configuration LinuxRelease \
         --runtime $_rid \
         -p:ImportByWildcardBeforeSolution=false \
