@@ -1,14 +1,14 @@
 pkgbase = vultisig
 	pkgdesc = Vultisig Linux Application
-	pkgver = 1.0.70
+	pkgver = 1.0.71
 	pkgrel = 1
 	url = https://github.com/vultisig/vultisig-windows
 	arch = x86_64
 	license = Apache-2.0
 	depends = webkit2gtk
-	noextract = vultisig-v1.0.70.AppImage
+	noextract = vultisig-v1.0.71.AppImage
 	options = !strip
-	source = vultisig-v1.0.70.AppImage::https://github.com/vultisig/vultisig-windows/releases/download/v1.0.70/vultisig-v1.0.70.AppImage
-	sha256sums = f5170f9ffb5c570c04c7bc2c81d6da8a8bc397ee6d6facab0a95615bbaa54313
+	source = vultisig-v1.0.71.AppImage::https://github.com/vultisig/vultisig-windows/releases/download/v1.0.71/vultisig-v1.0.71.AppImage
+	sha256sums = 370358f91f1ab7a854dc6dc90cdc0b273bbcdf34ee7c126542f8ed15f3df6991
 
 pkgname = vultisig
