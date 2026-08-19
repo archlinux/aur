@@ -1,0 +1,14 @@
+pkgbase = hll5210dwpdrv
+	pkgdesc = Brother HL-L5210DW CUPS printer driver
+	pkgver = 4.0.3
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=us_ot&lang=en&prod=hll5210dw_us_eu_as
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = perl
+	options = !debug
+	source = https://download.brother.com/welcome/dlf105786/hll5210dwpdrv-4.0.3-2.i386.deb
+	sha256sums = e826f47b0b261eb20047a64ec9e506f0ad9e67187cff21a76e1924ddaf293f48
+
+pkgname = hll5210dwpdrv
