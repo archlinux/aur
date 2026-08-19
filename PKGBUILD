@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=python-claude-agent-sdk
 _name=${pkgname#python-}
-pkgver=0.2.139
+pkgver=0.2.140
 pkgrel=1
 pkgdesc="Python SDK for Claude Code"
 arch=('any')
@@ -10,6 +10,7 @@ license=('MIT')
 depends=(
   'python'
   'python-anyio'
+  'python-jsonschema'
   'python-mcp'
   'python-sniffio'
 )
@@ -20,7 +21,7 @@ makedepends=(
   'python-hatchling'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('4395ed541cdd4c13aeb1213b3b414b7e8a94cc060a773137e961882e81c174a7')
+sha256sums=('93b646e34bb39e37c868d67dc736de29a655529a4c986857e83a9d5bcf1f4e2b')
 
 build() {
   cd "${_name//-/_}-${pkgver}"
