@@ -14,5 +14,5 @@ b2sums=('a548795463b3c29cdb10315be5b41b1ee0ad4a1fc343263614d1354172c7bdf8e44370a
 b2sums_x86_64=('5d583c74aeb75bb2e3d095ccb77545646c53b939f7ee8c902bce76fd203e8d53e6c5701ea585c9b03fd7f1341cb8f50211aa5d5e179e37862d66510380403bc0')
 
 package() {
-  install -Dm755 "zeptoclaw-$pkgver-$CARCH" -t "$pkgdir/usr/bin/"
+  install -Dm755 "zeptoclaw-$pkgver-$CARCH" "$pkgdir/usr/bin/zeptoclaw"
 }
