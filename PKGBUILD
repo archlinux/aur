@@ -7,7 +7,7 @@ _version=1.0+1189
 _pkgbase=${_basename}
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="JItsi meet COnference FOcus binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -23,7 +23,10 @@ backup=(
 )
 source=(
         "https://download.jitsi.org/stable/jicofo_${_version//+/-}-1_all.deb"
-        "jicofo_${_version#1.0+}.conf::https://raw.githubusercontent.com/jitsi/jicofo/${_version#1.0+}/jicofo-selector/src/main/resources/reference.conf"
+	"jicofo.conf"
+        "jicofo_default_${_version#1.0+}.conf::https://raw.githubusercontent.com/jitsi/jicofo/${_version#1.0+}/jicofo/src/main/resources/reference.conf"
+        "jicofo_default_${_version#1.0+}_common.conf::https://raw.githubusercontent.com/jitsi/jicofo/${_version#1.0+}/jicofo-common/src/main/resources/reference.conf"
+        "jicofo_default_${_version#1.0+}_selector.conf::https://raw.githubusercontent.com/jitsi/jicofo/${_version#1.0+}/jicofo-selector/src/main/resources/reference.conf"
         "config"
         "service"
         "sysusers.conf"
@@ -57,13 +60,19 @@ package() {
 
         cd "$srcdir"
         install -Dm600 "config" "${CONFDIR}/config" 
-        install -Dm600 "jicofo_${_version#1.0+}.conf" "${CONFDIR}/jicofo.conf"
+        install -Dm600 "jicofo.conf" "${CONFDIR}/jicofo.conf"
+        install -Dm600 "jicofo_default_${_version#1.0+}.conf" "${CONFDIR}/jicofo_default.conf"
+        install -Dm600 "jicofo_default_${_version#1.0+}_common.conf" "${CONFDIR}/jicofo_default_common.conf"
+        install -Dm600 "jicofo_default_${_version#1.0+}_selector.conf" "${CONFDIR}/jicofo_default_selector.conf"
         install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${_pkgbase}.service"
 
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
 sha256sums=('73a6104ffa24ac1fcf6660fb8c73ed7bea96a5ebdf2aa9d79b8a00b535639bbb'
+            '77f2e2d62e9fe38188f41b063496cc10970cc989ed620a64a2251d986d6ac253'
+            'ca9dad37d95752c42be9c125734ba43eb9314fd0233e0e6f5e3621768f18fc0d'
+            'b22a8df91cde1956969bd3a6fd293bea01be54713649ed0fd39e847b1eb61886'
             'cdd1f6453746c208bc7bc4c0d9000ef801034385191fb44db1c49ff152962fdc'
             'b69f9485ba55b53fe6d1a8b5e4a37c542641cb205c6f5c0b2cf89d236cc6b562'
             '902229d135e9b949da318f539cbe8f266bdd4e32e514f37d8782ad4562dc791b'
