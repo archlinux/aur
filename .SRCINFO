@@ -1,6 +1,6 @@
 pkgbase = majestic-linux-runner-git
 	pkgdesc = Python orchestration runner for Majestic RP on Linux via Proton
-	pkgver = r83.4a88a6d
+	pkgver = r86.765b2b7
 	pkgrel = 1
 	url = https://github.com/j0kertrup/majestic-rp-linux
 	arch = any
