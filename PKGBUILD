@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Module-first C++ build tool with manifest."
 arch=(x86_64)
 url=https://github.com/litocpp/lito
-license=(MIT)
+license=('MIT OR Apache-2.0')
 depends=(glibc lua)
 makedepends=(cmake clang lld git ninja llvm)
 source=("git+https://github.com/litocpp/lito.git#tag=v$pkgver"
