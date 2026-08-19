@@ -7,7 +7,7 @@ _release_tag=2026.07.19
 pkgrel=1
 pkgdesc="Native music player for local libraries, with ratings and scrobbling"
 arch=('x86_64')
-url="https://codeberg.org/11xx/muzaiten"
+url="https://github.com/11xx/muzaiten"
 license=('Unlicense')
 depends=('qt6-base' 'qt6-multimedia' 'taglib' 'chromaprint' 'gstreamer' 'gst-plugins-base-libs' 'glib2' 'zstd' 'python')
 optdepends=('gst-plugins-good: extra audio decoders and sinks'
@@ -20,7 +20,7 @@ optdepends=('gst-plugins-good: extra audio decoders and sinks'
 provides=('muzaiten')
 conflicts=('muzaiten' 'muzaiten-git')
 options=('!strip')  # build-release.sh already strips the native executables
-source=("muzaiten-${pkgver}-${CARCH}.tar.zst::https://codeberg.org/11xx/muzaiten/releases/download/${_release_tag}/muzaiten-${pkgver}-${CARCH}.tar.zst")
+source=("muzaiten-${pkgver}-${CARCH}.tar.zst::https://github.com/11xx/muzaiten/releases/download/${_release_tag}/muzaiten-${pkgver}-${CARCH}.tar.zst")
 sha256sums=('2d3ef5be165801726e06532505eaff36447cbc0da40c70659dc1c812eac75e86')
 
 package() {
