@@ -1,0 +1,30 @@
+pkgbase = slopengine
+	pkgdesc = First-person boomer shooter game engine (raylib/flecs/s7)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/slopnode/engine
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = patchelf
+	depends = glu
+	depends = libglvnd
+	depends = libsm
+	depends = libice
+	depends = libx11
+	depends = libxext
+	depends = libxcb
+	depends = libxau
+	depends = libxdmcp
+	depends = util-linux-libs
+	depends = wayland
+	depends = libxkbcommon
+	options = !debug
+	source = slopengine::git+https://github.com/slopnode/engine.git#commit=ac5920a1eb599db67ccee086423a86c285948197
+	source = steamaudio-4.8.1.zip::https://github.com/ValveSoftware/steam-audio/releases/download/v4.8.1/steamaudio_4.8.1.zip
+	sha256sums = SKIP
+	sha256sums = 4a0aa5ec1176f38f0b0993a37c2259d9e86f27e22d5e24f83ec4c3cb9a1d5449
+
+pkgname = slopengine
