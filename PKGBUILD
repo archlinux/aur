@@ -6,7 +6,7 @@ _version=1.0+1192
 
 pkgname=${_basename}-nightly
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="JItsi Meet COnference FOcus nightly build"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -26,6 +26,7 @@ backup=(
 )
 source=(
         "$pkgname::git+https://github.com/jitsi/jicofo#tag=${_tag}"
+       	"jicofo.conf"
         "config"
         "service"
         "sysusers.conf"
@@ -52,7 +53,9 @@ package() {
 
         install -dm700 "${CONFDIR}"
         install -Dm600 -t "${CONFDIR}" "lib/logging.properties"
-        install -Dm600 "jicofo-selector/src/main/resources/reference.conf" "${CONFDIR}/jicofo.conf"
+        install -Dm600 "jicofo/src/main/resources/reference.conf" "${CONFDIR}/jicofo_default.conf"
+        install -Dm600 "jicofo-common/src/main/resources/reference.conf" "${CONFDIR}/jicofo_default_common.conf"
+        install -Dm600 "jicofo-selector/src/main/resources/reference.conf" "${CONFDIR}/jicofo_default_selector.conf"
         install -Dm755 -t "${DESTDIR}" "resources/jicofo.sh"
         sed -i 's@/var/log/jitsi@/var/log/'${pkgname}'@' "${CONFDIR}/logging.properties"
 
@@ -60,10 +63,12 @@ package() {
         install -Dm600 -t "${CONFDIR}" "config"
         install -Dm644 "service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
+        install -Dm600 "jicofo.conf" "${CONFDIR}/jicofo.conf"
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/$pkgname.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/$pkgname.conf"
 }
 sha256sums=('98c9241fd060d06cc6bda91c26e44e3d7ef67db371aab5f62fa6e07a28653cb4'
+            '77f2e2d62e9fe38188f41b063496cc10970cc989ed620a64a2251d986d6ac253'
             'c258808de5031c0d72df0aedfd521d07e6c442cd152e75737bdc1d758545521e'
             '548d307aa9f4ffae64b4c9c3e891f4332a8454bd7b271e5b76932c705697ee74'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
