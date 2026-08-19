@@ -1,6 +1,6 @@
 pkgbase = secure-eye
 	pkgdesc = Face authentication for Linux
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/vhrabar/SecureEye
 	install = secure-eye.install
@@ -35,9 +35,9 @@ pkgbase = secure-eye
 	replaces = libpam-secureeye
 	replaces = secureeye-authd
 	backup = etc/secureEye/config.ini
-	source = secure-eye-0.2.0.tar.gz::https://github.com/vhrabar/SecureEye/archive/v0.2.0.tar.gz
+	source = secure-eye-0.2.1.tar.gz::https://github.com/vhrabar/SecureEye/archive/v0.2.1.tar.gz
 	source = secure-eye.install
-	sha256sums = 5334f42ebc451296d9f6d22a16955b4c67b1ab6795e12c8c40a79b9fb143397f
+	sha256sums = 55fa0ae85713296bb4098e1671c94dfbb17f091ad8baafa5cbd55071251885ac
 	sha256sums = f07bfc5fd27d2e649eebafbccaaefe1be5cce3606363df9a74c7700098476d8f
 	depends_x86_64 = python-mediapipe
 

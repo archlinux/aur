@@ -1,7 +1,7 @@
 # Maintainer: Vedran Hrabar <vedran.hrabar@outlook.com>
 
 pkgname=secure-eye
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Face authentication for Linux"
 arch=('x86_64' 'aarch64')
@@ -42,7 +42,7 @@ backup=('etc/secureEye/config.ini')
 install=secure-eye.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz"
         'secure-eye.install')
-sha256sums=('5334f42ebc451296d9f6d22a16955b4c67b1ab6795e12c8c40a79b9fb143397f'
+sha256sums=('55fa0ae85713296bb4098e1671c94dfbb17f091ad8baafa5cbd55071251885ac'
             'f07bfc5fd27d2e649eebafbccaaefe1be5cce3606363df9a74c7700098476d8f')
 
 _srcname="SecureEye-$pkgver"
