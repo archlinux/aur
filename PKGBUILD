@@ -4,7 +4,7 @@
 _name=ToneShiftEQ
 pkgbase=${_name,,}
 pkgname=($pkgbase $pkgbase-{clap,lv2,standalone,vst3})
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='A dynamic 12-band equalizer for mixing and mastering'
 arch=(aarch64 x86_64)
@@ -14,12 +14,8 @@ groups=(pro-audio)
 depends=()
 makedepends=(cairo fftw freetype2 jack libsndfile lv2 xxd)
 checkdepends=(lv2lint)
-source=("https://github.com/brummer10/$_name/releases/download/v$pkgver/$_name-v$pkgver-src.tar.xz"
-        'toneshifteq-ttl.patch::https://github.com/brummer10/ToneShiftEQ/pull/6.patch'
-        'toneshifteq-ldflags.patch')
-sha256sums=('b0b678b9c0a063e5d1b18aed64cceb2a532c50b4d41bb82df9d460f12be61dae'
-            'a70653f32685edf22d22273d89430118ba397a5b1daf4f43cd9fea0f8e104d4a'
-            'f096f075c34794858719036ee2dde001db555588a5ea3428baf006f49192cb73')
+source=("https://github.com/brummer10/$_name/releases/download/v$pkgver/$_name-v$pkgver-src.tar.xz")
+sha256sums=('e065747958f436cf623faddd3139f93b0af49c5e0a523bfc5d1175bf79f83801')
 _plugin_uri="urn:brummer:$pkgbase"
 
 _pick() {
@@ -30,15 +26,6 @@ _pick() {
     mv "$f" "$d"
     rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
   done
-}
-
-prepare() {
-  cd $_name-v$pkgver
-  # LV2 TTL file contains errors.
-  patch -p1 -N -r - -i "$srcdir"/toneshifteq-ttl.patch
-  # See https://github.com/brummer10/ToneShiftEQ/issues/8
-  # and https://github.com/brummer10/ToneShiftEQ/issues/7
-  patch -p1 -N -r - -i "$srcdir"/toneshifteq-ldflags.patch
 }
 
 build() {
