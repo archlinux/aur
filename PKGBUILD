@@ -1,5 +1,5 @@
 pkgname=cmdchamp
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc='CLI trainer — 30 levels from ls to privilege escalation'
 arch=('any')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('bash>=4.4')
 optdepends=('bubblewrap: sandbox mode for real command execution')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9198c79891a1d8472636285e30d55a5a8bb563b9c7a0bd26ae1fd5557e7a33eb')
+sha256sums=('975f3f74eb713763561790ac11a533c56212e9fc4a74acbdb7a51950c7300c8d')
 
 check() {
   cd "$pkgname-$pkgver"
