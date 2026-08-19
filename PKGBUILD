@@ -2,7 +2,7 @@
 _pkgname=ValveResourceFormat
 pkgbase=source2viewer
 pkgname=(source2viewer source2viewer-cli)
-pkgver=19.2
+pkgver=20.0
 pkgrel=1
 pkgdesc="Valve's Source 2 resource file format parser, decompiler, and exporter."
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!strip !debug)
 conflicts=('valveresourceformat')
 replaces=('valveresourcefromat')
 source=("$url/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('6f1b59fc9e480ea65fb7cd7a667758e6105988a13d1b96edbc64f274f691522d')
+sha256sums=('f8a9e4d91442b08bb9a32f5d3d59905d70b09fb568078d537b5320d38dd73ffa')
 
 prepare() {
 	cd "$srcdir/$_pkgname-$pkgver"
@@ -61,7 +61,7 @@ then
 	mkdir -p "\$HOME/.$pkgname/wine"
 	wineboot -u
 fi
-cd "\$HOME/.$pkgname"
+cd "\$HOME/.$pkgname" || exit
 DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1 DOTNET_BUNDLE_EXTRACT_BASE_DIR=./ wine /usr/lib/$pkgname/$pkgname.exe "\$@"
 EOF
 	cat >> "$pkgdir/usr/bin/$pkgname-wine" <<-EOF
