@@ -1,6 +1,6 @@
 pkgbase = uac-polkit-agent-git
 	pkgdesc = Polkit authenticator with a User Account Control interface for AeroShell desktops
-	pkgver = 6.7.0_816.rd8c2262
+	pkgver = 6.7.4_816.rd8c2262
 	pkgrel = 1
 	url = https://github.com/aeroshell-desktop/uac-polkit-agent
 	arch = x86_64
