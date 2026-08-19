@@ -1,0 +1,14 @@
+pkgbase = localsend-ufw-rules
+	pkgdesc = Add UFW rule(s) for LocalSend's used ports
+	pkgver = 1.0.0
+	pkgrel = 1
+	install = localsend-rules.install
+	arch = any
+	license = Unlicense
+	depends = localsend
+	depends = ufw
+	options = !emptydirs
+	source = localsend-rules
+	sha256sums = ad840a5211462c01325208d953276cacbdc51faed844695388ac0f5ebf47cb5f
+
+pkgname = localsend-ufw-rules

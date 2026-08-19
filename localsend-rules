@@ -1,0 +1,5 @@
+# See https://wiki.archlinux.org/title/LocalSend#Firewall, https://wiki.archlinux.org/title/Uncomplicated_Firewall#Adding_other_applications
+[LocalSend]
+title=LocalSend
+description=LocalSend
+ports=53317/udp|53317/tcp
