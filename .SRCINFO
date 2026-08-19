@@ -1,6 +1,6 @@
 pkgbase = nextai-translator-bin
 	pkgdesc = Browser extension and cross-platform desktop application for translation based on ChatGPT API.(Prebuilt version)基于 ChatGPT API 的划词翻译浏览器插件和跨平台桌面端应用
-	pkgver = 0.6.38
+	pkgver = 0.6.39
 	pkgrel = 1
 	url = https://github.com/nextai-translator/nextai-translator
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = nextai-translator-bin
 	depends = gtk3
 	depends = webkit2gtk-4.1
 	depends = xdotool
-	provides = nextai-translator=0.6.38
+	provides = nextai-translator=0.6.39
 	conflicts = nextai-translator
 	conflicts = openai-translator
-	source = nextai-translator-0.6.38.deb::https://github.com/nextai-translator/nextai-translator/releases/download/v0.6.38/NextAI.Translator_0.6.38_amd64.deb
-	sha256sums = b2c9fcab4a9b682d6992dec0c5e42620b74ed426c50b8d36fc1a389da5fc3033
+	source = nextai-translator-0.6.39.deb::https://github.com/nextai-translator/nextai-translator/releases/download/v0.6.39/NextAI.Translator_0.6.39_amd64.deb
+	sha256sums = 003ff757e090fdf08cb2a0005005dcea0092a90e0532fb9d9fb4cd506182c4d5
 
 pkgname = nextai-translator-bin
