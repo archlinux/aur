@@ -1,7 +1,7 @@
 # Maintainer: tiouoo <tiouo@qq.com>
 
 pkgname=portal-mc-nightly-bin
-pkgver=0.40.22.39
+pkgver=0.41.4.26
 pkgrel=1
 pkgdesc="Portal - Minecraft launcher/manager (nightly build)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('fuse2' 'hicolor-icon-theme' 'xdg-utils')
 provides=("portal-mc=$pkgver")
 conflicts=('portal-mc' 'portal-mc-commit-bin' 'portal-mc-bin')
 options=('!strip' '!emptydirs')
-_appimg="Portal-0.40.22.39.AppImage"
+_appimg="Portal-0.41.4.26.AppImage"
 source_x86_64=(
     "$_appimg::https://github.com/tiouoo/Portal/releases/download/publish-nightly/Portal.linux.x64.AppImage"
     "portal.png::https://portal.tiouo.cc/portal-logo.png"
