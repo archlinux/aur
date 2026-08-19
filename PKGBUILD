@@ -2,14 +2,14 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
-pkgver=2.0.5
+pkgver=2.0.8
 _electron=electron41
 pkgrel=1
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('x86_64')
 url="https://cherry-ai.com/"
 _ghurl="https://github.com/CherryHQ/cherry-studio"
-_arch_patch='6322998a'
+_arch_patch='4663dd757'
 license=('MIT')
 depends=(
     "${_electron}"
@@ -37,9 +37,9 @@ source=(
     "${pkgname}.sh"
     "${pkgname}-${_arch_patch}.patch::https://github.com/sukanka/cherry-studio/commit/${_arch_patch}.patch"
 )
-sha256sums=('436c6125c4542df263dfa980d7284da933e8a3504973044267782204773b9fcf'
+sha256sums=('3d12af287325d4d5d413b1c2e48c229c6d8360ffc67930a90d7971a70d06f117'
             '44a824951155af10ff8d683a0856249c2033a195b9ba04cb5bb8dcfdff4ca463'
-            'e2e5ae4218e1ae57a142e81a2512d0e65e23dccf47dff076bde41fc33aa93fa4')
+            '2a5575d2fa928f692f04c4de0d84d9cb7f94f005a2739169de1be4bb54bdfdea')
 
 prepare() {
     sed -e "s|__ELECTRON__|${_electron}|g" -i "${srcdir}/${pkgname}.sh"
