@@ -1,17 +1,17 @@
 pkgbase = qwe-bin
 	pkgdesc = A simple file-first atomic version control system
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/mainak55512/qwe
 	arch = x86_64
 	license = MIT
 	provides = qwe
 	conflicts = qwe
-	source = README-0.3.2.md::https://raw.githubusercontent.com/mainak55512/qwe/v0.3.2/README.md
-	source = LICENSE-0.3.2::https://raw.githubusercontent.com/mainak55512/qwe/v0.3.2/LICENSE
-	sha256sums = 7e0e5f38df6874a935f460ed5f8361a7c90eb402cf7e6a4b4a74328be9e5eab7
+	source = README-0.3.3.md::https://raw.githubusercontent.com/mainak55512/qwe/v0.3.3-a/README.md
+	source = LICENSE-0.3.3::https://raw.githubusercontent.com/mainak55512/qwe/v0.3.3-a/LICENSE
+	sha256sums = de59ae1d48f86ce9e4e2a9c5e1d444e8c82141af988ba646ce05bfa10733ec35
 	sha256sums = 5f8c1ed98719545d8d057269852f9e446e0ad092135ec5e92374dc8ce9e0e6ad
-	source_x86_64 = qwe-x86_64-0.3.2.zip::https://github.com/mainak55512/qwe/releases/download/v0.3.2/x64_linux.zip
-	sha256sums_x86_64 = ddc54f804c39e81a0ade353f7b4172e847bc05e85699ca3b4d179723117f6c0a
+	source_x86_64 = qwe-x86_64-0.3.3.zip::https://github.com/mainak55512/qwe/releases/download/v0.3.3-a/x64_linux.zip
+	sha256sums_x86_64 = 3105de69f0be5ab304d7f87060ac44af8834c181f5e92e6428f59b8d82a7b5cc
 
 pkgname = qwe-bin
