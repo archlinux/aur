@@ -1,9 +1,9 @@
 # Maintainer: Scott Jones <scottajones@gmail.com>
 
 pkgname=omarchy-webapp-theme
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
-pkgdesc="Make Slack, Discord, GitHub, Linear, Outlook and WhatsApp follow your Omarchy theme"
+pkgdesc="Make Slack, Discord, GitHub, Linear, Outlook, WhatsApp, Notion and HEY follow your Omarchy theme"
 arch=('any')
 url="https://github.com/scottjones/omarchy-webapp-theme"
 license=('MIT')
@@ -24,9 +24,9 @@ conflicts=('omarchy-slack-theme')
 provides=('omarchy-slack-theme')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# Pinned to the published v0.3.4 tag tarball. Regenerate with `updpkgsums` on
+# Pinned to the published v0.3.5 tag tarball. Regenerate with `updpkgsums` on
 # every version bump — a stale sum fails the build for everyone.
-sha256sums=('e81c511bcf12ce309b0ffe5db07157ee0525dddd1023acd4f68844604861898d')
+sha256sums=('d3b90e299926162953d009d53951f80c415a25d30142f36b9393a966c11456b9')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
