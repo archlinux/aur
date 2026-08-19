@@ -22,6 +22,10 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
+  # Removes a flag injected by makepkg
+  export CFLAGS=$(echo "$CFLAGS" | sed 's/-ffile-prefix-map=[^ ]*//g')
+  export CXXFLAGS=$(echo "$CXXFLAGS" | sed 's/-ffile-prefix-map=[^ ]*//g')
+
   export CC=clang
   export CXX=clang++
   export AR=llvm-ar
