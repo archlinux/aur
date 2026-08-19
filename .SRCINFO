@@ -1,6 +1,6 @@
 pkgbase = bun-git
 	pkgdesc = Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one
-	pkgver = 1.3.14.r1369.gf68e504
+	pkgver = 1.3.14.r2031.ga356964
 	pkgrel = 1
 	url = https://github.com/oven-sh/bun
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = bun-git
 	makedepends = llvm21
 	makedepends = ninja
 	makedepends = rustup
+	makedepends = nasm
 	depends = libatomic
 	depends = libstdc++
 	provides = bun

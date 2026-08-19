@@ -2,14 +2,14 @@
 # Maintainer: Noel Jacob <noeljacob 91 at gmail dot com>
 # Contributor: Daniele Basso <d dot bass 05 at proton dot me>
 pkgname=bun-git
-pkgver=1.3.14.r1369.gf68e504
+pkgver=1.3.14.r2031.ga356964
 pkgrel=1
 pkgdesc="Incredibly fast JavaScript runtime, bundler, test runner, and package manager – all in one"
 arch=(x86_64 aarch64)
 url="https://github.com/oven-sh/bun"
 license=('MIT')
 depends=(libatomic libstdc++)
-makedepends=(bun clang21 cmake git lld21 llvm21 ninja rustup)
+makedepends=(bun clang21 cmake git lld21 llvm21 ninja rustup nasm)
 conflicts=(bun bun-bin)
 provides=(bun)
 source=("$pkgname::git+https://github.com/oven-sh/bun.git")
