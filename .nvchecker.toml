@@ -1,0 +1,4 @@
+[beautysh]
+source = "git"
+git = "https://github.com/lovesegfault/beautysh.git"
+prefix = "v"
