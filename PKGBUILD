@@ -1,6 +1,6 @@
 # Maintainer: Stéphane Jourdois <stephane@jourdois.fr>
 pkgname=wlr-utils
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc='Native screen tools for wlroots compositors: pick, switch, capture, inspect and annotate — one capture engine'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('noto-fonts-cjk: render CJK (Japanese/Chinese/Korean) text'
             'tesseract-data-fra: French OCR for `wlr-peek ocr`'
             'xdg-desktop-portal-wlr: screencast portal that drives wlr-chooser')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('589a772eb2a3f249c0f688f402b9df305bdfde11bd16c26e6b602d35fae020b0')
+sha256sums=('6f13fb7e12db75e8fd17e80b0f1664ca607e886bb3963d7630930e15db61bc32')
 
 prepare() {
 	cd "$pkgname-$pkgver"
