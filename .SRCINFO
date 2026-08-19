@@ -1,6 +1,6 @@
 pkgbase = sober-bin
 	pkgdesc = Prevent AI-Slop: The Sober Raccoon is your local CodeRabbit: A Local-first repository governance assistant and code reviewer with deterministic review readiness
-	pkgver = 0.10.0
+	pkgver = 0.10.0_beta.3
 	pkgrel = 1
 	url = https://sober-dev.app
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = sober-bin
 	depends = tree-sitter
 	provides = sober
 	conflicts = sober
-	source = https://pkg.sober-dev.app/ce/sober_v0.10.0_linux_amd64
+	source = https://pkg.sober-dev.app/ce/sober_v0.10.0-beta.3_linux_amd64
 	source = https://pkg.sober-dev.app/ce/SHA256SUMS
-	sha256sums = 3c8f342a1fed8c23ffb5a9d452f80d78310a8f2f4e9e29bf895adfd9caf77378
+	sha256sums = fb490a0595626a273fa9b9e8793086cc5464be366719e796c46aeafe0e28a387
 	sha256sums = SKIP
 
 pkgname = sober-bin
