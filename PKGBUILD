@@ -1,6 +1,6 @@
 pkgname=pane-bin
 pkgver=2.4.62
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal-native AI agent manager — any provider, one unified interface"
 arch=(x86_64 aarch64)
 url="https://github.com/dcouple/Pane"
