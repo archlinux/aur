@@ -2,7 +2,7 @@
 # Maintainer: BlindSpot Software <services@blindspot.software>
 
 pkgname='fwci-bin'
-pkgver=0.17.7
+pkgver=0.17.8
 pkgrel=1
 pkgdesc='CLI Tooling for FirmwareCI - binary distribution'
 url='https://firmware-ci.com/'
@@ -13,11 +13,11 @@ conflicts=('fwci')
 depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/blindspotsoftware/firmwareci/releases/download/v${pkgver}/fwci-${pkgver}.linux-arm64.tar.gz")
-sha256sums_aarch64=('28ed1e3d7118bc456082f59a1b6dc16d4580b88667d041233f0df14dbf56715b')
+sha256sums_aarch64=('6eb9c23d95483ddd921098acf21dc5eabdc1fd1b250de7591321c26571248980')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/blindspotsoftware/firmwareci/releases/download/v${pkgver}/fwci-${pkgver}.linux-amd64.tar.gz")
-sha256sums_x86_64=('8bc6a31faec386f17ab31847b730e24496d19afce67218e1152f0d7ddba05e28')
+sha256sums_x86_64=('29d0225e958b7b3cf4ada436ef62ee4c6b9642b1967dcce48c9f556c4b6338b6')
 
 package() {
-  install -Dm755 "./fwci-0.17.7.linux-amd64" "${pkgdir}/usr/bin/fwci-0.17.7.linux-amd64"
+  install -Dm755 "./fwci-0.17.8.linux-amd64" "${pkgdir}/usr/bin/fwci-0.17.8.linux-amd64"
 }
