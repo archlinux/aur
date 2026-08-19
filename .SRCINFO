@@ -1,6 +1,6 @@
 pkgbase = payload-dumper-go-bin
 	pkgdesc = an android OTA payload dumper written in Go.(Prebuilt version)
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/ssut/payload-dumper-go
 	arch = aarch64
@@ -8,12 +8,12 @@ pkgbase = payload-dumper-go-bin
 	arch = x86_64
 	license = Apache-2.0
 	provides = payload-dumper-go
-	conflicts = payload-dumper-go=2.0.0
-	source_aarch64 = payload-dumper-go-2.0.0-aarch64.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/2.0.0/payload-dumper-go_2.0.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = db821807cea805605c8d3af6be3428bbe293d02e5129e30c2fa5cf4f33d7c6d3
-	source_armv7h = payload-dumper-go-2.0.0-armv7h.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/2.0.0/payload-dumper-go_2.0.0_linux_armv7.tar.gz
-	sha256sums_armv7h = ce9b04eb2d1baca3315951d2c70d7aa71bd4db7180b7a0e5b8dd897aab6afb0a
-	source_x86_64 = payload-dumper-go-2.0.0-x86_64.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/2.0.0/payload-dumper-go_2.0.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = ac3f27435e0c88d4b552f343765f78fa44b552e4cd9892ff492fff929a1c4e6e
+	conflicts = payload-dumper-go=2.0.1
+	source_aarch64 = payload-dumper-go-2.0.1-aarch64.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/2.0.1/payload-dumper-go_2.0.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3b8f9a457de4a98070041598ee18616ce6d498264fc9f3c27b06710feb31f681
+	source_armv7h = payload-dumper-go-2.0.1-armv7h.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/2.0.1/payload-dumper-go_2.0.1_linux_armv7.tar.gz
+	sha256sums_armv7h = 4f7c315b35b22db53a3d83ab44b0019c8c1bf09a7918a569ef71e22235603aaa
+	source_x86_64 = payload-dumper-go-2.0.1-x86_64.tar.gz::https://github.com/ssut/payload-dumper-go/releases/download/2.0.1/payload-dumper-go_2.0.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = ebca8aa8742ba50b6d6acea5172a31023adb57532fa96931fd71d980931f953d
 
 pkgname = payload-dumper-go-bin
