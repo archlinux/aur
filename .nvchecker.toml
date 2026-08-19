@@ -1,0 +1,5 @@
+[y509-bin]
+source = "github"
+github = "kanywst/y509"
+use_latest_release = true
+prefix = "v"

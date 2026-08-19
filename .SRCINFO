@@ -1,0 +1,17 @@
+pkgbase = y509-bin
+	pkgdesc = A terminal user interface (TUI) tool for viewing and analyzing X.509 certificate chains
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/kanywst/y509
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = y509
+	conflicts = y509
+	options = !strip
+	source_x86_64 = y509-x86_64-1.0.2.tgz::https://github.com/kanywst/y509/releases/download/v1.0.2/y509-1.0.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 0ca10c6e8f4d411f11ca01af216029cf0260db28eef27de12db88ac23ddd3aa8
+	source_aarch64 = y509-aarch64-1.0.2.tgz::https://github.com/kanywst/y509/releases/download/v1.0.2/y509-1.0.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 2f79e4bddb9f2da1428e7598adeb4683b0537e3599ffb8a78a3ee9287a958ecc
+
+pkgname = y509-bin
