@@ -6,7 +6,7 @@ pkgname=simplescreenrecorder
 pkgver=0.4.4.79.ge73e
 # Pin commit until the next upstream release
 _commit=e73e07664121ac30836872bca76194c6570e04c8
-pkgrel=3
+pkgrel=4
 pkgdesc="A feature-rich screen recorder that supports X11 and OpenGL."
 arch=("x86_64")
 url="https://www.maartenbaert.be/simplescreenrecorder/"
@@ -17,7 +17,7 @@ depends=(
     "ffmpeg"
     "glu"
     "gtk-update-icon-cache"
-    "jack2"
+    "jack"
     "libglvnd"
     "libpipewire"
     "libpulse"
