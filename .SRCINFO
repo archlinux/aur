@@ -1,0 +1,27 @@
+pkgbase = veet-bin
+	pkgdesc = Universal Linux Application Uninstaller & Deep-Clean Residual Purger
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/swadhinbiswas/veet
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	optdepends = flatpak: clean flatpak applications
+	optdepends = snapd: clean snap applications
+	optdepends = ttf-jetbrains-mono-nerd: improved terminal rendering
+	optdepends = ttf-nerd-fonts-symbols: TUI glyph support
+	provides = veet
+	conflicts = veet
+	options = !strip
+	options = !debug
+	source = veet-bin-LICENSE::https://github.com/swadhinbiswas/veet/raw/v1.0.3/LICENSE
+	sha256sums = fb14e2f68989abb28130c42bfd2d2f08663884a5f8b7e42b7685b4d8d32a9ce2
+	source_x86_64 = veet-bin-1.0.3-amd64.tar.gz::https://github.com/swadhinbiswas/veet/releases/download/v1.0.3/veet-v1.0.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = 67499826466c64a3536eb8c39c471420af44657a9d3d4a30594076564c0998e9
+	source_aarch64 = veet-bin-1.0.3-arm64.tar.gz::https://github.com/swadhinbiswas/veet/releases/download/v1.0.3/veet-v1.0.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = 796bc7f0a073b71aaf7ab165bc9e41a886e7d75d031c4980b187e2b80bf1de37
+	source_armv7h = veet-bin-1.0.3-armv7.tar.gz::https://github.com/swadhinbiswas/veet/releases/download/v1.0.3/veet-v1.0.3-linux-armv7.tar.gz
+	sha256sums_armv7h = f17bda87f1d5e5738d2022f1aaf80ce8a107e9eecee5e302c9b1a708b826cc9b
+
+pkgname = veet-bin
