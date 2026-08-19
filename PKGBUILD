@@ -4,9 +4,9 @@
 
 pkgname=fomalhaut-lock
 _upstream_name=fomalhaut
-_upstream_ver=0.1.0-alpha.1
-_source_ref=2300034dcfac72e13c8475d992fa9c75aac933ed
-pkgver=0.1.0.alpha.1
+_upstream_ver=0.1.0-alpha.2
+_source_ref=71c0a28a60690550a4904a419962a150734e0090
+pkgver=0.1.0.alpha.2
 pkgrel=1
 pkgdesc='WebKitGTK Wayland session locker'
 arch=('x86_64')
@@ -26,7 +26,7 @@ optdepends=('accountsservice: current user avatar')
 makedepends=('cargo' 'clang')
 backup=('etc/pam.d/fomalhaut-lock')
 source=("${_upstream_name}-${_source_ref}.tar.gz::${url}/archive/${_source_ref}.tar.gz")
-sha256sums=('b50fccd46264d6d3e3f2cd5c5408df007a1fc6eb6949102b3c2a36a282488277')
+sha256sums=('8e732f4d1b9490ea3104506c4197f763036896c76b5daf2258436d64d234baac')
 
 _source_dir="${_upstream_name}-${_source_ref}"
 
