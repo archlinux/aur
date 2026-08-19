@@ -3,7 +3,7 @@
 
 pkgname=epiclang-bin
 _pkgname=epiclang
-pkgver=20260407090709
+pkgver=20260803220850
 pkgrel=1
 pkgdesc="Script to call clang with Epitech's C style checking extension"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=('binutils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-sha256sums=('07dab38dd884a2e5d63bef39c2cf76e43bf5d540d27878039f38c6a8d78ad321')
+sha256sums=('3471e0f02dde024881a22e4ed4948c3662966a344af9d11979eca8fe92a68bed')
 
 source=("${_pkgname}-${pkgver}.deb::https://ppa.launchpadcontent.net/epitech/ppa/ubuntu/pool/main/e/epiclang/epiclang_${pkgver}_amd64.deb")
 
