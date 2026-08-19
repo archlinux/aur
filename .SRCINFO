@@ -1,6 +1,6 @@
 pkgbase = zotero
 	pkgdesc = A free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
-	pkgver = 9.0.6
+	pkgver = 10.0.0
 	pkgrel = 1
 	url = https://github.com/zotero/zotero
 	arch = x86_64
@@ -24,10 +24,10 @@ pkgbase = zotero
 	depends = nss
 	depends = libxt
 	source = zotero.desktop
-	source = zotero-client::git+https://github.com/zotero/zotero.git#tag=eabf364f2bad0cd03883e5898ce85619c3d6be21
+	source = zotero-client::git+https://github.com/zotero/zotero.git#tag=d3f1ccf3380fde351854d849977c55467f4609a6
 	source = zotero-translators::git+https://github.com/zotero/translators.git
 	source = zotero-styles::git+https://github.com/zotero/bundled-styles.git
-	source = zotero-pdf-worker::git+https://github.com/zotero/pdf-worker.git
+	source = zotero-document-worker::git+https://github.com/zotero/document-worker.git
 	source = zotero-note-editor::git+https://github.com/zotero/note-editor.git
 	source = zotero-reader::git+https://github.com/zotero/reader.git
 	source = zotero-schema::git+https://github.com/zotero/zotero-schema.git
@@ -38,9 +38,11 @@ pkgbase = zotero
 	source = zotero-libreoffice-integration::git+https://github.com/zotero/zotero-libreoffice-integration.git
 	source = zotero-pdf-js::git+https://github.com/zotero/pdf.js.git
 	source = zotero-epub-js::git+https://github.com/zotero/epub.js.git
+	source = zotero-structured-document-text::git+https://github.com/zotero/structured-document-text.git
 	source = disable-updater.patch
 	sha256sums = eab76db7a56a4d9aaa17baaf240b82fcf57944a4ddf8ef1b58cc64182426cedc
-	sha256sums = 3b1551174ae216ae0ba8aae1fd1c4b031d1228677eb21e988196d07b12d765bc
+	sha256sums = c27b78ea4f6fef7a2f46ae64759ba6c2316aac95cca4324079f90ad4b6ae2d6c
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
