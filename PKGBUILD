@@ -1,12 +1,12 @@
 # Maintainer: sockeye-d (me@fishies.dev)
 pkgname=godl
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Godot project and version manager"
 arch=('x86_64')
 url="https://codeberg.org/fishn/godl"
 license=('MIT')
-source=("git+https://codeberg.org/fishn/godl.git#tag=v${pkgver}" "git+https://invent.kde.org/fishy/kitemviews#commit=52fe8223f50dbe72f37f885ab0a870a6145dd2c4")
+source=("git+https://codeberg.org/fishn/godl.git#tag=v${pkgver}" "git+https://invent.kde.org/fishy/kitemviews#commit=2ff9b54452e3218f5eb0c030a4f6633cb8aa9faf")
 sha256sums=('SKIP' 'SKIP')
 depends=('git' 'qt6-base' 'kcoreaddons' 'kconfig' 'kconfigwidgets' 'karchive' 'kwidgetsaddons' 'kxmlgui' 'kcolorscheme')
 optdepends=('scons: for godot-cpp project development')

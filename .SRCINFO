@@ -1,6 +1,6 @@
 pkgbase = godl
 	pkgdesc = Godot project and version manager
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://codeberg.org/fishn/godl
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = godl
 	depends = kxmlgui
 	depends = kcolorscheme
 	optdepends = scons: for godot-cpp project development
-	source = git+https://codeberg.org/fishn/godl.git#tag=v1.4.0
-	source = git+https://invent.kde.org/fishy/kitemviews#commit=52fe8223f50dbe72f37f885ab0a870a6145dd2c4
+	source = git+https://codeberg.org/fishn/godl.git#tag=v1.4.1
+	source = git+https://invent.kde.org/fishy/kitemviews#commit=2ff9b54452e3218f5eb0c030a4f6633cb8aa9faf
 	sha256sums = SKIP
 	sha256sums = SKIP
 
