@@ -1,0 +1,22 @@
+post_install() {
+  cat <<'MSG'
+
+==> CodexBar installed. To use it:
+      Right-click your panel -> Add Widgets... -> search "CodexBar"
+      Right-click the widget -> Configure CodexBar... to pick providers.
+    The codexbar CLI reads credentials from the provider tools you already
+    use (Claude Code, Codex CLI, ...) -- no extra login needed.
+
+MSG
+}
+
+post_upgrade() {
+  cat <<'MSG'
+
+==> If the widget is already on a panel, restart plasmashell to reload
+    its QML:
+      systemctl --user restart plasma-plasmashell.service
+      # non-systemd session: kquitapp6 plasmashell && kstart plasmashell
+
+MSG
+}
