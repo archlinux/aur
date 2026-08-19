@@ -5,7 +5,7 @@
 
 pkgname=python-cohere
 pkgdesc='Python Library for Accessing the Cohere API'
-pkgver=7.0.8
+pkgver=7.0.9
 pkgrel=1
 url='https://github.com/cohere-ai/cohere-python'
 arch=(any)
@@ -37,7 +37,7 @@ optdepends=(
   'python-botocore: AWS client'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-b2sums=('f49732ba68c53463b4d8c72b86777d50fa15526f94b27cbfc3ad1f984eefa06ed200632a7083abbe53138abe95af2522227b2b97e9015e72f92b60cca349aa7b')
+b2sums=('b71109d0da93a1898ba3563e4f2bd23a2800b3275cc7de0350a27ced9fe704dfdf40444dd3bea1f2d81e3b3a8ed6f2bebc02ac5a6f494a592860788a0a426e46')
 
 build() {
   cd "cohere-python-${pkgver}"
