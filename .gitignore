@@ -1,0 +1,5 @@
+# 只跟踪打包脚本本身，其余全部忽略
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
