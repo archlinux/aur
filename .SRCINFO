@@ -1,7 +1,7 @@
 pkgbase = niri-shorin-fork-git
 	pkgdesc = Niri fork with built-in screencast portal, grid, cursor enlarge, magnifier, SVG cursors, SHM screencast etc.
-	pkgver = 26.04.r129.g8622b52
-	pkgrel = 1
+	pkgver = 26.04.r183.g8b40994
+	pkgrel = 2
 	url = https://github.com/SHORiN-KiWATA/niri
 	arch = x86_64
 	arch = aarch64
@@ -30,8 +30,8 @@ pkgbase = niri-shorin-fork-git
 	optdepends = xdg-desktop-portal-gtk: file chooser and Access impl required by the screenshot portal
 	optdepends = gnome-keyring: implements the secret portal, for certain apps to work
 	optdepends = polkit-gnome: when apps need to ask for root permissions
-	provides = niri=26.04.r129.g8622b52
-	provides = niri-git=26.04.r129.g8622b52
+	provides = niri=26.04.r183.g8b40994
+	provides = niri-git=26.04.r183.g8b40994
 	conflicts = niri
 	conflicts = niri-git
 	conflicts = niri-bin

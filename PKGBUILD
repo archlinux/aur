@@ -8,8 +8,8 @@
 
 pkgname=niri-shorin-fork-git
 _pkgname=niri
-pkgver=26.04.r129.g8622b52
-pkgrel=1
+pkgver=26.04.r183.g8b40994
+pkgrel=2
 pkgdesc="Niri fork with built-in screencast portal, grid, cursor enlarge, magnifier, SVG cursors, SHM screencast etc."
 arch=(x86_64 aarch64)
 url="https://github.com/SHORiN-KiWATA/niri"
