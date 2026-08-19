@@ -8,7 +8,7 @@ _rules_ver='5.1.0'
 _libs_ver='0.25.4'
 _driver_ver='10.2.0'
 _ctl_ver='0.13.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Falco is a cloud native runtime security tool for Linux operating systems'
 arch=('x86_64' 'aarch64')
 url="https://${pkgname}.org/"
@@ -24,13 +24,15 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgname}/tar.gz
 	"libs-${_libs_ver}.tar.gz::https://codeload.${_uri}/libs/tar.gz/refs/tags/${_libs_ver}"
 	"libs-${_driver_ver}-driver.tar.gz::https://codeload.${_uri}/libs/tar.gz/refs/tags/${_driver_ver}+driver"
 	"${pkgname}ctl-${_ctl_ver}.tar.gz::https://codeload.${_uri}/${pkgname}ctl/tar.gz/refs/tags/v${_ctl_ver}"
-	"${pkgname}.service")
+	"${pkgname}.service"
+	"${pkgname}.sysusers")
 sha256sums=('661d0dc62f0eb82352f8b176e423bd34fdc44ca4c98b3f329fd73d984f0c50f5'
             '8b1a9e61030e88ca3e8727cfe20bab8f662d6e2e6b13178e2be57d38e025af24'
             '272a5a0c05e7c10a658ed9649023e6179061a4ab29e012602893586ac64b5938'
             '0e585f5fc2b76696ef2cb902f0901ea39a2f2df87e1f091f3348f968b9085f39'
             '804a37e6372201ee21d3bc99ffea6079484b557ece0aa17719dbc6e8cb2b5fec'
-            '7b724de183e1eed74765f7926320e892642fcca2fce927ef65c405fa6d589454')
+            '842dc610acb6d9df53bb0b225fda96ddb1e1b2560c9fd511fafefbe2ab9c22a6'
+            'ce971a3f52ab84182146da14651eabbac9b33157bacebe5efc087f461d18bc49')
 
 prepare() {
   export GOPATH="${srcdir}/gopath"
@@ -38,9 +40,9 @@ prepare() {
   export GOCACHE="${srcdir}/cache/go-cache"
   export GOMODCACHE="${srcdir}/cache/go"
   export GOTMPDIR="${GOPATH}/tmp"
-  eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   mkdir -p "${GOPATH}/src/${_uri}"
-  mkdir -p "${GOPATH}/tmp"
+  mkdir -p "${GOTMPDIR}"
+  eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   ln -snf "${srcdir}/${pkgname}ctl-${_ctl_ver}" "${GOPATH}/src/${_uri}/${pkgname}ctl"
 
   # Use distro FORTIFY_SOURCE
@@ -151,6 +153,7 @@ package() {
   DESTDIR="${pkgdir}" cmake --install "build" --config "release"
   install -Dm0644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm0644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm0644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   # Some compiled stuff from Internet
   rm -rf "${pkgdir}/usr/share/${pkgname}/plugins"
 }

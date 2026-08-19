@@ -9,11 +9,11 @@ StartLimitBurst=3
 [Service]
 Restart=on-failure
 RestartSec=30
-User=root
-Group=root
-ExecStart=/usr/bin/falco -c /etc/falco/falco.yaml --pidfile /run/falco.pid
+User=falco
+Group=falcosecurity
+ExecStart=/usr/bin/falco -c /etc/falco/falco.yaml --pidfile /run/falco/falco.pid
 ExecReload=/bin/kill -HUP $MAINPID
-NoNewPrivileges=true
+NoNewPrivileges=false
 ProtectHome=true
 ProtectSystem=strict
 ProtectHostname=true
@@ -21,12 +21,12 @@ ProtectControlGroups=true
 ProtectKernelModules=true
 ProtectKernelTunables=true
 LockPersonality=true
-RestrictRealtime=yes
-RestrictNamespaces=yes
-MemoryDenyWriteExecute=yes
-PrivateDevices=yes
+RestrictRealtime=true
+RestrictNamespaces=true
+MemoryDenyWriteExecute=true
+PrivateDevices=true
 PrivateTmp=true
-CapabilityBoundingSet=
+AmbientCapabilities=CAP_SYS_ADMIN CAP_SYS_PTRACE CAP_SYS_RESOURCE CAP_DAC_OVERRIDE
 RestrictAddressFamilies=~AF_PACKET
 
 [Install]
