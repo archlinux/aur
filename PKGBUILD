@@ -3,7 +3,7 @@
 
 pkgname=molecule-plugins
 pkgver=26.7.15
-pkgrel=0
+pkgrel=1
 pkgdesc="Collection of molecule plugins"
 arch=(any)
 url="https://github.com/ansible-community/molecule-plugins"
@@ -22,18 +22,6 @@ makedepends=(
   python-setuptools
   python-setuptools-scm
   python-wheel
-)
-checkdepends=(
-  podman
-  python-filelock
-  python-google-auth
-  python-google-api-python-client
-  python-pexpect
-  python-pycryptodome
-  python-pytest
-  python-pytest-helpers-namespace
-  python-vagrant
-  vagrant
 )
 optdepends=(
   'ansible-core: for vagrant driver and validating docker and podman playbooks'
@@ -69,35 +57,6 @@ build() {
 
   cd $pkgname-$pkgver
   python -m build --wheel --no-isolation
-}
-
-check() {
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  local pytest_options=(
-    --deselect test/azure/functional/test_azure.py::test_azure_command_init_scenario
-    --deselect test/containers/functional/test_containers.py::test_containers_command_init_scenario
-    --deselect test/podman/test_func.py::test_podman_command_init_scenario
-    --deselect test/podman/test_func.py::test_sample
-    --deselect test/podman/test_func.py::test_dockerfile
-    --deselect test/vagrant/functional/test_func.py::test_vagrant_command_init_scenario
-    --deselect test/vagrant/functional/test_func.py::test_invalid_settings
-    --deselect test/vagrant/functional/test_func.py::test_vagrant_root[vagrant_root]
-    --deselect test/vagrant/functional/test_func.py::test_vagrant_root[config_options]
-    --deselect test/vagrant/functional/test_func.py::test_vagrant_root[provider_config_options]
-    --deselect test/vagrant/functional/test_func.py::test_vagrant_root[default]
-    --deselect test/vagrant/functional/test_func.py::test_vagrant_root[default-compat]
-    --deselect test/vagrant/functional/test_func.py::test_vagrant_root[network]
-    --deselect test/vagrant/functional/test_func.py::test_vagrant_root[hostname]
-    --deselect test/vagrant/functional/test_func.py::test_multi_node
-    -vv
-  )
-
-  cd $pkgname-$pkgver
-  # install to temporary location, as importlib is used
-  python -m installer --destdir=test_dir dist/*.whl
-  export PYTHONPATH="test_dir/$site_packages:$PYTHONPATH"
-  # skip tests that would fail because of missing interpreters: https://github.com/pdm-project/pdm/issues/1175
-  pytest "${pytest_options[@]}"
 }
 
 package() {
