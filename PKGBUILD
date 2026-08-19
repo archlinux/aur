@@ -1,25 +1,28 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=ownfoil
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 pkgdesc='Switch library manager, with a self-hosted Tinfoil Shop'
 arch=('any')
 url='https://github.com/a1ex4/ownfoil'
 license=('custom')
 depends=(
   'python'
-  'python-croniter'
   'python-flask'
+  'python-flask-sock'
   'python-flask-login'
   'python-flask-migrate'
   'python-flask-sqlalchemy'
   'python-yaml'
+  'python-nstools'
   'python-requests'
-  'python-unzip-http'
   'python-watchdog'
   'python-werkzeug'
   'python-zstandard'
+  'python-setproctitle'
+  'python-strawberry-graphql'
+  'gunicorn'
   'nsz'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
@@ -27,8 +30,8 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         'ownfoil.sysusers'
         'ownfoil.tmpfiles'
 )
-sha256sums=('488516a446a0236a78b30fa452c9cf3a1dde49dc0b7db62b91a51cab9015a870'
-            '528de3cc691edb57a44e512024832a1a1d0947dbbcda84e487b033150edc6193'
+sha256sums=('61900362946cfbe9f5bb518dcacb7f428753c7783e7417e60a9ee410ba60f004'
+            '6125cf80726fc954208f5daf6dfce3836f94ed019d307454185ca7414021f11f'
             'aee7a6c72d655e29365fe266165ffb714666507a9536871500ced59e0f5d992f'
             'abe899a8eecb080f3b938c2441e09838a539f6bfc00e8207ade74bb18c1a5a12')
 

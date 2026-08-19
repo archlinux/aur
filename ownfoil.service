@@ -9,7 +9,7 @@ User=ownfoil
 Group=ownfoil
 SyslogIdentifier=ownfoil
 WorkingDirectory=/usr/lib/ownfoil
-ExecStart=/usr/bin/python3 /usr/lib/ownfoil/app.py
+ExecStart=/usr/bin/python3 /usr/lib/ownfoil/run.py
 
 [Install]
 WantedBy=multi-user.target
