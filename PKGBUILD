@@ -2,7 +2,7 @@
 # Maintainer: omartelo <meopedevts at proton dot me>
 
 pkgname='youtrack-tui-bin'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Read-only terminal UI for browsing YouTrack issues'
 url='https://github.com/omartelo/youtrack-tui'
@@ -12,10 +12,10 @@ provides=('youtrack-tui')
 conflicts=('youtrack-tui')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/omartelo/youtrack-tui/releases/download/v${pkgver}/youtrack-tui-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('1a7e390e60a299fbc4222d310fbce14b2d093d080625c5247deeb44dc0840e9c')
+sha256sums_aarch64=('9f0943b6d755dec0ce00779b0b3d1d4e5476cd7c1362d8c3495fa46960fa4cb6')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/omartelo/youtrack-tui/releases/download/v${pkgver}/youtrack-tui-${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('538c8503df85d329e8a1ffa8ecde52088f53c7b58550c3433f82bf351eeefff9')
+sha256sums_x86_64=('0beb00556c5330f7c3146a71f5ff51f323c4d1f264a8b6f0c0c26fb5d612ce11')
 
 package() {
   install -Dm755 "./youtrack-tui" "${pkgdir}/usr/bin/youtrack-tui"
