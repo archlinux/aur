@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=tty7-bin
 pkgver=26.8.3
-pkgrel=1
+pkgrel=3
 pkgdesc="A terminal workbench in pure Rust: shells, persistent sessions, SSH, coding agents. GPU-rendered on Zed's gpui, VT core from Alacritty."
 arch=('x86_64')
 url="https://github.com/l0ng-ai/tty7"
@@ -37,12 +37,15 @@ sha256sums_x86_64=('f514aca8740179b2e8484599d286544e09978f197aa873458813d4bb7803
 package() {
     local _release_dir="${srcdir}/tty7-${pkgver}-linux-x86_64"
 
-    # Keep runtime-loaded completion specifications beside the real executable.
+    # The GUI resolves the CLI beside its own executable, and the CLI loads
+    # completion specifications from the same runtime directory.
+    install -Dm755 "${_release_dir}/tty7-app" "${pkgdir}/usr/lib/tty7/tty7-app"
     install -Dm755 "${_release_dir}/tty7" "${pkgdir}/usr/lib/tty7/tty7"
     install -dm755 "${pkgdir}/usr/lib/tty7/completions"
     install -Dm644 "${_release_dir}"/completions/*.json -t "${pkgdir}/usr/lib/tty7/completions"
 
     install -dm755 "${pkgdir}/usr/bin"
+    ln -s ../lib/tty7/tty7-app "${pkgdir}/usr/bin/tty7-app"
     ln -s ../lib/tty7/tty7 "${pkgdir}/usr/bin/tty7"
 
     install -Dm644 "${_release_dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
@@ -56,8 +59,8 @@ Version=1.0
 Name=tty7
 GenericName=Terminal Emulator
 Comment=A terminal workbench for shells, persistent sessions, SSH, and coding agents
-TryExec=tty7
-Exec=tty7
+TryExec=tty7-app
+Exec=tty7-app
 Icon=tty7
 Terminal=false
 Categories=System;TerminalEmulator;

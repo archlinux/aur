@@ -1,7 +1,7 @@
 pkgbase = tty7-bin
 	pkgdesc = A terminal workbench in pure Rust: shells, persistent sessions, SSH, coding agents. GPU-rendered on Zed's gpui, VT core from Alacritty.
 	pkgver = 26.8.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/l0ng-ai/tty7
 	arch = x86_64
 	license = Apache-2.0
