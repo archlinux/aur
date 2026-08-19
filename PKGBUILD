@@ -4,7 +4,7 @@ pkgname=forge-server-unstable
 pkgdesc="Forge is a free, open-source modding API all of your favourite mods use!"
 url="https://minecraftforge.net"
 
-pkgver=65.1.1
+pkgver=65.1.2
 pkgrel=1
 _minecraftver=26.2
 _licensever=26.2
@@ -14,7 +14,7 @@ arch=("any")
 license=("custom")
 depends=("jdk-openjdk")
 optdepends=("tar: needed in order to create world backups")
-provides=("forge-server-unstable=65.1.1")
+provides=("forge-server-unstable=65.1.2")
 backup=("opt/forge-server-unstable/banned-ips.json"
         "opt/forge-server-unstable/banned-players.json"
         "opt/forge-server-unstable/config"
@@ -34,7 +34,7 @@ source=("https://raw.githubusercontent.com/MinecraftForge/MinecraftForge/${_lice
         "eula.txt")
 noextract=("forge-${_minecraftver}-${pkgver}-installer.jar")
 sha512sums=("1f30ec90fae7f3b450affdd73cf3dce738287eecc274fd6d066a575bf75b19d6988b482144a33c80603326485d6b69b0cac866dc5ab25feccfce912d920712fa"
-            "39d728f774aa3f70191b0299b88b1eb923ae605aafb621727dd0d56e2b75b0089fc6da59fa647f90822e8aded7985bd3506ab8a61b8783120b629fd3af3837e1"
+            "95ce985c9d1f8c9cd9cd418bf0c65ae777800698b0b9916c80b72f105d041c44ff79e08be2701f559a3ccf3412fbd3aa50b602524e58b2bc36ba358ae963133b"
             "bfda8a268b2fcb9877fe716d2d3f68b6bc11ba056d8890178c40e51995fa067b2b4f2e1865c0dcc7489dd037f22fe95ae8b5d50b9cb7000ce4854c48072c042d"
             "68205ffc60327c67a5ebe778598c3350d64b48aad9dacf52fcde435a535a074ba2056db30dff1b18e3c8e38510acd6ececa298b13cd4c4203636560fa4cf70cb")
 
