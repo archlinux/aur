@@ -1,26 +1,18 @@
 # Maintainer: Jenrikku (JkKU)
 pkgname=narc-cli
 _reponame=NARC-CLI
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
-_narcsharpcommit=5654376
-_narcsharpref=5654376ffe4950a9d08dab83710a096fce1bf4ba
 pkgdesc="A quick NARC cli app for reading, modifying and creating NARC files"
 arch=('x86_64')
 url="https://github.com/Jenrikku/NARC-CLI"
 license=('BSD-3-Clause')
-depends=('dotnet-runtime')
-makedepends=('dotnet-sdk-9.0')
+depends=('dotnet-runtime-10.0')
+makedepends=('dotnet-sdk>=10.0')
 optdepends=()
 options=('!strip')
-source=("$_reponame-$pkgver.tar.gz::https://github.com/Jenrikku/NARC-CLI/archive/refs/tags/$pkgver.tar.gz"
-        "NARCSharp-$_narcsharpref.tar.gz::https://api.github.com/repos/Jenrikku/NARCSharp/tarball/$_narcsharpref")
-sha256sums=('1a1395bce13b0c43e0e7e68c5d8a13e2dbbaff354a6bee1966c907a05c2673a6'
-            '6354e1293d7e1b4ef66a09d4c21369cab14809820785ff291110349916634c63')
-
-prepare() {
-	cp -rT "Jenrikku-NARCSharp-$_narcsharpcommit" "$_reponame-$pkgver/NARCSharp"
-}
+source=("$_reponame-$pkgver.tar.gz::https://github.com/Jenrikku/NARC-CLI/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('4a1aab2612a2a9774e4f16977111799847a9ef5f778b9f8f0e679cdf5db8e2cd')
 
 build() {
 	cd "$_reponame-$pkgver"
@@ -31,7 +23,7 @@ package() {
 	install -dm755 "$pkgdir/usr/share/narc-cli"
 	install -dm755 "$pkgdir/usr/bin"
 
-	cp -r "$_reponame-$pkgver/$_reponame/bin/Release/net9.0/linux-x64/publish/"* "$pkgdir/usr/share/narc-cli"
+	cp -r "$_reponame-$pkgver/$_reponame/bin/Release/net10.0/linux-x64/publish/"* "$pkgdir/usr/share/narc-cli"
 	rm "$pkgdir/usr/share/narc-cli/"*.pdb
 	chmod 755 "$pkgdir/usr/share/narc-cli/narc"
 
