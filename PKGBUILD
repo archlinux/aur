@@ -2,10 +2,10 @@
 pkgname=fastwc-bin
 pkgver=0
 pkgrel=1
-pkgdesc="A fast wc rewrite (x86_64 Linux only) — prebuilt binary from latest tested CI build"
+pkgdesc="fastwc, a fast wc rewrite, prebuilt binary"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastwc"
-license=('GPL-3.0-or-later')
+license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('git' 'curl')
 provides=('fastwc')
