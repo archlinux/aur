@@ -46,7 +46,7 @@ prepare() {
 	# work around sccache brokenness around $SOURCE_DATE_EPOCH
 	git apply -3 "$srcdir/0001-build-work-around-sccache-do-not-read-SOURCE_DATE_EP.patch"
 
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
