@@ -1,20 +1,18 @@
-# Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
+# Maintainer: imjiaoyuan <imjiaoyuan@gmail.com>
+# Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 pkgname=paml
-pkgver=4.10.9
+pkgver=4.10.10
 pkgrel=1
-pkgdesc="Phylogenetic analysis by maximum likelihood. https://doi.org/10.1093/molbev/msm088"
+pkgdesc="Phylogenetic analysis by maximum likelihood"
 arch=('x86_64')
-url="http://abacus.gene.ucl.ac.uk/software/"
+url="https://github.com/abacus-gene/paml"
 license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('make')
-source=("https://github.com/abacus-gene/paml/archive/refs/tags/v${pkgver}.zip"
-	"mcmctree78.patch::https://github.com/abacus-gene/paml/pull/78.patch")
-sha256sums=('7f71fb83fe57532e96e00dba3f7e3b5c746e170337ac0f91566de77163923f48'
-            'bbd4f1ad72beb315e17616eef19599fd238f35a5da1caf3fac149efec285fb29')
+source=("https://github.com/abacus-gene/paml/archive/refs/tags/v${pkgver}.zip")
+sha256sums=('92ca1de12797d757472dc2ac04576dd629dbb8c447368c152f6a5a72c0c42fc1')
 prepare(){
 	cd "$pkgname-$pkgver"/
-	patch -p1 < $srcdir/mcmctree78.patch
 	mkdir -p bin
 }
 build() {
