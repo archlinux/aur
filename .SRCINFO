@@ -1,6 +1,6 @@
 pkgbase = keyward-bin
 	pkgdesc = Terminal UI to manage SSH keys, edit ~/.ssh/config, and audit your SSH security
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/gateway-of-last-resort/keyward
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = keyward-bin
 	provides = keyward
 	conflicts = keyward
 	options = !strip
-	source_x86_64 = keyward-x86_64-1.0.2.tgz::https://github.com/gateway-of-last-resort/keyward/releases/download/v1.0.2/keyward_1.0.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 55caa52c48a3219e0d51788605369ab912d0fdf9278da8d5834689fbfc7356d2
-	source_aarch64 = keyward-aarch64-1.0.2.tgz::https://github.com/gateway-of-last-resort/keyward/releases/download/v1.0.2/keyward_1.0.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 74ca0c7ebe090e549ba05912eddb068c88797065bfaf6bedd61c98513ee3a12d
+	source_x86_64 = keyward-x86_64-1.0.3.tgz::https://github.com/gateway-of-last-resort/keyward/releases/download/v1.0.3/keyward_1.0.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 2bedca254e3278db79cc9ae95874e4d0c00dcfc77d9f33c2712c9f314b5cb3e0
+	source_aarch64 = keyward-aarch64-1.0.3.tgz::https://github.com/gateway-of-last-resort/keyward/releases/download/v1.0.3/keyward_1.0.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = b529a74adfb136b0a9767ee79a68cab2ba90897bf91f64bd2b3e21521071aa3b
 
 pkgname = keyward-bin
