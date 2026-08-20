@@ -2,21 +2,20 @@
 
 _basename=coccinelle
 pkgname=$_basename-bin
-_distver=1.3
-pkgver=$_distver.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="C source code matching and transformation engine. Without spgen and Python bindings."
 arch=('x86_64')
 url="https://coccinelle.lip6.fr"
 license=('GPL-2.0-or-later')
-depends=('glibc')
+depends=('glibc' 'pcre2')
 conflicts=('coccinelle' 'coccinelle-git')
 provides=('coccinelle')
-source=("https://coccinelle.gitlabpages.inria.fr/website/distrib/coccinelle-${_distver}-bin-x86.tar.gz")
-b2sums=('c29c1775837b7bd19ad70540e50099cbfee8f15222dc4117b5fd6177ffb2c0352154966e1d155e3ca74ed2f5747530270c646d8397cd4a858e5a1ebafcc3c917')
+source=("https://coccinelle.gitlabpages.inria.fr/website/distrib/coccinelle-${pkgver}-bin-x86.tar.gz")
+b2sums=('511762cbe6e2a59e081eb9f4c272a27b3098684fdfd5205a8cdd0e88e02d12faebbfdad20da081428b629867a6fe9d3207f1e3e1b7f250ca45cff58db39fc5a3')
 
 package() {
-        cd $srcdir/$_basename-$_distver
+        cd $srcdir/$_basename-$pkgver
 
 	# spatch
 	strip spatch.opt
