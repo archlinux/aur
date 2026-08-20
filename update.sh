@@ -1,8 +1,8 @@
 #!/bin/bash
-# metabuli: source build from the release tag's GitHub archive; single source, so
-# the checksum is refreshed with a single-line sed. Version detection uses
-# releases/latest; makepkg forbids hyphens in pkgver, so '-' becomes '_' and
-# the raw tag lives in _tag.
+# metabuli: source build from a git tag pin (the GitHub tag archive omits the
+# lib/mmseqs and lib/fasta_validator submodules), so _tag holds the tag's
+# commit hash and makepkg fetches the submodules. Version detection uses
+# releases/latest; makepkg forbids hyphens in pkgver, so '-' becomes '_'.
 set -e
 
 REPO="steineggerlab/Metabuli"
@@ -31,20 +31,20 @@ fi
 
 echo "==> Updating to version $LATEST_VERSION..."
 
-TARBALL_URL="https://github.com/${REPO}/archive/${LATEST_TAG}.tar.gz"
-echo "Downloading $TARBALL_URL..."
-curl -sL "$TARBALL_URL" -o /tmp/$PKGNAME-$LATEST_TAG.tar.gz
-
-SHA256=$(sha256sum /tmp/$PKGNAME-$LATEST_TAG.tar.gz | awk '{print $1}')
-echo "SHA256: $SHA256"
-
-rm -f /tmp/$PKGNAME-$LATEST_TAG.tar.gz
+# resolve the tag to its commit hash (peel annotated tags); git protocol,
+# no API rate limit
+HASH=$(git ls-remote "https://github.com/${REPO}.git" "${LATEST_TAG}^{}" | cut -f1)
+[ -n "$HASH" ] || HASH=$(git ls-remote "https://github.com/${REPO}.git" "$LATEST_TAG" | cut -f1)
+if [ -z "$HASH" ]; then
+    echo "Error: could not resolve tag $LATEST_TAG to a commit"
+    exit 1
+fi
+echo "Commit: $HASH"
 
 echo "==> Updating PKGBUILD..."
-sed -i "s/^_tag=.*/_tag=$LATEST_TAG/" PKGBUILD
+sed -i "s/^_tag=.*/_tag=$HASH/" PKGBUILD
 sed -i "s/^pkgver=.*/pkgver=$LATEST_VERSION/" PKGBUILD
 sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
-sed -i "s/^sha256sums=.*/sha256sums=('$SHA256')/" PKGBUILD
 
 echo "==> Generating .SRCINFO..."
 makepkg --printsrcinfo > .SRCINFO
