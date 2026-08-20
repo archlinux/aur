@@ -1,6 +1,6 @@
 pkgbase = git-profile-switcher-bin
 	pkgdesc = Cross-platform desktop tray app for managing multiple Git identities
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Kinau-Guatemala/git-profile-switcher
 	arch = x86_64
@@ -32,9 +32,9 @@ pkgbase = git-profile-switcher-bin
 	conflicts = git-profile-switcher-git
 	options = !strip
 	options = !debug
-	source = git-profile-switcher-bin-1.1.0.AppImage::https://github.com/Kinau-Guatemala/git-profile-switcher/releases/download/v1.1.0/Git.Profile.Switcher-1.1.0.AppImage
-	source = LICENSE-1.1.0::https://raw.githubusercontent.com/Kinau-Guatemala/git-profile-switcher/v1.1.0/LICENSE
-	sha256sums = d6483b470012313c8167c94c4bb5275994c67466090e8fa83772e0104c6df626
+	source = git-profile-switcher-bin-1.2.0.AppImage::https://github.com/Kinau-Guatemala/git-profile-switcher/releases/download/v1.2.0/Git.Profile.Switcher-1.2.0.AppImage
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/Kinau-Guatemala/git-profile-switcher/v1.2.0/LICENSE
+	sha256sums = 834cbcca4e2c9b4b0c163e28dac91404ad2621f35ba69ea5cebe9e3a7dfcc299
 	sha256sums = a75d1cbb2e90e3438c93ec0977d445e2c7c9fb35b9ba858d1a5407d72e516b6c
 
 pkgname = git-profile-switcher-bin
