@@ -1,9 +1,10 @@
 # Maintainer: djsigmann <aur+djsigmann@protonmail.com>
+# Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 # shellcheck disable=SC2164
 
 pkgver=2.2.4.r6.g8445d99
-pkgrel=2
+pkgrel=3
 
 _pkgname=casual-pre-loader
 pkgname="${_pkgname}-git"
