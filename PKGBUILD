@@ -2,9 +2,9 @@
 
 pkgname=wealthfolio-bin
 _pkgname=Wealthfolio
-pkgver=3.6.3
+pkgver=3.7.0
 pkgrel=1
-pkgdesc="A Beautiful and Boring Investment Tracker, with Local Data Storage. No Subscriptions, No Cloud."
+pkgdesc="A beautiful, private, local-first personal finance tracker. Investments, net worth, spending, and simulations."
 arch=('x86_64' 'aarch64')
 url="https://wealthfolio.app/"
 license=('AGPL-3.0')
@@ -23,8 +23,8 @@ changelog=
 source_x86_64=("${_pkgname}_${pkgver}_x86_64.deb::https://github.com/wealthfolio/${pkgname%-bin}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("${_pkgname}_${pkgver}_aarch64.deb::https://github.com/wealthfolio/${pkgname%-bin}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_arm64.deb")
 noextract=()
-sha256sums_x86_64=('aef246a372344445f530ae0cc6b2a4f584c1ca94b5e854d53e9f85045f3e9d5e')
-sha256sums_aarch64=('f3041062cdfea3bcc31af1e86bfa69b74286233ccbf6ee1fb0d4d208ec49cc3e')
+sha256sums_x86_64=('492a7e42cdf2e8e9cae8ba7058ec81dee660fe3cd7aa4ef2cf7435dadac13235')
+sha256sums_aarch64=('8381c04396e72f6e1280b6bfde45d0caa35ae4fa1387056cf7d0aeabb4542732')
 validpgpkeys=()
 
 prepare() {
