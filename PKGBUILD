@@ -1,7 +1,7 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 
 pkgname=miyu-git
-pkgver=0.4.0.r436.gacc3a91
+pkgver=0.4.4.r638.g78925a6c
 pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
@@ -19,23 +19,15 @@ optdepends=(
 )
 provides=('miyu')
 conflicts=('miyu')
-_cjk_version='Sans2.004'
-_emoji_version='v2.051'
+# 字体(Noto CJK / Noto Emoji / JetBrains Mono)自 0.4.4 起 vendor 在源码树
+# assets/fonts 下,不再从上游单独拉取。
 source=(
   'miyu::git+https://github.com/SHORiN-KiWATA/Miyu.git'
   'shorinwiki::git+https://github.com/SHORiN-KiWATA/Shorin-ArchLinux-Guide.git'
-  "NotoSansCJK-Regular.ttc::https://raw.githubusercontent.com/notofonts/noto-cjk/${_cjk_version}/Sans/OTC/NotoSansCJK-Regular.ttc"
-  "NotoColorEmoji.ttf::https://raw.githubusercontent.com/googlefonts/noto-emoji/${_emoji_version}/fonts/NotoColorEmoji.ttf"
-  "NotoSansCJK.LICENSE::https://raw.githubusercontent.com/notofonts/noto-cjk/${_cjk_version}/LICENSE"
-  "NotoColorEmoji.LICENSE::https://raw.githubusercontent.com/googlefonts/noto-emoji/${_emoji_version}/LICENSE"
 )
 sha256sums=(
   'SKIP'
   'SKIP'
-  'b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a'
-  '72a635cb3d2f3524c51620cdde406b217204e8a6a06c6a096ff8ed4b5fd6e27b'
-  '6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2'
-  '500bb1ccf43df7bbb522112f9133a52b16e1c35e809632f5d8609b179152de5b'
 )
 
 pkgver() {
@@ -61,10 +53,12 @@ package() {
   cd miyu
   install -Dm755 "target/release/miyu" "${pkgdir}/usr/bin/miyu"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/NotoSansCJK-Regular.ttc" "${pkgdir}/usr/share/miyu/fonts/NotoSansCJK-Regular.ttc"
-  install -Dm644 "${srcdir}/NotoColorEmoji.ttf" "${pkgdir}/usr/share/miyu/fonts/NotoColorEmoji.ttf"
-  install -Dm644 "${srcdir}/NotoSansCJK.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NotoSansCJK.LICENSE"
-  install -Dm644 "${srcdir}/NotoColorEmoji.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NotoColorEmoji.LICENSE"
+  install -Dm644 "assets/fonts/NotoSansCJK-Regular.ttc" "${pkgdir}/usr/share/miyu/fonts/NotoSansCJK-Regular.ttc"
+  install -Dm644 "assets/fonts/NotoColorEmoji.ttf" "${pkgdir}/usr/share/miyu/fonts/NotoColorEmoji.ttf"
+  install -Dm644 "assets/fonts/JetBrainsMono-Regular.ttf" "${pkgdir}/usr/share/miyu/fonts/JetBrainsMono-Regular.ttf"
+  install -Dm644 "assets/fonts/NotoSansCJK.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NotoSansCJK.LICENSE"
+  install -Dm644 "assets/fonts/NotoColorEmoji.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NotoColorEmoji.LICENSE"
+  install -Dm644 "assets/fonts/JetBrainsMono.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/JetBrainsMono.LICENSE"
 
   if [[ -d src/memes ]]; then
     while IFS= read -r -d '' file; do
