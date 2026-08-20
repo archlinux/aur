@@ -2,28 +2,29 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='openvpn-auth-oauth2'
-pkgver='1.28.3'
+pkgver='2.0.0'
 pkgrel='1'
 pkgdesc='A Plugin/management interface client for OpenVPN server to handle an OIDC based single sign-on (SSO) auth flows'
 arch=('x86_64' 'aarch64')
 _uri="github.com/jkroepke"
 url="https://${_uri}/${pkgname}"
 license=('MIT')
-makedepends=('go')
+makedepends=('go' 'git')
 depends=('openvpn>=2.6.2')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgname}/tar.gz/refs/tags/v${pkgver}")
-sha256sums=('8e987a9f575d20f2e4e80abf833104613f50398e9578f7168cd583e2cb6b7082')
+sha256sums=('00a591984a3ac20883c8ad6412c81b80dd7022781e064a8c6f8075527a5cfa92')
 backup=("etc/conf.d/${pkgname}"
 	"etc/${pkgname}/config.yaml")
 
 prepare() {
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
+  export GOTMPDIR="${GOPATH}/tmp"
   export GOCACHE="${srcdir}/cache/go-cache"
   export GOMODCACHE="${srcdir}/cache/go"
-  export GOTMPDIR="${srcdir}"
-  eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   mkdir -p "${GOPATH}/src/${_uri}"
+  mkdir -p "${GOTMPDIR}"
+  eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgname}"
 
   sed -i \
@@ -51,7 +52,7 @@ build() {
           outname="${pkgname}"
       fi
 
-      go build -x \
+      go build \
         -buildmode="${mode}" \
         -trimpath \
         -mod="readonly" \
@@ -67,7 +68,7 @@ build() {
 
 check() {
   cd "${GOPATH}/src/${_uri}/${pkgname}"
-  go test -modcacherw -race ./...
+  TMPDIR="${GOPATH}/tmp" go test -modcacherw -race ./...
 }
 
 package() {
