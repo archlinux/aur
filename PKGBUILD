@@ -11,7 +11,7 @@ options=('!lto')
 depends=('wayland' 'libxkbcommon' 'dbus' 'cairo' 'libxcursor' 'alsa-lib' 'ffmpeg' 'pipewire' 'libdrm' 'mesa')
 makedepends=('cargo' 'pkgconf' 'clang')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f1469a3afcd6aa8239942a90146e2733bdf8ae8da67ddca527c1fb6b4506f209')
+sha256sums=('44dee9c71642c0669ea87b80495e5710dee1a654f3baa549e6ec978387eda5f8')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
