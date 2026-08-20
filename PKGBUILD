@@ -1,11 +1,12 @@
 pkgname=yamp-git
-pkgver=r136.g0d5921a
+pkgver=r137.750c7d2
 pkgrel=1
 pkgdesc="Yet Another Music Player - a QML based music player."
 arch=('x86_64')
 url="https://github.com/Wu28ri/yamp"
-license=('GPL3')
-depends=('qt6-base' 'qt6-declarative' 'mpv' 'taglib' 'libpulse')
+license=('GPL-3.0-only')
+depends=('qt6-base' 'qt6-declarative' 'mpv' 'taglib' 'libpulse' 'alsa-lib'
+         'zlib' 'libgcc' 'libstdc++' 'libglvnd')
 makedepends=('git' 'cmake' 'ninja')
 provides=('yamp')
 conflicts=('yamp')
@@ -21,6 +22,7 @@ build() {
   cd "$srcdir/yamp"
   cmake -B build -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DYAMP_LICENSE_INSTALL_DIR="/usr/share/licenses/$pkgname" \
     -DCMAKE_BUILD_TYPE=Release
   cmake --build build
 }
@@ -28,17 +30,4 @@ build() {
 package() {
   cd "$srcdir/yamp"
   DESTDIR="$pkgdir" cmake --install build
-
-  install -Dm644 "yamp.desktop" "$pkgdir/usr/share/applications/yamp.desktop"
-
-  for size in 16 22 24 32 48 64 96 128 192 256 512; do
-    install -Dm644 "icons/yamp-${size}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/yamp.png"
-  done
-
-  install -Dm644 "icons/yamp.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/yamp.svg"
-
-  install -Dm644 "icons/yamp-symbolic.svg" \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/yamp-symbolic.svg"
 }
