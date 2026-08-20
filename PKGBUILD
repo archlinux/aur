@@ -4,11 +4,11 @@ pkgname=metabuli-bin
 _pkgname=metabuli
 _tag=1.2.0
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Specific and sensitive metagenomic classification via joint amino acid and DNA k-mer analysis"
 arch=('x86_64')
 url="https://github.com/steineggerlab/Metabuli"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")

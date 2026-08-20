@@ -1,10 +1,10 @@
 pkgbase = metabuli-bin
 	pkgdesc = Specific and sensitive metagenomic classification via joint amino acid and DNA k-mer analysis
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/steineggerlab/Metabuli
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	depends = gcc-libs
 	provides = metabuli=1.2.0
 	conflicts = metabuli
