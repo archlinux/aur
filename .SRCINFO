@@ -1,6 +1,6 @@
 pkgbase = dataplot
 	pkgdesc = Software for scientific visualization, statistical analysis, and non-linear modeling.
-	pkgver = 20240806
+	pkgver = 20260810
 	pkgrel = 1
 	url = https://www.itl.nist.gov/div898/software/dataplot
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = dataplot
 	depends = readline
 	depends = termcap
 	depends = tk
-	source = https://www.itl.nist.gov/div898/software/dataplot/ftp/unix/dataplot-20240806.tar.gz
+	source = https://www.itl.nist.gov/div898/software/dataplot/ftp/unix/dataplot-20260810.tar.gz
 	source = dataplot.sh
-	sha512sums = 4a5ccea3529f8952c8ef6f569cbe5e27bcaa0f3dc0563a04d54b896fbf585be9f394466d27ab17599416b67c6019d52dbd0004ddb3b2bbc61cb0c4a583758621
+	sha512sums = 63a1d66004e104c3115e0d2261a2097f7361496e4534501fb58504631289cf39eb410d8d90ad5f8c9fc24c1dfc06e1d55b15444d5d5487c9fb260f122ae836ed
 	sha512sums = 62d40b182ec2212a0cf27ac548a3a4b46598291c7407dbb8d51633bf088841b3bdf1917c0b223c3d234e8eb149aba3a0ec5d35ac66a4ac4f1521a485ca87a411
 
 pkgname = dataplot
