@@ -2,7 +2,7 @@
 
 pkgbase=radicle-git
 pkgname=(radicle-{cli,node}-git)
-pkgver=1.9.1.r3.g0a03f1c84
+pkgver=1.10.1.r8.gea66c657d
 pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git"
 arch=('x86_64')
