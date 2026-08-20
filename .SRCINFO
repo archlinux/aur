@@ -1,6 +1,6 @@
 pkgbase = wayra-git
 	pkgdesc = A lightweight, high-performance standalone web server and directory explorer (latest).
-	pkgver = 0.0.0r39.gc8b5904
+	pkgver = 0.0.0r40.g0d55123
 	pkgrel = 1
 	url = https://github.com/YetAnotherMechanicusEnjoyer/wayra
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = wayra-git
 	arch = aarch64
 	license = GPL-3.0
 	depends = zig
-	source = wayra-0.0.0r39.gc8b5904.tar.gz::https://github.com/YetAnotherMechanicusEnjoyer/wayra/archive/refs/heads/main.tar.gz
+	source = wayra-0.0.0r40.g0d55123.tar.gz::https://github.com/YetAnotherMechanicusEnjoyer/wayra/archive/refs/heads/main.tar.gz
 	sha256sums = SKIP
 
 pkgname = wayra-git
