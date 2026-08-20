@@ -5,7 +5,7 @@
 pkgname=hodoku
 _pkgver=2.3.2-WIP
 pkgver=2.3.2_WIP
-pkgrel=1
+pkgrel=2
 pkgdesc="Sudoku generator/solver/analyzer"
 url="https://github.com/PseudoFish/Hodoku/"
 license=('GPL3')
@@ -16,8 +16,8 @@ source=("https://github.com/PseudoFish/Hodoku/releases/download/$_pkgver/Hodoku.
         $pkgname.png
         $pkgname.desktop)
 noextract=($pkgname.jar)
-md5sums=('f6ea6bd1fa98d90c9462a007ad4e84d4'
-         '6b02d39a3c75a162c236d997eaf270fe'
+md5sums=('a0f3717c2144d61a8f47d118ae7ce4eb'
+         'a34c67131f8011a28e4023bb08788225'
          '01d77a4d9f4fd1fb36690ee8a3bae6c4'
          '557ca158902fddf06cbda7c7c9480c08')
 
