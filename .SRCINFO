@@ -1,6 +1,6 @@
 pkgbase = webkit-wallpaper
 	pkgdesc = Linux desktop wallpaper powered by a webview - use any web page or WebGL shader as your background
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ekoputrapratama/webkit_wallpaper
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = webkit-wallpaper
 	depends = webkit2gtk-4.1
 	optdepends = gtk-layer-shell: Wayland layer shell support (Sway, Hyprland, COSMIC, KDE)
 	optdepends = libayatana-appindicator: System tray icon
-	source = https://github.com/ekoputrapratama/webkit_wallpaper/archive/refs/tags/v0.1.0.tar.gz
+	source = https://github.com/ekoputrapratama/webkit_wallpaper/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = webkit-wallpaper
