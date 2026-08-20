@@ -5,7 +5,7 @@ _pkgname="${pkgname//-bin/""}"
 __pkgname=konform
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=140.13.0_102
+pkgver=140.14.0_100
 _konformver="${pkgver%_*}"
 _konformrel="${pkgver#*_}"
 pkgrel=1
@@ -81,12 +81,12 @@ source=(
 )
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums=('38e59c9106a54fc3967dd8dd062eee6953b691c78751e0deb7683ebbf5fdf95c'
+sha256sums=('a964d5bc5fcecb35701396493dcdaad6ddbc6dffe80d17051e82b15178e8d5a9'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4')
-sha256sums_x86_64=('90c837fea8aecdcdaaf0aac6d53383a38d11990571c438c0b2363b951f7bf12c'
+sha256sums_x86_64=('165bac908be9a15395e9f503427acdfbccb52242ca44fad93eea4b7a132eadca'
                    'SKIP')
-sha256sums_aarch64=('05c9bbc8fcb566ac6976c3d8ff31afd20085085ff4f89dd6f913fff5ab3bed34'
+sha256sums_aarch64=('01318df697f48ae5e3cc14d934067e68df6a940b3922022177d57110d2887bdd'
                     'SKIP')
 
 package() {
