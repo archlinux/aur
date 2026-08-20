@@ -1,5 +1,5 @@
 pkgname=biject
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Schema-aware data diff tool with a Rust CLI and Tauri desktop UI"
 arch=('x86_64')
@@ -32,8 +32,8 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/vixinxiviir/biject/archive/refs/tags/v${pkgver}.tar.gz"
   "${pkgname}-vendor-${pkgver}.tar.zst::https://github.com/vixinxiviir/biject/releases/download/v${pkgver}/${pkgname}-vendor-${pkgver}.tar.zst"
 )
-sha256sums=('028b76c7c0c234946788bbe41e901d278896d6c331a8fa4b556773eadfa1f82f'
-            'ce46dc31ebad478f350ff6e7497a67b1e06aa9ee30e7a26aabe2c6e12eb5a827')
+sha256sums=('d1774041448fcec559fa3d6eb95a908f08b9a1b87082d5a4f7c4b822f839ff97'
+            '5618463500abad6a37e9460a7451940b0978e8938b705eb16a9a2355d9f961e0')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -74,4 +74,7 @@ package() {
   install -Dm644 tauri-app/src-tauri/icons/128x128@2x.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/biject.png"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Attribution for bundled dependencies; required by the permissive licences
+  # most of them use. Shipped in the release tarball.
+  install -Dm644 THIRD-PARTY-NOTICES.txt     "${pkgdir}/usr/share/licenses/${pkgname}/THIRD-PARTY-NOTICES.txt"
 }
