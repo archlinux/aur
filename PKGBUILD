@@ -49,11 +49,8 @@ package() {
 
   # Install the icons
   cd $srcdir/$_srcname
-	install -vDm644 ./art/library_capsule.png "${pkgdir}/usr/share/applications/${pkgname}/library_capsule.png"
-	install -vDm644 ./art/library_hero.png "${pkgdir}/usr/share/applications/${pkgname}/library_hero.png"
-	install -vDm644 ./art/library_logo.png "${pkgdir}/usr/share/applications/${pkgname}/library_logo.png"
-	install -vDm644 ./art/main_capsule.png "${pkgdir}/usr/share/applications/${pkgname}/main_capsule.png"
-	install -vDm644 ./art/icon.png "${pkgdir}/usr/share/applications/${pkgname}/icon.png"
+  # hhd-ui is hardcoded in the desktop file
+	install -vDm644 ./art/icon.png "${pkgdir}/usr/share/applications/hhd-ui.png"
 
   # Install scripts
 	install -vDm644 "./pkg/hhd-ui.desktop" -t "${pkgdir}"/usr/share/applications
