@@ -11,6 +11,8 @@ makedepends=(git cargo)
 options=(!lto)
 source=("${pkgname}::git+${url}.git")
 cksums=(SKIP)
+conflicts=(ccusage)
+provides=(ccusage)
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
