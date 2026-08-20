@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Mount and Blade Warband
+Comment=In a land torn asunder by incessant warfare, it is time to assemble your own band of hardened warriors and enter the fray. Lead your men into battle, expand your realm, and claim the ultimate prize: the throne of Calradia.
+Exec=gog-mount-and-blade-warband
+Icon=gog-mount-and-blade-warband
+Type=Application
+Terminal=false
+StartupNotify=true
+Categories=Game;

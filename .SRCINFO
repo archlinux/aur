@@ -1,0 +1,18 @@
+pkgbase = gog-mount-and-blade-warband
+	pkgdesc = Sandbox role-playing game that takes place in the medieval land of Calradia
+	pkgver = 2.068
+	pkgrel = 1
+	url = https://www.taleworlds.com/en/games/warband
+	arch = x86_64
+	license = custom
+	depends = libcurl-gnutls
+	options = !strip
+	options = staticlibs
+	source = gog-mount-and-blade-warband
+	source = gog-mount-and-blade-warband.desktop
+	source = mount_blade_warband_vc_2_068_72059.sh::gogdownloader://mount_blade_warband/en3installer0
+	sha256sums = 72f1d895646077f320913494c5f3293d8a9712dfe18f8ad5b32a7c73323278cd
+	sha256sums = 5d969c3a931f14eabc4b31905d3d161c110ee388d2a8d29c2df54f69190822e7
+	sha256sums = 57a681331b20933310d21d22dfa8c60d4ec4252a74d718c2e5760eac85a6c088
+
+pkgname = gog-mount-and-blade-warband
