@@ -2,7 +2,7 @@
 pkgname=mercurygram-desktop-bin
 _pkgname=mercurygram
 pkgver=7.0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Mercurygram Desktop messaging app'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mercurygram/mdesktop"
@@ -37,13 +37,13 @@ options=('!debug' '!strip')
 
 source=(
   "it.belloworld.${_pkgname}.desktop::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/lib/xdg/it.belloworld.${_pkgname}.desktop"
-  "icon16.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon16.png"
-  "icon32.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon32.png"
-  "icon48.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon48.png"
-  "icon64.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon64.png"
-  "icon128.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon128.png"
-  "icon256.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon256.png"
-  "icon512.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon512.png"
+  "${pkgname}-icon16.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon16.png"
+  "${pkgname}-icon32.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon32.png"
+  "${pkgname}-icon48.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon48.png"
+  "${pkgname}-icon64.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon64.png"
+  "${pkgname}-icon128.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon128.png"
+  "${pkgname}-icon256.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon256.png"
+  "${pkgname}-icon512.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon512.png"
 )
 source_x86_64=("https://github.com/${_pkgname^}/mdesktop/releases/download/v${pkgver}/${_pkgname^}-${pkgver}-linux-x86_64.tar.xz")
 source_aarch64=("https://github.com/${_pkgname^}/mdesktop/releases/download/v${pkgver}/${_pkgname^}-${pkgver}-linux-arm64.tar.xz")
@@ -67,8 +67,8 @@ package() {
 
   # Install icons
   for size in 16 32 48 64 128 256 512; do
-    if [ -f "$srcdir/icon${size}.png" ]; then
-      install -Dm644 "$srcdir/icon${size}.png" \
+    if [ -f "$srcdir/${pkgname}-icon${size}.png" ]; then
+      install -Dm644 "$srcdir/${pkgname}-icon${size}.png" \
         "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/it.belloworld.${_pkgname}.png"
     fi
   done
