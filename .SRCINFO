@@ -1,5 +1,5 @@
 pkgbase = web-eid
-	pkgver = 2.9.0.928
+	pkgver = 2.10.0.934
 	pkgrel = 1
 	url = https://www.id.ee/
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = web-eid
 	depends = qt6-svg
 	depends = hicolor-icon-theme
 	noextract = web_eid_webextension-2.2.1.xpi
-	source = web-eid::git+https://github.com/web-eid/web-eid-app.git?signed#tag=v2.9.0
+	source = web-eid::git+https://github.com/web-eid/web-eid-app.git?signed#tag=v2.10.0
 	source = web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git
 	source = https://addons.mozilla.org/firefox/downloads/file/4079746/web_eid_webextension-2.2.1.xpi
 	validpgpkeys = 1282B0F8809D0DC632C85A3F86B611CE24492160
 	validpgpkeys = D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D
-	sha256sums = a794871a1805b91faf7e440f31254a4a0ed2d67edb5737036da3cbd49c2fd901
+	sha256sums = 85d9d62268537c1a6e5458b61cd78eee6fceddf35890de7ab9b3efc3d32b0117
 	sha256sums = SKIP
 	sha256sums = 392666581a3e71130307eb94f9010b4ca843829f592db9a093ad68fc00ca59ba
 

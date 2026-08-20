@@ -1,8 +1,8 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgbase=web-eid
 pkgname=("web-eid-native" "web-eid-firefox" "web-eid-chrome")
-pkgver=2.9.0.928
-_rls_tag=v2.9.0
+pkgver=2.10.0.934
+_rls_tag=v2.10.0
 _ext_ver=2.2.1
 pkgrel=1
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=("$pkgbase::git+https://github.com/web-eid/web-eid-app.git?signed#tag=$_r
         "web-eid-libelectronic-id::git+https://github.com/web-eid/libelectronic-id.git"
         "https://addons.mozilla.org/firefox/downloads/file/4079746/web_eid_webextension-$_ext_ver.xpi")
 noextract=("web_eid_webextension-$_ext_ver.xpi")
-sha256sums=('a794871a1805b91faf7e440f31254a4a0ed2d67edb5737036da3cbd49c2fd901'
+sha256sums=('85d9d62268537c1a6e5458b61cd78eee6fceddf35890de7ab9b3efc3d32b0117'
             'SKIP'
             '392666581a3e71130307eb94f9010b4ca843829f592db9a093ad68fc00ca59ba')
 validpgpkeys=(
