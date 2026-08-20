@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=fx-agent-bin
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Unix like coding agent"
 arch=('aarch64' 'x86_64')
@@ -11,8 +11,8 @@ conflicts=('fx-agent' 'fx')
 depends=()
 options=('!debug')
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::https://github.com/vercel-labs/fx/releases/download/v${pkgver}/fx-linux-aarch64.tar.gz")
-sha256sums_aarch64=('867eb2d669693ae0b5e3453a571230ba3b67465626d566cbca83ae8432b1e03a')
-sha256sums_x86_64=('23d32e60233b24581b9ce1965b65bab6a46d5693a24add7817854aef3adf5bfb')
+sha256sums_aarch64=('9905a51c213d1b7fe3b5079f00fd3e61f2dba5bde707397991e9535c4a700caf')
+sha256sums_x86_64=('be9428636afb1196cb662b48ed57bbed3b95e7c37f2bc7849e02c0960fae1f01')
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://github.com/vercel-labs/fx/releases/download/v${pkgver}/fx-linux-x86_64.tar.gz")
 
 latestver() {
