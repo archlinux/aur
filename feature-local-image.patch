@@ -61,15 +61,15 @@ index fbb83406..e5579202 100644
 +
 +    #[test]
 +    fn openai_vision_provider_config_resolves_with_custom_url() {
-+        let custom_url = Some("http://localhost:50100/v1");
++        let custom_url = Some("http://localhost:20100/v1");
 +        std::env::set_var("OPENAI_API_KEY", "test-key");
 +        std::env::set_var("GROQ_API_KEY", "test-key");
 +
 +        let openai = openai_vision_provider_config("openai", custom_url);
-+        assert_eq!(openai.unwrap().0, "http://localhost:50100/v1/chat/completions");
++        assert_eq!(openai.unwrap().0, "http://localhost:20100/v1/chat/completions");
 +
 +        let groq = openai_vision_provider_config("groq", custom_url);
-+        assert_eq!(groq.unwrap().0, "http://localhost:50100/v1/chat/completions");
++        assert_eq!(groq.unwrap().0, "http://localhost:20100/v1/chat/completions");
 +
 +        std::env::remove_var("OPENAI_API_KEY");
 +        std::env::remove_var("GROQ_API_KEY");

@@ -6,7 +6,7 @@ This document describes how to configure and run the patched LibreFang package w
 
 ## 1. Local Speech-to-Text (STT)
 
-With the `feature-local-stt` patch, you can point Whisper-compatible transcription requests to a local service (like a custom python whisper-server or `llama.cpp` whisper server running on port `50090`).
+With the `feature-local-stt` patch, you can point Whisper-compatible transcription requests to a local service (like a custom python whisper-server or `llama.cpp` whisper server running on port `20090`).
 
 ### Configuration
 
@@ -17,7 +17,7 @@ Add the following to your `~/.librefang/config.toml` file:
 audio_transcription = true
 audio_provider = "openai"           # Use OpenAI-compatible Whisper protocol
 audio_model = "whisper-1"           # Target model ID
-audio_base_url = "http://localhost:50090/v1"  # Local STT server base URL
+audio_base_url = "http://localhost:20090/v1"  # Local STT server base URL
 ```
 
 And define `OPENAI_API_KEY` (even a dummy value like `"unused"`) in your `librefang.env` environment file:
@@ -29,7 +29,7 @@ OPENAI_API_KEY="unused"
 
 ## 2. Local Text-to-Speech (TTS)
 
-With the `feature-local-tts` patch, you can point OpenAI-compatible text-to-speech requests to a local service (like Kokoro-FastAPI, F5-TTS, or other OpenAI-compatible TTS servers running on port `50095`).
+With the `feature-local-tts` patch, you can point OpenAI-compatible text-to-speech requests to a local service (like Kokoro-FastAPI, F5-TTS, or other OpenAI-compatible TTS servers running on port `20095`).
 
 ### Configuration
 
@@ -45,7 +45,7 @@ model = "tts-1"
 voice = "alloy"
 format = "mp3"
 speed = 1.0
-base_url = "http://localhost:50095/v1"  # Local TTS server base URL
+base_url = "http://localhost:20095/v1"  # Local TTS server base URL
 ```
 
 Ensure standard credentials are set in `librefang.env` if the server requires them.
@@ -54,7 +54,7 @@ Ensure standard credentials are set in `librefang.env` if the server requires th
 
 ## 3. Local Image Description (Vision)
 
-With the `feature-local-image` patch, you can point OpenAI-compatible vision/image-description requests to a local service (like `llama.cpp` llama-server with a LLaVA-style multimodal model running on port `50100`).
+With the `feature-local-image` patch, you can point OpenAI-compatible vision/image-description requests to a local service (like `llama.cpp` llama-server with a LLaVA-style multimodal model running on port `20100`).
 
 ### Configuration
 
@@ -65,7 +65,7 @@ Add the following to your `~/.librefang/config.toml` file:
 image_description = true
 image_provider = "openai"           # Use OpenAI-compatible Chat Completions protocol
 image_model = ""                    # Target model ID (can be empty for local servers)
-image_base_url = "http://localhost:50100/v1"  # Local Vision server base URL
+image_base_url = "http://localhost:20100/v1"  # Local Vision server base URL
 video_description = false
 ```
 
@@ -81,7 +81,7 @@ OPENAI_API_KEY="unused"
 Below are two configuration templates for a fully local-only inference pipeline (chat, embeddings, STT, TTS, and Vision).
 
 ### Scenario A: Single-Port Setup (Both LLM and Embeddings on the same port)
-This configuration targets a unified local inference server (such as `llama-server` from `llama.cpp`) running on port `50080` that exposes both LLM and embeddings endpoints. This avoids using a separate placeholder provider (the "vllm hack").
+This configuration targets a unified local inference server (such as `llama-server` from `llama.cpp`) running on port `20080` that exposes both LLM and embeddings endpoints. This avoids using a separate placeholder provider (the "vllm hack").
 
 ```toml
 # API Listen Address
@@ -93,7 +93,7 @@ api_key = "my-secure-api-key"
 provider = "openai"
 model = "qwen3"
 api_key_env = "UNUSED_API_KEY"
-base_url = "http://localhost:50080/v1"
+base_url = "http://localhost:20080/v1"
 
 # 2. Vector Memory & Embeddings targeting the same unified server
 [memory]
@@ -101,19 +101,19 @@ embedding_provider = "openai"
 embedding_model = "qwen3-embedding"
 embedding_dimensions = 1536
 
-# 3. Speech-to-Text & Image Description (e.g. whisper-server on 50090, vision-server on 50100)
+# 3. Speech-to-Text & Image Description (e.g. whisper-server on 20090, vision-server on 20100)
 [media]
 audio_transcription = true
 audio_provider = "openai"
 audio_model = "whisper-1"
-audio_base_url = "http://localhost:50090/v1"
+audio_base_url = "http://localhost:20090/v1"
 image_description = true
 image_provider = "openai"
-image_base_url = "http://localhost:50100/v1"
+image_base_url = "http://localhost:20100/v1"
 image_model = ""
 video_description = false
 
-# 4. Text-to-Speech (e.g. kokoro-tts-server on port 50095)
+# 4. Text-to-Speech (e.g. kokoro-tts-server on port 20095)
 [tts]
 enabled = true
 provider = "openai"
@@ -121,27 +121,27 @@ provider = "openai"
 [tts.openai]
 model = "tts-1"
 voice = "alloy"
-base_url = "http://localhost:50095/v1"
+base_url = "http://localhost:20095/v1"
 
 # 5. Base URL Overrides mapping all "openai" requests to the local port
 [provider_urls]
-openai = "http://localhost:50080/v1"
+openai = "http://localhost:20080/v1"
 ```
 
 ### Scenario B: Multi-Port Setup with vLLM (vLLM for Chat, llama-server for Embeddings)
-This configuration applies when transitioning the chat model to a local `vLLM` server running on port `50080`, while keeping vector embeddings separated on `llama-server` (or another embedding server) on port `50085`.
+This configuration applies when transitioning the chat model to a local `vLLM` server running on port `20080`, while keeping vector embeddings separated on `llama-server` (or another embedding server) on port `50085`.
 
 ```toml
 # API Listen Address
 api_listen = "127.0.0.1:4545"
 api_key = "my-secure-api-key"
 
-# 1. Chat (LLM) configuration targeting vLLM on port 50080
+# 1. Chat (LLM) configuration targeting vLLM on port 20080
 [default_model]
 provider = "vllm"
 model = "qwen3"
 api_key_env = "UNUSED_API_KEY"
-base_url = "http://localhost:50080/v1"
+base_url = "http://localhost:20080/v1"
 
 # 2. Vector Memory & Embeddings targeting llama-server on port 50085
 [memory]
@@ -149,19 +149,19 @@ embedding_provider = "openai"
 embedding_model = "qwen3-embedding"
 embedding_dimensions = 1536
 
-# 3. Speech-to-Text & Image Description (e.g. whisper-server on 50090, vision-server on 50100)
+# 3. Speech-to-Text & Image Description (e.g. whisper-server on 20090, vision-server on 20100)
 [media]
 audio_transcription = true
 audio_provider = "openai"
 audio_model = "whisper-1"
-audio_base_url = "http://localhost:50090/v1"
+audio_base_url = "http://localhost:20090/v1"
 image_description = true
 image_provider = "openai"
-image_base_url = "http://localhost:50100/v1"
+image_base_url = "http://localhost:20100/v1"
 image_model = ""
 video_description = false
 
-# 4. Text-to-Speech (e.g. kokoro-tts-server on port 50095)
+# 4. Text-to-Speech (e.g. kokoro-tts-server on port 20095)
 [tts]
 enabled = true
 provider = "openai"
@@ -169,7 +169,7 @@ provider = "openai"
 [tts.openai]
 model = "tts-1"
 voice = "alloy"
-base_url = "http://localhost:50095/v1"
+base_url = "http://localhost:20095/v1"
 
 # 5. Base URL Overrides mapping (targets the embedding port 50085 for "openai")
 [provider_urls]

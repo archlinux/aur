@@ -29,8 +29,8 @@ sha256sums=('SKIP'
             '1ddb18ffdd4c4131bf9a35debfb21a61aeda8ca1be90829e0e1b10d7bf19b975'
             'aa2df1c379d02a52bf4072f3de2f6c3be0512fc3efcbb141320ba19d8fc3ca46'
             'c4fccf730140e3cbe1c694b6f4f3b94c47b998ba76262ce50c63f578822d5918'
-            '673dc14c22aa89457a2e1684bf075b7e0ae5ecc520830529b6edcfac1e68246b'
-            '6fa3cb22d68b37cdc9605cc5c02c9095ea4ce47466e415c01dc54c7f7e81bb6a')
+            '20a074c148871c24c2e2beb4fdb89523b1bd92b65aaae3b44432674d27c4b267'
+            '3db506e6228f294f836ffe216241440c1d472fe61bb60bd8e9128167221ef0cf')
 
 pkgver() {
     cd "${pkgbase}"
