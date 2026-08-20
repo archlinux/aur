@@ -2,8 +2,8 @@
 
 _pkgname=rubick
 pkgname=${_pkgname}-kubernetes-bin
-pkgver=4.3.0
-pkgrel=4
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="Modern cross-platform Kubernetes GUI client (prebuilt version)"
 arch=(x86_64)
 url="https://github.com/Dudude-bit/rubick"
@@ -13,22 +13,22 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=(
 	"com.k8s-gui.app.desktop"
-	"${_pkgname}-icon-256.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/256x256.png"
-	"${_pkgname}-icon-128.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/128x128.png"
-	"${_pkgname}-icon-64.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/64x64.png"
-	"${_pkgname}-icon-32.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/32x32.png"
-	"${_pkgname}-icon.svg::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/icon.svg"
+	"${_pkgname}-${pkgver}-256.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/128x128@2x.png"
+	"${_pkgname}-${pkgver}-128.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/128x128.png"
+	"${_pkgname}-${pkgver}-64.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/64x64.png"
+	"${_pkgname}-${pkgver}-32.png::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/32x32.png"
+	"${_pkgname}-${pkgver}.svg::${url}/raw/refs/tags/v${pkgver}/src-tauri/icons/icon.svg"
 )
 source_x86_64=(
 	"${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/Rubick_${pkgver}_amd64.deb"
 )
 sha256sums=('82f31d2a4c5fa49a3e7c52378c94fe16a62e3adb0082eed9cd9f2787849deb00'
-            '1d9e24df0cf8c8d2342fe21ffa92b62e8a63d4da65bdea34541e55ff5777fe87'
+            '511b489f87f2e219df1ae0388fb0cd4dde3a9ad3f2e241fb4dbf251512b5221c'
             'bde347be32bd9d64997923194a760f309efd686e0ae8a34dee7c91c30cc61366'
             'ef223b31d2c4f2a3cef9bed6132bb60fe5091df6909dd513d8696cbba6012035'
             '3885ea939b7b56f116c2772b70b1ec543025b7716973df06aade0d2037a239ef'
             'a238fa258d9d49cfe0baaa019dd05743bdb39c820032b1d8d8f074bc31ab4b20')
-sha256sums_x86_64=('19399222187ce4f04f28139493f82a118b5a89979b457c0770585333ffdf80b5')
+sha256sums_x86_64=('6e62cca8d61a480259200c4f8b11e4c454f377367ae79007d14f575bed9dca6f')
 
 prepare() {
 	tar -zxf data.tar.gz usr/bin/Rubick
@@ -39,7 +39,7 @@ package() {
 	install -Dm755 "${srcdir}/com.k8s-gui.app.desktop" "${pkgdir}/usr/share/applications/com.k8s-gui.app.desktop"
 	install -dm755 "${pkgdir}/usr/share/icons/hicolor"
 	for i in 32 64 128 256; do
-		install -Dm644 "${srcdir}/rubick-icon-${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/com.k8s-gui.app.png"
+		install -Dm644 "${srcdir}/${_pkgname}-${pkgver}-${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/com.k8s-gui.app.png"
 	done
-	install -Dm644 "${srcdir}/rubick-icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.k8s-gui.app.svg"
+	install -Dm644 "${srcdir}/${_pkgname}-${pkgver}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/com.k8s-gui.app.svg"
 }
