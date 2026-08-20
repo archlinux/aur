@@ -2,8 +2,8 @@
 _appname=trilium
 pkgname="${_appname}next-bin"
 _pkgname=TriliumNotes
-pkgver=0.104.1
-_electronversion=42
+pkgver=0.105.0
+_electronversion=43
 pkgrel=1
 pkgdesc="Build your personal knowledge base with TriliumNext Notes.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -33,8 +33,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('38fe4ece8ce3e8bce6cb7d1eda2d0807050b67f4602e649b7575fbe33acf77c1')
-sha256sums_x86_64=('26192dc6bc8c797f19327e6ac43b67ce0577c6f0bfb63ee4a3c14a849b1f3ebc')
+sha256sums_aarch64=('f92edb95166929cf7d4b6c7db82d5c676d8e113357387fb850208d02d1adaa52')
+sha256sums_x86_64=('398fa443e1a4a60f6703deb03aca61b2e2a36071cebad765ed9ad704c289287c')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
