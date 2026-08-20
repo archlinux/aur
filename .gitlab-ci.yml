@@ -6,9 +6,11 @@
 #                                    AUR account that owns this package. Masked
 #                                    is not possible for multi-line keys; use a
 #                                    File variable and keep it Protected.
-#        GITLAB_PUSH_TOKEN Variable, project access token with write_repository,
-#                                    so the bump commit lands here too and the
-#                                    "already current" check below stays honest.
+#        GITLAB_PUSH_TOKEN Variable, project access token with write_repository.
+#                                    If the default branch is protected, the
+#                                    token needs the Maintainer role or the push
+#                                    is rejected and this repo drifts behind the
+#                                    AUR.
 #   2. Build > Pipeline schedules > add a daily schedule on the default branch.
 #
 # The asset is never downloaded: the checksum comes from the digest GitHub
@@ -49,6 +51,9 @@ bump:
       echo 'aur.archlinux.org ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEuBKrPzbawxA/k2g6NcyV5jmqwJ2s+zpgZGZ7tpLIcN'
       > ~/.ssh/known_hosts
     - printf 'Host aur.archlinux.org\n  IdentityFile ~/.ssh/aur\n  IdentitiesOnly yes\n' > ~/.ssh/config
+    # A CI checkout only has origin.
+    - git remote add aur "ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git"
+
   script:
     - |
       set -euo pipefail
@@ -72,64 +77,77 @@ bump:
       pkgver=${tag#KytyPS5-}
       pkgver=${pkgver//-/.}
 
+      # The AUR is what is actually published, so adopt its head when this
+      # checkout is strictly behind it. Without this, a run that pushed to the
+      # AUR but failed to push here leaves the two permanently diverged and
+      # every later run rejected as non-fast-forward. Fast-forward only, never
+      # rebase: rewriting a commit GitLab already has would wedge the mirror
+      # case instead.
+      git fetch aur master
+      if git merge-base --is-ancestor HEAD FETCH_HEAD; then
+        git reset --hard FETCH_HEAD
+      fi
+
       current=$(sed -n 's/^pkgver=//p' PKGBUILD)
       if [ "$pkgver" = "$current" ]; then
-        echo "Already at $pkgver, nothing to do."
-        exit 0
+        echo "Already at $pkgver; pushing only if a remote is behind."
+      else
+        echo "Bumping $current -> $pkgver ($tag)"
+
+        # source= builds this name from $_tag, so make sure it still matches.
+        asset=$(jq -r '[.assets[] | select(.name | endswith("-Linux-x86_64.tar.gz"))][0].name' <<<"$release")
+        if [ "$asset" != "$tag-Linux-x86_64.tar.gz" ]; then
+          echo "Unexpected asset name $asset for tag $tag." >&2
+          exit 1
+        fi
+
+        tarball_sha=$(jq -r --arg n "$asset" \
+          '.assets[] | select(.name == $n) | .digest // "" | sub("^sha256:"; "")' <<<"$release")
+        if [ -z "$tarball_sha" ]; then
+          echo "No sha256 digest published for $asset; refusing to guess." >&2
+          exit 1
+        fi
+
+        raw="https://raw.githubusercontent.com/$UPSTREAM_REPO/$commit"
+        license_sha=$(curl -fsSL "$raw/LICENSE" | sha256sum | cut -d' ' -f1)
+        mit_sha=$(curl -fsSL "$raw/LICENSES/Kyty-MIT.txt" | sha256sum | cut -d' ' -f1)
+        desktop_sha=$(sha256sum kytyps5.desktop | cut -d' ' -f1)
+
+        sed -i \
+          -e "s/^pkgver=.*/pkgver=$pkgver/" \
+          -e "s/^pkgrel=.*/pkgrel=1/" \
+          -e "s/^_tag=.*/_tag=$tag/" \
+          -e "s/^_commit=.*/_commit=$commit/" \
+          PKGBUILD
+
+        # Replace the whole sha256sums=( ... ) block; order matches source=().
+        awk -v sums="$tarball_sha $license_sha $mit_sha $desktop_sha" '
+          /^sha256sums=\($/ {
+            print
+            split(sums, a, " ")
+            for (i = 1; i <= 4; i++) printf "  '\''%s'\''\n", a[i]
+            skip = 1
+            next
+          }
+          skip && /^\)$/ { skip = 0 }
+          skip { next }
+          { print }
+        ' PKGBUILD > PKGBUILD.new
+        mv PKGBUILD.new PKGBUILD
+
+        chown builder:builder PKGBUILD
+        runuser -u builder -- makepkg --printsrcinfo > .SRCINFO
+
+        # Sanity check: .SRCINFO must agree with the PKGBUILD we just wrote.
+        grep -qx "	pkgver = $pkgver" .SRCINFO
+        grep -qx "	sha256sums = $tarball_sha" .SRCINFO
+
+        git add PKGBUILD .SRCINFO
+        git commit -m "upgpkg: $CI_PROJECT_NAME $pkgver-1"
       fi
-      echo "Bumping $current -> $pkgver ($tag)"
 
-      # source= builds this name from $_tag, so make sure it still matches.
-      asset=$(jq -r '[.assets[] | select(.name | endswith("-Linux-x86_64.tar.gz"))][0].name' <<<"$release")
-      if [ "$asset" != "$tag-Linux-x86_64.tar.gz" ]; then
-        echo "Unexpected asset name $asset for tag $tag." >&2
-        exit 1
-      fi
-
-      tarball_sha=$(jq -r --arg n "$asset" \
-        '.assets[] | select(.name == $n) | .digest // "" | sub("^sha256:"; "")' <<<"$release")
-      if [ -z "$tarball_sha" ]; then
-        echo "No sha256 digest published for $asset; refusing to guess." >&2
-        exit 1
-      fi
-
-      raw="https://raw.githubusercontent.com/$UPSTREAM_REPO/$commit"
-      license_sha=$(curl -fsSL "$raw/LICENSE" | sha256sum | cut -d' ' -f1)
-      mit_sha=$(curl -fsSL "$raw/LICENSES/Kyty-MIT.txt" | sha256sum | cut -d' ' -f1)
-      desktop_sha=$(sha256sum kytyps5.desktop | cut -d' ' -f1)
-
-      sed -i \
-        -e "s/^pkgver=.*/pkgver=$pkgver/" \
-        -e "s/^pkgrel=.*/pkgrel=1/" \
-        -e "s/^_tag=.*/_tag=$tag/" \
-        -e "s/^_commit=.*/_commit=$commit/" \
-        PKGBUILD
-
-      # Replace the whole sha256sums=( ... ) block; order matches source=().
-      awk -v sums="$tarball_sha $license_sha $mit_sha $desktop_sha" '
-        /^sha256sums=\($/ {
-          print
-          split(sums, a, " ")
-          for (i = 1; i <= 4; i++) printf "  '\''%s'\''\n", a[i]
-          skip = 1
-          next
-        }
-        skip && /^\)$/ { skip = 0 }
-        skip { next }
-        { print }
-      ' PKGBUILD > PKGBUILD.new
-      mv PKGBUILD.new PKGBUILD
-
-      chown builder:builder PKGBUILD
-      runuser -u builder -- makepkg --printsrcinfo > .SRCINFO
-
-      # Sanity check: .SRCINFO must agree with the PKGBUILD we just wrote.
-      grep -qx "	pkgver = $pkgver" .SRCINFO
-      grep -qx "	sha256sums = $tarball_sha" .SRCINFO
-
-      git add PKGBUILD .SRCINFO
-      git commit -m "upgpkg: $CI_PROJECT_NAME $pkgver-1"
-
-      git push "ssh://aur@aur.archlinux.org/$CI_PROJECT_NAME.git" "HEAD:master"
+      # GitLab first: if this fails, the AUR is left untouched and the next
+      # run starts clean. Both are no-ops when the remote is already current.
       git push "https://oauth2:$GITLAB_PUSH_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git" \
         "HEAD:$CI_DEFAULT_BRANCH"
+      git push aur "HEAD:master"
