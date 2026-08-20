@@ -4,7 +4,7 @@ _pkgname=llavon-ime-fcitx5
 _srcname=ime-fcitx5
 _model_file=llavon-ime-llama-250m-Q4_K_M.gguf
 pkgname=${_pkgname}-git
-pkgver=0.2.2.r12.ga4edbc6
+pkgver=0.3.1.r0.ga65d744
 pkgrel=1
 pkgdesc='Fcitx5 frontend and local inference service for Llavon IME'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=(
     'vulkan-driver: Vulkan GPU acceleration'
 )
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname}-preview-git" "${_pkgname}-preview-git-debug")
 source=(
     "${_srcname}::git+https://github.com/llavon-ime/ime-fcitx5.git#branch=main"
     "${_model_file}::https://huggingface.co/tony65535/llavon-ime-llama-250m-GGUF/resolve/main/${_model_file}"
@@ -50,7 +50,6 @@ build() {
         -DVCPKG_MANIFEST_FEATURES=llama-vulkan \
         -DIME_UNIX_SERVICE_BUILD_TESTS=ON
     cmake --build unix-service-build
-    ctest --test-dir unix-service-build --output-on-failure
 
     cmake -S "${_srcname}/fcitx5" -B build -G Ninja \
         -DCMAKE_BUILD_TYPE=None \
@@ -60,6 +59,10 @@ build() {
         -DIME_FCITX5_DISPLAY_VERSION="${pkgver}" \
         -DIME_FCITX5_BUILD_TESTS=OFF
     cmake --build build
+}
+
+check() {
+    ctest --test-dir unix-service-build --output-on-failure
 }
 
 package() {
