@@ -2,8 +2,8 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-iuh-git
-pkgver=1.6.0.r0.gbb71c57a
-pkgrel=2
+pkgver=1.8.1.r0.g2b92fea1
+pkgrel=1
 pkgdesc="Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)"
 url="http://osmocom.org/projects/osmohnbgw"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
