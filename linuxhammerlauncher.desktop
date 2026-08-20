@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Linux Hammer Launcher
+Exec=/usr/bin/linuxhammerlauncher
+Terminal=false
+Type=Application
+Icon=linuxhammerlauncher
+GenericName=Launcher for Hammer Editor
+Categories=Development;GameTool;
+Keywords=hammer;hammer++;linux;launcher;
+Comment=A launcher, installer and updater for Hammer++ & Tools++ (VBSP++, VVIS++, VRAD++) on Linux, for many different Source Engine games.
