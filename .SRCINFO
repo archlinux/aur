@@ -1,0 +1,21 @@
+pkgbase = kendex-bin
+	pkgdesc = Package manager for AI coding agents, skills, and hooks (desktop app and CLI)
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://kendex.ai
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = hicolor-icon-theme
+	provides = kendex
+	conflicts = kendex
+	conflicts = kendex-git
+	options = !strip
+	source = kendex-app-5.0.1.AppImage::https://github.com/vanillagreencom/kendex/releases/download/v5.0.1/kendex_5.0.1_amd64.AppImage
+	source = kendex-5.0.1::https://github.com/vanillagreencom/kendex/releases/download/v5.0.1/kendex-x86_64-unknown-linux-gnu
+	source = kendex.png::https://raw.githubusercontent.com/vanillagreencom/kendex/v5.0.1/crates/app/icons/128x128.png
+	sha256sums = 655180e2ba03b91746bb28c6f1ac49ce6684958fa5d6bd20bf4bc9d932973206
+	sha256sums = a3dee4c286614016198db72603fcf95de277ddf1a245da052dc815821f0e84c0
+	sha256sums = 4ea797c32fc7754254505058574cdf080c90075a6e7995e30b27c6f939953e9d
+
+pkgname = kendex-bin
