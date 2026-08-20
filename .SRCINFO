@@ -1,6 +1,6 @@
 pkgbase = solarus
 	pkgdesc = A lightweight, free and open-source 2D game engine for Action-RPGs
-	pkgver = 2.1.0
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://www.solarus-games.org/
 	arch = i686
@@ -8,15 +8,15 @@ pkgbase = solarus
 	license = GPL-3.0-only AND CC-BY-SA-3.0 AND CC-BY-SA-4.0
 	makedepends = cmake
 	makedepends = zip
-	source = https://gitlab.com/solarus-games/solarus/-/archive/v2.1.0/solarus-v2.1.0.tar.gz
-	sha256sums = 523a39a02208da49764b1484147ac0db31f204303d400401a6caf68943274378
+	source = https://gitlab.com/solarus-games/solarus/-/archive/v2.1.2/solarus-v2.1.2.tar.gz
+	sha256sums = 9de8da81e866da37a4dc4e9d015741fd99c5d05f26e7ef86cea00cc2899690c2
 
 pkgname = solarus
 	depends = glm
 	depends = hicolor-icon-theme
 	depends = libmodplug>=0.8.8.4
 	depends = libvorbis
-	depends = luajit>=2.0
+	depends = luajit>=2.1
 	depends = openal
 	depends = physfs
 	depends = sdl2>=2.0.18
