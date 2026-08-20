@@ -2,7 +2,7 @@
 
 name=wayra
 pkgname=wayra-git
-pkgver=0.1.1.r1.g360bd28
+pkgver=0.1.2.r0.g360bd28
 pkgrel=1
 pkgdesc="A lightweight, high-performance standalone web server and directory explorer (latest)."
 arch=('i686' 'x86_64' 'aarch64')
