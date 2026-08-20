@@ -3,11 +3,11 @@ _pkgname=linuxhammerlauncher
 pkgname=$_pkgname-bin
 pkgdesc="A launcher, installer and updater for Hammer++ & Tools++ (VBSP++, VVIS++, VRAD++) on Linux, for many different Source Engine games."
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 
 arch=(x86_64)
 url="https://github.com/EnderCatCore/linuxhammerlauncher"
-license=('unknown')
+license=("GPL-3.0-only")
 depends=(
 	wine
 	winetricks
@@ -15,7 +15,6 @@ depends=(
 	python
 )
 options=(!strip !debug)
-license=("GPL-3.0-only")
 
 source=(
 	"$pkgname-$pkgver.zip::https://github.com/EnderCatCore/linuxhammerlauncher/releases/download/$pkgver/Linux.Hammer.Launcher.zip"
