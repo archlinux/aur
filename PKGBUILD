@@ -6,7 +6,7 @@
 
 pkgname=miyu
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
 url='https://github.com/SHORiN-KiWATA/Miyu'
@@ -25,7 +25,7 @@ source=(
   "${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.pkg.tar.zst"
 )
 sha256sums=(
-  '1cdd12f558ab7bec6184e57baca4c2158e610482ea1cdc6f75b7b48e58702441'
+  'd0f15fba30a057510ef52741d7484c9e03c32c4ff8c8c52611e80bd77089ea95'
 )
 
 package() {
