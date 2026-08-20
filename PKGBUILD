@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 
 pkgname=opera-developer
-pkgver=136.0.5988.0
+pkgver=136.0.5995.0
 pkgrel=1
 pkgdesc='Fast, secure, easy-to-use web browser (Developer Stream)'
 arch=('x86_64')
@@ -71,7 +71,7 @@ source=(
     "nwjs-ffmpeg-${_ffmpeg_zip}::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/${_nwjs_ffmpeg_version}/${_ffmpeg_zip}"
 )
 
-sha256sums=('c52d287ef4f797977b400cd6a8b1126766cbf65bf93ef20bb4cb4aa7b1429ddb'
+sha256sums=('bfbe1217bc19346d9eb968b4bd7c02af09d7eb34308481796e6e866e4fcd3915'
             '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
             'a634289eb87e5150482f8eb8169785a279e0ea5b0775baa8cf2d987b760b7d63')
@@ -92,7 +92,21 @@ package() {
 
     bsdtar -xf "$_debfile"
 
-    bsdtar -xf data.tar.xz \
+    # Debian packages may use xz, zstd, or another supported compressor for
+    # their data member. Do not assume the historical data.tar.xz name.
+    local data_archive
+    data_archive="$(find "$srcdir" \
+        -maxdepth 1 \
+        -type f \
+        -name 'data.tar.*' \
+        -print -quit)"
+
+    if [[ -z "$data_archive" ]]; then
+        echo "ERROR: data archive not found in $_debfile"
+        return 1
+    fi
+
+    bsdtar -xf "$data_archive" \
         --exclude='usr/share/lintian' \
         --exclude='usr/share/menu' \
         -C "$pkgdir"
