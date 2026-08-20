@@ -3,14 +3,13 @@
 pkgname=foldseek
 _tag=10-941cd33
 pkgver=10_941cd33
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and sensitive comparison of large protein structure sets"
 arch=('x86_64')
 url="https://github.com/steineggerlab/foldseek"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('zlib' 'gcc-libs')
 makedepends=('cmake' 'rust')
-provides=('foldseek')
 conflicts=('foldseek-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/${_tag}.tar.gz")
 sha256sums=('0db8bf072c9ec895efc6aa3626c746f4ca020acc9b92e9b2292b56c8c9f8a943')
