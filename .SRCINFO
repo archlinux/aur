@@ -1,11 +1,15 @@
 pkgbase = stripe-cli-bin
 	pkgdesc = A command-line tool for Stripe
 	pkgver = 1.50.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stripe.com/docs/stripe-cli
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
+	depends = ca-certificates
+	optdepends = git: Git configuration and editor integration
+	optdepends = less: preferred interactive documentation pager
+	optdepends = xdg-utils: opening browser-based login and dashboard URLs
 	provides = stripe
 	provides = stripe-cli
 	conflicts = stripe-cli

@@ -3,12 +3,17 @@
 
 pkgname="stripe-cli-bin"
 pkgver=1.50.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line tool for Stripe"
 arch=("x86_64" "aarch64")
 url="https://stripe.com/docs/stripe-cli"
 license=("Apache-2.0")
-depends=()
+depends=("ca-certificates")
+optdepends=(
+  "git: Git configuration and editor integration"
+  "less: preferred interactive documentation pager"
+  "xdg-utils: opening browser-based login and dashboard URLs"
+)
 provides=("stripe" "stripe-cli")
 conflicts=("stripe-cli")
 source_x86_64=("https://github.com/stripe/stripe-cli/releases/download/v$pkgver/stripe_${pkgver}_linux_x86_64.tar.gz")
