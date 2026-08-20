@@ -1,6 +1,6 @@
 pkgbase = cephadm
 	pkgdesc = Cephadm deploys and manages a Ceph cluster by connection to hosts from the manager daemon via SSH to add, remove, or update Ceph daemon containers
-	pkgver = 20.2.3
+	pkgver = 20.2.4
 	pkgrel = 1
 	url = https://ceph.com/
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = cephadm
 	optdepends = ntp: time sync service
 	provides = cephadm
 	conflicts = cephadm-git
-	source = https://github.com/ceph/ceph/archive/refs/tags/v20.2.3.tar.gz
-	sha256sums = 0ff783d6942096a0ab4b60f4a38e7d9b6d96f95a06a7d660ffbdaa0342e2ceed
+	source = https://github.com/ceph/ceph/archive/refs/tags/v20.2.4.tar.gz
+	sha256sums = 51b59036bba1696669238f54af3afb30be96b2f4af39ea3d361a347776dfaa67
 
 pkgname = cephadm
