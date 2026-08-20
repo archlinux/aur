@@ -1,6 +1,6 @@
 pkgbase = pg_textsearch
 	pkgdesc = Modern ranked full-text search for PostgreSQL (BM25)
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/timescale/pg_textsearch
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pg_textsearch
 	makedepends = clang
 	makedepends = llvm
 	depends = postgresql
-	source = pg_textsearch-1.3.1.tar.gz::https://github.com/timescale/pg_textsearch/archive/refs/tags/v1.3.1.tar.gz
-	sha256sums = 2ef1f8ea3d9bdef638e64cd844d37790ad27dc53e6bebdb2ad36e549fc5e671f
+	source = pg_textsearch-1.4.0.tar.gz::https://github.com/timescale/pg_textsearch/archive/refs/tags/v1.4.0.tar.gz
+	sha256sums = cab02b4e8af11f98b428d17cca9c5235ab55e12d79c20fa8fbb950708c4a1e92
 
 pkgname = pg_textsearch
