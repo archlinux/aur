@@ -1,5 +1,6 @@
 [aseprite]
 source = "git"
 git = "https://github.com/aseprite/aseprite"
-exclude_regex = "\\d+(\\.\\d+)+(-\\w+).\\d+"
+# exclude_regex = "\\d+(\\.\\d+)+(-\\w+).\\d+"
+include_regex = 'v(\d+\.\d+\.\d+).\d+'
 prefix = "v"
