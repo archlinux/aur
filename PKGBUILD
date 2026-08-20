@@ -1,6 +1,6 @@
 # Maintainer: Riza Mohammad <rizamohammad.work@gmail.com>
 pkgname=trix-player
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A beautiful, keyboard-driven terminal music player for Linux (Binary)."
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/trix-player-x86_64-unknown-linux-gnu.tar.xz")
 
 # Generate this using 'updpkgsums'
-sha256sums=('28c65e9778d0cf39bad4f7e588a9b34db9ee232cbf93073ca61536a813823f85')
+sha256sums=('eaf568898085445e8db16c794f36f489100832cf2d3532569caf9fdc74cb4d6c')
 
 package() {
   # Enter the specific subfolder extracted from the tar.xz
