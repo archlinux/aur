@@ -1,6 +1,6 @@
 pkgbase = dabri
 	pkgdesc = Offline speech-to-text desktop application using Whisper
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://github.com/AshBuk/dabri
 	arch = x86_64
@@ -26,9 +26,9 @@ pkgbase = dabri
 	optdepends = ffmpeg: Alternative audio recording
 	optdepends = vulkan-icd-loader: GPU acceleration via Vulkan (falls back to CPU if unavailable)
 	options = !lto
-	source = dabri-2.2.1.tar.gz::https://github.com/AshBuk/dabri/archive/refs/tags/v2.2.1.tar.gz
+	source = dabri-2.2.2.tar.gz::https://github.com/AshBuk/dabri/archive/refs/tags/v2.2.2.tar.gz
 	source = whisper-cpp-1.9.2.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v1.9.2.tar.gz
-	sha256sums = 10fe3b8a0623853ca0876a3620728313e85e7539d46c7361878cda21ff6a00c6
+	sha256sums = 2506700cb12a8bb501b43385f9ac4007ef57e80b31a9d7822d36b73e251e0833
 	sha256sums = a6abd064fcca8b85e794d205abf328c522e9451db43a3eadc178b883b7d0e9cd
 
 pkgname = dabri
