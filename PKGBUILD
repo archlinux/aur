@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 pkgname=paml
 pkgver=4.10.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Phylogenetic analysis by maximum likelihood"
 arch=('x86_64')
 url="https://github.com/abacus-gene/paml"
