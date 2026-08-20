@@ -1,6 +1,6 @@
 pkgbase = kata-bin
 	pkgdesc = Local-first issue tracking for AI-assisted software work, with an agent-friendly CLI and human-facing TUI.
-	pkgver = 0.15.0
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://github.com/kenn-io/kata
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = kata-bin
 	license = MIT
 	provides = kata
 	conflicts = kata
-	source_x86_64 = kata-x86_64-0.15.0.tgz::https://github.com/kenn-io/kata/releases/download/v0.15.0/kata_0.15.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 543234eaa55431b681b1bb1459aa64c781f0a3bf6a1059b2b63aeef70ce6b051
-	source_aarch64 = kata-aarch64-0.15.0.tgz::https://github.com/kenn-io/kata/releases/download/v0.15.0/kata_0.15.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = e638424bc031d427919bd55813e3ee9f9597937564f5cc3e55a51611355c9d4b
+	source_x86_64 = kata-x86_64-0.15.1.tgz::https://github.com/kenn-io/kata/releases/download/v0.15.1/kata_0.15.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 931c8cde1ceb05b0cfbed3689a4210f4ce8a5dc5c3f6496f56c89a6bcf260a61
+	source_aarch64 = kata-aarch64-0.15.1.tgz::https://github.com/kenn-io/kata/releases/download/v0.15.1/kata_0.15.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 271b778a9ff0a3343263185c5144cd04df08fd295731526c2312ec9f0faab4e8
 
 pkgname = kata-bin
