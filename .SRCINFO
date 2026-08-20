@@ -1,6 +1,6 @@
 pkgbase = bitwarden-bin
 	pkgdesc = A secure and free password manager for all of your devices.
-	pkgver = 2026.7.0
+	pkgver = 2026.8.0
 	pkgrel = 1
 	url = https://bitwarden.com
 	install = bitwarden.install
@@ -17,12 +17,12 @@ pkgbase = bitwarden-bin
 	depends = nss
 	provides = bitwarden
 	conflicts = bitwarden
-	noextract = bitwarden_2026.7.0_arm64.tar.gz
+	noextract = bitwarden_2026.8.0_arm64.tar.gz
 	source = bitwarden.sh
 	sha256sums = 685a3279ba62b5ea90ec279b57644da747c4a83dcb67fd41bac3c25420dbb642
-	source_x86_64 = https://github.com/bitwarden/clients/releases/download/desktop-v2026.7.0/Bitwarden-2026.7.0-amd64.deb
-	sha256sums_x86_64 = 17523257c367f299a76d3670c7e329941fdaf14a4f9321cf38b347e35453ae64
-	source_aarch64 = https://github.com/bitwarden/clients/releases/download/desktop-v2026.7.0/bitwarden_2026.7.0_arm64.tar.gz
-	sha256sums_aarch64 = ba666bd2b9fad671ae5dd82b8231ab75a2f6a7a3c40e738e795069212e7b2e86
+	source_x86_64 = https://github.com/bitwarden/clients/releases/download/desktop-v2026.8.0/Bitwarden-2026.8.0-amd64.deb
+	sha256sums_x86_64 = 720ecc392eef1992780af2aaabd4733916807155c8ee217ed67f3f93287bb415
+	source_aarch64 = https://github.com/bitwarden/clients/releases/download/desktop-v2026.8.0/bitwarden_2026.8.0_arm64.tar.gz
+	sha256sums_aarch64 = 5962b5dd1bfe19b3c198a6b4157c4431efe078e573217bffcaafa71147476ebe
 
 pkgname = bitwarden-bin
