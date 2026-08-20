@@ -10,7 +10,7 @@ url="https://github.com/Franticware/${_pkgname}"
 license=('BSD')
 depends=('openmrac-data' 'sdl2' 'openal' 'glm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7a1ea8e74c43d406756f55c477c76dcd2476cbc55ddd0afc23ded3afaa3bf812')
+sha256sums=('bf318012f04d130608f218799e3d35269c7964c2a28f5209a7414ec174fb20c3')
 conflicts=(${pkgname}-git)
 
 prepare() {
