@@ -25,59 +25,64 @@ post_install() {
 }
 
 post_upgrade() {
-	echo "#####################################"
-	echo "### Mastodon Upgrade Instructions ###"
-	echo "#####################################"
+	echo "#########################################"
+	echo "### Mastodon 4.7 Upgrade Instructions ###"
+	echo "#########################################"
 	echo
-	echo "### IMPORTANT: choose the correct procedure depending on your previous Mastodon version ###"
+	echo "### These instructions are for upgrading to Mastodon 4.7.0 from 4.6.6, 4.6.7-beta.1 or 4.6.7-rc.1 ###"
+	echo "### If upgrading from an earlier version, read the skipped Mastodon release notes first. ###"
 	echo
-	echo "########################################################"
-	echo "### Case 1: upgrade from Mastodon 4.6.0 to 4.6.*      ###"
-	echo "### No database migration is required                 ###"
-	echo "########################################################"
+	echo "### IMPORTANT: Mastodon 4.7.0 contains substantial database migrations. ###"
+	echo "### Keep the PRE and POST deployment migrations as separate steps. ###"
+	echo "### When upgrading from Mastodon 4.6, the PRE migration does not require stopping Mastodon. ###"
 	echo
-	echo "cd /var/lib/mastodon; find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +"
-	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
-	echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo "### 1. Backup the PostgreSQL database before continuing ###"
+	echo "sudo -u postgres pg_dump -Fc mastodon_production > /root/mastodon_production_before_4.7.dump"
 	echo
-	echo
-	echo "########################################################"
-	echo "### Case 2: upgrade from Mastodon 4.5.x or lower      ###"
-	echo "### Database migrations are required                  ###"
-	echo "########################################################"
-	echo
-	echo "### IMPORTANT: before upgrading to Mastodon 4.6.x, make sure you have a PostgreSQL backup ###"
-	echo "### Example, adapt the path if needed: ###"
-	echo "sudo -u postgres pg_dump -Fc mastodon_production > /root/mastodon_production_before_upgrade.dump"
-	echo
-	echo "### Go into the Mastodon directory ###"
+	echo "### 2. Go into the Mastodon directory ###"
 	echo "cd /var/lib/mastodon"
 	echo
-	echo "### Stop Mastodon before maintenance ###"
-	echo "sudo systemctl stop mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo "### 3. Fix ownership first, but do not touch uploaded media in ./public/system ###"
+	echo "find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +"
 	echo
-	echo "### Check that the services are stopped. Expected result: inactive ###"
-	echo "systemctl is-active mastodon-web mastodon-sidekiq mastodon-streaming || true"
+	echo "### 4. If rbenv is used, make sure ruby-build is up to date, then install the Ruby version requested by .ruby-version ###"
+	echo "sudo -iu mastodon bash -lc 'cd /var/lib/mastodon && RUBY_CONFIGURE_OPTS=--with-jemalloc rbenv install -s'"
+	echo "sudo -iu mastodon bash -lc 'cd /var/lib/mastodon && rbenv rehash'"
 	echo
-	echo "### Fix ownership, but do not touch uploaded media in ./public/system ###"
-	echo "sudo find -path ./public/system -prune -o -exec chown -h mastodon:mastodon {} +"
+	echo "### 5. Install Ruby dependencies ###"
+	echo "sudo -iu mastodon bash -lc 'cd /var/lib/mastodon && bundle install'"
 	echo
-	echo "### Precompile the assets ###"
+	echo "### If charlock_holmes fails to build with a recent gcc, retry bundle install with: ###"
+	echo "sudo -iu mastodon bash -lc 'cd /var/lib/mastodon && BUNDLE_BUILD__CHARLOCK_HOLMES=\"--with-cxxflags=-std=c++17\" bundle install'"
+	echo
+	echo "### 6. Install JavaScript dependencies ###"
+	echo "sudo -iu mastodon bash -lc 'cd /var/lib/mastodon && ./yarn install --immutable'"
+	echo
+	echo "### 7. Precompile the assets ###"
+	echo "cd /var/lib/mastodon"
 	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile"
 	echo
-	echo "### Run the pre-deployment database migration before restarting services ###"
+	echo "### 8. Run PRE-deployment database migrations BEFORE restarting Mastodon ###"
 	echo "sudo -u mastodon SKIP_POST_DEPLOYMENT_MIGRATIONS=true RAILS_ENV=production bundle exec rails db:migrate"
 	echo
-	echo "### Reload systemd and start Mastodon services ###"
-	echo "sudo systemctl daemon-reload"
-	echo "sudo systemctl start mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo "### Do not continue to the restart if the PRE-deployment migration fails. ###"
 	echo
-	echo "### Check that the services are running. Expected result: active ###"
+	echo "### 9. Reload systemd and restart all Mastodon processes ###"
+	echo "systemctl daemon-reload; systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo
+	echo "### 10. Check that all Mastodon services are active ###"
 	echo "systemctl is-active mastodon-web mastodon-sidekiq mastodon-streaming"
 	echo
-	echo "### Run the post-deployment database migration after services are running ###"
+	echo "### 11. Run POST-deployment database migrations AFTER the services are running ###"
+	echo "cd /var/lib/mastodon"
 	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate"
 	echo
-	echo "### Optional: check the full status if something looks wrong ###"
-	echo "sudo systemctl status mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo "### 12. Verify database migration status ###"
+	echo "sudo -u mastodon RAILS_ENV=production bundle exec rails db:migrate:status"
+	echo
+	echo "### 13. Final service check ###"
+	echo "systemctl --no-pager --full status mastodon-web mastodon-sidekiq mastodon-streaming"
+	echo
+	echo "### If something looks wrong, inspect the recent logs ###"
+	echo "journalctl -u mastodon-web -u mastodon-sidekiq -u mastodon-streaming -n 100 --no-pager"
 }
