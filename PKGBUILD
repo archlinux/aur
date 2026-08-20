@@ -10,7 +10,7 @@ pkgname='cidrtools-cffi'
 pkgdesc='Python CFFI bindings for the cidrtools C-library'
 _gitname='cidrtools-cffi'
 
-pkgver="1.0.3"
+pkgver="1.0.4"
 pkgrel=1
 url="https://github.com/gene-git/cidrtools-cffi"
 
