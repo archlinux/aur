@@ -1,6 +1,6 @@
 # Maintainer: Ron <thefangeddeity>
 pkgname=hls-livecam-server
-pkgver=5.7.2
+pkgver=5.8.1
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
-sha256sums=('bbcaa32e31c5d92877fb7a02d6cfc57b4df8ee3e16c7f7460b670a959b1552ea'
+sha256sums=('3350dc50c14c6847f0997f2bf28aea2d2f65ea257472b59338c13d52c636bbaf'
             'SKIP')
 
 package() {
@@ -20,6 +20,7 @@ package() {
     install -Dm755 pkg/usr/share/hls-livecam-server/hls-livecam-setup-arch \
                    "$pkgdir/usr/local/bin/hls-livecam-setup"
     install -Dm755 pkg/usr/local/bin/camdash          "$pkgdir/usr/local/bin/camdash"
+    install -Dm755 pkg/usr/local/bin/camstack         "$pkgdir/usr/local/bin/camstack"
     install -Dm755 pkg/usr/local/bin/hls-livecam-repair "$pkgdir/usr/local/bin/hls-livecam-repair"
     install -Dm755 pkg/usr/local/bin/hls-livecam-dark  "$pkgdir/usr/local/bin/hls-livecam-dark"
     install -Dm755 pkg/usr/local/bin/broadcast-api     "$pkgdir/usr/local/bin/broadcast-api"
@@ -45,6 +46,8 @@ package() {
     # ── Shared data ──────────────────────────────────────────────────────────
     install -Dm755 pkg/usr/share/hls-livecam-server/camdash \
                    "$pkgdir/usr/share/hls-livecam-server/camdash"
+    install -Dm755 pkg/usr/share/hls-livecam-server/camstack \
+                   "$pkgdir/usr/share/hls-livecam-server/camstack"
     install -Dm755 pkg/usr/share/hls-livecam-server/hls-livecam-setup-arch \
                    "$pkgdir/usr/share/hls-livecam-server/hls-livecam-setup"
     install -Dm755 pkg/usr/share/hls-livecam-server/hls-livecam-repair \
@@ -57,6 +60,10 @@ package() {
                    "$pkgdir/usr/share/hls-livecam-server/cv_detect.py"
     install -Dm644 pkg/usr/share/hls-livecam-server/cv_notify.py \
                    "$pkgdir/usr/share/hls-livecam-server/cv_notify.py"
+    install -Dm644 pkg/usr/share/hls-livecam-server/cv_scene.py \
+                   "$pkgdir/usr/share/hls-livecam-server/cv_scene.py"
+    install -Dm755 pkg/usr/share/hls-livecam-server/cv_scene_register.py \
+                   "$pkgdir/usr/share/hls-livecam-server/cv_scene_register.py"
     install -Dm644 pkg/usr/share/hls-livecam-server/index.html \
                    "$pkgdir/usr/share/hls-livecam-server/index.html"
     install -Dm644 pkg/usr/share/hls-livecam-server/cams/cams.html \
