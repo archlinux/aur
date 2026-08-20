@@ -1,6 +1,6 @@
 pkgbase = scalpel-poe
 	pkgdesc = Path of Exile's First Fourth-Party Tool
-	pkgver = 1.0.1
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/scalpelpoe/scalpel
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = scalpel-poe
 	conflicts = scalpel-poe-bin
 	conflicts = scalpel-poe-git
 	options = !strip
-	source = scalpel-poe-1.0.1.tar.gz::https://github.com/scalpelpoe/scalpel/archive/refs/tags/v1.0.1.tar.gz
+	source = scalpel-poe-1.0.3.tar.gz::https://github.com/scalpelpoe/scalpel/archive/refs/tags/v1.0.3.tar.gz
 	source = scalpel-poe.sh
 	source = scalpel-poe.desktop
-	sha256sums = a82caab108bab3e40730bfed95e2c9c01c06c6a4b3124fee062138c5c653f2d4
+	sha256sums = 19fd89cc2f0044ee8689037b96215f3a0410063c2c401bcd53694e88106359a3
 	sha256sums = aec6807cc11a1f0f172577d5d24744d457c2d52fd51c4b92d1e6b8bfbb943b1f
 	sha256sums = be4904493f9322e59649768c209eeeed71ebf8f4f92321614967f749807794dc
 
