@@ -37,5 +37,4 @@ pkgname = radicle-httpd
 	depends = libgcc
 	depends = libgit2
 	depends = libgit2.so
-	depends = zlib
 	depends = radicle-node
