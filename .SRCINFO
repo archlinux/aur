@@ -1,7 +1,7 @@
 pkgbase = arttime-git
 	pkgdesc = arttime is a clock, timer, time manager and text-art viewer for the terminal (https://github.com/poetaman/arttime/wiki)
-	pkgver = 2.4.0
-	pkgrel = 13
+	pkgver = 2.5.0
+	pkgrel = 14
 	url = https://github.com/poetaman/arttime
 	arch = any
 	license = ARTTIME

@@ -2,8 +2,8 @@
 
 _name="arttime"
 pkgname="${_name}-git"
-pkgver=2.4.0
-pkgrel=13
+pkgver=2.5.0
+pkgrel=14
 pkgdesc="arttime is a clock, timer, time manager and text-art viewer for the terminal (https://github.com/poetaman/$_name/wiki)"
 arch=('any')
 url="https://github.com/poetaman/${_name}"
