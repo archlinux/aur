@@ -3,7 +3,7 @@
 
 pkgname=seqtk
 pkgver=1.5
-pkgrel=2
+pkgrel=99
 pkgdesc="Toolkit for processing sequences in FASTA/Q formats"
 arch=('x86_64')
 url="https://github.com/lh3/seqtk"
