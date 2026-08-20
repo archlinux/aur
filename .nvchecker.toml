@@ -1,0 +1,4 @@
+[uzdoom-appimage]
+source = "git"
+include_regex = '(\d+\.\d+\.\d+)'
+git = "https://github.com/UZDoom/UZDoom.git"
