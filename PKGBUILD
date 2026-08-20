@@ -1,7 +1,7 @@
 # Maintainer: Vadim Gerasimov <angryvadik@gmail.com>
 pkgname=media-server
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 # Web client release to bundle. Must share the same minor version as pkgver
 # (the project keeps the server and web-client minor versions in lockstep).
 _webver=0.9.2
@@ -32,6 +32,7 @@ build() {
   export SQLX_OFFLINE=true
   # disable LTO so the linking succeeds
   export CFLAGS+=" -ffat-lto-objects"
+  export CFLAGS="${CFLAGS/-O2/}"
   cargo build --frozen --release --bin media-server
 }
 

@@ -1,7 +1,7 @@
 pkgbase = media-server
 	pkgdesc = Self-hosted media server
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dog4ik/media-server
 	install = media-server.install
 	arch = x86_64
