@@ -8,4 +8,7 @@ if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     FLAGS+=("--ozone-platform=x11")
 fi
 
+# 启用 96kHz 高解析音频采样率引擎
+FLAGS+=("--audio-sample-rate=96000")
+
 exec /usr/bin/__ELECTRON__ "${FLAGS[@]}" /usr/lib/qqmusic/app.asar "$@"
