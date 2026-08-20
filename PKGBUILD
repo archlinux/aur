@@ -8,12 +8,12 @@
 # Contributor: wxt1221 <3264117476@qq.com>
 # 感谢 Peternal 对 SVG图标 的授权
 pkgname=bilibili-bin
-_pkgver=1.17.9
-_subver=2
+_pkgver=1.18.0
+_subver=1
 pkgver="${_pkgver}_${_subver}"
 _electronversion=43
 epoch=5
-pkgrel=2
+pkgrel=1
 pkgdesc="Bilibili official desktop client.(Prebuilt version.Use system-wide electron)哔哩哔哩官方客户端linux移植版。"
 arch=(
     'aarch64'
@@ -37,8 +37,8 @@ source=(
 )
 sha256sums=('21668b8229199de1a523b82805c80d6e110a67fef5766aa7cc3c7df4416d1468'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('e2e567974acd2c3783a596e15cacd539a8a3e27588231e293c71fb91edcc6a77')
-sha256sums_x86_64=('5e2b4e07651f88fcbecd6d2b523b947bd2842d5571d17b7e369757dd24ae292c')
+sha256sums_aarch64=('30fbd394759b1c780afd222c4702e2e83149b36b607a0e0f2dfe5aec0b5219bf')
+sha256sums_x86_64=('77ed87e8508b402e37e21f422fef5af2dc75a8a0c0e376fadabe121424daf118')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
