@@ -7,6 +7,7 @@ pkgbase = kotonoha-git
 	license = ISC
 	license = LGPL2.1
 	license = MIT
+	optdepends = python-mutagen: read lyrics embedded in local audio tags
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja

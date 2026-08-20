@@ -19,6 +19,9 @@ depends=(
     'layer-shell-qt'
     'wayland'
 )
+optdepends=(
+    'python-mutagen: read lyrics embedded in local audio tags'
+)
 makedepends=(
     'cmake'
     'git'
@@ -59,7 +62,7 @@ build() {
 
 check() {
     cd "$_pkgname"
-    PYTHONPATH=src pytest
+    LC_ALL=C.UTF-8 PYTHONPATH=src pytest
 }
 
 package() {
