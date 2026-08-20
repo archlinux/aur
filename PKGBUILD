@@ -1,7 +1,7 @@
 # Maintainer:  aik2 <aik2mlj at gmail dot com>
 
 pkgname=canvas-downloader
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Download and organize all your course materials from Canvas LMS 📚'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5f1384326e881a5612f87c190ccd94241fca88e71bfdf2d9c0c3d8fca9bbcaab')
+sha256sums=('864039bc69c50549225bf71301080527e9b3e3fc41dec146c0ae94d6a4289adf')
 
 build() {
     cd "$srcdir/canvas-downloader-$pkgver"
