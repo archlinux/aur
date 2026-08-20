@@ -1,16 +1,21 @@
 pkgbase = pragtical-bin
 	pkgdesc = The practical and pragmatic code editor
-	pkgver = 3.12.4
+	pkgver = 3.12.5
 	pkgrel = 1
 	url = https://pragtical.dev
 	arch = x86_64
 	license = MIT
 	depends = glibc
+	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libstdc++
 	provides = pragtical
 	conflicts = pragtical
-	source = https://github.com/pragtical/pragtical/releases/download/v3.12.4/pragtical-v3.12.4-linux-x86_64-portable.tar.gz
-	b2sums = 5f6fc829fe26c39c3ae82b79ad52021077621a8dde33d52e91a12b66f7a76e09f8d292a2d1363b86b64e7f190406b9b0fd0e53b1c42d4b8a8719d5454f349334
+	source = https://github.com/pragtical/pragtical/releases/download/v3.12.5/pragtical-v3.12.5-linux-x86_64-portable.tar.gz
+	source = https://github.com/pragtical/pragtical/raw/v3.12.5/resources/linux/dev.pragtical.Pragtical.desktop
+	source = https://github.com/pragtical/pragtical/raw/v3.12.5/resources/icons/logo.svg
+	b2sums = 8a13f8cc156fef554879b46a33b732023fa7fae17e464f0221e2bf5a0f9f92c077631e67ed5cae561f1def43e95c37f7ad8e7cd23fb0b47135d90e7b8de391d5
+	b2sums = c5256e04a2999354e525d725b4d20c1df870468ecfc72769936c47b8f8608ead903a8658fab84e8604faf65b5a8d8986d8b43aaf830e22e8f338be7eff918839
+	b2sums = 4bf03e24e31e0d7958cd50a54503c92792e76c6f7e40d4c8db744d708aa8b6e1df40fbf4a52a897be55c274b74178b3204a79d44c755073149fe24466b209886
 
 pkgname = pragtical-bin
