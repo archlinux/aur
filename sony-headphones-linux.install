@@ -1,0 +1,17 @@
+post_install() {
+  printf '%s\n' \
+    'Enable the Sony Headphones user service for your account with:' \
+    '  systemctl --user enable --now sony-headphones.service'
+}
+
+post_upgrade() {
+  printf '%s\n' \
+    'Restart the Sony Headphones user service for your account with:' \
+    '  systemctl --user restart sony-headphones.service'
+}
+
+post_remove() {
+  printf '%s\n' \
+    'Per-user Sony Headphones state was preserved.' \
+    'Delete the private state directory only if its last status is no longer wanted.'
+}
