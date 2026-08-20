@@ -2,7 +2,7 @@
 
 _pkgbase=ayuz
 pkgname="$_pkgbase-bin"
-pkgver=1.1.9
+pkgver=1.1.10
 pkgrel=1
 pkgdesc='The unofficial MyAsus alternative for Linux'
 arch=('x86_64')
@@ -25,7 +25,7 @@ provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 replaces=('asus-hub-bin')
 source_x86_64=("$_pkgbase-$pkgver.deb::https://github.com/Traciges/Ayuz/releases/download/v$pkgver/ayuz_$pkgver-1_amd64.deb")
-sha256sums_x86_64=('eb177e824c24c2341604c505f96e0f690727a68b3c0dbdb0f0f1cc9bc6efb3ef')
+sha256sums_x86_64=('83cd7667761437bccad8e8590d4cb2109c9cea72e6be0c2daa5f86968434799b')
 
 prepare() {
 	bsdtar -xf "$_pkgbase-$pkgver.deb"

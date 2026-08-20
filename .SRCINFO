@@ -1,6 +1,6 @@
 pkgbase = ayuz-bin
 	pkgdesc = The unofficial MyAsus alternative for Linux
-	pkgver = 1.1.9
+	pkgver = 1.1.10
 	pkgrel = 1
 	url = https://github.com/Traciges/Ayuz
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = ayuz-bin
 	provides = ayuz
 	conflicts = ayuz
 	replaces = asus-hub-bin
-	source_x86_64 = ayuz-1.1.9.deb::https://github.com/Traciges/Ayuz/releases/download/v1.1.9/ayuz_1.1.9-1_amd64.deb
-	sha256sums_x86_64 = eb177e824c24c2341604c505f96e0f690727a68b3c0dbdb0f0f1cc9bc6efb3ef
+	source_x86_64 = ayuz-1.1.10.deb::https://github.com/Traciges/Ayuz/releases/download/v1.1.10/ayuz_1.1.10-1_amd64.deb
+	sha256sums_x86_64 = 83cd7667761437bccad8e8590d4cb2109c9cea72e6be0c2daa5f86968434799b
 
 pkgname = ayuz-bin
