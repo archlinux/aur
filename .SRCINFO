@@ -1,0 +1,12 @@
+pkgbase = rawhex
+	pkgdesc = A hex dumper in C with AVX2 SIMD formatting.
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://git.disroot.org/Vextoly/rawhex
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = rawhex-1.5.tar.gz::https://git.disroot.org/Vextoly/rawhex/archive/1.5.tar.gz
+	sha256sums = 53bd09da5eea00c1a22d76b744bcbe0f24d9c438d3c02275d133bdeb6dd2efab
+
+pkgname = rawhex
