@@ -1,6 +1,6 @@
 pkgbase = optimize-images-x
 	pkgdesc = A desktop app written in Python, that exposes and unlocks the full power of Optimize Images in a nice graphical user interface, to help you reduce the file size of images
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/victordomingos/optimize-images-x
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = optimize-images-x
 	depends = optimize-images
 	provides = optimize-images-x
 	conflicts = python-optimize-images-x
-	source = https://files.pythonhosted.org/packages/source/o/optimize_images_x/optimize_images_x-2.1.0.tar.gz
-	sha256sums = 4ed5ddde9ab43d59069d8898d6cde573640fa4686ae37bb019b40fb9831e1764
+	source = https://files.pythonhosted.org/packages/source/o/optimize_images_x/optimize_images_x-2.2.0.tar.gz
+	sha256sums = 25cc2ceb669327e3be3407e6b80732e4dd32657040553b4cdc618f56611b85b6
 
 pkgname = optimize-images-x

@@ -2,7 +2,7 @@
 
 pkgauthor="victordomingos"
 pkgname="optimize-images-x"
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A desktop app written in Python, that exposes and unlocks the full power of Optimize Images in a nice graphical user interface, to help you reduce the file size of images"
 
@@ -24,7 +24,7 @@ depends=('bash' 'optimize-images')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4ed5ddde9ab43d59069d8898d6cde573640fa4686ae37bb019b40fb9831e1764')
+sha256sums=('25cc2ceb669327e3be3407e6b80732e4dd32657040553b4cdc618f56611b85b6')
 
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/" || exit
