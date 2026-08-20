@@ -1,6 +1,6 @@
 pkgbase = fsvc-bin
 	pkgdesc = Financial-services CLI: Revolut Business today, ING tomorrow.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/j4y-w4lk3r/fsvc
 	license = MIT
@@ -12,13 +12,13 @@ pkgbase = fsvc-bin
 	conflicts = fsvc-git
 	provides = fsvc
 	arch = aarch64
-	source_aarch64 = https://github.com/j4y-w4lk3r/fsvc/releases/download/v0.1.0/fsvc_0.1.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 998f875d228f099fb998cae0652439562179b164d3ad5e8bad0d9cb408556f32
+	source_aarch64 = https://github.com/j4y-w4lk3r/fsvc/releases/download/v0.1.1/fsvc_0.1.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 79b82ad618a288da5bd543631c4739f01fe359fe439ef09a242d188136cee772
 	arch = armv7h
-	source_armv7h = https://github.com/j4y-w4lk3r/fsvc/releases/download/v0.1.0/fsvc_0.1.0_Linux_armv7.tar.gz
-	sha256sums_armv7h = c26addff82e75bce6fc6be9231329c503b0d7052c979f6dc6aa4d7fa3f74d04a
+	source_armv7h = https://github.com/j4y-w4lk3r/fsvc/releases/download/v0.1.1/fsvc_0.1.1_Linux_armv7.tar.gz
+	sha256sums_armv7h = 40215f592daae61d3e2e8c78163fac9614fde0690b12a2af95aace19462dbfd1
 	arch = x86_64
-	source_x86_64 = https://github.com/j4y-w4lk3r/fsvc/releases/download/v0.1.0/fsvc_0.1.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 370df045804ae44e19f5e9c352cb7108b6b4bea4bf2932a972a76d8ee5d9bfcf
+	source_x86_64 = https://github.com/j4y-w4lk3r/fsvc/releases/download/v0.1.1/fsvc_0.1.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 219e5fdc12a46704343c43fb71bb33c8e81c7a1b7e6c9e70a5cff7b3863b5460
 	
 pkgname = fsvc-bin

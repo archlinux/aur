@@ -2,7 +2,7 @@
 # Maintainer: j4y <j4y_w4lk3r@pobox.com>
 
 pkgname='fsvc-bin'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Financial-services CLI: Revolut Business today, ING tomorrow.'
 url='https://github.com/j4y-w4lk3r/fsvc'
@@ -14,13 +14,13 @@ depends=('glibc')
 optdepends=('gnupg: fsvc bootstrap shells out to ykw which shells out to gpg' 'ykw: fsvc bootstrap shells out to ykw decrypt for the encrypted creds' 'bbm: fsvc bootstrap shells out to bbm pull to fetch encrypted creds from B2')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/j4y-w4lk3r/fsvc/releases/download/v${pkgver}/fsvc_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('998f875d228f099fb998cae0652439562179b164d3ad5e8bad0d9cb408556f32')
+sha256sums_aarch64=('79b82ad618a288da5bd543631c4739f01fe359fe439ef09a242d188136cee772')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/j4y-w4lk3r/fsvc/releases/download/v${pkgver}/fsvc_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('c26addff82e75bce6fc6be9231329c503b0d7052c979f6dc6aa4d7fa3f74d04a')
+sha256sums_armv7h=('40215f592daae61d3e2e8c78163fac9614fde0690b12a2af95aace19462dbfd1')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/j4y-w4lk3r/fsvc/releases/download/v${pkgver}/fsvc_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('370df045804ae44e19f5e9c352cb7108b6b4bea4bf2932a972a76d8ee5d9bfcf')
+sha256sums_x86_64=('219e5fdc12a46704343c43fb71bb33c8e81c7a1b7e6c9e70a5cff7b3863b5460')
 
 package() {
   install -Dm755 "./fsvc" "${pkgdir}/usr/bin/fsvc"
