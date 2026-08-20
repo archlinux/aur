@@ -1,7 +1,7 @@
 # Maintainer: iShawyha <shawyhaf@gmail.com>
 pkgname=shminer-bin
 _pkgname=shminer
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Mining Client for S-UAH cryptocurrency (Student Hryvnia Miner)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("$_pkgname-$pkgver-linux-amd64::https://github.com/OlexiyOdarchuk/Studen
         "shminer.desktop"
         "icon.png::https://raw.githubusercontent.com/OlexiyOdarchuk/Student-Hryvnia-Miner/main/build/appicon.png") 
 
-sha256sums=('d1150d25177e581407e571c43a3fcfc3182a05916190e709325f26aa42b4182f'
+sha256sums=('8c6edabf347405aed15f63e77ce254dbf3e29c95e27e7f1c0f7f9a3174f387ef'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '1e617e90981872e29d8dff6581a63c456cb4d30178d666406be7af91bbed98bd'
             'e587396876cab3666978caddd2e80ad1a4584e37cc6508d2fd0f0e3c84629d85')
