@@ -1,0 +1,22 @@
+pkgbase = castr
+	pkgdesc = Cast your Hyprland screen to an AirPlay receiver: mirror or extend, from a menu or the CLI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/mrCode/castr
+	install = castr.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = avahi
+	optdepends = doubletake-git: AirPlay streaming (REQUIRED to cast; 0.4.0 cannot capture on Hyprland)
+	optdepends = hyprland: required in practice — castr drives its outputs and screen-share portal
+	optdepends = libnotify: desktop notifications
+	optdepends = quickshell: bar widget on Omarchy Quarto and later (see castr-indicator)
+	optdepends = waybar: bar indicator on earlier setups
+	options = !debug
+	source = castr-0.1.0.tar.gz::https://github.com/mrCode/castr/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = fd99250e304dfff0e596d2fe94399061297507423cc1812d1b1f2240cabd3e51
+
+pkgname = castr

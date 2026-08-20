@@ -1,0 +1,26 @@
+post_install() {
+  cat <<'MSG'
+
+castr is installed. Two things are worth knowing:
+
+  1. Casting needs doubletake, which is NOT pulled in automatically:
+       yay -S doubletake-git
+     Version 0.4.0 cannot capture on Hyprland; the git package can.
+
+  2. Your firewall must let the receiver connect BACK to this machine:
+       sudo ufw allow 5353/udp                 # mDNS discovery
+       sudo ufw allow 60000:60010/tcp
+       sudo ufw allow 60000:60010/udp
+
+Then run `castr menu`, or bind it to a key. The bar indicator lives in
+/usr/share/castr/ -- Quickshell for Omarchy Quarto and later, waybar for
+earlier setups.
+
+MSG
+}
+
+post_upgrade() {
+  # Settings and hand-added receivers are copied from omarchy-cast on first
+  # run, if it was installed. It is left untouched and keeps working.
+  :
+}
