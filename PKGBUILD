@@ -3,9 +3,9 @@
 
 pkgname=meh-git
 pkgver=0.3.58.g8a89769
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal image viewer using raw XLib."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'pentium4')
 url="http://www.johnhawthorn.com/meh/"
 license=('custom:MIT')
 depends=('libxext' 'libjpeg-turbo' 'giflib' 'libpng')
