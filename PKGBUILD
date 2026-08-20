@@ -62,6 +62,7 @@ build() {
 	export RADICLE_VERSION="$pkgver"
 	cargo build \
 		-p radicle-httpd \
+		-p radicle-search \
 		--frozen \
 		--release \
 		--bins \
@@ -83,6 +84,7 @@ check() {
 	unset "${!GIT_@}"
 	cargo test \
 		-p radicle-httpd \
+		-p radicle-search \
 		--frozen \
 		# EOL
 	)
@@ -129,8 +131,13 @@ package_radicle-httpd() {
 
 	cd radicle-explorer
 
+	#
+	# TODO: proper radicle-search integration
+	#
+
 	install -Dm755 \
 		target/release/radicle-httpd \
+		target/release/radicle-search \
 		-t "$pkgdir/usr/bin"
 
 	install -Dm644 \
