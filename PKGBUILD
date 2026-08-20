@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=vacask
 pkgname="${_pkgname}-git"
-pkgver=0.3.3.r209.g764f693
+pkgver=0.3.3.r274.gbf59752
 pkgrel=1
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
@@ -17,6 +17,7 @@ depends=(
     'libstdc++'
     'libgcc'
     'libgomp'
+    'openblas'
 )
 makedepends=(
     'git'
@@ -36,6 +37,7 @@ checkdepends=(
 )
 optdepends=(
     'python-matplotlib: For plotting the individual tests'
+    'python-scikit-rf: For postprocessing some of the tests'
 )
 conflicts=("${_pkgname}")
 options=()
@@ -54,6 +56,7 @@ build() {
         -W no-dev
         -D CMAKE_BUILD_TYPE=None
         -D CMAKE_INSTALL_PREFIX=/usr
+        -D BLA_VENDOR="OpenBLAS"
     )
     cmake "${cmake_options[@]}"
     cmake --build build
