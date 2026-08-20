@@ -1,0 +1,14 @@
+pkgbase = kendex
+	pkgdesc = Package manager for agents, skills, and hooks across AI coding tools
+	pkgver = 5.0.1
+	pkgrel = 1
+	url = https://kendex.ai
+	arch = x86_64
+	license = MIT
+	provides = kendex
+	conflicts = kendex-git
+	options = !strip
+	source = kendex-5.0.1::https://github.com/vanillagreencom/kendex/releases/download/v5.0.1/kendex-x86_64-unknown-linux-gnu
+	sha256sums = a3dee4c286614016198db72603fcf95de277ddf1a245da052dc815821f0e84c0
+
+pkgname = kendex
