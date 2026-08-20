@@ -1,6 +1,6 @@
 pkgbase = media-server
 	pkgdesc = Self-hosted media server
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://github.com/dog4ik/media-server
 	install = media-server.install
@@ -12,7 +12,7 @@ pkgbase = media-server
 	depends = openssl
 	depends = systemd
 	backup = etc/media-server/media-server.env
-	source = media-server-0.9.2::git+https://github.com/dog4ik/media-server.git#tag=v0.9.2
+	source = media-server-0.9.3::git+https://github.com/dog4ik/media-server.git#tag=v0.9.3
 	source = media-server-web-0.9.2-dist.tar.gz::https://github.com/dog4ik/media-server-web/releases/download/v0.9.2/dist.tar.gz
 	sha256sums = SKIP
 	sha256sums = dc9ebf27be0a750db10caf62ba04668f138bd6523952ab2ac8223fa7989cab55
