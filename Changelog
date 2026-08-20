@@ -1,9 +1,15 @@
 -------------------------------------------------------
  Changelog    : cidrtools
- Tags         :  ➙ 1.0.1
-              :  ➙ 2026-08-20
+ Tags         : 1.0.1, origin/master ➙ 1.1.0
+              : 2026-08-20 ➙ 2026-08-20
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-08-20   : 1.0.1
+ 2026-08-20   : 1.1.0
+              - **1.1.0**
+            
+                * Bug fix: Original code assumed excluded cidrs are subnets.
+                  Enhance code to handle excluded networks being supernets.
+
+ 2026-08-20   : 1.0.1, origin/master
               - aur PKGBUILD

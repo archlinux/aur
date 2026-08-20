@@ -12,7 +12,7 @@ pkgdesc="Compiled c-library of useful cidr tools plus hostcheck application"
 
 _gitname='cidrtools'
 
-pkgver="1.0.1"
+pkgver="1.1.0"
 pkgrel=1
 url="https://github.com/gene-git/cidrtools"
 
