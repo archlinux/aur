@@ -1,7 +1,7 @@
 # Maintainer: Vyom Jain <vyom.malo6904@gmail.com>
 
 pkgname=sony-headphones-linux
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Native Sony Sound Connect headphones service and CLI for Linux"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('sony-headphones-omarchy')
 replaces=('sony-headphones-omarchy')
 install='sony-headphones-linux.install'
 
-_upstream_commit='08e680333350610a92022dc551b8c2d4d0821054'
+_upstream_commit='927b69d23d18806e75fe260010447234299ed73a'
 _libmdr_commit='db0ae2574d8f8e1407e8ea28a7ee87db9dde1c24'
 _fmt_commit='407c905e45ad75fc29bf0f9bb7c5c2fd3475976f'
 _source_dir="sony-headphones-linux-${_upstream_commit}"
@@ -26,7 +26,7 @@ source=(
   "fmt-${_fmt_commit}.tar.gz::https://github.com/fmtlib/fmt/archive/${_fmt_commit}.tar.gz"
 )
 sha256sums=(
-  '79cf440efc796e83eb7d4035ef0c9879add2fce294473825fe5d1ae2f2dbe46b'
+  '9cc364626f817b273420898f09cbab731752d60272bd129ebb741f4ebb2fafa7'
   'd4dfd5b823c3819a5d2fc0bd5f6534db4fa882d379a94e8f122e0ed3445cddc2'
   '2bc1fe4a5b6d5d6a614239b4ca1d520e66e152a02d3d262684d26dfd6ab3438a'
 )
