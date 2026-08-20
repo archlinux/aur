@@ -3,13 +3,13 @@
 
 pkgname=osmo-ggsn-git
 pkgver=1.15.0.r0.g4ba8c0c
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source implementation of a GGSN (Gateway GPRS Support Node)"
 url="https://osmocom.org/projects/openggsn"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-only AND LGPL-2.1-or-later AND MIT')
 depends=('libosmocore-git'
-         'libosmo-netif'
+         'libosmo-netif-git'
          'talloc')
 makedepends=('git')
 provides=("${pkgname%-git}=${pkgver}"
