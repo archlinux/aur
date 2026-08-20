@@ -1,6 +1,6 @@
 pkgbase = bananas
 	pkgdesc = Simple peer-to-peer screen sharing tool without account or server requirements.(Use system-wide electron)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://getbananas.net/
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = bananas
 	makedepends = bun
 	makedepends = jq
 	depends = electron31
-	source = bananas-0.2.0::git+https://github.com/mistweaverco/bananas.git#tag=v0.2.0
+	source = bananas-0.2.1::git+https://github.com/mistweaverco/bananas.git#tag=v0.2.1
 	source = bananas.sh
-	sha256sums = 1a3c52ea4b031c29ae97cc5afe632b52a3f1494299e3155a7736d4c49455e535
+	sha256sums = 8f0f89c8cce1ae4578ae889390da05bdefa154258fab8c57d161d17e9f9b2bd2
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = bananas

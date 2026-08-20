@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bananas
 _pkgname=Bananas
-pkgver=0.2.0
+pkgver=0.2.1
 _electronversion=31
 _nodeversion=20
 pkgrel=1
@@ -25,7 +25,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('1a3c52ea4b031c29ae97cc5afe632b52a3f1494299e3155a7736d4c49455e535'
+sha256sums=('8f0f89c8cce1ae4578ae889390da05bdefa154258fab8c57d161d17e9f9b2bd2'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
