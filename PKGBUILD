@@ -1,6 +1,6 @@
 # Maintainer: ekoputrapratama <ekoputrapratama@github.com>
 pkgname=webkit-wallpaper
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Linux desktop wallpaper powered by a webview - use any web page or WebGL shader as your background"
 arch=('any')
