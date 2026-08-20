@@ -4,8 +4,8 @@
 pkgname=libfprint-goodix-55a2
 _pkgname=libfprint
 pkgver=1.94.100
-pkgrel=3
-_commit=07c159884a79135734439c4fb2c6de11341647fb
+pkgrel=4
+_commit=b14dfc587e0f8962e88fdc7efa3d923ff482cf46
 pkgdesc="Library for fingerprint readers, with a driver for the Goodix 27c6:55a2 (GF3206/GF3208) sensor"
 url="https://github.com/gaurav712/libfprint"
 arch=(x86_64)
