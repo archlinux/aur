@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bilibili
-_pkgver=1.17.9
-_subver=2
+_pkgver=1.18.0
+_subver=1
 pkgver="${_pkgver}_${_subver}"
 _electronversion=43
 _nodeversion=22
@@ -39,7 +39,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${_pkgver}-${_subver}"
     "${pkgname}.sh"
 )
-sha256sums=('0c3e136bcd5e0857e61ec81a6098d33c9bc3ff0da17827ac38ef2b8a60bec18e'
+sha256sums=('473fcb4b19792641e93f77d3e1aadc2463b6331a50fc7a767ca15b6b9b0d7f6e'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -88,16 +88,16 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname}/g
     " "${srcdir}/${pkgname}.sh"
-    _set_build_env
     sed -i "s/mkdir tmp/mkdir tmp \&\& cp ..\/..\/..\/.npmrc tmp/g" tools/fix-other.sh
+    _set_build_env
     _ensure_local_nvm
     sed -i "s/\"electronVersion\": \"[^\"]*\"/\"electronVersion\": \"${SYSTEM_ELECTRON_VERSION}\"/g" conf/build.json
     NODE_ENV=development    pnpm install
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _set_build_env
     _ensure_local_nvm
-    local electronDist="/usr/lib/electron${_electronversion}"
     sh tools/update-bilibili.sh
     sh tools/fix-other.sh
     sh tools/extension.sh
