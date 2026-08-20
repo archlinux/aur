@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-app-library-git
-pkgver=1.0.16.r0.g1eb859f
+pkgver=1.6.0.r5.g385db1e
 pkgrel=1
 pkgdesc="An application launcher for the COSMIC desktop"
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,9 @@ prepare() {
 
 build() {
   cd cosmic-applibrary
+  export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
+  just xdgen
 
   # use mold instead of lld to speed up build
   RUSTFLAGS+=" -C link-arg=-fuse-ld=mold"
