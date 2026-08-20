@@ -1,6 +1,6 @@
 pkgbase = fuse-emulator
 	pkgdesc = ZX Spectrum emulator.
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = http://fuse-emulator.sourceforge.net/fuse.php
 	arch = i686
@@ -16,10 +16,10 @@ pkgbase = fuse-emulator
 	optdepends = bzip2: support for certain compressed files
 	optdepends = audiofile: support for loading from .wav files
 	conflicts = fuse-emulator-sdl
-	source = http://downloads.sourceforge.net/sourceforge/fuse-emulator/fuse-1.9.0.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/fuse-emulator/fuse-1.9.1.tar.gz
 	source = https://gitlab.com/menelkir/fuseroms/-/archive/0.2/fuseroms-0.2.tar.gz
 	source = fuse-emulator.desktop
-	sha512sums = cbcdcb1e56b1ef18c992c0f1c038a713b22f2cd8c415e1f99b8f6378eff17ffbfa9dbd45edc70c05386dcc5778c88327ce5a17612f7b13138882052d66c1e105
+	sha512sums = dfe804835cd724d903ca34aa368068f16bb0ac0a0738a17de6dd545d0a139953cab15f26612a6129bc0fffbd981a5bb6de3a781e811b6fe1f851525cea1543e6
 	sha512sums = 16f0993e6237252893e4624733f6e609a02a7cd9a726976b6dbf3ef1f08b3bda36c5ebadb07ba5283326dce1f71be10ce1ef6601262aa11e1ddc94e958ab63ac
 	sha512sums = 46b59831fb2ce0da176b7db1a89c17e75ae45c7dfb459287d1f22e4bf4d107d6261ff9e04e1d76b5421f5106a4a64e10e7876069c13fa2a3a0dd4a56f61d5193
 
