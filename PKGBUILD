@@ -1,7 +1,7 @@
 # Maintainer: Nakanomk <56832666+Nakanomk@users.noreply.github.com>
 
 pkgname=seekey
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='Wayland keyboard visualizer with floating key bubbles'
 arch=('x86_64')
@@ -16,6 +16,7 @@ depends=(
   'json-glib'
   'libevdev'
   'ncurses'
+  'pango'
 )
 makedepends=(
   'gettext'
@@ -23,7 +24,7 @@ makedepends=(
 )
 install=seekey.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7dcc0d65b1465573a87f26ee25ecbc9372c6673db1b5aa1b7a246dcb3a818bd4')
+sha256sums=('1f58a05302ebafcfc2e1ec17bee52dd4fb14c1b7b9d2164bc0bfd4a33494c800')
 
 build() {
   make -C "Seekey-$pkgver" PREFIX=/usr

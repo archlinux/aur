@@ -1,6 +1,6 @@
 pkgbase = seekey
 	pkgdesc = Wayland keyboard visualizer with floating key bubbles
-	pkgver = 0.2.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/Nakanomk/Seekey
 	install = seekey.install
@@ -16,7 +16,8 @@ pkgbase = seekey
 	depends = json-glib
 	depends = libevdev
 	depends = ncurses
-	source = seekey-0.2.1.tar.gz::https://github.com/Nakanomk/Seekey/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 7dcc0d65b1465573a87f26ee25ecbc9372c6673db1b5aa1b7a246dcb3a818bd4
+	depends = pango
+	source = seekey-0.2.3.tar.gz::https://github.com/Nakanomk/Seekey/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = 1f58a05302ebafcfc2e1ec17bee52dd4fb14c1b7b9d2164bc0bfd4a33494c800
 
 pkgname = seekey
