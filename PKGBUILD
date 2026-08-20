@@ -35,7 +35,7 @@ conflicts=("$_pkgname")
 install=tennoworth-bin.install
 options=('!strip' '!debug')
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/desktop-v$pkgver/tennoworth-desktop-linux-x86_64.tar.gz")
-sha256sums=('678e412d44a27ef14d781caafc3684f332a818a441ad170a4787214cc91a3df1')
+sha256sums=('0df0dfc1b4b4dc26b9dacd91c6a4e083d642bcd225edcaed355988e5e25f334e')
 
 _dir="tennoworth-desktop-linux-x86_64"
 
