@@ -2,15 +2,15 @@
 
 pkgname=xprinter-cups
 pkgver=3.13.55
-pkgrel=1
+pkgrel=2
 pkgdesc="Xprinter Drivers for Linux (ESC/POS and TSPL)"
 arch=('x86_64')
 url="https://www.xprintertech.com/drivers-2"
 depends=('cups')
-makedepends=('dpkg' 'unrar')
+makedepends=('dpkg' 'unzip')
 options=('!strip')
 
-source=("${pkgname}-${pkgver}.rar::https://www.xprintertech.com/label-printer-linux-1")
+source=("${pkgname}-${pkgver}.zip::https://www.xprintertech.com/label-printer-linux-1")
 sha256sums=('56da6a61aff7e9e51174e99f63debb690cf4864f5b45fe4325c02bc7f6d54d4c')
 
 prepare() {
