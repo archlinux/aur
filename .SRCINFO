@@ -1,6 +1,6 @@
 pkgbase = proxmark3-iceman-git
 	pkgdesc = RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.
-	pkgver = 4.21611.r568.g2c6e607
+	pkgver = 4.21611.r766.g4682271
 	pkgrel = 1
 	url = https://github.com/RfidResearchGroup/proxmark3
 	install = proxmark3-iceman-git.install
@@ -14,6 +14,7 @@ pkgbase = proxmark3-iceman-git
 	depends = bash
 	depends = bzip2
 	depends = readline
+	depends = libatomic
 	depends = libgcc
 	depends = libstdc++
 	depends = lua54
