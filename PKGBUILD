@@ -3,9 +3,9 @@
 
 pkgname=stable-diffusion.cpp-vulkan-git
 _pkgname=stable-diffusion.cpp
-pkgver=r786.cfd4cff
+pkgver=r827.97d2990
 pkgrel=1
-pkgdesc="Stable Diffusion and Flux in pure C/C++ (Vulkan version)"
+pkgdesc="Diffusion model (Flux, Ideogram, Krea, Lens, LTX, MiniMax, Qwen Image, SD, Wan, Z-Image...) inference in pure C/C++ (Vulkan version)"
 license=('MIT')
 depends=(
     'libgcc'
@@ -29,7 +29,7 @@ options=(
     lto
     !debug)
 source=("git+https://github.com/leejet/stable-diffusion.cpp.git"
-        "git+https://github.com/ggerganov/ggml.git"
+        "git+https://github.com/leejet/ggml.git#branch=int8_convrot"
         "git+https://github.com/leejet/sdcpp-webui.git")
 sha256sums=('SKIP'
             'SKIP'
@@ -45,19 +45,22 @@ prepare() {
     git submodule init
     git config submodule.ggml.url "$srcdir/ggml"
     git config submodule.examples/server/frontend.url "$srcdir/sdcpp-webui"
-    git -c protocol.file.allow=always submodule update --remote
+    git -c protocol.file.allow=always submodule update --init
 }
 
 build() {
-    # embedded web UI
+    # Embedded web UI
     pushd "$srcdir/$_pkgname/examples/server/frontend"
     pnpm install
     popd
     cmake -B build-vulkan -S $_pkgname \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_C_FLAGS="${CFLAGS}" \
+        -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
+        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
+        -DCMAKE_SKIP_RPATH=ON \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
         -DSD_BUILD_SHARED_LIBS=ON \
         -DSD_BUILD_SHARED_GGML_LIB=OFF \
         -DSD_BUILD_EXAMPLES=ON \
