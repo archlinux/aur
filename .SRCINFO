@@ -1,7 +1,7 @@
 pkgbase = linuxhammerlauncher-bin
 	pkgdesc = A launcher, installer and updater for Hammer++ & Tools++ (VBSP++, VVIS++, VRAD++) on Linux, for many different Source Engine games.
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/EnderCatCore/linuxhammerlauncher
 	arch = x86_64
 	license = GPL-3.0-only
