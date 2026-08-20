@@ -3,7 +3,7 @@
 
 _gitname=vuln
 pkgname=govulncheck-git
-pkgver=1.6.0.r0.g19b0bb6a2
+pkgver=1.7.0.r1.gff4f1c5e8
 pkgrel=1
 pkgdesc='Database client and tools for the Go vulnerability database (git version)'
 url='https://go.googlesource.com/vuln/'
