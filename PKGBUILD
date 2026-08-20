@@ -1,13 +1,13 @@
 # Maintainer: uberben <ben at benbergman dot ca>
 
 pkgname="orca-slicer-nightly-bin"
-pkgver=2026.06.21.182501Z
+pkgver=2026.08.20.091636Z
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (nightly builds)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/SoftFever/OrcaSlicer"
 license=('AGPL3')
-depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk-4.1' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'gst-plugins-base' 'gst-libav')
+depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup3' 'webkit2gtk-4.1' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'gst-plugins-base' 'gst-libav')
 makedepends=('jq' 'curl')
 provides=("orca-slicer")
 conflicts=("orca-slicer")

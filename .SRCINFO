@@ -1,6 +1,6 @@
 pkgbase = orca-slicer-nightly-bin
 	pkgdesc = G-code generator for 3D printers (nightly builds)
-	pkgver = 2026.06.21.182501Z
+	pkgver = 2026.08.20.091636Z
 	pkgrel = 1
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = orca-slicer-nightly-bin
 	depends = glu
 	depends = cairo
 	depends = gtk3
-	depends = libsoup
+	depends = libsoup3
 	depends = webkit2gtk-4.1
 	depends = gstreamer
 	depends = openvdb
