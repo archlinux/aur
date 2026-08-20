@@ -1,7 +1,7 @@
 # Maintainer: PenguinBurner contributors
 
 pkgname=penguin-burner
-pkgver=0.7.7
+pkgver=0.7.9
 pkgrel=1
 pkgdesc='NVIDIA GPU automatic undervolting and fine tuning tool'
 arch=('x86_64')
@@ -45,7 +45,7 @@ build() {
 package() {
   cd "PenguinBurner-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
-  # Installed where runtime_service.py discovers it first (0755, root-owned).
+  # Package-owned source copied to the canonical /var/opt target at setup.
   install -Dm755 burnerd/target/release/penguin-burnerd \
     "${pkgdir}/usr/libexec/penguin-burnerd"
 }
