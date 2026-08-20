@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=noteminder-bin
 _pkgname=NoteMinder
-pkgver=1.4.1
+pkgver=1.4.2
 _electronversion=27
 pkgrel=1
 pkgdesc="A sleek, minimal note-taking desktop app that docks at the edge of your screen and supports rich text editing, color-coding, and intelligent reminders.(Prebuilt version.Use system-wide electron)"
@@ -24,7 +24,7 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${url}/releases/dow
 #source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage")
 sha256sums=('ff674cc0e327d0ee1662950ea33c666c4cbd61126063902e56e0cfaae1917bd7'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('b84a8eae3240adb5ff6946313d9b63df49689553dcbc2ac4f458c7e349be6a92')
+sha256sums_aarch64=('3c39eff254aa2e0eee34d0f750a9b4fc50485f2e0939bec73851ebb40e0289c9')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
