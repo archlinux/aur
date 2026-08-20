@@ -1,0 +1,29 @@
+pkgbase = libfprint-goodix-55a2
+	pkgdesc = Library for fingerprint readers, with a driver for the Goodix 27c6:55a2 (GF3206/GF3208) sensor
+	pkgver = 1.94.100
+	pkgrel = 1
+	url = https://github.com/gaurav712/libfprint
+	arch = x86_64
+	groups = fprint
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	makedepends = meson
+	makedepends = python-cairo
+	makedepends = python-gobject
+	makedepends = systemd
+	depends = libgcc
+	depends = glib2
+	depends = glibc
+	depends = libgudev
+	depends = libgusb
+	depends = openssl
+	depends = pixman
+	provides = libfprint
+	provides = libfprint-2.so
+	conflicts = libfprint
+	source = git+https://github.com/gaurav712/libfprint.git#commit=5c80ec58265e62678c63646e3a6cb2439387cae8
+	b2sums = SKIP
+
+pkgname = libfprint-goodix-55a2
