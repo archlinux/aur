@@ -17,7 +17,7 @@ makedepends=(
 	'nodejs'
 	'npm'
 	'pnpm'
-	'libgit2'
+	'libgit2' 'libgit2.so'
 )
 source=(
 	"radicle-explorer::git+https://$_node/${_rid#rad:}.git"
@@ -127,7 +127,7 @@ package_radicle-httpd-git() {
 	license=('Apache-2.0 OR MIT')
 	depends=(
 		'glibc'
-		'libgcc'
+		'libgcc' 'libgcc_s.so'
 		'libgit2' 'libgit2.so'
 		'radicle-node'
 	)
