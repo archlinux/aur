@@ -1,6 +1,6 @@
 pkgbase = python-genai-prices
 	pkgdesc = Calculate prices for calling LLM inference APIs.
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/pydantic/genai-prices
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-genai-prices
 	optdepends = python-pydantic-settings: cli
 	optdepends = python-rich: cli
 	optdepends = python-rich-argparse: cli
-	source = https://github.com/pydantic/genai-prices/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = 9eea4f6ac1903f4d442bdde48409f910809b48fc12746b838019b904a7337066
+	source = https://github.com/pydantic/genai-prices/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 5558e8ec2d2e56e7f34764b45a0f825f99c90260394d46d2842314d683fe61bd
 
 pkgname = python-genai-prices
