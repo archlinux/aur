@@ -13,7 +13,7 @@
 
 _srcname=cosmic-idle
 pkgname=cosmic-idle-inhibit-export
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 epoch=1
 pkgdesc='Cosmic idle daemon (patched to export org.freedesktop.ScreenSaver inhibitors over D-Bus)'

@@ -1,6 +1,6 @@
 pkgbase = cosmic-idle-inhibit-export
 	pkgdesc = Cosmic idle daemon (patched to export org.freedesktop.ScreenSaver inhibitors over D-Bus)
-	pkgver = 1.4.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/pop-os/cosmic-idle
@@ -15,9 +15,9 @@ pkgbase = cosmic-idle-inhibit-export
 	depends = glibc
 	depends = libxkbcommon
 	depends = wayland
-	provides = cosmic-idle=1:1.4.0
+	provides = cosmic-idle=1:1.6.0
 	conflicts = cosmic-idle
-	source = git+https://github.com/pop-os/cosmic-idle.git#tag=epoch-1.4.0
+	source = git+https://github.com/pop-os/cosmic-idle.git#tag=epoch-1.6.0
 	source = screensaver-export.patch
 	b2sums = 23e204198fa8f662a5370bbe064833a3213ba352927223fc9c526b2ed761a69eb5cef6634e696b9eabfa5f4b69415199ca45bcf13146c3496ae35961cb60e162
 	b2sums = 1f24c7a909aff80ec3df3f4b4c2e94373ef9fe2a3ec5d96009f88900010ba6cd9960e13e32cf6ac10eca82d5eb16957f6176c5b9d7ebde216b55a203674c55a3
