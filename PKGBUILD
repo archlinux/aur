@@ -2,7 +2,7 @@
 _pkgname=terminal-browser
 pkgname=terminal-browser-bin
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A browser that runs directly inside your existing terminal"
 arch=('x86_64' 'aarch64')
 url="https://terminal-browser.sh"
