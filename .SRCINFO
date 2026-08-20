@@ -1,6 +1,6 @@
 pkgbase = ccusage-git
 	pkgdesc = Analyze coding (agent) CLI token usage and costs from local data.
-	pkgver = 20.0.20.r100.gdb990bf
+	pkgver = 20.0.20.r101.g813d801
 	pkgrel = 1
 	url = https://github.com/ryoppippi/ccusage
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = ccusage-git
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
+	provides = ccusage
+	conflicts = ccusage
 	options = !lto
 	source = ccusage-git::git+https://github.com/ryoppippi/ccusage.git
 	cksums = SKIP
