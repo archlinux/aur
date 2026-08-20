@@ -2,7 +2,7 @@
 
 pkgname=nym-vpnd-beta-bin
 pkgver=2026.12.1
-pkgrel=1
+pkgrel=2
 _release_tag="nym-vpn-v${pkgver}-beta.${pkgrel}"
 pkgdesc="NymVPN daemon (Beta)"
 arch=("x86_64" "aarch64")
@@ -27,9 +27,9 @@ source_aarch64=(
   "nym-vpn-core-bin-aarch64.tar.gz::${url}/releases/download/${_release_tag}/nym-vpn-core-v${pkgver}-beta.${pkgrel}_linux_aarch64.tar.gz"
   "nym-vpnd.service"
 )
-b2sums_x86_64=('ac03276444e6620d239ced7a48fe084e061e560dce880a316e486cb38270bab91de68cc798f82440b0f243e2d10de822ebd384ca78381db1c014e313b03671d0'
+b2sums_x86_64=('2549f24ec569b2746d1d371a2100465c9f678403e13c95641b1130927e119b97c7067bcdfb3aa22c8f7b9367cbdb086d335ee02855ee66e777f00c231f0e98cd'
                'ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414')
-b2sums_aarch64=('e3741299c7a08d94bbaa97aa5127dfdd12bcd4b4a4168543e324c4292f8a0eb5374566e6862882d2b004f1dd070e4af77faa72ed49c69ca327bbfa403d6d365e'
+b2sums_aarch64=('19bc5006c9c94f3116326135cc30c335fc1ce378a1be6a24f8ae55c3333cdc76de2b5800f9406a62661ef54791b7e3b83d07e462551f575f4892538ad3347d20'
                 'ce22870bc2c4969c77c067047cc5fec0cc32680983071791ca58f0d197c7d82a7c9c2ee0275e80b5c85e912d70144532bc8ff7d82d458ac286d5eaed9f777414')
 
 package() {
