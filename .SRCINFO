@@ -1,6 +1,6 @@
 pkgbase = python-fieldcompare
 	pkgdesc = Read and compare numerical data against reference data using exact, fuzzy or custom comparison operations
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://gitlab.com/dglaeser/fieldcompare
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-fieldcompare
 	depends = python-numpy
 	depends = python-colorama
 	optdepends = python-meshio: for a large number of further mesh file formats support
-	source = https://gitlab.com/dglaeser/fieldcompare/-/archive/0.5.0/fieldcompare-0.5.0.tar.gz
-	sha512sums = 72bf586fd5d522b0ae35004bb6bc3955410465fe428dac4afab4faa6fac978e0c71c0ef306dfd826d131e0c958f9214355804e5e84969a775227a10049fe8d5c
+	source = https://gitlab.com/dglaeser/fieldcompare/-/archive/0.6.0/fieldcompare-0.6.0.tar.gz
+	sha512sums = 932c3d614dda4c500c19e9908a51bbbfe25008b660a0770470ed50622bb8761f143fd68fff860217c179574cf9bce670178ec3c1d502e1a364087ec38eae0894
 
 pkgname = python-fieldcompare

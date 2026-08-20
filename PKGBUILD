@@ -2,7 +2,7 @@
 _base=fieldcompare
 pkgname=python-${_base}
 pkgdesc="Read and compare numerical data against reference data using exact, fuzzy or custom comparison operations"
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 arch=(any)
 url="https://gitlab.com/dglaeser/${_base}"
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-meshio python-h5py-openmpi)
 optdepends=('python-meshio: for a large number of further mesh file formats support')
 source=(${url}/-/archive/${pkgver}/${_base}-${pkgver}.tar.gz)
-sha512sums=('72bf586fd5d522b0ae35004bb6bc3955410465fe428dac4afab4faa6fac978e0c71c0ef306dfd826d131e0c958f9214355804e5e84969a775227a10049fe8d5c')
+sha512sums=('932c3d614dda4c500c19e9908a51bbbfe25008b660a0770470ed50622bb8761f143fd68fff860217c179574cf9bce670178ec3c1d502e1a364087ec38eae0894')
 
 build() {
   cd ${_base}-${pkgver}
