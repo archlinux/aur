@@ -1,0 +1,27 @@
+pkgbase = zilch-git
+	pkgdesc = Small, fast, self-contained android de-bloat tool.
+	pkgver = 1.1.0.r48.20260805.48af27a
+	pkgrel = 1
+	url = https://github.com/lavafroth/zilch
+	arch = aarch64
+	arch = armv7h
+	arch = armv8h
+	arch = loong64
+	arch = i686
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cargo
+	makedepends = libgcc
+	makedepends = libudev
+	depends = glibc
+	depends = libgcc_s.so
+	depends = libudev.so
+	provides = zilch=1.1.0.r48.20260805.48af27a
+	conflicts = zilch
+	conflicts = zilch-bin
+	options = !lto
+	source = zilch::git+https://github.com/lavafroth/zilch.git
+	sha256sums = SKIP
+
+pkgname = zilch-git
