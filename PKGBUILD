@@ -1,30 +1,30 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname='qt5-advanced-docking-system'
-pkgver='5.0.0'
+pkgver='5.1.1'
 pkgrel=1
 pkgdesc='Qt advanced docking widgets'
 arch=('x86_64')
 url='https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System/'
 license=('LGPL-2.1-only')
 makedepends=('cmake' 'ninja' 'gcc')
-depends=('qt5-base' 'glibc' 'libxcb')
+depends=('qt5-base' 'glibc' 'libxcb' 'libstdc++' 'libgcc')
 
 _orgpkgname='Qt-Advanced-Docking-System'
 _pkgbuilddir="$_orgpkgname-$pkgver/build"
 _pkgsrcdir="$_orgpkgname-$pkgver"
 
 source=(
-    "${pkgname}-${pkgver}.tar.gz::https://github.com/githubuser0xFFFF/${_orgpkgname}/archive/refs/tags/${pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::https://github.com/githubuser0xFFFF/${_orgpkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
 sha512sums=(
-    'f858926b60edb865ad86f9b4874279d703bc604dd52c8bda39768c0a0a3441133aacc2b560b9604aca4cc1b016c66927ef390ae2edb86ac82bc3410d9ed1b3ee'
+    'a2b4ad4887733b3126e4a5f3c9973e058e0a7f408f213dd24e3c55e90258b28ec448d6af0602d397e6c16cabe402f436ae33c96b93f5504db5fa7802359263f4'
 )
 
 options=('!debug')
 
 build() {
-    cmake "$_pkgsrcdir" -DCMAKE_INSTALL_PREFIX=/usr -B"$_pkgbuilddir" -G"Ninja" -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_EXAMPLES=OFF -DADS_VERSION="$pkgver" -DQT_VERSION_MAJOR="5"
+    cmake "$_pkgsrcdir" -DCMAKE_INSTALL_PREFIX=/usr -B"$_pkgbuilddir" -G"Ninja" -DCMAKE_BUILD_TYPE=RELEASE -DBUILD_EXAMPLES=OFF -DQT_VERSION_MAJOR="5"
     cmake --build "$_pkgbuilddir"
 }
 
