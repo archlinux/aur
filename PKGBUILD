@@ -2,8 +2,8 @@
 pkgname=aviutl-package-manager-bin
 _pkgname=apm
 _appname='AviUtl Package Manager'
-pkgver=3.12.0
-_electronversion=39
+pkgver=3.13.0
+_electronversion=43
 pkgrel=1
 pkgdesc="A software that assists in the installation of AviUtl itself and its plugins and scripts.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('26170fbd0e40fd5229279b7103510e21bd5d1c389b317e0ca1cb7a1084593d63'
+sha256sums=('b619c5f174d8d73d06b6aeffe7ef1d1da2bc65e8984c4ee248c7cb1a3a159e60'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
