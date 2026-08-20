@@ -1,7 +1,7 @@
 pkgbase = falco
 	pkgdesc = Falco is a cloud native runtime security tool for Linux operating systems
 	pkgver = 0.44.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://falco.org/
 	arch = x86_64
 	arch = aarch64
@@ -40,12 +40,14 @@ pkgbase = falco
 	source = falcoctl-0.13.0.tar.gz::https://codeload.github.com/falcosecurity/falcoctl/tar.gz/refs/tags/v0.13.0
 	source = falco.service
 	source = falco.sysusers
+	source = falco.tmpfiles
 	sha256sums = 661d0dc62f0eb82352f8b176e423bd34fdc44ca4c98b3f329fd73d984f0c50f5
 	sha256sums = 8b1a9e61030e88ca3e8727cfe20bab8f662d6e2e6b13178e2be57d38e025af24
 	sha256sums = 272a5a0c05e7c10a658ed9649023e6179061a4ab29e012602893586ac64b5938
 	sha256sums = 0e585f5fc2b76696ef2cb902f0901ea39a2f2df87e1f091f3348f968b9085f39
 	sha256sums = 804a37e6372201ee21d3bc99ffea6079484b557ece0aa17719dbc6e8cb2b5fec
-	sha256sums = 842dc610acb6d9df53bb0b225fda96ddb1e1b2560c9fd511fafefbe2ab9c22a6
+	sha256sums = 64edf36a93fceb949d186505d703c1fb49a47892b63d77d49f4db92ee69df535
 	sha256sums = ce971a3f52ab84182146da14651eabbac9b33157bacebe5efc087f461d18bc49
+	sha256sums = 5c7f1ba69b9af0e919deea901b8b9dfc1fa8d9e287b0c5a189e7dca9956558e1
 
 pkgname = falco
