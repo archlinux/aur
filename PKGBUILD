@@ -5,7 +5,7 @@
 _pkgname="wsjtx"
 pkgbase="$_pkgname-improved-qt6"
 pkgname=("$_pkgname-improved-qt6")
-pkgver=3.1.0+260522
+pkgver=3.2.0+260818
 pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB"
 url="https://sourceforge.net/projects/wsjt-x-improved/"
@@ -48,9 +48,9 @@ noextract=("$_file")
 source=("$_file"::"$_dl_url_base/wsjtx-${pkgver%+*}_improved_PLUS_${pkgver#*+}_qt6.tgz")
 
 sha256sums=(
-  '4c4262d8a4ff0189a64a97a55aa352509720db32b512c2a0cec0b6a096367324'
-  '0fc92469a6b45b6448dd5fa536407d64a61304b3381ef198b7ee1b140dac0ab5'
-  'c7fe58d9901e1de6b587fb5ccae8eea0694f387b2662c872e3081d9fa6218512'
+  'adc573cbcaa41c2d414f0f858437ecf09208f3977e0707ddea5c6a11a9d71be3'
+  '5c77cce3a54579f7e251ea6106b0a4d2cd2244af7ce4e2f4264d27620db829e7'
+  'a4840c6ef0de0c4f80c19e79ee14361345bb5835662d99c6463259449d73fd04'
 )
 
 for i in ${_pkgs//:/ }; do
@@ -70,6 +70,7 @@ fi
 
 prepare() {
   for i in "${noextract[@]}"; do
+    printf "Extracting %s...\n" "$i"
     mkdir -p "${i%.tar.gz}"
     pushd "${i%.tar.gz}" > /dev/null
     bsdtar -xf "../$i" --strip-components 1
@@ -79,6 +80,8 @@ prepare() {
 }
 
 build() {
+  export CFLAGS+=' -Wno-error=format-security'
+
   for i in "${noextract[@]}"; do
     pushd "${i%.tar.gz}" > /dev/null
     printf "\nBuilding %s...\n" "${i%.tar.gz}"
@@ -89,7 +92,7 @@ build() {
       -DCMAKE_BUILD_TYPE=None
       -DCMAKE_INSTALL_PREFIX='/usr'
       -DCMAKE_INSTALL_BINDIR="lib/$_pkgname"
-      -Wno-dev
+      -Wno-author
     )
 
     cmake "${_cmake_options[@]}"
@@ -107,7 +110,7 @@ _package() {
 
   # set rpath
   for i in "$pkgdir"/usr/lib/wsjtx/*; do
-    if [ -f "$i" ] && [ -x "$i" ]; then
+    if [ -f "$i" ] && readelf -h "$i" &> /dev/null; then
       patchelf --set-rpath '$ORIGIN' "$i"
     fi
   done
