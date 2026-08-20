@@ -1,6 +1,6 @@
 # Maintainer: kirarahoshiiii
 pkgname=fastfetch-configs-git
-pkgver=r18.b09c657
+pkgver=r23.0cb154d
 pkgrel=1
 pkgdesc="A collection of ready-to-use aesthetic fastfetch configurations with an interactive installer"
 arch=('any')
@@ -32,6 +32,13 @@ package() {
     done
 
     install -Dm755 install.sh "$pkgdir/usr/bin/fastfetch-configs"
+
+    install -Dm644 completions/fastfetch-configs.bash \
+        "$pkgdir/usr/share/bash-completion/completions/fastfetch-configs"
+    install -Dm644 completions/_fastfetch-configs \
+        "$pkgdir/usr/share/zsh/site-functions/_fastfetch-configs"
+    install -Dm644 completions/fastfetch-configs.fish \
+        "$pkgdir/usr/share/fish/vendor_completions.d/fastfetch-configs.fish"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

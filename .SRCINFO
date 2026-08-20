@@ -1,6 +1,6 @@
 pkgbase = fastfetch-configs-git
 	pkgdesc = A collection of ready-to-use aesthetic fastfetch configurations with an interactive installer
-	pkgver = r18.b09c657
+	pkgver = r23.0cb154d
 	pkgrel = 1
 	url = https://github.com/iamanuclearwarhead/fastfetch-configs
 	arch = any
