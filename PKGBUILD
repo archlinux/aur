@@ -3,9 +3,9 @@
 
 pkgname=smp_utils
 pkgver=0.99
-pkgrel=1
+pkgrel=2
 pkgdesc="Utilities for the Serial Attached SCSI (SAS) Management Protocol (SMP)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'pentium4')
 url="http://sg.danny.cz/sg/smp_utils.html"
 license=('BSD')
 depends=('glibc')

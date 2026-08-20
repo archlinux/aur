@@ -1,10 +1,11 @@
 pkgbase = smp_utils
 	pkgdesc = Utilities for the Serial Attached SCSI (SAS) Management Protocol (SMP)
 	pkgver = 0.99
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sg.danny.cz/sg/smp_utils.html
 	arch = i686
 	arch = x86_64
+	arch = pentium4
 	license = BSD
 	depends = glibc
 	source = http://sg.danny.cz/sg/p/smp_utils-0.99.tar.xz
