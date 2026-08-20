@@ -1,0 +1,18 @@
+pkgbase = qt6-pipewirespectrum
+	pkgdesc = PipeWire audio spectrum analyzer for QML
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alexindigo/pipewirespectrum
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = libpipewire
+	conflicts = qt6-pipewirespectrum-git
+	options = !debug
+	source = qt6-pipewirespectrum-0.1.0.tar.gz::https://github.com/alexindigo/pipewirespectrum/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 9c1be44521c2386f7a2190e6ca07b9eec692c4ed765faa29331ea4815d080544
+
+pkgname = qt6-pipewirespectrum
