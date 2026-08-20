@@ -11,9 +11,9 @@ provides=(konform-browser)
 conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
-: ${_ffsrcvername:=140.13.0esr}
+: ${_ffsrcvername:=140.14.0esr}
 : ${_ffbuild:=1}
-: ${_lwrelver:=102}
+: ${_lwrelver:=100}
 : ${_l10n_commit=5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1}
 _ffsrcver="${_ffsrcvername%esr*}"
 if [[ "${_ffsrcver}" =~ .+\..+\..+ ]]; then
@@ -147,21 +147,24 @@ source=(
   "firefox-l10n-${_l10n_commit}.tar.gz"::"https://github.com/mozilla-l10n/firefox-l10n/archive/$_l10n_commit.tar.gz"
   "${__pkgname}.desktop"
   "default192x192.png"
+  "security-state--intermediates.zip::https://codeberg.org/konform-browser/source/releases/download/${_tag}/security-state--intermediates.zip"
   "0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
   "0002-Use-wasm32-wasip1-target.patch"
   "0003-update-rust-bindgen-to-fix-clang22-build.patch.xz"
   "0004-skia-m142-update.patch.xz"
 )
-sha256sums=('38e59c9106a54fc3967dd8dd062eee6953b691c78751e0deb7683ebbf5fdf95c'
-            'f53b9dc6942abda1185aa7d79048f59fc075020da36b4dd6b31f668b88714d01'
+noextract=("security-state--intermediates.zip")
+sha256sums=('a964d5bc5fcecb35701396493dcdaad6ddbc6dffe80d17051e82b15178e8d5a9'
+            '28006bd454e703932e1ea804918165774a1e21478b18e551cd1b38111d664239'
             'SKIP'
             '50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
+            '0c21f80ad1b3796c49429949e6a3d52cbe9c3b5b4c317690a749d80076396d0c'
             '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
             'baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba'
             '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
-            'e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760')
+            '01b8c0b1064f746ecd186e4b92767e92e4028519cfd3e0ea0637fb786cdec644')
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -188,6 +191,12 @@ prepare() {
   mkdir -p "${_srcdir}/lw"
   mv "${srcdir}/firefox-${_ffsrcver}"/* "${srcdir}/firefox-${_ffsrcver}"/.* "${_srcdir}/"
   mv "../firefox-l10n-${_l10n_commit}" "${_srcdir}/lw/l10n"
+
+  mkdir -p services/settings/dumps/security-state/intermediates/
+  mv ../security-state--intermediates.zip services/settings/dumps/security-state/intermediates/
+  pushd services/settings/dumps/security-state/intermediates/
+  sha512sum security-state--intermediates.zip > security-state--intermediates.zip.sha512sum
+  popd
 
   python3 scripts/apply-patches.py "${_srcver}" "${_lwrelver}"
 
