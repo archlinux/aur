@@ -31,7 +31,7 @@ fi
 
 pkgname=${_pkgname}-dkms-staging-compat-git
 pkgver=2.4.3.r14.g027940e0b2
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel modules for the Zettabyte File System (release staging branch) with compatibility patches for latest stable kernel."
 arch=('any')
 url="https://zfsonlinux.org/"
@@ -47,6 +47,7 @@ source=("${_pkgname}::git+${_git_repo}#${_git_branch}"
         "linux710-META.patch::https://github.com/CachyOS/zfs/commit/c681af76c5a6a15caada25eb13090e41218c7831.patch?full_index=1"
         "linux720-zpl_super-convert-to-sget_fc.patch::https://github.com/CachyOS/zfs/commit/a5cf315c4ceaee1979dd0047dec8cb2e299cac48.patch?full_index=1"
         "linux720-META.patch::https://github.com/CachyOS/zfs/commit/92163c55454ad016a4f5be0baca98f95229227df.patch?full_index=1"
+        "zoned_uid-additive-least-privilege-authorization.patch::https://github.com/darkbasic/zfs/commit/caf10661b301bf6d3b83bd33cf6c37500ddec0e3.patch?full_index=1"
        )
 sha256sums=('SKIP'
             '8d5c31f883a906ab42776dcda79b6c89f904d8f356ade0dab5491578a6af55a5'
@@ -54,7 +55,8 @@ sha256sums=('SKIP'
             '59656435058e41620f15b5691ef1f753355fe81c01a562d92b7c8028aa527b1f'
             'dc9b1f76abec0942f6f1543b9bd1df4f9f7115eac6a64b4c203a734504feb9cf'
             '4871b2beb4b539ffb527434fd425dc8945af89168a2c4160d79d5d28460970f7'
-            '7ed603a4b6b41b93e47b0862f75950f4340717c34ff3d41f880c043df039d8fb')
+            '7ed603a4b6b41b93e47b0862f75950f4340717c34ff3d41f880c043df039d8fb'
+            '63c0327c7a8a312a1c7fd6db4c4218829edc3639ec1717e789e5145520705673')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
