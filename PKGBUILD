@@ -7,9 +7,9 @@ pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git"
 arch=('x86_64')
 license=('GPL-3.0-only' 'Apache-2.0 OR MIT')
-_node="seed.radicle.xyz"
+_node="seed.radicle.dev"
 _rid="rad:z4V1sjrXqjvFdnCUbxPFqd5p4DtH5"
-url="https://app.radicle.xyz/nodes/$_node/$_rid"
+url="https://app.radicle.dev/nodes/$_node/$_rid"
 makedepends=(
 	'git'
 	'cargo'
