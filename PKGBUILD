@@ -6,7 +6,7 @@ _pkgname=mdc
 pkgname=${_pkgname}-bin
 pkgdesc="A TUI dual-panel terminal file manager written in Go, inspired by Midnight Commander."
 
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 _ghversion=${pkgver}
 _ghversionname=v${pkgver}
@@ -25,8 +25,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_ghversionname}/${_ghname}_${_ghversion}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_ghversionname}/${_ghname}_${_ghversion}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('49a1d30392cdf988556978fef4b4fa1ef4e72a9a24407f965cbcbf13f77d2786')
-sha256sums_aarch64=('dbee591394006e296a1699589d3aacd745c1f95c7fc1735cd67e8305547b92bb')
+sha256sums_x86_64=('9b7e48bb833603f06ddb43b608e8c6925f543fe484f35eafeb98da524ff38353')
+sha256sums_aarch64=('7f60423c7031b47db09f127baf5e7d33cd221a3a232965e553cabbe2e3e7978a')
 
 
 prepare() {
