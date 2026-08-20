@@ -1,10 +1,11 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 #
-# AUR `miyu` 包装包：下载 GitHub Release 上由 packaging/arch/miyu-release
-# 构建的预编译资产，补上 Noto 字体后重新打包（避免让 AUR 用户本地编译）。
+# AUR `miyu` 包装包：下载 GitHub Release 上的预编译资产重新打包（避免让
+# AUR 用户本地编译）。0.4.4 起字体（Noto CJK / Noto Emoji / JetBrains Mono）
+# 已随 release 资产一并打包，不再从上游单独拉取。
 
 pkgname=miyu
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
@@ -20,28 +21,14 @@ optdepends=(
   'zsh: zsh shell integration support'
 )
 _release_pkgrel=1
-_cjk_version='Sans2.004'
-_emoji_version='v2.051'
 source=(
   "${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.pkg.tar.zst"
-  "NotoSansCJK-Regular.ttc::https://raw.githubusercontent.com/notofonts/noto-cjk/${_cjk_version}/Sans/OTC/NotoSansCJK-Regular.ttc"
-  "NotoColorEmoji.ttf::https://raw.githubusercontent.com/googlefonts/noto-emoji/${_emoji_version}/fonts/NotoColorEmoji.ttf"
-  "NotoSansCJK.LICENSE::https://raw.githubusercontent.com/notofonts/noto-cjk/${_cjk_version}/LICENSE"
-  "NotoColorEmoji.LICENSE::https://raw.githubusercontent.com/googlefonts/noto-emoji/${_emoji_version}/LICENSE"
 )
 sha256sums=(
-  '991e2c02e664fe4df8dcdc009d34aa58a4974617f7fbd03147346c3fac3a2bd5'
-  'b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a'
-  '72a635cb3d2f3524c51620cdde406b217204e8a6a06c6a096ff8ed4b5fd6e27b'
-  '6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2'
-  '500bb1ccf43df7bbb522112f9133a52b16e1c35e809632f5d8609b179152de5b'
+  '1cdd12f558ab7bec6184e57baca4c2158e610482ea1cdc6f75b7b48e58702441'
 )
 
 package() {
   install -Dm755 "${srcdir}/usr/bin/miyu" "${pkgdir}/usr/bin/miyu"
   cp -a "${srcdir}/usr/share" "${pkgdir}/usr/"
-  install -Dm644 "${srcdir}/NotoSansCJK-Regular.ttc" "${pkgdir}/usr/share/miyu/fonts/NotoSansCJK-Regular.ttc"
-  install -Dm644 "${srcdir}/NotoColorEmoji.ttf" "${pkgdir}/usr/share/miyu/fonts/NotoColorEmoji.ttf"
-  install -Dm644 "${srcdir}/NotoSansCJK.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NotoSansCJK.LICENSE"
-  install -Dm644 "${srcdir}/NotoColorEmoji.LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/NotoColorEmoji.LICENSE"
 }
