@@ -1,0 +1,22 @@
+pkgbase = astronex
+	pkgdesc = An astrology program for calculating and drawing charts according to the API Method. Used in Huber method. Python 3 version.
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/Uthopik/astronex-python-3
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = gtk3
+	depends = pyswisseph
+	depends = python-configobj
+	depends = python-pillow
+	depends = python-tzdata
+	provides = astronex
+	conflicts = astronex
+	source = git+https://github.com/Uthopik/astronex-python-3.git
+	sha256sums = SKIP
+
+pkgname = astronex
