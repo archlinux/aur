@@ -1,0 +1,12 @@
+pkgbase = vgs-shell-assets
+	pkgdesc = Optional VGS themes, wallpapers, and bundled icon themes
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/vanillagreencom/vgs
+	arch = any
+	license = MIT
+	depends = vgs-shell
+	source = https://github.com/vanillagreencom/vgs/releases/download/v0.3.0/vgs-0.3.0-assets.tar.gz
+	sha256sums = cab6238a8217bbe08407403efba57cf9681f50202adcf7366111a4071f2ce448
+
+pkgname = vgs-shell-assets
