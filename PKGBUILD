@@ -2,7 +2,7 @@
 
 pkgname=crewbeacon
 _id=com.conqrex.crewbeacon
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='KDE Plasma 6 cockpit for AI quota, Paseo agents, attention, and usage'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('plasma-workspace' 'qt6-websockets' 'python' 'curl' 'jq' 'xdg-utils')
 optdepends=('konsole: open agent sessions in a terminal')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c3bc295298840624f68592749d8b1b75bbe8acf7347565cb82bbe961f81ba647')
+sha256sums=('ece671d4723deb881a6425467ebd809b4ba6bbd8f7df7f58595ee3418a7a685b')
 
 package() {
     install -dm755 "$pkgdir/usr/share/plasma/plasmoids/$_id"
