@@ -1,14 +1,13 @@
 pkgbase = volt-gui
 	pkgdesc = A graphical user interface for configuring GPU related environment variables and more for Linux gaming.
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pythonlover02/volt-gui
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = bash
 	depends = mesa-utils
-	depends = polkit
 	depends = pyside6
 	depends = python
 	depends = vulkan-mesa-layers

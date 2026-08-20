@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=volt-gui
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A graphical user interface for configuring GPU related environment variables and more for Linux gaming."
 arch=('x86_64')
 url="https://github.com/pythonlover02/volt-gui"
@@ -9,7 +9,6 @@ license=('GPL-3.0-or-later')
 depends=(
   'bash'
   'mesa-utils'
-  'polkit'
   'pyside6'
   'python'
   'vulkan-mesa-layers'
