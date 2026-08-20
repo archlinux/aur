@@ -1,6 +1,6 @@
 pkgbase = deadband-git
 	pkgdesc = Configure game controller lighting, sticks, triggers and buttons on Linux
-	pkgver = r29.95a962c
+	pkgver = r62.c78beb8
 	pkgrel = 1
 	url = https://github.com/broroeror/gamesir-linux-tools
 	arch = any

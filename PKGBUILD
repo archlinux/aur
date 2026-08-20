@@ -9,7 +9,7 @@
 # branch, and pkgver() below derives the version from git, so no checksums or
 # `updpkgsums` step is needed.
 pkgname=deadband-git
-pkgver=r29.95a962c
+pkgver=r62.c78beb8
 pkgrel=1
 pkgdesc="Configure game controller lighting, sticks, triggers and buttons on Linux"
 arch=('any')
@@ -37,10 +37,13 @@ package() {
   cd "$pkgname"
   local share="$pkgdir/usr/share/deadband"
 
-  # app core (vendor-neutral) + entry point
+  # app core (vendor-neutral) + entry point. A GLOB, not a hand-kept list: the
+  # list rotted when mouse_bridge.py/doctor.py were added, crashing every AUR
+  # install at import (issue #4). We're packaging a fresh git clone, so the glob
+  # sees only tracked files and can't pick up local-only cruft.
   install -d "$share"
-  install -Dm644 deadband.py bridge.py reader.py backup.py controller_profile.py \
-                 kf_cache.py kwin.py mousegrab.py gs_common.py gs_state.py "$share"/
+  install -Dm644 ./*.py "$share"/
+  rm -f "$share/smoke_test.py"                 # dev tool, not needed at runtime
   # per-vendor protocol packages (vendors/gamesir/..., incl. models/)
   cp -r vendors "$share"/
   find "$share/vendors" -name '__pycache__' -type d -prune -exec rm -rf {} +
@@ -63,8 +66,11 @@ EOF
   # its own copy under /usr/share/licenses/<pkgname>/
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # udev rule (vendor-scoped uaccess; no replug needed after trigger)
+  # udev rules (vendor-scoped uaccess; no replug needed after trigger) — the
+  # controller's, and the Logitech mouse's for the G502 X pages
   install -Dm644 70-gamesir.rules "$pkgdir/usr/lib/udev/rules.d/70-gamesir.rules"
+  install -Dm644 packaging/udev/70-deadband-g502x.rules \
+    "$pkgdir/usr/lib/udev/rules.d/70-deadband-g502x.rules"
 
   # desktop entry + icons
   install -Dm644 packaging/deadband.desktop \
