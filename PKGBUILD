@@ -2,12 +2,12 @@
 
 pkgname='exfetch'
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='shell extensible fetching program written in Crystal'
 arch=("x86_64")
 url='https://codeberg.org/Izder456/exfetch'
 license=('ISC')
-depends=('zlib' 'glibc' 'gcc-libs' 'pcre2' 'gc')
+depends=('zlib' 'glibc' 'gcc-libs' 'pcre2' 'gc' 'pciutils')
 makedepends=('git' 'crystal' 'shards' )
 source=("exfetch::git+${url}.git#tag=${pkgver}" "git+https://github.com/schovi/baked_file_system.git" "git+https://github.com/kaneroot/pledge.cr.git")
 sha256sums=('6edd4064415fce29cf7918702f0ea9dccb151f8a81408a054e8185d0fe9f6fc6'
