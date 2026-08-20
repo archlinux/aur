@@ -1,14 +1,13 @@
 pkgbase = foldcomp
 	pkgdesc = Compress and index protein structures with torsion angles
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/steineggerlab/foldcomp
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = zlib
 	depends = gcc-libs
-	provides = foldcomp
 	conflicts = foldcomp-bin
 	source = foldcomp-1.0.0.tar.gz::https://github.com/steineggerlab/foldcomp/archive/v1.0.0.tar.gz
 	sha256sums = 6a9aecf0d926bd280a489f29c86e3e26e054712b018e36d9c1b5f7b5e5e1d1c5
