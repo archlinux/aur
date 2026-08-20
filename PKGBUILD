@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=2.0.7
+pkgver=2.0.8
 _electronversion=41
 pkgrel=1
 pkgdesc="🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
@@ -43,8 +43,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-x86_64.rpm")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('b28e82eafb858b33a4de15fd80d0be08e826d573323ee55fbff5c7aa95e46e4e')
-sha256sums_x86_64=('cf79a13aa26324f958c02c33537c34f9503ec87d78152613ff74b6db1741fe69')
+sha256sums_aarch64=('d5420cebec3bdc3adc5df0a1f8016f2bc7e53ef7e1033716e1aa709777b7e9ef')
+sha256sums_x86_64=('5fa7d3cdbb83652b9fad324507df6913d7b04fdc51a2d45eba939fde0dc0108b')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
