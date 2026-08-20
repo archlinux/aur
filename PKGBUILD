@@ -12,7 +12,7 @@ _rid="rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5"
 url="https://radicle.dev"
 depends=(
 	'glibc'
-	'libgcc'
+	'libgcc' 'libgcc_s.so'
 	'libgit2' 'libgit2.so'
 )
 makedepends=(

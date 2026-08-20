@@ -10,6 +10,7 @@ pkgbase = radicle-git
 	makedepends = asciidoctor
 	depends = glibc
 	depends = libgcc
+	depends = libgcc_s.so
 	depends = libgit2
 	depends = libgit2.so
 	source = heartwood::git+https://seed.radicle.dev/z3gqcJUoA1n9HaHKufZs5FCSGazv5.git
