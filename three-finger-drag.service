@@ -1,0 +1,50 @@
+[Unit]
+Description=Three-finger drag gestures for Linux
+Documentation=https://github.com/lmr97/linux-3-finger-drag
+# The proxy owns the real touchpad for its whole lifetime; if it dies the
+# touchpad has no reader, so restart promptly. Touchpad re-enumeration is
+# handled in-process, so Restart= is only the backstop for everything else.
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/linux-3-finger-drag
+Restart=on-failure
+RestartSec=1
+
+# Upstream ships this as a user unit, which requires putting the login user
+# in the "input" group -- that grants every process in the session read
+# access to every input device, keyboards included. Nothing here touches the
+# session (no D-Bus, no display server), so running it as an unprivileged
+# system user keeps that reach confined to this daemon.
+DynamicUser=yes
+SupplementaryGroups=input
+
+# The daemon has no home directory; this is what puts its config file at
+# /etc/linux-3-finger-drag/3fd-config.json.
+Environment=XDG_CONFIG_HOME=/etc
+# Somewhere writable for the "logFile" setting to point at.
+LogsDirectory=linux-3-finger-drag
+
+CapabilityBoundingSet=
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+PrivateNetwork=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectProc=invisible
+# Only AF_UNIX, for the socketpair tokio's signal handling runs on.
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

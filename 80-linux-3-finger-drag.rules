@@ -1,0 +1,13 @@
+# The daemon runs as an unprivileged system user in the "input" group, so
+# /dev/uinput has to be group-writable.
+#
+# static_node puts the node and these permissions in place at udev startup,
+# before the module is loaded and before any session exists. That ordering is
+# load-bearing: once logind has put a uaccess ACL on the node, a later chmod
+# writes the group bits into the ACL mask rather than the group entry, so
+# MODE= silently stops granting the group anything.
+#
+# Numbered late so it wins over other packages' uinput static_node rules,
+# which create the node without a group. No uaccess tag: unlike upstream's
+# user unit, nothing here needs the logged-in user to reach /dev/uinput.
+KERNEL=="uinput", SUBSYSTEM=="misc", GROUP="input", MODE="0660", OPTIONS+="static_node=uinput"

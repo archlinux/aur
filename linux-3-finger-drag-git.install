@@ -1,0 +1,20 @@
+post_install() {
+  cat <<'EOF'
+The daemon runs system-wide; no per-user setup and no "input" group
+membership are needed. Start it with:
+
+    systemctl enable --now three-finger-drag.service
+
+Settings live in /etc/linux-3-finger-drag/3fd-config.json and are re-read
+without a restart.
+
+/dev/uinput only picks up its new group on the next boot. Re-running udev
+against the live node instead does NOT work once logind has put a uaccess
+ACL on it: chmod then writes the group bits into the ACL mask and leaves
+the group entry empty, so the daemon still gets EACCES. To fix the running
+system without rebooting, clear the ACL first:
+
+    setfacl -b /dev/uinput
+    udevadm trigger --action=add /dev/uinput
+EOF
+}

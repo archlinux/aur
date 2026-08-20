@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!80-linux-3-finger-drag.rules
+!linux-3-finger-drag-git.install
+!three-finger-drag.service
+!uinput.conf
