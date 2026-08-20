@@ -1,6 +1,6 @@
 pkgbase = ferronote-bin
 	pkgdesc = Notes at the speed of thought
-	pkgver = 1.2.9
+	pkgver = 1.2.11
 	pkgrel = 1
 	url = https://github.com/tareqmy/ferronote
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = ferronote-bin
 	provides = fn
 	conflicts = ferronote
 	options = !strip
-	source = README-1.2.9.md::https://raw.githubusercontent.com/tareqmy/ferronote/v1.2.9/README.md
-	source = LICENSE-1.2.9::https://raw.githubusercontent.com/tareqmy/ferronote/v1.2.9/LICENSE
-	sha256sums = 1ebe4b06fe5821e578afb7b6919b98813fafec58ca83306ad40a7b8eab4cd4f2
+	source = README-1.2.11.md::https://raw.githubusercontent.com/tareqmy/ferronote/v1.2.11/README.md
+	source = LICENSE-1.2.11::https://raw.githubusercontent.com/tareqmy/ferronote/v1.2.11/LICENSE
+	sha256sums = 4928712905c852b8fddbd1ca5a02f2d85c33d19aa26d338e16a379952e7d4e84
 	sha256sums = ba46e6aacd72ecd88d752f3633eaf283730e94c8f523847c432a91723a72cd0f
-	source_x86_64 = ferronote-x86_64-1.2.9.tgz::https://github.com/tareqmy/ferronote/releases/download/v1.2.9/ferronote-v1.2.9-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 373d3aa64612cc9914397982fd0c9b8dfdfb43528d9c47feb823820e26e128da
+	source_x86_64 = ferronote-x86_64-1.2.11.tgz::https://github.com/tareqmy/ferronote/releases/download/v1.2.11/ferronote-v1.2.11-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 33a2768080c9ca6d4c61ed23969c642b0e0963b7f4a5275a46a64ecc42362fa1
 
 pkgname = ferronote-bin
