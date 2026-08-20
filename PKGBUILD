@@ -2,7 +2,7 @@
 
 pkgbase=radicle-explorer-git
 pkgname=(radicle-{explorer,httpd}-git)
-pkgver=0.26.0.r2.g3c2935704
+pkgver=0.27.0.r2.gab514fe0d
 pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git"
 arch=('x86_64')
