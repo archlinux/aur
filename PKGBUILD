@@ -73,9 +73,6 @@ build() {
 	for _man in crates/*/*.adoc; do
 		asciidoctor --doctype manpage --backend manpage --destination-dir target/release/man "$_man"
 	done
-
-	# XXX: tests rebuild and overwrite some of the binaries
-	cp -a target/release -T target/dist
 }
 
 check() {
@@ -138,12 +135,12 @@ package_radicle-httpd-git() {
 	cd radicle-explorer
 
 	install -Dm755 \
-		target/dist/radicle-httpd \
-		target/dist/radicle-search \
+		target/release/radicle-httpd \
+		target/release/radicle-search \
 		-t "$pkgdir/usr/bin"
 
 	install -Dm644 \
-		target/dist/man/radicle-httpd.1 \
+		target/release/man/radicle-httpd.1 \
 		-t "$pkgdir/usr/share/man/man1"
 
 	install -Dm644 \
