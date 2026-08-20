@@ -1,13 +1,15 @@
 pkgbase = yaabsa-bin
 	pkgdesc = Unofficial feature rich, responsive, modern client for Audiobookshelf
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Vito0912/yaabsa
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = tar
 	depends = mpv
 	depends = libsecret
+	depends = gtk3
+	depends = hicolor-icon-theme
 	provides = yaabsa
 	conflicts = yaabsa
 	options = strip

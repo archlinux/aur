@@ -2,7 +2,7 @@
 
 pkgname=yaabsa-bin
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial feature rich, responsive, modern client for Audiobookshelf"
 arch=('x86_64')
 url="https://github.com/Vito0912/yaabsa"
@@ -10,7 +10,12 @@ license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 options=('strip' '!libtool' '!staticlibs' '!emptydirs')
-depends=('mpv' 'libsecret')
+depends=(
+	'mpv'
+	'libsecret'
+	'gtk3'
+	'hicolor-icon-theme'
+)
 makedepends=('tar')
 source=(
     "${pkgname}-${pkgver}.deb::https://github.com/Vito0912/yaabsa/releases/download/v${pkgver}/linux-deb-yaabsa_v${pkgver}.deb"
