@@ -1,0 +1,18 @@
+pkgbase = zari
+	pkgdesc = Fast, keyboard-driven terminal file manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nihitdev/zari
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = ncurses
+	depends = xdg-utils
+	source = zari::git+https://github.com/nihitdev/zari.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = zari
