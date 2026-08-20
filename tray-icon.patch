@@ -1,0 +1,32 @@
+--- a/web-ui/src-tauri/src/lib.rs
++++ b/web-ui/src-tauri/src/lib.rs
+@@ -531,7 +531,7 @@ fn show_main_window(app: &AppHandle) {
+ /// apps. We decode the 256px master PNG and Lanczos-downscale it to the exact target size.
+ fn tray_icon_for_scale(scale: f64) -> Option<tauri::image::Image<'static>> {
+     static MASTER_PNG: &[u8] = include_bytes!("../icons/128x128@2x.png");
+-    let target = ((16.0 * scale).round() as u32).clamp(16, 64);
++    let target = tray_icon_target_size(scale);
+     let master = image::load_from_memory_with_format(MASTER_PNG, image::ImageFormat::Png).ok()?;
+     let resized = master
+         .resize_exact(target, target, image::imageops::FilterType::Lanczos3)
+@@ -539,6 +539,20 @@ fn tray_icon_for_scale(scale: f64) -> Option<tauri::image::Image<'static>> {
+     Some(tauri::image::Image::new_owned(resized.into_raw(), target, target))
+ }
+ 
++/// Logical tray-icon target size in device-independent pixels. Linux AppIndicator panels
++/// render at their own fixed size (22–24px typical, up to 48px), so feeding the Windows
++/// 16px base makes the panel upscale it — the upscale is what blurs. Supersampling on Linux
++/// (32px x scale) guarantees the panel downscales instead, which stays crisp.
++#[cfg(target_os = "linux")]
++fn tray_icon_target_size(scale: f64) -> u32 {
++    ((32.0 * scale).round() as u32).clamp(32, 128)
++}
++
++#[cfg(not(target_os = "linux"))]
++fn tray_icon_target_size(scale: f64) -> u32 {
++    ((16.0 * scale).round() as u32).clamp(16, 64)
++}
++
+ /// Builds the system tray icon + menu. Failure is non-fatal: we log and move on
+ /// so the app still launches if the tray can't be created for some reason.
+ fn build_tray(app: &AppHandle) -> Result<(), String> {

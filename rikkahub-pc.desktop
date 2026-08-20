@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Rikkahub
+Comment=Native multi-provider LLM chat client
+Exec=rikkahub-pc
+Icon=rikkahub-pc
+Terminal=false
+Categories=Network;Chat;Office;
+Keywords=LLM;AI;Chat;GPT;Claude;Gemini;Anthropic;OpenAI;

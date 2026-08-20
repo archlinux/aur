@@ -1,0 +1,21 @@
+--- a/web-ui/src-tauri/src/lib.rs
++++ b/web-ui/src-tauri/src/lib.rs
+@@ -233,7 +233,17 @@
+             return PathBuf::from(dir);
+         }
+     }
+-    exe_dir().join("pc-data")
++    // System packages install the binary under /opt (read-only), so the portable
++    // default of `pc-data/` next to the exe is not writable. Keep user data under
++    // $XDG_DATA_HOME/rikkahub-pc (~/.local/share/rikkahub-pc) instead.
++    let xdg_data_home = std::env::var("XDG_DATA_HOME")
++        .ok()
++        .filter(|s| !s.trim().is_empty())
++        .or_else(|| std::env::var("HOME").ok().map(|home| format!("{home}/.local/share")));
++    match xdg_data_home {
++        Some(base) => PathBuf::from(base).join("rikkahub-pc"),
++        None => exe_dir().join("pc-data"),
++    }
+ }
+ 
+ fn exe_dir() -> PathBuf {
