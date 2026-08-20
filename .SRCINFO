@@ -1,6 +1,6 @@
 pkgbase = ansifilter
 	pkgdesc = remove or convert ANSI codes to another format
-	pkgver = 2.22
+	pkgver = 2.23
 	pkgrel = 1
 	url = https://gitlab.com/saalen/ansifilter
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = ansifilter
 	depends = glibc
 	depends = gcc-libs
 	options = !debug
-	source = https://gitlab.com/saalen/ansifilter/-/archive/2.22/ansifilter-2.22.tar.bz2
-	sha256sums = ccff41ca740b813bf9103868b5000f4243d32a75304ea929a214c49b943ecc93
+	source = https://gitlab.com/saalen/ansifilter/-/archive/2.23/ansifilter-2.23.tar.bz2
+	sha256sums = ff9efcfe8623593a54cd7bec2499711ec2a49a425ab50c61f2148c6d7450d525
 
 pkgname = ansifilter
