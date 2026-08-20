@@ -1,5 +1,5 @@
 pkgname=vgs-shell
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='VanillaGreen desktop shell for Hyprland and Niri'
 arch=('x86_64' 'aarch64')
@@ -81,8 +81,8 @@ optdepends=(
 # END GENERATED OPTIONAL DEPENDENCIES
 source_x86_64=("$url/releases/download/v$pkgver/vgs-$pkgver-linux-x86_64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/vgs-$pkgver-linux-aarch64.tar.gz")
-sha256sums_x86_64=('317aaa5aa2421504cc7e510b2b033c3d84dda5731d23e7c32ce191b5593c8b7e')
-sha256sums_aarch64=('eeeb7ee23c73794f993dcdcb36e97bd21c153eb309e07f3f67407f8deae108ed')
+sha256sums_x86_64=('907f46ba17b3b6b3efe7628a790451b35d1626e581a564d240f66dd991650f84')
+sha256sums_aarch64=('e852d03b941e984f06e9ab9322c5eb6875d5f01a5bea5c5c7c837e9edea5192b')
 
 install='vgs-shell.install'
 # Two notification daemons cannot share org.freedesktop.Notifications: it is a

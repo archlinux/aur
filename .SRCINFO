@@ -1,6 +1,6 @@
 pkgbase = vgs-shell
 	pkgdesc = VanillaGreen desktop shell for Hyprland and Niri
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/vanillagreencom/vgs
 	install = vgs-shell.install
@@ -71,9 +71,9 @@ pkgbase = vgs-shell
 	conflicts = notification-daemon
 	conflicts = mako
 	conflicts = swaync
-	source_x86_64 = https://github.com/vanillagreencom/vgs/releases/download/v0.2.0/vgs-0.2.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 317aaa5aa2421504cc7e510b2b033c3d84dda5731d23e7c32ce191b5593c8b7e
-	source_aarch64 = https://github.com/vanillagreencom/vgs/releases/download/v0.2.0/vgs-0.2.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = eeeb7ee23c73794f993dcdcb36e97bd21c153eb309e07f3f67407f8deae108ed
+	source_x86_64 = https://github.com/vanillagreencom/vgs/releases/download/v0.3.0/vgs-0.3.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 907f46ba17b3b6b3efe7628a790451b35d1626e581a564d240f66dd991650f84
+	source_aarch64 = https://github.com/vanillagreencom/vgs/releases/download/v0.3.0/vgs-0.3.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = e852d03b941e984f06e9ab9322c5eb6875d5f01a5bea5c5c7c837e9edea5192b
 
 pkgname = vgs-shell
