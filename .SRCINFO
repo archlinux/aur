@@ -1,6 +1,6 @@
 pkgbase = druk-bin
 	pkgdesc = A terminal code editor with a file tree, tabs, search, git integration, and syntax highlighting
-	pkgver = 1.20.6
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://github.com/letstri/druk
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = druk-bin
 	provides = druk
 	conflicts = druk
 	options = !debug
-	source_x86_64 = druk-1.20.6-linux-x86_64.tar.gz::https://github.com/letstri/druk/releases/download/v1.20.6/druk-linux-x64.tar.gz
-	sha256sums_x86_64 = 854c744639d4ce7eba22b4c15a53d10d572f3d8aa8cd36841b166238217e8ffd
-	source_aarch64 = druk-1.20.6-linux-aarch64.tar.gz::https://github.com/letstri/druk/releases/download/v1.20.6/druk-linux-arm64.tar.gz
-	sha256sums_aarch64 = 243aefd5bf43e94e3a826e903a5449591fdb821c77869ff958400b3c378e9775
+	source_x86_64 = druk-1.21.0-linux-x86_64.tar.gz::https://github.com/letstri/druk/releases/download/v1.21.0/druk-linux-x64.tar.gz
+	sha256sums_x86_64 = f06d44345fc487763d2d92c2b0496a7cddd65159e3bb2aa79deff6ea7767c18c
+	source_aarch64 = druk-1.21.0-linux-aarch64.tar.gz::https://github.com/letstri/druk/releases/download/v1.21.0/druk-linux-arm64.tar.gz
+	sha256sums_aarch64 = e77f75e608023bbfa7fddba94db6ef84c600391e57307aec608b10a00185cb0d
 
 pkgname = druk-bin
