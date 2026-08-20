@@ -42,7 +42,7 @@ prepare() {
 		# EOL
 
 	cd radicle-httpd
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
