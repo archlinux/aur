@@ -1,0 +1,14 @@
+pkgbase = garlic-git
+	pkgdesc = The world's fastest APK (android)/Java open source decompiler/ELF analyzer, written in C
+	pkgver = r167.adb4b1f
+	pkgrel = 1
+	url = https://github.com/neocanable/garlic
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	source = garlic-git::git+https://github.com/neocanable/garlic.git
+	sha256sums = SKIP
+
+pkgname = garlic-git
