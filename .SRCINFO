@@ -1,6 +1,6 @@
 pkgbase = python-fal-client
 	pkgdesc = Python client for fal.ai.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/fal-ai/fal/tree/main/projects/fal_client
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-fal-client
 	depends = python-httpx-sse
 	depends = python-msgpack
 	depends = python-websockets
-	source = https://files.pythonhosted.org/packages/source/f/fal-client/fal_client-1.0.0.tar.gz
-	sha256sums = ba62cc008a4bbfae2c3cbade6c7a691093e42cfb5a79f7fca4dd61acbd87372a
+	source = https://files.pythonhosted.org/packages/source/f/fal-client/fal_client-1.0.1.tar.gz
+	sha256sums = 46d1cee3426d0a2ad34f32b7dbfbdff83487c3dcf8aeae1aac2ffd5815e2055c
 
 pkgname = python-fal-client

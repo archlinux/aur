@@ -2,7 +2,7 @@
 
 _name=fal-client
 pkgname=python-$_name
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Python client for fal.ai.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-aiofiles' 'python-asyncstdlib' 'python-httpx' 'python-
 makedepends=('python-setuptools' 'python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-pillow')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('ba62cc008a4bbfae2c3cbade6c7a691093e42cfb5a79f7fca4dd61acbd87372a')
+sha256sums=('46d1cee3426d0a2ad34f32b7dbfbdff83487c3dcf8aeae1aac2ffd5815e2055c')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
