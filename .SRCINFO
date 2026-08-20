@@ -1,7 +1,7 @@
 pkgbase = lenovo-print-driver-lj2400-m7400-bin
 	pkgdesc = LJ2400Pro LJ2405 LJ2405D LJ2605D LJ2655DN LJ2680DN M7400Pro M7400W M7405D M7405DW M7450FPro M7455DNF M7460 M7480 M7490DNF M7605D M7605DW M7615DNA M7625DWA M7626DNA M7628DNA M7655DHF M7675DXF M7680D M7685DXF M7686DXF M7690DNA
 	pkgver = 5.0.3
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.lenovo.com
 	install = lenovo-print-driver.install
 	arch = x86_64
@@ -16,6 +16,6 @@ pkgbase = lenovo-print-driver-lj2400-m7400-bin
 	source = drive-service_signed_com.lenovo.lenovoprints_5.0.3-2_amd64.deb
 	source = lenovo-print-driver.install
 	sha256sums = 17da4287011a53118f34f2af8d7e39af162b554d33d6a86c78f56507d4ae9a8f
-	sha256sums = c526ad2319c9c9b7e04ab1c594f67df47f200330d1e0c95757dc5ab2263ae722
+	sha256sums = 94dff3996c6dac1d166e38abf01175b730e92fd2e0944437b237f533ec737231
 
 pkgname = lenovo-print-driver-lj2400-m7400-bin

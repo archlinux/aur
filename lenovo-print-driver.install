@@ -2,6 +2,15 @@
 post_install() {
   PRINTERS="LJ2405D LJ2605D LJ2405 LJ2400Pro M7405D M7605D M7400Pro M7450FPro M7655DHF M7400W M7405DW M7605DW M7625DWA M7626DNA M7628DNA M7685DXF M7686DXF LJ2680DN M7680D M7460 M7480 M7690DNA M7490DNF M7675DXF M7455DNF M7615DNA LJ2655DN"
   
+  # 修正历史版本(5.0.3-1)里 deb 带出的 0775 不安全权限:
+  # CUPS 拒绝执行组写/其他可写的过滤器,否则报
+  # "File ... has insecure permissions (0100775/uid=0/gid=0)"。
+  if [ -d "/opt/lenovo/com.lenovo.lenovoprints/bin" ]; then
+    find /opt/lenovo/com.lenovo.lenovoprints/bin -type d -exec chmod 755 {} \;
+    find /opt/lenovo/com.lenovo.lenovoprints/bin -type f -perm /u+x -exec chmod 755 {} \;
+    find /opt/lenovo/com.lenovo.lenovoprints/bin -type f ! -perm /u+x -exec chmod 644 {} \;
+  fi
+
   ARCH=$(uname -m)
   
   if [ -d "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/$ARCH" ]; then
@@ -19,6 +28,18 @@ post_install() {
   ln -sf "/opt/lenovo/com.lenovo.lenovoprints/bin/inf/brlenovoprintsrc" \
     "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/inf/brlenovoprintsrc"
   
+  # 供应商脚本(lpdwrapper)期望的 rc 文件名是 br${PRINTER}rc,
+  # 即 brcom.lenovo.lenovoprintsrc;实际打包名是通用的 brlenovoprintsrc,
+  # 补一个链接,避免每个打印任务日志里出现 "cp: ... stat 失败"。
+  ln -sf "/opt/lenovo/com.lenovo.lenovoprints/bin/inf/brlenovoprintsrc" \
+    "/opt/lenovo/com.lenovo.lenovoprints/bin/inf/brcom.lenovo.lenovoprintsrc"
+  
+  # 修正历史版本(5.0.3-1/5.0.3-2)遗留的 0775 目录
+  # (pacman 不会修改已存在目录的模式,只能这里补)。
+  chmod 755 /var/spool/lpd 2>/dev/null
+  chmod 755 /usr/share/cups/model/lenovo 2>/dev/null
+  chmod 755 /usr/lib32/cups/filter /usr/libexec/cups/filter 2>/dev/null
+  
   for printer in $PRINTERS; do
     if [ ! -e "/usr/bin/brprintconflsr3_${printer}" ]; then
       cat > "/usr/bin/brprintconflsr3_${printer}" << EOF
@@ -30,10 +51,16 @@ EOF
     
     # 创建 CUPS 过滤器链接
     for filterdir in "/usr/lib/cups/filter" "/usr/lib32/cups/filter" \
-                     "/usr/lib/cups/filter" "/usr/libexec/cups/filter"; do
-      if [ -d "$filterdir" ] && [ ! -e "$filterdir/lenovo_${printer}" ]; then
-        ln -sf "/opt/lenovo/com.lenovo.lenovoprints/bin/cupswrapper/lpdwrapper" \
-          "$filterdir/lenovo_${printer}"
+                     "/usr/libexec/cups/filter"; do
+      if [ -d "$filterdir" ]; then
+        # 清理旧版本可能留下的普通文件残留,确保最终是链接且目标权限 755
+        if [ -e "$filterdir/lenovo_${printer}" ] && [ ! -L "$filterdir/lenovo_${printer}" ]; then
+          rm -f "$filterdir/lenovo_${printer}"
+        fi
+        if [ ! -e "$filterdir/lenovo_${printer}" ]; then
+          ln -s "/opt/lenovo/com.lenovo.lenovoprints/bin/cupswrapper/lpdwrapper" \
+            "$filterdir/lenovo_${printer}"
+        fi
       fi
     done
   done
@@ -73,6 +100,7 @@ pre_remove() {
   
   rm -f "/etc/opt/lenovo/com.lenovo.lenovoprints/bin/inf/brlenovoprintsrc"
   rm -f "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/inf/brlenovoprintsrc"
+  rm -f "/opt/lenovo/com.lenovo.lenovoprints/bin/inf/brcom.lenovo.lenovoprintsrc"
   
   for printer in $PRINTERS; do
     rm -f "/usr/bin/brprintconflsr3_${printer}"
