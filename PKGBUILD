@@ -2,7 +2,7 @@
 
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=0.9.4.r45.g0799366
+pkgver=0.9.4.r54.g58d5e1b
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
@@ -34,7 +34,7 @@ depends=(
   'pango'
   'webkitgtk-6.0'
 )
-makedepends=('blueprint-compiler' 'git' 'glib2-devel' 'meson' 'python-babel' 'ninja' 'libxml2')
+makedepends=('blueprint-compiler' 'git' 'glib2-devel' 'meson' 'python-babel' 'ninja' 'libxml2' 'vala')
 optdepends=('krunner-bazaar: krunner integration' 'malcontent: parental controls')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
