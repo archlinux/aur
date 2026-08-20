@@ -101,11 +101,20 @@ def setup_prefix():
 
 
 def copy_programdata():
-    """Copy ProgramData if present."""
+    """Copy ProgramData if present.
+
+    The package's ProgramData ships default files, including a ``Derivative``
+    folder with blank license files. The user's activated licenses live in
+    the same folder, so ``Derivative`` is skipped here: it must never be
+    overwritten by package defaults, or TouchDesigner loses its activation
+    (new System Code, re-activation needed) on the next package update.
+    """
     if os.path.isdir(f"{DATA_DIR}/ProgramData"):
         target = f"{WINE_PREFIX}/drive_c/ProgramData"
         os.makedirs(target, exist_ok=True)
         for item in os.listdir(f"{DATA_DIR}/ProgramData"):
+            if item.lower() == "derivative":
+                continue  # user license data, never overwrite
             src = os.path.join(f"{DATA_DIR}/ProgramData", item)
             dst = os.path.join(target, item)
             if os.path.isdir(src):
@@ -475,8 +484,11 @@ def main():
         sys.exit(0)
 
     setup_prefix()
-    copy_programdata()
+    # Back up the user's activated licenses BEFORE the package ProgramData
+    # copy and wineboot, and restore them after; otherwise an update (via
+    # paru/yay) or wineboot can wipe the activation (see copy_programdata).
     had_license = backup_license()
+    copy_programdata()
     ensure_wine_ready()
     apply_font_dpi()
     if had_license:
