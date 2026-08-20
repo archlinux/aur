@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ChatGPT
+GenericName=Web App
+Comment=Unofficial ChatGPT desktop wrapper (Tauri)
+Exec=chatgpt-webapp-desktop
+Icon=chatgpt-webapp-desktop
+Terminal=false
+Type=Application
+Categories=Network;Chat;ArtificialIntelligence;
+Keywords=ChatGPT;webapp;tauri;
+StartupWMClass=chatgpt-webapp-desktop.bin
