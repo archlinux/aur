@@ -1,0 +1,5 @@
+[ble-lock-session]
+source = "github"
+github = "azratul/ble-lock-session"
+prefix = "v"
+use_latest_release = true
