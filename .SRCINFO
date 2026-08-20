@@ -1,6 +1,6 @@
 pkgbase = python-runloop_api_client
 	pkgdesc = The official Python library for the runloop API.
-	pkgver = 1.28.0
+	pkgver = 1.29.0
 	pkgrel = 1
 	url = https://github.com/runloopai/api-client-python
 	arch = any
@@ -33,7 +33,7 @@ pkgbase = python-runloop_api_client
 	depends = python-uuid-utils
 	optdepends = python-aiohttp: aiohttp
 	optdepends = python-httpx-aiohttp: aiohttp
-	source = https://github.com/runloopai/api-client-python/archive/refs/tags/v1.28.0.tar.gz
-	sha256sums = 6567ba6e7661536c281b185ad7ebbb78de5def56979e79b27496a871f1575ced
+	source = https://github.com/runloopai/api-client-python/archive/refs/tags/v1.29.0.tar.gz
+	sha256sums = 0902333f7e772bf524b8cf0aaf0eaf3db0192140a8a99047a2ec5350e914f387
 
 pkgname = python-runloop_api_client
