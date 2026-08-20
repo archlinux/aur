@@ -1,6 +1,6 @@
 pkgbase = dbpro-appimage
 	pkgdesc = Database management tool - MySQL, PostgreSQL, SQLite, MongoDB, Redis, and more
-	pkgver = 2.6.8
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://dbpro.app
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = dbpro-appimage
 	optdepends = libappindicator-gtk3: System tray support
 	provides = dbpro
 	conflicts = dbpro
-	noextract = DB%20Pro-2.6.8-x86_64.AppImage
+	noextract = DB%20Pro-2.7.0-x86_64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = https://releases.dbpro.app/linux-x64/DB%20Pro-2.6.8-x86_64.AppImage
-	sha256sums_x86_64 = 70f2cd3675fbbae42b1a271d2e1c8b53110aba00d186c16d1f2598474e0393cc
+	source_x86_64 = https://releases.dbpro.app/linux-x64/DB%20Pro-2.7.0-x86_64.AppImage
+	sha256sums_x86_64 = 8d3e99361f1853430567f12abe10d713ad5d066d1bc143978b09c816c8016fff
 
 pkgname = dbpro-appimage
