@@ -38,7 +38,7 @@ package() {
   sed -i 's|/home/test/New Folder/Aurora|/opt/neoarch/Neoarch|g' "$pkgdir/usr/share/applications/neoarch.desktop"
   sed -i 's|Icon=.*|Icon=neoarch|' "$pkgdir/usr/share/applications/neoarch.desktop"
   # Install icon
-  install -Dm644 "$pkgdir/opt/neoarch/Neoarch/assets/icons/icon.png" "$pkgdir/usr/share/pixmaps/neoarch.png"
+  install -Dm644 "$pkgdir/opt/neoarch/Neoarch/assets/icons/app/icon.png" "$pkgdir/usr/share/pixmaps/neoarch.png"
   # Install license
   install -Dm644 "$pkgdir/opt/neoarch/Neoarch/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
