@@ -3,8 +3,8 @@
 pkgname=python-bflb-flash-command-uart
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=1.4.3
-pkgrel=3
+pkgver=1.4.3.post1
+pkgrel=1
 pkgdesc="Bouffalolab Flash Command Tool"
 arch=('any')
 url="https://pypi.org/project/${_name}"
@@ -34,7 +34,7 @@ optdepends=("python-bflb-mcu-tool: BOUFFALOLAB MCU TOOL"
 	"python-bflb-iot-tool: BOUFFALOLAB IOT TOOL")
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('e18414f076f72b1d26cb0fb4efa60d1efbf3953bae9a70a7eab4541c915e1ed3')
+sha256sums=('3797d2cf306dd10c996e3e1cba8651380ca6be21ce3f3a19a8014bf151b8c066')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"

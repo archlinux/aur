@@ -1,7 +1,7 @@
 pkgbase = python-bflb-flash-command-uart
 	pkgdesc = Bouffalolab Flash Command Tool
-	pkgver = 1.4.3
-	pkgrel = 3
+	pkgver = 1.4.3.post1
+	pkgrel = 1
 	url = https://pypi.org/project/bflb_flash_command_uart
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-bflb-flash-command-uart
 	optdepends = python-bflb-mcu-tool: BOUFFALOLAB MCU TOOL
 	optdepends = python-bflb-iot-tool: BOUFFALOLAB IOT TOOL
 	options = !strip
-	source = bflb_flash_command_uart-1.4.3.tar.gz::https://files.pythonhosted.org/packages/source/b/bflb_flash_command_uart/bflb_flash_command_uart-1.4.3.tar.gz
-	sha256sums = e18414f076f72b1d26cb0fb4efa60d1efbf3953bae9a70a7eab4541c915e1ed3
+	source = bflb_flash_command_uart-1.4.3.post1.tar.gz::https://files.pythonhosted.org/packages/source/b/bflb_flash_command_uart/bflb_flash_command_uart-1.4.3.post1.tar.gz
+	sha256sums = 3797d2cf306dd10c996e3e1cba8651380ca6be21ce3f3a19a8014bf151b8c066
 
 pkgname = python-bflb-flash-command-uart
