@@ -8,11 +8,11 @@
 
 pkgname=deeptools
 pkgver=3.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools to process and analyze deep sequencing data (ChIP-seq, ATAC-seq, RNA-seq, etc.)"
 arch=('x86_64')
 url="https://github.com/deeptools/deepTools"
-license=('GPL3')
+license=('MIT')
 # Only what the OFFICIAL repos provide comes from pacman:
 depends=('python'
          'python-numpy' 'python-scipy' 'python-matplotlib'
