@@ -1,10 +1,11 @@
 pkgbase = hdrecover
 	pkgdesc = Tool to encourage hard disks to reallocate bad sectors allowing data recovery
 	pkgver = 0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sourceforge.net/projects/hdrecover/
 	arch = i686
 	arch = x86_64
+	arch = pentium4
 	license = LGPL
 	makedepends = make
 	depends = glibc

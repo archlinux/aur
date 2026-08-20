@@ -2,9 +2,9 @@
 
 pkgname=hdrecover
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to encourage hard disks to reallocate bad sectors allowing data recovery"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'pentium4')
 url="http://sourceforge.net/projects/hdrecover/"
 license=('LGPL')
 depends=('glibc')
