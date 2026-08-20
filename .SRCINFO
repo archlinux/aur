@@ -1,6 +1,6 @@
 pkgbase = flycast
 	pkgdesc = Sega Dreamcast, Naomi, and Atomiswave emulator
-	pkgver = 2.6
+	pkgver = 2.7
 	pkgrel = 1
 	url = https://github.com/flyinghead/flycast
 	arch = x86_64
@@ -11,16 +11,21 @@ pkgbase = flycast
 	makedepends = python
 	makedepends = vulkan-headers
 	depends = alsa-lib
+	depends = freetype2
 	depends = glslang
 	depends = hicolor-icon-theme
 	depends = libao
 	depends = libcdio
+	depends = libgomp
 	depends = libjuice
 	depends = libpulse
 	depends = libzip
+	depends = lua
 	depends = miniupnpc
 	depends = sdl2
-	source = flycast::git+https://github.com/flyinghead/flycast.git#tag=v2.6
-	sha256sums = 0c668a1dd517ecae6332fbf076dbfe59e366a1f93460c42617d1769597929388
+	depends = systemd-libs
+	depends = zlib
+	source = flycast::git+https://github.com/flyinghead/flycast.git#tag=v2.7
+	sha256sums = 225adbf6c41ee2f841e34aeffe13367cafba938aed769a2509f007d0ec902450
 
 pkgname = flycast
