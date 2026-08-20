@@ -45,7 +45,7 @@ prepare() {
 		--shamefully-hoist \
 		# EOL
 
-	cargo fetch --locked --target "$(rustc --print host-tuple)"
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
