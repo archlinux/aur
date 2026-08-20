@@ -2,9 +2,9 @@
 
 pkgname=jsrc
 pkgver=0.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Python library for bioinformatics and scientific computing"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/imjiaoyuan/jsrc"
 license=('MIT')
 depends=('python>=3.10' 'python-numpy>=1.23' 'python-matplotlib>=3.5' 'python-opencv>=4.7')
