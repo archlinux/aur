@@ -1,16 +1,17 @@
-# Maintainer: kaolinite
+# Maintainer: kaolinite7
 
 pkgname=blas-clblast
 _name=CLBlast
-pkgver=1.6.3
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc='Tuned OpenCL BLAS library (with Netlib CBlas C API)'
 url='https://github.com/CNugteren/CLBlast'
 arch=('x86_64')
 license=('Apache-2.0')
 depends=(
-  gcc-libs
   glibc
+  libgcc
+  libstdc++
   ocl-icd
 )
 makedepends=(
@@ -20,7 +21,7 @@ makedepends=(
 provides=('libclblast.so' 'clblast')
 conflicts=('clblast')
 source=(https://github.com/CNugteren/${pkgname/blas-/}/archive/${pkgver}/${pkgname/blas-/}-${pkgver}.tar.gz)
-sha256sums=('c05668c7461e8440fce48c9f7a8966a6f9e0923421acd7c0357ece9b1d83f20e')
+sha256sums=('cac83330a6110214f2b7efc8e46062536f40ba96122f3b2a074a51497d8ca9e7')
 
 build() {
   local cmake_options=(
