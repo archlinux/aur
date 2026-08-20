@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="cups-web"
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Web printing management interface for CUPS"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64' 'loong64')
@@ -9,9 +9,9 @@ url="https://github.com/hanxi/${pkgname}"
 license=("MIT")
 backup=("etc/conf.d/${pkgname}")
 install="${pkgname}.install"
-depends=("cups" "fontconfig" "ghostscript")
 makedepends=("npm" "go")
-optdepends=("libreoffice: for document (.doc .docx .xls .xlsx .ppt .pptx) conversion"
+optdepends=("avahi: for airprinter service"
+            "libreoffice: for document (.doc .docx .xls .xlsx .ppt .pptx) conversion"
             "ofdrw: for OFD file (.ofd) conversion"
             "noto-fonts: for general character support"
             "noto-fonts-cjk: for CJK (Chinese Japanese Korean) character support")
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('0f23e013510ca4fc60e8e43503f83d27235ebdea7a9c756822b0e77522aa0c2c'
+sha256sums=('4b258d76bd3e48e9bc5982ecdee28fe9e600f2703796af3391a9a3c41fddf811'
             '23f92510f45cabe57fbac3349b8a426085299e045d71e5e79348a2f3a59bd098'
             'd0c92ec21b32c0d226f96696d078f369fecee493d2a351d11176014194da05c2'
             '1b448e0b4d6a8d13edbe2f9a051b1392beba42d6773b5da7cf7b260470695548'
@@ -45,6 +45,8 @@ build() {
 }
 
 package() {
+    depends=("cups" "fontconfig" "ghostscript")
+    
     install -Dm644 "${pkgname}.env"      "${pkgdir}/etc/conf.d/${pkgname}"
     install -Dm644 "${pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
