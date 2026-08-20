@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=volt-gui
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical user interface for configuring GPU related environment variables and more for Linux gaming."
 arch=('x86_64')
 url="https://github.com/pythonlover02/volt-gui"
@@ -12,9 +12,7 @@ depends=(
   'polkit'
   'pyside6'
   'python'
-  'python-requests'
   'vulkan-mesa-layers'
-  'vulkan-tools'
 )
 makedepends=('cargo')
 optdepends=()
@@ -43,6 +41,7 @@ package() {
   install -Dm755 volt/target/release/volt -t "$pkgdir/usr/bin/"
   install -Dm755 volt/target/release/libvolt.so -t "$pkgdir/usr/lib/"
   install -Dm644 "$pkgname"/*.py -t "$pkgdir/opt/$pkgname/"
+  install -Dm644 VkLayer_volt.json -t "$pkgdir/usr/share/vulkan/implicit_layer.d/"
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 
