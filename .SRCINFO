@@ -1,6 +1,6 @@
 pkgbase = linux-ogc
 	pkgdesc = Linux
-	pkgver = 7.2.ogc2
+	pkgver = 7.2.ogc3
 	pkgrel = 1
 	url = https://github.com/OpenGamingCollective/linux
 	arch = x86_64
@@ -25,13 +25,13 @@ pkgbase = linux-ogc
 	options = !debug
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.tar.xz
-	source = https://github.com/OpenGamingCollective/linux/releases/download/v7.2-ogc2/monolithic.patch
+	source = https://github.com/OpenGamingCollective/linux/releases/download/v7.2-ogc3/monolithic.patch
 	source = config
 	sha256sums = f9fef3d14c0df53819026f4be74459835c2a0b0dcbf5b5bbd9ea19f0829402b3
-	sha256sums = e2039dd24e06333a6d03cd6094f9fb50bbfe6a67a8d6de615663a5080bcbcbc9
+	sha256sums = 9c896c853afc238fc82122ad5b10d79080abb73a651254b16b79f0260aaecb95
 	sha256sums = 30837553bf5131271485ce33dacf692a0107d2c13b59a337601e5cf7e5001251
 	b2sums = cf5f3d87b96f223034c47c6e5fc972fe52c2556310eb2f064632537b8727231135a8540179fd5d51343738c8a51f51f09c7e8da374324b68551c84a4124bb71b
-	b2sums = 18e506a0527246ab8839824b7e9a447ffaa4055a5a44f1496b7cc1eba078859f5b5945249861bc58a4d5ae6216123b938da1233f1bda40be25d85e9877f558f7
+	b2sums = d84b1c8b32aad00b216573fd765f1de70edb2295c6be6a3e6e86f96726007748250d40f7ac9054b1d1bef8598d1e365804e755b6f712bc2ba7154c22b27dc009
 	b2sums = b3221947efc8992fb0ac28abd1d6b6d23f35668174ac64f6136baf961a9ad089b61c1b3b857e8149bfb6be2d0cd336702ba72eb5e99de824f6193ee0ea756083
 
 pkgname = linux-ogc
