@@ -1,8 +1,8 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 
 pkgname=wlmaker
-pkgver=0.8
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc='Wayland compositor inspired by WindowMaker'
 url=https://github.com/phkaeser/wlmaker
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 makedepends=(cmake doxygen git wayland-protocols)
 depends=(bash cairo libxkbcommon libxdg-basedir wlroots0.20 xorg-xwayland)
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('670b7076ef5aec389bee18947743f24cac01b367c96bf8bccf7115b2fdf013714df76b1b5f3b5ead76aa94feba064fc08a987cdcfd24e8e9bdfaf1aa9c1ed755')
+b2sums=('4013692f6d5b0bfaca4702aeae10bef92e2ed510e72cbb2cced9f5eea01e749fa482e0eb0584ec72e550108f87b41e9dbba21ced8bea46ab69ef9dee7b4f1d96')
 
 prepare() {
 	for i in "$pkgname-$pkgver"{,/submodules/libbase}/CMakeLists.txt ; do
@@ -26,7 +26,7 @@ build() {
 		-DCMAKE_BUILD_TYPE=None \
 		-Dconfig_DEBUG=OFF \
 		-Dconfig_OPTIM=OFF \
-		-Wno-dev
+		-Wno-author
 	cmake --build build
 }
 
