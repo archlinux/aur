@@ -1,0 +1,17 @@
+pkgbase = fastfetch-configs-git
+	pkgdesc = A collection of ready-to-use aesthetic fastfetch configurations with an interactive installer
+	pkgver = r18.b09c657
+	pkgrel = 1
+	url = https://github.com/iamanuclearwarhead/fastfetch-configs
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = fastfetch
+	depends = bash
+	optdepends = ttf-jetbrains-mono-nerd: icons in the nerd font themed configs
+	provides = fastfetch-configs
+	conflicts = fastfetch-configs
+	source = fastfetch-configs-git::git+https://github.com/iamanuclearwarhead/fastfetch-configs.git
+	sha256sums = SKIP
+
+pkgname = fastfetch-configs-git
