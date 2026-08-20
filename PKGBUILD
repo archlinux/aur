@@ -1,7 +1,7 @@
 pkgname=mingw-w64-boost
-pkgver=1.91.0
+pkgver=1.92.0
 _boostver=${pkgver//./_}
-pkgrel=2
+pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
 arch=('any')
 url="http://www.boost.org/"
@@ -10,7 +10,7 @@ depends=('mingw-w64-zlib' 'mingw-w64-zstd' 'mingw-w64-bzip2' 'mingw-w64-dlfcn')
 makedepends=('mingw-w64-gcc' 'mingw-w64-wine' 'mingw-w64-environment')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://archives.boost.io/release/${pkgver}/source/boost_${_boostver}.tar.bz2")
-sha256sums=('de5e6b0e4913395c6bdfa90537febd9028ea4c0735d2cdb0cd9b45d5f51264f5')
+sha256sums=('5c1d40cb8e19adbf740a4ec2da35b3e58f3f5804b1dce44deb53df72193cbc6c')
 
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
 
@@ -61,7 +61,6 @@ package() {
       -l0 ${MAKEFLAGS} \
       --layout=system install
     install -d $pkgdir/usr/${_arch:3}/bin
-    mv "$pkgdir"/usr/${_arch:3}/lib/*.dll "$pkgdir"/usr/${_arch:3}/bin
     ${_arch:3}-strip --strip-unneeded "$pkgdir"/usr/${_arch:3}/bin/*.dll
     ${_arch:3}-strip -g "$pkgdir"/usr/${_arch:3}/lib/*.a
     popd
