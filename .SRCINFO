@@ -1,6 +1,6 @@
 pkgbase = sayall-git
 	pkgdesc = Linux voice dictation application and CLI (development version)
-	pkgver = 0.3.0.r0.g649c513
+	pkgver = 0.3.1.r0.g6e0f652
 	pkgrel = 1
 	url = https://github.com/saiemsaeed/sayall
 	install = sayall-git.install
@@ -22,7 +22,7 @@ pkgbase = sayall-git
 	depends = wtype
 	depends = xdotool
 	depends = xsel
-	provides = sayall=0.3.0.r0.g649c513
+	provides = sayall=0.3.1.r0.g6e0f652
 	conflicts = sayall
 	conflicts = sayall-bin
 	conflicts = sayall-src
