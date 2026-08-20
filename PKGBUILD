@@ -44,6 +44,7 @@ check() {
 	for _arch in ${_architectures}; do
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTING=ON
 		cmake --build "build-${_arch}"
+		cp -f "build-${_arch}/src/Imath/"*'.dll' "build-${_arch}/bin"
 		cmake --build "build-${_arch}" --target test
 	done
 }
