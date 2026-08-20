@@ -751,11 +751,11 @@ _package() {
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig'
                 'scx-scheds: to use sched-ext schedulers')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE V4L2LOOPBACK-MODULE NTSYNC-MODULE VHBA-MODULE ADIOS-MODULE)
-    # Replace LTO kernel with the default kernel
-    if _is_lto_kernel; then
-        provides+=(linux-cachyos-lto=$_kernver)
-        replaces=(linux-cachyos-lto)
-    fi
+    # No linux-cachyos-lto provides/replaces here: this package is meant to sit
+    # permanently alongside stock linux-cachyos, not supersede it. The stock
+    # package is itself an LTO build and provides linux-cachyos-lto, so
+    # declaring replaces=(linux-cachyos-lto) here made pacman treat this
+    # install as wanting to remove linux-cachyos.
 
     cd "$_srcname"
 
@@ -792,8 +792,6 @@ _package-headers() {
     provides=(LINUX-HEADERS)
 
     if _is_lto_kernel; then
-        provides+=(linux-cachyos-lto-headers=$_kernver)
-        replaces=(linux-cachyos-lto-headers)
         depends+=(clang llvm lld)
     fi
 

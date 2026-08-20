@@ -69,8 +69,6 @@ pkgname = linux-cachyos-jetm
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-lto=7.2.0-1
-	replaces = linux-cachyos-lto
 
 pkgname = linux-cachyos-jetm-dbg
 	pkgdesc = Non-stripped vmlinux file for the CachyOS kernel tuned for Yocto/OE development on a desktop workstation rather than gaming kernel
@@ -92,5 +90,3 @@ pkgname = linux-cachyos-jetm-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-lto-headers=7.2.0-1
-	replaces = linux-cachyos-lto-headers
