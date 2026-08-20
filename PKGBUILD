@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=orbien-desktop-bin
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Lightweight, high-performance intranet tunneling tool with a native desktop client"
 arch=('x86_64' 'aarch64')
@@ -37,8 +37,8 @@ source_aarch64=(
   "${_deb_aarch64}::https://github.com/orbien-org/orbien/releases/download/v${pkgver}/${_deb_aarch64}"
 )
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
-sha256sums_x86_64=('9ed44c9c41cdabe5e13d22ab0a2c9fe4009571045eb28e8aac8776042327918b')
-sha256sums_aarch64=('98c5cce8ce58e92dca7b114fc59e8cb9cb8a21ac339e8e8d5ef52a2d1e346478')
+sha256sums_x86_64=('26ba86768cb0140f3cbe9d3218ed02b839f2cc0b9963a5f857b3087326f303e5')
+sha256sums_aarch64=('2a31722eefc46b1bbff24a0b955663c381a9a71e192905c6ce2d71255a1916bc')
 
 package() {
   local deb_var="_deb_${CARCH}"
