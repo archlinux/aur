@@ -146,8 +146,19 @@ bump:
         git commit -m "upgpkg: $CI_PROJECT_NAME $pkgver-1"
       fi
 
-      # GitLab first: if this fails, the AUR is left untouched and the next
-      # run starts clean. Both are no-ops when the remote is already current.
+      # Both pushes are no-ops when the remote is already current. A failure
+      # to mirror here no longer blocks the AUR: the fast-forward above makes
+      # the next run adopt whatever the AUR has, so the two cannot drift apart
+      # permanently. The job still fails, loudly, so the mirror gets fixed.
+      mirrored=1
       git push "https://oauth2:$GITLAB_PUSH_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git" \
-        "HEAD:$CI_DEFAULT_BRANCH"
+        "HEAD:$CI_DEFAULT_BRANCH" || mirrored=0
+
       git push aur "HEAD:master"
+
+      if [ "$mirrored" -eq 0 ]; then
+        echo "AUR is up to date, but pushing to GitLab failed." >&2
+        echo "GITLAB_PUSH_TOKEN needs the Maintainer role to push to a protected" >&2
+        echo "default branch; write_repository alone is not enough." >&2
+        exit 1
+      fi
