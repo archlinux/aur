@@ -22,5 +22,4 @@ sha256sums_x86_64=('ef1ac5d97a2038fe09c2014cde04c68d44da8c7d649144f62d1360512a42
 
 package() {
   install -Dm755 "./posh" "${pkgdir}/usr/bin/posh"
-  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/posh/LICENSE"
 }

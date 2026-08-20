@@ -3,17 +3,17 @@ pkgbase = poshtui-bin
 	pkgver = 0.31.1
 	pkgrel = 1
 	url = https://poshtui.com
-	license = custom
-	conflicts = posh
-	provides = posh
 	arch = aarch64
-	source_aarch64 = https://github.com/skatkov/homebrew-tap/releases/download/0.31.1/homebrew-tap_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 08bada627cb8303c1bcd6bde1b6b522f9f0d251ce71c8b0d0b16818e5b71a1c9
 	arch = i686
-	source_i686 = https://github.com/skatkov/homebrew-tap/releases/download/0.31.1/homebrew-tap_Linux_i386.tar.gz
-	sha256sums_i686 = de61571018ac1baf2e302ea8115e1c0450a952bb88500b591ceb82eae8d591b1
 	arch = x86_64
-	source_x86_64 = https://github.com/skatkov/homebrew-tap/releases/download/0.31.1/homebrew-tap_Linux_x86_64.tar.gz
+	license = custom
+	provides = posh
+	conflicts = posh
+	source_aarch64 = poshtui-bin_0.31.1_aarch64.tar.gz::https://github.com/skatkov/homebrew-tap/releases/download/0.31.1/homebrew-tap_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 08bada627cb8303c1bcd6bde1b6b522f9f0d251ce71c8b0d0b16818e5b71a1c9
+	source_i686 = poshtui-bin_0.31.1_i686.tar.gz::https://github.com/skatkov/homebrew-tap/releases/download/0.31.1/homebrew-tap_Linux_i386.tar.gz
+	sha256sums_i686 = de61571018ac1baf2e302ea8115e1c0450a952bb88500b591ceb82eae8d591b1
+	source_x86_64 = poshtui-bin_0.31.1_x86_64.tar.gz::https://github.com/skatkov/homebrew-tap/releases/download/0.31.1/homebrew-tap_Linux_x86_64.tar.gz
 	sha256sums_x86_64 = ef1ac5d97a2038fe09c2014cde04c68d44da8c7d649144f62d1360512a42c965
-	
+
 pkgname = poshtui-bin
