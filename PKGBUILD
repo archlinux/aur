@@ -1,12 +1,12 @@
 # Maintainer: dr460nf1r3 <root at dr460nf1r3 dot org>
 
 pkgname=latte-dock-ng
-pkgver=1.2.34
+pkgver=1.2.39
 pkgrel=1
 pkgdesc='Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids'
 arch=('x86_64')
 url='https://github.com/ruizhi-lab/latte-dock-ng'
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=(
   'karchive'
   'kconfig'
@@ -41,16 +41,13 @@ depends=(
 makedepends=(
   'cmake'
   'extra-cmake-modules'
-  'gcc'
   'git'
-  'gettext'
-  'pkgconf'
   'python'
 )
 conflicts=('latte-dock')
 provides=('latte-dock')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f558521c46ce1ee7025aec1f4b7442c5bc5a138560ec0147e98a46595f6530af')
+source=("$pkgname-$pkgver.tar.gz"::"${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('7e4fb2eaeb9743454c469cdfb7a41f1437a3880263ce59c5c99e076982ed9a1d')
 
 build() {
   cmake -S "${srcdir}/${pkgname}-${pkgver}" -B "${srcdir}/${pkgname}-${pkgver}/build" \
@@ -67,7 +64,7 @@ package() {
   DESTDIR="${pkgdir}" cmake --install "${srcdir}/${pkgname}-${pkgver}/build" --prefix /usr
 
   local share_dir="${pkgdir}/usr/share"
-  install -d \
+  mkdir -p \
     "${share_dir}/plasma/plasmoids/org.kde.latte.containment" \
     "${share_dir}/plasma/plasmoids/org.kde.latte.plasmoid" \
     "${share_dir}/plasma/plasmoids/org.kde.latte.separator" \
