@@ -1,6 +1,6 @@
 pkgbase = firezone-client-gui-bin
 	pkgdesc = Firezone GUI client for Linux - WireGuard-based VPN client
-	pkgver = 1.5.15
+	pkgver = 1.5.16
 	pkgrel = 1
 	url = https://github.com/firezone/firezone
 	install = firezone-client-gui-bin.install
@@ -12,7 +12,7 @@ pkgbase = firezone-client-gui-bin
 	optdepends = wireguard-tools: for WireGuard functionality
 	provides = firezone-client-gui-bin
 	conflicts = firezone-client-gui
-	source = https://github.com/firezone/firezone/releases/download/gui-client-1.5.15/firezone-client-gui-linux_1.5.15_x86_64.deb
-	sha256sums = 2a4b7a5030dbd60f17a22c73748fa794185d588cdcaea4d610aabea9120079ef
+	source = https://github.com/firezone/firezone/releases/download/gui-client-1.5.16/firezone-client-gui-linux_1.5.16_x86_64.deb
+	sha256sums = d2430a16118816f3e75a260a3b1a58bfe7dd1e5d81fce40e6f0b5f6438589516
 
 pkgname = firezone-client-gui-bin
