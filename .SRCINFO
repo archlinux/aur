@@ -27,6 +27,7 @@ pkgbase = radicle-explorer-git
 
 pkgname = radicle-explorer-git
 	pkgdesc = open source, peer-to-peer code collaboration stack built on Git - explorer (frontend)
+	arch = any
 	license = GPL-3.0-only
 	depends = 
 	optdepends = radicle-httpd: local backend for radicle-explorer

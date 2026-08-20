@@ -94,6 +94,7 @@ check() {
 
 package_radicle-explorer-git() {
 	pkgdesc+=" - explorer (frontend)"
+	arch=(any)
 	license=('GPL-3.0-only')
 	depends=()
 	optdepends=(
