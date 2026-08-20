@@ -1,15 +1,23 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
-pkgname=trojita-qt5-git
+# Upstream's own PKGBUILD for this pkgbase (trojita-git) sets
+# pkgname=trojita-qt5-git -- a copy-paste bug carried over from the
+# separate trojita-qt5-git pkgbase (see arch/maintained/trojita-qt5-git,
+# a genuinely different, Qt5+WebKit package). Corrected locally; this
+# is the Qt6 variant (WITH_WEBKIT=OFF below).
+pkgname=trojita-git
 pkgver=0.7.r839.g5aefb8f1
-pkgrel=1
+pkgrel=4
 pkgdesc="A fast QT IMAP e-mail client"
-arch=(i686 x86_64)
+# i686 dropped: kitemmodels (KF6 flavor) isn't ported to i686 on
+# archlinux32 (only the old KF5-era kitemmodels5-lineage package
+# exists there) -- unsatisfiable, not fixable locally.
+arch=(x86_64)
 url="http://trojita.flaska.net"
 license=('GPL')
-depends=('qtkeychain' 'qt6-tools' 'qt6-svg' 'mimetic'
-         'qgpgme' 'desktop-file-utils' 'sonnet' 'ragel')
+depends=('qtkeychain-qt6' 'qt6-tools' 'qt6-svg' 'qt6-5compat' 'mimetic'
+         'qgpgme' 'desktop-file-utils' 'sonnet' 'ragel' 'kitemmodels')
 conflicts=('trojita')
 provides=('trojita')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'boost')
@@ -39,7 +47,7 @@ build() {
         -DWITH_QTKEYCHAIN_PLUGIN=ON \
         -DWITH_GPGMEPP=ON \
         -DWITH_CRYPTO_MESSAGES=ON \
-        -DCMAKE_PREFIX_PATH=/usr/lib/cmake/QGpgmeQt5 \
+        -DCMAKE_PREFIX_PATH=/usr/lib/cmake/QGpgmeQt6 \
         .
   make
 }
