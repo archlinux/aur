@@ -1,14 +1,14 @@
 pkgbase = payload-dumper-go
 	pkgdesc = An Android OTA payload dumper written in Go.
-	pkgver = 2.0.0
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/ssut/payload-dumper-go
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = go>=1.25
+	makedepends = go>=1.27
 	depends = xz
 	options = !buildflags
-	source = payload-dumper-go-2.0.0.tar.gz::https://github.com/ssut/payload-dumper-go/archive/refs/tags/2.0.0.tar.gz
-	sha256sums = e36f1df812fef68bff1a43ebf5596164fc06438dd63ce217fc16427037dd418e
+	source = payload-dumper-go-2.0.2.tar.gz::https://github.com/ssut/payload-dumper-go/archive/refs/tags/2.0.2.tar.gz
+	sha256sums = 76ee9b4798fc6fd270885b15640e794bb5e9fd5739b843d0a68c2637a06e50c8
 
 pkgname = payload-dumper-go
