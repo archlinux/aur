@@ -2,10 +2,10 @@
 pkgname=fasthex-bin
 pkgver=0
 pkgrel=1
-pkgdesc="A very fast hex dumper (x86_64 Linux only) — prebuilt binary from latest tested CI build"
+pkgdesc="fasthex, a very fast hex dumper, prebuilt binary"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fasthex"
-license=('GPL-3.0-or-later')
+license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('git' 'curl')
 provides=('fasthex')
