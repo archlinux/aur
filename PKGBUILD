@@ -158,6 +158,14 @@ package_radicle-cli-git() {
 		target/release/man/git-remote-rad.1 \
 		-t "$pkgdir/usr/share/man/man1"
 
+	# Completions
+	"${pkgdir}/usr/bin/rad" completion bash \
+	       | install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/rad"
+	"${pkgdir}/usr/bin/rad" completion zsh \
+		| install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_rad"
+	"${pkgdir}/usr/bin/rad" completion fish \
+		| install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/rad.fish"
+
 	install -Dm644 \
 		LICENSE-MIT \
 		-t "$pkgdir/usr/share/licenses/$pkgname"
