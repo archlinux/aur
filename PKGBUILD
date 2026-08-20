@@ -2,7 +2,7 @@
 # Contributor: PSGtatitos <psgtatitos@github>
 
 pkgname=papyrus-wallpaper
-pkgver=1.2.2
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Animated wallpaper manager for the COSMIC desktop — uses mpvpaper to play video wallpapers with playlist rotation, auto-theming, and self-update"
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 makedepends=()
 optdepends=()
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('c6d93471063aa0759a854da537cc6e9beb5fd18e6fce6568dc0c64ad5cb0c343')
+sha256sums=('1b3a8116230594479b68d997288a6d6ab6264e29886236d9d9ae7bc1b1340c5b')
 
 package() {
   cd "$srcdir/papyrus-$pkgver"
