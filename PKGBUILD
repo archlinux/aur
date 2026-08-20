@@ -97,7 +97,8 @@ build() {
   cd $_jfxdir
 
   # Build with openjdk $_java_build_ver
-  export PATH="/usr/lib/jvm/java-$_java_build_ver-openjdk/bin/:$PATH"
+  export JAVA_HOME="/usr/lib/jvm/java-$_java_build_ver-openjdk"
+  export PATH="$JAVA_HOME/bin:$PATH"
 
   # Workaround for situation where the linker treats whitespace as arguments
   export LDFLAGS="${LDFLAGS//+([[:space:]]|[[:blank:]])/ }"
