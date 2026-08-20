@@ -1,17 +1,18 @@
 # Maintainer: prowly <pmbaprow@gmail.com>
 #
-# Builds the desktop app from source against the system's own WebKitGTK and
-# GPU stack. That is the whole point of shipping Linux this way: the AppImage
-# we used to publish bundled ubuntu-22.04's WebKitGTK, which aborts with
-# `Could not create default EGL display: EGL_BAD_PARAMETER` against a
-# rolling-release Mesa and shows a white window. Linking against whatever the
-# user already runs cannot drift out of sync like that.
+# Builds the desktop app from source against the system's own WebKitGTK,
+# libwayland and GPU stack, so nothing bundled can drift out of step with the
+# host. (The first AppImage this project published failed with `Could not
+# create default EGL display: EGL_BAD_PARAMETER` on rolling-release Mesa; the
+# cause was the bundled ubuntu-22.04 libwayland, not WebKitGTK, and the
+# AppImage is back with those libs stripped. This package never had the
+# problem.)
 #
-# Updates are pacman's job here — the in-app updater deliberately no-ops on
-# Linux (see companion/tennoworth-desktop/src/update.rs).
+# Updates are pacman's job here — the in-app updater no-ops outside an
+# AppImage run (see companion/tennoworth-desktop/src/update.rs).
 
 pkgname=tennoworth
-pkgver=0.3.8
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Warframe inventory + market dashboard — see what's worth selling right now"
 arch=('x86_64')
@@ -31,7 +32,7 @@ makedepends=('cargo' 'bun')
 install=tennoworth.install
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/desktop-v$pkgver.tar.gz")
-sha256sums=('f797f08d4a691771aedb94cb5d52ce762984e903dcad738b35a583831f989acb')
+sha256sums=('09c7b9f094da36006570247d4fad995d022b70d92dc69643f6d6e62e82fd62e1')
 
 _srcdir="tennoworth-desktop-v$pkgver"
 
