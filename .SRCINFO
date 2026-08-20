@@ -1,7 +1,7 @@
 pkgbase = coccinelle
 	pkgdesc = C source code matching and transformation engine
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://coccinelle.gitlabpages.inria.fr/website/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -15,7 +15,7 @@ pkgbase = coccinelle
 	makedepends = ocaml-pyml
 	makedepends = ocaml-stdcompat
 	depends = glibc
-	depends = pcre
+	depends = pcre2
 	depends = python
 	depends = zstd
 	optdepends = ocaml-findlib: OCaml scripting feature

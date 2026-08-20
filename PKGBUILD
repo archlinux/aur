@@ -10,7 +10,7 @@
 
 pkgname=coccinelle
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="C source code matching and transformation engine"
 arch=('x86_64')
 url="https://coccinelle.gitlabpages.inria.fr/website/"
@@ -27,7 +27,7 @@ makedepends=(
 )
 depends=(
     'glibc'
-    'pcre'
+    'pcre2'
     'python'
     'zstd'
 )
