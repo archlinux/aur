@@ -1,0 +1,22 @@
+pkgbase = optimize-images
+	pkgdesc = A command-line interface (CLI) utility written in pure Python to help you reduce the file size of images
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/victordomingos/optimize-images
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-pillow
+	depends = python-watchdog
+	optdepends = optimize-images-x
+	provides = optimize-images
+	conflicts = python-optimize-images
+	source = https://files.pythonhosted.org/packages/source/o/optimize_images/optimize_images-2.1.0.tar.gz
+	sha256sums = 8c17211f80d00f762ef632532956fd8cae9440d2c3004b65cb4b0ce915a90fc5
+
+pkgname = optimize-images
