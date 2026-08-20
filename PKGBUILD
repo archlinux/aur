@@ -3,7 +3,7 @@
 pkgname=asciidoctor-web-pdf
 _tagname=1.0.2
 pkgver=${_tagname//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="A PDF converter for AsciiDoc based on web technologies. It allows complex layouts to be defined with CSS and JavaScript, while writing the content in AsciiDoc."
 arch=('any')
 url="https://github.com/Mogztter/asciidoctor-web-pdf"
@@ -12,20 +12,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 depends=(
-    sh
-    cairo
-    dbus
-    expat
-    glib2
-    libcups
-    libgcc_s.so
-    libstdc++.so
-    libx11
-    libxcb
-    libxext
     nodejs
-    nspr
-    nss
 )
 makedepends=(
     npm
