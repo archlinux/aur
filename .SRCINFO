@@ -7,7 +7,6 @@ pkgbase = mingw-w64-imath
 	license = BSD-3-Clause
 	checkdepends = mingw-w64-wine
 	makedepends = mingw-w64-cmake
-	makedepends = wine
 	depends = mingw-w64-crt
 	options = staticlibs
 	options = !buildflags
