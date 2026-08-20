@@ -17,7 +17,7 @@ makedepends=(
 	'nodejs'
 	'npm'
 	'pnpm'
-	'libgit2'
+	'libgit2' 'libgit2.so'
 )
 _tag="releases/$pkgver"
 source=(
@@ -124,7 +124,7 @@ package_radicle-httpd() {
 	license=('Apache-2.0 OR MIT')
 	depends=(
 		'glibc'
-		'libgcc'
+		'libgcc' 'libgcc_s.so'
 		'libgit2' 'libgit2.so'
 		'radicle-node'
 	)

@@ -13,6 +13,7 @@ pkgbase = radicle-explorer
 	makedepends = npm
 	makedepends = pnpm
 	makedepends = libgit2
+	makedepends = libgit2.so
 	source = radicle-explorer::git+https://seed.radicle.dev/z4V1sjrXqjvFdnCUbxPFqd5p4DtH5.git#tag=releases/0.25.0
 	source = radicle-explorer.config.json
 	source = radicle-explorer.nginx.conf
@@ -35,6 +36,7 @@ pkgname = radicle-httpd
 	license = Apache-2.0 OR MIT
 	depends = glibc
 	depends = libgcc
+	depends = libgcc_s.so
 	depends = libgit2
 	depends = libgit2.so
 	depends = radicle-node
