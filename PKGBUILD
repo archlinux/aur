@@ -1,6 +1,6 @@
 # Maintainer: Rizki Rakasiwi <rizkirr.xyz@gmail.com>
 pkgname=muslimtify
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="An Islamic prayer time notification daemon for Linux"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('libnotify' 'curl')
 makedepends=('cmake' 'pkgconf')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e037cb9014a3eac80fdb9fc3388de58f0fea18abfb3b1fb5e946992daa183cb2')
+sha256sums=('437651dba1c7f711d51ee69a0ccc719ececda39306eafc762a400ad4e9212d6e')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
