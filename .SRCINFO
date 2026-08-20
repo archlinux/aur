@@ -1,13 +1,11 @@
 pkgbase = minigraph
 	pkgdesc = Pangenome graph construction and sequence-to-graph alignment tool
 	pkgver = 0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lh3/minigraph
 	arch = x86_64
 	license = MIT
 	depends = zlib
-	provides = minigraph
-	conflicts = minigraph
 	source = minigraph-0.21.tar.gz::https://github.com/lh3/minigraph/archive/v0.21.tar.gz
 	sha256sums = 4272447393f0ae1e656376abe144de96cbafc777414d4c496f735dd4a6d3c06a
 
