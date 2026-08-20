@@ -1,0 +1,14 @@
+pkgbase = tgforge
+	pkgdesc = Bash library for building Telegram bots
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/user14923929/tgforge
+	arch = any
+	license = GPL-3.0-or-later
+	depends = curl
+	depends = jq
+	depends = bash
+	source = tgforge-0.1.0.tar.gz::https://github.com/user14923929/tgforge/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 00692fa08ddd2560c1823847b7add4a8b71fe58edf64c488c3acf627c853032d
+
+pkgname = tgforge
