@@ -1,18 +1,18 @@
 pkgbase = grx-bin
 	pkgdesc = Fastest Web Gerber Renderer.(Prebuilt version.Use system-wide electron)
-	pkgver = 4.4.0
+	pkgver = 4.4.2
 	pkgrel = 1
 	url = https://grx.electronicloud.app/
 	arch = aarch64
 	license = MIT
-	depends = electron42
-	provides = grx=4.4.0
+	depends = electron41
+	provides = grx=4.4.2
 	conflicts = grx
-	source = LICENSE-4.4.0::https://raw.githubusercontent.com/hpcreery/GRX/v4.4.0/LICENSE
+	source = LICENSE-4.4.2::https://raw.githubusercontent.com/hpcreery/GRX/v4.4.2/LICENSE
 	source = grx.sh
 	sha256sums = 23bce28c966a0a3af2fedc9c947caedba971615a311ed5402ac717f020db1f48
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = grx-4.4.0-aarch64.deb::https://github.com/hpcreery/GRX/releases/download/v4.4.0/grx-arm64.deb
-	sha256sums_aarch64 = 4c4eef2c4f5a0d0d928cff8f4e18dae4209840f919f65d840319df0189daf32c
+	source_aarch64 = grx-4.4.2-aarch64.deb::https://github.com/hpcreery/GRX/releases/download/v4.4.2/grx-arm64.deb
+	sha256sums_aarch64 = 18ed7f0d0dacca1362202a3f19609318f6de39454ba9c0c3793f2383fd9e52e8
 
 pkgname = grx-bin
