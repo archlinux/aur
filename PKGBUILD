@@ -2,10 +2,10 @@
 pkgname=fastcount-bin
 pkgver=0
 pkgrel=1
-pkgdesc="An incredibly fast, incredibly useless counter (x86_64 Linux only) — prebuilt binary from latest tested CI build"
+pkgdesc="fastcount, an incredibly fast, incredibly useless counter, prebuilt binary"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastcount"
-license=('GPL-3.0-or-later')
+license=('Apache-2.0')
 depends=('gcc-libs')
 makedepends=('git' 'curl')
 provides=('fastcount')
