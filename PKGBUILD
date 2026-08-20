@@ -3,7 +3,7 @@
 
 _repo_name=transcribe.cpp
 pkgname=transcribe-cpp-vulkan
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='C/C++ speech-to-text inference library and CLI based on ggml (Vulkan)'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
 source=(
   "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('32a2b46dae2282cb5f01b8ff2f4294acd8b1bb17d34f11b07e4f3e34716b5e37')
+sha256sums=('9da9128a6b9c10aaad20d982dd9d19ac13f9a3561f34ccad8555803c74c503b3')
 
 build() {
   # Vulkan is enabled by the system ggml-vulkan
@@ -47,6 +47,9 @@ build() {
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
+
+  # These headers are provided by the system ggml-vulkan package.
+  rm "${pkgdir}/usr/include"/{ggml-alloc.h,ggml-backend.h,ggml-blas.h,ggml-cann.h,ggml-cpp.h,ggml-cpu.h,ggml-cuda.h,ggml-metal.h,ggml-openvino.h,ggml-opt.h,ggml-rpc.h,ggml-sycl.h,ggml-virtgpu.h,ggml-vulkan.h,ggml-webgpu.h,ggml-zendnn.h,ggml.h,gguf.h}
 
   install -Dm755 build/bin/transcribe-cli "${pkgdir}/usr/bin/transcribe-cli"
 
