@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jammer-bin
 _pkgname=Jammer
-pkgver=3.52
+pkgver=3.53
 pkgrel=1
 pkgdesc="Play songs in cli with youtube and soundcloud support.(Prebuilt version)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/jooapa/jammer/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cbc75ae281a3f66af8ce5b0f28a3919dae3158563b355175a766aba60ad07788'
+sha256sums=('2ee76807220318052123b4d2daf1174d13d4cf6a0160a7f937ee716e66e941dc'
             '551f3173ed7196d0ffc218873820c270171c788602b03b05c0c17929ea9d993e'
             '6731a288a4110a682e80c898ff52bb4d3ff5f5849dcc3b7f6814279391d12ba4')
 prepare() {
@@ -47,7 +47,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/squashfs-root/usr/bin/${_pkgname}" -t "${pkgdir}/usr/lib/${pkgname%-bin}/bin"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/"{lib,locales} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/squashfs-root/usr/"{lib,locales} "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}-icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
