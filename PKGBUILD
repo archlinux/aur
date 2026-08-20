@@ -7,7 +7,7 @@
 # asset URL. npm handles Node.js deps.
 
 pkgname=camofox-browser-bin
-pkgver=1.13.1
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Anti-detection browser server for AI agents — REST API wrapping Camoufox stealth browser engine (Firefox fork with C++-level fingerprint spoofing)"
 arch=('x86_64')
