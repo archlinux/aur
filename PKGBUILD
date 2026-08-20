@@ -1,4 +1,4 @@
-pkgname=hell-git
+pkgname=hell-shrub900-git
 _pkgname=hell
 pkgdesc="hell: kill autotools"
 pkgver=r77.e36ad42
