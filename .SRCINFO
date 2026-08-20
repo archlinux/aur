@@ -1,0 +1,24 @@
+pkgbase = findmylinux
+	pkgdesc = Use Apple's Find My network to estimate your system GPS location, with a GTK app for configuration and status
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cmdada/findmylinux
+	install = findmylinux.install
+	arch = any
+	license = AGPL-3.0-or-later
+	depends = python
+	depends = python-cryptography
+	depends = python-requests
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = libshumate
+	depends = bluez
+	depends = bluez-utils
+	depends = geoclue
+	depends = polkit
+	depends = findmylinux-anisette
+	source = findmylinux-0.1.0.tar.gz::https://github.com/cmdada/findmylinux/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 32e7cfbc859c97437b3bf6c9862301a277041d2655fa00ffabf480ac5150c0df
+
+pkgname = findmylinux

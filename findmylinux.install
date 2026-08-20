@@ -1,0 +1,16 @@
+post_install() {
+  systemd-tmpfiles --create findmylinux.conf >/dev/null 2>&1 || true
+  cat <<'MSG'
+==> findmylinux installed. To finish setup:
+    1. Add yourself to the 'geoclue' group so the location daemon can write
+       the system location file, then re-login:
+         sudo gpasswd -a "$USER" geoclue
+    2. Enable services and sign in:
+         systemctl --user enable --now findmylinux-anisette findmylinux-location
+         findmylinux keygen && findmylinux login
+         sudo systemctl enable --now findmylinux   # start advertising
+MSG
+}
+post_upgrade() {
+  systemd-tmpfiles --create findmylinux.conf >/dev/null 2>&1 || true
+}
