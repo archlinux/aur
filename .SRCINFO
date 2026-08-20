@@ -1,6 +1,6 @@
 pkgbase = omarchy-zfs
 	pkgdesc = Root-on-ZFS + ZFSBootMenu support layer for Omarchy (Quattro)
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/peteonrails/omarchy-zfs
 	install = omarchy-zfs.install
@@ -18,7 +18,7 @@ pkgbase = omarchy-zfs
 	optdepends = pv: syncoid transfer progress
 	backup = etc/omarchy-zfs/autosnap.conf
 	backup = etc/omarchy-zfs/bootorder.conf
-	source = omarchy-zfs-1.1.2.tar.gz::https://github.com/peteonrails/omarchy-zfs/archive/refs/tags/v1.1.2.tar.gz
-	sha256sums = d4e402bb76f4f345e45b18c95e8f82362f8d3b92a0939a70fede46fd8ba2b698
+	source = omarchy-zfs-1.1.3.tar.gz::https://github.com/peteonrails/omarchy-zfs/archive/refs/tags/v1.1.3.tar.gz
+	sha256sums = 5fdabcf9e1941b2a872758604f7b57522679212b2d6c3b4373570b3fade51ac8
 
 pkgname = omarchy-zfs
