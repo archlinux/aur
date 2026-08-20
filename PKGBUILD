@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=FCPS
-_pkgver=1.4.0
+_pkgver=1.4.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -21,6 +21,7 @@ optdepends=(
   r-aricode
   r-cclust
   r-cec
+  r-clue
   r-clusterability
   r-clusterr
   r-clustersim
@@ -74,8 +75,8 @@ optdepends=(
   r-yardstick
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fc43876737d1ef5dc3d25534baab9087')
-b2sums=('67e5dddad1ba3a579d3b12082d56cd043a4585242627dfd6173a7072178bdfa16deaee421c14d83faeb4210654991cfed2678f5f1d47d31e7f9e3ce5229f92e0')
+md5sums=('06a53394e64cd50ac2ef046523c5d082')
+b2sums=('dc7308febf12dfb8d412d5ae9324e3000f5ad2c2fb286c2ca68d5103b736a3220ad1ed267297f1430ca39a28d64d029ad6032b669417d0c56c5c1bee39da3b58')
 
 build() {
   mkdir build
