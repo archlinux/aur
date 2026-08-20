@@ -1,6 +1,6 @@
 pkgbase = sniplab-bin
 	pkgdesc = Filesystem-native snippet library and terminal CLI (prebuilt)
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/gitkeniwo/snip
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = sniplab-bin
 	provides = sniplab
 	provides = snip
 	conflicts = sniplab
-	source_x86_64 = snip-x86_64-unknown-linux-gnu.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v0.6.0/snip-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 93571ef0b61eb53c6e81e47fee811b8a6ba13602319665ed579e34a359fbeb51
-	source_aarch64 = snip-aarch64-unknown-linux-gnu.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v0.6.0/snip-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = e5dbfdd2ca45c6fbf9a0015daf834560c58472d1d28dd99e826b811c6ee84559
+	source_x86_64 = snip-x86_64-unknown-linux-gnu.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v0.6.1/snip-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f0c17664884746ff2595f46425d53b94bea1b8fc1af08897a6de59f5c033ae56
+	source_aarch64 = snip-aarch64-unknown-linux-gnu.tar.gz::https://github.com/gitkeniwo/snip/releases/download/v0.6.1/snip-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 815b74a3bda523ab55449afc348eefff38302b93b7933525fd4c97a9d27d7263
 
 pkgname = sniplab-bin
