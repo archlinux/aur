@@ -2,10 +2,10 @@
 # Contributor: Chris Brannon <cmbrannon (at) cox.net>
 
 pkgname=pcc-git
-pkgver=20260213
+pkgver=20260804
 pkgrel=1
 pkgdesc="A Portable C Compiler."
-arch=('i686' 'x86_64' 'aarch64')
+arch=('i686' 'x86_64' 'aarch64' 'pentium4')
 url="https://github.com/PortableCC/"
 license=('BSD-3-Clause')
 makedepends=('bison' 'flex' 'git')
