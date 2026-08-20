@@ -14,6 +14,7 @@ makedepends=('git')
 depends=(
   'noctalia-qs'
   'qt6-dbusqml'
+  'qt6-pipewirespectrum'
   'qt6-xdgiconqml-git'
   'imagemagick'
   'brightnessctl'

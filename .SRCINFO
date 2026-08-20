@@ -9,6 +9,7 @@ pkgbase = atmosphera-git
 	makedepends = git
 	depends = noctalia-qs
 	depends = qt6-dbusqml
+	depends = qt6-pipewirespectrum
 	depends = qt6-xdgiconqml-git
 	depends = imagemagick
 	depends = brightnessctl
