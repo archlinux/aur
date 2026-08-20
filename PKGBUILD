@@ -3,7 +3,7 @@
 pkgname=linyaps-rust-git
 _tagname=1.14.0-rust.1
 pkgver=1.14.0.rust.1.r6.g38b279b
-pkgrel=4
+pkgrel=6
 pkgdesc="Linyaps package manager implemented in Rust A command-compatible Rust implementation of the Linyaps package manager"
 arch=($CARCH)
 url="https://github.com/guanzi008/linyaps-rust"
@@ -14,6 +14,7 @@ replaces=()
 depends=(
     sh
     libgcc_s.so
+    fuse-overlayfs
     hicolor-icon-theme
     linyaps-box-rust
 )
