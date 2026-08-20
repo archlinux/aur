@@ -3,17 +3,15 @@
 pkgname=recastnavigation-openmw
 _pkgname=recastnavigation
 _pkgver=1.6.0
-pkgver=1.6.0.r832.c393777d
-pkgrel=2
+pkgver=1.6.0.r876.03259f3
+pkgrel=1
 epoch=1
-pkgdesc="Navigation-mesh Toolset for openmw"
-url="https://github.com/recastnavigation/recastnavigation"
+pkgdesc="Navigation-mesh Toolset forked for openmw"
+url="https://github.com/OpenMW/recastnavigation"
 arch=('x86_64' 'aarch64')
 license=('Zlib')
-makedepends=(git cmake sdl2 glut)
-# use https://github.com/recastnavigation/recastnavigation/commit/c393777d26d2ff6519ac23612abf8af42678c9dd
-# https://gitlab.com/OpenMW/openmw/-/issues/7457 for more info
-source=("git+https://github.com/recastnavigation/recastnavigation.git#commit=c393777d26d2ff6519ac23612abf8af42678c9dd")
+makedepends=(git cmake sdl2-compat glu)
+source=("git+https://github.com/OpenMW/recastnavigation.git#commit=03259f3287ff8330f0d66fcd98d022edddffaa97")
 sha256sums=("SKIP")
 conflicts=('recastnavigation')
 options=(debug strip)
@@ -25,21 +23,22 @@ pkgver() {
 }
 
 build() {
-    cmake \
-        -B _build \
-        -S "$srcdir/$_pkgname"  \
-        -D CMAKE_BUILD_TYPE=None \
-        -D CMAKE_INSTALL_PREFIX=/usr \
-        -D BUILD_SHARED_LIBS=ON \
-        -D RECASTNAVIGATION_DEMO=OFF \
-        -D RECASTNAVIGATION_TESTS=OFF \
-        -D RECASTNAVIGATION_EXAMPLES=OFF \
-        -D CMAKE_POLICY_VERSION_MINIMUM=3.5
-    VERBOSE=1 make -C _build
+    local cmake_options=(
+        -B _build
+        -S "$srcdir/$_pkgname"
+        -D CMAKE_BUILD_TYPE=None
+        -D CMAKE_INSTALL_PREFIX=/usr
+        -D BUILD_SHARED_LIBS=ON
+        -D RECASTNAVIGATION_DEMO=OFF
+        -D RECASTNAVIGATION_TESTS=OFF
+        -D RECASTNAVIGATION_EXAMPLES=OFF
+)
+    cmake "${cmake_options[@]}"
+    cmake --build _build
 }
 
 package() {
-depends=(gcc-libs glibc sdl2 glut)
-    make DESTDIR="$pkgdir" -C _build install
+depends=(libgcc libstdc++ glibc sdl2-compat glu)
+    DESTDIR="$pkgdir" cmake --install _build
     install -Dm644 "$srcdir"/$_pkgname/License.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
