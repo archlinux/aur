@@ -1,7 +1,7 @@
 # Maintainer: Brуan Childs <godeater[at]𝚐mail[dot]com>
 # Co-Maintainer: Marat Bakeev <hawara[at]gmail[dot]com>
 pkgname=atmos-bin
-pkgver=1.225.0
+pkgver=1.226.0
 pkgrel=1
 pkgdesc='Automated Terraform Management & Orchestration Software (ATMOS)'
 arch=(x86_64 aarch64)
@@ -11,8 +11,8 @@ optdepends=('terraform'
             'opentofu')
 source_x86_64=("${pkgname/-bin/}_${pkgver}_linux_amd64::${url}/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_linux_amd64")
 source_aarch64=("${pkgname/-bin/}_${pkgver}_linux_arm64::${url}/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}_linux_arm64")
-sha256sums_x86_64=('85660099298cbda998cd0a9bbd667f36d1100129da354e30d2d4adf80d3a5234')
-sha256sums_aarch64=('8190bf25a7251dfd80be7e2bbfdd94fa08dc23201855cb7627cbc0974646be5f')
+sha256sums_x86_64=('7dea111ca81b17208abc68b092732adc1a45b19fcc4cff2579f1851fe148c9dd')
+sha256sums_aarch64=('fa4f340767ab4080c1e3606e7306799488ce23a53230bfeffb4c4db4c61f21dc')
 
 package() {
   local _srcarch='amd64'
