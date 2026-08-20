@@ -20,7 +20,6 @@ sha256sums_x86_64=('c330be3341ef6f6cb106e4fb32c1d60754a08e1a7641143a7a6a4d9e9448
 source_aarch64=("https://terminal-browser.sh/install/dl/stable/v${pkgver}/terminal-browser-linux-arm64.tar.gz")
 sha256sums_aarch64=('9ffe7fc1f2a309ed0be48c2f35fba534f38163d64c22c0c7dc539949d4f19e71')
 
-# Prevent makepkg from automatically extracting since we need --strip-components 1
 noextract=("terminal-browser-linux-x64.tar.gz" "terminal-browser-linux-arm64.tar.gz")
 
 package() {
