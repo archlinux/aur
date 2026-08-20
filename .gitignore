@@ -2,3 +2,4 @@ src/
 pkg/
 *.log
 *.pkg.*
+lefthook.yml
