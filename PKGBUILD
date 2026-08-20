@@ -1,39 +1,27 @@
 # Maintainer: 37signals <support@37signals.com>
 pkgname=hey-cli
-pkgver=0.0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="CLI for HEY email"
 arch=('x86_64' 'aarch64')
 url="https://github.com/basecamp/hey-cli"
 license=('MIT')
-depends=('glibc')
-makedepends=('go')
 provides=('hey')
 conflicts=('hey' 'hey-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/basecamp/hey-cli/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
-options=('!debug')
-
-build() {
-    cd "$pkgname-$pkgver"
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build -ldflags "-s -w -X github.com/basecamp/hey-cli/internal/version.Version=${pkgver}" -o hey ./cmd/hey
-
-    # Generate completions
-    ./hey completion bash > hey.bash
-    ./hey completion zsh > hey.zsh
-    ./hey completion fish > hey.fish
-}
+optdepends=(
+  'bash-completion: for bash shell completions'
+  'zsh: for zsh shell completions'
+  'fish: for fish shell completions'
+)
+source_x86_64=("https://github.com/basecamp/hey-cli/releases/download/v0.1.1/hey_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("https://github.com/basecamp/hey-cli/releases/download/v0.1.1/hey_${pkgver}_linux_arm64.tar.gz")
+sha256sums_x86_64=('3510a7bc066446f2f72411d50c7915cbec1d9aff53c31e50e77675dba8412932')
+sha256sums_aarch64=('7087a5957d5e67fe54cbdf2ccb4884d21e9d44f2a9445e7ef210976903cc61e0')
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm755 hey "$pkgdir/usr/bin/hey"
-    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-    install -Dm644 hey.bash "$pkgdir/usr/share/bash-completion/completions/hey"
-    install -Dm644 hey.zsh "$pkgdir/usr/share/zsh/site-functions/_hey"
-    install -Dm644 hey.fish "$pkgdir/usr/share/fish/vendor_completions.d/hey.fish"
+  install -Dm755 "hey" "${pkgdir}/usr/bin/hey"
+  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -Dm644 "completions/hey.bash" "${pkgdir}/usr/share/bash-completion/completions/hey"
+  install -Dm644 "completions/_hey" "${pkgdir}/usr/share/zsh/site-functions/_hey"
+  install -Dm644 "completions/hey.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/hey.fish"
 }
