@@ -3,10 +3,11 @@
 # Prebuilt counterpart to the `tennoworth` source package, for people who don't
 # want to compile Rust + a webview. It ships ONE dynamically-linked executable
 # and resolves webkit2gtk/gtk3 from the system at runtime — it does not bundle
-# libraries. That distinction is the whole point: the AppImage this project
-# used to publish bundled the build machine's WebKitGTK and died with
-# `Could not create default EGL display: EGL_BAD_PARAMETER` against a
-# rolling-release Mesa, painting a white window.
+# libraries. That distinction is the whole point: the first AppImage this
+# project published died with `Could not create default EGL display:
+# EGL_BAD_PARAMETER` on rolling-release Mesa because it bundled the build
+# machine's libwayland (not WebKitGTK, as first assumed). The AppImage is back
+# with those libs stripped; this package sidesteps the question entirely.
 #
 # The binary is built in CI on ubuntu-22.04 so its glibc floor stays at 2.35;
 # a binary built on Arch would demand a glibc newer than many users have.
@@ -20,7 +21,7 @@
 
 pkgname=tennoworth-bin
 _pkgname=tennoworth
-pkgver=0.3.8
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Warframe inventory + market dashboard — see what's worth selling right now (prebuilt)"
 arch=('x86_64')
@@ -35,7 +36,7 @@ conflicts=("$_pkgname")
 install=tennoworth-bin.install
 options=('!strip' '!debug')
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/desktop-v$pkgver/tennoworth-desktop-linux-x86_64.tar.gz")
-sha256sums=('0df0dfc1b4b4dc26b9dacd91c6a4e083d642bcd225edcaed355988e5e25f334e')
+sha256sums=('27229f29920a6102616c058dc2046d03f9436f176b633fb07dcf7595e9e45247')
 
 _dir="tennoworth-desktop-linux-x86_64"
 
