@@ -1,7 +1,7 @@
 pkgbase = libfprint-goodix-55a2
 	pkgdesc = Library for fingerprint readers, with a driver for the Goodix 27c6:55a2 (GF3206/GF3208) sensor
 	pkgver = 1.94.100
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gaurav712/libfprint
 	arch = x86_64
 	groups = fprint
