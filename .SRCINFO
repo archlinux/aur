@@ -1,6 +1,6 @@
 pkgbase = stenmark
 	pkgdesc = Your markdown librarian. A GTK4 Markdown reader, organizer and editor
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 2
 	url = https://github.com/mkay/stenmark
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = stenmark
 	depends = gtk4
 	depends = libadwaita
 	depends = webkitgtk-6.0
-	source = stenmark-0.8.0.tar.gz::https://github.com/mkay/stenmark/archive/refs/tags/v0.8.0.tar.gz
-	sha256sums = 866c6926a9d6f188da9c54da38938089f2b8cba9c594f994c4bb2635db6dbf63
+	source = stenmark-0.9.0.tar.gz::https://github.com/mkay/stenmark/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 7c17826f44aba8b1f015bf5768c7acd241ea14967853ef7d8063a40f716c988b
 
 pkgname = stenmark

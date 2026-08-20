@@ -1,6 +1,6 @@
 # Maintainer: Kreuder <mk@singular.de>
 pkgname=stenmark
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=2
 pkgdesc='Your markdown librarian. A GTK4 Markdown reader, organizer and editor'
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
   'gettext'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mkay/stenmark/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('866c6926a9d6f188da9c54da38938089f2b8cba9c594f994c4bb2635db6dbf63')
+sha256sums=('7c17826f44aba8b1f015bf5768c7acd241ea14967853ef7d8063a40f716c988b')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
