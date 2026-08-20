@@ -1,0 +1,16 @@
+-------------------------------------------------------
+ Changelog    : cidrtools-cffi
+ Tags         : 1.0.1 ➙ 1.0.3
+              : 2026-08-20 ➙ 2026-08-20
+              : 6 tags. See Docs for full changelog
+-------------------------------------------------------
+
+ 2026-08-20   : 1.0.3
+              - AUR PKGBUILD - fix check() working directory duh
+
+ 2026-08-20   : 1.0.2, origin/master
+              - push 1.0.2
+
+ 2026-08-20   : 1.0.1
+              - release 1.0.1
+              - Add missing meson.build to repo
