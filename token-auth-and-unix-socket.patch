@@ -89,7 +89,7 @@ index 2450496..40918f5 100644
 +		})
 +	}
 +
- 	port := utils.GetEnv("PORT", "8080")
+ 	port := utils.GetEnv("PORT", "28080")
  	if _, err := strconv.Atoi(port); err != nil {
  		log.Fatal("Invalid PORT ", port, " set. PORT needs to be a number")
 diff --git a/src/utils/config.go b/src/utils/config.go

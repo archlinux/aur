@@ -19,12 +19,11 @@ source=(
     "token-auth-and-unix-socket.patch"
 )
 
-sha256sums=(
-    'SKIP'
-    'f56566ef6c1138fc2cf1a789b7c1b49c63c9a5831368a3ca5468de6844d78c80'
-    'd80fb0030270f710ca6567e35ff31366b0bf7926792a61afa174c887c9745be7'
-    'bf9645023b0f23df716ddd5ae3dab241de8a8d9ddea0951f84a917e3cafdbdaa'
-    '97a385f2f9be21f94fcb489f3f81eb71acf29be78a4dd50e1e288305b93b3fa7')
+sha256sums=('SKIP'
+            'f56566ef6c1138fc2cf1a789b7c1b49c63c9a5831368a3ca5468de6844d78c80'
+            '5afee6b15cc9c2396cf723210ca821526e8fc23a8b239f0d4f24716542db58a1'
+            'bf9645023b0f23df716ddd5ae3dab241de8a8d9ddea0951f84a917e3cafdbdaa'
+            'ce89678dbc86c9f19ce94c88e0a254550bc37626e3398b2dfa9da46552f83c8c')
 
 pkgver() {
     cd "${srcdir}/${pkgname}"
