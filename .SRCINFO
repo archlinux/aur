@@ -1,0 +1,21 @@
+pkgbase = python-doclang
+	pkgdesc = DocLang reference toolkit
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/doclang-project/doclang
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-docx>=1.2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools>=80
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-lxml>=4.8.0
+	depends = python-saxonche>=12.9.0
+	depends = python-typer>=0.15.1
+	source = doclang-0.7.3.tar.gz::https://github.com/doclang-project/doclang/archive/refs/tags/v0.7.3.tar.gz
+	b2sums = 192928f14bffa76d12347980335197d13b4b62c86f42d683d91b44af106a0ec83ceb7bfce6f61ac9ab9141d25729d6732fe8eebd7a5fdc90097391efbbe5acca
+
+pkgname = python-doclang
