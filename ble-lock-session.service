@@ -1,0 +1,11 @@
+[Unit]
+Description=Lock/unlock the session based on Bluetooth device proximity
+Documentation=https://github.com/azratul/ble-lock-session
+
+[Service]
+ExecStart=/usr/bin/ble-lock-session --start
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

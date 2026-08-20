@@ -1,0 +1,21 @@
+pkgbase = ble-lock-session
+	pkgdesc = Lock and unlock your computer screen using the proximity of a Bluetooth device
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/azratul/ble-lock-session
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-coverage
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = ble-lock-session-1.0.0.tar.gz::https://github.com/azratul/ble-lock-session/archive/v1.0.0.tar.gz
+	source = ble-lock-session.service
+	sha256sums = f5aaf2868c2355ddb9df4626e3400e3a574423980ed144523874eced2910cfc2
+	sha256sums = 0fc54f4a7a0ff7d38a354a9db64e4f8cb7f6390a07212761728986e6c1746c63
+
+pkgname = ble-lock-session
