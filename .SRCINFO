@@ -1,6 +1,6 @@
 pkgbase = stamp
-	pkgdesc = PIM Suite
-	pkgver = 0r221+89cc3a8
+	pkgdesc = A modern personal information management application
+	pkgver = 0r300+9f9777b
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jbrummer/stamp
 	arch = x86_64
@@ -14,6 +14,9 @@ pkgbase = stamp
 	depends = evolution-data-server
 	depends = glib2
 	depends = glibc
+	depends = gnome-control-center
+	depends = gnome-online-accounts
+	depends = gpgme
 	depends = graphene
 	depends = gstreamer
 	depends = gtk4
@@ -29,7 +32,7 @@ pkgbase = stamp
 	depends = libsoup3
 	depends = nss
 	depends = webkitgtk-6.0
-	source = git+https://gitlab.gnome.org/jbrummer/stamp.git
-	b2sums = SKIP
+	source = git+https://gitlab.gnome.org/jbrummer/stamp.git#commit=9f9777b71d1919b17ed1c8040c9c60ed0d325ba3
+	sha256sums = 2475b84f4b3c3e261c9f03f45d3ca731525f81038bf61aab44151602d354854c
 
 pkgname = stamp
