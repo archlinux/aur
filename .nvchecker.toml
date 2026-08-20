@@ -1,0 +1,5 @@
+[xfetch-cli-bin]
+source = "github"
+github = "xfetch-cli/xfetch"
+use_latest_release = true
+prefix = "v"
