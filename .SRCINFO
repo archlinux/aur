@@ -1,6 +1,6 @@
 pkgbase = brutus-bin
 	pkgdesc = Fast, zero-dependency credential testing tool for 20+ protocols
-	pkgver = 1.14.1
+	pkgver = 1.14.2
 	pkgrel = 1
 	url = https://github.com/praetorian-inc/brutus
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = brutus-bin
 	provides = brutus
 	conflicts = brutus
 	options = !strip
-	source_x86_64 = brutus-x86_64-1.14.1.tgz::https://github.com/praetorian-inc/brutus/releases/download/v1.14.1/brutus-linux-amd64.tar.gz
-	sha256sums_x86_64 = 25bc5ae336853c63110fd1dee4ecb077e50023a3b772bc6f7e2fffa405bd3afc
-	source_aarch64 = brutus-aarch64-1.14.1.tgz::https://github.com/praetorian-inc/brutus/releases/download/v1.14.1/brutus-linux-arm64.tar.gz
-	sha256sums_aarch64 = 36d0d2cafd82cfd8ecbd26b95d7a52d3a1ef4a32e4658febcd938815e5c0d3d3
+	source_x86_64 = brutus-x86_64-1.14.2.tgz::https://github.com/praetorian-inc/brutus/releases/download/v1.14.2/brutus-linux-amd64.tar.gz
+	sha256sums_x86_64 = b02a13d116b992a27762968c0262288d37ad93f40f9977e48bad3b71f5599dd7
+	source_aarch64 = brutus-aarch64-1.14.2.tgz::https://github.com/praetorian-inc/brutus/releases/download/v1.14.2/brutus-linux-arm64.tar.gz
+	sha256sums_aarch64 = fe9a65abb8b735347674b7a6df05a148eb5d67624fe637cc5deeef099064d253
 
 pkgname = brutus-bin
