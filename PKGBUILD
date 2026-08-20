@@ -21,7 +21,7 @@ sha256sums=('96a9efad258fa6fa89f661bbf830c356dd3baf6cd06c6543ce4e8253c143460e')
 
 prepare() {
   cd "pi-$pkgver"
-  # 将网络密集型操作移至 prepare()
+  # Network access happens here per Arch packaging guidelines
   npm ci --ignore-scripts
 }
 
@@ -31,35 +31,35 @@ build() {
     x86_64)  platform=linux-x64 ;;
     aarch64) platform=linux-arm64 ;;
   esac
-  # 继续使用官方脚本以确保多架构构建的正确性
+  # Official recipe handles both x86_64 and aarch64
   ./scripts/build-binaries.sh --platform "$platform" --skip-deps --offline-model-data --out "$srcdir/build"
 }
 
 package() {
-  # 由于 makepkg 会重新 re-source，需要重新计算 platform
+  # makepkg re-sources the PKGBUILD for the package() step, so recompute the platform
   case "$CARCH" in
     x86_64)  platform=linux-x64 ;;
     aarch64) platform=linux-arm64 ;;
   esac
   cd "$srcdir/build/$platform"
 
-  # 遵循 Arch 标准，使用 /usr/lib 而非 /opt
+  # Private app files belong in /usr/lib per Arch packaging standards
   local _instdir="$pkgdir/usr/lib/$pkgname"
 
-  # 安装整个应用包
+  # Ship the bundle as-is: the binary resolves sibling assets relative to its real path
   install -dm755 "$_instdir"
   cp -a --no-preserve=ownership . "$_instdir/"
 
-  # 安装文档到 /usr/share/doc/
-  # 注意：这是 monorepo，CHANGELOG.md 不在根目录，而在主包 packages/coding-agent/ 下
+  # Install docs
+  # Monorepo: CHANGELOG.md lives under packages/coding-agent/, not the repo root
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
   install -m644 "$srcdir/pi-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -m644 "$srcdir/pi-$pkgver/packages/coding-agent/CHANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 
-  # 安装许可证
+  # Install license
   install -Dm644 "$srcdir/pi-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # 安装二进制符号链接到 /usr/bin/pi
+  # Expose the CLI via /usr/bin/pi
   install -dm755 "$pkgdir/usr/bin"
   ln -s "../lib/$pkgname/pi" "$pkgdir/usr/bin/pi"
 }
