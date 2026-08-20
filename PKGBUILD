@@ -2,7 +2,7 @@
 
 pkgname=luadot-nightly
 _pkgname=luadot
-pkgver=0.1.0.nightly.4
+pkgver=0.1.0.nightly.7
 pkgrel=1
 pkgdesc='A dotfiles manager configured in Lua (nightly)'
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,11 @@ makedepends=('cargo' 'cmake')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!lto')
-_tag='v0.1.0-nightly.4'
-_srcdir="$_pkgname-${_tag#v}"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('7b37e48525836f5253b5f98fd3b3d7f590047dcc079317d12e567c8b65e896db')
+_registry='https://gitlab.digitalventura.com.br/api/v4/projects/luadot%2Fluadot/packages/generic/luadot'
+_version=0.1.0-nightly.7
+_srcdir="$_pkgname-$pkgver"
+source=("$pkgname-$pkgver.tar.gz::$_registry/$_version/$_pkgname-$pkgver-src.tar.gz")
+sha256sums=('4090535964a6766ffbf1cddff1063b11768225d813a6cc95d0c18e2051edc580')
 
 prepare() {
 	cd "$_srcdir"
@@ -35,6 +36,7 @@ package() {
 	cd "$_srcdir"
 	install -Dm0755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 	install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm0644 vendor/lpeg/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.lpeg"
 
 	install -d "$pkgdir/usr/share/bash-completion/completions"
 	install -d "$pkgdir/usr/share/zsh/site-functions"
