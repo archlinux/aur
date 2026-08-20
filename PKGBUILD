@@ -129,7 +129,6 @@ package_radicle-httpd-git() {
 		'glibc'
 		'libgcc'
 		'libgit2' 'libgit2.so'
-		'zlib'
 		'radicle-node'
 	)
 	provides=('radicle-httpd')
