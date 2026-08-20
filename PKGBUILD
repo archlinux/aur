@@ -1,11 +1,11 @@
 pkgname=grabclip-git
-pkgver=r5.4fe68b2
+pkgver=r6.8f277ed
 pkgrel=1
 pkgdesc="Native GTK media downloader for Linux"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/garethmcc/grabclip"
 license=('MIT')
-depends=('gtk4' 'libadwaita' 'yt-dlp' 'ffmpeg' 'deno')
+depends=('gtk4' 'libadwaita' 'yt-dlp>=2026.08.19' 'ffmpeg' 'deno')
 makedepends=('cargo' 'git')
 provides=('grabclip')
 conflicts=('grabclip')
