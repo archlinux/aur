@@ -1,16 +1,16 @@
 pkgbase = wtmpdb
 	pkgdesc = Login/logout event log (SQLite-based replacement of /var/log/wtmp)
-	pkgver = 0.75.0
+	pkgver = 0.76.0
 	pkgrel = 1
 	url = https://github.com/thkukuk/wtmpdb
 	arch = x86_64
 	makedepends = meson
 	depends = audit
-	depends = gcc-libs
 	depends = pam
 	depends = sqlite
+	depends = libgcc
 	depends = libsystemd
-	source = git+https://github.com/thkukuk/wtmpdb#commit=5214d883817d47343cbb1bcf4fe02805a0fc4085
-	sha256sums = e5bd9819cb47af51257916150def73fc8bc4d331299aa83670f7a42a473fd40c
+	source = git+https://github.com/thkukuk/wtmpdb#tag=v0.76.0
+	sha256sums = f3865d566fc8c4c58a143cbe907138ddec6770c7d429f60738f98aa0e7f7f842
 
 pkgname = wtmpdb
