@@ -5,7 +5,7 @@
 
 _pkgname="hyprpicker"
 pkgname="$_pkgname-git"
-pkgver=0.4.7.r2.gd6115ca
+pkgver=0.4.7.r8.gd7d3b5d
 pkgrel=1
 pkgdesc="A wlroots-compatible Wayland color picker that does not suck"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,10 @@ license=('BSD-3-Clause')
 
 depends=(
   cairo
-  gcc-libs
   glibc
+  hyprutils-git
+  libgcc
+  libstdc++
   libxkbcommon
   wayland
 )
