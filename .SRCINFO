@@ -1,7 +1,7 @@
 pkgbase = hpr
 	pkgdesc = Offline zero-account activity tracker
-	pkgver = 0.9.5
-	pkgrel = 2
+	pkgver = 0.9.7
+	pkgrel = 1
 	url = https://github.com/plexescor/HPR
 	install = hpr.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = hpr
 	depends = glibc
 	depends = dbus
 	depends = curl
-	source = HPRv0.9.5-Linux.tar.xz::https://github.com/plexescor/HPR/releases/download/v0.9.5/HPRv0.9.5-Linux.tar.xz
+	source = HPRv0.9.7-Linux.tar.xz::https://github.com/plexescor/HPR/releases/download/v0.9.7/HPRv0.9.7-Linux.tar.xz
 	sha256sums = SKIP
 
 pkgname = hpr
