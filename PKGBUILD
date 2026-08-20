@@ -26,10 +26,7 @@ conflicts=("${_appname}")
 makedepends=('sed')
 depends=('glibc' 'libgcc' 'libcap-ng' 'libkrunfw')
 
-options=(!strip)
-
-_old_libkrunfw_version="5.2.1"
-_new_libkrunfw_version="5.5.0"
+options=('!strip')
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
@@ -40,12 +37,6 @@ sha256sums=('874ba994774c7712d6a580c2c7185193702227e0b5f134ef1bd50b1da1fb9d49'
 sha256sums_x86_64=('91744be90b8c816b2fdbf3d80aa78432b9038627922d36da2cf8ebe8e52c1547')
 sha256sums_aarch64=('cf0028762e425aa1781da8c151eb07a0c370667b2e026e326e0dda88cc75a8b7')
 
-
-prepare() {
-	cd "${srcdir}/" || exit
-
-	sed -i "s/${_appname}${_old_libkrunfw_version}/${_appname}${_new_libkrunfw_version}/g" "${_appname}-${CARCH}-${pkgver}"
-}
 
 package() {
 	cd "${srcdir}/" || exit
