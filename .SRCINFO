@@ -1,0 +1,13 @@
+pkgbase = iris-screenshot-bin
+	pkgdesc = Screenshots of live websites. Minimal interface, powerful engine.
+	pkgver = 0.4.1
+	pkgrel = 2
+	url = https://github.com/brijr/iris
+	arch = x86_64
+	license = MIT
+	optdepends = chromium: headless browser used to capture screenshots
+	conflicts = iris-bin
+	source = iris-0.4.1.tar.gz::https://github.com/brijr/iris/releases/download/v0.4.1/iris-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = aa6073ba255c0bcf09364a5503cbd4794791b832e5934a52b169a455d66101c7
+
+pkgname = iris-screenshot-bin
