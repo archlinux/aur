@@ -1,6 +1,6 @@
 pkgbase = tsukimi
 	pkgdesc = A simple third-party GTK4 Emby/Jellyfin client
-	pkgver = 26.7.3
+	pkgver = 26.8.4
 	pkgrel = 1
 	url = https://github.com/tsukinaha/tsukimi
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = tsukimi
 	depends = fontconfig
 	depends = lcms2
 	options = !lto
-	source = git+https://github.com/tsukinaha/tsukimi.git#tag=v26.7.3
-	sha256sums = 98fa575bc509c6bfab2ad2f788a35b632934838e7e8ca205d5c13244bf576e70
+	source = git+https://github.com/tsukinaha/tsukimi.git#tag=v26.8.4
+	sha256sums = c23325e4f2a4dc2b7d42fc6bdca2ebfcf482efc927f7384f361edf6cb259ac01
 
 pkgname = tsukimi
