@@ -3,7 +3,7 @@
 
 pkgname=ultracopier
 _pkgname=Ultracopier
-pkgver=3.1.0.2
+pkgver=3.1.0.3
 pkgrel=1
 pkgdesc="Ultracopier acts as a replacement for files copy dialogs. Main features include: play/pause, speed limitation, on-error resume, error/collision management"
 url='https://ultracopier.herman-brule.com'
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'libgcc' 'libstdc++' 'qt6-base' 'hicolor-icon-theme')
 makedepends=('qt6-tools')
 source=("$pkgname-$pkgver.tgz::https://github.com/alphaonex86/Ultracopier/archive/$pkgver.tar.gz")
-b2sums=('699ec702973a50919732febbf6294251124ca7ed157f96152fb4e0d539d5e0c3fe20621d740377b0f36e0fe952478ae363d756d08405b448e2816f3d47bd9c9c')
+b2sums=('18e06d604c2bba8ac8df7401a607260b0cb3ddec0ee6bbdaf45e495bd9e826f4afc5987417d76be886271f9c3a9f07d1b07d2b17eff638caa6c345e4d1cc9c0e')
 
 prepare() {
 	find "$_pkgname-$pkgver" -name "*.ts" -exec lrelease {} \;
@@ -35,15 +35,16 @@ package() {
 	install -Dm755 "$pkgname" -t "$pkgdir/usr/bin/"
 	sed -i -e 's/Icon=Ultracopier/Icon=ultracopier/' *.desktop
 	install -Dm644 *.desktop -t "$pkgdir/usr/share/kio/servicemenus/"
-	# satisfy desktop-file-validate
-	sed -i -e '/Path=/d' -e 's/.\<png\>//g' -e '/TerminalOptions=/d' resources/ultracopier.desktop 
-	install -Dm644 resources/ultracopier.desktop -t "$pkgdir/usr/share/applications/"
-	install -Dm644 resources/ultracopier-16x16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/ultracopier.png"
-	install -Dm644 resources/ultracopier-36x36.png "$pkgdir/usr/share/icons/hicolor/36x36/apps/ultracopier.png"
-	install -Dm644 resources/ultracopier-48x48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/ultracopier.png"
-	install -Dm644 resources/ultracopier-72x72.png "$pkgdir/usr/share/icons/hicolor/72x72/apps/ultracopier.png"
-	install -Dm644 resources/ultracopier-128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/ultracopier.png"
 	install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	cd resources
+	# satisfy desktop-file-validate
+	sed -i -e '/Path=/d' -e 's/.\<png\>//g' -e '/TerminalOptions=/d' ultracopier.desktop 
+	install -Dm644 ultracopier.desktop -t "$pkgdir/usr/share/applications/"
+	install -Dm644 ultracopier-16x16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/ultracopier.png"
+	install -Dm644 ultracopier-36x36.png "$pkgdir/usr/share/icons/hicolor/36x36/apps/ultracopier.png"
+	install -Dm644 ultracopier-48x48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/ultracopier.png"
+	install -Dm644 ultracopier-72x72.png "$pkgdir/usr/share/icons/hicolor/72x72/apps/ultracopier.png"
+	install -Dm644 ultracopier-128x128.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/ultracopier.png"
 }
 
