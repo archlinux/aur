@@ -1,7 +1,7 @@
 # Maintainer: Nichokas <https://github.com/Nichokas>
 # Co-maintained via https://github.com/Nichokas/grokbot-linux-port
 pkgname=grokbot-linux-port
-pkgver=0.20.0
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="Grok Bot desktop — wine-less Linux port (fuses win32 NSIS payload with Electron 42.1.0)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('libnotify: desktop notifications')
 provides=('grok-bot' 'grokbot')
 conflicts=('grokbot-linux-port-bin' 'grok-bot')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nichokas/grokbot-linux-port/archive/v${pkgver}.tar.gz")
-sha256sums=('37fb7775c22e693b02f4b8528de107013272df538335de2183128ac8352e8100')
+sha256sums=('71aed194ba885cd282c263bfe03724ae6054e437fc1572c77717eb086bf415da')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
