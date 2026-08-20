@@ -64,6 +64,8 @@ build() {
 	export LIBGIT2_NO_VENDOR=1
 	export RADICLE_VERSION="$pkgver"
 	cargo build \
+		-p radicle-httpd \
+		-p radicle-search \
 		--frozen \
 		--release \
 		--bins \
@@ -84,6 +86,8 @@ check() {
 	# (and might have been set in makepkg.conf).
 	unset "${!GIT_@}"
 	cargo test \
+		-p radicle-httpd \
+		-p radicle-search \
 		--frozen \
 		# EOL
 	)
@@ -134,6 +138,10 @@ package_radicle-httpd-git() {
 
 	cd radicle-explorer
 
+	#
+	# TODO: proper radicle-search integration
+	#
+
 	install -Dm755 \
 		target/release/radicle-httpd \
 		target/release/radicle-search \
@@ -154,6 +162,7 @@ package_radicle-httpd-git() {
 		"$pkgdir/usr/share/doc/$pkgname/nginx/radicle-explorer.conf"
 
 	install -Dm644 \
-		crates/*/LICENSE-* \
+		crates/radicle-httpd/LICENSE-APACHE \
+		crates/radicle-httpd/LICENSE-MIT \
 		-t "$pkgdir/usr/share/licenses/$pkgname"
 }
