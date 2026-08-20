@@ -1,6 +1,6 @@
 pkgbase = fastcp
 	pkgdesc = fastcp, a fast cp wrapper using --reflink=always, builds from source
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastcp
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fastcp
 	depends = gcc-libs
 	provides = fastcp
 	conflicts = fastcp-bin
-	source = fastcp-3.tar.gz::https://github.com/CallMeAlphabet/fastcp/archive/refs/tags/latest.tar.gz
+	source = fastcp-4.tar.gz::https://github.com/CallMeAlphabet/fastcp/archive/refs/tags/latest.tar.gz
 	sha256sums = SKIP
 
 pkgname = fastcp
