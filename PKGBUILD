@@ -1,7 +1,7 @@
 # Maintainer: Nichokas <https://github.com/Nichokas>
 # Binary variant — downloads the prebuilt Linux tarball from GitHub Releases.
 pkgname=grokbot-linux-port-bin
-pkgver=0.20.0
+pkgver=0.23.0
 pkgrel=2
 pkgdesc="Grok Bot desktop — wine-less Linux port (prebuilt tarball from GitHub Releases)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=('libnotify: desktop notifications')
 provides=('grokbot-linux-port' 'grok-bot' 'grokbot')
 conflicts=('grokbot-linux-port' 'grok-bot')
 source=("Grok_Bot_${pkgver}_linux_x64.tar.gz::https://github.com/Nichokas/grokbot-linux-port/releases/download/v${pkgver}/Grok_Bot_${pkgver}_linux_x64.tar.gz")
-sha256sums=('f3ba90d13894fce3522ff0521025d08938bcd649a46241badfe2b58ea7aa85ed')
+sha256sums=('0cd3c9ac2f24e53cf021cfef4613db6902857262a918471033975d1ba5d7003c')
 
 package() {
   local staged
