@@ -1,10 +1,10 @@
 pkgbase = table2asn
 	pkgdesc = NCBI tool that converts 5-column feature tables into ASN.1 for GenBank submission (successor to tbl2asn)
 	pkgver = 1.29.324
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/
 	arch = x86_64
-	license = Public Domain
+	license = LicenseRef-Public-Domain
 	depends = sqlite
 	noextract = table2asn-1.29.324.gz
 	options = !strip

@@ -5,11 +5,11 @@
 
 pkgname=table2asn
 pkgver=1.29.324
-pkgrel=1
+pkgrel=2
 pkgdesc="NCBI tool that converts 5-column feature tables into ASN.1 for GenBank submission (successor to tbl2asn)"
 arch=('x86_64')
 url="https://www.ncbi.nlm.nih.gov/genbank/tbl2asn2/"
-license=('Public Domain')
+license=('LicenseRef-Public-Domain')
 depends=('sqlite')
 options=('!strip' '!debug')
 # NCBI ships a single gzipped ELF binary (inner name 'linux64.table2asn');
