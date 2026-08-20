@@ -1,7 +1,7 @@
 # Maintainer: Jimmy <jimmy@somewm.org>
 pkgname=somewm
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 pkgdesc="AwesomeWM ported to Wayland - 100% Lua API compatible"
 arch=('x86_64')
 url="https://github.com/trip-zip/somewm"
@@ -33,7 +33,7 @@ optdepends=(
 provides=('somewm')
 conflicts=('somewm-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/trip-zip/somewm/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e0c57b37887b9726e708b698a64062642426462259162b5c5ff3e2aba7dc8e72')
+sha256sums=('08d9385c8b123a5c313d1c53705ea2c4289acda8da09a01aaf53883c2e10e3f3')
 
 build() {
     cd "$pkgname-$pkgver"
