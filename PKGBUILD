@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastcount
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="fastcount, an incredibly fast, incredibly useless counter, builds from source"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = fastcount
 	pkgdesc = fastcount, an incredibly fast, incredibly useless counter, builds from source
-	pkgver = 4
+	pkgver = 5
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastcount
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fastcount
 	depends = gcc-libs
 	provides = fastcount
 	conflicts = fastcount-bin
-	source = fastcount-4.tar.gz::https://github.com/CallMeAlphabet/fastcount/archive/refs/tags/latest.tar.gz
+	source = fastcount-5.tar.gz::https://github.com/CallMeAlphabet/fastcount/archive/refs/tags/latest.tar.gz
 	sha256sums = SKIP
 
 pkgname = fastcount
