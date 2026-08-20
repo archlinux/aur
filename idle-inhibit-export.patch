@@ -73,10 +73,10 @@ index 00000000..f13a5a19
 +    }
 +}
 diff --git a/src/dbus/mod.rs b/src/dbus/mod.rs
-index 5b9754c3..83ef3c86 100644
+index 9138caee..483b533c 100644
 --- a/src/dbus/mod.rs
 +++ b/src/dbus/mod.rs
-@@ -18,6 +18,7 @@ use a11y_keyboard_monitor::A11yKeyboardMonitorState;
+@@ -20,6 +20,7 @@ pub mod ei;
  pub mod logind;
  mod name_owners;
  mod power;
@@ -85,18 +85,18 @@ index 5b9754c3..83ef3c86 100644
  #[derive(Clone, Debug)]
  pub struct DBusState(Rc<DBusStateInner>);
 diff --git a/src/state.rs b/src/state.rs
-index 21cbb400..b574b9f2 100644
+index 5ccc7a7b..5ba4c11f 100644
 --- a/src/state.rs
 +++ b/src/state.rs
-@@ -273,6 +273,7 @@ pub struct Common {
+@@ -296,6 +296,7 @@ pub struct Common {
      pub idle_notifier_state: IdleNotifierState<State>,
      pub idle_inhibit_manager_state: IdleInhibitManagerState,
      pub idle_inhibiting_surfaces: HashSet<WlSurface>,
 +    pub idle_inhibitors_export: crate::dbus::idle_inhibit_export::IdleInhibitors,
      pub shm_state: ShmState,
      pub cursor_shape_manager_state: CursorShapeManagerState,
-     pub wl_drm_state: WlDrmState<Option<DrmNode>>,
-@@ -695,6 +696,10 @@ impl State {
+     pub wl_drm_state: Option<WlDrmState<Option<DrmNode>>>,
+@@ -718,6 +719,10 @@ impl State {
          let idle_notifier_state = IdleNotifierState::<Self>::new(dh, handle.clone());
          let idle_inhibit_manager_state = IdleInhibitManagerState::new::<State>(dh);
          let idle_inhibiting_surfaces = HashSet::new();
@@ -107,7 +107,7 @@ index 21cbb400..b574b9f2 100644
  
          let ext_data_control_state = ExtDataControlState::new::<Self, _>(
              dh,
-@@ -767,6 +772,7 @@ impl State {
+@@ -794,6 +799,7 @@ impl State {
                  idle_notifier_state,
                  idle_inhibit_manager_state,
                  idle_inhibiting_surfaces,
