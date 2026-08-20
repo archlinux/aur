@@ -3,13 +3,26 @@
 
 pkgname=trojita-qt5-git
 pkgver=0.7.r796.gc10f2990
-pkgrel=2
+pkgrel=9
 pkgdesc="A fast QT IMAP e-mail client (Qt5 version with webkit viewer)"
-arch=(i686 x86_64)
+# i686/pentium4 dropped: after fixing several real dependency gaps
+# (gpgme, gpgmepp, qgpgme-qt5 all needed building ourselves for
+# 32-bit; then icu76/icu72/libxml2-legacy makedepends for archlinux32's
+# stale qt5-webkit ABI -- see memory/gpgme.md, memory/gpgmepp.md,
+# memory/qgpgme-qt5.md), the final blocker is a Qt5 *private* API
+# symbol mismatch (libQt5Quick.so needs a Qt_5_PRIVATE_API symbol not
+# present in the installed Qt5Quick on i686) -- an internal ABI
+# inconsistency between archlinux32's own Qt5 packages, not something
+# fixable with a legacy-compat makedepend. See memory/trojita-qt5-git.md.
+arch=(x86_64)
 url="http://trojita.flaska.net"
 license=('GPL')
-depends=('qt5-webkit' 'qtkeychain' 'qt5-tools' 'qt5-svg' 'mimetic'
-         'qgpgme-qt5' 'desktop-file-utils' 'sonnet5' 'ragel')
+# qtkeychain -> qtkeychain-qt5: Arch renamed the plain qtkeychain
+# package into qt5/qt6-suffixed variants; upstream's own PKGBUILD is
+# stale on the old name. gpgmepp added: a real hard dependency
+# (Gpgmepp cmake package) upstream's depends=() is missing.
+depends=('qt5-webkit' 'qtkeychain-qt5' 'qt5-tools' 'qt5-svg' 'mimetic'
+         'qgpgme-qt5' 'gpgmepp' 'desktop-file-utils' 'sonnet5' 'ragel')
 conflicts=('trojita' 'trojita-git')
 provides=('trojita')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'boost')
