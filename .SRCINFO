@@ -1,6 +1,6 @@
 pkgbase = tpaper-bin
 	pkgdesc = A terminal-based note-taking app built around the idea of buffers and blocks.
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/yagnikpt/tpaper
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = tpaper-bin
 	provides = tpaper
 	conflicts = tpaper
 	options = !strip
-	source_x86_64 = tpaper-x86_64-0.2.5.tgz::https://github.com/yagnikpt/tpaper/releases/download/v0.2.5/tpaper-0.2.5-linux-amd64.tar.gz
-	sha256sums_x86_64 = 8f1b97ead1c521bf6ff995a77d4de996eda61c3c0f9849eca51a849ea3313de6
-	source_aarch64 = tpaper-aarch64-0.2.5.tgz::https://github.com/yagnikpt/tpaper/releases/download/v0.2.5/tpaper-0.2.5-linux-arm64.tar.gz
-	sha256sums_aarch64 = 596d4d3f08132ddaa12be8b0fa72612b382bb5415e95f534033760054e5e6bb7
+	source_x86_64 = tpaper-x86_64-0.2.6.tgz::https://github.com/yagnikpt/tpaper/releases/download/v0.2.6/tpaper-0.2.6-linux-amd64.tar.gz
+	sha256sums_x86_64 = d558aa18a0edc799bdab1ca17b3ee617befdd154975ecbafdbec01102bd015e3
+	source_aarch64 = tpaper-aarch64-0.2.6.tgz::https://github.com/yagnikpt/tpaper/releases/download/v0.2.6/tpaper-0.2.6-linux-arm64.tar.gz
+	sha256sums_aarch64 = a4707d885689907cc705090538cc92367480536572b72f6a4341eea5c458d8fa
 
 pkgname = tpaper-bin
