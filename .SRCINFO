@@ -1,0 +1,24 @@
+pkgbase = pgpony-bin
+	pkgdesc = OpenPGP on the desktop - encrypt, decrypt, sign, verify, manage keys (prebuilt)
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://pgpony.app
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = fontconfig
+	depends = pcsclite
+	optdepends = ccid: USB smart-card reader driver, required for OpenPGP hardware keys
+	provides = pgpony
+	conflicts = pgpony
+	options = !strip
+	source = pgpony.desktop::https://raw.githubusercontent.com/norsehorse-dev/PGPonyDesktop/v2.1.0/packaging/aur/pgpony.desktop
+	source = pgpony.png::https://raw.githubusercontent.com/norsehorse-dev/PGPonyDesktop/v2.1.0/packaging/pgpony.png
+	sha256sums = 91f9803d60a09b6e61527feb80a80d1c0b2f5807130906fe275d4edf1da23e7e
+	sha256sums = 8fa9b7b80a7061f68a96d9516c8b02ea56e7a2333410d64695c9b7eb4acb8c77
+	source_x86_64 = pgpony-bin-2.1.0-x86_64.tar.gz::https://github.com/norsehorse-dev/PGPonyDesktop/releases/download/v2.1.0/PGPony-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f24999d91f652ce8965c06fc5a10aa9fcc81775290fecdeddb6f77ca18254db4
+	source_aarch64 = pgpony-bin-2.1.0-aarch64.tar.gz::https://github.com/norsehorse-dev/PGPonyDesktop/releases/download/v2.1.0/PGPony-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 5d86b83ef8936fd8780f8f62b4b0e054a2677aa56023302065ecb8c8edd8e86b
+
+pkgname = pgpony-bin
