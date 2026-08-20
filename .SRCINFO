@@ -1,0 +1,20 @@
+pkgbase = andromeda-js-bin
+	pkgdesc = JS/TS runtime in Rust powered by Nova, with no transpilation needed
+	pkgver = 0.1.14
+	pkgrel = 1
+	url = https://github.com/tryandromeda/andromeda
+	install = andromeda-js-bin.install
+	arch = x86_64
+	license = MPL-2.0
+	depends = glibc
+	depends = libgcc
+	provides = andromeda=0.1.14
+	conflicts = andromeda
+	noextract = andromeda-0.1.14
+	options = !debug
+	source = andromeda-0.1.14::https://github.com/tryandromeda/andromeda/releases/download/0.1.14/andromeda-linux-amd64
+	source = LICENSE.md-0.1.14::https://raw.githubusercontent.com/tryandromeda/andromeda/0.1.14/LICENSE.md
+	sha256sums = 96d415ab54330b9479b537a1825b9be4f4e3d2966352fe56096d9a4a2666b912
+	sha256sums = 2d52c2001a5d9ebc06802c9e5d8d8bd70ca8c57daf6a6c63e66156326597ac7a
+
+pkgname = andromeda-js-bin
