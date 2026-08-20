@@ -1,6 +1,6 @@
 # Maintainer: rzhli
 pkgname=longbridge-bin
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Longbridge Desktop trading platform"
 arch=("x86_64")
@@ -21,7 +21,7 @@ provides=("longbridge")
 conflicts=("longbridge")
 options=('!strip')
 source=("https://assets.lbctrl.com/github/release/longbridge-desktop/stable/longbridge-v${pkgver}-linux-x86_64.deb")
-sha256sums=('701196c6fe6edce1ad4dbdf0e9f422890cfbb477b9396f6f511c09037154e2a2')
+sha256sums=('863b2e440095a3cda387cee3fbcc79bc0caf08182f855eb1a9609463fcb79f03')
 
 prepare() {
     cd "$srcdir"
@@ -60,7 +60,7 @@ package() {
     # 2. 修复桌面文件
     # ========================================
 
-    local _desktop="$pkgdir/usr/share/applications/longbridge.desktop"
+    local _desktop="$pkgdir/usr/share/applications/longbridge-desktop.desktop"
 
     if [[ -f "$_desktop" ]]; then
         # 修复 TryExec 为绝对路径
@@ -69,8 +69,8 @@ package() {
         # 修复 Exec - 不添加任何参数，让程序自己处理
         sed -i "s|^Exec=.*|Exec=/usr/bin/longbridge %U|g" "$_desktop"
 
-        # 确保图标正确
-        sed -i "s|^Icon=.*|Icon=longbridge|g" "$_desktop"
+        # 确保图标正确 (与 hicolor 中的 longbridge-desktop.png 对应)
+        sed -i "s|^Icon=.*|Icon=longbridge-desktop|g" "$_desktop"
 
         # 修复类别 - 改为网络/互联网类别
         if grep -q "^Categories=" "$_desktop"; then
@@ -97,13 +97,18 @@ package() {
     fi
 
     # ========================================
-    # 3. 确保主程序可执行
+    # 3. 主程序在 /usr/lib/longbridge-desktop/ 下，
+    #    创建 /usr/bin/longbridge 符号链接
     # ========================================
 
-    if [[ -f "$pkgdir/usr/bin/longbridge" ]]; then
-        chmod +x "$pkgdir/usr/bin/longbridge"
+    local _bin="$pkgdir/usr/lib/longbridge-desktop/longbridge"
+
+    if [[ -f "$_bin" ]]; then
+        chmod +x "$_bin"
+        mkdir -p "$pkgdir/usr/bin"
+        ln -s /usr/lib/longbridge-desktop/longbridge "$pkgdir/usr/bin/longbridge"
     else
-        error "未找到主程序 /usr/bin/longbridge"
+        error "未找到主程序 /usr/lib/longbridge-desktop/longbridge"
         return 1
     fi
 
