@@ -1,0 +1,14 @@
+pkgbase = wayra
+	pkgdesc = A lightweight, high-performance standalone web server and directory explorer.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/YetAnotherMechanicusEnjoyer/wayra
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = zig
+	source = wayra-0.1.0.tar.gz::https://github.com/YetAnotherMechanicusEnjoyer/wayra/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = wayra
