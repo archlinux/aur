@@ -1,7 +1,7 @@
 pkgbase = joplin-beta-bin
-	pkgdesc = Note Taking App. Debian Package.
-	pkgver = 3.7.9
-	pkgrel = 1
+	pkgdesc = A note taking and to-do application with synchronization capabilities (beta binary version)
+	pkgver = 3.7.12
+	pkgrel = 2
 	url = https://github.com/laurent22/joplin
 	arch = x86_64
 	license = AGPL3
@@ -13,7 +13,7 @@ pkgbase = joplin-beta-bin
 	conflicts = joplin-electron
 	conflicts = joplin-beta-appimage
 	options = !debug
-	source_x86_64 = joplin-beta-bin-3.7.9.deb::https://github.com/laurent22/joplin/releases/download/v3.7.9/joplin-3.7.9.deb
-	sha256sums_x86_64 = ffb9940cdd0ed0ebf8a58949506f5cd59434ca45ef01eef7cefb65e91f901e65
+	source_x86_64 = joplin-beta-bin-3.7.12.deb::https://github.com/laurent22/joplin/releases/download/v3.7.12/joplin-3.7.12.deb
+	sha256sums_x86_64 = 7bdf51253befa268f7ce4c349c337d5f635a1f6c8ca3512a3961fdfa66b1cbbc
 
 pkgname = joplin-beta-bin

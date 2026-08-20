@@ -2,9 +2,9 @@
 
 _pkgname=joplin
 pkgname=${_pkgname}-beta-bin
-pkgver=3.7.9
-pkgrel=1
-pkgdesc="Note Taking App. Debian Package."
+pkgver=3.7.12
+pkgrel=2
+pkgdesc="A note taking and to-do application with synchronization capabilities (beta binary version)"
 arch=('x86_64')
 url='https://github.com/laurent22/joplin'
 license=('AGPL3')
@@ -25,5 +25,5 @@ package() {
     ln -s "/opt/Joplin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
 
-sha256sums_x86_64=('ffb9940cdd0ed0ebf8a58949506f5cd59434ca45ef01eef7cefb65e91f901e65')
+sha256sums_x86_64=('7bdf51253befa268f7ce4c349c337d5f635a1f6c8ca3512a3961fdfa66b1cbbc')
 
