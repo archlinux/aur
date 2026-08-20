@@ -1,7 +1,7 @@
 # Maintainer: Thorben Günther <admin@xenrox.net>
  
 pkgname='vikunja'
-pkgver='2.4.0'
+pkgver='2.5.0'
 pkgrel=1
 pkgdesc='The Todo-app to organize your life - API & frontend'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
   'vikunja.sysusers'
   'vikunja.tmpfiles'
 )
-sha256sums=('98b552f554ea8fb657490a013af9dd8ec51b9c731032fe5d06cabe025fa49493'
+sha256sums=('2ff1515e53e9009bb91202023a9bdab7e7106326db0b7f55e93536ce1cb4f998'
             'c12fa547366d7b604584fbb611840861790fe3cfae0be3f0b0a98f87a89076e3'
             '0a666743be3deaa16a436681d18003b11a1660b5fe7868fa25af2de11c7624f7'
             'e2facf1add86ae6d5ee0ce8c3c006a16e5d50b7d57fbd6519c17e31b9d7d75a5')
