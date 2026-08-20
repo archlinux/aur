@@ -1,6 +1,6 @@
 # Maintainer: Roland Rodriguez <roland@govcraft.ai>
 pkgname=acton-ai-bin
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="An agentic AI framework built on the actor model — scriptable CLI with persistent sessions"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('acton-ai')
 conflicts=('acton-ai')
 
 source=("${url}/releases/download/v${pkgver}/acton-ai-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('321701aaf95fdc65deb4ce7dcf035440f2ba03c9061729187de1390ccd3a4277')
+sha256sums=('2bf487db42dc63e7bc3706a22b831c9571c78b659e4068992ccb194dd462ff21')
 
 package() {
     install -Dm755 "acton-ai-${pkgver}-x86_64-unknown-linux-gnu/acton-ai" "${pkgdir}/usr/bin/acton-ai"
