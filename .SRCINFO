@@ -1,0 +1,66 @@
+pkgbase = rustpython-bootstrap
+	pkgver = 3.14.0
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/archlinux/python-bootstrap
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = rustpython
+	source = python-bootstrap::git+https://gitlab.archlinux.org/archlinux/python-bootstrap.git#tag=3.14.0?signed
+	source = python-build::git+https://github.com/pypa/build.git
+	source = python-flit::git+https://github.com/takluyver/flit.git
+	source = python-installer::git+https://github.com/pypa/installer.git
+	source = python-wheel::git+https://github.com/pypa/wheel.git
+	source = python-packaging::git+https://github.com/pypa/packaging.git
+	source = python-pyproject-hooks::git+https://github.com/pypa/pyproject-hooks.git
+	source = python-setuptools::git+https://github.com/pypa/setuptools.git
+	validpgpkeys = 991F6E3F0765CF6295888586139B09DA5BF0D338
+	validpgpkeys = E499C79F53C96A54E572FEE1C06086337C50773E
+	sha256sums = 6b3b0f54e23c87be06c87ddfe304c32d595f5ce5e4b0f65dde0624ac35c520bb
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rustpython-build-bootstrap
+	pkgdesc = A simple, correct PEP 517 build frontend (bootstrap)
+	depends = rustpython
+	depends = rustpython-packaging
+	depends = rustpython-pyproject-hooks
+	provides = rustpython-build
+	conflicts = rustpython-build
+
+pkgname = rustpython-flit-core-bootstrap
+	pkgdesc = Simplified packaging of Python modules (core backend) (bootstrap)
+	license = BSD-3-Clause
+	provides = rustpython-flit-core
+	conflicts = rustpython-flit-core
+
+pkgname = rustpython-installer-bootstrap
+	pkgdesc = Low-level library for installing a Python package from a wheel distribution (bootstrap)
+	provides = rustpython-installer
+	conflicts = rustpython-installer
+
+pkgname = rustpython-packaging-bootstrap
+	pkgdesc = Core utilities for Python packages (bootstrap)
+	license = Apache-2.0 OR BSD-2-Clause
+	provides = rustpython-packaging
+	conflicts = rustpython-packaging
+
+pkgname = rustpython-pyproject-hooks-bootstrap
+	pkgdesc = A low-level library for calling build-backends in pyproject.toml-based project (bootstrap)
+	provides = rustpython-pyproject-hooks
+	conflicts = rustpython-pyproject-hooks
+
+pkgname = rustpython-setuptools-bootstrap
+	pkgdesc = Easily download, build, install, upgrade, and uninstall Python packages (bootstrap)
+	provides = rustpython-setuptools
+	conflicts = rustpython-setuptools
+
+pkgname = rustpython-wheel-bootstrap
+	pkgdesc = A built-package format for Python (bootstrap)
+	provides = rustpython-wheel
+	conflicts = rustpython-wheel

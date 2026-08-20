@@ -1,0 +1,3 @@
+[rustpython-bootstrap]
+source = "git"
+git = "https://gitlab.archlinux.org/archlinux/python-bootstrap.git"
