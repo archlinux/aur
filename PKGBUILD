@@ -4,7 +4,7 @@
 # Contributor: crasm <crasm@firebase-tools.aur.yooz4sio.vczf.io>
 
 pkgname=firebase-tools
-pkgver=15.17.0
+pkgver=15.28.1
 pkgrel=1
 pkgdesc='The Firebase Command Line Tools'
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('jq' 'npm' 'node-gyp' 'python')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('57902a1fd7ab238d8707c50d7a09d62becb5e5c502395751cef530d96fe8906f')
+sha256sums=('c4b6dec1e0a9effe4b7777ec4cd0e9dec516ebd744d37355ab8ed6a706530b64')
 
 prepare() {
   # ignore dependencies specific to Bare runtime as they contain prebuilt binaries
@@ -23,7 +23,7 @@ prepare() {
     "bare-events": "/dev/null",
     "bare-fs": "/dev/null",
     "node-gyp": "/usr/lib/node_modules/node-gyp",
-  }' package.json > package.json.tmp
+  } | .allowScripts += {"re2": true}' package.json > package.json.tmp
   mv package.json{.tmp,}
 }
 
