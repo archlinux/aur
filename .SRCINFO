@@ -1,9 +1,11 @@
 pkgbase = qgpgme-qt5
 	pkgdesc = Qt5 bindings for GPGme
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://gnupg.org/software/gpgme/index.html
 	arch = x86_64
+	arch = i686
+	arch = pentium4
 	license = GPL-2.0-or-later
 	makedepends = cmake
 	makedepends = git
@@ -15,5 +17,7 @@ pkgbase = qgpgme-qt5
 	validpgpkeys = 6DAA6E64A76D2840571B4902528897B826403ADA
 	validpgpkeys = AC8E115BF73E2D8D47FA9908E98E9B2D19C6C8BD
 	sha256sums = 2601b9fafa0b974768d24112613d839e1b6828ec5a7f2fb8b02fb601fcef6e39
+	makedepends_i686 = icu76
+	makedepends_pentium4 = icu76
 
 pkgname = qgpgme-qt5

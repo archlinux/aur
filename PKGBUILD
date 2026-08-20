@@ -7,13 +7,19 @@
 pkgname=qgpgme-qt5
 _pkgbase=gpgme
 pkgver=2.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Qt5 bindings for GPGme"
-arch=('x86_64')
+arch=('x86_64' 'i686' 'pentium4')
 url='https://gnupg.org/software/gpgme/index.html'
 license=(GPL-2.0-or-later)
 makedepends=(cmake
              git)
+# i686/pentium4's system Qt5Core.so links against the legacy icu76
+# soname (undefined reference to u_errorName_76 otherwise) while the
+# chroot's default icu package is newer (78.3) -- icu76 is available
+# via archlinux32's own official repo for both, just wasn't declared.
+makedepends_i686=(icu76)
+makedepends_pentium4=(icu76)
 depends=(gcc-libs
          glibc
          gpgmepp
