@@ -1,6 +1,6 @@
 pkgbase = logitech-trueforce-dkms
 	pkgdesc = DKMS kernel driver for Logitech racing wheels (RS50, G PRO, G923): force feedback, TrueForce texture routing, and wheel settings via sysfs
-	pkgver = 0.38.1
+	pkgver = 0.38.2
 	pkgrel = 1
 	url = https://github.com/mescon/logitech-trueforce-linux-driver
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = logitech-trueforce-dkms
 	makedepends = cargo
 	makedepends = fontconfig
 	options = !lto
-	source = logitech-trueforce-dkms-0.38.1.tar.gz::https://github.com/mescon/logitech-trueforce-linux-driver/archive/refs/tags/v0.38.1.tar.gz
-	sha256sums = 16a050eebdbb3b24de8c843395f245c8b7d9e863f8d450c7e1ee1cc7217cfcf6
+	source = logitech-trueforce-dkms-0.38.2.tar.gz::https://github.com/mescon/logitech-trueforce-linux-driver/archive/refs/tags/v0.38.2.tar.gz
+	sha256sums = 1eb1a8386f8bc6a77094678261b35ad2f1bdd35710e7c293b38979ca2b081056
 
 pkgname = logitech-trueforce-dkms
 	pkgdesc = DKMS kernel driver for Logitech racing wheels (RS50, G PRO, G923): force feedback, TrueForce texture routing, and wheel settings via sysfs
