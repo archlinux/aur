@@ -1,10 +1,10 @@
 pkgbase = orffinder
 	pkgdesc = NCBI ORFfinder: finds Open Reading Frames (ORFs) in a query sequence
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ncbi.nlm.nih.gov/orffinder/
 	arch = x86_64
-	license = Public Domain
+	license = LicenseRef-Public-Domain
 	depends = zlib
 	depends = bzip2
 	depends = xz

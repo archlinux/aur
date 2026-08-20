@@ -2,11 +2,11 @@
 
 pkgname=orffinder
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="NCBI ORFfinder: finds Open Reading Frames (ORFs) in a query sequence"
 arch=('x86_64')
 url="https://www.ncbi.nlm.nih.gov/orffinder/"
-license=('Public Domain')
+license=('LicenseRef-Public-Domain')
 depends=('zlib' 'bzip2' 'xz' 'zstd' 'libuv' 'libnghttp2' 'elfutils')
 options=('!strip' '!debug')
 # Single gzipped ELF binary; upstream filename is unversioned.
