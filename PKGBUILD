@@ -1,9 +1,10 @@
-# Maintainer: whiteman808 <whiteman808@paraboletancza.org>
+# Maintainer: Yusuf Aktepe <yusuf@yusufaktepe.com>
+# Contributor: whiteman808 <whiteman808@paraboletancza.org>
 # Contributor: Andrew Sun <adsun701@gmail.com>
 # Contributor: Eric Le Lay <contact@elelay.fr>
 
 pkgname=ansifilter
-pkgver=2.22
+pkgver=2.23
 pkgrel=1
 pkgdesc="remove or convert ANSI codes to another format"
 arch=('i686' 'x86_64' 'pentium4' 'i486' 'aarch64')
@@ -12,7 +13,7 @@ license=('GPL3')
 depends=('glibc' 'gcc-libs')
 options=(!debug)
 source=("https://gitlab.com/saalen/ansifilter/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('ccff41ca740b813bf9103868b5000f4243d32a75304ea929a214c49b943ecc93')
+sha256sums=('ff9efcfe8623593a54cd7bec2499711ec2a49a425ab50c61f2148c6d7450d525')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
