@@ -1,6 +1,6 @@
 pkgbase = llavon-ime-fcitx5-preview-git
 	pkgdesc = Preview branch of the Fcitx5 frontend and local inference service for Llavon IME
-	pkgver = 0.2.2.r18.gff51241
+	pkgver = 0.3.0.r7.g172b280
 	pkgrel = 1
 	url = https://github.com/llavon-ime/ime-fcitx5/tree/preview
 	arch = x86_64
