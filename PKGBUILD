@@ -1,7 +1,7 @@
 # Maintainer: Wuxxin <wuxxin@gmail.com>
 
 pkgname=signal-cli-rest-api-git
-pkgver=0.99.r49.ge681092
+pkgver=0.100.r20.ga08db23
 pkgrel=1
 pkgdesc="A small REST API around signal-cli (GIT version with patches for unix socket, token auth and polling support)"
 arch=('x86_64' 'aarch64')

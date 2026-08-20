@@ -1,6 +1,6 @@
 pkgbase = signal-cli-rest-api-git
 	pkgdesc = A small REST API around signal-cli (GIT version with patches for unix socket, token auth and polling support)
-	pkgver = 0.99.r49.ge681092
+	pkgver = 0.100.r20.ga08db23
 	pkgrel = 1
 	url = https://github.com/bbernhard/signal-cli-rest-api
 	arch = x86_64
