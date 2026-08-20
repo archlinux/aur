@@ -2,14 +2,13 @@
 
 pkgname=hax
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimalist, terminal-native coding agent written in C"
 arch=("x86_64" "aarch64")
 url="https://github.com/OleksandrChekhovskyi/hax"
 license=("MIT")
 depends=("bash" "curl" "glibc" "jansson")
 makedepends=("meson" "ninja" "pkgconf")
-checkdepends=("python")
 optdepends=(
     "fzf: @file picker"
     "git: repository context and faster @file candidate listing"
@@ -31,8 +30,7 @@ build() {
 }
 
 check() {
-    GIT_CEILING_DIRECTORIES="$srcdir" meson test -C build --print-errorlogs
-    # The version is stamped from the build environment; check what this build produced.
+    # Smoke test only. The full suite runs in upstream CI.
     build/hax --version | grep -qx "hax v$pkgver"
 }
 
