@@ -1,7 +1,7 @@
 # Maintainer: Tomáš Karela Procházka <tomas.prochazka5d@gmail.com>
 
 pkgname=profilecli
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='CLI for Grafana Pyroscope, the continuous profiling aggregation system'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 conflicts=('profilecli-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/grafana/pyroscope/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('67779f2b5cf3e1f74a1863e8e2512d58d2cda723ecb8515919ca874d6c13f4c7')
+sha256sums=('4865c37f47da0a7cb4176d7a1cae4b02b60413bc9510962360753f73e7258c7c')
 
 _srcname="pyroscope-$pkgver"
 # Upstream stamps the version into this package; see its Makefile GO_LDFLAGS.
