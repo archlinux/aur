@@ -1,11 +1,11 @@
 # Maintainer: xscriptor xscriptordev x@xscriptor.com
 pkgname=xfetch-git
 _pkgname=xfetch
-pkgver=r17.b842749
+pkgver=r119.539f3de
 pkgrel=1
 pkgdesc="Custom system information tool for X (Rust)"
-arch=('x86_64')
-url="https://github.com/xscriptordev/xfetch"
+arch=('x86_64' 'aarch64')
+url="https://github.com/xfetch-cli/xfetch"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'cargo')
@@ -34,13 +34,9 @@ build() {
 
 package() {
   cd "$_pkgname"
-  
+
   install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
-
-  mkdir -p "$pkgdir/usr/share/$_pkgname"
-  cp -r configs "$pkgdir/usr/share/$_pkgname/"
-  cp -r logos "$pkgdir/usr/share/$_pkgname/"
 }
