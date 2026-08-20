@@ -1,6 +1,6 @@
 # Maintainer: LeTuR <magicletur@protonmail.com>
 pkgname=thurbox
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="TUI for orchestrating multiple coding-agent CLI sessions in persistent tmux panels"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('claude-code: Claude Code agent CLI'
 provides=('thurbox')
 conflicts=('thurbox-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Thurbeen/thurbox/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3af3f5fabf1834f31581f57a7ce47cdb185e0499dbcf73f46bc51c65047e60a7')
+sha256sums=('a521daa665cbce899c09cb3f150d412a6973a66bc1e1754774bd1d1d54377346')
 
 prepare() {
     cd "$pkgname-$pkgver"
