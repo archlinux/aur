@@ -1,15 +1,15 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=ikuai-cli
-pkgver=1.0.16
-pkgrel=2
+pkgver=1.0.17
+pkgrel=1
 pkgdesc="CLI tool for managing iKuai routers — network, VPN, firewall, users, QoS and more from the terminal."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/ikuaidev/${pkgname}"
 license=("MIT")
 makedepends=("go" "unzip")
 source=("${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip")
-sha256sums=('5a7df8795e42134e22d1cf7ee59f65d5679ec94e9850d0dcc495526581986bbc')
+sha256sums=('0a00384e3d8aa20d26944c9a4a12927f65f0f56bfa407a1fb28b6366666f9eb2')
 
 build() {
     export CGO_CPPFLAGS="${CPPFLAGS}"
