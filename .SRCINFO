@@ -1,10 +1,10 @@
 pkgbase = folddisco-bin
 	pkgdesc = Fast indexing and search of discontinuous motifs in protein structures
 	pkgver = 2_9375a2d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/steineggerlab/folddisco
 	arch = x86_64
-	license = GPL3
+	license = GPL-3.0-or-later
 	provides = folddisco=2_9375a2d
 	conflicts = folddisco
 	options = !strip

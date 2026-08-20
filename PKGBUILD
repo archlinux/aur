@@ -4,11 +4,11 @@ pkgname=folddisco-bin
 _pkgname=folddisco
 _tag=2-9375a2d
 pkgver=2_9375a2d
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast indexing and search of discontinuous motifs in protein structures"
 arch=('x86_64')
 url="https://github.com/steineggerlab/folddisco"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=()
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
