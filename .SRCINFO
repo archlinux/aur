@@ -1,0 +1,14 @@
+pkgbase = 9router
+	pkgdesc = FREE AI Router & Token Saver
+	pkgver = 0.5.55
+	pkgrel = 1
+	url = https://github.com/decolua/9router
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = 9router-0.5.55.tgz
+	source = https://registry.npmjs.org/9router/-/9router-0.5.55.tgz
+	sha512sums = b26590f250861ea88dee3d6cfc542e889cd779e6f034f9b60795f810ab403a7dd0ae865ef49c0ea7d1f4ae62657363ff975883c1696157a8523256666f52a13d
+
+pkgname = 9router
