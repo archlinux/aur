@@ -1,0 +1,24 @@
+pkgbase = terminal-browser-bin
+	pkgdesc = A browser that runs directly inside your existing terminal
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://terminal-browser.sh
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = nss
+	depends = gtk3
+	depends = alsa-lib
+	depends = mesa
+	provides = terminal-browser=0.5.8
+	conflicts = terminal-browser
+	noextract = terminal-browser-linux-x64.tar.gz
+	noextract = terminal-browser-linux-arm64.tar.gz
+	source = LICENSE-terminal-browser-bin::https://raw.githubusercontent.com/zenbu-labs/terminal-browser/v0.5.8/LICENSE
+	sha256sums = SKIP
+	source_x86_64 = https://terminal-browser.sh/install/dl/stable/v0.5.8/terminal-browser-linux-x64.tar.gz
+	sha256sums_x86_64 = c330be3341ef6f6cb106e4fb32c1d60754a08e1a7641143a7a6a4d9e9448f617
+	source_aarch64 = https://terminal-browser.sh/install/dl/stable/v0.5.8/terminal-browser-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9ffe7fc1f2a309ed0be48c2f35fba534f38163d64c22c0c7dc539949d4f19e71
+
+pkgname = terminal-browser-bin
