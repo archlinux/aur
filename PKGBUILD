@@ -6,7 +6,7 @@
 
 pkgname=python-jsonargparse
 _pkgname=${pkgname#python-}
-pkgver=4.50.0
+pkgver=4.51.0
 pkgrel=1
 pkgdesc='Parsing library for CLI options, configs, and environment variables'
 arch=('any')
@@ -38,7 +38,7 @@ checkdepends=(
   'python-responses'
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('f4e9a234928dbec11bf5c328c1751fb7fd9af6ea13de331f7bf0964df505c04d8c3a8ade86d0ac8628da84d9cbe591659326525030d169ceed94f87f91c85d15')
+b2sums=('13ae94227a528f06086d8a40bf9cdc4b933d5bc0ce01777611370d1f90ff1d102414fe23dd629cb71b50b370242fc6210eadd066353af734c9fea2aefda7cb7c')
 
 build() {
   python -m build --wheel --no-isolation "${_pkgname}-${pkgver}"
