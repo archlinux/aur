@@ -1,8 +1,8 @@
 # Maintainer: tmms
 
 pkgname='casadi-git'
-pkgver=3.6.6.r0.g279e0b8
-pkgrel=2
+pkgver=3.7.2.r647.g973b086
+pkgrel=3
 pkgdesc="Symbolic framework for automatic differentiation and numeric optimization"
 arch=('i686' 'x86_64')
 url="https://github.com/casadi/casadi"
