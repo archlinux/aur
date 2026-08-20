@@ -1,7 +1,7 @@
 # Maintainer: Frezzydy <frezzydygaming@gmail.com>
 
 pkgname=wayra
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A lightweight, high-performance standalone web server and directory explorer."
 arch=('i686' 'x86_64' 'aarch64')
