@@ -1,7 +1,7 @@
 pkgbase = zeldaladxhd-bin
 	pkgdesc = Open source and unofficial Links Awakening DX HD PC port
-	pkgver = v2.0.5
-	pkgrel = 1
+	pkgver = v2.0.4
+	pkgrel = 2
 	url = https://github.com/BigheadSMZ/Zelda-LA-DX-HD-Updated
 	arch = x86_64
 	arch = aarch64
@@ -19,9 +19,9 @@ pkgbase = zeldaladxhd-bin
 	options = !strip
 	source = https://gitlab.com/linuxbombay/zeldaladxhd/zeldaladxhd/-/archive/1.0.2/zeldaladxhd-1.0.2.tar.bz2
 	sha256sums = 8675d46a4b72ea4ebe2daee07eaa76fc4b2e2856a8b98c43202dfb928894cb58
-	source_x86_64 = https://gitlab.com/linuxbombay/zeldaladxhd/binaries/v2.0.5/-/raw/main/LADXHD.Patcher.v2.0.5-Linux-x64.7z
-	sha256sums_x86_64 = 7a095a7654baff64347b41e64a2da53057df7a5b4c8e14638575ab183723822d
-	source_aarch64 = https://gitlab.com/linuxbombay/zeldaladxhd/binaries/v2.0.5/-/raw/main/LADXHD.Patcher.v2.0.5-Linux-arm64.7z
-	sha256sums_aarch64 = 5c29efdf21586e9143277ddec6bd464e595726a040539723a39989c0bb9dde02
+	source_x86_64 = https://gitlab.com/linuxbombay/zeldaladxhd/binaries/v2.0.4/-/raw/main/LADXHD.Patcher.v2.0.4-Linux-x64.7z
+	sha256sums_x86_64 = 5aa81b61cb822faa91d09cb6348283cefb0dc376902b9fdd7fce93c6bb6c4d4d
+	source_aarch64 = https://gitlab.com/linuxbombay/zeldaladxhd/binaries/v2.0.4/-/raw/main/LADXHD.Patcher.v2.0.4-Linux-arm64.7z
+	sha256sums_aarch64 = 5985ebda47fde88ed72bd95c7b6c605785c8a15a6f825d40de3d4b2b6fd665c6
 
 pkgname = zeldaladxhd-bin
