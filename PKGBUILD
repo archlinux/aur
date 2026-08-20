@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=praznik
-_pkgver=12.0.0
+_pkgver=13.0.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,11 +13,10 @@ depends=(
   r
 )
 optdepends=(
-  r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('dc2dd05f41ec8dd1ffa1ccc297ae0000')
-b2sums=('f45ed2e8b71dfaae47ee9affe079e3c808874069e01319c0dd7c2d220f3caa05ef493023a2500e0100bffeb5fd4b651cb81b9b66db00e553c33bfaa55180ed93')
+md5sums=('689d7fcc651a77c18e0e4c8d3fac5d23')
+b2sums=('b6eebcf79e08e9bd3e1ab3c3233cb5cd50790343020e05411d712afb720e95aa6772c36132edee74c889d80683a48304196c0683c128c1f3df4439575ef0ea11')
 
 build() {
   mkdir build
