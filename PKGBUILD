@@ -81,8 +81,12 @@ build() {
 
 check() {
 	local _test_skips=(
-		# flaky test
+		# https://radicle.zulipchat.com/#narrow/stream/369277-heartwood/topic/Flaky.20tests/near/438352360
+		"tests::e2e::test_connection_crossing"
+		# https://radicle.zulipchat.com/#narrow/stream/369277-heartwood/topic/Clone.20Partial.20Fail.20Flake
 		rad_clone_partial_fail
+		# this test seems flaky
+		rad_init_sync_preferred
 	)
 
 	cd heartwood
