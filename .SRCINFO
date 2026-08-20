@@ -1,6 +1,6 @@
 pkgbase = stamp-git
-	pkgdesc = PIM Suite
-	pkgver = 0r262+3200d68
+	pkgdesc = A modern personal information management application
+	pkgver = 0r300+9f9777b
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jbrummer/stamp
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = stamp-git
 	makedepends = meson
 	depends = dconf
 	depends = evolution-data-server
+	depends = gdk-pixbuf2
 	depends = glib2
 	depends = glibc
 	depends = gnome-control-center

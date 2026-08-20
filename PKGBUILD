@@ -1,15 +1,16 @@
 # Maintainer: Fabian Bornschein <fabiscafe@archlinux.org>
 
 pkgname=stamp-git
-pkgver=0r262+3200d68
+pkgver=0r300+9f9777b
 pkgrel=1
-pkgdesc="PIM Suite"
+pkgdesc="A modern personal information management application"
 url="https://gitlab.gnome.org/jbrummer/stamp"
 arch=(x86_64)
 license=(GPL-3.0-or-later)
 depends=(
   dconf
   evolution-data-server
+  gdk-pixbuf2
   glib2
   glibc
   gnome-control-center
