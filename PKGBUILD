@@ -77,9 +77,6 @@ build() {
 
 	mkdir -p target/release/man
 	scripts/build-man-pages.sh target/release/man *.adoc
-
-	# XXX: tests rebuild and overwrite some of the binaries
-	cp -a target/release -T target/dist
 }
 
 check() {
@@ -114,11 +111,11 @@ package_radicle-node-git() {
 
 	cd heartwood
 	install -Dm755 \
-		target/dist/radicle-node \
+		target/release/radicle-node \
 		-t "$pkgdir/usr/bin"
 
 	install -Dm644 \
-		target/dist/man/radicle-node.1 \
+		target/release/man/radicle-node.1 \
 		-t "$pkgdir/usr/share/man/man1"
 
 	for _t in service socket; do
@@ -147,14 +144,14 @@ package_radicle-cli-git() {
 	cd heartwood
 
 	install -Dm755 \
-		target/dist/rad \
-		target/dist/git-remote-rad \
+		target/release/rad \
+		target/release/git-remote-rad \
 		-t "$pkgdir/usr/bin"
 
 	install -Dm644 \
-		target/dist/man/rad.1 \
-		target/dist/man/rad-*.1 \
-		target/dist/man/git-remote-rad.1 \
+		target/release/man/rad.1 \
+		target/release/man/rad-*.1 \
+		target/release/man/git-remote-rad.1 \
 		-t "$pkgdir/usr/share/man/man1"
 
 	install -Dm644 \
