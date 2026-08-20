@@ -1,15 +1,17 @@
 pkgbase = open-wallpaper-engine
 	pkgdesc = Open source scene renderer, mostly for linux.
-	pkgver = 0.2.3
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/waywallen/open-wallpaper-engine
 	arch = x86_64
 	license = GPL-2.0-only
-	makedepends = cmake<4.4
+	makedepends = lito
+	makedepends = cmake>4.3.1
 	makedepends = ninja
 	makedepends = git
-	makedepends = clang>=21
+	makedepends = clang>=22
 	makedepends = lld
+	makedepends = llvm
 	makedepends = eigen
 	makedepends = vulkan-headers
 	makedepends = waywallen-display
@@ -29,27 +31,18 @@ pkgbase = open-wallpaper-engine
 	depends = quickjs-ng
 	depends = glfw
 	depends = wayland
-	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.2.3
-	source = git+https://github.com/KhronosGroup/SPIRV-Reflect.git#tag=vulkan-sdk-1.4.321.0
-	source = git+https://github.com/litocpp/rstd.git#commit=03b022f37aa414c22a47021d58e054d55927c6c1
-	source = git+https://github.com/litocpp/vvk.git#commit=867852dea22504db27559df60b74fee4c66406c7
-	source = git+https://github.com/hypengw/wavsen.git#commit=a76c68e55e24c7e87fc5dbae28ee5d3b24139724
-	source = 0001-cmake-Use-system-cef.patch
-	source = 0002-cmake-Use-system-Eigen.patch
-	source = 0003-cmake-Use-system-quickjs-ng.patch
-	source = 0004-cmake-Use-system-glslang.patch
-	source = 0005-cmake-Use-system-VulkanMemoryAllocator.patch
-	source = 0006-cmake-Install-weweb-to-bin.patch
-	sha256sums = fa8d8a53108015e7f796d372b673c5828639d9362297b9dab763f739e9a7e500
-	sha256sums = 287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca
-	sha256sums = 89e9f424fe3719b8bda1380f0cc446fc96d9662668d012752de73cbc0d06a2ef
-	sha256sums = 3b0c5ca0bbeb7c84df483bf098ba9105bb79316417a409bb6ef4b2b2513f6e06
-	sha256sums = 3a7bcf987730ca3eab923ce1758538cc5ce26ec5f9787aa166fdd875936ba61e
-	sha256sums = 8abc6ecd2993ce6eddf418a46fd088a0515b3ead9e2c99aeedfa223cf1b0eac9
-	sha256sums = e5fd3a65a6ec7e0a3ef03a82ff298ec0b1ace56b89f11ed2e94e4bcac7d9d074
-	sha256sums = 444c3bd38a62d167f19e44cf71244230ba7aa538787117a20ba3e13e974b1dc1
-	sha256sums = e1bd31c20595c052578c5942acaebbcf750a4c3475d208ec4a0bd10db5fcb791
-	sha256sums = c4950f393f0130e00307bd7380b6ef6089ec504b6bc01af1c894ce660842ff88
-	sha256sums = f81b55b4bb30a2143cd3252aa14f0abb1ec4932261aef080121f4581987e5c7d
+	options = !lto
+	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.2.6
+	source = git+https://github.com/hypengw/SPIRV-Reflect.git#commit=355785128c1b6ba808e3a7d0e344814fe6cff502
+	source = git+https://github.com/litocpp/rstd.git#commit=a852e89dc7b2c7fae6cc4c89d1f76afbac55be82
+	source = git+https://github.com/litocpp/vvk.git#commit=f53d60cc70938d0485802750deeb15d18ba033ea
+	source = git+https://github.com/hypengw/wavsen.git#commit=c07711f73253b0e3c53329c9930f2024193f8641
+	source = 0001-lito-Use-system-cef.patch
+	sha256sums = ecc9cf8321f3d00a040deb3f2ff5d577aa940a3f7ee5ff056f3dba82f45708a9
+	sha256sums = c033a38ac4e58e4a87ad43a84eb5e0fbe312c82b161a1fe5e38890751636f63f
+	sha256sums = d6f977ace1bea2ee52bcebb6dd715108eb925d30dc8fb9367c3d23003a683ea1
+	sha256sums = 0abff36a8194edd20feb96e87abc772b13a2ac725c99df091ea8e08b57562f0f
+	sha256sums = 91ecfcff82eaced83eda7045788600513893c202b8eb125306a394d1bde40586
+	sha256sums = e9e3915ecdbb4d858cd1f610796c8d2e5b1f6a8e51e936fff7633d782d8337c7
 
 pkgname = open-wallpaper-engine

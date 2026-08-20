@@ -1,0 +1,71 @@
+From 76d16292deed7cd2805e652ba090f645bd27fb8a Mon Sep 17 00:00:00 2001
+From: Zhang Hua <zhanghua.00@qq.com>
+Date: Wed, 19 Aug 2026 12:41:29 +0800
+Subject: [PATCH] lito: Use system cef
+
+---
+ viewer/WebViewer/WebViewer.cpp                                | 4 ++--
+ waywallen/WebRenderer/install.lua                             | 2 +-
+ waywallen/WebRenderer/web_entry.cpp                           | 4 ++--
+ .../plugins/org.waywallen.open-wallpaper-engine/install.lua   | 2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/viewer/WebViewer/WebViewer.cpp b/viewer/WebViewer/WebViewer.cpp
+index 654e62d..7b4f24d 100644
+--- a/viewer/WebViewer/WebViewer.cpp
++++ b/viewer/WebViewer/WebViewer.cpp
+@@ -205,8 +205,8 @@ int main(int argc, char** argv) {
+     auto exe_dir = viewer::ExecutableDir(argv[0]);
+ 
+     weweb::BrowserHost::InitOptions opts;
+-    opts.resources_dir = exe_dir;
+-    opts.locales_dir   = exe_dir / "locales";
++    opts.resources_dir = exe_dir / ".." / "lib" / "cef";
++    opts.locales_dir   = exe_dir / ".." / "lib" / "cef" / "locales";
+     if (int port = args.remote_debugging_port.to_primitive(); port > 0) {
+         opts.enable_remote_debugging = true;
+         opts.remote_debugging_port   = port;
+diff --git a/waywallen/WebRenderer/install.lua b/waywallen/WebRenderer/install.lua
+index bd61600..9798084 100644
+--- a/waywallen/WebRenderer/install.lua
++++ b/waywallen/WebRenderer/install.lua
+@@ -2,7 +2,7 @@ lito.install({
+     artifacts = {
+         {
+             target = { kind = "bin", name = "waywallen-weweb-renderer" },
+-            destination = "lib/weweb/waywallen-weweb-renderer",
++            destination = "bin/waywallen-weweb-renderer",
+             runtime_search = {
+                 {
+                     external_asset = {
+diff --git a/waywallen/WebRenderer/web_entry.cpp b/waywallen/WebRenderer/web_entry.cpp
+index c70256e..79fb968 100644
+--- a/waywallen/WebRenderer/web_entry.cpp
++++ b/waywallen/WebRenderer/web_entry.cpp
+@@ -704,8 +704,8 @@ int run(int argc, char** argv) {
+     // BrowserHost::Init wants resources / locales relative to argv[0].
+     auto                            exe_dir = executable_dir(argv[0]);
+     weweb::BrowserHost::InitOptions ho;
+-    ho.resources_dir = exe_dir;
+-    ho.locales_dir   = exe_dir / "locales";
++    ho.resources_dir = exe_dir / ".." / "lib" / "cef";
++    ho.locales_dir   = exe_dir / ".." / "lib" / "cef" / "locales";
+     ho.cache_dir     = derive_cache_dir(opts.workshop_id);
+     if (opts.remote_debugging_port > i32()) {
+         ho.enable_remote_debugging = true;
+diff --git a/waywallen/plugins/org.waywallen.open-wallpaper-engine/install.lua b/waywallen/plugins/org.waywallen.open-wallpaper-engine/install.lua
+index 6314671..66baa16 100644
+--- a/waywallen/plugins/org.waywallen.open-wallpaper-engine/install.lua
++++ b/waywallen/plugins/org.waywallen.open-wallpaper-engine/install.lua
+@@ -1,7 +1,7 @@
+ local bundle_layout = lito.env("OWE_WAYWALLEN_PLUGIN_BUNDLE_LAYOUT") == "ON"
+ local plugin = "share/waywallen/plugins/org.waywallen.open-wallpaper-engine"
+ local scene_bin = "../../../../bin/waywallen-wescene-renderer"
+-local web_bin = "../../../../lib/weweb/waywallen-weweb-renderer"
++local web_bin = "../../../../bin/waywallen-weweb-renderer"
+ if bundle_layout then
+     plugin = ""
+     scene_bin = "bin/waywallen-wescene-renderer"
+-- 
+2.55.0
+

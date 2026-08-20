@@ -1,11 +1,11 @@
-# deps.json
-_spirv_reflect_tag=vulkan-sdk-1.4.321.0
-_rstd_commit=03b022f37aa414c22a47021d58e054d55927c6c1
-_vvk_commit=867852dea22504db27559df60b74fee4c66406c7
-_wavsen_commit=a76c68e55e24c7e87fc5dbae28ee5d3b24139724
+# lito.lock
+_spirv_reflect_commit=355785128c1b6ba808e3a7d0e344814fe6cff502
+_rstd_commit=a852e89dc7b2c7fae6cc4c89d1f76afbac55be82
+_vvk_commit=f53d60cc70938d0485802750deeb15d18ba033ea
+_wavsen_commit=c07711f73253b0e3c53329c9930f2024193f8641
 
 pkgname=open-wallpaper-engine
-pkgver=0.2.3
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Open source scene renderer, mostly for linux."
 arch=(x86_64)
@@ -13,39 +13,57 @@ url=https://github.com/waywallen/open-wallpaper-engine
 license=(GPL-2.0-only)
 depends=(libgcc libstdc++ glibc lz4 freetype2 ffmpeg vulkan-icd-loader libglvnd
          "waywallen>=0.3.2" cef glslang fontconfig quickjs-ng glfw wayland)
-makedepends=('cmake<4.4' ninja git "clang>=21" lld eigen vulkan-headers waywallen-display
-             vulkan-memory-allocator)
+makedepends=(lito "cmake>4.3.1" ninja git "clang>=22" lld llvm eigen vulkan-headers
+             waywallen-display vulkan-memory-allocator)
+options=(!lto)
 source=("git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v$pkgver"
-        "git+https://github.com/KhronosGroup/SPIRV-Reflect.git#tag=$_spirv_reflect_tag"
+        "git+https://github.com/hypengw/SPIRV-Reflect.git#commit=$_spirv_reflect_commit"
         "git+https://github.com/litocpp/rstd.git#commit=$_rstd_commit"
         "git+https://github.com/litocpp/vvk.git#commit=$_vvk_commit"
         "git+https://github.com/hypengw/wavsen.git#commit=$_wavsen_commit"
-        "0001-cmake-Use-system-cef.patch"
-        "0002-cmake-Use-system-Eigen.patch"
-        "0003-cmake-Use-system-quickjs-ng.patch"
-        "0004-cmake-Use-system-glslang.patch"
-        "0005-cmake-Use-system-VulkanMemoryAllocator.patch"
-        "0006-cmake-Install-weweb-to-bin.patch")
-sha256sums=('fa8d8a53108015e7f796d372b673c5828639d9362297b9dab763f739e9a7e500'
-            '287e451ba68eb156cf9dc6c33825e9d58fc506ea58718725c8c0f772a40a83ca'
-            '89e9f424fe3719b8bda1380f0cc446fc96d9662668d012752de73cbc0d06a2ef'
-            '3b0c5ca0bbeb7c84df483bf098ba9105bb79316417a409bb6ef4b2b2513f6e06'
-            '3a7bcf987730ca3eab923ce1758538cc5ce26ec5f9787aa166fdd875936ba61e'
-            '8abc6ecd2993ce6eddf418a46fd088a0515b3ead9e2c99aeedfa223cf1b0eac9'
-            'e5fd3a65a6ec7e0a3ef03a82ff298ec0b1ace56b89f11ed2e94e4bcac7d9d074'
-            '444c3bd38a62d167f19e44cf71244230ba7aa538787117a20ba3e13e974b1dc1'
-            'e1bd31c20595c052578c5942acaebbcf750a4c3475d208ec4a0bd10db5fcb791'
-            'c4950f393f0130e00307bd7380b6ef6089ec504b6bc01af1c894ce660842ff88'
-            'f81b55b4bb30a2143cd3252aa14f0abb1ec4932261aef080121f4581987e5c7d')
+        "0001-lito-Use-system-cef.patch")
+sha256sums=('ecc9cf8321f3d00a040deb3f2ff5d577aa940a3f7ee5ff056f3dba82f45708a9'
+            'c033a38ac4e58e4a87ad43a84eb5e0fbe312c82b161a1fe5e38890751636f63f'
+            'd6f977ace1bea2ee52bcebb6dd715108eb925d30dc8fb9367c3d23003a683ea1'
+            '0abff36a8194edd20feb96e87abc772b13a2ac725c99df091ea8e08b57562f0f'
+            '91ecfcff82eaced83eda7045788600513893c202b8eb125306a394d1bde40586'
+            'e9e3915ecdbb4d858cd1f610796c8d2e5b1f6a8e51e936fff7633d782d8337c7')
 
 prepare() {
     cd "$srcdir/$pkgname"
-    patch -Np1 -i ../0001-cmake-Use-system-cef.patch
-    patch -Np1 -i ../0002-cmake-Use-system-Eigen.patch
-    patch -Np1 -i ../0003-cmake-Use-system-quickjs-ng.patch
-    patch -Np1 -i ../0004-cmake-Use-system-glslang.patch
-    patch -Np1 -i ../0005-cmake-Use-system-VulkanMemoryAllocator.patch
-    patch -Np1 -i ../0006-cmake-Install-weweb-to-bin.patch
+    patch -Np1 -i ../0001-lito-Use-system-cef.patch
+    mkdir -p .lito
+    cat > .lito/config.toml <<EOF
+[patch."https://github.com/litocpp/rstd.git"]
+path = "../rstd"
+
+[patch."https://github.com/hypengw/wavsen.git"]
+path = "../wavsen"
+
+[patch."https://github.com/litocpp/vvk.git"]
+path = "../vvk"
+
+[patch."https://github.com/hypengw/SPIRV-Reflect.git"]
+path = "../SPIRV-Reflect"
+
+[tools.cmake.overrides.Eigen3]
+source = "installed"
+
+[tools.cmake.overrides.glslang]
+source = "installed"
+
+[tools.cmake.overrides.qjs]
+source = "installed"
+
+[tools.cmake.overrides.CEF]
+source = "installed"
+
+[tools.cmake.overrides.waywallen-bridge]
+source = "installed"
+
+[tools.cmake.overrides.VulkanMemoryAllocator]
+source = "installed"
+EOF
 }
 build() {
     # https://github.com/llvm/llvm-project/issues/121709
@@ -56,21 +74,36 @@ build() {
     # /build/open-wallpaper-engine/src/open-wallpaper-engine/viewer/VulkanBlitter.hpp:94:30:
     # error: private field 'frame_index_' is not used [-Werror,-Wunused-private-field]
     CXXFLAGS+=" -Wno-error=undefined-var-template -Wno-error=unused-private-field"
-    cmake -B build -S "$pkgname" -G Ninja \
-        -DCMAKE_C_COMPILER=clang \
-        -DCMAKE_CXX_COMPILER=clang++ \
-        -DCMAKE_LINKER_TYPE=LLD \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=None \
-        -DFETCHCONTENT_FULLY_DISCONNECTED=ON \
-        -DFETCHCONTENT_SOURCE_DIR_SPIRV_REFLECT="$srcdir/SPIRV-Reflect" \
-        -DFETCHCONTENT_SOURCE_DIR_RSTD="$srcdir/rstd" \
-        -DFETCHCONTENT_SOURCE_DIR_VVK="$srcdir/vvk" \
-        -DFETCHCONTENT_SOURCE_DIR_WAVSEN="$srcdir/wavsen"
-    cmake --build build
+
+    # lito does not like those flags
+    CFLAGS+=" -flto=full"
+    CXXFLAGS+=" -flto=full"
+    CFLAGS="${CFLAGS//-fexceptions/}"
+    CXXFLAGS="${CXXFLAGS//-fexceptions/}"
+    lito -C "$pkgname" build --profile plain --use-env-flags \
+        --package owe-sceneviewer \
+        --package owe-webviewer \
+        --package owe-waywallen-scene-renderer \
+        --package owe-waywallen-web-renderer
 }
 package() {
-    DESTDIR="$pkgdir" cmake --install build
+    # https://github.com/llvm/llvm-project/issues/121709
+    CXXFLAGS="${CXXFLAGS//-Wp,-D_FORTIFY_SOURCE=3/}"
+
+    # /usr/src/cef/libcef_dll/ctocpp/ctocpp_ref_counted.h:136:26:
+    # error: instantiation of variable 'CefCToCppRefCounted<CefBrowserCToCpp, CefBrowser, _cef_browser_t>::kWrapperType' required here, but no definition is available [-Werror,-Wundefined-var-template]
+    # /build/open-wallpaper-engine/src/open-wallpaper-engine/viewer/VulkanBlitter.hpp:94:30:
+    # error: private field 'frame_index_' is not used [-Werror,-Wunused-private-field]
+    CXXFLAGS+=" -Wno-error=undefined-var-template -Wno-error=unused-private-field"
+
+    # lito does not like those flags
+    CFLAGS+=" -flto=full"
+    CXXFLAGS+=" -flto=full"
+    CFLAGS="${CFLAGS//-fexceptions/}"
+    CXXFLAGS="${CXXFLAGS//-fexceptions/}"
+    lito -C "$pkgname" install --profile plain --use-env-flags --prefix="$pkgdir/usr" \
+        --package owe-waywallen-plugin
     install -Dvm755 -t "$pkgdir/usr/lib/$pkgname" \
-        build/viewer/{Scene,Web}Viewer
+        "$pkgname/build/plain/bin/owe-sceneviewer/SceneViewer" \
+        "$pkgname/build/plain/bin/owe-webviewer/WebViewer"
 }
