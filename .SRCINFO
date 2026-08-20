@@ -1,6 +1,6 @@
 pkgbase = python-sentence-transformers
 	pkgdesc = Embeddings, Retrieval, and Reranking
-	pkgver = 5.7.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://github.com/UKPLab/sentence-transformers
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-sentence-transformers
 	depends = python-huggingface-hub
 	depends = python-pillow
 	depends = python-typing_extensions
-	source = sentence-transformers-5.7.0.tar.gz::https://github.com/UKPLab/sentence-transformers/archive/v5.7.0.tar.gz
-	sha512sums = 8c5a8579b23450331c3a344a577d85225943553a3d2dba925b682c8a359c4195f5eb3d5b687da20bc4d0c5a84bd743c87ef3d7292199e4c2075630cd417875bf
+	source = sentence-transformers-6.0.0.tar.gz::https://github.com/UKPLab/sentence-transformers/archive/v6.0.0.tar.gz
+	sha512sums = 8ca51baa1f4a1eb7703aec3e738afbf753d66acdfc0d51dcb73829a9be5b344bd11c074f70d98c96ac824eb4e7912759c97df1bb3828118692ee0bcc154c27a2
 
 pkgname = python-sentence-transformers
