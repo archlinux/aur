@@ -1,0 +1,26 @@
+pkgbase = vofa-next-git
+	pkgdesc = A next-generation serial assistant for embedded debugging, waveforms, and CAN/automotive diagnostics
+	pkgver = r108.22b1f0f
+	pkgrel = 1
+	url = https://github.com/Horldsence/vofa-NEXT
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = pkgconf
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = openssl
+	depends = libayatana-appindicator
+	depends = libsoup3
+	depends = hicolor-icon-theme
+	provides = vofa-next
+	conflicts = vofa-next
+	source = git+https://github.com/Horldsence/vofa-NEXT.git
+	sha256sums = SKIP
+
+pkgname = vofa-next-git
