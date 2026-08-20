@@ -2,7 +2,7 @@
 
 _pkgbase="zig-waybar-contrib"
 pkgname="${_pkgbase}-beta-bin"
-pkgver=26.08.12
+pkgver=26.08.20.1
 pkgrel=1
 pkgdesc='High-performance Waybar modules written in Zig for efficient system monitoring (Beta binary version)'
 arch=('x86_64')
@@ -14,11 +14,11 @@ optdepends=(
   'fakeroot: updates module'
 )
 source=(
-  "zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.08.12/zig-waybar-contrib-release-26.08.12.zip"
-  "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.08.12/config.waybar.jsonc"
-  "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.08.12/LICENSE"
+  "zig-waybar-contrib.zip::https://codeberg.org/erffy/zig-waybar-contrib/releases/download/26.08.20.1/zig-waybar-contrib-release-26.08.20.1.zip"
+  "config.waybar.jsonc::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.08.20.1/config.waybar.jsonc"
+  "LICENSE::https://codeberg.org/erffy/zig-waybar-contrib/raw/tag/26.08.20.1/LICENSE"
 )
-sha256sums=('69726b3e1e58dd375b6f9faaf77ca6bd3b20a3bc3db2981a9e4267a558070849'
+sha256sums=('335b6529735b14235504f65d89e26b24117bbcb39ff80497618cd2fb12c22e95'
             'dcd740a429998be22dbbf6eb47e89cc4a24863af75839d0f8621c146a125575d'
             '4452bc2d13bcd25bdd45ca659672df16c273ab9d1e65c4064447eec382dc96d6')
 
