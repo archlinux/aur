@@ -23,18 +23,12 @@ makedepends=(
 source=(
 	"heartwood::git+https://$_node/${_rid#rad:}.git"
 	"0001-build-work-around-sccache-do-not-read-SOURCE_DATE_EP.patch"
-	"0002-git-ref-format-fix-macros-for-debug_assertions.patch"
-	"0003-git-ref-format-support-tests-with-debug_assertions.patch"
-	"0004-node-fix-test_node_announcement_validate-for-debug_a.patch"
 	"radicle-node.system."{service,socket}
 	"radicle-node.user."{service,socket}
 	"radicle-node.dnssd"
 )
 b2sums=('SKIP'
         '864190b259d2269ca412d11ca3998a2e35cdce72cd0b9127cda7788ad63ede1d8196a55aaf9df9b91805c6546d0dae81522dd2bb615aa787454687516e914086'
-        'd18c36af0f661c740698c059a6916dc115ff0dd099577bc68e3d760b34acf3128de9c4c6f3cb3f4b5d3f7da18fbc7afd84f361d693d21583686b6a83cca1c478'
-        '203efd965ca599db187dfc42f72a493b9444bdaf37a3b813cc9b850685c82625496c24647172101a2e6ce77c4f6a4cf5453b53874039ed4ebbcfd80e907fe05a'
-        '3f3c841b97ab25637b1ce3369455a40af3c0bb50d5e34a15e348c7d558a7ed9b87902371682c828fbd05673e4da54284556f10425595dedca5494b81a897c235'
         '14d3033ff232682b35d3f3a94436b86ad57f3be767e4681c18d1a8a4435968c31e0c36b5b617734035e75be144c99db7447be70741430962c614f0c17a59fecd'
         'ef60f99e65177accd1b34447dab134ad26b576050ff15c9bfd6483bacaef801106a6ff5694383b7446b366818b1545c6506ccd6d1b153532b99b15361ddd8e41'
         '18ade1de3d3195e8b4cfcb0c479d2f597b53cbb83bde559d69abd34587c8c45371c12e242621c92607c3202f2f4ee3fb21b462fc5150939f50744cc045baccff'
@@ -51,11 +45,6 @@ prepare() {
 
 	# work around sccache brokenness around $SOURCE_DATE_EPOCH
 	git apply -3 "$srcdir/0001-build-work-around-sccache-do-not-read-SOURCE_DATE_EP.patch"
-	# fix git-ref-format macros in release mode
-	git apply -3 "$srcdir/0002-git-ref-format-fix-macros-for-debug_assertions.patch"
-	# fix tests in release mode
-	git apply -3 "$srcdir/0003-git-ref-format-support-tests-with-debug_assertions.patch"
-	git apply -3 "$srcdir/0004-node-fix-test_node_announcement_validate-for-debug_a.patch"
 
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
