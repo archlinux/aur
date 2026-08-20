@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=anydoc
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Convert Word, PowerPoint, Excel, OpenDocument, RTF, EPUB, CSV, and PDF to clean Markdown'
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(glibc # jklibc.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('8d17233c81ed01e39b2acecf98da49c8c03cb3020d3ea121eca69df2e6a7e5ef')
+sha256sums=('215cdc3b5f2bd798bf57d62d1701b90891e9d36e63afc85ff86271d8df601c71')
 
 _srcenv() {
 	cd "$_archive"
