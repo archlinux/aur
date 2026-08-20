@@ -10,6 +10,7 @@ url="https://github.com/YetAnotherMechanicusEnjoyer/wayra"
 
 license=('GPL-3.0')
 depends=('zig')
+conflicts=('wayra')
 
 source=("${name}-${pkgver}.tar.gz::${url}/archive/refs/heads/main.tar.gz")
 sha256sums=('SKIP')
@@ -21,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "${name}-${pkgver}"
+  cd "${name}-main"
 
   install -Dm755 "zig-out/bin/${name}" "${pkgdir}/usr/bin/${name}"
 
