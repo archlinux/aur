@@ -1,6 +1,6 @@
 pkgbase = fluent-lyrics-bin
 	pkgdesc = Fluent Lyrics, a lyrics viewer supports various sources, written in Flutter. (prebuilt binary)
-	pkgver = 0.0.43
+	pkgver = 0.0.44
 	pkgrel = 1
 	url = https://github.com/kobe-koto/FluentLyrics
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = fluent-lyrics-bin
 	sha256sums = 29a9f40ec748ba132cd776862f99f84442f8018e1d4b6996691ee9ddf7ad917d
 	sha256sums = 22bda8e153e0a8b97c2657a1fb49c9d0907b93e0b83e2a15664019d14ae97f3e
 	sha256sums = 8e331b6e8925e78030fdc86417e7f8fbf987a30261d1cf09432e5baaff027282
-	source_x86_64 = fluent-lyrics-0.0.43-linux-x64.zip::https://github.com/kobe-koto/FluentLyrics/releases/download/v0.0.43+43/fluent_lyrics-0.0.43-linux-x64.zip
-	sha256sums_x86_64 = 7ed784f7d934efde19e3dd8139df35d0128028412b42ffa0c67b4cefb515e1ce
-	source_aarch64 = fluent-lyrics-0.0.43-linux-arm64.zip::https://github.com/kobe-koto/FluentLyrics/releases/download/v0.0.43+43/fluent_lyrics-0.0.43-linux-arm64.zip
-	sha256sums_aarch64 = dc10d1f9eadaf41234d1eeeb08425d218bd4c4d099895b77de597665142e544d
+	source_x86_64 = fluent-lyrics-0.0.44-linux-x64.zip::https://github.com/kobe-koto/FluentLyrics/releases/download/v0.0.44+44/fluent_lyrics-0.0.44-linux-x64.zip
+	sha256sums_x86_64 = 57bcb002066c9b785269cce93df4db9e6f67a1aaa2c183f039a19056d0697bb8
+	source_aarch64 = fluent-lyrics-0.0.44-linux-arm64.zip::https://github.com/kobe-koto/FluentLyrics/releases/download/v0.0.44+44/fluent_lyrics-0.0.44-linux-arm64.zip
+	sha256sums_aarch64 = 300bf604a6e0bddd8822e7d18f376525635916226d8c77eac890142439f0034f
 
 pkgname = fluent-lyrics-bin
