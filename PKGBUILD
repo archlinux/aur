@@ -24,10 +24,10 @@ license=('Apache-2.0')
 
 provides=("${_pkgname}" "${_pkgalias}")
 
-makedepends=('rust')
+makedepends=('cargo')
 depends=('glibc' 'libgcc')
 
-options=('!lto')
+options=('!strip' '!lto')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
 sha256sums=('af8615f00a08123c45b3606a17987ebd99ed81bd4d2abf4a8e2b9e0b2ccc3cab')
