@@ -3,7 +3,7 @@
 pkgname=bruno
 pkgdesc="Opensource API Client for Exploring and Testing APIs"
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.usebruno.com/"
 license=('MIT')
@@ -64,6 +64,7 @@ build() {
     npm run build --workspace=packages/bruno-graphql-docs
     npm run build --workspace=packages/bruno-schema-types
     npm run build --workspace=packages/bruno-filestore
+    npm run build --workspace=packages/bruno-sqlite
     npm run build --workspace=packages/bruno-app
 
     rm -rf packages/bruno-electron/{out,web}

@@ -1,7 +1,7 @@
 pkgbase = bruno
 	pkgdesc = Opensource API Client for Exploring and Testing APIs
 	pkgver = 4.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.usebruno.com/
 	arch = x86_64
 	license = MIT
