@@ -3,14 +3,12 @@
 
 pkgname=seqtk
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Toolkit for processing sequences in FASTA/Q formats"
 arch=('x86_64')
 url="https://github.com/lh3/seqtk"
 license=('MIT')
 depends=('zlib')
-provides=('seqtk')
-conflicts=('seqtk')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('384aa1e3cecf4f70403839d586cbb29d469b7c6f773a64bc5af48a6e4b8220a6')
 
