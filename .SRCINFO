@@ -1,0 +1,32 @@
+pkgbase = omaquake
+	pkgdesc = Quake 1 rendered as characters in a terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rsd/omaquake
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = libarchive
+	makedepends = chafa
+	makedepends = libcaca
+	makedepends = alsa-lib
+	source = omaquake::git+https://github.com/rsd/omaquake.git#tag=v0.1.0
+	source = tyrquake::git+https://github.com/libretro/tyrquake.git
+	source = https://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake/quake106.zip
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = ec6c9d34b1ae0252ac0066045b6611a7919c2a0d78a3a66d9387a8f597553239
+
+pkgname = omaquake
+	depends = chafa
+	depends = libcaca
+	depends = alsa-lib
+	optdepends = omaquake-shareware-data: freely redistributable pak0.pak
+
+pkgname = omaquake-shareware-data
+	pkgdesc = Quake 1 shareware game data (episode 1) for omaquake
+	arch = any
+	license = LicenseRef-Quake-Shareware
