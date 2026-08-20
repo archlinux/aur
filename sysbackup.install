@@ -1,0 +1,33 @@
+post_install() {
+    # Reload systemd configs
+    systemctl daemon-reload 2>/dev/null || true
+
+    echo ""
+    echo -e "  \e[1;32m🛡️  SystemBackup has been installed successfully!\e[0m"
+    echo ""
+    echo "  To complete your setup:"
+    echo "    1. Create your configuration file:"
+    echo "       sudo cp /etc/sysbackup/sysbackup.conf.example /etc/sysbackup/sysbackup.conf"
+    echo "    2. Edit the configuration with your remote paths:"
+    echo "       sudo nano /etc/sysbackup/sysbackup.conf"
+    echo "    3. Run the initialization wizard (Fresh or Reconnect):"
+    echo "       sudo sysbackup init"
+    echo "    4. Start background timers:"
+    echo "       sudo systemctl enable --now sysbackup-home.timer"
+    echo "       sudo systemctl enable --now sysbackup-system.timer"
+    echo "       sudo systemctl enable --now sysbackup-monitor.timer"
+    echo ""
+}
+
+post_upgrade() {
+    systemctl daemon-reload 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl daemon-reload 2>/dev/null || true
+    echo ""
+    echo -e "  \e[1;33mNote:\e[0m Configurations under /etc/sysbackup and backup data"
+    echo "        under /var/lib/sysbackup have been preserved. You can delete"
+    echo "        them manually if you want a complete purge."
+    echo ""
+}

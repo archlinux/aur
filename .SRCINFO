@@ -1,0 +1,23 @@
+pkgbase = sysbackup-git
+	pkgdesc = Advanced AI-powered system backup control plane using restic and rclone
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Ujjwal-Devloper-5/SystemBackup
+	install = sysbackup.install
+	arch = any
+	license = custom:CC-BY-NC-SA-4.0
+	depends = restic
+	depends = rclone
+	depends = jq
+	depends = bc
+	depends = python
+	optdepends = gum: for interactive terminal UI dashboards
+	optdepends = fzf: for interactive file search in restore wizard
+	optdepends = libnotify: for desktop notifications
+	optdepends = xprintidle: for smart idle detection on X11
+	provides = sysbackup
+	conflicts = sysbackup
+	source = git+https://github.com/Ujjwal-Devloper-5/SystemBackup.git
+	sha256sums = SKIP
+
+pkgname = sysbackup-git
