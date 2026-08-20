@@ -9,6 +9,7 @@ url="https://github.com/YetAnotherMechanicusEnjoyer/wayra"
 
 license=('GPL-3.0')
 depends=('zig')
+conflicts=('wayra-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
