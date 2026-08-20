@@ -1,0 +1,60 @@
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for help2man... /usr/bin/help2man
+checking for pod2man... /usr/bin/core_perl/pod2man
+checking for pkg-config... /usr/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating emacs/Makefile
+config.status: creating qa-robot/Makefile
+/usr/bin/sed -e 's|__SYSCONFDIR__|/etc|g' rpmdev-newinit.in > rpmdev-newinit
+/usr/bin/sed -e 's|__SYSCONFDIR__|/etc|g' rpmdev-newspec.in > rpmdev-newspec
+/usr/bin/sed -e 's|__SYSCONFDIR__|/etc|g' rpmdev-rmdevelrpms.py > rpmdev-rmdevelrpms
+PATH=".:$PATH" COLUMNS=1000 /usr/bin/help2man -s 1 -N -h -h -v -v rpmdev-diff -o rpmdev-diff.1
+PATH=".:$PATH" COLUMNS=1000 /usr/bin/help2man -s 1 -N -h -h -v -v rpmdev-extract -o rpmdev-extract.1
+PATH=".:$PATH" COLUMNS=1000 /usr/bin/help2man -s 1 -N -h -h -v -v rpmdev-bumpspec -o rpmdev-bumpspec.1
+PATH=".:$PATH" COLUMNS=1000 /usr/bin/help2man -s 1 -N -h -h -v -v rpmdev-packager -o rpmdev-packager.1
+COLUMNS=1000 /usr/bin/help2man -s 1 -N -h -h -v --version ./rpmdev-spectool -o rpmdev-spectool.1
+/usr/bin/sed -e 's|__SYSCONFDIR__|/etc|g' rpmdevtools.bash-completion.in > rpmdevtools.bash-completion
+chmod +x rpmdev-rmdevelrpms
+case "rpmdev-newinit rpmdev-newspec rpmdev-rmdevelrpms" in *rpmdev-newinit*) chmod +x rpmdev-newinit ;; esac
+case "rpmdev-newinit rpmdev-newspec rpmdev-rmdevelrpms" in *rpmdev-newspec*) chmod +x rpmdev-newspec ;; esac
+COLUMNS=1000 /usr/bin/help2man -s 8 -N ./rpmdev-rmdevelrpms -o rpmdev-rmdevelrpms.8
+Making all in emacs
+case "rpmdev-newinit rpmdev-newspec rpmdev-rmdevelrpms" in *rpmdevtools.bash-completion*) chmod +x rpmdevtools.bash-completion ;; esac
+PATH=".:$PATH" COLUMNS=1000 /usr/bin/help2man -s 1 -N -h -h -v -v rpmdev-newinit -o rpmdev-newinit.1
+PATH=".:$PATH" COLUMNS=1000 /usr/bin/help2man -s 1 -N -h -h -v -v rpmdev-newspec -o rpmdev-newspec.1
+make[1]: Entering directory '/build/rpmdevtools/src/rpmdevtools-9.6/emacs'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/build/rpmdevtools/src/rpmdevtools-9.6/emacs'
+Making all in qa-robot
+make[1]: Entering directory '/build/rpmdevtools/src/rpmdevtools-9.6/qa-robot'
+/usr/bin/sed -e 's|__PKGDATADIR__|/usr/share/rpmdevtools|g' rpmargs.in > rpmargs
+/usr/bin/sed -e 's|__PKGDATADIR__|/usr/share/rpmdevtools|g' rpmpeek.in > rpmpeek
+/usr/bin/sed -e 's|__PKGDATADIR__|/usr/share/rpmdevtools|g' rpmsodiff.in > rpmsodiff
+/usr/bin/core_perl/pod2man --release "rpmdevtools 9.6" --center "" rpmelfsym rpmelfsym.1
+/usr/bin/core_perl/pod2man --release "rpmdevtools 9.6" --center "" rpmfile rpmfile.1
+/usr/bin/core_perl/pod2man --release "rpmdevtools 9.6" --center "" rpmsoname rpmsoname.1
+/usr/bin/sed -e 's|__PKGDATADIR__|/usr/share/rpmdevtools|g' tmpdir.sh.in > tmpdir.sh
+/usr/bin/sed -e 's|__PKGDATADIR__|/usr/share/rpmdevtools|g' trap.sh.in > trap.sh
+chmod +x rpmargs
+chmod +x rpmpeek
+/usr/bin/core_perl/pod2man --release "rpmdevtools 9.6" --center "" rpmargs rpmargs.1
+/usr/bin/core_perl/pod2man --release "rpmdevtools 9.6" --center "" rpmpeek rpmpeek.1
+chmod +x tmpdir.sh
+chmod +x trap.sh
+chmod +x rpmsodiff
+/usr/bin/core_perl/pod2man --release "rpmdevtools 9.6" --center "" rpmsodiff rpmsodiff.1
+make[1]: Leaving directory '/build/rpmdevtools/src/rpmdevtools-9.6/qa-robot'
+make[1]: Entering directory '/build/rpmdevtools/src/rpmdevtools-9.6'
+PATH=".:$PATH" COLUMNS=1000 /usr/bin/help2man -s 1 -N -h -h -v -v rpmdev-bumpspec -o rpmdev-bumpspec.1
+COLUMNS=1000 /usr/bin/help2man -s 1 -N -h -h -v --version ./rpmdev-spectool -o rpmdev-spectool.1
+COLUMNS=1000 /usr/bin/help2man -s 8 -N ./rpmdev-rmdevelrpms -o rpmdev-rmdevelrpms.8
+make[1]: Leaving directory '/build/rpmdevtools/src/rpmdevtools-9.6'

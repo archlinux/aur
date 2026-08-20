@@ -1,3 +1,4 @@
+# Maintainer: VZstless <i [at] vzstless [dot] moe>
 # Contributor: mihai303
 
 pkgname=rpmdevtools
@@ -24,6 +25,3 @@ package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 }
-
-
-# vim: set ft=sh ts=4 sw=4 noet:

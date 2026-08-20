@@ -1,0 +1,50 @@
+Making install in emacs
+make[1]: Entering directory '/build/rpmdevtools/src/rpmdevtools-9.6/emacs'
+make[2]: Entering directory '/build/rpmdevtools/src/rpmdevtools-9.6/emacs'
+make[2]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/build/rpmdevtools/pkg/rpmdevtools//usr/share/rpmdevtools'
+ /usr/bin/install -c -m 644 rpmdev-init.el '/build/rpmdevtools/pkg/rpmdevtools//usr/share/rpmdevtools'
+make[2]: Leaving directory '/build/rpmdevtools/src/rpmdevtools-9.6/emacs'
+make[1]: Leaving directory '/build/rpmdevtools/src/rpmdevtools-9.6/emacs'
+Making install in qa-robot
+make[1]: Entering directory '/build/rpmdevtools/src/rpmdevtools-9.6/qa-robot'
+make[2]: Entering directory '/build/rpmdevtools/src/rpmdevtools-9.6/qa-robot'
+ /usr/bin/mkdir -p '/build/rpmdevtools/pkg/rpmdevtools//usr/bin'
+ /usr/bin/mkdir -p '/build/rpmdevtools/pkg/rpmdevtools//usr/bin'
+ /usr/bin/mkdir -p '/build/rpmdevtools/pkg/rpmdevtools//usr/share/rpmdevtools'
+ /usr/bin/mkdir -p '/build/rpmdevtools/pkg/rpmdevtools//usr/share/man/man1'
+ /usr/bin/install -c -m 644 tmpdir.sh trap.sh '/build/rpmdevtools/pkg/rpmdevtools//usr/share/rpmdevtools'
+ /usr/bin/install -c rpmargs rpmpeek rpmsodiff '/build/rpmdevtools/pkg/rpmdevtools//usr/bin'
+ /usr/bin/install -c rpmelfsym rpmfile rpmsoname '/build/rpmdevtools/pkg/rpmdevtools//usr/bin'
+ /usr/bin/install -c -m 644 rpmargs.1 rpmelfsym.1 rpmfile.1 rpmpeek.1 rpmsodiff.1 rpmsoname.1 '/build/rpmdevtools/pkg/rpmdevtools//usr/share/man/man1'
+make[2]: Leaving directory '/build/rpmdevtools/src/rpmdevtools-9.6/qa-robot'
+make[1]: Leaving directory '/build/rpmdevtools/src/rpmdevtools-9.6/qa-robot'
+make[1]: Entering directory '/build/rpmdevtools/src/rpmdevtools-9.6'
+make[2]: Entering directory '/build/rpmdevtools/src/rpmdevtools-9.6'
+ /usr/bin/mkdir -p '/build/rpmdevtools/pkg/rpmdevtools//usr/bin'
+ /usr/bin/mkdir -p '/build/rpmdevtools/pkg/rpmdevtools//usr/bin'
+ /usr/bin/mkdir -p '/build/rpmdevtools/pkg/rpmdevtools//usr/share/bash-completion/completions'
+ /usr/bin/mkdir -p '/build/rpmdevtools/pkg/rpmdevtools//etc/rpmdevtools'
+ /usr/bin/mkdir -p '/build/rpmdevtools/pkg/rpmdevtools//usr/share/man/man1'
+ /usr/bin/mkdir -p '/build/rpmdevtools/pkg/rpmdevtools//usr/share/man/man8'
+ /usr/bin/install -c -m 644 rpmdevtools.bash-completion '/build/rpmdevtools/pkg/rpmdevtools//usr/share/bash-completion/completions'
+ /usr/bin/install -c rpmdev-newinit rpmdev-newspec rpmdev-rmdevelrpms '/build/rpmdevtools/pkg/rpmdevtools//usr/bin'
+ /usr/bin/install -c -m 644 curlrc newspec.conf rmdevelrpms.conf spectemplate-lib.spec spectemplate-minimal.spec spectemplate-perl.spec spectemplate-php-pear.spec spectemplate-python.spec spectemplate-ruby.spec spectemplate-ocaml.spec spectemplate-R.spec spectemplate-dummy.spec template.init '/build/rpmdevtools/pkg/rpmdevtools//etc/rpmdevtools'
+ /usr/bin/install -c rpmdev-checksig rpmdev-diff rpmdev-extract rpmdev-md5 rpmdev-setuptree rpmdev-sort rpmdev-vercmp rpmdev-wipetree rpminfo rpmls rpmdev-bumpspec rpmdev-packager rpmdev-spectool '/build/rpmdevtools/pkg/rpmdevtools//usr/bin'
+ /usr/bin/install -c -m 644 rpmdev-rmdevelrpms.8 '/build/rpmdevtools/pkg/rpmdevtools//usr/share/man/man8'
+ /usr/bin/install -c -m 644 rpmdev-diff.1 rpmdev-extract.1 rpmdev-bumpspec.1 rpmdev-newinit.1 rpmdev-newspec.1 rpmdev-packager.1 rpmdev-spectool.1 '/build/rpmdevtools/pkg/rpmdevtools//usr/share/man/man1'
+make  install-data-hook
+make  install-exec-hook
+make[3]: Entering directory '/build/rpmdevtools/src/rpmdevtools-9.6'
+mv /build/rpmdevtools/pkg/rpmdevtools//usr/share/bash-completion/completions/rpmdevtools.bash-completion \
+	/build/rpmdevtools/pkg/rpmdevtools//usr/share/bash-completion/completions/rpmdev-bumpspec ; \
+for f in rpmdev-{checksig,cksum,diff,extract,md5,newspec,rmdevelrpms,setuptree,sha{1,224,256,384,512},sum,vercmp} rpminfo rpmls spectool ; do \
+	ln -s rpmdev-bumpspec /build/rpmdevtools/pkg/rpmdevtools//usr/share/bash-completion/completions/$f ; \
+done
+make[3]: Entering directory '/build/rpmdevtools/src/rpmdevtools-9.6'
+cd /build/rpmdevtools/pkg/rpmdevtools//usr/bin && \
+for sum in sum cksum sha1 sha224 sha256 sha384 sha512 ; do ln rpmdev-md5 rpmdev-$sum ; done
+make[3]: Leaving directory '/build/rpmdevtools/src/rpmdevtools-9.6'
+make[3]: Leaving directory '/build/rpmdevtools/src/rpmdevtools-9.6'
+make[2]: Leaving directory '/build/rpmdevtools/src/rpmdevtools-9.6'
+make[1]: Leaving directory '/build/rpmdevtools/src/rpmdevtools-9.6'
