@@ -4,11 +4,11 @@ pkgname=mmseqs2-bin
 _pkgname=mmseqs
 _tag=18-8cc5c
 pkgver=18_8cc5c
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultra fast and sensitive sequence search and clustering suite"
 arch=('x86_64')
 url="https://github.com/soedinglab/mmseqs2"
-license=('GPL3')
+license=('MIT')
 depends=()
 provides=("mmseqs2=${pkgver}")
 conflicts=('mmseqs2')

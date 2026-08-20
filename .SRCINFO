@@ -1,10 +1,10 @@
 pkgbase = mmseqs2-bin
 	pkgdesc = Ultra fast and sensitive sequence search and clustering suite
 	pkgver = 18_8cc5c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/soedinglab/mmseqs2
 	arch = x86_64
-	license = GPL3
+	license = MIT
 	provides = mmseqs2=18_8cc5c
 	conflicts = mmseqs2
 	options = !strip
