@@ -10,7 +10,7 @@ _pkgarch='all'
 url="https://github.com/skycoin/skywire"
 makedepends=('dpkg')
 depends=()
-_debdeps="skywire-bin, golang"
+_debdeps="skywire-bin, golang, curl, zstd"
 
 build() {
 	#create the DEBIAN/control file

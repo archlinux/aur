@@ -1,24 +1,242 @@
 #!/bin/bash
 # /usr/bin/skywire-update
 # Skywire auto-updater: builds as unprivileged user, installs as root
-set -e
+#
+# Two install strategies, selected by UPDATE_CHANNEL:
+#   source-build (default) — compiles skywire from source via `go install`.
+#                            Needs the Go toolchain, GOPROXY=direct git reach
+#                            for every dep, several GB of disk and ~2min CPU.
+#   binary       (opt-in)  — downloads a prebuilt binary from the rolling CI
+#                            GitHub pre-release. No toolchain, no build user.
+set -eE  # -E so the ERR trap propagates into functions
 
 # Source configuration from /etc/skywire.conf if it exists
 SKYENV=${SKYENV:-/etc/skywire.conf}
 [[ -f "$SKYENV" ]] && source "$SKYENV"
 
 # UPDATE_CHANNEL controls what to install:
-#   "stable"        = latest CI-tested commit (default)
-#   "develop"       = latest develop branch commit
-#   "latest"        = latest tagged release version
-#   "<commit-hash>" = pin to a specific commit
-UPDATE_CHANNEL=${UPDATE_CHANNEL:-stable}
+#   "develop"         = latest develop branch commit (default, source-build)
+#   "latest"          = latest tagged release version (source-build)
+#   "<commit-hash>"   = pin to a specific commit (source-build)
+#   "binary"          = download prebuilt binary for BINARY_BRANCH (default develop)
+#   "binary-develop"  = download prebuilt binary from the develop-latest release
+#   "binary-master"   = download prebuilt binary from the master-latest release
+#
+# NOTE: the old "stable" channel (resolve a CI-promoted SHA from the
+# skywire-commit branch via `go run .../cmd/skywire-commit@skywire-commit`) was
+# removed — it depended on a fragile repo-side branch-promotion workflow and was
+# the wrong approach. Track "develop" directly, or use the "binary" channel.
+UPDATE_CHANNEL=${UPDATE_CHANNEL:-develop}
 
-# GOPROXY_MODE controls Go module proxy behavior:
-#   ""          = use default (proxy.golang.org)
-#   "direct"    = bypass proxy, fetch directly from git (faster for latest commits)
+# GOPROXY_MODE pins the Go module proxy behavior for source builds. Left unset
+# (the default) the updater tries GOPROXY=direct FIRST (fresh branch-tip
+# resolution) and automatically FALLS BACK to the default module proxy
+# (proxy.golang.org) if the direct fetch fails — e.g. GitHub's git endpoints are
+# flaky/unreachable. That fallback is the whole point: previously a direct
+# failure aborted the update outright and stranded the host, when proxy.golang.org
+# would have served the module fine. Override to force a single mode, no fallback:
+#   "direct"    = only fetch directly from git
+#   "proxy"     = only use the default proxy (never direct)
 GOPROXY_MODE=${GOPROXY_MODE:-}
 
+# BINARY_BRANCH selects which rolling pre-release the binary channel pulls
+# from: "develop" -> develop-latest (default), "master" -> master-latest.
+# UPDATE_CHANNEL=binary-develop / binary-master override this per-run.
+BINARY_BRANCH=${BINARY_BRANCH:-develop}
+
+# DISK_MIN_MB is the minimum free space (in MB) required on the relevant
+# filesystem before an update runs — the source-build path needs several GB
+# for the module + build cache, and even the binary path needs room for the
+# download + decompressed binary. Below this we abort LOUDLY instead of
+# failing deep inside a build/download with a cryptic exit 1. Tune it (or set
+# to 0 to disable the check) via DISK_MIN_MB in /etc/skywire.conf.
+DISK_MIN_MB=${DISK_MIN_MB:-2048}
+
+# Loud failure. With `set -e` a bare non-zero exit surfaces in journalctl as
+# just "exited status=1" with no clue why. fail() prints a one-line reason on
+# stderr and exits; the ERR trap catches anything that slips past an explicit
+# check (a step whose stderr got swallowed by runuser, an unexpected non-zero)
+# and names the step + line so `journalctl -u skywire-update` shows WHY.
+_step="startup"
+fail() {
+    echo "skywire-update: $*" >&2
+    exit 1
+}
+on_err() {
+    echo "skywire-update: FAILED during '${_step}' (line ${BASH_LINENO[0]})" >&2
+}
+trap on_err ERR
+
+# Early free-space precheck. Walks up to the nearest existing ancestor so df
+# resolves a real mountpoint even when the target dir doesn't exist yet.
+# Applies to BOTH channels.
+check_disk() {
+    local _path="$1"
+    while [ ! -d "$_path" ] && [ "$_path" != "/" ]; do
+        _path=$(dirname "$_path")
+    done
+    [ "$DISK_MIN_MB" -gt 0 ] 2>/dev/null || return 0
+    local _free_mb
+    _free_mb=$(df -Pm "$_path" 2>/dev/null | awk 'NR==2 {print $4}')
+    if [ -n "$_free_mb" ] && [ "$_free_mb" -lt "$DISK_MIN_MB" ]; then
+        fail "insufficient disk space on $_path: ${_free_mb} MB free, need >= ${DISK_MIN_MB} MB (tune DISK_MIN_MB in $SKYENV)"
+    fi
+}
+
+# Current installed version. Capture the full version string so the
+# comparison handles BOTH pseudo-versions (v1.3.53-0.20260512235804-116448e5c2c0,
+# develop tip) AND clean tags (v1.3.53, after a release). The previous
+# regex-only extraction returned "none" on clean tags and broke the early-exit
+# path, causing a restart every cycle even on no-op updates. Read once here —
+# both the source-build and binary paths compare against it.
+CURRENT=$(skywire -b 2>/dev/null | head -1 | tr -d '[:space:]' || echo "none")
+[ -z "$CURRENT" ] && CURRENT="none"
+
+# Shared post-install steps. Run identically after either path installs a new
+# binary to /opt/skywire/bin/skywire.
+post_install() {
+    # Run autoconfig unconditionally. It's idempotent — with no flags it
+    # only regenerates /opt/skywire/skywire.json from /etc/skywire.conf,
+    # which keeps the JSON in sync with the freshly-installed binary's
+    # schema. Doesn't write to /etc/skywire.conf without explicit flags
+    # (see cmd/skywire/commands/autoconfig.go). Operators who want it
+    # suppressed can set NOAUTOCONFIG=true in /etc/skywire.conf — autoconfig
+    # bails cleanly on that.
+    #
+    # Previously this only ran when systemctl is-active matched, which
+    # meant dev/custom-supervised setups (the visor running outside
+    # systemd) got the new binary on disk but no skywire.json regen.
+    # Splitting the conditions lets autoconfig run universally while
+    # the systemd restart still only fires when there's an active unit
+    # to restart.
+    echo "Running autoconfig..."
+    skywire autoconfig 2>/dev/null || skywire-autoconfig 2>/dev/null || true
+
+    # Restart only if running via systemd. Manually-supervised instances
+    # (dev work, custom restart loops) are left untouched — the operator
+    # picks up the new binary on their own restart cycle.
+    if systemctl is-active --quiet skywire 2>/dev/null; then
+        echo "Restarting skywire service..."
+        systemctl restart skywire
+    fi
+
+    # Restart operator-configured dependent services (RESTART_SERVICES in
+    # /etc/skywire.conf) — standalone systemd units that link against or
+    # depend on the skywire binary (e.g. a separate dmsgweb SOCKS5 proxy).
+    # Reached ONLY when a new binary was actually installed: the no-op
+    # early-exits above (proxy-version match, post-build NEW==CURRENT) mean
+    # this never fires on a daily no-op tick, and it's not part of autoconfig
+    # so a bare `skywire autoconfig` never restarts them either. Each unit is
+    # restarted only if currently active (inactive/unknown units are skipped);
+    # a failed restart is logged but does not fail the update. Independent of
+    # the skywire-service gate above, so it works when the visor is supervised
+    # outside systemd but the dependent service is a systemd unit.
+    if [ "${#RESTART_SERVICES[@]}" -gt 0 ] 2>/dev/null; then
+        for _svc in "${RESTART_SERVICES[@]}"; do
+            [ -z "$_svc" ] && continue
+            if systemctl is-active --quiet "$_svc" 2>/dev/null; then
+                echo "Restarting dependent service: $_svc"
+                systemctl restart "$_svc" 2>/dev/null || echo "  warning: failed to restart $_svc"
+            else
+                echo "Skipping $_svc (not active or not installed)"
+            fi
+        done
+    fi
+}
+
+# Binary channel: download a prebuilt binary from the rolling CI pre-release
+# instead of compiling from source. Needs no Go toolchain and no build user.
+# Assets are published by skycoin/skywire CI (.github/workflows/publish-binary.yml)
+# to the develop-latest / master-latest pre-release tags on every merge:
+#   https://github.com/skycoin/skywire/releases/download/<branch>-latest/skywire-linux-<arch>.zst
+#   https://github.com/skycoin/skywire/releases/download/<branch>-latest/SHA256SUMS
+install_binary() {
+    _step="architecture detection"
+    local _uarch _arch
+    _uarch=$(uname -m)
+    case "$_uarch" in
+        x86_64)                    _arch="amd64" ;;
+        aarch64|arm64)             _arch="arm64" ;;
+        armv7l|armv6l|armhf|arm)   _arch="arm" ;;
+        *) fail "unsupported architecture '$_uarch' — no prebuilt binary asset (use a source-build channel instead)" ;;
+    esac
+
+    # Resolve the rolling tag. BINARY_BRANCH is the default; the
+    # binary-develop / binary-master channel names override it per-run.
+    local _branch="$BINARY_BRANCH"
+    [ "$UPDATE_CHANNEL" = "binary-develop" ] && _branch="develop"
+    [ "$UPDATE_CHANNEL" = "binary-master" ] && _branch="master"
+    local _tag="${_branch}-latest"
+    local _base="https://github.com/skycoin/skywire/releases/download/${_tag}"
+    local _asset="skywire-linux-${_arch}.zst"
+
+    # tools the binary path needs — fail clearly if the package deps somehow
+    # aren't present rather than dying mid-pipe.
+    command -v curl >/dev/null 2>&1 || fail "curl not found (install curl)"
+    command -v zstd >/dev/null 2>&1 || fail "zstd not found (install zstd)"
+
+    check_disk /opt/skywire
+
+    _BIN_TMPDIR=$(mktemp -d)
+    trap 'rm -rf "$_BIN_TMPDIR"' EXIT  # clean the download dir on any exit
+
+    _step="download SHA256SUMS"
+    echo "Fetching prebuilt skywire ($_arch) from ${_tag} ..."
+    curl -fsSL --retry 3 --retry-delay 2 --connect-timeout 20 --max-time 300 \
+        -o "${_BIN_TMPDIR}/SHA256SUMS" "${_base}/SHA256SUMS" \
+        || fail "download of SHA256SUMS from ${_base} failed (network down, or tag ${_tag} not published?)"
+
+    _step="download ${_asset}"
+    curl -fsSL --retry 3 --retry-delay 2 --connect-timeout 20 --max-time 300 \
+        -o "${_BIN_TMPDIR}/${_asset}" "${_base}/${_asset}" \
+        || fail "download of ${_asset} from ${_base} failed"
+
+    _step="checksum verification"
+    local _sumline
+    _sumline=$(grep -E "[[:space:]]\*?${_asset}\$" "${_BIN_TMPDIR}/SHA256SUMS" || true)
+    [ -n "$_sumline" ] || fail "no SHA256SUMS entry for ${_asset} — refusing to install unverified binary"
+    # sha256sum -c matches the filename in the checksum line against the cwd,
+    # so run it from the temp dir where the .zst lives.
+    ( cd "$_BIN_TMPDIR" && echo "$_sumline" | sha256sum -c - ) >/dev/null 2>&1 \
+        || fail "checksum mismatch for ${_asset} — refusing to install corrupted/tampered binary"
+
+    _step="decompress"
+    zstd -d -f -q -o "${_BIN_TMPDIR}/skywire" "${_BIN_TMPDIR}/${_asset}" \
+        || fail "zstd decompression of ${_asset} failed"
+    chmod +x "${_BIN_TMPDIR}/skywire"
+
+    # Version-change guard: mirror the source-build NEW==CURRENT check. The
+    # downloaded binary is native-arch, so `-b` runs here; if it reports the
+    # same version we're already running, skip the autoconfig + restart.
+    local _new
+    _new=$("${_BIN_TMPDIR}/skywire" -b 2>/dev/null | head -1 | tr -d '[:space:]' || echo "")
+    if [ -n "$_new" ] && [ "$_new" = "$CURRENT" ]; then
+        echo "Downloaded binary reports no version change (still $CURRENT) — skipping install + restart"
+        exit 0
+    fi
+
+    _step="install"
+    echo "Updating skywire ($UPDATE_CHANNEL): $CURRENT -> ${_new:-$_tag}"
+    install -Dm755 "${_BIN_TMPDIR}/skywire" /opt/skywire/bin/skywire
+
+    echo "Skywire updated to ${_new:-$_tag} (binary channel, $_arch)"
+    post_install
+}
+
+# ---------------------------------------------------------------------------
+# Binary channel: short-circuit the whole source-build machinery below. Needs
+# no build user, no Go toolchain, no cache pruning.
+# ---------------------------------------------------------------------------
+case "$UPDATE_CHANNEL" in
+  binary|binary-develop|binary-master)
+    install_binary
+    exit 0
+    ;;
+esac
+
+# ---------------------------------------------------------------------------
+# Source-build channels (default). Everything below compiles from source.
+# ---------------------------------------------------------------------------
 BUILD_USER="skywire-build"
 BUILD_HOME="/var/lib/${BUILD_USER}"
 BUILD_GOPATH="${BUILD_HOME}/go"
@@ -57,6 +275,9 @@ fi
 # restart is already done.
 MODCACHE_CAP_MB=${MODCACHE_CAP_MB:-3000}
 cleanup_caches() {
+    # Remove any temp dir the binary path created (no-op on source runs).
+    [ -n "${_BIN_TMPDIR:-}" ] && rm -rf "$_BIN_TMPDIR" || true
+
     # Always-clean caches.
     runuser -u "$BUILD_USER" -- env \
         GOPATH="$BUILD_GOPATH" GOCACHE="$BUILD_GOCACHE" \
@@ -79,24 +300,12 @@ cleanup_caches() {
 }
 trap cleanup_caches EXIT
 
+# Early free-space precheck for the source-build path — the module + build
+# cache under BUILD_HOME is what runs the filesystem out of space.
+check_disk "$BUILD_HOME"
+
 # Resolve the target commit
 case "$UPDATE_CHANNEL" in
-  stable)
-    _tmpdir=$(mktemp -d)
-    chown "$BUILD_USER:" "$_tmpdir"
-    # GOPROXY=direct on the branch-tip resolver: proxy.golang.org
-    # caches branch-tip → SHA resolutions for up to 30 min. Without
-    # this, a fresh CI promotion to skywire-commit can be invisible
-    # for half an hour and the update silently no-ops in ~250ms with
-    # exit 0. See: AUTO_UPDATE.md "Why GOPROXY=direct?".
-    TARGET=$(runuser -u "$BUILD_USER" -- env GOPATH="$BUILD_GOPATH" GOCACHE="$_tmpdir" GOPROXY=direct \
-        go run github.com/skycoin/skywire/cmd/skywire-commit@skywire-commit 2>/dev/null || echo "")
-    rm -rf "$_tmpdir"
-    if [ -z "$TARGET" ]; then
-        echo "Failed to fetch latest tested commit"
-        exit 1
-    fi
-    ;;
   develop)
     TARGET="develop"
     ;;
@@ -108,19 +317,12 @@ case "$UPDATE_CHANNEL" in
     ;;
 esac
 
-# Check if update is needed by querying the Go module proxy.
-# Capture the full version string so the comparison handles BOTH
-# pseudo-versions (v1.3.53-0.20260512235804-116448e5c2c0, develop tip)
-# AND clean tags (v1.3.53, after a release). The previous regex-only
-# extraction returned "none" on clean tags and broke the early-exit
-# path, causing a restart every cycle even on no-op updates.
-CURRENT=$(skywire -b 2>/dev/null | head -1 | tr -d '[:space:]' || echo "none")
-[ -z "$CURRENT" ] && CURRENT="none"
-
-# Resolve branch/tag to a commit. GOPROXY=direct by default — see
-# the "stable" path above for the rationale. Operators can opt OUT
-# (cache-on) by setting GOPROXY_MODE=proxy in /etc/skywire.conf
-# when they specifically want proxy.golang.org's cached results.
+# Resolve branch/tag to a commit for the no-op early-exit. GOPROXY=direct by
+# default (proxy.golang.org caches branch-tip -> SHA for up to 30 min, so a
+# fresh develop HEAD can be invisible for half an hour under the proxy).
+# GOPROXY_MODE=proxy forces cached resolution instead. If a direct resolve
+# fails here, PROXY_VERSION is simply left empty: no early-exit, and the build
+# below proceeds with its own direct->proxy fallback.
 if [ "$TARGET" = "develop" ] || [ "$TARGET" = "latest" ]; then
     _goproxy_env="GOPROXY=direct"
     [ "$GOPROXY_MODE" = "proxy" ] && _goproxy_env=""
@@ -152,19 +354,44 @@ fi
 SHORT=${TARGET:0:12}
 echo "Updating skywire ($UPDATE_CHANNEL): $CURRENT -> $SHORT"
 
-# Build as unprivileged user. Branch-tip targets (develop/latest)
-# need GOPROXY=direct for the same reason as the resolver above;
-# pinned-SHA targets ($UPDATE_CHANNEL=<sha>) work with either since
-# content-addressed module fetches are deterministic. Default on
-# for safety; GOPROXY_MODE=proxy opts back to cached resolution.
-_goproxy_build="GOPROXY=direct"
-[ "$GOPROXY_MODE" = "proxy" ] && _goproxy_build=""
-runuser -u "$BUILD_USER" -- env \
-    GOPATH="$BUILD_GOPATH" \
-    GOCACHE="$BUILD_GOCACHE" \
-    GOFLAGS=-trimpath \
-    $_goproxy_build \
-    go install "github.com/skycoin/skywire@${TARGET}"
+# Build as unprivileged user. Branch-tip targets (develop/latest) resolve
+# fastest with GOPROXY=direct (proxy.golang.org caches branch-tip -> SHA for up
+# to 30 min); pinned-SHA targets work with either since content-addressed
+# fetches are deterministic. We try direct FIRST, then automatically fall back
+# to the default module proxy if direct fails — the whole point of the fix:
+# when GitHub's git endpoints are flaky a direct fetch aborts the update, but
+# proxy.golang.org still serves the module so the host updates anyway.
+# GOPROXY_MODE=direct|proxy forces a single mode with no fallback.
+#
+# runuser swallows the child's stderr on failure, so a bare failure would
+# surface in journalctl as only "exited status=1"; go_install() runs one
+# attempt and the caller reports a clear reason on total failure.
+go_install() {  # $1 = GOPROXY env assignment ("" = default proxy)
+    runuser -u "$BUILD_USER" -- env \
+        GOPATH="$BUILD_GOPATH" \
+        GOCACHE="$BUILD_GOCACHE" \
+        GOFLAGS=-trimpath \
+        $1 \
+        go install "github.com/skycoin/skywire@${TARGET}"
+}
+_step="go install github.com/skycoin/skywire@${TARGET}"
+case "$GOPROXY_MODE" in
+  direct)
+    go_install "GOPROXY=direct" \
+        || fail "go install of ${TARGET} failed (GOPROXY_MODE=direct, no proxy fallback — toolchain, git reach, or disk; see 'journalctl -u skywire-update')"
+    ;;
+  proxy)
+    go_install "" \
+        || fail "go install of ${TARGET} failed (GOPROXY_MODE=proxy — toolchain, proxy reach, or disk; see 'journalctl -u skywire-update')"
+    ;;
+  *)
+    if ! go_install "GOPROXY=direct"; then
+        echo "skywire-update: GOPROXY=direct fetch failed for ${TARGET}; falling back to the default module proxy (proxy.golang.org)" >&2
+        go_install "" \
+            || fail "go install of ${TARGET} failed via BOTH direct and the default proxy (toolchain, disk, or network — see 'journalctl -u skywire-update')"
+    fi
+    ;;
+esac
 
 # Defense in depth: even if the early-exit above missed the no-op
 # case (network glitch on the resolver, regex drift, etc.), don't
@@ -183,50 +410,4 @@ install -Dm755 "${BUILD_GOPATH}/bin/skywire" /opt/skywire/bin/skywire
 
 echo "Skywire updated to $SHORT"
 
-# Run autoconfig unconditionally. It's idempotent — with no flags it
-# only regenerates /opt/skywire/skywire.json from /etc/skywire.conf,
-# which keeps the JSON in sync with the freshly-installed binary's
-# schema. Doesn't write to /etc/skywire.conf without explicit flags
-# (see cmd/skywire/commands/autoconfig.go). Operators who want it
-# suppressed can set NOAUTOCONFIG=true in /etc/skywire.conf — autoconfig
-# bails cleanly on that.
-#
-# Previously this only ran when systemctl is-active matched, which
-# meant dev/custom-supervised setups (the visor running outside
-# systemd) got the new binary on disk but no skywire.json regen.
-# Splitting the conditions lets autoconfig run universally while
-# the systemd restart still only fires when there's an active unit
-# to restart.
-echo "Running autoconfig..."
-skywire autoconfig 2>/dev/null || skywire-autoconfig 2>/dev/null || true
-
-# Restart only if running via systemd. Manually-supervised instances
-# (dev work, custom restart loops) are left untouched — the operator
-# picks up the new binary on their own restart cycle.
-if systemctl is-active --quiet skywire 2>/dev/null; then
-    echo "Restarting skywire service..."
-    systemctl restart skywire
-fi
-
-# Restart operator-configured dependent services (RESTART_SERVICES in
-# /etc/skywire.conf) — standalone systemd units that link against or
-# depend on the skywire binary (e.g. a separate dmsgweb SOCKS5 proxy).
-# Reached ONLY when a new binary was actually installed: the no-op
-# early-exits above (proxy-version match, post-build NEW==CURRENT) mean
-# this never fires on a daily no-op tick, and it's not part of autoconfig
-# so a bare `skywire autoconfig` never restarts them either. Each unit is
-# restarted only if currently active (inactive/unknown units are skipped);
-# a failed restart is logged but does not fail the update. Independent of
-# the skywire-service gate above, so it works when the visor is supervised
-# outside systemd but the dependent service is a systemd unit.
-if [ "${#RESTART_SERVICES[@]}" -gt 0 ] 2>/dev/null; then
-    for _svc in "${RESTART_SERVICES[@]}"; do
-        [ -z "$_svc" ] && continue
-        if systemctl is-active --quiet "$_svc" 2>/dev/null; then
-            echo "Restarting dependent service: $_svc"
-            systemctl restart "$_svc" 2>/dev/null || echo "  warning: failed to restart $_svc"
-        else
-            echo "Skipping $_svc (not active or not installed)"
-        fi
-    done
-fi
+post_install
