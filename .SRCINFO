@@ -8,6 +8,7 @@ pkgbase = wayra
 	arch = aarch64
 	license = GPL-3.0
 	depends = zig
+	conflicts = wayra-git
 	source = wayra-0.1.0.tar.gz::https://github.com/YetAnotherMechanicusEnjoyer/wayra/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
