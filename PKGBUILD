@@ -31,7 +31,7 @@ makedepends=('cargo' 'bun')
 install=tennoworth.install
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/desktop-v$pkgver.tar.gz")
-sha256sums=('46426afad27fedb6baeb35268411dc63008033d86d882a9507ce27b853c7c5fe')
+sha256sums=('f797f08d4a691771aedb94cb5d52ce762984e903dcad738b35a583831f989acb')
 
 _srcdir="tennoworth-desktop-v$pkgver"
 
