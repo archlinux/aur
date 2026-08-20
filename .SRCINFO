@@ -10,6 +10,7 @@ pkgbase = osmo-ggsn-git
 	license = GPL-2.0-only AND LGPL-2.1-or-later AND MIT
 	makedepends = git
 	depends = libosmocore-git
+	depends = libosmo-netif
 	depends = talloc
 	provides = osmo-ggsn=1.13.0.r0.gba3d890
 	provides = libgtp.so=11-64
