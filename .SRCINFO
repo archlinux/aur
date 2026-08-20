@@ -1,0 +1,11 @@
+pkgbase = ttf-grazie-mille-var
+	pkgdesc = A variable serif font based on the Lora typeface.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://fontesk.com/designer/michele-casanova
+	arch = any
+	license = custom:OFL
+	source = grazie-mille.zip::https://fontesk.com/download/153112/
+	sha256sums = 0e915ded79c94e6b8426dd787ec61f3c5a3310e6f2ec0ebd951736c9da57e50b
+
+pkgname = ttf-grazie-mille-var
