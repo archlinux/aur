@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=fasthex
-pkgver=1
+pkgver=10
 pkgrel=1
 pkgdesc="fasthex, a very fast hex dumper, builds from source"
 arch=('x86_64')
