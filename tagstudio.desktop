@@ -1,7 +1,7 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Type=Application
-Version=9.6.2
+Version=9.6.3
 Name=TagStudio
 Icon=/usr/share/tagstudio/_internal/tagstudio/resources/icon.png
 Comment=Tag, find, and organize files
