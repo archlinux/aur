@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=countrycode
-_pkgver=1.8.0
+_pkgver=1.9.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,16 +13,16 @@ depends=(
   r
 )
 optdepends=(
-  r-altdoc
   r-eurostat
   r-isocodes
+  r-pkgsite
   r-testthat
   r-tibble
-  r-utf8
+  r-yaml
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d3821db67468fe524b448f216d092850')
-b2sums=('5ac1aa442eb3ae5b5b59a443bdf445c2c706d608055c27a35b7bb153cfe0655a4abc6fcf6e1cbf9cafec7c46d5489be7cd40bdc17889b49b6f301840d4f8e097')
+md5sums=('926ed05d1538df48347d517a742f9a9a')
+b2sums=('0a643c5e32539461f0b317ccbba65032a1d48ecb69bed4bb402a61d9aaee24971adfcda8b7fa5182ff8fec6f7bfb29b5c2fedcbccfa68754cf6792da1ce6333d')
 
 build() {
   mkdir build
