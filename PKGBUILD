@@ -1,5 +1,5 @@
 pkgname=homepage
-pkgver=1.13.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A highly customizable homepage (or startpage / application dashboard) with Docker and service API integrations."
 arch=('any')
@@ -13,7 +13,7 @@ source=("https://github.com/gethomepage/homepage/archive/v${pkgver}.tar.gz"
         'homepage.service'
         'homepage.sysusers'
         'homepage.tmpfiles')
-sha256sums=('4e11b0cf4a6b0b1e56a10145667fb93ecf6abeb4c2767375fc88f3d2b49cc04f'
+sha256sums=('eb54fbf7bb515c544d8d3f7197a7182c4079cc0cbcadaec86cbb43cf89a56d31'
             'ad7cf62a095823b9f7597d1c28c5ca6f6b424af1db0be0e813c5df87eab35dd6'
             'b35b3df75248f5dd1298cb1a13921cb40b66998608eae3a8bf0c36562d43d278'
             'e10cf0af4417326d32acffddd7104ce5e033dfbbf06f7f8f71bc92a1d6c37165')
