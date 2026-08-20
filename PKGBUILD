@@ -2,7 +2,7 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=2.14.0
+pkgver=2.19.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
@@ -13,11 +13,13 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 checkdepends=('python-certifi' 'python-pillow' 'python-pyopenssl' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-xdist' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
 optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer' 'python-pyopenssl: pyopenssl')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f9a859a3b1955e572053bbe608cc76e7fdca1034243864d39f56b23aff24eb42')
+sha256sums=('9dddcd31aed821d82bca3c2d302bc780ea3daa56906005c5cc4d8c46ef2d8818')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
   sed -i 's/, "twine>=6.1.0", "packaging>=24.2", "pkginfo>=1.12.0"//g' pyproject.toml
+  # Fix compatibility with newer tenacity versions
+  sed -i 's/wait.initial/wait.multiplier/g' google/genai/tests/client/test_retries.py
 }
 
 build() {
@@ -47,17 +49,10 @@ check() {
     --deselect google/genai/tests/afc/test_generate_content_stream_afc_thoughts.py
     --deselect google/genai/tests/operations/test_get.py
     --deselect google/genai/tests/interactions/test_paths.py
-    # Need to be fixed by developers
-    --deselect google/genai/tests/types/test_types.py::test_generic_alias_complex_array_with_default_value
-    --deselect google/genai/tests/types/test_types.py::test_generic_alias_complex_array_with_default_value_all_py_versions
-    --deselect google/genai/tests/types/test_types.py::test_pydantic_model_in_union_type
-    --deselect google/genai/tests/types/test_types.py::test_type_union
-    --deselect google/genai/tests/types/test_types.py::test_type_union_all_py_versions
-    --deselect google/genai/tests/types/test_types.py::test_type_union_with_default_value_all_py_versions
-    --deselect google/genai/tests/client/test_retries.py::test_aiohttp_retries_failed_request_retries_unsuccessfully_mtls
   )
   cd "$srcdir"/${pkgname//google-/}-$pkgver
-  PYTHONPATH=$PWD pytest "${pytest_options[@]}" ${_name//-//}/tests
+  touch ${_name//-//}/tests/certificate_config.json
+  GOOGLE_API_CERTIFICATE_CONFIG=${_name//-//}/tests/certificate_config.json PYTHONPATH=$PWD pytest "${pytest_options[@]}" ${_name//-//}/tests
 }
 
 package() {
