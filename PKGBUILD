@@ -20,7 +20,7 @@
 
 pkgname=tennoworth-bin
 _pkgname=tennoworth
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Warframe inventory + market dashboard — see what's worth selling right now (prebuilt)"
 arch=('x86_64')
@@ -35,7 +35,7 @@ conflicts=("$_pkgname")
 install=tennoworth-bin.install
 options=('!strip' '!debug')
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/desktop-v$pkgver/tennoworth-desktop-linux-x86_64.tar.gz")
-sha256sums=('ac6533a8276b590675c4aef535d2c56d15bb3278d67610fcafc4d617387c6596')
+sha256sums=('678e412d44a27ef14d781caafc3684f332a818a441ad170a4787214cc91a3df1')
 
 _dir="tennoworth-desktop-linux-x86_64"
 
