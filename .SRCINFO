@@ -1,0 +1,18 @@
+pkgbase = rustpython-packaging
+	pkgdesc = Core utilities for Python packages
+	pkgver = 26.3
+	pkgrel = 1
+	url = https://github.com/pypa/packaging
+	arch = any
+	license = Apache-2.0 OR BSD-2-Clause
+	makedepends = git
+	makedepends = rustpython-build
+	makedepends = rustpython-flit-core
+	makedepends = rustpython-installer
+	depends = rustpython
+	replaces = rustpython-packaging-bootstrap
+	source = python-packaging::git+https://github.com/pypa/packaging.git#tag=26.3?signed
+	validpgpkeys = 2FDEC9863E5E14C7BC429F27B9D0E45146A241E8
+	sha256sums = 5ea0acedf3b15c0679ac4ea4412e17796e0ea22a728c0145d197b5716ae493f2
+
+pkgname = rustpython-packaging

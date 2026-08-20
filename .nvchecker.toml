@@ -1,0 +1,4 @@
+[rustpython-packaging]
+source = "git"
+git = "https://github.com/pypa/packaging.git"
+exclude_regex = ".*(beta|rc).*"
