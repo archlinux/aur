@@ -1,10 +1,11 @@
 pkgbase = libunac
 	pkgdesc = A C library removing accents from a string
 	pkgver = 1.8.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.nongnu.org/unac/
 	arch = i686
 	arch = x86_64
+	arch = pentium4
 	license = GPL2
 	source = http://http.debian.net/debian/pool/main/u/unac/unac_1.8.0.orig.tar.gz
 	source = unac-1.8.0-compilation.patch

@@ -2,9 +2,9 @@
 
 pkgname=libunac
 pkgver=1.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A C library removing accents from a string"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'pentium4')
 url="http://www.nongnu.org/unac/"
 license=('GPL2')
 source=("http://http.debian.net/debian/pool/main/u/unac/unac_$pkgver.orig.tar.gz"
