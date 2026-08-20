@@ -1,8 +1,8 @@
 pkgbase = chatgpt-webapp-desktop-bin
-	pkgdesc = Unofficial ChatGPT desktop wrapper for Linux, built with Tauri
+	pkgdesc = Unofficial ChatGPT desktop wrapper for Linux (Tauri)
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://chatgpt.com/
+	url = https://github.com/gonwe/chatgpt-webapp
 	arch = x86_64
 	license = MIT
 	depends = webkit2gtk-4.1
@@ -11,10 +11,13 @@ pkgbase = chatgpt-webapp-desktop-bin
 	depends = glib2
 	depends = libgl
 	depends = hicolor-icon-theme
+	optdepends = noto-fonts-cjk: CJK system font
+	optdepends = adobe-source-han-sans-cn-fonts: CJK system font
+	provides = chatgpt-webapp-desktop=0.1.0
+	conflicts = chatgpt-webapp-desktop
 	source = chatgpt-webapp-desktop-bin-0.1.0-x86_64.tar.gz::https://github.com/gonwe/chatgpt-webapp/releases/download/v0.1.0/chatgpt-webapp-desktop-bin-0.1.0-x86_64.tar.gz
 	source = chatgpt-webapp-desktop-bin.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 8c8d183fe719d79544fd9ee867cbb636de57c30dbcad7141a12775ce00f1a08b
+	sha256sums = 94fec67e076eef5a7f7d0c688af548255a5d897e6be7e7ac7c18ca8694575549
 
 pkgname = chatgpt-webapp-desktop-bin
-
