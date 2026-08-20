@@ -2,13 +2,13 @@
 
 _pkgname=OpenMRac
 pkgname="${_pkgname,,}"
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='OpenMRac, a split-screen racing game'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Franticware/${_pkgname}"
 license=('BSD')
-depends=('openmrac-data' 'sdl2' 'sdl2_image' 'openal' 'glm')
+depends=('openmrac-data' 'sdl2' 'openal' 'glm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('7a1ea8e74c43d406756f55c477c76dcd2476cbc55ddd0afc23ded3afaa3bf812')
 conflicts=(${pkgname}-git)
