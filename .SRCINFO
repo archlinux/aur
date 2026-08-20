@@ -1,6 +1,6 @@
 pkgbase = git-profile-switcher-git
 	pkgdesc = Cross-platform desktop tray app for managing multiple Git identities
-	pkgver = 1.1.0.r4.g9fda387
+	pkgver = 1.2.0.r0.g9164785
 	pkgrel = 1
 	url = https://github.com/Kinau-Guatemala/git-profile-switcher
 	arch = x86_64
