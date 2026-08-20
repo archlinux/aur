@@ -1,7 +1,7 @@
 # Maintainer: Nakanomk <56832666+Nakanomk@users.noreply.github.com>
 
 pkgname=seekey-git
-pkgver=0.2.1.r25.gd5b4753
+pkgver=0.2.3.r34.ge37dcff
 pkgrel=1
 pkgdesc='Wayland keyboard visualizer with floating key bubbles (git version)'
 arch=('x86_64')
@@ -16,6 +16,7 @@ depends=(
   'json-glib'
   'libevdev'
   'ncurses'
+  'pango'
 )
 makedepends=(
   'gettext'
