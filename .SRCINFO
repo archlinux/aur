@@ -1,0 +1,14 @@
+pkgbase = hell-git
+	pkgdesc = hell: kill autotools
+	pkgver = r77.e36ad42
+	pkgrel = 1
+	url = https://codeberg.org/shrub900/hell
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	provides = hell
+	conflicts = hell
+	source = git+https://codeberg.org/shrub900/hell.git
+	sha512sums = SKIP
+
+pkgname = hell-git
