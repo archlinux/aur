@@ -3,6 +3,7 @@ pkgbase = vgs-shell
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/vanillagreencom/vgs
+	install = vgs-shell.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
@@ -66,18 +67,13 @@ pkgbase = vgs-shell
 	optdepends = xterm: terminal for VGS terminal actions
 	optdepends = yazi: terminal file manager for the launcher Yazi folder opener
 	optdepends = zoxide: launcher recent-directory search
+	provides = notification-daemon
+	conflicts = notification-daemon
+	conflicts = mako
+	conflicts = swaync
 	source_x86_64 = https://github.com/vanillagreencom/vgs/releases/download/v0.2.0/vgs-0.2.0-linux-x86_64.tar.gz
 	sha256sums_x86_64 = 317aaa5aa2421504cc7e510b2b033c3d84dda5731d23e7c32ce191b5593c8b7e
 	source_aarch64 = https://github.com/vanillagreencom/vgs/releases/download/v0.2.0/vgs-0.2.0-linux-aarch64.tar.gz
 	sha256sums_aarch64 = eeeb7ee23c73794f993dcdcb36e97bd21c153eb309e07f3f67407f8deae108ed
 
 pkgname = vgs-shell
-	install = vgs-shell.install
-	provides = notification-daemon
-	conflicts = notification-daemon
-	conflicts = mako
-	conflicts = swaync
-
-pkgname = vgs-shell-assets
-	pkgdesc = Optional VGS themes, wallpapers, and bundled icon themes
-	depends = vgs-shell=0.2.0-1

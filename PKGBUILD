@@ -1,4 +1,4 @@
-pkgname=('vgs-shell' 'vgs-shell-assets')
+pkgname=vgs-shell
 pkgver=0.2.0
 pkgrel=1
 pkgdesc='VanillaGreen desktop shell for Hyprland and Niri'
@@ -84,26 +84,18 @@ source_aarch64=("$url/releases/download/v$pkgver/vgs-$pkgver-linux-aarch64.tar.g
 sha256sums_x86_64=('317aaa5aa2421504cc7e510b2b033c3d84dda5731d23e7c32ce191b5593c8b7e')
 sha256sums_aarch64=('eeeb7ee23c73794f993dcdcb36e97bd21c153eb309e07f3f67407f8deae108ed')
 
-package_vgs-shell() {
-  install='vgs-shell.install'
-  # Two notification daemons cannot share org.freedesktop.Notifications: it is a
-  # first-come, first-served session bus name, and a pre-installed daemon usually
-  # wins it by D-Bus activation before VGS ever registers, leaving the shell's
-  # notification center permanently empty. VGS is a notification daemon, so it
-  # declares that the way pacman understands it. `vshell notifications takeover`
-  # handles a daemon installed some other way.
-  provides=('notification-daemon')
-  conflicts=('notification-daemon' 'mako' 'swaync')
+install='vgs-shell.install'
+# Two notification daemons cannot share org.freedesktop.Notifications: it is a
+# first-come, first-served session bus name, and a pre-installed daemon usually
+# wins it by D-Bus activation before VGS ever registers, leaving the shell's
+# notification center permanently empty. VGS is a notification daemon, so it
+# declares that the way pacman understands it. `vshell notifications takeover`
+# handles a daemon installed some other way.
+provides=('notification-daemon')
+conflicts=('notification-daemon' 'mako' 'swaync')
 
+package() {
   cd "vgs-$pkgver-linux-$CARCH"
   sed -i 's|^#!/bin/env bash$|#!/usr/bin/env bash|' config/vshell/nvim/colorschemes/tokyonight.nvim/scripts/{build,docs}
   DESTDIR="$pkgdir" VGS_THEME_BUNDLE=core VGS_BACKEND_BINARY="$PWD/bin/vshell-backend" packaging/install-system.sh
-}
-
-package_vgs-shell-assets() {
-  pkgdesc='Optional VGS themes, wallpapers, and bundled icon themes'
-  depends=("vgs-shell=$pkgver-$pkgrel")
-
-  cd "vgs-$pkgver-linux-$CARCH"
-  DESTDIR="$pkgdir" VGS_THEME_BUNDLE=extras packaging/install-system.sh
 }
