@@ -1,0 +1,16 @@
+pkgbase = alsachain-bin
+	pkgdesc = Safe ALSA alsaequal virtual PCM manager
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/mikelexp/alsachain
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = alsa-lib
+	depends = alsa-utils
+	depends = caps
+	depends = alsaequal
+	source = https://github.com/mikelexp/alsachain/releases/download/v0.1.1/alsachain-0.1.1-linux-x86_64.tar.gz
+	sha256sums = e557aae07afe454e5b738fd753a40622fbb92475777bad6743461092f8ed56e4
+
+pkgname = alsachain-bin
