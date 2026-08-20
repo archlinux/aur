@@ -4,11 +4,11 @@ pkgname=foldmason-bin
 _pkgname=foldmason
 _tag=4-dd3c235
 pkgver=4_dd3c235
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiple protein structure alignment at scale"
 arch=('x86_64')
 url="https://github.com/steineggerlab/foldmason"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=()
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
