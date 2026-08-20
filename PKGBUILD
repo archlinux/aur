@@ -2,7 +2,7 @@
 # Contributor:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 pkgname=bananas-bin
 _pkgname=Bananas
-pkgver=0.2.0
+pkgver=0.2.1
 _electronversion=31
 pkgrel=1
 pkgdesc="Simple peer-to-peer screen sharing tool without account or server requirements.(Prebuilt version.Use system-wide electron)"
@@ -24,8 +24,8 @@ source=(
 )
 sha256sums=('5ba8d10757c4ce9b880422e3746897d89b27647febd1f70ab5021f9ac10ade95'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('b547055c8d3868a0c07ae4ea9a53d97c98c3ba17e96329a7e34dd0a3f07d59ce')
-sha256sums_x86_64=('04927b9df7fef29739cbda9bde285c923743253ec464251abd09badd2d754495')
+sha256sums_aarch64=('0771d01447971998e5038a07adb2c549bb23e7d4f335c2fdce129885f4941400')
+sha256sums_x86_64=('5f4dfbab1b46b7ebdce672f8072e5911b27323eb3817aee05cea4d0dcee242a0')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
