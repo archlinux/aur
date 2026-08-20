@@ -1,7 +1,7 @@
 pkgbase = zilch-git
-	pkgdesc = Small, fast, self-contained android de-bloat tool.
+	pkgdesc = Small, fast, self-contained android de-bloat tool. Follow-up of 'droidrunco'.
 	pkgver = 1.1.0.r48.20260805.48af27a
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lavafroth/zilch
 	arch = aarch64
 	arch = armv7h
