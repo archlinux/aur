@@ -1,0 +1,17 @@
+pkgbase = findmylinux-anisette
+	pkgdesc = Anisette (Apple device-attestation) daemon for findmylinux, built from anisette-v3-server
+	pkgver = 2.2.2
+	pkgrel = 1
+	url = https://github.com/Dadoum/anisette-v3-server
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = ldc
+	makedepends = dub
+	makedepends = git
+	depends = openssl
+	source = git+https://github.com/Dadoum/anisette-v3-server.git#commit=2ef18d7da2abe3a6d070aa478f774538b947aaa2
+	source = findmylinux-anisette.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = findmylinux-anisette

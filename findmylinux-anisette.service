@@ -1,0 +1,13 @@
+[Unit]
+Description=Anisette daemon for findmylinux (Apple device attestation)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/findmylinux-anisette --host 127.0.0.1 --port 6969 --adi-path %h/.local/share/findmylinux/anisette
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
