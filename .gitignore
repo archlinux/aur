@@ -1,0 +1,9 @@
+# Ignore everything by default.
+*
+
+# Files intentionally tracked in the AUR repository.
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!chirp.desktop
+!chirp.png

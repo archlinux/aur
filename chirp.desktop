@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=CHIRP
+GenericName=Radio Programming Tool
+Comment=Program amateur radios
+Exec=chirp %F
+Icon=chirp
+Terminal=false
+Categories=HamRadio;Utility;
+StartupNotify=true
