@@ -1,5 +1,5 @@
 # Maintainer: xscriptor xscriptordev x@xscriptor.com
-pkgname=xfetch-bin
+pkgname=xfetch-bin-cli
 pkgver=0.7.0
 pkgrel=1
 pkgdesc="Custom system information tool for X (Rust) - precompiled binary"

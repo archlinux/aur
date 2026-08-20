@@ -1,4 +1,4 @@
-pkgbase = xfetch-bin
+pkgbase = xfetch-bin-cli
 	pkgdesc = Custom system information tool for X (Rust) - precompiled binary
 	pkgver = 0.7.0
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = xfetch-bin
 	source_aarch64 = https://github.com/xfetch-cli/xfetch/releases/download/v0.7.0/xfetch-0.7.0-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = 862543861e2c2a46ef4073fbceba68e8882082d445ce03de904b02fba87430ac
 
-pkgname = xfetch-bin
+pkgname = xfetch-bin-cli
