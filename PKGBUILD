@@ -1,13 +1,13 @@
 # Maintainer: kevku <kevku@gmx.com>
 pkgname=qdigidoc4
-pkgver=4.10.0.5402
-_rls_tag=v4.10.0
+pkgver=4.11.0.5421
+_rls_tag=v4.11.0
 pkgrel=1
 pkgdesc="DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc."
 arch=('x86_64')
 url="https://www.id.ee/"
 license=('LGPL-2.1-or-later')
-depends=('zlib' 'openssl' 'libdigidocpp>=4.4.0' 'libldap' 'pcsclite' 'opensc' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
+depends=('zlib' 'openssl' 'libdigidocpp>=4.5.0' 'libldap' 'pcsclite' 'opensc' 'qt6-base' 'qt6-svg' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'gettext' 'flatbuffers' 'qt6-tools' 'qt6-translations')
 optdepends=('ccid: Smart Card support'
             'python-nautilus: Nautilus Extension')
@@ -19,7 +19,7 @@ source=("$pkgname-$pkgver::git+https://github.com/open-eid/DigiDoc4-Client.git?s
         "config.json-$pkgver::https://id.eesti.ee/config.json"
         "config.rsa-$pkgver::https://id.eesti.ee/config.rsa"
         "config.pub-$pkgver::https://id.eesti.ee/config.pub")
-sha256sums=('8b06880b9b7ee9832abe1af88491994344d1f0324660da15dcec8fd2ab5b95c3'
+sha256sums=('5aa57a9f4f6a1218050da0f6744530b236d2318524739530ad7677117b1f8fca'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 validpgpkeys=(
     'D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D'  # Raul Metsma https://github.com/metsma.gpg

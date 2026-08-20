@@ -1,6 +1,6 @@
 pkgbase = qdigidoc4
 	pkgdesc = DigiDoc4 Client is an application for digitally signing and encrypting documents; the software includes functionality to manage Estonian ID-card - change pin codes, update certificates etc.
-	pkgver = 4.10.0.5402
+	pkgver = 4.11.0.5421
 	pkgrel = 1
 	url = https://www.id.ee/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = qdigidoc4
 	makedepends = qt6-translations
 	depends = zlib
 	depends = openssl
-	depends = libdigidocpp>=4.4.0
+	depends = libdigidocpp>=4.5.0
 	depends = libldap
 	depends = pcsclite
 	depends = opensc
@@ -22,16 +22,16 @@ pkgbase = qdigidoc4
 	depends = hicolor-icon-theme
 	optdepends = ccid: Smart Card support
 	optdepends = python-nautilus: Nautilus Extension
-	source = qdigidoc4-4.10.0.5402::git+https://github.com/open-eid/DigiDoc4-Client.git?signed#tag=v4.10.0
+	source = qdigidoc4-4.11.0.5421::git+https://github.com/open-eid/DigiDoc4-Client.git?signed#tag=v4.11.0
 	source = open-eid-common::git+https://github.com/open-eid/qt-common.git
 	source = open-eid-libcdoc::git+https://github.com/open-eid/libcdoc.git
-	source = eu-lotl.xml-4.10.0.5402::https://ec.europa.eu/tools/lotl/eu-lotl.xml
-	source = EE.xml-4.10.0.5402::https://sr.riik.ee/tsl/estonian-tsl.xml
-	source = config.json-4.10.0.5402::https://id.eesti.ee/config.json
-	source = config.rsa-4.10.0.5402::https://id.eesti.ee/config.rsa
-	source = config.pub-4.10.0.5402::https://id.eesti.ee/config.pub
+	source = eu-lotl.xml-4.11.0.5421::https://ec.europa.eu/tools/lotl/eu-lotl.xml
+	source = EE.xml-4.11.0.5421::https://sr.riik.ee/tsl/estonian-tsl.xml
+	source = config.json-4.11.0.5421::https://id.eesti.ee/config.json
+	source = config.rsa-4.11.0.5421::https://id.eesti.ee/config.rsa
+	source = config.pub-4.11.0.5421::https://id.eesti.ee/config.pub
 	validpgpkeys = D1EBC666EFCBFBD3CFC2EBAA90C0B5E75C3B195D
-	sha256sums = 8b06880b9b7ee9832abe1af88491994344d1f0324660da15dcec8fd2ab5b95c3
+	sha256sums = 5aa57a9f4f6a1218050da0f6744530b236d2318524739530ad7677117b1f8fca
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
