@@ -1,0 +1,47 @@
+diff --git a/rust_builder/cargokit/build_tool/lib/src/builder.dart b/rust_builder/cargokit/build_tool/lib/src/builder.dart
+index 84c46e4f..c0cfdc5b 100644
+--- a/rust_builder/cargokit/build_tool/lib/src/builder.dart
++++ b/rust_builder/cargokit/build_tool/lib/src/builder.dart
+@@ -118,16 +118,6 @@ class RustBuilder {
+   void prepare(
+     Rustup rustup,
+   ) {
+-    final toolchain = _toolchain;
+-    if (rustup.installedTargets(toolchain) == null) {
+-      rustup.installToolchain(toolchain);
+-    }
+-    if (toolchain == 'nightly') {
+-      rustup.installRustSrcForNightly();
+-    }
+-    if (!rustup.installedTargets(toolchain)!.contains(target.rust)) {
+-      rustup.installTarget(target.rust, toolchain: toolchain);
+-    }
+   }
+ 
+   CargoBuildOptions? get _buildOptions =>
+@@ -140,11 +130,8 @@ class RustBuilder {
+     final extraArgs = _buildOptions?.flags ?? [];
+     final manifestPath = path.join(environment.manifestDir, 'Cargo.toml');
+     runCommand(
+-      'rustup',
++      'cargo',
+       [
+-        'run',
+-        _toolchain,
+-        'cargo',
+         'build',
+         ...extraArgs,
+         '--manifest-path',
+diff --git a/rust_builder/cargokit/build_tool/lib/src/rustup.dart b/rust_builder/cargokit/build_tool/lib/src/rustup.dart
+index 0d2f3a12..e1b5c6d8 100644
+--- a/rust_builder/cargokit/build_tool/lib/src/rustup.dart
++++ b/rust_builder/cargokit/build_tool/lib/src/rustup.dart
+@@ -48,7 +48,7 @@ class Rustup {
+ 
+   final List<_Toolchain> _installedToolchains;
+ 
+-  Rustup() : _installedToolchains = _getInstalledToolchains();
++  Rustup() : _installedToolchains = [];
+ 
+   List<String>? _installedTargets(String toolchain) => _installedToolchains
+       .firstWhereOrNull(
