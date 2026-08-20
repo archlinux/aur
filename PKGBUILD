@@ -11,7 +11,7 @@
 # Linux (see companion/tennoworth-desktop/src/update.rs).
 
 pkgname=tennoworth
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="Warframe inventory + market dashboard — see what's worth selling right now"
 arch=('x86_64')
@@ -22,16 +22,16 @@ license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'openssl')
 # `cargo` rather than `rust`: it is a virtual provide satisfied by either the
 # rust package or rustup, so this doesn't force toolchain-manager users to
-# install a second copy. bun builds the SPA; nodejs runs scripts/sync-csp.mjs,
+# install a second copy. bun builds the SPA and runs scripts/sync-csp.ts,
 # which the frontend build shells out to.
-makedepends=('cargo' 'bun' 'nodejs')
+makedepends=('cargo' 'bun')
 # Grants cap_sys_ptrace so the first inventory scan works without the user
 # hitting an error and being told to open a terminal. Re-runs on upgrade
 # because replacing the binary clears file capabilities.
 install=tennoworth.install
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/desktop-v$pkgver.tar.gz")
-sha256sums=('db6d06fc40d3280f8724c6bc4291792eb0f7f608ff2bb26079bf163974f95c49')
+sha256sums=('46426afad27fedb6baeb35268411dc63008033d86d882a9507ce27b853c7c5fe')
 
 _srcdir="tennoworth-desktop-v$pkgver"
 
