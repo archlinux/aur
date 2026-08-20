@@ -1,19 +1,19 @@
 pkgbase = nimlaunch-bin
 	pkgdesc = NimLaunch in SDL3 for native X11 and Wayland (keyboard-first launcher) - Pre-built binary
-	pkgver = 0.11.2
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://github.com/Vyrnexis/NimLaunch
 	arch = x86_64
 	license = MIT
-	provides = nimlaunch
-	conflicts = nimlaunch
-	conflicts = nimlaunch-git
 	depends = sdl3
 	depends = sdl3_ttf
 	depends = sdl3_image
 	depends = ttf-dejavu
-	source = nimlaunch-0.11.2::https://github.com/Vyrnexis/NimLaunch/releases/download/v0.11.2/nimlaunch
-	source = LICENSE-0.11.2::https://raw.githubusercontent.com/Vyrnexis/NimLaunch/v0.11.2/LICENSE
+	provides = nimlaunch
+	conflicts = nimlaunch
+	conflicts = nimlaunch-git
+	source = nimlaunch-0.11.3::https://github.com/Vyrnexis/NimLaunch/releases/download/v0.11.3/nimlaunch
+	source = LICENSE-0.11.3::https://raw.githubusercontent.com/Vyrnexis/NimLaunch/v0.11.3/LICENSE
 	sha256sums = ee2e6882c79df60be9b79a26195e920767e9fad0f7aa6c4830eb9a54407b51fd
 	sha256sums = e034e1daf773989e34bacd11dc3a7014109b08d3c5b430089e7e4fa0c1ab12d2
 

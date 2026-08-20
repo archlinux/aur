@@ -1,7 +1,7 @@
 # Maintainer: Vyrnexis
 
 pkgname=nimlaunch-bin
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="NimLaunch in SDL3 for native X11 and Wayland (keyboard-first launcher) - Pre-built binary"
 arch=('x86_64')
