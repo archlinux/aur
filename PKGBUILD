@@ -2,13 +2,13 @@
 
 pkgname="python-pdbpp-git"
 pkgver="0.12.1.r1.g93db837"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="pdb++, a drop-in replacement for pdb"
 arch=("any")
 url="https://github.com/bretello/pdbpp"
 license=("BSD")
 depends=("python" "python-fancycompleter" "python-pygments")
-optdepends=("python-pyrepl-git")
+makedepends=("git" "python-build" "python-installer" "python-setuptools" "python-setuptools-scm" "python-wheel")
 options=(!emptydirs)
 conflicts=("${pkgname%-*}")
 provides=("${pkgname%-*}=${pkgver}")
