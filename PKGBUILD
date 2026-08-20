@@ -1,7 +1,7 @@
 # Maintainer: Jimmy <jimmy@somewm.org>
 pkgname=somewm
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="AwesomeWM ported to Wayland - 100% Lua API compatible"
 arch=('x86_64')
 url="https://github.com/trip-zip/somewm"
@@ -11,32 +11,21 @@ depends=(
     'dbus'
     'gdk-pixbuf2'
     'glib2'
-    'libdisplay-info'
-    'libdrm'
     'libinput'
-    'libliftoff'
     'libxcb'
     'libxkbcommon'
     'lua51-lgi'
     'luajit'
+    'pam'
     'pango'
-    'pixman'
-    'seatd'
-    'vulkan-icd-loader'
     'wayland'
-    'xcb-util-errors'
-    'xcb-util-renderutil'
+    'wlroots0.20'
     'xcb-util-wm'
 )
 makedepends=(
-    'glslang'
-    'hwdata'
     'meson'
     'ninja'
-    'vulkan-headers'
     'wayland-protocols'
-    'xcb-util'
-    'xorg-xwayland'
 )
 optdepends=(
     'xorg-xwayland: X11 application support'
@@ -57,5 +46,5 @@ build() {
 
 package() {
     cd "$pkgname-$pkgver"
-    meson install -C build --destdir "$pkgdir" --skip-subprojects wlroots
+    meson install -C build --destdir "$pkgdir" --skip-subprojects
 }
