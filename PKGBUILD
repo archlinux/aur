@@ -3,7 +3,7 @@
 _electronversion=""
 _pkgname=hhd-ui
 pkgname=$_pkgname
-pkgver=3.4.0
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Configurator interface for Handheld Daemon."
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('hhd: a version of Handheld Daemon to connect to (also works over th
 makedepends=('asar' 'libxss' 'npm')
 _srcname=hhd-ui
 source=("git+https://github.com/hhd-dev/hhd-ui.git#tag=v${pkgver}")
-sha512sums=('39eaa537ffc6a65e8f2171924585ebd977bdeaac83553d021a8f574edf2b10e6fe62491d2385f2211fade68161d99ab5a44dab79375b2054183ed25a2aa95540')
+sha512sums=('6301a12e4a992993a887dafcbb9e864616a8b440050bc6f871670ac9a422716a0d5b6edf95ac4ea5b6c2b858db3dd8325332c6dffd1f3ac2c404d3994f87e444')
 
 prepare() {
 	export ELECTRONVERSION=$_electronversion
