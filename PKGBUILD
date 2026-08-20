@@ -13,9 +13,6 @@ url="https://radicle.dev"
 depends=(
 	'glibc'
 	'libgcc'
-	'zlib'
-	'git'
-	'openssh'
 	'libgit2' 'libgit2.so'
 )
 makedepends=(
