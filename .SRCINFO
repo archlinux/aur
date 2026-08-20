@@ -1,6 +1,6 @@
 pkgbase = grabclip-git
 	pkgdesc = Native GTK media downloader for Linux
-	pkgver = r1.8b0201b
+	pkgver = r5.4fe68b2
 	pkgrel = 1
 	url = https://gitlab.com/garethmcc/grabclip
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = grabclip-git
 	depends = libadwaita
 	depends = yt-dlp
 	depends = ffmpeg
+	depends = deno
 	provides = grabclip
 	conflicts = grabclip
 	source = git+https://gitlab.com/garethmcc/grabclip.git
