@@ -1,10 +1,10 @@
 pkgbase = igblast
 	pkgdesc = NCBI IgBLAST: immunoglobulin and T-cell receptor sequence annotation
 	pkgver = 1.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ncbi.nlm.nih.gov/igblast/
 	arch = x86_64
-	license = Public Domain
+	license = LicenseRef-Public-Domain
 	depends = zlib
 	depends = bzip2
 	optdepends = blast+: makeblastdb for formatting germline databases
