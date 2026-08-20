@@ -2,7 +2,7 @@
 pkgname=mercurygram-desktop-bin
 _pkgname=mercurygram
 pkgver=7.0.9.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Mercurygram Desktop messaging app'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mercurygram/mdesktop"
@@ -62,13 +62,12 @@ sha256sums_aarch64=('86e14f658986c98146b8f4b0905bfabb8c86f33f6808bb0530da1428c37
 package() {
   install -Dm755 ${_pkgname^} "$pkgdir/usr/bin/${_pkgname}"
   install -Dm755 Updater "$pkgdir/usr/lib/${_pkgname}/Updater"
-  install -Dm644 "$srcdir/it.belloworld.${_pkgname}.desktop" \
-    "$pkgdir/usr/share/applications/it.belloworld.${_pkgname}.desktop"
+  install -Dm644 "$srcdir/${_pkgname}-${pkgver}.desktop" "$pkgdir/usr/share/applications/it.belloworld.${_pkgname}.desktop"
 
   # Install icons
   for size in 16 32 48 64 128 256 512; do
-    if [ -f "$srcdir/${pkgname}-icon${size}.png" ]; then
-      install -Dm644 "$srcdir/${pkgname}-icon${size}.png" \
+    if [ -f "$srcdir/${_pkgname}-icon${size}.png" ]; then
+      install -Dm644 "$srcdir/${_pkgname}-icon${size}.png" \
         "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/it.belloworld.${_pkgname}.png"
     fi
   done

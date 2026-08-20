@@ -1,7 +1,7 @@
 pkgbase = mercurygram-desktop-bin
 	pkgdesc = Mercurygram Desktop messaging app
 	pkgver = 7.0.9.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Mercurygram/mdesktop
 	arch = x86_64
 	arch = aarch64
