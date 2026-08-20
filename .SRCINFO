@@ -1,0 +1,19 @@
+pkgbase = timerun-git
+	pkgdesc = High-performance dynamic POSIX time-interception & diagnostics suite for Linux
+	pkgver = 1.0.0.r7.g7deb602
+	pkgrel = 1
+	url = https://github.com/AndresDev859674/timerun
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	provides = timerun
+	provides = timeeye
+	conflicts = timerun
+	conflicts = timeeye
+	source = git+https://github.com/AndresDev859674/timerun.git
+	sha256sums = SKIP
+
+pkgname = timerun-git
