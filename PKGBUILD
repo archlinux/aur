@@ -2,16 +2,20 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin symlink name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v2026.7.7.2
-pkgver=0.18.2
+_pkgver_tag=v2026.8.18
+_commit=e624e9fde561e1add9388384012b295fde669ade
+pkgver=0.20.4
 pkgrel=1
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
 license=('MIT')
 depends=(
-  'alsa-lib' 'at-spi2-core' 'dbus' 'gtk3' 'hicolor-icon-theme'
-  'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss' 'util-linux-libs' 'xdg-utils'
+  'alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'gtk3'
+  'hicolor-icon-theme' 'libcups' 'libnotify' 'libsecret' 'libx11' 'libxcb'
+  'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr'
+  'libxss' 'libxtst' 'mesa' 'nspr' 'nss' 'pango' 'systemd-libs'
+  'util-linux-libs' 'xdg-utils'
 )
 optdepends=(
   'git: bootstrap and self-update the Hermes Agent runtime on first launch'
@@ -19,11 +23,11 @@ optdepends=(
   'python: run the Hermes Agent runtime locally'
   'uv: bootstrap the Hermes Agent runtime on first launch'
 )
-makedepends=('base-devel' 'git' 'nodejs>=22' 'npm')
+makedepends=('nodejs>=22.22' 'npm')
 conflicts=('hermes-agent-desktop-bin')
 options=('!strip' '!debug')
 source=("hermes-agent-${_pkgver_tag}.tar.gz::${url}/archive/refs/tags/${_pkgver_tag}.tar.gz")
-sha256sums=('f5d1022eed3763a768cf7b0f0844831f0170a35f54eb8d18223f2e93f503025e')
+sha256sums=('1e3d39d3638ec15fa9d31af262568a953e9272090deb1c50c44cd401175f5b80')
 
 # NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
 # it inside the function scope of prepare()/build()/package(). Computing the
@@ -34,32 +38,17 @@ _extract_dir() {
   echo "${srcdir}/hermes-agent-${_pkgver_tag#v}"
 }
 
-# makepkg runs prepare()/build()/package() in separate subshells — env vars
-# set in one are invisible to the next.  Factor the tag→SHA resolution into
-# a helper so both prepare() and build() can call it.
-_resolve_tag_sha() {
-  git ls-remote "https://github.com/NousResearch/hermes-agent" \
-    "refs/tags/${_pkgver_tag}^{}" 2>/dev/null | awk '{print $1}'
-}
-
 prepare() {
   cd "$(_extract_dir)"
-  # The release commit message bumps the Hermes Agent version (0.18.2) but
+  # The release identifies Hermes Agent as 0.20.4, but
   # apps/desktop/package.json is not bumped — it still says 0.17.0. Patch
   # it here so pkgver matches the release.
   npm pkg set version=${pkgver} --prefix apps/desktop
-  # write-build-stamp.cjs (run by apps/desktop's `build` script) needs a git
-  # commit SHA to stamp the packaged installer. The release tarball has no
-  # .git/ so `git rev-parse HEAD` fails — peel the tag with `^{}` to handle
-  # annotated tags and fetch the commit SHA from GitHub.
-  local GITHUB_SHA
-  GITHUB_SHA=$(_resolve_tag_sha)
-  if [ -z "${GITHUB_SHA:-}" ]; then
-    printf 'ERROR: Could not resolve %s to a commit SHA via git ls-remote.\n' "${_pkgver_tag}"
-    return 1
-  fi
-  export GITHUB_SHA GITHUB_REF_NAME="${_pkgver_tag}"
-  npm install --prefer-offline --no-audit --ignore-scripts
+  # The source archive has no .git directory. Pin the peeled release commit
+  # locally so the bundled install stamp is reproducible and does not require
+  # another network lookup during prepare()/build().
+  export GITHUB_SHA="${_commit}" GITHUB_REF_NAME="${_pkgver_tag}"
+  npm ci --prefer-offline --no-audit --ignore-scripts
   # Node-pty's prebuilt binary is downloaded by its install.js script via
   # prebuild-install.  --ignore-scripts above skips it entirely, leaving
   # the staged package with JS source but no .node binary — PTY fails at
@@ -69,16 +58,8 @@ prepare() {
 
 build() {
   cd "$(_extract_dir)/apps/desktop"
-  # write-build-stamp.cjs needs GITHUB_SHA / GITHUB_REF_NAME.  makepkg runs
-  # build() in a separate subshell from prepare(), so we must re-resolve and
-  # export here.
-  local GITHUB_SHA
-  GITHUB_SHA=$(_resolve_tag_sha)
-  if [ -z "${GITHUB_SHA:-}" ]; then
-    printf 'ERROR: Could not resolve %s to a commit SHA via git ls-remote.\n' "${_pkgver_tag}"
-    return 1
-  fi
-  export GITHUB_SHA GITHUB_REF_NAME="${_pkgver_tag}"
+  # makepkg runs build() in a separate subshell from prepare().
+  export GITHUB_SHA="${_commit}" GITHUB_REF_NAME="${_pkgver_tag}"
   # electron-builder's FPM target (.deb/.rpm) requires a `homepage` in
   # package.json's `build` section. Upstream omits it because they ship
   # via the website installer rather than FPM. Inject it here so the
@@ -102,6 +83,11 @@ build() {
   npm run builder -- --linux dir
 }
 
+check() {
+  cd "$(_extract_dir)"
+  npm run test --workspace apps/desktop
+}
+
 package() {
   cd "$(_extract_dir)"
   local appdir="apps/desktop/release/linux-unpacked"
@@ -113,6 +99,11 @@ package() {
   install -dm755 "${pkgdir}/opt/${pkgname}"
   cp -a "${appdir}/." "${pkgdir}/opt/${pkgname}/"
   chmod 755 "${pkgdir}/opt/${pkgname}/${_upstream}"
+  # Chromium refuses to start with its sandbox enabled unless the helper is
+  # root-owned and setuid. Files under pkgdir are already owned by root when
+  # packaged; preserve the required mode explicitly because cp -a only keeps
+  # the upstream release directory's ordinary 0755 mode.
+  chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "/opt/${pkgname}/${_upstream}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" <<EOF
@@ -125,7 +116,7 @@ Terminal=false
 Type=Application
 Icon=${_upstream,,}
 StartupWMClass=${_upstream}
-Categories=Utility;Development;Network;
+Categories=Development;
 Keywords=AI;Agent;Chat;Assistant;
 MimeType=x-scheme-handler/hermes;
 EOF
