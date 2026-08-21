@@ -1,6 +1,6 @@
 # Maintainer: ralf <ralf.wierzbicki@gmail.com>
 pkgname=asteroidz-bar
-pkgver=0.1.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='The asteroidz shell: status bar and HDR10 wallpaper, out of the compositor'
 arch=('x86_64')
@@ -14,14 +14,23 @@ depends=(
   # The wallpaper's, which the QML plugin links statically -- there is no
   # separate wallpaper program any more, so these are this package's own.
   'cairo' 'wayland' 'gdk-pixbuf2' 'libjxl' 'libavif'
+  # Apple dynamic wallpapers: several images in one HEIC, of which gdk-pixbuf
+  # only ever returns the primary one. libpng writes out the frame that is
+  # pulled from it.
+  'libheif' 'libpng'
 )
 makedepends=('meson' 'ninja' 'wayland-protocols' 'git')
+# It owns org.freedesktop.Notifications itself, so it satisfies anything asking
+# for a notification daemon. Not `conflicts`: having swaync installed is fine,
+# running it alongside this is what does not work, and that is a session
+# question rather than a packaging one.
+provides=('notification-daemon')
 optdepends=(
   'asteroidz: the compositor this draws the bar for'
   'cava: the media visualiser'
-  'swaync: the notification bell'
   'pipewire: the volume module'
-  'grim: contrib/parity.sh and contrib/tray-test.sh'
+  'pipewire-audio: audible notifications (pw-play)'
+  'grim: contrib/tray-test.sh'
 )
 # The released tag, not the local checkout. This is the same shape asteroidz's
 # PKGBUILD has, and it is what makes the package publishable to the AUR at all:
