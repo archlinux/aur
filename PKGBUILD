@@ -15,7 +15,7 @@ url="https://github.com/dafagareth/svault"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dafagareth/svault/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('36780a3fd66c867e2536ccd69c6b132dff9378d51938bec41498a0b3deaff4d8')
+sha256sums=('0f5f26c9edc0a6f7288c5597c67a36711297e607897a4ba1e4f4017a9e0773d5')
 
 build() {
   cd "svault-$pkgver"
