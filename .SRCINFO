@@ -1,6 +1,6 @@
 pkgbase = spark-store-console-bin
 	pkgdesc = Spark Store, A community powered app store, based on DTK. (Console version)
-	pkgver = 4.8.1
+	pkgver = 4.8.1_console2
 	pkgrel = 1
 	url = https://www.spark-app.store/
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = spark-store-console-bin
 	depends = lsb-release
 	depends = gnupg
 	provides = spark-store-console
-	source_x86_64 = spark-store-console_4.8.1-console_all.deb::https://gitee.com/spark-store-project/spark-store/releases/download/4.8.1/spark-store-console_4.8.1-console_all.deb
-	sha256sums_x86_64 = d034d46ef246d69c4fa950a54a4e8a91857816edf267bd2817b0ff52911d2360
+	source_x86_64 = spark-store-console_4.8.1-console2_all.deb::https://gitee.com/spark-store-project/spark-store/releases/download/5.0.1/spark-store-console_4.8.1-console2_all.deb
+	sha256sums_x86_64 = 91040e57d3369f416ebd169b0388f08d6bb50a514369d52d8748dc53fd312490
 
 pkgname = spark-store-console-bin
