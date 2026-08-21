@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=opencode-desktop
-pkgver=1.18.19
+pkgver=1.18.20
 pkgrel=1
 pkgdesc='OpenCode desktop app (built from source, runs on system electron42)'
 arch=('x86_64' 'aarch64')
@@ -9,6 +9,8 @@ url='https://github.com/anomalyco/opencode'
 license=('MIT')
 depends=(
   'electron42'
+  'gcc-libs'
+  'glibc'
   'hicolor-icon-theme'
 )
 makedepends=(
