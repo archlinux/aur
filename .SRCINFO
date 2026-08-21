@@ -1,6 +1,6 @@
 pkgbase = extera-next-bin
 pkgdesc = A feature-rich Matrix client made with Flutter
-pkgver = 26.4.31
+pkgver = 26.4.8
 pkgrel = 1
 url = https://github.com/ExteraApp/Extera
 arch = x86_64
@@ -18,7 +18,7 @@ provides = extera-next-bin
 ; provides = exteranext-git
 conflicts = extera-next-bin
 ; conflicts = exteranext-git
-source = bundle.tar.gz::https://extera.xyz/next/bundle.tar.gz
+source = bundle.tar.gz::https://get.extera.xyz/v26.4.8/linux-x64.tar.gz
 sha256sums = SKIP
 
 pkgname = extera-next-bin

@@ -1,5 +1,5 @@
 pkgname=extera-next-bin
-pkgver=26.4.31
+pkgver=26.4.8
 pkgrel=1
 pkgdesc="A feature-rich Matrix client made in Flutter"
 arch=('x86_64')
@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=('curl')
 source=(
-  "bundle.tar.gz::https://extera.xyz/next/bundle.tar.gz"
+  "bundle.tar.gz::https://get.extera.xyz/v26.4.8/linux-x64.tar.gz"
 )
 sha256sums=('SKIP')
 
