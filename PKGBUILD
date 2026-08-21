@@ -17,6 +17,7 @@ depends=(
   'python-polib'
   'python-pyqt6'
   'python-qtpy'
+  'qt6-svg'
 )
 makedepends=(
   'python-build'
