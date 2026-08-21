@@ -11,7 +11,7 @@ depends=('gtk4' 'libadwaita' 'iptables' 'ipset' 'curl' 'git' 'polkit')
 provides=("zapret-gtk=$pkgver")
 conflicts=('zapret-gtk-bin' 'zapret-gtk-git')
 source=("$pkgname-$pkgver.deb::https://taygun86.github.io/taygun86-repo/deb/zapret-gtk_${pkgver}-1_amd64.deb")
-sha256sums=('a61554818c18bb691c5ef97c97d20af4e3ac77e4ed18f0f763a18c06e3234682')
+sha256sums=('366bd5cf17a701767d1a21e1651c414d34ac8037068b6c8a7cead112bb0c81a7')
 
 package() {
   tar -xf data.tar.xz -C "$pkgdir/"
