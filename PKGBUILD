@@ -12,14 +12,14 @@
 # so building requires network access (standard for Gradle AUR packages).
 
 pkgname=nuvio-linux-git
-pkgver=r2259.gd27437f4
+pkgver=r2287.g713a18f9
 pkgrel=1
 pkgdesc="Nuvio Linux desktop media player — Linux native mpv playback (git)"
 arch=('x86_64')
 url="https://github.com/JJDizz1L/NuvioLinux"
 license=('custom:commercial')
 depends=('mpv' 'glibc' 'gcc-libs' 'libstdc++' 'libx11' 'libxext' 'libxrender' 'libxi' 'libxtst')
-makedepends=('git' 'jdk21-openjdk' 'gcc')
+makedepends=('git' 'jdk25-temurin' 'gcc')
 install=nuvio-linux-git.install
 provides=('nuvio-linux')
 conflicts=('nuvio-linux')
@@ -40,7 +40,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/NuvioLinux"
-  export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/java-21-openjdk}"
+  export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/java-25-temurin}"
 
   # generateRuntimeConfigs requires local.properties to exist (it is gitignored
   # and absent from the archive); write the public Supabase client config so
