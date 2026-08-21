@@ -1,0 +1,16 @@
+pkgbase = favico-bin
+	pkgdesc = A command-line utility for creating favicons
+	pkgver = 0.1.12
+	pkgrel = 1
+	url = https://github.com/sorairolake/favico
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = favico
+	conflicts = favico
+	source_x86_64 = favico-0.1.12-x86_64.tar.zst::https://github.com/sorairolake/favico/releases/download/v0.1.12/favico-v0.1.12-x86_64-unknown-linux-musl.tar.zst
+	sha256sums_x86_64 = fe767d86b93fe705935aee22470feb3afdd265606110f7f249d5f57507d724c3
+	source_aarch64 = favico-0.1.12-aarch64.tar.zst::https://github.com/sorairolake/favico/releases/download/v0.1.12/favico-v0.1.12-aarch64-unknown-linux-musl.tar.zst
+	sha256sums_aarch64 = 4ef2178c50c9f01ac82a9a6fbcb557784c7bed64babd307e2d3db0d0c954fb8f
+
+pkgname = favico-bin

@@ -1,0 +1,5 @@
+[favico-bin]
+source = "github"
+github = "sorairolake/favico"
+use_latest_release = true
+prefix = "v"
