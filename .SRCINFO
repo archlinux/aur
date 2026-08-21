@@ -1,5 +1,5 @@
 pkgbase = rura-git
-	pkgdesc = Interactive TUI pipeline editor built for rapid iteration.
+	pkgdesc = Interactive TUI pipeline editor built for rapid iteration
 	pkgver = v1.13.0.r0.gfd79ef3
 	pkgrel = 1
 	url = https://github.com/tlipinski/rura
