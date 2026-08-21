@@ -1,8 +1,8 @@
-@@ -32,7 +32,6 @@
- 
- .PHONY: pull-assets
- pull-assets:
+@@ -34,7 +34,6 @@
+ build-assets:
+ 	cd $(WEB_DIR) && pnpm install && pnpm check:types && pnpm build
+ 	cp $(WEB_DIR)/config/config.json.dist $(WEB_DIR)/dist/
 -	git clean -xfd assets
- 	curl --fail -slL -o- https://github.com/owncloud/web/releases/download/$(WEB_ASSETS_VERSION)/web.tar.gz | tar xzf - -C assets/core/
+ 	cp -r $(WEB_DIR)/dist/. assets/core/
  
  ############ licenses ############
