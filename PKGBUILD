@@ -47,6 +47,8 @@ package() {
   /usr/bin/find ${pkgdir} -name '.packlist' -delete
   /usr/bin/find ${pkgdir} -name '*.pod' -delete
 
+  find ${pkgdir} -type f -executable -name ipdiscover -exec strip --strip-all {} \;
+
   cd "$srcdir"
   install -D -m644 ocsinventory-agent.cfg "${pkgdir}/etc/ocsinventory/ocsinventory-agent.cfg"
   install -D -m644 modules.conf "${pkgdir}/etc/ocsinventory/modules.conf"
