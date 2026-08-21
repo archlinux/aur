@@ -1,7 +1,7 @@
 pkgbase = corplink-bin
 	pkgdesc = Linux client of Feilian (veCorpLink) from Bytedance.
-	pkgver = 3.1.18
-	pkgrel = 2
+	pkgver = 3.2.16
+	pkgrel = 1
 	url = https://www.volcengine.com/product/feilian
 	install = corplink-bin.install
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = corplink-bin
 	optdepends = networkmanager: NetworkManager integration
 	options = !strip
 	options = !emptydirs
-	source = https://cdn.isealsuite.com/linux/FeiLian_Linux_amd64_v3.1.18_r6560_8a2fab.deb
-	sha512sums = e6d2415ae8c972daeccdf3a43344284c7ba0a5fabbfe736d0c2f61463042b7871bb6f9bb94ac2f56b86cb0b6fe83fe6865c63222850ede790215f09ed70d7899
+	source = https://cdn.isealsuite.com/linux/FeiLian_Linux_amd64_v3.2.16_r8362_0d182a.deb
+	sha512sums = 129731f371215d1ef2f15a7746c7bd16404e1e4ba287d5f238d1bc240e3b279214e3b15a6468d674b0127f533e03a31e496e1ed301701075ca4320a1c7016e1e
 
 pkgname = corplink-bin

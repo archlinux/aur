@@ -1,9 +1,9 @@
 # Maintainer: Jat <chat@jat.email>
 
 pkgname=corplink-bin
-pkgver=3.1.18
-_pkgrel=r6560_8a2fab
-pkgrel=2
+pkgver=3.2.16
+_pkgrel=r8362_0d182a
+pkgrel=1
 pkgdesc="Linux client of Feilian (veCorpLink) from Bytedance."
 arch=('x86_64')
 url="https://www.volcengine.com/product/feilian"
@@ -13,7 +13,7 @@ optdepends=('networkmanager: NetworkManager integration')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://cdn.isealsuite.com/linux/FeiLian_Linux_amd64_v${pkgver}_$_pkgrel.deb")
-sha512sums=('e6d2415ae8c972daeccdf3a43344284c7ba0a5fabbfe736d0c2f61463042b7871bb6f9bb94ac2f56b86cb0b6fe83fe6865c63222850ede790215f09ed70d7899')
+sha512sums=('129731f371215d1ef2f15a7746c7bd16404e1e4ba287d5f238d1bc240e3b279214e3b15a6468d674b0127f533e03a31e496e1ed301701075ca4320a1c7016e1e')
 
 package() {
   # Extract package data
