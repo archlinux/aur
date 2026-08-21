@@ -35,7 +35,7 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  npm install
+  npm install --allow-remote all
 }
 
 package() {
@@ -43,5 +43,9 @@ package() {
   mkdir -p ${pkgdir}/usr/lib/
   mkdir -p ${pkgdir}/usr/bin/
 	cp -r "$pkgname" ${pkgdir}/usr/lib/mpdproxy
-  cp "$srcdir/../mpdproxy" ${pkgdir}/usr/bin/
+  cat > ${pkgdir}/usr/bin/mpdproxy << 'EOF'
+#!/bin/sh
+exec coffee /usr/lib/mpdproxy/mpdproxy.coffee "$@"
+EOF
+  chmod +x ${pkgdir}/usr/bin/mpdproxy
 }
