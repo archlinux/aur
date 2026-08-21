@@ -1,6 +1,6 @@
 pkgbase = auditbeat-oss-bin
 	pkgdesc = Data shippers for Elasticsearch
-	pkgver = 9.5.1
+	pkgver = 9.5.2
 	pkgrel = 0
 	url = https://www.elastic.co/products/beats
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = auditbeat-oss-bin
 	conflicts = auditbeat-oss
 	backup = etc/auditbeat-oss/auditbeat.yml,
 	backup = etc/auditbeat-oss/fields.yml
-	source = https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-9.5.1-linux-x86_64.tar.gz
+	source = https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-9.5.2-linux-x86_64.tar.gz
 	source = auditbeat-oss.service
-	sha512sums = 9e6bff558747b6196c8c9808ffd49ff4f021dcbb53c171eba6434a1e4fd4482bc70590c2655cf2a5b6517d5b192e84d5ae41f8a3f20a7115a79fd39cdd8803ce
+	sha512sums = 3a9bb9d6ba5390308926a99a1f5719a77c8a96e9f90e9419922d59ea8e3f9c13165b54427b28793553b41fc93e554367db9c29127530fc258aea13ea5bed9c84
 	sha512sums = 6c2b7ad706efbbaab55e2bd6a63dd85ee358aeed8255a829adeacdcd45d364520cc7f0328cfa966d61e911042d8fac40abc7ff36cdb7a834fc83df7da94fce13
 
 pkgname = auditbeat-oss-bin
