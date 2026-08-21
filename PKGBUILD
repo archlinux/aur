@@ -2,7 +2,7 @@
 
 pkgbase=omaquake
 pkgname=('omaquake' 'omaquake-shareware-data')
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Quake 1 rendered as characters in a terminal"
 arch=('x86_64')
@@ -20,12 +20,12 @@ makedepends=('git' 'make' 'gcc' 'pkgconf' 'libarchive' 'chafa' 'libcaca' 'alsa-l
 #
 # The tag pin is what makes this reproducible: an unpinned branch would
 # silently build whatever master happens to be while still calling itself
-# 0.1.0.  Bumping pkgver means moving this tag too.
+# 0.1.1.  Bumping pkgver means moving this tag too.
 #
 # quake106.zip is the 1996 shareware release: freely redistributable, and the
 # only pak0.pak that may be handed out.  It is fetched, never shipped in this
 # repo.  Mirror: https://www.gamers.org/pub/idgames/idstuff/quake/quake106.zip
-source=("$pkgbase::git+https://github.com/rsd/omaquake.git#tag=v0.1.0"
+source=("$pkgbase::git+https://github.com/rsd/omaquake.git#tag=v0.1.1"
         "tyrquake::git+https://github.com/libretro/tyrquake.git"
         "https://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake/quake106.zip")
 sha256sums=('SKIP'
