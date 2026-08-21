@@ -33,8 +33,6 @@ pkgbase = recoil-engine-rc
 	options = debug
 	options = !strip
 	source = recoil-engine-rc::git+https://github.com/beyond-all-reason/RecoilEngine.git
-	source = fix-negative-laser.patch
 	sha256sums = SKIP
-	sha256sums = 259d4632d0e0c6003279ca08da1727226120bf201ef2975b651834bf0efed560
 
 pkgname = recoil-engine-rc
