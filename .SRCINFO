@@ -1,6 +1,6 @@
 pkgbase = armasync-bin
 	pkgdesc = Native Linux Arma 3 launcher and addon manager (Arma3Sync-compatible)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Pekururu/Armasync-Linux
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = armasync-bin
 	conflicts = armasync
 	options = !debug
 	options = !strip
-	source = armasync-0.3.0.deb::https://github.com/Pekururu/Armasync-Linux/releases/download/v0.3.0/Armasync_0.3.0_amd64.deb
-	sha256sums = bf4cde2451c6482bc51218eab5db9e28387464f5ca1093a2bf0c86609fe58cf5
+	source = armasync-0.3.1.deb::https://github.com/Pekururu/Armasync-Linux/releases/download/v0.3.1/Armasync_0.3.1_amd64.deb
+	sha256sums = 3d6715b1f17c4e6017b2d76208840ac835e6bd9cd894346fa07edb033bed9462
 
 pkgname = armasync-bin
