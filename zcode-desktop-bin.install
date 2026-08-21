@@ -1,33 +1,9 @@
-_patch_zcode_responses_annotations() {
-  local bundle='/opt/ZCode/resources/glm/zcode.cjs'
-
-  [[ -f "${bundle}" ]] || return 0
-
-  perl -0pi -e '
-    my $marker = q{part&&part.type==="output_text"&&!Array.isArray(part.annotations)};
-    next if index($_, $marker) >= 0;
-
-    my $id = qr/[A-Za-z_\$][A-Za-z0-9_\$]*/;
-    my $pattern = qr/let ($id)=await ($id)\.text\(\),($id)=await ($id)\(\{text:\1,schema:($id)\}\),($id)=($id)\(\2\);if\(!\3\.success\)throw new ($id)\(\{message:"Invalid JSON response"/;
-
-    if (my @match = /$pattern/) {
-      my ($body, $response, $parsed, $parser, $schema, $headers, $header_parser, $error_class) = @match;
-      my $patched_text = "(()=>{try{let o=JSON.parse($body);if(Array.isArray(o?.output)){let changed=!1;for(let item of o.output){let content=item?.content;if(!Array.isArray(content))continue;for(let part of content){if(part&&part.type===" . q{"output_text"} . "&&!Array.isArray(part.annotations)){part.annotations=[];changed=!0}}}if(changed)return JSON.stringify(o)}}catch{}return $body})()";
-      my $replacement = "let $body=await $response.text(),$parsed=await $parser({text:$patched_text,schema:$schema}),$headers=$header_parser($response);if(!$parsed.success)throw new $error_class({message:" . q{"Invalid JSON response"};
-      s/$pattern/$replacement/;
-    }
-  ' "${bundle}" || true
-
-  if ! grep -Fq 'part.type==="output_text"&&!Array.isArray(part.annotations)' "${bundle}"; then
-    echo "zcode-desktop-bin: failed patch Responses annotations compatibility" >&2
-    return 1
-  fi
-}
-
 post_install() {
-  _patch_zcode_responses_annotations
+  printf '%s\n' \
+    'zcode-desktop-bin has been renamed to zcode.' \
+    'Future updates are provided by zcode.'
 }
 
 post_upgrade() {
-  _patch_zcode_responses_annotations
+  post_install
 }
