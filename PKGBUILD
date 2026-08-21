@@ -1,7 +1,7 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=claude-conversation-search-bin
 _pkgname=claude-conversation-search
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="CLI + MCP tool for searching Claude Code conversation history with Tantivy/BM25"
 arch=('x86_64' 'aarch64')
@@ -18,11 +18,11 @@ source_x86_64=("$_pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/$_pkgn
                "$_pkgname-$pkgver-x86_64.asc::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.asc")
 source_aarch64=("$_pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64"
                 "$_pkgname-$pkgver-aarch64.asc::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.asc")
-sha256sums=('c1deae87afd920648b56c63bd83be21dce771988962b1cab062ed497e4bf31e6'
+sha256sums=('d56d5ae03d83ec656c5b81b952c2ce990ecd8bcb1f49b08460f7dc43eaf1a135'
             'SKIP')
-sha256sums_x86_64=('7b500abe6987afc813ecf98c9cdfe48b3a89417a32e17d2aff232e71fc4873b1'
+sha256sums_x86_64=('14ead4cc1a08b8f9ce28356f6773120efae8f660793bfb1898c6b2aed4243fed'
                    'SKIP')
-sha256sums_aarch64=('77ecabc24722c233c8fb53b1e4e4ef8077cbb9557d2fb35eb1bde98b63d447a1'
+sha256sums_aarch64=('bf747372fb22612aed858439fc6b491a7e544ce61dda3775e5850d23c22a4209'
                     'SKIP')
 
 package() {
