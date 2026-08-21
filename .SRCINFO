@@ -1,0 +1,17 @@
+pkgbase = pass-pqp
+	pkgdesc = pass-compatible password store backed by PQP post-quantum crypto
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ajdiaz/pass-pqp
+	arch = any
+	license = MIT
+	depends = pqp-crypto
+	depends = git
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	optdepends = qrencode: generate QR codes for entries
+	optdepends = gpg: migrate a GPG-backed pass store (pass-pqp-migrate)
+	source = pass-pqp-1.0.0.tar.gz::https://github.com/ajdiaz/pass-pqp/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = c33e9a7c687c1b7a479e892642afcdd60c89731e76e054a0619e2a644c276a0e
+
+pkgname = pass-pqp
