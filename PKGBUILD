@@ -2,7 +2,7 @@
 
 _pkgname=echoed
 pkgname="${_pkgname}-appimage"
-pkgver=1.7.8
+pkgver=1.7.9
 pkgrel=1
 pkgdesc="Lightweight Discord alternative — No Ads, No Tracking, Built on Tauri"
 arch=('x86_64')
@@ -13,10 +13,11 @@ makedepends=('squashfs-tools')
 options=(!strip !debug)
 _appimage="${_pkgname}-${pkgver}-amd64.AppImage"
 source_x86_64=(
-  "${_appimage}::https://software.echoed.gg/v1.7.8/Echoed_1.7.8_amd64.AppImage"
+  "${_appimage}::https://software.echoed.gg/v${pkgver}/Echoed_${pkgver}_amd64.AppImage"
 )
+
 noextract=("${_appimage}")
-sha256sums_x86_64=('ea42ea59a75eec85ca1f07f4a4d9cd2a0263f09551ddf3787fd885038284257f')
+sha256sums_x86_64=('fe76029670a93dce8032c13f7b909b7af9716ac0ea643d5bef6cd48144f8e1c1')
 
 prepare() {
   # Clean old paths
