@@ -1,13 +1,13 @@
 pkgbase = ttf-andysevka
 	pkgdesc = A configured build of Iosevka (TTF, WOFF2; Spacings: Term, Proportional)
-	pkgver = 2026.01.05
-	pkgrel = 3
+	pkgver = 2026.08.20
+	pkgrel = 1
 	url = https://github.com/AndydeCleyre/archbuilder_iosevka/tree/andysevka
 	arch = any
 	license = custom:OFL
-	source = https://github.com/AndydeCleyre/archbuilder_iosevka/releases/download/andysevka-2026.01.05/ttf-iosevka-term-custom-git-1767748971-1-any.pkg.tar.zst
-	source = https://github.com/AndydeCleyre/archbuilder_iosevka/releases/download/andysevka-2026.01.05/ttf-iosevka-quasi-proportional-custom-git-1767748971-1-any.pkg.tar.zst
-	sha256sums = 04b5824007f38d83c646b84d8d41ac440bf9727548a1cd322ce833deaa8363c7
-	sha256sums = dce6900c47c9732f7731b1bebb1916874c2cbffce4f567b06338878ca8893289
+	source = https://github.com/AndydeCleyre/archbuilder_iosevka/releases/download/andysevka-2026.08.20/ttf-iosevka-term-custom-git-1787021892-1-any.pkg.tar.zst
+	source = https://github.com/AndydeCleyre/archbuilder_iosevka/releases/download/andysevka-2026.08.20/ttf-iosevka-quasi-proportional-custom-git-1787021892-1-any.pkg.tar.zst
+	sha256sums = 5d9c2ccb73eb430f7433b76a6ba9dc6197762500c88ad157aab185c26bc627ae
+	sha256sums = 543d2059c3b896b7c1d48dc4057c5b3bdf52bb708212a1b00aee1dbe00a9ab77
 
 pkgname = ttf-andysevka

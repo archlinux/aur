@@ -1,15 +1,15 @@
 # Maintainer: Andy Kluger <https://t.me/andykluger>
 # Contributor: Markus Weimar <mail@markusweimar.de>
-pkgver=2026.01.05
-_upstream_ver='1767748971-1'
-sha256sums=('04b5824007f38d83c646b84d8d41ac440bf9727548a1cd322ce833deaa8363c7'
-            'dce6900c47c9732f7731b1bebb1916874c2cbffce4f567b06338878ca8893289')
+pkgver=2026.08.20
+_upstream_ver='1787021892-1'
+sha256sums=('5d9c2ccb73eb430f7433b76a6ba9dc6197762500c88ad157aab185c26bc627ae'
+            '543d2059c3b896b7c1d48dc4057c5b3bdf52bb708212a1b00aee1dbe00a9ab77')
 
 _repo_url='https://github.com/AndydeCleyre/archbuilder_iosevka'
 _repo_branch='andysevka'
 
 pkgname="ttf-${_repo_branch}"
-pkgrel=3
+pkgrel=1
 pkgdesc='A configured build of Iosevka (TTF, WOFF2; Spacings: Term, Proportional)'
 arch=('any')
 url="${_repo_url}/tree/${_repo_branch}"
