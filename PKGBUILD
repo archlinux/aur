@@ -1,7 +1,7 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 
 pkgname=ddsc-git
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Dynamic Discord Rich Presence based on active COSMIC windows (git)"
 arch=('x86_64')
