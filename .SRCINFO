@@ -6,6 +6,7 @@ pkgbase = petri-foo-git
 	arch = i686
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	makedepends = cmake
 	depends = jack
 	depends = libgnomecanvas
@@ -16,4 +17,3 @@ pkgbase = petri-foo-git
 	md5sums = SKIP
 
 pkgname = petri-foo-git
-
