@@ -2,7 +2,7 @@
 # Maintainer: Carlos Moro <carlos@gondor.es>
 
 pkgname='llamaman-bin'
-pkgver=0.10.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='TUI manager for llama-server (llama.cpp). Pre-built binary release.'
 url='https://github.com/cmoro-deusto/llamaman'
@@ -13,10 +13,10 @@ conflicts=('llamaman')
 optdepends=('wl-clipboard: clipboard support on Wayland' 'xclip: clipboard support on X11' 'llama.cpp: provides the llama-server binary' 'nvidia-utils: live NVIDIA GPU stats in the run-mode Hardware panel')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cmoro-deusto/llamaman/releases/download/v${pkgver}/llamaman_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('26938d97e1092c92f6981a4d73bb8963c4cb6269236080219126cca50cf8c3d7')
+sha256sums_aarch64=('d45cd8a3f3c745946160d3318343f9984d1d8f31abb27b22c7f072e006ee9cc3')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cmoro-deusto/llamaman/releases/download/v${pkgver}/llamaman_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('88abc8ca3c9dc8ee59495c18e69c69a8ed989dd1f4d1877c2b62f8260953171f')
+sha256sums_x86_64=('cf68cdb1eaf97431e1b97f20c0ebb5172787144b2f3c16a66cbae94f4710248f')
 
 package() {
   install -Dm755 "./llamaman" "${pkgdir}/usr/bin/llamaman"
