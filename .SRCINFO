@@ -1,16 +1,12 @@
 pkgbase = wuyou-toolkit-bin
-	pkgdesc = Native shell for wuyou-toolkit (prebuilt binary)
+	pkgdesc = Transitional package for wuyou-toolkit
 	pkgver = 0.5.0
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/duanluan/wuyou-toolkit-releases
-	arch = x86_64
-	license = unknown
-	depends = gtk3
-	depends = webkit2gtk-4.1
-	provides = wuyou-toolkit
-	conflicts = wuyou-toolkit
-	options = !strip
-	source = wuyou-toolkit_0.5.0_amd64.deb::https://github.com/duanluan/wuyou-toolkit-releases/releases/download/v0.5.0/wuyou-toolkit_0.5.0_amd64.deb
-	sha256sums = 35721f4d8f60c76a8a938cc75a49f4fadca38cb4fa60b1ca91ca4f99193adb10
+	install = wuyou-toolkit-bin.install
+	arch = any
+	license = NOASSERTION
+	depends = wuyou-toolkit>=0.5.0
 
 pkgname = wuyou-toolkit-bin
