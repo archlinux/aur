@@ -1,7 +1,7 @@
 pkgbase = python-mutf8
 	pkgdesc = MUTF-8 encoder/decoder
-	pkgver = 1.0.6
-	pkgrel = 7
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/TkTech/mutf8
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-mutf8
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-mutf8-1.0.6.tar.gz::https://github.com/TkTech/mutf8/archive/v1.0.6.tar.gz
-	sha256sums = c7a86f00bc8d313b9ce184375c944bf5be771127283d82a8d2becf33cc84e1c7
+	source = python-mutf8-1.1.0.tar.gz::https://github.com/TkTech/mutf8/archive/v1.1.0.tar.gz
+	sha256sums = 282ad4dc0953883338755740e8b49eb17c52c3bc243c0de71ab162a045373685
 
 pkgname = python-mutf8
