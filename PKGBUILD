@@ -1,7 +1,7 @@
 # Maintainer: Julian Y. Richard Corbet (julian-corbet on GitHub)
 pkgname=cfetch-agent
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc="A second brain for coding agents: privilege-ring memory, hook injection, retrieval, and a code index in one binary"
 arch=('x86_64' 'aarch64')
 url="https://github.com/julian-corbet/cfetch"
