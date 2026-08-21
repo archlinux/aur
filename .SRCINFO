@@ -5,8 +5,8 @@ pkgbase = gohu-ttf
 	url = https://github.com/mxmilkiib/gohu-ttf
 	arch = any
 	license = unknown
+	makedepends = git
 	source = git+https://github.com/mxmilkiib/gohu-ttf
 	md5sums = SKIP
 
 pkgname = gohu-ttf
-
