@@ -8,8 +8,8 @@ arch=('any')
 url="https://github.com/mxmilkiib/gohu-ttf"
 license=('unknown')
 groups=()
-depends=('git')
-makedepends=()
+depends=()
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=()
@@ -24,18 +24,18 @@ noextract=()
 md5sums=('SKIP')
 
 prepare() {
-	cd "$pkgname"
+	cd "gohu-ttf"
 }
 
 build() {
-	cd "$pkgname"
+	cd "gohu-ttf"
 }
 
 check() {
-	cd "$pkgname"
+	cd "gohu-ttf"
 }
 
 package() {
-	cd "$pkgname"
+	cd "gohu-ttf"
 	install -Dm755 gohu.ttf "$pkgdir/usr/share/fonts/TTF/gohu-14.ttf"
 }
