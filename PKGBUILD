@@ -1,15 +1,15 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=commons-category-downloader-git
 pkgdesc="Quick and dirty shell script to fetch all images from a category on Wikimedia Commons"
-pkgver=r7.a3864da
+pkgver=r12.7266f82
 pkgrel=1
 epoch=
 arch=(x86_64)
 url="https://github.com/aucuparia/commons-category-downloader"
 license=(GPL)
 groups=()
-depends=('git' 'jq')
-makedepends=()
+depends=('jq')
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=()
@@ -24,7 +24,7 @@ noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "commons-category-downloader"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -32,7 +32,7 @@ pkgver() {
 }
 
 package() {
-	cd "$pkgname"
+	cd "commons-category-downloader"
   mkdir -p "$pkgdir"/usr/bin
   mv commons_category_downloader.sh "$pkgdir"/usr/bin
 }
