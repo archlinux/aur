@@ -3,7 +3,7 @@ pkgver=26.4.8
 pkgrel=1
 pkgdesc="A feature-rich Matrix client made in Flutter"
 arch=('x86_64')
-url="https://github.com/ExteraApp/Extera"
+url="https://source.extera.xyz/Extera/Extera"
 license=('AGPL-3.0-only')
 provides=('extera-next')
 conflicts=('extera-next')
@@ -19,17 +19,17 @@ depends=(
 )
 makedepends=('curl')
 source=(
-  "linux-x64.tar.gz::https://get.extera.xyz/v26.4.8/linux-x64.tar.gz"
+  "linux-x64.tar.gz::https://get.extera.xyz/v${pkgver}/linux-x64.tar.gz"
 )
 sha256sums=('SKIP')
 
 pkgver() {
-  curl -s "https://raw.githubusercontent.com/ExteraApp/Extera/main/pubspec.yaml" \
+  curl -s "https://source.extera.xyz/Extera/Extera/raw/branch/main/pubspec.yaml" \
     | sed -n 's/^version: \([^+]*\).*/\1/p'
 }
 
 package() {
-  cd "$srcdir/linux-x64"
+  cd "$srcdir"
 
   install -d "$pkgdir/usr/lib/extera_next"
   cp -r ./* "$pkgdir/usr/lib/extera_next/"
@@ -51,8 +51,8 @@ Terminal=false
 Categories=Network;Chat;InstantMessaging;X-Matrix;
 EOF
 
-  if [ -f "$srcdir/bundle/data/flutter_assets/assets/logo.png" ]; then
-    install -Dm644 "$srcdir/bundle/data/flutter_assets/assets/logo.png" \
+  if [ -f "$srcdir/data/flutter_assets/assets/logo.png" ]; then
+    install -Dm644 "$srcdir/data/flutter_assets/assets/logo.png" \
       "$pkgdir/usr/share/pixmaps/extera.png"
   fi
 }
