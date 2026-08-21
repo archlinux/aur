@@ -1,7 +1,7 @@
 pkgname=tether-git
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
-pkgdesc="A Wayland-native local file transfer and clipboard sync tool over mDNS"
+pkgdesc="Bridge an iPhone to the Linux desktop: clipboard, files, messages, and notifications"
 arch=('x86_64')
 url="https://github.com/zackb/tether"
 license=('MIT')
