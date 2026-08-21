@@ -32,6 +32,7 @@ echo -e "${GREEN}Current version: ${YELLOW}${CURRENT_VERSION}${NC}"
 
 if [[ "$LATEST_VERSION" == "$CURRENT_VERSION" ]]; then
     echo -e "${YELLOW}Already up to date!${NC}"
+    exit 0
 else
     echo -e "${YELLOW}Updating ${CURRENT_VERSION} → ${LATEST_VERSION}${NC}"
 fi
@@ -50,7 +51,7 @@ if [[ -f "$TARBALL_FILE" ]]; then
     echo -e "${YELLOW}Using cached tarball${NC}"
 else
     echo -e "${GREEN}Downloading tarball...${NC}"
-    curl -L -o "$TARBALL_FILE" "$TARBALL_URL"
+    curl -fL -o "$TARBALL_FILE" "$TARBALL_URL"
 fi
 
 # Calculate b2sum
