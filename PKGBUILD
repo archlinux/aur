@@ -2,7 +2,7 @@
 
 _pkgname=hyprosd
 pkgname=hyprosd-git
-pkgver=0.2.0.r14.gf7ddc21
+pkgver=0.2.0.r15.g9903811
 pkgrel=1
 pkgdesc='Simple Hyprland OSD for volume, brightness, Caps Lock, and Num Lock'
 arch=('x86_64')
