@@ -2,7 +2,7 @@
 # Maintainer: Christopher Kreft <email@christopherkreft.de>
 
 pkgname=check-nwc-health
-pkgver=12.11
+pkgver=12.13.2.2
 pkgrel=1
 pkgdesc="Monitoring check for various network equipment"
 arch=('any')
@@ -17,7 +17,7 @@ optdepends=('perl-net-snmp: checks based on SNMP'
 conflicts=('check-nwc-health-git')
 source=("${pkgname}::git+https://github.com/lausser/check_nwc_health.git#tag=${pkgver}"
         "GLPlugin::git+https://github.com/lausser/GLPlugin.git")
-sha256sums=('de399ddb4a9a58ef169057e9152b043690781454418c053d3b2717430944eac7'
+sha256sums=('1bc19c3a3ed16c0563bc743ded07d329d4a04f80ef0e8e10a62dbf45cd5114ed'
             'SKIP')
 # GLPlugin is pinned via the superproject tag's submodule commit; checksums for the
 # superproject verify that exact commit, so a separate checksum here is redundant.
