@@ -4,7 +4,7 @@
 
 _pkgname=intersect.lv2
 pkgname="${_pkgname}-git"
-pkgver=1.3.r0.g18a45e4
+pkgver=2.2.r2.g98fcde1
 pkgrel=1
 pkgdesc="LV2 plugin to split 2 audio channels into 3."
 arch=("$CARCH")
