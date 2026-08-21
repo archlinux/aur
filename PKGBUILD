@@ -12,7 +12,7 @@ url="https://github.com/alexindigo/atmosphera"
 license=('GPL-3.0-or-later')
 makedepends=('git')
 depends=(
-  'noctalia-qs'
+  'quickshell'
   'qt6-dbusqml'
   'qt6-pipewirespectrum'
   'qt6-xdgiconqml-git'
