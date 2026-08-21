@@ -1,0 +1,19 @@
+pkgbase = r-box
+	pkgdesc = Write Reusable, Composable and Modular R Code
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://cran.r-project.org/package=box
+	arch = x86_64
+	license = MIT
+	optdepends = r-devtools
+	optdepends = r-knitr
+	optdepends = r-rmarkdown
+	optdepends = r-roxygen2
+	optdepends = r-rstudioapi
+	optdepends = r-shiny
+	optdepends = r-stringr
+	source = https://cran.r-project.org/src/contrib/box_1.2.3.tar.gz
+	md5sums = 49bf0f6e39fb08189d528b48a6d0e0d0
+	b2sums = 83776a4eb077c6330f40bda0e10cef25c42612a3172eeab74908b785531bdf2741c68c6627a6585908640850eb213ecff83c19dfb488a85227b99797dce9f95c
+
+pkgname = r-box
