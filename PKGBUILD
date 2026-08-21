@@ -1,11 +1,13 @@
 # Maintainer: Emanuele Calo <emanuele.lele.calo@gmail.com>
 pkgname=riso
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Modular ricing framework: renders themes into the files a desktop reads"
 arch=('x86_64' 'aarch64')
 url="https://github.com/eldios/riso"
 license=('MIT')
+# No split debug package: it outlives the main one as an orphan.
+options=('!debug')
 # git and curl are called at run time to install themes and plugins.
 depends=('git' 'curl')
 makedepends=('cargo')

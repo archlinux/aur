@@ -1,6 +1,6 @@
 pkgbase = riso
 	pkgdesc = Modular ricing framework: renders themes into the files a desktop reads
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/eldios/riso
 	arch = x86_64
@@ -9,7 +9,8 @@ pkgbase = riso
 	makedepends = cargo
 	depends = git
 	depends = curl
-	source = riso::git+https://github.com/eldios/riso.git#tag=v0.4.1?signed
+	options = !debug
+	source = riso::git+https://github.com/eldios/riso.git#tag=v0.5.0?signed
 	validpgpkeys = AA6BC7743F8F9AD84BBA15C72CCBF4B71EFFDD46
 	sha256sums = SKIP
 
