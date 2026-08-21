@@ -1,12 +1,12 @@
 # Maintainer: BonnyAD9 (Bonny4)
 pkgname=uamp-ffmpeg
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Ffmpeg decoder plugin for uamp (Universal Advanced Audio Player)."
 arch=(x86_64)
 url="https://github.com/BonnyAD9/uamp-ffmpeg/"
 license=('GPL-3.0-or-later')
-depends=(glibc gcc-libs ffmpeg)
+depends=(glibc libgcc libstdc++ ffmpeg)
 makedepends=(git cargo)
 optdepends=()
 provides=()
