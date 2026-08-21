@@ -1,7 +1,7 @@
 # Maintainer: rie_t <megumin at megu dot dev>
 pkgname=moonlight-ptb-bin
 _pkgname=moonlight-ptb
-pkgver=0.1.11
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="A convenient launcher for the moonlight Discord mod (ptb)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "${_pkgname}.desktop"
 )
 sha256sums=(
-    "8274e5d35f479ea743e0a967d1ad30550cd98c319beb047e348c896780a99dc8"
+    "4675587bd6ef3a94f4ac6501c20a2b962129699b924a456750bfbb894fa5974e"
     "94009dcac58ff72cb56bdb043e7ae903a6ddcc93a1ae5d6421872127e4c1910a"
 )
 
