@@ -7,7 +7,7 @@
 # or use: $ curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A1 "Package: google-chrome-beta" | awk '/Version/{print $2}' | cut -d '-' -f1
 
 pkgname=google-chrome-beta
-pkgver=152.0.7977.54
+pkgver=153.0.8010.5
 pkgrel=1
 pkgdesc="The popular web browser by Google (Beta Channel)"
 arch=(
@@ -42,8 +42,8 @@ source=(
 )
 sha512sums=('a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
             '17827849624a365b501da6b4e9648f324dfa1ee081dbb46f8e9519de355c4b2996075c3acb254921afd7553e4814877fa6e4355ab29bbed5825c9cffa3032f03')
-sha512sums_x86_64=('8ecb7e609a78f6f769d73d7bb9f5e7f6c76c3ea403e75311f07254c7b3d1b2b96aaa083d026b11507a2cfd62d816b7804d1f0a1e43f1b9465d26e6310e782132')
-sha512sums_aarch64=('67a51c063f5ec0efde65b3a2f694af5add4bc4badeb3b2a59e92e855a493661305b59dfa757cf17feb56e51e0cb1ea7860283e4ff74f561d8a422010ead13597')
+sha512sums_x86_64=('5bc8d9c2c20230c5e6d7a83d7df1880a0282b8b5ebb55f3fdf41269171b50283862c6ebdb88224c4f36bce9b6ab9e3bbc902a211944a4f9aec7a83203b24374e')
+sha512sums_aarch64=('42539cfdeaa25cea98d123c50cdc603252040a7c7b6fff2674107065a2587ee5a4d6b524322b64246e034b059ddbee68dd51e785e8b51b7350457daeec9d8314')
 
 source_x86_64=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb")
 source_aarch64=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_arm64.deb")
