@@ -1,0 +1,17 @@
+pkgbase = cellmate-git
+	pkgdesc = A tiny CLI to track your FPV battery fleet: cycles, internal resistance, flights, and puffy packs
+	pkgver = r3.b31b10f
+	pkgrel = 1
+	url = https://github.com/iamanuclearwarhead/cellmate
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = gawk
+	depends = coreutils
+	provides = cellmate
+	conflicts = cellmate
+	source = cellmate-git::git+https://github.com/iamanuclearwarhead/cellmate.git
+	sha256sums = SKIP
+
+pkgname = cellmate-git
