@@ -26,8 +26,8 @@
 #######################################################################
 
 pkgname=powershell
-pkgver=7.6.3
-pkgrel=7
+pkgver=7.6.5
+pkgrel=1
 pkgdesc="A cross-platform automation and configuration tool/framework"
 arch=('x86_64')
 url='https://microsoft.com/PowerShell'
@@ -71,8 +71,8 @@ checkdepends=(
 install=powershell.install
 
 source=("git+https://github.com/PowerShell/PowerShell.git#tag=v$pkgver")
-sha512sums=('2a185b1388744ff2ae36d87a56734532381fa0fcfa71b7c973ac0efbafe0347a9ae43f4b7b76fde69484d7ae35e208500923aed8904f5e8824073b2f621baec3')
-b2sums=('9846ac2506e74038ad74d1f79e9de8eadd1f0d54a5855109e3d38fb4e960c9f0f7d004c06e893ec8aac9f4ffa3cd86fa933583acaf61613e722d365a1a00316c')
+sha512sums=('015912c995c20158ac16557a4b9e8a7acfac26f8a256076f108e1dec8f5226eef0a642dd97b7f5d31cb398aaab5f83e58015e81bfeb23743878ab8858514573a')
+b2sums=('e74fbead4c4af08182aa808f166ce9edffca064be15676dad88af7d99714fc8cbfb359d38f44073cb442e10dae102475563ad753a1adbd0939bb11105ae8487d')
 
 prepare() {
   cd PowerShell
