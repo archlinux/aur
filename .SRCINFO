@@ -1,6 +1,6 @@
 pkgbase = llmux-bin
 	pkgdesc = Multi-provider, multi-account Claude proxy with automatic quota-based rotation
-	pkgver = 0.2.19
+	pkgver = 0.2.20
 	pkgrel = 1
 	url = https://github.com/2lab-ai/llmux
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = llmux-bin
 	provides = llmux
 	conflicts = llmux
 	options = !debug
-	source = LICENSE-0.2.19::https://raw.githubusercontent.com/2lab-ai/llmux/v0.2.19/LICENSE
+	source = LICENSE-0.2.20::https://raw.githubusercontent.com/2lab-ai/llmux/v0.2.20/LICENSE
 	sha256sums = 18c9008778e81e8815589c8cb3c528f19daac96bc531908f180c7a816278cfd1
-	source_x86_64 = llmux-bin-0.2.19-x86_64::https://github.com/2lab-ai/llmux/releases/download/v0.2.19/llmux-linux-x86_64
-	sha256sums_x86_64 = afe4dc9cf258c5d5b4db297a28ef064466e73684485cbd9ffc367e5ee1e61b95
-	source_aarch64 = llmux-bin-0.2.19-aarch64::https://github.com/2lab-ai/llmux/releases/download/v0.2.19/llmux-linux-aarch64
-	sha256sums_aarch64 = 333189d580cdc07102502b39dd4195259b257045bda7df1ffe5954ffc926fd20
+	source_x86_64 = llmux-bin-0.2.20-x86_64::https://github.com/2lab-ai/llmux/releases/download/v0.2.20/llmux-linux-x86_64
+	sha256sums_x86_64 = 5e909db7493f3762aa8a9d24c981c0c7c5dcc22a66adf3e2ea414a824c4b5c33
+	source_aarch64 = llmux-bin-0.2.20-aarch64::https://github.com/2lab-ai/llmux/releases/download/v0.2.20/llmux-linux-aarch64
+	sha256sums_aarch64 = e4cd9cb405cf2b83f7015e77c6f889780e81286429c0407f6c63bc0e2b9e5d51
 
 pkgname = llmux-bin
