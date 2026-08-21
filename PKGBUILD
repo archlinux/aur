@@ -26,7 +26,8 @@ depends=(
     'kiconthemes'
     'kcmutils'
     'kirigami-addons'
-    'sdl3-git'
+    'sdl3'
+    'pipewire'
 )
 makedepends=(
     'git'
