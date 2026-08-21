@@ -1,6 +1,6 @@
 pkgbase = netman-h
 	pkgdesc = Modern NetworkManager GUI for Omarchy / Hyprland
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/hematw/net-man-h
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = netman-h
 	depends = glibc
 	options = !lto
 	options = !debug
-	source = netman-h-0.2.0.tar.gz::https://github.com/hematw/net-man-h/archive/refs/tags/v0.2.0.tar.gz
-	b2sums = d54e2a2ac3de9ab2de0b9a6d6cf21c997bb599f065af6f0e306c5b77ecae0a553485434c25c430aa6815ff77c8cca13456f4bb011ef465af963710f1d2561d3f
+	source = netman-h-0.2.1.tar.gz::https://github.com/hematw/net-man-h/archive/refs/tags/v0.2.1.tar.gz
+	b2sums = db4ebfe03c5504b4d1f1be1c423883e03c864558f127108e0d7dcd7a4547978e9b8648fc9cb0fd948b3060ce33bde0ea7544b667cf730c2c5fdf7d1c4824086a
 
 pkgname = netman-h
