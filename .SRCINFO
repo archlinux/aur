@@ -17,6 +17,7 @@ pkgbase = vicinae
 	makedepends = qt6-shadertools
 	makedepends = qt6-tools
 	makedepends = wayland-protocols
+	makedepends = cmark-gfm
 	depends = nodejs
 	depends = qt6-base
 	depends = qt6-svg

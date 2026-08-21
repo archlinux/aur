@@ -32,6 +32,7 @@ makedepends=(
   'qt6-shadertools'
   'qt6-tools'
   'wayland-protocols'
+  'cmark-gfm'
 )
 install=vicinae.install
 provides=("vicinae")
