@@ -1,0 +1,4 @@
+[tvrenamer-bin]
+source = "git"
+git = "https://github.com/tvrenamer/tvrenamer.git"
+prefix = "v"
