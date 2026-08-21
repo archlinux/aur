@@ -1,6 +1,6 @@
 pkgbase = networkmanager-iwd
 	pkgdesc = Network connection manager and user applications; using iwd backend instead of wpa_supplicant
-	pkgver = 1.58.0
+	pkgver = 1.58.1
 	pkgrel = 1
 	url = https://networkmanager.dev/
 	arch = x86_64
@@ -46,9 +46,9 @@ pkgbase = networkmanager-iwd
 	makedepends = systemd
 	makedepends = systemd-libs
 	makedepends = vala
-	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#tag=1.58.0
+	source = git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#tag=1.58.1
 	source = networkmanager-iwd.install
-	b2sums = 1bf42970ab8ffc3fe919d00cf2aca9626dfde0db24e655514b4f2873fef2dda3a88608d72487619c755f5c9e366789cf18943e7502a3ec5476ea7c914d7d48a4
+	b2sums = 71ca8a6b298df777841b6f5560bf6ef9100ac7b6b4c48a46c995685a53cb09732d1e8c6e4139f572bbb3f66352eb59737f260ca5738202591b4f25703976f141
 	b2sums = 1045d7a75487dd063e2d52f2c94944c04650b9337d4cb839b66dc692f477797406ed2164725a53a1c213c46dd7ea398ca9764ee09386766554aa179d8c320cd2
 
 pkgname = networkmanager-iwd
