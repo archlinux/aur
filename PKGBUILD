@@ -2,7 +2,7 @@
 
 pkgname=proslenkey
 pkgver=1.2.0
-pkgrel=0
+pkgrel=1
 pkgdesc='A lightweight GTK4 application launcher for Wayland'
 arch=(any)
 url='https://github.com/hikyae/proslenkey'
