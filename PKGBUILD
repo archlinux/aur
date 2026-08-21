@@ -2,7 +2,7 @@
 # Contributor: MiMo Code Agent
 
 pkgname=bedrockboot
-pkgver=2.1.10.96
+pkgver=2.1.10.97
 pkgrel=1
 pkgdesc="Industrial Grade Minecraft Bedrock Edition Launcher for Windows & Linux"
 arch=('x86_64')
@@ -22,17 +22,13 @@ source=(
     "Round.SDK::git+https://github.com/Round-Studio/Round.SDK.git"
     "PeNet::git+https://github.com/Round-Studio/PeNet.git"
     "PaperConnect::git+https://github.com/Round-Studio/PaperConnect.git"
-    "BedrockMapRender::git+https://github.com/BE-Community-Dev/BedrockMapRender.git"
     "ResourcePackConvert::git+https://github.com/BE-Community-Dev/ResourcePackConvert.git"
     "LiteSkinViewer::git+https://github.com/Round-Studio/LiteSkinViewer.git"
     "PreLoadCpp::git+https://github.com/Round-Studio/PreLoadCpp.git"
-    "MapRender::git+https://github.com/BE-Community-Dev/MapRender.git"
     "CrashStackAnalyzer::git+https://github.com/Round-Studio/CrashStackAnalyzer.git"
     "disable-update-check.patch"
 )
-sha256sums=('9a713852bcab77f55f2ed44db1f6a2cc2ab72f9f03a7fee9683722e2f6bacd7c'
-            'SKIP'
-            'SKIP'
+sha256sums=('b092af193df7251bce52b5b8c309f4ade9bf4e572dad4b0285c5e5f81ad0fa16'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -50,11 +46,9 @@ prepare() {
     git config submodule.src/Round.SDK.url "$srcdir/Round.SDK"
     git config submodule.src/PeNet.url "$srcdir/PeNet"
     git config submodule.src/PaperConnect.url "$srcdir/PaperConnect"
-    git config submodule.src/BedrockMapRender.url "$srcdir/BedrockMapRender"
     git config submodule.src/ResourcePackConvert.url "$srcdir/ResourcePackConvert"
     git config submodule.src/LiteSkinViewer.url "$srcdir/LiteSkinViewer"
     git config submodule.src/PreLoadCpp.url "$srcdir/PreLoadCpp"
-    git config submodule.src/MapRender.url "$srcdir/MapRender"
     git config submodule.src/CrashStackAnalyzer.url "$srcdir/CrashStackAnalyzer"
     git -c protocol.file.allow=always submodule update
 
