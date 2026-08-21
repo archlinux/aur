@@ -1,0 +1,18 @@
+pkgbase = xfetch-core-bin
+	pkgdesc = Custom system information tool for X (Rust) - precompiled binary
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/xfetch-cli/xfetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	provides = xfetch
+	conflicts = xfetch
+	conflicts = xfetch-git
+	source_x86_64 = https://github.com/xfetch-cli/xfetch/releases/download/v0.7.0/xfetch-0.7.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1013e285641e815995946e6389281d0abacadf878468c3aa5acbd3128223ca16
+	source_aarch64 = https://github.com/xfetch-cli/xfetch/releases/download/v0.7.0/xfetch-0.7.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 862543861e2c2a46ef4073fbceba68e8882082d445ce03de904b02fba87430ac
+
+pkgname = xfetch-core-bin
