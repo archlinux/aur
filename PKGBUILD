@@ -9,7 +9,7 @@ _libs_ver='0.25.4'
 _driver_ver='10.2.0'
 _ctl_ver='0.13.0'
 _p_container_ver='0.7.1'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Falco is a cloud native runtime security tool for Linux operating systems'
 arch=('x86_64' 'aarch64')
 url="https://${pkgname}.org/"
@@ -68,6 +68,11 @@ prepare() {
     --expression 's|ldflags="-s -w"|ldflags "-linkmode external -extldflags '\''${LDFLAGS}'\''"|g' \
     --expression 's|go build|go build -trimpath -mod=readonly -modcacherw|g' \
     "plugins-plugins-container-v${_p_container_ver}/plugins/container/go-worker/Makefile"
+
+  # plugin/container CXX - remove 'fix for legacy compatibility'
+  sed --in-place \
+    --expression 's|-static-libgcc -static-libstdc++||g' \
+    "plugins-plugins-container-v${_p_container_ver}/plugins/container/CMakeLists.txt"
 
   # plugin/container CXX - do not strip, save debug symbols
   sed --in-place \

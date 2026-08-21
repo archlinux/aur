@@ -1,7 +1,7 @@
 pkgbase = falco
 	pkgdesc = Falco is a cloud native runtime security tool for Linux operating systems
 	pkgver = 0.44.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://falco.org/
 	arch = x86_64
 	arch = aarch64
