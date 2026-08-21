@@ -1,6 +1,6 @@
 pkgbase = signal-export
 	pkgdesc = Export your Signal chats to markdown files with attachments
-	pkgver = 3.8.3
+	pkgver = 3.9.2
 	pkgrel = 1
 	url = https://github.com/carderne/signal-export
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = signal-export
 	depends = python-pycryptodome>=3.20
 	depends = python-pycryptodome<4.0
 	depends = python-sqlcipher3>=0.5.4
-	source = signal-export-3.8.3.tar.gz::https://github.com/carderne/signal-export/archive/v3.8.3.tar.gz
-	sha256sums = d4af3ef49aa457a3f63d5f08d46cefc0da0723098f264eb07f4ebfe305957b95
+	source = signal-export-3.9.2.tar.gz::https://github.com/carderne/signal-export/archive/v3.9.2.tar.gz
+	sha256sums = 749af20fd848ffa35dadd62e50064cab3180ed774d62c06b89b41669ddc89b6a
 
 pkgname = signal-export
