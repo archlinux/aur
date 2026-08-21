@@ -1,10 +1,9 @@
 pkgbase = panrun-git
 	pkgdesc = Script that looks at the YAML metadata in a markdown file and runs pandoc for you.
-	pkgver = r14.2e08db5
+	pkgver = r16.00cea51
 	pkgrel = 1
 	url = https://github.com/mb21/panrun
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = git
 	depends = ruby
@@ -13,4 +12,3 @@ pkgbase = panrun-git
 	md5sums = SKIP
 
 pkgname = panrun-git
-
