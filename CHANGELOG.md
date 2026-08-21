@@ -5,6 +5,12 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.14-2] - 2026-08-21
+
+### Packaging
+
+- Build `testmode.o` when the host kernel sets `CONFIG_NL80211_TESTMODE=y`. The package names its objects explicitly rather than reusing upstream's Makefile, and the three lists had never carried the config-gated testmode object, so on such kernels (Debian/Liquorix, and commonly Fedora and Ubuntu) modpost failed with `mt76_testmode_tx_pending`, `mt7921_testmode_cmd/dump` and `mt7925_testmode_cmd/dump` undefined. The gating now matches upstream verbatim, so the object is compiled exactly when the kernel that will load it expects those symbols (reported by Lark456, #100)
+
 ## [2.14-1] - 2026-08-20
 
 ### Driver
