@@ -1,15 +1,15 @@
 pkgbase = decrediton
 	pkgdesc = Decrediton is a cross-platform GUI for decred written in node.js using Electron.
-	pkgver = 2.1.5
+	pkgver = 2.1.6
 	pkgrel = 1
 	url = https://decred.org/
 	arch = x86_64
 	license = ISC
 	options = !strip
-	source = https://github.com/decred/decred-binaries/releases/download/v2.1.5/decrediton-linux-amd64-v2.1.5.tar.gz
+	source = https://github.com/decred/decred-binaries/releases/download/v2.1.6/decrediton-linux-amd64-v2.1.6.tar.gz
 	source = decred-dcr.svg
 	source = decrediton.desktop
-	sha256sums = f909b0220bf958aacc3d32807429ed7d21192778690d9dbf80910df576fb0b15
+	sha256sums = 91c1f144280ad94cbee6b99bdfa2a30f980676e867f9318dab2c47942f0aad57
 	sha256sums = a5d4ca6879438bbf02999dbf84f4fb3b0088fbac385f6cbc9722baf1baa7c8aa
 	sha256sums = 51bc5ba72c11bd89b2931d926e31524557c2ab1a8032e905fc5e33dbde132fbd
 
