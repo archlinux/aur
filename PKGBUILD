@@ -2,25 +2,43 @@
 # Contributor: Sven Fischer <aur.archlinux@linux4tw.de>
 
 pkgname=guayadeque-git
-pkgver=0.7.0.r0.ge16e8d5e
+pkgver=0.7.6.r0.gec6e9209
 pkgrel=1
 pkgdesc="Lightweight music player"
 arch=(x86_64 i686)
-url="https://github.com/thothix/guayadeque"
+url="https://codeberg.org/thothix/guayadeque"
 license=(GPL-3.0-only)
-depends=(wxsqlite3 wxwidgets-gtk3 taglib gst-plugins-base gst-plugins-good jsoncpp
-
-         # namcap implicit depends
-         wxwidgets-common gstreamer curl glibc gcc-libs gst-plugins-base-libs dbus glib2 icu
-
-         libicuuc.so libicui18n.so)
-makedepends=(cmake git)
-optdepends=('gst-libav: additional codecs'
-            'gst-plugins-bad: additional codecs'
-            'gst-plugins-ugly: additional codecs')
+depends=(
+    curl
+    dbus
+    glib2
+    glibc
+    gst-plugins-base
+    gst-plugins-base-libs
+    gstreamer
+    hicolor-icon-theme
+    icu libicuuc.so
+    jsoncpp
+    libgcc
+    libstdc++
+    taglib
+    wxsqlite3
+    wxwidgets-common
+    wxwidgets-gtk3
+    )
+makedepends=(
+    cmake
+    git
+    )
+optdepends=(
+    'gst-libav: additional codecs'
+    'gst-plugins-bad: additional codecs'
+    'gst-plugins-good: additional codecs'
+    'gst-plugins-ugly: additional codecs'
+    )
 provides=(guayadeque)
 conflicts=(guayadeque)
-source=("git+https://github.com/thothix/guayadeque.git")
+source=("git+https://codeberg.org/thothix/guayadeque.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -34,9 +52,10 @@ build() {
   local _flags=(
     -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config
     -D_GUREVISION_:STRING="${pkgrel}"
+    -DENABLE_IPOD=OFF
   )
 
-  cmake -B build -S "guayadeque" -Wno-dev \
+  cmake -B build -S "guayadeque" -Wno-author \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     "${_flags[@]}"
