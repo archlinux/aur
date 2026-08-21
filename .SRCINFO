@@ -1,6 +1,6 @@
 pkgbase = catclock-aubio-git
 	pkgdesc = X clock, with cat mode, using aubio and pulseaudio to swing the tail to a beat
-	pkgver = r34.9de77d0
+	pkgver = r46.20481a1
 	pkgrel = 1
 	url = https://github.com/BarkyTheDog/catclock
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = catclock-aubio-git
 	md5sums = SKIP
 
 pkgname = catclock-aubio-git
-

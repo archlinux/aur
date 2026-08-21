@@ -3,7 +3,7 @@
 pkgname=catclock-aubio-git
 _pkgname=catclock
 pkgdesc="X clock, with cat mode, using aubio and pulseaudio to swing the tail to a beat"
-pkgver=r34.9de77d0
+pkgver=r46.20481a1
 pkgrel=1
 arch=(x86_64)
 url='https://github.com/BarkyTheDog/catclock'
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-    make WITH_TEMPO_TRACKER=1
+    make WITH_TEMPO_TRACKER=1 CFLAGS="$CFLAGS -Wno-incompatible-pointer-types -Wno-implicit-function-declaration"
 }
 
 package() {
