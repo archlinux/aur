@@ -1,10 +1,16 @@
 pkgbase = x42-sisco-cv-git
 	pkgdesc = Oscilloscope, varient of sisco.lv2 but with CV ports
-	pkgver = r233.7db7157
+	pkgver = r248.99c4a24
 	pkgrel = 1
 	url = https://github.com/x42/sisco.lv2
 	arch = x86_64
 	license = GPL
+	makedepends = git
+	makedepends = cairo
+	makedepends = pango
+	makedepends = glu
+	makedepends = libglvnd
+	makedepends = jack
 	depends = lv2
 	depends = pango
 	depends = cairo
