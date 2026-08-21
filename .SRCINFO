@@ -6,6 +6,7 @@ pkgbase = vmpk-jack-git
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	makedepends = git
 	makedepends = cmake
 	makedepends = docbook-xsl
 	makedepends = qt5-tools
@@ -19,4 +20,3 @@ pkgbase = vmpk-jack-git
 	sha256sums = SKIP
 
 pkgname = vmpk-jack-git
-

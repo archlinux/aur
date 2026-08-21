@@ -10,7 +10,7 @@ arch=('x86_64' 'i686')
 url="http://vmpk.sourceforge.net"
 license=('GPL3')
 depends=('drumstick' 'qt5-x11extras')
-makedepends=('cmake' 'docbook-xsl' 'qt5-tools' 'libxkbcommon-x11' 'subversion')
+makedepends=('git' 'cmake' 'docbook-xsl' 'qt5-tools' 'libxkbcommon-x11' 'subversion')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("vmpk::git+https://github.com/svn2github/vmpk_real/")
@@ -28,7 +28,8 @@ pkgver() {
 build() {
   cd vmpk/desktop
   cmake . -DCMAKE_INSTALL_PREFIX=/usr \
-          -DENABLE_JACK=ON
+          -DENABLE_JACK=ON \
+          -DCMAKE_POLICY_VERSION_MINIMUM=3.5
   make
 }
 
