@@ -1,7 +1,7 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 
 pkgname=ddsn-git
-pkgver=1.4.1.0.gHEAD
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Dynamic Discord Rich Presence based on active Niri windows (git)"
 arch=('x86_64')

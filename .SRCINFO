@@ -1,6 +1,6 @@
 pkgbase = ddsn-git
 	pkgdesc = Dynamic Discord Rich Presence based on active Niri windows (git)
-	pkgver = 1.4.1.0.gHEAD
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/Veridian-Zenith/DDS
 	arch = x86_64
