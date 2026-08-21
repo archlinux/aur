@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-emoji-copy
 	pkgdesc = simplify emoji selection and clipboard management
-	pkgver = 35
+	pkgver = 38
 	pkgrel = 1
 	url = https://github.com/FelipeFTN/emoji-copy
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-emoji-copy
 	makedepends = python-requests
 	makedepends = zip
 	depends = gnome-shell
-	source = emoji-copy-35.tar.gz::https://github.com/FelipeFTN/emoji-copy/archive/v35.tar.gz
-	sha256sums = 612908adee2f54212e43e0a4da006eb37afbd988f72e57ea7ae2ab65bec2708d
+	source = emoji-copy-38.tar.gz::https://github.com/FelipeFTN/emoji-copy/archive/v38.tar.gz
+	sha256sums = 8f958f080b3449c66d8985c945db7b625f2d7083fc4541166db1ba93e4228799
 
 pkgname = gnome-shell-extension-emoji-copy
