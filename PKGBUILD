@@ -12,9 +12,7 @@ pkgdesc="Hardware and software inventory tool (client)"
 arch=('x86_64')
 url="http://www.ocsinventory-ng.org"
 license=('GPL-1.0-or-later')
-depends=('dmidecode' 'pciutils' 'perl-crypt-ssleay' 'perl-xml-sax'
-     'perl-libwww' 'perl-net-ip' 'perl-xml-namespacesupport' 'perl-xml-simple'
-     'perl-proc-daemon' 'perl-proc-pid-file' 'perl-net-ssleay' 'perl-net-snmp')
+depends=('perl' 'glibc')
 optdepends=('smartmontools')
 makedepends=('perl-module-install')
 install=${pkgname}.install
