@@ -40,10 +40,10 @@ pkgver() {
 build() {
   cd ffdec
   IFS='.' read -r major minor release revision commit <<< "$pkgver"
-  sed -Eie 's/(name="version.major" value=")0(")/\1'"$major"'\2/g'       build.xml
-  sed -Eie 's/(name="version.minor" value=")0(")/\1'"$minor"'\2/g'       build.xml
-  sed -Eie 's/(name="version.release" value=")0(")/\1'"$release"'\2/g'   build.xml
-  sed -Eie 's/(name="version.debug" value=")true(")/\1false\2/g'         build.xml
+  sed -E -i -e 's/(name="version.major" value=")0(")/\1'"$major"'\2/g'       build.xml
+  sed -E -i -e 's/(name="version.minor" value=")0(")/\1'"$minor"'\2/g'       build.xml
+  sed -E -i -e 's/(name="version.release" value=")0(")/\1'"$release"'\2/g'   build.xml
+  sed -E -i -e 's/(name="version.debug" value=")true(")/\1false\2/g'         build.xml
   ant build
 }
 
@@ -56,8 +56,8 @@ package() {
   cd ffdec
 
   install -Dm0644 "dist/ffdec.jar" -t "$pkgdir/usr/share/java/$pkgname"
-  for f in lib/*.jar; do
-    install -Dm0644 "$f" -t "$pkgdir/usr/share/java/$pkgname/lib"
+  for _f in lib/*.jar; do
+    install -Dm0644 "$_f" -t "$pkgdir/usr/share/java/$pkgname/lib"
   done
 
   install -Dm0755 "dist/ffdec.sh" "$pkgdir/usr/bin/ffdec"
@@ -66,8 +66,8 @@ package() {
   install -Dm0644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/ffdec.png"
   install -Dm0644 "resources/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/ffdec.png"
 
-  for f in lib/*.license.txt; do
-    install -Dm0644 "$f" -t "$pkgdir/usr/share/licenses/$pkgname"
+  for _f in lib/*.license.txt; do
+    install -Dm0644 "$_f" -t "$pkgdir/usr/share/licenses/$pkgname"
   done
   install -Dm0644 "resources/license.txt" -t "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm0644 "dist/com.jpexs.decompiler.flash.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
