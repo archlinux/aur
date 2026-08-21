@@ -8,14 +8,14 @@
 : ${_build_lto:=false}        # link-time optimization; may cause spurious errors
 : ${_build_system_libs:=true} # use system libraries, reduces build time
 
-: ${_build_limit_cores:=true} # detect usable cores for parallelism, limited by RAM
+: ${_build_limit_cores:=auto} # number of cores for parallelism; or auto, limited by RAM
 
-: ${_llvm_ver=21}
+: ${_llvm_ver=}
 
 _pkgname="waterfox"
 pkgname="$_pkgname"
-pkgver=6.6.17
-pkgrel=2
+pkgver=6.7.0
+pkgrel=1
 pkgdesc="A customizable, privacy‑focused web browser"
 url="https://github.com/BrowserWorks/waterfox"
 license=('MPL-2.0')
@@ -38,7 +38,6 @@ makedepends=(
   cargo
   cbindgen
   diffutils
-  dump_syms
   git
   imake
   inetutils
@@ -66,13 +65,14 @@ optdepends=(
 
 if [[ "${_build_system_libs::1}" == "t" ]]; then
   depends+=(
-    libffi.so       # libffi
-    libjpeg.so      # libjpeg-turbo
-    libpixman-1.so  # pixman
-    libvpx.so       # libvpx
-    libwebp.so      # libwebp
-    libwebpdemux.so # libwebp
-    libz.so         # zlib
+    libffi.so          # libffi
+    libjpeg.so         # libjpeg-turbo
+    libpipewire-0.3.so # libpipewire
+    libpixman-1.so     # pixman
+    libvpx.so          # libvpx
+    libwebp.so         # libwebp
+    libwebpdemux.so    # libwebp
+    libz.so            # zlib
     nspr
     nss
   )
@@ -111,16 +111,12 @@ source=(
   "$_pkgsrc.$_pkgext"::"https://github.com/BrowserWorks/waterfox/archive/refs/tags/$pkgver.$_pkgext"
   "$_pkgsrc-locales.$_pkgext"::"https://github.com/BrowserWorks/l10n/archive/$_commit_l10n.$_pkgext"
   "$_pkgname.desktop"
-  '0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch'
-  '0002-Fix-sandbox-to-build-with-glibc-2.43.patch'
-  '0003-Add-FFmpeg-63-support.patch.xz'
 )
-sha256sums=('237123c36434e95a1a6f0c26620115108fc89f1d9a82ed420673df8b829c9673'
-            'e3f532fb33a31233a9c24e6f649cfaf77c2d1a0d0d916960c7c1f3a6418db8b7'
-            '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286'
-            '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
-            '404e780b1488625989c6dd8e2234e50ed01401b7cb1e99e79dee87f4f4f584f8'
-            'e7d30072641dfea9c3bff025db7e3a2c60201e630c5253bda1f2b54a0b5501ae')
+sha256sums=(
+  '17bf07acf6548b38d81848443f808506d5177e4f1c801c50024925b2f1085a8f'
+  '54a69e8afa8903250a33125fb61ac90db6664f1a7e97b5dd7832a4b3e162102e'
+  '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286'
+)
 
 prepare() {
   mkdir -p mozbuild
@@ -162,7 +158,6 @@ MOZ_REQUIRE_SIGNING=
 
 # Features
 ac_add_options --enable-alsa
-ac_add_options --enable-av1
 ac_add_options --enable-eme=widevine
 ac_add_options --enable-jack
 ac_add_options --enable-jxl
@@ -208,7 +203,6 @@ END
 # ac_add_options --with-system-av1
 # ac_add_options --with-system-icu
 # ac_add_options --with-system-libevent
-# ac_add_options --with-system-pipewire
 # ac_add_options --with-system-png
 ac_add_options --with-system-ffi
 ac_add_options --with-system-gbm
@@ -217,6 +211,7 @@ ac_add_options --with-system-libdrm
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+ac_add_options --with-system-pipewire
 ac_add_options --with-system-pixman
 ac_add_options --with-system-webp
 ac_add_options --with-system-zlib
@@ -234,7 +229,7 @@ END
   _mem=$(grep -Pom1 '^MemFree.*\b\K[0-9]+' /proc/meminfo)
   _nproc=$(nproc)
 
-  if [[ "${_build_limit_cores::1}" == "t" ]]; then
+  if [[ "${_build_limit_cores::1}" =~ ^[at] ]]; then
     # calculate core availability based on free RAM and CPU count
     _cores=$((_mem / (1024 * 1024) < _nproc ? _mem / (1024 * 1024) : _nproc))
     _cores=$((_cores < 1 ? 1 : _cores))
@@ -264,9 +259,6 @@ END
       patch -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
-
-  # workaround for missing EVENT__SIZEOF_TIME_T
-  sed -e '/CHECK_EVENT_SIZEOF(TIME_T/d' -i ipc/chromium/src/base/message_pump_libevent.cc
 }
 
 build() (
