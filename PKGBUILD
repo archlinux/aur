@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=commons-category-downloader
 pkgdesc="Quick and dirty shell script to fetch all images from a category on Wikimedia Commons"
-pkgver=r7.a3864da
+pkgver=r12.7266f82
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/aucuparia/commons-category-downloader"
 license=(GPL)
 groups=()
 depends=(jq)
-makedepends=()
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=()
