@@ -1,7 +1,7 @@
 pkgbase = blender-benchmark-bin
 	pkgdesc = Benchmark based on Blender to perform hardware and software performance tests1
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://opendata.blender.org
 	arch = x86_64
 	license = GPL-3.0-or-later AND CC0-1.0
@@ -17,6 +17,7 @@ pkgbase = blender-benchmark-bin
 	depends = libxinerama
 	provides = blender-benchmark
 	conflicts = blender-benchmark
+	options = !strip
 	source = https://download.blender.org/release/BlenderBenchmark2.0/launcher/benchmark-launcher-3.3.0-linux.tar.gz
 	source = https://download.blender.org/release/BlenderBenchmark2.0/launcher/benchmark-launcher-cli-3.3.0-linux.tar.gz
 	sha256sums = 8578a4d3094225eb10f38d05c88e97bfa3d6a25a13206f7823cb77ccd03a0251
