@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wagner <philipp@wagnersnetz.de>
 pkgname=kst4contest-git
-pkgver=1.42.0.r246.gcc99141
+pkgver=1.42.0.r250.g399e5f3
 pkgrel=1
 pkgdesc="ON4KST Chat Client for VHF/UHF contest operation (git)"
 arch=('x86_64')
@@ -37,6 +37,7 @@ build() {
     jpackage \
         --type app-image \
         --name KST4Contest \
+        --icon packaging/icons/kst4contest.png \
         --input target/dist-libs \
         --main-jar app.jar \
         --main-class kst4contest.view.Kst4ContestApplication \
