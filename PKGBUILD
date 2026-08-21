@@ -7,27 +7,42 @@
 # Contributor: Michael Straube <straubem@gmx.de>
 
 pkgname=guayadeque
-pkgver=0.7.5
-pkgrel=2
+pkgver=0.7.6
+pkgrel=1
 pkgdesc="Lightweight music player"
 arch=(x86_64)
-url="https://github.com/thothix/guayadeque"
+url="https://codeberg.org/thothix/guayadeque"
 license=(GPL-3.0-only)
 depends=(
+    curl
+    dbus
+    glib2
+    glibc
+    gst-plugins-base
+    gst-plugins-base-libs
+    gstreamer
+    hicolor-icon-theme
+    icu libicuuc.so
+    jsoncpp
+    libgcc
+    libstdc++
+    taglib
     wxsqlite3
-    wxwidgets-gtk3 taglib gst-plugins-base gst-plugins-good jsoncpp
-
-         # namcap implicit depends
-         wxwidgets-common gstreamer curl glibc gcc-libs gst-plugins-base-libs dbus glib2 icu
-
-         libicuuc.so libicui18n.so)
-makedepends=(cmake)
-optdepends=('gst-libav: additional codecs'
-            'gst-plugins-bad: additional codecs'
-            'gst-plugins-ugly: additional codecs')
-options=(!lto)
-source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/thothix/guayadeque/archive/v${pkgver}.tar.gz")
-sha256sums=('333203a0aa3ea8c7d81e32467aff2b24fe739da942c0d8cd25643a7ba2d845e3')
+    wxwidgets-common
+    wxwidgets-gtk3
+    )
+makedepends=(
+    cmake
+    git
+    )
+optdepends=(
+    'gst-libav: additional codecs'
+    'gst-plugins-bad: additional codecs'
+    'gst-plugins-good: additional codecs'
+    'gst-plugins-ugly: additional codecs'
+    )
+source=("git+https://codeberg.org/thothix/guayadeque.git#tag=v${pkgver}")
+sha256sums=('f6d5c128d48230b688305a0a4e9d5f78f7e6de2b93d7fa88356c0bc9ddc5f4fe')
 
 build() {
   # buildtype None introduce problems
