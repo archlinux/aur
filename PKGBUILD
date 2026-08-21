@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 _base=cpass
 pkgname=cpass-py
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="An urwid based TUI frontend for pass"
 arch=(any)
@@ -14,7 +14,7 @@ provides=("${_base}")
 conflicts=("${_base}")
 install=${_base}.install
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha256sums=('25735a312206e3a1317c0c836637d0661f6a1ff46207f99d09c976fc2a52e3fe')
+sha256sums=('c8563c8fa1bde2d448b2723040b6b0b1582e2cb4c378a579621b3c765b710b04')
 
 build() {
   cd ${_base}-${pkgver}

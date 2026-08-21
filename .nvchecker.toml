@@ -1,0 +1,3 @@
+[cpass-py]
+source = "pypi"
+pypi = "cpass"
