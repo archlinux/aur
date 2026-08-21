@@ -11,7 +11,7 @@ _appname=rcat
 pkgname=${_cratename}
 pkgdesc="A colorful Android logcat viewer with package filtering"
 
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -29,7 +29,7 @@ provides=("${_appname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('1137ec2aeaee51599d13877ce8710f0d5ea77c6b3091a435554dee75f337630c')
+sha256sums=('75880986cef5802279e20813643e4b25132c95be42d60eac6a491ff18a76edcd')
 
 
 build() {
