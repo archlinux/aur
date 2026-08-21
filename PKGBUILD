@@ -68,6 +68,8 @@ prepare() {
 
   # Remove vendorized polib.py
   git rm -rf cola/polib.py extras/polib
+  # Remove vendored qtpy
+  git rm -rf qtpy
 }
 
 build() {
