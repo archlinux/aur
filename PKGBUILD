@@ -4,7 +4,7 @@ _appauthor="maxludden"
 _appname="rich-color-ext"
 
 pkgname="python-${_appname}"
-pkgver=0.1.9
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A add-on parser so 'rich.color.Color' can parse 3-digit-hex and CSS named colors"
 
@@ -24,7 +24,7 @@ provides=("${_appname%-ext}" "${_appname}")
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz" "LICENSE")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz" "LICENSE")
-sha256sums=('d32393b8e29bfc2add3eb89ffae26fe683f388325ea51461c1889a53e7f6d371'
+sha256sums=('b4f9c515dd893391c2a5b7b71275a67bffb87aab0b5c6232b65b93c6ea34d2a0'
             'ce03c1e0e64ef777f23081460c6474be87d9298b649dca8a01059c51ad9e1b30')
 
 
