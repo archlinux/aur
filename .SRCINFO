@@ -1,7 +1,7 @@
 pkgbase = localsend
 	pkgdesc = An open source cross-platform alternative to AirDrop
-	pkgver = 1.18.1
-	pkgrel = 2
+	pkgver = 1.18.2
+	pkgrel = 1
 	url = https://github.com/localsend/localsend
 	arch = x86_64
 	arch = aarch64
@@ -26,7 +26,7 @@ pkgbase = localsend
 	depends = libepoxy
 	depends = pango
 	options = !lto
-	source = localsend-1.18.1.tar.gz::https://github.com/localsend/localsend/archive/refs/tags/v1.18.1.tar.gz
-	sha256sums = 555a73c39e2cfc01ee8cf0033ae11610725829d8289aa9c4794446241d9de2b0
+	source = localsend-1.18.2.tar.gz::https://github.com/localsend/localsend/archive/refs/tags/v1.18.2.tar.gz
+	sha256sums = 4425dfcf2e016d6540ea44941deb4ba6568201cc47d7f08753606e6e4b2769cd
 
 pkgname = localsend
