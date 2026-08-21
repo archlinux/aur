@@ -1,6 +1,6 @@
 pkgbase = git-cola-git
 	pkgdesc = The highly caffeinated Git GUI
-	pkgver = 4.18.2.r168.gf324e07d
+	pkgver = 4.19.0.r99.ged6845a6
 	pkgrel = 1
 	url = https://git-cola.github.io
 	arch = any
