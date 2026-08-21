@@ -1,6 +1,6 @@
 pkgbase = pyinstaller
 	pkgdesc = Bundles a Python application and all its dependencies into a single package
-	pkgver = 6.22.1
+	pkgver = 6.22.2
 	pkgrel = 1
 	url = https://www.pyinstaller.org
 	arch = x86_64
@@ -30,9 +30,9 @@ pkgbase = pyinstaller
 	depends = python-urllib3
 	depends = zlib
 	optdepends = python-argcomplete: tab completion for CLI tools
-	source = pyinstaller-6.22.1.tar.gz::https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v6.22.1.tar.gz
+	source = pyinstaller-6.22.2.tar.gz::https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v6.22.2.tar.gz
 	source = fortify-source-fix.diff
-	sha256sums = f8cb1fef5da9dacdf6db2dcd50dda0b9fee8fabe4bba39bbf41f3e76115882af
+	sha256sums = 2e001b907e4d838ccfc5de301702d19c37e57622d0315f72b77e9dde56b4fb64
 	sha256sums = 46f7cfd082570a3f4c138a868e55dc39deacccbff602ce7e70d033236566fa1b
 
 pkgname = pyinstaller
