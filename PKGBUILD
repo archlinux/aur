@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Terminal app where you can explore solar systems"
 
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('5fdacb3f6f7b75bd525a8d685160fc261ce2f7db4074cbf7a4dd376df695eb2c'
+sha256sums=('4a6b471919c5dc69a2970d5f65360b667e7133a79c17d26970c245e81c560105'
             'dcfb0a6f46215c68ede3f5088eb72df4f059d033e1fef000f33fbff9e4c7ac19')
-sha256sums_x86_64=('bd9a94a27bc417adbeda293ceb32fd14f5083ef988b836715fe6e3305d072bae')
-sha256sums_aarch64=('9c8418525d23ff7b581c4c8549b68c41c7e96eb72cea79063a2f751988ca4545')
+sha256sums_x86_64=('81a371c8018649109e2b8071e5dbc19d4913bf002a747f1f13d13ed75841385e')
+sha256sums_aarch64=('bce5305b670b3a7412698b8393553cb1cc12292d0db1a8aa0e02f9d38c93d076')
 
 
 package() {
