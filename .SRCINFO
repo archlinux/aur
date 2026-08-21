@@ -1,7 +1,7 @@
 pkgbase = casual-pre-loader-git
 	pkgdesc = TF2 particle modifications via some wizardry.
 	pkgver = 2.2.4.r25.gb6cf42f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cueki/casual-pre-loader
 	install = casual-pre-loader.install
 	arch = x86_64
@@ -12,6 +12,8 @@ pkgbase = casual-pre-loader-git
 	makedepends = sed
 	depends = hicolor-icon-theme
 	depends = python>=3.12
+	depends = python-cappa>=0.32.2
+	depends = python-cappa<1.0.0
 	depends = python-more-itertools>=11.1.0
 	depends = python-more-itertools<12.0.0
 	depends = python-packaging>=26.2
