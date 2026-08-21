@@ -2,7 +2,7 @@
 
 _pkgname=quickshell
 pkgname="$_pkgname-git"
-pkgver=0.2.0.r1.g783b971
+pkgver=0.3.0.r0.g59e9c47
 pkgrel=1
 pkgdesc='Flexible toolkit for making desktop shells with QtQuick'
 arch=(x86_64 aarch64)
@@ -20,10 +20,10 @@ depends=(
   'libdrm'
   'mesa'
 	'cpptrace'
-	'vulkan-headers'
 	'polkit'
 )
 makedepends=(
+	'vulkan-headers'
   'spirv-tools'
   'qt6-shadertools'
   'wayland'
