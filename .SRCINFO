@@ -1,6 +1,6 @@
 pkgbase = gistui-bin
 	pkgdesc = A terminal UI for managing GitHub Gists
-	pkgver = 0.17.1
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/akunzai/gistui
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = gistui-bin
 	provides = gistui
 	conflicts = gistui
 	options = !strip
-	source_x86_64 = gistui-x86_64-0.17.1.tgz::https://github.com/akunzai/gistui/releases/download/v0.17.1/gistui-v0.17.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = e68e53a484a35e2c9f757c3009e1c69aec6fd0c4626ad2ef80e91b55ddda9837
-	source_aarch64 = gistui-aarch64-0.17.1.tgz::https://github.com/akunzai/gistui/releases/download/v0.17.1/gistui-v0.17.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = f49ae66b53767fd2b02b6b60288d4d7d316ee1d2ee4062bd540058c29690694c
+	source_x86_64 = gistui-x86_64-0.18.0.tgz::https://github.com/akunzai/gistui/releases/download/v0.18.0/gistui-v0.18.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 367114620c4f7961f093b0f452b066f3c4da7ea1056ea7caa86331e07191dabc
+	source_aarch64 = gistui-aarch64-0.18.0.tgz::https://github.com/akunzai/gistui/releases/download/v0.18.0/gistui-v0.18.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a4d45475e633c381ef17a3fb79dcc56b06a3aa706a4b669274d8435056416303
 
 pkgname = gistui-bin
