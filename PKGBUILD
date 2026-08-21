@@ -1,8 +1,8 @@
 # Maintainer: willker <wz[dot]willker[at]gmail[dot]com>
 
 pkgname=bedrockboot
-pkgver=2.1.10.97
-pkgrel=2
+pkgver=2.1.10.98
+pkgrel=1
 pkgdesc="Industrial Grade Minecraft Bedrock Edition Launcher for Windows & Linux"
 arch=('x86_64')
 url="https://github.com/Round-Studio/BedrockBoot"
@@ -27,7 +27,7 @@ source=(
     "CrashStackAnalyzer::git+https://github.com/Round-Studio/CrashStackAnalyzer.git"
     "disable-update-check.patch"
 )
-sha256sums=('b092af193df7251bce52b5b8c309f4ade9bf4e572dad4b0285c5e5f81ad0fa16'
+sha256sums=('8983be82d9ef8ba21355cab9b02ada8bfd38a61f86d860a10c75fd6da648c3d6'
             'SKIP'
             'SKIP'
             'SKIP'
