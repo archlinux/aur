@@ -1,0 +1,27 @@
+pkgbase = whisper-cpp-sdl
+	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with SDL2 examples, system ggml)
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = https://github.com/ggml-org/whisper.cpp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = ffmpeg
+	depends = ggml
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = sdl2
+	provides = whisper-cpp
+	conflicts = whisper-cpp
+	source = whisper.cpp-1.9.1.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/v1.9.1.tar.gz
+	source = whisper.cpp.service
+	source = whisper.cpp.conf
+	sha256sums = 147267177eef7b22ec3d2476dd514d1b12e160e176230b740e3d1bd600118447
+	sha256sums = d67695c9f259a50c23cbff08e5105b1d127b75336909f5f61d1fa87901826801
+	sha256sums = ce241dc37fb9724842eead940bda305f9b4a6dc7e426151c8e8cd8b34d4a1262
+
+pkgname = whisper-cpp-sdl

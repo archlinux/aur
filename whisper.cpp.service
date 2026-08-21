@@ -1,0 +1,13 @@
+[Unit]
+Description=whisper.cpp Server
+After=syslog.target network.target local-fs.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/conf.d/whisper.cpp
+ExecStart=/usr/bin/whisper-server $WHISPER_ARGS
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
