@@ -1,7 +1,7 @@
 # Maintainer: su226 <thesu226@outlook.com>
 
 pkgname=r2modman
-pkgver=3.2.18
+pkgver=3.2.19
 pkgrel=1
 epoch=
 pkgdesc="A simple and easy to use mod manager for several games using Thunderstore."
@@ -11,7 +11,7 @@ license=("MIT")
 groups=()
 _electron=electron38
 depends=("$_electron")
-makedepends=(corepack node-gyp python)
+makedepends=(pnpm node-gyp python)
 checkdepends=()
 optdepends=()
 provides=()
@@ -24,7 +24,7 @@ changelog=
 source=("r2modmanPlus-$pkgver.tar.gz::https://github.com/ebkr/r2modmanPlus/archive/refs/tags/v$pkgver.tar.gz"
         "r2modman.desktop")
 noextract=()
-sha256sums=('63249f332fe9a8378e2a9d54ce10d26da5669127937908348fcf4d13e845057a'
+sha256sums=('c3886012ead494442cd666652ace7bca4afeaac97d59d39bfdda951028826276'
             '6cd96385f1ad7bf6fec0f9a70b429305e6f20153528e415d3c943ff19a45fd0f')
 validpgpkeys=()
 
@@ -34,18 +34,18 @@ prepare() {
 	local _electronDist="/usr/lib/$_electron"
 	local _electronVersion="$(<$_electronDist/version)"
 	sed -e "s/'AppImage', 'tar.gz', 'deb', 'rpm', 'pacman'/'dir'/" -e "/builder: {/a electronDist: \"$_electronDist\", electronVersion: \"$_electronVersion\"," -i quasar.config.ts
-	corepack yarn install
+	pnpm install
 }
 
 build() {
 	cd "r2modmanPlus-$pkgver"
-	corepack yarn build-linux
+	pnpm build-linux
 }
 
 check() {
 	cd "r2modmanPlus-$pkgver"
 	node test/folder-structure-testing/populator.mjs
-	corepack yarn test
+	pnpm test
 }
 
 package() {
