@@ -5,9 +5,9 @@ pkgbase = mpv-visualizer
 	url = https://github.com/mfcc64/mpv-scripts
 	arch = any
 	license = unknown
+	makedepends = git
 	depends = mpv
 	source = mpv-visualizer::git+https://github.com/mfcc64/mpv-scripts
 	md5sums = SKIP
 
 pkgname = mpv-visualizer
-
