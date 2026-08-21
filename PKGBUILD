@@ -22,8 +22,8 @@
 pkgname=tennoworth-bin
 _pkgname=tennoworth
 pkgver=0.5.0
-pkgrel=1
-pkgdesc="Warframe inventory + market dashboard — see what's worth selling right now (prebuilt)"
+pkgrel=2
+pkgdesc="Warframe inventory + market dashboard (unmaintained — Linux now ships as an AppImage, see GitHub releases)"
 arch=('x86_64')
 url="https://github.com/tennoworth/tennoworth"
 license=('MIT')
