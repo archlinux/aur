@@ -1,0 +1,22 @@
+pkgbase = siyuan-unlock
+	pkgdesc = Privacy-first personal knowledge management software (prebuilt binary)
+	pkgver = 3.7.3
+	pkgrel = 1
+	url = https://b3log.org/siyuan/en/
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = alsa-lib
+	depends = gtk3
+	depends = libxss
+	depends = musl
+	depends = nss
+	depends = libxtst
+	depends = xdg-utils
+	provides = siyuan
+	conflicts = siyuan
+	options = !strip
+	source = https://github.com/appdev/siyuan-unlock/releases/download/v3.7.3/siyuan-3.7.3-linux.tar.gz
+	sha256sums = 5d3f08d93631085cccc0c8fe89016f66b6e451606cc0da78ed42554b1242dcb7
+	sha512sums = 8b7aa6261c0943064412ddb11248cbc53e1798c2176ddd4a649f17a4e002d65ec47e0f73b31517cb4701402c0ecf535066f3c72058de5107bb9d7df9f073dd86
+
+pkgname = siyuan-unlock
