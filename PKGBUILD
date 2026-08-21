@@ -1,6 +1,6 @@
 # Maintainer: ada <cmdada@proton.me>
 pkgname=findmylinux
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Use Apple's Find My network to estimate your system GPS location, with a GTK app for configuration and status"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-cryptography' 'python-requests' 'python-gobject'
          'geoclue' 'polkit' 'findmylinux-anisette')
 install='findmylinux.install'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('32e7cfbc859c97437b3bf6c9862301a277041d2655fa00ffabf480ac5150c0df')
+sha256sums=('e1cee84576d564e93971eea27273980238e457d34b478a6b7f648180913317c2')
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -30,10 +30,10 @@ package() {
   install -Dm755 packaging/bin/findmylinux     "$pkgdir/usr/bin/findmylinux"
   install -Dm755 packaging/bin/findmylinux-gui "$pkgdir/usr/bin/findmylinux-gui"
 
-  install -Dm644 packaging/systemd/system/findmylinux.service \
-    "$pkgdir/usr/lib/systemd/system/findmylinux.service"
-  install -Dm644 packaging/systemd/system/findmylinux-resume.service \
-    "$pkgdir/usr/lib/systemd/system/findmylinux-resume.service"
+  install -Dm644 packaging/systemd/system/findmylinux@.service \
+    "$pkgdir/usr/lib/systemd/system/findmylinux@.service"
+  install -Dm644 packaging/systemd/system/findmylinux-resume@.service \
+    "$pkgdir/usr/lib/systemd/system/findmylinux-resume@.service"
   install -Dm644 packaging/systemd/user/findmylinux-location.service \
     "$pkgdir/usr/lib/systemd/user/findmylinux-location.service"
 

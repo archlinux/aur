@@ -2,13 +2,13 @@ post_install() {
   systemd-tmpfiles --create findmylinux.conf >/dev/null 2>&1 || true
   cat <<'MSG'
 ==> findmylinux installed. To finish setup:
-    1. Add yourself to the 'geoclue' group so the location daemon can write
-       the system location file, then re-login:
+    1. Group so the location daemon can write the system location, then re-login:
          sudo gpasswd -a "$USER" geoclue
-    2. Enable services and sign in:
+    2. Report side + keys + Apple sign-in:
          systemctl --user enable --now findmylinux-anisette findmylinux-location
          findmylinux keygen && findmylinux login
-         sudo systemctl enable --now findmylinux   # start advertising
+    3. Advertising (runs as you, with BLE capabilities):
+         sudo systemctl enable --now "findmylinux@$USER" "findmylinux-resume@$USER"
 MSG
 }
 post_upgrade() {
