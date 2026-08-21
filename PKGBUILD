@@ -1,5 +1,4 @@
 # Maintainer: willker <wz[dot]willker[at]gmail[dot]com>
-# Contributor: MiMo Code Agent
 
 pkgname=bedrockboot
 pkgver=2.1.10.97
@@ -37,7 +36,7 @@ sha256sums=('b092af193df7251bce52b5b8c309f4ade9bf4e572dad4b0285c5e5f81ad0fa16'
             'SKIP'
             'SKIP'
             'SKIP'
-            'fad59f702150bfb3f325d0b4868e9461a2e35c36fa30a740737207f810420797')
+            '7dce907b5c92972c6524c5fd078789287e0753f472c13981948146494a0bd1e5')
 
 prepare() {
     cd "$pkgname"

@@ -33,6 +33,6 @@ pkgbase = bedrockboot
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = fad59f702150bfb3f325d0b4868e9461a2e35c36fa30a740737207f810420797
+	sha256sums = 7dce907b5c92972c6524c5fd078789287e0753f472c13981948146494a0bd1e5
 
 pkgname = bedrockboot

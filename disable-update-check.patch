@@ -1,7 +1,9 @@
+diff --git a/src/BedrockBoot/Models/CheckUpdate.cs b/src/BedrockBoot/Models/CheckUpdate.cs
+index 7b7bc267..73d7dcdf 100644
 --- a/src/BedrockBoot/Models/CheckUpdate.cs
 +++ b/src/BedrockBoot/Models/CheckUpdate.cs
-@@ -11,8 +11,15 @@
-
+@@ -11,8 +11,15 @@ namespace BedrockBoot.Models;
+ 
  public class CheckUpdate
  {
 +    /// <summary>
@@ -15,57 +17,40 @@
 +            return null;
          // 创建客户端
          var github = new GitHubClient(new ProductHeaderValue("BedrockBoot"));
-
---- a/src/BedrockBoot/Views/Pages/MainPage.axaml.cs
-+++ b/src/BedrockBoot/Views/Pages/MainPage.axaml.cs
-@@ -172,7 +172,7 @@
-             {
-                 DialogHost.Show(new DialogInfo
-                 {
--                    Content = i18n["MainPage.Update.Action.Latest"],
-+                    Content = i18n["MainPage.Update.Action.UsePacman"],
-                     Title = i18n["MainPage.Update.Title"],
-                     CloseButtonText = i18n["Shared.Action.Confirm"]
-                 });
-
---- a/src/BedrockBoot/Views/Pages/NeoMainPage.axaml.cs
-+++ b/src/BedrockBoot/Views/Pages/NeoMainPage.axaml.cs
-@@ -174,7 +174,7 @@
-             {
-                 DialogHost.Show(new DialogInfo
-                 {
--                    Content = i18n["MainPage.Update.Action.Latest"],
-+                    Content = i18n["MainPage.Update.Action.UsePacman"],
-                     Title = i18n["MainPage.Update.Title"],
-                     CloseButtonText = i18n["Shared.Action.Confirm"]
-                 });
-
---- a/src/BedrockBoot/I18n/zh_CN.axaml
-+++ b/src/BedrockBoot/I18n/zh_CN.axaml
-@@ -732,6 +732,7 @@
-     <x:String x:Key="MainPage.Update.Content">我们有新的更新：\n\n{0}</x:String>
-     <x:String x:Key="MainPage.Update.Action.Now">现在更新</x:String>
-     <x:String x:Key="MainPage.Update.Action.Latest">当前已是最新版本</x:String>
-+    <x:String x:Key="MainPage.Update.Action.UsePacman">通过 pacman 管理更新</x:String>
-
-     <x:String x:Key="Tools.Title">工具箱</x:String>
-
---- a/src/BedrockBoot/I18n/en_US.axaml
-+++ b/src/BedrockBoot/I18n/en_US.axaml
-@@ -716,6 +716,7 @@
-     <x:String x:Key="MainPage.Update.Content">A new update is available:&#x0a;&#x0a;{0}</x:String>
-     <x:String x:Key="MainPage.Update.Action.Now">Update Now</x:String>
-     <x:String x:Key="MainPage.Update.Action.Latest">Already on the latest version</x:String>
-+    <x:String x:Key="MainPage.Update.Action.UsePacman">Updates are managed via pacman</x:String>
-
-     <x:String x:Key="Tools.Title">Toolbox</x:String>
-
---- a/src/BedrockBoot/I18n/ja_JP.axaml
-+++ b/src/BedrockBoot/I18n/ja_JP.axaml
-@@ -721,6 +721,7 @@
-     <x:String x:Key="MainPage.Update.Content">新しいアップデートがあります：\n\n{0}</x:String>
-     <x:String x:Key="MainPage.Update.Action.Now">今すぐアップデート</x:String>
-     <x:String x:Key="MainPage.Update.Action.Latest">現在最新バージョンです</x:String>
-+    <x:String x:Key="MainPage.Update.Action.UsePacman">アップデートは pacman で管理されます</x:String>
-
-     <x:String x:Key="Tools.Title">ツールボックス</x:String>
+ 
+diff --git a/src/BedrockBoot/Views/Pages/OtherPage/AboutPages/AboutPage.axaml b/src/BedrockBoot/Views/Pages/OtherPage/AboutPages/AboutPage.axaml
+index b13a5d55..431c1a45 100644
+--- a/src/BedrockBoot/Views/Pages/OtherPage/AboutPages/AboutPage.axaml
++++ b/src/BedrockBoot/Views/Pages/OtherPage/AboutPages/AboutPage.axaml
+@@ -183,6 +183,7 @@
+                 <Button Padding="8"
+                         Height="36" Width="100"
+                         Name="CheckUpdateBtn"
++                        IsVisible="False"
+                         Click="CheckUpdateBtn_OnClick"
+                         Content="{DynamicResource About.Action.CheckUpdate}" />
+             </onePointControls:SettingCard>
+diff --git a/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversal.axaml b/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversal.axaml
+index ad928a58..899c073c 100644
+--- a/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversal.axaml
++++ b/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversal.axaml
+@@ -98,6 +98,7 @@
+                                           Header="{DynamicResource Settings.Download.SoftwareUpdate.Title}"
+                                           Description="{DynamicResource Settings.Download.SoftwareUpdate.Desc}"
+                                           IsClickable="True"
++                                          IsVisible="False"
+                                           Name="SoftwareUpdate"
+                                           Click="SoftwareUpdate_OnClick"
+                                           Glyph="&#xE895;" />
+diff --git a/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversalPages/UniversalSoftwareUpdate.axaml b/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversalPages/UniversalSoftwareUpdate.axaml
+index 067abdb1..9f234a9a 100644
+--- a/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversalPages/UniversalSoftwareUpdate.axaml
++++ b/src/BedrockBoot/Views/Pages/SettingSubPage/SettingUniversalPages/UniversalSoftwareUpdate.axaml
+@@ -38,6 +38,7 @@
+                     <Button Padding="8"
+                             Height="36" Width="100"
+                             Name="CheckUpdateBtn"
++                            IsVisible="False"
+                             Content="{DynamicResource About.Action.CheckUpdate}"
+                             Click="CheckUpdateBtn_OnClick" />
+                 </onePointControls:SettingCard>
