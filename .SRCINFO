@@ -1,0 +1,35 @@
+pkgbase = slack-desktop-wayland-jetm
+	pkgdesc = Slack Desktop (Beta) for Linux, launched as a native Wayland client
+	pkgver = 4.51.191
+	pkgrel = 1
+	url = https://slack.com/downloads
+	arch = x86_64
+	license = LicenseRef-Slack
+	depends = alsa-lib
+	depends = gtk3
+	depends = libnotify
+	depends = libpipewire
+	depends = libsecret
+	depends = nss
+	depends = xdg-desktop-portal
+	depends = xdg-utils
+	optdepends = libappindicator-gtk3: system tray icon
+	optdepends = org.freedesktop.secrets: keyring password store
+	optdepends = pipewire: PipeWire daemon, required for screen sharing
+	optdepends = xdg-desktop-portal-gnome: portal backend for GNOME
+	optdepends = xdg-desktop-portal-gtk: portal backend for GNOME and GTK
+	optdepends = xdg-desktop-portal-hyprland: portal backend for Hyprland
+	optdepends = xdg-desktop-portal-kde: portal backend for KDE
+	optdepends = xdg-desktop-portal-lxqt: portal backend for LXQt
+	optdepends = xdg-desktop-portal-wlr: portal backend for wlroots compositors
+	provides = slack-desktop=4.51.191
+	conflicts = slack-desktop
+	conflicts = slack-desktop-wayland
+	conflicts = slack-electron
+	replaces = slack-desktop-wayland
+	noextract = slack-desktop-4.51.191-amd64.deb
+	options = !strip
+	source = https://downloads.slack-edge.com/desktop-releases/linux/x64/4.51.191/slack-desktop-4.51.191-amd64.deb
+	b2sums = d06a3a0880f776ccf702481bd0009da0ec60d250811ded0c7cc654678b0bcfe97c2d8e75f9e2d54938ff1b4d04d741a7afb4f19714e885de06ed6dbb116d8dcf
+
+pkgname = slack-desktop-wayland-jetm
