@@ -21,7 +21,7 @@ echo -e "  Latest:  ${YELLOW}${LATEST_VERSION}${NC}"
 
 CURRENT_VERSION=$(grep '^pkgver=' "$PKGBUILD_FILE" | cut -d'=' -f2)
 if [[ -f .SRCINFO ]]; then
-    SRCINFO_VERSION=$(grep 'pkgver = ' .SRCINFO | head -n1 | cut -d'=' -f2 | tr -d ' ')
+    SRCINFO_VERSION=$(grep 'pkgver = ' .SRCINFO | head -n1 | cut -d'=' -f2 | tr -d ' ' || true)
 else
     SRCINFO_VERSION=""
 fi
@@ -60,6 +60,9 @@ if [[ ${#MISSING[@]} -gt 0 ]]; then
 fi
 
 echo -e "${GREEN}Updating PKGBUILD...${NC}"
+cp "$PKGBUILD_FILE" "${PKGBUILD_FILE}.bak"
+[[ -f .SRCINFO ]] && cp .SRCINFO .SRCINFO.bak
+
 sed -i \
     -e "s/^pkgver=.*/pkgver=${LATEST_VERSION}/" \
     -e "s/^pkgrel=.*/pkgrel=1/" \
@@ -68,7 +71,7 @@ sed -i \
 echo -e "${GREEN}Downloading sources and computing b2sums via updpkgsums...${NC}"
 if ! updpkgsums; then
     echo -e "${RED}updpkgsums failed or was interrupted. Reverting PKGBUILD changes...${NC}"
-    git restore "$PKGBUILD_FILE"
+    mv "${PKGBUILD_FILE}.bak" "$PKGBUILD_FILE"
     exit 1
 fi
 
@@ -76,9 +79,12 @@ echo -e "${GREEN}Regenerating .SRCINFO...${NC}"
 rm -f .SRCINFO
 if ! makepkg --printsrcinfo > .SRCINFO; then
     echo -e "${RED}makepkg --printsrcinfo failed. Reverting changes...${NC}"
-    git restore "$PKGBUILD_FILE" .SRCINFO
+    mv "${PKGBUILD_FILE}.bak" "$PKGBUILD_FILE"
+    [[ -f .SRCINFO.bak ]] && mv .SRCINFO.bak .SRCINFO || rm -f .SRCINFO
     exit 1
 fi
+
+rm -f "${PKGBUILD_FILE}.bak" .SRCINFO.bak
 
 echo ""
 if [[ "$LATEST_VERSION" != "$CURRENT_VERSION" ]]; then
