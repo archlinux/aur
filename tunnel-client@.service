@@ -14,10 +14,22 @@ RestartSec=5s
 KillMode=mixed
 TimeoutStopSec=30s
 UMask=0077
+CapabilityBoundingSet=
+LockPersonality=yes
 NoNewPrivileges=yes
 PrivateTmp=yes
-ProtectSystem=strict
+ProtectClock=yes
+ProtectControlGroups=yes
 ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+RestrictRealtime=yes
+# This keeps the service on the native syscall ABI. If you ever need a 32-bit
+# MCP server, clear it in a systemd override with: SystemCallArchitectures=
+SystemCallArchitectures=native
 StateDirectory=tunnel-client
 WorkingDirectory=/var/lib/tunnel-client
 
