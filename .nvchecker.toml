@@ -1,0 +1,5 @@
+[ngrv-bin]
+source = "github"
+github = "sorairolake/ngrv"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,16 @@
+pkgbase = ngrv-bin
+	pkgdesc = A terminal-based pipe viewer similar to 'pv(1)'
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/sorairolake/ngrv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = ngrv
+	conflicts = ngrv
+	source_x86_64 = ngrv-0.1.3-x86_64.tar.zst::https://github.com/sorairolake/ngrv/releases/download/v0.1.3/ngrv-v0.1.3-x86_64-unknown-linux-musl.tar.zst
+	sha256sums_x86_64 = 6f0f39c12ce8e3fddb5bb033269cabbcb3bffb49a8c3decc97c5d153bcb3383a
+	source_aarch64 = ngrv-0.1.3-aarch64.tar.zst::https://github.com/sorairolake/ngrv/releases/download/v0.1.3/ngrv-v0.1.3-aarch64-unknown-linux-musl.tar.zst
+	sha256sums_aarch64 = 91d342c1859c9f440a53bd2e716c646bd18b8e029bd7de557a3a9ac09b77f94e
+
+pkgname = ngrv-bin
