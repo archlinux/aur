@@ -1,0 +1,11 @@
+pkgbase = xdg-desktop-portal-umbriel
+	pkgdesc = Placeholder for the Umbriel portal backend release package
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/noctalia-dev/xdg-desktop-portal-umbriel
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	conflicts = xdg-desktop-portal-umbriel-git
+
+pkgname = xdg-desktop-portal-umbriel
