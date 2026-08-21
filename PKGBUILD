@@ -6,7 +6,10 @@ _electronversion=43
 _nodeversion=24
 pkgrel=1
 pkgdesc="Desktop client including Syncing, Virtual Drive mounting, S3, WebDAV, File Browsing, Chats, Notes, Contacts and more.Use system-wide electron."
-arch=('any')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://filen.io/"
 _ghurl="https://github.com/FilenCloudDienste/filen-desktop"
 license=('AGPL-3.0-only')
@@ -14,8 +17,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
-    'libjpeg6-turbo'
-    'giflib'
+    'rclone'
 )
 makedepends=(
     'gendesk'
@@ -55,12 +57,12 @@ _set_build_env() {
     export NPM_CONFIG_MAXSOCKETS=32
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NPM_CONFIG_REGISTRY="https://mirrors.cloud.tencent.com/npm/"
             export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
             export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
             export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
         }
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
+        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/mirrors.cloud.tencent.com\/npm/g" {} +
     fi
 }
 _ensure_local_nvm() {
@@ -71,6 +73,7 @@ _ensure_local_nvm() {
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-git}/g
@@ -93,7 +96,12 @@ build() {
     cd "${srcdir}/${pkgname%-git}.git"
     _set_build_env
     _ensure_local_nvm
-    NODE_ENV=production     npm run build
+    NODE_ENV=production     npm run clear 
+    NODE_ENV=production     npm run tsc
+    rm -rf bin/rclone
+    mkdir -p bin/rclone
+    cp /usr/bin/rclone bin/rclone/rclone-linux-amd64
+    cp /usr/bin/rclone bin/rclone/rclone-linux-arm64
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
 }
 package() {
@@ -101,7 +109,13 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
-    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    local _rclone_dir="${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/bin/rclone"
+    if [[ -d "${_rclone_dir}" ]]; then
+        rm -f "${_rclone_dir}/rclone-linux-amd64" "${_rclone_dir}/rclone-linux-arm64"
+        ln -sf /usr/bin/rclone "${_rclone_dir}/rclone-linux-amd64"
+        ln -sf /usr/bin/rclone "${_rclone_dir}/rclone-linux-arm64"
+    fi
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname%-git}.git/build/icons/png/${_icons}.png" \
