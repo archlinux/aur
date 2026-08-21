@@ -1,6 +1,6 @@
 pkgbase = jack2-git
 	pkgdesc = The JACK low-latency audio server
-	pkgver = 1.9.22.r3.gb93a1d82
+	pkgver = 1.9.22.r41.g17959465
 	pkgrel = 1
 	epoch = 2
 	url = http://jackaudio.org/
