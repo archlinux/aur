@@ -100,10 +100,12 @@ package() {
   cd "$_pkgname"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  make prefix=/usr DESTDIR="$pkgdir" install-desktop-files
-  make prefix=/usr DESTDIR="$pkgdir" install-icons
-  make prefix=/usr DESTDIR="$pkgdir" install-htmldocs
-  make prefix=/usr DESTDIR="$pkgdir" install-metainfo
+  make prefix=/usr DESTDIR="$pkgdir" \
+    install-desktop-files \
+    install-icons \
+    install-htmldocs \
+    install-metainfo
+
   # `make -C docs` is used here to be able to specify `-o {man,html}`
   # (do not remake docs, we just built them)
   #make prefix=/usr DESTDIR="$pkgdir" install-man
