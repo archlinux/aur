@@ -1,0 +1,20 @@
+pkgbase = r2fas
+	pkgdesc = Loads FASM -s symbolic dumps in radare2 (labels, source lines, comments)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hamidrezakp/r2fas
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = radare2
+	checkdepends = fasm
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = radare2
+	depends = radare2>=6
+	options = !lto
+	options = !debug
+	source = r2fas-0.1.0.tar.gz::https://github.com/hamidrezakp/r2fas/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 79f1ab996bc5ac758ef2f9dafb646e22d761252030fd33c6a37eb9338a84168f
+
+pkgname = r2fas
