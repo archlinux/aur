@@ -2,7 +2,7 @@
 # Maintainer: Tim Van Wassenhove <tim@vanwassenhove.be>
 
 pkgname='wt-bin'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='A fast, simple Git worktree helper'
 url='https://github.com/timvw/wt'
@@ -12,10 +12,10 @@ provides=('wt')
 conflicts=('wt')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/timvw/wt/releases/download/v${pkgver}/wt_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('71a851d07c7f8be8ccaeebaf29068ff118ba52a23e3766824f0f44bbe892fb21')
+sha256sums_aarch64=('c18b4f0a9110e82da0c6306fc6abd5f6a9a92f4d45fe2f285da34976099d68a8')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/timvw/wt/releases/download/v${pkgver}/wt_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('6c93e5f34b81e41934c9c9d044c79d8ca20464e172992427b1f7c48009c2a87c')
+sha256sums_x86_64=('7a830e6c63668295f1a93653fa41276e1b40d53571462466046c6a47ef413311')
 
 package() {
   install -Dm755 wt "${pkgdir}/usr/bin/wt"
