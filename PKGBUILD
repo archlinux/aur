@@ -1,7 +1,7 @@
 # Maintainer: Zhou Qiankang <wszqkzqk@qq.com>
 
 pkgname=live-photo-conv
-pkgver=0.40.4
+pkgver=0.50.0
 pkgrel=1
 pkgdesc="A cross-platform tool to process live photos of Google Android"
 url="https://github.com/wszqkzqk/${pkgname}"
@@ -9,7 +9,7 @@ arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
 license=(LGPL-2.1-or-later)
 depends=(
     glib2
-    libgexiv2
+    gexiv2
     gtk4
     libadwaita
     gstreamer
@@ -27,7 +27,7 @@ makedepends=(
     python
 )
 optdepends=(
-    "ffmpeg: FFmpeg backend to convert internal video of a live photo to static pictures"
+    "ffmpeg>=5.1: FFmpeg backend to convert internal video of a live photo to static pictures"
     "gst-plugin-va: Hardware accelerated video decoding with GStreamer backend"
     "libavif: Support to save as .avif with GStreamer and GdkPixbuf backend"
     "libheif: Support to save photos as .heif, .heic, and .avif with GStreamer and GdkPixbuf backend"
@@ -35,7 +35,7 @@ optdepends=(
     "webp-pixbuf-loader: Support to save photos as .webp with GStreamer and GdkPixbuf backend"
 )
 source=("git+https://github.com/wszqkzqk/${pkgname}.git#tag=${pkgver}")
-sha256sums=('66909383cb061374f85e0db16bbbdb148fc21356f80651fdfedc281cb816072e')
+sha256sums=('6a61ee2cf0e56b04180e1db74eab8005fd9a122224f82b7460db7e93b32d48a2')
 
 build() {
     arch-meson "${pkgname}" build

@@ -1,6 +1,6 @@
 pkgbase = live-photo-conv
 	pkgdesc = A cross-platform tool to process live photos of Google Android
-	pkgver = 0.40.4
+	pkgver = 0.50.0
 	pkgrel = 1
 	url = https://github.com/wszqkzqk/live-photo-conv
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = live-photo-conv
 	makedepends = help2man
 	makedepends = python
 	depends = glib2
-	depends = libgexiv2
+	depends = gexiv2
 	depends = gtk4
 	depends = libadwaita
 	depends = gstreamer
@@ -23,13 +23,13 @@ pkgbase = live-photo-conv
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	depends = gdk-pixbuf2
-	optdepends = ffmpeg: FFmpeg backend to convert internal video of a live photo to static pictures
+	optdepends = ffmpeg>=5.1: FFmpeg backend to convert internal video of a live photo to static pictures
 	optdepends = gst-plugin-va: Hardware accelerated video decoding with GStreamer backend
 	optdepends = libavif: Support to save as .avif with GStreamer and GdkPixbuf backend
 	optdepends = libheif: Support to save photos as .heif, .heic, and .avif with GStreamer and GdkPixbuf backend
 	optdepends = libjxl: Support to save photos as .jxl with GStreamer and GdkPixbuf backend
 	optdepends = webp-pixbuf-loader: Support to save photos as .webp with GStreamer and GdkPixbuf backend
-	source = git+https://github.com/wszqkzqk/live-photo-conv.git#tag=0.40.4
-	sha256sums = 66909383cb061374f85e0db16bbbdb148fc21356f80651fdfedc281cb816072e
+	source = git+https://github.com/wszqkzqk/live-photo-conv.git#tag=0.50.0
+	sha256sums = 6a61ee2cf0e56b04180e1db74eab8005fd9a122224f82b7460db7e93b32d48a2
 
 pkgname = live-photo-conv
