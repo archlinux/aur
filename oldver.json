@@ -2,9 +2,9 @@
   "version": 2,
   "data": {
     "pi-ext-subagents": {
-      "version": "0.52.0",
-      "gitref": "refs/tags/v0.52.0",
-      "url": "https://github.com/nicobailon/pi-subagents/releases/tag/v0.52.0"
+      "version": "0.53.0",
+      "gitref": "refs/tags/v0.53.0",
+      "url": "https://github.com/nicobailon/pi-subagents/releases/tag/v0.53.0"
     }
   }
 }
