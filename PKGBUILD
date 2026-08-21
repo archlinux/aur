@@ -1,7 +1,7 @@
 # Maintainer: Aira Hinano <hinanoaira at hinasense dot jp>
 # Co-Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 pkgname=vrcx
-pkgver=2026.05.03
+pkgver=2026.07.18
 pkgrel=1
 pkgdesc="Friendship management tool for VRChat (built with Electron)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "build.patch"
 )
 
-sha256sums=('f1f5b8c4a562c042bafca51599787b475e557216d5b4d42759d163ba5c47441f'
+sha256sums=('03e98d3d4b1ad3a550550b6f7223193275533035930b6eb78b79b66f49285791'
             '3e40d0056adfd86848cf0bc594bf399d9fff1f894d470bad90d2b232d17f95c5'
             'db8f2ca37e76cc81ab15f91005882248cd68b97f59f3c8a5bf54674d190ca5df')
             
