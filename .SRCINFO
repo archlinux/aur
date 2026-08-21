@@ -1,22 +1,12 @@
 pkgbase = keyviz-zh-bin
-	pkgdesc = Chinese-localized fork of Keyviz with Linux fixes
+	pkgdesc = Transitional package for keyviz-zh
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 1
+	epoch = 1
 	url = https://github.com/duanluan/keyviz
-	arch = x86_64
-	license = GPL3
-	makedepends = cargo
-	makedepends = nodejs
-	makedepends = npm
-	depends = gtk3
-	depends = libayatana-appindicator
-	depends = webkit2gtk-4.1
-	provides = keyviz
-	conflicts = keyviz
-	conflicts = keyviz-bin
-	conflicts = keyviz-cn-bin
-	options = !strip
-	source = keyviz-abff97c6687e96736c63d4dad1c4bba06a1f8205.tar.gz::https://codeload.github.com/duanluan/keyviz/tar.gz/abff97c6687e96736c63d4dad1c4bba06a1f8205
-	sha256sums = 06f4a2b8b8550a3dff8ade226e905d3abcaceaff8a2795faab73f19dfb7fb512
+	install = keyviz-zh-bin.install
+	arch = any
+	license = GPL-3.0-only
+	depends = keyviz-zh>=2.1.0
 
 pkgname = keyviz-zh-bin
