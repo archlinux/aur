@@ -3,8 +3,9 @@ Operation = Install
 Operation = Upgrade
 Type = Package
 Target = openai-codex-desktop
+Target = chatgpt
 
 [Action]
-Description = Re-applying Codex++ injection for openai-codex-desktop...
+Description = Re-applying Codex++ injection for ChatGPT...
 When = PostTransaction
 Exec = /usr/bin/codex-plus-plus hook-reapply

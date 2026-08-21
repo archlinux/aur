@@ -1,10 +1,10 @@
 post_install() {
-  echo "Codex++ installed without changing openai-codex-desktop."
+  echo "Codex++ installed without changing the ChatGPT launcher."
   echo "Run 'sudo codex-plus-plus enable' only when you want Codex++ to take over the launcher."
 }
 
 post_upgrade() {
-  echo "Restoring openai-codex-desktop launcher after Codex++ upgrade..."
+  echo "Restoring the ChatGPT launcher after Codex++ upgrade..."
   /usr/bin/codex-plus-plus disable >/dev/null 2>&1 || true
   echo "Run 'sudo codex-plus-plus enable' only when you want Codex++ to take over the launcher."
 }

@@ -3,13 +3,15 @@
 set -euo pipefail
 
 PKGNAME="codex-plus-plus"
-UPSTREAM_BIN="/usr/bin/codex-desktop"
-INJECTED_BIN="/usr/lib/${PKGNAME}/bin/codex-desktop-injected"
+UPSTREAM_BIN="/usr/bin/chatgpt"
+INJECTED_BIN="/usr/lib/${PKGNAME}/bin/chatgpt-injected"
 BACKUP_DIR="/usr/lib/${PKGNAME}/upstream"
-BACKUP_BIN="${BACKUP_DIR}/codex-desktop"
+BACKUP_BIN="${BACKUP_DIR}/chatgpt"
+LEGACY_UPSTREAM_BIN="/usr/bin/codex-desktop"
+LEGACY_INJECTED_BIN="/usr/lib/${PKGNAME}/bin/codex-desktop-injected"
 STATE_DIR="/var/lib/${PKGNAME}"
 STATE_FILE="${STATE_DIR}/state"
-DEFAULT_STATE="enabled"
+DEFAULT_STATE="disabled"
 
 launcher_processes() {
   pgrep -f "^/usr/lib/${PKGNAME}/bin/codex-plus-plus-upstream( |$)" 2>/dev/null || true
@@ -17,7 +19,8 @@ launcher_processes() {
 
 codex_app_processes() {
   pgrep -f "^/bin/bash ${UPSTREAM_BIN}( |$)" 2>/dev/null || true
-  pgrep -f "/usr/lib/openai-codex-desktop/resources/app\\.asar" 2>/dev/null || true
+  pgrep -f "^/bin/bash ${BACKUP_BIN}( |$)" 2>/dev/null || true
+  pgrep -f "^/usr/lib/chatgpt/ChatGPT( |$)" 2>/dev/null || true
 }
 
 process_tree() {
@@ -109,6 +112,18 @@ is_injected() {
   [[ -L "${UPSTREAM_BIN}" ]] && [[ "$(readlink -f "${UPSTREAM_BIN}")" == "$(readlink -f "${INJECTED_BIN}")" ]]
 }
 
+restore_legacy_injection() {
+  local legacy_target
+
+  [[ -L "${LEGACY_UPSTREAM_BIN}" ]] || return 0
+  legacy_target="$(readlink "${LEGACY_UPSTREAM_BIN}" 2>/dev/null || true)"
+  [[ "${legacy_target}" == "${LEGACY_INJECTED_BIN}" ]] || return 0
+
+  if [[ -e "${UPSTREAM_BIN}" || -L "${UPSTREAM_BIN}" ]]; then
+    ln -sfnT chatgpt "${LEGACY_UPSTREAM_BIN}"
+  fi
+}
+
 backup_current_upstream() {
   if [[ ! -e "${UPSTREAM_BIN}" ]]; then
     echo "Missing upstream launcher: ${UPSTREAM_BIN}" >&2
@@ -127,6 +142,7 @@ enable_injection() {
   ensure_state_dir
   stop_running_launchers
   stop_running_codex_apps
+  restore_legacy_injection
 
   apply_injection
 }
@@ -151,10 +167,17 @@ disable_injection() {
   ensure_state_dir
   stop_running_launchers
   stop_running_codex_apps
+  restore_legacy_injection
+
+  if ! is_injected; then
+    save_state disabled
+    echo "Codex++ injection is already disabled."
+    return
+  fi
 
   if [[ ! -f "${BACKUP_BIN}" ]]; then
     echo "Backup launcher not found: ${BACKUP_BIN}" >&2
-    echo "Reinstall openai-codex-desktop to restore the upstream launcher." >&2
+    echo "Reinstall the package that provides 'chatgpt' to restore the upstream launcher." >&2
     exit 1
   fi
 
@@ -206,7 +229,7 @@ Usage:
   codex-plus-plus disable
   codex-plus-plus status
   codex-plus-plus stop
-  codex-plus-plus run [codex args...]
+  codex-plus-plus run [chatgpt args...]
   codex-plus-plus hook-reapply
 EOF
 }
@@ -216,7 +239,7 @@ main() {
   local self_name
 
   self_name="$(basename "$0")"
-  if [[ "${self_name}" == "codex-desktop" || "${self_name}" == "codex-desktop-injected" ]]; then
+  if [[ "${self_name}" == "chatgpt" || "${self_name}" == "chatgpt-injected" || "${self_name}" == "codex-desktop" || "${self_name}" == "codex-desktop-injected" ]]; then
     run_injected "$@"
   fi
 

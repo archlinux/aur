@@ -1,6 +1,9 @@
 --- a/crates/codex-plus-core/src/app_paths.rs
 +++ b/crates/codex-plus-core/src/app_paths.rs
-@@ -15,2 +15,16 @@ struct AppPackageSpec {
+@@ -12,8 +12,22 @@ struct AppPackageSpec {
+     priority: u8,
+ }
+
 -const CODEX_PACKAGE_EXECUTABLES: &[&str] = &["ChatGPT.exe", "Codex.exe", "codex.exe"];
 -const STANDALONE_CODEX_EXECUTABLES: &[&str] = &["ChatGPT.exe", "Codex.exe", "codex.exe"];
 +const CODEX_PACKAGE_EXECUTABLES: &[&str] = &[
@@ -19,17 +22,32 @@
 +    "Codex",
 +    "codex",
 +];
-@@ -394 +407,0 @@ fn is_codex_plus_plus_path(path: &Path) -> bool {
+
+ #[cfg(windows)]
+ const OPENAI_PACKAGE_FAMILY_NAMES: &[&str] = &[
+@@ -397,7 +411,6 @@ fn is_codex_plus_plus_path(path: &Path) -> bool {
+         let lower = name.to_ascii_lowercase();
+         if lower == "codex++"
+             || lower == "codexplusplus"
 -            || lower == "codex-plus-plus"
-@@ -593 +605,4 @@ pub(crate) fn is_supported_app_executable_name(name: &str) -> bool {
+             || lower.contains("codex-plus-manager")
+         {
+             return true;
+@@ -596,7 +609,10 @@ pub(crate) fn is_supported_windows_app_package_name(package_name: &str) -> bool
+ }
+
+ pub(crate) fn is_supported_app_executable_name(name: &str) -> bool {
 -    name.eq_ignore_ascii_case("Codex.exe") || name.eq_ignore_ascii_case("ChatGPT.exe")
 +    name.eq_ignore_ascii_case("Codex.exe")
 +        || name.eq_ignore_ascii_case("ChatGPT.exe")
 +        || name.eq_ignore_ascii_case("Codex")
 +        || name.eq_ignore_ascii_case("ChatGPT")
+ }
+
+ fn package_spec_from_path(path: &Path) -> Option<AppPackageSpec> {
 --- a/crates/codex-plus-core/src/ports.rs
 +++ b/crates/codex-plus-core/src/ports.rs
-@@ -6,7 +6,7 @@
+@@ -66,7 +66,7 @@ pub fn manager_guard_port() -> u16 {
  pub fn select_platform_loopback_port(requested: u16) -> u16 {
      select_platform_loopback_port_with(
          requested,
@@ -38,50 +56,40 @@
          can_bind_loopback_port,
          find_available_loopback_port,
      )
-@@ -14,14 +14,14 @@
- 
- pub fn select_platform_loopback_port_with(
-     requested: u16,
--    is_windows: bool,
-+    should_fallback_when_busy: bool,
-     can_bind: impl Fn(u16) -> bool,
-     find_available: impl Fn() -> u16,
- ) -> u16 {
--    if !is_windows || can_bind(requested) {
--        requested
--    } else {
-+    if should_fallback_when_busy && !can_bind(requested) {
-         find_available()
-+    } else {
-+        requested
-     }
- }
- 
+@@ -75,7 +75,7 @@ pub fn select_platform_loopback_port(requested: u16) -> u16 {
+ pub fn select_packaged_codex_debug_port(requested: u16) -> u16 {
+     select_packaged_codex_debug_port_with(
+         requested,
+-        cfg!(windows),
++        true,
+         can_bind_loopback_port,
+         crate::cdp::endpoint_available,
+         find_available_loopback_port,
 --- a/crates/codex-plus-core/tests/launcher.rs
 +++ b/crates/codex-plus-core/tests/launcher.rs
-@@ -344,0 +345,19 @@ fn app_paths_normalizes_executable_and_package_paths() {
+@@ -343,6 +343,25 @@ fn app_paths_normalizes_executable_and_package_paths() {
+     );
+ }
+
 +#[test]
 +fn app_paths_normalizes_linux_wrapper_executable() {
 +    let temp = tempfile::tempdir().unwrap();
 +    let portable = temp.path().join("codex-plus-plus");
 +    let app = portable.join("app");
 +    std::fs::create_dir_all(&app).unwrap();
-+    std::fs::write(app.join("codex"), "").unwrap();
++    std::fs::write(app.join("ChatGPT"), "").unwrap();
 +
 +    assert_eq!(
-+        normalize_codex_app_path(&app.join("codex")).as_deref(),
++        normalize_codex_app_path(&app.join("ChatGPT")).as_deref(),
 +        Some(app.as_path())
 +    );
 +    assert_eq!(
 +        normalize_codex_app_path(&portable).as_deref(),
 +        Some(app.as_path())
 +    );
-+    assert_eq!(build_codex_executable(&app), app.join("codex"));
++    assert_eq!(build_codex_executable(&app), app.join("ChatGPT"));
 +}
 +
-@@ -764 +783 @@ fn ports_windows_falls_back_to_ephemeral_when_requested_is_busy() {
--fn ports_windows_falls_back_to_ephemeral_when_requested_is_busy() {
-+fn ports_falls_back_to_ephemeral_when_requested_is_busy() {
-@@ -778 +797 @@ fn ports_non_windows_keeps_requested_even_when_busy() {
--fn ports_non_windows_keeps_requested_even_when_busy() {
-+fn ports_keeps_requested_when_fallback_disabled() {
+ #[test]
+ fn app_paths_prefers_chatgpt_entrypoint_when_portable_bundle_contains_codex_shim() {
+     let temp = tempfile::tempdir().unwrap();
