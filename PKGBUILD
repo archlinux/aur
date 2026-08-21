@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=phpantom_lsp
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Fast PHP language server with deep type intelligence."
 url="https://phpantom-dev.github.io/phpantom_lsp/"
@@ -17,7 +17,7 @@ depends=(
 makedepends=('cargo')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/PHPantom-dev/${pkgname}/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('08046b8ad2920e7ba179a6c5aa6dff6b60f0b6f935287d7a9b3efbaed2c7fb683b1508f4a41c526fd087f238b482bc26536e08964abf99179daa8f35f3e8d199')
+b2sums=('1c2b99df2b9793b387101b606fa5ec525f37b745b9e8201d609a005c2555dc0e0c6cb2172c1c4e41edb593e68508200016b2d74d73209f7e1a7b5a9d8eed84c9')
 
 prepare() {
   cd "${srcdir}/${pkgname}-$pkgver"
@@ -29,13 +29,13 @@ build() {
   cd "${srcdir}/${pkgname}-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
   cd "${srcdir}/${pkgname}-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --frozen
 }
 
 package() {
