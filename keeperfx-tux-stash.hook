@@ -1,0 +1,25 @@
+# Keep the outgoing engine binary when KeeperFX is upgraded.
+#
+# A saved game is a raw dump of the engine's `struct Game`. Any field added
+# anywhere inside that struct invalidates every existing save -- it has already
+# happened once, when a single 4-byte field in `struct Thing` was multiplied by
+# the 12288 things the engine holds. The release check
+# (packaging/ci/check-save-format.sh) catches it before shipping and the engine
+# now reports it rather than quitting, but a player whose campaign no longer
+# loads still needs the engine that wrote it.
+#
+# PreTransaction is required, not preferred: after the transaction the old
+# binary has already been overwritten and there is nothing left to keep.
+#
+# Only Upgrade is listed. Install has no predecessor to preserve, and Remove is
+# handled by its own hook so the stash does not outlive the package.
+
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = keeperfx-tux
+
+[Action]
+Description = Keeping the previous KeeperFX engine so its saved games stay playable...
+When = PreTransaction
+Exec = /usr/share/libalpm/scripts/keeperfx-tux-stash

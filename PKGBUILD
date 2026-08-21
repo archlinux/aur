@@ -18,7 +18,16 @@ pkgver=1.4.0.5425
 # rel 4: ship the pacman hook that reports a library break the soname
 # dependencies below cannot catch, and pick up the launcher fix that stops a
 # crash report carrying a log the failing run never wrote.
-pkgrel=4
+#
+# rel 5: ship the previous-engine hook AHEAD of the engine release that needs it.
+# A saved game is a raw dump of struct Game, and that struct grew between this
+# stable and the next one, so upgrading past this point makes every existing
+# save unreadable. The hook preserves the outgoing engine so those saves stay
+# playable -- but pacman reads hooks at transaction start, so a hook shipped IN
+# the breaking upgrade does not run for it. It has to already be installed.
+# Hence this: same engine tag, same pkgver, packaging only. Nothing here changes
+# the game; it puts the safety net in place before the fall.
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/ForkedInTime/keeperfx-linux-alpha"
 license=('GPL-2.0-or-later')
@@ -51,6 +60,10 @@ source=(
   'keeperfx-tux-launcher.sh'
   'keeperfx-tux.hook'
   'keeperfx-tux-libcheck.sh'
+  'keeperfx-tux-stash.sh'
+  'keeperfx-tux-stash.hook'
+  'keeperfx-tux-unstash.hook'
+  'keeperfx-tux-previous.sh'
 )
 noextract=("keeperfx-tux-${pkgver}-full.7z")
 sha256sums=(
@@ -62,6 +75,10 @@ sha256sums=(
   '1001a296fc71263c3a64d22f9bdfc398954119f80df89f49a4b42f2769e169a1'
   'ee2fc0f5b3d81dd55efe7d2aef6c4d67d18baff794114e3d6e334171842601eb'
   '37e0fcb5b46aa0b178380ea8f36aa62485b75b5425c1932c7ada7f4101efc870'
+  '8ec4213ccaf290f309ac6a4a0c9036531256b1db6239cb0f571062a1a2cf51e6'
+  'fa54e53295a854ef148ef34b9f369c44caeaa6d2c72ce45c7111668ae79fc3d8'
+  '34594e360bcf608a99cce2b531df11f41ec6d0e650c91bd637b9ce73034fa6dc'
+  'a300b1debacad0a8ddf92fc4c0ad6b297c4d7d1f82f3f0b8e9a65ec78f0d6af3'
 )
 
 # Data trees taken from the release archive. It also contains the engine binary,
@@ -221,6 +238,22 @@ package_keeperfx-tux() {
     "${pkgdir}/usr/share/libalpm/scripts/keeperfx-tux-libcheck"
   install -Dm644 "${srcdir}/keeperfx-tux.hook" \
     "${pkgdir}/usr/share/libalpm/hooks/keeperfx-tux-libcheck.hook"
+
+  # A saved game is a raw dump of the engine's struct Game, so a single field
+  # added anywhere inside it makes every existing save unreadable -- which has
+  # already happened once, silently. check-save-format.sh catches it before a
+  # release ships and the engine now reports it instead of quitting, but the
+  # player's campaign still needs the engine that wrote it. These keep the last
+  # few engines and let one be run: enough to open the old save, isolated from
+  # the current install so the old engine can never write to it.
+  install -Dm755 "${srcdir}/keeperfx-tux-stash.sh" \
+    "${pkgdir}/usr/share/libalpm/scripts/keeperfx-tux-stash"
+  install -Dm644 "${srcdir}/keeperfx-tux-stash.hook" \
+    "${pkgdir}/usr/share/libalpm/hooks/keeperfx-tux-stash.hook"
+  install -Dm644 "${srcdir}/keeperfx-tux-unstash.hook" \
+    "${pkgdir}/usr/share/libalpm/hooks/keeperfx-tux-unstash.hook"
+  install -Dm755 "${srcdir}/keeperfx-tux-previous.sh" \
+    "${pkgdir}/usr/bin/keeperfx-tux-previous"
 
   install -Dm755 "${srcdir}/keeperfx-tux.sh" "${pkgdir}/usr/bin/keeperfx-tux"
   install -Dm644 "${srcdir}/keeperfx-tux.desktop" \

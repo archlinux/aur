@@ -1,0 +1,24 @@
+# Remove the kept engine binaries when KeeperFX itself is removed.
+#
+# The upgrade hook (keeperfx-tux-stash.hook) accumulates up to three previous
+# engines under /var/lib/keeperfx-tux. Those exist only to open saved games
+# belonging to this package, so once the package is gone they are ~84MB of
+# files the user never chose to install, in a directory they have no reason to
+# look in. Uninstalling should leave nothing behind.
+#
+# PostTransaction: only clean up once the removal has actually succeeded.
+#
+# Upgrade is deliberately NOT listed here. pacman reports an upgrade as its own
+# operation rather than a Remove followed by an Install, so this cannot fire
+# mid-upgrade and delete the stash the other hook just wrote -- but keeping the
+# two triggers in separate files makes that impossible to introduce by accident.
+
+[Trigger]
+Operation = Remove
+Type = Package
+Target = keeperfx-tux
+
+[Action]
+Description = Removing kept KeeperFX engine versions...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/keeperfx-tux-stash --purge
