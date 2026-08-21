@@ -1,6 +1,6 @@
 pkgbase = vernier
 	pkgdesc = Cross-platform pixel-measurement overlay in Rust
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/jondkinney/vernier
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = vernier
 	optdepends = xdg-desktop-portal-hyprland: global hotkey via the GlobalShortcuts portal
 	options = !lto
 	options = !debug
-	source = vernier-0.4.4.tar.gz::https://github.com/jondkinney/vernier/archive/refs/tags/v0.4.4.tar.gz
-	sha256sums = 08e2c3dc593f617d61ad9717131a552a6dafbe6627edd78d41c6c425fadcd406
+	source = vernier-0.4.5.tar.gz::https://github.com/jondkinney/vernier/archive/refs/tags/v0.4.5.tar.gz
+	sha256sums = 25508b8975c69024e4fe341e489208d463e672b2052d6551954ae619be9b5de3
 
 pkgname = vernier
