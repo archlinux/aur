@@ -1,9 +1,10 @@
 # Maintainer: James Bowling <kf5u AT pm DOT me>
 pkgname=wsjtx-improved-widescreen
 _pkgname=wsjtx
-pkgver=3.2.0
-pkgrel=260818
+_upstream=3.2.0
 _build=260818
+pkgver=${_upstream}.${_build}
+pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB (Widescreen Layout Version)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wsjt-x-improved/"
@@ -32,20 +33,20 @@ makedepends=(
 install=wsjtx-improved.install
 provides=('wsjtx')
 conflicts=('wsjtx')
-source=("https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v$pkgver/Source%20code/$_pkgname-${pkgver}_improved_widescreen_PLUS_${_build}.tgz")
-md5sums=('b4b8791343b7db8cebef3992bb82b806')
-sha1sums=('99b3f4c462bca67946b8903714543e7513c4cdf9')
+source=("https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v$_upstream/Source%20code/$_pkgname-${_upstream}_improved_widescreen_PLUS_${_build}.tgz")
+md5sums=('118c9a66d695e856edf61b0f23018cc8')
+sha1sums=('b51ee40ac4e075126accb7e803929e311129fec8')
 options=(!lto)
 prepare() {
-    tar xzf ${_pkgname}-${pkgver}_improved_widescreen_PLUS_${_build}.tgz
-    mkdir -p "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
-    cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix
-    tar xzf "$srcdir"/$_pkgname-$pkgver/src/wsjtx.tgz
+    tar xzf ${_pkgname}-${_upstream}_improved_widescreen_PLUS_${_build}.tgz
+    mkdir -p "$srcdir"/$_pkgname-$_upstream/wsjtx-prefix/build
+    cd "$srcdir"/$_pkgname-$_upstream/wsjtx-prefix
+    tar xzf "$srcdir"/$_pkgname-$_upstream/src/wsjtx.tgz
 }
 build() {
     export CFLAGS+=" -Wno-error=format-security"
     export CXXFLAGS+=" -Wno-error=format-security"
-    cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
+    cd "$srcdir"/$_pkgname-$_upstream/wsjtx-prefix/build
 	cmake \
 		-Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -54,8 +55,8 @@ build() {
     make || return 1
 }
 package() {
-    cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
+    cd "$srcdir"/$_pkgname-$_upstream/wsjtx-prefix/build
 	make DESTDIR=$pkgdir install
-    install -Dm644 "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/wsjtx/sounds/{ContinentOnBand,Continent,CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,_Zone}.wav -t "$pkgdir"/opt/wsjtx/sounds
+    install -Dm644 "$srcdir"/$_pkgname-$_upstream/wsjtx-prefix/wsjtx/sounds/{ContinentOnBand,Continent,CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,_Zone}.wav -t "$pkgdir"/opt/wsjtx/sounds
 	rm -rf "$pkgdir/home"
 }
