@@ -1,9 +1,0 @@
-#!/bin/bash
-#
-## A simple wrapper to make masterpdfeditor use the bundled qt6 libraries!
-#
-#-- Set library paths
-export QT_PLUGIN_PATH=/opt/masterpdfeditor/lib/qt6/plugins
-export LD_LIBRARY_PATH=/opt/masterpdfeditor/lib:$LD_LIBRARY_PATH
-#-- Run program
-exec /opt/masterpdfeditor/masterpdfeditor5 "$@"
