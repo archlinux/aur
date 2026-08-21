@@ -1,15 +1,15 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=ssr.lv2-git
 pkgdesc="A sympathetic string resonator."
-pkgver=r3.a40fa53
+pkgver=r10.e1999da
 pkgrel=1
 epoch=
 arch=(x86_64)
 url="https://github.com/jpcima/ssr"
 license=(MIT)
 groups=(lv2-plugins)
-depends=('git' 'pkgconf' 'cairo' 'jack' 'mesa')
-makedepends=()
+depends=('pkgconf' 'cairo' 'jack' 'mesa')
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=()
@@ -33,12 +33,13 @@ pkgver() {
 
 prepare() {
 	cd "$pkgname"
+  git config protocol.file.allow always
   git submodule update --init --recursive
 }
 
 build() {
 	cd "$pkgname"
-  make
+  make CXXFLAGS="$CXXFLAGS -include cstdint -Wno-template-body"
 }
 
 package() {
