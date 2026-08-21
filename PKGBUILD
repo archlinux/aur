@@ -5,7 +5,7 @@
 # is the literal template content.
 
 pkgname=lash-shell-bin
-pkgver=0.13.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Dual-grammar shell and scripting language with debugger, LSP, and monitor"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('lash' 'lash-shell')
 conflicts=('lash' 'lash-shell')
 options=('!strip' '!debug')
 source=("https://gitlab.com/szabobogdan3/lash/-/releases/v${pkgver}/downloads/lash-shell-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('2c6319e2ad0e74e01c5b5fbca1fdb57c2b819951761724aeb58f496988b41e6b')
+sha256sums=('4b3bdf2250fa5c0ef986c98587f6ca0615d2002537a2bee82c30da28169b3efb')
 
 package() {
   cd "$srcdir"

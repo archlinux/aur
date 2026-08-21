@@ -1,6 +1,6 @@
 pkgbase = lash-shell-bin
 	pkgdesc = Dual-grammar shell and scripting language with debugger, LSP, and monitor
-	pkgver = 0.12.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://lash.szabobogdan.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lash-shell-bin
 	conflicts = lash-shell
 	options = !strip
 	options = !debug
-	source = https://gitlab.com/szabobogdan3/lash/-/releases/v0.12.0/downloads/lash-shell-0.12.0-1-x86_64.pkg.tar.zst
-	sha256sums = be8529ed16b4f18a05d82548d8c3e311741aff7cf3462f988376df63c67afb5f
+	source = https://gitlab.com/szabobogdan3/lash/-/releases/v0.14.0/downloads/lash-shell-0.14.0-1-x86_64.pkg.tar.zst
+	sha256sums = 4b3bdf2250fa5c0ef986c98587f6ca0615d2002537a2bee82c30da28169b3efb
 
 pkgname = lash-shell-bin
