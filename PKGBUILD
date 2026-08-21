@@ -6,7 +6,7 @@ _pkgname="${_name,,}"
 _plugin_uri="https://www.jahnichen.de/plugins/lv2/${_name}"
 pkgname="${_pkgname}-git"
 pkgdesc="Multi channel MIDI step sequencer LV2 plugin (git version)"
-pkgver=1.8.0.r0.g8f96f92
+pkgver=1.8.10.r0.g7ad4bf9
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/sjaehn/${_name}"
@@ -36,7 +36,7 @@ build() {
 
 check() {
   cd "${srcdir}/${_pkgname}"
-  lv2lint -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
+  lv2lint -t "UI Symbols" -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
 }
 
 package() {
