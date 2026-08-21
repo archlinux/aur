@@ -1,0 +1,5 @@
+[huntclaw]
+source = "github"
+github = "tigerlang/huntclaw"
+use_max_tag = true
+prefix = "v"
