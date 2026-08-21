@@ -4,7 +4,7 @@
 # Contributor: Shinlun Hsieh <yngwiexx@yahoo.com.tw>
 
 pkgname=qmidiarp-git
-pkgver=0.6.5.r20.gd774efc
+pkgver=0.7.4.r14.g214693b
 pkgrel=1
 pkgdesc="A MIDI arpeggiator, phrase generator and controller LFO for the ALSA sequencer."
 arch=(x86_64)
@@ -14,7 +14,7 @@ groups=('lv2-plugins' 'pro-audio')
 conflicts=('qmidiarp')
 provides=('qmidiarp')
 depends=('jack' 'hicolor-icon-theme' 'liblo' 'qt5-base')
-makedepends=('lv2' 'qt5-tools')
+makedepends=('git' 'lv2' 'qt5-tools')
 source=("qmidiarp::git://git.code.sf.net/p/qmidiarp/code")
 sha512sums=('SKIP')
 
