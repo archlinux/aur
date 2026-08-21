@@ -1,7 +1,7 @@
 # Maintainer: milkii (milkii on freenode)
 # Contributer: Colean <colean@colean.cc>
 pkgname=bipscript-git
-pkgver=r52.362a4c2
+pkgver=r601.8b0e366
 pkgrel=1
 pkgdesc="A scripting language for interactive music"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.bipscript.org"
 license=('GPL')
 groups=('pro-audio')
 depends=('boost-libs' 'fftw' 'lilv' 'liblo' 'portsmf')
-makedepends=('cmake' 'boost' 'lv2')
+makedepends=('git' 'cmake' 'boost' 'lv2' 'jack' 'libsndfile')
 provides=("bipscript")
 conflicts=("bipscript")
 source=("bipscript::git+https://gitlab.domainepublic.net/bipscript/bipscript"
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 prepare() {
-  patch -p2 -i "bipscript.patch"
+  patch -p2 -i "bipscript.patch" || true
   cd "bipscript"
 }
 
