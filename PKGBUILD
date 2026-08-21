@@ -1,7 +1,7 @@
 # Maintainer: RimuruTemp1421 <daser1421official@gmail.com>
 
 pkgname=anihot-app
-pkgver=6.2.1
+pkgver=6.2.2
 pkgrel=1
 pkgdesc="Linux client for AniHot anime streaming app"
 arch=('x86_64')
@@ -12,7 +12,7 @@ install="${pkgname}.install"
 options=('!debug')
 source=("anihot-${pkgver}.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/${pkgver}r/${pkgver}-linux.zip"
         "${pkgname}.install")
-sha256sums=('95baf588ef3b383ae1e09300c14680854a1cd44a5aeabfce425e095c33223edd'
+sha256sums=('4edb5e1fad17ea1df51ffa027285244983b013dddd2c1c02608a34ec2b6ef8c0'
             '0e036796aa22e8b8c0f11112c454651edea24ab5e4aedcb81536cbde1540c763')
 
 package() {
