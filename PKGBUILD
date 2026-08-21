@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-pkgver=6.11.1
+pkgver=6.11.2
 pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
@@ -38,7 +38,7 @@ _pkgfn=qtbase
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$pkgver
         qt6-base-cflags.patch
         qt6-base-nostrip.patch)
-sha256sums=('2eafe504fae873d20f206b5661e2e10506879455cb2d370f42c5bb72ccf7a8a1'
+sha256sums=('c27a588094ea6d47f294539dbab00a7222d9f56e2d44ac00287bb44b5eed612a'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
             '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
@@ -72,6 +72,7 @@ build() {
     -DFEATURE_system_sqlite=ON \
     -DFEATURE_no_direct_extern_access=$_no_direct_extern_access \
     -DFEATURE_mimetype_database=OFF \
+    -DFEATURE_openssl_hash=ON \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
     -DCMAKE_MESSAGE_LOG_LEVEL=STATUS \
     \
