@@ -6,7 +6,7 @@ pkgbase = fcitx5-lotus-bin
 	arch = x86_64
 	license = GPL-3.0-or-later
 	source = https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v3.5.3/fcitx5-lotus-v3.5.3-x86_64-archlinux.tar.zst
-	sha256sums = sha256:a468513c2156a4ff34dc7f89e47eb3d2534430d1e65f7857b6bbef948368599b
+	sha256sums = a468513c2156a4ff34dc7f89e47eb3d2534430d1e65f7857b6bbef948368599b
 
 pkgname = fcitx5-lotus-bin
 	install = fcitx5-lotus.install
