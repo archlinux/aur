@@ -1,12 +1,12 @@
 # Maintainer: Dae Euhwa <daedaevibin@ik.me>
 
 pkgname=ddsc-bin
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Dynamic Discord Rich Presence based on active COSMIC windows"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/DDS"
-license=('OSL-3.0')
+license=('MIT')
 depends=('glibc')
 provides=('ddsc')
 conflicts=('ddsc' 'ddsc-git')
@@ -16,12 +16,12 @@ source=("$url/releases/download/v$pkgver/ddsc"
         "$url/raw/v$pkgver/common/src/config/default-config-cosmic.json"
         "$url/raw/v$pkgver/cosmic/autostart/ddsc.desktop"
         "$url/raw/v$pkgver/LICENSE")
-b2sums=('fb55eedaaaed071deec0caca0de01b8314e3ce42e1267d7cbb32035f41dd60baaa954cbb531636f148b0d0ae7b31a8297119248d7482fc596fe11eb2e5f2da69'
-        'df9740ba0092e81bfbaffaff3c97228e3f68b1a723edf14ca5461b434d414e54e0ff26fff6eed2c8710a6d10212f4fe92ba6b20cec4c8771a95d6426bff29cfc'
-        '259ada6a1cc30822563da55dc69abee6a5e4d6d13f794e1fea4cdfec3df886645b2de6806a6faaf27384f2b780a4f313f5ff56d23d9db5637150410f4e113175'
-        'ba78e4bb31ba897cf525cfe6af479938df8e1da647dace2d58f73204db34433a0e0c500743d016f75022d2ed0f58bc2896a831964742966ab21728bd1b757beb'
-        'cea3a4b42cb07c90e34e7d542a391af776c67c442cd5c39d6c800e8b39aca360e2e8a1ddcdf153574692703d66c09cba911b86c568bdfab79b1962af5241f81c'
-        '0f9a28cc3fa997b81fafd8b1af9ec68e80cbd746429efd8f98c18469c5bba013b872121c1018f9d79c87f34b453bf1757e3972856b153ae6833d1f7b957c6878')
+sha256sums=('99e8fe794e3f50d43772927ee173b14e92f12d85db69ee033729a106aaa4fdc3'
+            'bd009eb28a8e0c26545fe2bf759a6c87e26fe723fd2405f8e20521b706c75a31'
+            'df1e9be7517b2b8fa4a6dbda394442aaeabfc4172cd6b8bd3ae3e849f2305ce1'
+            'd247615508c3775e0a7344fa59d9977e2ad13069258fad5060feafbf084f3cfc'
+            '6bd7c10894f764c065147fb2ab60eeca5b66eb9978e5bf3297297757e21d4c1b'
+            '8403fb944ff1dd22b77466e452b807393834371a9deada0b62d281d8db62ec81')
 
 package() {
     install -Dm755 "$srcdir/ddsc" -t "$pkgdir/usr/bin/"
