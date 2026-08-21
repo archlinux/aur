@@ -1,6 +1,6 @@
 pkgbase = snclient-bin
 	pkgdesc = General-purpose monitoring agent supporting REST, NRPE and Prometheus
-	pkgver = 0.45
+	pkgver = 0.49
 	pkgrel = 1
 	url = https://github.com/ConSol-Monitoring/snclient
 	install = snclient.install
@@ -14,20 +14,20 @@ pkgbase = snclient-bin
 	depends = util-linux
 	optdepends = logrotate: rotate SNClient log files
 	optdepends = prometheus-node-exporter: node_exporter support
-	provides = snclient=0.45
+	provides = snclient=0.49
 	conflicts = snclient
-	noextract = snclient-0.45-linux-x86_64.rpm
-	noextract = snclient-0.45-linux-aarch64.rpm
-	noextract = snclient-0.45-linux-i686.rpm
+	noextract = snclient-0.49-linux-x86_64.rpm
+	noextract = snclient-0.49-linux-aarch64.rpm
+	noextract = snclient-0.49-linux-i686.rpm
 	options = !debug
 	options = !strip
 	backup = etc/logrotate.d/snclient
 	backup = etc/snclient/snclient.ini
-	source_x86_64 = snclient-0.45-linux-x86_64.rpm::https://github.com/ConSol-Monitoring/snclient/releases/download/v0.45/snclient-0.45-linux-x86_64.rpm
-	sha256sums_x86_64 = f14df7686e13fac54f125d9ce31699613bfcfeab9e41a029bfbf486d6ea0cd65
-	source_aarch64 = snclient-0.45-linux-aarch64.rpm::https://github.com/ConSol-Monitoring/snclient/releases/download/v0.45/snclient-0.45-linux-aarch64.rpm
-	sha256sums_aarch64 = 18d712d47160faa254a3d5be020269ab963c8f59110735d5b1acbbf2f204d413
-	source_i686 = snclient-0.45-linux-i686.rpm::https://github.com/ConSol-Monitoring/snclient/releases/download/v0.45/snclient-0.45-linux-i386.rpm
-	sha256sums_i686 = 34a41595d4a240ca297655dc741b8619efc9ee4a65ad88e862477eea2a20dc8d
+	source_x86_64 = snclient-0.49-linux-x86_64.rpm::https://github.com/ConSol-Monitoring/snclient/releases/download/v0.49/snclient-0.49-linux-x86_64.rpm
+	sha256sums_x86_64 = f6d2849d030f01045e67c65b5b15cadbfa88bff58b999e68803218223558056f
+	source_aarch64 = snclient-0.49-linux-aarch64.rpm::https://github.com/ConSol-Monitoring/snclient/releases/download/v0.49/snclient-0.49-linux-aarch64.rpm
+	sha256sums_aarch64 = cab53bf19828490ba000751f7cc588a60d1c3155dff228e1b956d84ae30d4f77
+	source_i686 = snclient-0.49-linux-i686.rpm::https://github.com/ConSol-Monitoring/snclient/releases/download/v0.49/snclient-0.49-linux-i386.rpm
+	sha256sums_i686 = 0fec05bd4b4ad0e12ae52796545d8fbd7040eef92966ac268e5fec7d4d5f8318
 
 pkgname = snclient-bin

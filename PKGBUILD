@@ -1,7 +1,7 @@
 # Maintainer: Christopher Kreft <email@christopherkreft.de>
 
 pkgname=snclient-bin
-pkgver=0.45
+pkgver=0.49
 pkgrel=1
 pkgdesc='General-purpose monitoring agent supporting REST, NRPE and Prometheus'
 arch=('x86_64' 'aarch64' 'i686')
@@ -22,9 +22,9 @@ source_i686=("snclient-${pkgver}-linux-i686.rpm::${url}/releases/download/v${pkg
 noextract=("snclient-${pkgver}-linux-x86_64.rpm"
            "snclient-${pkgver}-linux-aarch64.rpm"
            "snclient-${pkgver}-linux-i686.rpm")
-sha256sums_x86_64=('f14df7686e13fac54f125d9ce31699613bfcfeab9e41a029bfbf486d6ea0cd65')
-sha256sums_aarch64=('18d712d47160faa254a3d5be020269ab963c8f59110735d5b1acbbf2f204d413')
-sha256sums_i686=('34a41595d4a240ca297655dc741b8619efc9ee4a65ad88e862477eea2a20dc8d')
+sha256sums_x86_64=('f6d2849d030f01045e67c65b5b15cadbfa88bff58b999e68803218223558056f')
+sha256sums_aarch64=('cab53bf19828490ba000751f7cc588a60d1c3155dff228e1b956d84ae30d4f77')
+sha256sums_i686=('0fec05bd4b4ad0e12ae52796545d8fbd7040eef92966ac268e5fec7d4d5f8318')
 
 prepare() {
   mkdir -p completions rpm-root
