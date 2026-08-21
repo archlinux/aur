@@ -1,6 +1,6 @@
 # Maintainer: profevine <lordehenry@gmail.com>
 pkgname=legendary-lyrics
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Terminal music visualizer with album art, synced lyrics and bar animation"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 )
 optdepends=('cava: real audio bar visualization')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('121e5b2890f73a9769ee50484e2fe162037bffbb64aea7b4f73228ccfdb87e50')
+sha256sums=('206ca6d5b76f6e4cadfd543940d7c074ce8958b51bc36aadc5cb1315eec0bfbd')
 
 package() {
     cd "$pkgname-$pkgver"
