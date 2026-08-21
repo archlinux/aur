@@ -39,7 +39,7 @@ makedepends=(
   glib2
   gperf
   gtk3
-  java-environment-openjdk=$_java_build_ver
+  jdk${_java_build_ver}-openjdk
   libgl
   libx11
   libxtst

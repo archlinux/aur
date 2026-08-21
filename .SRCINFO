@@ -16,7 +16,7 @@ pkgbase = java-openjfx
 	makedepends = glib2
 	makedepends = gperf
 	makedepends = gtk3
-	makedepends = java-environment-openjdk=25
+	makedepends = jdk25-openjdk
 	makedepends = libgl
 	makedepends = libx11
 	makedepends = libxtst
