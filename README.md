@@ -414,6 +414,26 @@ package, and has to be: linux-firmware only accepts vendor blobs from the copyri
 holder, so MR !946 was closed and MT6639 BT firmware has to be submitted by MediaTek
 before it can live there.
 
+### Bluetooth modules on kernel 7.1+
+
+MT6639 Bluetooth has been native since kernel 7.1, so from there this package's
+`btusb` and `btmtk` add exactly one thing: device ID `0489:e156` (HP EliteMini),
+which is not upstream. Building them anyway replaces the in-tree modules for
+**every** Bluetooth device on the system, which costs users who gain nothing.
+
+Since v2.14-6 they are therefore skipped by default on 7.1 and newer, and built
+as before on older kernels. If you have an `0489:e156` adapter you need them, and
+a `new_id` write is not enough because the ID has to be in the driver's own
+`btmtk_mt6639_devs[]` table. Opt back in with:
+
+```bash
+echo 'BUILD_BT=yes' | sudo tee /etc/mediatek-mt7927-dkms.conf
+sudo dkms autoinstall
+```
+
+Check which Bluetooth modules are in use with `modinfo -n btusb`: a path under
+`updates/dkms/` means this package's build, anything else means the in-tree one.
+
 ### Firmware dependencies
 
 These issues are firmware-controlled and cannot be fixed in the driver:

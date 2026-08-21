@@ -5,6 +5,15 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.14-6] - 2026-08-21
+
+### Packaging
+
+- Skip building `btusb` and `btmtk` on kernel 7.1 and newer, where MT6639 Bluetooth is native. From 7.1 these modules add only device ID `0489:e156` (not upstream) while replacing the in-tree Bluetooth stack for every device on the system, so the default now favours the users who gain nothing from them. Owners of an `0489:e156` adapter opt back in with `BUILD_BT=yes` in `/etc/mediatek-mt7927-dkms.conf`; they genuinely need the modules, since the ID has to appear in the driver's own `btmtk_mt6639_devs[]` table and cannot be supplied by a `new_id` write (#103)
+- Build the DKMS module arrays conditionally rather than declaring them up front. The previous version of this gate skipped the Bluetooth build but still listed `btusb` and `btmtk` in `BUILT_MODULE_NAME`, so DKMS looked for modules that were never produced and the install failed; that is why the gate was removed in v2.12-1 (#85). Modules that are not built are now not declared
+- Warn on install and upgrade when an `0489:e156` device is present and the opt-in is not set, so nobody loses Bluetooth silently
+- Teach test-driver.sh that an in-tree `btusb` is the expected state on 7.1+. It previously required every module to come from DKMS and would otherwise have reported `btusb is built-in (DKMS module not loaded)` as a failure on exactly the configuration this release makes the default
+
 ## [2.14-5] - 2026-08-21
 
 ### Packaging

@@ -23,12 +23,42 @@ EOF
   fi
 }
 
+_check_bt_optin() {
+  # Since 2.14-6 the Bluetooth modules are not built on kernel 7.1+, where
+  # MT6639 is native. The one device that still needs them is 0489:e156, whose
+  # ID is not upstream and has to be in the driver's own btmtk_mt6639_devs[]
+  # table. Warn only when such a device is actually plugged in, so everyone
+  # else gets no noise.
+  local d vid pid
+  for d in /sys/bus/usb/devices/*; do
+    [[ -r "$d/idVendor" && -r "$d/idProduct" ]] || continue
+    read -r vid < "$d/idVendor" 2>/dev/null || continue
+    read -r pid < "$d/idProduct" 2>/dev/null || continue
+    [[ "$vid" == "0489" && "$pid" == "e156" ]] || continue
+    if ! grep -qiE '^[[:space:]]*BUILD_BT=(y|yes|1|true)' \
+        /etc/mediatek-mt7927-dkms.conf 2>/dev/null; then
+      cat <<'EOF'
+==> NOTE: Bluetooth device 0489:e156 detected.
+    On kernel 7.1+ this package no longer builds btusb/btmtk by default,
+    because MT6639 Bluetooth is native there. Your device ID is not upstream,
+    so you still need these modules. Enable them with:
+
+      echo 'BUILD_BT=yes' | sudo tee /etc/mediatek-mt7927-dkms.conf
+      sudo dkms autoinstall
+EOF
+    fi
+    return
+  done
+}
+
 post_install() {
   _check_wifi_firmware
+  _check_bt_optin
 }
 
 post_upgrade() {
   _check_wifi_firmware
+  _check_bt_optin
 }
 
 pre_remove() {

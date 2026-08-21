@@ -125,8 +125,26 @@ check_dkms() {
 # 6. Module source (DKMS vs built-in)
 # ---------------------------------------------------------------------------
 check_module_source() {
+	# btusb is expected to be in-tree on kernel 7.1+, where MT6639 is native and
+	# this package deliberately stops building the Bluetooth modules unless the
+	# user opts in for 0489:e156. Only mt7925e must come from DKMS everywhere.
 	local mods=(mt7925e btusb)
 	local all_dkms=true
+	local kver kmaj kmin bt_expected_intree=false
+
+	kver="$(uname -r)"
+	kmaj="${kver%%.*}"
+	kmin="${kver#*.}"
+	kmin="${kmin%%.*}"
+	kmin="${kmin%%[!0-9]*}"
+	if [[ "$kmaj" -gt 7 ]] 2>/dev/null ||
+		{ [[ "$kmaj" -eq 7 ]] && [[ "$kmin" -ge 1 ]]; } 2>/dev/null; then
+		bt_expected_intree=true
+	fi
+	if grep -qiE '^[[:space:]]*BUILD_BT=(y|yes|1|true)' \
+		/etc/mediatek-mt7927-dkms.conf 2>/dev/null; then
+		bt_expected_intree=false
+	fi
 
 	for mod in "${mods[@]}"; do
 		local mod_path
@@ -138,6 +156,9 @@ check_module_source() {
 
 		if ! echo "$mod_path" | has_match "updates/dkms"; then
 			if echo "$mod_path" | has_match "kernel/"; then
+				if [[ "$mod" == "btusb" ]] && $bt_expected_intree; then
+					continue
+				fi
 				fail "$mod is built-in (DKMS module not loaded)"
 				return
 			fi
@@ -145,7 +166,9 @@ check_module_source() {
 		fi
 	done
 
-	if $all_dkms; then
+	if $bt_expected_intree; then
+		ok "DKMS (WiFi); btusb in-tree as expected on 7.1+"
+	elif $all_dkms; then
 		ok "DKMS"
 	else
 		ok "mixed"
