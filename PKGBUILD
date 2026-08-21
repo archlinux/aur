@@ -6,7 +6,7 @@
 # Contributor: Gordin <9ordin @t gmail d@t com>
 
 pkgname=screenkey-git
-pkgver=1.1.r5.g467662b
+pkgver=1.5.r19.g43bde0f
 pkgrel=1
 pkgdesc="Screencast tool to show your keys inspired by Screenflick, based on key-mon. Active fork with new features."
 arch=('any')
