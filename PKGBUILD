@@ -1,6 +1,6 @@
 pkgname=raid-util-bin
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.5.1
+pkgrel=3
 pkgdesc="A simple and modern GUI for managing RAID."
 arch=('x86_64')
 license=('MIT')
@@ -15,7 +15,7 @@ depends=(
 
 options=('!debug' '!strip')
 
-source=("https://github.com/mijocecr/raid-util/releases/download/raid-util_v1.5/RAID-Util.tar.gz")
+source=("https://github.com/mijocecr/raid-util/releases/download/raid-util_v2.0/RAID-Util.tar.gz")
 sha256sums=('SKIP')
 
 package() {
