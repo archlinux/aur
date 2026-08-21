@@ -1,6 +1,6 @@
 pkgbase = drain-rs-bin
 	pkgdesc = Battery-drain triage TUI for Linux written in Rust
-	pkgver = 0.1.16
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/isene/drain
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = drain-rs-bin
 	provides = drain
 	conflicts = drain-rs
 	options = !strip
-	source = README-0.1.16.md::https://raw.githubusercontent.com/isene/drain/v0.1.16/README.md
-	sha256sums = 5639d04e6991bbd8a9135b24c356393ceadf718bd1e359355ef69e9a50f728ca
-	source_x86_64 = drain-x86_64-0.1.16::https://github.com/isene/drain/releases/download/v0.1.16/drain-linux-x86_64
-	sha256sums_x86_64 = 1fafde3a18c042964c60f07e843fbadbb39e210b6e4a7c8cd69f17d19f4a6245
-	source_aarch64 = drain-aarch64-0.1.16::https://github.com/isene/drain/releases/download/v0.1.16/drain-linux-aarch64
-	sha256sums_aarch64 = 843c41f193b7ba3998399d272ebde28028d7fe49325456c5828d023ae43fd81a
+	source = README-0.1.17.md::https://raw.githubusercontent.com/isene/drain/v0.1.17/README.md
+	sha256sums = 27fb408c78f9bd3de9ee482ff770ce16616a6af0947de18f267a977d5958d47a
+	source_x86_64 = drain-x86_64-0.1.17::https://github.com/isene/drain/releases/download/v0.1.17/drain-linux-x86_64
+	sha256sums_x86_64 = 31835fa3a269a6a8ad150af1943d312beb64ac53b9354db8fd0f9c7b435d03bc
+	source_aarch64 = drain-aarch64-0.1.17::https://github.com/isene/drain/releases/download/v0.1.17/drain-linux-aarch64
+	sha256sums_aarch64 = afc40bef1fddafb7b4a4c20223dc8d747f0d82d9539e311d99d37e5d08272ef1
 
 pkgname = drain-rs-bin
