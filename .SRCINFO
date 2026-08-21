@@ -1,11 +1,14 @@
 pkgbase = mystery.lv2-git
 	pkgdesc = MYSTERY CURVE
-	pkgver = r76.42f5f5f
+	pkgver = r97.25953ac
 	pkgrel = 1
 	url = https://git.open-music-kontrollers.ch/~hp/mystery.lv2
 	arch = x86_64
 	groups = lv2-plugins
 	license = GPL
+	makedepends = git
+	makedepends = meson
+	makedepends = cairo
 	depends = lv2
 	source = mystery.lv2-git::git+https://git.open-music-kontrollers.ch/~hp/mystery.lv2
 	md5sums = SKIP

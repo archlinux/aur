@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=mystery.lv2-git
 pkgdesc="MYSTERY CURVE"
-pkgver=r76.42f5f5f
+pkgver=r97.25953ac
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://git.open-music-kontrollers.ch/~hp/mystery.lv2"
 license=(GPL)
 groups=(lv2-plugins)
 depends=(lv2)
-makedepends=()
+makedepends=('git' 'meson' 'cairo')
 checkdepends=()
 optdepends=()
 provides=()
