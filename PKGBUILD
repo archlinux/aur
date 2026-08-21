@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=cv_to_cc.lv2-git
 pkgdesc="Convert LV2 CV to MIDI CV"
-pkgver=r1.04adeed
+pkgver=r2.23152a8
 pkgrel=1
 epoch=
 arch=(x86_64)
