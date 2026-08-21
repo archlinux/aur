@@ -16,7 +16,8 @@ pkgbase = plasma6-applets-kde-control-station
 	depends = powerdevil
 	source = https://github.com/EliverLara/kde-control-station/archive/bb473188a19d6cbe89a9c1bb5b08c7ddc609375d.tar.gz
 	source = kde-control-station-fixes.patch
+	source = kde-control-station-fixes.patch
 	sha256sums = b2d3c32aab490d8e0efedba4b0c4c906d7dbd0ce56d483861550879a8f0db898
-	sha256sums = e7a99c9818b354121da50670da3b06f1ce8d4617ae6f358295bc2149f0d3795a
+	sha256sums = 429bd5187c77a71757c7d2c786d5e605bc5001d693af84733d0f8a5602a96e00
 
 pkgname = plasma6-applets-kde-control-station
