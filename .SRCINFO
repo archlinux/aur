@@ -1,6 +1,6 @@
 pkgbase = blit
 	pkgdesc = High-performance file transfer CLI and daemon
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/roethlar/Blit
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = blit
 	makedepends = cargo
 	provides = blit
 	conflicts = blit-bin
-	source = blit-$pkgver.tar.gz::https://github.com/roethlar/Blit/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 694ef0576790bdf6f3c02c121eed62694c81c6a9643d1892986d5ff36908974f
+	source = blit-$pkgver.tar.gz::https://github.com/roethlar/Blit/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 48e06b10e99f1ff10b7540cad43c2e27beea73af23e91f22e5733c33497e94ed
 
 pkgname = blit

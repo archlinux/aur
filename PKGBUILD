@@ -1,5 +1,5 @@
 pkgname=blit
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='High-performance file transfer CLI and daemon'
 arch=('x86_64' 'aarch64')
@@ -8,8 +8,8 @@ license=('MIT')
 makedepends=('cargo')
 provides=('blit')
 conflicts=('blit-bin')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/roethlar/Blit/archive/refs/tags/v0.1.2.tar.gz")
-sha256sums=('694ef0576790bdf6f3c02c121eed62694c81c6a9643d1892986d5ff36908974f')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/roethlar/Blit/archive/refs/tags/v0.1.3.tar.gz")
+sha256sums=('48e06b10e99f1ff10b7540cad43c2e27beea73af23e91f22e5733c33497e94ed')
 
 prepare() {
   cd "Blit-$pkgver"
@@ -19,10 +19,10 @@ prepare() {
 
 build() {
   cd "Blit-$pkgver"
-  export BLIT_GIT_SHA=98084edf8c92
+  export BLIT_GIT_SHA=fe6b279dfde0
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --locked -p blit-cli -p blit-daemon
+  cargo build --release --locked -p blit-transfer -p blit-daemon
 }
 
 package() {
