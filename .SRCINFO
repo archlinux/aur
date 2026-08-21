@@ -1,6 +1,6 @@
 pkgbase = sdroxide
 	pkgdesc = Powerful SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (native RTL-SDR/RX-888/CAT/etc backends, no SoapySDR)
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/dividebysandwich/sdroxide
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = sdroxide
 	depends = vulkan-icd-loader
 	conflicts = sdroxide-soapysdr
 	options = !lto
-	source = sdroxide-1.4.0.tar.gz::https://github.com/dividebysandwich/sdroxide/archive/refs/tags/v1.4.0.tar.gz
+	source = sdroxide-1.4.1.tar.gz::https://github.com/dividebysandwich/sdroxide/archive/refs/tags/v1.4.1.tar.gz
 	source = rade_c-a36161bce0fb37daf3f4602344b095f6817dddb1.tar.gz::https://github.com/freedv/rade_c/archive/a36161bce0fb37daf3f4602344b095f6817dddb1.tar.gz
-	sha256sums = bb3d5f57153dc18e03a13d70f6971f0a632cc9d9c9f65b7dbaf4215648695baa
+	sha256sums = 1281b557feb1510ff073b94b505943c6db479a61cfa821d2472f638ac32f1121
 	sha256sums = eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd
 
 pkgname = sdroxide
