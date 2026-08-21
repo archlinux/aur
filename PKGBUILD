@@ -2,24 +2,25 @@
 # Maintainer: Obedience Corp <contact@obediencecorp.com>
 
 pkgname='festival-bin'
-pkgver=0.2.17
+pkgver=0.3.0
 pkgrel=1
-pkgdesc='Festival Methodology CLI suite (fest + camp) - AI-native project planning'
+pkgdesc='Festival Methodology CLI suite (fest, camp, and festival) - AI-native project planning'
 url='https://fest.build'
 arch=('aarch64' 'x86_64')
 license=('Apache-2.0')
 provides=('fest' 'camp')
-conflicts=('fest' 'camp')
+conflicts=('fest' 'camp' 'festival')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Obedience-Corp/festival/releases/download/v${pkgver}/festival-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('d42e471c0e26e57c1527bf36027708c8e7c634e9e9cecde9e7967ad694ffb390')
+sha256sums_aarch64=('4b2a31f9abd4f203f030b3ade29c283456b334374b2822315c5044615655e690')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Obedience-Corp/festival/releases/download/v${pkgver}/festival-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('da5fcc4ff533dc0ad25ee454e371886b22918672b1be28d8c6116edba2042729')
+sha256sums_x86_64=('e5d8e562e190dd332a502a3715a0846ee01ebd92879d5d63fe099131d56089b6')
 
 package() {
   install -Dm755 "./fest" "${pkgdir}/usr/bin/fest"
   install -Dm755 "./camp" "${pkgdir}/usr/bin/camp"
+  install -Dm755 "./festival" "${pkgdir}/usr/bin/festival"
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/festival/LICENSE"
   install -Dm644 "./NOTICE" "${pkgdir}/usr/share/licenses/festival/NOTICE"
   install -Dm644 "./completions/fest.bash" "${pkgdir}/usr/share/bash-completion/completions/fest"
@@ -28,6 +29,9 @@ package() {
   install -Dm644 "./completions/camp.bash" "${pkgdir}/usr/share/bash-completion/completions/camp"
   install -Dm644 "./completions/_camp" "${pkgdir}/usr/share/zsh/site-functions/_camp"
   install -Dm644 "./completions/camp.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/camp.fish"
+  install -Dm644 "./completions/festival.bash" "${pkgdir}/usr/share/bash-completion/completions/festival"
+  install -Dm644 "./completions/_festival" "${pkgdir}/usr/share/zsh/site-functions/_festival"
+  install -Dm644 "./completions/festival.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/festival.fish"
   install -Dm644 "./shell/festival.bash" "${pkgdir}/usr/share/festival/shell/festival.bash"
   install -Dm644 "./shell/festival.zsh" "${pkgdir}/usr/share/festival/shell/festival.zsh"
   install -Dm644 "./shell/festival.fish" "${pkgdir}/usr/share/festival/shell/festival.fish"
