@@ -1,0 +1,17 @@
+pkgbase = svault-bin
+	pkgdesc = Local encrypted secret vault for developers (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/dafagareth/svault
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = svault
+	conflicts = svault
+	source_x86_64 = svault-1.0.0-x86_64::https://github.com/dafagareth/svault/releases/download/v1.0.0/svault-linux-amd64
+	sha256sums_x86_64 = f8ed8ecdaeba36ab0452dd949b526b08ba8b438c5c7aeb867c421c55be01bc33
+	source_aarch64 = svault-1.0.0-aarch64::https://github.com/dafagareth/svault/releases/download/v1.0.0/svault-linux-arm64
+	sha256sums_aarch64 = 999154a6e6e34396ef5f6e248b67f7914a50bc0e84a42a1091ab222a1b0fd7a6
+
+pkgname = svault-bin
