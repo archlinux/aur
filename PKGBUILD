@@ -2,13 +2,13 @@
 pkgname=r7draw-desktop-bin
 pkgver=26.1.2
 pkgrel=1
-pkgdesc="R7-graphics - creating flowcharts and diagrams"
+pkgdesc="R7 Draw — diagram and flowchart editor by R7-Office"
 arch=('x86_64')
 url="https://gitlab.r7-office.ru/draw/r7draw-desktop"
-license=('Apache-2.0')
+license=('LicenseRef-Proprietary')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils'
-         'at-spi2-core' 'util-linux-libs' 'libsecret')
-optdepends=('libappindicator-gtk3: значок в системном трее')
+         'at-spi2-core' 'util-linux-libs' 'libsecret' 'alsa-lib')
+optdepends=('libappindicator-gtk3: system tray icon')
 provides=('r7draw-desktop')
 conflicts=('r7draw-desktop')
 options=('!strip')
@@ -22,4 +22,9 @@ package() {
 
     install -d "${pkgdir}/usr/bin"
     ln -s "/opt/Р7-Графика/r7draw-desktop" "${pkgdir}/usr/bin/r7draw-desktop"
+
+    sed -i \
+        -e 's/^Name=.*/Name=R7 Draw/' \
+        -e 's/^Comment=.*/Comment=Create flowcharts and diagrams/' \
+        "${pkgdir}/usr/share/applications/r7draw-desktop.desktop"
 }
