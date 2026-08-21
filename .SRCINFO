@@ -1,9 +1,10 @@
 pkgbase = nginx-mainline-mod-acme
 	pkgdesc = Nginx module with the implementation of ACME protocol
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nginx/nginx-acme/
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = clang
