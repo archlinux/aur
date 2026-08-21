@@ -59,7 +59,7 @@ package() {
     cd "${pkgdir}/opt/${_pkgname}" || return 1
 
     # Link it to /usr/bin for a PATHed binary.
-    ln -sfv '/opt/masterpdfeditor/masterpdfeditor5' '/usr/bin/masterpdfeditor'
+    ln -sfv '/opt/masterpdfeditor/masterpdfeditor5' "${pkgdir}/usr/bin/masterpdfeditor"
 
     # Patch the desktop to use usr/bin launcher
     sed -i \
@@ -69,9 +69,6 @@ package() {
         "${_pkgname}${pkgver%%.*}.desktop"
 
     # Install all the files.
-    install -Dm755 \
-        "${srcdir}/${_pkgname}" \
-        "${pkgdir}/usr/bin/"
     install -Dm644 \
         "${_pkgname}${pkgver%%.*}.desktop" \
         -t "${pkgdir}/usr/share/applications/"
