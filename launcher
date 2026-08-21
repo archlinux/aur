@@ -2,24 +2,59 @@
 
 XDG_DATA_HOME="${XDG_DATA_HOME-${HOME}/.local/share}"
 PKHEX_DATA_DIRECTORY="${PKHEX_DATA_DIRECTORY-${XDG_DATA_HOME}/pkhex}"
+PKHEX_VERSION_FILE="/usr/share/pkhex/version"
+PKHEX_ARCHIVE="/usr/share/pkhex/PKHeX.tar.gz"
+
 export WINEDEBUG="${WINEDEBUG--all}"
 export WINEPREFIX="${WINEPREFIX-${XDG_DATA_HOME}/wineprefixes/pkhex}"
+export DOTNET_SYSTEM_GLOBALIZATION_USENLS=1
+export DOTNET_ROOT='C:\Program Files\dotnet'
 
-if [ ! -d "${WINEPREFIX}" ]; then
+DOTNET_ROOT_UNIX="${WINEPREFIX}/drive_c/Program Files/dotnet"
+
+
+install_pkhex() {
+  local version
+
+  version="$(cat "${PKHEX_VERSION_FILE}")"
+
+  echo "Installing PKHeX ${version}..."
+  mkdir -p "${PKHEX_DATA_DIRECTORY}"
+  tar -xzf "${PKHEX_ARCHIVE}" -C "${PKHEX_DATA_DIRECTORY}"
+  printf '%s\n' "${version}" > "${PKHEX_DATA_DIRECTORY}/.version"
+  echo "Completed installing PKHeX ${version}."
+}
+
+update_pkhex() {
+  local available installed
+
+  available="$(cat "${PKHEX_VERSION_FILE}")"
+  installed="$(cat "${PKHEX_DATA_DIRECTORY}/.version" 2>/dev/null || true)"
+
+  if [ "${available}" != "${installed}" ]; then
+    echo "PKHeX update available: ${installed:-none} -> ${available}"
+
+    find "${PKHEX_DATA_DIRECTORY}" -mindepth 1 -maxdepth 1 \
+      ! -name '.version' \
+      -exec rm -rf {} +
+
+    tar -xzf "${PKHEX_ARCHIVE}" -C "${PKHEX_DATA_DIRECTORY}"
+    printf '%s\n' "${available}" > "${PKHEX_DATA_DIRECTORY}/.version"
+
+    echo "PKHeX updated to ${available}."
+  fi
+}
+
+if [ ! -f "${DOTNET_ROOT_UNIX}/dotnet.exe" ]; then
   echo 'Setting up the Wine prefix...'
-  winetricks -q --force 'dotnetdesktop10'
+  winetricks -q --force dotnetdesktop10
   echo 'Completed setting up the Wine prefix.'
 fi
 
-if [ ! -d "${PKHEX_DATA_DIRECTORY}" ]; then
-  echo 'Installing PKHeX...'
-  mkdir -p "${PKHEX_DATA_DIRECTORY}"
-  cd "${PKHEX_DATA_DIRECTORY}" || exit
-  tar -xzf /usr/share/pkhex/PKHeX.tar.gz -C "${PKHEX_DATA_DIRECTORY}"
-  wine PKHeX.exe
-  wineserver -w
-  echo 'Completed installing PKHeX.'
-  exit
+if [ ! -f "${PKHEX_DATA_DIRECTORY}/PKHeX.exe" ]; then
+  install_pkhex
+else
+  update_pkhex
 fi
 
 case "$1" in
@@ -42,14 +77,7 @@ case "$1" in
     printf '%s winetricks [command]\t\tExecute Winetricks command on the Wine prefix\n' "$(basename "$0")"
     printf '%s {-h --help help}\t\tDisplay this help\n' "$(basename "$0")"
     ;;
-  'update')
-    echo 'Updating'
-    cd "${PKHEX_DATA_DIRECTORY}" || exit
-    tar -xzf /usr/share/pkhex/PKHeX.tar.gz -C "${PKHEX_DATA_DIRECTORY}"
-    winetricks -q --force 'dotnetdesktop10'
-    ;;
   *)
-    # cd ${PKHEX_DATA_DIRECTORY}
     cd /
     wine "${PKHEX_DATA_DIRECTORY}"/PKHeX.exe "$@"
     wineserver -w
