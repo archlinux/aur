@@ -1,0 +1,240 @@
+--- a/package/contents/ui/main.qml	2026-08-21 18:39:19.681234823 +0800
++++ b/package/contents/ui/main.qml	2026-08-19 19:38:37.000000000 +0800
+@@ -122,17 +122,21 @@
+         id: executable
+         engine: "executable"
+         connectedSources: ["plasmashell -v"]
+-        onNewData: {
+-            if(data["exit code"] == 0){
+-                plasmaVersion = data.stdout.split(" ")[1].split(".")[1];
++    }
++
++    Connections {
++        target: executable
++        function onNewData(source, data) {
++            if (data["exit code"] == 0 && data.stdout) {
++                root.plasmaVersion = Number(data.stdout.split(" ")[1].split(".")[1])
+             }
+-            disconnectSource(connectedSources)
++            executable.disconnectSource(executable.connectedSources[0])
+         }
+     }
+     
+     switchHeight: fullRepWidth
+     switchWidth: fullRepWidth
+-    preferredRepresentation: inPanel ? Plasmoid.compactRepresentation : Plasmoid.fullRepresentation
++    preferredRepresentation: inPanel ? compactRepresentation : fullRepresentation
+     fullRepresentation: FullRepresentation { }
+     compactRepresentation: CompactRepresentation {}
+ 
+--- a/package/contents/ui/pages/BatteryPage.qml	2026-08-21 18:39:19.681234823 +0800
++++ b/package/contents/ui/pages/BatteryPage.qml	2026-08-19 19:38:37.000000000 +0800
+@@ -105,7 +105,7 @@
+         remainingTime: batteryControl.remainingTime
+         activeProfile: powerProfilesControl.activeProfile
+         activeProfileError: powerProfilesControl.profileError
+-        inhibitions: inhibitionControl.inhibitions
++        requestedInhibitions: inhibitionControl.requestedInhibitions
+         inhibitsLidAction: inhibitionControl.isLidPresent && !inhibitionControl.triggersLidAction
+         profilesInstalled: powerProfilesControl.isPowerProfileDaemonInstalled
+         profiles: powerProfilesControl.profiles
+--- a/package/contents/ui/pages/VolumePage.qml	2026-08-21 18:39:19.681338015 +0800
++++ b/package/contents/ui/pages/VolumePage.qml	2026-08-19 19:38:37.000000000 +0800
+@@ -26,7 +26,7 @@
+     }
+ 
+     property bool volumeFeedback: config.audioFeedback
+-    property bool globalMute: config.globalMute
++    property bool globalMute: config.globalMuteSinks
+     property string displayName: i18n("Audio Volume")
+     property QtObject draggedStream: null
+ 
+@@ -191,7 +191,7 @@
+ 
+                 icon.name: "audio-volume-muted"
+                 onClicked: {
+-                    GlobalService.globalMute()
++                    GlobalService.globalMuteSinks()
+                 }
+                 checked: globalMute
+ 
+--- a/package/contents/ui/pages/components/battery/MainView.qml	2026-08-21 18:39:19.681517100 +0800
++++ b/package/contents/ui/pages/components/battery/MainView.qml	2026-08-19 19:38:37.000000000 +0800
+@@ -5,6 +5,7 @@
+ import org.kde.plasma.components 3.0 as PlasmaComponents3
+ import org.kde.plasma.core as PlasmaCore
+ import org.kde.plasma.extras 2.0 as PlasmaExtras
++import org.kde.kirigami as Kirigami
+ 
+ PlasmaComponents3.ScrollView {
+         id: scrollView
+@@ -32,11 +33,12 @@
+         // blocking sleep and screen locking).
+         //
+         // type: [{
+-        //  Icon: string,
+-        //  Name: string,
+-        //  Reason: string,
++        //  icon: string,
++        //  prettyName: string,
++        //  reason: string,
++        //  active: bool,
+         // }]
+-        property var inhibitions: []
++        property var requestedInhibitions: []
+         property bool inhibitsLidAction
+ 
+         property string inhibitionReason
+@@ -68,7 +70,7 @@
+         Column {
+             id: batteryList
+ 
+-            spacing: PlasmaCore.Units.smallSpacing * 2
++            spacing: Kirigami.Units.smallSpacing * 2
+ 
+             readonly property Item firstHeaderItem: {
+                 if (powerProfileItem.visible) {
+@@ -135,7 +137,7 @@
+                 
+                 id: pmSwitch
+ 
+-                inhibitions: scrollView.inhibitions
++                requestedInhibitions: scrollView.requestedInhibitions
+                 inhibitsLidAction: scrollView.inhibitsLidAction
+                 pluggedIn: scrollView.pluggedIn
+                 onInhibitionChangeRequested: scrollView.inhibitionChangeRequested(inhibit)
+--- a/package/contents/ui/pages/components/battery/PowerManagementItem.qml	2026-08-21 18:39:19.681517100 +0800
++++ b/package/contents/ui/pages/components/battery/PowerManagementItem.qml	2026-08-19 19:38:37.000000000 +0800
+@@ -24,18 +24,23 @@
+ 
+     property bool isManuallyInhibited
+     property bool isManuallyInhibitedError
+-    // List of active power management inhibitions (applications that are
+-    // blocking sleep and screen locking).
++    // List of requested power management inhibitions (applications that are
++    // blocking sleep and screen locking). Not all are necessarily active.
+     //
+     // type: [{
+-    //  Name: string,
+-    //  PrettyName: string,
+-    //  Icon: string,
+-    //  Reason: string,
++    //  appName: string,
++    //  prettyName: string,
++    //  icon: string,
++    //  reason: string,
++    //  behaviors: array<string>,
++    //  active: bool,
++    //  allowed: bool,
+     // }]
+-    property var inhibitions: []
++    property var requestedInhibitions: []
+     property bool inhibitsLidAction
+ 
++    readonly property var activeInhibitions: powerManagementItem.requestedInhibitions.filter((inh) => inh.active)
++
+     property alias manualInhibitionSwitch: manualInhibitionSwitch
+ 
+     background.visible: highlighted
+@@ -60,7 +65,7 @@
+         
+         Kirigami.Icon {
+             id: icon
+-            source: powerManagementItem.isManuallyInhibited || powerManagementItem.inhibitions.length > 0 ? "system-suspend-inhibited" : "system-suspend-uninhibited"
++            source: powerManagementItem.isManuallyInhibited || powerManagementItem.activeInhibitions.length > 0 ? "system-suspend-inhibited" : "system-suspend-uninhibited"
+             Layout.alignment: Qt.AlignTop
+             Layout.preferredWidth: Kirigami.Units.iconSizes.medium
+             Layout.preferredHeight: Kirigami.Units.iconSizes.medium
+@@ -86,7 +91,7 @@
+                 PlasmaComponents3.Label {
+                     id: pmStatusLabel
+                     Layout.alignment: Qt.AlignRight | Qt.AlignTop
+-                    text: powerManagementItem.isManuallyInhibited || powerManagementItem.inhibitions.length > 0 ? i18nc("Sleep and Screen Locking after Inactivity", "Blocked") : i18nc("Sleep and Screen Locking after Inactivity", "Automatic")
++                    text: powerManagementItem.isManuallyInhibited || powerManagementItem.activeInhibitions.length > 0 ? i18nc("Sleep and Screen Locking after Inactivity", "Blocked") : i18nc("Sleep and Screen Locking after Inactivity", "Automatic")
+                     textFormat: Text.PlainText
+                 }
+             }
+@@ -165,10 +170,10 @@
+                 id: inhibitionReasonsLayout
+ 
+                 Layout.fillWidth: false
+-                visible: powerManagementItem.inhibitsLidAction || (powerManagementItem.inhibitions.length > 0)
++                visible: powerManagementItem.inhibitsLidAction || (powerManagementItem.activeInhibitions.length > 0)
+ 
+                 InhibitionHint {
+-                  anchors.fill:parent
++                    Layout.fillWidth: true
+                     visible: powerManagementItem.inhibitsLidAction
+                     iconSource: "computer-laptop"
+                     text: i18nc("Minimize the length of this string as much as possible", "Your laptop is configured not to sleep when closing the lid while an external monitor is connected.")
+@@ -177,30 +182,30 @@
+                 PlasmaComponents3.Label {
+                     id: inhibitionExplanation
+                     Layout.fillWidth: true
+-                    visible: powerManagementItem.inhibitions.length > 1
++                    visible: powerManagementItem.activeInhibitions.length > 1
+                     font: Kirigami.Theme.smallFont
+                     wrapMode: Text.WordWrap
+                     elide: Text.ElideRight
+                     maximumLineCount: 3
+                     text: i18np("%1 application is currently blocking sleep and screen locking:",
+                                 "%1 applications are currently blocking sleep and screen locking:",
+-                                powerManagementItem.inhibitions.length)
++                                powerManagementItem.activeInhibitions.length)
+                     textFormat: Text.PlainText
+                 }
+ 
+                 Repeater {
+-                    model: powerManagementItem.inhibitions
++                    model: powerManagementItem.activeInhibitions
+ 
+                     InhibitionHint {
+-                        property string icon: modelData.Icon
++                        property string icon: modelData.icon
+                             || (KWindowSystem.isPlatformWayland ? "wayland" : "xorg")
+-                        property string name: modelData.PrettyName
+-                        property string reason: modelData.Reason
++                        property string name: modelData.prettyName
++                        property string reason: modelData.reason
+ 
+                         Layout.fillWidth: true
+                         iconSource: icon
+                         text: {
+-                            if (powerManagementItem.inhibitions.length === 1) {
++                            if (powerManagementItem.activeInhibitions.length === 1) {
+                                 if (reason && name) {
+                                     return i18n("%1 is currently blocking sleep and screen locking (%2)", name, reason)
+                                 } else if (name) {
+--- a/package/contents/ui/pages/components/network/Toolbar.qml	2026-08-21 18:39:19.681793185 +0800
++++ b/package/contents/ui/pages/components/network/Toolbar.qml	2026-08-19 19:38:37.000000000 +0800
+@@ -178,14 +178,9 @@
+ 
+         Connections {
+             target: handler
+-            function onHotspotCreated() {
+-                hotspotButton.checked = true
+-                tooltip.text = i18n("Disable Hotspot")
+-            }
+-
+-            function onHotspotDisabled() {
+-                hotspotButton.checked = false
+-                tooltip.text = i18n("Create Hotspot")
++            function onHotspotActiveChanged(hotspotActive) {
++                hotspotButton.checked = hotspotActive
++                tooltip.text = hotspotActive ? i18n("Disable Hotspot") : i18n("Create Hotspot")
+             }
+         }
+ 
+--- a/package/contents/ui/pages/components/volume/DeviceListItem.qml	2026-08-21 18:39:19.681793185 +0800
++++ b/package/contents/ui/pages/components/volume/DeviceListItem.qml	2026-08-19 19:38:37.000000000 +0800
+@@ -39,8 +39,8 @@
+ 
+     onMutedChanged: {
+         if (type === "sink" && globalMute && !model.Muted) {
+-            config.globalMute = false;
+-            config.globalMuteDevices = [];
++            config.globalMuteSinks = false;
++            config.globalMuteSinksMutedDevices = [];
+             config.save();
+         }
+     }
