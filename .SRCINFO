@@ -1,12 +1,12 @@
 pkgbase = reactotron
 	pkgdesc = A desktop app for inspecting your React JS and React Native projects
-	pkgver = 3.7.7
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = https://github.com/infinitered/reactotron
 	arch = x86_64
 	license = MIT
-	noextract = reactotron-app-3.7.7.x86_64.rpm
-	source = https://github.com/infinitered/reactotron/releases/download/reactotron-app%403.7.7/reactotron-app-3.7.7.x86_64.rpm
-	sha256sums = 274ca431a25854687905945809683659ff856cacd65ceef5697586d9763a0a9a
+	noextract = reactotron-app-3.11.0.x86_64.rpm
+	source = https://github.com/infinitered/reactotron/releases/download/reactotron-app%403.11.0/reactotron-app-3.11.0.x86_64.rpm
+	sha256sums = d5375e69287a7937faf0589b9054e76ecb9f95734b0a6b5ec609ae689d70f9a1
 
 pkgname = reactotron

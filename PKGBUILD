@@ -1,13 +1,13 @@
 # Maintainer: Versus Void <chaoskeeper somewhere at mail punctuation ru>
 pkgname=reactotron
-pkgver=3.7.7
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="A desktop app for inspecting your React JS and React Native projects"
 arch=('x86_64')
 url="https://github.com/infinitered/reactotron"
 license=('MIT')
 source=("https://github.com/infinitered/reactotron/releases/download/reactotron-app%40$pkgver/reactotron-app-$pkgver.x86_64.rpm")
-sha256sums=('274ca431a25854687905945809683659ff856cacd65ceef5697586d9763a0a9a')
+sha256sums=('d5375e69287a7937faf0589b9054e76ecb9f95734b0a6b5ec609ae689d70f9a1')
 noextract=("${source[0]##*/}")
 
 package() {
