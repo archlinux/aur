@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=matrixmixer32.lv2-git
 pkgdesc="NxM Matrix Mixer LV2 Plugin (32 input/output version)"
-pkgver=r34.7a12e8f
+pkgver=r71.438b3ec
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/x42/matrixmixer.lv2"
 license=(GPL)
 groups=()
 depends=('lv2' 'cairo' 'glibc' 'glib2' 'pango')
-makedepends=()
+makedepends=('git' 'cairo' 'pango' 'glu' 'libglvnd' 'jack')
 checkdepends=()
 optdepends=()
 provides=()

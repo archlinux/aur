@@ -1,10 +1,16 @@
 pkgbase = matrixmixer32.lv2-git
 	pkgdesc = NxM Matrix Mixer LV2 Plugin (32 input/output version)
-	pkgver = r34.7a12e8f
+	pkgver = r71.438b3ec
 	pkgrel = 1
 	url = https://github.com/x42/matrixmixer.lv2
 	arch = x86_64
 	license = GPL
+	makedepends = git
+	makedepends = cairo
+	makedepends = pango
+	makedepends = glu
+	makedepends = libglvnd
+	makedepends = jack
 	depends = lv2
 	depends = cairo
 	depends = glibc
