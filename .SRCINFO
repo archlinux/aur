@@ -1,0 +1,24 @@
+pkgbase = r7draw-desktop-bin
+	pkgdesc = R7-graphics - creating flowcharts and diagrams
+	pkgver = 26.1.2
+	pkgrel = 1
+	url = https://gitlab.r7-office.ru/draw/r7draw-desktop
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3: значок в системном трее
+	provides = r7draw-desktop
+	conflicts = r7draw-desktop
+	options = !strip
+	source = https://download.r7-office.ru/r7graph/r7draw-desktop-amd64-26.1.2.deb
+	sha256sums = dfa1b1a838e98261f4cb9495560a7c399e671e114de0a8161f6e10b973990514
+
+pkgname = r7draw-desktop-bin
