@@ -2,7 +2,7 @@
 # Contributor: zxp19821005 <zxp19821005 at 163 dot com> (launcher script approach)
 pkgname=zcode-bin
 _pkgname=ZCode
-pkgver=3.7.7
+pkgver=3.8.1
 _electronversion=41
 pkgrel=1
 pkgdesc="ZCode - AI-powered code editor by ZAI"
@@ -35,7 +35,7 @@ source=(
 )
 # First entry: upstream .deb, pinned by zcode-update-checker.sh on each update.
 # LICENSE and zcode.sh are local repo files tracked by git, kept as SKIP.
-sha256sums=('fe6f647d9b37f89bee12843cbbafd5a8fd0b33363941f32ee15e8e79f0856c63'
+sha256sums=('5871877629eb56f608251a95efa92bf8c2ae0645e3d67ae0dcb5c02121e45575'
             'SKIP'
             'SKIP')
 
