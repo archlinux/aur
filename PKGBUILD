@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname=plujain-ramp
 pkgname=${_pkgname}-git
-pkgver=r47.9568cc9
+pkgver=v1.1.3.r7.g01975bb
 pkgrel=1
 pkgdesc="Mono rhythmic tremolo LV2 plugin with no GUI"
 arch=(x86_64)
