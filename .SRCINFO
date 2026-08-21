@@ -1,18 +1,12 @@
 pkgbase = reeden-bin
-	pkgdesc = Modern cross-platform ebook reader (prebuilt binary)
+	pkgdesc = Transitional package for reeden
 	pkgver = 1.38.1+733
 	pkgrel = 1
+	epoch = 1
 	url = https://reeden.app/cn/download
-	arch = x86_64
-	license = unknown
-	depends = gtk3
-	depends = libayatana-appindicator
-	depends = sqlite
-	depends = xdg-user-dirs
-	provides = reeden
-	conflicts = reeden
-	options = !strip
-	source = Reeden-1.38.1+733-linux-x86_64.deb::https://download.reeden.app/Reeden/1.38.1+733/Reeden-1.38.1+733-linux-x86_64.deb
-	sha256sums = cc60ce0b1fefc090e464e925cc8fb5c7f600cc7df3d4f688ae44dad31ad8076c
+	install = reeden-bin.install
+	arch = any
+	license = NOASSERTION
+	depends = reeden>=1.38.1+733
 
 pkgname = reeden-bin
