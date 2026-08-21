@@ -10,8 +10,8 @@
 # (grab it from the release's SHA256SUMS.txt).
 
 pkgname=nuvio-linux-bin
-pkgver=0.1.17alpha
-pkgrel=7
+pkgver=0.1.20alpha
+pkgrel=2
 pkgdesc="Nuvio Linux desktop media player — Linux native mpv playback (binary)"
 arch=('x86_64')
 url="https://github.com/JJDizz1L/NuvioLinux"
@@ -21,11 +21,11 @@ install=nuvio-linux-bin.install
 provides=('nuvio-linux')
 conflicts=('nuvio-linux' 'nuvio-linux-git')
 source=(
-  "nuvio-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/JJDizz1L/NuvioLinux/releases/download/v0.1.17-alpha-7/nuvio-linux-0.1.17alpha-7-x86_64.pkg.tar.zst"
-  "nuvio-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst.sig::https://github.com/JJDizz1L/NuvioLinux/releases/download/v0.1.17-alpha-7/nuvio-linux-0.1.17alpha-7-x86_64.pkg.tar.zst.sig"
+  "nuvio-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/JJDizz1L/NuvioLinux/releases/download/v0.1.20-alpha-2/nuvio-linux-0.1.20alpha-2-x86_64.pkg.tar.zst"
+  "nuvio-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst.sig::https://github.com/JJDizz1L/NuvioLinux/releases/download/v0.1.20-alpha-2/nuvio-linux-0.1.20alpha-2-x86_64.pkg.tar.zst.sig"
 )
 sha256sums=(
-  '83da07ca940aa05365e7a3e587143fd4396366f75413e0121252be9069c3a036'
+  '6cea0e96bead76924bf2269e7db030d7353f943394b95a665cc4c0f612e124dc'
   'SKIP'
 )
 validpgpkeys=('54B66A801C9B0D3D471E01376702DBAB3E41EDE1')
