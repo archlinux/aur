@@ -1,12 +1,13 @@
 # Maintainer: milk on freenode
 pkgname=moddownloaderr
-pkgver=v0.4.r0.gf5d8c70
+pkgver=v0.4.r15.gba5c9f3
 pkgrel=1
 pkgdesc="moddownloaderr - forked Bash script to download module music from The Mod Archive"
 arch=('i686' 'x86_64')
 url="https://github.com/mxmilkiib/moddownloaderr"
 license=('LGPL3')
 depends=('wget' 'sed' 'awk')
+makedepends=('git')
 source=(git+https://github.com/mxmilkiib/moddownloaderr)
 md5sums=('SKIP')
 
