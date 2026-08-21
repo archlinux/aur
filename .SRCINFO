@@ -35,7 +35,7 @@ pkgbase = git-cola-git
 	optdepends = tk: to use the built-in ssh-askpass handler
 	provides = git-cola
 	conflicts = git-cola
-	source = git-cola::git+https://github.com/git-cola/git-cola.git
+	source = git+https://github.com/git-cola/git-cola.git
 	sha256sums = SKIP
 
 pkgname = git-cola-git

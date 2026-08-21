@@ -54,7 +54,7 @@ conflicts=(
   'git-cola'
 )
 source=(
-  "${_pkgname}::git+https://github.com/git-cola/git-cola.git"
+  "git+https://github.com/git-cola/git-cola.git"
 )
 sha256sums=('SKIP')
 
