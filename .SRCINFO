@@ -1,6 +1,6 @@
 pkgbase = plymouth-git
 	pkgdesc = Graphical boot splash screen (git version)
-	pkgver = 26.134.222.r557.g9dd7c370
+	pkgver = 26.134.222.r570.g3704037f
 	pkgrel = 1
 	url = https://www.freedesktop.org/wiki/Software/Plymouth/
 	arch = i686
@@ -37,12 +37,14 @@ pkgbase = plymouth-git
 	source = plymouth.initcpio_install
 	source = plymouth-shutdown.initcpio_install
 	source = plymouthd.conf.patch
+	source = tests.patch
 	source = 50-plymouth.conf
 	b2sums = SKIP
 	b2sums = afb2449b542aa3e971eab6b953c907347fdf4e499b4140a5e6736a7c99557c0d8d2fed28dbee56d84c8c619335c59bd382457d85e51145884ad0616e9095f232
 	b2sums = bd5569458817a29c300de2fb4abcd2e8cd4f57bdebca47cfed7644b548b36b48b0acc80931ae67e32b7b1feb6dad058dacb8b046ad67a734821d753af40c921e
 	b2sums = 1af3f8317ac34f2c080f2624a26784019cf12bf2e08ebb5f017762bdb82e4236b469b64e0bf4bfcde27a5dfb6a90cee416af0285548dd45e6c7ba0db8af85e45
 	b2sums = 9cef4b4f67389904c183352c4d71e31dbf64dc5ccffab8857b782c4c7d5189ac44e09396271921e71908b301afc6cc0b32cf6d781c57c68d96f27a473735b49f
+	b2sums = b2223fed8fb59266e19bdbef2eb8d495b7b931f3b9b94055b1f9ce01ef0728107132e309a80e4ed39778005db25d2cf297a282839d88fd9b1f3e8d15079b507f
 	b2sums = 5ab47942d222c311b495d056f24bdd9d08438162fef1ca6e51982fc00018acbf0c31e4c61164b40950fe2511e17ba2a4635894d145d83a9b349e5a8a83f8c026
 
 pkgname = plymouth-git
