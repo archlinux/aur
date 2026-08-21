@@ -3,6 +3,7 @@ version = 1
 [[annotations]]
 path = [
   "PKGBUILD",
+  "do_not_generate_cache_files.patch",
   ".SRCINFO",
   ".gitignore",
   ".nvchecker.toml",

@@ -13,7 +13,9 @@ pkgbase = tela-circle-icon-theme-spl-git
 	options = !strip
 	options = !debug
 	source = git+https://github.com/vinceliuice/Tela-circle-icon-theme.git
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/tela-circle-icon-theme/-/raw/2026_07_07-1/do_not_generate_cache_files.patch
 	b2sums = SKIP
+	b2sums = 4b6496e61e3d7a0dfce85194ca0677e36550d28f000d0fb035def5706e3b829c99e01d66c7ceb63ceae0c5656fe15b603c447812bae65485b0838cc113fc72e5
 
 pkgname = tela-circle-icon-theme-all-git
 	pkgdesc = A flat, colorful design icon theme (all variants)

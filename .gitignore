@@ -8,4 +8,5 @@
 !REUSE.toml
 # actual package
 !PKGBUILD
+!do_not_generate_cache_files.patch
 !.SRCINFO
