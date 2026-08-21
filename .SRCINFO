@@ -1,8 +1,8 @@
 pkgbase = libriscv
 	pkgdesc = RISC-V userspace emulator library
-	pkgver = 1.18
+	pkgver = 1.19
 	pkgrel = 1
-	url = https://github.com/libriscv/libriscv
+	url = https://libriscv.no/
 	arch = i686
 	arch = x86_64
 	arch = armv7h
@@ -14,7 +14,7 @@ pkgbase = libriscv
 	optdepends = riscv64-linux-gnu-gcc: compiling softwares for risc-v architecture
 	optdepends = clang: compiling softwares for various architectures including risc-v
 	optdepends = riscv64-linux-gnu-gdb: gnu debugger risc-v version
-	source = libriscv-1.18.tar.gz::https://github.com/libriscv/libriscv/archive/refs/tags/v1.18.tar.gz
-	sha256sums = 536a367bdf7d12c960ce1fd1670bc35883b70a0dc57a570551c0faeb5834b09e
+	source = libriscv-1.19.tar.gz::https://github.com/libriscv/libriscv/archive/refs/tags/v1.19.tar.gz
+	sha256sums = eba6da220493d430dc8a7cf69b973682bb3112195552378e897f96e5ae42f15d
 
 pkgname = libriscv
