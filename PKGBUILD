@@ -6,7 +6,7 @@
 # AUR display). aur-publish.yml bumps that line on each release.
 pkgname=tensaku-git
 _pkgname=tensaku
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='Modern screenshot annotation tool for Wayland (latest main)'
 arch=('x86_64')
