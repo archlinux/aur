@@ -7,10 +7,10 @@ url='https://github.com/SeaLantern-Studio/SeaLantern-Connect'
 license=('Apache-2.0')
 depends=('glibc' 'gcc-libs' 'webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'librsvg')
 options=('!strip')
-source_x86_64=('sealantern-connect-1.0.0-x86_64.deb::https://github.com/SeaLantern-Studio/SeaLantern-Connect/releases/download/v1.0.0/SeaLantern.Connect_0.8.3_amd64.deb')
-source_aarch64=('sealantern-connect-1.0.0-aarch64.deb::https://github.com/SeaLantern-Studio/SeaLantern-Connect/releases/download/v1.0.0/SeaLantern.Connect_0.8.3_arm64.deb')
-sha256sums_x86_64=('ecfe6fd4ecccf6f0208a86d9fd4265e8225cfa052c8e7306d0da6bf8c3e5ca66')
-sha256sums_aarch64=('1454049e05368dded57c669a19d92b37ab8926cb6f973a785b13c1c9d6112db2')
+source_x86_64=('sealantern-connect-1.0.0-x86_64.deb::https://github.com/SeaLantern-Studio/SeaLantern-Connect/releases/download/v1.0.0/SeaLantern.Connect_1.0.0_amd64.deb')
+source_aarch64=('sealantern-connect-1.0.0-aarch64.deb::https://github.com/SeaLantern-Studio/SeaLantern-Connect/releases/download/v1.0.0/SeaLantern.Connect_1.0.0_arm64.deb')
+sha256sums_x86_64=('2d81dac0ca9db13d82b163b36747d49e022509cfd75b386073759dfd643546bb')
+sha256sums_aarch64=('70bb66ff8bcb6f4ebb48688a5e04f05d0cbd5fa774dc81dd99e3c001954ec58d')
 
 package() {
   local deb
