@@ -17,7 +17,7 @@ build() {
 
   patch -p1 -i "$srcdir/sl5-1.patch"
 
-  cc $CFLAGS -o sl sl.c -lcurses
+  cc $CFLAGS -std=gnu89 -Wno-incompatible-pointer-types -o sl sl.c -lcurses
   gzip -9 -f sl.1
 }
 
