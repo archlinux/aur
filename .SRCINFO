@@ -1,0 +1,12 @@
+pkgbase = udf-http-range-proxy
+	pkgdesc = Expose files inside remote UDF images through a local range-capable HTTP endpoint
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/RubenKelevra/udf-http-range-proxy
+	arch = any
+	license = AGPL-3.0-only
+	depends = python
+	source = udf-http-range-proxy-1.0.tar.gz::https://github.com/RubenKelevra/udf-http-range-proxy/archive/refs/tags/v1.0.tar.gz
+	b2sums = 3f0be4326ed79ddd6583c1c1a578c0a8367eadec111a63c4ae61885331ec09c86a2b07f4dd10618f791367070e65ba33c686f02d3e30aa46d6298b3c24c21f68
+
+pkgname = udf-http-range-proxy
