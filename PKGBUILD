@@ -1,7 +1,7 @@
 # Maintainer: forvkusa <forvkusa+aur at csie dot ntu dot edu dot tw>
 
 pkgname=openshell-bin
-pkgver=0.0.109
+pkgver=0.0.110
 pkgrel=1
 pkgdesc='The safe, sandboxed runtime for autonomous AI agents'
 arch=('x86_64' 'aarch64')
@@ -28,14 +28,14 @@ source=(
 )
 sha256sums=('b967d1c87b93b7d61ebcf4f8737e6ad79e5433e743e49dff395a36fb3c327047'
             '3d17362f716e2d74737f285c660653cffc89663cb696dcc55a68cdf8b2de8669')
-sha256sums_x86_64=('4e2db09d50e764cf92437a523f2074c884c743598b543a1194a49b35f5f73ed5'
-                   'f5cb2ec25e948098ddf2eb1efdf30a017d39135376e54638168985f0d8be4897'
-                   '2616d4c92b233783958d47d68964c75ad2c42dae00c852756eea775cc8500669'
-                   '44ca09b8758cf9b9e4aa439cebe66610479f932c76002078a239c8faeea71702')
-sha256sums_aarch64=('e93908ff208236af64614aa740c4a232b74326957abe95940930d195e908bd07'
-                    'b1bb28f8909e06ed3b578c54988337c8d111872737c2bb7070b624394c03c3c0'
-                    'dd24e24c254ea3fa9f44eb8efda0f3e21cac5f793253c1988e45edf82034730a'
-                    'd9356f91c6c5269b99e19897fb15a95ad6db9a56dc8cd53b0b236ae8b66d6ea9')
+sha256sums_x86_64=('d985396a5556ae7dd1f1c37663d0435015cb57240a92e194baacc19573c4a589'
+                   '3b68fb7758c49ca352ac45a092c67c376b1710a28af9f9a35b14e67de60ab9a3'
+                   '8c4d1ddfcfa372cc39b913673abd04035a9a29a52e655940db1256b45f97be3a'
+                   '54e18d80702b4573642bb1ecc32855585a161ce7167b4e7381f523b61fd4770b')
+sha256sums_aarch64=('c440fb5e86d66ff3dc45f25ff41158a3eb4a27eb55a7bfc0af37817a33a6b842'
+                    '8427377c56d52bfd5c49ccf2175526d8fb7fd50e6d40dd91d4a8357e4a3f1393'
+                    'a749f778557458de95493688043563bc53c545c4037d1bd36229f607972c8897'
+                    '780ea8b80d5160d8d79d953cd741cd8e8793fcaa6a63b75d712b22c4d3b0479a')
 
 source_x86_64=(
   "openshell-$pkgver-x86_64.tar.gz::https://github.com/NVIDIA/OpenShell/releases/download/v$pkgver/openshell-x86_64-unknown-linux-musl.tar.gz"
