@@ -2,7 +2,7 @@
 # Projekt Hirnfrei - https://www.projekt-hirnfrei.de
 
 pkgname=barecode
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Schlanker modularer Code-Editor für HTML, PHP, CSS und C++"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'ninja')
 provides=('barecode')
 conflicts=('barecode-git')
 source=("$pkgname-$pkgver.tar.gz::https://git.projekt-hirnfrei.de/diabolus/BareCode/archive/v$pkgver.tar.gz")
-sha256sums=('8f19fe3ec7a037c91361f4281ee239fa9d56264f2b591651a8fbd16da26fef6a')  # Nach erstem Download ersetzen: sha256sum barecode-1.1.0.tar.gz
+sha256sums=('8d176a02e8bcca2ec4d587e6b4cd1f8edd5c61d9510a412126901c6d1e94976b')
 
 build() {
     cd "barecode"
