@@ -21,11 +21,11 @@ conflicts=('dusk-lang' 'dawn')
 # that release's stage ladder proved. A release binary is guaranteed to build
 # the next release's source, so bump this pin as the tree moves ahead; the
 # preflight in build() names the mismatch loudly when the pin has gone stale.
-_seedver=1.12.0
+_seedver=1.14.0
 source=("dusk::git+https://github.com/choice404/dusk.git"
         "dusk-seed-${_seedver}.ll.xz::https://github.com/choice404/dusk/releases/download/v${_seedver}/dusk.ll.xz")
 sha256sums=('SKIP'
-            '7b2891f583a9626c81c571dd916dd42cd84af98042a0b0adff09719909f93016')
+            '9371fc719e1ceea9377d4bd6130c3368de412f7866c5ca1b42a7697b9f73d94a')
 
 pkgver() {
   cd dusk
@@ -44,7 +44,13 @@ build() {
   # than this source's own version. A stale pin fails here with the reason,
   # instead of mid-build with an undefined-name error.
   seed_ver=$(./seed version | awk '{print $2}')
-  src_ver=$(grep -oE 'return "dusk [0-9.]+"' compiler/dusk.dusk | grep -oE '[0-9.]+')
+  # The version lives in compiler/version.dusk since 1.14.0 and in
+  # compiler/dusk.dusk before it; read whichever this checkout carries.
+  src_ver=$(grep -ohE 'return "(dusk )?[0-9]+\.[0-9]+\.[0-9]+"' compiler/version.dusk compiler/dusk.dusk 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+  if [ -z "$src_ver" ]; then
+    echo "ERROR: cannot read the source version from compiler/version.dusk or compiler/dusk.dusk" >&2
+    return 1
+  fi
   min_seed=$(git tag -l 'v*' | sed 's/^v//' | grep -vx "$src_ver" | sort -V | tail -1)
   echo "seed compiler: $seed_ver, source: $src_ver, minimum seed: $min_seed"
   if [ -n "$min_seed" ] && [ "$(printf '%s\n%s\n' "$min_seed" "$seed_ver" | sort -V | head -1)" != "$min_seed" ]; then
