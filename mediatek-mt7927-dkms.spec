@@ -3,7 +3,7 @@
 
 Name:           mediatek-mt7927-dkms
 Version:        %{version}
-Release:        1%{?dist}
+Release:        %{?_pkg_release}%{!?_pkg_release:1}%{?dist}
 Summary:        DKMS WiFi 7 and Bluetooth 5.4 drivers for MediaTek MT7927 (Filogic 380)
 License:        GPL-2.0-only
 URL:            https://github.com/jetm/mediatek-mt7927-dkms

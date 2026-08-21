@@ -1,4 +1,7 @@
 *.pkg.tar.zst
+*.deb
+*.rpm
+rpmbuild/
 *.zip
 src/
 pkg/

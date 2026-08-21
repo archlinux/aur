@@ -8,6 +8,11 @@ set -euo pipefail
 
 SPEC="mediatek-mt7927-dkms.spec"
 VERSION=$(sed -n "s/^PACKAGE_VERSION=\"\(.*\)\"/\1/p" dkms.conf)
+# dkms.conf carries no release number, so take it from the PKGBUILD that
+# release.sh bumps. Without it every rebuild is labelled -1 and dnf sees no
+# upgrade between two releases of the same PACKAGE_VERSION.
+PKGREL=$(sed -n "s/^pkgrel=\(.*\)/\1/p" PKGBUILD)
+PKGREL=${PKGREL:-1}
 TOPDIR="${PWD}/rpmbuild"
 
 if ! command -v rpmbuild &>/dev/null; then
@@ -36,7 +41,7 @@ fi
 cp "${SPEC}" "${TOPDIR}/SPECS/"
 
 # Build
-rpmbuild --define "_topdir ${TOPDIR}" --define "_pkg_version ${VERSION}" --nodeps -bb "${TOPDIR}/SPECS/${SPEC}"
+rpmbuild --define "_topdir ${TOPDIR}" --define "_pkg_version ${VERSION}" --define "_pkg_release ${PKGREL}" --nodeps -bb "${TOPDIR}/SPECS/${SPEC}"
 
 echo "==> RPMs:"
 find "${TOPDIR}/RPMS" -name '*.rpm' -print

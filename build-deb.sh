@@ -8,6 +8,11 @@ set -euo pipefail
 
 PKGNAME="mediatek-mt7927-dkms"
 VERSION=$(sed -n "s/^PACKAGE_VERSION=\"\(.*\)\"/\1/p" dkms.conf)
+# dkms.conf carries no release number, so take it from the PKGBUILD that
+# release.sh bumps. Without it every rebuild is labelled -1 and apt sees no
+# upgrade between two releases of the same PACKAGE_VERSION.
+PKGREL=$(sed -n "s/^pkgrel=\(.*\)/\1/p" PKGBUILD)
+PKGREL=${PKGREL:-1}
 ARCH="all"
 OUTDIR="${PWD}"
 BUILDDIR=$(mktemp -d)
@@ -32,7 +37,7 @@ mkdir -p "${STAGEDIR}/DEBIAN"
 
 cat > "${STAGEDIR}/DEBIAN/control" <<EOF
 Package: ${PKGNAME}
-Version: ${VERSION}-1
+Version: ${VERSION}-${PKGREL}
 Architecture: ${ARCH}
 Maintainer: Javier Tia <floss@jetm.me>
 Depends: dkms
@@ -73,6 +78,6 @@ sed -i "s/@VERSION@/${VERSION}/" "${STAGEDIR}/DEBIAN/prerm"
 chmod 755 "${STAGEDIR}/DEBIAN/prerm"
 
 # Build the .deb
-dpkg-deb --root-owner-group --build "${STAGEDIR}" "${OUTDIR}/${PKGNAME}_${VERSION}-1_${ARCH}.deb"
+dpkg-deb --root-owner-group --build "${STAGEDIR}" "${OUTDIR}/${PKGNAME}_${VERSION}-${PKGREL}_${ARCH}.deb"
 
-echo "==> Built: ${PKGNAME}_${VERSION}-1_${ARCH}.deb"
+echo "==> Built: ${PKGNAME}_${VERSION}-${PKGREL}_${ARCH}.deb"

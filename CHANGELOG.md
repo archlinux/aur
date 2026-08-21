@@ -5,6 +5,12 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.14-3] - 2026-08-21
+
+### Packaging
+
+- Carry `pkgrel` into the RPM and DEB version strings. Both packagers read the version from `dkms.conf`, which has no release number, and then hardcoded `-1`, so every release of a given `PACKAGE_VERSION` produced identically-named artifacts. dnf and apt compare version strings, so users on those channels were never offered an upgrade between, say, 2.12-1 and 2.12-2, or 2.14-1 and 2.14-2 - which meant the testmode build fix could not reach the Debian and Fedora users who need it. Both scripts now read `pkgrel` from the PKGBUILD that release.sh bumps, and the spec honours it via `_pkg_release` (this is the mislabelling xgeetx hit in #89)
+
 ## [2.14-2] - 2026-08-21
 
 ### Packaging
