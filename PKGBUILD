@@ -2,7 +2,7 @@
 
 pkgname=audio.cpp-vulkan-git
 _pkgname=audio.cpp
-pkgver=r357.df6e948
+pkgver=r424.5fda891
 pkgrel=1
 pkgdesc='All-in-one C++ audio inference engine on ggml with Vulkan GPU support (git version)'
 arch=('x86_64')
@@ -47,6 +47,7 @@ build() {
     -DENGINE_ENABLE_VULKAN=ON
     -DGGML_CUDA_FA_ALL_QUANTS=ON
     -DAUDIOCPP_DEPLOYMENT_BUILD=ON
+    -DAUDIOCPP_BUILD_NATIVE_MODEL_MANAGER=ON
   )
 
   # Follow llama.cpp-vulkan's CI behavior: build every dynamically selected

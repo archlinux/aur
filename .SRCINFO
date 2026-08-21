@@ -1,6 +1,6 @@
 pkgbase = audio.cpp-vulkan-git
 	pkgdesc = All-in-one C++ audio inference engine on ggml with Vulkan GPU support (git version)
-	pkgver = r357.df6e948
+	pkgver = r424.5fda891
 	pkgrel = 1
 	url = https://github.com/0xShug0/audio.cpp
 	arch = x86_64
