@@ -1,6 +1,6 @@
 pkgbase = trilium-next-server-bin
 	pkgdesc = Trilium Notes Server Next version
-	pkgver = 0.104.1
+	pkgver = 0.105.0
 	pkgrel = 1
 	url = https://github.com/TriliumNext/Trilium
 	arch = x86_64
