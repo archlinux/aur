@@ -1,0 +1,15 @@
+pkgbase = wuyou-docs
+	pkgdesc = Local-first desktop document workspace (prebuilt binary)
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/duanluan/wuyou-docs-releases
+	arch = x86_64
+	license = NOASSERTION
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = wuyou-docs-bin=0.8.0
+	options = !strip
+	source = wuyou-docs_0.8.0_amd64.deb::https://github.com/duanluan/wuyou-docs-releases/releases/download/v0.8.0/wuyou-docs_0.8.0_amd64.deb
+	sha256sums = a4bda981b590349a37b8b299d4e0234dd699435a5113d3d455efc54b95e548ae
+
+pkgname = wuyou-docs
