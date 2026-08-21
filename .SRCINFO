@@ -1,0 +1,19 @@
+pkgbase = ku-bin
+	pkgdesc = Fast, keyboard-driven Kubernetes TUI
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/bjarneo/ku
+	arch = x86_64
+	license = MIT
+	optdepends = xdg-utils: open Kubernetes documentation from inside ku
+	provides = ku=0.11.0
+	conflicts = ku
+	conflicts = ku-git
+	options = !strip
+	options = !debug
+	source = ku-0.11.0-linux-amd64::https://github.com/bjarneo/ku/releases/download/v0.11.0/ku-linux-amd64
+	source = upstream-license::https://raw.githubusercontent.com/bjarneo/ku/v0.11.0/LICENSE
+	sha256sums = 44f666c903036edd6d62fcd1b357e385b6e3efe4acaa735d4252de846c1b1aa3
+	sha256sums = ebb1323d93aee5f8b4a672ec20ca24954373c85686be39307facb88dd582444c
+
+pkgname = ku-bin

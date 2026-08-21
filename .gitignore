@@ -1,0 +1,7 @@
+src/
+pkg/
+ku-*-linux-*
+upstream-license
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.log
