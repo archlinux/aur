@@ -1,0 +1,6 @@
+[wallreel]
+source = "gitea"
+host = "git.uyani.de"
+gitea = "Uyanide/wallreel"
+prefix = "v"
+use_max_tag = true
