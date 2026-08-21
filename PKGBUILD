@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=csky-debugserver-bin
-pkgver=5.18.3
-pkgrel=2
+pkgver=5.18.10
+pkgrel=3
 epoch=
 pkgdesc="C-Sky Debugger Server"
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('BSD')
 groups=()
 depends=(
     sh
-    gcc-libs
-    glibc
+    libgcc_s.so
+    libstdc++.so
     libusb
 )
 makedepends=(libarchive)
@@ -26,12 +26,12 @@ options=(!strip !debug)
 install=
 changelog=
 source=(
-    "${pkgname}-${pkgver}.sh.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1732244327178/XuanTie-DebugServer-linux-x86_64-V5.18.3-20241119.sh.tar.gz"
-    "DebugServer User Guide_v5.18.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1732244783846/Debugger+Server+User+Guide%28ZH-CN%29_20241122.pdf"
+    "${pkgname}-${pkgver}.sh.tar.gz::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1781751151864/XuanTie-DebugServer-linux-x86_64-V5.18.10-20260603.sh.tar.gz"
+    "DebugServer User Guide_v5.18.pdf::https://occ-oss-prod.oss-cn-hangzhou.aliyuncs.com/resource//1781751413408/Debugger+Server+User+Guide%28ZH-CN%29.pdf"
 )
 noextract=()
-sha256sums=('7f4de8c22050a8a591677b4cb5d783b47e53c213fd5fd5c2d93952704c578bfc'
-            'e6161264c76f5028b55e34d48cbcaeb21829d73dbe94548cdb7b55f1d87de4b9')
+sha256sums=('24413810f02160e262a04cf22835adadf061c120f5ad9a7a4b3f2c821a122194'
+            '97888c3dc282f167cf2f627e2bde70ea678169c4855b98b8a4cf157b963c3b11')
 #validpgpkeys=()
 
 package() {
