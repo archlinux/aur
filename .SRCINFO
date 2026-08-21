@@ -1,6 +1,6 @@
 pkgbase = tennoworth
 	pkgdesc = Warframe inventory + market dashboard — see what's worth selling right now
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/tennoworth/tennoworth
 	install = tennoworth.install
@@ -13,7 +13,7 @@ pkgbase = tennoworth
 	depends = libayatana-appindicator
 	depends = openssl
 	options = !lto
-	source = tennoworth-0.4.0.tar.gz::https://github.com/tennoworth/tennoworth/archive/refs/tags/desktop-v0.4.0.tar.gz
-	sha256sums = 09c7b9f094da36006570247d4fad995d022b70d92dc69643f6d6e62e82fd62e1
+	source = tennoworth-0.5.0.tar.gz::https://github.com/tennoworth/tennoworth/archive/refs/tags/desktop-v0.5.0.tar.gz
+	sha256sums = 25bd9cf19cdad514a4da7ae6ac52bd68b30fdc1bec8c5d13fb2a5568af3863cb
 
 pkgname = tennoworth

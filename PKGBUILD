@@ -12,7 +12,7 @@
 # AppImage run (see companion/tennoworth-desktop/src/update.rs).
 
 pkgname=tennoworth
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Warframe inventory + market dashboard — see what's worth selling right now"
 arch=('x86_64')
@@ -32,7 +32,7 @@ makedepends=('cargo' 'bun')
 install=tennoworth.install
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/desktop-v$pkgver.tar.gz")
-sha256sums=('09c7b9f094da36006570247d4fad995d022b70d92dc69643f6d6e62e82fd62e1')
+sha256sums=('25bd9cf19cdad514a4da7ae6ac52bd68b30fdc1bec8c5d13fb2a5568af3863cb')
 
 _srcdir="tennoworth-desktop-v$pkgver"
 
