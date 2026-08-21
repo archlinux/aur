@@ -1,7 +1,7 @@
 # Maintainer: Christopher Kreft <email@christopherkreft.de>
 
 pkgname=snclient
-pkgver=0.45
+pkgver=0.49
 pkgrel=1
 pkgdesc='General-purpose monitoring agent supporting REST, NRPE and Prometheus'
 arch=('x86_64')
@@ -15,7 +15,7 @@ backup=('etc/logrotate.d/snclient'
         'etc/snclient/snclient.ini')
 install=snclient.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('86308882702c5aab8a3262a6c80a60bb447c6ff04807ef8038c288561ac90db1')
+sha256sums=('3ebbdd78e213108f77c639d6a757c7f79724f40cb083cd76df37bafaaddf7fdb')
 
 prepare() {
   cd "$pkgname"
