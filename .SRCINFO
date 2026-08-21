@@ -1,15 +1,15 @@
 pkgbase = gotatun
 	pkgdesc = Userspace WireGuard® Implementation in Rust
-	pkgver = 0.8.1
-	pkgrel = 2
+	pkgver = 0.9.0
+	pkgrel = 1
 	url = https://github.com/mullvad/gotatun
 	arch = x86_64
 	license = BSD-3-Clause AND MPL-2.0
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = https://github.com/mullvad/gotatun/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = 9683978b816504f7cc37e2df3d4c9255492f5dc5a2705772c5cd41ee7a114ed6
+	source = https://github.com/mullvad/gotatun/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 8d22c7ee95abf8a6d4350bd605aaeb63f0d375e9d5f0dcfb7b4357746fc45db1
 
 pkgname = gotatun
 
