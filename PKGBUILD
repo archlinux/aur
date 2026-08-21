@@ -2,7 +2,7 @@
 
 pkgname=luadot-nightly
 _pkgname=luadot
-pkgver=0.1.0.nightly.7
+pkgver=0.1.0.nightly.8
 pkgrel=1
 pkgdesc='A dotfiles manager configured in Lua (nightly)'
 arch=('x86_64' 'aarch64')
@@ -12,12 +12,12 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'cmake')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-options=('!lto')
+options=('!lto' '!debug')
 _registry='https://gitlab.digitalventura.com.br/api/v4/projects/luadot%2Fluadot/packages/generic/luadot'
-_version=0.1.0-nightly.7
+_version=0.1.0-nightly.8
 _srcdir="$_pkgname-$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$_registry/$_version/$_pkgname-$pkgver-src.tar.gz")
-sha256sums=('4090535964a6766ffbf1cddff1063b11768225d813a6cc95d0c18e2051edc580')
+sha256sums=('7b17690ba070b952e2722b434b0a2ca099ed7165f8bf94a40059166670944825')
 
 prepare() {
 	cd "$_srcdir"
@@ -45,4 +45,7 @@ package() {
 	"target/release/$_pkgname" completions bash >"$pkgdir/usr/share/bash-completion/completions/$_pkgname"
 	"target/release/$_pkgname" completions zsh >"$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 	"target/release/$_pkgname" completions fish >"$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
+
+	install -d "$pkgdir/usr/share/man/man1"
+	"target/release/$_pkgname" man >"$pkgdir/usr/share/man/man1/$_pkgname.1"
 }
