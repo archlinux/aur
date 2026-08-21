@@ -6,7 +6,7 @@
 
 pkgname=moosic-bin
 _pkgname=moosic
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Lightweight cross-platform retro-style audio player with Subsonic support"
 arch=('x86_64' 'aarch64')
@@ -41,8 +41,8 @@ source=(
 )
 
 # Replace SKIP values when bumping pkgver — see README.md in this directory.
-sha256sums_x86_64=('56d2c07ab12629cfa7ae4d0039cbc573b6be14c795859a96bf0efd878e86c492')
-sha256sums_aarch64=('41950619cf9c9a65f80842d7d42fc4bdfd9f346387ea770fbbb36b05e39d0585')
+sha256sums_x86_64=('4bbcde6431a7c958523ba6b214f6095edc4bfdac032f91ca793c213bd1112f6b')
+sha256sums_aarch64=('b1fd1b67f7b4bd452800d755433e6b8ea0bf3dddee399da6c62f661555bc70e7')
 sha256sums=(
   'fe0f7721359cbf6c022a7be3350620df6ac9d8b85b7db2464b4260558d701ef8' # moosic.desktop
   '2397b6ad52802060ad69280ceb44ce4ebb190f53a64d87403c98ab9645b68d8d' # icon.png
