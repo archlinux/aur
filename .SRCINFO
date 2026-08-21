@@ -1,6 +1,6 @@
 pkgbase = wasmedge
 	pkgdesc = A lightweight, high-performance, and extensible WebAssembly runtime
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://wasmedge.org
 	arch = x86_64
@@ -10,7 +10,16 @@ pkgbase = wasmedge
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = spdlog
-	source = wasmedge-0.17.0.tar.gz::https://github.com/WasmEdge/WasmEdge/releases/download/0.17.0/WasmEdge-0.17.0-src.tar.gz
-	sha256sums = f4e341e4c8a1f9d8a67579ed91b447d363edecd3f6f592573eaddfcd993fae2e
+	depends = fmt
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = lld
+	depends = llvm-libs
+	depends = spdlog
+	source = wasmedge-0.17.1.tar.gz::https://github.com/WasmEdge/WasmEdge/releases/download/0.17.1/WasmEdge-0.17.1-src.tar.gz
+	source = wasmedge-int128-fmt122.patch
+	sha256sums = c8881a8c43407fc424ccd8586594a79068305b31c76aad0025efea9339be18e0
+	sha256sums = 92f04a5814df581a9886a35a2ce587b64cbc94ec526e52aa79c45b30874b9c06
 
 pkgname = wasmedge
