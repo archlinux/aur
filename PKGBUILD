@@ -1,7 +1,20 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
+# NOTE: pkgver/pkgrel and the sha256sums below are PLACEHOLDERS.
+# `.github/workflows/release.yml` copies this file at publish time and
+# rewrites all of them from the release tag before pushing to the AUR:
+#
+#     sed -i -e "s/^pkgver=.*/pkgver=${version}/" \
+#            -e "s/^pkgrel=.*/pkgrel=1/" ...
+#
+# So the value here never reaches a user, and bumping it by hand fixes
+# nothing while going stale again at the next release. Check the published
+# package instead:
+#
+#     curl -s 'https://aur.archlinux.org/rpc/v5/info?arg[]=ai-memory'
+#
 pkgname=ai-memory
-pkgver=1.29.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="Local-first long-term memory MCP server for AI coding agents"
 arch=('x86_64' 'aarch64')
@@ -17,7 +30,7 @@ install=ai-memory.install
 options=('!debug')
 conflicts=('ai-memory-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('250291e7dd4b306b6a8a1fff133fd73bced2b3a29a6dff82983507ee00791bc9')
+sha256sums=('4d00110271463610bf9bfe9ae3321eda54bbfcc76c311149131d271d509f63b9')
 
 prepare() {
     cd "$pkgname-$pkgver"
