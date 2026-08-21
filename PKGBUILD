@@ -27,6 +27,7 @@ prepare() {
     --omit=peer \
     --no-audit \
     --no-fund \
+    --legacy-peer-deps \
     "$srcdir/dsh-tui-${_npmver}.tgz"
 }
 
