@@ -1,0 +1,20 @@
+pkgbase = ddsn-git
+	pkgdesc = Dynamic Discord Rich Presence based on active Niri windows (git)
+	pkgver = 1.4.1.0.gHEAD
+	pkgrel = 1
+	url = https://github.com/Veridian-Zenith/DDS
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = clang
+	makedepends = lld
+	depends = glibc
+	depends = niri
+	provides = ddsn
+	conflicts = ddsn
+	conflicts = ddsn-bin
+	source = git+https://github.com/Veridian-Zenith/DDS.git#branch=main
+	b2sums = SKIP
+
+pkgname = ddsn-git
