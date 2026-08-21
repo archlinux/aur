@@ -3,3 +3,4 @@ src/
 vicinae/
 *.tar*
 *.custom
+pkg/
