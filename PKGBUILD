@@ -6,7 +6,7 @@ _pkgname="${_name,,}"
 _plugin_uri="https://www.jahnichen.de/plugins/lv2/${_name}"
 pkgname="${_pkgname}-git"
 pkgdesc="Sequenced audio slicing effect LV2 plugin (git version)"
-pkgver=1.2.8.r0.gf988a45
+pkgver=1.2.16.r4.g546edf8
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/sjaehn/${_name}"
@@ -37,7 +37,7 @@ build() {
 check() {
   cd "${srcdir}/${_pkgname}"
   # TTL has no minor/microVersion yet, so skip tests for these until first release
-  lv2lint -t "Plugin Version *" -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
+  lv2lint -t "Plugin Version *" -t "UI Symbols" -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
 }
 
 package() {

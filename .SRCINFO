@@ -1,6 +1,6 @@
 pkgbase = bslizr-git
 	pkgdesc = Sequenced audio slicing effect LV2 plugin (git version)
-	pkgver = 1.2.8.r0.gf988a45
+	pkgver = 1.2.16.r4.g546edf8
 	pkgrel = 1
 	url = https://github.com/sjaehn/BSlizr
 	arch = x86_64
@@ -15,10 +15,9 @@ pkgbase = bslizr-git
 	depends = glibc
 	depends = libx11
 	provides = bslizr
-	provides = bslizr=1.2.8
+	provides = bslizr=1.2.16
 	conflicts = bslizr
 	source = bslizr::git+https://github.com/sjaehn/BSlizr
 	md5sums = SKIP
 
 pkgname = bslizr-git
-
