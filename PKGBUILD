@@ -25,19 +25,24 @@ depends=(
 )
 makedepends=(git)
 provides=(librtmp.so)
-_tag=138fdb258d9fc26f1843fd1b891180416c9dc575
-source=(git+https://git.ffmpeg.org/rtmpdump#tag=${_tag}
-        nettle-4.patch)
-sha256sums=('0cba5d49d41b5e35a34ea8230124ed853eeeac19091d17a4188a47c31a17d352'
-            'b9cbbcf14d9fb46962d541544f47226909a7bc7191e2be50cfd0c73c73c4b80d')
+_repo=https://git.ffmpeg.org/rtmpdump
+_commit=138fdb258d9fc26f1843fd1b891180416c9dc575
+source=(nettle-4.patch)
+sha256sums=('b9cbbcf14d9fb46962d541544f47226909a7bc7191e2be50cfd0c73c73c4b80d')
 
-pkgver() {
-  cd rtmpdump
-  git describe --tags | sed 's/^v//'
-}
-
+# git.ffmpeg.org has dangling refs that break a mirror clone, so shallow-clone the tag instead.
 prepare() {
+  if [[ ! -d rtmpdump ]]; then
+    git clone --depth=1 --branch "v${pkgver}" "$_repo" rtmpdump
+  fi
+
   cd rtmpdump
+  local rev=$(git rev-parse HEAD)
+  if [[ "$rev" != "$_commit" ]]; then
+    echo "rtmpdump checkout ($rev) does not match pinned commit ($_commit)" >&2
+    exit 1
+  fi
+
   patch -p1 -i ../nettle-4.patch
   sed -i 's|^CC=$(CROSS_COMPILE)gcc$|CC=$(CROSS_COMPILE)gcc -m32|' Makefile librtmp/Makefile
 }

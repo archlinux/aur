@@ -13,9 +13,7 @@ pkgbase = lib32-rtmpdump
 	depends = lib32-zlib
 	depends = rtmpdump
 	provides = librtmp.so
-	source = git+https://git.ffmpeg.org/rtmpdump#tag=138fdb258d9fc26f1843fd1b891180416c9dc575
 	source = nettle-4.patch
-	sha256sums = 0cba5d49d41b5e35a34ea8230124ed853eeeac19091d17a4188a47c31a17d352
 	sha256sums = b9cbbcf14d9fb46962d541544f47226909a7bc7191e2be50cfd0c73c73c4b80d
 
 pkgname = lib32-rtmpdump
