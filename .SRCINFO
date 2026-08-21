@@ -1,0 +1,17 @@
+pkgbase = fastmc-bin
+	pkgdesc = fastmc, create a Minecraft server in under a minute, prebuilt binary
+	pkgver = 359c3cf
+	pkgrel = 1
+	url = https://github.com/CallMeAlphabet/fastmc
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gcc-libs
+	provides = fastmc
+	conflicts = fastmc
+	source = fastmc::https://github.com/CallMeAlphabet/fastmc/releases/download/latest/fastmc
+	source = fastmc.sha256::https://github.com/CallMeAlphabet/fastmc/releases/download/latest/fastmc.sha256
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fastmc-bin
