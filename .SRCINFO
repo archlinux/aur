@@ -1,6 +1,6 @@
 pkgbase = gooeypi-bin
 	pkgdesc = Desktop workspace for Pi, OMP, and Prime Agent (prebuilt binary)
-	pkgver = 1.1.11
+	pkgver = 1.1.13
 	pkgrel = 1
 	url = https://github.com/am-will/gooey-pi
 	arch = x86_64
@@ -40,16 +40,16 @@ pkgbase = gooeypi-bin
 	optdepends = pipewire: screen sharing under Wayland
 	optdepends = kde-cli-tools: file deletion support on KDE
 	optdepends = trash-cli: file deletion fallback
-	provides = gooeypi=1.1.11
+	provides = gooeypi=1.1.13
 	conflicts = gooeypi
-	noextract = GooeyPi-1.1.11-linux-x64.pacman
-	noextract = GooeyPi-1.1.11-linux-aarch64.pacman
+	noextract = GooeyPi-1.1.13-linux-x64.pacman
+	noextract = GooeyPi-1.1.13-linux-aarch64.pacman
 	options = !strip
 	source = LICENSE
 	sha256sums = 8afbc591f620720580c00279b5d04d6d700398c4f4f53e54217a7c3eeb50689e
-	source_x86_64 = GooeyPi-1.1.11-linux-x64.pacman::https://github.com/am-will/gooey-pi/releases/download/v1.1.11/GooeyPi-1.1.11-linux-x64.pacman
-	sha256sums_x86_64 = a229ab96e113792ab6f959292aa8e44ad3dea404d7e3969b627e43dffb3f6900
-	source_aarch64 = GooeyPi-1.1.11-linux-aarch64.pacman::https://github.com/am-will/gooey-pi/releases/download/v1.1.11/GooeyPi-1.1.11-linux-aarch64.pacman
-	sha256sums_aarch64 = 5357723970f5bc3668e5e29c0b021536f8dd47bf6cbd9e3eefb7d3c4444c5920
+	source_x86_64 = GooeyPi-1.1.13-linux-x64.pacman::https://github.com/am-will/gooey-pi/releases/download/v1.1.13/GooeyPi-1.1.13-linux-x64.pacman
+	sha256sums_x86_64 = b3a5353762352f75848275d0a9a74f5f9fe6783f77fda83615fe2f5b76f7abc9
+	source_aarch64 = GooeyPi-1.1.13-linux-aarch64.pacman::https://github.com/am-will/gooey-pi/releases/download/v1.1.13/GooeyPi-1.1.13-linux-aarch64.pacman
+	sha256sums_aarch64 = 635581bcaa6c11669aba7566882c8526f0c6072a1485287c129e00697f81432e
 
 pkgname = gooeypi-bin
