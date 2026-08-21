@@ -3,7 +3,7 @@
 
 
 pkgname=eddie-cli
-pkgver=2.24.6
+pkgver=v2.26.2
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - CLI'
 arch=('x86_64' 'aarch64' 'armv7l')
@@ -11,14 +11,15 @@ url=https://eddie.website
 license=(GPLv3)
 depends=(curl openvpn sudo)
 optdepends=('stunnel: VPN over SSL' 'openssh: VPN over SSH')
-makedepends=(git cmake patchelf dotnet-sdk)
+makedepends=(git cmake patchelf 'dotnet-runtime>=10' 'dotnet-sdk>=10')
 provides=('eddie-cli')
 conflicts=('airvpn' 'airvpn-beta-bin' 'airvpn-git')
 install=eddie-cli.install
-source=('https://github.com/AirVPN/Eddie/archive/2.24.6.tar.gz')
-sha1sums=('be47d85e5d11070708bb6d55260874a72ffc0761')
-options=('!strip') # Incompatible with net8
+source=('https://github.com/AirVPN/Eddie/archive/v2.26.2.tar.gz')
+sha1sums=('077f820a53469a0737fd2d1dd7c043708398f21f')
+options=('!strip') # Incompatible with net10
 
+LINE="l"
 
 
 ARCH=$CARCH
@@ -46,27 +47,38 @@ build() {
 
     cd "src/App.CLI.Linux/"
 
-    dotnet publish App.CLI.Linux.net8.csproj --configuration ${CONFIG} --runtime ${RID} --self-contained true -p:PublishTrimmed=true -p:EnableCompressionInSingleFile=true    
+    dotnet publish App.CLI.Linux.net10.csproj --configuration ${CONFIG} --runtime ${RID} --self-contained true -p:PublishTrimmed=true -p:EnableCompressionInSingleFile=true    
 
     cd "../../"
   fi
 
   # UI
   if [ "cli" = "ui" ]; then
-    FRAMEWORK="net4" # Forced for now
-    if [ $FRAMEWORK = "net8" ]; then
-        chmod +x src/App.UI.Linux/build.sh
-        "src/App.UI.Linux/build.sh" Release        
-    elif [ $FRAMEWORK = "net4" ]; then
+    if [ "$LINE" = "u" ]; then
+        mkdir -p src/App.UI.Linux/bin
+        g++ \
+          src/App.UI.Linux/src/main.cpp \
+          src/App.UI.Linux/src/appgtk.cpp \
+          src/App.UI.Linux/src/iapplinux.cpp \
+          src/Lib.UI/src/iappposix.cpp \
+          src/Lib.UI/src/iapp.cpp \
+          -std=c++17 \
+          -o src/App.UI.Linux/bin/eddie-ui \
+          $(pkg-config --cflags --libs gtk+-3.0 ayatana-appindicator3-0.1 webkit2gtk-4.1)
+
+        strip -S --strip-unneeded src/App.UI.Linux/bin/eddie-ui
+        patchelf --set-rpath '$ORIGIN' src/App.UI.Linux/bin/eddie-ui
+        chmod a+x src/App.UI.Linux/bin/eddie-ui
+    elif [ "$LINE" = "l" ]; then
 
         # Note: x64 in path hardcoded, correct, net4 build are CIL      
         
         export TERM=xterm # Fix Mono bug "Magic number is wrong".
-        #TARGETFRAMEWORK="v4.8"; # Removed for https://aur.archlinux.org/packages/eddie-ui#comment-920114
+        TARGETFRAMEWORK="v4.8"; # Mono does not support TargetFrameworkVersion v4.8.1.
         RULESETPATH="src/ruleset/norules.ruleset"
         SOLUTIONPATH="src/App.Forms.Linux//App.Forms.Linux.sln"
         
-        # clean temporary files from net8 compilation above, otherwise throw 'Your project does not reference ".NETFramework,Version=v4.8"'
+        # clean temporary files from net10 compilation above, otherwise throw 'Your project does not reference ".NETFramework,Version=v4.8"'
         rm -rf "src/Lib.Core/bin"
         rm -rf "src/Lib.Core/obj"
         rm -rf "src/Lib.Platform.Linux/bin"
@@ -74,8 +86,7 @@ build() {
         
         # msbuild is available when monodevelop is installed (reccomended)
         # xbuild is available when mono-complete is installed (deprecated)        
-        #msbuild /verbosity:minimal /p:Configuration=${CONFIG} /p:Platform=x64 /p:TargetFrameworkVersion=${TARGETFRAMEWORK} /t:Rebuild "${SOLUTIONPATH}" /p:DefineConstants="EDDIEMONO4LINUX"
-        msbuild /verbosity:minimal /p:Configuration=${CONFIG} /p:Platform=x64 /t:Rebuild "${SOLUTIONPATH}" /p:DefineConstants="EDDIEMONO4LINUX"
+        msbuild /verbosity:minimal /p:Configuration=${CONFIG} /p:Platform=x64 /p:TargetFrameworkVersion=${TARGETFRAMEWORK} /t:Rebuild "${SOLUTIONPATH}" /p:DefineConstants="EDDIEMONO4LINUX"
 
         # msbuild/Mono under Linux don't honor the postbuild event, called manually
         "src/App.Forms.Linux/postbuild.sh" "src/App.Forms.Linux/bin/x64/${CONFIG}/" ${ARCH} ${CONFIG}
@@ -114,7 +125,7 @@ build() {
   
   if [ "cli" = "cli" ]; then
     # Generate man
-    "src/App.CLI.Linux/bin/Release/net8.0/${RID}/publish/eddie-cli" --path.resources="../../../../../../resources" --help --help.format=man >"eddie-cli.8"
+    "src/App.CLI.Linux/bin/Release/net10.0/${RID}/publish/eddie-cli" --path.resources="../../../../../../resources" --help --help.format=man >"eddie-cli.8"
     gzip -n -9 -f "eddie-cli.8"
   fi
 
@@ -132,7 +143,7 @@ package() {
   install -Dm644 "resources/cacert.pem"       "$pkgdir/usr/share/eddie-cli/cacert.pem"
   install -Dm644 "resources/iso-3166.json"       "$pkgdir/usr/share/eddie-cli/iso-3166.json"
 
-  install -Dm644 "resources/lang/inv.json"       "$pkgdir/usr/share/eddie-cli/lang/inv.json"
+  install -Dm644 "resources/locales/inv.json"       "$pkgdir/usr/share/eddie-cli/locales/inv.json"
 
   install -Dm644 "resources/icons/appindicator.png"       "$pkgdir/usr/share/eddie-cli/icons/appindicator.png"
   install -Dm644 "resources/icons/appindicator-gray.png"       "$pkgdir/usr/share/eddie-cli/icons/appindicator-gray.png"
@@ -140,6 +151,11 @@ package() {
   install -Dm644 "resources/icons/notifyicon-gray.ico"       "$pkgdir/usr/share/eddie-cli/icons/notifyicon-gray.ico"
   install -Dm644 "resources/icons/icon.png"       "$pkgdir/usr/share/eddie-cli/icons/icon.png"
   install -Dm644 "resources/icons/icon-gray.png"       "$pkgdir/usr/share/eddie-cli/icons/icon-gray.png"
+
+  if [ "$LINE" = "u" ]; then
+    mkdir -p "$pkgdir/usr/share/eddie-cli/webui"
+    cp -a "resources/webui/." "$pkgdir/usr/share/eddie-cli/webui/"
+  fi
   
   install -Dm644 "resources/providers/OpenVPN.json"       "$pkgdir/usr/share/eddie-cli/providers/OpenVPN.json"
   install -Dm644 "resources/providers/WireGuard.json"       "$pkgdir/usr/share/eddie-cli/providers/WireGuard.json"
@@ -150,18 +166,17 @@ package() {
   
   install -Dm644 "changelog.gz" "$pkgdir/usr/share/doc/eddie-cli/changelog.gz"
 
-  install -Dm755 "src/App.CLI.Linux/bin/Release/net8.0/${RID}/libLib.Platform.Linux.Native.so" "$pkgdir/usr/lib/eddie-cli/libLib.Platform.Linux.Native.so"
-  install -Dm755 "src/App.CLI.Linux/bin/Release/net8.0/${RID}/eddie-cli-elevated" "$pkgdir/usr/lib/eddie-cli/eddie-cli-elevated"
-  install -Dm755 "src/App.CLI.Linux/bin/Release/net8.0/${RID}/eddie-cli-elevated-service" "$pkgdir/usr/lib/eddie-cli/eddie-cli-elevated-service"
-  install -Dm755 "src/App.CLI.Linux/bin/Release/net8.0/${RID}/publish/eddie-cli" "$pkgdir/usr/lib/eddie-cli/eddie-cli"
+  install -Dm755 "src/App.CLI.Linux/bin/Release/net10.0/${RID}/libLib.Platform.Linux.Native.so" "$pkgdir/usr/lib/eddie-cli/libLib.Platform.Linux.Native.so"
+  install -Dm755 "src/App.CLI.Linux/bin/Release/net10.0/${RID}/eddie-cli-elevated" "$pkgdir/usr/lib/eddie-cli/eddie-cli-elevated"
+  install -Dm755 "src/App.CLI.Linux/bin/Release/net10.0/${RID}/eddie-cli-elevated-service" "$pkgdir/usr/lib/eddie-cli/eddie-cli-elevated-service"
+  install -Dm755 "src/App.CLI.Linux/bin/Release/net10.0/${RID}/publish/eddie-cli" "$pkgdir/usr/lib/eddie-cli/eddie-cli"
 
   if [ "cli" = "cli" ]; then
     install -Dm644 "eddie-cli.8.gz" "$pkgdir/usr/share/man/man8/eddie-cli.8.gz"
   elif [ "cli" = "ui" ]; then
-    FRAMEWORK="net4" # Forced for now
-    if [ $FRAMEWORK = "net8" ]; then
-      echo TODO
-    elif [ $FRAMEWORK = "net4" ]; then        
+    if [ "$LINE" = "u" ]; then
+      install -Dm755 "src/App.UI.Linux/bin/eddie-ui" "$pkgdir/usr/lib/eddie-cli/eddie-ui"
+    elif [ "$LINE" = "l" ]; then
       install -Dm755 "src/App.Forms.Linux.Tray/bin/eddie-tray" "$pkgdir/usr/lib/eddie-cli/eddie-tray"      
       install -Dm755 "src/App.Forms.Linux/bin/x64/Release/eddie-ui" "$pkgdir/usr/lib/eddie-cli/eddie-ui"      
     fi
