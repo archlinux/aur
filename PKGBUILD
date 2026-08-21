@@ -4,7 +4,7 @@
 pkgname=video-work-api-git
 _pkgname=video-work-api
 _pkgsrc=video-work-api
-pkgver=r26.f231b94
+pkgver=0.1.0.r70.70efc01
 pkgrel=1
 pkgdesc="Local Video Work API toolkit: CosyVoice3 cloning and FunClip subtitles (git)"
 arch=('x86_64' 'aarch64')
@@ -50,7 +50,7 @@ pkgver() {
     # v0.1.0-12-gabcdef0 -> 0.1.0.r12.gabcdef0
     printf '%s' "$_ver" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   elif _ver=$(git describe --long --always 2>/dev/null); then
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf '0.1.0.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   else
     # Unborn / empty repo fallback (local test only)
     printf '0.1.0.r0.g%s' "$(git rev-parse --short HEAD 2>/dev/null || echo unknown)"
@@ -125,6 +125,9 @@ package() {
   rm -rf "$dest"/models "$dest"/voices "$dest"/profiles \
          "$dest"/generations "$dest"/output "$dest"/setup-token \
          "$dest"/*.sqlite* "$dest"/*.db "$dest"/*.env 2>/dev/null || true
+
+  # The service user must be able to traverse and read the sanitized application payload.
+  chmod -R a+rX "$dest"
 
   # Native Rust binary (required)
   if [[ -x "$target_dir/release/vwactl" ]]; then
