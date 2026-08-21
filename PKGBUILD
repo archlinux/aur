@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-git
-pkgver=1.13.0.r51.1c9678b
+pkgver=1.13.0.r94.975f3b9
 pkgrel=1
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
@@ -22,6 +22,7 @@ depends=(
   erofs-utils
   erofsfuse
   fmt
+  fuse-overlayfs
   glib2
   hicolor-icon-theme
   libcap

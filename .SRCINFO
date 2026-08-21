@@ -1,6 +1,6 @@
 pkgbase = linyaps-git
 	pkgdesc = Next-Gen Universal Package Manager for Linux (linglong)
-	pkgver = 1.13.0.r51.1c9678b
+	pkgver = 1.13.0.r94.975f3b9
 	pkgrel = 1
 	url = https://github.com/OpenAtom-Linyaps/linyaps
 	install = linyaps-git.install
@@ -22,6 +22,7 @@ pkgbase = linyaps-git
 	depends = erofs-utils
 	depends = erofsfuse
 	depends = fmt
+	depends = fuse-overlayfs
 	depends = glib2
 	depends = hicolor-icon-theme
 	depends = libcap
