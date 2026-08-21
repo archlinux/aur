@@ -1,4 +1,4 @@
-# Maintainer: Dafa <dafagareth@gmail.com>
+# Maintainer: dafagareth <dafagareth@gmail.com>
 
 # Source build of svault from a tagged release. This is the preferred AUR
 # package: it compiles on the user's machine and does not trust a prebuilt
@@ -6,7 +6,8 @@
 # package (packaging/aur-bin/PKGBUILD).
 
 pkgname=svault
-pkgver=2.2.1
+pkgver=1.0.0
+epoch=1
 pkgrel=1
 pkgdesc="Local encrypted secret vault for developers"
 arch=('x86_64' 'aarch64')
@@ -14,7 +15,7 @@ url="https://github.com/dafagareth/svault"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dafagareth/svault/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('94f5e2816df813315ca88892f8c0ec8d9a3b2efb887d48588956de7d82c465ea')
+sha256sums=('36780a3fd66c867e2536ccd69c6b132dff9378d51938bec41498a0b3deaff4d8')
 
 build() {
   cd "svault-$pkgver"
