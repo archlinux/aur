@@ -1,0 +1,11 @@
+pkgbase = umbriel
+	pkgdesc = Placeholder for Umbriel, Wayland compositor with scrolling and dwindle layouts
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/noctalia-dev/umbriel
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	conflicts = umbriel-git
+
+pkgname = umbriel
