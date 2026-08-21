@@ -17,10 +17,7 @@ EOF
 post_upgrade() {
   cat <<'EOF'
 
-If you use the THPM graphical manager, deploy the updated QML files with:
-
-  thpm ui install
-
-Run this command as your normal desktop user, not as root.
+THPM graphical managers using the self-healing menu launcher synchronize updated QML automatically when opened.
+Installations that predate this launcher can migrate it once with: thpm ui install
 EOF
 }

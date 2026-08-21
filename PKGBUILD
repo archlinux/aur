@@ -1,6 +1,6 @@
 # Maintainer: OldJobobo <aur at oldjobobo dot com>
 pkgname=thpm-git
-pkgver=1.0.0rc21.r0.gb77fef1
+pkgver=1.0.0rc22.r0.gc1abcb4
 pkgrel=1
 pkgdesc='Omarchy 4-native manager for external theme integrations (git)'
 arch=('any')
@@ -31,7 +31,7 @@ package() {
     /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 -t "$pkgdir/usr/share/thpm/templates" assets/templates/*
     install -Dm644 -t "$pkgdir/usr/share/thpm/qml" assets/qml/*
-    install -Dm755 assets/hooks/90-thpm "$pkgdir/usr/share/thpm/hooks/90-thpm"
+    install -Dm755 -t "$pkgdir/usr/share/thpm/hooks" assets/hooks/90-thpm assets/hooks/90-thpm-ui
     install -Dm644 assets/compat/theme-env.sh "$pkgdir/usr/share/thpm/compat/theme-env.sh"
     install -Dm644 -t "$pkgdir/usr/share/thpm/vencord" assets/vencord/*
     install -Dm644 -t "$pkgdir/usr/share/thpm/spicetify" assets/spicetify/*
