@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=darkwrite-bin
 _pkgname=Darkwrite
-pkgver=1.2.5_beta.2
+pkgver=1.2.6_beta.1
 _electronversion=43
 pkgrel=1
 pkgdesc="The eye-candy note taking and to-do application for all desktops.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver//_/-}/${_pkgname}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('384ed75a70ad500bcec7d296cadbf5f6e315d7c5019c1d5338b92d91caa30b5a'
+sha256sums=('ca3b87c066652604ad9c399be3dc3deb17c87d8a61c01823f2d22931b4bc39ed'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
