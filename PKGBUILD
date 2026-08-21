@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=('curl')
 source=(
-  "bundle.tar.gz::https://get.extera.xyz/v26.4.8/linux-x64.tar.gz"
+  "linux-x64.tar.gz::https://get.extera.xyz/v26.4.8/linux-x64.tar.gz"
 )
 sha256sums=('SKIP')
 
@@ -29,7 +29,7 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/bundle"
+  cd "$srcdir/linux-x64"
 
   install -d "$pkgdir/usr/lib/extera_next"
   cp -r ./* "$pkgdir/usr/lib/extera_next/"

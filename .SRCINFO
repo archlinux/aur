@@ -18,7 +18,7 @@ provides = extera-next-bin
 ; provides = exteranext-git
 conflicts = extera-next-bin
 ; conflicts = exteranext-git
-source = bundle.tar.gz::https://get.extera.xyz/v26.4.8/linux-x64.tar.gz
+source = linux-x64.tar.gz::https://get.extera.xyz/v26.4.8/linux-x64.tar.gz
 sha256sums = SKIP
 
 pkgname = extera-next-bin
