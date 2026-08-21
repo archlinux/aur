@@ -1,6 +1,6 @@
 # Maintainer: israrkhan-cys 7israr.work@gmail.com
 pkgname=radiq
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A weapon-select-wheel-style radial application launcher for Hyprland"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('qt6-base' 'qt6-declarative' 'layer-shell-qt' 'hyprland')
 makedepends=('cmake' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/israrkhan-cys/radiq/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('558543e32044dd643605fbb8d8a028a49143174a71ed2af9c3e313e2a8820c8c')
+sha256sums=('1cf2832ccd917604ca5c443c8aee65c0be63cc0754ecdd69f5a5b599fc2181a7')
 
 build() {
   cd "$pkgname-$pkgver"
