@@ -2,13 +2,14 @@
 
 pkgname=profilarr
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration Management Platform for Radarr/Sonarr"
 arch=('x86_64')
 url="https://github.com/Dictionarry-Hub/profilarr"
 license=('AGPL-3.0-only')
 depends=(sqlite)
 makedepends=(deno)
+options=(!strip)
 backup=(etc/profilarr/profilarr.env)
 source=(
   "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
@@ -35,8 +36,6 @@ build() {
   export DENO_SQLITE_PATH=/usr/lib/libsqlite3.so
   export DENO_DIR="$srcdir/deno-cache"
 
-  deno install --node-modules-dir
-
   cat > src/lib/shared/build.ts <<EOF
 export type Channel = 'stable' | 'develop' | 'dev';
 
@@ -55,7 +54,8 @@ export const build: BuildInfo = {
 };
 EOF
 
-  #deno task build
+  deno install --node-modules-dir
+
   deno run -A npm:vite build
   deno eval "import { hash } from '@felix/bcrypt'; await hash('profilarr')"
   deno compile \

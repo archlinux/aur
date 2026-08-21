@@ -1,12 +1,13 @@
 pkgbase = profilarr
 	pkgdesc = Configuration Management Platform for Radarr/Sonarr
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dictionarry-Hub/profilarr
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = deno
 	depends = sqlite
+	options = !strip
 	backup = etc/profilarr/profilarr.env
 	source = profilarr-2.2.0.tar.gz::https://github.com/Dictionarry-Hub/profilarr/archive/refs/tags/v2.2.0.tar.gz
 	source = profilarr.env
