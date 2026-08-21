@@ -26,13 +26,8 @@ prepare() {
     patch -p1 < "$srcdir/build.patch"
     echo "$pkgver" > Version
     echo "" > .no-updater
-    # WORKAROUND: Upstream lock file is out of sync.
-    # Prefer package.json until it gets fixed upstream.
-    # https://github.com/vrcx-team/VRCX/issues/1640
+    
     npm ci --loglevel=error
-	
-    # npm install --package-lock-only --no-fund
-    # npm ci --loglevel=error
 }
 
 build() {
