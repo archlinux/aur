@@ -1,7 +1,7 @@
 # Maintainer: Uncore <contactuncor3@gmail.com>
 pkgname=idescriptor-git
 _pkgname=iDescriptor
-pkgver=r1246.6913e98
+pkgver=r1327.28118cc
 pkgrel=1
 pkgdesc="The iDevice management tool — free, open-source, and cross-platform."
 arch=('x86_64')
@@ -40,7 +40,7 @@ depends=(
 )
 
 optdepends=(
-    'ifuse: use libimobiledevice `ifuse` instead of Rust implementation'
+    'ifuse: use `ifuse` provided by libimobiledevice instead of Rust implementation'
 )
 
 makedepends=(
@@ -76,7 +76,7 @@ build() {
 package() {
   cd "$_pkgname"
 
-  install -Dm755 target/release/idescriptor "$pkgdir/usr/bin/iDescriptor"
+  install -Dm755 target/release/idescriptor "$pkgdir/usr/bin/idescriptor"
   install -Dm644 io.github.idescriptor.iDescriptor.desktop \
     "$pkgdir/usr/share/applications/io.github.idescriptor.iDescriptor.desktop"
 
