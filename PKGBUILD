@@ -2,7 +2,7 @@
 
 pkgdesc='A terminal user interface that extracts and displays tasks from notes files'
 pkgname=taskfinder
-pkgver=2.17.0
+pkgver=2.18.0
 pkgrel=1
 url="https://codeberg.org/kdwarn/$pkgname"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(gcc-libs
          glibc)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('11035f754fbdd75e7473236cd6f1789ceacd672f45fd709803a14251b155aef3')
+sha256sums=('7bd77d7c921b82d1937f7b81117a03d4acce20f2a178cece7155846cb217a610')
 
 prepare() {
 	cd "$pkgname"
