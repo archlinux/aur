@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 # Contributor: Maciej Dems <macdems@gmail.com>
 pkgname=unmined-gui
-pkgver=0.20.1.20260820
+pkgver=0.20.2.20260821
 pkgrel=1
 pkgdesc="An easy to use and fast Minecraft world viewer and mapper tool"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('LicenseRef-unmined')
 # Upstream bundle fails to launch if stripped.
 options=('!strip' '!debug')
 source=("unmined-gui-dev_amd64.deb::https://unmined.net/download/unmined-gui-linuxdeb-x64-dev/")
-sha256sums=('4d1d2938e8fa5f353b61baf501169c1ac777e5c11dfa7dd56ff33734d117bdfd')
+sha256sums=('17a0ba4f810398bd8f9503614051e420217e84b0bbf48c964db2bcc0f0dc6c3d')
 
 latestver() {
     local tmp ver ctrl_size tmstv stamp
