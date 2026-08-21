@@ -1,7 +1,7 @@
 # Maintainer: milk on freenode
 _pkgname=we-get
 pkgname=${_pkgname}-git
-pkgver=1.1.0.r13.gaeec72f
+pkgver=1.1.0.r102.gf74a5f5
 pkgrel=1
 pkgdesc="Command-line tool for searching torrents."
 #epoch=0
@@ -10,7 +10,7 @@ url="https://github.com/rachmadaniHaryono/we-get"
 license=('MIT')
 groups=()
 depends=('python-prompt_toolkit' 'python-docopt' 'python-colorama')
-makedepends=()
+makedepends=('git' 'python-pip')
 optdepends=()
 provides=()
 conflicts=()
@@ -42,5 +42,5 @@ prepare()
 
 package() {
   cd ${_pkgname}
-  python setup.py install --root="${pkgdir}"
+  pip install --root="${pkgdir}" --no-deps .
 }

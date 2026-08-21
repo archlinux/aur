@@ -1,11 +1,13 @@
 pkgbase = we-get-git
 	pkgdesc = Command-line tool for searching torrents.
-	pkgver = 1.1.0.r13.gaeec72f
+	pkgver = 1.1.0.r102.gf74a5f5
 	pkgrel = 1
 	url = https://github.com/rachmadaniHaryono/we-get
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = git
+	makedepends = python-pip
 	depends = python-prompt_toolkit
 	depends = python-docopt
 	depends = python-colorama
@@ -13,4 +15,3 @@ pkgbase = we-get-git
 	md5sums = SKIP
 
 pkgname = we-get-git
-
