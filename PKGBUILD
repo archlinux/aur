@@ -6,7 +6,7 @@ _appname=DashBeam
 pkgname=${_appname,,}-bin
 pkgdesc="Send files and folders anywhere in the world without storing in cloud"
 
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.deb")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.deb")
-sha256sums=('d0c6c2f988a089a8c1d2cd803aecf1bf00ddbab06d693066312d312512a6dbbb'
+sha256sums=('828ca9bf2006dfb57cbf89e702570924d31b2dff20e4f9317e63e6647e744d1b'
             '4df3c306dddaaf4baffdff5ca820cc679ac8cd6dc263c6a74517783e42fa7a3b')
-sha256sums_x86_64=('2004e11d798110441610aa32b540bca9b64ea6aebc1f59d55da31a18f2505da1')
-sha256sums_aarch64=('adc5fdead5dac1c3953b1e091a60454de71ccc88123e45b7bb6cde6d464a58bf')
+sha256sums_x86_64=('cbcc3eaa19b1fae621102025548ffe4f78aa91755b97ce14100dd07cdb4ee961')
+sha256sums_aarch64=('277b8358b55c810999884871505256185c60d1787c77ba7a6a1230ce078fc91c')
 
 
 package() {
