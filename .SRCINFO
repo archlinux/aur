@@ -1,0 +1,19 @@
+pkgbase = xiba
+	pkgdesc = A Baldur's Gate 3 mod manager for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/saghm/xiba-mod-manager
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	depends = gcc-libs
+	optdepends = libx11: X11 display support
+	optdepends = libxkbcommon-x11: X11 keyboard support
+	optdepends = libxkbcommon: Wayland keyboard support
+	optdepends = wayland: native Wayland display support
+	optdepends = vulkan-driver: Vulkan rendering backend
+	optdepends = opengl-driver: OpenGL rendering fallback
+	source = xiba-0.1.0.tar.gz::https://gitlab.com/saghm/xiba-mod-manager/-/archive/v0.1.0/xiba-mod-manager-v0.1.0.tar.gz
+	sha512sums = ad9a0770b1913d12d2e6e177dccee4f8b994386f55c3c6dba4f6c027e2cbe448791c7a7b233a94ca516ecbd4fb432bce1439963d5caabd97ac052652cae9c7a3
+
+pkgname = xiba
