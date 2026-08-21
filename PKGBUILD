@@ -1,6 +1,6 @@
 # Maintainer: Gaurav Kumar Yadav <gaurav712@protonmail.com>
 
-pkgname=transmission-tui-git
+pkgname=transmission-tui
 _pkgname=transmission-tui
 pkgver=r2.a297118
 pkgrel=1
