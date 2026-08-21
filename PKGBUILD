@@ -1,8 +1,21 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
+# NOTE: pkgver/pkgrel and the sha256sums below are PLACEHOLDERS.
+# `.github/workflows/release.yml` copies this file at publish time and
+# rewrites all of them from the release tag before pushing to the AUR:
+#
+#     sed -i -e "s/^pkgver=.*/pkgver=${version}/" \
+#            -e "s/^pkgrel=.*/pkgrel=1/" ...
+#
+# So the value here never reaches a user, and bumping it by hand fixes
+# nothing while going stale again at the next release. Check the published
+# package instead:
+#
+#     curl -s 'https://aur.archlinux.org/rpc/v5/info?arg[]=ai-memory'
+#
 pkgname=ai-memory-bin
 _pkgname=ai-memory
-pkgver=1.29.0
+pkgver=1.30.0
 pkgrel=1
 pkgdesc="Local-first long-term memory MCP server for AI coding agents (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -19,9 +32,9 @@ install=ai-memory.install
 options=('!strip' '!debug')
 
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
-sha256sums_x86_64=('c666fa4ec778673ae995cd8aa4489b6184c7a3dc220a2c4e1c18792eda1321f1')
+sha256sums_x86_64=('5093d31aa15e971653ab5ce48b65ac3ad10bf5a9e5df603cd2f003cd18cbabc1')
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz")
-sha256sums_aarch64=('828cb63f697f8b773d4e6c41c38d0d850310afed04f37479bb48e3a11969d689')
+sha256sums_aarch64=('c10e0d9ad6be2b9fbbcce6e3581619ed2122eb53e94bb01863b62cb0c7945311')
 
 package() {
     install -Dm0755 ai-memory "$pkgdir/usr/bin/ai-memory"
