@@ -3,4 +3,9 @@ src/
 pkg/
 *.tar.*
 *.sig
-discord-dynamic-status-hyprland
+
+# Source files downloaded by makepkg
+ddsh
+default-config.json
+discord-monitor-hyprland.service
+discord-monitor.sh
