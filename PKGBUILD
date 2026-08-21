@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=timetable
-pkgver=4.2.1
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="GTK4 + LibAdwaita client for WebUntis"
 arch=('any')
@@ -16,7 +16,7 @@ makedepends=('meson' 'ninja' 'glib2-devel' 'gettext')
 provides=('untis')
 conflicts=('untis')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('68ff7ef34047c51c74610f3b4d145a0ce6ce11287f6aa5ed38766d11279957cd')
+sha256sums=('76b1f132ed2ec13ad8f81d980930ab1148b24bdc02f1a1de15f20a64b9d2bf2e')
 
 prepare() {
   # Upstream does not maintain the version in meson.build; use the release tag
