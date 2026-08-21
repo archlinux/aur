@@ -4,8 +4,8 @@
 ![AUR votes](https://img.shields.io/aur/votes/opa-regal)
 
 This repository contains build files to build the Arch Linux package `opa-regal`. Instead of building the package
-yourself, it can also be obtained from the following private repository. More detailed are described
-[here](#obtaining-pre-built-packages-from-a-repository).
+yourself, it can also be obtained from the following private repository. The section [*Obtaining pre-built
+packages from a repository*](#obtaining-pre-built-packages-from-a-repository) describes all necessary steps.
 
 ## Build
 
@@ -51,7 +51,9 @@ EOF
 sudo pacman-key --keyserver hkps://keys.openpgp.org --recv-keys 9B146D11A9ED6CA7E279EB1A852BCC170D81A982
 
 # Extend existing pacman configuration of the repository 'volker.raschek'
-sudo echo "Include = /etc/pacman.d/repos/*.conf" >> /etc/pacman.conf
+sudo tee -a /etc/pacman.conf > /dev/null <<EOF
+Include = /etc/pacman.d/repos/*.conf
+EOF
 
 # Update pacman cache
 sudo pacman --sync --refresh
