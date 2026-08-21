@@ -1,7 +1,7 @@
 # Maintainer: Kaz Walker <me@kaz.codes>
 pkgname=qgroundcontrol-bin
-pkgver=5.1.0
-pkgrel=2
+pkgver=5.1.3
+pkgrel=1
 pkgdesc='Cross-platform ground control station for MAVLink drones (extracted from official AppImage)'
 arch=('x86_64')
 url='https://github.com/mavlink/qgroundcontrol'
@@ -15,7 +15,7 @@ install="$pkgname.install"
 
 _appimage="QGroundControl-${pkgver}-x86_64.AppImage"
 source=("${_appimage}::${url}/releases/download/v${pkgver}/QGroundControl-x86_64.AppImage")
-sha256sums=('6844d46dadc7228a164662f66be9e02bc763b6d993f574083a265b26f03c307f')
+sha256sums=('ca0822ef5c502824bcc622ef29e8a8ca265261becceea7e2754e62abaaeabbfc')
 
 prepare() {
     chmod +x "${_appimage}"
