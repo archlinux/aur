@@ -109,6 +109,7 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     local _rclone_dir="${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/bin/rclone"
     if [[ -d "${_rclone_dir}" ]]; then
         rm -f "${_rclone_dir}/rclone-linux-amd64" "${_rclone_dir}/rclone-linux-arm64"
