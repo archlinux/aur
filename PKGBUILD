@@ -4,7 +4,7 @@ BASE_NAME=amalthea-gdc
 DESCR="Small general-purpose library for the D programming language"
 makedepends=("bash" "chrpath" "findutils" "glib2" "gcc-d")
 depends=("dialog" "pkg-config" "glib2" "gcc-d")
-pkgver=1.21.0
+pkgver=1.21.1
 pkgrel=1
 license=("BSL-1.0 or LGPL-3+")
 
@@ -19,7 +19,7 @@ arch=("x86_64")
 url="https://gitlab.com/os-18/${PROJECT}"
 TARBALL=${BASE_NAME}-${pkgver}.tar.gz
 source=("$TARBALL::$url/-/archive/v$pkgver/${PROJECT}-v${pkgver}.tar.gz")
-sha256sums=("9e0bd774ad0342de7cd7f64e68ac12692030df2f47506068c08b9618b05c800f")
+sha256sums=("bd3faa4522b7a641c710b476a4c264e5be8e7b1ab58c57e3ca849dab2536f852")
 
 build() {
     cd "${PROJECT}-v${pkgver}"
