@@ -6,9 +6,9 @@ pkgbase = mpv-quack
 	install = quack.install
 	arch = any
 	license = GPL3
+	makedepends = git
 	depends = mpv
 	source = git+https://github.com/CounterPillow/mpv-quack
 	md5sums = SKIP
 
 pkgname = mpv-quack
-
