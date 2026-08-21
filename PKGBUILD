@@ -46,6 +46,7 @@ package() {
 
   /usr/bin/find ${pkgdir} -name '.packlist' -delete
   /usr/bin/find ${pkgdir} -name '*.pod' -delete
+  /usr/bin/find ${pkgdir} -type d -empty -delete
 
   find ${pkgdir} -type f -executable -name ipdiscover -exec strip --strip-all {} \;
 
