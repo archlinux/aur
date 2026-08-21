@@ -3,7 +3,7 @@
 pkgname=linyaps-rust
 _tagname=1.14.0-rust.1
 pkgver=${_tagname//-/+}
-pkgrel=4
+pkgrel=6
 pkgdesc="Linyaps package manager implemented in Rust A command-compatible Rust implementation of the Linyaps package manager"
 arch=($CARCH)
 url="https://github.com/guanzi008/linyaps-rust"
@@ -14,13 +14,22 @@ replaces=()
 depends=(
     sh
     libgcc_s.so
+    desktop-file-utils
+    erofs-utils
+    erofsfuse
+    fuse-overlayfs
     hicolor-icon-theme
+    polkit
+    shared-mime-info
     linyaps-box-rust
 )
 makedepends=(
     git
     rust
     pkgconf
+)
+checkdepends=(
+    dbus
 )
 optdepends=()
 backup=()
@@ -46,43 +55,26 @@ build() {
 
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    #     cargo build --release --all-features
-    # CFLAGS+=" -ffat-lto-objects"
-    cargo build \
-        --offline \
-        --locked \
-        --release
+    cargo build --offline --locked --release --workspace --exclude ll-init
+    cargo rustc --offline --locked --release --package ll-init -- -C target-feature=+crt-static
 }
 
 # check() {
 #     cd "${srcdir}/${pkgname}/"
-#
+
+#     export CARGO_TARGET_DIR=target
 #     export RUSTUP_TOOLCHAIN=stable
-#     cargo test --all-features
+#     dbus-run-session -- cargo test --offline --locked --workspace
 # }
 
 package() {
     cd "${srcdir}/${pkgname}/"
+    ./target/release/ll-system-helper install \
+        --destdir "${pkgdir}" \
+        --prefix /usr \
+        --binary-dir target/release
 
-    export RUSTUP_TOOLCHAIN=stable
-    #     cargo install --no-track --all-features --root "$pkgdir/usr/" --path .
-    # find target/release \
-    #     -maxdepth 1 \
-    #     -executable \
-    #     -type f \
-    #     -exec install -vDm0755 -t "$pkgdir/usr/bin/" {} +
-    
-    install -vDm0755 target/release/ll-cli -t $pkgdir/usr/bin/
-    install -vDm0755 target/release/llpkg -t $pkgdir/usr/bin/
-    install -vDm0755 target/release/ll-init -t $pkgdir/usr/libexec/linglong/
-    install -vDm0755 target/release/ll-driver-detect -t $pkgdir/usr/libexec/linglong/
-    install -vDm0755 target/release/ll-package-manager -t $pkgdir/usr/libexec/linglong/
-    install -vDm0755 target/release/ll-system-helper -t $pkgdir/usr/libexec/linglong/
-    install -vDm0644 packaging/debian/linglong.conf -t ${pkgdir}/usr/lib/sysctl.d/
-    # install -vDm0644 debian/linglong.conf -t ${pkgdir}/usr/lib/sysctl.d/
     # install -vDm0644 debian/*.1 -t ${pkgdir}/usr/share/man/man1/
-    cp -rv misc/etc ${pkgdir}/
-    cp -rv misc/{lib,share} ${pkgdir}/usr
     install -vDm0644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
     install -vDm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     cp -rv LICENSES "${pkgdir}/usr/share/licenses/${pkgname}/"
