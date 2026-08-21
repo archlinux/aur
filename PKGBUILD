@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Calo <emanuele.lele.calo@gmail.com>
 pkgname=riso-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Modular ricing framework: renders themes into the files a desktop reads (prebuilt binary)"
 arch=('x86_64')
@@ -17,11 +17,11 @@ source=("riso-v$pkgver-x86_64-linux.tar.gz::$url/releases/download/v$pkgver/riso
         "LICENSE-$pkgver::https://raw.githubusercontent.com/eldios/riso/v$pkgver/LICENSE"
         "NOTICE-$pkgver::https://raw.githubusercontent.com/eldios/riso/v$pkgver/NOTICE"
         "README-$pkgver.md::https://raw.githubusercontent.com/eldios/riso/v$pkgver/README.md")
-sha256sums=('926b6b223c17c38fb07a8372b201f3da7617aa0dd628b57c136f6bea2311b966'
-            '0aacbc8ca7b86a6bd24af757f031868f8020e3fa278b40d9269630fe832cb509'
+sha256sums=('2ce7064cf2ed6ebb7402c373687f6031ea58121b591d114ae92c622e7004cacb'
+            '016ec8bf6996cb3be6b322633b6fec0473a0351cd39407e090ac2d0a2280d58d'
             '331b3d7b3a298f2799578f09fafc3563a9d43d59b4771f4ed0cd7fba7a7534db'
             '74f2cb0bc2de3036dc9099d8f45ea855eae4173c311bdcbd0f6a2a162d6cab1c'
-            '39a9d5ba51c5d37a07257fa1fc06088bcaa494cde0047a78e99897c1ca4a6311')
+            '75029b60d924ec05603d646301c5699d522f7aabd8f637e8c4ec823e8307040f')
 
 package() {
   install -Dm755 riso "$pkgdir/usr/bin/riso"
