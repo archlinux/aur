@@ -1,14 +1,14 @@
 # Maintainer: pounceandmiss <pounceandmiss@proton.me>
 
 pkgname=anotherim-desktop-git
-pkgver=0.5.104.r0.g466dfcec
+pkgver=0.5.127.r17.gbb803bf2
 pkgrel=1
 pkgdesc="AnotherIM Desktop - a modern XMPP/Jabber client, fork of Dino+"
 arch=('x86_64')
 url="https://dev.narayana.im/anotherim/anotherim-desktop"
 license=('GPL-3.0-or-later')
 depends=('glib2' 'glib-networking' 'gtk4' 'gpgme'
-         'libgee' 'libgcrypt' 'libomemo-c' 'libsoup3' 'sqlite' 'qrencode'
+         'libgee' 'libgcrypt' 'libomemo-c' 'curl' 'sqlcipher' 'qrencode'
          'gst-plugins-base'
          'gst-plugins-good' 'gst-plugin-gtk'
          'libnice' 'libsrtp' 'libadwaita' 'libcanberra')
@@ -33,11 +33,18 @@ build() {
         -DDISABLED_PLUGINS="phone-ringer" \
         -DNO_DEBUG=yes \
         -DPLUGIN_RTP_WEBRTC_AUDIO_PROCESSING=no \
-        -DUSE_SOUP3=yes \
+        -DBUILD_TESTS=ON \
         -Wno-dev
     cmake --build build
 }
 
+check() {
+    cd "$pkgname"
+    build/xmpp-vala-test
+    build/libdino-test
+    build/omemo-test
+    build/http-files-test
+}
 
 package() {
     cd "$pkgname"
