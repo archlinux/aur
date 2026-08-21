@@ -5,6 +5,12 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.14-5] - 2026-08-21
+
+### Packaging
+
+- Drop the WiFi blobs from the RPM `%files` list. v2.14-4 stopped installing them but the spec still required them, so `rpmbuild` failed on the missing files and that release shipped a DEB with no RPM. The Arch build does not read the spec, so a local `aurgen` could not catch it; `make rpm` does and is the check to run when the installed file set changes
+
 ## [2.14-4] - 2026-08-21
 
 ### Packaging
