@@ -1,6 +1,6 @@
 pkgbase = codanna-bin
 	pkgdesc = X-ray vision for your agent - Code assistant with understanding of functions, relationships, and implementations
-	pkgver = 0.13.2
+	pkgver = 0.13.3
 	pkgrel = 1
 	url = https://github.com/bartolli/codanna
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = codanna-bin
 	depends = zlib
 	provides = codanna
 	conflicts = codanna
-	source = README-0.13.2.md::https://raw.githubusercontent.com/bartolli/codanna/v0.13.2/README.md
+	source = README-0.13.3.md::https://raw.githubusercontent.com/bartolli/codanna/v0.13.3/README.md
 	sha256sums = 8f3f4b4f2fdb0f15efa651e6d51560d6425a63ffdd3d5b0bc219a9f055dabdba
-	source_x86_64 = codanna-x86_64-0.13.2.txz::https://github.com/bartolli/codanna/releases/download/v0.13.2/codanna-0.13.2-linux-x64.tar.xz
-	sha256sums_x86_64 = 1fa5342b160e40a9b47ce57bec3a3f591c5d6b3e67acd4a975bbb308c454b430
+	source_x86_64 = codanna-x86_64-0.13.3.txz::https://github.com/bartolli/codanna/releases/download/v0.13.3/codanna-0.13.3-linux-x64.tar.xz
+	sha256sums_x86_64 = 69451067c13592a2924e1f75d84e8a515fb6db73d920eb31fcfad3bfb6a7b907
 
 pkgname = codanna-bin
