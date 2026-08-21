@@ -2,7 +2,7 @@
 
 pkgname=bedrockboot
 pkgver=2.1.10.97
-pkgrel=1
+pkgrel=2
 pkgdesc="Industrial Grade Minecraft Bedrock Edition Launcher for Windows & Linux"
 arch=('x86_64')
 url="https://github.com/Round-Studio/BedrockBoot"

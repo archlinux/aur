@@ -1,7 +1,7 @@
 pkgbase = bedrockboot
 	pkgdesc = Industrial Grade Minecraft Bedrock Edition Launcher for Windows & Linux
 	pkgver = 2.1.10.97
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Round-Studio/BedrockBoot
 	arch = x86_64
 	license = GPL-3.0-only
