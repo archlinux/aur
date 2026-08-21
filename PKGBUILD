@@ -1,8 +1,8 @@
 # Maintainer: Basem Aljedai <baljedai@gmail.com>
 pkgname=castr
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Cast your Hyprland screen to an AirPlay receiver: mirror or extend, from a menu or the CLI"
+pkgdesc="Cast your Hyprland screen to an Apple TV or a Chromecast: mirror or extend, from a menu or the CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mrCode/castr"
 license=('MIT')
@@ -12,11 +12,25 @@ license=('MIT')
 # since boot and answers instantly while a fresh browser takes seconds.
 depends=('avahi')
 
-# doubletake does the actual AirPlay work. It is an optdepend rather than a
-# depend so `castr list` and the menu still work while you install it -- and
-# because it lives in the AUR, which a depend cannot pull in for you.
+# doubletake does the actual AirPlay work, and only that: Chromecast casting is
+# castr's own code and needs none of it. It is an optdepend rather than a depend
+# so `castr list` and the menu still work while you install it -- and because it
+# lives in the AUR, which a depend cannot pull in for you.
+#
+# gstreamer is what captures and encodes for Chromecast. Its plugin packages are
+# optdepends for the same reason the encoder is chosen at runtime: a machine with
+# Intel graphics needs a different one from a machine with NVIDIA, and requiring
+# both would install a video stack nobody asked for on a laptop that only ever
+# casts to an Apple TV.
 optdepends=(
-  'doubletake-git: AirPlay streaming (REQUIRED to cast; 0.4.0 cannot capture on Hyprland)'
+  'doubletake-git: AirPlay streaming (REQUIRED for AirPlay; 0.4.0 cannot capture on Hyprland)'
+  'gst-plugin-pipewire: screen capture for Chromecast (REQUIRED for Chromecast)'
+  'gst-plugins-base: scaling and rate control (REQUIRED for Chromecast)'
+  'gst-plugins-good: AAC parsing (REQUIRED for Chromecast)'
+  'gst-plugins-bad: HLS output and H.264 parsing (REQUIRED for Chromecast)'
+  'gst-libav: the silent AAC track a receiver refuses to play without (REQUIRED for Chromecast)'
+  'gst-plugin-va: hardware H.264 encoding on Intel and AMD'
+  'gst-plugins-ugly: x264, the software encoding fallback'
   'hyprland: required in practice — castr drives its outputs and screen-share portal'
   'libnotify: desktop notifications'
   'quickshell: bar widget on Omarchy Quarto and later (see castr-indicator)'
@@ -31,7 +45,7 @@ options=('!debug')
 install="${pkgname}.install"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fd99250e304dfff0e596d2fe94399061297507423cc1812d1b1f2240cabd3e51')
+sha256sums=('2c293ba5e69866a5c36016a2f3097887b9a92cdb6a84e70049dd094269feba8f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

@@ -3,14 +3,28 @@ post_install() {
 
 castr is installed. Two things are worth knowing:
 
-  1. Casting needs doubletake, which is NOT pulled in automatically:
+  1. Neither backend's dependencies are pulled in automatically.
+
+     For an Apple TV:
        yay -S doubletake-git
      Version 0.4.0 cannot capture on Hyprland; the git package can.
 
-  2. Your firewall must let the receiver connect BACK to this machine:
-       sudo ufw allow 5353/udp                 # mDNS discovery
+     For a Chromecast:
+       sudo pacman -S gst-plugin-pipewire gst-plugins-base gst-plugins-good \
+                      gst-plugins-bad gst-libav gst-plugin-va
+
+  2. Your firewall must let the receiver reach this machine. Both backends
+     need mDNS; the ports differ because the receivers connect differently.
+
+       sudo ufw allow 5353/udp                 # discovery, both
+
+     An Apple TV connects back into:
        sudo ufw allow 60000:60010/tcp
        sudo ufw allow 60000:60010/udp
+
+     A Chromecast fetches the stream FROM this machine, so it needs the one
+     port castr serves on -- and only from your own network:
+       sudo ufw allow from 192.168.0.0/16 to any port 8010 proto tcp
 
 Then run `castr menu`, or bind it to a key. The bar indicator lives in
 /usr/share/castr/ -- Quickshell for Omarchy Quarto and later, waybar for
