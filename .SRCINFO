@@ -1,7 +1,7 @@
 pkgbase = python-trame-client
 	pkgdesc = Internal client of trame
 	pkgver = 3.13.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kitware/trame-client
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-trame-client
 	checkdepends = python-playwright
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-setuptools
+	makedepends = python-hatchling
 	makedepends = nodejs
 	makedepends = npm
 	depends = python-trame-common
