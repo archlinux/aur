@@ -1,6 +1,6 @@
 pkgbase = omaquake
 	pkgdesc = Quake 1 rendered as characters in a terminal
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/rsd/omaquake
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = omaquake
 	makedepends = chafa
 	makedepends = libcaca
 	makedepends = alsa-lib
-	source = omaquake::git+https://github.com/rsd/omaquake.git#tag=v0.1.1
+	source = omaquake::git+https://github.com/rsd/omaquake.git#tag=v0.1.2
 	source = tyrquake::git+https://github.com/libretro/tyrquake.git
 	source = https://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake/quake106.zip
 	sha256sums = SKIP

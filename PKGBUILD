@@ -2,7 +2,7 @@
 
 pkgbase=omaquake
 pkgname=('omaquake' 'omaquake-shareware-data')
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Quake 1 rendered as characters in a terminal"
 arch=('x86_64')
@@ -25,7 +25,7 @@ makedepends=('git' 'make' 'gcc' 'pkgconf' 'libarchive' 'chafa' 'libcaca' 'alsa-l
 # quake106.zip is the 1996 shareware release: freely redistributable, and the
 # only pak0.pak that may be handed out.  It is fetched, never shipped in this
 # repo.  Mirror: https://www.gamers.org/pub/idgames/idstuff/quake/quake106.zip
-source=("$pkgbase::git+https://github.com/rsd/omaquake.git#tag=v0.1.1"
+source=("$pkgbase::git+https://github.com/rsd/omaquake.git#tag=v0.1.2"
         "tyrquake::git+https://github.com/libretro/tyrquake.git"
         "https://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake/quake106.zip")
 sha256sums=('SKIP'
@@ -60,8 +60,9 @@ build() {
 
 check() {
   cd "$srcdir/$pkgbase"
-  # Renders one frame of the test pattern; needs no game data.
-  # TODO: needs a pty, so this must run under `script` or be dropped.
+  # Only proves the binary links and starts: --help prints usage and exits
+  # before oq_term_init(), so it needs neither game data nor a tty.
+  # TODO: a real render check needs a pty, so it must run under `script`.
   ./build/omaquake --help >/dev/null
 }
 
