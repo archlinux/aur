@@ -1,5 +1,5 @@
 pkgname=panrun
-pkgver=r14.2e08db5
+pkgver=r16.00cea51
 pkgrel=1
 pkgdesc='Script that looks at the YAML metadata in a markdown file and runs pandoc for you.'
 arch=('i686' 'x86_64')
