@@ -1,0 +1,13 @@
+post_install() {
+    mktexlsr
+    updmap-sys --enable Map=fontawesome7.map 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    updmap-sys --disable Map=fontawesome7.map 2>/dev/null || true
+    mktexlsr
+}

@@ -1,0 +1,17 @@
+pkgbase = texlive-fontawesome7
+	pkgdesc = Font Awesome 7 with LaTeX support (CTAN fontawesome7 package)
+	pkgver = 7.3.1
+	pkgrel = 1
+	url = https://ctan.org/pkg/fontawesome7
+	install = texlive-fontawesome7.install
+	arch = any
+	license = LPPL-1.3c
+	license = OFL-1.1
+	depends = texlive-basic
+	optdepends = texlive-xetex: XeLaTeX/LuaLaTeX support for Font Awesome 7 Pro
+	provides = texlive-fontawesome7
+	conflicts = texlive-fontsextra
+	source = https://mirrors.ctan.org/fonts/fontawesome7.zip
+	sha256sums = 0fce3c7ed976c3c182c55b08b3bb603e8313fa97db583b0a7236bb7f2177c50b
+
+pkgname = texlive-fontawesome7

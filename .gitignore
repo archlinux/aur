@@ -1,0 +1,8 @@
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.tar.gz
+*.zip
+src/
+pkg/
+fontawesome7/
+*.log
