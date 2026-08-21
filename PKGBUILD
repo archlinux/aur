@@ -1,15 +1,17 @@
 # Maintainer: mzwing <mzwing@mzwing.eu.org>
 
 pkgname=hfd-git
-pkgver=r30.258f20e
+pkgver=r42.dcc19a0
 pkgrel=1
-pkgdesc='CLI-Tool for download Huggingface models and datasets with aria2/wget+git'
+pkgdesc='CLI-Tool for download Huggingface models and datasets with curl/aria2/wget'
 arch=('any')
 url='https://gist.github.com/padeoe/697678ab8e528b85a2a7bddafea1fa4f'
 license=('unknown')
-depends=('bash' 'git' 'git-lfs')
-optdepends=('aria2: Optional download tool for hfd. At least one optional download tool must be installed.'
-            'wget: Optional download tool for hfd. At least one optional download tool must be installed.')
+depends=('bash' 'curl')
+makedepends=('git')
+optdepends=('aria2: default download tool (4 threads x 5 concurrent, use --tool wget to use wget instead)'
+            'wget: alternative download tool (--tool wget)'
+            'jq: faster JSON parsing for file-list retrieval (fallback to grep/awk)')
 provides=('hfd')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
