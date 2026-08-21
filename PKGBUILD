@@ -2,12 +2,12 @@
 
 pkgname=vercel-node
 _pkgname=vercel
-pkgver=59.1.4
+pkgver=59.3.0
 pkgrel=1
 pkgdesc='Command-line interface for Vercel'
-# x86_64 only: the npm tree pulls native ELF helpers (esbuild, oxc-transform,
-# rolldown, sandbox/pty-server) that are platform-specific. Add other arches
-# only after verifying that every native helper has a matching prebuilt.
+# x86_64 only: the npm tree pulls platform-specific native payloads for the
+# Vercel CLI, esbuild, oxc-transform, and rolldown. Add other architectures
+# only after verifying that every required helper has a matching prebuilt.
 arch=('x86_64')
 url='https://vercel.com'
 license=('Apache-2.0')
@@ -16,9 +16,10 @@ makedepends=('npm')
 optdepends=('python: local runtime emulation for @vercel/python and @vercel/fun')
 provides=('vercel')
 conflicts=('vercel')
+options=('!strip')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('38e5e9a89b68b5835a0edcec69661b7f1500668be55e3ea8e61e829ae13b0d5a')
+sha256sums=('47f19d656b69800cdd430bdc097d86b714f54dc372ce18f1518ebeab69815325')
 
 package() {
     # Install the published tarball globally into $pkgdir. npm fetches the
