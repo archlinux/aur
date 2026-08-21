@@ -1,10 +1,8 @@
-# Contributor: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: Daniel Bermond <dbermond@archlinux.org>
-# Contributor: Thomas Schneider <maxmusterm@gmail.com>
+# Maintainer: Dae Euhwa <daedaevibin@ik.me>
 
 _pkgname=svt-av1
 pkgname=lib32-svt-av1
-pkgver=4.0.1
+pkgver=4.2.0
 pkgrel=1
 pkgdesc='Scalable Video Technology AV1 encoder and decoder. (32-bits)'
 arch=('x86_64')
@@ -26,7 +24,7 @@ makedepends=(
 )
 provides=('libSvtAv1Enc.so')
 source=("git+https://gitlab.com/AOMediaCodec/SVT-AV1.git#tag=v${pkgver}")
-b2sums=('SKIP')
+b2sums=('b217f854d8e97323bdc4327309a485c6821421e43d077be41ced99b0e4d2e4c46d4593a919afb0db8e89e35e23544bac22fe751e78996a62ef3d1ef8895509de')
 
 pkgver() {
   cd SVT-AV1
