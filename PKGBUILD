@@ -61,7 +61,6 @@ build() {
 	./"${_appalias}" --completions fish > "completions/${_appalias}.fish"
 }
 
-
 package() {
 	cd "${srcdir}/${_appname}-${pkgver}-${_CARCH}/" || exit
 
