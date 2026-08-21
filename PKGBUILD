@@ -1,8 +1,10 @@
 # Maintainer: Arjix <me@arjix.dev>
 # Maintainer: cilgin <cilgincc@outlook.com>
 
+# shellcheck disable=SC2034
+# shellcheck disable=SC2154
 pkgname=vicinae-git
-pkgver=0.25.0.r17.g194b398
+pkgver=0.26.3.r2.gbe7cdf0
 pkgrel=1
 pkgdesc="A focused launcher for your desktop — native, fast, extensible"
 arch=('x86_64' 'aarch64')
@@ -27,6 +29,7 @@ makedepends=(
   'wayland-protocols'
   'qt6-shadertools'
   'qt6-tools'
+  'cmark-gfm'
 )
 install=vicinae-git.install
 provides=("vicinae")
@@ -47,7 +50,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-git}"
+  cd "${pkgname%-git}" || exit
   DESTDIR="$pkgdir" cmake --install build
 
   # Pacman hook
