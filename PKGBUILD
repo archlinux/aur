@@ -7,7 +7,7 @@ _pkgname=todoist
 
 pkgname="${_pkgname}"-appimage
 pkgver=9.30.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The to-do list to organize work & life."
 arch=('x86_64')
 url="https://todoist.com/"
@@ -25,9 +25,32 @@ prepare() {
 }
 
 build() {
-  # Adjust .desktop so it will work outside of AppImage container
-  sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname} %u|" \
-    "squashfs-root/${_pkgname}.desktop"
+  local _desktop="squashfs-root/${_pkgname}.desktop"
+
+  # Adjust .desktop so it will work outside of AppImage container.
+  # Upstream's Exec already ends in "--no-sandbox %U", so the replacement must
+  # not add a field code of its own: the spec allows at most one per Exec line
+  # and GLib (uwsm, gio launch) rejects the entry outright when there are two.
+  sed -i -E "s|^Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" "${_desktop}"
+
+  # Same environment for the desktop action, and an absolute path instead of $PATH
+  sed -i -E "s|^Exec=${_pkgname} |Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname} |" "${_desktop}"
+
+  # Upstream ships a [Desktop Action new-window] group without declaring it
+  grep -q '^Actions=' "${_desktop}" || \
+    sed -i -E "/^\[Desktop Entry\]/a Actions=new-window;" "${_desktop}"
+
+  # Upstream lists image/jpeg twice
+  sed -i -E "s|image/jpeg;image/jpeg;|image/jpeg;|" "${_desktop}"
+
+  # Guard: fail the build if the main Exec ever ends up with >1 field code again
+  local _codes
+  _codes=$(grep -m1 '^Exec=env' "${_desktop}" | grep -o -- '%[fFuU]' | wc -l)
+  if (( _codes > 1 )); then
+    echo "error: Exec line has ${_codes} field codes, expected at most 1" >&2
+    return 1
+  fi
+
   # Fix permissions; .AppImage permissions are 700 for all directories
   chmod -R a-x+rX squashfs-root/usr
 }
