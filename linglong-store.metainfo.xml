@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
   <id>com.dongpl.linglong-store.v2</id>
-  <name>玲珑应用商店社区版</name>
-  <summary>Linglong Store Community Edition</summary>
+  <name>Linyaps Store Community Edition</name>
+  <name xml:lang="ar">متجر تطبيقات Linglong (الإصدار المجتمعي)</name>
+  <name xml:lang="en">Linyaps Store Community Edition</name>
+  <name xml:lang="es">Tienda de Aplicaciones Linyaps Edición Comunitaria</name>
+  <name xml:lang="ru">Магазин Linyaps — версия сообщества</name>
+  <name xml:lang="zh-CN">玲珑应用商店社区版</name>
+  <summary>Browse, install, and manage Linyaps applications</summary>
+  <summary xml:lang="ar">تصفح تطبيقات Linglong وتثبيتها وإدارتها</summary>
+  <summary xml:lang="en">Browse, install, and manage Linyaps applications</summary>
+  <summary xml:lang="es">Explora, instala y gestiona aplicaciones Linyaps</summary>
+  <summary xml:lang="ru">Просматривайте, устанавливайте и управляйте приложениями Linyaps</summary>
+  <summary xml:lang="zh-CN">浏览、安装和管理玲珑应用</summary>
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
-  <launchable type="desktop-id">linglong-store.desktop</launchable>
+  <launchable type="desktop-id">com.dongpl.linglong-store.v2.desktop</launchable>
   <description>
-    <p>Desktop store for browsing and installing Linglong applications.</p>
+    <p>A desktop store for browsing, installing, and managing Linyaps applications.</p>
+    <p xml:lang="ar">متجر تطبيقات سطح المكتب لتصفح تطبيقات Linglong وتثبيتها وإدارتها.</p>
+    <p xml:lang="en">A desktop store for browsing, installing, and managing Linyaps applications.</p>
+    <p xml:lang="es">Una tienda de escritorio para explorar, instalar y gestionar aplicaciones Linyaps.</p>
+    <p xml:lang="ru">Магазин для поиска, установки и управления приложениями Linyaps.</p>
+    <p xml:lang="zh-CN">用于浏览、安装和管理玲珑应用的桌面应用商店。</p>
   </description>
   <url type="homepage">https://github.com/HanHan666666/flutter-linglong-store</url>
   <categories>
