@@ -1,6 +1,6 @@
 # Maintainer: milkii on freenode
 pkgname=oui-blendish-git
-pkgver=r152.79ec59e
+pkgver=r159.ec02310
 pkgrel=1
 pkgdesc="Platform agnostic UI, NanoVG imitating the Blender 2.5, single C header file."
 arch=("x86_64")
