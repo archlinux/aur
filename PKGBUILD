@@ -7,8 +7,20 @@ pkgdesc="Tools for developing ICPC-style programming contest problems."
 arch=('any')
 url="https://github.com/RagnarGrootKoerkamp/BAPCtools"
 license=('GPL 3.0')
-depends=('python3' 'python-yaml' 'python-colorama' 'python-argcomplete' 'python-ruamel-yaml' 'python-vermin' 'python-dateutil' 'python-pygments' 'python-typing_extensions')
-optdepends=('gcc: for compiling c++ sources',
+depends=(
+    'python3'
+    'python-yaml'
+    'python-colorama'
+    'python-argcomplete'
+    'python-ruamel-yaml'
+    'python-vermin'
+    'python-dateutil'
+    'python-pygments'
+    'python-typing_extensions'
+)
+
+optdepends=(
+    'gcc: for compiling c++ sources',
     'clang: for compiling c++ sources',
     'pypy3: for running python submissions with pypy',
     'pypy: for running python2 submissions with pypy',
