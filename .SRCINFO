@@ -6,9 +6,9 @@ pkgbase = njl.lv2-git
 	arch = x86_64
 	groups = lv2plugins
 	license = GPL
+	makedepends = git
 	depends = lv2
 	source = njl.lv2-git::git+https://github.com/linuxmao-org/njl-lv2
 	md5sums = SKIP
 
 pkgname = njl.lv2-git
-
