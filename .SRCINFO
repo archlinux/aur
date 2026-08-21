@@ -1,6 +1,6 @@
 pkgbase = jotawm-git
 	pkgdesc = A minimal tiling window manager for X11
-	pkgver = 2026.08.19.r95.2851f48
+	pkgver = 2026.08.21.r98.699c11d
 	pkgrel = 1
 	url = https://github.com/jotalea/jotawm
 	arch = x86_64
