@@ -2,7 +2,7 @@
 
 pkgname=audio.cpp-cuda-git
 _pkgname=audio.cpp
-pkgver=r357.df6e948
+pkgver=r424.5fda891
 pkgrel=1
 pkgdesc='All-in-one C++ audio inference engine on ggml with NVIDIA CUDA support (git version)'
 arch=('x86_64')
@@ -50,6 +50,7 @@ build() {
     -DENGINE_ENABLE_VULKAN=OFF
     -DGGML_CUDA_FA_ALL_QUANTS=ON
     -DAUDIOCPP_DEPLOYMENT_BUILD=ON
+    -DAUDIOCPP_BUILD_NATIVE_MODEL_MANAGER=ON
   )
 
   # Match llama.cpp-cuda's CI behavior: GitHub Actions runners generally have
