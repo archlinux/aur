@@ -1,0 +1,9 @@
+post_install() {
+  printf '%s\n' \
+    'wuyou-docs-bin has been renamed to wuyou-docs.' \
+    'Future updates are provided by wuyou-docs.'
+}
+
+post_upgrade() {
+  post_install
+}
