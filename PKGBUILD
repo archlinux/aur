@@ -6,7 +6,7 @@ pkgbase=tela-circle-icon-theme-spl-git
 _pkgname=("${_variants[@]/#/tela-circle-icon-theme-}")
 pkgname=(tela-circle-icon-theme-all-git "${_pkgname[@]/%/-git}")
 pkgdesc='A flat, colorful design icon theme'
-pkgver=2026.07.07.r0.gc0adf1ab
+pkgver=2026.07.07.r12.gee3cf47b
 pkgrel=1
 url='https://github.com/vinceliuice/Tela-circle-icon-theme'
 arch=(any)
@@ -35,12 +35,6 @@ prepare() {
   patch -Np1 -i ../do_not_generate_cache_files.patch
 }
 
-package_tela-circle-icon-theme-all-git() {
-  pkgdesc="${pkgdesc} (all variants)"
-  depends=("${_pkgname[@]/%/-git}")
-  conflicts=('tela-circle-icon-theme-all')
-}
-
 _package() (
   cd Tela-circle-icon-theme
 
@@ -56,3 +50,9 @@ for _variant in "${_variants[@]}"; do
     _package ${_variant}
   }"
 done
+
+package_tela-circle-icon-theme-all-git() {
+  pkgdesc="${pkgdesc} (all variants)"
+  depends=("${_pkgname[@]/%/-git}")
+  conflicts=('tela-circle-icon-theme-all')
+}
