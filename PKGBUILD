@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=asciidoctor-web-pdf-git
-pkgver=1.0.0.alpha.16.r28.g6ba9abe
+pkgver=1.0.2.r1.g5359780
 pkgrel=1
 pkgdesc="A PDF converter for AsciiDoc based on web technologies. It allows complex layouts to be defined with CSS and JavaScript, while writing the content in AsciiDoc."
 arch=($CARCH)
@@ -11,20 +11,7 @@ provides=(${pkgname%-git} asciidoctor-pdf)
 conflicts=(${pkgname%-git} asciidoctor-pdf)
 #replaces=(${pkgname})
 depends=(
-    sh
-    cairo
-    dbus
-    expat
-    glib2
-    libcups
-    libgcc_s.so
-    libstdc++.so
-    libx11
-    libxcb
-    libxext
     nodejs
-    nspr
-    nss
 )
 makedepends=(
     git
