@@ -14,12 +14,12 @@ Signed-off-by: Javier Tia <floss@jetm.me>
 Tested-by: Patryk Kowalczyk <patryk@kowalczyk.ws>
 (cherry picked from commit d099efc48dc5d7a92bc69bfb3dc4e3e6383877f8)
 
-7f418b80494aa039cf6bca043de2a697a1f05314
+6914e6bed18919b1010f3447dcc848325a689b86
 diff --git a/mt7925/mcu.c b/mt7925/mcu.c
-index 3460666..8400ffc 100644
+index 0e7afaf..a874831 100644
 --- a/mt7925/mcu.c
 +++ b/mt7925/mcu.c
-@@ -1755,2 +1755,14 @@ mt7925_mcu_sta_muru_tlv(struct sk_buff *skb,
+@@ -1760,2 +1760,14 @@ mt7925_mcu_sta_muru_tlv(struct sk_buff *skb,
  
 +static void
 +mt7925_mcu_sta_tx_proc_tlv(struct sk_buff *skb)
@@ -34,7 +34,7 @@ index 3460666..8400ffc 100644
 +}
 +
  static void
-@@ -2144,2 +2156,3 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
+@@ -2149,2 +2161,3 @@ mt7925_mcu_sta_cmd(struct mt76_phy *phy,
  		mt7925_mcu_sta_hdr_trans_tlv(skb, info->vif, mlink);
 +		mt7925_mcu_sta_tx_proc_tlv(skb);
  	}

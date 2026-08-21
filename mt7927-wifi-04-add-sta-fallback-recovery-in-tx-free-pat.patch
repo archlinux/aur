@@ -15,9 +15,9 @@ Signed-off-by: Javier Tia <floss@jetm.me>
 Tested-by: Patryk Kowalczyk <patryk@kowalczyk.ws>
 (cherry picked from commit 0fe4ebc47c7ee47d9fcf064f64cbf02771ce7d1d)
 
-b737b9f08c10a6af2d034693e75b060adfb528a4
+fea985d52572126d34aeecafdd9c10f0973de824
 diff --git a/mt7925/mac.c b/mt7925/mac.c
-index 5dd895c..5a19a23 100644
+index 6b0cd19..070f5d0 100644
 --- a/mt7925/mac.c
 +++ b/mt7925/mac.c
 @@ -1093,2 +1093,13 @@ void mt7925_txwi_free(struct mt792x_dev *dev, struct mt76_txwi_cache *t,

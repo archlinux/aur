@@ -138,9 +138,9 @@ cd mediatek-mt7927-dkms
 make download
 make sources
 sudo make install
-sudo dkms add mediatek-mt7927/2.13
-sudo dkms build mediatek-mt7927/2.13
-sudo dkms install mediatek-mt7927/2.13
+sudo dkms add mediatek-mt7927/2.14
+sudo dkms build mediatek-mt7927/2.14
+sudo dkms install mediatek-mt7927/2.14
 sudo modprobe -r mt7925e mt7921e btusb
 sudo modprobe mt7925e
 sudo modprobe btusb
@@ -300,7 +300,7 @@ least 10 seconds, then power back on. A CMOS reset also works but is more disrup
 **DKMS not built for current kernel:**
 
 ```bash
-sudo dkms install mediatek-mt7927/2.13
+sudo dkms install mediatek-mt7927/2.14
 ```
 
 **DKMS modules installed but not visible in `/usr/src/`:**
@@ -341,9 +341,10 @@ A systemd oneshot timer provides safe firmware testing. Before each upgrade:
 
 | Submission | Status | Tracking |
 |-----------|--------|----------|
-| WiFi patches (linux-wireless@) | v4 sent (9 patches) | [#15](https://github.com/jetm/mediatek-mt7927-dkms/issues/15) |
-| BT driver patches (linux-bluetooth@) | v3 sent (8 patches) | [#15](https://github.com/jetm/mediatek-mt7927-dkms/issues/15) |
-| BT firmware (linux-firmware) | MR open (mt7927/ path) | [#15](https://github.com/jetm/mediatek-mt7927-dkms/issues/15) |
+| WiFi driver (mt76/mt7925) | **Merged in mainline 7.2** (Sean Wang's MT7927 series) | [#15](https://github.com/jetm/mediatek-mt7927-dkms/issues/15) |
+| BT driver (btusb/btmtk) | **Merged** (MT6639 native since 7.1) | [#15](https://github.com/jetm/mediatek-mt7927-dkms/issues/15) |
+| WiFi firmware (linux-firmware) | **Merged** (MR !1055) | [#15](https://github.com/jetm/mediatek-mt7927-dkms/issues/15) |
+| BT firmware (linux-firmware) | Needs a MediaTek-submitted MR (!946 closed) | [#15](https://github.com/jetm/mediatek-mt7927-dkms/issues/15) |
 
 See [mt76#927](https://github.com/openwrt/mt76/issues/927) for the community tracking issue.
 
@@ -351,20 +352,25 @@ See [mt76#927](https://github.com/openwrt/mt76/issues/927) for the community tra
 
 ### Upstream submission
 
-Submit WiFi patches to linux-wireless@, BT driver patches to linux-bluetooth@,
-and BT firmware to linux-firmware. Once merged, this package becomes unnecessary
-for kernels that include MT7927 support.
+The driver work is done. MT7927 WiFi and Bluetooth are both in mainline, so on a
+7.2 or newer kernel this package is only needed for the AP-mode patches that have
+not been submitted yet, and for the one Bluetooth device ID still pending.
 
 - **WiFi** ([#15](https://github.com/jetm/mediatek-mt7927-dkms/issues/15)) -
-  9-patch series on linux-wireless@, v4 sent. Patches 1-8 add 320MHz EHT, chip ID,
-  firmware, and IRQ map; patch 9 disables ASPM/runtime PM for MT7927. Sean Wang
-  handles DMA/HW init/PCI ID enablement separately.
+  merged in mainline 7.2 via Sean Wang's MT7927 (Filogic 380) series, which
+  folded in the 320MHz EHT, chip ID, firmware-path and IRQ-map patches from this
+  package. Only 4 AP-mode patches remain out of tree.
 - **BT driver** ([#15](https://github.com/jetm/mediatek-mt7927-dkms/issues/15)) -
-  8-patch series on linux-bluetooth@, v3 sent. CHIPID workaround scoped to VID/PID
-  table, firmware path renamed to mt7927/, MODULE_FIRMWARE added.
+  merged; MT6639 has been native since kernel 7.1. The package now carries a
+  single device ID (0489:e156) that is not upstream yet.
+- **WiFi firmware** ([#15](https://github.com/jetm/mediatek-mt7927-dkms/issues/15)) -
+  merged into linux-firmware as MR
+  [!1055](https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/1055).
 - **BT firmware** ([#15](https://github.com/jetm/mediatek-mt7927-dkms/issues/15)) -
-  GitLab MR [!946](https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/946)
-  on linux-firmware. Updated with mt7927/ path, awaiting review.
+  still shipped by this package. MR
+  [!946](https://gitlab.com/kernel-firmware/linux-firmware/-/merge_requests/946)
+  was closed: linux-firmware takes vendor blobs from the copyright holder, so it
+  needs a MediaTek-submitted MR rather than one from this project.
 
 ### After the base series
 

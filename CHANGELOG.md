@@ -5,6 +5,23 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.14-1] - 2026-08-20
+
+### Driver
+
+- Rebase the bundled mt76 WiFi and btusb/btmtk source onto the kernel 7.2 tarball (from 7.1.3)
+- Drop the 28 backported MT7927 patches: Sean Wang's full MT7927 (Filogic 380) series landed in mainline 7.2, so MT7927 WiFi (PCIe and USB), the WFSYS reset, the is_connac3 conversion, the common DMA queue helpers, BSS band sync, MBMC/CNM handling, 320 MHz EHT, and the txpower/BA fixes now come from the tarball source directly
+- Reduce the numbered WiFi patch set to the 4 AP-mode additions not yet upstream: missing HE AP PHY capabilities, STA_REC_MURU TLV for AP mode, STA_REC_TX_PROC TLV, and STA fallback recovery in the TX free path
+- Keep the single BT patch adding the HP EliteMini BT ID (0489:e156, #87), which is still not upstream in 7.2
+
+### Packaging
+
+- Bump `_mt76_kver` to 7.2 and move the DKMS base branch to the v7.2 tag; the prior 7.1.3 base is preserved as dkms-base-713
+- Retain the pre-7.1 action-frame and pre-7.0 kzalloc_flex / kmalloc_obj compat shims so the 7.2 source still builds on host kernels back to 6.x
+- Fix the ASPM check in test-driver.sh to read the kernel's `l1_aspm` sysfs bit instead of grepping dmesg. Upstream's `mt76_pci_disable_aspm()` returns early without logging when ASPM is already off, so after any module reload the probe message is absent and the old check reported a false `FAIL ... upgrade package` even though L1 was disabled. The check now also scopes itself to the MT7927 IDs upstream actually disables ASPM for (0x7927/0x6639/0x0738), so a plain MT7925 is no longer failed for behaviour that is correct by design, and no longer trusts `pcie_aspm=off` on the cmdline, which stops the kernel touching existing hardware state rather than clearing it
+- Abort `make sources` when a patch fails to apply. Both patch loops ran as a single shell command, so make only saw the last iteration's exit status and a failed patch left the build to continue silently - a fuzz-failing compat shim would have produced a package that builds on the maintainer's kernel and breaks on everyone else's
+- Add a pre-7.2 compat shim for the renamed EML capability macros. Kernel 7.2 dropped the "SR" infix from `IEEE80211_EML_CAP_EMLSR_PADDING_DELAY` and `IEEE80211_EML_CAP_EMLSR_TRANSITION_DELAY`, and the 7.2 mt7925 source uses the new names, so building against any pre-7.2 host header failed with "use of undeclared identifier". The shim defines the new names when the host does not provide them, keyed on the macro rather than a version comparison so distro backports are handled. The 7.2 source plus this shim is verified building all 9 modules against 6.18 LTS and 7.1.8 headers as well as the native 7.2 host, so one package serves every supported kernel
+
 ## [2.13-1] - 2026-07-05
 
 ### Driver

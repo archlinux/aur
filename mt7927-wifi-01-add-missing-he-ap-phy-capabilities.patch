@@ -14,9 +14,9 @@ Signed-off-by: Javier Tia <floss@jetm.me>
 Tested-by: Patryk Kowalczyk <patryk@kowalczyk.ws>
 (cherry picked from commit 155a9f12c230e49181ea54213b3b205a971f0d87)
 
-45492f2bc410c471ad9b11c6f8e158f2ebcd26a4
+ff18853b44999b8d759a61059706c84061286b1a
 diff --git a/mt7925/main.c b/mt7925/main.c
-index 978c6c1..e7a6b22 100644
+index 2b6cc8e..a3c9645 100644
 --- a/mt7925/main.c
 +++ b/mt7925/main.c
 @@ -64,2 +64,5 @@ mt7925_init_he_caps(struct mt792x_phy *phy, enum nl80211_band band,

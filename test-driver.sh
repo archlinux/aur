@@ -191,39 +191,51 @@ check_firmware() {
 # 8. ASPM status (MT7927 needs ASPM disabled)
 # ---------------------------------------------------------------------------
 check_aspm() {
-	local dmesg_out=""
-	dmesg_out="$(dmesg 2>/dev/null || true)"
+	# ASPM L1 breaks WFDMA register access on MT7927 - and only on MT7927:
+	# upstream mt7925/pci.c disables it for 0x7927/0x6639/0x0738 alone, so L1
+	# left enabled on a plain MT7925 is correct by design, not a fault.
+	#
+	# The authoritative state is the kernel's own l1_aspm bit. dmesg is not:
+	# mt76_pci_disable_aspm() returns early without logging when ASPM is
+	# already off, so the probe message is absent after any module reload.
+	# The cmdline is not either: pcie_aspm=off stops the kernel touching
+	# existing hardware state rather than clearing it, so BIOS-programmed L1
+	# can still be live.
+	local dir device addr=""
+	for dir in /sys/bus/pci/drivers/mt7925e/*/; do
+		[[ -r "$dir/device" ]] || continue
+		device="$(sed 's/^0x//' "$dir/device" 2>/dev/null)"
+		case "$device" in
+		7927 | 6639 | 0738)
+			addr="$(basename "$dir")"
+			break
+			;;
+		esac
+	done
 
-	if [[ -z "$dmesg_out" ]]; then
-		skip "dmesg not accessible"
+	if [[ -z "$addr" ]]; then
+		na "no MT7927 bound (ASPM is disabled for 7927/6639/0738 only)"
 		return
 	fi
 
-	# Check if ASPM disabled globally via kernel cmdline
+	local l1_node="/sys/bus/pci/devices/$addr/link/l1_aspm"
+	if [[ -r "$l1_node" ]]; then
+		if [[ "$(cat "$l1_node" 2>/dev/null)" == "0" ]]; then
+			ok "L1 disabled (sysfs l1_aspm)"
+		else
+			fail "L1 enabled (throughput collapse risk)"
+		fi
+		return
+	fi
+
+	# No l1_aspm node: kernel built without CONFIG_PCIEASPM, or an older
+	# sysfs layout. Fall back to the weaker evidence.
 	if grep -qE '(pcie_aspm=off|pcie_aspm\.policy=performance)' /proc/cmdline 2>/dev/null; then
 		ok "disabled via kernel cmdline"
-		return
-	fi
-
-	# Check if the driver disabled ASPM at probe
-	if echo "$dmesg_out" | has_match 'mt7925e.*disabling ASPM'; then
+	elif dmesg 2>/dev/null | has_match "$addr.*disabling ASPM"; then
 		ok "disabled by driver"
-		return
-	fi
-
-	# Check if disabled via module parameter
-	if echo "$dmesg_out" | has_match 'mt7925e.disable_aspm=1'; then
-		ok "disabled via module param"
-		return
-	fi
-
-	# If MT7927 but no ASPM disable message, warn
-	local mt_dmesg
-	mt_dmesg="$(echo "$dmesg_out" | grep -E 'mt7925e.*MT7927' || true)"
-	if [[ -n "$mt_dmesg" ]]; then
-		fail "L1 not disabled (throughput collapse risk, upgrade package)"
 	else
-		na "not MT7927 or no dmesg data"
+		na "cannot determine ASPM state"
 	fi
 }
 

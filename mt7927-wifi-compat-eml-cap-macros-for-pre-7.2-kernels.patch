@@ -1,0 +1,47 @@
+wifi: mt76: compat: define renamed EML cap macros on pre-7.2 hosts
+
+This DKMS package extracts the mt76 WiFi driver from the kernel 7.2
+tarball but compiles it against the host kernel, which is commonly 6.17
+through 7.1 (Fedora, Ubuntu, Proxmox, Bazzite, Artix, CachyOS, etc.).
+
+Kernel 7.2 renamed two EML capability macros in ieee80211-eht.h,
+dropping the "SR" infix:
+
+  IEEE80211_EML_CAP_EMLSR_PADDING_DELAY
+    -> IEEE80211_EML_CAP_EML_PADDING_DELAY
+  IEEE80211_EML_CAP_EMLSR_TRANSITION_DELAY
+    -> IEEE80211_EML_CAP_EML_TRANSITION_DELAY
+
+The values are unchanged, 0x000e and 0x0070. The 7.2 mt7925 source uses
+the new names, so building against pre-7.2 host headers fails:
+
+  mt7925/mcu.c: error: use of undeclared identifier
+                'IEEE80211_EML_CAP_EML_PADDING_DELAY'
+  mt7925/mcu.c: error: use of undeclared identifier
+                'IEEE80211_EML_CAP_EML_TRANSITION_DELAY'
+
+Define the new names when the host headers do not already provide them.
+The guard tests for the macro itself rather than LINUX_VERSION_CODE so
+that a distro kernel carrying a backport of the rename is handled
+correctly, which a version comparison would get wrong.
+
+--- a/mt7925/mcu.c
++++ b/mt7925/mcu.c
+@@ -8,6 +8,17 @@
+ #include "mcu.h"
+ #include "mac.h"
+ 
++/* Kernel 7.2 renamed IEEE80211_EML_CAP_EMLSR_{PADDING,TRANSITION}_DELAY to
++ * IEEE80211_EML_CAP_EML_{PADDING,TRANSITION}_DELAY; the values are unchanged.
++ * Define the new names on hosts that only provide the old ones.
++ */
++#ifndef IEEE80211_EML_CAP_EML_PADDING_DELAY
++#define IEEE80211_EML_CAP_EML_PADDING_DELAY	0x000e
++#endif
++#ifndef IEEE80211_EML_CAP_EML_TRANSITION_DELAY
++#define IEEE80211_EML_CAP_EML_TRANSITION_DELAY	0x0070
++#endif
++
+ #define MT_STA_BFER			BIT(0)
+ #define MT_STA_BFEE			BIT(1)
+ 

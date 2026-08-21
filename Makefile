@@ -70,12 +70,12 @@ $(STAMP): check-version
 	@echo "==> Applying MT7927 WiFi patches..."
 	@for p in $(TOPDIR)mt7927-wifi-*.patch; do \
 		echo "  $$(basename "$$p")"; \
-		patch -d "$(SRCDIR)/mt76" -p1 < "$$p"; \
+		patch -d "$(SRCDIR)/mt76" -p1 < "$$p" || exit 1; \
 	done
 	@echo "==> Applying MT6639 Bluetooth patches..."
 	@for p in $(TOPDIR)mt6639-bt-[0-9]*.patch $(TOPDIR)mt6639-bt-compat-*.patch; do \
 		echo "  $$(basename "$$p")"; \
-		patch -d "$(SRCDIR)/bluetooth" -p1 < "$$p"; \
+		patch -d "$(SRCDIR)/bluetooth" -p1 < "$$p" || exit 1; \
 	done
 	cp "$(TOPDIR)bluetooth.Makefile" "$(SRCDIR)/bluetooth/Makefile"
 	@echo "==> Installing Kbuild files..."

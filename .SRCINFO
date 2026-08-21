@@ -1,6 +1,6 @@
 pkgbase = mediatek-mt7927-dkms
 	pkgdesc = DKMS Bluetooth (MT6639) and WiFi (MT7925e/MT7902) modules for MediaTek MT7927 Filogic 380
-	pkgver = 2.13
+	pkgver = 2.14
 	pkgrel = 1
 	url = https://github.com/jetm/mediatek-mt7927-dkms
 	install = mediatek-mt7927-dkms.install
@@ -13,11 +13,11 @@ pkgbase = mediatek-mt7927-dkms
 	provides = mediatek-mt7925-wifi-dkms
 	conflicts = btusb-mt7925-dkms
 	conflicts = btusb-mt7927-dkms
-	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.3.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.tar.xz
 	source = extract_firmware.py
 	source = dkms.conf
-	sha256sums = be41c068e88f5242a19bccdbffbe077b18c47b45f627e2325504b4fab79dd1dc
+	sha256sums = f9fef3d14c0df53819026f4be74459835c2a0b0dcbf5b5bbd9ea19f0829402b3
 	sha256sums = 1eb7d542ed94a305e727e20671412d2e2a5793607a020742312a69dff9486b7b
-	sha256sums = 6e4400922bc68fd487b63574ad78d71ce91618f9c2e65069ba04765b9b19eafb
+	sha256sums = 8473b84eecf0e2aed65864a3df30e5c974381f4f4d2069ff00af66956ee29183
 
 pkgname = mediatek-mt7927-dkms
