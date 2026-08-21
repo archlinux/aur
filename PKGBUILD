@@ -1,8 +1,8 @@
 # Maintainer: omartelo <meopedevts@proton.me>
-# Rendered by .github/workflows/release.yml (0.38.0 -> tag, checksums via
+# Rendered by .github/workflows/release.yml (0.39.0 -> tag, checksums via
 # updpkgsums) and pushed to the AUR — edit this template, never the AUR copy.
 pkgname=lich-bin
-pkgver=0.38.0
+pkgver=0.39.0
 pkgrel=1
 pkgdesc="A personal harness for AI-assisted development"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('chromium: app window (any Chromium-family browser works: chromium, 
 source=("lich-v${pkgver}-linux-amd64::${url}/releases/download/v${pkgver}/lich-v${pkgver}-linux-amd64"
         "lich-${pkgver}.desktop::https://raw.githubusercontent.com/omartelo/lich/v${pkgver}/build/linux/lich.desktop"
         "lich-${pkgver}.png::https://raw.githubusercontent.com/omartelo/lich/v${pkgver}/build/appicon.png")
-sha256sums=('6b7c820eba60be5534729c390ce29c40f3b6830f936430683a93b84df1daf2db'
+sha256sums=('5f22b49c70930628089a9dc307956eb6b4c62822f7479bec2f2ced42086ca395'
             'b5f6635d59ef2b178cdf5788798fa4bac6b66505830c3b1b1f93bf8fe90dca8e'
             '1575213b7d0ac3b3c832da61c856f29a839a2a0242abd34d3ab3ea9ae8c8a306')
 
