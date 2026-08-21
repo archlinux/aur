@@ -1,26 +1,18 @@
 # Maintainer: Taygun86
 
 pkgname=zapret-gtk
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="GUI client for Zapret DPI Bypass"
 arch=('x86_64')
 url="https://github.com/Taygun86/zapret-gtk"
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('gtk4' 'libadwaita' 'iptables' 'ipset' 'curl' 'git' 'polkit')
-makedepends=('cargo')
-source=("git+$url.git#tag=v$pkgver") # Bu satır release tag'i atıldığında çalışır
-# Geliştirme aşamasında lokal dosya için source dizisi boş bırakılabilir veya değiştirilebilir.
-md5sums=('SKIP')
-
-build() {
-  cd "$pkgname"
-  cargo build --release --locked
-}
+provides=("zapret-gtk=$pkgver")
+conflicts=('zapret-gtk-bin' 'zapret-gtk-git')
+source=("$pkgname-$pkgver.deb::https://taygun86.github.io/taygun86-repo/deb/zapret-gtk_${pkgver}-1_amd64.deb")
+sha256sums=('a61554818c18bb691c5ef97c97d20af4e3ac77e4ed18f0f763a18c06e3234682')
 
 package() {
-  cd "$pkgname"
-  install -Dm755 target/release/zapret-gtk "$pkgdir/usr/bin/zapret-gtk"
-  install -Dm644 zapretgtk512.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/zapret-gtk.png"
-  install -Dm644 zapret-gtk.desktop "$pkgdir/usr/share/applications/zapret-gtk.desktop"
+  tar -xf data.tar.xz -C "$pkgdir/"
 }
