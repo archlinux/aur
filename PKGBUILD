@@ -1,5 +1,5 @@
 pkgname=tether-bin
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="A Wayland-native local file transfer and clipboard sync tool over mDNS (Binary Release)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('tether')
 conflicts=('tether' 'tether-git')
 install=tether.install
 source=("${url}/releases/download/v${pkgver}/tether-${pkgver}.tar.gz")
-sha256sums=('226a4259e151249d7b9aec314deeb62925a8e4528e8fca72e38368e0356b8115')
+sha256sums=('f4bc304907295fdb4de07180f694f103a6ef193e458b791b163ba018e0ccd3d8')
 
 package() {
     cd "tether-${pkgver}"
