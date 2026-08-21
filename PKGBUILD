@@ -1,6 +1,6 @@
 # Maintainer: jebcalix <jebcalix@gmail.com>
 pkgname=jebstudios-workset
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Multi-DE desktop workset profiles for Arch Linux"
 arch=('any')
@@ -38,7 +38,7 @@ optdepends=(
   'budgie-desktop: Budgie (x11 backend via wmctrl)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jebcalix/jebstudios-workset/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('777a828cadea7d23e9f4d8fd58736c710574d0c4e4d4dcc59a8d990a4dcb7e63')
+sha256sums=('50a780f1675e300eb544dbdd33d2cf3f4dce8ff1b5d701b87e19b8bfef635591')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -51,9 +51,12 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 PLAN.md "$pkgdir/usr/share/doc/$pkgname/PLAN.md"
+  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
+  install -Dm644 docs/architecture.md "$pkgdir/usr/share/doc/$pkgname/architecture.md"
   install -Dm644 docs/backends.md "$pkgdir/usr/share/doc/$pkgname/backends.md"
   install -Dm644 docs/flatpak.md "$pkgdir/usr/share/doc/$pkgname/flatpak.md"
   install -Dm644 docs/omarchy.md "$pkgdir/usr/share/doc/$pkgname/omarchy.md"
+  install -Dm644 docs/profile-schema.md "$pkgdir/usr/share/doc/$pkgname/profile-schema.md"
   install -Dm644 docs/tray.md "$pkgdir/usr/share/doc/$pkgname/tray.md"
   install -Dm644 examples/dev.yaml "$pkgdir/usr/share/doc/$pkgname/examples/dev.yaml"
   install -Dm644 examples/dual-monitor.yaml "$pkgdir/usr/share/doc/$pkgname/examples/dual-monitor.yaml"
