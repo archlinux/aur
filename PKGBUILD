@@ -2,7 +2,7 @@
 _base=K3D
 pkgname=python-${_base,,}
 pkgdesc="3D visualization library"
-pkgver=2.17.0
+pkgver=2.18.1
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}-tools/${_base}-jupyter"
