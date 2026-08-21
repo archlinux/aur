@@ -1,7 +1,7 @@
 # Maintainer: sanlun <miwa at nc hyphen toyama dot ac dot jp>
 
 pkgname=cmigemo
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='An implementation of Migemo in C'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://www.kaoriya.net/software/cmigemo/'
 license=('MIT')
 makedepends=('cmake' 'curl')
 source=("https://github.com/koron/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6cc47e2c2c191aa93283bae279c156a95ae77741faf24fd847904a415e849f3b')
+sha256sums=('8cae9956b3ba411dfa5421d89e43b88b111d8ca764e4c4dbfa7df2a16699023a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
