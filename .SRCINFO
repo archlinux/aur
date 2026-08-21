@@ -1,6 +1,6 @@
 pkgbase = ampcode
 	pkgdesc = Amp CLI — Sourcegraph's agentic coding tool
-	pkgver = 0.0.1787299749_g1ad2d8
+	pkgver = 0.0.1787342526_gc11bfb
 	pkgrel = 1
 	url = https://ampcode.com
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = ampcode
 	replaces = sourcegraph-amp
 	options = !strip
 	options = !debug
-	source_x86_64 = ampcode-0.0.1787299749_g1ad2d8-x64::https://static.ampcode.com/cli/0.0.1787299749-g1ad2d8/amp-linux-x64
-	sha256sums_x86_64 = ce8183cf376d8984c5f3229d90c8aa67707da4d02bd1aece9aaedf18b0ca5f3b
-	source_aarch64 = ampcode-0.0.1787299749_g1ad2d8-arm64::https://static.ampcode.com/cli/0.0.1787299749-g1ad2d8/amp-linux-arm64
-	sha256sums_aarch64 = 080b7f851a5115286d2a2aa6b07dd09a7757591a6467a45a7eb232e1afbd4ec9
+	source_x86_64 = ampcode-0.0.1787342526_gc11bfb-x64::https://static.ampcode.com/cli/0.0.1787342526-gc11bfb/amp-linux-x64
+	sha256sums_x86_64 = 2348bc5b85f173c76c3563fb1556542defddd53abdc0ee6d8c3c5166221ef10e
+	source_aarch64 = ampcode-0.0.1787342526_gc11bfb-arm64::https://static.ampcode.com/cli/0.0.1787342526-gc11bfb/amp-linux-arm64
+	sha256sums_aarch64 = ed3db93348b773c5f289c621a016ef6c4cafb4fd52bcd5fc94b73d48a3d11b88
 
 pkgname = ampcode
