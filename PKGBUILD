@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=lfo-blender.lv2-git
 pkgdesc="An LV2 plugin with 4 LFOs and 5 CV outputs."
-pkgver=r7.0d9fab3
+pkgver=r9.55ac599
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/BramGiesen/cv-lfo-blender-lv2"
 license=(GPL)
 groups=(lv2-plugins)
 depends=('lv2')
-makedepends=()
+makedepends=('git')
 checkdepends=()
 optdepends=()
 provides=()
