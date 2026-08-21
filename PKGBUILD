@@ -4,7 +4,7 @@ _pkgauthor=chaqchase
 _pkgname=lla
 
 pkgname=${_pkgname}-bin
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Blazing fast 'ls' replacement with superpowers"
 
@@ -25,11 +25,11 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tzst::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${pkgrel}-${arch[0]}.pkg.tar.zst")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tzst::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${pkgrel}-${arch[1]}.pkg.tar.zst")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tzst::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${pkgrel}-${arch[2]}.pkg.tar.zst")
-sha256sums=('2079dc8b031b0272fbfe6b919daf7dcf9f4cda65c5a9821028546ae0cef53d0b'
-            'dedfeaf7efda07832c83d938d66c7868b4c7d45e17d2b6250e523780a5f79acf')
-sha256sums_x86_64=('ffd7f0ede0ba2e411baf4ba06330e22c7e1590a10e1f7826b324ddcdc43597f3')
-sha256sums_i686=('24611fc1158fddd068073e36143c47cc2ae088cd29617ab7973be5e272f1a914')
-sha256sums_aarch64=('4b64357395088f3adb9f0e5e9a4d5a3c338b5456d0676a43636b67bdbe4db694')
+sha256sums=('ca8a1c1dc9bbc731b3c455ae784cf72e714ec1c1b5e22c6b1dc59c96c1bc9a36'
+            '5aa93dd4dc0c1d186296de788a59403543a5390bdec1fb7a040eccf49a261275')
+sha256sums_x86_64=('978d67c1c9c22fe3fd68853af7b6cc3ffcafe1b65b4bc2fbc80866e70ca93b8e')
+sha256sums_i686=('b81433cdc0933af40cd368fa2b4c80202b3a44dcd8314ab785295f21eacabb7b')
+sha256sums_aarch64=('90bc4213f047c5f3edf51dd4adc1e56287a6f3e14e0e26667defcfb235566f34')
 
 noextract=("${source_x86_64[@]%%::*}" "${source_i686[@]%%::*}" "${source_aarch64[@]%%::*}")
 
