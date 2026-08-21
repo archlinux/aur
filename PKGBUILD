@@ -23,12 +23,12 @@ package() {
   local _root="$srcdir/squashfs-root"
 
   install -dm755 "$pkgdir/usr/lib/limusic"
-  cp -r "$_root/usr/lib/"* "$pkgdir/usr/lib/limusic/"
-  cp -r "$_root/usr/bin/"* "$pkgdir/usr/lib/limusic/"
+  cp -a "$_root/usr/lib/"* "$pkgdir/usr/lib/limusic/"
+  cp -a "$_root/usr/bin/"* "$pkgdir/usr/lib/limusic/"
 
-  cp -r "$_root/usr/share" "$pkgdir/usr/"
+  cp -a "$_root/usr/share" "$pkgdir/usr/"
   install -dm755 "$pkgdir/usr/bin"
-  cp -r "$_root/usr/bin/"* "$pkgdir/usr/bin/"
+  cp -a "$_root/usr/bin/"* "$pkgdir/usr/bin/"
 
   rm -rf "$pkgdir/usr/share/glib-2.0"
   rm -rf "$pkgdir/usr/share/doc"
