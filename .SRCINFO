@@ -1,6 +1,6 @@
 pkgbase = dab-cli
 	pkgdesc = Android package manager CLI tool
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/cesarferreira/dab
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = dab-cli
 	depends = android-tools
 	provides = dab
 	conflicts = dab
-	source = dab-0.6.1.crate::https://crates.io/api/v1/crates/dab-cli/0.6.1/download
-	sha256sums = 83bdbedee8fb8ead7b3085e52f3736feeaa956681ab7afcd401f36b1934a0496
+	source = dab-0.6.2.crate::https://crates.io/api/v1/crates/dab-cli/0.6.2/download
+	sha256sums = 6c76ed05afb2a12d99cae9b4e50c94949c28b8ec9d028eeb06f355298ba93c09
 
 pkgname = dab-cli

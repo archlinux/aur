@@ -10,7 +10,7 @@ _cratename=${_pkgname}-cli
 pkgname=${_cratename}
 pkgdesc="Android package manager CLI tool"
 
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('83bdbedee8fb8ead7b3085e52f3736feeaa956681ab7afcd401f36b1934a0496')
+sha256sums=('6c76ed05afb2a12d99cae9b4e50c94949c28b8ec9d028eeb06f355298ba93c09')
 
 
 build() {
