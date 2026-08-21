@@ -1,6 +1,6 @@
 pkgbase = seniorpw-git
 	pkgdesc = password manager using age as backend; inspired by pass
-	pkgver = r313.7385615
+	pkgver = r317.556aa4c
 	pkgrel = 1
 	url = https://gitlab.com/retirement-home/seniorpw
 	arch = any
