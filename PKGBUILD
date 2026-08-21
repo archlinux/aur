@@ -9,7 +9,7 @@
 # renders PCM input; the bridge adds compressed/object-audio decoding.
 
 pkgname=orender
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Omniphony spatial audio engine (orender CLI + liborender.so)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ options=('!lto')
 # orender_engine's layouts search list (virtual_bed.rs) — a dead path on user
 # machines; the packaged /usr/share/orender/layouts candidate is used instead.
 source=("omniphony-$pkgver.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('46fbb396ec9af5074230f053ec9debc01672dfda5ce3a253022b63ae283adf8e')
+sha256sums=('8bb07c9b014b5979d6b1420c952b92eebd7f9e133cd6b9734fb010a16583deaa')
 
 # Workspace inside the extracted Omniphony source tree.
 _src="Omniphony-$pkgver"
