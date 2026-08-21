@@ -1,7 +1,7 @@
 # Maintainer: Reazndev <ruby.florian@proton.me>
 
 pkgname=altersend-bin
-pkgver=1.8.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Private peer-to-peer file transfer application (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -12,9 +12,9 @@ provides=('altersend')
 conflicts=('altersend' 'altersend-git')
 options=('!strip')
 source_x86_64=("AlterSend-x86_64.AppImage::https://github.com/denislupookov/altersend/releases/download/v${pkgver}/AlterSend-x86_64.AppImage")
-sha256sums_x86_64=('2b429aedad7bf96aa693d544715bfc582f1c90fde47e8b503aa9b8157d613656')
+sha256sums_x86_64=('74cb05a1cac649767c09537aa457467914c0a47a6fc214915b78c0e91a7a3dda')
 source_aarch64=("AlterSend-arm64.AppImage::https://github.com/denislupookov/altersend/releases/download/v${pkgver}/AlterSend-arm64.AppImage")
-sha256sums_aarch64=('404106991daf9baac204d15e5343f1ffeed22d5e44bd0151cc84ba35166a209a')
+sha256sums_aarch64=('a45c0eeaa3768da6f0df3544fcc72e0da0e9739229b76df0a9b2c3ff59d9b68b')
 
 prepare() {
   cd "$srcdir"
@@ -45,9 +45,10 @@ EOF
 Type=Application
 Name=AlterSend
 Comment=Private peer-to-peer file transfer
-Exec=altersend
+Exec=altersend %U
 Icon=altersend
 Categories=Network;FileTransfer;
+MimeType=application/octet-stream;inode/directory;x-scheme-handler/altersend;
 StartupNotify=true
 Terminal=false
 StartupWMClass=altersend
