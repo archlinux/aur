@@ -8,7 +8,7 @@
 
 pkgname=lib32-rtmpdump
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A toolkit for RTMP streams (32 bit)'
 arch=(x86_64)
