@@ -1,7 +1,7 @@
 # Maintainer: Milkii Brewster <milkii on Freenode IRC>
 pkgname=gula-plugins-git
 pkgdesc="A collection of guitar effect LV2 plugins originally for MOD Devices."
-pkgver=r45.fbc3c1a
+pkgver=r83.edc2be7
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/steveb/gula-plugins"
 license=(GPL)
 groups=(lv2-plugins)
 depends=('lv2' 'boost')
-makedepends=('faust')
+makedepends=('git' 'faust')
 checkdepends=()
 optdepends=()
 provides=()
