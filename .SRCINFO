@@ -1,5 +1,5 @@
 pkgbase = volt-gui
-	pkgdesc = A graphical user interface for configuring GPU related environment variables and more for Linux gaming.
+	pkgdesc = A graphical control panel for Vulkan games on Linux.
 	pkgver = 2.0.0
 	pkgrel = 3
 	url = https://github.com/pythonlover02/volt-gui

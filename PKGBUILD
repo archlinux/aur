@@ -2,7 +2,7 @@
 pkgname=volt-gui
 pkgver=2.0.0
 pkgrel=3
-pkgdesc="A graphical user interface for configuring GPU related environment variables and more for Linux gaming."
+pkgdesc="A graphical control panel for Vulkan games on Linux."
 arch=('x86_64')
 url="https://github.com/pythonlover02/volt-gui"
 license=('GPL-3.0-or-later')
