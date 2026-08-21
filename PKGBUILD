@@ -2,7 +2,7 @@
 # Contributor: Ray Powell <ray_al@xphoniexx.net>
 
 pkgname=mcomix
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="GTK comic book viewer"
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
 source=(
   "https://downloads.sourceforge.net/project/${pkgname}/MComix-${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('a10aaaed7bc07deb74efde93bf9a8a27e1bcbf1824a0519b264cfee582becef8')
+sha256sums=('a332b3e436e2cbcc001e5d8b3579831d562309110c3d14b1012f8ba7fa04e917')
 
 build() {
   cd "${pkgname}-${pkgver}"
