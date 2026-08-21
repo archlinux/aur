@@ -234,7 +234,7 @@ function helmrelease() {
         elif [[ "$1" =~ ^https://* ]] || [[ "$1" =~ ^oci://* ]]; then
           sourceParameter="$1"
         else
-          err "parameter '$1' is not supported"
+          err "parameter '$1' is not supported or file/directory doesn't exist"
         fi
         shift
         ;;
@@ -323,7 +323,13 @@ function helmrelease() {
             if [[ "$valuesFromItemTargetPath" == "" ]]; then
               values="$(<<< "$values" | yq -er --argjson valuesFromItemResource "$(yq -e . <<<"$valuesFromItemResource")" '. * $valuesFromItemResource')"
             else
-              values="$(<<< "$values" | yq -er --arg valuesFromItemResource "$valuesFromItemResource" --arg valuesFromItemTargetPath "$valuesFromItemTargetPath" 'setpath($valuesFromItemTargetPath | split("."); $valuesFromItemResource)')"
+              values="$(<<< "$values" | yq -er --arg valuesFromItemResource "$valuesFromItemResource" --arg valuesFromItemTargetPath "$valuesFromItemTargetPath" '
+                def parsePath:
+                  split(".")
+                  | map([scan("[^\\[\\]]+|\\[[0-9]+\\]")] | map(if test("^\\[[0-9]+\\]$") then (.[1:-1] | tonumber) else . end))
+                  | flatten;
+                setpath($valuesFromItemTargetPath | parsePath; $valuesFromItemResource)
+              ')"
             fi
           fi
         done

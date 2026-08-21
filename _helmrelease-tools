@@ -1,4 +1,4 @@
-#compdef hr hrDiff hrInstall hrUninstall hrUpgrade
+#compdef hr hrDiff hrInstall hrUninstall hrUpgrade helmrelease
 
 function _hr_clean_search_path() {
   local searchPath="$1"
@@ -27,7 +27,6 @@ function _hr_chart_folders() {
   local -a chartSources
   local originalSearchPath="${words[CURRENT]}"
   local searchPath="${originalSearchPath}"
-  local replacedTilde=false
   searchPath="$(_hr_clean_search_path "$searchPath")"
   chartSources=( $(fd ${searchPath:+--search-path="${searchPath}"} -t f Chart.yaml -X dirname) )
   chartSources=( $(_hr_mangle_search_results "$originalSearchPath" "${chartSources[@]}") )
@@ -39,7 +38,6 @@ function _hr_chart_tarballs() {
   local -a chartTarballs
   local originalSearchPath="${words[CURRENT]}"
   local searchPath="${originalSearchPath}"
-  local replacedTilde=false
   searchPath="$(_hr_clean_search_path "$searchPath")"
   chartTarballs=( $(fd ${searchPath:+--search-path="${searchPath}"} --no-ignore -t f -e tgz -e tar) )
   chartTarballs=( $(for tarball in "${chartTarballs[@]}"; do tar --wildcards -atf "$tarball" \*/Chart.yaml &>/dev/null && echo "$tarball"; done) )
@@ -61,6 +59,24 @@ function _hr_yamls() {
   hrs=( $(_hr_mangle_search_results "$originalSearchPath" "${hrs[@]}") )
   _wanted yamls expl 'HelmRelease yaml' \
     _multi_parts -f / hrs
+}
+function _hr_index() {
+  local yamlFile
+  local i
+  local w
+  for (( i = 2; i < CURRENT; i++ )); do
+    w="${words[i]}"
+    [[ "${w:0:2}" == "~/" ]] && w="$HOME/${w:2}"
+    if [[ -f "$w" ]]; then
+      yamlFile="$w"
+      break
+    fi
+  done
+  [[ -z "$yamlFile" ]] && return 1
+  local -a indices
+  indices=( ${(f)"$(yq -ers 'map(select(.kind == "HelmRelease")) | . as $hrs | keys[] | "-\(.):HelmRelease \($hrs[.].metadata.namespace)/\($hrs[.].metadata.name)"' < "$yamlFile" 2>/dev/null)"} )
+  [[ ${#indices} -eq 0 ]] && return 1
+  _describe -t indices 'HelmRelease index' indices
 }
 function _hr_helm_opts() {
   local -a command=( ${words[1]:2:l} )
@@ -85,36 +101,71 @@ function _hr_one() {
     firstParam="$HOME/${firstParam:2}"
   fi
   if [[ -f "${firstParam}" ]] || [[ "$firstParam" == - ]]; then
-    _alternative 'sources:Helm Chart source:_hr_charts'
+    _alternative 'sources:Helm Chart source:_hr_charts' \
+      'indices:HelmRelease index:_hr_index'
   else
-    _alternative 'yamls:Flux HelmRelease yaml:_hr_yamls'
+    _alternative 'yamls:Flux HelmRelease yaml:_hr_yamls' \
+      'indices:HelmRelease index:_hr_index'
   fi
 }
 function _hr() {
-  case "${words[(Ie)--]}" in
-    2)
-      _arguments "1:seperator:(--)" \
-        "*:helm:_hr_helm_opts"
+  local seperatorIndex=${words[(Ie)--]}
+  local nPositional
+  if (( seperatorIndex == 0 )); then
+    nPositional=2
+  else
+    nPositional=$(( seperatorIndex - 2 ))
+    (( nPositional < 0 )) && nPositional=0
+  fi
+  local -a specs=( '(1 -h --help)'{-h,--help}'[show usage and exit]' )
+  local i
+  for (( i = 1; i <= nPositional; i++ )); do
+    case $i in
+      1) specs+=("${i}:first:_hr_both") ;;
+      2) specs+=("${i}:second:_hr_one") ;;
+      *) specs+=("${i}:HelmRelease index:_hr_one") ;;
+    esac
+  done
+  specs+=("$(( nPositional + 1 )):seperator:(--)")
+  specs+=('*:helm:_hr_helm_opts')
+  _arguments -A "-*" "${specs[@]}"
+}
+
+function _helmrelease() {
+  local -a commands=(template diff install upgrade uninstall)
+  if (( CURRENT == 2 )); then
+    _alternative \
+      'commands:helmrelease command:(($commands))' \
+      'options:option:(-h --help)'
+    return
+  fi
+  local subCommand="${words[2]}"
+  local fakeBin
+  case "$subCommand" in
+    template) fakeBin=hr ;;
+    diff) fakeBin=hrDiff ;;
+    install) fakeBin=hrInstall ;;
+    upgrade) fakeBin=hrUpgrade ;;
+    uninstall) fakeBin=hrUninstall ;;
+    -h|--help)
+      _values 'helmrelease command' $commands
+      return
       ;;
-    3)
-      _arguments "1:first:_hr_one" \
-        "2:seperator:(--)" \
-        "*:helm:_hr_helm_opts"
+    *)
+      return
       ;;
-    4)
-      ;&
-    0)
-      _arguments "1:first:_hr_both" \
-        "2:second:_hr_one" \
-        "3:seperator:(--)" \
-        "*:helm:_hr_helm_opts"
-    ;;
   esac
+  local -a words=( "$fakeBin" "${words[3,-1]}" )
+  local CURRENT=$(( CURRENT - 1 ))
+  _hr
 }
 
 case $service in
   hr|hrDiff|hrInstall|hrUninstall|hrUpgrade)
     _hr
+    ;;
+  helmrelease)
+    _helmrelease
     ;;
   *)
     _message "unknown command ${service}" && ret=1
