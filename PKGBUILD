@@ -8,7 +8,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="Stream KEXP with album art and track information, straight to your desktop or terminal."
 arch=('x86_64')
-url="https://kexp.eean.dev"
+url="https://invent.kde.org/ianmonroe/player-for-kexp"
 license=('GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL')
 depends=(
     'qt6-base'
