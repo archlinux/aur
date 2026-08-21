@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=spectacle-analyzer.lv2-git
 pkgdesc="Realtime graphical spectrum analyzer."
-pkgver=v1.0.r5.g1c08616
+pkgver=v2.0.r9.g540d98a
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/jpcima/spectacle"
 license=()
 groups=(lv2-plugins)
 depends=('cairo' 'lv2')
-makedepends=()
+makedepends=('git' 'mesa' 'fftw')
 checkdepends=()
 optdepends=()
 provides=()
