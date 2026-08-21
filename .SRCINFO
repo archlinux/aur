@@ -1,6 +1,6 @@
 pkgbase = r-cvar
 	pkgdesc = Compute Expected Shortfall and Value at Risk for Continuous Distributions
-	pkgver = 0.6
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=cvar
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-cvar
 	optdepends = r-fgarch
 	optdepends = r-performanceanalytics
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/cvar_0.6.tar.gz
-	sha256sums = 9079f57578b0f7e26e788511803e8448ff4f2353c8ff271c5c7b7576198a4330
+	source = https://cran.r-project.org/src/contrib/cvar_0.6.1.tar.gz
+	sha256sums = 1bdd5f89c14f6d269238371337fdd18933d68b282c6ab083d560bfc614ca764f
 
 pkgname = r-cvar
