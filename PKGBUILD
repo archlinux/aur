@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 _base=earthpy
 pkgname=python-${_base}
-pkgver=0.10.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Package built to support working with spatial data"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python-requests python-geopandas python-matplotlib python-rasterio pyth
 makedepends=(python-build python-installer python-setuptools python-wheel)
 # checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha256sums=('27dbe8938683158a01708f4857e346843e7022b86bce0b40527798ad4c252fcd')
+sha256sums=('069bcb2749aba7cf18c3d5179958c61e75a51721defcfec0f255e82e9cc109dd')
 
 build() {
 	cd ${_base}-${pkgver}
