@@ -1,4 +1,8 @@
 post_install() {
+    mkdir -p /var/lib/ocsinventory-agent
+    mkdir -p /var/log/ocsinventory-agent
+    chmod 755 /var/lib/ocsinventory-agent
+    chmod 755 /var/log/ocsinventory-agent
     echo "Edit /etc/ocsinventory/ocsinventory-agent.cfg with your server details."
 }
 pre_upgrade() {
