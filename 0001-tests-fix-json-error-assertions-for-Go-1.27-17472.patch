@@ -1,0 +1,125 @@
+From 7f387cb34beb15cc489e21552d35160b12fd53eb Mon Sep 17 00:00:00 2001
+Message-ID: <7f387cb34beb15cc489e21552d35160b12fd53eb.1787321101.git.maciej.borzecki@canonical.com>
+From: Anshul Singh <77113867+levihackerman-102@users.noreply.github.com>
+Date: Wed, 19 Aug 2026 00:05:55 +0900
+Subject: [PATCH] tests: fix json error assertions for Go 1.27 (#17472)
+
+Go 1.27's encoding/json changed several error message formats:
+
+- unmarshal type errors drop the 'Go struct field <T>'/'Go value'
+  type prefix ('cannot unmarshal number into Go struct field ...' ->
+  'cannot unmarshal number into .path of type ...')
+- syntax errors drop the 'literal' suffix ('in string literal' ->
+  'in string')
+- invalid escape errors are reworded ('invalid character ... in
+  string escape code' / 'in \u hexadecimal character escape' ->
+  'invalid escape sequence ... in string')
+- base64 errors are now wrapped
+
+Relax the affected test assertions so they match both the Go 1.26
+and Go 1.27 message formats (verified against go1.26.5 and
+go1.27rc3).
+
+Signed-off-by: Maciej Borzecki <maciej.borzecki@canonical.com>
+---
+ daemon/api_prompting_test.go                   |  2 +-
+ interfaces/prompting/patterns/patterns_test.go |  2 +-
+ jsonutil/safejson/safejson_test.go             | 10 +++++-----
+ overlord/devicestate/devicestate_test.go       |  2 +-
+ overlord/install/install_test.go               |  6 +++---
+ usersession/client/client_test.go              |  2 +-
+ 6 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/daemon/api_prompting_test.go b/daemon/api_prompting_test.go
+index 536ed4f3f7dfe266822d36a0e010f07bb9443185..29566e848b490c6fee0a03bd315163c16b45f3f6 100644
+--- a/daemon/api_prompting_test.go
++++ b/daemon/api_prompting_test.go
+@@ -1305,7 +1305,7 @@ func (s *promptingSuite) TestPostPromptErrors(c *C) {
+ 	rspe = s.errorReq(c, req, nil, actionIsExpected)
+ 	c.Check(rspe.Status, Equals, 400)
+ 	c.Check(rspe.Kind, Equals, client.ErrorKind(""))
+-	c.Check(rspe.Message, Matches, "cannot decode request body into prompt reply:.*cannot unmarshal number into Go struct field.*")
++	c.Check(rspe.Message, Matches, "cannot decode request body into prompt reply:.*cannot unmarshal number into.*")
+ 
+ 	// Invalid outcome (action) or lifespan
+ 	for _, testCase := range []struct {
+diff --git a/interfaces/prompting/patterns/patterns_test.go b/interfaces/prompting/patterns/patterns_test.go
+index 2222c5012ab1bee6214ba9232e862830232c0640..51e6d5d803b2764d6562ffc325cc5775c2389cd8 100644
+--- a/interfaces/prompting/patterns/patterns_test.go
++++ b/interfaces/prompting/patterns/patterns_test.go
+@@ -376,7 +376,7 @@ func (s *patternsSuite) TestPathPatternUnmarshalJSONUnhappy(c *C) {
+ 		},
+ 		{
+ 			[]byte{'"', 0x00, '"'},
+-			`invalid character '\\x00' in string literal`,
++			`invalid character '\\x00' in string.*`,
+ 		},
+ 	} {
+ 		pathPattern := patterns.PathPattern{}
+diff --git a/jsonutil/safejson/safejson_test.go b/jsonutil/safejson/safejson_test.go
+index 9bbf8dfa6ce768857bd51ef97bb45c66fae3789e..901a0975bcddffa4d8fc311b2e616570c542af23 100644
+--- a/jsonutil/safejson/safejson_test.go
++++ b/jsonutil/safejson/safejson_test.go
+@@ -86,11 +86,11 @@ func (escapeSuite) TestBadStrings(c *check.C) {
+ 
+ 	table := map[string][][]byte{
+ 		// these are from json itself (so we're not checking them):
+-		"invalid character '.+' in string literal":     cc0,
+-		"invalid character '.+' in string escape code": badesc,
+-		`invalid character '.+' in \\u .*`:             {[]byte(`"\u02"`), []byte(`"\u02zz"`)},
+-		"invalid character '\"' after top-level value": {[]byte(`"""`)},
+-		"unexpected end of JSON input":                 {[]byte(`"\"`)},
++		"invalid character '.+' in string.*":                                                                cc0,
++		"(invalid character '.+' in string escape code|invalid escape sequence .+ in string)":               badesc,
++		`(invalid character '.+' in \\u hexadecimal character escape|invalid escape sequence .+ in string)`: {[]byte(`"\u02"`), []byte(`"\u02zz"`)},
++		"invalid character '\"' after top-level value":                                                      {[]byte(`"""`)},
++		"unexpected end of JSON input":                                                                      {[]byte(`"\"`)},
+ 	}
+ 
+ 	for e, js := range table {
+diff --git a/overlord/devicestate/devicestate_test.go b/overlord/devicestate/devicestate_test.go
+index 04c6dd6ad7b19ba3015b9adfe60a5970ee70f317..3d784456f63ff040a1fb8fb7d46a7eaf8fcf5907 100644
+--- a/overlord/devicestate/devicestate_test.go
++++ b/overlord/devicestate/devicestate_test.go
+@@ -2073,7 +2073,7 @@ func (s *deviceMgrSuite) TestRunFDESetupHookErrorResult(c *C) {
+ 	st.Lock()
+ 	_, err := devicestate.DeviceManagerRunFDESetupHook(s.mgr, req)
+ 	st.Unlock()
+-	c.Assert(err, ErrorMatches, `cannot get result from fde-setup hook "op": cannot unmarshal context value for "fde-setup-result": illegal base64 data at input byte 3`)
++	c.Assert(err, ErrorMatches, `cannot get result from fde-setup hook "op": cannot unmarshal context value for "fde-setup-result": .*illegal base64 data at input byte 3`)
+ }
+ 
+ type startOfOperationTimeSuite struct {
+diff --git a/overlord/install/install_test.go b/overlord/install/install_test.go
+index eba3a0667485d7b68e3d846da3b876b7967fd183..6ade141505f81c1f7b0ea7bc9c7b53438c419e69 100644
+--- a/overlord/install/install_test.go
++++ b/overlord/install/install_test.go
+@@ -1578,9 +1578,9 @@ func (s *installSuite) TestInstallCheckEncryptedFDEHook(c *C) {
+ 		{`{"features":["a"]}`, "", device.EncryptionTypeLUKS},
+ 		{`{"features":["a","b"]}`, "", device.EncryptionTypeLUKS},
+ 		// features must be list of strings
+-		{`{"features":[1]}`, `cannot parse hook output ".*": json: cannot unmarshal number into Go struct.*`, device.EncryptionTypeNone},
+-		{`{"features":1}`, `cannot parse hook output ".*": json: cannot unmarshal number into Go struct.*`, device.EncryptionTypeNone},
+-		{`{"features":"1"}`, `cannot parse hook output ".*": json: cannot unmarshal string into Go struct.*`, device.EncryptionTypeNone},
++		{`{"features":[1]}`, `cannot parse hook output ".*": json: cannot unmarshal number into.*`, device.EncryptionTypeNone},
++		{`{"features":1}`, `cannot parse hook output ".*": json: cannot unmarshal number into.*`, device.EncryptionTypeNone},
++		{`{"features":"1"}`, `cannot parse hook output ".*": json: cannot unmarshal string into.*`, device.EncryptionTypeNone},
+ 		// valid and uses ice
+ 		{`{"features":["a","inline-crypto-engine","b"]}`, "", device.EncryptionTypeLUKSWithICE},
+ 	} {
+diff --git a/usersession/client/client_test.go b/usersession/client/client_test.go
+index ffb9c5909f468bcb8df23f577e034ffdf698a6f8..d7d5732e0462dee97f80d578818f6b61f94db2c7 100644
+--- a/usersession/client/client_test.go
++++ b/usersession/client/client_test.go
+@@ -665,7 +665,7 @@ func (s *clientSuite) TestServiceStatusWrongResultType(c *C) {
+ 	})
+ 	_, failures, err := s.cli.ServiceStatus(context.Background(), []string{"snap.foo.service"})
+ 	c.Check(failures, DeepEquals, map[int][]client.ServiceFailure{})
+-	c.Check(err, ErrorMatches, `json: cannot unmarshal string into Go value of type client.ServiceUnitStatus`)
++	c.Check(err, ErrorMatches, `json: cannot unmarshal string into .* of type client.ServiceUnitStatus`)
+ }
+ 
+ func (s *clientSuite) TestServiceStatusFailure(c *C) {
+-- 
+2.55.0
+

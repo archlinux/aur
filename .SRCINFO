@@ -1,7 +1,7 @@
 pkgbase = snapd
 	pkgdesc = Service and tools for management of snap packages.
 	pkgver = 2.76.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snapcore/snapd
 	install = snapd.install
 	arch = x86_64
@@ -32,6 +32,8 @@ pkgbase = snapd
 	options = emptydirs
 	options = !lto
 	source = snapd-2.76.2.tar.xz::https://github.com/snapcore/snapd/releases/download/2.76.2/snapd_2.76.2.vendor.tar.xz
+	source = 0001-tests-fix-json-error-assertions-for-Go-1.27-17472.patch
 	sha256sums = 873fedb8525057c2b276003c2f90c2e5f7b541ec1bb409a6f489c51b5c72af2b
+	sha256sums = 0a091ec38ffbe653db698a96ae3486233746711da138e2e5793cff97b523f3f2
 
 pkgname = snapd
