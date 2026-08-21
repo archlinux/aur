@@ -1,6 +1,6 @@
 # Maintainer: Phundahl
 pkgname=tailtui
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A brutalist, keyboard-centric terminal user interface for Tailscale"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go')
 # without this makepkg emits an empty tailtui-debug package and a warning.
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Phundahl/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('9b50d2de98edf6c6c23cf812ebd7ef40d2e2d10d718d8f55ed9b737eb449af48')
+sha256sums=('beacd53f3c9aec58588385ce193ca21af98ef815921d8083dfff220385376aeb')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -38,4 +38,10 @@ package() {
 
   # Documentation.
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+  # Omarchy theme template. Users copy this into ~/.config/omarchy/themed/ to
+  # get live theme switching; the path matches the official .deb/.rpm, which is
+  # what the README documents.
+  install -Dm644 contrib/tailtui.toml.tpl \
+    "${pkgdir}/usr/share/${pkgname}/tailtui.toml.tpl"
 }

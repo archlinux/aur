@@ -1,6 +1,6 @@
 pkgbase = tailtui
 	pkgdesc = A brutalist, keyboard-centric terminal user interface for Tailscale
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/Phundahl/tailtui
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tailtui
 	makedepends = go
 	depends = tailscale
 	options = !debug
-	source = tailtui-1.2.0.tar.gz::https://github.com/Phundahl/tailtui/archive/v1.2.0.tar.gz
-	sha256sums = 9b50d2de98edf6c6c23cf812ebd7ef40d2e2d10d718d8f55ed9b737eb449af48
+	source = tailtui-1.3.0.tar.gz::https://github.com/Phundahl/tailtui/archive/v1.3.0.tar.gz
+	sha256sums = beacd53f3c9aec58588385ce193ca21af98ef815921d8083dfff220385376aeb
 
 pkgname = tailtui
