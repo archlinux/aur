@@ -9,6 +9,7 @@ pkgbase = logdiag-git
 	makedepends = cmake
 	makedepends = pkg-config
 	makedepends = git
+	makedepends = glib2-devel
 	depends = gtk3
 	depends = lua
 	depends = json-glib
