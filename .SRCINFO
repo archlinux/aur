@@ -1,7 +1,7 @@
 pkgbase = idescriptor
 	pkgdesc = A free, open-source, and cross-platform iDevice management tool
-	pkgver = 0.6.1
-	pkgrel = 4
+	pkgver = 0.6.2
+	pkgrel = 1
 	url = https://github.com/iDescriptor/iDescriptor
 	arch = x86_64
 	arch = aarch64
@@ -41,10 +41,10 @@ pkgbase = idescriptor
 	depends = sqlite
 	depends = zstd
 	optdepends = ifuse: use ifuse provided by libimobiledevice instead of Rust implementation
-	source = git+https://github.com/iDescriptor/iDescriptor.git#tag=v0.6.1
+	source = git+https://github.com/iDescriptor/iDescriptor.git#tag=v0.6.2
 	source = git+https://github.com/iDescriptor/uxplay.git
 	source = git+https://github.com/uncor3/idevice.git
-	sha256sums = e3bacca4647f927a0f7772c51fe46b45dac9c5d321f95d459d6e6549dc1d539d
+	sha256sums = 40d5216741555d5d5a33250cac1139f1f1ca3a2f6734f9aff22cd0172ba3993b
 	sha256sums = SKIP
 	sha256sums = SKIP
 
