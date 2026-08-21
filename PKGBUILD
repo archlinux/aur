@@ -1,7 +1,7 @@
 # Maintainer: Milk Brewster <milk on freenode>
 _pkgname=stepseq.lv2
 pkgname=${_pkgname}-git
-pkgver=r89.94dd4e4
+pkgver=r166.40ac760
 pkgrel=1
 pkgdesc="Simple Step Sequencer (also available in community/x42-plugins)"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://github.com/x42/stepseq.lv2"
 license=('GPL')
 groups=()
 depends=('lv2')
-makedepends=('git')
+makedepends=('git' 'cairo' 'pango' 'glu' 'libglvnd' 'jack')
 provides=('stepseq.lv2' 'stepseq.lv2-git')
 conflicts=('stepseq.lv2' 'stepseq.lv2-git' 'x42-plugins')
 install=
