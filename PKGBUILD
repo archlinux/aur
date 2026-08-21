@@ -2,7 +2,7 @@
 
 pkgname=adapterremoval3
 _pkgname=adapterremoval
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Rapid adapter trimming, identification, and read merging of NGS sequence reads'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('adapterremoval')
 depends=('glibc' 'gcc-libs' 'libdeflate' 'isa-l' 'libstdc++' 'libgcc')
 makedepends=('python-sphinx' 'meson' 'ninja' 'uv' 'mold' 'python-fastjsonschema')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/MikkelSchubert/adapterremoval/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('52bef5e9ad5de76a6bd0a1522ad621e95efec0cc23602900bd65a154f96a1f6e')
+sha256sums=('905f7c3289f743a90d228226ad6a50aec101343830bfdef5608ec9bb69af0ca7')
 
 build() {
   export LDFLAGS="${LDFLAGS} -fuse-ld=mold"
