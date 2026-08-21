@@ -1,0 +1,24 @@
+pkgbase = ddsn-bin
+	pkgdesc = Dynamic Discord Rich Presence based on active Niri windows
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/Veridian-Zenith/DDS
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = niri
+	provides = ddsn
+	conflicts = ddsn
+	conflicts = ddsn-git
+	source = https://github.com/Veridian-Zenith/DDS/releases/download/v1.7.0/ddsn
+	source = https://github.com/Veridian-Zenith/DDS/raw/v1.7.0/scripts/discord-monitor.sh
+	source = https://github.com/Veridian-Zenith/DDS/raw/v1.7.0/scripts/discord-monitor-niri.service
+	source = https://github.com/Veridian-Zenith/DDS/raw/v1.7.0/common/src/config/default-config-niri.json
+	source = https://github.com/Veridian-Zenith/DDS/raw/v1.7.0/LICENSE
+	sha256sums = e5d2925c421e0a0d8e7c05dbf966e53fa22ba9ac1cf57ff1dda2be88e96ede7c
+	sha256sums = bd009eb28a8e0c26545fe2bf759a6c87e26fe723fd2405f8e20521b706c75a31
+	sha256sums = 9ec33fa7244b1df6b995a1d85159c207373b391027a339f0afce7fe3d6b530f6
+	sha256sums = f395f71ec616592d224eb85cdc676346e3c655d488bfb5a637ace66d908e10bb
+	sha256sums = 8e945a764f8cbb12c32187e0a30bbd350273f0cd2ff5f613008926c4fd5c2a8d
+
+pkgname = ddsn-bin

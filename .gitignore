@@ -1,0 +1,11 @@
+# Build artifacts
+src/
+pkg/
+*.tar.*
+*.sig
+
+# Source files downloaded by makepkg
+ddsn
+default-config-niri.json
+discord-monitor-niri.service
+discord-monitor.sh
