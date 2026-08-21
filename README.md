@@ -32,12 +32,17 @@ device ID and firmware patches not yet in mainline. Supports kernels 6.17+.
 | WiFi (MT7925e via PCIe) | **WORKING** | 2.4/5/6 GHz, 320MHz EHT, suspend/resume |
 
 **Known issues:**
-- TX retransmissions were elevated (~35% at 320 MHz, firmware-side). Firmware bundled since v2.12 (ASUS 5.7.0.5659) reduces retry to ~0.95%. EHT path overhead also limits upload throughput - disable with `disable_eht=1` in wpa_supplicant for a ~2x upload improvement at 160 MHz. ([#26](https://github.com/jetm/mediatek-mt7927-dkms/issues/26))
+- TX retransmissions can be elevated (~35% at 320 MHz, firmware-side) depending on which firmware build you run. Since v2.14-4 the WiFi firmware comes from linux-firmware rather than from this package; see "WiFi firmware" below. EHT path overhead also limits upload throughput - disable with `disable_eht=1` in wpa_supplicant for a ~2x upload improvement at 160 MHz. ([#26](https://github.com/jetm/mediatek-mt7927-dkms/issues/26))
 - Bluetooth USB device may disappear after module reload or DKMS upgrade, persists
-  across reboots. Workaround: shut down, unplug PSU / switch off at back, wait 10
-  seconds, power back on. A regular reboot is not enough - the MT6639 BT firmware
-  locks up and only recovers with a full power drain.
-  ([#23](https://github.com/jetm/mediatek-mt7927-dkms/issues/23))
+  across reboots. The MT6639 BT firmware locks up, and a normal reboot does not clear
+  it because the controller keeps standby power. Preferred fix: enable **ErP** in the
+  BIOS (on ASUS boards it lives with the APM/power settings; pick the option that
+  covers a normal shutdown, usually labelled S4+S5). That cuts the standby rail, so
+  the controller cold-initialises on the next power-on and you set it once rather
+  than repeating a drain. The trade-off is that USB ports stay unpowered while the
+  machine is off, so nothing charges on standby. Otherwise: shut down, switch the PSU
+  off at the back or unplug it, wait 10 seconds, then power back on. ErP tip from
+  spikesolobb. ([#23](https://github.com/jetm/mediatek-mt7927-dkms/issues/23))
 - AP mode throughput at 80 MHz varies with RF conditions (~295-570 Mbps; up to 570 Mbps in quiet RF, ~422 Mbps in congested 5 GHz environments) vs ~700 Mbps on Windows. NetworkManager defaults to 20 MHz which drops to ~130 Mbps - use hostapd for wider channels. AP at 320 MHz on 6 GHz with Wi-Fi 7 clients (Intel BE200) is range-dependent: ~1.96 Gbps at 1 m (0 retries), ~770 Mbps at typical room distance, rate-control collapse to 6 Mbit/s under poor RF or extended range. ([#36](https://github.com/jetm/mediatek-mt7927-dkms/issues/36))
 
 ## Supported hardware
@@ -45,6 +50,8 @@ device ID and firmware patches not yet in mainline. Supports kernels 6.17+.
 | Device | BT USB ID | WiFi PCI ID |
 |--------|-----------|-------------|
 | ASUS ROG Crosshair X870E Hero | 0489:e13a | 14c3:7927 |
+| ASUS ROG Crosshair X870E Hero (MT6639 variant) | 13d3:3588 | 14c3:6639 |
+| ASUS ROG Crosshair X870E Dark Hero | 0489:e13a | 14c3:7927 |
 | ASUS ROG Crosshair X870E Glacial | 0489:e13a | 14c3:7927 |
 | ASUS ROG Crosshair X870E Extreme | 13d3:3588 | 14c3:6639 |
 | ASUS ProArt X870E-Creator WiFi (rev 1, MT6639) | 13d3:3588 | 14c3:6639 |
@@ -57,6 +64,7 @@ device ID and firmware patches not yet in mainline. Supports kernels 6.17+.
 | Gigabyte Z790 AORUS ELITE X WiFi7 | 0489:e10f | 14c3:7927 |
 | Gigabyte X870E Aero X3D Dark Wood | 0489:e10f | 14c3:7927 |
 | MSI MEG X870E ACE MAX | 0489:e110 | 14c3:7927 |
+| MSI PRO X870E-P WIFI (MS-7E70) | 0489:e110 | 14c3:7927 |
 | Lenovo Legion Pro 7 16ARX9 | 0489:e0fa | 14c3:7927 |
 | Lenovo Legion Pro 7 16AFR10H | 0489:e0fa | 14c3:7927 |
 | TP-Link Archer TBE550E PCIe | 0489:e116 | 14c3:7927 |
@@ -385,15 +393,37 @@ These are planned as follow-up patches once the base series lands:
   full DMA reinitialization on firmware crash. Has unguarded paths on
   mt7925 standalone that need fixing first.
 
+### WiFi firmware
+
+Since v2.14-4 this package does **not** install the MT7927 WiFi firmware. MediaTek's
+own build is in linux-firmware (merged as MR !1055), and the kernel's firmware loader
+tries the uncompressed name before the `.zst` one, so a copy installed here silently
+shadowed the newer vendor blob. Get the WiFi firmware from your distro's
+`linux-firmware` package instead.
+
+If your linux-firmware predates that merge, extract the blobs from the vendor ZIP by
+hand:
+
+```bash
+make download                      # fetches the ASUS driver ZIP
+python3 extract_firmware.py DRV_WiFi_MTK_*.zip /usr/lib/firmware/mediatek/mt7927/
+```
+
+The Bluetooth blob (`BT_RAM_CODE_MT6639_2_1_hdr.bin`) is still installed by this
+package, and has to be: linux-firmware only accepts vendor blobs from the copyright
+holder, so MR !946 was closed and MT6639 BT firmware has to be submitted by MediaTek
+before it can live there.
+
 ### Firmware dependencies
 
 These issues are firmware-controlled and cannot be fixed in the driver:
 
 - **TX retransmissions** ([#26](https://github.com/jetm/mediatek-mt7927-dkms/issues/26)) -
-  Firmware bundled since v2.12 (ASUS 5.7.0.5659 / Station-Drivers 26.30.3.61) reduces
-  TX retry from ~35% to ~0.95% at 320 MHz. EHT path overhead halves upload throughput
-  at 160 MHz - disable with `disable_eht=1` (see Troubleshooting). v25.030.x firmware
-  does NOT fix retries; the improvement requires the 26.30.x branch.
+  TX retry runs at ~35% at 320 MHz on some firmware builds. EHT path overhead halves
+  upload throughput at 160 MHz - disable with `disable_eht=1` (see Troubleshooting).
+  Newer is not reliably better on this chip: the ASUS 5.7.0.5659 build fails the
+  WPA3-SAE handshake against some UniFi APs ([#102](https://github.com/jetm/mediatek-mt7927-dkms/issues/102)).
+  Try the linux-firmware build first and only hunt for another if it misbehaves.
 - **BT USB disappearance** ([#23](https://github.com/jetm/mediatek-mt7927-dkms/issues/23)) -
   MT6639 BT firmware locks up during module reload, requires full power cycle
   (PSU unplug). Affects Linux and Windows.

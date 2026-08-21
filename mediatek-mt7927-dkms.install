@@ -4,6 +4,33 @@ _pkgname=mediatek-mt7927
 # 70-dkms-upgrade.hook) which automatically add, build, and install modules for
 # all kernels with headers present - skipping kernels without headers.
 
+_check_wifi_firmware() {
+  # Since 2.14-4 this package no longer installs the WiFi blobs, so they stop
+  # shadowing the newer vendor build in linux-firmware. On a system whose
+  # linux-firmware predates MR !1055 that leaves no copy at all, and on a
+  # WiFi-only machine that is the connection needed to fix it. Warn while the
+  # user is still looking at the terminal.
+  local fw=/usr/lib/firmware/mediatek/mt7927/WIFI_RAM_CODE_MT6639_2_1
+  if [[ ! -e "${fw}.bin" && ! -e "${fw}.bin.zst" ]]; then
+    cat <<'EOF'
+==> WARNING: no MT7927 WiFi firmware found on this system.
+    This package does not ship WIFI_RAM_CODE_MT6639_2_1.bin, because doing so
+    shadowed the newer MediaTek-submitted build in linux-firmware.
+    Your linux-firmware appears to predate that submission.
+    Install or update linux-firmware (or linux-firmware-mediatek) BEFORE
+    rebooting, or extract the blobs manually - see "WiFi firmware" in the README.
+EOF
+  fi
+}
+
+post_install() {
+  _check_wifi_firmware
+}
+
+post_upgrade() {
+  _check_wifi_firmware
+}
+
 pre_remove() {
   # Query actual installed version instead of hardcoding (avoids drift)
   local ver

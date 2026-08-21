@@ -5,6 +5,14 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.14-4] - 2026-08-21
+
+### Packaging
+
+- Stop installing the MT7927 WiFi firmware. MediaTek's own build reached linux-firmware via MR !1055, and the kernel's firmware loader tries the uncompressed name before the `.zst`, so the copy this package installed silently shadowed a newer vendor blob with one extracted from a Windows driver ZIP. On a current system that meant loading a June 2025 build (`20250606201037`) in place of `20260414134255`. The Bluetooth blob is still installed, because linux-firmware only takes vendor blobs from the copyright holder and MR !946 was closed on those grounds (reported by Username2481632, #104)
+- Warn on upgrade when no WiFi firmware is present from either source, since removing the bundled copy on a machine whose linux-firmware predates !1055 would otherwise take out the connection needed to fix it
+- Correct the firmware version claimed in the README and CHANGELOG. Both said ASUS 5.7.0.5659 had been bundled since v2.12; `_driver_filename` was never repointed and every release since has shipped the earlier V5603998 build
+
 ## [2.14-3] - 2026-08-21
 
 ### Packaging
@@ -69,7 +77,7 @@ and pkgrel bumps for PKGBUILD packaging changes.
 
 ### Firmware
 
-- Update bundled firmware to ASUS 5.7.0.5659 (= Station-Drivers 26.30.3.61): reduces TX retry from ~35% to ~0.95% at 320 MHz
+- Update bundled firmware to ASUS 5.7.0.5659 (= Station-Drivers 26.30.3.61): reduces TX retry from ~35% to ~0.95% at 320 MHz. **Correction (2026-08-21): this never shipped.** `_driver_filename` was never repointed, so v2.12 through v2.14-3 all bundled the earlier V5603998 build (`20250606201037`). See the 2.14-4 entry
 
 ### Documentation
 
