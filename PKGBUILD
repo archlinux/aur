@@ -10,7 +10,7 @@
 # Keep the two in sync on each release (see packaging/aur/README.md).
 
 pkgname=exilecompass-bin
-pkgver=1.3.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Path of Exile 2 game overlay (campaign guide, stash regex, build tracker)"
 arch=('x86_64')
@@ -41,7 +41,7 @@ _debfile="ExileCompass_${pkgver}_amd64.deb"
 source=("${_debfile}::${url}/releases/download/v${pkgver}/${_debfile}")
 # 'SKIP' keeps the recipe release-agnostic. Prefer real sums per release with:
 #   updpkgsums   (from the pacman-contrib package)
-sha256sums=('96879ff5f3db958bc66beaa5691d5c61d04b278fb3376f84040e8231fe3e8d60')
+sha256sums=('1d5f21b110f44f70b6b57aed3d24732df58b81074c12ce6e5c04e7acce27b516')
 
 package() {
   # makepkg auto-extracts the .deb (an ar archive) into $srcdir, leaving the
