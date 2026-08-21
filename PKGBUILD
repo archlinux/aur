@@ -1,6 +1,6 @@
 # Maintainer: OldJobobo <aur at oldjobobo dot com>
 pkgname=thpm
-pkgver=1.0.0rc21
+pkgver=1.0.0rc22
 pkgrel=1
 pkgdesc='Omarchy 4-native manager for external theme integrations'
 arch=('any')
@@ -14,7 +14,7 @@ replaces=('theme-hook-plugin-manager')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 install=thpm.install
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('782c50b925af8e49432b0bd412205099cd278e9f429c96948daf1ee234e4a3f1')
+sha256sums=('c5969a0f681a0514087f928c1b0038d992a024f911bd08223af304f58b9e9a4b')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -26,7 +26,7 @@ package() {
     /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 -t "$pkgdir/usr/share/thpm/templates" assets/templates/*
     install -Dm644 -t "$pkgdir/usr/share/thpm/qml" assets/qml/*
-    install -Dm755 assets/hooks/90-thpm "$pkgdir/usr/share/thpm/hooks/90-thpm"
+    install -Dm755 -t "$pkgdir/usr/share/thpm/hooks" assets/hooks/90-thpm assets/hooks/90-thpm-ui
     install -Dm644 assets/compat/theme-env.sh "$pkgdir/usr/share/thpm/compat/theme-env.sh"
     install -Dm644 -t "$pkgdir/usr/share/thpm/vencord" assets/vencord/*
     install -Dm644 -t "$pkgdir/usr/share/thpm/spicetify" assets/spicetify/*
