@@ -1,6 +1,6 @@
 # Maintainer: Your Name <you@example.com>
 
-pkgname=ag-bin
+pkgname=atomgit-cli-bin
 pkgver=0.7.2
 pkgrel=1
 pkgdesc="AtomGit CLI (ag) - 基于 AtomGit API 的命令行工具，参考 GitHub CLI (gh) 开发 (binary release)"
