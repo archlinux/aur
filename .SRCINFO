@@ -1,0 +1,26 @@
+pkgbase = renux
+	pkgdesc = A terminal-based bulk file renamer with a TUI
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/andrianllmm/renux
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	depends = bash
+	depends = python
+	depends = python-pillow
+	depends = python-rich
+	depends = python-textual
+	depends = python-slugify
+	depends = python-hachoir
+	depends = python-typer
+	provides = renux
+	conflicts = python-renux
+	source = renux-0.4.1.tar.gz::https://github.com/andrianllmm/renux/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 2aa574af87c159622717908a170e29fa6cda16f4d3889dec9c867312070c41bd
+
+pkgname = renux
