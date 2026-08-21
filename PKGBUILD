@@ -1,7 +1,7 @@
 # Maintainer: kazu0617 <archlinux at kazu0617 dot net>
 
 pkgname=vrcx-0
-pkgver=2.24.2
+pkgver=2.24.3
 pkgrel=1
 pkgdesc='Fast, lightweight VRCX implementation built with Tauri and Rust'
 arch=('x86_64')
@@ -27,12 +27,8 @@ makedepends=(
 )
 source=(
   "VRCX-0-${pkgver}.tar.gz::https://github.com/Map1en/VRCX-0/archive/refs/tags/v${pkgver}.tar.gz"
-  'nodejs26-world-dialog-react-test.patch'
-  'nodejs26-game-log-react-test.patch'
 )
-sha256sums=('5c912571a9459b1c2221e26b6bbef53b4f6cefd546c4cdc845050add2f2a31b9'
-            '7bfe3f2e44c1c6075f754c724a395955b210cf841b7a0632af39a7130605f8a2'
-            '7a1ce445cf38aef839e4eee0f3b6d96f0412551525ca53fbcf79279a7493049b')
+sha256sums=('6cb0f4c53ad8e87269e72bc42f5e6122bfc4581309b70945ba398db0d82ea1dd')
 prepare() {
   cd "VRCX-0-${pkgver}"
 
@@ -40,9 +36,6 @@ prepare() {
   export npm_config_cache="${srcdir}/npm-cache"
   export HUSKY=0
 
-  # some codes curse failed to build in nodejs26, patch it
-  patch --forward --strip=1 < "${srcdir}/nodejs26-world-dialog-react-test.patch"
-  patch --forward --strip=1 < "${srcdir}/nodejs26-game-log-react-test.patch"
   npm ci
   cargo fetch --locked
 }
