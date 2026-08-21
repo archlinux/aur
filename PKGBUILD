@@ -2,7 +2,7 @@
 # Contributor: ValHue <vhuelamo at gmail dot com>
 
 pkgname=java17-openjfx-bin
-pkgver=17.0.12
+pkgver=17.0.19
 pkgrel=1
 pkgdesc="Java OpenJFX ${pkgver} client application platform (Gluon build)."
 arch=('x86_64')
@@ -15,9 +15,9 @@ options=(!strip)
 source=("https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}_linux-x64_bin-jmods.zip"
         "https://download2.gluonhq.com/openjfx/${pkgver}/openjfx-${pkgver}-javadoc.zip")
-sha256sums=('f8bb2724d250595dad55b2886ceab19a8462515863f609a0b5462529d725e9e8'
-            'f22bad50a4a0f4932ed999dcecccb59f188c22ea844d777512f3175e8ebb4024'
-            'c96228f0148ec0413c1ec78e298ed94ea85ddc2b84b295cc03ca4c23e5f931b0')
+sha256sums=('d5f70e96001872e84593f149dc6cb645f3bfbc71e519fa085608070c401f6d5e'
+            'ab22097c4e6679547333172a017ced4e3210dc572f51a96a3be1d1dbfcd61f37'
+            '428602563746012027c1e0549171a14180f2c77b07a3ecb758ea1f4352ef81f2')
 
 _jvmdir=usr/lib/jvm/java-17-openjdk
 
