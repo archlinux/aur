@@ -1,6 +1,6 @@
 pkgbase = alo.lv2-git
 	pkgdesc = Looper plugin originally made for the MOD Duo hardware.
-	pkgver = 0.7.r14.ge8cd661
+	pkgver = 0.9.r0.g92bd0a3
 	pkgrel = 1
 	url = https://github.com/devcurmudgeon/alo
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = alo.lv2-git
 	md5sums = SKIP
 
 pkgname = alo.lv2-git
-
