@@ -15,4 +15,4 @@ pkgbase = transmission-tui-git
 	source = git+https://codeberg.org/gaurav712/transmission-tui.git
 	b2sums = SKIP
 
-pkgname = transmission-tui-git
+pkgname = transmission-tui
