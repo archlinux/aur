@@ -2,12 +2,12 @@
 
 pkgname=oh-my-pi
 pkgver=17.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A coding agent with the IDE wired in"
 arch=('x86_64')
 url="https://omp.sh/"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'oniguruma' 'opus' 'pcre2')
+depends=('gcc-libs' 'glibc' 'oniguruma' 'opus' 'pcre2' 'zstd')
 makedepends=('bun' 'cargo' 'git')
 optdepends=(
     'alsa-lib: ALSA fallback for live voice, STT, and TTS'
@@ -81,6 +81,7 @@ _build_native() {
     CC="${srcdir}/cc-tree-sitter" \
     LIBOPUS_STATIC=0 \
     PCRE2_SYS_STATIC=0 \
+    ZSTD_SYS_USE_PKG_CONFIG=1 \
     RUSTONIG_SYSTEM_LIBONIG=1 \
         cargo build --frozen --profile ci --package pi-natives "${_cargo_features[@]}"
 
