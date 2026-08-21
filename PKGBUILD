@@ -12,7 +12,6 @@ makedepends=(git)
 source=(
   "https://github.com/EliverLara/kde-control-station/archive/bb473188a19d6cbe89a9c1bb5b08c7ddc609375d.tar.gz"
   "kde-control-station-fixes.patch"
-  "kde-control-station-fixes.patch"
 )
 sha256sums=(
   'b2d3c32aab490d8e0efedba4b0c4c906d7dbd0ce56d483861550879a8f0db898'
