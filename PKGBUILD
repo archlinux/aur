@@ -1,8 +1,8 @@
-# Maintainer: arsalan rezazadeh  <arsalanrezazadeh4@gmail.com.com>
+# Maintainer: Your Name <your.email@example.com>
 pkgname=whitevpn-desktop
-pkgver=1.0.16
+pkgver=1.0.18
 pkgrel=1
-pkgdesc="WhiteVpn desktop client"
+pkgdesc="WhiteDNS desktop client - Managed desktop client for WhiteDNS and StormDNS"
 arch=('x86_64' 'aarch64')
 url="https://github.com/WhiteDNS/WhiteVPN-Desktop"
 license=('custom:WhiteDNS')
@@ -13,7 +13,7 @@ source_x86_64=("https://github.com/WhiteDNS/WhiteVPN-Desktop/releases/download/v
 source_aarch64=("https://github.com/WhiteDNS/WhiteVPN-Desktop/releases/download/v${pkgver}/WhiteVPN-Desktop-${pkgver}-linux-arm64-webkit41.tar.gz"
         "whitevpn-desktop.desktop"
         "whitevpn-desktop.png")
-sha256sums_x86_64=('642bdda072adf4bbaff5dc33eeb1f9d708ddb0c1f728539182b155cab0ac0292'
+sha256sums_x86_64=('d2c5380ac58135594c62912c92e053478a39998198eeef55b5b30d0541ae1c1a'
         'SKIP'
         'SKIP')
 sha256sums_aarch64=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5'
