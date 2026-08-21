@@ -4,7 +4,7 @@
 
 _name="zotero"
 pkgname="$_name-git"
-pkgver=11.0.r16669.45867ce
+pkgver=11.0.r16727.77a3a88
 pkgrel=1
 pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources"
 arch=('x86_64' 'i686')
@@ -144,8 +144,8 @@ package() {
   install -Dm0644 zotero-client/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 
   # Copy zotero icons to a standard location
-  for s in 32 64 128; do
-    install -Dm0644 "$pkgdir/usr/lib/zotero/icons/icon$s.png" "$pkgdir/usr/share/icons/hicolor/${s}x${s}/apps/zotero.png"
+  for _s in 32 64 128; do
+    install -Dm0644 "$pkgdir/usr/lib/zotero/icons/icon$_s.png" "$pkgdir/usr/share/icons/hicolor/${_s}x${_s}/apps/zotero.png"
   done
   install -Dm0644 "$pkgdir/usr/lib/zotero/icons/symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/zotero.svg"
 
