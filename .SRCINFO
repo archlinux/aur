@@ -1,0 +1,16 @@
+pkgbase = pagen-bin
+	pkgdesc = Generate pixel art from random numbers
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/sorairolake/pagen
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = pagen
+	conflicts = pagen
+	source_x86_64 = pagen-0.1.2-x86_64.tar.zst::https://github.com/sorairolake/pagen/releases/download/v0.1.2/pagen_0.1.2_linux_amd64.tar.zst
+	sha256sums_x86_64 = b2204814b5f6bc134657c9e13120af00b1d8c841d8dc02e7b964f823bed1f15f
+	source_aarch64 = pagen-0.1.2-aarch64.tar.zst::https://github.com/sorairolake/pagen/releases/download/v0.1.2/pagen_0.1.2_linux_arm64.tar.zst
+	sha256sums_aarch64 = b89f8282f594a344c36ab353c573f7da51fc27d9bdf9bfdfd90a9e060e86d609
+
+pkgname = pagen-bin
