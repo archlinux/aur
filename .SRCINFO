@@ -1,0 +1,15 @@
+pkgbase = pqp-crypto
+	pkgdesc = Quantum-resistant GPG emulation (ML-KEM + ML-DSA)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ajdiaz/pqp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	source = pqp-crypto-0.1.0.tar.gz::https://github.com/ajdiaz/pqp/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = dc9a3c9997d18197113fb87814a20d3c2bea0069ca896ec7a3cb0c18ae9e4464
+
+pkgname = pqp-crypto
