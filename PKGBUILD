@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
 
 pkgname=frizbee
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="Throw a tag at it and it comes back with a checksum"
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(Apache-2.0)
 depends=(glibc)
 makedepends=(git go)
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('e98204a43822e684ceaea3fec4e0f69ef0ab9db202cb10c0a469bfaf7743f2c4')
+sha256sums=('415879904e4b4985582ecbca8d4c3f140b8a59eb2a427e3b630bf179183cfd84')
 
 prepare() {
   cd $pkgname

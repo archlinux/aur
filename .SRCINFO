@@ -1,6 +1,6 @@
 pkgbase = frizbee
 	pkgdesc = Throw a tag at it and it comes back with a checksum
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/stacklok/frizbee
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = frizbee
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = git+https://github.com/stacklok/frizbee.git#tag=v0.1.10
-	sha256sums = e98204a43822e684ceaea3fec4e0f69ef0ab9db202cb10c0a469bfaf7743f2c4
+	source = git+https://github.com/stacklok/frizbee.git#tag=v0.1.11
+	sha256sums = 415879904e4b4985582ecbca8d4c3f140b8a59eb2a427e3b630bf179183cfd84
 
 pkgname = frizbee
