@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-bin
-	pkgdesc = Java OpenJDK 26.0.2 Oracle Build.
-	pkgver = 26.0.2.u10
+	pkgdesc = Java OpenJDK 26.0.2.1 Oracle Build.
+	pkgver = 26.0.2.1.u1
 	pkgrel = 1
 	url = https://jdk.java.net/26
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = java-openjdk-bin
 	provides = java-runtime-openjdk=26
 	provides = java-runtime-headless=26
 	provides = java-runtime-headless-openjdk=26
-	source_x86_64 = https://download.java.net/java/GA/jdk26.0.2/818d462d89b645c7a1aad49066c454e5/10/GPL/openjdk-26.0.2_linux-x64_bin.tar.gz
-	sha256sums_x86_64 = 2da09e9db53e5c4f9eeec045f49e7d8fbcd8e4153edbf0c269f520ff82fd4198
-	source_aarch64 = https://download.java.net/java/GA/jdk26.0.2/818d462d89b645c7a1aad49066c454e5/10/GPL/openjdk-26.0.2_linux-aarch64_bin.tar.gz
-	sha256sums_aarch64 = 0ce6516c459e635d9f263f9b3492d83ec2c1ee26db128a6d904cae3d3096ceee
+	source_x86_64 = https://download.java.net/java/GA/jdk26.0.2.1/3b8e6c7ec6274148a7aa15e7e7dfb53c/1/GPL/openjdk-26.0.2.1_linux-x64_bin.tar.gz
+	sha256sums_x86_64 = a1489256029b389ce6ee52da0de1d01496c5df1776d6870241fe4823b998ea61
+	source_aarch64 = https://download.java.net/java/GA/jdk26.0.2.1/3b8e6c7ec6274148a7aa15e7e7dfb53c/1/GPL/openjdk-26.0.2.1_linux-aarch64_bin.tar.gz
+	sha256sums_aarch64 = b96b265a4a1a36c02454148891aa58ca63303cbc2d1b7979c33b4fe99e09117b
 
 pkgname = java-openjdk-bin
