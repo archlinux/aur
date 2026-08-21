@@ -2,13 +2,13 @@
 # Contributor: Mirco Tischler <mt-ml at gmx dot de>
 
 pkgname=actor-framework
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="An Open Source Implementation of the Actor Model in C++"
 arch=(i686 x86_64)
 url="http://actor-framework.org"
 license=('custom:"BSD-3-Clause"')
-depends=('gcc-libs')
+depends=('libgcc' 'libstdc++')
 makedepends=('cmake' 'git')
 optdepends=(
 	'openssl: openssl support'
