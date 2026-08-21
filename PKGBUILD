@@ -2,13 +2,13 @@
 _pkgname=ps3dec
 pkgname=$_pkgname-git
 pkgver=r2.7d1d27f
-pkgrel=2
+pkgrel=3
 pkgdesc="ISO encryptor/decryptor for PS3 disc images"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/al3xtjames/PS3Dec"
 license=('WTFPL')
 depends=('glibc')
-makedepends=('cmake' 'git' 'libgcc' 'libgomp' 'mbedtls')
+makedepends=('cmake' 'git' 'libgcc' 'libgomp' 'mbedtls3')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -21,12 +21,15 @@ pkgver() {
 
 build() {
 	local options=(
+		-B build
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_INCLUDE_PATH="/usr/include/mbedtls3"
 		-D CMAKE_INSTALL_PREFIX=/usr
-		-Wno-dev
+		-D CMAKE_LIBRARY_PATH="/usr/lib/mbedtls3"
+		-W no-dev
 	)
-	cmake "${options[@]}" -B build -S $_pkgname
+	cmake "${options[@]}" $_pkgname
 	cmake --build build
 }
 

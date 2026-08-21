@@ -1,7 +1,7 @@
 pkgbase = ps3dec-git
 	pkgdesc = ISO encryptor/decryptor for PS3 disc images
 	pkgver = r2.7d1d27f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/al3xtjames/PS3Dec
 	arch = aarch64
 	arch = armv7h
@@ -14,7 +14,7 @@ pkgbase = ps3dec-git
 	makedepends = git
 	makedepends = libgcc
 	makedepends = libgomp
-	makedepends = mbedtls
+	makedepends = mbedtls3
 	depends = glibc
 	provides = ps3dec=r2.7d1d27f
 	conflicts = ps3dec
