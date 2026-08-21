@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="nginx-ui"
-pkgver=2.5.9
+pkgver=2.5.10
 _pkgver=${pkgver//_/-}
 pkgrel=1
 epoch=1
@@ -10,10 +10,9 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
 url="https://github.com/0xJacky/${pkgname}"
 backup=("etc/${pkgname}/config.ini")
 license=("AGPL-3.0-or-later")
-depends=("nginx")
 makedepends=("bun" "go")
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('0a079e174e99ed776f2cdd5e6a2ccace19f6600eb370b416e03ca18d4886f868')
+sha256sums=('5301bdd614132c1669a8883da2faa88b5894ba462b7d62a762875be9737e09bb')
 
 build() {
     export CGO_CFLAGS="${CFLAGS}"
@@ -44,6 +43,8 @@ build() {
 }
 
 package() {
+    depends=("nginx")
+    
     cd "${pkgname}-${_pkgver}"
     install -Dm755 "${pkgname}"         "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
