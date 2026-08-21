@@ -1,2 +1,2 @@
 d /run/nfdump 0755 nfdump nfdump -
-
+d /var/lib/nfdump 0750 nfdump nfdump -
