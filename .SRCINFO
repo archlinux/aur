@@ -1,7 +1,7 @@
 pkgbase = uuplugin-bin
 	pkgdesc = UU Steam Deck Plugin for General Linux
 	pkgver = 14.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://uu.163.com/
 	arch = x86_64
 	license = custom

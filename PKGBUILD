@@ -2,7 +2,7 @@
 
 pkgname=uuplugin-bin
 pkgver=14.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="UU Steam Deck Plugin for General Linux"
 arch=('x86_64')
 url="https://uu.163.com/"
@@ -17,8 +17,9 @@ package() {
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/etc/uuplugin"
   install -Dm755 "${srcdir}/uuplugin" "${pkgdir}/usr/bin/uuplugin"
-  # uuplugin forks ./xuplugin-guardian from WorkingDirectory (/etc/uuplugin)
-  install -Dm755 "${srcdir}/xuplugin-guardian" "${pkgdir}/etc/uuplugin/xuplugin-guardian"
+  # uuplugin execl's xuplugin-guardian as a sibling of its own executable path
+  # (e.g. /usr/bin/uuplugin -> /usr/bin/xuplugin-guardian), NOT from WorkingDirectory
+  install -Dm755 "${srcdir}/xuplugin-guardian" "${pkgdir}/usr/bin/xuplugin-guardian"
   install -Dm644 "${srcdir}/uu.conf" "${pkgdir}/etc/uuplugin/uu.conf"
   install -Dm644 "${srcdir}/uuplugin.service" "${pkgdir}/usr/lib/systemd/system/uuplugin.service"
 }
