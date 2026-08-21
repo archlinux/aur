@@ -21,6 +21,6 @@ pkgbase = lucid-spell
 	options = !debug
 	options = !lto
 	source = lucid-spell-0.1.0.tar.gz::https://github.com/l1ngus/lucid-spell/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = c050de8e0737f07ac7131cb6f0a69d0dcde3bdcd9f30d940e03f906cb1fb1756
+	sha256sums = dccae639f238330fb29c11fee252d234add83d3ca30d80e239621fa123238493
 
 pkgname = lucid-spell
