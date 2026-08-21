@@ -1,6 +1,6 @@
 # Maintainer: Milk Brewster (milk on freenode irc)
 pkgname=bg-plugins.lv2-git
-pkgver=r101.5fefe42
+pkgver=r117.82f3d9f
 pkgrel=1
 epoch=
 pkgdesc="CV arpeggiator and MIDI-pattern plugin developed for the MOD platform by Bram Geisen"
