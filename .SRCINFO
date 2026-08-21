@@ -1,0 +1,14 @@
+pkgbase = python-mail-html-open
+	pkgdesc = Open HTML emails from terminal mail clients in your browser.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/To999999999/mail-html-open
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/To999999999/mail-html-open.git
+	sha256sums = SKIP
+
+pkgname = python-mail-html-open
+	depends = python
