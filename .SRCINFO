@@ -1,7 +1,7 @@
 pkgbase = cfetch-agent
 	pkgdesc = A second brain for coding agents: privilege-ring memory, hook injection, retrieval, and a code index in one binary
 	pkgver = 0.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/julian-corbet/cfetch
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = cfetch-agent
 	makedepends = git
 	provides = cfetch
 	conflicts = cfetch
+	options = !lto
 	source = cfetch-agent::git+https://github.com/julian-corbet/cfetch.git#tag=v0.6.0
 	sha256sums = SKIP
 
