@@ -2,22 +2,23 @@
 pkgname=hlam
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="Half-Life Asset Manager"
+pkgdesc='Half-Life Asset Manager'
 arch=('x86_64')
-url="https://github.com/SamVanheer/HalfLifeAssetManager"
-license=('custom:HLAM') # Custom license
+url='https://github.com/SamVanheer/HalfLifeAssetManager'
+license=('custom:HLAM')
 depends=(
     'glibc'
     'gcc-libs'
     'openal'
     'qt5-base'
     'qt5-x11extras'
-    #'qt5-networkauth'
     'qt5-tools'
 )
 makedepends=()
-source=("https://github.com/SamVanheer/HalfLifeAssetManager/releases/download/HLAM-V${pkgver}/halflifeassetmanager_${pkgver}_amd64.deb" "hlam.desktop")
-sha256sums=(SKIP SKIP)
+source=("https://github.com/SamVanheer/HalfLifeAssetManager/releases/download/HLAM-V${pkgver}/halflifeassetmanager_${pkgver}_amd64.deb"
+    'hlam.desktop')
+sha256sums=('a4e6a8ebb5c443ab85dfb77e2d1225814c7cd2f70147a12320c754e952d41762'
+    'cc5252c4168479957ad0e1399fa28d929d07c6984d49b54caf4e9da593c90f50')
 
 prepare() {
     # extract the debian package

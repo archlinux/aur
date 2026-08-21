@@ -13,7 +13,7 @@ pkgbase = hlam
 	depends = qt5-tools
 	source = https://github.com/SamVanheer/HalfLifeAssetManager/releases/download/HLAM-V3.0.0/halflifeassetmanager_3.0.0_amd64.deb
 	source = hlam.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = a4e6a8ebb5c443ab85dfb77e2d1225814c7cd2f70147a12320c754e952d41762
+	sha256sums = cc5252c4168479957ad0e1399fa28d929d07c6984d49b54caf4e9da593c90f50
 
 pkgname = hlam
