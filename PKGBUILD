@@ -35,12 +35,16 @@ checkdepends=(
   'desktop-file-utils'
   'garden-tools'
   'python-pytest'
+  'python-msgpack'
+  'python-websockets'
 )
 optdepends=(
   'python-notify2: desktop notifications'
   'python-pygments: syntax highlighting'
   'python-pyinotify: file system change monitoring'
   'python-send2trash: "Send to Trash" functionality'
+  'python-msgpack: server functionality'
+  'python-websockets: server functionality'
   'tk: to use the built-in ssh-askpass handler'
 )
 provides=(
