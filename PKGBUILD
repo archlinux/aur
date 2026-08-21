@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=screcord.lv2-git
 pkgdesc="A mono and a stereo audio capture LV2 plugin."
-pkgver=r25.e11a771
+pkgver=r61.65cf380
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/brummer10/screcord.lv2"
 license=(GPL)
 groups=(lv2-plugins)
 depends=(libsndfile)
-makedepends=()
+makedepends=('git' 'cairo' 'vim' 'lv2')
 checkdepends=()
 optdepends=()
 provides=()

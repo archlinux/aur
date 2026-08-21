@@ -1,11 +1,15 @@
 pkgbase = screcord.lv2-git
 	pkgdesc = A mono and a stereo audio capture LV2 plugin.
-	pkgver = r25.e11a771
+	pkgver = r61.65cf380
 	pkgrel = 1
 	url = https://github.com/brummer10/screcord.lv2
 	arch = x86_64
 	groups = lv2-plugins
 	license = GPL
+	makedepends = git
+	makedepends = cairo
+	makedepends = vim
+	makedepends = lv2
 	depends = libsndfile
 	options = debug
 	options = !strip
@@ -13,4 +17,3 @@ pkgbase = screcord.lv2-git
 	md5sums = SKIP
 
 pkgname = screcord.lv2-git
-
