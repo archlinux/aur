@@ -1,6 +1,6 @@
 pkgbase = bharvestr.lv2-git
 	pkgdesc = An experimental granular synthesizer LV2 plugin (git version)
-	pkgver = r171.8025b9b
+	pkgver = r205.0761d35
 	pkgrel = 1
 	url = https://github.com/sjaehn/BHarvestr
 	arch = x86_64
@@ -21,4 +21,3 @@ pkgbase = bharvestr.lv2-git
 	md5sums = SKIP
 
 pkgname = bharvestr.lv2-git
-

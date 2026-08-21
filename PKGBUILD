@@ -6,7 +6,7 @@ _pkgname="${_name,,}.lv2"
 _plugin_uri="https://www.jahnichen.de/plugins/lv2/${_name}"
 pkgname="${_pkgname}-git"
 pkgdesc="An experimental granular synthesizer LV2 plugin (git version)"
-pkgver=r171.8025b9b
+pkgver=r205.0761d35
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/sjaehn/${_name}"
@@ -38,7 +38,7 @@ check() {
   cd "${srcdir}/${_pkgname}"
   echo lv2lint -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
   # TTL has no minor/microVersion yet, so skip tests for these until first release
-  lv2lint -t "Plugin Version *" -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
+  lv2lint -t "Plugin Version *" -t "UI Symbols" -Mpack -I "${_name}.lv2/" "${_plugin_uri}"
 }
 
 package() {
