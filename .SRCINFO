@@ -1,15 +1,19 @@
 pkgbase = janus
-	pkgdesc = Simple gtk notepad written in C
-	pkgver = 0.9.7
+	pkgdesc = Simple text editor
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://github.com/gholmann16/janus
-	arch = any
-	license = GPL3
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	arch = i686
+	license = GPL-3.0-only
 	makedepends = meson
 	depends = gtk3
 	depends = gtksourceview4
 	conflicts = janus-gateway
-	source = https://github.com/gholmann16/janus/archive/refs/tags/v0.9.7.tar.gz
-	sha256sums = b7ed6cbf5a793abb440bf90995fd0628bb0fba8df8287a91e58f1c8e14e07088
+	source = https://github.com/gholmann16/janus/archive/refs/tags/v0.9.8.tar.gz
+	sha256sums = 1fde4cb5066b145d07c718b261a42f3e99a75016c3e188c2ca4d4e9aca033350
 
 pkgname = janus
