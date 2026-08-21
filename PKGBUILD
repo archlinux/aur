@@ -1,7 +1,7 @@
 # Maintainer: Rob Cohen <rob@robcohen.dev>
 pkgbase=rustledger
 pkgname=(rustledger)
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Fast, pure Rust implementation of Beancount double-entry accounting"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-only')
 depends=('glibc' 'libgcc')
 makedepends=('cargo')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/rustledger/rustledger/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0ba942111a6935b7d5c36672fbc2314d3548589b9efbb7a7742472394f03452d')
+sha256sums=('8cbac0fa8a6da0abfbf172469907068c5cc615af7cd0463b2cadb0081a0da733')
 
 prepare() {
   cd "$pkgbase-$pkgver"
