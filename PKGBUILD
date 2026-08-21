@@ -1,21 +1,17 @@
 # Contributer: mzwing <mzwing@mzwing.eu.org>
 
 pkgname='deepin-wine10-stable'
-_pkgver=10.14deepin8
+_pkgver=10.14deepin11
 pkgver=${_pkgver//-/_}
-pkgrel=3
+pkgrel=1
 pkgdesc="Deepin wine10 stable"
 arch=('x86_64')
 url="http://www.deepin.org"
 license=('Proprietary')
 makedepends=('tar')
-source=(
-    "https://pro-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-wine10-stable/deepin-wine10-stable_${_pkgver}_amd64.deb"
-)
-noextract=(
-    "deepin-wine10-stable_${_pkgver}_amd64.deb"
-)
-sha256sums=('fa1119f2050e35273345909f84ec72091d565633ddde9bae8f3dd930b7cf8021')
+source=("https://pro-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-wine10-stable/deepin-wine10-stable_${_pkgver}_amd64.deb")
+noextract=("deepin-wine10-stable_${_pkgver}_amd64.deb")
+sha256sums=('a3412982cfb16d8e20d29508779ac5ad8a3b389a41737eebb7f657a1b5b9cb0f')
 DLAGENTS=("https::/usr/bin/curl -A 'Debian\ APT-HTTP/1.3' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 depends=(
     alsa-lib                    # libasound2 (>= 1.0.16)
