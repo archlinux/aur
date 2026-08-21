@@ -1,6 +1,6 @@
 pkgbase = python-trame-rca
 	pkgdesc = Remote Controlled Area widget for trame
-	pkgver = 2.8.1
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/Kitware/trame-rca
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-trame-rca
 	depends = python-wslink
 	depends = python-pillow
 	depends = python-numpy
-	source = trame-rca-2.8.1.tar.gz::https://github.com/Kitware/trame-rca/archive/v2.8.1.tar.gz
-	sha512sums = 89c0ab4b70de56d1c3070765bd4af250928d2367b2a10b2a9a374f86ff34ecaedd480f8441c9f31a1d5c104d89ba5f12236b41d5dd034896518724d355b6c032
+	source = trame-rca-2.9.0.tar.gz::https://github.com/Kitware/trame-rca/archive/v2.9.0.tar.gz
+	sha512sums = 5a58219694f04147950f74945a02c70163003920402a5139e817ec251e4b8b035d40b039f8f7c12bbcc3f88bc2c2f37b2eff4fb1f6267b1365537a89e02df0bf
 
 pkgname = python-trame-rca
