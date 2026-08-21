@@ -20,9 +20,18 @@ LATEST_VERSION=$(echo "$RELEASE_DATA" | jq -r '.tag_name' | sed 's/^v//')
 echo -e "  Latest:  ${YELLOW}${LATEST_VERSION}${NC}"
 
 CURRENT_VERSION=$(grep '^pkgver=' "$PKGBUILD_FILE" | cut -d'=' -f2)
-echo -e "  Current: ${YELLOW}${CURRENT_VERSION}${NC}"
+if [[ -f .SRCINFO ]]; then
+    SRCINFO_VERSION=$(grep 'pkgver = ' .SRCINFO | head -n1 | cut -d'=' -f2 | tr -d ' ')
+else
+    SRCINFO_VERSION=""
+fi
 
-if [[ "$LATEST_VERSION" == "$CURRENT_VERSION" ]]; then
+echo -e "  Current (PKGBUILD): ${YELLOW}${CURRENT_VERSION}${NC}"
+if [[ -n "$SRCINFO_VERSION" && "$SRCINFO_VERSION" != "$CURRENT_VERSION" ]]; then
+    echo -e "  Current (.SRCINFO): ${YELLOW}${SRCINFO_VERSION}${NC} (mismatch, will update)"
+fi
+
+if [[ "$LATEST_VERSION" == "$CURRENT_VERSION" && "$LATEST_VERSION" == "$SRCINFO_VERSION" ]]; then
     echo -e "${GREEN}Already up to date.${NC}"
     exit 0
 fi
@@ -57,11 +66,19 @@ sed -i \
     "$PKGBUILD_FILE"
 
 echo -e "${GREEN}Downloading sources and computing b2sums via updpkgsums...${NC}"
-updpkgsums
+if ! updpkgsums; then
+    echo -e "${RED}updpkgsums failed or was interrupted. Reverting PKGBUILD changes...${NC}"
+    git restore "$PKGBUILD_FILE"
+    exit 1
+fi
 
 echo -e "${GREEN}Regenerating .SRCINFO...${NC}"
 rm -f .SRCINFO
-makepkg --printsrcinfo > .SRCINFO
+if ! makepkg --printsrcinfo > .SRCINFO; then
+    echo -e "${RED}makepkg --printsrcinfo failed. Reverting changes...${NC}"
+    git restore "$PKGBUILD_FILE" .SRCINFO
+    exit 1
+fi
 
 echo ""
 if [[ "$LATEST_VERSION" != "$CURRENT_VERSION" ]]; then
