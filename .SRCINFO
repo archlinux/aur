@@ -1,6 +1,6 @@
 pkgbase = ninjas2-git
 	pkgdesc = An easy to use sample slicer LV2 & VST plugin and JACK application (git version)
-	pkgver = 0.2.0.r344.21740d3
+	pkgver = 0.2.0.r345.2a1fe3f
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/rghvdberg/ninjas2
