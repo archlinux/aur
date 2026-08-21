@@ -8,7 +8,7 @@
 pkgname=svault
 pkgver=1.0.0
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Local encrypted secret vault for developers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dafagareth/svault"
