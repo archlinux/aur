@@ -1,21 +1,26 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=posthog-cli
-pkgver=0.13.3
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="The command line interface for PostHog"
 arch=('x86_64' 'aarch64')
 url="https://github.com/PostHog/posthog"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'zlib')
-makedepends=('cargo')
+makedepends=('cargo' 'nodejs>=24' 'pnpm')
+optdepends=('nodejs: required for the posthog-cli api command')
 options=('!lto')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/PostHog/posthog/archive/refs/tags/posthog-cli%2Fv$pkgver.tar.gz")
-sha256sums=('89f8eea01164856c845a9721ee6457b30aef2cccabfb8133ac503c940f0e2dc5')
+sha256sums=('97b74aade795968feb9efc7b7ab6855fba08570b7d1947fd9a9b23de88296660')
 
 _srcdir="posthog-posthog-cli-v$pkgver"
 
 prepare() {
-    cd "$srcdir/$_srcdir/cli"
+    cd "$srcdir/$_srcdir"
+    pnpm install --frozen-lockfile --ignore-scripts --filter '@posthog/mcp...'
+    pnpm --dir services/mcp run build:cli:release
+
+    cd cli
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_HOME="$srcdir/.cargo-home"
     cargo fetch --locked --target "$(rustc --print host-tuple)"
