@@ -1,6 +1,6 @@
 # Maintainer: skssmd <skssmd78475@gmail.com>
 pkgname=aibrowsertoolkit-bin
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Agentic browser automation CLI for AI agents"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ options=('!strip')
 install="${pkgname}.install"
 source_x86_64=("${url}/releases/download/v${pkgver}/aibrowsertoolkit-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/aibrowsertoolkit-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('4499a920e55f0790b2b2617a92b986518aabd4b9467dc67ee28ae865d8cd6b0b')
-sha256sums_aarch64=('b64f75332017473f2a968d358023b978c780a83666f1bc06e6216be32857ba0f')
+sha256sums_x86_64=('a2b69e4dd235014b8a533ffb62dc94b35824d5ed17afa6bf86a3c9288d76d865')
+sha256sums_aarch64=('a93d17108c3c09cb63a0024c3de38fad3d4cde907f94b2ee0d974a9c23c173d6')
 
 package() {
     # The tarball's top-level directory is named for the bundle target, and
