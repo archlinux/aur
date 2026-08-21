@@ -19,7 +19,6 @@ depends=(
   'python-qtpy'
 )
 makedepends=(
-  'rsync'
   'python-build'
   'python-installer'
   'python-rst.linker'

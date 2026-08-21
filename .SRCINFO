@@ -9,7 +9,6 @@ pkgbase = git-cola-git
 	checkdepends = desktop-file-utils
 	checkdepends = garden-tools
 	checkdepends = python-pytest
-	makedepends = rsync
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-rst.linker
