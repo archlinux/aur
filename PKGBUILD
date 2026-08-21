@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chat2db-community-bin
 _pkgname=Chat2DB-Community
-pkgver=5.3.2
+pkgver=5.3.4
 pkgrel=1
 pkgdesc="🔥🔥🔥AI-driven database tool and SQL client, The hottest GUI client, supporting MySQL, Oracle, PostgreSQL, DB2, SQL Server, DB2, SQLite, H2, ClickHouse, and more.(Prebuilt version with bundled JRE)"
 arch=(
@@ -38,8 +38,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.rpm")
 sha256sums=('2f34cdc2dec53f3cc3cea02d56ab796ec3887ced306c8c2d8d80b23b7d5510f0')
-sha256sums_aarch64=('1253bcde902a8f7dc5bd37e72058bd63dfd8f1fa47054938c3ba69a812bd9151')
-sha256sums_x86_64=('2cd8124a5b35953100b0aa288bc9aba53375d362774c1c743ca55e4190247e33')
+sha256sums_aarch64=('659d3defb83871b87b8e1dfa2f60b85e492a125f35ccab79d679abb22a232175')
+sha256sums_x86_64=('5a6ae24bfd850f31652e95ba0b0765a889e5d3ad9d17c63a0f0461505a96c088')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
