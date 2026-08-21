@@ -2,7 +2,7 @@
 maintaner="Milkii Brewster <milkii on Freenode IRC>"
 pkgname=polylenticular.lv2-git
 pkgdesc="Ports of VCV Rack modules to LV2"
-pkgver=r91.d112707
+pkgver=r93.141fdc8
 pkgrel=1
 epoch=
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://github.com/polyeffects/lenticular_lv2"
 license=(GPL)
 groups=()
 depends=()
-makedepends=()
+makedepends=('git' 'lv2')
 checkdepends=()
 optdepends=()
 provides=()

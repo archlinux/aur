@@ -1,10 +1,12 @@
 pkgbase = polylenticular.lv2-git
 	pkgdesc = Ports of VCV Rack modules to LV2
-	pkgver = r91.d112707
+	pkgver = r93.141fdc8
 	pkgrel = 1
 	url = https://github.com/polyeffects/lenticular_lv2
 	arch = x86_64
 	license = GPL
+	makedepends = git
+	makedepends = lv2
 	source = polylenticular.lv2-git::git+https://github.com/polyeffects/lenticular_lv2
 	md5sums = SKIP
 
