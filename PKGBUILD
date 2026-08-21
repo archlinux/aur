@@ -17,6 +17,7 @@ b2sums_x86_64=('SKIP')
 b2sums_aarch64=('SKIP')
 
 package() {
-    install -Dm755 "$_name-$pkgver-$CARCH/minecrauth" "$pkgdir/usr/bin/minecrauth"
-    install -Dm644 "$_name-$pkgver-$CARCH/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    #cd "${_name}-${pkgver}_${CARCH}"
+    install -Dm755 "${srcdir}/minecrauth" "${pkgdir}/usr/bin/minecrauth"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
