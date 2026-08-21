@@ -3,8 +3,8 @@
 _pkgname=grad-cam
 pkgname=python-grad-cam
 pkgver=1.5.5
-pkgrel=1
-pkgdesc='Image Test Time Augmentation with PyTorch'
+pkgrel=2
+pkgdesc='Advanced AI Explainability for computer vision. Support for CNNs, Vision Transformers, Classification, Object detection, Segmentation, Image similarity and more'
 arch=('any')
 url='https://github.com/jacobgil/pytorch-grad-cam/'
 license=('MIT')

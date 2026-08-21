@@ -1,7 +1,7 @@
 pkgbase = python-grad-cam
-	pkgdesc = Image Test Time Augmentation with PyTorch
+	pkgdesc = Advanced AI Explainability for computer vision. Support for CNNs, Vision Transformers, Classification, Object detection, Segmentation, Image similarity and more
 	pkgver = 1.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jacobgil/pytorch-grad-cam/
 	arch = any
 	license = MIT
