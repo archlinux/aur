@@ -1,0 +1,26 @@
+fix_resource_permissions() {
+  local resources_dir="/usr/lib/minimax-hub/resources"
+
+  [[ -d "${resources_dir}" ]] || return 0
+
+  find "${resources_dir}" -type d -exec chmod 755 '{}' +
+  find "${resources_dir}" -type f -perm /111 -exec chmod 755 '{}' +
+  find "${resources_dir}" -type f ! -perm /111 -exec chmod 644 '{}' +
+}
+
+post_install() {
+  fix_resource_permissions
+
+  cat <<'EOF'
+==> MiniMax Hub needs OpenCode when opening workspaces.
+==> Install one of these runtimes:
+==>   sudo pacman -S opencode
+==>   npm i -g opencode-ai
+==> If OpenCode is installed in a custom location, launch with:
+==>   HILO_OPENCODE_BINARY_PATH=/path/to/opencode minimax-hub
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
