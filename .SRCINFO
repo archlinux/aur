@@ -1,0 +1,20 @@
+pkgbase = aibrowsertoolkit-bin
+	pkgdesc = Browser API for AI agents, over HTTP
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/skssmd/Ai-Browser-Toolkit
+	install = aibrowsertoolkit-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	optdepends = google-chrome: the browser this drives
+	optdepends = microsoft-edge-stable-bin: alternative browser
+	provides = aibrowsertoolkit
+	conflicts = aibrowsertoolkit
+	options = !strip
+	source_x86_64 = https://github.com/skssmd/Ai-Browser-Toolkit/releases/download/v0.1.2/aibrowsertoolkit-0.1.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 4a212795732595fe5f5f5057e4dbfdcaf34ac2a3e97934f9737922d8c514ddf3
+	source_aarch64 = https://github.com/skssmd/Ai-Browser-Toolkit/releases/download/v0.1.2/aibrowsertoolkit-0.1.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 1ee546a8d47ea1d4e63505c0ddee983b2489503858a885eea53ec86edf4e551a
+
+pkgname = aibrowsertoolkit-bin
