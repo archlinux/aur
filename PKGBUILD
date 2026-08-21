@@ -1,7 +1,7 @@
 pkgname=tether-bin
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
-pkgdesc="A Wayland-native local file transfer and clipboard sync tool over mDNS (Binary Release)"
+pkgdesc="Bridge an iPhone to the Linux desktop: clipboard, files, messages, and notifications"
 arch=('x86_64')
 url="https://github.com/zackb/tether"
 license=('MIT')
@@ -10,7 +10,7 @@ provides=('tether')
 conflicts=('tether' 'tether-git')
 install=tether.install
 source=("${url}/releases/download/v${pkgver}/tether-${pkgver}.tar.gz")
-sha256sums=('6e45d69f44dde793ef0ce0c57d88419ed53784f5261cb2eaf56ef3bb1afb2b51')
+sha256sums=('e2fad3cb78a688272e57fe2dd9a262f3389adc727c06797e0a4058841d1f7c59')
 
 package() {
     cd "tether-${pkgver}"
