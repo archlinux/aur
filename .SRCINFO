@@ -1,6 +1,6 @@
 pkgbase = plezy-git
 	pkgdesc = A modern Plex client for desktop and mobile
-	pkgver = 2.16.0.r20.g04673a8
+	pkgver = 2.16.0.r29.g54af977
 	pkgrel = 1
 	url = https://github.com/edde746/plezy
 	arch = x86_64
