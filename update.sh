@@ -1,12 +1,13 @@
 #!/bin/bash
 set -e
 
-REPO_URL="https://github.com/shenwei356/taxonkit"
+REPO="shenwei356/taxonkit"
+URL="https://github.com/${REPO}"
 PKGNAME="taxonkit"
 
 echo "==> Checking for new version..."
 
-LATEST_TAG=$(curl -s https://api.github.com/repos/shenwei356/taxonkit/tags | grep -oP '"name": "\Kv.*(?=")' | head -1)
+LATEST_TAG=$(curl -s "https://api.github.com/repos/${REPO}/tags" | grep -oP '"name": "\Kv[^"]+(?=")' | head -1)
 LATEST_VERSION=${LATEST_TAG#v}
 
 if [ -z "$LATEST_VERSION" ]; then
@@ -26,7 +27,7 @@ fi
 
 echo "==> Updating to version $LATEST_VERSION..."
 
-TARBALL_URL="$REPO_URL/archive/v$LATEST_VERSION.tar.gz"
+TARBALL_URL="$URL/archive/v$LATEST_VERSION.tar.gz"
 echo "Downloading $TARBALL_URL..."
 curl -sL "$TARBALL_URL" -o /tmp/$PKGNAME-$LATEST_VERSION.tar.gz
 
