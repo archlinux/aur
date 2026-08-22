@@ -1,7 +1,7 @@
 # Maintainer: Kcocoa <kamforzn2@proton.me>
 
 pkgname=cpa-usage-keeper
-pkgver=1.14.5
+pkgver=1.14.6
 pkgrel=1
 pkgdesc="CPA usage persistence and analytics dashboard"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ source=(
   'cpa-usage-keeper.sysusers'
   'cpa-usage-keeper.tmpfiles'
 )
-sha256sums=('7fe28a7c8379d7ad1a0769bb206293f2db3f45781ff0207ae7325dd4b1b65fef'
+sha256sums=('a894adca11c2dd993a69ca44c5595504b5f19d4409e607470f2eb5b470c2f4c7'
             'bb8358668d819291ca111df9ba81dbbbcc7ee47f2bae22fce8da616aca2a2ad7'
             '881ae236ce3f3e5c1bf8aa806a288ac67accf1a0bb848fd4baa3d16df84d81a0'
             '69319d4ab7251749afddd8cdb697020a438b18e93edc6bfaac7db4ebe10608cd')
