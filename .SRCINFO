@@ -1,6 +1,6 @@
 pkgbase = q2
 	pkgdesc = Quarto 2 [experimental]
-	pkgver = 0.25.0
+	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://github.com/quarto-dev/q2
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = q2
 	conflicts = q2-bin
 	options = !lto
 	options = !debug
-	source = q2-0.25.0.tar.gz::https://github.com/quarto-dev/q2/archive/v0.25.0.tar.gz
-	sha512sums = 489ed11f434c2e71de818adeb81ea784a0d1c7b0af39ff32275f99ce9e2dec2f4768abd76c299a0e4131c299e8946f814b9195777a507cf48ae261f0b4bdb1fb
+	source = q2-0.26.0.tar.gz::https://github.com/quarto-dev/q2/archive/v0.26.0.tar.gz
+	sha512sums = 3198ab79d47fd7c4ce0f69284708839f9836a19c62a6976bd2bbdedb1a7634e078223df0258af1c03aca9f2f51fc45054196268bdac507b90fca6ca7f3e4ae7e
 
 pkgname = q2
