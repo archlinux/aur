@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=safetensors
-_pkgver=0.2.1
+_pkgver=0.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-torch
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('cd293a8236bf2abbf6bcf81dfc87ce65')
-b2sums=('caf42a2e95c0b3c31f47be280c96217660c3472033de509f06bbd1ffeff8a9262adbe2945e7ea423a06d7ef0ab84831e6f98e0f692925fc85f63f4f28562a76e')
+md5sums=('55430b9e839bc0c9d2eac062835a6c2c')
+b2sums=('3196752cf7f8e93026d166ba2ebd27ef35129a3ae86b5e013e9ebbe6e9ef7bf625fa3aab31dc0835ed5046b0ac0a0925afd19d717c34ea3fe6f7db5295478c1a')
 
 build() {
   mkdir build
