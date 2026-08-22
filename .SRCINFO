@@ -1,18 +1,12 @@
 pkgbase = dotmatrix-git
-	pkgdesc = Dot Matrix - project compositor with git versioning (CLI, TUI)
-	pkgver = 2.0.3
+	pkgdesc = Dot Matrix (renamed to DotDog) - Modern dotfile compositor with git versioning & NoteDog TUI
+	pkgver = 3.0.0
 	pkgrel = 1
-	url = https://github.com/Woofson/dotmatrix
+	url = https://github.com/Woofson/dotdog
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
-	makedepends = git
-	depends = gcc-libs
-	depends = oniguruma
-	depends = zstd
+	depends = dotdog-git
 	provides = dotmatrix
 	conflicts = dotmatrix
-	source = git+https://github.com/Woofson/dotmatrix.git
-	sha256sums = SKIP
 
 pkgname = dotmatrix-git

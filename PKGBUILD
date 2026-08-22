@@ -1,50 +1,17 @@
-# Maintainer: Woofson <https://github.com/Woofson>
+# Maintainer: Bolt J Woofson <https://github.com/Woofson>
 pkgname=dotmatrix-git
-pkgver=2.0.3
+pkgver=3.0.0.r0.g8fb1ae5
 pkgrel=1
-pkgdesc="Dot Matrix - project compositor with git versioning (CLI, TUI)"
+pkgdesc="Dot Matrix (renamed to DotDog) - Modern dotfile compositor with git versioning & NoteDog TUI"
 arch=('x86_64')
-url="https://github.com/Woofson/dotmatrix"
+url="https://github.com/Woofson/dotdog"
 license=('MIT')
-depends=('gcc-libs' 'oniguruma' 'zstd')
-makedepends=('cargo' 'git')
+depends=('dotdog-git')
 provides=('dotmatrix')
 conflicts=('dotmatrix')
-source=("git+https://github.com/Woofson/dotmatrix.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/dotmatrix"
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-        || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "$srcdir/dotmatrix"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
-}
-
-build() {
-    cd "$srcdir/dotmatrix"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    # Use system zstd and oniguruma
-    export ZSTD_SYS_USE_PKG_CONFIG=1
-    export RUSTONIG_SYSTEM_LIBONIG=1
-    cargo build --release
-}
-
-check() {
-    cd "$srcdir/dotmatrix"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test
-}
 
 package() {
-    cd "$srcdir/dotmatrix"
-    install -Dm755 "target/release/dmxcli" "$pkgdir/usr/bin/dmxcli"
-    install -Dm755 "target/release/dmxtui" "$pkgdir/usr/bin/dmxtui"
-    install -Dm644 "dmxcli.1" "$pkgdir/usr/share/man/man1/dmxcli.1"
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # Transitional package pointing to dotdog
+    mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+    echo "Dot Matrix has been renamed to DotDog. Please install 'dotdog-git'." > "$pkgdir/usr/share/doc/$pkgname/README"
 }
