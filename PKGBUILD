@@ -1,8 +1,8 @@
 # Maintainer: heavysink <winstonwu91@gmail.com>
 _pkgname=eka2l1
 pkgname="${_pkgname}-git"
-pkgver=5852.e67f84dc6
-pkgrel=5
+pkgver=5987.edc4cb3f1
+pkgrel=1
 pkgdesc="Experimental Symbian OS emulator (GIT version)"
 arch=('x86_64')
 url="https://github.com/EKA2L1/EKA2L1"
@@ -26,7 +26,6 @@ depends=(
   'sdl2'
   'vulkan-icd-loader'
 )
-install="eka2l1-git.install"
 provides=('eka2l1')
 conflicts=('eka2l1')
 options=('!lto')
