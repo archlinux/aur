@@ -1,12 +1,13 @@
 #!/bin/bash
 set -e
 
-REPO_URL="https://github.com/imjiaoyuan/jsrc"
+REPO="imjiaoyuan/jsrc"
+URL="https://github.com/${REPO}"
 PKGNAME="jsrc"
 
 echo "==> Checking for new version..."
 
-LATEST_TAG=$(curl -s https://api.github.com/repos/imjiaoyuan/jsrc/tags | grep -oP '"name": "\K(.*)(?=")' | head -1)
+LATEST_TAG=$(curl -s "https://api.github.com/repos/${REPO}/tags" | grep -oP '"name": "\Kv[^"]+(?=")' | head -1)
 LATEST_VERSION=${LATEST_TAG#v}
 LATEST_VERSION=${LATEST_VERSION//[$'\t\r\n ']/}
 
@@ -28,14 +29,14 @@ fi
 
 echo "==> Updating to version $LATEST_VERSION..."
 
-TARBALL_URL="$REPO_URL/archive/v$LATEST_VERSION.tar.gz"
+TARBALL_URL="$URL/archive/v$LATEST_VERSION.tar.gz"
 echo "Downloading $TARBALL_URL..."
-curl -sL "$TARBALL_URL" -o /tmp/jsrc-$LATEST_VERSION.tar.gz
+curl -sL "$TARBALL_URL" -o /tmp/$PKGNAME-$LATEST_VERSION.tar.gz
 
-SHA256=$(sha256sum /tmp/jsrc-$LATEST_VERSION.tar.gz | awk '{print $1}')
+SHA256=$(sha256sum /tmp/$PKGNAME-$LATEST_VERSION.tar.gz | awk '{print $1}')
 echo "SHA256: $SHA256"
 
-rm -f /tmp/jsrc-$LATEST_VERSION.tar.gz
+rm -f /tmp/$PKGNAME-$LATEST_VERSION.tar.gz
 
 echo "==> Updating PKGBUILD..."
 sed -i "s/^pkgver=.*/pkgver=$LATEST_VERSION/" PKGBUILD
