@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=dtangle
-_pkgver=2.0.9
+_pkgver=2.0.10
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Cell Type Deconvolution from Gene Expressions"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c9744317ddbfaa3ed02eb25ca7f65f4a')
-b2sums=('92f2955f9921d153248b474bd564e86223b521d4d9349cc60f36fbb68fc25f1ee1cc855329e89875a9352f5430ddd035e140d6908444451f471fec5c3ca7c1c6')
+md5sums=('fa2e9fe4c5976c5e28f08e5c50c5a901')
+b2sums=('5595d123bef38673ac9b71199bc69f5af7913293aff3ac31b5b19272a4b888c4e91e0463aedf07e0c6a57cc89fc0ae667e6b4fb2eb6a77821f8974ecbad3ea50')
 
 build() {
   mkdir build
