@@ -2,7 +2,7 @@
 
 pkgname=yt-dlp-standalone-bin
 _pkgname=yt-dlp
-pkgver=2026.07.04
+pkgver=2026.08.19
 pkgrel=1
 pkgdesc='A feature-rich command-line audio/video downloader (standalone binary)'
 arch=(x86_64)
@@ -12,9 +12,6 @@ depends=(
     glibc
     zlib
 )
-optdepends=(
-    
-)
 provides=(
     yt-dlp
 )
@@ -22,16 +19,16 @@ conflicts=(
     yt-dlp
 )
 source=(
-    "yt-dlp-bin::https://github.com/yt-dlp/yt-dlp/releases/download/${pkgver}/yt-dlp_linux"
-    "yt-dlp.tar.gz::https://github.com/yt-dlp/yt-dlp/releases/download/2026.07.04/yt-dlp.tar.gz"
+    "yt-dlp_linux::https://github.com/yt-dlp/yt-dlp/releases/download/${pkgver}/yt-dlp_linux"
+    "yt-dlp.tar.gz::https://github.com/yt-dlp/yt-dlp/releases/download/${pkgver}/yt-dlp.tar.gz"
 )
 sha256sums=(
-    6bbb3d314cde4febe36e5fa1d55462e29c974f63444e707871834f6d8cc210ae
-    31c32457d1a573a341bb0929386c624fe47339a5338829e6e9c9454bdfa7397a
+    58162f9bfdc27458ea47bfcb311cf47028f17d8154a8bf7d689861d46399230a
+    072aad4f2a7604e92155f61a275a4752dc64046c8f6d90df3710525d94cd37c1
 )
 
 package() {
-  install -Dm755 yt-dlp-bin "${pkgdir}/usr/bin/yt-dlp"
+  install -Dm755 yt-dlp_linux "${pkgdir}/usr/bin/yt-dlp"
 
   # Install completions
   install -Dm644 "yt-dlp/completions/bash/yt-dlp" "${pkgdir}/usr/share/bash-completion/completions/yt-dlp"
