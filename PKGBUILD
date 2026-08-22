@@ -7,8 +7,8 @@ _disname=wechat
 _version=4.1.1
 _image_url_x86_64=https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_x86_64.AppImage
 _image_url_aarch64=https://dldir1v6.qq.com/weixin/Universal/Linux/WeChatLinux_arm64.AppImage
-_last_modified_x86_64=1787356800
-_last_modified_aarch64=1787356800
+_last_modified_x86_64=1783692407
+_last_modified_aarch64=1783692444
 
 pkgname="${_pkgname}"-appimage
 pkgver="${_version}"
