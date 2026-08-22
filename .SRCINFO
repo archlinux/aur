@@ -1,6 +1,6 @@
 pkgbase = whisp
 	pkgdesc = Anti-Note for GNOME — a fluid, gesture-driven scratchpad with WYSIWYG Markdown
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/tanaybhomia/Whisp
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = whisp
 	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita
-	source = whisp-1.4.0.tar.gz::https://github.com/tanaybhomia/Whisp/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = e3a809ac35fd739a99dd6441842b5dad4ba4ec996b29386261b3a4e33d5f3b32
+	source = whisp-1.4.1.tar.gz::https://github.com/tanaybhomia/Whisp/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = 6f106654900ce9f5aef9a8cb8bd48424f35d93f27a17e9c8526702473c449ea2
 
 pkgname = whisp
