@@ -16,7 +16,7 @@ source=("https://github.com/PseudoFish/Hodoku/releases/download/$_pkgver/Hodoku.
         $pkgname.png
         $pkgname.desktop)
 noextract=($pkgname.jar)
-md5sums=('a0f3717c2144d61a8f47d118ae7ce4eb'
+md5sums=('f6ea6bd1fa98d90c9462a007ad4e84d4'
          'a34c67131f8011a28e4023bb08788225'
          '01d77a4d9f4fd1fb36690ee8a3bae6c4'
          '557ca158902fddf06cbda7c7c9480c08')
