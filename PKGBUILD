@@ -1,15 +1,16 @@
 # Maintainer: Supernovatux <thulashitharan.d at gmail dot com>
 _pkgname="enteauth-rs"
 pkgname="${_pkgname}-git" # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r5.e23eb5a
+pkgver=r10.73ede7f
 pkgrel=1
 pkgdesc="Get 2FA codes via CLI (works with the official app)"
 arch=('x86_64')
 url="https://github.com/Supernovatux/${_pkgname}"
 license=('GPL')
 groups=()
-depends=('ente-auth' 'sqlite')
+depends=('sqlite')
 optdepends=('wl-clipboard: Wayland copy support'
+	    'ente-auth: You may optionally use the appimage/flatpak'
             'xclip: X11 copy support'
 	    'xsel: X11 copy support')
 makedepends=('git' 'cargo') # 'bzr', 'git', 'mercurial' or 'subversion'
