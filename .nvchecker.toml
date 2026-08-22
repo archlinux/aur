@@ -1,0 +1,5 @@
+[compressonator-git]
+source = "github"
+github = "lubosz/Compressonator"
+use_max_tag = true
+prefix = "v"

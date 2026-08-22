@@ -1,43 +1,56 @@
-# Maintainer: Lubosz Sarnecki < lubosz at gmail dot com >
+# Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
+# Contributor: Lubosz Sarnecki < lubosz at gmail dot com >
 
-basename=compressonator
-pkgname=$basename-git
-pkgver=v3.2.4691+44+gbfc4b162
-pkgrel=1
+pkgname=compressonator-git
 pkgdesc="Tool suite for Texture and 3D Model Compression, Optimization and Analysis. Lubosz's Linux GUI port branch."
-arch=('x86_64')
-url="https://github.com/GPUOpen-Tools/Compressonator"
+pkgver=3.2.4691.r50.g557248de
+pkgrel=1
+url='https://github.com/GPUOpen-Tools/Compressonator'
+arch=(x86_64)
 license=('MIT')
-replaces=('compressonator-cli-bin')
-conflicts=('compressonator-cli-bin')
-makedepends=('cmake' 'git' 'boost')
-depends=('qt5-webengine' 'boost-libs' 'opencv' 'draco-git')
-source=("git+https://github.com/lubosz/Compressonator.git#branch=gui-cmake-qt5-linux")
-sha256sums=('SKIP')
+makedepends=(
+  'boost'
+  'cmake'
+  'git'
+)
+depends=(
+  'boost-libs'
+  'draco-git'
+  'opencv'
+  'qt5-webengine'
+)
+provides=('compressonator')
+conflicts=('compressonator')
+source=('git+https://github.com/lubosz/Compressonator.git#branch=gui-cmake-qt5-linux')
+b2sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/Compressonator"
-  git describe --tags | sed 's/-/+/g'
+  cd Compressonator
+  # shellcheck disable=SC2312 # will render pkgver invalid on fail
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}"
-  rm build -rf && mkdir -p build
-  cd build
-  cmake ../Compressonator/Compressonator \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DCMAKE_INSTALL_SBINDIR=bin \
-    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_SHARED_LIBS=on
-  make
+  local cmake_options=(
+    -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_INSTALL_LIBDIR=lib
+    -D CMAKE_INSTALL_SBINDIR=bin
+    -D CMAKE_INSTALL_SYSCONFDIR=/etc
+    -D CMAKE_BUILD_TYPE=RelWithDebInfo
+    -D BUILD_SHARED_LIBS=ON
+  )
+
+  cmake -B build -S Compressonator/Compressonator "${cmake_options[@]}"
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/build"
-  DESTDIR="${pkgdir}" make install
-  mv ${pkgdir}/usr/bin/CompressonatorCLI-bin ${pkgdir}/usr/bin/compressonator-cli
+  DESTDIR="${pkgdir}" cmake --install build
 
-  install -Dm644 "${srcdir}"/Compressonator/Compressonator/License/GUILicense.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  ln -v -sr "${pkgdir}/usr/bin/CompressonatorCLI-bin" \
+    -T "${pkgdir}/usr/bin/compressonator-cli"
+
+  install -vD -m644 Compressonator/Compressonator/License/GUILicense.txt \
+    -T "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
