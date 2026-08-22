@@ -2,13 +2,13 @@
 
 pkgbase="plumeimpactor"
 pkgname="plumeimpactor-appimage"
-pkgver="2.4.0"
+pkgver="2.6.0"
 pkgrel=1
 pkgdesc="Sideloading tool for iOS devices"
 url="https://github.com/claration/Impactor"
 arch=("x86_64" "aarch64")
 license=("MIT")
-depends=("fuse3" "hicolor-icon-theme" "usbmuxd" "libayatana-appindicator")
+depends=("fuse2" "hicolor-icon-theme" "usbmuxd" "libayatana-appindicator")
 options=("!strip" "!debug")
 
 _appimage="Impactor-linux-$CARCH-$pkgver.appimage"
@@ -16,8 +16,8 @@ source=("LICENSE::https://raw.githubusercontent.com/claration/Impactor/main/LICE
 source_x86_64=("Impactor-linux-x86_64-$pkgver.appimage::$url/releases/download/v$pkgver/Impactor-linux-x86_64.appimage")
 source_aarch64=("Impactor-linux-aarch64-$pkgver.appimage::$url/releases/download/v$pkgver/Impactor-linux-aarch64.appimage")
 sha256sums=('6e91aca9b6eacf944ae628db34a60253d917b7ddb411c4748ab6e5105ffe5a3e')
-sha256sums_x86_64=('427d8660d560a4fb5ffaaed84d280bd9b5603235a3dd56fa055c3e2f3799966f')
-sha256sums_aarch64=('138e2ac19bbce27a91cafc40737cdec16a969517eb1d79314b6d387e6025b390')
+sha256sums_x86_64=('6149bec80868ebf4fe4f5d51251ae3bb9105c440d09ce0f75915b3e223b0d30d')
+sha256sums_aarch64=('0de137fc6fb1e4760161850078569c7b811f3cf3916e7c773e57ab71bfe83437')
 
 prepare() {
     # Extract AppImage
