@@ -1,6 +1,6 @@
 pkgbase = colorshell-git
 	pkgdesc = A super "coolorful" shell for Hyprland! (latest-commit version)
-	pkgver = 2.1.3.r43.g2e9c155
+	pkgver = 2.1.3.r51.g83a2e40
 	pkgrel = 1
 	url = https://github.com/retrozinndev/colorshell
 	arch = any
