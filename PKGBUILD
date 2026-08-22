@@ -5,12 +5,12 @@
 pkgname=seqkit-bin
 _pkgname=seqkit
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform and ultrafast toolkit for FASTA/Q file manipulation in Golang"
 arch=('x86_64')
 url="https://bioinf.shenwei.me/seqkit"
 license=('MIT')
-provides=('seqkit')
+provides=("seqkit=$pkgver")
 conflicts=('seqkit')
 options=('!strip' '!debug')
 source=(
