@@ -2,7 +2,7 @@
 pkgname=dotdog-git
 pkgver=3.0.0.r0.g8fb1ae5
 pkgrel=1
-pkgdesc="DotDog 🐶 - Modern dotfile compositor with git versioning & NoteDog TUI (formerly Dot Matrix)"
+pkgdesc="DotDog 🐶 - Modern dotfile compositor with git versioning & DotDog TUI (formerly Dot Matrix)"
 arch=('x86_64')
 url="https://github.com/Woofson/dotdog"
 license=('MIT')
