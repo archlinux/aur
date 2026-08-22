@@ -1,4 +1,4 @@
-# Maintainer: Josephine Pfeiffer <hi@josie.lol>
+# Maintainer: Josephine Pfeiffer <josie@archlinux.org>
 # Contributor: Gabriel Rauter <rauter.gabriel@gmail.com>
 _pkgname=n-dhcp4
 pkgname=$_pkgname-git
