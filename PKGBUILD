@@ -2,7 +2,7 @@
 
 pkgname=amspirit-lite-sdl
 pkgver=1.14.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An accurate Amstrad emulator - SDL version (AppImage)"
 arch=('x86_64')
 depends=(hicolor-icon-theme)
@@ -30,6 +30,5 @@ EOF
 
    install -dm755 "${pkgdir}/usr/share/icons"
    cp -r --no-preserve=mode,ownership "squashfs-root/usr/share/icons" "${pkgdir}/usr/share"
-   install -Dm644 "squashfs-root/amspirit-lite-sdl.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-   sed -i 's/Exec=/Exec=\/usr\/bin\//g' "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+   install -Dm644 "squashfs-root/usr/share/applications/amspirit-lite-sdl.desktop" "${pkgdir}/usr/share/applications/amspirit-lite-sdl.desktop"
 }
