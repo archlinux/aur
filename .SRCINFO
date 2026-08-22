@@ -1,6 +1,6 @@
 pkgbase = lmm-api-deploy-bin
 	pkgdesc = LMM API tooling-only production deployment operator (prebuilt)
-	pkgver = 0.1.41
+	pkgver = 0.1.42
 	pkgrel = 1
 	url = https://github.com/LIghtJUNction/api.lmm.best
 	arch = x86_64
@@ -15,22 +15,22 @@ pkgbase = lmm-api-deploy-bin
 	depends = sudo
 	depends = systemd
 	depends = util-linux
-	provides = lmm-api-deploy=0.1.41
+	provides = lmm-api-deploy=0.1.42
 	conflicts = lmm-api-deploy
-	noextract = lmm-api-go-0.1.41-linux-amd64.tar.gz
-	noextract = lmm-api-go-0.1.41-linux-arm64.tar.gz
+	noextract = lmm-api-go-0.1.42-linux-amd64.tar.gz
+	noextract = lmm-api-go-0.1.42-linux-arm64.tar.gz
 	options = !strip
-	source_x86_64 = lmm-api-go-0.1.41-linux-amd64.tar.gz::https://github.com/LIghtJUNction/api.lmm.best/releases/download/go-v0.1.41/lmm-api-go-0.1.41-linux-amd64.tar.gz
-	source_x86_64 = lmm-api-go-0.1.41-linux-amd64.tar.gz.sha256::https://github.com/LIghtJUNction/api.lmm.best/releases/download/go-v0.1.41/lmm-api-go-0.1.41-linux-amd64.tar.gz.sha256
-	source_x86_64 = lmm-api-go-0.1.41-linux-amd64.tar.gz.sigstore.json::https://github.com/LIghtJUNction/api.lmm.best/releases/download/go-v0.1.41/lmm-api-go-0.1.41-linux-amd64.tar.gz.sigstore.json
-	sha256sums_x86_64 = cd9690d465ebc634f77d68363328c9730ca62f7b0b946c7b54283048e9f5345c
-	sha256sums_x86_64 = 36b9644118ab436363cef7c9f1f0a23027bd43a0d877bae77a2793fe9989acc0
-	sha256sums_x86_64 = 5532e5793e542c66ec1e2c8473e9e61fe6158dc53e5cd92c831352011b6cd49a
-	source_aarch64 = lmm-api-go-0.1.41-linux-arm64.tar.gz::https://github.com/LIghtJUNction/api.lmm.best/releases/download/go-v0.1.41/lmm-api-go-0.1.41-linux-arm64.tar.gz
-	source_aarch64 = lmm-api-go-0.1.41-linux-arm64.tar.gz.sha256::https://github.com/LIghtJUNction/api.lmm.best/releases/download/go-v0.1.41/lmm-api-go-0.1.41-linux-arm64.tar.gz.sha256
-	source_aarch64 = lmm-api-go-0.1.41-linux-arm64.tar.gz.sigstore.json::https://github.com/LIghtJUNction/api.lmm.best/releases/download/go-v0.1.41/lmm-api-go-0.1.41-linux-arm64.tar.gz.sigstore.json
-	sha256sums_aarch64 = 10037bcf0d4d54a9c5fcfa7660b89d31de23551027a0cfb34a900979b3e7099c
-	sha256sums_aarch64 = f533e212f0828fbda30cd49e73b3f0ba02e4fb6e4e4ffd32b8b1f0a36624a5e7
-	sha256sums_aarch64 = 6e052ea798ec3c38a08f2f4af37ede4ebd2dff331afd3a381fa13e604f8dffb7
+	source_x86_64 = lmm-api-go-0.1.42-linux-amd64.tar.gz::https://github.com/LIghtJUNction/api.lmm.best/releases/download/go-v0.1.42/lmm-api-go-0.1.42-linux-amd64.tar.gz
+	source_x86_64 = lmm-api-go-0.1.42-linux-amd64.tar.gz.sha256::https://github.com/LIghtJUNction/api.lmm.best/releases/download/go-v0.1.42/lmm-api-go-0.1.42-linux-amd64.tar.gz.sha256
+	source_x86_64 = lmm-api-go-0.1.42-linux-amd64.tar.gz.sigstore.json::https://github.com/LIghtJUNction/api.lmm.best/releases/download/go-v0.1.42/lmm-api-go-0.1.42-linux-amd64.tar.gz.sigstore.json
+	sha256sums_x86_64 = 8863ec18f1696b08182015b02fb98618cc98e582ba5023c5e098a8cbf1d37ab8
+	sha256sums_x86_64 = 27dbe7c0b8c74ede6f2e71358228758baf10c5a6141a55b5ebe651f29a8671a3
+	sha256sums_x86_64 = 522761ffb61cf1a3dbf3a6bb2bbc7674a847334d299107245704f5b6251929f4
+	source_aarch64 = lmm-api-go-0.1.42-linux-arm64.tar.gz::https://github.com/LIghtJUNction/api.lmm.best/releases/download/go-v0.1.42/lmm-api-go-0.1.42-linux-arm64.tar.gz
+	source_aarch64 = lmm-api-go-0.1.42-linux-arm64.tar.gz.sha256::https://github.com/LIghtJUNction/api.lmm.best/releases/download/go-v0.1.42/lmm-api-go-0.1.42-linux-arm64.tar.gz.sha256
+	source_aarch64 = lmm-api-go-0.1.42-linux-arm64.tar.gz.sigstore.json::https://github.com/LIghtJUNction/api.lmm.best/releases/download/go-v0.1.42/lmm-api-go-0.1.42-linux-arm64.tar.gz.sigstore.json
+	sha256sums_aarch64 = 55812c6c39d1b982c34baf3f822bc5a3a5e48a8f96448ab3a86925ca8c785831
+	sha256sums_aarch64 = 56c4b035871876a62a5f06e4d722c757fc97cafc33dfbb95f117efdafe42d192
+	sha256sums_aarch64 = 45fbbe7efb0f32b603cda70527de31ea9d135d6ccb3b1d194c0c4dafcc343620
 
 pkgname = lmm-api-deploy-bin
