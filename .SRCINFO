@@ -1,22 +1,21 @@
 pkgbase = git-stats-bin
 	pkgdesc = A tool for getting aggregated commit stats (prebuilt binary)
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/lukehsiao/git-stats
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	license = BlueOak-1.0.0
-	depends = gcc-libs
-	provides = git-stats=0.2.6
+	depends = glibc
+	depends = libgcc
+	provides = git-stats=0.2.7
 	conflicts = git-stats
-	source = git-stats-0.2.6.tar.gz::https://github.com/lukehsiao/git-stats/archive/v0.2.6.tar.gz
-	sha256sums = fea859997fa5136df8732fa0fd1748425f9d37c32963dfbc74c55e47761b93de
-	source_x86_64 = https://github.com/lukehsiao/git-stats/releases/download/v0.2.6/git-stats-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = b4c3e29ff2663071c9160607026ddb500147048e5c7e7f470d46f00635a09048
-	source_aarch64 = https://github.com/lukehsiao/git-stats/releases/download/v0.2.6/git-stats-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9264979dd7264478c6a9718389b71b7b4905d60036b95af1a5fb7d8baa977585
-	source_armv7h = https://github.com/lukehsiao/git-stats/releases/download/v0.2.6/git-stats-armv7-unknown-linux-gnueabihf.tar.gz
-	sha256sums_armv7h = b0cef4c03d9c67a1cc9b466a4a82353d5ff2c7bdf5c153c8b04c1336dbbf3397
+	source_x86_64 = git-stats-0.2.7-x86_64-unknown-linux-gnu.tar.gz::https://github.com/lukehsiao/git-stats/releases/download/v0.2.7/git-stats-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ead290d1f8f515e7ebb7da434e350e5aa58542737057263fbde7450c074985b8
+	source_aarch64 = git-stats-0.2.7-aarch64-unknown-linux-gnu.tar.gz::https://github.com/lukehsiao/git-stats/releases/download/v0.2.7/git-stats-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 45fb4ffef67df782bfdceb0542316386782f24185617c9a0b12d3a37384e97bf
+	source_armv7h = git-stats-0.2.7-armv7-unknown-linux-gnueabihf.tar.gz::https://github.com/lukehsiao/git-stats/releases/download/v0.2.7/git-stats-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = a38ce436026a172e8047a6ac08bcbcc8175b0d5278deab6ea6da4066e62a85a3
 
 pkgname = git-stats-bin
