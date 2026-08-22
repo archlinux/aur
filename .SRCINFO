@@ -1,0 +1,19 @@
+pkgbase = xwayclip-bin
+	pkgdesc = Bidirectional clipboard synchronization between X11 and Wayland for poorly implemented apps like Linux QQ
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/so1ve/xwayclip
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = xwayclip
+	conflicts = xwayclip
+	conflicts = xwayclip-git
+	source = LICENSE::https://github.com/so1ve/xwayclip/raw/v0.2.2/LICENSE
+	sha256sums = 4d36a113b0a6a584805f0537e0126a382ca425d544c5ae4302b260c56ad42c83
+	source_x86_64 = xwayclip-x86_64-unknown-linux-gnu::https://github.com/so1ve/xwayclip/releases/download/v0.2.2/xwayclip-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = eb4519bf433cd0ea4785acfae6d45635e75736c71a461cdb308c2903ae13c81a
+	source_aarch64 = xwayclip-aarch64-unknown-linux-gnu::https://github.com/so1ve/xwayclip/releases/download/v0.2.2/xwayclip-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 93974c7bd21c70a1c2849e7b66ad3d71912da431497e890c85151ebef36ebf9a
+
+pkgname = xwayclip-bin
