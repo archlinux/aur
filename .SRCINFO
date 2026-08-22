@@ -1,0 +1,19 @@
+pkgbase = kawaii-pkg-git
+	pkgdesc = Universal Linux package manager wrapper
+	pkgver = r6.435f8dd
+	pkgrel = 1
+	url = https://github.com/shirushimori/kawaii-pkg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = kawaii
+	provides = kawaii-pkg
+	conflicts = kawaii
+	conflicts = kawaii-pkg
+	source = git+https://github.com/shirushimori/kawaii-pkg.git
+	sha256sums = SKIP
+
+pkgname = kawaii-pkg-git
