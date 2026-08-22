@@ -5,22 +5,22 @@ pkgname=(
   solarus-launcher
   solarus-editor
 )
-pkgver=2.1.2
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="A lightweight, free and open-source 2D game engine for Action-RPGs"
 arch=("i686" "x86_64")
 url="https://www.solarus-games.org/"
 # changelogs
-# - https://gitlab.com/solarus-games/solarus/-/blob/release-2.1.2/changelog.md#solarus-212-2026-08-20
-# - https://gitlab.com/solarus-games/solarus/-/blob/release-2.1.2/editor/changelog.md?ref_type=heads#solarus-editor-212-2026-08-20
-# - https://gitlab.com/solarus-games/solarus/-/blob/release-2.1.2/launcher/changelog.md#solarus-launcher-212-2026-08-20
+# - https://gitlab.com/solarus-games/solarus/-/blob/release-2.1.3/changelog.md
+# - https://gitlab.com/solarus-games/solarus/-/blob/release-2.1.3/editor/changelog.md
+# - https://gitlab.com/solarus-games/solarus/-/blob/release-2.1.3/launcher/changelog.md
 license=("GPL-3.0-only AND CC-BY-SA-3.0 AND CC-BY-SA-4.0")
 makedepends=(
   "cmake"
   "zip"
 )
 source=("https://gitlab.com/solarus-games/$pkgbase/-/archive/v$pkgver/$pkgbase-v$pkgver.tar.gz")
-sha256sums=('9de8da81e866da37a4dc4e9d015741fd99c5d05f26e7ef86cea00cc2899690c2')
+sha256sums=('be0c3d8de6b761ebce82ce913d407cd3ce68c6b2dda72ee489acdb6322ed768d')
 _rootdir=$pkgname-v$pkgver
 
 prepare() {
