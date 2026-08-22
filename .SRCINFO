@@ -1,8 +1,8 @@
 pkgbase = caffeine
 	pkgdesc = Keep your computer awake
-	pkgver = 2.10.0
+	pkgver = 2.10.1
 	pkgrel = 1
-	url = https://pypi.org/project/cups-of-caffeine
+	url = https://launchpad.net/caffeine
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-build
@@ -15,7 +15,7 @@ pkgbase = caffeine
 	depends = python-ewmh
 	depends = python-gobject
 	depends = python-xlib
-	source = caffeine-2.10.0.tar.gz::https://files.pythonhosted.org/packages/source/c/cups_of_caffeine/cups_of_caffeine-2.10.0.tar.gz
-	sha256sums = 490b437abebd422edd6b0efa6fcd9eeaa3c50e84fd144e1df6a18012bca143f9
+	source = caffeine-2.10.1.tar.gz::https://files.pythonhosted.org/packages/source/c/cups_of_caffeine/cups_of_caffeine-2.10.1.tar.gz
+	sha256sums = a933c61a206f61c92acd4e6513104f2e9411e76b728309657d5287f5df5cb527
 
 pkgname = caffeine

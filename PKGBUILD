@@ -7,10 +7,10 @@
 _name="cups-of-caffeine"
 _pkgname="caffeine"
 pkgname="$_pkgname"
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Keep your computer awake"
-url="https://pypi.org/project/cups-of-caffeine"
+url="https://launchpad.net/caffeine"
 license=('GPL-3.0-or-later')
 arch=('any')
 
@@ -32,7 +32,7 @@ makedepends=(
 _pkgsrc="${_name//-/_}-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/$_pkgsrc.$_pkgext")
-sha256sums=('490b437abebd422edd6b0efa6fcd9eeaa3c50e84fd144e1df6a18012bca143f9')
+sha256sums=('a933c61a206f61c92acd4e6513104f2e9411e76b728309657d5287f5df5cb527')
 
 build() {
   cd "$_pkgsrc"
