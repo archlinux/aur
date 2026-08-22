@@ -1,6 +1,6 @@
 pkgbase = python-onepassword-sdk
 	pkgdesc = Python SDK for 1Password
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/1Password/onepassword-sdk-python
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-onepassword-sdk
 	makedepends = python-setuptools
 	depends = python
 	depends = python-pydantic
-	source = https://files.pythonhosted.org/packages/source/o/onepassword_sdk/onepassword_sdk-0.4.0.tar.gz
-	sha256sums = dbfa0914a8eae46ac5a5c924cd0c96ca5be3755b320740a5ef2a389216c2f68e
+	source = https://files.pythonhosted.org/packages/source/o/onepassword_sdk/onepassword_sdk-0.4.1.tar.gz
+	sha256sums = 4b9224208aa6e35e13bad8534e6521d3abf5ba166ea4efd370fcdc918c4a4d26
 
 pkgname = python-onepassword-sdk
