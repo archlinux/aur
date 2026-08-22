@@ -1,6 +1,6 @@
 # Maintainer: Danilo Falcão <danilo@falcao.org>
 pkgname=bind-utils-standalone
-pkgver=9.20.22
+pkgver=9.20.27
 pkgrel=1
 pkgdesc="DNS client utilities from BIND: dig, host, nslookup, nsupdate, delv, mdig"
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=('bind-tools')
 conflicts=('bind' 'bind-tools')
 options=('!emptydirs')
 source=("git+https://gitlab.isc.org/isc-projects/bind9.git#tag=v${pkgver}")
-sha256sums=('407000ca3bec3ce39acfd25f129f0848599a9413668a5f2cf9b0c569607a6fbe')
+sha256sums=('a23a762a4cc591f28b6aa7fa5fe446996ee514e01cd69ec962110df705c4721b')
 
 # Client tools to keep
 _tools=(dig host nslookup nsupdate delv mdig)
