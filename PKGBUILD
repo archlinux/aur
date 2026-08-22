@@ -1,14 +1,13 @@
 # Maintainer: h-a <ha1029.dev at aol dot com>
 pkgname=ttf-ricty-nerd
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 pkgdesc="Japanese TrueType font for developers by mixing Inconsolata Nerd Font and Migu 1M."
 arch=("any")
 url="https://rictyfonts.github.io/"
 license=("OFL-1.1 AND IPA")
 depends=("fontconfig")
-makedepends=("ttf-inconsolata-nerd>=3.5.0-1" "fontforge")
-install=ttf-ricty-nerd.install
+makedepends=("ttf-inconsolata-nerd>=3.5.1-1" "fontforge")
 source=(
 	"https://rictyfonts.github.io/files/ricty_generator.sh"
 	"ricty_generator.patch"
@@ -18,7 +17,7 @@ source=(
 )
 sha256sums=(
 	"86bf0fed84ef806690b213798419405d7ca2a1a4bed4f6a28b87c2e2d07ad60d"
-	"476dec00961c36d94aba20b2a2571e1907e83835d901b3a65e99041ce4490994"
+	"b671114f87259f671d45b9386dfda64e4acc8bb5bf5ed3585d54a0b84308d7fd"
 	"29bd0cfd0fb2a45f9b057c834a057724bae1f63b525a8ac83d3e7525706d9f80"
 	"4c84dd528ec3044638ec346fc1ee27cd1eb95dfc04cbc6a881b3ca7a7f517e54"
 	"e4806d297e59a7f9c235b0079b2819f44b8620d4365a8955cb612c9ff5809321"
