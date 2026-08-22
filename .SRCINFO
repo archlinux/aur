@@ -1,0 +1,14 @@
+pkgbase = t-rec-bin
+	pkgdesc = Blazingly fast terminal recorder
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/sassman/t-rec-rs
+	arch = x86_64
+	license = GPL3
+	depends = imagemagick
+	provides = t-rec
+	conflicts = t-rec
+	source = t-rec-bin-0.8.2.tar.gz::https://github.com/sassman/t-rec-rs/releases/download/v0.8.2/t-rec-v0.8.2-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 94db8c41402b2ece4eb807b8673d9f3a7365cceaba83501ceb9e60bc7bc0308b
+
+pkgname = t-rec-bin
