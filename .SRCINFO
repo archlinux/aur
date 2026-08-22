@@ -1,7 +1,7 @@
 pkgbase = pi-coding-agent
 	pkgdesc = Coding agent CLI with read, bash, edit, write tools and session management
 	pkgver = 0.84.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/earendil-works/pi
 	arch = x86_64
 	arch = aarch64
@@ -14,7 +14,7 @@ pkgbase = pi-coding-agent
 	depends = glibc
 	depends = gcc-libs
 	optdepends = git: repository-aware workflows and session integration
-	provides = pi
+	provides = pi=0.84.2
 	conflicts = pi
 	conflicts = pi-coding-agent-bin
 	conflicts = pi-coding-agent-git

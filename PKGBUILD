@@ -3,7 +3,7 @@
 
 pkgname=pi-coding-agent
 pkgver=0.84.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Coding agent CLI with read, bash, edit, write tools and session management'
 arch=('x86_64' 'aarch64')
 url='https://github.com/earendil-works/pi'
@@ -13,7 +13,7 @@ makedepends=('bun' 'nodejs' 'npm')
 optdepends=(
     'git: repository-aware workflows and session integration'
 )
-provides=('pi')
+provides=("pi=$pkgver")
 conflicts=('pi' 'pi-coding-agent-bin' 'pi-coding-agent-git')
 options=('!strip' '!debug')
 source=("pi-${pkgver}-source.tar.gz::${url}/releases/download/v${pkgver}/pi-${pkgver}-source.tar.gz")
