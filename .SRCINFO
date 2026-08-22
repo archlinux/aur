@@ -1,0 +1,18 @@
+pkgbase = open-sstv-bin
+	pkgdesc = Open-source cross-platform SSTV transceiver for amateur radio (prebuilt binary, GUI only)
+	pkgver = 0.6.8
+	pkgrel = 1
+	url = https://github.com/bucknova/Open-SSTV
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	optdepends = hamlib: rigctld-based radio control
+	provides = open-sstv
+	conflicts = open-sstv
+	options = !strip
+	source_x86_64 = https://github.com/bucknova/Open-SSTV/releases/download/v0.6.8/open-sstv-linux-x86_64.zip
+	sha256sums_x86_64 = 4ed6769a0e298675e289a19c650ccdf84046602ee810317c216352fdd5f8803e
+	source_aarch64 = https://github.com/bucknova/Open-SSTV/releases/download/v0.6.8/open-sstv-linux-arm64.zip
+	sha256sums_aarch64 = b787b780c0f643ff54e33654f12cf5541156de5696029b2e6f9bd6c024ade732
+
+pkgname = open-sstv-bin
