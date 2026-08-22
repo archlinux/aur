@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=xl-view
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Minimalist HDR image viewer optimized for large images.'
 url="https://github.com/andrinbr/${pkgname}"
@@ -10,7 +10,7 @@ depends=('libgcc' 'glibc')
 makedepends=('rust' 'cargo')
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1bce9be4b2507375529da9e7b55e205f8cfc3215f1b58143a1f03cd1fea0d1f9')
+sha256sums=('27c04989063ba723e1f4da5c8379f37d1fce61b4d902d575f6d1817002060dd2')
 
 _srcdir="${pkgname}-${pkgver}"
 
