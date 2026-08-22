@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wagner <philipp@wagnersnetz.de>
 pkgname=kst4contest
-pkgver=1.41.1
+pkgver=1.42.0
 pkgrel=1
 pkgdesc="ON4KST Chat Client for VHF/UHF contest operation"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('java-environment=21' 'maven')
 provides=('kst4contest')
 conflicts=('kst4contest-bin' 'kst4contest-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/praktimarc/kst4contest/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e96207a2d3fee19d35e34717f5312beb28bb087c040164e352337e749ce53b8d')
+sha256sums=('bd396387b8de41aac706458d5ebf64140ab3e83b8a7c710b66aa802bd48e804e')
 
 build() {
     cd "${srcdir}/kst4contest-${pkgver}"
@@ -26,14 +26,30 @@ build() {
     cp "$(ls -t target/praktiKST-*.jar | head -n 1)" target/dist-libs/app.jar
 
     mkdir -p dist
+    # This PKGBUILD builds from a released source tarball, which may predate
+    # packaging/AddModules.java. Older tarballs carry the same list in pom.xml,
+    # which the build keeps in sync with module-info.java from v1.42.0 onwards.
+    if [ -f packaging/AddModules.java ]; then
+        ADD_MODULES="$(java packaging/AddModules.java)"
+    else
+        ADD_MODULES="$(sed -n 's:.*<addmodule>\(.*\)</addmodule>.*:\1:p' pom.xml | paste -sd,)"
+    fi
+    # Same story for the packaging icon: without --icon jpackage silently ships
+    # its own Duke placeholder, but tarballs older than v1.42.0 have no icon to
+    # point at, so only pass the flag when the file is actually there.
+    ICON_ARGS=()
+    if [ -f packaging/icons/kst4contest.png ]; then
+        ICON_ARGS=(--icon packaging/icons/kst4contest.png)
+    fi
     jpackage \
         --type app-image \
         --name KST4Contest \
+        "${ICON_ARGS[@]}" \
         --input target/dist-libs \
         --main-jar app.jar \
         --main-class kst4contest.view.Kst4ContestApplication \
         --module-path target/dist-libs \
-        --add-modules javafx.controls,javafx.graphics,javafx.fxml,javafx.web,javafx.media,java.sql,java.net.http,jdk.crypto.ec \
+        --add-modules "$ADD_MODULES" \
         --dest dist
 }
 
