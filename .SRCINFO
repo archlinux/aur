@@ -1,11 +1,11 @@
 pkgbase = polypolish-bin
 	pkgdesc = Short-read polishing tool for bacterial genome assemblies
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rrwick/Polypolish
 	arch = x86_64
 	license = GPL-3.0-only
-	provides = polypolish
+	provides = polypolish=0.7.1
 	conflicts = polypolish
 	options = !strip
 	options = !debug

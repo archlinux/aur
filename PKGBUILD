@@ -3,12 +3,12 @@
 pkgname=polypolish-bin
 _pkgname=polypolish
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Short-read polishing tool for bacterial genome assemblies"
 arch=('x86_64')
 url="https://github.com/rrwick/Polypolish"
 license=('GPL-3.0-only')
-provides=('polypolish')
+provides=("polypolish=$pkgver")
 conflicts=('polypolish')
 options=('!strip' '!debug')
 source=(
