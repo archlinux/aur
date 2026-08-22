@@ -1,5 +1,5 @@
 pkgbase = dotmatrix-git
-	pkgdesc = Dot Matrix (renamed to DotDog) - Modern dotfile compositor with git versioning & NoteDog TUI
+	pkgdesc = Dot Matrix (renamed to DotDog) - Modern dotfile compositor with git versioning & DotDog TUI
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/Woofson/dotdog
