@@ -3,7 +3,7 @@
 
 _pkgname=onetalker
 pkgname=$_pkgname-bin
-pkgver=2026.7
+pkgver=2026.8
 pkgrel=1
 pkgdesc='An Augmentative and Alternative Communication (AAC) Aid'
 arch=(x86_64)
@@ -26,7 +26,7 @@ source=(
   "https://downloads.onetalker.org/v${pkgver}/OneTalker-${pkgver}-x86_64-no-selfupdate-linux.tar.gz"
   "onetalker.sh"
 )
-sha256sums=('2c59d259b511d8a7ceb666a2450219037d98d13a2518009135d29906ced80feb'
+sha256sums=('7acbc48ff441a9a15d40b34a8296f4427a377acc413bddb666e921f755c526ba'
             '01e25123d26a68289424b1a5640c5d220f1aed8d94c41392f1a2610cac4011f5')
 
 package() {
