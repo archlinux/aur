@@ -1,32 +1,19 @@
 #!/bin/bash
+# Rewriter: takes the new upstream version as $1; version detection lives in
+# the root nvchecker.toml.
 # autocycler-bin has two sources (binary tarball + LICENSE), so checksums are
 # refreshed with `updpkgsums` (pacman-contrib) instead of a single-line sed.
+# Maintainer-side tool, never executed during package build or install.
 set -e
+[ $# -eq 1 ] || { echo "usage: $0 <new-version>" >&2; exit 1; }
+LATEST_VERSION=${1#v}
 
 REPO="rrwick/Autocycler"
 URL="https://github.com/${REPO}"
 PKGNAME="autocycler-bin"
-
-echo "==> Checking for new version..."
-
-LATEST_URL=$(curl -sILo /dev/null -w '%{url_effective}' "https://github.com/${REPO}/releases/latest")
-LATEST_TAG=${LATEST_URL##*/}
-LATEST_VERSION=${LATEST_TAG#v}
-
-if [ -z "$LATEST_VERSION" ]; then
-    echo "Error: Could not fetch latest version"
-    exit 1
-fi
-
 CURRENT_VERSION=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
-
 echo "Current version: $CURRENT_VERSION"
 echo "Latest version:  $LATEST_VERSION"
-
-if [ "$CURRENT_VERSION" = "$LATEST_VERSION" ]; then
-    echo "==> Already up to date!"
-    exit 0
-fi
 
 echo "==> Updating to version $LATEST_VERSION..."
 sed -i "s/^pkgver=.*/pkgver=$LATEST_VERSION/" PKGBUILD
