@@ -2,7 +2,7 @@
 
 name="pindock"
 pkgname="${name}-bin"
-pkgver="1.1.1"
+pkgver="1.1.2"
 pkgrel=1
 pkgdesc="Pin and update Docker image digests in Dockerfiles and compose files"
 arch=("x86_64" "aarch64")
@@ -15,8 +15,8 @@ options=("!strip")
 source_x86_64=("${name}_${pkgver//_/-}_linux_amd64.tar.gz::${url}/releases/download/v${pkgver//_/-}/${name}_${pkgver//_/-}_linux_amd64.tar.gz")
 source_aarch64=("${name}_${pkgver//_/-}_linux_arm64.tar.gz::${url}/releases/download/v${pkgver//_/-}/${name}_${pkgver//_/-}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('d93f21e35a6dfbdbaf968d2410f8bc72f6681b6fa37c8251fe2b1fcda234444d')
-sha256sums_aarch64=('68b47d8c67037040c6af14d9ac32edc6cb1b4a52e28d78ccb8f9dc02b1149602')
+sha256sums_x86_64=('f7da28dd6c752a57e0cffb4ad07b9dd1c6149ae50c89e9903797506d2840861e')
+sha256sums_aarch64=('3b5acfdd6f3be4f904ca24a13cdaee604561ceadb83a52a7a99bba70cab8d7d3')
 
 package() {
     install -Dm755 "${srcdir}/${name}" "${pkgdir}/usr/bin/${name}"
