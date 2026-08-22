@@ -12,7 +12,7 @@ pkgdesc="Firefox browser extension for zx2c4's pass password manager"
 arch=('any')
 url="https://github.com/parcel-pm/parcel"
 license=('ISC')
-depends=('parcel')
+depends=("parcel>=${pkgver}")
 makedepends=()
 optdepends=("pass: password manager to manage the password store")
 # Can't build the extension from source, because needs to be signed by Mozilla.

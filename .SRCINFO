@@ -5,7 +5,7 @@ pkgbase = parcel-firefox
 	url = https://github.com/parcel-pm/parcel
 	arch = any
 	license = ISC
-	depends = parcel
+	depends = parcel>=1.0.6
 	optdepends = pass: password manager to manage the password store
 	source = https://addons.mozilla.org/firefox/downloads/file/4967434/parcel_pm-1.0.6.xpi
 	validpgpkeys = 82ED663067C6017BAA4BC752EB670BF2B1131683
