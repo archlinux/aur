@@ -1,0 +1,17 @@
+pkgbase = arxiv-cli-opt
+	pkgdesc = A Rust CLI to download papers from arXiv
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/AstraBert/arxiv-cli
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	options = !debug
+	source = arxiv-cli-opt-1.0.0.tar.gz::https://github.com/AstraBert/arxiv-cli/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 31c0d15787e9f8b0afb9e434136c600cf5999eee78da64c0f09357acae505ff4
+
+pkgname = arxiv-cli-opt
