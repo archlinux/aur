@@ -1,0 +1,23 @@
+# ATTN: Keep this variable in sync with PKGBUILD
+_id=parcel@erayd.net
+
+_ext_archive="/usr/lib/firefox/browser/extensions/${_id}.xpi"
+_host_script="parcel-host"
+
+post_upgrade() {
+    # Note that it is safe to install the extension with the unapproved updated
+    # host script and ask user to review it after it is already installed,
+    # because the new updated host script will not be allowed to run, until the
+    # user manually updates the hash pinned in the user's parcelrc.
+
+    local _extract_cmd="unzip -p \"${_ext_archive}\" \"${_host_script}\""
+
+    echo ">>> [SECURITY] ACTION REQUIRED: review host script bundled in extension:"
+    echo ">>>   1. Review contents of updated host script (signed does imply safe!):"
+    echo ">>>        "\${EDITOR}" <(${_extract_cmd})"
+    echo ">>>   2. If OK, update HOST_HASH in your '~/.config/parcel/parcelrc' to:"
+    echo ">>>        ${_extract_cmd} | sha256sum"
+
+    # Don't show the new hash to the user, to force the user to work with the file,
+    # in the hope that this will push the user to actually review the script code.
+}
