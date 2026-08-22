@@ -4,19 +4,15 @@ _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lower
 _upstream=Hermes                 # productName + executableName
 _pkgver_tag=v2026.8.19
 _commit=fcbd1076a93841fa88855acce810e342a5b78101
-_electron_ver=40.10.2
 pkgver=0.20.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
 license=('MIT')
 depends=(
-  'alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'gtk3'
-  'curl' 'git' 'hicolor-icon-theme' 'libcups' 'libnotify' 'libsecret' 'libx11' 'libxcb'
-  'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr'
-  'libxss' 'libxtst' 'mesa' 'nspr' 'nss' 'pango' 'systemd-libs'
-  'util-linux-libs' 'xdg-utils'
+  'curl' 'electron42' 'git' 'hicolor-icon-theme' 'libnotify' 'libsecret'
+  'xdg-utils'
 )
 optdepends=(
   'libayatana-appindicator: tray indicator support'
@@ -26,12 +22,11 @@ conflicts=('hermes-agent-desktop-bin')
 options=('!debug')
 source=(
   "hermes-agent-${_pkgver_tag}.tar.gz::${url}/archive/refs/tags/${_pkgver_tag}.tar.gz"
-  "electron-v${_electron_ver}-linux-x64.zip::https://github.com/electron/electron/releases/download/v${_electron_ver}/electron-v${_electron_ver}-linux-x64.zip"
+  'system-electron-resources.patch'
 )
-noextract=("electron-v${_electron_ver}-linux-x64.zip")
 sha256sums=(
   '8e7f7d2aa6be48ae8b5550325be44aef339413ceec6ed74c18287001103de8fd'
-  '0246201400600ac089c51a36f15a8045b5db723ba42b864f732a9b4e48731e97'
+  'ee465a1aa2ad5789fa5c7b3a89993bbf0e68efddbf27c93109519b72a4cb90f7'
 )
 
 # NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
@@ -53,6 +48,7 @@ _set_npm_env() {
 prepare() {
   cd "$(_extract_dir)"
   _set_npm_env
+  patch -Np1 -i "${srcdir}/system-electron-resources.patch"
   # The release identifies Hermes Agent as 0.20.5, but
   # apps/desktop/package.json is not bumped — it still says 0.17.0. Patch
   # it here so pkgver matches the release.
@@ -64,14 +60,12 @@ prepare() {
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   npm ci --prefer-offline --no-audit --ignore-scripts
 
-  # electron's npm postinstall normally downloads the runtime outside
-  # makepkg's source verification. Populate its dist directory from the
-  # explicitly declared, checksummed Electron release archive instead.
+  # Keep the locked Electron npm package for its TypeScript declarations and
+  # tooling, but make any build helper that resolves `require('electron')` use
+  # Arch's versioned runtime instead of downloading a second copy.
   local electron_dir='apps/desktop/node_modules/electron'
   rm -rf "${electron_dir}/dist"
-  install -dm755 "${electron_dir}/dist"
-  bsdtar -xf "${srcdir}/electron-v${_electron_ver}-linux-x64.zip" \
-    -C "${electron_dir}/dist"
+  ln -s /usr/lib/electron42 "${electron_dir}/dist"
   printf '%s' 'electron' > "${electron_dir}/path.txt"
   test -x "${electron_dir}/dist/electron"
 
@@ -90,25 +84,11 @@ build() {
   export npm_config_offline=true
   # makepkg runs build() in a separate subshell from prepare().
   export GITHUB_SHA="${_commit}" GITHUB_REF_NAME="${_pkgver_tag}"
-  # electron-builder's FPM target (.deb/.rpm) requires a `homepage` in
-  # package.json's `build` section. Upstream omits it because they ship
-  # via the website installer rather than FPM. Inject it here so the
-  # .deb target produces output. `npm pkg set` is built into npm 7+ and
-  # patches the file in place.
-  npm pkg set homepage='https://hermes-agent.nousresearch.com/'
-  # Build only the `dir` target (unpacked directory) — skipping the
-  # .deb/.rpm/AppImage targets. The FPM binary that ships with
-  # electron-builder is a precompiled Ruby that links against the
-  # legacy glibc libcrypt.so.1, which modern Arch/CachyOS does not
-  # ship (the system has libcrypt.so.2 from libxcrypt instead). The
-  # unpacked directory contains exactly the same application bundle as the
-  # .deb target, so we can install it directly under /usr/lib without any
-  # functional difference. This trades one extra build dep
-  # (libxcrypt-compat) for one fewer target, and produces a cleaner
-  # build that doesn't depend on FPM/Ruby at all.
-  # We invoke the build+builder scripts directly (rather than `npm run
-  # dist:linux`) so we can override the hardcoded `--linux AppImage deb
-  # rpm` in upstream's dist:linux script with `--linux dir`.
+  local electron_version
+  electron_version="$(< /usr/lib/electron42/version)"
+  # Keep upstream's package.json and lockfile pins intact for deterministic
+  # npm ci. The builder CLI override below selects the system runtime without
+  # pretending that the locked npm tooling package was resolved at a new pin.
   npm run build
 
   # Upstream writes the wall clock into the bundled install stamp. Normalize it
@@ -120,7 +100,11 @@ build() {
     build/install-stamp.json
   grep -Fq "\"builtAt\": \"${build_time}\"" build/install-stamp.json
 
-  npm run builder -- --linux dir
+  # Upstream's builder wrapper resolves node_modules/electron/dist and passes it
+  # as electronDist. prepare() links that directory to Arch's Electron runtime.
+  # package() keeps only the app resources, so electron42 remains their owner.
+  npm run builder -- --linux dir \
+    -c.electronVersion="${electron_version}"
 }
 
 check() {
@@ -129,24 +113,40 @@ check() {
   export npm_config_offline=true
   npm run typecheck --workspace apps/desktop
   npm run test --workspace apps/desktop
+
+  # node-pty is the only native Node addon shipped by Hermes. Load the staged
+  # module with the exact Electron runtime used by the installed launcher; its
+  # N-API build must not merely load under makepkg's system Node.
+  local node_pty_root="${PWD}/apps/desktop/release/linux-unpacked/resources/app.asar.unpacked/dist/node_modules/node-pty"
+  test -f "${node_pty_root}/package.json"
+  env ELECTRON_RUN_AS_NODE=1 NODE_PTY_ROOT="${node_pty_root}" \
+    /usr/bin/electron42 -e \
+    'const pty = require(process.env.NODE_PTY_ROOT); if (typeof pty.spawn !== "function") process.exit(1)'
 }
 
 package() {
   cd "$(_extract_dir)"
   local appdir="apps/desktop/release/linux-unpacked"
+  local resources="${appdir}/resources"
   if [ ! -d "${appdir}" ]; then
     printf 'ERROR: electron-builder did not produce %s\n' "${appdir}"
     ls -la apps/desktop/release/ 2>/dev/null || true
     return 1
   fi
+  if [ ! -f "${resources}/app.asar" ] || \
+     [ ! -d "${resources}/app.asar.unpacked" ] || \
+     [ ! -f "${resources}/install-stamp.json" ]; then
+    printf 'ERROR: electron-builder output is missing required app resources\n'
+    find "${resources}" -maxdepth 2 -printf '%M %p\n' 2>/dev/null || true
+    return 1
+  fi
   install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-  cp -a "${appdir}/." "${pkgdir}/usr/lib/${pkgname}/"
-  chmod 755 "${pkgdir}/usr/lib/${pkgname}/${_upstream}"
-  # Chromium refuses to start with its sandbox enabled unless the helper is
-  # root-owned and setuid. Files under pkgdir are already owned by root when
-  # packaged; preserve the required mode explicitly because cp -a only keeps
-  # the upstream release directory's ordinary 0755 mode.
-  chmod 4755 "${pkgdir}/usr/lib/${pkgname}/chrome-sandbox"
+  install -Dm644 "${resources}/app.asar" \
+    "${pkgdir}/usr/lib/${pkgname}/app.asar"
+  cp -a "${resources}/app.asar.unpacked" \
+    "${pkgdir}/usr/lib/${pkgname}/app.asar.unpacked"
+  install -Dm644 "${resources}/install-stamp.json" \
+    "${pkgdir}/usr/lib/${pkgname}/install-stamp.json"
   # One Electron/Chromium argument per line. Blank lines and full-line comments
   # are ignored; the file is data, never sourced or evaluated as shell code.
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<'EOF'
@@ -164,7 +164,11 @@ if [[ -r "${flags_file}" ]]; then
   done < "${flags_file}"
 fi
 
-exec /usr/lib/hermes-agent-desktop/Hermes "${flags[@]}" "$@"
+export HERMES_DESKTOP_IS_PACKAGED=1
+export HERMES_DESKTOP_RESOURCES_PATH=/usr/lib/hermes-agent-desktop
+
+exec /usr/bin/electron42 "${flags[@]}" \
+  /usr/lib/hermes-agent-desktop/app.asar "$@"
 EOF
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" <<EOF
 [Desktop Entry]

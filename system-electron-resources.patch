@@ -1,0 +1,13 @@
+diff --git a/apps/desktop/electron/main.ts b/apps/desktop/electron/main.ts
+--- a/apps/desktop/electron/main.ts
++++ b/apps/desktop/electron/main.ts
+@@ -602,6 +602,9 @@ function loadInstallStamp() {
+   // someone running `npm run start` after a local `npm run build` also
+   // sees a stamp without needing a packaged build.
+   const candidates = [
++    process.env.HERMES_DESKTOP_RESOURCES_PATH
++      ? path.join(process.env.HERMES_DESKTOP_RESOURCES_PATH, 'install-stamp.json')
++      : null,
+     process.resourcesPath ? path.join(process.resourcesPath, 'install-stamp.json') : null,
+     path.join(APP_ROOT, 'build', 'install-stamp.json')
+   ].filter(Boolean)
