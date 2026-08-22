@@ -8,9 +8,9 @@ pkgbase = xpadneo-dkms
 	checkdepends = LINUX-HEADERS
 	checkdepends = fakeroot
 	depends = dkms
-	depends = bluez
-	depends = bluez-utils
 	source = xpadneo-v0.10.4.tar.gz::https://github.com/atar-axis/xpadneo/archive/v0.10.4.tar.gz
 	b2sums = 2858e466c5fde7e3d06d878dd7fb695751375e11a112bd3d389f9db5a82ef3ffcc1e3431b213f4807aeb8f05fd4280c7ca2a0a56305b0e984eb9b70df4843735
 
 pkgname = xpadneo-dkms
+	depends = bluez
+	depends = bluez-utils

@@ -14,7 +14,7 @@ url='https://github.com/atar-axis/xpadneo'
 arch=(any)
 license=('GPL-2.0-only AND GPL-3.0-or-later')
 checkdepends=('LINUX-HEADERS' 'fakeroot')
-depends=('dkms' 'bluez' 'bluez-utils')
+depends=('dkms')
 source=("xpadneo-v${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 b2sums=('2858e466c5fde7e3d06d878dd7fb695751375e11a112bd3d389f9db5a82ef3ffcc1e3431b213f4807aeb8f05fd4280c7ca2a0a56305b0e984eb9b70df4843735')
 
@@ -45,6 +45,8 @@ check() {
 }
 
 package() {
+  depends=('bluez' 'bluez-utils')
+
   cd "xpadneo-${pkgver}"
 
   # Add modprobe and udev files
