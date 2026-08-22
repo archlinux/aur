@@ -21,12 +21,12 @@
 pkgbase="zfs-linux"
 pkgname=("zfs-linux" "zfs-linux-headers")
 _zfsver="2.4.4"
-_kernelver="7.1.8.arch1-3"
-_kernelver_full="7.1.8.arch1-3"
+_kernelver="7.1.9.arch1-2"
+_kernelver_full="7.1.9.arch1-2"
 _extramodules="${_kernelver_full/.arch/-arch}"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
-pkgrel=2
+pkgrel=1
 makedepends=("linux-headers=${_kernelver}")
 arch=("x86_64")
 url="https://openzfs.org/"
