@@ -3,7 +3,8 @@ post_install() {
   echo -e '\n\033[1;32m==> Paste this code in your Hyprland (Lua) config file to auto start:\033[0m'
   echo -e '\n\033[1mhl.on("hyprland.start", function()'
   echo -e '  hl.exec_cmd("chillpill-shell")'
-  echo -e 'end)\033[0m\n'
+  echo -e 'end)\033[0m'
+  echo -e '\n\033[1;32m==> For the holidays/events feature in your calendar, run:\033[0m\n\033[1mpipx install holidays\033[0m\n'
   update_config
 }
 
@@ -13,6 +14,11 @@ post_upgrade() {
 
 update_config() {
   local YOU="$(logname 2>/dev/null || echo "$SUDO_USER")"
+
+  if [[ -z "$YOU" || "$YOU" == "root" ]]; then
+     return
+  fi
+
   local REAL_HOME="/home/$YOU"
   local cfg="$REAL_HOME/.config/chillpill-shell/config.jsonc"
   local example="/usr/share/chillpill-shell/config.jsonc.example"

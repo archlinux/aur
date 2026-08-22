@@ -1,6 +1,6 @@
 # Maintainer: LUCKY / LuckySingh1 <luckysingh71826@gmail.com>
 pkgname=chillpill-shell
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Lightweight and feature rich dynamic pill bar for Hyprland"
 depends=(
@@ -14,11 +14,13 @@ depends=(
        'qt6-wayland'
        'hyprland'
        'pipewire'
+       'awww'
 )
 optdepends=(
          'ttf-jetbrains-mono-nerd'
          'ttf-monocraft-nerd'
          'qt6-imageformats'
+         'python-pip: required to install optional package "holidays" in calendar'
 )
 makedepends=('tar' 'cmake' 'qt6-base' 'python')
 arch=('x86_64')
@@ -26,7 +28,7 @@ license=('GPL-3.0')
 options=('!debug')
 url="https://github.com/LUCKYS1NGHH/ChillPill-Shell"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LUCKYS1NGHH/ChillPill-Shell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a026c0e3eb3a65e764f82ba8003420afc76c1f8ccdccbd8d462b0050878de49b')
+sha256sums=('66c17cc2aa8098faa05c6d51dbb60ef9752f2ae7d70c95ee76032a02a5578aab')
 
 package() {
   cd "ChillPill-Shell-$pkgver"
