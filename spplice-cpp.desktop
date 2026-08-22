@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Spplice
+Comment=Portal 2 mod launcher
+Exec=spplice-cpp
+Icon=spplice.png
+Terminal=false
+Categories=Game;StrategyGame;
+Keywords=portal;mods

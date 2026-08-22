@@ -1,0 +1,27 @@
+pkgbase = spplice-cpp-bin
+	pkgdesc = Dedicated Portal 2 mod launcher
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/p2r3/spplice-cpp
+	arch = x86_64
+	license = custom:Spplice-Terms
+	makedepends = imagemagick
+	optdepends = steam: needed to install Portal 2
+	provides = spplice-cpp
+	conflicts = spplice-cpp
+	noextract = spplice-cpp-${pkgver}
+	noextract = spplice-icon.ico
+	options = strip
+	options = !libtool
+	options = !staticlibs
+	options = !emptydirs
+	source = spplice-cpp-0.9.5::https://github.com/p2r3/spplice-cpp/releases/download/v0.9.5-alpha/SppliceCPP
+	source = spplice-icon.ico::https://raw.githubusercontent.com/p2r3/spplice-cpp/refs/tags/v0.9.5-alpha/resources/icon.ico
+	source = spplice-cpp.desktop
+	source = LICENSE
+	sha256sums = 6b3003e73858d26e393b88948c33d567455417028ef9c04fcfc665849b5d615a
+	sha256sums = 49a20bf94b5dbd9dc54b517578fc3f4212a24cdaacdb2098fd7ccfc875d1387a
+	sha256sums = 68a25b1475031a23da41b7aa9f7205924f8c69292b4de777e6422034d732d7c2
+	sha256sums = 9926ee307995864c56df6ca4dde962e25c9f6282fc07ef5d99dda652917876c6
+
+pkgname = spplice-cpp-bin
