@@ -1,0 +1,21 @@
+pkgbase = gammactrl-git
+	pkgdesc = Gamma control for KDE Plasma Wayland sessions
+	pkgver = 0.r6.dd8c9fc
+	pkgrel = 1
+	url = https://github.com/realdtn2/gammactrl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	depends = gtk4
+	depends = libkscreen
+	depends = hicolor-icon-theme
+	provides = gammactrl
+	conflicts = gammactrl
+	options = !debug
+	source = git+https://github.com/realdtn2/gammactrl.git
+	sha256sums = SKIP
+
+pkgname = gammactrl-git
