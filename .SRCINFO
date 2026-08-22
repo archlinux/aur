@@ -1,7 +1,7 @@
 pkgbase = lava-desktop
 	pkgdesc = LAVA - Live Animated Visuals for Arch. Desktop live wallpaper engine with formula support, animations, and widget system.
-	pkgver = 0.2.7
-	pkgrel = 2
+	pkgver = 0.2.8
+	pkgrel = 1
 	url = https://github.com/jaslrobinson/lava
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = lava-desktop
 	optdepends = sway: basic compositor support (Wayland)
 	provides = lava
 	options = !lto
-	source = lava-desktop-0.2.7.tar.gz::https://github.com/jaslrobinson/lava/archive/refs/tags/v0.2.7.tar.gz
-	sha256sums = 5f424859adad40054691dca62723f9f425325b907d30d5bf1b7bd16b6069f38a
+	source = lava-desktop-0.2.8.tar.gz::https://github.com/jaslrobinson/lava/archive/refs/tags/v0.2.8.tar.gz
+	sha256sums = 88fcb5fbf6657f100e672c7cc7f49f6f488415f0977d57b30439a277ca925d8e
 
 pkgname = lava-desktop
