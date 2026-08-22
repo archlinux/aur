@@ -1,0 +1,11 @@
+# Whitelist: only the package sources are tracked; everything else is ignored.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!libass_width.c
+!libass_width.map
+!001-libass-metrics-api.patch
+!002-libass-metrics-crashfix.patch
+!karaskel-auto4-fix.lua
+!kara-templater-fix.lua

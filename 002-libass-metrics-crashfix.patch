@@ -1,0 +1,75 @@
+diff --git c/libass/ass_render.c w/libass/ass_render.c
+index 30e251f..822c525 100644
+--- c/libass/ass_render.c
++++ w/libass/ass_render.c
+@@ -3486,7 +3486,10 @@ int ass_render_frame_internal(ASS_Renderer *priv, ASS_Track *track,
+                     realloc(priv->eimg,
+                             priv->eimg_size * sizeof(EventImages));
+             }
+-            (priv->eimg + cnt)->metrics.runs = NULL;
++            // Fully zero the metrics struct, not just ->runs: a candidate
++            // slot that fails to render (e.g. an event consisting only of
++            // override blocks) must not carry stale pointers or ->next.
++            (priv->eimg + cnt)->metrics = (ASS_Metrics){0};
+             if (ass_render_event(&priv->state, event, priv->eimg + cnt, collect_metrics))
+                 cnt++;
+         }
+@@ -3561,12 +3564,24 @@ ASS_Metrics *ass_get_metrics(ASS_Renderer *priv, ASS_Track *track, long long now
+     if (cnt < 0)
+         return NULL;
+ 
+-    ASS_Metrics *root = &priv->eimg[0].metrics;
+-    ASS_Metrics *cur = root;
+-    for (int i = 1; i < cnt; i++) {
+-        cur->next = &priv->eimg[i].metrics;
+-        cur = cur->next;
++    ASS_Metrics *root = NULL;
++    ASS_Metrics *cur = NULL;
++    for (int i = 0; i < cnt; i++) {
++        ASS_Metrics *next = &priv->eimg[i].metrics;
++        // Slots for events that could not be rendered (e.g. only override
++        // blocks) have event == NULL and must be excluded from the list.
++        if (!next->event)
++            continue;
++        if (root) {
++            cur->next = next;
++            cur = next;
++        } else {
++            root = next;
++            cur = next;
++        }
+     }
++    if (cur)
++        cur->next = NULL;
+ 
+     return root;
+ }
+@@ -3593,14 +3608,17 @@ void ass_free_metrics_outlines(ASS_Metrics_Outline *outline)
+  */
+ void ass_free_metrics(ASS_Renderer *priv)
+ {
+-    if (!priv->eimg_size)
++    if (!priv->eimg || !priv->eimg_size)
+         return;
+ 
+     // The ASS_Metrics structs themselves are part of EventImages and
+     // are hence allocated and freed by ass_render_frame_internal.
+     // All contained pointers are owned by the ASS_Metrics struct
+-    // and need to be freed here.
+-    for (ASS_Metrics *metrics = &priv->eimg[0].metrics; metrics; metrics = metrics->next) {
++    // and need to be freed here. The walk is bounded to the eimg array
++    // so a stale/garbage ->next can never run off the end of it.
++    ASS_Metrics *metrics = &priv->eimg[0].metrics;
++    for (size_t i = 0; i < priv->eimg_size && metrics;
++         i++, metrics = metrics->next) {
+         ASS_RunMetrics *run = metrics->runs;
+         while (run) {
+             ass_free_metrics_outlines(run->fill);
+@@ -3609,6 +3627,7 @@ void ass_free_metrics(ASS_Renderer *priv)
+             free(run);
+             run = next;
+         }
++        metrics->runs = NULL;
+     }
+ }
+ 

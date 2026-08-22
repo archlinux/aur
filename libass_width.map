@@ -1,0 +1,5 @@
+LIBASS_WIDTH_1.0 {
+    global:
+        libass_get_width;
+    local: *;
+};
