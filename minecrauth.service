@@ -6,8 +6,8 @@ After=network-online.target
 [Service]
 User=minecrauth
 Group=minecrauth
-Type=simple
 
+Type=simple
 ExecStart=/usr/bin/minecrauth --config /etc/minecrauth/config.yaml
 
 Restart=on-failure

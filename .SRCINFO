@@ -1,7 +1,7 @@
 pkgbase = minecrauth-bin
 	pkgdesc = A self-hosted Yggdrasil authentication server for Minecraft Java Edition with skins and capes.
 	pkgver = 0.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/achetronic/minecrauth
 	arch = x86_64
 	arch = aarch64
@@ -9,6 +9,8 @@ pkgbase = minecrauth-bin
 	conflicts = minecrauth
 	source = minecrauth-0.2.0-config.example.yaml::https://raw.githubusercontent.com/achetronic/minecrauth/refs/tags/v0.2.0/config.example.yaml
 	source = minecrauth.service
+	source = minecrauth.sysusers
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	source_x86_64 = minecrauth-0.2.0_x86_64.tar.gz::https://github.com/achetronic/minecrauth/releases/download/v0.2.0/minecrauth_0.2.0_linux_amd64.tar.gz
