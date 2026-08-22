@@ -1,0 +1,15 @@
+pkgbase = shell-mcp
+	pkgdesc = Scoped, allowlisted shell access over the Model Context Protocol
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/devrelopers/shell-mcp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = shell-mcp-0.1.1.tar.gz::https://static.crates.io/crates/shell-mcp/shell-mcp-0.1.1.crate
+	b2sums = 6287e6ef729bb5951c96f6a30755cb09e462380c2b9f4afaa80d18ea2ae852a95efd8774f908cf733b397f350017fc4f19f45bc75f89548ac97fd66a1f13a0f3
+
+pkgname = shell-mcp
