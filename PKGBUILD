@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_appname}-bin
 pkgdesc="CLI music downloader powered by yt-dlp with parallel chunk downloading and automatic ID3 tagging"
 
-pkgver=0.3.7
+pkgver=0.3.8
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -28,8 +28,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pk
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}")
 sha256sums=('c467c226030ec67c8e8ce6ce21b1fad2ba2f4f9ae1c00a0bd4fdfc234e9a0a9c'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('8a3e85d90ffcdd388ea09769a7c914f7e97cfa40a271af8973bf44a468769bf4')
-sha256sums_aarch64=('cbe00cf826b8737d2a6d4a9a0981672496332768c1bc470fc5926b67cc5eb58a')
+sha256sums_x86_64=('533e151b1a2cc177fb8a73b4fe00977a3c85488bf7cbc198a46e6829c93cdccc')
+sha256sums_aarch64=('1b22f615717b934c07c131ff657fa86e154583f166d60fe024db1f8c3cafa2fd')
 
 
 package() {
