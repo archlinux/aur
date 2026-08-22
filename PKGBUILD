@@ -1,5 +1,4 @@
 # Maintainer: Izuna <izuna.seikatsu AT ccbluex DOT net>
-# Contributor: 1zuna <marco@ccbluex.net>
 
 # NOTE: liquidlauncher-bin is the recommended package. It uses the official .deb
 # build, needs no fuse2/AppImage runtime and integrates better with the system.
@@ -9,7 +8,7 @@ _binname=liquidlauncher
 
 pkgname="liquidlauncher-appimage"
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A custom Minecraft launcher for LiquidBounce, a popular utility mod, that features auto install & update and mod managment. (AppImage build - liquidlauncher-bin is recommended)"
 arch=('x86_64')
 url="https://github.com/CCBlueX/LiquidLauncher"
@@ -38,7 +37,6 @@ build() {
 package() {
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-    #install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
@@ -51,9 +49,5 @@ package() {
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/$_binname"
-
-    # Symlink license
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
 
