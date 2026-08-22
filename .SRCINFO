@@ -1,4 +1,4 @@
-pkgbase = radar-bin
+pkgbase = radar-desktop-bin
 	pkgdesc = Open source Kubernetes UI - binary
 	pkgver = 1.11.0
 	pkgrel = 1
