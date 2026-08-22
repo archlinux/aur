@@ -7,7 +7,6 @@ set -e
 
 REPO="steineggerlab/foldseek"
 PKGNAME="foldseek-bin"
-ASSET="foldseek-linux-avx2.tar.gz"
 
 echo "==> Checking for new version..."
 
