@@ -1,15 +1,14 @@
 #!/bin/bash
-# seqkit-bin has two sources (binary tarball + LICENSE), so checksums are
-# refreshed with `updpkgsums` (pacman-contrib) instead of a single-line sed.
+# seqkit-bin: two sources (binary tarball + LICENSE), so checksums are refreshed
+# with `updpkgsums` (pacman-contrib) instead of a single-line sed.
 set -e
 
 REPO="shenwei356/seqkit"
-URL="https://github.com/${REPO}"
 PKGNAME="seqkit-bin"
 
 echo "==> Checking for new version..."
 
-LATEST_TAG=$(curl -s "https://api.github.com/repos/${REPO}/tags" | grep -oP '"name": "\Kv.*(?=")' | head -1)
+LATEST_TAG=$(curl -s "https://api.github.com/repos/${REPO}/tags" | grep -oP '"name": "\Kv[^"]+(?=")' | head -1)
 LATEST_VERSION=${LATEST_TAG#v}
 
 if [ -z "$LATEST_VERSION" ]; then
