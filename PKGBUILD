@@ -2,7 +2,7 @@
 # Maintainer: David Rosenstrauch <darose@darose.net>
 
 pkgname=nct6687d-dkms-git
-pkgver=r78.df1565a
+pkgver=r225.4864fd6
 pkgrel=2
 pkgdesc="Nuvoton module for NCT6687-R synced with latest upstream kernel."
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ package() {
 	cd "${pkgname}"
 
 	install -dm755 "${pkgdir}/usr/src/${pkgname}-${pkgver}"
-	cp -a LICENSE README* *.c "${pkgdir}/usr/src/${pkgname}-${pkgver}"
+	install -m644 LICENSE README* Kbuild *.c "${pkgdir}/usr/src/${pkgname}-${pkgver}/"
 
     commitcount=$(git rev-list --all --count)
     commithash=$(git rev-parse --short HEAD)

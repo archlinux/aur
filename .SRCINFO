@@ -1,6 +1,6 @@
 pkgbase = nct6687d-dkms-git
 	pkgdesc = Nuvoton module for NCT6687-R synced with latest upstream kernel.
-	pkgver = r78.df1565a
+	pkgver = r225.4864fd6
 	pkgrel = 2
 	url = https://github.com/Fred78290/nct6687d
 	arch = i686
