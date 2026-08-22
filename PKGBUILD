@@ -1,7 +1,7 @@
 # Maintainer: reakjra <reakjra@proton.me>
 pkgname=omikuji-bin
 _pkgname=omikuji
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Qt/QML based wine apps launcher for Linux'
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 _appimage="Omikuji-v${pkgver}-anylinux-x86_64.AppImage"
 source=("$_appimage::${url}/releases/download/v${pkgver}/${_appimage}")
 noextract=("$_appimage")
-sha256sums=('8721b9bbd708d37e2ad9047a4e3b35e7482e4c6c3d73f81a475848a6fb0e6e65')
+sha256sums=('3fb99bfb0086a7b746bcab39c32d182b44d317a2e2275b4ae0e089e1e74e4943')
 
 package() {
     cd "$srcdir"
@@ -36,7 +36,7 @@ package() {
 
     install -Dm644 "squashfs-root/io.github.reakjra.omikuji.desktop" \
         "$pkgdir/usr/share/applications/io.github.reakjra.omikuji.desktop"
-    sed -i "s|^Exec=.*|Exec=$_pkgname|" "$pkgdir/usr/share/applications/io.github.reakjra.omikuji.desktop"
+    sed -i "s|^Exec=.*|Exec=$_pkgname %f|" "$pkgdir/usr/share/applications/io.github.reakjra.omikuji.desktop"
     install -Dm644 "squashfs-root/io.github.reakjra.omikuji.png" \
         "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.reakjra.omikuji.png"
 }
