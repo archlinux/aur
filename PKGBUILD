@@ -3,8 +3,8 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=moltis
-pkgver=20260816.01
-_commit=de7d15d
+pkgver=20260820.01
+_commit=52e8c06
 pkgrel=1
 pkgdesc="A secure persistent personal agent server in Rust"
 arch=(x86_64 aarch64)
@@ -30,7 +30,7 @@ makedepends=(
     just)
 options=(!lto !debug)
 source=("$pkgname::git+$url#commit=${_commit}?signed")
-sha256sums=('18a10d9a654ccb2402c70f691bb0940a0678f44a696349c2adad2a921fad1df8')
+sha256sums=('ed0311c2bcd1fa01cd019f9e4c50791626456264fbfde7db5f1d30e68f4643ac')
 validpgpkeys=('310320A8CC1C5BA86AD09040C0451BADF7649BBF')
 
 prepare() {
