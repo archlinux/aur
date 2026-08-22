@@ -7,7 +7,7 @@ pkgname=xfb
 # every machine that installed it. Raise it only if the version ever has to go
 # backwards again.
 epoch=1
-pkgver=3.1419
+pkgver=3.1420
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -55,8 +55,16 @@ optdepends=(
     'opus-tools: Opus audio support'
     'mediainfo: Media file information'
 )
-source=("git+https://github.com/netpack/XFB.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+# The companion APK comes from the release rather than the tag: it is a build
+# product of the Android toolchain, signed with a key that is not in the
+# repository, so it is never committed. sha256 is the released file's own --
+# see android/RELEASING.md, which prints it.
+source=("git+https://github.com/netpack/XFB.git#tag=v${pkgver}"
+        "xfb-companion-${pkgver}.apk::https://github.com/netpack/XFB/releases/download/v${pkgver}/xfb-companion.apk"
+        "xfb-companion-${pkgver}.json::https://github.com/netpack/XFB/releases/download/v${pkgver}/xfb-companion.json")
+sha256sums=('SKIP'
+            '9539dd7b728f5ea89919c45079d9783977842ba2eb42943f84cd4d3b96bdfbcc'
+            'd754c7f394ac54103b3b5e980a4a6ef6bd5aac7955dca6a0c245ecd7ba1387a9')
 
 build() {
     cd "$srcdir/XFB"
@@ -120,6 +128,17 @@ package() {
         fi
     fi
     
+    # Install the phone app. XFB serves this to phones itself, and
+    # /usr/share/xfb is the last path MobileSyncServer::companionApkPath()
+    # tries. Both files or neither: without the sidecar the APK is offered as a
+    # download but never recognised as an update.
+    if [ -f "$srcdir/xfb-companion-${pkgver}.apk" ]; then
+        install -Dm644 "$srcdir/xfb-companion-${pkgver}.apk" \
+            "$pkgdir/usr/share/xfb/xfb-companion.apk"
+        install -Dm644 "$srcdir/xfb-companion-${pkgver}.json" \
+            "$pkgdir/usr/share/xfb/xfb-companion.json"
+    fi
+
     # Install the server-sync script templates (executable: legacy call
     # sites exec the extensionless ones directly)
     if [ -d "scripts" ]; then
@@ -158,22 +177,18 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v3.1419:"
-    echo "  - Spotify and Apple Music links can be downloaded: XFB reads the"
-    echo "    track list and fetches each song, single tracks or whole albums"
-    echo "    and playlists"
-    echo "  - A YouTube Mix link no longer drags in a thousand unrelated"
-    echo "    tracks; XFB says it is a radio and offers just the one track"
-    echo "  - A long playlist is never half-downloaded in silence: when a"
-    echo "    source hands back a short list, XFB says so and what is missing"
-    echo "  - Auto Mode with an empty playlist now puts a track up when you"
-    echo "    press Play, instead of doing nothing"
-    echo "  - Options: no more clipped or overlapping rows, and Spotify"
-    echo "    credentials can be entered for playlists over 100 tracks"
-    echo "  - The log no longer fills with braille-monitor chatter, and logs"
-    echo "    older than two weeks are cleaned up"
-    echo "  - About reports the version actually running; assorted typos"
-    echo "    fixed, with Portuguese and French fully translated"
+    echo "New in v3.1420:"
+    echo "  - Take a set with you: XFB serves its playlists to an Android"
+    echo "    companion app over your own network, and hands out the app"
+    echo "    itself — Options > Sync to Phone, scan the code, done"
+    echo "  - The phone plays offline with XFB's crossfades, volume lines,"
+    echo "    equalizer and compressor, and its 432 Hz retune"
+    echo "  - Auto-mix on the phone works out a crossfade for joins nobody"
+    echo "    set, so everything on it plays as a set rather than as cuts"
+    echo "  - Syncing says plainly that it is not encrypted, so you can"
+    echo "    decide whether to serve on the network you are on"
+    echo "  - The reminder to support XFB is a corner notice now, not a"
+    echo "    dialog in front of the splash screen holding up playout"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"
