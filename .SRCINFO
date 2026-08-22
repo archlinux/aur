@@ -1,6 +1,6 @@
 pkgbase = caido-cli
 	pkgdesc = A lightweight web security auditing toolkit.
-	pkgver = 0.58.0
+	pkgver = 0.58.2
 	pkgrel = 1
 	url = https://caido.io/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = caido-cli
 	depends = gcc-libs
 	depends = glibc
 	provides = caido-cli
-	source_x86_64 = caido-cli-0.58.0-x86_64.tar.gz::https://caido.download/releases/v0.58.0/caido-cli-v0.58.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 2c950e800b8658c37951ef0dc5b60eb9d04e0e56f786402e49f76d44931f884e
-	source_aarch64 = caido-cli-0.58.0-aarch64.tar.gz::https://caido.download/releases/v0.58.0/caido-cli-v0.58.0-linux-aarch64.tar.gz
-	sha256sums_aarch64 = a0315c6c4bc69213553b6d5f1643b4420f1915d6ad877d42423830ebd388c3e1
+	source_x86_64 = caido-cli-0.58.2-x86_64.tar.gz::https://caido.download/releases/v0.58.2/caido-cli-v0.58.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 521d345a1ceb21f02b2391f87b539e17dc3b62c58efcc6e4ee21850b9744c8d1
+	source_aarch64 = caido-cli-0.58.2-aarch64.tar.gz::https://caido.download/releases/v0.58.2/caido-cli-v0.58.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 708a259b1bb048c3620c9f1c0382bdc74f9970bccf211ca70677cd693a81d764
 
 pkgname = caido-cli
