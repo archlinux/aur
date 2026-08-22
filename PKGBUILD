@@ -21,11 +21,11 @@ conflicts=('dusk-lang' 'dawn')
 # that release's stage ladder proved. A release binary is guaranteed to build
 # the next release's source, so bump this pin as the tree moves ahead; the
 # preflight in build() names the mismatch loudly when the pin has gone stale.
-_seedver=1.15.0
+_seedver=1.15.1
 source=("dusk::git+https://github.com/choice404/dusk.git"
         "dusk-seed-${_seedver}.ll.xz::https://github.com/choice404/dusk/releases/download/v${_seedver}/dusk.ll.xz")
 sha256sums=('SKIP'
-            '62f7022ef4d7cc46935a871f883409c2f736356946e3ac20d253c86d700bf5c5')
+            '34d380231ba23ac9391594854ee777c0988a0a83026291191b4697273bd0806a')
 
 pkgver() {
   cd dusk
@@ -60,7 +60,12 @@ build() {
     return 1
   fi
   DUSK_HOME="$PWD" timeout 600 bash -c 'ulimit -v 25165824; ulimit -t 900; exec nice -n 19 ./seed build compiler/dusk.dusk'
-  DUSK_HOME="$PWD" timeout 600 bash -c 'ulimit -v 25165824; ulimit -t 900; exec nice -n 19 target/dusk-out/dusk build compiler/dawn.dusk'
+  # The seed is a previous release and has no --release of its own, so it builds a
+  # plain compiler first and that compiler rebuilds itself and the package tool
+  # optimized. The optimized pair is what the package installs, since an installed
+  # compiler is run far more often than it is built.
+  DUSK_HOME="$PWD" timeout 900 bash -c 'ulimit -v 25165824; ulimit -t 900; exec nice -n 19 target/dusk-out/dusk build --release compiler/dusk.dusk'
+  DUSK_HOME="$PWD" timeout 900 bash -c 'ulimit -v 25165824; ulimit -t 900; exec nice -n 19 target/dusk-out/dusk build --release compiler/dawn.dusk'
 }
 
 check() {
