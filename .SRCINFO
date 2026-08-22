@@ -6,10 +6,10 @@ pkgbase = shellcheck-bin-doc
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = pandoc
-	depends = shellcheck-bin
 	source = shellcheck-0.11.0.1.md::https://raw.githubusercontent.com/koalaman/shellcheck/v0.11.0/shellcheck.1.md
 	source = shellcheck-bin-doc-0.11.0::https://raw.githubusercontent.com/koalaman/shellcheck/v0.11.0/manpage
 	b2sums = 90364c01d86f82c8dc8e967c28187aba0e65f2885ffac66adc0fe1e509f9ec49e0845bc07868c013898c1d2c0399cbda3873ad94a91add0e7cdaaee2b14962e3
 	b2sums = b52b528495a4be379cdfe226a3a1118e26f5faf71651464854d28ca1aee981a594e729acf9243f9de5574fa388778e4b180297f70349043453447f9fab383d70
 
 pkgname = shellcheck-bin-doc
+	depends = shellcheck-bin

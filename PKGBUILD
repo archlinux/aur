@@ -9,7 +9,6 @@ url='https://shellcheck.net'
 arch=(any)
 license=('GPL-3.0-or-later')
 makedepends=('pandoc')
-depends=('shellcheck-bin')
 source=("shellcheck-${pkgver}.1.md::https://raw.githubusercontent.com/koalaman/shellcheck/v${pkgver}/shellcheck.1.md"
         "${pkgname}-${pkgver}::https://raw.githubusercontent.com/koalaman/shellcheck/v${pkgver}/manpage")
 b2sums=('90364c01d86f82c8dc8e967c28187aba0e65f2885ffac66adc0fe1e509f9ec49e0845bc07868c013898c1d2c0399cbda3873ad94a91add0e7cdaaee2b14962e3'
@@ -21,5 +20,7 @@ build() {
 }
 
 package() {
+  depends=('shellcheck-bin')
+
   install -vD -t "${pkgdir}/usr/share/man/man1/" -m644 shellcheck.1
 }
