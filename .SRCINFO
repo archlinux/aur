@@ -1,5 +1,5 @@
 pkgbase = liquidlauncher-appimage
-	pkgdesc = A custom Minecraft launcher for LiquidBounce, a popular utility mod, that features auto install & update and mod managment. (AppImage build - liquidlauncher-bin is recommended)
+	pkgdesc = A custom Minecraft launcher for LiquidBounce, a popular utility mod, that features auto install & update and mod managment.
 	pkgver = 0.6.1
 	pkgrel = 2
 	url = https://github.com/CCBlueX/LiquidLauncher
