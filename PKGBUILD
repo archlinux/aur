@@ -6,7 +6,7 @@ _pkgname=bencher
 _execname=${_pkgname}
 
 pkgname=${_pkgname}-cli
-pkgver=0.6.11
+pkgver=0.6.12
 pkgrel=1
 _pkgver=v${pkgver}
 pkgdesc="Detect and prevent performance regressions before they make it to production with continuous benchmarking"
@@ -23,7 +23,7 @@ depends=('glibc' 'libgcc')
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${_pkgname}/archive/${_pkgver}.tar.gz")
-sha256sums=('8a3c39f483ea8e9ddadb73fa7fc05be1a7427a03fb445839537b6c52c21394ab')
+sha256sums=('5534ca6a58fef3a30fd3bbc6551010488456ffe4e519e8bdb0e1b109f9ec1110')
 
 prepare() {
 	cd ${srcdir}/${_pkgname}-${pkgver}/ || exit 1
