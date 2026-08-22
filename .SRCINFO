@@ -13,6 +13,8 @@ pkgbase = plasma6-applets-thermalmonitor
 	depends = kitemmodels
 	depends = kdeclarative
 	depends = kquickcharts
+	conflicts = plasma6-applets-thermal-monitor
+	replaces = plasma6-applets-thermal-monitor
 	source = https://invent.kde.org/olib/thermalmonitor/-/archive/v0.2.8/thermalmonitor-v0.2.8.tar.gz
 	sha256sums = 1246a1d689fc8a862fe07e292476a8fe51ea9f8d0fef35e13852850877c4df02
 

@@ -9,6 +9,8 @@ url='https://invent.kde.org/olib/thermalmonitor'
 license=("MIT")
 depends=('plasma-workspace' 'ksystemstats' 'libksysguard' 'kitemmodels' 'kdeclarative' 'kquickcharts')
 makedepends=('cmake' 'extra-cmake-modules')
+conflicts=('plasma6-applets-thermal-monitor')
+replaces=('plasma6-applets-thermal-monitor')
 source=("$url/-/archive/v$pkgver/thermalmonitor-v$pkgver.tar.gz")
 sha256sums=('1246a1d689fc8a862fe07e292476a8fe51ea9f8d0fef35e13852850877c4df02')
 
