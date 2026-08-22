@@ -1,6 +1,6 @@
 pkgbase = veil-host-bin
 	pkgdesc = Nested Wayland compositor — run any GUI app inside your terminal
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/viewerofall/veilTDC
 	install = veil-host-bin.install
@@ -9,13 +9,13 @@ pkgbase = veil-host-bin
 	license = MIT
 	provides = veil-host
 	conflicts = veil-host
-	source_x86_64 = veil-host::https://github.com/viewerofall/veilTDC/releases/download/v2.1/veil-host-x86_64-unknown-linux-gnu
-	source_x86_64 = config.lua::https://raw.githubusercontent.com/viewerofall/veilTDC/v2.1/config.lua
-	sha256sums_x86_64 = eaf70c90f2a573fa2274a32c981ee4a28a3cf586986d38ccad6242efb69daf5f
+	source_x86_64 = veil-host::https://github.com/viewerofall/veilTDC/releases/download/v2.2/veil-host-x86_64-unknown-linux-gnu
+	source_x86_64 = config.lua::https://raw.githubusercontent.com/viewerofall/veilTDC/v2.2/config.lua
+	sha256sums_x86_64 = d0b88a741d0c07a52fbae8e6225c590c0738fc44fa3ccb7ebb725b6b5c9a1148
 	sha256sums_x86_64 = 9fd8d7d377e1f2de133109997a96bdb67ffb1930a9f8fcfa62fc027179caa72a
-	source_aarch64 = veil-host::https://github.com/viewerofall/veilTDC/releases/download/v2.1/veil-host-aarch64-unknown-linux-gnu
-	source_aarch64 = config.lua::https://raw.githubusercontent.com/viewerofall/veilTDC/v2.1/config.lua
-	sha256sums_aarch64 = bcc767a281b7c892eeb575af9ee4e6c8548b7e0f0a9226e350cc2e098cfaacfe
+	source_aarch64 = veil-host::https://github.com/viewerofall/veilTDC/releases/download/v2.2/veil-host-aarch64-unknown-linux-gnu
+	source_aarch64 = config.lua::https://raw.githubusercontent.com/viewerofall/veilTDC/v2.2/config.lua
+	sha256sums_aarch64 = ae566e125bd865899d4fd6b8e57278e88693bbdf3dde5335fae76748700709ea
 	sha256sums_aarch64 = 9fd8d7d377e1f2de133109997a96bdb67ffb1930a9f8fcfa62fc027179caa72a
 
 pkgname = veil-host-bin
