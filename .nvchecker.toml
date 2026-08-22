@@ -1,0 +1,4 @@
+[ergochat]
+source = "git"
+git = "https://github.com/ergochat/ergo.git"
+prefix = "v"

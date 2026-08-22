@@ -1,8 +1,21 @@
-/oragono-*.pkg.tar.*
-/oragono/
-/oragono-vendor/
-/pkg/
-/src/
+# Created by https://www.toptal.com/developers/gitignore/api/archlinuxpackages
+# Edit at https://www.toptal.com/developers/gitignore?templates=archlinuxpackages
 
-/ergo/
-/ergochat-*.pkg.tar*
+### ArchLinuxPackages ###
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
+# End of https://www.toptal.com/developers/gitignore/api/archlinuxpackages
+
+ergo/
