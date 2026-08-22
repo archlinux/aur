@@ -14,7 +14,7 @@ This package takes the official Cinnamon package from Arch Linux and applies the
 2. **100% Pure GTK3 Dialog Replacements:**
    * **Power Off / Reboot / Logout Dialog:** Replaced with `zenity-session-quit.py` (GTK3 Zenity dialog).
    * **Alt + F2 Run Command Dialog:** Replaced with `zenity-run-dialog.py` (native GTK3 dialog featuring live `$PATH` command autocompletion).
-   * **Polkit Password Prompts:** Replaced Cinnamon's internal JS agent with `mate-polkit` (`polkit-mate-authentication-agent-1` GTK3).
+   * **Polkit Password Prompts:** Replaced Cinnamon's internal Clutter/St polkit agent dialog with a GTK3 Zenity password prompt (`zenity-polkit-dialog.py`) driven by `polkitAuthenticationAgent.js`.
    * **NetworkManager Secret Prompts:** Disabled internal Clutter NM agent to let `nm-applet` (`libnma` GTK3) handle Wi-Fi and VPN password prompts natively.
    * **SSH / Keyring Password Prompts:** Disabled internal Clutter keyring agent to let `gcr-prompter` (`gcr-3` GTK3) handle password prompts natively.
    * **Force Quit / Unresponsive Windows:** Handled natively by Muffin + `zenity-gtk3`.
