@@ -9,11 +9,6 @@ pkgrel=1
 url='https://github.com/intel/confidential-computing.sgx.sdk'
 arch=(x86_64)
 license=('BSD-3-Clause AND LicenseRef-Intel-SGX-Third-Party') # https://github.com/intel/confidential-computing.sgx.sdk/blob/main/License.txt
-depends=('glibc' 'libstdc++' 'openssl' 'bash' 'python')
-optdepends=(
-  'intel-sgx-psw: for hardware support'
-  'gdb: GDB plugin for SGX binaries'
-)
 provides=("intel-sgx-sdk=${pkgver}")
 conflicts=('intel-sgx-sdk')
 options=(!strip !debug)
@@ -31,7 +26,13 @@ prepare() {
   chmod -c +x sgx_linux_x64_sdk.bin
 }
 
-package() (
+package() {
+  depends=('glibc' 'libstdc++' 'openssl' 'bash' 'python')
+  optdepends=(
+    'intel-sgx-psw: for hardware support'
+    'gdb: GDB plugin for SGX binaries'
+  )
+
   local installdir
   installdir=$(realpath -m "${pkgdir}/${_installdir}")
 
@@ -56,4 +57,4 @@ package() (
   # composed license
   install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
     -m644 "${pkgdir}/opt/intel/sgxsdk/licenses/License.txt"
-)
+}
