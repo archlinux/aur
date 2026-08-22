@@ -10,7 +10,7 @@ _qextra_commit=37724d1fd44fc013e938652e2fcb25897be10e63
 
 pkgname=waywallen
 pkgver=0.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallpaper Manager for Linux."
 arch=(x86_64)
 url=https://github.com/waywallen/waywallen
