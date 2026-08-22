@@ -1,6 +1,6 @@
 pkgbase = mechrevo-drivers-dkms
 	pkgdesc = Kernel modules for MECHREVO devices. Drivers for several platform devices for MECHREVO notebooks meant for DKMS. Modified from TUXEDO drivers.
-	pkgver = 4.22.1
+	pkgver = 4.22.3
 	pkgrel = 1
 	url = https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = mechrevo-drivers-dkms
 	conflicts = tuxedo-drivers-dkms
 	conflicts = tuxedo-keyboard-dkms
 	conflicts = tuxedo-keyboard-ite-dkms
-	source = mechrevo-drivers-dkms-4.22.1.tar.gz::https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers/-/archive/v4.22.1/tuxedo-drivers-v4.22.1.tar.gz
+	source = mechrevo-drivers-dkms-4.22.3.tar.gz::https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers/-/archive/v4.22.3/tuxedo-drivers-v4.22.3.tar.gz
 	source = dkms.conf
 	source = patch.diff
-	sha256sums = 9e2161f128d5d7235a0d51bdf2121a1fb0a9ded8bc2ca48dcf6521986736f571
+	sha256sums = 1b1c9e25da4af408a58b547de79538c9077829e32bedcaa7ad48dccbc2b4b2c5
 	sha256sums = d955ba6609666364eb63b073fd7bd9f5397de523e39226eb1b1fe866b4567a4e
 	sha256sums = 4a4c42bcc83bcd24deaa872faf63475faf6e49ee14d0ea20a0d1fe3c4d3901e9
 

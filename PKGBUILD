@@ -1,7 +1,7 @@
 # Maintainer: Shiina Rikka <rikka@rikka.im>
 _pkgname=mechrevo-drivers
 pkgname=mechrevo-drivers-dkms
-pkgver=4.22.1
+pkgver=4.22.3
 pkgrel=1
 pkgdesc='Kernel modules for MECHREVO devices. Drivers for several platform devices for MECHREVO notebooks meant for DKMS. Modified from TUXEDO drivers.'
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=('tuxedo-drivers-dkms'
   'ite_829x')
 conflicts=('tuxedo-drivers-dkms' 'tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
 source=($pkgname-$pkgver.tar.gz::https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers/-/archive/v$pkgver/tuxedo-drivers-v$pkgver.tar.gz dkms.conf patch.diff)
-sha256sums=('9e2161f128d5d7235a0d51bdf2121a1fb0a9ded8bc2ca48dcf6521986736f571'
+sha256sums=('1b1c9e25da4af408a58b547de79538c9077829e32bedcaa7ad48dccbc2b4b2c5'
             'd955ba6609666364eb63b073fd7bd9f5397de523e39226eb1b1fe866b4567a4e'
             '4a4c42bcc83bcd24deaa872faf63475faf6e49ee14d0ea20a0d1fe3c4d3901e9')
 
