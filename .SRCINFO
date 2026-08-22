@@ -1,0 +1,16 @@
+pkgbase = python-jpholiday
+	pkgdesc = 日本の祝日を取得するライブラリ
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/Lalcs/jpholiday
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-poetry-dynamic-versioning
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/j/jpholiday/jpholiday-1.0.3.tar.gz
+	sha256sums = d5a56592fd6a7ceb76d49e1c5f1af806223e0d5d6b9e3bc5477860e6605f4cab
+
+pkgname = python-jpholiday
