@@ -1,6 +1,6 @@
 pkgbase = lyra-music-bin
 	pkgdesc = Lyra Music Desktop - Official AppImage version
-	pkgver = 1.0.19
+	pkgver = 1.0.21
 	pkgrel = 0
 	url = https://github.com/Lyra-Music-App/Lyra-Desktop-Releases
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = lyra-music-bin
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
-	source = lyra-music-bin-1.0.19.AppImage::https://github.com/Lyra-Music-App/Lyra-Desktop-Releases/releases/download/v1.0.19/Lyra-Music-1.0.19-x86_64.AppImage
-	sha256sums = bc229107e6b302ae1e303fa2936ef564d8a8be5581f0e35a856685e0eccebbb2
+	source = lyra-music-bin-1.0.21.AppImage::https://github.com/Lyra-Music-App/Lyra-Desktop-Releases/releases/download/v1.0.21/Lyra-Music-1.0.21-x86_64.AppImage
+	sha256sums = 5d3e00b082804b97b1b67d2969fee8e91765b96b6caa198b8f5753c9eda12114
 
 pkgname = lyra-music-bin
