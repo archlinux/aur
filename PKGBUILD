@@ -1,4 +1,4 @@
-# Maintainer: Josephine Pfeiffer <hi@josie.lol>
+# Maintainer: Josephine Pfeiffer <josie@archlinux.org>
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Matrix <thysupremematrix at tuta dot io>
 # Contributor: Yurii Kolesnykov <yurikoles@gmail.com>
