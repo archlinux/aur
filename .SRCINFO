@@ -1,0 +1,17 @@
+pkgbase = claude-codex-proxy-git
+	pkgdesc = Local Anthropic relay that replaces Claude models with GPT models via Codex
+	pkgver = r9.3258c6d
+	pkgrel = 1
+	url = https://github.com/greg2010/claude-codex-proxy
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = claude-codex-proxy
+	conflicts = claude-codex-proxy
+	options = !lto
+	source = claude-codex-proxy-git::git+https://github.com/greg2010/claude-codex-proxy.git
+	sha256sums = SKIP
+
+pkgname = claude-codex-proxy-git
