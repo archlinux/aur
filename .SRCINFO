@@ -1,7 +1,7 @@
 pkgbase = minecrauth-bin
 	pkgdesc = A self-hosted Yggdrasil authentication server for Minecraft Java Edition with skins and capes.
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/achetronic/minecrauth
 	arch = x86_64
 	arch = aarch64

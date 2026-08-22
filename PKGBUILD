@@ -4,7 +4,7 @@ pkgname=minecrauth-bin
 _name=${pkgname%-bin}
 _package="achetronic/minecrauth"
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A self-hosted Yggdrasil authentication server for Minecraft Java Edition with skins and capes."
 arch=('x86_64' 'aarch64')
 url="https://github.com/${_package}"
@@ -27,5 +27,5 @@ package() {
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm600 "${srcdir}/${_name}.service" "${pkgdir}/usr/lib/systemd/system/${_name}.service"
     #useradd -mr minecrauth
-    install -o minecrauth -d minecrauth -Dm600 "${srcdir}/${_name}-${pkgver}-config.example.yaml" "${pkgdir}/etc/${_name}/config.yaml"
+    install -Dm600 "${srcdir}/${_name}-${pkgver}-config.example.yaml" "${pkgdir}/etc/${_name}/config.yaml"
 }
