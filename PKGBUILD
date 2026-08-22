@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=openless-bin
-pkgver=1.3.17
+pkgver=1.3.18
 pkgrel=1
 pkgdesc="Hold a key, speak, release — AI-polished text appears at your cursor in any app."
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3' 'xdotool')
 provides=('openless')
 conflicts=('openless')
 source_x86_64=("OpenLess_${pkgver}_amd64.deb::https://github.com/Open-Less/openless/releases/download/v${pkgver}-tauri/OpenLess_${pkgver}_amd64.deb")
-md5sums_x86_64=('61406a0088c70e4e7676d67366510020')
+md5sums_x86_64=('fca2fa129afbb477a97aaa7047fefea7')
 
 package() {
     local _debfile="OpenLess_${pkgver}_amd64.deb"
