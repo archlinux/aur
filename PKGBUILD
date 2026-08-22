@@ -1,7 +1,7 @@
 # Maintainer: ks1686 <ks1686@users.noreply.github.com>
 pkgbase=genv-bin
 pkgname=genv-bin
-pkgver=3.0.0
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='Track, sync, and reproduce your software environment across Linux, macOS, and WSL2.'
 arch=('x86_64' 'aarch64')
@@ -10,9 +10,9 @@ license=('MIT')
 provides=('genv')
 conflicts=('genv')
 source_x86_64=("https://github.com/ks1686/genv/releases/download/v${pkgver}/genv_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('b987764add8bfb1911fb3d24e5ee30150a48c5b20a05403d45785e9e03bf4d78')
+sha256sums_x86_64=('8843264968590ccf0165526226757393d1f3f2a7062c6976bb84fe0335a9ff40')
 source_aarch64=("https://github.com/ks1686/genv/releases/download/v${pkgver}/genv_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('6e52f459bbb8af4364aac170dc1ad6ac240de8c6f186ea541b9a2536693ffde8')
+sha256sums_aarch64=('5cedd481f7fc82919534fedfb7fa4b4939bdd80fec32bcc18c897db3883acf66')
 
 package() {
 	install -Dm755 "./genv" "${pkgdir}/usr/bin/genv"
