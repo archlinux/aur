@@ -2,9 +2,9 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin symlink name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v2026.8.18
-_commit=e624e9fde561e1add9388384012b295fde669ade
-pkgver=0.20.4
+_pkgver_tag=v2026.8.19
+_commit=fcbd1076a93841fa88855acce810e342a5b78101
+pkgver=0.20.5
 pkgrel=1
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=('nodejs>=22.22' 'npm')
 conflicts=('hermes-agent-desktop-bin')
 options=('!strip' '!debug')
 source=("hermes-agent-${_pkgver_tag}.tar.gz::${url}/archive/refs/tags/${_pkgver_tag}.tar.gz")
-sha256sums=('1e3d39d3638ec15fa9d31af262568a953e9272090deb1c50c44cd401175f5b80')
+sha256sums=('8e7f7d2aa6be48ae8b5550325be44aef339413ceec6ed74c18287001103de8fd')
 
 # NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
 # it inside the function scope of prepare()/build()/package(). Computing the
@@ -40,7 +40,7 @@ _extract_dir() {
 
 prepare() {
   cd "$(_extract_dir)"
-  # The release identifies Hermes Agent as 0.20.4, but
+  # The release identifies Hermes Agent as 0.20.5, but
   # apps/desktop/package.json is not bumped — it still says 0.17.0. Patch
   # it here so pkgver matches the release.
   npm pkg set version=${pkgver} --prefix apps/desktop

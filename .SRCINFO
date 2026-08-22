@@ -1,6 +1,6 @@
 pkgbase = hermes-agent-desktop
 	pkgdesc = Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime.
-	pkgver = 0.20.4
+	pkgver = 0.20.5
 	pkgrel = 1
 	url = https://github.com/NousResearch/hermes-agent
 	arch = x86_64
@@ -42,7 +42,7 @@ pkgbase = hermes-agent-desktop
 	conflicts = hermes-agent-desktop-bin
 	options = !strip
 	options = !debug
-	source = hermes-agent-v2026.8.18.tar.gz::https://github.com/NousResearch/hermes-agent/archive/refs/tags/v2026.8.18.tar.gz
-	sha256sums = 1e3d39d3638ec15fa9d31af262568a953e9272090deb1c50c44cd401175f5b80
+	source = hermes-agent-v2026.8.19.tar.gz::https://github.com/NousResearch/hermes-agent/archive/refs/tags/v2026.8.19.tar.gz
+	sha256sums = 8e7f7d2aa6be48ae8b5550325be44aef339413ceec6ed74c18287001103de8fd
 
 pkgname = hermes-agent-desktop
