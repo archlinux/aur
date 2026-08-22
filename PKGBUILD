@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b10585
+pkgver=b10586
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -43,7 +43,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('fc0ea40552041edd23965d73313ed73330c34a6143c880ac52373e831659eb17'
+sha256sums=('37a820d273c171cee4248575f36070864f97aba977c03920796f93933099542c'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
