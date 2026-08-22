@@ -1,0 +1,26 @@
+pkgbase = agent-session-status
+	pkgdesc = Show coding-agent session status in desktop status bars
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dcaixinha/agent-session-status
+	arch = x86_64
+	license = MIT
+	license = CC0-1.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	optdepends = waybar: Waybar status bar integration
+	optdepends = ironbar: Ironbar status bar integration
+	optdepends = otf-font-awesome: default status glyphs
+	optdepends = libnotify: desktop idle notifications
+	optdepends = pipewire-audio: idle sound playback through pw-play
+	optdepends = libpulse: fallback idle sound playback through paplay
+	optdepends = hyprland: workspace association through hyprctl
+	optdepends = opencode: local OpenCode session events
+	optdepends = claude-code: local Claude Code session events
+	optdepends = openai-codex-bin: local Codex session events
+	options = !debug
+	source = agent-session-status-0.1.0.tar.gz::https://github.com/dcaixinha/agent-session-status/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = b055a92257747575214869b533cbf2d96fcdb3fc996d6bc59d93600282c045ea
+
+pkgname = agent-session-status
