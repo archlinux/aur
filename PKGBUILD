@@ -3,7 +3,7 @@
 pkgname=1password-secret-service-git
 _projname=1password-secret-service
 _release_ver=0.1.0.r0
-pkgver="${_release_ver}.g0000000"
+pkgver=0.1.0.r2.g56a2fe0
 pkgrel=1
 pkgdesc="Freedesktop Secret Service (org.freedesktop.secrets) provider backed by 1Password (git version)"
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,8 @@ depends=('1password' 'sqlite' 'glibc')
 makedepends=('go' 'git')
 provides=('1password-secret-service')
 conflicts=('1password-secret-service')
+# Go's debug split produces broken build-id symlinks; disable it.
+options=('!debug')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -30,7 +32,10 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 	export CGO_ENABLED=1
-	go build -trimpath -buildmode=pie -ldflags="-s -w" \
+	local _ver
+	_ver=$(pkgver)
+	go build -trimpath -buildmode=pie \
+		-ldflags="-s -w -linkmode=external -extldflags=-Wl,-z,relro,-z,now -X main.integrationVersion=v${_ver}" \
 		-o "${_projname}" "./cmd/${_projname}"
 }
 
