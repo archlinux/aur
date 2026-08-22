@@ -1,6 +1,6 @@
 pkgbase = mp3rgui
 	pkgdesc = GUI application for mp3rgain - lossless MP3 volume adjustment
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://mp3rgain.tyna.ninja/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mp3rgui
 	depends = gcc-libs
 	depends = gtk3
 	optdepends = mp3rgain: CLI tool for batch processing
-	source = https://github.com/M-Igashi/mp3rgain/archive/v3.2.0.tar.gz
+	source = https://github.com/M-Igashi/mp3rgain/archive/v3.3.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = mp3rgui
