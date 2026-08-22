@@ -1,4 +1,4 @@
-# Maintainer: Josephine Pfeiffer <josie@redhat.com>
+# Maintainer: Josephine Pfeiffer <josie@archlinux.org>
 # Contributor: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 _pkgname=kube-burner
 pkgname=kube-burner-bin
