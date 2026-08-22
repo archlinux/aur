@@ -7,9 +7,9 @@
 pkgbase=python-freesimplegui
 pkgname=('python-freesimplegui')
 _module='FreeSimpleGUI'
-pkgver=5.2.0.post1
-pkgrel=2
-pkgdesc='Super-simple to create custom GUI, free fork of PySimpleGUI'
+pkgver=5.3.0
+pkgrel=1
+pkgdesc='Super-simple to create custom GUI, free fork of PySimpleGUI (only tk version)'
 arch=('any')
 license=('LGPLv3+')
 url='https://github.com/spyoungtech/FreeSimpleGUI'
