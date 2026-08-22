@@ -39,7 +39,7 @@ makedepends=(
 )
 optdepends=(
 	'fancy-mouse-boot-rom: first-stage xbox bootrom'
-	'zenity: fallback SDL_FILE_DIALOG_DRIVER'
+	'zenity: file open dialog fallback'
 )
 install=$pkgname.install
 source=(
