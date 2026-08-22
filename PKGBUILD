@@ -1,7 +1,7 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=grimmory
 pkgver=3.3.3
-pkgrel=2
+pkgrel=1
 pkgdesc="Self hosted ebook reader and library"
 arch=('x86_64')
 url="https://grimmory.org/"
