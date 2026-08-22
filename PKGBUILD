@@ -1,6 +1,6 @@
 # Maintainer: Julian Y. Richard Corbet (julian-corbet on GitHub)
 pkgname=cfetch-agent
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc="Cited, trust-tiered memory for AI coding agents over plain Markdown"
 arch=('x86_64' 'aarch64')
