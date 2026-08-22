@@ -1,28 +1,16 @@
 #!/bin/bash
+# Rewriter: takes the new upstream version as $1; version detection lives in
+# the root nvchecker.toml.
+# Maintainer-side tool, never executed during package build or install.
 set -e
+[ $# -eq 1 ] || { echo "usage: $0 <new-version>" >&2; exit 1; }
+LATEST_VERSION=${1#v}
 
 REPO_URL="https://github.com/tanghaibao/jcvi"
 PKGNAME="jcvi"
-
-echo "==> Checking for new version..."
-
-LATEST_TAG=$(curl -s https://api.github.com/repos/tanghaibao/jcvi/tags | grep -oP '"name": "\K(.*)(?=")' | head -1)
-LATEST_VERSION=${LATEST_TAG#v}
-
-if [ -z "$LATEST_VERSION" ]; then
-    echo "Error: Could not fetch latest version"
-    exit 1
-fi
-
 CURRENT_VERSION=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
-
 echo "Current version: $CURRENT_VERSION"
 echo "Latest version:  $LATEST_VERSION"
-
-if [ "$CURRENT_VERSION" = "$LATEST_VERSION" ]; then
-    echo "==> Already up to date!"
-    exit 0
-fi
 
 echo "==> Updating to version $LATEST_VERSION..."
 
