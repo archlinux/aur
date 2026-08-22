@@ -1,25 +1,46 @@
---- a/dmenu.c	2026-02-16 20:04:45.831319089 -0400
-+++ b/dmenu.c	2026-02-16 20:07:04.799525684 -0400
-@@ -641,6 +641,27 @@ buttonpress(XButtonEvent *ev)
+--- a/dmenu.c	2026-08-22 08:31:13.829870503 -0400
++++ b/dmenu.c	2026-08-22 08:30:59.142868519 -0400
+@@ -641,6 +641,48 @@
  }
 
  static void
-+motionevent(XEvent *ev)
++motionevent(XButtonEvent *ev)
 +{
-+	struct item *item;
++	struct item *it;
++	int x = 0, y = 0, h = bh, w;
 +
-+	if (ev->xbutton.window != win)
++	if (ev->window != win || matches == 0)
 +		return;
 +
-+	int x = 0, w;
++	if (prompt && *prompt)
++		x += promptw;
 +
-+	for (item = curr; item != next; item = item->right) {
-+		x += w = TEXTW(item->text);
-+		if (ev->xbutton.x >= x && ev->xbutton.x <= x + w) {
-+			sel = item;
-+			calcoffsets();
-+			drawmenu();
-+			return;
++	if (lines > 0) {
++		/* vertical list: hover on item */
++		w = mw - x;
++		for (it = curr; it != next; it = it->right) {
++			y += h;
++			if (ev->y >= y && ev->y <= (y + h)) {
++				sel = it;
++				drawmenu();
++				return;
++			}
++		}
++	} else if (matches) {
++		/* horizontal list: hover on item */
++		x += inputw;
++		w = TEXTW("<");
++		if (prev && curr->left) {
++			x += w;
++		}
++		for (it = curr; it != next; it = it->right) {
++			x += w;
++			w = MIN(TEXTW(it->text), mw - x - TEXTW(">"));
++			if (ev->x >= x && ev->x <= x + w) {
++				sel = it;
++				drawmenu();
++				return;
++			}
 +		}
 +	}
 +}
@@ -28,17 +49,17 @@
  paste(void)
  {
  	char *p, *q;
-@@ -702,6 +723,9 @@ run(void)
+@@ -702,6 +744,9 @@
  		case ButtonPress:
  			buttonpress(&ev);
  			break;
 +		case MotionNotify:
-+			motionevent(&ev);
++			motionevent(&ev.xbutton);
 +			break;
  		case Expose:
  			if (ev.xexpose.count == 0)
  				drw_map(drw, win, 0, 0, mw, mh);
-@@ -800,7 +824,7 @@ setup(void)
+@@ -800,7 +845,7 @@
  	swa.override_redirect = True;
  	swa.background_pixel = scheme[SchemeNorm][ColBg].pixel;
  	swa.event_mask = ExposureMask | KeyPressMask | VisibilityChangeMask |
