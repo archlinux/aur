@@ -1,15 +1,14 @@
 #!/bin/bash
-# strdust-bin has two sources (binary + LICENSE), so checksums are
-# refreshed with `updpkgsums` (pacman-contrib) instead of a single-line sed.
+# strdust-bin: two sources (binary tarball + LICENSE), so checksums are refreshed
+# with `updpkgsums` (pacman-contrib) instead of a single-line sed.
 set -e
 
 REPO="wdecoster/STRdust"
-URL="https://github.com/${REPO}"
 PKGNAME="strdust-bin"
 
 echo "==> Checking for new version..."
 
-LATEST_TAG=$(curl -s "https://api.github.com/repos/${REPO}/tags" | grep -oP '"name": "\Kv.*(?=")' | head -1)
+LATEST_TAG=$(curl -s "https://api.github.com/repos/${REPO}/tags" | grep -oP '"name": "\Kv[^"]+(?=")' | head -1)
 LATEST_VERSION=${LATEST_TAG#v}
 
 if [ -z "$LATEST_VERSION" ]; then
