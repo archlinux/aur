@@ -14,7 +14,7 @@ options=('!strip')
 _appimage="Omikuji-v${pkgver}-anylinux-x86_64.AppImage"
 source=("$_appimage::${url}/releases/download/v${pkgver}/${_appimage}")
 noextract=("$_appimage")
-sha256sums=('3fb99bfb0086a7b746bcab39c32d182b44d317a2e2275b4ae0e089e1e74e4943')
+sha256sums=('40b602ca3d6af1b013ada76cccaf38eac87b27fa9f040952abf4d6742605f6ea')
 
 package() {
     cd "$srcdir"

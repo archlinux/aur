@@ -11,6 +11,6 @@ pkgbase = omikuji-bin
 	noextract = Omikuji-v0.10.0-anylinux-x86_64.AppImage
 	options = !strip
 	source = Omikuji-v0.10.0-anylinux-x86_64.AppImage::https://github.com/reakjra/omikuji/releases/download/v0.10.0/Omikuji-v0.10.0-anylinux-x86_64.AppImage
-	sha256sums = 3fb99bfb0086a7b746bcab39c32d182b44d317a2e2275b4ae0e089e1e74e4943
+	sha256sums = 40b602ca3d6af1b013ada76cccaf38eac87b27fa9f040952abf4d6742605f6ea
 
 pkgname = omikuji-bin
