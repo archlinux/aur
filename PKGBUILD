@@ -1,7 +1,7 @@
 # Maintainer: James McMurray <jamesmcm03@gmail.com>
 
 pkgname=vopono-gui
-pkgver=0.10.19
+pkgver=0.10.21
 pkgrel=1
 pkgdesc='Graphical frontend for vopono'
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('vopono' 'gtk3' 'libayatana-appindicator' 'systemd-libs' 'xdotool')
 makedepends=('pkgconf' 'rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('68a60de47ed0c249ec3c186c4ee9137c6652f01d4d5fe1a88020302389251ef1')
+sha256sums=('485d2341bd331117fc74f986388c171c31034000a1cef5770f390d671c2557e6')
 provides=('vopono-gui')
 conflicts=('vopono-gui')
 
