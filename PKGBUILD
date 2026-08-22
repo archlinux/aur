@@ -2,7 +2,7 @@
 
 pkgname=serena
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful MCP server for coding, providing semantic retrieval and editing capabilities. The IDE for your agent."
 arch=(any)
 url="https://github.com/oraios/serena"
@@ -23,6 +23,7 @@ depends=(
     "python-oslex"
     "python-overrides"
     "python-pathspec"
+    "python-pillow"
     "python-psutil"
     "python-pydantic"
     "python-pygls"

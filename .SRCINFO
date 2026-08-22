@@ -1,7 +1,7 @@
 pkgbase = serena
 	pkgdesc = A powerful MCP server for coding, providing semantic retrieval and editing capabilities. The IDE for your agent.
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/oraios/serena
 	arch = any
 	license = MIT
@@ -22,6 +22,7 @@ pkgbase = serena
 	depends = python-oslex
 	depends = python-overrides
 	depends = python-pathspec
+	depends = python-pillow
 	depends = python-psutil
 	depends = python-pydantic
 	depends = python-pygls
