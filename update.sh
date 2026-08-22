@@ -14,6 +14,7 @@ if [ -f "$MARKER" ] && [ "$(cat "$MARKER")" = "$REMOTE_LM" ]; then
 fi
 
 echo "==> Checking for new version..."
+
 curl -sL "$URL" -o /tmp/${PKGNAME}.gz
 gunzip -c /tmp/${PKGNAME}.gz > /tmp/${PKGNAME}
 chmod +x /tmp/${PKGNAME}
@@ -30,6 +31,7 @@ fi
 echo "$REMOTE_LM" > "$MARKER"
 
 CURRENT_VERSION=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
+
 echo "Current version: $CURRENT_VERSION"
 echo "Latest version:  $LATEST_VERSION"
 
