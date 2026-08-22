@@ -9,6 +9,9 @@ url="https://github.com/Lalcs/jpholiday"
 license=('MIT')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-poetry-dynamic-versioning')
+checkdepends=(
+    python-pytest
+)
 
 source=("https://files.pythonhosted.org/packages/source/j/jpholiday/jpholiday-${pkgver}.tar.gz")
 sha256sums=('d5a56592fd6a7ceb76d49e1c5f1af806223e0d5d6b9e3bc5477860e6605f4cab')
@@ -16,6 +19,12 @@ sha256sums=('d5a56592fd6a7ceb76d49e1c5f1af806223e0d5d6b9e3bc5477860e6605f4cab')
 build() {
     cd "jpholiday-${pkgver}"
     python -m build --wheel --no-isolation
+}
+
+check() {
+        cd "jpholiday-${pkgver}"
+        python -m venv --system-site-packages test-env
+        test-env/bin/python -m installer dist/*.whl
 }
 
 package() {
