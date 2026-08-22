@@ -14,7 +14,7 @@
 
 pkgname=ivar-bin
 _pkgname=ivar
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Mount the repos a feature spans into one directory, on one branch, for one agent session (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -41,9 +41,9 @@ source=(
 sha256sums=('cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30' '6cc32604e854079c96ee075daabdb2eb779c35e743158eaa5a648f854d4a039c')
 
 source_x86_64=("$_pkgname-$pkgver-x86_64::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64")
-sha256sums_x86_64=('d81eaf352a33e1c113319acb328bb2bc26bdd84b66cdc426b99279e33a27a00b')
+sha256sums_x86_64=('8a4e3821fa8d53a0ca9d342a5fab0d5d18c52ca2453e925791bb7d8922d36574')
 source_aarch64=("$_pkgname-$pkgver-aarch64::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64")
-sha256sums_aarch64=('92b49e1a2f719b9e226744db7761502589ec23981778f5ae6a34ff65a6e3b071')
+sha256sums_aarch64=('c33812d4f9834df4171ad62244efd4b4346efe3e293f456c6eed30b886c97f79')
 
 package() {
     install -Dm0755 "$srcdir/$_pkgname-$pkgver-$CARCH" "$pkgdir/usr/bin/$_pkgname"
