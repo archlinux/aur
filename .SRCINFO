@@ -1,14 +1,14 @@
 pkgbase = jgenesis
 	pkgdesc = Sega Genesis / Sega CD / SNES / Master System / Game Gear Emulator
-	pkgver = 0.13.1
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://github.com/jsgroth/jgenesis
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/jsgroth/jgenesis/archive/refs/tags/v0.13.1.tar.gz
+	source = https://github.com/jsgroth/jgenesis/archive/refs/tags/v0.14.1.tar.gz
 	source = jgenesis.desktop
-	sha256sums = 4bd10572efb279d9239afb7d06db9f42ec516c706a2809a55958c04e1df48896
-	sha256sums = 6f75d9e1a31f0f5437495a32edc21addd0b85020a3ebc8921ef1d48419036746
+	sha256sums = fcd21f3182b4fee6932d1aeb95e2807ee6218a7460d55d02ca725969cc564db2
+	sha256sums = a95ba7ea825261fe78d374cf30b709f5ecfe6f9e830092c51e8bb823bf410f39
 
 pkgname = jgenesis

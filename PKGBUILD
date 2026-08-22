@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname=jgenesis
-pkgver=0.13.1
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="Sega Genesis / Sega CD / SNES / Master System / Game Gear Emulator"
 arch=("x86_64")
@@ -13,8 +13,8 @@ source=(
     "jgenesis.desktop"
 )
 sha256sums=(
-    "4bd10572efb279d9239afb7d06db9f42ec516c706a2809a55958c04e1df48896"
-    "6f75d9e1a31f0f5437495a32edc21addd0b85020a3ebc8921ef1d48419036746"
+    "fcd21f3182b4fee6932d1aeb95e2807ee6218a7460d55d02ca725969cc564db2"
+    "a95ba7ea825261fe78d374cf30b709f5ecfe6f9e830092c51e8bb823bf410f39"
 )
 
 build() {
@@ -23,14 +23,12 @@ build() {
     export RUSTFLAGS="-C target-cpu=native"
     export CFLAGS+=" -ffat-lto-objects"
     cd $srcdir/jgenesis-${pkgver}
-    cargo build --profile release-lto -p jgenesis-gui
-    cargo build --profile release-lto -p jgenesis-cli
+    cargo build --profile release-lto
 }
 
 package() {
     cd $srcdir/jgenesis-$pkgver
-    install -Dm775 target/release-lto/jgenesis-gui $pkgdir/usr/bin/jgenesis-gui
-    install -Dm775 target/release-lto/jgenesis-cli $pkgdir/usr/bin/jgenesis-cli
+    install -Dm775 target/release-lto/jgenesis $pkgdir/usr/bin/jgenesis
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
     install -Dm644 frontend/256x256.png $pkgdir/usr/share/pixmaps/jgenesis.png
     install -Dm644 $srcdir/jgenesis.desktop $pkgdir/usr/share/applications/jgenesis.desktop

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=jgenesis
 Comment=Sega Genesis / Sega CD / SNES / Master System / Game Gear Emulator
-Exec=jgenesis-gui
+Exec=jgenesis
 Icon=jgenesis
 Type=Application
 Categories=Game;Emulator;
