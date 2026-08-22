@@ -1,7 +1,7 @@
 pkgbase = lmm-api-deploy-bin
 	pkgdesc = LMM API tooling-only production deployment operator (prebuilt)
 	pkgver = 0.1.37
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LIghtJUNction/api.lmm.best
 	arch = x86_64
 	arch = aarch64
