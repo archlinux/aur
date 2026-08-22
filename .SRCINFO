@@ -1,7 +1,7 @@
 pkgbase = eidklient-native
 	pkgdesc = Slovak eID Client - uses system-provided libraries, supports Wayland, …
-	pkgver = 5.3
-	pkgrel = 7
+	pkgver = 5.4
+	pkgrel = 1
 	url = https://www.slovensko.sk/
 	arch = i686
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = eidklient-native
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_i686 = eID_klient_5.3_i386.tar.gz::https://web.archive.org/web/20260203082204if_/https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_i386.tar.gz
-	sha256sums_i686 = c9f252e75e08400c00b41f519e7c2e48a0a9beb58748d1b64e52a0a621948a6c
-	source_x86_64 = eID_klient_5.3_x86_64.tar.gz::https://web.archive.org/web/20260203082146if_/https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_x86_64.tar.gz
-	sha256sums_x86_64 = 5b2c322abe65839e33da7903559a24c47a958a2a474698fb08e6d6b4e097f06f
+	source_i686 = eID_klient_5.4_i386.tar.gz::https://web.archive.org/web/20260822075341if_/https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_i386.tar.gz
+	sha256sums_i686 = b4edb10201d2b9515f2dadb6ead0c0ec5a8d219c34e8a6019d4eb89125348d21
+	source_x86_64 = eID_klient_5.4_x86_64.tar.gz::https://web.archive.org/web/20260822075321if_/https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_x86_64.tar.gz
+	sha256sums_x86_64 = 2a02d1987d063eb6af7e947845d3a5c97204817ff75c1d95d37eb86063de2f73
 
 pkgname = eidklient-native
 	install = eidklient.install
@@ -45,4 +45,4 @@ pkgname = eidklient-native
 
 pkgname = eidklient-native-unused-libs
 	pkgdesc = eidklient-native libraries required only for integrity checks
-	depends = eidklient-native=5.3-7
+	depends = eidklient-native=5.4-1
