@@ -1,7 +1,7 @@
 # Maintainer: Terrasse <terrasse@qq.com>
 # Maintainer: ccmywish <ccmywish@qq.com>
 pkgname=chsrc-bin
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=2
 pkgdesc="A cli tool to change source for every software on every platform"
 arch=('x86_64') # TODO: add more archs
@@ -27,11 +27,11 @@ source=(
 	"https://github.com/RubyMetric/chsrc/raw/v$pkgver/tool/completion/bash_completion.sh"
 )
 noextract=()
-sha256sums=('6b34e8f6b1ae7ea1434b12ab22df992bcc14dbbf2fdced2783c0d17cbae19673'
+sha256sums=('70d236dbd346e969a3d2abe507343eb07419be494ff40fd117cad44c619465d5'
             '64fbbf5be547a2de5ff9f49591e0a57e6e1e15b989a5da8e786bc40b5dca0907'
-            '6fd6284b93b2dd4bccbc09cfb299babfbf5d67e99277104258ae27848458b5da'
-            '0c8fdceb05d1fe6cfcbc0ee47c1e1be38a68e52db7c43867c91f9210eb534221'
-            '396db44240eb130ef75a9651d5c1565f104e8012bcd9bfe7e35a6196d34c7c46')
+            'adde87c3f202a9d9faffe046f7d4ab656817f16f2f1e70db2687030da6c1cad9'
+            '8a536fcb336738637ef27a9bb28357b5a8871462ef395f52c195947d3b9bcd1f'
+            'afa68667fe40633a07f9c697173201eb7f10769780c15749bfb006b75b82cf89')
 validpgpkeys=()
 
 package() {
