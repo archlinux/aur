@@ -9,7 +9,7 @@ arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'loong64')
 url="https://github.com/v2rayA/v2rayA"
 license=('AGPL3')
 depends=('glibc')
-makedepends=('git' 'go>=2:1.19.0-1' 'nodejs>=14' 'yarn')
+makedepends=('git' 'go>=2:1.25.0-1' 'nodejs>=24' 'yarn')
 # source=("$pkgname-$pkgver.zip::https://github.com/v2rayA/v2rayA/archive/refs/tags/v$pkgver.zip")
 # sha512sums=('SKIP')
 backup=("etc/default/v2raya")

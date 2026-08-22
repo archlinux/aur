@@ -14,8 +14,8 @@ pkgbase = v2raya
 	arch = loong64
 	license = AGPL3
 	makedepends = git
-	makedepends = go>=2:1.19.0-1
-	makedepends = nodejs>=14
+	makedepends = go>=2:1.25.0-1
+	makedepends = nodejs>=24
 	makedepends = yarn
 	depends = glibc
 	backup = etc/default/v2raya
