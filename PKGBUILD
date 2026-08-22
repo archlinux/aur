@@ -3,8 +3,8 @@
 # Contributor: Mattéo Delabre <aur.matteo@delab.re>
 
 pkgname=rmapi
-pkgver=0.0.34
-pkgrel=2
+pkgver=0.0.35
+pkgrel=1
 pkgdesc='Access reMarkable tablet files through the Cloud API'
 arch=(x86_64 aarch64)
 url='https://github.com/ddvk/rmapi'
@@ -12,7 +12,7 @@ license=(AGPL-3.0-or-later)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('42c96cdfe5bd9d19c13f01b18df12c685b9506e80c35e041f356e3dcc1265e65')
+sha256sums=('9e2c0898a7fcaa716879e86165911af7f2caa951c8db56e9ab0ae07554536e7d')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -30,6 +30,11 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS='-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw'
     go build -o build .
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    go test ./...
 }
 
 package() {
