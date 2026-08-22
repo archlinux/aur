@@ -1,11 +1,11 @@
 pkgbase = taxonkit-bin
 	pkgdesc = Cross-platform and efficient toolkit for rapid taxonomic operations on BARCODE, ASV, OTU or any biological sequences with taxonomy annotation
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shenwei356/taxonkit
 	arch = x86_64
 	license = MIT
-	provides = taxonkit
+	provides = taxonkit=0.20.0
 	conflicts = taxonkit
 	options = !strip
 	options = !debug
