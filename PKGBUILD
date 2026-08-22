@@ -12,16 +12,16 @@ provides=('unirtm')
 conflicts=('unirtm')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_Linux_arm64.tar.gz")
-sha256sums_aarch64=('35ed8fa16bfdba0a615d6bf83c8a9264cd5736db7c38fc1c9e378eec775bf785')
+sha256sums_aarch64=('a0f04e376ac3df32d7e96e2561ef6281829693d2cd21b11b64b89b2516d7d92d')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_Linux_armv7.tar.gz")
-sha256sums_armv7h=('920e8a96d4915234257f837fbfb8a087cc39fd8965a17fed1b55c3c9df5b8ecd')
+sha256sums_armv7h=('555fa59f4bef3e63de5e298f33fc17a73585639654fcd45662640bd22d4fb321')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_Linux_i386.tar.gz")
-sha256sums_i686=('55d4eee794a4db19d6a710e5d5106630fdcac08b782cb196aae36fa87c1b7c85')
+sha256sums_i686=('3c6b254680115095f50e6afb45003de4cece4b5cdc895f3bc28797e293e078aa')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/snowdreamtech/UniRTM/releases/download/v${pkgver}/unirtm_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('9ada992aa113f0bcca014b9b9657014ed7345027e7e34e14f96ea26295237948')
+sha256sums_x86_64=('bbab8383759a741e3cad5d740491b36eece1f1415caafa64274e3a5391e9aaac')
 
 package() {
   # bin
