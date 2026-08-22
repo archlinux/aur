@@ -10,17 +10,21 @@ url='https://github.com/ajdiaz/pqp'
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'rust')
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ajdiaz/pqp/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('dc9a3c9997d18197113fb87814a20d3c2bea0069ca896ec7a3cb0c18ae9e4464')
 
 build() {
     cd "$srcdir/pqp-$pkgver"
-    cargo build --release --locked
+    cargo build --release
 }
 
 check() {
     cd "$srcdir/pqp-$pkgver"
-    cargo test --release --locked -- --test-threads=1
+    # Run tests in a new session without a controlling terminal so the
+    # test_interactive_fails_without_tty test behaves deterministically
+    # even when makepkg is run from an interactive terminal.
+    setsid -w cargo test --release -- --test-threads=1 </dev/null
 }
 
 package() {
