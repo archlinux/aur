@@ -1,7 +1,7 @@
 # Maintainer: Charlotte <cemetery394@gmail.com>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=citron-neo-git
-pkgver=2026.04.27.r134.g05e7127
+pkgver=2026.04.27.r519.g356b629
 pkgrel=1
 pkgdesc="Nintendo Switch emulator fork from citron (git version)"
 arch=('x86_64')
@@ -32,7 +32,6 @@ source=("git+https://github.com/citron-neo/emulator.git"
 	"git+https://github.com/mozilla/cubeb.git"
 	"git+https://github.com/xinitrcn1/dynarmic.git"
 	"git+https://github.com/libusb/libusb.git"
-	"git+https://github.com/yuzu-mirror/discord-rpc.git"
 	"git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 	"git+https://github.com/yuzu-mirror/sirit.git"
 	"git+https://github.com/yuzu-mirror/mbedtls.git"
@@ -99,7 +98,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -110,7 +108,7 @@ pkgver() {
 prepare() {
   cd emulator
   git submodule init
-  for _submodule in {enet,cubeb,dynarmic,libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,cpp-jwt,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad,simpleini,oaknut,Vulkan-Utility-Libraries}
+  for _submodule in {enet,cubeb,dynarmic,libusb,Vulkan-Headers,sirit,mbedtls,xbyak,opus,SDL,cpp-httplib,ffmpeg,vcpkg,cpp-jwt,libadrenotools,tzdb_to_nx,VulkanMemoryAllocator,breakpad,simpleini,oaknut,Vulkan-Utility-Libraries}
   do
 	  git config submodule.${_submodule}.url "$srcdir/${_submodule}"
   done
@@ -163,7 +161,6 @@ build() {
     -DCITRON_USE_QT_WEB_ENGINE=ON \
     -DCITRON_DOWNLOAD_TIME_ZONE_DATA=ON \
     -DENABLE_QT_TRANSLATION=ON \
-    -DUSE_DISCORD_PRESENCE=ON \
     -DCITRON_USE_FASTER_LD=OFF \
     -DCMAKE_CXX_FLAGS="$CXXFLAGS -DNDEBUG -flto=thin" \
     -DCMAKE_C_FLAGS="$CFLAGS -DNDEBUG -flto=thin" \
