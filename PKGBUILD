@@ -1,6 +1,6 @@
 # Maintainer: Bolt J Woofson <https://github.com/Woofson>
 pkgname=dotmatrix-git
-pkgver=3.0.0.r0.g8fb1ae5
+pkgver=3.0.1.r0.g8fb1ae5
 pkgrel=1
 pkgdesc="Dot Matrix (renamed to DotDog) - Modern dotfile compositor with git versioning & DotDog TUI"
 arch=('x86_64')
