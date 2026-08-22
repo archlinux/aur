@@ -5,7 +5,7 @@ pkgver=0.1
 pkgrel=1
 pkgdesc='Mancala games for KDE'
 arch=(x86_64)
-url='https://invent.kde.org/srisharanvs/mankala'
+url='https://invent.kde.org/srisharanvs/mankalanextgen'
 license=(GPL-3.0-or-later)
 depends=(libgcc
          libstdc++
@@ -23,12 +23,12 @@ makedepends=(cmake
 conflicts=(mankala)
 provides=(mankala)
 replaces=(mankala)
-source=(git+https://invent.kde.org/srisharanvs/mankala.git)
+source=(git+https://invent.kde.org/srisharanvs/mankalanextgen.git)
 sha256sums=('SKIP')
 
 
 build() {
-  cmake -B build -S mankala \
+  cmake -B build -S mankalanextgen \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTS=OFF \
     -DQT_VERSION_MAJOR=6
