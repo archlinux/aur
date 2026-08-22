@@ -3,7 +3,7 @@
 pkgname=g0v0-bin
 pkgver=2026.816.0
 pkgrel=1
-pkgdesc="free and open rhythm experience! (a community project based on osu!lazer codebase)"
+pkgdesc="g0v0! -- free and open rhythm experience! (a community project based on osu!lazer codebase)"
 arch=(x86_64 aarch64)
 url="https://github.com/GooGuTeam/g0v0"
 license=("MIT" "custom:CC-BY-NC 4.0")
