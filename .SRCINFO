@@ -1,0 +1,14 @@
+pkgbase = yt-chanvids
+	pkgdesc = Lists a YouTube channel's videos or looks up channel/video details
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/daniel-araujo/yt-chanvids
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = gcc-libs
+	depends = openssl
+	source = yt-chanvids-1.4.0.tar.gz::https://static.crates.io/crates/yt-chanvids/yt-chanvids-1.4.0.crate
+	sha256sums = a16196394d6fddbf81697a66828dd1e4aaeb85eafe31c01cae6f818dd6f66b20
+
+pkgname = yt-chanvids
