@@ -1,0 +1,19 @@
+pkgbase = electron36.6-bin
+	pkgdesc = Build cross platform desktop apps with web technologies - prebuilt binary (pinned for Nyxt)
+	pkgver = 36.6.0
+	pkgrel = 1
+	url = https://electronjs.org
+	arch = x86_64
+	license = MIT
+	license = BSD-3-Clause
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = alsa-lib
+	provides = electron36=36.6.0
+	conflicts = electron36-bin
+	options = !strip
+	source = https://github.com/electron/electron/releases/download/v36.6.0/electron-v36.6.0-linux-x64.zip
+	sha256sums = 6a0decb3e382f32d4ab3db90aabd082ef9ee1154fe205808f887e228fdb2d355
+
+pkgname = electron36.6-bin
