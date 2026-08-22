@@ -1,6 +1,6 @@
 pkgbase = openixcli-bin
 	pkgdesc = Open Source CLI Tools for Flash Allwinner Firmware to Devices
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/YuzukiTsuru/OpenixCLI
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = openixcli-bin
 	conflicts = openixcli
 	options = !strip
 	options = !debug
-	source = https://github.com/YuzukiTsuru/OpenixCLI/releases/download/v0.2.1/openixcli-v0.2.1-x86_64-unknown-linux-gnu.deb
-	sha256sums = bb64763ffee7b27e7f2b43a4019d1c70786759dea374b1abd5edcab6413795a1
+	source = https://github.com/YuzukiTsuru/OpenixCLI/releases/download/v0.2.2/openixcli-v0.2.2-x86_64-unknown-linux-gnu.deb
+	sha256sums = a1c031bd82e886d752d053e86287d086dcea524567b75deba138b8e9091113b9
 
 pkgname = openixcli-bin
