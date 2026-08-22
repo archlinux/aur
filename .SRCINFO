@@ -1,6 +1,6 @@
 pkgbase = zfs-linux
 	pkgver = 2.4.4_7.1.8.arch1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openzfs.org/
 	arch = x86_64
 	license = CDDL
@@ -9,7 +9,7 @@ pkgbase = zfs-linux
 	depends = zfs-utils=2.4.4
 	depends = linux=7.1.8.arch1-3
 	source = https://github.com/openzfs/zfs/releases/download/zfs-2.4.4/zfs-2.4.4.tar.gz
-	sha256sums = 1f08f2d154f5189b5f1382848a32667b3d34066145b474c49cd3d41a5fba59a7
+	sha256sums = 2a3c70d55a37cc71618a95a60e81ad66530201eb118d37741dc92efcf848c8b1
 
 pkgname = zfs-linux
 	pkgdesc = Kernel modules for the Zettabyte File System.
