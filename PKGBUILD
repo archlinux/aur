@@ -1,7 +1,7 @@
 # Maintainer: Terrasse <terrasse@qq.com>
 # Maintainer: ccmywish <ccmywish@qq.com>
 pkgname=chsrc
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=4
 pkgdesc="A cli tool to change source for every software on every platform"
 arch=('x86_64') # TODO: add more archs
@@ -23,7 +23,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
 )
 noextract=()
-sha256sums=('a3fb56035dc53f662f3b78ad951db17de0300d103cb412e1c334621c3b881b13')
+sha256sums=('0c1ff6ec9e8860d6c0455bc2f0e228647e578fbbe1874141850ec253a9693f10')
 validpgpkeys=()
 
 build() {
