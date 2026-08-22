@@ -1,7 +1,7 @@
 # Maintainer: Uyanide <pywang0608@foxmail.com>
 
 pkgname=wallreel
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Choose and set desktop wallpapers with customizable themes and actions"
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
 )
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('d1747fb3a773ae5840f367b53a4014fc86284e332ef2437b864be51ba426f3a733d5a201319e14f09f56ee25180880205c374cd5ea13f30fdc1fe48401205375')
+sha512sums=('65888003afe750a71fb08da111d5e4fc06f310f112d199881d96b1e0d5b21a1e803a6bba5e093ce097d7a9c9cad391c0240bebba27ece01d25db632fb32915b2')
 
 build() {
     cd "${pkgname}"
