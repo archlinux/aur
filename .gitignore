@@ -2,4 +2,4 @@ pkg/
 src/
 *.pkg.tar.zst
 *.tar.gz
-1password-secret-service/
+1password-secret-service-beta-git/
