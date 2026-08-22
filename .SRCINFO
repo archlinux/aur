@@ -1,0 +1,16 @@
+pkgbase = tine-bin
+	pkgdesc = A fast, local, Logseq-compatible outliner
+	pkgver = 0.6.93
+	pkgrel = 1
+	url = https://tine.page/
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	source_x86_64 = tine-bin-0.6.93-x86_64.deb::https://github.com/martinkoutecky/tine/releases/download/v0.6.93/Tine_0.6.93_amd64.deb
+	sha256sums_x86_64 = 863cffa13fa0cf5de1b20315f291364a55779c1e53e63c344d333f10fb7a678d
+	source_aarch64 = tine-bin-0.6.93-aarch64.deb::https://github.com/martinkoutecky/tine/releases/download/v0.6.93/Tine_0.6.93_arm64.deb
+	sha256sums_aarch64 = c75888f13441857946181d505873d83bab5559dadfca3900ff66364f2ce68993
+
+pkgname = tine-bin
