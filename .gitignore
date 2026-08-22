@@ -1,0 +1,9 @@
+# upstream clone
+ninfer/
+
+# pkgbuild build artifacts
+src/
+pkg/
+*.pkg.tar*
+*.sig
+makepkg.log
