@@ -1,0 +1,19 @@
+pkgbase = ai5-sdl2
+	pkgdesc = Cross-platform implementation of elf's AI5WIN engine
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/nunuhara/ai5-sdl2
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = meson
+	makedepends = git
+	depends = libpng
+	depends = libsndfile
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = ffmpeg
+	provides = ai5=1.5.0
+	source = ai5-sdl2::git+https://github.com/nunuhara/ai5-sdl2.git#tag=1.5.0
+	sha256sums = SKIP
+
+pkgname = ai5-sdl2
