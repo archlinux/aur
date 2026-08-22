@@ -1,4 +1,4 @@
-# Maintainer: Josephine Pfeiffer <hi@josie.lol>
+# Maintainer: Josephine Pfeiffer <josie@archlinux.org>
 pkgname=cockpit-pacman-git
 pkgver=0.3.7.r84.gfd956d9
 pkgrel=1
