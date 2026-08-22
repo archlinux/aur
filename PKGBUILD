@@ -7,7 +7,7 @@
 
 _gitname=cdesktopenv
 pkgname="${_gitname}"-git
-pkgver=2.5.3.116.g11d82e28b
+pkgver=2.5.3.131.g9286d9281
 pkgrel=1
 pkgdesc="Common Desktop Environment"
 url="http://sourceforge.net/projects/cdesktopenv/"
@@ -70,7 +70,7 @@ build() {
     cd "$srcdir/code/cde"
     ./autogen.sh
     ./configure --with-gnu-ld --prefix="/usr/dt"
-    make CFLAGS="$CFLAGS -std=c99 -I /usr/include/tirpc" LDFLAGS="$LDFLAGS -lm"
+    make CFLAGS="$CFLAGS -std=gnu99 -I /usr/include/tirpc" LDFLAGS="$LDFLAGS -lm"
 }
 
 package() {
