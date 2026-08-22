@@ -1,5 +1,4 @@
-# Maintainer: moyigeek <moyi@example.com>
-# Contributor: Your Name <you@example.com>
+# Maintainer: moyigeek <moyi@openatom.club>
 
 pkgname=atomgit-cli-git
 _pkgname=atomgit-cli
