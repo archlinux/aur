@@ -1,0 +1,25 @@
+pkgbase = lanchat-git
+	pkgdesc = A cross-platform LAN chat software that supports file transfer. (git)
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/cap153/LANChat
+	arch = x86_64
+	license = MIT
+	makedepends = base-devel
+	makedepends = rust
+	makedepends = cargo
+	makedepends = tauri-cli
+	makedepends = curl
+	makedepends = wget
+	makedepends = file
+	depends = webkit2gtk-4.1
+	depends = openssl
+	depends = libappindicator
+	depends = libayatana-appindicator
+	optdepends = lanclaw-bin: A LANChat-compatible intelligent bot powered by Pi coding agent.
+	conflicts = lanchat-bin
+	options = !strip
+	source = LANChat::git+https://github.com/cap153/LANChat.git
+	sha256sums = SKIP
+
+pkgname = lanchat-git
