@@ -31,10 +31,10 @@ source=("${_pkgname}.service"
         "README-${pkgver}.md::${_gurlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${_gurl}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${_gurl}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}")
-sha256sums=('31827ab039d2097d82881848e60ebe9735a1ed40ce4a365f3aabcbd1d83d02b0'
+sha256sums=('d72a03a5318ad54abf104d5217695d8a876476a7ceb7946de93c4ca038a3a227'
             '89a0dfec88918685812716f1a49e3cccae98dac90cfc77cee3977f24e2c2d052'
-            'd6f4942178a8259090795098d7efad293b676877d5a24a196699cdf73878394f'
-            '9c5bd124b46e562040765a61d80a5d493100cd3a40d27524423887e4f07fe51d'
+            '2fe44e290ffa0c42b980b57b390ad064bb44d9c9aad9638484202dea422398dd'
+            '3b79f7d6ba8815fe1ca808ce1f58156413b39d56651008aa7a6f02102202846f'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             'b1a2bedc7bd30b873a6230f2ad898c56449a291e67913f41910331c23cd8d67d')
 sha256sums_x86_64=('99737d52f6312d6d745d888468d4ff84e503d0a98092d20a09414e0b1ff022a5')
