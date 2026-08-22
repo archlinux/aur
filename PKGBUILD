@@ -1,4 +1,4 @@
-pkgname=radar-desktop-bin
+pkgname=radar-bin
 pkgver=1.11.0
 pkgrel=1
 pkgdesc="Open source Kubernetes UI - binary"

@@ -1,4 +1,4 @@
-pkgbase = radar-desktop-bin
+pkgbase = radar-bin
 	pkgdesc = Open source Kubernetes UI - binary
 	pkgver = 1.11.0
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = radar-desktop-bin
 	source = radar-desktop-1.11.0-x86_64.deb::https://github.com/skyhook-io/radar/releases/download/v1.11.0/radar-desktop_v1.11.0_linux_amd64.deb
 	sha256sums = 4b98aacd48765447f0ce0d5497a6b42f04080f4b322b26188e1f0f51884aa2f3
 
-pkgname = radar-desktop-bin
+pkgname = radar-bin
