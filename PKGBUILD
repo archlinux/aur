@@ -1,6 +1,6 @@
 pkgname=sdroxide-soapysdr
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (SoapySDR-enabled version)"
 arch=('x86_64')
 url="https://github.com/dividebysandwich/sdroxide"
@@ -19,33 +19,60 @@ optdepends=('soapyrtlsdr: RTL-SDR (RTL2832U) support'
             'limesuite: LimeSDR support')
 # rust/rust-wasm build the native binary and the wasm web client; trunk bundles
 # the web client; wasm-bindgen + binaryen(wasm-opt) are trunk's post-processors.
-# (The rustup package provides all of rust/cargo/rust-wasm.)
-# cmake drives the vendored RADE C build, clang supplies the libclang that
-# bindgen loads for its headers; neither is part of base-devel. RADE's own
-# CMake autotools-builds a patched Opus, which needs autoconf/automake/libtool
-# from base-devel.
+# (The rustup package satisfies all of rust/cargo/rust-wasm by `provides`,
+# but only carries the targets its user added -- see prepare().)
+# cmake drives the vendored RADE and rtl_433 C builds, clang supplies the
+# libclang that bindgen loads for its headers; neither is part of base-devel.
+# RADE's own CMake autotools-builds a patched Opus, which needs
+# autoconf/automake/libtool from base-devel.
 makedepends=('rust' 'rust-wasm' 'trunk' 'wasm-bindgen' 'binaryen' 'cmake' 'clang')
 # Same /usr/bin/sdroxide as the SoapySDR-free build.
 provides=('sdroxide')
 conflicts=('sdroxide')
 options=('!lto')
-# vendor/rade_c is a git submodule, and GitHub's release tarballs carry no
-# submodule contents, so it is fetched separately and put in place in prepare().
-# Keep in sync with the tag: git rev-parse "v$pkgver:vendor/rade_c"
+# vendor/rade_c and vendor/rtl_433 are git submodules, and GitHub's release
+# tarballs carry no submodule contents, so both are fetched separately and put
+# in place in prepare(). Keep in sync with the tag:
+#   git rev-parse "v$pkgver:vendor/rade_c"
+#   git rev-parse "v$pkgver:vendor/rtl_433"
 _rade_commit=a36161bce0fb37daf3f4602344b095f6817dddb1
+_rtl433_commit=8fa6364c5c7e14665fe3d80d0553883ec14a4116
 source=("sdroxide-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        "rade_c-$_rade_commit.tar.gz::https://github.com/freedv/rade_c/archive/$_rade_commit.tar.gz")
+        "rade_c-$_rade_commit.tar.gz::https://github.com/freedv/rade_c/archive/$_rade_commit.tar.gz"
+        "rtl_433-$_rtl433_commit.tar.gz::https://github.com/merbanan/rtl_433/archive/$_rtl433_commit.tar.gz")
 sha256sums=('df23b25b182d40058cd5f6197f4e93d08c766e956ccd92820451aa776cbc9cae'
-            'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd')
+            'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd'
+            '6e164f38216f46f1d08494c2adeaa7c72d7f3d5456e0b8c5ae424159d7051753')
 
 prepare() {
   cd "sdroxide-$pkgver"
-  # Stand in for `git submodule update --init`: crates/sdroxide-rade/build.rs
-  # reads vendor/rade_c straight out of the source tree.
-  rm -rf vendor/rade_c
+  # Stand in for `git submodule update --init --recursive`: the build scripts of
+  # crates/sdroxide-rade and crates/sdroxide-ism read vendor/rade_c and
+  # vendor/rtl_433 straight out of the source tree, and panic if they are empty.
+  rm -rf vendor/rade_c vendor/rtl_433
   mkdir -p vendor
   cp -a "$srcdir/rade_c-$_rade_commit" vendor/rade_c
+  cp -a "$srcdir/rtl_433-$_rtl433_commit" vendor/rtl_433
   export RUSTUP_TOOLCHAIN=stable
+  # The rustup package satisfies the rust-wasm makedepend by `provides`, but it
+  # only ships the targets its user has actually added -- so on a rustup box the
+  # wasm32 standard library can still be absent while pacman considers the
+  # dependency met, and the trunk build in build() then dies deep in the
+  # dependency graph with "can't find crate for core". Settle it here, where the
+  # network is still expected to be up. `--print target-libdir` names the path
+  # for any target rustc knows, installed or not, so the directory test is what
+  # actually answers the question.
+  local _wasm_libdir
+  _wasm_libdir="$(rustc --print target-libdir --target wasm32-unknown-unknown 2>/dev/null)"
+  if [[ ! -d $_wasm_libdir ]]; then
+    if ! { command -v rustup >/dev/null && rustup target add wasm32-unknown-unknown; }; then
+      echo "ERROR: the wasm32-unknown-unknown standard library is missing, and the" >&2
+      echo "       web client cannot be built without it. Install the rust-wasm" >&2
+      echo "       package, or, on a rustup toolchain, run:" >&2
+      echo "         rustup target add wasm32-unknown-unknown" >&2
+      return 1
+    fi
+  fi
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
   cargo fetch --locked --target wasm32-unknown-unknown
 }
@@ -75,8 +102,9 @@ build() {
     env -u CARGO_ENCODED_RUSTFLAGS RUSTFLAGS= \
       ${_wasm_opt_ver:+TRUNK_TOOLS_WASM_OPT="version_$_wasm_opt_ver"} \
       trunk build --release )
-  # Default features include `soapy`, so this links libSoapySDR for wideband
-  # device support in addition to the CAT/USB-audio backend.
+  # Default features include `soapy` and `rtl433`, so this links libSoapySDR for
+  # wideband device support in addition to the CAT/USB-audio backend, and
+  # compiles in the vendored rtl_433 ISM decoders.
   cargo build --release --locked -p sdroxide --features embed-web
 }
 
