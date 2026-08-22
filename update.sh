@@ -6,6 +6,7 @@ REL_PATH="blast/executables/magicblast"
 PKGNAME="magicblast"
 
 echo "==> Checking for new version..."
+
 LATEST_VERSION=$(curl -s "$URL_BASE/$REL_PATH/" | grep -oP 'href="\K[0-9][0-9.]+' | sort -V | tail -1)
 
 if [ -z "$LATEST_VERSION" ]; then
@@ -14,6 +15,7 @@ if [ -z "$LATEST_VERSION" ]; then
 fi
 
 CURRENT_VERSION=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
+
 echo "Current version: $CURRENT_VERSION"
 echo "Latest version:  $LATEST_VERSION"
 
@@ -23,12 +25,14 @@ if [ "$CURRENT_VERSION" = "$LATEST_VERSION" ]; then
 fi
 
 echo "==> Updating to version $LATEST_VERSION..."
+
 TARBALL_URL="$URL_BASE/$REL_PATH/$LATEST_VERSION/ncbi-magicblast-$LATEST_VERSION-x64-linux.tar.gz"
 echo "Downloading $TARBALL_URL..."
 curl -sL "$TARBALL_URL" -o /tmp/$PKGNAME-$LATEST_VERSION.tar.gz
 
 SHA256=$(sha256sum /tmp/$PKGNAME-$LATEST_VERSION.tar.gz | awk '{print $1}')
 echo "SHA256: $SHA256"
+
 rm -f /tmp/$PKGNAME-$LATEST_VERSION.tar.gz
 
 echo "==> Updating PKGBUILD..."
