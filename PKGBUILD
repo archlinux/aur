@@ -1,7 +1,7 @@
 pkgname=iwlwifi-lar-patched
 _pkgbase=linux
 
-_kernelpkgver=7.1.8.arch1-3
+_kernelpkgver=7.1.9.arch1-2
 
 _kernver=$(printf '%s\n' "${_kernelpkgver}" | sed 's/\.arch[0-9].*//')
 _archrel=$(printf '%s\n' "${_kernelpkgver}" | sed -E "s/^${_kernver}\.(.*)$/\1/" | tr '.' '-')
@@ -40,7 +40,7 @@ source=(
   'dracut-iwlwifi.conf'
 )
 
-sha256sums=('ff01dcb449279d5b4cfccdb01fee639cf5ff1803f1749a77844dd33915422c49'
+sha256sums=('3271a4ae3897b38352980f2b0975bae61bca81c644d186221c5ae928bcc072b0'
             'da2ab52ccdef2b93088c9e0c56bc1c166bf748d021b529cb2af2ff6c5d9e85cc'
             'd0f468221c28f5f07a040f36df4dcf571d3931eef7ed273d4e57b631ef9540d3'
             '3758f059f40e24561f588829cb80384324d75b0745d5eba6f4b6313b5809e2d1')
