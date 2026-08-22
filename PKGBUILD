@@ -1,7 +1,7 @@
 # Maintainer: Laurent Carlier <lcarlier@archlinux.org>
 
 pkgname=amspirit-lite-qt
-pkgver=1.13.4
+pkgver=1.14.3
 pkgrel=1
 pkgdesc="An accurate Amstrad emulator - Qt version (AppImage)"
 arch=('x86_64')
@@ -9,8 +9,8 @@ depends=(hicolor-icon-theme)
 url="https://amspirit.fr/"
 license=('CC-BY-NC-ND-4.0')
 options=(!strip !debug)
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/AMSpiriT-Emulator/amspirit-releases/releases/download/Lite-1.13/Amspirit-Lite-Qt-${pkgver}-x86_64.AppImage")
-sha256sums=('40ff458bb6eff1a0138f1f64fb285bef2e09959c098faa929d213356cc3f9132')
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/AMSpiriT-Emulator/amspirit-releases/releases/download/Lite-1.14/Amspirit-Lite-Qt-${pkgver}-x86_64.AppImage")
+sha256sums=('a165fcd6e17993e83dda177584c9b3fc5ea0166f40596e2fc279850a60250251')
 
 prepare() {
    chmod +x "${pkgname}-${pkgver}.AppImage"
