@@ -7,7 +7,6 @@ set -e
 
 REPO="steineggerlab/foldcomp"
 PKGNAME="foldcomp-bin"
-ASSET="foldcomp-linux-x86_64.tar.gz"
 
 echo "==> Checking for new version..."
 
