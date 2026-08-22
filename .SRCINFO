@@ -1,0 +1,22 @@
+pkgbase = dotnet-manager
+	pkgdesc = A Qt GUI for installing and switching between .NET SDKs, runtimes and workloads
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/wheat32/dotnet-manager
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-svg
+	depends = polkit
+	optdepends = curl: download .NET releases (wget works too)
+	optdepends = wget: download .NET releases (curl works too)
+	optdepends = qt6-wayland: native Wayland support
+	source = git+https://github.com/wheat32/dotnet-manager.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = dotnet-manager
