@@ -1,5 +1,5 @@
 pkgname=sdroxide
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Powerful SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (native RTL-SDR/RX-888/CAT/etc backends, no SoapySDR)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ options=('!lto')
 _rade_commit=a36161bce0fb37daf3f4602344b095f6817dddb1
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "rade_c-$_rade_commit.tar.gz::https://github.com/freedv/rade_c/archive/$_rade_commit.tar.gz")
-sha256sums=('1281b557feb1510ff073b94b505943c6db479a61cfa821d2472f638ac32f1121'
+sha256sums=('df23b25b182d40058cd5f6197f4e93d08c766e956ccd92820451aa776cbc9cae'
             'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd')
 
 prepare() {
