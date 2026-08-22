@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=tvrenamer-bin
-pkgver=1.0b6
+pkgver=1.0
 pkgrel=1
 pkgdesc="A Java GUI utility to rename TV episodes from TV listings"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("https://github.com/tvrenamer/tvrenamer/releases/download/v$pkgve
 source_aarch64=("https://github.com/tvrenamer/tvrenamer/releases/download/v$pkgver/TVRenamer-$pkgver-linux-aarch64.zip")
 sha256sums=('8876483be682b55125c0a42f9129654319a3690df34182eaa5870c5a96c585da'
             'b3a5d18a04c1b8af204488e753210e104e9591d6703e5830504fc334231efabd')
-sha256sums_x86_64=('3171c839d53fb21a861e17b10f15b5970a89ead33327c356ec1cab2e24bd8d7c')
-sha256sums_aarch64=('ba10b0218107a2234218574dffa3dc9eb8dd5f1f5f29c1d8bcffe0c6d36327a5')
+sha256sums_x86_64=('411ff76eae085a550f041b91a29bda7fd58d9b82a4994f58fc6f1a3c5043dfb3')
+sha256sums_aarch64=('64b6de2b245b4361660d4ffed34cc2d585582f51cc1b3e92e04446e17ed9e5fc')
 
 package() {
   cd "TVRenamer-$pkgver-linux-${CARCH}"
