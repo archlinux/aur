@@ -6,7 +6,7 @@ Default Data Path: /var/lib/autentico/
 Default Config File: /var/lib/autentico/.env
 Default User & Group: autentico:autentico
 
-$ sudo systemctl start filebrowser.service
+$ sudo systemctl start autentico.service
 -----------------------------------------------------------------------------
 
 More: https://github.com/eugenioenko/autentico
@@ -18,10 +18,10 @@ trap 'rm -rf "$tmp_dir"' EXIT
 
 pushd "$tmp_dir" > /dev/null
 
-autentico init --url http://localhost:5555 > /dev/null
+autentico init --url http://localhost:9999 > /dev/null
 
-mkdir -p /var/lib/autentico/
-mv .env /var/lib/autentico/
+mkdir -p /etc/autentico/
+mv .env /etc/autentico/autentico.env
 
 popd > /dev/null
 }
@@ -33,7 +33,7 @@ Default Data Path: /var/lib/autentico/
 Default Config File: /var/lib/autentico/.env
 Default User & Group: autentico:autentico
 
-$ sudo systemctl restart filebrowser.service
+$ sudo systemctl restart autentico.service
 -----------------------------------------------------------------------------
 
 More: https://github.com/eugenioenko/autentico

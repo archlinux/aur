@@ -1,1 +1,2 @@
 d /var/lib/autentico 0750 autentico autentico -
+d /etc/autentico 0755 autentico autentico -
