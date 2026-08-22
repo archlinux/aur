@@ -1,0 +1,16 @@
+pkgbase = waka
+	pkgdesc = A front-end for libalpm, inspired by nala
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Shisones/Waka
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	depends = pacman
+	optdepends = curl: for waka fetch
+	source = waka-0.1.1.tar.gz::https://github.com/Shisones/Waka/archive/v0.1.1.tar.gz
+	sha256sums = 95c105d7c5b172cad91de1ffb695d21759e6b4aed867e6ba5e4edb8a8aa5bbf3
+
+pkgname = waka
