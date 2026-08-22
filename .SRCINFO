@@ -1,0 +1,33 @@
+pkgbase = blitcp-bin
+	pkgdesc = Fast file copier with SSH streaming, deduplication & block-order I/O
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = https://github.com/gekap/blitcp
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = zlib
+	depends = xxhash
+	depends = python-xxhash
+	depends = python-paramiko
+	options = !strip
+	source = ICON-4.0.2.png::https://raw.githubusercontent.com/gekap/blitcp/v4.0.2/assets/blitcp-logo.png
+	source = README-4.0.2.md::https://raw.githubusercontent.com/gekap/blitcp/v4.0.2/README.md
+	source = LICENSE-4.0.2::https://raw.githubusercontent.com/gekap/blitcp/v4.0.2/LICENSE
+	sha256sums = a24c52f69fb0055d6c9c07ee4dac6221b9627e1a0283bb7d7b2c60043a945a1d
+	sha256sums = f054fa2a4cfc1b4cab3e9d659f4c2a0a509bf73474f9be9fb0de4000104b9ec8
+	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
+	source_x86_64 = blitcp-4.0.2::https://github.com/gekap/blitcp/releases/download/v4.0.2/blitcp-linux
+	source_x86_64 = blitcp-gui-4.0.2::https://github.com/gekap/blitcp/releases/download/v4.0.2/blitcp_gui-linux
+	sha256sums_x86_64 = 13b02aaff2492ebc5dbf9a8e659ef33c8e245b3cf782654d5ea76ac4b47d30ed
+	sha256sums_x86_64 = 57c2247fb244e4cb0564f5f98c2ce96fcd2c2d931789c6eaf238b204a4d5648f
+
+pkgname = blitcp-bin
+	optdepends = blitcp-gui
+	provides = blitcp
+	conflicts = blitcp
+
+pkgname = blitcp-gui-bin
+	depends = blitcp
+	provides = blitcp-gui
+	conflicts = blitcp-gui

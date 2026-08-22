@@ -1,0 +1,5 @@
+[blitcp-bin]
+source = "github"
+github = "gekap/blitcp"
+use_latest_release = true
+prefix = "v"
