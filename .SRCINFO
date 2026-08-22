@@ -105,6 +105,7 @@ pkgbase = ceph
 	source = ceph-20.2.2-lua-5-3-exact.patch
 	source = ceph-20.2.3-fix-mgr-memory-leak.patch
 	source = ceph-20.2.3-fix-mgr-dashboard-progress.patch
+	source = ceph-20.2.4-backport-test-fixes.patch
 	sha512sums = c81fb4fea3bbd470a89e3784a86950280425b17ef6a4d606549e80b393d0dc178564245db49cfbde16f9f2ee107adcc7f4d380bcf3c7a46ec636bff53662d105
 	sha512sums = 4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049
 	sha512sums = 41dbc1c395cdf9b3edf5c5d91bbc90f416b4338ad964fa3471f26a4312d3ec2a5dcebbc351a1640dc4b047b4f71aa134ac7486747e5f62980092b0176e7567f5
@@ -126,6 +127,7 @@ pkgbase = ceph
 	sha512sums = ce1c5ccfdc595ce87ecf164a99d4205f7e303f527a9e3528c8a2e54ef387cff34eb03cbd9b25e6ba09fbc7efed23536d1612f57d0f9671a62e1e9dce05fdec35
 	sha512sums = 017cc958c671c454e002b9d46a424901722728b40113b5eda65926a62684e1e2dfc9371fbc28223efaaee46078ce81fb186f865e63e8bbbf0575f5e459b5e0cc
 	sha512sums = 587482b4943002290cef31b920cab0e798adbce4c9ac28211f1d67db5799f96254eeae22d38df15d59d97aadac62dcde416f90ca07b0b2a42656bec35ba0c21d
+	sha512sums = f6426e51fa35f9f5f034e31459cdab2fefc5ade5e241acdb9086988445d81b4b77ed35f2395b2750d9b7b5ae2564c2e67273841be681834d97ab540338cb7510
 
 pkgname = ceph-common
 	pkgdesc = Ceph Storage common libraries and dependencies
