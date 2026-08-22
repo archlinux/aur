@@ -3,7 +3,7 @@
 
 _pkgname=py-build-cmake
 pkgname=python-py-build-cmake
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='PEP 517 compliant build backend for creating Python packages with extensions built using CMake'
 arch=('any')
@@ -21,7 +21,7 @@ depends=(
 makedepends=('git' 'python-build' 'python-installer')
 checkdepends=('python-pytest')
 source=("git+$url#tag=$pkgver")
-sha512sums=('f7a4bdd7e17194ac7ebb0a31ed664da7324d72d0a90f1bef6ca4bd675237d3a4a5b507a71c7da44252b34ff8abd7ff61b9440fbe7f35790f98b074344f1f1287')
+sha512sums=('40b231ce35ea6b0bfce11ca65f5bd1471d6f8b921f137dd272328ca81beb042b326f557b1ab508139cca68c4b073143aaa47b89883252ecfb6d644873618c58e')
 
 prepare() {
   cd $_pkgname
