@@ -1,6 +1,6 @@
 pkgbase = firedragon
 	pkgdesc = FireDragon is a cross-platform, feature-rich and privacy-focused web browser
-	pkgver = 13.2.0
+	pkgver = 13.3.0
 	pkgrel = 1
 	epoch = 2
 	url = https://gitlab.com/garuda-linux/firedragon/firedragon13
@@ -69,13 +69,13 @@ pkgbase = firedragon
 	provides = firedragon
 	conflicts = firedragon
 	replaces = firedragon-next
-	noextract = firefox-153-patches-01.tar.xz
+	noextract = firefox-154-patches-01.tar.xz
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
-	source = firedragon-v13.2.0.source.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.2.0/downloads/firedragon.source.tar.xz
-	source = https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-153-patches-01.tar.xz
-	sha256sums = 51c72bfcdc92864f4c75122bfb3a9321630648ede31763136e9d9f947960fe50
-	sha256sums = 9dc3e9423eea9b8bf16cd7cc2545a539717e9b32c1e4242a332988ff0add923e
+	source = firedragon-v13.3.0.source.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.3.0/downloads/firedragon.source.tar.xz
+	source = https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-154-patches-01.tar.xz
+	sha256sums = 33a42fc48cb28bb8216b06da354f18360f5eff1c8e7d2106afc80952eb413892
+	sha256sums = 74be0633ade277e269f5bbdedef84a50c1430fba56e6d7fd56878a963e07a124
 
 pkgname = firedragon
