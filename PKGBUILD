@@ -1,3 +1,4 @@
+# Maintainer: windstone <notwindstone@gmail.com>
 pkgname=kaede
 pkgver=0.0.1
 pkgrel=1
