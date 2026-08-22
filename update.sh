@@ -1,13 +1,14 @@
 #!/bin/bash
 set -e
 
-REPO_URL="https://github.com/tseemann/snp-dists"
+REPO="tseemann/snp-dists"
+URL="https://github.com/${REPO}"
 PKGNAME="snp-dists"
 
 echo "==> Checking for new version..."
 
-LATEST_TAG=$(curl -sILo /dev/null -w '%{url_effective}' "$REPO_URL/releases/latest")
-LATEST_TAG="${LATEST_TAG##*/}"
+LATEST_URL=$(curl -sILo /dev/null -w '%{url_effective}' "$URL/releases/latest")
+LATEST_TAG=${LATEST_URL##*/}
 LATEST_VERSION=${LATEST_TAG#v}
 
 if [ -z "$LATEST_VERSION" ]; then
@@ -27,7 +28,7 @@ fi
 
 echo "==> Updating to version $LATEST_VERSION..."
 
-TARBALL_URL="$REPO_URL/archive/v$LATEST_VERSION.tar.gz"
+TARBALL_URL="$URL/archive/v$LATEST_VERSION.tar.gz"
 echo "Downloading $TARBALL_URL..."
 curl -sL "$TARBALL_URL" -o /tmp/$PKGNAME-$LATEST_VERSION.tar.gz
 
