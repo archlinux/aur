@@ -1,37 +1,18 @@
 #!/bin/bash
-# deeptools: source-built from the pinned PyPI sdist (same strategy as jcvi).
-# Version detection via the PyPI JSON API; the sdist URL is version-templated
-# (no hash prefix), so checksum refresh is a single download + sed.
+# deeptools: source-built from the pinned PyPI sdist. Rewriter: takes the new
+# version as $1; detection lives in the root nvchecker.toml. The sdist URL is
+# version-templated (no hash prefix), so checksum refresh is a single
+# download + sed. Maintainer-side tool, never executed during package build
+# or install.
 set -e
+[ $# -eq 1 ] || { echo "usage: $0 <new-version>" >&2; exit 1; }
+LATEST_VERSION=${1#v}
 
 PKGNAME="deeptools"
-PYPI="https://pypi.org/pypi/deeptools/json"
-
-echo "==> Checking for new version..."
-
-LATEST_VERSION=""
-for _ in 1 2 3; do
-    LATEST_VERSION=$(curl -fsS --max-time 25 "$PYPI" | grep -oP '"version":[[:space:]]*"\K[^"]+' | head -1)
-    [ -n "$LATEST_VERSION" ] && break
-    sleep 2
-done
-LATEST_VERSION=${LATEST_VERSION//[$'\t\r\n ']/}
-
-if [ -z "$LATEST_VERSION" ]; then
-    echo "Error: Could not fetch latest version"
-    exit 1
-fi
 
 CURRENT_VERSION=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
-CURRENT_VERSION=${CURRENT_VERSION//[$'\t\r\n ']/}
-
 echo "Current version: $CURRENT_VERSION"
 echo "Latest version:  $LATEST_VERSION"
-
-if [ "$CURRENT_VERSION" = "$LATEST_VERSION" ]; then
-    echo "==> Already up to date!"
-    exit 0
-fi
 
 echo "==> Updating to version $LATEST_VERSION..."
 
@@ -48,13 +29,6 @@ echo "==> Updating PKGBUILD..."
 sed -i "s/^pkgver=.*/pkgver=$LATEST_VERSION/" PKGBUILD
 sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
 sed -i "s/^sha256sums=.*/sha256sums=('$SHA256')/" PKGBUILD
-
-NEW_VERSION=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
-if [ "$NEW_VERSION" = "$CURRENT_VERSION" ]; then
-    echo "==> No version change; discarding edits."
-    git checkout -- PKGBUILD
-    exit 0
-fi
 
 echo "==> Generating .SRCINFO..."
 makepkg --printsrcinfo > .SRCINFO
