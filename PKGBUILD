@@ -2,7 +2,7 @@
 pkgname=mercurygram-desktop-bin
 _pkgname=mercurygram
 pkgver=7.0.9.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Mercurygram Desktop messaging app'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mercurygram/mdesktop"
@@ -37,7 +37,6 @@ options=('!debug' '!strip')
 
 source=(
   "it.belloworld.${_pkgname}.desktop::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/lib/xdg/it.belloworld.${_pkgname}.desktop"
-  "it.belloworld.${_pkgname}.service::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/lib/xdg/it.belloworld.${_pkgname}.service"
   "${_pkgname}-icon16.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon16.png"
   "${_pkgname}-icon32.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon32.png"
   "${_pkgname}-icon48.png::https://raw.githubusercontent.com/${_pkgname^}/mdesktop/refs/heads/dev/Telegram/Resources/art/icon48.png"
@@ -50,7 +49,6 @@ source_x86_64=("https://github.com/${_pkgname^}/mdesktop/releases/download/v${pk
 source_aarch64=("https://github.com/${_pkgname^}/mdesktop/releases/download/v${pkgver}/${_pkgname^}-${pkgver}-linux-arm64.tar.xz")
 
 sha256sums=('f4e156ad9e71ee0d3f9155d5b0396c6e7bae92f47ab28a9e14a57bd5a63fde16'
-            '66843460cf32436505e790f3b371ed05e94f6d6587e50fa31d735185b6bf1ad5'
             'a1a1ea2d8a1e69a2c3d71c2ddd442f71c614e3abcdb60c54d0f90e4c9d778c88'
             '7b4ee11e84e42335a8ae2d4161fb989152117b2d64d70036973822b93563d6e5'
             'f7b76cc8c9878a5daf550ee9fcb65d0649f54e8e9e356c260d59b51312a057b8'
@@ -65,6 +63,9 @@ package() {
   install -Dm755 "${_pkgname^}" "$pkgdir/usr/bin/${_pkgname^}"
   install -Dm644 "$srcdir/it.belloworld.${_pkgname}.desktop" "$pkgdir/usr/share/applications/it.belloworld.${_pkgname}.desktop"
   install -Dm644 "$srcdir/it.belloworld.${_pkgname}.service" "$pkgdir/usr/share/dbus-1/services/it.belloworld.${_pkgname}.service"
+
+  printf '[D-BUS Service]\nName=it.belloworld.%s\nExec=/usr/bin/%s\n' "${_pkgname}" "${_pkgname^}" |
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/dbus-1/services/it.belloworld.${_pkgname}.service"
 
   # Install icons
   for size in 16 32 48 64 128 256 512; do
