@@ -1,0 +1,17 @@
+pkgbase = parcel-firefox
+	pkgdesc = Firefox browser extension for zx2c4's pass password manager
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/parcel-pm/parcel
+	arch = any
+	license = ISC
+	depends = parcel
+	optdepends = pass: password manager to manage the password store
+	source = https://addons.mozilla.org/firefox/downloads/file/4967434/parcel_pm-1.0.6.xpi
+	validpgpkeys = 82ED663067C6017BAA4BC752EB670BF2B1131683
+	validpgpkeys = B0908ED59A96C9882BED9A942A51761511A30253
+	validpgpkeys = 88FF14D6294AF4036B7F00FF676A3C09E2E47A72
+	validpgpkeys = 56C3E775E72B0C8B1C0C1BD0B5DB77409B11B601
+	sha256sums = 903de04a99a39f871d4ad5e82ef23b5cc1f6b740421a37ef773e6b47cad1eaba
+
+pkgname = parcel-firefox
