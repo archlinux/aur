@@ -1,6 +1,6 @@
 pkgbase = nuvio-linux-git
 	pkgdesc = Nuvio Linux desktop media player — Linux native mpv playback (git)
-	pkgver = r2287.g713a18f9
+	pkgver = r2319.g17dd43a2
 	pkgrel = 1
 	url = https://github.com/JJDizz1L/NuvioLinux
 	install = nuvio-linux-git.install
