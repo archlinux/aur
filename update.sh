@@ -1,6 +1,6 @@
 #!/bin/bash
-# polypolish-bin has two sources (binary tarball + LICENSE), so checksums are
-# refreshed with `updpkgsums` (pacman-contrib) instead of a single-line sed.
+# polypolish-bin: two sources (binary tarball + LICENSE), so checksums are refreshed
+# with `updpkgsums` (pacman-contrib) instead of a single-line sed.
 set -e
 
 REPO="rrwick/Polypolish"
@@ -9,7 +9,7 @@ PKGNAME="polypolish-bin"
 
 echo "==> Checking for new version..."
 
-LATEST_URL=$(curl -sILo /dev/null -w '%{url_effective}' "https://github.com/${REPO}/releases/latest")
+LATEST_URL=$(curl -sILo /dev/null -w '%{url_effective}' "$URL/releases/latest")
 LATEST_TAG=${LATEST_URL##*/}
 LATEST_VERSION=${LATEST_TAG#v}
 
