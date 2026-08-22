@@ -1,8 +1,8 @@
 # Maintainer: Ismet Togay <ismet.togay at gmail dot com>
 
 pkgname=uyap-editor
-pkgver=5.4.19
-pkgrel=2
+pkgver=5.4.20
+pkgrel=1
 pkgdesc='UYAP Document and Template Editor (Turkish judicial system)'
 arch=('x86_64')
 url='https://uyap.gov.tr/UYAP-Editor'
@@ -36,7 +36,7 @@ source=(
     'LicenseRef-proprietary.txt'
 )
 noextract=("${pkgname}-${pkgver}.zip")
-b2sums=('af88a9583d1e7ec4247e9b6abd5d73b8609915009f9d1d67ea3c54ce0f5f71923b696f016cd42e8ad418af5ebdfea0ff49fb9e16cf364f59f17516d02f81517a'
+b2sums=('6a48b4977d78058c43ceba0ec4b054bdfd03c44129be9e6dc313376c43b819f1b80035ce559edbab751aa8998cfdd7d79725dafef4c74ca76c25f898829e03ae'
         '15e0db01c11f2a308283cadd84d20c736a885e6ceabb7564312cae444249659ef197b1a37df7401e5a304c41090626bc53fbd8cbe74a4ee7ff7668dd08600158'
         '82323e47cdf4bcded12aeb1d932dd74ef66dc78cbb4c478ef568117bf55ba18b0ec116614e56c86e412f5e2421f1691b5819b9297c47b9d5fe93ccc106073fe0'
         '07ee3c59fc38f05e69d4cd5384cd8bc6cea4e2e24ec633660567517d97194e95e60d8a8867bd4c3e2941ad42d7180f7ed506a28d6d4a67d3f072ce7766d63b8f'
