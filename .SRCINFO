@@ -1,6 +1,6 @@
 pkgbase = sonora
 	pkgdesc = A native music streaming client, built with Rust and GPUI
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/nolight132/sonora
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = sonora
 	optdepends = vulkan-radeon: Vulkan driver for AMD GPUs
 	optdepends = vulkan-intel: Vulkan driver for Intel GPUs
 	optdepends = nvidia-utils: Vulkan driver for NVIDIA GPUs
-	source = sonora-0.15.0.tar.gz::https://github.com/nolight132/sonora/archive/refs/tags/v0.15.0.tar.gz
-	sha256sums = 955e4abb3dd9aa8d9869c73b9919b178d37136297fb5a1e7940dc0a266171a80
-	source_x86_64 = sonora-0.15.0-x86_64::https://github.com/nolight132/sonora/releases/download/v0.15.0/sonora-v0.15.0-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 204716840afd9008796817275080a2f40fcf74d2ec3e6f6100cd24ed053875e8
-	source_aarch64 = sonora-0.15.0-aarch64::https://github.com/nolight132/sonora/releases/download/v0.15.0/sonora-v0.15.0-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = 4e682803c29e9f5f076de1ab688ecf978a159acf39ac718958a880a5d37c1e49
+	source = sonora-0.16.0.tar.gz::https://github.com/nolight132/sonora/archive/refs/tags/v0.16.0.tar.gz
+	sha256sums = a7d32941e205e3f075cd9586614abac27f1f68b878477cd68c489c06803e89fa
+	source_x86_64 = sonora-0.16.0-x86_64::https://github.com/nolight132/sonora/releases/download/v0.16.0/sonora-v0.16.0-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 63aa6e334195723f3ee1bb86c42884580f278987adadf13f7a9a5ff98cf5e0dd
+	source_aarch64 = sonora-0.16.0-aarch64::https://github.com/nolight132/sonora/releases/download/v0.16.0/sonora-v0.16.0-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 0db7636d001945af7a6ef202010d686334173d35becf1cd578657db276ea9b69
 
 pkgname = sonora
