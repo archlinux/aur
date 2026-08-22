@@ -11,7 +11,7 @@ _appname=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Enhanced SSH client with TUI — manage connections, keys, and sessions"
 
-pkgver=0.2.8
+pkgver=0.3.2
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -30,7 +30,7 @@ provides=("${_appname}")
 options=('!lto' '!strip')
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('925ed98a795cfdc0d26d96560047e3fe69802ea9e66412aa37a23a35b85aabd0')
+sha256sums=('b78601aa96693f327d5bee9ebcaf422538bdffe25a9d96e423ba30397138be6a')
 
 prepare() {
   cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
