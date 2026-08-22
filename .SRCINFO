@@ -1,11 +1,11 @@
 pkgbase = autocycler-bin
 	pkgdesc = Tool for combining multiple long-read assemblies into a consensus
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rrwick/Autocycler
 	arch = x86_64
 	license = GPL-3.0-only
-	provides = autocycler
+	provides = autocycler=0.7.0
 	conflicts = autocycler
 	options = !strip
 	options = !debug

@@ -3,12 +3,12 @@
 pkgname=autocycler-bin
 _pkgname=autocycler
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for combining multiple long-read assemblies into a consensus"
 arch=('x86_64')
 url="https://github.com/rrwick/Autocycler"
 license=('GPL-3.0-only')
-provides=('autocycler')
+provides=("autocycler=$pkgver")
 conflicts=('autocycler')
 options=('!strip' '!debug')
 source=(
