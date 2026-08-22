@@ -3,7 +3,7 @@
 _name=gradio
 pkgname=python-$_name
 pkgver=6.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
 url='https://github.com/gradio-app/gradio'
@@ -13,7 +13,8 @@ makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fa
 checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-matplotlib' 'python-hypothesis' 'jupyter-nbformat' 'python-openai' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-itsdangerous' 'python-mcp' 'mime-types')
 optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth'
             'python-mcp: mcp' 'python-pydantic: mcp'
-            'ruff: needed for custom component docs generation')
+            'ruff: needed for custom component docs generation'
+            'ffmpeg: audio/video processing')
 source=("$url/archive/refs/tags/$_name@$pkgver.tar.gz"
         "https://github.com/gradio-app/gradio/pull/13772.patch"
         "https://github.com/gradio-app/gradio/pull/13776.patch")
