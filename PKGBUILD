@@ -3,9 +3,9 @@
 _pkgname=firedragon
 __pkgname=$_pkgname-catppuccin
 _rdns=org.garudalinux.$__pkgname
-_pkgver=13.2.0
+_pkgver=13.3.0
 _branding=catppuccin
-_gentoo=firefox-153-patches-01.tar.xz
+_gentoo=firefox-154-patches-01.tar.xz
 _gentoo_exclude=(0015-bgo-940031-wasm-support.patch)
 
 pkgname=$__pkgname
@@ -84,14 +84,16 @@ install=$_pkgname.install
 noextract=($_gentoo)
 source=($_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
         https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo)
-sha256sums=('51c72bfcdc92864f4c75122bfb3a9321630648ede31763136e9d9f947960fe50'
-            '9dc3e9423eea9b8bf16cd7cc2545a539717e9b32c1e4242a332988ff0add923e')
+sha256sums=('33a42fc48cb28bb8216b06da354f18360f5eff1c8e7d2106afc80952eb413892'
+            '74be0633ade277e269f5bbdedef84a50c1430fba56e6d7fd56878a963e07a124')
 
 prepare() {
   mkdir -p mozbuild
   cd $_pkgname-v$_pkgver
 
-  tar -Oxf "$srcdir/$_gentoo" $(printf -- '--exclude=%s' "${_gentoo_exclude[@]}") | patch -Nsp1
+  for patch in $(tar -tf "$srcdir/$_gentoo" --wildcards '*.patch' $(printf -- '--exclude=%s' "${_gentoo_exclude[@]}")); do
+    tar -Oxf "$srcdir/$_gentoo" "$patch" | patch -Nsp1
+  done
 
   echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/edition/$_pkgname-$_branding.mozconfig\"" > ../mozconfig
   export FIREDRAGON_EDITION=$_branding
