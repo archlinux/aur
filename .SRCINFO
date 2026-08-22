@@ -1,0 +1,21 @@
+pkgbase = dotdog-git
+	pkgdesc = DotDog 🐶 - Modern dotfile compositor with git versioning & NoteDog TUI (formerly Dot Matrix)
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/Woofson/dotdog
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = oniguruma
+	depends = zstd
+	provides = dotdog
+	provides = dotmatrix
+	provides = dmx
+	conflicts = dotdog
+	replaces = dotmatrix-git
+	source = git+https://github.com/Woofson/dotdog.git
+	sha256sums = SKIP
+
+pkgname = dotdog-git
