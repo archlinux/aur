@@ -2,7 +2,7 @@
 
 _gpuarch=gfx110X
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
-pkgver=10.1.0a20260821
+pkgver=10.1.0a20260822
 pkgrel=1
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
@@ -26,7 +26,7 @@ _rocm_packages=(
     'hipsparse' 'hipsparselt' 'rocsparse'
     'rccl' 'rocalution' 'rocprim' 'rocthrust' 'hipcub'
     'miopen-hip' 'migraphx' 'mivisionx' 'rpp'
-    'hipfort' 'hipify-clang'
+    'hipfort' 'hipify-clang' 'hipddn' 'hiptensor'
     'rocm-hip-sdk' 'rocm-hip-libraries' 'rocm-hip-runtime' 'rocm-opencl-sdk' 'rocm-opencl-runtime' 'rocm-ml-sdk' # Meta packages
 )
 
@@ -34,7 +34,7 @@ provides=("${_rocm_packages[@]}" "rocm=${pkgver}" "opencl-driver")
 conflicts=("${_rocm_packages[@]}" "rocm")
 options=('!strip' '!debug')
 source=("${url}/tarball-multi-arch/therock-dist-linux-${_gpuarch}-all-${pkgver}.tar.gz")
-sha256sums=('c1caced6d6dee3f3f673df1e5a2d62ec5ad1e235f24456dd1df9bc1c9ada64ea')
+sha256sums=('5884b764b6b1e8fe3a6f7b974274761ac5fe2d5b4a6f793f13f6aaf21e8f7149')
 
 package() {
     local _tarball_name=$(basename "${source[0]}")
