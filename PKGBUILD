@@ -2,7 +2,7 @@
 
 _pkgname=amneziavpn
 pkgname=$_pkgname-bin
-pkgver=5.0.0.5
+pkgver=5.0.1.5
 pkgrel=1
 pkgdesc="Amnezia VPN Client"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=($_pkgname{,-git})
 options=(!debug)
 install=$_pkgname.install
 source=($_pkgname-$pkgver.run::$url/releases/download/$pkgver/AmneziaVPN_${pkgver}_linux_x64.run)
-sha256sums=('083d716558b50c0d2ab6b727d3e7d53a2ad6431e9d77d8ab922c5008f02a07bc')
+sha256sums=('ddb471efbe149232aa98c75534f98d42114b15fdc7976802f8feaeba320bc791')
 
 prepare() {
   # Rip archives from the installer and extract them
