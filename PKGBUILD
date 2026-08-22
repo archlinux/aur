@@ -5,7 +5,7 @@ _pkgname=rookery
 pkgname=${_pkgname}-bin
 pkgdesc="Local inference command center"
 
-pkgver=0.1.9
+pkgver=0.1.11
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -32,14 +32,14 @@ source=("${_pkgname}.service"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 sha256sums=('e4555c44eef28c0de9660da0878d0a3b7df15c60e77a21783f356e7fb8aeaab6'
-            'c5c0f6a8242f64186405864909d0e413ed765aebd64fd68a66cdba84ec707c43'
+            '0da5623267435a76cfd43adab20c12dfc2f3fb56c791773ab2f6d564a6bedbe7'
             '525b7709fb61a9e9f6bf321c20aea65d2b8a384b3fb4edf75ac70246a2aebdad'
-            'f604f659f4fb1c089644ba21bc9655e6e3b0d2169ae4230beefafa7c1dae167c'
-            '31d88b7e5d66b8fd0d1deb8ea2a7de212172543b77d9dab9d7248eb6ab5a326f'
+            '2cfde49c664b632f6f67651023cdf915765a06b98e735c3f5d7cbea02de3df9f'
+            '109f8cff56c707dc356b948d1d33946d01fb5cf4672fa2b479f0dc4ffa9dde5b'
             'dee60470438ecf75bb0a0e7b655fed25aa460232b569f55c10af42a3acbc17aa'
             '41c94c4b6c7f3068f1f4d820c0aed7f40537aa2f283fac18f1c2670b3e8ca491')
-sha256sums_x86_64=('fd3232d4926306123b685c9d1bd56b0c7f19a181b2ef64b18cd7fe909b733e28')
-sha256sums_aarch64=('fd3232d4926306123b685c9d1bd56b0c7f19a181b2ef64b18cd7fe909b733e28')
+sha256sums_x86_64=('1314515b830663e06b7cc45daeb16513f30c0a4d81b48b9c6b72b4acabdad27e')
+sha256sums_aarch64=('1314515b830663e06b7cc45daeb16513f30c0a4d81b48b9c6b72b4acabdad27e')
 
 build() {
 	cd "${srcdir}/" || exit
