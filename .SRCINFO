@@ -1,6 +1,6 @@
 pkgbase = zapret-gtk
 	pkgdesc = GUI client for Zapret DPI Bypass
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/Taygun86/zapret-gtk
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = zapret-gtk
 	depends = curl
 	depends = git
 	depends = polkit
-	provides = zapret-gtk=0.5.0
+	provides = zapret-gtk=0.5.1
 	conflicts = zapret-gtk-bin
 	conflicts = zapret-gtk-git
-	source = zapret-gtk-0.5.0.deb::https://taygun86.github.io/taygun86-repo/deb/zapret-gtk_0.5.0-1_amd64.deb
-	sha256sums = 366bd5cf17a701767d1a21e1651c414d34ac8037068b6c8a7cead112bb0c81a7
+	source = zapret-gtk-0.5.1.deb::https://taygun86.github.io/taygun86-repo/deb/zapret-gtk_0.5.1-1_amd64.deb
+	sha256sums = 4167037d15f80b072d7fd011ab3212eb53b21d740397e9e73d134b0cccdd3a38
 
 pkgname = zapret-gtk
