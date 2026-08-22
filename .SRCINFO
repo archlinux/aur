@@ -1,6 +1,6 @@
 pkgbase = cerulean
 	pkgdesc = an opinionated code formatter for the Teal programming language
-	pkgver = 1.9.0
+	pkgver = 1.9.1
 	pkgrel = 1
 	url = https://github.com/efredriksson/cerulean
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = cerulean
 	depends = lua54-filesystem
 	depends = lua54-tl
 	depends = teal
-	source = https://github.com/efredriksson/cerulean/archive/refs/tags/v1.9.0/cerulean-1.9.0.tar.gz
-	source = https://luarocks.org/manifests/efredriksson/cerulean-1.9.0-1.rockspec
-	sha256sums = 5e03656b9ed98d937a8e02d564741e5fd93fda8be88b782c6c38976f7bac7f5f
-	sha256sums = 9bc646154bdbc1ee81a7baaaf841d8bd59ba5375a9a4c19c7f604899c25f510d
+	source = https://github.com/efredriksson/cerulean/archive/refs/tags/v1.9.1/cerulean-1.9.1.tar.gz
+	source = https://luarocks.org/manifests/efredriksson/cerulean-1.9.1-1.rockspec
+	sha256sums = f6d026884a5d48aaeecf6333e122bd1b060d92ba83ad9e87a4cb17a3a5c0ef37
+	sha256sums = 550638b29e5cd171bba5eee2b25bc499309dd2a2ba3320f298ccd1a39d02ac10
 
 pkgname = cerulean
