@@ -1,4 +1,4 @@
-# Maintainer: Josephine Pfeiffer <hi@josie.lol>
+# Maintainer: Josephine Pfeiffer <josie@archlinux.org>
 # Contributor: mehalter <micah at mehalter.com>
 # Contributor: OpenPrivacy <maildrop AT comedia DOT com>
 # Contributor: Cyrinux <pkgbuilds AT levis DOT name>
