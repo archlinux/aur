@@ -29,12 +29,12 @@ echo "==> Updating to version $LATEST_VERSION..."
 
 TARBALL_URL="${URL}/releases/download/v${LATEST_VERSION}/iqtree-${LATEST_VERSION}-Linux-intel.tar.gz"
 echo "Downloading $TARBALL_URL..."
-curl -sL "$TARBALL_URL" -o /tmp/iqtree-${LATEST_VERSION}.tar.gz
+curl -sL "$TARBALL_URL" -o /tmp/${PKGNAME}-${LATEST_VERSION}.tar.gz
 
-SHA256=$(sha256sum /tmp/iqtree-${LATEST_VERSION}.tar.gz | awk '{print $1}')
+SHA256=$(sha256sum /tmp/${PKGNAME}-${LATEST_VERSION}.tar.gz | awk '{print $1}')
 echo "SHA256: $SHA256"
 
-rm -f /tmp/iqtree-${LATEST_VERSION}.tar.gz
+rm -f /tmp/${PKGNAME}-${LATEST_VERSION}.tar.gz
 
 echo "==> Updating PKGBUILD..."
 sed -i "s/^pkgver=.*/pkgver=$LATEST_VERSION/" PKGBUILD
