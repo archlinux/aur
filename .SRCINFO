@@ -1,6 +1,6 @@
 pkgbase = cosmic-ext-applet-minimon
-	pkgdesc = A System Monitor applet for COSMIC
-	pkgver = 1.1.2
+	pkgdesc = A COSMIC applet for displaying CPU/Memory/Network/Disk/GPU usage in the Panel or Dock.
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/cosmic-utils/minimon-applet
 	arch = x86_64
@@ -12,8 +12,9 @@ pkgbase = cosmic-ext-applet-minimon
 	makedepends = just
 	depends = cosmic-applets
 	depends = cosmic-monitor
+	depends = libxkbcommon
 	conflicts = minimon-applet-for-cosmic
-	source = minimon-applet-1.1.2.tar.gz::https://github.com/cosmic-utils/minimon-applet/archive/refs/tags/v1.1.2.tar.gz
-	sha256sums = 61a2fa6e367b8512c88f04df3652cdc370cc6b7de5921a9dce58b7772c18388f
+	source = minimon-applet-1.2.0.tar.gz::https://github.com/cosmic-utils/minimon-applet/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 4dc34519199390836abca08384fa2e8c7a3d5452e75d7617abea0623e4cf7c21
 
 pkgname = cosmic-ext-applet-minimon

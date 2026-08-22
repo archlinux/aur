@@ -1,15 +1,16 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-ext-applet-minimon
 _app_id=io.github.cosmic_utils.minimon-applet
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="A System Monitor applet for COSMIC"
+pkgdesc="A COSMIC applet for displaying CPU/Memory/Network/Disk/GPU usage in the Panel or Dock."
 arch=('x86_64' 'aarch64')
 url="https://github.com/cosmic-utils/minimon-applet"
 license=('GPL-3.0-or-later')
 depends=(
   'cosmic-applets'
   'cosmic-monitor'
+  'libxkbcommon'
 )
 makedepends=(
   'cargo'
@@ -21,7 +22,7 @@ checkdepends=(
 )
 conflicts=('minimon-applet-for-cosmic')
 source=("minimon-applet-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('61a2fa6e367b8512c88f04df3652cdc370cc6b7de5921a9dce58b7772c18388f')
+sha256sums=('4dc34519199390836abca08384fa2e8c7a3d5452e75d7617abea0623e4cf7c21')
 
 prepare() {
   cd "minimon-applet-$pkgver"
