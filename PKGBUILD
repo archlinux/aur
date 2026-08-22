@@ -2,7 +2,7 @@
 
 _pkgname=php-mago
 pkgname=${_pkgname}-bin
-_pkgver=1.47.2
+_pkgver=1.47.3
 pkgver=${_pkgver//-/}
 pkgrel=1
 pkgdesc="Mago is a toolchain for PHP that aims to provide a set of tools to help developers write better code"
