@@ -1,6 +1,6 @@
 pkgbase = sabydesktop
 	pkgdesc = SabyDesktop- приложения от Сбис, включая сбис-плагин, предоставляет доступ к дополнительным инструментам и сервисам saby, например использованию электронной подписи
-	pkgver = 26.3239.22
+	pkgver = 26.4200.583
 	pkgrel = 1
 	url = https://saby.ru/
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = sabydesktop
 	depends = glibc
 	depends = gcc-libs
 	depends = util-linux-libs
-	source = saby-26.3239.22.deb::https://update.saby.ru/SabyDesktop/26.3239.22/linux/deb_repo/saby.deb
-	source = nmh-transport-26.3200.227.deb::https://update.saby.ru/NmhTransport/26.3200.227/linux/deb_repo/nmh-transport.deb
-	source = sabycenter-26.3200.247.deb::https://update.saby.ru/SabyCenter/26.3200.247/linux/deb_repo/sabycenter.deb
-	sha256sums = 4497a267f6a60fb91069913505070d5a1464ce8ddcd3f82b48ef34e0401ee570
-	sha256sums = 0d31285d89638b1a470f87ca7c9a03ac0d26b42904a7cd5f08915d213df6c07c
-	sha256sums = ce223e26e77a1424e19e3b284088b7816981880073e84f52763de2bb9a9240fd
+	source = saby-26.4200.583.deb::https://update.saby.ru/SabyDesktop/26.4200.583/linux/deb_repo/saby.deb
+	source = nmh-transport-26.4200.157.deb::https://update.saby.ru/NmhTransport/26.4200.157/linux/deb_repo/nmh-transport.deb
+	source = sabycenter-26.4200.190.deb::https://update.saby.ru/SabyCenter/26.4200.190/linux/deb_repo/sabycenter.deb
+	sha256sums = c5144d103af9cd5afeac99ac0dfc376f862bc384452507f45a9a8003b7a8e2df
+	sha256sums = 8c3395b391551d1b29a3b0ac6ca0e3c4718b77f562c4a6c48c326799378dd5c2
+	sha256sums = 0a2f7cf4dae85b67c34570e797073ea63f57de5e9606ca3831fc9ad1118c1691
 
 pkgname = sabydesktop
