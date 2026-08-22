@@ -1,6 +1,6 @@
 # Maintainer: Julian Y. Richard Corbet (julian-corbet on GitHub)
 pkgname=cfetch-agent
-pkgver=0.9.0
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="A second brain for coding agents: privilege-ring memory, hook injection, retrieval, and a code index in one binary"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,9 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  cargo build --release --locked
+  local variant_arch="$CARCH"
+  [[ "$variant_arch" == aarch64 ]] && variant_arch=arm64
+  CFETCH_VARIANT="linux-cfetch-remote-$variant_arch" cargo build --release --locked
 }
 
 check() {
@@ -38,4 +40,6 @@ package() {
   # and provides=('cfetch') is a virtual name, not a file.
   install -Dm755 target/release/cfetch "$pkgdir/usr/bin/cfetch"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+  install -Dm644 THIRD-PARTY-LICENSES.txt \
+    "$pkgdir/usr/share/licenses/$pkgname/THIRD-PARTY-LICENSES.txt"
 }
