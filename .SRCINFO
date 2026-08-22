@@ -1,11 +1,11 @@
 pkgbase = lexicmap-bin
 	pkgdesc = Efficient sequence alignment against millions of prokaryotic and viral genomes
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shenwei356/LexicMap
 	arch = x86_64
 	license = MIT
-	provides = lexicmap
+	provides = lexicmap=0.9.0
 	conflicts = lexicmap
 	options = !strip
 	options = !debug
