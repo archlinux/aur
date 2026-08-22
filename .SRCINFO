@@ -1,6 +1,6 @@
 pkgbase = notedog
 	pkgdesc = A vibrant, cross-platform TUI Notes application in Rust inspired by OneNote and Obsidian
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/Woofson/notedog
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = notedog
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = notedog-0.5.3.tar.gz::https://github.com/Woofson/notedog/archive/refs/tags/v0.5.3.tar.gz
-	sha256sums = a53068288af87c11b0a5acb1b3f4ef861c9558dcb03ae5509974bfc552ff22fe
+	source = notedog-0.5.4.tar.gz::https://github.com/Woofson/notedog/archive/refs/tags/v0.5.4.tar.gz
+	sha256sums = 349d6f8792ff84fb4100c4806eeb3e3586d97a9639ecdce9425d30dc64fccf62
 
 pkgname = notedog
