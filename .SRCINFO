@@ -1,6 +1,6 @@
 pkgbase = dotdog-git
 	pkgdesc = DotDog 🐶 - Modern dotfile compositor with git versioning & DotDog TUI (formerly Dot Matrix)
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/Woofson/dotdog
 	arch = x86_64
