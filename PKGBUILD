@@ -3,7 +3,7 @@
 
 _pkgname="alma"
 pkgname="alma-bin"
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Create Arch Linux based live USB'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('cryptsetup: for root filesystem encryption')
 source=("${_pkgname}-nv-${pkgver}::${url}/releases/download/${pkgver}/${_pkgname}-nv_${pkgver}_linux_x86-64_gcc")
 provides=('alma')
 conflicts=('alma')
-sha256sums=('24e2362c7d677adb6267258c65acd29db48d6bde40ff2f130b330859a716e57d')
+sha256sums=('a9bb6255353924dd2a5b7fd7e03fdff5f26972d4286cab3631190f8e4785cc7d')
 
 package() {
   install -Dm755 ${_pkgname}-nv-${pkgver} "${pkgdir}/usr/bin/${_pkgname}"
