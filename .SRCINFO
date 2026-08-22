@@ -1,5 +1,5 @@
 pkgbase = arxiv-cli-opt
-	pkgdesc = A Rust CLI to download papers from arXiv
+	pkgdesc = A Rust CLI to download papers from arXiv (native microarchitecture build)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/AstraBert/arxiv-cli
