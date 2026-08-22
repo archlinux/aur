@@ -1,0 +1,16 @@
+[Unit]
+Description=Autentico OIDC Identity Provider
+After=network.target
+
+[Service]
+Type=simple
+User=autentico
+Group=autentico
+EnvironmentFile=-/var/lib/autentico/.env
+WorkingDirectory=/var/lib/autentico
+ExecStart=/usr/bin/autentico start
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

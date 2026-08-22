@@ -1,0 +1,53 @@
+post_install() {
+  echo "
+Welcome to the autentico!
+-----------------------------------------------------------------------------
+Default Data Path: /var/lib/autentico/
+Default Config File: /var/lib/autentico/.env
+Default User & Group: autentico:autentico
+
+$ sudo systemctl start filebrowser.service
+-----------------------------------------------------------------------------
+
+More: https://github.com/eugenioenko/autentico
+      https://autentico.top/
+"
+
+tmp_dir=$(mktemp -d)
+trap 'rm -rf "$tmp_dir"' EXIT
+
+pushd "$tmp_dir" > /dev/null
+
+autentico init --url http://localhost:5555 > /dev/null
+
+mkdir -p /var/lib/autentico/
+mv .env /var/lib/autentico/
+
+popd > /dev/null
+}
+
+post_upgrade() {
+  echo "
+-----------------------------------------------------------------------------
+Default Data Path: /var/lib/autentico/
+Default Config File: /var/lib/autentico/.env
+Default User & Group: autentico:autentico
+
+$ sudo systemctl restart filebrowser.service
+-----------------------------------------------------------------------------
+
+More: https://github.com/eugenioenko/autentico
+      https://autentico.top/
+"
+}
+
+post_remove() {
+  echo "You need to remove database and config by yourself.
+-----------------------------------------------------------------------------
+Default Data Path: /var/lib/autentico/
+Default Config File: /var/lib/autentico/.env
+Default User & Group: autentico:autentico
+-----------------------------------------------------------------------------  
+"
+}
+# vim: set ts=2 sw=2 et:

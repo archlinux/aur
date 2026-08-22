@@ -1,0 +1,5 @@
+[autentico-bin]
+source = "github"
+github = "eugenioenko/autentico"
+use_latest_release = true
+prefix = "v"
