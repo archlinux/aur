@@ -1,13 +1,14 @@
 pkgbase = paracon
 	pkgdesc = Paracon is a packet radio terminal for Linux, Mac and Windows.
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mfncooper/paracon
-	arch = x86_64
+	arch = any
 	license = MIT
+	makedepends = python-pip
 	depends = python>=3.9
 	provides = paracon
-	source_x86_64 = paracon-1.3.0::https://github.com/mfncooper/paracon/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums_x86_64 = db1d629e2f2cd352412fdd9fd753f2f9ff9303ad01791cd1d04ba97144cff5fa
+	source = paracon-1.3.0.tar.gz::https://github.com/mfncooper/paracon/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = db1d629e2f2cd352412fdd9fd753f2f9ff9303ad01791cd1d04ba97144cff5fa
 
 pkgname = paracon
