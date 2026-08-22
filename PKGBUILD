@@ -4,7 +4,7 @@
 # Contributor: Pierre Dommerc <pierre@nymtech.net>
 
 pkgname=nym-vpnd
-pkgver=2026.11.3
+pkgver=2026.12.1
 pkgrel=1
 pkgdesc='NymVPN daemon as a systemd service'
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,9 @@ makedepends=('rust' 'cargo' 'go' 'protobuf')
 provides=('nym-vpnd' 'nym-exclude' 'nym-socks5-proxy')
 conflicts=('nym-vpnd')
 options=(!debug)
-source=("$url/archive/refs/tags/nym-vpn-v2026.11.3.tar.gz" 'nym-vpnd.service')
-sha256sums=(e5e61f7a3b44078f2695730995c226ec0d822124871c2493dee8e8f5b7c1ab4a 66d5b043cbef2ae0ba19cc7685c7b42808515b8b520b0dd15a0c313ca039f6d6)
-_srcdir="nym-vpn-client-nym-vpn-v2026.11.3"
+source=("$url/archive/refs/tags/nym-vpn-v2026.12.1.tar.gz" 'nym-vpnd.service' 'nym-vpn.conf')
+sha256sums=(38ef82a300b8529ebccad573cefe1bba09e5fa52fead744daef24f44d8ce0749 66d5b043cbef2ae0ba19cc7685c7b42808515b8b520b0dd15a0c313ca039f6d6 af03cbdb98708e60038d784503d99f382595f3a1e020fea41d5c2cc5800de319)
+_srcdir="nym-vpn-client-nym-vpn-v2026.12.1"
 
 prepare() {
   pushd "$_srcdir"
@@ -59,4 +59,5 @@ package() {
   popd
 
   install -Dm644 nym-vpnd.service "$pkgdir/usr/lib/systemd/system/nym-vpnd.service"
+  install -Dm644 nym-vpn.conf "$pkgdir/usr/lib/sysusers.d/nym-vpn.conf"
 }
