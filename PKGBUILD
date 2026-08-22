@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=morphe-desktop
-pkgver=1.13.1
+pkgver=1.13.2
 pkgrel=1
 pkgdesc="Tool for patching Android apps using Morphe Desktop (CLI & GUI)"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('morphe-cli')
 source=("${pkgname}-${pkgver}.jar::https://github.com/MorpheApp/morphe-desktop/releases/download/v${pkgver}/morphe-desktop-${pkgver}-all.jar"
         "morphe-logo-${pkgver}.png::https://raw.githubusercontent.com/MorpheApp/morphe-desktop/v${pkgver}/src/main/resources/morphe_logo.png"
         "NOTICE-${pkgver}::https://raw.githubusercontent.com/MorpheApp/morphe-desktop/v${pkgver}/NOTICE")
-sha256sums=('a212531f68d3ada4b504bf9dac3e02460589f3bf8868ee66e1b4780152d3466b'
+sha256sums=('abc2f829a1c1fa6126c1dcae5cd68af631265ddcc2013e778df9bef08fcd8fe0'
             'cbfcb7b7a8274e8da1b9fbb4ac9655f4322a720ca9efbe02f42a9ea53ffdb30d'
             '6c84c9f8eb03caf4fcc02950343b95d3bcab9ce585be620f8fbed4112667decf')
 noextract=("${pkgname}-${pkgver}.jar")
