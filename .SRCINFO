@@ -1,6 +1,6 @@
 pkgbase = velogin
 	pkgdesc = Graphical TTY login manager for Veil/Void systems
-	pkgver = 2.1
+	pkgver = 2.2
 	pkgrel = 1
 	url = https://github.com/viewerofall/veilTDC
 	install = velogin-bin.install
@@ -18,7 +18,7 @@ pkgbase = velogin
 	provides = velogin
 	conflicts = velogin
 	backup = etc/pam.d/velogin
-	source = velogin.tar.gz::https://github.com/viewerofall/veilTDC/releases/download/v2.1/velogin.tar.gz
-	sha256sums = 7aefb5ce4b156c4a10c7bb7221ecc1ea3e65777075b07cfd019f8ae704e5234a
+	source = velogin.tar.gz::https://github.com/viewerofall/veilTDC/releases/download/v2.2/velogin.tar.gz
+	sha256sums = b4feea1344c0273996182b6748ebc0c0615afd55b68f77900551874789088ac4
 
 pkgname = velogin
