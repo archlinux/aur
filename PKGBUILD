@@ -3,8 +3,8 @@
 # 所有额外功能需运行 add-extras 脚本选择性安装
 
 pkgname=code-review-graph-bin
-pkgver=2.3.7
-pkgrel=4
+pkgver=2.3.8
+pkgrel=1
 pkgdesc="Local-first code intelligence graph for MCP and CLI — builds a persistent map of your codebase so AI coding tools read only what matters"
 arch=('any')
 url="https://code-review-graph.com"
@@ -15,8 +15,8 @@ depends=(
 makedepends=('python-uv')
 provides=('code-review-graph')
 conflicts=('code-review-graph')
-source=("code_review_graph-${pkgver}-py3-none-any.whl::https://files.pythonhosted.org/packages/f3/8f/2df3fcca285b489d195706b09cefda3e57e7158185cb83905200d7b27199/code_review_graph-${pkgver}-py3-none-any.whl")
-sha256sums=('12196dce3e673bdec7fba97ae5c4dff7589adee73a721374f62efae76e0fdd88')
+source=("code_review_graph-2.3.8-py3-none-any.whl::https://files.pythonhosted.org/packages/b9/f7/7b329026ab076149bbef7c98a6d62f2f23b50e76f4a7d9726d7ef46a3b86/code_review_graph-2.3.8-py3-none-any.whl")
+sha256sums=('013ae3c119cc7de337f9e88fe36daef82e2d4def942a014edcf97f126e208547')
 
 package() {
   cd "$srcdir"
