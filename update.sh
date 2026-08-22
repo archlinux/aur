@@ -1,34 +1,20 @@
 #!/bin/bash
-# foldseek-bin: two sources (binary tarball + license fetched from the tagged source),
-# so checksums are refreshed with `updpkgsums` (pacman-contrib) instead of a
-# single-line sed. Version detection uses releases/latest; makepkg forbids
-# hyphens in pkgver, so '-' becomes '_' and the raw tag lives in _tag.
+# Rewriter: takes the new upstream tag as $1; version detection lives
+# in the root nvchecker.toml. Upstream tags carry a build-hash suffix (e.g.
+# 10-941cd33): the raw tag goes into _tag, '-' becomes '_' in pkgver.
+# The PKGBUILD has two sources (binary tarball + LICENSE), so checksums are
+# refreshed with `updpkgsums` (pacman-contrib) instead of a single-line sed.
+# Maintainer-side tool, never executed during package build or install.
 set -e
+[ $# -eq 1 ] || { echo "usage: $0 <new-tag>" >&2; exit 1; }
+LATEST_TAG=${1#v}
+LATEST_VERSION=${LATEST_TAG//-/_}
 
 REPO="steineggerlab/foldseek"
 PKGNAME="foldseek-bin"
-ASSET="foldseek-linux-avx2.tar.gz"
-
-echo "==> Checking for new version..."
-
-LATEST_TAG=$(curl -s "https://api.github.com/repos/${REPO}/releases/latest" | grep -oP '"tag_name": "\K[^"]+' | head -1)
-LATEST_VERSION=${LATEST_TAG#v}
-LATEST_VERSION=${LATEST_VERSION//-/_}
-
-if [ -z "$LATEST_VERSION" ]; then
-    echo "Error: Could not fetch latest version"
-    exit 1
-fi
-
 CURRENT_VERSION=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
-
 echo "Current version: $CURRENT_VERSION"
 echo "Latest version:  $LATEST_VERSION"
-
-if [ "$CURRENT_VERSION" = "$LATEST_VERSION" ]; then
-    echo "==> Already up to date!"
-    exit 0
-fi
 
 echo "==> Updating to version $LATEST_VERSION..."
 sed -i "s/^_tag=.*/_tag=$LATEST_TAG/" PKGBUILD
