@@ -16,7 +16,7 @@ source_x86_64=(
     "uk.savagecore.ronmodmanager.desktop::https://github.com/SavageCore/RoNModManager/raw/v${pkgver}/packaging/aur/uk.savagecore.ronmodmanager.desktop"
 )
 sha256sums_x86_64=(
-    '62466b4afbcb9fcaabf28fc0f6c090e61058a496a7a7c3558d262d8856e53474'
+    '3aa1b244bff6ef9928f32c0db035d8e90eb8de72217a0b67e409cfff54047262'
     '15b67632b3bcbed97c4b7d7bfaf9545971ad6bf10992dd49bbd73d517bd02734'
     '12acb6431b48ded8b3b29f6e7a5b30b8502883896806474506ba210b5f9743bd'
 )
