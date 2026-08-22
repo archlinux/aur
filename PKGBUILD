@@ -3,7 +3,7 @@
 # Reference copy — the canonical PKGBUILD lives in the AUR repository
 # (https://aur.archlinux.org/packages/nightlightd); keep the two in step.
 pkgname=nightlightd
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Zero-config screen colour temperature daemon for X11, with tray, panel and TUI clients"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'libgl' 'libx11' 'libxcursor' 'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'libxrandr')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b12628f48917b538f6605c22876693368259342d5781ceaedc0a768a0038a650')
+sha256sums=('8fed22a2182b7d488dc06f3f0d54a072d0b27349957785d84c4a475a4ff4ac65')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -43,5 +43,9 @@ package() {
   install -Dm755 target/release/nightlight-tui -t "$pkgdir/usr/bin/"
   install -Dm644 dist/nightlightd.service "$pkgdir/usr/lib/systemd/user/nightlightd.service"
   install -Dm644 dist/nightlight-tray.desktop "$pkgdir/etc/xdg/autostart/nightlight-tray.desktop"
+  # The panel's applications-menu entry (#50). The tray's entry above is
+  # autostart and never appears in a menu, so without this the settings
+  # window can only be reached from the tray or by typing its name.
+  install -Dm644 dist/nightlight-panel.desktop "$pkgdir/usr/share/applications/nightlight-panel.desktop"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
