@@ -5,13 +5,6 @@ pkgbase = intel-sgx-psw-bin
 	url = https://github.com/intel/confidential-computing.sgx.sdk
 	arch = x86_64
 	license = BSD-3-Clause AND LicenseRef-Intel-SGX-Third-Party
-	depends = glibc
-	depends = libstdc++
-	depends = bash
-	optdepends = protobuf-21: required for the AESM service
-	optdepends = nodejs: for running the SGX DCAP PCCS Server
-	optdepends = curl: required for SGX Remote Attestation Service (RA)
-	optdepends = boost183: required by the TDX Quote Generation Service (QGS)
 	provides = intel-sgx-psw=2.30.1
 	conflicts = intel-sgx-psw
 	options = !strip
@@ -26,3 +19,10 @@ pkgbase = intel-sgx-psw-bin
 	b2sums = f0a1415f8e88ffe2fe189c56a701a9756f74947375f142aa3965679129d3182f1b380beea02d70e07cbe7c9443461b8cbb674193ae07f71d543d13a10ecaf7ff
 
 pkgname = intel-sgx-psw-bin
+	depends = glibc
+	depends = libstdc++
+	depends = bash
+	optdepends = protobuf-21: required for the AESM service
+	optdepends = nodejs: for running the SGX DCAP PCCS Server
+	optdepends = curl: required for SGX Remote Attestation Service (RA)
+	optdepends = boost183: required by the TDX Quote Generation Service (QGS)

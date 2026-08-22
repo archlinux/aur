@@ -8,13 +8,6 @@ pkgrel=1
 url='https://github.com/intel/confidential-computing.sgx.sdk'
 arch=(x86_64)
 license=('BSD-3-Clause AND LicenseRef-Intel-SGX-Third-Party') # https://github.com/intel/confidential-computing.sgx.sdk/blob/main/License.txt
-depends=('glibc' 'libstdc++' 'bash')
-optdepends=(
-  'protobuf-21: required for the AESM service'
-  'nodejs: for running the SGX DCAP PCCS Server'
-  'curl: required for SGX Remote Attestation Service (RA)'
-  'boost183: required by the TDX Quote Generation Service (QGS)'
-)
 provides=("intel-sgx-psw=${pkgver}")
 conflicts=('intel-sgx-psw')
 options=(!strip !debug)
@@ -59,6 +52,14 @@ _fix_symlink() {
 }
 
 package() {
+  depends=('glibc' 'libstdc++' 'bash')
+  optdepends=(
+    'protobuf-21: required for the AESM service'
+    'nodejs: for running the SGX DCAP PCCS Server'
+    'curl: required for SGX Remote Attestation Service (RA)'
+    'boost183: required by the TDX Quote Generation Service (QGS)'
+  )
+
   find sgx_debian_local_repo -name '*.deb' -print \
     -exec sh -euc 'ar -p "$1" -O data.tar.xz | tar -x --xz -C "$2"' -- {} "${pkgdir}" \;
 
