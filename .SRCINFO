@@ -1,0 +1,14 @@
+pkgbase = goodaccess
+	pkgdesc = GoodAccess client for Linux (converted from .deb)
+	pkgver = 4.7.2
+	pkgrel = 1
+	url = https://goodaccess.com
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = libstdc++5
+	noextract = goodaccess_4.7.2-1_amd64.deb
+	source = goodaccess_4.7.2-1_amd64.deb::https://link.goodaccess.com/download-linux-deb
+	sha256sums = SKIP
+
+pkgname = goodaccess
