@@ -1,8 +1,8 @@
 # Maintainer: Jason Go <jasongo@jasongo.net>
 
 pkgname=specify-cli
-pkgver=0.16.2
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Bootstrap and manage Spec Kit projects'
 arch=('x86_64' 'aarch64')
 url='https://github.com/github/spec-kit'
@@ -49,7 +49,7 @@ optdepends=(
 conflicts=('specify-cli-bin')
 options=(!debug)
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('aa8f7066d504214cf76e989c67e024def4e9090d867f0a262994d99db3e05525cbfb534a1fd81d284eb4213710d39577a1b35be11e37acd5f3f82e25423a48e0')
+b2sums=('831efdb9f0b6138d58a3f79fec5090a91e476bacac5c62365e89cdc7f7c0a21bdf1a4e53c2f81184aa64d46064fdfb2b7cc83ab9f71e07a82e4fbe36af3f86e5')
 
 build() {
   cd "spec-kit-$pkgver"
