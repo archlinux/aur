@@ -2,7 +2,7 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=9.0
+pkgver=9.0.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
@@ -115,7 +115,7 @@ conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         'LICENSE')
-sha256sums=('7f607a00dd0d28a729d5a4811205812eef01cf6ef6155025febb6f36a9062d52'
+sha256sums=('cf38e0e28c7e5605942c4a77755349b0145804a397af37eb1fb4c77cb237f635'
             'SKIP'
             'cd1aa93e78800247b4516a01ef391106acb362957bd1e56f85d64906343cddac'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
