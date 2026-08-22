@@ -15,14 +15,14 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
 sha256sums=('0bbc70cf06f42f323528d65fd6bde1262a0c3bde069052caaa0eaff736d59f64')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${_projname}-${pkgver}"
 	export CGO_ENABLED=1
 	go build -trimpath -buildmode=pie -ldflags="-s -w" \
 		-o "${_projname}" "./cmd/${_projname}"
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${_projname}-${pkgver}"
 	install -Dm755 "${_projname}" "${pkgdir}/usr/bin/${_projname}"
 	install -Dm644 packaging/1password-secret-service.service \
 		"${pkgdir}/usr/lib/systemd/user/1password-secret-service.service"
