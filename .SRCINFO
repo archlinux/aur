@@ -1,6 +1,6 @@
 pkgbase = sable-nightly-bin
 	pkgdesc = An almost stable Matrix client (nightly builds)
-	pkgver = 1.21.1.nightly.260822182114.2aaeb82d891e
+	pkgver = 1.21.1.nightly.260822231236.8153b0165278
 	pkgrel = 1
 	url = https://github.com/SableClient/Sable
 	install = sable-nightly-bin.install
@@ -28,7 +28,7 @@ pkgbase = sable-nightly-bin
 	conflicts = sable-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = sable-nightly-bin-1.21.1.nightly.260822182114.2aaeb82d891e.deb::https://github.com/SableClient/Sable/releases/download/nightly/Sable-1.21.1-nightly.260822182114.2aaeb82d891e-linux-x86_64.deb
-	sha256sums_x86_64 = 4572d3321bbd1d49ef77b47da3816c4148a21c1fd95be48836887bbd81990ce9
+	source_x86_64 = sable-nightly-bin-1.21.1.nightly.260822231236.8153b0165278.deb::https://github.com/SableClient/Sable/releases/download/nightly/Sable-1.21.1-nightly.260822231236.8153b0165278-linux-x86_64.deb
+	sha256sums_x86_64 = d38977ae168bbc59962e6291ec58de05f5428e3501a23473c54c7d84278ddd57
 
 pkgname = sable-nightly-bin
