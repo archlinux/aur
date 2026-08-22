@@ -1,6 +1,6 @@
 pkgname=slskr
-pkgver=0.2.27
-pkgrel=1
+pkgver=0.2.32
+pkgrel=3
 pkgdesc='Rust Soulseek daemon with bundled Web UI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/snapetech/slskr'
@@ -13,16 +13,14 @@ source=(
   'slskr.service'
   'slskr.sysusers'
   'slskr.tmpfiles'
-  'slskr.install'
 )
-sha256sums=('SKIP' '3553ccff12888654c51848ae84c2ffec6fd35171a41ecfc4e7985553a59a90c9' '384dc783fd133eadcee6d9575eb41209fd231bd0728b815a5cf4af2ff6c43629' 'efbe26e7b0765a17276981f4694d30d3174cba6799588e7ae6590acdd1fe73d9' 'befeeb12e6ca2ca61d2b20a94c834e71e7f9c79dc38b236fb9bf5f0494f694bf')
-install=slskr.install
+sha256sums=('SKIP' '3553ccff12888654c51848ae84c2ffec6fd35171a41ecfc4e7985553a59a90c9' '384dc783fd133eadcee6d9575eb41209fd231bd0728b815a5cf4af2ff6c43629' 'efbe26e7b0765a17276981f4694d30d3174cba6799588e7ae6590acdd1fe73d9')
 
 build() {
   cd "${srcdir}/slskR-release-v${pkgver}"
   npm --prefix web ci
   npm --prefix web run build
-  cargo build --release -p slskr --locked
+  scripts/with-build-guard.sh cargo build --release -p slskr --locked
 }
 
 package() {
