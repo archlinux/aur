@@ -1,6 +1,6 @@
 # Maintainer: Dominicentek <dominicentekgaming@gmail.com>
 pkgname=pluto-sm64-git
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Pluto is an all-in-one machinima studio, forked from sm64coopdx 0.2 by the Coop Deluxe team."
 url='https://github.com/Llennpie/Pluto'
