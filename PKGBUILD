@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.8.135
+pkgver=0.8.137
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
@@ -39,12 +39,13 @@ makedepends=(
 )
 optdepends=(
 	'fancy-mouse-boot-rom: first-stage xbox bootrom'
+	'zenity: fallback SDL_FILE_DIALOG_DRIVER'
 )
 install=$pkgname.install
 source=(
 	"$pkgname::git+https://github.com/xemu-project/xemu.git#tag=v$pkgver"
 )
-b2sums=('5dfa23c562ec4d6481741781aaf6261d98ca96aafe5babebbcf148a98e52aa188fc3ef1feaecb14cbc990315d6de4811dbb63423d0b933c46800eab50dee6dcd')
+b2sums=('724fc7915440b897843825e25033fffc3af070466aac6aa881c17108da63996b7bc790d53a2f2cef7a3cf95557e0846d19d00ca1be55b263077845a08fe3c158')
 
 prepare() {
 	cd $pkgname
