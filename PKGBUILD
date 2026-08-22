@@ -1,9 +1,9 @@
 # Maintainer: Ronald Lokers <ronald@lokers.email>
 #
-# Template — 2026.7.3 and 48d3b3ba5fd46b9784570442cad834c65af681b69094c1f97bd09255966c7292 are filled in by .github/workflows/aur.yml
+# Template — 2026.8.2 and 218e42e2f72e448e42f6028782b90eaa795c7d76bcc4b3f141ee499c2307adf9 are filled in by .github/workflows/aur.yml
 # on each release. Installs the prebuilt musl binary from the GitHub Release.
 pkgname=sugarrush-bin
-pkgver=2026.7.3
+pkgver=2026.8.2
 pkgrel=1
 pkgdesc="A terminal UI for viewing Nightscout CGM (blood glucose) data"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('sugarrush')
 conflicts=('sugarrush')
 options=('!strip')
 source=("sugarrush-${pkgver}.tar.xz::https://github.com/ronaldlokers/sugarrush/releases/download/v${pkgver}/sugarrush-x86_64-unknown-linux-musl.tar.xz")
-sha256sums=('48d3b3ba5fd46b9784570442cad834c65af681b69094c1f97bd09255966c7292')
+sha256sums=('218e42e2f72e448e42f6028782b90eaa795c7d76bcc4b3f141ee499c2307adf9')
 
 # cargo-dist archives wrap their files in a "<name>-<target>" directory.
 _dir="sugarrush-x86_64-unknown-linux-musl"
