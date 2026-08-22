@@ -12,7 +12,7 @@ _pkgtype="-vfio-lts"
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.18.44
+pkgver=6.18.45
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -66,7 +66,7 @@ source=(
   1002-6.18.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
 )
 sha256sums=(
-  '0f72d938f06828e82c90405174fe572287db7bfe089e2fc46572a99a7f240d43' # cksum
+  '30fa4a56579ca614ac125a12614f7f6466f87ab1278aef7b951dd74156deab33' # cksum
   'SKIP'
   'SKIP'
   '0bb3b4cda53db35c10e0a34defb5f52f3c91895d7b4a9f93b3f40f5401a71e02'
