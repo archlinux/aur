@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=protonmail-bridge-free
 pkgname=(protonmail-bridge-free protonmail-bridge-free-core)
-pkgver=3.25.0
+pkgver=3.26.0
 pkgrel=1
 pkgdesc="Integrate ProtonMail account with any program that supports IMAP and SMTP"
 arch=(x86_64)
@@ -13,22 +13,22 @@ source=("$pkgbase::git+$url#tag=v$pkgver"
 	"remove-vcpkg-dependency.patch"
 	"fix-wayland-icon.patch"
 	# Patches from https://github.com/mnixry/proton-bridge. They make the app work for free users and only require the patches from this fork to work
-	"1.patch::https://github.com/mnixry/proton-bridge/commit/c9f2dd7383ad2b1c0d9ca97c7a0701124f475156.diff"
-	"2.patch::https://github.com/mnixry/proton-bridge/commit/3e18e82603030749fc1357b7d7e65444d45d9dd9.diff"
-	"3.patch::https://github.com/mnixry/proton-bridge/commit/0276c2eb378647ee035a677c169b41dec9991bab.diff"
-	"4.patch::https://github.com/mnixry/proton-bridge/commit/286c87f7e416e237927ffed7afec823996ce58d5.diff"
-	"5.patch::https://github.com/mnixry/proton-bridge/commit/e1f61f262548c50b2ca9bd88f9c2e54160bf5bc3.diff"
+	"1.patch::https://github.com/mnixry/proton-bridge/commit/c9f2dd7383ad2b1c0d9ca97c7a0701124f475156.diff?full_index=1"
+	"2.patch::https://github.com/mnixry/proton-bridge/commit/3e18e82603030749fc1357b7d7e65444d45d9dd9.diff?full_index=1"
+	"3.patch::https://github.com/mnixry/proton-bridge/commit/0276c2eb378647ee035a677c169b41dec9991bab.diff?full_index=1"
+	"4.patch::https://github.com/mnixry/proton-bridge/commit/286c87f7e416e237927ffed7afec823996ce58d5.diff?full_index=1"
+	"5.patch::https://github.com/mnixry/proton-bridge/commit/e1f61f262548c50b2ca9bd88f9c2e54160bf5bc3.diff?full_index=1"
 )
 noextract=()
-sha256sums=('51e44ce436a97a809b43ac36eaea777e5792759b71a5641f8d8fb0cb9cf7a98d'
+sha256sums=('47c97e35478e6233d1c24d0095a8b1506eece1e1077e6feb9ed8414b3ea7175b'
             '5d273f1245fec8549a3daa3fe76e22bb6c23957cf5bcb51c24f878e19c7a5692'
             '87c01adf8bfc3d3f4ee346d0bc83997a8b8e83104a7d5e53b91de58e3b13b3d7'
             '869bcdb550e2899de1fffec8288fffea8c5ce1949322982d6c22f744814aed9c'
-            '7438f711a6762a34614bc10be8b54c00691bc72743e14767f0b72e9a11051327'
-            '795a17dadbd0ae8b9225c9a279b74097e153c9aea0dd8ec55b1c877864805323'
-            'c5c13843be7b9389882bdedf3e020bcf59d53189fb2eaf3416d2f2c16582e390'
-            '11f4edd80f8910abded7e88a98919e4f00d37332f3bbc1f361cda667826fd1c5'
-            '7c6333253c9b98e35e56b7d60077921b32ee2fd55ce9132f602cf86a805d5415')
+            '29f91cd9e25d2f9fbe44bcd0d814bdb742b99d9bf34074165c3f53736dac3a71'
+            'a9afbb9f2e5ff0467f2621b5e03b01855b94b1571f836373259f35921797c0b2'
+            '207d521bf97b5f2a4be8892ee2c5247e7408b35aa188a27d1c83964bd163594e'
+            '111fcd16cff730fdb81f0830d2f79197e4aec3053033f7da86130badaa5da72c'
+            '96b8b61c9bada9787757aa17f5cde747e89a1558f871363918f0808f5461e63a')
 validpgpkeys=()
 
 prepare() {
