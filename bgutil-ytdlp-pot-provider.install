@@ -1,0 +1,6 @@
+post_upgrade() {
+    # pkgrel 5 preserved the release ZIP's UID/GID 1001 on these directories.
+    chown 0:0 \
+        usr/share/yt-dlp-plugins/bgutil-ytdlp-pot-provider/yt_dlp_plugins \
+        usr/share/yt-dlp-plugins/bgutil-ytdlp-pot-provider/yt_dlp_plugins/extractor
+}

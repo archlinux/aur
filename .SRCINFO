@@ -1,20 +1,23 @@
 pkgbase = bgutil-ytdlp-pot-provider
 	pkgdesc = High-performance YouTube POT token provider for yt-dlp (Rust implementation)
 	pkgver = 0.8.1
-	pkgrel = 5
+	pkgrel = 7
 	url = https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs
+	install = bgutil-ytdlp-pot-provider.install
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = gcc-libs
-	optdepends = yt-dlp: video downloading (for POT plugin integration)
-	provides = bgutil-pot
-	source = https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/releases/download/v0.8.1/bgutil-pot-linux-x86_64
-	source = https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/releases/download/v0.8.1/libbgutil_ytdlp_pot_provider-linux-x86_64.so
-	source = https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/releases/download/v0.8.1/bgutil-ytdlp-pot-provider-rs.zip
-	source = https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/raw/v0.8.1/LICENSE
-	b2sums = 8fce8b825fdefda9cbcca1b1a6222c370f2c101097b8e12ceb1a423b7faee8ec19ef25169942895c73aa9f7ac59411c9e486e688bce7773c876b10ddeda91c8f
-	b2sums = 6763af9be0619adfa0d125718a643b74fb22a16ebcdd6c804cfd3b6294cc4d724b57b59702e050048805d4691b7b0be4bf2d759f45e23010157a0fe3a5e0f312
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	optdepends = yt-dlp>=2025.05.22: video downloading (for POT plugin integration)
+	provides = bgutil-pot=0.8.1
+	source = bgutil-ytdlp-pot-provider-rs-0.8.1.zip::https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/releases/download/v0.8.1/bgutil-ytdlp-pot-provider-rs.zip
+	source = upstream-LICENSE-0.8.1::https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/raw/v0.8.1/LICENSE
 	b2sums = 2ddd5983fbb653aa43383233f3cdff81658678554e8eff1398f61dc25942e75164d344edb7c807166d50bb9477acfdfbbd2149493fb83ff8276e77ec1ef83ea8
-	b2sums = SKIP
+	b2sums = 74915e048cf8b5207abf603136e7d5fcf5b8ad512cce78a2ebe3c88fc3150155893bf9824e6ed6a86414bbe4511a6bd4a42e8ec643c63353dc8eea4a44a021cd
+	source_x86_64 = bgutil-pot-0.8.1-x86_64::https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/releases/download/v0.8.1/bgutil-pot-linux-x86_64
+	source_x86_64 = libbgutil_ytdlp_pot_provider-0.8.1-x86_64.so::https://github.com/jim60105/bgutil-ytdlp-pot-provider-rs/releases/download/v0.8.1/libbgutil_ytdlp_pot_provider-linux-x86_64.so
+	b2sums_x86_64 = 8fce8b825fdefda9cbcca1b1a6222c370f2c101097b8e12ceb1a423b7faee8ec19ef25169942895c73aa9f7ac59411c9e486e688bce7773c876b10ddeda91c8f
+	b2sums_x86_64 = 6763af9be0619adfa0d125718a643b74fb22a16ebcdd6c804cfd3b6294cc4d724b57b59702e050048805d4691b7b0be4bf2d759f45e23010157a0fe3a5e0f312
 
 pkgname = bgutil-ytdlp-pot-provider
