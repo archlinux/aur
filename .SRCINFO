@@ -1,0 +1,21 @@
+pkgbase = atomgit-cli-git
+	pkgdesc = AtomGit CLI (ag) - 基于 AtomGit API 的命令行工具，参考 GitHub CLI (gh) 开发 (git version)
+	pkgver = 0.7.2.r27.gdb67692
+	pkgrel = 1
+	url = https://atomgit.com/hust-open-atom-club/atomgit-cli
+	arch = x86_64
+	arch = aarch64
+	arch = loong64
+	license = custom:MulanPSL-2.0
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = ag
+	conflicts = ag
+	conflicts = ag-bin
+	conflicts = atomgit-cli
+	conflicts = atomgit-cli-bin
+	source = atomgit-cli::git+https://atomgit.com/hust-open-atom-club/atomgit-cli.git
+	sha256sums = SKIP
+
+pkgname = atomgit-cli-git
