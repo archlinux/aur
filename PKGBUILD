@@ -1,10 +1,10 @@
 # Maintainer: Jenrikku (JkKU)
 pkgname=narc-cli
 _reponame=NARC-CLI
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A quick NARC cli app for reading, modifying and creating NARC files"
-arch=('x86_64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Jenrikku/NARC-CLI"
 license=('BSD-3-Clause')
 depends=('dotnet-runtime-10.0')
@@ -12,7 +12,7 @@ makedepends=('dotnet-sdk>=10.0')
 optdepends=()
 options=('!strip')
 source=("$_reponame-$pkgver.tar.gz::https://github.com/Jenrikku/NARC-CLI/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('4a1aab2612a2a9774e4f16977111799847a9ef5f778b9f8f0e679cdf5db8e2cd')
+sha256sums=('0ae95342cd0177c2a364ff020d228b5eff4330434cfb625d5092436629ba918f')
 
 build() {
 	cd "$_reponame-$pkgver"

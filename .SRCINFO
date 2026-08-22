@@ -1,14 +1,16 @@
 pkgbase = narc-cli
 	pkgdesc = A quick NARC cli app for reading, modifying and creating NARC files
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Jenrikku/NARC-CLI
 	arch = x86_64
+	arch = armv7h
+	arch = aarch64
 	license = BSD-3-Clause
 	makedepends = dotnet-sdk>=10.0
 	depends = dotnet-runtime-10.0
 	options = !strip
-	source = NARC-CLI-1.0.3.tar.gz::https://github.com/Jenrikku/NARC-CLI/archive/refs/tags/1.0.3.tar.gz
-	sha256sums = 4a1aab2612a2a9774e4f16977111799847a9ef5f778b9f8f0e679cdf5db8e2cd
+	source = NARC-CLI-1.1.0.tar.gz::https://github.com/Jenrikku/NARC-CLI/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = 0ae95342cd0177c2a364ff020d228b5eff4330434cfb625d5092436629ba918f
 
 pkgname = narc-cli
