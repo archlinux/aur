@@ -1,7 +1,7 @@
 # Maintainer: Josh Ellithorpe <quest@mac.com>
 
 pkgname=mytonwallet-appimage
-pkgver=26.7.3
+pkgver=26.8.3
 pkgrel=1
 pkgdesc="Feature rich TON wallet"
 provides=('mytonwallet')
@@ -15,7 +15,7 @@ _filename=MyWallet-x86_64.AppImage
 source=(
   https://github.com/mytonwalletorg/mytonwallet/releases/download/v${pkgver}/${_filename}
 )
-sha256sums=('ccb6622dd1a86907c703dfb018497fba6b2919f949d8f48ea007f14044f18190')
+sha256sums=('d9abc3fa70d319ae0dc983bced6d400f41ca7842bf5e41a348d5a5beb8f8e6a2')
 
 prepare() {
   cd "${srcdir}"
