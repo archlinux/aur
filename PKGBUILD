@@ -5,7 +5,7 @@
 
 pkgname=swt-bin
 pkgver=4.40
-pkgrel=1
+pkgrel=2
 _date=202606010713
 pkgdesc='An open source widget toolkit for Java'
 arch=('x86_64')
@@ -23,4 +23,5 @@ sha256sums=('61f6378fbe3dfa94fda78392b851f4fd1238f4b9464e634f4b36294673f18707')
 package() {
   install -Dm644 "swt.jar" "$pkgdir/usr/share/java/swt-${pkgver}.jar"
   ln -s "swt-${pkgver}.jar" "$pkgdir/usr/share/java/swt.jar"
+  ln -s "swt-${pkgver}.jar" "$pkgdir/usr/share/java/swt${pkgver%%.*}.jar"
 }
