@@ -1,6 +1,6 @@
 pkgbase = dotkeeper-git
 	pkgdesc = P2P file sync with git history — embedded Syncthing + staggered git auto-backup (bleeding-edge, builds from main)
-	pkgver = 1.2.10
+	pkgver = 1.2.11
 	pkgrel = 1
 	url = https://dotkeeper.corbet.ch
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dotkeeper-git
 	provides = dotkeeper
 	conflicts = dotkeeper
 	conflicts = dotkeeper-bin
-	source = dotkeeper::git+https://github.com/julian-corbet/dotkeeper.git
+	source = dotkeeper::git+https://github.com/corbet-labs/dotkeeper.git
 	sha256sums = SKIP
 
 pkgname = dotkeeper-git
