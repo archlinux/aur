@@ -1,6 +1,6 @@
 pkgbase = liquidlauncher-bin
 	pkgdesc = A custom Minecraft launcher for LiquidBounce, a popular utility mod, that features auto install and auto update.
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://liquidbounce.net
 	install = liquidlauncher-bin.install
@@ -18,7 +18,7 @@ pkgbase = liquidlauncher-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/CCBlueX/LiquidLauncher/releases/download/v0.6.0/liquidlauncher_0.6.0_amd64.deb
-	sha512sums_x86_64 = dd26f60234e7fe82b4d75b1e79f27cf410493d73c12837d4a28bc92630011e8aa147dc10ed75eb55a0030f8654af97ed9a2d030f6ba77f948821f614674386dd
+	source_x86_64 = https://github.com/CCBlueX/LiquidLauncher/releases/download/v0.6.1/liquidlauncher_0.6.1_amd64.deb
+	sha512sums_x86_64 = 784689aca44b303af1806598a72104861c451290a0f10fd9aa64c6e640cf4dcf86af88418db22d5eca8360a897942d568a03608a87c090ce5924dd588a6866ac
 
 pkgname = liquidlauncher-bin
