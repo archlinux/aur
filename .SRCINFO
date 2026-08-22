@@ -1,6 +1,6 @@
 pkgbase = amspirit-lite-sdl
 	pkgdesc = An accurate Amstrad emulator - SDL version (AppImage)
-	pkgver = 1.13.4
+	pkgver = 1.14.3
 	pkgrel = 1
 	url = https://amspirit.fr/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = amspirit-lite-sdl
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !debug
-	source = amspirit-lite-sdl-1.13.4.AppImage::https://github.com/AMSpiriT-Emulator/amspirit-releases/releases/download/Lite-1.13/Amspirit-Lite-SDL-1.13.4-x86_64.AppImage
-	sha256sums = 5663064f678a09a7e39b88d9743fcd6c94f0520a413a22bdb9526ae11cbd7f76
+	source = amspirit-lite-sdl-1.14.3.AppImage::https://github.com/AMSpiriT-Emulator/amspirit-releases/releases/download/Lite-1.14/Amspirit-Lite-SDL-1.14.3-x86_64.AppImage
+	sha256sums = 984e96e1a282587bb780bc30ca9b1aca39ed629753ea6ed19d86f11e082099d8
 
 pkgname = amspirit-lite-sdl
