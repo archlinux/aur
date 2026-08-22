@@ -2,7 +2,7 @@
 
 pkgname=threadstepper-git
 pkgver=r457.8f96bb9
-pkgrel=8
+pkgrel=9
 pkgdesc="A stability and stress tester for AMD Curve Optimizer and PBO on Linux"
 arch=('any')
 url="https://github.com/gazpitchy92/threadstepper"
@@ -26,6 +26,15 @@ prepare() {
   # bash reject the whole script and breaks stress testing. Drop once fixed
   # upstream: https://github.com/gazpitchy92/threadstepper/issues/82
   sed -i '/^elapsed_formatted=\$(printf/s/$/)/' threadstepper
+
+  # Upstream creates ttk widgets with ttkbootstrap's bootstyle= kwarg while
+  # importing ttk from stdlib tkinter, which rejects the option
+  # (_tkinter.TclError: unknown option "-bootstyle") -> GUI cannot start.
+  # Bind ttk to ttkbootstrap in the five modules that use bootstyle.
+  # Drop all three patches once fixed upstream: see also issue 82 / PR 83.
+  sed -i 's/^from tkinter import scrolledtext, ttk$/from tkinter import scrolledtext\nimport ttkbootstrap as ttk/' python/ui.py python/benchmark/testing.py
+  sed -i 's/^from tkinter import filedialog, scrolledtext, ttk$/from tkinter import filedialog, scrolledtext\nimport ttkbootstrap as ttk/' python/logs.py
+  sed -i 's/^from tkinter import ttk$/import ttkbootstrap as ttk/' python/core_picker.py python/benchmark/ranking.py
 }
 
 pkgver() {

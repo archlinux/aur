@@ -1,7 +1,7 @@
 pkgbase = threadstepper-git
 	pkgdesc = A stability and stress tester for AMD Curve Optimizer and PBO on Linux
 	pkgver = r457.8f96bb9
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/gazpitchy92/threadstepper
 	arch = any
 	license = GPL-3.0-only
