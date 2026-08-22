@@ -13,5 +13,7 @@ ExecStart=/usr/bin/minecrauth --config /etc/minecrauth/config.yaml
 Restart=on-failure
 RestartSec=5
 
+ConfigurationDirectory=minecrauth
+
 [Install]
 WantedBy=multi-user.target

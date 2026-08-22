@@ -26,6 +26,6 @@ package() {
     install -Dm755 "${srcdir}/minecrauth" "${pkgdir}/usr/bin/minecrauth"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm600 "${srcdir}/${_name}.service" "${pkgdir}/usr/lib/systemd/system/${_name}.service"
-    useradd -mr minecrauth
+    #useradd -mr minecrauth
     install -o minecrauth -d minecrauth -Dm600 "${srcdir}/${_name}-${pkgver}-config.example.yaml" "${pkgdir}/etc/${_name}/config.yaml"
 }
