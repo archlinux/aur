@@ -1,6 +1,6 @@
 pkgbase = ceph
 	pkgdesc = Distributed, fault-tolerant storage platform delivering object, block, and file system
-	pkgver = 20.2.3
+	pkgver = 20.2.4
 	pkgrel = 1
 	url = https://ceph.com/
 	arch = x86_64
@@ -84,7 +84,7 @@ pkgbase = ceph
 	makedepends = python-yaml
 	options = emptydirs
 	options = !lto
-	source = https://download.ceph.com/tarballs/ceph-20.2.3.tar.gz
+	source = https://download.ceph.com/tarballs/ceph-20.2.4.tar.gz
 	source = ceph.sysusers
 	source = ceph.sudoers
 	source = ceph-17.2.5-logrotate-ignore-dups.patch
@@ -106,7 +106,7 @@ pkgbase = ceph
 	source = ceph-20.2.3-fix-mgr-memory-leak.patch
 	source = ceph-20.2.3-fix-mgr-dashboard-progress.patch
 	source = ceph-20.2.4-backport-test-fixes.patch
-	sha512sums = c81fb4fea3bbd470a89e3784a86950280425b17ef6a4d606549e80b393d0dc178564245db49cfbde16f9f2ee107adcc7f4d380bcf3c7a46ec636bff53662d105
+	sha512sums = 59aa027ef3efa67f541518a6a57845de72b4f25a40d959ccf5a91195fa4b728c9b7e9bb269cd01f85e837d5266f36d5aa3438179f275cecc7520ae30dcc8c9f4
 	sha512sums = 4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049
 	sha512sums = 41dbc1c395cdf9b3edf5c5d91bbc90f416b4338ad964fa3471f26a4312d3ec2a5dcebbc351a1640dc4b047b4f71aa134ac7486747e5f62980092b0176e7567f5
 	sha512sums = b12cabda7184721c494edd22250fd05019694d2bc445722d100cdefab5385bd25c2267a029d2f6053932fa6717e38c4314385afd986969ee2744d745b53c8b58
@@ -131,9 +131,9 @@ pkgbase = ceph
 
 pkgname = ceph-common
 	pkgdesc = Ceph Storage common libraries and dependencies
-	depends = ceph-compressor=20.2.3-1
-	depends = ceph-crypto=20.2.3-1
-	depends = ceph-erasure=20.2.3-1
+	depends = ceph-compressor=20.2.4-1
+	depends = ceph-crypto=20.2.4-1
+	depends = ceph-erasure=20.2.4-1
 	depends = boost-libs
 	depends = curl
 	depends = glibc
@@ -170,7 +170,7 @@ pkgname = ceph-erasure
 
 pkgname = ceph-tools
 	pkgdesc = Ceph Storage miscellaneous tooling and utilities
-	depends = ceph-base=20.2.3-1
+	depends = ceph-base=20.2.4-1
 	depends = bash
 	depends = boost-libs
 	depends = gperftools
@@ -180,7 +180,7 @@ pkgname = ceph-tools
 
 pkgname = ceph-test
 	pkgdesc = Ceph Storage tools for benchmarking and testing live clusters
-	depends = ceph-base=20.2.3-1
+	depends = ceph-base=20.2.4-1
 	depends = libcap
 	depends = libaio
 	depends = boost-libs
@@ -190,8 +190,8 @@ pkgname = ceph-test
 
 pkgname = ceph-volume
 	pkgdesc = Ceph Storage utility for preparing block devices for use as OSDs
-	depends = python-ceph-common=20.2.3-1
-	depends = ceph-osd=20.2.3-1
+	depends = python-ceph-common=20.2.4-1
+	depends = ceph-osd=20.2.4-1
 	depends = python
 	depends = lvm2
 	depends = python-setuptools
@@ -210,22 +210,22 @@ pkgname = ceph-node-proxy
 
 pkgname = ceph-rados
 	pkgdesc = Ceph Storage utilities and tools for librados
-	depends = librados=20.2.3-1
+	depends = librados=20.2.4-1
 	depends = gcc-libs
 
 pkgname = ceph-base
 	pkgdesc = Ceph Storage cluster base utilities and configuration
-	depends = ceph-common=20.2.3-1
-	depends = librados=20.2.3-1
-	depends = python-ceph-common=20.2.3-1
-	depends = python-rados=20.2.3-1
+	depends = ceph-common=20.2.4-1
+	depends = librados=20.2.4-1
+	depends = python-ceph-common=20.2.4-1
+	depends = python-rados=20.2.4-1
 	depends = python
 	backup = etc/logrotate.d/ceph
 	backup = etc/sudoers.d/90-ceph
 
 pkgname = ceph-mon
 	pkgdesc = Ceph Storage cluster monitor daemon, for distributed state storage via PAXOS
-	depends = ceph-base=20.2.3-1
+	depends = ceph-base=20.2.4-1
 	depends = bash
 	depends = boost-libs
 	depends = fmt
@@ -234,10 +234,10 @@ pkgname = ceph-mon
 
 pkgname = ceph-mgr
 	pkgdesc = Ceph Storage cluster manager daemon, the API gateway for cluster management
-	depends = ceph-base=20.2.3-1
-	depends = python-cephfs=20.2.3-1
-	depends = python-rbd=20.2.3-1
-	depends = libcephsqlite=20.2.3-1
+	depends = ceph-base=20.2.4-1
+	depends = python-cephfs=20.2.4-1
+	depends = python-rbd=20.2.4-1
+	depends = libcephsqlite=20.2.4-1
 	depends = sqlite
 	depends = python
 	depends = boost-libs
@@ -270,7 +270,7 @@ pkgname = ceph-mgr
 
 pkgname = ceph-osd
 	pkgdesc = Ceph Storage cluster object storage daemon, for managing block devices
-	depends = ceph-base=20.2.3-1
+	depends = ceph-base=20.2.4-1
 	depends = fuse3
 	depends = bash
 	depends = boost-libs
@@ -288,14 +288,14 @@ pkgname = ceph-osd
 
 pkgname = ceph-mds
 	pkgdesc = Ceph Storage cluster metadata server, the API gateway for CephFS
-	depends = ceph-base=20.2.3-1
+	depends = ceph-base=20.2.4-1
 	depends = lua53
 	depends = fmt
 	depends = gperftools
 
 pkgname = ceph-rbd
 	pkgdesc = Ceph Storage utilities and tooling for librbd
-	depends = librbd=20.2.3-1
+	depends = librbd=20.2.4-1
 	depends = libnl
 	depends = fmt
 	depends = fuse3
@@ -307,7 +307,7 @@ pkgname = ceph-rbd
 
 pkgname = ceph-cephfs
 	pkgdesc = Ceph Storage utilities and tooling for libcephfs
-	depends = libcephfs=20.2.3-1
+	depends = libcephfs=20.2.4-1
 	depends = fuse3
 	depends = fmt
 	depends = gperftools
@@ -319,7 +319,7 @@ pkgname = ceph-cephfs
 
 pkgname = ceph-rgw
 	pkgdesc = Ceph Storage cluster RADOS Object Gateway daemon, for serving RESTful traffic
-	depends = librgw=20.2.3-1
+	depends = librgw=20.2.4-1
 	depends = gawk
 	depends = oath-toolkit
 	depends = boost-libs
@@ -331,7 +331,7 @@ pkgname = ceph-rgw
 
 pkgname = librados
 	pkgdesc = Ceph Storage client library to the RADOS distributed object store
-	depends = ceph-common=20.2.3-1
+	depends = ceph-common=20.2.4-1
 	depends = bash
 	depends = boost-libs
 	depends = fmt
@@ -342,13 +342,13 @@ pkgname = librados
 
 pkgname = libcephfs
 	pkgdesc = Ceph Storage client library for CephFS, a distributed POSIX filesystem
-	depends = librados=20.2.3-1
+	depends = librados=20.2.4-1
 	depends = fmt
 	provides = libcephfs.so
 
 pkgname = librbd
 	pkgdesc = Ceph Storage client library for RADOS block devices
-	depends = librados=20.2.3-1
+	depends = librados=20.2.4-1
 	depends = cryptsetup
 	depends = fmt
 	depends = libnbd
@@ -357,7 +357,7 @@ pkgname = librbd
 
 pkgname = librgw
 	pkgdesc = Ceph Storage client library to RADOS Object Gateway, a S3 and Swift compatible REST API
-	depends = librados=20.2.3-1
+	depends = librados=20.2.4-1
 	depends = librabbitmq-c
 	depends = lua53
 	depends = librdkafka
@@ -368,13 +368,13 @@ pkgname = librgw
 
 pkgname = libcephsqlite
 	pkgdesc = Ceph Storage client library for a RADOS backed sqlite3 VFS extension
-	depends = librados=20.2.3-1
+	depends = librados=20.2.4-1
 	depends = fmt
 	provides = libcephsqlite.so
 
 pkgname = python-ceph-common
 	pkgdesc = Ceph Storage python module for common classes, objects and types
-	depends = ceph-common=20.2.3-1
+	depends = ceph-common=20.2.4-1
 	depends = python
 	depends = python-setuptools
 	depends = python-prettytable
@@ -382,76 +382,76 @@ pkgname = python-ceph-common
 
 pkgname = python-rados
 	pkgdesc = Ceph Storage python library for librados
-	depends = python-ceph-common=20.2.3-1
-	depends = librados=20.2.3-1
+	depends = python-ceph-common=20.2.4-1
+	depends = librados=20.2.4-1
 	depends = libxcrypt
 
 pkgname = python-rbd
 	pkgdesc = Ceph Storage python library for librbd
-	depends = python-ceph-common=20.2.3-1
-	depends = python-rados=20.2.3-1
-	depends = librbd=20.2.3-1
+	depends = python-ceph-common=20.2.4-1
+	depends = python-rados=20.2.4-1
+	depends = librbd=20.2.4-1
 	depends = libxcrypt
 
 pkgname = python-cephfs
 	pkgdesc = Ceph Storage python library for libcephfs
-	depends = python-ceph-common=20.2.3-1
-	depends = python-rados=20.2.3-1
-	depends = libcephfs=20.2.3-1
+	depends = python-ceph-common=20.2.4-1
+	depends = python-rados=20.2.4-1
+	depends = libcephfs=20.2.4-1
 	depends = libxcrypt
 
 pkgname = python-rgw
 	pkgdesc = Ceph Storage python library for librgw
-	depends = python-ceph-common=20.2.3-1
-	depends = python-rados=20.2.3-1
-	depends = librgw=20.2.3-1
+	depends = python-ceph-common=20.2.4-1
+	depends = python-rados=20.2.4-1
+	depends = librgw=20.2.4-1
 	depends = libxcrypt
 
 pkgname = cephfs-top
 	pkgdesc = Ceph Storage utility for a top(1) inspired curses TUI for CephFS metrics
-	depends = python-ceph-common=20.2.3-1
-	depends = python-cephfs=20.2.3-1
+	depends = python-ceph-common=20.2.4-1
+	depends = python-cephfs=20.2.4-1
 	depends = python
 
 pkgname = cephfs-shell
 	pkgdesc = Ceph Storage utility for accessing a CephFS filesystem shell
-	depends = python-ceph-common=20.2.3-1
-	depends = python-cephfs=20.2.3-1
+	depends = python-ceph-common=20.2.4-1
+	depends = python-cephfs=20.2.4-1
 	depends = python
 	depends = python-cmd2
 	depends = python-colorama
 
 pkgname = ceph
 	pkgdesc = Ceph Storage full install [VIRTUAL]
-	depends = ceph-libs=20.2.3-1
-	depends = ceph-cluster=20.2.3-1
-	depends = ceph-rados=20.2.3-1
-	depends = ceph-rbd=20.2.3-1
-	depends = ceph-cephfs=20.2.3-1
-	depends = ceph-tools=20.2.3-1
-	depends = ceph-test=20.2.3-1
-	depends = python-rados=20.2.3-1
-	depends = python-rbd=20.2.3-1
-	depends = python-cephfs=20.2.3-1
-	depends = python-rgw=20.2.3-1
+	depends = ceph-libs=20.2.4-1
+	depends = ceph-cluster=20.2.4-1
+	depends = ceph-rados=20.2.4-1
+	depends = ceph-rbd=20.2.4-1
+	depends = ceph-cephfs=20.2.4-1
+	depends = ceph-tools=20.2.4-1
+	depends = ceph-test=20.2.4-1
+	depends = python-rados=20.2.4-1
+	depends = python-rbd=20.2.4-1
+	depends = python-cephfs=20.2.4-1
+	depends = python-rgw=20.2.4-1
 
 pkgname = ceph-libs
 	pkgdesc = Ceph Storage client libraries [VIRTUAL]
-	depends = librados=20.2.3-1
-	depends = librbd=20.2.3-1
-	depends = libcephfs=20.2.3-1
-	depends = librgw=20.2.3-1
-	depends = libcephsqlite=20.2.3-1
+	depends = librados=20.2.4-1
+	depends = librbd=20.2.4-1
+	depends = libcephfs=20.2.4-1
+	depends = librgw=20.2.4-1
+	depends = libcephsqlite=20.2.4-1
 
 pkgname = ceph-cluster
 	pkgdesc = Ceph Storage cluster daemons and components [VIRTUAL]
-	depends = ceph-mon=20.2.3-1
-	depends = ceph-mgr=20.2.3-1
-	depends = ceph-osd=20.2.3-1
-	depends = ceph-mds=20.2.3-1
-	depends = ceph-rgw=20.2.3-1
-	depends = ceph-volume=20.2.3-1
+	depends = ceph-mon=20.2.4-1
+	depends = ceph-mgr=20.2.4-1
+	depends = ceph-osd=20.2.4-1
+	depends = ceph-mds=20.2.4-1
+	depends = ceph-rgw=20.2.4-1
+	depends = ceph-volume=20.2.4-1
 
 pkgname = ceph-cli
 	pkgdesc = Ceph Storage CLI utility [VIRTUAL]
-	depends = ceph-base=20.2.3-1
+	depends = ceph-base=20.2.4-1
