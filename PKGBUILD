@@ -2,7 +2,7 @@
 pkgname=mercurygram-desktop-bin
 _pkgname=mercurygram
 pkgver=7.0.9.3
-pkgrel=5
+pkgrel=6
 pkgdesc='Mercurygram Desktop messaging app'
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mercurygram/mdesktop"
@@ -62,7 +62,6 @@ sha256sums_aarch64=('86e14f658986c98146b8f4b0905bfabb8c86f33f6808bb0530da1428c37
 package() {
   install -Dm755 "${_pkgname^}" "$pkgdir/usr/bin/${_pkgname^}"
   install -Dm644 "$srcdir/it.belloworld.${_pkgname}.desktop" "$pkgdir/usr/share/applications/it.belloworld.${_pkgname}.desktop"
-  install -Dm644 "$srcdir/it.belloworld.${_pkgname}.service" "$pkgdir/usr/share/dbus-1/services/it.belloworld.${_pkgname}.service"
 
   printf '[D-BUS Service]\nName=it.belloworld.%s\nExec=/usr/bin/%s\n' "${_pkgname}" "${_pkgname^}" |
     install -Dm644 /dev/stdin "$pkgdir/usr/share/dbus-1/services/it.belloworld.${_pkgname}.service"
