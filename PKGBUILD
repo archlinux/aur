@@ -1,8 +1,8 @@
 # Maintainer: Oleksandr Chekhovskyi <oleksandr.chekhovskyi@gmail.com>
 
 pkgname=hax
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Minimalist, terminal-native coding agent written in C"
 arch=("x86_64" "aarch64")
 url="https://github.com/OleksandrChekhovskyi/hax"
@@ -18,7 +18,7 @@ optdepends=(
     "xsel: clipboard support on X11"
 )
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=("5fa25dcb71bb462436b33f0272346745973c0c33fc614ca8683627e97432b6aa")
+sha256sums=("449aea6931b85347d2aa6e333bd4b93af8f1b6fafca012e370a3da8a2ab23f26")
 
 # The 0.3.0 tarball describes whatever repository encloses it, stamping this packaging clone's
 # commit instead of the release. Capping the search makes git fail, which selects meson's
