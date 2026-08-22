@@ -1,15 +1,16 @@
 pkgbase = liquidlauncher-appimage
-	pkgdesc = A custom Minecraft launcher for LiquidBounce, a popular utility mod, that features auto install & update and mod managment.
-	pkgver = 0.4.3
+	pkgdesc = A custom Minecraft launcher for LiquidBounce, a popular utility mod, that features auto install & update and mod managment. (AppImage build - liquidlauncher-bin is recommended)
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/CCBlueX/LiquidLauncher
+	install = liquidlauncher-appimage.install
 	arch = x86_64
 	license = GPL3
 	depends = zlib
 	depends = fuse2
-	noextract = LiquidLauncher_0.4.3_amd64.AppImage
+	noextract = LiquidLauncher_0.6.1_amd64.AppImage
 	options = !strip
-	source_x86_64 = https://github.com/CCBlueX/LiquidLauncher/releases/download/v0.4.3/LiquidLauncher_0.4.3_amd64.AppImage
-	sha512sums_x86_64 = a91bc04d7618bd4b872e8e42ce8e69d25c823095e4da1fdec7de65e60b7e6c6cefdf3cf759bbd9496755a07f70d9337c9f26d6217abef3723b1aaba1405fbb98
+	source_x86_64 = https://github.com/CCBlueX/LiquidLauncher/releases/download/v0.6.1/LiquidLauncher_0.6.1_amd64.AppImage
+	sha512sums_x86_64 = dc01181352b081cd063a51f92cf2ba41c637434bd0326576718056ce4ec6ec3a4ca80f9c1470ec604e06c2e158cd2360fb52bd6758d073f874bdee5c3bcddf18
 
 pkgname = liquidlauncher-appimage

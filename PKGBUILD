@@ -1,21 +1,26 @@
-# Maintainer: 1zuna <marco@ccbluex.net>
+# Maintainer: Izuna <izuna.seikatsu AT ccbluex DOT net>
+# Contributor: 1zuna <marco@ccbluex.net>
+
+# NOTE: liquidlauncher-bin is the recommended package. It uses the official .deb
+# build, needs no fuse2/AppImage runtime and integrates better with the system.
 
 _pkgname=LiquidLauncher
 _binname=liquidlauncher
 
 pkgname="liquidlauncher-appimage"
-pkgver=0.4.3
+pkgver=0.6.1
 pkgrel=1
-pkgdesc="A custom Minecraft launcher for LiquidBounce, a popular utility mod, that features auto install & update and mod managment."
+pkgdesc="A custom Minecraft launcher for LiquidBounce, a popular utility mod, that features auto install & update and mod managment. (AppImage build - liquidlauncher-bin is recommended)"
 arch=('x86_64')
 url="https://github.com/CCBlueX/LiquidLauncher"
 license=('GPL3')
 depends=('zlib' 'fuse2')
 options=(!strip)
+install="${pkgname}.install"
 _appimage="${_pkgname}_${pkgver}_amd64.AppImage"
 noextract=("${_appimage}")
 source_x86_64=("https://github.com/CCBlueX/LiquidLauncher/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage")
-sha512sums_x86_64=('a91bc04d7618bd4b872e8e42ce8e69d25c823095e4da1fdec7de65e60b7e6c6cefdf3cf759bbd9496755a07f70d9337c9f26d6217abef3723b1aaba1405fbb98')
+sha512sums_x86_64=('dc01181352b081cd063a51f92cf2ba41c637434bd0326576718056ce4ec6ec3a4ca80f9c1470ec604e06c2e158cd2360fb52bd6758d073f874bdee5c3bcddf18')
 
 prepare() {
     chmod +x "${_appimage}"
