@@ -16,6 +16,8 @@ pkgbase = limusic-bin
 	depends = libgcc
 	depends = libmpv.so=2-64
 	depends = gdk-pixbuf2
+	provides = limusic
+	conflicts = limusic
 	options = !strip
 	options = !buildflags
 	source = https://github.com/SimoHypers/limusic/releases/download/v0.5.6/limusic_0.5.6_amd64.deb
