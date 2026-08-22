@@ -1,7 +1,7 @@
 # Maintainer: Amiad Bareli <amiad@hatul.info>
 
 pkgname=vibe-bin
-pkgver=3.0.23
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Transcribe audio / video offline using OpenAI Whisper"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "https://github.com/thewh1teagle/vibe/releases/download/v${pkgver}/vibe_${pkgver}_amd64.deb"
     "LICENSE-MIT::https://raw.githubusercontent.com/thewh1teagle/vibe/main/LICENSE"
 )
-sha256sums=('4e074065236dda5cf6d716b588c7391ed5d2abd741c0c05fcb770f5b86938735'
+sha256sums=('5aade8f83438d84eb32a740bbf2ec8a289eca475fa07471ad562220ee7a6469e'
             '30d26b5b70187611accccc4afddb8eb13ee32d85cdc85b4f77103b86a2dfc056')
 
 package() {
