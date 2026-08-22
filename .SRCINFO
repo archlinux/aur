@@ -1,12 +1,12 @@
 pkgbase = calc-cli
 	pkgdesc = A simple, clean CLI calculator
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/FlippantList428/calc-cli
 	arch = any
 	license = MIT
 	depends = python
-	source = calc-cli-1.0.0.tar.gz::https://github.com/FlippantList428/calc-cli/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = SKIP
+	source = calc-cli-1.0.2.tar.gz::https://github.com/FlippantList428/calc-cli/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = f1716b0136da4cdcfbae4718afb7e67a93bc57fed1aadcc3779638752e220571
 
 pkgname = calc-cli
