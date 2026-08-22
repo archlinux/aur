@@ -1,6 +1,6 @@
 # Maintainer: Bolt J Woofson <bolt@boop.no>
 pkgname=notedog
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A vibrant, cross-platform TUI Notes application in Rust inspired by OneNote and Obsidian"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('801455255167ebb635a1a1b97eeb4ebd33cec9689686368b3a394e07d9fbb6a5')
+sha256sums=('711646880edb16efd416617f3596df80e5c1e79e944e74515e8e7f79085e5d12')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -28,4 +28,8 @@ package() {
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "notedog.toml.example" "$pkgdir/usr/share/doc/$pkgname/notedog.toml.example"
+  install -Dm644 "theme.toml.example" "$pkgdir/usr/share/doc/$pkgname/theme.toml.example"
+  for theme in themes/*.toml; do
+    install -Dm644 "$theme" "$pkgdir/usr/share/doc/$pkgname/$theme"
+  done
 }
