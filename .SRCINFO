@@ -1,0 +1,22 @@
+pkgbase = quorumpony-bin
+	pkgdesc = Split a secret into printable cards - any K of N recover it, fully offline (prebuilt)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://quorumpony.com
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = fontconfig
+	provides = quorumpony
+	conflicts = quorumpony
+	options = !strip
+	source = quorumpony.desktop::https://raw.githubusercontent.com/norsehorse-dev/QuorumPonyDesktop/v1.0.0/packaging/aur/quorumpony.desktop
+	source = quorumpony.png::https://raw.githubusercontent.com/norsehorse-dev/QuorumPonyDesktop/v1.0.0/packaging/quorumpony.png
+	sha256sums = 6e89a45b22224297f619b721f004893e0853d5df611421cdd1560eb8a9105356
+	sha256sums = 445b53ee279a874e8e063f824c521991b938240dc3418914102d2f5289f73b8c
+	source_x86_64 = quorumpony-bin-1.0.0-x86_64.tar.gz::https://github.com/norsehorse-dev/QuorumPonyDesktop/releases/download/v1.0.0/QuorumPony-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 550125b772c194bd4a2db36fb86c03f0e2b53d951be7ded651f6e7b18c849a8a
+	source_aarch64 = quorumpony-bin-1.0.0-aarch64.tar.gz::https://github.com/norsehorse-dev/QuorumPonyDesktop/releases/download/v1.0.0/QuorumPony-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 682a32d3aed1208d7258839fd1a2c10daaf3bfef6a57c87cd930598c7a0f0d6e
+
+pkgname = quorumpony-bin
