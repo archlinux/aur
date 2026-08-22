@@ -12,10 +12,10 @@
 # without a checkout of the mpv-omniphony repo.
 
 pkgname=mpv-omniphony
-_tag=v0.5.0              # mpv-omniphony release tag (patches + ad_orender)
+_tag=v0.5.2              # mpv-omniphony release tag (patches + ad_orender)
 _mpvver=0.41.0           # pinned upstream mpv release tag (without the 'v')
-pkgver=0.5.0             # $_tag without the 'v' (hyphens, if any, become '.')
-pkgrel=2                 # -2: declare ffmpeg/libass/libplacebo sonames (see depends)
+pkgver=0.5.2             # $_tag without the 'v' (hyphens, if any, become '.')
+pkgrel=1
 pkgdesc="mpv with the orender spatial audio decoder (object rendering via liborender)"
 arch=('x86_64')
 url="https://github.com/mgth/mpv-omniphony"
@@ -37,7 +37,7 @@ license=('GPL-3.0-or-later')
 # Only mpv's mandatory libraries are listed as sonames; feature-dependent ones
 # (libbluray, libcdio, lcms2...) vary with what is present at build time and
 # would just warn on builds that skip them.
-depends=('orender>=0.5.0' 'ffmpeg' 'libass' 'libplacebo' 'luajit' 'libx11' 'mesa'
+depends=('orender>=0.5.2' 'ffmpeg' 'libass' 'libplacebo' 'luajit' 'libx11' 'mesa'
          'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
          'libavutil.so' 'libswresample.so' 'libswscale.so'
          'libass.so' 'libplacebo.so')
@@ -51,7 +51,7 @@ conflicts=('mpv')
 source=("mpv-$_mpvver.tar.gz::https://github.com/mpv-player/mpv/archive/v$_mpvver.tar.gz"
         "mpv-omniphony-$_tag.tar.gz::https://github.com/mgth/mpv-omniphony/archive/refs/tags/$_tag.tar.gz")
 sha256sums=('ee21092a5ee427353392360929dc64645c54479aefdb5babc5cfbb5fad626209'
-            '2dd50af0ce29c968bcb696b792ea8290030caab31d383b3407b0f4f83c8be71f')
+            '88dcb0df8591f6d31a83028b91c73154e6cfa38dc1b031dffad21dd738be5072')
 
 _repo="mpv-omniphony-${_tag#v}"   # extracted repo tarball (src/, patches/)
 
