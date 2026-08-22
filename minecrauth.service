@@ -7,13 +7,15 @@ After=network-online.target
 User=minecrauth
 Group=minecrauth
 
+ConfigurationDirectory=minecrauth
+StateDirectory=minecrauth
+
 Type=simple
+WorkingDirectory=/var/lib/minecrauth
 ExecStart=/usr/bin/minecrauth --config /etc/minecrauth/config.yaml
 
 Restart=on-failure
 RestartSec=5
-
-ConfigurationDirectory=minecrauth
 
 [Install]
 WantedBy=multi-user.target
