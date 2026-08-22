@@ -1,0 +1,17 @@
+[Unit]
+Description=A self-hosted Yggdrasil authentication server for Minecraft Java Edition with skins and capes.
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=minecrauth
+Group=minecrauth
+Type=simple
+
+ExecStart=/usr/bin/minecrauth --config /etc/minecrauth/config.yaml
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

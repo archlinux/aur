@@ -13,15 +13,19 @@ license=('Apache-2.0')
 #optdepends=('')
 source_x86_64=("${_name}-${pkgver}_x86_64.tar.gz::${url}/releases/download/v${pkgver}/minecrauth_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${_name}-${pkgver}_aarch64.tar.gz::${url}/releases/download/v${pkgver}/minecrauth_${pkgver}_linux_arm64.tar.gz")
-source=("${_name}-${pkgver}-config.example.yaml::https://raw.githubusercontent.com/${_package}/refs/tags/v${pkgver}/config.example.yaml")
+source=("${_name}-${pkgver}-config.example.yaml::https://raw.githubusercontent.com/${_package}/refs/tags/v${pkgver}/config.example.yaml"
+        "${_name}.service")
 b2sums_x86_64=('SKIP')
 b2sums_aarch64=('SKIP')
-b2sums=('SKIP')
+b2sums=('SKIP'
+        'SKIP')
 conflicts=('minecrauth')
 
 package() {
     #cd "${_name}-${pkgver}_${CARCH}"
     install -Dm755 "${srcdir}/minecrauth" "${pkgdir}/usr/bin/minecrauth"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm600 "${srcdir}/${_name}-${pkgver}-config.example.yaml" "${pkgdir}/etc/${_name}/config.yaml"
+    install -Dm600 "${srcdir}/${_name}.service" "${pkgdir}/usr/lib/systemd/system/${_name}.service"
+    useradd -mr minecrauth
+    install -o minecrauth -d minecrauth -Dm600 "${srcdir}/${_name}-${pkgver}-config.example.yaml" "${pkgdir}/etc/${_name}/config.yaml"
 }
