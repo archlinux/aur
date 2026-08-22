@@ -18,11 +18,11 @@
 # `mpv-omniphony`. Install one or the other — both replace stock mpv.
 
 pkgname=mpv-omniphony-fel
-_tag=v0.5.0              # mpv-omniphony release tag (patches-master + ad_orender)
-_mpvcommit=f4d13e1c2c91f3a56e589aef9cb44cbc02e26e47   # mpv master, FEL native
+_tag=v0.5.2              # mpv-omniphony release tag (patches-master + ad_orender)
+_mpvcommit=49418246f30a9c24af31ac184aa24f39755db89a   # mpv master, FEL native (local build verified 2026-08-22)
 _plcommit=a7a18af88ff0a17c04840dcb3246047bb6b46df3    # libplacebo master, PL_API_VER 370
-pkgver=0.5.0             # $_tag without the 'v'
-pkgrel=2                 # -2: declare ffmpeg/libass/libdovi/... sonames (see depends)
+pkgver=0.5.2             # $_tag without the 'v'
+pkgrel=1
 pkgdesc="mpv (master snapshot) with the orender spatial audio decoder and Dolby Vision P7 FEL playback"
 arch=('x86_64')
 url="https://github.com/mgth/mpv-omniphony"
@@ -46,7 +46,7 @@ license=('GPL-3.0-or-later')
 # the sibling PKGBUILD. The pinned libplacebo is version-locked to this package
 # by construction, so it needs no external guard; its own runtime deps
 # (libdovi/shaderc/lcms2) do, and are listed.
-depends=('orender>=0.5.0' 'ffmpeg>=2:9.0' 'libass' 'luajit' 'libx11' 'mesa'
+depends=('orender>=0.5.2' 'ffmpeg>=2:9.0' 'libass' 'luajit' 'libx11' 'mesa'
          'shaderc' 'lcms2' 'libdovi' 'vulkan-icd-loader' 'xxhash'
          'libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
          'libavutil.so' 'libswresample.so' 'libswscale.so'
@@ -65,8 +65,8 @@ source=("mpv-omniphony-$_tag.tar.gz::https://github.com/mgth/mpv-omniphony/archi
         "markupsafe::git+https://github.com/pallets/markupsafe"
         "Vulkan-Headers::git+https://github.com/KhronosGroup/Vulkan-Headers"
         "fast_float::git+https://github.com/fastfloat/fast_float.git")
-sha256sums=('2dd50af0ce29c968bcb696b792ea8290030caab31d383b3407b0f4f83c8be71f'
-            'ce0635d2f31740d6a116c5bca7f6798f09cc6a95f03752e845ce7da02070aff3'
+sha256sums=('88dcb0df8591f6d31a83028b91c73154e6cfa38dc1b031dffad21dd738be5072'
+            '11690b2374219252c44a9ae3f14c9a5cb464def4ef0c95fa3762fa51780a5c22'
             'b7e37bb50668ba0d554a26db5ad21013c9dc3f9e84a2f8dd87a25114c73afdf8'
             'SKIP'
             'SKIP'
