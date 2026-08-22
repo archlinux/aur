@@ -3,7 +3,7 @@
 
 pkgname="osslsigncode"
 pkgver="2.14"
-pkgrel='1'
+pkgrel=2
 pkgdesc="OpenSSL based Authenticode signing for PE/MSI/Java CAB files"
 arch=('i686' 'x86_64')
 url="https://github.com/mtrojnar/osslsigncode"
@@ -19,20 +19,19 @@ sha512sums=('8a7b8118a6f62dee392079964b1aa8d737a881bf8c3e72d5a081980b3084ee683b9
 prepare() {
   cd "$srcdir/osslsigncode-${pkgver}"
   patch -p1 -i "$srcdir/support-for--python-cryptography-43.patch"
-  cd -
-
-  cmake \
-    -B build -S "$srcdir/osslsigncode-${pkgver}" \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr
 }
 
 build() {
+  cd "$srcdir"
+  cmake \
+    -B build -S "$srcdir/osslsigncode-${pkgver}" \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
   cmake --build build
 }
 
 check() {
-  cd build
+  cd "$srcdir/build"
   ctest Release
 }
 
@@ -40,7 +39,7 @@ package() {
   # The HTTP server is started by cmake during the configuration
   # phase, no matter if we want to run tests or not. Therefore we need
   # to ensure the server's been shut down here.
-  cd build
+  cd "$srcdir/build"
   python Testing/client_http.py || true 2> /dev/null
   cd ..
 
