@@ -3,8 +3,8 @@
 pkgname=cherry-studio
 _pkgname="Cherry Studio"
 pkgver=2.0.8
-_electron=electron41
-pkgrel=1
+_electron=electron43
+pkgrel=2
 pkgdesc="A desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('x86_64')
 url="https://cherry-ai.com/"
@@ -49,6 +49,7 @@ prepare() {
         --custom="StartupWMClass=${_pkgname/ /}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     patch -Np1 -i "${srcdir}/${pkgname}-${_arch_patch}.patch"
+    sed -i "s/node-abi: '4.28.0'/node-abi: '>=4.33.0'/" pnpm-workspace.yaml
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -57,7 +58,6 @@ build() {
     export HOME=${srcdir}
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export TMPDIR=${srcdir}
-    export npm_config_nodedir=/usr
     export SHARP_IGNORE_GLOBAL_LIBVIPS=1
     pnpm install
     export NODE_ENV=production
