@@ -1,0 +1,20 @@
+pkgbase = credactor
+	pkgdesc = Find the secret. Fix it. Commit clean.
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = https://github.com/rxb06/credactor
+	arch = any
+	license = Apache-2.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = git
+	depends = python
+	depends = python-charset-normalizer
+	provides = credactor
+	conflicts = python-credactor
+	source = credactor-2.6.0.tar.gz::https://github.com/rxb06/credactor/archive/refs/tags/v2.6.0.tar.gz
+	sha256sums = bac5c5e30e76db758992d9507315e92c2b19730bdccc488898f1b792b5619f43
+
+pkgname = credactor
