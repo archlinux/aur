@@ -1,0 +1,18 @@
+pkgbase = pluto-sm64-bin
+	pkgdesc = Pluto is an all-in-one machinima studio, forked from sm64coopdx 0.2 by the Coop Deluxe team.
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/Llennpie/Pluto
+	arch = x86_64
+	depends = sdl2-compat
+	depends = glew
+	source = https://github.com/Llennpie/Pluto/releases/download/1.2/linux.zip
+	source = pluto-sm64.desktop
+	source = pluto-sm64.png
+	source = pluto-sm64
+	sha256sums = SKIP
+	sha256sums = ddc89d9767fd2843815a8acfb87617106337c0bd267d8ea000a1d49cadde0308
+	sha256sums = 3502e5f6427294a8b85f0a2ff5621005638ffdc794f7516363001bb1021cefa5
+	sha256sums = b649cdc55a144a1884db2aa578cad4fa7e67c12868a8ce80c89a1aa2c96927c1
+
+pkgname = pluto-sm64-bin
