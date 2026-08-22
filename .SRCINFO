@@ -1,6 +1,6 @@
 pkgbase = omniphony-studio
 	pkgdesc = Omniphony Studio — control and 3D visualization UI for the orender spatial audio engine
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/mgth/Omniphony
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = omniphony-studio
 	depends = librsvg
 	optdepends = harletty-bridge: decode compressed/object-audio formats via the orender bridge plugin
 	options = !lto
-	source = omniphony-0.5.1.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/v0.5.1.tar.gz
-	sha256sums = 8bb07c9b014b5979d6b1420c952b92eebd7f9e133cd6b9734fb010a16583deaa
+	source = omniphony-0.5.2.tar.gz::https://github.com/mgth/Omniphony/archive/refs/tags/v0.5.2.tar.gz
+	sha256sums = e0c1915f94fd8ce6367517169cfba27b7f6d976622b808aafab6376f868a474a
 
 pkgname = omniphony-studio
