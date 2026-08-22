@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=g0v0!
+MimeType=application/x-osu-skin-archive;application/x-osu-replay;application/x-osu-beatmap-archive;
+Icon=g0v0
+Comment=Free and open rhythm experience
+Exec=/usr/bin/g0v0
+Categories=Game;

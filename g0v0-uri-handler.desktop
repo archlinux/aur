@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+NoDisplay=true
+Name=g0v0! - uri handler
+MimeType=x-scheme-handler/osu;
+Icon=/usr/share/pixmaps/g0v0.png
+Comment=Free and open rhythm experience
+Exec=/usr/bin/g0v0 %u
+Categories=Game;
