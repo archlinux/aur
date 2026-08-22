@@ -2,4 +2,4 @@
 source = "git"
 git = "https://github.com/RareDevs/legendary.git"
 prefix = "rare-"
-exclude_regex = "(0.20|0.0).*"
+exclude_regex = "(0.2|0.0).*"
