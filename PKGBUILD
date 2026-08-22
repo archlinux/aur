@@ -1,6 +1,6 @@
 # Maintainer: Julian Y. Richard Corbet (julian-corbet on GitHub)
 pkgname=cfetch-agent
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="A second brain for coding agents: privilege-ring memory, hook injection, retrieval, and a code index in one binary"
 arch=('x86_64' 'aarch64')
@@ -21,16 +21,25 @@ prepare() {
   cargo fetch --locked
 }
 
+_cfetch_variant() {
+  case "$CARCH" in
+    x86_64) printf '%s\n' linux-cfetch-remote-x86_64 ;;
+    aarch64) printf '%s\n' linux-cfetch-remote-arm64 ;;
+    *) printf 'unsupported cfetch architecture: %s\n' "$CARCH" >&2; return 1 ;;
+  esac
+}
+
 build() {
   cd "$pkgname"
-  local variant_arch="$CARCH"
-  [[ "$variant_arch" == aarch64 ]] && variant_arch=arm64
-  CFETCH_VARIANT="linux-cfetch-remote-$variant_arch" cargo build --release --locked
+  CFETCH_VARIANT="$(_cfetch_variant)" cargo build --release --locked
 }
 
 check() {
   cd "$pkgname"
-  cargo test --release --locked
+  # `option_env!("CFETCH_VARIANT")` is tracked by Cargo. Running tests without
+  # the same value recompiles target/release/cfetch as an unidentified developer
+  # build, and package() would then install that overwritten binary.
+  CFETCH_VARIANT="$(_cfetch_variant)" cargo test --release --locked
 }
 
 package() {
