@@ -1,0 +1,34 @@
+pkgbase = g0v0-git
+	pkgdesc = free and open rhythm experience! (a community project based on osu!lazer codebase)
+	pkgver = 2026.816.0.r3.gb939ea9
+	pkgrel = 1
+	url = https://github.com/GooGuTeam/g0v0
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = custom:CC-BY-NC 4.0
+	makedepends = git
+	makedepends = dotnet-sdk-8.0
+	depends = zlib
+	depends = libgl
+	depends = dotnet-runtime-8.0
+	depends = osu-mime
+	provides = g0v0
+	conflicts = g0v0
+	conflicts = g0v0-bin
+	options = !strip
+	options = !debug
+	source = g0v0-src::git+https://github.com/GooGuTeam/g0v0.git#branch=v2
+	source = icon.png
+	source = https://raw.githubusercontent.com/GooGuTeam/g0v0-resources/master/LICENCE.md
+	source = g0v0.desktop
+	source = g0v0-uri-handler.desktop
+	source = g0v0
+	sha256sums = SKIP
+	sha256sums = c93f6981c6c528e717d5215eeed775cf4926fe61476d95163b3ecd5770f40dda
+	sha256sums = 96276add86bd921e64255ce7e5487599dbe13e6e48e96a6af1a58cc99c187648
+	sha256sums = b1d3d8ad2b05ff2f461d15ff8fd73ce6ffbb75568dae2bd123b0599292259c53
+	sha256sums = dfbe774cb090a23f4000859dd9bb6c79717e20d091737893b915a55db5b4965a
+	sha256sums = a6f11de4394f5d3f1f1426765f67233f5ca8dcacfc113094538e2fed6fb7535d
+
+pkgname = g0v0-git
