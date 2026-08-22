@@ -2,8 +2,7 @@
 # paml: single source — the GitHub tag archive (the mcmctree compile fix from
 # PR #78 was merged upstream in v4.10.10, so no patch is applied anymore).
 # Version detection uses the GitHub releases/latest API for consistency with
-# paml-bin and to skip the aggregate pre-v4.10 release. updpkgsums re-downloads
-# the source and refreshes the checksum.
+# paml-bin and to skip the aggregate pre-v4.10 release.
 set -e
 
 REPO="abacus-gene/paml"
@@ -30,11 +29,10 @@ if [ "$CURRENT_VERSION" = "$LATEST_VERSION" ]; then
 fi
 
 echo "==> Updating to version $LATEST_VERSION..."
-
 sed -i "s/^pkgver=.*/pkgver=$LATEST_VERSION/" PKGBUILD
 sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
 
-echo "==> Refreshing checksums..."
+echo "==> Updating checksums (requires pacman-contrib)..."
 updpkgsums
 
 echo "==> Generating .SRCINFO..."
