@@ -6,7 +6,6 @@ pkgbase = eidklient-native
 	arch = i686
 	arch = x86_64
 	license = LicenseRef-custom
-	makedepends = fuse2
 	options = !debug
 	options = !strip
 	source = eidklient

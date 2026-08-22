@@ -49,9 +49,6 @@ options=(
     !debug
     !strip
 )
-makedepends=(
-    fuse2
-)
 
 : "${pkgname[@]}"
 : "${pkgver}"
@@ -67,7 +64,6 @@ makedepends=(
 : "${sha256sums_i686[@]}"
 : "${sha256sums_x86_64[@]}"
 : "${options[@]}"
-: "${makedepends[@]}"
 
 prepare() {
     rm -rf "eID_klient_${pkgver}"
