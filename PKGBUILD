@@ -1,17 +1,17 @@
 # Maintainer: Paolo De Donato <dedonato 95 at hotmail dot it>
 
 pkgname=tomloader
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Utility to create and manage systemd unit files"
 arch=('x86_64')
 url="https://codeberg.org/Loara/tomloader"
 license=('EUPL-1.2')
 depends=('libgcc' 'glibc')
-makedepends=('cargo')
-_tag=124dc092b43b935aea6b0532c6b5dc71bb190b36512e1caa6c0b3aa2207c250c
+makedepends=('cargo' 'texinfo')
+_tag=b5354c0a5ec072040123149edc6cb4fe641771c02c7fad88e943cd9d8bbf03e9
 source=("$pkgname-$_tag::git+https://codeberg.org/Loara/tomloader.git#tag=$_tag")
-b2sums=('c46b4c7a2fcdbf5f956040db0dd5dedefc72a0397a6c7afa9b7f06d50a29d3c1f3cb65188068d2669dccc056bc922102789035f3785c38d4db7d91def3916379')
+b2sums=('17896676114c6858bbcb6d1ce7ae627f80e86365a86b5a15a351329854dff6d5120a1112caeb5129906168523c9a28e039d7f483871035c21e1be75e2a8f4e49')
 
 pkgver() {
     cd "$srcdir/$pkgname-$_tag"
@@ -20,7 +20,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$pkgname-$_tag"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --target "${CARCH}-unknown-linux-gnu"
+    cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
 
 build() {
