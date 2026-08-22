@@ -2,7 +2,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 pkgname=('vulkan-caps-viewer-x11' 'vulkan-caps-viewer-wayland')
 pkgbase=vulkan-caps-viewer
-pkgver=4.12
+pkgver=4.13
 pkgrel=1
 epoch=1
 pkgdesc="Vulkan Hardware Capability Viewer"
@@ -17,7 +17,7 @@ depends=(
 makedepends=('git')
 source=("git+https://github.com/SaschaWillems/VulkanCapsViewer.git#tag=$pkgver"
         'git+https://github.com/KhronosGroup/Vulkan-Headers.git')
-sha256sums=('47de0843a8603330c6bb35677e6db1837e1bbfc54d067dd346ea018f85b7982f'
+sha256sums=('e58896662af51087d0464f767d622c98548475f6d6d7911f859bf6846e565357'
             'SKIP')
 
 prepare() {
@@ -38,7 +38,10 @@ build() {
   qmake6 ../VulkanCapsViewer \
     DEFINES+=X11 \
     CONFIG+=release \
-    PREFIX=/usr
+    PREFIX=/usr \
+    QMAKE_CFLAGS="${CFLAGS}" \
+    QMAKE_CXXFLAGS="${CXXFLAGS}" \
+    QMAKE_LFLAGS="${LDFLAGS}"
   make
   popd
 
@@ -47,7 +50,10 @@ build() {
   qmake6 ../VulkanCapsViewer \
     DEFINES+=WAYLAND \
     CONFIG+=release \
-    PREFIX=/usr
+    PREFIX=/usr \
+    QMAKE_CFLAGS="${CFLAGS}" \
+    QMAKE_CXXFLAGS="${CXXFLAGS}" \
+    QMAKE_LFLAGS="${LDFLAGS}"
   make
   popd
 }
