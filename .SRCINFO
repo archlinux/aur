@@ -1,6 +1,6 @@
 pkgbase = kabutam
 	pkgdesc = Terminal-based stock and portfolio tracking tool
-	pkgver = 0.1.4
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://codeberg.org/tonrl/kabutam
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = kabutam
 	depends = python-wcwidth
 	depends = python-jpholiday
 	depends = pass
-	source = kabutam::git+https://codeberg.org/tonrl/kabutam.git#tag=v0.1.4
-	sha256sums = b875745f868110fe47da921b2efae914a5ebfcf8a1b6ad918d909b08e54125df
+	source = kabutam::git+https://codeberg.org/tonrl/kabutam.git#tag=v0.1.6
+	sha256sums = 61b8a5457257a0d6550061bf93966a13521aa6f8bf33b638dc6536007adb18bb
 
 pkgname = kabutam
