@@ -1,7 +1,7 @@
 # Maintainer: liqoxowz <hoswt4s3321399@gmail.com>
 
 pkgname=kabutam
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Terminal-based stock and portfolio tracking tool"
 arch=('any')
@@ -21,12 +21,20 @@ makedepends=(
         'python-setuptools'
 )
 
+checkdepends=(
+    python-pytest
+)
 source=($pkgname::git+https://codeberg.org/tonrl/$pkgname.git#tag=v$pkgver)
-sha256sums=('785af95342f2854c0ced31b957ea05d1a133b55587a6537c326434267481de79')
+sha256sums=('b875745f868110fe47da921b2efae914a5ebfcf8a1b6ad918d909b08e54125df')
 
 build() {
     cd "$pkgname"
     python -m build --wheel --no-isolation
+}
+
+check() {
+        cd "$pkgname"
+        python -m pytest
 }
 
 package() {
