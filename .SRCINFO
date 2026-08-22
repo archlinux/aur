@@ -1,6 +1,6 @@
 pkgbase = reqsh-bin
 	pkgdesc = Interactive, persistent shell for HTTP requests
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/hars-21/reqsh
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = reqsh-bin
 	provides = reqsh
 	conflicts = reqsh
 	options = !strip
-	source_x86_64 = reqsh-x86_64-0.3.2.txz::https://github.com/hars-21/reqsh/releases/download/v0.3.2/reqsh-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 3502915183caf5221a351423f064ce5591730e64178e181be0429889de4030fd
+	source_x86_64 = reqsh-x86_64-0.3.3.txz::https://github.com/hars-21/reqsh/releases/download/v0.3.3/reqsh-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = ae46fb1acbcfee839f8d0a2241a957247672c6250864ca0e5ad6789cee0fe0db
 
 pkgname = reqsh-bin
