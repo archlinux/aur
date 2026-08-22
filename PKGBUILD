@@ -6,7 +6,7 @@ _appname=rf
 pkgname=${_gitname}-bin
 pkgdesc="An issue-centered CLI tool for organizing Git workflows"
 
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=('!strip')
 
 source_x86_64=("${_gitname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_gitname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('b966c7f764c58ef4d3afe0bb36f919a8adca44be9c281f2674f18429e63276e6')
-sha256sums_aarch64=('fd72d6dabb6097ad73487ffe385c1f523fa1ecbabffbb045015075ce6d54c91d')
+sha256sums_x86_64=('6b17570a96e82e18f1c4807eb63de688f7b1c7d1105150616b19676f0438ed08')
+sha256sums_aarch64=('3d748966a5ac913b25a37855ba363df087d6e5a3812331a6b6953ed81ba6df3c')
 
 
 package() {
