@@ -1,5 +1,5 @@
 pkgname=codex-native-git
-pkgver=r1.1073441
+pkgver=r1.9d8f9da
 pkgrel=1
 pkgdesc="Native Linux Codex desktop shell built with Rust, GTK, WebKitGTK, and Codex CLI"
 arch=('x86_64')
@@ -10,7 +10,7 @@ optdepends=('codex: Codex CLI backend bridge for chat, auth, and runtime integra
 makedepends=('cargo' 'git' 'rust' 'unzip')
 provides=('codex-native')
 conflicts=('codex-native')
-_codex_frontend_version=26.818.32112
+_codex_frontend_version=26.818.41509
 _codex_frontend_artifact=ChatGPT-darwin-arm64
 source=(
   "codex-native::git+${url}.git"
@@ -18,7 +18,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '68cf4c19b9f3be01d769a5e15e9a9ae89cc84bd3924b7442a805e2171d22d165'
+  '758d9989e6da2307f668ae3917510bedb1326a3ba12f2aa9eb5d8a8878aec7f0'
 )
 
 pkgver() {
