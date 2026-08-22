@@ -1,8 +1,8 @@
 # Maintainer: vani-tty1 <giovannirafanan609@gmail.com>
 pkgname=memerist-git
 pkgver=2.0.0.r1.g82df562
-pkgrel=1
-pkgdesc="VSC package for memerist"
+pkgrel=2
+pkgdesc="VCS package for memerist"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vani-tty1/memerist"
 license=('GPL-3.0-or-later')
@@ -41,7 +41,6 @@ check() {
   cd "${pkgname%-git}"
   meson test -C build --print-errorlogs
 }
-
 
 package() {
   cd "${pkgname%-git}"

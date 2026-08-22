@@ -1,7 +1,7 @@
 pkgbase = memerist-git
-	pkgdesc = VSC package for memerist
+	pkgdesc = VCS package for memerist
 	pkgver = 2.0.0.r1.g82df562
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vani-tty1/memerist
 	arch = x86_64
 	arch = aarch64
