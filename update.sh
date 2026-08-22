@@ -8,6 +8,7 @@ CHANGELOG="https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/ORFfinder/CHANGELOG.txt"
 PKGNAME="orffinder"
 
 echo "==> Checking for new version..."
+
 LATEST_VERSION=$(curl -s "$CHANGELOG" | grep -oP '(?<=- v )\d+\.\d+\.\d+' | head -1)
 
 if [ -z "$LATEST_VERSION" ]; then
@@ -16,6 +17,7 @@ if [ -z "$LATEST_VERSION" ]; then
 fi
 
 CURRENT_VERSION=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
+
 echo "Current version: $CURRENT_VERSION"
 echo "Latest version:  $LATEST_VERSION"
 
@@ -25,6 +27,7 @@ if [ "$CURRENT_VERSION" = "$LATEST_VERSION" ]; then
 fi
 
 echo "==> Updating to version $LATEST_VERSION..."
+
 SHA256=$(curl -sL "$URL" | sha256sum | awk '{print $1}')
 echo "SHA256: $SHA256"
 
