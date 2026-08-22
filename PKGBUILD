@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <support@lmm.best>
 
 pkgname=lmm-api-deploy-bin
-pkgver=0.1.39
+pkgver=0.1.40
 pkgrel=1
 pkgdesc='LMM API tooling-only production deployment operator (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=('lmm-api-deploy')
 options=('!strip')
 
 _release_tag="go-v${pkgver}"
-_release_revision=c70ca373d4996fbc8210a545234991cd1937ed24
+_release_revision=f31286578e19934589d3f5b170de3b7f4e59403b
 _artifact="lmm-api-go-${pkgver}-linux"
 _release_base="${url}/releases/download/${_release_tag}"
 source_x86_64=(
@@ -29,14 +29,14 @@ source_aarch64=(
 )
 noextract=("${_artifact}-amd64.tar.gz" "${_artifact}-arm64.tar.gz")
 sha256sums_x86_64=(
-  '44bb7e00ce2a7c71e0f1a1c613bbb22e6e8b837541998fb98aae655dcc111835'
-  'bd93ec157b9cdfcba78d6eaae646c51cd0474aa0d9071cad8976b8d979fc5dcf'
-  '8ec15250c570568d514d216acb99fb41031fc996625d21aa94d0436b0d2a5afa'
+  'ab10d0f5576b5f9cfdfb20869d13410479faf445ac5f382e841918ad038270be'
+  'da4a87f959ca8aa7fada36c277a835fd1ea325728e491e164d14b2eba0bca558'
+  '19e8206f06f0eba0771b80aadf5af3e93b3e886f42df0da2abfa01c4e8fb68e1'
 )
 sha256sums_aarch64=(
-  '4be3f1aca31b221d6812d45415df33d8ec3b49407fd74c126c8bf7101508b7c9'
-  'a58f6fb4e5568cfc8e9befe787d128f65cac22fac9474c73b00d9a1ab83ad351'
-  'aae8809c03a393df8e09be013c5cdf6324714249cfdeea834359f6c966f3cae2'
+  '6e571c8ff940e9fa1d8125da529caee6225d8c466e273e0ad58aff9e91a1366a'
+  '8ad5e269791e5c5155b79f315c56c503fd90c9b58b5b84da846664e37ff053c4'
+  '459be83f2f227b00b9b998bd490a87f841831885c242b8cbffcbf1389473d91f'
 )
 
 case "${CARCH}" in
