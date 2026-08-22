@@ -1,6 +1,6 @@
 # Maintainer: Bolt J Woofson <bolt@boop.no>
 pkgname=notedog
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A vibrant, cross-platform TUI Notes application in Rust inspired by OneNote and Obsidian"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a6da52bc1792b8b4cf73e446d57c8cd90206922276c25a37551c00aecc2d5409')
+sha256sums=('801455255167ebb635a1a1b97eeb4ebd33cec9689686368b3a394e07d9fbb6a5')
 
 build() {
   cd "$pkgname-$pkgver"
