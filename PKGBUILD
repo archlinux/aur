@@ -17,7 +17,7 @@
 #      4755 or the app refuses to start.
 
 pkgname=songr-bin
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Multi platform controller for your Roon Core. Linux, macOS, Windows, or browser, your library is at your fingertips."
 arch=('x86_64' 'aarch64')
@@ -32,8 +32,8 @@ conflicts=('songr')
 options=('!strip' '!debug' 'emptydirs')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/songr_${pkgver}_amd64.deb")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/songr_${pkgver}_arm64.deb")
-sha256sums_x86_64=('70aff4999cbc1b6ae2dc9d76af5bc34d8798cc5c376437483aa7d39c01a02a00')
-sha256sums_aarch64=('ff7d1be19424fa55669586d31762cc0a50a0ca59fd3d250395034252461b4de1')
+sha256sums_x86_64=('729ead8ea1ffd1b810e0994270b13e7337c8a8f05546b04ae77e1ede7fc2dfa0')
+sha256sums_aarch64=('7b74664b332f1f640f907528d7632a8cc91b7b15e57a292da0a491445ca29ced')
 
 package() {
   bsdtar -xpf "${srcdir}/data.tar.xz" -C "${pkgdir}"
