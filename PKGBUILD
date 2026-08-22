@@ -5,12 +5,12 @@
 _pkgname=winboat
 pkgname=winboat-electron
 pkgver=0.9.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Run Windows apps on Linux with seamless integration"
 arch=('x86_64')
 url="https://www.winboat.app"
 license=('MIT')
-_electron=electron39
+_electron=electron43
 depends=(
   'alsa-lib'
   'docker'
@@ -42,6 +42,8 @@ prepare(){
 
   export npm_config_cache="$srcdir/npm_cache"
   npm i --allow-git=all
+
+  npm update node-abi
 }
 
 build() {
