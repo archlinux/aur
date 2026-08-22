@@ -1,6 +1,6 @@
 pkgbase = cfetch-agent
 	pkgdesc = Cited, trust-tiered memory for AI coding agents over plain Markdown
-	pkgver = 0.9.5
+	pkgver = 0.9.6
 	pkgrel = 1
 	url = https://github.com/corbet-labs/cfetch
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = cfetch-agent
 	provides = cfetch
 	conflicts = cfetch
 	options = !lto
-	source = cfetch-agent::git+https://github.com/corbet-labs/cfetch.git#tag=v0.9.5
+	source = cfetch-agent::git+https://github.com/corbet-labs/cfetch.git#tag=v0.9.6
 	sha256sums = SKIP
 
 pkgname = cfetch-agent
