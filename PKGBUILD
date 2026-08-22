@@ -2,7 +2,7 @@
 
 pkgname=cnmatrix
 pkgver=0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='C interface to a few matrix backends'
 arch=('x86_64')
 url='https://github.com/cntools/cnmatrix/'
@@ -12,7 +12,7 @@ depends=(
     'lapacke')
 makedepends=(
     'cmake'
-    'eigen3')
+    'eigen')
 source=("https://github.com/cntools/cnmatrix/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('c9c43791b258feb25436288b1e219566903d72a158c81480a2185f21b0648426')
 
@@ -20,12 +20,13 @@ build() {
     # for allowing the use of a different cblas provider
     export CFLAGS+=" $(pkg-config --cflags cblas)"
     
+    export CXXFLAGS+=' -isystem/usr/include/eigen3'
     cmake -B build -S "${pkgname}-${pkgver}" \
         -G 'Unix Makefiles' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DENABLE_TESTS:BOOL='ON' \
-        -Wno-dev
+        -Wno-author
     cmake --build build
 }
 
