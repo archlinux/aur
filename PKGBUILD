@@ -1,4 +1,4 @@
-# Maintainer: Josephine Pfeiffer <jpfeiffe@redhat.com>
+# Maintainer: Josephine Pfeiffer <josie@archlinux.org>
 pkgname=cherryctl
 pkgver=0.10.0
 pkgrel=3
