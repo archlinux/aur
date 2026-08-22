@@ -5,7 +5,7 @@ pkgbase = parcel-chromium
 	url = https://github.com/parcel-pm/parcel
 	arch = any
 	license = ISC
-	depends = parcel
+	depends = parcel>=1.0.6
 	noextract = parcel-chromium-1.0.6.crx
 	source = parcel-chromium-1.0.6.crx::https://github.com/parcel-pm/parcel/releases/download/v1.0.6/parcel-chrome-1.0.6.crx
 	source = parcel-chromium-1.0.6.crx.asc::https://github.com/parcel-pm/parcel/releases/download/v1.0.6/parcel-chrome-1.0.6.crx.asc

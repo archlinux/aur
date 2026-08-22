@@ -11,7 +11,7 @@ pkgdesc="Chromium browser extension for zx2c4's pass (password manager)"
 arch=('any')
 url="https://github.com/parcel-pm/parcel"
 license=('ISC')
-depends=('parcel')
+depends=("parcel>=${pkgver}")
 # Can't build the extension from source, because needs to be signed by Google.
 source=("${pkgname}-${pkgver}.crx::${url}/releases/download/v${pkgver}/parcel-chrome-${pkgver}.crx"
         "${pkgname}-${pkgver}.crx.asc::${url}/releases/download/v${pkgver}/parcel-chrome-${pkgver}.crx.asc")
