@@ -1,7 +1,7 @@
 # Maintainer: Hamid R. K. Pishghadam <hamidrkp@riseup.net>
 
 pkgname=r2fas
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Loads FASM -s symbolic dumps in radare2 (labels, source lines, comments)'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'pkgconf' 'radare2')
 checkdepends=('radare2' 'fasm')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hamidrezakp/r2fas/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('48a3d5e2d414735aea70951f405a6bf9ecb5db97b9d51862f126cd1e6804815a')
+sha256sums=('8159f752aa05c9c11958f4e6acba50d7dbff46d0922b9ba3f944c84a0d362ead')
 
 prepare() {
   cd "$pkgname-$pkgver"
