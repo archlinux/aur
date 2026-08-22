@@ -1,0 +1,25 @@
+pkgbase = dusk-lang-bin
+	pkgdesc = Compiler for the dusk programming language, a systems language with generational memory safety (release binary)
+	pkgver = 1.15.0
+	pkgrel = 1
+	url = https://github.com/choice404/dusk
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	depends = clang>=22
+	depends = clang<23
+	optdepends = git: package fetching through the dawn tool
+	provides = dusk-lang
+	conflicts = dusk-lang
+	conflicts = dusk-lang-git
+	conflicts = dawn
+	noextract = dusk-bin-1.15.0
+	noextract = dawn-bin-1.15.0
+	options = !debug
+	source = dusk-bin-1.15.0::https://github.com/choice404/dusk/releases/download/v1.15.0/dusk
+	source = dawn-bin-1.15.0::https://github.com/choice404/dusk/releases/download/v1.15.0/dawn
+	source = dusk-share-1.15.0.tar.gz::https://github.com/choice404/dusk/releases/download/v1.15.0/dusk-share.tar.gz
+	sha256sums = dba96038226cd35ae5f1993a47b0bea5eca3678ad53902d8f6bc60ad5a4b939c
+	sha256sums = 61f97eee92a9356adf6faf9eee6c277aa3a1e10e54769e5b698de7d0763fbe2b
+	sha256sums = c7956f13d111c71dbc2d20fa08ed29847a9314134b83f729271fbe0f7745cedd
+
+pkgname = dusk-lang-bin
