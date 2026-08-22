@@ -1,11 +1,11 @@
 pkgbase = strdust-bin
 	pkgdesc = Tandem repeat genotyper for long reads
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wdecoster/STRdust
 	arch = x86_64
 	license = MIT
-	provides = strdust
+	provides = strdust=0.20.0
 	conflicts = strdust
 	options = !strip
 	options = !debug
