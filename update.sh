@@ -1,15 +1,14 @@
 #!/bin/bash
-# oarfish-bin has two sources (binary tarball + LICENSE), so checksums are
-# refreshed with `updpkgsums` (pacman-contrib) instead of a single-line sed.
+# oarfish-bin: two sources (binary tarball + LICENSE), so checksums are refreshed
+# with `updpkgsums` (pacman-contrib) instead of a single-line sed.
 set -e
 
 REPO="COMBINE-lab/oarfish"
-URL="https://github.com/${REPO}"
 PKGNAME="oarfish-bin"
 
 echo "==> Checking for new version..."
 
-LATEST_TAG=$(curl -s "https://api.github.com/repos/${REPO}/tags" | grep -oP '"name": "\Kv.*(?=")' | head -1)
+LATEST_TAG=$(curl -s "https://api.github.com/repos/${REPO}/tags" | grep -oP '"name": "\Kv[^"]+(?=")' | head -1)
 LATEST_VERSION=${LATEST_TAG#v}
 
 if [ -z "$LATEST_VERSION" ]; then
