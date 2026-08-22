@@ -1,6 +1,6 @@
 # Maintainer: Bolt J Woofson <https://github.com/Woofson>
 pkgname=dotdog-git
-pkgver=3.0.1.r0.g8fb1ae5
+pkgver=3.0.2.r0.g8fb1ae5
 pkgrel=1
 pkgdesc="DotDog 🐶 - Modern dotfile compositor with git versioning & DotDog TUI (formerly Dot Matrix)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$srcdir/dotdog"
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-        || printf "3.0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        || printf "3.0.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
