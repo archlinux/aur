@@ -1,4 +1,4 @@
-# Maintainer: Josephine Pfeiffer <hi@josie.lol>
+# Maintainer: Josephine Pfeiffer <josie@archlinux.org>
 # Contributor: Marcus Hoffmann <bubu@bubu1.eu>
 # Contributor: Optize sp. z o.o. <hello@optize.pl>
 pkgname=swagger-ui
