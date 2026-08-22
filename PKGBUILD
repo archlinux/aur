@@ -5,7 +5,7 @@ _srcname="Reflex"
 _srcmntr="Sunhaiy"
 
 pkgname="${_pkgname}-appimage"
-pkgver="1.0.21"
+pkgver="1.0.22"
 pkgrel="1"
 pkgdesc="A next-generation, modern, and lightweight SSH client engineered for absolute efficiency"
 url="https://github.com/${_srcmntr}/${_srcname}"
@@ -23,7 +23,7 @@ conflicts=("reflex")
 provides=("reflex")
 
 sha256sums=(
-  "4c3efe3a3db616b20816a2e4bc2f9789cda7d8ebfe1696aaf1dbed0110028e71"
+  "a0ad5761421154256aea1dca570759436ebf3d4c7cc6dbcb250701b97bf44937"
   "a6b3ff91e20406e878b0c844a2296d69b73a04361afe6d6cb7cc115a62ddce39"
   "90a0628bd8b3628609e7965d792478cf9f4fcc74a31ef450d0d47148eeb2da0a"
 )
