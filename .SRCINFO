@@ -1,15 +1,15 @@
 pkgbase = vault-ssh-plus-bin
 	pkgdesc = An enhanced implementation of vault ssh, wrapping the OpenSSH ssh client to eliminate the management overhead of using of short-lived SSH client keys CA-signed by Hashicorp Vault.
-	pkgver = 0.7.3
-	pkgrel = 3
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = https://github.com/isometry/vault-ssh-plus
 	arch = x86_64
 	license = MIT
 	makedepends = unzip
 	depends = vault
 	noextract = ${pkgname/-bin/}_${pkgver}_linux_amd64.zip
-	source = https://github.com/isometry/vault-ssh-plus/releases/download/v0.6.0/vault-ssh-plus_0.6.0_linux_amd64.zip
-	sha512sums = d6d0bf45ec0938b65a4874e29655a2359feb678fef0ef1871ce2ca7287276a34135de9e104c80a56008568ff2e9d72f383fcffd62f435fce471551d2950a19a0
-	b2sums = 84c169810bef91ea7b9aadeca04bac590b062ace233e0dde79ef9425bd2041ca764dfeae49dd1287522395e3214e1e15ca7cf63c157d61565dcd406c82ae6ed9
+	source = https://github.com/isometry/vault-ssh-plus/releases/download/v0.8.0/vault-ssh-plus_0.8.0_linux_amd64.zip
+	sha512sums = 35ee75bef3340586e42984c898b50dc42727a8d6de8805b55551b258426ec460f10837055de118fdb46dedaaab34f7de9a97989aeb87fa506fadf14192f56722
+	b2sums = 9e1acb69910750f2194f7bbd9b939826175b1d9e61a42ea443166a28f29af60ea608c7ef76d8715222ba911672934778c713b087bc0d2d66837b4d4e881afd25
 
 pkgname = vault-ssh-plus-bin
