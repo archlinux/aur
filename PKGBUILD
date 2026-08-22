@@ -1,4 +1,4 @@
-# Maintainer: Josephine Pfeiffer <hi@josie.lol>
+# Maintainer: Josephine Pfeiffer <josie@archlinux.org>
 pkgname=nispor-git
 pkgver=2.0.3.r1.g44b5e52
 pkgrel=1
