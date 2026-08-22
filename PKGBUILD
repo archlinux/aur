@@ -1,4 +1,4 @@
-# Maintainer: Josephine Pfeiffer <hi@josie.lol>
+# Maintainer: Josephine Pfeiffer <josie@archlinux.org>
 pkgbase=nmstate
 pkgname=(
     nmstate
