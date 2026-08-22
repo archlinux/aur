@@ -1,7 +1,7 @@
 pkgbase = parcel
 	pkgdesc = Native host for Parcel browser extension for zx2c4's pass password manager
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/parcel-pm/parcel
 	arch = any
 	license = ISC
