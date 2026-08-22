@@ -1,6 +1,6 @@
 pkgbase = deepseek-reasonix-desktop-bin
 	pkgdesc = Reasonix Desktop - Wails/WebKitGTK desktop client for DeepSeek-Reasonix
-	pkgver = 1.31.2
+	pkgver = 1.31.3
 	pkgrel = 1
 	url = https://github.com/esengine/DeepSeek-Reasonix
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = deepseek-reasonix-desktop-bin
 	provides = reasonix-desktop
 	conflicts = deepseek-reasonix-desktop
 	conflicts = reasonix-desktop
-	noextract = deepseek-reasonix-desktop-bin-1.31.2.deb
+	noextract = deepseek-reasonix-desktop-bin-1.31.3.deb
 	options = !strip
 	options = !debug
-	source = deepseek-reasonix-desktop-bin-1.31.2.deb::https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop-v1.31.2/Reasonix-linux-amd64.deb
-	sha256sums = 7b7bc597830f2a2941eb73828f5e7c562e0b690ea30ebdff38bbbe455d5e5f19
+	source = deepseek-reasonix-desktop-bin-1.31.3.deb::https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop-v1.31.3/Reasonix-linux-amd64.deb
+	sha256sums = 2ac38df6ddecb822789ab293b6d996eecd8793ea87fb7b0003a3e5e11a276432
 
 pkgname = deepseek-reasonix-desktop-bin
