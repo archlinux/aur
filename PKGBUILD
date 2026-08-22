@@ -1,7 +1,7 @@
 # Maintainer: Fgaoxing <fgaoxing0206@163.com>
 pkgname=axolotl-launcher-bin
 pkgver=1.8.10
-pkgrel=2
+pkgrel=1
 pkgdesc="A free, cross-platform Minecraft launcher built on the Modrinth ecosystem"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mystic-Stars/Axolotl"

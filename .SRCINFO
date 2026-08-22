@@ -1,7 +1,7 @@
 pkgbase = axolotl-launcher-bin
 	pkgdesc = A free, cross-platform Minecraft launcher built on the Modrinth ecosystem
 	pkgver = 1.8.10
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/Mystic-Stars/Axolotl
 	arch = x86_64
 	arch = aarch64
