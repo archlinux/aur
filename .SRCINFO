@@ -1,0 +1,12 @@
+pkgbase = exif420
+	pkgdesc = The Simple, lightweight, & fast EXIF Reader Library for C++
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/Jeyers-Development/exif420
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source = https://github.com/Jeyers-Development/exif420/releases/download/v2.0/libexif420.so
+	sha256sums = e0db0b2170d1116bf2db9e82cf2ab59e3ad02a311a04ecc56960ed9fd028b48c
+
+pkgname = exif420
