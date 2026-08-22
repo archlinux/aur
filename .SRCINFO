@@ -1,0 +1,19 @@
+pkgbase = parcel-chromium
+	pkgdesc = Chromium browser extension for zx2c4's pass (password manager)
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/parcel-pm/parcel
+	arch = any
+	license = ISC
+	depends = parcel
+	noextract = parcel-chromium-1.0.6.crx
+	source = parcel-chromium-1.0.6.crx::https://github.com/parcel-pm/parcel/releases/download/v1.0.6/parcel-chrome-1.0.6.crx
+	source = parcel-chromium-1.0.6.crx.asc::https://github.com/parcel-pm/parcel/releases/download/v1.0.6/parcel-chrome-1.0.6.crx.asc
+	validpgpkeys = 82ED663067C6017BAA4BC752EB670BF2B1131683
+	validpgpkeys = B0908ED59A96C9882BED9A942A51761511A30253
+	validpgpkeys = 88FF14D6294AF4036B7F00FF676A3C09E2E47A72
+	validpgpkeys = 56C3E775E72B0C8B1C0C1BD0B5DB77409B11B601
+	sha256sums = 267c6e3a50a8cea9add8caf9006e38b0e3ec847cdf52e4e58d60d772318df8d3
+	sha256sums = SKIP
+
+pkgname = parcel-chromium
