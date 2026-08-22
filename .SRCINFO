@@ -1,6 +1,6 @@
 pkgbase = archuseriso
 	pkgdesc = Bash scripts for building Arch Linux bootable images
-	pkgver = 0.8.27
+	pkgver = 0.8.28
 	pkgrel = 1
 	url = https://github.com/laurent85v/archuseriso
 	arch = any
@@ -27,12 +27,12 @@ pkgbase = archuseriso
 	optdepends = pacman-contrib: for building ZFS packages
 	optdepends = qemu-desktop: virtual machine for aui-run testings
 	conflicts = archuseriso
-	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.8.27.tar.gz
-	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.8.27.tar.gz.sig
+	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.8.28.tar.gz
+	source = http://dl.gnutux.fr/sources/archuseriso/archuseriso-0.8.28.tar.gz.sig
 	validpgpkeys = A5143BB56952B3189F49A175FAC4560863BEEC34
-	sha256sums = 6fa06f427aa912c51ddcf0605209b3956f4e678b438207d8d2e55c13a23056ca
+	sha256sums = ff21d05ac12b5a6ab935b2c6735d6adb7db443a85820366dd3c7665ab6c64cf6
 	sha256sums = SKIP
-	b2sums = ceab8fda04c55b240eddbc175615f0cba0cbacb484ffbfa1f9731222e1f32ecf873b91cf319b99e51d3075f8abf3d589df37103c31dfa2dc7d4b2cdaadd0cbe7
+	b2sums = aa45d2b3491d21af72e1920c9b41ba3dd946c56b9498ad8d1a5447a76f2780bf20d69f8396e86c7860e26b0ce3f7d8a6bd6124acb9e8fc698b7b734ed3eb0a1c
 	b2sums = SKIP
 
 pkgname = archuseriso
