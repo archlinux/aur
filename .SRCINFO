@@ -1,5 +1,5 @@
 pkgbase = g0v0
-	pkgdesc = free and open rhythm experience! (a community project based on osu!lazer codebase)
+	pkgdesc = g0v0! -- free and open rhythm experience! (a community project based on osu!lazer codebase)
 	pkgver = 2026.816.0
 	pkgrel = 1
 	url = https://github.com/GooGuTeam/g0v0
