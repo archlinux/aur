@@ -1,4 +1,4 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: moyigeek <moyi@openatom.club>
 
 pkgname=atomgit-cli
 pkgver=0.7.2
