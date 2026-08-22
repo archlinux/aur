@@ -1,0 +1,10 @@
+# vim
+.*.swp
+.*.swo
+
+pkg/
+src/
+*.tar.gz
+*.asc
+*.pkg.tar.xz
+*.pkg.tar.zst
