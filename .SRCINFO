@@ -1,6 +1,6 @@
 pkgbase = rptui-bin
 	pkgdesc = The ultimate (terminal) client for Radio Paradise
-	pkgver = 1.3.3
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/pdfrg/rptui
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = rptui-bin
 	provides = rptui
 	conflicts = rptui
 	options = !strip
-	source_x86_64 = rptui-x86_64-1.3.3.tgz::https://github.com/pdfrg/rptui/releases/download/v1.3.3/rptui_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = d1e2c25b98000feaee7cebcfc8e066c84822fb685965686fe74e7c0698044121
-	source_aarch64 = rptui-aarch64-1.3.3.tgz::https://github.com/pdfrg/rptui/releases/download/v1.3.3/rptui_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 6f84719c1e61c8b2b7a9cd3bf458e0b9886337424bb03c469dce411a4f818246
+	source_x86_64 = rptui-x86_64-1.3.4.tgz::https://github.com/pdfrg/rptui/releases/download/v1.3.4/rptui_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 48c628ba94d1294e6513bf21a93e373d92b1682157c02cea455159aa0b696f75
+	source_aarch64 = rptui-aarch64-1.3.4.tgz::https://github.com/pdfrg/rptui/releases/download/v1.3.4/rptui_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 267a784823596da6f85a782b80f58700f91b893998b54d11d068a1cd24f6629f
 
 pkgname = rptui-bin
