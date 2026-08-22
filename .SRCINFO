@@ -1,0 +1,14 @@
+pkgbase = waydroid-binds
+	pkgdesc = GUI e scripts para pastas compartilhadas e firewall do Waydroid
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/isaacangello/WaydroidBinds
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = pyside6
+	source = waydroid-binds-1.4.1.tar.gz::https://github.com/isaacangello/WaydroidBinds/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = 58b44075b3ab8c91951c535437130087e5711bb102e2012f9007ca9ca8c5b754
+
+pkgname = waydroid-binds
