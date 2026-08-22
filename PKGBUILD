@@ -1,6 +1,6 @@
 # Maintainer: Byson94 <byson94wastaken@gmail.com>
 pkgname=ewwii
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Eww fork with focus on extensibility, flexibility, and power."
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'gtk4' 'pkgconf' 'gtk4-layer-shell' 'graphene')
 provides=('ewwii')
 conflicts=('ewwii-bin' 'ewwii-git')
 source=("https://github.com/Ewwii-sh/ewwii/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a1c3d21c2824bf2c1eb13232f0932f6c0242dbca2236bdbef8420f9575ca5764')
+sha256sums=('a4fcd63f7174bceee32a01e0f9b39e3651857d5e550035fedc7afb75679b89b2')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
