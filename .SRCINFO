@@ -6,6 +6,8 @@ pkgbase = exif420
 	arch = x86_64
 	license = MIT
 	depends = glibc
+	options = !debug
+	options = !strip
 	source = https://github.com/Jeyers-Development/exif420/releases/download/v2.0/libexif420.so
 	sha256sums = e0db0b2170d1116bf2db9e82cf2ab59e3ad02a311a04ecc56960ed9fd028b48c
 
