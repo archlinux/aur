@@ -1,15 +1,14 @@
 #!/bin/bash
-# modkit-bin has two sources (binary tarball + LICENCE.txt), so checksums are
-# refreshed with `updpkgsums` (pacman-contrib) instead of a single-line sed.
+# modkit-bin: two sources (binary tarball + LICENSE), so checksums are refreshed
+# with `updpkgsums` (pacman-contrib) instead of a single-line sed.
 set -e
 
 REPO="nanoporetech/modkit"
-URL="https://github.com/${REPO}"
 PKGNAME="modkit-bin"
 
 echo "==> Checking for new version..."
 
-LATEST_TAG=$(curl -s "https://api.github.com/repos/${REPO}/tags" | grep -oP '"name": "\Kv.*(?=")' | head -1)
+LATEST_TAG=$(curl -s "https://api.github.com/repos/${REPO}/tags" | grep -oP '"name": "\Kv[^"]+(?=")' | head -1)
 LATEST_VERSION=${LATEST_TAG#v}
 
 if [ -z "$LATEST_VERSION" ]; then
