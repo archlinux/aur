@@ -1,0 +1,4 @@
+[gnome-shell-extension-quick-settings-scroll]
+source = "git"
+git = "https://github.com/Disk-MTH/Quick-Settings-Scroll.git"
+prefix = "v"
