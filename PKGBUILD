@@ -1,7 +1,7 @@
 # Maintainer: Hamid R. K. Pishghadam <hamidrkp@riseup.net>
 
 pkgname=r2fas
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Loads FASM -s symbolic dumps in radare2 (labels, source lines, comments)'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo' 'pkgconf' 'radare2')
 checkdepends=('radare2' 'fasm')
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hamidrezakp/r2fas/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('79f1ab996bc5ac758ef2f9dafb646e22d761252030fd33c6a37eb9338a84168f')
+sha256sums=('48a3d5e2d414735aea70951f405a6bf9ecb5db97b9d51862f126cd1e6804815a')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -24,7 +24,7 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen -p r2fas --release --all-features
 }
 
 check() {
@@ -32,7 +32,8 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   make fixtures
-  cargo test --frozen --all-features -- --test-threads=1
+  cargo test --frozen -p radare2
+  cargo test --frozen -p r2fas --all-features -- --test-threads=1
 }
 
 package() {
