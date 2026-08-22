@@ -2,7 +2,7 @@
 
 _pkgname=gomuks-web
 pkgname=${_pkgname}-bin
-pkgver=0.2607.0
+pkgver=0.2608.0
 pkgrel=1
 pkgdesc="A Matrix client written in Go using mautrix-go. Web Frontend."
 arch=(x86_64 aarch64 armv7h)
@@ -23,10 +23,10 @@ source_x86_64=("gomuks-${pkgver}.bin-x86_64::$_bin_base_source-amd64")
 source_aarch64=("gomuks-${pkgver}.bin-aarch64::$_bin_base_source-arm64")
 source_armv7h=("gomuks-${pkgver}.bin-armv7h::$_bin_base_source-arm")
 
-sha256sums=('d0e0f7844e50f1c00c54583b4fc3cbce9b353d7a7029013882a9aef0e44bf23a')
-sha256sums_x86_64=('0af5630adee18fc6d7b4adf918e76118606cc32a34b5d7fc39fd0a0146727ca6')
-sha256sums_aarch64=('f72d4282d38c4d66c165571bf57d5f5b44f66dcebb633cfb8a6370d0c352bed5')
-sha256sums_armv7h=('281030f8db76f7e5e0b43bd7187d0286df7ff8c8d392c97d0ac50fa55cae1b18')
+sha256sums=('fa9adfbf5da1dc5685a9adea3ed467844a719f477cda448bf747d2f88a733a89')
+sha256sums_x86_64=('a196a13bee9c65a339480e509a51d971275335512747c3d543f6ddfea9ddd936')
+sha256sums_aarch64=('f37f12bfd9f5ead21fc89d0c0f8903a4df58aff6122b2ead61faacfb79185e69')
+sha256sums_armv7h=('c388e8b6c925f8f38518841f51d09f908e4bf864317baad4cdb8e5c5c8564a15')
 
 
 package() {
