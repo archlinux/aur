@@ -1,0 +1,23 @@
+pkgbase = tidemark-git
+	pkgdesc = Track AI provider quota limits: how much of each rate-limit window is burned, when it resets, and whether the current pace reaches it
+	pkgver = 0.1.0.r2.g73b7f7a
+	pkgrel = 1
+	url = https://github.com/zbndev/tidemark
+	install = tidemark.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = sqlite
+	depends = dbus
+	optdepends = gnome-keyring: provides the Secret Service where provider keys are stored (KeePassXC also works)
+	provides = tidemark
+	conflicts = tidemark
+	options = !debug
+	options = !lto
+	source = git+https://github.com/zbndev/tidemark.git
+	sha256sums = SKIP
+
+pkgname = tidemark-git

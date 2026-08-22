@@ -1,0 +1,20 @@
+post_install() {
+    cat <<'EOF'
+Opening Tidemark starts its daemon through D-Bus activation. The desktop session also
+starts Tidemark hidden when a StatusNotifier host is available, keeping its tray ready.
+
+It reports "no-credential" until a provider key is in the Secret Service:
+
+    secret-tool store --label='Tidemark: zai (default)' \
+        xdg:schema io.github.zbndev.Tidemark.ProviderKey provider zai account default
+
+Everything it knows is readable without the GUI:
+
+    busctl --user call io.github.zbndev.Tidemark.Daemon /io/github/zbndev/Tidemark \
+        io.github.zbndev.Tidemark.Daemon1 GetStatus
+EOF
+}
+
+post_upgrade() {
+    /usr/lib/tidemark/restart-user-daemon
+}
