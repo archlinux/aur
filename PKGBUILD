@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <support@lmm.best>
 
 pkgname=lmm-api-web-bin
-pkgver=0.1.31
+pkgver=0.1.32
 pkgrel=1
 pkgdesc='LMM API production web frontend (prebuilt)'
 arch=('any')
@@ -14,6 +14,7 @@ conflicts=('lmm-api-web')
 install=lmm-api-web.install
 
 _release_tag="web-v${pkgver}"
+_legacy_contractless_version=0.1.31
 _artifact="lmm-api-web-${pkgver}.tar.gz"
 _release_base="${url}/releases/download/${_release_tag}"
 source=(
@@ -24,9 +25,9 @@ source=(
 )
 noextract=("${_artifact}")
 sha256sums=(
-  '91a9eceb97a40b79e590624100f053f8430fc682a2fb5d9a9f6c39c56d90f983'
-  '722d556cbf7afb1bee2e0d796764b531dfaed87415b6cbe740104376667500a4'
-  '5adf033fda38936fdc5e4bf722c24ea3e9c99d616ca8198c3a49c24b75057b35'
+  'db979e250438aa462f0beedc96955405953e2f4cdd266987de22b08b54eb206f'
+  '23da01e526aa8a79b87771f7290fb89e091be9a5bb15e55ab75560d115533089'
+  '2482fdf8e238c8dae24c03a5d5cbfe24c5680df7f695d60fa20990d4664631ff'
   '358f5b958f3520757628d803027dafb1b67ec61b565d00bf4cd4f7927347cf33'
 )
 
@@ -49,6 +50,10 @@ prepare() {
   [[ -x ${srcdir}/lmm-api-web-activate.local ]]
   [[ -x ${srcdir}/frontend-release.sh ]]
   ! find "${srcdir}/dist" -type l -print -quit | grep -q .
+  if [[ ${pkgver} != "${_legacy_contractless_version}" ]]; then
+    [[ -f ${srcdir}/API_ROUTE_CONTRACT_REVISION && ! -L ${srcdir}/API_ROUTE_CONTRACT_REVISION ]]
+    [[ $(<"${srcdir}/API_ROUTE_CONTRACT_REVISION") =~ ^[0-9a-f]{64}$ ]]
+  fi
 }
 
 package() {
@@ -68,4 +73,8 @@ package() {
     install -Dm0644 "${srcdir}/${file}" "${pkgdir}/usr/share/licenses/${pkgname}/${file}"
   done
   install -Dm0644 "${srcdir}/REVISION" "${pkgdir}/usr/share/doc/${pkgname}/REVISION"
+  if [[ -f ${srcdir}/API_ROUTE_CONTRACT_REVISION ]]; then
+    install -Dm0644 "${srcdir}/API_ROUTE_CONTRACT_REVISION" \
+      "${pkgdir}/usr/share/doc/${pkgname}/API_ROUTE_CONTRACT_REVISION"
+  fi
 }
