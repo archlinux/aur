@@ -1,11 +1,11 @@
 pkgbase = modkit-bin
 	pkgdesc = Bioinformatics tool for working with modified bases in BAM/CRAM files
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nanoporetech/modkit
 	arch = x86_64
 	license = custom
-	provides = modkit
+	provides = modkit=0.6.4
 	conflicts = modkit
 	options = !strip
 	options = !debug

@@ -3,12 +3,12 @@
 pkgname=modkit-bin
 _pkgname=modkit
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Bioinformatics tool for working with modified bases in BAM/CRAM files"
 arch=('x86_64')
 url="https://github.com/nanoporetech/modkit"
 license=('custom')
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!strip' '!debug')
 source=(
