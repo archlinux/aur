@@ -1,13 +1,13 @@
 pkgbase = ttf-iosevka-etoile
 	pkgdesc = Typeface family designed for coding, terminal use and technical documents.
-	pkgver = 34.8.0
+	pkgver = 34.8.1
 	pkgrel = 1
 	url = https://typeof.net/Iosevka/
 	arch = any
 	license = OFL
-	source = https://github.com/be5invis/Iosevka/releases/download/v34.8.0/PkgTTF-IosevkaEtoile-34.8.0.zip
-	source = ttf-iosevka-etoile-34.8.0-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v34.8.0/LICENSE.md
-	sha256sums = 222724859d5c87e67ff09e56df7f28306fba26eef433c8d6a2dfe83ac416a264
+	source = https://github.com/be5invis/Iosevka/releases/download/v34.8.1/PkgTTF-IosevkaEtoile-34.8.1.zip
+	source = ttf-iosevka-etoile-34.8.1-1-LICENSE.md::https://raw.githubusercontent.com/be5invis/Iosevka/v34.8.1/LICENSE.md
+	sha256sums = bb43009284889960b04f662276bd27b5212cf2cd851aee49e54955d9af7b980d
 	sha256sums = 4ba53c7c1cb39279aae5f8d7d22054c485c71169920e5a36ed098b115e2e3c5d
 
 pkgname = ttf-iosevka-etoile
