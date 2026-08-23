@@ -1,6 +1,6 @@
 pkgbase = mkastem
 	pkgdesc = Tool for manipulating stem files in Matroska format.
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://codeberg.org/SamWhited/mkastem
 	arch = any
@@ -8,7 +8,8 @@ pkgbase = mkastem
 	makedepends = go
 	depends = ffmpeg
 	depends = mkvtoolnix-cli
-	source = mkastem-0.0.4.zip::https://codeberg.org/SamWhited/mkastem/archive/v0.0.4.zip
-	sha256sums = 0c814671c6ddd5690c58a61f50391eb8cdd5db5ae3b362b10fe25411dfcb2ed6
+	depends = mpv
+	source = mkastem-0.0.5.zip::https://codeberg.org/SamWhited/mkastem/archive/v0.0.5.zip
+	sha256sums = 14e3548c337067d460aa00197f09a7d94beb34334f149f2cbb50f6d59dad7a2d
 
 pkgname = mkastem
