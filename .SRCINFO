@@ -1,8 +1,8 @@
 pkgbase = perl-extutils-builder-compiler
 	pkgdesc = An interface around different compilers.
 	pkgver = 0.037
-	pkgrel = 1
-	url = https://metacpan.org/release/ExtUtils-Builder-Compiler
+	pkgrel = 2
+	url = https://metacpan.org/pod/ExtUtils::Builder::Compiler
 	arch = any
 	license = PerlArtistic
 	license = GPL
