@@ -1,0 +1,19 @@
+pkgbase = hyprfm
+	pkgdesc = a fast, customizable file manager for hyprland - dolphin functionality, nautilus looks
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/iamanuclearwarhead/hyprfm
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = gtk4
+	depends = libadwaita
+	depends = python-gobject
+	optdepends = vte4: embedded terminal panel
+	source = hyprfm-0.1.0.tar.gz::https://github.com/iamanuclearwarhead/hyprfm/archive/v0.1.0.tar.gz
+	sha256sums = fec8ecb7ce315c33145d40c5072f419c1a88763ee09dea6abe4f73d1850412c7
+
+pkgname = hyprfm
