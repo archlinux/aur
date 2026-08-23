@@ -12,7 +12,7 @@ pkgname=agildodock
 _githubuser=juglesbass
 _repo=AgildoDockCpp_Wayland # pasta ao extrair: ${_repo}-${pkgver}
 
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 
 pkgdesc="Dock de aplicativos para KDE Plasma com Layer Shell, Kirigami e efeito de onda"
@@ -43,7 +43,7 @@ validpgpkeys=()
 _source_file="${_repo}-${pkgver}.tar.gz"
 # ATENÇÃO: não envies SKIP ao servidor AUR com tarball estático — corre «updpkgsums» aqui primeiro.
 source=("${_source_file}::https://github.com/${_githubuser}/${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c8e68ff256e3b31ff67010538c8c3fd2f2f5705ff98a310f6bd6cf94a6349f47')
+sha256sums=('adc441a8ac0f15999ed49a446e5af1135ff240774fd23091c5842e6184212434')
 
 build() {
   cd "${srcdir}/${_repo}-${pkgver}"
