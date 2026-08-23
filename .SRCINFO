@@ -1,6 +1,6 @@
 pkgbase = alps-pm
 	pkgdesc = A unified frontend for Linux package managers (Advanced Linux Package System)
-	pkgver = 1.0.5
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/adrianpriza-ai/alps
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = alps-pm
 	optdepends = systemd: alps-more entries managing systemd services
 	optdepends = shadow: alps-more entries using useradd/userdel
 	conflicts = alps
-	source = alps-pm-1.0.5.tar.gz::https://github.com/adrianpriza-ai/alps/archive/v1.0.5.tar.gz
-	sha256sums = 9ff0b84f038a5e78aedfed2cc7625907d8e11fc6d5acbdbb49e7a41fed18e18d
+	source = alps-pm-1.1.0.tar.gz::https://github.com/adrianpriza-ai/alps/archive/v1.1.0.tar.gz
+	sha256sums = fdd9296e3e8bb6afa65edcbe660a98df6bbadae5875f8cdfa724e01fbae64f99
 
 pkgname = alps-pm

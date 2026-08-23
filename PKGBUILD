@@ -1,7 +1,7 @@
 # Maintainer: adrianpriza-ai <coreygit1@gmail.com>
 
 pkgname=alps-pm
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A unified frontend for Linux package managers (Advanced Linux Package System)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -23,7 +23,7 @@ optdepends=(
 )
 conflicts=('alps')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9ff0b84f038a5e78aedfed2cc7625907d8e11fc6d5acbdbb49e7a41fed18e18d')
+sha256sums=('fdd9296e3e8bb6afa65edcbe660a98df6bbadae5875f8cdfa724e01fbae64f99')
 
 prepare() {
     cd "alps-$pkgver"
