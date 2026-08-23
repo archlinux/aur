@@ -16,7 +16,7 @@ license=('ISC')
 depends=("parcel>=${pkgver}")
 makedepends=()
 optdepends=("pass: password manager to manage the password store"
-            "unzip: inspect host script bundled inside browser extension")
+            "libarchive: inspect bundled host script with bsdtar")
 # Can't build the extension from source, because needs to be signed by Mozilla.
 source=("https://addons.mozilla.org/firefox/downloads/file/4967434/${_name}-${pkgver}.xpi")
 sha256sums=('903de04a99a39f871d4ad5e82ef23b5cc1f6b740421a37ef773e6b47cad1eaba')

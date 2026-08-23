@@ -10,7 +10,7 @@ post_upgrade() {
     # because the new updated host script will not be allowed to run, until the
     # user manually updates the hash pinned in the user's parcelrc.
 
-    local _extract_cmd="unzip -p \"${_ext_archive}\" \"${_host_script}\""
+    local _extract_cmd="bsdtar -xOf \"${_ext_archive}\" \"${_host_script}\""
 
     echo ">>> [SECURITY] ACTION REQUIRED: review host script bundled in extension:"
     echo ">>>   1. Review contents of updated host script (signed does imply safe!):"
