@@ -1,6 +1,6 @@
 pkgbase = konsole-companion-git
 	pkgdesc = Theme-synced profiles and tab-set manager for KDE Konsole
-	pkgver = 0.1.0.r2.g66ae874
+	pkgver = 0.2.0.r5.gb3d4635
 	pkgrel = 1
 	url = https://github.com/Egor3f/konsole-companion
 	arch = any
