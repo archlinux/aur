@@ -1,6 +1,6 @@
 pkgbase = python-khali-git
 	pkgdesc = Uses khal, vdirsyncer and at to sync calendars and set alarms.
-	pkgver = 1.0.0.r22.6eeae92
+	pkgver = 1.0.0.r31.f6ff732
 	pkgrel = 1
 	url = https://codeberg.org/dhruva_sambrani/khali
 	arch = any
@@ -15,6 +15,6 @@ pkgbase = python-khali-git
 	sha256sums = SKIP
 
 pkgname = python-khali-git
-	depends = khal-git
+	depends = khal
 	depends = vdirsyncer
 	depends = at
