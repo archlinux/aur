@@ -4,7 +4,7 @@
 
 pkgname=codelldb
 _pkgname="$pkgname"
-pkgver=1.12.2
+pkgver=1.12.3
 pkgrel=4
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 arch=(x86_64 arm7h aarch64)
@@ -16,7 +16,7 @@ makedepends=(cmake cargo nodejs npm python libc++)
 options=(!lto)
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname-update-yargs.patch")
-sha256sums=('34e2aae22f5b5e4b03f854159d9a35f1c5527e0eb11b817e7d5e8bd513bb05e5'
+sha256sums=('8a7d183014766e695d90c14c3a4f24a5e7937eb7b0d4954b074a85bd00f4f841'
             '8df7ea2bd651222ff0c47058e15202fe3366490d7ad3c380a54fd09a1c105dd7')
 
 prepare() {
@@ -49,10 +49,6 @@ prepare() {
   # the rest of LLVM.
   # sed -i 's|^\(\s*\)\(.*is_default_constructible<lldb::SBCommandInterpreter>.*\)$|\1//\2|' \
   #   ./src/lldb/src/sb/sbcommandinterpreter.rs
-
-  # Comment out broken tests.
-  sed -i "s|^\\(\\s*\\)\\(tuple: '{0:1, 1:\"a\", 2:42}',\\)$|\\1//\\2|" tests/adapter.test.ts
-  sed -i "s|^\\(\\s*\\)\\(ref_cell[[:alnum:]_]*:.*,\\)$|\\1//\\2|" tests/adapter.test.ts
 
   cargo fetch --locked --target="$(rustc --print host-tuple)"
 }
