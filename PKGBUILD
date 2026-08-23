@@ -3,8 +3,8 @@
 
 _arch=x64v2
 _pkgbase=linux-xanmod-edge
-_major=7.1
-_minor=2
+_major=7.2
+_minor=0
 _branch=7.x
 _xanmodrel=1
 _xanmodrev=
@@ -29,7 +29,7 @@ pkgname=("${pkgbase}" "${_pkgbase}-linux-headers-bin-${_arch}")
 pkgdesc="The Linux kernel and modules with Xanmod patches - Rolling Release (EDGE) - Prebuilt version - ${_arch}"
 url="http://www.xanmod.org/"
 arch=(x86_64)
-license=(GPL2)
+license=(GPL-2.0-only)
 options=('!strip')
 makedepends=('libxml2' 'curl')
 
@@ -70,8 +70,8 @@ validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
-sha256sums=('b0cf1e706af255891b50849cba2c0c6ff4435201490a23543b5dbc914bb677db'
-            '61716c0b5207dfed87c412ebf502d1e523431f53b3cf80c875fd29fddc952610')
+sha256sums=('c794d348991af06896adc88afa4fe827074f0a91670c0e45d14f83bee6c5a231'
+            '51009a9caf79776e82cd74e54da51dfb077fc62e0b3ea26e9707a5f8d2722e69')
 
 _package() {
   pkgdesc="The Linux kernel and modules with Xanmod patches - Rolling Release (EDGE) - Prebuilt version - ${_arch}"
