@@ -1,16 +1,15 @@
 # Maintainer: Cristo Cola <kristokola@hotmail.com>
 pkgname=fast-folder
-pkgver=1.7.1
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Template-driven project folder generator with TUI and browser UI (fastf)"
+pkgdesc="Template-driven project folder generator with a guided TUI and CLI (fastf)"
 arch=(x86_64)
 url="https://github.com/cristocola/fast-folder"
 license=(MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
-optdepends=('chromium: dedicated app window for fastf ui --app')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dcfea2e90b14fceb7571fcc36a1ea374a8b4766ad7601c647e13d0130ecd6373')
+sha256sums=('f1fef432e6cd0d5860b3a346f17fd92bbdeb1a62dd3df1ef96035e20af9d16cb')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -48,7 +47,7 @@ package() {
   "$bin" mangen man
   install -Dm644 man/*.1 -t "$pkgdir/usr/share/man/man1/"
 
-  # Desktop integration (browser UI launcher)
+  # Desktop integration (app-menu entry for the guided TUI)
   install -Dm644 packaging/fastf.desktop "$pkgdir/usr/share/applications/fastf.desktop"
   for size in 48 128 256; do
     install -Dm644 "packaging/icons/fastf-$size.png" \
