@@ -1,0 +1,22 @@
+pkgbase = revision-bin
+	pkgdesc = Lazygit for SVN - a fast, keyboard-driven TUI for SVN
+	pkgver = 1.7.0
+	pkgrel = 1
+	url = https://github.com/bapatchirag/revision
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = subversion
+	provides = revision
+	conflicts = revision
+	options = !strip
+	source = README-1.7.0.md::https://raw.githubusercontent.com/bapatchirag/revision/v1.7.0/README.md
+	source = LICENSE-1.7.0::https://raw.githubusercontent.com/bapatchirag/revision/v1.7.0/LICENSE
+	sha256sums = 5ce1604b06d1c3dbaac555c2d2369ffb3bb407ccf531def6b11a81458a6814e0
+	sha256sums = fa0744b49963fef94ca4dcce4d4dc94b9ea7d86849675f2b411c373fe5cc1aa7
+	source_x86_64 = revision-x86_64-1.7.0::https://github.com/bapatchirag/revision/releases/download/v1.7.0/revision-linux-amd64
+	sha256sums_x86_64 = 0e2fa6276de7168293a62c70ffc654963e750e002e05b5c1389c3d6703ccb1e0
+	source_aarch64 = revision-aarch64-1.7.0::https://github.com/bapatchirag/revision/releases/download/v1.7.0/revision-linux-arm64
+	sha256sums_aarch64 = 21e4c83b8ca91d63067c06c04bc5b308d0f420f81eb6d21a5da870ffa8890349
+
+pkgname = revision-bin
