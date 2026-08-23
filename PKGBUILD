@@ -3,7 +3,7 @@
 _gitauthor=bapatchirag
 _gitname=revision
 _appname=${_gitname}
-pkgname=${_appname}-bin
+pkgname=${_gitname}-bin
 pkgdesc="Lazygit for SVN - a fast, keyboard-driven TUI for SVN"
 
 pkgver=1.7.0
@@ -21,7 +21,7 @@ license=('MIT')
 
 depends=('subversion')
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${pkgname%-bin}")
 
 options=('!strip')
 
