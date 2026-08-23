@@ -3,9 +3,9 @@
 _gitname=atmosphera
 
 pkgname=atmosphera-git
-_release_ver=0.5.1.r0
-pkgver=0.5.1.r0.g0000000
-pkgrel=6
+_release_ver=0.6.0.r0
+pkgver=0.6.0.r0.g0000000
+pkgrel=7
 install=atmosphera-git.install
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)"
 arch=('any')
