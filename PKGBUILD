@@ -1,7 +1,7 @@
 # Maintainer: user14923929
 pkgname=steganoforge
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hide and extract files inside PNG images via LSB steganography, with CLI and web UI"
 arch=('any')
 url="https://github.com/user14923929/steganoforge"
@@ -14,7 +14,7 @@ depends=(
 )
 optdepends=(
     'python-fastapi: for the web UI'
-    'python-uvicorn: for running the web UI server'
+    'uvicorn: for running the web UI server'
     'python-multipart: required by the web UI for file uploads'
 )
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
