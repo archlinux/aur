@@ -1,7 +1,7 @@
 pkgbase = python-control
 	pkgdesc = Python Control Systems Library.
 	pkgver = 0.10.2
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/python-control/python-control
 	arch = any
 	license = BSD-3-Clause
@@ -24,6 +24,10 @@ pkgbase = python-control
 	optdepends = python-cvxopt: cvxopt
 	optdepends = python-pandas: pandas
 	source = https://files.pythonhosted.org/packages/source/c/control/control-0.10.2.tar.gz
+	source = https://github.com/python-control/python-control/commit/ae4915c4.patch
+	source = https://github.com/python-control/python-control/commit/3b70cb41.patch
 	sha256sums = d0cf63f6cfb68a4c8e827c26c3744d129e9777fedc9a5d86ca4740548f23a98b
+	sha256sums = a0eafedd5cd870e54ab8df87c1e60291a3d500db6845cf3271f261fa650dee77
+	sha256sums = b4785175d407d85493935d15746adc086c7158a4873932f16ab7349384af0398
 
 pkgname = python-control
