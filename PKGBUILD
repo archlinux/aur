@@ -5,7 +5,7 @@ _appauthor="brentyi"
 _appname="tyro"
 
 pkgname="python-${_appname}"
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="Strongly typed, zero-effort CLI interfaces"
 
@@ -24,7 +24,7 @@ depends=('python' 'python-msgspec' 'python-docstring-parser' 'python-pydantic' '
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${_pypi_version}.tar.gz")
-sha256sums=('3ab17214d762f8f3476a30f6c7d114a5c9830e7e1731ecd2c2538e837970e5b1')
+sha256sums=('a20c6e2c186930013a5fb3f20295c9c479a7a5e26db27fe0e003419494e3114a')
 
 
 build() {
