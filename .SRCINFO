@@ -1,6 +1,6 @@
 pkgbase = mlos-host-utils
 	pkgdesc = USB passthrough agent for the PC you stream from with Moonlight OS
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/MopigamesYT/moonlight-os
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mlos-host-utils
 	license = MPL-2.0
 	makedepends = go
 	depends = usbip
-	source = mlos-host-utils-0.2.1.tar.gz::https://github.com/MopigamesYT/moonlight-os/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = 70cf96c0f548f44054c38c07d5f93fd362e3c75115130a30a3b3c13d861b6bf9
+	source = mlos-host-utils-0.2.2.tar.gz::https://github.com/MopigamesYT/moonlight-os/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = fbf24764b8260ce6d869d9fa93a29a0a1ba7a1dcbb2b351304c5644070374e18
 
 pkgname = mlos-host-utils
