@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=picante
-_pkgver=1.8.2
+_pkgver=1.8.4
 pkgname=r-${_pkgname,,}
-pkgver=1.8.2
-pkgrel=4
+pkgver=1.8.4
+pkgrel=1
 pkgdesc='Integrating Phylogenies and Ecology'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,7 +21,7 @@ optdepends=(
   r-quantreg
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('56565ca7f7c37f49c961372a816724967c21a4f5025cd69b8b671122bfdc4aa7')
+sha256sums=('18e82c5cf582bd0beec3fa472fc13e89d1d7bf4426093b526257d2abf76d053a')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
