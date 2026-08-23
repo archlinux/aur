@@ -1,5 +1,0 @@
-#!/bin/sh
-
-DEFAULT_JVM_OPTS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
-eval set -- $DEFAULT_JVM_OPTS -cp /usr/share/java/ffdec/lib  -jar '/usr/share/java/ffdec/ffdec.jar' "$@"
-exec java "$@"

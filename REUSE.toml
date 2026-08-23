@@ -2,7 +2,6 @@ version = 1
 
 [[annotations]]
 path = [
-    "ffdec",
     "PKGBUILD",
     "README.md",
     "keys/**",
@@ -18,6 +17,7 @@ path = [
     "*.timer",
     "*.desktop",
     "*.hook",
+    "*.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
