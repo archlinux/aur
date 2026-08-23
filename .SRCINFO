@@ -1,6 +1,6 @@
 pkgbase = frugalrgb
 	pkgdesc = Lightweight standalone RGB controller for PC hardware (no bloat, just LEDs)
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/emaspa/frugalRGB
 	install = frugalrgb.install
@@ -16,7 +16,7 @@ pkgbase = frugalrgb
 	depends = python-smbus2
 	optdepends = python-gobject: native transparent system tray icon (StatusNotifier)
 	optdepends = libayatana-appindicator: native transparent system tray icon (StatusNotifier)
-	source = frugalrgb-0.2.0.tar.gz::https://github.com/emaspa/frugalRGB/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 4f8ffb3fe037607d6c30cbc8f5eb72a428030238ef24d8d07c9fc56cd6e84634
+	source = frugalrgb-0.2.1.tar.gz::https://github.com/emaspa/frugalRGB/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = aa6e6ffd301f28082b000229d52c29a3ede68a40ee304525c4922897b3dfec7f
 
 pkgname = frugalrgb
