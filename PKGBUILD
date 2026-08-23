@@ -2,7 +2,7 @@
 
 pkgname=alacrium-browser
 pkgver=151.0.7922.173
-pkgrel=1
+pkgrel=2
 pkgdesc='Performance-focused Chromium browser tracking stable releases'
 arch=('x86_64')
 url='https://github.com/brauliobo/alacrium'
@@ -94,10 +94,20 @@ build() {
 
 package() {
   local deb_path="$srcdir/alacrium/chromium/src/out/alacrium/alacrium-browser_${pkgver}_AVX.deb"
+  local logo size
 
   bsdtar -xOf "$deb_path" data.tar.xz | bsdtar -xf - -C "$pkgdir"
   rm -rf "$pkgdir/etc/cron.daily"
   chmod 4755 "$pkgdir/opt/alacrium-browser/chrome-sandbox"
+  for logo in "$pkgdir"/opt/alacrium-browser/product_logo_*.png; do
+    size="${logo##*_}"
+    size="${size%.png}"
+    [[ "$size" =~ ^[0-9]+$ ]] || continue
+    install -Dm644 "$logo" \
+      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/alacrium-browser.png"
+  done
+  install -Dm644 "$pkgdir/opt/alacrium-browser/alacrium.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/alacrium-browser.svg"
   install -Dm644 "$srcdir/alacrium/LICENSE.md" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

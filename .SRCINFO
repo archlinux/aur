@@ -1,7 +1,7 @@
 pkgbase = alacrium-browser
 	pkgdesc = Performance-focused Chromium browser tracking stable releases
 	pkgver = 151.0.7922.173
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brauliobo/alacrium
 	arch = x86_64
 	license = BSD-3-Clause
