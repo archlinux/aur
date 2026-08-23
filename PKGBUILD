@@ -149,6 +149,13 @@ build() {
       #-DCMAKE_C_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
 
 										###-G Ninja | -G "Unix Makefiles"
+    ### Arch/CachyOS makepkg.conf injects -Wp,-D_GLIBCXX_ASSERTIONS into CXXFLAGS,
+    ### which turns a latent beamlaser bug into hard in-game SIGABRTs:
+    ### https://github.com/beyond-all-reason/RecoilEngine/issues/3018
+    ### Disabled here on purpose for the stable package (upstream stance: don't build hardened).
+    ### NOTE: this masks a real bug, see the issue above.
+    export CXXFLAGS="${CXXFLAGS//-Wp,-D_GLIBCXX_ASSERTIONS}"
+
     ### CMake 4.x dropped compatibility with cmake_minimum_required(<3.5) used by bundled libs
     ### (assimp, lunasvg, glad, gflags, catch2, ...). This is the official escape hatch.
     export CMAKE_POLICY_VERSION_MINIMUM=3.5
