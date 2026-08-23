@@ -1,6 +1,6 @@
 pkgbase = dbx-bin
 	pkgdesc = Open-source, lightweight, cross-platform database client. Supports MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, ClickHouse, SQL Server
-	pkgver = 0.5.91
+	pkgver = 0.5.92
 	pkgrel = 1
 	url = https://github.com/t8y2/dbx
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dbx-bin
 	depends = gtk3
 	provides = dbx
 	conflicts = dbx
-	source_x86_64 = dbx_0.5.91_amd64.deb::https://github.com/t8y2/dbx/releases/download/v0.5.91/dbx_0.5.91_amd64.deb
-	sha256sums_x86_64 = 99ede5115fa781d1c22f490029c4fe213955087c79a51601557ffabf6b3acad8
+	source_x86_64 = dbx_0.5.92_amd64.deb::https://github.com/t8y2/dbx/releases/download/v0.5.92/dbx_0.5.92_amd64.deb
+	sha256sums_x86_64 = 3ad7b8350fd763d361452b086e0e726018364b58910ebb61006e42a72459100f
 
 pkgname = dbx-bin
