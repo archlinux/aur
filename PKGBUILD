@@ -1,7 +1,7 @@
 # Maintainer: Daniel Liland <celsiuss@await.sh>
 
 pkgname=preflight
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A modern slicer built for precision and performance. "
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('cmake' 'glu' 'ninja' 'git' 'boost' 'catch2'
 options=('!makeflags')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oozebot/preFlight/archive/refs/tags/v${pkgver}.tar.gz"
   0001-fix-building-for-arch.patch)
-sha256sums=('e7f4fe8ebf7b91e12f1e441dfb169ecfd3d2ef769ae279c9c8b4017bb971ffaa'
+sha256sums=('2126dbd2c6a19707eabb3a99cc5841b88f6c0006fd705b4421d9ebecb6311d92'
             '00950c192a500014c7f090d3b394bb21271ad9b9b3b8da0a1594293083de1c9c')
 
 _dir="preFlight-$pkgver"
