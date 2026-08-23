@@ -11,6 +11,7 @@ provides=('ggdo')
 conflicts=('ggdo')
 source=("git+$url.git")
 sha256sums=('SKIP')
+source=("git+https://codeberg.org/ayonelnx/ggdo.git")
 
 build() {
     cd "$srcdir/ggdo"
@@ -23,4 +24,3 @@ package() {
     install -Dm755 ggdo "$pkgdir/usr/bin/ggdo"
     chmod u+s "$pkgdir/usr/bin/ggdo"
 }
-# comment
