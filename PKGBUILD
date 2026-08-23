@@ -2,7 +2,7 @@
 
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=0.9.4.r54.g58d5e1b
+pkgver=0.9.4.r66.ge4cd2da
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
@@ -55,9 +55,19 @@ prepare() {
   # symlink libdex source into bazaars subprojects dir
   mkdir -p subprojects
   ln -sfT "${srcdir}/libdex" subprojects/libdex
+
+  # dummy liburing.vapi
+  mkdir -p "${srcdir}/vapi"
+  cat > "${srcdir}/vapi/liburing.vapi" <<EOF
+[CCode (cheader_filename = "liburing.h")]
+namespace liburing {
+}
+EOF
 }
 
 build() {
+  export VALAFLAGS="--vapidir=${srcdir}/vapi"
+
   # static link libdex
   meson setup "${_pkgname}" build \
     --prefix=/usr \
