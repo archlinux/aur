@@ -6,12 +6,13 @@
 pkgname='timestampit'
 pkgdesc='Prefix each input line with a date/time stamp (formerly timestamp/stampit)'
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 url='https://codeberg.org/kas/timestampit'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('GPL-3.0-or-later')
 depends=('glibc')
 provides=('stampit' 'timestamp')
+conflicts=("${provides[@]}")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=(
   'f692eed442a74099bc74fe897d84741e4fc0c0f2825708908eaec78276e8982d'
