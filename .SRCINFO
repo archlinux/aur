@@ -1,0 +1,17 @@
+pkgbase = kconfig-frontends-git
+	pkgdesc = Linux kernel-style Kconfig parser and configuration frontends for third-party projects (Git)
+	pkgver = r279.gdf6a283
+	pkgrel = 1
+	url = https://gitlab.com/ymorin/kconfig-frontends/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = gperf
+	depends = python
+	depends = perl
+	source = git+https://gitlab.com/arkades.org/kconfig-frontends.git
+	source = kconfig-config2h
+	sha512sums = SKIP
+	sha512sums = 2704d58e009e79a6ba098876dfca8dfc34da086d792b497424a73a679aeb97bc002d4267cc44422401b06338c42bc8651fdbede20779bae9c06a00590fe14234
+
+pkgname = kconfig-frontends-git

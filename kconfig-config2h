@@ -1,0 +1,12 @@
+#!/usr/bin/env perl
+
+use warnings;
+use strict;
+use feature 'say';
+
+foreach (<STDIN>) {
+    next if m/^#/;
+    say "#define $1" if m/^(\w+)=y$/;
+    say "#define $1 $2" if m/^(\w+)=(.+)$/;
+}
+
