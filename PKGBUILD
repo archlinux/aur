@@ -8,7 +8,7 @@ license=('MIT')
 depends=('alsa-lib' 'mpv')
 makedepends=('cargo' 'pkgconf' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Xuepoo/agent-lx-music/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9b3d8f601b7f99eb940ef243b87275aedf6160e66ca95755606e6face5f96009')
+sha256sums=('0895ad81638d4195afbad6c262250ee1cdf5608a9ea5b5305052d854d3a7969f')
 
 build() {
   cd "$pkgname-$pkgver"
