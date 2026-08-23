@@ -1,6 +1,6 @@
 # Maintainer: hoornet <hoornet@users.noreply.github.com>
 pkgname=vega-nostr-git
-pkgver=0.15.5
+pkgver=0.15.6
 pkgrel=1
 pkgdesc="Cross-platform Nostr desktop client with Lightning integration"
 arch=('x86_64')
@@ -11,12 +11,19 @@ depends=(
     'gtk3'
     'libayatana-appindicator'
     'openssl'
+    'gst-plugins-base'
+    'gst-plugins-good'
+    'gst-libav'
 )
 makedepends=(
     'rust'
     'nodejs'
     'npm'
     'git'
+)
+optdepends=(
+    'gnome-keyring: persistent key storage (any Secret Service provider works)'
+    'kwallet: Secret Service provider on KDE'
 )
 provides=('vega-nostr')
 conflicts=('vega-nostr')
