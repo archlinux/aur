@@ -27,6 +27,7 @@ prepare() {
   "./${_pkgname}" completions --shell zsh >"completions/zsh"
   "./${_pkgname}" completions --shell fish >"completions/fish"
   "./${_pkgname}" completions --shell nushell >"completions/nushell"
+  "./${_pkgname}" completions --shell elvish >"completions/elvish"
 }
 
 package() {
@@ -41,4 +42,5 @@ package() {
   install -Dm 644 "completions/zsh" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
   install -Dm 644 "completions/fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
   install -Dm 644 "completions/nushell" "${pkgdir}/usr/share/nushell/vendor/autoload/${_pkgname}.nu"
+  install -Dm 644 "completions/elvish" "${pkgdir}/usr/share/elvish/lib/${_pkgname}.elv"
 }
