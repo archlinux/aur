@@ -1,0 +1,17 @@
+pkgbase = python-ctkcolorpicker
+	pkgdesc = Modern color picker widget for CustomTkinter
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/Akascape/CTkColorPicker
+	arch = any
+	license = CC0-1.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-customtkinter
+	depends = python-pillow
+	source = https://files.pythonhosted.org/packages/source/C/CTkColorPicker/CTkColorPicker-0.9.0.tar.gz
+	sha256sums = 5f65e35d0cf9d0c9fee7e24f3f460e256641f0e335ab00c17425bb0d16060b0c
+
+pkgname = python-ctkcolorpicker
