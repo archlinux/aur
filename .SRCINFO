@@ -1,7 +1,7 @@
 pkgbase = nipaplay-reload-bin
 	pkgdesc = 一个现代化的跨平台视频播放器
-	pkgver = 1.11.4
-	pkgrel = 2
+	pkgver = 1.11.5
+	pkgrel = 1
 	url = https://github.com/MCDFsteve/NipaPlay-Reload
 	arch = x86_64
 	license = MIT
@@ -16,9 +16,9 @@ pkgbase = nipaplay-reload-bin
 	conflicts = nipaplay
 	conflicts = nipaplay-reload
 	options = !debug
-	source = https://github.com/MCDFsteve/NipaPlay-Reload/releases/download/v1.11.4/NipaPlay-1.11.4-Linux-amd64.deb
+	source = https://github.com/MCDFsteve/NipaPlay-Reload/releases/download/v1.11.5/NipaPlay-1.11.5-Linux-amd64.deb
 	source = https://github.com/MCDFsteve/NipaPlay-Reload/raw/main/LICENSE
-	sha256sums = 4f373ae643d648a1cf889224e073718060bb8c59f501ae335b0685f920f14b67
+	sha256sums = 2e331986734b5b7bf60c0af52249ef5a7dc160ac5660165c02888ba30da56f31
 	sha256sums = fd1d762b5ea1f4cd690235a1b8d6b8efe4ada061f5b26c1fefbd74c156f8184b
 
 pkgname = nipaplay-reload-bin
