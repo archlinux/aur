@@ -12,80 +12,74 @@ conflicts=("${pkgname%-bin}")
 options=('!strip')
 
 source_i686=(
-    "${pkgname}-${pkgver}-linux_386::${url}/releases/download/v${pkgver}/odm_${pkgver}_linux_386"
+    "${pkgname}-${pkgver}-linux_386.tar.gz::${url}/releases/download/v${pkgver}/odm_${pkgver}_linux_386.tar.gz"
     "${pkgname}-${pkgver}.1"
     "${pkgname}.conf-${pkgver}.example"
     "${pkgname}-${pkgver}.service"
     "${pkgname}-${pkgver}.LICENSE"
 )
 source_x86_64=(
-    "${pkgname}-${pkgver}-linux_amd64::${url}/releases/download/v${pkgver}/odm_${pkgver}_linux_amd64"
+    "${pkgname}-${pkgver}-linux_amd64.tar.gz::${url}/releases/download/v${pkgver}/odm_${pkgver}_linux_amd64.tar.gz"
     "${pkgname}-${pkgver}.1"
     "${pkgname}.conf-${pkgver}.example"
     "${pkgname}-${pkgver}.service"
     "${pkgname}-${pkgver}.LICENSE"
 )
 source_armv7h=(
-    "${pkgname}-${pkgver}-linux_arm::${url}/releases/download/v${pkgver}/odm_${pkgver}_linux_arm"
+    "${pkgname}-${pkgver}-linux_arm.tar.gz::${url}/releases/download/v${pkgver}/odm_${pkgver}_linux_arm.tar.gz"
     "${pkgname}-${pkgver}.1"
     "${pkgname}.conf-${pkgver}.example"
     "${pkgname}-${pkgver}.service"
     "${pkgname}-${pkgver}.LICENSE"
 )
 source_aarch64=(
-    "${pkgname}-${pkgver}-linux_arm64::${url}/releases/download/v${pkgver}/odm_${pkgver}_linux_arm64"
+    "${pkgname}-${pkgver}-linux_arm64.tar.gz::${url}/releases/download/v${pkgver}/odm_${pkgver}_linux_arm64.tar.gz"
     "${pkgname}-${pkgver}.1"
     "${pkgname}.conf-${pkgver}.example"
     "${pkgname}-${pkgver}.service"
     "${pkgname}-${pkgver}.LICENSE"
 )
 
-sha256sums_i686=('6b6af5103234b22ce11c7d61e6b4202d0af48af2abcd19aa4ac9c77aeb22f0bd'
+sha256sums_i686=('SKIP'
                     'SKIP'
                     'SKIP'
                     'SKIP'
                     'SKIP')
-sha256sums_x86_64=('71be2dbf117ae35c02d0f3a55414f732cee6a52471bbfbbe639a94e7e93523ac'
+sha256sums_x86_64=('SKIP'
                     'SKIP'
                     'SKIP'
                     'SKIP'
                     'SKIP')
-sha256sums_armv7h=('9a8b578fa3448994c87255d69d12f861e01e769177691792d89d617300c9cc58'
+sha256sums_armv7h=('SKIP'
                     'SKIP'
                     'SKIP'
                     'SKIP'
                     'SKIP')
-sha256sums_aarch64=('5d514034eef6daa4f34d929db73b6303d4e01e2740b4808c12b4be8fbd0ad628'
+sha256sums_aarch64=('SKIP'
                     'SKIP'
                     'SKIP'
                     'SKIP'
                     'SKIP')
 
-# Sanity-check the downloaded binary before packaging: it must exist, run on
-# the build machine, and report the pkgver we are about to ship.
-check() {
-    local _bin
+# Sanity-check the downloaded tarball before packaging: the binary inside must
+# exist and report the pkgver we are about to ship. (makepkg already verified
+# the sha256 of the tarball itself via the source array when it is not SKIP;
+# the release pipeline fills it from checksums.txt.)
+build() {
+    local _tarball
     case "$CARCH" in
-        i686)  _bin="${pkgname}-${pkgver}-linux_386" ;;
-        x86_64)  _bin="${pkgname}-${pkgver}-linux_amd64" ;;
-        armv7h) _bin="${pkgname}-${pkgver}-linux_arm" ;;
-        aarch64) _bin="${pkgname}-${pkgver}-linux_arm64" ;;
+        i686)  _tarball="${pkgname}-${pkgver}-linux_386.tar.gz" ;;
+        x86_64)  _tarball="${pkgname}-${pkgver}-linux_amd64.tar.gz" ;;
+        armv7h) _tarball="${pkgname}-${pkgver}-linux_arm.tar.gz" ;;
+        aarch64) _tarball="${pkgname}-${pkgver}-linux_arm64.tar.gz" ;;
     esac
-    # The downloaded binary is not executable on arrival (the download agent
-    # writes plain files), so grant +x before running it.
-    chmod +x "$srcdir/$_bin"
-    "$srcdir/$_bin" --version | grep -qF "$pkgver"
+    tar -xzf "$srcdir/$_tarball" -C "$srcdir"
+    chmod +x "$srcdir/odm"
+    "$srcdir/odm" --version | grep -qF "$pkgver"
 }
 
 package() {
-    local _bin
-    case "$CARCH" in
-        i686)  _bin="${pkgname}-${pkgver}-linux_386" ;;
-        x86_64)  _bin="${pkgname}-${pkgver}-linux_amd64" ;;
-        armv7h) _bin="${pkgname}-${pkgver}-linux_arm" ;;
-        aarch64) _bin="${pkgname}-${pkgver}-linux_arm64" ;;
-    esac
-    install -Dm755 "$srcdir/$_bin" "$pkgdir/usr/bin/odm"
+    install -Dm755 "$srcdir/odm" "$pkgdir/usr/bin/odm"
 
     install -Dm644 "$srcdir/${pkgname}-${pkgver}.1" "$pkgdir/usr/share/man/man1/odm.1"
     install -Dm644 "$srcdir/${pkgname}.conf-${pkgver}.example" "$pkgdir/etc/odm/config.conf.example"

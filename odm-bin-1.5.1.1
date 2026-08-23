@@ -133,14 +133,28 @@ destination directory
 .RI ( default " cwd" )
 .TP
 .BR \-i ", " \-\-input-file " \fIFILE\fR"
-read URL list from FILE
+read URL list from FILE (Metalink4
+.IR .meta4 /.metalink
+supported)
 .SS "Behavior"
 .TP
 .BR \-y ", " \-\-yes
 skip the confirmation prompt
 .TP
-.BR \-q ", " \-\-quiet
+.BR \-\-dry\-run
+probe every URL and show the download plan; nothing is downloaded
+.TP
+.BR -q ", " \-\-quiet
 no progress bar (cron/scripts); also skips the prompt
+.TP
+.BR \-\-auto\-rename
+existing destination is kept; save as name.<N>.ext instead (mutually exclusive with --skip-existing)
+.TP
+.BR \-\-skip\-existing
+skip files already present with a matching size
+.TP
+.BR \-\-session\-log " \fIFILE\fR"
+append JSONL progress/summary events to FILE (for wrappers/GUIs)
 .TP
 .BR \-x ", " \-\-continue
 resume an incomplete file via the
@@ -177,6 +191,9 @@ custom User-Agent
 .BR \-H ", " \-\-header " \fIK:V\fR"
 add a custom header (repeatable)
 .TP
+.BR \-\-load\-cookies " \fIFILE\fR"
+load a Netscape cookies.txt and send it as a Cookie header
+.TP
 .BR \-\-referer " \fIURL\fR"
 set the Referer header
 .TP
@@ -189,6 +206,12 @@ verify TLS
 .TP
 .BR \-\-checksum " \fIALGO:HASH\fR"
 verify md5/sha1/sha256
+.TP
+.BR \-\-checksum\-url " \fIURL\fR"
+fetch the checksum from a sidecar URL (sha256sum/md5sum-style file or bare hash)
+.TP
+.BR \-\-mirror " \fIURL\fR"
+alternate URL serving the same file; chunk requests rotate across all sources (repeatable)
 .TP
 .BR -l ", " \-\-limit\-rate " \fIRATE\fR"
 global speed limit, e.g.
@@ -264,9 +287,14 @@ retry               = 3
 retry-wait          = 2
 timeout             = 30
 user-agent          = odm/1.0
+load-cookies        =
 check-certificate   = true
+profile             = odm
 continue            = true
 quiet               = false
+dry-run             = false
+auto-rename         = false
+skip-existing       = false
 limit-rate          =
 limit-rate-per-task  =
 # RPC
@@ -433,7 +461,7 @@ odm.getVersion@Version + enabled features.
 odm.shutdown@Shut the daemon down.
 .TE
 .SS "Events (WebSocket /ws)"
-All five PRD events are emitted over the
+All five download events are emitted over the
 .B /ws
 fan-out:
 .TS
