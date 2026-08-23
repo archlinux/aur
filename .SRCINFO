@@ -1,7 +1,7 @@
 pkgbase = flashpoint-launcher-bin
 	pkgdesc = An archive for games and animations from the web.
 	pkgver = 14.0.3_20251201
-	pkgrel = 2
+	pkgrel = 3
 	url = https://flashpointarchive.org/
 	arch = x86_64
 	license = MIT
@@ -20,6 +20,12 @@ pkgbase = flashpoint-launcher-bin
 	options = !strip
 	options = !emptydirs
 	source = https://download.flashpointarchive.org/upload/fp14.0.3_lin_20251201.7z
+	source = flashpoint-launcher.sh
+	source = setup-desktop-entry.patch
+	source = start-flashpoint.patch
 	sha256sums = f393a98c5c35e229a744c102b0cb53270b1b4f1b3ebd40d604f98323444a4b1f
+	sha256sums = b8865f06dda550effba982517de304a448209fcf4a5e2180929fcf21ccc28508
+	sha256sums = e443b979700a8691eb3ba1f7b55cb23d758b7cc13d0fb612c7dcf96a54e8f9d0
+	sha256sums = dea20d1a1ac8765adf6f81e8c1110dfe164770a38cd84b500c6dff258f690446
 
 pkgname = flashpoint-launcher-bin
