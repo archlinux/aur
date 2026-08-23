@@ -1,6 +1,6 @@
 pkgbase = asus-5606-firmware-check-git
 	pkgdesc = Script to check if the UM5606 laptop has a BIOS/firmware update
-	pkgver = r3.b2b5b9b
+	pkgver = r9.922a5e9
 	pkgrel = 1
 	url = https://github.com/ThatOneCalculator/asus-5606-firmware-check
 	install = asus-5606-firmware-check.install

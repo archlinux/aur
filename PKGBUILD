@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoa@t1c.dev>
 _pkgname="asus-5606-firmware-check"
 pkgname="${_pkgname}-git"
-pkgver=r3.b2b5b9b
+pkgver=r9.922a5e9
 pkgrel=1
 pkgdesc="Script to check if the UM5606 laptop has a BIOS/firmware update"
 arch=('any')
