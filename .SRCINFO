@@ -1,5 +1,5 @@
 pkgbase = onionscan-bin
-	pkgdesc = Investigating tool the Dark Web
+	pkgdesc = Tool to scan onion services
 	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/nao1215/onionscan

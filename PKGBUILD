@@ -4,7 +4,7 @@ _gitauthor=nao1215
 _gitname=onionscan
 _appname=${_gitname}
 pkgname=${_appname}-bin
-pkgdesc="Investigating tool the Dark Web"
+pkgdesc="Tool to scan onion services"
 
 pkgver=0.2.2
 pkgrel=1
