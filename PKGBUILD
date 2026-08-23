@@ -27,6 +27,8 @@ depends=(
     'picocom'
     'uboot-tools'
     'util-linux'
+    'vim'
+    'genromfs'
     'kconfig-frontends-git'
 )
 
@@ -45,7 +47,8 @@ source=(
     'apps::git+https://github.com/apache/nuttx-apps.git'
 )
 
-b2sums=('SKIP' 'SKIP')
+b2sums=('SKIP'
+        'SKIP')
 
 pkgver() {
     cd nuttx
