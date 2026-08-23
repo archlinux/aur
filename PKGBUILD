@@ -2,7 +2,7 @@
 
 _pkgname="oxker"
 pkgname="${_pkgname}-bin"
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="A simple TUI to view & control Docker containers"
 arch=(
@@ -39,9 +39,9 @@ source_x86_64=(
 )
 sha256sums=('ae50e9fa5a2d6b44ad4f4e2d077d1b11d90b869171078bd5bca8a816fe7ea0aa'
             'b73cb1c664857dc71c358b7127f3601be7d625fa97fa2d7e3b1e09381e4d98f0')
-sha256sums_aarch64=('7ca94fe592571e275e4f4805ed8594d76d51094b89e08379dffb29cc5332e982')
-sha256sums_armv7h=('969fa31fdc265a156959291c6e1a265541f7be2663dc9f34716285042288e9f9')
-sha256sums_x86_64=('0331ae1b507275ebd8c1b837068815584e035256bd6689033d131c8168fa1806')
+sha256sums_aarch64=('850bd6c772df85abb67ab08c2add1e46f663268b8788a4a7184d2ed28fce083b')
+sha256sums_armv7h=('ee84e95224a1a6c8b37d861b97e248599d42fbc0fe45c8e2a2d30dc8c125ee1e')
+sha256sums_x86_64=('e077cbf2e978a7a6c9802d453491944ba3635482097e2549e58c7e81df389643')
 
 package() {
   cd "${srcdir}"
