@@ -1,14 +1,14 @@
 pkgbase = huntclaw
 	pkgdesc = A very fast find-and-replace utility
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/tigerlang/huntclaw
 	arch = x86_64
-	license = Unlincense
+	license = Apache-2.0
 	makedepends = zig
 	provides = huntclaw
 	options = !strip
-	source_x86_64 = huntclaw-x86_64-0.5::https://github.com/tigerlang/huntclaw/archive/v0.5.tar.gz
-	sha256sums_x86_64 = 4c333d0c353b559c8f43843464bb0c7775a11a07460b5c11b72a273a53462302
+	source_x86_64 = huntclaw-x86_64-0.6::https://github.com/tigerlang/huntclaw/archive/v0.6.tar.gz
+	sha256sums_x86_64 = 15d2e4ec92267002dbc152006a9fee3db07d9565e934b0d090aa4ae637c7466e
 
 pkgname = huntclaw
