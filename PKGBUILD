@@ -2,8 +2,8 @@
 
 pkgbase=logicanalyzer-git
 pkgname=({logicanalyzer,clcapture}-git)
-pkgver=6.0.0.1.r0.g8d63379
-pkgrel=2
+pkgver=6.0.0.1.r15.g4e88df7
+pkgrel=1
 epoch=
 pkgdesc="24 channel, 100Msps logic analyzer hardware and software "
 arch=($CARCH)
@@ -11,9 +11,11 @@ url="https://github.com/gusmanb/logicanalyzer"
 license=('GPL-3.0-only')
 replaces=()
 depends=()
-makedepends=(git
+makedepends=(
+    git
     dotnet-sdk
-    ttf-dejavu)
+    ttf-dejavu
+)
 backup=()
 options=(!strip !debug)
 install=
