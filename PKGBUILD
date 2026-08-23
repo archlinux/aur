@@ -3,12 +3,12 @@ pkgname=turingcodec-git
 pkgver=89.5d44bd7
 pkgrel=1
 pkgdesc="Turing HEVC codec by BBC (git version) with GCC16/Boost fixes"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/bbc/turingcodec"
 license=('GPL2')
 depends=('boost')
 makedepends=('git' 'cmake' 'make' 'gcc' 'pkgconf')
-source=("git+$url.git"
+source=("git+https://github.com/bbc/turingcodec.git"
         "turingcodec-fixes.patch")
 sha256sums=('SKIP'
             '09cedd1098863f19c37364c2180db0991b1c5ac00c6b5afdd506c9f6c4c05fbd')
@@ -27,7 +27,6 @@ prepare() {
 
     # -fstrict-aliasing (which is automatically enabled at O2 and O3) causes segfaults
     # -fno-exceptions -fno-rtti break the build
-
 build() {
     cd "$srcdir/turingcodec"
 
@@ -47,6 +46,7 @@ build() {
              -fcode-hoisting \
              -fmerge-constants \
              -fivopts \
+             -fsection-anchors \
              -fweb \
              -fconserve-stack \
              -fdelete-null-pointer-checks \
@@ -71,6 +71,7 @@ build() {
              -fno-unsafe-math-optimizations \
              -fno-finite-math-only \
              -fomit-frame-pointer \
+             -fno-strict-enums \
              -floop-interchange \
              -floop-strip-mine \
              -floop-block \
@@ -98,6 +99,7 @@ build() {
              -ftree-dse \
              -ftree-reassoc \
              -ftree-vrp \
+             -fstrict-enums \
              -fipa-pure-const \
              -fipa-reference \
              -fipa-modref \
@@ -107,9 +109,7 @@ build() {
              -fipa-cp \
              -fipa-ra \
              -fipa-profile \
-             -flto=auto"
-
-    _cxxflags="-std=gnu++14 -fstrict-enums -fno-operator-names"
+             -fipa-icf"
 
     _ldflags="-Wl,--as-needed \
             -Wl,--gc-sections \
@@ -120,24 +120,18 @@ build() {
             -Wl,--relax \
             -Wl,--hash-style=both \
             -Wl,--strip-discarded \
-            -Wl,--discard-locals \
-            -flto=auto"
-
-    export CC=gcc
-    export CXX=g++
+            -Wl,--discard-locals"
 
     mkdir -p build/release
     cd build/release
 
     CFLAGS="$_cflags" \
-    CXXFLAGS="$_cflags $_cxxflags" \
+    CXXFLAGS="$_cflags -std=gnu++11" \
     LDFLAGS="$_ldflags" \
-    cmake "$srcdir/turingcodec" \
-          -DUSE_SYSTEM_BOOST=ON \
+    cmake -DUSE_SYSTEM_BOOST=ON \
           -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-          -DCMAKE_C_STANDARD=11 \
-          -DCMAKE_CXX_STANDARD=11 \
-          -Wno-author
+          -Wno-author \
+          ../..
 
     make -j"$(nproc)"
 }
