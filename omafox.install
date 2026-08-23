@@ -1,0 +1,47 @@
+# shellcheck shell=bash
+
+post_install() {
+  printf '%s\n' \
+    '' \
+    '==> Omafox installed successfully!' \
+    '' \
+    '🚀 To complete setup:' \
+    '   1. Install the separately distributed Omafox extension in Firefox.' \
+    '   2. Run as your desktop user:' \
+    '      omafox setup' \
+    '' \
+    '   This will:' \
+    '   • Enable the Omarchy theme hook' \
+    '   • Queue the current palette for Firefox' \
+    '' \
+    'Then change your Omarchy theme and watch Firefox follow along!' \
+    ''
+}
+
+post_upgrade() {
+  printf '%s\n' \
+    '' \
+    '==> Omafox updated successfully!' \
+    '' \
+    '   To complete the update:' \
+    '   • Install or update the separately distributed Omafox Firefox extension.' \
+    '   • Run "omafox setup" as your desktop user.' \
+    '   • Restart Firefox or reload the extension.' \
+    ''
+}
+
+post_remove() {
+  printf '%s\n' \
+    '' \
+    '==> Omafox removed.' \
+    '' \
+    'Preserved user files:' \
+    '   • ~/.config/omarchy/hooks/theme-set.d/omafox' \
+    '   • ~/.local/state/omafox/theme.json' \
+    '' \
+    'Delete those files manually if "omafox remove" was not run first.' \
+    'The separately installed Firefox extension was not removed.' \
+    '' \
+    'Thank you for using Omafox!' \
+    ''
+}
