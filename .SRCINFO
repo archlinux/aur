@@ -1,0 +1,23 @@
+pkgbase = hypr-taskspace
+	pkgdesc = Task-centric Hyprland control plane with Omarchy and Waybar integration
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jsimonrichard/hypr-taskspace
+	install = hypr-taskspace.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = hyprland
+	optdepends = waybar: CFFI taskspace/workspace module
+	optdepends = chromium: helper extension for tab restore
+	options = !strip
+	options = !lto
+	source = hypr-taskspace-0.1.0.tar.gz::https://github.com/jsimonrichard/hypr-taskspace/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 6b98426b11c96d1631bf6dba554dc99577335374064d79982201aa28cf15c5e7
+
+pkgname = hypr-taskspace

@@ -1,0 +1,9 @@
+post_install() {
+  echo "Enable the user daemon:  systemctl --user enable --now tskd.service"
+  echo "On Omarchy:              tsk install omarchy"
+  echo "Then verify:             tsk doctor"
+}
+
+post_upgrade() {
+  echo "Restart Waybar if you use the CFFI module (the package hook reloads Hyprland and tskd)."
+}
