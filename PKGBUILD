@@ -3,7 +3,7 @@
 
 pkgname=mnt-reform-lpc-dkms
 _pkgbase=reform2_lpc
-pkgver=1.87
+pkgver=1.88
 pkgrel=1
 pkgdesc='DKMS module for the MNT Reform LPC11U24 system controller'
 arch=('aarch64' 'x86_64')

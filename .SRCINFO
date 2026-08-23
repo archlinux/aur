@@ -1,6 +1,6 @@
 pkgbase = mnt-reform-lpc-dkms
 	pkgdesc = DKMS module for the MNT Reform LPC11U24 system controller
-	pkgver = 1.87
+	pkgver = 1.88
 	pkgrel = 1
 	url = https://source.mnt.re/reform/reform-tools
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = mnt-reform-lpc-dkms
 	depends = dkms
 	provides = mnt-reform-lpc
 	conflicts = mnt-reform-lpc
-	source = reform-tools::git+https://source.mnt.re/reform/reform-tools.git#tag=1.87
+	source = reform-tools::git+https://source.mnt.re/reform/reform-tools.git#tag=1.88
 	sha256sums = SKIP
 
 pkgname = mnt-reform-lpc-dkms
