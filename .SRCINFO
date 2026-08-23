@@ -1,18 +1,19 @@
 pkgbase = masterpdfeditor
 	pkgdesc = A complete solution for viewing, creating and editing PDF files
 	pkgver = 5.9.99
-	pkgrel = 3
+	pkgrel = 4
 	url = https://code-industry.net/free-pdf-editor/
 	arch = x86_64
 	license = custom
 	makedepends = patchelf
-	source_x86_64 = https://code-industry.net/public/master-pdf-editor-5.9.99-qt5.x86_64.tar.gz
-	sha1sums_x86_64 = bf84fca45c8e416f959b9667a21baf45d87e0f39
+	source_x86_64 = https://code-industry.net/public/master-pdf-editor-5.9.99-qt6.11.1.x86_64.tar.gz
+	sha1sums_x86_64 = f6e09030bca6bc16bebb34a494e90b63ab5df484
 
 pkgname = masterpdfeditor
 	depends = libgl
 	depends = pkcs11-helper
-	depends = qt5-base
-	depends = qt5-svg
-	depends = qt5-declarative
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-declarative
 	depends = sane
+	optdepends = qt6-wayland: Wayland platform plugin

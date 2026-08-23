@@ -6,17 +6,19 @@
 
 pkgname=masterpdfeditor
 pkgver=5.9.99
-pkgrel=3
+pkgrel=4
 pkgdesc='A complete solution for viewing, creating and editing PDF files'
 url='https://code-industry.net/free-pdf-editor/'
 arch=('x86_64')
 license=('custom')
 makedepends=('patchelf')
-source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt5.x86_64.tar.gz")
-sha1sums_x86_64=('bf84fca45c8e416f959b9667a21baf45d87e0f39')
+source_x86_64=("https://code-industry.net/public/master-pdf-editor-${pkgver}-qt6.11.1.x86_64.tar.gz")
+_checksum=$(curl 'https://code-industry.net/checksum-information/' | grep -oP '[a-f0-9]{40}(?=.*master-pdf-editor-'"${pkgver}${_patchver}"'-qt6.11.1.x86_64.tar.gz)')
+sha1sums_x86_64=("${_checksum% *}")
 
 package() {
-  depends=('libgl' 'pkcs11-helper' 'qt5-base' 'qt5-svg' 'qt5-declarative' 'sane')
+  depends=('libgl' 'pkcs11-helper' 'qt6-base' 'qt6-svg' 'qt6-declarative' 'sane')
+  optdepends=('qt6-wayland: Wayland platform plugin')
 
   install -d "$pkgdir"{/opt/,/usr/bin/}
   cp -a --no-preserve=ownership master-pdf-editor-${pkgver%%.*} "$pkgdir/opt/"
