@@ -62,12 +62,18 @@ _default_host_hash=95c6269ad110048ef5020a63318acbcfebc325725cb6cb38fb2683fb41813
 prepare() {
     cd "${pkgname}-${pkgver}"
 
-    # Enable the hash pinning feature in the *default* config template
+    # Harden the *default* config template by enabling:
+    # * host script hash pinning feature
+    # * signers whitelist
+    #    - negligible benefit since wrapper script defaults to the
+    #      same list when no whitelist in user config
     local _ph_hash="1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"
-    sed -i "s/^#HOST_HASH=\"${_ph_hash}\"$/HOST_HASH=\"${_default_host_hash}\"/" \
-        parcel-host
+    sed -i -e "s/^#HOST_HASH=\"${_ph_hash}\"$/HOST_HASH=\"${_default_host_hash}\"/" \
+           -e "s/^#VALID_SIGNERS=/VALID_SIGNERS=/" \
+            parcel-host
     echo ">>> Pinned parcel-host script hash in default config template to:"
     echo ">>>    ${_default_host_hash}"
+    echo ">>> Enabled default whitelist for parcel-host script signing keys"
 }
 
 package() {
