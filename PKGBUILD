@@ -1,7 +1,7 @@
 # Maintainer: liqoxowz <hoswt4s3321399@gmail.com>
 
 pkgname=kabutam
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
 pkgdesc="Terminal-based stock and portfolio tracking tool"
 arch=('any')
@@ -13,8 +13,13 @@ depends=(
         'python-yfinance'
         'python-wcwidth'
         'python-jpholiday'
-        'pass'
 )
+
+optdepends=(
+    'pass: secret storage backend (default)'
+    'libsecret: Secret Service secret storage backend'
+)
+
 makedepends=(
         'python-build' 
         'python-installer'
@@ -22,10 +27,10 @@ makedepends=(
 )
 
 checkdepends=(
-    python-pytest
+    'python-pytest'
 )
 source=($pkgname::git+https://codeberg.org/tonrl/$pkgname.git#tag=v$pkgver)
-sha256sums=('61b8a5457257a0d6550061bf93966a13521aa6f8bf33b638dc6536007adb18bb')
+sha256sums=('214686e9c90a05d992fd444e3935e056166d4265c394665ce8ad07157af24341')
 
 build() {
     cd "$pkgname"

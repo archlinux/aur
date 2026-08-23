@@ -1,6 +1,6 @@
 pkgbase = kabutam
 	pkgdesc = Terminal-based stock and portfolio tracking tool
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://codeberg.org/tonrl/kabutam
 	arch = any
@@ -14,8 +14,9 @@ pkgbase = kabutam
 	depends = python-yfinance
 	depends = python-wcwidth
 	depends = python-jpholiday
-	depends = pass
-	source = kabutam::git+https://codeberg.org/tonrl/kabutam.git#tag=v0.1.6
-	sha256sums = 61b8a5457257a0d6550061bf93966a13521aa6f8bf33b638dc6536007adb18bb
+	optdepends = pass: secret storage backend (default)
+	optdepends = libsecret: Secret Service secret storage backend
+	source = kabutam::git+https://codeberg.org/tonrl/kabutam.git#tag=v0.1.7
+	sha256sums = 214686e9c90a05d992fd444e3935e056166d4265c394665ce8ad07157af24341
 
 pkgname = kabutam
