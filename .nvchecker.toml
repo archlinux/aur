@@ -1,0 +1,5 @@
+[temo-bin]
+source = "github"
+github = "jpillora/temo"
+use_latest_release = true
+prefix = "v"
