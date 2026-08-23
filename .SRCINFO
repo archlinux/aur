@@ -1,0 +1,24 @@
+pkgbase = latchshot-bin
+	pkgdesc = A lightweight yet intelligent window-aware screenshot tool for Wayland
+	pkgver = 0.2.5
+	pkgrel = 2
+	url = https://github.com/so1ve/latchshot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = libxkbcommon
+	depends = wayland
+	depends = wl-clipboard
+	provides = latchshot=0.2.5
+	conflicts = latchshot
+	conflicts = latchshot-git
+	source = LICENSE::https://github.com/so1ve/latchshot/raw/v0.2.5/LICENSE
+	sha256sums = 4d36a113b0a6a584805f0537e0126a382ca425d544c5ae4302b260c56ad42c83
+	source_x86_64 = latchshot-x86_64-unknown-linux-gnu::https://github.com/so1ve/latchshot/releases/download/v0.2.5/latchshot-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 7e56c7f60756ca85ac14381adfa6fdc01783cbb1ce5424ee93c97795efcae28a
+	source_aarch64 = latchshot-aarch64-unknown-linux-gnu::https://github.com/so1ve/latchshot/releases/download/v0.2.5/latchshot-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 0a8e74f294273889f34ce59298512d3f5762c5fc07826975bad7e715d8fede66
+
+pkgname = latchshot-bin
