@@ -1,15 +1,17 @@
 pkgbase = python-eth-abi
 	pkgdesc = Ethereum ABI utilities for python
-	pkgver = 5.2.0
-	pkgrel = 1
+	pkgver = 6.0.0
+	pkgrel = 2
 	url = https://github.com/ethereum/eth-abi
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-hypothesis
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -18,7 +20,7 @@ pkgbase = python-eth-abi
 	depends = python-eth-typing
 	depends = python-parsimonious
 	optdepends = python-hypothesis: eth_abi.tools module
-	source = eth-abi-5.2.0.tar.gz::https://github.com/ethereum/eth-abi/archive/v5.2.0.tar.gz
-	sha512sums = f14ed97af2a04f9201763064f4e993d9c25283432adad6d9ada7716fb563d44bf3830003dfddc38c7ffa16edcdcdc01cbd59e7c23b4a1e872dfaa58a98ca7c75
+	source = git+https://github.com/ethereum/eth-abi.git#tag=v6.0.0
+	sha512sums = d631b0386685bba686eba7b3ef99b47a29b194b931991fc2a7c2378e08cabc52d9cc7bcb48555397c3e46668926ae3bcc115c3ff29238d92e769e46e8cb13411
 
 pkgname = python-eth-abi
