@@ -4,7 +4,7 @@
 pkgname=opcda-bridge-client-bin
 pkgver=0.3.2
 epoch=1
-pkgrel=1
+pkgrel=2
 pkgdesc='OPC DA cross-platform client'
 arch=('x86_64')
 url='https://github.com/bytehound-labs/opcda-bridge'
@@ -13,8 +13,8 @@ options=('!debug')
 provides=('opcda-bridge-client')
 conflicts=('opcda-bridge-client')
 
-source=("LICENSE::https://raw.githubusercontent.com/bytehound-labs/opcda-bridge/opcda-bridge-client-v0.3.2/LICENSE"
-        "README.md::https://raw.githubusercontent.com/bytehound-labs/opcda-bridge/opcda-bridge-client-v0.3.2/README.md")
+source=("LICENSE-0.3.2::https://raw.githubusercontent.com/bytehound-labs/opcda-bridge/opcda-bridge-client-v0.3.2/LICENSE"
+        "README-0.3.2.md::https://raw.githubusercontent.com/bytehound-labs/opcda-bridge/opcda-bridge-client-v0.3.2/README.md")
 sha256sums=('6e7c22106722c151ffc66d0faf2035155eca1ad91931f5679c6773891c08deef'
             '613de906aeb201b391fbacddedd3f71930657329e632f3fb71ec33fe17518288')
 
@@ -23,6 +23,6 @@ sha256sums_x86_64=('f066bd892651b2aeade307cfd6456d0ac5a5cb38f409f5b16b9d8a5e2bee
 
 package() {
     install -Dm755 "opcda-bridge-client" "${pkgdir}/usr/bin/opcda-bridge-client"
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "LICENSE-0.3.2" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "README-0.3.2.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
