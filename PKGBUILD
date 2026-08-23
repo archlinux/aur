@@ -22,7 +22,7 @@ license=('MIT')
 provides=("${_appname}")
 conflicts=("${_appname}")
 
-options=(!strip)
+options=('!strip')
 
 _pkgsrc="${_appname}-${pkgver}"
 
