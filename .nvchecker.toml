@@ -1,0 +1,5 @@
+[angkorgit-bin]
+source = "github"
+github = "cheat2001/angkorgit"
+use_latest_release = true
+prefix = "v"
