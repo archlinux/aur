@@ -9,6 +9,11 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 
 ## [Unreleased]
 
+## [2.20.11] - 2026-08-22
+
+### Fixed
+- [Issue 76](https://github.com/plrigaux/sysd-manager/issues/76) Use the checkbox's label for the Follow option and improve UX
+
 ## [2.20.9] - 2026-08-04
 
 ### Added

@@ -2,19 +2,19 @@
 # Maintainer: Pierre-Luc Rigaux 
 # Contributor: Pierre-Luc Rigaux 
 pkgname=sysd-manager
-pkgver=2.20.10
-pkgrel=5
+pkgver=2.20.11
+pkgrel=1
 pkgdesc="A systemd GUI to manage service, timer, socket and other units."
 arch=("x86_64" "aarch64")
 url="https://github.com/plrigaux/sysd-manager"
 license=("GPL-3.0-or-later")
-depends=("gtk4" "libadwaita" "systemd-libs" "gtksourceview5" "gettext")
-makedepends=("cargo" "git")
+depends=("glib2" "gtk4" "libadwaita" "systemd-libs" "gtksourceview5" "gettext")
+makedepends=("glib2" "cargo" "git")
 changelog=CHANGELOG.md
-_commit=48d8968b879f7d9523faa4e8664443a672c9741a
+_commit=bff04fd2e20a985dff7f5760ab6908e9426a20d8
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plrigaux/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 _pkgsrcdir=$pkgname-$pkgver
-sha256sums=('08dd2a039f04e690d993916a5642a6d72e3672c6b96369207ceb32ae13d0e1e7')
+sha256sums=('dc104abfc90e20fad4667883e7a2f1f12c896700bbe0cfeb5fb636502f125180')
 
 prepare() {
 	cd $_pkgsrcdir
@@ -46,12 +46,10 @@ package() {
 	echo ""
 	install -vDm755 "./target/release/sysd-manager" -t "$pkgdir/usr/bin"
 	install -vDm644 "./data/icons/hicolor/scalable/apps/io.github.plrigaux.sysd-manager.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+	install -vDm644 "./data/schemas/io.github.plrigaux.sysd-manager.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
 	install -vDm644 "./target/loc/io.github.plrigaux.sysd-manager.desktop" -t "$pkgdir/usr/share/applications"
 	install -vDm644 "./target/loc/io.github.plrigaux.sysd-manager.metainfo.xml" -t "$pkgdir/usr/share/metainfo"
 	
-	install -vDm644 "./data/schemas/io.github.plrigaux.sysd-manager.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas"
-    #glib-compile-schemas "$pkgdir/usr/share/glib-2.0/schemas"
-
 	cp -vr "./target/locale" "$pkgdir/usr/share/" 
 
 	PROGRAM="${BBCYAN}SysD Manager${NC}"
