@@ -1,15 +1,15 @@
 pkgbase = bjeps2xx
 	pkgdesc = Pacote de instalacao do Complemento Banrisul Internet Banking destinado ao sistema operacional Linux.
 	pkgver = 6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.banrisul.com.br/bob/site/link/complemento-internet-banking.html
 	install = bjeps2xx.install
 	arch = x86_64
 	license = custom
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://www.banrisul.com.br/bob/site/link/midias/49309_ComplementoBanrisulLinux_vrs6100.deb
-	sha512sums_x86_64 = 452f37970ec81886b3e75436f97bc36bca4265610a828ac97a92d3890ab389a932a625d4e0939626ff33a1108055fa47ba13a7f6d0abc35c5601d6e101e1a06a
+	source_x86_64 = https://www.banrisul.com.br/bob/site/link/midias/49309_ComplementoBanrisulLinux_vrs6100a.deb
+	sha512sums_x86_64 = 2d4de3016e6b96d2e59c448e2d480b7b6b0f97171694200a5b062187cb1a6f6105180f9303614b413ab6ba87c4c7adc60220e9a86649114411698f1e990a6a0e
 
 pkgname = bjeps2xx
 	depends = cairo
@@ -25,3 +25,5 @@ pkgname = bjeps2xx
 	depends = pango
 	depends = pcsclite
 	depends = zlib
+	optdepends = ccid
+	optdepends = pcsc-tools

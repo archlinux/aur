@@ -66,8 +66,10 @@ post_upgrade() {
 }
 
 post_remove() {
+	HOST_NAME=br.com.banrisul.bjess2jm_wizardserver
+
     if [ "$(locale | grep "LANG")" = "LANG=pt_BR.UTF-8" ]; then
-        echo -e "\e[34;1m==>\e[39;1m Finalizando remocao de arquivos... \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m Finalizando remoção de arquivos... \e[0m"
     else
         echo -e "\e[34;1m==>\e[39;1m Finishing removing files... \e[0m"
     fi
