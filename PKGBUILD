@@ -3,7 +3,7 @@
 # AUR Package for Linuxy - One-click Linux Application Manager
 
 pkgname=linuxy
-pkgver=2.0.0
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Multi-platform Desktop Application Manager with Firejail sandboxing"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('cargo' 'nodejs' 'npm' 'llvm' 'clang' 'patchelf')
 optdepends=('appimageupdatetool: AppImage auto-updates')
 install=linuxy.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/swadhinbiswas/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a242dbeb9ac5b30f8168116508a8026c492f4c03b45d864447f99ce0155ef84f')
+sha256sums=('c4c3f43c717be45c66aa6790904be7d3130b0444051680e05343cee3f5e44546')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
