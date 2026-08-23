@@ -16,7 +16,7 @@ sha256sums=('1d8837540ccc15d98245a1c73fd08f404b2a7bdfe7dc9bed2fdece818ff6df67'
             '6197b67dd0ab016d5fe6059ea779b440a3a8d28b1e83ec19c02321113eaaf0b1')
 
 package() {
-	install -Dm644 "innounp.exe"      -t "${pkgdir}/usr/share/innounp"
+	install -Dm755 "innounp.exe"      -t "${pkgdir}/usr/share/innounp"
 	install -Dm755 "start-innounp.sh"    "${pkgdir}/usr/bin/innounp"
 
 	install -Dm644 "innounp.htm"      -t "${pkgdir}/usr/share/doc/innounp"
