@@ -1,0 +1,14 @@
+post_install() {
+    # Apply the USB-audio udev rule to devices already plugged in.
+    # Failures are non-fatal: a replug covers the same ground.
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger --subsystem-match=usb 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    udevadm control --reload-rules 2>/dev/null || true
+}
