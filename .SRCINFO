@@ -1,13 +1,13 @@
 pkgbase = fontbm
 	pkgdesc = BMFont compatible command line bitmap font generator.
-	pkgver = 0.5.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/vladimirgamalyan/fontbm
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = freetype2
-	source = https://github.com/vladimirgamalyan/fontbm/archive/refs/tags/v0.5.0.tar.gz
-	md5sums = 76a242e85067acc2cbc6983ade15d1d7
+	source = https://github.com/vladimirgamalyan/fontbm/archive/refs/tags/v0.7.1.tar.gz
+	b2sums = 099ef2f90762c47b31145307eb43042415f1e1327469793c7efd20ca5801483e67bc9befe6166db4ff171f8d46da63521e2a0f210d8290a4377d4b674b91419e
 
 pkgname = fontbm
