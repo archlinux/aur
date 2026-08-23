@@ -1,0 +1,15 @@
+pkgbase = termdock
+	pkgdesc = A terminal multiplexer with persistent sessions — split panes, detach, reattach
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/padovanl/termdock
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = termdock
+	options = !strip
+	source = termdock-0.0.8.tgz::https://github.com/padovanl/termdock/archive/v0.0.8.tar.gz
+	sha256sums = 00a9d57b93fecc145286916444de9a12b0c6e77defc53717ddc78efb3828eda1
+
+pkgname = termdock

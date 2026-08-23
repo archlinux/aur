@@ -1,0 +1,5 @@
+[termdock]
+source = "github"
+github = "padovanl/termdock"
+use_latest_release = true
+prefix = "v"
