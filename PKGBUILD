@@ -1,4 +1,6 @@
-# Maintainer: Sematre <sematre at gmx dot de>
+# Maintainer: Pietagorh <pietagorhh at proton dot me>
+# Contributor: Sematre <sematre at gmx dot de>
+
 pkgname=innounp-bin
 pkgver=0.50
 pkgrel=1
