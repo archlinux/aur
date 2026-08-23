@@ -10,7 +10,7 @@
 # the builder's keyring for no benefit.
 
 pkgname=tidemark-git
-pkgver=0.1.0.r2.g73b7f7a
+pkgver=0.1.2.r0.g872905a
 pkgrel=1
 pkgdesc='Track AI provider quota limits: how much of each rate-limit window is burned, when it resets, and whether the current pace reaches it'
 arch=('x86_64')
@@ -22,7 +22,8 @@ depends=('gtk4' 'libadwaita' 'sqlite' 'dbus')
 # oo7 talks to the Secret Service over D-Bus, so the keyring never shows up as a library
 # in ldd — but without a provider of org.freedesktop.secrets the app stays in its
 # no-credential state. Any provider works; gnome-keyring is just the common one, so this
-# is an optdepend rather than a hard dependency.
+# is an optdepend rather than a hard dependency. Deliberately AUR-only: the repo PKGBUILD
+# omits it for now, and that omission is not drift.
 optdepends=('gnome-keyring: provides the Secret Service where provider keys are stored (KeePassXC also works)')
 makedepends=('git' 'cargo')
 provides=('tidemark')
@@ -53,10 +54,10 @@ package() {
     cd "$srcdir/tidemark"
     local bin="target/release"
 
-    # The unit's ExecStart is /usr/bin/tidemarkd, which is where the line above puts it.
     install -Dm755 "$bin/tidemark" "$pkgdir/usr/bin/tidemark"
     install -Dm755 "$bin/tidemarkd" "$pkgdir/usr/bin/tidemarkd"
 
+    # The unit's ExecStart is /usr/bin/tidemarkd, which is where the line above puts it.
     install -Dm644 data/tidemarkd.service "$pkgdir/usr/lib/systemd/user/tidemarkd.service"
 
     # Tidemark's own full-colour icon. Native panel sizes matter: some SNI hosts display a
