@@ -11,7 +11,8 @@ typedef char *(*real_fn)(Display *, Atom);
 
 char *XGetAtomName(Display *dpy, Atom atom) {
     static real_fn real = NULL;
-    if (!real) real = (real_fn)dlsym(RTLD_NEXT, "XGetAtomName");
     if (atom == 0) return strdup("PRIMARY");
+    if (!real) real = (real_fn)dlsym(RTLD_NEXT, "XGetAtomName");
+    if (!real) return NULL;
     return real(dpy, atom);
 }

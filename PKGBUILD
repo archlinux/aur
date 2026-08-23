@@ -2,7 +2,7 @@
 pkgname=incy-bin
 _pkgname=incy
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform proxy client built on Xray-core"
 arch=('x86_64')
 url="https://incy.cc/"
@@ -10,7 +10,7 @@ license=('LicenseRef-proprietary')
 depends=('glibc' 'hicolor-icon-theme' 'fontconfig' 'libx11'
          'libxext' 'libxrender' 'libxtst' 'libxi' 'alsa-lib'
          'gcc-libs' 'libglvnd' 'polkit')
-makedepends=('gcc')
+makedepends=('gcc' 'patchelf')
 optdepends=('iptables: kill switch support'
             'libnotify: desktop notifications'
             'python-gobject: Wayland tray support'
@@ -21,18 +21,16 @@ options=('!strip')
 install=incy-bin.install
 
 source=("${_pkgname}-${pkgver}-linux-x64.pkg.tar.zst::https://github.com/INCY-DEV/incy-platforms/releases/download/desktop-v${pkgver}/incy-linux-x64.pkg.tar.zst"
-        "fix-xatom.c"
-        "60-incy.rules")
+        "fix-xatom.c")
 sha256sums=('0f38ae39bb2a85a003cd1890df4b9e4007a17a0319f062f86a06332c7034ccc0'
-            'SKIP'
-            'SKIP')
+            'd821ef0eb09c7868faae25390dad7d847cc1d94fbb6d5432b09ae965068466cc')
 
 
 build() {
     gcc -shared \
         -fPIC \
         "$srcdir/fix-xatom.c" \
-        -o fix-xatom.so \
+        -o libfix-xatom.so \
         -lX11 \
         -ldl
 }
@@ -42,34 +40,16 @@ package() {
     install -dm755 "$pkgdir/opt"
     cp -a --no-preserve=ownership "$srcdir/opt/incy" "$pkgdir/opt/"
     install -dm755 "$pkgdir/usr"
+    cp -a --no-preserve=ownership "$srcdir/usr/bin" "$pkgdir/usr/"
     cp -a --no-preserve=ownership "$srcdir/usr/share" "$pkgdir/usr/"
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
     echo "Proprietary. See: https://incy.cc/licenses" > "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-    # Install X11 clipboard atom-0 workaround
+    # Install X11 clipboard atom-0 workaround directly into Java runtime
     # Prevents JDK NullPointerException in XAtom.getName() when atom=0
-    install -Dm755 "$srcdir/fix-xatom.so" "$pkgdir/opt/incy/lib/fix-xatom.so"
-
-    # Create wrapper that injects LD_PRELOAD for clipboard fix
-    # Keep original binary name unchanged — the Java GUI reads argv[0] for config
-    cat > "$pkgdir/opt/incy/bin/incy.wrapper" << 'WRAPPER'
-#!/usr/bin/env bash
-export LD_PRELOAD="/opt/incy/lib/fix-xatom.so${LD_PRELOAD:+:$LD_PRELOAD}"
-export XRAY_LOCATION_ASSET="/opt/incy/lib/app/resources/bin"
-exec /opt/incy/bin/incy "$@"
-WRAPPER
-    chmod +x "$pkgdir/opt/incy/bin/incy.wrapper"
-
-    # /usr/bin/incy → wrapper so CLI launches also get LD_PRELOAD
-    install -dm755 "$pkgdir/usr/bin"
-    ln -sf /opt/incy/bin/incy.wrapper "$pkgdir/usr/bin/incy"
-
-    # Point desktop file at wrapper
-    sed -i 's|Exec=/opt/incy/bin/incy\(.*\)|Exec=/opt/incy/bin/incy.wrapper\1|' \
-        "$pkgdir/usr/share/applications/incy.desktop"
-
-    # PolKit rules — cache auth for ~5 min across start/routes/stop
-    install -Dm644 "$srcdir/60-incy.rules" "$pkgdir/etc/polkit-1/rules.d/60-incy.rules"
+    # Patches libawt_xawt.so with DT_NEEDED so it loads without LD_PRELOAD
+    install -Dm755 "$srcdir/libfix-xatom.so" "$pkgdir/opt/incy/lib/runtime/lib/libfix-xatom.so"
+    patchelf --add-needed libfix-xatom.so "$pkgdir/opt/incy/lib/runtime/lib/libawt_xawt.so"
 
     # PolKit action policy — authorises /usr/lib/incy/incy-helper-linux.sh
     install -Dm644 "$srcdir/opt/incy/lib/app/resources/cc.incy.vpn.policy" \
