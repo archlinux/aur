@@ -1,0 +1,19 @@
+pkgbase = qt6-mangowcqml-git
+	pkgdesc = Qt6/QML module for mangowc IPC (mmsg JSON socket) — workspaces, windows, monitors, tags — git master
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/alexindigo/mangowcqml
+	arch = x86_64
+	arch = aarch64
+	license = LGPL-3.0-only
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-declarative
+	provides = qt6-mangowcqml
+	conflicts = qt6-mangowcqml
+	options = !debug
+	source = qt6-mangowcqml-git::git+https://github.com/alexindigo/mangowcqml.git
+	sha256sums = SKIP
+
+pkgname = qt6-mangowcqml-git
