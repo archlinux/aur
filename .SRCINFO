@@ -1,12 +1,13 @@
 pkgbase = lib32-lv2
 	pkgdesc = Plugin standard for audio systems (32-bit)
 	pkgver = 1.18.10
-	pkgrel = 2
+	pkgrel = 3
 	url = https://lv2plug.in/
 	arch = x86_64
 	license = ISC
 	makedepends = codespell
 	makedepends = flake8
+	makedepends = lib32-gcc-libs
 	makedepends = meson
 	makedepends = python-black
 	makedepends = python-pylint
