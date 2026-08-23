@@ -1,6 +1,6 @@
 pkgbase = keepkit-bin
 	pkgdesc = Lightweight TUI for tracking versions of your favorite tools
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/stanlyzoolo/keepkit
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = keepkit-bin
 	provides = keepkit
 	conflicts = keepkit
 	options = !strip
-	source_x86_64 = keepkit-x86_64-0.3.0.tgz::https://github.com/stanlyzoolo/keepkit/releases/download/v0.3.0/keepkit_v0.3.0_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 66e9d44ac281210f1d7e243c0ee1cdf0b39787ca9fca797df0dd19f4769d298b
-	source_aarch64 = keepkit-aarch64-0.3.0.tgz::https://github.com/stanlyzoolo/keepkit/releases/download/v0.3.0/keepkit_v0.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = c4ec842e23944e782b03a227c2c8c4cba8a26623c8517f41301722c1e0ae4e95
+	source_x86_64 = keepkit-x86_64-0.4.0.tgz::https://github.com/stanlyzoolo/keepkit/releases/download/v0.4.0/keepkit_v0.4.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3a3c5837cdd9dcd86c9d7d38c9d2c1ebc21d212fe4211421ee45c62bb74ccb84
+	source_aarch64 = keepkit-aarch64-0.4.0.tgz::https://github.com/stanlyzoolo/keepkit/releases/download/v0.4.0/keepkit_v0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = c94995586699553de138cc98e3e3efe53ee849a714312d27320fe978d71ce06e
 
 pkgname = keepkit-bin
