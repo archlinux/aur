@@ -1,21 +1,21 @@
 # Maintainer: Glax its@glax.dev
 pkgname=eyetrackvr
-pkgver=b0.3.0_8
-pkgrel=3
-pkgdesc="Free and Affordable, Virtual Reality Eye Tracking Platform. "
+pkgver=b0.3.0_9
+pkgrel=1
+pkgdesc="Free and Affordable, Virtual Reality Eye Tracking Platform."
 arch=('x86_64')
 url="https://github.com/EyeTrackVR/EyeTrackVR"
 license=('LicenseRef-Babble Software Distribution License 1.0')
 depends=('eigen3' 'python')
-source=("${pkgname}-${pkgver}_${pkgrel}.tar.gz::${url}/releases/download/EyeTrackApp-0.3.0-BETA-8/EyeTrackVR-0.3.0-BETA-8-linux-x86_64.tar.gz"
+source=("${pkgname}-${pkgver}_${pkgrel}.tar.gz::${url}/releases/download/EyeTrackApp-0.3.0-BETA-9/EyeTrackVR-0.3.0-BETA-9-linux-x86_64.tar.gz"
 "EyeTrackVR.desktop")
-sha256sums=("8f0f53dd01cd648bbbf65cfe3bea2ab134b4871e353d596b368efd03566af48c"
+sha256sums=("d8e3ee3ff47050a350e3710754d139481a47732ab893ea806e42d182d4e26242"
 "0d7be87d7e53b71b04680c733dfe05b712a18c13a94d724b8eeeeaa1e86b8aa5")
 provides=("eyetrackvr" "etvr")
 
 package() {
 	INSTALLDIR="${pkgdir}/opt/eyetrackvr"
-	EXTRACTED="EyeTrackVR-0.3.0-BETA-8"
+	EXTRACTED="EyeTrackVR-0.3.0-BETA-9"
 
 	# Copy files
 	install -D "${srcdir}/${EXTRACTED}/eyetrackvr" "${INSTALLDIR}/eyetrackvr"
