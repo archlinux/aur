@@ -4,7 +4,7 @@
 # shellcheck disable=SC2034,SC2154,SC2164
 
 pkgname=affine
-pkgver=0.27.3
+pkgver=0.27.4
 pkgrel=1
 pkgdesc='A next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use.'
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=(
   "${pkgname}.sh"
   "${pkgname}.desktop"
 )
-sha256sums=('cc6ee4cd1ddd9475b18042c1d4a6ffa72435e3c76307852e388fb77ce5536da4'
+sha256sums=('6ac5990e150357409ce85cf01fe130ef1cd13b112c689d0d578dd619fe67ef13'
             '25363b65c38961d22b1213bed8b8e90b996b7713ab69e4d776a84c1bfe94bf34'
             '18724474ab2351ed00965f9fe9adea04967458dec810866b572cf44ca8185b5b')
 
