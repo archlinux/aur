@@ -1,6 +1,6 @@
 # Maintainer: Cristo Cola <kristokola@hotmail.com>
 pkgname=fast-folder
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Template-driven project folder generator with TUI and browser UI (fastf)"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=(gcc-libs)
 makedepends=(cargo)
 optdepends=('chromium: dedicated app window for fastf ui --app')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8b2082a30c82087cc1b644d9beb7ae2285421910892d27c7d7427ccc7da16f9a')
+sha256sums=('99d5eb03c63bda053ba9953b8b4a0c4817b9f2d6fe3c22f5b781fb150fe5012a')
 
 prepare() {
   cd "$pkgname-$pkgver"
