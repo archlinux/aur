@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.17.0.r5.g65c9463
+pkgver=0.18.0.r29.g8ca1d49
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -99,11 +99,11 @@ prepare() {
 	# use makepkg.conf flags
 	sed -i '/-march=/d' CMakeLists.txt
 	# use system abseil-cpp
-	sed -i '/protobuf/s/FORCE_FETCH_DEPENDENCIES/LOCAL_DEPENDENCIES_ONLY/' externals/CMakeLists.txt
+	sed -i '/find_package/s/absl.*/absl CONFIG)/' CMakeLists.txt
 	# use system glslang
-	sed -i '/find_package/s/glslang 15/glslang/' CMakeLists.txt
+	sed -i '/find_package/s/glslang.*/glslang CONFIG)/' CMakeLists.txt
 	# use system openssl
-	sed -i 's/LibreSSL.*MODULE/OpenSSL CONFIG/' CMakeLists.txt
+	sed -i '/find_package/s/LibreSSL.*/OpenSSL CONFIG)/' CMakeLists.txt
 }
 
 build() {
