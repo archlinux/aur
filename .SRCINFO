@@ -1,6 +1,6 @@
 pkgbase = nixlock-bin
 	pkgdesc = A Wayland session locker that keeps kiosk outputs live while locking the rest, with PAM unlock (prebuilt, x86-64-v3)
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/julian-corbet/nixlock-corbet-ch
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = nixlock-bin
 	depends = libxkbcommon
 	provides = nixlock
 	conflicts = nixlock
-	source = https://github.com/julian-corbet/nixlock-corbet-ch/releases/download/v0.1.1/nixlock-0.1.1-x86_64-v3.tar.gz
-	sha256sums = b623904eaa9d03e8313afb8edf67eb8148a074166b79a20553f57ca1dfd96ca3
+	source = https://github.com/julian-corbet/nixlock-corbet-ch/releases/download/v0.1.2/nixlock-0.1.2-x86_64-v3.tar.gz
+	sha256sums = 0b83e946847cb2f37aaca1af92863f1647013cae3198af683fadf18f5d0212db
 
 pkgname = nixlock-bin
