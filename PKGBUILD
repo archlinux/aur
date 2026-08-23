@@ -4,8 +4,7 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname=papis
-pkgver=0.15.0
-_pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Command-line document and bibliography manager'
 arch=('any')
@@ -21,12 +20,11 @@ depends=('python'
     'python-dominate'
     'python-filetype'
     'python-habanero'
-    'python-isbnlib'
+    'python-lark-parser'
     'python-lxml'
     'python-platformdirs'
     'python-prompt_toolkit'
     'python-pygments'
-    'python-pyparsing'
     'python-requests'
     'python-slugify'
     'python-yaml'
@@ -65,6 +63,7 @@ makedepends=(
 
     'python-sphinx-click'
     'python-sphinx-design'
+    'python-sphinx_rtd_theme'
 )
 checkdepends=(
     'python-pytest'
@@ -77,11 +76,11 @@ checkdepends=(
     'python-whoosh'
 )
 
-source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('40ffd77cde44c7af482ab4523a521754d7c5388d021b01a51eb3c908c6b3cef2')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('9f7a6c5bc0452487a2774e764607735574541feeb7e23002a047aef7081f6903')
 
 build() {
-  cd "${pkgname}-${_pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   python -m build --wheel --no-isolation
 
@@ -95,16 +94,15 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${_pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-  export PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
   build-env/bin/python -m pytest \
+    --disable-plugin-autoload \
     -o addopts='--papis-tmp-doctests --papis-tmp-xdg-home --doctest-modules' \
-    -p papis_testing \
-    papis tests
+    -p papis_testing
 }
 
 package() {
-  cd "${pkgname}-${_pkgver}"
+  cd "${pkgname}-${pkgver}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
