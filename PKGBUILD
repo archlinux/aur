@@ -1,6 +1,6 @@
 # Maintainer: lee <lee@yizhisec.com>
 #
-# Rendered by .github/workflows/release.yml — 0.3.0 / 02b74e3ca9be56af92b243c73ba9bd8142fd0bee930e73101a3f3e79c363c7af are
+# Rendered by .github/workflows/release.yml — 0.3.1 / cc1ee60df2ba154688473eeade4665a4d1960a9087e26763de7bfc768eba615a are
 # substituted with the tag and the checksum of the published release's
 # auto-generated source tarball.
 #
@@ -11,7 +11,7 @@
 # takes a minute or two.
 
 pkgname=inm
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=2
 pkgdesc="Native manager for Incus virtual machines with the SPICE console embedded in the app"
 arch=('x86_64')
@@ -20,7 +20,7 @@ license=('MIT')
 depends=('spice-gtk' 'vulkan-icd-loader' 'libxkbcommon-x11')
 makedepends=('cargo' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('02b74e3ca9be56af92b243c73ba9bd8142fd0bee930e73101a3f3e79c363c7af')
+sha256sums=('cc1ee60df2ba154688473eeade4665a4d1960a9087e26763de7bfc768eba615a')
 
 build() {
     cd "${pkgname}-${pkgver}"
