@@ -1,0 +1,31 @@
+diff --git a/relacy/relacy.hpp b/relacy/relacy.hpp
+index e5f20f5..f3dfeda 100644
+--- a/relacy/relacy.hpp
++++ b/relacy/relacy.hpp
+@@ -13,6 +13,15 @@
+ #   pragma once
+ #endif
+ 
++// GCC 16.2.1 with -O3 deterministically segfaults test_wfmo_try when
++// -fipa-cp-clone is enabled. LTO was ruled out independently; disabling only
++// ipa-cp-clone keeps the rest of the caller's optimization settings intact.
++// Re-test this guard when moving beyond GCC 16.
++#if defined(__GNUC__) && !defined(__clang__) && __GNUC__ >= 16
++#   pragma GCC push_options
++#   pragma GCC optimize ("no-ipa-cp-clone")
++#endif
++
+ #include "base.hpp"
+ #include "context.hpp"
+ #include "context_base_impl.hpp"
+@@ -32,6 +41,10 @@
+ #include "stdlib/windows.hpp"
+ #include "stdlib/pthread.hpp"
+ 
++#if defined(__GNUC__) && !defined(__clang__) && __GNUC__ >= 16
++#   pragma GCC pop_options
++#endif
++
+ #define VAR_T(x) rl::var<x>
+ #define TLS_T(T) rl::thread_local_var<T>
+ #define VAR(x) x($)
