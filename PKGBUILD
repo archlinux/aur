@@ -1,52 +1,58 @@
-# Maintainer: Maxime Gauduin <alucryd@gmail.com>
+# Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Nicky726 <nicky726@gmail.com>
 # Contributor: Tom Killian <tom@archlinux.org>
 # Contributor: Rémy Oudompheng <remyoudompheng@gmail.com>
 
 pkgname=lib32-libtheora
-pkgver=1.1.1
-pkgrel=10
-pkgdesc='An open video codec developed by the Xiph.org'
-arch=('x86_64')
-url='http://www.xiph.org'
-license=('BSD')
-depends=('lib32-libogg' 'libtheora')
-makedepends=('gcc-multilib' 'lib32-libvorbis')
-source=("http://downloads.xiph.org/releases/theora/libtheora-${pkgver}.tar.bz2")
-sha256sums=('b6ae1ee2fa3d42ac489287d3ec34c5885730b1296f0801ae577a35193d3affbc')
+pkgver=1.2.0
+pkgrel=1
+pkgdesc='Standard encoder and decoder library for the Theora video compression format (32-bit)'
+arch=(x86_64)
+url='https://www.theora.org/'
+license=(BSD-3-Clause)
+depends=(
+  lib32-glibc
+  lib32-libogg
+  libtheora
+)
+makedepends=(
+  git
+  lib32-libvorbis
+)
+source=("git+https://github.com/xiph/theora.git#tag=v$pkgver")
+b2sums=('50ed821f0a8ee98c95ea638c66740dda5d2346b70742f1834b96f0089d219c9f3b0d0fad539138b7c514f47d968a550fa842bfff22935db748caf6a4c489428c')
+validpgpkeys=(17E78AB6BD65A91EE811D60947000F7BB1441DEF) # Ralph Giles <giles@mozilla.com>
 
 prepare() {
-  cd libtheora-${pkgver}
-
-  sed -i 's|AC_DEFINE(\[OC_X86_64_ASM\]|#AC_DEFINE(\[OC_X86_64_ASM\]|
-          s|AM_CONFIG_HEADER|AC_CONFIG_HEADERS|' configure.ac
+  cd theora
+  autoreconf -fi
 }
 
 build() {
-  cd libtheora-${pkgver}
+  cd theora
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
 
-  ./autogen.sh \
-    --prefix='/usr' \
-    --libdir='/usr/lib32' \
-    --with-pic \
-    --disable-examples \
-    --disable-static
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib32 \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-examples
   make
 }
 
-package() {
-  cd libtheora-${pkgver}
-
-  make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/usr/{include,share}
-
-# License
-  install -dm 755 "${pkgdir}"/usr/share/licenses
-  ln -s libtheora "${pkgdir}"/usr/share/licenses/lib32-libtheora
+check() {
+  cd theora
+  make check
 }
 
-# vim: ts=2 sw=2 et:
+package() {
+  cd theora
+  make DESTDIR="$pkgdir" install
+  rm -r "$pkgdir"/usr/{include,share}
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE COPYING
+}
