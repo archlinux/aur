@@ -1,0 +1,17 @@
+post_install() {
+  cat <<EOF
+
+P11TCOS consists out of three separate PKCS#11 modules:
+- Netkey allows for advanced electronic signature and extra certificates (e.g. S/MIME)
+- NetkeyPlus (NKP) is for IDKey cards when working with VS-NfD classified material
+- SigG is short for Signaturgesetz and covers the eIDAS QES functionality
+
+Due to the more special use cases of NetkeyPlus and SigG, they're not installed
+as a default p11-kit module. You will need to manually configure these.
+
+Please be aware that NKP and SigG require using the PIN pad of your QSCD and entering the CAN.
+For this reason, most applications don't play well with the SigG tokens being presented to them
+unless they specifically expect it.
+
+EOF
+}
