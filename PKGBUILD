@@ -17,8 +17,8 @@ provides=("${_pkgname}")
 
 options=('!strip')
 
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
-source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 
 sha256sums_x86_64=('9adbd255577721808332258c541a62dcbbac0985a5b16b72195150497217f936')
 sha256sums_aarch64=('63c9fa1797f6f0fc4e60b95d801bda33b5f80e9be7b2db8072fd646f7bc7d488')
