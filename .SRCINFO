@@ -39,7 +39,7 @@ pkgbase = alacrium-browser-bin
 	options = !debug
 	options = !strip
 	source = https://github.com/brauliobo/alacrium/releases/download/M151.0.7922.173/alacrium-browser_151.0.7922.173_AVX.deb
-	source = LICENSE-1722f1b79c5d1e3edd2e2d90ec50a0a5b6f96904.md::https://raw.githubusercontent.com/brauliobo/alacrium/1722f1b79c5d1e3edd2e2d90ec50a0a5b6f96904/LICENSE.md
+	source = LICENSE-f2d69bf2db4fc839b03deebac1c94041bdf6dcd6.md::https://raw.githubusercontent.com/brauliobo/alacrium/f2d69bf2db4fc839b03deebac1c94041bdf6dcd6/LICENSE.md
 	sha256sums = 009ed514e8791e285b4df273a9b26df5e33c0ec0de09b343a3f030c00bbf56bd
 	sha256sums = 1d43c681d483ed1bf2e88507be7368eea8d1dedc503d39b8e17e701d0be00fe2
 
