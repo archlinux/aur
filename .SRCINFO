@@ -1,12 +1,12 @@
 pkgbase = bi
 	pkgdesc = Binary editor like vI
-	pkgver = 3.5.2.38
+	pkgver = 3.5.2.39
 	pkgrel = 1
 	url = https://github.com/fygar256/bi
 	arch = any
 	license = MIT
 	depends = python
-	source = bi-3.5.2.38.zip::https://github.com/fygar256/bi/archive/refs/tags/v3.5.2.38-stable.zip
-	sha256sums = 11dc9c0f138f04831ef5f74aca2a727f750e9625dd95b0267466f97534bf2def
+	source = bi-3.5.2.39.zip::https://github.com/fygar256/bi/archive/refs/tags/v3.5.2.39-stable.zip
+	sha256sums = aa8be562d851e42afa758788af38b773a9c9a1c4efa88eabfeecf9d139b190a3
 
 pkgname = bi
