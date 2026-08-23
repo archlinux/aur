@@ -1,7 +1,7 @@
 pkgbase = python-eth-account
 	pkgdesc = Account abstraction library for web3.py
-	pkgver = 0.13.7
-	pkgrel = 1
+	pkgver = 0.14.0
+	pkgrel = 2
 	url = https://github.com/ethereum/eth-account
 	arch = any
 	license = MIT
@@ -9,9 +9,11 @@ pkgbase = python-eth-account
 	checkdepends = python-hypothesis
 	checkdepends = nodejs
 	checkdepends = npm
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -28,7 +30,7 @@ pkgbase = python-eth-account
 	depends = python-ckzg
 	depends = python-pydantic
 	depends = python-toolz
-	source = eth-account-0.13.7.tar.gz::https://github.com/ethereum/eth-account/archive/v0.13.7.tar.gz
-	sha512sums = 53825e7fda79a7a5db5f560673af6b1d20920442854d51a471ee2356c414d39409bb14916daec3ec2caa562e899a3a694f860760face92099f56dacd7452e4c3
+	source = git+https://github.com/ethereum/eth-account.git#tag=v0.14.0
+	sha512sums = e929646680fcd4487d9d15b0c76016fda45717d3d246c17b15195e022e27d005726f8ae209e5fe0fd7431dc05de94b5536c6d448341150b129e5c71d22a3ff80
 
 pkgname = python-eth-account
