@@ -8,7 +8,7 @@ url="https://codeberg.org/ayonelnx/ggdo"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/ayonelnx/ggdo/archive/master.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/ayonelnx/ggdo/archive/main.tar.gz")
 sha256sums=('SKIP')
 
 build() {
