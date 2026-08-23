@@ -4,7 +4,7 @@
 
 pkgname=mupdf-git
 _pkgname=mupdf
-pkgver=20260814.94bc1b408
+pkgver=20260822.2db2083b6
 pkgrel=1
 pkgdesc='Lightweight PDF, XPS, and E-book viewer'
 arch=(x86_64 armv7h aarch64)
@@ -20,7 +20,6 @@ source=(git://git.ghostscript.com/mupdf.git
         git://git.ghostscript.com/thirdparty-freeglut.git
         git://git.ghostscript.com/thirdparty-lcms2.git#branch=lcms2mt
         https://cgit.ghostscript.com/cgi-bin/cgit.cgi/mujs.git/plain/regexp.h
-	fix-entries.patch
         desktop)
 sha256sums=(SKIP
             SKIP
@@ -28,8 +27,7 @@ sha256sums=(SKIP
             SKIP
             SKIP
             SKIP
-            d8db1f6daadf0ab92a806d1e5f2ddc2289767f18cd862b8978bae6a19b82ea0a
-            b4caa23c90bc3e685ed3e4e8753fdd6227fdcc2ec926bdd8c7e10a7836a232e1
+            f3a0bf8821a77587d63590ba24162daee8429d9bbcd475dcede62c4fcd3d8066
             ccff66979249bd4ab4ba8918660f194eb90eb0ae231b16e36a6cecdcf471883f)
 
 conflicts=(${_pkgname}{,-gl,-tools})
@@ -53,8 +51,8 @@ prepare() {
 	# No idea what that is for
 	sed -e '/autoheaderid/d' -i source/html/md.c Makelists
 
-	# Weird stuff
-	patch -p1 -i ../fix-entries.patch
+	# Not yet available in Arch package
+	sed -e '/GUMBO_NODE_PROCESSING_INSTRUCTION/d' -i source/fitz/xml.c
 }
 
 build() {

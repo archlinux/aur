@@ -1,6 +1,6 @@
 pkgbase = mupdf-git
 	pkgdesc = Lightweight PDF, XPS, and E-book viewer
-	pkgver = 20260814.94bc1b408
+	pkgver = 20260822.2db2083b6
 	pkgrel = 1
 	url = https://mupdf.com/
 	arch = x86_64
@@ -31,7 +31,6 @@ pkgbase = mupdf-git
 	source = git://git.ghostscript.com/thirdparty-freeglut.git
 	source = git://git.ghostscript.com/thirdparty-lcms2.git#branch=lcms2mt
 	source = https://cgit.ghostscript.com/cgi-bin/cgit.cgi/mujs.git/plain/regexp.h
-	source = fix-entries.patch
 	source = desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -39,8 +38,7 @@ pkgbase = mupdf-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = d8db1f6daadf0ab92a806d1e5f2ddc2289767f18cd862b8978bae6a19b82ea0a
-	sha256sums = b4caa23c90bc3e685ed3e4e8753fdd6227fdcc2ec926bdd8c7e10a7836a232e1
+	sha256sums = f3a0bf8821a77587d63590ba24162daee8429d9bbcd475dcede62c4fcd3d8066
 	sha256sums = ccff66979249bd4ab4ba8918660f194eb90eb0ae231b16e36a6cecdcf471883f
 
 pkgname = mupdf-git
