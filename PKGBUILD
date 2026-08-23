@@ -5,7 +5,7 @@
 pkgbase=qt6-base-hifps
 pkgname=(qt6-base-hifps
          qt6-xcb-private-headers-hifps)
-_pkgver=6.11.1
+_pkgver=6.11.2
 pkgver=${_pkgver/-/}
 pkgrel=1
 arch=(x86_64)
