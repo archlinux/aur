@@ -1,11 +1,11 @@
 pkgbase = kiro-crew-bin
 	pkgdesc = A persistent workspace for development work that self-improves and continues beyond one session
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://kiro.dev/crew
+	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = imagemagick
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = cairo
@@ -37,7 +37,9 @@ pkgbase = kiro-crew-bin
 	conflicts = kiro-crew
 	options = !strip
 	options = !debug
-	source = https://github.com/kirodotdev/KiroCrew/releases/download/v0.2.0/KiroCrew-0.2.0.AppImage
-	b2sums = a3b5023aa873e651ea3a582da37cc07358f0734aed2ee5ec38a6679d94d58ab96ff03730fc3caf8fb962fd7ba15c306b108a7d8970a1701bff17f585402e8d8e
+	source_aarch64 = kiro-crew-bin-0.3.0-aarch64.AppImage::https://github.com/kirodotdev/KiroCrew/releases/download/v0.3.0/KiroCrew-aarch64.AppImage
+	b2sums_aarch64 = 7d3f184186bf0a3ad62ea6e54f25a0e1c33018282a88982951553d1c40e73953b0ea433ed640e5752170cf75fdc9c8a256030c93cd964471ce8904c96ce07cac
+	source_x86_64 = kiro-crew-bin-0.3.0-x86_64.AppImage::https://github.com/kirodotdev/KiroCrew/releases/download/v0.3.0/KiroCrew-x86_64.AppImage
+	b2sums_x86_64 = b7a76ac80f2d552f22e15097d0c84599be44a17f6bede6a88d2b8e65c54a78e11d782372fafd64d63e723a616a054e79699d42ec17b321a5bc115dad2c75ede8
 
 pkgname = kiro-crew-bin
