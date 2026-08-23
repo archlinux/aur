@@ -7,7 +7,7 @@ pkgname=xfb
 # every machine that installed it. Raise it only if the version ever has to go
 # backwards again.
 epoch=1
-pkgver=3.1420
+pkgver=3.1421
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -177,18 +177,19 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v3.1420:"
-    echo "  - Take a set with you: XFB serves its playlists to an Android"
-    echo "    companion app over your own network, and hands out the app"
-    echo "    itself — Options > Sync to Phone, scan the code, done"
-    echo "  - The phone plays offline with XFB's crossfades, volume lines,"
-    echo "    equalizer and compressor, and its 432 Hz retune"
-    echo "  - Auto-mix on the phone works out a crossfade for joins nobody"
-    echo "    set, so everything on it plays as a set rather than as cuts"
-    echo "  - Syncing says plainly that it is not encrypted, so you can"
-    echo "    decide whether to serve on the network you are on"
-    echo "  - The reminder to support XFB is a corner notice now, not a"
-    echo "    dialog in front of the splash screen holding up playout"
+    echo "New in v3.1421:"
+    echo "  - Station Backup: a second XFB on your network keeps a full copy"
+    echo "    of this one — music, jingles, ads, programs, schedule and"
+    echo "    playlists — so a dead studio machine is one launch from air"
+    echo "  - XFB fits a low-resolution screen: the player and clock panels"
+    echo "    scale to the room they have, the side panel scrolls, and the"
+    echo "    music list can be resized properly again"
+    echo "  - The progress bar steps aside while the wave view is showing,"
+    echo "    which already draws the playhead"
+    echo "  - Auto Mode plays a random track when you press Play on an empty"
+    echo "    running order, which it never actually managed before, and no"
+    echo "    longer cycles the same two or three tracks for hours"
+    echo "  - XFB_PROFILE=<name> runs a second, separate XFB on one machine"
     echo ""
     echo "Can you share some ETH? 0x9700225FcD115230C9166BD68CEdc23e329D3CdF"
     echo "Thank you for installing XFB! Made with love & linux!"
