@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Name=SimulIDE 2
+GenericName=Electronic Circuit Simulator
+Comment=Real time electronic circuit simulator
+Exec=simulide2 %f
+TryExec=simulide2
+Icon=simulide2
+Terminal=false
+Categories=Science;Electronics;
+Keywords=electronics;circuit;simulator;arduino;avr;pic;esp32;microcontroller;
+MimeType=application/x-simulide-circuit;
+StartupNotify=true
+StartupWMClass=simulide

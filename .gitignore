@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!simulide2.desktop
+!simulide2.sh
+!simulide2.xml
