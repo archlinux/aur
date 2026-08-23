@@ -1,6 +1,6 @@
 pkgbase = sword-tui
 	pkgdesc = A terminal-based Bible application built with Go and bubbletea
-	pkgver = 1.11.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/kmf/sword-tui
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sword-tui
 	arch = armv7h
 	license = GPL-2.0-or-later
 	makedepends = go
-	source = sword-tui-1.11.0.tar.gz::https://github.com/kmf/sword-tui/archive/v1.11.0.tar.gz
-	sha256sums = 4fb8c1ea6c345d97238f1e1ac1dabad6fbb77054e88eebc46f654b142c48767c
+	source = sword-tui-2.0.0.tar.gz::https://github.com/kmf/sword-tui/archive/v2.0.0.tar.gz
+	sha256sums = 938fa79798e9a12ce78261b822d6ab6a3d57216b5a1278ae76e5b9444d1c0a71
 
 pkgname = sword-tui
