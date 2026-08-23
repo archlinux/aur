@@ -1,20 +1,19 @@
 pkgbase = 1password-secret-service-beta
 	pkgdesc = Freedesktop Secret Service (org.freedesktop.secrets) provider backed by 1Password (for 1password-beta users)
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/alexindigo/1password-secret-service
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = go
 	depends = 1password-beta
-	depends = sqlite
 	depends = glibc
 	provides = 1password-secret-service
 	conflicts = 1password-secret-service
 	conflicts = 1password-secret-service-beta-git
 	options = !debug
-	source = 1password-secret-service-beta-0.1.0.tar.gz::https://github.com/alexindigo/1password-secret-service/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 0bbc70cf06f42f323528d65fd6bde1262a0c3bde069052caaa0eaff736d59f64
+	source = 1password-secret-service-beta-0.2.0.tar.gz::https://github.com/alexindigo/1password-secret-service/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 1205d3312319499b65e415e3c4a2b3ebcca31e03b361326464beecb0dd66bfb5
 
 pkgname = 1password-secret-service-beta
