@@ -1,7 +1,7 @@
 pkgbase = fastcount-bin
 	pkgdesc = fastcount, an incredibly fast, incredibly useless counter, prebuilt binary
 	pkgver = 0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CallMeAlphabet/fastcount
 	arch = x86_64
 	license = Apache-2.0

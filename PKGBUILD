@@ -1,7 +1,7 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastcount-bin
 pkgver=0
-pkgrel=1
+pkgrel=2
 pkgdesc="fastcount, an incredibly fast, incredibly useless counter, prebuilt binary"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastcount"
