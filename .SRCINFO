@@ -1,0 +1,17 @@
+pkgbase = harharbinks-bin
+	pkgdesc = Offline TUI based HAR file viewer
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/bapatchirag/harharbinks
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = hhb
+	conflicts = harharbinks
+	options = !strip
+	source_x86_64 = hhb-x86_64-1.2.0.tgz::https://github.com/bapatchirag/harharbinks/releases/download/v1.2.0/hhb_1.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8cb3a4a545eecfe7ad01ced67ba46cc1b60f8356b40baf7827a8dd77a5f6f6af
+	source_aarch64 = hhb-aarch64-1.2.0.tgz::https://github.com/bapatchirag/harharbinks/releases/download/v1.2.0/hhb_1.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d73189a26d12156ed506d901b3747d9cf49535426e8760a781b58d36ff38be35
+
+pkgname = harharbinks-bin

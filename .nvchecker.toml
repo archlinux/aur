@@ -1,0 +1,5 @@
+[harharbinks-bin]
+source = "github"
+github = "bapatchirag/harharbinks"
+use_latest_release = true
+prefix = "v"
