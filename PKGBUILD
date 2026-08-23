@@ -3,7 +3,7 @@
 _pkgauthor=sibprogrammer
 _pkgname=xq
 pkgname=${_pkgname}-bin
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc='Command-line XML and HTML beautifier and content extractor'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -20,10 +20,10 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_
 source_i686=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_386.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('9bd0ac2fc09d545f5456a74f17bb7a17aea954ad74c1627a14187149747eb37d'
-            '39e76a5b7bc49b44f728191b35aad2183de1773b3f94405a57e1520700b84aef')
-sha256sums_x86_64=('217acb7b25fa32af9d10cab492695e4887378283535df84459e5c436bf090ea4')
-sha256sums_i686=('81194ed5b59d6486ab708887e8134724c74f20004f6db55a9cc89dda1ce5848d')
-sha256sums_aarch64=('0b0f071e0fc20baa7851a6c83747c8b46ad3e564813b8d5704364d2aa52ae794')
+            'a85afadf87e356f7aca6a90909b113cd2c4e1a164cb113bbb670660b1481a2b8')
+sha256sums_x86_64=('40ec8915ca3809bc6cdd75eeacdeb8e31276f82bdaca1bfa0b4a5260d8416414')
+sha256sums_i686=('4ebfd7323eebbf43490fadaa1bb5823cdb4bf3822c63abf929fc1f5f6a78cd2d')
+sha256sums_aarch64=('e69e382c6fb7c39457a0cbd7b088970cf0dced47c15c01596c78a403560289ca')
 
 build() {
   cd "${srcdir}/" || exit
