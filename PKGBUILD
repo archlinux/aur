@@ -1,6 +1,6 @@
 # Maintainer: metaneutrons <https://github.com/metaneutrons>
 pkgname=devserial
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="MCP server bridging serial hardware to LLMs via SQLite-backed buffer"
 arch=('x86_64' 'aarch64')
