@@ -4,8 +4,8 @@
 
 pkgname=php-phalcon
 _pkgname=cphalcon
-pkgver=5.10.0
-pkgrel=2
+pkgver=5.13.0
+pkgrel=1
 pkgdesc="Web framework delivered as a C-extension for PHP"
 url="http://phalconphp.com"
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ license=('BSD-3-Clause')
 depends=('php>=8.5' 'php<8.6')
 backup=('etc/php/conf.d/phalcon.ini')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/phalcon/cphalcon/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('0242d55a393f636ff9e34070adee61d463407e37463f57326f6ef085978289a858f1888b03181572ff23212c867a88f209ce188f34b699f82c81680a0e61a74d')
+b2sums=('941191555cd25d611b4127067003099a27df892b3edc296029420afbb38392e053922e41fa3994fd5d5bce2b93c7c2dc6b494ad6a7c656d019e7a58e781a9151')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver/build"
@@ -22,12 +22,7 @@ prepare() {
   PHPIZE_BIN=$(command -v phpize)
   PHPCONFIG_BIN=$(command -v php-config)
 
-  sed -i 's/\$this->skipFiles\[\$path\] = true;/if ($path) &/' util/Generator/File/PhalconC.php
   php gen-build.php
-
-  # PHP 8.5 no longer ships php_smart_string.h under ext/standard.
-  find "$srcdir/$_pkgname-$pkgver" -type f -name '*.[ch]' -exec \
-    sed -i 's#<ext/standard/php_smart_string.h>#<Zend/zend_smart_string.h>#g' {} +
 
   echo "int main() {}" > t.c
   cc ${CFLAGS} t.c -o t 2> t.t
@@ -56,7 +51,6 @@ prepare() {
   export echo=echo
 
   ./configure --silent --with-php-config=${PHPCONFIG_BIN} --enable-phalcon
-  sed -i 's/CPPFLAGS = -DPHALCON_RELEASE -DHAVE_CONFIG_H/CPPFLAGS = -DPHALCON_RELEASE -DHAVE_CONFIG_H -Wno-error=incompatible-pointer-types/g' Makefile
 }
 
 build() {
