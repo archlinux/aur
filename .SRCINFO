@@ -1,9 +1,8 @@
 pkgbase = apparmor.d-git
 	pkgdesc = Full set of apparmor profiles
-	pkgver = v0.4900.r0.gc49d1ba
+	pkgver = v0.4910.0.r155.g95da007
 	pkgrel = 1
 	url = https://github.com/roddhjav/apparmor.d
-	install = apparmor.d.install
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h
@@ -19,3 +18,14 @@ pkgbase = apparmor.d-git
 	sha512sums = SKIP
 
 pkgname = apparmor.d-git
+	arch = any
+	depends = apparmor
+	depends = apparmor.d-base
+	depends = apparmor.d-tools
+
+pkgname = apparmor.d-base-git
+	pkgdesc = Full set of apparmor profiles (base abstractions, tunables, and booleans)
+	arch = any
+
+pkgname = apparmor.d-tools-git
+	pkgdesc = Full set of apparmor profiles (userland toolings)

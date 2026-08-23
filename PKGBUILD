@@ -1,8 +1,13 @@
 # Maintainer: Alexandre Pujol <alexandre@pujol.io>
 # shellcheck disable=SC2034,SC2154,SC2164
 
-pkgname=apparmor.d-git
-pkgver=v0.4900.r0.gc49d1ba
+pkgbase=apparmor.d-git
+pkgname=(
+  apparmor.d-git
+  apparmor.d-base-git
+  apparmor.d-tools-git
+)
+pkgver=v0.4910.0.r155.g95da007
 pkgrel=1
 pkgdesc="Full set of apparmor profiles"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +18,6 @@ makedepends=('go' 'git' 'just')
 conflicts=('apparmor.d')
 source=("$pkgname::git+https://github.com/roddhjav/apparmor.d.git")
 sha512sums=('SKIP')
-install=apparmor.d.install
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -21,7 +25,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgbase"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -29,10 +33,25 @@ build() {
   export GOPATH="${srcdir}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   export DISTRIBUTION=arch
-  just complain
+  just prebuild
 }
 
-package() {
-  cd "$srcdir/$pkgname"
-  just destdir="$pkgdir" install
+package_apparmor.d-git() {
+  depends=('apparmor' 'apparmor.d-base' 'apparmor.d-tools')
+  arch=("any")
+  cd "$srcdir/$pkgbase"
+  just destdir="$pkgdir" install-profiles
+}
+
+package_apparmor.d-base-git() {
+  pkgdesc="$pkgdesc (base abstractions, tunables, and booleans)"
+  arch=("any")
+  cd "$srcdir/$pkgbase"
+  just destdir="$pkgdir" install-base
+}
+
+package_apparmor.d-tools-git() {
+  pkgdesc="$pkgdesc (userland toolings)"
+  cd "$srcdir/$pkgbase"
+  just destdir="$pkgdir" install-tools
 }
