@@ -1,6 +1,6 @@
 pkgbase = mendimaru
 	pkgdesc = Manage Mendix Studio Pro on Linux through WinBoat
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/GG-O-BP/mendimaru
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = mendimaru
 	optdepends = podman-compose: use WinBoat with Podman Compose
 	options = !debug
 	options = !lto
-	source = mendimaru-0.1.0.tar.gz::https://github.com/GG-O-BP/mendimaru/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = f80d432e363125cb163bfc38c8438172922d3a8f4c2cca69e5cb2ffa73a1fb81
+	source = mendimaru-0.2.0.tar.gz::https://github.com/GG-O-BP/mendimaru/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 98a24ba499254ece093de7aaf6028cb2ada0e838f4245ea4aaeaec524f930825
 
 pkgname = mendimaru
