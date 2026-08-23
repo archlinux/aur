@@ -1,0 +1,24 @@
+pkgbase = hakase-bin
+	pkgdesc = Go agent harness with an embedded Vue 3 web UI (prebuilt binary)
+	pkgver = 0.1.0.alpha.3
+	pkgrel = 1
+	url = https://github.com/amurru/hakase
+	arch = x86_64
+	license = MIT
+	depends = python
+	optdepends = tectonic: latex-math skill (LaTeX rendering)
+	optdepends = poppler: PDF tools used by document skills
+	optdepends = librsvg: SVG conversion used by diagram skills
+	optdepends = inkscape: alternative SVG conversion
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	provides = hakase
+	conflicts = hakase
+	source = hakase-v0.1.0-alpha.3-linux-amd64::https://github.com/amurru/hakase/releases/download/v0.1.0-alpha.3/hakase-v0.1.0-alpha.3-linux-amd64
+	source = config.json.example::https://github.com/amurru/hakase/raw/v0.1.0-alpha.3/config.json.example
+	source = LICENSE::https://github.com/amurru/hakase/raw/v0.1.0-alpha.3/LICENSE
+	sha256sums = 07081a1aa2db039bda3e19cb9c5f91ee33820ee20c2f21613af758f69bb9365e
+	sha256sums = 555082141ff6038ac4c6700398b8b7727895c2d0fe243b768885439ea36c8667
+	sha256sums = 791adc82735316a6a2ca21ce16cf6f030ad640a8a2fdcc1f388c33816272131e
+
+pkgname = hakase-bin
