@@ -1,0 +1,4 @@
+[yarr]
+source = "git"
+git = "https://github.com/nkanaev/yarr.git"
+prefix = "v"
