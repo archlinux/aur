@@ -1,8 +1,0 @@
-post_install() {
-    echo ">>> Optional: To enable Netdata monitoring, link the provided script:"
-    echo ">>> sudo ln -s /usr/share/ec-su_axb35/axb35.chart.sh /usr/libexec/netdata/charts.d/axb35.sh"
-}
-
-post_upgrade() {
-    post_install
-}

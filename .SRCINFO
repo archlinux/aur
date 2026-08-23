@@ -1,21 +1,10 @@
 pkgbase = ec-su_axb35-dkms-git
-	pkgdesc = Linux driver for the embedded controller on the Sixunited AXB35-02 board.
 	pkgver = r32.f62c2c2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cmetz/ec-su_axb35-linux
-	install = ec-su_axb35-dkms-git.install
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = git
-	makedepends = gcc
-	makedepends = make
-	makedepends = sed
-	depends = bash
-	depends = bc
-	depends = dkms
-	optdepends = netdata: for a monitoring dashboard
-	provides = ec-su_axb35-dkms=r32.f62c2c2
-	conflicts = ec-su_axb35-dkms
 	source = ec-su_axb35::git+https://github.com/cmetz/ec-su_axb35-linux.git
 	source = dkms.conf
 	source = ec-su_axb35.conf
@@ -24,3 +13,19 @@ pkgbase = ec-su_axb35-dkms-git
 	sha256sums = 9f150b355e218e1f59af8a72b5052bfaa94ad405d1d95d43f9e16952c0f83455
 
 pkgname = ec-su_axb35-dkms-git
+	pkgdesc = Linux driver for the embedded controller on the Sixunited AXB35-02 board.
+	depends = bash
+	depends = bc
+	depends = dkms
+	optdepends = netdata: for a monitoring dashboard
+	optdepends = ec-su_axb35-gui-git: for GUI fan control
+	provides = ec-su_axb35-dkms=r32.f62c2c2
+	conflicts = ec-su_axb35-dkms
+
+pkgname = ec-su_axb35-gui-git
+	pkgdesc = Fan Control GUI for ec-su_axb35-dkms-git
+	depends = python
+	depends = tk
+	depends = ec-su_axb35-dkms-git
+	provides = ec-su_axb35-gui=r32.f62c2c2
+	conflicts = ec-su_axb35-gui
