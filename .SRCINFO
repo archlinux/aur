@@ -1,6 +1,6 @@
 pkgbase = linux-broadcast-bin
 	pkgdesc = Background-replacement virtual webcam for Linux (MediaPipe / RVM via ONNX Runtime)
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Pedrojok01/linux-broadcast
 	install = linux-broadcast.install
@@ -16,10 +16,10 @@ pkgbase = linux-broadcast-bin
 	depends = libayatana-appindicator
 	depends = v4l2loopback-dkms
 	optdepends = pipewire: pipewiresrc support if you swap GStreamer source backends
-	provides = linux-broadcast=0.3.1
+	provides = linux-broadcast=0.4.0
 	conflicts = linux-broadcast
 	options = !strip
-	source = linux-broadcast-0.3.1.deb::https://github.com/Pedrojok01/linux-broadcast/releases/download/v0.3.1/linux-broadcast_0.3.1-1_amd64.deb
-	sha256sums = cb572e6e328445715d2e25176e5e2cd313a5ed66b8ea7e5396057b6b8453cb85
+	source = linux-broadcast-0.4.0.deb::https://github.com/Pedrojok01/linux-broadcast/releases/download/v0.4.0/linux-broadcast_0.4.0-1_amd64.deb
+	sha256sums = 4c87a9903c21e567cae7eddf86ea231ad4ea681985b1669872562708741aa626
 
 pkgname = linux-broadcast-bin
