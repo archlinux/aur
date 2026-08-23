@@ -1,6 +1,6 @@
 pkgname=ggdo
 pkgver=26.08
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple sudo-like command written in Go with password caching"
 arch=('x86_64')
 url="https://codeberg.org/ayonelnx/ggdo"
