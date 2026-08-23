@@ -9,7 +9,6 @@ pkgbase = omafox
 	license = MIT
 	depends = bash
 	depends = glibc
-	depends = omarchy>=4.0.0
 	optdepends = firefox: runs the separately distributed Omafox extension
 	source = omafox-1.0.0.tar.gz::https://github.com/cover/omafox/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = 31440738207e72ab3c80896f230dc0ed04a8b3831e8e7fc48b135de1f5f61fd6
