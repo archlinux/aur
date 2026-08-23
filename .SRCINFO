@@ -1,7 +1,7 @@
 pkgbase = cubic-bin
 	pkgdesc = Wizard to create a customized Ubuntu Live ISO image. Cubic (Custom Ubuntu ISO Creator) is a GUI wizard to create a customized Live ISO image for Ubuntu and Debian based distributions.
-	pkgver = 2026.07.107
-	pkgrel = 2
+	pkgver = 2026.08.108
+	pkgrel = 1
 	url = https://github.com/PJ-Singh-001/Cubic
 	install = cubic-bin.install
 	arch = any
@@ -34,9 +34,9 @@ pkgbase = cubic-bin
 	depends = dpkg
 	options = !strip
 	options = !emptydirs
-	source = cubic_2026.07.107-release~202607260607~ubuntu22.04.1_all.deb
+	source = cubic_2026.08.108-release~202608210008~ubuntu22.04.1_all.deb
 	source = cubic_wizard.patch
-	sha512sums = ddfe77d9e7b374a8b64a977dede432e4c56e600732e10af275ebd39623919bb2c193d22f0b48a9d221c5fb42f2249108b2d64a0bc01d7f83160b089b059fd51c
-	sha512sums = 9c2ca69958d57bc86ecfd47257d986448efd7032b0ae318a5a6d2438097f5b2ef00c2cb5612b98b4440314908672134a2decd1a63d536e0fc77fe998c39fa0f3
+	sha512sums = c1ea54e3b000264ab9d1a85af0ff535e0b89f3bb7b4560310061da9fe144f465607b2cecdfe310c17e26ecc2ee8c440b6cb9ec6705b0d04f0517cba160e81825
+	sha512sums = cec84fa3efaec5523d33d6b16f6fe68e7ed8a69ed157bec2fbe6eac9388c3f8c629d3ad243944911283a07423b04a8dc20db7c97174bd8d477361da95e62abc1
 
 pkgname = cubic-bin

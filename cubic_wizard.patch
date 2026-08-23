@@ -1,5 +1,5 @@
---- cubic_wizard.py	2026-07-26 08:07:37.000000000 +0200
-+++ cubic_wizard_mod.py	2026-08-09 00:44:00.638151325 +0200
+--- cubic_wizard.py	2026-08-21 02:08:16.000000000 +0200
++++ cubic_wizard_patched.py	2026-08-23 23:55:17.273198854 +0200
 @@ -129,10 +129,8 @@
      # Get the user's home directory.
      model.application.user_home = os.path.expanduser('~')
@@ -7,9 +7,9 @@
 -    # Get the running Cubic version.
 -    model.application.cubic_version = constructor.get_package_version('cubic')
 -    ### TODO: FOR TESTING ONLY
--    # model.application.cubic_version = '2026.07.106-release~202607201745~ubuntu26.04.1'
-+    ### Lazy Band-aid Fix
-+    model.application.cubic_version = '2026.07.107-release~202607260607~ubuntu22.04.1'
+-    # model.application.cubic_version = '2026.08.108-release~202608201745~ubuntu26.04'
++    ### Lazy Band-aid fix
++    model.application.cubic_version = '2026.08.108-release~202608210008~ubuntu22.04.1'
  
      # Get the running kernel version.
      model.application.kernel_version = constructor.get_kernel_version()
