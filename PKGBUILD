@@ -5,7 +5,7 @@
 # Contributor: Georgij Kondratjev <smpuj@bk.ru>
 
 pkgname=gnucap
-pkgver=20260329
+pkgver=20260729
 pkgrel=1
 pkgdesc="GNU Circuit Analysis Package"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="http://gnucap.org/"
 license=('GPL')
 depends=('readline' 'termcap')
 source=("https://codeberg.org/gnucap/gnucap/archive/${pkgver}-dev.tar.gz")
-sha1sums=('d0a10ed0432b1dc84557c770150498931b8f5e75')
+sha1sums=('50722b2316ea4f3ba09751f3852b16c5ab249d93')
 
 build() {
   cd $pkgname
