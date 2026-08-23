@@ -3,7 +3,7 @@
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: Lorenz Wellmer
 pkgname=clockify-desktop
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Truly free time tracker for teams, Desktop App"
 arch=("x86_64")
@@ -14,7 +14,7 @@ depends=("alsa-lib" "at-spi2-core" "cairo" "dbus" "expat" "libgcc" "glib2"
          "libx11" "libxcb" "libxcomposite" "libxdamage" "libxext" "libxfixes"
          "libxkbcommon" "libxrandr" "mesa" "nspr" "nss" "pango" "systemd-libs")
 source=("$pkgname-$pkgver.deb::https://clockify.me/downloads/Clockify_Setup_x64.deb")
-sha512sums=("43c6ce51c2a350f08809d9748c0d8fe4ec124d2b7191a50fdb59236fcefffca23324dd25d45cf3a4f046e07570b2e561a113e691ee0425c4ee02f527ae7baf2c")
+sha512sums=("c0497f50d3867ae9e641505db111b02a867bc897b9117ebf50c966bf27aad891f60e830471b68143dde85612ebfe0804f0f4dc39d88395777601be4d4e66ae4e")
 
 package() {
     # Extract package data
@@ -76,6 +76,7 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/clockify_logo_dark.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/clockify_logo_selfhosted.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/close-light.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/close-toolbar.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/close.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/closeX.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/create.png"
@@ -104,9 +105,11 @@ package() {
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/logout.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/manual-hover.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/manual.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/maximize-toolbar.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/menu-dots-vertical.svg"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/menu-hover.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/menu.png"
+    chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/minimize.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/no-new-notifications.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/notifications-hover.png"
     chmod a-w "${pkgdir}/opt/Clockify/resources/assets/images/notifications.png"
@@ -139,11 +142,11 @@ package() {
     ln -s /opt/Clockify/resources/assets/appicons/64x64.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/clockify.png"
     rm "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/clockify.png"
     ln -s /opt/Clockify/resources/assets/appicons/1024x1024.png "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/clockify.png"
-    
+
     # Remove forgotten temporary build build pkgdir
     rm -r "${pkgdir}/opt/Clockify/resources/app.asar.unpacked/node_modules/active-win/build-tmp-napi-v6"
     rm -r "${pkgdir}/opt/Clockify/resources/app.asar.unpacked/node_modules/active-win/lib/binding/napi-6-linux-glibc-x64"
-    
+
     # generate link in PATH
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/Clockify/clockify" "${pkgdir}/usr/bin/clockify"
