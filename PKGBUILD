@@ -8,7 +8,7 @@ pkgname=(
   apparmor.d-tools-git
 )
 pkgver=v0.4910.0.r155.g95da007
-pkgrel=1
+pkgrel=2
 pkgdesc="Full set of apparmor profiles"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/roddhjav/apparmor.d"
@@ -37,7 +37,7 @@ build() {
 }
 
 package_apparmor.d-git() {
-  depends=('apparmor' 'apparmor.d-base' 'apparmor.d-tools')
+  depends=('apparmor' 'apparmor.d-base-git' 'apparmor.d-tools-git')
   arch=("any")
   cd "$srcdir/$pkgbase"
   just destdir="$pkgdir" install-profiles

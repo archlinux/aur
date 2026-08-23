@@ -1,7 +1,7 @@
 pkgbase = apparmor.d-git
 	pkgdesc = Full set of apparmor profiles
 	pkgver = v0.4910.0.r155.g95da007
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roddhjav/apparmor.d
 	arch = x86_64
 	arch = armv6h
@@ -20,8 +20,8 @@ pkgbase = apparmor.d-git
 pkgname = apparmor.d-git
 	arch = any
 	depends = apparmor
-	depends = apparmor.d-base
-	depends = apparmor.d-tools
+	depends = apparmor.d-base-git
+	depends = apparmor.d-tools-git
 
 pkgname = apparmor.d-base-git
 	pkgdesc = Full set of apparmor profiles (base abstractions, tunables, and booleans)
