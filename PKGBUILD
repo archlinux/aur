@@ -10,7 +10,7 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=5.006')
 makedepends=('perl-dist-build>=0.028')
-url='https://metacpan.org/release/Crypt-Argon2'
+url='https://metacpan.org/pod/Crypt::Argon2'
 source=("http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Crypt-Argon2-$pkgver.tar.gz")
 md5sums=('2cb6b9914e20edd6dc1179fc76e32a4a')
 sha512sums=('af893bb26d1b6d913e4afe6ec78420867aaeeeff3e05a7e6b5613ce3e22dc90d54c54aa87c1016dc29d16240f33cda3e364212ed142ab4aaa8c9dfc43de874e6')
