@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=cloudflarespeedtest-git
-pkgver=2.3.4.14.g493dbd7
+pkgver=2.3.5.3.gd9f0ced
 pkgrel=1
 pkgdesc="XIU2/CloudflareSpeedTest 🌩 “Choose Your Own Preferred IP” Test Cloudflare CDN latency and speed, get the fastest IP! Written in go."
 arch=($CARCH)
@@ -11,8 +11,7 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 #replaces=(${pkgname})
 depends=(
-    sh
-    glibc   
+    sh 
 )
 optdepends=()
 makedepends=(
