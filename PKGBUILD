@@ -17,8 +17,8 @@ source=(
   "jetbrains-${pkgbase}.desktop"
   'LICENSE'
 )
-source_x86_64=("RustRover-${_dlver}-${arch[0]}.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-${_dlver}.tar.gz")
-source_aarch64=("RustRover-${_dlver}-${arch[1]}.tar.gz::https://download-cdn.jetbrains.com/rustrover/RustRover-${_dlver}-${arch[1]}.tar.gz")
+source_x86_64=("RustRover-${_dlver}-${arch[0]}.tar.gz::https://download.jetbrains.com/rustrover/RustRover-${_dlver}.tar.gz")
+source_aarch64=("RustRover-${_dlver}-${arch[1]}.tar.gz::https://download.jetbrains.com/rustrover/RustRover-${_dlver}-${arch[1]}.tar.gz")
 sha256sums=('cd4f42c4d3f9c0fb967a96da2c0c71884df55fe21409a97d12690e8a4c878a06'
             'db26ca1fd026fbacfeb87f4bad42d78b3512bb733ce1c566bdd5b751e77d7bb3')
 sha256sums_x86_64=('fd7baa32a6b29cf867bb8afc05ec001e1fca7408278192541611bd5d3f482f5b')
