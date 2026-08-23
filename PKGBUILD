@@ -9,7 +9,7 @@
 
 pkgname=ffmpeg-libfdk_aac
 pkgver=9.0.1
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
 arch=(x86_64)
@@ -226,7 +226,7 @@ build() {
 package() {
   depends+=(
     libass.so
-    libbluray.so
+#   libbluray.so
     libbs2b.so
     libdav1d.so
     libfreetype.so
