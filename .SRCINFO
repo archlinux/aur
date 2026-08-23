@@ -1,0 +1,13 @@
+pkgbase = ggdo
+	pkgdesc = A sudo equivalent written in Go
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/ayonelnx/ggdo
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = ggdo-1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ggdo
