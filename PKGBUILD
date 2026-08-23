@@ -1,6 +1,6 @@
 # Maintainer: Cristo Cola <kristokola@hotmail.com>
 pkgname=fast-folder-bin
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Template-driven project folder generator with TUI and browser UI (fastf) — prebuilt binary"
 arch=(x86_64)
@@ -11,7 +11,7 @@ conflicts=(fast-folder)
 optdepends=('chromium: dedicated app window for fastf ui --app')
 # Static musl build from the GitHub release — no runtime deps.
 source=("$url/releases/download/v$pkgver/fastf-v$pkgver-x86_64-unknown-linux-musl.tar.gz")
-sha256sums=('8e3bcda7a40120c7467c0bfbef0d8f14b792fcf0dafb2509d6754e04c6a6029e')
+sha256sums=('1cfb03b21ea81af8b8fc1da445385d2c1cbb8a1a32e9e57235a997680c8012f7')
 
 package() {
   cd "fastf-v$pkgver-x86_64-unknown-linux-musl"
