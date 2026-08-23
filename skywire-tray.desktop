@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Skywire Tray
+GenericName=Skywire tray control
+Comment=Control the Skywire visor from the system tray — suspend/resume, open the Hypervisor/VPN UI
+Exec=skywire visor --systray-only
+Icon=skywire
+Terminal=false
+Categories=P2P;VPN;Network;Internet;
+Keywords=vpn;p2p;network;skywire;tray;
+StartupNotify=false
+X-GNOME-Autostart-enabled=true

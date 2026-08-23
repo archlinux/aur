@@ -26,6 +26,12 @@ post_install() {
   # longer ships the file — pacman has nothing to overwrite.
   [[ ! -f /etc/skywire.conf ]] && skywire cli config gen -pqQ /etc/skywire.conf
 
+  # The visor config holds the secret key. Newer visors write it 0640, but
+  # older builds wrote 0644 (world-readable) — tighten any existing config so a
+  # local user can't read the identity. The visor accesses it as its own service
+  # user / root; the systray tray talks to the visor over RPC and never reads it.
+  [[ -f /opt/skywire/skywire.json ]] && chmod 0640 /opt/skywire/skywire.json 2>/dev/null || true
+
   skywire autoconfig
 }
 

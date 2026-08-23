@@ -3,8 +3,8 @@ pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Building a new Internet. Skycoin.com"
-pkgver='1.3.91'
-pkgrel='2'
+pkgver='1.3.92'
+pkgrel='1'
 _rc=''
 #_rc='-pr1'
 _pkgver="${pkgver}${_rc}"
@@ -21,7 +21,7 @@ license=('license-free')
 install=skywire.install
 backup=("opt/${_pkgname}/users.db" "opt/${_pkgname}/skywire.json" "opt/${_pkgname}/local")
 #_script=("skywire-autoconfig")
-_desktop=("skywire.desktop" "skywirevpn.desktop")
+_desktop=("skywire.desktop" "skywirevpn.desktop" "skywire-tray.desktop")
 _icon=("skywirevpn.png" "skywire.png")
 _service=("skywire.service" "skywire-autoconfig.service" "skywire-sn.service" "skywire-ar.service" "skywire-rf.service" "skywire-tpd.service" "skywire-dmsgd.service" "skywire-dmsg.service" "skywire-sd.service" "dmsgpty-tcp.socket" "dmsgpty-tcp@.service")
 _userservice=("skywire-user.service")
@@ -53,6 +53,7 @@ _source=("${_desktop[@]}"
 source=("${_source[@]}")
 sha256sums=('40c80ccce9e89ae559050b943be1f09d905476c614a72d74fac2a58c821ac058'
             '00da5a9afdf5a8c7033978d2074039ba1ff7bc7a7221fbd278eb1270bdeb8eae'
+            'c74e72d1d9484fd91d9a67a64bfc92a811bba0f99e5d216cc2aac0aa830a7555'
             'ec24750a99f5cda8d8a8dc94743943218e1b2088c2b2c7dc1644ee78d954fe7e'
             'a6941680b5858ca3e0c85d9bf5824455a0c95524b61e42352462f2abbb750495'
             '459c78b3a9a6751a0eb9186bf2d509b5485d4ff46f938bbd03ec344ebd0ca6a2'
@@ -69,14 +70,14 @@ sha256sums=('40c80ccce9e89ae559050b943be1f09d905476c614a72d74fac2a58c821ac058'
             '483353f172cb12c8d726dce8e0cd284ff6bf6a69b2912274559bc199b1c7f3e3'
             '60cd97d7ff821f793de68f38aad4468fc83fcddf31449397227d16a746cc8a92'
             '2f1511abbd2b42f4bfebf2a872295de5992fe98d81163ac9ab7744d61608af5e')
-sha256sums_i686=('7cf98d04e8bd5ed5314d4a6808d76b82e6563983cbd28e36d55d92471ef8faae')
-sha256sums_x86_64=('7209d6d73acc8ced81e298f497e514430db0b3132e8fd40e5d2f8be945d02eac')
-sha256sums_aarch64=('05711cf779fadc69221a7b6254dfb850b303bb83c253265f8db9e26db52b8490')
-sha256sums_armv8=('05711cf779fadc69221a7b6254dfb850b303bb83c253265f8db9e26db52b8490')
-sha256sums_armv7=('13d624fae12811d1e84212ea847432e49cf0d9c905ef86cb7350193e6e50c199')
-sha256sums_armv7l=('13d624fae12811d1e84212ea847432e49cf0d9c905ef86cb7350193e6e50c199')
-sha256sums_armv7h=('13d624fae12811d1e84212ea847432e49cf0d9c905ef86cb7350193e6e50c199')
-sha256sums_arm=('add510e036e01fea1b85596800f03e721b945e54aaca21542d4140a62525f523')
+sha256sums_i686=('a12c84155c3e0afb95a54224792aaeddb655f0751b0450b26a299d219dfde632')
+sha256sums_x86_64=('e8efbe77f272558642a24849cf6481f5678e30539fd21be4f7c599d13789b7a7')
+sha256sums_aarch64=('8e6b01d1ca7e536038d37a131732caf310d0e86517380e8ae5499d3d1f774a86')
+sha256sums_armv8=('8e6b01d1ca7e536038d37a131732caf310d0e86517380e8ae5499d3d1f774a86')
+sha256sums_armv7=('bc039a963fd6cc4f215d62a99b82260a70e40adceeb13b05f9b2582a4a77c737')
+sha256sums_armv7l=('bc039a963fd6cc4f215d62a99b82260a70e40adceeb13b05f9b2582a4a77c737')
+sha256sums_armv7h=('bc039a963fd6cc4f215d62a99b82260a70e40adceeb13b05f9b2582a4a77c737')
+sha256sums_arm=('1099564688600d965eaa3143d90ebc6e121c1ac28c5f7f6227388bf0ba90218a')
 #https://github.com/skycoin/skywire/releases/download/v1.3.32/skywire-v1.3.32-linux-amd64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.3.32/skywire-v1.3.32-linux-arm64.tar.gz
 #https://github.com/skycoin/skywire/releases/download/v1.3.32/skywire-v1.3.32-linux-armhf.tar.gz
@@ -186,6 +187,7 @@ for _i in "${_desktop[@]}" ; do
   _msg3 ${_i}
   install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/usr/share/applications/${_i}"
 done
+install -Dm644 "${srcdir}/${_skywirebin}skywire-tray.desktop" "${_pkgdir}/etc/xdg/autostart/skywire-tray.desktop"
 for _i in "${_icon[@]}" ; do
   _msg3 ${_i}
   install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/${_i}"
