@@ -1,0 +1,5 @@
+[taskii-bin]
+source = "github"
+github = "parsaenami/taskii"
+use_latest_release = true
+prefix = "v"
