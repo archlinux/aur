@@ -1,5 +1,5 @@
 pkgname='linuxtoys-bin'
-pkgver='6.6.3'
+pkgver='6.6.4'
 pkgrel=1
 arch=('x86_64')
 depends=(bash git curl wget zenity python python-gobject python-requests gtk3 vte3)
@@ -7,11 +7,13 @@ makedepends=()
 conflicts=(linuxtoys)
 provides=("linuxtoys=$pkgver")
 source=("https://github.com/psygreg/linuxtoys/releases/download/${pkgver}/linuxtoys-${pkgver}.tar.xz")
-sha256sums=('a1a5e2317b7e07736bfd77032ac09ebcd71f7e3ef0dece5826c3ca4b1e99c790')
+sha256sums=('7ba53a9f620018057329b5e0848a803caa21c3321be907ee785a82d981f55ffd')
 
 package() {
     mkdir -p ${pkgdir}/usr
     cp -rf ${srcdir}/linuxtoys-${pkgver}/usr/* ${pkgdir}/usr/
+    find "${pkgdir}/usr/share/linuxtoys" -type d -name '__pycache__' -prune -exec rm -rf {} +
+    find "${pkgdir}/usr/share/linuxtoys" -type f \( -name '*.pyc' -o -name '*.pyo' \) -delete
     
     # Set proper permissions for executable files
     chmod +x "${pkgdir}/usr/bin/linuxtoys"
