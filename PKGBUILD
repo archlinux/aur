@@ -17,12 +17,15 @@ build() {
 	cd "xipmsg-8088"
 	sed -n '/\/\*/,/\*\//p' README | sed -E 's/.\*.?//m' > LICENSE
 	xmkmf -a
-	make
+	make \
+	    CFLAGS='-Wno-error=incompatible-pointer-types' # This soft is old
 }
 
 package() {
 	cd "xipmsg-8088"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm644 xipmsg.man "$pkgdir/usr/share/man/man1/xipmsg.1"
-	make DESTDIR="$pkgdir/" install
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 xipmsg.man "${pkgdir}/usr/share/man/man1/xipmsg.1"
+	make DESTDIR="${pkgdir}/" install
+	# Remove symbolic link that conflicts with other X11 software.
+	rm "${pkgdir}/usr/lib/X11/app-defaults"
 }
