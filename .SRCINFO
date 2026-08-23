@@ -1,7 +1,7 @@
 pkgbase = 1password-secret-service-beta-git
 	pkgdesc = Freedesktop Secret Service (org.freedesktop.secrets) provider backed by 1Password (git version, for 1password-beta)
 	pkgver = 0.1.0.r2.g56a2fe0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexindigo/1password-secret-service
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,6 @@ pkgbase = 1password-secret-service-beta-git
 	makedepends = go
 	makedepends = git
 	depends = 1password-beta
-	depends = sqlite
 	depends = glibc
 	provides = 1password-secret-service
 	conflicts = 1password-secret-service
