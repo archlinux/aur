@@ -1,7 +1,7 @@
 pkgbase = font-kurier
 	pkgdesc = Font Kurier by Malgorzata Budyta
 	pkgver = 0.995
-	pkgrel = 3
+	pkgrel = 4
 	url = https://jmn.pl/kurier/
 	arch = any
 	license = custom:GUST

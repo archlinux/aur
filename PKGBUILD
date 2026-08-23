@@ -4,7 +4,7 @@
 pkgbase=font-kurier
 pkgname=(ttf-kurier otf-kurier)
 pkgver=0.995
-pkgrel=3
+pkgrel=4
 pkgdesc="Font Kurier by Malgorzata Budyta"
 arch=(any)
 license=('custom:GUST')
@@ -21,7 +21,7 @@ sha256sums=('ef51e34af788a03528a982f2493983a468feb714341337fdb38711077becd833'
 
 package_ttf-kurier() {
   install -d -Dm755 "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm644 GUST-FONT-LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
   install -d -Dm755 "$pkgdir/usr/share/fonts/TTF"
   install -m644 *.ttf "$pkgdir/usr/share/fonts/TTF"
 }
