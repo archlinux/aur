@@ -62,8 +62,21 @@ package() {
   # sandbox-policy/, and .claude/ at runtime. The prune list and RELEASE_OWNER
   # below are synced from config/packaging.json by scripts/gen-packaging.mjs
   # (shared with the Homebrew formula and nFPM manifest) — edit them there.
-  local prune=(tests research metrics .git .github node_modules .venv uv.lock)
-  rm -rf -- "${prune[@]}"
+  local prune=('tests' 'research' 'metrics' '.git' '.github' 'node_modules' '.venv' 'uv.lock' 'evals' 'inspect-glovebox' 'perflib' 'tools' 'bin/checks' 'bin/_perf_path.py' 'bin/lib/model_refresh.py' 'bin/lib/model_selection.py' 'bin/lib/sanitize_e2e_posttooluse.py' 'bin/lib/sanitize_e2e_pretooluse.py' 'bin/lib/sanitize_e2e_wiring.py' 'bin/check-*' 'bin/probe-*' 'bin/bench-*' 'bin/refresh-*' 'config/bash-coverage-baseline.json' 'config/ci-budget.json' 'config/ci-spend.json' 'config/ci-truth-serum-version' 'config/claude-budget.json' 'config/fast-checks.json' 'config/js-coverage-baseline.json' 'config/launch-weakeners.json' 'config/lint-scope.json' 'config/merge-queue-mode.json' 'config/pinned-tools.json' 'config/py-coverage-baseline.json' 'config/reachability-waivers.json' 'config/render-only-modules.json' 'config/review-severities.json' 'config/ssot-exports.json' 'config/status-badges.json' 'config/syft-version.json')
+  local pattern
+  local -a matches
+  for pattern in "${prune[@]}"; do
+    # An entry may be a glob, and it must expand HERE, in the extracted tree.
+    # `compgen -G` expands a QUOTED pattern against the current directory and
+    # prints what it matched, so the expansion needs no unquoted word. It exits
+    # 1 when nothing matches, which is a pattern naming a path this tree does
+    # not carry.
+    matches=()
+    mapfile -t matches < <(compgen -G "$pattern" || true)
+    if [[ ${#matches[@]} -gt 0 ]]; then
+      rm -rf -- "${matches[@]}"
+    fi
+  done
 
   install -d "$libdir"
   cp -a . "$libdir/"
