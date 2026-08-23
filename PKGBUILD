@@ -4,7 +4,7 @@
 # linux-broadcast-bin package.
 pkgname=linux-broadcast-cuda
 _pkgname=linux-broadcast
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 # Debian revision baked into the upstream .deb filename by build-cuda-addon.sh.
 _debrev=1
@@ -19,7 +19,7 @@ optdepends=(
 )
 provides=("${_pkgname}-cuda=$pkgver")
 source=("${_pkgname}-cuda-$pkgver.deb::$url/releases/download/v$pkgver/${_pkgname}-cuda_${pkgver}-${_debrev}_amd64.deb")
-sha256sums=('083b1bc340909fdb9ec86bd317c06e8ea091c715044808cefade674f4f169355')
+sha256sums=('2d38f60f9b9276b54c6633dd667983500ca2fc7970d6c47f7625c4a591f9f367')
 options=('!strip')
 
 package() {
