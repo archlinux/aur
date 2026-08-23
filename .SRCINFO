@@ -12,6 +12,6 @@ pkgbase = agent-lx-music
 	depends = alsa-lib
 	depends = mpv
 	source = agent-lx-music-0.4.0.tar.gz::https://github.com/Xuepoo/agent-lx-music/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = d60ebea4dfd847f62a9240886abe364f201ae52d5de80cd2dadd1c490806bf90
+	sha256sums = 9b3d8f601b7f99eb940ef243b87275aedf6160e66ca95755606e6face5f96009
 
 pkgname = agent-lx-music
