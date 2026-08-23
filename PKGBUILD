@@ -23,3 +23,4 @@ package() {
     install -Dm755 ggdo "$pkgdir/usr/bin/ggdo"
     chmod u+s "$pkgdir/usr/bin/ggdo"
 }
+# comment
