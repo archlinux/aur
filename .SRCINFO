@@ -7,7 +7,9 @@ pkgbase = ggdo
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = ggdo-1.0.0.tar.gz::https://codeberg.org/ayonelnx/ggdo/raw/branch/main/ggdo-1.0.0.tar.gz
+	provides = ggdo
+	conflicts = ggdo
+	source = git+https://codeberg.org/ayonelnx/ggdo.git
 	sha256sums = SKIP
 
 pkgname = ggdo
