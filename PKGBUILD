@@ -9,7 +9,7 @@ _pkgname='semchunk'
 _commit='dccb2f7fc2248e6266d6cbb1c0d986a3f192c3fe'
 pkgname="python-${_pkgname}"
 pkgver=4.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python library for splitting text into semantically meaningful chunks'
 arch=('any')
 url="https://github.com/isaacus-dev/${_pkgname}"
@@ -25,6 +25,7 @@ makedepends=(
 	'python-wheel'
 )
 optdepends=(
+	'python-isaacus>=0.19.0: AI-powered chunking'
 	'python-tiktoken: OpenAI tokenizer support'
 	'python-transformers: Hugging Face tokenizer support'
 )
