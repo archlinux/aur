@@ -1,0 +1,17 @@
+pkgbase = elfshaker-bin
+	pkgdesc = A low-footprint, high-performance version control system fine-tuned for binaries
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/elfshaker/elfshaker
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = elfshaker
+	conflicts = elfshaker
+	options = !strip
+	source_x86_64 = elfshaker-x86_64-0.9.0.tgz::https://github.com/elfshaker/elfshaker/releases/download/v0.9.0/elfshaker_v0.9.0_x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 75ae405235f7e71b371c86429fd3aa88f8703c2da8e181d34b8f46aa0949bfb8
+	source_aarch64 = elfshaker-aarch64-0.9.0.tgz::https://github.com/elfshaker/elfshaker/releases/download/v0.9.0/elfshaker_v0.9.0_aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = eaebeada3e6b37ad07a5e886aaaab88c3305947b16ac7607d6a6655d849480b6
+
+pkgname = elfshaker-bin

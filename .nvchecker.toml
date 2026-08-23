@@ -1,0 +1,5 @@
+[elfshaker-bin]
+source = "github"
+github = "elfshaker/elfshaker"
+use_latest_release = true
+prefix = "v"
