@@ -1,15 +1,23 @@
 pkgbase = python-mail-parser
-	pkgdesc = Tokenizer for raw mails
-	pkgver = 3.15.0
+	pkgdesc = Email parsing library for extracting structured data from raw messages
+	pkgver = 4.6.4
 	pkgrel = 1
-	url = https://pypi.python.org/pypi/mail-parser
+	url = https://github.com/SpamScope/mail-parser
 	arch = any
-	license = Apache
-	makedepends = python-setuptools
-	depends = python-ipaddress
-	depends = python-simplejson
-	depends = python-six
-	source = https://pypi.python.org/packages/source/m/mail-parser/mail-parser-3.15.0.tar.gz
-	sha256sums = d66638acf0633dfd8a718e1e3646a6d58f8e9d75080c94638c7b267b4b0d6c86
+	license = Apache-2.0
+	checkdepends = perl-email-outlook-message
+	checkdepends = python-extract-msg>=0.54
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-mock
+	makedepends = python-build
+	makedepends = python-hatchling>=1.27
+	makedepends = python-hatchling<1.32
+	makedepends = python-installer
+	depends = python>=3.9
+	optdepends = python-extract-msg>=0.54: Outlook .msg support via the preferred extract-msg backend
+	optdepends = perl-email-outlook-message: Outlook .msg support via the deprecated msgconvert fallback
+	source = mail-parser-4.6.4.tar.gz::https://github.com/SpamScope/mail-parser/archive/refs/tags/4.6.4.tar.gz
+	b2sums = 1c09ca1d5b13f1e8bcd86bf5f99ce7e999f5e82812cc595a993215c53190881e43a02e7f0b494bb87ac00d9ef8442697cb8df9231aa35c769d7a0ae1ae040a8d
 
 pkgname = python-mail-parser
