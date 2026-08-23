@@ -8,7 +8,7 @@ url='https://github.com/arrufat/mpv-jamak'
 license=('MIT')
 depends=('mpv' 'curl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('d27b9d7815516d7fb13d01919a72820b7bea8417f11ab23a64d9a5bd0be6e349')
+sha256sums=('e0a8998771b6305d647c054845ab3ecf352cca1976a4095b2e6b508bebfefff2')
 
 package() {
     cd "$pkgname-$pkgver"
