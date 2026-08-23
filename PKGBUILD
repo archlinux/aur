@@ -2,8 +2,8 @@
 
 pkgname=elph-nova-bin
 _pkgname=elph-nova
-pkgver=3.4.0
-pkgrel=3
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="A corporate communications hub designed for effective collaboration with colleagues"
 arch=("x86_64")
 # url="https://docs.eltex-co.ru/display/doc/Elph+Desktop"
@@ -12,7 +12,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://archive.eltex-co.ru/repository/elph-services-raw/${_pkgname}/${pkgver}/linux/${_pkgname}-${pkgver}-linux-x64.deb")
-sha256sums=('9c9e2780db988bf110cb4cd3f69f047272ae2e8ab76330a4a0282070d48489c8')
+sha256sums=('25f8c93fb47031be752dada443b3839a27da9b4eeb68f4ba31e6928fe34df3fc')
 
 prepare() {
   tar -xvf data.tar.xz
