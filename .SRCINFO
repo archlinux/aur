@@ -1,18 +1,21 @@
 pkgbase = ec-su_axb35-dkms-git
 	pkgdesc = Linux driver for the embedded controller on the Sixunited AXB35-02 board.
-	pkgver = r27.8325346
-	pkgrel = 2
+	pkgver = r32.f62c2c2
+	pkgrel = 1
 	url = https://github.com/cmetz/ec-su_axb35-linux
 	install = ec-su_axb35-dkms-git.install
 	arch = x86_64
-	license = GPL-2.0
+	license = GPL-2.0-only
 	makedepends = git
 	makedepends = gcc
 	makedepends = make
 	makedepends = sed
-	depends = dkms
+	depends = bash
 	depends = bc
+	depends = dkms
 	optdepends = netdata: for a monitoring dashboard
+	provides = ec-su_axb35-dkms=r32.f62c2c2
+	conflicts = ec-su_axb35-dkms
 	source = ec-su_axb35::git+https://github.com/cmetz/ec-su_axb35-linux.git
 	source = dkms.conf
 	source = ec-su_axb35.conf
