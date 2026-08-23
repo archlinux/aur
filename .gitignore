@@ -1,0 +1,8 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!LICENSE
+!LICENSES/0BSD.txt
+!REUSE.toml
+!start-innounp.sh
