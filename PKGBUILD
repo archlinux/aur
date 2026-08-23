@@ -2,15 +2,16 @@
 
 pkgname=atmosphera
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell"
 arch=('any')
 url="https://github.com/alexindigo/atmosphera"
 license=('GPL-3.0-or-later')
 makedepends=()
 depends=(
-  'noctalia-qs'
+  'quickshell'
   'qt6-dbusqml'
+  'qt6-pipewirespectrum'
   'qt6-xdgiconqml-git'
   'imagemagick'
   'brightnessctl'
@@ -27,6 +28,7 @@ optdepends=(
   'power-profiles-daemon: For power profile management'
   'ddcutil: For external display brightness control'
   'qt6-niriqml: niri IPC integration (workspaces, windows, session config)'
+  'qt6-mangowcqml: mangowc IPC integration (workspaces, windows, session config)'
   'keyd: hardware-level keyboard remapping (bindings environments)'
   'xremap-niri-bin: session-level app-scoped keymaps (macos bindings)'
   'qt6-5compat: required by some registry plugins (e.g. cookie-clock)'
