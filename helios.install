@@ -1,0 +1,31 @@
+do_setcap() {
+  setcap cap_sys_admin+p /usr/bin/helios
+}
+
+do_udev_reload() {
+  udevadm control --reload-rules
+  udevadm trigger --property-match=DEVNAME=/dev/uinput
+  udevadm trigger --property-match=DEVNAME=/dev/uhid
+  modprobe uinput 2>/dev/null || true
+  modprobe uhid 2>/dev/null || true
+}
+
+do_usb_setup() {
+  modprobe vhci-hcd 2>/dev/null || modprobe vhci_hcd 2>/dev/null || true
+  systemctl daemon-reload
+  systemctl enable --now helios-usb-helper.service 2>/dev/null || true
+}
+
+post_install() {
+  do_setcap
+  do_udev_reload
+  do_usb_setup
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  systemctl disable --now helios-usb-helper.service 2>/dev/null || true
+}
