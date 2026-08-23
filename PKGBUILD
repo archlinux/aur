@@ -2,22 +2,23 @@
 
 pkgname=1password-secret-service
 _projname=1password-secret-service
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Freedesktop Secret Service (org.freedesktop.secrets) provider backed by 1Password"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexindigo/1password-secret-service"
 license=('GPL-3.0-or-later')
-depends=('1password' 'sqlite' 'glibc')
+depends=('1password' 'glibc')
 makedepends=('go')
 conflicts=('1password-secret-service-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0bbc70cf06f42f323528d65fd6bde1262a0c3bde069052caaa0eaff736d59f64')
+sha256sums=('1205d3312319499b65e415e3c4a2b3ebcca31e03b361326464beecb0dd66bfb5')
 
 build() {
 	cd "${srcdir}/${_projname}-${pkgver}"
 	export CGO_ENABLED=1
-	go build -trimpath -buildmode=pie -ldflags="-s -w" \
+	go build -trimpath -buildmode=pie \
+		-ldflags="-s -w -X main.integrationVersion=v${pkgver}" \
 		-o "${_projname}" "./cmd/${_projname}"
 }
 
