@@ -4,7 +4,7 @@
 
 pkgname=php-phalcon
 _pkgname=cphalcon
-pkgver=5.14.1
+pkgver=5.14.2
 pkgrel=1
 pkgdesc="Web framework delivered as a C-extension for PHP"
 url="https://phalcon.io"
@@ -13,7 +13,7 @@ license=('BSD-3-Clause')
 depends=('php>=8.5' 'php<8.6')
 backup=('etc/php/conf.d/phalcon.ini')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/phalcon/cphalcon/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('a1d982ddbcd751b1ecef0aa523d3e6079be90acadeacf03b6cba0f1ec682722aa4880051ab9b86b8bc94ce4ef8e28685876e3d03f1e74042637b25f857cdc568')
+b2sums=('c975ccc7551c95dea6e4d55363c18d884b181d8b1a2ca801b27a547cad937d95bd0994210da05ccc871f8b1eedddd6e98cf945dbe9d503bb6300fc557ecd314b')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver/build"
