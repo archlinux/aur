@@ -3,10 +3,10 @@
 # shellcheck disable=SC2034,SC2154
 
 pkgname=truckersmp-cli
-pkgver=0.10.2
+pkgver=0.11.0
 pkgrel=1
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/truckersmp-cli/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('36bd5e79760142adb77a791e99f06b63f2d40fb5a9ff03d772ec76557bb5b27f1c475647de6609107dee1f7abf74ce2912b5348b619e6f91b7732a3a378f055e')
+sha512sums=('af672214e8cc0cac0e23559d19717258f539cc0e8dc10a2ed07b850a107c03f019f08c87509bc92f1246d05b03abf7ed5f977a934ee8bf22a3843ecae04b1555')
 
 pkgdesc="A simple launcher for TruckersMP to play ATS or ETS2 in multiplayer."
 arch=('x86_64')
