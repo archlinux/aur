@@ -1,0 +1,23 @@
+pkgbase = steganoforge
+	pkgdesc = Hide and extract files inside PNG images via LSB steganography, with CLI and web UI
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/user14923929/steganoforge
+	arch = any
+	license = GPL3
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pillow
+	depends = python-numpy
+	depends = python-cryptography
+	optdepends = python-fastapi: for the web UI
+	optdepends = python-uvicorn: for running the web UI server
+	optdepends = python-multipart: required by the web UI for file uploads
+	source = steganoforge-0.1.0.tar.gz::https://github.com/user14923929/steganoforge/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 88dc895bf37477a3d07dc8349cb442d3f67d3879fdbd0e77aefa330514065746
+
+pkgname = steganoforge
