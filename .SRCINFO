@@ -1,22 +1,43 @@
 pkgbase = python-extract-msg
 	pkgdesc = Extracts emails and attachments saved in Microsoft Outlook's .msg files
-	pkgver = 0.54.1
+	pkgver = 0.56.0
 	pkgrel = 1
 	url = https://github.com/TeamMsgExtractor/msg-extractor
 	arch = any
-	license = MIT
+	license = GPL-3.0-or-later
+	checkdepends = python-chardet>=3.0.0
+	checkdepends = python-chardet<7
+	checkdepends = python-magic>=1:0.4.27
+	checkdepends = python-magic<1:0.5
+	checkdepends = python-pillow>=9.5.0
+	checkdepends = python-pillow<13
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python-beautifulsoup4
-	depends = python-compressed-rtf
-	depends = python-ebcdic
-	depends = python-olefile
-	depends = python-red-black-tree-mod
-	depends = python-rtfde
-	depends = python-tzlocal
-	source = extract-msg-0.54.1.tar.gz::https://files.pythonhosted.org/packages/source/e/extract_msg/extract_msg-0.54.1.tar.gz
-	sha256sums = fb39e9f0d3971c30ca6ffa5686bc971884f364b6e97c79ccc10013fb3cbd02de
+	depends = python>=3.8
+	depends = python-beautifulsoup4>=4.11.1
+	depends = python-beautifulsoup4<5
+	depends = python-compressed-rtf>=1.0.6
+	depends = python-compressed-rtf<2
+	depends = python-ebcdic>=1.1.1
+	depends = python-ebcdic<3
+	depends = python-olefile=0.47
+	depends = python-red-black-tree-mod>=1.20
+	depends = python-red-black-tree-mod<=1.23
+	depends = python-rtfde>=0.1.1
+	depends = python-rtfde<0.2
+	depends = python-tzlocal>=1:4.2
+	depends = python-tzlocal<1:6
+	optdepends = python-chardet<7: Guess encodings for MSG files without a usable codepage
+	optdepends = python-magic<1:0.5: Detect MIME types
+	optdepends = python-pillow<13: Parse and convert Outlook image attachments
+	optdepends = wkhtmltopdf: Export message bodies as PDF
+	source = extract-msg-0.56.0.tar.gz::https://github.com/TeamMsgExtractor/msg-extractor/archive/refs/tags/v0.56.0.tar.gz
+	source = fix-build-and-dependency-bounds.patch
+	source = test-optional-dependencies.py
+	b2sums = 190648020f31fde96b6290216fc53d7060dd9e7d79c3c9a57135435032546fe523e7d896b831e4c5bfe1e534ce48cd990cc30e62fd39ff8d57b956b55c8107ad
+	b2sums = 9968bd6eb9bbae66f61de8cf59fac3f716fe261b343d7c9549349fe70c3164b7bf9fbfa34c66fde0836b27112844c0f9b3274aba815e41a435ad1f26f921ad30
+	b2sums = d2f05ce3b61b49e875414e496825da34f162c149aa516124f46af8fa3e3fe29104752de66e82f53a535c9c29e1472f4d057677b20bd9391dd5acb0c439091130
 
 pkgname = python-extract-msg

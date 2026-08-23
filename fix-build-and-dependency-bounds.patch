@@ -1,0 +1,50 @@
+--- a/setup.py
++++ b/setup.py
+@@ -1,5 +1,5 @@
+ import os
+-from setuptools import setup
++from setuptools import find_namespace_packages, setup
+ import re
+ 
+ 
+@@ -39,8 +39,7 @@
+     author='Destiny Peterson & Matthew Walker',
+     author_email='arceusthe@gmail.com, mattgwwalker@gmail.com',
+     license='GPL',
+-    packages=[main_module],
+-    py_modules=[main_module],
++    packages=find_namespace_packages(include=[main_module, f'{main_module}.*']),
+     entry_points={
+         'console_scripts': ['extract_msg = extract_msg.__main__:main',]
+     },
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -1,5 +1,5 @@
+ [bdist_wheel]
+-python-tag=py3
++python_tag=py3
+ 
+ [options.extras_require]
+ all =
+@@ -9,8 +9,8 @@
+ mime =
+     python-magic>=0.4.27,<0.5
+ image =
+-    Pillow>=9.5.0,<10
++    Pillow>=9.5.0,<13
+ encoding =
+-    chardet>=3.0.0,<6 # This can probably be unbound.
++    chardet>=3.0.0,<7
+ readthedocs =
+     sphinx-rtd-theme
+\ No newline at end of file
+--- a/MANIFEST.in
++++ b/MANIFEST.in
+@@ -1,6 +1,6 @@
+ include requirements.txt
+ include MANIFEST.in
+-include README.md
++include README.rst
+ include LICENSE.txt
+ include CHANGELOG.md
+ recursive-include extract_msg *
