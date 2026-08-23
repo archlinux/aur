@@ -1,6 +1,6 @@
 # Maintainer: galak9 <alterk@qq.com>
 pkgname=qoder-cli-cn-bin
-pkgver=1.1.28
+pkgver=1.1.28 # renovate: datasource=custom.qoder-cli-cn depName=qoder-cli-cn
 pkgrel=1
 pkgdesc="Qoder CLI (CN version) - An agentic AI coding tool built for command-line developers"
 arch=('x86_64' 'aarch64')
