@@ -1,22 +1,18 @@
-# Version 1.14.12-2 upgrade notice
+# Version 2.2.1-2 upgrade notice
 post_upgrade() {
-    if [[ "${1}" == "1.14.12-2" ]]; then
+    if [[ "${1}" == "2.2.1-2" ]]; then
         echo ""
-        note_header "UPGRADE INFORMATION ABOUT VERSION 1.14.12-2:"
+        note_header "UPGRADE INFORMATION ABOUT VERSION 2.2.1-2:"
         echo ""
-        note "pCloud drive creates autostart files when the \"start pCloud Drive"
-        note "on system startup\" setting is enabled. If you have used this setting,"
-        note "there are likely old .desktop files lingering in your ~/.config/autostart directory"
+        note "Starting with this version, the AppImage is extracted at build"
+        note "time and pCloud Drive runs from that extracted copy instead of"
+        note "a mounted AppImage."
         note ""
-        note "While these may not cause problems, it is advisable to clean them up:"
-        note "    1. Open pCloud Drive, disable \"start pCloud Drive on system startup\""
-        note "    2. Remove lingering startup files with \"pCloud\" in the name"
-        note "        e.g. find ~/.config/autostart -type f -iname \"*pcloud*\" -exec rm -f {} \;"
-        note "    3. Re-enable \"start pCloud Drive on system startup\""
+        note "This PKGBUILD was edited with the help of an LLM. If anything"
+        note "looks off, please report it on the AUR package page."
         echo ""
     fi
 }
-
 # Pacman-like colors
 reset="$(tput sgr0)"
 bold="${reset}$(tput bold)"
@@ -28,3 +24,4 @@ note_header() {
 note() {
     printf "${blue}  -> ${bold}$1${reset}\n"
 }
+

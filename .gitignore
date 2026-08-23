@@ -5,4 +5,4 @@ pkg
 src
 *.orig
 .instructions
-*.pkg.zst
+*.zst
