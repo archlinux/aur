@@ -1,9 +1,9 @@
 # Maintainer: Margot Prego <mopigames@proton.me>
 #
-# Template.  0.2.0 and f4053be9646fb43d40a265e6b8727bf6e46f2c08be6823bd648e982f349c112d are filled in per release by
+# Template.  0.2.1 and 70cf96c0f548f44054c38c07d5f93fd362e3c75115130a30a3b3c13d861b6bf9 are filled in per release by
 # packaging/aur/render.sh, from the tarball GitHub actually serves.
 pkgname=mlos-host-utils
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="USB passthrough agent for the PC you stream from with Moonlight OS"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ license=('MPL-2.0')
 depends=('usbip')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f4053be9646fb43d40a265e6b8727bf6e46f2c08be6823bd648e982f349c112d')
+sha256sums=('70cf96c0f548f44054c38c07d5f93fd362e3c75115130a30a3b3c13d861b6bf9')
 
 build() {
 	cd "moonlight-os-$pkgver/host-utils"
