@@ -4,9 +4,9 @@ pkgbase=proton-vpn-browser-extension
 pkgname=(
     'firefox-extension-proton-vpn'
     'proton-vpn-browser-extension')
-pkgver=1.3.1
+pkgver=1.3.5
 pkgrel=1
-_commit=0041c0e6fe3dc0c2a422f4646adb7945f33993fb
+_commit=0f50ae286fe587e464e70ebc8cb94ca108587025
 pkgdesc='Proton VPN browser extension'
 arch=('any')
 url='https://protonvpn.com/'
@@ -16,7 +16,7 @@ makedepends=(
     'npm'
     'zip')
 source=("git+https://github.com/ProtonVPN/proton-vpn-browser-extension.git#commit=${_commit}")
-sha256sums=('316787e82bc9b7772e58ab5f49a8e6fa29a2f92019bd409b520007caa7360295')
+sha256sums=('a05a808fa1d2d2d1e74320d683c673ce1d728e6245c20252a133374d9b378f99')
 
 prepare() {
     npm ci --cache "${srcdir}/npm-cache" --prefix "$pkgbase"
