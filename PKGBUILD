@@ -6,7 +6,7 @@
 # prebuilt binaries).
 
 pkgname=gabbro-bin
-pkgver=0.1.0_alpha.21
+pkgver=0.1.0_alpha.22
 pkgrel=1
 _pkgver=${pkgver//_/-}   # tag/filename form: 0.1.0-alpha.N
 pkgdesc="Quantum-resistant password manager"
@@ -19,9 +19,10 @@ optdepends=('xdg-desktop-portal-gtk: native file dialogs (open/save/pick folder)
 provides=('gabbro')
 conflicts=('gabbro')
 options=('!strip' '!debug')   # prebuilt bundle; don't strip or split debug symbols
+install=gabbro-bin.install
 source=("gabbro-${_pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${_pkgver}/gabbro-${_pkgver}-linux-x86_64.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/gabbro-foss/gabbro/v${_pkgver}/LICENSE")
-sha256sums=('045b7fa8d00058f1acc5dd800e2b67e184094c47d0c042c1fbe6bd033da9d597'
+sha256sums=('3f0e9e4deb2f7fb42a6aea9028af62a0324678c55a1fc4161814e47b0af6da28'
             '9eb52965f51761109c61c9f91ed4c2ab4017c1d8b14bbb02fb178dbaf1346545')
 
 package() {
@@ -57,6 +58,18 @@ Categories=Utility;Security;
 Keywords=password;vault;passphrase;security;
 StartupWMClass=app.gabbro.gabbro
 DESK
+
+  # uhid rule + modules-load conf: without them Gabbro cannot open /dev/uhid
+  # and Linux passkeys silently do nothing. Embedded inline: the release
+  # tarball ships neither file.
+  install -dm755 "$pkgdir/usr/lib/udev/rules.d"
+  cat > "$pkgdir/usr/lib/udev/rules.d/70-gabbro-uhid.rules" <<'RULES'
+KERNEL=="uhid", SUBSYSTEM=="misc", TAG+="uaccess"
+RULES
+  install -dm755 "$pkgdir/usr/lib/modules-load.d"
+  cat > "$pkgdir/usr/lib/modules-load.d/gabbro-uhid.conf" <<'CONF'
+uhid
+CONF
 
   # Maintainer copyright notice + GPL-3.0 terms, conveyed with the binary (GPL section 5).
   # The repo LICENSE carries a copyright holder line that Arch's shared common GPL3 file

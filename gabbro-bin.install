@@ -1,0 +1,15 @@
+# Activate the uhid rule + module now so passkeys work without a reboot; each
+# step tolerates containers (no udev/modprobe running).
+post_install() {
+  udevadm control --reload || true
+  modprobe uhid || true
+  udevadm trigger --name-match=uhid || true
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  udevadm control --reload || true
+}
