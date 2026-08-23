@@ -3,7 +3,7 @@
 pkgauthor="unable12"
 pkgname="codebase-posters"
 pkgdesc="Your repository as generative art"
-pkgver=0.7.1
+pkgver=0.8.1
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/${pkgauthor}/${pkgname}"
@@ -22,7 +22,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('4b5c727bca97e8bb2011f2a5fbcdeb4f787122d4d74502a310e868d194351728f8327cb14cab21251ae40a95e625e115f8ba5ee897f09cc8e8a6e95272d2e556')
+b2sums=('0213a7e40b0999eab350b204c0b26e493ce0395fa79d1d04b33edfbabdb7b1afebc9a031abf03bbe46196fc77df2d1a7c91628157e6f5378d68d769f8f9c9966')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
