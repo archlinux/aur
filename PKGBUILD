@@ -1,7 +1,7 @@
 # Maintainer: clmates <clmates at gmail dot com>
 
 pkgname=drivebeacon
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc='KDE Plasma client and service for Microsoft Graph OneDrive synchronization'
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
     'onedrive-abraunegg: optional legacy backend and migration support'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('669549e1459fd4e92bab2b947980c16fe1f204eac177b06fdf82ebc20c41cb6d')
+sha256sums=('f403e28fbd14f48f2b9209e429a753480edcac33337a592807be79df98610b49')
 
 build() {
     cmake -S "$srcdir/$pkgname-$pkgver" -B build -G Ninja \
