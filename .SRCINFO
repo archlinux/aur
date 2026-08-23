@@ -4,6 +4,7 @@ pkgbase = stamp-git
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jbrummer/stamp
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = appstream
 	makedepends = blueprint-compiler

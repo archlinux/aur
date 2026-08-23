@@ -5,7 +5,10 @@ pkgver=0r300+9f9777b
 pkgrel=1
 pkgdesc="A modern personal information management application"
 url="https://gitlab.gnome.org/jbrummer/stamp"
-arch=(x86_64)
+arch=(
+  x86_64
+  aarch64
+)
 license=(GPL-3.0-or-later)
 depends=(
   dconf
