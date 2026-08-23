@@ -1,0 +1,4 @@
+[boxesandglue-glu]
+source = "git"
+git = "https://github.com/boxesandglue/glu.git"
+prefix = "v"
