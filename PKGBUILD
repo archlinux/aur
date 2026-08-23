@@ -1,6 +1,6 @@
 # Maintainer: Jakob Munch Overgaard <jmo@tvipper.com>
 pkgname=remotepower-server
-pkgver=7.0.1
+pkgver=7.0.2
 pkgrel=1
 pkgdesc='Self-hosted fleet-management server for RemotePower (nginx + gunicorn/Flask): dashboards, CVE/drift/compliance, monitoring, AI'
 arch=('any')
@@ -19,6 +19,7 @@ optdepends=(
   'wireguard-tools: WG Access — wg/wg-quick used by the VPN hub helper'
   'python-psycopg: PostgreSQL storage backend for large / multi-node fleets'
   'postgresql: PostgreSQL storage backend for large / multi-node fleets'
+  'python-websockets: agent push (wake-nudge) daemon — remotepower-push exits without it'
 )
 backup=('etc/nginx/snippets/remotepower-locations.conf')
 install="$pkgname.install"
@@ -29,7 +30,7 @@ source=(
   "remotepower-$pkgver.tar.gz.asc::$url/releases/download/v$pkgver/remotepower-$pkgver.tar.gz.asc"
 )
 sha256sums=(
-  '1185095a7b20d634c38c21b4f19caac540dcc52454744d2c056c22c3630836fc'
+  'd9d6e82de8bf8b3bf952e16883f27fe849bdc0dd8735253f127cef59170df417'
   'SKIP'
 )
 validpgpkeys=('E7B5AD456728B8462A8B54BFD488AF115D2CCDBF')  # Jakob Munch Overgaard <jmo@tvipper.com>
@@ -89,11 +90,21 @@ package() {
     > "$pkgdir/etc/sudoers.d/remotepower-wg"
   chmod 440 "$pkgdir/etc/sudoers.d/remotepower-wg"
 
-  # ── "Restart server" helper (v6.1.2): same single-script NOPASSWD model. The
-  #    app server runs this one root-owned script to `systemctl restart` itself;
-  #    it grants no privilege the admin doesn't already have via self-update. ──
-  install -Dm755 packaging/remotepower-server-restart.sh \
-    "$pkgdir/usr/local/sbin/remotepower-server-restart"
+  # ── "Restart server" + self-update helpers. The sudoers rule below is the
+  #    v6.1.2 model and it does NOT work under the unit we ship:
+  #    remotepower-wsgi.service sets NoNewPrivileges=true, which blocks sudo's
+  #    setuid transition regardless of any drop-in. It stays for installs that
+  #    relax the unit. The route that works is the systemd path unit: the web
+  #    process creates an empty request file in its data dir and systemd, as
+  #    root, runs the helper. The .install file enables them. ──
+  for _act in restart update; do
+    install -Dm755 "packaging/remotepower-server-$_act.sh" \
+      "$pkgdir/usr/local/sbin/remotepower-server-$_act"
+    install -Dm644 "packaging/remotepower-server-$_act.path" \
+      "$pkgdir/usr/lib/systemd/system/remotepower-server-$_act.path"
+    install -Dm644 "packaging/remotepower-server-$_act-run.service" \
+      "$pkgdir/usr/lib/systemd/system/remotepower-server-$_act-run.service"
+  done
   printf 'http ALL=(root) NOPASSWD: /usr/local/sbin/remotepower-server-restart\n' \
     > "$pkgdir/etc/sudoers.d/remotepower-self-restart"
   chmod 440 "$pkgdir/etc/sudoers.d/remotepower-self-restart"

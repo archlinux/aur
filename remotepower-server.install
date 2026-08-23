@@ -9,6 +9,11 @@ _setup_msg() {
               /etc/systemd/system/
            systemctl daemon-reload
            systemctl enable --now remotepower-wsgi
+           # ...and the two path units that let the Restart and Update buttons
+           # work. remotepower-wsgi.service sets NoNewPrivileges=true, which
+           # blocks sudo, so this is the only route that runs the helpers:
+           systemctl enable --now remotepower-server-restart.path \
+                                  remotepower-server-update.path
       2) Configure nginx — copy the sample vhost and set your server_name (+ TLS):
            cp /usr/share/doc/remotepower-server/remotepower.conf.sample \
               /etc/nginx/conf.d/remotepower.conf
