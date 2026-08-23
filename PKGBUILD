@@ -3,8 +3,9 @@
 _gitname=atmosphera
 
 pkgname=atmosphera-git
-pkgver=0.1.0.r0.g0000000
-pkgrel=5
+_release_ver=0.5.1.r0
+pkgver=0.5.1.r0.g0000000
+pkgrel=6
 install=atmosphera-git.install
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)"
 arch=('any')
@@ -31,6 +32,7 @@ optdepends=(
   'power-profiles-daemon: For power profile management'
   'ddcutil: For external display brightness control'
   'qt6-niriqml: niri IPC integration (workspaces, windows, session config)'
+  'qt6-mangowcqml: mangowc IPC integration (workspaces, windows, session config)'
   'keyd: hardware-level keyboard remapping (bindings environments)'
   'xremap-niri-bin: session-level app-scoped keymaps (macos bindings)'
   'qt6-5compat: required by some registry plugins (e.g. cookie-clock)'
@@ -43,7 +45,16 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_gitname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    # NOTE: capture describe output explicitly — `git describe ... | sed ...`
+    # masks describe's exit code (sed exits 0 on empty input), so a pipeline
+    # `|| echo fallback` never fires on tagless/partial clones.
+    local out
+    out=$(git describe --long --tags 2>/dev/null) || out=""
+    if [ -n "$out" ]; then
+        printf "%s" "$out" | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+    else
+        echo "${_release_ver}.g$(git rev-parse --short HEAD)"
+    fi
 }
 
 package() {

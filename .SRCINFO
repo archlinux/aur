@@ -1,7 +1,7 @@
 pkgbase = atmosphera-git
 	pkgdesc = Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)
-	pkgver = 0.1.0.r0.g0000000
-	pkgrel = 5
+	pkgver = 0.5.1.r0.g0000000
+	pkgrel = 6
 	url = https://github.com/alexindigo/atmosphera
 	install = atmosphera-git.install
 	arch = any
@@ -24,6 +24,7 @@ pkgbase = atmosphera-git
 	optdepends = power-profiles-daemon: For power profile management
 	optdepends = ddcutil: For external display brightness control
 	optdepends = qt6-niriqml: niri IPC integration (workspaces, windows, session config)
+	optdepends = qt6-mangowcqml: mangowc IPC integration (workspaces, windows, session config)
 	optdepends = keyd: hardware-level keyboard remapping (bindings environments)
 	optdepends = xremap-niri-bin: session-level app-scoped keymaps (macos bindings)
 	optdepends = qt6-5compat: required by some registry plugins (e.g. cookie-clock)
