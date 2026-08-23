@@ -22,7 +22,7 @@ if [ "$CI_MODE" = true ]; then
 fi
 
 latest_version="${VERSION_OVERRIDE:-latest}"
-nwjs_ffmpeg_version=""
+chromium_version=""
 
 if [ "$latest_version" = "latest" ]; then
   if ! command -v jq >/dev/null 2>&1; then
@@ -37,22 +37,18 @@ if [ "$latest_version" = "latest" ]; then
   }
 
   latest_version=$(printf '%s\n' "$json" | jq -r '.data.latest // empty')
-  nwjs_ffmpeg_version=$(printf '%s\n' "$json" | jq -r '.data.nwjs_ffmpeg_version // empty')
   chromium_version=$(printf '%s\n' "$json" | jq -r '.data.chromium // empty')
-  nwjs_chromium_version=$(printf '%s\n' "$json" | jq -r '.data.nwjs_chromium // empty')
 
-  if [ -z "$latest_version" ] || [ -z "$nwjs_ffmpeg_version" ]; then
+  if [ -z "$latest_version" ] || [ -z "$chromium_version" ]; then
     echo "Error: opera-versions API did not return expected fields."
     exit 1
   fi
 
   echo "Latest Opera Version:      v${latest_version}"
-  [ -n "$chromium_version" ] && echo "Chromium Version:           v${chromium_version}"
-  echo "nwjs-ffmpeg Version:       v${nwjs_ffmpeg_version}"
-  [ -n "$nwjs_chromium_version" ] && echo "nwjs-ffmpeg Chromium base: v${nwjs_chromium_version}"
+  echo "Chromium Version:           v${chromium_version}"
 else
   echo "Using version override: v${latest_version}"
-  echo "Note: nwjs_ffmpeg_version will not be auto-updated when using a manual version override."
+  echo "Note: chromium_version will not be auto-updated when using a manual version override."
 fi
 
 # Backup the original PKGBUILD
@@ -61,9 +57,9 @@ cp ./PKGBUILD ./PKGBUILD.bak
 # Update the PKGBUILD with the latest version
 sed -i "s/^pkgver=.*$/pkgver=${latest_version}/" ./PKGBUILD
 
-# If we have a mapped nwjs_ffmpeg_version (latest case), update it as well
-if [ -n "$nwjs_ffmpeg_version" ]; then
-  sed -i "s/^nwjs_ffmpeg_version=.*/nwjs_ffmpeg_version=${nwjs_ffmpeg_version}/" ./PKGBUILD
+# If we have a mapped chromium_version (latest case), update it as well
+if [ -n "$chromium_version" ]; then
+  sed -i "s/^chromium_version=.*/chromium_version=${chromium_version}/" ./PKGBUILD
 fi
 
 # Check if the version URL returns 404
