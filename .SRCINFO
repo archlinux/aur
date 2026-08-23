@@ -1,6 +1,6 @@
 pkgbase = fastmc
 	pkgdesc = fastmc, create a Minecraft server in under a minute, builds from source
-	pkgver = 1
+	pkgver = 6
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastmc
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fastmc
 	depends = gcc-libs
 	provides = fastmc
 	conflicts = fastmc-bin
-	source = fastmc-1.tar.gz::https://github.com/CallMeAlphabet/fastmc/archive/refs/tags/latest.tar.gz
+	source = fastmc-6.tar.gz::https://github.com/CallMeAlphabet/fastmc/archive/refs/tags/latest.tar.gz
 	sha256sums = SKIP
 
 pkgname = fastmc
