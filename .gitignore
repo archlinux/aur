@@ -1,0 +1,10 @@
+# Deny-by-default: ignore everything, then explicitly allow the files
+# that actually belong in this AUR package repo. This keeps stray build
+# artifacts (pkg/, src/, debtap/, downloaded .deb/.pkg.tar.zst, etc.)
+# from ever being accidentally committed.
+*
+
+!/.gitignore
+!/PKGBUILD
+!/.SRCINFO
+!/digitalwatchdog-client.install
