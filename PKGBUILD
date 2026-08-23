@@ -2,7 +2,7 @@
 
 pkgname=sparrow-wallet-git
 _pkgname=sparrow-wallet
-pkgver=2.5.1.r7.g0862974
+pkgver=2.5.3.r57.g0a48420
 pkgrel=1
 _jdkver=25
 pkgdesc="Desktop Bitcoin Wallet focused on security and privacy (git version)"
@@ -96,11 +96,8 @@ build() {
 
     echo "Building ${pkgname} with Java $(java -version 2>&1 | head -n1)"
 
-    echo "Creating jlink runtime image..."
-    gradle --no-daemon jlink
-
-    echo "Creating jpackage application image..."
-    gradle --no-daemon jpackageImage
+    echo "Creating jpackage application image without installer..."
+    gradle --no-daemon jpackage -PskipInstallers=true
 }
 
 check() {

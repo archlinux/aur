@@ -1,6 +1,6 @@
 pkgbase = sparrow-wallet-git
 	pkgdesc = Desktop Bitcoin Wallet focused on security and privacy (git version)
-	pkgver = 2.5.1.r7.g0862974
+	pkgver = 2.5.3.r57.g0a48420
 	pkgrel = 1
 	url = https://sparrowwallet.com/
 	arch = x86_64
