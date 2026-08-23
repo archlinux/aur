@@ -1,7 +1,7 @@
 pkgbase = caffeine
 	pkgdesc = Keep your computer awake
 	pkgver = 2.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/caffeine
 	arch = any
 	license = GPL-3.0-or-later

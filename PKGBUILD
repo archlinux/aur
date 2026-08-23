@@ -8,7 +8,7 @@ _name="cups-of-caffeine"
 _pkgname="caffeine"
 pkgname="$_pkgname"
 pkgver=2.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Keep your computer awake"
 url="https://launchpad.net/caffeine"
 license=('GPL-3.0-or-later')
@@ -42,4 +42,8 @@ build() {
 package() {
   cd "$_pkgsrc"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  find share \
+    -type d \( -path '*/glade' -o -path '*/pixmaps' \) -prune -o \
+    -type f -exec install -Dm644 "{}" "$pkgdir/usr/{}" \;
 }
