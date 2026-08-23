@@ -11,7 +11,7 @@ _tag="v0.1.0"
 pkgrel=1
 pkgdesc="High-resolution TIDAL player for Linux, written in Rust. Bit-perfect USB output."
 arch=('x86_64')
-url="https://github.com/yelanxin/OxiTide-release"
+url="https://github.com/yelanxin/OxiTide"
 license=('LicenseRef-Proprietary')
 depends=(
   'gtk4'

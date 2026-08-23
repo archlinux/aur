@@ -2,7 +2,7 @@ pkgbase = oxitide-bin
 	pkgdesc = High-resolution TIDAL player for Linux, written in Rust. Bit-perfect USB output.
 	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/yelanxin/OxiTide-release
+	url = https://github.com/yelanxin/OxiTide
 	install = oxitide.install
 	arch = x86_64
 	license = LicenseRef-Proprietary
@@ -19,7 +19,7 @@ pkgbase = oxitide-bin
 	noextract = oxitide-0.1.0-1-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = oxitide-0.1.0-1-x86_64.pkg.tar.zst::https://github.com/yelanxin/OxiTide-release/releases/download/v0.1.0/oxitide-0.1.0-1-x86_64_archlinux.pkg.tar.zst
+	source = oxitide-0.1.0-1-x86_64.pkg.tar.zst::https://github.com/yelanxin/OxiTide/releases/download/v0.1.0/oxitide-0.1.0-1-x86_64_archlinux.pkg.tar.zst
 	sha256sums = 28b6caf171fab9a0c50b0fb9bb862a4f6e648de93b944705510bbf2cfa0e8bbc
 
 pkgname = oxitide-bin
