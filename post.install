@@ -1,0 +1,15 @@
+post_install() {
+  echo "======================================================================"
+  echo " WARNING: Special Installation Instructions for pesde"
+  echo "----------------------------------------------------------------------"
+  echo " To complete the installation, please perform the following steps:"
+  echo ""
+  echo "  1. Run the self-installer:"
+  echo "     pesde self-install"
+  echo ""
+  echo "  2. Follow the interactive instructions provided in your terminal."
+  echo ""
+  echo "  3. Once completed, safely remove this pacman package:"
+  echo "     sudo pacman -R pesde"
+  echo "======================================================================"
+}
