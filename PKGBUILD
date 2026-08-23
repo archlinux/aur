@@ -1,6 +1,6 @@
 # Maintainer: Bingusfan360 <bingusfan360@proton.me>
 pkgname=mahoragaos
-pkgver=0.4.9
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="A model-agnostic adaptive operating system inspired by the Unix philosophy"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 source=("$url/-/archive/v$pkgver/MahoragaOS-v$pkgver.tar.gz"
         "mahoragaos.desktop"
         "mahoragaos.svg")
-sha256sums=('9f8480d8444684e16737812126d0dbbaa16efd030ba2ae11ec7c285f4ae2ab4d'
+sha256sums=('e6f3526537caae12c4a018ba6ef8efeb7e206ef2e0bf5367e8b08586755212e2'
             'SKIP'
             'SKIP')
 
