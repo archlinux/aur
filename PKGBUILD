@@ -1,8 +1,8 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 # Orginally Packaged By: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=rasdaemon
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.8.5
+pkgrel=1
 pkgdesc="Logging daemon for Platform Reliability, Availability and Serviceability (RAS), replacing mcelog"
 arch=(i686 x86_64)
 url="https://github.com/mchehab/rasdaemon"
@@ -20,14 +20,14 @@ depends=(
 
 source=("https://www.infradead.org/~mchehab/rasdaemon/rasdaemon-${pkgver}.tar.bz2"
         "tracing.patch")
-sha256sums=('322fa717adbbd88ed73ea549384e745753bc606a64988601d68c1294b8b0d30b'
+sha256sums=('f91e22d64d18ba188c0cc254abe6fe01ffe95f5c98421a956c3081b9f6a6a29e'
             '668ccb22e0179fc860a35aec4e3509a67366173f316e7267b60a2fda6147a258')
 
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -p1 < "${srcdir}/tracing.patch"
-  #patch -p1 < "${srcdir}/buffer-overflow.patch"
-}
+# prepare() {
+#   cd "${srcdir}/${pkgname}-${pkgver}"
+#   patch -p1 < "${srcdir}/tracing.patch"
+#   patch -p1 < "${srcdir}/buffer-overflow.patch"
+# }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
