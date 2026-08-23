@@ -1,6 +1,6 @@
 pkgbase = hace
 	pkgdesc = A task-launching app (think make)
-	pkgver = 0.8.4
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/ralsina/hace
 	install = install
@@ -9,7 +9,7 @@ pkgbase = hace
 	license = MIT
 	makedepends = crystal
 	makedepends = shards
-	source = hace-0.8.4.tar.gz::https://github.com/ralsina/hace/archive/refs/tags/v0.8.4.tar.gz
-	sha256sums = fb396f7a08aa97d3d07ab28d8fe0d3081fee49c764eb06c8349c1095b21f85a6
+	source = hace-1.0.0.tar.gz::https://github.com/ralsina/hace/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 27c5abce7c5498611022e584f217fcb74cd133e31e97712911823cab0c31306a
 
 pkgname = hace
