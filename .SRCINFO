@@ -1,6 +1,6 @@
 pkgbase = mtplayer
 	pkgdesc = Offers access to the Mediathek of several public tv stations from DE/AT/CH
-	pkgver = 21__2026.01.23
+	pkgver = 22__2026.08.22
 	pkgrel = 1
 	url = https://www.p2tools.de/mtplayer/
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = mtplayer
 	depends = java-runtime>=17
 	depends = ffmpeg
 	optdepends = vlc: play videos directly from MTPlayer
-	source = https://github.com/xaverW/MTPlayer/releases/download/version-21/MTPlayer-21__2026.01.23.zip
+	source = https://github.com/xaverW/MTPlayer/releases/download/version-22/MTPlayer-22__2026.08.22.zip
 	source = mtplayer.desktop
 	source = mtplayer.sh
-	sha256sums = 0f2bba79efeb4bf442da4dd5524741b4feaa327be7ead89ac7be75cc390312ef
+	sha256sums = ed36ae59154d0ee98068de81387167761da25692e4d8451f242b85e2d63a8833
 	sha256sums = 227d28958ef76fa26dfef5101cddf9a75f7b33c409f741826ae7d6974f172667
 	sha256sums = e41444cc5fb59938e1532eeb7d6e9163812226dc8f5790e529858bcf4b38cd30
 
