@@ -1,0 +1,23 @@
+post_install() {
+  cat <<'EOF'
+==> frugalRGB setup:
+    USB RGB (motherboard): replug the device or run
+      udevadm trigger
+    to apply the installed udev rules.
+
+    DRAM RGB (DDR5 via SMBus):
+      1. Add your user to the i2c group, then log out and back in:
+           usermod -aG i2c $USER
+      2. On boards whose BIOS claims the SMBus (most Gigabyte boards),
+         the kernel refuses to bind the SMBus driver. Add
+           acpi_enforce_resources=lax
+         to the kernel command line and reboot. See the README.
+
+    Transparent system tray icon (optional):
+      pacman -S python-gobject libayatana-appindicator
+EOF
+}
+
+post_upgrade() {
+  return 0
+}
