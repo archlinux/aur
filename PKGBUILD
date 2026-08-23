@@ -2,7 +2,7 @@
 
 _pkgname="vopono"
 pkgname=vopono-bin
-pkgver=0.10.21
+pkgver=0.10.22
 pkgrel=1
 pkgdesc='Run applications through VPN connections in network namespaces'
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -16,9 +16,9 @@ source_armv7h=("${_pkgname}-${pkgver}::${url}/releases/download/${pkgver}/${_pkg
 source_aarch64=("${_pkgname}-${pkgver}::${url}/releases/download/${pkgver}/${_pkgname}_${pkgver}_linux_aarch64")
 noextract=("${_pkgname}-${pkgver}")
 sha256sums=('fe558d14c1efa8c2bf638b5882fbf63c98970b76b661f1c8c50a72b6b5553e13')
-sha256sums_x86_64=('8ece9e7077056a2772128e98e6c60a951b271a65c018b6b34cfd82665559ef76')
-sha256sums_armv7h=('746657750c6cc8d17ed9bb9d8cf2e54d0dc658820b84a805910a5c3303506e8f')
-sha256sums_aarch64=('ea7dfb972e552d0a31ba442298492859d8abef44e1faa381af6fa87edef4839e')
+sha256sums_x86_64=('12befd8d826bbfc0b83668c0179efb358200e0cb7bfe7403cc19aa509a1f126d')
+sha256sums_armv7h=('9b804542ae7c0dc98eebeea59e07c603fdc261bb2d4683db1cfe507205764f8e')
+sha256sums_aarch64=('93ce6e710170d22d995f2935c988d8596191743af1ee8c78693af6207ef647a5')
 provides=('vopono')
 conflicts=('vopono')
 
