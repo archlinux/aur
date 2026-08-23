@@ -2,8 +2,8 @@
 # Maintainer: Konstantin Liberty <jon9097 at gmail dot com>
 
 pkgname=obs-multi-rtmp
-pkgver=0.7.3.2
-pkgrel=3
+pkgver=0.7.4.3
+pkgrel=1
 pkgdesc="Multiple RTMP outputs plugin for OBS Studio"
 arch=('x86_64')
 url="https://github.com/sorayuki/obs-multi-rtmp"
@@ -16,7 +16,7 @@ conflicts=('obs-multi-rtmp-bin' 'obs-multi-rtmp-git')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/sorayuki/obs-multi-rtmp/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha512sums=('62c820e94e244efe3f1e98551c1caf4c0c54f0bb8c821965e896bf04dee0334c2eee126c5857b1793e35dcd6bb164c8cc711c6e0e520d51545d80615a99014cc')
+sha512sums=('48808280f05efcc0b811dcb9c3dbdfa2030a478cbae7c6546a421a2fb1e85d3be045938839ecaeaef2e6b5f962265f802c28004d95b20f3a6c91c9962a589361')
 
 build() {
   cd "${srcdir}/obs-multi-rtmp-${pkgver}"
