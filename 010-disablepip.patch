@@ -1,11 +1,11 @@
 --- a/khinsider.py
 +++ b/khinsider.py
-@@ -35,89 +35,7 @@
+@@ -35,90 +35,6 @@
          sys.stderr = self._stderr
  
  
 -# --- Install prerequisites ---
- 
+-
 -# (This section in `if __name__ == '__main__':` is entirely unrelated to the
 -# rest of the module, and doesn't even run if the module isn't run by itself.)
 -
@@ -25,8 +25,9 @@
 -
 -    # User-friendly name, import name, pip specification.
 -    requiredModules = [
--        ['requests', 'requests', 'requests >= 2.0.0, < 3.0.0'],
--        ['Beautiful Soup 4', 'bs4', 'beautifulsoup4 >= 4.4.0, < 5.0.0']
+-        ['Beautiful Soup 4', 'bs4', 'beautifulsoup4 >= 4.4.0, < 5.0.0'],
+-        ['cloudscraper', 'cloudscraper', 'cloudscraper >= 3.0.0, < 4.0.0'],
+-        ['requests', 'requests', 'requests >= 2.0.0, < 3.0.0']
 -    ]
 -
 -    def moduleExists(name):
@@ -88,5 +89,5 @@
 -
 -# ------
  
+ import cloudscraper
  import requests
- from bs4 import BeautifulSoup

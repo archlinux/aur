@@ -1,6 +1,6 @@
 pkgbase = khinsider-git
 	pkgdesc = A script for mass downloads from downloads.khinsider.com
-	pkgver = r77.b1683fb
+	pkgver = r80.dabe218
 	pkgrel = 1
 	url = https://github.com/obskyr/khinsider
 	arch = any
@@ -8,12 +8,13 @@ pkgbase = khinsider-git
 	makedepends = git
 	depends = python
 	depends = python-beautifulsoup4
+	depends = python-cloudscraper
 	depends = python-requests
 	provides = khinsider
 	conflicts = khinsider
 	source = git+https://github.com/obskyr/khinsider.git
 	source = 010-disablepip.patch
 	sha256sums = SKIP
-	sha256sums = 0f3aa4c853f592b1fe7baa38e3d2d16fa1adc2f45e8cfd7461320b63907e0086
+	sha256sums = b0d252e4a3643f33a1c8ac3b6436a405deff43c2066b7ade55fc2949209c97a3
 
 pkgname = khinsider-git
