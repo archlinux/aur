@@ -25,6 +25,9 @@ _select_dtb_links() {
         "MNT Reform Next with RCORE RK3588 Module")
             dtb_target="rk3588-mnt-reform-next-7.1.10-reform1.dtb"
             ;;
+        "MNT Pocket Reform with Radxa CM5 RK3588S2 Module")
+            dtb_target="rk3588s-mnt-pocket-reform-7.1.10-reform1.dtb"
+            ;;
         *)
             echo "Warning: Unknown device model: $model"
             echo "No DTB symlink will be created"
