@@ -6,12 +6,13 @@ _id=ciifpadakeohfnnneflckhojbldkkllp
 
 pkgname=parcel-chromium
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium browser extension for zx2c4's pass (password manager)"
 arch=('any')
 url="https://github.com/parcel-pm/parcel"
 license=('ISC')
 depends=("parcel>=${pkgver}")
+optdepends=('libarchive: inspect bundled host script with bsdtar')
 # Can't build the extension from source, because needs to be signed by Google.
 source=("${pkgname}-${pkgver}.crx::${url}/releases/download/v${pkgver}/parcel-chrome-${pkgver}.crx"
         "${pkgname}-${pkgver}.crx.asc::${url}/releases/download/v${pkgver}/parcel-chrome-${pkgver}.crx.asc")
@@ -22,6 +23,8 @@ validpgpkeys=('82ED663067C6017BAA4BC752EB670BF2B1131683'
               'B0908ED59A96C9882BED9A942A51761511A30253'
               '88FF14D6294AF4036B7F00FF676A3C09E2E47A72'
               '56C3E775E72B0C8B1C0C1BD0B5DB77409B11B601')
+
+install="${pkgname}.install"
 
 prepare() {
     # Create extension json

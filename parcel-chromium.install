@@ -1,0 +1,35 @@
+
+post_upgrade() {
+    # Note that it is safe to install the extension with the unapproved updated
+    # host script and ask user to review it after it is already installed,
+    # because the new updated host script will not be allowed to run, until the
+    # user manually updates the hash pinned in the user's parcelrc.
+
+    local _new_ver=$2
+
+    local _ext_path="/usr/lib/parcel-chromium"
+    local _ext_filename="parcel-chromium-${_new_ver%%-*}.crx"
+    local _ext_archive="${_ext_path}/${_ext_filename}"
+    local _host_script="parcel-host"
+
+    local _header_len
+    # CRX header is variable length: magic[4] ver[4] keylen[4]
+    local _crx_ver="$(od -An -tu4 -j4 -N4 "${_ext_archive}")"
+    if [[ "${_crx_ver}" -eq 3 ]]
+    then
+	_header_len=$((12 + $(od -An -tu4 -j8 -N4 "${_ext_archive}")))
+    else
+	_header_len="CRX_V2_ZIP_OFFSET_PLACEHOLDER" # we're not supporting v2
+    fi
+    local _extract_cmd="dd if=\"${_ext_archive}\" bs=1 skip=${_header_len} status=none \
+| bsdtar -xOf - \"${_host_script}\""
+
+    echo ">>> [SECURITY] ACTION REQUIRED: review host script bundled in extension:"
+    echo ">>>   1. Review contents of updated host script (signed does imply safe!):"
+    echo ">>>        "\${EDITOR}" <(${_extract_cmd})"
+    echo ">>>   2. If OK, update HOST_HASH in your '~/.config/parcel/parcelrc' to:"
+    echo ">>>        ${_extract_cmd} | sha256sum"
+
+    # Don't show the new hash to the user, to force the user to work with the file,
+    # in the hope that this will push the user to actually review the script code.
+}
