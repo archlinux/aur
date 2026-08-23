@@ -59,7 +59,7 @@ optdepends=(
   'pipewire: WebRTC desktop sharing under Wayland'
 )
 options=('!debug' '!strip')
-_commit=1722f1b79c5d1e3edd2e2d90ec50a0a5b6f96904
+_commit=f2d69bf2db4fc839b03deebac1c94041bdf6dcd6
 _depot_tools_commit=7bd73dcd391b3f83437f2bd50724c04044806728
 source=(
   "alacrium::git+https://github.com/brauliobo/alacrium.git#commit=${_commit}"
