@@ -1,0 +1,12 @@
+pkgbase = atmosphera-mangowc
+	pkgdesc = Meta package: Atmosphera shell + MangoWC compositor + mangowc IPC module
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/alexindigo/atmosphera
+	arch = any
+	license = GPL-3.0-or-later
+	depends = atmosphera
+	depends = mangowm
+	depends = qt6-mangowcqml
+
+pkgname = atmosphera-mangowc
