@@ -1,0 +1,19 @@
+pkgbase = vantage-git
+	pkgdesc = Offline-first command center for your codebase: knowledge graphs, git intelligence, security & quality scans, optional local AI
+	pkgver = r0.g0
+	pkgrel = 1
+	url = https://github.com/androvonx95/vantage
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-rich
+	provides = vantage
+	conflicts = vantage
+	source = git+https://github.com/androvonx95/vantage.git
+	md5sums = SKIP
+
+pkgname = vantage-git
