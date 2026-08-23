@@ -1,25 +1,25 @@
 pkgbase = matlab-mcp-server-bin
 	pkgdesc = Run MATLAB® using AI applications with the official MATLAB MCP Server from MathWorks®
-	pkgver = 0.11.4
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://www.mathworks.com/products/matlab-mcp-server.html
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = matlab-release>=R2020b
 	depends = sh
-	provides = matlab-mcp-server=0.11.4
-	provides = matlab-mcp-core-server=0.11.4
-	provides = matlab-mcp-core-server-bin=0.11.4
+	provides = matlab-mcp-server=0.12.0
+	provides = matlab-mcp-core-server=0.12.0
+	provides = matlab-mcp-core-server-bin=0.12.0
 	conflicts = matlab-mcp-server
 	conflicts = matlab-mcp-core-server
 	replaces = matlab-mcp-core-server-bin<=0.10.1-1
 	source = matlab-mcp-server.sh
-	source = matlab-mcp-server-0.11.4-README.md::https://github.com/matlab/matlab-mcp-server/raw/refs/tags/v0.11.4/README.md
-	source = matlab-mcp-server-0.11.4-LICENSE.md::https://github.com/matlab/matlab-mcp-server/raw/refs/tags/v0.11.4/LICENSE.md
+	source = matlab-mcp-server-0.12.0-README.md::https://github.com/matlab/matlab-mcp-server/raw/refs/tags/v0.12.0/README.md
+	source = matlab-mcp-server-0.12.0-LICENSE.md::https://github.com/matlab/matlab-mcp-server/raw/refs/tags/v0.12.0/LICENSE.md
 	sha256sums = baf366fb285ace6191a4abef69f003b3135c16ff9df043b274abaa4edc8df1bf
 	sha256sums = f9b76e980edf107e31ba799a906b9fc76f1e1d0807238672d4481f441ac06c89
 	sha256sums = 2cb440d3a47c8ea1ea975d7b15175b87ec31173ab671d073112520d065ec4625
-	source_x86_64 = matlab-mcp-server-0.11.4-x86_64::https://github.com/matlab/matlab-mcp-server/releases/download/v0.11.4/matlab-mcp-server-linux-x64
-	sha256sums_x86_64 = 6c85f6c3f2cea59c89d8e96e1d30258545af05daa44cb9c38594685841646e83
+	source_x86_64 = matlab-mcp-server-0.12.0-x86_64::https://github.com/matlab/matlab-mcp-server/releases/download/v0.12.0/matlab-mcp-server-linux-x64
+	sha256sums_x86_64 = 56f8f17c721af9fd435695c1314009ddebc72a4db6920ca9eca4fa0b606b89f5
 
 pkgname = matlab-mcp-server-bin
