@@ -1,7 +1,7 @@
 # Maintainer: Fahry-a <farhannzarm@gmail.com>
 
 pkgname=odm-bin
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Oryn Download Manager — aria2c-inspired CLI download manager with Connection Balancer, parallel download acceleration, pacman/ILoveCandy progress bar, JSON-RPC + WebSocket daemon, and resume support"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -40,22 +40,22 @@ source_aarch64=(
     "${pkgname}-${pkgver}.LICENSE"
 )
 
-sha256sums_i686=('72a75f94da3b83eed048e733b580a06334b10a8e7364b7be7738ba848dedeb51'
+sha256sums_i686=('6b6af5103234b22ce11c7d61e6b4202d0af48af2abcd19aa4ac9c77aeb22f0bd'
                     'SKIP'
                     'SKIP'
                     'SKIP'
                     'SKIP')
-sha256sums_x86_64=('b5f2362d1eb130dbf0c652efa1b43b831c256dbe9fe7faea577cbf592174bba0'
+sha256sums_x86_64=('71be2dbf117ae35c02d0f3a55414f732cee6a52471bbfbbe639a94e7e93523ac'
                     'SKIP'
                     'SKIP'
                     'SKIP'
                     'SKIP')
-sha256sums_armv7h=('fd433c91d42c4b4718c9ae885a21105c34c16a6b4c49c74ca839551abfe84e46'
+sha256sums_armv7h=('9a8b578fa3448994c87255d69d12f861e01e769177691792d89d617300c9cc58'
                     'SKIP'
                     'SKIP'
                     'SKIP'
                     'SKIP')
-sha256sums_aarch64=('daff4b004ebc14d31cd2e40f12f633a889a60dabb0ceeedb7b7f248adf797327'
+sha256sums_aarch64=('5d514034eef6daa4f34d929db73b6303d4e01e2740b4808c12b4be8fbd0ad628'
                     'SKIP'
                     'SKIP'
                     'SKIP'
