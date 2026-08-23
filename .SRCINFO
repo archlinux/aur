@@ -1,0 +1,18 @@
+pkgbase = se-rs
+	pkgdesc = A structural text editor for searching and rewriting byte ranges
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lolt3under/se-rs
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = rust
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	provides = se
+	conflicts = se
+	source = se-rs-0.1.0.crate::https://github.com/lolt3under/se-rs/releases/download/v0.1.0/se-rs-0.1.0.crate
+	sha256sums = 36d216fe6006a0770e342278423aca4f7dba6a74d9eb005131f6f85d1bb43f7d
+
+pkgname = se-rs

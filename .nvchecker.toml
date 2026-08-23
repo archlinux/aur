@@ -1,0 +1,5 @@
+[se-rs]
+source = "github"
+github = "lolt3under/se-rs"
+use_latest_release = true
+prefix = "v"
