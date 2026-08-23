@@ -1,7 +1,7 @@
 # Maintainer: liixini <https://github.com/liixini>
 pkgname=skwd-daemon-bin
 _pkgname=skwd-daemon
-pkgver=r91.28d78b6
+pkgver=r92.577f9ea
 pkgrel=1
 pkgdesc='Daemon for Skwd Shell, a collection of Quickshell programs and widgets precompiled'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=("$_pkgname" "$_pkgname-debug")
 options=('!debug' '!strip')
 install="$_pkgname.install"
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname-$pkgver-x86_64.tar.gz")
-sha256sums=('02d389cd462268e7015564e70de2ffaa427e0420009eb63cdde4eda6958a2997')
+sha256sums=('313e3342b47739b221323522093546f900569069f2c973ec4184870929abbb76')
 
 package() {
   cd "$_pkgname-$pkgver-x86_64"
@@ -28,10 +28,13 @@ package() {
   install -Dm755 bin/skwd-paper       "$pkgdir/usr/bin/skwd-paper"
   install -Dm755 bin/skwd-paper-still "$pkgdir/usr/bin/skwd-paper-still"
 
-  install -Dm644 lib/libsteam_api.so "$pkgdir/usr/lib/skwd-daemon/libsteam_api.so"
+  install -d "$pkgdir/usr/lib/skwd-daemon"
+  cp -a lib/skwd-daemon/. "$pkgdir/usr/lib/skwd-daemon/"
 
   install -Dm644 data/skwd-daemon.service "$pkgdir/usr/lib/systemd/user/skwd-daemon.service"
   install -Dm644 data/host/shell.qml      "$pkgdir/usr/share/skwd/skwd-daemon/host/shell.qml"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/ffmpeg"
+  cp -a share/licenses/ffmpeg/. "$pkgdir/usr/share/licenses/$pkgname/ffmpeg/"
 }
