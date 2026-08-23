@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@agentics.co.za>
 # ---
 pkgname=agentics-manager
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Agentics Manager daemon - the blind sealed-box relay between Agentics surfaces and the gRPC hub"
 arch=('x86_64')
@@ -9,12 +9,12 @@ url="https://agentics.co.za"
 license=('custom')
 depends=()
 options=('!strip' '!debug')
-source=("agentics-manager-0.1.13-x86_64::https://repo.agentics.co.za/x86_64/agentics-manager-0.1.13-x86_64"
-        "agentics-manager-0.1.13-wasm.sealed::https://repo.agentics.co.za/x86_64/agentics-manager-0.1.13-wasm.sealed")
-sha512sums=('6b75d498587645466b53621ebd7bc6d3d68e437ace56f61ec0a5a2475a849efcdd5088051dc8100e2c6052cba1312238084d9bdb6a70e1e4cca815a69dec4252'
-            'c6c4747ca03442fe849a8e76aa876b2e78bcb82eec2750a5ef1ac24f3c970c41f3b158cffc1341c6e294d09c5aa327a974e561b73f9c4ddcb18926a74e4f2917')
+source=("agentics-manager-0.1.14-x86_64::https://repo.agentics.co.za/x86_64/agentics-manager-0.1.14-x86_64"
+        "agentics-manager-0.1.14-wasm.sealed::https://repo.agentics.co.za/x86_64/agentics-manager-0.1.14-wasm.sealed")
+sha512sums=('7880a9ed45286ea7ed53a51473dfc70d8fb1d958564a9b39f1c19e3be69988ce276931574a856bd8f08b746dfe4ecedd0e9d9094376f28cd3023f8a5f31b246e'
+            '0b9329a739b0dfe9c62dde080c573a5764543146cbb1783c789b8b7463d8b5db1ba4d4ed23d67959714db280ff5e709c3c668b0df3eb4c690770a83d27139149')
 
 package() {
-  install -Dm755 "$srcdir/agentics-manager-0.1.13-x86_64" "$pkgdir/usr/bin/agentics-managerd"
-  install -Dm644 "$srcdir/agentics-manager-0.1.13-wasm.sealed" "$pkgdir/opt/agentics/components/manager/0.1.13/manager-0.1.13-wasm-wasm.sealed"
+  install -Dm755 "$srcdir/agentics-manager-0.1.14-x86_64" "$pkgdir/usr/bin/agentics-managerd"
+  install -Dm644 "$srcdir/agentics-manager-0.1.14-wasm.sealed" "$pkgdir/opt/agentics/components/manager/0.1.14/manager-0.1.14-wasm-wasm.sealed"
 }
