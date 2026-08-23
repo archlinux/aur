@@ -1,6 +1,6 @@
 # Maintainer: sougstron
 pkgname=kanban4ai-bin
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Native kanban board CLI and TUI driven by AI coding agents (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ conflicts=('kanban4ai')
 options=('!strip')
 
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/kanban4ai-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('06d4c65e8aa219ba528546403096325135c28e97e180489b779baa88acf4721f')
-sha256sums_aarch64=('24b91378f144b63328b0fcdf212a01f66863f23d03b0922ebd42e45884d6492a')
+sha256sums_x86_64=('182a129b1e80477d073624f945c8f698841d9aea22fba226e481bf8e81eb50ec')
+sha256sums_aarch64=('bcec3dd8405afec3f72a657bc325dd1f6f53cc470615a8ae0afdce03f4b3584b')
 
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/kanban4ai-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
@@ -25,4 +25,6 @@ package() {
   ln -s kanban4ai "$pkgdir/usr/bin/kb"
   install -Dm644 "$release_dir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 "$release_dir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$release_dir/kanban4ai.service" \
+    "$pkgdir/usr/lib/systemd/user/kanban4ai.service"
 }
