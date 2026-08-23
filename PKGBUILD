@@ -1,14 +1,14 @@
-# Maintainer: Ayone
+# Maintainer: ayonelnx <vidskix@gmail.com>
 pkgname=ggdo
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A sudo equivalent written in Go"
+pkgdesc="Simple sudo-like command written in Go with password caching"
 arch=('x86_64')
 url="https://codeberg.org/ayonelnx/ggdo"
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/ayonelnx/ggdo/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
@@ -19,7 +19,7 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm755 gorsu "$pkgdir/usr/bin/ggdo"
+    install -Dm755 ggdo "$pkgdir/usr/bin/ggdo"
     chmod u+s "$pkgdir/usr/bin/ggdo"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/gorsu/README.md"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/ggdo/README.md"
 }
