@@ -26,7 +26,7 @@ license=('GPL-2.0-or-later')
 depends=('curl' 'sdl2' 'devil' 'p7zip' 'openal' 'libogg' 'libvorbis' 'libunwind' 'freetype2' 'glew' 'minizip' 'fontconfig' 'jsoncpp' )
 makedepends=('git' 'curl' 'jq'
              'ccache' ### curently wont build without
-             'ninja' 'socat' 'python-pip' 'cmake3-bin'
+             'ninja' 'socat' 'python-pip' 'cmake'
 #            'clang' 'lld' ### Only needed if you want to build with the included clang toolchain
              'compdb' 'gflags')
 optdepends=('bar-lobby' 'bar-lobby-git')
@@ -37,8 +37,7 @@ source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
 )
 sha256sums=('SKIP'
             'f1ec1a8d70f05a9e917cf9edbc4274a7a5efe81dbc51ddfb6778040f65ec33f2'
-            '8c9af0eb1089d2531f5e511292fdde82aef53747b2314104baa850075465035c'
-)
+            '8c9af0eb1089d2531f5e511292fdde82aef53747b2314104baa850075465035c')
 
 pkgver() {
   # Set the repository owner and name
@@ -163,7 +162,12 @@ build() {
       #-DCMAKE_C_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
 
 										###-G Ninja | -G "Unix Makefiles"
-    cmake3 -S "${srcdir}/${pkgname%-git}"  -G Ninja \
+    ### CMake 4.x dropped compatibility with cmake_minimum_required(<3.5) used by bundled libs
+    ### (assimp, lunasvg, glad, gflags, catch2, ...). This is the official escape hatch.
+    export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
+    cmake -S "${srcdir}/${pkgname%-git}"  -G Ninja \
+            -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
             -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
             -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
             -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O3 -g -DNDEBUG -fdiagnostics-color=always" \
