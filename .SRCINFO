@@ -1,0 +1,13 @@
+pkgbase = package-git
+	pkgdesc = Dummy package used to exercise the aur-workflow CI/publish pipeline (tracks git commits)
+	pkgver = v0.1.4.r1.gaca1320
+	pkgrel = 1
+	url = https://github.com/its-me/dummy.releases
+	arch = any
+	license = MIT
+	provides = package
+	conflicts = package
+	source = git+https://github.com/its-me/dummy.releases
+	sha256sums = SKIP
+
+pkgname = package-git
