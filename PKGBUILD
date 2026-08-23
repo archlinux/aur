@@ -3,7 +3,7 @@
 # pkgver / pkgrel / sha256sums are rewritten by scripts/publish-aur.sh at
 # release time (from the release branch). Edit the package body here, not those.
 pkgname=kopuz-bin
-pkgver=0.14.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A modern music player (pre-built binary)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kopuz-org/kopuz/releases/download/v${pkgver}/kopuz_v${pkgver}_x86_64-linux.tar.gz")
-sha256sums=('ee3464c2d23b1f52e2970cd17328a1aa84ecd288eae203f5195fe6fb586a9b4a')
+sha256sums=('efadcf15f286cc65586d28df62362c972413162289c7ca9b936b58868a8aa02f')
 
 package() {
     cd "kopuz-linux-x86_64"
