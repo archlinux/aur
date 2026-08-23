@@ -1,7 +1,7 @@
 # Maintainer: hiruocha <hiruocha[at]outlook[dot]com>
 
 pkgname=nipaplay-reload
-pkgver=1.11.4
+pkgver=1.11.5
 pkgrel=1
 pkgdesc="A cross platform danmaku video player"
 arch=('x86_64')
@@ -37,7 +37,7 @@ source=("git+https://github.com/AimesSoft/NipaPlay-Reload.git#tag=v$pkgver"
         "git+https://github.com/AimesSoft/libplacebo.git"
         "fix-dart-path.patch"
         "use-system-cargo.patch")
-sha256sums=('23816a89a8d14dacb149c4526d00068856648c4c574db82c47eee7d4b3213dae'
+sha256sums=('9907b19027598e4d119c4e9034d4e8b0af67360082255363976324df4c1a43f1'
             'SKIP'
             'SKIP'
             'SKIP'

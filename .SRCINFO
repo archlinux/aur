@@ -1,6 +1,6 @@
 pkgbase = nipaplay-reload
 	pkgdesc = A cross platform danmaku video player
-	pkgver = 1.11.4
+	pkgver = 1.11.5
 	pkgrel = 1
 	url = https://github.com/AimesSoft/NipaPlay-Reload
 	arch = x86_64
@@ -27,14 +27,14 @@ pkgbase = nipaplay-reload
 	depends = gstreamer
 	depends = libc++
 	conflicts = nipaplay
-	source = git+https://github.com/AimesSoft/NipaPlay-Reload.git#tag=v1.11.4
+	source = git+https://github.com/AimesSoft/NipaPlay-Reload.git#tag=v1.11.5
 	source = git+https://github.com/AimesSoft/media-kit.git
 	source = git+https://github.com/AimesSoft/libmpv-darwin-build.git
 	source = git+https://github.com/AimesSoft/mpv.git
 	source = git+https://github.com/AimesSoft/libplacebo.git
 	source = fix-dart-path.patch
 	source = use-system-cargo.patch
-	sha256sums = 23816a89a8d14dacb149c4526d00068856648c4c574db82c47eee7d4b3213dae
+	sha256sums = 9907b19027598e4d119c4e9034d4e8b0af67360082255363976324df4c1a43f1
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
