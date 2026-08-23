@@ -1,0 +1,15 @@
+pkgbase = steam-overlay-wayland-git
+	pkgdesc = Vulkan layer that provides a bridge between wayland native applications and the steam overlay
+	pkgver = 4ca1566
+	pkgrel = 1
+	url = https://github.com/GloriousEggroll/proton-ge-custom/
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = cmake
+	makedepends = vulkan-headers
+	depends = vkroots-git
+	source = steam-overlay-wayland::git+https://github.com/DekoDX/ge-steam-overlay-wayland.git
+	sha512sums = SKIP
+
+pkgname = steam-overlay-wayland-git
