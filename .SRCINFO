@@ -1,7 +1,7 @@
 pkgbase = open-sstv-bin
 	pkgdesc = Open-source cross-platform SSTV transceiver for amateur radio (prebuilt binary, GUI only)
 	pkgver = 0.6.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bucknova/Open-SSTV
 	arch = x86_64
 	arch = aarch64
