@@ -1,7 +1,7 @@
 pkgbase = boxesandglue-glu
 	pkgdesc = a command line interface for boxes and glue using Lua scripting
 	pkgver = 0.0.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/boxesandglue/glu
 	arch = x86_64
 	license = MIT

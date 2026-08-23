@@ -2,7 +2,7 @@
 
 pkgname=boxesandglue-glu
 pkgver=0.0.30
-pkgrel=1
+pkgrel=2
 pkgdesc='a command line interface for boxes and glue using Lua scripting'
 arch=(x86_64)
 url='https://github.com/boxesandglue/glu'
@@ -34,7 +34,16 @@ build() {
 		./...
 }
 
+_compgen() {
+	cd "$_archive"
+	./build/glu completion $1
+}
+
 package() {
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" build/glu
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
+	install -Dm0644 <(_compgen bash) "$pkgdir/usr/share/bash-completion/completions/glu"
+	install -Dm0644 <(_compgen fish) "$pkgdir/usr/share/fish/vendor_completions.d/glu.fish"
+	install -Dm0644 <(_compgen zsh)  "$pkgdir/usr/share/zsh/site-functions/_glu"
 }
