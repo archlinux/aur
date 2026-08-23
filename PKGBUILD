@@ -53,7 +53,7 @@ prepare() {
 }
 
 package() {
-    tar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$pkgdir/"
+    tar -xf data.tar.zst --exclude=usr/share/{lintian,menu} -C "$pkgdir/"
 
     # get rid of the extra subfolder {i386,x86_64}-linux-gnu
     (
@@ -96,4 +96,3 @@ package() {
         "$srcdir/privacy.html" \
         "$pkgdir/usr/share/licenses/$pkgname/privacy.html"
 }
-
