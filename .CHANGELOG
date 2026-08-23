@@ -1,6 +1,47 @@
 Version History
 ===============
 
+0.10.34
+-------
+
+2026-08-23
+
+Edge scroll speed is now proportional to the screen/window size. The same
+setting will scroll by more pixels on a bigger screen/window.
+
+Remove the tooltip that told you how to use the hold-to-sroll feature.
+Before, every time you edge-scrolled, Lix would tell you how to scroll
+with the hold-to-scroll feature, e.g., with the right mouse button.
+
+In insert mode, when you're about to replace the future of a single lix,
+the top of the screen tells you how many future skills you replace.
+
+When you load a replay from disk or re-watch a completed level, you don't see
+"Replaying. Click to play from here." at the top of the screen. Instead, the
+mouse curser's sidekick icon has a little letter R. Once you click, the R
+turns into the regular scissors cursor, the top text appears, and the next
+click will cut the replay.
+
+When you tweak skill assignments, the sound for a replayed assignment will now
+always play, and the assignment arrow will always appear. Before, they would
+only appear when you tweaked an assignment to a target time to which it hadn't
+been tweaked before. When you tweaked an assignment back and forth, sound and
+arrow would be missing on the second time.
+
+Re-introduce the two options whether air clicks cut the replay.
+One option applies when the tweaker is open, the other when it isn't open.
+The default is: Air clicks always cut, both with or without the tweaker.
+
+Code: The internal replay data structure now carries the lix's tribe color
+with every assignment in addition to the ply's player number. This
+denormalizes the internal replay data structure, but it makes several parts of
+the program more straightforward. The networking protocol still sends plies
+only with player numbers to stay compatible with all Lix versions 0.10.x. The
+replay file format still saves the assignments only with player numbers to
+stay identical to the existing format.
+
+
+
 0.10.33
 -------
 
