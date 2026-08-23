@@ -40,6 +40,7 @@ prepare() {
     pushd "${_name}-${pkgver}"
     sed -i "s/^Icon=.*$/Icon=${_name}/g" "Flatpak/${_app_id}.desktop"
     sed -i "s/^Icon=.*$/Icon=${_name}/g" "Flatpak/${_app_id}-url-handler.desktop"
+    sed -i 's/if (!string\.IsNullOrWhiteSpace(loadFolderPath) && Path\.IsPathRooted(loadFolderPath))/if (!string.IsNullOrWhiteSpace(loadFolderPath))/' WheelWizard/Services/PathManager.cs
     popd
 }
 
