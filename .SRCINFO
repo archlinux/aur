@@ -25,6 +25,7 @@ pkgbase = nuttx-git
 	depends = util-linux
 	depends = vim
 	depends = genromfs
+	depends = python-kconfiglib
 	depends = kconfig-frontends-git
 	optdepends = aarch64-linux-gnu-gcc: AArch64 Linux cross compiler
 	optdepends = arm-none-eabi-gcc: ARM bare-metal cross compiler

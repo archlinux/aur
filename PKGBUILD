@@ -29,6 +29,7 @@ depends=(
     'util-linux'
     'vim'
     'genromfs'
+    'python-kconfiglib'
     'kconfig-frontends-git'
 )
 
