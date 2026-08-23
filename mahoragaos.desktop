@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=MahoragaOS
+GenericName=Adaptive OS Console
+Comment=Native visualization, monitoring, and control console for MahoragaOS
+Exec=mahoragaos-ui
+Icon=mahoragaos
+Terminal=false
+Categories=Development;System;Monitor;
+Keywords=mahoragaos;agent;ai;adaptive;monitor;
+StartupWMClass=mahoragaos-ui
