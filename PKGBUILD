@@ -1,7 +1,7 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=infopanel-bin
 _pkgname=infopanel
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Hardware monitoring dashboards for desktop overlays, USB LCD panels and web browsers"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('infopanel')
 install=infopanel-bin.install
 options=('!strip' '!debug')
 source=("$url/releases/download/v$pkgver/infopanel-$pkgver-linux-x64.tar.gz")
-sha256sums=('8d64a517c22b9f3b0fe4cc0945f6825009f349848e7986ff61bd36793ca06a95')
+sha256sums=('cb25913651237d718dedc6c30102b223153691dbac04c6d4a8860252df794e80')
 
 package() {
   cd "infopanel-$pkgver-linux-x64"
