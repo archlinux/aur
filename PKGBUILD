@@ -33,9 +33,11 @@ optdepends=('bar-lobby' 'bar-lobby-git')
 #install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
         "guard-invalid-ray-length.patch"
+        "buildcache.patch"
 )
 sha256sums=('SKIP'
             'f1ec1a8d70f05a9e917cf9edbc4274a7a5efe81dbc51ddfb6778040f65ec33f2'
+            '8c9af0eb1089d2531f5e511292fdde82aef53747b2314104baa850075465035c'
 )
 
 pkgver() {
@@ -135,6 +137,10 @@ build() {
     ### hardened builds (_GLIBCXX_ASSERTIONS) via std::clamp preconditions. REMOVE once merged upstream.
     patch -Np1 -i "${srcdir}/guard-invalid-ray-length.patch"
 
+    ### Stopgap for buildCache returning wrongly-sized statuses buffers (crashes with
+    ### '__n < this->size()' assert when cycling buildings over the same minimap spot).
+    ### Root cause: cache key omits the unitDef. REMOVE once fixed upstream.
+    patch -Np1 -i "${srcdir}/buildcache.patch"
 
     # Fix 1: Missing <cstdint> for UINT8_MAX
     sed -i '/#include <string>/i #include <cstdint>' rts/Game/ChatMessage.h

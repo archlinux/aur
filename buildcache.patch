@@ -1,0 +1,33 @@
+--- a/rts/Rendering/Units/UnitDrawer.cpp
++++ b/rts/Rendering/Units/UnitDrawer.cpp
+@@ -52,6 +52,7 @@
+ #include "System/SpringMath.h"
+ #include "System/HashSpec.h"
+ #include "System/SpringHash.h"
++#include "System/Log/ILog.h"
+ 
+ #include "System/Threading/ThreadPool.h"
+ 
+@@ -1386,6 +1387,10 @@
+ 
+ 	uint64_t hashKey = spring::LiteHash(pos);
+ 	hashKey = spring::hash_combine(spring::LiteHash(buildInfo.buildFacing), hashKey);
++	// NOTE: the unitDef MUST be part of the key: different buildings can snap to the
++	// same position+facing while having different footprints, and a shared cache entry
++	// would return a wrongly-sized statuses buffer (OOB in the draw loop below).
++	hashKey = spring::hash_combine(spring::LiteHash(buildInfo.def->id), hashKey);
+ 
+ 	static constexpr int CACHE_VALIDITY_PERIOD = GAME_SPEED / 5;
+ 	std::erase_if(buildCache, [](const BuildCache& bc) {
+@@ -1460,6 +1465,11 @@
+ 	const int sx1 = int(pos.x / SQUARE_SIZE) - (numX >> 1);
+ 	const int sz1 = int(pos.z / SQUARE_SIZE) - (numZ >> 1);
+ 
++	if ((int)statuses.size() < numX * numZ) {
++		LOG_L(L_ERROR, "[CUnitDrawerGLSL::%s] statuses.size=%d smaller than %dx%d footprint (def %s) - stale buildCache entry?"
++			, __func__, (int)statuses.size(), numX, numZ, buildInfo.def->name.c_str());
++	}
++
+ 	for (int zi = 0; zi < numZ; zi++) {
+ 		for (int xi = 0; xi < numX; xi++) {
+ 			const auto status = static_cast<CGameHelper::BuildSquareStatus>(statuses[zi * numX + xi]);
