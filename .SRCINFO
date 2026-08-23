@@ -1,18 +1,18 @@
 pkgbase = portprotonqt
 	pkgdesc = Modern GUI for managing and launching games from PortProton and Steam
-	pkgver = 1.3.2
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt
-	arch = any
+	arch = x86_64
 	license = GPL-3.0
 	makedepends = meson
 	makedepends = ninja
 	makedepends = vulkan-headers
 	makedepends = gettext
+	makedepends = sdl3
 	depends = python-requests
 	depends = python-babel
 	depends = python-evdev
-	depends = python-pygame
 	depends = python-orjson
 	depends = python-psutil
 	depends = python-tqdm
@@ -38,6 +38,7 @@ pkgbase = portprotonqt
 	depends = unrar
 	depends = qt6-svg
 	depends = qt6-imageformats
+	depends = qt6-multimedia
 	depends = pciutils
 	depends = mesa-utils
 	depends = vulkan-icd-loader
@@ -46,17 +47,17 @@ pkgbase = portprotonqt
 	depends = 7zip
 	depends = python-dbus-fast
 	depends = sdl3
-	provides = portprotonqt-steam-compat
-	conflicts = portprotonqt-steam-compat
-	replaces = portprotonqt-steam-compat
-	source = git+https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt#tag=v1.3.2
-	sha256sums = 076b75c18ed2086c44482e8809f9f33ea02c77cb48304afc2640a638b7dcc59e
-
-pkgname = portprotonqt
-	pkgdesc = Modern GUI for managing and launching games from PortProton and Steam
+	depends = desktop-file-utils
 	optdepends = networkmanager: System tab network management
 	optdepends = bluez: System tab bluetooth management
 	optdepends = upower: System tab bluetooth battery level
 	optdepends = libpulse: System tab audio volume/output management
 	optdepends = python-qrcode: Wi-Fi QR code generation
 	optdepends = squashfs-tools: for legacy PortProton prefix backup support
+	provides = portprotonqt-steam-compat
+	conflicts = portprotonqt-steam-compat
+	replaces = portprotonqt-steam-compat
+	source = git+https://git.linux-gaming.ru/Linux-Gaming/PortProtonQt#tag=v1.4.0
+	sha256sums = f532f5596e74db3a252a4d1a0fd9aa54cd892dffa76594d16a2c453ebf5bad53
+
+pkgname = portprotonqt
