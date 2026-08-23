@@ -2,9 +2,9 @@
 
 _pkgname='isaacus'
 _repo="${_pkgname}-python"
-_commit='b265b7c84274f4f1953de579c71d896a52f0a106'
+_commit='640547832859f180d0668eac81a7ba7cbcfdc906'
 pkgname="python-${_pkgname}"
-pkgver=0.22.0
+pkgver=0.22.1
 pkgrel=1
 pkgdesc='Official Python library for the Isaacus API'
 arch=('any')
@@ -45,7 +45,7 @@ source=(
 	'test_aiohttp_backend.py'
 )
 b2sums=(
-	'cb7e82b253aa37cd96c5401ea905064e558ea689f2b9313db4ac61d73c29f2a436841ec60a20068311aeeda2e049cde56f872ab2da91bb541db3e6d6d5bb79f7'
+	'168e891341c619330526c05c13a0a3801cb40fa1b33660eb115b9cdae956bde9f27ef47685105482af0a7ed58e8c4407ee24fc5f912cd6e13c9a63632405b269'
 	'a7b12ee49973a66f84a332a0b5a0c4dbccabf6cc3bfec01e678e8cc045b4f845b86e818c3c60681f893b3ebb9629b236c10b3b2f9c49ddad4d879072231bb333'
 )
 
