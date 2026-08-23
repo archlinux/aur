@@ -1,0 +1,3 @@
+[pumba]
+source = "git"
+git = "https://github.com/alexei-led/pumba.git"
