@@ -1,6 +1,6 @@
 pkgbase = captain-kill-switch-bin
 	pkgdesc = Close every running application in one click from the system tray
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://captainkillswitch.com
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = captain-kill-switch-bin
 	provides = captain-kill-switch
 	conflicts = captain-kill-switch
 	options = !strip
-	source = https://github.com/captainkillswitch/downloads/releases/download/v0.4.2/captain-kill-switch-0.4.2-linux-amd64.deb
-	sha256sums = 3e2e7a39ef2e6b3ecefd55b472bed29f8fd8734e44c60bbafb19ba41d6beaa6f
+	source = https://github.com/captainkillswitch/downloads/releases/download/v0.4.3/captain-kill-switch-0.4.3-linux-amd64.deb
+	sha256sums = c961c0760b19df0f50c85a4dfab21125d6a0272f92eb2f00ae5f38c6d17fe0f1
 
 pkgname = captain-kill-switch-bin
