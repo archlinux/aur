@@ -6,8 +6,8 @@
 ###
 
 pkgname=recoil-engine-rc
-pkgver=2026.06.08
-pkgrel=4
+pkgver=VERSION # This will be automatically updated by makepkg via pkgver()
+pkgrel=1
 pkgdesc="A powerful free cross-platform RTS game engine. (GitHub — latest Release Candidate tag). \
 This version is used for public engine testing in BAR — Join the Discord if you want to help"
 arch=('x86_64')
@@ -32,8 +32,11 @@ makedepends=('git' 'curl' 'jq'
 optdepends=('bar-lobby' 'bar-lobby-git')
 #install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
+        "guard-invalid-ray-length.patch"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'f1ec1a8d70f05a9e917cf9edbc4274a7a5efe81dbc51ddfb6778040f65ec33f2'
+)
 
 pkgver() {
   # Set the repository owner and name
@@ -126,6 +129,12 @@ build() {
     cd "${srcdir}/${pkgname%-git}"
     git checkout  "${_tag}"
     git submodule update --init --recursive
+
+    ### Local stopgap until upstream fixes https://github.com/beyond-all-reason/RecoilEngine/issues/3018
+    ### Guards CQuadField::GetQuadsOnRay/GetQuadsOnWideRay against invalid ray lengths, which abort
+    ### hardened builds (_GLIBCXX_ASSERTIONS) via std::clamp preconditions. REMOVE once merged upstream.
+    patch -Np1 -i "${srcdir}/guard-invalid-ray-length.patch"
+
 
     # Fix 1: Missing <cstdint> for UINT8_MAX
     sed -i '/#include <string>/i #include <cstdint>' rts/Game/ChatMessage.h
