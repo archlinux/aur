@@ -1,0 +1,19 @@
+pkgbase = onionscan-bin
+	pkgdesc = Investigating tool the Dark Web
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/nao1215/onionscan
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = onionscan
+	conflicts = onionscan
+	options = !strip
+	source = onionscan-0.2.2-checksums.txt::https://github.com/nao1215/onionscan/releases/download/v0.2.2/checksums.txt
+	sha256sums = baf0465357a2eea178ff6ec98f452acd032b72b524077a9e37a3ab185fcefdba
+	source_x86_64 = onionscan-0.2.2-x86_64.tgz::https://github.com/nao1215/onionscan/releases/download/v0.2.2/onionscan_0.2.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = edc0c7668b2e6d25b4c79633c306e63c2bbf0c7e01cfd026e780b40c7adf0534
+	source_aarch64 = onionscan-0.2.2-aarch64.tgz::https://github.com/nao1215/onionscan/releases/download/v0.2.2/onionscan_0.2.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6dfa4e61a3d428904d5b76efd949bee0b7baa2404280aba30715dbd69e00f463
+
+pkgname = onionscan-bin
