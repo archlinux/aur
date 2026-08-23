@@ -1,0 +1,17 @@
+post_install() {
+  cat <<'EOF'
+==> InfoPanel setup:
+    USB panels: replug the panel once (or run: udevadm trigger) so the
+    installed udev rules apply. No group membership is needed.
+
+    SMART drive health sensors (optional, needs smartmontools):
+      systemctl enable --now infopanel-smart.timer
+
+    Intel iGPU engine utilization (optional):
+      echo 'kernel.perf_event_paranoid=-1' > /etc/sysctl.d/99-infopanel-perf.conf
+EOF
+}
+
+post_upgrade() {
+  return 0
+}
