@@ -1,6 +1,6 @@
 # Maintainer: lxsh-S <kumarlakshya973@gmail.com>
 pkgname='dagit-bin'
-pkgver=0.0.1
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Visualize your git repo in your terminal!"
 arch=('x86_64')
