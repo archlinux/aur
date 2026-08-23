@@ -1,13 +1,13 @@
 pkgbase = bs-manager-git
 	pkgdesc = An all-in-one tool for managing Beat Saber versions, maps, mods, and more
-	pkgver = v1.5.6.r40.g5b3676c
+	pkgver = v1.6.0.r2.g0319826
 	pkgrel = 1
 	url = https://github.com/Zagrios/bs-manager
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = npm
-	makedepends = nvm
+	makedepends = pnpm
+	makedepends = corepack
 	makedepends = libxcrypt-compat
 	provides = bs-manager
 	conflicts = bs-manager

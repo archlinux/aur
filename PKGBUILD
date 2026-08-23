@@ -1,14 +1,14 @@
 # Maintainer: Pierce Thompson <pierce at insprill dot net>
 
 pkgname=bs-manager-git
-pkgver=v1.5.6.r40.g5b3676c
+pkgver=v1.6.0.r2.g0319826
 pkgrel=1
 pkgdesc="An all-in-one tool for managing Beat Saber versions, maps, mods, and more"
 arch=("x86_64")
 url="https://github.com/Zagrios/bs-manager"
 license=('GPL')
 depends=()
-makedepends=('git' 'npm' 'nvm' 'libxcrypt-compat')
+makedepends=('git' 'pnpm' 'corepack' 'libxcrypt-compat')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip') # DepotDownloader breaks without this
@@ -26,26 +26,30 @@ pkgver() {
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_ensure_local_nvm() {
-    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-    export NVM_DIR="${srcdir}/.nvm"
-    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+_prepare_corepack() {
+    local corepack_home="${srcdir}/.corepack"
+    export COREPACK_HOME="${srcdir}/.corepack-cache"
+
+    mkdir -p "$corepack_home"
+    corepack enable --install-directory "$corepack_home"
+
+    export PATH="$corepack_home:$PATH"
 }
 
 prepare() {
-    _ensure_local_nvm
-    cd "${pkgname%-git}"
+    _prepare_corepack
+    cd "${srcdir}/${pkgname%-git}"
 
-    nvm install
+    corepack install
 }
 
 build() {
-    _ensure_local_nvm
+    _prepare_corepack
     cd "${pkgname%-git}"
 
-    npm install
-    npm run build
-    npx electron-builder --config electron-builder.config.js --publish never --linux pacman --x64
+    corepack pnpm install --frozen-lockfile
+    corepack pnpm run build
+    corepack pnpm exec electron-builder --config electron-builder.config.js --publish never --linux pacman --x64
 }
 
 package() {
