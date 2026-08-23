@@ -1,7 +1,7 @@
 # Maintainer: Josephine Pfeiffer <josie@archlinux.org>
 pkgname=cockpit-pacman
 pkgver=0.3.7
-pkgrel=7
+pkgrel=8
 pkgdesc='Cockpit plugin for Arch Linux package management using alpm.rs'
 arch=('x86_64')
 url='https://github.com/pfeifferj/cockpit-pacman'
@@ -9,6 +9,7 @@ license=('GPL-3.0-only')
 depends=('cockpit>=300' 'coreutils' 'glibc' 'libalpm.so' 'libgcc' 'pacman' 'pacman-mirrorlist' 'systemd')
 makedepends=('cargo' 'npm')
 options=(!lto)
+install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/pfeifferj/cockpit-pacman/archive/v$pkgver.tar.gz")
 sha256sums=('cd7bf2650749e5327cdf1c88be7db37359e9d368cef4bbde3172c02b1770e3f5')
 
