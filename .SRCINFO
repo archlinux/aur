@@ -1,36 +1,36 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = The Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 7.1.8.arch1
-	pkgrel = 3
+	pkgver = 7.1.9.arch1
+	pkgrel = 2
 	url = https://github.com/archlinux/linux
 	arch = x86_64
 	license = GPL2
-	noextract = linux-7.1.8.arch1-3-x86_64.pkg.tar.zst
-	noextract = linux-headers-7.1.8.arch1-3-x86_64.pkg.tar.zst
-	noextract = linux-docs-7.1.8.arch1-3-x86_64.pkg.tar.zst
+	noextract = linux-7.1.9.arch1-2-x86_64.pkg.tar.zst
+	noextract = linux-headers-7.1.9.arch1-2-x86_64.pkg.tar.zst
+	noextract = linux-docs-7.1.9.arch1-2-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://archive.archlinux.org/packages/.all/linux-7.1.8.arch1-3-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-headers-7.1.8.arch1-3-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-docs-7.1.8.arch1-3-x86_64.pkg.tar.zst
-	sha256sums = 700317a0db671de74332d08d8d2f912ae8379e9f1c951b3d99a8bf6cd23957a1
-	sha256sums = eea2d9da06315e0525069691ca610ec22da6ee46acd2bbfb41645ca85bfaa858
-	sha256sums = ce2a93ff0d997c4cb8eacb3e91ed77de7a1d73cee7e3fe2f16bbac565da59953
+	source = https://archive.archlinux.org/packages/.all/linux-7.1.9.arch1-2-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-headers-7.1.9.arch1-2-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-docs-7.1.9.arch1-2-x86_64.pkg.tar.zst
+	sha256sums = 73109d52c1fabc82e847c4d1cf75d0e7a209678169e428d934b1b4c6233e5faa
+	sha256sums = 36d43837ef8230db8b6fcf31e8f67e19b5ab41dca863c426056a55f40b00350b
+	sha256sums = 6f47848f91712a0a2feed7f65d688ca85b3e149048cc6e15291337c80314e758
 
 pkgname = linux-versioned-bin
-	pkgdesc = Metapackage depending on linux7.1.8.arch1-3-bin
-	depends = linux7.1.8.arch1-3-bin
+	pkgdesc = Metapackage depending on linux7.1.9.arch1-2-bin
+	depends = linux7.1.9.arch1-2-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux7.1.8.arch1-3-headers-bin
-	depends = linux7.1.8.arch1-3-headers-bin
+	pkgdesc = Metapackage depending on linux7.1.9.arch1-2-headers-bin
+	depends = linux7.1.9.arch1-2-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux7.1.8.arch1-3-docs-bin
-	depends = linux7.1.8.arch1-3-docs-bin
+	pkgdesc = Metapackage depending on linux7.1.9.arch1-2-docs-bin
+	depends = linux7.1.9.arch1-2-docs-bin
 
-pkgname = linux7.1.8.arch1-3-bin
-	pkgdesc = The Linux kernel and modules, version 7.1.8-arch1-3
+pkgname = linux7.1.9.arch1-2-bin
+	pkgdesc = The Linux kernel and modules, version 7.1.9-arch1-2
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -46,8 +46,8 @@ pkgname = linux7.1.8.arch1-3-bin
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux7.1.8.arch1-3-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 7.1.8-arch1-3
+pkgname = linux7.1.9.arch1-2-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 7.1.9-arch1-2
 	depends = binutils
 	depends = glibc
 	depends = libelf
@@ -60,6 +60,6 @@ pkgname = linux7.1.8.arch1-3-headers-bin
 	provides = LINUX-HEADERS
 	conflicts = linux-headers
 
-pkgname = linux7.1.8.arch1-3-docs-bin
-	pkgdesc = Documentation for the Linux kernel 7.1.8-arch1-3
+pkgname = linux7.1.9.arch1-2-docs-bin
+	pkgdesc = Documentation for the Linux kernel 7.1.9-arch1-2
 	conflicts = linux-docs
