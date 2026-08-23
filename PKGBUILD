@@ -6,7 +6,7 @@
 ###
 
 pkgname=recoil-engine
-pkgver=2026.06.12
+pkgver=VERSION # This will be automatically updated by makepkg via pkgver()
 pkgrel=1
 pkgdesc="A powerful free cross-platform RTS game engine. (GitHub — latest Stable/Release tag).
 This version is the stable engine release used by BAR."
