@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=socktop
-pkgver=1.50.0
+pkgver=1.60.1
 pkgrel=1
 pkgdesc="A remote system monitor with a rich TUI interface"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'mesa')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4262a78738eec84ba83624c492da58622017073978bebc7d843e7f742560dc2a')
+sha256sums=('5ec9a5c2fa83a8e185a7b88640ce793af6b456292d852e69aaacc1fe0da61288')
 options=('!lto')
 
 prepare() {
