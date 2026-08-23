@@ -1,0 +1,26 @@
+diff --git a/config.json b/config.json
+--- a/config.json
++++ b/config.json
+@@ -6 +6 @@
+-  "version": "5.18.1",
++  "version": "5.18.2",
+diff --git a/ext/php_phalcon.h b/ext/php_phalcon.h
+--- a/ext/php_phalcon.h
++++ b/ext/php_phalcon.h
+@@ -14 +14 @@
+-#define PHP_PHALCON_VERSION     "5.18.1"
++#define PHP_PHALCON_VERSION     "5.18.2"
+diff --git a/ext/phalcon/support/version.zep.c b/ext/phalcon/support/version.zep.c
+--- a/ext/phalcon/support/version.zep.c
++++ b/ext/phalcon/support/version.zep.c
+@@ -333 +333 @@ PHP_METHOD(Phalcon_Support_Version, getVersion)
+-	ZVAL_LONG(&_0, 1);
++	ZVAL_LONG(&_0, 2);
+diff --git a/package.xml b/package.xml
+--- a/package.xml
++++ b/package.xml
+@@ -28,2 +28,2 @@
+-    <release>5.18.1</release>
+-    <api>5.18.1</api>
++    <release>5.18.2</release>
++    <api>5.18.2</api>
