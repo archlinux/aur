@@ -7,7 +7,7 @@ _pkgname=cphalcon
 pkgver=5.13.0
 pkgrel=1
 pkgdesc="Web framework delivered as a C-extension for PHP"
-url="http://phalconphp.com"
+url="https://phalcon.io"
 arch=('x86_64' 'i686')
 license=('BSD-3-Clause')
 depends=('php>=8.5' 'php<8.6')
