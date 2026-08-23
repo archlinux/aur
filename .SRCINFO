@@ -12,5 +12,4 @@ pkgbase = dagit-bin
 
 pkgname = dagit-bin
 
-# makepkg --printsrcinfo > .SRCINFO
 
