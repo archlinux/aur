@@ -1,13 +1,13 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastcount
-pkgver=4
+pkgver=1
 pkgrel=1
 pkgdesc="fastcount, an incredibly fast, incredibly useless counter, builds from source"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastcount"
 license=('Apache-2.0')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('rustup')
 provides=('fastcount')
 conflicts=('fastcount-bin')
 source=("fastcount-$pkgver.tar.gz::https://github.com/CallMeAlphabet/fastcount/archive/refs/tags/latest.tar.gz")
@@ -18,14 +18,15 @@ prepare() {
     mkdir -p "$srcdir/build"
     tar -xzf "$srcdir/fastcount-$pkgver.tar.gz" --strip-components=1 -C "$srcdir/build"
     cd "$srcdir/build"
-    cargo fetch --locked --target x86_64-unknown-linux-gnu
+    rustup toolchain install nightly --component rust-src --profile minimal
+    rustup run nightly cargo fetch --locked
 }
 
 build() {
     cd "$srcdir/build"
-    export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    unset LDFLAGS CFLAGS CXXFLAGS
+    rustup run nightly cargo build --frozen --release
 }
 
 package() {
