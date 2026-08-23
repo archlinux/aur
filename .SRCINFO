@@ -1,0 +1,15 @@
+pkgbase = dinit-interchange
+	pkgdesc = A lightweight, fail-secure D-Bus privilege gateway for the Dinit init system
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/Timh1970/dinit-interchange
+	arch = x86_64
+	license = GPL3
+	makedepends = pkg-config
+	depends = glib2
+	depends = json-c
+	depends = libdinitctl
+	source = dinit-interchange-0.0.7.tar.gz::https://github.com/Timh1970/dinit-interchange/archive/refs/tags/v0.0.7.tar.gz
+	sha256sums = 5a6f89bf6327c17816cd0657b569a826704f0669746d08dbbba2c04ebb7de592
+
+pkgname = dinit-interchange
