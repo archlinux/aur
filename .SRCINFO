@@ -1,19 +1,21 @@
 pkgbase = python-eth-bloom
 	pkgdesc = An implementation of the Ethereum bloom filter.
-	pkgver = 3.1.0
-	pkgrel = 1
+	pkgver = 4.0.0
+	pkgrel = 2
 	url = https://github.com/ethereum/eth-bloom
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-hypothesis
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python
 	depends = python-eth-hash
-	source = eth-bloom-3.1.0.tar.gz::https://github.com/ethereum/eth-bloom/archive/v3.1.0.tar.gz
-	sha512sums = 94b93373002424219fad348259aa426e008c723c09286a1f821ea23f2eb21869dcf6f605ed365d282aa1ad316242d6b154e817941b6a31cfbd70c8ec16b8eeb1
+	source = git+https://github.com/ethereum/eth-bloom.git#tag=v4.0.0
+	sha512sums = 8bcbe611bb07940a0ec383e81d99737a4001a77a09c5429bf04158d8ac07ab806101a4532d580c5127159313e0e24ece3b2be7bede3ce490582249abcce0269a
 
 pkgname = python-eth-bloom
