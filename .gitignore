@@ -1,0 +1,23 @@
+# makepkg artefacts
+*.pkg.tar.*
+*.tar.gz
+*.tar.xz
+*.tar.zst
+pkg/
+src/
+node_modules/
+npm-cache/
+
+# src tarball (kept in PKGBUILD via remote URL, not committed)
+# uncomment if you want to ignore downloaded tarball
+# *.tgz
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
