@@ -3,12 +3,12 @@
 _pkgname=raylib
 pkgname=$_pkgname-wayland
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple and easy-to-use game programming library. Wayland backend'
 arch=(x86_64)
 url='https://www.raylib.com'
 license=(Zlib)
-depends=(wayland libxkbcommon glu)
+depends=(wayland libxkbcommon glu glfw)
 makedepends=(cmake git vulkan-headers wayland-protocols)
 provides=($_pkgname)
 conflicts=($_pkgname)

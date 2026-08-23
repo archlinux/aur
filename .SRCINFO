@@ -1,7 +1,7 @@
 pkgbase = raylib-wayland
 	pkgdesc = Simple and easy-to-use game programming library. Wayland backend
 	pkgver = 6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.raylib.com
 	arch = x86_64
 	license = Zlib
@@ -12,6 +12,7 @@ pkgbase = raylib-wayland
 	depends = wayland
 	depends = libxkbcommon
 	depends = glu
+	depends = glfw
 	provides = raylib
 	conflicts = raylib
 	source = git+https://github.com/raysan5/raylib#tag=6.0
