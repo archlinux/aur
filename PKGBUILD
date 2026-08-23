@@ -4,7 +4,7 @@
 
 _name=ConvertWithMoss
 pkgname=${_name,,}
-pkgver=19.1.0
+pkgver=20.2.0
 pkgrel=1
 pkgdesc='A tool for converting multi-samples from one format to another'
 url='https://mossgrabers.de/Software/ConvertWithMoss/ConvertWithMoss.html'
@@ -15,19 +15,33 @@ makedepends=(maven jdk-openjdk)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/git-moss/ConvertWithMoss/archive/refs/tags/$pkgver.tar.gz"
         'convertwithmoss.sh'
         'settings.xml.in')
-sha256sums=('6c278243c3928f0b214ff3a01817dda892c44d3702d51736a62972f7dcbc10e2'
+sha256sums=('cb082e1a54211d9691d5dbacb1ab1d2404524a48db30170abaabb69ee27b18a8'
             '119c190f92a96c3556b770d504ada91fc89d522e837bf490dd3c6b4577d7ca3d'
             '21dd62b95d6d9801c7dcb86522ba5b3c7bbe4bc5855a14353d99e6977513b0cb')
 
 prepare() {
-  # Workraround for ~/.m2 not being writable in CI
+  # Workaround for ~/.m2 not being writable in CI
   mkdir -p "$srcdir"/maven/repo
-  sed -e 's|@@REPO_DIR@@|'$srcdir'/maven/repo|' "$srcdir/settings.xml.in" > "$srcdir"/settings.xml
+  sed \
+    -e 's|@@REPO_DIR@@|'$srcdir'/maven/repo|' \
+    "$srcdir/settings.xml.in" \
+    > "$srcdir"/settings.xml
+  # Download all dependencies separately before build step
+  cd "$srcdir"/$_name-$pkgver
+  mvn \
+    --settings "$srcdir"/settings.xml \
+    --batch-mode \
+    dependency:go-offline
 }
 
 build() {
   cd $_name-$pkgver
-  mvn -s "$srcdir"/settings.xml -Dproject.build.outputTimestamp=$SOURCE_DATE_EPOCH clean install
+  mvn \
+    --settings "$srcdir"/settings.xml \
+    --batch-mode \
+    --offline \
+    -Dproject.build.outputTimestamp=$SOURCE_DATE_EPOCH \
+    clean install
 }
 
 package() {
@@ -40,6 +54,6 @@ package() {
   install -vDm 644 linux/de.mossgrabers.$_name.appdata.xml \
     -t "$pkgdir"/usr/share/metainfo
   install -vDm 644 icons/$pkgname.png -t "$pkgdir"/usr/share/pixmaps
-  install -vDm 644 documentation/*.{md,ods} -t "$pkgdir"/usr/share/doc/$pkgname
+  install -vDm 644 documentation/*.{md,fods} -t "$pkgdir"/usr/share/doc/$pkgname
   install -vDm 644 documentation/design/*.md -t "$pkgdir"/usr/share/doc/$pkgname/design
 }
