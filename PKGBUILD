@@ -1,6 +1,6 @@
 # Maintainer: Thorsten Foltz <thorsten.foltz@live.com>
 pkgname=octa
-pkgver=0.17.2
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Viewer, editor, CLI and MCP server for tabular data: 30+ formats, SQL, databases, cloud"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('rust' 'cargo' 'clang' 'cmake' 'nasm' 'pkgconf' 'asciidoctor')
 conflicts=('octa-bin')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('a2cb51430fd7f0f60752895a19083ebbfb969bc64b4b733eed4be9986abdd213')
+sha256sums=('d93ba315499dbec6acb9e383a19df47593db4448e3503edbc9741f79cc5069c7')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -38,5 +38,9 @@ package() {
     install -Dm644 "assets/octa.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/octa.svg"
     install -Dm644 "octa.desktop" "$pkgdir/usr/share/applications/octa.desktop"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "NOTICE" "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
+    install -Dm644 "THIRD_PARTY_LICENSES.md" \
+        "$pkgdir/usr/share/licenses/$pkgname/THIRD_PARTY_LICENSES.md"
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/licenses" licenses/*.txt
     install -Dm644 "octa.1" "$pkgdir/usr/share/man/man1/octa.1"
 }
