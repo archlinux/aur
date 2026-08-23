@@ -1,20 +1,20 @@
 pkgbase = volt-gui
 	pkgdesc = A graphical control panel for Vulkan games on Linux.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/pythonlover02/volt-gui
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = bash
-	depends = mesa-utils
+	depends = libxcb
 	depends = pyside6
 	depends = python
-	depends = vulkan-mesa-layers
-	source = volt-gui-2.0.1.tar.gz::https://github.com/pythonlover02/volt-gui/archive/refs/tags/v2.0.1.tar.gz
+	depends = vulkan-icd-loader
+	source = volt-gui-2.0.2.tar.gz::https://github.com/pythonlover02/volt-gui/archive/refs/tags/v2.0.2.tar.gz
 	source = volt-gui.desktop
 	source = volt-gui.sh
-	sha256sums = a6e4689b8bc4876b5cc4765fee428a97b9d3c88124348ebafaa272f996b1ae98
+	sha256sums = 448ed7aed0689547c18cd99318b2e45afb88695063833163ce19b9ae7a7f5c07
 	sha256sums = 1581606e978f09077743a7b3001498f99b4e141ca0eb229e8bac4d63ddf6692b
 	sha256sums = 9852a7ff299da58c8b8be0439d8560350a812f8a004eab44481433cec7fa398a
 
