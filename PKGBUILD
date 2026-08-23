@@ -2,7 +2,7 @@
 
 pkgname=yaac
 pkgver=1.0beta229
-pkgrel=2
+pkgrel=6
 pkgdesc="Yet Another APRS Client is a (mostly) platform-independent Java application for monitoring and contributing to the Automatic Packet Reporting System (APRS) network."
 arch=('any')
 url="https://sourceforge.net/projects/yetanotheraprsc/"
