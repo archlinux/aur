@@ -1,5 +1,5 @@
 pkgname=sdroxide-soapysdr
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Powerful SDR transceiver with a native GUI, browser web UI and built in digi modes like FT8, SSTV, THOR (SoapySDR-enabled version)"
 arch=('x86_64')
@@ -30,29 +30,40 @@ makedepends=('rust' 'rust-wasm' 'trunk' 'wasm-bindgen' 'binaryen' 'cmake' 'clang
 provides=('sdroxide')
 conflicts=('sdroxide')
 options=('!lto')
-# vendor/rade_c and vendor/rtl_433 are git submodules, and GitHub's release
-# tarballs carry no submodule contents, so both are fetched separately and put
-# in place in prepare(). Keep in sync with the tag:
+# vendor/rade_c, vendor/rtl_433 and vendor/faad2 are git submodules, and
+# GitHub's release tarballs carry no submodule contents, so all three are
+# fetched separately and put in place in prepare(). Keep in sync with the tag:
 #   git rev-parse "v$pkgver:vendor/rade_c"
 #   git rev-parse "v$pkgver:vendor/rtl_433"
+#   git rev-parse "v$pkgver:vendor/faad2"
 _rade_commit=a36161bce0fb37daf3f4602344b095f6817dddb1
 _rtl433_commit=8fa6364c5c7e14665fe3d80d0553883ec14a4116
+# faad2 2.11.2. crates/sdroxide-drm builds it with DRM_SUPPORT and links it in,
+# because Dream otherwise dlopens a libfaad_drm.so.2 that no distribution
+# ships. That crate is an unconditional dependency of the sdroxide binary --
+# not behind any feature -- so this one is needed by every build.
+_faad2_commit=673a22a3c7c33e96e2ff7aae7c4d2bc190dfbf92
 source=("sdroxide-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "rade_c-$_rade_commit.tar.gz::https://github.com/freedv/rade_c/archive/$_rade_commit.tar.gz"
-        "rtl_433-$_rtl433_commit.tar.gz::https://github.com/merbanan/rtl_433/archive/$_rtl433_commit.tar.gz")
-sha256sums=('4f8d9e40195bd9e7879e473c628e19731ca11368d8ff24e6e0d3f580a5a75654'
+        "rtl_433-$_rtl433_commit.tar.gz::https://github.com/merbanan/rtl_433/archive/$_rtl433_commit.tar.gz"
+        "faad2-$_faad2_commit.tar.gz::https://github.com/knik0/faad2/archive/$_faad2_commit.tar.gz")
+sha256sums=('497666655ae8820c5a6305f9da5b3ae3481aeac9fb933481a272a8627266a059'
             'eaba2ecbe61dc48748bc62f08b2eb623bccd5b21b8228bf42dedc0e232edf7cd'
-            '6e164f38216f46f1d08494c2adeaa7c72d7f3d5456e0b8c5ae424159d7051753')
+            '6e164f38216f46f1d08494c2adeaa7c72d7f3d5456e0b8c5ae424159d7051753'
+            '98725cefc915771f00ffd0286901c865e7d3fd0e5ff6b98d004d6f48904776f9')
 
 prepare() {
   cd "sdroxide-$pkgver"
   # Stand in for `git submodule update --init --recursive`: the build scripts of
-  # crates/sdroxide-rade and crates/sdroxide-ism read vendor/rade_c and
-  # vendor/rtl_433 straight out of the source tree, and panic if they are empty.
-  rm -rf vendor/rade_c vendor/rtl_433
+  # crates/sdroxide-rade, crates/sdroxide-ism and crates/sdroxide-drm read
+  # vendor/rade_c, vendor/rtl_433 and vendor/faad2 straight out of the source
+  # tree, and panic if they are empty. vendor/dream, next to faad2, is a copied
+  # tree rather than a submodule, so it does arrive in the release tarball.
+  rm -rf vendor/rade_c vendor/rtl_433 vendor/faad2
   mkdir -p vendor
   cp -a "$srcdir/rade_c-$_rade_commit" vendor/rade_c
   cp -a "$srcdir/rtl_433-$_rtl433_commit" vendor/rtl_433
+  cp -a "$srcdir/faad2-$_faad2_commit" vendor/faad2
   export RUSTUP_TOOLCHAIN=stable
   # The rustup package satisfies the rust-wasm makedepend by `provides`, but it
   # only ships the targets its user has actually added -- so on a rustup box the
