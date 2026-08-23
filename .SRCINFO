@@ -1,6 +1,6 @@
 pkgbase = nope-bin
 	pkgdesc = A CLI tool for keeping track of commands you regret running.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/v81d/nope
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = nope-bin
 	provides = nope
 	conflicts = nope
 	options = !strip
-	source_x86_64 = nope-x86_64-0.3.0.txz::https://github.com/v81d/nope/releases/download/0.3.0/nope-cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 407ecd8a0babea7f2f980a2d976a7a64049730f39f0996f78fe7265a2a9dd525
-	source_aarch64 = nope-x86_64-0.3.0.txz::https://github.com/v81d/nope/releases/download/0.3.0/nope-cli-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 407ecd8a0babea7f2f980a2d976a7a64049730f39f0996f78fe7265a2a9dd525
+	source_x86_64 = nope-x86_64-0.3.1.txz::https://github.com/v81d/nope/releases/download/v0.3.1/nope-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = ed0aca7a397604d561f91d2815f25842b94ba600b64d483259ff90178d27bff6
+	source_aarch64 = nope-x86_64-0.3.1.txz::https://github.com/v81d/nope/releases/download/v0.3.1/nope-cli-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = ed0aca7a397604d561f91d2815f25842b94ba600b64d483259ff90178d27bff6
 
 pkgname = nope-bin

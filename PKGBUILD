@@ -7,9 +7,9 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A CLI tool for keeping track of commands you regret running."
 
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
-_gitversion=${pkgver}
+_gitversion=v${pkgver}
 
 arch=('x86_64' 'aarch64')
 _barch=('x86_64-unknown-linux-gnu' 'aarch64-unknown-linux-gnu')
@@ -28,22 +28,24 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_suffix}-${_barch[0]}.tar.xz")
 source_aarch64=("${_appname}-${arch[0]}-${pkgver}.txz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_suffix}-${_barch[0]}.tar.xz")
-sha256sums_x86_64=('407ecd8a0babea7f2f980a2d976a7a64049730f39f0996f78fe7265a2a9dd525')
-sha256sums_aarch64=('407ecd8a0babea7f2f980a2d976a7a64049730f39f0996f78fe7265a2a9dd525')
+sha256sums_x86_64=('ed0aca7a397604d561f91d2815f25842b94ba600b64d483259ff90178d27bff6')
+sha256sums_aarch64=('ed0aca7a397604d561f91d2815f25842b94ba600b64d483259ff90178d27bff6')
 
 
 case ${CARCH} in
   ${arch[0]})
     _CARCH=${_barch[0]}
     ;;
+
+  ${arch[1]})
+    _CARCH=${_barch[1]}
+    ;;
 esac
 
 package() {
-	cd "${srcdir}/${_appname}-${_CARCH}/" || exit
+	cd "${srcdir}/${_appname}-${_suffix}-${_CARCH}/" || exit
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
-
-	install -Dm644 "doc/${_appname}.1" "${pkgdir}/usr/share/man/man1/${_appname}.1"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
