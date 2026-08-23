@@ -1,8 +1,8 @@
 pkgname=qtjambi
-pkgver=6.11.1
-pkgrel=3
-qtver=6.11.1
-qtjambiver=6.11.1
+pkgver=6.11.2
+pkgrel=1
+qtver=6.11.2
+qtjambiver=6.11.2
 pkgdesc="QtJambi is Qt bindings for the Java programming language originally developed by Trolltech"
 arch=(x86_64)
 url="https://github.com/OmixVisualization/qtjambi"
@@ -74,7 +74,7 @@ build() {
   ant generator.make
   ant generator.run
   #patch -p1 < ../../xxx.patch
-  ant library
+  ant compile
 }
 
 package() {

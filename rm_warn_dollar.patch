@@ -59,27 +59,6 @@ diff -Naur a/src/cpp/QtJambi/configure.pri b/src/cpp/QtJambi/configure.pri
      QMAKE_CXXFLAGS_WARN_ON += -Wno-unused-function
      QMAKE_LFLAGS_NOUNDEF   += -Wl,--no-undefined
      QMAKE_LFLAGS += $$QMAKE_LFLAGS_NOUNDEF
-diff -Naur a/src/cpp/QtJambiGenerator/library.pro b/src/cpp/QtJambiGenerator/library.pro
---- a/src/cpp/QtJambiGenerator/library.pro	2025-06-03 22:48:56.000000000 +0200
-+++ b/src/cpp/QtJambiGenerator/library.pro	2025-08-09 10:52:27.550766908 +0200
-@@ -211,7 +211,7 @@
-     if($$QTJAMBI_GENERATE_FRAMEWORKS): CONFIG+=lib_bundle
-     !isEmpty(QTJAMBI_EXTENSION_SHLIB): QMAKE_EXTENSION_SHLIB = $$QTJAMBI_EXTENSION_SHLIB
-     QMAKE_CXXFLAGS += -fpermissive
--    QMAKE_CXXFLAGS_WARN_OFF += -Wdollar-in-identifier-extension -Woverloaded-virtual
-+    QMAKE_CXXFLAGS_WARN_OFF += -Woverloaded-virtual
-     greaterThan(QT_MAJOR_VERSION, 5):{
-         greaterThan(QT_MAJOR_VERSION, 6) | greaterThan(QT_MINOR_VERSION, 1):{
-             QMAKE_APPLE_DEVICE_ARCHS = x86_64 arm64
-@@ -220,7 +220,7 @@
- }
- 
- linux-clang* | linux-g++* | freebsd-clang* | freebsd-g++* | netbsd-clang* | netbsd-g++* | openbsd-clang* | openbsd-g++* | solaris-g++* | solaris-cc* | win32-g++* {
--    QMAKE_CXXFLAGS_WARN_OFF += -Wdollar-in-identifier-extension -Woverloaded-virtual
-+    QMAKE_CXXFLAGS_WARN_OFF += -Woverloaded-virtual
-     QMAKE_CXXFLAGS_WARN_ON += -Wno-unused-function
-     QMAKE_LFLAGS_NOUNDEF   += -Wl,--no-undefined
-     QMAKE_LFLAGS += $$QMAKE_LFLAGS_NOUNDEF
 diff -Naur a/src/cpp/QtJambiPlugin/QtJambiPlugin.pro b/src/cpp/QtJambiPlugin/QtJambiPlugin.pro
 --- a/src/cpp/QtJambiPlugin/QtJambiPlugin.pro	2025-06-03 22:48:56.000000000 +0200
 +++ b/src/cpp/QtJambiPlugin/QtJambiPlugin.pro	2025-08-09 10:52:27.549067887 +0200
@@ -138,6 +117,19 @@ diff -Naur a/src/java/modules/qtjambi.deployer/io/qt/qtjambi/deployer/plugin.pro
  }
  
  linux-g++* | freebsd-g++* | win32-g++* {
+-    QMAKE_CXXFLAGS_WARN_OFF += -Wdollar-in-identifier-extension -Woverloaded-virtual
++    QMAKE_CXXFLAGS_WARN_OFF += -Woverloaded-virtual
+     QMAKE_CXXFLAGS_WARN_ON += -Wno-unused-function
+     QMAKE_LFLAGS_NOUNDEF   += -Wl,--no-undefined
+     QMAKE_LFLAGS += $$QMAKE_LFLAGS_NOUNDEF
+diff --git a/src/cpp/QtJambiGenerator/QtJambiGenerator.pro b/src/cpp/QtJambiGenerator/QtJambiGenerator.pro
+index decc1a07..0e56507a 100644
+--- a/src/cpp/QtJambiGenerator/QtJambiGenerator.pro
++++ b/src/cpp/QtJambiGenerator/QtJambiGenerator.pro
+@@ -216,7 +216,7 @@ macx:{
+ }
+ 
+ linux-clang* | linux-g++* | freebsd-clang* | freebsd-g++* | netbsd-clang* | netbsd-g++* | openbsd-clang* | openbsd-g++* | solaris-g++* | solaris-cc* | win32-g++* {
 -    QMAKE_CXXFLAGS_WARN_OFF += -Wdollar-in-identifier-extension -Woverloaded-virtual
 +    QMAKE_CXXFLAGS_WARN_OFF += -Woverloaded-virtual
      QMAKE_CXXFLAGS_WARN_ON += -Wno-unused-function
