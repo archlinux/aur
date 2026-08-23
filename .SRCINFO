@@ -1,6 +1,6 @@
 pkgbase = feishu-bin
 	pkgdesc = Linux client of Feishu (Lark) from Bytedance.
-	pkgver = 7.66.11
+	pkgver = 7.72.23
 	pkgrel = 1
 	url = https://www.feishu.cn/
 	install = feishu-bin.install
@@ -17,9 +17,9 @@ pkgbase = feishu-bin
 	replaces = bytedance-feishu-stable-bin
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://sf3-cn.feishucdn.com/obj/ee-appcenter/6e3610b5/Feishu-linux_x64-7.66.11.deb
-	sha256sums_x86_64 = dc4f0d2c2db3cc83bb9758cf71e3e131f09a7e08eec963b378d660c534ccfd31
-	source_aarch64 = https://sf3-cn.feishucdn.com/obj/ee-appcenter/36c6e858/Feishu-linux_arm64-7.66.11.deb
-	sha256sums_aarch64 = da73070ae272d9d622a24c11ddd1409084de0601fc2bda6827d82424da78d9a4
+	source_x86_64 = https://sf3-cn.feishucdn.com/obj/ee-appcenter/fc38d53a/Feishu-linux_x64-7.72.23.deb
+	sha256sums_x86_64 = 7c744ce101e29f50d8d0fc099788b64cb389dde3178178a7fce9ffcdbf296e13
+	source_aarch64 = https://sf3-cn.feishucdn.com/obj/ee-appcenter/8d668c7a/Feishu-linux_arm64-7.72.23.deb
+	sha256sums_aarch64 = 8052d22189546438e24b3691d64871805961ecea7a45804c75a2960ed2b8710e
 
 pkgname = feishu-bin
