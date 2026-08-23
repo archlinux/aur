@@ -1,8 +1,7 @@
 	pkgbase = opcda-bridge-client-bin
 	pkgdesc = OPC DA cross-platform client
 	pkgver = 0.3.2
-	epoch = 1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bytehound-labs/opcda-bridge
 	arch = x86_64
 	license = MIT
