@@ -23,7 +23,7 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 depends=('glibc' 'libgcc' 'openssl')
 
-options=(!strip)
+options=('!strip')
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
