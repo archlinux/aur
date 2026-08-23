@@ -1,6 +1,6 @@
 pkgname=stingray
 _pkgname=Stingray
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Custom client for a private Jellyfin server."
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git' 'playerctl')
 makedepends=('unzip')
 source=("https://gitlab.com/linuxbombay/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.bz2")
-sha256sums=('e66a1b0c5dfe20a417025744f921765e4ecd574452aefe025021c96eb84bbcc9')
+sha256sums=('27becb060bc297e73ead3971c451de2b3186a14dd02506ba33e3b6fa69e05c7a')
 
 
 package() {
@@ -20,7 +20,7 @@ package() {
     cd "$srcdir/$pkgname-$pkgver"
     chmod +x $pkgname
     ln -sf "/opt/libelectron/node_modules" "$srcdir/$pkgname-$pkgver"
-    #Libsplash/LibAdblock lib cleanup to use LibElectron deps instead
+    #Libsplash lib cleanup to use LibElectron deps instead
     rm -rf "$srcdir/$pkgname-$pkgver/libsplash"
     #link libelectron deps
     ln -sf "/opt/libelectron/libsplash" "$srcdir/$pkgname-$pkgver/libsplash"
