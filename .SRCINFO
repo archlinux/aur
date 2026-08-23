@@ -1,6 +1,6 @@
 pkgbase = motoko
 	pkgdesc = Based on Go modules, update a dependency to a major version.
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/ldez/motoko
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = motoko
 	conflicts = motoko
 	provides = motoko
 	
-	source = https://github.com/ldez/motoko/releases/download/v0.5.2/motoko-v0.5.2-source.tar.gz
-	sha256sums = e9353826a507800616bb26e60d540795cfe9a8fe83ba2c59afd503949e56794e
+	source = https://github.com/ldez/motoko/releases/download/v0.5.3/motoko-v0.5.3-source.tar.gz
+	sha256sums = dbf6e4094d4c2432cd89803f62fdb747e7a1a6f0d55eda35876958e0ba02242e
 	
 pkgname = motoko
