@@ -1,0 +1,18 @@
+pkgbase = token2-fido-bridge
+	pkgdesc = Daemon exposing PC/SC smartcards (contact or NFC) as virtual FIDO2/WebAuthn USB-HID security keys
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/token2/token2-fido-bridge
+	install = token2-fido-bridge.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
+	depends = pcsclite
+	optdepends = ccid: driver for most USB smartcard/NFC readers
+	source = token2-fido-bridge-0.1.2.tar.gz::https://github.com/token2/token2-fido-bridge/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = de516ba1b46634529d59bbbd56cd153c49face7e893785d33a41220d8e386161
+
+pkgname = token2-fido-bridge

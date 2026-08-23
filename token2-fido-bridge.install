@@ -1,0 +1,5 @@
+post_install() {
+  echo ':: To start the bridge now and at boot:'
+  echo '     systemctl enable --now token2-fido-bridge.service'
+  echo ':: pcscd is pulled in by the service; most USB readers need the ccid package.'
+}
