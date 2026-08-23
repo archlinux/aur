@@ -1,0 +1,16 @@
+pkgbase = dagit-bin
+	pkgdesc = Visualize your git repo in your terminal!
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/lxsh-S/dagit
+	arch = x86_64
+	license = MIT
+	provides = dagit
+	conflicts = dagit
+	source = https://github.com/lxsh-S/dagit/releases/download/v0.0.1/dagit-linux-amd64.tar.gz
+	sha256sums = SKIP
+
+pkgname = dagit-bin
+
+# makepkg --printsrcinfo > .SRCINFO
+
