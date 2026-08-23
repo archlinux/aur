@@ -5,7 +5,7 @@
 # Contributor: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=0.9.2272.g5c1a2c4
+pkgver=0.9.2324.g19d3f88
 pkgrel=1
 pkgdesc="Open source RGB lighting control that doesn't depend on manufacturer software"
 arch=('x86_64')
@@ -38,4 +38,10 @@ package() {
     cd OpenRGB
     make INSTALL_ROOT="$pkgdir" install
     install -Dm644 "$srcdir"/openrgb-modules-load.conf "$pkgdir"/usr/lib/modules-load.d/openrgb.conf
+
+    # Generate the udev rules file using the OpenRGB binary
+    _rules_dir="$pkgdir"/usr/lib/udev/rules.d
+    _rules_file="$_rules_dir"/60-openrgb.rules
+    install -d "$_rules_dir"
+    "$pkgdir"/usr/bin/openrgb --generate-udev-rules "$_rules_file"
 }
