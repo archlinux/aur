@@ -12,7 +12,7 @@ pkgbase = aperture-router
 	depends = gcc-libs
 	options = !lto
 	backup = etc/sysconfig/aperture-router
-	source = aperture-router-0.3.1.tar.gz::https://github.com/Wayazi/aperture-router/archive/refs/tags/v0.3.1.tar.gz
-	sha256sums = 3306ab9b25f8ebb26cf65377bbac9abdb424a6a356b3a565fbd66399217d2eed
+	source = aperture-router-0.3.3.tar.gz::https://github.com/Wayazi/aperture-router/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = 63cb6da7509436de3af8270aed8f45f83d3cefc74acd94226a3b57a0a815e066
 
 pkgname = aperture-router
