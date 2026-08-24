@@ -3,7 +3,7 @@
 pkgname=python-khali-git
 _pkgname=khali
 pkgver=1.0.0.r31.f6ff732
-pkgrel=1
+pkgrel=2
 pkgdesc="Uses khal, vdirsyncer and at to sync calendars and set alarms."
 arch=('any')
 url="https://codeberg.org/dhruva_sambrani/khali"
@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 prepare() {
     cd "${_pkgname}"
     # the script hardcod(ed) to the user's .local/bin undo that.
-    sed -ir '$ s/\(%.*\/\)//' ${_pkgname}.service
+    sed -ir '$ s/\(%h\/.local\)/\/usr/' ${_pkgname}.service
 }
 
 build() {
@@ -43,7 +43,8 @@ package() {
     depends=(
       'khal'
       'vdirsyncer'
-      'at')
+      'at'
+	  'libnotify')
     
     cd "${_pkgname}"
     python -m installer --destdir="$pkgdir" dist/*.whl
