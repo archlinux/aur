@@ -1,7 +1,7 @@
 pkgbase = ardali-browser
 	pkgdesc = Native Qt/C++ desktop browser with integrated privacy and media tools
-	pkgver = 6.0.0
-	pkgrel = 2
+	pkgver = 6.0.1
+	pkgrel = 1
 	url = https://github.com/Muhammed-Dali/ArDali-Browser
 	arch = x86_64
 	license = GPL-3.0-only
@@ -23,7 +23,7 @@ pkgbase = ardali-browser
 	conflicts = aurivo-bin
 	replaces = ardali-bin
 	replaces = ardali-webmedia
-	source = ardali-browser-6.0.0.tar.gz::https://github.com/Muhammed-Dali/ArDali-Browser/archive/refs/tags/v6.0.0.tar.gz
+	source = ardali-browser-6.0.1.tar.gz::https://github.com/Muhammed-Dali/ArDali-Browser/archive/refs/tags/v6.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = ardali-browser
