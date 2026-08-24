@@ -4,7 +4,7 @@
 _pkgbase=tosu
 
 pkgname=${_pkgbase}-git
-pkgver=4.15.3.r14.gd54a2f3
+pkgver=4.25.1.r68.gb1b0335
 pkgrel=2
 pkgdesc="Memory reader and PP counters provider for osu! and osu! Lazer - git version"
 arch=('x86_64')
