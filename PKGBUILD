@@ -1,6 +1,6 @@
 _dotnet_version=10.0
 pkgname="csharp-ls"
-pkgver=0.26.0
+pkgver=0.27.0
 pkgrel=1
 pkgdesc="Roslyn-based LSP language server for C#"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("MIT")
 depends=("dotnet-sdk-$_dotnet_version" "dotnet-runtime-$_dotnet_version")
 makedepends=("dotnet-targeting-pack-$_dotnet_version")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3757ce1994f528429b973b5aad4c256b50a0ab2136dd662db8eda012b3ec8bd7')
+sha256sums=('a9a34dccff8b4aee2c1f0b8c3f2a3fd0361dfd55398385f465cc4e8f238045b4')
 
 prepare() {
     dotnet --info | grep RID | cut -d : -f 2 | sed 's/arch/linux/' | xargs > _runtime
