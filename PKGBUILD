@@ -2,7 +2,7 @@
 
 pkgname=hydra-download-manager-bin
 _pkgname=hydra
-pkgver=0.3.11
+pkgver=0.3.12
 pkgrel=1
 pkgdesc="Multi-connection download accelerator and manager (GUI, CLI, browser integration) (precompiled binary)"
 arch=('x86_64' 'aarch64')
