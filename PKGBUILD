@@ -1,6 +1,6 @@
 # Maintainer: Jotalea <main@jotalea.com.ar>
 pkgname=jotawm-git
-pkgver=2026.08.24.r99.3dc10ba
+pkgver=2026.08.24.r100.90c467e
 pkgrel=1
 pkgdesc="A minimal tiling window manager for X11"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,6 +12,7 @@ provides=('jotawm' 'jotawm-session')
 conflicts=('jotawm')
 source=("git+file://${startdir}")
 sha256sums=('SKIP')
+options=(!debug)
 
 pkgver() {
   cd "$srcdir/jotawm" 2>/dev/null || cd "$srcdir"
