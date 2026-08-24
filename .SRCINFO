@@ -17,6 +17,6 @@ pkgbase = winghexexplorer2-bin
 	noextract = winghexexplorer2-2.3.8-1-x86_64.pkg.tar.zst
 	options = !strip
 	source = winghexexplorer2-2.3.8-1-x86_64.pkg.tar.zst::https://github.com/calmcrow/winghexexplorer2-bin/releases/download/v2.3.8/winghexexplorer2-2.3.8-1-x86_64.pkg.tar.zst
-	sha256sums = de762da3ddd052ab81c13ce9308dd25fd0cc99f57f5266063a62e628bca1f0a4
+	sha256sums = 94251effeecee268094ee052328fa6308bc692bd11067f73f597e3aaad4c7528
 
 pkgname = winghexexplorer2-bin

@@ -39,7 +39,7 @@ noextract=("$_asset")
 # sha256 is written automatically by CI (build.yml) after building;
 # the placeholder below is only for the initial commit and will be
 # replaced on the first workflow run.
-sha256sums=('de762da3ddd052ab81c13ce9308dd25fd0cc99f57f5266063a62e628bca1f0a4')
+sha256sums=('94251effeecee268094ee052328fa6308bc692bd11067f73f597e3aaad4c7528')
 
 package() {
   bsdtar --exclude='.PKGINFO' --exclude='.MTREE' --exclude='.BUILDINFO' --exclude='.INSTALL' \
