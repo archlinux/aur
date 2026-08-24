@@ -4,7 +4,7 @@ _pkgname=dwproton
 pkgname=${_pkgname}-bin
 _srcver=11.0-12
 pkgver=${_srcver//-/_}
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="Proton builds with the latest Dawn Winery fixes for gacha games, based on Proton-CachyOS."
 arch=('x86_64')
@@ -65,6 +65,7 @@ depends_x86_64=(
   lib32-libgl
   lib32-libgpg-error
   lib32-libnm
+  lib32-libvdpau
   lib32-pango
   lib32-libva
   lib32-libx11
