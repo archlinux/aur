@@ -1,7 +1,7 @@
 pkgbase = max-bin
 	pkgdesc = MAX messenger.
 	pkgver = 26.28.2.77301
-	pkgrel = 1
+	pkgrel = 2
 	url = https://max.ru
 	arch = x86_64
 	license = custom:max
@@ -13,7 +13,7 @@ pkgbase = max-bin
 	depends = libxss
 	depends = xcb-util-wm
 	depends = xcb-util-cursor
-	depends = xcb-util-keysym
+	depends = xcb-util-keysyms
 	depends = libxkbcommon
 	depends = libva
 	depends = libxaw

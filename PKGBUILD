@@ -2,7 +2,7 @@
 
 pkgname=max-bin
 pkgver=26.28.2.77301
-pkgrel=1
+pkgrel=2
 
 pkgdesc="MAX messenger."
 arch=("x86_64")
@@ -19,7 +19,7 @@ depends=(
          "libxss"
          "xcb-util-wm"
          "xcb-util-cursor"
-         "xcb-util-keysym"
+         "xcb-util-keysyms"
          "libxkbcommon"
          "libva"
          "libxaw"
