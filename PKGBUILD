@@ -1,8 +1,8 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="safecloset"
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Cross-platform Secure TUI Secret Locker"
 arch=(
   'x86_64'
@@ -23,7 +23,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('8059c48fc008c6d9b941290d76380145c6ff6b8a0484004763e478bf95e37c92')
+sha256sums=('5beb95ca4fca039b1f9208c48bf0a4395bf339da98fadbef1c6ef0082ac35c47')
 
 _source() {
   export CARGO_HOME="${srcdir}/.cargo"
