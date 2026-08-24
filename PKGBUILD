@@ -1,7 +1,7 @@
 # Maintainer: qnezor <hello at qnezor.ru>
 
 pkgname=murglar-desktop
-pkgver=5.5.152
+pkgver=6.3.158
 pkgrel=1
 pkgdesc="Listen and download music from your favorite music services — VK, Yandex Music, SoundCloud, Deezer, Zvuk and WebDAV"
 arch=('any')
@@ -13,7 +13,7 @@ source=("https://github.com/badmannersteam/murglar-downloads/releases/download/M
         "murglar-desktop.sh"
         "murglar-desktop.desktop")
 noextract=("Murglar-Desktop-${pkgver}-all-platforms.jar")
-sha256sums=('9a606d3af91c7d2a1e6bc4dd5dd54deb007f10e1352a71af44141202b8f77d8a'
+sha256sums=('57a5838a6eff10a3311ddd99f861c6650bcee0a641f8a312bfd381cb9fcf9f85'
         '6ae9f55254656355cb2268d6d11ff268f0827d19bcfae217b616c04b7b7915bd'
         '52cd65b6f7024d8e62f9ca76ad25d8743e9dc6e5f639834f856310ffb0a2023c'
         '2747f8f58ca204e5e6fc4b96a70b502fa5ad77dde71e9b103c2aa6ea3042510e')
