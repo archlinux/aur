@@ -1,5 +1,5 @@
 pkgname=garmin-tracker-rs
-pkgver=1.9.2
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Sync your devices and track your strength training'
 arch=('x86_64')
@@ -30,7 +30,17 @@ install=${pkgname}.install
 
 build() {
   cd "$srcdir/${pkgname}"
-  RUSTFLAGS="" make build
+
+  export RUSTC_WRAPPER=sccache
+  export CARGO_BUILD_JOBS=$(nproc)
+
+  if [ -z "$GITHUB_ACTIONS" ] && [ -z "$CI" ]; then
+    export RUSTFLAGS="-C target-cpu=native -C link-arg=-fuse-ld=mold"
+  else
+    export RUSTFLAGS="-C link-arg=-fuse-ld=mold"
+  fi
+
+  make build
 }
 
 package() {
