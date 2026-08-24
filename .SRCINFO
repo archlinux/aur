@@ -1,6 +1,6 @@
 pkgbase = kache
 	pkgdesc = Zero-copy, content-addressed build cache for Rust, C/C++ and more
-	pkgver = 0.14.2
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://kunobi.ninja/docs/kache
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = kache
 	makedepends = cargo
 	depends = libgcc
 	options = !lto
-	source = kache-0.14.2.tar.gz::https://github.com/kunobi-ninja/kache/archive/v0.14.2.tar.gz
-	sha256sums = b5ab90b260e35675cef0b6b1ca0868d3e994c96c995cb4e7a3963cec8b23fb3a
-	b2sums = 3e4450a57b110919761a1f6835973b231aa0448349c83d93e9641a853c30a7b7ff2a1a24bcd036ab4f1b642d3d551c67c1b96bf01b0e605fadb0bd5d873592b1
+	source = kache-0.15.0.tar.gz::https://github.com/kunobi-ninja/kache/archive/v0.15.0.tar.gz
+	sha256sums = 8b5f9781149dbb21e90694cf3b7286acf3b6de19e325d4a1133c0bb025d0e5f3
+	b2sums = f78ac8a6e28b23d05409598c31f4fa96f7fa110e58c9f05cb3cf1c98583b090988756d86c3374d98fb51c3d6aa1ebcc161285b314a5e3bc4b1b702b09a7be49a
 
 pkgname = kache
