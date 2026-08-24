@@ -10,7 +10,7 @@ pkgbase = pizauth-git
 	license = Apache-2.0
 	makedepends = git
 	makedepends = cargo
-	provides = pizauth
+	provides = pizauth=1.1.0.r4.gf822e42
 	source = pizauth-git::git+https://github.com/ltratt/pizauth.git
 	sha256sums = SKIP
 

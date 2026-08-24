@@ -8,7 +8,7 @@ pkgdesc="OAuth2 token requester daemon"
 arch=('i686' 'x86_64')
 url="https://github.com/ltratt/${_pkgname}"
 license=('MIT' 'Apache-2.0')
-provides=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 makedepends=(git cargo)
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
