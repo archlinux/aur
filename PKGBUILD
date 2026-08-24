@@ -2,14 +2,14 @@
 
 pkgname=amspirit-lite-sdl
 pkgver=1.14.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An accurate Amstrad emulator - SDL version (AppImage)"
 arch=('x86_64')
 depends=(hicolor-icon-theme)
 url="https://amspirit.fr/"
 license=('CC-BY-NC-ND-4.0')
 options=(!strip !debug)
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/AMSpiriT-Emulator/amspirit-releases/releases/download/Lite-1.14/Amspirit-Lite-SDL-${pkgver}-x86_64.AppImage")
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/AMSpiriT-Emulator/amspirit-releases/releases/download/Lite-1.14.3/Amspirit-Lite-SDL-${pkgver}-${arch}.AppImage")
 sha256sums=('984e96e1a282587bb780bc30ca9b1aca39ed629753ea6ed19d86f11e082099d8')
 
 prepare() {
