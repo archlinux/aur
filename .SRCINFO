@@ -1,6 +1,6 @@
 pkgbase = temporal-cli
 	pkgdesc = CLI for running Temporal Server and interacting with various parts of Temporal
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/temporalio/cli
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = temporal-cli
 	makedepends = go
 	depends = glibc
 	options = !debug
-	source = temporal-cli-1.8.1.tar.gz::https://github.com/temporalio/cli/archive/refs/tags/v1.8.1.tar.gz
-	b2sums = 8fd919cf054a8146cc38dc1037e11318a8f083e51c671965fbe2fa922dbf38be16bda0f9a71094e319c7a36c985752481903e89b9e5c9e7734027139ee3bf672
+	source = temporal-cli-1.8.2.tar.gz::https://github.com/temporalio/cli/archive/refs/tags/v1.8.2.tar.gz
+	b2sums = dfe9054694cdd1c7f477d7e41748605a23f1b4291a7d866fedb981700cb1a2889316ac3b880fe4c2d2f8cabc7e24a34306c0665f3f8c28d5a938e8c64d140e9c
 
 pkgname = temporal-cli
