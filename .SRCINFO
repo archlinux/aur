@@ -14,10 +14,8 @@ pkgbase = rustypaint
 	optdepends = vulkan-radeon: AMD GPU driver
 	optdepends = nvidia-utils: NVIDIA GPU driver
 	optdepends = vulkan-intel: Intel GPU driver
-	provides = rustypaint
-	conflicts = rustypaint
 	options = !debug
-	source = rustypaint::git+https://github.com/ItzELECTR0/RustyPaint.git
+	source = rustypaint::git+https://github.com/ItzELECTR0/RustyPaint.git#tag=v0.2.0
 	b2sums = SKIP
 
 pkgname = rustypaint
