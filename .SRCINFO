@@ -1,6 +1,6 @@
 pkgbase = ddev-test-bin
 	pkgdesc = DDEV: a local web development environment
-	pkgver = 1.106.2
+	pkgver = 1.106.3
 	pkgrel = 1
 	url = https://github.com/ddev/ddev
 	license = Apache 2
@@ -11,10 +11,10 @@ pkgbase = ddev-test-bin
 	conflicts = ddev
 	provides = ddev
 	arch = aarch64
-	source_aarch64 = https://github.com/ddev-test/ddev/releases/download/v1.106.2/ddev_linux-arm64.v1.106.2.tar.gz
-	sha256sums_aarch64 = b827c8e0e8859e632e547266ab94ad168b32e6ca489be8970075c0523b21377c
+	source_aarch64 = https://github.com/ddev-test/ddev/releases/download/v1.106.3/ddev_linux-arm64.v1.106.3.tar.gz
+	sha256sums_aarch64 = 28a26b635e2f44b4111db467d9b4f8244f31abff1e270bf54818ed019f386d70
 	arch = x86_64
-	source_x86_64 = https://github.com/ddev-test/ddev/releases/download/v1.106.2/ddev_linux-amd64.v1.106.2.tar.gz
-	sha256sums_x86_64 = d61268f2af95601584d1cbf35c58b8cf67f5283664be7bba2fd32763d9840d2b
+	source_x86_64 = https://github.com/ddev-test/ddev/releases/download/v1.106.3/ddev_linux-amd64.v1.106.3.tar.gz
+	sha256sums_x86_64 = f0fdf77b2d2c0d2927945809ac4d67009350283d21597c50988d461072c4c981
 	
 pkgname = ddev-test-bin
