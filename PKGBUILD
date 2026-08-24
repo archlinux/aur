@@ -25,15 +25,15 @@
 : ${_build_limit_cores:=true} # detect usable cores for parallelism, limited by RAM
 
 ## update
-_icver="140.13.0-1"
-_commit="715ab58c4226572511cad0496908b64124f6729d"
-_ffsum="f53b9dc6942abda1185aa7d79048f59fc075020da36b4dd6b31f668b88714d01"
+_icver="140.14.0-1"
+_commit="c30067bdb3fc64b60acede199896d1187f4fd42b"
+_ffsum="28006bd454e703932e1ea804918165774a1e21478b18e551cd1b38111d664239"
 
 ## package
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="${_icver%%-*}"
-pkgrel=2
+pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git"
 license=('MPL-2.0')
@@ -158,6 +158,9 @@ source=(
 
   # fix for ffmpeg 9
   0006-Add-FFmpeg-63-support.patch.xz
+
+  # fix for rust 1.98
+  0007-fix-rust-1.98-targets.patch
 )
 sha256sums=(
   'SKIP'
@@ -172,8 +175,9 @@ sha256sums=(
   '404e780b1488625989c6dd8e2234e50ed01401b7cb1e99e79dee87f4f4f584f8'
   '28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89'
   '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
-  'e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760'
+  '43cf4f00643c1144f6debeec6a7cabde63de4089cca5d3bb3501beadd2c837bc'
   'e7d30072641dfea9c3bff025db7e3a2c60201e630c5253bda1f2b54a0b5501ae'
+  '8e93bc3f7745bd4a6bcf952120b60a260ea867f0c8319ea8f6df18ed1281bc1f'
 )
 
 _make_icecat() (

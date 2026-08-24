@@ -1,7 +1,7 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox ESR browser
-	pkgver = 140.13.0
-	pkgrel = 2
+	pkgver = 140.14.0
+	pkgrel = 1
 	url = https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git
 	arch = x86_64
 	license = MPL-2.0
@@ -56,14 +56,14 @@ pkgbase = icecat
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	noextract = firefox-esr-140.13.0-1-source.tar.xz
+	noextract = firefox-esr-140.14.0-1-source.tar.xz
 	options = !debug
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = gnuzilla::git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=715ab58c4226572511cad0496908b64124f6729d
-	source = firefox-esr-140.13.0-1-source.tar.xz::https://ftp.mozilla.org/pub/firefox/candidates/140.13.0esr-candidates/build1/source/firefox-140.13.0esr.source.tar.xz
+	source = gnuzilla::git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=c30067bdb3fc64b60acede199896d1187f4fd42b
+	source = firefox-esr-140.14.0-1-source.tar.xz::https://ftp.mozilla.org/pub/firefox/candidates/140.14.0esr-candidates/build1/source/firefox-140.14.0esr.source.tar.xz
 	source = 0000-parallelize-makeicecat.diff
 	source = 1001-python_3.14-5fcff175718cd308bc6d6f2996de14eb8a93e2a2.patch
 	source = 1002-python_3.14-23efd75219786d71acff0b4e7c1b0de297b84c4e.patch
@@ -76,8 +76,9 @@ pkgbase = icecat
 	source = 0004-update-rust-bindgen-to-fix-clang22-build.patch.xz
 	source = 0005-skia-m142-update.patch.xz
 	source = 0006-Add-FFmpeg-63-support.patch.xz
+	source = 0007-fix-rust-1.98-targets.patch
 	sha256sums = SKIP
-	sha256sums = f53b9dc6942abda1185aa7d79048f59fc075020da36b4dd6b31f668b88714d01
+	sha256sums = 28006bd454e703932e1ea804918165774a1e21478b18e551cd1b38111d664239
 	sha256sums = 1f1b71fcc22fe5e12bd57e7dcc544599e99071eb17b843b261c77fb86f943288
 	sha256sums = 10e928127276c934a51c053d3f7ceb247344afd2e82186e12c4f188dd743bc49
 	sha256sums = 6479aa1df3fda931d0e261edaffdcac2d162c0166c5cfd6adf6f45ccf632b852
@@ -88,7 +89,8 @@ pkgbase = icecat
 	sha256sums = 404e780b1488625989c6dd8e2234e50ed01401b7cb1e99e79dee87f4f4f584f8
 	sha256sums = 28b086f5492d8e6731fe0dfe34a2e4c6d4d502a9eefa15a31e44b5788cf4df89
 	sha256sums = 8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d
-	sha256sums = e11aba9839824096f07ca5dc17c9fd5bfa09209f8261ab09f7e473f350a82760
+	sha256sums = 43cf4f00643c1144f6debeec6a7cabde63de4089cca5d3bb3501beadd2c837bc
 	sha256sums = e7d30072641dfea9c3bff025db7e3a2c60201e630c5253bda1f2b54a0b5501ae
+	sha256sums = 8e93bc3f7745bd4a6bcf952120b60a260ea867f0c8319ea8f6df18ed1281bc1f
 
 pkgname = icecat
