@@ -5,7 +5,7 @@ _pkgname=${pkgname}
 _githuborg=${FORK:-$_projectname}
 pkgdesc="Software defined networking with public keys. Skycoin.com"
 _pkggopath=github.com/${_githuborg}/${_pkgname}
-pkgver='1.3.89'
+pkgver='1.3.92'
 pkgrel='1'
 _rc=''
 #_rc='-pr1'
@@ -22,7 +22,7 @@ install=skywire.install
 # backup= entry needed (and no .pacnew dance on upgrade).
 backup=()
 _script=("skywire-autoconfig")
-_desktop=("skywire.desktop" "skywirevpn.desktop")
+_desktop=("skywire.desktop" "skywirevpn.desktop" "skywire-tray.desktop")
 _icon=("skywirevpn.png" "skywire.png")
 _service=("skywire.service" "skywire-autoconfig.service" "skywire-sn.service" "skywire-ar.service" "skywire-rf.service" "skywire-tpd.service" "skywire-dmsgd.service" "skywire-dmsg.service" "skywire-sd.service" "dmsgpty-tcp.socket" "dmsgpty-tcp@.service")
 _source=("skywire-bin::git+https://aur.archlinux.org/skywire-bin")
@@ -128,6 +128,12 @@ for _i in "${_desktop[@]}" ; do
   _msg3 ${_i}
   install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/usr/share/applications/${_i}"
 done
+# The tray is ALSO an XDG autostart entry so it launches in the user's desktop
+# session on login (the visor runs as a background service; the tray controls it
+# over RPC — see `skywire visor --systray-only`). The app-menu copy above lets the
+# user start it the first time (a root package install can't reach the already-
+# running session); autostart handles every login after.
+install -Dm644 "${srcdir}/${_skywirebin}skywire-tray.desktop" "${_pkgdir}/etc/xdg/autostart/skywire-tray.desktop"
 for _i in "${_icon[@]}" ; do
   _msg3 ${_i}
   install -Dm644 "${srcdir}/${_skywirebin}${_i}" "${_pkgdir}/usr/share/icons/hicolor/48x48/apps/${_i}"

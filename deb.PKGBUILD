@@ -1,6 +1,6 @@
 # Maintainer: Moses Narrow <moses@skycoin.com>
 source PKGBUILD
-pkgdesc="Skywire Mainnet Node implementation. Develop Banch. Debian package"
+pkgdesc="Skywire Mainnet Node implementation. Debian package"
 _pkgarch=$(dpkg --print-architecture)
 arch=('any')
 _pkgrel=${pkgrel}
