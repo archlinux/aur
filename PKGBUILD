@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folia-major
 _pkgname=Folia
-pkgver=0.6.21
+pkgver=0.6.22
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -24,7 +24,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('cab7fd9858b0b7fb91c74d3de058c5b52f1d6ca8ea43580e5c55c867f29cfa25'
+sha256sums=('2c4e61e7540287f522c77a9c725d45ab0b418d98097fed193b4c6fe48f07d8e2'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
