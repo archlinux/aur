@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-melondsds
 pkgname=$_pkgname-git
-pkgver=1.2.0.r13.g7a25f70
+pkgver=1.3.1.r0.gbc4e4b6
 pkgrel=1
 pkgdesc="Nintendo DS core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -12,16 +12,15 @@ depends=('glibc' 'libretro-core-info>=1.17')
 makedepends=('cmake>=3.19' 'git' 'libgcc' 'libgl' 'libstdc++')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-options=('!lto') # https://github.com/melonDS-emu/melonDS/issues/2314
 source=(
 	"$_pkgname::git+$url.git"
 	"date::git+https://github.com/HowardHinnant/date.git"
 	"embed-binaries::git+https://github.com/andoalon/embed-binaries.git"
 	"fmt::git+https://github.com/fmtlib/fmt.git"
 	"glm::git+https://github.com/g-truc/glm.git"
-	"jessetg-libretro-common::git+https://github.com/JesseTG/libretro-common.git"
 	"jessetg-libslirp::git+https://github.com/JesseTG/libslirp-mirror.git"
-	"jessetg-melonds::git+https://github.com/JesseTG/melonDS.git"
+	"libretro-common::git+https://github.com/libretro/libretro-common.git"
+	"melonds::git+https://github.com/melonDS-emu/melonDS.git"
 	"pntr::git+https://github.com/RobLoach/pntr.git"
 	"span-lite::git+https://github.com/martinmoene/span-lite.git"
 	"yamc::git+https://github.com/yohhoy/yamc.git"
@@ -35,7 +34,9 @@ pkgver() {
 }
 
 build() {
+	# shellcheck disable=SC2154
 	local options=(
+		-B build
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
@@ -44,21 +45,21 @@ build() {
 		-D ENABLE_LTO_RELEASE=OFF
 		-D FMT_REPOSITORY_URL="$srcdir"/fmt
 		-D GLM_REPOSITORY_URL="$srcdir"/glm
-		-D LIBRETRO_COMMON_REPOSITORY_URL="$srcdir"/jessetg-libretro-common
+		-D LIBRETRO_COMMON_REPOSITORY_URL="$srcdir"/libretro-common
 		-D LIBSLIRP_REPOSITORY_URL="$srcdir"/jessetg-libslirp
-		-D MELONDS_REPOSITORY_URL="$srcdir"/jessetg-melonds
+		-D MELONDS_REPOSITORY_URL="$srcdir"/melonds
 		-D PNTR_REPOSITORY_URL="$srcdir"/pntr
 		-D SPAN_LITE_REPOSITORY_URL="$srcdir"/span-lite
 		-D YAMC_REPOSITORY_URL="$srcdir"/yamc
 		-D ZLIB_REPOSITORY_URL="$srcdir"/zlib
-		-Wno-dev
+		-W no-dev
 	)
-	cmake "${options[@]}" -B build -S $_pkgname
+	cmake "${options[@]}" $_pkgname
 	cmake --build build
 }
 
 package() {
-	depends+=('libgcc_s.so' 'libOpenGL.so' 'libstdc++.so')
+	depends+=('libgcc_s.so' 'libstdc++.so')
 
 	cd build
 	# shellcheck disable=SC2154
