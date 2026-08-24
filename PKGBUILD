@@ -9,7 +9,7 @@
 _pkgname=discord
 _electron=electron
 pkgname=${_pkgname}_arch_electron
-pkgver=1.0.154
+pkgver=1.0.155
 pkgrel=1
 epoch=1
 pkgdesc="Discord using system provided ${_electron} for increased security and performance"
@@ -45,24 +45,28 @@ source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.ta
         "discord_erlpack-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_erlpack/1/full.distro"
         "discord_modules-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_modules/1/full.distro"
         "discord_spellcheck-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_spellcheck/1/full.distro"
-        "discord_dispatch-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_dispatch/1/full.distro")
-sha512sums=('e8d84b6e99e7f8e9fb2094881d343f3c88beea3554570e3391fce78232e112be13f35e56951f92da758308a1d15d03a3a62a65191ac74098a369e1d0b03ac998'
+        "discord_dispatch-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_dispatch/1/full.distro"
+        "discord_cloudsync-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_cloudsync/1/full.distro"
+        "discord_arborium-${pkgver}.tar.br::https://stable.dl2.discordapp.net/distro/app/stable/linux/x64/${pkgver}/discord_arborium/1/full.distro")
+sha512sums=('cb5193ed3e7070845eb74570876f191e7ee113d97de0b3521bd14ff7f16e90077b8dc1f8f9d6ffa472261841d976c69b7c772d6bd8c24b6d8edb17f577e38dbb'
             '2590151db4404a9ecbae2c45269c74f5ea26479967de5bc0b221a9143f4efeeeda9e335c23cf1f982680ab4fd895dcf3fd5731bd230908b3b2568eee0ec223ec'
             '5cccf397a772fed0db9b19253e496e78af27810227325ce681de985e2e0fbbdb195873d9642574ad3ae7bfcf4699bfdaa16933ca50c13cb98a1ff53c86c6de05'
             'd5373e2b2e9754bdcdbcda81fc1392ce6605939651839868823f3c3e0bf16f6fba2fb73bc1a0ff230eebd743d1463f2e8b2295503248f14845b3a56e57385bd1'
             '85da93530b2b92faad58cc84d0f7ddaea6b22fbec413e806c1981eb6369a301ec995eee6bfbe6b828e2cd0baf6168e578bbde456f2450a13199994ff9a1e7cd0'
-            'e2428972ea2d93de6b49773606d2168c5b185fdd47dcc272578c4dc8d786b5b7013e5ac66d14d9e9c26631301d2de0c1ee7564162b9cc2dfe5fbaebc2eb56a02'
-            '6c66898bf08c8d482432a4a018b749c23bede5fc3f81b2d4bd392465cfa2f1036b04be8fca8f1cfd4179893a2a126d36bc27a439d0e4265888708ce6c375f223'
-            'f2172daaab92665c9cab4d8aae9bce54c4a29b3cd11caa2a1fb0dfaa3c228943b49da7a7e0b2fdde36e17f0b9fd11aa19c3637aa47baa98de283c38a19dbc957'
-            '5b5813e1a1f620945f89d7e2009be7d95b23f833d573fc8d232502ff06f634e4a25b4b969162f05416130728b71ae7b59ad7f3d80933e287891ac15f9af632ed'
-            'ec37798e43b2737c516508ed17b683d54b635f84d2dafce87b0283081e49cf285b0500d0b4373ea9c53f5689f74b553aac852eff19ebed666e151f31fdcd6c48'
-            '2018f433557b33107bf7bb26d92c3d283727b979968393a280082ba542325625a3331247025c6cd0609c1b28b75326015386049530c2dec64d024cedac0de2a9'
-            'ec8a315c432e815e24d54ad9d83bb5b238aad23308af764646e90d7334e1d77fcd2aaff7036ea1e0ae8c8fe4b1404e7f3fc27baaa4cd3a8061dc9118012e45e1'
-            'cb2bf555df79450ff46908a71cd92e27c2c52d015e80c3cebbe59bf61a40fa3fabaffb227759d0d6fc8cf267e686a5a2e3dee162aa3b78d68f7090d0a4c2982e'
-            '66006ffa68f48a69f3d9afcd796d28a30b94c507f52b3450722c47de2f5c5bea0217f69d7a637337a29ab878ff0466cbcb6f43c73f103e87c5846e6d3aebb1c5'
-            '507150269df5103d29e3c65531de8178f0f59d35a4b6ad27bdbf4f9bcd8034169d2c5a92f6ccb28999be9ae7c4dd786f7a3e6de6fc6ee257386c6cc5ded623fa'
-            '82dff6dc4af0443a07c7a0449a4e4b1f5ce4b4a59deb45266f1b7f8eb04de75b641925e7ddca193f6056912e093c7b71937fed5d156f8c306d82ba1aae61d1d9'
-            'de90b6c9b6e07fbcccceb5a325af9c4951e8a61f609166329b922cc881d4c397c2ef2ec050811b61a6ef93dd94232efa9291afa8bb0f4aee6ddc91afb1d8c5a1')
+            '722173a841ec6730453ba6673f515dc94e63dde5b708b330e4778d58ee746aa7c05b7a29ca7bf74cf4794fdc3085efae9022b29984df297bf0b263154ba6f65f'
+            '18f7b8eac72605f49069fd5ab507a544a69a060de80b77aef0d58b2ee70e1f885340bd1821129da3c0eecf492a8d36e55fa12e6ac65584091afc1244ac458542'
+            '1bbd454d218a0a803d0a6306d914cdc6024b7648965528699685c889c0fac08660a065899ef04d61a29fa1e166d583f2d054e12ec6f049675fb58181cbb01ac4'
+            'be9f8c2a91b92638cb3e0baffba7928bf68327217df06b903109ad71629ff0fb4d29b92510ae85aa4c4eeb311c2c38b19f22537de66be3ac289478b3fe0a3ce1'
+            'b98cee5f0ff37ef0fd28e27b3960cd74dd46faab38c577de10c8f1323de5f029d41b0c4b31ac199c167828ea382d0bed82e6a37e61240a1d1c14fc954f8b2b0d'
+            '4d8803a3c166b83a45ff577b21cd56c0029b714f3a2660c15acd8d7e0fffa5043102250d82fbcd52012300c00fe108ded97f3cf6af31295b5d9ad9c3cddd7fc1'
+            '9bddfb9e2e3eb6dcba80f074c63e5da2d55fb8ae8546089b8c2d8e7e6fb11c4b6ce1dab48bc370572973499663e2419ccd38d970f8144c9a9d466c94f27a5ac5'
+            'bd70e9d76e767bff3dcfeaf15d2815899b009240763f4cfcef6c4ae2423f3f798a6f791e6221cb9fd97424df91300ea49f36a2c22725c357f2538c14703a6c79'
+            'accd25d6c28cdffe9c96808459937e251174e7eec7f004b7b13f89282be97bbb61b0a57f282a9e7f5e3eb7c16fa5e64b6c052b9b18d6319219d4150067e4ad14'
+            '52a3bf65dbbb6947eb91a5031608f1fc5a62a805cf9239ad03c38ec2e71fb80537041f5def7854720fdebb123159805257593da4cc4397923a6615c7d48be26c'
+            'a70622fa9ead15a33686240e170d5f7a792109c59aedb158ad829eac297f2b5199c7aed84ca2be5afa0d83e7b5fa706848a0c3cca2a30e244e7babc456cc27f3'
+            '3ae528766792f2a5e98bbccb64015353af3724cbcb153553d78a5a26fc3cbcaf83e19907f7a8246b32b75f1858f5e409f30d1dfa758a22afa8ddafb63e16dcec'
+            '2b3023d4f0e8265b298aa2d8852ff32c7251f5ef2de8f009fc0c4c6c17260388e9d26d17cd196289acbe4a1f5a4045bd5838c3e63c8ed4a55d1bb61438a95b03'
+            '68dde1b78870e5f450fc5c1419c86cee7e246a854f881d5d58d32f6c6f91405dec3cb0fcf32efb0d8a0ee4958e831f47ff3f624fedfd2d6a3477b67a31c083bb')
 
 # Skip "LICENSE.html" and "OSS-LICENSES.html" files hashes as they are unstable
 # Since "updpkgsums"/"pkgctl version upgrade" overwrite the checksum array with
