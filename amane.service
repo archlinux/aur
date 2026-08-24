@@ -1,0 +1,20 @@
+[Unit]
+Description=Amane Server
+Documentation=https://sqzw-x.github.io/amane/
+After=network.target
+
+[Service]
+User=amane
+Restart=always
+EnvironmentFile=/etc/conf.d/amane
+Environment=AMANE_WEB_DIST=/usr/share/amane/web/dist
+Environment=AMANE_DATA_DIR=/var/lib/amane
+Environment=AMANE_LOG_DIR=/var/log/amane
+Environment=UV_PROJECT_ENVIRONMENT=/var/lib/amane/.venv
+Environment=PATH=/usr/bin:/var/lib/amane/.venv/bin
+WorkingDirectory=/usr/share/amane
+ExecStartPre=/usr/bin/uv sync --python=/usr/bin/python --frozen --no-cache --no-dev --no-editable
+ExecStart=/var/lib/amane/.venv/bin/python -m amane.server
+
+[Install]
+WantedBy=multi-user.target

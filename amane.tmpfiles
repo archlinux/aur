@@ -1,0 +1,2 @@
+d /var/lib/amane 0755 amane amane -
+d /var/log/amane 0755 amane amane -
