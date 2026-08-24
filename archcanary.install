@@ -1,0 +1,55 @@
+post_install() {
+  # Seed Lynis's false-positive-suppression profile, but only if lynis is
+  # actually installed and the target has no custom.prf of its own yet —
+  # mirrors install.sh's runtime check, which package() cannot do at build time.
+  if command -v lynis &>/dev/null && [[ ! -f /etc/lynis/custom.prf ]]; then
+    install -Dm644 /usr/lib/archcanary/lynis-custom.prf /etc/lynis/custom.prf
+    echo "  installed: /etc/lynis/custom.prf (Lynis false-positive suppressions — edit to enable)"
+  fi
+
+  # Seed auditd rules, same way, only if auditd is installed and the target
+  # has no ruleset yet — mirrors install.sh's runtime check, which package()
+  # cannot do at build time. Already root here, no sudo needed.
+  if command -v auditctl &>/dev/null; then
+    _audit_cfg=/etc/audit/rules.d/30-archcanary.rules
+    install -d -m 755 /etc/audit/rules.d
+    rm -f /etc/audit/rules.d/30-archcanary.conf /etc/audit/rules.d/archcanary.conf
+    if ! grep -qE '^\s*-[waAbfe]' "$_audit_cfg" 2>/dev/null; then
+      install -m 644 /usr/lib/archcanary/audit-rules.conf "$_audit_cfg"
+      augenrules --load >/dev/null 2>&1 || true
+      echo "  installed: $_audit_cfg (auditd rules — edit via GUI)"
+    fi
+    unset _audit_cfg
+  fi
+
+  echo ""
+  echo "==> archcanary installed."
+  echo ""
+  echo "  Enable the automated system scan (runs as root — weekly + on boot + after pacman):"
+  echo "    sudo systemctl enable --now archcanary.timer archcanary.path"
+  echo ""
+  echo "  Enable the user-scope scan and result notifier (run as your user):"
+  echo "    systemctl --user enable --now archcanary-user.timer archcanary-notify.path"
+  echo ""
+  echo "  Optional, machine-wide: weekly scan of every other real local user's"
+  echo "  home too, not just yours (see --scan-all-homes) — off by default:"
+  echo "    sudo systemctl enable --now archcanary-scan-all-homes.timer"
+  echo ""
+  echo "  Run a manual full scan:"
+  echo "    archcanary --refresh --full"
+  echo ""
+  echo "  This package installs the system-wide pieces (binaries, systemd units,"
+  echo "  polkit policy, /etc allowlists). Per-user setup can't be done from here"
+  echo "  since it has to run as YOUR user, not the pacman transaction — run:"
+  echo "    archcanary --doctor"
+  echo "  to see exactly what's still missing (yay hooks, lynis)"
+  echo "  and the precise command to fix each one."
+  echo ""
+  echo "  Optional add-ons: lynis (hardening auditor)."
+  echo "  See: https://github.com/musqz/archcanary"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
