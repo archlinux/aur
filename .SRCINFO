@@ -1,6 +1,6 @@
 pkgbase = graphify
 	pkgdesc = AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph
-	pkgver = 0.9.48
+	pkgver = 0.9.49
 	pkgrel = 1
 	url = https://github.com/Graphify-Labs/graphify
 	arch = any
@@ -64,17 +64,11 @@ pkgbase = graphify
 	optdepends = python-jieba: Chinese text segmentation for the MCP search server
 	optdepends = python-psycopg: PostgreSQL schema introspection backend
 	optdepends = python-yaml: APM manifest parsing support
-	optdepends = python-starlette: HTTP server transport support
-	optdepends = python-falkordb: FalkorDB export support
-	optdepends = python-psycopg: PostgreSQL storage support
-	optdepends = python-jieba: Chinese text segmentation support
-	optdepends = python-tree-sitter-pascal: Pascal indexing support
 	optdepends = python-tree-sitter-dm: DM language indexing support
-	optdepends = python-tree-sitter-hcl: Terraform/HCL indexing support
 	optdepends = python-tree-sitter-ocaml: OCaml indexing support
 	provides = graphifyy
 	conflicts = graphifyy
-	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.9.48.tar.gz
-	sha256sums = 14eaac83804866940ccb34491ca69ab62b2b51e346f88356c5211a3d8cd5e41e
+	source = https://files.pythonhosted.org/packages/source/g/graphifyy/graphifyy-0.9.49.tar.gz
+	sha256sums = 3b2e964bf73b0911e95c02eca6ac10e248889f31d3da6796816a590448feae2e
 
 pkgname = graphify

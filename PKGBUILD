@@ -2,7 +2,7 @@
 
 pkgname=graphify
 _name=graphifyy
-pkgver=0.9.48
+pkgver=0.9.49
 pkgrel=1
 pkgdesc="AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph"
 arch=('any')
@@ -67,13 +67,7 @@ optdepends=(
     'python-jieba: Chinese text segmentation for the MCP search server'
     'python-psycopg: PostgreSQL schema introspection backend'
     'python-yaml: APM manifest parsing support'
-    'python-starlette: HTTP server transport support'
-    'python-falkordb: FalkorDB export support'
-    'python-psycopg: PostgreSQL storage support'
-    'python-jieba: Chinese text segmentation support'
-    'python-tree-sitter-pascal: Pascal indexing support'
     'python-tree-sitter-dm: DM language indexing support'
-    'python-tree-sitter-hcl: Terraform/HCL indexing support'
     'python-tree-sitter-ocaml: OCaml indexing support'
 )
 
@@ -88,7 +82,7 @@ provides=("${_name}")
 conflicts=("${_name}")
 
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('14eaac83804866940ccb34491ca69ab62b2b51e346f88356c5211a3d8cd5e41e')
+sha256sums=('3b2e964bf73b0911e95c02eca6ac10e248889f31d3da6796816a590448feae2e')
 
 build() {
     cd "${_name}-${pkgver}"
