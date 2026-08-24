@@ -2,7 +2,7 @@
 
 pkgname=ardali-browser
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Qt/C++ desktop browser with integrated privacy and media tools"
 arch=('x86_64')
 url="https://github.com/Muhammed-Dali/ArDali-Browser"
@@ -11,6 +11,7 @@ depends=(
   'ffmpeg'
   'openssl'
   'qt6-base'
+  'qt6-imageformats'
   'qt6-svg'
   'qt6-webengine'
 )

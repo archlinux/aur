@@ -1,7 +1,7 @@
 pkgbase = ardali-browser
 	pkgdesc = Native Qt/C++ desktop browser with integrated privacy and media tools
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Muhammed-Dali/ArDali-Browser
 	arch = x86_64
 	license = GPL-3.0-only
@@ -12,6 +12,7 @@ pkgbase = ardali-browser
 	depends = ffmpeg
 	depends = openssl
 	depends = qt6-base
+	depends = qt6-imageformats
 	depends = qt6-svg
 	depends = qt6-webengine
 	provides = ardali
