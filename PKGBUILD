@@ -18,8 +18,27 @@ sha256sums=(
             '9351247b53d34dc584170c435512954b8eb1a69c7b3ff0bee43ce21264b8d467'
           )
 
-provides=(  
-        )
+provides=(
+        'ape'
+        'readelf'
+        'ar'
+        'cpp'
+        'c++filt'
+        'addr2line'
+        'elfedit'
+        'g++'
+        'cc'
+        'strip'
+        'nm'
+        'size'
+        'c++'
+        'objcopy'
+        'as'
+        'ld'
+        'objdump'
+        'ranlib'
+        'gcc'
+    )
 
 conflicts=('cosmopolitan-git' 'wine' 'wine-staging')
 options=(!strip)
