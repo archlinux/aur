@@ -1,6 +1,6 @@
 pkgname=gsd-pi
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful meta-prompting, context engineering and spec-driven development system that enables agents to work autonomously"
 arch=(x86_64)
 url="https://github.com/gsd-build/gsd-2"
