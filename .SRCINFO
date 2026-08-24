@@ -1,0 +1,18 @@
+pkgbase = wallpiper-cosmic-git
+	pkgdesc = COSMIC portal for wallpiper
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/shdwmtr/wallpiper
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = wayland
+	makedepends = wayland-protocols
+	depends = wallpiper-git
+	depends = wayland
+	provides = wallpiper-cosmic
+	conflicts = wallpiper-cosmic
+	source = wallpiper-cosmic-git::git+https://github.com/shdwmtr/wallpiper.git
+	sha256sums = SKIP
+
+pkgname = wallpiper-cosmic-git
