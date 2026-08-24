@@ -1,7 +1,7 @@
 pkgbase = e2e-cli
 	pkgdesc = Unified command line interface to manage E2E Networks cloud services
 	pkgver = 0.9.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/e2e-cli/
 	arch = any
 	license = LicenseRef-Unknown

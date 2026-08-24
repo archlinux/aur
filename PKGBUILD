@@ -2,7 +2,7 @@
 _pypiname=e2e_cli
 pkgname=e2e-cli
 pkgver=0.9.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Unified command line interface to manage E2E Networks cloud services"
 arch=('any')
 url="https://pypi.org/project/e2e-cli/"
@@ -32,6 +32,7 @@ build() {
 package() {
 	cd "$_pypiname-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
+	ln -s e2e_cli "$pkgdir/usr/bin/e2e-cli"
 	install -Dm644 e2e_cli/docs/e2e_cli.1 "$pkgdir/usr/share/man/man1/e2e_cli.1"
 	install -Dm644 "$srcdir/LICENSE-NOTICE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-NOTICE"
 }
