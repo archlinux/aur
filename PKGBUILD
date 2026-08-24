@@ -31,13 +31,13 @@ _package_helper() {
 pkgname+=("$pkgbase")
 package_lua-mobdebug-git() {
   depends=('lua' 'lua-socket')
-  provides=("${pkgname%-git}")
+  provides=("${pkgname%-git}=$pkgver")
   _package_helper 5.4
 }
 
 pkgname+=("${pkgbase/lua/lua53}")
 package_lua53-mobdebug-git() {
   depends=('lua53' 'lua53-socket')
-  provides=("${pkgname%-git}")
+  provides=("${pkgname%-git}=$pkgver")
   _package_helper 5.3
 }
