@@ -1,0 +1,19 @@
+pkgbase = autoroute
+	pkgdesc = Persistent PipeWire routing manager — routing rules that survive app relaunches
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/SimplyJustJessie/AutoRoute
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	depends = pipewire
+	depends = wireplumber
+	depends = libpulse
+	depends = dotnet-runtime-10.0
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	options = !strip
+	source = autoroute-0.4.0.tar.gz::https://github.com/SimplyJustJessie/AutoRoute/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 3e5aca89b6577b0e28c343d88c1a22d6c0232d49db0aacd510c2fcaac19d26b8
+
+pkgname = autoroute
