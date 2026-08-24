@@ -1,0 +1,15 @@
+pkgbase = timbre-bin
+	pkgdesc = A music manager to finally solve this mess of music management
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitea.owendeed.com/Toasterkitten/timbre
+	arch = x86_64
+	license = Unlicense
+	depends = cdparanoia
+	depends = flac
+	provides = timbre
+	conflicts = timbre
+	source = timbre-0.1.0::https://gitea.owendeed.com/Toasterkitten/timbre/releases/download/v0.1.0/timbre
+	sha256sums = 7c351182b242d36bd9a4d7c89853ba80ed425a666b69a4fbed74efa5a8c26a8b
+
+pkgname = timbre-bin
