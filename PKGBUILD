@@ -2,7 +2,7 @@
 
 pkgname=reolink-cli-bin
 _pkgname=reolink-cli
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="The CLI for devices manufactured by Reolink"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ conflicts=('reolink-cli' 'reolink-gateway')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-external-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-external-linux-arm64.tar.gz")
-sha256sums_x86_64=('a976fff4579b96123b0cf20acee63e55f28d609a4d16a247df8a8f6929e57d63')
-sha256sums_aarch64=('acc3c663c2ab43670140775571cc5c66a7217be070831d50278f62ed439ad48b')
+sha256sums_x86_64=('e5c7faed434439eca7852826a21cd759fd33a443a7ea9442e6b2cfd34a023899')
+sha256sums_aarch64=('7888131a8138d38b706785c3e41192fa2bb4f8953270b09ca161f4c8019af1da')
 
 package() {
   local _arch=x86_64
