@@ -7,7 +7,7 @@
 # Contributor: Erez Raviv (erezraviv@gmail.com)
 
 pkgname=chirp-next
-pkgver=20260814
+pkgver=20260821
 pkgrel=1
 epoch=1
 pkgdesc="GUI tool for programming ham radios"
@@ -16,15 +16,18 @@ url="https://chirpmyradio.com/projects/chirp/wiki/Home"
 license=('GPL-3.0-or-later')
 depends=('python-pyserial' 'python-requests' 'python-suds'
          'python-yattag' 'python-wxpython' 'python-lark-parser')
-optdepends=('hamradio-menus: XDG menus for ham radio software')
+optdepends=(
+        'hamradio-menus: XDG menus for ham radio software'
+        'ipython: enhanced interactive developer shell'
+)
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-options=(!emptydirs)
-conflicts=('chirp' 'chirp-daily')
+options=(!emptydirs !debug)
+conflicts=('chirp' 'chirp-daily' 'chirp-next-bin')
 provides=(chirp)
 install=$pkgname.install
 source=("https://github.com/GaryScottMartin/chirp-next-mirror/releases/download/${pkgver}/chirp-${pkgver}.tar.gz")
 # Checksums: https://github.com/GaryScottMartin/chirp-next-mirror/releases/download/20260814/checksums.txt
-sha256sums=('1a315df9268f766f7e47424c9edadde29854928c2d78a962449814cc833efe3b')
+sha256sums=('2dc1c30ceecffcc6373b8edb4028831467279b399ff755e84b12f49d24fa6050')
 
 # User-Agent override workaround for nitpicky Cloudflare config; see:
 # https://wiki.archlinux.org/title/Nonfree_applications_package_guidelines#Custom_DLAGENTS
