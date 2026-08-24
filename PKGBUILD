@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-uecups
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Osmocom UE simulation control/user plane separation"
 url="https://osmocom.org/projects/osmo-uecups/wiki"
@@ -10,12 +10,12 @@ license=('GPL-2.0-or-later')
 depends=('jansson'
          'libnl'
          'lksctp-tools'
-         'libosmocore'
-         'libosmo-netif')
+         'libosmocore>=1.14.2'
+         'libosmo-netif>=1.8.0')
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-uecups-daemon.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('c7b73fb631a8cb58eac045b695f98df19c61f8f8d441573db3bd2a606b985a1f')
+sha256sums=('672faf64882573b168a0989ff64762d1528160f28180022ce99c8b580cd69e42')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
