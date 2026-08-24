@@ -3,7 +3,7 @@ _pkgbase=tosu-overlay
 
 pkgname=${_pkgbase}-git
 pkgdesc="Overlay for osu! Powered by tosu, qt6, qt6-webengine and layer-shell-qt"
-pkgver=2.1.1.r0.g2345251
+pkgver=2.1.1.r22.g72c55b7
 pkgrel=1
 url="https://github.com/K4zoku/tosu-overlay-qt"
 arch=('x86_64')
