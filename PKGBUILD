@@ -30,8 +30,15 @@ sha256sums=(
 )
 
 package() {
-  # 资产本身就是完整包布局（usr/bin/octa-term + LICENSE），直接解进 pkgdir
+  # 资产是完整包布局，但内部 pkgname 是 octa-term：
+  # 解到临时目录后按本包名重新安装，LICENSE 必须落在
+  # /usr/share/licenses/octa-term-bin/（namcap E 级要求）
+  local extracted="${srcdir}/extracted"
+  mkdir -p "${extracted}"
   bsdtar -xf "${srcdir}/octa-term-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" \
-    -C "${pkgdir}" \
+    -C "${extracted}" \
     --exclude '.BUILDINFO' --exclude '.MTREE' --exclude '.PKGINFO'
+  install -Dm755 "${extracted}/usr/bin/octa-term" "${pkgdir}/usr/bin/octa-term"
+  install -Dm644 "${extracted}/usr/share/licenses/octa-term/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
