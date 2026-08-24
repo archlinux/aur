@@ -1,0 +1,16 @@
+pkgbase = wallpiper-hyprland
+	pkgdesc = Hyprland portal for wallpiper
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shdwmtr/wallpiper
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = wayland
+	makedepends = wayland-protocols
+	depends = wallpiper
+	depends = wayland
+	source = wallpiper-hyprland::git+https://github.com/shdwmtr/wallpiper.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = wallpiper-hyprland
