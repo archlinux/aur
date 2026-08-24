@@ -1,7 +1,7 @@
 # Maintainer: NewYearPrism
 
-_ggml_version=0.20.0
-_ggml_sha256sum=85bdb8c38cf9e3074177713e34add52e57c1d310239de864e627d429dea3b51a
+_ggml_version=0.21.0
+_ggml_sha256sum=3b0d4f1fe7c278824d4bb753b7402733576985689bd40e9cc719eca627131d24
 pkgname=ggml-vulkan-backend
 pkgver=${_ggml_version}
 pkgrel=1
@@ -24,7 +24,6 @@ depends=(
 makedepends=(
     cmake
     ninja
-    patch
     shaderc
     spirv-headers
     vulkan-headers
@@ -35,17 +34,13 @@ options=(
 )
 source=(
     "ggml-${_ggml_version}.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v${_ggml_version}.tar.gz"
-    ggml-use-system-base.patch
 )
 sha256sums=(
     ${_ggml_sha256sum}
-    78bb5e4a55846ac3627e7cb7c74ef28edd1e2b541b16c8189f2e4591953dea90
 )
 
 prepare() {
   ln -sf "ggml-${_ggml_version}" ggml
-  patch -Np1 -d ggml -i "$srcdir/ggml-use-system-base.patch"
-  rm -rf ggml/include/
 }
 
 build() {
@@ -75,7 +70,6 @@ build() {
     -DGGML_BUILD_TESTS=OFF
     -DGGML_BUILD_EXAMPLES=OFF
     -DGGML_CPU=OFF
-    -DGGML_USE_SYSTEM_BASE=ON
   )
 
   _cmake_options+=(
@@ -96,6 +90,8 @@ build() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
-  install -Dm644 "ggml/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    for lib in build/bin/*; do
+        install -Dm644 $lib "${pkgdir}/usr/lib/ggml/backends/$(basename $lib)"
+    done
+    install -Dm644 "ggml/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
