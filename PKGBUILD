@@ -6,7 +6,7 @@
 
 _pkgname="odamex"
 pkgname="$_pkgname"
-pkgver="12.2.1"
+pkgver=12.3.0
 pkgrel=1
 pkgdesc='A free client/server multiplayer engine for the classic FPS Doom'
 url="https://github.com/odamex/odamex"
@@ -41,7 +41,7 @@ optdepends=(
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=$pkgver")
-sha256sums=('4acd5ac164c0371774e9c179db4c8c32560c6825f543fd0ac094c075f070e638')
+sha256sums=('bf99febdb0daa6a56679230d21f830c4efb6c4b83f1fc1531fe663d225499c9f')
 
 prepare() {
   cd "$_pkgsrc"
@@ -69,7 +69,7 @@ build() {
     -DCMAKE_BUILD_TYPE=None
     -DCMAKE_INSTALL_PREFIX='/usr'
     -DBUILD_TESTING=OFF
-    -Wno-dev
+    -Wno-author
 
     -DBUILD_OR_FAIL=ON
     -DBUILD_TESTS=OFF
