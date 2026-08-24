@@ -1,0 +1,22 @@
+pkgbase = tldr-pages-git
+	pkgdesc = The actual tldr pages. Currently compatible only with the python client
+	pkgver = 2.3.r6598.g17d7177
+	pkgrel = 1
+	url = https://github.com/tldr-pages/tldr
+	arch = any
+	license = CC-BY-4.0
+	makedepends = git
+	optdepends = tldr: client for using the pages
+	provides = tldr-pages
+	conflicts = tldr-pages
+	options = !strip
+	options = !debug
+	options = libtool
+	options = !purge
+	options = !zipman
+	options = emptydirs
+	options = staticlibs
+	source = git+https://github.com/tldr-pages/tldr.git
+	sha256sums = SKIP
+
+pkgname = tldr-pages-git
