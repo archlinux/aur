@@ -1,6 +1,6 @@
 pkgbase = zx_go
 	pkgdesc = A ZX Spectrum emulator written in Go
-	pkgver = 1.11.0
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/conorarmstrong/zx_go
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = zx_go
 	depends = libx11
 	depends = alsa-lib
 	depends = opengl-driver
-	source = zx_go-1.11.0.tar.gz::https://github.com/conorarmstrong/zx_go/archive/refs/tags/v1.11.0.tar.gz
-	sha256sums = 9744ad52b78b943391bb43cad481aff63acf13dcbbf3c095019454960386fa00
+	source = zx_go-1.12.0.tar.gz::https://github.com/conorarmstrong/zx_go/archive/refs/tags/v1.12.0.tar.gz
+	sha256sums = b96c6f8edc3b5b53dbebb871a4b73c391688d13dea78339a8f2149ac0493996f
 
 pkgname = zx_go
