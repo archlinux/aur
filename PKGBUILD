@@ -1,6 +1,6 @@
 # Maintainer: archledger <archledger236@gmail.com>
 pkgname=irlume
-pkgver=0.11.0
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Face authentication for Linux with head-gesture consent and passive PAD"
 arch=('x86_64')
@@ -106,6 +106,11 @@ package() {
     install -Dm0644 packaging/systemd/irlume-reconcile.path "$pkgdir/usr/lib/systemd/system/irlume-reconcile.path"
     install -Dm0644 packaging/systemd/irlume-reconcile.service "$pkgdir/usr/lib/systemd/system/irlume-reconcile.service"
     install -Dm0644 packaging/systemd/irlume-reconcile.timer "$pkgdir/usr/lib/systemd/system/irlume-reconcile.timer"
+    # tmpfiles.d: the setgid root:video lock directory for the IR-emitter
+    # exclusion locks (#542). The daemon's bounding set has no CAP_CHOWN, so
+    # the group must be inherited at creation, not corrected in-process.
+    # irlume.install applies it before any daemon start.
+    install -Dm0644 packaging/tmpfiles.d/irlume.conf "$pkgdir/usr/lib/tmpfiles.d/irlume.conf"
     # AppArmor profile for the daemon. Arch does not run AppArmor by default, so
     # it sits inert unless the user boots with `lsm=...,apparmor`; irlume.install
     # loads it only when apparmor_parser is present. The profile confines the

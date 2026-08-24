@@ -1,5 +1,9 @@
 post_install() {
     systemctl daemon-reload
+    # Create the setgid lock directory (#542) BEFORE the daemon starts: the
+    # first lock the daemon creates sets the group it will keep, and a fresh
+    # install has had no boot to apply the tmpfiles.d rule yet.
+    systemd-tmpfiles --create irlume.conf || true
     # Load the AppArmor profile before the daemon starts, but only if this box
     # actually runs AppArmor (Arch does not by default). apparmor_parser is
     # absent unless the user opted in, so this is a no-op on a stock install.
@@ -31,6 +35,9 @@ EOF
 
 post_upgrade() {
     systemctl daemon-reload
+    # Apply the tmpfiles.d rule on upgrade too (#542): the dir may not exist
+    # yet, and the restarted daemon below must find it group-video setgid.
+    systemd-tmpfiles --create irlume.conf || true
     if command -v apparmor_parser >/dev/null 2>&1; then
         apparmor_parser -r /etc/apparmor.d/usr.bin.irlumed 2>/dev/null || true
     fi

@@ -1,6 +1,6 @@
 pkgbase = irlume
 	pkgdesc = Face authentication for Linux with head-gesture consent and passive PAD
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/archledger/irlume
 	install = irlume.install
@@ -14,7 +14,7 @@ pkgbase = irlume
 	depends = tpm2-tss
 	depends = pam
 	optdepends = fprintd: fingerprint companion factor
-	source = git+https://github.com/archledger/irlume.git#tag=v0.11.0
+	source = git+https://github.com/archledger/irlume.git#tag=v0.11.1
 	source = glintr100.onnx::https://github.com/archledger/irlume/releases/download/models-v1/glintr100.onnx
 	source = face_detection_yunet_2023mar.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_detection_yunet_2023mar.onnx
 	source = face_landmark.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_landmark.onnx
