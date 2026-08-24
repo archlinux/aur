@@ -1,7 +1,7 @@
 # Maintainer: Muhammed Dali <support@ardali.app>
 
 pkgname=ardali
-pkgver=6.0.1
+pkgver=6.1.2
 pkgrel=1
 pkgdesc="ArDali Browser native binary package"
 arch=('x86_64')
@@ -19,7 +19,7 @@ provides=('ardali-browser' 'ardali-bin' 'ardali-webmedia')
 conflicts=('ardali-browser' 'ardali-bin' 'ardali-webmedia' 'aurivo-bin')
 replaces=('ardali-bin' 'ardali-webmedia')
 source=("ardali-browser-${pkgver}-linux-x86_64.tar.zst::https://github.com/Muhammed-Dali/ArDali-Browser/releases/download/v${pkgver}/ardali-browser-${pkgver}-linux-x86_64.tar.zst")
-sha256sums=('ba0a28a84ffe94369c4c769b758dd43888ca6e216f4d29f472f2d009cde9813d')
+sha256sums=('875abcb74cf0a08ba54c08240c26bdc70f11607880bbca7d13a63b31773bbd38')
 
 package() {
   install -dm755 "${pkgdir}/usr"
