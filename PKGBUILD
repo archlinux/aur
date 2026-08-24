@@ -1,10 +1,10 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=survivalAnalysis
-_pkgver=0.3.0
+_pkgver=0.4.0
 pkgname=r-${_pkgname,,}
-pkgver=0.3.0
-pkgrel=1
+pkgver=0.4.0
+pkgrel=2
 pkgdesc='High-Level Interface for Survival Analysis and Associated Plots'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -31,8 +31,8 @@ optdepends=(
   r-rmarkdown
   r-tidyverse
 )
-source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('eef98a2d2517c3367b89f6054ef1ba19302f5bbf819dbc17fb243d282b8c8c68')
+source=("https://cran.r-project.org/src/contrib/Archive/${_pkgname}/${_pkgname}_${_pkgver}.tar.gz")
+sha256sums=('2b4cedf72f33cb55f7845f940459aef5d0028b0526e8ff3da3ae06f178b954a8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
