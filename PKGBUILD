@@ -20,12 +20,12 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=2d38da4d11be1e0e615f4ddd785ad5e77c95e18d} # daily-998
+: ${_runtime_commit:=fee63112daf6ca7130c71997ce56fe381cdffcca} # daily-1039
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.16.4
-pkgrel=2
+pkgver=12.17.0
+pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
 license=('MPL-2.0')
@@ -120,14 +120,12 @@ source=(
   "$_pkgname-runtime-${_runtime_commit::7}.$_pkgext"::"https://github.com/Floorp-Projects/Floorp-Runtime/archive/$_runtime_commit.$_pkgext"
   "floorp-projects.floorp-core"::"git+https://github.com/Floorp-Projects/Floorp-core.git"
   "$_pkgname.desktop"
-  '0002-Bug-2057577-DOM-Media-Add-FFmpeg-63-support.-r-alwu-.patch'
 )
 sha256sums=(
-  'f2ae22d907426351454e4d486c716710ac7cac438bffe103aecacd622df407c8'
+  'c9bffdbba8aa705bb2f23a195cfd6d73c0edf9c71c1fb0bb65034e882801af5b'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
-  '55aeec4d098990e91f881de32126ea91576b0d185e322b561241c513ea5b9fcd'
 )
 
 _deno() {
