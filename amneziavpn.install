@@ -2,7 +2,7 @@ _appname=AmneziaVPN
 _srvname=AmneziaVPN.service
 
 pre_install() {
-  killall -9 $_appname
+  killall -9 $_appname 2>/dev/null || true
 }
 
 post_install() {
@@ -10,7 +10,7 @@ post_install() {
 }
 
 pre_upgrade() {
-  killall -9 $_appname
+  killall -9 $_appname 2>/dev/null || true
 }
 
 post_upgrade() {
@@ -21,6 +21,6 @@ post_upgrade() {
 }
 
 pre_remove() {
-  killall -9 $_appname
+  killall -9 $_appname 2>/dev/null || true
   systemctl disable --now $_srvname
 }
