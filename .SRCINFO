@@ -1,6 +1,6 @@
 pkgbase = sinq-bin
 	pkgdesc = A concurrent HTTP functional and integration testing tool.
-	pkgver = 1.0.0_rc.27
+	pkgver = 1.0.0_rc.28
 	pkgrel = 1
 	url = https://github.com/Veitangie/sinq
 	license = GPL-3.0-or-later
@@ -8,10 +8,10 @@ pkgbase = sinq-bin
 	conflicts = sinq-git
 	provides = sinq
 	arch = aarch64
-	source_aarch64 = https://github.com/Veitangie/sinq/releases/download/v1.0.0-rc.27/sinq-1.0.0-rc.27-linux-arm64.tar.gz
-	sha256sums_aarch64 = 16bb35c6c327d68fc493f3b57bf738ab7324ea87e436ef0c2285c1197789fb8d
+	source_aarch64 = https://github.com/Veitangie/sinq/releases/download/v1.0.0-rc.28/sinq-1.0.0-rc.28-linux-arm64.tar.gz
+	sha256sums_aarch64 = 74ae8cdb9fd0d3d1ab0c50d29995d5186a5cc3bb2249b3c6a47fbf17fdfc78f0
 	arch = x86_64
-	source_x86_64 = https://github.com/Veitangie/sinq/releases/download/v1.0.0-rc.27/sinq-1.0.0-rc.27-linux-x86_64.tar.gz
-	sha256sums_x86_64 = e4a04f452bfcb80c95e261f8bce3ee8dfc73ce6f203c20cd8f001e524e6d7fd9
+	source_x86_64 = https://github.com/Veitangie/sinq/releases/download/v1.0.0-rc.28/sinq-1.0.0-rc.28-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 941058581f7bc75ed947c827fc113da69468cae0803e9db363ae616af591a3d9
 	
 pkgname = sinq-bin
