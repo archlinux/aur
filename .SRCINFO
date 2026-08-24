@@ -1,0 +1,22 @@
+pkgbase = codenomad-tauri-bin
+	pkgdesc = The AI Coding Cockpit for OpenCode (Tauri-based)
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/NeuralNomadsAI/CodeNomad
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	optdepends = libayatana-appindicator: tray icon support
+	optdepends = xdg-desktop-portal: desktop integration
+	provides = codenomad
+	conflicts = codenomad
+	conflicts = codenomad-git
+	conflicts = codenomad-bin
+	options = !debug
+	options = !strip
+	source_x86_64 = codenomad-tauri-bin-0.19.0.deb::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v0.19.0/CodeNomad-Tauri-linux-x64-0.19.0.deb
+	sha256sums_x86_64 = 81e197cea79248f0025c14387802cd678a98d110900696c660714014b2629bfb
+
+pkgname = codenomad-tauri-bin
