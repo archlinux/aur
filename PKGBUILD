@@ -16,7 +16,7 @@ url='https://github.com/cublueer/octa-term'
 license=('MIT')
 options=('!lto' '!debug')
 export LC_ALL=C.UTF-8
-depends=('octave' 'gcc-libs' 'glibc')
+depends=('octave' 'libgcc' 'glibc')
 makedepends=('cargo' 'git')
 optdepends=(
   'fish: fish shell integration (Enter 劫持、多行矩阵、自动续行)'
