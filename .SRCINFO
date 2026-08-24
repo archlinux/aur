@@ -5,7 +5,6 @@ pkgbase = medict-bin
 	url = https://github.com/terasum/medict
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = gendesk
 	depends = gtk3
 	provides = medict=3.1.13
 	conflicts = medict

@@ -12,9 +12,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     'gtk3'
 )
-makedepends=(
-    'gendesk'
-)
 source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_${CARCH}.tar.gz"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/terasum/medict/v${pkgver}/build/assets/darwin/appicon.png"
