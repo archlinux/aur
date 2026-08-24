@@ -1,7 +1,7 @@
 # Maintainer: @aardbol
 pkgname=codenomad-tauri-bin
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The AI Coding Cockpit for OpenCode (Tauri-based)'
 arch=('x86_64')
 url='https://github.com/NeuralNomadsAI/CodeNomad'
@@ -14,6 +14,7 @@ depends=(
 optdepends=(
   'libayatana-appindicator: tray icon support'
   'xdg-desktop-portal: desktop integration'
+  'opencode: the open source coding agent'
 )
 provides=('codenomad')
 conflicts=('codenomad' 'codenomad-git' 'codenomad-bin')

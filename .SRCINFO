@@ -1,7 +1,7 @@
 pkgbase = codenomad-tauri-bin
 	pkgdesc = The AI Coding Cockpit for OpenCode (Tauri-based)
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NeuralNomadsAI/CodeNomad
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = codenomad-tauri-bin
 	depends = webkit2gtk-4.1
 	optdepends = libayatana-appindicator: tray icon support
 	optdepends = xdg-desktop-portal: desktop integration
+	optdepends = opencode: the open source coding agent
 	provides = codenomad
 	conflicts = codenomad
 	conflicts = codenomad-git
