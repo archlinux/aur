@@ -37,7 +37,7 @@ sha256sums_x86_64=('2cca53f772a00358da466ec6a1627c5b6a5be3884fe8f2c001137ef9876c
 package() {
 	cd "${pkgdir}/" || exit
 
-    tar -xf "${srcdir}/data.tar.gz"
+	tar -xf "${srcdir}/data.tar.gz"
 
 	install -Dm644 "${srcdir}/README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
