@@ -1,0 +1,66 @@
+--- a/drivers/aic8800/aic8800_fdrv/rwnx_main.c
++++ b/drivers/aic8800/aic8800_fdrv/rwnx_main.c
+@@ -4157,7 +4157,11 @@
+ static int
+ rwnx_cfg80211_remain_on_channel(struct wiphy *wiphy, struct wireless_dev *wdev,
+ 								struct ieee80211_channel *chan,
+-								unsigned int duration, u64 *cookie)
++								unsigned int duration, u64 *cookie
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++								, const u8 *rx_addr
++#endif
++								)
+ {
+ 	return rwnx_cfg80211_remain_on_channel_(wiphy, wdev, chan, duration, cookie, false);
+ }
+--- a/drivers/aic8800/aic8800_fdrv/rwnx_msg_tx.c
++++ b/drivers/aic8800/aic8800_fdrv/rwnx_msg_tx.c
+@@ -3663,7 +3663,7 @@
+ 		return -ENOMEM;
+ 
+ 	/* Set parameters for the MM_DBG_TRIGGER_REQ message */
+-	strncpy(req->error, msg, sizeof(req->error));
++	strscpy(req->error, msg, sizeof(req->error));
+ 
+ 	/* Send the MM_DBG_TRIGGER_REQ message to LMAC FW */
+ 	return rwnx_send_msg(rwnx_hw, req, 0, -1, NULL);
+--- a/drivers/aic8800/aic8800_fdrv/rwnx_platform.c
++++ b/drivers/aic8800/aic8800_fdrv/rwnx_platform.c
+@@ -1263,7 +1263,7 @@
+ 		p--;
+ 
+ 	p++;
+-	strncpy(val, dst, p -dst);
++	memcpy(val, dst, p - dst);
+ 	val[p - dst] = 0;
+ 	return 0;
+ }
+@@ -2763,7 +2763,7 @@
+     if (c == '\0')
+         return 0;
+     j = (*Start) - 2;
+-    strncpy((char *)Out, (const char *)(In + i), j - i + 1);
++    memcpy((char *)Out, (const char *)(In + i), j - i + 1);
+     return 1;
+ }
+ 
+@@ -2975,7 +2975,7 @@
+ 					goto exit;
+ 				}
+ 
+-				strncpy(reg_name[forCnt], szLine + i_cc, i - i_cc);
++				memcpy(reg_name[forCnt], szLine + i_cc, i - i_cc);
+ 				reg_name[forCnt][i - i_cc] = '\0';
+ 				AICWFDBG(LOGDEBUG, "reg_name: %s\n", reg_name[forCnt]);
+ 
+--- a/drivers/aic8800/aic8800_fdrv/rwnx_fw_dump.c
++++ b/drivers/aic8800/aic8800_fdrv/rwnx_fw_dump.c
+@@ -537,7 +537,7 @@
+ 
+     BUILD_BUG_ON(sizeof(CONFIG_RWNX_UM_HELPER_DFLT) >=
+                  sizeof(rwnx_debugfs->helper_cmd));
+-    strncpy(rwnx_debugfs->helper_cmd,
++    strscpy(rwnx_debugfs->helper_cmd,
+             CONFIG_RWNX_UM_HELPER_DFLT, sizeof(rwnx_debugfs->helper_cmd));
+     INIT_WORK(&rwnx_debugfs->helper_work, rwnx_um_helper_work);
+     DEBUGFS_ADD_FILE(um_helper, dir_drv, S_IWUSR | S_IRUSR);
