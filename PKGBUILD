@@ -1,7 +1,7 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 pkgname=topcat
-pkgver=4.10.7
-_pkgver=4.10-7
+pkgver=4.10.8
+_pkgver=4.10-8
 pkgrel=1
 pkgdesc="Tool for OPerations on Catalogues And Tables"
 arch=('any')
@@ -12,7 +12,7 @@ noextract=('topcat-full.jar')
 source=("topcat-full-${pkgver}.jar::https://www.star.bristol.ac.uk/mbt/releases/topcat/v${_pkgver}/topcat-full.jar"
         "https://raw.githubusercontent.com/Starlink/starjava/master/topcat/src/docs/tclogo.svg"
         "topcat" "topcat.desktop")
-md5sums=('54872bbfa8e1e4428c58f3ddb9ac4527'
+md5sums=('8edadd8a0b975cb944fedd385d52ae84'
          'a8df7717765aa85d16dfbf296ea8d76e'
          '5f2df6a05c72b5641bf6a2b1c29173ed'
          '61d8176524b9f40b58b839b8c72a23de')
