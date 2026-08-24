@@ -1,0 +1,29 @@
+pkgbase = qoder-ide-bin
+	pkgdesc = Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.25.1
+	pkgrel = 1
+	url = https://qoder.com/
+	arch = x86_64
+	license = LicenseRef-custom
+	depends = electron42
+	depends = libxkbfile
+	depends = nodejs
+	depends = python
+	optdepends = bash
+	optdepends = zsh
+	provides = qoder=1.25.1
+	provides = qoder-ide=1.25.1
+	conflicts = qoder
+	conflicts = qoder-ide
+	options = !emptydirs
+	options = !strip
+	source = qoder-ide-1.25.1.rpm::https://download.qoder.com/release/latest/qoder-ide_x86_64.rpm
+	source = LICENSE.html
+	source = qoder-ide.js
+	source = qoder-ide.sh
+	sha256sums = e08732f05a64c11ec0120756a70a6c92cff486351799cad21cc36290b6847b1b
+	sha256sums = d93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61
+	sha256sums = cbeb2e78d46c0cbe8793e7a2c06bd339e3ed9dca5f0ae1196281b8d2cf60c4c5
+	sha256sums = 700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599
+
+pkgname = qoder-ide-bin
