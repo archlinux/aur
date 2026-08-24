@@ -1,6 +1,6 @@
 pkgbase = webhid
 	pkgdesc = WebHID implementation for Firefox via a native-messaging bridge and hidraw daemon
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/K4zoku/FF-WebHID
 	install = webhid.install
@@ -14,7 +14,7 @@ pkgbase = webhid
 	optdepends = webhid-addon: Firefox browser extension (system-wide install)
 	options = !lto
 	options = !debug
-	source = webhid::git+https://github.com/K4zoku/FF-WebHID.git#tag=v3.0.0
+	source = webhid::git+https://github.com/K4zoku/FF-WebHID.git#tag=v3.1.0
 	sha256sums = SKIP
 
 pkgname = webhid

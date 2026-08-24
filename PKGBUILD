@@ -6,7 +6,7 @@
 
 _pkgbase=webhid
 pkgname=${_pkgbase}
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='WebHID implementation for Firefox via a native-messaging bridge and hidraw daemon'
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ makedepends=('cargo' 'pkgconf' 'git')
 optdepends=('webhid-addon: Firefox browser extension (system-wide install)')
 install=webhid.install
 source=("${_pkgbase}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('fc2478fbfeab443e9bbed82714cc8b69e0cfda63c8fdbe001a4770dd89b8d43c')
 options=('!lto' '!debug')
 
 prepare() {
@@ -27,23 +27,46 @@ prepare() {
 }
 
 build() {
-    make -C "$srcdir/${_pkgbase}" build CARGO_ARGS=--frozen
+    cd "$srcdir/${_pkgbase}"
+    cargo build --release --frozen \
+        --manifest-path crates/Cargo.toml
+}
+
+_browser_forks=(librewolf waterfox)
+
+_install_browser_forks() {
+    local _src="$1" _dest="$2" _root
+    for _root in "${_browser_forks[@]}"; do
+        install -Dm644 "$_src" "$pkgdir/usr/lib/$_root/$_dest"
+    done
 }
 
 package() {
     local _root="$srcdir/${_pkgbase}"
+    local _release="$_root/crates/target/release"
+    local _nm_dir="$pkgdir/usr/lib/mozilla/native-messaging-hosts"
 
-    make -C "$_root" install-system DESTDIR="$pkgdir" \
-        PREFIX=/usr \
-        SYSTEMD_DIR=/usr/lib/systemd/system \
-        SYSTEM_NM_DIR=/usr/lib/mozilla/native-messaging-hosts
+    install -Dm755 "$_release/webhid-daemon" \
+        "$pkgdir/usr/bin/webhid-daemon"
+    install -Dm755 "$_release/webhid-native-messaging" \
+        "$pkgdir/usr/bin/webhid-native-messaging"
 
-    # Native-messaging manifest for other Gecko-based browsers
-    local _nm="$pkgdir/usr/lib/mozilla/native-messaging-hosts/webhid.forwarder_nm_host.json"
-    install -Dm644 "$_nm" \
-        "$pkgdir/usr/lib/librewolf/native-messaging-hosts/webhid.forwarder_nm_host.json"
-    install -Dm644 "$_nm" \
-        "$pkgdir/usr/lib/waterfox/native-messaging-hosts/webhid.forwarder_nm_host.json"
+    sed 's|{{NM_BIN}}|/usr/bin/webhid-native-messaging|g' \
+        "$_root/manifests/webhid.forwarder_nm_host.json" \
+        | install -Dm644 /dev/stdin "$_nm_dir/webhid.forwarder_nm_host.json"
+    sed 's|{{DAEMON_BIN}}|/usr/bin/webhid-daemon|g' \
+        "$_root/manifests/webhid.daemon_nm_host.json" \
+        | install -Dm644 /dev/stdin "$_nm_dir/webhid.daemon_nm_host.json"
+
+    sed 's|{{DAEMON_BIN}}|/usr/bin/webhid-daemon|g' \
+        "$_root/manifests/webhid-daemon.service" \
+        | install -Dm644 /dev/stdin \
+            "$pkgdir/usr/lib/systemd/system/webhid-daemon.service"
+
+    local _f
+    for _f in webhid.forwarder_nm_host.json webhid.daemon_nm_host.json; do
+        _install_browser_forks "$_nm_dir/$_f" "native-messaging-hosts/$_f"
+    done
 
     install -Dm644 "$_root/LICENSE" \
         "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
