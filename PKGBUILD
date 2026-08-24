@@ -4,33 +4,33 @@
 pkgname=zed-preview
 _pkgname=${pkgname%-preview}
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=(x86_64)
 url=https://zed.dev
 _url="https://github.com/zed-industries/$_pkgname"
 license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
-depends=(alsa-lib libasound.so
+depends=(alsa-lib
          curl
          fontconfig
          git
-         glib2 libgio-2.0.so libglib-2.0.so libgobject-2.0.so
+         glib2
          glibc # libc.so libm.so ld-linux-x86_64.so
-         libgcc libgcc_s.so
-         libstdc++ libstdc++.so
+         libgcc
+         libstdc++
          libxcb # libxcb.so libxcb-xkb.so
          libx11 # libX11-xcb.so
-         libxkbcommon libxkbcommon.so
-         libxkbcommon-x11 libxkbcommon-x11.so
+         libxkbcommon
+         libxkbcommon-x11
          netcat
          'nodejs>=18'
          npm
-         sqlite libsqlite3.so
+         sqlite
          vulkan-driver
          vulkan-icd-loader
          vulkan-tools
          wayland
-         zstd libzstd.so)
+         zstd)
 makedepends=(cargo
              cargo-about
              clang
@@ -90,6 +90,9 @@ build() {
 	export PROTOC=/usr/bin/protoc
 	export PROTOC_INCLUDE=/usr/include
 	cargo build --release --frozen --package zed --package cli
+	target/release/cli --completions bash > completions.bash
+	target/release/cli --completions fish > completions.fish
+	target/release/cli --completions zsh > completions.zsh
 }
 
 # Tests assume access to vulkan video drivers, Wayland window creation,
@@ -101,10 +104,21 @@ check() {
 }
 
 package() {
+	depends+=(libasound.so
+	          libgio-2.0.so libglib-2.0.so libgobject-2.0.so
+	          libgcc_s.so
+	          libstdc++.so
+	          libxkbcommon.so
+	          libxkbcommon-x11.so
+	          libsqlite3.so
+	          libzstd.so)
 	cd "$_archive"
 	install -Dm0755 target/release/cli "$pkgdir/usr/bin/$_binname"
 	install -Dm0755 target/release/zed "$pkgdir/usr/lib/$_pkgname/zed-editor"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$_appid.desktop"
 	install -Dm0644 -t "$pkgdir/usr/share/metainfo/" "$_appid.metainfo.xml"
 	install -Dm0644 crates/$_pkgname/resources/app-icon.png "$pkgdir/usr/share/icons/$_pkgname.png"
+	install -Dm0644 completions.bash "$pkgdir/usr/share/bash-completion/completions/$_binname"
+	install -Dm0644 completions.fish "$pkgdir/usr/share/fish/vendor_completions.d/$_binname.fish"
+	install -Dm0644 completions.zsh "$pkgdir/usr/share/zsh/site-functions/_$_binname"
 }
