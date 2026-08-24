@@ -1,5 +1,5 @@
 pkgbase = rustypaint
-	pkgdesc = Paint 3D's 2D editor, without the 3D (Git version)
+	pkgdesc = Paint 3D's 2D editor, without the 3D
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/ItzELECTR0/RustyPaint
