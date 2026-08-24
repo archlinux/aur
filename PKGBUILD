@@ -4,7 +4,7 @@
 # the version and the release tarball's SHA-256, so the checksum can
 # never disagree with the artifact it is published next to.
 #
-# 0.3.1 and f6996b77e89cc2202224ca5d6e2485b5ee51f92c311f1a1aaf0a86c932ac2605 are the only placeholders.
+# 0.3.1 and d9a8fe5b64aa29848c67f522506ad6194f0732dd12128846c1194a0d77df8523 are the only placeholders.
 pkgname=alloyctl-bin
 pkgver=0.3.1
 pkgrel=1
@@ -16,7 +16,7 @@ depends=('ncurses')
 provides=('alloyctl')
 conflicts=('alloyctl')
 source=("https://github.com/szymonwilczek/alloyctl/releases/download/v${pkgver}/alloyctl-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('f6996b77e89cc2202224ca5d6e2485b5ee51f92c311f1a1aaf0a86c932ac2605')
+sha256sums=('d9a8fe5b64aa29848c67f522506ad6194f0732dd12128846c1194a0d77df8523')
 
 package() {
 	cd "alloyctl-${pkgver}-linux-x86_64"

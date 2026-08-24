@@ -9,6 +9,6 @@ pkgbase = alloyctl-bin
 	conflicts = alloyctl
 	depends = ncurses
 	source = https://github.com/szymonwilczek/alloyctl/releases/download/v0.3.1/alloyctl-0.3.1-linux-x86_64.tar.gz
-	sha256sums = f6996b77e89cc2202224ca5d6e2485b5ee51f92c311f1a1aaf0a86c932ac2605
+	sha256sums = d9a8fe5b64aa29848c67f522506ad6194f0732dd12128846c1194a0d77df8523
 
 pkgname = alloyctl-bin
