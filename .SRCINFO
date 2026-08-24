@@ -1,6 +1,6 @@
 pkgbase = tracy-chroma-bin
 	pkgdesc = Basecalling, alignment, assembly and deconvolution of Sanger Chromatogram trace files
-	pkgver = 0.8.9
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/gear-genomics/tracy
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = tracy-chroma-bin
 	license = BSD-3-Clause
 	provides = tracy-chroma
 	conflicts = tracy-chroma
-	source = tracy-chroma-0.8.9-LICENSE.txt::https://github.com/gear-genomics/tracy/raw/refs/tags/v0.8.9/LICENSE
+	source = tracy-chroma-0.9.1-LICENSE.txt::https://github.com/gear-genomics/tracy/raw/refs/tags/v0.8.9/LICENSE
 	sha256sums = 9189a2635502bb636e2456acd15288cd56ce94f06ed28b4ffabd923194d95ecc
-	source_x86_64 = https://github.com/gear-genomics/tracy/releases/download/v0.8.9/tracy-v0.8.9-linux-amd64
-	sha256sums_x86_64 = 293d32f755f177b857684350f17c1580aa3681fb5842cca3091b5d86cabc6e97
-	source_aarch64 = https://github.com/gear-genomics/tracy/releases/download/v0.8.9/tracy-v0.8.9-linux-arm64
-	sha256sums_aarch64 = c9bfda047e5ae2f1680b5e40a80aa34c4bbc20fcffb00d79d0c4f1cab107955e
+	source_x86_64 = https://github.com/gear-genomics/tracy/releases/download/v0.9.1/tracy-v0.9.1-linux-amd64
+	sha256sums_x86_64 = df2dd5016f11aeb16d2df090e06d9fac713d4e74729b44e758165169161bc4d5
+	source_aarch64 = https://github.com/gear-genomics/tracy/releases/download/v0.9.1/tracy-v0.9.1-linux-arm64
+	sha256sums_aarch64 = 02e091a53093a16fb3a0fdeac75a2ffa99e99a72d89a3c210301074d01c2a60d
 
 pkgname = tracy-chroma-bin
