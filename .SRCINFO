@@ -15,6 +15,6 @@ pkgbase = webhid
 	options = !lto
 	options = !debug
 	source = webhid::git+https://github.com/K4zoku/FF-WebHID.git#tag=v3.1.0
-	sha256sums = SKIP
+	sha256sums = fc2478fbfeab443e9bbed82714cc8b69e0cfda63c8fdbe001a4770dd89b8d43c
 
 pkgname = webhid
