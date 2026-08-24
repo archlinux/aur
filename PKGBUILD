@@ -1,5 +1,5 @@
 pkgname=lug-wine-tkg-staging-experimental-git
-pkgver=11.10
+pkgver=11.16
 pkgrel=8
 pkgdesc="Wine runner based on TKG builds + staging + experimental patches for Star Citizen"
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=(
 )
 
 source=("${pkgname}-${pkgver}-1.tar.gz::https://github.com/starcitizen-lug/lug-wine-experimental/releases/download/${pkgver}-1/${pkgname}-${pkgver}-1.tar.gz")
-sha256sums=('349c72417a1383a5cc887770e2b11f30133e40c47ae7a13fa34eb40ff7399713')
+sha256sums=('78a92d92340cf3663f988d4b53f523d287b584732ce7102a55084bbe042b0158')
 
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
