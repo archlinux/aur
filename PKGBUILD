@@ -1,7 +1,7 @@
 # Maintainer: Kazoku <k4zoku@pm.me>
 
 pkgname=dearsql
-pkgver=0.4.13
+pkgver=0.4.14
 pkgrel=1
 pkgdesc="Cross-platform SQL database client"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "${pkgname}.desktop::https://raw.githubusercontent.com/dunkbing/dearsql/refs/tags/v${pkgver}/packaging/io.gitlab.dunkbing.dearsql.desktop"
     "${pkgname}.png::https://raw.githubusercontent.com/dunkbing/dearsql/refs/tags/v${pkgver}/assets/appicon.png"
 )
-sha256sums=('a2ff341d0f01e10f0c1c6dfd312b1a84b73785da9c6454021eef28dc6fc547a7'
+sha256sums=('be50a7e0c2b2aebf521ce0f205e62b63a4cdce23e560f0d121fbd6b8406630c6'
             '8d1eb52592409db0b26abb3def7be743c926ceb4212fddffdfb13d4a5f72420c'
             '03e01e1fe765e93f167d0870e010cd43d4fcb24fe103f7fadf50a6f540828167')
 
