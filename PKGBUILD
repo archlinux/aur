@@ -2,18 +2,22 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-bts
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Osmocom's GSM BTS (Base Transceiver Station) with A-bis/IP interface"
 url="https://osmocom.org/projects/osmobts"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-or-later AND AGPL-3.0-or-later')
-depends=('libosmocore' 'libosmo-abis' 'libosmo-netif' 'talloc' 'ortp')
+depends=('libosmocore>=1.14.2'
+         'libosmo-abis>=2.2.0'
+         'libosmo-netif>=1.8.0'
+         'talloc'
+         'ortp')
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-bts-trx.cfg'
         'etc/osmocom/osmo-bts-virtual.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('1685fb6153a12e3ec1666ec28f2ff3de5d62ec16b6f6adba71bd77235419e0c7')
+sha256sums=('31f5ae121e59a8de594b86c990659b3791127789ed5e9c6f27565bbd16227167')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
