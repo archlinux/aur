@@ -12,10 +12,10 @@ conflicts=('nenya')
 depends=('systemd')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gumieri/nenya/releases/download/v${pkgver}/nenya_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('b1ea4206483a76ba9f5a9b40d42e0b4eface0d7233b0f0cd21f142e94a1d2016')
+sha256sums_aarch64=('7d1dfd44c34489a7e40ad1410ff2a6bd0635d99d8ae063cfcac71e2734e42171')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gumieri/nenya/releases/download/v${pkgver}/nenya_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('3696adb305288af64e9f5eced0fba277808abc117a866fbd9cd76b7775aab24c')
+sha256sums_x86_64=('8f928a0f6fae28fc71239898eaef90b69328912a41217c9fdd4718c430982048')
 
 package() {
   install -Dm755 "./nenya" "${pkgdir}/usr/bin/nenya"
