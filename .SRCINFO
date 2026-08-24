@@ -1,6 +1,6 @@
 pkgbase = froststrap
 	pkgdesc = A fork of Fishstrap/Bloxstrap, focused on performance and customization
-	pkgver = 2.0.0.beta.10
+	pkgver = 2.0.0.beta.11
 	pkgrel = 2
 	url = https://github.com/Froststrap/Froststrap
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = froststrap
 	depends = icu
 	depends = fontconfig
 	depends = hicolor-icon-theme
-	source = git+https://github.com/Froststrap/Froststrap.git#tag=v2.0.0-beta.10
+	source = git+https://github.com/Froststrap/Froststrap.git#tag=v2.0.0-beta.11
 	source = git+https://github.com/Froststrap/ColorPicker.git
-	sha256sums = 3fa76b6eaa416325fb9095cb9e158bff05b9702305cfe123e8333d8cb7e3a9a7
+	sha256sums = 2b1a9b36fd9c8d74204a2bd644295374f89298efe62b7656e50bae0f53cede6b
 	sha256sums = SKIP
 
 pkgname = froststrap

@@ -1,6 +1,6 @@
 # Maintainer: blazebsc <blakeisfruity@proton.me>
 pkgname=froststrap
-_tag='v2.0.0-beta.10'
+_tag='v2.0.0-beta.11'
 pkgver=${_tag#v}
 pkgver=${pkgver//-/.}
 pkgrel=2
@@ -12,7 +12,7 @@ depends=('dotnet-runtime-10.0' 'icu' 'fontconfig' 'hicolor-icon-theme')
 makedepends=('dotnet-sdk-10.0' 'git')
 source=("git+${url}.git#tag=${_tag}"
     "git+https://github.com/Froststrap/ColorPicker.git")
-sha256sums=('3fa76b6eaa416325fb9095cb9e158bff05b9702305cfe123e8333d8cb7e3a9a7'
+sha256sums=('2b1a9b36fd9c8d74204a2bd644295374f89298efe62b7656e50bae0f53cede6b'
             'SKIP')
 
 prepare() {
