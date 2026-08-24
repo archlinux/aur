@@ -16,18 +16,23 @@ _DESKTOP_DIR = _OPTDIR / "apps" / "desktop"
 def _needs(msg):
     print(f"  {msg}")
 
-# Get all users with UID >= 1000 and a home directory that exists
-import pwd
-min_uid = 1000
+# Get all user home directories under /home (skip system users by UID >= 1000)
 processed = []
-for user in pwd.getpwent():
-    if user.pw_uid >= min_uid:
-        home_path = Path(user.pw_dir)
-        if home_path.is_dir():
-            processed.append(home_path)
+home_dir = Path("/home")
+if home_dir.is_dir():
+    for user_path in home_dir.iterdir():
+        if user_path.is_dir():
+            # Check if it's a real user (not system) by UID >= 1000
+            try:
+                uid = user_path.stat().st_uid
+                if uid >= 1000:  # typical non-user start
+                    processed.append(user_path)
+            except (OSError, PermissionError):
+                # If we can't stat, still process it to be safe
+                processed.append(user_path)
 
 if not processed:
-    print("==> No user homes found with UID >= 1000, skipping per-user setup.")
+    print("==> No user homes found in /home, skipping per-user setup.")
 else:
     for home_path in processed:
         _hermes_home = home_path / '.hermes'
