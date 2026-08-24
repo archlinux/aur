@@ -1,0 +1,5 @@
+[rad-bin]
+source = "github"
+github = "amterp/rad"
+use_latest_release = true
+prefix = "v"
