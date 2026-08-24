@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur@kokakiwi.net>
 
 pkgname=kache
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc='Zero-copy, content-addressed build cache for Rust, C/C++ and more'
 url='https://kunobi.ninja/docs/kache'
@@ -11,8 +11,8 @@ depends=('libgcc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kunobi-ninja/kache/archive/v$pkgver.tar.gz")
-sha256sums=('8b5f9781149dbb21e90694cf3b7286acf3b6de19e325d4a1133c0bb025d0e5f3')
-b2sums=('f78ac8a6e28b23d05409598c31f4fa96f7fa110e58c9f05cb3cf1c98583b090988756d86c3374d98fb51c3d6aa1ebcc161285b314a5e3bc4b1b702b09a7be49a')
+sha256sums=('80975bd06a0bc8ec81c1ed0ff6d38f2e2e9ae8a01989ec800b317a3b8b0dbffc')
+b2sums=('66f633a40af9d8c6385a2a35927aa9b82e52bf8751bf9c67cbf5fa6c2367eac04f68d5cc91d4decee6c1855150eb28a13230cb712cd20fd26b486d605f3e5ff8')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
