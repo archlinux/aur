@@ -1,6 +1,6 @@
 pkgbase = osmo-bsc
 	pkgdesc = Osmocom's Base Station Controller for 2G circuit-switched mobile networks
-	pkgver = 1.14.1
+	pkgver = 1.15.0
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmobsc
 	arch = i686
@@ -8,17 +8,17 @@ pkgbase = osmo-bsc
 	arch = aarch64
 	arch = armv7h
 	license = GPL-3.0-or-later AND LGPL-2.1-only AND AGPL-3.0-or-later
-	depends = libosmocore
-	depends = libosmo-abis
-	depends = libosmo-netif
-	depends = libosmo-sigtran
+	depends = libosmocore>=1.14.2
+	depends = libosmo-abis>=2.2.0
+	depends = libosmo-netif>=1.8.0
+	depends = libosmo-sigtran>=2.3.0
 	depends = libosmo-mgcp-client.so
 	depends = sqlite
 	depends = libpcap
 	depends = talloc
 	conflicts = osmo-bsc-git
 	backup = etc/osmocom/osmo-bsc.cfg
-	source = https://downloads.osmocom.org/releases/osmo-bsc/osmo-bsc-1.14.1.tar.bz2
-	sha256sums = b238c1ed63d715e853c47b6fc068ca5c78a4e3d5d2556b094b46ead6d2c596b2
+	source = https://downloads.osmocom.org/releases/osmo-bsc/osmo-bsc-1.15.0.tar.bz2
+	sha256sums = 64900c55b0be5951c9a94dcd4b253df836bb6247927a854a4aac2047036267e7
 
 pkgname = osmo-bsc
