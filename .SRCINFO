@@ -1,0 +1,30 @@
+pkgbase = leviathan-bin
+	pkgdesc = Fast, privacy-first Git GUI client built with Tauri, Lit and Rust
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/hegsie/Leviathan
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = git
+	depends = ca-certificates
+	depends = hicolor-icon-theme
+	optdepends = openssh: clone and authenticate over SSH, and manage keys from the app
+	optdepends = gnupg: sign and verify commits and tags
+	optdepends = xdg-utils: open files, folders and links with the default applications
+	optdepends = which: detect the configured external diff and merge tools
+	optdepends = libayatana-appindicator: system tray icon
+	optdepends = xdg-desktop-portal-gtk: follow the desktop light/dark theme
+	optdepends = pciutils: GPU detection to recommend a local AI model
+	optdepends = nvidia-utils: VRAM detection (nvidia-smi) for local AI on NVIDIA GPUs
+	provides = leviathan=0.7.0
+	conflicts = leviathan
+	noextract = Leviathan_0.7.0_amd64.deb
+	options = !strip
+	options = !debug
+	source = https://github.com/hegsie/Leviathan/releases/download/v0.7.0/Leviathan_0.7.0_amd64.deb
+	source = LICENSE-0.7.0::https://raw.githubusercontent.com/hegsie/Leviathan/v0.7.0/LICENSE
+	sha256sums = 2275dda674131c68f3a1b5656507ceea64ad3e6229c3a2ffee912664be230729
+	sha256sums = a363ba4cc1a17c9a5c3a6206d866769447f6dd9ea996910e400262b981fb2163
+
+pkgname = leviathan-bin
