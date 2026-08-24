@@ -2,7 +2,7 @@
 
 pkgname=libfprint-ftexx00
 pkgver=1.94.4_20250112
-pkgrel=2
+pkgrel=3
 pkgdesc="Proprietary driver for FocalTech FTE3600, FTE4800, FTE6600 and FTE6900 fingerprint readers"
 arch=('x86_64')
 url="https://github.com/oneXfive/ubuntu_spi"
@@ -10,8 +10,7 @@ license=('unknown')
 groups=('fprint')
 depends=('gcc-libs' 'glib2' 'glibc' 'libgudev' 'libgusb' 'openssl' 'pixman' 'nss' 'focaltech-spi-dkms')
 makedepends=('tar')
-optdepends=('fprintd: D-Bus service to access fingerprint readers')
-provides=('libfprint-2.so' 'libfprint=1.94.4')
+provides=('libfprint=1.94.4' 'libfprint-2.so')
 conflicts=('libfprint')
 source=("https://github.com/oneXfive/ubuntu_spi/raw/refs/heads/main/libfprint-2-2_1.94.4+tod1-0ubuntu1~22.04.2_spi_20250112_amd64.deb")
 sha256sums=('b48c93c3732f90aabbcc520e5538faeffbb87bb6847a01d03e14ea157f1d36c1')
