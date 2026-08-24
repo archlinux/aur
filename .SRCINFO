@@ -1,6 +1,6 @@
 pkgbase = mahoragaos
 	pkgdesc = An agentic backend that *will* be the best
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://gitlab.com/Bingusfan360/MahoragaOS
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = mahoragaos
 	depends = python
 	depends = pyside6
 	depends = hicolor-icon-theme
-	source = https://gitlab.com/Bingusfan360/MahoragaOS/-/archive/v0.5.0/MahoragaOS-v0.5.0.tar.gz
+	source = https://gitlab.com/Bingusfan360/MahoragaOS/-/archive/v0.5.1/MahoragaOS-v0.5.1.tar.gz
 	source = mahoragaos.desktop
 	source = mahoragaos.svg
-	sha256sums = e8bd78815e58af375f980955725ef605b220d420645c9db2caafb00707bb7c1e
+	sha256sums = cab2395c7070d685d75e109709a3c19d77c4628c19e65338dc564d289524a523
 	sha256sums = SKIP
 	sha256sums = SKIP
 
