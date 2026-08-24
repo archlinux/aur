@@ -1,0 +1,19 @@
+pkgbase = kunyin-desktop-bin
+	pkgdesc = A desktop music player that aggregates multi-platform audio sources.(Prebuilt version.Use system-wide electron)聚合多平台音源的桌面音乐播放器
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/ikunshare/kunyin-desktop
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	depends = electron39
+	provides = kunyin-desktop=1.0.5
+	conflicts = kunyin-desktop
+	source = kunyin-desktop-1.0.5.deb::https://github.com/ikunshare/kunyin-desktop/releases/download/v1.0.5/kunyin-desktop_1.0.5_amd64.deb
+	source = LICENSE-1.0.5::https://raw.githubusercontent.com/ikunshare/kunyin-desktop/v1.0.5/LICENSE
+	source = kunyin-desktop.sh
+	sha256sums = d1b2421527109fbdb69d122ba6833c810b0e2267430518a0e6e045fdc410e602
+	sha256sums = 1b19fe707eab955d1070c99dfed63f5984b1deee79b57c161979eefcf0b61763
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = kunyin-desktop-bin
