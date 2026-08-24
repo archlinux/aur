@@ -1,5 +1,5 @@
 [xremap-cosmic-bin]
 source = "github"
 github = "xremap/xremap"
-use_max_tag = true
+use_latest_release = true
 prefix = "v"
