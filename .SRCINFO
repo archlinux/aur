@@ -1,5 +1,5 @@
 pkgbase = whatsv-git
-	pkgdesc = Simple WhatsApp Web Client
+	pkgdesc = Simple GTK WhatsApp Web Client
 	pkgver = v0.2.0.r1.gf6c4bae
 	pkgrel = 1
 	url = https://github.com/sfesenko/whatsv

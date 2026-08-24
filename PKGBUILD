@@ -3,7 +3,7 @@
 pkgname=whatsv-git
 pkgver=v0.2.0.r1.gf6c4bae
 pkgrel=1
-pkgdesc="Simple WhatsApp Web Client"
+pkgdesc="Simple GTK WhatsApp Web Client"
 arch=('x86_64')
 url="https://github.com/sfesenko/whatsv"
 license=('MIT')
