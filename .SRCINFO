@@ -1,17 +1,15 @@
 pkgbase = luna-taskman-git
 	pkgdesc = luna-taskman (git versiion)
-	pkgver = 0
-	pkgrel = 1
+	pkgver = 3.1.0
+	pkgrel = 2
 	url = https://gitlab.com/materac-luna-project/luna-taskman
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = make
+	makedepends = gcc
 	depends = glibc
-	depends = curl
-	depends = ncurses
-	depends = readline
-	depends = lua
+	depends = sqlite
 	source = git+https://gitlab.com/materac-luna-project/luna-taskman.git
 	sha256sums = SKIP
 
