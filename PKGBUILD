@@ -4,8 +4,8 @@
 
 pkgname=shardx-launcher-bin
 pkgver=0.1.10
-pkgrel=1
-pkgdesc="ShardX anti-detect browser launcher (prebuilt AppImage installed to /opt/shardx, runs against system Mesa/Wayland)"
+pkgrel=2
+pkgdesc="ShardX anti-detect browser launcher"
 arch=('x86_64')
 url="https://github.com/ProxyShard/ShardBrowser"
 license=('MIT')
