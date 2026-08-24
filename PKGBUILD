@@ -3,7 +3,7 @@
 # Hand-edits are fine but will be overwritten on the next tagged release.
 
 pkgname=llm-leaders-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Rust CLI ranking coding LLMs by arena.ai WebDev Elo with live OpenRouter pricing"
 arch=('x86_64')
@@ -21,7 +21,7 @@ provides=('llm-leaders')
 conflicts=('llm-leaders')
 source_x86_64=("https://github.com/mohamadkhani/llm-leaders/releases/download/v${pkgver}/llm-leaders-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 # Checksum is injected by CI from the built tarball (real b2sum, not SKIP).
-b2sums_x86_64=('68e9c869067061b3f4738651fe257c6704903a945eab0e510c0f9eb95fe9490c89379643f818dd32ec0ebf33182269b6fdef1e6a49afc8ee9683ed3b519afb79')
+b2sums_x86_64=('c8a7162244cfc33dbbd7f628cbb0fc506f1b405d249a432d81b837758e63af1af8760bb8d416eb210f64911565e9072e75f917156191275ea6e5cac2cb51b773')
 
 package() {
   install -Dm755 "$srcdir/llm-leaders" "$pkgdir/usr/bin/llm-leaders"
