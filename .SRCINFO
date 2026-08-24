@@ -1,6 +1,6 @@
 pkgbase = smhasher3
 	pkgdesc = A tool for testing the quality of hash functions in terms of their distribution, collision, and performance properties
-	pkgver = 20260326.r2118.6ab4343
+	pkgver = 20260804.r2121.51d3cd1
 	pkgrel = 1
 	url = https://gitlab.com/fwojcik/smhasher3
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = smhasher3
 	makedepends = git
 	depends = libgcc_s.so
 	depends = libstdc++.so
-	source = git+https://gitlab.com/fwojcik/smhasher3.git#commit=6ab43433
-	b2sums = 310e7b08c97ad79fbc940aac9f76bd041cd192f7a85702569ba54b349df2f6e1c085e8e0d9c53dceacd117e5a8015019c6c36b226e3da601e1e375b1593bfccf
+	source = git+https://gitlab.com/fwojcik/smhasher3.git#commit=51d3cd1a
+	b2sums = 25cc2cc87dd2dae89ef829ac6fe5e97fa754c13b5128eaf7165cd50099b6d1970823560966f0a90c1e6a50a239a8c8092c40ad843f30a2a7c9c99c873c83107b
 
 pkgname = smhasher3

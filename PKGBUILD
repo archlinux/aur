@@ -7,8 +7,8 @@
 
 _pkgname=SMHasher3
 pkgname=smhasher3
-_pkgver=6ab43433 # All commits to the main branch after the initial release are a new release.
-pkgver=20260326.r2118.6ab4343
+_pkgver=51d3cd1a # All commits to the main branch after the initial release are a new release.
+pkgver=20260804.r2121.51d3cd1
 pkgrel=1
 pkgdesc="A tool for testing the quality of hash functions in terms of their distribution, collision, and performance properties"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ makedepends=('cmake' 'git')
 optdepends=()
 backup=()
 source=("git+${url}.git#commit=${_pkgver}")
-b2sums=('310e7b08c97ad79fbc940aac9f76bd041cd192f7a85702569ba54b349df2f6e1c085e8e0d9c53dceacd117e5a8015019c6c36b226e3da601e1e375b1593bfccf')
+b2sums=('25cc2cc87dd2dae89ef829ac6fe5e97fa754c13b5128eaf7165cd50099b6d1970823560966f0a90c1e6a50a239a8c8092c40ad843f30a2a7c9c99c873c83107b')
 
 # https://gitlab.com/fwojcik/smhasher3#current-status
 # "There won't be explicit release versioning. Instead, the version string has been updated to include the commit date of the last commit."
