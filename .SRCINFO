@@ -1,6 +1,6 @@
 pkgbase = mahoragaos
 	pkgdesc = A model-agnostic adaptive operating system inspired by the Unix philosophy
-	pkgver = 0.4.14
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://gitlab.com/Bingusfan360/MahoragaOS
 	arch = any
@@ -12,10 +12,10 @@ pkgbase = mahoragaos
 	depends = python
 	depends = pyside6
 	depends = hicolor-icon-theme
-	source = https://gitlab.com/Bingusfan360/MahoragaOS/-/archive/v0.4.14/MahoragaOS-v0.4.14.tar.gz
+	source = https://gitlab.com/Bingusfan360/MahoragaOS/-/archive/v0.5.0/MahoragaOS-v0.5.0.tar.gz
 	source = mahoragaos.desktop
 	source = mahoragaos.svg
-	sha256sums = ae6e7a1eeed154a8fcbb772a7f268a24a5dab831189aa6be5adf5139501ca2b0
+	sha256sums = e8bd78815e58af375f980955725ef605b220d420645c9db2caafb00707bb7c1e
 	sha256sums = SKIP
 	sha256sums = SKIP
 
