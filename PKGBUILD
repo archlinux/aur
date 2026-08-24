@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=onekey-wallet-bin
 _pkgname=OneKey-Wallet
-pkgver=6.5.0
+pkgver=6.5.2
 _electronversion=39
 pkgrel=1
 pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions.(Prebuilt version.Use system-wide electron)"
@@ -31,8 +31,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('6753409f6a57c4eea10c9c011a35666d9efeb362cb44832212abd0b235d1386b')
-sha256sums_x86_64=('a716f32001508d648eb63fe2b285019b5e358d2dc473bcd46964ca5912a87951')
+sha256sums_aarch64=('5cb318a33aad7cd81bae796431cedcf540288d71a0b7b93a47ae39b28cc667ba')
+sha256sums_x86_64=('a5c9d394a9b4e843ffad5c529a6c4f8cafbfdad9b6f49ec3b2d747ec75a38629')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
