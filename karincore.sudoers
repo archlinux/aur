@@ -1,2 +1,0 @@
-ALL ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart karin-proxy-daemon.service
-ALL ALL=(ALL) NOPASSWD: /usr/bin/systemctl stop karin-proxy-daemon.service

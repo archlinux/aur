@@ -1,6 +1,6 @@
 pkgbase = karincore-git
 	pkgdesc = KarinCore - Modern and secure proxy client
-	pkgver = 1.2.5
+	pkgver = 1.2.6.r0.0000000
 	pkgrel = 1
 	url = https://github.com/detestern/KarinCore
 	arch = x86_64
@@ -22,6 +22,6 @@ pkgbase = karincore-git
 	source = KarinCore::git+https://github.com/detestern/KarinCore.git
 	source = karin-proxy-daemon.service
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 311fe87274a68e4df31012fdf83e30d27e9efec8d144642873b56e757dc898a5
 
 pkgname = karincore-git
