@@ -1,7 +1,7 @@
 # Maintainer: yobson <aur@yobson.xyz>
 pkgname=steam-screenshot-importer
 pkgdesc='Automatic importing of screenshots into Steam using the Steamworks SDK'
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 _steamworks_rs_ver=0.13.1
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgn
     "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-src_${pkgver}.tar.gz.asc"
     "https://github.com/Noxime/steamworks-rs/raw/refs/tags/v${_steamworks_rs_ver}/steamworks-sys/lib/steam/redistributable_bin/linux64/libsteam_api.so")
 validpgpkeys=('A41EB2986F63F6C40FCF2D03ED26A71EB8EB7A34') # Bradley (github commit signing key) <contact@yobson.xyz>
-b2sums=('f1c8df45013bc3fbe1c5ae547aeaf54e15a24afcaa702c3d141240ef71366d930fc0a35411509f4d5d412166cc9e4f5fa9aa8025a80d887e75e619990a4bbd30'
+b2sums=('df4a8fa251af528e07f38ccda8d3baa4cc7d112e17750cad6f09127d8ecc152aaa546cd3f4b6204c7c5f65c5aa6d609d8b63a275f27a9a75d5b0357fd73c1705'
         'SKIP'
         '8e4502c07a034bcfbae2b57439d56c2bc3b48ef5f9d4737ee627bf2d0a82921c41a34df7611dd1f582e2782af2f4340e65e9f9b8409a563726d1bd7edcbeaf47')
 options=('!lto')
@@ -43,7 +43,9 @@ package() {
 
     local size
     for size in 16 24 32 48 64 128 256 512; do
+        # A dashed steam-screenshot-importer icon name can fall back to an icon
+        # theme's generic steam icon, so use a unique reverse-domain name.
         install -Dm644 "assets/icons/${size}x${size}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${pkgname}.png"
+            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/xyz.yobson.${pkgname}.png"
     done
 }

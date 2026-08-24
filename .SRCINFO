@@ -1,6 +1,6 @@
 pkgbase = steam-screenshot-importer
 	pkgdesc = Automatic importing of screenshots into Steam using the Steamworks SDK
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/yobson1/steam-screenshot-importer
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = steam-screenshot-importer
 	depends = fontconfig
 	depends = xdg-utils
 	options = !lto
-	source = steam-screenshot-importer-1.0.0.tar.gz::https://github.com/yobson1/steam-screenshot-importer/releases/download/v1.0.0/steam-screenshot-importer-src_1.0.0.tar.gz
-	source = steam-screenshot-importer-1.0.0.tar.gz.asc::https://github.com/yobson1/steam-screenshot-importer/releases/download/v1.0.0/steam-screenshot-importer-src_1.0.0.tar.gz.asc
+	source = steam-screenshot-importer-1.0.1.tar.gz::https://github.com/yobson1/steam-screenshot-importer/releases/download/v1.0.1/steam-screenshot-importer-src_1.0.1.tar.gz
+	source = steam-screenshot-importer-1.0.1.tar.gz.asc::https://github.com/yobson1/steam-screenshot-importer/releases/download/v1.0.1/steam-screenshot-importer-src_1.0.1.tar.gz.asc
 	source = https://github.com/Noxime/steamworks-rs/raw/refs/tags/v0.13.1/steamworks-sys/lib/steam/redistributable_bin/linux64/libsteam_api.so
 	validpgpkeys = A41EB2986F63F6C40FCF2D03ED26A71EB8EB7A34
-	b2sums = f1c8df45013bc3fbe1c5ae547aeaf54e15a24afcaa702c3d141240ef71366d930fc0a35411509f4d5d412166cc9e4f5fa9aa8025a80d887e75e619990a4bbd30
+	b2sums = df4a8fa251af528e07f38ccda8d3baa4cc7d112e17750cad6f09127d8ecc152aaa546cd3f4b6204c7c5f65c5aa6d609d8b63a275f27a9a75d5b0357fd73c1705
 	b2sums = SKIP
 	b2sums = 8e4502c07a034bcfbae2b57439d56c2bc3b48ef5f9d4737ee627bf2d0a82921c41a34df7611dd1f582e2782af2f4340e65e9f9b8409a563726d1bd7edcbeaf47
 
