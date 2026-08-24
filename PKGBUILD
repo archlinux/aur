@@ -16,7 +16,7 @@ makedepends=('git')
 _pkgsrc="console-setup-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext"::"$url/-/archive/$pkgver/$_pkgsrc.$_pkgext")
-sha256sums=('0024d1713576d31683816e6392e459990af5ee3cb1da1f963ab0ddce67966273')
+sha256sums=('15570cf19f6251da4c7e0a25745da7b8a7ab27092484ba166039d5da2b06c093')
 
 package() {
   depends+=('perl')
