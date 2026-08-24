@@ -1,6 +1,6 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=posthog-cli
-pkgver=0.14.1
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="The command line interface for PostHog"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'nodejs>=24' 'pnpm')
 optdepends=('nodejs: required for the posthog-cli api command')
 options=('!lto')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/PostHog/posthog/archive/refs/tags/posthog-cli%2Fv$pkgver.tar.gz")
-sha256sums=('82384b08f58566e4cff566b9dfbb2f7357d252b61e18c36c6eb7157278f293c8')
+sha256sums=('1cf0cd72d1df6070e077b0b52f174925bfa7e51b3fbc7ae67aee0711b744f668')
 
 _srcdir="posthog-posthog-cli-v$pkgver"
 
