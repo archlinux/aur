@@ -1,0 +1,4 @@
+[muxly]
+source = "git"
+git = "https://github.com/Pairadux/muxly.git"
+prefix = "v"
