@@ -1,6 +1,6 @@
 pkgbase = kernelforge
 	pkgdesc = Cross-distro Linux Kernel Manager with Qt6 GUI
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/user14923929/kernelforge
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kernelforge
 	makedepends = cmake
 	makedepends = gcc
 	depends = gcc-libs
-	source = kernelforge-0.1.1.tar.gz::https://github.com/user14923929/kernelforge/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = SKIP
+	source = kernelforge-0.1.2.tar.gz::https://github.com/user14923929/kernelforge/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 95fe7dbf2d3131741293ef2e13be12f257bd8de4808bcb3f53b421ba00475807
 
 pkgname = kernelforge
