@@ -2,7 +2,7 @@
 pkgname=lotti-bin
 _pkgname=Lotti
 _debname="com.matthiasn.${pkgname%-bin}"
-pkgver=0.9.1060+4237
+pkgver=1.0.12+4350
 pkgrel=1
 pkgdesc="Achieve your goals and keep your data private with Lotti. This life tracking app is designed to help you stay motivated and on track, all while keeping your personal information safe and secure. Now with on-device speech recognition.(Prebuilt version)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 noextract=("${pkgname%-bin}-${pkgver}.tar.gz")
-sha256sums=('b2598f44adc2d44dbb2cbb52c0ce27d77bf4a8f77e766b7b1e98fef0a9247484'
+sha256sums=('7acf9d4c3225ab8b6efae6d9314a3b0b131d051fb21f6e42dd7eacd1ab2a1a9d'
             '6c653ecadf03d9566022c30e03185a6cbfc1ab8de1c9ddec899bac356c4d40d7')
 prepare() {
     sed -i -e "
@@ -43,7 +43,7 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr" "${pkgdir}"
+    cp -a "${srcdir}/usr" "${pkgdir}"
     rm -rf "${pkgdir}/usr/lib/${pkgname%-bin}/share"
     install -Dm644 "${srcdir}/usr/lib/${pkgname%-bin}/share/applications/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
