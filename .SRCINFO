@@ -1,6 +1,6 @@
 pkgbase = bspwm1
 	pkgdesc = tiling window manager based on binary space partitioning
-	pkgver = 1.2.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/rotkonetworks/bspwm1
 	arch = x86_64
@@ -10,10 +10,11 @@ pkgbase = bspwm1
 	depends = xcb-util
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
+	depends = libxkbcommon
 	optdepends = sxhkd: keybinding daemon
 	provides = bspwm
 	conflicts = bspwm
-	source = git+https://github.com/rotkonetworks/bspwm1.git#branch=master
+	source = git+https://github.com/rotkonetworks/bspwm1.git#tag=v1.5.0
 	sha256sums = SKIP
 
 pkgname = bspwm1
