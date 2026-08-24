@@ -2,7 +2,7 @@
 _name=pebble_tool
 pkgname=pebble-tool
 pkgver=5.0.39
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line tool for the Pebble SDK: build, install and debug apps for Pebble smartwatches"
 arch=('any')
 url="https://github.com/coredevices/pebble-tool"
@@ -14,9 +14,8 @@ depends=('python' 'python-cobs' 'python-colorama' 'python-freetype-py'
          'python-pyasn1-modules' 'python-pyqrcode' 'python-pyserial'
          'python-pypng' 'python-requests' 'python-rsa' 'python-six'
          'python-sourcemap' 'python-websocket-client' 'websockify'
-         'python-wheel')
-optdepends=('pypkjs: PebbleKit JS / phone-simulator sensor emulation for `pebble install --emulator --pypkjs` (install with `uv tool install pypkjs`, not packaged for Arch due to the stpyv8 dependency)'
-            'npm: building projects with npm package.json dependencies, and `pebble package`')
+         'python-wheel' 'npm')
+optdepends=('pypkjs: PebbleKit JS / phone-simulator sensor emulation for `pebble install --emulator --pypkjs` (install with `uv tool install pypkjs`, not packaged for Arch due to the stpyv8 dependency)')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/c5/6e/444de81db97ea030e219e82fdcfcc6fd5ff3d591d4003e1f4685186232b0/$_name-$pkgver.tar.gz")
 sha256sums=('c2ec1eef7fd0ff73f4b0773492da7ed4b36bacb504e6813c41a560a9e7bf3564')
