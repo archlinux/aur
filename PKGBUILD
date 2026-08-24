@@ -111,11 +111,13 @@ source=(
   "$_pkgsrc.$_pkgext"::"https://github.com/BrowserWorks/waterfox/archive/refs/tags/$pkgver.$_pkgext"
   "$_pkgsrc-locales.$_pkgext"::"https://github.com/BrowserWorks/l10n/archive/$_commit_l10n.$_pkgext"
   "$_pkgname.desktop"
+  '0001-1ecaa12-fix-rust-1.98-targets.patch'
 )
 sha256sums=(
   '17bf07acf6548b38d81848443f808506d5177e4f1c801c50024925b2f1085a8f'
   '54a69e8afa8903250a33125fb61ac90db6664f1a7e97b5dd7832a4b3e162102e'
   '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286'
+  '8e93bc3f7745bd4a6bcf952120b60a260ea867f0c8319ea8f6df18ed1281bc1f'
 )
 
 prepare() {
@@ -127,8 +129,8 @@ prepare() {
   ln -sf "$srcdir/l10n-$_commit_l10n" "waterfox/browser/locales"
 
   # set version
-  local _firefoxf_ver=$(cat "browser/config/version.txt")
-  echo "${pkgver}" | tee "browser/config"/{version,version_display}.txt
+  local _firefox_ver=$(cat "browser/config/version.txt")
+  echo "${pkgver}" | tee "browser/config/version_display.txt"
 
   # configure
   cat > ../mozconfig << END
@@ -147,14 +149,15 @@ ac_add_options --disable-bootstrap
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Branding
-ac_add_options --with-app-basename=Waterfox # affects user-agent
+ac_add_options --with-app-basename=${_pkgname^}
 ac_add_options --with-app-name=$_pkgname
 ac_add_options --with-branding=waterfox/browser/branding
+ac_add_options --enable-update-channel=esr
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=$_pkgname
-MOZ_REQUIRE_SIGNING=
+export MOZ_REQUIRE_SIGNING=
 
 # Features
 ac_add_options --enable-alsa
@@ -403,14 +406,17 @@ package() {
 
   local vendorjs="$pkgdir/usr/lib/$_pkgname/browser/defaults/preferences/vendor.js"
   install -Dm644 /dev/stdin "$vendorjs" << END
+// Disable default browser checking.
+pref("browser.shell.checkDefaultBrowser", false);
+
 // Use LANG environment variable to choose locale
 pref("intl.locale.requested", "");
 
+// Automatic installation of updates won't work on root, so disable this
+pref("app.update.auto", false);
+
 // Use system-provided dictionaries
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
-
-// Disable default browser checking.
-pref("browser.shell.checkDefaultBrowser", false);
 
 // Don't disable extensions in the application directory
 pref("extensions.autoDisableScopes", 11);
@@ -426,18 +432,6 @@ pref("browser.aboutConfig.showWarning", false);
 
 // Prevent telemetry notification
 pref("services.settings.main.search-telemetry-v2.last_check", $(date +%s));
-END
-
-  local distini="$pkgdir/usr/lib/$_pkgname/distribution/distribution.ini"
-  install -Dm644 /dev/stdin "$distini" << END
-[Global]
-id=archlinux
-version=rolling
-about=${_pkgname^}
-
-[Preferences]
-app.distributor=archlinux
-app.distributor.channel=$_pkgname
 END
 
   # search provider
