@@ -1,0 +1,5 @@
+[veloxdb-bin]
+source = "github"
+github = "veloxbase/veloxdb"
+use_latest_release = true
+prefix = "v"
