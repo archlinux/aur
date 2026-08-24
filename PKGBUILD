@@ -1,6 +1,6 @@
 # Maintainer: kuchen <70746714+Kuucheen@users.noreply.github.com>
 pkgname=pixelkit
-pkgver=0.3.0
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Native Linux color picker and screen ruler'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=(
   'xdg-desktop-portal-gnome: portal backend for GNOME'
 )
 source=("${pkgname}-${pkgver}-vendor.tar.xz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-vendor.tar.xz")
-sha256sums=('93c9b23b80a6532a17e4ceb42c1d69177badcad8b9d5ff790e7899f6b528abef')
+sha256sums=('db05cf3441cd0392777727a2ae372de6e07001ac1445d1b7d1dd1d8642dfbff3')
 
 build() {
   cd "$pkgname-$pkgver"

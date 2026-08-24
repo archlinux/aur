@@ -1,6 +1,6 @@
 pkgbase = pixelkit
 	pkgdesc = Native Linux color picker and screen ruler
-	pkgver = 0.3.0
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/Kuucheen/PixelKit
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = pixelkit
 	optdepends = xdg-desktop-portal-kde: portal backend for KDE Plasma
 	optdepends = xdg-desktop-portal-gnome: portal backend for GNOME
 	options = !debug
-	source = pixelkit-0.3.0-vendor.tar.xz::https://github.com/Kuucheen/PixelKit/releases/download/v0.3.0/pixelkit-0.3.0-vendor.tar.xz
-	sha256sums = 93c9b23b80a6532a17e4ceb42c1d69177badcad8b9d5ff790e7899f6b528abef
+	source = pixelkit-0.4.2-vendor.tar.xz::https://github.com/Kuucheen/PixelKit/releases/download/v0.4.2/pixelkit-0.4.2-vendor.tar.xz
+	sha256sums = db05cf3441cd0392777727a2ae372de6e07001ac1445d1b7d1dd1d8642dfbff3
 
 pkgname = pixelkit
