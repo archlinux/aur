@@ -1,6 +1,6 @@
 pkgbase = late-sh-cli
 	pkgdesc = Companion CLI for late.sh terminal clubhouse
-	pkgver = 0.45.0
+	pkgver = 0.45.2
 	pkgrel = 1
 	url = https://github.com/mpiorowski/late-sh
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = late-sh-cli
 	depends = webkit2gtk-4.1
 	options = !debug
 	options = !lto
-	source = git+https://github.com/mpiorowski/late-sh.git#tag=v0.45.0
-	sha256sums = 37188695509bd2ab5d0513cb795768c879505319714db713a648278342fd8f4c
+	source = git+https://github.com/mpiorowski/late-sh.git#tag=v0.45.2
+	sha256sums = 104ae1d4d7a292391e162a1b1de9720702b81e97caa714b8ad385cfc4b51bdcc
 
 pkgname = late-sh-cli
