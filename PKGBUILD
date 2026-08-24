@@ -1,8 +1,8 @@
 # Maintainer: archledger <archledger236@gmail.com>
 pkgname=irlume
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
-pkgdesc="Windows Hello-style face login for Linux"
+pkgdesc="Face authentication for Linux with head-gesture consent and passive PAD"
 arch=('x86_64')
 url="https://github.com/archledger/irlume"
 license=('GPL-3.0-or-later')
@@ -26,6 +26,8 @@ source=("git+https://github.com/archledger/irlume.git#tag=v${pkgver}"
         "face_landmark.onnx::https://github.com/archledger/irlume/releases/download/models-v1/face_landmark.onnx"
         "blaze_face_short_range.onnx::https://github.com/archledger/irlume/releases/download/models-v1/blaze_face_short_range.onnx"
         "face_landmarks_detector.tflite::https://github.com/archledger/irlume/releases/download/models-v1/face_landmarks_detector.tflite"
+        "liveness_vit.onnx::https://github.com/archledger/irlume/releases/download/models-v1/liveness_vit.onnx"
+        "flir.onnx::https://github.com/archledger/irlume/releases/download/models-v1/flir.onnx"
         # TFLite C runtime (#295): no current Arch/AUR system package exists
         # (AUR libtensorflow-lite is 2.4-era), so the pinned irlume-built
         # artifact bundles at the daemon resolver's first probed path.
@@ -36,6 +38,8 @@ sha256sums=('SKIP'
             '821683be088447839638f79d64268bd501bdb72e5d9e262ec981c7e252956caf'
             'c5453678015f6289c1d77bda88a8ba9c87574f01de1a05ba1909b9a7e08b237b'
             'c7d54204ce0448474c7f3fa9af494787c0965cbdd6f20fc72867e43046bd43d5'
+            'c7f8a6f3054b11f9719f5e24d37ec227721608fff8b90373c6c3e7659864161c'
+            'df80cea7228b92562692e56aac965d35766c77399159798c552fb3c77b410c72'
             'dd3abcdbc0f35a9466a682358955ac3826a9a81590cd6b8abcf98548e17bd311')
 install=irlume.install
 
@@ -46,7 +50,8 @@ prepare() {
     mkdir -p models
     cp "$srcdir"/glintr100.onnx "$srcdir"/face_detection_yunet_2023mar.onnx \
        "$srcdir"/face_landmark.onnx "$srcdir"/blaze_face_short_range.onnx \
-       "$srcdir"/face_landmarks_detector.tflite models/
+       "$srcdir"/face_landmarks_detector.tflite "$srcdir"/liveness_vit.onnx \
+       "$srcdir"/flir.onnx models/
 }
 
 build() {
@@ -69,8 +74,8 @@ package() {
     # and was simply forgotten: the unit pointed IRLUME_MESH_MODEL at a file
     # this package never shipped (#360). Being absent is silent, because
     # Engine::with_mesh treats a missing path as a no-op and returns Ok, so the
-    # daemon starts and passive liveness, the closure gesture and the BlazeFace
-    # rescue just stop working. Spelled out, each model is one line to add and
+    # daemon starts but BlazeFace rescue alignment stops working. Spelled out,
+    # each model is one line to add and
     # check-packaging-parity.sh can see every name.
     install -Dm0644 models/glintr100.onnx \
         "$pkgdir/usr/share/irlume/models/glintr100.onnx"
@@ -82,6 +87,10 @@ package() {
         "$pkgdir/usr/share/irlume/models/blaze_face_short_range.onnx"
     install -Dm0644 models/face_landmarks_detector.tflite \
         "$pkgdir/usr/share/irlume/models/face_landmarks_detector.tflite"
+    install -Dm0644 models/liveness_vit.onnx \
+        "$pkgdir/usr/share/irlume/models/liveness_vit.onnx"
+    install -Dm0644 models/flir.onnx \
+        "$pkgdir/usr/share/irlume/models/flir.onnx"
     install -Dm0755 "$srcdir/libtensorflowlite_c-v2.19.0-linux-x64/lib/libtensorflowlite_c.so" \
         "$pkgdir/usr/share/irlume/tflite/libtensorflowlite_c.so"
     install -Dm0644 "$srcdir/libtensorflowlite_c-v2.19.0-linux-x64/LICENSE.tensorflow" \
