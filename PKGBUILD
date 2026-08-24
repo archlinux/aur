@@ -1,12 +1,12 @@
 #Maintainer: rmbgame<rmb@rmbgame.net>
 #Maintainer: AigioL<https://github.com/AigioL>
 
-_dotnet_version=10.0
+_dotnet_version=11.0
 _system_dotnet=false
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.1.0.r1.gc16ffa08e
+pkgver=3.1.0.r12.g4310f7287
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
@@ -42,6 +42,7 @@ source=(
     'git+https://github.com/JustArchiNET/ArchiSteamFarm.wiki.git'
     'git+https://github.com/BeyondDimension/SteamClient.git'
     'git+https://github.com/quamotion/dotnet-packaging.git'
+    'git+https://github.com/BeyondDimension/dotnetCampus.Ipc.git'
     'git+https://github.com/BeyondDimension/WTTS.MicroServices.ClientSDK.git'
     'git+https://github.com/BeyondDimension/Common.git'
     'git+https://github.com/BeyondDimension/WinAuth.git'
@@ -81,19 +82,20 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             'SKIP')
 
 
 declare -Ag _plugins=(
-    [BD.WTTS.Client.Plugins.Accelerator]=Accelerator
-    [BD.WTTS.Client.Plugins.Accelerator.ReverseProxy]=Accelerator.ReverseProxy
-    [BD.WTTS.Client.Plugins.Authenticator]=Authenticator
-    [BD.WTTS.Client.Plugins.GameAccount]=GameAccount
-    [BD.WTTS.Client.Plugins.GameList]=GameList
-    [BD.WTTS.Client.Plugins.GameTools]=GameTools
-    [BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
-    [BD.WTTS.Client.Plugins.ArchiSteamFarmPlus]=ArchiSteamFarmPlus
-    [BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
+    #[BD.WTTS.Client.Plugins.Accelerator]=Accelerator
+    #[BD.WTTS.Client.Plugins.Accelerator.ReverseProxy]=Accelerator.ReverseProxy
+    #[BD.WTTS.Client.Plugins.Authenticator]=Authenticator
+    #[BD.WTTS.Client.Plugins.GameAccount]=GameAccount
+    #[BD.WTTS.Client.Plugins.GameList]=GameList
+    #[BD.WTTS.Client.Plugins.GameTools]=GameTools
+    #[BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
+    #[BD.WTTS.Client.Plugins.ArchiSteamFarmPlus]=ArchiSteamFarmPlus
+    #[BD.WTTS.Client.Plugins.SteamIdleCard]=SteamIdleCard
     #[BD.WTTS.Client.Plugins.Update]=Update
 )
 
@@ -117,6 +119,7 @@ prepare(){
     git -C "${srcdir}/SteamTools" config submodule."ref/SteamAchievementManager".url        "file://${srcdir}/SteamAchievementManager"
     git -C "${srcdir}/SteamTools" config submodule."ref/SteamClient".url                    "file://${srcdir}/SteamClient"
     git -C "${srcdir}/SteamTools" config submodule."ref/dotnet-packaging".url               "file://${srcdir}/dotnet-packaging"
+    git -C "${srcdir}/SteamTools" config submodule."ref/dotnetCampus.Ipc".url               "file://${srcdir}/dotnetCampus.Ipc"
     git -C "${srcdir}/SteamTools" config submodule."ref/WTTS.MicroServices.ClientSDK".url   "file://${srcdir}/WTTS.MicroServices.ClientSDK"
     git -C "${srcdir}/SteamTools" config submodule."ref/Common".url                         "file://${srcdir}/Common"
     git -C "${srcdir}/SteamTools" config submodule."ref/WinAuth".url                        "file://${srcdir}/WinAuth"
@@ -169,7 +172,7 @@ prepare(){
     git -C "${srcdir}/SteamTools/ref/Avalonia8/ref/Common" -c protocol.file.allow=always submodule update
 
     git -C "${srcdir}/SteamTools/ref/Avalonia8/ref/Common/ref/SteamKit" submodule init
-    git -C "${srcdir}/SteamTools/ref/Avalonia8/ref/Common/ref/SteamKit" config submodule."‎Resources/Protobufs".url "file://${srcdir}/protobufs"
+    git -C "${srcdir}/SteamTools/ref/Avalonia8/ref/Common/ref/SteamKit" config submodule."Resources/Protobufs".url "file://${srcdir}/protobufs"
     git -C "${srcdir}/SteamTools/ref/Avalonia8/ref/Common/ref/SteamKit" -c protocol.file.allow=always submodule update
 
     if ! "$_system_dotnet"
@@ -188,6 +191,9 @@ prepare(){
     patch -Np1 -i ../0001-fix-MsgPack.diff
     # SteamTools/src/BD.WTTS.Client.Plugins.Accelerator.ReverseProxy/Services/Certificate/ICertificateManager.cs(31,63): error CS1503: Argument 1: cannot convert from 'System.Runtime.Serialization.Formatters.X509CertificatePackable' to 'byte[]'
     patch -Np1 -i ../0002-fix-X509CertificatePackable-to-byte[].diff
+
+    # error NU3012: Package 'Splat 19.3.1' from source 'https://api.nuget.org/v3/index.json': The author primary signature found a chain building issue: Revoked: certificate revoked
+    export NUGET_CERT_REVOCATION_MODE=offline
     dotnet workload restore src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
         -p:EnableWindowsTargeting=true
     dotnet restore src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
