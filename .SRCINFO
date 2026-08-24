@@ -1,6 +1,6 @@
 pkgbase = python-gnuplotlib
 	pkgdesc = gnuplot for numpy
-	pkgver = 0.46
+	pkgver = 0.47
 	pkgrel = 1
 	url = https://github.com/dkogan/gnuplotlib
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-gnuplotlib
 	depends = python-numpy
 	depends = python-numpysane
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/g/gnuplotlib/gnuplotlib-0.46.tar.gz
-	sha256sums = e713b73a64eb1a26af45870ee2de84c217e24d5a9f47365c6116afc315da6af4
+	source = https://files.pythonhosted.org/packages/source/g/gnuplotlib/gnuplotlib-0.47.tar.gz
+	sha256sums = 35ad06a4adf16dba0e4be0f74615e7beb6b8e0358c4cf5c0f98fef85bc46aac8
 
 pkgname = python-gnuplotlib
