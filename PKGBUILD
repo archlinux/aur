@@ -1,11 +1,13 @@
 # Maintainer: NewYearPrism
 
-_stable_diffusion_cpp_tag=master-820-de298c2
-_stable_diffusion_cpp_version=820
+_stable_diffusion_cpp_tag=master-827-97d2990
+_stable_diffusion_cpp_version=827
 _stable_diffusion_cpp_commit=${_stable_diffusion_cpp_tag##*-}
-_stable_diffusion_cpp_sha256sum=ab9ba4e735b9498c0a35878841cc2fe67b58acc0f40e25282d13be0d5491c078
+_stable_diffusion_cpp_sha256sum=63f5d008fdf16ced709d58e324b6452bf4702162fb4f898b7c118a4d23d40cad
 _sdcpp_webui_commit=c4bce3d6b3f236614cca21014f076083b7270ba8
 _sdcpp_webui_sha256sum=1265543d02ebab560cee6734b3bf1491e831c6be3436647505d6939dd78f2993
+_ggml_version=0.21.0
+_ggml_sha256sum=3b0d4f1fe7c278824d4bb753b7402733576985689bd40e9cc719eca627131d24
 pkgname=stable-diffusion.cpp-system
 pkgver=0.0.0.${_stable_diffusion_cpp_version}
 pkgrel=1
@@ -45,12 +47,12 @@ options=(
 source=(
     "stable-diffusion.cpp-${_stable_diffusion_cpp_tag}.tar.gz::https://github.com/leejet/stable-diffusion.cpp/archive/refs/tags/${_stable_diffusion_cpp_tag}.tar.gz"
     "sdcpp-webui-${_sdcpp_webui_commit}.tar.gz::https://github.com/leejet/sdcpp-webui/archive/${_sdcpp_webui_commit}.tar.gz"
-    ggml-impl.h
+    "ggml-${_ggml_version}.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v${_ggml_version}.tar.gz"
 )
 sha256sums=(
     ${_stable_diffusion_cpp_sha256sum}
     ${_sdcpp_webui_sha256sum}
-    2ed56e264202906d107e26d08eabb242d3107b026ebfb78096fa1e5f94bdbbb8
+    ${_ggml_sha256sum}
 )
 
 prepare() {
@@ -60,7 +62,8 @@ prepare() {
   ln -sf "../../../sdcpp-webui" stable-diffusion.cpp/examples/server/frontend
 
   mkdir -p stable-diffusion.cpp/ggml/src
-  cp "$srcdir/ggml-impl.h" stable-diffusion.cpp/ggml/src/ggml-impl.h
+  ln -sf "ggml-${_ggml_version}" ggml
+  cp ggml/src/ggml-impl.h stable-diffusion.cpp/ggml/src/ggml-impl.h
 }
 
 build() {
