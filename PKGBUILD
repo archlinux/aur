@@ -6,12 +6,11 @@ _ggml_version=0.21.0
 _ggml_sha256sum=3b0d4f1fe7c278824d4bb753b7402733576985689bd40e9cc719eca627131d24
 pkgname=ggml-core-llama.cpp
 pkgver=0.0.0.b${_llama_cpp_version}
-pkgrel=1
+pkgrel=2
 pkgdesc='Tensor library for machine learning (core runtime, from llama.cpp)'
 arch=(x86_64 aarch64)
 url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')
-groups=(ggml-llama.cpp)
 depends=(
     glibc
     libstdc++

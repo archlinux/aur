@@ -1,11 +1,10 @@
 pkgbase = ggml-core-llama.cpp
 	pkgdesc = Tensor library for machine learning (core runtime, from llama.cpp)
 	pkgver = 0.0.0.b10603
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
 	arch = aarch64
-	groups = ggml-llama.cpp
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
