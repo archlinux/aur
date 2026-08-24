@@ -2,7 +2,7 @@
 # Maintainer:  Esben Haabendal <esben@haabendal.dk>
 
 pkgname=emacs-magit
-pkgver=3.0.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="It's Magit! A Emacs mode for Git."
 arch=('any')
