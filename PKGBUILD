@@ -1,6 +1,6 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 pkgname=libosmo-gprs-git
-pkgver=0.2.0.r3.g341f26f
+pkgver=0.2.1.r1.ge96ddd8
 pkgrel=1
 pkgdesc="Osmocom GPRS libraries"
 arch=('x86_64' 'i686')
