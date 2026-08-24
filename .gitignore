@@ -1,0 +1,7 @@
+# makepkg leftovers. One of these got committed once and the AUR
+# rejects any blob over 488KiB, which blocked every later push.
+*.pkg.tar.zst
+*.pkg.tar.xz
+src/
+pkg/
+facsimile/
