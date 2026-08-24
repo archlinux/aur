@@ -1,18 +1,14 @@
 pkgname=luna-taskman-git
-pkgver=1.0.0
-pkgrel=1
+pkgver=3.1.0
+pkgrel=2
 pkgdesc="luna-taskman (git versiion)"
 arch=('x86_64')
 url="https://gitlab.com/materac-luna-project/luna-taskman"
 license=('GPL-3.0-or-later')
-depends=('glibc' 'curl' 'ncurses' 'readline' 'lua')
-makedepends=('git' 'make')
+depends=('glibc' 'sqlite')
+makedepends=('git' 'make' 'gcc')
 source=("git+$url.git")
 sha256sums=('SKIP')
-
-pkgver() {
-	cat $srcdir/luna-taskman/ver
-}
 
 build() {
 	cd "$srcdir/luna-taskman"
@@ -21,5 +17,5 @@ build() {
 
 package() {
 	cd "$srcdir/luna-taskman"
-	make ROOT="$pkgdir" SUDO_PREFIX="" install
+	make ROOT="$pkgdir" install
 }
