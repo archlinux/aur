@@ -1,6 +1,6 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=hace
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A task-launching app (think make)"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('crystal' 'shards')
 options=()
 install=install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e82ce1f2f33343f2315d38bfa849a369780e37ddca27d977bd85531906efbeb7')
+sha256sums=('fa5cf1f7586d764283a7ea059d00e398f2f0522b769516f87158b66926d6b89d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
