@@ -2,7 +2,7 @@
 pkgname=aviutl-package-manager-bin
 _pkgname=apm
 _appname='AviUtl Package Manager'
-pkgver=3.13.0
+pkgver=3.14.0
 _electronversion=43
 pkgrel=1
 pkgdesc="A software that assists in the installation of AviUtl itself and its plugins and scripts.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b619c5f174d8d73d06b6aeffe7ef1d1da2bc65e8984c4ee248c7cb1a3a159e60'
+sha256sums=('1d3232fe8e2985e36d11254bc0a9a93e4a0062988d00456482b6c782d2e8aa11'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -48,8 +48,10 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     local _app_dir=$(_get_app_dir)
-    rm -rf "${_app_dir}/resources/app.asar.unpacked/.webpack/main/native_modules/"{mac,win,win-7zip,linux/{arm*,ia32}}
-    ln -sf "/usr/bin/7za" "${_app_dir}/resources/app.asar.unpacked/.webpack/main/native_modules/linux/x64/7za"
+    rm -rf \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/win-7zip" \
+        "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/"{mac,win,linux/{arm*,ia32}}
+    ln -sf "/usr/bin/7za" "${_app_dir}/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64/7za"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
