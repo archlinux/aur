@@ -1,7 +1,7 @@
 # Maintainer: Giovanni Santini <giovannisantini93@yahoo.it>
 _pkgname=pi_agent_rust
 pkgname=pi-agent-rust
-pkgver=0.1.23
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="High-performance AI coding agent CLI - Rust port of Pi Agent"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ provides=('pi')
 conflicts=('pi')
 replaces=('pi')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('35e25f33c8b2e0618a89d4283b8ad604846d893e306013589f0f99d6c3827bad')
+sha256sums=('bb15728a1ad4ad15d3c4be8e9b4d193956988b602ac2066f97f348d450bc52d5')
 # The vendored QuickJS and tree-sitter break with LTO, so disabling it
 options=(!lto)
 

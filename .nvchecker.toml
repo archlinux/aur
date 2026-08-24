@@ -1,0 +1,4 @@
+[pi-agent-rust]
+source = "git"
+git = "https://github.com/Dicklesworthstone/pi_agent_rust.git"
+prefix = "v"
