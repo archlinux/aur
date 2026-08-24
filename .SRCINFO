@@ -1,13 +1,12 @@
 pkgbase = hypersploit
 	pkgdesc = Bypasses HyperOS restrictions on bootloader unlocking
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheAirBlow/HyperSploit
 	arch = x86_64
 	license = MPL-2.0
 	makedepends = git
 	makedepends = dotnet-sdk
-	depends = glibc
 	optdepends = android-tools: Android platform tools
 	optdepends = android-udev: Udev rules to connect Android devices to your linux box
 	provides = hypersploit

@@ -3,7 +3,7 @@
 pkgbase=hypersploit
 pkgname=hypersploit
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Bypasses HyperOS restrictions on bootloader unlocking"
 arch=($CARCH)
@@ -12,7 +12,7 @@ license=('MPL-2.0')
 provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
-depends=(glibc)
+depends=()
 makedepends=(
     git
     dotnet-sdk
