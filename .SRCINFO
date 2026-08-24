@@ -1,14 +1,13 @@
 pkgbase = focaltech-spi-dkms
 	pkgdesc = SPI module for FocalTech FTE3600, FTE4800, FTE6600 and FTE6900 fingerprint readers
 	pkgver = 1.0.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/vobademi/FTEXX00-Ubuntu
 	arch = x86_64
 	license = GPL-2.0
 	makedepends = git
-	makedepends = tar
-	makedepends = linux-headers
 	depends = dkms
+	depends = linux-headers
 	source = git+https://github.com/vobademi/FTEXX00-Ubuntu.git
 	sha256sums = SKIP
 
