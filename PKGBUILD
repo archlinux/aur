@@ -6,9 +6,8 @@
 # Contributor: Antti Juhani Oja <antti.oja@gmail.com>
 # Contributor: Pasha Finkelshteyn <me@asm0dey.site>
 
-
 pkgname=physicseditor
-pkgver=2.0.0
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="Physics editor for certain game engines such as Cocos2D-X, Corona SDK, etc."
 arch=('x86_64')
@@ -16,10 +15,10 @@ url="http://www.codeandweb.com/$pkgname"
 license=("custom:$pkgname")
 install="$pkgname.install"
 depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'grantlee'
-		 'gcc-libs-multilib' 'qt5-svg' 'qt5-declarative' 'qt5-imageformats'
-		 'qt5-quickcontrols')
+    'gcc-libs-multilib' 'qt5-svg' 'qt5-declarative' 'qt5-imageformats'
+    'qt5-quickcontrols')
 source=("$pkgname-$pkgver.deb::https://www.codeandweb.com/download/$pkgname/$pkgver/PhysicsEditor-$pkgver.deb")
-sha256sums=('8e5b389281cb59f859337c9e1b1ee504266fcad7a8e4609999fb207c6eb523ac')
+sha256sums=('da3d712e628bf8b26c56e40b9877d1efcf6b67174371f91c9589ee07904a6039')
 
 build() {
     ar -x "$pkgname-$pkgver.deb"
@@ -34,8 +33,8 @@ package() {
     # Enter $pkgdir.
     cd ${pkgdir}/usr/lib/$pkgname/
 
-	# IMPORTANT NOTE: It looks like codeandweb stopped compiling with the -fPIC
-	# flag. We must keep the bloat for now.
+    # IMPORTANT NOTE: It looks like codeandweb stopped compiling with the -fPIC
+    # flag. We must keep the bloat for now.
 
     # Delete all the extra lib folders.
     #rm -rf generic/ grantlee/ iconengines/ imageformats/ platforminputcontexts/ platforms/ \
