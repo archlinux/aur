@@ -2,7 +2,7 @@
 
 _name=smithy-aws-core
 pkgname=python-$_name
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Core Smithy components for AWS services and protocols.'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('python-smithy-aws-event-stream: eventstream'
             'python-smithy-json: json'
             'python-smithy-xml: xml')
 source=("$_name::git+$_repo.git#tag=$_name/v$pkgver")
-sha256sums=('b075d4c4ef8d7cad6b0b89953a68b2ecb4f9926e4a2963b784ecc00b03b01d00')
+sha256sums=('f54ff2760bfaa689abb5c73475e28b6171d3adceb6dc176a5fbbe75eb97e43d1')
 
 build() {
   cd "$srcdir"/$_name/packages/$_name
