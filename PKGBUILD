@@ -126,7 +126,7 @@ prepare() {
   svgo . -r --multipass || true
 
   # optimize PNGs
-  #oxipng -o max -r -p -s -v -t "$(nproc)" \
+  oxipng -o max -r -p -s -v -t "$(nproc)" \
     -z --zi 100 --ziwi 10 --brute-level 5 --brute-lines 16 . || true
 }
 
