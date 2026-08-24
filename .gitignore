@@ -1,0 +1,6 @@
+#
+src/
+pkg/
+whatsv-git/
+
+*.pkg.tar.*
