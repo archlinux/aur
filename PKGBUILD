@@ -1,7 +1,9 @@
 # Maintainer: NewYearPrism
 
-_llama_cpp_version=10453
-_llama_cpp_sha256sum=2c2b62a081c73e3de06c3ee8ef9f77847273485b9dd10236a4f0f107402956de
+_llama_cpp_version=10603
+_llama_cpp_sha256sum=7a319224f291d4c533e634aa861ed9407f5287d06424212830ff7444db5a578b
+_ggml_version=0.21.0
+_ggml_sha256sum=3b0d4f1fe7c278824d4bb753b7402733576985689bd40e9cc719eca627131d24
 pkgname=ggml-core-llama.cpp
 pkgver=0.0.0.b${_llama_cpp_version}
 pkgrel=1
@@ -37,17 +39,18 @@ options=(
 source=(
     "llama.cpp-b${_llama_cpp_version}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b${_llama_cpp_version}.tar.gz"
     ggml-h-ggml-max-name-128.patch
-    ggml.pc.in
+    "ggml-${_ggml_version}.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v${_ggml_version}.tar.gz"
 )
 sha256sums=(
     ${_llama_cpp_sha256sum}
     b3be0f6368ca8344e52e044f60dc81efb98e646e93ce3fe690f8d8b4750eb27a
-    4df038e6d2f345fb8a930cb76014fd6a9fdeb793a6fa3593f436fc29e0589eee
+    ${_ggml_sha256sum}
 )
 
 prepare() {
   ln -sf "llama.cpp-b${_llama_cpp_version}" llama.cpp
-  cp "$srcdir/ggml.pc.in" llama.cpp/ggml/ggml.pc.in
+  ln -sf "ggml-${_ggml_version}" ggml
+  cp ggml/ggml.pc.in llama.cpp/ggml/ggml.pc.in
   patch -Np1 -d llama.cpp/ggml -i "$srcdir/ggml-h-ggml-max-name-128.patch"
 }
 
