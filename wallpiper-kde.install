@@ -1,0 +1,12 @@
+post_install() {
+    cat <<EOF
+==> wallpiper-kde installed the Wallpiper Plasma wallpaper plugin system-wide.
+    Restart plasmashell (or log out and back in), then select it from:
+
+        System Settings -> Wallpaper -> Wallpaper type -> Wallpiper
+EOF
+}
+
+post_upgrade() {
+    post_install
+}

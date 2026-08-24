@@ -1,0 +1,26 @@
+pkgbase = wallpiper-kde
+	pkgdesc = KDE Plasma 6 portal for wallpiper
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shdwmtr/wallpiper
+	install = wallpiper-kde.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = mesa
+	makedepends = libx11
+	makedepends = libxrandr
+	depends = wallpiper
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = mesa
+	depends = libx11
+	depends = libxrandr
+	source = wallpiper-kde::git+https://github.com/shdwmtr/wallpiper.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = wallpiper-kde
