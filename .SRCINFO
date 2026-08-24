@@ -1,13 +1,13 @@
 pkgbase = exabgp
 	pkgdesc = The BGP swiss army knife of networking
-	pkgver = 5.0.5
+	pkgver = 5.0.13
 	pkgrel = 1
 	url = https://github.com/Exa-Networks/exabgp
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = exabgp-5.0.5.tar.gz::https://github.com/Exa-Networks/exabgp/archive/5.0.5.tar.gz
-	sha256sums = 6f94f3ae4558e82388611ea485225e63f01493647ac2ad5ef8c010aecd57d655
+	source = exabgp-5.0.13.tar.gz::https://github.com/Exa-Networks/exabgp/archive/5.0.13.tar.gz
+	sha256sums = 55974ba0da9ded96473eb6a340fc54671e14b44908ad7d154bf13f283cd0ac4a
 
 pkgname = exabgp
