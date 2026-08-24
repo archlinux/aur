@@ -29,9 +29,9 @@ source=("${_pkgname}.service"
 # Updated automatically by the release workflow.
 sha256sums=('7c8695dd38bb67c64ee8a428003b9f874f7718270d84597f7e8ed9ef061ddd73'
             'a01f522a8e48a40a0bb5027fc4c2673a033e4c09c305e5185681a79f0d51022e')
-sha256sums_x86_64=('bf719ab2421c6ab3674ea7f6c6216cc7695b3cbc1ab4efcf3ab1b810643f6b70')
-sha256sums_aarch64=('f55eba905d25aa06a98399d05a9e90ff911fbab04a80e643e2142526e61a8e47')
-sha256sums_armv7h=('5219a2711825559d80ec33ece5004cf8b0eae73a29869c0e7d0ef58d9929cdba')
+sha256sums_x86_64=('763f3a3880b5712ae80f7afae98162c82e3cbccd89b5ba9986e265a97bca9ee8')
+sha256sums_aarch64=('471bbd7057dc39f885bed1471794624ccec12c45e7b0b433a009b6d1c0c9e74c')
+sha256sums_armv7h=('b626f4a04735e6d4049bf0d57f28a600c582b6c8551111af2a5576d3f83db612')
 
 package() {
     cd "${srcdir}"
