@@ -1,0 +1,19 @@
+pkgbase = laurel-audit
+	pkgdesc = Transform Linux Audit logs for SIEM usage
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/threathunters-io/laurel
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = pandoc
+	depends = acl
+	depends = audit
+	conflicts = laurel-audit-bin
+	conflicts = laurel-audit-git
+	source = laurel-audit-0.8.2.tar.gz::https://github.com/threathunters-io/laurel/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = 9cacc0d7097a0e8e7c7eccfe6fcc7fd7958e3b403ed8270a8691ad68299dec23
+
+pkgname = laurel-audit
