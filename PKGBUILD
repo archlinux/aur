@@ -2,7 +2,7 @@
 
 pkgname=yaabsa-bin
 pkgver=1.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial feature rich, responsive, modern client for Audiobookshelf"
 arch=('x86_64')
 url="https://github.com/Vito0912/yaabsa"
@@ -11,9 +11,10 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 options=('strip' '!libtool' '!staticlibs' '!emptydirs')
 depends=(
-	'mpv'
+	'libmpv.so'
 	'libsecret'
 	'gtk3'
+	'libayatana-appindicator'
 	'hicolor-icon-theme'
 )
 makedepends=('tar')
