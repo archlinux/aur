@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=jmcomic-downloader
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="禁漫天堂 18comic.vip jmcomic 18comic 的多线程下载器，带图形界面，带收藏夹，免费下载收费的漫画，下载速度飞快"
 arch=($CARCH)
@@ -12,12 +12,12 @@ conflicts=(${pkgname})
 # replaces=(${pkgname})
 depends=(
     cairo
-    gcc-libs
     gdk-pixbuf2
     glib2
-    glibc
     gtk3
     hicolor-icon-theme
+    libgcc_s.so
+    libstdc++.so
     libsoup3
     openssl
     webkit2gtk-4.1
@@ -33,12 +33,12 @@ backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('dd1a64cd992c80f11e94c80826e8323750853d48d4ccdd2846debf8da810e082')
+sha256sums=('b159b60deeccb9ae3be3b3262e1678890fad9669805f13e7e8d3b0c8e4669f1c')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}/src-tauri"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
