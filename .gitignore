@@ -1,0 +1,6 @@
+/src/
+/pkg/
+*.pkg.tar.*
+*.zip
+*.log
+/xremap-LICENSE-*
