@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=depmixS4
-_pkgver=1.5-1
+_pkgver=1.5-4
 pkgname=r-${_pkgname,,}
-pkgver=1.5.1
+pkgver=1.5.4
 pkgrel=1
 pkgdesc='Dependent Mixture Models - Hidden Markov Models of GLMs and Other Distributions in S4'
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   r-rdonlp2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('12713b1a31d6a2c7f205ee2159f8bed01de308163fee297255ef249c72013536')
+sha256sums=('0e8c0f227f4e57cd07f72025dcce289fd06fa46fead7b631a50776d2019e290e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
