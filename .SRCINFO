@@ -1,5 +1,5 @@
 pkgbase = pandora-launcher-bin
-	pkgdesc = A modern Minecraft launcher that balances ease-of-use with powerful instance management features.
+	pkgdesc = A modern Minecraft launcher that balances ease-of-use with powerful instance management features. (official binary version)
 	pkgver = 5.5.2
 	pkgrel = 1
 	url = http://pandora.moulberry.com/
