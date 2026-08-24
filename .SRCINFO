@@ -1,8 +1,8 @@
 pkgbase = qteasytier-bin
 	pkgdesc = 基于 EasyTier, 一款美观实用的远程联机工具!
-	pkgver = 3.0.2
+	pkgver = 3.1.0
 	pkgrel = 2
-	url = https://gitee.com/qteasytier/qt-easy-tier
+	url = https://cnb.cool/myqfeng/qteasytier/qt-easy-tier
 	install = qteasytier.install
 	arch = x86_64
 	license = LGPL3
@@ -14,7 +14,7 @@ pkgbase = qteasytier-bin
 	provides = qteasytier
 	conflicts = qteasytier
 	options = !debug
-	source = https://gitee.com/qteasytier/qt-easy-tier/releases/download/3.0.2/qteasytier_v3.0.2_linux_amd64.deb
-	sha256sums = 1be6dfe5cfda9c40b8df576e4b80ffb27731f1cb95cf8ce99afbd5cfda782aad
+	source = https://cnb.cool/myqfeng/qteasytier/qt-easy-tier/-/releases/download/3.1.0/qteasytier_v3.1.0_linux_amd64.deb
+	sha256sums = sha256:17717feaa09ba54638911bdf8ac8fb07fb0cc74954657f4c3207b4967462c56d
 
 pkgname = qteasytier-bin
