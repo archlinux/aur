@@ -1,0 +1,31 @@
+post_install() {
+    echo ""
+    echo "  ╔══════════════════════════════════════════════════════════════╗"
+    echo "  ║                  webhid-addon installed                     ║"
+    echo "  ╚══════════════════════════════════════════════════════════════╝"
+    echo ""
+    echo "  The WebHID extension has been installed system-wide."
+    echo "  Restart Firefox to activate it."
+    echo ""
+    echo "  Firefox will pick it up automatically from:"
+    echo "    /usr/lib/mozilla/extensions/{ec8030f7-…}/webhid@k4zoku.dev.xpi"
+    echo ""
+    echo "  If the extension does not appear after restarting, verify that"
+    echo "  xpinstall.signatures.required is not overriding system extensions:"
+    echo "    about:config → xpinstall.signatures.required → false"
+    echo "  (Not required for stock Firefox; only needed in edge cases.)"
+    echo ""
+    echo "  Make sure the daemon is running:"
+    echo "    systemctl status webhid-daemon.service"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ""
+    echo "  webhid-addon removed. Restart your browser to deactivate the extension."
+    echo ""
+}
