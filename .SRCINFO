@@ -1,0 +1,25 @@
+pkgbase = e2e-cli
+	pkgdesc = Unified command line interface to manage E2E Networks cloud services
+	pkgver = 0.9.30
+	pkgrel = 1
+	url = https://pypi.org/project/e2e-cli/
+	arch = any
+	license = LicenseRef-Unknown
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-prettytable
+	depends = python-requests
+	depends = python-setuptools
+	depends = python-chardet
+	depends = python-bidict
+	depends = python-yaml
+	depends = python-jsonschema
+	depends = python-colorama
+	source = https://files.pythonhosted.org/packages/source/e/e2e_cli/e2e_cli-0.9.30.tar.gz
+	source = LICENSE-NOTICE
+	sha256sums = 3465450d78d70d310e3354f21f1aa436fbdc42c68096d66eb7a5da1d0c5eb6ce
+	sha256sums = a9343bba59d9a3cabd1bf4f2d4d2c1faaaff316844343986f1b1d68ed6092af4
+
+pkgname = e2e-cli

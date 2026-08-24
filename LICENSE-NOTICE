@@ -1,0 +1,8 @@
+Upstream e2e-cli (https://pypi.org/project/e2e-cli/) does not declare a
+license. The sdist ships an empty LICENSE file and no License classifier
+or SPDX identifier is present in its package metadata.
+
+This file is installed to satisfy the LicenseRef-Unknown requirement for
+license files below /usr/share/licenses/<pkgname>/. It does not itself
+constitute a license grant; consult the upstream project directly for
+licensing terms.
