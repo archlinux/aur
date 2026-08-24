@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=squawk-bin
-pkgver=2.62.0
+pkgver=2.63.0
 pkgrel=1
 pkgdesc="Linter for PostgreSQL, focused on migrations"
 arch=('x86_64' 'aarch64')
