@@ -1,6 +1,6 @@
 pkgbase = mission-center-git
 	pkgdesc = Monitor your CPU, Memory, Disk, Network and GPU usage
-	pkgver = 1.1.0.r41.ge646b46
+	pkgver = 1.2.0.r19.g648cb5f
 	pkgrel = 1
 	url = https://gitlab.com/mission-center-devs/mission-center
 	arch = x86_64
@@ -21,7 +21,9 @@ pkgbase = mission-center-git
 	options = !lto
 	source = git+https://gitlab.com/mission-center-devs/mission-center.git
 	source = git+https://gitlab.com/mission-center-devs/gng.git
+	source = git+https://gitlab.com/mission-center-devs/graph-widget.git
 	source = git+https://gitlab.com/mission-center-devs/app-detection.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
