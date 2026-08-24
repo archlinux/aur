@@ -1,6 +1,9 @@
 # Maintainer: deungjaho <deungjaho@gmail.com>
+# PKGBUILD for hydra-proxy AUR package
+# 规范流程见 hydra/aur/README.md
+
 pkgname=hydra-proxy
-pkgver=0.6.6
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Terminal AI proxy gateway for Antigravity accounts (OpenAI/Anthropic-compatible)"
 arch=('x86_64')
@@ -11,12 +14,12 @@ makedepends=('go')
 provides=('hydra')
 conflicts=('hydra' 'hydra-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/deungjaho/hydra/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=(cb051321dd263fff0be20f4f4a87613e000f649ba19b58f8243c910a330fc762)
+sha256sums=(dc107e39ea2e28e4962009ccc18bbbd54bb745801b85b4f8a55f1d3e80914841)
 
 build() {
     cd "${srcdir}/hydra-${pkgver}"
     export CGO_ENABLED=0
-    go build -ldflags="-s -w" -o hydra ./cmd/hydra
+    go build -ldflags="-s -w -X github.com/deungjaho/hydra/internal/cli.Version=${pkgver} -X github.com/deungjaho/hydra/internal/cli.Commit=$(git rev-parse --short HEAD 2>/dev/null || echo unknown)" -o hydra ./cmd/hydra
 }
 
 check() {
