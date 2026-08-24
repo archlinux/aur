@@ -78,12 +78,6 @@ sha256sums_armv7=('bc039a963fd6cc4f215d62a99b82260a70e40adceeb13b05f9b2582a4a77c
 sha256sums_armv7l=('bc039a963fd6cc4f215d62a99b82260a70e40adceeb13b05f9b2582a4a77c737')
 sha256sums_armv7h=('bc039a963fd6cc4f215d62a99b82260a70e40adceeb13b05f9b2582a4a77c737')
 sha256sums_arm=('1099564688600d965eaa3143d90ebc6e121c1ac28c5f7f6227388bf0ba90218a')
-#https://github.com/skycoin/skywire/releases/download/v1.3.32/skywire-v1.3.32-linux-amd64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.32/skywire-v1.3.32-linux-arm64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.32/skywire-v1.3.32-linux-armhf.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.32/skywire-v1.3.32-linux-arm.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.32/skywire-v1.3.32-linux-riscv64.tar.gz
-#https://github.com/skycoin/skywire/releases/download/v1.3.32/skywire-v1.3.32-linux-386.tar.gz
 _binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
