@@ -1,6 +1,6 @@
 pkgbase = something-x
 	pkgdesc = GTK4 device manager for Nothing earbuds on Linux
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = https://github.com/SoaOaoS/nothingonmarchy
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = something-x
 	depends = gtk4
 	depends = libadwaita
 	optdepends = libpulse: volume control via pactl
-	source = https://files.pythonhosted.org/packages/source/s/something-x/something_x-1.9.1.tar.gz
-	sha256sums = 3e6b411f98a6c00e444e8230ef1b02e34da9a993fa5e5b4f603ee2a0fb93bce9
+	source = https://files.pythonhosted.org/packages/source/s/something-x/something_x-1.9.2.tar.gz
+	sha256sums = 1199f99b96f3714bd901ba33c8af19e7eb4736ed2bc4f4023d8b0bb70261b501
 
 pkgname = something-x
