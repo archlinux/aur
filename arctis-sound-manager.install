@@ -26,7 +26,14 @@ _asm_migrate_gui_unit() {
 post_install() {
     # Reload udev rules
     udevadm control --reload-rules 2>/dev/null || true
-    udevadm trigger --action=add --subsystem-match=usb 2>/dev/null || true
+    # Scoped to SteelSeries (idVendor=1038), the way the Distrobox installers
+    # have always done it. Re-adding every USB device on the machine disturbs
+    # hardware that has nothing to do with ASM, and — because this runs while
+    # asm-daemon still holds the headset's interface with the kernel driver
+    # detached — it makes the running daemon lose the device (errno 19) and
+    # lets hid-generic claim interface 4 back. The headset then reads as absent
+    # until it is physically replugged, after every single upgrade.
+    udevadm trigger --action=add --subsystem-match=usb --attr-match=idVendor=1038 2>/dev/null || true
 
     REAL_USER="${SUDO_USER:-}"
 
@@ -75,7 +82,14 @@ post_install() {
 
 post_upgrade() {
     udevadm control --reload-rules 2>/dev/null || true
-    udevadm trigger --action=add --subsystem-match=usb 2>/dev/null || true
+    # Scoped to SteelSeries (idVendor=1038), the way the Distrobox installers
+    # have always done it. Re-adding every USB device on the machine disturbs
+    # hardware that has nothing to do with ASM, and — because this runs while
+    # asm-daemon still holds the headset's interface with the kernel driver
+    # detached — it makes the running daemon lose the device (errno 19) and
+    # lets hid-generic claim interface 4 back. The headset then reads as absent
+    # until it is physically replugged, after every single upgrade.
+    udevadm trigger --action=add --subsystem-match=usb --attr-match=idVendor=1038 2>/dev/null || true
 
     # Replacing files on disk does not touch running processes: asm-daemon keeps
     # executing the version it loaded at startup until something restarts it.
