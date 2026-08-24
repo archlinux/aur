@@ -1,14 +1,18 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=osmo-python-tests
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc='Osmocom tools for testing VTY/CTRL interfaces'
 url='https://gitea.osmocom.org/cellular-infrastructure/osmo-python-tests'
 license=('GPL-2.0-or-later AND AGPL-3.0-or-later')
 arch=('any')
 depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+optdepends=('python-aiohttp: osmo_trap2cgi.py')
+makedepends=('git'
+             'python-build'
+             'python-installer'
+             'python-setuptools')
 source=("git+https://gitea.osmocom.org/cellular-infrastructure/osmo-python-tests.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
