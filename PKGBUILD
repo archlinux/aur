@@ -2,7 +2,7 @@
 
 pkgname=paseo
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)"
 arch=('x86_64')
 url="https://paseo.sh"
@@ -32,7 +32,7 @@ sha256sums=('a45bf1739a63033984d7c79de1bc64144326ad5c1bf30abb888c5bc3f3242e73'
             'df0d01b98ac405c5c25edbb91d61bb9e05355a57e0e652e00823d6331618d686'
             '0bd531415e7504c4bbff0ce137a5541a4ba7d0c29281139b29d94ee537fde307'
             '9c76df40b274123e128228dc841f44f018e4ffd8473a97f0a6b7a9c8a4c2e4fa'
-            'cda16406214cc51320c98748ca05a90f9e786c30f7c642947824e0ec8c83a8e1')
+            '94bd85443217eb476eeac64a35e2cd2ccd2c192643fe35ad12078b15f4768c06')
 
 # Repo-relative path of the installed node-pty. npm hoists it to the root
 # node_modules in some releases and nests it under packages/server in others
@@ -69,6 +69,14 @@ prepare() {
     # packages/server/dist/server/skills, which the trace already installs
     # (byte-identical to the top-level skills/ that package() checks for), so
     # nothing needs redirecting and the hunk was dropped rather than ported.
+    #
+    # A hunk for features/editor-targets/runtime.ts was added instead:
+    # iconPath() reads the editor-target icons from process.resourcesPath, and
+    # listEditorTargets() awaits describe() -> loadIcon() for every installed
+    # editor with no try/catch anywhere in the chain. Under system Electron
+    # that path resolves into electron*/resources, so the read threw ENOENT and
+    # the whole editor-target list failed for anyone with a supported editor
+    # installed — not just a missing icon. Point it at the assets we ship.
     patch -Np1 -i "${srcdir}/system-electron-paths.patch"
 
     # Keep npm state inside $srcdir; skip lifecycle scripts (no electron /
@@ -218,6 +226,12 @@ package() {
         "usr/lib/paseo/$(_node_pty_dir)/build/Release/pty.node"
         usr/lib/paseo/packages/app/dist/index.html
         usr/lib/paseo/skills
+        # Hardcoded by system-electron-paths.patch: the window icon and the
+        # editor-target icons. Upstream reads both out of process.resourcesPath,
+        # which under system Electron points into electron*/resources instead of
+        # here, so the patch redirects them and these must ship.
+        usr/lib/paseo/packages/desktop/assets/icon.png
+        usr/lib/paseo/packages/desktop/assets/editor-targets/vscode.png
     )
     local _f
     for _f in "${_required[@]}"; do

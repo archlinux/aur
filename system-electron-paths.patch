@@ -56,6 +56,18 @@ index cc113da..605bc15 100644
      shimPath,
      appImagePath: process.env.APPIMAGE,
    });
+diff --git a/packages/desktop/src/features/editor-targets/runtime.ts b/packages/desktop/src/features/editor-targets/runtime.ts
+--- a/packages/desktop/src/features/editor-targets/runtime.ts
++++ b/packages/desktop/src/features/editor-targets/runtime.ts
+@@ -113,7 +113,7 @@ function spawnProcess(command: string, args: string[], options: SpawnOptions): S
+ 
+ function iconPath(fileName: string): string {
+   if (app.isPackaged) {
+-    return path.join(process.resourcesPath, "editor-target-icons", fileName);
++    return "/usr/lib/paseo/packages/desktop/assets/editor-targets/" + fileName;
+   }
+   return path.resolve(__dirname, "../../../assets/editor-targets", fileName);
+ }
 diff --git a/packages/desktop/src/main.ts b/packages/desktop/src/main.ts
 index 4f4cded..4529449 100644
 --- a/packages/desktop/src/main.ts

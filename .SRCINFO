@@ -1,7 +1,7 @@
 pkgbase = paseo
 	pkgdesc = One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)
 	pkgver = 0.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://paseo.sh
 	install = paseo.install
 	arch = x86_64
@@ -32,6 +32,6 @@ pkgbase = paseo
 	sha256sums = df0d01b98ac405c5c25edbb91d61bb9e05355a57e0e652e00823d6331618d686
 	sha256sums = 0bd531415e7504c4bbff0ce137a5541a4ba7d0c29281139b29d94ee537fde307
 	sha256sums = 9c76df40b274123e128228dc841f44f018e4ffd8473a97f0a6b7a9c8a4c2e4fa
-	sha256sums = cda16406214cc51320c98748ca05a90f9e786c30f7c642947824e0ec8c83a8e1
+	sha256sums = 94bd85443217eb476eeac64a35e2cd2ccd2c192643fe35ad12078b15f4768c06
 
 pkgname = paseo
