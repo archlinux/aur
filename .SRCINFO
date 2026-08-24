@@ -1,6 +1,6 @@
 pkgbase = ezcut
 	pkgdesc = Lightweight video cutter powered by ffmpeg
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/e-z-services/e-z-cut
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = ezcut
 	depends = ffmpeg
 	provides = quickcut
 	conflicts = quickcut
-	source = ezcut-0.1.3.tar.gz::https://github.com/e-z-services/e-z-cut/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = ddc5444ef5861bc1c1a7bde80dbe479fd48ad6b2f8dd137f036a9054a12a1153
+	source = ezcut-0.1.4.tar.gz::https://github.com/e-z-services/e-z-cut/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = be5e86799dfcf2e9dfb37d4cf8b0e9ec46249649e4a4f41149fd8fe3a11e2630
 
 pkgname = ezcut

@@ -1,6 +1,6 @@
 # Maintainer: Nathan <me@nathan.rip>
 pkgname=ezcut
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Lightweight video cutter powered by ffmpeg"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/e-z-services/e-z-cut/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha256sums=('ddc5444ef5861bc1c1a7bde80dbe479fd48ad6b2f8dd137f036a9054a12a1153')
+sha256sums=('be5e86799dfcf2e9dfb37d4cf8b0e9ec46249649e4a4f41149fd8fe3a11e2630')
 
 build() {
     cmake -B build -S "e-z-cut-$pkgver" \
