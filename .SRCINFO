@@ -1,6 +1,6 @@
 pkgbase = chromium-widevine-helper
 	pkgdesc = Extension + native helper that installs Google's Widevine CDM into Chromium-based browser profiles
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://github.com/GloriousEggroll/chromium-widevine-helper
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = chromium-widevine-helper
 	backup = etc/opera/native-messaging-hosts/org.chromium.widevine.json
 	backup = etc/thorium/native-messaging-hosts/org.chromium.widevine.json
 	backup = etc/iridium/native-messaging-hosts/org.chromium.widevine.json
-	source = chromium-widevine-helper-1.0.8.tar.gz::https://github.com/GloriousEggroll/chromium-widevine-helper/archive/2851c31896aa7cd43895e4c4d9b749ca08188aec.tar.gz
-	sha256sums = d1ded7b511351a39c6a38c0f2a5666c6b27dc05236808a4c4acebebf9a9d4364
+	source = chromium-widevine-helper-1.0.9.tar.gz::https://github.com/GloriousEggroll/chromium-widevine-helper/archive/586b42ceb035f3202a2d23ee156ecd987567ba2f.tar.gz
+	sha256sums = ae59742c78f0942599d1bfcd5e067f113c11bbc049a31d1b3a6dab9ab45ecb63
 
 pkgname = chromium-widevine-helper

@@ -3,7 +3,7 @@
 # https://github.com/Felitendo/PKGBUILDS
 
 pkgname=chromium-widevine-helper
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Extension + native helper that installs Google's Widevine CDM into Chromium-based browser profiles"
 arch=('any')
@@ -25,9 +25,9 @@ backup=('etc/helium/native-messaging-hosts/org.chromium.widevine.json'
 # %global helper_version in Packaging/rpm/chromium-widevine-helper.spec. The
 # package is pinned to the commit that carries the packaged version, so it is
 # tied to a specific version and needs no -git suffix.
-_commit="2851c31896aa7cd43895e4c4d9b749ca08188aec"
+_commit="586b42ceb035f3202a2d23ee156ecd987567ba2f"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${_commit}.tar.gz")
-sha256sums=('d1ded7b511351a39c6a38c0f2a5666c6b27dc05236808a4c4acebebf9a9d4364')
+sha256sums=('ae59742c78f0942599d1bfcd5e067f113c11bbc049a31d1b3a6dab9ab45ecb63')
 
 prepare() {
   local _specver
