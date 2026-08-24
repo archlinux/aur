@@ -1,0 +1,20 @@
+--- a/btrfs-sb-mod.c	2026-08-24 23:55:35.734677848 +0700
++++ b/btrfs-sb-mod.c	2026-08-24 23:55:51.016855931 +0700
+@@ -40,7 +40,7 @@
+ 	btrfs_csum_data(csum_type, (unsigned char *)sb + BTRFS_CSUM_SIZE,
+ 			result, BTRFS_SUPER_INFO_SIZE - BTRFS_CSUM_SIZE);
+ 
+-	return (memcmp(sb, result, csum_size) == 0);
++	return (memcmp(sb, result, btrfs_csum_type_size(csum_type)) == 0);
+ }
+ 
+ static void update_block_csum(void *block)
+@@ -54,7 +54,7 @@
+ 
+ 	memset(block, 0, BTRFS_CSUM_SIZE);
+ 	hdr = (struct btrfs_header *)block;
+-	memcpy(&hdr->csum, result, csum_size);
++	memcpy(&hdr->csum, result, btrfs_csum_type_size(csum_type));
+ }
+ 
+ static u64 arg_strtou64(const char *str)

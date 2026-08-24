@@ -1,0 +1,19 @@
+pkgbase = btrfs-sb-mod-release-git
+	pkgdesc = Modify or read members of a btrfs primary superblock with checksum recalculation (unshipped btrfs-progs internal tool), latest release tag build
+	pkgver = 7.1
+	pkgrel = 1
+	url = https://github.com/kdave/btrfs-progs
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = libgcrypt
+	makedepends = lzo
+	makedepends = zlib
+	makedepends = zstd
+	depends = util-linux-libs
+	source = git+https://github.com/kdave/btrfs-progs.git
+	source = fix-xxhash-csum-size.patch
+	b2sums = SKIP
+	b2sums = d275660984b47930b492eb4ce988fd777849f3be520bebe25f6e9c6ac9625c1c471f3598331eeb91be987b4c8cf956c898f492caa670a9f6ca846c03fc0d330f
+
+pkgname = btrfs-sb-mod-release-git
