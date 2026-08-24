@@ -1,26 +1,22 @@
-diff -ura borgwarehouse-3.1.4.orig/.env.sample borgwarehouse-3.1.4/.env.sample
---- borgwarehouse-3.1.4.orig/.env.sample	2026-05-11 09:42:20.939806031 +0200
-+++ borgwarehouse-3.1.4/.env.sample	2026-05-11 09:44:18.147364311 +0200
-@@ -13,18 +13,12 @@
- NEXTAUTH_SECRET=your-secret
- CRONJOB_KEY=your-other-secret
+--- a/.env.sample	2026-08-24 21:12:29.523518306 +0200
++++ b/.env.sample 2026-08-24 21:14:06.753569143 +0200
+@@ -13,15 +13,10 @@
  
--# PUID/PGID: UID and GID the app will run as inside the container.
--# Must match the owner of your volume directories on the host.
--# Must be > 0 (root is not allowed).
--PUID=1000
--PGID=1000
--
- # Config and data folders (volume mounts)
- # The host folders must be owned by the user with PUID and PGID specified above
+ ## Volume mount paths on the host ##
+ # These host directories must be owned by the PUID:PGID set below.
 -CONFIG_PATH=./config
 -SSH_PATH=./ssh
 -SSH_HOST=./ssh_host
 -BORG_REPOSITORY_PATH=./repos
+-
+-## User / group the app runs as inside the container ##
+-# Must match the owner of the volume directories above. Must be > 0 (root is not allowed).
+-PUID=1000
+-PGID=1000
 +CONFIG_PATH=/etc/webapps/borgwarehouse/config
 +SSH_PATH=/var/lib/borgwarehouse/ssh
 +SSH_HOST=/var/lib/borgwarehouse/ssh_host
 +BORG_REPOSITORY_PATH=/var/lib/borgwarehouse/repos
  
- ## Optional variables section ##
- 
+ ## Public hostname / URL ##
+ # FQDN shown to users in the generated backup commands.
