@@ -1,0 +1,39 @@
+post_install() {
+    getent group webhid >/dev/null || groupadd --system webhid
+    echo ""
+    echo "  ╔══════════════════════════════════════════════════════════════╗"
+    echo "  ║                     webhid installed                        ║"
+    echo "  ╚══════════════════════════════════════════════════════════════╝"
+    echo ""
+    echo "  The daemon ships as a system service that runs as root, so it"
+    echo "  already has access to all hidraw devices – no udev rule needed."
+    echo ""
+    echo "  1) Enable and start the daemon:"
+    echo ""
+    echo "       systemctl enable --now webhid-daemon.service"
+    echo ""
+    echo "  2) Add your user to the 'webhid' group to access the daemon socket:"
+    echo ""
+    echo "       sudo usermod -aG webhid \$USER"
+    echo "       (log out/in for the group change to take effect)"
+    echo ""
+    echo "  3) Install the Firefox browser addon from AMO:"
+    echo "       https://addons.mozilla.org/firefox/addon/webhid/"
+    echo "       • system-wide:  install the webhid-addon package"
+    echo ""
+    echo "  To run the daemon as your own user instead of root, install the"
+    echo "  udev rule from the repository:  sudo make install-udev-rule"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "  webhid upgraded – restarting daemon…"
+    systemctl try-restart webhid-daemon.service 2>/dev/null || true
+    echo ""
+}
+
+pre_remove() {
+    systemctl stop    webhid-daemon.service 2>/dev/null || true
+    systemctl disable webhid-daemon.service 2>/dev/null || true
+}
