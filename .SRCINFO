@@ -1,16 +1,16 @@
 pkgbase = osmo-sgsn
 	pkgdesc = Osmocom's Serving GPRS Support Node for 2G and 3G packet-switched mobile networks
 	pkgver = 1.13.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osmocom.org/projects/osmosgsn
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
-	license = GPL
+	license = AGPL-3.0-or-later
 	makedepends = libosmo-abis
-	depends = libosmocore
-	depends = libosmo-sigtran
+	depends = libosmocore>=1.11.0
+	depends = libosmo-sigtran>=2.1.0
 	depends = libosmo-gsup-client.so
 	depends = libosmo-ranap.so
 	depends = libasn1c.so
