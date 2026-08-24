@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=screenr-bin
 _pkgname=ScreenR
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A Simple Desktop application for screen recording.(Prebuilt version)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('0eec849da9d380903c22031e1d4d63d2b808f0c9c4754b79f91ef255dbc9b6bf')
+sha256sums=('60d6bf94e81ca73214959060bb926c0870137671deb52fd36c38c70757afd091')
 prepare() {
     sed -i "s/Categories=/Categories=AudioVideo;Utility;/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
