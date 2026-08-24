@@ -1,6 +1,6 @@
 pkgbase = api-fox-bin
 	pkgdesc = Apifox API documentation, debugging, mocking, and automated testing tool
-	pkgver = 2.8.43
+	pkgver = 2.8.44
 	pkgrel = 1
 	url = https://apifox.com
 	arch = x86_64
@@ -38,17 +38,17 @@ pkgbase = api-fox-bin
 	depends = xdg-utils
 	optdepends = java-runtime: run the bundled Java database executors
 	optdepends = libappindicator-gtk3: system tray icon support
-	provides = apifox=2.8.43
+	provides = apifox=2.8.44
 	conflicts = apifox
 	conflicts = apifox-bin
 	conflicts = apifox-appimage
-	noextract = apifox-2.8.43-1-x86_64.zip
-	noextract = apifox-2.8.43-1-aarch64.zip
+	noextract = apifox-2.8.44-1-x86_64.zip
+	noextract = apifox-2.8.44-1-aarch64.zip
 	options = !debug
 	options = !strip
-	source_x86_64 = apifox-2.8.43-1-x86_64.zip::https://file-assets.apifox.com/download/Apifox-linux-deb-latest.zip?version=2.8.43
-	sha256sums_x86_64 = f465cb6fe1f35c0ff4b1b13b229679e7754fc74daf35c956d35b4655fc4f7387
-	source_aarch64 = apifox-2.8.43-1-aarch64.zip::https://file-assets.apifox.com/download/Apifox-linux-arm64-deb-latest.zip?version=2.8.43
-	sha256sums_aarch64 = 07c8a95b7d9f6b54b40156702ecda42422442478e54ce8d58fb0aa76f0cd386c
+	source_x86_64 = apifox-2.8.44-1-x86_64.zip::https://file-assets.apifox.com/download/Apifox-linux-deb-latest.zip?version=2.8.44
+	sha256sums_x86_64 = 4b49412333760a69f1755403bc4a76993d7c51c7f82b0fca92f7b3ef5526409b
+	source_aarch64 = apifox-2.8.44-1-aarch64.zip::https://file-assets.apifox.com/download/Apifox-linux-arm64-deb-latest.zip?version=2.8.44
+	sha256sums_aarch64 = 309f6579b9f18c4f011ff053dc6b63c552c5da6d19744da979107a3a1b43e412
 
 pkgname = api-fox-bin
