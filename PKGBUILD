@@ -1,6 +1,6 @@
 # Maintainer: sinder <smirnov.sinder@gmail.com>
 pkgname=live-paper
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A Wayland video wallpaper engine"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('mpv' 'wayland' 'libglvnd')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('610a11083bf77c225ae4ee46912bc2751688e3bb92f7a9f7e01e6f4b88f2755f')
+sha256sums=('e49ed19ec7e38906457032500d078bf72119220256de7b23d0a9b67fed693269')
 
 prepare() {
     cd "$srcdir/$pkgname-rs-$pkgver"
