@@ -1,21 +1,9 @@
---- a/go-carbon.service
-+++ b/go-carbon.service
-@@ -4,8 +4,8 @@
- After=network.target
- 
- [Service]
--Type=forking
--ExecStart=/usr/bin/go-carbon -config /etc/go-carbon/go-carbon.conf -pidfile /var/run/go-carbon.pid -daemon
-+Type=simple
-+ExecStart=/usr/bin/go-carbon -config /etc/go-carbon/go-carbon.conf
- ExecReload=/bin/kill -HUP $MAINPID
- KillSignal=USR2
- Restart=on-failure
-@@ -14,5 +14,23 @@
- LimitNOFILE=55555
+--- a/go-carbon.service	2026-08-24 11:19:34.986582047 +0200
++++ b/go-carbon.service	2026-08-24 11:20:52.428183557 +0200
+@@ -17,5 +17,22 @@
+ LimitNOFILE=1048576
  LimitMEMLOCK=infinity
  
-+User=carbon
 +DynamicUser=true
 +RuntimeDirectory=go-carbon
 +StateDirectory=graphite

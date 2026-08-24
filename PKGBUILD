@@ -1,7 +1,7 @@
-# Maintainer: Mario Hros <m-aur@k3a.me>
+# Maintainer: Georg Pichler <georg.pichler@gmail.com>
 
 pkgname=go-carbon
-pkgver=0.18.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Golang implementation of Graphite/Carbon server with classic architecture: Agent -> Cache -> Persister"
 arch=(i686 x86_64)
@@ -11,10 +11,10 @@ depends=(glibc)
 makedepends=('go>=1.14')
 backup=(etc/go-carbon/go-carbon.conf
 		etc/go-carbon/storage-{aggregation,schemas}.conf)
-source=($pkgname-$pkgver.tar.gz::https://github.com/go-graphite/go-carbon/archive/v$pkgver.tar.gz
+source=($pkgname-$pkgver.tar.gz::https://github.com/go-graphite/go-carbon/archive/refs/tags/v$pkgver.tar.gz
 		go-carbon-dynamicuser.diff)
-sha256sums=('6af0223282dbbf04880d1b82a5605be99db5a0475599748fa5598f3e0eab856e'
-            'dceef1378a24a7acf7677284ee52f86e197fadeeab87b3c289cc0ac5741add9d')
+sha256sums=('e0eed27caf75d3fc37cbbc0082757cad3a2113f2652fa2afff53ad63c9d3b3d4'
+            'd296c161fbad820c90fc25cdea8c1a8bf1c99d737fb2fc016978fbc006a3fa4d')
 
 build() {
 	cd "${srcdir}/$pkgname-$pkgver"
