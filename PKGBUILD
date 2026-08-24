@@ -3,7 +3,7 @@
 # Contributor: <philipp.classen@posteo.de>
 
 pkgname=verifpal
-pkgver=0.53.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Cryptographic protocol analysis for real-world protocols."
 arch=('x86_64')
@@ -13,12 +13,14 @@ makedepends=('rust' 'cargo')
 source=("https://github.com/symbolicsoft/verifpal/archive/refs/tags/v${pkgver}.tar.gz"
         "$pkgname-$pkgver-manual.pdf::https://static.verifpal.com/manual.pdf"
         "$pkgname-$pkgver-manual-license.txt::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt")
-sha256sums=('3bcf2765881a2c665451c84f3a029d31bd62e45c5f401136c64327fb25f5f7c4'
-            '5760656e323ca946e780c3bf60eed400ffe4376e48c5fc5024c6dab35c3fe0df'
+sha256sums=('60faaf3e8e3568f196d5036ccfa1bce25098fbb976075990c93ef453f55ad67f'
+            '101c07be4e6c1de2f10176d01dfbf06c49c0f62aa1d00264a0268dc810bf6c67'
             '38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea')
 
 build() {
   cd "$pkgname-$pkgver"
+  export CFLAGS="${CFLAGS:-} -fno-lto"
+  export CXXFLAGS="${CXXFLAGS:-} -fno-lto"
   cargo build --release --locked
 }
 
