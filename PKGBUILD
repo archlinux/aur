@@ -4,7 +4,7 @@
 _name=great-tables
 pkgbase=python-$_name
 pkgname=($pkgbase $pkgbase-docs)
-pkgver=0.23.0
+pkgver=0.24.0
 # setup-tools-scm doesn't get the dependencies right from the tarball sources
 # https://wiki.archlinux.org/title/Talk:Python_package_guidelines#Prefer_VCS_source_for_setuptools-scm_and_friends
 _tag=93fc0a08be34a233fb98333569f6d0b95d4db73c # git rev-parse "v${pkgver}"

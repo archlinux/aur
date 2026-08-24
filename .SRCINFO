@@ -1,6 +1,6 @@
 pkgbase = python-great-tables
 	pkgdesc = Make awesome display tables using Python
-	pkgver = 0.23.0
+	pkgver = 0.24.0
 	pkgrel = 1
 	url = https://posit-dev.github.io/great-tables/
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = python-great-tables
 	depends = python-pillow>=10.2.0
 	depends = python-polars
 	depends = python-selenium>=4.18.1
-	source = python-great-tables-0.23.0::git+https://github.com/posit-dev/great-tables.git#tag=93fc0a08be34a233fb98333569f6d0b95d4db73c
+	source = python-great-tables-0.24.0::git+https://github.com/posit-dev/great-tables.git#tag=93fc0a08be34a233fb98333569f6d0b95d4db73c
 	b2sums = 44d6b824d95c38b83b3aa9a4efc5a05466a6833abcc8a7babb98e676cc0d49e62026c11a934eecafd0bda8aa1a6294b247918c7426a8c91e30d53b3a5bcb934d
 
 pkgname = python-great-tables
