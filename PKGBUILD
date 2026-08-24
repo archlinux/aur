@@ -2,9 +2,9 @@
 _mainver=5
 pkgname=firebot-beta-bin
 _appname=firebot
-pkgver="${_mainver}.66.7"
-#_appver="${pkgver}-beta2"
-_appver="${pkgver}"
+pkgver="${_mainver}.67.0"
+_appver="${pkgver}-beta1"
+#_appver="${pkgver}"
 pkgrel=1
 pkgdesc="A powerful all-in-one bot for Twitch streamers. Updates to Stable and Beta releases"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${url}/releases/download/v${_appver}/${_appname}-v${_appver}-linux-x64.
         "logo128.png"
         "logo256.png"
         "${_appname}.desktop")
-sha256sums=('83f664f4a38673ddd2b44d1424fd1dd714dc1c094f63fa1ae888e4ca661d2a3f'
+sha256sums=('c7cc0191067381fef8dc7c002a15ff1179316bca0f069d49567b4b3120a8a6bc'
             'c5e406b6f05e6cb2d276430c5e53a12581a580c16ca1a4c1258d2a168524ac65'
             '6d734f9ea57fcb04ebbc458fc0b222521d209ac587dffd6127f449a7bb73817e'
             '341c0df9578fc568b14e798ed6a16771a5af280e3a69dbb96364c40f4dc37e08'
