@@ -2,7 +2,7 @@
 # Contributor: kuro <kuro@kuro.moe>
 
 pkgname=vicinae-takoba
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Japanese dictionary, translator, TTS, and Anki integration for launchers — search Jotoba, translate on the fly, add cards to Anki"
 arch=('any')
