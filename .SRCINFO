@@ -1,6 +1,6 @@
 pkgbase = check-symlinks
 	pkgdesc = Check for broken symlinks
-	pkgver = 0.5.3
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/jmelahman/check-symlinks
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = check-symlinks
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = check-symlinks::git+https://github.com/jmelahman/check-symlinks.git#commit=c763c348af850a6fa4b4397d2087e6f01a3dc235
+	source = check-symlinks::git+https://github.com/jmelahman/check-symlinks.git#commit=99a02c84883ce80f22d55389f8922cc77e90e86d
 	md5sums = SKIP
 
 pkgname = check-symlinks
