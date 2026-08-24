@@ -2,7 +2,7 @@
 
 _pkgname="tartrazine"
 pkgname="${_pkgname}-bin"
-pkgver=0.20.1
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="A Crystal reimplementation of the Pygments/Chroma syntax highlighters"
 arch=(
@@ -31,11 +31,11 @@ source_aarch64=(
 source_x86_64=(
   "${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-amd64"
 )
-sha256sums=('66c0d85bf0faa15ddc499aac135b0549390556ccce36be273f8eaf2fd592f0d9'
+sha256sums=('887019bf298de9409bece3447a25758baabf546bcdffac490d63007efc16ec2b'
             '0832d35f478bfa74aea707443fcc87aeae50a0f20900d8e9f04fd4bfa01efdf3'
             'dbbffa23a676d422aa7460b468c731e4fe3a007414e14d787a3d3f3fb55b1713')
-sha256sums_aarch64=('f708d46591b311397d0fda7b78b5b8c3f862487261eae364090387d5b879ec2e')
-sha256sums_x86_64=('17c69f15095890158905f4510d642b1410099d0a5355df5513b3d4026d41005a')
+sha256sums_aarch64=('395fd4a64666ba49d4ad7bfd7cb79097297a240b4da407eaf9f99fb781f6aa27')
+sha256sums_x86_64=('4077eab774721fee41d1b6c34561ab3c070edf32131939940c7b19a7a97d42f3')
 
 package() {
   cd "${srcdir}"
