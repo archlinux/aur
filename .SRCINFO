@@ -1,15 +1,14 @@
 pkgbase = ggml-cuda-backend-llama.cpp
 	pkgdesc = CUDA backend for ggml (from llama.cpp)
-	pkgver = 0.0.0.b10453
+	pkgver = 0.0.0.b10603
 	pkgrel = 1
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = patch
 	makedepends = cudnn
-	depends = ggml-core-llama.cpp=0.0.0.b10453
+	depends = ggml-core-llama.cpp=0.0.0.b10603
 	depends = nvidia-utils
 	depends = cuda
 	depends = nccl
@@ -21,9 +20,9 @@ pkgbase = ggml-cuda-backend-llama.cpp
 	conflicts = ggml-cuda-backend
 	options = lto
 	options = !debug
-	source = llama.cpp-b10453.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b10453.tar.gz
-	source = ggml-use-system-base.patch
-	sha256sums = 2c2b62a081c73e3de06c3ee8ef9f77847273485b9dd10236a4f0f107402956de
-	sha256sums = 78bb5e4a55846ac3627e7cb7c74ef28edd1e2b541b16c8189f2e4591953dea90
+	source = llama.cpp-b10603.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/b10603.tar.gz
+	source = ggml-0.21.0.tar.gz::https://github.com/ggml-org/ggml/archive/refs/tags/v0.21.0.tar.gz
+	sha256sums = 7a319224f291d4c533e634aa861ed9407f5287d06424212830ff7444db5a578b
+	sha256sums = 3b0d4f1fe7c278824d4bb753b7402733576985689bd40e9cc719eca627131d24
 
 pkgname = ggml-cuda-backend-llama.cpp
