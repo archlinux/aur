@@ -1,6 +1,6 @@
 pkgbase = mrbuild
 	pkgdesc = Simple build system
-	pkgver = 1.16
+	pkgver = 1.19
 	pkgrel = 1
 	url = https://github.com/dkogan/mrbuild
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = mrbuild
 	depends = chrpath
 	provides = mrbuild
 	conflicts = mrbuild
-	source = mrbuild-1.16.tar.gz::https://github.com/dkogan/mrbuild/archive/refs/tags/v1.16.tar.gz
+	source = mrbuild-1.19.tar.gz::https://github.com/dkogan/mrbuild/archive/refs/tags/v1.19.tar.gz
 	source = libdirs.patch
 	source = LICENSE
-	sha256sums = f2ae97ce0b6a2d5bfab132a27757c269cb378c22bc4b5e1e0e36380abc954433
+	sha256sums = 09e1879da778c4cf8775186da2bed5cd3d3a83b100e13380b8cf45b12abdfcc8
 	sha256sums = 8c9ebaad041693803d798003256fce4a3d231a7622c14836e32167617aa331ad
 	sha256sums = 9ef5ec6f58aaa29dab6415cd56b48c22907fc6c850a17976d765602c6ceb9cd6
 

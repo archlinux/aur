@@ -1,6 +1,6 @@
 # Maintainer: Matthew Tran <0e4ef622 at gmail.com>
 pkgname=mrbuild
-pkgver=1.16
+pkgver=1.19
 pkgrel=1
 pkgdesc="Simple build system"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('mrbuild')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dkogan/mrbuild/archive/refs/tags/v${pkgver}.tar.gz"
         "libdirs.patch"
         "LICENSE")
-sha256sums=('f2ae97ce0b6a2d5bfab132a27757c269cb378c22bc4b5e1e0e36380abc954433'
+sha256sums=('09e1879da778c4cf8775186da2bed5cd3d3a83b100e13380b8cf45b12abdfcc8'
             '8c9ebaad041693803d798003256fce4a3d231a7622c14836e32167617aa331ad'
             '9ef5ec6f58aaa29dab6415cd56b48c22907fc6c850a17976d765602c6ceb9cd6')
 
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+    cd "$srcdir/$pkgname-$pkgver"
     install -Dm755 bin/make-pod-from-help "${pkgdir}/usr/bin/make-pod-from-help"
     install -Dm644 Makefile.common.header "${pkgdir}/usr/include/$pkgname/Makefile.common.header"
     install -Dm644 Makefile.common.footer "${pkgdir}/usr/include/$pkgname/Makefile.common.footer"
