@@ -1,6 +1,6 @@
 # Maintainer: Christopher Brown <cjbrown102@gmail.com>
 pkgname=pelagos-bin
-pkgver=0.65.93
+pkgver=0.65.94
 pkgrel=1
 pkgdesc="Fast Linux container runtime — OCI-compatible, namespaces, cgroups v2, seccomp, networking, image management (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_x86_64=("pelagos-x86_64::https://github.com/pelagos-containers/pelagos/re
 source_aarch64=("pelagos-aarch64::https://github.com/pelagos-containers/pelagos/releases/download/v$pkgver/pelagos-aarch64-linux"
                 "pelagos-aarch64.sha256::https://github.com/pelagos-containers/pelagos/releases/download/v$pkgver/pelagos-aarch64-linux.sha256"
                 "pelagos-$pkgver-src.tar.gz::https://github.com/pelagos-containers/pelagos/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums_x86_64=('6ad19c6d0609289d744c9a0350bbb4ed0166016f25f202a1b5517dec13319ba3' 'SKIP' '06d2ba38362cd237f845e910b4fddd078c0b0305d4009db0d738cf74d50c2393')
-sha256sums_aarch64=('22b83bd8c275925c1dd1053de7079e0790b05702907a8fda89bbff87a9da1673' 'SKIP' '06d2ba38362cd237f845e910b4fddd078c0b0305d4009db0d738cf74d50c2393')
+sha256sums_x86_64=('9fa5b0017386cdede4664d193101d10ca2b87184b62b4a21a1c9dc8632d99e01' 'SKIP' 'f203098d705d4104175bb3fbf2f6a3a20f27aca02ba8c35782de91b593451e62')
+sha256sums_aarch64=('b817931ab9f1baa31d44fc00b56fb2d2e8cb036971853addb0fe1388cd6e4136' 'SKIP' 'f203098d705d4104175bb3fbf2f6a3a20f27aca02ba8c35782de91b593451e62')
 
 package() {
     # Install the pre-built binary.
