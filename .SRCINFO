@@ -1,6 +1,6 @@
 pkgbase = kmux-git
 	pkgdesc = tmux client based on Konsole
-	pkgver = 26.04.3.r286.g0ff2883
+	pkgver = 26.08.0.r278.g674abd5
 	pkgrel = 1
 	url = https://github.com/futpib/kmux
 	arch = x86_64
@@ -10,17 +10,41 @@ pkgbase = kmux-git
 	makedepends = git
 	makedepends = kdoctools
 	makedepends = ninja
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = icu
+	depends = kbookmarks
+	depends = kcolorscheme
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kcoreaddons
+	depends = kcrash
+	depends = kdbusaddons
+	depends = kglobalaccel
+	depends = kguiaddons
+	depends = ki18n
+	depends = kiconthemes
+	depends = kio
 	depends = knewstuff
+	depends = knotifications
 	depends = knotifyconfig
 	depends = kparts
 	depends = kpty
+	depends = kservice
 	depends = ktextwidgets
+	depends = kwidgetsaddons
+	depends = kwindowsystem
+	depends = kxmlgui
+	depends = libssh
+	depends = libstdc++
+	depends = libxkbcommon
+	depends = qt6-base
 	depends = qt6-multimedia
+	depends = sh
 	depends = tmux
 	optdepends = keditbookmarks: to manage bookmarks
-	provides = kmux=26.04.3
+	provides = kmux=26.08.0
 	conflicts = kmux
-	options = !lto
 	source = kmux::git+https://github.com/futpib/kmux.git#branch=master
 	sha256sums = SKIP
 

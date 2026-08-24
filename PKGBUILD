@@ -2,7 +2,7 @@
 
 _pkgname="kmux"
 pkgname="$_pkgname-git"
-pkgver=26.04.3.r286.g0ff2883
+pkgver=26.08.0.r278.g674abd5
 pkgrel=1
 pkgdesc='tmux client based on Konsole'
 url="https://github.com/futpib/$_pkgname"
@@ -10,12 +10,37 @@ license=('GPL-2.0-or-later' 'LGPL-2.0-or-later')
 arch=('x86_64')
 
 depends=(
+  'glibc'
+  'hicolor-icon-theme'
+  'icu'
+  'kbookmarks'
+  'kcolorscheme'
+  'kconfig'
+  'kconfigwidgets'
+  'kcoreaddons'
+  'kcrash'
+  'kdbusaddons'
+  'kglobalaccel'
+  'kguiaddons'
+  'ki18n'
+  'kiconthemes'
+  'kio'
   'knewstuff'
+  'knotifications'
   'knotifyconfig'
   'kparts'
   'kpty'
+  'kservice'
   'ktextwidgets'
+  'kwidgetsaddons'
+  'kwindowsystem'
+  'kxmlgui'
+  'libssh'
+  'libstdc++'
+  'libxkbcommon'
+  'qt6-base'
   'qt6-multimedia'
+  'sh'
   'tmux'
 )
 makedepends=(
@@ -28,7 +53,6 @@ optdepends=(
   'keditbookmarks: to manage bookmarks'
 )
 
-options=('!lto')
 provides=("$_pkgname=${pkgver%%.r*}")
 conflicts=("$_pkgname")
 
@@ -52,7 +76,7 @@ pkgver() {
     git log -G "$_line" -1 --format='%H' -- "$_history_path"
   )
   if [[ -z "$_commit" ]]; then
-    error "Could not find the commit that introduced $_line"
+    printf 'Could not find the commit that introduced %s\n' "$_line" >&2
     return 1
   fi
   _revision=$(git rev-list --count "$_commit"..HEAD)
