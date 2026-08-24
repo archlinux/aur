@@ -1,0 +1,23 @@
+pkgbase = wallpiper
+	pkgdesc = Native translation layer for Wallpaper Engine on Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shdwmtr/wallpiper
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = dbus
+	makedepends = vulkan-headers
+	depends = dbus
+	optdepends = fontconfig: local font overrides for Wallpaper Engine content
+	optdepends = proton: required to run wallpaper64.exe under Wallpaper Engine
+	optdepends = wallpiper-gnome: GNOME (Mutter) portal
+	optdepends = wallpiper-kde: KDE Plasma portal
+	optdepends = wallpiper-hyprland: Hyprland portal
+	optdepends = wallpiper-sway: Sway portal
+	optdepends = wallpiper-cosmic: COSMIC portal
+	optdepends = wallpiper-i3: i3wm portal
+	source = wallpiper::git+https://github.com/shdwmtr/wallpiper.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = wallpiper
