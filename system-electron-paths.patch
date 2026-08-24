@@ -56,19 +56,6 @@ index cc113da..605bc15 100644
      shimPath,
      appImagePath: process.env.APPIMAGE,
    });
-diff --git a/packages/desktop/src/integrations/skills/paths.ts b/packages/desktop/src/integrations/skills/paths.ts
-index cc74235..b86928a 100644
---- a/packages/desktop/src/integrations/skills/paths.ts
-+++ b/packages/desktop/src/integrations/skills/paths.ts
-@@ -4,7 +4,7 @@ import { app } from "electron";
- 
- export function getBundledSkillsDir(): string {
-   if (app.isPackaged) {
--    return path.join(process.resourcesPath, "skills");
-+    return "/usr/lib/paseo/skills";
-   }
-   return path.join(__dirname, "..", "..", "..", "..", "..", "skills");
- }
 diff --git a/packages/desktop/src/main.ts b/packages/desktop/src/main.ts
 index 4f4cded..4529449 100644
 --- a/packages/desktop/src/main.ts

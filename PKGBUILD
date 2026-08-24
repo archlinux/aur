@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=paseo
-pkgver=0.4.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents (built from source, runs on system Electron)"
 arch=('x86_64')
@@ -26,13 +26,13 @@ source=(
     'trace-desktop.mjs'
     'system-electron-paths.patch'
 )
-sha256sums=('8f0a9d979a2c38df2d7b0af5a253aa8fe06c2c2ddf47edaea56ee1b9c4e0f0c4'
+sha256sums=('a45bf1739a63033984d7c79de1bc64144326ad5c1bf30abb888c5bc3f3242e73'
             '5f744a24a3605f78ee30348e1d705f47d803f915e58e076ea6e11f151d678407'
             '6ae9c520668f639a22f17df7814548056ee46aa99a2886639405297a7b1ef212'
             'df0d01b98ac405c5c25edbb91d61bb9e05355a57e0e652e00823d6331618d686'
             '0bd531415e7504c4bbff0ce137a5541a4ba7d0c29281139b29d94ee537fde307'
             '9c76df40b274123e128228dc841f44f018e4ffd8473a97f0a6b7a9c8a4c2e4fa'
-            '437a8ef0ad31411c6c96dc361718d6de32bb286cc1e0ed1d25c932080290c7d6')
+            'cda16406214cc51320c98748ca05a90f9e786c30f7c642947824e0ec8c83a8e1')
 
 # Repo-relative path of the installed node-pty. npm hoists it to the root
 # node_modules in some releases and nests it under packages/server in others
@@ -59,6 +59,16 @@ prepare() {
     # its packaged code paths; point the electron-builder resource lookups
     # (process.resourcesPath / app.asar*) at /usr/lib/paseo instead, and
     # leave updates to pacman rather than electron-updater.
+    #
+    # The patch used to carry a sixth hunk redirecting getBundledSkillsDir()
+    # in packages/desktop/src/integrations/skills/paths.ts. 0.5.1 deleted that
+    # file: skills resolution moved to packages/server's
+    # orchestration-skills/internal/paths.ts, which resolves relative to its
+    # own compiled location and takes the first candidate that exists instead
+    # of reading process.resourcesPath. Its first candidate lands on
+    # packages/server/dist/server/skills, which the trace already installs
+    # (byte-identical to the top-level skills/ that package() checks for), so
+    # nothing needs redirecting and the hunk was dropped rather than ported.
     patch -Np1 -i "${srcdir}/system-electron-paths.patch"
 
     # Keep npm state inside $srcdir; skip lifecycle scripts (no electron /
