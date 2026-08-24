@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=youwee-bin
 _pkgname=Youwee
-pkgver=0.20.0
-pkgrel=2
+pkgver=0.20.3
+pkgrel=1
 pkgdesc="A beautifull YouTube, TikTok, Instagram and 1800+ sites downloader (yt-dlp GUI) and AI summary video content for cross-platform."
 arch=('x86_64')
 url="https://github.com/vanloctech/youwee"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}-Linux.deb"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/vanloctech/youwee/v${pkgver}/LICENSE"
 )
-sha256sums=('8b1e8197bc1b0307759558d3fbcaddf57dcb0fde7433cb33d9ba7d0299602efb'
+sha256sums=('1acc33659b8d170f8597893a96380526e34368b808d1c0877b6e261a0d103afe'
             '1cea78a161f726406b7611610171f5ac0e42b620126334e1150084179faf5b7b')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
