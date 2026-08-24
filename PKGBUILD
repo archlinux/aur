@@ -7,8 +7,8 @@
 
 _pkgname="jitsi-meet-desktop"
 pkgname="$_pkgname"
-pkgver="2026.7.0"
-pkgrel=2
+pkgver=2026.8.0
+pkgrel=1
 pkgdesc="Jitsi Meet desktop application"
 url="https://github.com/jitsi/jitsi-meet-electron"
 license=('Apache-2.0')
@@ -25,7 +25,7 @@ makedepends=(
 _pkgsrc="jitsi-meet-electron-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums=('d8b38f681a5c48e1b5a5d749ff6eda098d1d344440e530b0e681369826b8ff62')
+sha256sums=('2dc270fa369474c418a4f659e01cce7360369c133657625e3d18019a73df432f')
 
 prepare() (
   cd "$_pkgsrc"
