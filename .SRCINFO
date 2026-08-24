@@ -8,10 +8,12 @@ pkgbase = rilua
 	license = MIT
 	license = Apache-2.0
 	makedepends = cargo
-	depends = gcc-libs
-	depends = libgcc_s.so
 	depends = glibc
+	depends = libgcc
 	source = https://github.com/wowemulation-dev/rilua/archive/v0.1.21/rilua-0.1.21.tar.gz
 	sha256sums = 7cff2766fe72d45d17e072660b79ed0b52fc8a27df85e4a77e830ae3690f5192
 
 pkgname = rilua
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so

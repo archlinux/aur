@@ -7,22 +7,28 @@ pkgdesc='A zero-dependency Rust port of Lua 5.1.1'
 arch=(x86_64 i686)
 url="https://github.com/wowemulation-dev/$pkgname"
 license=(MIT Apache-2.0)
-depends=(gcc-libs libgcc_s.so
-         glibc) # libc.so libm.so
+depends=(glibc # libc.so libm.so
+         libgcc)
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
 sha256sums=('7cff2766fe72d45d17e072660b79ed0b52fc8a27df85e4a77e830ae3690f5192')
 
-prepare() {
-	cd "$_archive"
-	cargo fetch --locked --target host-tuple
-}
-
 _srcenv() {
 	cd "$_archive"
+	export CARGO_HOME="$srcdir"
+	export CARGO_PROFILE_RELEASE_DEBUG=2
+	export CARGO_PROFILE_RELEASE_STRIP=false
+	export CARGO_PROFILE_RELEASE_LTO=thin
+	export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
+	export CARGO_PROFILE_RELEASE_OPT_LEVEL=3
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+}
+
+prepare() {
+	_srcenv
+	cargo fetch --locked --target host-tuple
 }
 
 build() {
@@ -36,6 +42,7 @@ check() {
 }
 
 package () {
+	depends+=(libgcc_s.so)
 	cd "$_archive"
 	install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE-{APACHE,MIT}
