@@ -2,7 +2,6 @@
 set -euo pipefail
 
 REAL_BIN="/usr/lib/muse/muse"
-export TBH_SESSION_MESSAGE_SOCKET="${TBH_SESSION_MESSAGE_SOCKET:-/tmp/muse-${USER:-$(id -un)}.sock}"
 
 if [[ "$(uname -m)" == "x86_64" ]] && ! grep -q -m1 "avx2" /proc/cpuinfo 2>/dev/null; then
   if command -v qemu-x86_64 >/dev/null 2>&1; then
