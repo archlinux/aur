@@ -1,5 +1,5 @@
 pkgname=codex-native-bin
-pkgver=r124.3be7ef3
+pkgver=r125.9b8eb7c
 pkgrel=1
 pkgdesc="Native Linux Codex desktop shell built with Rust, GTK, WebKitGTK, and Codex CLI (prebuilt binary)"
 arch=('x86_64')
@@ -12,8 +12,8 @@ conflicts=('codex-native' 'codex-native-git')
 _codex_frontend_version=26.818.41705
 _codex_frontend_artifact=ChatGPT-darwin-arm64
 _codex_frontend_sha256='522536a3ee61f404c24d462443dd131f4b0ebb74b77a33ea50d8d2354b386eff'
-_release_tag=r124.3be7ef3
-_release_asset_sha256='e8c1120d5233bfb7d19091b364684ff850f77d2351f520847d8535a71e7eb5c4'
+_release_tag=r125.9b8eb7c
+_release_asset_sha256='a3017ca61c9856aa075fe3b522e57ff70b0455e8da789e3e6dfd1a4a50911769'
 source=(
   "codex-native-${_release_tag}-linux-x86_64.tar.gz::https://github.com/Redminote11tech/Codex-Native/releases/download/${_release_tag}/codex-native-${_release_tag}-linux-x86_64.tar.gz"
   "${_codex_frontend_artifact}-${_codex_frontend_version}.zip::https://persistent.oaistatic.com/codex-app-prod/${_codex_frontend_artifact}-${_codex_frontend_version}.zip"
