@@ -2,16 +2,18 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=grubforge
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A terminal UI for managing and customizing the GRUB bootloader — safely, intuitively, and beautifully"
 arch=('any')
 url="https://github.com/jetomev/grubforge"
 license=('GPL3')
-depends=('python' 'python-textual' 'python-rich')
+# polkit (v1.1.0): grubForge runs as your user and asks polkit for permission
+# when a change needs root, instead of requiring the whole app to run as root.
+depends=('python' 'python-textual' 'python-rich' 'polkit')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('3591d864b2211aa8441abb8382d10190622b041d40af45ff90f4124d7d20e1aa'
+sha256sums=('89b4c8083f58f3b3661a2646526c19e3fd13f042c12de42e67864f3e1580c339'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   gpg --keyserver keys.openpgp.org --recv-keys 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
@@ -44,6 +46,24 @@ async def _smoke():
 asyncio.run(_smoke())
 print('grubforge headless mount OK')
 "
+
+    # v1.1.0: the privileged helper is the security boundary, so verify at
+    # build time that it still refuses what it must refuse. These run as the
+    # build user, not root — the first check below is exactly that gate.
+    PYTHONDONTWRITEBYTECODE=1 python -c "
+import subprocess, sys
+
+def refuses(args, why):
+    r = subprocess.run(['python', 'helper/grubforge-helper'] + args,
+                       capture_output=True, text=True, input='')
+    if r.returncode == 0:
+        print('FAIL: helper accepted ' + why); sys.exit(1)
+
+refuses(['regenerate'],              'a verb while not root')
+refuses(['definitely-not-a-verb'],   'an unknown verb')
+refuses([],                          'no verb at all')
+print('grubforge helper refusal checks OK')
+"
 }
 
 package() {
@@ -65,6 +85,19 @@ package() {
 exec python /usr/lib/grubforge/main.py "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+
+    # v1.1.0 — the privilege model.
+    #
+    # The helper is the only thing that runs as root, and pkexec will only run
+    # the exact path named in the polkit policy, so these two must agree:
+    #   /usr/lib/grubforge/grubforge-helper
+    # Owned by root and not writable by anyone else (makepkg gives root:root);
+    # a user-writable root helper would defeat the entire point.
+    install -Dm755 helper/grubforge-helper \
+        "${pkgdir}/usr/lib/${pkgname}/grubforge-helper"
+
+    install -Dm644 polkit/org.kognogos.grubforge.policy \
+        "${pkgdir}/usr/share/polkit-1/actions/org.kognogos.grubforge.policy"
 
     # Install the man page
     install -Dm644 grubforge.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
