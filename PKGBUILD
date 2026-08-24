@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box-bin
 _pkgname=Pandora-Box
-pkgver=1.0.22
+pkgver=1.0.23
 _electronversion=41
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Prebuilt version.Use system-wide electron)"
@@ -20,11 +20,11 @@ makedepends=(
     'asar'
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/linux-arm64-rpm.zip")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/linux-amd64-rpm.zip")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.rpm")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('29e239de0ba3d27b6dd9f0a99ab386a3a58ba83de53d5d1c71e369ced03dbe29')
-sha256sums_x86_64=('6fb90d9bfb87bd8b6fea6842de1e282cdd5d1e5dfd9da6a9b097e3223d675218')
+sha256sums_aarch64=('10ac75e3e2f3b6aa05681b6f9a018bd539ffc9ac9eb61779e59f4544f2b5a8f7')
+sha256sums_x86_64=('ac9e75af46d1976cf1162dd69321a4b7fac7f8597f3a639d62be6352ce4145f8')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -45,7 +45,6 @@ prepare() {
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    bsdtar -xf "${srcdir}/${_pkgname}-"*.rpm
     _check_electron_version
     local _app_dir=$(_get_app_dir)
     sed -i -e "
@@ -61,7 +60,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/usr/share/doc/${_pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
