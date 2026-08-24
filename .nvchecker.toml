@@ -1,0 +1,4 @@
+[neovim-registers]
+source = "git"
+git = "https://codeberg.org/fosk/registers.nvim.git"
+prefix = "v"

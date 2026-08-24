@@ -2,21 +2,21 @@
 
 pkgname=neovim-registers
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Neovim plugin to preview the contents of the registers"
 arch=('any')
-url="https://github.com/tversteeg/registers.nvim"
+url="https://codeberg.org/fosk/registers.nvim"
 license=('GPL-3.0-or-later')
 groups=('neovim-plugins')
-depends=('neovim')
 install=registers.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('310c58b64b86ceb0264c126e48763be04c064096a148062f7a5048dcdbbcaf82')
+sha256sums=('d617bdc1cc1715f0f97f320182828ca10c2a0fc0e6b571ef745676413be4d8e4')
 
 package() {
-	cd "registers.nvim-$pkgver"
-	find doc lua plugin \
-		-type f \
-		-exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+    depends=('neovim')
+    cd "registers.nvim"
+    find doc lua plugin \
+        -type f \
+        -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
