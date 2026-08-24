@@ -13,6 +13,6 @@ pkgbase = discord-bot-messenger
 	depends = python-requests
 	depends = tk
 	source = discord-bot-messenger-1.1.0.tar.gz::https://github.com/zyvxi/discord-bot-messenger/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 569d6cf987b918181d96a451705d2df4d6af79dd9a4a18ab3bfe350bb434c1fc
 
 pkgname = discord-bot-messenger
