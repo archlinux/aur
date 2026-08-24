@@ -6,7 +6,7 @@
 pkgname=ticemu
 pkgver=2.0
 url='https://ce-programming.github.io/CEmu/'
-pkgrel=3
+pkgrel=4
 makedepends=('git' 'cmake' 'ninja')
 depends=('qt6-base' 'libarchive' 'libusb' 'libgcc' 'libstdc++' 'glibc')
 pkgdesc='Third-party TI-84 Plus CE / TI-83 Premium CE emulator, focused on developer features'
@@ -15,11 +15,11 @@ arch=('x86_64')
 source=("$pkgname::git+https://github.com/CE-Programming/CEmu.git#tag=v${pkgver}"
 	"git+https://github.com/CE-Programming/zdis.git"
 	"git+https://github.com/adriweb/tivars_lib_cpp.git"
-	"mainwindow.patch::https://github.com/CE-Programming/CEmu/commit/3e43e0358846f18d9246e9252d1fe0966aa26a14.diff")
-md5sums=('0c79f7bc6992b0ae4403486d16c7b0f6'
-         'SKIP'
-         'SKIP'
-         'd970f442be0d7ebe4a130cf3d204f64d')
+	"mainwindow.patch::https://github.com/CE-Programming/CEmu/commit/3e43e0358846f18d9246e9252d1fe0966aa26a14.patch")
+sha256sums=('26caa28b049d4ac199eaee8853f9a3ba0de2d36872a4fab1befc890176fc23a1'
+            'SKIP'
+            'SKIP'
+            'b4c8982ee46da04eb5da1852f84159a3d179ab128caad77c98e3099f63446d01')
 prepare(){
   cd "$srcdir/$pkgname"
   git submodule init
