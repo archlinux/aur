@@ -1,22 +1,22 @@
 # Maintainer: Myqfeng <viagrahuang@outlook.com>
 
 pkgname=qteasytier
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="基于 EasyTier, 一款美观实用的远程联机工具!"
 arch=('x86_64')
 options=('!debug')
-url="https://github.com/qteasytier/qt-easy-tier"
+url="https://cnb.cool/myqfeng/qteasytier/qt-easy-tier"
 license=('LGPL3')
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'polkit')
 makedepends=('base-devel' 'cmake' 'git' 'qt6-base' 'qt6-declarative' 'qt6-svg' 'ninja')
 install=qteasytier.install
-source=("${pkgname}::git+https://github.com/qteasytier/qt-easy-tier.git#tag=${pkgver}")
+source=("${pkgname}::git+https://cnb.cool/myqfeng/qteasytier/qt-easy-tier#branch=v${pkgver}")
 sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}"
-    cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr
+    cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/usr -DCLONE_DAEMON_FROM=CNB
     cmake --build build -j"$(nproc)"
 }
 
