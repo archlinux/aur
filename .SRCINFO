@@ -1,0 +1,19 @@
+pkgbase = python-libpebble2
+	pkgdesc = Library for communicating with Pebble smartwatches over the Pebble protocol
+	pkgver = 0.0.31
+	pkgrel = 1
+	url = https://github.com/pebble-dev/libpebble2
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-websocket-client
+	depends = python-pyserial
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/69/ee/1271c5be045143e1957f8a67929848759391401d5fcb99f5cacf0b7cf38c/libpebble2-0.0.31.tar.gz
+	sha256sums = 5567f1c2dd9586874e6f16a5340ba3ff88053cebc1fbda682942f8e2e9b6f4c9
+
+pkgname = python-libpebble2
