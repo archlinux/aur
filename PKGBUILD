@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wasm3-bin
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="The fastest WebAssembly interpreter and the most universal runtime"
 arch=('x86_64')
 url="https://github.com/wasm3/wasm3"
@@ -12,7 +12,7 @@ conflicts=('wasm3')
 source=("https://raw.githubusercontent.com/wasm3/wasm3/main/LICENSE")
 source_x86_64=("wasm3::https://github.com/wasm3/wasm3/releases/download/v$pkgver/wasm3-linux-x64.elf")
 sha256sums=('SKIP')
-sha256sums_x86_64=('905292b6700413dd7f2293e0f44dbc853a743ef2d0a6d0043490acf34526e4de')
+sha256sums_x86_64=('2aa7d4e6dfb0e0dc1880f3f470e7dd36476668ff8776b3e7f376c7367452a406')
 
 
 package() {
