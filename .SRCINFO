@@ -1,0 +1,19 @@
+pkgbase = lib32-libvdpau
+	pkgdesc = Nvidia VDPAU library
+	pkgver = 1.5
+	pkgrel = 3
+	url = https://www.freedesktop.org/wiki/Software/VDPAU/
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = meson
+	makedepends = xorgproto
+	depends = lib32-libxext
+	depends = libvdpau
+	optdepends = lib32-mesa-vdpau: driver for Mesa
+	optdepends = lib32-nvidia-utils: driver for NVIDIA
+	provides = libvdpau.so
+	source = git+https://gitlab.freedesktop.org/vdpau/libvdpau.git#tag=b40ac3c8f6cac061ddd5ed70c8305238f97a1b25
+	b2sums = SKIP
+
+pkgname = lib32-libvdpau
