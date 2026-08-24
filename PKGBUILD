@@ -1,9 +1,10 @@
 # Maintainer: Azur84 <Azur84@outlook.fr>
 pkgname=pandora-launcher-git
 _pkgname=pandora_launcher
-pkgver=5.0.2.r4.ga585e69
+_pkggithuburl=https://github.com/Moulberry/PandoraLauncher
+pkgver=5.5.2.r1.gf443982
 pkgrel=1
-pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features."
+pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features. (git vcs version)"
 arch=('x86_64')
 conflicts=('pandora-launcher')
 provides=("pandora-launcher")
@@ -35,9 +36,9 @@ optdepends=(
   'mangohud: mangohud support'
 )
 source=(
-  "$pkgname::git+https://github.com/Moulberry/PandoraLauncher.git#branch=master"
+  "$pkgname::git+$_pkggithuburl.git#branch=master"
   "$pkgname.desktop"
-  "icon.svg::https://github.com/Moulberry/PandoraLauncher/raw/6d4c085dc5a09dd42d89b607e7787b4bbf32d119/package/windows.svg"
+  "icon.svg::$_pkggithuburl/raw/6d4c085dc5a09dd42d89b607e7787b4bbf32d119/package/windows.svg"
 )
 sha256sums=('SKIP'
             'f525ded38bc914f912fc0de9762c4d9716399dcdbe400aba36fb3044ad833aee'
@@ -60,6 +61,8 @@ prepare() {
 build() {
   cd "$pkgname"
   export CARGO_TARGET_DIR=target
+  export GITHUB_REPOSITORY_URL=$_pkggithuburl
+  export PANDORA_DISTRIBUTION=aur
   cargo build --release --locked --target $(rustc --print host-tuple)
 }
 
