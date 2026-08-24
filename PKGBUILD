@@ -44,8 +44,7 @@ _source=("${_desktop[@]}"
 "${_service[@]}"
 "${_userservice[@]}"
 "${_sysusers[@]}"
-"${_tmpfiles[@]}"
-"${_key[@]}")
+"${_tmpfiles[@]}")
 #"https://raw.githubusercontent.com/skycoin/skywire/develop/dmsghttp-config.json"
 #"https://raw.githubusercontent.com/skycoin/skywire/develop/services-config.json")
 #"all_servers.json"::"https://dmsgd.skywire.skycoin.com/dmsg-discovery/all_servers")
