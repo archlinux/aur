@@ -1,7 +1,7 @@
 pkgbase = r-mglm
 	pkgdesc = Multivariate Response Generalized Linear Models
-	pkgver = 0.2.1
-	pkgrel = 11
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://cran.r-project.org/package=MGLM
 	arch = any
 	license = GPL-2.0-or-later
@@ -11,8 +11,8 @@ pkgbase = r-mglm
 	optdepends = r-plyr
 	optdepends = r-reshape2
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/MGLM_0.2.1.tar.gz
-	md5sums = d4c964eaa6fd83920fd9948ade55a0f4
-	b2sums = 4900e0585fdc4da3f96839d9f3f9efa9eb101069d5d56531bded5b9636ebb59b9e3dd4c0e1652d56af2ae7950a09c5cbfa7c024dc2261c07c315ebf57383e6ea
+	source = https://cran.r-project.org/src/contrib/MGLM_0.2.3.tar.gz
+	md5sums = 29c738062a58e01686f01a3787d81446
+	b2sums = e601aac636bda198d7573aba97f0902930ccfa0ffa00f8ce709912197fd5a6ea93f7af873d56a3c3cef883000c3904cb4f136a25fbdc749a04623de7ad90eca2
 
 pkgname = r-mglm
