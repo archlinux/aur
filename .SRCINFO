@@ -1,17 +1,16 @@
 pkgbase = baoctx-bin
 	pkgdesc = A CLI tool to manage context profiles for OpenBao
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/adfinis/baoctx
 	license = Apache-2.0
-	depends = openssh
 	conflicts = baoctx
 	provides = baoctx
 	arch = aarch64
-	source_aarch64 = https://github.com/adfinis/baoctx/releases/download/v1.0.1/baoctx-v1.0.1-linux-arm64.tar.gz
-	sha256sums_aarch64 = 8f64e764b103364da163b74d60aa50c90fffee1def12106b0732707ed4151c47
+	source_aarch64 = https://github.com/adfinis/baoctx/releases/download/v1.0.2/baoctx-v1.0.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 58af13efd6ad09a53e945eeb54ba749c70addeaa1161b5cbbc825c2b03241f3f
 	arch = x86_64
-	source_x86_64 = https://github.com/adfinis/baoctx/releases/download/v1.0.1/baoctx-v1.0.1-linux-amd64.tar.gz
-	sha256sums_x86_64 = 4da53dda08f0b68d0c7916bcf5407dacad1cc24a9789f4e38da48f3cd4df1c18
+	source_x86_64 = https://github.com/adfinis/baoctx/releases/download/v1.0.2/baoctx-v1.0.2-linux-amd64.tar.gz
+	sha256sums_x86_64 = 86934f32d542041cce3f566e18db2dcec4786264c8d7129b9690f34f66eeaf7d
 	
 pkgname = baoctx-bin
