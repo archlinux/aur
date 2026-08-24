@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=asset-ripper
-pkgver=1.3.14
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Tool for extracting assets from Unity serialized files and asset bundles.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('firefox' 'chromium')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AssetRipper/AssetRipper/archive/refs/tags/$pkgver.tar.gz")
 
-sha256sums=('95280730732a38e2389fdb5f044c1d292d0c59594709a64cd9ef10cba3631742')
+sha256sums=('889c041aef269c1f26af1452b22f85e08c6903dbf6657d611f3ca9f3f2259bb6')
 
 _srcdir="AssetRipper-$pkgver"
 _exeName="AssetRipper.GUI.Free"
