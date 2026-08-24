@@ -1,6 +1,6 @@
 # Maintainer: notliad <dailton.rcf@gmail.com>
 pkgname=mutui
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Lightweight terminal-based music player for YouTube and local libraries"
 url="https://github.com/notliad/mutui"
@@ -11,7 +11,7 @@ makedepends=('cargo')
 options=(!lto)
 # Run `makepkg -g` after updating pkgver to regenerate the real checksum.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('570e3bfd76cf0950a30660b35e221d1fff39e27027ec55cdce5a284c6a8ce872')
+sha256sums=('c866f1987488380db87b4a5f685592cd0ec4f097e375f80a89cee122af2e632b')
 
 prepare() {
     cd "$pkgname-$pkgver"
