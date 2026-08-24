@@ -4,9 +4,9 @@
 # the version and the release tarball's SHA-256, so the checksum can
 # never disagree with the artifact it is published next to.
 #
-# 0.2.1 and 3939597ce75a761597af6a983aeb043d255882eded0dc6cbd55e7aa4629f65ce are the only placeholders.
+# 0.3.1 and f6996b77e89cc2202224ca5d6e2485b5ee51f92c311f1a1aaf0a86c932ac2605 are the only placeholders.
 pkgname=alloyctl-bin
-pkgver=0.2.1
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="SteelSeries device configuration TUI for Linux (prebuilt binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('ncurses')
 provides=('alloyctl')
 conflicts=('alloyctl')
 source=("https://github.com/szymonwilczek/alloyctl/releases/download/v${pkgver}/alloyctl-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('3939597ce75a761597af6a983aeb043d255882eded0dc6cbd55e7aa4629f65ce')
+sha256sums=('f6996b77e89cc2202224ca5d6e2485b5ee51f92c311f1a1aaf0a86c932ac2605')
 
 package() {
 	cd "alloyctl-${pkgver}-linux-x86_64"
@@ -33,4 +33,9 @@ package() {
 
 	install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	if [ -f man/alloyctl.1 ]; then
+		install -Dm644 man/alloyctl.1 "${pkgdir}/usr/share/man/man1/alloyctl.1"
+	elif [ -f alloyctl.1 ]; then
+		install -Dm644 alloyctl.1 "${pkgdir}/usr/share/man/man1/alloyctl.1"
+	fi
 }
