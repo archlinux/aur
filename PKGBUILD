@@ -1,7 +1,7 @@
 # Maintainer: Krzysztof Demir Kuzniak <krzysztofdemirkuzniak@gmail.com>
 
 pkgname=chain-lang-git
-pkgver=0.6.0.r0
+pkgver=0.7.0.beta.r0
 pkgrel=1
 pkgdesc="Chain programming language interpreter (latest git version)"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$srcdir/chain-lang"
 
-    printf '%s.r%s\n' "0.6.0" "$(git rev-list --count HEAD)"
+    printf '%s.r%s\n' "0.7.0.beta" "$(git rev-list --count HEAD)"
 }
 
 build() {
