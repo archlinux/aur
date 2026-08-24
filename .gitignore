@@ -3,3 +3,5 @@
 pkg/
 src/
 muse-code-bin-*
+pin-*.txt
+*.log
