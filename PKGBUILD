@@ -2,7 +2,7 @@
 
 pkgname=python-spsdk-offline-signature-provider
 _name=${pkgname#python-}
-pkgver=0.2.1
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Offline Signature Provider for SPSDK."
 arch=(any)
@@ -27,7 +27,7 @@ conflicts=(${_name})
 replaces=(${_name})
 _name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('1eebedc34179ad612aadf7b728f996fc941053295e9426a4d15e6d16ca22bd38e7b8ff72c67971e5d6407c7a8eac18c2695951267d5cafb66782abebd28325ad')
+sha512sums=('d5c4173bf2eaafbae3d5e6d0d0dbf15cacddeb485877ebd0f509a6e362301cc172b51160fe2c32474a2d616b90c1869757f882ccea085360945f36ce9ad902a3')
 
 build() {
   cd ${srcdir}/$_name-$pkgver
