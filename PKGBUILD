@@ -3,8 +3,8 @@
 _appname=min
 pkgname="${_appname}-browser-bin"
 _pkgname=Min
-pkgver=1.35.6
-_electronversion=42
+pkgver=1.35.7
+_electronversion=43
 pkgrel=1
 pkgdesc="A fast, minimal browser that protects your privacy.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -26,9 +26,9 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-armv7l.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-amd64.deb")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('1097065d5fe91d94718dcac7cb69d4f1c979b15b9ee82f383fc28a8581d43f10')
-sha256sums_armv7h=('b3f46f35837c9b5c52c6e1ee0699b452397524cc13b948cfb9b85fbac44d3590')
-sha256sums_x86_64=('6979ecb43cc996fa41de20ebf788741cb1562c3ffedb53620fee3081167f242d')
+sha256sums_aarch64=('c0e3d13cee2e4d05bffec711afc90bd7c16696e015b8d42d7221978b0995fac1')
+sha256sums_armv7h=('4f771c1004d4ebf9a333474a2286f4a6cbde8a5e3fe381ae009b88ce0b5036c4')
+sha256sums_x86_64=('11741cb9606b68dc5f8371c335571e72726acefd5e8c327638e80e9f14ab737f')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -60,7 +60,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
 		_extension="${_i##*.}"
