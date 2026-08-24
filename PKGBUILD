@@ -1,6 +1,6 @@
 # Maintainer: 37signals <support@37signals.com>
 pkgname=hey-cli
-pkgver=0.2.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="CLI for HEY email"
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,10 @@ optdepends=(
   'zsh: for zsh shell completions'
   'fish: for fish shell completions'
 )
-source_x86_64=("https://github.com/basecamp/hey-cli/releases/download/v0.2.2/hey_${pkgver}_linux_amd64.tar.gz")
-source_aarch64=("https://github.com/basecamp/hey-cli/releases/download/v0.2.2/hey_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('37d371a1162aff39de5973cb8d47aaabe5eb3d3f6e3afd2a9e2f3a82d278c56b')
-sha256sums_aarch64=('92c57724ff7630db49c487cb38896797cd7fb046189eb421d469e77c43714254')
+source_x86_64=("https://github.com/basecamp/hey-cli/releases/download/v1.0.0/hey_${pkgver}_linux_amd64.tar.gz")
+source_aarch64=("https://github.com/basecamp/hey-cli/releases/download/v1.0.0/hey_${pkgver}_linux_arm64.tar.gz")
+sha256sums_x86_64=('443787075ed333390f51ee755486c2b72248c8a20dafde820c769dcf18a27350')
+sha256sums_aarch64=('92ec29f1cece74e21a26abf3e81013547fb87e28f81c92f9b341c2f21a8472a3')
 
 package() {
   install -Dm755 "hey" "${pkgdir}/usr/bin/hey"
