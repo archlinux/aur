@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=aria2-next
-pkgver=2.5.6
+pkgver=2.5.9
 pkgrel=1
 pkgdesc="Maintained aria2 fork with extensive bug fixes and modernized architecture"
 arch=($CARCH)
@@ -42,7 +42,7 @@ backup=()
 options=()
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('b5480f2146756affbde5ef19c21e5e4087c1667842bf1bb4822c66f8953ec4f9')
+sha256sums=('f9c650236475a295d42ddb8c5375496e9f68d7fca33214afc17b2c6c788bcade')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -53,6 +53,8 @@ build() {
     # see：https://wiki.archlinux.org/title/CMake_package_guidelines
     cmake -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_TESTING=OFF \
+        -DCMAKE_SKIP_RPATH=ON \
         -Wno-dev \
         -B build \
         -G Ninja
@@ -62,6 +64,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    DESTDIR="${pkgdir}" ninja -C build install
-    install -Dm0644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    # DESTDIR="${pkgdir}" ninja -C build install
+    install -Dvm0755 build/aria2-next -t "${pkgdir}/usr/bin/"
+    install -Dvm0644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
