@@ -1,0 +1,16 @@
+pkgbase = lib32-libvolt
+	pkgdesc = 32-bit library for volt-gui
+	pkgver = 2.0.2
+	pkgrel = 1
+	url = https://github.com/pythonlover02/volt-gui
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rustup
+	depends = volt-gui=2.0.2
+	depends = lib32-glibc
+	depends = lib32-gcc-libs
+	depends = lib32-vulkan-icd-loader
+	source = lib32-libvolt-2.0.2.tar.gz::https://github.com/pythonlover02/volt-gui/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = 448ed7aed0689547c18cd99318b2e45afb88695063833163ce19b9ae7a7f5c07
+
+pkgname = lib32-libvolt
