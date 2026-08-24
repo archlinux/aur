@@ -1,6 +1,6 @@
 # Maintainer: Christian Zangl <laktak@cdak.net>
 pkgname=nofan
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="(No)fan controller for the Framework 16"
 arch=('x86_64')
