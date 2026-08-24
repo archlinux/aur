@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-cy
 	pkgdesc = Welsh language pack for Firefox Nightly
-	pkgver = 156.0a1.20260823.213825
+	pkgver = 156.0a1.20260824.093407
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-cy
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-cy-156.0a1.20260823.213825.xpi
-	source = firefox-nightly-i18n-cy-156.0a1.20260823.213825.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-156.0a1.cy.langpack.xpi
-	sha256sums = 1c2bff4e5b942ecfa214cebd12eac8c884f3b2b7347baf70bc101d59fa0e2042
+	noextract = firefox-nightly-i18n-cy-156.0a1.20260824.093407.xpi
+	source = firefox-nightly-i18n-cy-156.0a1.20260824.093407.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-156.0a1.cy.langpack.xpi
+	sha256sums = 1132d6c109b47694ca530c5a47411d6b078e0399558ff8a6cafdda2061decdb2
 
 pkgname = firefox-nightly-i18n-cy
