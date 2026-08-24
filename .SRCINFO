@@ -1,6 +1,6 @@
 pkgbase = pandora-launcher
 	pkgdesc = A modern Minecraft launcher that balances ease-of-use with powerful instance management features.
-	pkgver = 5.3.1
+	pkgver = 5.5.2
 	pkgrel = 1
 	url = http://pandora.moulberry.com/
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = pandora-launcher
 	optdepends = gamemode: gamemode support
 	optdepends = mangohud: mangohud support
 	options = !lto
-	source = pandora-launcher-5.3.1.tar.gz::https://github.com/Moulberry/PandoraLauncher/archive/refs/tags/v5.3.1.tar.gz
+	source = pandora-launcher-5.5.2.tar.gz::https://github.com/Moulberry/PandoraLauncher/archive/refs/tags/v5.5.2.tar.gz
 	source = pandora-launcher.desktop
-	sha256sums = 49a9ef926c3aa2fe592b37d6087f650ca46b55dce31c89c0c6b0961be9052958
+	sha256sums = e63f2044c48e15b99d6a30b4d2e0a4ca634b436915e10f7ca88522c77cee9ce4
 	sha256sums = f9ab75791b696e27569c5bc44b8d325f356a6e36efe4eb9c2e227cb2ba95b6b3
 
 pkgname = pandora-launcher
