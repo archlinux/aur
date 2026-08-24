@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 
 pkgname=libosmo-pfcp
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="PFCP protocol encoding and decoding, and generic PFCP endpoint implementation"
 arch=('any')
@@ -12,7 +12,7 @@ provides=("libosmo-gtlv.so=1-64"
           "libosmo-pfcp.so=4-64")
 conflicts=("${pkgname}-git")
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('6b249a03ba948cb16f53cd8dacab65615e9715fd965f5acc0ace4d5f90062a98')
+sha256sums=('bc5a35f10a93605ce6e1f8708919724e71dd36f5637d1393aea0347bf028cc86')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
