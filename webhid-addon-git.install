@@ -1,0 +1,32 @@
+post_install() {
+    echo ""
+    echo "  ╔══════════════════════════════════════════════════════════════╗"
+    echo "  ║              webhid-addon-git installed                      ║"
+    echo "  ╚══════════════════════════════════════════════════════════════╝"
+    echo ""
+    echo "  This build is UNSIGNED (built from git). Whether it loads"
+    echo "  system-wide depends on the browser:"
+    echo ""
+    echo "    LibreWolf / Waterfox   → works out of the box"
+    echo "    Firefox ESR/Nightly/DE → set xpinstall.signatures.required"
+    echo "                             to false (ESR: via enterprise"
+    echo "                             policy, not about:config)"
+    echo "    Firefox Release        → refuses unsigned add-ons;"
+    echo "                             use the signed webhid-addon package"
+    echo ""
+    echo "  Restart your browser to activate the extension."
+    echo ""
+    echo "  Make sure the daemon is running:"
+    echo "    systemctl status webhid-daemon.service"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ""
+    echo "  webhid-addon-git removed. Restart your browser to deactivate the extension."
+    echo ""
+}

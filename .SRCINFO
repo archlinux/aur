@@ -1,0 +1,18 @@
+pkgbase = webhid-addon-git
+	pkgdesc = WebHID browser extension for Firefox and Zen (git build, unsigned)
+	pkgver = 3.1.0.r96.g050c5e5
+	pkgrel = 1
+	url = https://github.com/K4zoku/FF-WebHID
+	install = webhid-addon-git.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	depends = webhid
+	provides = webhid-addon
+	conflicts = webhid-addon
+	source = webhid-addon::git+https://github.com/K4zoku/FF-WebHID.git
+	sha256sums = SKIP
+
+pkgname = webhid-addon-git
