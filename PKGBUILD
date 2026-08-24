@@ -1,7 +1,7 @@
 # Maintainer: Ethan Alexander <ethanjalexander@hotmail.ca>
 
 pkgname="wallpiper-cosmic"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="COSMIC portal for wallpiper"
 arch=('x86_64')
