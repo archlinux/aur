@@ -4,11 +4,11 @@
 
 _pkgname=hydroxide
 pkgname=$_pkgname-git
-pkgver=0.2.29.r0.c964219
+pkgver=0.2.32.r4.80aa6c3
 pkgrel=1
 pkgdesc='A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge'
 arch=(x86_64)
-url=https://github.com/emersion/hydroxide
+url=https://codeberg.org/emersion/hydroxide
 license=(MIT)
 
 provides=($_pkgname)
