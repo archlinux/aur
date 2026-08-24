@@ -2,7 +2,7 @@
 
 pkgname=easyeffects-bundy01-presets
 _origin=EasyEffects-Presets
-pkgver=2.3
+pkgver=3.0
 pkgrel=1
 pkgdesc="Community Presets for Easyeffects: Bose, Music, Sony and Video"
 arch=('any')
@@ -12,13 +12,14 @@ depends=(
 	easyeffects
 	lsp-plugins-lv2
 	mda.lv2
-	zam-plugins-lv2
 )
 source=("${_origin}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d1b6dc793b7d020660924fc1d1f71e3aebb275330221093008495563ba42b941')
+sha256sums=('3999680b0c2558042790d951a71e682db4cfabba542b25bcc9b2daf80353423a')
 
 package()
 {
+	printf "\033[1;33m>>> The zam-plugins-lv2 dependency is no longer required for this package.\n>>> You can remove it using <pacman -Rsn zam-plugins-lv2>\033[0m\n"
+
 	cd "${_origin}-${pkgver}"
 	install -dm755 "${pkgdir}/usr/share/easyeffects/output/Bundy01-Presets"
 	install -m644 Bose.json "${pkgdir}/usr/share/easyeffects/output/Bundy01-Presets"
