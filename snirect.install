@@ -7,6 +7,9 @@ post_install() {
 }
 
 post_upgrade() {
+  # 0.3.2-2 is the pkgrel that introduced the unit; a frozen historical
+  # marker, NOT a version to bump with releases (bumping it would re-show
+  # this note on every upgrade). aur-update.sh never touches this file.
   if [ "$(vercmp "$2" '0.3.2-2')" -lt 0 ]; then
     echo 'snirect: this package now ships the systemd user unit.'
     echo 'snirect: if you previously ran "snirect install" (GitHub binary flow),'
