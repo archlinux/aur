@@ -2,19 +2,22 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-hlr
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc="Osmocom HLR for GSUP protocol towards OsmoSGSN and OsmoCSCN"
 url="https://osmocom.org/projects/osmo-hlr"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('AGPL-3.0-or-later')
-depends=('libosmocore' 'libosmo-abis' 'talloc' 'sqlite')
+depends=('libosmocore>=1.11.0'
+         'libosmo-abis>=2.0.0'
+         'talloc'
+         'sqlite')
 provides=('libosmo-gsup-client.so=0-64'
           'libosmo-mslookup.so=1-64')
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-hlr.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('8a4b64019ee815153fd3f876bc47961d8c90fd5c91ad854732f9eaa786fe8424')
+sha256sums=('8cc4e97da4f8ae758f1790361331efd88535bee85a3ce2542900fd5e64507b83')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
