@@ -1,14 +1,15 @@
 pkgbase = svg-hush
 	pkgdesc = Sanitizes SVGs of arbitrary code
-	pkgver = 0.9.5
+	pkgver = 0.9.7
 	pkgrel = 1
 	url = https://github.com/cloudflare/svg-hush
 	arch = x86_64
-	license = MIT
-	license = Apache-2.0
+	license = MIT OR Apache-2.0
 	makedepends = cargo
-	depends = gcc-libs
-	source = svg-hush-0.9.5.tar.gz::https://github.com/cloudflare/svg-hush/archive/0.9.5.tar.gz
-	sha256sums = 3db1e91a0528667b35830117778651b409b5cd36c812ac469e895e04ee1e5e44
+	depends = glibc
+	depends = libgcc
+	depends = libgcc_s.so
+	source = svg-hush-0.9.7.tar.gz::https://github.com/cloudflare/svg-hush/archive/0.9.7.tar.gz
+	sha256sums = 74534690eaee5a8504ac0ded7a7dcd1451d35598401fdf2cd4f8dc1a813745c0
 
 pkgname = svg-hush

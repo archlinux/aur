@@ -1,21 +1,21 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=svg-hush
-pkgver=0.9.5
+pkgver=0.9.7
 pkgrel=1
 pkgdesc='Sanitizes SVGs of arbitrary code'
-arch=('x86_64')
+arch=(x86_64)
 url='https://github.com/cloudflare/svg-hush'
-license=('MIT' 'Apache-2.0')
-depends=('gcc-libs')
-makedepends=('cargo')
+license=('MIT OR Apache-2.0')
+depends=(glibc libgcc libgcc_s.so)
+makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('3db1e91a0528667b35830117778651b409b5cd36c812ac469e895e04ee1e5e44')
+sha256sums=('74534690eaee5a8504ac0ded7a7dcd1451d35598401fdf2cd4f8dc1a813745c0')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "$pkgname-$pkgver"
-    cargo fetch --locked --target "$(rustc --print host-tuple)"
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
