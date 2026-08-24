@@ -1,6 +1,6 @@
 # Maintainer: mark.blakeney at bullet-systems dot net
 pkgname=worktree-aid
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="Command line tool to add, remove, and change directories for git worktrees"
 url="https://github.com/bulletmark/$pkgname"
@@ -10,7 +10,7 @@ depends=("python>=3.10" "python-coolname")
 makedepends=(python-setuptools python-build python-installer
              python-wheel python-setuptools-scm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha1sums=('9184e01d0ca2992536e39cdd49e5164e45580a31')
+sha1sums=('a87185a298283358890f6eb443c8646f14233539')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
