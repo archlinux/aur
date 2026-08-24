@@ -1,6 +1,6 @@
 # Maintainer: Bingusfan360 <bingusfan360@proton.me>
 pkgname=mahoragaos
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="An agentic backend that *will* be the best"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 source=("$url/-/archive/v$pkgver/MahoragaOS-v$pkgver.tar.gz"
         "mahoragaos.desktop"
         "mahoragaos.svg")
-sha256sums=('cab2395c7070d685d75e109709a3c19d77c4628c19e65338dc564d289524a523'
+sha256sums=('5f0ea4817e8efb2f72b668a53c82c8b1030e9eb5a97d619b4e27aa1bce64f06a'
             'SKIP'
             'SKIP')
 
