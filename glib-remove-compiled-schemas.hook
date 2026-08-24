@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Remove
+Target = glib2
+
+[Action]
+Description = Removing compiled GSettings schemas...
+When = PreTransaction
+Exec = /usr/bin/rm --force /usr/share/glib-2.0/schemas/gschemas.compiled
