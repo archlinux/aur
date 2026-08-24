@@ -1,0 +1,22 @@
+post_install() {
+  echo 'snirect: systemd user unit installed at /usr/lib/systemd/user/snirect.service'
+  echo 'snirect: start it with:      systemctl --user enable --now snirect'
+  echo 'snirect: trust the MITM CA:  snirect cert install'
+  echo 'snirect: the root CA is generated per user on first run and is never'
+  echo 'snirect: shipped by the package (a packaged CA would expose its key).'
+}
+
+post_upgrade() {
+  if [ "$(vercmp "$2" '0.3.2-2')" -lt 0 ]; then
+    echo 'snirect: this package now ships the systemd user unit.'
+    echo 'snirect: if you previously ran "snirect install" (GitHub binary flow),'
+    echo 'snirect: migrate so the packaged unit takes over:'
+    echo '  rm -f ~/.config/systemd/user/snirect.service ~/.local/bin/snirect'
+    echo '  systemctl --user daemon-reload && systemctl --user enable --now snirect'
+  fi
+}
+
+post_remove() {
+  echo 'snirect: user config and the installed CA remain;'
+  echo 'snirect: clean them up with:  snirect uninstall'
+}
