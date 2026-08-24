@@ -5,7 +5,7 @@
 
 pkgname=sm64coopdx
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of Super Mario 64 Co-op with more features, customizability and power to the Lua API"
 url="https://sm64coopdx.com/"
 license=("LicenseRef-unknown")
@@ -20,11 +20,9 @@ makedepends=("python>=3.6"
              audiofile
              gendesk)
 source=("https://github.com/coop-deluxe/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${pkgname}.sh"
-        "${pkgname}.png")
+        "${pkgname}.sh")
 md5sums=('d7751a9eb4eec1228f41ce40e3c140cc'
-         '314f0815dc7132df21bbd3a9d391f2be'
-         '9bec90a66559edbf42992c4985e4548a')
+         '314f0815dc7132df21bbd3a9d391f2be')
 
 prepare() {
     gendesk -f -n \
@@ -58,6 +56,6 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
     # copy icon and desktop entry
-    install -Dm644 "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/res/icon.icon/Assets/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/Super Mario 64 Co-op Deluxe.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
