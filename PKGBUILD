@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=logger
-_pkgver=0.4.2
+_pkgver=0.4.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -37,8 +37,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('6f6a3cc1ed3caf7c0dc8d8efc305c841')
-b2sums=('9f346e82b164fe234102a338043702729263342f0b4196bc9a01830041ad8b1563251ee5d7d37b0214c1c4175deb5f2d347dac1736fffbe1e72ca250aa817c07')
+md5sums=('e5f916d334c6148dab947d042079d04b')
+b2sums=('6a0a7dbae7c16f55d6b307dc372ac7d3f1caae6a9c940b3e4edb6afdca0a3497d65dc65a21bd6ee9459fccdaa2c302c2ab88d091fdfca55a0b77bd71fdeeb99e')
 
 build() {
   mkdir build
