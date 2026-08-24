@@ -1,6 +1,6 @@
 pkgbase = claugram-desktop-git
 	pkgdesc = A fork of Telegram Desktop focused on: Trust, UX, ToS compliance, Staying current
-	pkgver = 0.r24982.5def774526
+	pkgver = 0.r24983.5d34672586
 	pkgrel = 1
 	url = https://github.com/alexto9090/claugram
 	arch = x86_64

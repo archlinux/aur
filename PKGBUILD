@@ -84,13 +84,19 @@ pkgver() {
 
 prepare() {
   cd "$_pkgname"
-  git rm -r 'Telegram/ThirdParty/dispatch' || true
-  git rm -r 'Telegram/ThirdParty/hunspell' || true
-  git rm -r 'Telegram/ThirdParty/kcoreaddons' || true
-  git rm -r 'Telegram/ThirdParty/lz4' || true
-  git rm -r 'Telegram/ThirdParty/range-v3' || true
+
+  # remove bundled libs
+  git rm -r Telegram/ThirdParty/dispatch || true
+  git rm -r Telegram/ThirdParty/hunspell || true
+  git rm -r Telegram/ThirdParty/kcoreaddons || true
+  git rm -r Telegram/ThirdParty/lz4 || true
+  git rm -r Telegram/ThirdParty/range-v3 || true
+  git rm -r Telegram/ThirdParty/minizip || true
+
+  # update submodules
   git submodule update --init --recursive --depth=1
 
+  # apply patches from source array
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
@@ -102,18 +108,26 @@ prepare() {
     fi
   done
 
-  # force system minizip-ng
-  rm -rf "Telegram/ThirdParty/minizip"
-  sed -i 's/IMPORTED_TARGET minizip/IMPORTED_TARGET minizip-ng/' cmake/external/minizip/CMakeLists.txt
+  # force system minizip-ng instead of bundled minizip
+  sed -i 's/IMPORTED_TARGET minizip/IMPORTED_TARGET minizip-ng/' \
+    cmake/external/minizip/CMakeLists.txt
 
-  # add missing headers for gcc 16
+  # fix wrong pkg-config name (Telegram upstream bug)
+  sed -i 's/minizip-ng-ng/minizip-ng/' \
+    cmake/external/minizip/CMakeLists.txt
+
+  # GCC 16 missing <cstdint> includes
   sed -E -e '1i #include <cstdint>' -i \
-    "Telegram/ThirdParty/tgcalls/tgcalls/DirectConnectionChannel.h" \
-    "Telegram/ThirdParty/tgcalls/tgcalls/third-party/json11.cpp" \
-    "Telegram/ThirdParty/tgcalls/tgcalls/v2/SignalingConnection.h"
+    Telegram/ThirdParty/tgcalls/tgcalls/DirectConnectionChannel.h \
+    Telegram/ThirdParty/tgcalls/tgcalls/third-party/json11.cpp \
+    Telegram/ThirdParty/tgcalls/tgcalls/v2/SignalingConnection.h
 
+  # optimize SVGs
   svgo . -r --multipass || true
-  oxipng -o max -r -p -s -v -t $(nproc) -z --zi 100 --ziwi 10 --brute-level 5 --brute-lines 16 . || true
+
+  # optimize PNGs
+  #oxipng -o max -r -p -s -v -t "$(nproc)" \
+    -z --zi 100 --ziwi 10 --brute-level 5 --brute-lines 16 . || true
 }
 
 build() {
