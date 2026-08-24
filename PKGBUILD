@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=exifcleaner
 _pkgname=ExifCleaner
-pkgver=4.0.0
-_electronversion=35
+pkgver=4.2.1
+_electronversion=43
 _nodeversion=22
 pkgrel=1
 pkgdesc="Clean metadata from images, videos, PDFs, and other files.(Use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('73f5c337f6cfc21c4667b295270d182936f6b43a12d85b2202c4fe84c9d48c60'
+sha256sums=('b869fc6fde3749fa83b9f0cb1139d2213f6c1bdc4c003240e5fbfc0ac7641e2b'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -70,6 +70,7 @@ _get_electron_version() {
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
