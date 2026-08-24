@@ -6,7 +6,7 @@ pkgdesc="A fast, modular static site generator written in Crystal"
 arch=("x86_64" "aarch64")
 url="https://github.com/ralsina/nicolino"
 license=("MIT")
-depends=("crystal>=1.21.0" "pandoc" "libvips" "libyaml")
+depends=("crystal>=1.21.0" "pandoc" "libvips" "libyaml" "lua54")
 makedepends=("shards" "git")
 source=("$pkgname-$pkgver::git+https://github.com/ralsina/nicolino.git#tag=v$pkgver")
 sha256sums=('0964fe6668992fb9b6d9ce5b7f065cdabf7181fb03a38ce5c5e8e27438e50ecb')
