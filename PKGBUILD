@@ -1,7 +1,7 @@
 # Maintainer: Mark Collins <tera_1225 hat hotmail ðot com>
 
 pkgname=vectorscan
-pkgver=5.4.12
+pkgver=5.4.13
 pkgrel=1
 pkgdesc='Portable fork of hyperscan regular expression matching library'
 arch=(x86_64)
@@ -13,14 +13,16 @@ makedepends=(
   ninja
   python
   ragel
+  simde
 )
 depends=(
-  gcc-libs
+  libgcc
+  libstdc++
   glibc
 )
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgname}/${pkgver}.tar.gz")
-b2sums=('7d2a5934423ea5ef7153ab04544e9819d3c95644352780f6614ec2e896cbde4d92cffe6433eab86a55be26c2dd968d4d0ea7867d7c1251d4631af9da33d39f31')
+b2sums=('7d229b100e99d1b4dae0d62d5449074f0a0b7166e2c183db0641adaec38fad4f216dea22b550802e203afc065175d0a4656c770d9405a03363a2586776da9ff8')
 
 build() {
   cd "${srcdir}"
@@ -28,7 +30,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_SHARED_LIBS=ON \
-    -Wno-dev
+    -Wno-author
   cmake --build build
 }
 
