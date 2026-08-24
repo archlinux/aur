@@ -1,6 +1,6 @@
 pkgname=eternal-terminal
-pkgver=0.1.0
-pkgrel=3
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A custom Qt6 terminal emulator"
 arch=('x86_64')
 url="https://github.com/FourSage747/EternalTerminal"
@@ -15,7 +15,7 @@ source=(
     "https://github.com/FourSage747/EternalTerminal/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha256sums=('8e8bbb19b44285bc1a256e8450381ed68246a1a14146aab9e477fc6d8d258352')
+sha256sums=('1c6983ccd0f6fdb3c53fb2e64be6eb8ed852aa933b12ea074108575b7913ec9c')
 
 
 build() {
