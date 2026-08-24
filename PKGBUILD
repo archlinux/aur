@@ -3,7 +3,7 @@
 # Contributor: Pierre-Luc Rigaux 
 pkgname=sysd-manager
 pkgver=2.20.11
-pkgrel=8
+pkgrel=9
 pkgdesc="A systemd GUI to manage service, timer, socket and other units."
 arch=("x86_64" "aarch64")
 url="https://github.com/plrigaux/sysd-manager"

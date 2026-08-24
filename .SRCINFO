@@ -1,7 +1,7 @@
 pkgbase = sysd-manager
 	pkgdesc = A systemd GUI to manage service, timer, socket and other units.
 	pkgver = 2.20.11
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/plrigaux/sysd-manager
 	install = sysd-manager.install
 	changelog = CHANGELOG.md
