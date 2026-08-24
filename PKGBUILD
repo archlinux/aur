@@ -1,12 +1,12 @@
 # Maintainer: Glax its@glax.dev
 pkgname=eyetrackvr
 pkgver=b0.3.0_9
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and Affordable, Virtual Reality Eye Tracking Platform."
 arch=('x86_64')
 url="https://github.com/EyeTrackVR/EyeTrackVR"
 license=('LicenseRef-Babble Software Distribution License 1.0')
-depends=('eigen3' 'python')
+depends=('eigen' 'python')
 source=("${pkgname}-${pkgver}_${pkgrel}.tar.gz::${url}/releases/download/EyeTrackApp-0.3.0-BETA-9/EyeTrackVR-0.3.0-BETA-9-linux-x86_64.tar.gz"
 "EyeTrackVR.desktop")
 sha256sums=("d8e3ee3ff47050a350e3710754d139481a47732ab893ea806e42d182d4e26242"
