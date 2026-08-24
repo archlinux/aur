@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=opencode-desktop
-pkgver=1.18.21
+pkgver=1.18.22
 pkgrel=1
 pkgdesc='OpenCode desktop app (built from source, runs on system electron42)'
 arch=('x86_64' 'aarch64')
@@ -41,18 +41,15 @@ options=('!strip' '!debug')
 source=(
   "$pkgname::git+https://github.com/anomalyco/opencode.git#tag=v$pkgver"
   "$pkgname.sh"
-  'relax-bun-version.patch'
   'enable-pacman-target.patch'
 )
 sha256sums=('SKIP'
             '9d4ea3c1ce242edef248cae1cfaca971ef05c7225e52b49f8dd851395d0bbbbe'
-            '82b5dcd7c56955af41982d8df7828b11907e58ef0199bb9d2e1edac0a9fbbe21'
             'c3a544a2b7ffc252a55da303c2327de4ee075e0b72bf4167d7691fba1cb92ed6')
 
 prepare() {
   cd "$srcdir/$pkgname"
 
-  patch -Np1 -i "$srcdir/relax-bun-version.patch"
   patch -Np1 -i "$srcdir/enable-pacman-target.patch"
 }
 
