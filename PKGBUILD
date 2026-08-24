@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=InPAS
-_pkgver=2.16.0
+_pkgver=2.20.0
 pkgname=r-${_pkgname,,}
-pkgver=2.16.0
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='A Bioconductor package for identifying novel Alternative PolyAdenylation Sites (PAS) from RNA-seq data'
 arch=('any')
@@ -55,7 +55,7 @@ optdepends=(
   r-txdb.mmusculus.ucsc.mm10.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('4bcec30f7f96bd95f3b2811546c3fe1ab0ac65f8c942b5654c236b1219a61361')
+sha256sums=('993b73d85b300cab6ae85ccfc3a3f864abd8e2d918c3b7215d73c19f147a98bb')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
