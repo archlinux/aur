@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ShardX Launcher
+Name[ru]=ShardX Launcher
+Comment=Anti-detect browser launcher
+Comment[ru]=Лаунчер антидетект-браузера
+Exec=shardx-launcher
+Icon=shardx-launcher
+Terminal=false
+Type=Application
+Categories=Network;WebBrowser;
+StartupWMClass=shardx-launcher
