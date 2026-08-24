@@ -1,7 +1,7 @@
 # Maintainer: Collins Kimutai <ngenocollins599@gmail.com>
 pkgname=himalaya-git
 _pkgname=himalaya
-pkgver=1.1.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="CLI to manage emails, written in Rust"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=(!lto)
-md5sums=("802fa0192206027a149f7330ac3b8e5e")
+md5sums=('2c850397fc648945c9f38afe37d90f0f')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -29,6 +29,6 @@ package() {
   cd "$_pkgname-$pkgver"
   install -Dm 755 "target/release/$_pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm 644 LICENSE-MIT -t "$pkgdir/usr/share/licenses/$_pkgname"
+  install -Dm 644 LICENSE-APACHE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
-
