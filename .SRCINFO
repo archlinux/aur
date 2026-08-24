@@ -1,6 +1,6 @@
 pkgbase = python-spsdk-mcu-link
 	pkgdesc = SPSDK MCU-Link. A debugger probe plugin for SPSDK supporting LPC-Link/MCU-Link from NXP.
-	pkgver = 0.6.9
+	pkgver = 0.6.14
 	pkgrel = 1
 	url = https://pypi.org/project/spsdk-mcu-link
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = python-spsdk-mcu-link
 	provides = spsdk-mcu-link
 	conflicts = spsdk-mcu-link
 	replaces = spsdk-mcu-link
-	source = spsdk-mcu-link-0.6.9.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk-mcu-link/spsdk_mcu_link-0.6.9.tar.gz
-	sha512sums = 893e2dab40b3f4745f526503336a85ee68c0c7cfda1e249580e52bd521750b998cc242f6c52f4b0b44bf19bb1bd874e5d2510799cd7af6ec41b2e7c52002fb02
+	source = spsdk-mcu-link-0.6.14.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk-mcu-link/spsdk_mcu_link-0.6.14.tar.gz
+	sha512sums = bf3e7e801ef9977293541e2ab6c700ece4345b2269cfa7f57cd2e0dffc87a5fead949ed0792086a3f5ee69a123fd4d58784bb4f5db5a4430cbeaae1cda965da5
 
 pkgname = python-spsdk-mcu-link

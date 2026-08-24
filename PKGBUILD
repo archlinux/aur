@@ -2,7 +2,7 @@
 
 pkgname=python-spsdk-mcu-link
 _name=${pkgname#python-}
-pkgver=0.6.9
+pkgver=0.6.14
 pkgrel=1
 pkgdesc="SPSDK MCU-Link. A debugger probe plugin for SPSDK supporting LPC-Link/MCU-Link from NXP."
 arch=(any)
@@ -38,7 +38,7 @@ provides=(${_name})
 conflicts=(${_name})
 replaces=(${_name})
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/s/spsdk-mcu-link/spsdk_mcu_link-${pkgver}.tar.gz")
-sha512sums=('893e2dab40b3f4745f526503336a85ee68c0c7cfda1e249580e52bd521750b998cc242f6c52f4b0b44bf19bb1bd874e5d2510799cd7af6ec41b2e7c52002fb02')
+sha512sums=('bf3e7e801ef9977293541e2ab6c700ece4345b2269cfa7f57cd2e0dffc87a5fead949ed0792086a3f5ee69a123fd4d58784bb4f5db5a4430cbeaae1cda965da5')
 _name=${_name//-/_}
 
 build() {
