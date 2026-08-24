@@ -1,27 +1,33 @@
 # Maintainer: LIghtJUNction <support@lmm.best>
 
 pkgname=lmm-api-go-bin
-pkgver=0.1.57
+pkgver=0.1.59
 pkgrel=1
-pkgdesc='LMM API Go backend, native CLI, systemd service, and web frontend (prebuilt)'
+pkgdesc='LMM API Go backend, native CLI, and systemd service (prebuilt)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/LIghtJUNction/api.lmm.best'
 license=('AGPL-3.0-only')
-depends=('ca-certificates' 'systemd' 'tzdata')
+depends=('ca-certificates' 'coreutils' 'libarchive' 'pacman' 'paru' 'sudo' 'systemd' 'tzdata' 'util-linux')
 makedepends=('cosign')
 optdepends=(
   'postgresql: production database'
   'valkey: cache, rate limiting, and login sessions'
 )
-provides=("lmm-api-go=${pkgver}")
-conflicts=('lmm-api' 'lmm-api-bin' 'lmm-api-git' 'lmm-api-go' 'lmm-api-go-git')
+source "${startdir:?}/lmm-api-cli-phase.sh"
+_lmm_cli_phase=$(lmm_cli_phase_for_binary_release "$pkgver")
+lmm_cli_phase_apply_metadata "$_lmm_cli_phase" "$pkgver" \
+  'lmm-api' 'lmm-api-bin' 'lmm-api-git' 'lmm-api-go' 'lmm-api-go-git'
 backup=('etc/lmm-api-go/lmm-api-go.env')
 options=('!strip')
 
 _release_tag="go-v${pkgver}"
 _legacy_bundled_version=0.1.34
+_legacy_cli_archive_version=0.1.57
+_legacy_external_operator_version=0.1.57
+# go-v0.1.58 produced no release assets; 0.1.59 is T0 and 0.1.60 is T1.
 _artifact="lmm-api-go-${pkgver}-linux"
 _release_base="${url}/releases/download/${_release_tag}"
+source=('lmm-api-cli-phase.sh')
 source_x86_64=(
   "${_artifact}-amd64.tar.gz::${_release_base}/${_artifact}-amd64.tar.gz"
   "${_artifact}-amd64.tar.gz.sha256::${_release_base}/${_artifact}-amd64.tar.gz.sha256"
@@ -33,15 +39,16 @@ source_aarch64=(
   "${_artifact}-arm64.tar.gz.sigstore.json::${_release_base}/${_artifact}-arm64.tar.gz.sigstore.json"
 )
 noextract=("${_artifact}-amd64.tar.gz" "${_artifact}-arm64.tar.gz")
+sha256sums=('2b93864b302a7901a4688fd5b7df9b7e262f193a666a915718f434db20054935')
 sha256sums_x86_64=(
-  'b1d80713438868bcab522d9f1f6f7752c93ea4246e9eae1bab49b346b13f8105'
-  '5653dbf767ec9e62e078c6cdc492da5b2ec19fa5208376291be429bdc295791f'
-  'ecb422ef10ef6b4c44cd2749e3533d242087be685b9972176a290c248f31ae8c'
+  'b170e4e4e5a4fe5d18eb78f61d87bbc19b00c1e19578bef234c0f2c4d12103a9'
+  '5cd8f191b0f9ac121130558ee71f308725e3b5d70f96f7e70817b80a2e37b3dc'
+  '6c9a118d46516cb43a8285bf42726861e3540623912fdeb05d0098b026a46bac'
 )
 sha256sums_aarch64=(
-  'f41ca227ea711f35d864291693d1182684a2db9b9c4f46254f9e6d9bd274cb44'
-  '1c9f32ecd8988c4a5af7ee1837543dc6d2277f5dd7ea7a22301f37bc812f25b3'
-  '9c2d5311d94132653dff91c38771cd6273e5fab20f555fd01b99017f85c7a5bb'
+  '0f2086563a321fe5cd32d6ae3cebe53ff3f01ac129d7a4d145d2332745a35b1d'
+  'c06599dd776f4a0f722bb3efc5495e87539f49ed29afe743bf76307df933759d'
+  '30b322c96a828b97c5395880f5de540c14629b39b2ee6fc8d74e244dec163b9d'
 )
 
 case "${CARCH}" in
@@ -67,11 +74,23 @@ prepare() {
   bsdtar -xf "${archive}"
 
   local bundle="${srcdir}/${_artifact}-${_release_arch}"
+  if [[ ${pkgver} == "${_legacy_cli_archive_version}" || ${pkgver} == "${_legacy_bundled_version}" ]]; then
+    [[ -f ${bundle}/lmm-api-go && ! -L ${bundle}/lmm-api-go ]] || return 1
+    [[ ! -e ${bundle}/lmm-api ]] || return 1
+  else
+    [[ -f ${bundle}/lmm-api && ! -L ${bundle}/lmm-api ]] || return 1
+    [[ ! -e ${bundle}/lmm-api-go ]] || return 1
+  fi
   if [[ ${pkgver} == "${_legacy_bundled_version}" ]]; then
     [[ -f ${bundle}/frontend-dist/index.html ]] || return 1
   else
     [[ ! -e ${bundle}/frontend-dist ]] || return 1
     [[ -f ${bundle}/lmm-api-memory.conf && ! -L ${bundle}/lmm-api-memory.conf ]] || return 1
+    if [[ ${pkgver} != "${_legacy_external_operator_version}" ]]; then
+      for file in lmm-api-operator.sysusers lmm-api-operator.tmpfiles lmm-api-operator.sudoers; do
+        [[ -f ${bundle}/${file} && ! -L ${bundle}/${file} ]] || return 1
+      done
+    fi
     [[ -f ${bundle}/API_ROUTE_CONTRACT_REVISION && ! -L ${bundle}/API_ROUTE_CONTRACT_REVISION ]] || return 1
     [[ $(<"${bundle}/API_ROUTE_CONTRACT_REVISION") =~ ^[0-9a-f]{64}$ ]] || return 1
     grep -Fqx 'Environment=LMM_API_FRONTEND_DIR=/srv/lmm-api-frontend/current' \
@@ -80,11 +99,16 @@ prepare() {
 }
 
 package() {
+  local archive="${_artifact}-${_release_arch}.tar.gz"
   local bundle="${srcdir}/${_artifact}-${_release_arch}"
-  local file
+  local cli=lmm-api
+  local file release_asset_sha256
 
-  install -Dm0755 "${bundle}/lmm-api-go" "${pkgdir}/usr/bin/lmm-api-go"
-  ln -s lmm-api-go "${pkgdir}/usr/bin/lmm-api"
+  if [[ ${pkgver} == "${_legacy_cli_archive_version}" || ${pkgver} == "${_legacy_bundled_version}" ]]; then
+    cli=lmm-api-go
+  fi
+  install -Dm0755 "${bundle}/${cli}" "${pkgdir}/usr/bin/lmm-api"
+  lmm_cli_phase_install_compatibility_alias "$_lmm_cli_phase" "$pkgdir"
   install -Dm0644 "${bundle}/lmm-api.service" \
     "${pkgdir}/usr/lib/systemd/system/lmm-api.service"
   install -d -m0700 "${pkgdir}/etc/lmm-api-go"
@@ -100,6 +124,14 @@ package() {
   else
     install -Dm0644 "${bundle}/lmm-api-memory.conf" \
       "${pkgdir}/usr/lib/systemd/system/lmm-api.service.d/20-memory.conf"
+    if [[ ${pkgver} != "${_legacy_external_operator_version}" ]]; then
+      install -Dm0644 "${bundle}/lmm-api-operator.sysusers" \
+        "${pkgdir}/usr/lib/sysusers.d/lmm-api-operator.conf"
+      install -Dm0644 "${bundle}/lmm-api-operator.tmpfiles" \
+        "${pkgdir}/usr/lib/tmpfiles.d/lmm-api-operator.conf"
+      install -Dm0440 "${bundle}/lmm-api-operator.sudoers" \
+        "${pkgdir}/etc/sudoers.d/lmm-api-operator"
+    fi
     install -Dm0644 "${bundle}/API_ROUTE_CONTRACT_REVISION" \
       "${pkgdir}/usr/share/doc/${pkgname}/API_ROUTE_CONTRACT_REVISION"
   fi
@@ -114,4 +146,8 @@ package() {
     install -Dm0644 "${bundle}/${file}" "${pkgdir}/usr/share/licenses/${pkgname}/${file}"
   done
   install -Dm0644 "${bundle}/REVISION" "${pkgdir}/usr/share/doc/${pkgname}/REVISION"
+  release_asset_sha256=$(sha256sum "${srcdir}/${archive}")
+  printf '%s\n' "${release_asset_sha256%% *}" >"${srcdir}/RELEASE_ASSET_SHA256"
+  install -Dm0644 "${srcdir}/RELEASE_ASSET_SHA256" \
+    "${pkgdir}/usr/share/doc/${pkgname}/RELEASE_ASSET_SHA256"
 }
