@@ -1,17 +1,17 @@
 pkgbase = splinterm-bin
-	pkgver = 0.1.0beta1
+	pkgver = 0.1.0beta2
 	pkgrel = 1
 	url = https://github.com/oldjobobo/splinterm
 	arch = x86_64
 	license = MIT
-	noextract = splinterm-0.1.0beta1-x86_64.pkg.tar.zst
-	noextract = splinterm-mcp-0.1.0beta1-x86_64.pkg.tar.zst
+	noextract = splinterm-0.1.0beta2-x86_64.pkg.tar.zst
+	noextract = splinterm-mcp-0.1.0beta2-x86_64.pkg.tar.zst
 	options = !strip
 	options = !debug
-	source = splinterm-0.1.0beta1-x86_64.pkg.tar.zst::https://github.com/OldJobobo/splinterm/releases/download/v0.1.0-beta1/splinterm-8d95e75704104750f8e8e4585e629010855963c8-x86_64.pkg.tar.zst
-	source = splinterm-mcp-0.1.0beta1-x86_64.pkg.tar.zst::https://github.com/OldJobobo/splinterm/releases/download/v0.1.0-beta1/splinterm-mcp-8d95e75704104750f8e8e4585e629010855963c8-x86_64.pkg.tar.zst
-	sha256sums = fb25323ca2edbb61243c942c84de4d1f4cb52280fbc7dbd4369243f603288eda
-	sha256sums = ededfa71a10b1bb3f199e78d56c4bfc32c5633f5188c3e89790980bf3803fecc
+	source = splinterm-0.1.0beta2-x86_64.pkg.tar.zst::https://github.com/OldJobobo/splinterm/releases/download/v0.1.0-beta2/splinterm-f0c5dd176e36ce88abc1328c8e67839da263e56a-x86_64.pkg.tar.zst
+	source = splinterm-mcp-0.1.0beta2-x86_64.pkg.tar.zst::https://github.com/OldJobobo/splinterm/releases/download/v0.1.0-beta2/splinterm-mcp-f0c5dd176e36ce88abc1328c8e67839da263e56a-x86_64.pkg.tar.zst
+	sha256sums = 1e7060fea06867743a88a0021ad33385f32f5cc4a20a22afb45448130ebdded5
+	sha256sums = 889b7a6457789ee601f095dfaf8e208172177fa93aba232fa20394e07ff3eacd
 
 pkgname = splinterm-bin
 	pkgdesc = Persistent Wayland terminal for humans and bounded automation (prebuilt binary)
@@ -31,13 +31,13 @@ pkgname = splinterm-bin
 	depends = xdg-terminal-exec
 	optdepends = fcitx5: Wayland text-input support
 	optdepends = splinterm-mcp-bin: explicitly configured MCP stdio adapter
-	provides = splinterm=0.1.0beta1-1
+	provides = splinterm=0.1.0beta2-1
 	conflicts = splinterm
 
 pkgname = splinterm-mcp-bin
 	pkgdesc = Policy-scoped MCP stdio adapter for Splinterm (prebuilt binary)
-	depends = splinterm=0.1.0beta1-1
+	depends = splinterm=0.1.0beta2-1
 	depends = gcc-libs
 	depends = glibc
-	provides = splinterm-mcp=0.1.0beta1-1
+	provides = splinterm-mcp=0.1.0beta2-1
 	conflicts = splinterm-mcp
