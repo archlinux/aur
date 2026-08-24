@@ -1,6 +1,6 @@
 pkgbase = hyprlayer-desktop-bin
 	pkgdesc = Native desktop app for spec-driven development with coding agents
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://brightblock.ai/hyprlayer
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = hyprlayer-desktop-bin
 	optdepends = nodejs: runtime for agent CLIs installed through npm
 	provides = hyprlayer-desktop
 	conflicts = hyprlayer-desktop
-	noextract = Hyprlayer_0.6.1_amd64.deb
+	noextract = Hyprlayer_0.7.0_amd64.deb
 	options = !strip
 	options = !debug
 	options = !emptydirs
-	source = Hyprlayer_0.6.1_amd64.deb::https://github.com/BrightBlock/hyprlayer-releases/releases/download/v0.6.1/Hyprlayer_0.6.1_amd64.deb
-	sha256sums = 31cf4323b1dd3100f3f347a01f72f50a02cfd30861a92f9bf296a58b04539fe3
+	source = Hyprlayer_0.7.0_amd64.deb::https://github.com/BrightBlock/hyprlayer-releases/releases/download/v0.7.0/Hyprlayer_0.7.0_amd64.deb
+	sha256sums = 4f07c22dd678d1a661b1644b95e13db8dd1072537c28e573dddf14c58b03d039
 
 pkgname = hyprlayer-desktop-bin
