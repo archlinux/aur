@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="cups-web"
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Web printing management interface for CUPS"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64' 'loong64')
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('4b258d76bd3e48e9bc5982ecdee28fe9e600f2703796af3391a9a3c41fddf811'
+sha256sums=('368a5036b6969a0cb236ac342d5090a95f1381b71661cff34929a2b453063190'
             '23f92510f45cabe57fbac3349b8a426085299e045d71e5e79348a2f3a59bd098'
             'd0c92ec21b32c0d226f96696d078f369fecee493d2a351d11176014194da05c2'
             '1b448e0b4d6a8d13edbe2f9a051b1392beba42d6773b5da7cf7b260470695548'
