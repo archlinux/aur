@@ -1,0 +1,11 @@
+post_install() {
+    if [ ! -e /usr/lib/libxdo.so.3 ]; then
+        ln -sf /usr/lib/libxdo.so.4 /usr/lib/libxdo.so.3
+    fi
+}
+
+post_remove() {
+    if [ -L /usr/lib/libxdo.so.3 ]; then
+        rm -f /usr/lib/libxdo.so.3
+    fi
+}

@@ -2,7 +2,7 @@
 pkgname=donutbrowser-bin
 _pkgname=Donut
 pkgver=0.29.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful browser orchestrator that puts you in control of your browsing experience. 🍩(Prebuilt version)"
 arch=(
     'aarch64'
@@ -13,6 +13,7 @@ _ghurl="https://github.com/zhom/donutbrowser"
 license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
+install="${pkgname%-bin}.install"
 depends=(
     'gtk3'
     'gdk-pixbuf2'
@@ -27,7 +28,6 @@ sha256sums_x86_64=('c204c585681b6e78015319d8fc7bf10af57b9038ebde351e660ef7783edf
 package() {
     install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
     install -Dm755 -d "${pkgdir}/usr/lib"
-    ln -sf "/usr/lib/libxdo.so.4" "${pkgdir}/usr/lib/libxdo.so.3"
     find "${srcdir}/usr/share/icons" -type f \( -name "*.png" -o -name "*.svg" \) \
         | while read -r _i; do
         _extension="${_i##*.}"
