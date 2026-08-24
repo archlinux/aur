@@ -1,17 +1,19 @@
 pkgbase = medict-bin
 	pkgdesc = A cross platform dictionary application,support mdict (*.mdx/*.mdd) dictionary format.(Prebuilt version)
-	pkgver = 3.1.12
+	pkgver = 3.1.13
 	pkgrel = 1
 	url = https://github.com/terasum/medict
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = gendesk
 	depends = gtk3
-	provides = medict=3.1.12
+	provides = medict=3.1.13
 	conflicts = medict
-	source = medict-3.1.12.tar.gz::https://github.com/terasum/medict/releases/download/v3.1.12/Medict_v3.1.12_Linux_x86_64.tar.gz
-	source = medict-3.1.12.png::https://raw.githubusercontent.com/terasum/medict/v3.1.12/build/assets/darwin/appicon.png
-	sha256sums = 6dddf624ec6d4826e6b2f147348ea26ecc3556cf633482a6eb17be23948828e7
+	source = medict-3.1.13.tar.gz::https://github.com/terasum/medict/releases/download/v3.1.13/Medict_v3.1.13_Linux_x86_64.tar.gz
+	source = medict-3.1.13.png::https://raw.githubusercontent.com/terasum/medict/v3.1.13/build/assets/darwin/appicon.png
+	source = medict.desktop
+	sha256sums = 0fee51b1d95331ba44519dc99a9b92194402af1b99224d3a0b36474561ae1326
 	sha256sums = feafee440d86c5abd9d525ee78102209125c4d6e4275e99b6d4452fdc2f1995c
+	sha256sums = 69b834c6671635d01a6b806c2b8c00290c07ab7dfd331f8d9a776beab79e3fc7
 
 pkgname = medict-bin

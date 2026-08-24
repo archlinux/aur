@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Medict
+Comment=A cross platform dictionary application,support mdict (*.mdx/*.mdd) dictionary format.
+Exec=medict
+Icon=medict
+Terminal=false
+StartupNotify=false
+Categories=Utility;

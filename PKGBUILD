@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=medict-bin
 _pkgname=Medict
-pkgver=3.1.12
+pkgver=3.1.13
 pkgrel=1
 pkgdesc="A cross platform dictionary application,support mdict (*.mdx/*.mdd) dictionary format.(Prebuilt version)"
 arch=('x86_64')
@@ -18,17 +18,11 @@ makedepends=(
 source=(
     "${pkgname%-bin}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_Linux_${CARCH}.tar.gz"
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/terasum/medict/v${pkgver}/build/assets/darwin/appicon.png"
+    "${pkgname%-bin}.desktop"
 )
-sha256sums=('6dddf624ec6d4826e6b2f147348ea26ecc3556cf633482a6eb17be23948828e7'
-            'feafee440d86c5abd9d525ee78102209125c4d6e4275e99b6d4452fdc2f1995c')
-prepare() {
-    gendesk -q -f -n \
-        --pkgname="${pkgname%-bin}" \
-        --pkgdesc="${pkgdesc}" \
-        --categories="Utility" \
-        --name="${_pkgname}" \
-        --exec="${pkgname%-bin}"
-}
+sha256sums=('0fee51b1d95331ba44519dc99a9b92194402af1b99224d3a0b36474561ae1326'
+            'feafee440d86c5abd9d525ee78102209125c4d6e4275e99b6d4452fdc2f1995c'
+            '69b834c6671635d01a6b806c2b8c00290c07ab7dfd331f8d9a776beab79e3fc7')
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
