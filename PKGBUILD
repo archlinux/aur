@@ -5,7 +5,7 @@
 _module="auditok"
 _pkgname="python-$_module"
 pkgname="$_pkgname"
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="An audio/acoustic activity detection and audio segmentation tool."
 url="https://github.com/amsehili/auditok"
@@ -32,7 +32,7 @@ optdepends=(
 
 _pkgsrc="$_module-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/${_module}/${_module}-${pkgver}.tar.gz")
-sha256sums=('c38f04c40c242447bf2d76333f0576751d97726942d3722b2f3d29e064951223')
+sha256sums=('4a2f654739e9f4cce8a92e3b1f9d08e8b6ca94643462cd2c835809ff8ea7955f')
 
 build() {
   cd "$_pkgsrc"
