@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=VirtualGamePad
+Comment=Use Android devices as gamepads
+Exec=/opt/virtualgamepad/bin/VGamepadPC %U
+Icon=virtualgamepad
+Terminal=false
+Type=Application
+Categories=Utility;Game;GameTool;

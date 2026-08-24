@@ -1,0 +1,6 @@
+post_install() {
+  echo 'VirtualGamePad is intended to be used with its Android client.'
+  echo 'Download on GitHub: https://github.com/kitswas/VirtualGamePad-Mobile/releases'
+  echo 'Download on F-Droid: https://f-droid.org/packages/io.github.kitswas.virtualgamepadmobile/'
+  echo 'Official documentation: https://kitswas.github.io/VirtualGamePad/#installation'
+}

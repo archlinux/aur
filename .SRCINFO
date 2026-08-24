@@ -1,0 +1,18 @@
+pkgbase = virtualgamepad-bin
+	pkgdesc = A tool to use Android devices as gamepads for PCs (official portable build)
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/kitswas/VirtualGamePad-PC
+	install = virtualgamepad.install
+	arch = x86_64
+	license = GPL-3.0
+	noextract = Virtual-Gamepad-Ubuntu.zip
+	options = !strip
+	source = virtualgamepad.desktop
+	source = virtualgamepad.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = https://github.com/kitswas/VirtualGamePad-PC/releases/download/v0.4.1/Virtual-Gamepad-Ubuntu.zip
+	sha256sums_x86_64 = 69500c41c174838b4b7ce3288a28c0d2d453501cddfd74c593d454776e24bb46
+
+pkgname = virtualgamepad-bin
