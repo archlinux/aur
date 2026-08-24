@@ -1,0 +1,16 @@
+pkgbase = python-sourcemap
+	pkgdesc = Parse JavaScript source maps
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/mattrobenolt/python-sourcemap
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/63/12/0dba762927b6a763fbb33f8a96f5080b0745c7493360c9ead6449c9a9d70/sourcemap-0.2.1.tar.gz
+	sha256sums = be00a90185e7a16b87bbe62a68ffd5e38bc438ef4700806d9b90e44d8027787c
+
+pkgname = python-sourcemap
