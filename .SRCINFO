@@ -1,0 +1,22 @@
+pkgbase = winghexexplorer2-bin
+	pkgdesc = A free, powerful, cross-platform hex editor (pre-built binary, third-party packaging)
+	pkgver = 2.3.8
+	pkgrel = 1
+	url = https://github.com/Wing-summer/WingHexExplorer2
+	install = winghexexplorer2-bin.install
+	arch = x86_64
+	license = AGPL-3.0-only
+	depends = qt6-base
+	depends = xdg-utils
+	depends = shared-mime-info
+	depends = desktop-file-utils
+	depends = gtk-update-icon-cache
+	provides = winghexexplorer2
+	conflicts = winghexexplorer2
+	conflicts = winghexexplorer2-git
+	noextract = winghexexplorer2-2.3.8-1-x86_64.pkg.tar.zst
+	options = !strip
+	source = winghexexplorer2-2.3.8-1-x86_64.pkg.tar.zst::https://github.com/calmcrow/winghexexplorer2-bin/releases/download/v2.3.8/winghexexplorer2-2.3.8-1-x86_64.pkg.tar.zst
+	sha256sums = 0000000000000000000000000000000000000000000000000000000000000000
+
+pkgname = winghexexplorer2-bin

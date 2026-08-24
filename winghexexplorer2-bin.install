@@ -1,0 +1,57 @@
+set -e
+
+post_install() {
+    echo "Updating MIME database and icon cache..."
+
+    xdg-mime install /opt/WingHexExplorer2/share/x-winghex.xml
+    xdg-mime default com.wingsummer.winghexexplorer2.desktop application/x-winghex
+
+    xdg-icon-resource install --context mimetypes --size 32 /opt/WingHexExplorer2/share/winghexpro32.png application-x-winghex
+    xdg-icon-resource install --context mimetypes --size 64 /opt/WingHexExplorer2/share/winghexpro64.png application-x-winghex
+    xdg-icon-resource install --context mimetypes --size 128 /opt/WingHexExplorer2/share/winghexpro128.png application-x-winghex
+
+    update-mime-database /usr/share/mime
+    xdg-icon-resource forceupdate
+    gtk-update-icon-cache /usr/share/icons/hicolor
+    update-desktop-database /usr/share/applications
+
+    cat <<'EOF'
+
+===============================================================
+  winghexexplorer2-bin install notice
+===============================================================
+  This is a third-party repackaged build.
+
+  - Build source and process are fully open:
+    https://github.com/calmcrow/winghexexplorer2-bin
+  - The binary is built by GitHub Actions using the author's
+    official PKGBUILD and uploaded here:
+    https://aur.archlinux.org/winghexexplorer2.git
+  - Upstream project:
+    https://github.com/Wing-summer/WingHexExplorer2
+
+  Installation complete. If you do not trust this third-party
+  packaging, remove it with:
+    sudo pacman -R winghexexplorer2-bin
+===============================================================
+EOF
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "Cleaning MIME database and icon cache..."
+
+    xdg-mime uninstall /opt/WingHexExplorer2/share/x-winghex.xml
+
+    xdg-icon-resource uninstall --context mimetypes --size 32 application-x-winghex
+    xdg-icon-resource uninstall --context mimetypes --size 64 application-x-winghex
+    xdg-icon-resource uninstall --context mimetypes --size 128 application-x-winghex
+
+    update-mime-database /usr/share/mime
+    xdg-icon-resource forceupdate
+    gtk-update-icon-cache /usr/share/icons/hicolor
+    update-desktop-database /usr/share/applications
+}
