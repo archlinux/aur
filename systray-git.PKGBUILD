@@ -6,7 +6,6 @@ pkgdesc="Skywire systray. Skycoin.com"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 pkgver=1.2.1
 pkgrel=1
-#pkgrel=1
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 license=()
