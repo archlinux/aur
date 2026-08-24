@@ -1,0 +1,27 @@
+pkgbase = wallpiper-gnome
+	pkgdesc = GNOME (Mutter) portal for wallpiper
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shdwmtr/wallpiper
+	install = wallpiper-gnome.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = mutter
+	makedepends = gobject-introspection
+	makedepends = mesa
+	makedepends = libdrm
+	makedepends = libxrandr
+	makedepends = libx11
+	depends = wallpiper
+	depends = mutter
+	depends = gobject-introspection
+	depends = gnome-shell
+	depends = mesa
+	depends = libdrm
+	depends = libxrandr
+	depends = libx11
+	source = wallpiper-gnome::git+https://github.com/shdwmtr/wallpiper.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = wallpiper-gnome
