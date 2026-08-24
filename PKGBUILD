@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fusionkit-git
 _pkgname=FusionKit
-pkgver=0.2.10.r0.g62e54de
-_electronversion=33
-_nodeversion=20
+pkgver=0.3.0.r0.g6e73d37
+_electronversion=41
+_nodeversion=24
 pkgrel=1
 pkgdesc="Desktop toolbox,integrated with subtitle processing(AI translation,format conversion),batch renaming of files,paid music decryption(to FLAC/MP3) and other practical functions.(Use system-wide electron)"
 arch=('any')
@@ -42,32 +42,39 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-    export electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export HOME="${srcdir}/.electron-gyp"
-    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-    export NPM_CONFIG_MAXSOCKETS=32
+    {
+        export PNPM_LINK_WORKSPACE_PACKAGES=true
+        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_SHAMEFULLY_HOIST=true
+        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+        export PNPM_NODE_LINKER=hoisted
+        export PNPM_NETWORK_CONCURRENCY=32
+    }
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export pnpm_config_registry="https://registry.npmmirror.com"
+            export npm_config_registry="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
             export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
         }
-        find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
     fi
 }
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _get_electron_version() {
-    _elec_ver=$(find "${srcdir}" -name "package.json" -exec jq -r \
-        '(.devDependencies.electron // .dependencies.electron) | select(. != null)' \
-        {} + 2>/dev/null | head -n 1)
-    _elec_ver=$(echo "${_elec_ver}" | sed 's/[^0-9.]//g')
-    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
-    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
+    _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
+        -exec grep -l '"electron"' {} + | xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null | head -1)
+    [[ -z "${_elec_ver}" ]] && return 1
+    echo -e "The electron version is: \033[1;31m${_elec_ver%%.*}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -92,8 +99,25 @@ prepare() {
     cp "public/${_pkgname}.ico" "public/favicon.ico"
     sed -i "s/${_pkgname}.ico/${pkgname%-git}.png/g" electron/main/index.ts
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    npm add -D node-gyp node-pty node-addon-api
-    NODE_ENV=development    npm install
+    # 移除 Linux 构建不需要的 beforePack 钩子和 extraResources（仅 macOS/Windows 需要）
+    python3 -c "
+import json
+with open('electron-builder.json', 'r') as f:
+    config = json.load(f)
+config.pop('beforePack', None)
+config.pop('extraResources', None)
+with open('electron-builder.json', 'w') as f:
+    json.dump(config, f, indent=2)
+"
+    NODE_ENV=development    pnpm add -D node-gyp node-pty node-addon-api
+    # 升级 TypeScript 以支持 gpt-tokenizer 的新语法
+    NODE_ENV=development    pnpm add -D typescript@latest
+    # 修复 tsconfig.json 以兼容 TypeScript 7.x
+    sed -i '/"esModuleInterop"/d' tsconfig.json
+    sed -i 's/"moduleResolution": "Node"/"moduleResolution": "bundler"/' tsconfig.json
+    sed -i '/"baseUrl"/d' tsconfig.json
+    sed -i 's|"src/\*"|"./src/*"|' tsconfig.json
+    NODE_ENV=development    pnpm install
 }
 build() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -101,13 +125,14 @@ build() {
     _ensure_local_nvm
     NODE_ENV=production     npx tsc
     NODE_ENV=production     npx vite build
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.json"
+    NODE_ENV=production     node scripts/check-preload-bundle.mjs
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.json"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
     install -Dm644 "${srcdir}/${pkgname//-/.}/public/${pkgname%-git}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
