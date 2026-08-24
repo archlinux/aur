@@ -3,9 +3,9 @@
 pkgname=wheelwizard
 _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
-pkgver=2.5.0
+pkgver=2.5.1
 _pkgver="v$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc="Mario Kart Mod Manager & Retro Rewind Auto Updater"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Team${_name}/${_name}"
@@ -26,7 +26,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 
 source=("${_name}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.gz")
-b2sums=('66041938bbfff02178e3cbb08650d14d23196041f009d198330b881618a009e38846487014db07ed04914b67881a04dc8e3efbcdb99ec9b41b5284990c2f9cc0')
+b2sums=('815e9c49439b9688207bb62aef978f0de2a7d4d1bbba62335254deb9314626b73e941494438537b774a8311a80eeeaeec6bb0a973b082559080dbc43f06f4b53')
 
 _runtime() {
     if [ "${CARCH}" = 'aarch64' ]; then
