@@ -2,7 +2,7 @@
 # Maintainer: freb
 
 pkgname=burpsuite-pro
-pkgver=2026.7.3
+pkgver=2026.8
 pkgrel=1
 pkgdesc='An integrated platform for performing security testing of web applications (professional edition)'
 url='https://portswigger.net/burp/'
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}-orig.jar::https://portswigger.net/burp/releases/do
   'icon256.png'
   'icon512.png'
   'icon.svg')
-sha256sums=('c8262dc5426f38bedc490d66c5d21b6ff77d6dc6d85cefe6a66c882690134069'
+sha256sums=('888f0588cf82a3b70d508dcbf07591184a26249e38cda8ea8b5a68f4b5a30789'
             '939b66c99461307d361c91b811785b92a3cd376a4ac8e72dbf76af1b75503d78'
             'f442258c5616969bfaad7c20b2ff99f05696ad04c2e2c3d145a360615650b9ec'
             'ff0b230af06fb76af053090ac021bf45b88341d746e67f6bb9e94ba40957d9d8'
