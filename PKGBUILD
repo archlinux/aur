@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=pi-bin
-pkgver=0.84.2
+pkgver=0.84.3
 pkgrel=1
 pkgdesc="AI coding agent for the terminal — minimal, extensible and optimized for tool-use (pi-mono)"
 arch=('x86_64' 'aarch64')
@@ -12,11 +12,13 @@ optdepends=('tmux: for background bash capabilities')
 provides=('pi')
 conflicts=('pi')
 
+source=("LICENSE::https://raw.githubusercontent.com/badlogic/pi-mono/v${pkgver}/LICENSE")
 source_x86_64=("pi-linux-x64-${pkgver}-${pkgrel}.tar.gz::https://github.com/badlogic/pi-mono/releases/download/v${pkgver}/pi-linux-x64.tar.gz")
 source_aarch64=("pi-linux-arm64-${pkgver}-${pkgrel}.tar.gz::https://github.com/badlogic/pi-mono/releases/download/v${pkgver}/pi-linux-arm64.tar.gz")
 
-sha256sums_x86_64=('906fbe787fd225c4ac624fe7ebd5b1d55a60e0f5c7ef51795d231564f9ee1c13')
-sha256sums_aarch64=('d15372da9e4b4c5fef9fd15bed76d7f5f1720dd39fe7cde0ec62e5b65ad63ef1')
+sha256sums=('0457f5bcec3b3b211605dfb5d1a49042fd638f3686a410fe099c24a25af13c48')
+sha256sums_x86_64=('6f8bb67c21bc6b8a8a106d354f56d7fd4a190a3cd8ad3a32db45f6d281a5d008')
+sha256sums_aarch64=('e7cd48cd6f64b708e8459a890882b1007332f6e6b876fe1fd5c5203abd0addb7')
 
 package() {
     cd "${srcdir}/pi"
@@ -24,9 +26,10 @@ package() {
     # Create installation directories
     install -d "${pkgdir}/usr/lib/pi"
     install -d "${pkgdir}/usr/bin"
-    install -d "${pkgdir}/usr/share/doc/pi"
 
     # Core binary and runtime assets
+    cp -r assets "${pkgdir}/usr/lib/pi/"
+    cp -r export-html "${pkgdir}/usr/lib/pi/"
     cp -r theme "${pkgdir}/usr/lib/pi/"
     install -m755 pi "${pkgdir}/usr/lib/pi/pi"
     install -m644 photon_rs_bg.wasm "${pkgdir}/usr/lib/pi/photon_rs_bg.wasm"
@@ -36,12 +39,11 @@ package() {
     ln -s "/usr/lib/pi/pi" "${pkgdir}/usr/bin/pi"
 
     # Documentation and examples
-    cp -r docs/* "${pkgdir}/usr/share/doc/pi/"
-    cp -r examples "${pkgdir}/usr/share/doc/pi/"
-    install -m644 README.md "${pkgdir}/usr/share/doc/pi/README.md"
-    install -m644 CHANGELOG.md "${pkgdir}/usr/share/doc/pi/CHANGELOG.md"
+    cp -r docs "${pkgdir}/usr/lib/pi/"
+    cp -r examples "${pkgdir}/usr/lib/pi/"
+    install -m644 README.md "${pkgdir}/usr/lib/pi/README.md"
+    install -m644 CHANGELOG.md "${pkgdir}/usr/lib/pi/CHANGELOG.md"
 
-    # License (MIT as specified in package.json)
-    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    echo "MIT License" > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # License
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
