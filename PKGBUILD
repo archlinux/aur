@@ -1,7 +1,8 @@
 # Maintainer:Chenx Dust <chenx_dust@outlook.com>
 pkgname=ez4connect
-pkgver=1.8.1
+pkgver=1.9.1
 pkgrel=1
+_releasever=1.9.1
 pkgdesc="Imporved Qt-based ZJU-Connect GUI"
 arch=("i686" "x86_64" "armv7h" "aarch64" "riscv64")
 url='https://github.com/chenx-dust/EZ4Connect'
@@ -12,18 +13,18 @@ provides=('ez4connect')
 conflicts=('ez4connect')
 _appname='EZ4Connect'
 
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${_releasever}.tar.gz::${url}/archive/refs/tags/v${_releasever}.tar.gz")
 
-sha256sums=('b187c6331278496c4fe64c6681415191f31f7999e3dbdf7aa5cbe1521d571977')
+sha256sums=('c41ab61dd13049a1b80c843c11bb7abf332db295da82e6d9093759ea8397d78e')
 
 build(){
-    cd "${srcdir}"/${_appname}-${pkgver}
+    cd "${srcdir}"/${_appname}-${_releasever}
     mkdir -p build
-    cmake -DNIGHTLY_BUILD=OFF -DREL_VER=${pkgver} -S . -B build
+    cmake -DNIGHTLY_BUILD=OFF -DREL_VER=${_releasever} -S . -B build
     cmake --build build --target ${_appname}
 }
 package() {
-    cd "${srcdir}"/${_appname}-${pkgver}
+    cd "${srcdir}"/${_appname}-${_releasever}
     install -Dm755 "build/${_appname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "resource/icon.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appname}.png"
     
