@@ -9,8 +9,7 @@
 _name=PyPDF2
 pkgname=python-pypdf2
 pkgver=3.0.1
-pkgrel=1
-epoch=2
+pkgrel=2
 pkgdesc='Python library for manipulating pages of PDF files (legacy v2)'
 arch=(any)
 url="https://pypi.org/project/PyPDF2"
@@ -29,6 +28,11 @@ makedepends=(
 
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 sha256sums=('a74408f69ba6271f71b9352ef4ed03dc53a31aa404d29b5d31f53bfecfee1440')
+
+prepare() {
+  cd ${_name}-${pkgver}
+  sed -i 's/,<4//' pyproject.toml
+}
 
 build() {
   cd ${_name}-${pkgver}
