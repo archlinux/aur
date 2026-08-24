@@ -1,6 +1,6 @@
 pkgbase = python-pytooling
 	pkgdesc = A collection of arbitrary useful classes, decorators, meta-classes and exceptions
-	pkgver = 8.14.0
+	pkgver = 9.0.0
 	pkgrel = 1
 	url = https://pytooling.github.io/pyTooling
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-pytooling
 	optdepends = python-colorama: Terminal color support
 	optdepends = python-argcomplete: Terminal autocompletion support
 	optdepends = python-ruamel-yaml: YAML support
-	source = python-pytooling-8.14.0.tar.gz::https://github.com/pyTooling/pyTooling/archive/v8.14.0.tar.gz
-	sha256sums = 2aa9f43a03fe4d35f74292d308be8847de26d00c873c41e683bc8963b7d5eaa1
+	source = python-pytooling-9.0.0.tar.gz::https://github.com/pyTooling/pyTooling/archive/v9.0.0.tar.gz
+	sha256sums = 7a6ce693fc4b2ba183c86a16c3831994bc8fc86206fa6734d88903cfc41bac29
 
 pkgname = python-pytooling
