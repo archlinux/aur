@@ -1,6 +1,6 @@
 pkgbase = lug-wine-tkg-staging-experimental-wayland-git
 	pkgdesc = Wine runner based on TKG builds + staging + experimental patches for Star Citizen (forces native Wine Wayland driver)
-	pkgver = 11.10
+	pkgver = 11.16
 	pkgrel = 8
 	url = https://github.com/starcitizen-lug/lug-wine-experimental
 	arch = x86_64
@@ -29,7 +29,7 @@ pkgbase = lug-wine-tkg-staging-experimental-wayland-git
 	conflicts = lug-wine-tkg-experimental-git
 	conflicts = lug-wine-tkg-staging-experimental-git
 	options = !strip
-	source = lug-wine-tkg-staging-experimental-wayland-git-11.10-1.tar.gz::https://github.com/starcitizen-lug/lug-wine-experimental/releases/download/11.10-1/lug-wine-tkg-staging-experimental-wayland-git-11.10-1.tar.gz
-	sha256sums = 1a0e312edc241d95fb4ececc01b9e05cbead9a0ff16059e950a644ffdafcf9ae
+	source = lug-wine-tkg-staging-experimental-wayland-git-11.16-1.tar.gz::https://github.com/starcitizen-lug/lug-wine-experimental/releases/download/11.16-1/lug-wine-tkg-staging-experimental-wayland-git-11.16-1.tar.gz
+	sha256sums = 82eac27c5cf3cf23d482acb468b14a683f2baeee3066d20fb7e6f0c59cb7793f
 
 pkgname = lug-wine-tkg-staging-experimental-wayland-git
