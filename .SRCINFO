@@ -1,0 +1,27 @@
+pkgbase = kwin-effects-thumbnail-bloom-git
+	pkgdesc = KWin effect that turns obscured windows into interactive thumbnails
+	pkgver = r42.727e5df
+	pkgrel = 1
+	url = https://github.com/LMauricius/kde-thumbnail-bloom
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = kcmutils
+	depends = kcolorscheme
+	depends = kconfig
+	depends = kconfigwidgets
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kwin
+	depends = libepoxy
+	depends = qt6-base
+	provides = kwin-effects-thumbnail-bloom
+	conflicts = kwin-effects-thumbnail-bloom
+	source = kde-thumbnail-bloom::git+https://github.com/LMauricius/kde-thumbnail-bloom.git
+	sha256sums = SKIP
+
+pkgname = kwin-effects-thumbnail-bloom-git
