@@ -15,7 +15,7 @@ _pkgtype="-vfio"
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=7.1.8
+pkgver=7.1.10
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -80,7 +80,7 @@ source=(
   1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
 )
 sha256sums=(
-  'ff01dcb449279d5b4cfccdb01fee639cf5ff1803f1749a77844dd33915422c49' # cksum
+  '67d2f4697a02f3bec98e744b1bdc307e920c24bb4e88b5ee97dc9a34e9aa9999' # cksum
   'SKIP'
   'SKIP'
   'SKIP'
