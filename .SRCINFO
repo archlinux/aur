@@ -1,6 +1,6 @@
 pkgbase = llamafile-bin
 	pkgdesc = Distribute and run LLMs with a single file
-	pkgver = 0.10.3
+	pkgver = 0.10.5
 	pkgrel = 1
 	url = https://github.com/mozilla-ai/llamafile
 	arch = x86_64
@@ -11,12 +11,14 @@ pkgbase = llamafile-bin
 	optdepends = cuda: Nvidia GPU-Offloading Support
 	provides = llamafile
 	provides = whisperfile
+	provides = diffusionfile
+	provides = transcribefile
 	provides = zipalign
 	conflicts = llamafile-git
 	conflicts = android-sdk-build-tools
 	conflicts = zipalign
 	options = !strip
-	source = llamafile-bin::https://github.com/mozilla-ai/llamafile/releases/download/0.10.3/llamafile-0.10.3.zip
-	sha256sums = 8ff91166a39bb9d387bf5f3115d02b4b2cbd93870f77eefd1d312e27dbf527f7
+	source = llamafile-bin::https://github.com/mozilla-ai/llamafile/releases/download/0.10.5/llamafile-0.10.5.zip
+	sha256sums = 54f4d4ae96d8def8564ad78d09596e24d8a4657f4aa6f904d0a46b385d589648
 
 pkgname = llamafile-bin
