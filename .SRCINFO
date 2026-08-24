@@ -1,5 +1,5 @@
 pkgbase = mahoragaos
-	pkgdesc = A model-agnostic adaptive operating system inspired by the Unix philosophy
+	pkgdesc = An agentic backend that *will* be the best
 	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://gitlab.com/Bingusfan360/MahoragaOS

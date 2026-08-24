@@ -2,7 +2,7 @@
 pkgname=mahoragaos
 pkgver=0.5.0
 pkgrel=1
-pkgdesc="A model-agnostic adaptive operating system inspired by the Unix philosophy"
+pkgdesc="An agentic backend that *will* be the best"
 arch=('any')
 url="https://gitlab.com/Bingusfan360/MahoragaOS"
 license=('AGPL-3.0-or-later')
