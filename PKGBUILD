@@ -1,6 +1,6 @@
 # Maintainer: Partha Pratim Gogoi 160270614+rugbedbugg@users.noreply.github.com
 pkgname=latticed
-pkgver=0.1.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Tamper-evident filesystem audit daemon using blockchain chaining"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('rust' 'cargo')
 backup=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0ed0bbef7260ee59c23136c9d0890993e24f4fa6fe41fa7390ed50f229c84078')
+sha256sums=('2832f5287484334fd0a1cd4c14e54a5dc19b5ca5ca5af32e462770836d57bae0')
 
 prepare() {
     cd "Lattice-d-$pkgver"

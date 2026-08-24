@@ -1,13 +1,13 @@
 pkgbase = latticed
 	pkgdesc = Tamper-evident filesystem audit daemon using blockchain chaining
-	pkgver = 0.1.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/rugbedbugg/Lattice-d
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = latticed-0.1.2.tar.gz::https://github.com/rugbedbugg/Lattice-d/archive/v0.1.2.tar.gz
-	sha256sums = 0ed0bbef7260ee59c23136c9d0890993e24f4fa6fe41fa7390ed50f229c84078
+	source = latticed-1.0.0.tar.gz::https://github.com/rugbedbugg/Lattice-d/archive/v1.0.0.tar.gz
+	sha256sums = 2832f5287484334fd0a1cd4c14e54a5dc19b5ca5ca5af32e462770836d57bae0
 
 pkgname = latticed
