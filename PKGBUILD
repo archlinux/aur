@@ -6,7 +6,7 @@ _pkgname=scc
 pkgname=${_pkgname}-bin
 pkgdesc="Sloc, Cloc and Code: scc is a very fast accurate code counter with complexity calculations and COCOMO estimates written in pure Go"
 
-pkgver=3.7.0
+pkgver=4.0.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,9 +24,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('3d9d65b00ca874c2b29151abe7e1480736f5229edc3ce8e4b2791460cdfabf5a')
-sha256sums_i686=('1de91dae8a927ac2063a99b520d9a474644db6827fe6f85e3d8f87a1def3b14d')
-sha256sums_aarch64=('dcb05c6e993bb2d8d2da4765ff018f2e752325dd205a41698929c55e4123575d')
+sha256sums_x86_64=('b8535fb0714dd33c5434c24de181e4d1a632e6a1f869e1985bbd10ad8b838545')
+sha256sums_i686=('f846ef3bd52ac452d5cad8632479282a82f2e6353f773c63f7816b01319fc78a')
+sha256sums_aarch64=('a73d5378017abb1d86da8c19a73ede2878c3f7369e9ea6987827cd710aa14657')
 
 
 package() {
