@@ -2,19 +2,21 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-ggsn
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Open Source implementation of a GGSN (Gateway GPRS Support Node)"
 url="https://osmocom.org/projects/openggsn"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-only AND LGPL-2.1-or-later AND MIT')
-depends=('libosmocore' 'talloc')
+depends=('libosmocore>=1.14.2'
+         'libosmo-netif>=1.8.0'
+         'talloc')
 provides=('libgtp.so=11-64')
 conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-ggsn.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
         'LICENSE-MIT')
-sha256sums=('882ba56cb8dc7b8e3e739375596a57341e6e0e47d5470e91dad806a503c2ece2'
+sha256sums=('d847f5323f599b6004e9a7f7ab9af29087cc95e7bc72ae979bf857f4092fddfd'
             '323c587d0ccf10e376f8bf9a7f31fb4ca6078105194b42e0b1e0ee2bc9bde71f')
 
 build() {
