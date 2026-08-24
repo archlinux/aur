@@ -1,7 +1,7 @@
 # Maintainer: NewYearPrism
 
-_ggml_version=0.20.0
-_ggml_sha256sum=85bdb8c38cf9e3074177713e34add52e57c1d310239de864e627d429dea3b51a
+_ggml_version=0.21.0
+_ggml_sha256sum=3b0d4f1fe7c278824d4bb753b7402733576985689bd40e9cc719eca627131d24
 pkgname=ggml-core
 pkgdesc='Tensor library for machine learning (core runtime)'
 pkgver=${_ggml_version}
