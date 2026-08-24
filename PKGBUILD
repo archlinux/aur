@@ -1,7 +1,7 @@
 # Maintainer: stabldev <thestabldev@gmail.com>
 
 pkgname=torrra
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A Python tool that lets you find and download torrents without leaving your CLI."
 arch=("any")
@@ -24,7 +24,7 @@ makedepends=(
     "python-installer"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('24f44c16d9469571056cdc11ac26f7cc6010cfa6c8cc9fcf34e1d733db9666c0')
+sha256sums=('f6838e3af32a5a354da616a4feacdf263c4ca5f476487d567eeb462a975cfa1b')
 
 build() {
     cd "$pkgname-$pkgver"
