@@ -1,8 +1,8 @@
 # Maintainer: Krzysztof Demir Kuźniak <krzysztofdemirkuzniak@gmail.com>
 
 pkgname=chain-lang
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Chain programming language interpreter"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nebania/chain-lang"
