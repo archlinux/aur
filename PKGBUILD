@@ -2,7 +2,7 @@
 
 pkgname=atmosphera-niri
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Meta package: Atmosphera shell + niri compositor + niri IPC module"
 arch=('any')
 url="https://github.com/alexindigo/atmosphera"
@@ -12,8 +12,6 @@ depends=(
   'niri'
   'qt6-niriqml'
   'xwayland-satellite'
-  'xdg-desktop-portal-gnome'
-  'xdg-desktop-portal-gtk'
 )
 
 package() {
