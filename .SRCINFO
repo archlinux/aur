@@ -55,7 +55,7 @@ pkgbase = papis-git
 	optdepends = python-sphinx: for papis.sphinx_ext (used by some plugins)
 	optdepends = python-sphinx-click: for papis.sphinx_ext (used by some plugins)
 	optdepends = python-pytest: for papis.testing (used by some plugins)
-	provides = papis
+	provides = papis=0.15.0.r136.g0f7c026a
 	conflicts = papis
 	source = papis::git+https://github.com/papis/papis.git
 	sha256sums = SKIP

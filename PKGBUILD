@@ -84,7 +84,7 @@ checkdepends=(
     'python-types-pyyaml'
     'python-types-requests'
 )
-provides=('papis')
+provides=("papis=$pkgver")
 conflicts=('papis')
 source=("${_pkgname}::git+$url.git")
 sha256sums=('SKIP')
