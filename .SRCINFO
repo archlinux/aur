@@ -1,6 +1,6 @@
 pkgbase = zoraxy-bin
 	pkgdesc = A general purpose HTTP reverse proxy and forwarding tool. Now written in Go!(Precompiled version)
-	pkgver = 3.3.3
+	pkgver = 3.3.4
 	pkgrel = 1
 	url = https://zoraxy.aroz.org/
 	arch = aarch64
@@ -8,17 +8,17 @@ pkgbase = zoraxy-bin
 	arch = i686
 	arch = x86_64
 	license = AGPL-3.0-only
-	provides = zoraxy=3.3.3
+	provides = zoraxy=3.3.4
 	conflicts = zoraxy
 	source = zoraxy.service
 	sha256sums = 1f93b8f03e2e1e368f67663e98730818e6e01e7a603ffd3b66872caf32e2b696
-	source_aarch64 = zoraxy-3.3.3-aarch64::https://github.com/tobychui/zoraxy/releases/download/v3.3.3/zoraxy_linux_arm64
-	sha256sums_aarch64 = d004e188d7af356ff6f30bb1ee0da18ce65dab352189cabe827a564de0ba374f
-	source_armv7h = zoraxy-3.3.3-armv7h::https://github.com/tobychui/zoraxy/releases/download/v3.3.3/zoraxy_linux_arm
-	sha256sums_armv7h = cdc01ca289b229952925d0229fa0260a7b91e5db3afe680110f8709c2ea85e08
-	source_i686 = zoraxy-3.3.3-i686::https://github.com/tobychui/zoraxy/releases/download/v3.3.3/zoraxy_linux_386
-	sha256sums_i686 = 6b4bc6ffb84bd580bcd2de8227b110ccd5bc4d5e5dc226194d339fc216bdf46e
-	source_x86_64 = zoraxy-3.3.3-x86_64::https://github.com/tobychui/zoraxy/releases/download/v3.3.3/zoraxy_linux_amd64
-	sha256sums_x86_64 = c78f03e18503c1d7344fd4e2ebed0dd12686994c0c5188d6eeb939a5573f7a39
+	source_aarch64 = zoraxy-3.3.4-aarch64::https://github.com/tobychui/zoraxy/releases/download/v3.3.4/zoraxy_linux_arm64
+	sha256sums_aarch64 = 69c48be034c9b5016660e3f4f0f75b2940e82e0a1b7e0f55675ece9738b77d57
+	source_armv7h = zoraxy-3.3.4-armv7h::https://github.com/tobychui/zoraxy/releases/download/v3.3.4/zoraxy_linux_arm
+	sha256sums_armv7h = bf1baf59cdce38ff02bc50bdc35c724888032bd4dcad9c56ef69b5d5a4a262eb
+	source_i686 = zoraxy-3.3.4-i686::https://github.com/tobychui/zoraxy/releases/download/v3.3.4/zoraxy_linux_386
+	sha256sums_i686 = baea4506d532b250b0353a860432d8956341700a185338e67e10feb60e2923b9
+	source_x86_64 = zoraxy-3.3.4-x86_64::https://github.com/tobychui/zoraxy/releases/download/v3.3.4/zoraxy_linux_amd64
+	sha256sums_x86_64 = 452b9bfd3e54e24853b6ad27555b1727be0e85f356f5c8487da9d2f28497b298
 
 pkgname = zoraxy-bin
