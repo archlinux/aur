@@ -2,7 +2,7 @@
 # Maintainer: serverbread <serverbread-DEV@qq.com>
 pkgname="meowpad-configurator-v2-git"
 pkgrel=1
-pkgver=1.2.0.r160.b2886a0
+pkgver=1.2.1.r166.a30ae6a
 pkgdesc="Meowpad v2 配置器"
 arch=('x86_64')
 license=('MIT')
@@ -51,7 +51,7 @@ pkgver() {
 
 build() {
   cd MeowpadConfigurator/
-  pnpm install --no-frozen-lockfile
+  pnpm install --no-frozen-lockfile --config.dangerouslyAllowAllBuilds=true
   cargo tauri build --bundles deb
 }
 
