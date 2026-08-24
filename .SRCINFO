@@ -1,0 +1,21 @@
+pkgbase = snirect-bin
+	pkgdesc = Local HTTP/HTTPS proxy that rewrites TLS SNI by rules to bypass SNI-based censorship (prebuilt binary)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/xihale/snirect
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = ca-certificates: HTTPS MITM decryption
+	optdepends = nss: Firefox certificate store integration
+	provides = snirect
+	conflicts = snirect
+	options = !strip
+	source = LICENSE::https://raw.githubusercontent.com/xihale/snirect/v0.3.0/LICENSE
+	sha256sums = 9170853f5f6a075badb2db222f98d1ae66eaac2f9a9bde463aa085f7711c25fc
+	source_x86_64 = snirect-bin-0.3.0-x86_64::https://github.com/xihale/snirect/releases/download/v0.3.0/snirect-linux-amd64
+	sha256sums_x86_64 = d0b9d6e4c359f9107192ce5a88acccab607d1e9654b8dae4223025ac1a4aa92b
+	source_aarch64 = snirect-bin-0.3.0-aarch64::https://github.com/xihale/snirect/releases/download/v0.3.0/snirect-linux-arm64
+	sha256sums_aarch64 = 8b5cd9b11071902aa57833462dfca28f42c45b68e81d2c2754b0c1b750fb2a2b
+
+pkgname = snirect-bin
