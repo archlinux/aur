@@ -2,7 +2,7 @@
 
 pkgname=acheron-git
 _pkgname=acheron
-pkgver=r208.4410ae2
+pkgver=r212.e387763
 pkgrel=1
 pkgdesc='Alternative Discord client made in C++ with Qt 6'
 arch=('x86_64')
@@ -22,6 +22,7 @@ depends=(
   libsodium
   opus
   rnnoise
+  ffmpeg
 )
 makedepends=(
   git
