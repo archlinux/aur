@@ -1,7 +1,7 @@
 pkgbase = pebble-tool
 	pkgdesc = Command-line tool for the Pebble SDK: build, install and debug apps for Pebble smartwatches
 	pkgver = 5.0.39
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/coredevices/pebble-tool
 	arch = any
 	license = MIT
@@ -34,6 +34,7 @@ pkgbase = pebble-tool
 	depends = websockify
 	depends = python-wheel
 	optdepends = pypkjs: PebbleKit JS / phone-simulator sensor emulation for `pebble install --emulator --pypkjs` (install with `uv tool install pypkjs`, not packaged for Arch due to the stpyv8 dependency)
+	optdepends = npm: building projects with npm package.json dependencies, and `pebble package`
 	source = https://files.pythonhosted.org/packages/c5/6e/444de81db97ea030e219e82fdcfcc6fd5ff3d591d4003e1f4685186232b0/pebble_tool-5.0.39.tar.gz
 	sha256sums = c2ec1eef7fd0ff73f4b0773492da7ed4b36bacb504e6813c41a560a9e7bf3564
 
