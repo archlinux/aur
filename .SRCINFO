@@ -1,5 +1,5 @@
 pkgbase = splinterm
-	pkgver = 0.1.0beta1
+	pkgver = 0.1.0beta2
 	pkgrel = 1
 	url = https://github.com/oldjobobo/splinterm
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = splinterm
 	makedepends = ttf-jetbrains-mono-nerd
 	makedepends = wayland
 	makedepends = xdg-terminal-exec
-	source = https://github.com/OldJobobo/splinterm/releases/download/v0.1.0-beta1/splinterm-0.1.0-beta1.tar.gz
-	sha256sums = 72bd626474f2f660cf5cf595f4e9dd040dafacd2f3087d58a81f01a32d39f5ef
+	source = https://github.com/OldJobobo/splinterm/releases/download/v0.1.0-beta2/splinterm-0.1.0-beta2.tar.gz
+	sha256sums = ba8f953c2bf7562923af0c2e131b86a469ab2b4788c352ab3cfaec521125a1f2
 
 pkgname = splinterm
 	pkgdesc = Persistent Wayland terminal for humans and bounded automation
@@ -43,6 +43,6 @@ pkgname = splinterm
 
 pkgname = splinterm-mcp
 	pkgdesc = Policy-scoped MCP stdio adapter for Splinterm
-	depends = splinterm=0.1.0beta1-1
+	depends = splinterm=0.1.0beta2-1
 	depends = gcc-libs
 	depends = glibc

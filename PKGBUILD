@@ -1,8 +1,8 @@
 # Maintainer: OldJobobo
 pkgbase=splinterm
 pkgname=('splinterm' 'splinterm-mcp')
-pkgver=0.1.0beta1
-_upstream_ver=0.1.0-beta1
+pkgver=0.1.0beta2
+_upstream_ver=0.1.0-beta2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/oldjobobo/splinterm'
@@ -28,7 +28,7 @@ source=(
   "https://github.com/OldJobobo/splinterm/releases/download/v$_upstream_ver/$pkgbase-$_upstream_ver.tar.gz"
 )
 sha256sums=(
-  '72bd626474f2f660cf5cf595f4e9dd040dafacd2f3087d58a81f01a32d39f5ef'
+  'ba8f953c2bf7562923af0c2e131b86a469ab2b4788c352ab3cfaec521125a1f2'
 )
 
 prepare() {
@@ -90,6 +90,8 @@ package_splinterm() {
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/com.oldjobobo.splinterm.svg"
   install -Dm644 dist/systemd/user/splinterd.service \
     "$pkgdir/usr/lib/systemd/user/splinterd.service"
+  install -Dm644 dist/systemd/user/app-splinterm.slice \
+    "$pkgdir/usr/lib/systemd/user/app-splinterm.slice"
   install -Dm755 dist/omarchy/omarchy-launch-screensaver \
     "$pkgdir/usr/lib/splinterm/integrations/omarchy-launch-screensaver"
   install -Dm644 dist/omarchy/screensaver.ini \
