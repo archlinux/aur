@@ -1,8 +1,32 @@
 post_install() {
-    echo "Compile schemas"
-    glib-compile-schemas "$pkgdir/usr/share/glib-2.0/schemas"
+    echo -e "\e[1mCheck if there is a local schema.\e[0m"
+
+    getent passwd | awk -F: '$3 >= 1000 && $3 < 65534 {print $6}' | while read -r homedir; do
+        if [ -d "$homedir" ]; then
+			if [[ "$homedir" != "/var/empty" ]]; then
+	            echo "Found home: $homedir"
+				rem_local_schema
+			fi
+        fi
+    done
+}
+
+# Removing local gschema to ensure proper functionning
+rem_local_schema() {
+    SCHEMA="$homedir/.local/share/glib-2.0/schemas/io.github.plrigaux.sysd-manager.gschema.xml"
+    if [[ -f "$SCHEMA" ]]; then
+        echo -e "File \e[1m$SCHEMA\e[0m exists!"
+        echo -e "Removing file $SCHEMA"
+        rm $SCHEMA || true
+
+        LOCAL_SCHEMA_DIR="$homedir/.local/share/glib-2.0/schemas"
+        echo -e "Recompiling local schemas $LOCAL_SCHEMA_DIR"
+        glib-compile-schemas $LOCAL_SCHEMA_DIR || true
+    else
+        echo -e "File \e[1m$SCHEMA\e[0m doesn't exist and \e[32mit's ok!\e[0m"
+    fi
 }
 
 post_upgrade() {
-  post_install "$@"
+    post_install "$1"
 }
