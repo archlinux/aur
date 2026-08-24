@@ -2,6 +2,7 @@
 pkgname=pandora-launcher
 _pkgrustname=pandora_launcher
 _pkgtarname=PandoraLauncher
+_pkggithuburl=https://github.com/Moulberry/PandoraLauncher
 pkgver=5.5.2
 pkgrel=1
 pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features."
@@ -33,7 +34,7 @@ optdepends=(
   'mangohud: mangohud support'
 )
 source=(
-  "$pkgname-$pkgver.tar.gz::https://github.com/Moulberry/PandoraLauncher/archive/refs/tags/v$pkgver.tar.gz"
+  "$pkgname-$pkgver.tar.gz::$_pkggithuburl/archive/refs/tags/v$pkgver.tar.gz"
   "$pkgname.desktop"
 )
 sha256sums=('e63f2044c48e15b99d6a30b4d2e0a4ca634b436915e10f7ca88522c77cee9ce4'
@@ -51,6 +52,9 @@ prepare() {
 build() {
   cd "$_pkgtarname-$pkgver"
   export CARGO_TARGET_DIR=target
+  export GITHUB_REPOSITORY_URL=$_pkggithuburl
+  export PANDORA_DISTRIBUTION=aur
+  export PANDORA_RELEASE_VERSION=$pkgver
   cargo build --release --locked --target $(rustc --print host-tuple)
 }
 
