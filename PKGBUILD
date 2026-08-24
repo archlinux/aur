@@ -9,7 +9,7 @@
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
 _pkgver=23.1.0
-_pkg_suffix=rc2
+_pkg_suffix=rc3
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
 if [[ -n ${_pkg_suffix} ]]; then
@@ -29,7 +29,7 @@ pkgdesc="Up to date official clang releases installed at /opt/clang/latest to av
 
 # stable
 source=("https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${_pkgver_dash_suffix}.tar.gz")
-sha512sums=('50e1224d7e5877d70f4ccbf788de0955cd41a57b97d130eac5e7ae5984b676b9fa28c4b67d4791ce901972540b3507f8d2d0660b4845cb90875e3b994a48021f')
+sha512sums=('9bc285303506a99a6bf7807daf57086ae36bc5d311ddb12b38b4c7d4409b8e19ef134835bc2b90e07100884ce705c28869694b06229d344a76ae2f1d157691e3')
 install=clang.install
 static_build=false
 build_with_gcc=false
@@ -44,18 +44,24 @@ shared_library_build_options=" \
             -DCLANG_LINK_CLANG_DYLIB=ON \
 	"
 
+# too damn slow
+#-DLLVM_ENABLE_LTO=Thin \
 # both modules and thinlto barf with gcc
 # -DLLVM_ENABLE_MODULES=ON now barfs when compiling with clang 18, complaining about missing symbols
-build_with_clang_options=" \
+build_with_clang_options=' \
 			-DLLVM_BINUTILS_INCDIR=/usr/include \
             -DLLVM_ENABLE_LLD=ON \
             -DCMAKE_C_COMPILER=clang \
             -DCMAKE_CXX_COMPILER=clang++ \
             -DCMAKE_LINKER=lld \
+            -DCLANG_DEFAULT_LINKER=lld \
+            -DCOMPILER_RT_SANITIZERS_TO_BUILD="asan;msan;tsan;ubsan;safestack;cfi"
+            -DRUNTIMES_CMAKE_ARGS="-DLLVM_USE_LINKER=lld -DCMAKE_SHARED_LINKER_FLAGS='-fuse-ld=lld';-DCMAKE_EXE_LINKER_FLAGS='-fuse-ld=lld';-DLLVM_USE_LINKER=lld" \
+            -DLLVM_ENABLE_LTO=Thin \
             -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
             -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-            -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \\
-	"
+            -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+	'
 
 _prepare_install_script() {
 	cp ${startdir}/.clang.install ${startdir}/clang.install
@@ -81,9 +87,9 @@ build() {
 	# we now support makepkg's CFLAGS; be warned that -Os does not successfully build
     cmake   -B _build \
             -DLLVM_ABI_BREAKING_CHECKS:STRING=FORCE_OFF \
-            -DCMAKE_BUILD_TYPE=MinSizeRel \
-      			-DCMAKE_C_FLAGS_RELEASE="${CFLAGS}" \
-			      -DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS}" \
+            -DCMAKE_BUILD_TYPE=Release \
+      			-DCMAKE_C_FLAGS_RELEASE="${CFLAGS} -march=native" \
+			      -DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS} -march=native" \
             -GNinja \
             -DCMAKE_INSTALL_PREFIX:PATH=${install_path} \
             ${build_with_clang_options} \
@@ -91,7 +97,7 @@ build() {
             -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;lldb;mlir;polly;bolt" \
             -DLLVM_ENABLE_RUNTIMES="compiler-rt;libc;libcxx;libcxxabi;libunwind;openmp" \
             ${srcdir}/llvm-project-llvmorg-${_pkgver_dash_suffix}/llvm | tee ${pkgname}-configure.log
-	  time ninja -C _build | tee ${pkgname}-build.log
+	  time cmake --build _build --parallel | tee ${pkgname}-build.log
 	)
 	#perf record -e cycles:u -j any,u -- ninja -C _build
 }
