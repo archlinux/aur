@@ -2,7 +2,7 @@
 
 pkgname=python-spsdk-lauterbach
 _name=${pkgname#python-}
-pkgver=0.5.2
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Lauterbach debug probe plugin for SPSDK"
 arch=(any)
@@ -29,7 +29,7 @@ conflicts=(${_name})
 replaces=(${_name})
 _name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('e76556e09cbd8100debbfa738f8d89166aebda09d19018ea55ea1ded864ce16aa6ea49dfa5094c9f806e5aed81f8aaab492edeeb901409e6ed48b6081248858c')
+sha512sums=('3fc5ccecbbb394bc5e6cc67dfb8d25a167d26fa12986f161e2f126686c8034a0e2ab0a5ef5be7d224fbf289af6818595668d2ca909942d7f5fad8c7d9bb6e48f')
 
 build() {
   cd ${srcdir}/$_name-$pkgver
