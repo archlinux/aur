@@ -1,11 +1,10 @@
 pkgbase = ggml-cpu-backend
 	pkgdesc = CPU backend for ggml
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggml-org/ggml
 	arch = x86_64
 	arch = aarch64
-	groups = ggml
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
