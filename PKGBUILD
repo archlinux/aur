@@ -82,7 +82,6 @@ prepare() {
   sed -e "s|^# $Microarchitecture is not set|$Microarchitecture=y|g" -i ../config
   cp ../config .config
   make olddefconfig
-  # make localmodconfig
   diff -u ../config .config || :
 
   make -s kernelrelease > version
