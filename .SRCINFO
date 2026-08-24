@@ -1,6 +1,6 @@
 pkgbase = pandoc-crossref-static-git
 	pkgdesc = Pandoc filter for cross-references (static build)
-	pkgver = 0.3.24.r8.gd29dabe.pandoc.3.10.1
+	pkgver = 0.3.25.r0.g1199b70.pandoc.3.10.2
 	pkgrel = 1
 	url = https://github.com/lierdakil/pandoc-crossref
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = pandoc-crossref-static-git
 	makedepends = pandoc-cli
 	makedepends = yq
 	depends = gmp
-	depends = pandoc-cli=3.10.1
+	depends = pandoc-cli=3.10.2
 	depends = zlib
-	provides = pandoc-crossref=0.3.24
+	provides = pandoc-crossref=0.3.25
 	conflicts = pandoc-crossref
 	source = pandoc-crossref-static-git::git+https://github.com/lierdakil/pandoc-crossref.git
 	sha256sums = SKIP
