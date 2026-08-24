@@ -1,6 +1,6 @@
 pkgbase = nushell-plugin-hcl
 	pkgdesc = A nushell plugin for parsing Hashicorp Configuration Language file format
-	pkgver = 0.114.1
+	pkgver = 0.115.0
 	pkgrel = 1
 	url = https://crates.io/crates/nu_plugin_hcl
 	install = nushell-plugin-hcl.install
@@ -10,9 +10,9 @@ pkgbase = nushell-plugin-hcl
 	makedepends = cargo
 	depends = glibc
 	depends = nushell
-	source = nushell-plugin-hcl-0.114.1.tar.gz::https://static.crates.io/crates/nu_plugin_hcl/nu_plugin_hcl-0.114.1.crate
+	source = nushell-plugin-hcl-0.115.0.tar.gz::https://static.crates.io/crates/nu_plugin_hcl/nu_plugin_hcl-0.115.0.crate
 	source = https://raw.githubusercontent.com/Yethal/nu_plugin_hcl/refs/heads/main/LICENSE
-	sha256sums = 23ab6bb6a9f8301f5d53337c3794c801a072cecb6282fd08ee71e8eaef36d802
+	sha256sums = 4e79abc54fe44cd08e0d0a44f85c80301b8742cb8e44b52452e0ee5ab18aca79
 	sha256sums = 3f9622d715adf3762d9448c869727ac3d3ed50cad29bbe6e411b7864205d8581
 
 pkgname = nushell-plugin-hcl
