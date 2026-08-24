@@ -1,10 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pandora-box
 _pkgname=Pandora-Box
-pkgver=1.0.22
+pkgver=1.0.23
 _electronversion=41
-_nodeversion=26
-export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+_nodeversion=24
 pkgrel=1
 pkgdesc="A Simple Mihomo GUI.(Use system-wide electron)"
 arch=(
@@ -30,7 +29,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('27d61201b04d92204b0b2716b418b55a89483c2eea8b4928bcbcaa3db477cf56'
+sha256sums=('819ac98dfb7a355b24b9b0bac3f35e57cd6a4a60955bb8a40bcda9b008aeac11'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     export NVM_DIR="${srcdir}/.nvm"
@@ -119,7 +118,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
 }
