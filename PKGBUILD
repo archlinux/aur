@@ -2,7 +2,7 @@
 
 pkgname=python-spsdk-keyfactor
 _name=${pkgname#python-}
-pkgver=0.4.3
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="SPSDK Signature Provider plugin using Keyfactor's API"
 arch=(any)
@@ -31,7 +31,7 @@ conflicts=(${_name})
 replaces=(${_name})
 _name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('365b7f3169fee67886d58a9e3038cb402a3f588824d7a1582029ef7150320973ff942a04902fc6af6ed31cc14640e7443e161a4d2316bdc7187702a94a283991')
+sha512sums=('284aa017a4744f36d98f47f2d15b537c63263548efde0e2ddcc689b2f2693a92075127597db06293498ee0648aad8136601b742a5c3540486fadab824951b95f')
 
 build() {
   cd ${srcdir}/$_name-$pkgver
