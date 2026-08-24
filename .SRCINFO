@@ -1,6 +1,6 @@
 pkgbase = osmo-iuh
 	pkgdesc = Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = http://osmocom.org/projects/osmohnbgw
 	arch = i686
@@ -9,10 +9,10 @@ pkgbase = osmo-iuh
 	arch = armv7h
 	license = AGPL-3.0-or-later
 	makedepends = python
-	depends = libosmocore
-	depends = libosmo-netif
-	depends = libosmo-sigtran
-	depends = libasn1c
+	depends = libosmocore>=1.12.0
+	depends = libosmo-netif>=1.7.0
+	depends = libosmo-sigtran>=2.2.0
+	depends = libasn1c>=0.9.30
 	depends = lksctp-tools
 	depends = talloc
 	provides = libosmo-hnbap.so=0-64
@@ -20,7 +20,7 @@ pkgbase = osmo-iuh
 	provides = libosmo-rua.so=0-64
 	provides = libosmo-sabp.so=1-64
 	conflicts = osmo-iuh-git
-	source = https://downloads.osmocom.org/releases/osmo-iuh/osmo-iuh-1.8.0.tar.bz2
-	sha256sums = 996d4b7aab89785356e5949e4789ac474083fe370739fe34fb1b6c536527a8fd
+	source = https://downloads.osmocom.org/releases/osmo-iuh/osmo-iuh-1.8.1.tar.bz2
+	sha256sums = 10dee97b6238b53b1c36824aa2bd7aac8457d4a436da5dbf04c76da9f0d4f023
 
 pkgname = osmo-iuh
