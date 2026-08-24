@@ -1,7 +1,7 @@
 # Maintainer: Yigit Sever <yigit at yigitsever dot com>
 
 pkgname=tlsx
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Fast and configurable TLS grabber focused on TLS based data collection"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/projectdiscovery/tlsx"
 license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f8f978b036b97b212ab4b954ba4a533adcb0425123d9dd8a4cde2d4948776628')
+sha256sums=('c0aeb253d83f1c8ed261a135b19403caf46cee3066882056875a13d5b1a2a75a')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
