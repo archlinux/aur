@@ -1,6 +1,6 @@
 pkgbase = openscreen
 	pkgdesc = Create stunning demos for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio.
-	pkgver = 1.9.6
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/getopenscreen/openscreen
 	arch = x86_64
@@ -20,12 +20,12 @@ pkgbase = openscreen
 	depends = libnotify
 	depends = libappindicator-gtk3
 	conflicts = openscreen-appimage
-	noextract = openscreen-1.9.6.pacman
+	noextract = openscreen-1.10.0.pacman
 	options = !debug
 	options = !strip
-	source = openscreen-1.9.6.pacman::https://github.com/getopenscreen/openscreen/releases/download/v1.9.6/Openscreen-Linux-1.9.6.pacman
-	source = LICENSE::https://github.com/getopenscreen/openscreen/raw/v1.9.6/LICENSE
-	sha256sums = e85e3c0357e2a038abb6e552a69dd22be02a311fdc830e5452fdd4a124b2cf2a
-	sha256sums = d8824b8c038eba113227cc707ac22c7a497583ae6115b052729a1d104f692d82
+	source = openscreen-1.10.0.pacman::https://github.com/getopenscreen/openscreen/releases/download/v1.10.0/Openscreen-Linux-1.10.0.pacman
+	source = LICENSE::https://github.com/getopenscreen/openscreen/raw/v1.10.0/LICENSE
+	sha256sums = dbbdb6472818890594f7094336ab7e6749766db6faa48e17ff2f3284158f8b09
+	sha256sums = 0b7901acee37b04fc948fa01ac25a9d283f78900a43f0f9062a7759cb6bbaa5b
 
 pkgname = openscreen
