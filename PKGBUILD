@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vidbee-bin
 _pkgname=VidBee
-pkgver=1.3.14
-_electronversion=38
+pkgver=2.0.2
+_electronversion=43
 pkgrel=1
 pkgdesc="Download videos from almost any website worldwide.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nexmoe/VidBee/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d620d1886f4570724a81b81cf63181a52f82c626802eedf39f48dc9a20c1849c'
+sha256sums=('61300209dddb751b6c55383151f1b979f1f54825c6107546957e0bfb35e4b323'
             '5cde322cd1fd10c409c8597eed127a08baa6c73b9430312de1aeb05f1dbb4953'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_app_dir() {
@@ -69,7 +69,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
