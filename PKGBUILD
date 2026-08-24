@@ -2,7 +2,7 @@
 
 pkgname=python-spsdk-pemicro
 _name=${pkgname#python-}
-pkgver=0.3.5
+pkgver=0.3.9
 pkgrel=1
 pkgdesc="P&E Micro debugger probe plugin. A debugger probe plugin for SPSDK."
 arch=(any)
@@ -29,7 +29,7 @@ conflicts=(${_name})
 replaces=(${_name})
 _name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('3e9100105f76186ebff195e78a1c49fbc2b7dfe44fbeea1db1603756e01d93a860b5e048bef32f16f9f7180ca71f5afaae99fb90483872da275432b275a17c2a')
+sha512sums=('eef7673ec8336bf546f3fd91b5b4b2f192122c5c772f4bcd829d2f75b4db5c78484b36a925675b9cf89a738b0843f7ddf3d572393481efd2f24db08493dc95f6')
 
 build() {
   cd ${srcdir}/$_name-$pkgver
