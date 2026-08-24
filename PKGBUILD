@@ -2,7 +2,7 @@
 
 _pkgname="speedtest-go"
 pkgname="${_pkgname}-bin"
-pkgver=1.7.11
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="CLI and Go API to test internet speed using speedtest.net"
 arch=(
@@ -57,20 +57,20 @@ source_riscv64=(
 source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Linux_x86_64.tar.gz"
 )
-sha256sums_aarch64=('0cece989a5eb688f39bec33ea05fee9f82c5882c8aaa0fd580c9461583363fc4')
-sha256sums_armv5h=('3155c31059e6d7274a53843829f3c7c2a74e9eaaf3d2651bd0588f814ac2724b')
-sha256sums_armv6h=('fa1a1fd3175b2bd59118a04ace1639bbedbcacfbd84171bc46193c01bb373e34')
-sha256sums_armv7h=('e777996e33e40b78324f1ed6dcdba3a1279ff9eaa9fe8d9b4b0fe5965353f83f')
-sha256sums_i686=('51751fa102834133d820f428c1ae0e38f17577cdb726b09bc95d91a60dd997f5')
-sha256sums_loong64=('0d0a8a574335122cb7aef77ecd3c2841f4ea9e8d41d90ab265ed7c22418d6f86')
-sha256sums_powerpc64=('3ea06f788a11a3e2e3d87de64551cba64dde0d30779f724815288560639566d9')
-sha256sums_powerpc64le=('efb02fffbff427d67d18612f55af28528b5ca57fa52a8307eb01085e608cc491')
-sha256sums_riscv64=('ca68dd04166bd680bbdb9e581d1105aa21f764ceb5d1852451110604f8e74069')
-sha256sums_x86_64=('86055ee85fac5aaa27d132224a8296c1a416c4bf0a3809c07af39d97cd0cf96c')
+sha256sums_aarch64=('ab5fad648da854920dbdef211a4f783b0881f47b581b01190533a2fd38743deb')
+sha256sums_armv5h=('15bd953cef9d6b0908d282f41cf0a3d7dc3de97cc6b4cdd7f0e569279bc3d134')
+sha256sums_armv6h=('3c96171ce107a38e8af738ead3c967883f2f9dc931122610ddf41fd3e714a4a3')
+sha256sums_armv7h=('ba5b794ee400f7c1b092b2bb157a49330b4ff7774b8798af6489eff21df390e8')
+sha256sums_i686=('6a7e5b78317048dbb228ac6d1d5acd25cba4d86432aefc3456896afc597e137a')
+sha256sums_loong64=('6f727b8b02bf88c32eaea3837842a9c04559ae766e3e81fdf15875a512a7d192')
+sha256sums_powerpc64=('78470ca400f6037fb079472eb7e574e586d0a2ae2cf0ee79a73eb0b9aa082839')
+sha256sums_powerpc64le=('29385d15c8bb97449b362716698e2c6d9a4b58562e3d52728b16da694104a182')
+sha256sums_riscv64=('cfb61945079df6151ded35438e426288ca7a83e1abe12897d1797cfc9904fa32')
+sha256sums_x86_64=('7830532dd42140868095d1441508b7285bbd0fad1b0c52209f4d664651811ec7')
 
 package() {
   cd "${srcdir}"
-  install -vDm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-  install -vDm644 "README.md"   "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
-  install -vDm644 "LICENSE"     "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+  install -vDm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
+  install -vDm644 "README.md"   -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -vDm644 "LICENSE"     -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
