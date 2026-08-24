@@ -1,0 +1,20 @@
+post_install() {
+    cat <<'MSG'
+The widget shows nothing until the collector runs:
+
+    systemctl enable --now plasma-nethogsd
+
+Then add the "Plasma NetHogs" widget to a panel or the desktop.
+
+The kernel must have CONFIG_DEBUG_INFO_BTF=y; plasma-nethogsd says so explicitly if
+/sys/kernel/btf/vmlinux is missing.
+MSG
+}
+
+post_upgrade() {
+    cat <<'MSG'
+plasmashell caches QML, so an already-placed widget keeps the old version until
+
+    systemctl --user restart plasma-plasmashell
+MSG
+}
