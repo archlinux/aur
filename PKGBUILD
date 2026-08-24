@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=wasm3
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="The fastest WebAssembly interpreter and the most universal runtime"
 arch=('i686' 'x86_64')
 url="https://github.com/wasm3/wasm3"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/wasm3/wasm3/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b778dd72ee2251f4fe9e2666ee3fe1c26f06f517c3ffce572416db067546536c')
+sha256sums=('cab79ce74bcac25bbf80b5ebe14af9795b9bac30b05ee8f620a3bc8002f3b8e6')
 
 
 build() {
