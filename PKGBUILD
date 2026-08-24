@@ -2,7 +2,7 @@
 
 pkgname=python-spsdk-jlink
 _name=${pkgname#python-}
-pkgver=0.3.4
+pkgver=0.3.8
 pkgrel=1
 pkgdesc="J-Link Debug probe. A debugger probe plugin for SPSDK."
 arch=(any)
@@ -32,7 +32,7 @@ conflicts=(${_name})
 replaces=(${_name})
 _name=${_name//-/_}
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('998d38ab993b09449073a0cc7d8cf17cf924f873927bed05d1ac6990eccf3c0fea3623dac9e1c69aa3f1428b170d7951d6e5410f4e93051b51ebc59775bb8d4a')
+sha512sums=('ca5761a8ee1f2524fe43ddcf900895af5edebccd9aa6fdeea932364a083f8157fac56a41710335c98d05d8e9c626ab81fe48e03e2ebe0ff4daadb05d33a333e8')
 
 build() {
   cd ${srcdir}/$_name-$pkgver
