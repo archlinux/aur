@@ -3,10 +3,10 @@
 
 pkgname=burpsuite-pro
 pkgver=2026.8
-pkgrel=1
+pkgrel=2
 pkgdesc='An integrated platform for performing security testing of web applications (professional edition)'
 url='https://portswigger.net/burp/'
-depends=('java-runtime>=25' 'hicolor-icon-theme')
+depends=('java-runtime>=26' 'hicolor-icon-theme')
 makedepends=('zip')
 arch=('any')
 license=('custom')

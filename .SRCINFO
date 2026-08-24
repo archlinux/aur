@@ -1,12 +1,12 @@
 pkgbase = burpsuite-pro
 	pkgdesc = An integrated platform for performing security testing of web applications (professional edition)
 	pkgver = 2026.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://portswigger.net/burp/
 	arch = any
 	license = custom
 	makedepends = zip
-	depends = java-runtime>=25
+	depends = java-runtime>=26
 	depends = hicolor-icon-theme
 	noextract = burpsuite-pro-2026.8-orig.jar
 	source = burpsuite-pro-2026.8-orig.jar::https://portswigger.net/burp/releases/download?product=desktop&version=2026.8&type=Jar
