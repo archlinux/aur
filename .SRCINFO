@@ -1,6 +1,6 @@
 pkgbase = agent-toolkit-bin
 	pkgdesc = Composable AI agent toolkit — native V CLI (prebuilt GitHub Release binary)
-	pkgver = 1.21.0
+	pkgver = 1.22.1
 	pkgrel = 1
 	url = https://github.com/ulises-jeremias/agent-toolkit
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = agent-toolkit-bin
 	provides = agent-toolkit
 	conflicts = agent-toolkit
 	options = !strip
-	source_x86_64 = agent-toolkit::https://github.com/ulises-jeremias/agent-toolkit/releases/download/v1.21.0/agent-toolkit-linux-x86_64
-	sha256sums_x86_64 = 6f18674d0ca4df9e48eee704c3267e6d128c8e00bcd3734cccd7648f3b3a7582
-	source_aarch64 = agent-toolkit::https://github.com/ulises-jeremias/agent-toolkit/releases/download/v1.21.0/agent-toolkit-linux-arm64
-	sha256sums_aarch64 = 1d303255f8d278c8c75068089ee102076e5482f7e52ccd0e8a6d6ee1cf069716
+	source_x86_64 = agent-toolkit::https://github.com/ulises-jeremias/agent-toolkit/releases/download/v1.22.1/agent-toolkit-linux-x86_64
+	sha256sums_x86_64 = 4a84098fa40e76b5631d064080c27798046e76c826e0be6877ecd52da93f40d3
+	source_aarch64 = agent-toolkit::https://github.com/ulises-jeremias/agent-toolkit/releases/download/v1.22.1/agent-toolkit-linux-arm64
+	sha256sums_aarch64 = 3ae2c4528c551d341d655549789d4c444ffc42c481037f5babfa1a421edff300
 
 pkgname = agent-toolkit-bin
