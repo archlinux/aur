@@ -2,7 +2,7 @@
 # Maintainer: tardanoir <tardanoir@gmail.com>
 
 pkgname='seshat-bin'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='A lightweight TUI SQL client for PostgreSQL'
 url='https://github.com/tardanoir/seshat'
@@ -12,10 +12,10 @@ provides=('seshat')
 conflicts=('seshat')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tardanoir/seshat/releases/download/v${pkgver}/seshat_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('bdfec150080df391c4f71b72523b242853733da036c4c3ce16fbeea3cf02e153')
+sha256sums_aarch64=('b77e4628f2ab6bbe0ff2f77836a2acc0ba53e8f4819fc5885de80f8bde095f81')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tardanoir/seshat/releases/download/v${pkgver}/seshat_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('7343cd8ae9115aee8d52bc978ca030111211b56be7e5b48c38686ac0379e0a6a')
+sha256sums_x86_64=('f654b194d84edffff6fcb55f9a8c493adeecf1ffee2b2f1055b73a9b04637424')
 
 package() {
   install -Dm755 "./seshat" "${pkgdir}/usr/bin/seshat"
