@@ -22,8 +22,8 @@ optdepends=(
   'lm_sensors: Additional hardware monitoring support'
   'smartmontools: Disk health information'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Magpiny/${pkgname}/archive/v${pkgver}-Linux.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Magpiny/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}-Linux.tar.gz")
+sha256sums=('0188f879572d881521382e3deea94b5ad9ccbfc63845e3652034361347a7cef8')
 
 # Optimization flags for production builds
 export CFLAGS="-march=x86-64 -mtune=generic -O3 -pipe -fno-plt -fexceptions \
