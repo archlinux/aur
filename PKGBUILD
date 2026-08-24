@@ -6,7 +6,7 @@
 
 _pkgname="qtscrcpy"
 pkgname="$_pkgname"
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="Android real-time screencast control tool"
 url="https://github.com/barry-ran/QtScrcpy"
@@ -33,7 +33,7 @@ source=(
   "$_pkgsrc_core"::"git+https://github.com/barry-ran/QtScrcpyCore.git"
 )
 sha256sums=(
-  '909c5e9e8c65f75a17eaa00de7eb88d314b2f5daa2e0c4b0c8a02ab9b3d82346'
+  'eea26f0e940c8dc6357ced9d2a74418ffc312e244bf2f900ed539676f5ed0902'
   'SKIP'
 )
 
