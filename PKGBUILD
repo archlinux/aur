@@ -1,6 +1,6 @@
 # Maintainer: blazebsc <blakeisfruity@proton.me>
 pkgname=froststrap-bin
-_tag='v2.0.0-beta.10'
+_tag='v2.0.0-beta.11'
 pkgver=${_tag#v}
 pkgver=${pkgver//-/.}
 pkgrel=2
@@ -13,7 +13,7 @@ depends=('fontconfig' 'hicolor-icon-theme' 'gcc-libs')
 source=("https://github.com/Froststrap/Froststrap/releases/download/${_tag}/Froststrap-linux-x64.deb"
     "LICENSE::https://raw.githubusercontent.com/Froststrap/Froststrap/refs/heads/main/LICENSE"
     "LICENSE-MIT::https://raw.githubusercontent.com/Froststrap/Froststrap/refs/heads/main/LICENSE-MIT")
-sha256sums=('a0994e74475cda7bf81e229de09dfde7d89464332a6dadba8b071bfb1804f8f4'
+sha256sums=('c05eac94d93bcc8954f392d8443c090905271ebeceb4dac37ccfd26e509e279d'
             '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef'
             '34559d013a5a46dcce5bcb5efb3b9489dcf5e77381da540b6baf0cde78583db2')
 
