@@ -1,6 +1,6 @@
 pkgbase = meshtastic-desktop-bin
 	pkgdesc = Meshtastic Desktop Application
-	pkgver = 2.8.0
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/meshtastic/Meshtastic-Android
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = meshtastic-desktop-bin
 	depends = util-linux-libs
 	provides = meshtastic-desktop
 	conflicts = meshtastic-desktop
-	source = https://github.com/meshtastic/Meshtastic-Android/releases/download/v2.8.0/meshtastic-desktop_2.8.0_amd64.deb
-	sha256sums = 2260a1a63715d7edfc21f27a294b86ec575b9aa76a25c0e51ef8aceaeda92074
+	source = https://github.com/meshtastic/Meshtastic-Android/releases/download/v2.8.1/meshtastic-desktop_2.8.1_amd64.deb
+	sha256sums = a610f0d23f468221d67073a2fbd173de9351c142651b7970af7416a04a03b0e2
 
 pkgname = meshtastic-desktop-bin

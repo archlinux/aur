@@ -1,6 +1,6 @@
 # Maintainer: Dmitriy Q atsip-help <at> yandex <dot> ru
 pkgname=meshtastic-desktop-bin
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Meshtastic Desktop Application"
 arch=('any')
@@ -11,7 +11,7 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 #source=("${url}/releases/download/v${pkgver//beta*}-open.${pkgver#*beta}/${pkgname%-bin}_${pkgver//beta*}_amd64.deb")
-sha256sums=('2260a1a63715d7edfc21f27a294b86ec575b9aa76a25c0e51ef8aceaeda92074')
+sha256sums=('a610f0d23f468221d67073a2fbd173de9351c142651b7970af7416a04a03b0e2')
 
 package(){
 	bsdtar xzf data.tar.zst -C "${pkgdir}"
