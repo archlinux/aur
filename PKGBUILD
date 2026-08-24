@@ -3,7 +3,7 @@
 
 pkgname=lib32-libvdpau
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc='Nvidia VDPAU library'
 arch=(x86_64)
 url=https://www.freedesktop.org/wiki/Software/VDPAU/
@@ -18,7 +18,6 @@ makedepends=(
   xorgproto
 )
 optdepends=(
-  'lib32-mesa-vdpau: driver for Mesa'
   'lib32-nvidia-utils: driver for NVIDIA'
 )
 provides=(
