@@ -4,7 +4,7 @@
 # Contributor: igor-dyatlov <dyatlov.igor@gmail.com>
 
 pkgname=blackbox-terminal-git
-pkgver=0.14.0.r83.g4bf9ac5
+pkgver=0.15.2.r12.g69189eb
 pkgrel=1
 pkgdesc="A beautiful GTK 4 terminal."
 arch=(x86_64)
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson blackbox-terminal build -D blackbox_is_flatpak=false
+  arch-meson blackbox-terminal build
   meson compile -C build
 }
 
