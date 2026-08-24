@@ -1,6 +1,6 @@
 pkgbase = osmo-msc
 	pkgdesc = Osmocom's Mobile Switching Center for 2G and 3G circuit-switched mobile networks
-	pkgver = 1.15.0
+	pkgver = 1.16.0
 	pkgrel = 1
 	url = https://osmocom.org/projects/osmomsc
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = osmo-msc
 	arch = aarch64
 	arch = armv7h
 	license = AGPL-3.0-or-later AND GPL-2.0-or-later
-	depends = libosmocore
-	depends = libosmo-abis
-	depends = libosmo-netif
-	depends = libosmo-sigtran
+	depends = libosmocore>=1.14.2
+	depends = libosmo-abis>=2.2.0
+	depends = libosmo-netif>=1.8.0
+	depends = libosmo-sigtran>=2.3.0
 	depends = libosmo-gsup-client.so
 	depends = libosmo-mgcp-client.so
 	depends = libosmo-ranap.so
@@ -22,7 +22,7 @@ pkgbase = osmo-msc
 	depends = talloc
 	conflicts = osmo-msc-git
 	backup = etc/osmocom/osmo-msc.cfg
-	source = https://downloads.osmocom.org/releases/osmo-msc/osmo-msc-1.15.0.tar.bz2
-	sha256sums = 97b02691cf3cc8d81094e8f8b6fc2ed069b12d1760a4aeb1d4b8ae0771d548d2
+	source = https://downloads.osmocom.org/releases/osmo-msc/osmo-msc-1.16.0.tar.bz2
+	sha256sums = 05d0db5ebd06c73c1c5ac18b9206ec9d56b6946d5418db19c39e51c4ac4c9883
 
 pkgname = osmo-msc
