@@ -1,17 +1,17 @@
 # Maintainer: Zyno Consulting <oss at zyno dot io>
 pkgname=sp2p-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Secure peer-to-peer file transfer"
-arch=("x86_64" "aarch64")
+arch=('x86_64' 'aarch64')
 url="https://sp2p.io"
-license=("MIT")
-provides=("sp2p")
-conflicts=("sp2p")
-source_x86_64=("https://github.com/zyno-io/sp2p/releases/download/v0.2.0/sp2p_linux_amd64.tar.gz")
-source_aarch64=("https://github.com/zyno-io/sp2p/releases/download/v0.2.0/sp2p_linux_arm64.tar.gz")
-sha256sums_x86_64=("464415c154a953257799718c18bba42914490715d3c1f4e331c3dae81647a501")
-sha256sums_aarch64=("c80e68e9660fb590643b7cf06a0477d8e605963e50ff47f78647df23f85f0f19")
+license=('MIT')
+provides=('sp2p')
+conflicts=('sp2p')
+source_x86_64=("https://github.com/zyno-io/sp2p/releases/download/v0.3.0/sp2p_linux_amd64.tar.gz")
+source_aarch64=("https://github.com/zyno-io/sp2p/releases/download/v0.3.0/sp2p_linux_arm64.tar.gz")
+sha256sums_x86_64=('b8b3aeae1f002bc8079c6069f6e9a5417216a2a8e7c1a918197e25730b16d960')
+sha256sums_aarch64=('de30ce9e91dd9aac4ad3d9e9cfb2defcc8cfc2f07bc08d8341fbe7c56376e4bf')
 
 package() {
   install -Dm755 sp2p "${pkgdir}/usr/bin/sp2p"
