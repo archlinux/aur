@@ -1,8 +1,9 @@
 pkgbase = snirect-bin
 	pkgdesc = Local HTTP/HTTPS proxy that rewrites TLS SNI by rules to bypass SNI-based censorship (prebuilt binary)
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xihale/snirect
+	install = snirect.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT

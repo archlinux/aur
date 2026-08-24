@@ -2,7 +2,7 @@
 # Contributor: xihale <i@xihale.top>
 pkgname=snirect-bin
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Local HTTP/HTTPS proxy that rewrites TLS SNI by rules to bypass SNI-based censorship (prebuilt binary)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/xihale/snirect'
@@ -14,6 +14,7 @@ optdepends=(
 )
 provides=('snirect')
 conflicts=('snirect')
+install=snirect.install
 options=('!strip')
 source=('LICENSE::https://raw.githubusercontent.com/xihale/snirect/v'"$pkgver"'/LICENSE')
 sha256sums=('9170853f5f6a075badb2db222f98d1ae66eaac2f9a9bde463aa085f7711c25fc')
@@ -25,4 +26,20 @@ sha256sums_aarch64=('041ea2590ac14d5c6927c508aa8e18c97d62774b3ae8c768ae69764be5d
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver-${CARCH}" "$pkgdir/usr/bin/snirect"
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Keep in sync with packaging/snirect.service in the source repo.
+  install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/snirect.service" <<'UNIT'
+[Unit]
+Description=Snirect - SNI RST bypass proxy
+Documentation=https://github.com/xihale/snirect
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/snirect
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+UNIT
 }
