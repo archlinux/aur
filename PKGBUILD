@@ -1,6 +1,6 @@
 # Maintainer: Miguel Rincon <miguelaezak at gmail dot com>
 pkgname=slipmat
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A native GNOME client for Apple Music"
 arch=('x86_64')          # Widevine on Linux is x86_64 only
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'librsvg' 'hicolor-icon-theme')
 makedepends=('cargo' 'nodejs' 'npm' 'git' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6d920d33db13288e53e21c7e8fff66b5e9827ce773d06d0df4fc5db04dd85909')
+sha256sums=('25ebc6c8aa985eed15aa62cded733425f8f626c05b6ee62fed1219ead61b51ac')
 options=('!debug' '!lto')
 
 # The ~200 MB castLabs Electron download and the crate registry both need the
