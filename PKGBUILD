@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=plainva
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 url="https://$pkgname.com"
 _url="https://github.com/$pkgname/$pkgname"
@@ -26,7 +26,7 @@ makedepends=(cargo
 options=(!lto)
 _archive="$pkgname-$pkgver"
 source=("$_url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
-sha256sums=('4baa9d5820611ed59bc82d452b5f1a5664a1b46ef0828176b4433e58d29f8df6')
+sha256sums=('8dc5ae07f93bb3d78566f27b7fd905990e5402e7188a29be022cc5039e6782ef')
 
 _srcenv() {
 	cd "$_archive"
