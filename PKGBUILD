@@ -2,8 +2,8 @@
 # Contributor: Josef Miegl <josef@miegl.cz>
 
 pkgname=osmo-sgsn
-pkgver=1.13.1
-pkgrel=2
+pkgver=1.13.2
+pkgrel=1
 pkgdesc="Osmocom's Serving GPRS Support Node for 2G and 3G packet-switched mobile networks"
 url="https://osmocom.org/projects/osmosgsn"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -21,7 +21,7 @@ conflicts=("${pkgname}-git")
 backup=('etc/osmocom/osmo-sgsn.cfg'
         'etc/osmocom/osmo-gtphub.cfg')
 source=("https://downloads.osmocom.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('730bc88b3650e3444f3827e81fc51a7b2fa4cd6da27f6101070d6aa4238b656b')
+sha256sums=('4a772d068a62822f7c762ebfd0afba32e9d87ee2d8e1190c506f5eaa5780a306')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
