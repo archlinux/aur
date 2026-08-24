@@ -11,11 +11,11 @@ depends=('gcc-libs')
 makedepends=('cargo' 'nasm')
 install="$pkgname.install"
 backup=('etc/sysconfig/aperture-router')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('63cb6da7509436de3af8270aed8f45f83d3cefc74acd94226a3b57a0a815e066')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v0.3.3-r2.tar.gz")
+sha256sums=('3849dd555061c29fd3eecd7f909559c022490a2e5b2bfea874451eb03183af07')
 
 _prepare_dir() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/aperture-router-0.3.3-r2"
 }
 
 prepare() {
