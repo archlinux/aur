@@ -1,6 +1,6 @@
 pkgbase = dockerfile-pin
 	pkgdesc = A CLI tool for digest pinning for Dockerfile, docker-compose.yml and GitHub Actions
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/azu/dockerfile-pin
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dockerfile-pin
 	depends = glibc
 	conflicts = dockerfile-pin-bin
 	options = !lto
-	source = dockerfile-pin-1.4.0.tar.gz::https://github.com/azu/dockerfile-pin/archive/refs/tags/v1.4.0.tar.gz
-	sha256sums = 6dd08d43a1dcfb78fe25c757644f7cabc9f38f424ac64e1ddd1bd17a0c4150f7
+	source = dockerfile-pin-1.4.1.tar.gz::https://github.com/azu/dockerfile-pin/archive/refs/tags/v1.4.1.tar.gz
+	sha256sums = a055be13341ab5de17fd843c4d788fecf4422b5c8efa6909cfb668f7bbebf014
 
 pkgname = dockerfile-pin
