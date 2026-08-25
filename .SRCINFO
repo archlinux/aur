@@ -18,6 +18,7 @@ pkgbase = td-fcitx5-rime-git
 	provides = fcitx5-rime
 	conflicts = fcitx-rime
 	conflicts = fcitx5-rime
+	options = !debug
 	source = git+https://github.com/tiandic/fcitx5-rime.git
 	sha512sums = SKIP
 
