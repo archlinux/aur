@@ -1,6 +1,6 @@
 # Maintainer: musqz <gummy-fang-deputy@duck.com>
 pkgname=archcanary
-pkgver=0.1.29
+pkgver=0.1.30
 pkgrel=1
 pkgdesc="Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering"
 arch=('any')
@@ -22,7 +22,7 @@ backup=('etc/archcanary/dkms_allowlist.conf'
         'etc/archcanary/autostart_allowlist.conf')
 install=archcanary.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/musqz/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('4a043acdc8eafdcdcc8b13adeb26cd38e54c0b54ea6f12e3feed5655beae107c')
+sha256sums=('119bdc0cd3c5c5cf6fa4c776f9c7e46476d0659d14bc4cb3f56d7d64a504045f')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -59,6 +59,13 @@ package() {
     "$pkgdir/usr/lib/archcanary/lynis-custom.prf"
   install -Dm644 configs/audit-rules.conf \
     "$pkgdir/usr/lib/archcanary/audit-rules.conf"
+  # yay Lua hook template — read-only reference copy, never installed to
+  # ~/.config/yay/init.lua automatically (that's a per-user path a pacman
+  # transaction can't reach, and hooks are opt-in either way). Lets an
+  # AUR-only install (no git clone) still have something to `cp`; see
+  # `archcanary --doctor`.
+  install -Dm644 configs/yay-init.lua \
+    "$pkgdir/usr/lib/archcanary/yay-init.lua"
 
   # Polkit policy (authorises root-helper via pkexec)
   install -Dm644 configs/org.archcanary.policy \
