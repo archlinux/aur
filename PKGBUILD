@@ -2,7 +2,7 @@
 
 _name=gradio-client
 pkgname=python-$_name
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-fsspec' 'python-httpx' 'python-huggingface-hub' 'pytho
 makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-discord: Chat with discord bot')
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('e648110efa31347bb8b1abda150a7a975b40a9658fdd8562803e2ad6a300d033')
+sha256sums=('0e605bf8683a27583868b933a083e84706b974404815d9795370ef8a62584f4e')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
