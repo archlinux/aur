@@ -3,7 +3,7 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=1
 url='https://www.hunk.dev/'
 changelog=CHANGELOG.md
@@ -15,7 +15,7 @@ depends=('glibc' 'icu')
 provides=('hunkdiff')
 options=(!strip !debug)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('d18e0a8080d0dd64326b41081deed0be93c3d0b7bad759f0a2c19defb3e6ee15cc3bf22994c408287e0a6e27fa7b62eab038d37f6a3a6b11f708189370555d60')
+b2sums=('f9d88daf9f59702fbce18aad339d8d1d40a38d76760de6420f775ccb11102a85c58d25416064e87931fb25fed8e5976a53f8fec2850fd1ace748c38fc361f57f')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

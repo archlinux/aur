@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.20.0
+
+### Minor Changes
+
+- [#799](https://github.com/modem-dev/hunk/pull/799) [`61ca92d`](https://github.com/modem-dev/hunk/commit/61ca92de477efa357aeb0d16e354cc6b97a121a1) - Add a curl installer (`curl -fsSL https://hunk.dev/install.sh | sh`) with checksum verification, and teach `hunk update` to update curl installs.
+
+- [#779](https://github.com/modem-dev/hunk/pull/779) [`bf28a59`](https://github.com/modem-dev/hunk/commit/bf28a591616f36e92e0437ef272fd9eb8579745c) - Let extension commands inspect `ctx.selection.currentLine`; TypeScript authors constructing `ExtensionReviewSelection` must add its required field.
+
+- [#833](https://github.com/modem-dev/hunk/pull/833) [`1210c08`](https://github.com/modem-dev/hunk/commit/1210c084d38f0d8898d009b82a9142638c21ad80) - Let extension commands capture immutable snapshots of stable review files and every saved review note.
+
+- [#788](https://github.com/modem-dev/hunk/pull/788) [`7d25fbf`](https://github.com/modem-dev/hunk/commit/7d25fbfcb4c7fdd1fba4bdbb90d5ab9edfcb2375) - Add `hunk update` to self-update Hunk with the package manager that installed it (npm or Homebrew), with guidance for Nix, mise, and source installs.
+
+### Patch Changes
+
+- [#809](https://github.com/modem-dev/hunk/pull/809) [`8a2e0d8`](https://github.com/modem-dev/hunk/commit/8a2e0d86c3696e796eb058d8193e8e553545fb68) - Keep the active code line fixed in place while an inline comment form pushes following content down.
+
+- [#784](https://github.com/modem-dev/hunk/pull/784) [`4aea1e1`](https://github.com/modem-dev/hunk/commit/4aea1e16f6df1672c4c1de04ecce113931141617) - Keep `hunk --version`, `--help`, `daemon serve`, and `hunk session *` off the diff-engine startup
+  path again, and release the syntax worker when the review app exits instead of at startup.
+
+- [#810](https://github.com/modem-dev/hunk/pull/810) [`0436ba1`](https://github.com/modem-dev/hunk/commit/0436ba1279f0d7c7fe1b7757d7147510961c0d33) - Make `--fast` offload eligible syntax highlighting for files with 40 or more lines.
+
+- [#840](https://github.com/modem-dev/hunk/pull/840) [`bff4fbe`](https://github.com/modem-dev/hunk/commit/bff4fbe4cd2cf3c2d749d1f83d3fa36798d76d06) - Let mouse clicks reliably select exact code lines, including blank lines, for keyboard review actions.
+
+- [#786](https://github.com/modem-dev/hunk/pull/786) [`52543ea`](https://github.com/modem-dev/hunk/commit/52543ea2e4b5854fcd99e6b991b550675230e192) - Fail clearly when an OpenTUI upgrade removes the shifted-wheel scroll reset Hunk requires.
+
+- [#803](https://github.com/modem-dev/hunk/pull/803) [`dc66723`](https://github.com/modem-dev/hunk/commit/dc66723b64a58337b9f7fb542233e1311a98b90a) - Reduce hunk navigation latency by avoiding unnecessary diff, sidebar, and syntax-highlighting work.
+
+- [#791](https://github.com/modem-dev/hunk/pull/791) [`6c8cacf`](https://github.com/modem-dev/hunk/commit/6c8cacf3c50a062d6d3d0eae9c03fc79bd475c14) - Reuse worker-highlighted diffs after the terminal cache evicts them.
+
 ## 0.19.1
 
 ### Patch Changes
