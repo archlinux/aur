@@ -1,9 +1,12 @@
 # Maintainer: Rashesh Padia
 pkgname=collabora-office
-pkgver=26.04.2.3
+pkgver=26.04.2.4
 pkgrel=1
-_source_tag=cp-26.04.2-3
-_brandver=26.04.2.3
+_source_tag=cp-26.04.2-4
+# The branding tarball is published for some releases only, so it lags the
+# source tag. Take the version that qt/flatpak/com.collaboraoffice.Office.json
+# pins at this source tag.
+_brandver=26.04.2.1
 _source_dir=online.mirror-${_source_tag}
 pkgdesc='Collabora Office - Qt6 desktop document editor powered by Collabora Online'
 arch=('x86_64')
@@ -56,9 +59,9 @@ source=(
     "https://github.com/Rash419/collabora-core-assets/releases/download/${_source_tag}/core-co-26.04-assets.tar.gz"
     "https://www.collaboraoffice.com/downloads/collabora-office-brand/collabora-office-brand-${_brandver}.tar.gz"
 )
-sha256sums=('f51717b61714f27ad4d7c05695d7740b2ecce76581626934c447bb7189ff2091'
-            '72b5c75e5249344858efa5eca8881cbf01c046c64214c802dcb45ba38b83c0a5'
-            '2d0c9b407019d4744a57a2771ec42bf97685f082601e075237a04ee6c6b7e8e3')
+sha256sums=('58c3f352d0868248257cc99491ba817befa02bf8a4b136fb5bdafa672fb317f5'
+            '0fbe0e3b0694a8a75be67262aa65cbee0c5ebe6490439a57b4e4761b89ac06d9'
+            '321112b8f29d338ca9530dc604448c9eb465c4f9308468722f16a95fc6f830a8')
 
 build() {
     cd "$_source_dir"
