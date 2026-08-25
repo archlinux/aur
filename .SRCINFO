@@ -1,7 +1,7 @@
 pkgbase = qfits
 	pkgdesc = A stand-alone C library giving access to FITS file internals.
 	pkgver = 6.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eso.org/sci/software/eclipse/qfits/
 	arch = x86_64
 	license = GPL
