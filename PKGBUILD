@@ -19,7 +19,9 @@ makedepends=(
 	'python-build'
 	'python-installer'
 	'python-wheel'
-	'python-pdm-backend'
+	'python-uv-build'
+	'python-ruff'
+	'python-pytest'
 )
 license=('GPLv3')
 arch=('any')
