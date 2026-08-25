@@ -5,7 +5,7 @@
 pkgname=disig-web-signer
 pkgver=2.6.1_1
 _pkgver="${pkgver//_/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak eID Web Signer by Disig"
 arch=('x86_64')
 license=('LicenseRef-custom')
