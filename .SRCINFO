@@ -1,7 +1,7 @@
 pkgbase = certmonger
 	pkgdesc = Certificate status monitor and PKI enrollment client
 	pkgver = 0.79.21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pagure.io/certmonger
 	install = certmonger.install
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = certmonger
 	depends = talloc
 	depends = libxml2
 	backup = etc/certmonger/certmonger.conf
-	source = https://pagure.io/certmonger/archive/0.79.21/certmonger-0.79.21.tar.gz
-	sha512sums = a008984b7592c6af7f5b91f05158637bacf369c846f10e3c38dfa18e12e7738025a5897e627826e341e77ec9657cc0042687a79af8eb9c69d2063aee78be7c6b
+	source = certmonger-0.79.21.tar.gz::https://codeberg.org/freeipa/certmonger/archive/0.79.21.tar.gz
+	sha512sums = 4d5cef4461018cb6dea486966fd079b143684a858bc51f108d4c7738c94fae028f40b54f810b75d89c12d25fa5ea36496db9746c94da7d1f893ff79da8142c0c
 
 pkgname = certmonger

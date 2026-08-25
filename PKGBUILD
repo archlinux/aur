@@ -6,7 +6,7 @@
 
 pkgname=certmonger
 pkgver=0.79.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Certificate status monitor and PKI enrollment client"
 arch=(i686 x86_64)
 url="https://pagure.io/${pkgname}"
@@ -16,18 +16,20 @@ makedepends=(rpm-tools gettext)
 checkdepends=(python-dbus diffutils dos2unix expect)
 backup=(etc/${pkgname}/${pkgname}.conf)
 install="${pkgname}.install"
-source=("https://pagure.io/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('a008984b7592c6af7f5b91f05158637bacf369c846f10e3c38dfa18e12e7738025a5897e627826e341e77ec9657cc0042687a79af8eb9c69d2063aee78be7c6b')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/freeipa/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('4d5cef4461018cb6dea486966fd079b143684a858bc51f108d4c7738c94fae028f40b54f810b75d89c12d25fa5ea36496db9746c94da7d1f893ff79da8142c0c')
+
+_srcdir="${pkgname}"
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_srcdir}"
 
   # Disable broken test.
   sed -i '/028-dbus \\/d' 'tests/Makefile.am'
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_srcdir}"
   unset KRB5_CONFIG
   autoreconf -i -f
   ./configure \
@@ -50,11 +52,11 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_srcdir}"
   make check
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${_srcdir}"
   make DESTDIR="${pkgdir}/" install
 }
