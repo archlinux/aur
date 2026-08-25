@@ -7,8 +7,8 @@
 _pkgname=krep
 pkgname="$_pkgname-git"
 pkgdesc='Fast text search tool with advanced algorithms, SIMD acceleration, multi-threading, and regex support (development version)'
-pkgver=2.2.0.r0.gae96fbd
-pkgrel=2
+pkgver=3.0.1.r0.g6ee7cf1
+pkgrel=1
 epoch=1
 url='https://github.com/davidesantangelo/krep'
 arch=('aarch64' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
   cd "$_pkgname"
 
   git describe --tags --long --abbrev=7 \
-  | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
