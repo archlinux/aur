@@ -5,7 +5,7 @@
 # so the version tracks the downloaded artifact automatically.
 
 pkgname=webhid-addon
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='WebHID browser extension for Firefox and Zen (system-wide installation)'
 arch=('any')
