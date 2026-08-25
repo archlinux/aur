@@ -1,4 +1,5 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 pkgname=lib32-sdl2-compat
 pkgver=2.32.70
 pkgrel=1
