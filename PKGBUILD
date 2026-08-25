@@ -2,7 +2,7 @@
 
 pkgname=fairywren-icon-theme-git
 pkgver=r323.03779cd
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source SVG icon theme for Linux, based on the Papirus Icon Set, with a modernized gradient-inspired material feel"
 arch=('any')
 url='https://gitlab.com/FreshDoctor/FairyWren-Icons'
@@ -46,6 +46,7 @@ package() {
 
 	# For each colour × variant, create a named theme directory
 	local dirs=() dirs_csv dir rel context size minsize maxsize
+	local colour_re base link target real
 	for colour in "${colours[@]}"; do
 		# Capitalise first letter for the theme display name
 		colour_label="${colour^}"
@@ -60,23 +61,63 @@ package() {
 			# Copy the full theme
 			cp -al --no-preserve=ownership "$src_variant" "$theme_dir"
 
+			# Drop symbolic-old/: ~34 MiB per theme of icons upstream's own
+			# index.theme never lists in Directories=, so nothing loads them.
+			rm -rf "$theme_dir/symbolic-old"
+
 			# Promote the chosen colour's folder icons into places/ directly,
-			# then remove the colours/ subdir so the icon loader finds them in places/.
+			# so the icon loader finds the generic names (folder.svg, ...) there.
 			# --remove-destination breaks hard links before writing (cp -al shares inodes).
 			cp --remove-destination "$theme_dir/places/colours/$colour/"*.svg "$theme_dir/places/"
 
-			# Resolve any remaining symlinks still pointing into colours/ (e.g. colours/default/).
-			# Prefer the chosen colour; fall back to default if the file isn't in that colour.
+			# places/ also ships ~2340 colour-qualified aliases. Most point into colours/
+			#   folder-red-code.svg     -> colours/red/folder-code.svg
+			# but ~350 (Light especially) chain to another alias instead
+			#   folder-red-downloads.svg -> ./folder-red-download.svg
+			# Either way the name carries the colour, so decide on the name: keep this
+			# theme's colour, drop every other one. Deciding on the target would leave the
+			# chained aliases behind pointing at links we just deleted.
+			#
+			# Kept aliases stay symlinks rather than being materialised: resolving them into
+			# real SVGs is what made places/ ~25 MiB of near-identical copies per theme.
+			colour_re=$(IFS='|'; printf '%s' "${colours[*]}")
+
+			while IFS= read -r -d '' link; do
+				base=${link##*/}
+
+				# Does the filename carry a colour token, and which one?
+				if [[ "$base" =~ -($colour_re)(-|\.) ]]; then
+					if [[ "${BASH_REMATCH[1]}" != "$colour" ]]; then
+						# Names a colour this theme does not carry -- drop it
+						rm -f "$link"
+						continue
+					fi
+				fi
+
+				# Kept: if it still reaches into colours/, retarget at the promoted
+				# copy now sitting in places/. Chained aliases already resolve fine.
+				target=$(readlink "$link")
+				[[ "$target" == *colours/* ]] || continue
+				ln -sfn "${target##*/}" "$link"
+			done < <(find "$theme_dir/places" -maxdepth 1 -type l -print0)
+
+			# A few generic names borrow a specific colour's artwork, e.g.
+			#   folder-root.svg -> folder-red.svg
+			# The alias they lean on is gone now, so copy the real SVG out of colours/
+			# while it is still there -- these names are generic, so losing them would
+			# leave a visible hole rather than just an unused alias.
 			while IFS= read -r -d '' link; do
 				target=$(readlink "$link")
-				# Only handle relative links that still point inside colours/
-				[[ "$target" == *colours/* ]] || continue
-				basename_target=$(basename "$target")
-				real="$theme_dir/places/colours/$colour/$basename_target"
-				[[ -f "$real" ]] || real="$theme_dir/places/$target"
+				[[ "$target" != *colours/* ]] || continue
+
+				# folder-red.svg -> colour "red", stem "folder.svg"
+				base=${target##*/}
+				[[ "$base" =~ ^(.*)-($colour_re)(\.svg)$ ]] || continue
+				real="$theme_dir/places/colours/${BASH_REMATCH[2]}/${BASH_REMATCH[1]}${BASH_REMATCH[3]}"
+
 				[[ -f "$real" ]] || continue
 				cp --remove-destination "$real" "$link"
-			done < <(find "$theme_dir/places" -maxdepth 1 -type l -print0)
+			done < <(find "$theme_dir/places" -maxdepth 1 -xtype l -print0)
 
 			rm -rf "$theme_dir/places/colours"
 
