@@ -1,8 +1,8 @@
 # Maintainer: masutu dot arch at gmail dot com
 pkgname='igel-git'
 _pkgname=igel
-pkgver=3.0.5.r6.g301fc70
-pkgrel=2
+pkgver=3.6.0.r42.gb717d35
+pkgrel=1
 pkgdesc="A free, open source UCI chess engine written in C++. "
 arch=('i686' 'x86_64')
 url="https://github.com/vshcherbyna/igel"
@@ -11,9 +11,9 @@ makedepends=('git')
 provides=('igel')
 conflicts=('igel')
 source=("${_pkgname}::git+https://github.com/vshcherbyna/igel.git"
-	"network_file::https://github.com/vshcherbyna/igel/releases/download/3.0.5/ign-1-d593efbd")
+	"network_file::https://github.com/vshcherbyna/igel/releases/download/3.5.0/c049c117")
 md5sums=('SKIP'
-         'bb2def39ed3bf9df1d714913e882e712')
+         '9f04d6c667760894be59c555c2650734')
 pkgver() {
     cd "${srcdir}/${_pkgname}"
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -27,7 +27,7 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    cmake -DEVALFILE=network_file -DEVAL_NNUE=1 -DUSE_PEXT=1 -DUSE_AVX2=1 -D_BTYPE=1 -DSYZYGY_SUPPORT=TRUE .
+    cmake -DEVALFILE=network_file -DUSE_AVX2=1 -D_BTYPE=1 -DSYZYGY_SUPPORT=TRUE .
     make
 }
 
