@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod
 	pkgdesc = Linux Xanmod - Stable Mainline [MAIN]
-	pkgver = 7.1.9
+	pkgver = 7.1.10
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = linux-xanmod
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.tar.sign
-	source = patch-7.1.9-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/main/7.1.9-xanmod1/patch-7.1.9-xanmod1.xz/download
+	source = patch-7.1.10-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/main/7.1.10-xanmod1/patch-7.1.10-xanmod1.xz/download
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 691f44797fbe790dc8a321604c927087526ad27b6d649925d60f8eed0a2564a0
 	sha256sums = SKIP
-	sha256sums = 2d440d7bf63cfc194ea5ca84b9d5635dcfe5c63626fdaaf021f13b77f55470eb
+	sha256sums = 0fdab87e24d5daf7c877e1e9422450c92e5a60301f47f3ca0550e8818d9562d2
 	sha256sums = f4acc1760990c54348a029315d1505ccb7c7270cd70a9aeb728bffcced51e767
 
 pkgname = linux-xanmod
