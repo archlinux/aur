@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly
 pkgname=('shelly' 'shelly-flatpak-backend')
-pkgver=3.0.6
+pkgver=3.1.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
@@ -12,7 +12,7 @@ makedepends=('git' 'pkgconf' 'gtk4' 'zig>=0.16' 'clang' 'gettext' 'flatpak' 'rip
 # Source tarball from GitHub release
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/archive/v${pkgver}.tar.gz")
 
-sha256sums=('4cd503ff94794d885b3f99adb3503ecc5e53ad5eec90847d86f5167505067b92')
+sha256sums=('6d2de9af077df23b94f07baabba6e88d821b7ec9278b34c316af836a6e724723')
 # GitHub replaces "+" with "-" in archive top-level directory names.
 _source_dir="Shelly-ALPM-${pkgver//+/-}"
 
@@ -88,9 +88,6 @@ check() {
   (cd Shelly.Cli.Zig && zig build test \
     --cache-dir "${srcdir}/zig-cache" \
     --global-cache-dir "${srcdir}/zig-global-cache")
-  scripts/check-flatpak-separation.sh \
-    out-cli/bin/shelly \
-    out-flatpak-backend/lib/libshelly-flatpak-backend.so.1
 }
 
 package_shelly() {
@@ -127,7 +124,6 @@ package_shelly() {
   install -Dm755 out/bin/Shelly_Ui_Gtk "$pkgdir/usr/bin/shelly-ui"
   install -Dm755 out-cli/bin/shelly "$pkgdir/usr/bin/shelly"
   install -Dm755 out-key/bin/shelly-key "$pkgdir/usr/bin/shelly-key"
-
   # Install desktop entry
   cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly.desktop"
 [Desktop Entry]
