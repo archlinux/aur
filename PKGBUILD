@@ -5,7 +5,7 @@ pkgbase=espanso-git
 pkgname=(espanso-x11-git espanso-wayland-git)
 _pkgbase="${pkgbase%-git}"
 _branch=dev
-pkgver=2.2.2.r0.g5d5d0d4d
+pkgver=2.4.0.r8.g3c4a281a
 pkgrel=1
 pkgdesc='Cross-platform Text Expander written in Rust'
 arch=(x86_64)
@@ -108,7 +108,7 @@ package_espanso-x11-git() {
   install -Dm644 -t "${pkgdir}/usr/lib/systemd/user" espanso.service
   install -Dm644 -t "${pkgdir}/usr/share/applications" espanso.desktop
   install -Dm644 -t "${pkgdir}/usr/share/doc/espanso" ./*.md
-  install -Dm644 espanso/src/res/linux/icon.png \
+  install -Dm644 espanso/src/res/linux/espanso.png \
     "${pkgdir}/usr/share/pixmaps/espanso.png"
 }
 
@@ -135,5 +135,5 @@ package_espanso-wayland-git() {
   install -Dm644 -t "${pkgdir}/usr/lib/systemd/user" espanso.service
   install -Dm644 -t "${pkgdir}/usr/share/applications" espanso.desktop
   install -Dm644 -t "${pkgdir}/usr/share/doc/espanso" ./*.md
-  install -Dm644 espanso/src/res/linux/icon.png "${pkgdir}/usr/share/pixmaps/espanso.png"
+  install -Dm644 espanso/src/res/linux/espanso.png "${pkgdir}/usr/share/pixmaps/espanso.png"
 }
