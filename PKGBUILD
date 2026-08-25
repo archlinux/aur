@@ -3,20 +3,20 @@
 # Contributor: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=min
-pkgver=1.35.6
+pkgver=1.35.7
 pkgrel=1
 pkgdesc='A fast, minimal browser that protects your privacy'
 arch=('any')
 url='https://minbrowser.org'
 license=('Apache-2.0')
-_electron=electron42
+_electron=electron43
 depends=('bash' "${_electron}" 'nodejs')
 makedepends=('git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minbrowser/min/archive/v${pkgver}.tar.gz"
         "${pkgname}.desktop"
         "${pkgname}.sh"
         'build.patch')
-sha256sums=('6199dfe54cf731110b370f1a512deb5dc3de64a736aa272a072e8588f3441c2e'
+sha256sums=('93b4a2fcd715669ea15672d46d8e7f7f1e52bba485fa68c1f0dca8852a4561ed'
             'bca3356dbf5c783b44d5eb0919e0dbb263869f5d89224cc210d50610f67f3c3c'
             '6dcadaf3e1ae6e619569df9c5500c7786eaebd0f978df14476f92147bc7cd34f'
             'ac7c5ceaf6da8fbeeb2720aa2c11098dcaff4dde1254d022dbf804599020e0d6')
@@ -35,6 +35,7 @@ prepare() {
 build() {
     cd "${pkgname}-${pkgver}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export NPM_CONFIG_ALLOW_GIT=true
     npm install --omit=optional
     npm run build
     node ./scripts/buildLinux.js
