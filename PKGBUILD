@@ -4,7 +4,7 @@
 _reponame=3dstool
 pkgname=$_reponame-git
 pkgver=1.2.6.r15.g3771ae96
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An all-in-one tool for extracting/creating 3ds roms (git)"
 arch=('x86_64')
@@ -48,7 +48,7 @@ build() {
 
 package() {
   cd "$_reponame"
-  DESTDIR="$pkgdir" cmake --install ../build --prefix 'usr'
+  DESTDIR="$pkgdir" cmake --install ../build --prefix '/usr'
 
   install -Dm644 "bin/ignore_${_reponame}.txt" -t "$pkgdir/usr/share/$_reponame"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
