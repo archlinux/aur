@@ -1,0 +1,24 @@
+pkgbase = drydock-bin
+	pkgdesc = A live TUI dashboard for a fleet of git repos
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/yetidevworks/drydock
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = git
+	provides = drydock
+	conflicts = drydock
+	options = !strip
+	source = README-0.1.7.md::https://raw.githubusercontent.com/yetidevworks/drydock/v0.1.7/README.md
+	source = LICENSE-0.1.7::https://raw.githubusercontent.com/yetidevworks/drydock/v0.1.7/LICENSE
+	sha256sums = 093e01d8a94b16fe3c25bf6867833cf55e15baeee3f95531ddae2210af7cdee2
+	sha256sums = c13c90e64ceabc5dfe6450da43bb2479cd026feed99338bff3391677c65e1c6a
+	source_x86_64 = drydock-x86_64-0.1.7.tgz::https://github.com/yetidevworks/drydock/releases/download/v0.1.7/drydock-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 23969fb91c0aa01c4a9eb2c3da511da73ac2f147862dcdbb30a2e0ce7bbd14d3
+	source_aarch64 = drydock-aarch64-0.1.7.tgz::https://github.com/yetidevworks/drydock/releases/download/v0.1.7/drydock-linux-aarch64.tar.gz
+	sha256sums_aarch64 = afd6c25b1eca21a9bc53e7a50fc2c0019cc690f1af1b645048cd870a2e5106df
+
+pkgname = drydock-bin
