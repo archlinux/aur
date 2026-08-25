@@ -10,7 +10,7 @@ depends=('gtk3' 'webkit2gtk-4.1' 'libnm' 'libayatana-appindicator')
 provides=('cockpit-tools')
 conflicts=('cockpit-tools')
 source=("${pkgname}-${pkgver}.deb::https://github.com/jlcodes99/cockpit-tools/releases/download/v${pkgver}/Cockpit.Tools_${pkgver}_amd64.deb")
-sha256sums=('fac336d699fdbc19757e44a44a5869817931226c4d05762b49f5e553ca670a31')
+sha256sums=('f33f64dd58883706540bcefc2394f6cc1fd86dbad11bcfc4a6f5b27f2059a2aa')
 
 package() {
   # Extract data.tar.gz which contains the filesystem structure

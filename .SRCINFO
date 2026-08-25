@@ -12,6 +12,6 @@ pkgbase = cockpit-tools-bin
 	provides = cockpit-tools
 	conflicts = cockpit-tools
 	source = cockpit-tools-bin-1.3.31.deb::https://github.com/jlcodes99/cockpit-tools/releases/download/v1.3.31/Cockpit.Tools_1.3.31_amd64.deb
-	sha256sums = fac336d699fdbc19757e44a44a5869817931226c4d05762b49f5e553ca670a31
+	sha256sums = f33f64dd58883706540bcefc2394f6cc1fd86dbad11bcfc4a6f5b27f2059a2aa
 
 pkgname = cockpit-tools-bin
