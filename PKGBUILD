@@ -1,9 +1,9 @@
 # Maintainer: Oleksii <aleksieiev.o.y@gmail.com>
 pkgname=localwp
 _pkgname=local
-pkgver=10.1.1
-_build=6939
-pkgrel=6939
+pkgver=10.1.2
+_build=7004
+pkgrel=7004
 pkgdesc="The #1 local WordPress development tool. (Official .rpm repack)"
 arch=('x86_64')
 url="https://localwp.com/"
@@ -13,7 +13,7 @@ provides=('local-by-flywheel-bin')
 conflicts=('local-by-flywheel-bin')
 options=('!strip' 'emptydirs')
 source=("local-${pkgver}-linux.rpm::https://cdn.localwp.com/releases-stable/${pkgver}+${_build}/local-${pkgver}-linux.rpm")
-sha1sums=('1d9ad5cbd7afeaeec71ecdcf7edbbb63a166553d')
+sha1sums=('9d909b09e8a40b58bafeff1d2a897165ae195f6a')
 
 package() {
   # Unpacking within the s r c directory happens automatically
