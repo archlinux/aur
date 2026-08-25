@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly
 	pkgdesc = Fast, Private & Safe Web Browser (Nightly version)
-	pkgver = 155.0a1+20260808.2+h0a80cb09a671
+	pkgver = 156.0a1+20260825.1+h494156cdf787
 	pkgrel = 1
 	url = https://www.firefox.com/channel/desktop/#nightly
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = firefox-nightly
 	makedepends = python
 	makedepends = rust
 	makedepends = unzip
+	makedepends = upload-symbols
 	makedepends = wasi-compiler-rt
 	makedepends = wasi-libc
 	makedepends = wasi-libc++
