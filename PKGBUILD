@@ -2,7 +2,7 @@
 
 pkgname=shurectl
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='TUI configurator for Shure MOTIV USB audio interfaces and microphones'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Humblemonk/shurectl'
@@ -15,7 +15,7 @@ sha256sums=('0de92ff9a9112fe992234e0f3c162198436775eb5cc51f7084312533c2f572f8')
 prepare() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
