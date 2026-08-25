@@ -1,6 +1,6 @@
 pkgbase = kwin-screencast-api
 	pkgdesc = KWin with D-Bus API for screencast stream introspection
-	pkgver = 6.7.2
+	pkgver = 6.7.4
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -77,18 +77,18 @@ pkgbase = kwin-screencast-api
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	optdepends = plasma-keyboard: virtual keyboard
-	provides = kwin=6.7.2
+	provides = kwin=6.7.4
 	conflicts = kwin
-	source = https://download.kde.org/stable/plasma/6.7.2/kwin-6.7.2.tar.xz
-	source = https://download.kde.org/stable/plasma/6.7.2/kwin-6.7.2.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/6.7.4/kwin-6.7.4.tar.xz
+	source = https://download.kde.org/stable/plasma/6.7.4/kwin-6.7.4.tar.xz.sig
 	source = screencast-dbus-api.patch
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 6161a188f66ffac0a330dcf82dec9ecc3e53451b7bddd5d18fa00b1e9aada73b
+	sha256sums = db7a7dba71aaca1e5218733b80f90a998d84e2ab36e4d62d0e3ea00376c5802d
 	sha256sums = SKIP
-	sha256sums = 7041dc89321e0bd14bd65a7fa1c27e82b4fb09e374b854cede8d7e4c3fc920f2
+	sha256sums = 98392fdf282e39729247458b9c64487b33f9d5248d200a853ca3759fb43c952f
 
 pkgname = kwin-screencast-api

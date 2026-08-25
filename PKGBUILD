@@ -5,7 +5,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-screencast-api
-pkgver=6.7.2
+pkgver=6.7.4
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KWin with D-Bus API for screencast stream introspection'
@@ -88,9 +88,9 @@ optdepends=('plasma-keyboard: virtual keyboard')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/kwin-$pkgver.tar.xz{,.sig}
         screencast-dbus-api.patch)
-sha256sums=('6161a188f66ffac0a330dcf82dec9ecc3e53451b7bddd5d18fa00b1e9aada73b'
+sha256sums=('db7a7dba71aaca1e5218733b80f90a998d84e2ab36e4d62d0e3ea00376c5802d'
             'SKIP'
-            '7041dc89321e0bd14bd65a7fa1c27e82b4fb09e374b854cede8d7e4c3fc920f2')
+            '98392fdf282e39729247458b9c64487b33f9d5248d200a853ca3759fb43c952f')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
