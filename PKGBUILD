@@ -1,7 +1,7 @@
 # Maintainer: Ethan Alexander <ethanjalexander@hotmail.ca>
 
 pkgname="wallpiper-hyprland"
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Hyprland portal for wallpiper"
 arch=('x86_64')
