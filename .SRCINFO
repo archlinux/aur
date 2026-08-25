@@ -1,11 +1,12 @@
 pkgbase = python-aleatory
 	pkgdesc = Stochastic Processes Simulation and Visualisation
-	pkgver = 1.2.2
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/quantgirluk/aleatory
 	arch = any
 	license = BSD-2-Clause
 	checkdepends = python-pytest
+	checkdepends = python-ipywidgets
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -13,7 +14,7 @@ pkgbase = python-aleatory
 	depends = python-matplotlib
 	depends = python-parameterized
 	depends = python-statsmodels
-	source = aleatory-v.1.2.2.tar.gz::https://github.com/quantgirluk/aleatory/archive/v.1.2.2.tar.gz
-	sha512sums = 6f64f901329e9120f21cdfb1536b734d52d19015e70609d34620f7c5ffc5ec5e6dd8cf4c2f186ae4df2831f2122238b35252f655ec277c3b8373ec6e9f83be42
+	source = https://pypi.org/packages/source/a/aleatory/aleatory-1.2.4.tar.gz
+	sha512sums = ffb125bbf9dc50ad23b925b64deba5f00fde474bb87109c7d7e29e685cfd6f757d1ea0c13ff954fa7691b69de0b427005ae455571f7d86252a54bcb339798eef
 
 pkgname = python-aleatory
