@@ -1,11 +1,11 @@
-# Maintainer: Reza Jelveh <git@jelveh.me>
+# Maintainer: Reza Jelveh <reza.jelveh+git@gmail.com>
 #
-# 0.1.6 substituted by the release workflow; the git source pins the
+# 0.1.7 substituted by the release workflow; the git source pins the
 # tagged commit (sha256sums=SKIP is AUR-legal for VCS sources).
 pkgname=notmutt
-pkgver=0.1.6
+pkgver=0.1.7
 pkgrel=1
-pkgdesc='Async terminal mail client on notmuch: tags are the model, folders are storage'
+pkgdesc='Async terminal email client built on notmuch'
 arch=('x86_64')
 url='https://github.com/fishman/notmutt'
 license=('Apache-2.0')
