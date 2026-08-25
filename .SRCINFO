@@ -1,0 +1,33 @@
+pkgbase = letsnote-wheelpad-bin
+	pkgdesc = Panasonic Let’s Note WheelPad circular touchpad scrolling daemon
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/0xNOY/letsnote-wheelpad
+	install = letsnote-wheelpad-bin.install
+	arch = x86_64
+	license = MIT
+	makedepends = libarchive
+	depends = glibc
+	depends = libgcc
+	depends = bash
+	depends = systemd
+	depends = acl
+	depends = util-linux
+	optdepends = polkit: run the migration helper through pkexec
+	provides = letsnote-wheelpad=0.2.0
+	conflicts = letsnote-wheelpad
+	conflicts = letsnote-wheelpad-git
+	noextract = letsnote-wheelpad_0.2.0-1_amd64.deb
+	options = !strip
+	options = !debug
+	backup = etc/letsnote-wheelpad/config.toml
+	source = letsnote-wheelpad_0.2.0-1_amd64.deb::https://github.com/0xNOY/letsnote-wheelpad/releases/download/v0.2.0/letsnote-wheelpad_0.2.0-1_amd64.deb
+	source = letsnote-wheelpad-bin.install
+	source = letsnote-wheelpad-bin-guard
+	source = 30-letsnote-wheelpad-bin-remove.hook
+	sha256sums = f52297df89a452e3a3b2a02a524565e0c348c1cfa89fdc06347b125d15c594a2
+	sha256sums = 963692d01e1df2294eb7ec011eafe3b86f062bc22284a5a21101a642806e73e5
+	sha256sums = 62c7dfe96fc45903fd47c1d3a6cf61b37a7afc3fa32d472bfea7ed355d24e29a
+	sha256sums = 5e9c53d73c2ab62bf3ab4c090534874a66cb333852d4222b1a95d7a961cf9540
+
+pkgname = letsnote-wheelpad-bin

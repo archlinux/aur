@@ -1,0 +1,36 @@
+#!/bin/sh
+set -eu
+
+persistent_marker=/etc/letsnote-wheelpad/system-service-enabled
+staging_marker=/run/letsnote-wheelpad/migration-staging
+user_block_marker=/run/letsnote-wheelpad/migration-block-user-service
+daemon=/usr/bin/letsnote-wheelpad
+
+running_daemons()
+{
+    for process_exe in /proc/[0-9]*/exe; do
+        [ -L "$process_exe" ] || continue
+        resolved=$(readlink "$process_exe" 2>/dev/null) || continue
+        case "$resolved" in
+            "$daemon"|"$daemon (deleted)")
+                printf '%s\n' "${process_exe#/proc/}" | cut -d/ -f1
+                ;;
+        esac
+    done
+}
+
+case "${1:-}" in
+    remove)
+        if [ -e "$persistent_marker" ] || [ -e "$staging_marker" ] ||
+            [ -e "$user_block_marker" ] || [ -n "$(running_daemons)" ]; then
+            echo "letsnote-wheelpad: package removal is blocked by migration state or a running daemon" >&2
+            echo "Run /usr/libexec/letsnote-wheelpad-migrate status, disable system mode," >&2
+            echo "stop the intended legacy user service, then retry package removal." >&2
+            exit 1
+        fi
+        ;;
+    *)
+        echo "usage: letsnote-wheelpad-bin-guard remove" >&2
+        exit 2
+        ;;
+esac

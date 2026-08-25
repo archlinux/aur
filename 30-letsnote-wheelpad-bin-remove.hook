@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = letsnote-wheelpad-bin
+
+[Action]
+Description = Checking letsnote-wheelpad state before removal
+When = PreTransaction
+Exec = /usr/libexec/letsnote-wheelpad-bin-guard remove
+AbortOnFail
