@@ -1,6 +1,6 @@
 pkgbase = python-types-pygments
 	pkgdesc = Typing stubs for Pygments
-	pkgver = 2.20.0.20260728
+	pkgver = 2.21.0.20260819
 	pkgrel = 1
 	url = https://github.com/python/typeshed
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-types-pygments
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/t/types_pygments/types_pygments-2.20.0.20260728.tar.gz
-	sha256sums = dd0a49d84fd9e3f08ab3a3191779e4732a91bb1fad2e80178cf4574e8f35684d
+	source = https://files.pythonhosted.org/packages/source/t/types_pygments/types_pygments-2.21.0.20260819.tar.gz
+	sha256sums = 68e0cb27115b08b681c843e30a153b5d9850c048e1158623ada36ccd4cf7e89b
 
 pkgname = python-types-pygments
