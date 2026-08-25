@@ -1,0 +1,9 @@
+--- src/sphinx_tippy-0.4.3/pyproject.toml.bak	2026-08-24 23:49:46.069681146 +0800
++++ src/sphinx_tippy-0.4.3/pyproject.toml	2026-08-24 23:50:03.840596021 +0800
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["flit_core >=3.2,<4"]
++requires = ["flit_core >=3.2"]
+ build-backend = "flit_core.buildapi"
+ 
+ [project]
