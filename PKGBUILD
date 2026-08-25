@@ -1,9 +1,9 @@
 # Maintainer: Reza Jelveh <reza.jelveh+git@gmail.com>
 #
-# 0.1.9 substituted by the release workflow; the git source pins the
+# 0.1.10 substituted by the release workflow; the git source pins the
 # tagged commit (sha256sums=SKIP is AUR-legal for VCS sources).
 pkgname=notmutt
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Async terminal email client built on notmuch'
 arch=('x86_64')
