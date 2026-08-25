@@ -32,12 +32,22 @@
 # simply not run `mshell`; the helper binaries are still useful.
 
 pkgname=margo-git
-pkgver=r2263.e78f7328
+pkgver=r2269.fb4853ab
 pkgrel=1
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
 arch=("x86_64")
 license=("GPL-3.0-or-later")
+
+# Top-level (not inside build()) on purpose: package() reads this to
+# install the binaries build() produced. Some builders (e.g. Shelly)
+# run each PKGBUILD phase as a separate process/sandbox rather than
+# makepkg's single continuous shell, so an `export` made only inside
+# build()'s function body doesn't reach package() — it'd see an empty
+# CARGO_TARGET_DIR and try to install from "/release/$bin". Top-level
+# code re-runs on every phase makepkg sources the file for, so this
+# is visible everywhere regardless of how the builder splits phases.
+export CARGO_TARGET_DIR="$srcdir/target"
 
 # Runtime libraries — split into compositor-side and mshell-side so
 # trimming this list back to a shell-less build later is mechanical.
@@ -203,7 +213,6 @@ build() {
   cd "$srcdir/margo"
 
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR="$srcdir/target"
 
   # `--remap-path-prefix` rewrites the build dir to `/build` in
   # the embedded debug strings; otherwise pacman warns about a
