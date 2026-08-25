@@ -1,22 +1,18 @@
-# Maintainer:  Yigit Dallilar <yigit.dallilar@gmail.com>
+# Maintainer: masutu <masutu dot arch at gmail dot com>
+# Contributor:  Yigit Dallilar <yigit.dallilar@gmail.com>
 
 pkgname=esorex
-pkgver=3.13.5
-pkgrel=3
+pkgver=3.13.11
+pkgrel=1
 pkgdesc="EsoRex is the ESO Recipe Execution Tool. It can list, configure and execute CPL-based recipes from the command line."
 url="https://www.eso.org/sci/software/cpl/esorex.html"
 arch=('x86_64')
 license=('GPL2')
 depends=(cpl)
-makedepends=(cpl)
-provides=()
-conflicts=()
-replaces=()
-backup=()
 source=(https://ftp.eso.org/pub/dfs/pipelines/libraries/esorex/esorex-${pkgver}.tar.gz
         esorex)
-sha256sums=('417def5a893dda3396a363007ad2537ab1804d56efc9f41f6b95be61c6eb1894'
-            SKIP)
+sha256sums=('2aca384e4c6d2010cecc9a51621ce17570d37c07239b9dca62b25aab66aebb12'
+            'SKIP')
 
 
 build() {
