@@ -8,7 +8,7 @@ Environment=RUST_LOG=debug,aws_config=info,aws_runtime=info,aws_sdk_dynamodb=inf
 User=indielinks
 Group=indielinks
 WorkingDirectory=/
-ExecStart=/usr/bin/indielinksd --no-daemon -c /etc/indielinks.toml --debug --plain
+ExecStart=/usr/bin/indielinksd --no-daemon -c /etc/indielinks.toml --debug --plain --deploy-env=local
 Restart=on-failure
 
 [Install]

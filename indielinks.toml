@@ -79,6 +79,8 @@ heartbeat-interval   = { secs = 0, nanos =  500000000 } # 500ms
 election-timeout-min = { secs = 0, nanos = 1500000000 } # 1500ms
 election-timeout-max = { secs = 0, nanos = 3000000000 } # 3000ms
 
+[raft-config.snapshot-policy]
+LogsSinceLast = 1000
 
 [client-exponential-backoff]
 jitter = 10.0
