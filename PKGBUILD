@@ -26,7 +26,6 @@ source=(
 )
 
 build() {
-    unset CFLAGS CXXFLAGS LDFLAGS CC CXX
     CC=clang CXX=clang++ LDFLAGS=-fuse-ld=lld cmake \
         -G Ninja \
         -S $pkgname-b$pkgver \
