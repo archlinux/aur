@@ -10,11 +10,30 @@ pkgdesc="Slovak eID Web Signer by Disig"
 arch=('x86_64')
 license=('LicenseRef-custom')
 url="https://qesportal.sk/"
+_depends=(
+	glibc
+	qt6-base
+	qt6-websockets
+	sh
+	xdg-utils # xdg-open.sh
+)
 source_x86_64=("https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_${_pkgver}_amd64.deb")
 sha256sums_x86_64=('9a13879952399321889c59cef13404d588cab1c154505dd6f62e3c638e493e37')
 options=("!debug" "!strip")
 
+declare -gA _soname_depends=(
+	["libgcc"]="libgcc_s.so"
+	["libstdc++"]="libstdc++.so"
+	["libxml2-legacy"]="libxml2.so"
+	["openssl"]="libcrypto.so libssl.so"
+)
+checkdepends=(
+	"${_depends[@]}"
+	"${!_soname_depends[@]}"
+)
+
 : "${arch[@]}"
+: "${checkdepends[@]}"
 : "${license[@]}"
 : "${options[@]}"
 : "${pkgdesc}"
@@ -35,18 +54,24 @@ prepare() {
 		--extract
 }
 
+check() {
+	cd "${pkgname}_${_pkgver}/opt/disig/websigner/bin"
+
+	export QT_QPA_PLATFORM=offscreen
+
+	find . \
+		-type f \
+		-executable \
+		! -name 'WebSigner*.sh' \
+		-print0 |
+		xargs -0 -I{} env {} --version
+}
+
 package() {
+	# shellcheck disable=SC2206
 	depends=(
-		glibc
-		libcrypto.so
-		libgcc_s.so
-		libssl.so
-		libstdc++.so
-		libxml2.so
-		qt6-base
-		qt6-websockets
-		sh
-		xdg-utils # xdg-open.sh
+		"${_depends[@]}"
+		${_soname_depends[@]}
 	)
 	optdepends=(
 		"gnome-shell-extension-appindicator: for system tray icon on GNOME"
