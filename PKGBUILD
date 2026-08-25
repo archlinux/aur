@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=elan-lean-bin
-pkgver=4.2.3
+pkgver=4.2.4
 pkgrel=1
 pkgdesc="Lean version manager"
 arch=('aarch64' 'x86_64')
@@ -10,12 +10,12 @@ license=('Apache-2.0' 'MIT')
 provides=("elan-lean=$pkgver")
 conflicts=('elan-lean')
 source=("https://raw.githubusercontent.com/leanprover/elan/refs/heads/master"/LICENSE-{APACHE,MIT})
-source_aarch64=("https://github.com/leanprover/elan/releases/download/v4.2.3/elan-aarch64-unknown-linux-gnu.tar.gz")
-source_x86_64=("https://github.com/leanprover/elan/releases/download/v4.2.3/elan-x86_64-unknown-linux-gnu.tar.gz")
+source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/leanprover/elan/releases/download/v$pkgver/elan-aarch64-unknown-linux-gnu.tar.gz")
+source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/leanprover/elan/releases/download/v$pkgver/elan-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('SKIP'
             'SKIP')
-sha256sums_aarch64=('cb69af0803b04157bc30201c29c12fca882bb3ad8b43476b8d2d3064810bc3ac')
-sha256sums_x86_64=('df0b2b3a439961ffcbb3985214365ffe40f49bc871df04dff268c7d8e21ca8b2')
+sha256sums_aarch64=('05febd124d84ebf994b2e7479922a5650b1e950c17ae3bd1ddd776b65bb72bf9')
+sha256sums_x86_64=('42b94d4244e8353142c456ec0e4ca6528fd898a6c604d4059f494e706e431f63')
 
 
 package() {
