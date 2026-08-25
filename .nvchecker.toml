@@ -1,4 +1,5 @@
 [scooter-bin]
-source = "git"
-git = "https://github.com/thomasschafer/scooter.git"
+source = "github"
+github = "thomasschafer/scooter"
+use_latest_release = true
 prefix = "v"
