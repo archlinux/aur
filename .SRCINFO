@@ -1,0 +1,14 @@
+pkgbase = pi-web
+	pkgdesc = Local browser UI for the pi coding agent
+	pkgver = 0.8.9
+	pkgrel = 1
+	url = https://github.com/agegr/pi-web
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=22.19.0
+	optdepends = xdg-utils: automatically open the web interface in a browser
+	source = pi-web-0.8.9.tar.gz::https://github.com/agegr/pi-web/archive/refs/tags/v0.8.9.tar.gz
+	sha256sums = 9624948a2194e51d6d99208ce74dcd648f4886654d167fefd0afd84588d44883
+
+pkgname = pi-web
