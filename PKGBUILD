@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=zux
-pkgver=1.6.6
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="mDNS-SD Visualizer - A cross platform mDNS browsing visualizer written in Rust using tauri and svelte"
 arch=('x86_64')
@@ -12,11 +12,11 @@ conflicts=('zux-bin')
 makedepends=('cargo' 'cargo-edit' 'git' 'file' 'nodejs' 'pnpm' 'base-devel' 'rust' 'librsvg' 'patchelf')
 options=('!strip' '!emptydirs')
 source=("$pkgname-v$pkgver.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('26c25e9a18e8b8257a86a93e22b2d7bdc65d8c5410449d4d75110134aa30c7b8')
+sha256sums=('8a30510a1043b4ae26ab71777437df75c29d91c80514b1027c2fa91a68ef6d95')
 _builddir="$pkgname-$pkgver"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
-    jq '.version = "1.6.6"' src-tauri/tauri.conf.json > tmp.json
+    jq '.version = "1.7.0"' src-tauri/tauri.conf.json > tmp.json
     mv tmp.json src-tauri/tauri.conf.json
     pnpm install --frozen-lockfile
     cd src-tauri
@@ -42,4 +42,5 @@ package() {
     install -Dm644 usr/share/icons/hicolor/256x256@2/apps/zux.png "$pkgdir"/usr/share/icons/hicolor/256x256@2/apps/zux.png
     install -Dm644 usr/share/icons/hicolor/32x32/apps/zux.png "$pkgdir"/usr/share/icons/hicolor/32x32/apps/zux.png
     install -Dm644 "${srcdir}/${_builddir}/LICENSE" "$pkgdir"/usr/share/licenses/zux/LICENSE
+    install -Dm644 "${srcdir}/${_builddir}/docs/zux.1" "$pkgdir"/usr/share/man/man1/zux.1
 }
