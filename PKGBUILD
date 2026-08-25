@@ -3,7 +3,7 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 url='https://www.hunk.dev/'
 changelog=CHANGELOG.md
@@ -15,21 +15,25 @@ depends=('glibc' 'icu')
 provides=('hunkdiff')
 options=(!strip !debug)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('8e3c060372eceb1cfecad683a4eaffec8f5a8301f756fd281ee2e878a890e989988016f5b10571b99178cd3bab2bf770e086e3f653223236091d0f6d31c11e2c')
+b2sums=('d18e0a8080d0dd64326b41081deed0be93c3d0b7bad759f0a2c19defb3e6ee15cc3bf22994c408287e0a6e27fa7b62eab038d37f6a3a6b11f708189370555d60')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
 
-  bun install --frozen-lockfile --ignore-scripts
+  bun install \
+    --frozen-lockfile \
+    --ignore-scripts
 }
 
 build() {
   cd "${pkgname}-${pkgver}"
 
   bun build \
-    --compile src/main.tsx src/highlightWorkerEntry.ts \
+    --compile \
+    --outfile dist/hunk \
     --no-compile-autoload-bunfig \
-    --outfile dist/hunk
+    src/main.tsx \
+    src/highlightWorkerEntry.ts
 }
 
 check() {
