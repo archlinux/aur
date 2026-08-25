@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=midi-hook
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Map MIDI notes to keyboard shortcuts and shell commands"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=(!strip)
 source_x86_64=("$pkgname-$pkgver-$pkgrel-x86_64.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-$pkgrel-aarch64.tar.gz::$url/releases/download/v$pkgver/$pkgname-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('263860d491e918b495986df49f917f11d10fc788b4f3c6f7c42040b6ecb54c5d')
-sha256sums_aarch64=('bbca388fc6f72a5bb300e3768eba5d81d9df9fb30c413bc5980c4d1e6da67960')
+sha256sums_x86_64=('c86ed3c7e9097431e038ab28b132fb242038a129d091bd3be4bf8f16cd1ef881')
+sha256sums_aarch64=('e03d4cd07016804847964561670481384640d41242ddf88f842a836f76f28202')
 
 package() {
   install -Dm755 midi-hook "$pkgdir/usr/bin/midi-hook"
