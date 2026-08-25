@@ -1,6 +1,6 @@
 pkgbase = pypy3-hatchling
 	pkgdesc = Utility library for gitignore style pattern matching of file paths
-	pkgver = 1.31.0
+	pkgver = 1.32.0
 	pkgrel = 1
 	url = https://github.com/pypa/hatch
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = pypy3-hatchling
 	depends = pypy3-pathspec
 	depends = pypy3-pluggy
 	depends = pypy3-trove-classifiers
-	source = https://github.com/pypa/hatch/archive/hatchling-v1.31.0.tar.gz
-	sha512sums = 707efa1d72bde3e80bb5210602e9f0389f1659dfe65bac6ab33ecfa0e9b433a42c3dac1e92a86398c72dbcb72a69e9dc1db9466c2a9de38993025c52578db2f1
+	source = https://github.com/pypa/hatch/archive/hatchling-v1.32.0.tar.gz
+	sha512sums = e8165a4444675382938502e692877cdad4a3f24e11f4b38bd0f6ae6ecc8a4fdde343ef5827719c803e5b40beddfd2a934d633270f0c200e3615c9b797038681e
 
 pkgname = pypy3-hatchling
