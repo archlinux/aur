@@ -1,6 +1,6 @@
 # Maintainer: Xhelliom
 pkgname=loquivox
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 # whisper.cpp engine version — keep in sync with packaging/whisper-cpp.version
 _whispercpp_ver=1.8.6
@@ -45,7 +45,7 @@ source=(
   "whisper.cpp-$_whispercpp_ver.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v$_whispercpp_ver.tar.gz"
 )
 # Replace both with updpkgsums output once the v$pkgver tag exists.
-sha256sums=('2c42650bba64a9090f496bf7c83080da7b51b20bd377ccbeab41e1ed6453b23a'
+sha256sums=('d1bb5c2873e79c47a7054908673271153ca81c37f3747fad706ef16e6ffad40a'
             'f8e632016ceae556f3132a16c7f704be1e7715595041f474fa81a2b64c1abf7c')
 
 build() {
