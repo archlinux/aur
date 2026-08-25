@@ -1,7 +1,7 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 _pkgname=gtsummary
-_pkgver=2.5.1
+_pkgver=2.6.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -52,8 +52,8 @@ optdepends=(
   r-workflows
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('747457d083116980d259eba325afd1bd')
-b2sums=('0ecfd23b653f51c49287269df0b6a89cbf9e1c293c8fbc0ecf36dea6ce1a348b6243823b1cdd0c62744dfb39ae899a2640a822e22813e3de46bf811e2abedce9')
+md5sums=('5a0ccf508e1ab679a2adfd19bb9b3b56')
+b2sums=('91063752164a6896fb5c2f26c6dc08e7fb18d038183323a8e27510b9408db9a6e953217fbf7e58a7f24017289a24212e3687bc2231f22086e99a4d5db03d12f2')
 
 build() {
   mkdir build
