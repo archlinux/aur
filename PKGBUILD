@@ -1,10 +1,10 @@
 # Maintainer: Arkady Buryakov <arkady@buryakov.pro>
 #
 # Template — not a buildable PKGBUILD. On release the publish_aur workflow
-# substitutes 0.4.0, fills sha256sums via updpkgsums, generates .SRCINFO,
+# substitutes 0.5.0, fills sha256sums via updpkgsums, generates .SRCINFO,
 # and pushes the rendered files to the AUR; nothing is committed back here.
 pkgname=workforest
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Git worktree forest management: per-branch worktrees with project-defined setup hooks"
 arch=(any)
@@ -14,7 +14,7 @@ depends=(python python-yaml git)
 makedepends=(python-build python-installer python-wheel python-hatchling)
 optdepends=('fzf: interactive TUI (workforest tui)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('359ad9afac31044993e077edae174730ada294ae8ffe486b6f576bdf34e5f893')
+sha256sums=('4101bedbe39adf321ed6d76aac0c8e09d561840725f4ee1741d0295f370ce7fa')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -24,6 +24,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  # (the wheel's share/man data lands in /usr/share/man: man pages included)
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
