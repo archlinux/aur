@@ -2,10 +2,10 @@
 
 pkgname=astra-atlas-git
 pkgver=1.0.0.r2.g598f72c
-pkgrel=2
+pkgrel=3
 pkgdesc='Fast, lightweight Material Design 3 file manager'
 arch=('x86_64')
-url='https://github.com/dim-ghub/Atlas'
+url='https://github.com/AstraSuite/Atlas'
 license=('GPL-3.0-only')
 depends=(
 	'glibc'

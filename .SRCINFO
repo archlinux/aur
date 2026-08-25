@@ -1,8 +1,8 @@
 pkgbase = astra-atlas-git
 	pkgdesc = Fast, lightweight Material Design 3 file manager
 	pkgver = 1.0.0.r2.g598f72c
-	pkgrel = 2
-	url = https://github.com/dim-ghub/Atlas
+	pkgrel = 3
+	url = https://github.com/AstraSuite/Atlas
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cmake
@@ -34,7 +34,7 @@ pkgbase = astra-atlas-git
 	optdepends = zip: archive extraction and compression
 	provides = astra-atlas
 	conflicts = astra-atlas
-	source = astra-atlas-git::git+https://github.com/dim-ghub/Atlas.git
+	source = astra-atlas-git::git+https://github.com/AstraSuite/Atlas.git
 	sha256sums = SKIP
 
 pkgname = astra-atlas-git
