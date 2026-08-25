@@ -1,15 +1,15 @@
 pkgbase = zfs-linux-rt
-	pkgver = 2.4.0_6.14.0.rt3.arch1.7
+	pkgver = 2.4.4_7.1.10.rt1.arch1.1
 	pkgrel = 1
 	url = https://zfsonlinux.org/
 	arch = x86_64
 	license = CDDL
-	makedepends = linux-rt-headers=6.14.0.rt3.arch1-7
+	makedepends = linux-rt-headers=7.1.10.rt1.arch1-1
 	depends = kmod
-	depends = zfs-utils=2.4.0
-	depends = linux-rt=6.14.0.rt3.arch1-7
-	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.4.0/zfs-2.4.0.tar.gz
-	sha256sums = 7bdf13de0a71d95554c0e3e47d5e8f50786c30d4f4b63b7c593b1d11af75c9ee
+	depends = zfs-utils=2.4.4
+	depends = linux-rt=7.1.10.rt1.arch1-1
+	source = https://github.com/zfsonlinux/zfs/releases/download/zfs-2.4.4/zfs-2.4.4.tar.gz
+	sha256sums = 2a3c70d55a37cc71618a95a60e81ad66530201eb118d37741dc92efcf848c8b1
 
 pkgname = zfs-linux-rt
 	pkgdesc = Kernel modules for the Zettabyte File System.
