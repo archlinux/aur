@@ -3,7 +3,7 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=13.7.10
+pkgver=13.7.11
 pkgrel=1
 pkgdesc="A free, open-source application for downloading and managing your Audible audiobooks"
 arch=('x86_64')
@@ -11,9 +11,8 @@ url="https://getlibation.com"
 license=('GPL-3.0-only')
 depends=('bash' 'dotnet-runtime' 'fontconfig' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++')
 makedepends=('dotnet-sdk>=10')
-options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rmcrackan/Libation/archive/v${pkgver}.tar.gz")
-sha256sums=('4d6a034670a1eb786a20834434f4483edf1b7cf9942feaf93fe561888af31574')
+sha256sums=('f0dadd380cd72045bd5ea6dcf862713b2303a1db2a76daec59f18c4a0ff7a1e8')
 
 prepare() {
     cd "${pkgname^}-${pkgver}"
@@ -29,6 +28,7 @@ build() {
         --runtime linux-x64
         -p:PublishProtocol=FileSystem
         -p:PublishReadyToRun=true
+        -p:SelfContained=false
     )
     dotnet publish "${publish_args[@]}" Source/LibationAvalonia/LibationAvalonia.csproj
     dotnet publish "${publish_args[@]}" Source/LoadByOS/LinuxConfigApp/LinuxConfigApp.csproj
