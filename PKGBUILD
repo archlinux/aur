@@ -1,7 +1,7 @@
 # Maintainer: Revincx <revincx233@gmail.com>
 
 pkgname=yurigram
-pkgver=7.0.9
+pkgver=7.1.2
 pkgrel=1
 pkgdesc='Yet another unofficial tdesktop client'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,6 @@ conflicts=('yukigram-rua' 'yukigram-rua-bin')
 depends=(
     'abseil-cpp'
     'ada'
-    'cmark-gfm'
     'ffmpeg'
     'glib2'
     'glibc'
