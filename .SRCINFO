@@ -1,0 +1,19 @@
+pkgbase = codex-locality-bin
+	pkgdesc = OpenAI Codex CLI with Syncthing-safe workspace-local sessions
+	pkgver = 0.r1.g7c6eb0eef1
+	pkgrel = 1
+	url = https://github.com/sssemil/codex-locality-bin
+	arch = x86_64
+	license = Apache-2.0
+	optdepends = git: repository-aware Codex workflows
+	provides = openai-codex
+	conflicts = openai-codex
+	conflicts = openai-codex-bin
+	conflicts = codex-bin
+	options = !debug
+	options = !lto
+	options = !strip
+	source_x86_64 = codex-locality-runtime-0.r1.g7c6eb0eef1-x86_64-unknown-linux-musl.tar.zst::https://github.com/sssemil/codex-locality-bin/releases/download/0.r1.g7c6eb0eef1-1/codex-locality-runtime-0.r1.g7c6eb0eef1-x86_64-unknown-linux-musl.tar.zst
+	sha256sums_x86_64 = 9b7176ea38fcf86d1dfdc59c37c1120fd11e2d9f3bd6532202b8fd5a47362e34
+
+pkgname = codex-locality-bin
