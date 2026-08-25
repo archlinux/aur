@@ -1,12 +1,12 @@
 pkgname=mangayomi-linux
-pkgver=0.8.9
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Mangayomi - Manga, Anime and Novel reader (prebuilt Linux zip)"
 arch=('x86_64')
 url="https://github.com/kodjodevf/mangayomi"
 license=('GPL3')
 
-depends=('webkit2gtk-4.1' 'mpv' 'xdg-user-dirs' 'unzip')
+depends=('gtk3' 'webkit2gtk-4.1' 'mpv' 'libsoup3' 'libepoxy' 'alsa-lib' 'hicolor-icon-theme' 'cairo' 'pango' 'at-spi2-core' 'fontconfig' 'glib2' 'glibc' 'libstdc++' 'libgcc')
 options=(!strip)
 provides=('mangayomi')
 conflicts=('mangayomi' 'mangayomi-git')
