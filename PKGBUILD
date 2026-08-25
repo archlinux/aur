@@ -6,7 +6,7 @@ pkgver=r42.727e5df
 pkgrel=1
 pkgdesc="KWin effect that turns obscured windows into interactive thumbnails"
 arch=(x86_64)
-url="https://github.com/LMauricius/kde-thumbnail-bloom"
+url="https://github.com/LMauricius/$_pkgname"
 license=(GPL-2.0-or-later)
 depends=(
   gcc-libs
@@ -26,8 +26,8 @@ makedepends=(
   extra-cmake-modules
   git
 )
-provides=(kwin-effects-thumbnail-bloom)
-conflicts=(kwin-effects-thumbnail-bloom)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
