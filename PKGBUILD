@@ -2,7 +2,7 @@
 # Contributor: Kewl <xrjy@nygb.rh.bet(rot13)>
 _base=hexbytes
 pkgname=python-${_base}
-pkgver=1.3.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Python bytes subclass that decodes hex, with a readable console output"
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('621c3aaa5d9782f2d78b7d80ed78e7f0d94b7b8222beda498cc5eb18f15a9048fb9718c536aa834efe251dbf5ed80097ce09c00cdfa235fd3ee7505efd39e570')
+sha512sums=('2e0e3b22f59f3cd342c13277cc70cbb225d6534a3db763b67e115165d8db96000067435eb9e9913786cf5be4eb19cb46428bf0a48b1f0447322daddd31225aea')
 
 build() {
   cd ${_base}-${pkgver}
