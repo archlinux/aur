@@ -1,6 +1,6 @@
 pkgbase = meteobar
 	pkgdesc = Weather widget for Waybar using Open-Meteo — no API key required
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/mryll/meteobar
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = meteobar
 	depends = gcc-libs
 	depends = openssl
 	optdepends = otf-font-awesome: Font Awesome icon set (--icons fontawesome)
-	optdepends = ttf-jetbrains-mono-nerd: default font for the framed tooltip (--frame / --frame-font)
+	optdepends = ttf-jetbrains-mono-nerd: monospace font the tooltip pins by default (--tooltip-font)
 	options = !debug
-	source = meteobar-0.3.0.tar.gz::https://github.com/mryll/meteobar/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 29bd20769fa90b9e7d734328127655ee255b0ca58715d3235d0997eff806f32a
+	source = meteobar-0.4.0.tar.gz::https://github.com/mryll/meteobar/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = b14259fc26f8afc59f5ebafbbc2130ab3ce69bea3ace90579b9b3d42b4c09492
 
 pkgname = meteobar
