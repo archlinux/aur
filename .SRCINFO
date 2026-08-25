@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-widevine-bin
 	pkgdesc = A lightweight approach to removing Google web service dependency (with Widevine)
-	pkgver = 151.0.7922.169
+	pkgver = 151.0.7922.173
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -62,15 +62,15 @@ pkgbase = ungoogled-chromium-widevine-bin
 	optdepends = qt6-base: Qt support
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME, KDE and Xfce
 	optdepends = upower: Battery Status API support
-	provides = chromium=151.0.7922.169
-	provides = chromedriver=151.0.7922.169
+	provides = chromium=151.0.7922.173
+	provides = chromedriver=151.0.7922.173
 	conflicts = chromium
 	conflicts = chromedriver
-	noextract = google-chrome-stable_151.0.7922.169-1_amd64.deb
+	noextract = google-chrome-stable_151.0.7922.173-1_amd64.deb
 	options = !strip
-	source = ungoogled-chromium-151.0.7922.169-1-x86_64.pkg.tar.zst::https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/151.0.7922.169-1/ungoogled-chromium-151.0.7922.169-1-x86_64.pkg.tar.zst
-	source = google-chrome-stable_151.0.7922.169-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_151.0.7922.169-1_amd64.deb
-	sha256sums = c0a30148e99ac7ed304f4bfdd8c3ecdd08879b121041cc8c1ed5399dc833ef5e
-	sha256sums = 6572478310553cb25fdcb4ba2fb5459b472c2c765f5f68e9837d4964e8a87f1e
+	source = ungoogled-chromium-151.0.7922.173-1-x86_64.pkg.tar.zst::https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/151.0.7922.173-1/ungoogled-chromium-151.0.7922.173-1-x86_64.pkg.tar.zst
+	source = google-chrome-stable_151.0.7922.173-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_151.0.7922.173-1_amd64.deb
+	sha256sums = f23eb52de5329e49869e498329ca89c6d92b192cd018bd0c5547bac4a2b87dab
+	sha256sums = 878e5ab495b8a694980fca61bc09b37e651ccedce2291c73434d16e48a2646fd
 
 pkgname = ungoogled-chromium-widevine-bin
