@@ -1,6 +1,6 @@
 pkgbase = lito
 	pkgdesc = Module-first C++ build tool with manifest.
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/litocpp/lito
 	arch = x86_64
@@ -15,11 +15,11 @@ pkgbase = lito
 	depends = glibc
 	depends = lua
 	depends = zstd
-	source = git+https://github.com/litocpp/lito.git#tag=v0.6.1
+	source = git+https://github.com/litocpp/lito.git#tag=v0.6.2
 	source = git+https://github.com/litocpp/rstd.git#commit=fdb99aaa894d76b04032cd301ac82b5ee6e3ec6d
 	source = git+https://github.com/litocpp/luato.git#commit=61dd40dca1e9aeda69eed208ddf0d10b34f59db7
 	source = git+https://github.com/jedisct1/libsodium.git#commit=77e1ce5d6dee871c49ef211222ba18ef0c486bda
-	sha256sums = 588ff921301d355193d34504a852ef7d19ac51e2731d68e6ce79bfb0ddfe9ddf
+	sha256sums = b5beaf96fe8ac81aaa5bf442777665786bea82f657987725c33af8399c736a8b
 	sha256sums = 5e459ff93db361faf3c893d714d1f1d26b7d133f62c58c091a20357476a37a3c
 	sha256sums = 351dcdfd54a6df473f457a853ce0f9dc80a2950c60b4c821eeeb252ae861f19a
 	sha256sums = da5ab87a4ba609f0f38247f200b30e04acd8d2db210a23cc4206a6c3484b929d
