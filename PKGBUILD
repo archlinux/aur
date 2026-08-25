@@ -1,6 +1,6 @@
 # Maintainer: mryll <https://github.com/mryll>
 pkgname=waynote
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Wayland-native markdown sticky notes for tiling WMs (wlr-layer-shell)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ options=(!debug)
 depends=('gtk4' 'gtk4-layer-shell')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5d1827630b5aa7070a73a8aa079d32b4b40255cafd1b1f933311fcb2b6a02acb')
+sha256sums=('b067d5baac4458f731e952bde10ce3d84cd8f9fcdf86399cdb0823ca9f2db045')
 
 build() {
   cd "$pkgname-$pkgver"
