@@ -4,12 +4,13 @@
 # only run on sm_120a hardware.
 pkgname=ninfer-git
 _pkgbase=ninfer
-pkgver=20260818.ga99407c
+pkgver=20260824.gfeaf4dd
 pkgrel=1
 pkgdesc="High-performance single-GPU inference engine for registered Qwen checkpoints (sm_120a only)"
 arch=(x86_64)
 url="https://github.com/Neroued/ninfer"
 license=(Apache-2.0)
+provides=(ninfer)
 depends=(
   curl
   cuda-toolkit

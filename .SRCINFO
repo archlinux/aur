@@ -1,6 +1,6 @@
 pkgbase = ninfer-git
 	pkgdesc = High-performance single-GPU inference engine for registered Qwen checkpoints (sm_120a only)
-	pkgver = 20260818.ga99407c
+	pkgver = 20260824.gfeaf4dd
 	pkgrel = 1
 	url = https://github.com/Neroued/ninfer
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = ninfer-git
 	depends = gcc-libs
 	depends = glibc
 	depends = nvidia-utils
+	provides = ninfer
 	source = git+https://github.com/Neroued/ninfer.git
 	sha256sums = SKIP
 
