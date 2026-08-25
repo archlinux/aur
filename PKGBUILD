@@ -23,6 +23,18 @@ options=("!debug" "!strip")
 : "${source_x86_64[@]}"
 : "${url}"
 
+prepare() {
+	rm -rf "${pkgname}_${_pkgver}"
+	mkdir "${pkgname}_${_pkgver}"
+
+	bsdtar \
+		--directory "${pkgname}_${_pkgver}" \
+		--file data.tar.zst \
+		`# The libraries are provided by the system.` \
+		--exclude=opt/disig/websigner/{bin/qt.conf,"lib/*","plugins/*","share/doc/*/*"} \
+		--extract
+}
+
 package() {
 	depends=(
 		glibc
@@ -44,12 +56,7 @@ package() {
 	: "${optdepends[@]}"
 	: "${pkgdir:?}"
 
-	bsdtar \
-		--directory "${pkgdir}" \
-		--file data.tar.zst \
-		`# The libraries are provided by the system.` \
-		--exclude=opt/disig/websigner/{bin/qt.conf,"lib/*","plugins/*","share/doc/*/*"} \
-		--extract
+	cp -a "${pkgname}_${_pkgver}/." "${pkgdir}"
 
 	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 	ln -s /opt/disig/websigner/share/doc/copyright "${pkgdir}/usr/share/licenses/${pkgname}"
