@@ -9,6 +9,7 @@ pkgbase = jobman-bin
 	license = MIT
 	optdepends = jobman-diagnose
 	provides = jobman
+	provides = jobman-agent
 	conflicts = jobman
 	options = !strip
 	backup = etc/jobman/jobman.yml
