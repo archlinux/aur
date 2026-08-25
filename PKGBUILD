@@ -2,7 +2,7 @@
 
 _name=aws-sdk-signers
 pkgname=python-$_name
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Standalone HTTP Request Signers for Amazon Web Services.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-freezegun' 'python-smithy-aws-event-stream')
 source=("$_name::git+$_repo.git#tag=$_name/v$pkgver")
-sha256sums=('68ebb6567862fffa9c31e5d5494064086b046967dd9f2ce5d2cada816b3679c6')
+sha256sums=('f54ff2760bfaa689abb5c73475e28b6171d3adceb6dc176a5fbbe75eb97e43d1')
 
 build() {
   cd "$srcdir"/$_name/packages/$_name
