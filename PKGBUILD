@@ -2,7 +2,7 @@
 
 _name=spsdk
 pkgname=python-spsdk
-pkgver=3.10.0
+pkgver=3.11.0
 pkgrel=1
 pkgdesc="Open Source Secure Provisioning SDK for NXP MCU/MPU"
 arch=(any)
@@ -65,7 +65,7 @@ checkdepends=(
 )
 optdepends=()
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha512sums=('13145c47cdcd1a24dd5622475e269bc4a50da7ebaa7d67ba1c687b79495940a982ba5aad6aae5ccfae555881fa93fa1f003cbe32c7da2feb5f1fb0403e79ba7a')
+sha512sums=('0f3b4452f18347b4537fb0b6c8e2c996d7036c721e93f43f46cda1c266f0068731221103069cf6c6c1b3f2279cdea170ed87894753a9f19b58bbb05d2c905c02')
 
 prepare() {
   cd $_name-$pkgver
