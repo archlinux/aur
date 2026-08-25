@@ -1,17 +1,17 @@
 # Maintainer: tirith contributors
 pkgname=tirith
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Terminal security - catches homograph attacks, pipe-to-shell, ANSI injection'
 arch=('x86_64' 'aarch64')
 url='https://github.com/sheeki03/tirith'
 license=('AGPL-3.0-only')
-depends=('gcc-libs')
+depends=('gcc-libs' 'sudo')
 makedepends=('cargo' 'base-devel')
 options=(!lto)
 install=tirith.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f6d4d66d7f151a3ddf4a3a8763e204b2301278cd016e8d496c4eb07cfc8ddc35')
+sha256sums=('365ed3f5ec5430f76ff90fa887a32d51e592bc90b4e7cedea15522650f78a75a')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -32,6 +32,10 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm755 "target/release/tirith" "$pkgdir/usr/bin/tirith"
+  if [[ "$CARCH" == "x86_64" ]]; then
+    install -Dm755 "target/release/tirith-package-approval-authority" \
+      "$pkgdir/usr/libexec/tirith-package-approval-authority"
+  fi
 
   # Shell hooks
   install -Dm644 "shell/tirith.sh" "$pkgdir/usr/share/tirith/shell/tirith.sh"
