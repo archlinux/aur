@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openhome-bin
 _pkgname=OpenHome
-pkgver=1.15.2
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="Application for importing and transferring Pokémon between save files.(Prebuilt version)"
 arch=(
@@ -18,8 +18,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.x86_64.rpm")
-sha256sums_aarch64=('c2b655fac705f96b81e1a71c869c67a76368583128dee7096b8192d4c540904f')
-sha256sums_x86_64=('a4b31617460ad21b77b8cbba9606c4ea34c3512fc530b3c1b848c68128b5c851')
+sha256sums_aarch64=('8bd4f90cc5810f9ffe05e99adec5b636d79adf57928e0ecaa340b5ff16547719')
+sha256sums_x86_64=('5f9a3ed961946662e97b9e6ce788a8c75acb5b8a28a01da0a3a2956fee736ed4')
 prepare() {
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
