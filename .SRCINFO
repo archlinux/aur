@@ -1,6 +1,6 @@
 pkgbase = morgen-bin
 	pkgdesc = Morgen is a modern, intuitive and smart calendar application.
-	pkgver = 4.0.1
+	pkgver = 4.0.6
 	pkgrel = 1
 	url = https://morgen.so
 	changelog = ChangeLog
@@ -13,9 +13,9 @@ pkgbase = morgen-bin
 	depends = desktop-file-utils
 	provides = morgen
 	conflicts = morgen3-bin
-	source = morgen-bin_4.0.1-1.xz::https://dl.todesktop.com/210203cqcj00tw1/versions/4.0.1/linux/deb/x64
+	source = morgen-bin_4.0.6-1.xz::https://dl.todesktop.com/210203cqcj00tw1/versions/4.0.6/linux/deb/x64
 	source = morgen
-	b2sums = c228cef9c86abc30395a43a41d223c521d6d082374459e17066dbaab799cedfbd00adf46898c6cd02b2c4cba8be02cb45627ae8d9064886d1a7b3916dfe5907e
+	b2sums = 7e4466f18297ddb0036a058678666c5ffb6a4c1d16b1c3e4e947b256f362c95a80b0d784cb7b31d5f7126926056ce2d531596ca4079f20b5540a7e97dec4118a
 	b2sums = ad953f1507c74e71ef2580e8b7c94fe4ea3a77e547f3c459adc7966df84e911fdc35fcf8ca708a28fd42c46999cf395f264333d441da5b4fc7d5644b3779ccdd
 
 pkgname = morgen-bin
