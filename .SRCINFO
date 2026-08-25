@@ -1,6 +1,6 @@
 pkgbase = pypy3-scipy
 	pkgdesc = Fundamental algorithms for scientific computing in Python
-	pkgver = 1.18.0
+	pkgver = 1.18.1
 	pkgrel = 1
 	url = https://scipy.org
 	arch = x86_64
@@ -20,14 +20,14 @@ pkgbase = pypy3-scipy
 	depends = lapack
 	depends = pypy3-numpy
 	options = !lto
-	source = scipy-1.18.0::git+https://github.com/scipy/scipy.git?signed#tag=v1.18.0
+	source = scipy-1.18.1::git+https://github.com/scipy/scipy.git?signed#tag=v1.18.1
 	source = git+https://github.com/data-apis/array-api-compat
 	source = git+https://github.com/boostorg/math
 	source = git+https://github.com/cobyqa/cobyqa
 	source = git+https://github.com/scipy/pocketfft
 	source = git+https://github.com/scipy/unuran
 	validpgpkeys = AD0C5067D1DECED72F6245670196A9293365B112
-	sha512sums = 1337a56038c3e8d1ca51832a9cd43b6d78a605db2aaa7661a6f955fa7a44f2c1fb838be767041676d5a7638d450021db727336531859363ac91fbc27e515926d
+	sha512sums = 4eb51a00b016ea6ab91a19eeeea85d3e9311a3b729e64922c4f1a20af02abd69e918e2235fcc212895d9f2d1f57ad69b7e88cba91a19402bcaaf857fb2592805
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
