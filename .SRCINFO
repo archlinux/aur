@@ -1,6 +1,6 @@
 pkgbase = wdm-wayland
 	pkgdesc = A Wayland display manager that is its own compositor
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/quinnjr/wdm
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = wdm-wayland
 	makedepends = libdrm
 	makedepends = libxkbcommon
 	makedepends = pam
-	source = wdm-0.10.1.tar.gz::https://github.com/quinnjr/wdm/archive/refs/tags/v0.10.1.tar.gz
-	sha256sums = c23280a52adb671e825a4524d79d00f01bd57adb363bec90318471d93debda9c
+	source = wdm-0.10.2.tar.gz::https://github.com/quinnjr/wdm/archive/refs/tags/v0.10.2.tar.gz
+	sha256sums = 6b5fe3c225edf3a33da8e1cb9a03810c42d93dd721d214bd04756f3b40a97327
 
 pkgname = wdm-wayland
 	install = wdm.install
