@@ -1,6 +1,6 @@
 pkgbase = python-islpy
 	pkgdesc = Wrapper around isl, an integer set library
-	pkgver = 2026.1
+	pkgver = 2026.2.1
 	pkgrel = 1
 	url = https://documen.tician.de/islpy
 	arch = x86_64
@@ -18,10 +18,10 @@ pkgbase = python-islpy
 	depends = imath
 	depends = libisl
 	depends = python
-	source = git+https://github.com/inducer/islpy.git?signed#tag=v2026.1
+	source = git+https://github.com/inducer/islpy.git?signed#tag=v2026.2.1
 	source = git+https://github.com/inducer/isl.git
 	validpgpkeys = 900A958D9A0ACA58B1468F2471AA298BCA171145
-	sha512sums = ed35882f9749962299cb4ce34f0b69317417aee579f2cea9ada3c31f823b63c7e348447ce2964ee806b72bd677786c50d9bbca3ea9c734115af32114272814b3
+	sha512sums = e3d420aa42dcda3f1f8afb85bf2d4acdc813a272644dea7ea73d4ff7f0a057171427ed1759530e992bca810f123873e0bffa9c96676a9572b5bc0649fc255b8b
 	sha512sums = SKIP
 
 pkgname = python-islpy
