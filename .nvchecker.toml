@@ -1,0 +1,3 @@
+[ofono]
+source = "git"
+git = "https://kernel.googlesource.com/pub/scm/network/ofono/ofono.git"
