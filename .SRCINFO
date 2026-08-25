@@ -1,0 +1,28 @@
+pkgbase = spotagooey-bin
+	pkgdesc = Desktop Spotify client built with Tauri, Rust, React, and TypeScript
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/swarnimcodes/spotagooey
+	arch = x86_64
+	license = MIT
+	depends = alsa-lib
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgcc
+	depends = libsoup3
+	depends = openssl
+	depends = webkit2gtk-4.1
+	provides = spotagooey=0.1.0
+	conflicts = spotagooey
+	options = !strip
+	options = !debug
+	source = LICENSE
+	sha256sums = 4b3b7f8c2a7cb09753ab53ecaf6cecaaeb1d0760c3e4f82bc3ced5aab2708e0f
+	source_x86_64 = spotagooey-bin-0.1.0.deb::https://github.com/swarnimcodes/spotagooey/releases/download/v0.1.0/spotagooey_0.1.0_amd64.deb
+	sha256sums_x86_64 = 000a45b84f972f95832bca310a631c3b855d320ac59a779f1dfd168cb2009dd3
+
+pkgname = spotagooey-bin
