@@ -1,6 +1,6 @@
 pkgbase = pvz-portable
 	pkgdesc = A cross-platform community-driven reimplementation of Plants vs. Zombies: Game of the Year Edition, aiming to bring the 100% authentic PvZ experience to every platform.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/wszqkzqk/pvz-portable
 	arch = x86_64
@@ -22,9 +22,9 @@ pkgbase = pvz-portable
 	depends = mpg123
 	depends = sdl2-compat
 	depends = zlib
-	source = pvz-portable::git+https://github.com/wszqkzqk/pvz-portable.git#tag=0.2.1
+	source = pvz-portable::git+https://github.com/wszqkzqk/pvz-portable.git#tag=0.2.2
 	source = file://Plants_vs._Zombies_1.2.0.1073_EN.zip
-	sha256sums = 2df2eb528362bfe208207ca6e468bc5ea0d2c074f42149eb87097a36d9e1dcfe
+	sha256sums = 40ad7bad8a5b8a7b7c82e5857a816f1c6ac3cdf38cbe0db37af3974fca26269e
 	sha256sums = SKIP
 
 pkgname = pvz-portable
