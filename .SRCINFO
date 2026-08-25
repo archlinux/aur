@@ -1,0 +1,20 @@
+pkgbase = castsound-bin
+	pkgdesc = Stream audio between computer and phone
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://castsound.app
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = alsa-lib
+	depends = libpulse
+	depends = pipewire
+	optdepends = pipewire-pulse: PulseAudio compatibility via PipeWire
+	source = .managed_by_aur
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	source_x86_64 = CastSound-0.1.0-linux-x86_64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v0.1.0/CastSound-0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 956bf3f06c599a310fc865f831f314c62d43898f863202ee1ca9f7811491d980
+	source_aarch64 = CastSound-0.1.0-linux-aarch64.tar.gz::https://github.com/CastSound/CastSound-Desktop/releases/download/v0.1.0/CastSound-0.1.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 52126bef968598024172dab95e8e553e0a2c911662ea325fc1931a783492ec7b
+
+pkgname = castsound-bin
