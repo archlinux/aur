@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Name=Gen1Recomp
+GenericName=Gen1Recomp
+Comment=Native LÖVE2D reimplementation of Pokémon Red/Blue/Yellow (BYO ROM)
+Icon=/usr/share/gen1recomp/gen1recomp.png
+Exec=gen1recomp
+Terminal=false
+Categories=Game;

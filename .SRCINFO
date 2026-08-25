@@ -1,0 +1,22 @@
+pkgbase = gen1recomp
+	pkgdesc = Native LÖVE2D recreation of Pokémon Red/Blue/Yellow (BYO ROM)
+	pkgver = 0.2.25
+	pkgrel = 1
+	url = https://github.com/bryanthaboi/gen1recomp
+	arch = x86_64
+	license = MIT
+	makedepends = zip
+	makedepends = unzip
+	makedepends = git
+	depends = love>=11.5
+	depends = love<12
+	source = git+https://github.com/bryanthaboi/gen1recomp.git#branch=main
+	source = gen1recomp.sh
+	source = gen1recomp.png
+	source = gen1recomp.desktop
+	sha256sums = SKIP
+	sha256sums = c6be61327aca02c8a3b060a3f678371a6910c685656b15a5b1e8cbf4ffd00bd1
+	sha256sums = 8aa282af6887771aec3a69c8003f0e987376bcdaa6c963217575ee4f16d0bba5
+	sha256sums = cd0e5751200361fdde3d6c0aee845d48e9b1cea06a150fe14ac3588bc2c2cd52
+
+pkgname = gen1recomp
