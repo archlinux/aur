@@ -2,7 +2,7 @@
 
 pkgname=ai-usagebar-bin
 _pkgname=ai-usagebar
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Omarchy/Waybar widgets + TUI for AI plan usage (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -12,6 +12,10 @@ depends=('gcc-libs')
 optdepends=(
     'waybar: status bar that hosts the widget'
     'libnotify: desktop notifications on hard auth failures'
+    # No plasma-desktop/plasma5support entries — see PKGBUILD. This variant
+    # could not ship the plasmoid even if we wanted it to: its source is the
+    # released binary tarball, which carries only the two binaries, the config
+    # example, README and LICENSE.
 )
 provides=("$_pkgname=$pkgver")
 # Conflict with both the source variant AND its auto-generated debug split.
@@ -26,8 +30,8 @@ options=('!strip' '!debug')
 # Per-arch sources — pacman picks the matching one for the host arch.
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-x86_64.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/$_pkgname-linux-aarch64.tar.gz")
-sha256sums_x86_64=('dad011afbbd5df2d24b39eae61fd5bfa2c22225a522938396cc3e394d2373ba2')
-sha256sums_aarch64=('ae9fe2d37f7ae805f4c0c188d8a47be7c8ebc5f6a94cf82a5f4feb6abe2510b6')
+sha256sums_x86_64=('051814c150740d452bf3be0f3e6ea8e51aee677141a46da54d47f595b380b3c7')
+sha256sums_aarch64=('3dd46fc1e305e05b4020f3999b368b90d285db9136de6d52250ebf788df368d8')
 
 package() {
     install -Dm0755 -t "$pkgdir/usr/bin/"                "ai-usagebar"
