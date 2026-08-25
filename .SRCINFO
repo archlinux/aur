@@ -1,6 +1,6 @@
 pkgbase = yurigram-bin
 	pkgdesc = Yet another unofficial tdesktop client
-	pkgver = 7.0.9
+	pkgver = 7.1.2
 	pkgrel = 1
 	url = https://github.com/Revincx/Yurigram
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = yurigram-bin
 	conflicts = yukigram-rua-bin
 	replaces = yukigram-rua
 	replaces = yukigram-rua-bin
-	source_x86_64 = yurigram-7.0.9-1-x86_64.tar.gz::https://github.com/Revincx/Yurigram/releases/download/7.0.9-1/yurigram-7.0.9-1-x86_64.tar.gz
-	sha256sums_x86_64 = 4d0faef4d7d18381bcc323dd694ca583f3ba3ba52a485c0affbad722c544c277
-	source_aarch64 = yurigram-7.0.9-1-aarch64.tar.gz::https://github.com/Revincx/Yurigram/releases/download/7.0.9-1/yurigram-7.0.9-1-aarch64.tar.gz
-	sha256sums_aarch64 = f32e48cb8bc6668a5c1514c79bbb08b9feda35d3a0ca01e2b76265b7356235be
+	source_x86_64 = yurigram-7.1.2-1-x86_64.tar.gz::https://github.com/Revincx/Yurigram/releases/download/7.1.2-1/yurigram-7.1.2-1-x86_64.tar.gz
+	sha256sums_x86_64 = 3f129bdc02648d38c6db7d489d339fa4cdf83296204466228eb949f5b4de3523
+	source_aarch64 = yurigram-7.1.2-1-aarch64.tar.gz::https://github.com/Revincx/Yurigram/releases/download/7.1.2-1/yurigram-7.1.2-1-aarch64.tar.gz
+	sha256sums_aarch64 = 53acb1ade1f16f6595b3c96ed5172afffd85b9c20fa07350a1bf6feea00aa670
 
 pkgname = yurigram-bin
