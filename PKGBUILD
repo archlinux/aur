@@ -1,6 +1,6 @@
 # Maintainer: prevter <prevter@gmail.com>
 pkgname=blam-bin
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Fast and lightweight LOC counter (Bazillion Lines Analyzed in Milliseconds)"
 arch=('x86_64' 'aarch64')
@@ -30,13 +30,13 @@ noextract=(
 )
 
 sha256sums_aarch64=(
-    '6bd329467bcd8193ce8db5daf38a8ed3dcf4a04c0ffb25b11c2a58acb9bf4055'
+    'c45e42329606cc94711d824a60c2425cb7a8f277e789a41536119379b06a4b69'
     'SKIP'
 )
 
 sha256sums_x86_64=(
-    'a425ced347d1cd06a983939e2eff38e99979feb598cbe1820985540bad415ce1'
-    'da281c668bf0ef5a7ad8222a8e8d6f74e8d2ba6ccd1c86ef110dd7def102c7b0'
+    'fa442361770f98c4af30ba4a3c2e5fbd718acd5f246f30c835364fd03b796e05'
+    '15dc6833afcbfc71afb2d57ed4243c28f2e96962c2d2c190ccefc4d8424cd3fd'
     'SKIP'
 )
 
