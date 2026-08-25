@@ -1,9 +1,11 @@
 # Maintainer: Jonaz Thern <info@thern.io>
 pkgname=moraine
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Snapshot-based backup over SSH/rsync and rclone (CLI + GTK desktop app)'
-arch=('x86_64')
+# Built from source by makepkg, so aarch64 (Arch Linux ARM, Raspberry Pi) works
+# too — nothing here is architecture-specific.
+arch=('x86_64' 'aarch64')
 options=('!debug')  # no separate -debug package
 url='https://github.com/TheJonaz/moraine-backup'
 license=('MIT')
@@ -13,7 +15,7 @@ optdepends=('rclone: cloud/FTP/SMB/WebDAV/S3 backends'
             'networkmanager: per-target VPN')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('74ce0905ddcaddd39315a2795a6b26ded14abf8c94da79d3dd809c102d444e35')
+sha256sums=('4af5288f7c3d72e96f56e383018dcb23bb6ec29a4c53d58bdaffc3d43ad92c87')
 _srcdir="moraine-backup-$pkgver"
 
 prepare() {
@@ -52,8 +54,8 @@ package() {
   install -Dm644 assets/moraine-64.png  "$pkgdir/usr/share/moraine/assets/moraine-64.png"
   install -Dm644 assets/moraine-256.png "$pkgdir/usr/share/moraine/assets/moraine-256.png"
 
-  install -Dm644 debian/moraine.1     "$pkgdir/usr/share/man/man1/moraine.1"
-  install -Dm644 debian/moraine-gui.1 "$pkgdir/usr/share/man/man1/moraine-gui.1"
+  install -Dm644 man/moraine.1     "$pkgdir/usr/share/man/man1/moraine.1"
+  install -Dm644 man/moraine-gui.1 "$pkgdir/usr/share/man/man1/moraine-gui.1"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
