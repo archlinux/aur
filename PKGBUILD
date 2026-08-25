@@ -17,7 +17,7 @@ source=(
   "querya_desktop.desktop"
   "querya_desktop.png"
 )
-sha256sums=('0dab3bc4477274079311d6f59a87e386f69dd26201cf6ab56801386da8f3ceb4' '429aa3f7d3daec3306b42bb562deb941d0ef6dd804e74f9c28f31694513e2ad8' '0a91c6c1bf242e54ee179e34629e9ef3e8a6d286c0fce01e302280a8be9277e6')
+sha256sums=('7da4cf990a5d3b74427435fdec362e33a7232d78acc4ebdced10c9a9f2586d2f' '429aa3f7d3daec3306b42bb562deb941d0ef6dd804e74f9c28f31694513e2ad8' '0a91c6c1bf242e54ee179e34629e9ef3e8a6d286c0fce01e302280a8be9277e6')
 
 prepare() {
   bsdtar -xf "$srcdir/Querya-Desktop-${pkgver}-linux.zip" -C "$srcdir"
