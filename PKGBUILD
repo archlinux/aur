@@ -2,7 +2,7 @@
 # Contributor: Wanjare S. <samuelwanjare@protonmail.com>
 
 pkgname=malama
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Native Linux chat client for local LLMs — no cloud, no browser, no compromise."
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
   'libpng'
   'libjpeg-turbo'
   'spdlog'
-  'boost-libs'
+  'boost-libs>=1.92.0'
 )
 makedepends=(
   'cmake'

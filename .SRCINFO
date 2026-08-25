@@ -1,6 +1,6 @@
 pkgbase = malama
 	pkgdesc = Native Linux chat client for local LLMs — no cloud, no browser, no compromise.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://magpiny.github.io/malama
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = malama
 	depends = libpng
 	depends = libjpeg-turbo
 	depends = spdlog
-	depends = boost-libs
+	depends = boost-libs>=1.92.0
 	optdepends = ollama: default local LLM inference server
 	provides = malama
 	conflicts = malama-git
-	source = malama-0.3.0.tar.gz::https://github.com/magpiny/malama/archive/refs/tags/v0.3.0.tar.gz
+	source = malama-0.3.1.tar.gz::https://github.com/magpiny/malama/archive/refs/tags/v0.3.1.tar.gz
 	sha256sums = 390ea6dbddf82e26f339821cf608f8690843967aa311a896eb3f0695a87d29d5
 
 pkgname = malama
