@@ -1,41 +1,48 @@
 # Maintainer: robertfoster
 
 pkgname=libshout-idjc-git
-pkgver=898.4b1539c
+epoch=1
+pkgver=r771.74990fe
 pkgrel=1
-pkgdesc="Libshout library plus some extensions for IDJC."
-arch=(i686 x86_64)
-url="http://idjc.sourceforge.net/"
-depends=('libvorbis' 'libtheora' 'speex' 'openssl' 'twolame')
-makedepends=('git')
-replaces=('libshout')
+pkgdesc="Library for accessing a shoutcast/icecast server (with IDJC customizations)"
+arch=('x86_64')
+url="https://idjc.sourceforge.io/"
+license=('LGPL-2.0-or-later')
+depends=('libvorbis' 'libtheora' 'speex' 'openssl')
+makedepends=('git' 'autoconf' 'automake' 'libtool' 'pkgconf')
+provides=("libshout-idjc=${pkgver}")
 conflicts=('libshout-idjc')
 options=('!emptydirs')
-source=('libshout-idjc::git+https://git.code.sf.net/p/idjc/code')
-license=('LGPL')
+source=('libshout-idjc::git+https://git.code.sf.net/p/idjc/libshoutidjc/code'
+        'icecast-m4::git+https://gitlab.xiph.org/xiph/icecast-m4.git'
+        'icecast-common::git+https://gitlab.xiph.org/xiph/icecast-common.git')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
-prepare() {
-  cd $srcdir/libshout-idjc/libshout-idjc
-  sed -e 's/SSLeay_add_all_algorithms/OpenSSL_add_all_algorithms/g' -i src/tls.c
+pkgver() {
+  cd libshout-idjc
+  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
-build(){
-  cd $srcdir/libshout-idjc
-  ./bootstrap
+prepare() {
   cd libshout-idjc
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  # Submodules are declared with relative URLs that do not resolve on
+  # SourceForge; point them at the upstream Xiph repositories instead.
+  git submodule init
+  git config submodule.m4.url "${srcdir}/icecast-m4"
+  git config submodule.src/common.url "${srcdir}/icecast-common"
+  git -c protocol.file.allow=always submodule update
+  ./autogen.sh
+}
+
+build() {
+  cd libshout-idjc
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
   make
 }
 
 package() {
-  cd $srcdir/libshout-idjc/libshout-idjc
-  make DESTDIR="${pkgdir}" install
-  make DESTDIR="${pkgdir}" uninstall-m4dataDATA
-}
-
-pkgver() {
   cd libshout-idjc
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  make DESTDIR="${pkgdir}" install
 }
-
-md5sums=('SKIP')
