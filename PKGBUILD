@@ -5,8 +5,9 @@
 # x86_64 and aarch64.
 
 _pkgbase=webhid
+_tag=79a10e6dabc5ac50f0d20696af12f002a05c796f
 pkgname=${_pkgbase}
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='WebHID implementation for Firefox via a native-messaging bridge and hidraw daemon'
 arch=('x86_64' 'aarch64')
@@ -16,8 +17,9 @@ depends=('libudev.so')
 makedepends=('cargo' 'pkgconf' 'git')
 optdepends=('webhid-addon: Firefox browser extension (system-wide install)')
 install=webhid.install
-source=("${_pkgbase}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('fc2478fbfeab443e9bbed82714cc8b69e0cfda63c8fdbe001a4770dd89b8d43c')
+source=("${_pkgbase}::git+${url}.git?signed#tag=${_tag}")
+validpgpkeys=('787C5932BF4CDF5C36E071B9798FBBB05FCDD531')  # k4zoku <k4zoku@disr.it>
+sha256sums=('3ee29d8b47d42d6262bb9183d4335e723b1eeb8b78f00ebbed273a5ed1fdeff7')
 options=('!lto' '!debug')
 
 prepare() {
