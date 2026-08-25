@@ -1,7 +1,7 @@
 pkgbase = pipedal-bin
 	pkgdesc = IoT guitar effect pedal for Raspberry Pi, with phone-friendly web interface
 	pkgver = 2.0.110
-	pkgrel = 3
+	pkgrel = 4
 	url = https://rerdavies.github.io/pipedal/
 	install = pipedal-bin.install
 	arch = x86_64
@@ -35,13 +35,14 @@ pkgbase = pipedal-bin
 	depends = openssl
 	depends = pango
 	depends = systemd-libs
+	depends = toobamp-bin
 	depends = util-linux-libs
 	depends = xz
 	depends = zlib
 	depends = zstd
 	optdepends = authbind: only needed when the web UI serves on a port below 1024 (the default is port 80); use `pipedalconfig --install --port 8080` to avoid it (AUR)
 	optdepends = networkmanager: Wi-Fi hotspot and P2P session features
-	optdepends = lv2: use third-party LV2 effects plugins in addition to the bundled ToobAmp set
+	optdepends = lv2: use third-party LV2 effects plugins in addition to the ToobAmp set (from toobamp-bin)
 	source = https://github.com/rerdavies/pipedal/releases/download/v2.0.110/pipedal_2.0.110_amd64.deb
 	sha256sums = e0e49988ec3f0d63168e82a24345e44f1f06b71f5545f5f2417de609ea695a8b
 

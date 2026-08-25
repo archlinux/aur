@@ -2,3 +2,4 @@
 *.deb
 src/
 pkg/
+PR-SPECS.md

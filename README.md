@@ -12,8 +12,13 @@ into an Arch package. No compilation is involved.
 
 - **Inert by design**: installing the package copies files and prints
   information. It does not start services, enable anything, or modify
-  the boot configuration. Verified by a before/after filesystem snapshot
-  (tripwire) test: only the package's own files are added.
+  the boot configuration.
+- **Plugin set ships as `toobamp-bin`**: the LV2 bundle is a hard
+  dependency on the released [`toobamp-bin`](https://aur.archlinux.org/packages/toobamp-bin)
+  package (the standard ToobAmp release). Upstream's .deb embeds an
+  unpublished newer snapshot (1.3.85) that cannot be repacked; the
+  released set is functionally identical for the great majority of
+  plugins, minus unreleased additions (e.g. ToobWarmer, ToobMultiEcho).
 - **High-port default**: the shipped config sets
   `"socketServerAddress": "0.0.0.0:8080"` (upstream's default is port
   80, which requires root or authbind). Users can override in
