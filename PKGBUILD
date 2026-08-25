@@ -1,7 +1,7 @@
 # Maintainer: AkitaOnRails <boss@akitaonrails.com>
 
 pkgname=ai-usagebar
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Omarchy/Waybar widgets + TUI for tracking multi-provider AI plan usage"
 arch=('x86_64' 'aarch64')
@@ -12,6 +12,11 @@ makedepends=('cargo' 'git' 'nasm')
 optdepends=(
     'waybar: status bar that hosts the widget'
     'libnotify: desktop notifications on hard auth failures'
+    # No plasma-desktop/plasma5support entries: this package ships the CLI, not
+    # the KDE plasmoid, so neither would enable anything in what it installs.
+    # The plasmoid is installed from a checkout (kde-plasmoid/install.sh, or
+    # `make install-plasmoid PREFIX=/usr`), exactly like the GNOME extension,
+    # which is likewise absent here. See kde-plasmoid/README.md.
 )
 # LTO is disabled because ring's C/asm objects (used by reqwest's rustls
 # backend) don't ship LTO bitcode and Arch's default `-flto=auto` in CFLAGS
@@ -23,7 +28,7 @@ options=('!lto' '!debug')
 # Pacman should auto-remove the binary variant when switching to source.
 conflicts=('ai-usagebar-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f312e8b43f2257a63c24f94c203ac0c156ef72794d50375c31d458f75b98a552')
+sha256sums=('b545b20ac5e7b09d7f1925755798f4db6f679899b004a78077463cd39b9874c7')
 
 prepare() {
     cd "$pkgname-$pkgver"
