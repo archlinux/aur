@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-bin
 pkgname=('shelly-bin' 'shelly-flatpak-backend-bin')
-pkgver=3.0.6
+pkgver=3.1.0
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
@@ -13,8 +13,8 @@ source=(
     "Shelly-Flatpak-Backend-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-Flatpak-Backend-linux-x64.tar.gz"
 )
 
-sha256sums=('2770ddeda7390c100184f3a3e243d50e9c7aee3a244f324b328279917b54dff7'
-            '310bb9279e9c32c2dfd16e847ccd6adbb02478b6e5e18233f455a1b23b68ec1f')
+sha256sums=('0e316b1ad9321bd3b6902412360bf52eae44a5f7d1d603286901a802f4d8da1d'
+            '3a5021f720e0e965509e430bfcf1fef2c43b0bb967d71c61130c3c9d13ab4ae4')
 
 package_shelly-bin() {
   pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
@@ -56,7 +56,6 @@ package_shelly-bin() {
 
   # Install Shelly.Key binary
   install -Dm755 "$srcdir/shelly-key" "$pkgdir/usr/bin/shelly-key"
-
   # Install desktop entry
   cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly.desktop"
 [Desktop Entry]
