@@ -10,7 +10,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
 options=('!lto')
 source=("optioncli-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('63612d1d1fe38635fbd513af80cedeb9679ac310718263ee8d6d122e2f52d746')
+sha256sums=('5840d0b875caf519a9f8f2287a1e84b563830f3d79e78f285300b0d87f6ef2d1')
 
 prepare() {
   cd "optioncli-$pkgver"
