@@ -1,16 +1,16 @@
 pkgbase = gaze-hyprlock-bin
 	pkgdesc = Hyprlock PAM integration for Gaze
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
-	url = https://github.com/GunduLabs/gaze
+	url = https://gaze.gundulabs.com
 	install = gaze-hyprlock-bin.install
 	arch = x86_64
 	license = GPL-3.0-or-later
-	provides = gaze-hyprlock=0.2.11-1
+	provides = gaze-hyprlock=0.2.12-1
 	conflicts = gaze-hyprlock
 	backup = etc/pam.d/hyprlock-gaze
 	backup = etc/pam.d/hyprlock-gaze-simultaneous
-	source = gaze-hyprlock-0.2.11-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-hyprlock-0.2.11-1-x86_64.pkg.tar.zst
-	sha256sums = e409dc01640080603034a1d31b33493b638ff54756c326d7a5c2e1521c3c4a01
+	source = gaze-hyprlock-0.2.12-1-x86_64.pkg.tar.zst::https://packages.gundulabs.com/arch/packages/gaze-hyprlock-0.2.12-1-x86_64.pkg.tar.zst
+	sha256sums = c2a5cb739ee70ca3068640afaf0572ebc1934730cd22850877fede6268c9213a
 
 pkgname = gaze-hyprlock-bin
