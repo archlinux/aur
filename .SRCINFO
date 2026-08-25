@@ -1,7 +1,7 @@
 pkgbase = latchshot-git
 	pkgdesc = A lightweight yet intelligent window-aware screenshot tool for Wayland
-	pkgver = 0.2.5.r2.gff5e13e
-	pkgrel = 2
+	pkgver = 0.2.5.r3.gd0eb21b
+	pkgrel = 1
 	url = https://github.com/so1ve/latchshot
 	arch = x86_64
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = latchshot-git
 	depends = libxkbcommon
 	depends = wayland
 	depends = wl-clipboard
-	provides = latchshot=0.2.5.r2.gff5e13e
+	provides = latchshot=0.2.5.r3.gd0eb21b
 	conflicts = latchshot
 	conflicts = latchshot-bin
 	source = latchshot-git::git+https://github.com/so1ve/latchshot.git
