@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal dashboard for tasks, notes, and focus, built with Go and Bubble Tea"
 
-pkgver=0.1.0
+pkgver=0.2.3
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('54798ca3b9fe08ce53218f5163255954d48c2c682065a00e287e51ea60e18a49'
+sha256sums=('60c4593f22d4f1b48e309e0da7819bf8f7f7852f1faceace37262c7b7dd9a3fc'
             '026b8f2966d49364a239f972cd761fbc32a0cd456c0811611d2233dc9c730512')
-sha256sums_x86_64=('aa380a04fd9c0e5258402ffa1493fc93eab08342437fbf217cc97becd2076f2f')
-sha256sums_aarch64=('8c7862178beaa4958e48cd3958dcfc383b53e45fb7be4705bbc0ed03ca007d99')
+sha256sums_x86_64=('cef4c8cd51fa7ef65477efbfb0dca3f4be3e77d88986a89028e902b58b0e83e1')
+sha256sums_aarch64=('9bfb4e2c8ac92d332b46e0157f4629e2ca31c2f623a93bc23bba8c33b0913243')
 
 
 case ${CARCH} in
