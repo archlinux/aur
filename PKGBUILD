@@ -4,7 +4,7 @@ pkgname=wowup-cf-beta-bin
 _pkgname=wowup-cf-beta
 _desktopname=WowUpCf
 pkgver=2.23.1beta1
-pkgrel=2
+pkgrel=1
 pkgdesc='WowUp the World of Warcraft addon updater (with CurseForge support) - Beta version'
 arch=(x86_64)
 url='https://github.com/WowUp/WowUp.CF'
@@ -25,9 +25,9 @@ source=(
 )
 noextract=("WowUp-CF-${pkgver}.AppImage")
 sha256sums=('3e4ac0a63348dc8f16f8a7359df36964ba9306db0be045114fcd04d10a27781f'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '97386552c7ac77df8173436d4dd8a75d0e083ab4fd974bcd58147fac2e32adaa'
-            '6740afe4ba04a95995c98139343b3e4ea504d3203e1faee1caa3712be9616c2d')
+  '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+  '97386552c7ac77df8173436d4dd8a75d0e083ab4fd974bcd58147fac2e32adaa'
+  '6740afe4ba04a95995c98139343b3e4ea504d3203e1faee1caa3712be9616c2d')
 
 prepare() {
   cd "$srcdir"
@@ -46,14 +46,9 @@ package() {
 
   install -Dm755 -t "$pkgdir/usr/bin" $_pkgname
 
-  for _size in 16 32 48 128 512; do
-    # we need to do this here because upstream keeps changing the sizes, so let's loop
-    # over the well-known sizes and check for each one
-    local _file="squashfs-root/usr/share/icons/hicolor/${_size}x${_size}/apps/wowup-cf.png"
-    if [ -f "${_file}" ]; then
-      install -Dm644 "${_file}" \
-        "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png"
-    fi
+  for _size in 16 32 512; do
+    install -Dm644 "squashfs-root/usr/share/icons/hicolor/${_size}x${_size}/apps/wowup-cf.png" \
+      "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png"
   done
   install -Dm644 -t "$pkgdir/usr/share/applications" $_desktopname.desktop
   install -Dm644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
