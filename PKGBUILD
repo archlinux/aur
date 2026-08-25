@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A Fast WYSIWYG Markdown Terminal Editor In Swift"
 
-pkgver=1.6.3
+pkgver=1.7.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums=('cc0d96389dd06da70e2c9fc34a273a50f740edfbabbb6aa4e37d6a548d9624bc'
+sha256sums=('eed649de256e6c24ce40ec915a75707ee2fea261c12736f814cba134bda0b115'
             'aa3c372eddbce231661a28c61fd4ba499d9bdad1f3a2abfab6a1d4863750de9b')
-sha256sums_x86_64=('f1bb1b6e3005f578fac4cec4b21873870ff2b68334688835dbf0e7aa8828a015')
-sha256sums_aarch64=('f385a83791303a0a544904a8801da88857c2251ea8b523ddd8703ec6b03d57b8')
+sha256sums_x86_64=('38eaddf5246f9d3d366c47e0bca59ca8651b106be9a7951823d28b65c566a493')
+sha256sums_aarch64=('fe91e18f4e4699a70df9dd91edc5209572b222978d03d59e891cf9599e1dfa97')
 
 
 package() {
