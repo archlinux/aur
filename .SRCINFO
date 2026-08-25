@@ -1,0 +1,26 @@
+pkgbase = rawtoaces
+	pkgdesc = RAW to ACES utility for converting digital camera RAW files to ACES container files
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/AcademySoftwareFoundation/rawtoaces
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = ceres-solver
+	depends = eigen
+	depends = gcc-libs
+	depends = glibc
+	depends = lensfun
+	depends = nanobind
+	depends = nlohmann-json
+	depends = openimageio
+	depends = python
+	optdepends = perl-image-exiftool: for reading RAW image metadata via exiftool
+	source = rawtoaces-2.2.0.tar.gz::https://github.com/AcademySoftwareFoundation/rawtoaces/archive/refs/tags/v2.2.0.tar.gz
+	source = rawtoaces-data-1.1.0.tar.gz::https://github.com/AcademySoftwareFoundation/rawtoaces-data/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = dd4b53d83aaceb4a4ff97914b5bf1b820c929bd1a480d62c263d1849a8aa56dd
+	sha256sums = d84051305009e5a154062f837f62d432bc69f7ad9e220f3a57a056ddc9b8911f
+
+pkgname = rawtoaces
