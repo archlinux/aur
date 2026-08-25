@@ -1,0 +1,26 @@
+pkgbase = python-libwiipy-git
+	pkgdesc = A modern Python library for handling files and formats used by the Wii.
+	pkgver = r213.71ad5b9
+	pkgrel = 1
+	url = https://github.com/NinjaCheetah/libWiiPy
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pycryptodome
+	makedepends = python-requests
+	makedepends = python-types-requests
+	makedepends = python-sphinx
+	makedepends = python-sphinx-book-theme
+	makedepends = python-myst-parser
+	makedepends = python-sphinx-copybutton
+	makedepends = python-sphinx_tippy
+	makedepends = python-sphinx_design
+	provides = python-libwiipy=r213.71ad5b9
+	conflicts = python-libwiipy
+	source = libwiipy::git+https://github.com/NinjaCheetah/libWiiPy.git
+	sha256sums = SKIP
+
+pkgname = python-libwiipy-git
