@@ -1,6 +1,6 @@
 # Maintainer: detestern <detestern@proton.me>
 pkgname=karincore-git
-pkgver=1.2.7.r20.751a7f4
+pkgver=1.3.1.r27.d7a5f8b
 pkgrel=1
 pkgdesc="KarinCore - Modern and secure proxy client"
 arch=('x86_64')
@@ -130,7 +130,7 @@ package() {
 
     install -Dm644 "$srcdir/karin-proxy-daemon.service" "$pkgdir/usr/lib/systemd/system/karin-proxy-daemon.service"
     install -Dm755 "src-tauri/system/route.sh" "$pkgdir/etc/karin-proxy/route.sh"
-    install -Dm440 "src-tauri/system/karincore-sudoers" "$pkgdir/etc/sudoers.d/karincore"
+    install -Dm440 "src-tauri/system/karincore-sudoers" "$pkgdir/etc/sudoers.d/zz-karincore"
 
     install -Dm644 "src-tauri/icons/128x128.png" "$pkgdir/usr/share/pixmaps/karincore.png"
     mkdir -p "$pkgdir/usr/share/applications"
