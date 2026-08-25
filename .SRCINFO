@@ -1,0 +1,22 @@
+pkgbase = mthds
+	pkgdesc = CLI and SDK for methods — reusable workflows for AI coding agents
+	pkgver = 0.22.1
+	pkgrel = 1
+	url = https://mthds.ai/
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = nodejs
+	depends = python
+	provides = mthds
+	replaces = nodejs-mthds
+	noextract = mthds-0.22.1.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = mthds-0.22.1.tgz::https://registry.npmjs.org/mthds/-/mthds-0.22.1.tgz
+	b2sums = d4ffa59d8dd7c4f2235b7ba07e850da0e2851fdc720919822e9cc7936615018f49f4304148d61b14be07b10f92695429fe86327f65c090f6811ab612607a5259
+
+pkgname = mthds
