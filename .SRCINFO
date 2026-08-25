@@ -1,0 +1,16 @@
+pkgbase = heatsync-tui
+	pkgdesc = heat-sorted live multichat in the terminal — twitch + kick, real emotes, vim keys
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/mellen9999/heatsync-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = heatsync-tui-0.1.1.tar.gz::https://static.crates.io/crates/heatsync-tui/heatsync-tui-0.1.1.crate
+	sha256sums = d360df7b8b82a1065c69f0fdc5cc97e1a291fb01b08913161314e8a8c489edbb
+
+pkgname = heatsync-tui
