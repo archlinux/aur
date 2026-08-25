@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=canboat
-pkgver=7.1.0
+pkgver=8.0.0
 pkgrel=1
 epoch=
 pkgdesc="CAN Boat provides NMEA 2000 and NMEA 0183 utilities. It contains a NMEA 2000 PGN decoder and can read and write N2K messages. It is not meant as an end-user tool but as a discovery mechanism for delving into NMEA 2000 networks."
@@ -9,19 +9,23 @@ arch=($CARCH)
 url="https://github.com/canboat/canboat"
 license=('Apache-2.0')
 groups=()
-depends=(bash
-    glibc
+depends=(
+    sh
+    libgcc
     perl
     php
-    ksh)
+    ksh
+)
 makedepends=(
     #     help2man
     git
+    rust
     libftdi
     libxml2
     libxslt
     python3
-    python-pip)
+    python-pip
+)
 checkdepends=()
 optdepends=()
 provides=(${pkgname})
@@ -33,30 +37,42 @@ install=
 changelog=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('f1468528cba6afecd66791278384a74073872f54206dfe7c089f4bf6f4e0fec3')
+sha256sums=('6481317980cce6205b2484b0dbbc9debd9ac7b087c6ddaab2adf64c64744e2fd')
 #validpgpkeys=()
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
+    cd "${srcdir}/${pkgname}/"
+    cargo fetch --locked --target host-tuple
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
     #     export LDFLAGS="-z relro -z now -z shstk"
     cd "${srcdir}/${pkgname}"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
 
     make
-    make generated
+    # make generated
+    make rust
 }
 
-check() {
-    cd "${srcdir}/${pkgname}"
-    make tests
-}
+# check() {
+#     cd "${srcdir}/${pkgname}"
+#     make tests
+# }
 
 package() {
     cd "${srcdir}/${pkgname}"
+    find target/release \
+        -maxdepth 1 \
+        -executable \
+        -type f \
+        -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
     make DESTDIR="$pkgdir" PREFIX=/usr install
     install -Dm0644 docs/* -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/60-canboat-actisense.rules" <<EOF
 # Copy this file to /etc/udev/rules.d/
 # If rules fail to reload automatically, you can refresh udev rules
@@ -71,10 +87,10 @@ SUBSYSTEM!="usb|tty|hidraw", GOTO="canboat_actisense_rules_end"
 # Please keep this list sorted by VID:PID
 
 # sudo echo 'ftdi_sio vendor=0x0403 product=0xd9aa' >>/etc/modules
-ATTRS{idVendor}=="0403", ATTRS{idProduct}=="d9aa", MODE="660", TAG+="uaccess"
+ATTRS{idVendor}=="0403", ATTRS{idProduct}=="d9aa", TAG+="uaccess"
 
 # SUBSYSTEM=="tty", ACTION=="add", ENV{ID_SERIAL}=="Actisense_NGT-1_1FD34", NAME="actisense" compatible adapters
-ENV{ID_SERIAL}=="Actisense_NGT-1_1FD34", NAME="actisense", MODE="660", TAG+="uaccess"
+ENV{ID_SERIAL}=="Actisense_NGT-1_1FD34", NAME="actisense", TAG+="uaccess"
 
 LABEL="canboat_actisense_rules_end"
 
