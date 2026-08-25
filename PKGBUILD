@@ -2,9 +2,9 @@
 
 pkgname=lininn-openflow
 _pkgname=@lininn/openflow
-_commit=88b23bd331955e056ab2088953d27421306e5ebc
-pkgver=0.5.0
-pkgrel=2
+_commit=3085c4b0c06aa9915862b8f7a0767651c0a5e0af
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="OpenSpec + Superpowers workflow orchestrator for agentic development"
 arch=('any')
 url="https://github.com/lininn/openflow"
@@ -17,8 +17,8 @@ source=(
     "$pkgname-$pkgver-package-lock.json::https://raw.githubusercontent.com/lininn/openflow/$_commit/package-lock.json"
 )
 sha256sums=(
-    'a3032793d5f43d5da2fae58d178b9a68c51b3a0cdc81b0c2a07d200f1532b597'
-    '4fc1e4f7e0ef45a0f64ed02029d3fce1f16184f718fd8479ca9bbd1b9b0962a7'
+    'd9a5aee3e166a507143efc0493357e71da5912307953140cfc944593ad36c562'
+    '62560b26af11af9cfb55f148db995727f068843efa185440173194f418a13c19'
 )
 
 prepare() {

@@ -1,16 +1,16 @@
 pkgbase = lininn-openflow
 	pkgdesc = OpenSpec + Superpowers workflow orchestrator for agentic development
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/lininn/openflow
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs>=18.0.0
 	optdepends = openspec: enable OpenSpec CLI integration
-	source = lininn-openflow-0.5.0.tgz::https://registry.npmjs.org/@lininn/openflow/-/openflow-0.5.0.tgz
-	source = lininn-openflow-0.5.0-package-lock.json::https://raw.githubusercontent.com/lininn/openflow/88b23bd331955e056ab2088953d27421306e5ebc/package-lock.json
-	sha256sums = a3032793d5f43d5da2fae58d178b9a68c51b3a0cdc81b0c2a07d200f1532b597
-	sha256sums = 4fc1e4f7e0ef45a0f64ed02029d3fce1f16184f718fd8479ca9bbd1b9b0962a7
+	source = lininn-openflow-0.5.1.tgz::https://registry.npmjs.org/@lininn/openflow/-/openflow-0.5.1.tgz
+	source = lininn-openflow-0.5.1-package-lock.json::https://raw.githubusercontent.com/lininn/openflow/3085c4b0c06aa9915862b8f7a0767651c0a5e0af/package-lock.json
+	sha256sums = d9a5aee3e166a507143efc0493357e71da5912307953140cfc944593ad36c562
+	sha256sums = 62560b26af11af9cfb55f148db995727f068843efa185440173194f418a13c19
 
 pkgname = lininn-openflow
