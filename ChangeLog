@@ -1,30 +1,120 @@
+## Features and enhancements
+* Added a balanced query planner ([#5501](https://github.com/grafana/pyroscope/pull/5501)).
+* Added symbol-ref tree support across the read path: a new `symbolref` model package, production and aggregation in symdb and the query backend, and resolution in the frontend after the final merge ([#5321](https://github.com/grafana/pyroscope/pull/5321), [#5322](https://github.com/grafana/pyroscope/pull/5322), [#5334](https://github.com/grafana/pyroscope/pull/5334)).
+* Made experimental asynchronous queries resumable ([#5442](https://github.com/grafana/pyroscope/pull/5442)).
+* Allowed compaction to read block metadata from object storage, adding the `metadata_source` and `metadata_fetch_timeout` options ([#5427](https://github.com/grafana/pyroscope/pull/5427)).
+* Improved debuginfod client resilience and observability in the symbolizer, adding the `resolve_timeout` option ([#5449](https://github.com/grafana/pyroscope/pull/5449)).
+* Added SDK scope usage tracking to the distributor ([#5366](https://github.com/grafana/pyroscope/pull/5366)).
+* Added `replay dump` and `replay push` commands to `profilecli` ([#5374](https://github.com/grafana/pyroscope/pull/5374)).
+* Improved read-path performance by optimizing the index symbol cache layout and aligning the symdb sample appender ([#5534](https://github.com/grafana/pyroscope/pull/5534), [#5535](https://github.com/grafana/pyroscope/pull/5535)).
+* Improved metastore and compaction performance by scanning block bounds before decoding and avoiding deep label clones when building block indexes ([#5407](https://github.com/grafana/pyroscope/pull/5407), [#5398](https://github.com/grafana/pyroscope/pull/5398)).
+* Reduced allocations in timeseries build and merge ([#5311](https://github.com/grafana/pyroscope/pull/5311)).
+
+## Bug fixes
+* Stopped a single bad DLQ object from blocking metastore recovery ([#5371](https://github.com/grafana/pyroscope/pull/5371)).
+* Disabled raft pipeline replication in the metastore ([#5518](https://github.com/grafana/pyroscope/pull/5518)).
+* Fixed a double prefix on metastore index cache and DLQ metrics ([#5543](https://github.com/grafana/pyroscope/pull/5543)).
+* Allowed the segment writer shard shuffle table to grow past 4096 entries ([#5519](https://github.com/grafana/pyroscope/pull/5519)).
+* Served profile-type Series queries from metadata when the selector is empty ([#5483](https://github.com/grafana/pyroscope/pull/5483)).
+* Used `raft_log.CompactionJobStatusUpdate` instead of `metastorev1.CompactionJobStatusUpdate` in compaction ([#5465](https://github.com/grafana/pyroscope/pull/5465)).
+* Keyed adaptive placement distribution stats by tenant and dataset ([#5450](https://github.com/grafana/pyroscope/pull/5450)).
+* Collapsed stripped profiles to a single sample in the distributor ([#5409](https://github.com/grafana/pyroscope/pull/5409)).
+* Treated a JFR profile size limit of 0 as unlimited ([#5502](https://github.com/grafana/pyroscope/pull/5502)).
+* Excluded the pre-window boundary point from `profilecli` query top totals ([#5359](https://github.com/grafana/pyroscope/pull/5359)).
+* Pointed v2 dashboard event annotations at the Alloy events stream ([#5499](https://github.com/grafana/pyroscope/pull/5499)).
+* Fixed the missing namespace in Helm discovery RBAC objects ([#5447](https://github.com/grafana/pyroscope/pull/5447)).
+
 ## Security updates
-* Updated `github.com/getkin/kin-openapi` to v0.144.0, addressing GHSA-r277-6w6q-xmqw ([#5416](https://github.com/grafana/pyroscope/pull/5416)).
-* Updated `google.golang.org/grpc` to v1.82.1, addressing GHSA-hrxh-6v49-42gf ([#5392](https://github.com/grafana/pyroscope/pull/5392), [#5393](https://github.com/grafana/pyroscope/pull/5393)).
-* Updated `golang.org/x/text` to v0.39.0, addressing CVE-2026-56852 ([#5383](https://github.com/grafana/pyroscope/pull/5383), [#5385](https://github.com/grafana/pyroscope/pull/5385)).
-* Updated `golang.org/x/net` to v0.56.0, addressing CVE-2026-46600 ([#5382](https://github.com/grafana/pyroscope/pull/5382), [#5384](https://github.com/grafana/pyroscope/pull/5384)).
-* Updated `github.com/klauspost/compress` to v1.18.7 ([#5429](https://github.com/grafana/pyroscope/pull/5429)).
-* UI: bumped `tar`, `js-yaml`, and `brace-expansion`, addressing CVE-2026-59871, CVE-2026-59873, CVE-2026-59874, and CVE-2026-59869 ([#5413](https://github.com/grafana/pyroscope/pull/5413), [#5424](https://github.com/grafana/pyroscope/pull/5424)).
-* UI: bumped `brace-expansion` to 1.1.18 and 5.0.9, addressing CVE-2026-14257 and CVE-2026-69152 ([#5466](https://github.com/grafana/pyroscope/pull/5466), [#5471](https://github.com/grafana/pyroscope/pull/5471)).
-* UI: refreshed the Yarn lockfile, removing the vulnerable `ip-address` package (CVE-2026-69192) and updating `postcss` (GHSA-r28c-9q8g-f849) ([#5419](https://github.com/grafana/pyroscope/pull/5419)).
+* Updated Go to 1.25.13 ([#5520](https://github.com/grafana/pyroscope/pull/5520)).
+* Updated `go.etcd.io/etcd/client/pkg/v3` to v3.6.14 ([#5526](https://github.com/grafana/pyroscope/pull/5526)).
+* Updated `golang.org/x/mod` to v0.40.0 ([#5521](https://github.com/grafana/pyroscope/pull/5521)).
+* Bumped `nanoid` to 3.3.18 in the UI ([#5522](https://github.com/grafana/pyroscope/pull/5522)).
+* This release also includes every security fix from 2.2.1.
+
+## Documentation updates
+* Added Node.js to the source code integration docs ([#5490](https://github.com/grafana/pyroscope/pull/5490)).
+* Documented Python memory profiling ([#5406](https://github.com/grafana/pyroscope/pull/5406)).
+* Clarified contributing build targets and the `ui/dist` requirement ([#5457](https://github.com/grafana/pyroscope/pull/5457)).
 
 ## Changelog
-* d8461d6ac7bf48c96aa3576c75c7bbbd7c04c5d2 build: remove go workspace and reduce Renovate to security-only updates (#5397) (#5403)
-* 496c887588c4a66c2281b0739db758968cc1ca80 chore(deps): lock file maintenance (#5419)
-* a3b2460fc0a8b1795ad52282c0838c20661f8236 docs: add v2.2 release notes (#5399) (#5401)
-* df3c0391b7dfc9c9577a55be4ebfcf2f0ac65d71 docs: add v2.2.1 release notes (#5468) (#5473)
-* 400510aa68d6b16010f74363f00b34840bbab763 docs: document Python memory profiling (#5406) (#5411)
-* 852c39ba30fc7101ecc91224dc8b38283d9cbe21 fix(deps): bump brace-expansion in /ui [security] (#5466) (#5471)
-* 0252239b6e7ffc9fc68f48b9c25fdc7e5e7b463e fix(deps): bump tar, js-yaml, brace-expansion in /ui [security] (#5413) (#5424)
-* 45045458f1906ae99d2ea46c67533569e93bd40f fix(security/critical/): update module github.com/getkin/kin-openapi to v0.144.0 [security] (#5416)
-* c7fdec866f4696fcb369d3c6e7f71af461325e9f fix(security/high/): update module google.golang.org/grpc to v1.82.1 [security] (#5392)
-* 097528efc50a9790b5117378c8435f8a337ad410 fix(security/high/api): update module google.golang.org/grpc to v1.82.1 [security] (#5393)
-* dc8c13f6b1fcec5b7e750df673a0b766e2b2d149 fix(security/unknown/): update module github.com/klauspost/compress to v1.18.7 [security] (#5429)
-* 1f4a845c4bb9a6fffeddb6a734f569e3c423e83a fix(security/unknown/): update module golang.org/x/net to v0.56.0 [security] (#5382)
-* 0e02e480dee2bb6ad80215eba78ba725b565985c fix(security/unknown/): update module golang.org/x/text to v0.39.0 [security] (#5383)
-* 290d232d07691ecf42f92835e1629da446b90c65 fix(security/unknown/api): update module golang.org/x/net to v0.56.0 [security] (#5384)
-* 32e1863eb3b1db82985e675c00c46b6d467ab3ed fix(security/unknown/api): update module golang.org/x/text to v0.39.0 [security] (#5385)
-* aafe99d2be7b2ddef47ae47d858edf9e8c796f56 fix(ui): adapt to prettier 3.9 and eslint-plugin-react-hooks 7.1 (#5438) (#5440)
+* 8098d40ab6f303e12e4e5e2e6d6e29053a35c6f8 Update golang version to 1.25.13 (#5520)
+* b82524b236e45b34be1e3b080f6b53f5bbddb021 build: remove go workspace and reduce Renovate to security-only updates (#5397)
+* 06f5e9c916fae2b47a25df7356d941d2b5955b00 chore(deps): bump golang.org/x/mod to v0.40.0 (#5521)
+* 788a581f23db4af50c2a5ebc81da2d5959ace8f6 chore(deps): lock file maintenance (#5418)
+* 37f4757a550d2fef7502da01832185df99514bd6 chore(deps): lock file maintenance (#5452)
+* d1ac3de34543c151aaaf13ef013d9c98788f323f chore(deps): update parquet-go to v0.30.1 (#5426)
+* 16264e26e14940714e69c3023aba8006362a4b7f chore(examples): bump OpenTelemetry in dotnet examples (#5488)
+* d52797a2368f3c9612a7d58e5a308386ffe19b8c chore(examples): bump grpc and x/net in go examples (#5486)
+* 098b288a5902867aaad6d18164925d43b1ac5a77 chore(examples): bump puma and sinatra in ruby examples (#5487)
+* 7a6aadd0bda7446897e326698da7481cc3086114 chore(examples): bump starlette in the fastapi example (#5489)
+* 07f92cbfa5e9d63e983800ee9c4bed9cd129f117 chore(examples): pass GITHUB_TOKEN through to the container (#5533)
+* 324b133648275b2b712c456fbf2aec899b56aaca chore(examples): patch vulnerable node dependencies (#5485)
+* a549d25a7b89dfeb21314ef1cc3f8e1c74af764f chore(examples): update examples (#5493)
+* 00a46d618c729c3f1cf740dadcbdf231cd7f2f0f chore(examples): update examples (#5497)
+* 7b2be56a7c4aa27c09824fb4127649dbde8d9b43 chore(examples): update examples (#5516)
+* cd724d81160a31a1f6ff4cf55851f99643f89ece chore(ui): bump nanoid to 3.3.18 in the lockfile (#5522)
+* ae04b4a42ebf2655aa173226942de04501a5ee11 chore: Add more logging to async queries (#5537)
+* 82d868043837a6683c1d93ddeccac85dcd09fc89 chore: bump Helm chart to v2.2.0 (#5400)
+* 0ea0d16148738517389a74ed07b1a2b0bf6109c3 chore: bump Helm chart to v2.2.1 (#5474)
+* ea5d2c73d476811c7e0a1d1b510c54df4aae67f3 ci(examples): deploy the images after publishing them (#5500)
+* 661ca37c53e4d8a486b05ca004ffa5632391ccc6 ci(examples): push rideshare images on a schedule (#5494)
+* 6cb1bda30394c86206423dbebc493ccdfe3e7394 ci(update-contributors): update contributors commits via GitHub API so they are signed (#5455)
+* b720491d2346643528b8a405cf363d155af8cc3c docs(contributing): clarify build targets and ui/dist requirement (#5457)
+* 7bd0ca71574eb88061775a5b7ee32e822eea72c9 docs: Add Node.js to source code integration docs (#5490)
+* 8e4d977c835d58af19ca38816614a4b66ad85e87 docs: add v2.1.2 release notes (#5469)
+* dfbe4754358c998f9b843e1571378a6c99853468 docs: add v2.2 release notes (#5399)
+* 5ecec754e6558894f6bfcb0cdedf059166f77a1d docs: add v2.2.1 release notes (#5468)
+* 25098ebeab26875a3a862a3fb2bb752cea36eb3f docs: document Python memory profiling (#5406)
+* 755d7ceb5d034c75bd82686e396187c0ce6f01f2 docs: updates the list of contributors in README (#5456)
+* fa92a887b038d6e8a896e2bf912b9a5e087e0a75 examples: enable Python memory profiling (#5421)
+* 1d8fe07b5d16a0ee69e858de6dedd5f71a2e5c81 feat(compaction): optionally read block metadata from object storage (#5427)
+* 5f4849c95eafc22910e8524a0c53aff3c93a104e feat(distributor): track SDK scope usage (#5366)
+* f69c4e3eceeac0fdca73341cb9e981df427a5381 feat(experimental): make async queries resumable (#5442)
+* 3bcd0b1c574664ecaca4fad7543714fd43bae82c feat(frontend): resolve symbol-ref trees after the final merge (#5334)
+* b8a56648a436a81f9fc4869e7ca02fb639198e54 feat(model): add symbolref package for symbol-aware tree references (#5321)
+* 87daa755fe52cbb482383d3476f192f54afcefd4 feat(profilecli): add replay dump/push commands (#5374)
+* a5e7f2d21b30f0f69528d30f15073425b48b66f7 feat(read-path): produce and aggregate symbol-ref trees (model, symdb, query backend) (#5322)
+* 98fb7e138d01a9cda14aa0b05542ec2233fb3e08 feat(symbolizer): improve debuginfod client resilience and observability (#5449)
+* 6db589af112b7a5c6fa24ec48795bbb0e3f211bf feat: Implement balanced query planner (#5501)
+* f21713526efacf43f364fe74b49e20655c466982 fix(adaptiveplacement): key distribution stats by tenant and dataset (#5450)
+* ceb071c7129f09b96a1b57cae986a4075e7844be fix(ci): bump create-github-app-token to v0.3.1 to mask app tokens (#5529)
+* 4059c18c0f7850ba82b4e18f90b77b255d1cc6d5 fix(compaction): Use `raft_log.CompactionJobStatusUpdate` instead of `metastorev1.CompactionJobStatusUpdate` (#5465)
+* edc615885dadd26bb6e07c563c2f00953c52ff61 fix(deps): bump brace-expansion in /ui [security] (#5466)
+* 26ef03f299232f86d5a11dd178a86e86e5e8e046 fix(deps): bump tar, js-yaml, brace-expansion in /ui [security] (#5413)
+* d4b3d2927fb36e734663469e06789287549ba31d fix(distributor): collapse stripped profiles to a single sample (#5409)
+* 9a31eeca00449c46c44997a430fe9a856627dbe0 fix(examples): build the golang rideshare images on distroless (#5540)
+* 5056b4043bff5c61c6288faab5341a141a1b552c fix(examples): clear the java rideshare CVEs (#5541)
+* b2eeaec33190b7dccdefabf7abffbf37f8bc6762 fix(examples): create the update commit through the API (#5496)
+* 8216f4abd883a23e8d4a2e2dfde3ccbeea48b811 fix(examples): repair the examples update cron (#5492)
+* 07074ce505ea6c49a27bad130062417b097f8637 fix(examples): run the nodejs rideshare on a slim base (#5539)
+* b4d74078918e396eaffa30273b913d18f9c0a42c fix(helm): missing namespace in discovery RBAC objects (#5447)
+* d50aa8700c83fe679a14b88438085a727015e2f8 fix(jfr): treat a profile size limit of 0 as unlimited (#5502)
+* 826f30869470f97477a33e792bbfd288ab070b10 fix(metastore): disable raft pipeline replication (#5518)
+* 5a850b1025f1c020c79f23fcdec48be520b18b9b fix(metastore): don't let a single bad DLQ object block recovery (#5371)
+* 3fe6a457a32004efc46da819cbc114472d07415e fix(metastore): double prefix on index cache and DLQ metrics (#5543)
+* c0a71b4f7bfb222fcec2c8af598bf64e48e28e03 fix(security/critical/): update module github.com/getkin/kin-openapi to v0.144.0 [security] (#5415)
+* 2b10d62a454dc05258e05c923d05cd40be43e6b3 fix(security/high/): update module google.golang.org/grpc to v1.82.1 [security] (#5390)
+* 867e01e5821ac500d7123a3723121497339e5b4e fix(security/high/api): update module google.golang.org/grpc to v1.82.1 [security] (#5391)
+* 6e253ea8dda673c44a8596f4386af47e106d0292 fix(security/unknown/): update module github.com/klauspost/compress to v1.18.7 [security] (#5428)
+* 10608ec8871e67037d1a1e04151bb72fc233bc83 fix(security/unknown/): update module go.etcd.io/etcd/client/pkg/v3 to v3.6.14 [security] (#5526)
+* 2a7113d9d6936d1bd5c5bb461bdd31ddb5222dd3 fix(security/unknown/): update module golang.org/x/net to v0.56.0 [security] (#5378)
+* 8507cbc09e94495028c66126d0d16e463751c044 fix(security/unknown/): update module golang.org/x/text to v0.39.0 [security] (#5379)
+* bd1ac114344d2a8fbf1bb345506dbb39fd2468ca fix(security/unknown/api): update module golang.org/x/net to v0.56.0 [security] (#5380)
+* 0885dd84f2613c288fcf5b565d5ac5cc60025034 fix(security/unknown/api): update module golang.org/x/text to v0.39.0 [security] (#5381)
+* c87dbfdbbcca4cf71ba5303c27ad901f25b21e20 fix(segmentwriter): allow shard shuffle table to grow past 4096 entries (#5519)
+* 8e535ba64d2ddce2faf254071d9db120349082b6 fix(ui): adapt to prettier 3.9 and eslint-plugin-react-hooks 7.1 (#5438)
+* 62677fe13816bded8c9c99e5e467064185b6bb52 fix(v2): serve profile-type Series queries from metadata when the selector is empty (#5483)
+* c16819caf89555dcb233425e49a27f5f28316388 monitoring: point v2 dashboard event annotations at the Alloy events stream (#5499)
+* 7a51652da9a32f6394479e0d8911d947a49eef4d optimize index symbol cache layout (#5534)
+* 99fa40d3c6c462cafd2ac5152d268ae6298f9b64 optimize(symdb): align sample appender (#5535)
+* 63cf88606b6ad90092b67ebac1c91a0016bdb29b perf(compaction): Avoid deep label clones when building block indexes (#5398)
+* bb7a702ca308a27cebc521b854e7d857b6d55081 perf(metastore): scan block bounds before decoding (#5407)
+* bbf0965b061b6801ffed10bc5b5634740754bb94 perf(timeseries): reduce allocations in series build and merge (#5311)
+* 54d0133f3635e0dc8a318ec3044c714e3dfaadfa profilecli: exclude pre-window boundary point from query top totals (#5359)
+* 1465b70334b795b5913ddfcad378a34350910209 refactor(compaction): isolate retained labels (#5405)
+* 290d6ae4b7e487dd2351fb07c24991ccd1600c4f refactor(distributor): extract profile stripping into sampling package (#5441)
+* d6e0710b920cfef8e0ac5207d73a46968d5ddc35 test(examples): skip profileless compose projects (#5425)
+* 5e012070a37a63a24c7e7a22ed1e7714cabd1b39 test(symbolizer): add symbol-ref tree integration tests and docs (#5335)
 
 As always, feedback is more than welcome, feel free to open issues/discussions.
 You can reach out to the team using:
@@ -39,7 +129,8 @@ You can reach out to the team using:
 - [grafana/pyroscope](https://hub.docker.com/r/grafana/pyroscope/tags)
 
 ```bash
-  docker pull grafana/pyroscope:2.2.1
+  docker pull grafana/pyroscope:2.3.0
 ```
+
 
 
