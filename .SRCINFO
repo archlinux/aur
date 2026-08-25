@@ -1,0 +1,26 @@
+pkgbase = astra-foundry
+	pkgdesc = Unified package manager for Flatpak, Pacman, AUR, and AppImage.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/AstraSuite/Foundry
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = glibc
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-m3shapes-git
+	depends = qt6-shadertools
+	depends = qt6-svg
+	optdepends = desktop-file-utils: support for AppImage packages
+	optdepends = flatpak: support for flatpak packages
+	optdepends = paru: support for AUR packages
+	optdepends = yay: support for AUR packages
+	conflicts = astra-foundry-bin
+	conflicts = astra-foundry-git
+	source = astra-foundry-1.2.0.tar.gz::https://github.com/AstraSuite/Foundry/archive/refs/tags/v1.2.0.zip
+	sha256sums = b9451035aa1479ae861eb1ff1da31bdaf1b6b772f5420b19c1643d64f1a813d0
+
+pkgname = astra-foundry
