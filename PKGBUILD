@@ -1,6 +1,6 @@
 # Maintainer: Bryan
 pkgname=slopengine
-pkgver=0.5.0
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="First-person boomer shooter game engine (raylib/flecs/s7)"
 arch=('x86_64')
@@ -23,11 +23,10 @@ depends=(
 )
 makedepends=('cmake' 'git' 'pkgconf' 'patchelf')
 
-_commit=ac5920a1eb599db67ccee086423a86c285948197
 _steamaudio_ver=4.8.1
 
 source=(
-    "$pkgname::git+https://github.com/slopnode/engine.git#commit=${_commit}"
+    "$pkgname::git+https://github.com/slopnode/engine.git#tag=v${pkgver}"
     "steamaudio-${_steamaudio_ver}.zip::https://github.com/ValveSoftware/steam-audio/releases/download/v${_steamaudio_ver}/steamaudio_${_steamaudio_ver}.zip"
 )
 sha256sums=('SKIP'
@@ -53,10 +52,11 @@ build() {
 
 package() {
     cd "$pkgname"
-    for bin in slopengine sloprepl slopbsp sloprad slopfac slopvis \
+    for bin in slopengine sloprepl slopbsp sloprad slopvis \
                slopmap slopsprite slopthing sloplauncher slopicons; do
         install -Dm755 "build/$bin" "$pkgdir/usr/bin/$bin"
     done
+    install -Dm755 "build/libsloplib.so" "$pkgdir/usr/lib/libsloplib.so"
     install -Dm644 "$srcdir/steamaudio/lib/linux-x64/libphonon.so" \
         "$pkgdir/usr/lib/slopengine/libphonon.so"
     patchelf --set-rpath /usr/lib/slopengine "$pkgdir/usr/bin/slopengine"
