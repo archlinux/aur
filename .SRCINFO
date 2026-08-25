@@ -22,8 +22,6 @@ pkgbase = greetd-dms-greeter-git
 	conflicts = greetd-dms-greeter-bin
 	conflicts = dms-greeter
 	source = dank-greeter::git+https://github.com/AvengeMedia/dank-greeter.git
-	source = dank-qml-common::git+https://github.com/AvengeMedia/dank-qml-common.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = greetd-dms-greeter-git

@@ -1,7 +1,7 @@
 pkgname=greetd-dms-greeter-git
 _binname=dms-greeter
 epoch=1
-pkgver=0.0.0.r23.gf353eaf
+pkgver=0.0.0.r28.ge957e43
 pkgrel=1
 pkgdesc='Greetd login screen with the Dank Material aesthetic (git)'
 arch=('x86_64' 'aarch64')
@@ -21,16 +21,12 @@ makedepends=('git' 'go')
 provides=("greetd-dms-greeter" "$_binname=$pkgver")
 conflicts=('greetd-dms-greeter' 'greetd-dms-greeter-bin' 'dms-greeter')
 install=greetd-dms-greeter.install
-source=('dank-greeter::git+https://github.com/AvengeMedia/dank-greeter.git'
-        'dank-qml-common::git+https://github.com/AvengeMedia/dank-qml-common.git')
-sha256sums=('SKIP'
-            'SKIP')
+source=('dank-greeter::git+https://github.com/AvengeMedia/dank-greeter.git')
+sha256sums=('SKIP')
 
 prepare() {
 	cd "$srcdir/dank-greeter"
-	git submodule init
-	git config submodule.dank-qml-common.url "$srcdir/dank-qml-common"
-	git -c protocol.file.allow=always submodule update
+	git submodule update --init --recursive
 }
 
 pkgver() {
