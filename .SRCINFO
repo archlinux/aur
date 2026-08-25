@@ -1,6 +1,6 @@
 pkgbase = gitwig-bin
 	pkgdesc = A rust based tui an alternative to sourcetree
-	pkgver = 2.5.10
+	pkgver = 2.5.11
 	pkgrel = 1
 	url = https://github.com/tareqmy/gitwig
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = gitwig-bin
 	provides = gtg
 	conflicts = gitwig
 	options = !strip
-	source = README-2.5.10.md::https://raw.githubusercontent.com/tareqmy/gitwig/v2.5.10/README.md
-	source = LICENSE-2.5.10::https://raw.githubusercontent.com/tareqmy/gitwig/v2.5.10/LICENSE
+	source = README-2.5.11.md::https://raw.githubusercontent.com/tareqmy/gitwig/v2.5.11/README.md
+	source = LICENSE-2.5.11::https://raw.githubusercontent.com/tareqmy/gitwig/v2.5.11/LICENSE
 	sha256sums = 8dcf88576d0444711b6bd95a3de612f5ef9390b16e81a55708c687435ef48e39
 	sha256sums = 218c40f12f8eb9be0e6cdf365bbbf3e4c0fded5319e1bbff631f747336188e43
-	source_x86_64 = gitwig-x86_64-2.5.10.tgz::https://github.com/tareqmy/gitwig/releases/download/v2.5.10/gitwig-v2.5.10-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = a8527ff0a65521e69c96ca15189b26fde10146834e5a16db03f408e22895ed21
+	source_x86_64 = gitwig-x86_64-2.5.11.tgz::https://github.com/tareqmy/gitwig/releases/download/v2.5.11/gitwig-v2.5.11-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 8ac0214362066a60d35b4db74b0f3ba538e1196a7fc1bd0860f3daba1c2a44f6
 
 pkgname = gitwig-bin
