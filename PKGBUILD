@@ -4,7 +4,7 @@
 # Contributor: Pierre Dommerc <pierre@nymtech.net>
 
 pkgname=nym-vpnd-bin
-pkgver=2026.12.1
+pkgver=2026.12.2
 pkgrel=1
 pkgdesc='NymVPN daemon as a systemd service'
 arch=('x86_64' 'aarch64')
@@ -15,13 +15,13 @@ makedepends=()
 provides=('nym-vpnd' 'nym-exclude' 'nym-socks5-proxy')
 conflicts=('nym-vpnd')
 options=(!debug)
-source_x86_64=("$url/releases/download/nym-vpn-v2026.12.1/nym-vpn-core-v2026.12.1_linux_x86_64.tar.gz" 'nym-vpnd.service' 'nym-vpn.conf')
-source_aarch64=("$url/releases/download/nym-vpn-v2026.12.1/nym-vpn-core-v2026.12.1_linux_aarch64.tar.gz" 'nym-vpnd.service' 'nym-vpn.conf')
-sha256sums_x86_64=(74ede0d911ec624de57584f93fce98f442a173112aa4ba5b655c8422e99b2140 66d5b043cbef2ae0ba19cc7685c7b42808515b8b520b0dd15a0c313ca039f6d6 af03cbdb98708e60038d784503d99f382595f3a1e020fea41d5c2cc5800de319)
-sha256sums_aarch64=(8f29713555466e03881089629b2ade4f95e09e5c724a0811493d53380ca0e6fc 66d5b043cbef2ae0ba19cc7685c7b42808515b8b520b0dd15a0c313ca039f6d6 af03cbdb98708e60038d784503d99f382595f3a1e020fea41d5c2cc5800de319)
+source_x86_64=("$url/releases/download/nym-vpn-v2026.12.2/nym-vpn-core-v2026.12.2_linux_x86_64.tar.gz" 'nym-vpnd.service' 'nym-vpn.conf')
+source_aarch64=("$url/releases/download/nym-vpn-v2026.12.2/nym-vpn-core-v2026.12.2_linux_aarch64.tar.gz" 'nym-vpnd.service' 'nym-vpn.conf')
+sha256sums_x86_64=(388d79cd22ff6af3e29350b83ab5a7e7c625cf53b751a3657a213ee21452b2ae 66d5b043cbef2ae0ba19cc7685c7b42808515b8b520b0dd15a0c313ca039f6d6 af03cbdb98708e60038d784503d99f382595f3a1e020fea41d5c2cc5800de319)
+sha256sums_aarch64=(1f9f0c577f4869b6d55c9ae16171c94676c57da321367c642e055b3ee2e3dc5c 66d5b043cbef2ae0ba19cc7685c7b42808515b8b520b0dd15a0c313ca039f6d6 af03cbdb98708e60038d784503d99f382595f3a1e020fea41d5c2cc5800de319)
 
 package() {
-  pushd "nym-vpn-core-v2026.12.1_linux_${CARCH}"
+  pushd "nym-vpn-core-v2026.12.2_linux_${CARCH}"
   install -Dm755 "nym-vpnd" "$pkgdir/usr/bin/nym-vpnd"
   install -Dm755 "nym-exclude" "$pkgdir/usr/bin/nym-exclude"
   chmod u+s "$pkgdir/usr/bin/nym-exclude"
