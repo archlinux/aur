@@ -6,8 +6,6 @@ pkgbase = sysinfoviewer
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = cmake
-	makedepends = gcc
 	depends = wxwidgets-gtk3>=2.8
 	depends = curl
 	depends = alsa-lib
@@ -16,7 +14,7 @@ pkgbase = sysinfoviewer
 	optdepends = lspci: GPU name detection fallback
 	optdepends = lm_sensors: Additional hardware monitoring support
 	optdepends = smartmontools: Disk health information
-	source = sysinfoviewer-0.3.3.tar.gz::https://github.com/Magpiny/sysinfoviewer/archive/v0.3.3.tar.gz
-	sha256sums = 101518735e69ab27a3c40a5e97a9b444c71d3bb509275184a819797ed74c5192
+	source = sysinfoviewer-0.3.3.tar.gz::https://github.com/Magpiny/sysinfoviewer/releases/download/v0.3.3/sysinfoviewer-0.3.3-Linux.tar.gz
+	sha256sums = 0188f879572d881521382e3deea94b5ad9ccbfc63845e3652034361347a7cef8
 
 pkgname = sysinfoviewer
