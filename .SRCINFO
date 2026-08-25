@@ -1,6 +1,6 @@
 pkgbase = omasettings
 	pkgdesc = Terminal UI for adjusting Omarchy settings: theme, keybindings, displays, audio, and more
-	pkgver = 1.1.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/joeyvigil/omasettings
 	arch = any
@@ -12,12 +12,13 @@ pkgbase = omasettings
 	depends = chafa
 	optdepends = omarchy: the system this configures — required in practice
 	optdepends = hyprland: window appearance, input, and monitor settings
-	optdepends = waybar: status bar module configuration
-	optdepends = mako: notification settings
 	optdepends = libpulse: audio device selection
 	optdepends = wireplumber: volume control
-	optdepends = iw: Wi-Fi power saving
-	source = omasettings-1.1.0.tar.gz::https://github.com/joeyvigil/omasettings/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = 943074d1c7ea7bdb119cc686c98023b3b9f9bc78a9091223ae898f0b13d66140
+	optdepends = iw: Wi-Fi power saving status
+	optdepends = networkmanager: Wi-Fi power saving on Omarchy 4
+	optdepends = waybar: status bar configuration on Omarchy 3
+	optdepends = mako: notification settings on Omarchy 3
+	source = omasettings-2.0.0.tar.gz::https://github.com/joeyvigil/omasettings/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 645ec4798a21059f015dbb89b7e723dce87b6cbe479ee033aa7e1374549fe368
 
 pkgname = omasettings

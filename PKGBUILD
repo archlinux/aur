@@ -1,6 +1,6 @@
 # Maintainer: Joseph Vigil <joeyvigil109329@gmail.com>
 pkgname=omasettings
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Terminal UI for adjusting Omarchy settings: theme, keybindings, displays, audio, and more"
 arch=('any')
@@ -10,14 +10,15 @@ depends=('bash' 'gum' 'jq' 'fzf' 'chafa')
 optdepends=(
   'omarchy: the system this configures — required in practice'
   'hyprland: window appearance, input, and monitor settings'
-  'waybar: status bar module configuration'
-  'mako: notification settings'
   'libpulse: audio device selection'
   'wireplumber: volume control'
-  'iw: Wi-Fi power saving'
+  'iw: Wi-Fi power saving status'
+  'networkmanager: Wi-Fi power saving on Omarchy 4'
+  'waybar: status bar configuration on Omarchy 3'
+  'mako: notification settings on Omarchy 3'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('943074d1c7ea7bdb119cc686c98023b3b9f9bc78a9091223ae898f0b13d66140')
+sha256sums=('645ec4798a21059f015dbb89b7e723dce87b6cbe479ee033aa7e1374549fe368')
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
