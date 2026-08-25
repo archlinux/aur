@@ -1,12 +1,12 @@
 pkgname=yamp-git
-pkgver=r147.32458c0
+pkgver=r139.d57b47b
 pkgrel=1
 pkgdesc="Yet Another Music Player - a QML based music player."
 arch=('x86_64')
 url="https://github.com/Wu28ri/yamp"
 license=('GPL-3.0-only')
 depends=('qt6-base' 'qt6-declarative' 'mpv' 'taglib' 'libpulse' 'alsa-lib'
-         'breeze-icons' 'zlib' 'libgcc' 'libstdc++' 'libglvnd')
+         'zlib' 'libgcc' 'libstdc++' 'libglvnd')
 makedepends=('git' 'cmake' 'ninja')
 provides=('yamp')
 conflicts=('yamp')
