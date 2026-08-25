@@ -1,4 +1,5 @@
 [cqfd-bin]
-source = "git"
-git = "https://github.com/savoirfairelinux/cqfd.git"
+source = "github"
+github = "savoirfairelinux/cqfd"
+use_latest_release = true
 prefix = "v"
