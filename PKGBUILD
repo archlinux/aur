@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="CLI / TUI that lists listening TCP/UDP ports"
 
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
-sha256sums=('af34f9abfa05014f00594d494f8a890ef5876e8f7498bbb2824596dfebfaeb61'
+sha256sums=('5cd4bf733f0d2ed2c74af030ac170b9e2c2b54bdf2b06b53c9e625666acf95a5'
             '8fa6650c7c9bea4113c2981b4859e8b547ef5ceae3747d5aa3f5d2d7e6a5bad1')
-sha256sums_x86_64=('9bb5fa64a59ee05243728931796e059b9e0bcaecf1c3059ee884f6e98ca54857')
-sha256sums_aarch64=('9f502f77375e2e021e09e216ad8a964e913fe38982f2b105aae65a8d46fd5b8e')
+sha256sums_x86_64=('7f909c43d9427f2f518804fd9abf7dea6b792df59dfbed9d5b9573f42ea2c38e')
+sha256sums_aarch64=('e491f0bd2e4699277e6bc5a8ed84a24fae7b996588be2097f41a06552b060830')
 
 
 package() {
