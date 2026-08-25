@@ -1,0 +1,30 @@
+pkgbase = inara
+	pkgdesc = Use mobile device as trackpad, graphics tablet, for PC.
+	pkgver = 0.8.10
+	pkgrel = 1
+	url = https://github.com/electronstudio/desktop_remote_mobile_companion
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = go>=1.26
+	makedepends = nasm
+	depends = x264
+	depends = gcc-libs
+	depends = libglvnd
+	depends = mesa
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxi
+	depends = wayland
+	depends = libxkbcommon
+	depends = libvdpau
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = libva
+	depends = sndio
+	depends = libxv
+	source = inara-0.8.10.tar.gz::https://github.com/electronstudio/desktop_remote_mobile_companion/archive/refs/tags/v0.8.10.tar.gz
+	sha256sums = 1c0be1fdec4daac1b908c2ca601f2fa626747a9b16de47dc35c8b522ad87e451
+
+pkgname = inara
