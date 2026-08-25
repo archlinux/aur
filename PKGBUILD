@@ -1,7 +1,7 @@
 # Maintainer: Roberto Alsina <ralsina@kde.org>
 pkgname=nicolino
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, modular static site generator written in Crystal"
 arch=("x86_64" "aarch64")
 url="https://github.com/ralsina/nicolino"
