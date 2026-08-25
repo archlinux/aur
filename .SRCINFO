@@ -1,0 +1,18 @@
+pkgbase = python-libtwlpy
+	pkgdesc = A modern Python library for handling files and formats used by the DSi.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/NinjaCheetah/libTWLPy
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-pycryptodome
+	makedepends = python-requests
+	provides = python-libtwlpy
+	conflicts = python-libtwlpy
+	source = https://files.pythonhosted.org/packages/source/l/libtwlpy/libtwlpy-0.1.0.tar.gz
+	sha256sums = da81d542520b099a8cccd6fb0af13b221d5cc2f99878dfe5b23591df20e16a96
+
+pkgname = python-libtwlpy
