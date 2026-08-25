@@ -42,7 +42,6 @@ package() {
 	: "${depends[@]}"
 	: "${optdepends[@]}"
 	: "${pkgdir:?}"
-	: "${srcdir:?}"
 
 	bsdtar -xf data.tar.zst -C "${pkgdir}"
 
