@@ -3,7 +3,7 @@
 # pipeline overwrites this file on every release.
 
 pkgname=pollis
-pkgver=1.10.2
+pkgver=1.10.3
 pkgrel=1
 pkgdesc="End-to-end encrypted messaging"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
   'dbus'
 )
 source=("https://cdn.pollis.com/releases/v${pkgver}/pollis-v${pkgver}-linux.deb")
-sha256sums=('0f5f088f853ecf64d82e0e3bca902d2efbecfbd5d128dd040ae7ddbf4ce447c3')
+sha256sums=('f934ef57afbec0983610387aade61f59222f4ab4e9710b7f37bcc84ae55ee472')
 
 package() {
   # The Tauri .deb already lays the app out under /usr (binary at
