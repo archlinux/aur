@@ -1,7 +1,7 @@
 pkgbase = python-sphinx_tippy
 	pkgdesc = Get rich tool tips in your sphinx documentation!
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sphinx-extensions2/sphinx-tippy
 	arch = any
 	license = MIT

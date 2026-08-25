@@ -3,7 +3,7 @@
 pkgname=python-sphinx_tippy
 _name=${pkgname#python-}
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Get rich tool tips in your sphinx documentation!'
 url='https://github.com/sphinx-extensions2/sphinx-tippy'
 license=('MIT')
