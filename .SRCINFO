@@ -1,0 +1,11 @@
+pkgbase = otf-new-heterodox-mono
+	pkgdesc = A monospaced serif programming font.
+	pkgver = 20240112
+	pkgrel = 1
+	url = https://github.com/hckiang/font-new-heterodox-mono
+	arch = any
+	license = OFL-1.1
+	source = otf-new-heterodox-mono-20240112.zip::https://github.com/hckiang/font-new-heterodox-mono/archive/main.zip
+	sha256sums = 63029db695ee6d28eb349fd9e520a87e07107352193b71f71cd3814a3a0e43a7
+
+pkgname = otf-new-heterodox-mono
