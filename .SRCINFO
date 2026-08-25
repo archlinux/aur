@@ -1,6 +1,6 @@
 pkgbase = greetd-dms-greeter-git
 	pkgdesc = Greetd login screen with the Dank Material aesthetic (git)
-	pkgver = 0.0.0.r23.gf353eaf
+	pkgver = 0.0.0.r28.ge957e43
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AvengeMedia/dank-greeter
@@ -17,7 +17,7 @@ pkgbase = greetd-dms-greeter-git
 	optdepends = hyprland: Hyprland compositor support
 	optdepends = sway: Sway compositor support
 	provides = greetd-dms-greeter
-	provides = dms-greeter=0.0.0.r23.gf353eaf
+	provides = dms-greeter=0.0.0.r28.ge957e43
 	conflicts = greetd-dms-greeter
 	conflicts = greetd-dms-greeter-bin
 	conflicts = dms-greeter

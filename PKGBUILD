@@ -26,6 +26,7 @@ sha256sums=('SKIP')
 
 prepare() {
 	cd "$srcdir/dank-greeter"
+	git submodule sync
 	git submodule update --init --recursive
 }
 
