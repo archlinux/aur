@@ -1,6 +1,7 @@
+# Maintainer: kvrudoy
 pkgname=ascon-kompas3d-v25-study-full
 pkgver=25.0.1.2738
-pkgrel=1
+pkgrel=2
 pkgdesc="CAD software for mechanical engineering"
 url="https://kompas.ru/"
 arch=("x86_64")
@@ -21,6 +22,7 @@ depends=(
 	"qt6-base"
 	"xcb-util-keysyms"
 	"libfontenc"
+	"libunwind"
 	"gdk-pixbuf2"
 	"libsm"
 	"libxpm"
@@ -81,7 +83,7 @@ source=(
 "https://repo.ascon.ru/stable/alt/p11/x86_64/RPMS.main/ascon-kompas-plugins-v25-${pkgver}-0.x86_64.rpm"
 "https://repo.ascon.ru/stable/alt/p11/x86_64/RPMS.main/ascon-kompas-sdk-v25-${pkgver}-0.x86_64.rpm"
 "https://repo.ascon.ru/stable/alt/p11/x86_64/RPMS.main/ascon-kompas-servicetools-v25-${pkgver}-0.x86_64.rpm"
-"https://repo.ascon.ru/stable/alt/p11/x86_64/RPMS.main/ascon-kompas-study-v25-${pkgver}-0.x86_64.rpm"
+"https://repo.ascon.ru/personal/alt/p11/x86_64/RPMS.main/ascon-kompas-study-v25-${pkgver}-0.x86_64.rpm"
 "https://repo.ascon.ru/stable/alt/p11/x86_64/RPMS.main/ascon-kompas3d-v25-${pkgver}-0.x86_64.rpm"
 "https://repo.ascon.ru/stable/alt/p11/x86_64/RPMS.main/ascon-polynom-library-24.0-24.0.0.26061516-0.x86_64.rpm"
 "https://repo.ascon.ru/stable/alt/p11/x86_64/RPMS.main/grdcontrol-4.5.3-0.x86_64.rpm"
