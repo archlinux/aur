@@ -9,6 +9,7 @@ arch=(any)
 provides=("xcfmt=${pkgver}")
 depends=(python python-pygtrie)
 url='https://github.com/Udzu/xcompose'
+makedepends=(python-hatchling)
 # download specific files to avoid the repo's archive of tons of compose mappings
 source=("${url}/raw/refs/tags/v${pkgver}/"{pyproject.toml,src/xcompose/__init__.py,src/xcompose/keysymdef.h,LICENSE,README.md})
 b2sums=('bdca24c00667f5c69fa25051dfd32ef89c2307fb4c753396fa04aaff0f06579d7b6b6d8f4358050537c86810fee6bc735f1ae70987a725676f11e6a4f6cdb146'

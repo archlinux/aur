@@ -5,6 +5,7 @@ pkgbase = xcompose-utils
 	url = https://github.com/Udzu/xcompose
 	arch = any
 	license = MIT
+	makedepends = python-hatchling
 	depends = python
 	depends = python-pygtrie
 	provides = xcfmt=0.5.1
