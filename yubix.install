@@ -1,0 +1,23 @@
+# The boot failsafe is the last line of defense against a lockout: it must be
+# active from the moment the package lands, not after a manual systemctl step.
+# (ConditionPathExists keeps it inert unless an apply was left unconfirmed.)
+
+post_install() {
+    systemctl enable yubix-failsafe.service >/dev/null 2>&1 || true
+    echo ":: yubix boot failsafe enabled (reverts unconfirmed login changes at boot)"
+}
+
+post_upgrade() {
+    post_install
+    # Pick up the new helper binary. Restarting is safe by design: an
+    # unconfirmed apply would be reverted by the helper's startup recovery.
+    systemctl try-restart yubix-helper.service >/dev/null 2>&1 || true
+}
+
+pre_remove() {
+    # Leave no pam_u2f line behind: `pacman -Rs yubix` may cascade pam-u2f
+    # away too, and a dangling `auth required pam_u2f.so` (module-unknown)
+    # would brick every 2FA surface. TTY would still work — but don't go there.
+    /usr/bin/yubix-restore --strip >/dev/null 2>&1 || true
+    systemctl disable yubix-failsafe.service >/dev/null 2>&1 || true
+}
