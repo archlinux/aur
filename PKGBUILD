@@ -1,14 +1,14 @@
 pkgname=axiom
-pkgver=0.17.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Powerful log analytics from the comfort of your command-line"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 url="https://github.com/axiomhq/cli"
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
+makedepends=('go>=1.27.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/axiomhq/cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7292800f0ebd7a010d152926995e704eeb333d350c4e8fc50c4c596cbaf37b40')
+sha256sums=('aab321db3f7effe3714fc2cd898a25a463f5ee8199b9b4b0d846c0e7dc880b78')
 
 prepare() {
   cd "cli-$pkgver"
@@ -23,9 +23,13 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  
-  go build -o build/axiom ./cmd/axiom
+  local _build_date
+  _build_date=$(date -u -d "@${SOURCE_DATE_EPOCH}" '+%Y-%m-%dT%H:%M:%SZ')
+  export GOFLAGS="-buildvcs=false -buildmode=pie -trimpath -mod=readonly -modcacherw"
+
+  go build \
+    -ldflags="-linkmode=external -X github.com/axiomhq/pkg/version.release=${pkgver} -X github.com/axiomhq/pkg/version.revision=v${pkgver} -X github.com/axiomhq/pkg/version.buildDate=${_build_date} -X github.com/axiomhq/pkg/version.buildUser=archlinux" \
+    -o build/axiom ./cmd/axiom
 
   # 쉘 자동완성 스크립트 생성
   ./build/axiom completion bash > build/bash-completion
