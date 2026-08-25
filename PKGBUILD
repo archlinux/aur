@@ -2,7 +2,7 @@
 
 pkgname='midnight-shell-git'
 _pkgname='midnight-shell'
-pkgver=r3082.aa0009e
+pkgver=r3087.bb7b565
 pkgrel=1
 pkgdesc="DiM's fork of Caelestia-Shell"
 arch=('x86_64' 'aarch64')
@@ -47,6 +47,7 @@ provides=(
     "${_pkgname}=${pkgver}"
     "caelestia-shell=${pkgver}"
     "caelestia-shell-git=${pkgver}"
+    "qt6-m3shapes"
 )
 conflicts=(
     "${_pkgname}"
@@ -56,6 +57,7 @@ conflicts=(
     'noctalia-qs'
     'noctalia-qs-git'
     'dim-caelestia-shell-git-debug'
+    'qt6-m3shapes'
 
     'polkit-gnome' # it has a built in polkit
 )

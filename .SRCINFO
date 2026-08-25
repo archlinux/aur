@@ -1,6 +1,6 @@
 pkgbase = midnight-shell-git
 	pkgdesc = DiM's fork of Caelestia-Shell
-	pkgver = r3082.aa0009e
+	pkgver = r3087.bb7b565
 	pkgrel = 1
 	url = https://github.com/dim-ghub/midnight-shell.git
 	arch = x86_64
@@ -34,9 +34,10 @@ pkgbase = midnight-shell-git
 	depends = ttf-cascadia-code-nerd
 	depends = swappy
 	depends = libqalculate
-	provides = midnight-shell=r3082.aa0009e
-	provides = caelestia-shell=r3082.aa0009e
-	provides = caelestia-shell-git=r3082.aa0009e
+	provides = midnight-shell=r3087.bb7b565
+	provides = caelestia-shell=r3087.bb7b565
+	provides = caelestia-shell-git=r3087.bb7b565
+	provides = qt6-m3shapes
 	conflicts = midnight-shell
 	conflicts = dim-caelestia-shell-git
 	conflicts = caelestia-shell
@@ -44,6 +45,7 @@ pkgbase = midnight-shell-git
 	conflicts = noctalia-qs
 	conflicts = noctalia-qs-git
 	conflicts = dim-caelestia-shell-git-debug
+	conflicts = qt6-m3shapes
 	conflicts = polkit-gnome
 	replaces = dim-caelestia-shell-git
 	source = midnight-shell-git::git+https://github.com/dim-ghub/midnight-shell.git
