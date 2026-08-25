@@ -1,0 +1,18 @@
+pkgbase = timeshift-pacman
+	pkgdesc = Timeshift snapshots before install, upgrade, and remove pacman transactions
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/osguot/timeshift-pacman
+	arch = any
+	license = GPL-3.0-only
+	depends = bash
+	depends = coreutils
+	depends = gawk
+	depends = timeshift
+	depends = util-linux
+	conflicts = timeshift-autosnap
+	backup = etc/timeshift-pacman.conf
+	source = timeshift-pacman-1.0.0.tar.gz::https://github.com/osguot/timeshift-pacman/releases/download/v1.0.0/timeshift-pacman-1.0.0.tar.gz
+	sha256sums = bbd6d17c04fddde86d73108a333ea4e5da6e0204066eb37e04b06c6e363cf51e
+
+pkgname = timeshift-pacman
