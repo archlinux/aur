@@ -6,17 +6,17 @@
 
 pkgname=certmonger
 pkgver=0.79.21
-pkgrel=2
+pkgrel=3
 pkgdesc="Certificate status monitor and PKI enrollment client"
 arch=(i686 x86_64)
-url="https://pagure.io/${pkgname}"
+url="https://codeberg.org/freeipa/${pkgname}"
 license=('GPL-3.0-or-later')
 depends=(nss tevent xmlrpc-c popt libdbus krb5 jansson systemd libidn2 nspr openssl talloc libxml2)
 makedepends=(rpm-tools gettext)
 checkdepends=(python-dbus diffutils dos2unix expect)
 backup=(etc/${pkgname}/${pkgname}.conf)
 install="${pkgname}.install"
-source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/freeipa/${pkgname}/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha512sums=('4d5cef4461018cb6dea486966fd079b143684a858bc51f108d4c7738c94fae028f40b54f810b75d89c12d25fa5ea36496db9746c94da7d1f893ff79da8142c0c')
 
 _srcdir="${pkgname}"

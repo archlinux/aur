@@ -1,8 +1,8 @@
 pkgbase = certmonger
 	pkgdesc = Certificate status monitor and PKI enrollment client
 	pkgver = 0.79.21
-	pkgrel = 2
-	url = https://pagure.io/certmonger
+	pkgrel = 3
+	url = https://codeberg.org/freeipa/certmonger
 	install = certmonger.install
 	arch = i686
 	arch = x86_64
