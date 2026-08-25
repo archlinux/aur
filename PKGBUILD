@@ -2,21 +2,23 @@
 
 pkgname=cso-thumbnailer
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A thumbnailer for "application/x-compressed-iso" MIME type PSP software files'
 arch=('x86_64')
-url='https://sateallia.org/software/'
+url='https://coding.homdworks.org/sateallia/cso-thumbnailer'
 license=('MIT')
 
-source=('https://sateallia.org/code/cso-thumbnailer/cso-thumbnailer_1_0_0.tar.gz')
+source=("${pkgname}-${pkgver}.tar.gz::https://coding.homdworks.org/sateallia/cso-thumbnailer/archive/${pkgver}.tar.gz")
 
 build() {
+    cd "${pkgname}"
 	make
 }
 
 package() {
-    install -D -m644 "${srcdir}/cso.thumbnailer" "${pkgdir}/usr/share/thumbnailers/cso.thumbnailer"
-    install -D -m755 "${srcdir}/cso-thumbnailer" "${pkgdir}/usr/local/bin/cso-thumbnailer"
-    install -D -m644 "${srcdir}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    cd "${pkgname}"
+    install -D -m644 cso.thumbnailer "${pkgdir}/usr/share/thumbnailers/cso.thumbnailer"
+    install -D -m755 cso-thumbnailer "${pkgdir}/usr/bin/cso-thumbnailer"
+    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-md5sums=('aa6e5a9060c8b0a1bb168ec98be6948a')
+sha256sums=('00ac96d87c4ae831f54ff6d5ccb554620200895013b365f296c92938e12c0d39')
