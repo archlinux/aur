@@ -1,7 +1,7 @@
 # Maintainer: stefonarch <standreas@riseup.net>
 _pkgname=brightness-slider
 pkgname=$_pkgname-git
-pkgver=cf474da
+pkgver=0.5.r0.gcf474da
 pkgrel=1
 pkgdesc="Brightness slider trayapp for external monitor in pyQt6"
 arch=('any')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed "s/-/.r/;s/-/./"
+  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
