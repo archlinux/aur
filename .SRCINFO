@@ -1,7 +1,7 @@
 pkgbase = wasm3-bin
 	pkgdesc = The fastest WebAssembly interpreter and the most universal runtime
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wasm3/wasm3
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = wasm3-bin
 	conflicts = wasm3
 	source = https://raw.githubusercontent.com/wasm3/wasm3/main/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = wasm3::https://github.com/wasm3/wasm3/releases/download/v0.9.0/wasm3-linux-x64.elf
+	source_x86_64 = wasm3-bin-x86_64-0.9.0::https://github.com/wasm3/wasm3/releases/download/v0.9.0/wasm3-linux-x64.elf
 	sha256sums_x86_64 = 2aa7d4e6dfb0e0dc1880f3f470e7dd36476668ff8776b3e7f376c7367452a406
 
 pkgname = wasm3-bin
