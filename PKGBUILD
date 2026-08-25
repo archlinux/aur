@@ -3,17 +3,15 @@
 # Contributor: Fedor Piecka <teplavoda at gmail dot com>
 
 pkgname=disig-web-signer
-pkgver=2.5.5_1
+pkgver=2.6.1_1
 _pkgver="${pkgver//_/-}"
 pkgrel=1
 pkgdesc="Slovak eID Web Signer by Disig"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('LicenseRef-custom')
 url="https://qesportal.sk/"
 source_x86_64=("https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_${_pkgver}_amd64.deb")
-source_i686=("https://download.disigcdn.sk/cdn/products/websigner2/disig-web-signer_${_pkgver}_i386.deb")
-sha256sums_i686=('82cd99ddbbaff71ee3f6cc1f45ca506253a1a56e4d522d915b405add3643c3a4')
-sha256sums_x86_64=('f96101ddb9ffbb39810466d71c1196b416b29b221b65334aef66d9280fe7e521')
+sha256sums_x86_64=('9a13879952399321889c59cef13404d588cab1c154505dd6f62e3c638e493e37')
 options=("!debug" "!strip")
 
 : "${arch[@]}"
@@ -21,21 +19,20 @@ options=("!debug" "!strip")
 : "${options[@]}"
 : "${pkgdesc}"
 : "${pkgrel}"
-: "${sha256sums_i686[@]}"
 : "${sha256sums_x86_64[@]}"
-: "${source_i686[@]}"
 : "${source_x86_64[@]}"
 : "${url}"
 
 package() {
 	depends=(
 		glibc
+		libcrypto.so
 		libgcc_s.so
+		libssl.so
 		libstdc++.so
-		openssl-1.1
-		qt5-base
-		qt5-websockets
-		qt5-xmlpatterns
+		libxml2.so
+		qt6-base
+		qt6-websockets
 		sh
 	)
 	optdepends=(
@@ -47,7 +44,7 @@ package() {
 	: "${pkgdir:?}"
 	: "${srcdir:?}"
 
-	bsdtar -xf data.tar.xz -C "${pkgdir}"
+	bsdtar -xf data.tar.zst -C "${pkgdir}"
 
 	# The libraries are provided by the system.
 	rm -r "${pkgdir}"/opt/disig/websigner/{bin/qt.conf,lib,plugins,share/doc/*/}
