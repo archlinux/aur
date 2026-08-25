@@ -1,1 +1,3 @@
 deploy.sh
+pkg/
+src/
