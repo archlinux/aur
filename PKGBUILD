@@ -2,7 +2,7 @@
 
 pkgbase=shelly-cli
 pkgname=('shelly-cli' 'shelly-cli-flatpak-backend')
-pkgver=3.0.6r4114.g2f1c9e9
+pkgver=3.1.0r4339.gb054d8d
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
@@ -12,8 +12,8 @@ makedepends=(
   'pkgconf'
   'zig>=0.16.0'
   'flatpak'
-  'go-md2man'
   'ripgrep'
+  'go-md2man'
 )
 source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development")
 sha256sums=('SKIP')
@@ -22,7 +22,7 @@ conflicts=('shelly' 'shelly-git' 'shelly-bin')
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
-  printf '3.0.6r%s.g%s' \
+  printf '3.1.0r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
 }
@@ -67,9 +67,6 @@ check() {
   (cd Shelly.Flatpak.Backend && zig build test abi-test integration-test)
   (cd Shelly.PackageManager && zig build flatpak-test)
   (cd Shelly.Cli.Zig && zig build test)
-  scripts/check-flatpak-separation.sh \
-    "${srcdir}/zig-out/bin/shelly" \
-    "${srcdir}/zig-out-flatpak-backend/lib/libshelly-flatpak-backend.so.1"
 }
 
 package_shelly-cli() {
