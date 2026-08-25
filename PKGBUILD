@@ -5,10 +5,10 @@
 # PKGBUILD we only have access to prebuilt binaries.
 
 pkgname=jupiter-dock-updater-bin
-_srctag=jupiter-20260602.01
+_srctag=jupiter-20260811.01
 _srcver=${_srctag#jupiter-}
 pkgver=${_srcver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Firmware updater for the Steam Deck Dock"
 url="https://github.com/evlav/jupiter-dock-updater-bin"
 arch=(x86_64)
