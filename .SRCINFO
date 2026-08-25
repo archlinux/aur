@@ -1,6 +1,6 @@
 pkgbase = tldraw-offline-bin
 	pkgdesc = A local whiteboard for you and your agents
-	pkgver = 1.13.2
+	pkgver = 1.14.0
 	pkgrel = 2
 	url = https://github.com/tldraw/tldraw-offline
 	arch = x86_64
@@ -19,13 +19,13 @@ pkgbase = tldraw-offline-bin
 	optdepends = libappindicator-gtk3: system tray icon support
 	provides = tldraw-offline
 	conflicts = tldraw-offline
-	noextract = tldraw-offline-bin-1.13.2-x86_64.deb
-	noextract = tldraw-offline-bin-1.13.2-aarch64.AppImage
+	noextract = tldraw-offline-bin-1.14.0-x86_64.deb
+	noextract = tldraw-offline-bin-1.14.0-aarch64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = tldraw-offline-bin-1.13.2-x86_64.deb::https://github.com/tldraw/tldraw-offline/releases/download/v1.13.2/tldraw-offline-linux-amd64.deb
-	sha256sums_x86_64 = b59be4669ab874ea0874b619780f39ba200d958739ddfd2dd750c8cb57354e88
-	source_aarch64 = tldraw-offline-bin-1.13.2-aarch64.AppImage::https://github.com/tldraw/tldraw-offline/releases/download/v1.13.2/tldraw-offline-linux-arm64.AppImage
-	sha256sums_aarch64 = 9a497bbc6dfa1be8d9ee15c6393a7e7b62ff2281cc892f9d751cc00f072d2e59
+	source_x86_64 = tldraw-offline-bin-1.14.0-x86_64.deb::https://github.com/tldraw/tldraw-offline/releases/download/v1.14.0/tldraw-offline-linux-amd64.deb
+	sha256sums_x86_64 = b37e0c74444d73e4f3bdb45dc4fbde29861811ba884ecb5265131e66ce4850c1
+	source_aarch64 = tldraw-offline-bin-1.14.0-aarch64.AppImage::https://github.com/tldraw/tldraw-offline/releases/download/v1.14.0/tldraw-offline-linux-arm64.AppImage
+	sha256sums_aarch64 = 805bc1706d064691413a630702bf134a4dad6eae1e8919beffd4964fffe96abf
 
 pkgname = tldraw-offline-bin
