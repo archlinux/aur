@@ -12,6 +12,7 @@ url="https://starnetastro.com/cli-tools/starnet/"
 license=('custom')
 provides=('starnet2')
 conflicts=('starnet2')
+depends=('libcurl-gnutls')
 
 source=("https://download.starnetastro.com/starnet2_linux_${pkgver}-0214_ORT_x64_cli.zip")
 sha256sums=('b7a95ae3e1a9745b09536c3686eed338690b8693d5f446092524e7be75d29052')
