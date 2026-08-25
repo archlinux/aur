@@ -1,0 +1,20 @@
+pkgbase = python-pipelex-tools
+	pkgdesc = Pipelex Tools as a Python library — MTHDS lint & format, importable as 'pipelex_tools'
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pypi.org/project/pipelex-tools-py/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-maturin
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = https://files.pythonhosted.org/packages/source/p/pipelex_tools_py/pipelex_tools_py-0.2.0.tar.gz
+	sha256sums = 6977e8c860a23e4e11e53a7c6f3b2b7f98b819b7551c1b5cbf089280568f59bc
+
+pkgname = python-pipelex-tools
