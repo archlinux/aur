@@ -13,10 +13,12 @@ _pypi_package=${pkgname}
 _pypi_version=${pkgver}
 
 provides=("${_pypi_package}")
-makedepends=('python' 'python-click' 'python-rich' 'python-typer' 'python-typing_extensions' 'python-pygithub' 'python-pydantic' 'python-pathspec' 'pipelex')
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
+depends=('pipelex' 'python' 'python-pydantic' 'python-rich' 'python-click' 'python-typing_extensions' 'python-pygithub' 'python-pathspec' 'python-typer' 'python-mthds')
 
-source=("${_pypi_package}-${_pypi_version}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c4810dcef1e1b216fd33f9e2227183046dc0292cd08ef341e89490a5cbb8a087')
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
+# source=("${_pypi_package}-${_pypi_version}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('64d36d13593a72af3f1cf0e8e1fd4650ef560fe9d1d71359f9e59c74e3437972')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
@@ -29,13 +31,7 @@ package() {
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
-    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-    install -Dm644 "CLA.md" "${pkgdir}/usr/share/doc/${pkgname}/CLA.md"
-    install -Dm644 "CLAUDE.md" "${pkgdir}/usr/share/doc/${pkgname}/CLAUDE.md"
-    install -Dm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
-    install -Dm644 "CLI_README.md" "${pkgdir}/usr/share/doc/${pkgname}/CLI_README.md"
-    install -Dm644 "CONTRIBUTING.md" "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTING.md"
-    install -Dm644 "CODE_OF_CONDUCT.md" "${pkgdir}/usr/share/doc/${pkgname}/CODE_OF_CONDUCT.md"
+
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
