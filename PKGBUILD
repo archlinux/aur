@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=libshout-idjc
-pkgver=2.4.6.r1
+pkgver=2.4.6.r2 # renovate: datasource=git-tags depName=https://git.code.sf.net/p/idjc/libshoutidjc/code
 pkgrel=1
 pkgdesc="Library for accessing a shoutcast/icecast server (with IDJC customizations)"
 arch=('i686' 'x86_64')
@@ -22,4 +22,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('7594ffc5e1d435014125d7dffb15a3450bba15d480a413c49aeaa5605050e1a1')
+sha256sums=('28f99f6653a4850c840c5ec885ed2afbcd83a28cde1871d5abe19cdee3dcbb32')
