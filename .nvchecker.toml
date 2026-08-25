@@ -1,4 +1,5 @@
 [llama-swap-bin]
-source = "git"
-git = "https://github.com/mostlygeek/llama-swap.git"
+source = "github"
+github = "mostlygeek/llama-swap"
+use_latest_release = true
 prefix = "v"
