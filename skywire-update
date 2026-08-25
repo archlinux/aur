@@ -180,6 +180,36 @@ install_binary() {
     _BIN_TMPDIR=$(mktemp -d)
     trap 'rm -rf "$_BIN_TMPDIR"' EXIT  # clean the download dir on any exit
 
+    # Pre-download commit gate. Ask the GitHub release API what commit the
+    # rolling pre-release was built from and compare it to the commit our
+    # installed binary reports. If they match there is no newer develop commit,
+    # so skip the (tens-of-MB) binary download + decompress that we would
+    # otherwise do every cycle just to read a version that has not moved.
+    #
+    # Uses the GitHub API over curl (already a dependency). Deliberately NOT
+    # `go list -m github.com/skycoin/skywire@develop`: the module proxy cannot
+    # resolve a branch name (returns 404), so that path needs GOPROXY=direct,
+    # i.e. the git binary — a dependency this package otherwise avoids. And NOT
+    # git ls-remote for the same reason. Best-effort: any network/parse failure
+    # (empty _remote_commit) falls through to the normal download, which still
+    # checksum-verifies and re-checks the version before installing.
+    _step="check develop-latest commit"
+    local _api_url _remote_commit _installed_commit
+    _api_url="https://api.github.com/repos/skycoin/skywire/releases/tags/${_tag}"
+    # Accept the commit from either the release's target_commitish or its notes'
+    # "commit <sha>" line, so a workflow wording tweak can't silently break the
+    # gate. First full 40-hex SHA wins.
+    _remote_commit=$(curl -fsSL --retry 2 --retry-delay 2 --connect-timeout 15 --max-time 30 "$_api_url" 2>/dev/null \
+        | grep -oE '(target_commitish"[^"]*"|commit )[0-9a-f]{40}' | grep -oE '[0-9a-f]{40}' | head -1)
+    # CURRENT (skywire -b) ends in the build commit — a Go pseudo-version
+    # "…-<12hex>" (or a git-describe "…-g<hex>"); take the trailing hex run.
+    _installed_commit=$(printf '%s' "$CURRENT" | grep -oE '[0-9a-f]{7,40}$' | head -1)
+    if [ -n "$_remote_commit" ] && [ -n "$_installed_commit" ] \
+       && [ "${_remote_commit#"$_installed_commit"}" != "$_remote_commit" ]; then
+        echo "develop-latest is at commit ${_remote_commit:0:12} — already installed (still $CURRENT); skipping binary download"
+        exit 0
+    fi
+
     _step="download SHA256SUMS"
     echo "Fetching prebuilt skywire ($_arch) from ${_tag} ..."
     curl -fsSL --retry 3 --retry-delay 2 --connect-timeout 20 --max-time 300 \
@@ -316,6 +346,26 @@ case "$UPDATE_CHANNEL" in
     TARGET="$UPDATE_CHANNEL"
     ;;
 esac
+
+# Fast git-free pre-check for the develop branch. Ask the GitHub API for the
+# branch HEAD commit and compare it to the commit our installed binary reports.
+# This short-circuits the `go list` resolution below — which needs
+# GOPROXY=direct (i.e. the git binary), or is up to 30 min stale via the module
+# proxy — so an up-to-date host in steady state never invokes git or the module
+# system at all: no build, no resolve, just one small API call. Only a genuinely
+# new HEAD (or a non-develop target) falls through to the resolve + build.
+# Best-effort: any network/parse failure just leaves it to the go-list gate.
+if [ "$TARGET" = "develop" ]; then
+    _dev_head=$(curl -fsSL --retry 2 --retry-delay 2 --connect-timeout 15 --max-time 30 \
+        "https://api.github.com/repos/skycoin/skywire/commits/develop" 2>/dev/null \
+        | grep -oE '"sha"[[:space:]]*:[[:space:]]*"[0-9a-f]{40}"' | grep -oE '[0-9a-f]{40}' | head -1)
+    _inst_commit=$(printf '%s' "$CURRENT" | grep -oE '[0-9a-f]{7,40}$' | head -1)
+    if [ -n "$_dev_head" ] && [ -n "$_inst_commit" ] \
+       && [ "${_dev_head#"$_inst_commit"}" != "$_dev_head" ]; then
+        echo "develop HEAD is at commit ${_dev_head:0:12} — already installed (still $CURRENT); nothing to build"
+        exit 0
+    fi
+fi
 
 # Resolve branch/tag to a commit for the no-op early-exit. GOPROXY=direct by
 # default (proxy.golang.org caches branch-tip -> SHA for up to 30 min, so a
