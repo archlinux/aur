@@ -1,0 +1,255 @@
+#!/bin/bash
+
+# Safely clean up any stale null symlinks from a previously interrupted transaction
+for hook in 05-snap-pac-pre.hook zz-snap-pac-post.hook paru-completion-update.hook rebuild-check.hook; do
+    if [ -L "/etc/pacman.d/hooks/$hook" ] && [ "$(readlink "/etc/pacman.d/hooks/$hook")" = "/dev/null" ]; then
+        echo "[paru-wrapper] Warning: Detected stale disabled hook '$hook' from a previous run. Restoring..." >&2
+        sudo rm -f "/etc/pacman.d/hooks/$hook"
+    fi
+done
+
+# Only run orphan cleaning if we are doing a system upgrade or installing/upgrading packages.
+# Paru arguments that start an install or upgrade transaction:
+# -S, -Syu, -Syyu, -Sy, -U, or no arguments (which defaults to interactive system upgrade).
+is_transaction=false
+if [ $# -eq 0 ]; then
+    is_transaction=true
+    set -- "-Syu"
+fi
+
+for arg in "$@"; do
+    if [[ "$arg" =~ ^-S[a-zA-Z]*$ ]]; then
+        if [[ ! "$arg" =~ [silgpq] ]]; then
+            is_transaction=true
+            break
+        fi
+    elif [[ "$arg" =~ ^-U[a-zA-Z]*$ ]]; then
+        is_transaction=true
+        break
+    fi
+done
+
+if [ "$is_transaction" = true ]; then
+    # Detect if we are running in an anneal rebuild session
+    is_anneal=false
+    curr_pid=$$
+    while [ -n "$curr_pid" ] && [ "$curr_pid" -ne 1 ]; do
+        proc_name=$(ps -o comm= -p "$curr_pid" 2>/dev/null)
+        if [ "$proc_name" = "anneal" ]; then
+            is_anneal=true
+            break
+        fi
+        curr_pid=$(ps -o ppid= -p "$curr_pid" 2>/dev/null | tr -d '[:space:]')
+    done
+
+    hooks_disabled=false
+    if [ "$is_anneal" = true ] || [ "$FORCE_REBUILD" = "1" ]; then
+        # Disable selected hooks to prevent snapper/completion/rebuild-check spam during intermediate package installations
+        echo "[paru-wrapper] Temporarily disabling redundant hooks..." >&2
+        sudo ln -sf /dev/null /etc/pacman.d/hooks/05-snap-pac-pre.hook
+        sudo ln -sf /dev/null /etc/pacman.d/hooks/zz-snap-pac-post.hook
+        sudo ln -sf /dev/null /etc/pacman.d/hooks/paru-completion-update.hook
+        sudo ln -sf /dev/null /etc/pacman.d/hooks/rebuild-check.hook
+        hooks_disabled=true
+    fi
+
+    start_marker="/tmp/paru_start_time.$$"
+    touch "$start_marker"
+
+    cleanup_hooks() {
+        # Restore pacman hooks
+        if [ "$hooks_disabled" = true ]; then
+            sudo rm -f /etc/pacman.d/hooks/05-snap-pac-pre.hook \
+                       /etc/pacman.d/hooks/zz-snap-pac-post.hook \
+                       /etc/pacman.d/hooks/paru-completion-update.hook \
+                       /etc/pacman.d/hooks/rebuild-check.hook 2>/dev/null || true
+        fi
+        rm -f /tmp/paru_total_packages /tmp/paru_completed_packages 2>/dev/null || true
+
+        # Automatically update MKVPKG repository database with any packages built during the wrapper run
+        if [ -f "$start_marker" ]; then
+            mapfile -t new_pkgs < <(find /mnt/v/Data/makepkg/packages -name "*.pkg.tar.zst" -newer "$start_marker" 2>/dev/null)
+            if [ ${#new_pkgs[@]} -gt 0 ]; then
+                echo -e "\n[paru-wrapper] Detected ${#new_pkgs[@]} newly built package(s):" >&2
+                for pkg in "${new_pkgs[@]}"; do
+                    echo "  -> $(basename "$pkg")" >&2
+                done
+                echo "[paru-wrapper] Automatically updating MKVPKG repository database..." >&2
+                repo-add -R -w /mnt/v/Data/makepkg/packages/MKVPKG.db.tar.gz "${new_pkgs[@]}"
+                echo "[paru-wrapper] MKVPKG repository database updated successfully." >&2
+            fi
+            rm -f "$start_marker"
+        fi
+    }
+    trap cleanup_hooks EXIT INT TERM
+
+    # Take a single manual pre-transaction snapper snapshot
+    if [ "$hooks_disabled" = true ] && command -v snapper >/dev/null; then
+        PRE_SNAP_ID=$(sudo snapper -c root create -d "paru-wrapper pre-transaction" -t pre -p)
+        export PRE_SNAP_ID
+    fi
+
+    # Prune outdated unmodified packages from MKVPKG using helper script to trigger upgrades from AUR
+    if [ -x "/usr/bin/update_mkvpkg_aur.py" ]; then
+        /usr/bin/update_mkvpkg_aur.py
+    elif [ -f "$(dirname "$0")/update_mkvpkg_aur.py" ]; then
+        python3 "$(dirname "$0")/update_mkvpkg_aur.py"
+    fi
+
+    # Extract target packages and other arguments
+    targets=()
+    other_args=()
+    for arg in "$@"; do
+        if [[ "$arg" =~ ^- ]]; then
+            other_args+=("$arg")
+        else
+            targets+=("$arg")
+        fi
+    done
+
+    # Helper function to check if package is in official repos
+    is_official_pkg() {
+        local pkg="$1"
+        local repo
+        repo=$(pacman -Si "$pkg" 2>/dev/null | grep -i '^Repository' | awk '{print $3}')
+        if [[ -n "$repo" ]] && [[ "$repo" != "MKVPKG" ]]; then
+            return 0
+        fi
+        return 1
+    }
+
+    # Filter targets and rebuild local packages
+    filtered_targets=()
+    for pkg in "${targets[@]}"; do
+        if is_official_pkg "$pkg"; then
+            filtered_targets+=("$pkg")
+        elif [ -d "/home/v/Projects/$pkg" ] && [ -f "/home/v/Projects/$pkg/PKGBUILD" ]; then
+            echo "[paru-wrapper] Rebuilding local package '$pkg' from source..." >&2
+            if (cd "/home/v/Projects/$pkg" && makepkg -sfi --noconfirm); then
+                if command -v anneal >/dev/null; then
+                    echo "[paru-wrapper] Unmarking '$pkg' in anneal rebuild queue..." >&2
+                    sudo anneal unmark "$pkg" 2>/dev/null || true
+                fi
+            fi
+        elif [ "$FORCE_REBUILD" = "1" ]; then
+            # Force rebuild standard AUR package from source to link against new libraries
+            echo "[paru-wrapper] FORCE_REBUILD active. Rebuilding AUR package '$pkg' from source..." >&2
+            build_dir="/tmp/aur-build-$pkg"
+            rm -rf "$build_dir"
+            if git clone --depth 1 "https://aur.archlinux.org/$pkg.git" "$build_dir" 2>/dev/null; then
+                if (cd "$build_dir" && makepkg -sfi --noconfirm); then
+                    if command -v anneal >/dev/null; then
+                        echo "[paru-wrapper] Unmarking '$pkg' in anneal rebuild queue..." >&2
+                        sudo anneal unmark "$pkg" 2>/dev/null || true
+                    fi
+                fi
+                rm -rf "$build_dir"
+            else
+                echo "[paru-wrapper] Warning: Failed to clone '$pkg' from AUR. Passing to paru." >&2
+                filtered_targets+=("$pkg")
+            fi
+        else
+            # Not a local modified package, must be standard AUR package
+            filtered_targets+=("$pkg")
+        fi
+    done
+
+    # Update command-line arguments to exclude filtered-out local packages
+    set -- "${other_args[@]}" "${filtered_targets[@]}"
+
+    # If the original command had targets, but all were filtered out, we can skip running paru
+    if [ ${#targets[@]} -gt 0 ] && [ ${#filtered_targets[@]} -eq 0 ]; then
+        echo "[paru-wrapper] All requested targets rebuilt locally. Skipping paru execution." >&2
+        exit 0
+    fi
+
+    # 1. Get the list of packages to be upgraded
+    # We run paru -Quq to get the list of pending updates (including AUR)
+    upgrades=$(/usr/bin/paru -Quq 2>/dev/null)
+
+    # Write total packages to /tmp/paru_total_packages for progress counter
+    if [[ -n "$upgrades" ]]; then
+        total_pkgs=$(echo "$upgrades" | grep -v "^$" | wc -l)
+        echo "$total_pkgs" > /tmp/paru_total_packages
+        echo "0" > /tmp/paru_completed_packages
+    else
+        rm -f /tmp/paru_total_packages /tmp/paru_completed_packages 2>/dev/null
+    fi
+
+    # 2. Get the list of all current orphans
+    orphans=$(pacman -Qtdq)
+
+    if [[ -n "$orphans" ]]; then
+        # 3. Find dependencies of the new versions of the upgraded packages
+        new_deps=""
+        if [[ -n "$upgrades" ]]; then
+            # Query pacman sync database for repository packages dependencies
+            repo_deps=$(pacman -Si $upgrades 2>/dev/null | grep -E '^Depends On' | cut -d: -f2- | tr -d '>=<0-9.' | tr ' ' '\n' | sort -u)
+            
+            # Query AUR RPC (or paru info) for AUR package dependencies
+            aur_deps=""
+            aur_upgrades=$(echo "$upgrades" | grep -vFf <(pacman -Slq 2>/dev/null) || true)
+            if [[ -n "$aur_upgrades" ]]; then
+                aur_deps=$(/usr/bin/paru -Si $aur_upgrades 2>/dev/null | grep -E '^Depends On' | cut -d: -f2- | tr -d '>=<0-9.' | tr ' ' '\n' | sort -u)
+            fi
+            
+            new_deps=$(echo -e "${repo_deps}\n${aur_deps}" | sort -u)
+        fi
+        
+        # 4. Filter out any orphans that are in new_deps
+        orphans_to_remove=""
+        for orphan in $orphans; do
+            if echo "$new_deps" | grep -Fqx "$orphan"; then
+                echo "[paru-wrapper] Preserving orphan package '$orphan' (will be needed by incoming updates)." >&2
+            else
+                orphans_to_remove="$orphans_to_remove $orphan"
+            fi
+        done
+        
+        # 5. Clean the remaining orphans
+        if [[ -n "$orphans_to_remove" ]]; then
+            echo "[paru-wrapper] Cleaning orphaned packages: $orphans_to_remove" >&2
+            sudo pacman -Rns --noconfirm $orphans_to_remove
+        fi
+    fi
+fi
+
+# 6. Execute the real paru command
+if [ "$is_transaction" = true ]; then
+    if [ "$FORCE_REBUILD" = "1" ] || [[ " $@ " =~ " --rebuild " ]]; then
+        /usr/bin/paru --rebuild --pacman /usr/bin/pacman-wrapper "$@"
+    else
+        /usr/bin/paru --pacman /usr/bin/pacman-wrapper "$@"
+    fi
+else
+    /usr/bin/paru "$@"
+fi
+exit_code=$?
+
+if [ "$is_transaction" = true ]; then
+    # Restore pacman hooks and update database
+    if [ "$hooks_disabled" = true ]; then
+        echo "[paru-wrapper] Restoring pacman hooks and updating database..." >&2
+        cleanup_hooks
+    else
+        cleanup_hooks
+    fi
+
+    # Disable exit trap since we cleaned up explicitly
+    trap - EXIT INT TERM
+
+    # Take a manual post-transaction snapper snapshot
+    if [ "$hooks_disabled" = true ] && [[ -n "$PRE_SNAP_ID" ]]; then
+        echo "[paru-wrapper] Taking post-transaction snapper snapshot..." >&2
+        sudo snapper -c root create -d "paru-wrapper post-transaction" -t post --pre-number "$PRE_SNAP_ID"
+    fi
+fi
+
+if [ $exit_code -eq 0 ] && [ "$is_transaction" = true ] && [ "$hooks_disabled" = true ]; then
+    # Trigger deferred hook updates once at the very end
+    echo "[paru-wrapper] Running deferred completion and rebuild-check hooks..." >&2
+    sudo /usr/bin/paru-completion-update || true
+    echo "${targets[@]}" | sudo /usr/bin/rebuild-check || true
+fi
+
+exit $exit_code

@@ -1,0 +1,15 @@
+post_install() {
+    echo "Creating paru-wrapper symlink at /home/v/.local/bin/paru..."
+    mkdir -p /home/v/.local/bin
+    ln -sf /usr/bin/paru-wrapper /home/v/.local/bin/paru
+    chown v:v /home/v/.local/bin/paru 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "Removing paru-wrapper symlink..."
+    [ -L /home/v/.local/bin/paru ] && rm -f /home/v/.local/bin/paru
+}
