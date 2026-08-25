@@ -1,0 +1,14 @@
+pkgbase = switchyard
+	pkgdesc = A lightweight bridge that accepts email over SMTP and forwards each message to XMPP
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://tty.fail/mrus/switchyard
+	arch = x86_64
+	license = Custom: SEGV License
+	makedepends = git
+	makedepends = go
+	options = !lto
+	source = git+https://tty.fail/mrus/switchyard.git#tag=v0.1.0
+	sha256sums = 61502f7b086fee9824f2d7a9cc22fd30c79c95f4478ae0b9991a001c86b2ed8d
+
+pkgname = switchyard
