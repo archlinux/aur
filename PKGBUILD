@@ -4,7 +4,7 @@ _pkgauthor=jdx
 _pkgname=aube
 _execname=(${_pkgname} ${_pkgname//e/r} ${_pkgname//e/x})
 pkgname=${_pkgname}-bin
-pkgver=2.1.0
+pkgver=2.2.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="A fast Node.js package manager"
@@ -23,9 +23,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tar.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}-unknown-linux-gnu.tar.gz")
 sha256sums=('d12ab62ad9f4de7596b77e508910e6bcbb320f9550d665b581ce5b2e4a203e5a'
-            '2e413dcb4c0829d26fa757bea09d3f0ca7a6449f8be7283b70b57e41e9e24846')
-sha256sums_x86_64=('fa226a827eb36fad7be8bf997c25d5ef10ff1873f875ab6925b137202910a466')
-sha256sums_aarch64=('43c7845d162c30973e38526c42cac9d87dd2b2bd6365ad5868daf10b026d898f')
+            'f170225fa26fd097da9ca627f4a38b4d5df9c626d59c68919df1d395b5c95815')
+sha256sums_x86_64=('5d8b91f772712e6f971a2e15a52dcc392acbb21782fbb532124588deb647656b')
+sha256sums_aarch64=('cbfb10e58297f6b352b7722af7d069a10a991a2ec6589f2b7a9c017d14d9926e')
 
 
 package() {

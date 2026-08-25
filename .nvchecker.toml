@@ -1,4 +1,5 @@
 [aube-bin]
-source = "git"
-git = "https://github.com/jdx/aube.git"
+source = "github"
+github = "jdx/aube"
+use_latest_release = true
 prefix = "v"
