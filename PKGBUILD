@@ -3,7 +3,7 @@
 # release (pkgver + checksums refreshed, then pushed to the AUR). It installs
 # the official prebuilt, statically linked musl binary from GitHub Releases.
 pkgname=kache-bin
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Content-addressed zero-copy build cache for Rust, C/C++ and more (prebuilt binary)'
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=('kache')
 conflicts=('kache')
 source_x86_64=("kache-$pkgver-x86_64.tar.gz::https://github.com/kunobi-ninja/kache/releases/download/v$pkgver/kache-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("kache-$pkgver-aarch64.tar.gz::https://github.com/kunobi-ninja/kache/releases/download/v$pkgver/kache-aarch64-unknown-linux-musl.tar.gz")
-sha256sums_x86_64=('21a6e50fff5eeab6a4c76a17af3878369d5d3cb57b38b85d7c8a5bcd8479d300')
-sha256sums_aarch64=('50e8cc75fdac50e304ee3e1827c06135cc758e3a0024190d8951a00c3779da31')
+sha256sums_x86_64=('caee657c662379475af2a0a7611ad32a6d053822036c1ec191bb8fd1c826d54b')
+sha256sums_aarch64=('6eabb67867022eecdbfffe43c16e75b5c5b561983742bda3c900a4cb4c50e4a7')
 
 package() {
   cd "$srcdir"
