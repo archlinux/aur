@@ -1,6 +1,6 @@
 pkgbase = muster-bin
 	pkgdesc = MCP tool management and workflow proxy
-	pkgver = 1.4.4
+	pkgver = 1.4.10
 	pkgrel = 1
 	url = https://github.com/giantswarm/muster
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = muster-bin
 	provides = muster
 	conflicts = muster
 	conflicts = muster-git
-	source_x86_64 = muster-1.4.4-x86_64::https://github.com/giantswarm/muster/releases/download/v1.4.4/muster-linux-amd64
-	sha512sums_x86_64 = aa0f9ab22b6a5aec3ec7ac9b892a8ffa9c880d6fb06a3474047132b41da36f4e5699cdca0ff4a112d2f4733fbe7a008d610c10f27c90cf84b571ca0fe44b2661
-	source_aarch64 = muster-1.4.4-aarch64::https://github.com/giantswarm/muster/releases/download/v1.4.4/muster-linux-arm64
-	sha512sums_aarch64 = cee632a41cee60a39a38367be3e77d7afa207e1d6dda573c9a6dffb3110396bd8a5d76773566eb52d218d099afb4008115bb791aa5fed924f5839c7a509941c4
+	source_x86_64 = muster-1.4.10-x86_64::https://github.com/giantswarm/muster/releases/download/v1.4.10/muster-linux-amd64
+	sha512sums_x86_64 = 817a193e23b5023da5785487eb88278fa126c6a6470857849bba513ba5da808f875f3f068839496297b0fac3e2afa91483d3d93e09edff1d920657c43233a3bb
+	source_aarch64 = muster-1.4.10-aarch64::https://github.com/giantswarm/muster/releases/download/v1.4.10/muster-linux-arm64
+	sha512sums_aarch64 = 231e4438e8b93ebecedd267660aa591b1693ec3dcf45c4db656285ff1f727490ef6dbd2a0e1b4930fa720580b037dfef14a2a583fab948fb368daf1c978275b1
 
 pkgname = muster-bin
