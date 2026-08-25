@@ -10,7 +10,7 @@ _gentoo_exclude=(0015-bgo-940031-wasm-support.patch)
 
 pkgname=$__pkgname
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="FireDragon is a cross-platform, feature-rich and privacy-focused web browser"
 url="https://gitlab.com/garuda-linux/firedragon/firedragon13"
@@ -83,9 +83,11 @@ options=(!emptydirs
 install=$_pkgname.install
 noextract=($_gentoo)
 source=($_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
-        https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo)
+        https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo
+        0001-fix-rust-1.98-targets.patch)
 sha256sums=('33a42fc48cb28bb8216b06da354f18360f5eff1c8e7d2106afc80952eb413892'
-            '74be0633ade277e269f5bbdedef84a50c1430fba56e6d7fd56878a963e07a124')
+            '74be0633ade277e269f5bbdedef84a50c1430fba56e6d7fd56878a963e07a124'
+            '8e93bc3f7745bd4a6bcf952120b60a260ea867f0c8319ea8f6df18ed1281bc1f')
 
 prepare() {
   mkdir -p mozbuild
@@ -94,6 +96,8 @@ prepare() {
   for patch in $(tar -tf "$srcdir/$_gentoo" --wildcards '*.patch' $(printf -- '--exclude=%s' "${_gentoo_exclude[@]}")); do
     tar -Oxf "$srcdir/$_gentoo" "$patch" | patch -Nsp1
   done
+
+  patch -Nsp1 -i "$srcdir"/0001-fix-rust-1.98-targets.patch
 
   echo ". \"\$topsrcdir/browser/$_pkgname/mozconfig/edition/$_pkgname-$_branding.mozconfig\"" > ../mozconfig
   export FIREDRAGON_EDITION=$_branding
