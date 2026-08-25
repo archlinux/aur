@@ -1,8 +1,8 @@
 # Maintainer: archledger <archledger236@gmail.com>
 pkgname=irlume
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
-pkgdesc="Face authentication for Linux with head-gesture consent and passive PAD"
+pkgdesc="Windows Hello-style face login for Linux: IR cameras, consent-gated, photo-spoofing resistant, TPM-sealed, password always works"
 arch=('x86_64')
 url="https://github.com/archledger/irlume"
 license=('GPL-3.0-or-later')
