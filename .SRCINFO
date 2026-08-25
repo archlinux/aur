@@ -1,7 +1,7 @@
 pkgbase = delta
 	pkgdesc = An useful tool that lets you minimize interesting files subject to a test of their interestingness.
 	pkgver = 20060803
-	pkgrel = 3
+	pkgrel = 4
 	url = http://delta.tigris.org/
 	arch = i686
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = delta
 	makedepends = gcc
 	makedepends = flex
 	makedepends = curl
+	makedepends = git
 	depends = perl
 	source = git+https://salsa.debian.org/debian/delta.git#tag=upstream/2006.08.03
 	md5sums = SKIP
 
 pkgname = delta
-
