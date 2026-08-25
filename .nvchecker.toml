@@ -1,0 +1,4 @@
+[webarchive]
+source = "git"
+git = "https://github.com/mhhemati0/WebArchive.git"
+prefix = "v"

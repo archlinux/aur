@@ -1,0 +1,17 @@
+pkgbase = webarchive
+	pkgdesc = Browse offline ZIM archives
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/mhhemati0/WebArchive
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	depends = python-gobject
+	depends = python-libzim
+	depends = webkitgtk-6.0
+	source = WebArchive-1.1.0.tar.gz::https://github.com/mhhemati0/WebArchive/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 393baa161617bd07896fbd1eb504d24b337b802c28db435077a18f1fbf6902f5
+
+pkgname = webarchive
