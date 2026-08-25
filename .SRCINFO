@@ -13,6 +13,6 @@ pkgbase = pacterm
 	conflicts = pacterm-bin
 	conflicts = pacterm-git
 	source = pacterm-1.3.8.tar.gz::https://github.com/wa-el-az/pacterm/archive/refs/tags/v1.3.8.tar.gz
-	sha256sums = fd96b0cde73679462869ac22c14439c4ee837771767c597558a810bcee29b982
+	sha256sums = 8a93a5dadcfb081a927932647ed7488368edac2680b09096aff4395bcababbd7
 
 pkgname = pacterm

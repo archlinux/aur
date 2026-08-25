@@ -12,7 +12,7 @@ makedepends=('gcc' 'make')
 provides=('pacterm')
 conflicts=('pacterm-bin' 'pacterm-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fd96b0cde73679462869ac22c14439c4ee837771767c597558a810bcee29b982')
+sha256sums=('8a93a5dadcfb081a927932647ed7488368edac2680b09096aff4395bcababbd7')
 
 build() {
   cd "$pkgname-$pkgver"
