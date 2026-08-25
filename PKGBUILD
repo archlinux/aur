@@ -1,6 +1,6 @@
 # Maintainer: Marcus Ordoñez <guitaripod@gmail.com>
 pkgname=tailscode
-pkgver=1.24
+pkgver=1.25
 pkgrel=1
 pkgdesc="Coding agents over Tailscale — a GTK4 client for Claude Code and opencode"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ depends=('gtk4' 'libadwaita' 'glib2' 'gdk-pixbuf2' 'libepoxy' 'vte4' 'mpv' 'webk
 makedepends=('swift-bin' 'git')
 optdepends=('tailscale: reach the machine your agent runs on')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('1f33910438b709069ac86fd50bf6fe5b8903f4d74a0b2108b08aa2d32f2948c3')
 
 prepare() {
     # SwiftPM resolves over the network, which makepkg allows here and not in package().
