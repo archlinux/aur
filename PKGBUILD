@@ -1,25 +1,41 @@
 # Maintainer: empyrealm
 pkgname=nvidia-nsight-systems-bin
-pkgver=2025.6.3.343
+pkgver=2026.4.1.191
 pkgrel=1
 pkgdesc='NVIDIA Nsight Systems — system-wide performance analysis tool'
 arch=('x86_64')
 url='https://developer.nvidia.com/nsight-systems'
-license=('custom:NVIDIA')
-depends=('glibc' 'gcc-libs' 'libx11' 'libxcb' 'libxext' 'libxrender'
-	'mesa' 'fontconfig' 'freetype2' 'dbus' 'libxkbcommon'
-	'qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-wayland')
+license=('LicenseRef-NVIDIA-SLA')
+depends=('dbus' 'fontconfig' 'gcc-libs' 'glib2' 'glibc' 'krb5' 'libdrm'
+	'libglvnd' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext'
+	'libxi' 'libxkbcommon' 'libxkbcommon-x11' 'libxkbfile' 'libxrandr'
+	'libxrender' 'libxshmfence' 'libxtst' 'ncurses' 'nspr' 'nss' 'wayland'
+	'xcb-util-cursor' 'xcb-util-image' 'xcb-util-keysyms'
+	'xcb-util-renderutil' 'xcb-util-wm')
 optdepends=('cuda: CUDA profiling support'
 	'nvidia-utils: NVIDIA GPU profiling')
-provides=('nsight-systems')
+provides=("nsight-systems=${pkgver}")
 conflicts=('nsight-systems')
 options=('!strip')
-_archive="nsight_systems-linux-x86_64-${pkgver}-archive"
-source=("https://developer.download.nvidia.com/compute/cuda/redist/nsight_systems/linux-x86_64/${_archive}.tar.xz")
-sha256sums=('SKIP')
+
+_release="${pkgver%.*}"
+_year="${pkgver%%.*}"
+_rest="${pkgver#*.}"
+_month="${_rest%%.*}"
+_deb="nsight-systems-${_release}_${pkgver}-1_amd64.deb"
+source=("${_deb}::https://developer.nvidia.com/downloads/assets/tools/secure/nsight-systems/${_year}_${_month}/${_deb}")
+noextract=("${_deb}")
+sha256sums=('8aeaf8c73401ccafb0b9bbe59981a6fcc97a038388462b15ef48ff75458aba19')
+
+prepare() {
+	cd "${srcdir}"
+
+	bsdtar -xf "${_deb}" data.tar.gz
+	bsdtar -xf data.tar.gz
+}
 
 package() {
-	cd "${srcdir}/${_archive}"
+	cd "${srcdir}/opt/nvidia/nsight-systems/${_release}"
 
 	install -dm755 "${pkgdir}/opt/${pkgname}"
 	cp -a . "${pkgdir}/opt/${pkgname}/"
@@ -42,10 +58,5 @@ Type=Application
 Categories=Development;Profiling;
 EOF
 
-	install -Dm644 /dev/null "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	if [ -f EULA.txt ]; then
-		install -Dm644 EULA.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	elif [ -f LICENSE ]; then
-		install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	fi
+	install -Dm644 EULA.txt "${pkgdir}/usr/share/licenses/${pkgname}/EULA.txt"
 }
