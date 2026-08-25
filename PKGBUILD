@@ -1,7 +1,7 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 
 pkgname=ya-claude-code
-pkgver=2.1.241
+pkgver=2.1.245
 pkgrel=1
 pkgdesc="Claude Code CLI, verified at build time against Anthropic's signed release manifest"
 arch=('x86_64')
@@ -39,7 +39,7 @@ source=("claude-${pkgver}::${_rel}/linux-x64/claude"
 # text is prose that upstream edits in place; none of the three can carry a fixed
 # hash. The binary's hash is pinned and additionally re-derived from the signed
 # manifest in prepare().
-sha256sums=('0771bd866cff82b76581fc0499f6529e1a36845078f144f8c81dccb3bc7037b8'
+sha256sums=('16ad2b94deaf7b29abed966d981c9991a47af0420f5be8ed4a3f83bea9f678bc'
             'SKIP'
             'SKIP'
             'SKIP'
