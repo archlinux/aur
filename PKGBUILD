@@ -3,7 +3,7 @@
 pkgname=tigerfs-bin
 _pkgname=${pkgname/-bin/}
 pkgver=0.7.0 # datasource=github-tags depName=timescale/tigerfs
-pkgrel=1
+pkgrel=2
 pkgdesc='Mount PostgreSQL as a filesystem. Build apps with files, explore databases with ls and cat. Every write is logged and undoable.'
 provides=($pkgname)
 conflicts=($pkgname)
@@ -24,14 +24,14 @@ sha256sums_x86_64=('fe30c217a5467003d4a9c8602d0f46ce2a59fe14ba142934137bffb36f96
 package() {
 
 	local binary=${pkgdir}/usr/bin/tigerfs
-	local docs_dir=${pkgdir}/usr/share/docs/${pkgname}
+	local docs_dir=${pkgdir}/usr/share/doc/${pkgname}
 
 	install -Dm755 "tigerfs" $binary
 	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 	mkdir -p $docs_dir
 	cp -r docs skills "README.md" $docs_dir
-	chmod 644 $docs_dir -R
+	chmod 755 $docs_dir -R
 
 	$binary completion bash | \
 	install -Dm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_pkgname.bash"

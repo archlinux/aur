@@ -1,7 +1,7 @@
 pkgbase = tigerfs-bin
 	pkgdesc = Mount PostgreSQL as a filesystem. Build apps with files, explore databases with ls and cat. Every write is logged and undoable.
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tigerfs.io/
 	arch = aarch64
 	arch = x86_64
