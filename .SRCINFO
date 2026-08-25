@@ -1,0 +1,17 @@
+pkgbase = dirgo
+	pkgdesc = Fast, local-first directory navigation
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/RudySource/Dirgo
+	arch = x86_64
+	license = Apache-2.0
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = dgo
+	options = !strip
+	source = dirgo-0.3.1.tgz::https://github.com/RudySource/Dirgo/archive/v0.3.1.tar.gz
+	sha256sums = ab9b7bd632c72c2708ac7a5ca31ded27deede44606005cc5bdfc2a6b23c60256
+
+pkgname = dirgo
