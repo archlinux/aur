@@ -1,6 +1,6 @@
 pkgbase = brightness-slider-git
 	pkgdesc = Brightness slider trayapp for external monitor in pyQt6
-	pkgver = cf474da
+	pkgver = 0.5.r0.gcf474da
 	pkgrel = 1
 	url = https://github.com/stefonarch/brightness-slider
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = brightness-slider-git
 	depends = python
 	depends = python-pyqt6
 	depends = ddcutil
-	provides = brightness-slider=cf474da
+	provides = brightness-slider=0.5.r0.gcf474da
 	conflicts = brightness-slider
 	source = git+https://github.com/stefonarch/brightness-slider.git
 	md5sums = SKIP
