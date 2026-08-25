@@ -1,0 +1,5 @@
+[dirgo-bin]
+source = "github"
+github = "RudySource/Dirgo"
+use_latest_release = true
+prefix = "v"

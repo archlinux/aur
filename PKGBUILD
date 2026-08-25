@@ -1,0 +1,47 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
+_gitauthor=RudySource
+_gitname=Dirgo
+_appname=dgo
+pkgname=${_gitname,,}-bin
+pkgdesc="Fast, local-first directory navigation"
+
+pkgver=0.3.1
+pkgrel=1
+_gitversion=v${pkgver}
+
+arch=('x86_64')
+_barch=('x86_64-unknown-linux-gnu')
+
+_ghurl="https://github.com/${_gitauthor}/${_gitname}"
+_ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
+url=${_ghurl}
+
+license=('Apache-2.0' 'MIT')
+
+provides=("${_appname}")
+conflicts=("${_appname}")
+depends=('glibc' 'libgcc')
+
+options=('!strip')
+
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
+sha256sums_x86_64=('cf9bb0a7545380a5e544c22f9d313193973f0c37eeaf538edee71a4acaa1dcd1')
+
+
+case ${CARCH} in
+  ${arch[0]})
+    _CARCH=${_barch[0]}
+    ;;
+esac
+
+package() {
+	cd "${srcdir}/${_gitname,,}-${_gitversion}-${_CARCH}/" || exit
+
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE-MIT" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+	install -Dm644 "LICENSE-APACHE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
+}
