@@ -4,12 +4,12 @@ pkgname=ccgui-bin
 _pkgname=ccgui
 _appname=ccgui
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Next-generation VibeCoding editor (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/zhukunpenglinyutong/desktop-cc-gui'
 license=('MIT')
-depends=('fuse2' 'gtk3' 'webkit2gtk-4.1')
+depends=('gtk3' 'webkit2gtk-4.1' 'gst-plugins-base-libs' 'gst-plugins-good')
 provides=('ccgui')
 conflicts=('ccgui')
 options=('!strip')
@@ -36,14 +36,16 @@ package() {
     APPIMAGE_EXTRACT_AND_RUN=1 "${appimage}" --appimage-extract >/dev/null
   )
 
-  install -dm755 "${pkgdir}/opt/${_pkgname}"
-  install -Dm755 "${appimage}" "${pkgdir}/opt/${_pkgname}/${_appname}_${pkgver}_amd64.AppImage"
+  install -Dm755 "${extract_dir}/squashfs-root/usr/bin/cc-gui" \
+    "${pkgdir}/opt/${_pkgname}/usr/bin/cc-gui"
+  install -Dm755 "${extract_dir}/squashfs-root/usr/bin/cc_gui_daemon" \
+    "${pkgdir}/opt/${_pkgname}/usr/bin/cc_gui_daemon"
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/ccgui" <<SCRIPT
 #!/bin/sh
-exec env APPIMAGE_EXTRACT_AND_RUN=1 APPIMAGELAUNCHER_DISABLE=1 \\
-  /opt/${_pkgname}/${_appname}_${pkgver}_amd64.AppImage "\$@"
+export GDK_BACKEND="\${GDK_BACKEND:-x11}"
+exec /opt/${_pkgname}/usr/bin/cc-gui "\$@"
 SCRIPT
 
   install -dm755 "${pkgdir}/usr/bin"

@@ -1,13 +1,14 @@
 pkgbase = ccgui-bin
 	pkgdesc = Next-generation VibeCoding editor (prebuilt binary)
 	pkgver = 0.9.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zhukunpenglinyutong/desktop-cc-gui
 	arch = x86_64
 	license = MIT
-	depends = fuse2
 	depends = gtk3
 	depends = webkit2gtk-4.1
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
 	provides = ccgui
 	conflicts = ccgui
 	noextract = ccgui_0.9.2_amd64.AppImage
