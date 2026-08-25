@@ -5,7 +5,7 @@ _pkgname=tirith
 pkgname=${_pkgname}-bin
 pkgdesc='Terminal security - catches homograph attacks, pipe-to-shell, ANSI injection'
 
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -34,16 +34,16 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"powershell-${pkgver}.hook::${_urlraw}/shell/lib/powershell-hook.ps1")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
-sha256sums=('f2130aefdb9c6d3d22c9efdfb3741c05e550f235acf8c60e93f3d690f527610c'
+sha256sums=('c1a6d96b9984ffa6971085a2e2f4480525b5ffd01119b315a387668eb77c6107'
             '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             'eec9e040f3f4c9bc0f842afcef593696d4ec2ea21d9d35346fb9866688959105'
-            'f78546ff57190602239232d90c5ede40add3d9157afbcca735eaa5b79397526a'
-            '4db3009c8c4b3a8ac7616baa266d079998cef96f379c06197adfdd88f533c644'
-            'f202c1f240d8971865efe35f1060beecca373f79bcf0ea1e2bda65c0f1dd39e4'
+            'a16b982fbc1a52bafc1076143731278b326fee870d393a6a91a5d5a31dc8a35a'
+            'fa326746fd0473b9e4d135318cf43a389c190ab99006d2c2bed155589d666538'
+            '5bb8a47497e8921ff4b2dacbb26d7d0f10d82c0c5889c11ae2f7f69e9f49eb0a'
             '4c3b8d02ba861e2a5738ecb8b3c8af94bce0c281980ddefc0273814d46e40d63'
-            '4f1f372b8a8486d205affa52d4f49db9a645d3342a822397a65fb50d9a31053a')
-sha256sums_x86_64=('6cdbe35e8f9ccf42e70ad95b501c93cd218ac18201c3df958d54f6ba0d995ce2')
-sha256sums_aarch64=('c784233083003a6a1533db9ebba30b1a7bb7cefaa239db6ca121598b384cca1a')
+            'a8ad9992c44ad717bbf562fbef17f935a5b57a17fc5d438d33a058786fa26937')
+sha256sums_x86_64=('ec90836eef3519829f0b8371836a09c12c31fd8620d411a38b69423b19b5e468')
+sha256sums_aarch64=('8d421d04079ad88caf660dc021bc2e8447142c2d308a4998595ba24a4d2c23c6')
 
 
 package() {
