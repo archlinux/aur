@@ -1,38 +1,38 @@
-# Maintainer: Chih-Hsuan Yen <yan12125@archlinux.org>
+# Maintainer: yar cohen <yardenack@gmail.com>
+# Contributor: jansvendsen <ardycef88f6@hg.basketrise.com>
+# Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 
-pkgname="libnbcompat"
-pkgver=20180822
-_commit=be9f9298fd165ea01a0769c4ffa29a3ec0d22023
+gitname=libnbcompat
+pkgname=${gitname}-git
+epoch=1
+pkgver=1.0.2.r0.g4700b022
 pkgrel=1
-pkgdesc="Portable NetBSD compatibility library"
-arch=('i686' 'x86_64')
-url="http://www.netbsd.org/"
-license=('BSD')
-# The git repo is maintained by Debian
-# LICENSE is extracted from nbcompat.h
-source=("git+https://github.com/jgoerzen/libnbcompat#commit=$_commit"
-        'LICENSE')
-md5sums=('SKIP'
-         'beab088c74f4e3e456da604c0d62c2e3')
-makedepends=('bmake' 'git')
-options=('!makeflags')
-
-build() {
-  cd libnbcompat
-
-  ./configure \
-    --prefix=/usr \
-    --enable-db \
-    --enable-bsd-getopt
-
-  bmake
+pkgdesc='Portable NetBSD compatibility library'
+arch=('x86_64')
+url="https://github.com/archiecobbs/$gitname"
+license=(BSD)
+depends=(glibc)
+provides=("$gitname=$epoch:$pkgver")
+conflicts=("$gitname")
+makedepends=(autoconf automake libtool)
+source=("git+$url.git")
+sha256sums=(SKIP)
+pkgver() {
+  cd "${srcdir}/${gitname}"
+  git describe --long --tags --abbrev=8 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
+build() {
+  cd "$srcdir/${gitname}"
+  ./autogen.sh
+  ./configure --prefix=/usr --enable-db=true
+  make
+}
+check() {
+  cd "$srcdir/${gitname}"
+  make check
+}
 package() {
-  cd libnbcompat
-
-  bmake install DESTDIR="$pkgdir"
-
-  install -Dm644 ../LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+  cd "$srcdir/${gitname}"
+  make DESTDIR="$pkgdir" install
 }

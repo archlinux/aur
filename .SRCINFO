@@ -1,18 +1,18 @@
-pkgbase = libnbcompat
+pkgbase = libnbcompat-git
 	pkgdesc = Portable NetBSD compatibility library
-	pkgver = 20180822
+	pkgver = 1.0.2.r0.g4700b022
 	pkgrel = 1
-	url = http://www.netbsd.org/
-	arch = i686
+	epoch = 1
+	url = https://github.com/archiecobbs/libnbcompat
 	arch = x86_64
 	license = BSD
-	makedepends = bmake
-	makedepends = git
-	options = !makeflags
-	source = git+https://github.com/jgoerzen/libnbcompat#commit=be9f9298fd165ea01a0769c4ffa29a3ec0d22023
-	source = LICENSE
-	md5sums = SKIP
-	md5sums = beab088c74f4e3e456da604c0d62c2e3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	depends = glibc
+	provides = libnbcompat=1:1.0.2.r0.g4700b022
+	conflicts = libnbcompat
+	source = git+https://github.com/archiecobbs/libnbcompat.git
+	sha256sums = SKIP
 
-pkgname = libnbcompat
-
+pkgname = libnbcompat-git
