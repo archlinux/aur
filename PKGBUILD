@@ -2,7 +2,7 @@
 # Contributor: h3li0p4us3 Moharami <h3li0p4us3 at proton dot me>
 
 pkgname=dnschanger-desktop
-pkgver=2.3.13
+pkgver=2.3.14
 pkgrel=1
 pkgdesc="DNS Changer for Windows, Mac and Linux operating systems"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('bash' "${_electron}")
 makedepends=('gendesk' 'npm' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DnsChanger/dnsChanger-desktop/archive/v${pkgver}.tar.gz"
         "${pkgname%-desktop}.sh")
-sha256sums=('f09dd7cdf566a22c7767deb6ab91403b38741b16d07fe80a5726450a1eff738e'
+sha256sums=('95a18224612671da51cabfed553ace1f1130211059042c6b209c73b427244d73'
             '98d8ee3e79aab28eaad39a4064dce1c5eaf946b7f437fd421b3bca30dd294810')
 
 prepare() {
