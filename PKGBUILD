@@ -3,11 +3,11 @@
 pkgname=emacs-with-editor
 _github_org="magit"
 _github_repo="with-editor"
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="Use the Emacsclient as the $EDITOR of child processes"
 arch=('any')
-url="http://github.com/${_github_org}/${_github_repo}"
+url="https://github.com/${_github_org}/${_github_repo}"
 license=('GPL3')
 makedepends=('git')
 depends=(
@@ -18,8 +18,8 @@ depends=(
 )
 conflicts=('emacs-with-editor-git')
 install="${pkgname}.install"
-source=("https://github.com/${_github_org}/${_github_repo}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4bbc01331e8772037838847944b91cdc9d8456e379daad61c8c9d076431ba5dd')
+source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('12f30b6356235962e91f38897413f0c65a981cfbf6b9f699efa3aa2636443adc')
 
 build() {
   cd "$srcdir/${_github_repo}-${pkgver}"

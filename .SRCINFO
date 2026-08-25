@@ -1,8 +1,8 @@
 pkgbase = emacs-with-editor
 	pkgdesc = Use the Emacsclient as the emacs of child processes
-	pkgver = 3.5.2
+	pkgver = 3.5.3
 	pkgrel = 1
-	url = http://github.com/magit/with-editor
+	url = https://github.com/magit/with-editor
 	install = emacs-with-editor.install
 	arch = any
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = emacs-with-editor
 	depends = emacs-cond-let
 	depends = emacs-llama
 	conflicts = emacs-with-editor-git
-	source = https://github.com/magit/with-editor/archive/refs/tags/v3.5.2.tar.gz
-	sha256sums = 4bbc01331e8772037838847944b91cdc9d8456e379daad61c8c9d076431ba5dd
+	source = https://github.com/magit/with-editor/archive/refs/tags/v3.5.3.tar.gz
+	sha256sums = 12f30b6356235962e91f38897413f0c65a981cfbf6b9f699efa3aa2636443adc
 
 pkgname = emacs-with-editor
