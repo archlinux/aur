@@ -1,6 +1,6 @@
 pkgbase = fcitx5-git
 	pkgdesc = Next generation of fcitx
-	pkgver = 5.1.21.r54.g442edbc9
+	pkgver = 5.1.21.r55.g3b0f5e5f
 	pkgrel = 1
 	url = https://github.com/fcitx/fcitx5
 	arch = i686
@@ -10,6 +10,8 @@ pkgbase = fcitx5-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = wayland-protocols
+	makedepends = plasma-wayland-protocols
+	makedepends = nlohmann-json
 	depends = cairo
 	depends = enchant
 	depends = iso-codes

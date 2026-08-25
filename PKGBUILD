@@ -7,7 +7,7 @@ _SPELL_EN_DICT_SHA256='c44a5d7847925eea9e4d2d04748d442cd28dd9299a0b572ef7d91eac4
 
 _pkgname=fcitx5
 pkgname=${_pkgname}-git
-pkgver=5.1.21.r54.g442edbc9
+pkgver=5.1.21.r55.g3b0f5e5f
 pkgrel=1
 pkgdesc="Next generation of fcitx"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ url="https://github.com/fcitx/fcitx5"
 license=('GPL')
 depends=('cairo' 'enchant' 'iso-codes' 'libgl' 'libxkbcommon-x11' 'pango' 'wayland'
          'xcb-imdkit-git' 'xcb-util-wm' 'libxkbfile' 'fmt' 'gdk-pixbuf2')
-makedepends=('extra-cmake-modules' 'git' 'ninja' 'wayland-protocols')
+makedepends=('extra-cmake-modules' 'git' 'ninja' 'wayland-protocols' 'plasma-wayland-protocols' 'nlohmann-json')
 provides=($_pkgname)
 conflicts=($_pkgname)
 
