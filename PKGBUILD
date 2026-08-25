@@ -13,13 +13,16 @@
 pkgbase=slipmat-git
 pkgname=('slipmat-daemon-git' 'slipmat-git' 'climat-git')
 _pkgname=slipmat
-pkgver=0.10.0.r57.g1488b4c
+pkgver=0.10.0.r106.ga83d49f
 pkgrel=1
 arch=('x86_64')          # Widevine on Linux is x86_64 only
 url="https://github.com/SoftARV/Slipmat"
 license=('GPL-3.0-or-later')
+# `libpulse` is needed to *build*, not only to run: both the daemon and climat
+# link against it. A missing runtime dependency fails at launch; a missing build
+# one fails at the link, which is harder to read.
 makedepends=('cargo' 'nodejs' 'npm' 'git' 'pkgconf' 'librsvg'
-             'gtk4' 'libadwaita')
+             'gtk4' 'libadwaita' 'libpulse')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 options=('!debug' '!lto')
@@ -73,8 +76,10 @@ package_slipmat-daemon-git() {
   # is the surprising one** — the sidecar needs it even though the app is GTK4,
   # and nothing else here pulls it in. It was never declared and worked only
   # because most desktops happen to have it.
+  # `libpulse` is the daemon's own now: volume is the audio server's stream
+  # volume, not a gain inside MusicKit — see crates/slipmatd/src/mixer.rs.
   depends=('gtk3' 'nss' 'alsa-lib' 'libcups' 'libxkbcommon' 'mesa' 'libdrm'
-           'libseccomp')
+           'libseccomp' 'libpulse')
   provides=("slipmat-daemon=$pkgver")
   # **Not `slipmat`, however much it looks like it should be.** The release
   # package does own these same sidecar paths — but `slipmat-git` *provides*
@@ -147,7 +152,11 @@ package_climat-git() {
   # No toolkit: it draws itself. The daemon behind it still needs a display
   # server for Chromium, which is why this cannot run over plain SSH — see the
   # README it installs.
-  depends=("slipmat-daemon-git=$pkgver-$pkgrel")
+  #
+  # `libpulse` is the visualiser's, and it is a real link rather than a
+  # convention — `ldd` shows libpulse.so.0 and libpulse-simple.so.0. PipeWire
+  # users have it too, through `pipewire-pulse`.
+  depends=("slipmat-daemon-git=$pkgver-$pkgrel" 'libpulse' 'hicolor-icon-theme')
   provides=("climat=$pkgver")
   # **Only `climat`.** The release `slipmat` package owns the same sidecar paths
   # the daemon does, so it would be tempting to name it here — but `slipmat-git`
@@ -160,7 +169,23 @@ package_climat-git() {
   conflicts=('climat')
 
   cd "$srcdir/$_pkgname"
+  local appid=dev.miguelrincon.Climat
+
   install -Dm755 target/release/climat "$pkgdir/usr/bin/climat"
+
+  # **A desktop entry for a terminal program.** `Terminal=true`, so a launcher
+  # opens a terminal and runs it there — which terminal is the desktop's
+  # business. Without this climat is only ever a command.
+  install -Dm644 "data/$appid.desktop" \
+    "$pkgdir/usr/share/applications/$appid.desktop"
+  install -Dm644 "data/icons/hicolor/scalable/apps/$appid.svg" \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/$appid.svg"
+  for sz in 16 32 48 64 128 256 512; do
+    install -d "$pkgdir/usr/share/icons/hicolor/${sz}x${sz}/apps"
+    rsvg-convert -w "$sz" -h "$sz" "data/icons/hicolor/scalable/apps/$appid.svg" \
+      -o "$pkgdir/usr/share/icons/hicolor/${sz}x${sz}/apps/$appid.png"
+  done
+
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 crates/climat/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
