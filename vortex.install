@@ -2,7 +2,7 @@ post_install() {
   chmod 4755 '/opt/Vortex/chrome-sandbox' 2>/dev/null || true
   update-desktop-database -q
   update-mime-database /usr/share/mime
-  echo ":: To handle NXM links run: xdg-mime default vortex-handler.desktop x-scheme-handler/nxm"
+  echo ":: To handle NXM links run: xdg-mime default vortex.desktop x-scheme-handler/nxm"
 }
 
 post_upgrade() {
