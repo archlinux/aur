@@ -1,7 +1,7 @@
 # Maintainer: Andersmmg <andersmmg at duck dot com>
 pkgname=python-hyprland-monitors
 _module=${pkgname#python-}
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Monitor management utilities for Hyprland"
 url="https://github.com/BlueManCZ/hyprland-monitors"
@@ -10,7 +10,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling'
 license=('MIT')
 arch=('any')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a2cc1cb07d67a1be701cc0a4b52cefb04b8d311d25d0e5d69ab9d330939b9205')
+sha256sums=('b999f2f5c613530464ad8aead28c65b077904076e19257726b28b490fea47018')
 
 build() {
   cd "$_module-$pkgver"
