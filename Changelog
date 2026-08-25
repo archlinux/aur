@@ -1,18 +1,25 @@
 -------------------------------------------------------
  Changelog    : cidrtools-cffi
- Tags         : 1.0.1 ➙ 1.2.0
-              : 2026-08-20 ➙ 2026-08-22
+ Tags         : 1.0.2 ➙ 1.4.0
+              : 2026-08-20 ➙ 2026-08-25
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-08-22   : 1.2.0
+ 2026-08-25   : 1.4.0
+              - **1.4.0**
+            
+                * Sync with cidrtools 1.4.0
+            
+                  New ct_str_to_cidr_block_limit(), ct_is_ipv4_or_ipv6()
+
+ 2026-08-22   : 1.2.0, origin/master
               - **1.2.0**
             
                 * Sync with cidrtools 1.2.0.
                   Add new CidrBlocks::intersection() which computes the intersecting subnets of two sets
                   of cidr blocks.
 
- 2026-08-20   : 1.0.4, origin/master
+ 2026-08-20   : 1.0.4
               - Readme update
               - Fix typo in Readme
 
@@ -21,7 +28,3 @@
 
  2026-08-20   : 1.0.2
               - push 1.0.2
-
- 2026-08-20   : 1.0.1
-              - release 1.0.1
-              - Add missing meson.build to repo
