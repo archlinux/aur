@@ -1,0 +1,27 @@
+pkgbase = ltspice-17
+	pkgdesc = SPICE simulator, schematic capture and waveform viewer (Legacy Version 17).
+	pkgver = 17.1.15
+	pkgrel = 1
+	url = https://www.analog.com/en/resources/design-tools-and-calculators/ltspice-simulator.html
+	arch = x86_64
+	license = LicenseRef-LTspice
+	makedepends = gawk
+	makedepends = curl
+	makedepends = icoutils
+	makedepends = imagemagick
+	makedepends = wine
+	depends = wine
+	optdepends = xdg-utils: for launching HTML help files
+	options = !strip
+	source = ltspice-17.sh
+	source = ltspice-17-help.sh
+	source = conv.sh
+	source = ltspice-17.desktop
+	source = LTspice64-17.1.15.exe::https://ltspice.analog.com/software/LTspice64.exe
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ltspice-17
