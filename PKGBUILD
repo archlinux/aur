@@ -3,7 +3,7 @@
 
 _repo_name=transcribe.cpp
 pkgname=transcribe-cpp-vulkan
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='C/C++ speech-to-text inference library and CLI based on ggml (Vulkan)'
 arch=('x86_64')
@@ -29,7 +29,7 @@ optdepends=(
 source=(
   "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('9da9128a6b9c10aaad20d982dd9d19ac13f9a3561f34ccad8555803c74c503b3')
+sha256sums=('dae62f8765d5a8d2a26dcc81f40df79477081222c9e916eae4e4d16fe35a7210')
 
 build() {
   # Vulkan is enabled by the system ggml-vulkan
