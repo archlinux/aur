@@ -5,7 +5,7 @@
 # verified in prepare() against the release's own SHA256SUMS manifest, so
 # no hash needs to be baked into this file.
 pkgname=plm-bin
-pkgver=1.0.7
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="PSDK Login Manager — a minimal Flutter/PAM login manager (prebuilt)"
 arch=('x86_64')

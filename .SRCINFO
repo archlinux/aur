@@ -1,6 +1,6 @@
 pkgbase = plm-bin
 	pkgdesc = PSDK Login Manager — a minimal Flutter/PAM login manager (prebuilt)
-	pkgver = 1.0.7
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/psdkjoon/plm
 	install = plm.install
@@ -11,8 +11,8 @@ pkgbase = plm-bin
 	depends = cage
 	provides = plm
 	conflicts = plm
-	source = plm-1.0.7-linux-x86_64.tar.gz::https://github.com/psdkjoon/plm/releases/download/v1.0.7/plm-1.0.7-linux-x86_64.tar.gz
-	source = SHA256SUMS::https://github.com/psdkjoon/plm/releases/download/v1.0.7/SHA256SUMS
+	source = plm-2.0.0-linux-x86_64.tar.gz::https://github.com/psdkjoon/plm/releases/download/v2.0.0/plm-2.0.0-linux-x86_64.tar.gz
+	source = SHA256SUMS::https://github.com/psdkjoon/plm/releases/download/v2.0.0/SHA256SUMS
 	sha256sums = SKIP
 	sha256sums = SKIP
 
