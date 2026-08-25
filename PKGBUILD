@@ -10,7 +10,7 @@
 # hence the provides/conflicts on the main package.
 pkgbase=wdm-wayland
 pkgname=('wdm-wayland' 'wdm-greeter')
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc='A Wayland display manager that is its own compositor'
 arch=('x86_64' 'aarch64')
@@ -28,7 +28,7 @@ source=("wdm-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # Never SKIP. SKIP would let makepkg accept whatever arrives, which for a source
 # that is a URL is the wrong failure — a tarball substituted upstream would be
 # built and installed without a word.
-sha256sums=('94fbfae480ddd21b18e2c7e5472e135a5a5577dcb172ace989d520170622443b')
+sha256sums=('c23280a52adb671e825a4524d79d00f01bd57adb363bec90318471d93debda9c')
 
 # The tarball is the whole workspace whatever the pkgbase is, so the source
 # directory is named for the project rather than for this package.
