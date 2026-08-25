@@ -1,7 +1,7 @@
 # Maintainer: Ken Tobias <kentobias@gmail.com>
 
 pkgname=rusticprofile
-pkgver=0.2.30
+pkgver=0.2.32
 pkgrel=1
 pkgdesc="A local, per-machine scheduler and orchestrator for rustic backups"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'rustic')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4c147cfcd3bef6f520b3333d6ed414b4a98a5ab6957f63e5833aab48cfaea91e')
+sha256sums=('eee6941a42b69958810627336971ec70de11288c5a3740de46a3b81a17f69d6e')
 
 prepare() {
   cd "$pkgname-$pkgver"
