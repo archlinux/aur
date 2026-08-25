@@ -1,6 +1,6 @@
 pkgbase = proton-ge-bin
 	pkgdesc = A fancy custom distribution of Valves Proton with various patches (auto-tracks latest release)
-	pkgver = GE_Proton11_3
+	pkgver = GE_Proton11_5
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/GloriousEggroll/proton-ge-custom
@@ -40,7 +40,7 @@ pkgbase = proton-ge-bin
 	optdepends = wine: support for 32bit prefixes
 	optdepends = xboxdrv: gamepad driver service
 	provides = proton
-	provides = proton-ge-custom=GE.Proton11_3
+	provides = proton-ge-custom=GE.Proton11_5
 	conflicts = proton-ge-custom
 	conflicts = proton-ge-custom-bin
 	options = !strip
@@ -48,8 +48,8 @@ pkgbase = proton-ge-bin
 	options = emptydirs
 	options = pestrip
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-bin/user_settings.py
-	source = GE-Proton11-3_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton11-3/GE-Proton11-3.tar.gz
-	source = GE-Proton11-3.sha512sum::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton11-3/GE-Proton11-3.sha512sum
+	source = GE-Proton11-5_1-x86_64.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton11-5/GE-Proton11-5-x86_64.tar.gz
+	source = GE-Proton11-5-x86_64.sha512sum::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton11-5/GE-Proton11-5-x86_64.sha512sum
 	source = user_settings.py
 	source = launcher.sh
 	source = proton-ge-custom-bin.conf

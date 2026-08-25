@@ -63,8 +63,8 @@ backup=("${_protoncfg}")
 
 # Обрати внимание: файл конфига указан как 'proton-ge-custom-bin.conf',
 # чтобы скрипт нашел его в твоей текущей папке без переименования.
-source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
-  "${_pkgver}.sha512sum::${url}/releases/download/${_pkgver}/${_pkgver}.sha512sum"
+source=("${_pkgver}_${pkgrel}-x86_64.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}-x86_64.tar.gz"
+  "${_pkgver}-x86_64.sha512sum::${url}/releases/download/${_pkgver}/${_pkgver}-x86_64.sha512sum"
   'user_settings.py'
   'launcher.sh'
   'proton-ge-custom-bin.conf'
@@ -79,8 +79,8 @@ sha512sums=('SKIP'
 prepare() {
   cd "${srcdir}"
   local _expected _actual
-  _expected=$(awk '{print $1}' "${_pkgver}.sha512sum")
-  _actual=$(sha512sum "${_pkgver}_${pkgrel}.tar.gz" | awk '{print $1}')
+  _expected=$(awk '{print $1}' "${_pkgver}-x86_64.sha512sum")
+  _actual=$(sha512sum "${_pkgver}_${pkgrel}-x86_64.tar.gz" | awk '{print $1}')
   if [[ "${_expected}" != "${_actual}" ]]; then
     error "sha512 mismatch: expected ${_expected}, got ${_actual}"
     return 1
@@ -91,10 +91,10 @@ prepare() {
 build() {
   cd "${srcdir}"
   sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" "launcher.sh"
-  sed -i -r 's|"GE-Proton.*"|"Proton-GE"|' "${_pkgver}/compatibilitytool.vdf"
+  sed -i -r 's|"GE-Proton.*"|"Proton-GE"|' "${_pkgver}-x86_64/compatibilitytool.vdf"
 
   # Агрессивный параллельный стрип ВСЕХ бинарников (даже без расширений) > 1MB
-  find "${_pkgver}/files" -type f -size +1M -print0 \
+  find "${_pkgver}-x86_64/files" -type f -size +1M -print0 \
     | xargs -0 -P "$(nproc)" -I {} bash -c '
         case "$(file -b "$1" 2>/dev/null)" in
           *ELF*|*PE32*|*PE32+*) strip --preserve-dates --strip-unneeded "$1" 2>/dev/null ;;
@@ -104,7 +104,7 @@ build() {
 }
 
 package() {
-  local _src="${srcdir}/${_pkgver}"
+  local _src="${srcdir}/${_pkgver}-x86_64"
   local _dest="${pkgdir}/${_protondir}"
 
   # Установка (reflink=auto делает мгновенное копирование на BTRFS/XFS)
