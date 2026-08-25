@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=gbe_fork-bin
-pkgver=2026_07_19
+pkgver=2026_08_23
 pkgrel=1
 pkgdesc="Goldberg Steam Emulator fork — drop-in Steam API replacement for LAN multiplayer without Steam"
 arch=('x86_64')
@@ -20,8 +20,8 @@ options=('!debug')
 _tag="release-${pkgver}"
 source=("${pkgname}-linux-${pkgver}.tar.bz2::${url}/releases/download/${_tag}/emu-linux-release.tar.bz2"
         "${pkgname}-win-${pkgver}.7z::${url}/releases/download/${_tag}/emu-win-release.7z")
-sha256sums=('382abe29f7e9e4febb2f73c9e2a3376e6aafd993266890d519f24bec8948d604'
-            '3ba855ef962205136a54fb32519a46362e0cc5b42fc2bb3667e4d21307d972e5')
+sha256sums=('ae1a950c650464e3efa533ab8ba446d575962b8f1045d4f289f7a54393e55282'
+            '812dd5f6edd3f175219cc9836e55c1ef4154854a00fb0a6ff197254b85579baf')
 noextract=("${pkgname}-win-${pkgver}.7z")
 
 latestver() {
