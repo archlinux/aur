@@ -1,4 +1,5 @@
-["dgop-bin"]
-source = "git"
-git = "https://github.com/AvengeMedia/dgop.git"
+[dgop-bin]
+source = "github"
+github = "AvengeMedia/dgop"
+use_latest_release = true
 prefix = "v"
