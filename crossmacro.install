@@ -98,7 +98,7 @@ post_install() {
             installer_user_group_status="unknown"
         elif id -nG "$installer_user" 2>/dev/null | tr ' ' '\n' | grep -Fx crossmacro >/dev/null 2>&1; then
             installer_user_group_status="already_member"
-        elif usermod -aG crossmacro "$installer_user" >/dev/null 2>&1; then
+        elif gpasswd -a "$installer_user" crossmacro >/dev/null 2>&1; then
             installer_user_group_status="added"
         else
             installer_user_group_status="failed"
@@ -124,17 +124,17 @@ post_install() {
             ;;
         failed)
             echo "1. Could not add '$installer_user' to the 'crossmacro' group automatically."
-            echo "   Run manually: sudo usermod -aG crossmacro \$USER"
+            echo "   Run manually: sudo gpasswd -a \$USER crossmacro"
             echo "   Then log out and log back in, or reboot, for the group change to take effect."
             ;;
         unknown)
             echo "1. Could not determine the non-root user who launched the installer."
-            echo "   Run manually: sudo usermod -aG crossmacro \$USER"
+            echo "   Run manually: sudo gpasswd -a \$USER crossmacro"
             echo "   Then log out and log back in, or reboot, for the group change to take effect."
             ;;
         *)
             echo "1. Add yourself to the 'crossmacro' group to communicate with the daemon:"
-            echo "   sudo usermod -aG crossmacro \$USER"
+            echo "   sudo gpasswd -a \$USER crossmacro"
             echo "   Then log out and log back in, or reboot, for the group change to take effect."
             ;;
     esac

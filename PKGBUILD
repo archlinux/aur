@@ -1,24 +1,24 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="Cross-platform mouse and keyboard macro automation tool"
+pkgdesc="Mouse and keyboard macro recorder with hotkeys, scheduling, and text expansion"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alper-han/CrossMacro"
 license=('GPL-3.0-only')
-depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst' 'systemd-libs' 'libxkbcommon' 'icu')
+depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst' 'shadow' 'systemd' 'systemd-libs' 'libxkbcommon' 'icu')
 makedepends=('dotnet-sdk>=10.0' 'clang' 'zlib')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v1.3.1.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v1.4.0.tar.gz"
         "crossmacro.sysusers"
         "crossmacro-modules.conf")
-sha256sums=('2c437d4562093325d879b7fe06b002463f9aa5b79af7351f22a6cc917604a12b'
+sha256sums=('0edf9eb15159d17aa80a8e45e2675a84af037e59b59846ed945b9182a6dcb025'
             'SKIP'
             'SKIP')
 install=crossmacro.install
 
 build() {
-    cd "CrossMacro-1.3.1"
+    cd "CrossMacro-1.4.0"
     local target_rid
     case "${CARCH}" in
         x86_64)
@@ -40,33 +40,19 @@ build() {
     dotnet publish src/CrossMacro.UI.Linux/CrossMacro.UI.Linux.csproj \
         -c Release \
         -r "$target_rid" \
-        --self-contained true \
-        -p:PublishAot=true \
-        -p:PublishReadyToRun=true \
-        -p:OptimizationPreference=Speed \
-        -p:StripSymbols=true \
-        -p:IlcTrimMetadata=true \
-        -p:DebugType=None \
-        -p:DebugSymbols=false \
+        -p:CrossMacroPublishProfile=native-aot \
         -o publish/
         
     # Build Daemon
     dotnet publish src/CrossMacro.Daemon/CrossMacro.Daemon.csproj \
         -c Release \
         -r "$target_rid" \
-        -p:PublishAot=true \
-        -p:EnableCompressionInSingleFile=true \
-        -p:PublishReadyToRun=true \
-        -p:OptimizationPreference=Speed \
-        -p:StripSymbols=true \
-        -p:IlcTrimMetadata=true \
-        -p:DebugType=None \
-        -p:DebugSymbols=false \
+        -p:CrossMacroPublishProfile=native-aot \
         -o publish-daemon/
 }
 
 package() {
-    cd "CrossMacro-1.3.1"
+    cd "CrossMacro-1.4.0"
     
     # Install UI files
     install -dm755 "$pkgdir/usr/lib/$pkgname"
@@ -119,7 +105,8 @@ package() {
     # Install desktop file
     install -Dm644 "scripts/assets/CrossMacro.desktop" \
         "$pkgdir/usr/share/applications/CrossMacro.desktop"
-    sed -i 's|Exec=crossmacro|Exec=/usr/lib/crossmacro/CrossMacro.UI|g' "$pkgdir/usr/share/applications/CrossMacro.desktop"
+    sed -i 's|Exec=crossmacro|Exec=/usr/lib/crossmacro/CrossMacro.UI|g' \
+        "$pkgdir/usr/share/applications/CrossMacro.desktop"
 
     # Install man page
     install -Dm644 "docs/man/crossmacro.1" \
