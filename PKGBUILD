@@ -3,7 +3,7 @@
 pkgname=redumper
 epoch=
 pkgver=746
-pkgrel=1
+pkgrel=2
 pkgdesc='Low level CD dumper utility'
 arch=(x86_64)
 url='https://github.com/superg/redumper'
