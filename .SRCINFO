@@ -1,0 +1,21 @@
+pkgbase = ktlsp-git
+	pkgdesc = A community-maintained fork of fwcd/kotlin-language-server, providing Kotlin support via LSP
+	pkgver = r1768.478e33a6
+	pkgrel = 1
+	url = https://codeberg.org/winlogon/ktlsp.git
+	arch = any
+	license = MIT
+	makedepends = java-environment=21
+	makedepends = git
+	depends = java-runtime=21
+	provides = ktlsp
+	provides = kotlin-language-server
+	conflicts = ktlsp
+	conflicts = ktlsp-bin
+	conflicts = kotlin-language-server
+	conflicts = kotlin-language-server-bin
+	conflicts = kotlin-language-server-git
+	source = ktlsp::git+https://codeberg.org/winlogon/ktlsp.git
+	sha256sums = SKIP
+
+pkgname = ktlsp-git
