@@ -1,6 +1,6 @@
 pkgbase = ghidra-git
 	pkgdesc = Software reverse engineering framework (git)
-	pkgver = 12.1.2.r799.47ae57a416
+	pkgver = 12.1.3.r1007.382b26c9a5
 	pkgrel = 1
 	url = https://www.nsa.gov/ghidra
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = ghidra-git
 	depends = bash
 	depends = java-environment>=25
 	depends = python
-	optdepends = ghidra-desktop: Desktop Entry
 	optdepends = python-protobuf: Debugger integration
 	optdepends = gdb: GDB Debugger integration
 	optdepends = lldb: LLDB Debugger integration
@@ -21,6 +20,8 @@ pkgbase = ghidra-git
 	conflicts = ghidra
 	options = !strip
 	source = git+https://github.com/NationalSecurityAgency/ghidra
+	source = ghidra.desktop
 	sha512sums = SKIP
+	sha512sums = e611f0a84023aee72016a8bb73a627e4d3b3fc28201fe2b60ccc8d6628fc2e7005b9edc24e35e489311fd6fa9ed1a35d5e230e2657a77b331dbf7cd6773ae957
 
 pkgname = ghidra-git

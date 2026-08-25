@@ -6,7 +6,7 @@
 # Contributor: nullableVoidPtr <nullableVoidPtr _ gmail _ com>
 
 pkgname=ghidra-git
-pkgver=12.1.2.r799.47ae57a416
+pkgver=12.1.3.r1007.382b26c9a5
 pkgrel=1
 pkgdesc='Software reverse engineering framework (git)'
 arch=('x86_64' 'aarch64') # Not sure aarch64 is correct here. Please confirm it to me in the comments if you can test that!
@@ -24,7 +24,6 @@ makedepends=(
   'python-pip'
 )
 optdepends=(
-  'ghidra-desktop: Desktop Entry'
   'python-protobuf: Debugger integration'
   'gdb: GDB Debugger integration'
   'lldb: LLDB Debugger integration'
@@ -36,9 +35,11 @@ conflicts=('ghidra')
 options=('!strip')
 source=(
   "git+https://github.com/NationalSecurityAgency/ghidra"
+  "ghidra.desktop"
 )
 sha512sums=(
   'SKIP'
+  'e611f0a84023aee72016a8bb73a627e4d3b3fc28201fe2b60ccc8d6628fc2e7005b9edc24e35e489311fd6fa9ed1a35d5e230e2657a77b331dbf7cd6773ae957'
 )
 _pkgname="${pkgname/-git/}"
 _stop='\e[m'
@@ -66,24 +67,6 @@ prepare() {
   # NOTE: this already fetches the correct version for all the build dependencies, including ghidra-data and python ones, but ghidra wants to use system python so python-protobuf is still needed for debugger support
   echo -e "${_prefix}Setting up the build dependencies"
   gradle --parallel --init-script gradle/support/fetchDependencies.gradle
-
-  ##
-  ## FOR GHIDRA DEVELOPERS
-  ## (Left commented because the steps below are only required if you want to develop and contribute to ghidra)
-  ## https://github.com/NationalSecurityAgency/ghidra/blob/master/DevGuide.md
-  ##
-
-#  echo -e "${_prefix}Setting up the developers environment"
-#  gradle --parallel prepDev
-#
-#  echo -e "${_prefix}Setting up the eclipse configurations"
-#  gradle --parallel eclipse
-#
-#  echo -e "${_prefix}Compiling the linux64 native binaries"
-#  gradle --parallel buildNatives_linux64
-#
-#  echo -e "${_prefix}Compiling the precompile language modules"
-#  gradle --parallel sleighCompile
 }
 
 build() {
@@ -110,6 +93,15 @@ package() {
   ln -s /opt/ghidra/ghidraRun "$pkgdir"/usr/bin/ghidra
   ln -s /opt/ghidra/support/pyghidraRun "${pkgdir}"/usr/bin/pyghidra
   ln -s /opt/ghidra/support/analyzeHeadless "$pkgdir"/usr/bin/ghidra-headless
+
+  echo -e "${_prefix}Setting up the desktop file"
+  install -Dm644 ../ghidra.desktop "${pkgdir}"/usr/share/applications/ghidra.desktop
+
+  echo -e "${_prefix}Setting up the desktop file"
+  for _size in 16 24 32 48 128 256; do
+    install -vDm 644 Ghidra/Framework/Gui/src/main/resources/images/GhidraIcon$_size.png \
+      "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/ghidra.png"
+  done
 }
 
 # vim: ts=2 sw=2 et:
