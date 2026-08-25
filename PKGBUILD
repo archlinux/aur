@@ -1,6 +1,6 @@
 # Maintainer: Jon Tsiros <jon@brightblock.ai>
 pkgname=hyprlayer-bin
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="CLI for managing thoughts for AI coding agents"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('hyprlayer')
 conflicts=('hyprlayer')
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/BrightBlock/hyprlayer-cli/releases/download/v${pkgver}/hyprlayer-x86_64-unknown-linux-gnu")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/BrightBlock/hyprlayer-cli/releases/download/v${pkgver}/hyprlayer-aarch64-unknown-linux-gnu")
-sha256sums_x86_64=('c73ad4ae0d322f60c256228411aa25b14e6162da3b33e7f88f0c21ee6289c8a5')
-sha256sums_aarch64=('958b642994e99696c24ec9a7e05fb84c1518b9935033a55430c52682fd98b697')
+sha256sums_x86_64=('393f3878aacc2abd52595b1e038a46b5ebd431b5379796e4674c23cd6bf79f2d')
+sha256sums_aarch64=('2a250a84df8933b715fa11d35e3e2836468a7582686469229688c10e269df5d0')
 
 package() {
     if [[ "$CARCH" == "x86_64" ]]; then
