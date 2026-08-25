@@ -1,21 +1,23 @@
 # Maintainer: Empyrealm <realminc.depravity737@passinbox.com>
 pkgname=oa-git
-pkgver=0.7.4
+pkgver=0.7.17.r0.g6dccf9c
 pkgrel=1
-pkgdesc="OA — High-performance C++ compute engine for ML, audio, and graphics (git version)"
+pkgdesc="OA — Vulkan 1.4 compute runtime for ML, vision, audio, crypto, and UI (git version)"
 arch=('x86_64')
 url="https://github.com/realminc/oa"
 license=('BUSL-1.1')
-depends=('liburing')
+depends=('vulkan-icd-loader')
+provides=("oa=${pkgver}")
+conflicts=('oa')
 # NOTE: the shader compiler is shader-slang's `slangc`, NOT Arch's `slang` package
 # (that is the S-Lang terminal interpreter — a different project). It is not in the
 # official repos, so we fetch the pinned upstream release, exactly like OA's CI.
 makedepends=('git' 'cmake' 'ninja' 'clang')
-_slangver=2026.4.2
+_slangver=2026.5.2
 source=("git+https://github.com/realminc/oa.git"
         "slang-${_slangver}-linux-x86_64.tar.gz::https://github.com/shader-slang/slang/releases/download/v${_slangver}/slang-${_slangver}-linux-x86_64.tar.gz")
 sha256sums=('SKIP'
-            'SKIP')
+            'd4f93f5e541a42b6e5a75b82ac5f787077ec74d80227dbfc5963324a4e8efcf1')
 
 pkgver() {
   cd oa
