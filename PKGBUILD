@@ -2,7 +2,7 @@
 
 pkgname=pkglog-elixir-bin
 _pkgname=pkglog
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Reports log of package updates"
 arch=("x86_64")
@@ -11,7 +11,7 @@ license=("AGPL-3.0")
 depends=("erlang-core")
 conflicts=("pkglog")
 source=("${pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/pkglog")
-sha256sums=('e0080bf597a83e465907d03f93efec32248a9c95296a7c8d9df33cd7417b1033')
+sha256sums=('10f99c75fed526b22b1419e62c02acae18522607777ce25b508888b269b53c0a')
 
 package() {
   install -D -m755 "$srcdir/${pkgname}-${pkgver}" "$pkgdir/usr/bin/$_pkgname"
