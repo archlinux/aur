@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <support@lmm.best>
 
 pkgname=lmm-api-go-bin
-pkgver=0.1.62
+pkgver=0.1.63
 pkgrel=1
 pkgdesc='LMM API Go backend, native CLI, and systemd service (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,14 @@ optdepends=(
   'valkey: cache, rate limiting, and login sessions'
 )
 source "${startdir:?}/lmm-api-cli-phase.sh"
-_lmm_cli_phase=$(lmm_cli_phase_for_binary_release "$pkgver")
+_lmm_declared_cli_phase='t0'
+if (( $(vercmp "$pkgver" 0.1.63) >= 0 )); then
+  lmm_cli_phase_validate "$_lmm_declared_cli_phase" || return 1
+  _lmm_cli_phase=$_lmm_declared_cli_phase
+else
+  [[ -z $_lmm_declared_cli_phase ]] || return 1
+  _lmm_cli_phase=$(lmm_cli_phase_for_binary_release "$pkgver")
+fi
 lmm_cli_phase_apply_metadata "$_lmm_cli_phase" "$pkgver" \
   'lmm-api' 'lmm-api-bin' 'lmm-api-git' 'lmm-api-go' 'lmm-api-go-git'
 backup=('etc/lmm-api-go/lmm-api-go.env')
@@ -24,7 +31,7 @@ _release_tag="go-v${pkgver}"
 _legacy_bundled_version=0.1.34
 _legacy_cli_archive_version=0.1.57
 _legacy_external_operator_version=0.1.57
-# go-v0.1.58 produced no release assets; 0.1.59 is T0 and 0.1.60 is T1.
+# go-v0.1.58 produced no release assets; releases >=0.1.63 use signed phase metadata.
 _artifact="lmm-api-go-${pkgver}-linux"
 _release_base="${url}/releases/download/${_release_tag}"
 source=('lmm-api-cli-phase.sh')
@@ -41,14 +48,14 @@ source_aarch64=(
 noextract=("${_artifact}-amd64.tar.gz" "${_artifact}-arm64.tar.gz")
 sha256sums=('2b93864b302a7901a4688fd5b7df9b7e262f193a666a915718f434db20054935')
 sha256sums_x86_64=(
-  '0315baff3a3f89d64bdbb5cdb3d6156adf83068c2f8b060f63fc15e02b30429d'
-  '361ae6109d91a5aab186769d51cef094f11401c4d2b295d7f87e285316af43c3'
-  'ceaabd006375bf9691ff36cb25c0bd09894c7a06c4ae9f3889ac786fc4cb6c3a'
+  '60e2b7757d62778f5e872f25f2ac20527e171508a6902cfad2c6b14fb76202cf'
+  '4b37add7ff340cabdbaea247655436e7ac8e5b4726f47f2565fece9fe5cbc44d'
+  'b983efe2cc81a0727b1036832659d34bce8fc6f95e71c12942da406d53781a19'
 )
 sha256sums_aarch64=(
-  '04853eb7eced16de97a197e961b71961fabbb7aff4f662743b40ea2fd5547735'
-  '5fd29687fd6c06ee5bc708c2ac17f6e1c1d26e9c93cef337309bedc5276bce7f'
-  '6cbf2b5f5a58088baee6b6f534bcf6145c33c8abe0b8e4ec6facfbd2148204a6'
+  '301d1be7c6c55602e5a26d497b8c4801436a71440fc7e5777419f93bcbfb858d'
+  '2ee7b63f6e09b44ce429ce44e91e6f4e9c5def84a4d539177c5738182edaf7fa'
+  '3a9585f2c4a9dc4bd61d1050cd9d05851c83a1e7b227ce17c3e64fcb8058ccdd'
 )
 
 case "${CARCH}" in
@@ -96,6 +103,12 @@ prepare() {
     grep -Fqx 'Environment=LMM_API_FRONTEND_DIR=/srv/lmm-api-frontend/current' \
       "${bundle}/lmm-api.service"
   fi
+  if (( $(vercmp "${pkgver}" 0.1.63) >= 0 )); then
+    [[ -f ${bundle}/CLI_TRANSITION_PHASE && ! -L ${bundle}/CLI_TRANSITION_PHASE ]] || return 1
+  fi
+  if [[ -f ${bundle}/CLI_TRANSITION_PHASE ]]; then
+    [[ $(<"${bundle}/CLI_TRANSITION_PHASE") == "${_lmm_cli_phase}" ]] || return 1
+  fi
 }
 
 package() {
@@ -129,11 +142,16 @@ package() {
         "${pkgdir}/usr/lib/sysusers.d/lmm-api-operator.conf"
       install -Dm0644 "${bundle}/lmm-api-operator.tmpfiles" \
         "${pkgdir}/usr/lib/tmpfiles.d/lmm-api-operator.conf"
-      install -Dm0440 "${bundle}/lmm-api-operator.sudoers" \
+      install -d -m0750 "${pkgdir}/etc/sudoers.d"
+      install -m0440 "${bundle}/lmm-api-operator.sudoers" \
         "${pkgdir}/etc/sudoers.d/lmm-api-operator"
     fi
     install -Dm0644 "${bundle}/API_ROUTE_CONTRACT_REVISION" \
       "${pkgdir}/usr/share/doc/${pkgname}/API_ROUTE_CONTRACT_REVISION"
+    if [[ -f ${bundle}/CLI_TRANSITION_PHASE ]]; then
+      install -Dm0644 "${bundle}/CLI_TRANSITION_PHASE" \
+        "${pkgdir}/usr/share/doc/${pkgname}/CLI_TRANSITION_PHASE"
+    fi
   fi
 
   install -d -m0755 "${pkgdir}/usr/share/lmm-api-go/edge-policy"
