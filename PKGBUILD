@@ -2,7 +2,7 @@
 
 pkgname=quran-reader-bin
 _pkgname=quran-reader
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='A beautiful, fast, offline-first Quran reader'
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip' '!debug')
 source=("$pkgname-$pkgver.deb::$url/releases/download/v$pkgver/Quran.Reader_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/ask-786/$_pkgname/v$pkgver/LICENSE"
         "$_pkgname.desktop")
-sha256sums=('6589f1d3b808735289b5c790834712baeed546f99658493fc1e9e1ae2c20b904'
+sha256sums=('27f299f03d9ebfe777c46832f3f4abdf0cbe5be111b5f6a7e5a5479198e40d33'
             '7ac4a8c2a9f051e95d1b4aaf77fab3c616837769b82871d37f94a91345df1e34'
             '3117e16cd8e62a5eb824deb896fc2af63a4703b1af81974435504b40b0908ad5')
 
