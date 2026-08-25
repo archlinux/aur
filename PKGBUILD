@@ -7,17 +7,17 @@
 # Contributor: 
 # 
 pkgname='wg_tool'
-pkgdesc='Manage wireguard VPN configurations (servers and users).'
+pkgdesc='Wireguard VPN administration tool'
 _gitname='wg_tool'
 
-pkgver="9.2.4"
+pkgver="10.0.1"
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
 arch=(any)
 license=('GPL-2.0-or-later')
 depends=(
-    'python>=3.13' 
+    'python>=3.14' 
     'python-cryptography' 
     'py-cidr'
     'python-qrcode' 
@@ -29,17 +29,18 @@ depends=(
     'python-tomli-w'
     'bash'
 )
+
 optdepends=(
     'python-argcomplete: For command line option completion'
-    )
+)
 
-# To build docs uncommont sphinx/texlive
 makedepends=(
     'git' 
+    'meson'
+    'meson-python'
     'uv'
     'python-uv-build'
     'rsync'
-    #'python-sphinx' 'texlive-latexextra' # Docs
 )
 
 _mkpkg_depends=(
@@ -47,6 +48,7 @@ _mkpkg_depends=(
     'wireguard-tools>minor'
     'python-cryptography>minor'
     'nftables>minor'
+    'py-cidr>minor'
 )
 
 #
@@ -58,31 +60,26 @@ _mkpkg_depends=(
 validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C
 
 #source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
-source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
-sha512sums=('SKIP')
+source=(
+    "git+https://github.com/gene-git/${_gitname}#tag=${pkgver}"
+    wg_tool.tmpfiles
+)
+sha256sums=(
+    'SKIP'
+    'f05717b55bffbb1a07553c8daddfcfda7749e3508100a96ba1d04793b77f756c'
+)
 
 changelog="Changelog.rst"
 
 build() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
-
-    # To build Docs - uncomment these and sphinx makedepends above
-    #    echo "Build docs"
-    #    pdf='wg_tool.pdf'
-    #    cd ./Docs
-    #    make latexpdf >/dev/null 2>&1
-    #    make latexpdf
-    #    /usr/bin/rm -f $pdf
-    #    /usr/bin/cp _build/latex/$pdf .
-    #    make html
-    #    make html
-    #    /usr/bin/rm -rf _build/doctrees _build/latex
+    ./scripts/do-build
 }
 
 package() {
     cd "${_gitname}"
     ./scripts/do-install ${pkgdir}
+
+    install -Dm644 ../wg_tool.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/wg_tool.conf
+
 }
-# vim:set ts=4 sts=4 sw=4 et:
