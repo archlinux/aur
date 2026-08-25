@@ -1,7 +1,7 @@
 # Maintainer: Davide Gerhard <rainbow@irh.it>
 
 pkgname=freedv-gui
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Digital Voice for Radio Amateurs"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'patchelf' 'wget')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/drowe67/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
 )
-sha512sums=('d9ca7aac3bd4be2692d36f60d2bda5766c032f904edfe983a76b830ddb6981e3a71429cab5413eec17f79bb8371bdef074c0a55bf9b3271335a21fe315fc9e0f')
+sha512sums=('9de8c8f373d66492079e346ccad28b512df1311fe031f002815fd73532f4591fb84e0cde6e2894c3d3a386480cca26acb23015ede8347b2c3ea04e5b40f7b201')
 
 ## trying to use local library
 # Codec2:  fatal error: codec2_alloc.h: No such file or directory
@@ -50,15 +50,15 @@ package() {
 
   # remove local RPATH and copy the file in pkgdir
   for file in "${radae_bins[@]}"; do
-    patchelf --remove-rpath "build/rade_build/src/$file"
+    patchelf --remove-rpath "build/_deps/freedv_backend-build/rade_build/src/$file"
     # can't pass -Wl,--strip-debug via CMAKE_C_FLAGS
     #strip --remove-section=.debug_info "build/rade_build/src/$file"
-    install -m0755 -D "build/rade_build/src/${file}" "$pkgdir/usr/bin/${file}"
+    install -m0755 -D "build/_deps/freedv_backend-build/rade_build/src/${file}" "$pkgdir/usr/bin/${file}"
   done
   for file in "${radae_libs[@]}"; do
-    patchelf --remove-rpath "build/rade_build/src/$file"
+    patchelf --remove-rpath "build/_deps/freedv_backend-build/rade_build/src/$file"
     #strip --remove-section=.debug_info "build/rade_build/src/$file"
-    install -m0755 -D "build/rade_build/src/${file}" "$pkgdir/usr/lib/${file}"
+    install -m0755 -D "build/_deps/freedv_backend-build/rade_build/src/${file}" "$pkgdir/usr/lib/${file}"
   done
   ln -s "/usr/lib/${radae_libs[0]}" "$pkgdir/usr/lib/librade.so"
 
