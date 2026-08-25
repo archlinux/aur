@@ -20,6 +20,8 @@ pkgbase = astra-airlock
 	conflicts = astra-airlock-bin
 	conflicts = astra-airlock-git
 	source = astra-airlock-1.1.2::https://github.com/AstraSuite/Airlock/archive/refs/tags/v1.1.2.zip
+	source = astra-airlock.install
 	sha256sums = e790ce3efae269b4e4b4d68c733e70bb471dc928d0081c5d6ac38c200de508de
+	sha256sums = 7d6ed7e60cc63afc2ff25321a19e55d817713ed38963547ae6b2c6d5672e39fc
 
 pkgname = astra-airlock

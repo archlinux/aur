@@ -25,15 +25,17 @@ makedepends=(
 	'cmake'
 	'ninja'
 )
-source=(
-	"${pkgname}-${pkgver}::https://github.com/AstraSuite/Airlock/archive/refs/tags/v${pkgver}.zip"
-)
 conflicts=(
 	'astra-airlock-bin'
 	'astra-airlock-git'
 )
+source=(
+	"${pkgname}-${pkgver}::https://github.com/AstraSuite/Airlock/archive/refs/tags/v${pkgver}.zip"
+	"astra-airlock.install"
+)
 sha256sums=(
 	'e790ce3efae269b4e4b4d68c733e70bb471dc928d0081c5d6ac38c200de508de'
+	'7d6ed7e60cc63afc2ff25321a19e55d817713ed38963547ae6b2c6d5672e39fc'
 )
 build()
 {
