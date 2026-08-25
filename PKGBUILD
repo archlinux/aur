@@ -20,7 +20,7 @@ url=${_ghurl}
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
+conflicts=("${pkgname%-bin}")
 
 depends=('jobman')
 
@@ -34,14 +34,20 @@ sha256sums_i686=('a0d3e139dddca60f0a82749544d6ef3e8965187eb7047433278c62a16063a5
 sha256sums_aarch64=('beb933a4e7af908ffd3e1ed7fbfb828cf42dad92d49d97ee729fe9743711f7ba')
 
 
+prepare() {
+	cd "${srcdir}/" || exit
+
+	mv THIRD_PARTY_NOTICES.md THIRD_PARTY_NOTICES
+}
+
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 ${_appname} "${pkgdir}/usr/bin/${_appname}"
+	install -Dm755 ${provides[@]} -t "${pkgdir}/usr/bin/"
 
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-	install -Dm644 docs/CONFIGURATION.md "${pkgdir}/usr/share/doc/${pkgname}/CONFIGURATION.md"
+	install -Dm644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm644 docs/*.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 THIRD_PARTY_NOTICES.md "${pkgdir}/usr/share/licenses/${pkgname}/THIRD_PARTY_NOTICES.md"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 THIRD_PARTY_NOTICES -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
