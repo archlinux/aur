@@ -1,4 +1,5 @@
-["ctrld-bin"]
-source = "git"
-git = "https://github.com/Control-D-Inc/ctrld.git"
+[ctrld-bin]
+source = "github"
+github = "Control-D-Inc/ctrld"
+use_latest_release = true
 prefix = "v"
