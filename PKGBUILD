@@ -1,5 +1,5 @@
 pkgname=kiwix-cli-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Browse a self-hosted Kiwix server from the command line'
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('gcc-libs')
 provides=('kiwix-cli')
 conflicts=('kiwix-cli')
 source=("$url/releases/download/v$pkgver/kiwix-cli-$pkgver-linux-$CARCH.tar.gz")
-sha256sums=('8700526c81ddf942645b30e87793f53d4cd9d29139ed7a743afa9e818f425874')
+sha256sums=('9c8674ac56e4279c0f2bf7bdedee8884ad977e0997b8f0a1a722a417739f8a7f')
 
 _archive_dir="kiwix-cli-$pkgver-linux-$CARCH"
 
