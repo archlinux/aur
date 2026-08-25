@@ -1,4 +1,5 @@
 [pitchfork-bin]
-source = "git"
-git = "https://github.com/jdx/pitchfork.git"
+source = "github"
+github = "jdx/pitchfork"
+use_latest_release = true
 prefix = "v"
