@@ -1,6 +1,6 @@
 pkgbase = vortex
 	pkgdesc = Nexus Mods' mod manager - native Linux build
-	pkgver = 2.0.2
+	pkgver = 2.5.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Nexus-Mods/Vortex
@@ -8,9 +8,7 @@ pkgbase = vortex
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
-	makedepends = pnpm
-	makedepends = npm
-	makedepends = yarn
+	makedepends = corepack
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = dotnet-sdk-9.0
@@ -25,10 +23,10 @@ pkgbase = vortex
 	conflicts = vortex-git
 	options = !strip
 	options = !debug
-	source = git+https://github.com/Nexus-Mods/Vortex.git#tag=v2.0.2
+	source = git+https://github.com/Nexus-Mods/Vortex.git#tag=v2.5.0
 	source = vortex.desktop
 	source = vortex.sh
-	sha256sums = 12d83afbfcb95e2d8e69be0229d06e3a687cba8165fe4f3d56322af62aa40079
+	sha256sums = 9f6b4fe93726f4a3e8e0bd2cee1a249d7cfd260827d1e77c6a0693e0c492a970
 	sha256sums = 7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5
 	sha256sums = b75e3826dd3c0658b9d69ea700e9262609753b2dcb3459c26c1265273338dc1e
 

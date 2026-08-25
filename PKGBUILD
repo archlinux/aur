@@ -1,6 +1,6 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=vortex
-pkgver=2.0.2
+pkgver=2.5.0
 pkgrel=1
 epoch=1
 pkgdesc="Nexus Mods' mod manager - native Linux build"
@@ -9,7 +9,7 @@ url="https://github.com/Nexus-Mods/Vortex"
 license=('GPL-3.0-or-later')
 
 depends=('gtk3' 'nss' 'libxss' 'libnotify' 'libappindicator-gtk3' 'libsecret' 'nodejs' 'dotnet-runtime-9.0')
-makedepends=('git' 'pnpm' 'npm' 'yarn' 'python' 'python-setuptools' 'dotnet-sdk-9.0')
+makedepends=('git' 'corepack' 'python' 'python-setuptools' 'dotnet-sdk-9.0')
 
 conflicts=('vortex-git')
 install=vortex.install
@@ -18,7 +18,7 @@ source=("git+https://github.com/Nexus-Mods/Vortex.git#tag=v${pkgver}"
   "vortex.desktop"
   "vortex.sh")
 
-sha256sums=('12d83afbfcb95e2d8e69be0229d06e3a687cba8165fe4f3d56322af62aa40079'
+sha256sums=('9f6b4fe93726f4a3e8e0bd2cee1a249d7cfd260827d1e77c6a0693e0c492a970'
             '7e66931a83d05fb7ca0d086b27ab3fc3b926df02caf71826ee4ee4e8654ea4e5'
             'b75e3826dd3c0658b9d69ea700e9262609753b2dcb3459c26c1265273338dc1e')
 
@@ -27,80 +27,67 @@ options=('!strip' '!debug')
 prepare() {
   cd "$srcdir/Vortex"
 
-  msg2 "Injecting compiler and TypeScript overrides..."
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+  export pnpm_config_verify_deps_before_run=false
+
+  # Upstream pins pnpm via the packageManager field; expose it on PATH so all
+  # nested `pnpm` calls (nx targets, scripts) use the exact pinned version.
+  mkdir -p .bin
+  corepack enable --install-directory "$srcdir/Vortex/.bin" pnpm
+  export PATH="$srcdir/Vortex/.bin:$PATH"
+
+  msg2 "Patching package metadata..."
   node -e "
     const fs = require('fs');
     let pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-    
-    pkg.engines = pkg.engines || {};
     pkg.engines.node = '>=22.0.0';
-    
-    pkg.pnpm = pkg.pnpm || {};
-    pkg.pnpm.overrides = pkg.pnpm.overrides || {};
-    pkg.pnpm.overrides['node-addon-api'] = '8.5.0';
-    pkg.pnpm.overrides['@types/react'] = '16';
-    pkg.pnpm.overrides['@types/react-dom'] = '16';
-    
-    fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+    delete pkg.devEngines;
+    fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+
+    let main = JSON.parse(fs.readFileSync('src/main/package.json', 'utf8'));
+    main.version = '$pkgver';
+    fs.writeFileSync('src/main/package.json', JSON.stringify(main, null, 2) + '\n');
+
+    const ebPath = 'src/main/electron-builder.config.json';
+    let eb = JSON.parse(fs.readFileSync(ebPath, 'utf8'));
+    // Windows-only redist runtimes are not part of the Linux packaging
+    eb.extraResources = eb.extraResources.filter(
+      (e) => typeof e !== 'string' || !e.startsWith('./temp/')
+    );
+    fs.writeFileSync(ebPath, JSON.stringify(eb, null, 2) + '\n');
   "
 
-  if [ -f "pnpm-workspace.yaml" ]; then
-    sed -i 's/engineStrict: true/engineStrict: false/g' pnpm-workspace.yaml
-  fi
+  sed -i 's/engineStrict: true/engineStrict: false/g' pnpm-workspace.yaml
 
-  export npm_config_runtime="electron"
-  export npm_config_target="39.8.0"
-  export npm_config_disturl="https://electronjs.org/headers"
+  msg2 "Installing dependencies (pnpm $(pnpm --version))..."
+  pnpm install --frozen-lockfile
 
-  pnpm install --no-frozen-lockfile
+  msg2 "Downloading Electron runtime..."
+  (cd src/main && pnpm exec install-electron)
 }
 
 build() {
   cd "$srcdir/Vortex"
 
-  export VORTEX_VERSION="$pkgver"
+  export PATH="$srcdir/Vortex/.bin:$PATH"
+  export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+  export pnpm_config_verify_deps_before_run=false
+  export NODE_ENV=production
+  export NO_PARALLEL=1
 
-  export npm_config_runtime="electron"
-  export npm_config_target="39.8.0"
-  export npm_config_disturl="https://electronjs.org/headers"
+  msg2 "Building workspace..."
+  pnpm nx run @vortex/main:build
 
-  export VORTEX_SKIP_SUBMODULES="1"
-  export NO_PARALLEL="1"
-  export npm_config_yes=true
-  export CI=1
+  msg2 "Deploying dist package..."
+  export VORTEX_ELECTRON_REBUILD=skip
+  pnpm nx run @vortex/main:publish
 
-  msg2 "Building project via pnpm..."
-  pnpm run dist:all
-
-  msg2 "Installing dotnetprobe..."
-  cp assets/dotnetprobe app/assets/ 2>/dev/null || true
-  chmod +x app/assets/dotnetprobe 2>/dev/null || true
+  msg2 "Removing Windows-only native modules from dist..."
+  rm -rf src/main/dist/node_modules/winapi-bindings
 
   msg2 "Packaging Electron application..."
-  cd src/main
-  node ./prepare-dist-package.mjs
-
-  echo "packages:" >>dist/pnpm-workspace.yaml
-  echo "  - '.'" >>dist/pnpm-workspace.yaml
-
-  node -e "
-    const fs = require('fs');
-    let pkg = JSON.parse(fs.readFileSync('dist/package.json', 'utf8'));
-    pkg.pnpm = pkg.pnpm || {};
-    pkg.pnpm.overrides = pkg.pnpm.overrides || {};
-    pkg.pnpm.overrides['node-addon-api'] = '8.5.0';
-    fs.writeFileSync('dist/package.json', JSON.stringify(pkg, null, 2));
-  "
-
-  pnpm install --dir=./dist --no-frozen-lockfile
-
-  msg2 "Cleaning up conflicting Windows-only native modules..."
-  rm -rf dist/node_modules/winapi-bindings 2>/dev/null || true
-  rm -rf dist/node_modules/windows-shortcuts-rs 2>/dev/null || true
-
-  rm -rf ../../dist/linux-unpacked 2>/dev/null || true
-
-  pnpm exec electron-builder --config ./electron-builder.config.json \
+  cd src/main/dist
+  ./node_modules/.bin/electron-builder --config ./electron-builder.config.json \
     --publish never \
     --linux dir \
     --x64 \
@@ -113,15 +100,17 @@ package() {
   install -dm755 "$pkgdir/opt/Vortex"
   cp -a . "$pkgdir/opt/Vortex/"
 
+  # dotnetprobe is a Linux ELF and is not matched by asarUnpack's *.exe rule,
+  # so ship it unpacked next to the app (the app resolves assets_unpacked).
   install -dm755 "$pkgdir/opt/Vortex/resources/app.asar.unpacked/assets"
-  install -Dm755 "$srcdir/Vortex/assets/dotnetprobe" \
-    "$pkgdir/opt/Vortex/resources/app.asar.unpacked/assets/dotnetprobe" 2>/dev/null || true
+  install -Dm755 "$srcdir/Vortex/src/main/build/assets/dotnetprobe" \
+    "$pkgdir/opt/Vortex/resources/app.asar.unpacked/assets/dotnetprobe"
 
-  chmod 4755 "$pkgdir/opt/Vortex/chrome-sandbox" 2>/dev/null || true
+  chmod 4755 "$pkgdir/opt/Vortex/chrome-sandbox"
 
   install -Dm755 "$srcdir/vortex.sh" "$pkgdir/usr/bin/vortex"
   install -Dm644 "$srcdir/vortex.desktop" "$pkgdir/usr/share/applications/vortex.desktop"
-  install -Dm644 "$srcdir/Vortex/assets/images/vortex.png" "$pkgdir/usr/share/pixmaps/vortex.png" 2>/dev/null || true
+  install -Dm644 "$srcdir/Vortex/assets/images/vortex.png" "$pkgdir/usr/share/pixmaps/vortex.png"
 
   chmod -R 777 "$pkgdir/opt/Vortex/resources/app.asar.unpacked/assets"
 }
