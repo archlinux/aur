@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=RiipL
+GenericName=Translator
+GenericName[zh_CN]=翻译工具
+Comment=Local DeepL rip-off powered by any OpenAI-compatible API
+Comment[zh_CN]=基于任意 OpenAI 兼容 API 的本地翻译工具
+Exec=riipl
+Icon=riipl
+Terminal=false
+Categories=Utility;
+Keywords=translate;translation;
+StartupWMClass=RiipL
