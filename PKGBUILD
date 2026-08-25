@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=cherry-studio-desktop-bin
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="AI productivity studio with smart chat, autonomous agents, and 300+ assistants"
 arch=('x86_64' 'aarch64')
@@ -66,8 +66,8 @@ source_aarch64=(
   "${_deb_aarch64}::https://github.com/CherryHQ/cherry-studio/releases/download/v${pkgver}/${_deb_aarch64}"
 )
 noextract=("${_deb_x86_64}" "${_deb_aarch64}")
-sha256sums_x86_64=('108cd3ee1ce8bc2940206ae44547a7451712cec0595d5368d0023694af95a932')
-sha256sums_aarch64=('529d5d2f9061e92c5f6290395c29d155dda68945c9636377f04a525b01b99eed')
+sha256sums_x86_64=('015dc6b548a1113424c60cb8c86ada5c033e63c964c04dde1f93751facb758d2')
+sha256sums_aarch64=('bcf2eaf1f64ce006766212435b8368a4419f3856a8a50bf4669517793fe027ca')
 
 package() {
   local deb_var="_deb_${CARCH}"
