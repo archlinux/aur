@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <support@lmm.best>
 
 pkgname=lmm-api-web-bin
-pkgver=0.1.42
+pkgver=0.1.43
 pkgrel=1
 pkgdesc='LMM API production web frontend (prebuilt)'
 arch=('any')
@@ -25,9 +25,9 @@ source=(
 )
 noextract=("${_artifact}")
 sha256sums=(
-  '95e3ecd8c83cdc76a7c4b70b542d3e047e2d8f8972078c005c9b07e67e0229e7'
-  'e0188fbc2834931cb2ae54e1c23f995d73a603d2baf7b0ac42111504ffb3056e'
-  'fb721c5b71e2db32008c05b63c450f690176baf3d6441914a17ccc31de2e9e0d'
+  'beb6031ea443efa7e3d2efce7394eb68fa23d5f7ab8c8d1b7d44db3e428f3403'
+  '0ed6888d3d79c492ea454b2057977cc00d9b41e3df26375c403aa96bcb63f580'
+  '481126f84fad17d68c479371d3ed040a55d55221465c19718cbcd0d497575e4f'
   '358f5b958f3520757628d803027dafb1b67ec61b565d00bf4cd4f7927347cf33'
 )
 
@@ -49,6 +49,12 @@ prepare() {
   [[ -f ${srcdir}/dist/index.html ]]
   [[ -x ${srcdir}/lmm-api-web-activate.local ]]
   [[ -x ${srcdir}/frontend-release.sh ]]
+  if (( $(vercmp "${pkgver}" 0.1.43) >= 0 )); then
+    [[ -f ${srcdir}/lmm-api-web.install && ! -L ${srcdir}/lmm-api-web.install ]] || return 1
+  fi
+  if [[ -f ${srcdir}/lmm-api-web.install ]]; then
+    cmp -s "${startdir}/lmm-api-web.install" "${srcdir}/lmm-api-web.install" || return 1
+  fi
   ! find "${srcdir}/dist" -type l -print -quit | grep -q .
   if [[ ${pkgver} != "${_legacy_contractless_version}" ]]; then
     [[ -f ${srcdir}/API_ROUTE_CONTRACT_REVISION && ! -L ${srcdir}/API_ROUTE_CONTRACT_REVISION ]]
