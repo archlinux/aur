@@ -1,6 +1,6 @@
 pkgbase = hey-cli
 	pkgdesc = CLI for HEY email
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/basecamp/hey-cli
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = hey-cli
 	optdepends = bash-completion: for bash shell completions
 	optdepends = zsh: for zsh shell completions
 	optdepends = fish: for fish shell completions
-	source_x86_64 = https://github.com/basecamp/hey-cli/releases/download/v1.0.0/hey_1.0.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 443787075ed333390f51ee755486c2b72248c8a20dafde820c769dcf18a27350
-	source_aarch64 = https://github.com/basecamp/hey-cli/releases/download/v1.0.0/hey_1.0.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 92ec29f1cece74e21a26abf3e81013547fb87e28f81c92f9b341c2f21a8472a3
+	source_x86_64 = https://github.com/basecamp/hey-cli/releases/download/v1.1.0/hey_1.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0210ea0fc516183a5c770402abdc6305309ff680fea9d772313201bd270d1629
+	source_aarch64 = https://github.com/basecamp/hey-cli/releases/download/v1.1.0/hey_1.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 1269c2976e03e4638454e655aa65816530d02f1f8561d40b95cbe5ec6d979737
 
 pkgname = hey-cli
