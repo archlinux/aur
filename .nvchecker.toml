@@ -1,4 +1,5 @@
 [hk-bin]
-source = "git"
-git = "https://github.com/jdx/hk.git"
+source = "github"
+github = "jdx/hk"
+use_latest_release = true
 prefix = "v"
