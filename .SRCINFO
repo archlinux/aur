@@ -1,7 +1,7 @@
 pkgbase = upscayl
 	pkgdesc = A free and open source AI Image Upscaler App
 	pkgver = 2.15.0
-	pkgrel = 9
+	pkgrel = 10
 	url = https://upscayl.org/
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -9,7 +9,7 @@ pkgbase = upscayl
 	makedepends = nodejs-lts-iron
 	makedepends = patchelf
 	makedepends = librsvg
-	depends = electron39
+	depends = electron43
 	depends = libvips
 	depends = libgomp
 	depends = openjpeg2
