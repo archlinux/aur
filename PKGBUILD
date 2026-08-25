@@ -1,7 +1,7 @@
 # Maintainer: Ethan Alexander <ethanjalexander@hotmail.ca>
 
 pkgname="wallpiper-sway"
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Sway portal for wallpiper"
 arch=('x86_64')
