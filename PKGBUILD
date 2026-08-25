@@ -11,7 +11,7 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.13.1
+pkgver=4.13.3
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -36,17 +36,20 @@ makedepends=('openldap'
 options=(emptydirs)
 validpgpkeys=(
 	'D756764D4D7E297C6DAD117269876F72A6E2D34F'
-	'0E63D716D76AC080A4A33513F40800B6298EB963')
-source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"{,.asc}
-        nis-domainname.service
-        ipaplatform.tar.gz)
-sha256sums=('5353127d7c56ca72bc2d458376d457f8b0cc451cdbd31dc7939a88058e91527c'
+	'0E63D716D76AC080A4A33513F40800B6298EB963'
+	'4B7E7AFBB0AAA98947CA2427F17E2569BEE3800C')
+source=("https://codeberg.org/${pkgbase}/${pkgbase}/releases/download/release-${pkgver//./-}/${pkgbase}-${pkgver}.tar.gz"{,.asc}
+        'nis-domainname.service'
+        'ipaplatform.tar.gz')
+sha256sums=('65788ed531de857bc1a550b82caf2cff0965312114ab588f58cebbdf6475c2da'
             'SKIP'
             '74a394af693e3677146eff18a770a4271fba961b2af93b15b8ae26157af1760a'
             '7e20412c9347106485adee06b5fcee174c67eb5a30b6730452e300dfc44faa5e')
 
+_srcdir="${pkgbase}-${pkgver}"
+
 prepare() {
-	cd freeipa-${pkgver}
+	cd "${_srcdir}"
 
 	rm -rf ipaplatform/arch
 
@@ -61,7 +64,7 @@ prepare() {
 }
 
 build() {
-	cd freeipa-${pkgver}
+	cd "${_srcdir}"
 
 	./configure \
 		--prefix=/usr \
@@ -124,7 +127,7 @@ package_python-ipalib() {
 		"python-ipapython=$pkgver-$pkgrel"
 		"python-ipaplatform=$pkgver-$pkgrel")
 
-	cd freeipa-${pkgver}
+	cd "${_srcdir}"
 
 	install -D -m644 -t"$pkgdir"/usr/share/doc/$pkgname README.md Contributors.txt
 
@@ -154,7 +157,7 @@ package_python-ipaclient() {
 		'python-jinja')
 	optdepends=('oddjob-selinux: mkhomedir support')
 
-	cd freeipa-${pkgver}
+	cd "${_srcdir}"
 
 	install -D -m644 -t"$pkgdir"/usr/share/doc/$pkgname README.md Contributors.txt
 
@@ -173,7 +176,7 @@ package_freeipa-common() {
 	pkgdesc='Common files used by IPA'
 	arch=('any')
 
-	cd freeipa-${pkgver}
+	cd "${_srcdir}"
 
 	install -D -m644 -t"$pkgdir"/usr/share/doc/$pkgname README.md Contributors.txt
 
@@ -190,7 +193,7 @@ package_freeipa-client-common() {
 	pkgdesc='Common files used by IPA client'
 	arch=('any')
 
-	cd freeipa-${pkgver}
+	cd "${_srcdir}"
 
 	install -D -m644 -t"$pkgdir"/usr/share/doc/$pkgname README.md Contributors.txt
 
@@ -234,7 +237,7 @@ package_freeipa-client() {
 		'chrony')
 	install=freeipa-client.install
 
-	cd freeipa-${pkgver}
+	cd "${_srcdir}"
 
 	install -D -m644 -t"$pkgdir"/usr/share/doc/$pkgname README.md Contributors.txt
 
