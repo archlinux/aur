@@ -2,7 +2,7 @@
 pkgname=flomo-bin
 _pkgname=Flomo
 _zhsname='浮墨笔记'
-pkgver=5.26.51
+pkgver=5.26.82
 _electronversion=36
 pkgrel=1
 pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.(Prebuilt version.Use system-wide electron)新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
@@ -22,15 +22,18 @@ makedepends=(
     '7zip'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.exe::${_dlurl}/releases/download/${pkgname%-bin}/${pkgname%-bin}-${pkgver}.exe"
+    "${pkgname%-bin}-${pkgver}.exe::${_dlurl}/releases/download/${pkgname%-bin}/${pkgname%-bin}-${pkgver}-x64.exe"
     "LICENSE.html::https://help.flomoapp.com/legal/"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('92f23cde4f0c31e0bea6ba2b7c55e442245b3ba3a782fb72a58551d58f23ae40'
-            '262c2023c95bc543072bfc997e80076548e5472ba344052b2fc18a1557de13b6'
+sha256sums=('ec5f2edf73bbdda93d3b957171609589b5f434f5a41cda3d8fecabf86fcaa259'
+            'f65b8b79b175cf9321fdecc7f0d3ea4d50d879a1d5a4a46dca1ac1a7fbce67b2'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-_get_electron_version() {
-    _electronversion="$(strings "${srcdir}/tmp/${pkgname%-bin}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
+_check_electron_version() {
+    _electronversion="$(strings "$(_get_app_dir)/${pkgname%-bin}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
 }
 prepare() {
@@ -39,7 +42,6 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${pkgname%-bin}卡片笔记/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
@@ -51,7 +53,7 @@ prepare() {
     7z x -aoa "${srcdir}/${pkgname%-bin}-${pkgver}.exe"
     install -Dm755 -d "${srcdir}/tmp"
     7z x -aoa "${srcdir}/\$PLUGINSDIR/app-64.7z" -o"${srcdir}/tmp"
-    _get_electron_version
+    _check_electron_version
     asar e "${srcdir}/tmp/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${srcdir}/tmp/resources/app.asar"
     find "${srcdir}/app.asar.unpacked" -type f -name "*.gz" -exec rm -rf {} +
@@ -67,8 +69,9 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname%-bin}/elevate.exe"
     icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${icon_sizes[@]}";do
         install -Dm644 "${srcdir}/app.asar.unpacked/icons/${_icons}.png" \
