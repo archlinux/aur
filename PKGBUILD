@@ -1,11 +1,12 @@
 # Contributor: Nguyễn Quang Minh <minhnbnt at gmail dot com>
 
 pkgname=tigerfs-bin
+_pkgname=${pkgname/-bin/}
 pkgver=0.7.0 # datasource=github-tags depName=timescale/tigerfs
 pkgrel=1
 pkgdesc='Mount PostgreSQL as a filesystem. Build apps with files, explore databases with ls and cat. Every write is logged and undoable.'
-provides=('tigerfs')
-conflicts=('tigerfs')
+provides=($pkgname)
+conflicts=($pkgname)
 arch=('aarch64' 'x86_64')
 url='https://tigerfs.io/'
 license=('MIT')
@@ -33,11 +34,11 @@ package() {
 	chmod 644 $docs_dir -R
 
 	$binary completion bash | \
-	install -Dm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$pkgbase.bash"
+	install -Dm0644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/$_pkgname.bash"
 
 	$binary completion fish | \
-	install -Dm0644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$pkgbase.fish"
+	install -Dm0644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/$_pkgname.fish"
 
 	$binary completion zsh | \
-	install -Dm0644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$pkgbase"
+	install -Dm0644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_$_pkgname"
 }
