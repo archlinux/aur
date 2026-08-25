@@ -1,6 +1,6 @@
 pkgbase = logibar
 	pkgdesc = Waybar widgets and daemons for monitoring Logitech wireless peripheral battery levels
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/mryll/logibar
 	install = logibar.install
@@ -10,10 +10,10 @@ pkgbase = logibar
 	depends = waybar
 	depends = python
 	depends = python-hidapi
-	optdepends = ttf-jetbrains-mono-nerd: default font for the framed tooltip (--frame / --frame-font)
+	optdepends = ttf-jetbrains-mono-nerd: monospace font the tooltip pins by default (--tooltip-font)
 	provides = waybar-logitech-battery
 	conflicts = waybar-logitech-battery
-	source = logibar-0.3.0.tar.gz::https://github.com/mryll/logibar/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 91151b9072f87a07134fff43126d5486dd7cb6e4c9269798114931eabbafc298
+	source = logibar-0.4.0.tar.gz::https://github.com/mryll/logibar/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 90963c53bcb7f3b039f2072c2ddf42dc6190e624e1d0dab6582c2765bc200dba
 
 pkgname = logibar
