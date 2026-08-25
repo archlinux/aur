@@ -3,13 +3,13 @@
 _perlmod='Mail-Milter-Authentication'
 _modnamespace=Mail/MBRADSHAW
 pkgname=perl-mail-milter-authentication
-pkgver=4.20260319
+pkgver=4.20260730
 pkgrel=1
 pkgdesc="A Perl Mail Authentication Milter"
 arch=("any")
 url="http://search.cpan.org/dist/$_perlmod"
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
-depends=('perl' 'perl-app-cmd' 'perl-clone' 'perl-clone-choose' 'perl-date-manip' 'perl-email-address-xs' 'perl-email-date-format' 'perl-email-sender' 'perl-email-simple' 'perl-import-into' 'perl-json' 'perl-list-moreutils' 'perl-lock-file' 'perl-log-dispatchouli' 'perl-mail-authenticationresults' 'perl-mail-bimi' 'perl-mail-datafeed-abusix' 'perl-mail-dkim' 'perl-mail-dmarc' 'perl-mail-spf' 'perl-net-dns' 'perl-net-ip' 'perl-net-server' 'perl-proc-processtable' 'perl-prometheus-tiny-shared>=0.011' 'perl-super' 'perl-test-file-contents' 'perl-test-perl-critic' 'perl-text-table' 'perl-toml')
+depends=('perl' 'perl-app-cmd' 'perl-clone' 'perl-clone-choose' 'perl-date-manip' 'perl-email-address-xs' 'perl-email-date-format' 'perl-email-sender' 'perl-email-simple' 'perl-import-into' 'perl-json' 'perl-list-moreutils' 'perl-lock-file' 'perl-log-dispatchouli' 'perl-mail-authenticationresults' 'perl-mail-bimi' 'perl-mail-datafeed-abusix' 'perl-mail-dkim' 'perl-mail-dmarc' 'perl-mail-spf' 'perl-net-dns' 'perl-domain-publicsuffix' 'perl-net-ip' 'perl-net-server' 'perl-proc-processtable' 'perl-prometheus-tiny-shared>=0.011' 'perl-super' 'perl-test-file-contents' 'perl-test-perl-critic' 'perl-text-table' 'perl-toml')
 makedepends=('perl-crypt-openssl-rsa' 'perl-file-sharedir-install' 'perl-test-exception')
 checkdepends=('perl-eval-closure' 'perl-namespace-autoclean' 'perl-net-dns-resolver-mock' 'perl-params-validationcompiler' 'perl-specio')
 replaces=('perl-mail-milter-authentication-handler-arc')
@@ -18,7 +18,7 @@ backup=('etc/authentication_milter.json')
 options=('!emptydirs')
 source=("https://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz"
         'authentication_milter.service')
-sha256sums=('c88bbb7a462a5b8f90059065d6b84950d6075dee72ed9f69b45eefa76b893a3f'
+sha256sums=('23b1da26ff74955192bb0b1aca8480197fa92ee654fc8d22514fc4a3c1e73fef'
             '8715d45d62859fb3838d0fd31878d59b47da2cb62d55675f828f8b812845526d')
 
 build() {
