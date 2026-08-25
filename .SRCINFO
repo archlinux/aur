@@ -1,12 +1,16 @@
 pkgbase = oa-sdk-bin
-	pkgdesc = OA SDK — Development headers, CMake configs, and shader sources (pre-built binaries)
-	pkgver = 0.7.5
+	pkgdesc = OA SDK — C++ headers, CMake package, shader sources, and example tools (pre-built binaries)
+	pkgver = 0.7.17
 	pkgrel = 1
 	url = https://github.com/realminc/oa
 	arch = x86_64
 	license = BUSL-1.1
-	depends = oa-bin=0.7.5
-	source = https://github.com/realminc/oa/releases/download/v0.7.5/oa-sdk-0.7.5-linux-x86_64.tar.gz
-	sha256sums = d2ea329340d63913385fad2d78a0b64f83b556457fea0ea9d20a8e1f83725a3c
+	depends = oa=0.7.17
+	provides = oa-sdk=0.7.17
+	conflicts = oa-sdk
+	options = !strip
+	options = !debug
+	source = https://github.com/realminc/oa/releases/download/v0.7.17/oa-sdk-0.7.17-linux-x86_64.tar.gz
+	sha256sums = a392338a50adb91f09713373e448fed19a9f8af4ba3548a6b90ff4c1d0840a2f
 
 pkgname = oa-sdk-bin
