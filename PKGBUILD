@@ -227,27 +227,35 @@ ac_add_options --enable-lto=cross,full
 END
   fi
 
-  # build paralleism
-  local _mem _nproc _cores
-  _mem=$(grep -Pom1 '^MemFree.*\b\K[0-9]+' /proc/meminfo)
-  _nproc=$(nproc)
+  # prevent PGO profiling error:
+  # mozbuild.preprocessor.Preprocessor.Error: ('../../source-repo.h', None, 'no preprocessor directives found', None)
+  cat >> ../mozconfig << END
+export MOZ_INCLUDE_SOURCE_INFO=
+END
 
-  if [[ "${_build_limit_cores::1}" =~ ^[at] ]]; then
+  # build parallelism
+  local _mem _threads _cores _jobs
+  _mem=$(grep -Pom1 '^MemAvailable:\s*\K[0-9]+' /proc/meminfo)
+  _cores=$(lscpu | grep -Pom1 'per socket:\s*\K[0-9]+')
+  _threads=$(nproc)
+  _jobs="auto"
+
+  if [[ "${_build_limit_cores}" =~ ^[at] ]]; then
     # calculate core availability based on free RAM and CPU count
-    _cores=$((_mem / (1024 * 1024) < _nproc ? _mem / (1024 * 1024) : _nproc))
-    _cores=$((_cores < 1 ? 1 : _cores))
+    _jobs=$((_mem / (1024 * 1024) < _cores ? _mem / (1024 * 1024) : _cores - 1))
+    _jobs=$((_jobs < 1 ? 1 : _jobs))
   elif ((${_build_limit_cores:-0} > 0)); then
     # user-specified, capped by CPU count
-    _cores=$((_build_limit_cores > _nproc ? _nproc : _build_limit_cores))
+    _jobs=$((_build_limit_cores > _threads ? _threads : _build_limit_cores))
+    _jobs=$((_jobs < 1 ? 1 : _jobs))
   fi
 
-  if [ -n "${_cores:-}" ]; then
-    printf '\nFree RAM: %s\nCores: %s\nUsing: %s\n\n' "$((_mem / (1024 * 1024)))" "$_nproc" "$_cores"
+  printf '\n:: Free RAM: %-5s Cores: %-5s Threads: %-5s Jobs: %-5s\n\n' "$((_mem / (1024 * 1024)))" "$_cores" "$_threads" "$_jobs"
+
+  if [[ "$_jobs" =~ ^[0-9]+$ ]]; then
     cat >> ../mozconfig << END
-mk_add_options MOZ_PARALLEL_BUILD=${_cores}
+mk_add_options MOZ_PARALLEL_BUILD=${_jobs}
 END
-  else
-    printf '\nFree RAM: %s\nCores: %s\nUsing: auto\n\n' "$((_mem / (1024 * 1024)))" "$_nproc"
   fi
 
   # apply patches
