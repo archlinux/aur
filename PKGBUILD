@@ -2,37 +2,66 @@
 
 pkgname=python-curated-tokenizers
 _name=${pkgname#python-}
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 epoch=
 pkgdesc="Lightweight piece tokenization library"
-arch=('any')
-url="https://pypi.org/project/${_name}"
-_name=${_name//-/_}
+arch=($CARCH)
+url="https://github.com/explosion/curated-tokenizers"
 license=(MIT)
 groups=()
 provides=(${pkgname})
 conflicts=(${pkgname})
 depends=(
-    gcc-libs
-    glibc
+    libgcc
+    libstdc++
     python
+    python-huggingface-hub
     python-pytest
 )
 makedepends=(
+    'abseil-cpp'
+    'cmake'
+    'gperftools'
+    'protobuf'
+    'pybind11'
+    git
+    cython
+    python-regex
     python-build
     python-installer
     python-wheel
     python-setuptools
 )
 optdepends=()
-options=('!strip' '!debug')
-# https://files.pythonhosted.org/packages/fe/33/0ce2cad39bdcaa8eeda2a7de7ce4613ea6f5c540d5accf0fbe51c9f5253c/curated_tokenizers-2.0.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-# source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-source=("https://files.pythonhosted.org/packages/fe/33/0ce2cad39bdcaa8eeda2a7de7ce4613ea6f5c540d5accf0fbe51c9f5253c/$_name-${pkgver}-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl")
+options=('!debug')
+source=(
+    "${_name}::git+${url}.git#tag=release-v$pkgver"
+    "sentencepiece::git+https://github.com/google/sentencepiece.git"
+)
 noextract=()
-sha256sums=('9b948d299157c317474d7c2c325b073187c6123c5c520b299603548781b8b98a')
+sha256sums=('37738d6b3ede828ee3e270067756fd50e61c3b96e41c734d8db11b1e67b2e1dd'
+            'SKIP')
+
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
+    cd "${srcdir}/${_name}"
+    sed -i 's/"cython>=.*"/"cython"/' pyproject.toml
+    git submodule init
+    git config submodule.sentencepiece.url "$srcdir/sentencepiece"
+    git -c protocol.file.allow=always submodule update
+}
+
+build() {
+    export CFLAGS="-include cstdint $CFLAGS"
+    export CXXFLAGS="-include cstdint $CXXFLAGS"
+
+    cd "${srcdir}/${_name}"
+    python -m build --wheel --no-isolation
+}
 
 package() {
-    python -m installer --destdir="${pkgdir}" ${srcdir}/$_name-$pkgver-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+    cd "${srcdir}/${_name}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
