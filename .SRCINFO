@@ -1,0 +1,21 @@
+pkgbase = e-imzo-bin
+	pkgdesc = Uzbek state web identity proving & key signing (E-IMZO)
+	pkgver = 6.4.7
+	pkgrel = 1
+	url = https://e-imzo.soliq.uz
+	arch = any
+	license = Unlicense
+	depends = java-runtime>=8
+	provides = e-imzo=6.4.7
+	conflicts = e-imzo
+	conflicts = e-imzo-manager
+	source = e-imzo-6.4.7.tar.gz::https://dls.soliq.uz/v6.4.7/E-IMZO-v6.4.7.tar.gz
+	source = e-imzo
+	source = e-imzo.desktop
+	source = e-imzo.service
+	sha256sums = c077152064cd44c8ade4ba877177061a2edfa039a2c0755751cc65e199611a76
+	sha256sums = 095a64e9f78ede2e34fbf889845fb720d276d0f4dce45f074ab189c162ab7259
+	sha256sums = ff25fda84d5bd9a50d704f908671577bf9d3c5b8fe74331f6a12951ae53f6ed9
+	sha256sums = ab5e7e5ffa113b4f7a1e3b0e8b27ec4cd7760010b63dd576be06894e4fb5f5f9
+
+pkgname = e-imzo-bin

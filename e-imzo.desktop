@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=E-IMZO
+GenericName=Digital Signature Module
+Comment=Uzbekistan State Digital Signature Service
+Exec=/usr/bin/e-imzo
+Terminal=false
+Categories=Utility;Security;Network;
+Keywords=e-imzo;imzo;soliq;eds;signature;
+StartupNotify=false

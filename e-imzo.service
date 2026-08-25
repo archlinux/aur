@@ -1,0 +1,13 @@
+[Unit]
+Description=E-IMZO Digital Signature Module
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/java -jar /usr/share/e-imzo/E-IMZO.jar
+WorkingDirectory=/usr/share/e-imzo
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

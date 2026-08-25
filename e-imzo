@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/share/e-imzo
+exec java -jar E-IMZO.jar "$@"
