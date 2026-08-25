@@ -44,10 +44,12 @@ package() {
 	: "${optdepends[@]}"
 	: "${pkgdir:?}"
 
-	bsdtar -xf data.tar.zst -C "${pkgdir}"
-
-	# The libraries are provided by the system.
-	rm -r "${pkgdir}"/opt/disig/websigner/{bin/qt.conf,lib,plugins,share/doc/*/}
+	bsdtar \
+		--directory "${pkgdir}" \
+		--file data.tar.zst \
+		`# The libraries are provided by the system.` \
+		--exclude=opt/disig/websigner/{bin/qt.conf,"lib/*","plugins/*","share/doc/*/*"} \
+		--extract
 
 	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
 	ln -s /opt/disig/websigner/share/doc/copyright "${pkgdir}/usr/share/licenses/${pkgname}"
