@@ -25,6 +25,7 @@ makedepends=(
     'ninja'
     'pkgconf'
     'python'
+    'zip'
 )
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
@@ -63,6 +64,7 @@ prepare() {
 
     ./vcpkg/bootstrap-vcpkg.sh -disableMetrics
 }
+
 build() {
     export VCPKG_ROOT="$srcdir/vcpkg"
     export VCPKG_BUILD_TYPE=release
