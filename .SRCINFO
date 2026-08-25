@@ -1,0 +1,18 @@
+pkgbase = gnome-shell-extension-albumwm-git
+	pkgdesc = Scrollable tiling extension for GNOME Shell
+	pkgver = 50.0.r3756.f1efeaa
+	pkgrel = 1
+	url = https://albumwm.0iq.dev
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = npm
+	makedepends = blueprint-compiler
+	makedepends = glib2
+	depends = gnome-shell
+	provides = gnome-shell-extension-albumwm
+	conflicts = gnome-shell-extension-albumwm
+	source = git+https://github.com/poli0iq/albumwm.git
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-albumwm-git
