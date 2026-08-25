@@ -1,11 +1,11 @@
 pkgbase = borgwarehouse
 	pkgdesc = WebUI for a BorgBackup central repository server
 	pkgver = 3.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ravinou/borgwarehouse
+	install = borgwarehouse_nodynuser_migration.install
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	makedepends = fd
 	makedepends = pnpm
 	depends = bash
 	depends = borgbackup
@@ -31,7 +31,7 @@ pkgbase = borgwarehouse
 	sha256sums = 981e43ab8f0f30717e8108c55a6533d3f1fc2b8ba6768e0780509c54bd406d23
 	sha256sums = ce1a55c203eef3c65f186efc3ffa2bcf416de67e5586cf542edf199b8a9ec47a
 	sha256sums = 15bc6db13bfa17402ee07bb2f91711a0d84d298b3fbd3f48722345d4c19bb917
-	sha256sums = 80f802b4068d2a4ca35c4def9952d6289233a0a7d145d8228ec52804e26884cd
+	sha256sums = 1ca148f62f03cec0498194457568230e0a7e300add4788a600abd4b9a12f81ec
 	sha256sums = 4baf4a805e37db88b95506cdbdb59e97a0c4e7b59205917a2e8eb77c804bdc3d
 	sha256sums = 9c9a47658afd857d129567a990fb721aba8a1ba31e26e8278f5b8af1c3e5308b
 

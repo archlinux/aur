@@ -8,5 +8,6 @@
 !borgwarehouse-cron.service
 !borgwarehouse-cron.timer
 !borgwarehouse.service
+!borgwarehouse_nodynuser_migration.install
 
 !.gitignore

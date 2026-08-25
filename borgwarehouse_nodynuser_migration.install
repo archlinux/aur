@@ -1,0 +1,18 @@
+post_upgrade() {
+    echo "Checking if post Dynamic User migration should be run"
+    if ! [[ "$2" == "3.6.2-2" ]]; then
+      echo "This is the wrong version, not applying post Dynamic User migration"
+      return 0
+    fi
+    if ! [[ -L "/var/lib/borgwarehouse" ]]; then
+      echo "/var/lib/borgwarehouse is not a symlink, not migrating"
+      return 10
+    fi
+    if ! [[ -d "/var/lib/private/borgwarehouse" ]]; then
+      echo "/var/lib/private/borgwarehouse is not a directory, not migrating"
+      return 10
+    fi
+    rm "/var/lib/borgwarehouse" || return 10
+    mv "/var/lib/private/borgwarehouse" "/var/lib/" || return 10
+    return 0
+}

@@ -6,9 +6,8 @@ After=network.target
 [Service]
 Type=simple
 User=borgwarehouse
+Group=borgwarehouse
 SyslogIdentifier=borgwarehouse
-DynamicUser=yes
-StateDirectory=borgwarehouse
 WorkingDirectory=/usr/share/webapps/borgwarehouse/
 ReadWritePaths=/usr/share/webapps/borgwarehouse/
 ReadWritePaths=/etc/webapps/borgwarehouse/
