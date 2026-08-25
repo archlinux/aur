@@ -1,0 +1,21 @@
+pkgbase = python-libzim
+	pkgdesc = Libzim binding for Python: read/write ZIM files in Python
+	pkgver = 3.12.0
+	pkgrel = 1
+	url = https://github.com/openzim/python-libzim
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = libzim
+	depends = python
+	optdepends = python-invoke
+	source = python-libzim-3.12.0.tar.gz::https://github.com/openzim/python-libzim/archive/refs/tags/v3.12.0.tar.gz
+	sha256sums = b1f92c3d12043b5ae581ead222feea5dd58637e1ee02c0cec52b6ee9f95f3874
+
+pkgname = python-libzim

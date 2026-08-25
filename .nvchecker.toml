@@ -1,0 +1,4 @@
+[python-libzim]
+source = "git"
+git = "https://github.com/openzim/python-libzim.git"
+prefix = "v"
