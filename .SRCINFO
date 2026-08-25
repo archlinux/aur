@@ -1,7 +1,7 @@
 pkgbase = pi-agent-rust
 	pkgdesc = High-performance AI coding agent CLI - Rust port of Pi Agent
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dicklesworthstone/pi_agent_rust
 	arch = x86_64
 	arch = aarch64
@@ -14,11 +14,17 @@ pkgbase = pi-agent-rust
 	optdepends = tmux: for background bash capabilities
 	optdepends = fd: system-provided backend for the find tool
 	optdepends = ripgrep: system-provided backend for the grep tool
-	provides = pi
-	conflicts = pi
-	replaces = pi
 	options = !lto
 	source = pi_agent_rust-0.3.0.tar.gz::https://github.com/Dicklesworthstone/pi_agent_rust/archive/refs/tags/v0.3.0.tar.gz
 	sha256sums = bb15728a1ad4ad15d3c4be8e9b4d193956988b602ac2066f97f348d450bc52d5
 
 pkgname = pi-agent-rust
+
+pkgname = pi-rust
+	depends = glibc
+	depends = gcc-libs
+	depends = sqlite
+	depends = pi-agent-rust
+	provides = pi
+	conflicts = pi
+	replaces = pi

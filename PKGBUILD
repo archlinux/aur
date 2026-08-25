@@ -1,8 +1,9 @@
 # Maintainer: Giovanni Santini <giovannisantini93@yahoo.it>
 _pkgname=pi_agent_rust
-pkgname=pi-agent-rust
+pkgbase=pi-agent-rust
+pkgname=('pi-agent-rust' 'pi-rust')
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance AI coding agent CLI - Rust port of Pi Agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Dicklesworthstone/pi_agent_rust"
@@ -14,9 +15,6 @@ optdepends=(
   'fd: system-provided backend for the find tool'
   'ripgrep: system-provided backend for the grep tool'
 )
-provides=('pi')
-conflicts=('pi')
-replaces=('pi')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('bb15728a1ad4ad15d3c4be8e9b4d193956988b602ac2066f97f348d450bc52d5')
 # The vendored QuickJS and tree-sitter break with LTO, so disabling it
@@ -33,8 +31,18 @@ build() {
   cargo build --release --locked --bin pi
 }
 
-package() {
+package_pi-agent-rust() {
   cd "$_pkgname-$pkgver"
-  install -Dm755 target/release/pi "$pkgdir/usr/bin/pi"
+  install -Dm755 target/release/pi "$pkgdir/usr/bin/pi-rust"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_pi-rust() {
+  cd "$_pkgname-$pkgver"
+  depends+=('pi-agent-rust')
+  provides=('pi')
+  conflicts=('pi')
+  replaces=('pi')
+  ln -s /usr/bin/pi-rust "$pkgdir/usr/bin/pi"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
