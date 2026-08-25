@@ -1,0 +1,15 @@
+pkgbase = pluely-bin
+	pkgdesc = Privacy-first AI assistant for meetings, interviews, and conversations
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/iamsrikanthnani/pluely
+	arch = x86_64
+	license = GPL-3.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = pluely
+	conflicts = pluely
+	source_x86_64 = Pluely_1.0.0_amd64.deb::https://github.com/iamsrikanthnani/pluely/releases/download/app-v1.0.0/Pluely_1.0.0_amd64.deb
+	sha256sums_x86_64 = 35bb32fbcaa51c5c6af4ed599c39ac526bacf029f73a0aa738631b57f0752e63
+
+pkgname = pluely-bin
