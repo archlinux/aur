@@ -2,7 +2,7 @@
 pkgname=dn-git
 _pkgname=dawn
 pkgver=r61.219393c
-pkgrel=3
+pkgrel=4
 pkgdesc="Colour-managed image browser"
 url="https://git.janouch.name/p/dawn"
 arch=('x86_64')
@@ -25,6 +25,7 @@ depends=(
   'resvg'
   'shared-mime-info'
   'vulkan-icd-loader'
+  'wayland-protocols'
 )
 optdepends=(
   'gdk-pixbuf2: GdkPixbuf module support'
@@ -34,8 +35,6 @@ optdepends=(
   'libtiff: TIFF images'
   'libxcursor: X cursor images'
   'perl-image-exiftool: file information'
-  'qt6-wayland: Wayland support'
-  'wayland-protocols: Wayland support'
 )
 install=dn.install
 source=(
