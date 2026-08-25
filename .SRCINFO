@@ -1,5 +1,5 @@
 pkgbase = shelly-git
-	pkgver = 3.0.6r4114.g2f1c9e9
+	pkgver = 3.1.0r4339.gb054d8d
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
@@ -45,8 +45,8 @@ pkgname = shelly-git
 
 pkgname = shelly-flatpak-backend-git
 	pkgdesc = Optional native Flatpak backend for Shelly (git version)
-	depends = shelly-git=3.0.6r4114.g2f1c9e9-1
+	depends = shelly-git=3.1.0r4339.gb054d8d-1
 	depends = flatpak
-	provides = shelly-flatpak-backend=3.0.6r4114.g2f1c9e9
+	provides = shelly-flatpak-backend=3.1.0r4339.gb054d8d
 	conflicts = shelly-flatpak-backend
 	conflicts = shelly-flatpak-backend-bin
