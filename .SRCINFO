@@ -1,6 +1,6 @@
 pkgbase = yubix
 	pkgdesc = Use your YubiKey for login and sudo — safely, with no terminal
-	pkgver = 0.0.7
+	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/yubix
 	install = yubix.install
@@ -22,7 +22,7 @@ pkgbase = yubix
 	depends = libxrandr
 	depends = libglvnd
 	options = !strip
-	source = yubix-0.0.7.tar.gz::https://github.com/codingncaffeine/yubix/archive/refs/tags/v0.0.7.tar.gz
-	sha256sums = e53870686cb1dcf48a0044fa6596cb25dcf37476ccaaeda668a26b1a126c67d1
+	source = yubix-0.0.8.tar.gz::https://github.com/codingncaffeine/yubix/archive/refs/tags/v0.0.8.tar.gz
+	sha256sums = 85eab80ed34c5d59b563d121a73881401368887e7253781bfbe63fa55ee956e4
 
 pkgname = yubix

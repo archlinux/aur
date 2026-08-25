@@ -1,6 +1,6 @@
 # Maintainer: codingncaffeine <codingncaffeine@users.noreply.github.com>
 pkgname=yubix
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc="Use your YubiKey for login and sudo — safely, with no terminal"
 arch=('x86_64')
@@ -16,7 +16,7 @@ makedepends=('dotnet-sdk')
 options=('!strip')
 install=yubix.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e53870686cb1dcf48a0044fa6596cb25dcf37476ccaaeda668a26b1a126c67d1')
+sha256sums=('85eab80ed34c5d59b563d121a73881401368887e7253781bfbe63fa55ee956e4')
 
 build() {
     cd "$pkgname-$pkgver"
