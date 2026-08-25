@@ -8,7 +8,7 @@ pkgname=(
   "java-${pkgbase}"
   "r-${pkgbase}"
 )
-pkgver=13.0.2
+pkgver=13.0.3
 _pkgver="${pkgver%.*}"
 pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
@@ -33,10 +33,10 @@ source_${_carch}=(
   'https://packages.gurobi.com/${_pkgver}/${pkgbase}${pkgver}_${_arch[${_carch}]}.tar.gz'
 )"
 done
-md5sums_aarch64=('9b2766ad534ac9220d0505a458735499')
-md5sums_x86_64=('f12dcad337ae1d8f9b8c2b3f51b92bb5')
-b2sums_aarch64=('974b7492d0f8acf222d83a119425b397bd0ae1fb6bd3f95ea758d08a43740a8af8cc5787a66f595ef196d00fc8c64707135cc17f5470bf7452e2967938ed8c2b')
-b2sums_x86_64=('24d3676740308144793806ed46c1ba9da1a886249c6ad6061f50c970eadac969e0867d59db1a90af6e815a734c5c80a254a456d9291a2c400accdc969452ef88')
+md5sums_aarch64=('61622a2a229a3b440770d681cde592cf')
+md5sums_x86_64=('4c7f9f984636eaa701eaa0620153af98')
+b2sums_aarch64=('6402e70513e7f8425b359b5dc80d66bb115e3f605f8828ba57bf8f58e2c06220f3bb526b760523b1d1e50cbf283b9c50e3d7a33c2139260e228fcc9600344a02')
+b2sums_x86_64=('2cfb26fc9fd566c3b63c00cc3cd7c9436f689264a3099bb511ab458c9daca7d24d7a32a221659425fcfebbdbd3eba21b476bfb366decca479e304a4ca7fccdf2')
 
 build() {
   cd "${srcdir}/${_pkgsrc}/${_arch[${CARCH}]}/src/build"
