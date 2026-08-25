@@ -33,21 +33,11 @@
 
 pkgname=margo-git
 pkgver=r2269.fb4853ab
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)"
 url="https://github.com/kenanpelit/margo"
 arch=("x86_64")
 license=("GPL-3.0-or-later")
-
-# Top-level (not inside build()) on purpose: package() reads this to
-# install the binaries build() produced. Some builders (e.g. Shelly)
-# run each PKGBUILD phase as a separate process/sandbox rather than
-# makepkg's single continuous shell, so an `export` made only inside
-# build()'s function body doesn't reach package() — it'd see an empty
-# CARGO_TARGET_DIR and try to install from "/release/$bin". Top-level
-# code re-runs on every phase makepkg sources the file for, so this
-# is visible everywhere regardless of how the builder splits phases.
-export CARGO_TARGET_DIR="$srcdir/target"
 
 # Runtime libraries — split into compositor-side and mshell-side so
 # trimming this list back to a shell-less build later is mechanical.
@@ -324,12 +314,20 @@ package() {
   # without overwriting the first invocation's zbus(async-io)
   # rlib — both coexist in target/release/deps under different
   # hashes, and each binary links against the right one.
+  #
+  # Deliberately cargo's *default* target dir (relative to the `cd`
+  # above), not a `CARGO_TARGET_DIR` override: some builders (e.g.
+  # Shelly) run build()/check() without re-sourcing the PKGBUILD's
+  # top-level statements, so an export made outside a function body
+  # never reaches the actual `cargo build` calls — the binaries end
+  # up here regardless of what any such override claims, so this is
+  # the one path every builder agrees on.
   local bin
   for bin in \
       margo start-margo \
       mctl mlock mlayout mscreenshot mvisual mlogind mgreet mpower \
       mshell mshellctl mshellshare mpicker mwizard mkeys mvpn mdots mcal mtm; do
-    install -Dm755 "$CARGO_TARGET_DIR/release/$bin" "$pkgdir/usr/bin/$bin"
+    install -Dm755 "target/release/$bin" "$pkgdir/usr/bin/$bin"
   done
 
   # ── Wayland session entries ────────────────────────────────────
@@ -477,7 +475,7 @@ package() {
   # → PipeWire / PNG). Binary lives under /usr/lib (D-Bus-activated,
   # not a user-facing CLI); ships its `.portal` registration, D-Bus
   # activation service, and systemd user unit.
-  install -Dm755 "$CARGO_TARGET_DIR/release/margo-portal" \
+  install -Dm755 "target/release/margo-portal" \
     "$pkgdir/usr/lib/margo/margo-portal"
   install -Dm644 "assets/margo.portal" \
     "$pkgdir/usr/share/xdg-desktop-portal/portals/margo.portal"

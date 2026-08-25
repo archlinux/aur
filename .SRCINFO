@@ -1,7 +1,7 @@
 pkgbase = margo-git
 	pkgdesc = Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)
 	pkgver = r2269.fb4853ab
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kenanpelit/margo
 	arch = x86_64
 	license = GPL-3.0-or-later
