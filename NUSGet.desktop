@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NUSGet
+Exec=/usr/bin/nusget %U
+Terminal=false
+Type=Application
+Icon=NUSGet
+StartupWMClass=NUSGet
+Comment=A modern and supercharged NUS downloader built with Python and Qt6.
+Categories=Utility;

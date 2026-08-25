@@ -1,0 +1,24 @@
+pkgbase = nusget
+	pkgdesc = A modern and supercharged NUS downloader built with Python and Qt6.
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/NinjaCheetah/NUSGet
+	arch = x86_64
+	license = MIT
+	depends = pyside6
+	depends = python-libwiipy
+	depends = python-libtwlpy
+	depends = python-zstandard
+	depends = python-requests
+	depends = python-imageio
+	provides = nusget
+	conflicts = nusget
+	conflicts = nusget-git
+	source = https://github.com/NinjaCheetah/NUSGet/archive/refs/tags/v1.5.3.tar.gz
+	source = nusget.sh
+	source = NUSGet.desktop
+	sha256sums = 80bcaf206c9887a2a13d558d24af2585e966c04ddf10f4727b89a548ecd80bb6
+	sha256sums = 54028ef9c52d91c84e516e41610b0a41460f5c9281ac8cd6ec3fe9d2e342b09a
+	sha256sums = b716b8e601b673029646be7bac936eb1f2829329dbb826da96be830223b94e72
+
+pkgname = nusget
