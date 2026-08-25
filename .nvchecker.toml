@@ -1,4 +1,6 @@
 [fnox-bin]
-source = "git"
-git = "https://github.com/jdx/fnox.git"
+source = "github"
+github = "jdx/fnox"
+use_latest_release = true
 prefix = "v"
+
