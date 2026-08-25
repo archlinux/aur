@@ -10,6 +10,7 @@ license=('MIT')
 arch=('any')
 provides=("${pkgname}")
 conflicts=("${pkgname}" "${pkgname}-git")
+depends=('python-sphinx')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-flit-core')
 
 source=('version.patch'

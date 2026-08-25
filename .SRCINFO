@@ -9,6 +9,7 @@ pkgbase = python-sphinx_tippy
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-flit-core
+	depends = python-sphinx
 	provides = python-sphinx_tippy
 	conflicts = python-sphinx_tippy
 	conflicts = python-sphinx_tippy-git
