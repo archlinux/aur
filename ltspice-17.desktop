@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=LTspice XVII
+Comment=SPICE simulator, schematic capture and waveform viewer (Version 17).
+Exec=/usr/bin/ltspice-17
+Icon=AABF_XVIIx64.0
+Terminal=false
+StartupNotify=false
+Categories=Application;Education;Science;Electronics;
