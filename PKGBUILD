@@ -3,17 +3,24 @@
 # Contributor: Kevin Piche <kevin@archlinux.org>
 
 pkgname=bochs
-pkgver=3.0
-pkgrel=1
+pkgver=3.1
+pkgrel=2
 pkgdesc="A portable x86 PC emulation software package, including GUI debugger"
 arch=('x86_64' 'pentium4' 'i686' 'i486')
 url="http://bochs.sourceforge.net/"
 license=('LGPL')
 depends=('gcc-libs' 'libxrandr' 'libxpm' 'gtk2')
 source=("https://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('cb6f542b51f35a2cc9206b2a980db5602b7cd1b7cf2e4ed4f116acd5507781aa')
+sha256sums=('14aaf78dbe1337987923fffc4e7a962ae56abcf9a87474ace39e593f9f84ee84')
 
 prepare() {
+    # upstream's 3.1 release tarball extracts to a bare "bochs/" dir
+    # instead of "bochs-$pkgver/" like every prior release; normalize it
+    # so the rest of this PKGBUILD doesn't need to care either way.
+    if [ ! -d "$srcdir/$pkgname-$pkgver" ] && [ -d "$srcdir/$pkgname" ]; then
+        mv "$srcdir/$pkgname" "$srcdir/$pkgname-$pkgver"
+    fi
+
     cd "$srcdir/$pkgname-$pkgver"
     # 4.X kernel is basically 3.20
     sed -i 's/2\.6\*|3\.\*)/2.6*|3.*|4.*)/' configure*
