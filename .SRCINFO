@@ -1,7 +1,7 @@
 pkgbase = okular
 	pkgdesc = Document Viewer
 	pkgver = 26.08.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://apps.kde.org/okular/
 	arch = x86_64
 	groups = kde-applications
@@ -53,10 +53,12 @@ pkgbase = okular
 	options = !zipman
 	source = https://download.kde.org/stable/release-service/26.08.0/src/okular-26.08.0.tar.xz
 	source = https://download.kde.org/stable/release-service/26.08.0/src/okular-26.08.0.tar.xz.sig
+	source = https://invent.kde.org/graphics/okular/-/commit/e322356c.patch
 	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
 	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
 	sha256sums = 235e8e761f949b81953582e3ff6e45b8832d0d551b71bd1b5098c1ad663511e4
 	sha256sums = SKIP
+	sha256sums = 8850f191cee5e5312fce2aa0d8415a7ab8b8ffabbd07176275bcd375087ca561
 
 pkgname = okular

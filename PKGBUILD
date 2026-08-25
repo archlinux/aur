@@ -4,7 +4,7 @@
 
 pkgname=okular
 pkgver=26.08.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Document Viewer'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
@@ -53,13 +53,19 @@ optdepends=('ebook-tools: mobi and epub support'
             'unrar: Comic Book Archive support')
 groups=(kde-applications
         kde-graphics)
-source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig})
+source=(https://download.kde.org/stable/release-service/$pkgver/src/$pkgname-$pkgver.tar.xz{,.sig}
+        https://invent.kde.org/graphics/okular/-/commit/e322356c.patch)
 sha256sums=('235e8e761f949b81953582e3ff6e45b8832d0d551b71bd1b5098c1ad663511e4'
-            'SKIP')
+            'SKIP'
+            '8850f191cee5e5312fce2aa0d8415a7ab8b8ffabbd07176275bcd375087ca561')
 validpgpkeys=(CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7  # Albert Astals Cid <aacid@kde.org>
               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 options=(!zipman)
+
+prepare() {
+  patch -d $pkgname-$pkgver -p1 < e322356c.patch # Fix crashes in kile
+}
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
