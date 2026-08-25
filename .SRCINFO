@@ -1,7 +1,7 @@
 pkgbase = dn-git
 	pkgdesc = Colour-managed image browser
 	pkgver = r61.219393c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.janouch.name/p/dawn
 	install = dn.install
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = dn-git
 	depends = qt6-base
 	depends = resvg
 	depends = shared-mime-info
+	depends = vulkan-headers
+	depends = vulkan-icd-loader
 	optdepends = gdk-pixbuf2: GdkPixbuf module support
 	optdepends = libheif: HEIF images
 	optdepends = libraw: raw photo images
