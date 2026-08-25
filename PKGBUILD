@@ -1,27 +1,23 @@
 # Maintainer: Sateallia <mail at sateallia dot org>
 
 pkgname=resistormaid
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="CLI resistor calculator"
 arch=('x86_64')
-url='https://sateallia.org/software/'
+url='https://coding.homdworks.org/sateallia/resistormaid'
 license=('MIT')
 
-source=('https://sateallia.org/code/resistormaid/resistormaid_2_0_0.tar.gz'
-	'https://sateallia.org/code/resistormaid/resistormaid_2_0_1.patch')
-
-prepare() {
-    patch < resistormaid_2_0_1.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz::https://coding.homdworks.org/sateallia/resistormaid/archive/${pkgver}.tar.gz")
 
 build() {
-	make
+    cd "${pkgname}"
+	gcc ${CFLAGS} resistormaid.c -o resistormaid ${LDFLAGS} -lm
 }
 
 package() {
-    install -D -m755 resistormaid ${pkgdir}/usr/bin/resistormaid
+    cd "${pkgname}"
+    install -D -m755 resistormaid "${pkgdir}/usr/bin/resistormaid"
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-md5sums=('4296e292d9c723da5b316386e301be3e'
-         '9482b16ce012e24f2b24a4e1d10775c5')
+sha256sums=('ba8ee207662ebba8efb650dc137e0cadc63974f38e2a767236f29d9ef6953f92')
