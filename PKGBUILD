@@ -7,7 +7,7 @@
 set -u
 pkgname='atari800'
 #pkgname+='-git'
-pkgver=7.1.1
+pkgver=7.1.2
 pkgrel=1
 pkgdesc='An emulator of the Atari 800/800XL/130XE/5200 with various extensions'
 arch=('i686' 'x86_64')
@@ -33,10 +33,10 @@ if ! :; then
   _srcdir="${pkgname%-git}-${_srcf}"
 fi
 unset _srcf
-md5sums=('c8659eff057d8e2ab3f32d49d312dc8b'
+md5sums=('1d453ace05eaf9b8455ac0097741d66a'
          '6cb048df098263556dd7529d22e83f05'
          '82d425a60aa04f7596ffe0d3cf3dfd92')
-sha256sums=('9a7d1435649982af0022ad77f565d408a18caaee40613cdcd1b8f96c3f646320'
+sha256sums=('9602badfd7c45551cb5c4cc77f862af377c43a07caaa0bfc77ac87f9179673e3'
             'cc88a1b8e91d248e575e42410c2c6eb05bdff28f883f2990a4362565df1b8ccf'
             '95e03020358a0855e12ee19b62abebb336e472fcf525f7eb42dcc28419588df9')
 
