@@ -6,10 +6,10 @@ _pkg="oddjob"
 provides=("${_pkg}")
 conflicts=("${_pkg}")
 pkgver=0.34.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A D-Bus service which runs odd jobs on behalf of client applications (with selinux support)"
 arch=(i686 x86_64)
-url='https://pagure.io/oddjob'
+url='https://codeberg.org/freeipa/oddjob'
 license=(BSD)
 depends=(cyrus-sasl dbus krb5 libxml2 openldap pam systemd selinux-usr-libselinux)
 backup=(etc/oddjobd.conf.d/oddjobd-introspection.conf
@@ -17,11 +17,19 @@ backup=(etc/oddjobd.conf.d/oddjobd-introspection.conf
         etc/oddjobd.conf)
 options=(!libtool)
 install=${_pkg}.install
-source=("https://releases.pagure.org/oddjob/${_pkg}-${pkgver}.tar.gz")
-sha512sums=('df98f3d2ce18de5d2db6d638995c01c80aec51f7ad979b879b2e8d8f7d6c2e464cbff3c70ed9b528399337f8fba31744f955ca17fdad1d4e9193fb0f10ea391a')
+source=("${url}/archive/${_pkg}-${pkgver}.tar.gz")
+sha512sums=('5a8ab3832e4b4a1c2a233e24b93f1bff47cc034254f81bb33591d44af23f4676f17fa93d4e38be1cafce60688b8b32522db92993cbfbdf768b1d79b8ca79adbc')
+
+_srcdir="${_pkg}"
+
+prepare() {
+  cd "${_srcdir}"
+
+  autoreconf -i
+}
 
 build() {
-  cd "${_pkg}-${pkgver}"
+  cd "${_srcdir}"
 
   ./configure \
     --prefix=/usr \
@@ -40,6 +48,6 @@ build() {
 }
 
 package() {
-  cd "${_pkg}-${pkgver}"
+  cd "${_srcdir}"
   make DESTDIR="${pkgdir}/" install
 }
