@@ -3,22 +3,19 @@
 # Contributor: Xavier Devlamynck <magicrhesus at ouranos dot be>
 
 pkgname=sipgrep
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.2.4
+pkgrel=1
 pkgdesc='A powerful pcap-aware tool command line tool to sniff, capture, display and troubleshoot SIP signaling over IP networks'
 arch=('x86_64')
 url="https://github.com/sipcapture/${pkgname}"
 license=('GPL-3.0-only')
 depends=('pcre' 'libpcap')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ee16c1efde73c8faa591f8d84b697b629fabf43806fb292893a3ba3f8cc9a290')
+sha256sums=('eb1cad5c63d6ead915c617b3da32ef97dc1e4272e73dd13af07bc75566ebf30c')
 
 build() {
   cd "${pkgname}-${pkgver}"
 
-  sed -i '22i #include <arpa/inet.h>' src/transport_hep.c
-  sed -i 's/AC_INIT(sipgrep,2.2.1/AC_INIT(sipgrep,2.2.0/' configure.ac
-  export CFLAGS="-std=gnu17" 
   ./build.sh
   ./configure --prefix=/usr --enable-ipv6
   make
