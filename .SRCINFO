@@ -1,6 +1,6 @@
 pkgbase = alpine-git
 	pkgdesc = Fork of the PINE mail client (git)
-	pkgver = 2.26.0.678.267cba3
+	pkgver = 2.29.99.729.d491a58
 	pkgrel = 1
 	url = https://alpineapp.email/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = alpine-git
 	replaces = alpine
 	replaces = pine
 	replaces = re-alpine
-	source = git+http://repo.or.cz/alpine.git
+	source = git+https://repo.or.cz/alpine.git
 	sha512sums = SKIP
 
 pkgname = alpine-git

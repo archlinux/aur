@@ -2,7 +2,7 @@
 
 gitname=alpine
 pkgname=$gitname-git
-pkgver=2.26.0.678.267cba3
+pkgver=2.29.99.729.d491a58
 pkgrel=1
 pkgdesc="Fork of the PINE mail client (git)"
 arch=(i686 x86_64 aarch64)
@@ -18,7 +18,7 @@ makedepends=('git')
 provides=('alpine' 'pine' 're-alpine')
 conflicts=('alpine' 'pine' 're-alpine')
 replaces=('alpine' 'pine' 're-alpine')
-source=("git+http://repo.or.cz/${gitname}.git")
+source=("git+https://repo.or.cz/${gitname}.git")
 sha512sums=('SKIP')
 
 pkgver() {
