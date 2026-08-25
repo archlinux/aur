@@ -40,7 +40,7 @@ build() {
     cd "${_pkgbase}"
     export MAKEFLAGS=""
     export CXXFLAGS="${CXXFLAGS} -Wno-error=format-security"
-    pnpm install --frozen-lockfile --no-optional
+    pnpm install --frozen-lockfile
     pnpm run build:linux
 }
 
