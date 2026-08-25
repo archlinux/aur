@@ -34,6 +34,7 @@ package() {
 		qt6-base
 		qt6-websockets
 		sh
+		xdg-utils # xdg-open.sh
 	)
 	optdepends=(
 		"gnome-shell-extension-appindicator: for system tray icon on GNOME"

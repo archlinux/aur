@@ -20,4 +20,5 @@ pkgname = disig-web-signer
 	depends = qt6-base
 	depends = qt6-websockets
 	depends = sh
+	depends = xdg-utils
 	optdepends = gnome-shell-extension-appindicator: for system tray icon on GNOME
