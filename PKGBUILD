@@ -3,7 +3,7 @@
 _pkgauthor=ralsina
 _pkgname=crycco
 pkgname=${_pkgname}-bin
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A literate programming tool"
 arch=('x86_64' 'aarch64')
@@ -23,10 +23,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${_barch[0]}")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${_barch[1]}")
 sha256sums=('91c5a6fc53adf00971f7b4851ae27b91291e470a67f2474d00c965d05dc7d286'
-            'b7e334c1513c7a4a24332179ad3a63043fc2f65d36e71a4a7a01eb8bb9e522d6'
-            '300991fb9cf5eb750aac012c2980351b10fe8dc87163b00a213d91c509e9b695')
-sha256sums_x86_64=('23d6086a8fff0585ebf10cdbc987527ee6ef7ab832a7168eff9d8f1f78491df1')
-sha256sums_aarch64=('92d332ee38c004948c56e48ca47d56abba9e21f9ad3fa4ae09f25dd4eb5dfd02')
+            '0fed41562abf1b65f32c86019ce630e75848d7f4d772bd04e3b5f5c903f6db8c'
+            '35ddea34349d7ae57e0d885ecbfdc26d6fd3cdf83ae1d0cdcd04699646faeb1b')
+sha256sums_x86_64=('b084094ceaa487c414a386874fa210deef62512fb2585a9d4bd14aa3337d7097')
+sha256sums_aarch64=('fa36f40191e83d95672fc2c1429c78793a55be34c1f509f7e9921dbd8804f11f')
 
 
 package() {
