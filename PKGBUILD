@@ -21,6 +21,7 @@ prepare() {
   cd "${pkgname}-${pkgver}"
 
   bun install \
+    --production \
     --frozen-lockfile \
     --ignore-scripts
 }
@@ -28,10 +29,19 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
+  # FIXME: abusing mise to skip self update notices
+  export HUNK_INSTALL_SOURCE=mise
   bun build \
+    --production \
     --compile \
+    --target bun \
+    --format esm \
     --outfile dist/hunk \
+    --sourcemap \
+    --bytecode \
+    --minify \
     --no-compile-autoload-bunfig \
+    --env 'HUNK_INSTALL_SOURCE*' \
     src/main.tsx \
     src/highlightWorkerEntry.ts
 }
