@@ -1,6 +1,6 @@
 pkgbase = discord-bot-messenger
 	pkgdesc = GUI to send messages through a Discord bot token to any channel it has access to
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/zyvxi/discord-bot-messenger
 	arch = any
@@ -11,8 +11,9 @@ pkgbase = discord-bot-messenger
 	makedepends = python-wheel
 	depends = python
 	depends = python-requests
+	depends = python-websockets
 	depends = tk
-	source = discord-bot-messenger-1.1.0.tar.gz::https://github.com/zyvxi/discord-bot-messenger/archive/refs/tags/v1.1.0.tar.gz
+	source = discord-bot-messenger-1.2.0.tar.gz::https://github.com/zyvxi/discord-bot-messenger/archive/refs/tags/v1.2.0.tar.gz
 	sha256sums = 569d6cf987b918181d96a451705d2df4d6af79dd9a4a18ab3bfe350bb434c1fc
 
 pkgname = discord-bot-messenger
