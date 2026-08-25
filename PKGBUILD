@@ -11,6 +11,15 @@ makedepends=("shards" "git")
 source=("$pkgname-$pkgver::git+https://github.com/ralsina/nicolino.git#tag=v$pkgver")
 sha256sums=('0964fe6668992fb9b6d9ce5b7f065cdabf7181fb03a38ce5c5e8e27438e50ecb')
 
+prepare() {
+  cd "$pkgname-$pkgver"
+  # makepkg's git checkout does not remove untracked files, so a lib/
+  # left by a previous build attempt survives; shards then skips the
+  # postinstall hooks of already-installed shards and silently reuses a
+  # stale liblxb.a (undefined lexbor symbols at link time). Start clean.
+  rm -rf lib
+}
+
 build() {
   cd "$pkgname-$pkgver"
   shards build --release --error-trace
