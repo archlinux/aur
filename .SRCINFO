@@ -1,0 +1,24 @@
+pkgbase = smirk-git
+	pkgdesc = Emoji picker for Wayland that opens in an actually reasonable time
+	pkgver = r3.ff18a57
+	pkgrel = 1
+	url = https://github.com/Yiin/smirk
+	install = smirk-git.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gtk4
+	depends = libadwaita
+	depends = wl-clipboard
+	depends = wtype
+	source = smirk::git+https://github.com/Yiin/smirk.git
+	source = smirk-toggle
+	source = smirk.service
+	source = smirk-git.install
+	sha256sums = SKIP
+	sha256sums = 70ceec7fc0e4d59a6b98e3de9104fa8ce1e6cdf69c21e63f65839d649d3f821d
+	sha256sums = c60c0755f5d5d0b5e867f39812fb848e63d87a8b7fdc42ca277d1c94ea65fda5
+	sha256sums = 0828319165f6f997bd1a47be304431d7477d3c1d7d661816613e5fe22a37a775
+
+pkgname = smirk-git

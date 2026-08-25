@@ -1,0 +1,6 @@
+#!/bin/bash
+# Show the resident smirk picker via D-Bus activation.
+# Falls back to a cold start if the background instance is not running.
+gdbus call --session --dest lt.yiin.smirk --object-path /lt/yiin/smirk \
+  --method org.freedesktop.Application.Activate '{}' >/dev/null 2>&1 \
+  || exec /usr/bin/smirk

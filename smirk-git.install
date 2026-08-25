@@ -1,0 +1,3 @@
+post_install() {
+  echo "To enable the smirk service, run: systemctl --user enable --now smirk.service"
+}
