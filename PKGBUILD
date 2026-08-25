@@ -1,16 +1,25 @@
 # Maintainer: Miguel Rincon <miguelaezak at gmail dot com>
-pkgname=slipmat-git
+
+# **A split package, because the engine is not the interface.**
+#
+# The daemon owns the Chromium sidecar, and the Chromium profile lock means
+# exactly one process may — so a machine has one daemon and as many front-ends
+# as it likes. Shipping the daemon inside each front-end would put the same
+# ~220 MB Electron at the same paths in two packages, which pacman refuses and
+# which would be wrong even if it did not: they are one installation.
+#
+# So: one build, three packages. Either front-end pulls the daemon in on its
+# own, and both can be installed together sharing one copy of it.
+pkgbase=slipmat-git
+pkgname=('slipmat-daemon-git' 'slipmat-git' 'climat-git')
 _pkgname=slipmat
-pkgver=0.5.0.r4.gc7bfd67
+pkgver=0.10.0.r57.g1488b4c
 pkgrel=1
-pkgdesc="A native GNOME client for Apple Music (latest commit)"
 arch=('x86_64')          # Widevine on Linux is x86_64 only
 url="https://github.com/SoftARV/Slipmat"
 license=('GPL-3.0-or-later')
-depends=('gtk4' 'libadwaita' 'librsvg' 'hicolor-icon-theme')
-makedepends=('cargo' 'nodejs' 'npm' 'git' 'pkgconf')
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+makedepends=('cargo' 'nodejs' 'npm' 'git' 'pkgconf' 'librsvg'
+             'gtk4' 'libadwaita')
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 options=('!debug' '!lto')
@@ -58,11 +67,28 @@ check() {
   cargo test --release --frozen
 }
 
-package() {
-  cd "$srcdir/$_pkgname"
-  local appid=dev.miguelrincon.Slipmat
+package_slipmat-daemon-git() {
+  pkgdesc="Slipmat's playback daemon and the hidden Chromium it drives (latest commit)"
+  # Measured with `ldd` against the bundled Chromium rather than guessed. **gtk3
+  # is the surprising one** — the sidecar needs it even though the app is GTK4,
+  # and nothing else here pulls it in. It was never declared and worked only
+  # because most desktops happen to have it.
+  depends=('gtk3' 'nss' 'alsa-lib' 'libcups' 'libxkbcommon' 'mesa' 'libdrm'
+           'libseccomp')
+  provides=("slipmat-daemon=$pkgver")
+  # **Not `slipmat`, however much it looks like it should be.** The release
+  # package does own these same sidecar paths — but `slipmat-git` *provides*
+  # `slipmat`, so a conflict on that name matches this package's own front-end
+  # and pacman refuses the pair outright:
+  #
+  #   slipmat-daemon-git and slipmat-git are in conflict
+  #
+  # The front-ends carry that conflict instead: neither can be installed beside
+  # the release package, so the daemon never arrives next to it either.
+  conflicts=('slipmat-daemon')
 
-  install -Dm755 target/release/slipmat "$pkgdir/usr/bin/slipmat"
+  cd "$srcdir/$_pkgname"
+  install -Dm755 target/release/slipmatd "$pkgdir/usr/bin/slipmatd"
 
   # Found via XDG_DATA_DIRS by `sidecar::locate`. Read-only: Chromium fetches
   # the Widevine CDM per-user into ~/.config/Slipmat at first run, so nothing
@@ -76,6 +102,28 @@ package() {
   # make `strip` complain during packaging, which is how they were noticed.
   find "$pkgdir/usr/share/slipmat/sidecar" -name '*.node' \
     ! -name '*linux-x64-gnu*' -delete
+
+  # **Optional, and deliberately not enabled.** The first client to start finds
+  # no daemon and starts one, so nobody has to run `systemctl` to play music.
+  # The unit is here only for someone who wants playback to survive closing
+  # every window.
+  install -Dm644 packaging/systemd/slipmatd.service \
+    "$pkgdir/usr/lib/systemd/user/slipmatd.service"
+
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+
+package_slipmat-git() {
+  pkgdesc="A native GNOME client for Apple Music (latest commit)"
+  depends=("slipmat-daemon-git=$pkgver-$pkgrel"
+           'gtk4' 'libadwaita' 'librsvg' 'hicolor-icon-theme')
+  provides=("$_pkgname=$pkgver")
+  conflicts=("$_pkgname")
+
+  cd "$srcdir/$_pkgname"
+  local appid=dev.miguelrincon.Slipmat
+
+  install -Dm755 target/release/slipmat "$pkgdir/usr/bin/slipmat"
 
   install -Dm644 "data/$appid.desktop" \
     "$pkgdir/usr/share/applications/$appid.desktop"
@@ -92,4 +140,27 @@ package() {
 
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
+
+package_climat-git() {
+  pkgdesc="Winamp-style Apple Music in a terminal; needs a graphical session (latest commit)"
+  # No toolkit: it draws itself. The daemon behind it still needs a display
+  # server for Chromium, which is why this cannot run over plain SSH — see the
+  # README it installs.
+  depends=("slipmat-daemon-git=$pkgver-$pkgrel")
+  provides=("climat=$pkgver")
+  # **Only `climat`.** The release `slipmat` package owns the same sidecar paths
+  # the daemon does, so it would be tempting to name it here — but `slipmat-git`
+  # *provides* `slipmat`, and a conflict on a name another package in this very
+  # split provides means the two cannot be installed together. That is the same
+  # mistake that made the daemon conflict with its own front-end, one package
+  # over. Someone holding the release package and installing this gets a file
+  # conflict from pacman instead, which is uglier and correct; it goes away when
+  # the release package is split too.
+  conflicts=('climat')
+
+  cd "$srcdir/$_pkgname"
+  install -Dm755 target/release/climat "$pkgdir/usr/bin/climat"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 crates/climat/README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
