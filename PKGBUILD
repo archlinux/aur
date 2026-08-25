@@ -31,8 +31,18 @@ sha256sums_x86_64=('2d7dc6805c66498d0338a9bebed4d5e4e5c565006554463a17101a196189
 sha256sums_aarch64=('43882f798aedde04a143eecadda8afa93754b28798c9e93e8e2681e2a56f6b32')
 
 
+case ${CARCH} in
+  ${arch[0]})
+    _CARCH=${_barch[0]}
+    ;;
+
+  ${arch[1]})
+    _CARCH=${_barch[1]}
+    ;;
+esac
+
 package() {
-	cd "${srcdir}/" || exit
+	cd "${srcdir}/${_appname}-${_CARCH}/" || exit
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
