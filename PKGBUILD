@@ -2,7 +2,7 @@
 
 pkgname=qt6-dbusqml
 _projname=dbusqml
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Standalone D-Bus binding for QML (no KDE dependencies)"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('cmake')
 provides=("qt6-dbusqml=${pkgver}")
 conflicts=('qt6-dbusqml-git' 'qt6-dbusqml-reactive')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('21c4646836dd9a55135c49dc992e24de70cb29371c70b0be1de36898883e69a3')
+sha256sums=('6b94d349aa19de671bb1f6878e2fd863a4d4f4013abe2b2fd2a2e76a5d2b1e06')
 
 build() {
     cmake -B build -S "${srcdir}/${_projname}-${pkgver}" \
