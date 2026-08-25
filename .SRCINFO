@@ -1,6 +1,6 @@
 pkgbase = certora-cli
 	pkgdesc = Runner for the Certora Prover: formal verification of EVM, Solana and Stellar smart contracts
-	pkgver = 8.18.0
+	pkgver = 8.19.0
 	pkgrel = 1
 	url = https://www.certora.com
 	arch = any
@@ -27,7 +27,7 @@ pkgbase = certora-cli
 	optdepends = certora-gambit-bin: mutant generation for certoraMutate
 	optdepends = solidity: solc compiler for building Solidity contracts
 	optdepends = graphviz: TAC reports
-	source = https://files.pythonhosted.org/packages/source/c/certora_cli/certora_cli-8.18.0.tar.gz
-	sha256sums = d059116e852aafbfbfca7f6d8090968e9ea2bbcc056989ed9a282e3f6fed07dd
+	source = https://files.pythonhosted.org/packages/source/c/certora_cli/certora_cli-8.19.0.tar.gz
+	sha256sums = df4e337b3e40f7d914dcf9dfa43f0a13e0123c466fba3e60d1a7afb8fea07dc6
 
 pkgname = certora-cli
