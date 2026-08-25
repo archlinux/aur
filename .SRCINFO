@@ -1,12 +1,16 @@
 pkgbase = oa-bin
-	pkgdesc = OA — High-performance C++ compute engine for ML, audio, and graphics (pre-built binaries)
-	pkgver = 0.7.5
+	pkgdesc = OA — Vulkan 1.4 compute runtime for ML, vision, audio, crypto, and UI (pre-built binaries)
+	pkgver = 0.7.17
 	pkgrel = 1
 	url = https://github.com/realminc/oa
 	arch = x86_64
 	license = BUSL-1.1
-	depends = liburing
-	source = https://github.com/realminc/oa/releases/download/v0.7.5/oa-0.7.5-linux-x86_64.tar.gz
-	sha256sums = 8be5600fd5c0ecc29d36cc190e95e56a76060d8c3465ac61ed4c912107331c3c
+	depends = vulkan-icd-loader
+	provides = oa=0.7.17
+	conflicts = oa
+	options = !strip
+	options = !debug
+	source = https://github.com/realminc/oa/releases/download/v0.7.17/oa-0.7.17-linux-x86_64.tar.gz
+	sha256sums = 1b156d2f34ed510c4e75583bc420be9d80a784df4bcd47200f76fb540a84ca95
 
 pkgname = oa-bin
