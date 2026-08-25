@@ -1,6 +1,6 @@
 # Maintainer: mryll <https://github.com/mryll>
 pkgname=printbar-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Generic printer monitor for Waybar (IPP + SNMP + CUPS) — supplies, trays, jobs, panel text; instant push on print; Omarchy theming (prebuilt binary)'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 optdepends=('cups: CUPS source, queue action and the instant-push service'
             'libnotify: desktop notifications'
             'xdg-utils: open the EWS / queue on click'
-            'ttf-jetbrains-mono-nerd: default font for the framed tooltip (frame = true / frame_font)')
+            'ttf-jetbrains-mono-nerd: monospace font the tooltip pins by default (tooltip_font)')
 provides=('printbar')
 conflicts=('printbar')
 options=(!debug)
@@ -19,10 +19,10 @@ source=("printbar-${pkgver}::https://github.com/mryll/printbar/releases/download
         "printbar-watch.service-${pkgver}::https://raw.githubusercontent.com/mryll/printbar/v${pkgver}/printbar-watch.service"
         "config.example.toml-${pkgver}::https://raw.githubusercontent.com/mryll/printbar/v${pkgver}/config.example.toml"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/mryll/printbar/v${pkgver}/LICENSE")
-sha256sums=('6fe0d516a3a19a6f66f9ff09718a74dcd665b02759c34a1fd9727ff82c71ffa6'
+sha256sums=('7ecacdf5873139264d4c8815aa616030548f400df765fda56459c330146a4aae'
             'cbb2d29d6be632517e566b14ca44033e3209f15047d715d6a2e0e86d95aca95f'
             '584e3279c3b85cd466c87bcb8f7e133f66e763fa0e563f90853d7c282bcc7731'
-            'e0763cd48871dfed8a3cf27f8fe800d0bee549d152abb21a4059a167cdc26ef6'
+            '221cbb38b324a958cbc487ad49adb5febf403d5da80f1a0b74f72df12f54f23d'
             'aa9f3a694508cadff239e4694992eac66611723af6ce8643e80ca5c7db8c9e4e')
 
 package() {
