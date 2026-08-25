@@ -3,7 +3,7 @@
 
 pkgname='brother-mfc-l2710dw'
 pkgver='4.0.0'
-pkgrel=2
+pkgrel=3
 _srcrel=1
 _model='MFCL2710DW'
 pkgdesc='LPR and CUPS driver for the Brother MFC-L2710DW'
@@ -13,6 +13,11 @@ license=('LicenseRef-Brother-EULA')
 # lpdwrapper and lpdfilter are perl and shell out to `gs`; the ppd declares a
 # cupsFilter for application/vnd.cups-postscript, which needs cups-filters
 depends=('cups' 'cups-filters' 'ghostscript' 'perl')
+# print-only package; the scanner (usb id 04f9:0434) is driven by brscan4,
+# which enables it in models4/ext_20.ini -- brscan5 ships the same model
+# commented out, so it is deliberately not referenced here
+optdepends=('brscan4: scanner support'
+            'brscan-skey: support for the scan key on the printer')
 # prebuilt vendor binaries
 options=('!strip')
 install="$pkgname.install"

@@ -1,7 +1,7 @@
 pkgbase = brother-mfc-l2710dw
 	pkgdesc = LPR and CUPS driver for the Brother MFC-L2710DW
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=mfcl2710dw_us_eu_as
 	install = brother-mfc-l2710dw.install
 	arch = i686
@@ -12,6 +12,8 @@ pkgbase = brother-mfc-l2710dw
 	depends = cups-filters
 	depends = ghostscript
 	depends = perl
+	optdepends = brscan4: scanner support
+	optdepends = brscan-skey: support for the scan key on the printer
 	options = !strip
 	source = https://download.brother.com/welcome/dlf103525/mfcl2710dwpdrv-4.0.0-1.i386.rpm
 	sha256sums = 8794c62d8481e8b2954e2b48815278731fea6510684b639608f66314438ada62
