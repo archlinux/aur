@@ -2,7 +2,7 @@
 _base=forallpeople
 pkgname=python-${_base}
 pkgdesc="Python SI units library"
-pkgver=2.7.1
+pkgver=3.0.0
 pkgrel=1
 arch=(any)
 url="https://github.com/connorferster/${_base}"
@@ -11,7 +11,7 @@ depends=(python)
 makedepends=(python-build python-flit-core python-installer)
 checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('a86e4bc0ead5e9f367a1c00e80bef2fc60ed5743e55ac1cb39296c6ef9040b37550abca9c9307a600001571c967d317544284457d502c96c754529a81f28b98b')
+sha512sums=('a167447f23a3d286c7fc95b0c17dc08be7bcde8d857f9011318fcc5941c5bdfa3d72088f406e9564f1767439a50671d62fc4a9821cf26c1ccb195b2b183a87ec')
 
 build() {
   cd ${_base}-${pkgver}
