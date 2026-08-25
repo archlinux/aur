@@ -1,21 +1,27 @@
 pkgbase = py-cidr
-	pkgdesc = python module providing network / CIDR tools
-	pkgver = 4.0.0
+	pkgdesc = Python module providing network / CIDR tools
+	pkgver = 5.0.2
 	pkgrel = 1
 	url = https://github.com/gene-git/py-cidr
 	arch = any
 	license = GPL-2.0-or-later
 	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
+	makedepends = cython
+	makedepends = gcc
 	makedepends = git
-	makedepends = rsync
+	makedepends = meson
+	makedepends = meson-python
 	makedepends = uv
 	makedepends = python-uv-build
+	makedepends = rsync
+	depends = glibc
 	depends = python>=3.14
 	depends = lockmgr
 	depends = patricia26
 	depends = python-pytricia
-	source = git+https://github.com/gene-git/py-cidr#tag=4.0.0
+	depends = cidrtools-cffi
+	source = git+https://github.com/gene-git/py-cidr#tag=5.0.2
 	validpgpkeys = 7CCA1BA66669F3273DB52678E5B81343AB9809E1
 	sha512sums = SKIP
 

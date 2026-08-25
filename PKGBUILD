@@ -1,5 +1,4 @@
-# SPDX-License-Identifier: MIT
-# SPDX-FileCopyrightText: © 2024-present  Gene C <arch@sapience.com>
+# SPDX-License-Identifier: GPL-2.0-or-later
 #
 # Arch Linux PKGBUILD for py-cidr 
 # This builds the latest release tag.
@@ -9,10 +8,10 @@
 # Contributor: 
 # 
 pkgname='py-cidr'
-pkgdesc='python module providing network / CIDR tools'
+pkgdesc='Python module providing network / CIDR tools'
 _gitname='py-cidr'
 
-pkgver="4.0.0"
+pkgver="5.0.2"
 pkgrel=1
 url="https://github.com/gene-git/py-cidr"
 
@@ -21,17 +20,22 @@ license=(GPL-2.0-or-later)
 
 # To build docs uncommont sphinx/texlive
 depends=(
+    'glibc'
     'python>=3.14' 
     'lockmgr'
     'patricia26'
     'python-pytricia'           # Keep (for now) to convert old CidrMaps (Pytricia to Patricia26)
+    'cidrtools-cffi'
 )
 makedepends=(
+    'cython'
+    'gcc'
     'git'
-    'rsync'
+    'meson'
+    'meson-python'
     'uv'
     'python-uv-build'
-    #'python-sphinx' 'python-myst-parser' 'texlive-latexextra' 'python-sphinx-autoapi'
+    'rsync'
 )
 checkdepends=(
     'python-pytest' 
@@ -41,6 +45,7 @@ checkdepends=(
 _mkpkg_depends=(
     'python>minor'
     'lockmgr>minor'
+    'patricia26>minor'
 )
 
 #
@@ -57,24 +62,12 @@ sha512sums=('SKIP')
 
 build() {
     cd "${_gitname}"
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
-
-    # To build Docs - uncomment these and sphinx makedepends above
-    #  echo "Build docs"
-    #  pdf='py-cidr.pdf'
-    #  cd ./Docs
-    #  make latexpdf >/dev/null 2>&1
-    #  make latexpdf >/dev/null
-    #  make html
-    #  /usr/bin/rm -f $pdf
-    #  /usr/bin/cp _build/latex/$pdf .
-    #  /usr/bin/rm -rf _build/doctrees _build/latex autoapi
+    ./scripts/do-build
 }
 
 check() {
-    cd "${_gitname}/tests"
-    PYTHONPATH=../src /usr/bin/pytest
+    cd "${_gitname}"
+    ./scripts/run-tests
 }
 
 package() {

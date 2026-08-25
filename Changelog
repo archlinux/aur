@@ -1,9 +1,34 @@
 -------------------------------------------------------
  Changelog    : py-cidr
- Tags         : 3.10.0 ➙ 4.0.0
-              : 2025-09-01 ➙ 2026-07-27
+ Tags         : 3.13.0 ➙ 5.0.2
+              : 2026-03-11 ➙ 2026-08-25
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-08-25   : 5.0.2
+              - Manual / repo version update
+
+ 2026-08-25   : 5.0.1, origin/master
+              - Add manual to repo
+
+ 2026-08-25   : 5.0.0
+              - **5.0.0**
+            
+                * New PyCidr class - replaces functionality in Cidr class.
+                  Using the pure C-code *cidrtools* library and its python bindings *cidrtools-cffi*
+            
+                  - Superior performance.  For example compacting lists of cidr blocks runs
+                    about 10 - 20 times faster.
+            
+                  - API is similar but migrating the code will unlock the perfomance benefit.
+                  - Depends on two new packages: *cidrtools* and *cidrtools-cffi*
+                  - Updated build system using meson and uv.
+            
+                * Cidr class still supported unchanged.
+                  This facilitates testing and comparing Cidr with PyCidr.
+                  In the future, some/all of Cidr may be migrated to use the new fast codebase.
+            
+                * See manual for details and how to use the new speedy class!
 
  2026-07-27   : 4.0.0
               - **4.0.0**
@@ -50,28 +75,3 @@
                     Compacting must also check if any children of a newly added prefix are still needed.
  2026-02-21   ⋯
               - update Docs/Changelogs
-
- 2026-02-21   : 3.12.0
-              - **3.12.0**
-            
-                * CidrMap : New .items() method provides an Iterator over the map.
-                  Each iteration yields a tuple[cidr: str, value: Any]
-            
-                * Add net_range_split/cidr_range_split:
-                  split one net/cidr into (first, mid,  last) ip addresses
- 2026-01-04   ⋯
-              - update Docs/Changelogs
-
- 2026-01-04   : 3.11.0
-              - **3.11.0**
-            
-                * Code Reorg
-                * Switch packaging from hatch to uv
-                * Testing to confirm all working on python 3.14.2
-                * License GPL-2.0-or-later
-
- 2025-09-01   : 3.10.0
-              - update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
-              - Cidr.compact(): with  mixed ipv4/ipv6 - allow host bits in cidrs
- 2025-08-31   ⋯
-              - update Docs/Changelogs Docs/_build/html Docs/py-cidr.pdf
