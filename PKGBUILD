@@ -4,12 +4,13 @@ pkgname=libshout-idjc
 pkgver=2.4.6.r2 # renovate: datasource=git-tags depName=https://git.code.sf.net/p/idjc/libshoutidjc/code
 pkgrel=1
 pkgdesc="Library for accessing a shoutcast/icecast server (with IDJC customizations)"
-arch=('i686' 'x86_64')
-url="http://idjc.sourceforge.net/"
+arch=('x86_64')
+url="https://idjc.sourceforge.io/"
+license=('LGPL-2.0-or-later')
 depends=('libvorbis' 'libtheora' 'speex' 'openssl')
+conflicts=('libshout-idjc-git')
 options=('!emptydirs')
 source=("https://downloads.sourceforge.net/project/libshoutidjc.idjc.p/${pkgname}-${pkgver/.r/-r}.tar.gz")
-license=('LGPL')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver%%.r*}"
