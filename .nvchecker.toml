@@ -1,4 +1,5 @@
 [gh-dash-bin]
-source = "git"
-git = "https://github.com/dlvhdr/gh-dash.git"
+source = "github"
+github = "dlvhdr/gh-dash"
+use_latest_release = true
 prefix = "v"
