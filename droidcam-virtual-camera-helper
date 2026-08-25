@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -euo pipefail
+
+DEVICE_NAME="DroidCam Virtual Camera"
+CTL="/usr/bin/v4l2loopback-ctl"
+
+if [[ ! -x "$CTL" ]]; then
+    echo "ERROR: $CTL not found" >&2
+    exit 1
+fi
+
+if "$CTL" list 2>/dev/null | grep -Fq "$DEVICE_NAME"; then
+    exit 0
+fi
+
+"$CTL" add -x 1 -n "$DEVICE_NAME"

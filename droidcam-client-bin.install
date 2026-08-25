@@ -1,0 +1,14 @@
+post_install() {
+    systemctl daemon-reload
+    systemctl enable --now droidcam-virtual-camera.service
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl enable --now droidcam-virtual-camera.service
+}
+
+post_remove() {
+    systemctl disable --now droidcam-virtual-camera.service 2>/dev/null || true
+    systemctl daemon-reload
+}

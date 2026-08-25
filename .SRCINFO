@@ -1,0 +1,26 @@
+pkgbase = droidcam-client-bin
+	pkgdesc = DroidCam Client with bundled OBS runtime (prebuilt binary)
+	pkgver = 7.2.1
+	pkgrel = 1
+	url = https://www.dev47apps.com/
+	install = droidcam-client-bin.install
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-wayland
+	depends = curl
+	depends = libpulse
+	depends = pciutils
+	depends = speexdsp
+	depends = v4l2loopback-dkms
+	depends = v4l2loopback-utils
+	options = !debug
+	source = droidcam_client_amd64.deb::https://droidcam.app/go/droidCam.client.setup.deb
+	source = droidcam-virtual-camera.service
+	source = droidcam-virtual-camera-helper
+	sha256sums = SKIP
+	sha256sums = b9b5e2413e0f962bb1d33fd055fc49903b30dcb6696338fc4458dee6456c396d
+	sha256sums = b617ed996389419ab4f11033ff0042a5391be179eeb29a1469f6cfa0e15a8f30
+
+pkgname = droidcam-client-bin

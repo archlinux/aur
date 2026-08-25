@@ -1,0 +1,12 @@
+[Unit]
+Description=Create DroidCam Virtual Camera
+Requires=systemd-modules-load.service
+After=systemd-modules-load.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/droidcam-obs-client/bin/64bit/droidcam-virtual-camera-helper
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
