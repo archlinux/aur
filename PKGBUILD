@@ -3,7 +3,7 @@
 # CI replaces source + sha256sums on tag.
 
 pkgname=gotomux
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Fuzzy tmux session picker with presets, zoxide and daemon-assisted cold start'
 arch=('x86_64' 'aarch64')
