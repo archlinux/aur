@@ -18,6 +18,7 @@ pkgbase = dearsql-git
 	makedepends = ninja
 	makedepends = pkgconf
 	makedepends = python
+	makedepends = unzip
 	makedepends = zip
 	depends = freetds
 	depends = gtk4

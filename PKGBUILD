@@ -25,6 +25,7 @@ makedepends=(
     'ninja'
     'pkgconf'
     'python'
+    'unzip'
     'zip'
 )
 provides=("${_pkgbase}")
