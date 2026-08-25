@@ -1,7 +1,7 @@
 # Maintainer: swarnimcodes <swarnim14.9 at hotmail dot com>
 
 pkgname=spotagooey-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Desktop Spotify client built with Tauri, Rust, React, and TypeScript'
 arch=('x86_64')
@@ -29,7 +29,7 @@ source_x86_64=(
   "${pkgname}-${pkgver}.deb::https://github.com/swarnimcodes/spotagooey/releases/download/v${pkgver}/spotagooey_${pkgver}_amd64.deb"
 )
 sha256sums_x86_64=(
-  'b866522071461f496da3a27f2214acdcbbd13106467f563fcb6525ccf34a3ed1'
+  '031bf6f12f27aeb5895eccfa6e1e59fcc5052343f0123c73c7a6ded77eb4e43c'
 )
 
 package() {
