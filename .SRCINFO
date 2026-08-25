@@ -1,6 +1,6 @@
 pkgbase = rclient
 	pkgdesc = Yet another fork of TaterClient for DDNet
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 0
 	url = https://rushie-client.ru/
 	install = rclient.install
@@ -20,9 +20,9 @@ pkgbase = rclient
 	optdepends = ddnet-maps-git: All the maps used on the official DDNet Servers.
 	optdepends = discord-game-sdk: Enable rich presence in Discord desktop client.
 	backup = usr/share/ddnet/data/autoexec_server.cfg
-	source = https://github.com/RushieClient/RushieClient-ddnet/releases/download/V3.0.0/RClient-ubuntu.tar.xz
+	source = https://github.com/RushieClient/RushieClient-ddnet/releases/download/V3.0.1/RClient-ubuntu.tar.xz
 	source = rclient.png
-	sha256sums = 94dad5d861f03ff1d25851a61400ab7d9ba85a7b40645f6e79c12860b603a896
-	sha256sums = af258dd9345943c5024efa534ebbf5cc14340741f393f36375b8f3c89ca736ab
+	sha256sums = 17d6dd80e79cfd5b32978eeba4264a26a4b59edcfb2479375bfc351e3beeaaa6
+	sha256sums = 99b0c10aafe311f6a26beb639dae27dbdd0d44c6394e7af224f865e397cd64de
 
 pkgname = rclient
