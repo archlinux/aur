@@ -1,6 +1,8 @@
 # Maintainer: Richard Smith <aur@electronstudio.co.uk>
 pkgname=inara-git
-pkgver=0.7.0.r70.432463c  # placeholder, overwritten by pkgver()
+provides=('inara')
+conflicts=('inara')
+pkgver=0.8.14.r93.c40a6b8  # placeholder, overwritten by pkgver()
 pkgrel=1
 pkgdesc="Use mobile device as trackpad, graphics tablet, for PC."
 arch=('x86_64')
