@@ -1,4 +1,5 @@
 [rqlite-bin]
-source = "git"
-git = "https://github.com/rqlite/rqlite.git"
+source = "github"
+github = "rqlite/rqlite"
+use_latest_release = true
 prefix = "v"
