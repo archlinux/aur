@@ -1,6 +1,6 @@
 # Maintainer: Empyrealm <realminc.depravity737@passinbox.com>
 pkgname=oa-sdk-git
-pkgver=0.7.17.r0.g6dccf9c
+pkgver=0.7.18.r0.gfc286c9
 pkgrel=1
 pkgdesc="OA SDK — C++ headers, CMake package, shader sources, and example tools (git version)"
 arch=('x86_64')
