@@ -1,5 +1,5 @@
 pkgbase = cosmostrix-bin
-	pkgdesc = Production-grade cinematic Matrix rain renderer for serious terminal environments.
+	pkgdesc = Professional-grade cinematic Matrix rain renderer for serious terminal environments.
 	pkgver = 15.0.0
 	pkgrel = 1
 	url = https://github.com/oxyzenQ/cosmostrix

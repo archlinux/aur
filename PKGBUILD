@@ -16,7 +16,7 @@ pkgver=15.0.0
 _tag=
 pkgrel=1
 
-pkgdesc="Production-grade cinematic Matrix rain renderer for serious terminal environments."
+pkgdesc="Professional-grade cinematic Matrix rain renderer for serious terminal environments."
 arch=('x86_64' 'aarch64')
 url="https://github.com/oxyzenQ/cosmostrix"
 license=('GPL3')
@@ -98,21 +98,31 @@ prepare() {
     msg2 "Selected asset: ${asset}"
     msg2 "Downloading: ${url}"
 
+    # -- curl flags (shared across all downloads) --
+    # --proto '=https': force HTTPS (no plain HTTP fallback).
+    # --tlsv1.2: minimum TLS 1.2 (allows TLS 1.3 negotiation — GitHub supports both).
+    # --retry 3 --retry-delay 5: if rate-limited (HTTP 429), wait 5s + retry
+    #   instead of spamming parallel requests (avoids bot detection).
+    # --connect-timeout 30: TCP handshake timeout.
+    # --max-time 300: total download timeout (5 min for large assets).
+    local curl_flags=(
+        --fail
+        --location
+        --proto '=https'
+        --tlsv1.2
+        --retry 3
+        --retry-delay 5
+        --connect-timeout 30
+        --max-time 300
+    )
+
     # -- Download the release asset --
-    curl \
-        --fail \
-        --location \
-        --proto '=https' \
-        --tlsv1.2 \
+    curl "${curl_flags[@]}" \
         --output "${srcdir}/${asset}" \
         "${url}"
 
     # -- Download the sidecar SHA512 checksum --
-    curl \
-        --fail \
-        --location \
-        --proto '=https' \
-        --tlsv1.2 \
+    curl "${curl_flags[@]}" \
         --output "${srcdir}/${asset}.sha512sum" \
         "${url}.sha512sum"
 
@@ -129,11 +139,7 @@ prepare() {
     # Optional: BLAKE2b-512 (quantum-resistant, in GNU coreutils)
     if command -v b2sum >/dev/null 2>&1; then
         msg2 "Verifying BLAKE2b checksum (optional, quantum-resistant)..."
-        curl \
-            --fail \
-            --location \
-            --proto '=https' \
-            --tlsv1.2 \
+        curl "${curl_flags[@]}" \
             --output "${srcdir}/${asset}.b2sum" \
             "${url}.b2sum"
         (
@@ -147,11 +153,7 @@ prepare() {
     # Optional: SHAKE256 (quantum-resistant, NIST PQ standard, via Python)
     if command -v python3 >/dev/null 2>&1; then
         msg2 "Verifying SHAKE256 checksum (optional, quantum-resistant)..."
-        curl \
-            --fail \
-            --location \
-            --proto '=https' \
-            --tlsv1.2 \
+        curl "${curl_flags[@]}" \
             --output "${srcdir}/${asset}.shake256" \
             "${url}.shake256"
         (
