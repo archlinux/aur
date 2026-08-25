@@ -2,33 +2,26 @@
 
 _name=gradio
 pkgname=python-$_name
-pkgver=6.25.0
-pkgrel=2
+pkgver=6.26.0
+pkgrel=1
 pkgdesc='Python library for easily interacting with trained machine learning models.'
 arch=('any')
 url='https://github.com/gradio-app/gradio'
 license=('Apache-2.0')
 depends=('python' 'python-anyio' 'python-audioop-lts' 'python-brotli' 'python-fastapi' 'python-groovy' 'python-gradio-client' 'python-hf-gradio' 'python-httpx' 'python-huggingface-hub' 'python-jinja' 'python-markupsafe' 'python-numpy' 'python-orjson' 'python-packaging' 'python-pandas' 'python-pillow' 'python-pydantic' 'python-python-multipart' 'python-pydub' 'python-pyyaml' 'python-safehttpx' 'python-semantic-version' 'python-starlette' 'python-tomlkit' 'python-typer' 'python-typing_extensions' 'uvicorn' 'python-pytz')
 makedepends=('python-hatchling' 'python-hatch-requirements-txt' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel' 'pnpm' 'npm')
-checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-matplotlib' 'python-hypothesis' 'jupyter-nbformat' 'python-openai' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-rerunfailures' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-itsdangerous' 'python-mcp' 'mime-types')
+checkdepends=('ipython' 'python-altair' 'python-boto3' 'python-matplotlib' 'python-hypothesis' 'jupyter-nbformat' 'python-openai' 'python-polars' 'python-email-validator' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-rerunfailures' 'python-requests' 'python-respx' 'python-scikit-image' 'python-pytorch' 'python-tqdm' 'python-transformers' 'python-vega_datasets' 'python-diffusers' 'python-authlib' 'python-itsdangerous' 'python-mcp' 'mime-types' 'ffmpeg')
 optdepends=('python-authlib: oauth' 'python-itsdangerous: oauth'
             'python-mcp: mcp' 'python-pydantic: mcp'
             'ruff: needed for custom component docs generation'
             'ffmpeg: audio/video processing')
-source=("$url/archive/refs/tags/$_name@$pkgver.tar.gz"
-        "https://github.com/gradio-app/gradio/pull/13772.patch"
-        "https://github.com/gradio-app/gradio/pull/13776.patch")
-sha256sums=('c8b16c879d414ec72c94e1d40b0ace9228ac292a61182b03d2d456e9af133bd3'
-            '97c05b1a853c26d98cf63b4e87260ec85495f8e839b521b47ab7b210e0e200d1'
-            'c7924c36185f25214d0dfc990a67331dc6a92c53f9af332a3a909b0994579204')
+source=("$url/archive/refs/tags/$_name@$pkgver.tar.gz")
+sha256sums=('ad4becfa5b4258dc08e38ffa8ac108440e9f83d6c8ee9bbb7773a4b1924af6d8')
 
 prepare(){
   cd "$srcdir"/$_name-$_name-$pkgver
   # Remove tests that need docker
   rm -rf test/test_docker
-  # Fix compatibility with transformers v5
-  patch -Np1 -i ../13772.patch
-  patch -Np1 -i ../13776.patch
   # Fix tests
   sed -i 's/package_json\["dependencies"\]/package_json.setdefault("dependencies", {})/' gradio/cli/commands/components/_create_utils.py
   sed -i 's/            "TabbedInterface",/            "TabbedInterface",\n            "Workflow",/' gradio/utils.py
