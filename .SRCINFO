@@ -1,7 +1,7 @@
 pkgbase = stremio-linux-shell-git
 	pkgdesc = A native Linux client for Stremio
-	pkgver = v1.0.0.beta.11.r5.gca88264
-	pkgrel = 2
+	pkgver = v1.2.0.r0.gc6e7cd2
+	pkgrel = 1
 	url = https://github.com/Stremio/stremio-linux-shell
 	arch = x86_64
 	license = GPL-3.0-only
@@ -32,6 +32,10 @@ pkgbase = stremio-linux-shell-git
 	conflicts = stremio-linux-shell
 	options = !lto
 	source = git+https://github.com/Stremio/stremio-linux-shell.git
+	source = patch-server-path-env.patch
+	source = fix-mpv-locale.patch
 	sha256sums = SKIP
+	sha256sums = c20584d54991c6efc9d1dcdb0192e5a5b604c0bc85eeff224d62645af6e97c8d
+	sha256sums = 43adf37f945378793a666b4891cd3d5d721b98a83c21a961c685bec8ddd1c7e9
 
 pkgname = stremio-linux-shell-git
