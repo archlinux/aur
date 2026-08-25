@@ -1,7 +1,7 @@
 # Maintainer: Tymon3310 <aur@tymon3310.dev>
 pkgname=vortex
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Nexus Mods' mod manager - native Linux build"
 arch=('x86_64')
@@ -9,7 +9,9 @@ url="https://github.com/Nexus-Mods/Vortex"
 license=('GPL-3.0-or-later')
 
 depends=('gtk3' 'nss' 'libxss' 'libnotify' 'libappindicator-gtk3' 'libsecret' 'nodejs' 'dotnet-runtime-9.0')
-makedepends=('git' 'corepack' 'python' 'python-setuptools' 'dotnet-sdk-9.0')
+# npm is required by build scripts of github deps (bsatk, loot) and is no
+# longer shipped by the nodejs package
+makedepends=('git' 'corepack' 'npm' 'python' 'python-setuptools' 'dotnet-sdk-9.0')
 
 conflicts=('vortex-git')
 install=vortex.install

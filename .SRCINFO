@@ -1,7 +1,7 @@
 pkgbase = vortex
 	pkgdesc = Nexus Mods' mod manager - native Linux build
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/Nexus-Mods/Vortex
 	install = vortex.install
@@ -9,6 +9,7 @@ pkgbase = vortex
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = corepack
+	makedepends = npm
 	makedepends = python
 	makedepends = python-setuptools
 	makedepends = dotnet-sdk-9.0
