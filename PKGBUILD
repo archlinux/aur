@@ -34,7 +34,7 @@ optdepends=(
 provides=("${pkgname}")
 conflicts=("${pkgname}-git")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/magpiny/malama/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('390ea6dbddf82e26f339821cf608f8690843967aa311a896eb3f0695a87d29d5')
+sha256sums=('54bd50f649fac88dd1855d4e9cc5128c21476f64a3e654d44c001d7efdaba8fc')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
