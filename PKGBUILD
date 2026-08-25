@@ -1,6 +1,6 @@
 # Maintainer: subz69 <shyne69 at gmail dot com>
 pkgname=nmlinkd
-pkgver=0.3.3
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="NetworkManager D-Bus bridge for netlink-based network stacks"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('networkmanager')
 conflicts=('networkmanager')
 install=nmlinkd.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a929370712aa09059706f077b45442217e3f324c83608aa3ba63ff103836ea33')
+sha256sums=('45d875ac8d60e95d99262406c500a37bf09982671d99a64c491950bcc76ffcfb')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -34,5 +34,6 @@ package() {
     install -Dm644 dist/org.freedesktop.NetworkManager.conf "$pkgdir/usr/share/dbus-1/system.d/org.freedesktop.NetworkManager.conf"
     install -Dm644 dist/org.freedesktop.NetworkManager.service "$pkgdir/usr/share/dbus-1/system-services/org.freedesktop.NetworkManager.service"
     install -Dm644 dist/org.freedesktop.NetworkManager.policy "$pkgdir/usr/share/polkit-1/actions/org.freedesktop.NetworkManager.policy"
+    install -Dm644 dist/nmlinkd.conf.example "$pkgdir/usr/share/doc/$pkgname/nmlinkd.conf.example"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
