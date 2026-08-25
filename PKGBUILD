@@ -22,7 +22,7 @@ sha256sums_aarch64=('b89f8282f594a344c36ab353c573f7da51fc27d9bdf9bfdfd90a9e060e8
 
 
 package() {
-	cd "${srcdir}/${_pkgname}-v${pkgver}-${CARCH}-unknown-linux-musl" || exit
+	cd "${srcdir}" || exit
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
