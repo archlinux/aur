@@ -1,39 +1,33 @@
-# Maintainer:  Yigit Dallilar <yigit.dallilar@gmail.com>
+# Maintainer: masutu < masutu dot arch at gmail dot com >
+# Contributor: Yigit Dallilar <yigit.dallilar@gmail.com>
 
 pkgname=cpl
-pkgver=7.1.4
-pkgrel=3
+pkgver=7.4
+pkgrel=1
 #lock the versions
-_wcs_ver=7.6
-_cfitsio_ver=3.49
-_fftw_ver=3.3.9
+_wcs_ver=8.5
+_cfitsio_ver=4.6.3
+_fftw_ver=3.3.10
 pkgdesc="ESO Common Pipeline Library"
 url="https://www.eso.org/sci/software/cpl/index.html"
 arch=('x86_64')
 license=('GPL2')
 depends=(gsl)
-makedepends=(gsl)
-provides=()
-conflicts=()
-replaces=()
-backup=()
 source=(ftp://ftp.eso.org/pub/dfs/pipelines/libraries/cpl/cpl-${pkgver}.tar.gz
 	https://ftp.eso.org/pub/dfs/pipelines/libraries/cfitsio/cfitsio-${_cfitsio_ver}.tar.gz
 	https://ftp.eso.org/pub/dfs/pipelines/libraries/wcslib/wcslib-${_wcs_ver}.tar.bz2
 	https://ftp.eso.org/pub/dfs/pipelines/libraries/fftw/fftw-${_fftw_ver}.tar.gz
     cpl.sh)	
-md5sums=('fd172d323a94dce2624b5d9b8014f21a'
-         '171860ffed8c1a396fc497d853f285c1'
-         '8fea0d68e0a0d3946c2c39d62f7198a2'
-         '50145bb68a8510b5d77605f11cadf8dc'
-         SKIP)
-
+md5sums=('26930526738069a72c1b607f8a3ddacd'
+         '1f95e471cf89403ff877ab58a788ad69'
+         '07b188f67739a621101103f92ccf52cc'
+         '8ccbf6a5ea78a16dbc3e1306e234cc5c'
+         'SKIP')
 
 build_cfitsio () {
     cd ${srcdir}/cfitsio-${_cfitsio_ver}
-    ./configure --prefix=${srcdir}/build --enable-reentrant --enable-sse2 --enable-ssse3
+    ./configure --prefix=${srcdir}/build --enable-reentrant --enable-shared
     make
-    make shared
     make install
 }
 
@@ -66,10 +60,9 @@ build () {
     export FFTWDIR=${srcdir}/build
 
     cd ${srcdir}/${pkgname}-${pkgver}
-    ./configure --prefix=${pkgdir}/opt/esopipes --with-fftw=${FFTWDIR} CPPFLAGS="-DCX_DISABLE_ASSERT -DL2_CACHE_BYTES=0"
+    ./configure --prefix=${pkgdir}/opt/esopipes --with-fftw=${FFTWDIR} CPPFLAGS="-DCX_DISABLE_ASSERT -DL2_CACHE_BYTES=0" --with-system-cext=no
     make 
 }
-
 
 package() {
 
@@ -78,8 +71,8 @@ package() {
     install -D -m644 COPYING "${pkgdir}/share/licenses/${pkgname}/LICENSE"
     install -D -m755 ${srcdir}/cpl.sh ${pkgdir}/etc/profile.d/cpl.sh   
 
-    cp -aR ${srcdir}/build/* ${pkgdir}/opt/esopipes/
-    
+    cp -a ${srcdir}/build/* ${pkgdir}/opt/esopipes/
+    install -d "$pkgdir/opt/esopipes/lib/esopipes-plugins" 
 }
 
 # vim:set ts=4 sw=4 et:
