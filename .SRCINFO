@@ -1,0 +1,23 @@
+pkgbase = python-mthds
+	pkgdesc = The Python interface for methods — base structures for structured outputs and the base runner for executing methods via API
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://pypi.org/project/mthds/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-semantic-version
+	depends = python-pydantic
+	depends = python-pydantic-core
+	depends = python-tomlkit
+	depends = python-httpx
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/source/m/mthds/mthds-0.8.2.tar.gz
+	sha256sums = 1ac24a415f5a4942e93309066ed6b65a553ca379578e2da93f492bc63342b0b6
+
+pkgname = python-mthds
