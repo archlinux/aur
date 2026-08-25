@@ -3,6 +3,7 @@ pkgbase = dsh-tui-bin
 	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/ccch1mneyyy/dsh-TUI
+	install = dsh-tui-bin.install
 	arch = x86_64
 	license = MIT
 	makedepends = npm

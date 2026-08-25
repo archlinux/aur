@@ -11,6 +11,7 @@ url='https://github.com/ccch1mneyyy/dsh-TUI'
 license=('MIT')
 depends=('deepseek-harness' 'nodejs' 'pnpm')
 makedepends=('npm')
+install=dsh-tui-bin.install
 options=('!strip')
 provides=('dsh-tui')
 conflicts=('dsh-tui' 'dsh-git')

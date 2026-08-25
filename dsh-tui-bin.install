@@ -1,0 +1,23 @@
+post_install() {
+    sync_profile "$1"
+}
+
+post_upgrade() {
+    sync_profile "$1"
+}
+
+sync_profile() {
+    local ver="${1%-*}"
+    local user home
+    user="${SUDO_USER:-}"
+    if [ -z "$user" ]; then
+        user="$(getent passwd | awk -F: '$3 >= 1000 && $3 < 65534 { print $1; exit }')"
+    fi
+    [ -n "$user" ] || return 0
+    home="$(getent passwd "$user" | cut -d: -f6)"
+    [ -n "$home" ] && [ -d "$home" ] || return 0
+    yes | timeout 300 runuser -u "$user" -- \
+        env PATH="/usr/bin:/usr/sbin" \
+        /usr/bin/dsh plugin --profile dsh-tui add "@deepseek-harness-tui/dsh-tui@$ver" \
+        >/dev/null 2>&1 || true
+}
