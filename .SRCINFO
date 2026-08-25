@@ -1,7 +1,7 @@
 pkgbase = libfprint-gxfp
 	pkgdesc = libfprint with Goodix GXFP5130 eSPI support (SIGFM matching)
 	pkgver = 1.94.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Han-Haocheng/libfprint
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -21,6 +21,6 @@ pkgbase = libfprint-gxfp
 	conflicts = libfprint
 	options = !debug
 	source = libfprint-63b63f3.tar.gz::https://codeload.github.com/Han-Haocheng/libfprint/tar.gz/63b63f3290e990ba8b997f1dece36e8e9f5f5949
-	sha256sums = ce70010db87146bf2f823fead729c6efeb94884bafef12d32f8c8ce3c2b130d4
+	sha256sums = 49067935844bba384012fa3d9cb50fc9c0f02aacd402fd3ca22f32298b7be119
 
 pkgname = libfprint-gxfp
