@@ -1,75 +1,30 @@
-# Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
-# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
-# News updates for packages can be followed at https://devblog.square-r00t.net
-# A HUGE THANKS to @yan12125 on GitHub (https://github.com/archiecobbs/mtree-port/issues/11#issuecomment-343127667)
-#  This is basically the PKGBUILD he wrote, all credit goes to him. Buy him a beer.
-pkgname=nmtree
-pkgver=20200403
+gitname=nmtree
+pkgname="$gitname-git"
+pkgver=1.0.0.r2.g10712d2d
 pkgrel=1
-pkgdesc="NetBSD's mtree (supports legacy mtree spec, newer specs, etc.)"
+pkgdesc='NetBSD filesystem hierarchy utility, ported to Linux'
 arch=('x86_64')
-url="https://www.netbsd.org/"
-license=( 'custom' )
-makedepends=( 'bmake' 'cvs' 'libnbcompat' )
-_pkgname=mtree
-provides=('mtree' 'mtree-git')
-conflicts=('mtree' 'mtree-git')
-install=
-changelog=
-noextract=()
-# We don't use a source since we use cvs
-source=('license'
-	'maj_min.patch'
-	'license.sig'
-	'maj_min.patch.sig')
-sha512sums=('78f634baef190d4a52187e69344e50ae9544c95bd6243ebb22af727092edbb61c021ec38de1a85e38b08cb046b71bdbf6cc869af2d9a6365cb93c92e342dfe96'
-	    '57daf0457877c5cfa0c9cddf3840d489e36de449cab417ee6a7197dc71a6fbc818900bbc133042bd4519ffa712b446e7791993e6ff1a67473a4c360ec3e35212'
-	    'SKIP'
-	    'SKIP')
-
-_cvsroot=":pserver:anoncvs@anoncvs.NetBSD.org:/cvsroot"
-_cvsmod="pkgsrc/pkgtools/${_pkgname}/files"
-
-prepare() {
-  cd "${srcdir}"
-
-  # CHECK OUT SOURCE
-  msg "Connecting to NetBSD CVS server...."
-
-  if [[ -d "${_cvsmod}/CVS" ]]; then
-    cd "${_cvsmod}"
-    cvs -z3 update -d
-  else
-    cvs -z3 -d "${_cvsroot}" co -D "${pkgver}" -f "${_cvsmod}"
-    cd "${_cvsmod}"
-  fi
-
-  msg "CVS checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "${srcdir}/${_cvsmod}-build"
-  cp -r "${srcdir}/${_cvsmod}" "${srcdir}/${_cvsmod}-build"
-
-  cd "${srcdir}/${_cvsmod}-build"
-
-  # APPLY PATCHES
-  patch -N < ${srcdir}/maj_min.patch
-
+url="https://github.com/archiecobbs/${gitname}"
+license=('BSD-3-Clause' 'BSD-4-Clause' 'NTP')
+depends=('glibc' 'libnbcompat>=1:1.0.2')
+makedepends=('autoconf' 'automake')
+provides=('nmtree')
+conflicts=('nmtree')
+source=("git+$url.git")
+sha256sums=('SKIP')
+pkgver() {
+  cd "${srcdir}/${gitname}"
+  git describe --long --tags --abbrev=8 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
 build() {
-  # https://bugs.square-r00t.net/index.php?do=details&task_id=47
-  MAKEFLAGS=$(echo ${MAKEFLAGS} | sed -re 's/(^|\s+)(-l[0-9]+)/\1/g')
-
-  cd "${srcdir}/${_cvsmod}-build"
-
-  ./configure --prefix=/usr --sbindir=/usr/bin LIBS="-lnbcompat"
-
-  bmake
+  cd "$srcdir/$gitname"
+  ./autogen.sh
+  # cflag until upstream fixes
+  CFLAGS+=" -Wno-error=format-security" ./configure --prefix=/usr
+  make
 }
 package() {
-  cd "${srcdir}/${_cvsmod}-build"
-  bmake install DESTDIR="${pkgdir}/"
-  install -D -m 0644 ${srcdir}/license ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  cd "$srcdir/$gitname"
+  # libarchive has mtree.5 so don't conflict
+  make DESTDIR="$pkgdir" docdir="/usr/share/doc/$pkgname" man_MANS='mtree.8' install
 }

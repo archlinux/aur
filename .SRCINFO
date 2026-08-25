@@ -1,26 +1,19 @@
-pkgbase = nmtree
-	pkgdesc = NetBSD's mtree (supports legacy mtree spec, newer specs, etc.)
-	pkgver = 20200403
+pkgbase = nmtree-git
+	pkgdesc = NetBSD filesystem hierarchy utility, ported to Linux
+	pkgver = 1.0.0.r2.g10712d2d
 	pkgrel = 1
-	url = https://www.netbsd.org/
+	url = https://github.com/archiecobbs/nmtree
 	arch = x86_64
-	license = custom
-	makedepends = bmake
-	makedepends = cvs
-	makedepends = libnbcompat
-	provides = mtree
-	provides = mtree-git
-	conflicts = mtree
-	conflicts = mtree-git
-	source = license
-	source = maj_min.patch
-	source = license.sig
-	source = maj_min.patch.sig
-	validpgpkeys = 748231EBCBD808A14F5E85D28C004C2F93481F6B
-	sha512sums = 78f634baef190d4a52187e69344e50ae9544c95bd6243ebb22af727092edbb61c021ec38de1a85e38b08cb046b71bdbf6cc869af2d9a6365cb93c92e342dfe96
-	sha512sums = 57daf0457877c5cfa0c9cddf3840d489e36de449cab417ee6a7197dc71a6fbc818900bbc133042bd4519ffa712b446e7791993e6ff1a67473a4c360ec3e35212
-	sha512sums = SKIP
-	sha512sums = SKIP
+	license = BSD-3-Clause
+	license = BSD-4-Clause
+	license = NTP
+	makedepends = autoconf
+	makedepends = automake
+	depends = glibc
+	depends = libnbcompat>=1:1.0.2
+	provides = nmtree
+	conflicts = nmtree
+	source = git+https://github.com/archiecobbs/nmtree.git
+	sha256sums = SKIP
 
-pkgname = nmtree
-
+pkgname = nmtree-git
