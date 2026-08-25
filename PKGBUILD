@@ -20,8 +20,8 @@ url=${_ghurl}
 license=('Apache-2.0' 'MIT')
 
 provides=("${_appname}")
-conflicts=("${_appname}")
 depends=('glibc' 'libgcc')
+conflicts=("${pkgname%-bin}")
 
 options=('!strip')
 
