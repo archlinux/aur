@@ -1,8 +1,8 @@
 pkgbase = calligraphy
 	pkgdesc = Turn text into ASCII banners
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
-	url = https://gitlab.gnome.org/GeopJr/Calligraphy/
+	url = https://codeberg.org/GeopJr/Calligraphy
 	arch = any
 	license = GPL3
 	makedepends = appstream-glib
@@ -11,7 +11,7 @@ pkgbase = calligraphy
 	depends = gtk4
 	depends = libadwaita
 	depends = python-pyfiglet
-	source = https://gitlab.gnome.org/GeopJr/Calligraphy//-/archive/v1.2.0/Calligraphy-v1.2.0.tar.gz
-	sha256sums = 9cf40500bb5ccee09f8321de3f31f1117c32313b98368fca7be60791b44c6983
+	source = https://codeberg.org/GeopJr/Calligraphy/archive/v1.3.0.tar.gz
+	sha256sums = 3ea28f487820f164b96e3a48216d6822971fa4b508a42ae74f54959e358e78fc
 
 pkgname = calligraphy

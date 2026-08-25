@@ -2,19 +2,19 @@
 
 pkgname=calligraphy
 _pkgname=Calligraphy
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Turn text into ASCII banners'
 arch=('any')
-url='https://gitlab.gnome.org/GeopJr/Calligraphy/'
+url='https://codeberg.org/GeopJr/Calligraphy'
 license=('GPL3')
 depends=('gtk4' 'libadwaita' 'python-pyfiglet')
 makedepends=('appstream-glib' 'meson' 'git')
-source=("$url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz")
-sha256sums=('9cf40500bb5ccee09f8321de3f31f1117c32313b98368fca7be60791b44c6983')
+source=("$url/archive/v$pkgver.tar.gz")
+sha256sums=('3ea28f487820f164b96e3a48216d6822971fa4b508a42ae74f54959e358e78fc')
 
 build() {
-  arch-meson $_pkgname-v$pkgver build
+  arch-meson $pkgname build
   meson compile -C build
 }
 
