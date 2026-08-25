@@ -4,7 +4,7 @@
 # 源码 = Han-Haocheng/gxfp5130-linux 固定 commit；libfprint 后端为独立包 libfprint-gxfp。
 pkgname=gxfp5130
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Goodix GXFP5130 eSPI fingerprint sensor: DKMS module, userspace tools, udev rules and fprintd service config'
 arch=('x86_64')
 url='https://github.com/Han-Haocheng/gxfp5130-linux'
@@ -14,7 +14,7 @@ makedepends=('cmake' 'make' 'gcc' 'mbedtls3')
 install=gxfp5130.install
 
 source=('gxfp5130-linux.tar.gz::https://codeload.github.com/Han-Haocheng/gxfp5130-linux/tar.gz/23bf6622b2530a08d5e67cbe479f6fd2873f10d7')
-sha256sums=('1470f9f1a165316a0129b13577e38046258b099c8eccc6ecc4a426d16e411358')
+sha256sums=('efa612e84643e579f95e23421919ef0be0dc35fe0cba5e464ac9f9b78c5a80fb')
 
 build() {
   export MBEDTLS_PREFIX="${MBEDTLS_PREFIX:-/usr/lib/mbedtls3}"
