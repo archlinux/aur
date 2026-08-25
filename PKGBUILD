@@ -3,7 +3,7 @@
 _perlmod='Mail-DMARC'
 _modnamespace=Mail/MSIMERSON
 pkgname=perl-mail-dmarc
-pkgver=1.20260306
+pkgver=2.20260724
 pkgrel=1
 pkgdesc="Perl implementation of DMARC"
 arch=("any")
@@ -14,7 +14,7 @@ makedepends=('perl-email-sender' 'perl-module-pluggable' 'perl-test-file-sharedi
 checkdepends=('perl-net-dns-resolver-mock')
 options=('!emptydirs')
 source=("https://cpan.perl.org/modules/by-module/$_modnamespace/$_perlmod-$pkgver.tar.gz")
-sha256sums=('01153de4535343bd150129bf90d7de3408249a1aedb0922e6441727fc20aab7a')
+sha256sums=('1e90900a655430318ea1e721869f406d0d05ce46ac84d48835aeb1b85a1221d0')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"

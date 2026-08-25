@@ -1,6 +1,6 @@
 pkgbase = perl-mail-dmarc
 	pkgdesc = Perl implementation of DMARC
-	pkgver = 1.20260306
+	pkgver = 2.20260724
 	pkgrel = 1
 	url = http://search.cpan.org/dist/Mail-DMARC
 	arch = any
@@ -38,7 +38,7 @@ pkgbase = perl-mail-dmarc
 	depends = perl-uri
 	depends = perl-xml-libxml
 	options = !emptydirs
-	source = https://cpan.perl.org/modules/by-module/Mail/MSIMERSON/Mail-DMARC-1.20260306.tar.gz
-	sha256sums = 01153de4535343bd150129bf90d7de3408249a1aedb0922e6441727fc20aab7a
+	source = https://cpan.perl.org/modules/by-module/Mail/MSIMERSON/Mail-DMARC-2.20260724.tar.gz
+	sha256sums = 1e90900a655430318ea1e721869f406d0d05ce46ac84d48835aeb1b85a1221d0
 
 pkgname = perl-mail-dmarc
