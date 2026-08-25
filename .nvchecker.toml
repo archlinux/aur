@@ -1,4 +1,5 @@
 [ripdrag]
-source = "git"
-git = "https://github.com/nik012003/ripdrag"
+source = "github"
+github = "nik012003/ripdrag"
+use_latest_release = true
 prefix = "v"
