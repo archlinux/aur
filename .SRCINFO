@@ -1,14 +1,14 @@
 pkgbase = ipfs-desktop
 	pkgdesc = Desktop client for the InterPlanetary File System
 	pkgver = 0.50.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/ipfs/ipfs-desktop
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs
 	makedepends = npm
-	depends = electron43
+	depends = electron42
 	depends = kubo>=0.43.0
 	source = ipfs-desktop-0.50.0.tar.gz::https://github.com/ipfs/ipfs-desktop/archive/refs/tags/v0.50.0.tar.gz
 	source = webui-bafybeiciqeyipumpmhxzlxnbqdbbv6u5uij4hy4wax64dmj7kvrhusiq6y.car::https://trustless-gateway.link/ipfs/bafybeiciqeyipumpmhxzlxnbqdbbv6u5uij4hy4wax64dmj7kvrhusiq6y?format=car
