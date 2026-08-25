@@ -2,7 +2,7 @@
 
 pkgname=wasm3-bin
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The fastest WebAssembly interpreter and the most universal runtime"
 arch=('x86_64')
 url="https://github.com/wasm3/wasm3"
@@ -16,6 +16,6 @@ sha256sums_x86_64=('2aa7d4e6dfb0e0dc1880f3f470e7dd36476668ff8776b3e7f376c7367452
 
 
 package() {
-  install -Dm755 "$srcdir/$pkgname-$CARCH-$pkgver" -t "$pkgdir/usr/bin/wasm3"
+  install -Dm755 "$srcdir/$pkgname-$CARCH-$pkgver" "$pkgdir/usr/bin/wasm3"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/wasm3"
 }
