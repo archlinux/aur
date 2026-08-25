@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <support@lmm.best>
 
 pkgname=lmm-api-web-bin
-pkgver=0.1.41
+pkgver=0.1.42
 pkgrel=1
 pkgdesc='LMM API production web frontend (prebuilt)'
 arch=('any')
@@ -25,9 +25,9 @@ source=(
 )
 noextract=("${_artifact}")
 sha256sums=(
-  'be1e942ed55ec011f88d0f4d779f164324cea9555f74051c83f2efe47b259042'
-  '802d456e024b933612b7f57c8e1f9ae82a15138d7086dd49f9f7f7ab07985905'
-  '7e7c97801600adb519a52fa71d757fd641107be51f189aa7f7f1df1d3d72b556'
+  '95e3ecd8c83cdc76a7c4b70b542d3e047e2d8f8972078c005c9b07e67e0229e7'
+  'e0188fbc2834931cb2ae54e1c23f995d73a603d2baf7b0ac42111504ffb3056e'
+  'fb721c5b71e2db32008c05b63c450f690176baf3d6441914a17ccc31de2e9e0d'
   '358f5b958f3520757628d803027dafb1b67ec61b565d00bf4cd4f7927347cf33'
 )
 
@@ -57,6 +57,8 @@ prepare() {
 }
 
 package() {
+  local release_asset_sha256
+
   install -d -m0755 "${pkgdir}/usr/share/lmm-api-web/frontend-dist"
   cp -R --no-preserve=ownership,mode,timestamps -- "${srcdir}/dist/." \
     "${pkgdir}/usr/share/lmm-api-web/frontend-dist/"
@@ -73,6 +75,10 @@ package() {
     install -Dm0644 "${srcdir}/${file}" "${pkgdir}/usr/share/licenses/${pkgname}/${file}"
   done
   install -Dm0644 "${srcdir}/REVISION" "${pkgdir}/usr/share/doc/${pkgname}/REVISION"
+  release_asset_sha256=$(sha256sum "${srcdir}/${_artifact}")
+  printf '%s\n' "${release_asset_sha256%% *}" >"${srcdir}/RELEASE_ASSET_SHA256"
+  install -Dm0644 "${srcdir}/RELEASE_ASSET_SHA256" \
+    "${pkgdir}/usr/share/doc/${pkgname}/RELEASE_ASSET_SHA256"
   if [[ -f ${srcdir}/API_ROUTE_CONTRACT_REVISION ]]; then
     install -Dm0644 "${srcdir}/API_ROUTE_CONTRACT_REVISION" \
       "${pkgdir}/usr/share/doc/${pkgname}/API_ROUTE_CONTRACT_REVISION"
