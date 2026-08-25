@@ -35,12 +35,10 @@ case ${CARCH} in
     ;;
 esac
 
-prepare() {
+build() {
 	cd "${srcdir}/${_gitname,,}-${_gitversion}-${_CARCH}/" || exit
 
 	mkdir -p "./completions"
-
-	chmod +x "${_appname}"
 
 	"./${_appname}" completions zsh > "./completions/${_appname}.zsh"
 	"./${_appname}" completions bash > "./completions/${_appname}.bash"
