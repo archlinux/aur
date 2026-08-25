@@ -1,0 +1,17 @@
+pkgbase = luvus-bin
+	pkgdesc = Mission control for your AI coding agents
+	pkgver = 0.12.0
+	pkgrel = 2
+	url = https://github.com/RizRiyz/luvus
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	provides = luvus
+	conflicts = luvus
+	options = !strip
+	source_x86_64 = luvus-0.12.0-x86_64.tar.gz::https://github.com/RizRiyz/luvus/releases/download/v0.12.0/luvus-v0.12.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 2870a1f9386d2e10aecc4e9e5149951eb374c4fd9fb723c1539b154034b2afd2
+	source_aarch64 = luvus-0.12.0-aarch64.tar.gz::https://github.com/RizRiyz/luvus/releases/download/v0.12.0/luvus-v0.12.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 1e72ee8c4273b82ef48b9a6535c5f819d9ade6c208bf8d67bb4f15b91c3b4af1
+
+pkgname = luvus-bin
