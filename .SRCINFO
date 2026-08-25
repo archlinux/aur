@@ -1,6 +1,6 @@
 pkgbase = valley-sans-font
 	pkgdesc = Clear, versatile typeface developed for the Moomin Company
-	pkgver = 0.0.202606
+	pkgver = 0.0.202608
 	pkgrel = 1
 	url = https://github.com/HelsinkiTypeStudio/valley-sans
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = valley-sans-font
 	makedepends = git
 	makedepends = make
 	makedepends = python
-	source = valley-sans-font-0.0.202606::git+https://github.com/HelsinkiTypeStudio/valley-sans#commit=fb5fda6c08d64734e7980388187474f289757e30
-	sha256sums = 9c59dcf694bab6da8b9fde913ebc0fe40df61fa3f66eca04d58abe0652520955
+	source = valley-sans-font-0.0.202608::git+https://github.com/HelsinkiTypeStudio/valley-sans#commit=f5c2dec81e78da325c6934da87b6a6ad4c236e6a
+	sha256sums = e8776ad43ca3c621d45d12920f287ae12cf8f1a98ad956fc534b6c94b62979ee
 
 pkgname = ttf-valley-sans
 

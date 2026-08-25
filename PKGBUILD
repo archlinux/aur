@@ -3,15 +3,15 @@
 pkgbase=valley-sans-font
 pkgname=(ttf-valley-sans ttf-valley-sans-variable woff2-valley-sans)
 pkgdesc='Clear, versatile typeface developed for the Moomin Company'
-pkgver=0.0.202606
+pkgver=0.0.202608
 pkgrel=1
 url=https://github.com/HelsinkiTypeStudio/valley-sans
-_commit=fb5fda6c08d64734e7980388187474f289757e30
+_commit=f5c2dec81e78da325c6934da87b6a6ad4c236e6a
 arch=(any)
 license=(OFL-1.1)
 makedepends=(cairo git make python)
 source=("$pkgbase-$pkgver::git+$url#commit=$_commit")
-sha256sums=('9c59dcf694bab6da8b9fde913ebc0fe40df61fa3f66eca04d58abe0652520955')
+sha256sums=('e8776ad43ca3c621d45d12920f287ae12cf8f1a98ad956fc534b6c94b62979ee')
 
 prepare () {
 	cd "$pkgbase-$pkgver"
