@@ -1,7 +1,7 @@
 # Maintainer: Sean E. Russell <ser@ser1.net> -> also the developer
 
 pkgname=ostui
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="A terminal client for OpenSubsonic servers (stmps fork)"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -37,4 +37,4 @@ package() {
   install -Dm644 CHANGELOG.md        "${pkgdir}/usr/share/doc/ostui/CHANGELOG.md"
   install -Dm644 config-example.toml "${pkgdir}/usr/share/doc/ostui/config-example.toml"
 }
-sha256sums=('0b44a71d74a3f7761b71dca45490175279bf01fc5af4d8afc8bf26056f7bbe06')
+sha256sums=('4e1c9fcb6a9cda9491ddde4b0a05ea9d5735ce9533f22ff9c6d098dea18c8f67')
