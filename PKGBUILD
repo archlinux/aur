@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A very fast find-and-replace utility"
 
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ makedepends=('zig')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums_x86_64=('15d2e4ec92267002dbc152006a9fee3db07d9565e934b0d090aa4ae637c7466e')
+sha256sums_x86_64=('a8045fef48eb8efe7bab3cc2a1e19bffcc3612e145f44e9494949e1b751e7746')
 
 
 build() {
@@ -41,5 +41,5 @@ package() {
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	# install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

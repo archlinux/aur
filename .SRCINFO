@@ -1,6 +1,6 @@
 pkgbase = huntclaw
 	pkgdesc = A very fast find-and-replace utility
-	pkgver = 0.6
+	pkgver = 0.7
 	pkgrel = 1
 	url = https://github.com/tigerlang/huntclaw
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = huntclaw
 	makedepends = zig
 	provides = huntclaw
 	options = !strip
-	source_x86_64 = huntclaw-x86_64-0.6::https://github.com/tigerlang/huntclaw/archive/v0.6.tar.gz
-	sha256sums_x86_64 = 15d2e4ec92267002dbc152006a9fee3db07d9565e934b0d090aa4ae637c7466e
+	source_x86_64 = huntclaw-x86_64-0.7::https://github.com/tigerlang/huntclaw/archive/v0.7.tar.gz
+	sha256sums_x86_64 = a8045fef48eb8efe7bab3cc2a1e19bffcc3612e145f44e9494949e1b751e7746
 
 pkgname = huntclaw
