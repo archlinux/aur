@@ -2,7 +2,7 @@
 
 _name=pycomsa
 pkgname=python-${_name}
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to CoMSA, a compressor for multiple-sequence alignments."
 url="https://github.com/althonos/pycomsa"
@@ -11,7 +11,7 @@ license=("GPL-3.0-or-later")
 depends=('python')
 makedepends=('cython' 'python-build' 'python-installer' 'cmake' 'ninja' 'python-scikit-build-core')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(9a9a7521b9d8d9f644a99d6cc16dac396f0673d7b55121370c67e219f7410cf1)
+sha256sums=(23e2c99dab867cd75bf5405985723602662f1cd72cf29b02ec594876bf6ab1b3)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
