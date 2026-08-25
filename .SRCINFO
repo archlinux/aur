@@ -1,6 +1,6 @@
 pkgbase = open-wallpaper-engine
 	pkgdesc = Open source scene renderer, mostly for linux.
-	pkgver = 0.2.6
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/waywallen/open-wallpaper-engine
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = open-wallpaper-engine
 	depends = ffmpeg
 	depends = vulkan-icd-loader
 	depends = libglvnd
-	depends = waywallen>=0.3.2
+	depends = waywallen>=0.3.6
 	depends = cef
 	depends = glslang
 	depends = fontconfig
@@ -32,17 +32,17 @@ pkgbase = open-wallpaper-engine
 	depends = glfw
 	depends = wayland
 	options = !lto
-	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.2.6
+	source = git+https://github.com/waywallen/open-wallpaper-engine.git#tag=v0.2.8
 	source = git+https://github.com/hypengw/SPIRV-Reflect.git#commit=355785128c1b6ba808e3a7d0e344814fe6cff502
-	source = git+https://github.com/litocpp/rstd.git#commit=a852e89dc7b2c7fae6cc4c89d1f76afbac55be82
+	source = git+https://github.com/litocpp/rstd.git#commit=fdb99aaa894d76b04032cd301ac82b5ee6e3ec6d
 	source = git+https://github.com/litocpp/vvk.git#commit=f53d60cc70938d0485802750deeb15d18ba033ea
-	source = git+https://github.com/hypengw/wavsen.git#commit=c07711f73253b0e3c53329c9930f2024193f8641
+	source = git+https://github.com/hypengw/wavsen.git#commit=c7cb2b2304b0b0e309c19373ac0722d904ddebc0
 	source = 0001-lito-Use-system-cef.patch
-	sha256sums = ecc9cf8321f3d00a040deb3f2ff5d577aa940a3f7ee5ff056f3dba82f45708a9
+	sha256sums = bf3b2635180791068952fabffe1d5e0d6a5f9d77a4d4dc8acc5a230b09f103f7
 	sha256sums = c033a38ac4e58e4a87ad43a84eb5e0fbe312c82b161a1fe5e38890751636f63f
-	sha256sums = d6f977ace1bea2ee52bcebb6dd715108eb925d30dc8fb9367c3d23003a683ea1
+	sha256sums = 5e459ff93db361faf3c893d714d1f1d26b7d133f62c58c091a20357476a37a3c
 	sha256sums = 0abff36a8194edd20feb96e87abc772b13a2ac725c99df091ea8e08b57562f0f
-	sha256sums = 91ecfcff82eaced83eda7045788600513893c202b8eb125306a394d1bde40586
+	sha256sums = d8f3d376fa801c263173ad157eb743c31390dc2cf259a3e540b843df09da5c80
 	sha256sums = e9e3915ecdbb4d858cd1f610796c8d2e5b1f6a8e51e936fff7633d782d8337c7
 
 pkgname = open-wallpaper-engine
