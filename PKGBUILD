@@ -2,7 +2,7 @@
 
 pkgname=deepcode-cli-bin
 _pkgname=deepcode-cli
-pkgver=0.2.1
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Terminal AI coding assistant optimized for the deepseek-v4 model (deep thinking, agent skills, MCP)"
 arch=('any')
@@ -21,13 +21,15 @@ _scope='@vegamo'
 # leave it unextracted; the ::-rename embeds pkgver so makepkg never reuses
 # a stale cached tarball across version bumps.
 #
-# 0.2.0 stopped shipping a LICENSE inside the npm tarball altogether (0.1.33
-# had it at the module root, 0.1.34 under dist/), so pull the MIT text the
-# package.json still declares from the matching git tag instead.
+# The LICENSE keeps moving inside the npm tarball across releases: 0.1.33 had
+# it at the module root, 0.1.34 under dist/, 0.2.0 dropped it entirely, 0.3.1
+# put it back at the root. Pull the MIT text from the matching git tag instead
+# so package() does not have to chase that (verified identical to the copy
+# 0.3.1 bundles).
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_scope}/${_pkgname}/-/${_pkgname}-${pkgver}.tgz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/lessweb/deepcode-cli/v${pkgver}/LICENSE")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('fa0a78882b8f7ad47a030546e621680f8629c374917e49186df72adc5bff28cf'
+sha256sums=('8ef4c64c4bbcdc474f6498b9314c23442be8b5e589e26eb07ee12594fd2433ff'
             '7b1d5fa29a200220ca44b3355db5f1c7b91714fbbd76f42e7268104fa9efd380')
 
 package() {
