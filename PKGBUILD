@@ -52,6 +52,7 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 	[ -f .gitmodules ] || return 0
+	git submodule sync
 	git submodule update --init --recursive
 }
 
