@@ -1,0 +1,21 @@
+pkgbase = riipl-git
+	pkgdesc = Local DeepL rip-off powered by any OpenAI-compatible API
+	pkgver = r78.81c7d93
+	pkgrel = 1
+	url = https://github.com/KFERMercer/RiipL
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = hicolor-icon-theme
+	provides = riipl
+	conflicts = riipl
+	source = riipl-git::git+https://github.com/KFERMercer/RiipL.git
+	source = riipl.desktop
+	sha256sums = SKIP
+	sha256sums = 97f09da0bc6ebf851c55f391e2e3ecba1040a2a18ceab2c8264c4c1b4998ef99
+
+pkgname = riipl-git
