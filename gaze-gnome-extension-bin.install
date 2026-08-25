@@ -54,7 +54,11 @@ if [ -d /run/systemd/system ]; then
     glib-compile-schemas /usr/share/glib-2.0/schemas >/dev/null 2>&1 || true
 
     if command -v semodule >/dev/null 2>&1; then
-        semodule -i /usr/share/gaze/gaze-gdm-camera.pp >/dev/null 2>&1 || true
+        if ! semodule -i /usr/share/gaze/gaze-gdm-camera.pp >/dev/null 2>&1; then
+            echo "gaze: failed to load the gaze-gdm-camera SELinux policy;" >&2
+            echo "gaze: face auth at the GDM login screen will not work until you run" >&2
+            echo "gaze:   sudo semodule -i /usr/share/gaze/gaze-gdm-camera.pp" >&2
+        fi
     fi
 fi
 
@@ -135,7 +139,11 @@ if [ -d /run/systemd/system ]; then
     glib-compile-schemas /usr/share/glib-2.0/schemas >/dev/null 2>&1 || true
 
     if command -v semodule >/dev/null 2>&1; then
-        semodule -i /usr/share/gaze/gaze-gdm-camera.pp >/dev/null 2>&1 || true
+        if ! semodule -i /usr/share/gaze/gaze-gdm-camera.pp >/dev/null 2>&1; then
+            echo "gaze: failed to load the gaze-gdm-camera SELinux policy;" >&2
+            echo "gaze: face auth at the GDM login screen will not work until you run" >&2
+            echo "gaze:   sudo semodule -i /usr/share/gaze/gaze-gdm-camera.pp" >&2
+        fi
     fi
 fi
 
