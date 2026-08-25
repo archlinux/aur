@@ -1,0 +1,6 @@
+# makepkg build artifacts
+src/
+pkg/
+clingo/
+*.pkg.tar.*
+*.src.tar.*
