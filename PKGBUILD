@@ -1,19 +1,24 @@
 # Maintainer:  Joshua Holmer <jholmer.in@gmail.com>
+# Maintainer: quietvoid <tcChlisop0@gmail.com>
 
 _plug=subtext
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=R6.4.gef0e4c5
-pkgrel=2
+pkgver=R7.0.g662577d
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/vapoursynth/subtext'
 license=('MIT')
-depends=('vapoursynth>=75'
+depends=(
+  'vapoursynth'
   'libass'
   'ffmpeg'
 )
-makedepends=('git'
-  'meson'
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+  'meson-python'
 )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -25,19 +30,17 @@ pkgver() {
   echo "$(git describe --long --tags | tr - .)"
 }
 
-prepare() {
-  mkdir -p build
-}
-
 build() {
-  cd build
-  arch-meson "../${_plug}" --libdir /usr/lib/vapoursynth
-  ninja
+  cd "${_plug}"
+  
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  PLUGINDIR=$(python3 -c "import vapoursynth; print(vapoursynth.get_plugin_dir())")
+  cd "${_plug}"
 
-  install -Dm755 build/subtext.so "${pkgdir}${PLUGINDIR}/subtext.so"
-  install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
