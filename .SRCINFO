@@ -1,7 +1,7 @@
 pkgbase = pi-agent-rust
 	pkgdesc = High-performance AI coding agent CLI - Rust port of Pi Agent
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Dicklesworthstone/pi_agent_rust
 	arch = x86_64
 	arch = aarch64

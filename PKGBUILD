@@ -3,7 +3,7 @@ _pkgname=pi_agent_rust
 pkgbase=pi-agent-rust
 pkgname=('pi-agent-rust' 'pi-rust')
 pkgver=0.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="High-performance AI coding agent CLI - Rust port of Pi Agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Dicklesworthstone/pi_agent_rust"
@@ -22,7 +22,7 @@ options=(!lto)
 
 prepare() {
   cd "$_pkgname-$pkgver"
-  rustup toolchain install nightly-2026-07-05
+  rustup toolchain install
   cargo fetch --locked
 }
 
@@ -43,6 +43,7 @@ package_pi-rust() {
   provides=('pi')
   conflicts=('pi')
   replaces=('pi')
-  ln -s /usr/bin/pi-rust "$pkgdir/usr/bin/pi"
+  mkdir -p "$pkgdir/usr/bin"
+  ln -sv /usr/bin/pi-rust "$pkgdir/usr/bin/pi"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
