@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname='teams-for-linux-bin'
-pkgver=2.17.0
+pkgver=2.17.1
 pkgrel=1
 pkgdesc='Unofficial Microsoft Teams for Linux client (binary version)'
 url='https://github.com/IsmaelMartinez/teams-for-linux'
@@ -17,9 +17,9 @@ depends=('gtk3' 'libxss' 'nss' 'alsa-lib' 'nodejs')
 source_x86_64=("$url/releases/download/v$pkgver/teams-for-linux_${pkgver}_amd64.deb")
 source_aarch64=("$url/releases/download/v$pkgver/teams-for-linux_${pkgver}_arm64.deb")
 source_armv7h=("$url/releases/download/v$pkgver/teams-for-linux_${pkgver}_armv7l.deb")
-b2sums_x86_64=('dcb695807f184248662f08224f0911a7060341bb8d32302eff1b38819e902f6bf8e9d8e093bdcf4507f93efa6f405c0fc8c9484837fc66ce0da71884b13e0fe2')
-b2sums_aarch64=('8781c1b720202a9254603083ae09a7ffe17155ec9fb62db4d09bbefe00ec52f064aafad126d5d4c2556c1e790252c3b5ffcdc1814678c01cd408b08a791059bd')
-b2sums_armv7h=('35bea42b54b43b7f3cb4856a7af23b76420bec0e956426276ef24043325b25d051e5ad130c9cccf9293379570430c78dcc4fbac744e80608fa82bf0d4b34a6e2')
+b2sums_x86_64=('28e93ea97daebe4f16724a47d6e1c655ee3e4e7ba775e8b7a3671a5cf898e213ff0cabcae24e47033f67914e292a4eb795c6cbca30589b930c5e34607b70c048')
+b2sums_aarch64=('f9981b0e6161c2f074b3e4960f4965b0ed3a3194d65a178d8f9fe0379e88462ca8272bc3f5487c270221d2e07c76111e85e160a77e8b509d215a2bd33f9d8115')
+b2sums_armv7h=('83999a0350389c347a6306ce54ab1760f8857071449d8c6890dfaa32be088bcf894bc8e3bb55c11a6fbcf6e3bfe2d6e1a1567d69e8815d523575f1693f0f2115')
 options=('!strip')
 
 prepare(){
