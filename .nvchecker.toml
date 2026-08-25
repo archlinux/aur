@@ -1,4 +1,5 @@
 [reel-bin]
-source = "git"
-git = "https://github.com/arsfeld/reel.git"
+source = "github"
+github = "arsfeld/reel"
+use_latest_release = true
 prefix = "v"
