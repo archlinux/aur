@@ -1,0 +1,14 @@
+pkgbase = vrc-video-cacher-bin
+	pkgdesc = Local video cacher that fixes bot detection errors in VRChat Youtube Videos
+	pkgver = 2026.7.2
+	pkgrel = 1
+	url = https://github.com/EllyVR/VRCVideoCacher
+	arch = x86_64
+	depends = dotnet-runtime-10.0
+	provides = vrc-video-cacher
+	conflicts = vrc-video-cacher
+	options = !strip
+	source = https://github.com/EllyVR/VRCVideoCacher/releases/download/2026.7.2/VRCVideoCacher
+	sha256sums = b1f66f2231bc6ec05d2af36c0c54944bfd3ad816b73befe469859ef357ee3b72
+
+pkgname = vrc-video-cacher-bin
