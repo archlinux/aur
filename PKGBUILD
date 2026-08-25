@@ -1,8 +1,8 @@
 # Maintainer: Archisman Panigrahi <apandada1 AT gmail DOT com>
 
 pkgname=tomatillo
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc='Tomatillo is a Pomodoro Timer app for your productivity tasks'
 arch=(any)
 url='https://github.com/diegopvlk/Tomatillo'
