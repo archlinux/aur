@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=agent-browser-bin
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="Fast browser automation CLI for AI agents (native binary)"
 arch=('x86_64' 'aarch64')
@@ -15,14 +15,15 @@ optdepends=(
     'google-chrome: Alternative browser engine'
     'lightpanda: Alternative browser engine optimized for AI'
     'appium: For iOS Simulator support (--provider ios)'
+    'nss: Private proxy CA trust support (--ca-cert)'
 )
 source=("agent-browser-${pkgver}.tar.gz::https://github.com/vercel-labs/agent-browser/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::https://github.com/vercel-labs/agent-browser/releases/download/v${pkgver}/agent-browser-linux-x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::https://github.com/vercel-labs/agent-browser/releases/download/v${pkgver}/agent-browser-linux-arm64")
 
-sha256sums=('9f7b8e0ff1ad2c414b0661e3910382c47d0e3cdc72ece07c00cf7f6319657074')
-sha256sums_x86_64=('69eadf5d8d6003a06a5cd2f914ebb261c7754fe1335a9190122c334e91909789')
-sha256sums_aarch64=('ca70bf7c2d269a152b3824cbb65befb7b8258b8aa1cf34767c64ada2abc3d7c8')
+sha256sums=('ea4331fae4ddbc1d787908011347234d5ddb88ec920dec7c7240801a9687d04a')
+sha256sums_x86_64=('b7a28c3a43a7008dd02585e2e60c391c08983f7a099149caed63c9f13f57b752')
+sha256sums_aarch64=('92cd7d0897837ac648b9a6ab1965c69c5920e0f54df57e4295cdb1143b0541c8')
 
 package() {
     cd "agent-browser-${pkgver}"
