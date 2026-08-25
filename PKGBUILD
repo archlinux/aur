@@ -8,7 +8,7 @@
 # -------------------------------------------------------------------
 pkgname=openwhispr-appimage
 _appname=OpenWhispr
-pkgver=1.8.3
+pkgver=1.9.0
 pkgrel=1
 pkgdesc="Voice-to-text dictation app with local Whisper/Parakeet and cloud models (AppImage)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ options=('!strip')
 
 # AppImage asset URL — the only source needed
 source=("${_appname}-${pkgver}-linux-x86_64.AppImage::https://github.com/${_appname}/openwhispr/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-x86_64.AppImage")
-sha256sums=('fe90648d221634962bee2b6dc954d5781590cd9d345f412489e7e324d41767ce')
+sha256sums=('ff36f126a9bd62a5a0d9de73347e2ea78f1901e17a9380ef6950225d0492993d')
 
 prepare() {
     chmod +x "${_appname}-${pkgver}-linux-x86_64.AppImage"
