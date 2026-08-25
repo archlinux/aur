@@ -1,0 +1,4 @@
+pkg
+src
+stream32-*.AppImage
+stream32-appimage-*-x86_64.pkg.tar.zst
