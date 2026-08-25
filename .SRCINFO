@@ -16,7 +16,7 @@ pkgbase = python-masky-git
 	depends = python-cryptography>=3.5
 	depends = python-pyasn1
 	depends = python-asn1crypto
-	provides = python-masky
+	provides = python-masky=0.2.1.r39.d0e16e9
 	conflicts = python-masky
 	source = git+https://github.com/Z4kSec/masky
 	b2sums = SKIP

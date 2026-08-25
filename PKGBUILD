@@ -1,14 +1,13 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
-_name=masky
-pkgname="python-$_name-git"
+pkgname="python-masky-git"
 pkgver=0.2.1.r39.d0e16e9
 pkgrel=1
 pkgdesc="Python library with CLI allowing to remotely dump domain user credentials via an ADCS without dumping the LSASS process memory"
-arch=(any)
-url="https://github.com/Z4kSec/$_name"
+arch=('any')
+url="https://github.com/Z4kSec/masky"
 license=('MIT')
-provides=("python-$_name")
-conflicts=("python-$_name")
+provides=("python-masky=$pkgver")
+conflicts=("python-masky")
 depends=(
   'python>=3.9'
   'python-colorama'
@@ -28,24 +27,24 @@ source=("git+$url")
 b2sums=('SKIP')
 
 prepare() {
-  git -C "$_name" clean -dfx
+  git -C masky clean -dfx
 }
 
 pkgver() {
-  cd "$_name"
-  _tag="$(grep '^\s*version' setup.py | awk -F\" '{print $2}')"
+  cd masky
+  local _tag="$(grep '^\s*version' setup.py | awk -F\" '{print $2}')"
   printf "%s.r%s.%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-	cd "$_name"
-	python -m build -wnx
+  cd masky
+  python -m build -wnx
 }
 
 package() {
-	cd "$_name"
-	python -m installer -d "$pkgdir/" dist/*.whl
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd masky
+  python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm0644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et:
