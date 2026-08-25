@@ -1,6 +1,6 @@
 pkgbase = kpatch-git
 	pkgdesc = Live kernel patching (git)
-	pkgver = 0.9.10.r59.ga04e6e9
+	pkgver = 0.9.11.r47.g756f2fb
 	pkgrel = 1
 	url = https://github.com/dynup/kpatch
 	arch = x86_64
@@ -8,7 +8,6 @@ pkgbase = kpatch-git
 	checkdepends = shellcheck
 	makedepends = git
 	depends = sh
-	depends = glibc
 	depends = libelf
 	provides = kpatch
 	conflicts = kpatch
