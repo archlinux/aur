@@ -1,4 +1,5 @@
-["doltgresql-bin"]
-source = "git"
-git = "https://github.com/dolthub/doltgresql.git"
+[doltgresql-bin]
+source = "github"
+github = "dolthub/doltgresql"
+use_latest_release = true
 prefix = "v"
