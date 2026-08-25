@@ -1,6 +1,6 @@
 pkgbase = waywallen-bin
 	pkgdesc = Wallpaper manager for Wayland (prebuilt AppImage)
-	pkgver = 0.3.6.381cdc3
+	pkgver = 0.3.7.9540f8c
 	pkgrel = 1
 	url = https://github.com/waywallen/waywallen
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = waywallen-bin
 	depends = hicolor-icon-theme
 	provides = waywallen
 	conflicts = waywallen
-	noextract = waywallen-0.3.6-x86_64.AppImage
+	noextract = waywallen-0.3.7-x86_64.AppImage
 	options = !strip
-	source = waywallen-0.3.6-x86_64.AppImage::https://github.com/waywallen/waywallen/releases/download/v0.3.6/waywallen-0.3.6-x86_64.AppImage
-	sha256sums = a839f983708e5867a454952baf95678299606bbdb0fa41d23e741db84654cf5d
+	source = waywallen-0.3.7-x86_64.AppImage::https://github.com/waywallen/waywallen/releases/download/v0.3.7/waywallen-0.3.7-x86_64.AppImage
+	sha256sums = 7da853ab17853942f20ef6bee26d0e73a95307730f126f69f0c593dd759c2983
 
 pkgname = waywallen-bin
