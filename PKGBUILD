@@ -2,7 +2,7 @@
 
 pkgname=astra-atlas-git
 pkgver=1.0.0.r2.g598f72c
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast, lightweight Material Design 3 file manager'
 arch=('x86_64')
 url='https://github.com/dim-ghub/Atlas'
@@ -17,9 +17,11 @@ depends=(
 )
 optdepends=(
 	'caelestia-cli: dynamic color scheme synching with Caelestia'
+	'ffmpeg: integrated video and audio manipulation'
 	'gio: CLI URI mounting and volume management'
 	'git: inline repository status and branch tracking'
 	'gvfs: remote network filesystem mounting'
+	'imagemagick: integrated image conversion and manipulation'
 	'papirus-folders: dynamic folder color'
 	'papirus-icon-theme: dynamic folder color'
 	'udisks2: external drive management'
