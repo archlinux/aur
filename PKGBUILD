@@ -3,7 +3,7 @@
 _pypiname="gurobipy"
 pkgname="python-${_pypiname}"
 _py=3.14
-pkgver=13.0.2
+pkgver=13.0.3
 pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming (Python bindings)"
 arch=(
@@ -35,8 +35,8 @@ noextract=(
   "${source_aarch64[@]##*/}"
   "${source_x86_64[@]##*/}"
 )
-sha256sums_aarch64=('f7714d69d778af882d756e222340920e8dbfc004a509998604cb9b4cb1d43242')
-sha256sums_x86_64=('f82340708955c24ab20f5d41b4d7fbd0e94cf4e7740841360e2024c9d222961f')
+sha256sums_aarch64=('f70a0746a5405f7b0b3b69188a569621c228c90f6dffa26219e47b82dc8f4e89')
+sha256sums_x86_64=('c2e87d9fb5297fa260a62666a67f29d8be939027905cda353ca1b62047212e88')
 
 package() {
   local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
@@ -47,7 +47,7 @@ package() {
   cd "${srcdir}"
   python -m installer --destdir="${pkgdir}" "${source_artifact}"
 
-  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vsf "${site_packages}/${_pypiname}-${pkgver}.dist-info/licenses/LICENSE.txt" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vd "${pkgdir}/usr/share/licenses"
+  ln -vsf "${site_packages}/${_pypiname}-${pkgver}.dist-info/licenses" \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 }
