@@ -46,9 +46,14 @@ package() {
 
   install -Dm755 -t "$pkgdir/usr/bin" $_pkgname
 
-  for _size in 16 32 512; do
-    install -Dm644 "squashfs-root/usr/share/icons/hicolor/${_size}x${_size}/apps/wowup-cf.png" \
-      "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png"
+  for _size in 16 32 48 128 512; do
+    # we need to do this here because upstream keeps changing the sizes, so let's loop
+    # over the well-known sizes and check for each one
+    local _file="squashfs-root/usr/share/icons/hicolor/${_size}x${_size}/apps/wowup-cf.png"
+    if [ -f "${_file}" ]; then
+      install -Dm644 "${_file}" \
+        "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/$_pkgname.png"
+    fi
   done
   install -Dm644 -t "$pkgdir/usr/share/applications" $_desktopname.desktop
   install -Dm644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
