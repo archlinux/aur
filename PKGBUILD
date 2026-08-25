@@ -1,8 +1,9 @@
 # Maintainer: Rashesh Padia
 pkgname=collabora-office
-pkgver=26.04.2.1
+pkgver=26.04.2.3
 pkgrel=1
-_source_tag=cp-26.04.2-1
+_source_tag=cp-26.04.2-3
+_brandver=26.04.2.3
 _source_dir=online.mirror-${_source_tag}
 pkgdesc='Collabora Office - Qt6 desktop document editor powered by Collabora Online'
 arch=('x86_64')
@@ -52,12 +53,12 @@ optdepends=(
 options=('!strip' '!debug')
 source=(
     "online-${_source_tag}.tar.gz::https://github.com/CollaboraOnline/online.mirror/archive/refs/tags/${_source_tag}.tar.gz"
-    "https://github.com/Rash419/collabora-core-assets/releases/download/cp-26.04.2-1/core-co-26.04-assets.tar.gz"
-    "https://www.collaboraoffice.com/downloads/collabora-office-brand/collabora-office-brand-26.04.2.1.tar.gz"
+    "https://github.com/Rash419/collabora-core-assets/releases/download/${_source_tag}/core-co-26.04-assets.tar.gz"
+    "https://www.collaboraoffice.com/downloads/collabora-office-brand/collabora-office-brand-${_brandver}.tar.gz"
 )
-sha256sums=('7701031ffd4736e55658dd371b2e42d9f0dc262628398536f0d3d960926cfdd5'
-            'fb91e40eaa52cbfc824f2a1d62b3f87093567284d1f22a5979415e0623afb6c8'
-            '321112b8f29d338ca9530dc604448c9eb465c4f9308468722f16a95fc6f830a8')
+sha256sums=('f51717b61714f27ad4d7c05695d7740b2ecce76581626934c447bb7189ff2091'
+            '72b5c75e5249344858efa5eca8881cbf01c046c64214c802dcb45ba38b83c0a5'
+            '2d0c9b407019d4744a57a2771ec42bf97685f082601e075237a04ee6c6b7e8e3')
 
 build() {
     cd "$_source_dir"
