@@ -1,0 +1,13 @@
+diff --git a/src/app/video/imp.rs b/src/app/video/imp.rs
+index fd2666f..4416a7f 100644
+--- a/src/app/video/imp.rs
++++ b/src/app/video/imp.rs
+@@ -27,6 +27,8 @@ pub struct Video {
+ 
+ impl Default for Video {
+     fn default() -> Self {
++        gettextrs::setlocale(gettextrs::LocaleCategory::LcNumeric, "C");
++
+         let log = env::var("RUST_LOG");
+         let msg_level = match log {
+             Ok(scope) => &format!("all={}", scope.as_str()),
