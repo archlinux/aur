@@ -50,5 +50,5 @@ package() {
 	rm -r "${pkgdir}"/opt/disig/websigner/{bin/qt.conf,lib,plugins,share/doc/*/}
 
 	mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
-	ln -s /opt/disig/websigner/share/doc/copyright "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	ln -s /opt/disig/websigner/share/doc/copyright "${pkgdir}/usr/share/licenses/${pkgname}"
 }
