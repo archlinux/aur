@@ -1,0 +1,19 @@
+post_install() {
+  dkms add -m gxfp -v "$1" 2>/dev/null || true
+  dkms build -m gxfp -v "$1" && dkms install -m gxfp -v "$1"
+  modprobe gxfp 2>/dev/null || true
+  systemctl try-restart fprintd 2>/dev/null || true
+  echo
+  echo "GXFP5130 指纹栈已安装。下一步："
+  echo "  1) 安装 libfprint-gxfp（fprintd 后端）: yay -S libfprint-gxfp"
+  echo "  2) 录入指纹: fprintd-enroll"
+  echo "  3) PAM 指纹/密码二选一: 见 /etc/pam.d 说明 (pam_fprintd sufficient)"
+  echo "  4) 若装有系统 libfprint: sudo pacman -Rdd libfprint 后再装 libfprint-gxfp"
+}
+post_upgrade() {
+  dkms remove -m gxfp -v "$1" --all 2>/dev/null || true
+  post_install "$1"
+}
+pre_remove() {
+  dkms remove -m gxfp -v "$1" --all 2>/dev/null || true
+}

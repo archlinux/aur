@@ -1,0 +1,19 @@
+pkgbase = gxfp5130
+	pkgdesc = Goodix GXFP5130 eSPI fingerprint sensor: DKMS module, userspace tools, udev rules and fprintd service config
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Han-Haocheng/gxfp5130-linux
+	install = gxfp5130.install
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = make
+	makedepends = gcc
+	makedepends = mbedtls3
+	depends = dkms
+	depends = linux-headers
+	depends = mbedtls3
+	source = gxfp5130-linux.tar.gz::https://codeload.github.com/Han-Haocheng/gxfp5130-linux/tar.gz/23bf6622b2530a08d5e67cbe479f6fd2873f10d7
+	sha256sums = 1470f9f1a165316a0129b13577e38046258b099c8eccc6ecc4a426d16e411358
+
+pkgname = gxfp5130
