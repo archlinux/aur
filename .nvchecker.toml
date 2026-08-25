@@ -1,4 +1,5 @@
 [timr-bin]
-source = "git"
-git = "https://github.com/sectore/timr-tui.git"
+source = "github"
+github = "sectore/timr-tui"
+use_latest_release = true
 prefix = "v"
