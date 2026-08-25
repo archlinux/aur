@@ -9,6 +9,8 @@ pkgbase = vrc-video-cacher-bin
 	conflicts = vrc-video-cacher
 	options = !strip
 	source = https://github.com/EllyVR/VRCVideoCacher/releases/download/2026.7.2/VRCVideoCacher
+	source = vrc-video-cacher.desktop
 	sha256sums = b1f66f2231bc6ec05d2af36c0c54944bfd3ad816b73befe469859ef357ee3b72
+	sha256sums = 153e067792a857e4b76e4b99774ff6fb302a665ebc077c94173bce4d1e04f465
 
 pkgname = vrc-video-cacher-bin

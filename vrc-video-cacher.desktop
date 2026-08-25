@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=VRCVideoCacher
+Comment=Local video cacher that fixes bot detection errors in VRChat Youtube Videos
+Exec=/usr/bin/VRCVideoCacher
+Path=/tmp
+Icon=video-x-generic
+Terminal=false
+Categories=Network;Utility;
