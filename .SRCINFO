@@ -1,6 +1,6 @@
 pkgbase = python-asyncinotify
 	pkgdesc = A simple optionally-async python inotify library, focused on simplicity of use and operation, and leveraging modern Python features
-	pkgver = 4.4.0
+	pkgver = 4.4.4
 	pkgrel = 1
 	url = https://github.com/ProCern/asyncinotify
 	arch = any
@@ -9,7 +9,11 @@ pkgbase = python-asyncinotify
 	makedepends = python-wheel
 	makedepends = python-flit-core
 	depends = python
-	source = https://pypi.io/packages/source/a/asyncinotify/asyncinotify-4.4.0.tar.gz
-	sha256sums = 438bdc0715f4f959e6e0af70e76cea198b4e28e5933c7cbf1e9987b50394afb3
+	source = https://pypi.io/packages/source/a/asyncinotify/asyncinotify-4.4.4.tar.gz
+	source = patch
+	source = https://github.com/ProCern/asyncinotify/raw/refs/tags/v4.4.4/test.py
+	sha256sums = a8afc92bec6666807ca50524156fca22655325cba6e2b51d842b8ec0d399c708
+	sha256sums = f33b30bbe31549d91bb6a2d6df8f16afef1d3050c08c8a51772f8edd244c65e4
+	sha256sums = a6f55b0beae227918a08e1414660565ff753aaf004a88f3fd2b1ac915a2d292d
 
 pkgname = python-asyncinotify

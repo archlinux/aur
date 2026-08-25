@@ -1,0 +1,8 @@
+--- pyproject.toml	2026-02-12 18:48:42.875711200 +0100
++++ pyproject.toml.new	2026-08-25 21:19:26.694290782 +0200
+@@ -39,4 +39,4 @@
+ 
+ [build-system]
+ build-backend = "flit_core.buildapi"
+-requires = ["flit_core >=3.12,<4"]
++requires = ["flit_core >=4,<5"]
