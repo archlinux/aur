@@ -1,6 +1,6 @@
 pkgbase = subminer-bin
 	pkgdesc = All-in-one sentence mining overlay with AnkiConnect and dictionary integration
-	pkgver = 0.19.3
+	pkgver = 0.19.4
 	pkgrel = 1
 	url = https://github.com/ksyasuda/SubMiner
 	arch = x86_64
@@ -21,16 +21,16 @@ pkgbase = subminer-bin
 	optdepends = python-guessit: improved AniSkip title and episode inference
 	optdepends = alass-git: preferred subtitle synchronization engine
 	optdepends = python-ffsubsync: fallback subtitle synchronization engine
-	provides = subminer=0.19.3
+	provides = subminer=0.19.4
 	conflicts = subminer
-	noextract = SubMiner-0.19.3.AppImage
+	noextract = SubMiner-0.19.4.AppImage
 	options = !strip
 	options = !debug
-	source = SubMiner-0.19.3.AppImage::https://github.com/ksyasuda/SubMiner/releases/download/v0.19.3/SubMiner-0.19.3.AppImage
-	source = subminer-0.19.3::https://github.com/ksyasuda/SubMiner/releases/download/v0.19.3/subminer
-	source = subminer-assets-0.19.3.tar.gz::https://github.com/ksyasuda/SubMiner/releases/download/v0.19.3/subminer-assets.tar.gz
-	sha256sums = b9734bebbbf0ded13ed7b8e0ec3d4308e2c1b6419a7453b2f1090bb7bb89fc50
-	sha256sums = 1e4e482c2fdb9d3d469aa56ec516a11e0d2c6c2b2c0abe80beec6ce6b495a838
-	sha256sums = c1ea6a7e0c2d6948acc1e082b65032d599bb43d49d9775cbd5a9a6ce1010fd17
+	source = SubMiner-0.19.4.AppImage::https://github.com/ksyasuda/SubMiner/releases/download/v0.19.4/SubMiner-0.19.4.AppImage
+	source = subminer-0.19.4::https://github.com/ksyasuda/SubMiner/releases/download/v0.19.4/subminer
+	source = subminer-assets-0.19.4.tar.gz::https://github.com/ksyasuda/SubMiner/releases/download/v0.19.4/subminer-assets.tar.gz
+	sha256sums = 73e1aaa9f260b0c227d92a0e6d058d12828a0d19d90d7fa62d65b63116bb577b
+	sha256sums = 2af671033472960a275d7629aad5cc931b26058bcc5eabd0b9054982393fa11b
+	sha256sums = 2027a0feb8f0f2c4cdca1bad4e624815947969cf2f3536ea8dad5477dbc900b3
 
 pkgname = subminer-bin

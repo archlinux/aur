@@ -1,7 +1,7 @@
 # Maintainer: Kyle Yasuda <suda@sudacode.com>
 
 pkgname=subminer-bin
-pkgver=0.19.3
+pkgver=0.19.4
 pkgrel=1
 pkgdesc='All-in-one sentence mining overlay with AnkiConnect and dictionary integration'
 arch=('x86_64')
@@ -36,9 +36,9 @@ source=(
 	"subminer-assets-${pkgver}.tar.gz::https://github.com/ksyasuda/SubMiner/releases/download/v${pkgver}/subminer-assets.tar.gz"
 )
 sha256sums=(
-'b9734bebbbf0ded13ed7b8e0ec3d4308e2c1b6419a7453b2f1090bb7bb89fc50'
-'1e4e482c2fdb9d3d469aa56ec516a11e0d2c6c2b2c0abe80beec6ce6b495a838'
-'c1ea6a7e0c2d6948acc1e082b65032d599bb43d49d9775cbd5a9a6ce1010fd17'
+'73e1aaa9f260b0c227d92a0e6d058d12828a0d19d90d7fa62d65b63116bb577b'
+'2af671033472960a275d7629aad5cc931b26058bcc5eabd0b9054982393fa11b'
+'2027a0feb8f0f2c4cdca1bad4e624815947969cf2f3536ea8dad5477dbc900b3'
 )
 noextract=("SubMiner-${pkgver}.AppImage")
 
@@ -58,6 +58,8 @@ package() {
 		"${pkgdir}/usr/share/SubMiner/plugin/subminer.conf"
 	install -Dm644 "${srcdir}/assets/themes/subminer.rasi" \
 		"${pkgdir}/usr/share/SubMiner/themes/subminer.rasi"
+	install -Dm644 "${srcdir}/assets/thumbnailers/subminer-ffmpegthumbnailer.thumbnailer" \
+		"${pkgdir}/usr/share/SubMiner/thumbnailers/subminer-ffmpegthumbnailer.thumbnailer"
 
 	install -dm755 "${pkgdir}/usr/share/SubMiner/plugin/subminer"
 	cp -a "${srcdir}/plugin/subminer/." "${pkgdir}/usr/share/SubMiner/plugin/subminer/"
