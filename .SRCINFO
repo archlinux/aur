@@ -1,6 +1,6 @@
 pkgbase = tutanota-desktop
 	pkgdesc = The desktop client for Tutanota, the secure e-mail service.
-	pkgver = 357.260818.1
+	pkgver = 357.260824.1
 	pkgrel = 1
 	url = https://tuta.com/secure-email
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = tutanota-desktop
 	depends = gtk3
 	depends = libsecret
 	depends = nss
-	source = git+https://github.com/tutao/tutanota.git#tag=tutanota-desktop-release-357.260818.1
+	source = git+https://github.com/tutao/tutanota.git#tag=tutanota-desktop-release-357.260824.1
 	source = git+https://github.com/P-H-C/phc-winner-argon2.git
 	source = git+https://github.com/open-quantum-safe/liboqs.git
 	source = git+https://github.com/tutao/Signal-FTS5-Extension.git
 	source = tutanota-desktop.desktop
-	sha256sums = 3331cfdbfd00decbfe0ee63d1a42d4885a0817742fd0a330176706db934ce0c6
+	sha256sums = 6dd7fecd4963d3cbd183e6f28c303023356193d40ef632739bf2beb70ae1446e
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
