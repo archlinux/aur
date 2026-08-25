@@ -1,7 +1,7 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 
 pkgname=mdns-browser
-pkgver=1.18.1
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="A cross platform mDNS browsing app written in Rust using tauri and leptos"
 arch=('x86_64')
@@ -11,16 +11,16 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 conflicts=('mdns-browser-bin')
 makedepends=('cargo' 'cargo-auditable' 'cargo-edit' 'git' 'file' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'base-devel' 'curl' 'wget' 'rust' 'rust-wasm' 'trunk' 'jq')
 options=('!strip' '!emptydirs')
-source=("v1.18.1.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v1.18.1.tar.gz")
-sha256sums=('79f74f24a808bd6c5801d7144e8232569466082bae9339ede5049808687008e1')
-_builddir="$pkgname-1.18.1"
+source=("v1.19.0.tar.gz::https://github.com/hrzlgnm/$pkgname/archive/refs/tags/v1.19.0.tar.gz")
+sha256sums=('a9e0a6602906fdfd2bc609dfdb013204c3c95920c6f36c4ca9b5fd5e9f3fa858')
+_builddir="$pkgname-1.19.0"
 prepare() {
     cd "$srcdir/$_builddir" || exit 1
-    cargo set-version --package mdns-browser-ui "1.18.1"
-    cargo set-version --package mdns-browser "1.18.1"
-    cargo set-version --package models "1.18.1"
-    cargo set-version --package shared_constants "1.18.1"
-    jq --indent 4 ".version=\"1.18.1\"" src-tauri/tauri.conf.json > src-tauri/tauri.conf.json.new
+    cargo set-version --package mdns-browser-ui "1.19.0"
+    cargo set-version --package mdns-browser "1.19.0"
+    cargo set-version --package models "1.19.0"
+    cargo set-version --package shared_constants "1.19.0"
+    jq --indent 4 ".version=\"1.19.0\"" src-tauri/tauri.conf.json > src-tauri/tauri.conf.json.new
     mv src-tauri/tauri.conf.json.new src-tauri/tauri.conf.json
     cargo --locked install tauri-cli@2.11.4
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
