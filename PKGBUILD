@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=hyprfm-git
-pkgver=r324.gc69d4e9
+pkgver=r334.g5e01050
 pkgrel=1
 pkgdesc="A lightweight Qt6/QML file manager for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -8,12 +8,12 @@ url="https://github.com/soyeb-jim285/hyprfm"
 license=('MIT')
 depends=(
     'glib2'
+    'gvfs'
     'kwindowsystem'
     'qt6-base'
     'qt6-declarative'
     'qt6-svg'
     'qt6-wayland'
-    'fd'
     'xdg-utils'
 )
 makedepends=(
@@ -27,8 +27,8 @@ makedepends=(
 )
 optdepends=(
     'wl-clipboard: clipboard support via wl-copy and wl-paste'
+    'fd: fast recursive search (falls back to a built-in walker)'
     'bat: syntax-highlighted text previews'
-    'gvfs: remote filesystem support via gio/gvfs (sftp, ftp, dav, etc.)'
     'gvfs-smb: SMB/CIFS remote browsing support'
     'ffmpeg: video thumbnails and audio/video metadata (via ffprobe)'
     'poppler: PDF thumbnails, previews, and metadata (via pdftoppm/pdfinfo)'
