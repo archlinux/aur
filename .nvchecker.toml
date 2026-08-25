@@ -1,4 +1,5 @@
-["multi-gitter-bin"]
-source = "git"
-git = "https://github.com/lindell/multi-gitter.git"
+[multi-gitter-bin]
+source = "github"
+github = "lindell/multi-gitter"
+use_latest_release = true
 prefix = "v"
