@@ -4,7 +4,7 @@ pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
 pkgname=($_pkgbase-git)
-pkgver=1.5.0.r144.ga69acf1
+pkgver=1.5.0.r401.g778efb8
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -27,7 +27,6 @@ provides=("$_pkgbase=$pkgver")
 conflicts=("dms-shell")
 source=(
         "git+$url.git"
-        "git+https://github.com/AvengeMedia/dank-qml-common.git"
         "dms.service"
         "completions.bash"
         "completions.fish"
@@ -37,7 +36,6 @@ source=(
         "com.danklinux.dms.desktop"
         "com.danklinux.dms.notepad.desktop")
 sha256sums=('SKIP'
-            'SKIP'
             '83587bdffdead80bf25f8164fedb267138edae12ca73da4be7833650ff4124c6'
             '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
             '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
@@ -54,9 +52,7 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 	[ -f .gitmodules ] || return 0
-	git submodule init
-	git config submodule.dank-qml-common.url "$srcdir/dank-qml-common"
-	git -c protocol.file.allow=always submodule update
+	git submodule update --init --recursive
 }
 
 build() {
