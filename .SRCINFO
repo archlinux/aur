@@ -1,0 +1,20 @@
+pkgbase = ktlsp-bin
+	pkgdesc = A community-maintained fork of fwcd/kotlin-language-server, providing Kotlin support via LSP
+	pkgver = 1.4.0rc1
+	pkgrel = 1
+	url = https://codeberg.org/winlogon/ktlsp
+	arch = any
+	license = MIT
+	depends = java-runtime=21
+	provides = ktlsp
+	provides = kotlin-language-server
+	conflicts = ktlsp
+	conflicts = kotlin-language-server
+	conflicts = kotlin-language-server-bin
+	conflicts = kotlin-language-server-git
+	source = ktlsp-bin-v1.4.0-rc1-server.zip::https://codeberg.org/winlogon/ktlsp/releases/download/v1.4.0-rc1/server.zip
+	source = LICENSE.txt::https://codeberg.org/winlogon/ktlsp/raw/tag/v1.4.0-rc1/LICENSE.txt
+	sha256sums = 27d33f2879d12076174741488721896098e8494f5d906f99ef1c85d6159d42b7
+	sha256sums = 1690b72b5a2beb330c98c0715929bf789cb8d91670c29ff2e4abcdae84329136
+
+pkgname = ktlsp-bin
