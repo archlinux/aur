@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=jarl
-pkgver=0.5.0
+pkgver=0.6.0 # renovate: datasource=github-tags depName=etiennebacher/jarl
 pkgrel=1
 pkgdesc="Fast linter for the R language"
 arch=('x86_64' 'aarch64')
@@ -31,4 +31,4 @@ package() {
   install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha256sums=('7b1fd11adc3924fa71f3a4202a2a4a87f1c8d62944160adedba65eb8f01d1cda')
+sha256sums=('86620fcdb654d18be5f9fc62257ff577eade56cb1a6d9a3bc7d6e6857006a8a7')
