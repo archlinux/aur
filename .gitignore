@@ -1,0 +1,8 @@
+*.tgz
+*.tar.gz
+*.tar.xz
+*.tar.zst
+pkg
+src
+!.SRCINFO
+!.gitignore

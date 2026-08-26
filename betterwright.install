@@ -1,0 +1,11 @@
+post_install() {
+  printf '%s\n' \
+    '==> BetterWright is installed without bundled browser binaries.' \
+    '==> Run "betterwright setup" to download the managed browser to ~/.betterwright/chromium/.' \
+    '==> Run "betterwright doctor" to check the installation.' \
+    '==> Run "betterwright init" for guided setup and agent integration.'
+}
+
+post_upgrade() {
+  post_install
+}
