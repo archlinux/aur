@@ -1,6 +1,6 @@
 # Maintainer: Zyv <zyv@users.noreply.github.com>
 pkgname=discord-bot-messenger
-pkgver=1.3.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="GUI to send messages through a Discord bot token to any channel it has access to"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-requests' 'python-websockets' 'tk')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('16c32cfc0ee82714395d4df3b391e253c413395cc71716f3188d726f143b41e1')
+sha256sums=('da8114d3dda071c2fadd7471973643654c5337007cb06e6aae51862d3c22995e')
 
 build() {
   cd "$pkgname-$pkgver"
