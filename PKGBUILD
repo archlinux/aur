@@ -8,8 +8,8 @@ pkgdesc="C++ Fix Engine Library"
 arch=(x86_64)
 url="http://www.quickfixengine.org"
 license=('custom:The QuickFIX Software License, Version 1.0')
-depends=(python tbb)
-optdepends=(mysql postgresql-libs ruby)
+depends=(python mysql postgresql-libs tbb)
+optdepends=(ruby)
 conflicts=('quickfix')
 provides=("quickfix=$pkgver")
 makedepends=(boost cmake python-setuptools swig)
