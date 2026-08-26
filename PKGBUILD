@@ -1,7 +1,7 @@
 # Maintainer: Ethan Alexander <ethanjalexander@hotmail.ca>
 
 pkgname="wallpiper-sway"
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Sway portal for wallpiper"
 arch=('x86_64')
@@ -20,6 +20,6 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
 
-    install -Dm755 target/release/wallpiper-portal-sway "$pkgdir/usr/lib/wallpiper/wallpiper-portal-sway"
+    install -Dm755 build/release/wallpiper-portal-sway "$pkgdir/usr/lib/wallpiper/wallpiper-portal-sway"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
