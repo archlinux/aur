@@ -1,6 +1,6 @@
 pkgbase = vicinae-bin
 	pkgdesc = A focused launcher for your desktop — native, fast, extensible
-	pkgver = 0.27.0
+	pkgver = 0.27.1
 	pkgrel = 1
 	url = https://github.com/vicinaehq/vicinae
 	install = vicinae-bin.install
@@ -17,10 +17,10 @@ pkgbase = vicinae-bin
 	depends = syntax-highlighting
 	provides = vicinae
 	conflicts = vicinae
-	noextract = vicinae-x86_64-v0.27.0-1.tgz
-	source = vicinae-x86_64-v0.27.0-1.tgz::https://github.com/vicinaehq/vicinae/releases/download/v0.27.0/vicinae-linux-x86_64-v0.27.0.tar.gz
+	noextract = vicinae-x86_64-v0.27.1-1.tgz
+	source = vicinae-x86_64-v0.27.1-1.tgz::https://github.com/vicinaehq/vicinae/releases/download/v0.27.1/vicinae-linux-x86_64-v0.27.1.tar.gz
 	source = vicinae.hook
-	sha256sums = 35c0c072afe5af38bf25598a2b98b58a784485bcd75e145c4d3c4d07307f6d66
+	sha256sums = 73513ae3ba0750cbd82d5a3d061c5c1d0397ff44783ba9ba70e4b0ab1757ddea
 	sha256sums = 03f23ea908d2426070d7cc9b2c3e9f5b1ceb566e3bd6c5c9cebeb42f1759f92b
 
 pkgname = vicinae-bin
