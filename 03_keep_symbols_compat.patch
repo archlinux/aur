@@ -1,17 +1,11 @@
-Description: Keep versioned symbols backwards compatibility.
-Origin: vendor
-Forwarded: not-needed
-Author: Alessandro Ghedini <ghedo@debian.org>
-Last-Update: 2013-04-16
-
---- a/lib/libcurl.vers.in
-+++ b/lib/libcurl.vers.in
-@@ -6,7 +6,7 @@
-     _save*;
- };
+--- a/configure	2026-06-24 07:53:29.000000000 +0200
++++ b/configure	2026-08-26 15:35:38.882094121 +0200
+@@ -32776,7 +32776,7 @@
  
--CURL_@CURL_LT_SHLIB_VERSIONED_FLAVOUR@4
-+CURL_@CURL_LT_SHLIB_VERSIONED_FLAVOUR@3
- {
-   global: curl_*;
-   local: *;
+ CURL_LIBCURL_VERSIONED_SYMBOLS_PREFIX="$versioned_symbols_flavor"
+ 
+-CURL_LIBCURL_VERSIONED_SYMBOLS_SONAME="4"
++CURL_LIBCURL_VERSIONED_SYMBOLS_SONAME="3"
+    if test "$versioned_symbols" = "yes"; then
+   CURL_LT_SHLIB_USE_VERSIONED_SYMBOLS_TRUE=
+   CURL_LT_SHLIB_USE_VERSIONED_SYMBOLS_FALSE='#'
