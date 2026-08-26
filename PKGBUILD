@@ -13,7 +13,7 @@ license=("MIT")
 _filename="${_pkgname}-linux-amd64.zip"
 _archive="${_pkgname}-${pkgver}.zip"
 source=("${_archive}::https://github.com/y3owk1n/${_pkgname}/releases/download/v${pkgver}/${_filename}" "${_pkgname}_license::https://raw.githubusercontent.com/y3owk1n/${_pkgname}/main/LICENSE")
-sha256sums=(""a0855b6ddc3e671879b7c91462dcfc89e624b629dcab4fb5d7a7b0ef3b446283 "SKIP")
+sha256sums=("87c77f17358871ccc99e7da67e57dd8d5a458b8b5f3b7e5df10085db3f19a7d4" "SKIP")
 
 # disable -debug package
 options=("!debug")
@@ -28,6 +28,9 @@ depends=(
 	"libxkbcommon"
 	"wayland"
 	"libxfixes"
+	# for screen ocr
+	"tesseract"
+	"libpipewire"
 )
 makedepends=("curl" "unzip")
 

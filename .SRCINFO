@@ -16,12 +16,14 @@ pkgbase = neru-bin
 	depends = libxkbcommon
 	depends = wayland
 	depends = libxfixes
+	depends = tesseract
+	depends = libpipewire
 	provides = neru
 	conflicts = neru
 	options = !debug
-	source = neru-1.50.0.zip::https://github.com/y3owk1n/neru/releases/download/v1.50.0/neru-linux-amd64.zip
+	source = neru-1.51.0.zip::https://github.com/y3owk1n/neru/releases/download/v1.51.0/neru-linux-amd64.zip
 	source = neru_license::https://raw.githubusercontent.com/y3owk1n/neru/main/LICENSE
-	sha256sums = a0855b6ddc3e671879b7c91462dcfc89e624b629dcab4fb5d7a7b0ef3b446283
+	sha256sums = 87c77f17358871ccc99e7da67e57dd8d5a458b8b5f3b7e5df10085db3f19a7d4
 	sha256sums = SKIP
 
 pkgname = neru-bin
