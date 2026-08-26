@@ -1,0 +1,21 @@
+pkgbase = easyflatpak
+	pkgdesc = Manage your flatpaks with a simple GUI
+	pkgver = 4.5.3
+	pkgrel = 1
+	url = https://github.com/imikado/dupotEasyFlatpak
+	arch = any
+	license = LGPL-2.1-only
+	makedepends = git
+	depends = bash
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libadwaita
+	depends = pango
+	depends = python
+	depends = python-gobject
+	source = git+https://github.com/imikado/dupotEasyFlatpak.git#tag=4.5.3
+	b2sums = 25b0d5824219b1503970036e8beab527a31b58c362bdf389065c9d9ff6d838ce74fc81b9e1519108a190481d67cee613c9e3281af322c5ffa42f1e040da91ba6
+
+pkgname = easyflatpak
