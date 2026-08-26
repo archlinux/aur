@@ -1,0 +1,16 @@
+diff --git a/resources/linux/Cogfly.desktop b/resources/linux/Cogfly.desktop
+index 718ba8b..ba98a66 100644
+--- a/resources/linux/Cogfly.desktop
++++ b/resources/linux/Cogfly.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=Cogfly
+-Exec=/opt/cogfly/bin/Cogfly %u
+-Icon=icon
++Exec=/usr/bin/cogfly %u
++Icon=cogfly
+ Type=Application
+ Categories=Utility;
+-MimeType=x-scheme-handler/cogfly;
+\ No newline at end of file
++MimeType=x-scheme-handler/cogfly;
