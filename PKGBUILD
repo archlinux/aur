@@ -3,7 +3,7 @@
 pkgname=pi-agent-desktop-bin
 _pkgname=pi-agent-desktop
 _appname='Pi Agent'
-pkgver=0.3.3
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Desktop UI for browsing sessions and working with the pi coding agent (prebuilt binary)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("${_pkgname}")
 options=('!strip')
 source=("${_appname// /_}_${pkgver}_amd64.deb::https://github.com/abcwyc/pi-agent-desktop/releases/download/v${pkgver}/Pi.Agent_${pkgver}_amd64.deb"
         'LICENSE')
-sha256sums=('32ee449b3e9eb97b22ae164a11c9ee16a1694546861a0c7e660f2b72ab8e49ba'
+sha256sums=('1ccc4bf8563cab05ce0199a90bd9efa96256361c659137b652ba5e432cfb2cd6'
             '19cee3b1b8fd9b42f9515366bc1a7dfaaf22fcb006234ebb85ff2f6f8c52eb2b')
 
 package() {
