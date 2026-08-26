@@ -1,0 +1,16 @@
+[Unit]
+Description=Debezium Server
+Documentation=https://debezium.io/documentation/reference/operations/debezium-server.html
+After=network.target
+
+[Service]
+Type=simple
+User=debezium-server
+Group=debezium-server
+ExecStart=/usr/bin/debezium-server
+Restart=on-failure
+RestartSec=5s
+StateDirectory=debezium-server
+
+[Install]
+WantedBy=multi-user.target

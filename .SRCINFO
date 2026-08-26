@@ -1,0 +1,23 @@
+pkgbase = debezium-server
+	pkgdesc = Standalone change data capture server based on Debezium
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = https://debezium.io/
+	arch = any
+	license = Apache-2.0
+	depends = bash
+	depends = java-runtime>=21
+	backup = etc/debezium-server/debezium-jmx-config-legacy.yaml
+	backup = etc/debezium-server/debezium-jmx-config.yaml
+	backup = etc/debezium-server/metrics.yml
+	backup = etc/debezium-server/lib/cassandra/driver.conf
+	source = debezium-server-dist-3.6.0.Final.tar.gz::https://repo1.maven.org/maven2/io/debezium/debezium-server-dist/3.6.0.Final/debezium-server-dist-3.6.0.Final.tar.gz
+	source = debezium-server.sh
+	source = debezium-server.service
+	source = debezium-server.sysusers
+	sha256sums = 901ce7b0b75b4dafaac4aa57dac6dfcad5937f96fb7159e25d22759bbf5192e4
+	sha256sums = 73bf36565ac31c7a0a455560342a4e13c6d5bab3aac117ed7365ee62410fef8c
+	sha256sums = 1dd9a8da7d41f9fb01f3b1bd5e9e26c2ee61f6c0d266925b548d77117170e2d1
+	sha256sums = 0101d349fbb466e5556f8afab9aa703ec13124f23759c97a7b783a282cd5db84
+
+pkgname = debezium-server
