@@ -39,5 +39,5 @@ package() {
     done
 }
 sha256sums=('c9146b562c27270490502bd24f6c8b112aa12f07d0bfa8fc7ff47142ba33be5d'
-            '60045ec0138ad4c01546df596b97016e467bec6d69c7e4e4c7bdb85e91a31bc2')
+            '5ebc00bff424b0badcdb60f87db1c809a2a691d3634720e11c51b42df1e523a6')
 
