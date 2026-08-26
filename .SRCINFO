@@ -1,0 +1,15 @@
+pkgbase = ocaml-mula
+	pkgdesc = ML's radishal Universal Levenshtein Automata library.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/ifazk/mula
+	arch = x86_64
+	license = CC0-1.0
+	checkdepends = ocaml-ppx_inline_test
+	makedepends = dune
+	depends = ocaml
+	options = !strip
+	source = ocaml-mula-0.1.2.tbz::https://github.com/ifazk/mula/releases/download/0.1.2/mula-0.1.2.tbz
+	b2sums = 7624003a75ff38b05d9e26c62d64ffa73f67a4048f20313d233a854bbd862c189d2e6d47cd6ac51c61687c5abadbee9ec7f9b3ef9917a417354e4aebbafa2682
+
+pkgname = ocaml-mula
