@@ -1,7 +1,7 @@
 # Maintainer: Ethan Alexander <ethanjalexander@hotmail.ca>
 
 pkgname="wallpiper-gnome"
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="GNOME (Mutter) portal for wallpiper"
 arch=('x86_64')
@@ -21,11 +21,11 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
 
-    make -C portals/wallpiper-portal-gnome/native install DESTDIR="$pkgdir" PREFIX=/usr
+    make -C programs/wallpiper-portal-gnome/native install DESTDIR="$pkgdir" PREFIX=/usr
 
     local extdir="$pkgdir/usr/share/gnome-shell/extensions/wallpiper-gnome@wallpiper.dev"
     install -d "$extdir"
-    cp -r portals/wallpiper-portal-gnome/extension/. "$extdir/"
+    cp -r programs/wallpiper-portal-gnome/extension/. "$extdir/"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
