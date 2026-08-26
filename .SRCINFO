@@ -1,17 +1,14 @@
 pkgbase = node-hp-scan-to
-	pkgdesc = Little command line program that allow to send scan from device to computer. For this purpose, the original HP Windows application's interaction with the device has been reverse engineered.
-	pkgver = 1.8.0
-	pkgrel = 0
+	pkgdesc = Scan document to Computer for HP All-in-One Printers
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = https://github.com/manuc66/node-hp-scan-to
 	arch = any
 	license = MIT
 	makedepends = npm
-	makedepends = jq
-	makedepends = moreutils
-	depends = nodejs
-	noextract = node-hp-scan-to-1.8.0.tgz
+	depends = nodejs>=20.11
 	backup = etc/node-hp-scan-to/default.json
-	source = node-hp-scan-to-1.8.0.tgz::https://registry.npmjs.org/node-hp-scan-to/-/node-hp-scan-to-1.8.0.tgz
-	sha512sums = b07b69769219fc8c3656a6f3d80c612e0aa7b1ff4a54c593f55138a2f8b139bb21755c7e9479a256511ff005d59070080c00472836c090b825f9adc47d5ed96f
+	source = node-hp-scan-to-1.10.0.tgz::https://registry.npmjs.org/node-hp-scan-to/-/node-hp-scan-to-1.10.0.tgz
+	sha256sums = 4b5ee8f2d2783d4cf8acf0786f02994916f18df7425e5a92ed613a14ff422142
 
 pkgname = node-hp-scan-to

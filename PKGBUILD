@@ -1,54 +1,108 @@
+# Maintained upstream: this file is automatically updated and pushed to the
+# AUR (aur.archlinux.org/packages/node-hp-scan-to) by .github/workflows/publish.yml
 pkgname=node-hp-scan-to
-pkgver=1.8.0
-pkgrel=0
-pkgdesc="Little command line program that allow to send scan from device to computer. For this purpose, the original HP Windows application's interaction with the device has been reverse engineered."
+pkgver=1.10.0
+pkgrel=1
+pkgdesc='Scan document to Computer for HP All-in-One Printers'
 arch=(any)
-url="https://github.com/manuc66/node-hp-scan-to"
-license=('MIT')
-depends=('nodejs')
-makedepends=('npm' 'jq' 'moreutils')
+url='https://github.com/manuc66/node-hp-scan-to'
+license=(MIT)
+depends=('nodejs>=20.11')
+makedepends=(npm)
 backup=('etc/node-hp-scan-to/default.json')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-noextract=(${pkgname}-${pkgver}.tgz)
-sha512sums=(b07b69769219fc8c3656a6f3d80c612e0aa7b1ff4a54c593f55138a2f8b139bb21755c7e9479a256511ff005d59070080c00472836c090b825f9adc47d5ed96f)
+sha256sums=('4b5ee8f2d2783d4cf8acf0786f02994916f18df7425e5a92ed613a14ff422142')
 
-build() {
-    cat > "$srcdir/$pkgname.service" <<EOF
+prepare() {
+    cat > "${srcdir}/${pkgname}.service" <<EOF
 [Unit]
-Description=Receive scan from HP All-in-One printers
-After=syslog.target network-online.target
+Description=Scan document to Computer for HP All-in-One Printers
+Documentation=https://github.com/manuc66/node-hp-scan-to
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
-User=root
 Environment=NODE_CONFIG_DIR=/etc/node-hp-scan-to
-WorkingDirectory=/usr/bin/
-ExecStart=/usr/bin/node-hp-scan-to
+ExecStart=/usr/bin/node-hp-scan-to listen --health-check
 Restart=on-failure
 RestartSec=10
 KillMode=process
+DynamicUser=yes
+StateDirectory=${pkgname}
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=read-only
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+RestrictNamespaces=yes
+CapabilityBoundingSet=
 
 [Install]
 WantedBy=multi-user.target
 EOF
-    cat > "$srcdir/default.json" <<EOF
+
+    cat > "${srcdir}/${pkgname}-user.service" <<EOF
+[Unit]
+Description=Scan document to Computer for HP All-in-One Printers (per user)
+Documentation=https://github.com/manuc66/node-hp-scan-to
+After=network-online.target
+
+[Service]
+Type=simple
+Environment=NODE_CONFIG_DIR=%h/.config/node-hp-scan-to
+ExecStart=/usr/bin/node-hp-scan-to listen --health-check
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=default.target
+EOF
+
+    cat > "${srcdir}/default.json" <<EOF
 {
   "debug": false
 }
 EOF
+}
 
+build() {
+    cd package
+    npm install --omit=dev --no-audit --no-fund --ignore-scripts
+}
+
+check() {
+    cd package
+    node dist/index.js --help >/dev/null
 }
 
 package() {
-    npm install -g --user root --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "${source[@]##*/}"
-    find "$pkgdir"/usr -type d -exec chmod 755 {} +
-    find "$pkgdir" -type f -name package.json \
-        -execdir sh -c "jq '. |= with_entries(select(.key | test(\"_.+\") | not))' {} | sponge {}" \;
-    chown -R root:root "$pkgdir"
+    cd package
 
-    install -Dm0644 "$srcdir/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    echo "Please enable the systemd service via 'sudo systemctl enable --now $pkgname.service'"
+    install -dm755 "${pkgdir}/usr/lib/node-hp-scan-to"
+    cp -a dist "${pkgdir}/usr/lib/node-hp-scan-to/dist"
+    cp -a node_modules "${pkgdir}/usr/lib/node-hp-scan-to/node_modules"
+    install -Dm644 package.json "${pkgdir}/usr/lib/node-hp-scan-to/package.json"
 
-    install -d "$pkgdir"/etc/node-hp-scan-to
-    install -m644 "$srcdir"/default.json "$pkgdir"/etc/node-hp-scan-to/default.json
+    # tsc emits non-executable files; restore the exec bit required by the shebang
+    chmod +x "${pkgdir}/usr/lib/node-hp-scan-to/dist/index.js"
+
+    install -dm755 "${pkgdir}/usr/bin"
+    ln -s /usr/lib/node-hp-scan-to/dist/index.js "${pkgdir}/usr/bin/node-hp-scan-to"
+
+    install -Dm0644 "${srcdir}/${pkgname}.service" \
+        "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    install -Dm0644 "${srcdir}/${pkgname}-user.service" \
+        "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+
+    install -d "${pkgdir}/etc/node-hp-scan-to"
+    install -m644 "${srcdir}/default.json" \
+        "${pkgdir}/etc/node-hp-scan-to/default.json"
 }
