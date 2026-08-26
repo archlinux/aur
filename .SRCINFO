@@ -1,7 +1,7 @@
 pkgbase = amc
 	pkgdesc = Retrieve and filter the latest Pacman mirror list. Reimplementation of Reflector on Golang.
-	pkgver = 2026.08.26
-	pkgrel = 2
+	pkgver = 2026.08.27
+	pkgrel = 1
 	url = https://github.com/dpvpro/amc
 	arch = x86_64
 	license = MIT

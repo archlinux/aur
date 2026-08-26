@@ -1,8 +1,8 @@
 # Maintainer: Denis Proskurin <dpvpro AT gmail DOT com>
 
 pkgname=amc
-pkgver=2026.08.26
-pkgrel=2
+pkgver=2026.08.27
+pkgrel=1
 pkgdesc='Retrieve and filter the latest Pacman mirror list. Reimplementation of Reflector on Golang.'
 arch=('x86_64')
 url="https://github.com/dpvpro/amc"
