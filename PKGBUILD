@@ -1,6 +1,6 @@
 # Maintainer: chiconcota <git@github.com:chiconcota>
 pkgname=fcitx5-lilypad
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Modern, hyper-fast Vietnamese Telex/VNI Input Method for Fcitx5 (Wayland/X11)"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ conflicts=('fcitx5-lilypad-git' 'fcitx5-lilypad-bin')
 install=fcitx5-lilypad.install
 source=("https://github.com/chiconcota/fcitx5-lilypad/archive/refs/tags/v${pkgver}.tar.gz"
         "fcitx5-lilypad.install")
-sha256sums=('b8931562acbefc0fabd4c954ba5d211b78b9b98a704614f389873e6231e69f3f'
+sha256sums=('f8c8c5411f1c50fd1e63a689433799df13a345578dd4612b5540ee2f47f2e8e6'
             '86c5c1b374ba83b5bee113b48f7cef110a499da35daa26801bcc4658eda2591b')
 
 build() {
