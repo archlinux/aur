@@ -1,6 +1,6 @@
-#AUR package maintainer: L1oly, Cogfly creator: Nix-main on Github
+# AUR package maintainer: L1oly, Cogfly creator: Nix-main on Github
 pkgname=cogfly-bin
-pkgver=1.1.2
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="A cross-platform mod manager for Hollow Knight: Silksong. (AppImage)"
 arch=(x86_64)
@@ -13,23 +13,23 @@ options=(!strip)
 
 _appimage=("Cogfly-${pkgver}.AppImage")
 source=("${_appimage}::https://github.com/Nix-main/Cogfly/releases/download/${pkgver}/${_appimage}")
-sha256sums=('a32506dcbe03a0af33efdae7bec8f08051284a8debcd0c2f960e3d97278b0aa8')
+sha256sums=('a2c85b8007a69a2ba51b6ab78567f9d05b8e66cc881f82e3d7aea69f1464e312')
 
 prepare() {
   cd "${srcdir}"
   chmod +x "${_appimage}"
   "./${_appimage}" --appimage-extract > /dev/null
-  sed -i 's/^Exec=Cogfly$/Exec=cogfly/' squashfs-root/Cogfly.desktop
-  sed -i 's/^Icon=icon$/Icon=cogfly/g' squashfs-root/Cogfly.desktop
+  sed -i 's@Exec=Cogfly %u@$Exec=/usr/bin/cogfly %u@g' squashfs-root/Cogfly.desktop
+  sed -i 's@Icon=icon@$Icon=cogfly@g' squashfs-root/Cogfly.desktop
 
 }
 
 package() {
-  install -dm755 "${pkgdir}/opt/${pkgname}"
-  cp -a squashfs-root/* "${pkgdir}/opt/${pkgname}/"
+  install -dm755 "${pkgdir}/opt/Cogfly"
+  cp -a squashfs-root/* "${pkgdir}/opt/Cogfly/"
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/AppRun" "${pkgdir}/usr/bin/cogfly"
+  ln -s "/opt/Cogfly/AppRun" "${pkgdir}/usr/bin/cogfly"
 
   install -Dm644 squashfs-root/Cogfly.desktop \
     "${pkgdir}/usr/share/applications/cogfly.desktop"
