@@ -1,7 +1,7 @@
 pkgbase = nipaplay-reload-bin
 	pkgdesc = 一个现代化的跨平台视频播放器
 	pkgver = 1.11.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MCDFsteve/NipaPlay-Reload
 	arch = x86_64
 	license = MIT
@@ -11,6 +11,7 @@ pkgbase = nipaplay-reload-bin
 	depends = libass
 	depends = libkeybinder3
 	depends = libayatana-appindicator
+	depends = libayatana-indicator
 	provides = nipaplay
 	provides = nipaplay-reload
 	conflicts = nipaplay
