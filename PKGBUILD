@@ -2,21 +2,23 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-git
 pkgname=('shelly-git' 'shelly-flatpak-backend-git')
-pkgver=3.1.0r4339.gb054d8d
+pkgver=3.1.1
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
 license=('GPL-3.0-only')
 makedepends=('git' 'pkgconf' 'gtk4' 'zig>=0.16' 'clang' 'gettext' 'flatpak' 'ripgrep' 'go-md2man')
 
-source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development")
+source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development"
+        'shellybuild.conf')
 
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '0aff9177498bd94e90c937076d15ac76116c628ec3504a7c1b8c9ea086336ca6')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
-  printf '3.1.0r%s.g%s' \
+  printf '3.1.1r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
 }
@@ -101,6 +103,7 @@ package_shelly-git() {
   pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
   provides=('shelly')
   conflicts=('shelly' 'shelly-bin')
+  backup=('etc/shellybuild.conf')
   depends=(
       'pacman'
       'gtk4'
@@ -131,6 +134,8 @@ package_shelly-git() {
   install -Dm755 out/bin/Shelly_Ui_Gtk "$pkgdir/usr/bin/shelly-ui"
   install -Dm755 out-cli/bin/shelly "$pkgdir/usr/bin/shelly"
   install -Dm755 out-key/bin/shelly-key "$pkgdir/usr/bin/shelly-key"
+  install -Dm644 "$srcdir/shellybuild.conf" "$pkgdir/etc/shellybuild.conf"
+
   # Install desktop entry
   cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly.desktop"
 [Desktop Entry]
