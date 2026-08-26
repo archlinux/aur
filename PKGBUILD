@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A constant/linear throughput load generator in Zig ⚡"
 
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[1]}.tar.gz")
 sha256sums=('a9e7a0b2ca0bb923c316c0cc1b9f60e8407ebbeb974467cea6b808644b5dd611'
-            '1186d37e0440f1b4c0c760b97297c163c363eab2ec9ae7f8c625cfe9cbdde0b6')
-sha256sums_x86_64=('51cae01069974c7110e951c0d9c806925a76c8067ac3153eb4be96d738e71c05')
-sha256sums_aarch64=('42e4cd6eef9c27431e9ed25f39c6c025963b8cee790b1d59c81531023dcc7bde')
+            'd2f0e0853027f38ebb850619a0ddab6c1f3c33e3ccdb8c7d6d6bca1b3eb70524')
+sha256sums_x86_64=('ab6f1c1ce34ce73f52afd106419d15e5c494bd1cedd475afa56babb85b09a816')
+sha256sums_aarch64=('361f2632e3cee672cf6a8676438c9fa93e8a5702a0007bacc266861767bab213')
 
 
 package() {
