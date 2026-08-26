@@ -2,7 +2,7 @@
 
 pkgbase=shelly-cli
 pkgname=('shelly-cli' 'shelly-cli-flatpak-backend')
-pkgver=3.1.0r4339.gb054d8d
+pkgver=3.1.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/Seafoam-Labs/Shelly-ALPM'
@@ -15,14 +15,16 @@ makedepends=(
   'ripgrep'
   'go-md2man'
 )
-source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development")
-sha256sums=('SKIP')
+source=("${pkgname}::git+https://github.com/Seafoam-Labs/Shelly-ALPM.git#branch=development"
+        'shellybuild.conf')
+sha256sums=('SKIP'
+            '0aff9177498bd94e90c937076d15ac76116c628ec3504a7c1b8c9ea086336ca6')
 conflicts=('shelly' 'shelly-git' 'shelly-bin')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
 
-  printf '3.1.0r%s.g%s' \
+  printf '3.1.1r%s.g%s' \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short=7 HEAD)"
 }
@@ -72,6 +74,7 @@ check() {
 package_shelly-cli() {
   pkgdesc='Native Shelly package-manager CLI beta'
   provides=('shelly-beta')
+  backup=('etc/shellybuild.conf')
   depends=(
     'diffutils'
     'git'
@@ -96,6 +99,8 @@ package_shelly-cli() {
 
   install -Dm755 "${srcdir}/zig-out/bin/shelly" \
     "${pkgdir}/usr/bin/shelly"
+  install -Dm644 "${srcdir}/shellybuild.conf" \
+    "${pkgdir}/etc/shellybuild.conf"
   install -Dm644 "${srcdir}/shelly.bash" \
     "${pkgdir}/usr/share/bash-completion/completions/shelly-beta"
   install -Dm644 "${srcdir}/shelly.fish" \
