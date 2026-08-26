@@ -1,0 +1,63 @@
+_help() {
+    cat << 'EOF'
+VNT2 组网工具服务管理指南
+=====================================
+
+已安装的程序:
+  /usr/bin/vnt2_cli   虚拟局域网客户端（核心守护进程，前台运行）
+  /usr/bin/vnt2_ctrl  客户端控制/查询工具（连接 vnt2_cli 的 IPC 端口）
+  /usr/bin/vnt2_web   网页管理服务（提供 Web 界面组网）
+
+配置目录:
+  /etc/vnt/config.toml   vnt2_cli 配置文件（使用前请务必修改）
+  /etc/vnt/vnt-web.env   vnt2_web 访问令牌（可选，默认每次启动随机生成）
+  /etc/vnt/iptables-vnt.rules  组网后 NAT 参考规则（按需启用）
+  /var/lib/vnt/         vnt2 运行状态与日志（logs/、vnt_config/）
+
+1. 启动 vnt2_cli 组网客户端（核心服务）:
+   1) 编辑配置:
+      sudo vim /etc/vnt/config.toml
+      必须修改: network_code（组网编号）和 server（服务端地址）
+   2) 启动并开机自启:
+      sudo systemctl enable --now vnt2-cli
+   3) 查看状态/日志:
+      sudo systemctl status vnt2-cli
+      sudo journalctl -u vnt2-cli -f
+
+2. 使用 vnt2_ctrl 查询组网状态:
+   vnt2_ctrl info      输出当前程序信息
+   vnt2_ctrl ips       输出客户端 ip 列表
+   vnt2_ctrl clients   输出客户端信息列表
+   vnt2_ctrl route     输出 IP 路由信息
+
+3. 启动 vnt2_web 网页管理服务:
+   1) 可选: 固定访问令牌（否则每次启动随机生成）
+      sudo vim /etc/vnt/vnt-web.env
+      取消注释并设置: VNT_WEB_TOKEN=xxxx
+   2) 启动并开机自启:
+      sudo systemctl enable --now vnt2-web
+   3) 获取访问地址:
+      sudo journalctl -u vnt2-web | grep "Web access URL"
+      默认监听: http://127.0.0.1:19099
+
+4. 卸载/停用服务:
+   sudo systemctl disable --now vnt2-cli vnt2-web
+   （可选）删除运行用户与状态目录:
+   sudo userdel -r vnt
+   sudo rm -rf /var/lib/vnt
+=====================================
+EOF
+}
+
+# 系统用户、运行目录与 daemon-reload 均由 pacman 钩子自动处理
+post_install() {
+    _help
+}
+
+post_upgrade() {
+    _help
+}
+
+post_remove() {
+    _help
+}
