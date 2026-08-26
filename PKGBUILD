@@ -1,14 +1,11 @@
-# Maintainer: anon
+# Maintainer: maria-rcks <maria at kuuro dot net>
 
 pkgname=t3code-bin
-pkgver=0.0.33
+pkgver=0.0.34
 pkgrel=1
-pkgdesc='T3 Code desktop app packaged from the upstream AppImage'
+pkgdesc='Desktop control surface for local coding agents'
 arch=('x86_64')
-_upstream_tag='v0.0.33'
-_upstream_version='0.0.33'
-_appimage_name="T3-Code-${_upstream_version}-x86_64.AppImage"
-url='https://t3.codes'
+url='https://github.com/pingdotgg/t3code'
 license=('MIT')
 depends=(
   'alsa-lib'
@@ -16,13 +13,15 @@ depends=(
   'cairo'
   'dbus'
   'expat'
-  'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
+  'glibc'
   'gtk3'
   'hicolor-icon-theme'
   'libcups'
   'libdrm'
+  'libgcc'
+  'libstdc++'
   'libx11'
   'libxcb'
   'libxcomposite'
@@ -39,87 +38,67 @@ depends=(
   'xdg-utils'
   'zlib'
 )
-optdepends=(
-  'openai-codex: use the system-installed Codex CLI'
-)
-provides=("t3code=${pkgver}")
+optdepends=('openai-codex: use the system-installed Codex CLI')
+provides=("t3code=$pkgver")
 conflicts=('t3code')
-options=('!debug' '!emptydirs' '!strip')
+options=('!debug' '!strip')
+
+_appimage="T3-Code-${pkgver}-x86_64.AppImage"
 source=(
-  "${_appimage_name}::https://github.com/pingdotgg/t3code/releases/download/${_upstream_tag}/${_appimage_name}"
-  't3code-icon.png'
-  'LICENSE'
+  "$_appimage::https://github.com/pingdotgg/t3code/releases/download/v${pkgver}/$_appimage"
+  "${pkgname}-${pkgver}-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v${pkgver}/LICENSE"
 )
 sha256sums=(
-  '415c8648f43c3d22d572f27f2c50fdc8c310ea7fcde9537b903e1e2f1c8775a1'
-  '52c86008b11f90f36b8a8f4cc43b1352d5fda9084c6e5691b806f5bca1a968b6'
-  '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43'
+  '6077e207cc1e7e65858f73313534abe1da357227f40225854e1abac34dedba04' # AppImage
+  '935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43' # upstream license
 )
 
 prepare() {
-  chmod +x "$srcdir/$_appimage_name"
+  chmod +x "$srcdir/$_appimage"
   rm -rf "$srcdir/squashfs-root"
-  "$srcdir/$_appimage_name" --appimage-extract >/dev/null
+  "$srcdir/$_appimage" --appimage-extract >/dev/null
 
-  if [[ ! -d "$srcdir/squashfs-root" ]]; then
-    echo "Failed to extract AppImage payload." >&2
+  if [[ ! -x "$srcdir/squashfs-root/AppRun" ||
+        ! -f "$srcdir/squashfs-root/chrome-sandbox" ]]; then
+    echo 'The AppImage payload is missing its launcher or Chromium sandbox.' >&2
     return 1
   fi
 }
 
 package() {
   install -d "$pkgdir/opt/$pkgname"
-  cp -a "$srcdir/squashfs-root/." "$pkgdir/opt/$pkgname/"
+  cp -a --no-preserve=ownership "$srcdir/squashfs-root/." "$pkgdir/opt/$pkgname/"
+  chmod -R u=rwX,go=rX "$pkgdir/opt/$pkgname"
+  chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
 
-  # Preserve upstream execute bits while ensuring the payload stays readable.
-  chmod -R a+rX "$pkgdir/opt/$pkgname"
-
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/t3code" << 'EOF'
-#!/usr/bin/env bash
-set -euo pipefail
-
-appdir='/opt/t3code-bin'
-export APPDIR="$appdir"
-
-if [[ -z "${CODEX_CLI_PATH-}" ]] && command -v codex >/dev/null 2>&1; then
-  export CODEX_CLI_PATH="$(command -v codex)"
-fi
-
-export PATH="$appdir:$appdir/usr/bin:$appdir/usr/sbin:$PATH"
-export XDG_DATA_DIRS="$appdir/usr/share${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}"
-export GSETTINGS_SCHEMA_DIR="$appdir/usr/share/glib-2.0/schemas${GSETTINGS_SCHEMA_DIR:+:$GSETTINGS_SCHEMA_DIR}"
-
-extra_flags=()
-if [[ -n "${WAYLAND_DISPLAY-}" || "${XDG_SESSION_TYPE-}" == "wayland" ]]; then
-  extra_flags+=(--enable-features=UseOzonePlatform --ozone-platform=wayland --ozone-platform-hint=wayland)
-else
-  extra_flags+=(--ozone-platform-hint=auto)
-fi
-
-exec "$appdir/t3code" --no-sandbox "${extra_flags[@]}" "$@"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/t3code" <<'EOF'
+#!/bin/sh
+exec /opt/t3code-bin/AppRun "$@"
 EOF
-
   ln -s t3code "$pkgdir/usr/bin/t3-code-desktop"
 
-  install -Dm644 "$srcdir/t3code-icon.png" \
-    "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/t3code.png"
-  ln -s t3code.png \
-    "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/t3-code-desktop.png"
-  install -Dm644 "$srcdir/t3code-icon.png" \
-    "$pkgdir/usr/share/pixmaps/t3code.png"
-  ln -s t3code.png "$pkgdir/usr/share/pixmaps/t3-code-desktop.png"
+  # Icon lookup only sees sizes registered in hicolor's index.theme (max 512x512).
+  local icon size_dir
+  for icon in "$srcdir"/squashfs-root/usr/share/icons/hicolor/*/apps/t3code.png; do
+    size_dir="${icon%/apps/t3code.png}"
+    install -Dm644 "$icon" \
+      "$pkgdir/usr/share/icons/hicolor/${size_dir##*/}/apps/t3code.png"
+  done
 
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/t3code.desktop" << 'EOF'
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/t3code.desktop" <<'EOF'
 [Desktop Entry]
 Name=T3 Code
-Comment=T3 Code desktop build
+Comment=Desktop control surface for local coding agents
 Exec=t3code %U
+TryExec=t3code
 Terminal=false
 Type=Application
 Icon=t3code
 StartupWMClass=t3code
 Categories=Development;
+MimeType=x-scheme-handler/t3code;
 EOF
 
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/${pkgname}-${pkgver}-LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
