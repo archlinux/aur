@@ -2,7 +2,7 @@
 # Contributor: alejandrogomez <alejandroogomez@gmail.com>
 
 pkgname=ydiff
-pkgver=1.4.2
+pkgver=1.5
 pkgrel=1
 pkgdesc="Colored, incremental, side-by-side diff viewer"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=(python-setuptools python-build python-installer python-wheel)
 optdepends=("patchutils: uses filterdiff for context diffs")
 conflicts=('cdiff')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/ymattw/${pkgname}/archive/refs/tags/${pkgver}.tar.gz)
-b2sums=('ba1b6b4659d3de7d98c357a0d3c44169d04af9e606aac3ec0ef93512b59e04f5d75846ed19f7392031964f198002ff3192077052351703075b4427bbddc1e51b')
+b2sums=('86e89b7b8edf81b7ec7e132c1e46ea185beb6c1e89977cb86d89898d6aad6368624f64a36d86e70f802d20ed7ca0ce2d49a1f548b184e681e996c78b0f77d93f')
 
 
 build() {
