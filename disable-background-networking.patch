@@ -1,0 +1,906 @@
+diff --git a/extra/config.jsonc b/extra/config.jsonc
+index 227868b..b01bbc5 100644
+--- a/extra/config.jsonc
++++ b/extra/config.jsonc
+@@ -10,15 +10,6 @@
+ 		// "./providers.json"
+ 	],
+ 
+-	// Choose what telemetry to sent to the vicinae central server
+-	// We never send personally identifiable information
+-	// More details available at https://docs.vicinae.com/telemetry
+-	"telemetry": {
+-		// Sends system information such as desktop environment, vicinae version, etc...
+-		// Only sent once at startup every 24 hours
+-		"system_info": true
+-	},
+-
+ 	// Input monitoring/injection binary required to handle "paste to active window" actions and snippet expansion.
+ 	// If disabled, Vicinae will automatically fallback on copy instead of paste, and keyword expansion for snippets will no longer work.
+ 	// Note that conceptually, the input server is not uniquely related to snippets, so disabling snippets will not shutdown the input server process:
+diff --git a/src/server/CMakeLists.txt b/src/server/CMakeLists.txt
+index 46bbad1..1255bef 100644
+--- a/src/server/CMakeLists.txt
++++ b/src/server/CMakeLists.txt
+@@ -476,9 +476,6 @@ set(SRCS
+ 	src/services/news/news-service.hpp
+ 	src/services/news/news-service.cpp
+ 
+-	src/services/telemetry/telemetry-service.hpp
+-	src/services/telemetry/telemetry-service.cpp
+-
+ 	src/services/update/semver.hpp
+ 	src/services/update/github-release.hpp
+ 	src/services/update/abstract-update-installer.hpp
+diff --git a/src/server/src/config/config.hpp b/src/server/src/config/config.hpp
+index dc3ff95..0b0f0bc 100644
+--- a/src/server/src/config/config.hpp
++++ b/src/server/src/config/config.hpp
+@@ -257,7 +257,7 @@ template <> struct Partial<Footer> {
+ };
+ 
+ struct TelemetryConfig {
+-  bool systemInfo = true;
++  bool systemInfo = false;
+ };
+ 
+ template <> struct Partial<TelemetryConfig> {
+diff --git a/src/server/src/extensions/vicinae/vicinae-extension.cpp b/src/server/src/extensions/vicinae/vicinae-extension.cpp
+index 571b958..55cbd50 100644
+--- a/src/server/src/extensions/vicinae/vicinae-extension.cpp
++++ b/src/server/src/extensions/vicinae/vicinae-extension.cpp
+@@ -7,7 +7,6 @@
+ #include "qml/oauth-token-store-view-host.hpp"
+ #include "extensions/vicinae/report-bug-command.hpp"
+ #include "qml/builtin-icons-view-host.hpp"
+-#include "services/telemetry/telemetry-service.hpp"
+ #include "navigation-controller.hpp"
+ #include "config/config.hpp"
+ #include "qml/local-storage-view-host.hpp"
+@@ -164,43 +163,6 @@ class ReloadScriptDirectoriesCommand : public BuiltinCallbackCommand {
+   }
+ };
+ 
+-class ForgetTelemetryCommand : public BuiltinCallbackCommand {
+-  Q_DECLARE_TR_FUNCTIONS(ForgetTelemetryCommand)
+-
+-  QString id() const override { return "forget-telemetry"; }
+-  QString name() const override { return tr("Forget Past Vicinae Telemetry"); }
+-  QString description() const override {
+-    return tr("Asks the vicinae server to anonymize telemetry data that was sent with your vicinae instance "
+-              "ID attached. The ID is only linked to your vicinae install, which has no direct relationship "
+-              "with your system.");
+-  }
+-
+-  ImageURL iconUrl() const override {
+-    return ImageURL(BuiltinIcon::XMarkCircle).setBackgroundTint(Omnicast::ACCENT_COLOR);
+-  }
+-
+-  bool isDefaultDisabled() const override { return true; }
+-
+-  void execute(CommandController &controller) const override {
+-    auto ctx = controller.context();
+-    auto toast = ctx->services->toastService();
+-    auto telemetry = ctx->services->telemetry();
+-    auto config = ctx->services->config();
+-
+-    ctx->navigation->showWindow();
+-    ctx->navigation->setSearchText(">"); // force to exit out of compact mode if it is enabled
+-    toast->dynamic(tr("Processing..."));
+-    telemetry->forget().then([toast, config](bool ok) {
+-      if (ok) {
+-        config->mergeWithUser({.telemetry = config::Partial<config::TelemetryConfig>{.systemInfo = false}});
+-        toast->success(tr("Past telemetry was successfully detached from your vicinae user ID."));
+-      } else {
+-        toast->failure(tr("Failed to forget past telemetry data"));
+-      }
+-    });
+-  }
+-};
+-
+ class OAuthTokenStoreCommand : public BuiltinViewCommand<OAuthTokenStoreViewHost> {
+   Q_DECLARE_TR_FUNCTIONS(OAuthTokenStoreCommand)
+ 
+@@ -263,7 +225,6 @@ VicinaeExtension::VicinaeExtension() {
+   registerCommand<ShowLogs>();
+ 
+   // disabled by default
+-  registerCommand<ForgetTelemetryCommand>();
+   registerCommand<IconBrowserCommand>();
+   registerCommand<OAuthTokenStoreCommand>();
+   registerCommand<InspectLocalStorage>();
+diff --git a/src/server/src/qml/general-settings-model.cpp b/src/server/src/qml/general-settings-model.cpp
+index 79df28d..41f489c 100644
+--- a/src/server/src/qml/general-settings-model.cpp
++++ b/src/server/src/qml/general-settings-model.cpp
+@@ -85,11 +85,6 @@ void GeneralSettingsModel::setEncryptSensitiveData(bool v) {
+   cfgManager().mergeWithUser({.encryptSensitiveData = v});
+ }
+ 
+-bool GeneralSettingsModel::telemetrySystemInfo() const { return cfg().telemetry.systemInfo; }
+-void GeneralSettingsModel::setTelemetrySystemInfo(bool v) {
+-  cfgManager().mergeWithUser({.telemetry = config::Partial<config::TelemetryConfig>{.systemInfo = v}});
+-}
+-
+ bool GeneralSettingsModel::layerShellEnabled() const { return cfg().launcherWindow.layerShell.enabled; }
+ void GeneralSettingsModel::setLayerShellEnabled(bool v) {
+   cfgManager().mergeWithUser({.launcherWindow = config::Partial<config::WindowConfig>{
+diff --git a/src/server/src/qml/general-settings-model.hpp b/src/server/src/qml/general-settings-model.hpp
+index 341bbdf..827671a 100644
+--- a/src/server/src/qml/general-settings-model.hpp
++++ b/src/server/src/qml/general-settings-model.hpp
+@@ -20,8 +20,6 @@ class GeneralSettingsModel : public QObject {
+   Q_PROPERTY(bool wrapNavigation READ wrapNavigation WRITE setWrapNavigation NOTIFY configChanged)
+   Q_PROPERTY(
+       bool encryptSensitiveData READ encryptSensitiveData WRITE setEncryptSensitiveData NOTIFY configChanged)
+-  Q_PROPERTY(
+-      bool telemetrySystemInfo READ telemetrySystemInfo WRITE setTelemetrySystemInfo NOTIFY configChanged)
+   Q_PROPERTY(bool layerShellEnabled READ layerShellEnabled WRITE setLayerShellEnabled NOTIFY configChanged)
+   Q_PROPERTY(bool clientSideDecorations READ clientSideDecorations WRITE setClientSideDecorations NOTIFY
+                  configChanged)
+@@ -74,8 +72,6 @@ public:
+   void setWrapNavigation(bool v);
+   bool encryptSensitiveData() const;
+   void setEncryptSensitiveData(bool v);
+-  bool telemetrySystemInfo() const;
+-  void setTelemetrySystemInfo(bool v);
+   bool layerShellEnabled() const;
+   void setLayerShellEnabled(bool v);
+   bool clientSideDecorations() const;
+diff --git a/src/server/src/qml/qml/GeneralSettingsPage.qml b/src/server/src/qml/qml/GeneralSettingsPage.qml
+index 5063923..443f5cd 100644
+--- a/src/server/src/qml/qml/GeneralSettingsPage.qml
++++ b/src/server/src/qml/qml/GeneralSettingsPage.qml
+@@ -99,24 +99,6 @@ Flickable {
+             }
+         }
+ 
+-        SettingsSectionLabel {
+-            text: qsTr("Privacy")
+-            Layout.topMargin: 24
+-            Layout.bottomMargin: 10
+-        }
+-
+-        SettingsGroup {
+-            SettingsRow {
+-                label: qsTr("Basic usage statistics")
+-                description: qsTr("Send basic system and vicinae installation information on startup to help improve Vicinae.")
+-                showSeparator: false
+-                SettingsToggle {
+-                    checked: root.model.telemetrySystemInfo
+-                    onToggled: root.model.telemetrySystemInfo = checked
+-                }
+-            }
+-        }
+-
+         Item {
+             Layout.preferredHeight: 24
+         }
+diff --git a/src/server/src/server.cpp b/src/server/src/server.cpp
+index 431bb79..67137b5 100644
+--- a/src/server/src/server.cpp
++++ b/src/server/src/server.cpp
+@@ -54,7 +54,6 @@
+ #include "services/script-command/script-command-service.hpp"
+ #include "services/shortcut/shortcut-service.hpp"
+ #include "services/news/news-service.hpp"
+-#include "services/telemetry/telemetry-service.hpp"
+ #include "services/update/update-service.hpp"
+ #ifdef Q_OS_MACOS
+ #include "services/update/macos-update-installer.hpp"
+@@ -359,7 +358,6 @@ int startServer(const ServerLaunchOptions &launchOpts) {
+     ShortcutInhibitor::setManager(registry->shortcutInhibitManager());
+     registry->setFileChooserService(std::make_unique<FileChooserService>());
+     registry->setNewsService(std::make_unique<NewsService>(*registry->config()));
+-    registry->setTelemetry(std::make_unique<TelemetryService>(*registry->config()));
+ #ifdef Q_OS_MACOS
+     auto updateInstaller = std::unique_ptr<AbstractUpdateInstaller>(std::make_unique<MacosUpdateInstaller>());
+ #else
+@@ -522,7 +520,6 @@ int startServer(const ServerLaunchOptions &launchOpts) {
+     }
+ #endif
+ 
+-    ServiceRegistry::instance()->telemetry()->setEnabled(next.telemetry.systemInfo);
+   };
+ 
+   auto cfgService = ServiceRegistry::instance()->config();
+diff --git a/src/server/src/service-registry.cpp b/src/server/src/service-registry.cpp
+index ad1c296..e783da9 100644
+--- a/src/server/src/service-registry.cpp
++++ b/src/server/src/service-registry.cpp
+@@ -24,7 +24,6 @@
+ #include "services/raycast/raycast-store.hpp"
+ #include "services/extension-store/vicinae-store.hpp"
+ #include "services/root-item-manager/root-item-manager.hpp"
+-#include "services/telemetry/telemetry-service.hpp"
+ #include "services/update/update-service.hpp"
+ #include "services/toast/toast-service.hpp"
+ #include "services/window-manager/window-manager.hpp"
+@@ -86,8 +85,6 @@ ShortcutInhibitManager *ServiceRegistry::shortcutInhibitManager() const {
+   return m_shortcutInhibitManager.get();
+ }
+ 
+-TelemetryService *ServiceRegistry::telemetry() const { return m_telemetry.get(); }
+-
+ UpdateService *ServiceRegistry::updateService() const { return m_updateService.get(); }
+ 
+ AudioControlService *ServiceRegistry::audioControl() const { return m_audioControl.get(); }
+@@ -198,10 +195,6 @@ void ServiceRegistry::setShortcutInhibitManager(std::unique_ptr<ShortcutInhibitM
+   m_shortcutInhibitManager = std::move(service);
+ }
+ 
+-void ServiceRegistry::setTelemetry(std::unique_ptr<TelemetryService> telemetry) {
+-  m_telemetry = std::move(telemetry);
+-}
+-
+ void ServiceRegistry::setUpdateService(std::unique_ptr<UpdateService> service) {
+   m_updateService = std::move(service);
+ }
+diff --git a/src/server/src/service-registry.hpp b/src/server/src/service-registry.hpp
+index 53a5d99..ccf69b5 100644
+--- a/src/server/src/service-registry.hpp
++++ b/src/server/src/service-registry.hpp
+@@ -36,7 +36,6 @@ class FileChooserService;
+ class NewsService;
+ class PasteService;
+ class AbstractSelectionService;
+-class TelemetryService;
+ class UpdateService;
+ class AudioControlService;
+ class AppRuntime;
+@@ -83,7 +82,6 @@ public:
+   NewsService *newsService() const;
+   WindowMaterialManager *windowMaterialManager() const;
+   ShortcutInhibitManager *shortcutInhibitManager() const;
+-  TelemetryService *telemetry() const;
+   UpdateService *updateService() const;
+   AudioControlService *audioControl() const;
+   AppRuntime *appRuntime() const;
+@@ -123,7 +121,6 @@ public:
+   void setNewsService(std::unique_ptr<NewsService> service);
+   void setWindowMaterialManager(std::unique_ptr<WindowMaterialManager> manager);
+   void setShortcutInhibitManager(std::unique_ptr<ShortcutInhibitManager> manager);
+-  void setTelemetry(std::unique_ptr<TelemetryService> telemetry);
+   void setUpdateService(std::unique_ptr<UpdateService> service);
+   void setAudioControl(std::unique_ptr<AudioControlService> service);
+   void setAppRuntime(std::unique_ptr<AppRuntime> service);
+@@ -163,7 +160,6 @@ private:
+   std::unique_ptr<NewsService> m_newsService;
+   std::unique_ptr<WindowMaterialManager> m_windowMaterialManager;
+   std::unique_ptr<ShortcutInhibitManager> m_shortcutInhibitManager;
+-  std::unique_ptr<TelemetryService> m_telemetry;
+   std::unique_ptr<UpdateService> m_updateService;
+   std::unique_ptr<AudioControlService> m_audioControl;
+   std::unique_ptr<AppRuntime> m_appRuntime;
+diff --git a/src/server/src/services/calculator-service/numen/numen-calculator-backend.cpp b/src/server/src/services/calculator-service/numen/numen-calculator-backend.cpp
+index 7d56b74..89e82ea 100644
+--- a/src/server/src/services/calculator-service/numen/numen-calculator-backend.cpp
++++ b/src/server/src/services/calculator-service/numen/numen-calculator-backend.cpp
+@@ -25,11 +25,7 @@ std::string formatTimezone(const numen::Timezone &tz) {
+ }
+ }; // namespace
+ 
+-NumenCalculatorBackend::NumenCalculatorBackend() {
+-  m_rateRefreshTimer.setInterval(std::chrono::hours{1});
+-  m_rateRefreshTimer.start();
+-  connect(&m_rateRefreshTimer, &QTimer::timeout, this, [this]() { m_numen.updateRates(); });
+-}
++NumenCalculatorBackend::NumenCalculatorBackend() = default;
+ 
+ bool NumenCalculatorBackend::start() {
+   auto currencyProvider = std::make_unique<NumenVicinaeCurrencyProvider>();
+diff --git a/src/server/src/services/calculator-service/numen/numen-calculator-backend.hpp b/src/server/src/services/calculator-service/numen/numen-calculator-backend.hpp
+index 61c4d35..ab7d0c7 100644
+--- a/src/server/src/services/calculator-service/numen/numen-calculator-backend.hpp
++++ b/src/server/src/services/calculator-service/numen/numen-calculator-backend.hpp
+@@ -1,7 +1,6 @@
+ #pragma once
+ #include "services/calculator-service/abstract-calculator-backend.hpp"
+ #include "numen/numen.hpp"
+-#include <QTimer>
+ 
+ class NumenCalculatorBackend : public AbstractCalculatorBackend, QObject {
+ public:
+@@ -17,6 +16,5 @@ public:
+   bool start() override;
+ 
+ private:
+-  QTimer m_rateRefreshTimer;
+   numen::Numen m_numen{};
+ };
+diff --git a/src/server/src/services/news/news-service.cpp b/src/server/src/services/news/news-service.cpp
+index 29d9084..6d6ea85 100644
+--- a/src/server/src/services/news/news-service.cpp
++++ b/src/server/src/services/news/news-service.cpp
+@@ -17,19 +17,6 @@ struct NewsState {
+   std::vector<std::string> dismissed;
+ };
+ 
+-namespace {
+-class AutoDismissProxy : public ProxyAction {
+-public:
+-  AutoDismissProxy(AbstractAction *action, std::string newsId)
+-      : ProxyAction(action), m_newsId(std::move(newsId)) {}
+-
+-  void executeAfter(ApplicationContext *ctx) override { ctx->services->newsService()->dismiss(m_newsId); }
+-
+-private:
+-  std::string m_newsId;
+-};
+-} // namespace
+-
+ DismissNewsAction::DismissNewsAction(std::string newsId)
+     : AbstractAction(QCoreApplication::translate("DismissNewsAction", "Dismiss"), BuiltinIcon::Xmark),
+       m_newsId(std::move(newsId)) {}
+@@ -56,11 +43,9 @@ bool NewsService::isDismissed(const std::string &id) const {
+ bool NewsService::hasUnreadNews() const { return !activeItems().empty(); }
+ 
+ std::vector<const NewsItem *> NewsService::activeItems() const {
+-  const auto &cfg = m_config.value();
+   std::vector<const NewsItem *> result;
+   for (const auto &item : m_items) {
+     if (isDismissed(item.id)) continue;
+-    if (item.id == "telemetry-notice-v1" && !cfg.telemetry.systemInfo) continue;
+     result.emplace_back(&item);
+   }
+   return result;
+@@ -95,26 +80,5 @@ void NewsService::saveState() const {
+ }
+ 
+ std::vector<NewsItem> NewsService::allItems() {
+-  std::vector<NewsItem> items;
+-
+-  items.push_back({
+-      .id = "telemetry-notice-v1",
+-      .title = tr("Telemetry"),
+-      .subtitle = tr("We now collect basic usage statistics on startup"),
+-      .icon = ImageURL{BuiltinIcon::Megaphone}.setBackgroundTint(SemanticColor::Yellow),
+-      .actionFactory =
+-          [](ApplicationContext *) {
+-            auto panel = std::make_unique<ListActionPanelState>();
+-            auto *section = panel->createSection();
+-
+-            auto *openDocs = new OpenInBrowserAction(QUrl(Omnicast::DOC_TELEMETRY_URL), tr("Learn more"));
+-            auto *proxy = new AutoDismissProxy(openDocs, "telemetry-notice-v1");
+-            proxy->setPrimary(true);
+-            section->addAction(proxy);
+-
+-            return panel;
+-          },
+-  });
+-
+-  return items;
++  return {};
+ }
+diff --git a/src/server/src/services/telemetry/telemetry-service.cpp b/src/server/src/services/telemetry/telemetry-service.cpp
+deleted file mode 100644
+index 9ad2eaa..0000000
+--- a/src/server/src/services/telemetry/telemetry-service.cpp
++++ /dev/null
+@@ -1,155 +0,0 @@
+-#include "telemetry-service.hpp"
+-#include "config/config.hpp"
+-#include "environment.hpp"
+-#include "generated/version.h"
+-#include "utils.hpp"
+-#include "vicinae.hpp"
+-#include <QGuiApplication>
+-#include <QLocale>
+-#include <QScreen>
+-#include <QSysInfo>
+-#include <QUuid>
+-#include <algorithm>
+-#include <cctype>
+-#include <filesystem>
+-#include <glaze/json/read.hpp>
+-#include <glaze/json/write.hpp>
+-#include <qlogging.h>
+-#include <qstandardpaths.h>
+-#include <qsysinfo.h>
+-#include <qtversionchecks.h>
+-#include <ranges>
+-#include <system_error>
+-
+-namespace fs = std::filesystem;
+-
+-TelemetryService::TelemetryService(config::Manager &config) : m_config(config) {
+-  using namespace std::chrono_literals;
+-
+-  auto const stateDir = Omnicast::stateDir();
+-
+-  m_client.setBaseUrl(Environment::vicinaeApiBaseUrl());
+-  m_client.setUserAgent(QString("vicinae/%1").arg(VICINAE_GIT_TAG));
+-
+-  m_statePath = stateDir / "telemetry.json";
+-  loadState();
+-
+-  connect(&m_timer, &QTimer::timeout, this, &TelemetryService::trySendSystemInfo);
+-  m_timer.setInterval(1h);
+-}
+-
+-void TelemetryService::setEnabled(bool v) {
+-  static std::optional<bool> enabled;
+-
+-  if (enabled.has_value() && enabled.value() == v) return;
+-
+-  enabled = v;
+-
+-  if (enabled.value()) {
+-    qInfo().noquote() << "Anonymous telemetry is enabled. Learn more:" << Omnicast::DOC_TELEMETRY_URL;
+-    m_timer.start();
+-    trySendSystemInfo();
+-  } else {
+-    m_timer.stop();
+-  }
+-}
+-
+-void TelemetryService::trySendSystemInfo() {
+-  static constexpr std::uint64_t ONE_DAY_SECS = 86400;
+-
+-  auto const now = static_cast<std::uint64_t>(QDateTime::currentSecsSinceEpoch());
+-  bool const shouldSend = !m_state.systemInfoLastSentAt.has_value() ||
+-                          (now - m_state.systemInfoLastSentAt.value()) >= ONE_DAY_SECS;
+-
+-  if (shouldSend) { sendSystemInfo(); }
+-}
+-
+-std::string TelemetryService::toLower(const std::string &s) {
+-  std::string lower = s;
+-  std::ranges::transform(lower, lower.begin(), ::tolower);
+-  return lower;
+-}
+-
+-void TelemetryService::sendSystemInfo() {
+-  SystemInfoRequest payload;
+-
+-  payload.userId = m_state.userId;
+-  payload.architecture = toLower(QSysInfo::currentCpuArchitecture().toStdString());
+-  payload.buildProvenance = toLower(VICINAE_PROVENANCE);
+-  payload.vicinaeVersion = toLower(VICINAE_GIT_TAG);
+-  payload.desktops = Environment::platformDesktopNames() |
+-                     std::views::transform([](auto &&s) { return toLower(s); }) |
+-                     std::ranges::to<std::vector>();
+-  payload.displayProtocol = QGuiApplication::platformName().toStdString();
+-  payload.locale = QLocale::system().name().toStdString();
+-  payload.screens =
+-      QGuiApplication::screens() | std::views::transform([](QScreen *screen) {
+-        return ScreenInfo{.resolution = {.width = screen->size().width(), .height = screen->size().height()},
+-                          .scale = screen->devicePixelRatio()};
+-      }) |
+-      std::ranges::to<std::vector>();
+-  payload.operatingSystem = QSysInfo::kernelType().toStdString();
+-  payload.chassisType = Environment::chassisType();
+-  payload.kernelVersion = QSysInfo::kernelVersion().toStdString();
+-  payload.productId = determineProductId();
+-  payload.productVersion = QSysInfo::productVersion().toStdString();
+-  payload.qtVersion = QT_VERSION_STR;
+-
+-  std::string payloadJson;
+-  [[maybe_unused]] auto writeErr = glz::write_json(payload, payloadJson);
+-  qInfo().noquote() << "Sending system info:\n" << glz::prettify_json(payloadJson);
+-
+-  m_client.post<SystemInfoResponse, SystemInfoRequest>("/telemetry/system-info", std::move(payload))
+-      .then([this](const http::Client::Result<SystemInfoResponse> &res) {
+-        if (!res) {
+-          qWarning() << "Failed to post system info" << res.error();
+-          return;
+-        }
+-        m_state.systemInfoLastSentAt = QDateTime::currentSecsSinceEpoch();
+-        saveState();
+-      });
+-}
+-
+-QFuture<bool> TelemetryService::forget() {
+-  return m_client.post<ForgetResponse, ForgetRequest>("/telemetry/forget", {m_state.userId})
+-      .then([](const http::Client::Result<ForgetResponse> &res) { return res.has_value(); });
+-}
+-
+-std::string TelemetryService::generateUserId() {
+-  return QString("user-%1").arg(QUuid::createUuid().toString(QUuid::WithoutBraces)).toStdString();
+-}
+-
+-std::string TelemetryService::determineProductId() const {
+-  std::error_code ec;
+-
+-  // omarchy doesn't override /etc/os-release so it is counted as arch
+-  // it is very useful to have omarchy be its own distinct demographic, especially since
+-  // a lot of the users come from macOS and expect a replacement for Raycast.
+-  if (fs::is_directory(Omnicast::dataHome() / "omarchy", ec)) { return "omarchy"; }
+-
+-  return QSysInfo::productType().toStdString();
+-}
+-
+-void TelemetryService::saveState() {
+-  std::error_code ec;
+-
+-  fs::create_directories(m_statePath.parent_path(), ec);
+-
+-  if (auto const error = glz::write_file_json(m_state, m_statePath.string(), m_buf)) {
+-    qWarning() << "Failed to write telemetry state file at" << m_statePath.string()
+-               << glz::format_error(error);
+-  }
+-}
+-
+-void TelemetryService::loadState() {
+-  if (!fs::is_regular_file(m_statePath)) {
+-    m_state = State{.userId = generateUserId()};
+-    saveState();
+-    return;
+-  }
+-
+-  if (auto const error = glz::read_file_json(m_state, m_statePath.string(), m_buf)) {
+-    qWarning() << "Failed to read telemetry state file at" << m_statePath.string()
+-               << glz::format_error(error);
+-  }
+-}
+diff --git a/src/server/src/services/telemetry/telemetry-service.hpp b/src/server/src/services/telemetry/telemetry-service.hpp
+deleted file mode 100644
+index 15210b4..0000000
+--- a/src/server/src/services/telemetry/telemetry-service.hpp
++++ /dev/null
+@@ -1,85 +0,0 @@
+-#pragma once
+-#include "common/types.hpp"
+-#include "http-client.hpp"
+-#include <QObject>
+-#include <QTimer>
+-#include <filesystem>
+-#include <string>
+-#include <vector>
+-
+-namespace config {
+-class Manager;
+-}
+-
+-class TelemetryService : public QObject, NonCopyable {
+-  struct State {
+-    std::string userId;
+-    std::optional<std::uint64_t> systemInfoLastSentAt;
+-  };
+-
+-  struct ScreenInfo {
+-    struct Resolution {
+-      int width;
+-      int height;
+-    } resolution;
+-    double scale = 1;
+-  };
+-
+-  struct ForgetRequest {
+-    std::string userId;
+-  };
+-
+-  struct ForgetResponse {
+-    std::string message;
+-  };
+-
+-  struct SystemInfoRequest {
+-    std::string userId;
+-    std::vector<std::string> desktops;
+-    std::string vicinaeVersion;
+-    std::string qtVersion;
+-    std::string displayProtocol;
+-    std::string architecture;
+-    std::string operatingSystem;
+-    std::string buildProvenance;
+-    std::string locale;
+-    std::vector<ScreenInfo> screens;
+-    std::string chassisType;
+-    std::string kernelVersion;
+-    std::string productId;
+-    std::string productVersion;
+-  };
+-
+-  struct SystemInfoResponse {
+-    bool ok = true;
+-  };
+-
+-public:
+-  explicit TelemetryService(config::Manager &config);
+-
+-  void setEnabled(bool enabled);
+-  void trySendSystemInfo();
+-
+-  /**
+-   * Request that all data linked to the current vicinae user id is fully anonymized (strips userId from
+-   * records)
+-   */
+-  QFuture<bool> forget();
+-
+-private:
+-  // productId == distribution on linux
+-  std::string determineProductId() const;
+-
+-  static std::string toLower(const std::string &s);
+-  std::string generateUserId();
+-  void sendSystemInfo();
+-  void saveState();
+-  void loadState();
+-
+-  config::Manager &m_config;
+-  State m_state;
+-  http::Client m_client;
+-  QTimer m_timer;
+-  std::filesystem::path m_statePath;
+-  std::string m_buf;
+-};
+diff --git a/src/server/src/services/update/update-service.cpp b/src/server/src/services/update/update-service.cpp
+index b9a4fca..9cf43be 100644
+--- a/src/server/src/services/update/update-service.cpp
++++ b/src/server/src/services/update/update-service.cpp
+@@ -1,213 +1,22 @@
+ #include "update-service.hpp"
+ #include "builtin_icon.hpp"
+-#include "environment.hpp"
+ #include "generated/version.h"
+-#include "service-registry.hpp"
+-#include "services/toast/toast-service.hpp"
+-#include "vicinae.hpp"
+-#include <algorithm>
+-#include <chrono>
+-#include <filesystem>
+-#include <glaze/json/read.hpp>
+-#include <glaze/json/write.hpp>
+-#include <system_error>
+ 
+-namespace fs = std::filesystem;
+-
+-static constexpr std::chrono::milliseconds RELAUNCH_DELAY{800};
+-
+-UpdateService::UpdateService(ToastService &toast, std::unique_ptr<AbstractUpdateInstaller> installer)
+-    : m_toast(toast), m_installer(std::move(installer)) {
+-  using namespace std::chrono_literals;
+-
+-  m_client.setUserAgent(QString("vicinae/%1").arg(VICINAE_GIT_TAG));
+-  m_statePath = Omnicast::stateDir() / "updates.json";
+-
+-  const std::string currentTag = Environment::updateVersionOverride().value_or(VICINAE_GIT_TAG);
+-  m_currentVersion = vicinae::Semver::parse(currentTag);
+-
+-  if (!m_currentVersion) {
+-    qInfo() << "Current version" << currentTag.c_str() << "is not a release tag, update checks are disabled";
+-  }
+-
+-  loadState();
+-
+-  connect(&m_timer, &QTimer::timeout, this, &UpdateService::performCheck);
+-  m_timer.setInterval(6h);
+-
+-  connect(m_installer.get(), &AbstractUpdateInstaller::stageChanged, this,
+-          [this](const QString &stage) { m_toast.dynamic(stage); });
+-  connect(m_installer.get(), &AbstractUpdateInstaller::finished, this, [this]() {
+-    setStatus(Status::Installed);
+-    m_toast.success(tr("Update installed"), tr("Restarting…"));
+-    QTimer::singleShot(RELAUNCH_DELAY, this, [this]() { relaunch(); });
+-  });
+-  connect(m_installer.get(), &AbstractUpdateInstaller::failed, this, &UpdateService::failInstall);
+-
+-  if (checksSupported()) {
+-    m_timer.start();
+-    performCheck();
+-  }
+-}
++UpdateService::UpdateService(ToastService &, std::unique_ptr<AbstractUpdateInstaller>) {}
+ 
+ QString UpdateService::currentVersionTag() const { return VICINAE_GIT_TAG; }
+ 
+-void UpdateService::checkNow() { performCheck(); }
+-
+-void UpdateService::performCheck() {
+-  if (!checksSupported()) return;
+-  if (m_status == Status::Downloading || m_status == Status::Installing || m_status == Status::Installed)
+-    return;
+-
+-  setStatus(Status::Checking);
+-
+-  m_client.get<github::Release>(Environment::updateFeedUrl())
+-      .then([this](const http::Client::Result<github::Release> &res) {
+-        if (!res) {
+-          qWarning() << "Update check failed:" << res.error();
+-          if (m_status == Status::Checking) setStatus(Status::Idle);
+-          return;
+-        }
+-
+-        handleRelease(res.value());
+-      });
+-}
+-
+-void UpdateService::handleRelease(const github::Release &release) {
+-  auto const remote = vicinae::Semver::parse(release.tag_name);
+-  bool const newer = remote && m_currentVersion && *remote > *m_currentVersion;
+-  bool const skipped = m_state.skippedVersion == release.tag_name;
+-
+-  if (!newer || release.draft || release.prerelease || skipped) {
+-    m_available.reset();
+-    setStatus(Status::Idle);
+-    return;
+-  }
+-
+-  const QString assetName = m_installer->assetName();
+-  auto const matchesAsset = [&](const github::ReleaseAsset &asset) {
+-    return QString::fromStdString(asset.name) == assetName;
+-  };
+-  auto const asset = std::ranges::find_if(release.assets, matchesAsset);
+-
+-  if (asset == release.assets.end()) {
+-    qInfo() << "Release" << release.tag_name.c_str() << "has no" << assetName << "asset, ignoring";
+-    m_available.reset();
+-    setStatus(Status::Idle);
+-    return;
+-  }
+-
+-  AvailableUpdate update;
+-
+-  update.tag = QString::fromStdString(release.tag_name);
+-  update.version = update.tag.startsWith('v') ? update.tag.mid(1) : update.tag;
+-  update.releaseUrl = QString::fromStdString(release.html_url);
+-  update.assetUrl = QString::fromStdString(asset->browser_download_url);
+-
+-  qInfo() << "Update available:" << update.tag;
+-
+-  m_available = std::move(update);
+-  setStatus(Status::UpdateAvailable);
+-}
++void UpdateService::checkNow() {}
+ 
+-void UpdateService::downloadAndInstall() {
+-  if (!m_available) return;
+-  if (m_status == Status::Downloading || m_status == Status::Installing || m_status == Status::Installed)
+-    return;
++void UpdateService::downloadAndInstall() {}
+ 
+-  std::error_code ec;
+-  const fs::path downloadDir = Omnicast::cacheDir() / "updates";
+-
+-  fs::create_directories(downloadDir, ec);
+-
+-  const fs::path archivePath = downloadDir / m_installer->assetName().toStdString();
+-
+-  setStatus(Status::Downloading);
+-
+-  const QString tag = m_available->tag;
+-  const QString version = m_available->version;
+-
+-  m_toast.dynamic(tr("Downloading Vicinae %1…").arg(tag));
+-
+-  auto *download = m_client.download(m_available->assetUrl, archivePath);
+-
+-  connect(download, &http::Download::progress, this, [this, tag](qint64 received, qint64 total) {
+-    if (total > 0) {
+-      int const pct = static_cast<int>(received * 100 / total);
+-      m_toast.dynamic(tr("Downloading Vicinae %1… %2%").arg(tag).arg(pct));
+-    }
+-  });
+-  connect(download, &http::Download::failed, this, &UpdateService::failInstall);
+-  connect(download, &http::Download::finished, this, [this, version](const fs::path &path) {
+-    setStatus(Status::Installing);
+-    m_toast.dynamic(tr("Installing update…"));
+-    m_installer->install(path, version);
+-  });
+-}
+-
+-void UpdateService::skipAvailableVersion() {
+-  if (!m_available) return;
+-
+-  m_state.skippedVersion = m_available->tag.toStdString();
+-  saveState();
+-  m_available.reset();
+-  setStatus(Status::Idle);
+-}
+-
+-void UpdateService::relaunch() { m_installer->relaunch(); }
+-
+-void UpdateService::setStatus(Status status) {
+-  m_status = status;
+-  emit updateChanged();
+-}
+-
+-void UpdateService::failInstall(const QString &error) {
+-  qWarning() << "Update failed:" << error;
+-  setStatus(Status::Failed);
+-  m_toast.failure(tr("Update failed"), error);
+-}
+-
+-void UpdateService::saveState() {
+-  std::error_code ec;
+-
+-  fs::create_directories(m_statePath.parent_path(), ec);
+-
+-  if (auto const error = glz::write_file_json(m_state, m_statePath.string(), m_buf)) {
+-    qWarning() << "Failed to write update state file at" << m_statePath.string() << glz::format_error(error);
+-  }
+-}
+-
+-void UpdateService::loadState() {
+-  if (!fs::is_regular_file(m_statePath)) return;
+-
+-  if (auto const error = glz::read_file_json(m_state, m_statePath.string(), m_buf)) {
+-    qWarning() << "Failed to read update state file at" << m_statePath.string() << glz::format_error(error);
+-  }
+-}
++void UpdateService::skipAvailableVersion() {}
+ 
+ InstallUpdateAction::InstallUpdateAction() : AbstractAction(tr("Install Update"), BuiltinIcon::Download) {}
+ 
+-void InstallUpdateAction::execute(ApplicationContext *ctx) {
+-  auto *updates = ctx->services->updateService();
+-  auto const status = updates->status();
+-
+-  if (status == UpdateService::Status::Downloading || status == UpdateService::Status::Installing) {
+-    ctx->services->toastService()->setToast(tr("An update is already in progress"));
+-    return;
+-  }
+-
+-  updates->downloadAndInstall();
+-}
++void InstallUpdateAction::execute(ApplicationContext *) {}
+ 
+ SkipUpdateVersionAction::SkipUpdateVersionAction()
+     : AbstractAction(tr("Skip This Version"), BuiltinIcon::Xmark) {}
+ 
+-void SkipUpdateVersionAction::execute(ApplicationContext *ctx) {
+-  auto *updates = ctx->services->updateService();
+-
+-  if (const auto &update = updates->available()) {
+-    ctx->services->toastService()->setToast(tr("Skipped %1").arg(update->tag));
+-  }
+-
+-  updates->skipAvailableVersion();
+-}
++void SkipUpdateVersionAction::execute(ApplicationContext *) {}
+diff --git a/src/server/src/services/update/update-service.hpp b/src/server/src/services/update/update-service.hpp
+index f3b0880..b2a2d93 100644
+--- a/src/server/src/services/update/update-service.hpp
++++ b/src/server/src/services/update/update-service.hpp
+@@ -1,17 +1,11 @@
+ #pragma once
+ #include "abstract-update-installer.hpp"
+ #include "common/types.hpp"
+-#include "github-release.hpp"
+-#include "http-client.hpp"
+-#include "semver.hpp"
+ #include "ui/action-pannel/action.hpp"
+ #include <QCoreApplication>
+ #include <QObject>
+-#include <QTimer>
+-#include <filesystem>
+ #include <memory>
+ #include <optional>
+-#include <string>
+ 
+ class ToastService;
+ 
+@@ -38,32 +32,12 @@ public:
+   const std::optional<AvailableUpdate> &available() const { return m_available; }
+   Status status() const { return m_status; }
+   QString currentVersionTag() const;
+-  bool checksSupported() const { return m_currentVersion.has_value() && m_installer->supported(); }
++  bool checksSupported() const { return false; }
+ 
+   void downloadAndInstall();
+   void skipAvailableVersion();
+ 
+ private:
+-  void relaunch();
+-  struct State {
+-    std::optional<std::string> skippedVersion;
+-  };
+-
+-  void performCheck();
+-  void handleRelease(const github::Release &release);
+-  void setStatus(Status status);
+-  void failInstall(const QString &error);
+-  void loadState();
+-  void saveState();
+-
+-  ToastService &m_toast;
+-  std::unique_ptr<AbstractUpdateInstaller> m_installer;
+-  http::Client m_client;
+-  QTimer m_timer;
+-  State m_state;
+-  std::filesystem::path m_statePath;
+-  std::string m_buf;
+-  std::optional<vicinae::Semver> m_currentVersion;
+   std::optional<AvailableUpdate> m_available;
+   Status m_status = Status::Idle;
+ };

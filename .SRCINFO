@@ -1,0 +1,37 @@
+pkgbase = vicinae-private
+	pkgdesc = Privacy-focused Vicinae build without telemetry or background network requests
+	pkgver = 0.27.0
+	pkgrel = 1
+	url = https://github.com/vicinaehq/vicinae
+	install = vicinae.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = npm
+	makedepends = glaze
+	makedepends = qt6-shadertools
+	makedepends = qt6-tools
+	makedepends = wayland-protocols
+	makedepends = cmark-gfm
+	depends = nodejs
+	depends = qt6-base
+	depends = qt6-svg
+	depends = layer-shell-qt
+	depends = libqalculate
+	depends = qtkeychain-qt6
+	depends = qt6-declarative
+	depends = syntax-highlighting
+	provides = vicinae=0.27.0
+	conflicts = vicinae
+	source = vicinae-v0.27.0.tar.gz::https://github.com/vicinaehq/vicinae/archive/refs/tags/v0.27.0.tar.gz
+	source = numen-v0.4.1.tar.gz::https://github.com/vicinaehq/numen/archive/refs/tags/v0.4.1.tar.gz
+	source = disable-background-networking.patch
+	source = vicinae.hook
+	sha256sums = 9332752a6f2306d4a178ba5fd6ce149d21f64e90d0e0f853c6b3c335db9d3299
+	sha256sums = 0f758ba7a3306c214a5c1e7c5e35b3624f3a3d7361fdbfe36665d1088a9457f7
+	sha256sums = a40171400f424e0f4b53cadc533abae02c5fabee3948b4380b34ea7700fd263e
+	sha256sums = 3cc96aa4cc38cf9bfd365feca8ee523e0c47c83a9d3f6f6fef43bed3ec0de209
+
+pkgname = vicinae-private

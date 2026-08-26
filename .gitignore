@@ -1,0 +1,7 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!disable-background-networking.patch
+!vicinae.hook
+!vicinae.install
