@@ -1,7 +1,7 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 _pkgname=riverui
 pkgname="${_pkgname}-bin"
-pkgver=0.17.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="A web interface for River, fast and reliable background jobs in Go."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "${_pkgname}.env"
 )
 
-sha256sums=('9f92d64778b55b7aabbfb183e50b6c2f37c551659cc37afcbbecfe3e9b9e81f2'
+sha256sums=('e184285dd1a3dad8750871b2aa9ea4cb76bfa1ea1e89155464500fcd3b2ee8bd'
             '5f6ffaee9f6b91edeceb058d3a37279c64406c7d2685d9d5fb1903d7f04e9288'
             'fd0dce8e4a6138a405b93f7b3a136f968b5368cefa6107a2a92bd436411953ec'
             '961f96396c7d46e950f0aff573289d60a4fafe0c9c0fffe8aac775cf4a762323')
