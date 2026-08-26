@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-launcher-git
-pkgver=1.6.0.r7.gf7389d7
+pkgver=1.7.0.r0.gf7389d7
 pkgrel=1
 pkgdesc="Layer Shell frontend for Pop Launcher."
 arch=('x86_64' 'aarch64')
@@ -39,6 +39,7 @@ prepare() {
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
+  cargo fetch --locked --manifest-path scripts/xdgen/Cargo.toml
 }
 
 build() {
