@@ -1,0 +1,16 @@
+post_install() {
+  echo ":: Nạp kernel module uinput nếu chưa có:"
+  echo "   sudo modprobe uinput"
+  echo ":: Đảm bảo các quy tắc systemctl và udev được nhận diện:"
+  echo "   sudo systemd-sysusers"
+  echo "   sudo udevadm control --reload-rules && sudo udevadm trigger"
+  echo "   systemctl --user daemon-reload"
+  echo ":: Thêm user vào nhóm input (nếu cần):"
+  echo "   sudo usermod -aG input \$USER"
+  echo ":: Khởi động lại Fcitx5:"
+  echo "   fcitx5 -r -d"
+}
+
+post_upgrade() {
+  post_install
+}
