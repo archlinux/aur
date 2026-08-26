@@ -1,0 +1,51 @@
+_help() {
+    cat << 'EOF'
+VNTS2 组网服务端管理指南
+=====================================
+
+已安装的程序:
+  /usr/bin/vnts2  虚拟局域网服务端（VNT 服务器，前台守护进程）
+
+服务:
+  sudo systemctl enable --now vnts    启动并开机自启
+  sudo systemctl status vnts          查看状态
+  sudo journalctl -u vnts -f          实时查看日志
+
+配置文件:
+  /etc/vnts/config.toml   服务端配置（修改后执行 sudo systemctl restart vnts）
+  /var/lib/vnts/          运行数据（logs/、network_control.db、cert.pem、key.pem）
+
+⚠️ 安全提示（重要）:
+  - 默认启用网页管理: web_bind = "0.0.0.0:29871"，账号 admin / admin
+  - 若监听公网，请务必修改 username / password，否则管理端会被公开访问
+  - 客户端与服务端之间的加密传输建议配置证书或设置组网密码
+
+默认端口:
+  - 29872/tcp,udp  客户端连接（tcp / quic / wss 共用）
+  - 29871           网页管理端
+  - 29873           服务端互联（可选，server_quic_bind）
+
+客户端接入示例（vnt2_cli，与 vnt-git 配合使用）:
+  编辑 /etc/vnt/config.toml:
+    network_code = "你的组网编号"
+    server       = ["quic://你的服务器IP:29872"]
+  然后: sudo systemctl enable --now vnt2-cli
+
+卸载:
+  sudo systemctl disable --now vnts
+  （可选）sudo userdel -r vnts && sudo rm -rf /var/lib/vnts
+=====================================
+EOF
+}
+
+post_install() {
+    _help
+}
+
+post_upgrade() {
+    _help
+}
+
+post_remove() {
+    _help
+}
