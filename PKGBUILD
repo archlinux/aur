@@ -2,7 +2,7 @@
 
 pkgname=quickfix-git
 _pkgname=quickfix
-pkgver=1.15.1.r312.g00dd2083
+pkgver=1.16.0.r28.g386ce46e
 pkgrel=1
 pkgdesc="C++ Fix Engine Library"
 arch=(x86_64)
@@ -15,9 +15,11 @@ provides=("quickfix=$pkgver")
 makedepends=(boost python-setuptools swig)
 checkdepends=(ruby)
 source=("git+https://github.com/quickfix/quickfix.git"
-    cmake.patch)
+    cmake.patch
+    getdatetime-gil.patch)
 sha256sums=('SKIP'
-            'cc6314302a3dc5077ba34041fd9b427049395f306f9e86f7b1f14b7415067ba8')
+            'fdd7b71866f6490100796be9d891df13a92546f2e70c9cf88863688e9b65a2f7'
+            '04972d562875f8224861d76791001b3ec2515e0a898a431439dea6fbef88760f')
 options=(!lto)
 
 pkgver() {
@@ -28,6 +30,9 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   patch -p1 < ../cmake.patch
+  patch -p1 < ../getdatetime-gil.patch
+  # Regenerate the bindings so the %nothreadallow above takes effect; the
+  # committed QuickfixPython.cpp is stale otherwise.
   cd src/python
   ./swig.sh
 }

@@ -1,0 +1,16 @@
+diff --git a/src/python/quickfix.i b/src/python/quickfix.i
+index 2a326b95..e124870b 100644
+--- a/src/python/quickfix.i
++++ b/src/python/quickfix.i
+@@ -57,6 +57,11 @@
+   *pDD = *(*$1);
+ }
+ 
++// SWIG is invoked with -threads, so wrappers release the GIL around the
++// wrapped call.  getDateTime() is a %extend whose body calls the Python C API
++// directly, so it must keep the GIL.
++%nothreadallow FIX::UtcTimeStamp::getDateTime;
++
+ %extend FIX::UtcTimeStamp {
+   PyObject *getDateTime() {
+       int y, m, d, h, mi, s, fs;
