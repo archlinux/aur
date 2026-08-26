@@ -1,22 +1,20 @@
-# Maintainer: Josh Holmer <jholmer.in@gmail.com>
+# Maintainer: TheFeelTrain <the@feeltra.in>
+# Contributor: Josh Holmer <jholmer.in@gmail.com>
 
 _plug=vodesfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.6.1.21.gb87c906
-pkgrel=2
+pkgver=1.13.0.0.g11e5e9e
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/Vodes/vodesfunc'
 license=('MIT')
 depends=(
     'vapoursynth'
-    'vapoursynth-plugin-vsscale'
-    'vapoursynth-plugin-vsrgtools'
-    'vapoursynth-plugin-vskernels'
-    'vapoursynth-plugin-vstools'
-    'vapoursynth-plugin-vsmasktools'
-    'vapoursynth-plugin-vsmuxtools'
+    'vapoursynth-plugin-vsjetpack'
     'vapoursynth-plugin-descale-jet-git'
+    'python-vsmuxtools'
+    'python-jetpytools'
 )
 makedepends=(
     'git'
