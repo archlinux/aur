@@ -1,7 +1,7 @@
 # Maintainer: Johannes von Scheidt <37270902+jvonscheidt at users dot noreply dot github dot com>
 
 pkgname=m3u-viewer
-pkgver=0.7.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Fast terminal viewer for large M3U and M3U8 playlists"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 optdepends=('vlc: play selected channels')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('db0ae032722fc93a39bc984bdb496a52e4090242c4a67e1feaa79c5096eecc39')
+sha256sums=('398ccd49b8098201996e4b259b7572194da9e9c4e3803e308102fc52735dc0e9')
 
 prepare() {
   cd "$pkgname-$pkgver"
