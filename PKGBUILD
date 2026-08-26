@@ -2,7 +2,7 @@
 
 pkgbase=mdcz
 pkgname=("${pkgbase}-desktop")
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Media metadata scraper (desktop, built on Electron)"
 arch=('x86_64' 'aarch64')
@@ -11,13 +11,13 @@ license=("GPL-3.0-or-later")
 _electron="electron"
 conflicts=("${pkgbase}")
 replaces=("${pkgbase}")
-depends=("bash" "$_electron" "hicolor-icon-theme")
+depends=("$_electron")
 makedepends=("pnpm")
 install="${pkgbase}.install"
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgbase}.desktop"
         "${pkgbase}.sh")
-sha256sums=('76ddc3966c8cc53f1f83e8a2db6f068ea4199076c7552c11e5f29d9b415e9106'
+sha256sums=('cd23405f4d1e54928e70483304ba2c962b7de8a60ff26db6949e32aa5810c928'
             '045c3410b0ecb1aa6eb4e1a9c5d72f70d49146135f7f631decbc40bbb0bbde40'
             'cbfd7e103b2cd99572348601e4e9d809d7dca993b1c7d664ddeeb7a24f84549a')
 
@@ -41,6 +41,8 @@ build() {
 }
 
 package_mdcz-desktop() {
+    depends=("bash" "$_electron" "hicolor-icon-theme")
+
     install -Dm644 "${pkgbase}.desktop" "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
     install -Dm755 "${pkgbase}.sh"      "${pkgdir}/usr/bin/${pkgbase}"
 
