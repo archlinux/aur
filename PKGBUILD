@@ -3,7 +3,7 @@
 pkgname=aria2-next-pro
 _pkgname=aria2-next
 pkgver=2.5.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Maintained aria2 fork with extensive bug fixes and modernized architecture (with Aria2 Pro patches)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AnInsomniacy/aria2-next'
@@ -63,10 +63,7 @@ build() {
   cmake -S "${_pkgname}-${pkgver}" -B build -G Ninja \
     -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
-    -DBUILD_TESTING=OFF \
-    -DARIA2_SUPERBUILD=ON \
-    -DARIA2_ENABLE_LIBARIA2=ON \
-    -DARIA2_RELEASE_LTO=ON
+    -DARIA2_ENABLE_LIBARIA2=OFF
   cmake --build build
 }
 
@@ -74,10 +71,6 @@ package() {
   # The inner (non-superbuild) project lives in build/source and is configured
   # with CMAKE_INSTALL_PREFIX=<build>/dependencies, hence the --prefix override.
   DESTDIR="${pkgdir}" cmake --install build/source --prefix /usr
-
-  # libaria2.pc is generated with the vendored dependency prefix baked in
-  sed -i 's|^prefix=.*|prefix=/usr|' \
-    "${pkgdir}/usr/lib/pkgconfig/libaria2.pc"
 
   ln -s "aria2-next" "${pkgdir}/usr/bin/aria2c"
 }

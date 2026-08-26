@@ -1,7 +1,7 @@
 pkgbase = aria2-next-pro
 	pkgdesc = Maintained aria2 fork with extensive bug fixes and modernized architecture (with Aria2 Pro patches)
 	pkgver = 2.5.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AnInsomniacy/aria2-next
 	arch = x86_64
 	arch = aarch64
