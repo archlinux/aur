@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=mise-bin
 pkgver=2026.8.14
-pkgrel=2
+pkgrel=4
 pkgdesc="dev tools, env vars, task runner"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jdx/mise"
@@ -13,12 +13,12 @@ optdepends=(
     'zsh: zsh completion support'
 )
 provides=('mise')
-conflicts=('mise' 'rtx')
+conflicts=('mise' 'mise-musl-bin' 'rtx')
 replaces=('rtx')
-source_x86_64=("https://github.com/jdx/mise/releases/download/v${pkgver}/mise-v${pkgver}-linux-x64-musl.tar.xz")
-source_aarch64=("https://github.com/jdx/mise/releases/download/v${pkgver}/mise-v${pkgver}-linux-arm64-musl.tar.xz")
-sha256sums_x86_64=('d04e9d8841cb291f31681b0ef304453d41ee7367c23dc431bba3406cdf3f1bce')
-sha256sums_aarch64=('9186ee7019902572bb4fc1f48cc8f48cafe3c19a75d63484ebd1e79c2f5698a0')
+source_x86_64=("https://github.com/jdx/mise/releases/download/v${pkgver}/mise-v${pkgver}-linux-x64.tar.xz")
+source_aarch64=("https://github.com/jdx/mise/releases/download/v${pkgver}/mise-v${pkgver}-linux-arm64.tar.xz")
+sha256sums_x86_64=('80b49fa2dff282d3346524aec4466bbab536296ed5ba4d8c3b1b451022e94f56')
+sha256sums_aarch64=('81e1c5fa79c3d46cf93aac0ef9a5540bce9856634901a0db8301a656c370eb58')
 
 package() {
     install -Dm755 "${srcdir}/mise/bin/mise" "${pkgdir}/usr/bin/mise"
