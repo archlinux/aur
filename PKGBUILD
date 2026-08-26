@@ -1,7 +1,7 @@
 # Maintainer: Ethan Alexander <ethanjalexander@hotmail.ca>
 
 pkgname="wallpiper"
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Native translation layer for Wallpaper Engine on Linux"
 arch=('x86_64')
@@ -28,11 +28,11 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
 
-    install -Dm755 target/release/wallpiperd "$pkgdir/usr/lib/wallpiper/wallpiperd"
-    install -Dm755 target/release/wallpiperctl "$pkgdir/usr/lib/wallpiper/wallpiperctl"
-    install -Dm755 target/release/libwallpiper-preload.so "$pkgdir/usr/lib/wallpiper/libwallpiper-preload.so"
-    install -Dm755 target/release/libVkLayer_wallpiper_capture.so "$pkgdir/usr/lib/wallpiper/libVkLayer_wallpiper_capture.so"
-    install -Dm644 target/release/dwmapi.dll "$pkgdir/usr/lib/wallpiper/dwmapi.dll"
+    install -Dm755 build/release/wallpiperd "$pkgdir/usr/lib/wallpiper/wallpiperd"
+    install -Dm755 build/release/wallpiperctl "$pkgdir/usr/lib/wallpiper/wallpiperctl"
+    install -Dm755 build/release/libwallpiper-preload.so "$pkgdir/usr/lib/wallpiper/libwallpiper-preload.so"
+    install -Dm755 build/release/libVkLayer_wallpiper_capture.so "$pkgdir/usr/lib/wallpiper/libVkLayer_wallpiper_capture.so"
+    install -Dm644 build/release/dwmapi.dll "$pkgdir/usr/lib/wallpiper/dwmapi.dll"
 
     install -d "$pkgdir/usr/bin"
     ln -s /usr/lib/wallpiper/wallpiperd "$pkgdir/usr/bin/wallpiperd"
