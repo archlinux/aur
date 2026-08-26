@@ -1,0 +1,15 @@
+# pacman install script for festival-bin.
+# Echo-only: this package does not edit ~/.zshrc or any other rc file.
+
+post_install() {
+	echo "festival-bin is not the Edinburgh TTS package named festival."
+	echo "This package does not edit ~/.zshrc. Add the helper yourself:"
+	echo "  source /usr/share/festival/shell/festival.zsh"
+	echo "Upgrade:"
+	echo "  yay -Syu festival-bin"
+	echo "Do not run festival install (that plants a second copy under ~/.obey/installer)."
+}
+
+post_upgrade() {
+	post_install
+}
