@@ -1,6 +1,6 @@
 # Maintainer: Synflow <synflow@elektronische-nachricht.de>
 pkgname=oscr-ui-bin
-pkgver=11.1.0
+pkgver=11.1.1
 pkgrel=1
 pkgdesc="OSCR-UI - Open Source Combat Reader (GUI)"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/STOCD/OSCR-UI"
 license=('GPL-3.0')
 depends=('python')
 source=("https://github.com/STOCD/OSCR-UI/releases/download/v${pkgver}/oscr-ui-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-sha256sums=('f33f4330d6afa0779475fb18df1bdc5ee83b079e7ac86234f7dd1cf2cbd98c9a')
+sha256sums=('45a29cad0e01b0eb960fd8f72d7393129630e4abb398b37be64df0685233c6cc')
 
 package() {
   install -Dm 644 -v "${srcdir}/usr/share/applications/oscr-ui.desktop" "${pkgdir}/usr/share/applications/oscr-ui.desktop"
