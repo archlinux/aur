@@ -1,5 +1,5 @@
 pkgbase = xrat-bin
-	pkgdesc = TUI client for VLESS / Xray / sing-box (pre-compiled binary)
+	pkgdesc = Rust CLI/TUI proxy manager for Xray-core, V2Ray-core, and sing-box
 	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/mhyrzt/xrat
