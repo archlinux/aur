@@ -1,0 +1,23 @@
+pkgbase = cangjie-git
+	pkgdesc = Cangjie compiler (git version, compiler only)
+	pkgver = 0.0.0.r0.g0000000
+	pkgrel = 1
+	url = https://cangjie-lang.cn/
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = cangjie-compiler
+	conflicts = cangjie-compiler
+	depends = openssl>=3.0
+	makedepends = python
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = llvm15
+	makedepends = gcc
+	makedepends = binutils
+	makedepends = git
+	options = !lto
+	source = git+https://atomgit.com/Cangjie/cangjie_compiler.git#branch=main
+	sha256sums = SKIP
+
+	pkgname = cangjie-git
