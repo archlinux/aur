@@ -1,18 +1,18 @@
 pkgbase = crowdin-cli
 	pkgdesc = Command line tool that allows you to manage and synchronize localization resources with your Crowdin project
-	pkgver = 4.15.1
+	pkgver = 5.0.0
 	pkgrel = 1
-	url = https://support.crowdin.com/cli-tool/
-	arch = any
+	url = https://crowdin.github.io/crowdin-cli
+	arch = x86_64
+	arch = aarch64
 	license = MIT
-	makedepends = git
-	makedepends = java-environment=17
-	makedepends = grep
-	makedepends = awk
-	depends = java-runtime>=17
-	source = git+https://github.com/crowdin/crowdin-cli.git#tag=4.15.1
-	source = crowdin
-	md5sums = SKIP
-	md5sums = b018bcf51df64a8e68450cd7ac0e3838
+	depends = glibc
+	options = !strip
+	source = LICENSE-5.0.0::https://raw.githubusercontent.com/crowdin/crowdin-cli/5.0.0/LICENSE
+	sha256sums = 86ca3b5b587e7e8722996a29717755d83bf9348b1b6d52a519232b1bf26527af
+	source_x86_64 = crowdin-5.0.0-x86_64::https://github.com/crowdin/crowdin-cli/releases/download/5.0.0/crowdin-linux-x64
+	sha256sums_x86_64 = 0b32e4576b10643237e754c3816f8421d4739aa49952adf1e2dc1bfd9ccd8c19
+	source_aarch64 = crowdin-5.0.0-aarch64::https://github.com/crowdin/crowdin-cli/releases/download/5.0.0/crowdin-linux-arm64
+	sha256sums_aarch64 = c76c8c4a0abd41860bf115d6a14136e7d4ba048e06c625513aa8701a6f38a132
 
 pkgname = crowdin-cli
