@@ -1,57 +1,15 @@
-# This unit is fairly hardened, change if needed
-
 [Unit]
-Description=Conduit Matrix Homeserver
-After=network.target nss-lookup.target
+Description=A simple, fast and reliable chat server powered by Matrix
+Documentation=https://gitlab.com/famedly/conduit/-/blob/master/README.md
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-Type=notify
-ExecStart=/usr/bin/conduit-matrix
-ExecReload=/bin/kill -HUP ${MAINPID}
-TimeoutSec=10
-Restart=on-failure
-
-Environment="CONDUIT_CONFIG=/etc/conduit-matrix/conduit.toml"
-
-WorkingDirectory=/var/lib/conduit-matrix
-
-StartLimitInterval=1m
-StartLimitBurst=5
-
-AmbientCapabilities=
-CapabilityBoundingSet=
-LockPersonality=yes
-ProcSubset=pid
-ProtectProc=invisible
-MemoryDenyWriteExecute=yes
-NoNewPrivileges=yes
-ProtectClock=yes
-ProtectControlGroups=yes
-ProtectHome=yes
-ProtectHostname=yes
-ProtectKernelLogs=yes
-ProtectKernelModules=yes
-ProtectKernelTunables=yes
-ProtectSystem=strict
-PrivateDevices=yes
-PrivateMounts=yes
-PrivateTmp=yes
-PrivateUsers=yes
-RemoveIPC=yes
-RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
-RestrictNamespaces=yes
-RestrictRealtime=yes
-RestrictSUIDSGID=yes
-SystemCallArchitectures=native
-SystemCallFilter=@system-service
-SystemCallErrorNumber=EPERM
-StateDirectory=conduit-matrix
-RuntimeDirectory=conduit-matrix
-
-User=conduit-matrix
-Group=conduit-matrix
-ReadWriteDirectories=-/var/lib/conduit-matrix
-ReadWriteDirectories=-/var/log/conduit-matrix
+Type=simple
+DynamicUser=yes
+StateDirectory=conduit
+Environment="CONDUIT_CONFIG=/etc/conduit.toml"
+ExecStart=/usr/bin/conduit
 
 [Install]
 WantedBy=multi-user.target

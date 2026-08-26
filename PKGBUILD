@@ -1,45 +1,44 @@
-# Maintainer: AlphaJack <alphajack at tuta dot io>
-# Contributor: éclairevoyant
-# Contributor: strawberry <strawberry@puppygock.gay>
+# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-pkgname="conduit"
-pkgver=0.10.11
+pkgname=conduit
+pkgver=0.10.13
 pkgrel=1
-pkgdesc="Simple, fast and reliable chat server powered by Matrix"
-arch=("x86_64" "aarch64" "armv7h" "armv6h")
-url="https://conduit.rs/"
-license=("Apache")
-conflict=("conduit-bin" "matrix-conduit-git")
-depends=("gcc-libs")
-makedepends=("cargo" "clang" "rust")
-backup=("etc/conduit-matrix/$pkgname.toml")
-source=("https://gitlab.com/famedly/conduit/-/archive/v$pkgver/conduit-v$pkgver.tar.gz"
-        $pkgname.{service,sysusers,tmpfiles,toml})
-b2sums=('a96c34625148500fc1842d8919f44dc754d9f98a7388709f1475b2e126844f243c9b49378fb18f3d1b71f18f41c21c0f5368053ea680cf9fb05a11b4cec87fbd'
-        '3530a017149ce79371ec1b269c2a484f4782eea622f7a3d495bfb4577502e38f3ddf32cdd4e2a9b0d85efc62be28873203c2b0baaead405ae8eda4c686df9c0d'
-        '4d6acac3e3d43b63fb62c5c6cfc0c83609ee8787c0777b62355815d0c125c67b0063a3d3deff2eba92b502c3b2cf330a76671a45bcc6206faeffb87c38ce5e85'
-        'd23699d33e02103f3854ef0dc02a64cc8bc4b6921bd443e4155574ca029e10b8a3f64e82904422a2df3b16ba84edfe15b5380c99b1e4c473189bb69bf63cecef'
-        '7949dfa901d6e08d1c954695425a2c7239eb2271c896329a60bc9f7ec8a842cb1e9826efc3c4bf49434eb5c9ff3fd35c1c5cbad21a1b9d13745f078baebfcb96')
+pkgdesc='A simple, fast and reliable chat server powered by Matrix'
+arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
+url='https://conduit.rs'
+license=('Apache-2.0')
+depends=('gcc-libs')
+makedepends=('clang' 'git' 'rust')
+options=('!lto')
+backup=("etc/${pkgname}.toml")
+source=("${pkgname}::git+https://gitlab.com/famedly/${pkgname}.git#tag=v${pkgver}"
+        "${pkgname}.service")
+b2sums=('59a9629f3d0341180a7cbd0c2feb3fb068924ad5e8972fe03873a39c9f978532d675d10481f530091d9a16e6a24ea9320d194e9af1a2f8e83af46da817f3f384'
+        '2fb72123f70b2521134a5cd92ff62d62f6122e2bae52ce02d821c3716f40bd92c59819bf82a84ebe80e4b9b066b98c7e6309359aeac734ae0f20d63b41906d56')
 
-prepare(){
- cd "$pkgname-v$pkgver"
- export RUSTUP_TOOLCHAIN=stable
- cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+prepare() {
+  cd "${pkgname}"
+  export RUSTUP_TOOLCHAIN="stable"
+  cargo fetch --locked
 }
 
-build(){
- cd "$pkgname-v$pkgver"
- export RUSTUP_TOOLCHAIN=stable
- export CARGO_TARGET_DIR=target
- export RUST_BACKTRACE=1
- cargo build --frozen --release
+build() {
+  cd "${pkgname}"
+  export RUSTUP_TOOLCHAIN="stable"
+  export CARGO_TARGET_DIR="target"
+  export CXXFLAGS="$CXXFLAGS -include cstdint"
+  cargo build --release --locked
 }
 
-package(){
- install -v -D -m 755  "$pkgname-v$pkgver/target/release/$pkgname" "$pkgdir/usr/bin/conduit-matrix"
- install -v -D -m 0644 "$pkgname.service"  "$pkgdir/usr/lib/systemd/system/$pkgname-matrix.service"
- install -v -D -m 0644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
- install -v -D -m 0644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
- install -v -D -m 0644 "$pkgname.toml"     "$pkgdir/etc/conduit-matrix/$pkgname.toml"
- install -v -D -m 0644 "$pkgname.toml"     "$pkgdir/usr/share/doc/conduit-matrix/$pkgname-example.toml"
+package() {
+  # binary
+  install -Dm755 "${srcdir}/${pkgname}/target/release/${pkgname}" \
+    "${pkgdir}/usr/bin/${pkgname}"
+  # conf
+  install -Dm644 "${srcdir}/${pkgname}/${pkgname}-example.toml" \
+    "${pkgdir}/etc/${pkgname}.toml"
+  sed -i 's/\/matrix-conduit\//\/conduit\//' "${pkgdir}/etc/${pkgname}.toml"
+  # service
+  install -Dm644 "${srcdir}/${pkgname}.service" \
+    "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 }
