@@ -1,11 +1,15 @@
 pkgbase = innodb_space
 	pkgdesc = Library for parsing InnoDB data files in Ruby
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rubygems.org/gems/innodb_ruby
 	arch = any
 	license = Apache-2.0
 	depends = ruby
+	depends = ruby-bigdecimal
+	provides = innodb_ruby
+	provides = innodb_log
+	provides = ruby-innodb
 	noextract = innodb_ruby-0.14.0.gem
 	options = !emptydirs
 	source = https://rubygems.org/downloads/innodb_ruby-0.14.0.gem

@@ -3,7 +3,7 @@
 pkgname=innodb_space
 _gemname=innodb_ruby
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for parsing InnoDB data files in Ruby'
 arch=(any)
 url='https://rubygems.org/gems/innodb_ruby'
@@ -28,8 +28,8 @@ build() {
   # remove unrepreducible files
   rm --force --recursive --verbose \
     "tmp_install/${_gemdir}/cache/" \
-    "tmp_install/${_gemdir}/gems/${_name}-${pkgver}/vendor/" \
-    "tmp_install/${_gemdir}/doc/${_name}-${pkgver}/ri/ext/"
+    "tmp_install/${_gemdir}/gems/${_gemname}-${pkgver}/vendor/" \
+    "tmp_install/${_gemdir}/doc/${_gemname}-${pkgver}/ri/ext/"
 
   find "tmp_install/${_gemdir}/gems/" \
     -type f \
