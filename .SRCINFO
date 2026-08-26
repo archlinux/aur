@@ -1,6 +1,6 @@
 pkgbase = gogcli
 	pkgdesc = Google Suite CLI: Gmail, GCal, GDrive, GContacts.
-	pkgver = 0.36.0
+	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://github.com/steipete/gogcli
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gogcli
 	depends = glibc
 	provides = gog
 	conflicts = gog
-	source = gogcli-0.36.0.tar.gz::https://github.com/steipete/gogcli/archive/refs/tags/v0.36.0.tar.gz
-	sha256sums = a0d4d7a02ce5a5f0992305d7d20dc501eb1804e9ababd9d57f8b2fdb7ad7ddd7
+	source = gogcli-0.37.0.tar.gz::https://github.com/steipete/gogcli/archive/refs/tags/v0.37.0.tar.gz
+	sha256sums = c44902cfa6c7e98d664bcb8cd961c5d2e4d062ae936175348053ff61a2a8066e
 
 pkgname = gogcli
