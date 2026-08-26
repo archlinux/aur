@@ -1,6 +1,6 @@
 # Maintainer: Ron <thefangeddeity>
 pkgname=hls-livecam-server
-pkgver=5.8.2
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="Stream a USB webcam via HLS using MediaMTX and ffmpeg, with browser viewer, camdash monitor, and family presence features"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('ffmpeg' 'nginx' 'python' 'python-psutil' 'python-flask' 'python-pillow
 install=hls-livecam-server.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/thefangeddeity/hls-livecam-server/archive/refs/tags/v$pkgver.tar.gz"
         "hls-livecam-server.install")
-sha256sums=('b8345b7153b28fefc6c28c29066036e65f3bdcb32ce288f291c66c0b224432d1'
+sha256sums=('6e105347f513c3419e5e8707768fc213913c5c25dd81c08bb05676ebd191c90a'
             'SKIP')
 
 package() {
@@ -62,6 +62,20 @@ package() {
                    "$pkgdir/usr/share/hls-livecam-server/cv_notify.py"
     install -Dm644 pkg/usr/share/hls-livecam-server/cv_scene.py \
                    "$pkgdir/usr/share/hls-livecam-server/cv_scene.py"
+    # cv_persist and cv_occupancy are imported behind try/except in
+    # cv_processor -- absent, they disable themselves and say nothing. That
+    # is the right runtime behaviour and exactly why leaving them out of the
+    # package was invisible: an Arch install simply had no persistence and
+    # no occupancy, with nothing in the log to suggest either had been asked
+    # for. Optional at import time, mandatory in the payload.
+    install -Dm644 pkg/usr/share/hls-livecam-server/cv_persist.py \
+                   "$pkgdir/usr/share/hls-livecam-server/cv_persist.py"
+    install -Dm644 pkg/usr/share/hls-livecam-server/cv_occupancy.py \
+                   "$pkgdir/usr/share/hls-livecam-server/cv_occupancy.py"
+    # The viewer's header asks for /brand.png. Ship the source of it here;
+    # hls-livecam-setup and post_upgrade put it in the web root.
+    install -Dm644 pkg/usr/share/hls-livecam-server/brand.png \
+                   "$pkgdir/usr/share/hls-livecam-server/brand.png"
     install -Dm755 pkg/usr/share/hls-livecam-server/cv_scene_register.py \
                    "$pkgdir/usr/share/hls-livecam-server/cv_scene_register.py"
     install -Dm644 pkg/usr/share/hls-livecam-server/index.html \

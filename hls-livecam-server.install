@@ -34,6 +34,24 @@ for path in glob.glob('/usr/lib/python3*/site-packages/pyfakewebcam/pyfakewebcam
             f.write(s)
         print(f'pyfakewebcam: tobytes() fix applied to {path}')
 EOF
+    # Refresh the served viewer from the packaged copy.
+    #
+    # The package installs index.html to /usr/share and hls-livecam-setup
+    # copies it into /var/www at configure time, so /var/www is owned by
+    # nobody and pacman never touches it. That is right for a file the
+    # wizard substitutes into -- and wrong on upgrade, because the node
+    # then runs new code behind the viewer it had before, with no sign
+    # that anything is stale. Only refresh a web root that already exists:
+    # if setup has never run there is nothing to serve yet and post_install
+    # says so.
+    if [ -d /var/www/hls-livecam ] && [ -f /usr/share/hls-livecam-server/index.html ]; then
+        cp /usr/share/hls-livecam-server/index.html /var/www/hls-livecam/index.html
+        sed -i "s/@HOSTNAME@/$(hostname)/g" /var/www/hls-livecam/index.html
+        chmod 0644 /var/www/hls-livecam/index.html
+        [ -f /usr/share/hls-livecam-server/brand.png ] && \
+            cp /usr/share/hls-livecam-server/brand.png /var/www/hls-livecam/brand.png
+        echo "  viewer refreshed: /var/www/hls-livecam/index.html"
+    fi
     echo ""
     echo "  hls-livecam-server upgraded."
     echo "  If stream behavior changes, run: sudo hls-livecam-setup"
