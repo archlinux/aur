@@ -1,6 +1,6 @@
 pkgbase = prosody-mod-invites-register-web
 	pkgdesc = Register accounts via the web using invite tokens
-	pkgver = 2025.09.06
+	pkgver = 2026.03.23
 	pkgrel = 1
 	url = https://modules.prosody.im/mod_invites_register_web.html
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = prosody-mod-invites-register-web
 	depends = prosody-mod-invites-page
 	depends = prosody-mod-password-policy
 	optdepends = prosody-mod-register-apps: Configuring list of XMPP clients
-	source = hg+https://hg.prosody.im/prosody-modules/#revision=6216d85162dc
-	sha1sums = 5927b600bf8aee5453f2b4b1a14f60672d05500b
+	source = hg+https://hg.prosody.im/prosody-modules/#revision=8e73179c67f3
+	sha1sums = eb2ede2b932dcdf5cf119480da0c9e10aa3eff41
 
 pkgname = prosody-mod-invites-register-web
