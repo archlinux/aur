@@ -2,7 +2,7 @@
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-bin
 pkgname=('shelly-bin' 'shelly-flatpak-backend-bin')
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/Seafoam-Labs/Shelly-ALPM"
@@ -11,15 +11,18 @@ makedepends=('go-md2man')
 source=(
     "Shelly-ALPM-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-ALPM-linux-x64.tar.gz"
     "Shelly-Flatpak-Backend-linux-x64-${pkgver}.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v${pkgver}/Shelly-Flatpak-Backend-linux-x64.tar.gz"
+    'shellybuild.conf'
 )
 
-sha256sums=('0e316b1ad9321bd3b6902412360bf52eae44a5f7d1d603286901a802f4d8da1d'
-            '3a5021f720e0e965509e430bfcf1fef2c43b0bb967d71c61130c3c9d13ab4ae4')
+sha256sums=('88e5af418457211d4848ebf28886b9f667a347bbe8355339821cbf5d386267dd'
+            'a6db86a40816351bd79aff037206267bcf2488e272262d50622d134ee6ca3b61'
+            '0aff9177498bd94e90c937076d15ac76116c628ec3504a7c1b8c9ea086336ca6')
 
 package_shelly-bin() {
   pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
   provides=('shelly')
   conflicts=('shelly' 'shelly-git')
+  backup=('etc/shellybuild.conf')
   depends=(
       'pacman'
       'gtk4'
@@ -56,6 +59,8 @@ package_shelly-bin() {
 
   # Install Shelly.Key binary
   install -Dm755 "$srcdir/shelly-key" "$pkgdir/usr/bin/shelly-key"
+  install -Dm644 "$srcdir/shellybuild.conf" "$pkgdir/etc/shellybuild.conf"
+
   # Install desktop entry
   cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly.desktop"
 [Desktop Entry]
