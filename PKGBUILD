@@ -1,7 +1,7 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=spinframework-cli
 _realname=spin
-pkgver=4.0.2
+pkgver=4.1.0
 pkgrel=1
 pkgdesc='an open source framework for building and running fast, secure, and composable cloud microservices with WebAssembly'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://spinframework.dev/"
 license=('Apache-2.0')
 depends=('glibc' 'libgcc' 'libstdc++' 'openssl' 'sqlite')
 makedepends=('cargo' 'rust-wasm' 'cmake' 'git')
-source=("${_realname}-${pkgver}.tar.gz::https://github.com/spinframework/spin/archive/v${pkgver}.tar.gz")
+source=("https://github.com/spinframework/spin/archive/v${pkgver}/${_realname}-${pkgver}.tar.gz")
 options=("!lto" "!debug")
 # this package was previously called fermyon-spin
 conflicts=("fermyon-spin")
@@ -35,4 +35,4 @@ package() {
   install -Dm0755 $_realname-$pkgver/target/$CARCH-unknown-linux-gnu/release/spin "$pkgdir"/usr/bin/spin-cli
 }
 
-sha256sums=('f7bc0392b6e25375aa47021f0f5d8172386aeb34eb7d27535195eda9095d89c9')
+sha256sums=('2d6784dc4b2fa5dc055abd9b8058d5a187a15ba21e5a13b2a4c0030fa9e3b702')
