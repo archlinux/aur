@@ -7,6 +7,21 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20260826
+
+### Added:
+
+- AC_SINCOR_G5.crt
+
+### Deleted:
+
+- AC_DOCCLOUD.crt
+
+### Changed:
+
+- Certificate files are now provided under ACcompactado directory, so
+  the PKGBUILD was updated to reflect that change.
+
 ## 20260810
 
 ### Added:

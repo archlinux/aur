@@ -2,7 +2,7 @@
 # Contributor: Tiago Brait <tiagobrait AT gmail DOT com>
 
 pkgname=ca-certificates-icp_br
-pkgver=20260810
+pkgver=20260826
 pkgrel=1
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
@@ -15,7 +15,7 @@ changelog=CHANGELOG.md
 _source="icpbr_certs-${pkgver}-${pkgrel}"
 source=("$_source.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
 noextract=("$_source.zip")
-sha512sums=('5c357a160cd02790f6378e8ab644f056fc3b13a0f55d8119359988b2287bd7afd43245ec87a13a5f0e804743221b46f46ef4315f92394e0fc2a580e887cd146a')
+sha512sums=('541ea4402c48464c1a3b76bf636117c8b1e4405335928c292d128493ce3cd14e4b263dfbf769645be5d0d94820b9361cbd0a4df4a5cc42d93e68b42ecdc2e08d')
   # This checksum must match: http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/hashsha512.txt
 
 prepare() {
@@ -26,9 +26,10 @@ prepare() {
 package() {
   cd "$_source"
 
-  find * -print0 | while read -d $'\0' cert; do
-      # Edit filenames removing whitespaces and prepending 'icp_br'
-    mv "$cert" "icp_br.${cert//' '/'_'}"
+  find ./ACcompactado -type f -name '*.crt' -print0 |
+  while IFS= read -r -d '' cert; do
+    filename=${cert##*/}
+    mv -- "$cert" "icp_br.${filename//' '/'_'}"
   done
   install -d -m0755 "$pkgdir/usr/share/ca-certificates/trust-source/anchors"
   install -m0644 *.crt "$pkgdir/usr/share/ca-certificates/trust-source/anchors"
