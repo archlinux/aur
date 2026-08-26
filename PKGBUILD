@@ -5,7 +5,7 @@
 # shellcheck disable=SC2154
 pkgbase=surge-cli
 pkgname=surge
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Surge is a blazing fast, open-source terminal (TUI) download manager built in Go"
 arch=("x86_64")
@@ -14,7 +14,7 @@ license=("MIT")
 depends=("glibc")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('f56a4e47fe7f3998d01ce57dab321e7d02a15909edd858ca7f7eccfa5341f84cd66fada7375e80244165a5b781839954a97e303c9b748ec84cc46f3417968522')
+sha512sums=('747eac81a72ebfbb1d1fbcadfbee0ad12236af0aa33b65046c632fb890971b52e4cd05913d5435873697251becc99531db477ae3c93a090e8194def7b71a36bd')
 
 provides=("surge")
 conflicts=("surge")
