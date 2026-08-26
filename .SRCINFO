@@ -12,7 +12,7 @@ pkgbase = javinizer
 	makedepends = npm
 	provides = javinizer
 	conflicts = javinizer-bin
-	source = javinizer-1.4.0.tar.gz::https://github.com/javinizer/javinizer-go/archive/v1.4.0.tar.gz
-	sha256sums = 956417aaab764c144d151406ac332d473138b2f08eb24544ebb63fc1f6138adc
+	source = javinizer::git+https://github.com/javinizer/javinizer-go/?tag=v1.5.1
+	sha256sums = SKIP
 
 pkgname = javinizer
