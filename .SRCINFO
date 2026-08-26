@@ -1,7 +1,7 @@
 pkgbase = dbx
 	pkgdesc = Open-source database management tool (Tauri-based)
 	pkgver = 0.5.96
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/t8y2/dbx
 	arch = x86_64
 	license = AGPL-3.0-only
