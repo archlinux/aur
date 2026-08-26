@@ -2,7 +2,7 @@
 
 pkgname=grok-build-git
 _pkgname=grok-build
-pkgver=r33.d71f6e0
+pkgver=r38.77cd7eb
 pkgrel=1
 pkgdesc="SpaceXAI's coding agent harness and TUI. Fullscreen, mouse interactive, extensible."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,8 @@ license=('Apache-2.0')
 provides=('grok')
 conflicts=('grok')
 options=('!strip' '!debug' '!emptydirs')
-makedepends=("git" "curl" "perl" "clang")
+
+makedepends=("git" "curl")
 backup=('etc/grok/requirements.toml')
 
 source=(
@@ -46,9 +47,13 @@ prepare() {
   export RUSTUP_HOME="$srcdir/rustup"
   export CARGO_HOME="$srcdir/cargo"
   export PATH="$CARGO_HOME/bin:$PATH"
+  export RUSTUP_INIT_SKIP_PATH_CHECK=yes
 
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
-  rustup toolchain install
+  rm -rf "$RUSTUP_HOME" "$CARGO_HOME"
+
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --default-toolchain none
+  
+  rustup show
   cargo install dotslash
 }
 
