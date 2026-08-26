@@ -9,7 +9,7 @@ depends=(libgcc glibc)
 makedepends=(cargo clang pnpm nodejs-lts-jod protobuf)
 optdepends=('vnts: The Server of vnt.')
 options=(!lto)
-backup=(etc/vnt/client.toml)
+backup=(etc/vnt/config.toml)
 install=vnt.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vnt-dev/vnt/archive/refs/tags/v$pkgver.tar.gz"
         "vnt-cli@.service"
@@ -44,5 +44,5 @@ package(){
     install -Dvm644  -t "$pkgdir/usr/lib/systemd/system/" \
         "$srcdir/vnt-cli@.service" \
         "$srcdir/vnt-web@.service"
-    install -Dvm644 example_config.toml "$pkgdir/etc/vnt/client.toml"
+    install -Dvm644 example_config.toml "$pkgdir/etc/vnt/config.toml"
 }
