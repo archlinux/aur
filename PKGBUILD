@@ -2,7 +2,7 @@
 
 pkgname=codex-lb
 _pkgname=codex_lb
-pkgver=1.23.0
+pkgver=1.24.0
 pkgrel=1
 pkgdesc='Load balancer and proxy for ChatGPT accounts with usage dashboard and OpenAI-compatible API'
 arch=('any')
@@ -10,6 +10,7 @@ url='https://github.com/Soju06/codex-lb'
 license=('MIT')
 depends=(
   'python'
+  'python-aiohappyeyeballs'
   'python-aiohttp'
   'python-aiohttp-retry'
   'python-aiohttp-socks'
@@ -23,6 +24,7 @@ depends=(
   'python-cryptography'
   'python-dotenv'
   'python-fastapi'
+  'python-httpx'
   'python-greenlet'
   'python-mako'
   'python-multidict'
@@ -38,6 +40,7 @@ depends=(
   'python-starlette'
   'python-urllib3'
   'python-websockets'
+  'python-yarl'
   'python-zstandard'
   'uvicorn'
 )
@@ -48,6 +51,7 @@ makedepends=(
   'python-wheel'
 )
 optdepends=(
+  'python-httptools: optimized HTTP parser (h11 fallback remains available)'
   'python-prometheus_client: Prometheus /metrics endpoint (metrics extra)'
   'python-opentelemetry-api: OpenTelemetry tracing (tracing extra)'
   'python-opentelemetry-sdk: OpenTelemetry tracing (tracing extra)'
@@ -66,7 +70,7 @@ source=(
   'codex-lb.env'
   'codex-lb.install'
 )
-sha256sums=('fb0c411caaabb0348c43ee467385a3636b1c9c8e68eda91cab82ef7d4e084195'
+sha256sums=('c78071ddc92c2d4ee19b629c692e2181365dec7c437f9f5f4bc45df8fe0e87da'
             '0c63ea72ce0f73dab98653feb8e38b4a6f8fc8cbb0902f8472b08de31e602aeb'
             '31df28070b4619b52a31823b236ec0a6777e00f6f4017bc6b2349539e605727c'
             'f4b5f162049f22a71e63c15dc8012e102479191fdca065ecc9f23e3557c30611'
