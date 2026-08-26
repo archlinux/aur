@@ -2,7 +2,7 @@
 # Contributor: Roald Clark <roaldclark@gmail.com>
 
 pkgname=krita-ai-diffusion
-pkgver=1.48.0
+pkgver=1.53.0.r6.gdda58d1
 pkgrel=1
 pkgdesc="A plugin to use generative AI in image painting and editing workflows from within Krita"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://github.com/Acly/krita-ai-diffusion"
 license=('GPL-3.0-or-later')
 depends=(
     'krita'
-    'python-pyqt5'
-    'qt5-imageformats'
+    'python-pyqt6'
+    'qt6-imageformats'
 )
 makedepends=(
     'git'
@@ -22,8 +22,11 @@ checkdepends=(
     'openssl'
 )
 install=krita-ai-diffusion.install
-source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('304b1f71ff865e340c5b6b23ed9a6ab75bb0ee0f6066583f7db34bdcabaf5040')
+_commit=dda58d1c63e361207ccec085efbc34dbd32f1654
+source=("${pkgname}::git+${url}.git#commit=${_commit}"
+        "fix-it-json-syntax.patch")
+sha256sums=('cc8354e0d0e19a417950e6825bb9974fe9cb3dc34c5206c0f4dcec12c3781025'
+            '55fdda2a4349e4a271cf7dc5bd5d2171d6a1c18ab19bad58f0d033e0a8cf51ef')
 
 # If `git lfs install` was run before, `makepkg` may error
 # Set this env var to resolve
@@ -33,6 +36,7 @@ prepare() {
     # The plugin itself will run inside Krita's embedded Python,
     # and only has access to the Python standard library and Qt5
     cd "${srcdir}/${pkgname}"
+    patch -Np1 -i ../fix-it-json-syntax.patch
     git submodule update --init --recursive
     git lfs install --local
     git remote add network-origin "${url}.git"
