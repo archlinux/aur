@@ -1,0 +1,13 @@
+diff --git a/build.gradle.kts b/build.gradle.kts
+index b48f10f..0ce9cc3 100644
+--- a/build.gradle.kts
++++ b/build.gradle.kts
+@@ -4,7 +4,7 @@ plugins {
+ }
+ 
+ group = "dev.ambershadow"
+-version = property("version") as String
++version = "git"
+ 
+ repositories {
+     mavenCentral()

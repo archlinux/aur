@@ -1,29 +1,32 @@
 #AUR package maintainer: L1oly, Cogfly creator: Nix-main on Github
 pkgname=cogfly-git
-pkgver=r1dcd47d
+pkgver=r8a67ff2
 pkgrel=1
 pkgdesc="A cross-platform mod manager for Hollow Knight: Silksong. (Git)"
 arch=(x86_64)
 url="https://github.com/Nix-main/Cogfly"
 license=('GPL-3.0-only')
 depends=('hicolor-icon-theme' 'zenity')
-makedepends=('git' 'sed' 'java-environment=25')
+makedepends=('git' 'java-environment=25')
 conflicts=('cogfly-bin' 'cogfly')
 options=(!strip)
-source=("git+https://github.com/Nix-main/Cogfly.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/Nix-main/Cogfly.git"
+        "fix-cogfly.desktop.diff"
+        "ver-to-git.diff")
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${srcdir}/Cogfly"
   git describe --long --tags 2>/dev/null | sed 's/\([^-]*-\)*g/r/;s/-/./g' ||
-  printf "1.1.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.2.5.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "${srcdir}/Cogfly"
-  sed -i 's/^Exec=Cogfly$/Exec=cogfly/' resources/linux/Cogfly.desktop
-  sed -i 's/^Icon=icon$/Icon=cogfly/' resources/linux/Cogfly.desktop
-  sed -i 's/^[[:space:]]*version = .*/version = "git"/' build.gradle.kts
+  git apply ../fix-cogfly.desktop.diff
+  git apply ../ver-to-git.diff  
 }
 
 build() {
@@ -34,23 +37,23 @@ build() {
   /usr/lib/jvm/java-25-openjdk/bin/jpackage \
             --input build/libs \
             --main-jar Cogfly-git.jar \
-            --name ${pkgname} \
+            --name cogfly \
             --type app-image \
-            --icon ./icons/icon.png \
+            --icon resources/icons/icon.png \
             --app-version ${pkgver} \
             --dest out
 
 }
 
 package() {
-  install -dm755 "${pkgdir}/opt/${pkgname}"
-  cp -a Cogfly/out/${pkgname}/* "${pkgdir}/opt/${pkgname}/"
+  install -dm755 "${pkgdir}/opt/Cogfly"
+  cp -a "Cogfly/out/cogfly/"* "${pkgdir}/opt/Cogfly/"
 
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/cogfly"
+  ln -s "/opt/Cogfly/bin/cogfly" "${pkgdir}/usr/bin/cogfly"
 
   install -Dm644 ${srcdir}/Cogfly/resources/linux/Cogfly.desktop \
     "${pkgdir}/usr/share/applications/cogfly.desktop"
-  install -Dm644 ${srcdir}/Cogfly/icons/icon.png \
+  install -Dm644 ${srcdir}/Cogfly/resources/icons/icon.png \
     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/cogfly.png"
 }
