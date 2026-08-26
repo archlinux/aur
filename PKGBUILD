@@ -1,7 +1,7 @@
 # Maintainer: Sulthan A. Karimov <sulthankarimov@gmail.com>
 pkgname='blender-launcher-bin'
 _pkgname='blenderlauncher'
-pkgver=2.7.5
+pkgver=2.7.6
 pkgtarget='_Linux_x64'
 pkgrel=1
 pkgdesc='Blender Launcher is a standalone software client that provides management for stable, daily and experimental builds of Blender 3D. It is a free open source project available for 64-bit Windows and Linux (GLIBC 2.31 and higher) operating systems.'
@@ -12,7 +12,7 @@ license=('GPL-3.0')
 #optdepends=()
 #conflicts=('ablavema' 'ablavema-git')
 source_x86_64=("$url/releases/download/v$pkgver/Blender_Launcher_v$pkgver$pkgtarget.zip")
-sha256sums_x86_64=('68339903a0a7927cb9ce25e51f177dfe1c707241da25c4008034e6466c0a1abb')
+sha256sums_x86_64=('62cf20c52cd2ab80b137702742b49a61ee9b426e3418c5153288fe93f5830642')
 
 package() {
 	install -Dm644 "$srcdir/extras/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
