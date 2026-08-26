@@ -9,7 +9,7 @@ url="https://github.com/SlopeCraft/SlopeCraft"
 license=('GPL3')
 options=(!debug)
 makedepends=(
-	'clang' 'lld' 'cmake' 'ninja' 'git' # build tools
+	'clang' 'lld' 'cmake' 'ninja' 'git' 'llvm' # build tools
 	'vulkan-tools' '7zip' 'glslang' # tools
 	'eigen' 'xsimd' 'qt6-tools' 'cereal' 'boost' 'cli11' 'vulkan-headers' # header only libs
 )

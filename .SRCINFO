@@ -12,6 +12,7 @@ pkgbase = slopecraft
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
+	makedepends = llvm
 	makedepends = vulkan-tools
 	makedepends = 7zip
 	makedepends = glslang
