@@ -2,7 +2,7 @@
 pkgname=open-cad-studio
 _pkgname=OpenCADStudio
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A CAD application built with Rust — 2D/3D drawing, DWG/DXF support, and GPU-accelerated rendering"
 arch=('x86_64')
 url="https://github.com/HakanSeven12/OpenCADStudio"
@@ -38,6 +38,6 @@ package() {
     cd "$srcdir/$_pkgname-$pkgver"
     install -Dm755 "target/release/OpenCADStudio" "$pkgdir/usr/bin/OpenCADStudio"
     install -Dm644 "$srcdir/OpenCADStudio.desktop" "$pkgdir/usr/share/applications/OpenCADStudio.desktop"
-    install -Dm644 "$srcdir/logo.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/OpenCADStudio.png"
-    install -Dm644 "assets/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/OpenCADStudio.svg"
+    install -Dm644 "$srcdir/logo.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/OpenCadStudio.png"
+    install -Dm644 "assets/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/OpenCadStudio.svg"
 }
