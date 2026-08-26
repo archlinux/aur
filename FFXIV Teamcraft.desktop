@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=FFXIV Teamcraft
+Exec=/opt/ffxiv-teamcraft/FFXIV-Teamcraft.AppImage
+Type=Application
+Terminal=false
+StartupNotify=true
+Comment=Collaborative crafting made easy
+Category=Utility
+Icon=321E_FFXIV Teamcraft.0
+StartupWMClass=ffxiv teamcraft.exe
