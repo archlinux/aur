@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Eaisly execute SQL against CSV/TSV/LTSV/JSON and Microsoft Excel™ with shell"
 
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,9 +29,9 @@ _pkgsrc="${_appname}-${pkgver}"
 source=("${_pkgsrc}-checksums.txt::${url}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${url}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgsrc}-${arch[1]}.tgz::${url}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
-sha256sums=('a30757fa8f9a8f9b7e3062de71fdeafc869e1d3e4bdb13b690c090445a49c65d')
-sha256sums_x86_64=('1be333919dd7bc543b0ccb7f7b928403e1039acb7223e2871365acb4e529df4b')
-sha256sums_aarch64=('a073a8a7d6fc32e9ffd2c633c3492a7dcfba945b99d500914db9f1aeb1b35d16')
+sha256sums=('39012fbed39b3ee557499a6d325493d6ca9e3183f8f1e9d5e192cb0230c19a7e')
+sha256sums_x86_64=('6cfddc55faf460fd22c855578eec0ddd0ede9a67da79f990dcd7639f9e2f66c1')
+sha256sums_aarch64=('e65c148a87124c77074ecd00423aa05adf93b3bd9deaf9417171ea1dff0d1db3')
 
 
 verify() {
