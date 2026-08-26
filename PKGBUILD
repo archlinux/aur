@@ -2,18 +2,18 @@
 # Maintainer: e-search
 # Contributor: e-search
 pkgname=e-search
-pkgver=15.3.2
+pkgver=15.4.2
 pkgrel=1
 pkgdesc="识屏 · 搜索"
 arch=('x86_64')
 url="https://github.com/xushengfeng/eSearch"
 license=('GPL3')
-depends=('electron34' 'at-spi2-core' 'hicolor-icon-theme' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'util-linux-libs')
+depends=('electron43' 'at-spi2-core' 'hicolor-icon-theme' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'util-linux-libs')
 conflicts=('e-search-git')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://github.com/xushengfeng/eSearch/releases/download/${pkgver}/eSearch_${pkgver}.aur")
-sha512sums=('a2eb358b9042f6518c7e510b839bb8f3a24c66b325b7a43167d09d72cadc805fd03f21987f9a56cc404976a0fa7759f08c0abbd2c281f81adfd1cc5e1248b5f2')
+sha512sums=('805656ede456ac069b1cb294922b0aba86d99f8491263fbac2f0e908f5ef343c79f2e10829171f9a2e974976e28d0281913e45889620e63899b815845c16a98e')
 
 package(){
 
