@@ -1,6 +1,6 @@
 # Maintainer: Alex Macocian <amacocian@yahoo.com>
 pkgname=rainbeau
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Hyprland theme engine that generates desktop configs and animated wallpapers"
 arch=('x86_64')
@@ -15,7 +15,6 @@ depends=(
     'libnotify'
     'quickshell'
     'rlottie'
-    'waybar'
 )
 makedepends=('go')
 optdepends=(
@@ -30,14 +29,16 @@ optdepends=(
     'mpvpaper: video, Lottie, and shader wallpapers'
     'neovim: generated Neovim colorscheme and live reload'
     'omni-launcher: generated Omni Launcher config'
+    'omni-shell: generated Omni Shell bar and panel theme'
     'quick-visor: generated Quick Visor theme'
+    'waybar: generated bar config and style'
     'wofi: generated launcher style'
     'jq: monitor discovery in generated wallpaper scripts'
     'bluez-utils: Bluetooth status script'
     'nvidia-utils: NVIDIA GPU usage and temperature scripts'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AlexMacocian/rainbeau/archive/v${pkgver}.tar.gz")
-sha256sums=('5a66bc03228d3502c2b20c6e7830768bb46319710d57ac161c4dc824b350eb5a')
+sha256sums=('0dcf8f0d5e9c0ccec6a6d3d5212c73b8cae113caa201ba6e6ac84050bc151785')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
