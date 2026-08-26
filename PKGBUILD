@@ -6,11 +6,11 @@ pkgver=26.07
 pkgrel=1
 pkgdesc="non-reparenting, dynamic window manager for X11 with decorations"
 arch=("i686" "x86_64")
-url="https://www.uninformativ.de/git/katriawm/file/README.html"
+url="https://movq.de/git/katriawm/#readme"
 license=("MIT")
 makedepends=("git")
 depends=("libx11" "libxft" "libxrandr")
-source=("git+https://www.uninformativ.de/git/katriawm.git#tag=v${pkgver}")
+source=("git+https://movq.de/git/katriawm.git#tag=v${pkgver}")
 sha256sums=('269ac3d5efdc343243ebca7d3dc02430d8177a6e0a48cc90abdd21b7457b53a2')
 
 
