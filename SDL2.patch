@@ -1,0 +1,68 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -163,6 +163,7 @@
+ ################################
+ # LUA
+ ################################
++option(USE_SYSTEM_SDL2 "Use system-installed SDL2 instead of vendored" OFF)
+ 
+ set(LUA_DIR ${THIRDPARTY_DIR}/lua)
+ set(LUA_SRC
+@@ -641,18 +642,27 @@
+ ################################
+ if(BUILD_SDL AND NOT EMSCRIPTEN AND NOT RPI)
+ 
+-    if(WIN32)
+-        set(HAVE_LIBC TRUE)
+-    endif()
+-
+-    if(ANDROID)
+-        include_directories(${ANDROID_NDK}/sources/android/cpufeatures)
+-        set(SDL_STATIC_PIC ON CACHE BOOL "" FORCE)
+-    endif()
+-
+-    set(SDL_SHARED OFF CACHE BOOL "" FORCE)
+-
+-    add_subdirectory(${THIRDPARTY_DIR}/sdl2)
++    if(USE_SYSTEM_SDL2)
++        find_package(SDL2 REQUIRED)
++        message(STATUS "Using system SDL2: ${SDL2_INCLUDE_DIRS}")
++        set(SDL2_LIB SDL2::SDL2)
++        set(SDL2_MAIN SDL2::SDL2main)
++    else()
++
++        if(WIN32)
++            set(HAVE_LIBC TRUE)
++        endif()
++
++        if(ANDROID)
++            include_directories(${ANDROID_NDK}/sources/android/cpufeatures)
++            set(SDL_STATIC_PIC ON CACHE BOOL "" FORCE)
++        endif()
++
++        set(SDL_SHARED OFF CACHE BOOL "" FORCE)
++
++        add_subdirectory(${THIRDPARTY_DIR}/sdl2)
++
++    endif()
+ 
+ endif()
+ 
+@@ -679,7 +689,7 @@
+         target_link_options(player-sdl PRIVATE -static)
+     endif()
+ 
+-    target_link_libraries(player-sdl tic80core SDL2-static SDL2main)
++    target_link_libraries(player-sdl tic80core ${SDL2_LIB} ${SDL2_MAIN})
+ endif()
+ 
+ ################################
+@@ -1228,7 +1238,7 @@
+         elseif(RPI)
+             target_link_libraries(tic80 libSDL2.a bcm_host)
+         else()
+-            target_link_libraries(tic80 SDL2-static)
++            target_link_libraries(tic80 ${SDL2_LIB})
+         endif()
+     endif()
+ 
