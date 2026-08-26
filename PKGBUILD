@@ -3,7 +3,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-gaming
 pkgver=1.18.0
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="Compositor for the COSMIC desktop environment with gaming patches and support fifo-v1, fullscreen tearing, and VRR Target Rate feature"
 arch=('x86_64' 'aarch64')
@@ -27,6 +27,27 @@ depends=(
   'pixman'
   'systemd'
   'wayland'
+  'cosmic-app-library'
+  'cosmic-applets'
+  'cosmic-bg'
+  'cosmic-files'
+  'cosmic-greeter'
+  'cosmic-idle'
+  'cosmic-initial-setup'
+  'cosmic-launcher'
+  'cosmic-monitor'
+  'cosmic-notifications'
+  'cosmic-osd'
+  'cosmic-panel'
+  'cosmic-player'
+  'cosmic-screenshot'
+  'cosmic-session'
+  'cosmic-settings-daemon'
+  'cosmic-store'
+  'cosmic-terminal'
+  'cosmic-text-editor'
+  'cosmic-workspaces'
+  'xdg-desktop-portal-cosmic'
 )
 makedepends=(
   'cargo'
