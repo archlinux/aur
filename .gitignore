@@ -1,0 +1,10 @@
+# An AUR repo holds the recipe, not what building it produces. makepkg
+# leaves the downloaded source, an extracted src/, a staged pkg/ and the
+# built package behind in this directory; a stale refrain-0.4.5.tar.gz
+# sat here for two releases because nothing was ignoring it.
+#
+# Deny-by-default, so the next artifact makepkg invents is covered too.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
