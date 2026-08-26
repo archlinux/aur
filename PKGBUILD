@@ -15,7 +15,7 @@ conflicts=('sudo' 'doas')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
 install=voix.install
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f1a3ca0b63bce7b122909a8b31cffd74c419eab287c5a91c51168993b00fc95a')
+sha256sums=('66fa511da6bbcc93e61618b552f8e3af53becf512481f6e878f4bd625b1312fb')
 
 build() {
     cd "$_pkgname-$pkgver"
