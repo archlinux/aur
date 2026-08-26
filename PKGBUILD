@@ -1,6 +1,6 @@
 pkgname=ioruba-desktop-bin
 pkgver=1.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Tactile audio mixer for Arduino-based Linux control (prebuilt AppImage)"
 arch=('x86_64')
 url="https://github.com/bernardopg/ioruba"
@@ -41,6 +41,7 @@ StartupNotify=true
 StartupWMClass=io.ioruba.desktop
 DESKTOP
 
-  printf '%s\n'     '#!/usr/bin/env sh'     'exec /opt/ioruba/run-appimage-compat.sh /opt/ioruba/ioruba.AppImage ""'     > "${pkgdir}/usr/bin/ioruba-desktop"
+  install -dm755 "${pkgdir}/usr/bin"
+  printf '%s\n'     '#!/usr/bin/env sh'     'exec /opt/ioruba/run-appimage-compat.sh /opt/ioruba/ioruba.AppImage "$@"'     > "${pkgdir}/usr/bin/ioruba-desktop"
   chmod 755 "${pkgdir}/usr/bin/ioruba-desktop"
 }
