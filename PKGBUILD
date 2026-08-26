@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Osmocom's  Serving GPRS Support Node for 2G and 3G packet-switched mobile networks"
 url="https://osmocom.org/projects/osmosgsn"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-license=(GPL)
+license=('AGPL-3.0-or-later')
 depends=('libosmocore-git'
          'libosmo-sigtran-git'
          'libosmo-gsup-client.so' # from osmo-hlr
