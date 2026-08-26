@@ -1,6 +1,6 @@
 # Maintainer: Radu Macocian <radu@macocian.com>
 pkgname=omni-shell
-pkgver=0.0.3
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Quickshell status bar, notification center and control center for Hyprland, with weather, clipboard history and an integrated omni-launcher."
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('hyprland: workspaces module and layer rules'
             'wf-recorder: screen recording indicator'
             'nvidia-utils: GPU usage and temperature on NVIDIA cards')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f96e99b97b6c5c2c4f8595cb140036055e84bb94be45b6ae27a49d503240552c')
+sha256sums=('63a496cec2638fd8ac90b38c482096fd7f19afcf739db3ea89b1be1c7f38aa40')
 
 package() {
   cd "$srcdir/$pkgname"
@@ -31,6 +31,11 @@ package() {
 
   install -dm755 "$pkgdir/usr/share/$pkgname/modules"
   install -m644 modules/*.qml "$pkgdir/usr/share/$pkgname/modules/"
+
+  # Drop-in directory for Control Center tiles contributed by other packages.
+  # Shipped even though it is empty, so packages have a directory to install
+  # into and the shell is not scanning a path that does not exist.
+  install -dm755 "$pkgdir/usr/share/$pkgname/extensions"
 
   install -Dm755 bin/omni-shell "$pkgdir/usr/bin/omni-shell"
   install -Dm755 bin/omni-shell-ipc "$pkgdir/usr/bin/omni-shell-ipc"
