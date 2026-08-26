@@ -2,8 +2,8 @@
 
 _plug=zsmooth
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=0.19.0
-pkgrel=2
+pkgver=0.20.0
+pkgrel=1
 pkgdesc="Plugin for VapourSynth: ${_plug}"
 arch=('x86_64')
 url='https://github.com/adworacz/zsmooth'
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('vapoursynth')
 makedepends=('zig>=0.16' 'zig<0.17')
 source=("https://github.com/adworacz/zsmooth/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0a18195f27b5f27ab5788eb133d07f8de1f93cc60bdef02c8448ac37ad6fdb43')
+sha256sums=('218d141fe0b0e1cac2c6a16f2d653dd2fb4ea6f0b8d0792232dbbe2107469600')
 
 build() {
 	cd "zsmooth-${pkgver}"
