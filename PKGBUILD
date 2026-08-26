@@ -1,9 +1,10 @@
-# Maintainer: Josh Holmer <jholmer.in@gmail.com>
+# Maintainer: TheFeelTrain <the@feeltra.in>
+# Contributor: Josh Holmer <jholmer.in@gmail.com>
 
 _plug=zsmooth
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for VapourSynth: ${_plug}"
 arch=('x86_64')
 url='https://github.com/adworacz/zsmooth'
