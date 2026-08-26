@@ -13,7 +13,7 @@ pkgbase = betterbird-bin
 	source = eu.betterbird.Betterbird.desktop
 	source = vendor-prefs.js
 	sha256sums = e3413e3dc571453149c0b76f686f7eadd2f67c824e3bf6c4897baa1b7faecb6b
-	sha256sums = 60045ec0138ad4c01546df596b97016e467bec6d69c7e4e4c7bdb85e91a31bc2
+	sha256sums = 5ebc00bff424b0badcdb60f87db1c809a2a691d3634720e11c51b42df1e523a6
 	sha256sums = b11745416d2b2f8bac1ccd3dcb99411c7239b067adf9eb973903c448f8747d09
 
 pkgname = betterbird-bin
