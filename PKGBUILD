@@ -1,8 +1,8 @@
 # Maintainer: hotline1337 <denuvo at tuta dot io>
 
 pkgname=nym-vpn-app-beta-bin
-pkgver=2026.12.2
-pkgrel=2
+pkgver=2026.11.1
+pkgrel=1
 _release_tag="nym-vpn-v${pkgver}-beta.${pkgrel}"
 pkgdesc="NymVPN desktop client (Beta)"
 arch=("x86_64" "aarch64")
