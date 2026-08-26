@@ -1,6 +1,6 @@
 # Maintainer: Alex D'Andrea <alex at dandrea dot io>
 pkgname=json-log-viewer
-pkgver=1.6.0
+pkgver=1.9.2
 pkgrel=1
 pkgdesc='Interactive viewer for JSON logs.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("git+$url#tag=v$pkgver")
-sha256sums=('ba8c1e951d959567e6635061cf317e301137412d61cde246396e61a121430038')
+sha256sums=('f6c56ecc309bbe512af1572fefce71c74ecd6d7c33ab65aa21fc9b9de60c2fa9')
 options=('!lto')
 
 prepare() {
