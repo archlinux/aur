@@ -1,12 +1,13 @@
 # Maintainer: fuddlesworth <fuddlesworth at users dot noreply dot github dot com>
+# SPDX-FileCopyrightText: 2026 fuddlesworth
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgname=plasmazones-bin
 # pkgver/pkgrel are placeholders; CI overwrites them with the release tag
 # before publishing. See packaging/arch/update-aur.sh.
-pkgver=3.3.9
+pkgver=3.4.0
 pkgrel=1
-pkgdesc='Window tiling and autotiling for KDE Plasma (binary)'
+pkgdesc='Window snapping, tiling and scrolling for KDE Plasma (binary)'
 arch=('x86_64')
 url='https://github.com/fuddlesworth/PlasmaZones'
 # Dual-licensed: the main daemon + KCM + editor are GPL-3.0-or-later; the
@@ -36,16 +37,18 @@ depends=(
     'kirigami'
     'kcmutils'
     'kglobalaccel'
+    'kcolorscheme'
     'qt6-wayland'
     'kwin>=6.7.0'
 )
 optdepends=(
     'plasma-activities: activity-based layouts'
+    'hwdata: readable GPU names in the rendering device picker'
 )
 provides=('plasmazones')
 conflicts=('plasmazones' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/plasmazones-$pkgver-linux-x86_64.tar.gz")
-sha256sums=('d24248451b5c1500a299e9931fad8071e19ec8eb8b185c7fc677c31cc1f825e7')
+sha256sums=('a6d2c067e42bdadea5ef085e6f017a6b7aa98faa15420f3faba016e3f0d537cd')
 install=plasmazones.install
 
 package() {
