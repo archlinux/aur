@@ -1,7 +1,7 @@
 # Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
 
 pkgname=imibrowser
-pkgver=16.0.6002
+pkgver=16.0.6003
 pkgrel=1
 pkgdesc="Freeware MIB browser tool for SNMP API (requires SLA acceptance)"
 
@@ -15,7 +15,7 @@ install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.zip::https://www.ireasoning.com/download/mibfree/mibbrowser.zip"
         "iMIBrowser.desktop"
         "SLA")
-sha256sums=('b6049e270d2fc80c3f5e860e1a2b2395d803231a7389add938f50fda99e42a98'
+sha256sums=('f03c1b3f2a9c6dcf471ed7aebb9084715c691ea1bd47a6ad7762177f75bbb858'
             'ecfc557a66cb3e11f50c0034019fff55960d4b9551ba0639754ed14647cb6446'
             'f15a61ab9c02cdab41460763608bfd5b5f0624826724e0f80120ecef3285acfa')
 
