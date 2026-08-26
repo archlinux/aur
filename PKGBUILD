@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastmc
-pkgver=6
+pkgver=7
 pkgrel=1
 pkgdesc="fastmc, create a Minecraft server in under a minute, builds from source"
 arch=('x86_64')
