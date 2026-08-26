@@ -3,15 +3,15 @@
 
 _pkgname=animdl
 pkgname="${_pkgname}-git"
-pkgver=r366.fd3277f
+pkgver=r402.c7c3b79
 pkgrel=1
 pkgdesc="highly efficient anime downloader and streamer"
 arch=('any')
 url="https://github.com/justfoolingaround/animdl"
 license=('GPL3')
-depends=('anitopy'
-         'python'
-         'python-anchor-kr'
+depends=('python'
+         'python-anchor-kr-git'
+         'python-anitopy-git'
          'python-click'
          'python-cssselect'
          'python-httpx'
