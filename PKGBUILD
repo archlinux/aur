@@ -1,7 +1,7 @@
 # Maintainer: RimuruTemp1421 <daser1421official@gmail.com>
 
 pkgname=anihot-app
-pkgver=6.2.2
+pkgver=6.2.3
 pkgrel=1
 pkgdesc="Linux client for AniHot anime streaming app"
 arch=('x86_64')
@@ -12,7 +12,7 @@ install="${pkgname}.install"
 options=('!debug')
 source=("anihot-${pkgver}.zip::https://github.com/MrGlany/AniHotAppPC/releases/download/${pkgver}r/${pkgver}-linux.zip"
         "${pkgname}.install")
-sha256sums=('4edb5e1fad17ea1df51ffa027285244983b013dddd2c1c02608a34ec2b6ef8c0'
+sha256sums=('c5a80597c36ad4ffbb2ef8390597192c37dd4da8091d43eeca0f3537cf50e85b'
             '0e036796aa22e8b8c0f11112c454651edea24ab5e4aedcb81536cbde1540c763')
 
 package() {
@@ -31,7 +31,7 @@ package() {
     cp -r lib data "$pkgdir/usr/lib/$pkgname/"
     cp "AniHot App" "$pkgdir/usr/lib/$pkgname/anihot-app"
 
-    # Wrapper script
+    # Wrapper script for GUI app
     cat > "$pkgdir/usr/bin/anihot" << 'EOF'
 #!/bin/bash
 cd /usr/lib/anihot-app
@@ -40,6 +40,18 @@ exec ./anihot-app "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/anihot"
 
+    # Install CLI client (ahcli) as a command
+    cp "$srcdir/ahcli" "$pkgdir/usr/lib/$pkgname/ahcli"
+    chmod 755 "$pkgdir/usr/lib/$pkgname/ahcli"
+
+    # Wrapper script for ahcli
+    cat > "$pkgdir/usr/bin/ahcli" << 'EOF'
+#!/bin/bash
+cd /usr/lib/anihot-app
+export LD_LIBRARY_PATH="/usr/lib/anihot-app/lib:${LD_LIBRARY_PATH}"
+exec ./ahcli "$@"
+EOF
+    chmod 755 "$pkgdir/usr/bin/ahcli"
 
     # Copy icon (exact path with fallback find)
     if [ -f "$srcdir/share/icons/hicolor/256x256/apps/com.anihot.anihot.png" ]; then
