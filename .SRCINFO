@@ -1,15 +1,15 @@
 pkgbase = scrpr
 	pkgdesc = A fast CLI for extracting main content from websites
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/byteowlz/scrpr
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	conflicts = scrpr-bin
-	source_x86_64 = scrpr-1.1.2-x86_64.tar.gz::https://github.com/byteowlz/scrpr/releases/download/v1.1.2/scrpr-v1.1.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = be4df1ee799b8679e8de4431ae46203bb7f03be042e5226b5c3ac5453b8d7fa6
-	source_aarch64 = scrpr-1.1.2-aarch64.tar.gz::https://github.com/byteowlz/scrpr/releases/download/v1.1.2/scrpr-v1.1.2-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 204fad2d156f44d44a8118b2e31ef3cd6d0976db7a1470c45cb76cd40590d424
+	source_x86_64 = scrpr-1.2.0-x86_64.tar.gz::https://github.com/byteowlz/scrpr/releases/download/v1.2.0/scrpr-v1.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = e6478dd171805aed9c9f7a579afc0d98bd17e831b477de55adca86816058394e
+	source_aarch64 = scrpr-1.2.0-aarch64.tar.gz::https://github.com/byteowlz/scrpr/releases/download/v1.2.0/scrpr-v1.2.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 30df7bcaa1fe417302fd2dd71ccdf5ce60a367b87d1c33960b24f83927ab945a
 
 pkgname = scrpr
