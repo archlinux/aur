@@ -1,0 +1,31 @@
+post_install() {
+  cat <<'EOF'
+
+One command finishes the setup - it helps you choose a speech model and tells you
+how to get it, starts the server, and reads your keys off the keyboard so no
+keycode is ever typed by hand:
+
+  talkey-setup
+
+It installs nothing on your behalf. Safe to re-run, and `talkey-setup keys`
+rebinds whenever you like.
+
+If anything is ever wrong, one command tells you what and how to fix it:
+
+  talkey doctor
+
+Note talkey types with xdotool, which is X11 only - on Wayland nothing arrives
+in your window. `talkey doctor` says so plainly.
+
+Rather do it by hand? Every step is in /usr/share/doc/talkey-git/README.md.
+EOF
+}
+
+post_upgrade() {
+  cat <<'EOF'
+
+Note: ~/.config/i3/talkey.conf is your copy - this upgrade did not touch it.
+Compare it against /usr/share/talkey/bindings/i3.conf if bindings changed, or
+re-run `talkey-setup keys` to regenerate it.
+EOF
+}
