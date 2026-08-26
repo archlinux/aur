@@ -1,6 +1,6 @@
 pkgname=umadev-bin
-_realver="1.1.0"
-pkgver="1.1.0"
+_realver="1.1.1"
+pkgver="1.1.1"
 pkgrel=1
 pkgdesc='A coding agent that works like a real dev team, commanding the Claude Code / Codex / OpenCode you already use.'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ _triple_aarch64="aarch64-unknown-linux-gnu"
 source_x86_64=("umadev-${_realver}-x86_64-unknown-linux-gnu::https://github.com/umacloud/umadev/releases/download/v${_realver}/umadev-x86_64-unknown-linux-gnu")
 source_aarch64=("umadev-${_realver}-aarch64-unknown-linux-gnu::https://github.com/umacloud/umadev/releases/download/v${_realver}/umadev-aarch64-unknown-linux-gnu")
 
-sha256sums_x86_64=('98e15bc1439f5d43ab9270e82a0b2d4cc5b398a428fab33715ac1023aa233beb')
-sha256sums_aarch64=('d2538b69064c62f89dd7a9ee444c915c73949a8ffb648766d2c85c54d0b659d2')
+sha256sums_x86_64=('e55ddf403d8b3601a3e51caa7698b0f9588829bc32463cc686ba54e9e043d679')
+sha256sums_aarch64=('66abbf1412ddc8c16c732c0621dd3ada0532b36ffaac6a51b41da9a4a6c463f5')
 
 package() {
   local _triple
