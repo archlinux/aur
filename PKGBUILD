@@ -22,10 +22,8 @@ checkdepends=(
     'openssl'
 )
 install=krita-ai-diffusion.install
-source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
-        "add-regex-to-requirements.patch")
-sha256sums=('304b1f71ff865e340c5b6b23ed9a6ab75bb0ee0f6066583f7db34bdcabaf5040'
-            '3cdb6f448e78ae8bcfe4427d6a7b44a732b375366aa52dd4aaceb11f328edaf0')
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
+sha256sums=('304b1f71ff865e340c5b6b23ed9a6ab75bb0ee0f6066583f7db34bdcabaf5040')
 
 # If `git lfs install` was run before, `makepkg` may error
 # Set this env var to resolve
@@ -35,7 +33,6 @@ prepare() {
     # The plugin itself will run inside Krita's embedded Python,
     # and only has access to the Python standard library and Qt5
     cd "${srcdir}/${pkgname}"
-    patch -Np1 -i ../add-regex-to-requirements.patch
     git submodule update --init --recursive
     git lfs install --local
     git remote add network-origin "${url}.git"

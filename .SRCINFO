@@ -14,8 +14,6 @@ pkgbase = krita-ai-diffusion
 	depends = python-pyqt5
 	depends = qt5-imageformats
 	source = krita-ai-diffusion::git+https://github.com/Acly/krita-ai-diffusion.git#tag=v1.48.0
-	source = add-regex-to-requirements.patch
 	sha256sums = 304b1f71ff865e340c5b6b23ed9a6ab75bb0ee0f6066583f7db34bdcabaf5040
-	sha256sums = 3cdb6f448e78ae8bcfe4427d6a7b44a732b375366aa52dd4aaceb11f328edaf0
 
 pkgname = krita-ai-diffusion
