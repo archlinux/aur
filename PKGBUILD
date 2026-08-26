@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A small terminal app for switching project configuration profiles safely"
 
-pkgver=0.20.8
+pkgver=0.20.10
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -28,10 +28,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}_${_barch[1]}")
-sha256sums=('c8c0a248a28bcec67d339d24786a9e22c5192cb274c02cf9fd8fb17a7129923f'
+sha256sums=('11bc4775ef2a59e7ab0a066f8d4b978e70f57b2ced7cfa8025537210925b29af'
             '7169fd4fb7b754a22701ad3978931c994ad97c1ce46cba85cdb1cb69238f9bd1')
-sha256sums_x86_64=('3ca412ba4df7e7193aea2a7a950c7e46a2f1b3ab9f0e97f243f059baeb5ebd7f')
-sha256sums_aarch64=('6bfd7fb1e2dde592335d02c77a719c8c7e56e0884b608b4ecdca6ace47a163b7')
+sha256sums_x86_64=('673f07b7cf5292262189a9f7fcae9b0b916c6a50933e8862419b6700d01967e9')
+sha256sums_aarch64=('87376415589379baffec413e8f344a3d0eab25ce183c900ed7c22e5f5707c2e7')
 
 
 package() {
