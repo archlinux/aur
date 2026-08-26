@@ -14,7 +14,7 @@ pkgname=(
   'mariadb-pam-git')
 pkgdesc='Fast SQL database server, derived from MySQL'
 _pkgver=12.3
-pkgver=12.3.2.r283.g8da3462
+pkgver=12.3.3.r2.g3b78f10
 pkgrel=1
 arch=('x86_64')
 license=('GPL-2.0-only')
@@ -23,12 +23,13 @@ makedepends=('git' 'boost' 'bzip2' 'cmake' 'cracklib' 'curl' 'jemalloc' 'judy' '
              'libxcrypt' 'libxml2' 'lz4' 'openssl' 'pcre2' 'systemd' 'zlib' 'zstd' 'xz')
 validpgpkeys=('177F4010FE56CA3336300305F1656F24C74CD1D8') # MariaDB Signing Key <signing-key@mariadb.org>
 source=("mariadb::git+https://github.com/MariaDB/server.git#branch=${_pkgver}?signed"
-        'git+https://github.com/MariaDB/mariadb-connector-c.git'
-        'git+https://github.com/facebook/rocksdb.git'
         'git+https://github.com/codership/wsrep-lib.git'
-        'git+https://github.com/wolfSSL/wolfssl.git'
+        'git+https://github.com/duckdb/duckdb.git'
+        'git+https://github.com/facebook/rocksdb.git'
         'git+https://github.com/mariadb-corporation/libmarias3.git'
         'git+https://github.com/mariadb-corporation/mariadb-columnstore-engine.git'
+        'git+https://github.com/MariaDB/mariadb-connector-c.git'
+        'git+https://github.com/wolfSSL/wolfssl.git'
         '0001-arch-specific.patch')
 sha256sums=('SKIP'
             'SKIP'
@@ -37,7 +38,8 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '966d0854d4aa09dc08b8c1f0cbc65806ca09543ed9a41a3714d400cca49e0adb')
+            'SKIP'
+            '9a388374ed0f04a5b576c0177cc93d35075c9d50bb422b9c09ce69f48eefb978')
 
 pkgver() {
   cd mariadb/
@@ -48,12 +50,13 @@ prepare() {
   cd mariadb/
 
   # setup git submodules
+  git config --file=.gitmodules submodule.extra/wolfssl/wolfssl.url ../wolfssl/
   git config --file=.gitmodules submodule.libmariadb.url ../mariadb-connector-c/
+  git config --file=.gitmodules submodule.storage/columnstore/columnstore.url ../mariadb-columnstore-engine/
+  git config --file=.gitmodules submodule.storage/duckdb/third_parties/duckdb.url ../duckdb/
+  git config --file=.gitmodules submodule.storage/maria/libmarias3.url ../libmarias3/
   git config --file=.gitmodules submodule.storage/rocksdb/rocksdb.url ../rocksdb/
   git config --file=.gitmodules submodule.wsrep-lib.url ../wsrep-lib/
-  git config --file=.gitmodules submodule.extra/wolfssl/wolfssl.url ../wolfssl/
-  git config --file=.gitmodules submodule.storage/maria/libmarias3.url ../libmarias3/
-  git config --file=.gitmodules submodule.storage/columnstore/columnstore.url ../mariadb-columnstore-engine/
   git submodule init
   git -c protocol.file.allow=always submodule update
 
@@ -78,7 +81,7 @@ build() {
     -DINSTALL_SYSCONFDIR=/etc
     -DINSTALL_SYSCONF2DIR=/etc/my.cnf.d
     # /run
-    -DINSTALL_RUNDATADIR=/run/mariadb
+    -DINSTALL_RUNDIR=/run
     -DINSTALL_UNIX_ADDRDIR=/run/mysqld/mysqld.sock
     # /usr
     -DCMAKE_INSTALL_PREFIX=/usr
@@ -254,11 +257,6 @@ package_mariadb-git() {
   # move it where one might look for it
   mv usr/share/{groonga{,-normalizer-mysql},doc/mariadb/}
 
-  # move to pam directories
-  install -d {etc,usr/lib}/security
-  mv usr/share/user_map.conf etc/security/
-  mv usr/share/pam_user_map.so usr/lib/security/
-
   # already installed to real systemd unit directory or useless
   rm -r usr/share/mysql/systemd/
   rm -r usr/lib/systemd/system/mariadb@bootstrap.service.d
@@ -280,8 +278,8 @@ package_mariadb-git() {
   # provided by mariadb-pam
   install -d -m0755 "${srcdir}"/mariadb-pam/usr/lib/{mysql/plugin,security}/ "${srcdir}"/mariadb-pam/etc/security/
   mv usr/lib/mysql/plugin/auth_pam* "${srcdir}"/mariadb-pam/usr/lib/mysql/plugin/
-  mv usr/lib/security/pam_user_map.so "${srcdir}"/mariadb-pam/usr/lib/security/
-  mv etc/security/user_map.conf "${srcdir}"/mariadb-pam/etc/security/
+  mv usr/share/pam_user_map.so "${srcdir}"/mariadb-pam/usr/lib/security/
+  mv usr/share/user_map.conf "${srcdir}"/mariadb-pam/etc/security/
 
   # provided by mariadb-mytop
   rm usr/bin/mytop
