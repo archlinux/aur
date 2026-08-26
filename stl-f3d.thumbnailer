@@ -1,0 +1,4 @@
+[Thumbnailer Entry]
+TryExec=f3d
+Exec=f3d --resolution %s,%s --output %o %i
+MimeType=model/stl;application/sla;model/x.stl-ascii;model/x.stl-binary;

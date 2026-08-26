@@ -1,0 +1,12 @@
+pkgbase = f3d-stl-thumbnailer
+	pkgdesc = Standalone STL thumbnailer configuration for F3D (fixes KDE Dolphin integration)
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://f3d.app/
+	arch = any
+	license = MIT
+	depends = f3d
+	source = stl-f3d.thumbnailer
+	sha256sums = SKIP
+
+pkgname = f3d-stl-thumbnailer
