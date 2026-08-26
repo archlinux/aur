@@ -2,7 +2,7 @@
 pkgname=xrat-bin
 pkgver=0.19.0
 pkgrel=1
-pkgdesc="TUI client for VLESS / Xray / sing-box (pre-compiled binary)"
+pkgdesc="Rust CLI/TUI proxy manager for Xray-core, V2Ray-core, and sing-box"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mhyrzt/xrat"
 license=('Apache-2.0' 'MIT')
