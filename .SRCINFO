@@ -1,13 +1,13 @@
 pkgbase = focusd
 	pkgdesc = A beautiful terminal pomodoro timer with daemon, waybar integration and interactive TUI
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/bibekbhusal0/focusd
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = sqlite
-	source = focusd-0.2.0.tar.gz::https://github.com/bibekbhusal0/focusd/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 41d4d9edce6d614da41c4a05eae4018e0e06c86dfb17737990937e95d13ebe16
+	source = focusd-0.2.1.tar.gz::https://github.com/bibekbhusal0/focusd/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = b5c4bd8e4fac6c7db7525959a1081ab99786aea19ec2e85cdd6dc04206a80880
 
 pkgname = focusd
