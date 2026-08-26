@@ -2,8 +2,8 @@
 
 _reponame=mdcz
 pkgname="${_reponame}-server"
-pkgver=0.11.0
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Media metadata scraper (server)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ShotHeadman/${_reponame}"
@@ -16,7 +16,7 @@ source=("${_reponame}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.
         "${_reponame}.sysusers"
         "${_reponame}.tmpfiles"
         "${_reponame}u.service")
-sha256sums=('76ddc3966c8cc53f1f83e8a2db6f068ea4199076c7552c11e5f29d9b415e9106'
+sha256sums=('cd23405f4d1e54928e70483304ba2c962b7de8a60ff26db6949e32aa5810c928'
             'b238101b924496e6257593a82405e984e9373aac52a06cdbf236d30624972c99'
             'c80caf8e5dc0ec46f3aefd2b207a2ddf035685874102698196f050afe7719310'
             '5325bb75ca4acdadef92d12d159ea2ade7f80cc4cb57b48e08274a8a625d6d66'
