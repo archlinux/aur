@@ -1,6 +1,6 @@
 pkgbase = arch-install-manager-git
 	pkgdesc = A Linux Mint inspired GTK4-based install and update manager for Arch Linux (latest git)
-	pkgver = 0.0.1.r29.g529b5a9
+	pkgver = 0.0.1.r30.g0517683
 	pkgrel = 1
 	url = https://github.com/destbg/arch-install-manager
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = arch-install-manager-git
 	optdepends = rate-mirrors: refresh and rank the pacman mirror list
 	provides = arch-install-manager
 	conflicts = arch-install-manager
-	source = arch-install-manager-git::git+https://github.com/destbg/arch-install-manager.git#commit=529b5a9a16928f2d282db627d7d8ac3230782fd5
+	source = arch-install-manager-git::git+https://github.com/destbg/arch-install-manager.git#commit=05176836fde0fb4b8056ce667655881081a7eff3
 	sha256sums = SKIP
 
 pkgname = arch-install-manager-git
