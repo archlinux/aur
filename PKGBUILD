@@ -2,7 +2,7 @@
 # Contributor: Paul Stoetzer <n8hm at arrl dot net>
 
 pkgname=predict
-pkgver=2.3.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='Satellite tracking, orbital prediction, open-source software'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL-2.0-or-later')
 depends=('glibc' 'ncurses' 'alsa-lib')
 options=('!emptydirs')
 source=("https://www.qsl.net/kd2bd/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3ea626cadf1edf984e49e91891f9fd5cb38f6d83c5cd6e6693e8aecb2d289056')
+sha256sums=('e1385de66c4740336be4c6bfabd3d5d4270dce4ba36642d608aa9787d6c3ae61')
 
 
 build() {
@@ -28,7 +28,6 @@ package() {
     cd ${pkgname}-${pkgver}
     install -Dm755 predict -t "$pkgdir/usr/bin/"
     install -Dm755 xpredict -t "$pkgdir/usr/bin/"
-    install -Dm755 kepupdate -t "$pkgdir/usr/bin/"
     install -Dm755 clients/earthtrack/earthtrack -t "$pkgdir/usr/bin/"
     install -Dm644 docs/man/predict.1 -t "$pkgdir/usr/share/man/man1/"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

@@ -1,6 +1,6 @@
 pkgbase = predict
 	pkgdesc = Satellite tracking, orbital prediction, open-source software
-	pkgver = 2.3.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://www.qsl.net/kd2bd/predict.html
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = predict
 	depends = ncurses
 	depends = alsa-lib
 	options = !emptydirs
-	source = https://www.qsl.net/kd2bd/predict-2.3.1.tar.gz
-	sha256sums = 3ea626cadf1edf984e49e91891f9fd5cb38f6d83c5cd6e6693e8aecb2d289056
+	source = https://www.qsl.net/kd2bd/predict-3.0.2.tar.gz
+	sha256sums = e1385de66c4740336be4c6bfabd3d5d4270dce4ba36642d608aa9787d6c3ae61
 
 pkgname = predict
