@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=prjoxide-nightly
-pkgver=20260826_9ab3b4e
+pkgver=20260826_ea3fe12
 pkgrel=1
 epoch=1
 pkgdesc="Documenting Lattice's 28nm FPGA parts"
@@ -19,7 +19,7 @@ conflicts=(
 )
 replaces=()
 source=(
-	"prjoxide::git+https://github.com/gatecat/prjoxide.git#commit=9ab3b4e"
+	"prjoxide::git+https://github.com/gatecat/prjoxide.git#commit=ea3fe12"
 	"prjoxide-db::git+https://github.com/gatecat/prjoxide-db.git#commit=8d81745"
 )
 sha256sums=(
