@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-service-manager
-pkgver=26.03
+pkgver=26.08
 pkgrel=1
 pkgdesc="GUI service management tool"
 arch=('x86_64' 'i686')
@@ -8,8 +8,8 @@ url="https://github.com/mx-linux/mx-service-manager"
 license=('GPL3')
 depends=('qt6-base' 'polkit' 'systemd')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/mx-linux/mx-service-manager/archive/refs/tags/26.03.tar.gz")
-sha256sums=('51af2d0b1753cc149c6fa7656600a9dee331192614eafe408ff60ff80b1b45c7')
+source=("https://github.com/mx-linux/mx-service-manager/archive/refs/tags/26.08.tar.gz")
+sha256sums=('28ddb9a32f0ad0631b45ab1d1696d7226867c9409bc31f17020b9e0f139be744')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
