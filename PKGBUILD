@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=lindiskinfo
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="Qt-based S.M.A.R.T. and NVMe health monitor for Linux, inspired by CrystalDiskInfo"
 arch=('x86_64')
 url="https://github.com/pacmanics/lindiskinfo"
@@ -27,7 +27,7 @@ source=(
 )
 
 sha256sums=(
-  '7e4c48ef6ceaedb1d2017826a181b2296d0ec7377fa1924b80f634cf18aa35d8'
+  'bd129894d6ee10c116682b150020a7bbeff01f8f370fbe69782b4a247f6f1b0d'
 )
 
 build() {
