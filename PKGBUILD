@@ -3,9 +3,8 @@
 # Contributor: yidaduizuoye <yidaduizuoye at outlook dot com>
 
 pkgname=v2rayn
-_pkgname=v2rayN
-pkgver=7.24.4
-_commit=6f26706c8083a905645e7c959383edb4836ee0fa
+_name=v2rayN
+pkgver=7.24.8
 pkgrel=1
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
 arch=('aarch64' 'x86_64')
@@ -13,34 +12,71 @@ url="https://github.com/2dust/v2rayN"
 license=('GPL-3.0-only')
 depends=('bash' 'dotnet-runtime-10.0' 'fontconfig' 'glibc' 'libgcc' 'libstdc++' 'xray')
 makedepends=('dotnet-sdk-10.0' 'gendesk' 'git')
-options=('!strip')
 install="${pkgname}.install"
 source=("git+${url}#tag=${pkgver}"
+        "${pkgname}.sh"
         "git+https://github.com/2dust/GlobalHotKeys.git"
-        "${pkgname}-bin-${_commit}.zip::${url}-core-bin/raw/${_commit}/v2rayN-linux-64.zip"
-        "${pkgname}.sh")
-sha256sums=('5e09fdd6b9fdd7931997d45c7f047bd5ab3d1e622031812c5c5f395a693d28d8'
+        "https://github.com/MetaCubeX/meta-rules-dat/releases/latest/download/geoip.metadb"
+        "https://github.com/Loyalsoldier/geoip/releases/latest/download/Country.mmdb"
+        "https://github.com/Loyalsoldier/geoip/releases/latest/download/geoip-only-cn-private.dat"
+        "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat"
+        "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-cn.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-facebook.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-fastly.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-google.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-netflix.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-private.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-telegram.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geoip/geoip-twitter.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-category-ads-all.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-cn.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-geolocation-cn.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-gfw.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-google.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-greatfire.srs"
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-private.srs")
+sha256sums=('ac1f2a4822e853c275dd4995696724ccc314ba8ac75836c897d5a3625478ad68'
+            '0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390'
             'SKIP'
-            'aea5b7a847c8713e10f7ad1c82eef0134d38a3ee0ed09e9bee4ca50bfb04e7ea'
-            '0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
-    cd "${_pkgname}"
+    cd "${_name}"
     git submodule init
     git config submodule.v2rayN/GlobalHotKeys.url "${srcdir}/GlobalHotKeys"
     git -c protocol.file.allow=always submodule update
 
-    cd "${_pkgname}"
+    cd "${_name}"
     gendesk -f -n \
         --pkgname "${pkgname}" \
         --pkgdesc "${pkgdesc}" \
-        --name "${_pkgname}" \
-        --icon "${_pkgname}" \
+        --name "${_name}" \
+        --icon "${_name}" \
         --categories 'Network'
 }
 
 build() {
-    cd "${_pkgname}/${_pkgname}"
+    cd "${_name}/${_name}"
     local publish_args=(
         --configuration Release
         --output build
@@ -51,18 +87,18 @@ build() {
 }
 
 package() {
-    cd "${_pkgname}/${_pkgname}"
-    install -d "${pkgdir}/usr/lib/${_pkgname}"
-    cp -r build/* "${pkgdir}/usr/lib/${_pkgname}"
+    cd "${_name}/${_name}"
+    install -d "${pkgdir}/usr/lib/${_name}/bin/srss"
+    cp -r build/* "${pkgdir}/usr/lib/${_name}"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 v2rayN.Desktop/v2rayN.png -t "${pkgdir}/usr/share/pixmaps"
-    install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # Create symlink
-    install -d "${pkgdir}/usr/lib/${_pkgname}/bin/xray"
-    ln -s /usr/bin/xray -t "${pkgdir}/usr/lib/${_pkgname}/bin/xray"
+    install -d "${pkgdir}/usr/lib/${_name}/bin/xray"
+    ln -s /usr/bin/xray -t "${pkgdir}/usr/lib/${_name}/bin/xray"
 
     # Install geofiles
-    cp -r "${srcdir}/v2rayN-linux-64/bin/"{srss,*.dat,*db} "${pkgdir}/usr/lib/${_pkgname}/bin"
+    cp "${srcdir}/"*.{dat,metadb,mmdb} "${pkgdir}/usr/lib/${_name}/bin"
+    cp "${srcdir}/"*.srs "${pkgdir}/usr/lib/${_name}/bin/srss"
 }
