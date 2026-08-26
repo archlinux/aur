@@ -1,8 +1,8 @@
 # Maintainer: Nichokas <https://github.com/Nichokas>
 # Binary variant — downloads the prebuilt Linux tarball from GitHub Releases.
 pkgname=grokbot-linux-port-bin
-pkgver=0.25.0
-pkgrel=2
+pkgver=0.27.0
+pkgrel=3
 pkgdesc="Grok Bot desktop — wine-less Linux port (prebuilt tarball from GitHub Releases)"
 arch=('x86_64')
 url="https://github.com/Nichokas/grokbot-linux-port"
@@ -13,11 +13,12 @@ depends=(
   'libxkbcommon' 'at-spi2-core' 'cairo' 'pango'
   'expat' 'hicolor-icon-theme'
 )
+makedepends=('python')
 optdepends=('libnotify: desktop notifications')
 provides=('grokbot-linux-port' 'grok-bot' 'grokbot')
 conflicts=('grokbot-linux-port' 'grok-bot')
 source=("Grok_Bot_${pkgver}_linux_x64.tar.gz::https://github.com/Nichokas/grokbot-linux-port/releases/download/v${pkgver}/Grok_Bot_${pkgver}_linux_x64.tar.gz")
-sha256sums=('f4405f7ee46d91cc76e9b09bb3980673c7ddef01fb22b67f0c8007d02327fe85')
+sha256sums=('4302bd55c2350c33c551e58a7bdb7863b6bcfaf127ea79334ec0be242dcdbbf7')
 
 package() {
   local staged
@@ -80,16 +81,67 @@ MimeType=x-scheme-handler/grokbot;
 Terminal=false
 DESKTOP
 
+  # Icon — app-icon-*.png lives inside packed app.asar, not
+  # app.asar.unpacked, so a filesystem hunt of current tarballs finds
+  # nothing. Prefer a loose grok-bot.png (future port.sh plants one at
+  # the tarball root), then extract from asar so 0.24.0 still ships an icon.
   local icon=""
+  local icon_dest="${pkgdir}/usr/share/icons/hicolor/256x256/apps/grok-bot.png"
   for cand in \
-    "${staged}/resources/app.asar.unpacked/dist/renderer/assets/app-icon-"*.png \
     "${staged}/grok-bot.png" \
+    "${staged}/resources/app.asar.unpacked/dist/renderer/assets/app-icon-"*.png \
   ; do [[ -f "${cand}" ]] && { icon="${cand}"; break; } ; done
   if [[ -z "${icon}" ]]; then
     icon="$(find "${staged}" -name 'app-icon*.png' -print -quit 2>/dev/null || true)"
   fi
   if [[ -n "${icon}" && -f "${icon}" ]]; then
-    install -Dm644 "${icon}" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/grok-bot.png"
+    install -Dm644 "${icon}" "${icon_dest}"
+  elif [[ -f "${staged}/resources/app.asar" ]]; then
+    local extracted="${srcdir}/grok-bot.png"
+    if python3 - "${staged}/resources/app.asar" "${extracted}" <<'PY'
+import json, pathlib, struct, sys
+
+def walk(node, prefix=""):
+    for name, meta in node.get("files", {}).items():
+        path = f"{prefix}/{name}" if prefix else name
+        if "files" in meta:
+            yield from walk(meta, path)
+        else:
+            yield path, meta
+
+# Best-effort extraction: callers warn and carry on, so keep failures as
+# one-line errors instead of tracebacks.
+try:
+    asar, dest = sys.argv[1], sys.argv[2]
+    with open(asar, "rb") as fh:
+        if struct.unpack("<I", fh.read(4))[0] != 4:
+            raise SystemExit("bad asar pickle")
+        header_size = struct.unpack("<I", fh.read(4))[0]
+        header_pickle = fh.read(header_size)
+        str_len = struct.unpack_from("<I", header_pickle, 4)[0]
+        header = json.loads(header_pickle[8:8 + str_len])
+        hits = [
+            (p, m) for p, m in walk(header)
+            if p.rsplit("/", 1)[-1].startswith("app-icon") and p.endswith(".png") and "offset" in m
+        ]
+        if not hits:
+            raise SystemExit("no app-icon*.png in asar")
+        path, meta = max(hits, key=lambda item: int(item[1]["size"]))
+        fh.seek(8 + header_size + int(meta["offset"]))
+        blob = fh.read(int(meta["size"]))
+        if len(blob) != int(meta["size"]):
+            raise SystemExit(f"error: {path} is truncated")
+        if blob[:8] != b"\x89PNG\r\n\x1a\n":
+            raise SystemExit("not a PNG")
+        pathlib.Path(dest).write_bytes(blob)
+except Exception as exc:
+    raise SystemExit(f"error: {exc}")
+PY
+    then
+      install -Dm644 "${extracted}" "${icon_dest}"
+    else
+      echo "warn: could not extract grok-bot icon from app.asar" >&2
+    fi
   fi
 
   cat > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<LICENSE
