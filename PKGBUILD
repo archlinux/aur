@@ -8,7 +8,7 @@
 _basename=util-linux
 pkgbase=util-linux-aes
 pkgname=(util-linux-aes util-linux-libs-aes)
-_pkgmajor=2.41
+_pkgmajor=2.42
 _realver=${_pkgmajor}.2
 pkgver=${_realver/-/}
 pkgrel=1
@@ -48,15 +48,15 @@ source=("https://www.kernel.org/pub/linux/utils/util-linux/v${_pkgmajor}/${_base
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('6062a1d89b571a61932e6fc0211f36060c4183568b81ee866cf363bce9f6583e'
+sha256sums=('03a05d3adf9602ef128f2da05b84b3205ce60c351e5737c0370f74000679ce8a'
             'SKIP'
             '6ffedbc0f7878612d2b23589f1ff2ab15633e1df7963a5d9fc750ec5500c7e7a'
-            'a3b107b08d005f24e558248f904327dee968b7e066c9074309613eab7067097d'
+            '49c158013141086912c22e8db72cb4a1a0ccb2204b4a8cb80dc3b9d48ef00cc7'
             'ee917d55042f78b8bb03f5467e5233e3e2ddc2fe01e302bc53b218003fe22275'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
             '8bfbee453618ba44d60ba7fb00eced6c62edebfc592f2e75dede08e769ed8931'
             '48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1'
-            '3f54249ac2db44945d6d12ec728dcd0d69af0735787a8b078eacd2c67e38155b'
+            '5f4d36be03cc980930ba0a0e109d6b5625201f88a4ae7f913d632f5ab5866b87'
             '10b0505351263a099163c0d928132706e501dd0a008dac2835b052167b14abe3'
             '7423aaaa09fee7f47baa83df9ea6fef525ff9aec395c8cbd9fe848ceb2643f37'
             '8ccec10a22523f6b9d55e0d6cbf91905a39881446710aa083e935e8073323376'
@@ -105,13 +105,14 @@ build() {
 
 package_util-linux-aes() {
   conflicts=('rfkill' 'hardlink' "${_basename}")
-  provides=('rfkill' 'hardlink' "${_basename}=2.40")
+  provides=('rfkill' 'hardlink' "${_basename}=2.42")
   replaces=('rfkill' 'hardlink')
   depends=("util-linux-libs-aes"
            'coreutils'
            'file' 'libmagic.so'
            'glibc'
            'libcap-ng'
+           'libgcc' 'libgcc_s.so'
            'libxcrypt' 'libcrypt.so'
            'ncurses' 'libncursesw.so'
            'pam'
@@ -181,7 +182,7 @@ package_util-linux-libs-aes() {
   pkgdesc='util-linux runtime libraries updated with loop-aes'
   depends=('glibc'
            'sqlite')
-  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so' "${_basename}-libs=2.40")
+  provides=('libutil-linux' 'libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so' "${_basename}-libs=2.42")
   conflicts=('libutil-linux' "${_basename}-libs")
   replaces=('libutil-linux')
   optdepends=('python: python bindings to libmount')
