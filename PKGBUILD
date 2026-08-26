@@ -2,8 +2,8 @@
 
 pkgbase=at32-work-bench-bin
 pkgname=at32-work-bench
-pkgver=1.2.04
-pkgrel=1
+pkgver=1.2.05
+pkgrel=3
 # epoch=1
 pkgdesc="AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)"
 arch=('x86_64')
@@ -13,18 +13,19 @@ provides=(${pkgname})
 conflicts=()
 replaces=()
 depends=(
-    bash
-    gcc-libs
+    sh
     glib2
-    glibc
-    zlib)
+    libgcc_s.so
+    libstdc++.so
+    zlib
+)
 makedepends=(
     desktop-file-utils
     libarchive
     sed)
 optdepends=(
     'artery-isp-console: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。'
-    'at32-bootloader-doc-zh: Artery AT MCU Bootloader ISP 协议文档'
+    'at32-bootloader-doc: Artery AT MCU Bootloader ISP 协议文档'
     'at32-ide: AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32
 MCU。'
     'at32-ide-project-generate: AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32 MCU。'
@@ -35,7 +36,7 @@ options=('!strip' '!debug' '!lto')
 install=
 _pkg_file_name=AT32_Work_Bench_Linux-${arch}_V${pkgver}
 source=("${_pkg_file_name}.zip::https://www.arterytek.com/download/AT32%20Workbench/${_pkg_file_name}.zip")
-sha256sums=('700f5faf494758ab927ff94a75f395d63775f62c69d340f703b5646268e7793f')
+sha256sums=('15237b61e1aeda0c367b0f90f361afaa686fb65125243e5d84dcf45d1c4a4d6d')
 noextract=()
 
 package() {
