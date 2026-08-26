@@ -1,7 +1,7 @@
 # Maintainer: chiconcota <git@github.com:chiconcota>
 pkgname=fcitx5-lilypad-git
 _pkgname=fcitx5-lilypad
-pkgver=2.2.0.r49.g104b0a4
+pkgver=2.3.0.r0.g3f2fe1e
 pkgrel=1
 pkgdesc="Modern, hyper-fast Vietnamese Telex/VNI Input Method for Fcitx5 (Wayland/X11)"
 arch=('x86_64' 'aarch64')
