@@ -1,7 +1,7 @@
 pkgbase = cmux-browser-nightly-bin
 	pkgdesc = Chromium browser and agent workspace with integrated terminal surfaces (nightly binary)
 	pkgver = 151.0.7922.64
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cmux.com/linux
 	arch = x86_64
 	license = GPL-3.0-only

@@ -3,7 +3,7 @@
 
 pkgname=cmux-browser-nightly-bin
 pkgver=151.0.7922.64
-pkgrel=1
+pkgrel=2
 pkgdesc='Chromium browser and agent workspace with integrated terminal surfaces (nightly binary)'
 arch=('x86_64')
 url='https://cmux.com/linux'
@@ -60,6 +60,12 @@ package() {
     "$pkgdir/opt/cmux/browser/apparmor.d" \
     "$pkgdir/opt/cmux/browser/cron"
   rm "$pkgdir/opt/cmux/browser/cmux-update-feed-url"
+
+  # Work around https://github.com/manaflow-ai/cmux-v2/issues/11 for this nightly.
+  sed -i 's|"$HERE/chrome" "$@"|"$HERE/chrome" --enable-features=PartitionAllocDanglingPtr:type/cross_task "$@"|' \
+    "$pkgdir/opt/cmux/browser/cmux-browser"
+  grep -qF -- '--enable-features=PartitionAllocDanglingPtr:type/cross_task' \
+    "$pkgdir/opt/cmux/browser/cmux-browser"
 
   ln -s cmux-browser-stable "$pkgdir/usr/bin/cmux-browser"
 
