@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=eloquent
-pkgver=1.4
-pkgrel=3
+pkgver=1.5
+pkgrel=1
 pkgdesc="Your proofreading assistant"
 arch=('any')
 url="https://github.com/sonnyp/Eloquent"
@@ -25,7 +25,7 @@ makedepends=(
 source=("git+https://github.com/sonnyp/Eloquent.git#tag=v$pkgver"
         'git+https://github.com/sonnyp/troll.git'
         'Adjust-paths-and-commands-for-nonflatpak-environment.diff')
-sha256sums=('d59c4b53432693919343bd43ccdc81c4e8da4738e73ab1ee92620ab5fc5e8fcf'
+sha256sums=('2c343d3a01ccb5994e0b934d356d2b23a679695634dbcd99bbf4a4dde7779ef2'
             'SKIP'
             'c1e5ee00bd7b38263d7fc64b319fcb95a2cdfb1f2517b15ed6bb6622934ce373')
 
