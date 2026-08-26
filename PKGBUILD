@@ -2,8 +2,8 @@
 # Contributor: XSilverTH <XSilverTH@proton.me>
 
 pkgname=adb-gui-kit-bin
-pkgver=1.3
-pkgrel=2
+pkgver=2.0.0beta4
+pkgrel=1
 pkgdesc="A simple, modern GUI for ADB and Fastboot"
 arch=("$CARCH")
 url="https://github.com/Drenzzz/adb-gui-kit"
@@ -13,7 +13,7 @@ provides=('adb-gui-kit')
 conflicts=('adb-gui-kit')
 options=('!strip')
 
-source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/Drenzzz/adb-gui-kit/releases/download/v${pkgver}/ADBKit-x86_64.AppImage"
+source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/Drenzzz/adb-gui-kit/releases/download/v2.0.0-beta4/ADBKit-x86_64.AppImage"
                "adb-gui-kit.desktop")
 
 sha256sums_x86_64=('13971ecca89771738b8c256220ee1ba2af3a911d685ba3e6cb4da265027130d1'
