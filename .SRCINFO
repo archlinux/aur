@@ -1,6 +1,6 @@
 pkgbase = vibra-git
 	pkgdesc = A library and CLI tool for music recognition using the unofficial Shazam API
-	pkgver = r312.5ff95ed
+	pkgver = 0.1.0.r4.g7f3cd2d
 	pkgrel = 1
 	url = https://github.com/BayernMuller/vibra
 	arch = x86_64
