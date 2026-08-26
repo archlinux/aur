@@ -16,9 +16,7 @@ depends=('libosmocore-git'
          'libgtp.so' # from osmo-ggsn
          'talloc'
          'c-ares')
-makedepends=('git'
-             'libosmo-netif-git'
-             'libosmo-abis-git')
+makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
 backup=('etc/osmocom/osmo-sgsn.cfg'
