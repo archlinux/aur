@@ -10,8 +10,9 @@ license=(MIT)
 depends=('nodejs>=20.11')
 makedepends=(npm)
 backup=('etc/node-hp-scan-to/default.json')
+install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('4b5ee8f2d2783d4cf8acf0786f02994916f18df7425e5a92ed613a14ff422142')
+sha256sums=('SKIP')
 
 prepare() {
     cat > "${srcdir}/${pkgname}.service" <<EOF

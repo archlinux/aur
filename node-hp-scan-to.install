@@ -1,0 +1,11 @@
+post_install() {
+    echo "node-hp-scan-to installed."
+    echo ""
+    echo "  system-wide service (scans in /var/lib/node-hp-scan-to):"
+    echo "    sudo systemctl enable --now node-hp-scan-to"
+    echo ""
+    echo "  per-user service (scans wherever you want):"
+    echo "    systemctl --user enable --now node-hp-scan-to"
+    echo ""
+    echo "  configuration: /etc/node-hp-scan-to/default.json"
+}
