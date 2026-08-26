@@ -1,0 +1,26 @@
+pkgbase = mluevpn
+	pkgdesc = GTK4 VPN manager for OpenConnect and OpenVPN 3 with encrypted credential storage
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/phanithlim/mluevpn
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-pexpect
+	depends = python-cryptography
+	depends = python-keyring
+	depends = openconnect
+	depends = sudo
+	optdepends = openvpn3: connect to OpenVPN .ovpn profiles
+	optdepends = gnome-keyring: store the encryption key in the login keyring instead of a file
+	source = mluevpn-0.1.1.tar.gz::https://github.com/phanithlim/mluevpn/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = e1b96bea4dc6f9379878d58f5ed2e20e30926b6f0c56ec539f2f095c3b4555de
+
+pkgname = mluevpn
