@@ -4,9 +4,9 @@
 # Contributor: loredan13
 # Contributor: lf <packages at lfcode dot ca>
 
-pkgname=kalico-venv-git
+pkgname=kalico-venv
 _pkgname=kalico
-pkgver=r5917.a7e74c5c1
+pkgver=2026.08.00
 pkgrel=1
 pkgdesc="Klipper, but Limitless"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -27,37 +27,30 @@ optdepends_x86_64=(
   'arm-none-eabi-gcc: for ARM MCU firmware compilation'
   'arm-none-eabi-newlib: for ARM MCU firmware compilation'
 )
-makedepends=('git')
 provides=('kalico')
-conflicts=('kalico' 'kalico-git')
+conflicts=('kalico' 'kalico-git' 'kalico-venv-git')
 source=(
-  "$_pkgname::git+https://github.com/KalicoCrew/kalico"
+  "https://github.com/KalicoCrew/kalico/archive/refs/tags/v$pkgver.tar.gz"
   'kalico.service'
   'sysusers.d-kalico.conf'
   'tmpfiles.d-kalico.conf'
 )
 md5sums=(
-  'SKIP'
+  'b33007a337d69f0aaa5e82f29ccf8620'
   'eb9db23ddb047813f5c92b7b64fd242c'
   '18074e35a16bf065d12ca10f7b0d5f3c'
   '7a00293052c04fba501441380c6bb817'
 )
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   python -m compileall klippy
   python klippy/chelper/__init__.py
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_pkgname-$pkgver"
 
   mkdir -p "$pkgdir/usr/share/$_pkgname"
   cp -r Makefile docs config klippy scripts lib src "$pkgdir/usr/share/$_pkgname"
