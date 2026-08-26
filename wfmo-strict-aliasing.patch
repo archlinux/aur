@@ -1,0 +1,16 @@
+diff --git a/relacy/stdlib/windows.hpp b/relacy/stdlib/windows.hpp
+index 14d861c..1fe6719 100644
+--- a/relacy/stdlib/windows.hpp
++++ b/relacy/stdlib/windows.hpp
+@@ -77,7 +77,10 @@ inline unsigned long rl_WaitForMultipleObjectsEx(unsigned long count, rl_HANDLE*
+ 
+     bool try_wait = (timeout == 0);
+     bool is_timed = (timeout != rl_INFINITE);
+-    win_waitable_object** obj = reinterpret_cast<win_waitable_object**>(objects);
++    RL_VERIFY(count <= wfmo_max_objects);
++    win_waitable_object* obj[wfmo_max_objects];
++    for (size_t i = 0; i != count; ++i)
++        obj[i] = static_cast<win_waitable_object*>(objects[i]);
+     size_t signaled = 0;
+     sema_wakeup_reason reason = wait_for_multiple_objects(signaled, count, obj, !!wait_all, try_wait, is_timed, info);
+     if (reason == sema_wakeup_reason_success)

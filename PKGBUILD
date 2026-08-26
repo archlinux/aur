@@ -2,7 +2,7 @@
 
 pkgname='relacy-git'
 pkgver=r47.c063779
-pkgrel=1
+pkgrel=2
 pkgdesc='Meticulous synchronization algorithm verifier for relaxed memory models'
 arch=('any')
 url='https://github.com/dvyukov/relacy'
@@ -15,11 +15,11 @@ provides=("relacy=${pkgver}")
 conflicts=('relacy')
 source=(
 	"git+${url}.git"
-	'gcc16-ipa-cp-clone.patch'
+	'wfmo-strict-aliasing.patch'
 )
 b2sums=(
 	'SKIP'
-	'58ff0525b84ff218d0b82748d18937f0375f47748b7141c710f6f96d49a86e04be3baea30da8c7bd553dee6d1b9853d963d0537acc59f61d355e076c8f6eb427'
+	'f4c29210ac2dc91365f2228a91371a3dbd51e22aefb4bdc5cf0210dfa509f3c31a8b1ba3d31ca1f20bd40dab19df0317a85c80fbc3773ecde44321989f440523'
 )
 
 pkgver() {
@@ -29,7 +29,7 @@ pkgver() {
 
 prepare() {
 	cd -- "${srcdir}/relacy" || return 1
-	patch -Np1 -i "${srcdir}/gcc16-ipa-cp-clone.patch"
+	patch -Np1 -i "${srcdir}/wfmo-strict-aliasing.patch"
 }
 
 build() {
