@@ -21,7 +21,7 @@ depends=(
 
   # bundled qemu-system-arm
   'gnutls' 'libaio' 'libepoxy' 'libjpeg-turbo' 'libpng' 'libsasl' 'numactl'
-  'pixman' 'sdl2' 'vte3' 'zlib'
+  'pixman' 'sdl2-compat' 'vte3' 'zlib'
 )
 optdepends=('libappindicator-gtk3: tray icon support')
 
