@@ -1,7 +1,7 @@
 # Maintainer: Limux contributors
 # Contributor: Anton Barchukov <anton@barchukov.com>
 pkgname=limux-bin
-pkgver=0.1.24
+pkgver=0.1.25
 pkgrel=1
 pkgdesc="GPU-accelerated terminal workspace manager for Linux, powered by Ghostty's rendering engine (cmux port)"
 arch=('x86_64')
@@ -12,14 +12,14 @@ provides=('limux')
 conflicts=('limux' 'limux-debug')
 options=(!debug !strip)
 source=("limux-${pkgver}.tar.gz::https://github.com/am-will/limux/releases/download/v${pkgver}/limux-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('ba9c7959634fe5198977195925a7e09695c44402ff499ab4186789d8188288a1')
+sha256sums=('6c1e8a096e66c370ce1029d7985218eceda33ef5bbb0661914b503ba2e93cced')
 
 package() {
     cd "limux-${pkgver}-linux-x86_64"
 
     install -Dm755 limux "${pkgdir}/usr/bin/limux"
     install -Dm755 libexec/limux/limux-host "${pkgdir}/usr/libexec/limux/limux-host"
-    install -Dm644 lib/libghostty.so "${pkgdir}/usr/lib/limux/libghostty.so"
+    install -Dm644 lib/libghostty-internal.so "${pkgdir}/usr/lib/limux/libghostty-internal.so"
 
     install -Dm644 /dev/stdin "${pkgdir}/etc/ld.so.conf.d/limux.conf" <<< "/usr/lib/limux"
 
