@@ -1,6 +1,6 @@
 # Maintainer: bibekbhusal0 <bibekbhusal04@gmail.com>
 pkgname=focusd
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="A beautiful terminal pomodoro timer with daemon, waybar integration and interactive TUI"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('sqlite')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bibekbhusal0/focusd/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1de13cc9e1984fbec71192b4fd0e63951b7f5fae5f8975b549e8f962a24eb87')
+sha256sums=('0f8ffdc77afcf74c0e41f02213563f1d55dc9bb67135dd071d10479e24e9d5b4')
 
 prepare() {
     cd "$pkgname-$pkgver"
