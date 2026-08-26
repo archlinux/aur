@@ -1,0 +1,10 @@
+# makepkg artifacts
+/src/
+/pkg/
+/*.pkg.tar*
+/*.pkg.tar.zst
+/*.tar.gz
+*.log
+
+# IDE
+.idea/
