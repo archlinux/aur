@@ -16,6 +16,5 @@ sync_profile() {
     home="$(getent passwd "$user" | cut -d: -f6)"
     [ -n "$home" ] && [ -d "$home" ] || return 0
     timeout 300 runuser -u "$user" -- \
-        /usr/bin/dsh-tui update \
-        >/dev/null 2>&1 || true
+        /usr/bin/dsh-tui update || true
 }
