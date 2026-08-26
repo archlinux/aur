@@ -1,6 +1,6 @@
 pkgbase = umadev-bin
 	pkgdesc = A coding agent that works like a real dev team, commanding the Claude Code / Codex / OpenCode you already use.
-	pkgver = 1.0.73
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/umacloud/umadev
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = umadev-bin
 	license = MIT
 	provides = umadev
 	conflicts = umadev
-	source_x86_64 = umadev-1.0.73-x86_64-unknown-linux-gnu::https://github.com/umacloud/umadev/releases/download/v1.0.73/umadev-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = ad111858f73ef39e955ea4a6cdc83d92b53d5ca0248a94095ff0448c7b147e29
-	source_aarch64 = umadev-1.0.73-aarch64-unknown-linux-gnu::https://github.com/umacloud/umadev/releases/download/v1.0.73/umadev-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = fff3a86cb99a168e23466f1282a9200e17b9d57845bcd36e079706d9e39eec96
+	source_x86_64 = umadev-1.1.0-x86_64-unknown-linux-gnu::https://github.com/umacloud/umadev/releases/download/v1.1.0/umadev-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 98e15bc1439f5d43ab9270e82a0b2d4cc5b398a428fab33715ac1023aa233beb
+	source_aarch64 = umadev-1.1.0-aarch64-unknown-linux-gnu::https://github.com/umacloud/umadev/releases/download/v1.1.0/umadev-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = d2538b69064c62f89dd7a9ee444c915c73949a8ffb648766d2c85c54d0b659d2
 
 pkgname = umadev-bin

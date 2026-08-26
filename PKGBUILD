@@ -1,10 +1,6 @@
-# Maintainer: rendogust <rendogust@gmail.com>
-# https://github.com/yookibooki/aur-packages/issues
-# Telegram: @javohir81
-
 pkgname=umadev-bin
-_realver=1.0.73
-pkgver=1.0.73
+_realver="1.1.0"
+pkgver="1.1.0"
 pkgrel=1
 pkgdesc='A coding agent that works like a real dev team, commanding the Claude Code / Codex / OpenCode you already use.'
 arch=('x86_64' 'aarch64')
@@ -21,8 +17,8 @@ _triple_aarch64="aarch64-unknown-linux-gnu"
 source_x86_64=("umadev-${_realver}-x86_64-unknown-linux-gnu::https://github.com/umacloud/umadev/releases/download/v${_realver}/umadev-x86_64-unknown-linux-gnu")
 source_aarch64=("umadev-${_realver}-aarch64-unknown-linux-gnu::https://github.com/umacloud/umadev/releases/download/v${_realver}/umadev-aarch64-unknown-linux-gnu")
 
-sha256sums_x86_64=('ad111858f73ef39e955ea4a6cdc83d92b53d5ca0248a94095ff0448c7b147e29')
-sha256sums_aarch64=('fff3a86cb99a168e23466f1282a9200e17b9d57845bcd36e079706d9e39eec96')
+sha256sums_x86_64=('98e15bc1439f5d43ab9270e82a0b2d4cc5b398a428fab33715ac1023aa233beb')
+sha256sums_aarch64=('d2538b69064c62f89dd7a9ee444c915c73949a8ffb648766d2c85c54d0b659d2')
 
 package() {
   local _triple
