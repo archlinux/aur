@@ -1,6 +1,6 @@
 # Maintainer: Shaun Lastra <shaun@lastra.us>
 pkgname=tabctl
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Command-line browser tab controller with rofi integration for multiple window managers"
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
 )
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/slastra/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('cd28ea797e2703e5dc4a636633d2a7e307dcae91d8ff6686562099249ff6a561')
+sha256sums=('8ef902f8b3e6e65737ad71df3067317d38768f7180be4d82900ac2555ee471bc')
 install=tabctl.install
 
 build() {
