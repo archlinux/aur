@@ -1,0 +1,18 @@
+pkgbase = lindiskinfo
+	pkgdesc = Qt-based S.M.A.R.T. and NVMe health monitor for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pacmanics/lindiskinfo
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = polkit
+	depends = qt6-base
+	depends = smartmontools
+	source = lindiskinfo-1.0.0.tar.gz::https://github.com/pacmanics/lindiskinfo/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 7e4c48ef6ceaedb1d2017826a181b2296d0ec7377fa1924b80f634cf18aa35d8
+
+pkgname = lindiskinfo
