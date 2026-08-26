@@ -8,12 +8,12 @@ pkgbase = quickfix-git
 	checkdepends = ruby
 	makedepends = boost
 	makedepends = cmake
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = swig
 	depends = python
-	depends = mysql
+	depends = mariadb-libs
 	depends = postgresql-libs
-	depends = tbb
 	optdepends = ruby
 	provides = quickfix=1.16.0.r28.g386ce46e
 	conflicts = quickfix
