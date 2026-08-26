@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
@@ -32,7 +32,6 @@ license=(
   LicenseRef-LLVM-exception
   LicenseRef-TOST-1.0
 )
-makedepends=('patchelf')
 depends=('glibc' 'bash' 'hicolor-icon-theme'
 'libx11'
 'libxrender'
@@ -71,7 +70,7 @@ provides=('blender')
 conflicts=('blender')
 source=("https://mirrors.ocf.berkeley.edu/blender/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz"
 	"x-blender.xml")
-sha256sums=('96f6c181a30f4950607839dc84d42a354b250d8a0231b098b59b7bc69c351c48'
+sha256sums=('a31f524fa99a527d3d52b7f5aaa68c34e1a19d5a1c9473f79c5cc610fd5b10e9'
             '230fc11e49d647215f4735117761d887756823ee1c8fab08987218fd037de75c')
 validpgpkeys=()
 
@@ -100,11 +99,4 @@ package() {
 	ln -s "/usr/lib/$pkgname/blender-thumbnailer" "$pkgdir/usr/bin/blender-thumbnailer"
 	sed -i 's/\$(dirname "\$(readlink -f "\$0")")/\/usr\/lib\/blender-bin/g' "$pkgdir/usr/bin/blender"
 	sed -i 's/BASE_DIR=\$(dirname "\$0")/BASE_DIR=\/usr\/lib\/blender-bin/g' "$pkgdir/usr/bin/blender-system-info"
-	# Remove insecure runpaths
-	pushd "${pkgdir}/usr/lib/blender-bin/5.2/scripts/addons_core/io_scene_gltf2"
-	for _file in *.so
-	do
-		patchelf --set-rpath '$ORIGIN/lib' "$_file"
-	done
-
 }
