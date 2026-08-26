@@ -2,9 +2,9 @@
 # Contributor: soloturn <soloturn@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-gaming
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
-pkgdesc="Compositor for the COSMIC desktop environment with gaming patches and support fifo-v1, VRR Target Rate feature"
+pkgdesc="Compositor for the COSMIC desktop environment with gaming patches and support fifo-v1, fullscreen tearing, and VRR Target Rate feature"
 arch=('x86_64' 'aarch64')
 url="https://github.com/skygrango/cosmic-comp"
 license=('GPL-3.0-only')
@@ -52,8 +52,8 @@ conflicts=(
 )
 source=(
 	'git+https://github.com/skygrango/cosmic-comp.git#branch=vrr_target_rate_v2'
-	'git+https://github.com/skygrango/cosmic-settings.git#branch=vrr_target_rate_v2'
-	'git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v2'
+	'git+https://github.com/skygrango/cosmic-settings.git#branch=vrr_target_rate_v3'
+	'git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v3'
 )
 sha256sums=(
 	'SKIP'
