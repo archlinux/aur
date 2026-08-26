@@ -1,9 +1,11 @@
+# Maintainer: Amiad Bareli <amiad@hatul.info>
+
 pkgname=trustsight
-pkgver=0.13.1
+pkgver=0.14.0
 pkgrel=1
 pkgdesc='A CLI tool to vet AUR package updates before install'
 arch=('any')
-url='https://github.com'
+url='https://github.com/emiliano-go/trustsight'
 license=('MIT')
 depends=(
   'python'
@@ -24,7 +26,7 @@ optdepends=(
   'pyalpm: native version comparison (faster discovery)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6c19cea4b1a37eaed1d50deb4ee8551535dac084d6352f19242ce23593f7bbbe')
+sha256sums=('88c87a165664cc45dee893d059257ede464845c541a0834b0a9b8f3556d3009d')
 
 build() {
   cd "$pkgname-$pkgver"
