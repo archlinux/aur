@@ -2,7 +2,7 @@
 
 pkgname=qlcplus
 pkgver=5.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Q Light Controller Plus - The open DMX lighting desk software for controlling professional lighting fixtures."
 arch=('x86_64' 'armv7h')
 url="http://qlcplus.org/"
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-QLC-_${pkgver}"
-  export CXXFLAGS+="-Wno-error=sfinae-incomplete"
+  export CXXFLAGS+=" -Wno-error=sfinae-incomplete"
   export CMAKE_BUILD_TYPE="Release"
 
   cmake -B build \
