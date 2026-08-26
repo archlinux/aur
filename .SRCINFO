@@ -1,6 +1,6 @@
 pkgbase = waylyrics-layer-shell-git
 	pkgdesc = the furry way to show desktop lyrics (git version, with layer-shell feature enabled)
-	pkgver = 0.4.0.r14.g6c630a09
+	pkgver = 0.4.0.r39.g3c91d176
 	pkgrel = 1
 	url = https://github.com/waylyrics/waylyrics
 	arch = x86_64
