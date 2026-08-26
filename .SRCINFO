@@ -1,6 +1,6 @@
 pkgbase = veiland
 	pkgdesc = Wayland screen locker with process-isolated GPU plugins
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/sylflo/veiland
 	arch = x86_64
@@ -15,8 +15,16 @@ pkgbase = veiland
 	depends = libdrm
 	depends = wayland
 	depends = libxkbcommon
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = python-pillow
+	depends = python-jeepney
+	depends = librsvg
+	depends = pango
+	depends = gdk-pixbuf2
 	backup = etc/pam.d/veiland
-	source = veiland-0.1.0.tar.gz::https://github.com/sylflo/veiland/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = acbcd1d9b09b0fc4bd771088f8a80fc054053d2b3dcdc13ac77e43e7fc14d980
+	source = veiland-0.2.0.tar.gz::https://github.com/sylflo/veiland/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 35ed8586c4e05161a57a120765ff8b099a660755eb88e5e68a513440075de472
 
 pkgname = veiland
