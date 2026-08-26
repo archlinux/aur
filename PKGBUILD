@@ -1,6 +1,6 @@
 # Maintainer: bunny <bunny@carrotwm.org>
 pkgname=carrot-git
-pkgver=r352.d7637da
+pkgver=r353.b4c9bf8
 pkgrel=1
 pkgdesc="A pure Rust tiling Wayland compositor with zero linked C (latest commit)"
 arch=('x86_64')
