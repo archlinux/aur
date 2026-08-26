@@ -2,7 +2,7 @@
 
 pkgname=codewhale
 pkgver=0.9.11
-pkgrel=1
+pkgrel=2
 pkgdesc="CodeWhale (formerly DeepSeek-TUI) - DeepSeek-first agentic terminal for open-source coding models"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Hmbown/CodeWhale"
@@ -13,7 +13,7 @@ provides=('codewhale-tui' 'deepseek' 'deepseek-tui')
 conflicts=('codewhale-bin' 'codewhale-tui' 'deepseek' 'deepseek-tui' 'deepseek-tui-bin')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0f427c93e2168c4a891049011ed2abc50e4ed917012129e3f1499b5bb0451f4a')
+sha256sums=('ef934985fbb728c11aeb4b29f76f4249738d52fb2976ec6397fca788ee5d95f9')
 
 prepare() {
     cd "CodeWhale-${pkgver}"
