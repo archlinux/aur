@@ -1,0 +1,92 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -56,76 +56,20 @@
+ 
+ # ── External dependencies ──────────────────────────────────────────────
+ 
+-include(FetchContent)
++# Arch Linux packaging: both dependencies come from the distribution
++# instead of being fetched and built during configure.
+ 
+-# nlohmann::json
+-FetchContent_Declare(
+-    nlohmann_json
+-    GIT_REPOSITORY https://github.com/nlohmann/json.git
+-    GIT_TAG v3.11.3
+-    GIT_SHALLOW TRUE
+-)
+-FetchContent_MakeAvailable(nlohmann_json)
+-
+-# LuaJIT
+-FetchContent_Declare(
+-    LuaJIT
+-    GIT_REPOSITORY https://github.com/LuaJIT/LuaJIT.git
+-    GIT_TAG 8271c643c21d1b2f344e339f559f2de6f3663191
+-)
+-FetchContent_MakeAvailable(LuaJIT)
+-FetchContent_GetProperties(LuaJIT)
+-
+-include(ExternalProject)
+-
+-if(WIN32)
+-    if(MINGW)
+-        ExternalProject_Add(
+-            luajit_build
+-            SOURCE_DIR ${luajit_SOURCE_DIR}
+-            CONFIGURE_COMMAND ""
+-            BUILD_COMMAND ${CMAKE_COMMAND} -E chdir ${luajit_SOURCE_DIR} mingw32-make BUILDMODE=static "TARGET_CFLAGS=-m64"
+-            INSTALL_COMMAND ""
+-            BUILD_IN_SOURCE 1
+-        )
+-    else()
+-        ExternalProject_Add(
+-            luajit_build
+-            SOURCE_DIR ${luajit_SOURCE_DIR}
+-            CONFIGURE_COMMAND ""
+-            BUILD_COMMAND ${CMAKE_COMMAND} -E chdir ${luajit_SOURCE_DIR}/src msvcbuild.bat static
+-            INSTALL_COMMAND ""
+-            BUILD_IN_SOURCE 1
+-        )
+-    endif()
+-else()
+-    ExternalProject_Add(
+-        luajit_build
+-        SOURCE_DIR ${luajit_SOURCE_DIR}
+-        CONFIGURE_COMMAND ""
+-        BUILD_COMMAND ${CMAKE_COMMAND} -E chdir ${luajit_SOURCE_DIR} make BUILDMODE=static
+-        INSTALL_COMMAND ""
+-        BUILD_IN_SOURCE 1
+-    )
+-endif()
+-
+-# LuaJIT static lib path
+-if(WIN32)
+-    if(MINGW)
+-        set(LUAJIT_STATIC_LIB "${luajit_SOURCE_DIR}/src/libluajit.a")
+-    else()
+-        set(LUAJIT_STATIC_LIB "${luajit_SOURCE_DIR}/src/lua51.lib")
+-    endif()
+-else()
+-    set(LUAJIT_STATIC_LIB "${luajit_SOURCE_DIR}/src/libluajit.a")
+-endif()
+-
+-add_library(luajit STATIC IMPORTED)
+-set_target_properties(luajit PROPERTIES
+-    IMPORTED_LOCATION ${LUAJIT_STATIC_LIB}
+-    INTERFACE_INCLUDE_DIRECTORIES ${luajit_SOURCE_DIR}/src
+-    INTERFACE_LINK_OPTIONS $<$<CXX_COMPILER_ID:MSVC>:/NODEFAULTLIB:LIBCMT>
+-)
++find_package(nlohmann_json 3.11.3 REQUIRED)
++
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(LUAJIT REQUIRED IMPORTED_TARGET luajit)
++
++add_library(luajit INTERFACE)
++target_link_libraries(luajit INTERFACE PkgConfig::LUAJIT)
++
++# libs/v6core/CMakeLists.txt does add_dependencies(v6core luajit_build);
++# keep the target name valid as a no-op.
++add_custom_target(luajit_build)
+ 
+ # ── Sub-projects ───────────────────────────────────────────────────────
+ 

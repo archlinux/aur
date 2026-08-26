@@ -1,0 +1,24 @@
+pkgbase = v6emul-git
+	pkgdesc = Command-line emulator for the Vector-06C Soviet PC. Git version
+	pkgver = 1.0.0.r41.g664bca4
+	pkgrel = 1
+	url = https://github.com/parallelno/v6emul
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = nlohmann-json
+	depends = glibc
+	depends = gcc-libs
+	depends = luajit
+	provides = v6emul
+	conflicts = v6emul
+	options = !debug
+	source = v6emul-git::git+https://github.com/parallelno/v6emul.git
+	source = system-deps.patch
+	source = build-fixes.patch
+	sha256sums = SKIP
+	sha256sums = b0e0b6d831af83177309b55a40bcb0fd970ecea8fa0641f81f122e74d2a2e9ec
+	sha256sums = 3828e3069ff2bfa6b07ce9fb798a68ffd365b31d3024d2ff0148a89571602dd6
+
+pkgname = v6emul-git
