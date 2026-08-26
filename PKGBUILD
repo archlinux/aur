@@ -1,7 +1,7 @@
 # Maintainer: Rain Xelelo <rxelelo@outlook.com>
 
 pkgname=rclient
-pkgver=3.0.1
+pkgver=4.0.1
 pkgrel=0
 pkgdesc="Yet another fork of TaterClient for DDNet"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 	'discord-game-sdk: Enable rich presence in Discord desktop client.')
 install="rclient.install"
 source=("https://github.com/RushieClient/RushieClient-ddnet/releases/download/V$pkgver/RClient-ubuntu.tar.xz" "rclient.png")
-sha256sums=('17d6dd80e79cfd5b32978eeba4264a26a4b59edcfb2479375bfc351e3beeaaa6'
+sha256sums=('5402751d65faf33a405bf8ef48c938216dd14f290e7e1bccdcd52455fea11328'
             '99b0c10aafe311f6a26beb639dae27dbdd0d44c6394e7af224f865e397cd64de')
 
 prepare() {
