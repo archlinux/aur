@@ -5,11 +5,11 @@ pkgdesc="A status notifier GObject library which can be used to create system tr
 arch=('any')
 url="https://github.com/Fabric-Development/gray"
 license=('AGPL-3.0')
-depends=('glibc' 'gcc')
-makedepends=('meson' 'ninja' 'git' 'vala')  # Only make dependencies
-maintainer="Rubin Bhandari <roobin.bhandari@gmail.com>" 
+depends=('glibc' 'gcc' 'gobject-introspection')
+makedepends=('meson' 'ninja' 'git' 'vala') # Only make dependencies
+maintainer="Rubin Bhandari <roobin.bhandari@gmail.com>"
 source=('git+https://github.com/Fabric-Development/gray') # Git repository URL
-sha256sums=('SKIP')  # Skip checksum verification for git sources
+sha256sums=('SKIP')                                       # Skip checksum verification for git sources
 
 # Build the package using Meson
 build() {

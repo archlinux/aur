@@ -11,6 +11,7 @@ pkgbase = gray-git
 	makedepends = vala
 	depends = glibc
 	depends = gcc
+	depends = gobject-introspection
 	source = git+https://github.com/Fabric-Development/gray
 	sha256sums = SKIP
 
