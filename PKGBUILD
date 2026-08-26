@@ -1,7 +1,7 @@
 # Maintainer: Squalou <squalou.jenkins [at] gmail [dot] com>
 pkgname=google-chat-linux-bin
 pkgver=5.39.27
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial electron-based desktop client for Google Chat, electron included"
 arch=('x86_64' 'i686')
 url="https://github.com/squalou/google-chat-linux.git"
@@ -16,7 +16,7 @@ appname="${pkgname%-bin}"
 
 source=("https://github.com/squalou/${appname}/releases/download/${pkgver}-${pkgrel}/${appname}_${pkgver}-${pkgrel}_amd64.deb")
 
-sha512sums=('a663facb2041ce3109354b7e277feaddccc4c4064a70f0ec5bcaa89edf031c517df330f5d33500be2920713f1f0b9bf2738f8f15e7d11ce36d68c64b03063566')
+sha512sums=('a34adc40eaad75f12cd8ec5e822fb862e355322a61f4b3f128b3935b459b12609bf1e61dfcce548807d3fdb1edd678acccc742de0159a91c8524c2bc4257e75d')
 
 build() {
   ar x "${appname}_${pkgver}-${pkgrel}_amd64.deb"
