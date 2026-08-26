@@ -172,6 +172,16 @@ package() {
     _install_component packages/cli cli diffstalker
     _install_component packages/daemon daemon diffstalkerd
 
+    # The symbol worker, beside the daemon bundle. NOT optional and NOT part
+    # of _install_component: only the daemon has one, and the pool resolves it
+    # as a sibling of its own module (new URL('./symbolWorker.js', ...)), which
+    # is exactly the layout npm publishes. Omit it and outlines do not fail
+    # loudly - every extraction returns `unavailable/error`, so an install with
+    # diffstalker-grammars present still shows no symbols and looks like a
+    # broken grammars package rather than a missing file here.
+    install -Dm644 packages/daemon/dist/symbolWorker.js \
+        "$pkgdir/usr/lib/diffstalker/daemon/dist/symbolWorker.js"
+
     # Web UI assets: the daemon serves the SPA at GET / from web/ next to its
     # own module, which build:prod placed at dist/web.
     cp -r packages/daemon/dist/web "$pkgdir/usr/lib/diffstalker/daemon/dist/"
