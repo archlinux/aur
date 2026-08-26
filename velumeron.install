@@ -1,20 +1,40 @@
+_handoff() {
+    # Installed from a terminal inside a running Hyprland? Then nothing about this needs a
+    # re-login: the script bootstraps, reloads the compositor onto the velumeron config and
+    # starts the shell with the wizard in it, detached, as the real user. It prints a line
+    # when it does something and stays silent (exit 0) in every other situation — chroot,
+    # container, SSH, no session, another compositor.
+    local out
+    out="$(bash /usr/share/velumeron/assets/scripts/post-install-handoff.sh 2>/dev/null)" || true
+    [[ -n "$out" ]] && { echo "$out"; return 0; }
+    return 1
+}
+
 post_install() {
     echo ""
     echo "  ╔══════════════════════════════════════════════════════════╗"
     echo "  ║                  Velumeron installed!                    ║"
     echo "  ╚══════════════════════════════════════════════════════════╝"
     echo ""
+    if _handoff; then
+        echo ""
+        echo "  The setup wizard opens on screen in a moment — workspaces,"
+        echo "  wallpaper, apps and avatar. Everything is changeable later"
+        echo "  under Settings (Super+X)."
+        echo ""
+        return
+    fi
     echo "  Files are in: /usr/share/velumeron/"
     echo ""
-    echo "  Run the bootstrap once to prepare your desktop:"
+    echo "  Velumeron is a shell for the Hyprland you already run, so there is"
+    echo "  no extra entry at your login screen. Run the bootstrap once:"
     echo ""
     echo "      velumeron-setup"
     echo ""
-    echo "  It seeds ~/.config/velumeron/, wires the Hyprland entry point and"
-    echo "  auto-configures your monitors. On the first Hyprland login the"
-    echo "  setup wizard opens on screen — workspaces, wallpaper, apps and"
-    echo "  avatar are configured there (everything changeable later under"
-    echo "  Settings, Super+X)."
+    echo "  It seeds ~/.config/velumeron/, writes ~/.config/hypr/hyprland.lua"
+    echo "  and configures your monitors. Start Hyprland as usual afterwards —"
+    echo "  the setup wizard opens on screen for the rest (changeable later"
+    echo "  under Settings, Super+X)."
     echo ""
 }
 
