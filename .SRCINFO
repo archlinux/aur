@@ -1,11 +1,11 @@
 pkgbase = nodejs-lts-hydrogen
 	pkgdesc = Evented I/O for V8 javascript
-	pkgver = 18.12.0
+	pkgver = 24.19.0
 	pkgrel = 2
 	url = https://nodejs.org/
 	arch = x86_64
 	license = MIT
-	makedepends = python310
+	makedepends = python3
 	makedepends = procps-ng
 	depends = brotli
 	depends = openssl
@@ -15,14 +15,10 @@ pkgbase = nodejs-lts-hydrogen
 	depends = libnghttp2
 	depends = c-ares
 	optdepends = npm: nodejs package manager
-	provides = nodejs=18.12.0
+	provides = nodejs=24.19.0
 	conflicts = nodejs
 	options = !lto
-	source = https://github.com/nodejs/node/archive/v18.12.0/nodejs-18.12.0.tar.gz
-	source = fix-build-with-gcc13.patch::https://chromium-review.googlesource.com/changes/v8%2Fv8~3934140/revisions/5/patch?download&raw
-	source = missing-header.patch
-	sha512sums = 1a5f076908ff0fe4e877d4d6085ea7dde38517fe5eba4492c37de7040afd92abc3d55974f203abbb93a49194ce815e2f22c4e9503a99ef3ebcb1bf269c4f3516
-	sha512sums = 06b8ff03f27e683a1f8d0f3f89ac2597091553c41150cff5cdf3ac022d5756f4b7acea85a9daa2ca1ca3316cb1dbcb51a8473202ffcc73b716451d9121843d6b
-	sha512sums = d1ca8c27f5e71b22207bee11247cebf7f0ce507dd4711027b24dc688f2ea21f3e4087483bb7d78cc02725ed0b543dd7c56d22f3444d613557304db4fc1934b96
+	source = https://github.com/nodejs/node/archive/v24.19.0/nodejs-24.19.0.tar.gz
+	sha512sums = f79ca23c131f606290c09c9126a06497e84c6fa753ba5d1708168674ed7453a6653d960ebaf2d838332d08cec3960b6efff3c15160e58d975b52df752375fed6
 
 pkgname = nodejs-lts-hydrogen
