@@ -2,7 +2,7 @@
 
 _pkgname=rawtoaces
 pkgname=$_pkgname-git
-pkgver=2.1.0.r47.ab25a36
+pkgver=2.1.0.r45.69abcd6
 pkgrel=1
 pkgdesc='RAW to ACES utility for converting digital camera RAW files to ACES container files'
 arch=(x86_64)
