@@ -1,0 +1,201 @@
+From 1e0341659f81739d23c41eb7f5e6f25fdd335fcf Mon Sep 17 00:00:00 2001
+From: NewYearPrism <newyearprism@users.noreply.github.com>
+Date: Thu, 27 Aug 2026 02:18:34 +0800
+Subject: [PATCH] option: add option to retry on http 400, 403, 406, or unknown
+
+Port of myfreeer's aria2-pro patch to the curl based download engine:
+
+* Add --retry-on-400, --retry-on-403, --retry-on-406 and
+  --retry-on-unknown boolean options, evaluated in
+  CurlSession::retryableFailure(). Like the original patch they only
+  take effect when retry-wait > 0, and 401 authentication failures are
+  never retried.
+* Retry on HTTP 507, 520 and 521 like the original patch did; 408, 429
+  and 500 are already retried natively by aria2-next.
+---
+ src/CurlSession.cc          | 31 +++++++++++++++++++++-----
+ src/OptionHandlerFactory.cc | 44 +++++++++++++++++++++++++++++++++++++
+ src/prefs.cc                |  8 +++++++
+ src/prefs.h                 |  8 +++++++
+ src/usage_text.h            | 16 ++++++++++++++
+ 5 files changed, 102 insertions(+), 5 deletions(-)
+
+diff --git a/src/CurlSession.cc b/src/CurlSession.cc
+index 91b29d0..f951d32 100644
+--- a/src/CurlSession.cc
++++ b/src/CurlSession.cc
+@@ -346,7 +346,7 @@ int64_t bufferedLength(const CurlDownloadImpl& impl)
+ }
+ 
+ bool retryableFailure(CURLcode result, long responseCode, int fileNotFoundCount,
+-                      int maxFileNotFound)
++                      int maxFileNotFound, const Option* option)
+ {
+   if (result == CURLE_REMOTE_FILE_NOT_FOUND) {
+     return maxFileNotFound > 0 && fileNotFoundCount < maxFileNotFound;
+@@ -355,9 +355,30 @@ bool retryableFailure(CURLcode result, long responseCode, int fileNotFoundCount,
+     if (responseCode == 404 || result == CURLE_REMOTE_FILE_NOT_FOUND) {
+       return maxFileNotFound > 0 && fileNotFoundCount < maxFileNotFound;
+     }
+-    return responseCode == 408 || responseCode == 425 || responseCode == 429 ||
+-           responseCode == 500 || responseCode == 502 || responseCode == 503 ||
+-           responseCode == 504;
++    if (responseCode == 408 || responseCode == 425 || responseCode == 429 ||
++        responseCode == 500 || responseCode == 502 || responseCode == 503 ||
++        responseCode == 504 || responseCode == 507 || responseCode == 520 ||
++        responseCode == 521) {
++      return true;
++    }
++    // Only retry on opt-in status codes if retry-wait > 0. Hammering
++    // the server is not a good idea.
++    if (option->getAsInt(PREF_RETRY_WAIT) > 0) {
++      switch (responseCode) {
++      case 400:
++        return option->getAsBool(PREF_RETRY_ON_400);
++      case 403:
++        return option->getAsBool(PREF_RETRY_ON_403);
++      case 406:
++        return option->getAsBool(PREF_RETRY_ON_406);
++      case 401:
++        // Authentication failures are not transient.
++        return false;
++      default:
++        return option->getAsBool(PREF_RETRY_ON_UNKNOWN);
++      }
++    }
++    return false;
+   }
+   switch (result) {
+   case CURLE_COULDNT_RESOLVE_HOST:
+@@ -1604,7 +1625,7 @@ void CurlSession::finish(const std::shared_ptr<CurlDownload>& download,
+     if (!remainder.empty() &&
+         (alternateMirror ||
+          retryableFailure(result, responseCode, impl.fileNotFoundCount,
+-                          maxFileNotFound)) &&
++                          maxFileNotFound, impl.group->getOption().get())) &&
+         retryRange(download, remainder, retryAfter)) {
+       schedule(download);
+       return;
+diff --git a/src/OptionHandlerFactory.cc b/src/OptionHandlerFactory.cc
+index 6a9a5bf..9656768 100644
+--- a/src/OptionHandlerFactory.cc
++++ b/src/OptionHandlerFactory.cc
+@@ -884,6 +884,50 @@ std::vector<OptionHandler*> OptionHandlerFactory::createOptionHandlers()
+     op->setChangeOptionForReserved(true);
+     handlers.push_back(op);
+   }
++  {
++    OptionHandler* op(new BooleanOptionHandler(
++        PREF_RETRY_ON_400, TEXT_RETRY_ON_400, A2_V_FALSE,
++        OptionHandler::OPT_ARG));
++    op->addTag(TAG_ADVANCED);
++    op->addTag(TAG_HTTP);
++    op->setInitialOption(true);
++    op->setChangeGlobalOption(true);
++    op->setChangeOptionForReserved(true);
++    handlers.push_back(op);
++  }
++  {
++    OptionHandler* op(new BooleanOptionHandler(
++        PREF_RETRY_ON_403, TEXT_RETRY_ON_403, A2_V_FALSE,
++        OptionHandler::OPT_ARG));
++    op->addTag(TAG_ADVANCED);
++    op->addTag(TAG_HTTP);
++    op->setInitialOption(true);
++    op->setChangeGlobalOption(true);
++    op->setChangeOptionForReserved(true);
++    handlers.push_back(op);
++  }
++  {
++    OptionHandler* op(new BooleanOptionHandler(
++        PREF_RETRY_ON_406, TEXT_RETRY_ON_406, A2_V_FALSE,
++        OptionHandler::OPT_ARG));
++    op->addTag(TAG_ADVANCED);
++    op->addTag(TAG_HTTP);
++    op->setInitialOption(true);
++    op->setChangeGlobalOption(true);
++    op->setChangeOptionForReserved(true);
++    handlers.push_back(op);
++  }
++  {
++    OptionHandler* op(new BooleanOptionHandler(
++        PREF_RETRY_ON_UNKNOWN, TEXT_RETRY_ON_UNKNOWN, A2_V_FALSE,
++        OptionHandler::OPT_ARG));
++    op->addTag(TAG_ADVANCED);
++    op->addTag(TAG_HTTP);
++    op->setInitialOption(true);
++    op->setChangeGlobalOption(true);
++    op->setChangeOptionForReserved(true);
++    handlers.push_back(op);
++  }
+   {
+     OptionHandler* op(new NumberOptionHandler(
+         PREF_STREAM_MAX_CONNECTIONS, TEXT_STREAM_MAX_CONNECTIONS, "6", 1,
+diff --git a/src/prefs.cc b/src/prefs.cc
+index 074b558..0d68338 100644
+--- a/src/prefs.cc
++++ b/src/prefs.cc
+@@ -297,6 +297,14 @@ PrefPtr PREF_ED2K_MIN_SPLIT_SIZE = makePref("ed2k-min-split-size");
+ PrefPtr PREF_MAX_DOWNLOAD_RESULT = makePref("max-download-result");
+ // value: 1*digit
+ PrefPtr PREF_RETRY_WAIT = makePref("retry-wait");
++// value: true | false
++PrefPtr PREF_RETRY_ON_400 = makePref("retry-on-400");
++// value: true | false
++PrefPtr PREF_RETRY_ON_403 = makePref("retry-on-403");
++// value: true | false
++PrefPtr PREF_RETRY_ON_406 = makePref("retry-on-406");
++// value: true | false
++PrefPtr PREF_RETRY_ON_UNKNOWN = makePref("retry-on-unknown");
+ PrefPtr PREF_STREAM_MAX_CONNECTIONS = makePref("stream-max-connections");
+ // value: true | false
+ PrefPtr PREF_SHOW_CONSOLE_READOUT = makePref("show-console-readout");
+diff --git a/src/prefs.h b/src/prefs.h
+index 36e9e34..0f9dccc 100644
+--- a/src/prefs.h
++++ b/src/prefs.h
+@@ -250,6 +250,14 @@ extern PrefPtr PREF_ED2K_MIN_SPLIT_SIZE;
+ extern PrefPtr PREF_MAX_DOWNLOAD_RESULT;
+ // value: 1*digit
+ extern PrefPtr PREF_RETRY_WAIT;
++// value: true | false
++extern PrefPtr PREF_RETRY_ON_400;
++// value: true | false
++extern PrefPtr PREF_RETRY_ON_403;
++// value: true | false
++extern PrefPtr PREF_RETRY_ON_406;
++// value: true | false
++extern PrefPtr PREF_RETRY_ON_UNKNOWN;
+ extern PrefPtr PREF_STREAM_MAX_CONNECTIONS;
+ // value: true | false
+ extern PrefPtr PREF_SHOW_CONSOLE_READOUT;
+diff --git a/src/usage_text.h b/src/usage_text.h
+index 46f9361..1818b38 100644
+--- a/src/usage_text.h
++++ b/src/usage_text.h
+@@ -54,6 +54,22 @@
+   _(" --retry-wait=SEC             Set the seconds to wait between retries. \n" \
+     "                              With SEC > 0, aria2 will retry download when the\n" \
+     "                              HTTP server returns 503 response.")
++#define TEXT_RETRY_ON_400                                                 \
++  _(" --retry-on-400[=true|false]  Configure whether retry or not when\n" \
++    "                              HTTP server returns 400 Bad Request.\n" \
++    "                              Only effective if retry-wait > 0.")
++#define TEXT_RETRY_ON_403                                                 \
++  _(" --retry-on-403[=true|false]  Configure whether retry or not when\n" \
++    "                              HTTP server returns 403 Forbidden.\n" \
++    "                              Only effective if retry-wait > 0.")
++#define TEXT_RETRY_ON_406                                                 \
++  _(" --retry-on-406[=true|false]  Configure whether retry or not when\n" \
++    "                              HTTP server returns 406 Not Acceptable.\n" \
++    "                              Only effective if retry-wait > 0.")
++#define TEXT_RETRY_ON_UNKNOWN                                                 \
++  _(" --retry-on-unknown[=true|false] Configure whether retry or not when\n" \
++    "                              HTTP server returns unknown status code.\n" \
++    "                              Only effective if retry-wait > 0.")
+ #define TEXT_STREAM_MAX_CONNECTIONS                                     \
+   _(" --stream-max-connections=N  Set the per-file HTTP connection ceiling.")
+ #define TEXT_TIMEOUT                                            \
+-- 
+2.55.0
+

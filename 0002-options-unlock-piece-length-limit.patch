@@ -1,0 +1,57 @@
+From 26e5975b74c46af272d94d5e10f02c3b57dff97a Mon Sep 17 00:00:00 2001
+From: NewYearPrism <newyearprism@users.noreply.github.com>
+Date: Thu, 27 Aug 2026 02:58:26 +0800
+Subject: [PATCH 2/2] options: unlock piece length limit
+
+Port of the piece length part of P3TERX's aria2-pro patch:
+
+* Lower the --piece-length validator minimum from 1M to 1K.
+* Lower the matching 1M quantum floors in the curl range planner so a
+  sub-megabyte --piece-length actually takes effect, enabling small
+  files to be split across multiple connections.
+
+The default value is unchanged, so nothing changes unless the user
+opts in with --piece-length < 1M.
+---
+ src/CurlSession.cc          | 4 ++--
+ src/OptionHandlerFactory.cc | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/CurlSession.cc b/src/CurlSession.cc
+index f951d32..062cd7e 100644
+--- a/src/CurlSession.cc
++++ b/src/CurlSession.cc
+@@ -1181,7 +1181,7 @@ void CurlSession::configurePlanner(
+     return;
+   }
+   const auto quantum = std::max<int64_t>(
+-      1_m, impl.group->getOption()->getAsInt(PREF_PIECE_LENGTH));
++      1_k, impl.group->getOption()->getAsInt(PREF_PIECE_LENGTH));
+   const auto rangeSize = adaptiveRangeSize(total, impl.maxConnections, quantum);
+   auto active = activeLeases(download);
+   if (retainedLease && !retainedLease->empty()) {
+@@ -1246,7 +1246,7 @@ void CurlSession::schedule(const std::shared_ptr<CurlDownload>& download)
+   }
+ 
+   const auto pieceLength = std::max<int64_t>(
+-      1_m, impl.group->getOption()->getAsInt(PREF_PIECE_LENGTH));
++      1_k, impl.group->getOption()->getAsInt(PREF_PIECE_LENGTH));
+   bool scheduled = false;
+   for (;;) {
+     const auto remaining =
+diff --git a/src/OptionHandlerFactory.cc b/src/OptionHandlerFactory.cc
+index 9656768..30b6a54 100644
+--- a/src/OptionHandlerFactory.cc
++++ b/src/OptionHandlerFactory.cc
+@@ -857,7 +857,7 @@ std::vector<OptionHandler*> OptionHandlerFactory::createOptionHandlers()
+   }
+   {
+     OptionHandler* op(new UnitNumberOptionHandler(
+-        PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, "1M", 1_m, 1_g));
++        PREF_PIECE_LENGTH, TEXT_PIECE_LENGTH, "1M", 1_k, 1_g));
+     op->addTag(TAG_ADVANCED);
+     op->addTag(TAG_ED2K);
+     op->addTag(TAG_METALINK);
+-- 
+2.55.0
+

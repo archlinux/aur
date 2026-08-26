@@ -2,8 +2,8 @@
 
 pkgname=aria2-next-pro
 _pkgname=aria2-next
-pkgver=2.5.9
-pkgrel=3
+pkgver=2.6.4
+pkgrel=2
 pkgdesc='Maintained aria2 fork with extensive bug fixes and modernized architecture (with Aria2 Pro patches)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AnInsomniacy/aria2-next'
@@ -24,15 +24,13 @@ provides=('aria2-next' 'aria2')
 conflicts=('aria2-next' 'aria2')
 source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/AnInsomniacy/aria2-next/archive/refs/tags/v${pkgver}.tar.gz"
-    '0001-options-unlock-connection-per-server-limit.patch'
-    '0002-download-retry-on-slow-speed-and-conection-close.patch'
-    '0003-option-add-option-to-retry-on-http-400-403-406-or-un.patch'
+    '0001-option-add-option-to-retry-on-http-400-403-406-or-un.patch'
+    '0002-options-unlock-piece-length-limit.patch'
 )
 sha512sums=(
-    '8fa4a72ba58ceeec713c5e38458cbecc0eb6e58c0ef57a054b6304e4e167d1f916cdee6c43e444cc318a3b6c9eccb85c1431979c0a78aece2ca9184d82f110e0'
-    'c6d257f2cf53e778f1f2fb5c3d2accb013b61e01b123806ea2b1ebbe0c8a085b4c4dbc43c44e1624a64ce353192adb2e5febfbe7581aa5580793cdb54b476e11'
-    '014346d373604eb1c4ed77aa4eae33089d2d15de04a633c127e62e63869c77db4f012bd1fa5d4f60b8458a7a846b0c911c3ffbfcc954666c799a778995325e40'
-    'fd0a7af20d140c6481a568c642771562b29ddfe0f49630bf1f101c3285a037bfb314a0f0a6673d4714526e10f6e9ffc799ac430eeb7da7ba185cfe706318a725'
+    '18daff74e96bc59a2a68120d6dbca2c396d4d9b88664088b46df6670017450cf4a9c14ab7d200a45ca8e23669cee6ce36a4f3d6e5a87c6105a93c0b1e6742656'
+    '87b18ad4550110eb31de0886529b1910a7947cc0afe6d9b9b136e240392a8c96337205894244131ecae43f7dd72993e2d0fbe473e843813ac4d0fd9e19651752'
+    'c5da8e6418a65d72e302d1eb90e22339891054873497e6841020952ac7c8e40e5f144194ea0ff1fb96414fddf12121a35012d47c86a69ddb0682183d851c3da5'
 )
 options=(
     lto
