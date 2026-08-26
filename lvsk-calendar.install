@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 post_install() {
     cat <<'EOF'
@@ -10,7 +10,7 @@ post_install() {
 
     ─────────────────────────────────────────────────────────
 
-     lvsk-calendar v0.3.9
+     lvsk-calendar
      minimalist terminal calendar
 
     ─────────────────────────────────────────────────────────
@@ -19,12 +19,15 @@ post_install() {
 
        lvsk-calendar              → open in current terminal
        lvsk-calendar-launcher     → floating window (Hyprland)
+       lvsk-calendar --help       → CLI options
 
     ⌨️  Navigation
 
        ↑↓←→  or  hjkl    → navigate
        [  ]              → previous/next month
+       {  }              → previous/next year
        t                 → jump to today
+       a / e / d         → add / edit / delete event
        q                 → quit
 
     📚 Resources
@@ -51,10 +54,11 @@ post_upgrade() {
 
     ─────────────────────────────────────────────────────────
 
-     ✨ lvsk-calendar updated to v0.3.9
+     ✨ lvsk-calendar updated
 
      💡 Tip: Check ~/.config/lvsk-calendar/config for new
-        customization options!
+        customization options, and `lvsk-calendar --version`
+        for the installed version.
 
     ─────────────────────────────────────────────────────────
 
@@ -75,11 +79,15 @@ post_remove() {
 
     ─────────────────────────────────────────────────────────
 
-     Your configuration is still preserved at:
-     ~/.config/lvsk-calendar/
+     Your data is still preserved at:
+     ~/.config/lvsk-calendar/       (configuration)
+     ~/.local/share/lvsk-calendar/  (your events)
+     ~/.cache/lvsk-calendar/        (holiday cache)
 
      To completely remove all files:
-     rm -rf ~/.config/lvsk-calendar
+     rm -rf ~/.config/lvsk-calendar \
+            ~/.local/share/lvsk-calendar \
+            ~/.cache/lvsk-calendar
 
     ─────────────────────────────────────────────────────────
 
