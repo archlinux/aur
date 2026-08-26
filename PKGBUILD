@@ -66,6 +66,17 @@ package() {
                    "$pkgdir/usr/share/hls-livecam-server/cv_scene_register.py"
     install -Dm644 pkg/usr/share/hls-livecam-server/index.html \
                    "$pkgdir/usr/share/hls-livecam-server/index.html"
+    # VERSION and PRODUCT are read by broadcast-api at /api/info time. They
+    # were never installed here, so an Arch node reported an empty version
+    # tag in its header and fell back to the built-in product identity --
+    # correct for this fleet by luck, wrong for anyone forking it. Shipping
+    # them makes the header true on a fresh install rather than only on a
+    # node someone hand-copied them to. A forked node overrides PRODUCT in
+    # /etc/hls-livecam/PRODUCT, which no installer touches.
+    install -Dm644 pkg/usr/share/hls-livecam-server/VERSION \
+                   "$pkgdir/usr/share/hls-livecam-server/VERSION"
+    install -Dm644 pkg/usr/share/hls-livecam-server/PRODUCT \
+                   "$pkgdir/usr/share/hls-livecam-server/PRODUCT"
     install -Dm644 pkg/usr/share/hls-livecam-server/cams/cams.html \
                    "$pkgdir/usr/share/hls-livecam-server/cams/cams.html"
     install -Dm644 pkg/usr/share/hls-livecam-server/ffmpeg-cam.service \
