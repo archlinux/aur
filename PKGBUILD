@@ -1,12 +1,12 @@
-# Maintainer: Wakatron <maka-krah@mail.ru>
+# Maintainer: totmin <totmin@users.noreply.github.com>
 
 pkgname=streamdeck-lets-go-git
-_giturl=https://github.com/Wakatron/streamdeck-lets-go.git
+_giturl=https://github.com/totmin/streamdeck-lets-go.git
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Lightweight daemon for controlling Elgato Stream Deck devices with a built-in web UI"
 arch=('x86_64' 'aarch64')
-url="https://github.com/Wakatron/streamdeck-lets-go"
+url="https://github.com/totmin/streamdeck-lets-go"
 license=('MIT')
 depends=('libusb')
 optdepends=('librsvg: SVG icon rendering'
