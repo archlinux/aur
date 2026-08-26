@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=comfy-desktop-bin
-pkgver=1.0.39
+pkgver=1.0.44
 pkgrel=1
 pkgdesc='Official desktop application for ComfyUI — install, run, and manage ComfyUI with GPU-ready environments'
 arch=('x86_64' 'aarch64')
@@ -44,15 +44,14 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Comfy-Org/Comfy-De
 source_x86_64=("${pkgname}-${pkgver}-x86_64.deb::${_dl_base}/versions/${pkgver}/linux/deb/x64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.deb::${_dl_base}/versions/${pkgver}/linux/deb/arm64")
 sha256sums=('0cea5d109b4d245ea1110c205df0f825a1088c9e45e257514c1661c7c14f7bc3')
-sha256sums_x86_64=('d4788db90f2188ac543896535812bcac4259813692dd5446c5f316fb7490103d')
-sha256sums_aarch64=('366231b0a07b17c8ff82d60a8950f868a1f94c828ad66ef7084314e865cc08ce')
+sha256sums_x86_64=('1ee3c10d39a6bd2172afde52e527c0a1c0b3b09b79ca4c09316c2e64ac622cd4')
+sha256sums_aarch64=('e20a91a9d97473237c17fb800b8250038e409398fc61e1ec9d1b3d69c8cee664')
 
 latestver() {
-    # HEAD 404s on this CDN and GitHub releases run ahead of the Linux build,
-    # so read the actually-published version from the unversioned endpoint's
-    # Content-Disposition filename.  --max-filesize 1 aborts after the headers.
-    curl -sL --max-filesize 1 -D - -o /dev/null "${_dl_base}/linux/deb/x64" 2>/dev/null |
-        sed -nE 's/.*filename="comfyui-desktop-2-([0-9]+(\.[0-9]+)*).*/\1/p' | head -1
+    # electron-builder update feed — the authoritative published Linux version.
+    # Small YAML, instant response, no large download.
+    curl -sL "https://download.todesktop.com/241130tqe9q3y/latest-linux.yml" |
+        sed -nE 's/^version: *//p'
 }
 
 package() {
