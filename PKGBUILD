@@ -2,7 +2,7 @@
 
 pkgname=graphify
 _name=graphifyy
-pkgver=0.9.49
+pkgver=0.9.50
 pkgrel=1
 pkgdesc="AI coding assistant skill - turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph"
 arch=('any')
@@ -68,7 +68,6 @@ optdepends=(
     'python-psycopg: PostgreSQL schema introspection backend'
     'python-yaml: APM manifest parsing support'
     'python-tree-sitter-dm: DM language indexing support'
-    'python-tree-sitter-ocaml: OCaml indexing support'
 )
 
 makedepends=(
@@ -82,7 +81,7 @@ provides=("${_name}")
 conflicts=("${_name}")
 
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('3b2e964bf73b0911e95c02eca6ac10e248889f31d3da6796816a590448feae2e')
+sha256sums=('1758fa973a8a6dc27ca5271ecf3ef55fa619da77a1120bf8bf685a865f20283f')
 
 build() {
     cd "${_name}-${pkgver}"
