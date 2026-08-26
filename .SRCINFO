@@ -1,7 +1,7 @@
 pkgbase = yserver
 	pkgdesc = A modern X11 server written from scratch in Rust (DRM/KMS + Vulkan)
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/joske/yserver
 	arch = x86_64
 	arch = aarch64
@@ -23,6 +23,7 @@ pkgbase = yserver
 	depends = vulkan-icd-loader
 	depends = xorg-xauth
 	depends = xkeyboard-config
+	depends = mesa
 	optdepends = vulkan-driver: required Vulkan implementation for your GPU
 	optdepends = xorg-fonts-misc: core X11 bitmap fonts for legacy clients
 	optdepends = lightdm: graphical login (see the example drop-in in /usr/share/doc)
