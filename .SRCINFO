@@ -1,7 +1,7 @@
 pkgbase = rawtoaces
 	pkgdesc = RAW to ACES utility for converting digital camera RAW files to ACES container files
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AcademySoftwareFoundation/rawtoaces
 	arch = x86_64
 	license = Apache-2.0
