@@ -1,7 +1,7 @@
 pkgbase = wine-dwproton-bin
 	pkgdesc = dwproton的wine版|dwproton's wine version
 	pkgver = 11.0
-	pkgrel = 11
+	pkgrel = 12
 	url = https://dawn.wine/dawn-winery/wine-dwproton
 	arch = x86_64
 	provides = wine=11.0
@@ -9,7 +9,7 @@ pkgbase = wine-dwproton-bin
 	provides = wine-wow64=11.0
 	provides = wine-dwproton=11.0
 	conflicts = wine
-	source = https://github.com/irtkll/wine-proton-patch/releases/download/wine-dwproton-11.0-11/wine-dwproton-11.0-11-x86_64.tar.xz
-	sha256sums = 6620fb7c318162a73ea1a49082f26eb6a788c1821851c9aba23e8ddf588b6af8
+	source = https://github.com/irtkll/wine-proton-patch/releases/download/wine-dwproton-11.0-12/wine-dwproton-11.0-12-x86_64.tar.xz
+	sha256sums = 86eb2fd13be74347e8e33fa166e7984c44ea57ee274d968b77fd0b933e32cfc9
 
 pkgname = wine-dwproton-bin
