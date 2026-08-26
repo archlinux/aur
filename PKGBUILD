@@ -1,7 +1,7 @@
 # Maintainer: soloturn <soloturn@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-app-library-git
-pkgver=1.6.0.r5.g385db1e
+pkgver=1.7.0.r0.ged8f7f4
 pkgrel=1
 pkgdesc="An application launcher for the COSMIC desktop"
 arch=('x86_64' 'aarch64')
@@ -31,6 +31,7 @@ prepare() {
   cd cosmic-applibrary
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
+  cargo fetch --manifest-path scripts/xdgen/Cargo.toml --target host-tuple
 }
 
 build() {
