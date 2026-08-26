@@ -2,7 +2,7 @@
 
 pkgname=yserver
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern X11 server written from scratch in Rust (DRM/KMS + Vulkan)'
 url='https://github.com/joske/yserver'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ license=('MIT')
 # NOT seatd: yserver dropped libseat and opens /dev/dri and /dev/input directly.
 # mcookie (also needed by starty) comes from util-linux, which is part of base.
 depends=('libgcc' 'glibc' 'libxshmfence' 'libxkbcommon' 'libinput' 'systemd-libs'
-         'fontconfig' 'freetype2' 'vulkan-icd-loader' 'xorg-xauth' 'xkeyboard-config')
+         'fontconfig' 'freetype2' 'vulkan-icd-loader' 'xorg-xauth' 'xkeyboard-config' 'mesa')
 makedepends=('cargo' 'gcc' 'just' 'shaderc' 'pkgconf' 'scdoc')
 # A Vulkan driver is required to render, but which one is hardware-dependent.
 optdepends=('vulkan-driver: required Vulkan implementation for your GPU'
