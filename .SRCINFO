@@ -1,4 +1,4 @@
-pkgbase = stormycloud-vanity-git
+pkgbase = stormycloud-vanitygenerator-git
 	pkgdesc = GPU-accelerated vanity I2P and Tor v3 address generator
 	pkgver = r53.g3e012ee
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = stormycloud-vanity-git
 	source = git+https://github.com/StormyCloudInc/Vanity-Generator.git
 	b2sums = SKIP
 
-pkgname = stormycloud-vanity-git
+pkgname = stormycloud-vanitygenerator-git

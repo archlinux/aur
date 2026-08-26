@@ -1,4 +1,4 @@
-pkgname=stormycloud-vanity-git
+pkgname=stormycloud-vanitygenerator-git
 pkgver=r53.g3e012ee
 pkgrel=1
 pkgdesc='GPU-accelerated vanity I2P and Tor v3 address generator'
