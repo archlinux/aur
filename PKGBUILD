@@ -2,7 +2,7 @@
   pkgname=ferrumpix-bin
   pkgver=0.9.32
   pkgrel=4
-  pkgdesc='Desktop photo manager and image editor built with Avalonia UI'
+  pkgdesc='Desktop Photo/RAW-Editor, Viewer, Gallery, Immich and Nextcloud Client in one App'
   arch=('x86_64')
   url='https://github.com/Bitpainter75/FerrumPix'
   license=('GPL-3.0-only')
