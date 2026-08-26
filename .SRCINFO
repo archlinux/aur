@@ -1,6 +1,6 @@
 pkgbase = plasmazones
-	pkgdesc = Window tiling and autotiling for KDE Plasma
-	pkgver = 3.3.9
+	pkgdesc = Window snapping, tiling and scrolling for KDE Plasma
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/fuddlesworth/PlasmaZones
 	install = plasmazones.install
@@ -24,12 +24,14 @@ pkgbase = plasmazones
 	depends = kirigami
 	depends = kcmutils
 	depends = kglobalaccel
+	depends = kcolorscheme
 	depends = qt6-wayland
 	depends = kwin>=6.7.0
 	optdepends = plasma-activities: activity-based layouts
+	optdepends = hwdata: readable GPU names in the rendering device picker
 	conflicts = plasmazones-bin
 	conflicts = plasmazones-git
-	source = plasmazones-3.3.9.tar.gz::https://github.com/fuddlesworth/PlasmaZones/archive/refs/tags/v3.3.9.tar.gz
-	sha256sums = 5fd52426f5cfc2c46ab52c16a4b438754cdb85d9a246595c79a50ab8e5b37920
+	source = plasmazones-3.4.0.tar.gz::https://github.com/fuddlesworth/PlasmaZones/archive/refs/tags/v3.4.0.tar.gz
+	sha256sums = 93d6f764d16f002f17e36c1dfba9b99642c5b3b5d1323926b7ad3da2b175ce7b
 
 pkgname = plasmazones

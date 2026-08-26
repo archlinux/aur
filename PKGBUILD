@@ -7,9 +7,9 @@
 pkgname=plasmazones
 # pkgver/pkgrel are placeholders; CI rewrites them against the release tag
 # before publishing. See packaging/arch/update-aur.sh.
-pkgver=3.3.9
+pkgver=3.4.0
 pkgrel=1
-pkgdesc='Window tiling and autotiling for KDE Plasma'
+pkgdesc='Window snapping, tiling and scrolling for KDE Plasma'
 arch=('x86_64')
 url='https://github.com/fuddlesworth/PlasmaZones'
 license=('GPL-3.0-or-later' 'LGPL-2.1-or-later')
@@ -34,6 +34,7 @@ depends=(
     'kirigami'
     'kcmutils'
     'kglobalaccel'
+    'kcolorscheme'
     'qt6-wayland'
     'kwin>=6.7.0'
 )
@@ -49,13 +50,14 @@ makedepends=(
 )
 optdepends=(
     'plasma-activities: activity-based layouts'
+    'hwdata: readable GPU names in the rendering device picker'
 )
 conflicts=('plasmazones-bin' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # 'SKIP' so local `makepkg -p PKGBUILD` doesn't fail integrity-check
 # on the placeholder pkgver. release.yml templates a real sha256 when
 # publishing to AUR (see the awk rewrite in the publish-aur job).
-sha256sums=('5fd52426f5cfc2c46ab52c16a4b438754cdb85d9a246595c79a50ab8e5b37920')
+sha256sums=('93d6f764d16f002f17e36c1dfba9b99642c5b3b5d1323926b7ad3da2b175ce7b')
 install=plasmazones.install
 
 build() {
