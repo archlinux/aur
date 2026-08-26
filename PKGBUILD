@@ -1,14 +1,14 @@
 # Maintainer: YesPlayMusic contributors
 
 pkgname=yesplaymusic-axuanran-bin
-pkgver=0.1.1_alpha.11
+pkgver=0.1.1_alpha.12
 pkgrel=1
-_releasever=0.1.1-alpha.11
-pkgdesc="A third-party Netease Cloud Music player"
+_releasever=0.1.1-alpha.12
+pkgdesc="XuMP - a third-party Netease Cloud Music player"
 arch=('x86_64')
 url="https://github.com/axuanran/YesPlayMusic"
 license=('MIT')
-provides=('yesplaymusic')
+provides=('xump')
 conflicts=(
     'yesplaymusic'
     'yesplaymusic-bin'
@@ -28,24 +28,21 @@ optdepends=(
 )
 options=('!strip' '!debug')
 source=(
-    "YesPlayMusic-${_releasever}.pacman::${url}/releases/download/v${_releasever}/YesPlayMusic-${_releasever}.pacman"
+    "XuMP-${_releasever}.pacman::${url}/releases/download/v${_releasever}/XuMP-${_releasever}.pacman"
     "LICENSE-${_releasever}::https://raw.githubusercontent.com/axuanran/YesPlayMusic/v${_releasever}/LICENSE"
 )
-sha256sums=('fb91653c0908a82024b4f710c3a091f19fad5010d5b1d8f05920c45c84007a91'
+sha256sums=('a1035d09120094f026cc65bc912cec71c8ac47729bbf6ba5a47141419502d440'
             'c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6')
 
 package() {
-    tar -xf "YesPlayMusic-${_releasever}.pacman" -C "$pkgdir"
+    tar -xf "XuMP-${_releasever}.pacman" -C "$pkgdir"
 
     rm -f "$pkgdir"/.{PKGINFO,MTREE,INSTALL}
 
     install -dm755 "$pkgdir/usr/bin"
-    ln -sf '/opt/YesPlayMusic/yesplaymusic' "$pkgdir/usr/bin/yesplaymusic"
+    ln -sf '/opt/XuMP/xump' "$pkgdir/usr/bin/xump"
 
-    chmod 4755 "$pkgdir/opt/YesPlayMusic/chrome-sandbox"
-
-    sed -i 's|Categories=Music;|Categories=Music;AudioVideo;Player;|' \
-        "$pkgdir/usr/share/applications/yesplaymusic.desktop"
+    chmod 4755 "$pkgdir/opt/XuMP/chrome-sandbox"
 
     install -Dm644 "$srcdir/LICENSE-${_releasever}" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
