@@ -1,7 +1,7 @@
 pkgbase = margo-git
 	pkgdesc = Rust/Smithay Wayland tiling compositor with a first-party GTK4 desktop shell (mshell)
-	pkgver = r2269.fb4853ab
-	pkgrel = 2
+	pkgver = r2270.0c65b93b
+	pkgrel = 1
 	url = https://github.com/kenanpelit/margo
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -77,10 +77,10 @@ pkgbase = margo-git
 	optdepends = tmux: required by mtm's session/layout/buffer/kenp commands
 	optdepends = fzf: interactive picker for mtm buffer/clip/speed
 	optdepends = cliphist: mtm clip's clipboard-history backend
-	provides = margo=r2269.fb4853ab
+	provides = margo=r2270.0c65b93b
 	provides = wayland-compositor
-	provides = mshell=r2269.fb4853ab
-	provides = margo-mshell-git=r2269.fb4853ab
+	provides = mshell=r2270.0c65b93b
+	provides = margo-mshell-git=r2270.0c65b93b
 	conflicts = margo
 	conflicts = margo-mshell-git
 	conflicts = mshell
