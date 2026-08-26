@@ -1,0 +1,22 @@
+pkgbase = kicad-component-importer-git
+	pkgdesc = Desktop app and CLI for importing downloaded component ZIP libraries into KiCad projects
+	pkgver = 0.1.6.r2.ga3e40b5
+	pkgrel = 1
+	url = https://github.com/robertxdx/component-importer-for-kicad
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt6
+	optdepends = fzf: fuzzy ZIP picker for the CLI
+	optdepends = kicad: EDA suite the imported libraries are used with
+	provides = kicad-component-importer
+	conflicts = kicad-component-importer
+	source = kicad-component-importer::git+https://github.com/robertxdx/component-importer-for-kicad.git
+	sha256sums = SKIP
+
+pkgname = kicad-component-importer-git
