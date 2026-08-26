@@ -1,6 +1,6 @@
 pkgbase = portable
 	pkgdesc = Fast, private, efficient sandbox for Linux desktop.
-	pkgver = 18.0.1
+	pkgver = 18.0.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kraftland/portable
@@ -33,7 +33,7 @@ pkgbase = portable
 	optdepends = stashpak: Install Portable packages with ease
 	optdepends = bawn: Transient sandbox generator
 	provides = portable
-	source = portable::git+https://github.com/Kraftland/portable.git#tag=18.0.1
-	md5sums = e73f7ee6d838359a7d820c0fa8873c96
+	source = portable::git+https://github.com/Kraftland/portable.git#tag=18.0.2
+	md5sums = 2790914b061a26e7ecdba0e6c4443f10
 
 pkgname = portable
