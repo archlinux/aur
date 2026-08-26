@@ -1,8 +1,8 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=tonepush-git
-pkgver=0.5.0.r0.0ef5af5
+pkgver=0.6.0.r0.3abcf23
 pkgrel=1
-pkgdesc="Open-source editor for Line 6 Helix and HX pedals, with a GUI and a scriptable CLI"
+pkgdesc="Editor and tone library for Line 6 HX pedals and the StompStation PRO"
 arch=('x86_64' 'aarch64')
 url="https://tonepush.rocks"
 license=('MIT')
@@ -46,14 +46,14 @@ build() {
   # The editor and the CLI by name. Building the whole workspace would drag in
   # the Ruby extension, which links against libruby and is nothing to do with
   # this package.
-  cargo build --frozen --release -p hx-cli -p hx-gui
+  cargo build --frozen --release -p tonepush-cli -p tonepush-gui
 }
 
 check() {
   cd "${srcdir}/${pkgname}"
   export RUSTUP_TOOLCHAIN=stable
   # Needs no hardware; the tests that talk to a device are #[ignore]d.
-  cargo test --frozen -p hx-proto -p hx-catalog -p hx-cli -p hx-gui
+  cargo test --frozen -p hx-proto -p hx-catalog -p tonepush-cli -p tonepush-gui
 }
 
 package() {
