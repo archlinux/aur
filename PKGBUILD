@@ -1,7 +1,7 @@
 # Maintainer: germanua
 
 pkgname=linux-soundboard
-pkgver=2.2.1
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="Native Linux soundboard with full Wayland/X11 support and virtual microphone support"
 arch=('x86_64')
@@ -17,11 +17,11 @@ depends=(
   'hicolor-icon-theme'
   'polkit'
   'pipewire'
+  'pipewire-pulse'
   'wireplumber'
 )
 makedepends=(
   'cargo'
-  'imagemagick'
   'clang'
   'pkgconf'
 )
@@ -37,12 +37,11 @@ options=('!lto')
 source=(
   "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('5b6e40c67c13a432fd953d98e4dd36dfe67e86b29a1ffdc6f301432468578030')
+sha256sums=('288a00fae2fd41d796345c2b5074c00b0661d836d852f776b1d40da4e0fb3810')
 install="${pkgname}.install"
 
 prepare() {
     cd "$srcdir/Linux-SoundBoard-$pkgver"
-    bash packaging/linux/generate-icons.sh assets/icons/icon.png
     export CARGO_HOME="$srcdir/cargo-home"
     cargo fetch --locked --manifest-path src/Cargo.toml
 }
