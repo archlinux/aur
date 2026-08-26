@@ -35,6 +35,7 @@ makedepends=(
   python-pydata-sphinx-theme
   python-sphinx
   python-wheel
+  python-hatchling
 )
 checkdepends=(
   bash-completion

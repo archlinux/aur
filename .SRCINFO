@@ -52,6 +52,7 @@ pkgbase = beets-git
 	makedepends = python-pydata-sphinx-theme
 	makedepends = python-sphinx
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python
 	depends = python-confuse
 	depends = python-jellyfish
