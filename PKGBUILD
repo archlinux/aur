@@ -1,6 +1,6 @@
 # Maintainer: Reza Jelveh <reza.jelveh+git@gmail.com>
 pkgname=browserchooser-x11
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="rofi-style browser selector (X11 backend)"
 arch=('x86_64')
