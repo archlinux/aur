@@ -1,6 +1,6 @@
 pkgbase = bscpylgtv
 	pkgdesc = Library to control webOS based LG TV devices
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/chros73/bscpylgtv
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = bscpylgtv
 	depends = python-numpy
 	depends = python-websockets
 	depends = python-sqlitedict
-	source = bscpylgtv-0.5.2.tar.gz::https://github.com/chros73/bscpylgtv/archive/refs/tags/v0.5.2.tar.gz
-	b2sums = ecbcbdf875335064a9c47d7da0589f8f476f782f7cb8c731d548880b6dfe14da2cac465789e0d760c78ef3dae3449be65457591425dd2d4d98cf61028e37ace3
+	source = bscpylgtv-0.5.3.tar.gz::https://github.com/chros73/bscpylgtv/archive/refs/tags/v0.5.3.tar.gz
+	b2sums = 3a009c1996fc9ef848377064701572f08c71999f821a5848bd6e11bd1a0e05961fbfbda5abfbd6789bc83c3763ede1997449dcf7b58c75e8b01f907f3bbb97ec
 
 pkgname = bscpylgtv
