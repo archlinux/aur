@@ -1,19 +1,20 @@
 pkgbase = cogfly
 	pkgdesc = A cross-platform mod manager for Hollow Knight: Silksong.
-	pkgver = 1.1.2
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/Nix-main/Cogfly
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
-	makedepends = sed
 	makedepends = java-environment=25
 	depends = hicolor-icon-theme
 	depends = zenity
 	conflicts = cogfly-bin
 	conflicts = cogfly-git
 	options = !strip
-	source = git+https://github.com/Nix-main/Cogfly.git#tag=1.1.2
-	sha256sums = SKIP
+	source = git+https://github.com/Nix-main/Cogfly.git#tag=1.2.5
+	source = fix-cogfly.desktop.diff
+	sha256sums = 78662871a75d250696bbaf4f1b595faf1cc163ae99150e326ae7317b9ecc8a93
+	sha256sums = d0ac4308c59899dbfed91503bb138c832ccc10cdf1b2dd1745eb1676731125db
 
 pkgname = cogfly
