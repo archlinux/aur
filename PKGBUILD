@@ -1,10 +1,10 @@
 # Check CMakeLists.txt
-_rstd_commit=fdb99aaa894d76b04032cd301ac82b5ee6e3ec6d
+_rstd_commit=0ec1bc101ab9088f1e3b4ac7be5c1d5e415da8c1
 _luato_commit=61dd40dca1e9aeda69eed208ddf0d10b34f59db7
 _libsodium_commit=77e1ce5d6dee871c49ef211222ba18ef0c486bda
 
 pkgname=lito
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Module-first C++ build tool with manifest."
 arch=(x86_64)
@@ -16,8 +16,8 @@ source=("git+https://github.com/litocpp/lito.git#tag=v$pkgver"
         "git+https://github.com/litocpp/rstd.git#commit=$_rstd_commit"
         "git+https://github.com/litocpp/luato.git#commit=$_luato_commit"
         "git+https://github.com/jedisct1/libsodium.git#commit=$_libsodium_commit")
-sha256sums=('b5beaf96fe8ac81aaa5bf442777665786bea82f657987725c33af8399c736a8b'
-            '5e459ff93db361faf3c893d714d1f1d26b7d133f62c58c091a20357476a37a3c'
+sha256sums=('7b02b3d60382a41285e51c734db0941af678a2fb863c97971c90f5168b2b28df'
+            'ec7c69fdac3d61918104724b175358c17d9876cf49caa90e7b8937083d8dbeae'
             '351dcdfd54a6df473f457a853ce0f9dc80a2950c60b4c821eeeb252ae861f19a'
             'da5ab87a4ba609f0f38247f200b30e04acd8d2db210a23cc4206a6c3484b929d')
 
