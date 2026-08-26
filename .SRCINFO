@@ -1,6 +1,6 @@
 pkgbase = squeekboard-git
 	pkgdesc = An on-screen-keyboard input method for Wayland
-	pkgver = 1.43.0.r12.ge309beb7
+	pkgver = 1.43.0.r13.g27c359c4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/Phosh/squeekboard
 	arch = i686

@@ -4,7 +4,7 @@
 
 _pkgname=squeekboard
 pkgname=squeekboard-git
-pkgver=1.43.0.r12.ge309beb7
+pkgver=1.43.0.r13.g27c359c4
 pkgrel=1
 pkgdesc='An on-screen-keyboard input method for Wayland'
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
@@ -45,15 +45,22 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
-build() {
-  arch-meson "$_pkgname" build
-  meson compile -C build
+prepare() {
+  cd $_pkgname
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
-check() {
-  meson test -C build --print-errorlogs
+build() {
+  arch-meson "$_pkgname" build --buildtype=release
+
+  CARGO_PROFILE_RELEASE_LTO=true \
+    CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1 \
+    CARGO_PROFILE_RELEASE_DEBUG=2 \
+    CARGO_PROFILE_RELEASE_STRIP=false \
+    CARGO_NET_OFFLINE=true \
+    meson compile -C build
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir" --no-rebuild
 }
