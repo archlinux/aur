@@ -1,0 +1,17 @@
+pkgbase = kernelview-bin
+	pkgdesc = An ultra-fast, aesthetic system information fetcher and real-time terminal telemetry dashboard
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/codedbysoumyajit/KernelView-Go
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = kernelview
+	conflicts = kernelview
+	options = !strip
+	source_x86_64 = kernelview-x86_64-1.3.1.tgz::https://github.com/codedbysoumyajit/KernelView-Go/releases/download/v1.3.1/kernelview_1.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3ab5d2eb9f65a3e3b399685a12b5292d00264a4170407b120849f3eb9453b8e2
+	source_aarch64 = kernelview-aarch64-1.3.1.tgz::https://github.com/codedbysoumyajit/KernelView-Go/releases/download/v1.3.1/kernelview_1.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9f726e2e76e8cbcdffad82045f37414714d17a2bf2f4dfbcbf4ae23de808338c
+
+pkgname = kernelview-bin

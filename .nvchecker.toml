@@ -1,0 +1,5 @@
+[kernelview-bin]
+source = "github"
+github = "codedbysoumyajit/KernelView-Go"
+use_latest_release = true
+prefix = "v"
