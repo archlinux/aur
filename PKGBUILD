@@ -1,6 +1,6 @@
 # Maintainer: detestern <detestern@proton.me>
 pkgname=karincore-git
-pkgver=1.3.1.r27.d7a5f8b
+pkgver=1.3.1.r28.95c910e
 pkgrel=1
 pkgdesc="KarinCore - Modern and secure proxy client"
 arch=('x86_64')
@@ -14,8 +14,7 @@ conflicts=('karincore')
 
 source=("KarinCore::git+https://github.com/detestern/KarinCore.git"
 "karin-proxy-daemon.service")
-sha256sums=('SKIP'
-            '311fe87274a68e4df31012fdf83e30d27e9efec8d144642873b56e757dc898a5')
+sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/KarinCore"
@@ -70,6 +69,12 @@ EOF
     export PKG_CONFIG_LIBDIR="/usr/lib/pkgconfig:/usr/share/pkgconfig"
 
     write_pc_if_missing sysprof-capture-4 4.0.0 '' ''
+    write_pc_if_missing glib-2.0 2.82.0 '-L${libdir} -lglib-2.0' '-I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include'
+    write_pc_if_missing gobject-2.0 2.82.0 '-L${libdir} -lgobject-2.0 -lglib-2.0' '-I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include'
+    write_pc_if_missing gio-2.0 2.82.0 '-L${libdir} -lgio-2.0 -lgobject-2.0 -lglib-2.0' '-I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include'
+    write_pc_if_missing gio-unix-2.0 2.82.0 '-L${libdir} -lgio-2.0 -lgobject-2.0 -lglib-2.0' '-I${includedir}/gio-unix-2.0'
+    write_pc_if_missing gmodule-2.0 2.82.0 '-L${libdir} -lgmodule-2.0 -lglib-2.0' '-I${includedir}/glib-2.0 -I${libdir}/glib-2.0/include'
+    write_pc_if_missing libffi 3.4.0 '-L${libdir} -lffi' '-I${includedir}'
     write_pc_if_missing zlib 1.3.1 '-L${libdir} -lz' '-I${includedir}'
     write_pc_if_missing mount 2.40.2 '-L${libdir} -lmount -lblkid' '-I${includedir}'
     write_pc_if_missing atk 2.38.0 '-L${libdir} -latk-1.0' '-I${includedir}/atk-1.0'
@@ -104,6 +109,24 @@ EOF
     if [ ! -f /usr/include/openssl/opensslv.h ]; then
         echo "Заголовки openssl отсутствуют физически — переустанавливаю пакет с --overwrite"
         sudo pacman -S --overwrite '/usr/include/*' --noconfirm openssl
+    fi
+
+    # Та же история и с базовыми заголовками glibc (errno.h, stdlib.h,
+    # stdio.h, pthread.h, stdint.h и т.д.) — без них ничего, что собирается
+    # через cgo (например, зависимость xray, написанная на Go), не соберётся.
+    # На некоторых образах SteamOS они тоже физически вырезаны.
+    if [ ! -f /usr/include/errno.h ]; then
+        echo "Заголовки glibc отсутствуют физически — переустанавливаю пакет с --overwrite"
+        sudo pacman -S --overwrite '/usr/include/*' --noconfirm glibc
+    fi
+
+    # xray собирается на Go через cgo, а glibc-заголовки сами по себе
+    # цепляют ядерные (linux/errno.h, linux/types.h и т.д.) из отдельного
+    # пакета linux-api-headers — на некоторых образах SteamOS он тоже
+    # физически вырезан, хотя формально числится установленным.
+    if [ ! -f /usr/include/linux/errno.h ]; then
+        echo "Заголовки linux-api-headers отсутствуют физически — переустанавливаю пакет с --overwrite"
+        sudo pacman -S --overwrite '/usr/include/*' --noconfirm linux-api-headers
     fi
 }
 
