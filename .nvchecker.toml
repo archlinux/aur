@@ -1,0 +1,5 @@
+[portop-bin]
+source = "github"
+github = "padovanl/portop"
+use_latest_release = true
+prefix = "v"
