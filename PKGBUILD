@@ -2,7 +2,7 @@
 
 pkgname=linux-soundboard-git
 _pkgname=linux-soundboard
-pkgver=2.2.1.r158.gbd0e3a6
+pkgver=2.4.3.r215.g869c4bc
 pkgrel=1
 pkgdesc="Native Linux soundboard with full Wayland/X11 support and virtual microphone support"
 arch=('x86_64')
@@ -18,12 +18,12 @@ depends=(
   'hicolor-icon-theme'
   'polkit'
   'pipewire'
+  'pipewire-pulse'
   'wireplumber'
 )
 makedepends=(
   'cargo'
   'git'
-  'imagemagick'
   'clang'
   'pkgconf'
 )
@@ -57,7 +57,6 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_pkgname}"
 
-  bash packaging/linux/generate-icons.sh assets/icons/icon.png
   export CARGO_HOME="${srcdir}/cargo-home"
   cargo fetch --locked --manifest-path src/Cargo.toml
 }
