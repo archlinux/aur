@@ -1,6 +1,6 @@
 # Maintainer: Rizki Rakasiwi <rizkirr.xyz@gmail.com>
 pkgname=apic-bin
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Git-friendly API contracts tools: CLI/TUI (apic) and desktop GUI (apic-gui), prebuilt binaries"
 arch=('x86_64' 'aarch64')
@@ -19,10 +19,10 @@ source_x86_64=("apic-${pkgver}-x86_64.tar.gz::${_rel}/apic-v${pkgver}-x86_64-unk
 source_aarch64=("apic-${pkgver}-aarch64.tar.gz::${_rel}/apic-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
                 "apic-gui-${pkgver}-aarch64.tar.gz::${_rel}/apic-gui-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('53fc69e9f347afbeca2b180cc840698a56ebdcf7e3de944557ce5c04dcba7c66')
-sha256sums_x86_64=('a6a995810bced4281dc269cbe3da1e0443ddc8c4f0ff7c57dde8c6ad658b3960'
-                   'eda7b490ba886f1080afae4f17248cdb3d0f65a32c1bd5573110ffa3cb0c3e87')
-sha256sums_aarch64=('742f990ed1204aec0daa8cd42639155981be9fe8969e824500407e5933e75d5a'
-                    'a993eee91a07cb5d57fce78afe158a171c032d3446b4be51bc12a5233361adb5')
+sha256sums_x86_64=('32a5c54d08f2a7d0d826d63c9aa1ce59e2ac7ac6e34d91f121a0d3e0278575a4'
+                   '55e33ccba9413e381843d327a5ddcdaeab4f7b39fe26daaf481c52e6647197fb')
+sha256sums_aarch64=('6ec8d15064f9d11fb4c66bd1733b195d9431193ecd5e5f0f77e9bca0be922b0f'
+                    'eb33b96530db8aaa18fbc35b47b5000ac5ac8dfb40bcdbeb00c2be00f3cd266b')
 
 package() {
     install -Dm755 "${srcdir}/apic"     "${pkgdir}/usr/bin/apic"
