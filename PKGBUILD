@@ -1,7 +1,7 @@
 # Maintainer: Ethan Alexander <ethanjalexander@hotmail.ca>
 
 pkgname="wallpiper-kde"
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="KDE Plasma 6 portal for wallpiper"
 arch=('x86_64')
@@ -16,19 +16,19 @@ sha256sums=('SKIP')
 build() {
     cd "$srcdir/$pkgname"
 
-    cmake -S portals/wallpiper-portal-kde/native -B target/kde \
+    cmake -S programs/wallpiper-portal-kde/native -B build/kde \
         -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
-    cmake --build target/kde --parallel
+    cmake --build build/kde --parallel
 }
 
 package() {
     cd "$srcdir/$pkgname"
 
-    DESTDIR="$pkgdir" cmake --install target/kde
+    DESTDIR="$pkgdir" cmake --install build/kde
 
     local plasmadir="$pkgdir/usr/share/plasma/wallpapers/dev.wallpiper.kde"
     install -d "$plasmadir"
-    cp -r portals/wallpiper-portal-kde/extension/. "$plasmadir/"
+    cp -r programs/wallpiper-portal-kde/extension/. "$plasmadir/"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
