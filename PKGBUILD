@@ -12,7 +12,7 @@ depends=(python tbb)
 optdepends=(mysql postgresql-libs ruby)
 conflicts=('quickfix')
 provides=("quickfix=$pkgver")
-makedepends=(boost python-setuptools swig)
+makedepends=(boost cmake python-setuptools swig)
 checkdepends=(ruby)
 source=("git+https://github.com/quickfix/quickfix.git"
     cmake.patch
