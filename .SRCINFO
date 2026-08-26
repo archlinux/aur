@@ -1,6 +1,6 @@
 pkgbase = gogcli-bin
 	pkgdesc = Google Suite CLI: Gmail, GCal, GDrive, GContacts.
-	pkgver = 0.38.0
+	pkgver = 0.38.1
 	pkgrel = 1
 	url = https://github.com/openclaw/gogcli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gogcli-bin
 	conflicts = gog
 	options = !strip
 	options = !debug
-	source = gogcli-0.38.0.tar.gz::https://github.com/openclaw/gogcli/releases/download/v0.38.0/gogcli_0.38.0_linux_amd64.tar.gz
-	sha256sums = 19a67ea56769510fd04fe1c66fcb42b3ad7cf9cc1d22328d1f4562fcf04083b2
+	source = gogcli-0.38.1.tar.gz::https://github.com/openclaw/gogcli/releases/download/v0.38.1/gogcli_0.38.1_linux_amd64.tar.gz
+	sha256sums = 6576828ed6852949ba424b967c3ff4268b3d9c90e201f90fe3d539fe3a151ebb
 
 pkgname = gogcli-bin
