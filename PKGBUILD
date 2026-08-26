@@ -4,7 +4,7 @@ _gitauthor=padovanl
 _gitname=termdock
 _appname=${_gitname}
 pkgname=${_appname}
-pkgdesc="A terminal multiplexer with persistent sessions — split panes, detach, reattach"
+pkgdesc="📟 A terminal multiplexer with persistent sessions, split panes, detach, reattach"
 
 pkgver=0.0.8
 pkgrel=1

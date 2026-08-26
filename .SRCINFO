@@ -1,5 +1,5 @@
 pkgbase = termdock
-	pkgdesc = A terminal multiplexer with persistent sessions — split panes, detach, reattach
+	pkgdesc = 📟 A terminal multiplexer with persistent sessions, split panes, detach, reattach
 	pkgver = 0.0.8
 	pkgrel = 1
 	url = https://github.com/padovanl/termdock
