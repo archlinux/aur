@@ -4,10 +4,10 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-globalmenu
-pkgver=152.0.1
+pkgver=153.0.4
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
-url="https://www.mozilla.org/firefox/"
+url="https://www.firefox.com/"
 arch=(x86_64)
 license=(MPL-2.0)
 depends=(
@@ -66,7 +66,8 @@ makedepends=(
   zip
 )
 optdepends=(
-  'hunspell-en_US: Spell checking, American English'
+  'firefox-i18n: Localizations'
+  'hunspell-dictionary: Spell checking'
   'libnotify: Notification integration'
   'networkmanager: Location detection via available WiFi networks'
   'onnxruntime: Local machine learning features such as smart tab groups'
@@ -78,31 +79,39 @@ options=(
   !lto
   !makeflags
 )
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/1273290ba8b395e7f6e2bc81f182c137ed3922dc
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/94c6383287095fb4b69da0a267faa90821856d9d
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   $commit/firefox-symbolic.svg
   $commit/firefox.desktop
   $commit/org.mozilla.firefox.metainfo.xml
+
+  # Make different channels installable in parallel
   $commit/0001-Install-under-remoting-name.patch
+
+  # Support FFmpeg 9
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/work_items/34
+  $commit/0002-Bug-2057577-DOM-Media-Add-FFmpeg-63-support.-r-alwu-.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
-  # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
+  # https://blog.mozilla.org/security/2026/08/10/updated-gpg-key-for-signing-firefox-and-thunderbird-releases/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('bff037bd04f0df25a330daa7133bea6eee5a02b7ce39da30581580271502f15e'
+sha256sums=('f7aa83924c66bb3b04cf139b3b00612d388a9f024c92fe7834161553a6028a48'
             'SKIP'
-            'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
+            'cb00ea359d6daf37900102307be4f515f1b7ef9c98825c64cc55bb562449d0d8'
             '2a51d57d98fbda86f094bc991e1ad4dd6e8a9d32fd0836b1183bf70ec4b68915'
-            '23f557fa7989adcae03cc9458d94716981dbcf0e9d6d52a289a2426e50b4b785'
-            '075ecdf42fa429d6c4b273c52d406f4335484c31b38f76fe3cc2e33ead7750cc')
-b2sums=('e1ebcc491e47039fc3505972c1fc23bee3b642d48b2b7e6689f17c5542503d905be235d79d98629ca614f738920a9bc3e8af8f47bd63bb6107e84c33ceecc331'
+            '4e01a62e20026b67466943bad9dfba47874c5e1492375f8293aeb85ecedf2288'
+            '83311ecf83698f2739ac42f26777df2e5df3fc090144480d10a9c203076b8165'
+            '55aeec4d098990e91f881de32126ea91576b0d185e322b561241c513ea5b9fcd')
+b2sums=('f5385a9383c449b3e6971366217f2edae15a3809b1d2fd6052b7942c1edf0f9cb5e98e67bb844dc6067f7a9577c962c8b48b464601bf46b00e5d3ad91218a3bc'
         'SKIP'
-        '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
+        'f2a9cfb758692584dd8057ab30d0ed9d22f5356d0021e1c8111a061866ee66d6b2d891351e11064f904fe8c90032e78f9def61ed54ae4208c8be4de6b4226277'
         '63c62c85ee70e22b02e9ea34e69f04f50403b7634b99fb0e996a83c963916dc4224041a0b265e54f6c224bd1777ddfdeb255037e3e30fec288695f3050278b05'
-        '1a7fc030b1051df00df1b2f5b247b8c658de6cdfba0788041c830da3aaaa6ac974ab684e05feb80672aa2d2c22294cacfa93a71dc664b3e60becdd65e879fcee'
-        'b9fb91bb2d9513aa4dd7d9492738c873871fa9f0866a63a4897f08194bde05e98c8cdb278aef6635dd54982b97ce6e951b5d9f8e71b91a2a83b2f8093c57ba04')
+        '607d592b164a88a11a1041002d67339a9a0001469cd979d24d0fda547cec472f602f6299c198f626f2c854df3ff05bd0b1fd84ae47ee52b97a7906575f5a5f36'
+        '20b287c93a43bbd08373af81d626c167a374700a5318ac83546c45d4bc54ff335c12cb32584f66ca61b7509836292117f8622feda56983fe72d6a4f3af3a5613'
+        '3a613f8534d1895b2e683e91155f990502f139dd49589de61589ce9c223e43d07782e1a8c07e1f82b2a8e74c313ec545e4851075cece927326f8aa43b2a18c57')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -113,11 +122,15 @@ prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
 
-  # Make different channels installable in parallel
-  patch -Np1 -i ../0001-Install-under-remoting-name.patch
-
-  # Appmenu patches
-  patch -Np1 -i ../unity-menubar.patch
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
   echo -n "$_google_api_key" >google-api-key
 
