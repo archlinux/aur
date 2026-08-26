@@ -1,7 +1,7 @@
 # Maintainer: Ethan Alexander <ethanjalexander@hotmail.ca>
 
 pkgname="wallpiper-cosmic"
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="COSMIC portal for wallpiper"
 arch=('x86_64')
@@ -20,6 +20,6 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
 
-    install -Dm755 target/release/wallpiper-portal-cosmic "$pkgdir/usr/lib/wallpiper/wallpiper-portal-cosmic"
+    install -Dm755 build/release/wallpiper-portal-cosmic "$pkgdir/usr/lib/wallpiper/wallpiper-portal-cosmic"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
