@@ -3,7 +3,7 @@
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=renovate
-pkgver=44.46.0
+pkgver=44.46.2
 pkgrel=1
 pkgdesc="Automated dependency update tool"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('git' 'pnpm')
 url="https://github.com/renovatebot/renovate"
 license=('AGPL-3.0-only')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ebaa200c8af7bdfdfb63d4a61d8f22c5b7f089e7d9ae40c1fd4cbd702b400a9a')
+sha256sums=('d8290bbd0f8b13100200e95eb43bac6bef9a817ae5bd549dec51205dd619d708')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
