@@ -1,8 +1,8 @@
 # Maintainer: Braulio Oliveira <brauliobo at gmail dot com>
 
 pkgname=alacrium-browser
-pkgver=151.0.7922.173
-pkgrel=2
+pkgver=152.0.7977.64
+pkgrel=1
 pkgdesc='Performance-focused Chromium browser tracking stable releases'
 arch=('x86_64')
 url='https://github.com/brauliobo/alacrium'
@@ -59,7 +59,7 @@ optdepends=(
   'pipewire: WebRTC desktop sharing under Wayland'
 )
 options=('!debug' '!strip')
-_commit=f2d69bf2db4fc839b03deebac1c94041bdf6dcd6
+_commit=d7bee1bf5c7df4fe0304fa84d687cb1306bbb4a7
 _depot_tools_commit=7bd73dcd391b3f83437f2bd50724c04044806728
 source=(
   "alacrium::git+https://github.com/brauliobo/alacrium.git#commit=${_commit}"
