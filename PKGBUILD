@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/IvelOt/hal-9001"
 license=('MIT')
 depends=('dbus' 'glibc' 'gcc-libs')
-makedepends=('cargo' 'rust')
+makedepends=('rust')
 optdepends=(
     'networkmanager: suporte ao gerenciamento de Wi-Fi e rede (D-Bus)'
     'bluez: suporte a descoberta, pareamento e telemetria de Bluetooth'

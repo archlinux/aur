@@ -6,7 +6,6 @@ pkgbase = hal-9001
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = cargo
 	makedepends = rust
 	depends = dbus
 	depends = glibc
