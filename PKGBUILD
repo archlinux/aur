@@ -4,6 +4,7 @@
 pkgname=cosmic-comp-gaming
 pkgver=1.18.0
 pkgrel=1
+epoch=1
 pkgdesc="Compositor for the COSMIC desktop environment with gaming patches and support fifo-v1, fullscreen tearing, and VRR Target Rate feature"
 arch=('x86_64' 'aarch64')
 url="https://github.com/skygrango/cosmic-comp"
