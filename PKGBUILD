@@ -1,12 +1,14 @@
 # Maintainer: Shawn McCool <shawn@mccool.email>
 pkgname=dredge
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Ear-first practice looper: loop sections, slow them down pitch-preserving, drill passages"
 arch=('x86_64')
 url="https://github.com/ShawnMcCool/dredge"
-license=('MIT')
-depends=('rubberband' 'pipewire' 'webkit2gtk-4.1' 'gtk3')
+# MIT for dredge itself; the binaries bundle Rubber Band (GPL-2.0-or-later),
+# so the distributed work is GPL-governed.
+license=('MIT AND GPL-2.0-or-later')
+depends=('pipewire' 'webkit2gtk-4.1' 'gtk3')
 makedepends=('rust' 'nodejs' 'npm' 'just' 'clang' 'pkgconf' 'git')
 optdepends=('ffmpeg: MP3 export, extra container formats, and demucs stem export'
             'uv: bootstrap the analyze/songformer ML venvs (beats, sections)'
