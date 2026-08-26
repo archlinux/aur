@@ -1,6 +1,6 @@
 pkgbase = mocktail-git
 	pkgdesc = Android x86-64 Roblox compatibility runtime for Linux
-	pkgver = 1.0.3.r70.g8f63b9d
+	pkgver = 1.0.3.r71.g9bd5f97
 	pkgrel = 1
 	url = https://github.com/komaruworld/mocktail
 	arch = x86_64
