@@ -3,6 +3,7 @@
 Categories=Network;
 Comment=Cloud storage management tools
 Exec=netmount
+StartupWMClass=netmount
 Icon=netmount
 Name=NetMount
 Terminal=false
