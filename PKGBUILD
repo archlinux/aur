@@ -1,10 +1,10 @@
 # Maintainer: Radu Macocian <radu@macocian.com>
 pkgname=omni-shell
-pkgver=0.0.1
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="Quickshell status bar, notification center and control center for Hyprland, with weather, clipboard history and an integrated omni-launcher."
 arch=('any')
-url="https://git.estatecloud.org/radumaco/omni-shell"
+url="https://git.macocian.com/radumaco/omni-shell"
 license=('GPL-3.0-or-later')
 depends=('quickshell' 'qt6-declarative' 'omni-launcher' 'bash' 'curl' 'python'
          'cliphist' 'wl-clipboard' 'libpulse' 'brightnessctl' 'bluez-utils'
@@ -12,9 +12,13 @@ depends=('quickshell' 'qt6-declarative' 'omni-launcher' 'bash' 'curl' 'python'
 optdepends=('hyprland: workspaces module and layer rules'
             'satty: screenshot notification actions'
             'wifitui: TUI handoff for enterprise Wi-Fi networks'
-            'bluetui: TUI handoff for Bluetooth devices needing a passkey')
+            'bluetui: TUI handoff for Bluetooth devices needing a passkey'
+            'power-profiles-daemon: Control Center power profile tile'
+            'pacman-contrib: checkupdates, for the pending updates module'
+            'wf-recorder: screen recording indicator'
+            'nvidia-utils: GPU usage and temperature on NVIDIA cards')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4e71205415f6831d1e335a27250e49a2d9b0ce3e32173e7a2470f5d4fdc5b383')
+sha256sums=('f96e99b97b6c5c2c4f8595cb140036055e84bb94be45b6ae27a49d503240552c')
 
 package() {
   cd "$srcdir/$pkgname"
@@ -29,6 +33,7 @@ package() {
   install -m644 modules/*.qml "$pkgdir/usr/share/$pkgname/modules/"
 
   install -Dm755 bin/omni-shell "$pkgdir/usr/bin/omni-shell"
+  install -Dm755 bin/omni-shell-ipc "$pkgdir/usr/bin/omni-shell-ipc"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
