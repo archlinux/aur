@@ -47,11 +47,10 @@ prepare() {
     's|\${PROJECT_BINARY_DIR}/_deps/rawtoaces_data-src|\${rawtoaces_data_SOURCE_DIR}|g' \
     $pkgname-$pkgver/CMakeLists.txt
 
-  # Include the system data directory in search paths alongside /usr/local.
-  sed -i \
-    's|"/usr/local/share/rawtoaces/data"|\
-"/usr/share/rawtoaces/data" + separator + "/usr/local/share/rawtoaces/data"|' \
-    $pkgname-$pkgver/src/rawtoaces_util/image_converter.cpp
+  # Set the system data directory in search paths.
+  local _search='"/usr/local/share/rawtoaces/data" + separator + legacy_path'
+  local _replace='"/usr/share/rawtoaces/data"'
+  sed -i "s|$_search|$_replace|" $pkgname-$pkgver/src/rawtoaces_util/image_converter.cpp
 }
 
 build() {
