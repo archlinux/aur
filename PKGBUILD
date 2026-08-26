@@ -30,7 +30,7 @@ build() {
   cmake -B build -S "$srcdir/$_pkgname/fcitx5-lilypad" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Debug
   cmake --build build
 }
 
