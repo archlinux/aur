@@ -3,5 +3,6 @@ post_upgrade() {
     then
         echo "vnt is upgraded to a version that has breaking changes."
         echo "Please check upstream release log to migrate from legacy version."
+        echo "vnt2_web uses random token if no VNT_WEB_TOKEN is set. You can create drop-in file to let vnt-web@.service have this environment variable."
     fi
 }
