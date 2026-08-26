@@ -3,7 +3,7 @@
 
 pkgname=php-phalcon-git
 _pkgname=cphalcon
-pkgver=5.20.1.r0.g4864e16
+pkgver=5.20.2.r0.ga7e2b8c
 pkgrel=1
 pkgdesc="Web framework delivered as a C-extension for PHP (development version)"
 url="https://phalcon.io"
