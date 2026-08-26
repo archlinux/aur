@@ -1,0 +1,25 @@
+pkgbase = treemd-bin
+	pkgdesc = A markdown navigator with tree-based structural navigation
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/Epistates/treemd
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = oniguruma
+	provides = treemd
+	conflicts = treemd
+	options = !strip
+	source = LICENSE-0.7.0::https://raw.githubusercontent.com/Epistates/treemd/v0.7.0/LICENSE
+	source = README-0.7.0.md::https://raw.githubusercontent.com/Epistates/treemd/v0.7.0/README.md
+	sha256sums = 0a2496502420c25264adbbe706b07da2d37a83d08d4241284e8229e23a46538e
+	sha256sums = 5fe97f84bf34fbb48bb85bd390c61d5d145f2ffe624e162de9f2fc671157b4d1
+	source_x86_64 = treemd-x86_64-0.7.0.tgz::https://github.com/Epistates/treemd/releases/download/v0.7.0/treemd-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 1abeb617f1e2fd466fdd455633d313db170c451107411c66c097038fe0de3c2a
+	source_aarch64 = treemd-aarch64-0.7.0.tgz::https://github.com/Epistates/treemd/releases/download/v0.7.0/treemd-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 094b2976c4a57b1f9d7e3ce10636829d81f8354ef42e0986e19c91a088add4d7
+
+pkgname = treemd-bin

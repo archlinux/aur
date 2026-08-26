@@ -1,0 +1,5 @@
+[treemd-bin]
+source = "github"
+github = "Epistates/treemd"
+use_latest_release = true
+prefix = "v"
