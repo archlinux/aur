@@ -1,5 +1,5 @@
 pkgname=patchy-image-editor-bin
-pkgver=0.89
+pkgver=0.90
 pkgrel=1
 pkgdesc="PSD-oriented image editor repackaged from the upstream Flatpak bundle"
 arch=('x86_64')
@@ -23,10 +23,8 @@ source=(
   "PatchyLinux-${pkgver}.flatpak::https://rtsoft.com/files/PatchyLinux.flatpak"
   'LICENSE'
 )
-sha256sums=(
-  '3a3714cea39c9700f20e920f0041b4942338bea82be41031bc44ef5f29e28786'
-  'bbc50c8c376e0e5980939be7df6769feed1a30289c7efc6391b204dfb15de88d'
-)
+sha256sums=('ba7cb336db1a576649d325860a1826d315dd564e83c97d2c35452e3aafd495be'
+            'bbc50c8c376e0e5980939be7df6769feed1a30289c7efc6391b204dfb15de88d')
 
 prepare() {
   local bundle="${srcdir}/PatchyLinux-${pkgver}.flatpak"
@@ -51,7 +49,8 @@ check() {
     cat patchy-ldd.log
     return 1
   fi
-  "${appdir}/bin/patchy" --version | grep -Fx "Patchy ${pkgver}"
+  QT_QPA_PLATFORM=offscreen \
+    "${appdir}/bin/patchy" --version | grep -Fx "Patchy ${pkgver}"
 }
 
 package() {
