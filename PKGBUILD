@@ -8,7 +8,7 @@
 # The stress test plugin is not built or packaged.
 
 pkgname=veiland
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Wayland screen locker with process-isolated GPU plugins"
 arch=('x86_64' 'aarch64')
@@ -49,7 +49,7 @@ backup=('etc/pam.d/veiland')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 # sha256 of the v$pkgver GitHub release tarball. Regenerate on each bump:
 #   curl -sL "$url/archive/refs/tags/v$pkgver.tar.gz" | sha256sum
-sha256sums=('35ed8586c4e05161a57a120765ff8b099a660755eb88e5e68a513440075de472')
+sha256sums=('757d1d0d02b39c983a070d785b58c011d19fcc36ddbdba278a99afc0c3da8774')
 
 # The real set, as -p flags shared by build() and check().
 _crates=(
@@ -66,6 +66,7 @@ _crates=(
   veiland-parallax
   veiland-blobs
   veiland-raymarcher
+  veiland-shader
 )
 
 # The nine production Python widgets, as "installed-name=source-basename"
