@@ -1,6 +1,6 @@
 pkgbase = gcx
 	pkgdesc = A CLI for managing Grafana Cloud resources, optimized for agentic usage
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/grafana/gcx
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gcx
 	license = Apache-2.0
 	makedepends = go>=1.26.2
 	options = !debug
-	source = gcx-1.1.1.tar.gz::https://github.com/grafana/gcx/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = 67d80291d3305366495aa2f60cf7f3f9b673f029dc123a7e45c4871ae4c2ff1f
+	source = gcx-1.2.0.tar.gz::https://github.com/grafana/gcx/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 0692bf03944dac8fc70aac183fea0243a9138bc00491f590f0d209a8de314fd8
 
 pkgname = gcx

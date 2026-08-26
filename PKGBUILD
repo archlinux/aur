@@ -1,7 +1,7 @@
 # Maintainer: thelooter <evekolb2204@gmail.com>
 
 pkgname=gcx
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A CLI for managing Grafana Cloud resources, optimized for agentic usage'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 makedepends=('go>=1.26.2')
 options=('!debug')  # The Go toolchain ships statically-linked binaries without DWARF in a separate package.
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('67d80291d3305366495aa2f60cf7f3f9b673f029dc123a7e45c4871ae4c2ff1f')
+sha256sums=('0692bf03944dac8fc70aac183fea0243a9138bc00491f590f0d209a8de314fd8')
 
 prepare() {
 	cd "$pkgname-$pkgver"
