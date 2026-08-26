@@ -3,7 +3,7 @@
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-comp-gaming
 pkgver=1.18.0
-pkgrel=1
+pkgrel=3
 epoch=1
 pkgdesc="Compositor for the COSMIC desktop environment with gaming patches and support fifo-v1, fullscreen tearing, and VRR Target Rate feature"
 arch=('x86_64' 'aarch64')
@@ -96,4 +96,7 @@ package() {
   just rootdir="$pkgdir" install
   cd "$srcdir/cosmic-settings"
   just rootdir="$pkgdir" install
+
+  install -Dm644 "$startdir/cosmic-comp-gaming.hook" \
+	  "$pkgdir/etc/pacman.d/hooks/cosmic-comp.hook"
 }
