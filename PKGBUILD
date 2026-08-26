@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=kodi-addon-rivulet
-pkgver=0.21.0 # renovate: datasource=github-releases depName=rivulet-kodi/plugin.video.rivulet
+pkgver=0.21.1 # renovate: datasource=github-releases depName=rivulet-kodi/plugin.video.rivulet
 pkgrel=1
 pkgdesc='Kodi video add-on reimplementing the Stremio client experience: catalogs, add-on management, stream resolution and playback'
 _addonid=plugin.video.rivulet
@@ -14,7 +14,7 @@ optdepends=(
 )
 options=('!strip')
 source=("${_addonid}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_addonid}-${pkgver}.zip")
-sha256sums=('5fe914482e71820a43400e73f3d302698d404ee2045e6d29fdc559d3aa8c32de')
+sha256sums=('ffc6d5777f84bf287eef7048c404e412cac25787a8b63df7b1e2f2ce0ffcfd39')
 
 package() {
   install -dm755 "${pkgdir}/usr/share/kodi/addons"
