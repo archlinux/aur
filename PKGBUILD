@@ -3,8 +3,8 @@
 
 pkgname=lindiskinfo
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="Qt-based S.M.A.R.T. and NVMe health monitor for Linux"
+pkgrel=2
+pkgdesc="Qt-based S.M.A.R.T. and NVMe health monitor for Linux, inspired by CrystalDiskInfo"
 arch=('x86_64')
 url="https://github.com/pacmanics/lindiskinfo"
 license=('GPL-3.0-or-later')
