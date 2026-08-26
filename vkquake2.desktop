@@ -2,6 +2,7 @@
 [Desktop Entry]
 Type=Application
 Name=vkQuake2
+Comment=id Software's Quake 2 v3.21 with Vulkan support
 Path=/opt/vkquake2
 Exec=/opt/vkquake2/quake2
 Icon=vkquake2.png
