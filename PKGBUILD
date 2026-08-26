@@ -1,6 +1,6 @@
 # Maintainer: musqz <gummy-fang-deputy@duck.com>
 pkgname=archcanary
-pkgver=0.1.30
+pkgver=0.1.31
 pkgrel=1
 pkgdesc="Layered security detection stack for Arch Linux — malicious AUR packages, systemd/eBPF persistence, npm/bun cache poisoning, kernel module tampering"
 arch=('any')
@@ -8,9 +8,8 @@ url="https://github.com/musqz/archcanary"
 license=('MIT')
 depends=('bash' 'pacman')
 optdepends=(
-  'yad: GTK GUI frontend (archcanary-gui)'
   'libnotify: desktop alerts on infected scan result'
-  'polkit: GUI privilege escalation for root checks'
+  'polkit: privileged remediation commands (allowlist edits, audit-rules/lynis-config writes)'
   'bpf: bpftool for eBPF rootkit detection'
   'yay: AUR helper with Lua hook support'
   'paru: AUR helper with PreBuildCommand hook support'
@@ -22,21 +21,27 @@ backup=('etc/archcanary/dkms_allowlist.conf'
         'etc/archcanary/autostart_allowlist.conf')
 install=archcanary.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/musqz/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('119bdc0cd3c5c5cf6fa4c776f9c7e46476d0659d14bc4cb3f56d7d64a504045f')
+sha256sums=('a530309fef9460606fc14d9d2f060f91dc53eda9e2abd59667fd5d55eaebfe95')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   # Stamp the real version into the placeholder install.sh normally sed's at
   # install time — package() bypasses install.sh entirely, so without this
-  # every installed copy keeps the literal "@VERSION@" and -V/About show
-  # "unknown" (archcanary-gui's About dialog runs `archcanary --version`).
+  # every installed copy keeps the literal "@VERSION@" and --version shows
+  # "unknown".
   sed -i "s/@VERSION@/$pkgver/" archcanary.sh
   sed -i "s/@VERSION@/$pkgver/" man/archcanary.1
 
-  # Main user-facing binaries
+  # Main user-facing binary
   install -Dm755 archcanary.sh    "$pkgdir/usr/bin/archcanary"
-  install -Dm755 archcanary-gui.sh "$pkgdir/usr/bin/archcanary-gui"
+
+  # Interactive terminal menu (replaces the removed yad GUI)
+  install -Dm755 archcanary-tui.sh "$pkgdir/usr/bin/archcanary-tui"
+
+  # Desktop entry launching the interactive menu
+  install -Dm644 configs/archcanary.desktop \
+    "$pkgdir/usr/share/applications/archcanary.desktop"
 
   # Man page
   install -Dm644 man/archcanary.1 "$pkgdir/usr/share/man/man1/archcanary.1"
@@ -70,10 +75,6 @@ package() {
   # Polkit policy (authorises root-helper via pkexec)
   install -Dm644 configs/org.archcanary.policy \
     "$pkgdir/usr/share/polkit-1/actions/org.archcanary.policy"
-
-  # Desktop entry
-  install -Dm644 configs/archcanary.desktop \
-    "$pkgdir/usr/share/applications/archcanary.desktop"
 
   # Systemd system units (root scan: weekly timer + pacman-triggered path;
   # scan-all-homes: opt-in weekly sweep of every real local user's home)
