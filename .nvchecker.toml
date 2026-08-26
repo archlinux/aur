@@ -1,0 +1,6 @@
+[pattn]
+source = "github"
+github = "patterniha/PattN"
+use_max_tag = true
+from_pattern = "-"
+to_pattern = "."
