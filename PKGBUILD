@@ -1,8 +1,8 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=iyuuplus
-pkgver=8.3.23
-pkgrel=2
+pkgver=8.3.24
+pkgrel=1
 pkgdesc="IYUU Auto Reseed Plus"
 arch=("any")
 url="https://github.com/ledccn/iyuuplus-dev"
@@ -30,8 +30,8 @@ source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('7bc616f90847759621d7369de753890d1bc5459d8267c8a37db322a63fe2071f'
-            '2599c5f243b573a4db2ff925e2ad75337338dc61a293b1a1c17acf3681b3d3ff'
+sha256sums=('92f49d69afc53e0a2c2d91c220eacc6897e801b151160e3757aba1e16e3cf41c'
+            '8501a5d17bd778735a4f8d343ec54c7a9dc70c8a993a50d951dc231c561d130f'
             'e64af1d0d088fa30e864897a43597026ee95f5e2590e79ac4055786795c60622'
             'efeaddf04efbb601eb8e56328e9b178604af5c9fa91e16dc0a37aa9c6e7067d7')
 options=(!strip !debug)

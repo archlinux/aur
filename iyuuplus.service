@@ -1,14 +1,14 @@
 [Unit]
-Description = IYUU Auto Reseed Plus Daemon.
-Documentation = https://doc.iyuu.cn
-Wants = network-online.target mariadb.service
-After = network-online.target mariadb.service
+Description=IYUU Auto Reseed Plus Daemon.
+Documentation=https://doc.iyuu.cn
+Wants=network-online.target mariadb.service
+After=network-online.target mariadb.service
 
 [Service]
-User = iyuuplus
-Group = iyuuplus
-Restart = on-failure
-ExecStart = /usr/bin/iyuuplus start
+User=iyuuplus
+Group=iyuuplus
+Restart=on-failure
+ExecStart=/usr/bin/iyuuplus start
 
 [Install]
-WantedBy = multi-user.target
+WantedBy=multi-user.target
