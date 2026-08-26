@@ -1,0 +1,20 @@
+pkgbase = v6asm-git
+	pkgdesc = CLI Intel 8080/Z80 assembler and FDD image tool for Vector-06c. Git version
+	pkgver = 2026.07.22.r12.gb73c12c
+	pkgrel = 1
+	url = https://github.com/parallelno/v6asm
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	provides = v6asm
+	provides = v6fdd
+	conflicts = v6asm
+	conflicts = v6fdd
+	options = !debug
+	source = v6asm-git::git+https://github.com/parallelno/v6asm.git
+	sha256sums = SKIP
+
+pkgname = v6asm-git
