@@ -1,30 +1,30 @@
 [Unit]
-Description=VNT Virtual LAN Server.
+Description=VNT Virtual LAN Web.
 Documentation=https://rustvnt.com/guide/introduction.html
 Wants=network-online.target
 After=network-online.target
 Wants=modprobe@tun.service
 After=modprobe@tun.service
+Conflicts=vnt-cli@.service
+After=vnt-cli@.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/vnt-cli -f /etc/vnt/vnt-cli.yml
-ExecStop=/usr/bin/vnt-cli --stop
+ExecStart=/usr/bin/vnt2_web --conf %d/%I.toml
+WorkingDirectory=%S/vnt/%I
 # Credential
-# TODO: Find ways to use DynamicUser and Capability instead.
-User=root
-Group=root
-#User=vnt
-#Group=vnt
-#DynamicUser=yes
+User=vnt
+DynamicUser=yes
 # Capability
-#CapabilityBoundingSet=CAP_NET_ADMIN
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW
 # Security
 NoNewPrivileges=yes
 # Sandboxing
 ProtectSystem=strict
 ProtectHome=yes
 ConfigurationDirectory=vnt
+StateDirectory=vnt/%I
 PrivateTmp=yes
 ProtectKernelTunables=yes
 ProtectKernelModules=yes
@@ -35,6 +35,8 @@ MemoryDenyWriteExecute=yes
 RestrictRealtime=yes
 RemoveIPC=yes
 PrivateMounts=yes
+DeviceAllow=/dev/net/tun rw
+LoadCredential=%I.toml:%E/vnt/%I.toml
 
 [Install]
 WantedBy=multi-user.target

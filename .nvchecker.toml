@@ -1,0 +1,5 @@
+[vnt]
+prefix = "v"
+source = "github"
+github = "vnt-dev/vnt"
+use_latest_release = true

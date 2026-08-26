@@ -1,0 +1,42 @@
+[Unit]
+Description=VNT Virtual LAN Client.
+Documentation=https://rustvnt.com/guide/introduction.html
+Wants=network-online.target
+After=network-online.target
+Wants=modprobe@tun.service
+After=modprobe@tun.service
+Conflicts=vnt-web@.service
+After=vnt-web@.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/vnt2_cli --conf %d/%I.toml
+WorkingDirectory=%S/vnt/%I
+# Credential
+User=vnt
+DynamicUser=yes
+# Capability
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW
+# Security
+NoNewPrivileges=yes
+# Sandboxing
+ProtectSystem=strict
+ProtectHome=yes
+ConfigurationDirectory=vnt
+StateDirectory=vnt/%I
+PrivateTmp=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictNamespaces=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+RemoveIPC=yes
+PrivateMounts=yes
+DeviceAllow=/dev/net/tun rw
+LoadCredential=%i.toml:%E/vnt/%I.toml
+
+[Install]
+WantedBy=multi-user.target

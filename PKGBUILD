@@ -1,49 +1,48 @@
 pkgname=vnt
-pkgver=1.2.17
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="An efficient VPN. 简便高效的异地组网、内网穿透工具"
 arch=(x86_64)
 url=https://rustvnt.com/
 license=(Apache-2.0)
-depends=(gcc-libs glibc iproute2)
-makedepends=(cargo clang)
+depends=(libgcc glibc)
+makedepends=(cargo clang pnpm nodejs-lts-jod protobuf)
+optdepends=('vnts: The Server of vnt.')
 options=(!lto)
-backup=(etc/vnt/vnt-cli.yml)
+backup=(etc/vnt/client.toml)
+install=vnt.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vnt-dev/vnt/archive/refs/tags/v$pkgver.tar.gz"
-        "vnt-cli.service"
-        "vnt-cli.yml")
-sha256sums=('652f0f69c916db138c0dd9265d128745a312276880d8c635b9c01dc20bbcfc90'
-            'f51e7600f848a4374da2a113377d97774c239b82cc6cf6c2d3870ae75cca8307'
-            '99e62f6021cc452d929df23554dc981ce58218ea6db30e7acea7f9a89683387c')
+        "vnt-cli@.service"
+        "vnt-web@.service")
+sha256sums=('b7a8c98d02d13fb7ffba6d394b7a12d0b3084c01bcca4a6defee04e9a8fd6b3b'
+            '0787b510c61595a498570f304ba9a6cdc690a879bbaab4838252968f6034e17a'
+            '501ab93300adbb44e03d1f52b7c919e6857f0cdca3d23b69d6ed4498e164c78d')
 
 prepare(){
     cd "$srcdir/$pkgname-$pkgver"
+    pnpm install --frozen-lockfile
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target host-tuple
 }
 
 build(){
     cd "$srcdir/$pkgname-$pkgver"
+    pnpm build:web
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    # vn-link-cli failed to build together with vnt-cli
-    cargo build --frozen --release --all-features \
-        --package vn-link-cli
-    cargo build --frozen --release --all-features \
-        --package vnt-cli
+    cargo build --frozen --release --all-features
+    ./target/release/vnt2_cli --conf-example
 }
 
 package(){
-    optdepends+=("sudo: Run as root automatically.")
-
     cd "$srcdir/$pkgname-$pkgver"
     find target/release \
         -maxdepth 1 \
         -executable \
         -type f \
         -exec install -Dvm0755 -t "$pkgdir/usr/bin" {} +
-    install -Dvm644 "$srcdir/vnt-cli.service" \
-        "$pkgdir/usr/lib/systemd/system/vnt-cli.service"
-    install -Dvm644 "$srcdir/vnt-cli.yml" \
-        "$pkgdir/etc/vnt/vnt-cli.yml"
+    install -Dvm644  -t "$pkgdir/usr/lib/systemd/system/" \
+        "$srcdir/vnt-cli@.service" \
+        "$srcdir/vnt-web@.service"
+    install -Dvm644 example_config.toml "$pkgdir/etc/vnt/client.toml"
 }
