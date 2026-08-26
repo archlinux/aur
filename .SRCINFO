@@ -12,6 +12,6 @@ pkgbase = relacy-git
 	source = git+https://github.com/dvyukov/relacy.git
 	source = wfmo-strict-aliasing.patch
 	b2sums = SKIP
-	b2sums = f4c29210ac2dc91365f2228a91371a3dbd51e22aefb4bdc5cf0210dfa509f3c31a8b1ba3d31ca1f20bd40dab19df0317a85c80fbc3773ecde44321989f440523
+	b2sums = 5ae98e4910c0840bac0d46d2adec7bc08d00b74d3c98c72833a648a0da4f7c2cc7de8bda0b7cb6edab6f806697c8d3051acd8d8ed98661baaf343013627561fb
 
 pkgname = relacy-git

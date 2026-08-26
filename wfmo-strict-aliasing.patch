@@ -1,3 +1,16 @@
+diff --git a/relacy/context.hpp b/relacy/context.hpp
+index f4df0d1..62b17b7 100644
+--- a/relacy/context.hpp
++++ b/relacy/context.hpp
+@@ -182,7 +182,7 @@ private:
+                                     debug_info_param info)
+     {
+ 			  return waitset<thread_count>::park_current(*this,
+-                                                         reinterpret_cast<waitset<thread_count>**>(ws),
++                                                         ws,
+                                                          wo, count, wait_all, is_timed, true, info);
+     }
+ 
 diff --git a/relacy/stdlib/windows.hpp b/relacy/stdlib/windows.hpp
 index 14d861c..1fe6719 100644
 --- a/relacy/stdlib/windows.hpp
@@ -14,3 +27,53 @@ index 14d861c..1fe6719 100644
      size_t signaled = 0;
      sema_wakeup_reason reason = wait_for_multiple_objects(signaled, count, obj, !!wait_all, try_wait, is_timed, info);
      if (reason == sema_wakeup_reason_success)
+diff --git a/relacy/waitset.hpp b/relacy/waitset.hpp
+index 6453f94..28f67ba 100644
+--- a/relacy/waitset.hpp
++++ b/relacy/waitset.hpp
+@@ -58,7 +58,7 @@ public:
+     }
+ 
+     static unpark_reason park_current(context& c,
+-                                      waitset** ws,
++                                      void** ws,
+                                       win_waitable_object** wo,
+                                       size_t count,
+                                       bool wait_all,
+@@ -70,9 +70,10 @@ public:
+         thread_desc desc = {th, (unsigned)count, ws, wo, wait_all, do_switch};
+         for (unsigned wsi = 0; wsi != count; ++wsi)
+         {
+-            RL_VERIFY(ws[wsi]->size_ < thread_count);
+-            ws[wsi]->set_[ws[wsi]->size_] = desc;
+-            ws[wsi]->size_ += 1;
++            waitset* const current_ws = static_cast<waitset*>(ws[wsi]);
++            RL_VERIFY(current_ws->size_ < thread_count);
++            current_ws->set_[current_ws->size_] = desc;
++            current_ws->size_ += 1;
+         }
+         unpark_reason reason = c.park_current_thread(is_timed, false, do_switch, info);
+         if (reason == unpark_reason_normal)
+@@ -134,7 +135,7 @@ private:
+     {
+         thread_info_base*       th_;
+         unsigned                count_;     // 0 - wfso, !0 - wfmo
+-        waitset**               ws_;        // 0 - wfso, !0 - wfmo
++        void**                  ws_;        // 0 - wfso, !0 - wfmo
+         win_waitable_object**   wo_;        // 0 - wfso, !0 - wfmo
+         bool                    wait_all_;
+         bool                    do_switch_;
+@@ -182,11 +183,11 @@ private:
+         size_ -= 1;
+     }
+ 
+-    static void remove(thread_info_base* th, waitset** ws, unsigned count)
++    static void remove(thread_info_base* th, void** ws, unsigned count)
+     {
+         for (unsigned wsi = 0; wsi != count; ++wsi)
+         {
+-            ws[wsi]->remove(th);
++            static_cast<waitset*>(ws[wsi])->remove(th);
+         }
+     }
+ };
