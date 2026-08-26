@@ -1,0 +1,17 @@
+pkgbase = hyperfoot
+	pkgdesc = Benchmark the resource footprint of commands
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/cesarferreira/hyperfoot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = gcc-libs
+	provides = hyperfoot
+	conflicts = hyperfoot
+	source = hyperfoot-0.2.2.crate::https://crates.io/api/v1/crates/hyperfoot/0.2.2/download
+	sha256sums = 23b3d74fbd215ce81f984d1936cc1ed07b627846e09f98adcc4ebd34c193d7c1
+
+pkgname = hyperfoot
