@@ -5,7 +5,7 @@
 pkgname=v2rayn
 _name=v2rayN
 pkgver=7.24.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
 arch=('aarch64' 'x86_64')
 url="https://github.com/2dust/v2rayN"
@@ -14,7 +14,6 @@ depends=('bash' 'dotnet-runtime-10.0' 'fontconfig' 'glibc' 'libgcc' 'libstdc++' 
 makedepends=('dotnet-sdk-10.0' 'gendesk' 'git')
 install="${pkgname}.install"
 source=("git+${url}#tag=${pkgver}"
-        "${pkgname}.sh"
         "git+https://github.com/2dust/GlobalHotKeys.git"
         "https://github.com/MetaCubeX/meta-rules-dat/releases/latest/download/geoip.metadb"
         "https://github.com/Loyalsoldier/geoip/releases/latest/download/Country.mmdb"
@@ -35,9 +34,9 @@ source=("git+${url}#tag=${pkgver}"
         "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-gfw.srs"
         "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-google.srs"
         "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-greatfire.srs"
-        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-private.srs")
+        "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-private.srs"
+        "${pkgname}.sh")
 sha256sums=('ac1f2a4822e853c275dd4995696724ccc314ba8ac75836c897d5a3625478ad68'
-            '0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -58,7 +57,8 @@ sha256sums=('ac1f2a4822e853c275dd4995696724ccc314ba8ac75836c897d5a3625478ad68'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390')
 
 prepare() {
     cd "${_name}"
@@ -81,6 +81,7 @@ build() {
         --configuration Release
         --output build
         --runtime linux-x64
+        -p:PublishSingleFile=false
         -p:SelfContained=false
     )
     dotnet publish "${publish_args[@]}" v2rayN.Desktop/v2rayN.Desktop.csproj
