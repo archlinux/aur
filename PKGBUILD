@@ -9,7 +9,7 @@ pkgname=(
   "${pkgbase}"
   "${pkgbase}-docs"
 )
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform application and UI framework"
 arch=(
   'i686'
@@ -80,6 +80,7 @@ package_qt2() {
     'libmng'
     'libpng'
     'libsm'
+    'libstdc++'
     'libx11'
     'libxext'
     'libxft'
