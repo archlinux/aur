@@ -1,0 +1,13 @@
+pkgbase = snip-llm-bin
+	pkgdesc = CLI proxy that filters shell output before it reaches your AI coding assistant's context window
+	pkgver = 0.24.1
+	pkgrel = 1
+	url = https://github.com/edouard-claude/snip
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	options = !debug
+	source = snip-llm-bin_0.24.1-1.tar.gz::https://github.com/edouard-claude/snip/releases/download/v0.24.1/snip_0.24.1_linux_amd64.tar.gz
+	sha256sums = 6f230ab6d66885b73f7de4fd32399cb6a60f64de92133dc25532cccbfb930985
+
+pkgname = snip-llm-bin
