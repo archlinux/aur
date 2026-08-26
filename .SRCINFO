@@ -1,13 +1,12 @@
 pkgbase = dim-agent-bin
 	pkgdesc = Agent runtime for desktop, terminal, scripts, and editors
 	pkgver = 0.9.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dimagent.com
 	arch = x86_64
 	license = custom
 	depends = gtk3
 	depends = libnotify
-	depends = libnss
 	depends = libxss
 	depends = libxtst
 	depends = xdg-utils

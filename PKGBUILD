@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=dim-agent-bin
 pkgver=0.9.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Agent runtime for desktop, terminal, scripts, and editors'
 arch=('x86_64')
 url='https://dimagent.com'
@@ -9,7 +9,6 @@ license=('custom')
 depends=(
   'gtk3'
   'libnotify'
-  'libnss'
   'libxss'
   'libxtst'
   'xdg-utils'
