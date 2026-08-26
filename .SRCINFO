@@ -1,0 +1,21 @@
+pkgbase = browserchooser
+	pkgdesc = rofi-style browser selector
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/fishman/browserchooser
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = gcc
+	makedepends = libglvnd
+	makedepends = mesa
+	makedepends = wayland
+	makedepends = libxkbcommon
+	depends = glibc
+	depends = libglvnd
+	depends = wayland
+	depends = libxkbcommon
+	source = https://github.com/fishman/browserchooser/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = browserchooser
