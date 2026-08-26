@@ -1,6 +1,6 @@
 pkgbase = cekhalal
 	pkgdesc = Terminal UI for searching Malaysia's official JAKIM halal directory (MyeHalal)
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/numan89/cekhalal
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cekhalal
 	makedepends = cargo
 	depends = gcc-libs
 	depends = openssl
-	source = cekhalal-0.1.2.tar.gz::https://github.com/numan89/cekhalal/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 2e2f750689f14cc91d016e799bb4e63de6298f7dfa21a4de30fceb3bbf831656
+	source = cekhalal-0.1.3.tar.gz::https://github.com/numan89/cekhalal/archive/refs/tags/v0.1.3.tar.gz
+	sha256sums = 0edd846c04ad71079e2bce7c43490f0a3f7d29e026fa61b8b2e21b63d55e5a3a
 
 pkgname = cekhalal

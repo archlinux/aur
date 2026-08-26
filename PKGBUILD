@@ -1,6 +1,6 @@
 # Maintainer: Muhammad Nu'man <numany2k2005@gmail.com>
 pkgname=cekhalal
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Terminal UI for searching Malaysia's official JAKIM halal directory (MyeHalal)"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/numan89/cekhalal/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2e2f750689f14cc91d016e799bb4e63de6298f7dfa21a4de30fceb3bbf831656')
+sha256sums=('0edd846c04ad71079e2bce7c43490f0a3f7d29e026fa61b8b2e21b63d55e5a3a')
 
 prepare() {
 	cd "$pkgname-$pkgver"
