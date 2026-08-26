@@ -1,6 +1,6 @@
 # Maintainer: indyfive11 <203553604+indyfive11@users.noreply.github.com>
 pkgname=bastionfw
-pkgver=1.5.23
+pkgver=1.5.24
 pkgrel=1
 pkgdesc="Modular, layered Linux firewall framework with an operator CLI, optional AI analysis layer, and an intelligent setup wizard"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
   'conntrack-tools: LAN-client relay verification (L6)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('61020057d129836a58f705cb792669ba2c34e030be3e3ddcf66997d6e4604a92')
+sha256sums=('6e7d78441938b6b805178887bd002382c70af2daecae633202cae5b305e83290')
 
 build() {
   cd "bastion-$pkgver"
