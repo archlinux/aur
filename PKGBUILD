@@ -44,7 +44,7 @@
 pkgbase=ttf-ms-win11
 pkgname=($pkgbase{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
 pkgver=10.0.26200.9168
-pkgrel=1
+pkgrel=3
 arch=(any)
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
