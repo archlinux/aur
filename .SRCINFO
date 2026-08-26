@@ -1,6 +1,6 @@
 pkgbase = vnt-git
 	pkgdesc = A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具
-	pkgver = 2.0.3.r0.g058a5e1
+	pkgver = 2.0.4.r0.g4314b41
 	pkgrel = 1
 	url = https://github.com/vnt-dev/vnt
 	install = vnt.install
