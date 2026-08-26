@@ -51,20 +51,15 @@ conflicts=(
 	"cosmic-randr-git"
 )
 source=(
-	'git+https://github.com/skygrango/cosmic-comp.git#branch=vrr_target_rate_v2'
+	'git+https://github.com/skygrango/cosmic-comp.git#branch=vrr_target_rate_v3'
 	'git+https://github.com/skygrango/cosmic-settings.git#branch=vrr_target_rate_v3'
-	'git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v3'
+	'git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v2'
 )
 sha256sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
 )
-
-pkgver() {
-  cd cosmic-comp
-  git describe --long --tags --match "gaming-*" | sed 's/^gaming-//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
