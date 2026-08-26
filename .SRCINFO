@@ -1,6 +1,6 @@
 pkgbase = python-nab
 	pkgdesc = PubGrub-based dependency resolver for Python packages.
-	pkgver = 0.0.13
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://github.com/notatallshaw/nab
 	arch = any
@@ -9,34 +9,45 @@ pkgbase = python-nab
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = nab-0.0.13.tar.gz::https://github.com/notatallshaw/nab/archive/refs/tags/v0.0.13.tar.gz
-	sha256sums = 80ceb2371ab767dcab9902db55601e95f4efbd92f8303593b304dff26f8bf4e3
+	source = nab-0.0.14.tar.gz::https://github.com/notatallshaw/nab/archive/refs/tags/v0.0.14.tar.gz
+	sha256sums = 298e1d44164f952869b354f8c148bf523aef97885233889bf3b6d9e8c0b33a9e
 
 pkgname = python-nab
 	depends = python-nab-index
-	depends = python-nab-python
+	depends = python-nab-project
+	depends = python-nab-provider
 	depends = python-nab-resolver
+	depends = python-typing_extensions
 	depends = python-tyro
 
 pkgname = python-nab-index
 	pkgdesc = PyPI Simple-API client and on-disk cache for nab
 	depends = python-packaging
+	depends = python-nab-provider
 	depends = python-truststore
 	depends = python-typing_extensions
 	depends = python-urllib3
 	optdepends = python-httpx
 
-pkgname = python-nab-python
+pkgname = python-nab-project
 	pkgdesc = Index-backed provider, lockfile emitter, and downloader for nab
 	depends = python-build
 	depends = python-installer
+	depends = python-nab-index
+	depends = python-nab-provider
+	depends = python-nab-resolver
 	depends = python-pyproject-hooks
 	depends = python-tomli
 	depends = python-tomli-w
 	depends = python-typing_extensions
-	depends = python-nab-index
+	conflicts = python-nab-python
+
+pkgname = python-nab-provider
+	pkgdesc = IO-free resolution core for nab
 	depends = python-nab-resolver
+	depends = python-typing_extensions
+	conflicts = python-nab-python
 
 pkgname = python-nab-resolver
 	pkgdesc = Generic PubGrub dependency-resolver core
-	depends = python-typing_extensions
+	depends = python
