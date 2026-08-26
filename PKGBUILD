@@ -1,27 +1,25 @@
 # Maintainer: Tom Hale <tom at hale dot ee>
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164  # var unused / var not assigned / cd without || exit
-# Contributor formula: -release-git (skill Option D, source-build variant).
 # Tracks kdave/btrfs-progs release-tag cadence; builds only the unshipped
-# internal tool btrfs-sb-mod (superblock field reader/modifier with checksum
-# fixup). Not provided by any AUR package or btrfs-progs-git (internal tools
-# are not installed by upstream 'make install').
+# internal tools btrfs-sb-mod (superblock field reader/modifier with
+# checksum fixup), btrfsck (standalone original filesystem checker) and
+# btrfs-corrupt-block (deliberate corruption injector for testing).
+# Not provided by any AUR package or btrfs-progs-git (internal tools are
+# not installed by upstream 'make install').
 _repo=kdave/btrfs-progs
-pkgname=btrfs-sb-mod-release-git
-_pkgname=btrfs-sb-mod
+pkgname=btrfs-progs-internals-release-git
+_tools=(btrfs-sb-mod btrfsck btrfs-corrupt-block)
 pkgver=7.1
 pkgrel=1
-pkgdesc='Modify or read members of a btrfs primary superblock with checksum recalculation (unshipped btrfs-progs internal tool), latest release tag build'
+pkgdesc='Unshipped btrfs-progs internal tools: btrfs-sb-mod superblock editor with checksum fixup, btrfsck standalone checker, btrfs-corrupt-block; latest release tag build'
 arch=('x86_64')
 url="https://github.com/${_repo}"
 license=('GPL-2.0-only')
-depends=('util-linux-libs')
-makedepends=(
-  'git'
-  'libgcrypt'
-  'lzo'
-  'zlib'
-  'zstd'
-)
+depends=('util-linux-libs'
+         'lzo'
+         'zlib'
+         'zstd')
+makedepends=('git')
 source=("git+https://github.com/${_repo}.git"
         "fix-xxhash-csum-size.patch")
 b2sums=('SKIP'
@@ -39,8 +37,8 @@ pkgver() {
 prepare() {
   cd "${srcdir}/btrfs-progs"
   git reset --hard "v${pkgver}"
-  # fix upstream csum-size bug: update_block_csum()/check_csum_superblock()
-  # used the CRC32-sized global for xxhash64, truncating the digest
+  # fix upstream csum-size bug (#1160): sb-mod hardcoded the CRC32 digest
+  # length, truncating xxhash64/sha256/blake2b superblock checksums
   patch -Np1 -i "${srcdir}/fix-xxhash-csum-size.patch"
 }
 
@@ -53,12 +51,15 @@ build() {
     --disable-python \
     --disable-convert \
     --disable-libudev
-  make "${_pkgname}"
+  make "${_tools[@]}"
 }
 
 package() {
   cd "${srcdir}/btrfs-progs"
-  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  local _tool
+  for _tool in "${_tools[@]}"; do
+    install -Dm755 "${_tool}" "${pkgdir}/usr/bin/${_tool}"
+  done
 }
 
 # vim:set ts=2 sw=2 et ft=PKGBUILD:
