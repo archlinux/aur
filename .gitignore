@@ -1,0 +1,6 @@
+# makepkg build artifacts (never push to AUR pkgbase)
+pkg/
+src/
+*.pkg.tar*
+*.src.tar*
+prism-harness/

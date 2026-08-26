@@ -1,6 +1,6 @@
 # Maintainer: Markus Maiwald <markus@maiwald.tk>
 pkgname=prism-harness-suite
-pkgver=1.0.0_rc4.1
+pkgver=1.0.0_beta.8
 pkgrel=1
 pkgdesc="PRISM harness suite for AI coding agents: doctrine rules, review steering, overnight loops, model routing and security gates on one Bun runtime"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('bun')
 makedepends=('git' 'bun')
 provides=('prism-harness' 'prism-loop' 'prism-proxy' 'prism-route' 'prism-sober')
 conflicts=('prism-harness' 'prism-loop' 'prism-proxy' 'prism-route' 'prism-sober')
-source=("git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v1.0.0-rc.4")
+source=("git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v1.0.0-beta.8")
 sha256sums=('SKIP')
 
 build() {
