@@ -1,14 +1,14 @@
 # Maintainer: vectorfruit <vectorfruit@outlook.com>
 
 pkgname=photomark
-pkgver=1.4.2
+pkgver=1.4.3
 pkgrel=1
 pkgdesc="Photo EXIF watermark and frame studio"
 arch=('x86_64')
 url="https://github.com/vectorfruit/photomark"
 license=('GPL-3.0-or-later')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vectorfruit/photomark/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7b0b2e158a3dae8882527fee4f32fdeaf705ad2d0b308a0ff0fdd340014d426d')
+sha256sums=('7da16ad1dc2b055fee98e87294ed4dcbbc3aa6232c776af8299473835510509b')
 depends=(
   'cairo'
   'dbus'
