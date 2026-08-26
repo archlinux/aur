@@ -1,7 +1,7 @@
 # Maintainer: cantosun99 <privat at cantosun dot de>
 pkgname=intel-deep-learning-essentials
-pkgver=2026.1.2
-pkgrel=4
+pkgver=2026.1.3
+pkgrel=1
 pkgdesc="Intel® Deep Learning Essentials + Intel® Deep Neural Network Library - Intel® oneAPI DPC++/C++ Compiler, Intel® oneAPI DPC++ Library, Intel® oneAPI Math Kernel Library, Intel® oneAPI Collective Communications Library, Intel® Deep Neural Network Library"
 arch=('x86_64')
 url="https://www.intel.com/content/www/us/en/developer/tools/oneapi/oneapi-toolkit-download.html"
@@ -37,21 +37,21 @@ conflicts=(
 )
 options=('!strip' 'staticlibs')
 source=(
-    'https://registrationcenter-download.intel.com/akdlm/IRC_NAS/c109e1ae-e02c-48a6-917b-b03b90d33f77/intel-deep-learning-essentials-2026.1.2.25_offline.sh'
+    'https://registrationcenter-download.intel.com/akdlm/IRC_NAS/bedab612-cf6b-4ece-872e-e72e9534ccab/intel-deep-learning-essentials-2026.1.3.17_offline.sh'
     'https://registrationcenter-download.intel.com/akdlm/IRC_NAS/94c3dbac-0852-45be-a57d-21c204cada3e/intel-onednn-2026.0.2.46_offline.sh'
 )
 noextract=(
-    'intel-deep-learning-essentials-2026.1.2.25_offline.sh'
+    'intel-deep-learning-essentials-2026.1.3.17_offline.sh'
     'intel-onednn-2026.0.2.46_offline.sh'
 )
 sha384sums=(
-    '71bef416ccab3d73e6768cbe2e82e08bb97b6ace61bbcb437369901c26872be583ff571225d648b7fa82e63ff31994d2'
+    '0f8f7bc22cc60828c99cac514a51dac58503d417961e70b9b366050eee2bbeee2db7252e514a9ec0679fdff967122bf2'
     'a3cb11a67b400ca8ae2338c6a4802108204cfcebba0f736560ebf8acb834b73b351776c412c7050d7b3eedde18f29a6e'
 )
 
 package() {
     # Show warning during makepkg build time
-    echo "========================================================================"
+    echo "==========================================================================="
     echo " NOTE: The installer may output a few error messages during installation."
     echo " This is because Intel intended the oneAPI packages for Windows and Ubuntu,"
     echo " not Arch Linux. Please just let it run and ignore these non-fatal errors."
@@ -63,7 +63,7 @@ package() {
     echo " "
     echo " If you encounter further issues, please refer to:"
     echo " https://github.com/cantosun99/intel-deep-learning-essentials"
-    echo "========================================================================"
+    echo "==========================================================================="
 
     # Must run without fakeroot env so --install-dir is respected by the installer
     local _real_user="${SUDO_USER:-$USER}"
@@ -71,7 +71,7 @@ package() {
     env -i HOME="/home/${_real_user}" \
            USER="${_real_user}" \
            PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" \
-    sh "${srcdir}/intel-deep-learning-essentials-2026.1.2.25_offline.sh" \
+    sh "${srcdir}/intel-deep-learning-essentials-2026.1.3.17_offline.sh" \
         -a --silent --eula accept \
         --install-dir "${pkgdir}/opt/intel/oneapi" \
         --log-dir "${srcdir}/"
