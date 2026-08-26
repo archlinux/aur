@@ -1,6 +1,6 @@
 # Maintainer: igaurab <dev@igaurab.com>
 pkgname=sidetab
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A Contexts-style window switcher sidebar for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('hyprland' 'vulkan-icd-loader' 'wayland' 'libxkbcommon' 'fontconfig')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d96dd176a39da7a9f834c28394dd024f940958af7466a1f060ca82baaffb6085')
+sha256sums=('e50cad363e6368632c61cd280186348ce0fef5f04975b2e08e4f2eff4c9cc7e6')
 
 prepare() {
   cd "$pkgname-$pkgver"
