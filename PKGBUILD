@@ -14,7 +14,7 @@ backup=('etc/pam.d/velogin')
 install=velogin-bin.install
 
 source=("velogin.tar.gz::https://github.com/viewerofall/veilTDC/releases/download/v${pkgver}/velogin.tar.gz")
-sha256sums=('b4feea1344c0273996182b6748ebc0c0615afd55b68f77900551874789088ac4')
+sha256sums=('6e9714b8b52a1cf35ade940a485bac4736a8fc7b741749bc549925c23d30a3e2')
 
 package() {
     install -Dm755 "${srcdir}/velogin/velogin" "${pkgdir}/usr/bin/velogin"
