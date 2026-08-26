@@ -2,7 +2,7 @@
 
 pkgname=onedriveqt
 _pkgname=OneDriveQt
-pkgver=1.5.0
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="OneDrive Qt6 同步客户端"
 arch=('x86_64')
