@@ -1,9 +1,9 @@
 pkgbase = fluent-reader-electron-bin
 	pkgdesc = Modern desktop RSS reader built with Electron, React, and Fluent UI. (with system electron)
-	pkgver = 1.1.4
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://hyliu.me/fluent-reader
-	arch = any
+	arch = x86_64
 	license = custom:BSD3
 	makedepends = git
 	depends = hicolor-icon-theme
@@ -13,9 +13,9 @@ pkgbase = fluent-reader-electron-bin
 	options = strip
 	options = emptydirs
 	options = zipman
-	source = fluent-reader-1.1.4.AppImage::https://github.com/yang991178/fluent-reader/releases/download/v1.1.4/Fluent.Reader.1.1.4.AppImage
+	source = fluent-reader-1.2.2.AppImage::https://github.com/yang991178/fluent-reader/releases/download/v1.2.2/Fluent.Reader.1.2.2.AppImage
 	source = fluent-reader.sh
-	sha256sums = da82d5f5258136dd23d56012ea3e1da1bb14129a6d8d3b9ba6bf2974e708398e
+	sha256sums = 009c44d57e97fca260ffac56650272be01e3f5369b1419364d0768b43b388964
 	sha256sums = 9887decd3a128b84f10ffdd1cda7a201d4e156f56928d2a8f31685d713829b92
 
 pkgname = fluent-reader-electron-bin

@@ -5,10 +5,10 @@
 
 _pkgname=fluent-reader
 pkgname=$_pkgname-electron-bin
-pkgver=1.1.4
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='Modern desktop RSS reader built with Electron, React, and Fluent UI. (with system electron)'
-arch=('any')
+arch=('x86_64')
 url='https://hyliu.me/fluent-reader'
 _url='https://github.com/yang991178/fluent-reader'
 license=('custom:BSD3')
@@ -20,7 +20,7 @@ options=(strip emptydirs zipman)
 _appimage=${_pkgname}-${pkgver}.AppImage
 source=("$_appimage::${_url}/releases/download/v${pkgver}/Fluent.Reader.${pkgver}.AppImage"
         "$_pkgname.sh")
-sha256sums=('da82d5f5258136dd23d56012ea3e1da1bb14129a6d8d3b9ba6bf2974e708398e'
+sha256sums=('009c44d57e97fca260ffac56650272be01e3f5369b1419364d0768b43b388964'
             '9887decd3a128b84f10ffdd1cda7a201d4e156f56928d2a8f31685d713829b92')
 
 prepare() {
