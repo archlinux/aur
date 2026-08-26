@@ -1,6 +1,6 @@
 # Maintainer: EndlessEden < endlesseden [at] deep-rose {dot} org >
 pkgname=plasma6-applet-homeassistant
-pkgver=1.3.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Plasmoid for Home Assistant on your plasma desktop."
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git')
 depends=('libplasma>6' 'qt6-5compat' 'kirigami' 'ksvg' 'qt6-declarative' 'kdeclarative' 'kquickcharts' 'kcmutils' 'qt6-websockets' 'kwallet')
 source=("git+https://github.com/korapp/plasma-homeassistant.git#tag=v${pkgver}"
 		"secrets::git+https://github.com/korapp/plasma-lib-secrets.git")
-sha256sums=('1975ab7f36a2556d562db844e4ff0797a4824c61d380e3dfccd4b1dcbe065e89'
+sha256sums=('88148a42fcb233ba647f6535d121e906d5f71c60d968fc6622c879a18387e958'
 			'SKIP')
 prepare() {
 	cd "${srcdir}"
