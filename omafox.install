@@ -6,15 +6,16 @@ post_install() {
     '==> Omafox installed successfully!' \
     '' \
     '🚀 To complete setup:' \
-    '   1. Install the separately distributed Omafox extension in Firefox.' \
+    '   1. Install the separately distributed Omafox extension in Firefox or Zen Browser.' \
     '   2. Run as your desktop user:' \
     '      omafox setup' \
     '' \
     '   This will:' \
     '   • Enable the Omarchy theme hook' \
-    '   • Queue the current palette for Firefox' \
+    '   • Queue the current palette for connected browsers' \
+    '   • Configure the CSS bridge for existing Zen profiles' \
     '' \
-    'Then change your Omarchy theme and watch Firefox follow along!' \
+    'Restart Zen once after setup, then change your Omarchy theme and watch your browsers follow along!' \
     ''
 }
 
@@ -24,9 +25,9 @@ post_upgrade() {
     '==> Omafox updated successfully!' \
     '' \
     '   To complete the update:' \
-    '   • Install or update the separately distributed Omafox Firefox extension.' \
+    '   • Install or update the separately distributed Omafox extension in Firefox or Zen.' \
     '   • Run "omafox setup" as your desktop user.' \
-    '   • Restart Firefox or reload the extension.' \
+    '   • Restart Zen, or restart Firefox/reload the extension.' \
     ''
 }
 
@@ -38,9 +39,11 @@ post_remove() {
     'Preserved user files:' \
     '   • ~/.config/omarchy/hooks/theme-set.d/omafox' \
     '   • ~/.local/state/omafox/theme.json' \
+    '   • Managed files and blocks in detected Zen profiles' \
     '' \
-    'Delete those files manually if "omafox remove" was not run first.' \
-    'The separately installed Firefox extension was not removed.' \
+    'Remove only the Omafox-owned files and marked blocks if "omafox remove" was not run first.' \
+    'Zen preferences copied from user.js can be reset in about:config if desired.' \
+    'The separately installed browser extension was not removed.' \
     '' \
     'Thank you for using Omafox!' \
     ''

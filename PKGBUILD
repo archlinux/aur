@@ -1,17 +1,20 @@
 # Maintainer: Fabio Cantoni <cover@revoc.net>
 
 pkgname=omafox
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc='Synchronize the Firefox theme with Omarchy'
+pkgdesc='Synchronize Firefox and Zen Browser themes with Omarchy'
 arch=('x86_64' 'aarch64')
 url='https://github.com/cover/omafox'
 license=('MIT')
 depends=('bash' 'glibc')
-optdepends=('firefox: runs the separately distributed Omafox extension')
+optdepends=(
+  'firefox: runs the separately distributed Omafox extension'
+  'zen-browser-bin: runs the separately distributed Omafox extension with Zen integration'
+)
 install=omafox.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('31440738207e72ab3c80896f230dc0ed04a8b3831e8e7fc48b135de1f5f61fd6')
+sha256sums=('b610174e19edf2940127761f2883a14e5ba8644bc42c75ead8148305c7caa4f9')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"

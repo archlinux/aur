@@ -1,6 +1,6 @@
 pkgbase = omafox
-	pkgdesc = Synchronize the Firefox theme with Omarchy
-	pkgver = 1.0.0
+	pkgdesc = Synchronize Firefox and Zen Browser themes with Omarchy
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/cover/omafox
 	install = omafox.install
@@ -10,7 +10,8 @@ pkgbase = omafox
 	depends = bash
 	depends = glibc
 	optdepends = firefox: runs the separately distributed Omafox extension
-	source = omafox-1.0.0.tar.gz::https://github.com/cover/omafox/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 31440738207e72ab3c80896f230dc0ed04a8b3831e8e7fc48b135de1f5f61fd6
+	optdepends = zen-browser-bin: runs the separately distributed Omafox extension with Zen integration
+	source = omafox-1.1.0.tar.gz::https://github.com/cover/omafox/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = b610174e19edf2940127761f2883a14e5ba8644bc42c75ead8148305c7caa4f9
 
 pkgname = omafox
