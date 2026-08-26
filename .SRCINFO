@@ -1,6 +1,6 @@
 pkgbase = hyprfm-git
 	pkgdesc = A lightweight Qt6/QML file manager for Hyprland
-	pkgver = r340.gc3c9343
+	pkgver = r343.g5918bb3
 	pkgrel = 1
 	url = https://github.com/soyeb-jim285/hyprfm
 	arch = x86_64
@@ -25,6 +25,7 @@ pkgbase = hyprfm-git
 	optdepends = fd: fast recursive search (falls back to a built-in walker)
 	optdepends = bat: syntax-highlighted text previews
 	optdepends = gvfs-smb: SMB/CIFS remote browsing support
+	optdepends = gvfs-mtp: Android phones (MTP) in the sidebar
 	optdepends = ffmpeg: video thumbnails and audio/video metadata (via ffprobe)
 	optdepends = poppler: PDF thumbnails, previews, and metadata (via pdftoppm/pdfinfo)
 	optdepends = perl-image-exiftool: EXIF metadata for images (via exiftool)
