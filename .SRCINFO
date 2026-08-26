@@ -1,6 +1,6 @@
 pkgbase = iacs
 	pkgdesc = Access Client Solutions is a Java based, platform-independent interface for IBM i systems.
-	pkgver = 1.1.9.14
+	pkgver = 1.1.9.15
 	pkgrel = 1
 	url = https://www.ibm.com/support/pages/ibm-i-access-client-solutions
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = iacs
 	options = !debug
 	backup = opt/ibm/iAccessClientSolutions/AcsConfig.properties
 	source = file://IBMiAccess_v1r1.zip
-	sha256sums = 274e634527acf36574b25c598c54d91bdd24e713f72be330584b5be67fcee9aa
+	sha256sums = 9992eac213c0518b6609214dcd7e83e9bba8acf217d9f056f511c66d359640e6
 
 pkgname = iacs
