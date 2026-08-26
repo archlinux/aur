@@ -1,7 +1,7 @@
 # Maintainer: xihale <xihale.top@qq.com>
 
 pkgname="v2rayn-bin"
-pkgver=7.24.4
+pkgver=7.24.8
 pkgrel=1
 pkgdesc="A GUI client for Windows and Linux, support Xray core and others"
 arch=("x86_64" "aarch64")
@@ -12,7 +12,7 @@ depends=('fontconfig')
 options=('!strip')
 
 source_x86_64=("v2rayN-linux-64-${pkgver}.zip::${url}/releases/download/${pkgver}/v2rayN-linux-64.zip")
-sha256sums_x86_64=('459ef8afdd3e062fc3c8d56bd9182e60acdb831fd748f6ded6facfb6daa7f475')
+sha256sums_x86_64=('e90d6d1c7f69f259121ca3319113d79a0dd827ac51f51a73bfec2100838e373c')
 source_aarch64=("v2rayN-linux-arm64-${pkgver}.zip::${url}/releases/download/${pkgver}/v2rayN-linux-arm64.zip")
 sha256sums_aarch64=('641189ff33e5a02006b8f4d4ff35b0384fa4fd236dcf6664d075a44cd314e18c')
 
