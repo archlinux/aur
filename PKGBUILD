@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-launcher-git
-pkgver=1.0.16.r0.ga64ed9a
+pkgver=1.6.0.r7.gf7389d7
 pkgrel=1
 pkgdesc="Layer Shell frontend for Pop Launcher."
 arch=('x86_64' 'aarch64')
@@ -43,7 +43,9 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
+  export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
+  just xdgen
 
   # use nice to build with lower priority
   nice just build-release --frozen
