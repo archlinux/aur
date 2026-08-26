@@ -1,7 +1,7 @@
 # Maintainer: WaiRo <wairo at cock dot li>
 _pkgname="vibra"
 pkgname="$_pkgname-git"
-pkgver=r329.3216882
+pkgver=0.1.0.r4.g7f3cd2d
 pkgrel=1
 pkgdesc="A library and CLI tool for music recognition using the unofficial Shazam API"
 
@@ -34,7 +34,7 @@ sha256sums=("SKIP")
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
