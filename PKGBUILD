@@ -3,7 +3,7 @@
 
 _appname=sql-studio
 pkgname=${_appname}-bin
-pkgver=0.1.52
+pkgver=0.1.53
 pkgrel=1
 pkgdesc="SQL Database Explorer [SQLite, libSQL, PostgreSQL, MySQL/MariaDB, DuckDB, ClickHouse, Parquet and CSV]"
 
@@ -17,8 +17,8 @@ depends=('glibc' 'gcc-libs' 'openssl')
 
 source_x86_64=("${pkgname}-${pkgver}.tar.xz::https://github.com/frectonz/"${_appname}"/releases/download/${pkgver}/"${_appname}"-${arch[0]}-unknown-linux-gnu.tar.xz"
                "${pkgname}-${pkgver}.tar.xz.sha256::https://github.com/frectonz/"${_appname}"/releases/download/${pkgver}/"${_appname}"-${arch[0]}-unknown-linux-gnu.tar.xz.sha256")
-b2sums_x86_64=('9024aec2c33f4e44b4d4826b9eef202f5020eb2d13c7d5b66085d76fa4df1bfac2539b53dcbab9115fff5d56dd5186e48afef4e4e034d7e8bf3c40ba4b73103e'
-               '43689a76bcb9bdb386486b30486bf93076e94704149f89e50c29fd46effddfa88e7fb208b6f626f740487d1f002ebf2721afa97751741b9350a42ca9aeb7d65c')
+b2sums_x86_64=('7536f0a9bfc0c5f11bcd579cc90933af5272e72fe355d20c3c39c362fc38be7b82bf468bd1fb2e34c0f5f6a23f817ae3be314c933ad5fbdbe88c3e3091bb0b9a'
+               '97661f52bd88fc3fb01c48179fd375fe9773d6ffd8fc62e448eb8367668bed3c43fbed6f8a02b1c4f17fa2618f2bd45f5a544fbb06a9321ef2995ef1b1a6c2c0')
 
 package() {
     cd "${srcdir}/${_appname}-${CARCH}-unknown-linux-gnu"
