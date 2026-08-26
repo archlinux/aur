@@ -7,7 +7,10 @@ pkgrel=1
 pkgdesc="Zepp OS simulator"
 arch=('x86_64')
 url="https://zeppos.com/developer/simulator/"
-license=('custom')
+# Proprietary Zepp EULA, which upstream does not ship in the .deb - only the
+# Electron and Chromium notices are there, and those are what land in
+# /usr/share/licenses. Terms live at the url above.
+license=('LicenseRef-custom')
 options=('!strip' '!debug')
 
 # Electron runtime. Most are pulled in by gtk3, but Electron dlopens
