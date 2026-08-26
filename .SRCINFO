@@ -1,0 +1,23 @@
+pkgbase = xrat-bin
+	pkgdesc = TUI client for VLESS / Xray / sing-box (pre-compiled binary)
+	pkgver = 0.19.0
+	pkgrel = 1
+	url = https://github.com/mhyrzt/xrat
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	optdepends = xray: Xray core executable for running proxy sessions
+	optdepends = sing-box: sing-box core executable
+	optdepends = v2ray: V2Ray core executable
+	provides = xrat
+	conflicts = xrat
+	options = !strip
+	source_x86_64 = xrat-bin-0.19.0-x86_64.tar.gz::https://github.com/mhyrzt/xrat/releases/download/v0.19.0/xrat-v0.19.0-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = be2ac18a28ab167c29fa8533f1235936a79637794a4a8fe5113993a99ae959f0
+	source_aarch64 = xrat-bin-0.19.0-aarch64.tar.gz::https://github.com/mhyrzt/xrat/releases/download/v0.19.0/xrat-v0.19.0-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = f29f88f10ca61e5915c68829cd721d8520ff68398d59f2678bc60a04dc59b2f5
+
+pkgname = xrat-bin
