@@ -1,3 +1,13 @@
+2026.08.26, v19.20.4
+
+feature:
+- 3b1dad84 cloudcmd: @cloudcmd/move-files v9.0.1 (#472)
+
+2026.08.26, v19.20.3
+
+feature:
+- 12cb4aca cloudcmd: @cloudcmd/fileop v9.0.8 (#472)
+
 2026.08.25, v19.20.2
 
 fix:
