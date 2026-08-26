@@ -1,0 +1,4 @@
+[python-pypsrp]
+source = "github"
+github = "jborean93/pypsrp"
+use_latest_release = true
