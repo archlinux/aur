@@ -1,8 +1,8 @@
 pkgbase = rtlsdr-airband-git
 	pkgdesc = RTLSDR AM demodulator, support multiple channels per dongle
-	pkgver = 5.0.12.0.ge7cd0ec
-	pkgrel = 2
-	url = https://github.com/charlie-foxtrot/RTLSDR-Airband
+	pkgver = 5.3.1.0.g93e56e5
+	pkgrel = 1
+	url = https://github.com/rtl-airband/RTLSDR-Airband
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = rtlsdr-airband-git
 	optdepends = soapysdr
 	provides = rtlsdr-airband
 	conflicts = rtlsdr-airband
-	source = rtlsdr-airband::git+https://github.com/charlie-foxtrot/RTLSDR-Airband.git#branch=main
+	source = rtlsdr-airband::git+https://github.com/rtl-airband/RTLSDR-Airband.git#branch=main
 	source = rtl_airband.conf.example
 	md5sums = SKIP
 	md5sums = 83c1de3720baca0e2222b6e1abfade1c

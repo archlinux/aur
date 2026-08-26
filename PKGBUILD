@@ -1,19 +1,20 @@
-# Maintainer: EndlessEden <eden [at] rose.place>
+# Maintainer: EndlessEden < endlesseden [at] deep-rose {dot} org >
+# Co-Maintainer: Strykar < strykar [at] hotmail {dot} com >
 # Previous Maintainer: Michal Krenek (Mikos) <m.krenek@gmail.com>
 
 pkgname=rtlsdr-airband-git
-pkgver=5.0.12.0.ge7cd0ec
-pkgrel=2
+pkgver=5.3.1.0.g93e56e5
+pkgrel=1
 pkgdesc="RTLSDR AM demodulator, support multiple channels per dongle"
 arch=('i686' 'x86_64')
-url="https://github.com/charlie-foxtrot/RTLSDR-Airband"
+url="https://github.com/rtl-airband/RTLSDR-Airband"
 license=('GPL3')
 depends=('rtl-sdr' 'fftw' 'libvorbis' 'lame' 'libshout' 'libconfig' 'soapysdr')
 makedepends=('git')
 optdepends=('soapysdr')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('rtlsdr-airband::git+https://github.com/charlie-foxtrot/RTLSDR-Airband.git#branch=main'
+source=('rtlsdr-airband::git+https://github.com/rtl-airband/RTLSDR-Airband.git#branch=main'
 'rtl_airband.conf.example')
 md5sums=('SKIP'
 '83c1de3720baca0e2222b6e1abfade1c')
