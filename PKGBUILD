@@ -15,7 +15,7 @@ _pkgname=proton-rtsp
 pkgname=${_pkgname}-bin
 pkgver=11.0_20260609
 pkgrel=2
-epoch=3
+epoch=4
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 provides=('proton' "proton-rtsp=${pkgver/_/.}")
@@ -35,7 +35,6 @@ depends=('python'
   'graphene'
   'lib32-libjpeg-turbo'
   'lib32-libgudev'
-  'lib32-mpg123'
   # other #
   'lib32-openssl'
   'lib32-libusb')
@@ -68,7 +67,7 @@ _protoncfg=${_protondir}/user_settings.py
 backup=("$_protoncfg")
 
 ## sources
-url='https://github.com/SpookySkeletons/proton-ge-rtsp'
+url='https://github.com/SpookySkeletons/proton-rtsp'
 source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgname}-${_pkgver}-${pkgrel}/${_pkgname}-${_pkgver}-${pkgrel}.tar.gz"
   'user_settings.py'
   'launcher.sh'
