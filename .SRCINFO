@@ -1,0 +1,15 @@
+pkgbase = portop
+	pkgdesc = 🔌 What's really using your ports? htop-style TUI, one keypress to kill it
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/padovanl/portop
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = portop
+	options = !strip
+	source = portop-0.0.5.tgz::https://github.com/padovanl/portop/archive/v0.0.5.tar.gz
+	sha256sums = dd80fa6c598effc6c92575fa36a10c2c86a4632a3b629a047fb20d0de59f8aae
+
+pkgname = portop
