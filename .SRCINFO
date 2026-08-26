@@ -1,0 +1,19 @@
+pkgbase = v6emul-bin
+	pkgdesc = Command-line emulator for the Vector-06C Soviet PC. Binary release
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/parallelno/v6emul
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = v6emul=1.0.0
+	conflicts = v6emul
+	options = !strip
+	options = !debug
+	source = v6emul-2026.04.28-linux-x86_64.tar.gz::https://github.com/parallelno/v6emul/releases/download/v1.0.0/v6emul-2026.04.28-linux-x86_64.tar.gz
+	source = v6emul-1.0.0.tar.gz::https://github.com/parallelno/v6emul/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = b50bdce5957746140efd503a71feecce7a7521c876a24ab16a1d7e682f754f72
+	sha256sums = ccf8c0dbc2df27d66af0d028a927f2821f1b9be2b254f42bc644215d4fe42ffb
+
+pkgname = v6emul-bin
