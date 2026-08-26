@@ -1,9 +1,14 @@
 pkgbase = tic-80-pro
-	pkgdesc = TIC-80 is a fantasy computer for making, playing and sharing tiny games. This is the pro version, built from git, for those who don't have money to buy it.
+	pkgdesc = TIC-80 is a fantasy computer for making, playing and sharing tiny games. This is the pro version, for those who don't have money to buy it.
 	pkgver = 1.1.2837
 	pkgrel = 1
 	url = https://tic80.com
 	arch = x86_64
+	arch = riscv64
+	arch = aarch64
+	arch = i686
+	arch = riscv32
+	arch = armv7h
 	license = MIT
 	makedepends = git
 	makedepends = cmake
