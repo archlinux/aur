@@ -3,7 +3,7 @@
 pkgname=streamdeck-lets-go-git
 _giturl=https://github.com/totmin/streamdeck-lets-go.git
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight daemon for controlling Elgato Stream Deck devices with a built-in web UI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/totmin/streamdeck-lets-go"
@@ -40,9 +40,9 @@ package() {
 
   install -Dm755 streamdeck-lets-go "${pkgdir}/usr/bin/streamdeck-lets-go"
 
-  install -Dm644 "${srcdir}/packaging/streamdeck-lets-go.service" \
+  install -Dm644 "${srcdir}/streamdeck-lets-go.service" \
     "${pkgdir}/usr/lib/systemd/user/streamdeck-lets-go.service"
 
-  install -Dm644 "${srcdir}/packaging/90-streamdeck.rules" \
+  install -Dm644 "${srcdir}/90-streamdeck.rules" \
     "${pkgdir}/usr/lib/udev/rules.d/90-streamdeck.rules"
 }
