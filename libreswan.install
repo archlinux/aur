@@ -10,7 +10,9 @@ post_upgrade() {
   else
     echo "  systemctl restart '${_service}'"
   fi
-  if [ "$(vercmp "${1}" '4.0')" -ge 0 ]; then
+  if [ -z "${1:-}" ]; then
+    : # fresh install - no NSS migration needed
+  elif [ "$(vercmp "${1}" '4.0')" -ge 0 ]; then
     if [ -s '/etc/ipsec.d/cert9.db' ]; then
       echo '>>> upgrading /var/lib/ipsec/nss'
       set -x
@@ -27,7 +29,6 @@ post_upgrade() {
 }
 
 post_install() {
-  sysctl -p "/usr/lib/sysctl.d/${_pkgname}-icmp-redirects.conf"
   echo '  ipsec verify'
   post_upgrade
 }
@@ -39,7 +40,7 @@ pre_remove() {
   if systemctl -q is-enabled "${_service}"; then
     echo "  systemctl disable '${_service}'"
   fi
-  sysctl -p "/usr/lib/sysctl.d/${_pkgname}-icmp-redirects.conf.revert"
+  sysctl -p "/usr/lib/${_pkgname}/icmp-redirects.conf.revert"
 }
 
 post_remove() {

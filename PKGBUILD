@@ -1,22 +1,19 @@
-# Maintainer: Cedric Roijakkers <cedric [the at sign goes here] roijakkers [the dot sign goes here] be>.
+# Maintainer: Cedric Roijakkers <cedric at roijakkers dot be>.
 # Based on previous work from the following people:
-# Contributor: Chris Severance aur.severach aATt spamgourmet dott com
-# Contributor: Gomasy <nyan@gomasy.jp>
-# Contributor: Alexandre BIQUE <bique.alexandre@gmail.com>
-# Contributor: Patrick Burroughs (Celti) <celti@celti.name>
+# Contributor: Chris Severance <aur.severach at spamgourmet dot com>
+# Contributor: Gomasy <nyan at gomasy dot jp>
+# Contributor: Alexandre BIQUE <bique.alexandre at gmail dot com>
+# Contributor: Patrick Burroughs (Celti) <celti at celti dot name>
 
 set -u
 pkgname='libreswan'
-#pkgname+='-git'
 pkgver='5.4'
-pkgrel='0'
+pkgrel='1'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
-arch=('i686' 'x86_64')
-arch+=('aarch64') # yjun naumovitch
+arch=('x86_64' 'armv7h' 'aarch64')
 url='https://libreswan.org/'
-license=('GPL' 'MPL')
-depends=('systemd' 'unbound' 'nss' 'libcap-ng' 'curl' 'inetutils')
-depends+=('python3')
+license=('GPL-2.0-or-later')
+depends=('systemd' 'nss' 'libcap-ng' 'curl' 'inetutils' 'audit' 'nspr' 'pam' 'libxcrypt' 'libevent')
 optdepends=(
   'networkmanager-libreswan: NetworkManager support'
   'networkmanager-l2tp: L2TP support for NetworkManager using libreswan for IPSec'
@@ -27,34 +24,13 @@ backup=('etc/ipsec.conf' 'etc/ipsec.secrets' 'etc/pam.d/pluto')
 install="${pkgname}.install"
 _srcdir="${pkgname}-${pkgver}"
 source=(
-  "https://download.libreswan.org/${pkgname}-${pkgver%%.r*}.tar.gz"
+  "https://download.libreswan.org/${pkgname}-${pkgver}.tar.gz"
   'tmpfiles.conf'
+  'libreswan.install'
 )
-md5sums=('7033ecec82837a5e97ec55da2ef58164'
-         '77399a739ee99f8bc54837684d7c39d5')
 sha256sums=('d26340cf625316cc9127e05b392214a24a10889f4f1d9940c2ea64bab710a855'
-            '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573')
-
-if [ "${pkgname%-git}" != "${pkgname}" ]; then
-  _srcdir="${pkgname}"
-  source[0]="${_srcdir}::git://github.com/libreswan/libreswan.git"
-  #source[0]+="#branch=release-${pkgver%%.r*}"
-  makedepends+=('git')
-  md5sums[0]='SKIP'
-  sha256sums[0]='SKIP'
-  provides=("${pkgname%-*}=${pkgver%%.r*}")
-  conflicts=("${pkgname%-*}")
-pkgver() {
-  set -u
-  cd "${_srcdir}"
-  git describe --long | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g' -e 's:^v::g'
-  set +u
-}
-elif [ "${pkgver%%.r*}" != "${pkgver}" ]; then
-pkgver() {
-  printf '%s' "${pkgver%.r*}"
-}
-fi
+            '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573'
+            '762be0c8e1df04bcd94776d19b669bbc20754e19cae7c73a2d45fdc370fa4b32')
 
 # https://git.centos.org/rpms/libreswan/blob/c8s/f/SPECS/libreswan.spec
 _bargs=(
@@ -75,7 +51,7 @@ _bargs=(
 
 prepare() {
   set -u
-  bash -n "${startdir}/${install}"
+  bash -n "${srcdir}/${install}"
   set +u
 }
 
@@ -113,7 +89,7 @@ net.ipv4.conf.default.accept_redirects = 0
 net.ipv4.conf.default.send_redirects = 0
 EOF
   ) "${pkgdir}/usr/lib/sysctl.d/${pkgname}-icmp-redirects.conf"
-  sed -e 's: = 0: = 1:g' "${pkgdir}/usr/lib/sysctl.d/${pkgname}-icmp-redirects.conf" > "${pkgdir}/usr/lib/sysctl.d/${pkgname}-icmp-redirects.conf.revert"
+  install -Dm644 <(sed -e 's: = 0: = 1:g' "${pkgdir}/usr/lib/sysctl.d/${pkgname}-icmp-redirects.conf") "${pkgdir}/usr/lib/${pkgname}/icmp-redirects.conf.revert"
 
   if [ "$(vercmp "${pkgver}" '4.0')" -ge 0 ]; then
     install -dm700 "${pkgdir}/var/lib/ipsec/nss"
