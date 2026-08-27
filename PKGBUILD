@@ -2,7 +2,7 @@
 
 pkgname=comchan-bin
 _pkgname=comchan
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A blazingly fast minimal serial monitor with plotter TUI and more"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.xz::${url}/releases/download/v${
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.xz")
 
 # SHA256sum
-sha256sums_x86_64=('6152732c52b1636c1d2c80f429eca010828198a618b5e978d5ba677ad0f81446')
-sha256sums_aarch64=('541c20fda5e94bdaa8f184e1257a4c5fa50e0f89b7ead620d1cb29d2b38b5238')
+sha256sums_x86_64=('6a95ecad54c6e8e6f208794184ac2985781653f1a3b6f9c8f32bf9cfa9272771')
+sha256sums_aarch64=('8ae6b457605bd24dd14961279cec3f38799f9c813b93ccb02af913764df2ddb6')
 
 package() {
   # cargo-dist extracts into a directory named after the target tuple
