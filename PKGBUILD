@@ -52,6 +52,61 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
   git submodule update --init --recursive --depth=1
+
+  # --- Packaging-level warning fixes (2026-08-27) ---
+  # Not applied upstream (wjbeckett/artemis is not ours to push to) — applied
+  # here so our AUR build stays warning-clean. Each verified against the real
+  # 8 warnings seen in CI run 33114871984 before touching anything:
+  # https://github.com/emilwojcik93/artemis-qt-git-aur-ci/actions/runs/33114871984
+
+  # 1. qchar.h SFINAE-incomplete (x7, one per TU pulling in session.h): Qt6
+  #    6.11 + GCC 16 header-ordering trap — QSemaphore -> qmetatype.h ->
+  #    qbytearray.h -> qnamespace.h -> qcompare.h -> <functional> ->
+  #    <unordered_map> -> bits/range_access.h does a SFINAE probe while QChar
+  #    is still incomplete; qchar.h then completes it "too late". Reproduced
+  #    standalone (`#include <QSemaphore>` alone warns; `#include <QChar>`
+  #    first does not) against this host's qt6-base 6.11.2 + gcc 16.2 before
+  #    trusting the fix — same versions the Arch CI container installs.
+  sed -i '0,/^#include <QSemaphore>$/s//#include <QChar>\n#include <QSemaphore>/' \
+    app/streaming/session.h
+
+  # 2. _GNU_SOURCE redefined (masterhook.c, masterhook_internal.c): confirmed
+  #    from the actual compiler invocation in the log — qmake's app.pro
+  #    already passes -D_GNU_SOURCE=1 project-wide, so these files' own
+  #    unconditional #define collides with it. Guard instead of dropping,
+  #    since these two TUs are deliberately isolated (see their own header
+  #    comments re: fcntl.h open() redirection) and must not depend on the
+  #    project-wide define being present if built standalone.
+  sed -i 's/^#define _GNU_SOURCE$/#ifndef _GNU_SOURCE\n#define _GNU_SOURCE\n#endif/' \
+    app/masterhook.c app/masterhook_internal.c
+
+  # 3. unused parameter 'otpHash' (backend/computermanager.cpp): confirmed by
+  #    reading the full function — it's dead (the handshake derives its AES
+  #    key from salt+PIN only, not otpHash), not a truncated security check.
+  #    Q_UNUSED documents that rather than silently dropping the parameter.
+  sed -i '/bool performFullPairingHandshake(NvHTTP& http, const QString& saltStr, const QString& otpHash, const QString& pin)/{n;a\        Q_UNUSED(otpHash);
+}' app/backend/computermanager.cpp
+
+  # 4. [[nodiscard]] QFile::open() ignored (path.cpp x2): not just silencing —
+  #    an unchecked open() means readDataFile()/writeCacheFile() would
+  #    silently no-op on a permissions/disk-full failure instead of surfacing
+  #    it. Check the result and warn.
+  perl -0777 -pi -e 's/(QByteArray Path::readDataFile\(QString fileName\)\n\{\n    QFile dataFile\(getDataFilePath\(fileName\)\);\n)    dataFile\.open\(QIODevice::ReadOnly\);\n    return dataFile\.readAll\(\);/${1}    if (!dataFile.open(QIODevice::ReadOnly)) {\n        qWarning() << "Path::readDataFile: failed to open" << dataFile.fileName();\n        return QByteArray();\n    }\n    return dataFile.readAll();/' \
+    app/path.cpp
+  perl -0777 -pi -e 's/(QFile dataFile\(cacheDir\.absoluteFilePath\(fileName\)\);\n)    dataFile\.open\(QIODevice::WriteOnly\);\n    dataFile\.write\(data\);/${1}    if (!dataFile.open(QIODevice::WriteOnly)) {\n        qWarning() << "Path::writeCacheFile: failed to open" << dataFile.fileName();\n        return;\n    }\n    dataFile.write(data);/' \
+    app/path.cpp
+
+  # 5. AVVulkanDeviceContext::lock_queue/unlock_queue deprecated (plvk.cpp):
+  #    real replacement is VK_KHR_internally_synchronized_queues, a genuine
+  #    Vulkan-sync-model change, not a mechanical packaging patch — filed
+  #    upstream instead of blind-patched: https://github.com/wjbeckett/artemis/issues
+  #    (not filed automatically by this script; do by hand, see CI README).
+  #    Silence just this already version-gated, intentional legacy call site
+  #    so the warning doesn't keep drowning out real ones in future logs.
+  sed -i 's/^\(\s*\)vkDeviceContext->lock_queue = lockQueue;/\1#pragma GCC diagnostic push\n\1#pragma GCC diagnostic ignored "-Wdeprecated-declarations"\n&/' \
+    app/streaming/video/ffmpeg-renderers/plvk.cpp
+  sed -i 's/^\(\s*\)vkDeviceContext->unlock_queue = unlockQueue;/&\n\1#pragma GCC diagnostic pop/' \
+    app/streaming/video/ffmpeg-renderers/plvk.cpp
 }
 
 build() {
