@@ -4,7 +4,7 @@ _product=voiden
 pkgname=${_product}-beta-bin
 _betaver=1
 pkgver=2.3.0
-pkgrel=0.${_betaver}
+pkgrel=1
 pkgdesc='The offline, Git-native API workspace'
 arch=(x86_64)
 url='https://voiden.md/'
@@ -37,12 +37,13 @@ depends=(
 	nss
 	pango
 )
-provides=(voiden voiden-bin-beta)
+provides=(voiden voiden-beta-bin)
 conflicts=(
 	voiden
 	voiden-bin
-	voiden-bin-beta
+	voiden-beta-bin
 	voiden-appimage
+	voiden-beta-appimage
 )
 options=(
 	!strip     # Stripping symbols would break the binary
