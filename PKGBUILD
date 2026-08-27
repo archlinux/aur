@@ -1,4 +1,4 @@
-# Maintainer: Massimo Pavoni (damax) <real dot damax at gmail dot com>
+# Maintainer: Massimo Pavoni (damax) <aur at massimopavoni dot dev>
 # Contributor: Stefan Zobel <stefan dot zobel at gmail dot com>
 # Contributor: grimsock <lord.grimsock at gmail dot com>
 # Contributor: Guillaume ALAUX <guillaume at archlinux dot org>
