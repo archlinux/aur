@@ -3,7 +3,7 @@ pkgname=yubico-authenticator
 _app_id=com.yubico.yubioath
 pkgdesc="Yubico Authenticator for Desktop"
 pkgver=7.4.1
-pkgrel=1
+pkgrel=2
 _flutter_ver=3.44.4  ## Check .github/workflows/env for version
 arch=('x86_64' 'aarch64')
 url="https://developers.yubico.com/yubioath-flutter"
@@ -23,7 +23,6 @@ depends=(
   'yubikey-manager'
 )
 makedepends=(
-  'chrpath'
   'clang'
   'cmake'
   'desktop-file-utils'
@@ -31,6 +30,7 @@ makedepends=(
   'git'
   'imagemagick'
   'ninja'
+  'patchelf'
   'python-build'
   'python-installer'
   'python-poetry-core'
@@ -101,7 +101,10 @@ package() {
 
   install -Dm755 build/linux/${FLUTTER_ARCH}/release/bundle/authenticator -t \
     "$pkgdir/opt/$pkgname/"
-  cp -r build/linux/${FLUTTER_ARCH}/release/bundle/{data,lib} "$pkgdir/opt/$pkgname"
+  cp -a build/linux/${FLUTTER_ARCH}/release/bundle/{data,lib} "$pkgdir/opt/$pkgname"
+
+  # Fix library permissions
+  chmod 0755 "$pkgdir/opt/$pkgname"/lib/*.so
 
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/authenticator" "$pkgdir/usr/bin/$pkgname"
@@ -115,5 +118,5 @@ package() {
     "$pkgdir/usr/share/applications/"
 
   # Remove insecure RUNPATH pointing to build dir
-  chrpath --delete "$pkgdir/opt/$pkgname"/lib/*.so
+  patchelf --remove-rpath "$pkgdir/opt/$pkgname"/lib/*.so
 }
