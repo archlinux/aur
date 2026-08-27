@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-halley
 	pkgdesc = Native xdg-desktop-portal ScreenCast and Screenshot backend for the Halley compositor
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/saltnpepper97/halley
 	arch = x86_64
@@ -10,10 +10,12 @@ pkgbase = xdg-desktop-portal-halley
 	makedepends = pkgconf
 	depends = pipewire
 	depends = xdg-desktop-portal
+	depends = mesa
+	depends = libdrm
 	optdepends = halley: the Halley compositor this portal backend captures from
 	options = !debug
 	options = !lto
-	source = xdg-desktop-portal-halley-0.1.0.tar.gz::https://github.com/saltnpepper97/halley/archive/refs/tags/halley-portal-v0.1.0.tar.gz
-	sha256sums = 8d62bd3679ade825c6341e13fdf5f092ddffa95def8db56caa451bf45ff3b7bd
+	source = xdg-desktop-portal-halley-0.2.0.tar.gz::https://github.com/saltnpepper97/halley/archive/refs/tags/halley-portal-v0.2.0.tar.gz
+	sha256sums = 2a743f543de22942d3c783e35bc8992c2485809679df1d52bf4ef2ec6e018eda
 
 pkgname = xdg-desktop-portal-halley

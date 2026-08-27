@@ -9,20 +9,20 @@
 # (`v*`). The package only changes when you bump `pkgver`/`pkgrel` here.
 
 pkgname=xdg-desktop-portal-halley
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Native xdg-desktop-portal ScreenCast and Screenshot backend for the Halley compositor"
 arch=('x86_64')
 url="https://github.com/saltnpepper97/halley"
 license=('GPL-3.0-only')
-depends=('pipewire' 'xdg-desktop-portal')
+depends=('pipewire' 'xdg-desktop-portal' 'mesa' 'libdrm')
 makedepends=('cargo' 'rust' 'pkgconf')
 optdepends=('halley: the Halley compositor this portal backend captures from')
 options=('!debug' '!lto')
 # The portal release tag inside the Halley repo. Bump together with pkgver.
 _tag="halley-portal-v$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('8d62bd3679ade825c6341e13fdf5f092ddffa95def8db56caa451bf45ff3b7bd')
+sha256sums=('2a743f543de22942d3c783e35bc8992c2485809679df1d52bf4ef2ec6e018eda')
 
 # GitHub tag archives extract to "<repo>-<tag>" -> "halley-halley-portal-v$pkgver"
 _srcdir="halley-$_tag"
@@ -41,6 +41,9 @@ package() {
 
   install -Dm644 "packaging/dbus-1/services/org.freedesktop.impl.portal.desktop.halley.service" \
     "$pkgdir/usr/share/dbus-1/services/org.freedesktop.impl.portal.desktop.halley.service"
+
+  install -Dm644 "packaging/systemd-user/xdg-desktop-portal-halley.service" \
+    "$pkgdir/usr/lib/systemd/user/xdg-desktop-portal-halley.service"
 
   install -Dm644 "packaging/xdg-desktop-portal/portals/halley.portal" \
     "$pkgdir/usr/share/xdg-desktop-portal/portals/halley.portal"
