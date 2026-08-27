@@ -12,7 +12,7 @@
 # on Arch. It does hard-require a download transport, hence curl in depends.
 
 pkgname=unsloth-desktop-bin
-pkgver=0.1.802.beta
+pkgver=0.1.803.beta
 pkgrel=1
 pkgdesc='Unsloth Desktop - train and run open models locally (prebuilt)'
 arch=('x86_64')
@@ -42,13 +42,26 @@ options=('!strip')
 _debver="${pkgver//./_}"
 _tag="v${pkgver/.beta/-beta}"
 source=("https://github.com/unslothai/unsloth/releases/download/${_tag}/Unsloth-Desktop-${_debver}-Ubuntu.deb")
-sha256sums=('32081492f2538f74e4588ce2b86bbd84a0f878b847fafd24b37d708d34e8ce30')
+sha256sums=('c4be4f81753f2be67aa54200010efd8c3e64cca78a6207bc1ccdb13ee5495347')
 
 package() {
 	bsdtar -xf data.tar.gz -C "$pkgdir"
 
+	local _apps="$pkgdir/usr/share/applications"
+
+	# The toplevel sets app_id "unsloth-studio" (verified with WAYLAND_DEBUG=1),
+	# but upstream names the entry Unsloth.desktop. KWin resolves a Wayland
+	# window's icon by looking up "<app_id>.desktop" and falls back to the
+	# generic Wayland logo when that misses -- which is why Overview/alt-tab
+	# showed no icon while the Task Manager, which also matches on
+	# StartupWMClass, showed the right one. Renaming makes the lookup succeed.
+	# The unsloth:// scheme is handled by the app's own generated
+	# ~/.local/share/applications/unsloth-studio-handler.desktop, so nothing
+	# refers to the old basename.
+	mv "$_apps/Unsloth.desktop" "$_apps/unsloth-studio.desktop"
+
 	# Upstream ships an empty Categories= line, which desktop-file-validate
 	# rejects and some menu implementations choke on.
 	sed -i 's/^Categories=$/Categories=Development;Science;/' \
-		"$pkgdir/usr/share/applications/Unsloth.desktop"
+		"$_apps/unsloth-studio.desktop"
 }
