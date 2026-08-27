@@ -1,7 +1,7 @@
 pkgbase = timeit
 	pkgdesc = timeit, a precise command timing utility, builds from source
 	pkgver = 10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CallMeAlphabet/timeit
 	arch = x86_64
 	license = Apache-2.0
@@ -9,7 +9,7 @@ pkgbase = timeit
 	depends = gcc-libs
 	provides = timeit
 	conflicts = timeit-bin
-	source = timeit-10.tar.gz::https://github.com/CallMeAlphabet/timeit/archive/refs/tags/latest.tar.gz
+	source = timeit-10-37b3cdf8b265058f37a35141932ceb1e7ee27482.tar.gz::https://github.com/CallMeAlphabet/timeit/archive/37b3cdf8b265058f37a35141932ceb1e7ee27482.tar.gz
 	sha256sums = SKIP
 
 pkgname = timeit

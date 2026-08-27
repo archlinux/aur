@@ -1,7 +1,7 @@
 # Maintainer: CallMeAlphabet
 pkgname=timeit
 pkgver=10
-pkgrel=1
+pkgrel=2
 pkgdesc="timeit, a precise command timing utility, builds from source"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/timeit"
@@ -10,13 +10,14 @@ depends=('gcc-libs')
 makedepends=('cargo')
 provides=('timeit')
 conflicts=('timeit-bin')
-source=("timeit-$pkgver.tar.gz::https://github.com/CallMeAlphabet/timeit/archive/refs/tags/latest.tar.gz")
+_commit=37b3cdf8b265058f37a35141932ceb1e7ee27482
+source=("timeit-$pkgver-$_commit.tar.gz::https://github.com/CallMeAlphabet/timeit/archive/$_commit.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
     rm -rf "$srcdir/build"
     mkdir -p "$srcdir/build"
-    tar -xzf "$srcdir/timeit-$pkgver.tar.gz" --strip-components=1 -C "$srcdir/build"
+    tar -xzf "$srcdir/timeit-$pkgver-$_commit.tar.gz" --strip-components=1 -C "$srcdir/build"
     cd "$srcdir/build"
     cargo fetch --locked --target x86_64-unknown-linux-gnu
 }
