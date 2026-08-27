@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=2.11.1
+pkgver=3.0.8
 _electronversion=33
 _nodeversion=24
 pkgrel=1
@@ -32,13 +32,42 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('3cd57366ae4c9c1bfdf98a21d62f351baa0afab9ee2e6d84e689ec74b73a3344'
+sha256sums=('850c365f3c977196f5c95ab270baf5d7d1894e0669db1a7ca38b94f8586e9a2d'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     nvm install "${_nodeversion}"
     nvm use "${_nodeversion}"
+}
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
+_set_build_env() {
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export HOME="${srcdir}/.electron-gyp"
+    {
+        export PNPM_LINK_WORKSPACE_PACKAGES=true
+        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_SHAMEFULLY_HOIST=true
+        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+        export PNPM_NODE_LINKER=hoisted
+        export PNPM_NETWORK_CONCURRENCY=32
+    }
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            export pnpm_config_registry="https://registry.npmmirror.com"
+            export npm_config_registry="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+        }
+    fi
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -61,26 +90,7 @@ prepare() {
         --categories="Utility" \
         --name="${pkgname}" \
         --exec="${pkgname} %U"
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    {
-        export PNPM_LINK_WORKSPACE_PACKAGES=true
-        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
-        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
-        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
-        export PNPM_SHAMEFULLY_HOIST=true
-        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
-        export PNPM_NODE_LINKER=hoisted
-        export PNPM_NETWORK_CONCURRENCY=32
-    }
-    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        {
-            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
-            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-        }
-    fi
+    _set_build_env
     _ensure_local_nvm
     find desktop/{electron,src} -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname}\"/g" {} \;
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" desktop/package.json
@@ -110,9 +120,8 @@ prepare() {
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _set_build_env
     _ensure_local_nvm
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     pnpm run build:linux
 }
 package() {
@@ -126,8 +135,8 @@ package() {
             _os_aarch="linux-unpacked"
         ;;
     esac
-    local _app_dir="${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/${_os_aarch}"
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname}/"
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}/lib"
     ln -sf "/usr/lib/${pkgname}/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.17.3" \
         "${pkgdir}/usr/lib/${pkgname}/lib/libvips-cpp.so.8.17.3"
