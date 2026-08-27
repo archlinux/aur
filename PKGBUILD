@@ -3,7 +3,7 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=13.7.11
+pkgver=14.0.0
 pkgrel=1
 pkgdesc="A free, open-source application for downloading and managing your Audible audiobooks"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL-3.0-only')
 depends=('bash' 'dotnet-runtime' 'fontconfig' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++')
 makedepends=('dotnet-sdk>=10')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rmcrackan/Libation/archive/v${pkgver}.tar.gz")
-sha256sums=('f0dadd380cd72045bd5ea6dcf862713b2303a1db2a76daec59f18c4a0ff7a1e8')
+sha256sums=('7323900efa676b015bdb7a6c0aa93d55479f25a9d2f9a3613023f91348a85504')
 
 prepare() {
     cd "${pkgname^}-${pkgver}"
