@@ -2,13 +2,6 @@
 
 GEANY_PATH="/usr/bin/geany"
 
-if [ -z "$XDG_RUNTIME_DIR" ]; then
-	[ -z "$XDG_CACHE_HOME" ] &&
-		XDG_CACHE_HOME="$HOME/.cache"
-
-	XDG_RUNTIME_DIR="$XDG_CACHE_HOME"
-fi
-
 main() {
 	OPTS=$(getopt -o hc:gPil:mnprstvV -l help,help-all,help-gtk,column:,config:,ft-names,generate-tags,no-preprocessing,new-instance,socket-file:,list-documents,line:,no-msgwin,no-ctags,no-plugins,print-prefix,read-only,no-session,no-terminal,vte-lib:,verbose,version,display: -n geanywl -- "$@")
 	
@@ -65,37 +58,32 @@ main() {
 		NEW_INSTANCE=true
 	fi
 	
-	# If a new instance is not requested, look for existing instances
+	# Unless a new instance is not requested, look for existing instances
 	if [ ! "$NEW_INSTANCE" = true ]; then
 		
-		# Check for instances in the current workspace, keep the pids
-		# And iterate the resulting pids. This list may contain some
-		#  false positives. The windows are also sorted according to
-		#  which of them was focused more recently
+		# Check for open instances in the current workspace, and get the
+		# PID of each. The list may contain false positives, and is sorted
+		# according to the stacking order (most recently focused).
 		
-		while read -r pid; do
+		for pid in $(get_geany_windows); do
 			
-			# Verify the process user is the same as the current one
-			# Verify the pid corresponds to a process named 'geany'
-			[ "$(ps -o uid="" $pid)" -ne "$UID" ] && continue
-			[ $(ps -q $pid -o comm="") != "geany" ] && continue
+			# Verify the process user is the current, and that
+			# the PID corresponds to a process named geany
+			[[ "$(ps -o uid="" $pid)" -ne "$UID" ]] && continue
+			[[ $(ps -q $pid -o comm="") != "geany" ]] && continue
 			
-			# Get listening unix domain sockets from the PID
-			pinfo=$(ss -lpxH | grep "pid=$pid" | grep geany_socket)
+			# Get the listening unix socket for the PID
+			socket=$(ss -lpxH | awk "/pid=$pid/"'{
+				for(i=1;i<=NF;i++) if($i ~ /^\/.*geany_socket/) print $i
+			}' | head -n 1)
 			
-			# If sockets were found, launch Geany
-			if [ -n "$pinfo" ]; then
-				socket=$(echo "$pinfo" | head -n 1 |
-					grep -Po "$XDG_RUNTIME_DIR/geany/geany_socket\.[0-9a-fA-F]+")
-				
+			if [[ "$socket" ]]; then
 				exec_geany "$socket"
 			fi
-		done < <(wmctrl -lp | grep '0x[0-9a-fA-F]\+ \+'$(wmctrl -d | grep '*' \
-			| sed -r 's/([0-9]+).*/\1/g') | grep Geany \
-			| sort_recently_focused \
-			| sed -r 's/0x[0-9a-fA-F]+ +[0-9]+ +([0-9]+).*/\1/g')
+		done
 	fi
 	
+	# Launch new instance
 	for (( i=0; ; i++ )); do
 		socket="$HOME/.config/geany/geany_socket_${HOSTNAME}__$i"
 		
@@ -124,7 +112,7 @@ exec_geany() {
 	fi
 }
 
-sort_recently_focused() {
+sort_recently_focused_x11() {
 	recent=$(xprop -root | grep "^_NET_CLIENT_LIST_STACKING" | tr "," " ")
 	recent=(${recent##*#})
 	
@@ -143,6 +131,41 @@ sort_recently_focused() {
 			fi
 		done
 	done
+}
+
+get_geany_windows_x11() {
+	wmctrl -lp | grep '0x[0-9a-fA-F]\+ \+'$(wmctrl -d | grep '*' \
+		| sed -r 's/([0-9]+).*/\1/g') | grep Geany \
+		| sort_recently_focused_x11 \
+		| sed -r 's/0x[0-9a-fA-F]+ +[0-9]+ +([0-9]+).*/\1/g'
+}
+
+get_geany_windows_kde() {
+	kdotool kwinscript --inline '
+		var currentDesktop = workspace.currentDesktop.x11DesktopNumber;
+		var windows = workspace.stackingOrder.slice().reverse();
+		
+		for(var i = 0; i < windows.length; i++) {
+			var w = windows[i];
+			
+			if(w.resourceClass.toLowerCase() != "geany") continue;
+			
+			var onCurrentDesktop = w.desktops.length == 0 || w.desktops.some(function(d) {
+				return d.x11DesktopNumber == currentDesktop;
+			});
+			if(!onCurrentDesktop) continue;
+			
+			output_result(w.pid);
+		}
+	'
+}
+
+get_geany_windows() {
+	if [[ $XDG_SESSION_TYPE == "x11" ]]; then
+		get_geany_windows_x11
+	elif [[ $XDG_CURRENT_DESKTOP == "KDE" ]]; then
+		get_geany_windows_kde
+	fi
 }
 
 main "$@"
