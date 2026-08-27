@@ -1,0 +1,7 @@
+# makepkg artifacts
+src/
+pkg/
+*.pkg.tar*
+*.src.tar*
+*.log
+plymouth-theme-bgrt-nerd

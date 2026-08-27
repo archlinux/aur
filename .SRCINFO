@@ -1,0 +1,18 @@
+pkgbase = plymouth-theme-bgrt-nerd-git
+	pkgdesc = BGRT plymouth theme with Nerd Fonts
+	pkgver = r2.g845f57b
+	pkgrel = 1
+	url = https://github.com/zquestz/plymouth-theme-bgrt-nerd
+	install = bgrt-nerd.install
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = plymouth
+	depends = ttf-noto-nerd
+	depends = ttf-sourcecodepro-nerd
+	provides = plymouth-theme-bgrt-nerd
+	conflicts = plymouth-theme-bgrt-nerd
+	source = plymouth-theme-bgrt-nerd::git+https://github.com/zquestz/plymouth-theme-bgrt-nerd.git
+	sha256sums = SKIP
+
+pkgname = plymouth-theme-bgrt-nerd-git

@@ -1,0 +1,8 @@
+post_install() {
+    echo "To activate the theme and rebuild the initramfs, run as root:"
+    echo "    plymouth-set-default-theme -R bgrt-nerd"
+}
+
+post_upgrade() {
+    post_install
+}
