@@ -1,18 +1,11 @@
 pkgbase = geanywl
 	pkgdesc = Geany editor launch script -- workspace separation, open in most recently focused window
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gist.github.com/gkatev/f477f7f4bb0cfb2151cbfb7d6de0a511
 	install = geanywl.install
 	arch = any
 	license = GPL
-	depends = bash
-	depends = util-linux
-	depends = coreutils
-	depends = procps-ng
-	depends = iproute2
-	depends = grep
-	depends = sed
 	optdepends = wmctrl: X11 support
 	optdepends = xorg-xprop: X11 support
 	optdepends = kdotool>=0.3.0: KDE support (incl. Wayland)

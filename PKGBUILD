@@ -2,12 +2,12 @@
 
 pkgname=geanywl
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Geany editor launch script -- workspace separation, open in most recently focused window"
 arch=('any')
 url="https://gist.github.com/gkatev/f477f7f4bb0cfb2151cbfb7d6de0a511"
 license=('GPL')
-depends=('bash' 'util-linux' 'coreutils' 'procps-ng' 'iproute2' 'grep' 'sed')
+depends=()
 optdepends=('wmctrl: X11 support'
             'xorg-xprop: X11 support'
             'kdotool>=0.3.0: KDE support (incl. Wayland)')
