@@ -1,0 +1,16 @@
+# makepkg working directories and output
+/src/
+/pkg/
+*.pkg.tar*
+*.src.tar*
+*.log
+
+# downloaded sources (source= entries, not tracked in the AUR repo)
+/NetExtender-linux-*.tar.gz
+/general-product-agreement
+
+# editor / OS noise
+*~
+*.orig
+*.rej
+.directory
