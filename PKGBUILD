@@ -12,7 +12,7 @@ options=('staticlibs' '!buildflags' '!strip')
 source=("https://github.com/coin-or/Clp/archive/releases/${pkgver}.tar.gz")
 sha256sums=('2c078e174dc1a7a308e091b6256fb34b4017897fc140ea707ba207b2913ea46d')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd Clp-releases-$pkgver
