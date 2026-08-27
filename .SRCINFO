@@ -1,6 +1,6 @@
 pkgbase = python-livekit-api
 	pkgdesc = Python Server API for LiveKit.
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = $_repo/tree/main/livekit-api
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-livekit-api
 	depends = python-aiohttp
 	depends = python-protobuf
 	depends = python-livekit-protocol
-	source = https://github.com/livekit/python-sdks/archive/refs/tags/api-v1.2.0.tar.gz
-	sha256sums = 9462d1eb57a9c3c6af8cfcab9b90170bfaa8a24475e7094cca4dcb4fbbd057db
+	source = https://github.com/livekit/python-sdks/archive/refs/tags/api-v1.2.1.tar.gz
+	sha256sums = 21f92515a98e43de0da496c359e025fa67e209c9612236bc6844fd3b256a4838
 
 pkgname = python-livekit-api
