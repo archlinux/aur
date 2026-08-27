@@ -1,8 +1,7 @@
 
 pkg/
 src/
-granite7/
+granite?/
 
 #
-granite7-*.tar.???
-
+granite*.pkg.tar.*

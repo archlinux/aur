@@ -2,7 +2,7 @@
 
 pkgname=granite7-git
 _pkgname=${pkgname%-git}
-pkgver=7.4.0.r30.946ec220
+pkgver=7.8.1.r0.4cd51886
 pkgrel=1
 pkgdesc='Library that extends GTK with common widgets and utilities'
 arch=(x86_64)
@@ -10,6 +10,7 @@ url=https://github.com/elementary/granite
 license=(LGPL-3.0-only)
 groups=(pantheon-unstable)
 depends=(
+  glib2
   gtk4
   libgee
 )
@@ -26,7 +27,7 @@ provides=(
   libgranite-7.so
 )
 conflicts=(granite7)
-source=("${_pkgname}::git+https://github.com/elementary/granite.git#branch=main")
+source=("${_pkgname}::git+https://github.com/elementary/granite.git#branch=granite-7")
 sha256sums=(SKIP)
 
 pkgver() {
