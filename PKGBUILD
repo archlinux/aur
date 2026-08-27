@@ -1,7 +1,7 @@
 # Maintainer: Maxr1998 <aur@maxr1998.de>
 _pkgname=alistral
 pkgname=alistral-git
-pkgver=1505.a6a21cd6
+pkgver=1786.6c187a35
 pkgrel=1
 pkgdesc="Power tools for Listenbrainz"
 arch=('x86_64')
