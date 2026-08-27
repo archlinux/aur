@@ -3,7 +3,7 @@
 _pkgname='zvm'
 pkgname="$_pkgname-bin"
 pkgver='0.9.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Version manager for Zig compilers (binary version)'
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -30,7 +30,7 @@ source_powerpc64le=(
   "$pkgname-$pkgver-powerpc64le.tar::$url/releases/download/v$pkgver/zvm-linux-ppc64le.tar"
 )
 
-sha256sums=('6149c9a360f7fcde722b0d3c54a129737d10142857b26d1aaf1a5ec9737bb459'
+sha256sums=('0749f1e161cdf25dde3de06d35610453dbf94fc24a60e13e8c5cd7b3f460c277'
             '08cd47b1b748b3b5a6b29bd012a9d09bbd70717180debe7edcf2a2d230b2089d'
             '66da3559a9c3083f4e9dcbc288891974dac57bc4c2ed27bd4d434131ca6f65d2')
 sha256sums_x86_64=('9d4bf04c7f5099ca32bf6b939421096a5961753db2d0ed04a3c53c3975f12974')
