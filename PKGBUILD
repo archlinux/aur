@@ -10,7 +10,7 @@ url='https://www.worldpainter.net/'
 arch=('x86_64')
 license=('GPL-3.0-only')
 
-depends=('java-environment>=17' 'lib32-libxi' 'sh')
+depends=('java-environment>=17' 'libxi' 'sh')
 optdepends=('minecraft: for playing the exported maps')
 
 source=("https://www.worldpainter.net/files/${pkgname}_${pkgver}.tar.gz"
@@ -38,4 +38,7 @@ package() {
 	install -Dm644 "${srcdir}/worldpainter.png" "${pkgdir}/usr/share/pixmaps/"
 	install -Dm755 "${srcdir}/launch-script.sh" "${pkgdir}/usr/bin/worldpainter"
 	install -Dm644 "${srcdir}/worldpainter.desktop" "${pkgdir}/usr/share/applications/worldpainter.desktop"
+
+	# cleanup unused 32-bit libraries
+	rm "${pkgdir}/opt/${pkgname}/bin/libjpen-2-4.so"
 }
