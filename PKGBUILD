@@ -3,7 +3,7 @@
 # Contributor: axiom <hello@axiom.co>
 
 pkgname='axiom-bin'
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc='Powerful log analytics from the comfort of your command-line'
 url='https://axiom.co'
@@ -13,16 +13,16 @@ provides=('axiom-bin')
 conflicts=('axiom-bin' 'axiom-git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/axiomhq/cli/releases/download/v${pkgver}/axiom_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('e202d86f3a73e64f3f03aee0de38d0da832bdb96eef933a91f15c61c164fcd84')
+sha256sums_aarch64=('441c9fb37bfd164a5655596dfbe8975c737889d7749e40d0832da01e1e9be2ea')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/axiomhq/cli/releases/download/v${pkgver}/axiom_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('5ab575e75518b8af1e928b476d513786e963fd7c2d02d02648196c3e967e2402')
+sha256sums_armv7h=('ac4be5d56b5322295d26020c85244f72cb41ed74513516429f3fa26fe4cd2ef3')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/axiomhq/cli/releases/download/v${pkgver}/axiom_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('f5b33cbbd8080fee54a983bbcc65b6bb593174ac2677a16c0b552faf26797cf5')
+sha256sums_i686=('060d13680752739d9520a13526ae58621beef499502877a47a0da174d0591218')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/axiomhq/cli/releases/download/v${pkgver}/axiom_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('a68be5d6e85081cf549d887c3ccbe1f6aa13dec4db3ef88b626ed4c7af44b319')
+sha256sums_x86_64=('134d19ff97481b0d0ee518644ab6dfaaaad90c93aae7ca7c1c024fd73ec850e9')
 
 package() {
   case "$CARCH" in
