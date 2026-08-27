@@ -12,7 +12,6 @@ pkgbase = project-registry
 	depends = python
 	depends = python-typing_extensions
 	depends = python-packaging
-	depends = python-pkg_resources
 	depends = gyp
 	provides = projx
 	noextract = project-registry-0.7.0.tgz

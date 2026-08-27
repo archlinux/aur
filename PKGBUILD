@@ -15,7 +15,7 @@ license=("MIT")
 url="https://github.com/HichemTab-tech/project-registry"
 _urlraw="https://raw.githubusercontent.com/HichemTab-tech/project-registry/${pkgver}"
 
-depends=("bash" "nodejs" "python" "python-typing_extensions" "python-packaging" "python-pkg_resources" "gyp")
+depends=("bash" "nodejs" "python" "python-typing_extensions" "python-packaging" "gyp")
 makedepends=("npm" "jq")
 provides=("${_appname}")
 
