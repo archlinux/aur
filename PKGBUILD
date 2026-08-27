@@ -1,12 +1,13 @@
 # Maintainer: Abdullah Al-Banna
 
 pkgname=rusbmux-git
-pkgver=0.1.0.r143.gdfef992
-pkgrel=4
+pkgver=0.2.0.r204.gdb4acfd
+pkgrel=1
 pkgdesc="A usbmuxd replacement in pure Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/abdullah-albanna/rusbmux"
 license=('MIT' 'Apache-2.0')
+install=rusbmux-git.install
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'git')
 provides=('usbmuxd' 'rusbmux')

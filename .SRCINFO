@@ -1,8 +1,9 @@
 pkgbase = rusbmux-git
 	pkgdesc = A usbmuxd replacement in pure Rust
-	pkgver = 0.1.0.r143.gdfef992
-	pkgrel = 4
+	pkgver = 0.2.0.r204.gdb4acfd
+	pkgrel = 1
 	url = https://github.com/abdullah-albanna/rusbmux
+	install = rusbmux-git.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
