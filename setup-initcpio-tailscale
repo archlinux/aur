@@ -20,8 +20,8 @@ Defaults:
   --hostname    the current hostname plus an '-initrd' suffix, in this case "${TS_HOSTNAME}".
 
   --ssh         Tailscale's built-in SSH server is enabled, so the initramfs is
-                reachable without a second ssh server in it. OpenSSH host keys
-                are generated alongside the node key so the image presents the
+                reachable without a second ssh server in it. SSH host keys are
+                generated alongside the node key so the image presents the
                 same identity on every boot.
 
   --no-ssh      Turns that off, for images that run their own dropbear or
@@ -133,8 +133,11 @@ EOF
   fi
 
   if [[ $ssh == yes ]]; then
-    install -o root -g root -m600 -Dt "${TS_STATEDIR}/ssh" "${setupdir}/etc/ssh/"ssh_host_*_key
-    install -o root -g root -m644 -Dt "${TS_STATEDIR}/ssh" "${setupdir}/etc/ssh/"ssh_host_*_key.pub
+    # Replaced wholesale: an earlier run may have left keys of other types or
+    # formats behind (the openssh era also wrote .pub files), and anything
+    # still here would be copied into every image built from now on.
+    rm -rf "${TS_STATEDIR}/ssh"
+    install -o root -g root -m600 -Dt "${TS_STATEDIR}/ssh" "${setupdir}/ssh/"ssh_host_*_key
   else
     # Host keys left behind by an earlier run would otherwise be copied into
     # every image built from here on, for a server this node no longer runs.
@@ -513,21 +516,29 @@ SETUPDIR="$(mktemp -d)"
 socket="${SETUPDIR}/tailscaled.sock"
 state="${SETUPDIR}/tailscaled.state"
 
-if [[ $TS_SSH == yes ]]; then
-  # Checked before anything registers, so a missing openssh fails cleanly
-  # instead of via set -e halfway through, and names the way out.
-  command -v ssh-keygen >/dev/null ||
-    die "ssh-keygen not found: install openssh, or pass --no-ssh to skip Tailscale SSH"
-  # ssh-keygen -A writes into <prefix>/etc/ssh and will not create the directory
-  # itself. The keys are the initrd node's stable identity: generating them here,
-  # rather than letting the image make new ones on each boot, is what keeps a
-  # client from warning about a changed host key every time the machine reboots.
-  mkdir -p "${SETUPDIR}/etc/ssh"
-  ssh-keygen -A -f "${SETUPDIR}"
+# The SSH host keys come from tailscaled itself: with -statedir set it writes
+# ssh_host_{rsa,ecdsa,ed25519}_key under ${SETUPDIR}/ssh the moment 'up' applies
+# an SSH-enabled preference, which is also when it advertises the public halves
+# to the control plane. Generating them here, rather than letting the image make
+# new ones on each boot, is what keeps a client from warning about a changed
+# host key every time the machine reboots.
+#
+# The daemon must not run as root for that: a root tailscaled prefers this
+# host's own /etc/ssh keys over generating dedicated ones, and the machine's
+# real identity would end up advertised for the image while the image itself,
+# lacking those files, mints fresh keys on every boot. Userspace networking
+# needs no privileges anyway, so a root invocation drops this one process to
+# nobody; the redirections are opened first, by root, and the state install
+# below re-owns everything to root.
+asuser=()
+if [[ "$(id -u)" == 0 ]]; then
+  chown nobody "$SETUPDIR"
+  asuser=(setpriv --reuid=nobody --regid=nobody --clear-groups --)
 fi
 
-tailscaled \
+"${asuser[@]}" tailscaled \
   -state="$state" \
+  -statedir="$SETUPDIR" \
   -socket="$socket" \
   -no-logs-no-support \
   -tun=userspace-networking \
@@ -539,6 +550,19 @@ PID="$!"
 if ! tailscale --socket="$socket" up --qr --accept-risk=lose-ssh "$@"; then
   cp -f "${SETUPDIR}/setup.log" /tmp/setup-initcpio-tailscale-daemon.log
   die "Failed to configure tailscale. Check daemon logs at /tmp/setup-initcpio-tailscale-daemon.log"
+fi
+
+# The keys the state install below copies, checked before anything is written:
+# 'up' returning means the SSH preference was applied, so by now all three must
+# exist. A gap means tailscaled changed how it generates host keys, and is
+# worth a clean failure rather than an image with a per-boot identity.
+if [[ $TS_SSH == yes ]]; then
+  for typ in rsa ecdsa ed25519; do
+    if [[ ! -s "${SETUPDIR}/ssh/ssh_host_${typ}_key" ]]; then
+      cp -f "${SETUPDIR}/setup.log" /tmp/setup-initcpio-tailscale-daemon.log
+      die "tailscaled did not generate the ${typ} SSH host key. Check daemon logs at /tmp/setup-initcpio-tailscale-daemon.log"
+    fi
+  done
 fi
 
 # The one escalation boundary of the whole flow: as root, install the state

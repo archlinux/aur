@@ -199,9 +199,10 @@ accept local connections unless the client is also part of your Tailscale
 network, which reduces exposure compared to a traditional SSH server reachable
 from everywhere.
 
-The setup helper also generates OpenSSH host keys and stores them alongside
-the node key, so the initramfs presents the same host key every time and your
-client does not warn about a changed identity.
+The isolated tailscaled the setup helper runs also generates the SSH host keys
+its server will use, and they are stored alongside the node key, so the
+initramfs presents the same host key every time and your client does not warn
+about a changed identity.
 
 Works on systemd- and busybox-based initramfs alike, though the second needs a
 hand: Tailscale's SSH server has to resolve the user you log in as, and of the
