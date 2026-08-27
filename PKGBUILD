@@ -19,7 +19,7 @@ arch=('any')
 provides=('tcshow' 'tcset' 'tcdel')
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
-depends=('python' 'python-docker' 'python-dataproperty' 'python-humanreadable' 'python-loguru' 'python-msgfy' 'python-path' 'python-pyparsing' 'python-pyroute2' 'python-simplesqlite' 'python-subprocrunner' 'python-typepy' 'python-voluptuous' 'python-importlib-metadata' 'python-ujson' 'python-pkg_resources')
+depends=('python' 'python-docker' 'python-dataproperty' 'python-humanreadable' 'python-loguru' 'python-msgfy' 'python-path' 'python-pyparsing' 'python-pyroute2' 'python-simplesqlite' 'python-subprocrunner' 'python-typepy' 'python-voluptuous' 'python-importlib-metadata' 'python-ujson')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_name::1}/${_pypi_name}/${_pypi_name}-${pkgver}.tar.gz")
 sha256sums=('71026a22d2be180ff7e251b860e448029d1dd3f5a3be1a11b1a19b4ccb4bbf60')

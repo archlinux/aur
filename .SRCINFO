@@ -25,7 +25,6 @@ pkgbase = python-tcconfig
 	depends = python-voluptuous
 	depends = python-importlib-metadata
 	depends = python-ujson
-	depends = python-pkg_resources
 	provides = tcshow
 	provides = tcset
 	provides = tcdel
