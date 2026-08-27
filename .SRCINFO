@@ -7,6 +7,7 @@ pkgbase = easyflatpak
 	license = LGPL-2.1-only
 	makedepends = git
 	depends = bash
+	depends = flatpak
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = gtk4

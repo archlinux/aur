@@ -9,6 +9,7 @@ url='https://github.com/imikado/dupotEasyFlatpak'
 license=(LGPL-2.1-only)
 depends=(
   bash
+  flatpak
   gdk-pixbuf2
   glib2
   gtk4
