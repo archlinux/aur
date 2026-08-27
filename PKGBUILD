@@ -2,8 +2,8 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=ytermusic
-pkgver=0.1.0beta
-_pkgvertag="beta-0.1.0"
+pkgver=0.1.5beta
+_pkgvertag="beta-0.1.5"
 pkgrel=1
 pkgdesc="A terminal based Youtube Music Player. It's aims to be as fast and simple as possible. Writtten in Rust."
 url="https://github.com/ccgauche/ytermusic"
@@ -12,7 +12,7 @@ license=('Apache')
 depends=('alsa-lib' 'dbus')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ccgauche/ytermusic/archive/refs/tags/$_pkgvertag.tar.gz")
-b2sums=('fb8f81cc20d0a81b8f1d8ee63cf1ca6105b523a1d77de067499a60413e96c25c2f508789810cfc2343dc1b9614f761217f94bb5a08607aa9dfe2e4536280657e')
+b2sums=('2d94328e9fca94b166cc53ad83645ba8bc13976ab67fab0e9324a805dcd82f1af32ef6c088edfa58124ce502a44de224f11c01dab8626a5a0cfc5f888230ac5c')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${_pkgvertag}"
