@@ -1,6 +1,6 @@
 pkgbase = browserchooser-x11
 	pkgdesc = rofi-style browser selector (X11 backend)
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/fishman/browserchooser
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = browserchooser-x11
 	depends = libxi
 	depends = libxcursor
 	depends = libxinerama
-	source = https://github.com/fishman/browserchooser/archive/refs/tags/v0.1.7.tar.gz
+	source = https://github.com/fishman/browserchooser/archive/refs/tags/v0.1.8.tar.gz
 	sha256sums = SKIP
 
 pkgname = browserchooser-x11
