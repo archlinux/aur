@@ -2,7 +2,7 @@
 _appname=tomato
 pkgname="${_appname}-radio-automation-bin"
 _pkgname="Tomato Radio Automation"
-pkgver=0.14.1
+pkgver=0.14.3
 _electronversion=43
 pkgrel=1
 pkgdesc="Tomato Radio Automation desktop client. Dead simple radio ads.(Prebuilt version.Use system-wide electron)"
@@ -28,8 +28,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-client-v${pkgver}-linux_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-client-v${pkgver}-linux_amd64.deb")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('c96adbf9e01c8fdb104a86612151f01b811841de4d18cdf86d89f4d87a468522')
-sha256sums_x86_64=('57a72c8b09906e422520a19a0d777b73b044df95a249c3be0612ee0bf6f1cef3')
+sha256sums_aarch64=('2d17f15e4768894a25d845c9bc163e0eafd9f0f507c030c36cc66b100961799e')
+sha256sums_x86_64=('c87a33bdab10812f5a4ad6b7419989f2585e1a00044c76265eec21134e730f49')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
