@@ -1,5 +1,7 @@
+# Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
+
 pkgname=halley
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Spatial Wayland compositor built around infinite workspace navigation"
 arch=('x86_64')
@@ -22,19 +24,19 @@ makedepends=(
 optdepends=(
   'halley-lift: native search and action launcher'
   'xdg-desktop-portal-halley: native ScreenCast/Screenshot portal backend'
-  'xwayland-satellite: X11 application support'
-  'fuzzel: launcher bound to Super+d by default'
-  'ghostty: terminal for the default open-terminal binding'
-  'kitty: terminal for the default open-terminal binding'
-  'foot: terminal for the default open-terminal binding'
-  'wezterm: terminal for the default open-terminal binding'
-  'alacritty: terminal for the default open-terminal binding'
+  'xorg-xwayland: X11 application support'
+  'xdg-desktop-portal-gtk: fallback backend for common file/dialog portals'
+  'fuzzel: alternative launcher'
+  'ghostty: terminal for the default-terminal binding'
+  'kitty: terminal for the default-terminal binding'
+  'foot: terminal for the default-terminal binding'
+  'wezterm: terminal for the default-terminal binding'
+  'alacritty: terminal for the default-terminal binding'
   'wireplumber: provides wpctl for default media-key bindings'
-  'gamescope: game launch wrapping through halleyctl gamescope'
 )
 options=('!debug' '!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/saltnpepper97/halley/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b8f1755a76586cdde93e464db70039d8beaffb52241f6976b12b66329dde7eee')
+sha256sums=('5ac748ccb068f98d8f6ca8369d9bc011a7d353fb7148a4d94bd62255424c969b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
