@@ -17,6 +17,7 @@ depends=(
   'pango'
   'pixman'
   'wayland'
+  'xdg-desktop-portal-umbriel-git'
   'wlroots0.20'
 )
 makedepends=(
@@ -29,7 +30,6 @@ makedepends=(
   'wayland-protocols'
 )
 optdepends=(
-  'xdg-desktop-portal-umbriel: screen capture and sharing support'
   'xwayland-satellite: X11 application support'
 )
 provides=('umbriel')
