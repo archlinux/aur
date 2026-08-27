@@ -1,7 +1,7 @@
 pkgbase = fasthex
 	pkgdesc = fasthex, a very fast hex dumper, builds from source
 	pkgver = 21
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CallMeAlphabet/fasthex
 	arch = x86_64
 	license = Apache-2.0
@@ -9,7 +9,7 @@ pkgbase = fasthex
 	depends = gcc-libs
 	provides = fasthex
 	conflicts = fasthex-bin
-	source = fasthex-21.tar.gz::https://github.com/CallMeAlphabet/fasthex/archive/refs/tags/latest.tar.gz
+	source = fasthex-21-1c0e9e91cfee83f0b1bc2d5e337aa56728588bd4.tar.gz::https://github.com/CallMeAlphabet/fasthex/archive/1c0e9e91cfee83f0b1bc2d5e337aa56728588bd4.tar.gz
 	sha256sums = SKIP
 
 pkgname = fasthex
