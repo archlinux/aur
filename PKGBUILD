@@ -1,26 +1,42 @@
-# Maintainer: nabbisen
+# Arch Linux PKGBUILD for ForskScope.
+# makepkg downloads the source directly from GitHub's own per-tag archive
+# (F43: the project's custom source archive was dropped - it duplicated
+# GitHub's automatic one exactly, differing only in an omitted top-level
+# directory that existed solely to suit this file's old cd "$srcdir").
+
 pkgname=forskscope
-pkgver=0.22.13
+# Keep pkgver in sync with [workspace.package] version in Cargo.toml on each release.
+pkgver=0.167.2
 pkgrel=1
-pkgdesc="Diff and merge GUI tool with cross-platform support build with Tauri: Rust and Svelte (Pre-built binary)"
+pkgdesc="Local-first cross-platform diff and merge tool"
 arch=('x86_64')
 url="https://github.com/forskscope/forskscope"
-license=('BSD-2-Clause')
-depends=('webkit2gtk' 'gtk3' 'libappindicator-gtk3')
-source=(
-  "${pkgname}@Linux-x64-gnu-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgname}@Linux-x64-gnu-${pkgver}.tar.gz"
-  ".desktop"
-  "logo.svg"
-)
-sha256sums=('e85bdeeeea887145dd376c643488d2e58733860692c67f34df59acc6bc6e9599' 'd9b2cb88d794bdd0db4638cb885250b3911518955517d62a5661861f5f1b4457' 'd50b81f03aeaf03bdcf503d2e973d013ea70e199fe8c28c50795b1e3daa65819')
+license=('Apache-2.0')
+# F81: xdotool provides libxdo, which the binary links (see F44) - without it
+# the package builds and installs cleanly and then fails to start. Temporary:
+# the upstream dioxus fix (DioxusLabs/dioxus#5749) drops the libxdo linkage
+# entirely, and this dependency should be removed once that release is taken.
+depends=('webkit2gtk-4.1' 'gtk3' 'xdotool')
+makedepends=('cargo' 'pkg-config' 'openssl')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/forskscope/forskscope/archive/refs/tags/$pkgver.tar.gz")
+# SKIP is a real gap, not an oversight: F43 switched this from a local file
+# (no network, nothing to distrust) to a network fetch, and no real release
+# tag exists yet to hash against - any value written now would be wrong the
+# moment a real tag is cut. Before or at each release, run `updpkgsums` (or
+# `sha256sum` the actual tag tarball) against the real, tagged $pkgver and
+# commit the resulting hash here; do not leave SKIP once a real tag exists.
+sha256sums=('848d3dd25e665c7c6ad3a4065d9ac6b2f9c8893ed6cc8013154469b057c8444a')
+
+build() {
+    cd "$pkgname-$pkgver"
+    cargo build --release --locked
+}
 
 package() {
-  # app
-  tar -xf "${srcdir}/${pkgname}@Linux-x64-gnu-${pkgver}.tar.gz" -C "${srcdir}"
-  install -Dm755 "${srcdir}/${pkgname}@Linux-x64-gnu-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
-  # .desktop
-  install -Dm644 "${srcdir}/.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  # icon
-  install -Dm644 "${srcdir}/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
+    cd "$pkgname-$pkgver"
+    install -Dm755 "target/release/forskscope" "$pkgdir/usr/bin/forskscope"
+    install -Dm644 "packaging/linux/forskscope.desktop" \
+        "$pkgdir/usr/share/applications/forskscope.desktop"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "NOTICE" "$pkgdir/usr/share/licenses/$pkgname/NOTICE"
 }
