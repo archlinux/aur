@@ -1,0 +1,11 @@
+# makepkg work directories
+/pkg/
+/src/
+/libcryptui/
+
+# built packages and source archives
+*.pkg.tar*
+*.src.tar*
+
+# makepkg logs
+*.log

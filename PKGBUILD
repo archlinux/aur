@@ -3,7 +3,7 @@
 
 pkgname=libcryptui
 pkgver=3.12.2+r71+ged4f890e
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Library for OpenPGP prompts"
 url="https://gitlab.gnome.org/GNOME/libcryptui"
@@ -16,7 +16,7 @@ _commit=ed4f890ee29b94c1bedd7030d5c857e3b9edb465  # master
 source=("git+https://gitlab.gnome.org/GNOME/libcryptui.git#commit=$_commit"
          fix-configure-gpgme.patch
          gpgme-2.0.patch)
-sha256sums=('684dda5ad8ac5932d4b6e38008787090d895a945101ceb41af4765151d1e73aa'
+sha256sums=('SKIP'
             'aea03ad74fbbfc2f9391c49664672a1c461afe22cfa92f2a86790eee534b58a3'
             '4e860ac4ff9891da272f017757552ece6b70fa77ae10d25bbffaaf6b8ae778e0')
 
