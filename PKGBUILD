@@ -9,7 +9,7 @@ _gitname=kde-ai-usage
 _plasmoid=org.muddyblack.aiUsageWidget
 
 pkgname=plasma6-applets-ai-usage
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="KDE Plasma 6 panel widget tracking AI usage quotas across 11 AI providers"
 arch=('any')
@@ -27,15 +27,19 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ad0aec4f51a348ef2839224ad833c04deb0e38287703a43bc60f216f9b631363')
+sha256sums=('47ddc1aa0c5f3577b246827f5af784ad18a2c81c932d4415097f68c3dea45cfb')
 
 check() {
     cd "${_gitname}-${pkgver}"
+    # Tests import the Python modules shipped inside package/. Keep build-host
+    # bytecode (and its $srcdir paths) out of the final architecture-any payload.
+    export PYTHONDONTWRITEBYTECODE=1
     # Contract tests for the backend the widget shells out to. They are pure
     # fixture replays — no network, no credentials — so they are safe in a
     # clean chroot. tests/ai-usage-cli.test.sh is skipped on purpose: it covers
     # the terminal frontend, which this package does not ship.
     ./tests/get-ai-usage.test.sh
+    ./tests/credentials.test.sh
     ./tests/python-interp.test.sh
     ./tests/get-codex-stats.test.sh
     ./tests/get-codex-rate-limits.test.sh
