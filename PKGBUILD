@@ -12,7 +12,7 @@ options=('staticlibs' '!buildflags' '!strip')
 source=(https://github.com/coin-or/Cgl/archive/refs/tags/releases/$pkgver.tar.gz)
 sha256sums=('41b7ac9402db883d9c487eb7101e59eb513cefd726e6e7a669dc94664d9385e6')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd Cgl-releases-$pkgver
