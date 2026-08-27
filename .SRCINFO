@@ -1,7 +1,7 @@
 pkgbase = mdview-mtx-git
 	pkgdesc = GTK markdown viewer and CLI converter. GTK3 version.
 	pkgver = r73.fc2c705
-	pkgrel = 2
+	pkgrel = 4
 	url = https://github.com/step-/mdview
 	arch = x86_64
 	arch = aarch64
@@ -22,9 +22,15 @@ pkgbase = mdview-mtx-git
 	source = mdview.desktop
 	source = ru.po
 	source = fix-render-link-unit-decl.patch
+	source = mdview-inline-editor.patch
+	source = README.md
+	source = README.ru.md
 	sha256sums = SKIP
 	sha256sums = 1b805b47674d57686c8f88b0bf699c73802108c2a0774bac39d5d8b75a81058d
-	sha256sums = 52361488f813965dc7155252938c209954b28eab708041572988cae0bcee7846
+	sha256sums = fb62810229f81c8c266045c7325a66f752e0ca3598ad85fb1c5f0991bdcf5cfa
 	sha256sums = 71e1c884947bfe60bf61cdbbf2eaae73f1534992c7e86d7b252234efefffc9d0
+	sha256sums = a21ee53c2c601c7ceabc13baa8c2689363f82b72bdee30c12f731e280c087bea
+	sha256sums = 2b1e9850a57acf471cfe739ae9e462e275ddb4639c9d97d403f4d9d0ad24d9d5
+	sha256sums = 0c063a7f4d7caa580ff09f19e00739ffaa1e4f6243e13c9b4f0e2cfe09c73f7b
 
 pkgname = mdview-mtx-git

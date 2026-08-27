@@ -1,0 +1,4869 @@
+From 88cf7ce4237606ca4e7abab845e16519b750a5b7 Mon Sep 17 00:00:00 2001
+From: AI <sfslinux@gmail.com>
+Date: Tue, 25 Aug 2026 23:06:33 +0000
+Subject: [PATCH] feat(viewer): extend inline Markdown authoring
+
+Add New Page creation plus link and image authoring dialogs.
+
+Render exact underline tags safely, and correct the progress and AT-SPI
+lifecycle handling.
+
+Round 2
+
+- Make Alt+P preview path-independent.
+- Add an external-editor toolbar button.
+- Keep the 11-button formatting toolbar on one row and use an 800x520 default window.
+- Make Discard revert the preview.
+- Offer Save As in the unsaved-changes dialog.
+- Reveal Ctrl+N new pages directly without re-entering the editor toggle path.
+- Refresh the i18n POT template for the new user-facing strings.
+
+Round 3
+
+- Give the external-editor button an icon distinct from the inline-editor
+  button. A theme without "document-edit" previously fell back onto the
+  inline-editor icon, so both toolbar buttons rendered identically.
+
+Round 4
+
+- Keep generated previews in a per-session directory under the temporary
+  directory, and drop the directories of instances that are gone. Preview
+  files no longer accumulate loose in the temporary directory.
+- Add an Export toolbar button that writes the current page as HTML,
+  decorated text, plain text, ANSI text or vt100 text, reusing the same
+  renderer the command line exposes.
+- Share one page-to-renderer resolution between preview and export.
+
+Round 5
+
+- Document using mdview as a command-line converter in --help and in the
+  man page, with one example per output format.
+---
+ doc/make_mdview_1.sh  |    2 +-
+ po/mdview.pot         |  477 +++++-
+ resources/usage.md.in |   18 +
+ src/mtxrender.c       |   66 +-
+ src/mtxtextview.c     |   41 +-
+ src/mtxviewer.c       | 3310 ++++++++++++++++++++++++++++++++++++++++-
+ src/mtxviewer.h       |   21 +-
+ 7 files changed, 3782 insertions(+), 153 deletions(-)
+
+diff --git a/doc/make_mdview_1.sh b/doc/make_mdview_1.sh
+index 8b2fba8..6c36134 100755
+--- a/doc/make_mdview_1.sh
++++ b/doc/make_mdview_1.sh
+@@ -30,7 +30,7 @@ BEGIN {
+ 	nK = split ("HOMEPATH HOMEPAGE TITLE DIR NUM FILE LEVEL MDVIEW_OPTIONS", K)
+ 
+ 	# Sub-section titles will get emphasis and a hanging indent.
+-	nSS = split ("OUTPUT FORMATS|INPUT MODIFIERS|OUTPUT MODIFIERS|EXTENSIONS|MISCELLANEOUS|ENVIRONMENT", SS, "|")
++	nSS = split ("OUTPUT FORMATS|INPUT MODIFIERS|OUTPUT MODIFIERS|EXTENSIONS|MISCELLANEOUS|CONVERTING DOCUMENTS|ENVIRONMENT", SS, "|")
+ }
+ 
+ # This section is for Debug builds only.
+diff --git a/po/mdview.pot b/po/mdview.pot
+index b1988d1..a6a31c2 100644
+--- a/po/mdview.pot
++++ b/po/mdview.pot
+@@ -1,14 +1,14 @@
+-# MDVIEW MTX translation template
+-# Copyright (C) 2024-2025 step, http://github.com/step-/mdview
++# SOME DESCRIPTIVE TITLE.
++# Copyright (C) YEAR step, http://github.com/step-/mdview
+ # This file is distributed under the same license as the mdview package.
+ # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+ #
+ #, fuzzy
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: mdview 2025.01.04\n"
++"Project-Id-Version: mdview 2025.10.30\n"
+ "Report-Msgid-Bugs-To: http://github.com/step-/mdview/issues\n"
+-"POT-Creation-Date: 2025-01-27 12:07+0100\n"
++"POT-Creation-Date: 2026-08-26 06:37+0000\n"
+ "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+ "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+@@ -34,156 +34,216 @@ msgstr ""
+ msgid "invalid option:"
+ msgstr ""
+ 
+-#: src/mtxcmm.c:2199
++#: src/mtxcmm.c:2224
+ #, c-format
+ msgid "Heading has stop characters '[', ']', '<', '>', '\\' or '&': %s"
+ msgstr ""
+ 
+-#: src/mtxcmm.c:2211
++#: src/mtxcmm.c:2236
+ #, c-format
+ msgid "Heading has unbalanced '*', '_' or '~': %s"
+ msgstr ""
+ 
+-#: src/mtxcmm.c:2223
++#: src/mtxcmm.c:2248
+ #, c-format
+ msgid "Heading has spaced/punctuated '_': %s"
+ msgstr ""
+ 
+-#: src/mtxcmm.c:2470
++#: src/mtxcmm.c:2495
+ #, c-format
+ msgid "% 3d. Headings have the same anchors: #%d(%s) and #%d(%s)\n"
+ msgstr ""
+ 
+-#: src/mtxtextview.c:1826
++#: src/mtxtextview.c:1857
+ msgid "Error: No markdown input"
+ msgstr ""
+ 
+-#: src/mtxtextview.c:1844
++#: src/mtxtextview.c:1875
+ msgid "Error: Cannot render markdown"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:169
++#: src/mtxviewer.c:220
+ msgctxt "Home page accel, in status bar before the name"
+ msgid "(Alt-H)"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:405
++#: src/mtxviewer.c:456
+ msgid "Browser not found. Set environment variable BROWSER."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:448
++#: src/mtxviewer.c:499
+ msgid "Text editor not found. Set environment variable DEFAULTTEXTEDITOR."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:511
++#: src/mtxviewer.c:563
+ msgid "Working..."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:562
++#: src/mtxviewer.c:620
+ msgctxt "progress"
+ msgid "Parsing..."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:563
++#: src/mtxviewer.c:621
+ msgctxt "progress"
+ msgid "Shebang."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:564
++#: src/mtxviewer.c:622
+ msgctxt "progress"
+ msgid "Legacy support."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:565
++#: src/mtxviewer.c:623
+ msgctxt "progress"
+ msgid "Headings."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:566
++#: src/mtxviewer.c:624
+ msgctxt "progress"
+ msgid "Parsed."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:567
++#: src/mtxviewer.c:625
+ msgctxt "progress"
+ msgid "Units optimized."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:568
++#: src/mtxviewer.c:626
+ msgctxt "progress"
+ msgid "Inlines optimized."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:569
++#: src/mtxviewer.c:627
+ msgctxt "progress"
+ msgid "Blocks optimized."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:570
++#: src/mtxviewer.c:628
+ msgctxt "progress"
+ msgid "Tables loaded."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:571
++#: src/mtxviewer.c:629
+ msgctxt "progress"
+ msgid "Tables formatted."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:572
++#: src/mtxviewer.c:630
+ msgctxt "progress"
+ msgid "Text filters applied."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:573
++#: src/mtxviewer.c:631
+ msgctxt "progress"
+ msgid "Text ready."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:574
++#: src/mtxviewer.c:632
+ msgctxt "progress"
+ msgid "Table of Contents."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:575
++#: src/mtxviewer.c:633
+ msgctxt "progress"
+ msgid "Markup ready."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:576
++#: src/mtxviewer.c:634
+ msgctxt "progress"
+ msgid "Rendering page..."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:577
++#: src/mtxviewer.c:635
+ msgctxt "progress"
+ msgid "Content loaded."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:578
++#: src/mtxviewer.c:636
+ msgctxt "progress"
+ msgid "Links loaded."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:579
++#: src/mtxviewer.c:637
+ msgctxt "progress"
+ msgid "Lines indented."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:580
++#: src/mtxviewer.c:638
+ msgctxt "progress"
+ msgid "Page rendered."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:581
++#: src/mtxviewer.c:639
+ msgctxt "progress"
+ msgid "Done."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:738
++#: src/mtxviewer.c:795
++msgid "::: Action not allowed while live preview is rendering :::"
++msgstr ""
++
++#: src/mtxviewer.c:802
+ msgid "::: Action not allowed while the page is loading :::"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:1111
++#: src/mtxviewer.c:851
++#, c-format
++msgid "%d words, %d chars"
++msgstr ""
++
++#: src/mtxviewer.c:854
++msgid "Rendering..."
++msgstr ""
++
++#: src/mtxviewer.c:978
++msgid "No editable file is open"
++msgstr ""
++
++#: src/mtxviewer.c:987
++#, c-format
++msgid "The containing directory is not writable: %s"
++msgstr ""
++
++#: src/mtxviewer.c:1001 src/mtxviewer.c:1056
++msgid "The file no longer exists on disk; refusing to save"
++msgstr ""
++
++#: src/mtxviewer.c:1008 src/mtxviewer.c:1020
++#, c-format
++msgid "Cannot access the save target: %s"
++msgstr ""
++
++#: src/mtxviewer.c:1028
++msgid "The save target is not a regular file"
++msgstr ""
++
++#: src/mtxviewer.c:1035
++#, c-format
++msgid "The save target is not writable: %s"
++msgstr ""
++
++#: src/mtxviewer.c:1061
++#, c-format
++msgid "Cannot verify whether the file changed on disk: %s"
++msgstr ""
++
++#: src/mtxviewer.c:1073
++msgid ""
++"The file changed on disk since it was opened or last saved; refusing to save"
++msgstr ""
++
++#: src/mtxviewer.c:1089
++#, c-format
++msgid "The file was saved, but its metadata could not be read: %s"
++msgstr ""
++
++#: src/mtxviewer.c:1121 src/mtxviewer.c:1775 src/mtxviewer.c:1792
++#, c-format
++msgid "::: Save failed: %s :::"
++msgstr ""
++
++#: src/mtxviewer.c:1572
+ #, c-format
+ msgctxt "1=path:2=error"
+ msgid ""
+@@ -191,79 +251,165 @@ msgid ""
+ "%2$s."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:1161
++#: src/mtxviewer.c:1622
+ msgid "Searching ..."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:1171
++#: src/mtxviewer.c:1632
+ msgid "Loading ..."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:1181
++#: src/mtxviewer.c:1642
+ #, c-format
+ msgid "Loading %s ..."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:1440
++#: src/mtxviewer.c:1669
++msgid "Save Markdown Page As"
++msgstr ""
++
++#: src/mtxviewer.c:1671 src/mtxviewer.c:1728 src/mtxviewer.c:2527
++#: src/mtxviewer.c:3643 src/mtxviewer.c:3700 src/mtxviewer.c:5680
++msgid "_Cancel"
++msgstr ""
++
++#: src/mtxviewer.c:1672 src/mtxviewer.c:1731
++msgid "_Save"
++msgstr ""
++
++#: src/mtxviewer.c:1675 src/mtxviewer.c:3657 src/mtxviewer.c:3704
++msgid "Markdown files"
++msgstr ""
++
++#: src/mtxviewer.c:1723
++msgid "The document has unsaved changes."
++msgstr ""
++
++#: src/mtxviewer.c:1726
++msgid "Save your changes before continuing?"
++msgstr ""
++
++#: src/mtxviewer.c:1729
++msgid "_Discard"
++msgstr ""
++
++#: src/mtxviewer.c:1730
++msgid "Save _As..."
++msgstr ""
++
++#: src/mtxviewer.c:1829
++msgid "::: Cannot switch to the saved page while another page is loading :::"
++msgstr ""
++
++#: src/mtxviewer.c:2124
+ msgid "Cancelling..."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:1548
++#: src/mtxviewer.c:2371
++msgid "::: Cannot preview this page :::"
++msgstr ""
++
++#: src/mtxviewer.c:2405 src/mtxviewer.c:2654
+ #, c-format
+ msgid "%s: Error: %s\n"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:1669
++#: src/mtxviewer.c:2463
++msgid "HTML document"
++msgstr ""
++
++#: src/mtxviewer.c:2464
++msgid "Decorated text"
++msgstr ""
++
++#: src/mtxviewer.c:2465
++msgid "Plain text"
++msgstr ""
++
++#: src/mtxviewer.c:2466
++msgid "Text with ANSI colors"
++msgstr ""
++
++#: src/mtxviewer.c:2467
++msgid "Text with vt100 codes"
++msgstr ""
++
++#: src/mtxviewer.c:2498
++#, c-format
++msgid "::: Exported to %s :::"
++msgstr ""
++
++#: src/mtxviewer.c:2504 src/mtxviewer.c:2656
++msgid "::: Could not export this page :::"
++msgstr ""
++
++#: src/mtxviewer.c:2525
++msgid "Export Page As"
++msgstr ""
++
++#: src/mtxviewer.c:2528
++msgid "_Export"
++msgstr ""
++
++#: src/mtxviewer.c:2531
++msgid "Format:"
++msgstr ""
++
++#: src/mtxviewer.c:2611
++msgid "::: Cannot export this page :::"
++msgstr ""
++
++#: src/mtxviewer.c:2771
+ msgid "Search complete."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:1673
++#: src/mtxviewer.c:2775
+ msgid "Loaded."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:1678
++#: src/mtxviewer.c:2780
+ #, c-format
+ msgid "%1$s loaded."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:1744
++#: src/mtxviewer.c:2860
+ #, c-format
+ msgid "Link to %s"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2124
++#: src/mtxviewer.c:3244
+ #, c-format
+ msgid "%d document examined"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2125
++#: src/mtxviewer.c:3245
+ #, c-format
+ msgid "%d documents examined"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2130
++#: src/mtxviewer.c:3250
+ #, c-format
+ msgid "%d document found"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2131
++#: src/mtxviewer.c:3251
+ #, c-format
+ msgid "%d documents found"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2135
++#: src/mtxviewer.c:3255
+ #, c-format
+ msgctxt "search:1=#terms:2=terms:3=```"
+ msgid "%1$d search term %3$s %2$s %3$s"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2136
++#: src/mtxviewer.c:3256
+ #, c-format
+ msgctxt "search:1=#terms:2=terms:3=```"
+ msgid "%1$d search terms %3$s %2$s %3$s"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2139
++#: src/mtxviewer.c:3259
+ #, c-format
+ msgctxt "search:1=ctr_subjects,2=ctr_results:3=terms"
+ msgid ""
+@@ -271,104 +417,275 @@ msgid ""
+ "# \n"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2431
++#: src/mtxviewer.c:3564
+ msgid "::: Home page not set; specify it when launching the program :::"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2497
++#: src/mtxviewer.c:3640
+ msgid "Open File"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2500
+-msgid "_Cancel"
+-msgstr ""
+-
+-#: src/mtxviewer.c:2501
++#: src/mtxviewer.c:3644
+ msgid "_Open"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2505
++#: src/mtxviewer.c:3648
+ msgid "All files"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2510
++#: src/mtxviewer.c:3653
+ msgid "Text files"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2514
+-msgid "Markdown files"
++#: src/mtxviewer.c:3698
++msgid "New Markdown Page"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2699
++#: src/mtxviewer.c:3701
++msgid "_Create"
++msgstr ""
++
++#: src/mtxviewer.c:3711
++msgid "New page.md"
++msgstr ""
++
++#: src/mtxviewer.c:3744
++msgid "::: Page already exists :::"
++msgstr ""
++
++#: src/mtxviewer.c:3745 src/mtxviewer.c:3754
++#, c-format
++msgid "::: Cannot create page: %s :::"
++msgstr ""
++
++#: src/mtxviewer.c:3873
++msgid ""
++"::: Close the inline editor before opening an external editor to avoid "
++"conflicting writes :::"
++msgstr ""
++
++#: src/mtxviewer.c:3940
+ msgctxt "error page back-link label"
+ msgid "Back"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2941
++#: src/mtxviewer.c:4325
++msgid "::: This page cannot be edited :::"
++msgstr ""
++
++#: src/mtxviewer.c:4341
++msgid "::: Cannot read this file for editing :::"
++msgstr ""
++
++#: src/mtxviewer.c:4342
++msgid "::: This file is not valid UTF-8 text :::"
++msgstr ""
++
++#: src/mtxviewer.c:4522
++msgid "::: Live preview render failed :::"
++msgstr ""
++
++#: src/mtxviewer.c:4578
++msgid "::: Document too large for live preview - refresh manually :::"
++msgstr ""
++
++#: src/mtxviewer.c:4923
++msgid "::: Formatting requires non-whitespace text :::"
++msgstr ""
++
++#: src/mtxviewer.c:5047
++msgid "::: Emphasis cannot cross a paragraph break :::"
++msgstr ""
++
++#: src/mtxviewer.c:5681
++msgid "_Insert"
++msgstr ""
++
++#: src/mtxviewer.c:5731
++msgid "text"
++msgstr ""
++
++#: src/mtxviewer.c:5735
++msgid "::: Link text must stay on one line :::"
++msgstr ""
++
++#: src/mtxviewer.c:5741
++msgid "Insert Image"
++msgstr ""
++
++#: src/mtxviewer.c:5741
++msgid "Insert Link"
++msgstr ""
++
++#: src/mtxviewer.c:5742
++msgid "_Alternative text:"
++msgstr ""
++
++#: src/mtxviewer.c:5742
++msgid "_Link text:"
++msgstr ""
++
++#: src/mtxviewer.c:5743
++msgid "Image _URL:"
++msgstr ""
++
++#: src/mtxviewer.c:5743
++msgid "_URL:"
++msgstr ""
++
++#: src/mtxviewer.c:5758
++msgid "::: A URL is required :::"
++msgstr ""
++
++#: src/mtxviewer.c:5897
+ msgid "Open file..."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2944
++#: src/mtxviewer.c:5900
+ msgid "(Ctrl-O) Open file..."
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2953
++#: src/mtxviewer.c:5906
++msgid "New page..."
++msgstr ""
++
++#: src/mtxviewer.c:5908
++msgid "(Ctrl-N) Create a Markdown page"
++msgstr ""
++
++#: src/mtxviewer.c:5917
+ msgid "Home"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2956
++#: src/mtxviewer.c:5920
+ msgid "(Alt-H) Reload the home page"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2966
++#: src/mtxviewer.c:5930
+ msgid "Back"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2969
++#: src/mtxviewer.c:5933
+ msgid "(Alt-B) Navigate back to the previous page"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2981
++#: src/mtxviewer.c:5945
+ msgid "Forward"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2984
++#: src/mtxviewer.c:5948
+ msgid "(Alt-F) Navigate forward to the next page"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2994
++#: src/mtxviewer.c:5958
+ msgid "HTML Preview"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:2996
++#: src/mtxviewer.c:5960
+ msgid "(Alt-P) Preview the page in the browser"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:3002
++#: src/mtxviewer.c:5967
++msgid "Export"
++msgstr ""
++
++#: src/mtxviewer.c:5969
++msgid "Export the page to another format"
++msgstr ""
++
++#: src/mtxviewer.c:5978
++msgid "Markdown Editor"
++msgstr ""
++
++#: src/mtxviewer.c:5980
++msgid "(F2) Show/hide the Markdown editor"
++msgstr ""
++
++#: src/mtxviewer.c:6006
++msgid "External editor"
++msgstr ""
++
++#: src/mtxviewer.c:6008
++msgid "(Ctrl-E) Edit the page in an external editor"
++msgstr ""
++
++#: src/mtxviewer.c:6014
+ msgid "(Alt-T) Change Table of Contents depth"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:3044
++#: src/mtxviewer.c:6056
+ msgid ""
+ "(Alt-S) Set focus on the search field to enter terms\n"
+ "(Enter) Search through all documents"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:3049
++#: src/mtxviewer.c:6061
+ msgid ""
+ "(Ctrl-F) Search forward in this page (also by primary button click)\n"
+ "(Ctrl-B) Search backward (also by opposite button click)"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:3091
++#: src/mtxviewer.c:6126
++msgid "Bold (**text**)"
++msgstr ""
++
++#: src/mtxviewer.c:6135
++msgid "Italic (*text*)"
++msgstr ""
++
++#: src/mtxviewer.c:6145
++msgid "Underline (<u>text</u>)"
++msgstr ""
++
++#: src/mtxviewer.c:6150
++msgid "Heading 1 (# )"
++msgstr ""
++
++#: src/mtxviewer.c:6155
++msgid "Heading 2 (## )"
++msgstr ""
++
++#: src/mtxviewer.c:6160
++msgid "Heading 3 (### )"
++msgstr ""
++
++#: src/mtxviewer.c:6165
++msgid "Quote (> )"
++msgstr ""
++
++#: src/mtxviewer.c:6170
++msgid "List (- )"
++msgstr ""
++
++#: src/mtxviewer.c:6176
++msgid "Code (inline `code` or fenced block)"
++msgstr ""
++
++#: src/mtxviewer.c:6183 src/mtxviewer.c:6186
++msgid "Insert image"
++msgstr ""
++
++#: src/mtxviewer.c:6187
++msgid "Insert image (![alt](URL))"
++msgstr ""
++
++#: src/mtxviewer.c:6194 src/mtxviewer.c:6197
++msgid "Insert link"
++msgstr ""
++
++#: src/mtxviewer.c:6198
++msgid "Insert link ([text](URL))"
++msgstr ""
++
++#: src/mtxviewer.c:6237
+ msgid "Cancel page loading"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:3094
++#: src/mtxviewer.c:6240
+ msgid "(Alt-X) Cancel loading this page"
+ msgstr ""
+ 
+-#: src/mtxviewer.c:3309
++#: src/mtxviewer.c:6581
+ #, c-format
+ msgid "%s: generic error.\n"
+ msgstr ""
+diff --git a/resources/usage.md.in b/resources/usage.md.in
+index abb551c..204f2be 100644
+--- a/resources/usage.md.in
++++ b/resources/usage.md.in
+@@ -87,6 +87,24 @@ ATX3
+ `   --lint               `Enable the linter; needs either Viewer or HTML output. HBRK
+ `   --version            `Print the program version and exit.
+ ATX3 
++ATX3 CONVERTING DOCUMENTS
++ATX3 
++Given an output format option, `mdview` converts the file and exits instead of HBRK
++opening the viewer, which makes it a command-line Markdown converter. Output HBRK
++goes to standard output unless `--output` redirects it to a file.
++ATX3 
++`    mdview --text . README.md` HBRK
++`                      `Print decorated text on standard output. HBRK
++`    mdview --bare . README.md > README.txt` HBRK
++`                      `Save plain text without Markdown formatting. HBRK
++`    mdview --ansi . README.md | less -R` HBRK
++`                      `Page the file with ANSI colours. HBRK
++`    mdview --tty . README.md` HBRK
++`                      `Same, using vt100 codes instead. HBRK
++`    mdview --html --html5 --html-full --output=README.html . README.md` HBRK
++`                      `Write a complete HTML document. Add `--html-css=2` to HBRK
++`                      `embed the style sheet the viewer uses for HTML Preview.
++ATX3 
+ ATX3 ENVIRONMENT
+ ATX3 
+ Program options can also be set using the environment variable `MDVIEW_OPTIONS`. HBRK
+diff --git a/src/mtxrender.c b/src/mtxrender.c
+index d6153b8..f058dab 100644
+--- a/src/mtxrender.c
++++ b/src/mtxrender.c
+@@ -149,6 +149,8 @@ struct MD_HTML_tag {
+     gboolean softbreak_tweak;
+     gboolean indent_li_block;
+     gboolean inside_table;
++    unsigned underline_depth;
++    unsigned underline_emitted_depth;
+ };
+ 
+ #define NEED_HTML_ESC_FLAG   0x1
+@@ -981,11 +983,60 @@ render_text_softbr(MD_HTML* r)
+                      (r->softbreak_tweak > 1 ? sUNIPUA_BR : "\n") : " ");
+ }
+ 
++static inline gboolean
++render_underline_enabled(const MD_HTML* r)
++{
++    return !r->output_html && !r->output_unsafe_html;
++}
++
++static void
++render_close_underlines(MD_HTML* r)
++{
++    while(r->underline_emitted_depth > 0) {
++        RENDER_VERBATIM(r, "</u>");
++        r->underline_emitted_depth--;
++    }
++}
++
++static void
++render_reopen_underlines(MD_HTML* r)
++{
++    if(!render_underline_enabled(r) || r->image_nesting_level > 0)
++        return;
++
++    while(r->underline_emitted_depth < r->underline_depth) {
++        RENDER_VERBATIM(r, "<u>");
++        r->underline_emitted_depth++;
++    }
++}
++
++static void
++render_reset_underlines(MD_HTML* r)
++{
++    render_close_underlines(r);
++    r->underline_depth = 0;
++}
++
+ static inline void
+ render_text_html(MD_HTML* r, const MD_CHAR* text, const MD_SIZE size)
+ {
+-    if (!r->output_html && !r->output_unsafe_html)
++    if(render_underline_enabled(r)) {
++        if(r->image_nesting_level > 0)
++            return;
++
++        if(size == 3 && memcmp(text, "<u>", 3) == 0) {
++            r->underline_depth++;
++            render_reopen_underlines(r);
++        }
++        else if(size == 4 && memcmp(text, "</u>", 4) == 0 && r->underline_depth > 0) {
++            r->underline_depth--;
++            if(r->underline_emitted_depth > r->underline_depth) {
++                RENDER_VERBATIM(r, "</u>");
++                r->underline_emitted_depth--;
++            }
++        }
+         return;
++    }
+ 
+     if (R2_IS_TOP_UNIT(r, MTX_CMM_PARSER_UNIT_BLOCK_HTML, MTX_CMM_PARSER_UNIT_FLAG_OPEN))
+         /* Line inside a larger HTML block. */
+@@ -1011,6 +1062,8 @@ enter_block_callback(MD_BLOCKTYPE type, void* detail, void* userdata)
+ {
+     MD_HTML* r = (MD_HTML*) userdata;
+ 
++    render_reset_underlines(r);
++
+     switch(type) {
+         case MD_BLOCK_DOC:      R2_NEW_UNIT(r, MTX_CMM_PARSER_UNIT_NULL, MTX_CMM_PARSER_UNIT_FLAG_OPEN); break;
+         case MD_BLOCK_QUOTE:    render_open_blockquote_block(r); break;
+@@ -1039,6 +1092,8 @@ leave_block_callback(MD_BLOCKTYPE type, void* detail, void* userdata)
+ {
+     MD_HTML* r = (MD_HTML*) userdata;
+ 
++    render_reset_underlines(r);
++
+     switch(type) {
+         case MD_BLOCK_DOC:      R2_SEAL_UNIT(r); break;
+         case MD_BLOCK_QUOTE:    render_close_blockquote_block(r); break;
+@@ -1068,6 +1123,8 @@ enter_span_callback(MD_SPANTYPE type, void* detail, void* userdata)
+     MD_HTML* r = (MD_HTML*) userdata;
+     int inside_img = (r->image_nesting_level > 0);
+ 
++    render_close_underlines(r);
++
+     /* We are inside a Markdown image label. Markdown allows to use any emphasis
+      * and other rich contents in that context similarly as in any link label.
+      *
+@@ -1103,6 +1160,7 @@ enter_span_callback(MD_SPANTYPE type, void* detail, void* userdata)
+ #endif
+     }
+ 
++    render_reopen_underlines(r);
+     return 0;
+ }
+ 
+@@ -1111,6 +1169,8 @@ leave_span_callback(MD_SPANTYPE type, void* detail, void* userdata)
+ {
+     MD_HTML* r = (MD_HTML*) userdata;
+ 
++    render_close_underlines(r);
++
+     if(type == MD_SPAN_IMG)
+         r->image_nesting_level--;
+     if(r->image_nesting_level > 0)
+@@ -1132,6 +1192,7 @@ leave_span_callback(MD_SPANTYPE type, void* detail, void* userdata)
+ #endif
+     }
+ 
++    render_reopen_underlines(r);
+     return 0;
+ }
+ 
+@@ -1169,7 +1230,7 @@ md_mtx (const MD_CHAR* input, MD_SIZE input_size,
+         void* userdata, unsigned parser_flags, unsigned renderer_flags)
+ {
+     MD_HTML render = { process_output, userdata, renderer_flags, 0, { 0 },
+-        -1, 0, { 0 }, 0, 0, 0, 0, 0, 0, 0,
++        -1, 0, { 0 }, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+     };
+     int i;
+     MtxCmmOutput output;
+@@ -1224,4 +1285,3 @@ md_mtx (const MD_CHAR* input, MD_SIZE input_size,
+ 
+     return md_parse(input, input_size, &parser, (void*) &render);
+ }
+-
+diff --git a/src/mtxtextview.c b/src/mtxtextview.c
+index 554224a..ed86c96 100644
+--- a/src/mtxtextview.c
++++ b/src/mtxtextview.c
+@@ -2130,6 +2130,25 @@ mtx_text_view_set_text (MtxTextView *self,
+     return TRUE;
+ }
+ 
++static gchar *
++mtx_text_view_read_file_candidate (MtxTextView *self,
++                                   const gchar *path,
++                                   const gboolean utf8_validate,
++                                   gchar **actual_path)
++{
++    g_autofree gchar *localized = mtx_text_view_auto_lang_find (self, path);
++
++    g_clear_pointer (actual_path, g_free);
++    *actual_path = g_canonicalize_filename (localized ? localized : path, NULL);
++    gchar *contents =
++    mtx_text_view_mmap_read_file (*actual_path, NULL, utf8_validate);
++    if (contents == NULL)
++    {
++        g_clear_pointer (actual_path, g_free);
++    }
++    return contents;
++}
++
+ /**
+ mtx_text_view_load_file:
+ Load a markdown file into the text view with asynchronous operations.
+@@ -2159,6 +2178,7 @@ mtx_text_view_load_file (MtxTextView *self,
+     g_autofree gchar *basedir = NULL;
+     g_autofree gchar *abs_img_dir = NULL;
+     g_autofree gchar *path = NULL;
++    g_autofree gchar *actual_path = NULL;
+     gchar *contents = NULL; /* mtx_text_view_load_markup_data_free */
+     gboolean retval = FALSE;
+     gboolean is_abs_referrer = g_path_is_absolute (referrer);
+@@ -2166,15 +2186,15 @@ mtx_text_view_load_file (MtxTextView *self,
+ 
+     if (g_path_is_absolute (file))
+     {
+-        contents =
+-        mtx_text_view_get_file_contents (self, file, NULL, utf8_validate);
++        contents = mtx_text_view_read_file_candidate
++        (self, file, utf8_validate, &actual_path);
+     }
+     else
+     {
+         abs_img_dir = g_canonicalize_filename (self->image_directory, NULL);
+         path = g_build_filename (abs_img_dir, file, NULL);
+-        contents =
+-        mtx_text_view_get_file_contents (self, path, NULL, utf8_validate);
++        contents = mtx_text_view_read_file_candidate
++        (self, path, utf8_validate, &actual_path);
+ 
+         if (contents == NULL)
+         {
+@@ -2182,8 +2202,8 @@ mtx_text_view_load_file (MtxTextView *self,
+             g_free (path);
+             path = g_build_filename (abs_img_dir, q, NULL);
+             g_free (q);
+-            contents =
+-            mtx_text_view_get_file_contents (self, path, NULL, utf8_validate);
++            contents = mtx_text_view_read_file_candidate
++            (self, path, utf8_validate, &actual_path);
+         }
+     }
+ 
+@@ -2215,8 +2235,8 @@ mtx_text_view_load_file (MtxTextView *self,
+             path = g_build_filename (basedir, file, NULL);
+             g_free (q);
+         }
+-        contents =
+-        mtx_text_view_get_file_contents (self, path, NULL, utf8_validate);
++        contents = mtx_text_view_read_file_candidate
++        (self, path, utf8_validate, &actual_path);
+     }
+     /* Carry on regardless, letting errors bubble up to @completer. */
+     if (TRUE)
+@@ -2224,7 +2244,9 @@ mtx_text_view_load_file (MtxTextView *self,
+         gchar **pptr = g_malloc (sizeof (gchar *));
+         *pptr = contents;
+         retval =
+-        mtx_text_view_set_text (self, pptr, path, TRUE, file, completer);
++        mtx_text_view_set_text (self, pptr, actual_path, TRUE,
++                                contents == NULL ? NULL : actual_path,
++                                completer);
+     }
+     mtx_dbg_errout (1, "end %s\n", mtx_dbg_fmt_etime (-1));
+     return retval;
+@@ -2900,4 +2922,3 @@ mtx_text_view_finalize (GObject *gobject)
+ 
+     G_OBJECT_CLASS (mtx_text_view_parent_class)->finalize (gobject);
+ }
+-
+diff --git a/src/mtxviewer.c b/src/mtxviewer.c
+index 70161f8..c8622df 100644
+--- a/src/mtxviewer.c
++++ b/src/mtxviewer.c
+@@ -48,6 +48,7 @@ from the hardinfo "help-viewer" directory.
+ 
+ #define _GNU_SOURCE                      /* for strcasestr() */
+ #define GLIB_VERSION_MIN_REQUIRED GLIB_VERSION_2_68
++#include <errno.h>
+ #include <string.h>
+ #include <stdlib.h>
+ #include <gtk/gtk.h>
+@@ -56,8 +57,10 @@ from the hardinfo "help-viewer" directory.
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
++#include <unistd.h>
+ #include <sys/mman.h>
+ #include <glib-unix.h>
++#include <glib/gstdio.h> /* g_stat() */
+ #include <glib/gi18n.h> /* xgettext --keyword=_ --keyword=Q_:1g */
+ #include <locale.h>
+ 
+@@ -72,6 +75,35 @@ from the hardinfo "help-viewer" directory.
+ #define STATUSBAR_CTX_LINK 1
+ #define STATUSBAR_CTX_WARN 2
+ 
++/*
++Inline-editor live-preview scheduling constants.
++
++BOTH NUMBERS ARE MEASURED, NOT CHOSEN. They come from todo 6 of the
++inline-editor plan and are recorded verbatim in
++.omo/evidence/task-6-mdview-inline-editor.md (section 0). Do not round
++them to something tidier, and do not "adjust" them without redoing that
++measurement -- 54272 in particular is NOT 53 KiB by design, it is the
++last synthetic document size measured to render in <= 300 ms
++(54,273 B -> 297 ms; the next measured point, 55,297 B, is 305 ms) minus
++the single trailing newline the generator appended.
++
++MTX_EDITOR_DEBOUNCE_MS = 90:
++    100 ms perceived-instantaneity budget minus the 10 ms measured
++    median-of-3 render of the worst real shipped document (README.md
++    2,817 B and CHANGELOG.md 6,048 B both render in 10 ms).
++
++MTX_EDITOR_LIVE_PREVIEW_MAX_BYTES = 54272:
++    Above this the render pipeline (which is super-quadratic:
++    render_ms proportional to bytes^2.081 over 10 KB..1 MB, and the
++    exponent RISES with size) blows past 300 ms, so live preview is
++    switched off and the user must refresh manually.
++*/
++#define MTX_EDITOR_DEBOUNCE_MS            90
++#define MTX_EDITOR_LIVE_PREVIEW_MAX_BYTES 54272
++#define MTX_EDITOR_WORD_COUNT_THROTTLE_MS 50
++#define MTX_EDITOR_DISCARD_RENDER_DATA     "mtx-editor-discard-render-text"
++#define MTX_RESPONSE_SAVE_AS               1
++
+ typedef struct mtx_viewer_nav_unit
+ {
+     gchar *file;
+@@ -89,6 +121,25 @@ typedef struct
+     int id;
+ } progress_logger_update_data;
+ 
++static gboolean mtx_viewer_editor_load_current (MtxViewer *mvr);
++static void mtx_viewer_editor_hide (MtxViewer *mvr);
++static gboolean mtx_viewer_editor_reveal (MtxViewer *mvr,
++                                           GtkWidget *editor_box);
++static void mtx_viewer_editor_issue_render_full (MtxViewer *mvr,
++                                                  gboolean preserve_position,
++                                                  gint saved_curpos,
++                                                  gdouble saved_scroll,
++                                                  const gchar *captured_text,
++                                                  gboolean bypass_ceiling);
++static void mtx_viewer_editor_issue_render (MtxViewer *mvr,
++                                             gboolean preserve_position,
++                                             gint saved_curpos,
++                                             gdouble saved_scroll);
++static gchar *mtx_viewer_resolve_document_path (MtxViewer *mvr,
++                                                 const gchar *page,
++                                                 GStatBuf *out_st);
++static void on_editor_buffer_changed (GtkTextBuffer *buffer, gpointer data);
++
+ typedef struct
+ {
+     gboolean is_text_markdown;
+@@ -533,8 +584,14 @@ progress_logger_stop (MtxViewer *mvr)
+     g_cancellable_cancel (mvr->progress_logger_cancellable);
+     gtk_widget_set_visible (mvr->progress_box, FALSE);
+     mtx_text_view_set_progress_fd (mvr->text_view, -1);
+-    close (mvr->progress_fd [0]);
+-    close (mvr->progress_fd [1]);
++    if (mvr->progress_fd[0])
++    {
++        close (mvr->progress_fd[0]);
++    }
++    if (mvr->progress_fd[1])
++    {
++        close (mvr->progress_fd[1]);
++    }
+     mvr->progress_fd[0] = mvr->progress_fd[1] = 0;
+ }
+ 
+@@ -732,6 +789,12 @@ Is a page being loaded? If so warn the user.
+ static gboolean
+ mtx_viewer_is_page_in_progress (MtxViewer *mvr)
+ {
++    if (mvr->editor_render_in_flight)
++    {
++        mtx_viewer_statusbar_warn_seconds (mvr, 2, _(
++            "::: Action not allowed while live preview is rendering :::"));
++        return TRUE;
++    }
+     if (mvr->progress_logger_q->length > 0 ||
+         mvr->progress_fd[0] || mvr->progress_fd[1])
+     {
+@@ -741,6 +804,328 @@ mtx_viewer_is_page_in_progress (MtxViewer *mvr)
+     }
+     return FALSE;
+ }
++
++typedef struct
++{
++    guint timeout_id;
++    gint words;
++} MtxViewerEditorCounterData;
++
++static void
++mtx_viewer_editor_counter_data_free (gpointer data)
++{
++    MtxViewerEditorCounterData *counter = data;
++
++    if (counter->timeout_id)
++    {
++        g_source_remove (counter->timeout_id);
++    }
++    g_free (counter);
++}
++
++static MtxViewerEditorCounterData *
++mtx_viewer_editor_counter_data (MtxViewer *mvr)
++{
++    const gchar *key = "mtx-viewer-editor-counter-data";
++    MtxViewerEditorCounterData *counter =
++    g_object_get_data (G_OBJECT (mvr->counter_label), key);
++
++    if (counter == NULL)
++    {
++        counter = g_new0 (MtxViewerEditorCounterData, 1);
++        g_object_set_data_full (G_OBJECT (mvr->counter_label), key, counter,
++                                mtx_viewer_editor_counter_data_free);
++    }
++    return counter;
++}
++
++static void
++mtx_viewer_editor_update_counter_label (MtxViewer *mvr)
++{
++    MtxViewerEditorCounterData *counter =
++    mtx_viewer_editor_counter_data (mvr);
++    GtkTextBuffer *buffer =
++    gtk_text_view_get_buffer (GTK_TEXT_VIEW (mvr->editor_view));
++    const gint chars = gtk_text_buffer_get_char_count (buffer);
++    g_autofree gchar *counts =
++    g_strdup_printf (_("%d words, %d chars"), counter->words, chars);
++    const gchar *dirty = mvr->editor_dirty ? "*  " : "";
++    const gchar *rendering =
++    mvr->editor_render_in_flight ? _("Rendering...") : "";
++    const gchar *separator = mvr->editor_render_in_flight ? "  " : "";
++    g_autofree gchar *indicator =
++    g_strdup_printf ("%s%s%s%s", dirty, rendering, separator, counts);
++
++    gtk_label_set_text (GTK_LABEL (mvr->counter_label), indicator);
++}
++
++static gint
++mtx_viewer_editor_word_count (const gchar *text)
++{
++    gint words = 0;
++    gboolean in_word = FALSE;
++
++    for (const gchar *p = text; *p != '\0'; p = g_utf8_next_char (p))
++    {
++        const gunichar ch = g_utf8_get_char (p);
++        const gboolean is_word =
++        g_unichar_isalnum (ch) || g_unichar_ismark (ch);
++
++        if (is_word && !in_word)
++        {
++            words++;
++        }
++        in_word = is_word;
++    }
++    return words;
++}
++
++static void
++mtx_viewer_editor_count_words_now (MtxViewer *mvr)
++{
++    MtxViewerEditorCounterData *counter =
++    mtx_viewer_editor_counter_data (mvr);
++    GtkTextBuffer *buffer =
++    gtk_text_view_get_buffer (GTK_TEXT_VIEW (mvr->editor_view));
++    GtkTextIter start, end;
++
++    if (counter->timeout_id)
++    {
++        g_source_remove (counter->timeout_id);
++        counter->timeout_id = 0;
++    }
++    gtk_text_buffer_get_start_iter (buffer, &start);
++    gtk_text_buffer_get_end_iter (buffer, &end);
++    g_autofree gchar *text =
++    gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
++    counter->words = mtx_viewer_editor_word_count (text);
++    mtx_viewer_editor_update_counter_label (mvr);
++}
++
++static gboolean
++on_editor_word_count_timeout (gpointer data)
++{
++    MtxViewer *mvr = data;
++    MtxViewerEditorCounterData *counter =
++    mtx_viewer_editor_counter_data (mvr);
++
++    counter->timeout_id = 0;
++    mtx_viewer_editor_count_words_now (mvr);
++    return G_SOURCE_REMOVE;
++}
++
++static void
++mtx_viewer_editor_schedule_word_count (MtxViewer *mvr)
++{
++    MtxViewerEditorCounterData *counter =
++    mtx_viewer_editor_counter_data (mvr);
++
++    if (counter->timeout_id == 0)
++    {
++        counter->timeout_id =
++        g_timeout_add (MTX_EDITOR_WORD_COUNT_THROTTLE_MS,
++                       on_editor_word_count_timeout, mvr);
++    }
++}
++
++/**
++mtx_viewer_editor_indicator_reset:
++Companion to on_editor_buffer_changed(): clears mvr->editor_dirty,
++refreshes both counters in mvr->counter_label, and strips a leading "*" off the
++window title if present. Called right after each of
++accel_toggle_editor()'s two programmatic gtk_text_buffer_set_text()
++calls, inside the block/unblock guard the HANDOFF(todo 12) comments
++specify, so a freshly loaded or freshly cleared buffer never displays
++as modified.
++*/
++static void
++mtx_viewer_editor_indicator_reset (MtxViewer *mvr)
++{
++    mvr->editor_dirty = FALSE;
++    mtx_viewer_editor_count_words_now (mvr);
++
++    const gchar *title = gtk_window_get_title (GTK_WINDOW (mvr->window));
++    if (title != NULL && title[0] == '*')
++    {
++        gchar *restored = g_strdup (title + 1);
++        gtk_window_set_title (GTK_WINDOW (mvr->window), restored);
++        g_free (restored);
++    }
++}
++
++static gboolean
++mtx_viewer_editor_save_to_path (MtxViewer *mvr,
++                                const gchar *path,
++                                gboolean target_must_exist,
++                                GError **error)
++{
++    GStatBuf st;
++    GStatBuf current_stat;
++    gchar *directory = NULL;
++    gchar *resolved_path = NULL;
++    gchar *text = NULL;
++    const gchar *save_path = path;
++    gboolean saved = FALSE;
++
++    if (!mvr->editor_dirty)
++    {
++        return TRUE;
++    }
++
++    if (path == NULL)
++    {
++        g_set_error_literal (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
++                             _("No editable file is open"));
++        goto out;
++    }
++
++    directory = g_path_get_dirname (path);
++    if (g_access (directory, W_OK) != 0)
++    {
++        const gint errsv = errno;
++        g_set_error (error, G_FILE_ERROR, g_file_error_from_errno (errsv),
++                     _("The containing directory is not writable: %s"),
++                     g_strerror (errsv));
++        goto out;
++    }
++
++    if (g_stat (path, &st) != 0)
++    {
++        const gint errsv = errno;
++        if (errsv == ENOENT)
++        {
++            if (target_must_exist)
++            {
++                g_set_error_literal
++                (error, G_FILE_ERROR, G_FILE_ERROR_NOENT,
++                 _("The file no longer exists on disk; refusing to save"));
++                goto out;
++            }
++        }
++        else
++        {
++            g_set_error (error, G_FILE_ERROR, g_file_error_from_errno (errsv),
++                         _("Cannot access the save target: %s"),
++                         g_strerror (errsv));
++            goto out;
++        }
++    }
++    else
++    {
++        resolved_path = realpath (path, NULL); /* libc-allocated, needs free() */
++        if (resolved_path == NULL || g_stat (resolved_path, &st) != 0)
++        {
++            const gint errsv = errno;
++            g_set_error (error, G_FILE_ERROR, g_file_error_from_errno (errsv),
++                         _("Cannot access the save target: %s"),
++                         g_strerror (errsv));
++            goto out;
++        }
++        save_path = resolved_path;
++        if (!S_ISREG (st.st_mode))
++        {
++            g_set_error_literal (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
++                                 _("The save target is not a regular file"));
++            goto out;
++        }
++        if (g_access (save_path, W_OK) != 0)
++        {
++            const gint errsv = errno;
++            g_set_error (error, G_FILE_ERROR, g_file_error_from_errno (errsv),
++                         _("The save target is not writable: %s"),
++                         g_strerror (errsv));
++            goto out;
++        }
++    }
++
++    GtkTextBuffer *buffer =
++    gtk_text_view_get_buffer (GTK_TEXT_VIEW (mvr->editor_view));
++    GtkTextIter start;
++    GtkTextIter end;
++    gtk_text_buffer_get_bounds (buffer, &start, &end);
++    text = gtk_text_buffer_get_text (buffer, &start, &end, TRUE);
++    const gsize len = strlen (text);
++
++    if (target_must_exist && g_stat (save_path, &current_stat) != 0)
++    {
++        const gint errsv = errno;
++        if (errsv == ENOENT)
++        {
++            g_set_error_literal
++            (error, G_FILE_ERROR, G_FILE_ERROR_NOENT,
++             _("The file no longer exists on disk; refusing to save"));
++        }
++        else
++        {
++            g_set_error (error, G_FILE_ERROR, g_file_error_from_errno (errsv),
++                         _("Cannot verify whether the file changed on disk: %s"),
++                         g_strerror (errsv));
++        }
++        goto out;
++    }
++    if (target_must_exist
++        && ((gint64) current_stat.st_mtime != mvr->editor_mtime
++        || (goffset) current_stat.st_size != mvr->editor_size)
++       )
++    {
++        g_set_error_literal
++        (error, G_FILE_ERROR, G_FILE_ERROR_FAILED,
++         _("The file changed on disk since it was opened or last saved; refusing to save"));
++        goto out;
++    }
++
++    if (!g_file_set_contents_full
++        (save_path, text, (gssize) len,
++         G_FILE_SET_CONTENTS_CONSISTENT | G_FILE_SET_CONTENTS_DURABLE,
++         0644, error))
++    {
++        goto out;
++    }
++
++    if (g_stat (save_path, &st) != 0)
++    {
++        const gint errsv = errno;
++        g_set_error (error, G_FILE_ERROR, g_file_error_from_errno (errsv),
++                     _("The file was saved, but its metadata could not be read: %s"),
++                     g_strerror (errsv));
++        goto out;
++    }
++
++    mvr->editor_mtime = (gint64) st.st_mtime;
++    mvr->editor_size = (goffset) st.st_size;
++    mtx_viewer_editor_indicator_reset (mvr);
++    gtk_text_buffer_set_modified (buffer, FALSE);
++    saved = TRUE;
++
++out:
++    g_free (text);
++    g_free (directory);
++    free (resolved_path);
++    return saved;
++}
++
++static gboolean
++accel_save_editor (GtkAccelGroup *group __attribute__((unused)),
++                   GObject *obj __attribute__((unused)),
++                   guint keyval __attribute__((unused)),
++                   GdkModifierType mod __attribute__((unused)),
++                   gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++    GError *error = NULL;
++
++    (void) mtx_viewer_editor_save_to_path
++    (mvr, mvr->editor_path, TRUE, &error);
++    if (error != NULL)
++    {
++        gchar *message = g_strdup_printf (_("::: Save failed: %s :::"),
++                                          error->message);
++        mtx_viewer_statusbar_warn_seconds (mvr, 5, message);
++        g_free (message);
++        g_error_free (error);
++    }
++    return TRUE;
++}
+ /*************************************************************************}}}
+ ****************************************************************************/
+ 
+@@ -969,7 +1354,7 @@ on_link_clicked_cb (gpointer *instance __attribute__((unused)),
+     if (cond)
+     {
+         _nav_trail_fore_clear (mvr);
+-        _nav_trail_insert (mvr, mvr->current_file, offset);
++        _nav_trail_insert (mvr, page, offset);
+         mvr->current_curpos = 0;
+         mtx_viewer_write_toc_to_backing_file (mvr);
+     }
+@@ -1069,6 +1454,8 @@ present_page_cb (gpointer *instance __attribute__((unused)),
+     MtxViewer *mvr = p->args.present_page_cb.mvr;
+     guint offset = p->args.present_page_cb.offset;
+     gchar *page = p->args.present_page_cb.page;    /* owned */
++    const gboolean reveal_editor =
++    g_strcmp0 (mvr->editor_reveal_file, page) == 0;
+     g_autoptr (GError) err = error;
+ 
+     progress_logger_stop (mvr);
+@@ -1085,6 +1472,10 @@ present_page_cb (gpointer *instance __attribute__((unused)),
+     }
+     else
+     {
++        if (reveal_editor)
++        {
++            g_clear_pointer (&mvr->editor_reveal_file, g_free);
++        }
+         mtx_viewer_insert_error_page (mvr, page, error);
+     }
+     gtk_window_present (GTK_WINDOW (mvr->window));
+@@ -1092,6 +1483,16 @@ present_page_cb (gpointer *instance __attribute__((unused)),
+     g_free (page);
+     g_free (data);
+     mtx_viewer_widgets_set_sensitive (mvr, TRUE);
++    if (cond && reveal_editor)
++    {
++        g_clear_pointer (&mvr->editor_reveal_file, g_free);
++        GtkWidget *editor_box = gtk_widget_get_parent (mvr->editor_scrolled);
++        if (gtk_widget_get_visible (editor_box))
++        {
++            mtx_viewer_editor_hide (mvr);
++        }
++        (void) mtx_viewer_editor_reveal (mvr, editor_box);
++    }
+ #ifdef OPT_EXIT_TEST
+     if (mvr->exit_test)
+     {
+@@ -1163,6 +1564,8 @@ mtx_viewer_insert_error_page (MtxViewer *mvr,
+     gchar *message, *mkd;
+     const gchar *errmsg = (error != NULL ? error->message :
+                            g_strerror (ENOENT));   /* just guessing */
++
++    mtx_viewer_editor_hide (mvr);
+     g_assert (mvr->failed_file == NULL);
+     mvr->failed_file = g_strdup (page);
+     message =
+@@ -1251,6 +1654,192 @@ mtx_viewer_route_page (MtxViewer *mvr,
+     return retval;
+ }
+ 
++/**
++mtx_viewer_editor_confirm_discard:
++Ask what to do before an interactive action discards the visible editor's
++unsaved contents.
++
++Returns: TRUE when the caller may proceed, FALSE when it must abort.
++*/
++static gchar *
++mtx_viewer_editor_choose_save_path (MtxViewer *mvr)
++{
++    const gint hold_fd = open (mvr->backing_file, O_RDONLY);
++    GtkWidget *dialog = gtk_file_chooser_dialog_new
++    (_("Save Markdown Page As"), GTK_WINDOW (mvr->window),
++     GTK_FILE_CHOOSER_ACTION_SAVE,
++     _("_Cancel"), GTK_RESPONSE_CANCEL,
++     _("_Save"), GTK_RESPONSE_ACCEPT, NULL);
++    GtkFileChooser *chooser = GTK_FILE_CHOOSER (dialog);
++    GtkFileFilter *filter = gtk_file_filter_new ();
++    gtk_file_filter_set_name (filter, _("Markdown files"));
++    gtk_file_filter_add_pattern (filter, "*.md");
++    gtk_file_filter_add_pattern (filter, "*.markdown");
++    gtk_file_chooser_add_filter (chooser, filter);
++    gtk_file_chooser_set_filter (chooser, filter);
++    gtk_file_chooser_set_local_only (chooser, TRUE);
++    gtk_file_chooser_set_do_overwrite_confirmation (chooser, TRUE);
++
++    g_autofree gchar *directory = g_path_get_dirname (mvr->editor_path);
++    g_autofree gchar *name = g_path_get_basename (mvr->editor_path);
++    gtk_file_chooser_set_current_folder (chooser, directory);
++    gtk_file_chooser_set_current_name (chooser, name);
++
++    const gint response = gtk_dialog_run (GTK_DIALOG (dialog));
++    gchar *path = response == GTK_RESPONSE_ACCEPT
++        ? gtk_file_chooser_get_filename (chooser) : NULL;
++    gtk_widget_destroy (dialog);
++    if (hold_fd >= 0)
++    {
++        close (hold_fd);
++    }
++    if (path != NULL
++        && !g_str_has_suffix (path, ".md")
++        && !g_str_has_suffix (path, ".markdown"))
++    {
++        gchar *with_extension = g_strconcat (path, ".md", NULL);
++        g_free (path);
++        path = with_extension;
++    }
++    return path;
++}
++
++static gboolean
++mtx_viewer_editor_confirm_discard_full (MtxViewer *mvr,
++                                        gboolean rerender_on_discard,
++                                        gboolean is_quit_trigger)
++{
++    GtkWidget *editor_box = gtk_widget_get_parent (mvr->editor_scrolled);
++
++    if (!gtk_widget_get_visible (editor_box) || !mvr->editor_dirty)
++    {
++        return TRUE;
++    }
++
++    GtkWidget *dialog = gtk_message_dialog_new
++    (GTK_WINDOW (mvr->window),
++     GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
++     GTK_MESSAGE_WARNING, GTK_BUTTONS_NONE, "%s",
++     _("The document has unsaved changes."));
++    gtk_message_dialog_format_secondary_text
++    (GTK_MESSAGE_DIALOG (dialog), "%s",
++     _("Save your changes before continuing?"));
++    gtk_dialog_add_buttons (GTK_DIALOG (dialog),
++                            _("_Cancel"), GTK_RESPONSE_CANCEL,
++                            _("_Discard"), GTK_RESPONSE_REJECT,
++                            _("Save _As..."), MTX_RESPONSE_SAVE_AS,
++                            _("_Save"), GTK_RESPONSE_ACCEPT,
++                            NULL);
++    gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_CANCEL);
++
++    /* gtk_dialog_run() spins a nested main loop. Keep suppression raised
++       through response dispatch too: Save can open a nested dialog, and
++       Discard reloads and queues its replacement render in this region. */
++    mvr->editor_suppress_render = TRUE;
++    const gint response = gtk_dialog_run (GTK_DIALOG (dialog));
++    gtk_widget_destroy (dialog);
++
++    gboolean proceed = FALSE;
++    gboolean save_as_success = FALSE;
++    gchar *discard_text = NULL;
++    gchar *saved_path = NULL;
++    if (response == GTK_RESPONSE_REJECT)
++    {
++        mtx_viewer_editor_indicator_reset (mvr);
++        if (!mtx_viewer_editor_load_current (mvr))
++        {
++            mtx_viewer_editor_hide (mvr);
++        }
++        else
++        {
++            proceed = TRUE;
++            if (rerender_on_discard)
++            {
++                GtkTextBuffer *buffer =
++                gtk_text_view_get_buffer (GTK_TEXT_VIEW (mvr->editor_view));
++                GtkTextIter start, end;
++                gtk_text_buffer_get_start_iter (buffer, &start);
++                gtk_text_buffer_get_end_iter (buffer, &end);
++                discard_text = gtk_text_buffer_get_text
++                (buffer, &start, &end, FALSE);
++            }
++        }
++    }
++    else if (response == GTK_RESPONSE_ACCEPT)
++    {
++        GError *error = NULL;
++        proceed = mtx_viewer_editor_save_to_path
++        (mvr, mvr->editor_path, TRUE, &error);
++        if (error != NULL)
++        {
++            gchar *message = g_strdup_printf (_("::: Save failed: %s :::"),
++                                              error->message);
++            mtx_viewer_statusbar_warn_seconds (mvr, 5, message);
++            g_free (message);
++            g_error_free (error);
++        }
++    }
++    else if (response == MTX_RESPONSE_SAVE_AS)
++    {
++        saved_path = mtx_viewer_editor_choose_save_path (mvr);
++        if (saved_path != NULL)
++        {
++            GError *error = NULL;
++            save_as_success = mtx_viewer_editor_save_to_path
++            (mvr, saved_path, FALSE, &error);
++            if (error != NULL)
++            {
++                gchar *message = g_strdup_printf (_("::: Save failed: %s :::"),
++                                                  error->message);
++                mtx_viewer_statusbar_warn_seconds (mvr, 5, message);
++                g_free (message);
++                g_error_free (error);
++            }
++            proceed = save_as_success && is_quit_trigger;
++        }
++    }
++
++    if (proceed || save_as_success)
++    {
++        if (mvr->editor_debounce_id)
++        {
++            g_source_remove (mvr->editor_debounce_id);
++            mvr->editor_debounce_id = 0;
++        }
++        mvr->editor_render_pending = FALSE;
++    }
++
++    if (proceed && discard_text != NULL)
++    {
++        mtx_viewer_editor_issue_render_full
++        (mvr, FALSE, 0, 0.0, discard_text, TRUE);
++    }
++    g_free (discard_text);
++
++    if (save_as_success && !is_quit_trigger)
++    {
++        mtx_viewer_editor_hide (mvr);
++        if (!mtx_viewer_is_page_in_progress (mvr))
++        {
++            (void) mtx_viewer_present_page (mvr, saved_path, 0);
++        }
++        else
++        {
++            mtx_viewer_statusbar_warn_seconds
++            (mvr, 3, _("::: Cannot switch to the saved page while another page is loading :::"));
++        }
++    }
++    g_free (saved_path);
++    mvr->editor_suppress_render = FALSE;
++    return proceed;
++}
++
++static gboolean G_GNUC_UNUSED
++mtx_viewer_editor_confirm_discard (MtxViewer *mvr)
++{
++    return mtx_viewer_editor_confirm_discard_full (mvr, FALSE, FALSE);
++}
++
+ /**
+ nav_fore_clicked:
+ 
+@@ -1262,6 +1851,14 @@ nav_fore_clicked (GtkWidget *widget __attribute__((unused)),
+                   gpointer data)
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
++    if (mtx_viewer_is_page_in_progress (mvr))
++    {
++        return;
++    }
++    if (!mtx_viewer_editor_confirm_discard (mvr))
++    {
++        return;
++    }
+     MtxViewerNavUnit *fore =
+     (MtxViewerNavUnit *) g_queue_peek_nth (mvr->nav_trail,
+                                            mvr->nav_trail_page_idx + 1);
+@@ -1299,7 +1896,7 @@ accel_nav_fore (GtkAccelGroup *group __attribute__((unused)),
+                 gpointer data)
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
+-    if (mvr->can_go_fore && !mtx_viewer_is_page_in_progress (mvr))
++    if (mvr->can_go_fore)
+     {
+         nav_fore_clicked (NULL, mvr);
+     }
+@@ -1317,6 +1914,14 @@ nav_back_clicked (GtkWidget *widget __attribute__((unused)),
+                   gpointer data)
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
++    if (mtx_viewer_is_page_in_progress (mvr))
++    {
++        return;
++    }
++    if (!mtx_viewer_editor_confirm_discard (mvr))
++    {
++        return;
++    }
+     MtxViewerNavUnit *back =
+     (MtxViewerNavUnit *) g_queue_peek_nth (mvr->nav_trail,
+                                            mvr->nav_trail_page_idx - 1);
+@@ -1348,7 +1953,7 @@ accel_nav_back (GtkAccelGroup *group __attribute__((unused)),
+                 gpointer data)
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
+-    if (mvr->can_go_back && !mtx_viewer_is_page_in_progress (mvr))
++    if (mvr->can_go_back)
+     {
+         nav_back_clicked (NULL, mvr);
+     }
+@@ -1486,6 +2091,11 @@ on_link_clicked (MtxTextView *text_view,
+                              "file://" : nl + 1);
+         const guint offset = mvr->changed_curpos;
+ 
++        if (!mtx_viewer_editor_confirm_discard (mvr))
++        {
++            return;
++        }
++
+         struct _completer_data *cdat = g_new0 (struct _completer_data, 1);
+         cdat->completer = ON_LINK_CLICKED_CB;
+         cdat->args.on_link_clicked_cb.mvr = mvr;
+@@ -1531,6 +2141,174 @@ accel_cancel_loading (GtkAccelGroup *group __attribute__((unused)),
+     return TRUE;
+ }
+ 
++typedef struct
++{
++    gchar *dir;
++    gchar *file;
++    gchar *base;
++    gchar *working_dir;
++} MtxRenderSource;
++
++static void
++mtx_render_source_clear (MtxRenderSource *src)
++{
++    g_clear_pointer (&src->dir, g_free);
++    g_clear_pointer (&src->file, g_free);
++    g_clear_pointer (&src->base, g_free);
++    g_clear_pointer (&src->working_dir, g_free);
++}
++
++/**
++mtx_viewer_resolve_render_source:
++Resolve the current page into the arguments a child renderer needs: the two
++positional arguments, a basename to derive output names from, and the
++directory to spawn the child in.
++
++Returns: FALSE when the current page has no renderable on-disk source.
++*/
++static gboolean
++mtx_viewer_resolve_render_source (MtxViewer *mvr,
++                                  MtxRenderSource *out)
++{
++    const gchar *scheme = g_uri_peek_scheme (mvr->current_file);
++
++    if G_UNLIKELY (g_strcmp0 (scheme, "search") == 0)
++    {
++        out->dir = g_strdup (mvr->backing_file);
++        out->file = g_strdup ("");
++        out->working_dir = g_path_get_dirname (mvr->backing_file);
++        out->base =
++        g_strdelimit (g_strdup (mvr->current_file + sizeof "search://" - 1),
++                      " \t" G_DIR_SEPARATOR_S, '_');
++        return TRUE;
++    }
++    if (scheme == NULL && mtx_viewer_is_current_tracked (mvr))
++    {
++        const gchar *page = mvr->current_file;
++        g_autofree gchar *document_path = NULL;
++
++        if (!g_path_is_absolute (page))
++        {
++            MtxTextView *tv = (MtxTextView *) mvr->text_view;
++            document_path =
++            g_build_filename (tv->image_directory, page, NULL);
++            page = document_path;
++        }
++        g_autofree gchar *resolved =
++        mtx_viewer_resolve_document_path (mvr, page, NULL);
++        if (resolved == NULL)
++        {
++            return FALSE;
++        }
++        out->dir = g_path_get_dirname (resolved);
++        out->file = g_path_get_basename (resolved);
++        out->base = g_strdup (out->file);
++        out->working_dir = g_strdup (out->dir);
++        return TRUE;
++    }
++    out->dir = g_strdup (mvr->base_directory);
++    out->file = g_strdup (mvr->current_file);
++    out->base = g_path_get_basename (mvr->current_file);
++    return TRUE;
++}
++
++static void
++mtx_viewer_remove_flat_dir (const gchar *path)
++{
++    GDir *dir = g_dir_open (path, 0, NULL);
++
++    if (dir != NULL)
++    {
++        const gchar *entry;
++
++        while ((entry = g_dir_read_name (dir)) != NULL)
++        {
++            g_autofree gchar *victim = g_build_filename (path, entry, NULL);
++            (void) g_unlink (victim);
++        }
++        g_dir_close (dir);
++    }
++    (void) g_rmdir (path);
++}
++
++static void
++mtx_viewer_prune_dead_preview_sessions (const gchar *root)
++{
++    GDir *dir = g_dir_open (root, 0, NULL);
++    const gulong self = (gulong) getpid ();
++    const gchar *entry;
++
++    if (dir == NULL)
++    {
++        return;
++    }
++    while ((entry = g_dir_read_name (dir)) != NULL)
++    {
++        gchar *end = NULL;
++        const gulong pid = strtoul (entry, &end, 10);
++
++        if (end == entry || *end != '\0' || pid == self)
++        {
++            continue;
++        }
++        g_autofree gchar *proc = g_strdup_printf ("/proc/%lu", pid);
++        if (g_file_test (proc, G_FILE_TEST_IS_DIR))
++        {
++            continue;
++        }
++        g_autofree gchar *stale = g_build_filename (root, entry, NULL);
++        mtx_viewer_remove_flat_dir (stale);
++    }
++    g_dir_close (dir);
++}
++
++/**
++mtx_viewer_preview_dir:
++Return the directory that receives this process's generated preview and
++export files, creating it on first use. Directories belonging to instances
++that are no longer running are pruned at the same time, so a concurrently
++running instance never loses a file its browser may still be reading.
++
++Returns: (transfer none) the directory, or NULL when it cannot be prepared.
++*/
++static const gchar *
++mtx_viewer_preview_dir (void)
++{
++    static gchar *session_dir = NULL;
++
++    if (session_dir != NULL)
++    {
++        return session_dir;
++    }
++
++    g_autofree gchar *root_name =
++    g_strdup_printf (PROGNAME "-%lu", (gulong) getuid ());
++    g_autofree gchar *root =
++    g_build_filename (g_get_tmp_dir (), root_name, NULL);
++    GStatBuf st;
++
++    if (g_mkdir_with_parents (root, 0700) != 0
++        || g_lstat (root, &st) != 0
++        || !S_ISDIR (st.st_mode)
++        || st.st_uid != getuid ())
++    {
++        return NULL;
++    }
++    mtx_viewer_prune_dead_preview_sessions (root);
++
++    g_autofree gchar *session_name =
++    g_strdup_printf ("%lu", (gulong) getpid ());
++    gchar *dir = g_build_filename (root, session_name, NULL);
++
++    if (g_mkdir_with_parents (dir, 0700) != 0)
++    {
++        g_free (dir);
++        return NULL;
++    }
++    session_dir = dir;
++    return session_dir;
++}
++
+ /**
+ preview_complete:
+ Open the browser if mdview --html ran successfully.
+@@ -1568,55 +2346,60 @@ preview_clicked (GtkWidget *widget,
+     GPid child_pid;
+     g_autoptr (GError) error = NULL;
+     MtxViewer *mvr = (MtxViewer *) data;
++
++    if (mtx_viewer_is_page_in_progress (mvr))
++    {
++        return;
++    }
++    if (!mtx_viewer_editor_confirm_discard_full (mvr, TRUE, FALSE))
++    {
++        return;
++    }
+     if (widget == NULL)
+     {
+         widget = mvr->btn_preview;
+     }
+     gtk_widget_set_sensitive (widget, FALSE);
+ 
+-    const gchar *dir, *file;
+-    gchar *base;
+-    if G_LIKELY (g_strcmp0 (g_uri_peek_scheme (mvr->current_file), "search"))
++    MtxRenderSource src = { NULL, NULL, NULL, NULL };
++    const gchar *preview_dir = mtx_viewer_preview_dir ();
++
++    if (preview_dir == NULL || !mtx_viewer_resolve_render_source (mvr, &src))
+     {
+-        dir = mvr->base_directory;
+-        file = mvr->current_file;
+-        base = g_path_get_basename (file);
+-    }
+-    else
+-    {
+-        dir = mvr->backing_file;
+-        file = "";
+-        base =
+-        g_strdelimit (g_strdup (mvr->current_file + sizeof "search://" - 1),
+-                      " \t" G_DIR_SEPARATOR_S, '_');
++        mtx_render_source_clear (&src);
++        mtx_viewer_statusbar_warn_seconds
++        (mvr, 3, _("::: Cannot preview this page :::"));
++        gtk_widget_set_sensitive (widget, TRUE);
++        return;
+     }
+ 
+-    gchar *p = g_build_filename (g_get_tmp_dir (), base, NULL);
+-    g_autofree gchar *outf = g_strconcat (p, ".html", NULL);
+-    g_free (p);
+-    g_free (base);
++    g_autofree gchar *out_name = g_strconcat (src.base, ".html", NULL);
++    g_autofree gchar *outf = g_build_filename (preview_dir, out_name, NULL);
+     g_autofree gchar *html_base = NULL;
+ 
+     if (mvr->options->html_base != NULL)
+     {
+         html_base = g_strconcat ("--html-base=", mvr->options->html_base, NULL);
+     }
+-    p = g_strdup_printf (PROGNAME " --emask=%d" " --tmask=%d"
+-                         " --html --html5 --html-full" " %s --html-css=%d"
+-                         " --toc-level=%d" " \"--output=%s\"" " \"%s\""
+-                         " \"%s\"", mvr->options->extensions,
+-                         mvr->options->tweaks | MTX_CMM_TWEAK_RESERVED3,
+-                         html_base ? html_base : "",
+-                         mvr->options->html_css < 0 ? 2 :
+-                         mvr->options->html_css, mvr->options->toc_level,
+-                         outf, dir, file);
++    g_autofree gchar *p =
++    g_strdup_printf (PROGNAME " --emask=%d" " --tmask=%d"
++                     " --html --html5 --html-full" " %s --html-css=%d"
++                     " --toc-level=%d" " \"--output=%s\"" " \"%s\""
++                     " \"%s\"", mvr->options->extensions,
++                     mvr->options->tweaks | MTX_CMM_TWEAK_RESERVED3,
++                     html_base ? html_base : "",
++                     mvr->options->html_css < 0 ? 2 :
++                     mvr->options->html_css, mvr->options->toc_level,
++                     outf, src.dir, src.file);
+     if (g_shell_parse_argv (p, NULL, &argv, &error) && error == NULL)
+     {
+-        g_spawn_async_with_pipes (NULL, argv, NULL, G_SPAWN_SEARCH_PATH |
++        g_spawn_async_with_pipes (src.working_dir, argv, NULL,
++                                  G_SPAWN_SEARCH_PATH |
+                                   G_SPAWN_DO_NOT_REAP_CHILD, NULL,
+                                   NULL, &child_pid, NULL, NULL, NULL, &error);
+     }
+     g_strfreev (argv);
++    mtx_render_source_clear (&src);
+     if (error != NULL)
+     {
+         g_printerr (_("%s: Error: %s\n"), PROGNAME, error->message);
+@@ -1646,13 +2429,243 @@ accel_preview (GtkAccelGroup *group __attribute__((unused)),
+                gpointer data)
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
+-    if (!mtx_viewer_is_page_in_progress (mvr))
+-    {
+-        preview_clicked (NULL, mvr);
+-    }
++    preview_clicked (NULL, mvr);
+     return TRUE;
+ }
+ 
++typedef struct
++{
++    const gchar *options;
++    const gchar *extension;
++    gboolean supports_toc;
++} MtxExportFormat;
++
++static const MtxExportFormat mtx_export_formats[] =
++{
++    { "--html --html5 --html-full --html-css=2", ".html", TRUE },
++    { "--text", ".txt", FALSE },
++    { "--bare", ".txt", FALSE },
++    { "--ansi", ".txt", FALSE },
++    { "--tty", ".txt", FALSE },
++};
++
++/**
++mtx_export_format_label:
++Translated name of an export format. The labels live here, rather than in
++mtx_export_formats, because this project extracts messages with
++"--keyword=_" only.
++*/
++static const gchar *
++mtx_export_format_label (gsize index)
++{
++    const gchar *const labels[] =
++    {
++        _("HTML document"),
++        _("Decorated text"),
++        _("Plain text"),
++        _("Text with ANSI colors"),
++        _("Text with vt100 codes"),
++    };
++
++    G_STATIC_ASSERT (G_N_ELEMENTS (labels)
++                     == G_N_ELEMENTS (mtx_export_formats));
++
++    return index < G_N_ELEMENTS (labels) ? labels[index] : "";
++}
++
++struct _export_completer_data
++{
++    GtkWidget *btn;
++    MtxViewer *mvr;
++    gchar *path;
++};
++
++/**
++export_complete:
++Report the outcome of a finished export child and re-enable the button.
++*/
++static void
++export_complete (GPid     pid,
++                 gint     status,
++                 gpointer user_data)
++{
++    struct _export_completer_data *udat = user_data;
++
++    g_spawn_close_pid (pid);
++    if (g_spawn_check_wait_status (status, NULL))
++    {
++        g_autofree gchar *message =
++        g_strdup_printf (_("::: Exported to %s :::"), udat->path);
++        mtx_viewer_statusbar_warn_seconds (udat->mvr, 5, message);
++    }
++    else
++    {
++        mtx_viewer_statusbar_warn_seconds
++        (udat->mvr, 5, _("::: Could not export this page :::"));
++    }
++    gtk_widget_set_sensitive (udat->btn, TRUE);
++    g_free (udat->path);
++    g_free (udat);
++}
++
++/**
++mtx_viewer_choose_export_path:
++Ask for the export target and format.
++
++Returns: (transfer full) the chosen path with the format's extension
++enforced, or NULL when the user cancelled.
++*/
++static gchar *
++mtx_viewer_choose_export_path (MtxViewer *mvr,
++                               const gchar *directory,
++                               const gchar *stem,
++                               gsize *out_format)
++{
++    GtkWidget *dialog = gtk_file_chooser_dialog_new
++    (_("Export Page As"), GTK_WINDOW (mvr->window),
++     GTK_FILE_CHOOSER_ACTION_SAVE,
++     _("_Cancel"), GTK_RESPONSE_CANCEL,
++     _("_Export"), GTK_RESPONSE_ACCEPT, NULL);
++    GtkFileChooser *chooser = GTK_FILE_CHOOSER (dialog);
++    GtkWidget *box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
++    GtkWidget *label = gtk_label_new (_("Format:"));
++    GtkWidget *combo = gtk_combo_box_text_new ();
++
++    for (gsize i = 0; i < G_N_ELEMENTS (mtx_export_formats); i++)
++    {
++        gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo),
++                                        mtx_export_format_label (i));
++    }
++    gtk_combo_box_set_active (GTK_COMBO_BOX (combo), 0);
++    gtk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 0);
++    gtk_box_pack_start (GTK_BOX (box), combo, FALSE, FALSE, 0);
++    gtk_widget_show_all (box);
++    gtk_file_chooser_set_extra_widget (chooser, box);
++    gtk_file_chooser_set_local_only (chooser, TRUE);
++    gtk_file_chooser_set_do_overwrite_confirmation (chooser, TRUE);
++    gtk_file_chooser_set_current_folder (chooser, directory);
++
++    g_autofree gchar *initial =
++    g_strconcat (stem, mtx_export_formats[0].extension, NULL);
++    gtk_file_chooser_set_current_name (chooser, initial);
++
++    const gint response = gtk_dialog_run (GTK_DIALOG (dialog));
++    const gint active = gtk_combo_box_get_active (GTK_COMBO_BOX (combo));
++    gchar *path = response == GTK_RESPONSE_ACCEPT
++        ? gtk_file_chooser_get_filename (chooser) : NULL;
++    gtk_widget_destroy (dialog);
++    if (path == NULL)
++    {
++        return NULL;
++    }
++    *out_format = active < 0 ? 0 : (gsize) active;
++
++    const gchar *extension = mtx_export_formats[*out_format].extension;
++    for (gsize i = 0; i < G_N_ELEMENTS (mtx_export_formats); i++)
++    {
++        const gchar *known = mtx_export_formats[i].extension;
++        const gsize length = strlen (path);
++        const gsize known_length = strlen (known);
++
++        if (length > known_length && g_str_has_suffix (path, known))
++        {
++            path[length - known_length] = '\0';
++            break;
++        }
++    }
++    if (!g_str_has_suffix (path, extension))
++    {
++        gchar *with_extension = g_strconcat (path, extension, NULL);
++        g_free (path);
++        path = with_extension;
++    }
++    return path;
++}
++
++/**
++export_clicked:
++Convert the current page to a user-chosen format and file.
++*/
++static void
++export_clicked (GtkWidget *widget,
++                gpointer data)
++{
++    gchar **argv = NULL;
++    GPid child_pid;
++    g_autoptr (GError) error = NULL;
++    MtxViewer *mvr = (MtxViewer *) data;
++    MtxRenderSource src = { NULL, NULL, NULL, NULL };
++
++    if (mtx_viewer_is_page_in_progress (mvr))
++    {
++        return;
++    }
++    if (!mtx_viewer_editor_confirm_discard_full (mvr, TRUE, FALSE))
++    {
++        return;
++    }
++    if (!mtx_viewer_resolve_render_source (mvr, &src))
++    {
++        mtx_render_source_clear (&src);
++        mtx_viewer_statusbar_warn_seconds
++        (mvr, 3, _("::: Cannot export this page :::"));
++        return;
++    }
++
++    g_autofree gchar *stem = g_strdup (src.base);
++    gchar *dot = strrchr (stem, '.');
++
++    if (dot != NULL && dot != stem)
++    {
++        *dot = '\0';
++    }
++
++    gsize format = 0;
++    g_autofree gchar *path =
++    mtx_viewer_choose_export_path (mvr, src.dir, stem, &format);
++
++    if (path == NULL)
++    {
++        mtx_render_source_clear (&src);
++        return;
++    }
++    gtk_widget_set_sensitive (widget, FALSE);
++
++    g_autofree gchar *toc = mtx_export_formats[format].supports_toc
++        ? g_strdup_printf (" --toc-level=%d", mvr->options->toc_level)
++        : g_strdup ("");
++    g_autofree gchar *p =
++    g_strdup_printf (PROGNAME " --emask=%d" " --tmask=%d" " %s%s"
++                     " \"--output=%s\"" " \"%s\"" " \"%s\"",
++                     mvr->options->extensions, mvr->options->tweaks,
++                     mtx_export_formats[format].options, toc,
++                     path, src.dir, src.file);
++    if (g_shell_parse_argv (p, NULL, &argv, &error) && error == NULL)
++    {
++        g_spawn_async_with_pipes (src.working_dir, argv, NULL,
++                                  G_SPAWN_SEARCH_PATH |
++                                  G_SPAWN_DO_NOT_REAP_CHILD, NULL,
++                                  NULL, &child_pid, NULL, NULL, NULL, &error);
++    }
++    g_strfreev (argv);
++    mtx_render_source_clear (&src);
++    if (error != NULL)
++    {
++        g_printerr (_("%s: Error: %s\n"), PROGNAME, error->message);
++        mtx_viewer_statusbar_warn_seconds
++        (mvr, 5, _("::: Could not export this page :::"));
++        gtk_widget_set_sensitive (widget, TRUE);
++        return;
++    }
++
++    struct _export_completer_data *udat =
++    g_malloc (sizeof *udat);
++    udat->btn = widget;
++    udat->mvr = mvr;
++    udat->path = g_steal_pointer (&path);
++    g_child_watch_add (child_pid, export_complete, udat);
++}
++
+ /**
+ on_toc_changed:
+ 
+@@ -1672,6 +2685,19 @@ on_toc_changed (GtkWidget *widget,
+ 
+     if (mvr->current_file != NULL && mvr->options->toc_level != level)
+     {
++        if (mtx_viewer_is_page_in_progress (mvr))
++        {
++            gtk_combo_box_set_active (GTK_COMBO_BOX (widget),
++                                      mvr->options->toc_level);
++            return;
++        }
++        if (!mtx_viewer_editor_confirm_discard (mvr))
++        {
++            gtk_combo_box_set_active (GTK_COMBO_BOX (widget),
++                                      mvr->options->toc_level);
++            return;
++        }
++
+         MtxViewerNavUnit *rip = NULL;
+         if (mvr->nav_trail->length > 0)
+         {
+@@ -1732,6 +2758,8 @@ file_load_complete (MtxTextView *text_view,
+                     gpointer data)
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
++    GtkWidget *editor_box = gtk_widget_get_parent (mvr->editor_scrolled);
++    const gboolean rebind_editor = gtk_widget_get_visible (editor_box);
+     const gchar *scheme = g_uri_peek_scheme (file);
+ 
+     if (mtx_viewer_is_current_tracked (mvr))
+@@ -1765,10 +2793,24 @@ file_load_complete (MtxTextView *text_view,
+     mtx_text_view_clear_page_highlights (text_view);
+     /* Do not set mvr->current_curpos here! */
+ 
++    g_clear_pointer (&mvr->editor_referrer, g_free);
++    if (scheme == NULL)
++    {
++        mvr->editor_referrer = g_strdup (file);
++    }
++
+     /* Set the currently-loaded file. */
+     g_free (mvr->current_file);
+     mvr->current_file = g_strdup (file);
+ 
++    if (rebind_editor)
++    {
++        if (!mtx_viewer_editor_load_current (mvr))
++        {
++            mtx_viewer_editor_hide (mvr);
++        }
++    }
++
+     mvr->landing_link_info = NULL;
+ 
+     progress_logger_stop (mvr);
+@@ -1863,11 +2905,15 @@ static void
+ mtx_viewer_widgets_set_sensitive (MtxViewer *mvr,
+                                   gboolean enable)
+ {
++    GtkWidget *editor_box = gtk_widget_get_parent (mvr->editor_scrolled);
++
+     gtk_widget_set_sensitive (mvr->btn_preview,
+                               mtx_viewer_is_current_tracked (mvr));
+     gtk_widget_set_sensitive (mvr->combo_toc,
++                              !mvr->editor_render_in_flight &&
+                               !mtx_viewer_is_current_skipping_toc (mvr));
+     gtk_widget_set_sensitive (mvr->top_bar, enable);
++    gtk_widget_set_sensitive (editor_box, enable);
+ }
+ 
+ /**
+@@ -2326,6 +3372,10 @@ do_open_welcome_page (MtxViewer *mvr)
+     {
+         return;
+     }
++    if (!mtx_viewer_editor_confirm_discard (mvr))
++    {
++        return;
++    }
+     const gchar *page = WELCOME_PAGE;
+     const guint offset = mvr->current_curpos = 0;
+     /*
+@@ -2363,6 +3413,11 @@ search_entry_activate (GtkEntry *entry, gpointer data)
+     }
+     if (*needle)
+     {
++        if (!mtx_viewer_editor_confirm_discard (mvr))
++        {
++            return;
++        }
++
+         g_autofree gchar *uri = NULL;
+         const gchar *scheme = g_uri_peek_scheme (needle);
+         const guint offset = mvr->changed_curpos;
+@@ -2495,6 +3550,10 @@ nav_home_clicked (GtkWidget *button __attribute__((unused)),
+     MtxViewer *mvr = (MtxViewer *) data;
+     gchar *page = mvr->homepage == NULL ? DEFAULT_INDEX : mvr->homepage;
+ 
++    if (mtx_viewer_is_page_in_progress (mvr))
++    {
++        return;
++    }
+     if (!g_file_test (page, G_FILE_TEST_EXISTS))
+     {
+         g_autofree gchar *path =
+@@ -2507,6 +3566,11 @@ nav_home_clicked (GtkWidget *button __attribute__((unused)),
+         }
+     }
+ 
++    if (!mtx_viewer_editor_confirm_discard (mvr))
++    {
++        return;
++    }
++
+     while (mvr->nav_trail_page_idx > 0)
+     {
+         _nav_trail_back (mvr);
+@@ -2534,10 +3598,7 @@ accel_nav_home (GtkAccelGroup *group __attribute__((unused)),
+                 gpointer data)
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
+-    if (!mtx_viewer_is_page_in_progress (mvr))
+-    {
+-        nav_home_clicked (NULL, mvr);
+-    }
++    nav_home_clicked (NULL, mvr);
+     return TRUE;
+ }
+ 
+@@ -2551,6 +3612,14 @@ file_open_clicked (GtkWidget *button __attribute__((unused)),
+                   gpointer data)
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
++    if (mtx_viewer_is_page_in_progress (mvr))
++    {
++        return;
++    }
++    if (!mtx_viewer_editor_confirm_discard (mvr))
++    {
++        return;
++    }
+     gint res, fd;
+     gchar *path;
+     GtkWidget *dialog;
+@@ -2610,10 +3679,101 @@ accel_file_open (GtkAccelGroup *group __attribute__((unused)),
+                 gpointer data)
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
+-    if (!mtx_viewer_is_page_in_progress (mvr))
++    file_open_clicked (NULL, mvr);
++    return TRUE;
++}
++
++static void
++new_page_clicked (GtkWidget *button __attribute__((unused)), gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++    if (mtx_viewer_is_page_in_progress (mvr)
++        || !mtx_viewer_editor_confirm_discard (mvr))
+     {
+-        file_open_clicked (NULL, mvr);
++        return;
+     }
++
++    const gint hold_fd = open (mvr->backing_file, O_RDONLY);
++    GtkWidget *dialog = gtk_file_chooser_dialog_new
++    (_("New Markdown Page"), GTK_WINDOW (mvr->window),
++     GTK_FILE_CHOOSER_ACTION_SAVE,
++     _("_Cancel"), GTK_RESPONSE_CANCEL,
++     _("_Create"), GTK_RESPONSE_ACCEPT, NULL);
++    GtkFileChooser *chooser = GTK_FILE_CHOOSER (dialog);
++    GtkFileFilter *filter = gtk_file_filter_new ();
++    gtk_file_filter_set_name (filter, _("Markdown files"));
++    gtk_file_filter_add_pattern (filter, "*.md");
++    gtk_file_filter_add_pattern (filter, "*.markdown");
++    gtk_file_chooser_add_filter (chooser, filter);
++    gtk_file_chooser_set_filter (chooser, filter);
++    gtk_file_chooser_set_local_only (chooser, TRUE);
++    gtk_file_chooser_set_do_overwrite_confirmation (chooser, FALSE);
++    gtk_file_chooser_set_current_name (chooser, _("New page.md"));
++    if (mvr->current_file != NULL
++        && g_uri_peek_scheme (mvr->current_file) == NULL)
++    {
++        g_autofree gchar *directory = g_path_get_dirname (mvr->current_file);
++        gtk_file_chooser_set_current_folder (chooser, directory);
++    }
++
++    const gint response = gtk_dialog_run (GTK_DIALOG (dialog));
++    gchar *path = response == GTK_RESPONSE_ACCEPT
++        ? gtk_file_chooser_get_filename (chooser) : NULL;
++    gtk_widget_destroy (dialog);
++    if (hold_fd >= 0)
++    {
++        close (hold_fd);
++    }
++    if (path == NULL)
++    {
++        return;
++    }
++    if (!g_str_has_suffix (path, ".md")
++        && !g_str_has_suffix (path, ".markdown"))
++    {
++        gchar *with_extension = g_strconcat (path, ".md", NULL);
++        g_free (path);
++        path = with_extension;
++    }
++
++    const gint page_fd = open (path, O_WRONLY | O_CREAT | O_EXCL | O_CLOEXEC
++                               | O_NOFOLLOW, 0644);
++    if (page_fd < 0)
++    {
++        g_autofree gchar *message = errno == EEXIST
++            ? g_strdup (_("::: Page already exists :::"))
++            : g_strdup_printf (_("::: Cannot create page: %s :::"),
++                               g_strerror (errno));
++        mtx_viewer_statusbar_warn_seconds (mvr, 3, message);
++        g_free (path);
++        return;
++    }
++    if (close (page_fd) != 0)
++    {
++        g_autofree gchar *message = g_strdup_printf
++        (_("::: Cannot create page: %s :::"), g_strerror (errno));
++        mtx_viewer_statusbar_warn_seconds (mvr, 3, message);
++        g_free (path);
++        return;
++    }
++
++    g_free (mvr->editor_reveal_file);
++    mvr->editor_reveal_file = g_strdup (path);
++    if (!mtx_viewer_present_page (mvr, path, 0))
++    {
++        g_clear_pointer (&mvr->editor_reveal_file, g_free);
++    }
++    g_free (path);
++}
++
++static gboolean
++accel_new_page (GtkAccelGroup *group __attribute__((unused)),
++                GObject *obj __attribute__((unused)),
++                guint keyval __attribute__((unused)),
++                GdkModifierType mod __attribute__((unused)),
++                gpointer data)
++{
++    new_page_clicked (NULL, data);
+     return TRUE;
+ }
+ 
+@@ -2691,10 +3851,7 @@ accel_open_help (GtkAccelGroup *group __attribute__((unused)),
+                  gpointer data)
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
+-    if (!mtx_viewer_is_page_in_progress (mvr))
+-    {
+-        (void) do_open_welcome_page (mvr);
+-    }
++    (void) do_open_welcome_page (mvr);
+     return TRUE;
+ }
+ 
+@@ -2708,6 +3865,16 @@ accel_edit_current (GtkAccelGroup *group __attribute__((unused)),
+                     gpointer data)
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
++    GtkWidget *editor_box = gtk_widget_get_parent (mvr->editor_scrolled);
++
++    if (gtk_widget_get_visible (editor_box))
++    {
++        mtx_viewer_statusbar_warn_seconds (mvr, 3, _(
++            "::: Close the inline editor before opening an external editor "
++            "to avoid conflicting writes :::"));
++        return TRUE;
++    }
++
+     MtxTextView *tv = (MtxTextView *) mvr->text_view;
+     const gchar *file_name = NULL;
+     const gchar *scheme = g_uri_peek_scheme (mvr->current_file);
+@@ -2832,6 +3999,23 @@ _nav_unit_clear (MtxViewerNavUnit *unit,
+     g_free (unit);
+ }
+ 
++static gboolean
++mtx_viewer_destroy_when_editor_idle (gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++
++    if (mvr->editor_render_in_flight)
++    {
++        return G_SOURCE_CONTINUE;
++    }
++
++    g_object_set_data (G_OBJECT (mvr->window),
++                       "mtx-viewer-destroy-editor-idle-source", NULL);
++    (void) mtx_viewer_destroy (mvr);
++    gtk_widget_destroy (mvr->window);
++    return G_SOURCE_REMOVE;
++}
++
+ /**
+ mtx_viewer_destroy:
+ */
+@@ -2840,6 +4024,33 @@ mtx_viewer_destroy (gpointer data)
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
+ 
++    if (mvr->editor_debounce_id) { g_source_remove (mvr->editor_debounce_id); mvr->editor_debounce_id = 0; }
++    mvr->editor_render_pending = FALSE;
++    g_object_set_data (G_OBJECT (mvr->window),
++                       MTX_EDITOR_DISCARD_RENDER_DATA, NULL);
++    if (mvr->editor_render_in_flight)
++    {
++        const gchar *source_key = "mtx-viewer-destroy-editor-idle-source";
++
++        /*
++        Never cancel an editor render: its worker can still be using the
++        MtxTextView after cancellation reports completion. Keep the window
++        alive and let one short main-loop poll perform teardown only after
++        the real completer has cleared editor_render_in_flight. This also
++        works for the SIGINT/SIGTERM GSource callbacks that enter here.
++        */
++        if (g_object_get_data (G_OBJECT (mvr->window), source_key) == NULL)
++        {
++            guint source_id =
++            g_timeout_add (25, mtx_viewer_destroy_when_editor_idle, mvr);
++            g_object_set_data (G_OBJECT (mvr->window), source_key,
++                               GUINT_TO_POINTER (source_id));
++        }
++        return G_SOURCE_CONTINUE;
++    }
++    g_clear_pointer (&mvr->editor_path, g_free);
++    g_clear_pointer (&mvr->editor_referrer, g_free);
++    g_clear_pointer (&mvr->editor_reveal_file, g_free);
+     if (mtx_viewer_is_page_in_progress (mvr))
+     {
+         accel_cancel_loading (NULL, NULL, 0, 0, mvr);
+@@ -2891,8 +4102,14 @@ viewer_destroy_me (GtkWidget *widget __attribute__((unused)),
+ {
+     MtxViewer *mvr = (MtxViewer *) data;
+ 
+-    mtx_viewer_destroy (mvr); /* quits gtk main */
+-    gtk_widget_destroy (widget);
++    if (!mtx_viewer_editor_confirm_discard_full (mvr, FALSE, TRUE))
++    {
++        return TRUE;
++    }
++    if (mtx_viewer_destroy (mvr) == G_SOURCE_REMOVE) /* quits gtk main */
++    {
++        gtk_widget_destroy (widget);
++    }
+     return TRUE;
+ }
+ 
+@@ -2906,8 +4123,14 @@ viewer_key_pressed (GtkWidget *widget,
+     switch (event->keyval)
+     {
+         case GDK_KEY_Escape:
+-            mtx_viewer_destroy (mvr);   /* quits gtk main */
+-            gtk_widget_destroy (widget);
++            if (!mtx_viewer_editor_confirm_discard_full (mvr, FALSE, TRUE))
++            {
++                return TRUE;
++            }
++            if (mtx_viewer_destroy (mvr) == G_SOURCE_REMOVE) /* quits main */
++            {
++                gtk_widget_destroy (widget);
++            }
+             return TRUE;
+     }
+     return FALSE;
+@@ -2937,6 +4160,1660 @@ mtx_viewer_button_icon_new_from_resource (const gchar *resource,
+     return im;
+ }
+ 
++/**
++mtx_viewer_resolve_document_path:
++Resolve a local document page to a canonical absolute regular-file path.
++
++This helper is deliberately pure: it does not update editor state. On success
++it returns the canonical path and copies the same GStatBuf used to validate the
++file to @out_st. The relative-page basename fallback is retained for the editor
++gate, whose historical target-resolution semantics depend on it.
++
++@mvr: pointer to #MtxViewer.
++@page: local document page to resolve.
++@out_st: receives the validating stat snapshot on success. NULLABLE.
++
++Returns: the newly allocated canonical path, or NULL if the page does not
++resolve to a regular file. The caller must g_free() the returned path.
++*/
++static gchar *
++mtx_viewer_resolve_document_path (MtxViewer *mvr,
++                                  const gchar *page,
++                                  GStatBuf *out_st)
++{
++    MtxTextView *tv = (MtxTextView *) mvr->text_view;
++    const gchar *file_name;
++    gchar *built = NULL;
++    gchar *path;
++    gchar *resolved;
++    GStatBuf st;
++
++    if (page == NULL || g_uri_peek_scheme (page) != NULL)
++    {
++        return NULL;
++    }
++
++    file_name = page;
++    if (file_name[0] != '/')
++    {
++        built = g_build_filename (tv->image_directory, file_name, NULL);
++        if (!g_file_test (built, G_FILE_TEST_EXISTS))
++        {
++            gchar *name = g_path_get_basename (file_name);
++            g_free (built);
++            built = g_build_filename (tv->image_directory, name, NULL);
++            g_free (name);
++        }
++        file_name = built;
++    }
++    path = g_canonicalize_filename (file_name, NULL);
++    g_free (built);
++
++    resolved = realpath (path, NULL); /* libc-allocated, needs free() */
++    if (resolved != NULL)
++    {
++        g_free (path);
++        path = g_strdup (resolved);
++        free (resolved);
++    }
++
++    if (g_stat (path, &st) != 0 || !S_ISREG (st.st_mode))
++    {
++        g_free (path);
++        return NULL;
++    }
++    if (out_st != NULL)
++    {
++        *out_st = st;
++    }
++    return path;
++}
++
++/**
++mtx_viewer_editor_target:
++Decide whether the page on screen has a safe on-disk save target for the
++inline editor and, if it does, store that target's canonical absolute path.
++
++Returns FALSE -- and touches nothing in @mvr -- unless ALL of the following
++hold: a page is loaded (@mvr->current_file is non-NULL); that page is a real
++file rather than a synthetic one (no URI scheme, which excludes both
++"search://" results and "resource:///welcome.md"); the page is not a
++generated error page (@mvr->failed_file is NULL); the resolved path is a
++regular file that g_stat() can read; and that resolved path is not
++@mvr->backing_file -- the scratch /tmp file the viewer rewrites on every
++navigation, which has no scheme of its own and would therefore sail straight
++through a scheme-only check.
++
++The relative-path branch below is deliberately a copy of the algorithm
++accel_edit_current() (Ctrl+E) already uses, because both features must agree
++on what "the current file's real path" means. Symlinks are then resolved with
++realpath(3) -- chosen over a g_file_read_link() loop because it handles
++chains, "..", and ELOOP in one libc call, and this is a Linux-only GTK
++program -- so that a later save writes THROUGH a symlink instead of replacing
++it with a regular file.
++
++@mvr: pointer to #MtxViewer.
++@out_abs_path: on TRUE, receives the resolved absolute path; the caller owns
++it and must g_free() it. Set to NULL on FALSE. NULLABLE.
++
++Returns: TRUE if the page is editable. On TRUE, @mvr->editor_path (owned by
++@mvr), @mvr->editor_mtime and @mvr->editor_size are updated; editor_path is
++the ONLY path any later write may use, since current_file is often relative.
++*/
++static gboolean
++mtx_viewer_editor_target (MtxViewer *mvr,
++                          gchar **out_abs_path)
++{
++    gchar *path;
++    GStatBuf st;
++
++    if (out_abs_path != NULL)
++    {
++        *out_abs_path = NULL;
++    }
++    if (mvr->current_file == NULL
++        || g_uri_peek_scheme (mvr->current_file) != NULL
++        || mvr->failed_file != NULL)
++    {
++        return FALSE;
++    }
++
++    path = mtx_viewer_resolve_document_path (mvr, mvr->current_file, &st);
++    if (path == NULL)
++    {
++        return FALSE;
++    }
++
++    if (mvr->backing_file != NULL)
++    {
++        gboolean is_backing = g_strcmp0 (path, mvr->backing_file) == 0;
++        if (!is_backing)
++        {
++            /* Compare canonically too: /tmp itself may be a symlink. */
++            gchar *backing = realpath (mvr->backing_file, NULL);
++            if (backing != NULL)
++            {
++                is_backing = g_strcmp0 (path, backing) == 0;
++                free (backing);
++            }
++        }
++        if (is_backing)
++        {
++            g_free (path);
++            return FALSE;
++        }
++    }
++
++    g_free (mvr->editor_path);
++    mvr->editor_path = path;
++    mvr->editor_mtime = (gint64) st.st_mtime;
++    mvr->editor_size = (goffset) st.st_size;
++    if (out_abs_path != NULL)
++    {
++        *out_abs_path = g_strdup (path);
++    }
++    return TRUE;
++}
++
++static gboolean
++mtx_viewer_editor_load_current (MtxViewer *mvr)
++{
++    g_clear_pointer (&mvr->editor_path, g_free);
++    if (!mtx_viewer_editor_target (mvr, NULL))
++    {
++        mtx_viewer_statusbar_warn_seconds
++        (mvr, 2, _("::: This page cannot be edited :::"));
++        return FALSE;
++    }
++
++    gsize contents_size = 0;
++    gchar *contents =
++    mtx_text_view_mmap_read_file (mvr->editor_path, &contents_size, TRUE);
++    if (contents != NULL && strlen (contents) != contents_size)
++    {
++        g_free (contents);
++        contents = NULL;
++    }
++    if (contents == NULL)
++    {
++        mtx_viewer_statusbar_warn_seconds
++        (mvr, 3, g_access (mvr->editor_path, R_OK) != 0
++         ? _("::: Cannot read this file for editing :::")
++         : _("::: This file is not valid UTF-8 text :::"));
++        g_clear_pointer (&mvr->editor_path, g_free);
++        return FALSE;
++    }
++
++    GtkTextBuffer *buffer =
++    gtk_text_view_get_buffer (GTK_TEXT_VIEW (mvr->editor_view));
++    g_signal_handlers_block_by_func (buffer,
++                                     G_CALLBACK (on_editor_buffer_changed),
++                                     mvr);
++    gtk_text_buffer_set_text (buffer, contents, (gint) contents_size);
++    g_signal_handlers_unblock_by_func
++    (buffer, G_CALLBACK (on_editor_buffer_changed), mvr);
++    mtx_viewer_editor_indicator_reset (mvr);
++    gtk_text_buffer_set_modified (buffer, FALSE);
++    g_free (contents);
++    return TRUE;
++}
++
++static void
++mtx_viewer_editor_hide (MtxViewer *mvr)
++{
++    GtkWidget *editor_box = gtk_widget_get_parent (mvr->editor_scrolled);
++    gtk_widget_set_visible (editor_box, FALSE);
++
++    GtkTextBuffer *buffer =
++    gtk_text_view_get_buffer (GTK_TEXT_VIEW (mvr->editor_view));
++    g_signal_handlers_block_by_func (buffer,
++                                     G_CALLBACK (on_editor_buffer_changed),
++                                     mvr);
++    gtk_text_buffer_set_text (buffer, "", -1);
++    g_signal_handlers_unblock_by_func
++    (buffer, G_CALLBACK (on_editor_buffer_changed), mvr);
++    mtx_viewer_editor_indicator_reset (mvr);
++    gtk_text_buffer_set_modified (buffer, FALSE);
++    g_clear_pointer (&mvr->editor_path, g_free);
++
++    if (mvr->editor_debounce_id)
++    {
++        g_source_remove (mvr->editor_debounce_id);
++        mvr->editor_debounce_id = 0;
++    }
++    mvr->editor_render_pending = FALSE;
++}
++
++typedef void (*MtxViewerEditorRenderIssueFunc) (MtxViewer *, gboolean,
++                                                 gint, gdouble);
++
++typedef struct
++{
++    MtxViewer *mvr;
++    gint saved_curpos;
++    gdouble saved_scroll;
++    MtxViewerEditorRenderIssueFunc issue_render;
++} MtxViewerEditorRenderCompleteData;
++
++static gboolean
++mtx_viewer_editor_discard_render_pending (MtxViewer *mvr)
++{
++    return g_object_get_data (G_OBJECT (mvr->window),
++                              MTX_EDITOR_DISCARD_RENDER_DATA) != NULL;
++}
++
++static void
++mtx_viewer_editor_issue_next_render (MtxViewer *mvr,
++                                     MtxViewerEditorRenderIssueFunc issue_render,
++                                     gint saved_curpos,
++                                     gdouble saved_scroll)
++{
++    gchar *captured_text = g_object_steal_data
++    (G_OBJECT (mvr->window), MTX_EDITOR_DISCARD_RENDER_DATA);
++
++    mvr->editor_render_pending = FALSE;
++    if (captured_text != NULL)
++    {
++        mtx_viewer_editor_issue_render_full
++        (mvr, TRUE, saved_curpos, saved_scroll, captured_text, TRUE);
++        g_free (captured_text);
++    }
++    else
++    {
++        issue_render (mvr, TRUE, saved_curpos, saved_scroll);
++    }
++}
++
++static gboolean
++editor_render_resume_when_unsuppressed (gpointer data)
++{
++    MtxViewerEditorRenderCompleteData *resume = data;
++    MtxViewer *mvr = resume->mvr;
++
++    if (mvr->editor_suppress_render)
++    {
++        return G_SOURCE_CONTINUE;
++    }
++
++    mvr->editor_debounce_id = 0;
++    if ((mvr->editor_render_pending
++         || mtx_viewer_editor_discard_render_pending (mvr))
++        && !mvr->editor_render_in_flight)
++    {
++        mtx_viewer_editor_issue_next_render
++        (mvr, resume->issue_render, resume->saved_curpos,
++         resume->saved_scroll);
++    }
++    return G_SOURCE_REMOVE;
++}
++
++static GtkAdjustment *
++mtx_viewer_editor_preview_vadjustment (MtxViewer *mvr)
++{
++    GtkWidget *parent =
++    gtk_widget_get_parent (GTK_WIDGET (mvr->text_view));
++
++    g_return_val_if_fail (GTK_IS_SCROLLED_WINDOW (parent), NULL);
++    return gtk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (parent));
++}
++
++static void
++editor_render_complete (gpointer *instance __attribute__((unused)),
++                        gboolean cond,
++                        GError *error,    /* owned */
++                        gpointer data[])
++{
++    MtxViewerEditorRenderCompleteData *cdat =
++    (MtxViewerEditorRenderCompleteData *) data;
++    MtxViewer *mvr = cdat->mvr;
++    const gint saved_curpos = cdat->saved_curpos;
++    const gdouble saved_scroll = cdat->saved_scroll;
++    MtxViewerEditorRenderIssueFunc issue_render = cdat->issue_render;
++    g_autoptr (GError) err = error;
++
++    mvr->editor_render_in_flight = FALSE;
++    gtk_widget_set_sensitive (mvr->combo_toc,
++                              !mtx_viewer_is_current_skipping_toc (mvr));
++    mtx_viewer_editor_update_counter_label (mvr);
++    mtx_dbg_errout (1, "RENDER_COMPLETED success=%d pending=%d\n",
++                    (int) cond, (int) mvr->editor_render_pending);
++
++    if (mvr->editor_render_pending
++        || mtx_viewer_editor_discard_render_pending (mvr))
++    {
++        if (mvr->editor_suppress_render)
++        {
++            MtxViewerEditorRenderCompleteData *resume =
++            g_new (MtxViewerEditorRenderCompleteData, 1);
++            *resume = *cdat;
++            if (mvr->editor_debounce_id)
++            {
++                g_source_remove (mvr->editor_debounce_id);
++            }
++            mvr->editor_debounce_id = g_timeout_add_full
++            (G_PRIORITY_DEFAULT, MTX_EDITOR_DEBOUNCE_MS,
++             editor_render_resume_when_unsuppressed, resume, g_free);
++        }
++        else
++        {
++            mtx_viewer_editor_issue_next_render
++            (mvr, issue_render, saved_curpos, saved_scroll);
++        }
++    }
++
++    if (cond)
++    {
++        GtkAdjustment *adjustment;
++
++        mvr->changed_curpos = saved_curpos;
++        adjustment = mtx_viewer_editor_preview_vadjustment (mvr);
++        if (adjustment != NULL)
++        {
++            gtk_adjustment_set_value (adjustment, saved_scroll);
++        }
++        mtx_viewer_widgets_set_sensitive (mvr, TRUE);
++
++        gtk_entry_set_text (GTK_ENTRY (mvr->text_search), "");
++        gtk_entry_set_progress_fraction (GTK_ENTRY (mvr->text_search), 0.0);
++    }
++    else
++    {
++        const gchar *message = error != NULL ? error->message :
++            _("::: Live preview render failed :::");
++
++        /* reset_buffer may have nulled highlight_tag; do not clear tags here. */
++        mtx_viewer_statusbar_warn_seconds (mvr, 3, message);
++    }
++
++    g_free (cdat);
++}
++
++static void
++mtx_viewer_editor_issue_render_full (MtxViewer *mvr,
++                                     gboolean preserve_position,
++                                     gint saved_curpos,
++                                     gdouble saved_scroll,
++                                     const gchar *captured_text,
++                                     gboolean bypass_ceiling)
++{
++    gchar *copy;
++    /*
++    BYTES, not characters. gtk_text_buffer_get_char_count() counts
++    characters, so on multi-byte UTF-8 (CJK, accents, emoji) it
++    under-reports by up to 4x and would wave a document far over the
++    ceiling straight into the quadratic renderer. The string measured
++    here is also the exact allocation transferred to set_text().
++
++    A discard-triggered render supplies an owned snapshot captured from the
++    just-reloaded buffer. Keeping that snapshot outside GtkTextBuffer is what
++    lets F2 hide clear the editor without changing the queued render's input.
++    */
++    if (captured_text != NULL)
++    {
++        copy = g_strdup (captured_text);
++    }
++    else
++    {
++        GtkTextBuffer *buffer =
++        gtk_text_view_get_buffer (GTK_TEXT_VIEW (mvr->editor_view));
++        GtkTextIter start, end;
++        gtk_text_buffer_get_start_iter (buffer, &start);
++        gtk_text_buffer_get_end_iter (buffer, &end);
++        copy = gtk_text_buffer_get_text (buffer, &start, &end, FALSE);
++    }
++    gsize nbytes = (copy != NULL ? strlen (copy) : 0);
++
++    mtx_dbg_errout (1, "DEBOUNCE_FIRED bytes=%lu in_flight=%d pending=%d\n",
++                    (unsigned long) nbytes,
++                    (int) mvr->editor_render_in_flight,
++                    (int) mvr->editor_render_pending);
++
++    if (!bypass_ceiling && nbytes > MTX_EDITOR_LIVE_PREVIEW_MAX_BYTES)
++    {
++        g_free (copy);
++        mtx_dbg_errout (1, "RENDER_SKIPPED_CEILING bytes=%lu ceiling=%d\n",
++                        (unsigned long) nbytes,
++                        MTX_EDITOR_LIVE_PREVIEW_MAX_BYTES);
++        mtx_viewer_statusbar_warn_seconds (mvr, 3, _(
++            "::: Document too large for live preview - refresh manually :::"));
++        return;
++    }
++
++    if (mvr->editor_render_in_flight)
++    {
++        mvr->editor_render_pending = TRUE;
++        if (captured_text != NULL && bypass_ceiling)
++        {
++            /*
++            The ordinary coalescer only needs a boolean because it can read
++            the still-visible editor buffer when the active render completes.
++            Discard cannot: F2 hide clears that buffer. Attach this one owned
++            snapshot to the window so the same completion path serializes it
++            after the active render. mtx_viewer_editor_hide() may clear the
++            boolean, but the attached snapshot remains authoritative.
++            */
++            g_object_set_data_full
++            (G_OBJECT (mvr->window), MTX_EDITOR_DISCARD_RENDER_DATA,
++             copy, g_free);
++            mtx_dbg_errout
++            (1, "RENDER_DEFERRED_DISCARD bytes=%lu pending=%d\n",
++             (unsigned long) nbytes, (int) mvr->editor_render_pending);
++        }
++        else
++        {
++            g_free (copy);
++            mtx_dbg_errout (1, "RENDER_DEFERRED pending=%d\n",
++                            (int) mvr->editor_render_pending);
++        }
++        return;
++    }
++
++    gchar **text_ptr = g_new (gchar *, 1);
++    *text_ptr = copy;
++
++    if (!g_utf8_validate (copy, -1, NULL))
++    {
++        g_warning ("Editor buffer contains invalid UTF-8; render skipped");
++        g_free (copy);
++        g_free (text_ptr);
++        return;
++    }
++
++    const gchar *referrer = mvr->editor_referrer;
++    if (referrer != NULL && *referrer == '\0')
++    {
++        g_warning ("Empty editor render referrer rejected; using NULL");
++        referrer = NULL;
++    }
++
++    if (!preserve_position)
++    {
++        GtkAdjustment *adjustment =
++        mtx_viewer_editor_preview_vadjustment (mvr);
++
++        saved_curpos = mvr->changed_curpos;
++        saved_scroll = adjustment != NULL ?
++            gtk_adjustment_get_value (adjustment) : 0.0;
++    }
++    mvr->editor_saved_curpos = saved_curpos;
++    mvr->editor_saved_scroll = saved_scroll;
++
++    MtxViewerEditorRenderCompleteData *cdat =
++    g_new0 (MtxViewerEditorRenderCompleteData, 1);
++    cdat->mvr = mvr;
++    cdat->saved_curpos = saved_curpos;
++    cdat->saved_scroll = saved_scroll;
++    cdat->issue_render = mtx_viewer_editor_issue_render;
++    GClosure *completer =
++    g_cclosure_new (G_CALLBACK (editor_render_complete), cdat, NULL);
++    g_closure_set_marshal (completer,
++                           cclosure_marshal_VOID__BOOLEAN_POINTER);
++
++    mvr->editor_render_in_flight = TRUE;
++    gtk_widget_set_sensitive (mvr->combo_toc, FALSE);
++    mtx_viewer_editor_update_counter_label (mvr);
++    mtx_dbg_errout (1, "RENDER_ISSUED bytes=%lu forced=%d\n",
++                    (unsigned long) nbytes, (int) bypass_ceiling);
++
++    gboolean render_accepted =
++    mtx_text_view_set_text (mvr->text_view, text_ptr, referrer, TRUE,
++                            NULL, completer);
++    if (!render_accepted)
++    {
++        mvr->editor_render_in_flight = FALSE;
++        gtk_widget_set_sensitive (mvr->combo_toc,
++                                  !mtx_viewer_is_current_skipping_toc (mvr));
++        mtx_viewer_editor_update_counter_label (mvr);
++        mtx_dbg_errout (1, "RENDER_REJECTED referrer=%s\n",
++                        referrer != NULL ? referrer : "(null)");
++        g_closure_unref (completer);
++        g_free (cdat);
++        /* Ownership was not accepted on an early FALSE return. */
++        g_free (copy);
++        g_free (text_ptr);
++    }
++}
++
++static void
++mtx_viewer_editor_issue_render (MtxViewer *mvr,
++                                gboolean preserve_position,
++                                gint saved_curpos,
++                                gdouble saved_scroll)
++{
++    mtx_viewer_editor_issue_render_full
++    (mvr, preserve_position, saved_curpos, saved_scroll, NULL, FALSE);
++}
++
++/**
++on_editor_debounce_timeout:
++The one and only place a live-preview render is decided on. Runs
++MTX_EDITOR_DEBOUNCE_MS after the last keystroke, from the main loop.
++
++SERIALIZATION, NOT CANCELLATION -- read this before changing anything
++below. This scheduler must NEVER cancel an in-flight render. (The word
++that names mtxtextview.c's cancel entry point is deliberately not
++spelled out anywhere in this file outside cancel_loading_clicked(), so
++that grepping this file for it keeps returning exactly one hit.)
++
++Why cancelling is unsafe here: mtx_text_view_load_markup_async()
++(mtxtextview.c:1801) calls g_task_set_return_on_cancel (task, TRUE), so
++cancelling makes mtx_text_view_load_markup_loaded() fire IMMEDIATELY
++while the worker thread KEEPS RUNNING inside mtx_cmm_mtx() on the SHARED
++mvr->text_view markdown parser instance. Starting a replacement render
++then puts two parses on one parser object at once -- heap corruption or
++a garbled page, non-deterministic and near-impossible to reproduce.
++Worse, mtx_text_view_load_markup_loaded() is also the only place that
++recreates the text view's GCancellable, so cancelling when nothing is in
++flight leaves that GCancellable permanently cancelled and every future
++render returns cancelled with no buffer swap -- the preview would be
++bricked for the rest of the session. Hence: at most one render in
++flight, later requests coalesce into mvr->editor_render_pending, nothing
++is ever cancelled.
++
++Returns: G_SOURCE_REMOVE on every path -- one debounce window, one
++decision.
++*/
++static gboolean
++on_editor_debounce_timeout (gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++
++    if (mvr->editor_suppress_render)
++    {
++        return G_SOURCE_CONTINUE;
++    }
++
++    /*
++    Cleared up front, not on the way out: every return below is
++    G_SOURCE_REMOVE, so by the time control leaves this function the
++    source is gone. A stale non-zero id would make the next
++    g_source_remove() in mtx_viewer_editor_schedule_render() fire a
++    "source ID was not found" warning at a dead source.
++    */
++    mvr->editor_debounce_id = 0;
++
++    if (!mvr->editor_render_in_flight)
++    {
++        mvr->editor_render_pending = FALSE;
++    }
++    mtx_viewer_editor_issue_render (mvr, FALSE, 0, 0.0);
++
++    return G_SOURCE_REMOVE;
++}
++
++/**
++mtx_viewer_editor_schedule_render:
++Restart the live-preview debounce window. Called on every editor
++keystroke; the point is that MTX_EDITOR_DEBOUNCE_MS of continuous typing
++produces exactly ZERO renders, and the burst collapses into one.
++
++Split out of on_editor_buffer_changed() so that todo 16's completer and
++todo 21's dialog code have a single entry point to call, and so that the
++mvr->editor_suppress_render veto is the literal first thing that runs on
++the path to a render.
++*/
++static void
++mtx_viewer_editor_schedule_render (MtxViewer *mvr)
++{
++    /*
++    Todo 21 raises this around modal dialogs: a dialog spins its own main
++    loop, so an unguarded debounce source would fire underneath it and
++    render a buffer the user is in the middle of being asked about.
++    Nothing sets it yet, so it is always FALSE today -- but honouring it
++    from day one is what lets todo 21 be a one-line change.
++    */
++    if (mvr->editor_suppress_render)
++    {
++        return;
++    }
++
++    if (mvr->editor_debounce_id)
++    {
++        g_source_remove (mvr->editor_debounce_id);
++        mvr->editor_debounce_id = 0;
++    }
++    mvr->editor_debounce_id =
++    g_timeout_add (MTX_EDITOR_DEBOUNCE_MS, on_editor_debounce_timeout, mvr);
++}
++
++/**
++on_editor_buffer_changed:
++"changed" handler for the inline editor's #GtkTextBuffer. Connected
++exactly once, in mtx_viewer_new(), which is what makes
++g_signal_handlers_block_by_func()/_unblock_by_func() unambiguous for
++callers that need to suppress it around a programmatic buffer fill --
++see the two HANDOFF(todo 12) sites inside accel_toggle_editor() below.
++Marks the document dirty and immediately refreshes the O(1) GTK character
++count in the dedicated
++mvr->counter_label (a plain widget living beside mvr->status_bar in
++status_row, not inside the statusbar itself -- see the status_row
++comment in mtx_viewer_new() for why. Either way this never calls
++gtk_statusbar_push()/_pop(), so it cannot grow or disturb the
++statusbar's own message stack). The O(n) Unicode word scan is separately
++throttled and never resets its timer during a typing burst. The same handler
++also mirrors the dirty state into the window title with a leading "*". The title is
++read back and checked before writing so a "changed" burst from
++ordinary typing (this handler fires on every keystroke) never
++double-prefixes it.
++*/
++static void
++on_editor_buffer_changed (GtkTextBuffer *buffer __attribute__((unused)),
++                          gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++
++    mvr->editor_dirty = TRUE;
++    mtx_viewer_editor_update_counter_label (mvr);
++    mtx_viewer_editor_schedule_word_count (mvr);
++
++    const gchar *title = gtk_window_get_title (GTK_WINDOW (mvr->window));
++    if (title != NULL && title[0] != '*')
++    {
++        gchar *starred = g_strdup_printf ("*%s", title);
++        gtk_window_set_title (GTK_WINDOW (mvr->window), starred);
++        g_free (starred);
++    }
++
++    /*
++    Live-preview scheduling lives HERE, in the same handler as the dirty
++    marker, rather than on a second "changed" connection -- deliberately.
++    The two programmatic gtk_text_buffer_set_text() calls in
++    accel_toggle_editor() already bracket THIS function with
++    g_signal_handlers_block_by_func()/_unblock_by_func(), so folding the
++    scheduling in means a programmatic fill or clear also schedules no
++    render, which is exactly right: revealing the pane displays a preview
++    that already matches the file, and hiding it must not render an empty
++    buffer over the page. A separate connection would need its own
++    matching block/unblock at both of those sites, i.e. two more places to
++    forget.
++    */
++    mtx_viewer_editor_schedule_render (mvr);
++}
++
++/**
++mtx_viewer_editor_wrap:
++Apply an inline Markdown wrapper to the editor selection as one user action.
++
++The complete contract is:
++1. With no selection, insert @before followed by @after and leave the caret
++   between them.
++2. If the non-whitespace selection core is already wrapped and has non-empty
++   inner content, remove both markers and select that inner content.  An exact
++   @before+@after pair is deliberately left unchanged: it has no inner content
++   whose meaning can be preserved by toggling.
++3. Preserve leading/trailing whitespace outside the markers, which therefore
++   hug the non-whitespace core.  A whitespace-only selection is refused because
++   there is no core to wrap.
++4. Refuse non-code selections containing a blank or whitespace-only line and
++   warn that emphasis cannot cross a paragraph break.
++5. Permit non-code selections across multiple non-blank lines.
++6. Treat ` / ` as code: a selection containing any newline becomes a fenced
++   block with each ``` fence on its own line; otherwise use an inline code span.
++   Inline content containing backticks gets a delimiter one backtick longer
++   than its longest run and one padding space on each side.  The code rule takes
++   precedence over the paragraph-break refusal so multi-paragraph code is still
++   represented by a valid fenced block.
++*/
++static void G_GNUC_UNUSED
++mtx_viewer_editor_wrap (MtxViewer *mvr,
++                        const gchar *before,
++                        const gchar *after)
++{
++    g_return_if_fail (mvr != NULL);
++    g_return_if_fail (GTK_IS_TEXT_VIEW (mvr->editor_view));
++    g_return_if_fail (before != NULL && before[0] != '\0');
++    g_return_if_fail (after != NULL && after[0] != '\0');
++
++    GtkTextBuffer *buffer =
++    gtk_text_view_get_buffer (GTK_TEXT_VIEW (mvr->editor_view));
++    GtkTextIter start;
++    GtkTextIter end;
++    const gboolean has_selection =
++    gtk_text_buffer_get_selection_bounds (buffer, &start, &end);
++    const gint start_offset = gtk_text_iter_get_offset (&start);
++    const glong before_chars = g_utf8_strlen (before, -1);
++
++    gtk_text_buffer_begin_user_action (buffer);
++
++    if (!has_selection)
++    {
++        gchar *pair = g_strconcat (before, after, NULL);
++        gtk_text_buffer_insert (buffer, &start, pair, -1);
++        gtk_text_buffer_get_iter_at_offset (buffer, &start,
++                                            start_offset + before_chars);
++        gtk_text_buffer_place_cursor (buffer, &start);
++        g_free (pair);
++        gtk_text_buffer_end_user_action (buffer);
++        return;
++    }
++
++    gchar *selected = gtk_text_buffer_get_text (buffer, &start, &end, TRUE);
++    const gsize selected_len = strlen (selected);
++    const gboolean is_code = strcmp (before, "`") == 0
++        && strcmp (after, "`") == 0;
++    const gboolean has_newline = strchr (selected, '\n') != NULL;
++
++    const gchar *core_start = selected;
++    while (*core_start != '\0'
++           && g_unichar_isspace (g_utf8_get_char (core_start)))
++    {
++        core_start = g_utf8_next_char (core_start);
++    }
++
++    const gchar *core_end = selected + selected_len;
++    while (core_end > core_start)
++    {
++        const gchar *previous = g_utf8_find_prev_char (selected, core_end);
++        if (previous == NULL
++            || !g_unichar_isspace (g_utf8_get_char (previous)))
++        {
++            break;
++        }
++        core_end = previous;
++    }
++
++    const gsize leading_len = (gsize) (core_start - selected);
++    const gsize core_len = (gsize) (core_end - core_start);
++    const gsize trailing_len = selected_len - leading_len - core_len;
++    const glong leading_chars = g_utf8_strlen (selected, (gssize) leading_len);
++
++    if (core_len == 0)
++    {
++        mtx_viewer_statusbar_warn_seconds
++        (mvr, 3, _("::: Formatting requires non-whitespace text :::"));
++        g_free (selected);
++        gtk_text_buffer_end_user_action (buffer);
++        return;
++    }
++
++    const gsize before_len = strlen (before);
++    const gsize after_len = strlen (after);
++    const gchar *inner_start = NULL;
++    const gchar *inner_end = NULL;
++
++    if (is_code)
++    {
++        gsize opening_run = 0;
++        gsize closing_run = 0;
++        while (opening_run < core_len && core_start[opening_run] == '`')
++        {
++            opening_run++;
++        }
++        while (closing_run < core_len && core_end[-1 - closing_run] == '`')
++        {
++            closing_run++;
++        }
++        if (opening_run > 0 && opening_run == closing_run
++            && core_len > opening_run + closing_run)
++        {
++            inner_start = core_start + opening_run;
++            inner_end = core_end - closing_run;
++            if (inner_end - inner_start >= 2
++                && inner_start[0] == ' ' && inner_end[-1] == ' '
++                && memchr (inner_start + 1, '`',
++                           (gsize) (inner_end - inner_start - 2)) != NULL)
++            {
++                inner_start++;
++                inner_end--;
++            }
++        }
++    }
++    else if (core_len > before_len + after_len
++             && memcmp (core_start, before, before_len) == 0
++             && memcmp (core_end - after_len, after, after_len) == 0)
++    {
++        inner_start = core_start + before_len;
++        inner_end = core_end - after_len;
++    }
++
++    if (inner_start != NULL)
++    {
++        GString *replacement = g_string_sized_new (selected_len);
++        g_string_append_len (replacement, selected, (gssize) leading_len);
++        g_string_append_len (replacement, inner_start,
++                             (gssize) (inner_end - inner_start));
++        g_string_append_len (replacement, core_end, (gssize) trailing_len);
++
++        const glong inner_chars =
++        g_utf8_strlen (inner_start, (gssize) (inner_end - inner_start));
++        gtk_text_buffer_delete (buffer, &start, &end);
++        gtk_text_buffer_insert (buffer, &start, replacement->str, -1);
++        gtk_text_buffer_get_iter_at_offset
++        (buffer, &start, start_offset + leading_chars);
++        gtk_text_buffer_get_iter_at_offset
++        (buffer, &end, start_offset + leading_chars + inner_chars);
++        gtk_text_buffer_select_range (buffer, &end, &start);
++
++        g_string_free (replacement, TRUE);
++        g_free (selected);
++        gtk_text_buffer_end_user_action (buffer);
++        return;
++    }
++
++    if (core_len == before_len + after_len
++        && memcmp (core_start, before, before_len) == 0
++        && memcmp (core_end - after_len, after, after_len) == 0)
++    {
++        g_free (selected);
++        gtk_text_buffer_end_user_action (buffer);
++        return;
++    }
++
++    if (is_code && has_newline)
++    {
++        const gboolean starts_line = gtk_text_iter_starts_line (&start);
++        const gboolean ends_after_newline = gtk_text_iter_starts_line (&end);
++        const gboolean ends_before_newline = !gtk_text_iter_is_end (&end)
++            && gtk_text_iter_get_char (&end) == '\n';
++        const gchar *opening = starts_line ? "```\n" : "\n```\n";
++        const gchar *closing = ends_after_newline ? "```\n"
++            : ends_before_newline ? "\n```" : "\n```\n";
++        gchar *replacement =
++        g_strconcat (opening, selected, closing, NULL);
++        const glong replacement_chars = g_utf8_strlen (replacement, -1);
++
++        gtk_text_buffer_delete (buffer, &start, &end);
++        gtk_text_buffer_insert (buffer, &start, replacement, -1);
++        gtk_text_buffer_get_iter_at_offset (buffer, &start, start_offset);
++        gtk_text_buffer_get_iter_at_offset
++        (buffer, &end, start_offset + replacement_chars);
++        gtk_text_buffer_select_range (buffer, &end, &start);
++
++        g_free (replacement);
++        g_free (selected);
++        gtk_text_buffer_end_user_action (buffer);
++        return;
++    }
++
++    if (!is_code && has_newline)
++    {
++        const gchar *line_end = strchr (selected, '\n');
++        while (line_end != NULL)
++        {
++            const gchar *next_line = line_end + 1;
++            const gchar *cursor = next_line;
++            gboolean blank = TRUE;
++            while (*cursor != '\0' && *cursor != '\n')
++            {
++                if (!g_unichar_isspace (g_utf8_get_char (cursor)))
++                {
++                    blank = FALSE;
++                }
++                cursor = g_utf8_next_char (cursor);
++            }
++            if (*cursor == '\n' && blank)
++            {
++                mtx_viewer_statusbar_warn_seconds
++                (mvr, 3, _("::: Emphasis cannot cross a paragraph break :::"));
++                g_free (selected);
++                gtk_text_buffer_end_user_action (buffer);
++                return;
++            }
++            line_end = strchr (next_line, '\n');
++        }
++    }
++
++    GString *replacement = g_string_sized_new
++    (selected_len + before_len + after_len + 4);
++    g_string_append_len (replacement, selected, (gssize) leading_len);
++    const gsize wrapped_start_bytes = replacement->len;
++
++    if (is_code)
++    {
++        gsize current_run = 0;
++        gsize longest_run = 0;
++        for (const gchar *cursor = core_start; cursor < core_end; cursor++)
++        {
++            if (*cursor == '`')
++            {
++                current_run++;
++                longest_run = MAX (longest_run, current_run);
++            }
++            else
++            {
++                current_run = 0;
++            }
++        }
++        const gsize delimiter_len = longest_run + 1;
++        for (gsize i = 0; i < delimiter_len; i++)
++        {
++            g_string_append_c (replacement, '`');
++        }
++        if (longest_run > 0)
++        {
++            g_string_append_c (replacement, ' ');
++        }
++        g_string_append_len (replacement, core_start, (gssize) core_len);
++        if (longest_run > 0)
++        {
++            g_string_append_c (replacement, ' ');
++        }
++        for (gsize i = 0; i < delimiter_len; i++)
++        {
++            g_string_append_c (replacement, '`');
++        }
++    }
++    else
++    {
++        g_string_append (replacement, before);
++        g_string_append_len (replacement, core_start, (gssize) core_len);
++        g_string_append (replacement, after);
++    }
++
++    const gsize wrapped_len = replacement->len - wrapped_start_bytes;
++    g_string_append_len (replacement, core_end, (gssize) trailing_len);
++    const glong wrapped_chars = g_utf8_strlen
++    (replacement->str + wrapped_start_bytes, (gssize) wrapped_len);
++
++    gtk_text_buffer_delete (buffer, &start, &end);
++    gtk_text_buffer_insert (buffer, &start, replacement->str, -1);
++    gtk_text_buffer_get_iter_at_offset
++    (buffer, &start, start_offset + leading_chars);
++    gtk_text_buffer_get_iter_at_offset
++    (buffer, &end, start_offset + leading_chars + wrapped_chars);
++    gtk_text_buffer_select_range (buffer, &end, &start);
++
++    g_string_free (replacement, TRUE);
++    g_free (selected);
++    gtk_text_buffer_end_user_action (buffer);
++}
++
++/**
++mtx_viewer_editor_prefix:
++Apply a block Markdown prefix to complete editor lines as one user action.
++
++The complete contract is:
++1. Target every line touched by the selection, or the caret's current line when
++   there is no selection.  A heading targets only the first such line.
++2. A heading replaces an existing one-to-six-hash ATX marker.  On a quote or
++   list line, the heading follows the existing "> " or "- " marker.
++3. Quote prefixes toggle all target lines together, including blank lines.
++4. List prefixes toggle all non-blank target lines together and leave blank
++   lines unchanged.
++5. Prefixes follow each line's existing leading Unicode whitespace.
++6. Mutations emit only GtkTextBuffer's natural "changed" signals; Todo 12's
++   handler therefore owns dirty tracking without any manual update here.
++*/
++static void G_GNUC_UNUSED
++mtx_viewer_editor_prefix (MtxViewer *mvr, const gchar *prefix)
++{
++    g_return_if_fail (mvr != NULL);
++    g_return_if_fail (GTK_IS_TEXT_VIEW (mvr->editor_view));
++    g_return_if_fail (prefix != NULL && prefix[0] != '\0');
++
++    const gboolean is_heading = prefix[0] == '#';
++    const gboolean is_quote = strcmp (prefix, "> ") == 0;
++    const gboolean is_list = strcmp (prefix, "- ") == 0;
++    g_return_if_fail (is_heading || is_quote || is_list);
++
++    GtkTextBuffer *buffer =
++    gtk_text_view_get_buffer (GTK_TEXT_VIEW (mvr->editor_view));
++    GtkTextIter selection_start;
++    GtkTextIter selection_end;
++    const gboolean has_selection = gtk_text_buffer_get_selection_bounds
++    (buffer, &selection_start, &selection_end);
++    const gint first_line = gtk_text_iter_get_line (&selection_start);
++    gint last_line = gtk_text_iter_get_line (&selection_end);
++
++    /* A half-open selection ending at column zero does not touch that line. */
++    if (has_selection && last_line > first_line
++        && gtk_text_iter_starts_line (&selection_end))
++    {
++        last_line--;
++    }
++    if (is_heading)
++    {
++        last_line = first_line;
++    }
++
++    GtkTextMark *selection_start_mark = NULL;
++    GtkTextMark *selection_end_mark = NULL;
++    if (has_selection)
++    {
++        selection_start_mark = gtk_text_buffer_create_mark
++        (buffer, NULL, &selection_start, TRUE);
++        selection_end_mark = gtk_text_buffer_create_mark
++        (buffer, NULL, &selection_end, FALSE);
++    }
++
++    gtk_text_buffer_begin_user_action (buffer);
++
++    gboolean remove_prefix = !is_heading;
++    gboolean has_eligible_line = FALSE;
++    if (!is_heading)
++    {
++        for (gint line = first_line; line <= last_line; line++)
++        {
++            GtkTextIter line_start;
++            GtkTextIter line_end;
++            gtk_text_buffer_get_start_iter (buffer, &line_start);
++            gtk_text_iter_forward_lines (&line_start, line);
++            line_end = line_start;
++            if (!gtk_text_iter_ends_line (&line_end))
++            {
++                gtk_text_iter_forward_to_line_end (&line_end);
++            }
++
++            gchar *text = gtk_text_buffer_get_text
++            (buffer, &line_start, &line_end, TRUE);
++            const gchar *content = text;
++            while (*content != '\0'
++                   && g_unichar_isspace (g_utf8_get_char (content)))
++            {
++                content = g_utf8_next_char (content);
++            }
++
++            const gboolean blank = *content == '\0';
++            if (!is_list || !blank)
++            {
++                has_eligible_line = TRUE;
++                if (!g_str_has_prefix (content, prefix))
++                {
++                    remove_prefix = FALSE;
++                }
++            }
++            g_free (text);
++        }
++    }
++
++    for (gint line = last_line; line >= first_line; line--)
++    {
++        GtkTextIter line_start;
++        GtkTextIter line_end;
++        gtk_text_buffer_get_start_iter (buffer, &line_start);
++        gtk_text_iter_forward_lines (&line_start, line);
++        line_end = line_start;
++        if (!gtk_text_iter_ends_line (&line_end))
++        {
++            gtk_text_iter_forward_to_line_end (&line_end);
++        }
++
++        gchar *text = gtk_text_buffer_get_text
++        (buffer, &line_start, &line_end, TRUE);
++        const gchar *content = text;
++        while (*content != '\0'
++               && g_unichar_isspace (g_utf8_get_char (content)))
++        {
++            content = g_utf8_next_char (content);
++        }
++
++        const gboolean blank = *content == '\0';
++        const glong leading_chars = g_utf8_strlen
++        (text, (gssize) (content - text));
++        GtkTextIter marker_start = line_start;
++        gtk_text_iter_forward_chars (&marker_start, (gint) leading_chars);
++
++        if (is_heading)
++        {
++            const gchar *heading = content;
++            if (g_str_has_prefix (heading, "> ")
++                || g_str_has_prefix (heading, "- "))
++            {
++                heading += 2;
++                gtk_text_iter_forward_chars (&marker_start, 2);
++            }
++
++            gsize hashes = 0;
++            while (hashes < 6 && heading[hashes] == '#')
++            {
++                hashes++;
++            }
++            const gboolean has_heading = hashes > 0 && heading[hashes] == ' ';
++            const gsize old_marker_len = has_heading ? hashes + 1 : 0;
++
++            if (old_marker_len == 0
++                || strlen (prefix) != old_marker_len
++                || memcmp (heading, prefix, old_marker_len) != 0)
++            {
++                if (has_heading)
++                {
++                    GtkTextIter marker_end = marker_start;
++                    gtk_text_iter_forward_chars
++                    (&marker_end, (gint) old_marker_len);
++                    gtk_text_buffer_delete
++                    (buffer, &marker_start, &marker_end);
++                }
++                gtk_text_buffer_insert (buffer, &marker_start, prefix, -1);
++            }
++        }
++        else if ((!is_list || !blank) && has_eligible_line)
++        {
++            if (remove_prefix)
++            {
++                GtkTextIter marker_end = marker_start;
++                gtk_text_iter_forward_chars
++                (&marker_end, (gint) g_utf8_strlen (prefix, -1));
++                gtk_text_buffer_delete (buffer, &marker_start, &marker_end);
++            }
++            else
++            {
++                gtk_text_buffer_insert (buffer, &marker_start, prefix, -1);
++            }
++        }
++        g_free (text);
++    }
++
++    if (has_selection)
++    {
++        gtk_text_buffer_get_iter_at_mark
++        (buffer, &selection_start, selection_start_mark);
++        gtk_text_buffer_get_iter_at_mark
++        (buffer, &selection_end, selection_end_mark);
++        gtk_text_buffer_select_range
++        (buffer, &selection_end, &selection_start);
++        gtk_text_buffer_delete_mark (buffer, selection_start_mark);
++        gtk_text_buffer_delete_mark (buffer, selection_end_mark);
++    }
++
++    gtk_text_buffer_end_user_action (buffer);
++}
++
++/**
++accel_toggle_editor:
++Show or hide the inline Markdown editor pane (F2 / toolbar button).
++Refuses to reveal the pane on a page that is not editable.
++*/
++static gboolean
++on_editor_paned_set_initial_position (gpointer data)
++{
++    GtkWidget *paned = data;
++    gint width = gtk_widget_get_allocated_width (paned);
++
++    gtk_paned_set_position (GTK_PANED (paned), width / 2);
++    return G_SOURCE_REMOVE;
++}
++
++static void
++on_editor_paned_first_size_allocate (GtkWidget *widget,
++                                     GdkRectangle *allocation
++                                     __attribute__((unused)),
++                                     gpointer data)
++{
++    GtkWidget *editor_box = data;
++
++    if (!gtk_widget_get_mapped (editor_box))
++    {
++        return;
++    }
++    g_signal_handlers_disconnect_by_func
++    (widget, G_CALLBACK (on_editor_paned_first_size_allocate), data);
++    g_idle_add_full (G_PRIORITY_DEFAULT_IDLE,
++                     on_editor_paned_set_initial_position,
++                     g_object_ref (widget), g_object_unref);
++}
++
++static gboolean
++mtx_viewer_editor_reveal (MtxViewer *mvr, GtkWidget *editor_box)
++{
++    static gboolean editor_position_set = FALSE;
++
++    /*
++    The editability gate. On success mtx_viewer_editor_target() has
++    already stored the canonical, symlink-resolved absolute path in
++    mvr->editor_path (plus the mtime/size snapshot todo 20 compares
++    against), so resolved_path is only a convenience copy here and
++    nothing downstream -- todo 11's buffer load, todo 19's save --
++    may re-derive a path from mvr->current_file, which is often
++    relative.
++    */
++    if (!mtx_viewer_editor_load_current (mvr))
++    {
++        return FALSE;
++    }
++
++    if (!editor_position_set)
++    {
++        g_signal_connect_after (mvr->paned, "size-allocate",
++                                G_CALLBACK
++                                (on_editor_paned_first_size_allocate),
++                                editor_box);
++        editor_position_set = TRUE;
++    }
++    gtk_widget_show_all (editor_box);
++    gtk_widget_grab_focus (mvr->editor_view);
++    return TRUE;
++}
++
++static gboolean
++accel_toggle_editor (GtkAccelGroup *group __attribute__((unused)),
++                     GObject *obj __attribute__((unused)),
++                     guint keyval __attribute__((unused)),
++                     GdkModifierType mod __attribute__((unused)),
++                     gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++    /*
++    editor_box (the vertical GtkBox built in mtx_viewer_new(), wrapping
++    editor_toolbar + editor_scrolled) is a local variable there, not an mvr
++    struct field -- todo 7 deliberately did not add one (see the todo 8
++    learnings entry). mtx_viewer_new() show_all()s the whole window and
++    then explicitly hides ONLY editor_box; editor_toolbar, editor_scrolled
++    and editor_view keep their own "visible" property TRUE from that
++    show_all. A GTK container only maps a child once the child's entire
++    ancestor chain is itself mapped, so toggling the already-TRUE children
++    directly would be a no-op (empirically confirmed with a standalone GTK
++    test: re-asserting a visible child's own "visible" flag while its
++    parent stays hidden never maps it). The widget that actually gates
++    on-screen visibility is editor_box itself, so that is what gets
++    toggled here, reached via its parent pointer instead of storing an
++    extra field (mtxviewer.h is off-limits for this todo).
++    */
++    GtkWidget *editor_box = gtk_widget_get_parent (mvr->editor_scrolled);
++
++    if (gtk_widget_get_visible (editor_box))
++    {
++        /* Pane is visible: HIDE it. */
++        if (!mtx_viewer_editor_confirm_discard_full (mvr, TRUE, FALSE))
++        {
++            return TRUE;
++        }
++        mtx_viewer_editor_hide (mvr);
++    }
++    else
++    {
++        /* Pane is hidden: try to REVEAL it. */
++        if (!mtx_viewer_editor_reveal (mvr, editor_box))
++        {
++            return TRUE;
++        }
++    }
++
++    return TRUE;
++}
++
++/**
++toggle_editor_clicked:
++"clicked" handler for the F2 toolbar button. Delegates to
++accel_toggle_editor so the toggle behaviour has exactly one
++implementation, shared by the accelerator and the toolbar button.
++*/
++static void
++toggle_editor_clicked (GtkWidget *widget __attribute__((unused)),
++                       gpointer data)
++{
++    (void) accel_toggle_editor (NULL, NULL, 0, 0, data);
++}
++
++/**
++edit_external_clicked:
++"clicked" handler for the toolbar's external editor button: delegates to
++accel_edit_current so the external editor behaviour has exactly one
++implementation, shared by the accelerator and the toolbar button.
++*/
++static void
++edit_external_clicked (GtkWidget *widget __attribute__((unused)),
++                       gpointer data)
++{
++    (void) accel_edit_current (NULL, NULL, 0, 0, data);
++}
++
++/**
++on_editor_scroll_value_changed:
++"value-changed" handler for the inline editor's vertical GtkAdjustment
++(mvr->editor_scrolled's GtkScrolledWindow). Connected exactly once, in
++mtx_viewer_new(), directly to that adjustment object -- this is the
++ONLY "value-changed" connection this file makes to any GtkAdjustment
++(grep proof lives in the todo-18 evidence file: no other g_signal_connect
++in src/ names "value-changed", "vadjustment" or "hadjustment"). That is
++what makes the sync provably one-way: the preview's own vertical
++adjustment has no listener anywhere in this codebase, so the
++gtk_adjustment_set_value() call below cannot trigger a handler that
++scrolls the editor back -- there is no such handler to trigger. No
++re-entrancy flag is needed for that reason: a flag exists to break a
++cycle between two listeners watching each other; here only one endpoint
++listens at all, so there is no cycle to break, by construction rather
++than by assumption.
++
++Re-acquires BOTH adjustments fresh on every call, via
++gtk_scrolled_window_get_vadjustment(), rather than trusting the
++"adjustment" parameter GTK hands this handler or any prior lookup, and
++never touches either GtkTextBuffer, a GtkTextMark or a GtkTextIter.
++mtx_text_view_reset_buffer() (mtxtextview.c:724-743) decides whether to
++unref the PREVIEW's OLD buffer by inspecting its ref_count directly;
++holding any extra reference here -- by caching an adjustment, buffer,
++mark or iter across calls instead of re-fetching every time -- would
++leak one full tagged document copy per keystroke.
++
++The mapping applied below is PROPORTIONAL, not line-accurate, by
++design: mtx_cmm_mtx() erases the "<mtx>" metadata prefix and any YAML
++front matter before parsing (mtxcmm.c:3978-3979, :4155), and the raw
++Markdown source is freed right after parsing (the clear_markdown
++optimisation mtx_viewer_editor's own file-load comment already cites),
++so no line in the editor maps onto a specific line in the preview.
++A document that opens with e.g. a 30-line front-matter block therefore
++shows a permanent, constant offset between how far down the editor and
++how far down the preview the two views sit for the same scroll
++fraction -- expected and accepted, not a bug to fix here.
++*/
++static void
++on_editor_scroll_value_changed (GtkAdjustment *adjustment __attribute__((unused)),
++                                gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++
++    g_return_if_fail (GTK_IS_SCROLLED_WINDOW (mvr->editor_scrolled));
++    GtkAdjustment *editor_adj = gtk_scrolled_window_get_vadjustment
++    (GTK_SCROLLED_WINDOW (mvr->editor_scrolled));
++    GtkAdjustment *preview_adj = mtx_viewer_editor_preview_vadjustment (mvr);
++
++    if (editor_adj == NULL || preview_adj == NULL)
++    {
++        return;
++    }
++
++    /*
++    editor_range <= 0 means the document is shorter than the viewport
++    (nothing to scroll) or the widget has not been laid out yet (upper
++    and page_size still equal, both at their construction-time
++    defaults). Either way there is no meaningful position to
++    propagate: treat it as the top rather than dividing by zero or by
++    a negative denominator.
++    */
++    gdouble editor_range = gtk_adjustment_get_upper (editor_adj) -
++        gtk_adjustment_get_page_size (editor_adj);
++    gdouble fraction = editor_range > 0.0 ?
++        gtk_adjustment_get_value (editor_adj) / editor_range : 0.0;
++
++    /*
++    Same guard, mirrored, on the write side: a preview shorter than its
++    own viewport (or not yet laid out) has no meaningful target either,
++    so land on the top rather than push a negative value at
++    gtk_adjustment_set_value() (which would merely be clamped, but
++    computing it is meaningless and not worth relying on that clamp).
++    */
++    gdouble preview_range = gtk_adjustment_get_upper (preview_adj) -
++        gtk_adjustment_get_page_size (preview_adj);
++    gdouble new_value = preview_range > 0.0 ? fraction * preview_range : 0.0;
++
++    gtk_adjustment_set_value (preview_adj, new_value);
++}
++
++/**
++The eight "clicked" handlers below back the editor pane's formatting
++toolbar (todo 25). Each is a thin, individually traceable wrapper around
++exactly one of todo 23's mtx_viewer_editor_wrap() or todo 24's
++mtx_viewer_editor_prefix() -- neither primitive is modified or duplicated
++here. Every handler finishes by returning focus to mvr->editor_view so the
++user can keep typing without an extra click back into the pane. None of
++these buttons carries an accelerator (mouse-only, by the plan's explicit
++decision) and none is wired to more than one primitive call.
++*/
++
++/**
++editor_bold_clicked:
++"clicked" handler for the toolbar's B button: wraps the selection (or
++inserts at the caret) in "**"/"**".
++*/
++static void
++editor_bold_clicked (GtkWidget *widget __attribute__((unused)), gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++
++    mtx_viewer_editor_wrap (mvr, "**", "**");
++    gtk_widget_grab_focus (mvr->editor_view);
++}
++
++/**
++editor_italic_clicked:
++"clicked" handler for the toolbar's I button: wraps the selection (or
++inserts at the caret) in "*"/"*".
++*/
++static void
++editor_italic_clicked (GtkWidget *widget __attribute__((unused)),
++                       gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++
++    mtx_viewer_editor_wrap (mvr, "*", "*");
++    gtk_widget_grab_focus (mvr->editor_view);
++}
++
++/**
++editor_heading1_clicked:
++"clicked" handler for the toolbar's H1 button: prefixes the target line
++with a level-1 ATX heading marker.
++*/
++static void
++editor_heading1_clicked (GtkWidget *widget __attribute__((unused)),
++                         gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++
++    mtx_viewer_editor_prefix (mvr, "# ");
++    gtk_widget_grab_focus (mvr->editor_view);
++}
++
++/**
++editor_heading2_clicked:
++"clicked" handler for the toolbar's H2 button: prefixes the target line
++with a level-2 ATX heading marker.
++*/
++static void
++editor_heading2_clicked (GtkWidget *widget __attribute__((unused)),
++                         gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++
++    mtx_viewer_editor_prefix (mvr, "## ");
++    gtk_widget_grab_focus (mvr->editor_view);
++}
++
++/**
++editor_heading3_clicked:
++"clicked" handler for the toolbar's H3 button: prefixes the target line
++with a level-3 ATX heading marker.
++*/
++static void
++editor_heading3_clicked (GtkWidget *widget __attribute__((unused)),
++                         gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++
++    mtx_viewer_editor_prefix (mvr, "### ");
++    gtk_widget_grab_focus (mvr->editor_view);
++}
++
++/**
++editor_quote_clicked:
++"clicked" handler for the toolbar's > button: toggles a "> " block-quote
++marker across every target line, including blank ones.
++*/
++static void
++editor_quote_clicked (GtkWidget *widget __attribute__((unused)),
++                      gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++
++    mtx_viewer_editor_prefix (mvr, "> ");
++    gtk_widget_grab_focus (mvr->editor_view);
++}
++
++/**
++editor_list_clicked:
++"clicked" handler for the toolbar's bullet-list button: toggles a "- "
++marker across every non-blank target line.
++*/
++static void
++editor_list_clicked (GtkWidget *widget __attribute__((unused)), gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++
++    mtx_viewer_editor_prefix (mvr, "- ");
++    gtk_widget_grab_focus (mvr->editor_view);
++}
++
++/**
++editor_code_clicked:
++"clicked" handler for the toolbar's ` button. Calls
++mtx_viewer_editor_wrap() with before = after = "`": todo 23's rule 6 keys
++its code mode off exactly this pair --
++`const gboolean is_code = strcmp (before, "`") == 0 && strcmp (after, "`")
++== 0;` -- and, once in code mode, the primitive itself (not this handler)
++picks a fenced block when the selection spans a newline or an inline span
++(auto-widened past any embedded backticks, per CommonMark) otherwise.
++*/
++static void
++editor_code_clicked (GtkWidget *widget __attribute__((unused)), gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++
++    mtx_viewer_editor_wrap (mvr, "`", "`");
++    gtk_widget_grab_focus (mvr->editor_view);
++}
++
++typedef struct
++{
++    const gchar *title;
++    const gchar *text_label;
++    const gchar *url_label;
++    gchar *text;
++    gchar *url;
++} MtxViewerEditorReference;
++
++static gboolean
++mtx_viewer_editor_reference_dialog (MtxViewer *mvr,
++                                    MtxViewerEditorReference *reference)
++{
++    GtkWidget *dialog = gtk_dialog_new_with_buttons
++    (reference->title, GTK_WINDOW (mvr->window),
++     GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
++     _("_Cancel"), GTK_RESPONSE_CANCEL,
++     _("_Insert"), GTK_RESPONSE_ACCEPT, NULL);
++    GtkWidget *grid = gtk_grid_new ();
++    GtkWidget *text_label = gtk_label_new_with_mnemonic (reference->text_label);
++    GtkWidget *url_label = gtk_label_new_with_mnemonic (reference->url_label);
++    GtkWidget *text_entry = gtk_entry_new ();
++    GtkWidget *url_entry = gtk_entry_new ();
++
++    gtk_entry_set_text (GTK_ENTRY (text_entry), reference->text);
++    gtk_label_set_mnemonic_widget (GTK_LABEL (text_label), text_entry);
++    gtk_label_set_mnemonic_widget (GTK_LABEL (url_label), url_entry);
++    gtk_grid_set_column_spacing (GTK_GRID (grid), 8);
++    gtk_grid_set_row_spacing (GTK_GRID (grid), 8);
++    gtk_grid_attach (GTK_GRID (grid), text_label, 0, 0, 1, 1);
++    gtk_grid_attach (GTK_GRID (grid), text_entry, 1, 0, 1, 1);
++    gtk_grid_attach (GTK_GRID (grid), url_label, 0, 1, 1, 1);
++    gtk_grid_attach (GTK_GRID (grid), url_entry, 1, 1, 1, 1);
++    gtk_container_set_border_width (GTK_CONTAINER (grid), 12);
++    gtk_container_add (GTK_CONTAINER
++                       (gtk_dialog_get_content_area (GTK_DIALOG (dialog))), grid);
++    gtk_entry_set_activates_default (GTK_ENTRY (url_entry), TRUE);
++    gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_ACCEPT);
++    gtk_widget_show_all (grid);
++    gtk_widget_grab_focus (url_entry);
++
++    mvr->editor_suppress_render = TRUE;
++    const gint response = gtk_dialog_run (GTK_DIALOG (dialog));
++    mvr->editor_suppress_render = FALSE;
++    if (response == GTK_RESPONSE_ACCEPT)
++    {
++        g_free (reference->text);
++        g_free (reference->url);
++        reference->text = g_strdup
++        (gtk_entry_get_text (GTK_ENTRY (text_entry)));
++        reference->url = g_strdup
++        (gtk_entry_get_text (GTK_ENTRY (url_entry)));
++    }
++    gtk_widget_destroy (dialog);
++    return response == GTK_RESPONSE_ACCEPT;
++}
++
++static void
++mtx_viewer_editor_insert_reference (MtxViewer *mvr, gboolean image)
++{
++    GtkTextBuffer *buffer =
++    gtk_text_view_get_buffer (GTK_TEXT_VIEW (mvr->editor_view));
++    GtkTextIter start, end;
++    const gboolean had_selection =
++    gtk_text_buffer_get_selection_bounds (buffer, &start, &end);
++    gchar *selected = had_selection
++        ? gtk_text_buffer_get_text (buffer, &start, &end, TRUE)
++        : g_strdup (image ? "" : _("text"));
++    if (strchr (selected, '\n') != NULL)
++    {
++        mtx_viewer_statusbar_warn_seconds
++        (mvr, 3, _("::: Link text must stay on one line :::"));
++        g_free (selected);
++        return;
++    }
++
++    MtxViewerEditorReference reference = {
++        image ? _("Insert Image") : _("Insert Link"),
++        image ? _("_Alternative text:") : _("_Link text:"),
++        image ? _("Image _URL:") : _("_URL:"),
++        selected,
++        g_strdup ("")
++    };
++    if (!mtx_viewer_editor_reference_dialog (mvr, &reference))
++    {
++        g_free (reference.text);
++        g_free (reference.url);
++        gtk_widget_grab_focus (mvr->editor_view);
++        return;
++    }
++    g_strstrip (reference.url);
++    if (reference.url[0] == '\0')
++    {
++        mtx_viewer_statusbar_warn_seconds
++        (mvr, 3, _("::: A URL is required :::"));
++        g_free (reference.text);
++        g_free (reference.url);
++        gtk_widget_grab_focus (mvr->editor_view);
++        return;
++    }
++
++    gchar *markdown = image
++        ? g_strdup_printf ("![%s](%s)", reference.text, reference.url)
++        : g_strdup_printf ("[%s](%s)", reference.text, reference.url);
++    gtk_text_buffer_get_selection_bounds (buffer, &start, &end);
++    const gint offset = gtk_text_iter_get_offset (&start);
++    gtk_text_buffer_begin_user_action (buffer);
++    if (had_selection)
++    {
++        gtk_text_buffer_delete (buffer, &start, &end);
++    }
++    gtk_text_buffer_insert (buffer, &start, markdown, -1);
++    if (!image && !had_selection)
++    {
++        gtk_text_buffer_get_iter_at_offset (buffer, &start, offset + 1);
++        gtk_text_buffer_get_iter_at_offset
++        (buffer, &end, offset + 1 + g_utf8_strlen (reference.text, -1));
++        gtk_text_buffer_select_range (buffer, &end, &start);
++    }
++    else if (image || had_selection)
++    {
++        gtk_text_buffer_get_iter_at_offset
++        (buffer, &start, offset + g_utf8_strlen (markdown, -1));
++        gtk_text_buffer_place_cursor (buffer, &start);
++    }
++    gtk_text_buffer_end_user_action (buffer);
++
++    g_free (markdown);
++    g_free (reference.text);
++    g_free (reference.url);
++    gtk_widget_grab_focus (mvr->editor_view);
++}
++
++static void
++editor_underline_clicked (GtkWidget *widget __attribute__((unused)), gpointer data)
++{
++    MtxViewer *mvr = (MtxViewer *) data;
++    mtx_viewer_editor_wrap (mvr, "<u>", "</u>");
++    gtk_widget_grab_focus (mvr->editor_view);
++}
++
++static void
++editor_link_clicked (GtkWidget *widget __attribute__((unused)), gpointer data)
++{
++    mtx_viewer_editor_insert_reference ((MtxViewer *) data, FALSE);
++}
++
++static void
++editor_image_clicked (GtkWidget *widget __attribute__((unused)), gpointer data)
++{
++    mtx_viewer_editor_insert_reference ((MtxViewer *) data, TRUE);
++}
++
+ /**
+ mtx_viewer_new:
+ 
+@@ -2955,6 +5832,8 @@ mtx_viewer_new (const gchar *base_dir,
+                 GtkWindow *parent,
+                 const MtxViewerOptions *options)
+ {
++    (void) mtx_viewer_preview_dir ();
++
+     MtxViewer *mvr;
+     GtkWidget *mtx_viewer;
+     GtkWidget *vbox;
+@@ -2967,17 +5846,20 @@ mtx_viewer_new (const gchar *base_dir,
+     GtkWidget *search_entry;
+     GtkWidget *scrolled_mtx_viewer;
+     MtxTextView *text_view;
++    GtkWidget *paned, *editor_box, *editor_toolbar, *editor_scrolled,
++              *editor_view;
+     GtkWidget *progress_bar, *progress_box, *btn_cancel_loading;
+-    GtkWidget *status_bar;
++    GtkWidget *status_bar, *status_row;
+     GtkWidget *btn_nav_back, *btn_nav_fore, *btn_nav_home, *btn_preview,
+-              *btn_file_open;
++              *btn_file_open, *btn_new_page, *btn_toggle_editor,
++              *btn_edit_external, *btn_export;
+     GtkWidget *combo_toc;
+     GtkAccelGroup *accel;
+ 
+     mtx_viewer = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+     gtk_widget_set_name (mtx_viewer, PROGNAME"-main-win");
+     gtk_widget_set_size_request (mtx_viewer, 300, 200);
+-    gtk_window_set_default_size (GTK_WINDOW (mtx_viewer), 640, 480);
++    gtk_window_set_default_size (GTK_WINDOW (mtx_viewer), 800, 520);
+     gtk_window_set_title (GTK_WINDOW (mtx_viewer),
+                           title ? title : DEFAULT_WINDOW_TITLE);
+     gtk_window_set_transient_for (GTK_WINDOW (mtx_viewer), parent);
+@@ -3019,6 +5901,14 @@ mtx_viewer_new (const gchar *base_dir,
+     gtk_widget_show (btn_file_open);
+     gtk_container_add (GTK_CONTAINER (toolbar1), btn_file_open);
+ 
++    GtkWidget *icon_new =
++    gtk_image_new_from_icon_name ("document-new", GTK_ICON_SIZE_LARGE_TOOLBAR);
++    btn_new_page = (GtkWidget *) gtk_tool_button_new (icon_new, _("New page..."));
++    gtk_widget_set_tooltip_text (btn_new_page,
++                                 _("(Ctrl-N) Create a Markdown page"));
++    gtk_widget_show (btn_new_page);
++    gtk_container_add (GTK_CONTAINER (toolbar1), btn_new_page);
++
+ #if !GTK_CHECK_VERSION(3,0,0)
+     btn_nav_home = (GtkWidget *) gtk_tool_button_new_from_stock ("gtk-home");
+ #else
+@@ -3071,6 +5961,54 @@ mtx_viewer_new (const gchar *base_dir,
+     gtk_widget_show (btn_preview);
+     gtk_container_add (GTK_CONTAINER (toolbar1), btn_preview);
+ 
++    GtkWidget *icon_export =
++    gtk_image_new_from_icon_name ("document-save-as",
++                                  GTK_ICON_SIZE_LARGE_TOOLBAR);
++    btn_export = (GtkWidget *) gtk_tool_button_new (icon_export, _("Export"));
++    gtk_widget_set_tooltip_text (btn_export,
++                                 _("Export the page to another format"));
++    gtk_widget_show (btn_export);
++    gtk_container_add (GTK_CONTAINER (toolbar1), btn_export);
++
++    const gchar *toggle_editor_icon_name = "accessories-text-editor";
++    GtkWidget *icon_toggle_editor =
++    gtk_image_new_from_icon_name (toggle_editor_icon_name,
++                                  GTK_ICON_SIZE_LARGE_TOOLBAR);
++    btn_toggle_editor = (GtkWidget *) gtk_tool_button_new (icon_toggle_editor,
++                                                           _("Markdown Editor"));
++    gtk_widget_set_tooltip_text (btn_toggle_editor,
++                                 _("(F2) Show/hide the Markdown editor"));
++    gtk_widget_show (btn_toggle_editor);
++    gtk_container_add (GTK_CONTAINER (toolbar1), btn_toggle_editor);
++
++    /* Must differ from the inline-editor icon: a theme lacking "document-edit"
++       once fell back onto it, making both toolbar buttons look identical. */
++    const gchar *const edit_external_icon_names[] =
++    { "application-x-executable", "document-edit", "gtk-edit", "system-run" };
++    GtkIconTheme *theme = gtk_icon_theme_get_default ();
++    const gchar *edit_icon_name =
++    edit_external_icon_names[G_N_ELEMENTS (edit_external_icon_names) - 1];
++    for (gsize i = 0; i < G_N_ELEMENTS (edit_external_icon_names); i++)
++    {
++        const gchar *candidate = edit_external_icon_names[i];
++
++        if (g_strcmp0 (candidate, toggle_editor_icon_name) != 0
++            && gtk_icon_theme_has_icon (theme, candidate))
++        {
++            edit_icon_name = candidate;
++            break;
++        }
++    }
++    GtkWidget *icon_edit_external =
++    gtk_image_new_from_icon_name (edit_icon_name,
++                                  GTK_ICON_SIZE_LARGE_TOOLBAR);
++    btn_edit_external = (GtkWidget *) gtk_tool_button_new (icon_edit_external,
++                                                           _("External editor"));
++    gtk_widget_set_tooltip_text (btn_edit_external,
++                                 _("(Ctrl-E) Edit the page in an external editor"));
++    gtk_widget_show (btn_edit_external);
++    gtk_container_add (GTK_CONTAINER (toolbar1), btn_edit_external);
++
+     combo_toc = gtk_combo_box_text_new ();
+     gtk_widget_set_tooltip_text (combo_toc,
+                                  _("(Alt-T) Change Table of Contents depth"));
+@@ -3129,7 +6067,6 @@ mtx_viewer_new (const gchar *base_dir,
+     gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW
+                                          (scrolled_mtx_viewer),
+                                          GTK_SHADOW_ETCHED_IN);
+-    gtk_box_pack_start (GTK_BOX (vbox), scrolled_mtx_viewer, TRUE, TRUE, 0);
+     gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_mtx_viewer),
+                                     GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+ 
+@@ -3144,6 +6081,141 @@ mtx_viewer_new (const gchar *base_dir,
+     gtk_container_add (GTK_CONTAINER (scrolled_mtx_viewer),
+                        GTK_WIDGET (text_view));
+ 
++    /**********************************************************************
++    *                         Inline Editor Pane                          *
++    ******************************************************************{{{*/
++    paned = gtk_paned_new (GTK_ORIENTATION_HORIZONTAL);
++    gtk_widget_show (paned);
++    gtk_box_pack_start (GTK_BOX (vbox), paned, TRUE, TRUE, 0);
++
++    editor_box = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
++
++    editor_toolbar = gtk_toolbar_new ();
++    gtk_box_pack_start (GTK_BOX (editor_box), editor_toolbar, FALSE, FALSE, 0);
++    /*
++    Without this, GtkToolbar's default show_arrow=TRUE silently folds
++    whichever buttons do not fit the editor pane's current width into an
++    overflow dropdown -- confirmed empirically via AT-SPI
++    (ATK_STATE_SHOWING false, extents pinned at GTK's off-screen sentinel
++    G_MININT) at the paned's default 50% split on an 8-button row. That
++    would leave fewer than 8 directly clickable buttons depending on
++    window width alone. toolbar2 (search box, above) already disables the
++    arrow for the same reason -- an overflow-hidden search entry would be
++    just as broken -- so this repeats that exact, already-established
++    local pattern rather than inventing a new one.
++    */
++    gtk_toolbar_set_show_arrow (GTK_TOOLBAR (editor_toolbar), FALSE);
++
++    /*
++    The Markdown formatting toolbar, in WebMarkus order:
++    B, I, U, H1, H2, H3, quote, list, code, image, link. Built with the
++    exact house tool-button pattern used above for btn_file_open/
++    btn_preview (gtk_tool_button_new(), gtk_widget_set_tooltip_text(),
++    gtk_widget_show(), gtk_container_add()). Symbol labels are deliberately
++    left untranslated; only the tooltips are. Image and link use themed GTK
++    icons. All buttons are packed into editor_toolbar, itself only ever inside
++    editor_box, so the whole row is shown/hidden together with the editor
++    pane by the SAME accel_toggle_editor() visibility toggle -- no
++    separate visibility logic is added or needed here.
++    */
++    GtkWidget *btn_bold = (GtkWidget *) gtk_tool_button_new (NULL, NULL);
++    GtkWidget *label_bold = gtk_label_new (NULL);
++    gtk_label_set_markup (GTK_LABEL (label_bold), "<b>B</b>");
++    gtk_widget_show (label_bold);
++    gtk_tool_button_set_label_widget (GTK_TOOL_BUTTON (btn_bold), label_bold);
++    gtk_widget_set_tooltip_text (btn_bold, _("Bold (**text**)"));
++    gtk_widget_show (btn_bold);
++    gtk_container_add (GTK_CONTAINER (editor_toolbar), btn_bold);
++
++    GtkWidget *btn_italic = (GtkWidget *) gtk_tool_button_new (NULL, NULL);
++    GtkWidget *label_italic = gtk_label_new (NULL);
++    gtk_label_set_markup (GTK_LABEL (label_italic), "<i>I</i>");
++    gtk_widget_show (label_italic);
++    gtk_tool_button_set_label_widget (GTK_TOOL_BUTTON (btn_italic), label_italic);
++    gtk_widget_set_tooltip_text (btn_italic, _("Italic (*text*)"));
++    gtk_widget_show (btn_italic);
++    gtk_container_add (GTK_CONTAINER (editor_toolbar), btn_italic);
++
++    GtkWidget *btn_underline = (GtkWidget *) gtk_tool_button_new (NULL, NULL);
++    GtkWidget *label_underline = gtk_label_new (NULL);
++    gtk_label_set_markup (GTK_LABEL (label_underline), "<u>U</u>");
++    gtk_widget_show (label_underline);
++    gtk_tool_button_set_label_widget (GTK_TOOL_BUTTON (btn_underline),
++                                      label_underline);
++    gtk_widget_set_tooltip_text (btn_underline, _("Underline (<u>text</u>)"));
++    gtk_widget_show (btn_underline);
++    gtk_container_add (GTK_CONTAINER (editor_toolbar), btn_underline);
++
++    GtkWidget *btn_heading1 = (GtkWidget *) gtk_tool_button_new (NULL, "H1");
++    gtk_widget_set_tooltip_text (btn_heading1, _("Heading 1 (# )"));
++    gtk_widget_show (btn_heading1);
++    gtk_container_add (GTK_CONTAINER (editor_toolbar), btn_heading1);
++
++    GtkWidget *btn_heading2 = (GtkWidget *) gtk_tool_button_new (NULL, "H2");
++    gtk_widget_set_tooltip_text (btn_heading2, _("Heading 2 (## )"));
++    gtk_widget_show (btn_heading2);
++    gtk_container_add (GTK_CONTAINER (editor_toolbar), btn_heading2);
++
++    GtkWidget *btn_heading3 = (GtkWidget *) gtk_tool_button_new (NULL, "H3");
++    gtk_widget_set_tooltip_text (btn_heading3, _("Heading 3 (### )"));
++    gtk_widget_show (btn_heading3);
++    gtk_container_add (GTK_CONTAINER (editor_toolbar), btn_heading3);
++
++    GtkWidget *btn_quote = (GtkWidget *) gtk_tool_button_new (NULL, "»");
++    gtk_widget_set_tooltip_text (btn_quote, _("Quote (> )"));
++    gtk_widget_show (btn_quote);
++    gtk_container_add (GTK_CONTAINER (editor_toolbar), btn_quote);
++
++    GtkWidget *btn_list = (GtkWidget *) gtk_tool_button_new (NULL, "•");
++    gtk_widget_set_tooltip_text (btn_list, _("List (- )"));
++    gtk_widget_show (btn_list);
++    gtk_container_add (GTK_CONTAINER (editor_toolbar), btn_list);
++
++    GtkWidget *btn_code = (GtkWidget *) gtk_tool_button_new (NULL, "` `");
++    gtk_widget_set_tooltip_text (btn_code,
++                                 _("Code (inline `code` or fenced block)"));
++    gtk_widget_show (btn_code);
++    gtk_container_add (GTK_CONTAINER (editor_toolbar), btn_code);
++
++    GtkWidget *btn_image = (GtkWidget *) gtk_tool_button_new
++    (gtk_image_new_from_icon_name ("insert-image",
++                                   GTK_ICON_SIZE_SMALL_TOOLBAR), NULL);
++    atk_object_set_name (gtk_widget_get_accessible (btn_image), _("Insert image"));
++    GtkWidget *btn_image_child = gtk_bin_get_child (GTK_BIN (btn_image));
++    atk_object_set_name (gtk_widget_get_accessible (btn_image_child),
++                         _("Insert image"));
++    gtk_widget_set_tooltip_text (btn_image, _("Insert image (![alt](URL))"));
++    gtk_widget_show (btn_image);
++    gtk_container_add (GTK_CONTAINER (editor_toolbar), btn_image);
++
++    GtkWidget *btn_link = (GtkWidget *) gtk_tool_button_new
++    (gtk_image_new_from_icon_name ("insert-link",
++                                   GTK_ICON_SIZE_SMALL_TOOLBAR), NULL);
++    atk_object_set_name (gtk_widget_get_accessible (btn_link), _("Insert link"));
++    GtkWidget *btn_link_child = gtk_bin_get_child (GTK_BIN (btn_link));
++    atk_object_set_name (gtk_widget_get_accessible (btn_link_child),
++                         _("Insert link"));
++    gtk_widget_set_tooltip_text (btn_link, _("Insert link ([text](URL))"));
++    gtk_widget_show (btn_link);
++    gtk_container_add (GTK_CONTAINER (editor_toolbar), btn_link);
++
++    editor_view = gtk_text_view_new ();
++    gtk_text_view_set_wrap_mode (GTK_TEXT_VIEW (editor_view), GTK_WRAP_WORD_CHAR);
++    gtk_text_view_set_monospace (GTK_TEXT_VIEW (editor_view), TRUE);
++
++    editor_scrolled = gtk_scrolled_window_new (NULL, NULL);
++    gtk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (editor_scrolled),
++                                         GTK_SHADOW_ETCHED_IN);
++    gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (editor_scrolled),
++                                    GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
++    gtk_container_add (GTK_CONTAINER (editor_scrolled), editor_view);
++    gtk_box_pack_start (GTK_BOX (editor_box), editor_scrolled, TRUE, TRUE, 0);
++
++    gtk_paned_pack1 (GTK_PANED (paned), editor_box, TRUE, FALSE);
++    gtk_paned_pack2 (GTK_PANED (paned), scrolled_mtx_viewer, TRUE, FALSE);
++    /*******************************************************************}}}
++    **********************************************************************/
++
+     /**********************************************************************
+     *                            Progress Box                             *
+     ******************************************************************{{{*/
+@@ -3187,17 +6259,63 @@ mtx_viewer_new (const gchar *base_dir,
+ 
+     status_bar = gtk_statusbar_new ();
+     gtk_widget_show (status_bar);
+-    gtk_box_pack_start (GTK_BOX (vbox), status_bar, FALSE, FALSE, 0);
++    /*
++    counter_label needs to sit beside status_bar, not inside the box
++    gtk_statusbar_get_message_area() returns. Empirically measured (and
++    confirmed against GTK3's own source, gtk/a11y/gtkstatusbaraccessible.c):
++    GtkStatusbarAccessible hardcodes get_n_children() to return 0
++    unconditionally -- by design, GtkStatusbar reports NO accessible
++    children at all, so any widget packed into its message area,
++    however correctly, is structurally unreachable to AT-SPI/pyatspi
++    tree traversal (verified with a live AT-SPI dump: the "status bar"
++    node's childCount is 0 even with a second widget really packed and
++    really showing on screen -- ruled out with a screenshot). Wrapping
++    status_bar in this thin status_row GtkBox (a plain GtkContainer,
++    fully AT-SPI-transparent, the same kind of box already used
++    everywhere else in this function) keeps the identical visual
++    result -- one thin bottom row, statusbar text on the left,
++    counter_label at the right edge via pack_end -- while making
++    counter_label a normal, independently discoverable accessible
++    object. gtk_statusbar_get_message_area() itself remains exactly
++    what it always was: public GTK3 API, unchanged since GTK 2.20, not
++    deprecated (statusbar_warn_pop() above already relies on it under
++    this same build's -DGTK_DISABLE_DEPRECATED); this file simply does
++    not ALSO use it as counter_label's parent.
++    */
++    status_row = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
++    gtk_widget_show (status_row);
++    gtk_box_pack_start (GTK_BOX (status_row), status_bar, TRUE, TRUE, 0);
++    gtk_box_pack_start (GTK_BOX (vbox), status_row, FALSE, FALSE, 0);
+ 
+     mvr = g_new0 (MtxViewer, 1);
+     mvr->window = mtx_viewer;
+     mvr->top_bar = top_bar;
+     mvr->status_bar = GTK_STATUSBAR (status_bar);
++    /*
++    counter_label: a dedicated widget that coexists alongside (never
++    instead of) whatever text is pushed onto
++    STATUSBAR_CTX_MAIN/LINK/WARN via gtk_statusbar_push()/_pop().
++    on_editor_buffer_changed() and mtx_viewer_editor_indicator_reset()
++    set/clear its text directly, so a burst of edit keystrokes never
++    grows the statusbar's push/pop stack, and the existing hover-link
++    push/pop (hovering_over_link(), STATUSBAR_CTX_LINK) keeps working
++    untouched -- it lives in status_row, a sibling of status_bar, not
++    inside status_bar itself; see the status_row comment above for why.
++    */
++    mvr->counter_label = gtk_label_new ("");
++    gtk_widget_show (mvr->counter_label);
++    gtk_box_pack_end (GTK_BOX (status_row), mvr->counter_label, FALSE,
++                      FALSE, 0);
+     mvr->btn_nav_back = btn_nav_back;
+     mvr->btn_nav_fore = btn_nav_fore;
+     mvr->btn_preview = btn_preview;
++    mvr->btn_toggle_editor = btn_toggle_editor;
+     mvr->combo_toc = combo_toc;
+     mvr->text_view = text_view;
++    mvr->paned = paned;
++    mvr->editor_toolbar = editor_toolbar;
++    mvr->editor_scrolled = editor_scrolled;
++    mvr->editor_view = editor_view;
+     mvr->text_search = search_entry;
+     mvr->backing_fd = g_file_open_tmp (PROGNAME "_backing_XXXXXX.md",
+                                        &mvr->backing_file, NULL);
+@@ -3233,6 +6351,8 @@ mtx_viewer_new (const gchar *base_dir,
+     on_new_text_buffer (text_view, mvr);
+     g_signal_connect (btn_file_open, "clicked", G_CALLBACK (file_open_clicked),
+                       mvr);
++    g_signal_connect (btn_new_page, "clicked", G_CALLBACK (new_page_clicked),
++                      mvr);
+     g_signal_connect (btn_nav_back, "clicked", G_CALLBACK (nav_back_clicked),
+                       mvr);
+     g_signal_connect (btn_nav_fore, "clicked", G_CALLBACK (nav_fore_clicked),
+@@ -3241,6 +6361,57 @@ mtx_viewer_new (const gchar *base_dir,
+                       mvr);
+     g_signal_connect (btn_preview, "clicked", G_CALLBACK (preview_clicked),
+                       mvr);
++    g_signal_connect (btn_export, "clicked", G_CALLBACK (export_clicked),
++                      mvr);
++    g_signal_connect (btn_toggle_editor, "clicked",
++                      G_CALLBACK (toggle_editor_clicked), mvr);
++    g_signal_connect (btn_edit_external, "clicked",
++                      G_CALLBACK (edit_external_clicked), mvr);
++    /* The 11-button formatting toolbar: one traceable "clicked"
++       connection per button, each to its own thin wrapper defined above
++       mtx_viewer_new(). */
++    g_signal_connect (btn_bold, "clicked", G_CALLBACK (editor_bold_clicked),
++                      mvr);
++    g_signal_connect (btn_italic, "clicked",
++                      G_CALLBACK (editor_italic_clicked), mvr);
++    g_signal_connect (btn_heading1, "clicked",
++                      G_CALLBACK (editor_heading1_clicked), mvr);
++    g_signal_connect (btn_heading2, "clicked",
++                      G_CALLBACK (editor_heading2_clicked), mvr);
++    g_signal_connect (btn_heading3, "clicked",
++                      G_CALLBACK (editor_heading3_clicked), mvr);
++    g_signal_connect (btn_quote, "clicked", G_CALLBACK (editor_quote_clicked),
++                      mvr);
++    g_signal_connect (btn_list, "clicked", G_CALLBACK (editor_list_clicked),
++                      mvr);
++    g_signal_connect (btn_code, "clicked", G_CALLBACK (editor_code_clicked),
++                      mvr);
++    g_signal_connect (btn_underline, "clicked",
++                      G_CALLBACK (editor_underline_clicked), mvr);
++    g_signal_connect (btn_link, "clicked", G_CALLBACK (editor_link_clicked),
++                      mvr);
++    g_signal_connect (btn_image, "clicked", G_CALLBACK (editor_image_clicked),
++                      mvr);
++    /*
++    Connected exactly once, here, so g_signal_handlers_block_by_func()/
++    _unblock_by_func() -- used at both programmatic
++    gtk_text_buffer_set_text() call sites in accel_toggle_editor(), per
++    the HANDOFF(todo 12) comments -- can find this exact function
++    pointer unambiguously.
++    */
++    g_signal_connect (gtk_text_view_get_buffer (GTK_TEXT_VIEW (editor_view)),
++                      "changed", G_CALLBACK (on_editor_buffer_changed), mvr);
++    /*
++    STRICTLY ONE-WAY (editor -> preview): connect only here, to the
++    editor's own vertical adjustment -- never to scrolled_mtx_viewer's.
++    See on_editor_scroll_value_changed() above for why this single
++    connection is also the reason the sync is loop-safe without a
++    re-entrancy flag.
++    */
++    GtkAdjustment *editor_vadj = gtk_scrolled_window_get_vadjustment
++    (GTK_SCROLLED_WINDOW (editor_scrolled));
++    g_signal_connect (editor_vadj, "value-changed",
++                      G_CALLBACK (on_editor_scroll_value_changed), mvr);
+     g_signal_connect (combo_toc, "changed", G_CALLBACK (on_toc_changed), mvr);
+     g_signal_connect (search_entry, "activate",
+                       G_CALLBACK (search_entry_activate), mvr);
+@@ -3249,6 +6420,17 @@ mtx_viewer_new (const gchar *base_dir,
+     g_signal_connect (btn_cancel_loading, "clicked", G_CALLBACK
+                       (cancel_loading_clicked), mvr);
+ 
++    /*
++    | Accelerator | Behavior when editor has focus |
++    | --- | --- |
++    | `Escape` | Guarded by todo 21's dialog (already wired) — must NOT destroy the window directly while bypassing that guard |
++    | `Ctrl+E` | **BLOCKED entirely while the editor pane is open** — spawning an external editor on the exact file the built-in editor is holding creates the two-writer conflict todo 20 exists to catch; show a brief statusbar explanation of why it's blocked |
++    | `Ctrl+F` / `Ctrl+B` / `Ctrl+Shift+F` / `Ctrl+Shift+B` / `Alt+S` | **ALLOWED, but act on the PREVIEW only** (search-in-editor is explicitly out of scope for this whole plan) — confirm this is ALREADY the case by construction (these accelerators' existing callbacks operate on `mvr->text_view`/the preview, never the editor view) rather than assuming; if focus-stealing behavior (e.g. `Alt+S` grabbing focus to the search entry) has any unwanted interaction with the editor's dirty state or in-flight render, verify there is none |
++    | `Alt+H` / `Alt+F` / `Alt+B` / `Alt+P` / `Alt+T` / `Ctrl+O` / `F1` | **ALLOWED** — each is already routed through todo 21's dirty guard (since they're 6 of the 9-11 guarded call sites) and todo 17's in-progress guard; confirm both guards are genuinely in the call path for each of these seven, don't just assume |
++    | `Alt+X` | No-op for editor renders BY DESIGN (todo 17 deliberately does not wire editor renders into the progress-logger/cancel-loading machinery) — confirm `accel_cancel_loading` genuinely has no effect on an editor render (it shouldn't touch `editor_render_in_flight` at all) and this is not a bug, just document it explicitly |
++    | `F2` | Toggle (already implemented, todo 9) |
++    | `Ctrl+S` | Save (already implemented, todo 19/20) |
++    */
+     accel = gtk_accel_group_new ();
+     gtk_accel_group_connect (accel, gdk_keyval_from_name ("F1"),
+                              0, 0,
+@@ -3303,10 +6485,22 @@ mtx_viewer_new (const gchar *base_dir,
+                              GDK_CONTROL_MASK, 0,
+                              g_cclosure_new (G_CALLBACK (accel_file_open), mvr,
+                                              NULL));
++    gtk_accel_group_connect (accel, gdk_keyval_from_name ("n"),
++                             GDK_CONTROL_MASK, 0,
++                             g_cclosure_new (G_CALLBACK (accel_new_page), mvr,
++                                             NULL));
++    gtk_accel_group_connect (accel, gdk_keyval_from_name ("s"),
++                             GDK_CONTROL_MASK, 0,
++                             g_cclosure_new (G_CALLBACK (accel_save_editor),
++                                             mvr, NULL));
+     gtk_accel_group_connect (accel, gdk_keyval_from_name ("x"),
+                              GDK_MOD1_MASK, 0,
+                              g_cclosure_new (G_CALLBACK (accel_cancel_loading),
+                                              mvr, NULL));
++    gtk_accel_group_connect (accel, gdk_keyval_from_name ("F2"),
++                             0, 0,
++                             g_cclosure_new (G_CALLBACK (accel_toggle_editor),
++                                             mvr, NULL));
+     gtk_window_add_accel_group (GTK_WINDOW (mtx_viewer), accel);
+ 
+     /* build data search path */
+@@ -3356,11 +6550,14 @@ mtx_viewer_new (const gchar *base_dir,
+         mtx_text_view_set_image_directory (text_view, ".");
+     }
+ 
++    /* Intentional exception: signal-driven shutdown has no interactive
++       context in which it can safely prompt about unsaved editor contents. */
+     (void) g_unix_signal_add (SIGINT, mtx_viewer_destroy, mvr);
+     (void) g_unix_signal_add (SIGTERM, mtx_viewer_destroy, mvr);
+ 
+     gtk_widget_show_all (mvr->window);
+     gtk_widget_set_visible (progress_box, FALSE);
++    gtk_widget_set_visible (editor_box, FALSE);
+     {
+         gchar b[2] = {0};
+         for (b[0] = '6'; b[0] >= '0'; b[0]--)
+@@ -3390,4 +6587,3 @@ mtx_viewer_new (const gchar *base_dir,
+ 
+     return mvr;
+ }
+-
+diff --git a/src/mtxviewer.h b/src/mtxviewer.h
+index 70596ed..fbaa80b 100644
+--- a/src/mtxviewer.h
++++ b/src/mtxviewer.h
+@@ -76,7 +76,7 @@ struct _MtxViewer
+     GtkWidget *top_bar;
+     GtkStatusbar *status_bar;
+ 
+-    GtkWidget *btn_nav_back, *btn_nav_fore, *btn_preview;
++    GtkWidget *btn_nav_back, *btn_nav_fore, *btn_preview, *btn_toggle_editor;
+     GtkWidget *combo_toc;
+     MtxTextView *text_view;
+     GtkWidget *text_search;
+@@ -97,6 +97,24 @@ struct _MtxViewer
+     const gchar * const *data_dirs;
+     gchar *failed_file;              /* the current_file that failed to load */
+ 
++    GtkWidget *paned;
++    GtkWidget *editor_view;
++    GtkWidget *editor_scrolled;
++    GtkWidget *editor_toolbar;
++    GtkWidget *counter_label;
++    gchar *editor_path;              /* canonical absolute save target */
++    gchar *editor_referrer;
++    gchar *editor_reveal_file;
++    gint64 editor_mtime;
++    goffset editor_size;
++    gboolean editor_dirty;
++    gboolean editor_render_in_flight;
++    gboolean editor_render_pending;
++    gboolean editor_suppress_render;
++    guint editor_debounce_id;
++    gint editor_saved_curpos;
++    gdouble editor_saved_scroll;
++
+     GQueue *nav_trail;
+     gpointer *nav_trail_page;        /* the page being displayed */
+     gint nav_trail_page_idx;
+@@ -128,4 +146,3 @@ mtx_viewer_new (const gchar *base_dir,
+ G_END_DECLS
+ 
+ #endif /* __MTX_VIEWER_H__ */
+-
