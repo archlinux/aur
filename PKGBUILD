@@ -6,7 +6,7 @@
 # (halley-git provides=halley).
 
 pkgname=halley-full
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Metapackage: the full Halley Wayland desktop (compositor, launcher, portal)"
 arch=('any')
@@ -18,16 +18,15 @@ depends=(
   'xdg-desktop-portal-halley'
 )
 optdepends=(
-  'xwayland-satellite: X11 application support'
+  'xorg-xwayland: X11 application support'
   'xdg-desktop-portal-gtk: fallback backend for common file/dialog portals'
   'fuzzel: alternative launcher'
-  'ghostty: terminal for the default open-terminal binding'
-  'kitty: terminal for the default open-terminal binding'
-  'foot: terminal for the default open-terminal binding'
-  'wezterm: terminal for the default open-terminal binding'
-  'alacritty: terminal for the default open-terminal binding'
+  'ghostty: terminal for the default-terminal binding'
+  'kitty: terminal for the default-terminal binding'
+  'foot: terminal for the default-terminal binding'
+  'wezterm: terminal for the default-terminal binding'
+  'alacritty: terminal for the default-terminal binding'
   'wireplumber: provides wpctl for default media-key bindings'
-  'gamescope: game launch wrapping through halleyctl gamescope'
 )
 
 package() {
