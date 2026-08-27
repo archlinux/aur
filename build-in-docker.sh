@@ -44,7 +44,7 @@ sudo -u yay git clone https://aur@aur.archlinux.org/ferdium-bin.git
 cd /tmp/ferdium-bin
 EOF
 cat << 'EOF' >> tempscript.sh
-sed -i -e "s/^pkgverorg=.*/pkgverorg='${newpkgverorg}'/g" PKGBUILD
+sed -i -e "s/^_pkgverorg=.*/_pkgverorg='${newpkgverorg}'/g" PKGBUILD
 sed -i -e "s/^pkgver=.*/pkgver='${newpkgver}'/g" PKGBUILD
 EOF
 cat << EOF >> tempscript.sh
