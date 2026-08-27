@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastwc"
 license=('Apache-2.0')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('rustup')
 provides=('fastwc')
 conflicts=('fastwc-bin')
 source=("fastwc-$pkgver.tar.gz::https://github.com/CallMeAlphabet/fastwc/archive/refs/tags/latest.tar.gz")
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
     cd "$srcdir/build"
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
