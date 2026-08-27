@@ -7,6 +7,7 @@ pkgbase = innoextract-crazy-max
 	license = ZLIB
 	makedepends = boost
 	makedepends = cmake
+	makedepends = git
 	depends = boost-libs
 	depends = xz
 	provides = innoextract
