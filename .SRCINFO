@@ -1,6 +1,6 @@
 pkgbase = eddie-cli
 	pkgdesc = Eddie - VPN tunnel - CLI
-	pkgver = v2.26.2
+	pkgver = 2.26.2
 	pkgrel = 1
 	url = https://eddie.website
 	install = eddie-cli.install
@@ -23,7 +23,7 @@ pkgbase = eddie-cli
 	conflicts = airvpn-beta-bin
 	conflicts = airvpn-git
 	options = !strip
-	source = https://github.com/AirVPN/Eddie/archive/v2.26.2.tar.gz
+	source = https://github.com/AirVPN/Eddie/archive/2.26.2.tar.gz
 	sha1sums = 077f820a53469a0737fd2d1dd7c043708398f21f
 
 pkgname = eddie-cli
