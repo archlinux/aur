@@ -9,7 +9,7 @@ fastpotify setup:
   Closing the window keeps the music playing in the system tray; quit from
   the tray menu or with Ctrl+Q.
 
-Docs: https://crmne.github.io/fastpotify/
+Docs: https://fastpotify.rocks/
 EOF2
 }
 
