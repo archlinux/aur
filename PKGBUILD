@@ -12,7 +12,7 @@ groups=(mingw-w64-coin-or)
 source=("https://github.com/coin-or/CoinUtils/archive/refs/tags/releases/${pkgver}.tar.gz")
 sha256sums=('ddfea48e10209215748bc9f90a8c04abbb912b662c1aefaf280018d0a181ef79')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd CoinUtils-releases-$pkgver
