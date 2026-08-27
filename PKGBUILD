@@ -5,14 +5,14 @@ _pkgname='ferdium'
 pkgname="ferdium-git"
 _electron='electron43'
 _electronpackage='electron43'
-pkgver='7.1.3.nightly.10.r7192.21a359a6b'
-pkgrel='1'
+pkgver=7.2.3.nightly.1.r7241.cb17c9e25
+pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest commit).'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
-license=('Apache')
-depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy' "$_electronpackage")
-appbranch='develop'
+license=('Apache-2.0')
+depends=('electron43' 'hicolor-icon-theme')
+_appbranch='develop'
 makedepends=('nvm' 'git' 'python' 'libxcrypt-compat' 'asar')
 options=(!strip !debug)
 provides=(
@@ -28,16 +28,13 @@ conflicts=(
     'ferdium-electron'
 )
 source=(
-	"$pkgname::git+https://github.com/ferdium/ferdium-app#branch=${appbranch}"
+	"$pkgname::git+https://github.com/ferdium/ferdium-app#branch=${_appbranch}"
 )
 sha512sums=('SKIP')
 
 _sourcedirectory="$pkgname"
 
 case "$CARCH" in
-	i686)
-		_electronbuilderarch='ia32'
-	;;
 	armv7h)
 		_electronbuilderarch='armv7l'
 	;;
@@ -52,7 +49,7 @@ esac
 prepare() {
 	# Due to patches and sed's, reset the code to upstream before starting
 	cd "$srcdir/$_sourcedirectory/"
-	git reset --hard origin/"${appbranch}"
+	git reset --hard origin/"${_appbranch}"
 
 	# Initialise the recipes submodule
 	git submodule init
