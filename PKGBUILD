@@ -3,7 +3,7 @@
 # Contributor: vryali@gmail.com
 pkgname=google-chat-linux
 _pkgname='Google Chat Linux'
-pkgver=5.39.26_1
+pkgver=5.39.27_2
 _electronversion=39
 _nodeversion=22
 pkgrel=2
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('0a48bcc4474e4d6061b536bb557ea465c9ba8307367c6fc1f60de5f7e59d2b16'
+sha256sums=('14f669e2c86b555a46e439312a18a44af2346aec0521d969087c5f450159d677'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
