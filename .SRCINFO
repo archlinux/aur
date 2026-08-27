@@ -1,6 +1,6 @@
 pkgbase = trae
 	pkgdesc = AI-powered IDE by ByteDance
-	pkgver = 2.3.61406
+	pkgver = 2.3.73738
 	pkgrel = 1
 	url = https://www.trae.cn/
 	install = trae.install
@@ -25,9 +25,9 @@ pkgbase = trae
 	source = trae.desktop
 	b2sums = 2331b0d37fff8478ea37cbf9e5c2e70a59631aae6efb44741fc6c1a8dce65557098e9dffa8c30148ef27432802bec3d1eda279021421e5d3f979e80900662726
 	b2sums = 656c5d6bea6ef15185e0d8ee0181276f6de3bfae8e66a2c65772a5f1354727952dd020dca057246139a2bab8f4805057fa2db367a6ba0a1b90d9ffd7fcab8412
-	source_x86_64 = Trae-linux-x64-2.3.61406-1.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.61406/linux/Trae-linux-x64.tar.gz
-	b2sums_x86_64 = a0507fb189820a341e56550eaee5692a94aa354932b8e702e27278e5f5866bd62e52def378ffdd11ec55d20de3cc9c87dba6f125723c741c9662917c0f7c3cfe
-	source_aarch64 = Trae-linux-arm64-2.3.61406-1.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.61406/linux/Trae-linux-arm64.tar.gz
-	b2sums_aarch64 = 12b2ba04ba2c354194a5907870e33714c311503b4fc28fd4d65a7cf63064d4929cf86a135abd5a213f68fddd31263f70e83bbed6f6b80e99629cdf3ee0d5ecb8
+	source_x86_64 = Trae-linux-x64-2.3.73738-1.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.73738/linux/TraeCode-linux-x64.tar.gz
+	b2sums_x86_64 = 8f61879518a2ac7332163854f2ff58e591577e18640687cac8a553cc08fac00d9687cfc6af71ce943690ac41e5a31ec0e90f4a968d0bca454cb4809b0cd21618
+	source_aarch64 = Trae-linux-arm64-2.3.73738-1.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.73738/linux/TraeCode-linux-arm64.tar.gz
+	b2sums_aarch64 = bca4ef9932b41d98f7fca05d50256d0d5ee7efe92d9a74f5217e234a3935dd9b7f840e1970d1edf777853e7c66a262d28aebea7219a73b9a7671992ad4df3753
 
 pkgname = trae
