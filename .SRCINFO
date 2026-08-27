@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	pkgdesc = GTK4 desktop icons extension fork for GNOME Shell 49, 50, with Desktop Widget support
-	pkgver = 100.27
+	pkgver = 100.28
 	pkgrel = 1
 	url = https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = gnome-shell-extension-gtk4-desktop-icons-ng
 	conflicts = gnome-shell-extension-desktop-icons-ng
 	conflicts = gnome-shell-extension-desktop-icons-ng-git
 	conflicts = gnome-shell-extension-desktop-icons
-	source = git+https://gitlab.com/smedius/desktop-icons-ng.git#commit=37e79398663bd82bbbf5ee9e6e76753c0da9b5de
+	source = git+https://gitlab.com/smedius/desktop-icons-ng.git#commit=79e826e7c3f94892dbec0561195afc420a3f9fe3
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-gtk4-desktop-icons-ng
