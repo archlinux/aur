@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=vnt-git
-pkgver=2.0.4.r0.g4314b41
+pkgver=2.0.4.r2.g0f57ab9
 pkgrel=1
 pkgdesc="A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具"
 arch=($CARCH)
@@ -12,7 +12,6 @@ conflicts=(${pkgname%-git})
 replaces=()
 depends=(
     libgcc
-    glibc
 )
 makedepends=(
     git
@@ -84,6 +83,8 @@ package() {
         -executable \
         -type f \
         -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
+
+    install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 
     # systemd 服务: vnt2_cli 组网客户端（核心守护进程）
     install -Dvm644 /dev/stdin "${pkgdir}/usr/lib/systemd/system/vnt2-cli.service" <<EOF
