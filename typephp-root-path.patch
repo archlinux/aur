@@ -1,0 +1,14 @@
+diff --git a/src/compiler.php b/src/compiler.php
+index 83bfd51..a3a3dbf 100644
+--- a/src/compiler.php
++++ b/src/compiler.php
+@@ -23,7 +23,8 @@ function main(int $argc, array $argv): void
+     // in bin/bootstrap.php. The AOT compiler starts here directly and therefore
+     // must load the dependencies packaged alongside tpc itself.
+     if (!defined('TYPEPHP_PHP_SCRIPT_ENTRY')) {
+-        require_once TYPEPHP_ROOT_PATH . '/vendor/autoload.php';
++        $compilerRoot = dirname(realpath($argv[0]) ?: $argv[0]);
++        require_once $compilerRoot . '/vendor/autoload.php';
+     }
+ 
+     $completionStatus = CompletionCommand::execute($argv);
