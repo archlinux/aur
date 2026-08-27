@@ -2,7 +2,7 @@
 pkgname=ente-auth
 _app_id=io.ente.auth
 pkgver=4.4.25
-pkgrel=2
+pkgrel=3
 _flutter_ver=3.38.10
 pkgdesc="Open source 2FA authenticator, with end-to-end encrypted backups"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ makedepends=(
   'fvm'
   'git'
   'imagemagick'
-  'java-environment=17'
+  'java-environment'
   'ninja'
   'patchelf'
   'unzip'
