@@ -1,6 +1,6 @@
 pkgbase = mcpp-bin
 	pkgdesc = Modern C++ build & package management tool (prebuilt binary)
-	pkgver = 2026.8.27.2
+	pkgver = 2026.8.28.1
 	pkgrel = 1
 	url = https://github.com/mcpp-community/mcpp
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = mcpp-bin
 	options = !strip
 	source = mcpp.sh
 	sha256sums = SKIP
-	source_x86_64 = mcpp-2026.8.27.2-linux-x86_64.tar.gz::https://github.com/mcpp-community/mcpp/releases/download/v2026.8.27.2/mcpp-2026.8.27.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = aea30cb4894bf0099f7903ce9ccaf02dbb019e6c24825f78d65de5de306751a9
-	source_aarch64 = mcpp-2026.8.27.2-linux-aarch64.tar.gz::https://github.com/mcpp-community/mcpp/releases/download/v2026.8.27.2/mcpp-2026.8.27.2-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 3dc7e0926f337aea6bdd3f8ddd1b987897901abf4f9990d9da6c3c67696a9c34
+	source_x86_64 = mcpp-2026.8.28.1-linux-x86_64.tar.gz::https://github.com/mcpp-community/mcpp/releases/download/v2026.8.28.1/mcpp-2026.8.28.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9e55c8b41cc2ec479807095f6fb39dca11a3ed41b686ffa905ca5f8bb8e34ee9
+	source_aarch64 = mcpp-2026.8.28.1-linux-aarch64.tar.gz::https://github.com/mcpp-community/mcpp/releases/download/v2026.8.28.1/mcpp-2026.8.28.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 27b5d988ff94d2edddb12269571a2bcd3e18c3f294e2439483fff5c35d2e3b6e
 
 pkgname = mcpp-bin
