@@ -45,6 +45,7 @@ options=('!lto')
 optdepends=(
   'wtype: Wayland support'
   'xdotool: X11 support'
+  'kwtype-git: Virtual input support for KDE Plasma'
 )
 
 source=(
