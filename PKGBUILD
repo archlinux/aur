@@ -9,7 +9,7 @@
 pkgname=('clang-prefixed-release')
 #pkgver=15.0.7
 _pkgver=23.1.0
-_pkg_suffix=rc3
+_pkg_suffix=
 _pkgver_suffix=${_pkgver}
 _pkgver_dash_suffix=${_pkgver}
 if [[ -n ${_pkg_suffix} ]]; then
@@ -29,7 +29,7 @@ pkgdesc="Up to date official clang releases installed at /opt/clang/latest to av
 
 # stable
 source=("https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${_pkgver_dash_suffix}.tar.gz")
-sha512sums=('9bc285303506a99a6bf7807daf57086ae36bc5d311ddb12b38b4c7d4409b8e19ef134835bc2b90e07100884ce705c28869694b06229d344a76ae2f1d157691e3')
+sha512sums=('3167e55b7a9f823f4028ef62f214bd863e8a2920df72ac187c1d12364869e0b336025cdd72dbd5cc68e816101a93a3e02e704b7de2dd52db5af649c04f0cc783')
 install=clang.install
 static_build=false
 build_with_gcc=false
@@ -37,31 +37,45 @@ build_with_gcc=false
 prefix_path="/opt/clang"
 install_path="${prefix_path}/${pkgver}"
 
+# errored out over asan test suite; introduced to attempt to avoid libfuzzer linker breakage
+#-DCOMPILER_RT_SANITIZERS_TO_BUILD="asan;msan;tsan;ubsan;safestack;cfi"
+# too damn slow
+#-DLLVM_ENABLE_LTO=Thin \
+# both modules and thinlto barf with gcc
+# -DLLVM_ENABLE_MODULES=ON now barfs when compiling with clang 18, complaining about missing symbols
+#build_with_clang_options=' \
+#			-DLLVM_BINUTILS_INCDIR=/usr/include \
+#            -DLLVM_ENABLE_LLD=ON \
+#            -DCMAKE_C_COMPILER=clang \
+#            -DCMAKE_CXX_COMPILER=clang++ \
+#            -DCMAKE_LINKER=lld \
+#            -DCLANG_DEFAULT_LINKER=lld \
+#            -DRUNTIMES_CMAKE_ARGS="-DLLVM_USE_LINKER=lld -DCMAKE_SHARED_LINKER_FLAGS='-fuse-ld=lld';-DCMAKE_EXE_LINKER_FLAGS='-fuse-ld=lld';-DLLVM_USE_LINKER=lld" \
+#            -DLLVM_ENABLE_LTO=Thin \
+#            -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+#            -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+#            -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
+#	'
+
+build_with_clang_options=(
+    -DLLVM_BINUTILS_INCDIR=/usr/include
+    -DLLVM_ENABLE_LLD=ON
+    -DCMAKE_C_COMPILER=clang
+    -DCMAKE_CXX_COMPILER=clang++
+    -DCMAKE_LINKER=lld
+    -DCLANG_DEFAULT_LINKER=lld
+    '-DRUNTIMES_CMAKE_ARGS=-DLLVM_USE_LINKER=lld;-DCMAKE_SHARED_LINKER_FLAGS=-fuse-ld=lld;-DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=lld'
+    -DCMAKE_EXE_LINKER_FLAGS_INIT=-fuse-ld=lld
+    -DCMAKE_SHARED_LINKER_FLAGS_INIT=-fuse-ld=lld
+    -DCMAKE_MODULE_LINKER_FLAGS_INIT=-fuse-ld=lld
+)
+
 shared_library_build_options=" \
             -DCMAKE_EXE_LINKER_FLAGS=-Wl,-Bsymbolic-functions \
             -DCMAKE_SHARED_LINKER_FLAGS=-Wl,-Bsymbolic-functions \
             -DLLVM_LINK_LLVM_DYLIB=ON \
             -DCLANG_LINK_CLANG_DYLIB=ON \
 	"
-
-# too damn slow
-#-DLLVM_ENABLE_LTO=Thin \
-# both modules and thinlto barf with gcc
-# -DLLVM_ENABLE_MODULES=ON now barfs when compiling with clang 18, complaining about missing symbols
-build_with_clang_options=' \
-			-DLLVM_BINUTILS_INCDIR=/usr/include \
-            -DLLVM_ENABLE_LLD=ON \
-            -DCMAKE_C_COMPILER=clang \
-            -DCMAKE_CXX_COMPILER=clang++ \
-            -DCMAKE_LINKER=lld \
-            -DCLANG_DEFAULT_LINKER=lld \
-            -DCOMPILER_RT_SANITIZERS_TO_BUILD="asan;msan;tsan;ubsan;safestack;cfi"
-            -DRUNTIMES_CMAKE_ARGS="-DLLVM_USE_LINKER=lld -DCMAKE_SHARED_LINKER_FLAGS='-fuse-ld=lld';-DCMAKE_EXE_LINKER_FLAGS='-fuse-ld=lld';-DLLVM_USE_LINKER=lld" \
-            -DLLVM_ENABLE_LTO=Thin \
-            -DCMAKE_EXE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-            -DCMAKE_SHARED_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-            -DCMAKE_MODULE_LINKER_FLAGS_INIT="-fuse-ld=lld" \
-	'
 
 _prepare_install_script() {
 	cp ${startdir}/.clang.install ${startdir}/clang.install
@@ -91,8 +105,11 @@ build() {
       			-DCMAKE_C_FLAGS_RELEASE="${CFLAGS} -march=native" \
 			      -DCMAKE_CXX_FLAGS_RELEASE="${CXXFLAGS} -march=native" \
             -GNinja \
+            -DLLVM_USE_SPLIT_DWARF=ON \
+            -DCMAKE_JOB_POOLS="link_pool=2" \
+            -DCMAKE_JOB_POOL_LINK=link_pool \
             -DCMAKE_INSTALL_PREFIX:PATH=${install_path} \
-            ${build_with_clang_options} \
+            ${build_with_clang_options[@]} \
             ${shared_library_build_options} \
             -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra;lld;lldb;mlir;polly;bolt" \
             -DLLVM_ENABLE_RUNTIMES="compiler-rt;libc;libcxx;libcxxabi;libunwind;openmp" \
