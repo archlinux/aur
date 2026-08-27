@@ -1,6 +1,6 @@
 # Maintainer: creations <creations@creations.works>
 pkgname=grabit-git
-pkgver=0.6.1.r247.gafa31b6
+pkgver=0.6.1.r262.g3cd5c06
 pkgrel=1
 pkgdesc="Screenshot, screen-recording, OCR, and uploader for wlroots and KDE Plasma 6 Wayland compositors (git)"
 arch=('x86_64' 'aarch64')
