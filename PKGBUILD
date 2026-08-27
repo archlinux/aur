@@ -1,14 +1,14 @@
 # Maintainer teuto.net <aur@teuto.net>
 
 pkgname=k9s-flux
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A k9s plugin which provides basic flux commands."
 license=('APACHE')
 arch=('x86_64')
 depends=('kubectl' 'k9s' 'fluxcd')
 source=("$pkgname-plugins.yaml")
-sha512sums=('0e150b752f57991625fc15d9b45cec05365beb32bc549ffe3f74e86a603d599b8effe86041600df50e341e30fbc4871eaa0035ded179331c2b0570bb8e7f88a6')
+sha512sums=('658344ceb37ae005ceee274dff6d696ea14c623d2af8e257cc039c46916f2e6bdfae8a20b327fb49a4b0656570c41a16004ebabd2fd39961ba44354ee6df9579')
 
 package() {
 

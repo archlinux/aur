@@ -12,7 +12,7 @@ plugins:
       - |
         flux -n $NAMESPACE suspend helmrelease $NAME
         flux -n $NAMESPACE resume helmrelease $NAME
-        flux -n $NAMESPACE reconcile helmrelease $NAME --with-source
+        flux -n $NAMESPACE reconcile helmrelease $NAME --with-source --reset
   flux-kustomization-reconcile:
     shortCut: r
     confirm: false
