@@ -1,0 +1,4 @@
+[python-purepdb]
+source = "git"
+git = "https://github.com/danielplohmann/purepdb.git"
+prefix = "v"
