@@ -1,13 +1,13 @@
 pkgbase = dam
 	pkgdesc = Developer CLI for tracking, snapshotting, and restoring project state
-	pkgver = 0.6.0
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/OneAM-Labs/dam
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
 	depends = glibc
-	source = dam-0.6.0.tar.gz::https://github.com/OneAM-Labs/dam/archive/refs/tags/v0.6.0.tar.gz
-	sha256sums = af5473a2683bc007f74678ef1d3d65bfaac622b87eba65d4f30bbffa8204c955
+	source = dam-0.6.2.tar.gz::https://github.com/OneAM-Labs/dam/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = 41544c6c3f0d074088364989f9fb39ab4ef15ce111f9202d284b95d2a3ba00fd
 
 pkgname = dam
