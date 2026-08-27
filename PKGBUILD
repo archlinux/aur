@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nerimity-desktop
 _pkgname=Nerimity
-pkgver=2.3.1
-_electronversion=43
+pkgver=2.3.2
+_electronversion=44
 _nodeversion=24
 pkgrel=1
 pkgdesc="A modern and sleek chat app.(Use system-wide electron)"
@@ -26,7 +26,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('6398dd3a396483cce784e5fe914d259ed1c7211f367a79eddd214022b2447604'
+sha256sums=('ca2aa6e327609fe5099842e1f864dc2c6264bd2604efe22b9d9f822a71a66862'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
