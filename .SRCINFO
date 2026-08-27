@@ -1,0 +1,17 @@
+pkgbase = tailcat-git
+	pkgdesc = like netcat, but over Tailscale's data plane, without Tailscale's control plane
+	pkgver = c04c5afee
+	pkgrel = 1
+	url = https://github.com/tailscale/tailcat
+	arch = aarch64
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = tailcat
+	conflicts = tailcat
+	source = tailcat-git::git+https://github.com/tailscale/tailcat.git
+	sha256sums = SKIP
+
+pkgname = tailcat-git
