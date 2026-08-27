@@ -1,6 +1,6 @@
 pkgbase = gruvbox-plus-icon-theme
 	pkgdesc = Icon theme based on Gruvbox color scheme
-	pkgver = 6.5.0
+	pkgver = 6.6.0
 	pkgrel = 1
 	url = https://github.com/SylEleuth/gruvbox-plus-icon-pack
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = gruvbox-plus-icon-theme
 	conflicts = gruvbox-plus-icon-theme-git
 	options = !strip
 	options = !emptydirs
-	source = gruvbox-plus-icon-theme-6.5.0.tar.gz::https://github.com/SylEleuth/gruvbox-plus-icon-pack/archive/v6.5.0.tar.gz
-	sha256sums = 953df8b42e12488014db9c539de54188549fe587081c3c495fc47cee4e26d45f
+	source = gruvbox-plus-icon-theme-6.6.0.tar.gz::https://github.com/SylEleuth/gruvbox-plus-icon-pack/archive/v6.6.0.tar.gz
+	sha256sums = 053d3985d326b4e5d6ba47890931b81a0de093c7d0cb5c798ab4be032f56b57f
 
 pkgname = gruvbox-plus-icon-theme
