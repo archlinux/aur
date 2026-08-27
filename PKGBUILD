@@ -2,7 +2,7 @@
 pkgname=note-gen
 _pkgname=note-gen
 pkgver=0.36.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform Markdown note-taking application with AI integration (X11/Wayland compatible)"
 arch=('x86_64')
 url="https://github.com/codexu/note-gen"
@@ -23,6 +23,42 @@ prepare() {
     # Set up build environment
     export npm_config_build_from_source=true
     export CARGO_HOME="$srcdir/.cargo"
+
+    # Approve dependency build scripts: pnpm 10 blocks them silently,
+    # pnpm 11 (strictDepBuilds) fails the install outright with
+    # ERR_PNPM_IGNORED_BUILDS. Upstream ships no pnpm-workspace.yaml.
+    cat > pnpm-workspace.yaml <<'EOF'
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - unrs-resolver
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+EOF
+
+    # libspa-sys 0.8.0 pins bindgen 0.69, which cannot lay out
+    # spa_pod_builder from pipewire >= 1.6 headers and emits an opaque
+    # type, breaking the libspa 0.8.0 build. Vendor the crate with the
+    # bindgen requirement bumped until upstream moves xcap (=0.6.0)
+    # past pipewire-rs 0.8.
+    cd src-tauri
+    cargo fetch
+    local reg
+    for reg in "$CARGO_HOME"/registry/src/*/; do
+        if [ -d "${reg}libspa-sys-0.8.0" ]; then
+            rm -rf vendor
+            mkdir -p vendor
+            cp -r "${reg}libspa-sys-0.8.0" vendor/libspa-sys
+            rm -f vendor/libspa-sys/.cargo-checksum.json
+            sed -i 's/version = "0.69"/version = "0.72"/' vendor/libspa-sys/Cargo.toml
+            break
+        fi
+    done
+    grep -q 'patch.crates-io' Cargo.toml || \
+        printf '\n[patch.crates-io]\nlibspa-sys = { path = "vendor/libspa-sys" }\n' >> Cargo.toml
+    cd ..
 }
 
 build() {
