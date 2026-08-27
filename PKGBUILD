@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.3.0
+_pkgver=13.4.0
 _branding=dr460nized
 
 __pkgname=$_pkgname
@@ -61,9 +61,9 @@ noextract=($__pkgname-v$_pkgver.linux-x64.tar.xz
 source=($_pkgname::git+$url.git#tag=v$_pkgver)
 source_x86_64=($__pkgname-v$_pkgver.linux-x64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-x64.tar.xz)
 source_aarch64=($__pkgname-v$_pkgver.linux-arm64.tar.xz::$url/-/releases/v$_pkgver/downloads/$__pkgname.linux-arm64.tar.xz)
-sha256sums=('428e7db6c7bf6703a493f56d4aafe50ed60efed74acafc1f9991f61ccdbd4f41')
-sha256sums_x86_64=('2104a6b7abb78083115accd26f2e2df546c30e9590843731dde60ca5889523a5')
-sha256sums_aarch64=('820055137631933ad6b61eafe3cad6fa7a950358eb055682f792358a6828c3c7')
+sha256sums=('0a8123276f3b24c686ea916dde7e21a1204bff82500359c48432258715ae7fc2')
+sha256sums_x86_64=('8ed80943535c168d3840c9dafc48029d7ce48af6e73c415bf369dde215174ded')
+sha256sums_aarch64=('c37dd76c2dcffdf94d1eaea2425a4cc56e5699041d348c1c609d9d8716f99b4e')
 
 package() {
   mkdir -p "$pkgdir/usr/lib"
