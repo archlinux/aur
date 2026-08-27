@@ -2,7 +2,7 @@
 
 pkgname=odm-bin
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Oryn Download Manager — aria2c-inspired CLI download manager with Connection Balancer, parallel download acceleration, pacman/ILoveCandy progress bar, JSON-RPC + WebSocket daemon, and resume support"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/Fahry-a/odm"
