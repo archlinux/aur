@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = cosmic-comp-gaming
+
+[Action]
+Description = Setting CAP_SYS_NICE capability on cosmic-comp
+When = PostTransaction
+Exec = /usr/bin/setcap cap_sys_nice=eip /usr/bin/cosmic-comp
