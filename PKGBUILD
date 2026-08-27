@@ -1,6 +1,6 @@
 # Maintainer: mryll <https://github.com/mryll>
 pkgname=tickerbar
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='Multi-market price ticker for Waybar (crypto, stocks, indices, commodities, forex, rates) — no API key'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo')
 optdepends=('ttf-jetbrains-mono-nerd: monospace font the tooltip pins by default (tooltip_font)')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mryll/tickerbar/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b9956b2ab243abfea160a149b291c9f15eb613b6eb173f3375e831a037bac3d7')
+sha256sums=('a234885e7bab65aef99fe0501d5ab6b4e5f0db2cf1fad3478e398726dbce293a')
 
 build() {
     cd "$pkgname-$pkgver"
