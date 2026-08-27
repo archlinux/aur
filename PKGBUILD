@@ -1,7 +1,7 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=openchamber
 _npmname=@openchamber/web
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 pkgdesc="Desktop and web interface for OpenCode AI agent"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs' 'bash')
 makedepends=('npm' 'jq' 'patchelf')
 source=("https://registry.npmjs.org/@openchamber/web/-/web-${pkgver}.tgz")
 noextract=("web-${pkgver}.tgz")
-sha256sums=('c1d856ec2968d18f867c69ada0c8e0e2c1cf130ad42769a9dadc43244b8e1873')
+sha256sums=('c3d72eed1834dc74632408d1bc21d471f0ffa3b4efb82fb740ca534a8d26e1f9')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
@@ -68,7 +68,7 @@ package() {
 
     find "$pkgdir/usr/lib/node_modules" -type f \( -name '*.so' -o -name '*.node' \) -exec sh -c 'file "$1" | grep -qi x86-64 && strip --strip-unneeded "$1" || true' sh {} \;
 
-    find "$pkgdir/usr/lib/node_modules" -type f \( -name '*.so' -o -name '*.node' \) -exec sh -c 'patchelf --remove-rpath "$1" >/dev/null 2>&1 || true' sh {} \;
+    find "$pkgdir/usr/lib/node_modules" -type f \( -name '*.so' -o -name '*.node' \) -exec sh -c 'file "$1" | grep -qi x86-64 && patchelf --set-rpath '\''$ORIGIN'\'' "$1" >/dev/null 2>&1 || true' sh {} \;
 
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
     printf "%s\n" "MIT" > "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
