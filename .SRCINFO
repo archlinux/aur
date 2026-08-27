@@ -1,7 +1,7 @@
 pkgbase = umbriel-git
 	pkgdesc = A Wayland compositor built on wlroots and SceneFX
 	pkgver = 0.1.0.r0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noctalia-dev/umbriel
 	arch = x86_64
 	arch = aarch64

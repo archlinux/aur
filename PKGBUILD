@@ -2,8 +2,8 @@
 
 pkgname=umbriel-git
 pkgver=0.1.0.r0.0
-pkgrel=1
-pkgdesc='A Wayland compositor built on wlroots and SceneFX'
+pkgrel=2
+pkgdesc='A Wayland compositor designed for daily use, with scrolling, dwindle, and master layouts, per-output workspaces, window rules, blur, shadows, and fluid animations'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/umbriel'
 license=('MIT')
