@@ -1,6 +1,6 @@
 # Maintainer: Reza Jelveh <reza.jelveh+git@gmail.com>
 pkgname=browserchooser-x11
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="rofi-style browser selector (X11 backend)"
 arch=('x86_64')
@@ -23,4 +23,6 @@ package() {
   install -Dm755 browserchooser "$pkgdir/usr/bin/browserchooser"
   install -Dm644 dev.fishman.browserchooser.desktop \
     "$pkgdir/usr/share/applications/dev.fishman.browserchooser.desktop"
+  install -Dm644 Icon.png \
+    "$pkgdir/usr/share/icons/hicolor/512x512/apps/browserchooser.png"
 }
