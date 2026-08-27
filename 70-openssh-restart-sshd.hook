@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = openssh
+
+[Action]
+Description = Restart a running sshd.service
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/systemd-hook restart sshd.service
