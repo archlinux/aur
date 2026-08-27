@@ -1,6 +1,6 @@
 pkgbase = incus-compose-bin
 	pkgdesc = Bring the familiar Docker Compose workflow to Incus containers (prebuilt binary)
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/lxc/incus-compose
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = incus-compose-bin
 	provides = incus-compose
 	conflicts = incus-compose
 	conflicts = incus-compose-git
-	source_x86_64 = https://github.com/lxc/incus-compose/releases/download/v1.3.0/incus-compose_1.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = fc5f241406a194fd7b6389584f9782257afb2214afedbfdce96c521e3a5d2b7d
-	source_aarch64 = https://github.com/lxc/incus-compose/releases/download/v1.3.0/incus-compose_1.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = ba842a5ccfed05968e0cb3bb86bec354ac76098926e8705dbb204a2c5d5901be
+	source_x86_64 = https://github.com/lxc/incus-compose/releases/download/v1.3.1/incus-compose_1.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = e7a87cd175a0d10b4cf30eab75f8f20095902e52a7db7cafcefe9dcdcdff69c6
+	source_aarch64 = https://github.com/lxc/incus-compose/releases/download/v1.3.1/incus-compose_1.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = b728eee5b0a76da466f4141f2d22850dbf086e798100b5c9307dd12a7b8664ee
 
 pkgname = incus-compose-bin
