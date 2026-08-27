@@ -1,6 +1,6 @@
 pkgbase = fastwc-bin
 	pkgdesc = fastwc, a fast wc rewrite, prebuilt binary
-	pkgver = 32
+	pkgver = 33
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastwc
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = fastwc-bin
 	depends = gcc-libs
 	provides = fastwc
 	conflicts = fastwc
-	source = fastwc-32::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl
-	source = fastwc-32.sha256::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl.sha256
+	source = fastwc-33::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl
+	source = fastwc-33.sha256::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl.sha256
 	sha256sums = b83a8b17541f56dd4fc048e3b67d168e23b729f90df7068b732ee267c0649f6e
 	sha256sums = 9d537f8a6416769311960a8132da8cb5ee59a6d593bdcc3d30613e52e415ad33
 
