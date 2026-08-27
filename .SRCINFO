@@ -1,6 +1,6 @@
 pkgbase = python-ddgs
 	pkgdesc = Dux Distributed Global Search. A metasearch library that aggregates results from diverse web search services.
-	pkgver = 9.15.0
+	pkgver = 9.16.0
 	pkgrel = 1
 	url = https://github.com/deedy5/ddgs
 	arch = any
@@ -41,7 +41,7 @@ pkgbase = python-ddgs
 	optdepends = python-watchfiles: dht
 	optdepends = python-websockets: dht
 	optdepends = python-trio: dht
-	source = https://github.com/deedy5/ddgs/archive/refs/tags/v9.15.0.tar.gz
-	sha256sums = 4a01d43dbb29ccfdb463d4a9b4a9114f627b9e050c3b38f99f4551c5ee25bf33
+	source = https://github.com/deedy5/ddgs/archive/refs/tags/v9.16.0.tar.gz
+	sha256sums = dac2daf42bdb1994ea291e1ab0968330fd4677871daa55cafdf4509f370ee39a
 
 pkgname = python-ddgs
