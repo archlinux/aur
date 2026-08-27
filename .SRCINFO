@@ -1,6 +1,6 @@
 pkgbase = lazydmi
 	pkgdesc = CLI tool that uses lazybios for reading SMBIOS/DMI tables easily
-	pkgver = 2.0.0
+	pkgver = v3.0.0
 	pkgrel = 1
 	url = https://github.com/LazySeldi/lazydmi
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lazydmi
 	makedepends = gcc
 	makedepends = make
 	depends = lib-lazybios
-	source = https://github.com/LazySeldi/lazydmi/releases/download/2.0.0/lazydmi-2.0.0.tar.gz
-	sha256sums = e7b339338943811a5e85abaf88e92e00aa623024a744ab532aac5aed29f7dc71
+	source = https://github.com/LazySeldi/lazydmi/releases/download/v3.0.0/lazydmi-v3.0.0.tar.gz
+	sha256sums = 59b2bc64f25cbafe79d9527107c7935916661e6c9a54215a1f58635263ab0f16
 
 pkgname = lazydmi
