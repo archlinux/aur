@@ -1,5 +1,5 @@
 pkgname=hyprism-shell-git
-pkgver=0.1.3
+pkgver=0.1.3.r2.g17066ae
 pkgrel=1
 pkgdesc='Hyprland and Quickshell desktop environment with dynamic theming (development version)'
 arch=('any')
