@@ -2,10 +2,10 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v2026.8.19
-_commit=fcbd1076a93841fa88855acce810e342a5b78101
-pkgver=0.20.5
-pkgrel=4
+_pkgver_tag=v2026.8.27
+_commit=5fc308a70719a83cccdbba4c0e39c23f5a8239d5
+pkgver=0.20.6
+pkgrel=1
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
@@ -25,7 +25,7 @@ source=(
   'system-electron-resources.patch'
 )
 sha256sums=(
-  '8e7f7d2aa6be48ae8b5550325be44aef339413ceec6ed74c18287001103de8fd'
+  'e622723b5bf3cd6c1db974d92d32242f1cb63f61c1112b6f708b34d619ef0fc7'
   'ee465a1aa2ad5789fa5c7b3a89993bbf0e68efddbf27c93109519b72a4cb90f7'
 )
 
@@ -49,9 +49,9 @@ prepare() {
   cd "$(_extract_dir)"
   _set_npm_env
   patch -Np1 -i "${srcdir}/system-electron-resources.patch"
-  # The release identifies Hermes Agent as 0.20.5, but
-  # apps/desktop/package.json is not bumped — it still says 0.17.0. Patch
-  # it here so pkgver matches the release.
+  # The release identifies Hermes Agent as ${pkgver}, but the desktop
+  # package.json is not bumped — it still says 0.17.0. Patch it here so the
+  # packaged desktop metadata matches the release.
   npm pkg set version=${pkgver} --prefix apps/desktop
   # The source archive has no .git directory. Pin the peeled release commit
   # locally so the bundled install stamp is reproducible and does not require
