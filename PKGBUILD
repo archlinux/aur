@@ -69,3 +69,4 @@ package() {
       "${pkgdir}/usr/share/icons/hicolor/${sz}x${sz}/apps/whydpi.png"
   done
 }
+
