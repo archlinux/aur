@@ -1,0 +1,60 @@
+[Unit]
+Description=Netsukuku mesh routing daemon (QSPN v2 / Hooking / Coordinator / PeerServices / ANDNA)
+Documentation=https://github.com/M0Rf30/netsukuku-rs
+# ntkd builds its own L3 mesh over the NICs named in ntkd.toml rather than joining an existing
+# DHCP/gateway network, so it only needs those links to exist, not network-online.target.
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ntkd run --config /etc/ntkd/ntkd.toml --status-socket /run/ntkd/ntkd.sock
+# The `dist` release profile builds with panic = "abort": a bug that would otherwise unwind
+# instead kills the process outright, so the supervisor must bring it straight back.
+Restart=on-failure
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+
+# Unprivileged dynamic user, granted only the two capabilities ntkd actually calls for:
+# CAP_NET_ADMIN to manage kernel routes/addresses/rules over rtnetlink, CAP_NET_RAW so the
+# neighborhood liveness probe can fall back to a raw ICMP socket when unprivileged ICMP datagram
+# sockets are unavailable. AmbientCapabilities still works with NoNewPrivileges below: systemd
+# grants ambient capabilities to the process itself, not via a setuid/file-capability exec.
+DynamicUser=yes
+User=ntkd
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW
+
+# `ntkd status --socket` defaults to /tmp/ntkd.sock, which PrivateTmp's private per-service /tmp
+# would make unreachable to any other process (including an interactive `ntkd status`). Pointing
+# --status-socket at a RuntimeDirectory instead resolves that cleanly, and PrivateTmp can then
+# stay on since ntkd never touches /tmp for anything else.
+RuntimeDirectory=ntkd
+RuntimeDirectoryMode=0750
+# Only used if andna_key_path/node_key_path are uncommented in ntkd.toml (ANDNA/RPC identity
+# keys are generated on first run and persisted here); harmless idle otherwise.
+StateDirectory=ntkd
+StateDirectoryMode=0750
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectClock=true
+ProtectHostname=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+RestrictNamespaces=true
+LockPersonality=true
+RemoveIPC=true
+MemoryDenyWriteExecute=true
+# Unix (status socket), netlink (routes/addresses/rules) and plain TCP/UDP (RPC, ICMP probe) —
+# nothing else.
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+
+[Install]
+WantedBy=multi-user.target
