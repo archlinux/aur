@@ -11,7 +11,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/KarypisLab/METIS/archive/v${pkgver}.tar.gz")
 sha256sums=('1a4665b2cd07edc2f734e30d7460afb19c1217c2547c2ac7bf6e1848d50aff7a')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare () {
   cd METIS-$pkgver
