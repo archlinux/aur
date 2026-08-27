@@ -2,7 +2,7 @@
 
 _pkgname="hyprpolkitagent"
 pkgname="$_pkgname-git"
-pkgver=0.1.3.r4.g713b7ea
+pkgver=0.1.3.r12.g7d8031c
 pkgrel=1
 pkgdesc="A polkit authentication agent written in QT/QML"
 arch=('x86_64' 'aarch64')
@@ -10,9 +10,8 @@ url="https://github.com/hyprwm/hyprpolkitagent"
 license=('BSD-3-Clause')
 
 depends=(
-  hyprland-qt-support-git
+  hyprtoolkit-git
   hyprutils-git
-  polkit-qt6
 )
 makedepends=(
   cmake

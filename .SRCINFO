@@ -1,6 +1,6 @@
 pkgbase = hyprpolkitagent-git
 	pkgdesc = A polkit authentication agent written in QT/QML
-	pkgver = 0.1.3.r4.g713b7ea
+	pkgver = 0.1.3.r12.g7d8031c
 	pkgrel = 1
 	url = https://github.com/hyprwm/hyprpolkitagent
 	arch = x86_64
@@ -9,9 +9,8 @@ pkgbase = hyprpolkitagent-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
-	depends = hyprland-qt-support-git
+	depends = hyprtoolkit-git
 	depends = hyprutils-git
-	depends = polkit-qt6
 	provides = hyprpolkitagent=0.1.3
 	conflicts = hyprpolkitagent
 	source = hyprpolkitagent::git+https://github.com/hyprwm/hyprpolkitagent.git
