@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=fowl
-pkgver=25.10.0
-pkgrel=2
+pkgver=26.8.0
+pkgrel=1
 pkgdesc='Forward over Wormhole: streams over magic-wormhole Dilation connections'
 arch=(any)
 url="https://pypi.org/project/$pkgname"
@@ -24,7 +24,7 @@ checkdepends=(python-hypothesis
               python-pytest-twisted)
 _archive="${pkgname/-/_}-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('f4f67f669616bb20ccba67ee7c8207931674f34daefd6c2af91a0392beb0fe8c')
+sha256sums=('6ecc0d4e781686ed9717396d9ac18c3c4efa0bfb3877538009acc038606e36ab')
 
 build() {
 	cd "$_archive"

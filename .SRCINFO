@@ -1,7 +1,7 @@
 pkgbase = fowl
 	pkgdesc = Forward over Wormhole: streams over magic-wormhole Dilation connections
-	pkgver = 25.10.0
-	pkgrel = 2
+	pkgver = 26.8.0
+	pkgrel = 1
 	url = https://pypi.org/project/fowl
 	arch = any
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = fowl
 	depends = python-msgpack
 	depends = python-rich
 	depends = python-twisted
-	source = https://files.pythonhosted.org/packages/source/f/fowl/fowl-25.10.0.tar.gz
-	sha256sums = f4f67f669616bb20ccba67ee7c8207931674f34daefd6c2af91a0392beb0fe8c
+	source = https://files.pythonhosted.org/packages/source/f/fowl/fowl-26.8.0.tar.gz
+	sha256sums = 6ecc0d4e781686ed9717396d9ac18c3c4efa0bfb3877538009acc038606e36ab
 
 pkgname = fowl
