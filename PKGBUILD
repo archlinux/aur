@@ -2,7 +2,7 @@
 
 pkgname=hoja-git
 _pkgname=hoja
-pkgver=r163.eb725b7
+pkgver=r171.42167c8
 pkgrel=1
 pkgdesc='GPU-accelerated file manager with splittable panes, built on GPUI'
 arch=('x86_64')
@@ -70,8 +70,8 @@ build() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  # No --all-features: neither crate declares any, so it does nothing today and
-  # would silently opt in to whichever one gets added first.
+  # No --all-features: none of the crates declare any, so it does nothing
+  # today and would silently opt in to whichever one gets added first.
   cargo build --frozen --release
 }
 

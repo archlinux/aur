@@ -1,6 +1,6 @@
 pkgbase = hoja-git
 	pkgdesc = GPU-accelerated file manager with splittable panes, built on GPUI
-	pkgver = r163.eb725b7
+	pkgver = r171.42167c8
 	pkgrel = 1
 	url = https://github.com/slastra/hoja
 	arch = x86_64
