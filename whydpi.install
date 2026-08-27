@@ -4,8 +4,39 @@ post_install() {
     fi
 }
 
+# Inlined: pre_upgrade runs from the new .install while the on-disk
+# first-run-launch.sh is still the previous version (no --stop-trays).
+_stop_trays() {
+    pkill -f '/usr/bin/whydpi-tray' >/dev/null 2>&1 || true
+    pkill -f 'python.*-m whydpi.ui.tray' >/dev/null 2>&1 || true
+}
+
+pre_upgrade() {
+    _stop_trays
+}
+
 post_upgrade() {
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl try-restart whydpi.service >/dev/null 2>&1 || true
+    fi
     if [ -x /usr/lib/whydpi/first-run-launch.sh ]; then
-        /usr/lib/whydpi/first-run-launch.sh || true
+        /usr/lib/whydpi/first-run-launch.sh --restart || true
+    fi
+}
+
+pre_remove() {
+    # pacman does not stop systemd units or session processes on -R.
+    # Stop the engine first so ExecStop can restore DNS while the
+    # package files are still on disk, then drop leftover trays.
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl stop whydpi.service >/dev/null 2>&1 || true
+        systemctl disable whydpi.service >/dev/null 2>&1 || true
+    fi
+    _stop_trays
+}
+
+post_remove() {
+    if command -v systemctl >/dev/null 2>&1; then
+        systemctl daemon-reload >/dev/null 2>&1 || true
     fi
 }

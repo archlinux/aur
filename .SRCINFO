@@ -1,6 +1,6 @@
 pkgbase = whydpi
 	pkgdesc = Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/byrdltd/whyDPI
 	install = whydpi.install
@@ -19,7 +19,7 @@ pkgbase = whydpi
 	optdepends = tk: first-run acceptable-use dialog
 	optdepends = zenity: native first-run dialog
 	conflicts = whydpi-git
-	source = whydpi-1.2.0.tar.gz::https://github.com/byrdltd/whyDPI/archive/v1.2.0.tar.gz
-	sha256sums = 54ceca9b05addb6d3589c2bc9a7cefb6543d5f0f1d235a15a55d5fe5e2b9a109
+	source = whydpi-1.2.1.tar.gz::https://github.com/byrdltd/whyDPI/archive/v1.2.1.tar.gz
+	sha256sums = b1c3f7a454bfe5298071fa8ea378968610b890b76d0e351ae2cc3e0848fe71ad
 
 pkgname = whydpi
