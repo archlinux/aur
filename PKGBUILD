@@ -1,29 +1,31 @@
-# Maintainer: JJDizz1L <jjdizz1l@proton.me>
+# Maintainer: dizziee <jjdizz1l@proton.me>
 #
-# Nuvio Linux — Linux-native mpv desktop media player (AUR VCS package).
+# Nuvio — desktop media player (AUR VCS package).
+# Builds the latest upstream Dev branch (NuvioMedia/NuvioDesktop) from
+# source via the Gradle wrapper and bundles a Temurin 21 jpackage runtime,
+# so no system Java is required at runtime. Playback uses system libmpv
+# (mpv dependency). The dist/arch/PKGBUILD in NuvioLinux-unofficial is the
+# versioned-stable equivalent.
 #
-# Builds the latest `dev` branch from source via the Gradle wrapper and bundles
-# a baseline x86-64 JRE, so no system Java is required at runtime (system mpv is
-# still required for playback). The `dist/arch/PKGBUILD` is the stable
-# equivalent; this VCS package lets the fork ship on the AUR before a versioned
-# tag exists.
-#
-# NOTE: the Gradle build downloads its toolchain and dependencies at build time,
-# so building requires network access (standard for Gradle AUR packages).
+# NOTE: the Gradle build downloads its toolchain and dependencies at build
+# time, so building requires network access (standard for Gradle AUR
+# packages). The Linux player bridge is compiled against system mpv and
+# webkit2gtk-4.1 headers at build time.
 
 pkgname=nuvio-linux-git
-pkgver=r2331.gb2bcad6a
-pkgrel=5
-pkgdesc="Nuvio Linux desktop media player — Linux native mpv playback (git)"
+pkgver=r2605.g785df9c3
+pkgrel=1
+pkgdesc="Nuvio desktop media player — upstream source packaged for Arch Linux (git)"
 arch=('x86_64')
-url="https://github.com/JJDizz1L/NuvioLinux"
-license=('custom:commercial')
-depends=('mpv' 'glibc' 'gcc-libs' 'libstdc++' 'libx11' 'libxext' 'libxrender' 'libxi' 'libxtst')
-makedepends=('git' 'jdk25-temurin' 'gcc')
+url="https://github.com/NuvioMedia/NuvioDesktop"
+license=('GPL3')
+depends=('mpv' 'webkit2gtk-4.1' 'gtk3' 'glibc' 'gcc-libs' 'libstdc++' 'libx11' 'libxcomposite' 'libxext' 'libxrender' 'libxi' 'libxtst')
+makedepends=('git' 'jdk21-temurin' 'gcc' 'mpv' 'webkit2gtk-4.1' 'gtk3' 'libxcomposite' 'libxext')
 install=nuvio-linux-git.install
 provides=('nuvio-linux')
-conflicts=('nuvio-linux')
-source=("git+https://github.com/JJDizz1L/NuvioLinux.git#branch=dev")
+conflicts=('nuvio-linux' 'nuvio-linux-bin')
+options=('!strip')
+source=("git+https://github.com/NuvioMedia/NuvioDesktop.git#branch=Dev")
 sha256sums=('SKIP')
 
 # Supabase backend — public client config shared with the upstream app. These
@@ -34,13 +36,16 @@ NUVIO_SUPABASE_ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbi
 NUVIO_SUPABASE_FALLBACK_URL="https://api-two.nuvioapp.space"
 
 pkgver() {
-  cd "$srcdir/NuvioLinux" 2>/dev/null || return
+  cd "$srcdir/NuvioDesktop"
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/NuvioLinux"
-  export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/java-25-temurin}"
+  cd "$srcdir/NuvioDesktop"
+
+  # Baseline x86-64 JDK (Temurin 21 LTS, AUR) — set unconditionally so the
+  # bundled jpackage runtime stays portable (never a -march=v3|v4 JDK build).
+  export JAVA_HOME="/usr/lib/jvm/java-21-temurin"
 
   # generateRuntimeConfigs requires local.properties to exist (it is gitignored
   # and absent from the archive); write the public Supabase client config so
@@ -56,21 +61,31 @@ EOF
 }
 
 package() {
-  cd "$srcdir/NuvioLinux"
-  local APP_DIR="${pkgdir}/opt/nuvio-linux"
+  cd "$srcdir/NuvioDesktop"
+  local APP_DIR="${pkgdir}/opt/Nuvio"
 
+  # Self-contained jpackage app-image (upstream packageName="Nuvio").
   install -d "${APP_DIR}"
-  cp -r composeApp/build/compose/binaries/main-release/app/nuvio-linux/* "${APP_DIR}/"
+  cp -r composeApp/build/compose/binaries/main-release/app/Nuvio/. "${APP_DIR}/"
 
+  # Launcher on PATH
   install -d "${pkgdir}/usr/bin"
-  ln -s /opt/nuvio-linux/bin/nuvio-linux "${pkgdir}/usr/bin/nuvio-linux"
+  ln -s /opt/Nuvio/bin/Nuvio "${pkgdir}/usr/bin/nuvio"
 
-  install -Dm644 dist/desktop/nuvio-linux.desktop \
-    "${pkgdir}/usr/share/applications/nuvio-linux.desktop"
-  install -Dm644 dist/desktop/io.github.jjdizz1l.NuvioLinux.metainfo.xml \
-    "${pkgdir}/usr/share/metainfo/io.github.jjdizz1l.NuvioLinux.metainfo.xml"
-  for size in 16 32 48 64 128 256 512; do
-    install -Dm644 "dist/desktop/icons/hicolor/${size}x${size}/apps/nuvio-linux.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/nuvio-linux.png"
-  done
+  # Desktop entry + icon (upstream ships no Linux .desktop)
+  install -d "${pkgdir}/usr/share/applications" "${pkgdir}/usr/share/pixmaps"
+  cat > "${pkgdir}/usr/share/applications/nuvio.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=Nuvio
+Comment=Nuvio desktop media player
+Exec=/opt/Nuvio/bin/Nuvio
+Icon=nuvio
+Terminal=false
+Categories=AudioVideo;Video;Player;
+EOF
+  install -Dm644 composeApp/src/desktopMain/resources/icons/nuvio-app-icon-transparent.png \
+    "${pkgdir}/usr/share/pixmaps/nuvio.png"
+
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
