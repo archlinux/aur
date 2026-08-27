@@ -34,7 +34,7 @@ optdepends=(
     'psmisc: for alternative pacman lock detection using fuser'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1084eebbdc3db1bdd40fc81435b7be4f18c66e11f6411661447fdec9e90172e6')
+sha256sums=('74365c76bd73939ac0f7c8cedf6e2dab295a5c38cbc108d59498f16128e0b7b5')
 
 package() {
     cd "${pkgname}-${pkgver}"
