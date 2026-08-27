@@ -2,7 +2,7 @@
 
 _pkgname=helixnotes
 pkgname=${_pkgname}-bin
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc='A local, open-source Markdown note-taking app. No cloud, no account, no telemetry. (deb version)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ conflicts=("${_pkgname}" "helixnotes-appimage-bin")
 options=(!debug)
 
 source=("${_pkgname}-${pkgver}-x86_64.deb::https://download.helixnotes.com/releases/v${pkgver}/HelixNotes_${pkgver}_amd64.deb")
-sha256sums=('22220a7a5babe3437b10620d3fee97b9551b74a7f6442cfe7c02e0fa2c668aad')
+sha256sums=('01966095b442aff81d9040a3c950d7affee9f67982bc8efa4341566a061efa06')
 
 package() {
 
