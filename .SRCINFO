@@ -1,0 +1,25 @@
+pkgbase = waydroid-apple-music
+	pkgdesc = Waydroid Android 13 image and setup helper for Apple Music Lossless playback on Linux
+	pkgver = 6.5.2
+	pkgrel = 1
+	url = https://github.com/WayDroid-ATV/waydroid-builds
+	install = waydroid-apple-music.install
+	arch = x86_64
+	license = Apache-2.0
+	license = LicenseRef-proprietary
+	makedepends = apkeep
+	makedepends = unzip
+	makedepends = python
+	depends = waydroid
+	optdepends = pipewire-audio: sample-rate switching for bit-perfect output
+	provides = waydroid-image
+	conflicts = waydroid-image
+	conflicts = waydroid-image-gapps
+	options = !strip
+	options = !debug
+	source = lineage-20.0-20260106-UNOFFICIAL-waydroid_x86_64.zip::https://github.com/WayDroid-ATV/waydroid-builds/releases/download/20260106/lineage-20.0-20260106-UNOFFICIAL-waydroid_x86_64.zip
+	source = waydroid-am
+	sha256sums = 617bbc43dde28e70f161d5543e095aba5df17c81f1a8ba091e95c077dd164a9b
+	sha256sums = SKIP
+
+pkgname = waydroid-apple-music

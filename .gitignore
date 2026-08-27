@@ -1,0 +1,12 @@
+# makepkg build artifacts
+pkg/
+src/
+*.pkg.tar.*
+*.log
+# downloaded sources
+*.zip
+*.apk
+*.apkm
+*.xapk
+system.img
+vendor.img
