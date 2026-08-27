@@ -1,6 +1,6 @@
 # Maintainer: David Henning <dev@webcodr.io>
 pkgname=jwtd-bin
-pkgver=5.5.0
+pkgver=5.6.0
 pkgrel=1
 pkgdesc="Decode and pretty-print JSON Web Tokens with syntax highlighting"
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,9 @@ conflicts=('jwtd')
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/webcodr/jwtd/v${pkgver}/LICENSE")
 sha256sums=('e7d4d4a62b2b6a2b38cf9aa43f4e4613a63a261a4444d9dd89d5b89d6cebf7aa')
 source_x86_64=("jwtd-${pkgver}-x86_64.tar.gz::https://github.com/webcodr/jwtd/releases/download/v${pkgver}/jwtd-linux-amd64.tar.gz")
-sha256sums_x86_64=('66ad0397b03010e3b66aa9be7fa78a24c786bc695c32f9e4065a079ea34021b0')
+sha256sums_x86_64=('5ebf8d7836a477a7172ac736e90b688a2b8e9a52dd75fa7db79a90565e7a1f27')
 source_aarch64=("jwtd-${pkgver}-aarch64.tar.gz::https://github.com/webcodr/jwtd/releases/download/v${pkgver}/jwtd-linux-arm64.tar.gz")
-sha256sums_aarch64=('fb736fc3d7e6b1baf96eceb81277567cdd64ddd4613b608e51204387b9eb01ed')
+sha256sums_aarch64=('c9b6632716ea806c11eb186a3f6617b522ed255fc9201e984e9ae6f4a2b43401')
 
 package() {
 	install -Dm755 "${srcdir}/jwtd" "${pkgdir}/usr/bin/jwtd"
