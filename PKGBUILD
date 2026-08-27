@@ -63,16 +63,19 @@ checkdepends=(
 source=("git+${url}.git#tag=v${pkgver}"
         "lower_hatchling_version_requirements.patch"
         "clear_multiplexer_env_in_theme_tests.patch"
-        "stabilize_click_chain_timing_in_word_drag_tests.patch")
+        "stabilize_click_chain_timing_in_word_drag_tests.patch"
+        "stabilize_model_picker_selection_wait.patch")
 sha256sums=('762e7a2b6d082fa910dd7eb472471256d018cd0c17958b78804693bcf6c9383e'
             'c9b417d8a6445bcca31f8d75757a7ec2d78e4b5aec784a7b5d2c9adf62106014'
             'f24330784d56591d197dc260166d29fff717fab763963fb2c7d8221f81135069'
-            '635f8b81f8f884fd82a874372fe3aa466ec41380c48d4209b230afd34825bc3f')
+            '635f8b81f8f884fd82a874372fe3aa466ec41380c48d4209b230afd34825bc3f'
+            '368f0c6cf1d3f1647f415ac8e4cab3c1cd1618766fc434e6c50ea3a8af6f6ec1')
 prepare() {
     cd "$pkgname"
     cat "$srcdir/lower_hatchling_version_requirements.patch" | patch -p1
     cat "$srcdir/clear_multiplexer_env_in_theme_tests.patch" | patch -p1
     cat "$srcdir/stabilize_click_chain_timing_in_word_drag_tests.patch" | patch -p1
+    cat "$srcdir/stabilize_model_picker_selection_wait.patch" | patch -p1
 }
 
 build() {
@@ -103,10 +106,10 @@ check() {
     )
 
     # Run test suite in parallel, skip deselected and any e2e tests.
-    uv run pytest -n4 "${deselect[@]}" --ignore=tests/e2e
-    
+    uv run pytest -n4 --timeout=60 "${deselect[@]}" --ignore=tests/e2e
+
     # Run e2e tests serially (these fail too often in parallel).
-    uv run pytest -n0 "${deselect[@]}" tests/e2e
+    uv run pytest -n0 --timeout=60 "${deselect[@]}" tests/e2e
 }
 
 package() {
