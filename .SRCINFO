@@ -1,7 +1,7 @@
 pkgbase = xpanel-bin
 	pkgdesc = Finalmouse XPanel Desktop AppImage with udev rules and desktop entry
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/teamfinalmouse/xpanel-desktop-public
 	arch = x86_64
 	license = proprietary
