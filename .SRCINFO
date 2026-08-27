@@ -1,0 +1,24 @@
+pkgbase = cmdperf-bin
+	pkgdesc = Command Performance Benchmarking
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/miklosn/cmdperf
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = cmdperf
+	conflicts = cmdperf
+	options = !strip
+	source = README-0.2.0.md::https://raw.githubusercontent.com/miklosn/cmdperf/v0.2.0/README.md
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/miklosn/cmdperf/v0.2.0/LICENSE
+	sha256sums = 094681da59bed0a8af70351bbf278f6896cacc0468e09a9c278fa8fcc7db681b
+	sha256sums = efbb8ac2654e795919ecd8b069f240983ae7bee66adc4ba6b81eafae4caa0f19
+	source_x86_64 = cmdperf-x86_64-0.2.0::https://github.com/miklosn/cmdperf/releases/download/v0.2.0/cmdperf_Linux_x86_64
+	sha256sums_x86_64 = 7ceeae07e359a2e40beb47a029f81d19e62cf41390e1de6a0473b8090cc240e2
+	source_i686 = cmdperf-i686-0.2.0::https://github.com/miklosn/cmdperf/releases/download/v0.2.0/cmdperf_Linux_i386
+	sha256sums_i686 = 404386a8304c6c5b11350de2007fc9dd6ffa4df6c77f5681b07f74a023117722
+	source_aarch64 = cmdperf-aarch64-0.2.0::https://github.com/miklosn/cmdperf/releases/download/v0.2.0/cmdperf_Linux_arm64
+	sha256sums_aarch64 = 7f99b153e153e20bd7271c016458484a98c3758a53939a1a7ad9ea79d71a7a79
+
+pkgname = cmdperf-bin
