@@ -2,7 +2,7 @@
 # Maintainer: Yoan Wai <106609173+YoanWai@users.noreply.github.com>
 
 pkgname='agent-manager-bin'
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc='Terminal UI to manage AI coding-agent tmux sessions'
 url='https://github.com/YoanWai/agent-manager'
@@ -13,10 +13,10 @@ conflicts=('agent-manager')
 depends=('tmux' 'git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/YoanWai/agent-manager/releases/download/v${pkgver}/agent-manager_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('5c59007aaafd115b46f4d94909389195792d72b0ff1578a0d8eba32890fdb62f')
+sha256sums_aarch64=('659012627aa648f196e9148c6d6300603f1a4e5068c2479385046199b4107d26')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/YoanWai/agent-manager/releases/download/v${pkgver}/agent-manager_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('ae77ba67368fa258f8272481f10d98a2119ca08032e41545385dc4213a00583c')
+sha256sums_x86_64=('0dbc2bf6214a83d1a295f3ecacfcbfefb9a92429eb75ed26cde04657fd91aa14')
 
 package() {
   install -Dm755 "./agent-manager" "${pkgdir}/usr/bin/agent-manager"
