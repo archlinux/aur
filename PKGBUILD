@@ -41,9 +41,6 @@ prepare() {
   # abseil assumes client code use a higher c++ standard than how it was itself compiled (gcc default=c++20, paraview=c++17) and sets ABSL_OPTION_USE_STD_ORDERING=1
   # locally override abseil options.h to force ABSL_OPTION_USE_STD_ORDERING=0, keep other settings to their defaults
   #echo "target_compile_definitions(vtkRemotingServerManager PRIVATE ABSL_BASE_OPTIONS_H_ ABSL_OPTION_USE_STD_SOURCE_LOCATION=1 ABSL_OPTION_USE_STD_ORDERING=0 ABSL_OPTION_USE_INLINE_NAMESPACE=1 ABSL_OPTION_INLINE_NAMESPACE_NAME=lts_20260526 ABSL_OPTION_HARDENED=0 ABSL_OPTION_INLINE_HW_ACCEL_STRATEGY=0)" >> Remoting/ServerManager/CMakeLists.txt
-
-  # qt5
-  curl -L https://gitlab.kitware.com/paraview/paraview/-/merge_requests/7922.patch | patch -p1
 }
 
 build() {
