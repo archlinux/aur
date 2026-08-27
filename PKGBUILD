@@ -1,6 +1,6 @@
 # Maintainer: Philip Meulengracht <the_meulengracht@hotmail.com>
 pkgname=vchef
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 _gitname=bake
 epoch=
@@ -10,16 +10,12 @@ url="https://github.com/Meulengracht/${_gitname}"
 license=('GPL')
 groups=()
 depends=(
-	'sqlite>=3.51.0'
 	'fuse3>=3.0.0'
 	'libcap>=2.0.0'
 	'curl>=8.0.0'
 	'openssl>=3.3.0'
 )
 makedepends=(git cmake)
-#install=
-#changelog=
-#source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Meulengracht/bake/archive/refs/tags/v${pkgver}.tar.gz")
 source=(
 	"git+https://github.com/meulengracht/${_gitname}.git#tag=v${pkgver}"
 	"git+https://github.com/meulengracht/libgracht"
