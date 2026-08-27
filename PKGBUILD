@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=enroll
 _app_id="org.cosmic_utils.$pkgname"
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="GUI application for fingerprint management designed for COSMIC DE."
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ checkdepends=(
   'desktop-file-utils'
 )
 source=("git+https://github.com/cosmic-utils/enroll.git#tag=v$pkgver")
-sha256sums=('fef406540047c29bc0ee978de979bcdd8ff49c2abb28d9843ffa48310fdabee3')
+sha256sums=('ea27bd1139a19e283c41619b8922045c09cf11e31316e7797ad3d9cf7f97975a')
 
 prepare() {
   cd "$pkgname"
