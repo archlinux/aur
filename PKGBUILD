@@ -9,7 +9,7 @@ readonly _pkgname="mechabar"
 
 pkgname="waybar-mechabar-git"
 pkgver="r246.9d325c3"
-pkgrel=1
+pkgrel="1"
 pkgdesc="A customizable and modular Waybar configuration."
 arch=("any")
 url="https://github.com/sejjy/${_pkgname}"
@@ -45,7 +45,7 @@ package()
     # Install the software.
     cp -r "${srcdir}"/"${_pkgname}"/modules/ "${pkgdir}"/usr/share/"${pkgname}"/
     cp -r "${srcdir}"/"${_pkgname}"/scripts/ "${pkgdir}"/usr/share/"${pkgname}"/
-    cp -r "${srcdir}"/"${_pkgname}"/styles/ "${pkgdir}"/usr/share/"${pkgname}"/
+    cp -r "${srcdir}"/"${_pkgname}"/themes/ "${pkgdir}"/usr/share/"${pkgname}"/
     install -Dm644 "${srcdir}"/"${_pkgname}"/config.jsonc "${pkgdir}"/usr/share/"${pkgname}"/
     install -Dm644 "${srcdir}"/"${_pkgname}"/style.css "${pkgdir}"/usr/share/"${pkgname}"/
 
