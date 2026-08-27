@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=dockerfile-pin
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='A CLI tool for digest pinning for Dockerfile, docker-compose.yml and GitHub Actions'
 arch=(x86_64 aarch64)
@@ -12,7 +12,7 @@ depends=(glibc)
 makedepends=('go')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a055be13341ab5de17fd843c4d788fecf4422b5c8efa6909cfb668f7bbebf014')
+sha256sums=('e0f1a9198c68ea5b46a9d68e9387cb453524d6240cbbd88465835857e60f03b7')
 
 prepare() {
   cd "$pkgname-$pkgver"
