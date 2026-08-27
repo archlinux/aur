@@ -1,7 +1,7 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastwc
 pkgver=17
-pkgrel=1
+pkgrel=2
 pkgdesc="fastwc, a fast wc rewrite, builds from source"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastwc"
@@ -10,13 +10,14 @@ depends=('gcc-libs')
 makedepends=('rustup')
 provides=('fastwc')
 conflicts=('fastwc-bin')
-source=("fastwc-$pkgver.tar.gz::https://github.com/CallMeAlphabet/fastwc/archive/refs/tags/latest.tar.gz")
+_commit=e5c7d3b4b032c0d87f885db29e2439e1ad481352
+source=("fastwc-$pkgver-$_commit.tar.gz::https://github.com/CallMeAlphabet/fastwc/archive/$_commit.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
     rm -rf "$srcdir/build"
     mkdir -p "$srcdir/build"
-    tar -xzf "$srcdir/fastwc-$pkgver.tar.gz" --strip-components=1 -C "$srcdir/build"
+    tar -xzf "$srcdir/fastwc-$pkgver-$_commit.tar.gz" --strip-components=1 -C "$srcdir/build"
     cd "$srcdir/build"
     cargo fetch --locked --target x86_64-unknown-linux-gnu
 }

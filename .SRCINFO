@@ -1,7 +1,7 @@
 pkgbase = fastwc
 	pkgdesc = fastwc, a fast wc rewrite, builds from source
 	pkgver = 17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CallMeAlphabet/fastwc
 	arch = x86_64
 	license = Apache-2.0
@@ -9,7 +9,7 @@ pkgbase = fastwc
 	depends = gcc-libs
 	provides = fastwc
 	conflicts = fastwc-bin
-	source = fastwc-17.tar.gz::https://github.com/CallMeAlphabet/fastwc/archive/refs/tags/latest.tar.gz
+	source = fastwc-17-e5c7d3b4b032c0d87f885db29e2439e1ad481352.tar.gz::https://github.com/CallMeAlphabet/fastwc/archive/e5c7d3b4b032c0d87f885db29e2439e1ad481352.tar.gz
 	sha256sums = SKIP
 
 pkgname = fastwc
