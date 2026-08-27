@@ -1,6 +1,6 @@
 pkgbase = nexa-bin
 	pkgdesc = High-performance, Rust-based MPRIS controller and daemon
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/Windblows2000/Nexa
 	install = nexa.install
@@ -10,7 +10,7 @@ pkgbase = nexa-bin
 	provides = nexad
 	conflicts = nexa
 	conflicts = nexa-git
-	source = https://github.com/Windblows2000/Nexa/releases/download/v1.2.4/nexa-v1.2.4-x86_64-linux.tar.gz
-	sha256sums = 94712120614dff3cb8ca585a92ec82ccdbff61b25065c6031dab22e9201c78d9
+	source = https://github.com/Windblows2000/Nexa/releases/download/v1.2.5/nexa-v1.2.5-x86_64-linux.tar.gz
+	sha256sums = 16101e2536c9ad0f8c9c6be9a2224b1ebdbd5b9d4f3799dc44ae2646d82fac81
 
 pkgname = nexa-bin
