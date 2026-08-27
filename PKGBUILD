@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fasthex"
 license=('Apache-2.0')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('rustup')
 provides=('fasthex')
 conflicts=('fasthex-bin')
 source=("fasthex-$pkgver.tar.gz::https://github.com/CallMeAlphabet/fasthex/archive/refs/tags/latest.tar.gz")
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
     cd "$srcdir/build"
-    export RUSTUP_TOOLCHAIN=stable
+    export RUSTUP_TOOLCHAIN=nightly
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
