@@ -1,17 +1,15 @@
 pkgbase = fastwc-bin
 	pkgdesc = fastwc, a fast wc rewrite, prebuilt binary
-	pkgver = 0
+	pkgver = 31
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastwc
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = git
-	makedepends = curl
 	depends = gcc-libs
 	provides = fastwc
 	conflicts = fastwc
-	source = fastwc::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl
-	source = fastwc.sha256::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl.sha256
+	source = fastwc-31::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl
+	source = fastwc-31.sha256::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl.sha256
 	sha256sums = SKIP
 	sha256sums = SKIP
 

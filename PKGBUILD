@@ -1,29 +1,24 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastwc-bin
-pkgver=0
+pkgver=31
 pkgrel=1
 pkgdesc="fastwc, a fast wc rewrite, prebuilt binary"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastwc"
 license=('Apache-2.0')
 depends=('gcc-libs')
-makedepends=('git' 'curl')
 provides=('fastwc')
 conflicts=('fastwc')
-source=("fastwc::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl"
-        "fastwc.sha256::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl.sha256")
+source=("fastwc-$pkgver::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl"
+        "fastwc-$pkgver.sha256::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl.sha256")
 sha256sums=('SKIP' 'SKIP')
-
-pkgver() {
-    date -u -d "$(curl -s "https://api.github.com/repos/CallMeAlphabet/fastwc/commits/latest" | grep -m1 '"date"' | cut -d'"' -f4)" +%Y%m%d%H%M%S
-}
 
 check() {
     cd "$srcdir"
-    sha256sum -c <(sed "s/fastwc-x86_64-linux-musl/fastwc/" fastwc.sha256)
+    sha256sum -c <(sed "s/fastwc-x86_64-linux-musl/fastwc-$pkgver/" "fastwc-$pkgver.sha256")
 }
 
 package() {
     cd "$srcdir"
-    install -Dm755 "fastwc" "$pkgdir/usr/bin/fastwc"
+    install -Dm755 "fastwc-$pkgver" "$pkgdir/usr/bin/fastwc"
 }
