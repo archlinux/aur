@@ -2,7 +2,7 @@
 # Contributor: Legacy Installer <contact dot legacyinstaller at gmail dot com>
 # Contributor: oscareczek <oscareczek at gmail dot com>
 pkgname=pcbox-qt5-git
-pkgver=6.0
+pkgver=r26638.c600438
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones (Built with qt5)'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
@@ -39,10 +39,10 @@ build() {
 package() {
     DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
     for i in 16x16 20x20 24x24 32x32 48x48 64x64 72x72 128x128 256x256; do
-        install -Dm644 "$srcdir/$pkgname/src/unix/assets/$i/net.pcbox.PCBox.png" -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
+        install -Dm644 "$srcdir/$pkgname/src/unix/assets/$i/net.86box.86Box.png" -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
     done
     mkdir "${pkgdir}/usr/share/applications"
-    install -Dm644 "$srcdir/$pkgname/src/unix/assets/net.pcbox.PCBox.desktop" "${pkgdir}/share/applications/net.pcbox.PCBox.desktop"
+    install -Dm644 "$srcdir/$pkgname/src/unix/assets/net.86box.86Box.desktop" "${pkgdir}/share/applications/net.pcbox.PCBox.desktop"
     sed -i 's#Name=86Box#Name=PCBox#g' "${pkgdir}/share/applications/net.pcbox.PCBox.desktop"
     sed -i 's#Exec=86Box#Exec=PCBox -P .local/share/PCBox#g' "${pkgdir}/share/applications/net.pcbox.PCBox.desktop"
 }
