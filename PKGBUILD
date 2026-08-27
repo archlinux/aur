@@ -1,5 +1,5 @@
 pkgname=biject
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Schema-aware data diff tool with a Rust CLI and Tauri desktop UI"
 arch=('x86_64')
@@ -32,8 +32,8 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/vixinxiviir/biject/archive/refs/tags/v${pkgver}.tar.gz"
   "${pkgname}-vendor-${pkgver}.tar.zst::https://github.com/vixinxiviir/biject/releases/download/v${pkgver}/${pkgname}-vendor-${pkgver}.tar.zst"
 )
-sha256sums=('a66ff721239a6023bfc7cf08ed1a1cc6ab8886fcbc6bc5dbabdbad1601117c07'
-            '87fde921a0aedc0b807ff0b9acdb3692fc1b89324a2b91da81faba3c525d350d')
+sha256sums=('f59a95f15a8d74ed7436154036443f541597039504f690268b3b69a39034b6e0'
+            '929c72b5f0e4af06d49aaefad25a43642154d30525c11c96fb5cbd7b6ae4ee52')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
