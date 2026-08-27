@@ -1,4 +1,4 @@
-pkgbase = n80-printer-driver
+pkgbase = n80-printer-bin
 	pkgdesc = Installs the driver tarball for the N80 Thermal printer (sold by the company NDYIN)
 	pkgver = 1.0.5
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = n80-printer-driver
 	source = https://cdn.shopify.com/s/files/1/0608/6128/4400/files/N80-Driver-Linux-v1.0.5.tar.gz
 	sha512sums = e59b002843944ec715d08ec5603c41465039bea06e5a4811ced0aa5cd72ff0f2acc2ec4d8ccc71c636a7e15bd976b5f2d7a14554cb9c8aba4fcfae84bc381db1
 
-pkgname = n80-printer-driver
+pkgname = n80-printer-bin

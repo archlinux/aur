@@ -1,4 +1,6 @@
-pkgname="n80-printer-driver"
+# Maintainer: ZonicTrout AUR@zonictrout.net 
+#
+pkgname="n80-printer-bin"
 pkgver="1.0.5"
 pkgrel="1"
 pkgdesc="Installs the driver tarball for the N80 Thermal printer (sold by the company NDYIN)"
