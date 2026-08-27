@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=fasthex-bin
-pkgver=43
+pkgver=44
 pkgrel=1
 pkgdesc="fasthex, a very fast hex dumper, prebuilt binary"
 arch=('x86_64')
