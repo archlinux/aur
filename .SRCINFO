@@ -1,0 +1,24 @@
+pkgbase = reinamager-bin
+	pkgdesc = A lightweight galgame/visual-novel manager,Under development...
+	pkgver = 0.29.1
+	pkgrel = 1
+	url = https://github.com/huoshen80/ReinaManager
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/huoshen80/ReinaManager/releases/download/v0.29.1/ReinaManager_0.29.1_amd64.deb
+	sha256sums_x86_64 = b790d738e53ab579fb6fc7d89d2b840e0fbd2e17eb654beb58f7fb95ee33e6f8
+	source_aarch64 = https://github.com/huoshen80/ReinaManager/releases/download/v0.29.1/ReinaManager_0.29.1_arm64.deb
+	sha256sums_aarch64 = 675693d878b4872ac8cad1b589fcda587cfe648382e7d185c4875758dec6a0ef
+
+pkgname = reinamager-bin
