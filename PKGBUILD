@@ -1,7 +1,7 @@
 # Maintainer: RiDDiX <github@egu-rel.de>
 
 pkgname=adguard-tray
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="System tray monitor and controller for adguard-cli (KDE Plasma & Hyprland)"
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
     'nss: install the HTTPS certificate into browsers (certutil)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ad10ef1dc90cd3a5ed16ef95e7678eda2342656312dfe36d80e07f68bbd2fee2')
+sha256sums=('f2a5e8bf846ad28e13e9e4f530fb4116ee404113957f5223ed55350c6d3a1ced')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
