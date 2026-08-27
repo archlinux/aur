@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=timeit-bin
-pkgver=22
+pkgver=23
 pkgrel=1
 pkgdesc="timeit, a precise command timing utility, prebuilt binary"
 arch=('x86_64')
