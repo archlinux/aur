@@ -1,7 +1,7 @@
 pkgbase = xrat
 	pkgdesc = Rust CLI/TUI proxy manager for Xray-core, V2Ray-core, and sing-box
 	pkgver = 0.19.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mhyrzt/xrat
 	install = xrat.install
 	arch = x86_64
