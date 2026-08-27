@@ -1,0 +1,16 @@
+pkgbase = progress-sync-agent-bin
+	pkgdesc = A small application that runs on your computer and keeps your files in sync with the Nuclia cloud.
+	pkgver = 1.9.15
+	pkgrel = 1
+	url = https://github.com/nuclia/sync-agent
+	arch = x86_64
+	license = MIT
+	depends = electron40
+	provides = progress-sync-agent=1.9.15
+	conflicts = progress-sync-agent
+	source = progress-sync-agent-1.9.15.rpm::https://github.com/nuclia/sync-agent/releases/download/1.9.15/progress-sync-agent-1.9.15-1.x86_64.rpm
+	source = progress-sync-agent.sh
+	sha256sums = d86c9abdc78584722c239a4633305f892b079473c6c54bbb567292aca506247f
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
+
+pkgname = progress-sync-agent-bin
