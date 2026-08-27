@@ -3,26 +3,30 @@
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-bin-extras
 pkgdesc="ROCm Core SDK - Extras (MIGraphX)"
-pkgver=7.14.0
-pkgrel=2
+pkgver=10.0.0
+pkgrel=1
 epoch=0
 arch=('x86_64')
-url='http://www.amd.com'
+url='https://www.amd.com'
 license=('custom:AMD')
 depends=('ocl-icd' 'gcc-libs')
-provides=('migraphx') # 'mivisionx' 'hipfort' 'rocpydecode' 'rocal'
-conflicts=('migraphx')
+provides=('migraphx' 'rvs' 'roc-optiq') # 'mivisionx' 'hipfort' 'rocpydecode' 'rocal'
+conflicts=('migraphx' 'rvs' 'roc-optiq')
 options=('!strip')
 noextract=()
 
 source=(
-"https://rocm.frameworks.amd.com/deb-multi-arch/amdrocm-migraphx/pool/main/amdrocm-migraphx_2.16.0-3.py314_amd64.deb"
-"https://rocm.frameworks.amd.com/deb-multi-arch/amdrocm-migraphx/pool/main/amdrocm-migraphx-dev_2.16.0-3.py314_amd64.deb"
+"https://stable.repo.amd.com/rocm/migraphx/tarball/migraphx-2.17.0%2Brocm10.0.0.tar.gz"
+"https://github.com/ROCm/roc-optiq/releases/download/v1.0.0-optiq/roc-optiq_1.0.0.2-1_amd64-ubuntu-26.deb"
+"https://stable.repo.amd.com/rocm/extras/rvs/packages/ubuntu2604/pool/main/amdrocm10-rvs_1.6.122-708_amd64.deb"
+# "https://rocm.frameworks.amd.com/deb-multi-arch/amdrocm-migraphx/pool/main/amdrocm-migraphx_2.16.0-3.py314_amd64.deb"
+# "https://rocm.frameworks.amd.com/deb-multi-arch/amdrocm-migraphx/pool/main/amdrocm-migraphx-dev_2.16.0-3.py314_amd64.deb"
 )
 
 sha256sums=(
-"6741f52c748f9befd53324b0f0c47998be1146cc815267bd128d7a2a2ebadeb0"
-"b0461d57e5c9372107e26af658f539ca58207a46ac5bf22251acd5259156b3ce"
+"bf4def72ae884f5373ed3b7315ecf3bb2e4f7107d130592d5bb0ccc37d496e54"
+"d6744d12af4526cf7538361f6faed84f54844a7fd05be3221d436ecdc7607f20"
+"989649e8306a8a8417e98f9c07314437e90a85704d8c9a99fc163b2476d5f7f9"
 )
 
 package() {
@@ -39,6 +43,8 @@ package() {
         fi
     done
 
-    install -d "${pkgdir}/opt/rocm/extras-7"
-    mv "${srcdir}/opt/rocm/"* "${pkgdir}/opt/rocm/extras-7/"
+    mkdir -p "$pkgdir/opt"
+
+    cp -a "$srcdir/migraphx-2.17.0+rocm10.0.0" "$pkgdir/opt/"
+    cp -a "$srcdir/opt/." "$pkgdir/opt/"
 }
