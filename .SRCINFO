@@ -9,8 +9,8 @@ pkgbase = fastmc-bin
 	depends = gcc-libs
 	provides = fastmc
 	conflicts = fastmc
-	source = fastmc::https://github.com/CallMeAlphabet/fastmc/releases/download/latest/fastmc
-	source = fastmc.sha256::https://github.com/CallMeAlphabet/fastmc/releases/download/latest/fastmc.sha256
+	source = fastmc::https://github.com/CallMeAlphabet/fastmc/releases/download/latest/fastmc-x86_64-linux-musl
+	source = fastmc.sha256::https://github.com/CallMeAlphabet/fastmc/releases/download/latest/fastmc-x86_64-linux-musl.sha256
 	sha256sums = SKIP
 	sha256sums = SKIP
 

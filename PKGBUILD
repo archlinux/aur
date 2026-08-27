@@ -10,8 +10,8 @@ depends=('gcc-libs')
 makedepends=('git')
 provides=('fastmc')
 conflicts=('fastmc')
-source=("fastmc::https://github.com/CallMeAlphabet/fastmc/releases/download/latest/fastmc"
-        "fastmc.sha256::https://github.com/CallMeAlphabet/fastmc/releases/download/latest/fastmc.sha256")
+source=("fastmc::https://github.com/CallMeAlphabet/fastmc/releases/download/latest/fastmc-x86_64-linux-musl"
+        "fastmc.sha256::https://github.com/CallMeAlphabet/fastmc/releases/download/latest/fastmc-x86_64-linux-musl.sha256")
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
