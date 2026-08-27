@@ -1,0 +1,4 @@
+[eidklient-native]
+source = "regex"
+url = "https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_release_notes.txt"
+regex = 'verzia (.+) Linux'
