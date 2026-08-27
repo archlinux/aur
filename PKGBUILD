@@ -3,7 +3,7 @@
 
 
 pkgname=eddie-ui
-pkgver=v2.26.2
+pkgver=2.26.2
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - UI'
 arch=('x86_64' 'aarch64' 'armv7l')
@@ -15,7 +15,7 @@ makedepends=(git cmake patchelf 'dotnet-runtime>=10' 'dotnet-sdk>=10' mono-msbui
 provides=('eddie-ui')
 conflicts=('airvpn' 'airvpn-beta-bin' 'airvpn-git')
 install=eddie-ui.install
-source=('https://github.com/AirVPN/Eddie/archive/v2.26.2.tar.gz')
+source=('https://github.com/AirVPN/Eddie/archive/2.26.2.tar.gz')
 sha1sums=('077f820a53469a0737fd2d1dd7c043708398f21f')
 options=('!strip') # Incompatible with net10
 
