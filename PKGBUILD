@@ -1,7 +1,7 @@
 # Maintainer: Ednition <noreply@ednition.com>
 
 pkgname=ednition-catapult
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="Catapult CLI — deploy and manage containerized apps on AWS (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -9,10 +9,10 @@ url="https://catapultapp.io"
 license=('custom')
 provides=('catapult')
 conflicts=('catapult')
-source_x86_64=("https://dl.catapultapp.io/cli/v0.20.0/catapult_0.20.0_linux_x86_64.tar.gz")
-sha256sums_x86_64=('5eb039b7ffd4f899468086935dcc92ce2e3f8235a21c11c76bbab46915e48b6c')
-source_aarch64=("https://dl.catapultapp.io/cli/v0.20.0/catapult_0.20.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('f5683d281257437635dfaf740e3cdf42290d7a05a13d30b63fa34bc79e489ddb')
+source_x86_64=("https://dl.catapultapp.io/cli/v0.20.1/catapult_0.20.1_linux_x86_64.tar.gz")
+sha256sums_x86_64=('15b43002d27d543735b23a1817256c6aa0d200927606679f18c97f6e84940af0')
+source_aarch64=("https://dl.catapultapp.io/cli/v0.20.1/catapult_0.20.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('9b16f415ea58ac655b190ff27dfb3c2cf43a15ab162158d55657e83e3ac4fade')
 
 package() {
   install -Dm755 "./catapult" "${pkgdir}/usr/bin/catapult"
