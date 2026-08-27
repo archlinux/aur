@@ -1,6 +1,6 @@
 # Maintainer: 0x90shell
 pkgname=jstimeout-git
-pkgver=r12.d40560d
+pkgver=r20.41c8a51
 pkgrel=1
 pkgdesc='Auto-disconnect idle Bluetooth gamepads after a configurable timeout'
 arch=('x86_64' 'aarch64')

@@ -1,6 +1,6 @@
 pkgbase = jstimeout-git
 	pkgdesc = Auto-disconnect idle Bluetooth gamepads after a configurable timeout
-	pkgver = r12.d40560d
+	pkgver = r20.41c8a51
 	pkgrel = 1
 	url = https://github.com/0x90shell/jstimeout
 	install = jstimeout-git.install
