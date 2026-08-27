@@ -1,6 +1,6 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=k3k-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Kubernetes in Kubernetes - CLI tool for creating and managing K3s clusters within Kubernetes'
 arch=('x86_64' 'aarch64')
@@ -13,9 +13,9 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/rancher/k3k/v${pkg
 source_x86_64=("${pkgname}-${pkgver}::https://github.com/rancher/k3k/releases/download/v${pkgver}/k3kcli-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}::https://github.com/rancher/k3k/releases/download/v${pkgver}/k3kcli-linux-arm64")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
-            'f3ed0585d0fab832bd6d7339e0102dbc357e8b052ef96c05cac05e50698e8c03')
-sha256sums_x86_64=('bb74d6ead3b7c5dd1cd843e32c3a2affd9a88b3b554a8c55c9105444393e3952')
-sha256sums_aarch64=('bb74d6ead3b7c5dd1cd843e32c3a2affd9a88b3b554a8c55c9105444393e3952')
+            '0c3537aa7e6baad00fa0c20c5a053dc295472a8813eaa0866db53a601bf70797')
+sha256sums_x86_64=('35a95255ab10cdd688e00527092d30a68b709bba1ba70903c07885fae4015f4c')
+sha256sums_aarch64=('35a95255ab10cdd688e00527092d30a68b709bba1ba70903c07885fae4015f4c')
 
 package() {
     install -Dm755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/k3kcli"
