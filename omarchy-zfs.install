@@ -68,7 +68,7 @@ _cleanup_legacy_unowned() {
 }
 
 _mask_snapper_units() {
-  # Our omarchy dep drags in snapper + limine-snapper-sync; on ZFS they're
+  # Omarchy drags in snapper + limine-snapper-sync; on ZFS they're
   # inert. Mask them so they don't error on a system with no snapper config.
   # Masking also survives omarchy's snapper.sh trying to re-enable them --
   # `systemctl enable` on a masked unit fails, and snapper.sh swallows it.
@@ -90,7 +90,31 @@ _guard_bootorder() {
   fi
 }
 
+_require_omarchy() {
+  # omarchy is not a pacman dependency: it ships only from pkgs.omarchy.org, so
+  # declaring it would make this package unbuildable in a clean chroot and
+  # unresolvable for anyone without that repo. Nothing else enforces it, so say
+  # so here. Checked on disk rather than with `pacman -Q` because the local db
+  # is mid-transaction while this scriptlet runs.
+  if [[ -x /usr/bin/omarchy ]]; then
+    return 0
+  fi
+  cat >&2 <<'WARN'
+:: omarchy-zfs: Omarchy does not appear to be installed (/usr/bin/omarchy is missing).
+::
+::   This package is a support layer for Omarchy Quattro. Its hooks re-assert
+::   Omarchy's mkinitcpio drop-in, clean up the snapper config Omarchy ships,
+::   and keep ZFSBootMenu ahead of Omarchy's limine in the EFI boot order. On a
+::   system without Omarchy there is nothing for any of that to attach to.
+::
+::   Omarchy is not in the official repos or the AUR. Install it from
+::   pkgs.omarchy.org, then reinstall this package.
+WARN
+  return 1
+}
+
 _common() {
+  _require_omarchy || true
   if ! _is_zfs_root; then
     echo ":: omarchy-zfs: root is not ZFS -- ZFS tooling installed but inactive."
     return 0

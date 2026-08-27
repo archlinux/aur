@@ -1,15 +1,18 @@
 # Maintainer: Pete Jackson <pete@tern.travel>
 pkgname=omarchy-zfs
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Root-on-ZFS + ZFSBootMenu support layer for Omarchy Quattro (needs the omarchy repo from pkgs.omarchy.org)"
 arch=('any')
 url="https://github.com/peteonrails/omarchy-zfs"
 license=('MIT')
-# Hard-dep omarchy (decision 7.1): one-command install of the full Quattro
-# stack plus the ZFS layer. omarchy-dev provides/conflicts omarchy, so this is
-# satisfied on any channel. Inert limine/snapper pulled in transitively are
-# masked/ignored by the .install.
+# omarchy is NOT a hard dep, and that is deliberate rather than an oversight.
+# It ships only from pkgs.omarchy.org, so it is satisfiable from neither the
+# official repos nor the AUR. Declaring it made the package unbuildable in a
+# clean chroot, which is how AUR packages are normally reviewed, and AUR
+# guidelines expect every dependency to come from the repos or the AUR. It was
+# also masking the real error: an AUR helper reported "missing dep" with no clue
+# which one. The .install now checks for it at runtime and says so plainly.
 #
 # ZFS deps use the VIRTUAL provides (`zfs`, `zfs-utils`) rather than a concrete
 # package, so any provider satisfies them: zfs-dkms / zfs-dkms-git (DKMS,
@@ -17,7 +20,6 @@ license=('MIT')
 # breaking existing installs and lets the kernel strategy be chosen at install
 # time (see omarchy-zfs-kernel-install + the kernel guard).
 depends=(
-  'omarchy'
   'zfs'          # kernel module — any provider (zfs-dkms, zfs-dkms-git, zfs-linux, zfs-linux-lts)
   'zfs-utils'    # userspace + the /usr/lib/initcpio zfs hook — any provider
   'libunwind'    # zfs-utils(-git) links libunwind.so.8 but doesn't declare it;
@@ -26,6 +28,9 @@ depends=(
   'efibootmgr'
 )
 optdepends=(
+  # Required in practice, but unsatisfiable by pacman: it comes from the
+  # third-party repo at pkgs.omarchy.org. omarchy-dev provides/conflicts it.
+  'omarchy: the desktop this integrates with. REQUIRED at runtime; install it from pkgs.omarchy.org'
   # zfsbootmenu is AUR/manual (no binary repo), and ZBM is frequently installed
   # from prebuilt EFI images rather than the package -- so it CANNOT be a hard
   # dep (pacman -S omarchy-zfs would fail to resolve it). Install ZBM yourself.
