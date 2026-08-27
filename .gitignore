@@ -1,1 +1,14 @@
-*.run
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE/*
+!REUSE.toml
+!nvchecker.toml
+!nvidia-utils.install
+!nvidia-drm-outputclass.conf
+!nvidia-utils.sysusers
+!nvidia.rules
+!systemd-homed-override.conf
+!systemd-suspend-override.conf
+!nvidia-utils.conf
