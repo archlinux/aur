@@ -20,7 +20,7 @@ provides=("${_pypi_package}")
 conflicts=("python-${pkgname}")
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-poetry' 'python-poetry-core')
-depends=('python' 'python-scipy' 'python-tqdm' 'python-pkg_resources' 'python-click' 'python-matplotlib' 'python-psutil' 'python-numpy' 'python-colorama' 'python-beeprint')
+depends=('python' 'python-scipy' 'python-tqdm' 'python-click' 'python-matplotlib' 'python-psutil' 'python-numpy' 'python-colorama' 'python-beeprint')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")

@@ -14,7 +14,6 @@ pkgbase = cmdbench
 	depends = python
 	depends = python-scipy
 	depends = python-tqdm
-	depends = python-pkg_resources
 	depends = python-click
 	depends = python-matplotlib
 	depends = python-psutil
