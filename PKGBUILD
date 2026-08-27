@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A TUI manual viewer for every command-line tool you have"
 
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('99c1179e1fb2dfbaf18f16d00cc4f6aca6e6cbac3785b224abd528677872797e')
-sha256sums_aarch64=('2572295c28bba9d527425aecd56aaa57cf7893be73beb7e6438ca5da62b3c92e')
+sha256sums_x86_64=('ce63092b966ef9e965be6f08b3e40bf2d99fdae847b612051baa503d5d85df11')
+sha256sums_aarch64=('772d0c83bd630671ccd657029cb8f93203056ff09425c508a21cd62133f4972e')
 
 
 case ${CARCH} in
