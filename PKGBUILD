@@ -1,6 +1,6 @@
 pkgname=mingw-w64-coin-or-ipopt
-pkgver=3.14.19
-pkgrel=2
+pkgver=3.14.20
+pkgrel=1
 pkgdesc="Interior Point OPTimizer (mingw-w64)"
 arch=('any')
 url="https://projects.coin-or.org/Ipopt"
@@ -10,9 +10,9 @@ depends=('mingw-w64-lapack' 'mingw-w64-coin-or-asl' 'mingw-w64-coin-or-coinmumps
 makedepends=('mingw-w64-configure' 'mingw-w64-wine' 'wget')
 options=('staticlibs' '!buildflags' '!strip')
 source=("https://github.com/coin-or/Ipopt/archive/releases/${pkgver}.tar.gz")
-sha256sums=('b3eb84a23812b53a3325bcd2c599de2b0f5df45a18ed251f9e3c1cd893136287')
+sha256sums=('43bddd6fa793b1694aa94d6129fe3e4a8d452d97a84ef5f2ff721c8047c75605')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare () {
   cd "$srcdir/Ipopt-releases-$pkgver"
