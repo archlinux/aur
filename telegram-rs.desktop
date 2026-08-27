@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Telegram RS
+Comment=Feather-light Telegram client in Rust
+Exec=/usr/bin/telegram-rs
+Terminal=false
+Categories=Network;Chat;
+StartupNotify=true
