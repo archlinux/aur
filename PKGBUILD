@@ -1,6 +1,6 @@
 # Maintainer: vredix-openvuture <https://github.com/vredix-openvuture>
 pkgname=velumeron-git
-pkgver=0.1.0.r304.b39d6f8
+pkgver=0.1.0.r306.38d8dd6
 pkgrel=1
 pkgdesc="Modular desktop for Wayland compositors — quickshell shell, GUI onboarding & settings, wallust theming"
 arch=('any')

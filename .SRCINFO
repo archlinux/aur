@@ -1,6 +1,6 @@
 pkgbase = velumeron-git
 	pkgdesc = Modular desktop for Wayland compositors — quickshell shell, GUI onboarding & settings, wallust theming
-	pkgver = 0.1.0.r304.b39d6f8
+	pkgver = 0.1.0.r306.38d8dd6
 	pkgrel = 1
 	url = https://github.com/vredix-openvuture/velumeron
 	install = velumeron.install
