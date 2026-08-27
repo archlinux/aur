@@ -27,7 +27,7 @@ sha256sums=('SKIP'
             'cd04f9e6b3460d6a3513902b807936a90999d2c4f56f34447f7e8727a8832138'
             '77e0513dc1a469fb3bceec4c7fb5ad3f403109787eda05be047ec17fd56868cb')
 source_x86_64=("node-pty-x86_64.tgz::${_registry}/@lydell/node-pty-linux-x64/-/node-pty-linux-x64-1.2.0-beta.14.tgz")
-source_aarch64=("node-pty-aarh64.tgz::${_registry}/@lydell/node-pty-linux-arm64/-/node-pty-linux-arm64-1.2.0-beta.14.tgz")
+source_aarch64=("node-pty-aarch64.tgz::${_registry}/@lydell/node-pty-linux-arm64/-/node-pty-linux-arm64-1.2.0-beta.14.tgz")
 sha256sums_x86_64=('53bee2cd02265b118392f7d99a4c72337f4a5003c0d0f9ee01646c19af59fa1f')
 sha256sums_aarch64=('247af58856c286d10ded526e11016a9bbc900cbdf7ec5f75910801d3a6919d62')
 changelog="changelog.md"
