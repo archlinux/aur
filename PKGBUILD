@@ -5,11 +5,11 @@ _rocm_repo='https://repo.amd.com/rocm/packages-multi-arch/ubuntu2604'
 
 pkgname=opencl-amd
 pkgdesc="ROCm components repackaged from AMD's Ubuntu releases (ROCr runtime, OpenCL runtime, HIP runtime) - This package is intended to work along with the free amdgpu stack."
-pkgver=7.14.0
-pkgrel=2
+pkgver=10.0.0
+pkgrel=1
 epoch=1
 arch=('x86_64')
-url='http://www.amd.com'
+url='https://www.amd.com'
 license=('custom:AMD')
 depends=('ocl-icd' 'gcc-libs')
 provides=('opencl-driver' 'amdrocm-llvm' 'amdrocm-runtime' 'amdrocm-base' 'amdrocm-opencl' 'amdrocm-sysdeps')
@@ -19,20 +19,20 @@ optdepends=('clinfo')
 
 source=(
 #runtime
-"https://repo.amd.com/rocm/packages-multi-arch/ubuntu2604/pool/main/amdrocm-sysdeps7.14_7.14.0-3_amd64.deb"
-"https://repo.amd.com/rocm/packages-multi-arch/ubuntu2604/pool/main/amdrocm-llvm7.14_7.14.0-3_amd64.deb"
-"https://repo.amd.com/rocm/packages-multi-arch/ubuntu2604/pool/main/amdrocm-runtime7.14_7.14.0-3_amd64.deb"
-"https://repo.amd.com/rocm/packages-multi-arch/ubuntu2604/pool/main/amdrocm-base7.14_7.14.0-3_amd64.deb"
-"https://repo.amd.com/rocm/packages-multi-arch/ubuntu2604/pool/main/amdrocm-opencl7.14_7.14.0-3_amd64.deb"
+"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-sysdeps10.0_10.0.0-4_amd64.deb"
+"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-llvm10.0_10.0.0-4_amd64.deb"
+"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-runtime10.0_10.0.0-4_amd64.deb"
+"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-base10.0_10.0.0-4_amd64.deb"
+"https://stable.repo.amd.com/rocm/core/packages/ubuntu2604/pool/main/amdrocm-opencl10.0_10.0.0-4_amd64.deb"
 #dev - todo
 )
 
 sha256sums=(
-"6e6ab8b0560f9157ceb2afefe481eddb93789041cbb53137018571d749205a8b"
-"46f336f876528d0c2c98503491cb1e1e176986caaf2ea281f84c56c1a8822747"
-"3b940320e839d68e05360ef70e6c4d3222cd135a4b02d68ece2267366330748c"
-"4221475e72a3481ae746f7562d6db2094133bb5b9c394fd7f9f1820a5f83695b"
-"58dad7d4d0b6ef795117b818aecfee7e2719c66f3fa9151a3c07123a839c0d2d"
+"6e99e9d4a9bce350d86624b723586e5e81153aab00ebe989b2ef0e0758c23189"
+"24a33e37d845f1e6809c34f2eebfe4686a4bd76befaf1e1b23605e3978f224ef"
+"531aa7b229a6e42f2048fa4b539e15623a9df679db4cdd0b4bf7e582be0e276d"
+"9f179ac2d9298b07bd7153f780f5cf210e0558281835e2b34753d32e3e3a6e1e"
+"06983f91cd417015411013044a32608784d340cb6104ba1e8b8dbf0fdbd394fa"
 )
 
 package() {
@@ -50,7 +50,7 @@ package() {
     done
 
     mv "${srcdir}/opt/" "${pkgdir}/"
-    mv "${pkgdir}/opt/rocm/core-7.14" "${pkgdir}/opt/rocm/core"
+    mv "${pkgdir}/opt/rocm/core-10.0" "${pkgdir}/opt/rocm/core"
 
     mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
     cd "${pkgdir}/opt/amdgpu/share/libdrm"
