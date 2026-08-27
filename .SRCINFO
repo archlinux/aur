@@ -1,6 +1,6 @@
 pkgbase = buzz-bin
 	pkgdesc = Self-hostable workspace where humans and AI agents build together, on a relay you own
-	pkgver = 0.5.17
+	pkgver = 0.5.20
 	pkgrel = 1
 	url = https://github.com/block/buzz
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = buzz-bin
 	conflicts = buzz-appimage
 	options = !strip
 	options = !debug
-	source = https://github.com/block/buzz/releases/download/desktop-v0.5.17/Buzz_0.5.17_amd64.deb
-	sha256sums = cf28de6ba023fdb6eb676f183579e1df4d83bc29b4ebfa6c26ad8e3f327e0fef
+	source = https://github.com/block/buzz/releases/download/desktop-v0.5.20/Buzz_0.5.20_amd64.deb
+	sha256sums = 55c7de42bc196aed69597b01c25b3daf78aa8840f0f33174d7534e87cac71424
 
 pkgname = buzz-bin
