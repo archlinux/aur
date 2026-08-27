@@ -1,0 +1,21 @@
+pkgbase = innoextract-crazy-max
+	pkgdesc = A tool to extract installers created by Inno Setup - crazy-max fork
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://github.com/crazy-max/innoextract
+	arch = x86_64
+	license = ZLIB
+	makedepends = boost
+	makedepends = cmake
+	depends = boost-libs
+	depends = xz
+	provides = innoextract
+	conflicts = innoextract
+	conflicts = innoextract-git
+	conflicts = innoextract-bin
+	conflicts = innoextract-crazy-max-git
+	conflicts = innoextract-crazy-max-bin
+	source = innoextract-1.13.0.tar.gz::https://github.com/crazy-max/innoextract/archive/refs/tags/v1.13.0.tar.gz
+	sha256sums = f41b8afcd51d81b2be8cef58004ce88d64337e1092617cfa3f3de350834e0961
+
+pkgname = innoextract-crazy-max
