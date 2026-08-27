@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/pinecone-io/pinecone-python-client.git"
 prefix = "v"
+include_regex = "v[\\d\\.]+\\d"
