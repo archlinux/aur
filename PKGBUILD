@@ -1,7 +1,7 @@
 # Maintainer: SmallClover <aur at clvr dot one>
 
 pkgname=bdcli-bin
-pkgver=0.3.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="CLI for installing and managing BetterDiscord "
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ options=(!strip)
 source_x86_64=("https://github.com/BetterDiscord/cli/releases/download/v${pkgver}/bdcli_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/BetterDiscord/cli/releases/download/v${pkgver}/bdcli_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('77c39eecd4b3eba0a27f5a3806a23d6be7a21f961afda661374ff8223ffefeab')
-sha256sums_aarch64=('84eb6b8c4d3037e3890638d583d7c10f0c40f8eebe2b0a680c5c30fddea757f4')
+sha256sums_x86_64=('df0a97f64be42abed3bb534c7770207ca78f79e5f82eaeb6027f2cbd46e0df44')
+sha256sums_aarch64=('317c607294fa95fda694d33796a693b49433f7496e10e3845120a6de432b3a5c')
 
 package() {
   cd "$srcdir"
