@@ -1,13 +1,14 @@
 pkgbase = pi-agent-desktop-bin
 	pkgdesc = Desktop UI for browsing sessions and working with the pi coding agent (prebuilt binary)
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abcwyc/pi-agent-desktop
 	arch = x86_64
 	license = MIT
 	depends = gtk3
-	depends = libayatana-appindicator
 	depends = webkit2gtk-4.1
+	depends = nodejs>=22.19.0
+	depends = npm
 	provides = pi-agent-desktop
 	conflicts = pi-agent-desktop
 	options = !strip
