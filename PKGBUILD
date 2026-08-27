@@ -3,7 +3,7 @@
 _pkgname=apalache
 _prjname=$_pkgname-mc
 pkgname=$_pkgname-bin
-pkgver=0.58.3
+pkgver=0.62.2
 pkgrel=1
 pkgdesc="A symbolic model checker for TLA+"
 arch=('any')
@@ -15,17 +15,22 @@ depends=('java-runtime>=17'
          'findutils'
          'coreutils'
          'util-linux')
-makedepends=('patch')
 install=$_pkgname.install
 source=("https://github.com/${_prjname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tgz"
-        'sys-install.patch'
         'apalache.service')
-sha256sums=('ba622db9538aebf942cc7a7815f942a6b2b419012707e16dfdc25a73ff95d0a5'
-            'c694360265a24c3099e628079733bb442ee225393dc9b3dcc5c14a43081e3ca4'
+sha256sums=('765f610537281a0f25b8c30f2554f19523e2859c824e80e62276653ee23c10e2'
             'ca75ed24e2683e8820bc1482c7d6afc4d146d1c500abc03f2f45035e883a151c')
 
 prepare() {
-    patch --directory="${srcdir}/${_pkgname}-${pkgver}/bin" --forward --strip=1 --input="${srcdir}/sys-install.patch"
+    local launcher="${srcdir}/${_pkgname}-${pkgver}/bin/${_pkgname}-mc"
+
+    sed -i \
+        's|^APALACHE_JAR=.*$|APALACHE_JAR=${APALACHE_JAR:-"/usr/share/java/apalache/apalache.jar"}|' \
+        "$launcher"
+
+    grep -qxF \
+        'APALACHE_JAR=${APALACHE_JAR:-"/usr/share/java/apalache/apalache.jar"}' \
+        "$launcher"
 }
 
 package() {
