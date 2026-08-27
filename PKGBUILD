@@ -2,7 +2,7 @@
 
 pkgname=whydpi
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host"
 arch=('any')
 url="https://github.com/byrdltd/whyDPI"
