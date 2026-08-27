@@ -1,12 +1,30 @@
 pkgbase = xdg-desktop-portal-umbriel-git
-	pkgdesc = Placeholder for the Umbriel portal backend development package
-	pkgver = 0.0.0
+	pkgdesc = xdg-desktop-portal backend for the Umbriel compositor
+	pkgver = 0.1.0.r0.0
 	pkgrel = 1
 	url = https://github.com/noctalia-dev/xdg-desktop-portal-umbriel
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = nlohmann-json
+	makedepends = pkgconf
+	makedepends = tomlplusplus
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = egl-gbm
+	depends = glibc
+	depends = gtk4
+	depends = libdrm
+	depends = libpipewire
+	depends = sdbus-cpp
+	depends = wayland
+	depends = xdg-desktop-portal
 	provides = xdg-desktop-portal-umbriel
 	conflicts = xdg-desktop-portal-umbriel
+	source = git+https://github.com/noctalia-dev/xdg-desktop-portal-umbriel.git#branch=main
+	b2sums = SKIP
 
 pkgname = xdg-desktop-portal-umbriel-git
