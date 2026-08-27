@@ -2,7 +2,7 @@
 pkgname=lotti-bin
 _pkgname=Lotti
 _debname="com.matthiasn.${pkgname%-bin}"
-pkgver=1.0.13+4351
+pkgver=1.0.16+4356
 pkgrel=1
 pkgdesc="Achieve your goals and keep your data private with Lotti. This life tracking app is designed to help you stay motivated and on track, all while keeping your personal information safe and secure. Now with on-device speech recognition.(Prebuilt version)"
 arch=('x86_64')
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 noextract=("${pkgname%-bin}-${pkgver}.tar.gz")
-sha256sums=('614555513533a91c37a5a51b6b7963094439a2c4030f8e6c9a15c8e047b1e45a'
+sha256sums=('828755f813365d88dc425b8a4f8f5adb540d80432beaf245cc8a6763a0ecf6ca'
             '6c653ecadf03d9566022c30e03185a6cbfc1ab8de1c9ddec899bac356c4d40d7')
 prepare() {
     sed -i -e "
