@@ -2,8 +2,8 @@
 # Contributor: Magnus Bjerke Vik <mbvett@gmail.com>
 
 pkgname=docker-credential-pass
-pkgver=0.9.8
-pkgrel=4
+pkgver=0.9.9
+pkgrel=1
 pkgdesc='Store docker credentials using the Standard Unix Password Manager (pass)'
 arch=(x86_64)
 url='https://github.com/docker/docker-credential-helpers'
@@ -12,11 +12,11 @@ depends=('pass')
 makedepends=('go')
 _gourl='github.com/docker/docker-credential-helpers'
 source_x86_64=(
-  "docker-credential-helpers-v${pkgver}.tar.gz::https://github.com/docker/docker-credential-helpers/archive/refs/tags/v0.9.8.tar.gz"
-  'LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v0.9.8/LICENSE'
+  "docker-credential-helpers-v${pkgver}.tar.gz::https://github.com/docker/docker-credential-helpers/archive/refs/tags/v0.9.9.tar.gz"
+  'LICENSE::https://raw.githubusercontent.com/docker/docker-credential-helpers/v0.9.9/LICENSE'
 )
 sha256sums_x86_64=(
-  '7954c8bcb271021a7b3a8a992a5eb2828af3b5668659582112f2dd672c5242ba'
+  '155207a534d52b2182bb140e532a434d2cc970bd523863d3c5b21472ec9400d6'
   'a6c2a5fdf40879f644bdb0da9042f245e7e263237d623264aafcf2470610ad8c'
 )
 noextract=('docker-credential-helpers-v${pkgver}.tar.gz')
