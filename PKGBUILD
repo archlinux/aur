@@ -1,17 +1,70 @@
 # Maintainer: Noctalia Team <team@noctalia.dev>
 
 pkgname=umbriel-git
-pkgver=0.0.0
+pkgver=0.1.0.r0.0
 pkgrel=1
-pkgdesc='Placeholder for Umbriel, Wayland compositor with scrolling and dwindle layouts'
+pkgdesc='A Wayland compositor built on wlroots and SceneFX'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/umbriel'
 license=('MIT')
+depends=(
+  'cairo'
+  'glibc'
+  'jemalloc'
+  'libdrm'
+  'libinput'
+  'libxkbcommon'
+  'pango'
+  'pixman'
+  'wayland'
+  'wlroots0.20'
+)
+makedepends=(
+  'git'
+  'meson'
+  'ninja'
+  'nlohmann-json'
+  'pkgconf'
+  'tomlplusplus'
+  'wayland-protocols'
+)
+optdepends=(
+  'xdg-desktop-portal-umbriel: screen capture and sharing support'
+  'xwayland-satellite: X11 application support'
+)
 provides=('umbriel')
 conflicts=('umbriel')
+source=('git+https://github.com/noctalia-dev/umbriel.git#branch=main')
+b2sums=('SKIP')
+
+prepare() {
+  git -C "$srcdir/umbriel" submodule update --init --recursive
+}
+
+pkgver() {
+  cd "$srcdir/umbriel"
+  local version
+  version=$(sed -n "s/^[[:space:]]*version: '\([^']*\)'.*/\1/p" meson.build)
+  printf '%s.r%s.%s' \
+    "$version" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short=7 HEAD)"
+}
+
+build() {
+  meson setup "$srcdir/umbriel/build" "$srcdir/umbriel" \
+    --buildtype=release \
+    --prefix=/usr \
+    --wrap-mode=nodownload
+  meson compile -C "$srcdir/umbriel/build"
+}
+
+check() {
+  meson test -C "$srcdir/umbriel/build" --print-errorlogs
+}
 
 package() {
-  install -d "${pkgdir}/usr/share/doc/${pkgname}"
-  printf '%s\n' 'Placeholder package. A build recipe will be added before release.' \
-    > "${pkgdir}/usr/share/doc/${pkgname}/PLACEHOLDER"
+  DESTDIR="$pkgdir" meson install -C "$srcdir/umbriel/build" --skip-subprojects
+  install -Dm644 "$srcdir/umbriel/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

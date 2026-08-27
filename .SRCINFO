@@ -1,12 +1,33 @@
 pkgbase = umbriel-git
-	pkgdesc = Placeholder for Umbriel, Wayland compositor with scrolling and dwindle layouts
-	pkgver = 0.0.0
+	pkgdesc = A Wayland compositor built on wlroots and SceneFX
+	pkgver = 0.1.0.r0.0
 	pkgrel = 1
 	url = https://github.com/noctalia-dev/umbriel
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = nlohmann-json
+	makedepends = pkgconf
+	makedepends = tomlplusplus
+	makedepends = wayland-protocols
+	depends = cairo
+	depends = glibc
+	depends = jemalloc
+	depends = libdrm
+	depends = libinput
+	depends = libxkbcommon
+	depends = pango
+	depends = pixman
+	depends = wayland
+	depends = wlroots0.20
+	optdepends = xdg-desktop-portal-umbriel: screen capture and sharing support
+	optdepends = xwayland-satellite: X11 application support
 	provides = umbriel
 	conflicts = umbriel
+	source = git+https://github.com/noctalia-dev/umbriel.git#branch=main
+	b2sums = SKIP
 
 pkgname = umbriel-git
