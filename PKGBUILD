@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-downloader-git
 _pkgname=Ghost-Downloader
-pkgver=4.3.1.r6.ga771acd
+pkgver=4.3.7.r1.g39d4573
 pkgrel=1
 pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide.多线程下载器 协程下载器."
 arch=('any')
