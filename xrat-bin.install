@@ -1,0 +1,15 @@
+post_install() {
+  echo "========================================================================="
+  echo "  To complete xrat setup (daemon, config, optional cores & completions),"
+  echo "  please run the following command in your user terminal:"
+  echo ""
+  echo "      xrat setup"
+  echo ""
+  echo "  Or run with defaults:"
+  echo "      xrat setup --yes"
+  echo "========================================================================="
+}
+
+post_upgrade() {
+  post_install
+}
