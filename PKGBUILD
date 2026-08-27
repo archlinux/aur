@@ -10,8 +10,8 @@ depends=('gcc-libs')
 makedepends=('git' 'curl')
 provides=('timeit')
 conflicts=('timeit')
-source=("timeit::https://github.com/CallMeAlphabet/timeit/releases/download/latest/timeit"
-        "timeit.sha256::https://github.com/CallMeAlphabet/timeit/releases/download/latest/timeit.sha256")
+source=("timeit::https://github.com/CallMeAlphabet/timeit/releases/download/latest/timeit-x86_64-linux-musl"
+        "timeit.sha256::https://github.com/CallMeAlphabet/timeit/releases/download/latest/timeit-x86_64-linux-musl.sha256")
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {

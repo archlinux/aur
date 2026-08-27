@@ -10,8 +10,8 @@ pkgbase = timeit-bin
 	depends = gcc-libs
 	provides = timeit
 	conflicts = timeit
-	source = timeit::https://github.com/CallMeAlphabet/timeit/releases/download/latest/timeit
-	source = timeit.sha256::https://github.com/CallMeAlphabet/timeit/releases/download/latest/timeit.sha256
+	source = timeit::https://github.com/CallMeAlphabet/timeit/releases/download/latest/timeit-x86_64-linux-musl
+	source = timeit.sha256::https://github.com/CallMeAlphabet/timeit/releases/download/latest/timeit-x86_64-linux-musl.sha256
 	sha256sums = SKIP
 	sha256sums = SKIP
 
