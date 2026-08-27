@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=SysDVR Client
+Comment=Stream switch games to your PC via USB or network
+Path=/opt/SysDVR
+Exec=/opt/SysDVR/SysDVR-Client
+Icon=sysdvr-client
+Categories=Utilities;Video

@@ -7,6 +7,7 @@ pkgbase = sysdvr-client
 	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = dotnet-sdk-9.0
+	makedepends = imagemagick
 	depends = ffmpeg
 	depends = sdl2
 	depends = sdl2_image
@@ -17,6 +18,8 @@ pkgbase = sysdvr-client
 	depends = dotnet-runtime-9.0
 	optdepends = cimguisdl2cross: GUI support
 	source = https://github.com/exelix11/SysDVR/archive/refs/tags/v6.3.tar.gz
+	source = sysdvr-client.desktop
 	sha256sums = b527b6b0cb64242f5f9c0f60a87a8893b44f2f5af3c9117f0669513a99bb0e17
+	sha256sums = 8176e996c762bf1eb7aefe6e5df48197557731258ac3f1bfd6990a734d877c41
 
 pkgname = sysdvr-client
