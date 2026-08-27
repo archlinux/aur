@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=z-code-bin
-pkgver=3.9.1
+pkgver=3.9.2
 pkgrel=1
 pkgdesc="ZCode - AI Agents combined with existing toolchains for planning, coding, review and deployment"
 arch=('x86_64' 'aarch64')
@@ -25,8 +25,8 @@ conflicts=('zcode' 'zcode-bin' 'zcode-desktop-bin')
 options=('!strip' '!debug')
 source_x86_64=("${pkgname}-${pkgver}-amd64::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/linux-x64/ZCode-${pkgver}-linux-x64.deb")
 source_aarch64=("${pkgname}-${pkgver}-arm64::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/linux-arm64/ZCode-${pkgver}-linux-arm64.deb")
-sha256sums_x86_64=('b5b1d18f04fca658b91730343f45c3459336d7e1e9f238383cab3b2b6bf8c908')
-sha256sums_aarch64=('ebf0aaf6dffd6b2f547d18353f1ae54c5b5fd73c54073df7bb17cb10049c7542')
+sha256sums_x86_64=('db3f4211a278afbb1192b63631a0bf6f973df3181e215fe1f98a32a41d275d6c')
+sha256sums_aarch64=('55bf892633961a8634d5396805126f423e3efb1bbf9530552519d752c374dba2')
 
 package() {
   # Extract files from the .deb package.
