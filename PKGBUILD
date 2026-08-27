@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-launcher-git
-pkgver=1.7.0.r0.gf7389d7
+pkgver=1.7.0.r2.g402103d
 pkgrel=1
 pkgdesc="Layer Shell frontend for Pop Launcher."
 arch=('x86_64' 'aarch64')
@@ -39,14 +39,16 @@ prepare() {
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target host-tuple
-  cargo fetch --locked --manifest-path scripts/xdgen/Cargo.toml
+
+  # Vendor dependencies for LOCKSTEP_XML_PATH
+  just vendor
+  just vendor-extract
 }
 
 build() {
   cd "${pkgname%-git}"
   export GETTEXT_SYSTEM=true
   export RUSTUP_TOOLCHAIN=stable
-  just xdgen
 
   # use nice to build with lower priority
   nice just build-release --frozen
