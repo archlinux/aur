@@ -18,7 +18,7 @@ pkgver() {
 
 build() {
    cd "$srcdir/minecraft-ttf"
-   uv run src/main.py --identifiers minecraft:default minecraft:alt minecraft:illageralt --styles regular bold italic bold_italic
+   uv run src/main.py vanilla generate latest --identifiers minecraft:default minecraft:alt minecraft:illageralt --styles regular bold italic bold_italic
 }
 
 package() {
