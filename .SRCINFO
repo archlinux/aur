@@ -1,14 +1,14 @@
 pkgbase = gearboy
 	pkgdesc = Game Boy / Gameboy Color emulator
-	pkgver = 3.8.13
+	pkgver = 3.8.14
 	pkgrel = 1
 	url = https://github.com/drhelius/Gearboy
 	arch = x86_64
 	license = GPL3
 	depends = sdl3
-	source = https://github.com/drhelius/Gearboy/archive/refs/tags/3.8.13.tar.gz
+	source = https://github.com/drhelius/Gearboy/archive/refs/tags/3.8.14.tar.gz
 	source = gearboy.desktop
-	sha256sums = ae780e9552b9a66a74f3effc9450aa6a0a36f69c5519f21440ab4337a8f6c6d5
+	sha256sums = f36ec6783667948f7f000e0654d2cc46e291009db027d0f77d66e26474afe435
 	sha256sums = 2508710d17e920a5d179c3c4ac737e240aec766eb8d63347f11eda00d7123de9
 
 pkgname = gearboy
