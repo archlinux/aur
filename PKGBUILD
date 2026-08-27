@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-localflutter
 _pkgname=fluffychat
-pkgver=2.6.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Chat with your friends, be careful about your flutter environment"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ source=(
 )
 options+=(!lto)
 sha256sums=(
-  'c3ccd008b6a2c90618c7cca90b9013b30ce0038d28c6c12dc37afde3f95b0259'
+  '5c6945740e7de51da2350c1940f6e22d21b992038232596181823da6bc490174'
 )
 
 prepare() {
@@ -47,7 +47,7 @@ package() {
   ln -s /opt/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 
   # icon
-  install -Dm 644 ${pkgdir}/opt/${_pkgname}/data/flutter_assets/assets/favicon.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
+  install -Dm 644 ${pkgdir}/opt/${_pkgname}/data/flutter_assets/assets/logo/mini/logo_mini.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
 
   # desktop entry
 
