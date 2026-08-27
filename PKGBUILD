@@ -1,6 +1,6 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=k3k
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Kubernetes in Kubernetes - CLI tool for creating and managing K3s clusters within Kubernetes'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('go')
 provides=('k3k')
 conflicts=('k3k-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rancher/k3k/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8ef1ea06300e18fe48a217b12144f28f1a168c3d356261fc3d75a53d8087bb7d')
+sha256sums=('bfdf378ac10096c77ff5a5ccf23585b1767cf6b1ebe0f187191247a74f4b8d3a')
 
 build() {
     cd "${pkgname}-${pkgver}"
