@@ -2,7 +2,7 @@
 
 _pkgname=gotify-server
 pkgname=${_pkgname}-bin
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='A simple server for sending and receiving messages'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -32,15 +32,15 @@ do
   source_x=("gotify-linux-${_arches[$key]}-${pkgver}.zip::$url/releases/download/v${pkgver}/gotify-linux-${_arches[$key]}.zip")
 done
 
-sha256sums=('ad02425f9f0739c45d59fb2c9aad2ac5353e6a1c87b7987c2fab9f239be4db7a'
+sha256sums=('1d3b4d7563ba17a60f872e050715c4b3743114e74f3a9b7dddc76653c8bfd8c1'
             'a5348cf2dbf74552ff334bd138b24e7d24cd3bfea7fb1f8c3ef9ca9a3f0903c8'
             '37de5cad703025c5ce2c8f5eb132b44fd2cfa1e59a2784c41fb2de657585f467'
             '150a84f2f89d70c147cc3a2dbddb469f262ed2e8b6d3ffcb74eccb49dfdb2a24'
             'fd77369ddf3ec0097066517ade97fe06bb1336557adbac41a11f37df852c9814')
-sha256sums_x86_64=('b21c83f19fcc5715e5427f11797207ceddc345bebc1b5342aaf143967a979534')
-sha256sums_i686=('264da9aa569574e879a8a3a9a350fd3b001edb8095a3972f9151e54d72db8081')
-sha256sums_armv7h=('7f66df9c941e300006f2b37abca6703747ad4c322b2cb47686c89fa658bc94e1')
-sha256sums_aarch64=('abdb55509a8f3844c866a135a3858d579388a7c4b23f5676a1f6c4d8e8ddb227')
+sha256sums_x86_64=('01c4869f1cf874634416959f7aab45f7eab53597e018479fcf3ce76ae8465c75')
+sha256sums_i686=('11a847980781efb98b3e96e273a133cf87c46296850a5b1fc7fabc58f4f30e86')
+sha256sums_armv7h=('cb6e45da9af2be179f16e8d7c61b7ef89f5f9fc5a5284455c985f32c7017ee65')
+sha256sums_aarch64=('69d8e6b9c56ba561ff400cc4cb2c588993c32ef7ea8e37a019161daf256dd40e')
 
 prepare() {
   patch --follow-symlinks --forward -o "$srcdir/server.env" gotify-server.env.example config.patch
