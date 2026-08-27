@@ -1,6 +1,6 @@
 # Maintainer: a77ila
 pkgname=pactience
-pkgver=0.1.3
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Enforce a minimum package age before upgrading Arch Linux packages (pacman/AUR)"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=(
 # link (undefined ring_core_*/ZSTD_* symbols).
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/a77ila/pactience/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4e97cfe7fbad1fe1db97cfdc01d4974967bc84d5b0f71ace2cdea089f9823467')
+sha256sums=('b7452c067b3b31df071084518b743f29b70f51a6c3ffe33380113c0018078452')
 
 build() {
   cd "$pkgname-$pkgver/src"
