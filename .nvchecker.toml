@@ -1,4 +1,5 @@
 [cronet]
-source = "git"
-git = "https://chromium.googlesource.com/chromium/src.git"
+source = "jq"
+url = "https://dl.google.com/dl/edgedl/chromeos/recovery/cloudready_recovery2.json"
+filter = '.[] | select(.channel == "LTR") | .chrome_version'
 include_regex = '144\.\d+\.\d+\.\d+'
