@@ -1,0 +1,17 @@
+pkgbase = python-pycpl
+	pkgdesc = Python bindings for the complete programming API of the ESO Common Pipeline Library (CPL) toolkit.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://www.eso.org/sci/software/pycpl/
+	arch = x86_64
+	license = GPL-3.0-only.txt
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = pybind11
+	depends = cpl
+	source = https://ftp.eso.org/pub/dfs/pipelines/libraries/pycpl/pycpl-1.0.4.tar.gz
+	sha256sums = 85e5d3750a0d5bec4be47bce840bfcb47c7c54f0b31587e66b75b6c4ac46a9c4
+
+pkgname = python-pycpl
