@@ -1,6 +1,6 @@
 pkgbase = vopono-gui
 	pkgdesc = Graphical frontend for vopono
-	pkgver = 0.10.21
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/jamesmcm/vopono
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = vopono-gui
 	depends = xdotool
 	provides = vopono-gui
 	conflicts = vopono-gui
-	source = vopono-gui-0.10.21.tar.gz::https://github.com/jamesmcm/vopono/archive/0.10.21.tar.gz
-	sha256sums = 485d2341bd331117fc74f986388c171c31034000a1cef5770f390d671c2557e6
+	source = vopono-gui-1.0.0.tar.gz::https://github.com/jamesmcm/vopono/archive/1.0.0.tar.gz
+	sha256sums = a8c0746ce21d414c7f7a6bf0dbe6aa694227ea1cac294918b2edf0c816f745f7
 
 pkgname = vopono-gui
