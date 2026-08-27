@@ -3,7 +3,7 @@
 
 pkgname=zed-bin
 pkgver=1.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=('x86_64' 'aarch64')
 url='https://zed.dev'
@@ -45,8 +45,18 @@ package() {
     sed -i "s|^Exec=zed |Exec=/usr/bin/zed |" "$desktop"
     sed -i "s|^TryExec=zed$|TryExec=/usr/bin/zed|" "$desktop"
 
-    # Install CLI launcher
-    install -Dm755 'bin/zed' "${pkgdir}/usr/bin/zed"
+    # Install CLI launcher (real binary; wrapped below so in-app auto-update
+    # is disabled and updates only happen via the package manager, yay -Syu)
+    install -Dm755 'bin/zed' "${pkgdir}/usr/bin/zed.real"
+
+    # Wrapper: the editor reads ZED_UPDATE_EXPLANATION at startup and skips
+    # its own update polling/installs when it is set (see auto_update crate).
+    cat > "${pkgdir}/usr/bin/zed" <<'EOF'
+#!/bin/sh
+export ZED_UPDATE_EXPLANATION='Updates are handled by your package manager'
+exec /usr/bin/zed.real "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/zed"
 
     # Install main editor binary (CLI looks for ../lib/zed/zed-editor)
     install -Dm755 'libexec/zed-editor' "${pkgdir}/usr/lib/zed/zed-editor"
