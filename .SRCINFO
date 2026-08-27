@@ -6,6 +6,7 @@ pkgbase = fastmc-bin
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
+	makedepends = curl
 	depends = gcc-libs
 	provides = fastmc
 	conflicts = fastmc
