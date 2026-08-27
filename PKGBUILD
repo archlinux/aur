@@ -5,8 +5,8 @@ pkgname=mongodb44
 _pkgname=mongodb
 _srcname=mongo
 # #.<odd number>.# releases are unstable development/testing
-pkgver=4.4.29
-pkgrel=12
+pkgver=4.4.31
+pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database (last version to support non-avx CPUs)"
 arch=("x86_64" "aarch64")
 url="https://www.mongodb.com/"
@@ -36,9 +36,10 @@ source=($pkgname-$pkgver.tar.gz::https://github.com/mongodb/mongo/archive/refs/t
         012-mongodb-4.4.29-redudant-std-move.patch
         013-mongodb-4.4.29-scons-boost-1.89.patch
         014-mongodb-4.4.29-scons-Wno-sign-compare.patch
-        015-mongodb-4.4.29-boost-1.91.patch)
+        015-mongodb-4.4.29-boost-1.91.patch
+        016-mongodb-4.4.31-scons-pkg_resources.patch)
 
-sha256sums=('ec12d15b74276465002f66df3b834b2872597166a137e85378b9018f79b2ffc8'
+sha256sums=('b44b1c52f40e0165deceb2fdb6d4797393e666db6274720087f1f7bcfe0a0153'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             'e748b669bca526a08c06e5d8ec2bd371b938e57f83a2339d62e38a4527810e47'
@@ -56,7 +57,8 @@ sha256sums=('ec12d15b74276465002f66df3b834b2872597166a137e85378b9018f79b2ffc8'
             '4320fc665a254ae88ad8f9a02d4a8beabfea5145435eaa75b27d88fd556bd1d6'
             '6d0e27b4aa871d234e5c980e0cf35dd00f879eca0ba87e1c4c88e17d654fb7a1'
             'cc44f6127f4578735de7573b5cecdaca39a983c1cc131629844e7716d0ba87b9'
-            '05feeb79bad7cdf7e2e142e70a5d180dc3612abf5459c62d1f66c7ffbe7490c9')
+            '05feeb79bad7cdf7e2e142e70a5d180dc3612abf5459c62d1f66c7ffbe7490c9'
+            '1ccfee66356ded947d7cfcb7583a53d426a34cc17fbb0f74a14a97c953de48d6')
 
 _scons_args=(
   CC="${CC:-gcc}"
@@ -139,12 +141,6 @@ prepare() {
     _scons_args+=(--lto=on)
   fi
   
-  # delete libboost_system references from from scons due to removal
-  # from boost/boost-libs upstream in ver. 1.89.
-  # sed -i '/^boostLibs =/s/, "system"//' SConstruct
-  # sed -i '348d' src/third_party/SConscript
-  # (replaced with: 013-mongodb-4.4.29-scons-boost-1.89.patch)
-
   # apply patches with ordered prefix (was apply gentoo patches)
   # prefix added to enforce patch order as number of patches increase.
   for file in $srcdir/*.patch; do
