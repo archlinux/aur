@@ -1,8 +1,8 @@
 # Maintainer: Pete Jackson <pete@tern.travel>
 pkgname=omarchy-zfs
 pkgver=1.1.3
-pkgrel=1
-pkgdesc="Root-on-ZFS + ZFSBootMenu support layer for Omarchy (Quattro)"
+pkgrel=2
+pkgdesc="Root-on-ZFS + ZFSBootMenu support layer for Omarchy Quattro (needs the omarchy repo from pkgs.omarchy.org)"
 arch=('any')
 url="https://github.com/peteonrails/omarchy-zfs"
 license=('MIT')

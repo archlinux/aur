@@ -1,7 +1,7 @@
 pkgbase = omarchy-zfs
-	pkgdesc = Root-on-ZFS + ZFSBootMenu support layer for Omarchy (Quattro)
+	pkgdesc = Root-on-ZFS + ZFSBootMenu support layer for Omarchy Quattro (needs the omarchy repo from pkgs.omarchy.org)
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/peteonrails/omarchy-zfs
 	install = omarchy-zfs.install
 	arch = any
