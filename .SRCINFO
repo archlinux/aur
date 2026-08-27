@@ -1,6 +1,6 @@
 pkgbase = trenchbroom-appimage
 	pkgdesc = Cross-platform level editor for Quake-engine based games. AppImage version
-	pkgver = 2025.4
+	pkgver = 2026.2
 	pkgrel = 1
 	url = https://trenchbroom.github.io/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = trenchbroom-appimage
 	provides = trenchbroom
 	options = !debug
 	options = !strip
-	source = https://github.com/TrenchBroom/TrenchBroom/releases/download/v2025.4/TrenchBroom-Linux-x86_64-v2025.4-Release.zip
+	source = https://github.com/TrenchBroom/TrenchBroom/releases/download/v2026.2/TrenchBroom-Linux-x86_64-v2026.2-Release.zip
 	source = TrenchBroom-appimage.desktop
-	sha256sums = 81d10ea077e4acb59696ad742225e11e885a28862bac6e1c1a5fd509c8e1bbf3
+	sha256sums = 721fe0ad3d7ea5bdfd81c38526105c584fd20abefcbf57d60f843ad751f41ef6
 	sha256sums = SKIP
 
 pkgname = trenchbroom-appimage

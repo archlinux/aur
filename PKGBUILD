@@ -1,7 +1,7 @@
 # Maintainer: Steven Dwy <me@yoplitein.net>
 
 pkgname=trenchbroom-appimage
-pkgver=2025.4
+pkgver=2026.2
 pkgrel=1
 pkgdesc="Cross-platform level editor for Quake-engine based games. AppImage version"
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=(
 	"TrenchBroom-appimage.desktop"
 )
 sha256sums=(
-	"81d10ea077e4acb59696ad742225e11e885a28862bac6e1c1a5fd509c8e1bbf3"
+	"721fe0ad3d7ea5bdfd81c38526105c584fd20abefcbf57d60f843ad751f41ef6"
 	"SKIP"
 )
 
