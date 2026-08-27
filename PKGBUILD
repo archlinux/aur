@@ -39,6 +39,7 @@ sha256sums=(
     SKIP
     SKIP
 )
+# https://eidas.minv.sk/downloadservice/eidklient/linux/eID_klient_release_notes.txt
 sha256sums_i686=(
     b4edb10201d2b9515f2dadb6ead0c0ec5a8d219c34e8a6019d4eb89125348d21
 )
