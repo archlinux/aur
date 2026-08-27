@@ -2,8 +2,8 @@
 # Contributor: Mark Weiman <mark dot weiman at markzz dot com>
 
 pkgname=fpm
-pkgver=1.17.0
-pkgrel=2
+pkgver=1.18.0
+pkgrel=1
 pkgdesc='Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.'
 arch=(any)
 url="https://github.com/jordansissel/fpm"
@@ -22,7 +22,7 @@ depends=(
 optdepends=('squashfs-tools: Support for snaps')
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jordansissel/fpm/archive/v${pkgver}.tar.gz")
-sha256sums=('006abf20b88261a96a64adf473d78f1bd4361265d909b2357cb506629258dd06')
+sha256sums=('95174a176d3955a84cfe432e283dcb24f9b063f735090fec69389af86c61d19d')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
