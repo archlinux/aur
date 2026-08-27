@@ -1,5 +1,5 @@
 pkgname=v2ray-rs
-pkgver=0.16.1
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="Linux desktop GUI for v2ray/xray/sing-box proxy management"
 arch=('x86_64')
@@ -13,10 +13,9 @@ optdepends=(
     'sing-box: sing-box proxy backend'
     'polkit: one-time TUN privilege grant via pkexec'
 )
-options=(!lto)
 install=v2ray-rs.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ffd8779d61f80eb9a38f9e5e18e9d57ef1a15834090f200cb02405164c5e0a45')
+sha256sums=('5b76ecd4d2adfe11ce641be273fc4c4b98358d3a517a3debbf4329f717db310e')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -50,6 +49,11 @@ package() {
     install_icon "assets/com.github.v2ray-rs.desktop" \
         "crates/ui/assets/com.github.v2ray-rs.desktop" \
         "$pkgdir/usr/share/applications/com.github.v2ray-rs.desktop"
+    local lang
+    for lang in en_US ru_RU; do
+        install -Dm644 "locale/$lang/LC_MESSAGES/v2ray-rs.mo" \
+            "$pkgdir/usr/share/locale/$lang/LC_MESSAGES/v2ray-rs.mo"
+    done
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
