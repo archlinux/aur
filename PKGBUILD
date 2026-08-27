@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=crch
-_pkgver=1.2-2
+_pkgver=1.2-3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -24,8 +24,8 @@ optdepends=(
   r-quarto
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7894991ee27fc944f836fca567d8aff3')
-b2sums=('dd9704aefad80d5f7006cd0059e1af11ac89ab444ceeaa441a72ccd50172063d1b07acf8255eff048f3875319a61fc1fa0a81a13ef6fee2ee02b6225aa8f4b68')
+md5sums=('5cdc7f10704123e1f6ff23b5b5fc78bf')
+b2sums=('734f6e86ef7ce428b986b117c845ef2004c9fdc5a4dfd2906d02fb7f3f14e1ec55218534b7d112a6b8d9b8e920375d8b1c1513f07e09b70cd86715c6749c5ee0')
 
 build() {
   mkdir build
