@@ -20,7 +20,7 @@ pkgver() {
 
 check() {
     cd "$srcdir"
-    sha256sum -c "timeit.sha256"
+    sha256sum -c <(sed "s/timeit-x86_64-linux-musl/timeit/" timeit.sha256)
 }
 
 package() {
