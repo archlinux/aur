@@ -1,0 +1,19 @@
+diff --git a/a/third_party/cmake/Flatbuffer.cmake b/b/third_party/cmake/Flatbuffer.cmake
+index 4cfe759..1e67147 100644
+--- a/third_party/cmake/Flatbuffer.cmake
++++ b/third_party/cmake/Flatbuffer.cmake
+@@ -37,6 +37,13 @@ ExternalProject_Add(
+         # Build only necessary targets.
+         -DFLATBUFFERS_BUILD_FLATHASH=OFF
+         -DCMAKE_INSTALL_PREFIX=${CMAKE_BINARY_DIR}
+-        ${FLATBUFFERS_COMPILE_OPTIONS})
++        ${FLATBUFFERS_COMPILE_OPTIONS}
++    # NOTE: must come after CMAKE_ARGS above. The pinned OpenHarmony
++    # flatbuffers fork ignores FLATBUFFERS_BUILD_TESTS=OFF for its 'flattests'
++    # target and those tests need generated headers that are not reliably
++    # produced during packaging builds. cangjie only consumes 'flatc' plus the
++    # installed headers, so pin the build step to exactly those targets.
++    BUILD_COMMAND ${CMAKE_COMMAND} --build . --target flatc flatbuffers
++)
+ externalproject_get_property(flatbuffers SOURCE_DIR)
+ set(FLATBUFFERS_SRC ${SOURCE_DIR})

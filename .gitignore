@@ -1,0 +1,11 @@
+src/
+pkg/
+cangjie_compiler/
+cangjie_runtime/
+*.pkg.tar.zst
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.deb
+*.log
+*.zip
