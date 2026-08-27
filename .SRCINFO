@@ -11,10 +11,10 @@ pkgbase = xpanel-bin
 	depends = hicolor-icon-theme
 	options = !strip
 	source = https://github.com/teamfinalmouse/xpanel-desktop-public/releases/download/v1.1.1/xpanel-desktop-1.1.1.AppImage
-	source = https://raw.githubusercontent.com/teamfinalmouse/xpanel-linux-permissions/main/99-finalmouse.rules
+	source = https://raw.githubusercontent.com/teamfinalmouse/xpanel-linux-permissions/49ba1bf19e7d1f05306baaf72e4514c1f12f139a/70-finalmouse.rules
 	source = xpanel.desktop
 	sha256sums = 824318a591f5d1519d46769a83742b41948a3f56b2d855e1032ae1c6404ed3c7
-	sha256sums = b2e4708d59ab5a7ec63922c77da5bdd604f9bd600e3dc979a7fa17eadb4cd6cb
+	sha256sums = 581c65d87d95349b5c46b809b037163e69f7b40915383de11ab9bc59203a257b
 	sha256sums = SKIP
 
 pkgname = xpanel-bin
