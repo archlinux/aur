@@ -2,7 +2,7 @@
 
 pkgname=sparrow-wallet-reproducible
 _pkgname=sparrow-wallet
-pkgver=2.5.3
+pkgver=2.5.4
 _jdkver=25.0.2_10
 _jdkmajor="${_jdkver%%[^0-9]*}"
 pkgrel=1
@@ -55,8 +55,8 @@ source=(
     "lark::git+https://github.com/sparrowwallet/lark.git"
     "https://github.com/adoptium/temurin${_jdkmajor}-binaries/releases/download/jdk-${_jdkver/_/%2B}/OpenJDK${_jdkmajor}U-jdk_x64_linux_hotspot_${_jdkver}.tar.gz"
 )
-sha256sums=('83e137ae4d973f24c0715c2d4c57a4057d0a698fe2e6eb016d3f785d18892818'
-            'c51b4c87c9d81f38ccc9bf3348f4193486dc7d022e2a4e22cdf3d6fcf2cadb38'
+sha256sums=('1075f7ff6ebf1d7349572850a091b3a01b2f356ce7d3ee3493ab18d084bc2de8'
+            'c1a3180117866e48a19caf2d9ed6fe80fecec9fdf82b8fdbcc565d0d3aec7b6e'
             'SKIP'
             'SKIP'
             '987387933b64b9833846dee373b640440d3e1fd48a04804ec01a6dbf718e8ab8')
@@ -80,11 +80,8 @@ build() {
 
     echo "Building ${pkgname} with Java $(java -version 2>&1 | head -n1)"
 
-    echo "Creating jlink runtime image..."
-    ./gradlew --no-daemon jlink
-
-    echo "Creating jpackage application image..."
-    ./gradlew --no-daemon jpackageImage copyMimeInfo
+    echo "Creating jpackage application image without installer..."
+    ./gradlew --no-daemon jpackage -PskipInstallers=true
 }
 
 check() {
