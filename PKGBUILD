@@ -1,8 +1,8 @@
 # Maintainer: Marc Gibb
 pkgname=proton-command-center
-pkgver=1.15.1
+pkgver=1.23.0
 pkgrel=1
-pkgdesc="Per-game launch options, Proton selection, DLSS DLL management, MangoHud benchmarks, and controller navigation for Steam on Linux"
+pkgdesc="Per-game launch options, Proton selection, DLSS DLL management, ReShade injection, native Ultra+ mod install, MangoHud benchmarks, and controller navigation for Steam on Linux"
 arch=('any')
 _repo=proton_command_center
 url="https://github.com/mrcgibb9876-hash/proton_command_center"
@@ -11,15 +11,10 @@ depends=('python' 'xdg-utils' 'curl')
 optdepends=(
     'steam: the storefront this manages (required in practice)'
     'mangohud: performance overlay toggle and benchmark tab'
-    'gamescope: compositor wrapper toggle in the launch builder'
     'nvidia-utils: DLSS DLL management and driver-aware compile tracking'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# Placeholder — regenerate with `updpkgsums` before every release.
-# Deliberately a WRONG hash rather than 'SKIP': if it's forgotten, makepkg
-# fails loudly with a validity check error instead of silently shipping a
-# package with integrity checking disabled for every user who installs it.
-sha256sums=('dd6e6168359cde7bdcc69bf7b0316e4af7a8252acec835c4b00fe7ac2efa3020')
+sha256sums=('aa540709786af079de1e3a165924aa0a04c1eb6d07aa1b42fbaf5a68478ebd23')
 
 package() {
     cd "$srcdir/$_repo-$pkgver"
