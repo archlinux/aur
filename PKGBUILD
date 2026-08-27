@@ -2,7 +2,7 @@
 
 pkgname=whydpi-git
 _pkgname=whydpi
-pkgver=1.0.2.r3.g5b5c8a7
+pkgver=1.0.3.r7.gfb1680d
 pkgrel=1
 pkgdesc="Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host (git, main branch)"
 arch=('any')
@@ -17,6 +17,8 @@ optdepends=(
   'python-pystray: system-tray icon with Start/Stop/status from the desktop'
   'python-pillow: icon rendering for the tray'
   'libnotify: desktop toasts on tray startup and state change'
+  'tk: first-run acceptable-use dialog'
+  'zenity: native first-run dialog'
 )
 makedepends=(
   'git'
@@ -27,7 +29,7 @@ makedepends=(
 )
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
-backup=()
+install="${pkgname}.install"
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -56,10 +58,11 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
+  # Application-menu launcher; post_install opens the first-run dialog.
   install -Dm644 packaging/desktop/whydpi-tray.desktop \
     "${pkgdir}/usr/share/applications/whydpi-tray.desktop"
-  install -Dm644 packaging/desktop/whydpi-tray.desktop \
-    "${pkgdir}/etc/xdg/autostart/whydpi-tray.desktop"
+  install -Dm755 packaging/linux/first-run-launch.sh \
+    "${pkgdir}/usr/lib/whydpi/first-run-launch.sh"
 
   for sz in 16 32 48 64 128 256 512; do
     install -Dm644 "assets/icon-${sz}.png" \
