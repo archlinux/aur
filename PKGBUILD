@@ -7,7 +7,7 @@
 # or use: $ curl -sSf https://dl.google.com/linux/chrome/deb/dists/stable/main/binary-amd64/Packages | grep -A1 "Package: google-chrome-unstable" | awk '/Version/{print $2}' | cut -d '-' -f1
 
 pkgname=google-chrome-dev
-pkgver=154.0.8013.2
+pkgver=154.0.8025.0
 pkgrel=1
 pkgdesc="The popular web browser by Google (Dev Channel)"
 arch=(
@@ -42,8 +42,8 @@ source=(
 )
 sha512sums=('a225555c06b7c32f9f2657004558e3f996c981481dbb0d3cd79b1d59fa3f05d591af88399422d3ab29d9446c103e98d567aeafe061d9550817ab6e7eb0498396'
             '445eb36a588f49af018ded3d852b63e0523ffac20c25be721f3ef4663591256849432bebb3d9f352e4f53cbe1fb77fa67cf8911c9161f826490a21adbdcc81f4')
-sha512sums_x86_64=('e6188ee9fdd2526c80a40df809f9a9b0b78f41144434a75be2a484e6ce7c3c06e7d4281da3901bc6ebae5d933f2144deb2f18e58ea2a625dcced63aba8f931c6')
-sha512sums_aarch64=('865ef2d68db3cf342ede3ba19b3512b0751abbf551c651e642ec26df694ab25491b431f24b633df210c94799a0bbeab38e92cc039160456f7ca682d80487e293')
+sha512sums_x86_64=('09820e8888050128c4bf45468e075d1b469853adc2a10101b783c87304fa0d9f57c6df5ad85c6435baaec4b12cc21e2f86c30cb7c5200c549794f459a3aa12cf')
+sha512sums_aarch64=('54ed1d23125690ac53015fb6be46099cdf29bf7febdae07643129876336190c40d427565f372df4b6b454cf4ea96d177dcd2cb1c5d8fa60e89c3e8f2c7d3f16f')
 
 source_x86_64=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_amd64.deb")
 source_aarch64=("https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-${_channel}/google-chrome-${_channel}_${pkgver}-1_arm64.deb")
