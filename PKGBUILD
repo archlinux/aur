@@ -2,10 +2,10 @@
 # Contributor: Bruce Zhang
 pkgname=sqlark-bin
 _pkgname=SQLark
-pkgver=4.0.1
-_subver=226481
+pkgver=4.0.2
+_subver=941818
 _electronversion=40
-pkgrel=2
+pkgrel=1
 pkgdesc="SQLark is a powerful SQL query tool that provides a user-friendly interface for database management and analysis."
 arch=(
 	'aarch64'
@@ -19,10 +19,15 @@ depends=(
     "electron${_electronversion}"
     'libxml2-legacy'
 )
+makedepends=(
+    'asar'
+)
+source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::https://download.sqlark.com/fullPackage/Linux/${_subver}/${_pkgname}_V${pkgver}_linux_arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::https://download.sqlark.com/fullPackage/Linux/${_subver}/${_pkgname}_V${pkgver}_linux_x86_64.rpm")
-sha256sums_aarch64=('51899593dcf632434c623aa545c339f2a68b5d6123027fe28f2336991f769832')
-sha256sums_x86_64=('7a5b8638b9847759c27396c5ecd53bc9d7b727d15b702def8a438bea0a60a432')
+sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_aarch64=('f98c1bacf008557536537c606b7df900cbf598ec7cde21e46b05b50d1041d4c5')
+sha256sums_x86_64=('35882d845c61fb0201d4171694eae221a54e83e23623ae835100f3dfc45df26e')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -37,18 +42,21 @@ _check_electron_version() {
         echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/resources\/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+    " "${srcdir}/${pkgname%-bin}.sh"
 	_check_electron_version
-	sed -i "s/Exec=\/opt\/${pkgname%-bin}\//Exec=/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-	_file_list=(chrome_100_percent.pak chrome_200_percent.pak chrome-sandbox icudtl.dat libEGL.so libffmpeg.so \
-		libGLESv2.so libvk_swiftshader.so libvulkan.so.1 resources.pak vk_swiftshader_icd.json)
-	for _files in "${_file_list[@]}";do
-		ln -sf "/usr/lib/electron${_electronversion}/${_files}" "${srcdir}/opt/${pkgname%-bin}/${_files}"
-	done
+    sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
 }
 package() {
-	install -Dm755 -d "${pkgdir}/usr/"{bin,lib/"${pkgname%-bin}"}
-	cp -a "${srcdir}/opt/${pkgname%-bin}"/* "${pkgdir}/usr/lib/${pkgname%-bin}"
-	ln -sf "/usr/lib/${pkgname%-bin}/${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+	install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    local _app_dir=$(_get_app_dir)
+    cp -a "${_app_dir}/resources" "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    cp -a "${_app_dir}/"{data-migrate,plugins,server} "${pkgdir}/usr/lib/${pkgname%-bin}/"
 	install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 	find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
