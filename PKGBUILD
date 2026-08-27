@@ -4,8 +4,8 @@
 # Contributor: Vasiliy Stelmachenok <ventureo@yandex.ru>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=nvidia-utils
-pkgname=('nvidia-utils' 'opencl-nvidia' 'nvidia-open-dkms')
+pkgbase=nvidia-utils-g2
+pkgname=('nvidia-utils-g2' 'opencl-nvidia-g2' 'nvidia-open-dkms-g2')
 pkgver=610.57.04
 pkgrel=1
 arch=('aarch64' 'x86_64')
@@ -90,11 +90,12 @@ BUILT_MODULE_LOCATION[4]="kernel-open"
 EOF
 }
 
-package_opencl-nvidia() {
+package_opencl-nvidia-g2() {
     pkgdesc="OpenCL implemention for NVIDIA"
     depends=('zlib')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
-    provides=('opencl-driver')
+    conflicts=('opencl-nvidia')
+    provides=('opencl-driver' 'opencl-nvidia')
     cd "${_pkg}"
 
     # OpenCL
@@ -107,17 +108,17 @@ package_opencl-nvidia() {
     ln -s nvidia-utils "${pkgdir}/usr/share/licenses/opencl-nvidia"
 }
 
-package_nvidia-utils() {
+package_nvidia-utils-g2() {
     pkgdesc="NVIDIA drivers utilities"
     depends=('libglvnd' 'egl-wayland' 'egl-wayland2' 'egl-gbm' 'egl-x11')
     optdepends=('nvidia-settings: configuration tool'
                 'xorg-server: Xorg support'
                 'xorg-server-devel: nvidia-xconfig'
                 'opencl-nvidia: OpenCL support')
-    conflicts=('nvidia-libgl')
-    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl')
+    conflicts=('nvidia-libgl' 'nvidia-utils')
+    provides=('vulkan-driver' 'opengl-driver' 'nvidia-libgl' 'nvidia-utils')
     replaces=('nvidia-libgl')
-    install="${pkgname}.install"
+    install="nvidia-utils.install"
 
     cd "${_pkg}"
 
@@ -294,12 +295,12 @@ package_nvidia-utils() {
     create_links
 }
 
-package_nvidia-open-dkms() {
+package_nvidia-open-dkms-g2() {
   pkgdesc="NVIDIA open kernel modules - module sources"
-  depends+=('dkms' "nvidia-utils=$pkgver")
+  depends+=('dkms' "nvidia-utils-g2=$pkgver")
   license=('MIT AND GPL-2.0-only')
-  conflicts=('nvidia-open' 'NVIDIA-MODULE')
-  provides=('nvidia-open' 'NVIDIA-MODULE' 'nvidia-dkms')
+  conflicts=('nvidia-open' 'NVIDIA-MODULE' 'nvidia-dkms' 'nvidia-open-dkms')
+  provides=('nvidia-open' 'NVIDIA-MODULE' 'nvidia-dkms' 'nvidia-open-dkms')
   replaces=('nvidia-dkms')
 
   install -dm 755 "${pkgdir}/usr/src"
