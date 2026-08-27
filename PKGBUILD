@@ -6,13 +6,13 @@ pkgname="ferdium-nightly"
 _electron='electron43'
 _electronpackage='electron43'
 pkgver='7.2.2.nightly.3'
-apptag='v7.2.2-nightly.3'
+_apptag='v7.2.2-nightly.3'
 pkgrel='1'
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest nightly release).'
-arch=('x86_64' 'i686' 'armv7h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
-license=('Apache')
-depends=('nss' 'atk' 'at-spi2-atk' 'libcups' 'libdrm' 'gdk-pixbuf2' 'gtk3' 'alsa-lib' 'c-ares' 'ffmpeg' 'libevent' 'libxkbfile' 'libxslt' 'minizip' 're2' 'snappy' "$_electronpackage")
+license=('Apache-2.0')
+depends=('electron43' 'hicolor-icon-theme')
 makedepends=('nvm' 'git' 'python' 'libxcrypt-compat' 'asar')
 options=(!strip !debug)
 provides=(
@@ -28,16 +28,13 @@ conflicts=(
     'ferdium-electron'
 )
 source=(
-	"$pkgname::git+https://github.com/ferdium/ferdium-app#tag=${apptag}"
+	"$pkgname::git+https://github.com/ferdium/ferdium-app#tag=${_apptag}"
 )
 sha512sums=('e00c00bc407d8038c44ebd3a34247ae0082a7ecadf7b186668e1bd40a22331fd4aab583474a5743f34de30df72795e5a00079ca301bdbd7f708726b442cc9aff')
 
 _sourcedirectory="$pkgname"
 
 case "$CARCH" in
-	i686)
-		_electronbuilderarch='ia32'
-	;;
 	armv7h)
 		_electronbuilderarch='armv7l'
 	;;
@@ -52,7 +49,7 @@ esac
 prepare() {
 	# Due to patches and sed's, reset the code to upstream before starting
 	cd "$srcdir/$_sourcedirectory/"
-	git reset --hard "refs/tags/${apptag}"
+	git reset --hard "refs/tags/${_apptag}"
 
 	# Initialise the recipes submodule
 	git submodule init
@@ -187,7 +184,7 @@ EOF
 [Desktop Entry]
 Name=${_pkgname^}
 Exec=/usr/bin/$_pkgname %U
-Terminal=falseparu
+Terminal=false
 Type=Application
 Icon=ferdium
 StartupWMClass=Ferdium
