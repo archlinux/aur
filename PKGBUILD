@@ -12,7 +12,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=(http://ftp.gnu.org/gnu/glpk/glpk-${pkgver}.tar.gz)
 sha256sums=('4a1013eebb50f728fc601bdd833b0b2870333c3b3e5a816eeba921d95bec6f15')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare () {
   cd "${srcdir}/glpk-${pkgver}"

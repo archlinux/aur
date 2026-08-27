@@ -14,4 +14,3 @@ pkgbase = mingw-w64-glpk
 	sha256sums = 4a1013eebb50f728fc601bdd833b0b2870333c3b3e5a816eeba921d95bec6f15
 
 pkgname = mingw-w64-glpk
-
