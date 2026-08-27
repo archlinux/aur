@@ -1,6 +1,6 @@
 pkgbase = dsr
 	pkgdesc = Video compression tool
-	pkgver = 2.4.1
+	pkgver = 2.4.2
 	pkgrel = 1
 	url = https://git.mylloon.fr/Anri/dsr
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = dsr
 	optdepends = ffmpeg: needed for some encoders
 	provides = dsr
 	conflicts = dsr
-	source_x86_64 = dsr-2.4.1.zip::https://git.mylloon.fr/Anri/dsr/releases/download/2.4.1/dsr-linux-x64-2.4.1.zip
+	source_x86_64 = dsr-2.4.2.zip::https://git.mylloon.fr/Anri/dsr/releases/download/2.4.2/dsr-linux-x64-2.4.2.zip
 	source_x86_64 = https://git.mylloon.fr/Anri/dsr/raw/branch/main/image/icon.png
-	sha256sums_x86_64 = 8b5b6939b2af588988af990f092c11dcb9f81a45daa107e565cdc5219a5ddad0
+	sha256sums_x86_64 = 88f455c1dc23b37a60b5fb6274797a90cc7d083cd2e49c1b7dab7cf023cd6bcd
 	sha256sums_x86_64 = 4233e03f2fcfa583ccfe5358c8709b459f1f2e9048cad837bb93d69c92fba17f
 
 pkgname = dsr
