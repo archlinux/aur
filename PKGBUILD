@@ -1,7 +1,7 @@
 # Maintainer: Pavel Olizko <contact@nolight.dev>
 
 pkgname=sonora
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc='A native music streaming client, built with Rust and GPUI'
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,9 @@ optdepends=('vulkan-radeon: Vulkan driver for AMD GPUs'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-x86_64-unknown-linux-gnu")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-aarch64-unknown-linux-gnu")
-sha256sums=('06664025671a3206fb0d306bd7b350a107b128e47b46845064f9b478d885d9c5')
-sha256sums_x86_64=('637cad86d31ecd845e0202fc1c51c55ce674e0686aab55e8c2be5c6e1ff16ada')
-sha256sums_aarch64=('40ca80e7f824bec9d6f193348878bcf1e620ee079a2d6db01ffe917212385c80')
+sha256sums=('5bc792c8af9062546a421bc0192a125861f09f25fe1ff2e94270a6073d23f36f')
+sha256sums_x86_64=('2b6dbefcd82052aef33935bfc84a2aa40ff0d0e2c1921cdada0674a4912f0b3e')
+sha256sums_aarch64=('480ca09b9c040f245c6862534428875b8d201ad06700ecf692ae9fa347d07f54')
 
 package() {
   cd "${pkgname}-${pkgver}"
