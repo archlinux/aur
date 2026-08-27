@@ -20,7 +20,7 @@ pkgver() {
 
 check() {
     cd "$srcdir"
-    sha256sum -c "fasthex.sha256"
+    sha256sum -c <(sed "s/fasthex-x86_64-linux-musl/fasthex/" fasthex.sha256)
 }
 
 package() {
