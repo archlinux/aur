@@ -1,12 +1,12 @@
 pkgbase = fasmg
 	pkgdesc = Assembler with advanced macro-instruction abilities
-	pkgver = kp60
+	pkgver = l8vn
 	pkgrel = 1
 	url = http://flatassembler.net/
 	arch = x86_64
 	license = BSD
-	noextract = fasmg.kp60.zip
-	source = https://flatassembler.net/fasmg.kp60.zip
-	sha512sums = 69e7b591497c123403f3c6bede72eefcfdcae2d784baf131c81291a1f8e1949019042c26abc52c169cb842177abd2294a47b3056d61b9ecdd5c1d2ecb246adf6
+	noextract = fasmg.l8vn.zip
+	source = https://flatassembler.net/fasmg.l8vn.zip
+	sha512sums = 010f9dd675884d73893e9e9dfd191e6fea39a74714d168cf18773d0d263f5eab07f2568a56550da02ad959520c948afffc459dfd936ac4a97fd3e8de3829fcd4
 
 pkgname = fasmg
