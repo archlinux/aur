@@ -1,0 +1,11 @@
+# Usage: nvchecker -c .nvchecker.toml
+[__config__]
+oldver = "oldver.json"
+newver = "newver.json"
+
+[aegisub-dependency-control]
+source = "github"
+github = "TypesettingTools/DependencyControl"
+# releases/latest skips the v0.6.x-alpha prereleases that max-tag would pick up
+use_latest_release = true
+prefix = "v"

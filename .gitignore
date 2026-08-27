@@ -3,3 +3,5 @@ pkg/
 *.tar.gz
 *.pkg.tar.xz
 LICENSE
+oldver.json
+newver.json
