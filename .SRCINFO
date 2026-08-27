@@ -1,0 +1,18 @@
+pkgbase = nss-docker-ng
+	pkgdesc = NSS plugin for resolving Docker containers by ID or name
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/petski/nss-docker-ng
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = patchelf
+	depends = glibc
+	depends = gcc-libs
+	optdepends = docker: local container engine daemon
+	options = !lto
+	source = git+https://github.com/petski/nss-docker-ng.git#tag=6de1ad4eca82599323f437e5fb077bd7538326a5
+	sha256sums = 4e6bb7b9c3055a9a678463b765ecd07d81eb399c2246531a7ed560f9133fc6e1
+
+pkgname = nss-docker-ng
