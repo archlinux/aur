@@ -5,8 +5,8 @@
 _pkgname=okular
 pkgname=okular-no-phonon
 pkgver=26.08.0
-pkgrel=2
-pkgdesc='Document Viewer applying patches from https://invent.kde.org/graphics/okular/-/merge_requests/1386'
+pkgrel=3
+pkgdesc='Document Viewer: applying patches from https://invent.kde.org/graphics/okular/-/merge_requests/1386'
 arch=(x86_64)
 url='https://apps.kde.org/okular/'
 license=(GPL-2.0-or-later LGPL-2.0-or-later)
@@ -64,6 +64,9 @@ sha256sums=('235e8e761f949b81953582e3ff6e45b8832d0d551b71bd1b5098c1ad663511e4'
 #               F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87  # Christoph Feck <cfeck@kde.org>
 #               D81C0CB38EB725EF6691C385BB463350D6EF31EF) # Heiko Becker <heiko.becker@kde.org>
 options=(!zipman)
+
+provides=(okular)
+conflicts=(okular)
 
 prepare() {
   patch -d $_pkgname-$pkgver -p1 < e322356c.patch # Fix crashes in kile
