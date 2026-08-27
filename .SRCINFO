@@ -1,6 +1,6 @@
 pkgbase = bottles
 	pkgdesc = Easily manage wine and proton prefix
-	pkgver = 66.7
+	pkgver = 66.9
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/bottlesdevs/Bottles
@@ -57,7 +57,7 @@ pkgbase = bottles
 	optdepends = wine: use system installed wine as runner for bottles
 	optdepends = xorg-xdpyinfo: display info detection
 	optdepends = xterm: fallback terminal for "Run executable in terminal"
-	source = Bottles-66.7.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/66.7.tar.gz
-	sha256sums = 607994bbc29d7e8f3b0d3cd852b7a97a0f1e2c90e4dcacefc2e8ce632709e8db
+	source = Bottles-66.9.tar.gz::https://github.com/bottlesdevs/Bottles/archive/refs/tags/66.9.tar.gz
+	sha256sums = fae977c7dcdac05f7eae7768a8717fd724f81102cbec4a29f7ac8944383db35e
 
 pkgname = bottles
