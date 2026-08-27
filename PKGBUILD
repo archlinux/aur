@@ -5,7 +5,7 @@ _pkgname=aim
 pkgname=${_pkgname}-bin
 pkgdesc="A command line download/upload tool with resume"
 
-pkgver=1.8.8
+pkgver=1.9.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -25,9 +25,9 @@ depends=('gcc-libs' 'glibc' 'zlib')
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}-${_str_arch}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[1]}-${_str_arch}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[2]}-${_str_arch}.tar.gz")
-sha256sums_x86_64=('176ce87f5ec008df956738d7d1107be3bc878ef6c7c1c63387111546516d1e06')
-sha256sums_i686=('3baf41bae1cb00af270968f3d8a9c13b7042949eb801c51d09d89387644eccd2')
-sha256sums_aarch64=('fca1d8b5fd4f4deaef0e7bb6bc77c40c2110ee595f2db6f89835eab7b4825778')
+sha256sums_x86_64=('0d88f817c3708e1b6a9aef132539c43b5f56be700bf796d37f7af4340e1fc801')
+sha256sums_i686=('24ef88ca65cf04452550d383441ac477864cd0e684c057f1b660f1783e1b6736')
+sha256sums_aarch64=('2a3cd7e7a5c4f2d8f6eff3780cd472f6e32ac1f21673bfcf04b84bef9af65adb')
 
 
 package() {
