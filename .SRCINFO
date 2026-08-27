@@ -1,0 +1,18 @@
+pkgbase = xkb-monitor-git
+	pkgdesc = A lightweight utility that monitors keyboard state on Wayland compositors
+	pkgver = 42f2140
+	pkgrel = 1
+	url = https://github.com/drougas/xkb-monitor
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	depends = wayland
+	depends = wayland-protocols
+	depends = libxkbcommon
+	provides = xkb-monitor
+	conflicts = xkb-monitor
+	source = git+https://github.com/drougas/xkb-monitor.git
+	sha256sums = SKIP
+
+pkgname = xkb-monitor-git
