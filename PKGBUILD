@@ -4,7 +4,7 @@
 pkgname=touchdesigner-linux
 pkgver=1.8.0
 pkgrel=1
-pkgdesc="TouchDesigner on Linux - Soda Wine, Vulkan-accelerated, ready to run"
+pkgdesc="Run TouchDesigner on Linux"
 arch=('x86_64')
 url="https://github.com/ismail-bahloul/TouchDesigner-Linux"
 license=('custom:custom')

@@ -1,5 +1,5 @@
 pkgbase = touchdesigner-linux
-	pkgdesc = TouchDesigner on Linux - Soda Wine, Vulkan-accelerated, ready to run
+	pkgdesc = Run TouchDesigner on Linux
 	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/ismail-bahloul/TouchDesigner-Linux
