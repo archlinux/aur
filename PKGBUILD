@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=swarm-desktop
 _pkgname='Swarm Desktop'
-pkgver=0.55.1
+pkgver=0.55.2
 _electronversion=40
 _nodeversion=24
 pkgrel=1
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('0eb12e3379534ff8e6ada1eec0d84b7564f6033ef82e5a6a6b5c80fc4093f33b'
+sha256sums=('ec05d10feb1d3e5e0516008daa9f239ecad44c5ccce7fb2bc3f52423f306b226'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
