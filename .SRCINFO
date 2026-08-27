@@ -1,9 +1,10 @@
 pkgbase = mangowm
 	pkgdesc = A Wayland compositor with smooth animation
 	pkgver = 0.16.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/DreamMaoMao/mangowc
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = ninja

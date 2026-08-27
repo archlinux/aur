@@ -2,10 +2,10 @@
 pkgname=mangowm
 _pkgname=mango
 pkgver=0.16.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Wayland compositor with smooth animation"
 url="https://github.com/DreamMaoMao/mangowc"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 license=("GPL-3.0-or-later")
 depends=('glibc' 'wayland-protocols' 'pango' 'wayland' 'libinput' 'libdrm' 'pixman' 'libdisplay-info' 'libliftoff' 'seatd' 'xorg-xwayland' 'libxcb' 'libxkbcommon' 'pcre2' 'libwlroots-0.20.so' 'scenefx0.5' 'cjson')
 provides=('wayland-compositor' 'mangowc')
