@@ -4,7 +4,7 @@
 pkgname=libarchive-static
 _pkgname=libarchive
 pkgver=3.8.9
-pkgrel=2
+pkgrel=3
 _attrver=2.5.2
 _aclver=2.3.2
 _sslver=3.6.4
@@ -41,11 +41,13 @@ sha512sums=('b16c64874cda0a0ab2d66bb89aaf7ffdb8abafad21101c9d64265f15e6b188cbf7f
             'SKIP'
             '2af02be3df319556b65403450acc55964d971fe263fed87dea823fb264a862db807a2a3d89358564277a83e5b303302cc677f66b5e523e3d224120b884e5ef1b'
             'SKIP')
-# i486, shasumming git archives is broken?
-if [ "${CARCH}" = "i486" ]; then
-	sha512sums[6]='SKIP'
-	sha512sums[12]='SKIP'
-fi
+# i486/armv6h can't checksum a git source (see memory/libarchive-static.md)
+case "${CARCH}" in
+	i486|armv6h)
+		sha512sums[0]='SKIP'
+		sha512sums[13]='SKIP'
+		;;
+esac
 
 _backports=(
 )
