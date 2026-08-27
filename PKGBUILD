@@ -1,29 +1,24 @@
 # Maintainer: CallMeAlphabet
 pkgname=fasthex-bin
-pkgver=0
+pkgver=42
 pkgrel=1
 pkgdesc="fasthex, a very fast hex dumper, prebuilt binary"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fasthex"
 license=('Apache-2.0')
 depends=('gcc-libs')
-makedepends=('git' 'curl')
 provides=('fasthex')
 conflicts=('fasthex')
-source=("fasthex::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex-x86_64-linux-musl"
-        "fasthex.sha256::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex-x86_64-linux-musl.sha256")
+source=("fasthex-$pkgver::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex-x86_64-linux-musl"
+        "fasthex-$pkgver.sha256::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex-x86_64-linux-musl.sha256")
 sha256sums=('SKIP' 'SKIP')
-
-pkgver() {
-    date -u -d "$(curl -s "https://api.github.com/repos/CallMeAlphabet/fasthex/commits/latest" | grep -m1 '"date"' | cut -d'"' -f4)" +%Y%m%d%H%M%S
-}
 
 check() {
     cd "$srcdir"
-    sha256sum -c <(sed "s/fasthex-x86_64-linux-musl/fasthex/" fasthex.sha256)
+    sha256sum -c <(sed "s/fasthex-x86_64-linux-musl/fasthex-$pkgver/" "fasthex-$pkgver.sha256")
 }
 
 package() {
     cd "$srcdir"
-    install -Dm755 "fasthex" "$pkgdir/usr/bin/fasthex"
+    install -Dm755 "fasthex-$pkgver" "$pkgdir/usr/bin/fasthex"
 }
