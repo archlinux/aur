@@ -1,0 +1,16 @@
+pkgbase = viisan-vf3240-sane-driver
+	pkgdesc = SANE driver for the Viisan VF3240 A3 Flatbed scanner
+	pkgver = 1.0.2.0
+	pkgrel = 2
+	url = https://www.viisan.com/en/product/VF3240.html
+	arch = x86_64
+	license = proprietary
+	depends = sane
+	depends = libusb
+	depends = opencv
+	options = !debug
+	options = !strip
+	source = viisan-vf3240-1.0.2.0.zip::https://viisan.oss-us-west-1.aliyuncs.com/en/file/t91/VF3240%20Linux%20sane%20driver%201.0.2.0.zip
+	sha256sums = 680d4c583400f935a2671f1c9a3be9425b9d0becb5b6beebf4918558aa369edc
+
+pkgname = viisan-vf3240-sane-driver
