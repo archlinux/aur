@@ -1,0 +1,1751 @@
+#compdef herdr
+
+autoload -U is-at-least
+
+_herdr() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" : \
+'--session[Use or create a named persistent session]:NAME:_default' \
+'--remote[Attach through SSH to a remote Herdr server]:TARGET:_default' \
+'--remote-keybindings[Choose local or server keybindings for remote attach]:MODE:(local server)' \
+'-h[Show help]' \
+'--help[Show help]' \
+'--no-session[Run monolithically without server/client session mode]' \
+'--handoff[Opt into live handoff for update or remote attach]' \
+'--default-config[Print default configuration and exit]' \
+'--skill[Print the agent skill file and exit]' \
+'-V[Print version and exit]' \
+'--version[Print version and exit]' \
+":: :_herdr_commands" \
+"*::: :->herdr" \
+&& ret=0
+    case $state in
+    (herdr)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-command-$line[1]:"
+        case $line[1] in
+            (completion)
+_arguments "${_arguments_options[@]}" : \
+':shell -- Shell to generate completions for:(bash elvish fish powershell zsh)' \
+&& ret=0
+;;
+(completions)
+_arguments "${_arguments_options[@]}" : \
+':shell -- Shell to generate completions for:(bash elvish fish powershell zsh)' \
+&& ret=0
+;;
+(update)
+_arguments "${_arguments_options[@]}" : \
+'--handoff[Try live handoff after installing]' \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+'--json[]' \
+":: :_herdr__subcmd__status_commands" \
+"*::: :->status" \
+&& ret=0
+
+    case $state in
+    (status)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-status-command-$line[1]:"
+        case $line[1] in
+            (server)
+_arguments "${_arguments_options[@]}" : \
+'--json[]' \
+&& ret=0
+;;
+(client)
+_arguments "${_arguments_options[@]}" : \
+'--json[]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(config)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__config_commands" \
+"*::: :->config" \
+&& ret=0
+
+    case $state in
+    (config)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-config-command-$line[1]:"
+        case $line[1] in
+            (check)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(reset-keys)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(channel)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__channel_commands" \
+"*::: :->channel" \
+&& ret=0
+
+    case $state in
+    (channel)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-channel-command-$line[1]:"
+        case $line[1] in
+            (show)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(set)
+_arguments "${_arguments_options[@]}" : \
+':channel:(stable preview)' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(server)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__server_commands" \
+"*::: :->server" \
+&& ret=0
+
+    case $state in
+    (server)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-server-command-$line[1]:"
+        case $line[1] in
+            (stop)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(reload-config)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(agent-manifests)
+_arguments "${_arguments_options[@]}" : \
+'--json[]' \
+&& ret=0
+;;
+(update-agent-manifests)
+_arguments "${_arguments_options[@]}" : \
+'--json[]' \
+&& ret=0
+;;
+(reload-agent-manifests)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(api)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__api_commands" \
+"*::: :->api" \
+&& ret=0
+
+    case $state in
+    (api)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-api-command-$line[1]:"
+        case $line[1] in
+            (snapshot)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(schema)
+_arguments "${_arguments_options[@]}" : \
+'--output[]:PATH:_files' \
+'--json[]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(workspace)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__workspace_commands" \
+"*::: :->workspace" \
+&& ret=0
+
+    case $state in
+    (workspace)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-workspace-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(create)
+_arguments "${_arguments_options[@]}" : \
+'--cwd[]:PATH:_files' \
+'--label[]:TEXT:_default' \
+'*--env[Set an environment variable for the launched process]:KEY=VALUE:_default' \
+'--focus[]' \
+'--no-focus[]' \
+&& ret=0
+;;
+(get)
+_arguments "${_arguments_options[@]}" : \
+':workspace_id:_default' \
+&& ret=0
+;;
+(focus)
+_arguments "${_arguments_options[@]}" : \
+':workspace_id:_default' \
+&& ret=0
+;;
+(rename)
+_arguments "${_arguments_options[@]}" : \
+':workspace_id:_default' \
+'*::label:_default' \
+&& ret=0
+;;
+(report-metadata)
+_arguments "${_arguments_options[@]}" : \
+'--source[]:ID:_default' \
+'*--token[]:NAME=VALUE:_default' \
+'*--clear-token[]:NAME:_default' \
+'--seq[]:N:_default' \
+'--ttl-ms[]:N:_default' \
+':workspace_id:_default' \
+&& ret=0
+;;
+(close)
+_arguments "${_arguments_options[@]}" : \
+':workspace_id:_default' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(worktree)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__worktree_commands" \
+"*::: :->worktree" \
+&& ret=0
+
+    case $state in
+    (worktree)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-worktree-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--workspace[]:ID:_default' \
+'--cwd[]:PATH:_files' \
+&& ret=0
+;;
+(create)
+_arguments "${_arguments_options[@]}" : \
+'--workspace[]:ID:_default' \
+'--cwd[]:PATH:_files' \
+'--branch[]:NAME:_default' \
+'--base[]:REF:_default' \
+'--path[]:PATH:_files' \
+'--label[]:TEXT:_default' \
+'--focus[]' \
+'--no-focus[]' \
+&& ret=0
+;;
+(open)
+_arguments "${_arguments_options[@]}" : \
+'--workspace[]:ID:_default' \
+'--cwd[]:PATH:_files' \
+'--path[]:PATH:_files' \
+'--branch[]:NAME:_default' \
+'--label[]:TEXT:_default' \
+'--focus[]' \
+'--no-focus[]' \
+&& ret=0
+;;
+(remove)
+_arguments "${_arguments_options[@]}" : \
+'--workspace[]:ID:_default' \
+'--force[]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(tab)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__tab_commands" \
+"*::: :->tab" \
+&& ret=0
+
+    case $state in
+    (tab)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-tab-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--workspace[]:WORKSPACE_ID:_default' \
+&& ret=0
+;;
+(create)
+_arguments "${_arguments_options[@]}" : \
+'--workspace[]:WORKSPACE_ID:_default' \
+'--cwd[]:PATH:_files' \
+'--label[]:TEXT:_default' \
+'*--env[Set an environment variable for the launched process]:KEY=VALUE:_default' \
+'--focus[]' \
+'--no-focus[]' \
+&& ret=0
+;;
+(get)
+_arguments "${_arguments_options[@]}" : \
+':tab_id:_default' \
+&& ret=0
+;;
+(focus)
+_arguments "${_arguments_options[@]}" : \
+':tab_id:_default' \
+&& ret=0
+;;
+(rename)
+_arguments "${_arguments_options[@]}" : \
+':tab_id:_default' \
+'*::label:_default' \
+&& ret=0
+;;
+(close)
+_arguments "${_arguments_options[@]}" : \
+':tab_id:_default' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(notification)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__notification_commands" \
+"*::: :->notification" \
+&& ret=0
+
+    case $state in
+    (notification)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-notification-command-$line[1]:"
+        case $line[1] in
+            (show)
+_arguments "${_arguments_options[@]}" : \
+'--body[]:TEXT:_default' \
+'--position[]:POSITION:(top-left top-right bottom-left bottom-right)' \
+'--sound[]:SOUND:(none done request)' \
+':title:_default' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(agent)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__agent_commands" \
+"*::: :->agent" \
+&& ret=0
+
+    case $state in
+    (agent)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-agent-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+(get)
+_arguments "${_arguments_options[@]}" : \
+':target:_default' \
+&& ret=0
+;;
+(read)
+_arguments "${_arguments_options[@]}" : \
+'--source[Terminal snapshot source (default\: recent)]:SOURCE:(visible recent recent-unwrapped detection)' \
+'--lines[]:N:_default' \
+'--format[]:FORMAT:(text ansi)' \
+'--ansi[]' \
+':target:_default' \
+&& ret=0
+;;
+(send-keys)
+_arguments "${_arguments_options[@]}" : \
+':target:_default' \
+'*::key:_default' \
+&& ret=0
+;;
+(prompt)
+_arguments "${_arguments_options[@]}" : \
+'*--until[State to match after --wait; repeat for more than one state]:STATUS:(idle working blocked done unknown)' \
+'--timeout[Fail after this many milliseconds]:MS:_default' \
+'--wait[Wait for the first matching state observed after submission]' \
+':target:_default' \
+':text:_default' \
+&& ret=0
+;;
+(rename)
+_arguments "${_arguments_options[@]}" : \
+'--clear[]' \
+':target:_default' \
+'::name:_default' \
+&& ret=0
+;;
+(focus)
+_arguments "${_arguments_options[@]}" : \
+':target:_default' \
+&& ret=0
+;;
+(wait)
+_arguments "${_arguments_options[@]}" : \
+'*--until[State to match; repeat for more than one state]:STATUS:(idle working blocked done unknown)' \
+'--timeout[Fail after this many milliseconds]:MS:_default' \
+':target:_default' \
+&& ret=0
+;;
+(attach)
+_arguments "${_arguments_options[@]}" : \
+'--takeover[]' \
+':target:_default' \
+&& ret=0
+;;
+(start)
+_arguments "${_arguments_options[@]}" : \
+'--kind[Supported agent kind and canonical executable]:KIND:(pi claude codex gemini cursor devin agy cline omp mastracode opencode copilot kimi kiro droid amp grok hermes kilo qodercli qwen maki)' \
+'--pane[Existing pane at an interactive shell prompt]:ID:_default' \
+'--timeout[Wait for interactive readiness (default\: 30000; max\: 300000)]:MS:_default' \
+':name:_default' \
+'*::agent_args:_default' \
+&& ret=0
+;;
+(explain)
+_arguments "${_arguments_options[@]}" : \
+'--file[]:PATH:_files' \
+'--agent[]:LABEL:_default' \
+'--format[]:FORMAT:(text json)' \
+'--json[]' \
+'-v[]' \
+'--verbose[]' \
+'::target:_default' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(pane)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__pane_commands" \
+"*::: :->pane" \
+&& ret=0
+
+    case $state in
+    (pane)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-pane-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--workspace[]:WORKSPACE_ID:_default' \
+&& ret=0
+;;
+(current)
+_arguments "${_arguments_options[@]}" : \
+'--pane[]:ID:_default' \
+'--current[]' \
+&& ret=0
+;;
+(get)
+_arguments "${_arguments_options[@]}" : \
+':pane_id:_default' \
+&& ret=0
+;;
+(layout)
+_arguments "${_arguments_options[@]}" : \
+'--pane[]:ID:_default' \
+'--current[]' \
+&& ret=0
+;;
+(process-info)
+_arguments "${_arguments_options[@]}" : \
+'--pane[]:ID:_default' \
+'--current[]' \
+&& ret=0
+;;
+(neighbor)
+_arguments "${_arguments_options[@]}" : \
+'--direction[]:DIRECTION:(left right up down)' \
+'--pane[]:ID:_default' \
+'--current[]' \
+&& ret=0
+;;
+(edges)
+_arguments "${_arguments_options[@]}" : \
+'--pane[]:ID:_default' \
+'--current[]' \
+&& ret=0
+;;
+(focus)
+_arguments "${_arguments_options[@]}" : \
+'--direction[]:DIRECTION:(left right up down)' \
+'--pane[]:ID:_default' \
+'--current[]' \
+&& ret=0
+;;
+(resize)
+_arguments "${_arguments_options[@]}" : \
+'--direction[]:DIRECTION:(left right up down)' \
+'--amount[]:FLOAT:_default' \
+'--pane[]:ID:_default' \
+'--current[]' \
+&& ret=0
+;;
+(zoom)
+_arguments "${_arguments_options[@]}" : \
+'--pane[]:ID:_default' \
+'--current[]' \
+'--toggle[]' \
+'--on[]' \
+'--off[]' \
+'::pane_id:_default' \
+&& ret=0
+;;
+(read)
+_arguments "${_arguments_options[@]}" : \
+'--source[Terminal snapshot source (default\: recent)]:SOURCE:(visible recent recent-unwrapped detection)' \
+'--lines[]:N:_default' \
+'--format[]:FORMAT:(text ansi)' \
+'--ansi[]' \
+'--raw[]' \
+':pane_id:_default' \
+&& ret=0
+;;
+(rename)
+_arguments "${_arguments_options[@]}" : \
+'--clear[]' \
+':pane_id:_default' \
+'*::label:_default' \
+&& ret=0
+;;
+(input)
+_arguments "${_arguments_options[@]}" : \
+'--pane[]:ID:_default' \
+'--right-click[]:TARGET:(herdr pane)' \
+'--current[]' \
+'::pane_id:_default' \
+&& ret=0
+;;
+(split)
+_arguments "${_arguments_options[@]}" : \
+'--pane[]:ID:_default' \
+'--direction[]:DIRECTION:(right down)' \
+'--ratio[]:FLOAT:_default' \
+'--cwd[]:PATH:_files' \
+'*--env[Set an environment variable for the launched process]:KEY=VALUE:_default' \
+'--right-click[]:TARGET:(herdr pane)' \
+'--current[]' \
+'--focus[]' \
+'--no-focus[]' \
+'::pane_id:_default' \
+&& ret=0
+;;
+(swap)
+_arguments "${_arguments_options[@]}" : \
+'--direction[]:DIRECTION:(left right up down)' \
+'--pane[]:ID:_default' \
+'--source-pane[]:ID:_default' \
+'--target-pane[]:ID:_default' \
+'--current[]' \
+&& ret=0
+;;
+(move)
+_arguments "${_arguments_options[@]}" : \
+'--tab[]:TAB_ID:_default' \
+'--split[]:DIRECTION:(right down)' \
+'--target-pane[]:ID:_default' \
+'--ratio[]:FLOAT:_default' \
+'--workspace[]:ID:_default' \
+'--label[]:TEXT:_default' \
+'--tab-label[]:TEXT:_default' \
+'--new-tab[]' \
+'--new-workspace[]' \
+'--focus[]' \
+'--no-focus[]' \
+':pane_id:_default' \
+&& ret=0
+;;
+(close)
+_arguments "${_arguments_options[@]}" : \
+':pane_id:_default' \
+&& ret=0
+;;
+(send-text)
+_arguments "${_arguments_options[@]}" : \
+':pane_id:_default' \
+':text:_default' \
+&& ret=0
+;;
+(send-keys)
+_arguments "${_arguments_options[@]}" : \
+':pane_id:_default' \
+'*::key:_default' \
+&& ret=0
+;;
+(wait-output)
+_arguments "${_arguments_options[@]}" : \
+'(--regex)--match[Match a literal substring]:TEXT:_default' \
+'(--match)--regex[Match a Rust regular expression]:PATTERN:_default' \
+'--source[Terminal snapshot source (default\: recent)]:SOURCE:(visible recent recent-unwrapped)' \
+'--lines[Restrict the searched snapshot to N lines]:N:_default' \
+'--timeout[Fail after this many milliseconds]:MS:_default' \
+'--raw[Keep ANSI escape sequences while matching]' \
+':pane_id:_default' \
+&& ret=0
+;;
+(run)
+_arguments "${_arguments_options[@]}" : \
+':pane_id:_default' \
+'*::command:_default' \
+&& ret=0
+;;
+(report-agent)
+_arguments "${_arguments_options[@]}" : \
+'--source[]:ID:_default' \
+'--agent[]:LABEL:_default' \
+'--state[]:STATUS:(idle working blocked unknown)' \
+'--message[]:TEXT:_default' \
+'--seq[]:N:_default' \
+'--agent-session-id[]:ID:_default' \
+'--agent-session-path[]:PATH:_files' \
+':pane_id:_default' \
+&& ret=0
+;;
+(report-agent-session)
+_arguments "${_arguments_options[@]}" : \
+'--source[]:ID:_default' \
+'--agent[]:LABEL:_default' \
+'--seq[]:N:_default' \
+'--agent-session-id[]:ID:_default' \
+'--agent-session-path[]:PATH:_files' \
+'--session-start-source[]:SOURCE:_default' \
+':pane_id:_default' \
+&& ret=0
+;;
+(release-agent)
+_arguments "${_arguments_options[@]}" : \
+'--source[]:ID:_default' \
+'--agent[]:LABEL:_default' \
+'--seq[]:N:_default' \
+':pane_id:_default' \
+&& ret=0
+;;
+(report-metadata)
+_arguments "${_arguments_options[@]}" : \
+'--source[]:ID:_default' \
+'--agent[]:LABEL:_default' \
+'--applies-to-source[]:ID:_default' \
+'--title[]:TEXT:_default' \
+'--display-agent[]:TEXT:_default' \
+'--state-label[]:STATUS=TEXT:_default' \
+'*--token[]:NAME=VALUE:_default' \
+'*--clear-token[]:NAME:_default' \
+'--seq[]:N:_default' \
+'--ttl-ms[]:N:_default' \
+'--clear-title[]' \
+'--clear-display-agent[]' \
+'--clear-state-labels[]' \
+':pane_id:_default' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(terminal)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__terminal_commands" \
+"*::: :->terminal" \
+&& ret=0
+
+    case $state in
+    (terminal)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-terminal-command-$line[1]:"
+        case $line[1] in
+            (attach)
+_arguments "${_arguments_options[@]}" : \
+'--takeover[]' \
+':terminal_id:_default' \
+&& ret=0
+;;
+(session)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__terminal__subcmd__session_commands" \
+"*::: :->session" \
+&& ret=0
+
+    case $state in
+    (session)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-terminal-session-command-$line[1]:"
+        case $line[1] in
+            (control)
+_arguments "${_arguments_options[@]}" : \
+'--cols[]:N:_default' \
+'--rows[]:N:_default' \
+'--takeover[]' \
+':target:_default' \
+&& ret=0
+;;
+(observe)
+_arguments "${_arguments_options[@]}" : \
+'--cols[]:N:_default' \
+'--rows[]:N:_default' \
+':target:_default' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(title)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__terminal__subcmd__title_commands" \
+"*::: :->title" \
+&& ret=0
+
+    case $state in
+    (title)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-terminal-title-command-$line[1]:"
+        case $line[1] in
+            (set)
+_arguments "${_arguments_options[@]}" : \
+':title:_default' \
+&& ret=0
+;;
+(clear)
+_arguments "${_arguments_options[@]}" : \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+(session)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__session_commands" \
+"*::: :->session" \
+&& ret=0
+
+    case $state in
+    (session)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-session-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--json[]' \
+&& ret=0
+;;
+(attach)
+_arguments "${_arguments_options[@]}" : \
+':name:_default' \
+&& ret=0
+;;
+(stop)
+_arguments "${_arguments_options[@]}" : \
+'--json[]' \
+':name:_default' \
+&& ret=0
+;;
+(delete)
+_arguments "${_arguments_options[@]}" : \
+'--json[]' \
+':name:_default' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(integration)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__integration_commands" \
+"*::: :->integration" \
+&& ret=0
+
+    case $state in
+    (integration)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-integration-command-$line[1]:"
+        case $line[1] in
+            (install)
+_arguments "${_arguments_options[@]}" : \
+':target:(pi omp claude codex copilot devin droid kimi opencode kilo hermes qodercli qwen cursor mastracode antigravity-cli grok)' \
+&& ret=0
+;;
+(uninstall)
+_arguments "${_arguments_options[@]}" : \
+':target:(pi omp claude codex copilot devin droid kimi opencode kilo hermes qodercli qwen cursor mastracode antigravity-cli grok)' \
+&& ret=0
+;;
+(status)
+_arguments "${_arguments_options[@]}" : \
+'--outdated-only[]' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(plugin)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__plugin_commands" \
+"*::: :->plugin" \
+&& ret=0
+
+    case $state in
+    (plugin)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-plugin-command-$line[1]:"
+        case $line[1] in
+            (install)
+_arguments "${_arguments_options[@]}" : \
+'--ref[]:REF:_default' \
+'-y[]' \
+'--yes[]' \
+':source:_default' \
+&& ret=0
+;;
+(uninstall)
+_arguments "${_arguments_options[@]}" : \
+':plugin:_default' \
+&& ret=0
+;;
+(link)
+_arguments "${_arguments_options[@]}" : \
+'--disabled[]' \
+'--enabled[]' \
+':path:_files' \
+&& ret=0
+;;
+(unlink)
+_arguments "${_arguments_options[@]}" : \
+':plugin_id:_default' \
+&& ret=0
+;;
+(enable)
+_arguments "${_arguments_options[@]}" : \
+':plugin_id:_default' \
+&& ret=0
+;;
+(disable)
+_arguments "${_arguments_options[@]}" : \
+':plugin_id:_default' \
+&& ret=0
+;;
+(list)
+_arguments "${_arguments_options[@]}" : \
+'--plugin[]:ID:_default' \
+'--json[]' \
+&& ret=0
+;;
+(config-dir)
+_arguments "${_arguments_options[@]}" : \
+':plugin_id:_default' \
+&& ret=0
+;;
+(action)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__plugin__subcmd__action_commands" \
+"*::: :->action" \
+&& ret=0
+
+    case $state in
+    (action)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-plugin-action-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--plugin[]:ID:_default' \
+&& ret=0
+;;
+(invoke)
+_arguments "${_arguments_options[@]}" : \
+'--plugin[]:ID:_default' \
+':action_id:_default' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(log)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__plugin__subcmd__log_commands" \
+"*::: :->log" \
+&& ret=0
+
+    case $state in
+    (log)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-plugin-log-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--plugin[]:ID:_default' \
+'--limit[]:N:_default' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(logs)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__plugin__subcmd__log_commands" \
+"*::: :->log" \
+&& ret=0
+
+    case $state in
+    (log)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-plugin-log-command-$line[1]:"
+        case $line[1] in
+            (list)
+_arguments "${_arguments_options[@]}" : \
+'--plugin[]:ID:_default' \
+'--limit[]:N:_default' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+(pane)
+_arguments "${_arguments_options[@]}" : \
+":: :_herdr__subcmd__plugin__subcmd__pane_commands" \
+"*::: :->pane" \
+&& ret=0
+
+    case $state in
+    (pane)
+        words=($line[1] "${words[@]}")
+        (( CURRENT += 1 ))
+        curcontext="${curcontext%:*:*}:herdr-plugin-pane-command-$line[1]:"
+        case $line[1] in
+            (open)
+_arguments "${_arguments_options[@]}" : \
+'--plugin[]:ID:_default' \
+'--entrypoint[]:ID:_default' \
+'--placement[]:PLACEMENT:(overlay split tab zoomed)' \
+'--workspace[]:ID:_default' \
+'--target-pane[]:PANE:_default' \
+'--direction[]:DIRECTION:(right down)' \
+'--cwd[]:PATH:_files' \
+'*--env[Set an environment variable for the launched process]:KEY=VALUE:_default' \
+'--focus[]' \
+'--no-focus[]' \
+&& ret=0
+;;
+(focus)
+_arguments "${_arguments_options[@]}" : \
+':pane_id:_default' \
+&& ret=0
+;;
+(close)
+_arguments "${_arguments_options[@]}" : \
+':pane_id:_default' \
+&& ret=0
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+;;
+        esac
+    ;;
+esac
+}
+
+(( $+functions[_herdr_commands] )) ||
+_herdr_commands() {
+    local commands; commands=(
+'completion:Generate shell completion scripts' \
+'completions:Generate shell completion scripts' \
+'update:Download and install the latest version' \
+'status:Show local client and running server status' \
+'config:Manage local configuration' \
+'channel:Manage stable and preview update channels' \
+'server:Run or control the headless server' \
+'api:Inspect socket API metadata and live runtime state' \
+'workspace:Manage workspaces over the socket API' \
+'worktree:Manage Git worktree-backed workspaces' \
+'tab:Manage tabs over the socket API' \
+'notification:Show Herdr notifications' \
+'agent:Control and inspect agent panes' \
+'pane:Control terminal panes' \
+'terminal:Attach to or observe raw terminal streams' \
+'session:Manage named persistent sessions' \
+'integration:Manage built-in agent integrations' \
+'plugin:Install and run workflow plugins' \
+    )
+    _describe -t commands 'herdr commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__agent_commands] )) ||
+_herdr__subcmd__agent_commands() {
+    local commands; commands=(
+'list:List agents' \
+'get:Show an agent' \
+'read:Read agent terminal output' \
+'send-keys:Send key presses to an agent' \
+'prompt:Submit a prompt to an agent' \
+'rename:Rename an agent' \
+'focus:Focus an agent' \
+'wait:Wait until an agent reaches one of the requested states' \
+'attach:Attach directly to an agent terminal' \
+'start:Start a supported interactive agent in an existing pane' \
+'explain:Explain agent detection state' \
+    )
+    _describe -t commands 'herdr agent commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__agent__subcmd__attach_commands] )) ||
+_herdr__subcmd__agent__subcmd__attach_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr agent attach commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__agent__subcmd__explain_commands] )) ||
+_herdr__subcmd__agent__subcmd__explain_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr agent explain commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__agent__subcmd__focus_commands] )) ||
+_herdr__subcmd__agent__subcmd__focus_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr agent focus commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__agent__subcmd__get_commands] )) ||
+_herdr__subcmd__agent__subcmd__get_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr agent get commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__agent__subcmd__list_commands] )) ||
+_herdr__subcmd__agent__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr agent list commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__agent__subcmd__prompt_commands] )) ||
+_herdr__subcmd__agent__subcmd__prompt_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr agent prompt commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__agent__subcmd__read_commands] )) ||
+_herdr__subcmd__agent__subcmd__read_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr agent read commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__agent__subcmd__rename_commands] )) ||
+_herdr__subcmd__agent__subcmd__rename_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr agent rename commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__agent__subcmd__send-keys_commands] )) ||
+_herdr__subcmd__agent__subcmd__send-keys_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr agent send-keys commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__agent__subcmd__start_commands] )) ||
+_herdr__subcmd__agent__subcmd__start_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr agent start commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__agent__subcmd__wait_commands] )) ||
+_herdr__subcmd__agent__subcmd__wait_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr agent wait commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__api_commands] )) ||
+_herdr__subcmd__api_commands() {
+    local commands; commands=(
+'snapshot:Print the live session snapshot' \
+'schema:Print or write the bundled API schema' \
+    )
+    _describe -t commands 'herdr api commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__api__subcmd__schema_commands] )) ||
+_herdr__subcmd__api__subcmd__schema_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr api schema commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__api__subcmd__snapshot_commands] )) ||
+_herdr__subcmd__api__subcmd__snapshot_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr api snapshot commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__channel_commands] )) ||
+_herdr__subcmd__channel_commands() {
+    local commands; commands=(
+'show:Print the configured update channel' \
+'set:Choose the update channel' \
+    )
+    _describe -t commands 'herdr channel commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__channel__subcmd__set_commands] )) ||
+_herdr__subcmd__channel__subcmd__set_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr channel set commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__channel__subcmd__show_commands] )) ||
+_herdr__subcmd__channel__subcmd__show_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr channel show commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__completion_commands] )) ||
+_herdr__subcmd__completion_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr completion commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__config_commands] )) ||
+_herdr__subcmd__config_commands() {
+    local commands; commands=(
+'check:Validate config.toml and print diagnostics' \
+'reset-keys:Reset custom keybindings' \
+    )
+    _describe -t commands 'herdr config commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__config__subcmd__check_commands] )) ||
+_herdr__subcmd__config__subcmd__check_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr config check commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__config__subcmd__reset-keys_commands] )) ||
+_herdr__subcmd__config__subcmd__reset-keys_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr config reset-keys commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__integration_commands] )) ||
+_herdr__subcmd__integration_commands() {
+    local commands; commands=(
+'install:Install an integration' \
+'uninstall:Uninstall an integration' \
+'status:Show integration status' \
+    )
+    _describe -t commands 'herdr integration commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__integration__subcmd__install_commands] )) ||
+_herdr__subcmd__integration__subcmd__install_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr integration install commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__integration__subcmd__status_commands] )) ||
+_herdr__subcmd__integration__subcmd__status_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr integration status commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__integration__subcmd__uninstall_commands] )) ||
+_herdr__subcmd__integration__subcmd__uninstall_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr integration uninstall commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__notification_commands] )) ||
+_herdr__subcmd__notification_commands() {
+    local commands; commands=(
+'show:Show a notification' \
+    )
+    _describe -t commands 'herdr notification commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__notification__subcmd__show_commands] )) ||
+_herdr__subcmd__notification__subcmd__show_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr notification show commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane_commands] )) ||
+_herdr__subcmd__pane_commands() {
+    local commands; commands=(
+'list:List panes' \
+'current:Show the current pane' \
+'get:Show a pane' \
+'layout:Show pane layout information' \
+'process-info:Show pane process information' \
+'neighbor:Find a pane neighbor' \
+'edges:Show pane edge information' \
+'focus:Focus a neighboring pane' \
+'resize:Resize a pane split' \
+'zoom:Toggle or set pane zoom' \
+'read:Read pane terminal output' \
+'rename:Rename a pane' \
+'input:Set pane input routing' \
+'split:Split a pane' \
+'swap:Swap panes' \
+'move:Move a pane' \
+'close:Close a pane' \
+'send-text:Send literal text to a pane' \
+'send-keys:Send key presses to a pane' \
+'wait-output:Wait for matching pane output' \
+'run:Run a command in a pane' \
+'report-agent:Report pane agent lifecycle state' \
+'report-agent-session:Report pane agent session identity' \
+'release-agent:Release pane agent lifecycle authority' \
+'report-metadata:Report display-only pane metadata' \
+    )
+    _describe -t commands 'herdr pane commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__close_commands] )) ||
+_herdr__subcmd__pane__subcmd__close_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane close commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__current_commands] )) ||
+_herdr__subcmd__pane__subcmd__current_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane current commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__edges_commands] )) ||
+_herdr__subcmd__pane__subcmd__edges_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane edges commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__focus_commands] )) ||
+_herdr__subcmd__pane__subcmd__focus_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane focus commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__get_commands] )) ||
+_herdr__subcmd__pane__subcmd__get_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane get commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__input_commands] )) ||
+_herdr__subcmd__pane__subcmd__input_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane input commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__layout_commands] )) ||
+_herdr__subcmd__pane__subcmd__layout_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane layout commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__list_commands] )) ||
+_herdr__subcmd__pane__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane list commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__move_commands] )) ||
+_herdr__subcmd__pane__subcmd__move_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane move commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__neighbor_commands] )) ||
+_herdr__subcmd__pane__subcmd__neighbor_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane neighbor commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__process-info_commands] )) ||
+_herdr__subcmd__pane__subcmd__process-info_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane process-info commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__read_commands] )) ||
+_herdr__subcmd__pane__subcmd__read_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane read commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__release-agent_commands] )) ||
+_herdr__subcmd__pane__subcmd__release-agent_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane release-agent commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__rename_commands] )) ||
+_herdr__subcmd__pane__subcmd__rename_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane rename commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__report-agent_commands] )) ||
+_herdr__subcmd__pane__subcmd__report-agent_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane report-agent commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__report-agent-session_commands] )) ||
+_herdr__subcmd__pane__subcmd__report-agent-session_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane report-agent-session commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__report-metadata_commands] )) ||
+_herdr__subcmd__pane__subcmd__report-metadata_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane report-metadata commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__resize_commands] )) ||
+_herdr__subcmd__pane__subcmd__resize_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane resize commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__run_commands] )) ||
+_herdr__subcmd__pane__subcmd__run_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane run commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__send-keys_commands] )) ||
+_herdr__subcmd__pane__subcmd__send-keys_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane send-keys commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__send-text_commands] )) ||
+_herdr__subcmd__pane__subcmd__send-text_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane send-text commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__split_commands] )) ||
+_herdr__subcmd__pane__subcmd__split_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane split commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__swap_commands] )) ||
+_herdr__subcmd__pane__subcmd__swap_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane swap commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__wait-output_commands] )) ||
+_herdr__subcmd__pane__subcmd__wait-output_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane wait-output commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__pane__subcmd__zoom_commands] )) ||
+_herdr__subcmd__pane__subcmd__zoom_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr pane zoom commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin_commands] )) ||
+_herdr__subcmd__plugin_commands() {
+    local commands; commands=(
+'install:Install a plugin from GitHub' \
+'uninstall:Uninstall a plugin' \
+'link:Link a local plugin' \
+'unlink:Unlink a local plugin' \
+'enable:Enable a plugin' \
+'disable:Disable a plugin' \
+'list:List installed plugins' \
+'config-dir:Print a plugin config directory' \
+'action:List or invoke plugin actions' \
+'log:Inspect plugin command logs' \
+'logs:Inspect plugin command logs' \
+'pane:Manage plugin-owned panes' \
+    )
+    _describe -t commands 'herdr plugin commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__action_commands] )) ||
+_herdr__subcmd__plugin__subcmd__action_commands() {
+    local commands; commands=(
+'list:List plugin actions' \
+'invoke:Invoke a plugin action' \
+    )
+    _describe -t commands 'herdr plugin action commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__action__subcmd__invoke_commands] )) ||
+_herdr__subcmd__plugin__subcmd__action__subcmd__invoke_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin action invoke commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__action__subcmd__list_commands] )) ||
+_herdr__subcmd__plugin__subcmd__action__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin action list commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__config-dir_commands] )) ||
+_herdr__subcmd__plugin__subcmd__config-dir_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin config-dir commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__disable_commands] )) ||
+_herdr__subcmd__plugin__subcmd__disable_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin disable commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__enable_commands] )) ||
+_herdr__subcmd__plugin__subcmd__enable_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin enable commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__install_commands] )) ||
+_herdr__subcmd__plugin__subcmd__install_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin install commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__link_commands] )) ||
+_herdr__subcmd__plugin__subcmd__link_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin link commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__list_commands] )) ||
+_herdr__subcmd__plugin__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin list commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__log_commands] )) ||
+_herdr__subcmd__plugin__subcmd__log_commands() {
+    local commands; commands=(
+'list:List plugin command logs' \
+    )
+    _describe -t commands 'herdr plugin log commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__log__subcmd__list_commands] )) ||
+_herdr__subcmd__plugin__subcmd__log__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin log list commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__pane_commands] )) ||
+_herdr__subcmd__plugin__subcmd__pane_commands() {
+    local commands; commands=(
+'open:Open a plugin pane' \
+'focus:Focus a plugin pane' \
+'close:Close a plugin pane' \
+    )
+    _describe -t commands 'herdr plugin pane commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__pane__subcmd__close_commands] )) ||
+_herdr__subcmd__plugin__subcmd__pane__subcmd__close_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin pane close commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__pane__subcmd__focus_commands] )) ||
+_herdr__subcmd__plugin__subcmd__pane__subcmd__focus_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin pane focus commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__pane__subcmd__open_commands] )) ||
+_herdr__subcmd__plugin__subcmd__pane__subcmd__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin pane open commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__uninstall_commands] )) ||
+_herdr__subcmd__plugin__subcmd__uninstall_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin uninstall commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__plugin__subcmd__unlink_commands] )) ||
+_herdr__subcmd__plugin__subcmd__unlink_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr plugin unlink commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__server_commands] )) ||
+_herdr__subcmd__server_commands() {
+    local commands; commands=(
+'stop:Stop the running server' \
+'reload-config:Reload config in the running server' \
+'agent-manifests:Show active agent detection manifests' \
+'update-agent-manifests:Fetch and reload agent detection manifests' \
+'reload-agent-manifests:Reload local agent detection manifest overrides' \
+    )
+    _describe -t commands 'herdr server commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__server__subcmd__agent-manifests_commands] )) ||
+_herdr__subcmd__server__subcmd__agent-manifests_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr server agent-manifests commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__server__subcmd__reload-agent-manifests_commands] )) ||
+_herdr__subcmd__server__subcmd__reload-agent-manifests_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr server reload-agent-manifests commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__server__subcmd__reload-config_commands] )) ||
+_herdr__subcmd__server__subcmd__reload-config_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr server reload-config commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__server__subcmd__stop_commands] )) ||
+_herdr__subcmd__server__subcmd__stop_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr server stop commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__server__subcmd__update-agent-manifests_commands] )) ||
+_herdr__subcmd__server__subcmd__update-agent-manifests_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr server update-agent-manifests commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__session_commands] )) ||
+_herdr__subcmd__session_commands() {
+    local commands; commands=(
+'list:List sessions' \
+'attach:Attach to a session' \
+'stop:Stop a session' \
+'delete:Delete a stopped session' \
+    )
+    _describe -t commands 'herdr session commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__session__subcmd__attach_commands] )) ||
+_herdr__subcmd__session__subcmd__attach_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr session attach commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__session__subcmd__delete_commands] )) ||
+_herdr__subcmd__session__subcmd__delete_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr session delete commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__session__subcmd__list_commands] )) ||
+_herdr__subcmd__session__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr session list commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__session__subcmd__stop_commands] )) ||
+_herdr__subcmd__session__subcmd__stop_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr session stop commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__status_commands] )) ||
+_herdr__subcmd__status_commands() {
+    local commands; commands=(
+'server:Show running server status' \
+'client:Show local client status' \
+    )
+    _describe -t commands 'herdr status commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__status__subcmd__client_commands] )) ||
+_herdr__subcmd__status__subcmd__client_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr status client commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__status__subcmd__server_commands] )) ||
+_herdr__subcmd__status__subcmd__server_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr status server commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__tab_commands] )) ||
+_herdr__subcmd__tab_commands() {
+    local commands; commands=(
+'list:List tabs' \
+'create:Create a tab' \
+'get:Show a tab' \
+'focus:Focus a tab' \
+'rename:Rename a tab' \
+'close:Close a tab' \
+    )
+    _describe -t commands 'herdr tab commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__tab__subcmd__close_commands] )) ||
+_herdr__subcmd__tab__subcmd__close_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr tab close commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__tab__subcmd__create_commands] )) ||
+_herdr__subcmd__tab__subcmd__create_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr tab create commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__tab__subcmd__focus_commands] )) ||
+_herdr__subcmd__tab__subcmd__focus_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr tab focus commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__tab__subcmd__get_commands] )) ||
+_herdr__subcmd__tab__subcmd__get_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr tab get commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__tab__subcmd__list_commands] )) ||
+_herdr__subcmd__tab__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr tab list commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__tab__subcmd__rename_commands] )) ||
+_herdr__subcmd__tab__subcmd__rename_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr tab rename commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__terminal_commands] )) ||
+_herdr__subcmd__terminal_commands() {
+    local commands; commands=(
+'attach:Attach directly to a terminal stream' \
+'session:Work with terminal sessions' \
+'title:Manage the outer terminal title' \
+    )
+    _describe -t commands 'herdr terminal commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__terminal__subcmd__attach_commands] )) ||
+_herdr__subcmd__terminal__subcmd__attach_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr terminal attach commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__terminal__subcmd__session_commands] )) ||
+_herdr__subcmd__terminal__subcmd__session_commands() {
+    local commands; commands=(
+'control:Control a terminal stream' \
+'observe:Observe a terminal stream' \
+    )
+    _describe -t commands 'herdr terminal session commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__terminal__subcmd__session__subcmd__control_commands] )) ||
+_herdr__subcmd__terminal__subcmd__session__subcmd__control_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr terminal session control commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__terminal__subcmd__session__subcmd__observe_commands] )) ||
+_herdr__subcmd__terminal__subcmd__session__subcmd__observe_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr terminal session observe commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__terminal__subcmd__title_commands] )) ||
+_herdr__subcmd__terminal__subcmd__title_commands() {
+    local commands; commands=(
+'set:Set the outer terminal title' \
+'clear:Clear the outer terminal title' \
+    )
+    _describe -t commands 'herdr terminal title commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__terminal__subcmd__title__subcmd__clear_commands] )) ||
+_herdr__subcmd__terminal__subcmd__title__subcmd__clear_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr terminal title clear commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__terminal__subcmd__title__subcmd__set_commands] )) ||
+_herdr__subcmd__terminal__subcmd__title__subcmd__set_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr terminal title set commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__update_commands] )) ||
+_herdr__subcmd__update_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr update commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__workspace_commands] )) ||
+_herdr__subcmd__workspace_commands() {
+    local commands; commands=(
+'list:List workspaces' \
+'create:Create a workspace' \
+'get:Show a workspace' \
+'focus:Focus a workspace' \
+'rename:Rename a workspace' \
+'report-metadata:Report display-only workspace metadata' \
+'close:Close a workspace' \
+    )
+    _describe -t commands 'herdr workspace commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__workspace__subcmd__close_commands] )) ||
+_herdr__subcmd__workspace__subcmd__close_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr workspace close commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__workspace__subcmd__create_commands] )) ||
+_herdr__subcmd__workspace__subcmd__create_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr workspace create commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__workspace__subcmd__focus_commands] )) ||
+_herdr__subcmd__workspace__subcmd__focus_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr workspace focus commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__workspace__subcmd__get_commands] )) ||
+_herdr__subcmd__workspace__subcmd__get_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr workspace get commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__workspace__subcmd__list_commands] )) ||
+_herdr__subcmd__workspace__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr workspace list commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__workspace__subcmd__rename_commands] )) ||
+_herdr__subcmd__workspace__subcmd__rename_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr workspace rename commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__workspace__subcmd__report-metadata_commands] )) ||
+_herdr__subcmd__workspace__subcmd__report-metadata_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr workspace report-metadata commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__worktree_commands] )) ||
+_herdr__subcmd__worktree_commands() {
+    local commands; commands=(
+'list:List worktree workspaces' \
+'create:Create and open a Git worktree' \
+'open:Open an existing Git worktree' \
+'remove:Remove a worktree checkout' \
+    )
+    _describe -t commands 'herdr worktree commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__worktree__subcmd__create_commands] )) ||
+_herdr__subcmd__worktree__subcmd__create_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr worktree create commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__worktree__subcmd__list_commands] )) ||
+_herdr__subcmd__worktree__subcmd__list_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr worktree list commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__worktree__subcmd__open_commands] )) ||
+_herdr__subcmd__worktree__subcmd__open_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr worktree open commands' commands "$@"
+}
+(( $+functions[_herdr__subcmd__worktree__subcmd__remove_commands] )) ||
+_herdr__subcmd__worktree__subcmd__remove_commands() {
+    local commands; commands=()
+    _describe -t commands 'herdr worktree remove commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_herdr" ]; then
+    _herdr "$@"
+else
+    compdef _herdr herdr
+fi
