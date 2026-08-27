@@ -4,10 +4,10 @@
 pkgname=libarchive-static
 _pkgname=libarchive
 pkgver=3.8.9
-pkgrel=1
+pkgrel=2
 _attrver=2.5.2
 _aclver=2.3.2
-_sslver=3.6.3
+_sslver=3.6.4
 _zlibver=1.3.2
 _xzver=5.8.3
 _bzipver=1.0.8
@@ -30,7 +30,7 @@ sha512sums=('b16c64874cda0a0ab2d66bb89aaf7ffdb8abafad21101c9d64265f15e6b188cbf7f
             '6e6588e75c4868bac104496a6709f2874e39b81deff2d5d05706039d6e67fbc5bcd0100bdb0aa840a0e09f99443b1d4fa0a44bd4d5d334f7ae57916c1aee4875'
             '31aeb39958d8af5d08933dd3a89333a41025c3eb49fc461fa3c291caca51dad575ec13faeb7deba9b3c2ebf7615be7d45e2b78e50d4f83d8ec933c95931a7682'
             'SKIP'
-            '4179ad56f285fd27a1c7b294472afdca588e915d4f8a9610e461f34f0678004aebe32e88434ae536a63a7c9aff6607702a3b341e2faacb7899c27d6def4cc92d'
+            '9e7f4039082880357969c0857f33b20a6a4306d1b5e4f8fcbd7ec8dc41edc96e87c526a1db0b8259f5000c4ced84149b03547562ce4f9df35194634a7576dac0'
             'SKIP'
             'b1873dbb7a49460b007255689102062756972de5cc2d38b12cc9f389b6be412da6797579b1acd3717a8cd2ee118fd9801b94e55f063d4328f050f0876a5eb53c'
             'b5887ea77417fae49b6cb1e9fa782d3021f268d5219701d87a092235964f73fa72a31428b630445517f56f2bb69dcbbb24119ef9dbf8b4e40a753369a9f9a16f'
@@ -79,7 +79,8 @@ validpgpkeys+=('8657ABB260F056B1E5190839D9C4D26D0E604491'
 validpgpkeys+=('8657ABB260F056B1E5190839D9C4D26D0E604491'  # Matt Caswell <matt@openssl.org>
               '7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C'   # Matt Caswell <matt@openssl.org>
               'A21FAB74B0088AA361152586B8EF1A6BA9DA2D5C'   # Tom�? Mr�z <tm@t8m.info>
-              'EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5')  # OpenSSL security team key
+              'EFC0A467D613CB83C7ED6D30D894E2CE8B3D79F5'   # OpenSSL security team key
+              'B146647E45A7B33947AB226B2A2C87D161692D40')  # OpenSSL <openssl@openssl.org>, new release-signing key 2026-05
 # zlib
 source+=("https://zlib.net/zlib-${_zlibver}.tar.gz"{,.asc})
 validpgpkeys+=('5ED46A6721D365587791E2AA783FCD8E58BCAFBA') # Mark Adler <madler@alumni.caltech.edu>
