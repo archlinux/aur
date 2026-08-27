@@ -1,5 +1,5 @@
 pkgname=dam
-pkgver=0.6.0
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Developer CLI for tracking, snapshotting, and restoring project state"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('glibc')
 makedepends=('cargo')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OneAM-Labs/dam/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('af5473a2683bc007f74678ef1d3d65bfaac622b87eba65d4f30bbffa8204c955')
+sha256sums=('41544c6c3f0d074088364989f9fb39ab4ef15ce111f9202d284b95d2a3ba00fd')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
