@@ -1,6 +1,6 @@
 # Maintainer: EricWRogers <ericwilliamrogers@gmail.com>
 pkgname=canispack-git
-pkgver=0.1.0.r18.gd0b72f3
+pkgver=0.1.0.r19.gb31e259
 pkgrel=1
 pkgdesc='Project launcher for the Canis engine'
 arch=('x86_64')
