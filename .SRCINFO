@@ -1,0 +1,18 @@
+pkgbase = python-beeprint
+	pkgdesc = Make your debug printing more friendly
+	pkgver = 2.4.11
+	pkgrel = 1
+	url = https://github.com/panyanyany/beeprint
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	depends = python
+	depends = python-urwid
+	source = https://files.pythonhosted.org/packages/source/b/beeprint/beeprint-2.4.11.tar.gz
+	sha256sums = a60a719c02befade140198ab94950746ec82097f795ed77f8edcc3b08296f575
+
+pkgname = python-beeprint
