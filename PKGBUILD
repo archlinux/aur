@@ -2,7 +2,7 @@
 
 _pkgbase=penpot
 pkgname=(penpot penpot-exporter penpot-frontend penpot-mcp)
-pkgver=2.17.0
+pkgver=2.17.2
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  '2708a48f5a06befc4f59d0ae96730075a3c3380b8b910c00c4977bc5f47cd33c'
+  '77f13869b1b312d5e132ead26e4a3dc361a61aaed414acbe049586d797f08613'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
@@ -64,6 +64,7 @@ build() {
   pushd ../render-wasm
   sed -i '/corepack/d' ./_build_env
   sed -i 's#/opt/emsdk/emsdk_env.sh#/usr/lib/emsdk/emsdk_env.sh#' ./build
+  sed -i 's#-sEXPORT_ES6=1"#-sEXPORT_ES6=1 -sDEFAULT_TO_CXX=1"#' ./_build_env
   popd
 
   rustup install $RUST_VERSION
