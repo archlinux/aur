@@ -1,0 +1,16 @@
+pkgbase = neoglogg
+	pkgdesc = Fast and smart log explorer, an improved and updated version of glogg.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/nekromoff/neoglogg
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = boost
+	depends = qt6-base
+	depends = boost-libs
+	depends = hicolor-icon-theme
+	depends = qt6-5compat
+	source = neoglogg-1.1.1.tar.gz::https://github.com/nekromoff/neoglogg/archive/refs/tags/v1.1.1.tar.gz
+	sha512sums = 7a5049796fe347c743cc4793c99ae4a68e1219ae6f90153081d09075767a320539b28df3f3ed5bcfcab1c7ebc579f3ac088cfdf33cff8c74d31d75943bcae91d
+
+pkgname = neoglogg
