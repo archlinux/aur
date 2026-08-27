@@ -1,21 +1,23 @@
 # Maintainer: Jiří Klimeš <blueowl@centrum.cz>
 
 pkgbase=lua-gl
-pkgname=('lua-gl' 'lua51-gl' 'lua52-gl' 'lua53-gl')
+pkgname=('lua-gl' 'lua51-gl' 'lua52-gl' 'lua53-gl' 'lua54-gl')
 pkgver=1.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Lua bindings for OpenGL"
 arch=('x86_64')
 url="http://luagl.sourceforge.net"
 license=('MIT')
-makedepends=('lua' 'lua51' 'lua52' 'lua53' 'glu')
+makedepends=('lua' 'lua51' 'lua52' 'lua53' 'lua54' 'glu')
 source=("https://sourceforge.net/projects/luagl/files/${pkgver}/Docs%20and%20Sources/luagl-${pkgver}_Sources.tar.gz"
         "https://sourceforge.net/projects/luagl/files/${pkgver}/Docs%20and%20Sources/luagl-${pkgver}_Docs_html.tar.gz"
         "tecmake-use-lua54.patch"
+        "tecmake-use-lua55.patch"
 )
 sha256sums=('5898433a32c5ff7e36dcbf1a6b638f7af1e5ff8c4731ba17d5f109c4a8db981e'
             '3d23be0aac7d11232eaad76a6e327066b2fe4aa821af1244db7ccd37b82b0045'
-            '6249a95238a53c57c1326f71133c46a116cfcc44597cf635b65763fa03960eba')
+            '6249a95238a53c57c1326f71133c46a116cfcc44597cf635b65763fa03960eba'
+            'd33c1b74ddac8fabfdfae48fdd282cd83f4640ac9357f500f6c1001f73dcd1ec')
 
 prepare() {
   # Add RUN_PATH variable to be able to set DT_RUNPATH
@@ -23,12 +25,15 @@ prepare() {
 
   # Make tecmake.mak Lua 5.4 aware
   patch -p1 < "$srcdir"/tecmake-use-lua54.patch
+
+  # Make tecmake.mak Lua 5.5 aware
+  patch -p1 < "$srcdir"/tecmake-use-lua55.patch
 }
 
 build() {
   cd "$srcdir"/luagl
-  echo 'Building with Lua 5.4'
-  make USE_LUA54=Yes RUN_PATH="-Wl,-rpath=/usr/lib/lua/5.4,--enable-new-dtags,--as-needed"
+  echo 'Building with Lua 5.5'
+  make USE_LUA55=Yes RUN_PATH="-Wl,-rpath=/usr/lib/lua/5.5,--enable-new-dtags,--as-needed"
 
   echo 'Building with Lua 5.1'
   make USE_LUA51=Yes RUN_PATH="-Wl,-rpath=/usr/lib/lua/5.1,--enable-new-dtags,--as-needed"
@@ -38,6 +43,9 @@ build() {
 
   echo 'Building with Lua 5.3'
   make USE_LUA53=Yes RUN_PATH="-Wl,-rpath=/usr/lib/lua/5.3,--enable-new-dtags,--as-needed"
+
+  echo 'Building with Lua 5.4'
+  make USE_LUA54=Yes RUN_PATH="-Wl,-rpath=/usr/lib/lua/5.4,--enable-new-dtags,--as-needed"
 }
 
 _package_helper() {
@@ -56,10 +64,10 @@ _package_helper() {
 }
 
 package_lua-gl() {
-  pkgdesc="Lua 5.4 bindings for OpenGL"
+  pkgdesc="Lua 5.5 bindings for OpenGL"
   depends=('lua' 'glu')
 
-  _package_helper "5.4"
+  _package_helper "5.5"
 }
 
 package_lua51-gl() {
@@ -83,5 +91,11 @@ package_lua53-gl() {
   _package_helper "5.3"
 }
 
+package_lua54-gl() {
+  pkgdesc="Lua 5.4 bindings for OpenGL"
+  depends=('lua54' 'glu')
+
+  _package_helper "5.4"
+}
 
 # vim:set ts=2 sw=2 et:
