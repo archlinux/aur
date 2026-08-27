@@ -1,12 +1,11 @@
 [Desktop Entry]
-Name=Materialize
-GenericName=3D Material Tool
-Comment=Image to Material Tool
-Encoding=UTF-8
-Version=1.78
+Version=0.4.2
 Type=Application
+Name=Materialize
+Icon=materialize
+Exec="/opt/materialize/Materialize-v0.4.2.Linux64.x86_64" %f
+Comment=Image to Material Tool
+Categories=Development;Utility
 Terminal=false
-Icon=foobar2000
-Exec=materialize-bin
-Categories=Utility;Game
-StartupWMClass=Materialize.exe
+StartupWMClass=materialize-bin
+

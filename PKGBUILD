@@ -1,42 +1,30 @@
 # Maintainer: Frederik Enste <frederik at fenste dot de>
 
-pkgname=materialize-bin
-pkgver=1.78
+_pkgname=materialize
+pkgname=${_pkgname}-bin
+pkgver=0.4.2
 pkgrel=1
-pkgdesc="Image to Material tool (uses Wine)."
+pkgdesc="Image to Material tool (fork by maikramer)."
 arch=(x86_64)
-url="http://boundingboxsoftware.com/index.html"
+url="https://github.com/maikramer/Materialize"
 license=('GPL')
-depends=(wine winetricks desktop-file-utils)
-makedepends=(unzip)
-source=("http://boundingboxsoftware.com/materialize/download/Materialize_${pkgver}.zip"
-        "https://raw.githubusercontent.com/BoundingBoxSoftware/Materialize/master/LICENSE"
-        "${pkgname}.sh"
-        "${pkgname}.desktop")
-install="${pkgname}.install"
-sha256sums=('b0f6e3a905781e85dcd7db2383646bce51b8984ab93d1e3d13be42d5bea8904a'
-            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            'efd19915c8ae21f9b4031ccfe4be3bad741040af0379f848be08e9a20d4d54ff'
-            'd1247c77728c389d385c7c830802d9bcbb1c20be9b98136b815188c8c3d79cbe')
-
-build() {
-  # unpack the zip file (into Materialize_Data)
-  unzip -o Materialize_${pkgver}.zip -d materialize
-}
+provides=("${_pkgname}=${pkgver}", "${pkgname}=${pkgver}")
+depends=()
+makedepends=()
+options=('!debug')
+source=("https://github.com/maikramer/Materialize/releases/download/v${pkgver}/Materialize-v${pkgver}.Linux64.tar.xz"
+        "https://raw.githubusercontent.com/maikramer/Materialize/refs/tags/v${pkgver}/LICENSE"
+	"materialize-bin.desktop")
+sha256sums=('3e1231a8dae5846949c516db51fc077752ec4083aa8b5521afc0ba2dc5e38cdf'
+	    '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
+            '36d0b1add93736a0e0759d4874e493b1a412616667b64cc5cb6e7188c1a9c082')
 
 package() {
-  # install program into destination
-  mkdir -p "${pkgdir}/opt/${pkgname}"
-  cp -r ${srcdir}/materialize/* "${pkgdir}/opt/${pkgname}"
-  chown root:root "${pkgdir}/opt/${pkgname}"
-  chmod -R 755 "${pkgdir}/opt/${pkgname}"
+	install -Dm 644 ${srcdir}/LICENSE "${pkgdir}/opt/${_pkgname}/LICENSE.txt"
 
-  # install license
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/license/${pkgname}/LICENSE"
+	install -Dm 755 ${srcdir}/Materialize-v${pkgver}.Linux64.x86_64 "${pkgdir}/opt/${_pkgname}/Materialize-v${pkgver}.Linux64.x86_64"
+	cp -a  ${srcdir}/Materialize-v${pkgver}.Linux64_Data "${pkgdir}/opt/${_pkgname}/Materialize-v${pkgver}.Linux64_Data"
+	install -Dm 755 ${srcdir}/UnityPlayer.so "${pkgdir}/opt/${_pkgname}/UnityPlayer.so"
 
-  # install start script
-  install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-
-  # install desktop
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm 644 ${srcdir}/materialize-bin.desktop "${pkgdir}/usr/share/applications/materialize.desktop"
 }
