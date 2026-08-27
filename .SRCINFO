@@ -1,16 +1,16 @@
 pkgbase = justray-bin
 	pkgdesc = A modern VPN client that lives in your terminal
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/luynrs/justray
 	license = GPL-3.0-only
 	conflicts = justray
 	provides = justray
 	arch = aarch64
-	source_aarch64 = https://github.com/luynrs/justray/releases/download/v1.0.1/justray_1.0.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8c6f3c857bc3497086bd096fb18cfe5e8d4a8c92c96a52fc1380bfb428b4a37a
+	source_aarch64 = https://github.com/luynrs/justray/releases/download/v1.1.0/justray_1.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9cf594c4395bed2c95516c4976be537a08f65b0f13de9c52625f97aeb47687d2
 	arch = x86_64
-	source_x86_64 = https://github.com/luynrs/justray/releases/download/v1.0.1/justray_1.0.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 9816ee96e2fd222d5b5ad8cdca1aa17ad7ae50699fdb6d17f07f530fa0e2df28
+	source_x86_64 = https://github.com/luynrs/justray/releases/download/v1.1.0/justray_1.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 689e926269989d58bd0701f5ebc5fbf5d52d4849da9e88f519f26855c3b69ec7
 	
 pkgname = justray-bin
