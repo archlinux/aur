@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=woocommerce-pos-bin
 _pkgname=WooCommerce-POS
-pkgver=1.9.9
-_electronversion=41
+pkgver=1.10.3
+_electronversion=43
 pkgrel=1
 pkgdesc="Electron Desktop App for WooCommerce POS.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.x86_64.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('d032a0ee86e780daab467b97e4388ce42adf2870a9e198200264b3d0b10c1077'
+sha256sums=('b47cf7eaeaa2ab65fa9cbc1a1e8b268108a2d19c56edfb319caeba44cc7d4d18'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -37,7 +37,7 @@ prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
+        s/@runname@/app/g
         s/@cfgdirname@/${_pkgname//-/ }/g
     " "${srcdir}/${pkgname%-bin}.sh"
     _check_electron_version
