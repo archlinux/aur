@@ -2,12 +2,12 @@
 
 pkgname='pyswisseph'
 pkgver='2.10.03.2'
-pkgrel=2
+pkgrel=3
 pkgdesc='Python extension to the Swiss Ephemeris.'
 arch=('i686' 'x86_64' 'aarch64')
 license=('AGPL-3.0-only')
 url='https://github.com/astrorigin/pyswisseph'
-depends=('python' 'sqlite3')
+depends=('python' 'sqlite3' 'python-setuptools')
 makedepends=('git' 'cmake')
 conflicts=('pyswisseph3' 'pyswisseph-git')
 provides=('pyswisseph')
@@ -30,18 +30,18 @@ prepare() {
 }
 
 build() {
-    #build the swisseph (probably not necessary):
+    #build the swisseph (not necessary when build as dependecy):
     #cd "${srcdir}/${pkgname}-${pkgver}/libswe"
     #make all
     
-    #build swephelp (again, possibly not necessary):
+    #build swephelp (again, not necessary):
     #cd "${srcdir}/${pkgname}-${pkgver}/swephelp"
     #cmake -B build_dir -S . -G Ninja \
     #    -DCMAKE_INSTALL_PREFIX='/usr' \
     #    -DCMAKE_BUILD_TYPE=Release
     #cmake --build build_dir
     
-    # build pyswisseph:
+    # build pyswisseph (as library):
     cd "${srcdir}/${pkgname}-${pkgver}"
     make build
 }
