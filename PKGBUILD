@@ -3,7 +3,7 @@
 _name=google-genai
 pkgname=python-$_name
 pkgver=2.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
@@ -52,7 +52,7 @@ check() {
   )
   cd "$srcdir"/${pkgname//google-/}-$pkgver
   touch ${_name//-//}/tests/certificate_config.json
-  GOOGLE_API_CERTIFICATE_CONFIG=${_name//-//}/tests/certificate_config.json PYTHONPATH=$PWD pytest "${pytest_options[@]}" ${_name//-//}/tests
+  GOOGLE_API_CERTIFICATE_CONFIG=${_name//-//}/tests/certificate_config.json PYTHONPATH=$PWD env -u GEMINI_API_KEY -u GOOGLE_API_KEY pytest "${pytest_options[@]}" ${_name//-//}/tests
 }
 
 package() {
