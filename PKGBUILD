@@ -1,5 +1,5 @@
 pkgname=axiom
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Powerful log analytics from the comfort of your command-line"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go>=1.27.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/axiomhq/cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('aab321db3f7effe3714fc2cd898a25a463f5ee8199b9b4b0d846c0e7dc880b78')
+sha256sums=('ef1fe48083fad4e84f7501f7c908ddf4746b9365484b714604b91a673eead49b')
 
 prepare() {
   cd "cli-$pkgver"
