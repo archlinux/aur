@@ -1,6 +1,6 @@
 # Maintainer: mryll <https://github.com/mryll>
 pkgname=printbar-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Generic printer monitor for Waybar (IPP + SNMP + CUPS) — supplies, trays, jobs, panel text; instant push on print; Omarchy theming (prebuilt binary)'
 arch=('x86_64')
@@ -19,10 +19,10 @@ source=("printbar-${pkgver}::https://github.com/mryll/printbar/releases/download
         "printbar-watch.service-${pkgver}::https://raw.githubusercontent.com/mryll/printbar/v${pkgver}/printbar-watch.service"
         "config.example.toml-${pkgver}::https://raw.githubusercontent.com/mryll/printbar/v${pkgver}/config.example.toml"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/mryll/printbar/v${pkgver}/LICENSE")
-sha256sums=('512d777a09f8bde8fe02bd657586b9d849ed750e70167b207f27dc36678d9434'
+sha256sums=('23e934d09ddfb1a3f051e7ba749fbbfa9f79b3ba3d10f959f1ddc9678768aaf4'
             'a4e976ad8eb483c5ae9933fe5b985d30e3618c355a86899e52c355593fac89c9'
             '584e3279c3b85cd466c87bcb8f7e133f66e763fa0e563f90853d7c282bcc7731'
-            '221cbb38b324a958cbc487ad49adb5febf403d5da80f1a0b74f72df12f54f23d'
+            '42134e86e6ab2f76204eaa113b1450c067a003990169dd23509e733c2aedfa92'
             'aa9f3a694508cadff239e4694992eac66611723af6ce8643e80ca5c7db8c9e4e')
 
 package() {
