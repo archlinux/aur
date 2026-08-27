@@ -1,6 +1,6 @@
 pkgbase = whydpi-git
 	pkgdesc = Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host (git, main branch)
-	pkgver = 1.0.3.r7.gfb1680d
+	pkgver = 1.1.0.r2.g417875a
 	pkgrel = 1
 	url = https://github.com/byrdltd/whyDPI
 	install = whydpi-git.install
@@ -19,7 +19,7 @@ pkgbase = whydpi-git
 	optdepends = libnotify: desktop toasts on tray startup and state change
 	optdepends = tk: first-run acceptable-use dialog
 	optdepends = zenity: native first-run dialog
-	provides = whydpi=1.0.3
+	provides = whydpi=1.1.0
 	conflicts = whydpi
 	source = whydpi::git+https://github.com/byrdltd/whyDPI.git
 	sha256sums = SKIP

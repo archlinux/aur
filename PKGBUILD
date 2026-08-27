@@ -2,7 +2,7 @@
 
 pkgname=whydpi-git
 _pkgname=whydpi
-pkgver=1.0.3.r7.gfb1680d
+pkgver=1.1.0.r2.g417875a
 pkgrel=1
 pkgdesc="Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host (git, main branch)"
 arch=('any')
