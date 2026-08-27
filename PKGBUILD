@@ -3,7 +3,7 @@
 
 
 pkgname=omnictl-bin
-pkgver=1.10.4
+pkgver=1.10.5
 pkgrel=1
 pkgdesc="CLI for Omni - SaaS-simple Kubernetes management platform by Sidero Labs"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,9 @@ source=("omni-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("omnictl-${pkgver}::${url}/releases/download/v${pkgver}/omnictl-linux-amd64")
 source_aarch64=("omnictl-${pkgver}::${url}/releases/download/v${pkgver}/omnictl-linux-arm64")
 
-sha256sums=('eee709782006e4a60881cafe16ff01cf4f1974b0f57ddb35be8ed7d40a8b6de1')
-sha256sums_x86_64=('166e7124800dbb415fe15a8c920455405b8c323ce7c07a5f3a1d7859d5ea3738')
-sha256sums_aarch64=('166e7124800dbb415fe15a8c920455405b8c323ce7c07a5f3a1d7859d5ea3738')
+sha256sums=('71b0c85b45987e976f5959363eff95ef94f7c43b678cbcb12724bf7bab81e6b0')
+sha256sums_x86_64=('2e78576c9262e0bbc070ac9e4e4dd0ac1bb009dc8645760758df8d23d6ff5c9c')
+sha256sums_aarch64=('2e78576c9262e0bbc070ac9e4e4dd0ac1bb009dc8645760758df8d23d6ff5c9c')
 
 package() {
   install -Dm755 "omnictl-${pkgver}" "${pkgdir}/usr/bin/omnictl"
