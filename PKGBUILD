@@ -16,7 +16,8 @@ source=("https://github.com/coin-or-tools/ThirdParty-ASL/archive/releases/$pkgve
          https://coin-or-tools.github.io/ThirdParty-ASL/solvers-64919f75f.tgz)
 sha256sums=('633e9d42b015a5a6a9ae324cac5736af1605fb74eb18299a54912b67d1a69be7'
             'e212926d1d797701adc901ef18eaab6b15edd13f9281dd8c9266e3cdaf8c2dd3')
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare () {
   cd "ThirdParty-ASL-releases-$pkgver"
