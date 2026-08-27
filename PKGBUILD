@@ -1,17 +1,14 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=openvaf-reloaded
 pkgname=${_pkgname}-git
-pkgver=20260616.r0.gd5878a6
+pkgver=20260616.r4.g5ed9e63
 pkgrel=1
 pkgdesc="Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support"
 arch=(
   "x86_64"
   "aarch64"
 )
-# NOTE: Arpad's fork seems to be more like the dev version
-# while the OpenVAF is a downstream of Arpad's fork++
-# url="https://github.com/OpenVAF/OpenVAF-Reloaded"
-url="https://github.com/arpadbuermen/OpenVAF"
+url="https://github.com/OpenVAF-Reloaded/OpenVAF"
 license=('GPL-3.0-or-later')
 depends=(
   "glibc"
@@ -51,7 +48,7 @@ prepare() {
   cd "${_pkgname}"
 
   # Patch for LLVM 22 support
-  # See upstream: https://github.com/arpadbuermen/OpenVAF/pull/76/
+  # See upstream: https://github.com/OpenVAF-Reloaded/OpenVAF/pull/76/
   git cherry-pick -n 277e3aa4d07625ba3c5179bc353e781481564966
 
   # Add the submodule(s)

@@ -1,8 +1,8 @@
 pkgbase = openvaf-reloaded-git
 	pkgdesc = Continuation of OpenVAF - A Next-generation VerilogA Compiler - OSDI >= 4 support
-	pkgver = 20260616.r0.gd5878a6
+	pkgver = 20260616.r4.g5ed9e63
 	pkgrel = 1
-	url = https://github.com/arpadbuermen/OpenVAF
+	url = https://github.com/OpenVAF-Reloaded/OpenVAF
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -19,7 +19,7 @@ pkgbase = openvaf-reloaded-git
 	provides = openvaf-r
 	conflicts = openvaf-reloaded
 	options = !lto
-	source = openvaf-reloaded::git+https://github.com/arpadbuermen/OpenVAF
+	source = openvaf-reloaded::git+https://github.com/OpenVAF-Reloaded/OpenVAF
 	source = vacask::git+https://codeberg.org/arpadbuermen/VACASK#tag=_0.3.3
 	b2sums = SKIP
 	b2sums = 3f8552e2714b535f5a08d2a95960c602909ae28d33723f3dc06f1bb9e82e8e5eeadd832b805901df6cdac728d9a82009088c9491c37cda650194a4dc74694a5c
