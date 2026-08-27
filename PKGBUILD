@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=2.11.1
+pkgver=3.0.8
 _electronversion=33
 pkgrel=1
 pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Prebuilt version.Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
@@ -19,6 +19,7 @@ depends=(
     'gnirehtet'
     'scrcpy'
     'android-tools'
+    'nodejs'
 )
 makedepends=(
     'asar'
@@ -27,27 +28,20 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('8a4a7167716cdf1c8272f4a728817cdfa56b6e0e525424b642074db98ede9e6e')
-sha256sums_x86_64=('ee6c4e4bc22a18c5b324d8a30bfca8e6a6a3278826d5cf35b58b9df3f1ce9aa7')
+sha256sums_aarch64=('886092dae6d2c466fbd2211c86a7ee07379ba6a67ed0ca4f97c6b1d5a8b06617')
+sha256sums_x86_64=('823ae7d14874d54e9d9e866a0d07751cf673086656a354f94c40ad4ffff0e494')
+_get_app_dir() {
+    find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
+}
 _check_electron_version() {
     echo "Verifying Electron version..."
-    local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
-    local _main_exe=""
-    if [[ -n "${_app_dir}" ]]; then
-        _main_exe=$(find "${_app_dir}" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -n 1 | cut -d' ' -f2-)
-    fi
-    if [[ -n "${_main_exe}" ]]; then
-        local _elec_ver=$(strings "${_main_exe}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1 | head -n 1)
-        if [[ -n "${_elec_ver}" ]]; then
-            if [[ "${_elec_ver}" != "${_electronversion}" ]]; then
-                echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m"
-            else
-                echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
-            fi
-        fi
-    else
-        echo -e "\033[1;33mNote: Could not find Electron binary for version verification.\033[0m"
-    fi
+    local _main_exe=$(find "$(_get_app_dir)" -maxdepth 1 -type f -executable -printf '%s %p\n' | sort -nr | head -1 | cut -d' ' -f2-)
+    [[ -z "${_main_exe}" ]] && echo -e "\033[1;33mNote: Could not find Electron binary.\033[0m" && return
+    local _elec_ver=$(strings "${_main_exe}" | grep -oP 'Electron/\K[0-9]+' | head -1)
+    [[ -z "${_elec_ver}" ]] && echo -e "\033[1;33mNote: Could not determine Electron version.\033[0m" && return
+    [[ "${_elec_ver}" != "${_electronversion}" ]] &&
+        echo -e "\033[1;31mWarning: Electron version mismatch! Detected: ${_elec_ver}, Expected: ${_electronversion}\033[0m" ||
+        echo -e "Electron version verified: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
     sed -i -e "
@@ -59,33 +53,34 @@ prepare() {
     bsdtar -xf "${srcdir}/data."*
     _check_electron_version
     sed -i "s/\/opt\/${_pkgname}\/${pkgname%-bin}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
-    rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar"
+    local _app_dir=$(_get_app_dir)
+    asar e "${_app_dir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${_app_dir}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/"{dist,dist-electron} -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/g" {} +
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/opt/${_pkgname}/resources/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${_app_dir}/resources/app.asar"
     case "${CARCH}" in
         aarch64)
-            ln -sf "/usr/bin/adb" "${srcdir}/opt/${_pkgname}/resources/extra/linux-arm64/scrcpy/adb"
-            ln -sf "/usr/bin/fastboot" "${srcdir}/opt/${_pkgname}/resources/extra/linux-arm64/scrcpy/fastboot"
-            ln -sf "/usr/bin/scrcpy" "${srcdir}/opt/${_pkgname}/resources/extra/linux-arm64/scrcpy/scrcpy"
-            ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/opt/${_pkgname}/resources/extra/linux-arm64/scrcpy/scrcpy-server"
-            ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/opt/${_pkgname}/resources/common/extra/wscrcpy/scrcpy-server"
+            ln -sf "/usr/bin/adb" "${_app_dir}/resources/extra/linux-arm64/scrcpy/adb"
+            ln -sf "/usr/bin/fastboot" "${_app_dir}/resources/extra/linux-arm64/scrcpy/fastboot"
+            ln -sf "/usr/bin/scrcpy" "${_app_dir}/resources/extra/linux-arm64/scrcpy/scrcpy"
+            ln -sf "/usr/share/scrcpy/scrcpy-server" "${_app_dir}/resources/extra/linux-arm64/scrcpy/scrcpy-server"
+            ln -sf "/usr/share/scrcpy/scrcpy-server" "${_app_dir}/resources/common/extra/wscrcpy/scrcpy-server"
             ;;
         x86_64)
-            ln -sf "/usr/bin/adb" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/adb"
-            ln -sf "/usr/bin/fastboot" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/fastboot"
-            ln -sf "/usr/bin/gnirehtet" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/gnirehtet/gnirehtet"
-            ln -sf "/usr/bin/scrcpy" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/scrcpy"
-            ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/opt/${_pkgname}/resources/extra/linux-x64/scrcpy/scrcpy-server"
-            ln -sf "/usr/share/scrcpy/scrcpy-server" "${srcdir}/opt/${_pkgname}/resources/extra/common/wscrcpy/scrcpy-server"
+            ln -sf "/usr/bin/adb" "${_app_dir}/resources/extra/linux-x64/scrcpy/adb"
+            ln -sf "/usr/bin/fastboot" "${_app_dir}/resources/extra/linux-x64/scrcpy/fastboot"
+            ln -sf "/usr/bin/gnirehtet" "${_app_dir}/resources/extra/linux-x64/gnirehtet/gnirehtet"
+            ln -sf "/usr/bin/scrcpy" "${_app_dir}/resources/extra/linux-x64/scrcpy/scrcpy"
+            ln -sf "/usr/share/scrcpy/scrcpy-server" "${_app_dir}/resources/extra/linux-x64/scrcpy/scrcpy-server"
+            ln -sf "/usr/share/scrcpy/scrcpy-server" "${_app_dir}/resources/extra/common/wscrcpy/scrcpy-server"
             ;;
     esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	local _app_dir=$(_get_app_dir)
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     ln -sf "/usr/lib/${pkgname%-bin}/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.17.3" \
         "${pkgdir}/usr/lib/${pkgname%-bin}/lib/libvips-cpp.so.8.17.3"
