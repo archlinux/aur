@@ -1,6 +1,6 @@
 pkgbase = python-cloudpathlib
 	pkgdesc = Python pathlib-style classes for cloud storage services such as Amazon S3, Azure Blob Storage, and Google Cloud Storage.
-	pkgver = 0.24.0
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/drivendataorg/cloudpathlib
 	arch = any
@@ -15,7 +15,9 @@ pkgbase = python-cloudpathlib
 	depends = python-importlib-metadata
 	optdepends = python-google-auth
 	optdepends = python-boto3
-	source = python-cloudpathlib-0.24.0.tar.gz::https://github.com/drivendataorg/cloudpathlib/archive/refs/tags/v0.24.0.tar.gz
-	sha256sums = 5fbd2cb8f5004802a767c2f06a68dfce4a591d170428461747e98f44ff17834f
+	source = python-cloudpathlib-0.25.0.tar.gz::https://github.com/drivendataorg/cloudpathlib/archive/v0.25.0.tar.gz
+	source = flit-core.patch
+	sha256sums = d1541fca967b2481cc79bc7f284829e05fbadfc643ae3057474f0130a4d71aec
+	sha256sums = 5c550bde1b1000db1d41b217b7b6d42587bb929d38d49fd419d057d20f70a328
 
 pkgname = python-cloudpathlib
