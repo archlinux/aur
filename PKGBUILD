@@ -10,6 +10,8 @@ url='https://www.worldpainter.net/'
 arch=('x86_64')
 license=('GPL-3.0-only')
 
+options=('!strip')
+
 depends=('java-environment>=17' 'libxi' 'sh')
 optdepends=('minecraft: for playing the exported maps')
 
