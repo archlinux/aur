@@ -3,8 +3,8 @@
 # Release notes https://rocm.docs.amd.com/en/latest/about/release-notes.html
 pkgname=rocm-gfx120x-bin
 pkgdesc="ROCm Core SDK - RDNA4"
-pkgver=7.14.0
-pkgrel=3
+pkgver=10.0.0
+pkgrel=1
 epoch=0
 arch=('x86_64')
 url='http://www.amd.com'
@@ -13,25 +13,25 @@ depends=('ocl-icd' 'gcc-libs')
 provides=('opencl-driver' 'amdrocm-amdsmi' 'amdrocm-llvm' 'amdrocm-runtime' 'amdrocm-fft' 'amdrocm-blas' 'amdrocm-sparse' 'amdrocm-solver' 'amdrocm-dnn' 'amdrocm-rand' 'amdrocm-ccl' 'amdrocm-profiler' 'amdrocm-profiler-base' 'amdrocm-base' 'amdrocm-ck'
 'amdrocm-debugger' 'amdrocm-hipify' 'amdrocm-opencl' 'amdrocm-decode' 'amdrocm-jpeg' 'amdrocm-rccl' 'amdrocm-rocshmem' 'amdrocm-rdc' 'amdrocm-sysdeps' 'rocm' 'rocm-core' 'comgr' 'rocm-hip' 'hip' 'hsa-rocr' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 'rocm-hip-runtime' 'rocm-ocl-icd' 'rocm-opencl-icd-loader' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb' 'rocprofiler' 'rocprofiler-plugins' 'rocprofiler-register'
 'roctracer' 'hsa-amd-aqlprofile' 'rocm-openmp' 'openmp-extras-runtime' 'rocm-cmake' 'rocm-smi-lib' 'amdsmi' 'amd-smi-lib' 'composable-kernel' 'hipcc' 'rocm-llvm' 'rocblas' 'rocsolver' 'half' 'hipblas' 'hipblas-common' 'hipblaslt' 'hiprand' 'rocdecode' 'rocjpeg' 'rocprim' 'hipcub'
-'rocfft' 'hipfft' 'hipfort' 'hipify-clang' 'hipsolver' 'rocsparse' 'hipsparse' 'hipsparselt' 'hiptensor' 'openmp-extras-dev' 'rccl' 'rocrand' 'rocalution' 'rocm-hip-libraries' 'rocthrust' 'rocprofiler-compute' 'rocprofiler-debug' 'rocprofiler-systems' 'rocm-hip-sdk' 'rocm-opencl'
-'rocm-opencl-runtime' 'rocm-opencl-sdk' 'rocwmma' 'rocprofiler-sdk' 'rocprofiler-sdk-roctx' 'rocprofiler-sdk-rocpd' 'rocm-developer-tools' 'rocshmem' 'miopen' 'miopen-hip' 'mivisionx' 'rocm-ml-libraries' 'rocm-ml-sdk' 'rpp')
-conflicts=('opencl-amd' 'opencl-amd-dev' 'rocm-bin' 'rocm-gfx101x-bin' 'rocm-gfx103x-bin' 'rocm-gfx110x-bin' 'rocm-gfx1150-bin' 'rocm-gfx1151-bin' 'rocm-gfx1152-bin' 'rocm-gfx1153-bin' 'rocm-opencl-runtime' 'rocm' 'rocm-core' 'comgr' 'rocm-hip' 'hip' 'hsa-rocr' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 'rocm-hip-runtime' 'rocm-ocl-icd' 'rocm-opencl-icd-loader' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb'
+'rocfft' 'hipfft' 'hipify-clang' 'hipsolver' 'rocsparse' 'hipsparse' 'hipsparselt' 'hiptensor' 'openmp-extras-dev' 'rccl' 'rocrand' 'rocm-hip-libraries' 'rocthrust' 'rocprofiler-compute' 'rocprofiler-debug' 'rocprofiler-systems' 'rocm-hip-sdk' 'rocm-opencl'
+'rocm-opencl-runtime' 'rocm-opencl-sdk' 'rocwmma' 'rocprofiler-sdk' 'rocprofiler-sdk-roctx' 'rocprofiler-sdk-rocpd' 'rocm-developer-tools' 'rocshmem' 'miopen' 'miopen-hip' 'rocm-ml-libraries' 'rocm-ml-sdk')
+conflicts=('opencl-amd' 'opencl-amd-dev' 'rocm-bin' 'rocm-gfx101x-bin' 'rocm-gfx103x-bin' 'rocm-gfx110x-bin' 'rocm-gfx1150-bin' 'rocm-gfx1151-bin' 'rocm-gfx1152-bin' 'rocm-gfx1153-bin' 'rocm-opencl-runtime' 'rocm' 'rocm-core' 'comgr' 'rocm-hip' 'hip' 'hipfile' 'hsa-rocr' 'rocminfo' 'hip-runtime-amd' 'rocm-device-libs' 'rocm-language-runtime' 'rocm-hip-runtime' 'rocm-ocl-icd' 'rocm-opencl-icd-loader' 'rocm-dbgapi' 'rocm-debug-agent' 'rocm-gdb'
 'rocprofiler' 'rocprofiler-plugins' 'rocprofiler-register' 'roctracer' 'hsa-amd-aqlprofile' 'rocm-openmp' 'openmp-extras-runtime' 'rocm-cmake' 'rocm-smi-lib' 'amdsmi' 'amd-smi-lib' 'composable-kernel' 'hipcc' 'rocm-llvm' 'rocblas' 'rocsolver' 'hipblas' 'hipblas-common' 'hipblaslt' 'hiprand' 'rocdecode' 'rocjpeg' 'rocprim' 'hipcub' 'rocfft' 'hipfft' 'hipify-clang' 'hipsolver' 'rocsparse' 'hipsparse' 'hipsparselt' 'hiptensor' 'rccl' 'rocrand' 'rocalution' 'rocm-hip-libraries' 'rocthrust' 'rocprofiler-compute' 'rocprofiler-debug' 'rocprofiler-systems' 'rocm-hip-sdk' 'rocm-opencl' 'rocm-opencl-runtime' 'rocm-opencl-sdk' 'rocwmma' 'rocprofiler-sdk' 'rocprofiler-sdk-roctx' 'rocprofiler-sdk-rocpd' 'rocm-developer-tools' 'rocshmem' 'miopen' 'miopen-hip' 
 'rocm-ml-libraries' 'rocm-ml-sdk')
 optdepends=('clinfo')
 options=('!strip')
 
 source=(
-"https://repo.amd.com/rocm/tarball-multi-arch/therock-dist-linux-gfx120X-all-7.14.0.tar.gz"
+"https://stable.repo.amd.com/rocm/core/tarball/therock-dist-linux-gfx120X-all-10.0.0.tar.gz"
 )
 
 sha256sums=(
-"2a304d07b925c7e46e51fa8f719b195a9bfe2df2cc920d706f10a29d2d2471af"
+"eb99db434a1738fd83b0c3b933146cdb76418f35fcf4647743fbdfef76e8c71f"
 )
 
 prepare() {
     mkdir -p "${srcdir}/opt/rocm/core"
-    bsdtar xf therock-dist-linux-gfx120X-all-7.14.0.tar.gz -C ${srcdir}/opt/rocm/core
+    bsdtar xf therock-dist-linux-gfx120X-all-10.0.0.tar.gz -C ${srcdir}/opt/rocm/core
 }
 
 package() {
