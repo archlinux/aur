@@ -3,6 +3,7 @@ pkgbase = xrat
 	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://github.com/mhyrzt/xrat
+	install = xrat.install
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0

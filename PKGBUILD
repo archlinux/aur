@@ -5,6 +5,7 @@ pkgrel=1
 pkgdesc="Rust CLI/TUI proxy manager for Xray-core, V2Ray-core, and sing-box"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mhyrzt/xrat"
+install=$pkgname.install
 license=('Apache-2.0' 'MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
