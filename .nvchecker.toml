@@ -1,4 +1,4 @@
-[reinamager-bin]
+[reinamanager-bin]
 source = "git"
 git = "https://github.com/huoshen80/ReinaManager.git"
 prefix = "v"
