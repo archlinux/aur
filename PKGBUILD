@@ -28,6 +28,11 @@ depends=(
     "vulkan-icd-loader"
     "webkit2gtk-4.1"
 )
+optdepends=(
+  'wtype: Wayland virtual input support'
+  'xdotool: X11 virtual input support'
+  'kwtype-git: KDE Plasma virtual input support'
+)
 source=("${pkgname}-${pkgver}.deb::https://github.com/cjpais/Handy/releases/download/v${pkgver}/Handy_${pkgver}_amd64.deb"
         "https://raw.githubusercontent.com/cjpais/Handy/refs/heads/main/LICENSE")
 b2sums=('eea9e5eba5abe6a40b0c2348a4d9343d195e12d6894d4873e96466a55a7f59c8e3bcf071086adb0207a5dec53728301e73a655dc9bf1f80c9d950f22f33c7f02'
