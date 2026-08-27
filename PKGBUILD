@@ -21,6 +21,7 @@ source=('nvidia-drm-outputclass.conf'
         'systemd-homed-override.conf'
         'systemd-suspend-override.conf'
         'nvidia-utils.conf'
+        '0003-g2.patch'
         "https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/${_pkg_open}.tar.xz")
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '1bcf2c6ee71686c0d32625e746ec8c0f7cf42fc63c76c3076ff2526b2661e8b9e9f76eaa2c4b213c7cc437a6f06006cc07672c4974d7f4515b2de2fd7c47a891'
@@ -28,6 +29,7 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
             '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
             'ed3b16bba49bdc9394f11d63b6aaf4437e59cf973cf500d90beee4536ffc693e459ce7031cfbd955531b9ef05f9a5d48a7a7210cbeb4e9e33df4e38a60370d38'
+            '422d8e5369eed385ca7ba9eb8c2b44dc72f1058673b374ea64a9d89782a86dd45508c09431fca8a88f69a7ff66c46408d44acf1fa384612c0d9db349c1ad1cf9'
             '5ced2c7e3e9df21f8494ea439ac2103307fcbcb295a3f11e5fdf4f1dbeda3f0b13800a06f8147ebd064f98897c24e92f5de82023a8ca43a582694d951c9620c9')
 sha512sums_aarch64=('6844c78be6e2780ad38461a6b87cfefa702d403c1d20e888003a999dffa609733d0933daa24f3bc077005b95638cc9d76f76c465bfbe9e46f7dbe832cbb90a5d')
 sha512sums_x86_64=('fb0c16c9812e60ac1f5ca663f03dd84f386ae4ad55beab4655c65fe8d094c98246c5acbcf9e385e93e38dbfb340472712fc80593a8bf0be47f34ff871bf4d83d')
@@ -48,6 +50,9 @@ prepare() {
     sh ${_pkg}.run --extract-only
     cd ${_pkg}
     bsdtar -xf nvidia-persistenced-init.tar.bz2
+
+    # apply the 0003-g2.patch to the open kernel module sources
+    patch -p1 -d "${srcdir}/${_pkg_open}" < "${srcdir}/0003-g2.patch"
 
     # Attempt to make builds reproducible
     sed -i "s/^  HOSTNAME.*/  HOSTNAME = echo archlinux/" "${srcdir}/${_pkg_open}/utils.mk"
