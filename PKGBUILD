@@ -1,4 +1,4 @@
-pkgname=reinamager-bin
+pkgname=reinamanager-bin
 _pkgname=ReinaManager
 pkgver=0.29.1
 pkgrel=1

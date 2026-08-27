@@ -1,4 +1,4 @@
-pkgbase = reinamager-bin
+pkgbase = reinamanager-bin
 	pkgdesc = A lightweight galgame/visual-novel manager,Under development...
 	pkgver = 0.29.1
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = reinamager-bin
 	source_aarch64 = https://github.com/huoshen80/ReinaManager/releases/download/v0.29.1/ReinaManager_0.29.1_arm64.deb
 	sha256sums_aarch64 = 675693d878b4872ac8cad1b589fcda587cfe648382e7d185c4875758dec6a0ef
 
-pkgname = reinamager-bin
+pkgname = reinamanager-bin
