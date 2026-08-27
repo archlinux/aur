@@ -1,4 +1,4 @@
-# Maintainer: Massimo Pavoni (damax) <real dot damax at gmail dot com>
+# Maintainer: Massimo Pavoni (damax) <aur at massimopavoni dot dev>
 # Contributor: sQVe <oskargrunning@gmail.com>
 
 _pkgname=weechat-notify-send
