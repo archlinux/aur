@@ -11,10 +11,10 @@ provides=('justray')
 conflicts=('justray')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/luynrs/justray/releases/download/v${pkgver}/justray_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('dfa2f85949db46aa334c7a05369dbcbd6f72dfef8be9970d5adead1b7fa6f0b2')
+sha256sums_aarch64=('8c6f3c857bc3497086bd096fb18cfe5e8d4a8c92c96a52fc1380bfb428b4a37a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/luynrs/justray/releases/download/v${pkgver}/justray_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('2c3b5e886b3193722e90ddc04116187835bed9da070b38413a0685f540192b01')
+sha256sums_x86_64=('9816ee96e2fd222d5b5ad8cdca1aa17ad7ae50699fdb6d17f07f530fa0e2df28')
 
 package() {
   install -Dm755 "./justray" "${pkgdir}/usr/bin/justray"
