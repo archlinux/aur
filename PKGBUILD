@@ -11,7 +11,7 @@ url="http://www.netlib.org/lapack"
 source=("https://github.com/Reference-LAPACK/lapack/archive/v${pkgver}.tar.gz")
 sha256sums=('2ca6407a001a474d4d4d35f3a61550156050c48016d949f0da0529c0aa052422')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare()
 {
