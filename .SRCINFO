@@ -1,0 +1,15 @@
+pkgbase = i3c-sdr-decoder-git
+	pkgdesc = An I3C SDR (Single Data Rate) protocol decoder based on the DSView platform
+	pkgver = r3.05739f7
+	pkgrel = 1
+	url = https://github.com/ccchenji/i3c-sdr-decoder
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	optdepends = dsview: GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc
+	provides = i3c-sdr-decoder
+	conflicts = i3c-sdr-decoder
+	source = i3c-sdr-decoder-git::git+https://github.com/ccchenji/i3c-sdr-decoder.git
+	sha256sums = SKIP
+
+pkgname = i3c-sdr-decoder-git
