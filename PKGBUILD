@@ -12,7 +12,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/coin-or-tools/ThirdParty-Mumps/archive/releases/$pkgver.tar.gz")
 sha256sums=('53935baf3a249dcecf0e74c7c2b546692ef1d580a72716ec42a38b8a4799dffb')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare () {
   cd "ThirdParty-Mumps-releases-$pkgver"
