@@ -2,7 +2,7 @@
 
 pkgname=workbuddy
 pkgver=5.3.14.36279234_825709d4
-pkgrel=1
+pkgrel=2
 pkgdesc="腾讯云代码助手推出的 AI Agent 办公工具(中国版）"
 arch=('x86_64' 'aarch64')
 url="https://www.workbuddy.cn/app"
@@ -27,9 +27,9 @@ sha256sums=('SKIP'
             'cd04f9e6b3460d6a3513902b807936a90999d2c4f56f34447f7e8727a8832138'
             '77e0513dc1a469fb3bceec4c7fb5ad3f403109787eda05be047ec17fd56868cb')
 source_x86_64=("node-pty-x86_64.tgz::${_registry}/@lydell/node-pty-linux-x64/-/node-pty-linux-x64-1.2.0-beta.14.tgz")
-source_aarhc64=("node-pty-aarh64.tgz::${_registry}/@lydell/node-pty-linux-arm64/-/node-pty-linux-arm64-1.2.0-beta.14.tgz")
+source_aarch64=("node-pty-aarh64.tgz::${_registry}/@lydell/node-pty-linux-arm64/-/node-pty-linux-arm64-1.2.0-beta.14.tgz")
 sha256sums_x86_64=('53bee2cd02265b118392f7d99a4c72337f4a5003c0d0f9ee01646c19af59fa1f')
-sha256sums_aarch64=('SKIP')
+sha256sums_aarch64=('247af58856c286d10ded526e11016a9bbc900cbdf7ec5f75910801d3a6919d62')
 changelog="changelog.md"
 
 options=(!strip !debug)
@@ -41,13 +41,16 @@ pkgver() {
 
 noextract=("node-pty-x86_64.tgz" "node-pty-aarh64.tgz")
 prepare() {
-    tar xzf node-pty-${CARCH}.tgz -C WorkBuddy.app/Contents/Resources/
+    cd WorkBuddy.app/Contents/Resources
+    tar xzf ${srcdir}/node-pty-${CARCH}.tgz
+    asar e app.asar app.asar.unpacked || continue
+    sed -i 's/tray.on("right-click", () => this.tray?.popUpContextMenu(contextMenu))/tray.setContextMenu(contextMenu)/' \
+app.asar.unpacked/main/index.js
 }
 
 build() {
 	cd WorkBuddy.app/Contents/Resources
 ##	rm -rf app.asar.unpacked/node_modules/@tencent  # no Linux build
-	asar e app.asar app.asar.unpacked || continue
 	find app.asar.unpacked -type f -exec sed -i "s/process.resourcesPath/\'\/opt\/workbuddy\'/g" {} +
 	#npm install @tencent-ai/codebuddy-code --omit=dev
 	rm -rf app.asar.unpacked/node_modules/{better-sqlite3,@lydell/node-pty-linux*}
@@ -63,7 +66,9 @@ package() {
     install -Dm644 WorkBuddy.desktop ${pkgdir}/usr/share/applications/workbuddy.desktop
     cd WorkBuddy.app/Contents/Resources
     install -Dm644 app.asar.unpacked/resources/icon.png ${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/workbuddy.png
-    install -Dm644 app.asar.unpacked/renderer/assets/logo-workbuddy-*.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/workbuddy.svg
+    sed -e "s/display-p3 1.0000 0.5608 0.3294/display-p3 0.0565 0.7837 0.6625/g" -e "s/display-p3 1.0000 0.7176 0.0000/display-p3 0.0021 0.7858 0.5246/g" \
+    app.asar.unpacked/renderer/assets/header-learnbuddy*.svg |\
+    install -Dm644 /dev/stdin ${pkgdir}/usr/share/icons/hicolor/scalable/apps/workbuddy.svg
     install -d ${pkgdir}/opt/workbuddy
     cp -a app.asar.unpacked ${pkgdir}/opt/workbuddy/
     install -Dm 755 /dev/stdin "${pkgdir}/usr/bin/workbuddy" <<EOF
