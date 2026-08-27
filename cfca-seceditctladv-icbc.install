@@ -1,0 +1,18 @@
+post_install() {
+    gen_hwinfo
+}
+
+post_upgrade() {
+    gen_hwinfo
+}
+
+post_remove() {
+    rm -f /opt/cfca/dev
+}
+
+gen_hwinfo() {
+    install -d -m 755 /opt/cfca
+    dmidecode -t 4 | grep 'ID' | head -n 1 > /opt/cfca/dev
+    dmidecode -t 2 | grep 'Serial' >> /opt/cfca/dev
+    chmod 755 /opt/cfca/dev
+}

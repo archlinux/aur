@@ -1,0 +1,18 @@
+pkgbase = cfca-seceditctladv-icbc
+	pkgdesc = SecEditCtlAdv From CFCA for ICBC
+	pkgver = 3.3.0.2
+	pkgrel = 1
+	url = https://corporbank-simp.icbc.com.cn/
+	install = cfca-seceditctladv-icbc.install
+	arch = x86_64
+	license = custom
+	makedepends = wget
+	depends = glibc
+	depends = gcc-libs
+	depends = dmidecode
+	noextract = UOS_SecEditCtlAdv.ICBC.x86_64.deb
+	options = !debug
+	source = https://corporbank-simp.icbc.com.cn/ebankc/safety/linux/uos/adv/UOS_SecEditCtlAdv.ICBC.x86_64.deb
+	sha256sums = bc7740b1d054e3d7b4e14064be7a5e806b684e96bd7580a9568a7ec62932a9c5
+
+pkgname = cfca-seceditctladv-icbc

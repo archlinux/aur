@@ -1,0 +1,4 @@
+src/
+pkg/
+*.pkg.tar.zst
+UOS_SecEditCtlAdv.ICBC.x86_64.deb
