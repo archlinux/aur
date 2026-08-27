@@ -1,6 +1,6 @@
 pkgbase = gabbro-bin
 	pkgdesc = Quantum-resistant password manager
-	pkgver = 0.1.0_alpha.22
+	pkgver = 0.1.0_alpha.23
 	pkgrel = 1
 	url = https://github.com/gabbro-foss/gabbro
 	install = gabbro-bin.install
@@ -16,9 +16,9 @@ pkgbase = gabbro-bin
 	conflicts = gabbro
 	options = !strip
 	options = !debug
-	source = gabbro-0.1.0-alpha.22-linux-x86_64.tar.gz::https://github.com/gabbro-foss/gabbro/releases/download/v0.1.0-alpha.22/gabbro-0.1.0-alpha.22-linux-x86_64.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/gabbro-foss/gabbro/v0.1.0-alpha.22/LICENSE
-	sha256sums = 3f0e9e4deb2f7fb42a6aea9028af62a0324678c55a1fc4161814e47b0af6da28
+	source = gabbro-0.1.0-alpha.23-linux-x86_64.tar.gz::https://github.com/gabbro-foss/gabbro/releases/download/v0.1.0-alpha.23/gabbro-0.1.0-alpha.23-linux-x86_64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/gabbro-foss/gabbro/v0.1.0-alpha.23/LICENSE
+	sha256sums = c02f2667e4c860506dc6fb6547ef08752081d84d1088b922a25e2fba946a690e
 	sha256sums = 9eb52965f51761109c61c9f91ed4c2ab4017c1d8b14bbb02fb178dbaf1346545
 
 pkgname = gabbro-bin

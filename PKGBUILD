@@ -1,4 +1,4 @@
-# Maintainer: Gabbro <gabbro@tuta.com>
+# Maintainer: Gabbro <gabbro at tuta dot com>
 #
 # gabbro-bin: repackages the prebuilt Gabbro Linux release tarball. Building the
 # full Flutter + Rust stack from source in the AUR is heavy and needless when the
@@ -6,7 +6,7 @@
 # prebuilt binaries).
 
 pkgname=gabbro-bin
-pkgver=0.1.0_alpha.22
+pkgver=0.1.0_alpha.23
 pkgrel=1
 _pkgver=${pkgver//_/-}   # tag/filename form: 0.1.0-alpha.N
 pkgdesc="Quantum-resistant password manager"
@@ -22,7 +22,7 @@ options=('!strip' '!debug')   # prebuilt bundle; don't strip or split debug symb
 install=gabbro-bin.install
 source=("gabbro-${_pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${_pkgver}/gabbro-${_pkgver}-linux-x86_64.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/gabbro-foss/gabbro/v${_pkgver}/LICENSE")
-sha256sums=('3f0e9e4deb2f7fb42a6aea9028af62a0324678c55a1fc4161814e47b0af6da28'
+sha256sums=('c02f2667e4c860506dc6fb6547ef08752081d84d1088b922a25e2fba946a690e'
             '9eb52965f51761109c61c9f91ed4c2ab4017c1d8b14bbb02fb178dbaf1346545')
 
 package() {
