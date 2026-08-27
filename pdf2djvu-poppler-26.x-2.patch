@@ -81,7 +81,7 @@
  const std::string pdf::Document::get_xmp()
  {
 +  const char *cstring = nullptr;
-+#if POPPLER_VERSION_NUMBER > 260700
++#if POPPLER_VERSION > 260700
 +  std::optional<std::string> mstring = this->readMetadata();
 +  if (!mstring)
 +    return "";

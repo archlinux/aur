@@ -5,7 +5,7 @@
 
 pkgname=pdf2djvu
 pkgver=0.9.19
-pkgrel=8
+pkgrel=9
 pkgdesc="Creates DjVu files from PDF files"
 arch=('x86_64')
 url="https://jwilk.net/software/pdf2djvu"
@@ -25,7 +25,7 @@ sha256sums=(
   'fe6f45c09dee733c7b96a68556e635a47e1faf69bb47aca35599dc6117d22dc2'
   '29f12d01cb13ccc9a412469f1adcc71b1e2e5a81c7c6269a28eb23f1098de41a'
   '413f214c393c093812d4b50cccae38dbec2f55565b1a49d844335ce700a79ac1'
-  'efee89b64a4b79ef293bb621553d2ac9fb78bdbe19c816deb97200a643ae72ee'
+  '59fe04d5f712a6bac9bb59088d6ab5b11df7a29f960d30e5873ec06c85a62f6a'
 )
 
 prepare() {
