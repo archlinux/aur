@@ -47,7 +47,8 @@ provides=(
     "${_pkgname}=${pkgver}"
     "caelestia-shell=${pkgver}"
     "caelestia-shell-git=${pkgver}"
-    "qt6-m3shapes-git"
+    "qt6-m3shapes=${pkgver}"
+    "qt6-m3shapes-git=${pkgver}"
 )
 conflicts=(
     "${_pkgname}"
@@ -58,8 +59,8 @@ conflicts=(
     'noctalia-qs-git'
     'dim-caelestia-shell-git-debug'
     'qt6-m3shapes'
-
-    'polkit-gnome' # it has a built in polkit
+    'qt6-m3shapes-git'
+    'polkit-gnome'
 )
 replaces=('dim-caelestia-shell-git')
 
