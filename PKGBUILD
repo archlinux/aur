@@ -1,4 +1,4 @@
-# Maintainer: Massimo Pavoni (damax) <real dot damax at gmail dot com>
+# Maintainer: Massimo Pavoni (damax) <aur at massimopavoni dot dev>
 # Contributor: Konstantin Gizdov <arch at kge dot pw>
 # Contributor: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 # Contributor: Morten Linderud <morten@linderud.pw>
