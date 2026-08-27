@@ -1,0 +1,3 @@
+[cmdbench]
+source = "pypi"
+pypi = "cmdbench"
