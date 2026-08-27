@@ -1,6 +1,6 @@
 pkgbase = pxview-git
 	pkgdesc = GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.
-	pkgver = 1.5.0.r16.5d91251
+	pkgver = 1.5.8.r210.d8fb12c
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/PXLogic/PXView
@@ -18,20 +18,37 @@ pkgbase = pxview-git
 	makedepends = qt6-svg
 	makedepends = qt6-tools
 	makedepends = pkgconf
+	makedepends = sdcc
 	makedepends = vulkan-headers
+	depends = sh
 	depends = hicolor-icon-theme
 	depends = glib2
-	depends = glibc
+	depends = nettle
 	depends = python
 	depends = fftw
 	depends = libgcc
+	depends = libftdi
 	depends = libstdc++
 	depends = libusb
+	depends = libzip
 	depends = zlib
 	depends = qt6-base
+	depends = qt6-multimedia
 	depends = qt6-websockets
 	source = pxview-git::git+https://github.com/PXLogic/PXView.git
-	source = 0001-install-libsigrokdecode-under-PXView-prefix.patch
+	source = sigrok-firmware::git+https://github.com/sigrokproject/sigrok-firmware.git
+	source = sigrok-firmware-fx2lafw::git+https://github.com/sigrokproject/sigrok-firmware-fx2lafw.git
+	source = sigrok-util::git+https://github.com/sigrokproject/sigrok-util.git
+	source = libsigrok::git+https://github.com/haikumuse/libsigrok.git#branch=pxview-fork
+	source = libsigrokdecode::git+https://github.com/haikumuse/libsigrokdecode.git#branch=pxview-fork
+	source = libusb::git+https://github.com/haikumuse/libusb.git#branch=event-abstraction-v4
+	source = mimalloc::git+https://github.com/microsoft/mimalloc.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

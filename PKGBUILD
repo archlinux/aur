@@ -6,7 +6,7 @@
 # Origin Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=pxview-git
-pkgver=1.5.0.r16.5d91251
+pkgver=1.5.8.r210.d8fb12c
 pkgrel=1
 epoch=1
 pkgdesc='GUI program for supporting various instruments from PXLogic, including logic analyzers, oscilloscopes, etc.'
@@ -14,16 +14,20 @@ arch=($CARCH)
 url='https://github.com/PXLogic/PXView'
 license=(GPL-3.0-or-later)
 depends=(
+  sh
   hicolor-icon-theme 
   glib2
-  glibc
+  nettle 
   python 
   fftw
   libgcc
+  libftdi
   libstdc++
-  libusb 
+  libusb
+  libzip
   zlib 
-  qt6-base 
+  qt6-base
+  qt6-multimedia
   qt6-websockets
 )
 makedepends=(
@@ -36,15 +40,30 @@ makedepends=(
   librsvg
   nlohmann-json
   minizip
-  qt6-svg 
+  qt6-svg
   qt6-tools
   pkgconf
+  sdcc
   vulkan-headers
 )
-source=("${pkgname}::git+${url}.git"
-    "0001-install-libsigrokdecode-under-PXView-prefix.patch")
+source=(
+  "${pkgname}::git+${url}.git"
+  "sigrok-firmware::git+https://github.com/sigrokproject/sigrok-firmware.git"
+  "sigrok-firmware-fx2lafw::git+https://github.com/sigrokproject/sigrok-firmware-fx2lafw.git"
+  "sigrok-util::git+https://github.com/sigrokproject/sigrok-util.git"
+  "libsigrok::git+https://github.com/haikumuse/libsigrok.git#branch=pxview-fork"
+  "libsigrokdecode::git+https://github.com/haikumuse/libsigrokdecode.git#branch=pxview-fork"
+  "libusb::git+https://github.com/haikumuse/libusb.git#branch=event-abstraction-v4"
+  "mimalloc::git+https://github.com/microsoft/mimalloc.git"
+)
 sha256sums=('SKIP'
-    'SKIP')
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -56,16 +75,32 @@ pkgver() {
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
   cd "${srcdir}"/${pkgname}/
+  git submodule init
+  git config submodule.sigrok-firmware.url "$srcdir/sigrok-firmware"
+  git config submodule.sigrok-firmware-fx2lafw.url "$srcdir/sigrok-firmware-fx2lafw"
+  git config submodule.sigrok-util.url "$srcdir/sigrok-util"
+  git config submodule.libsigrok.url "$srcdir/libsigrok"
+  git config submodule.libsigrokdecode.url "$srcdir/libsigrokdecode"
+  git config submodule.libusb.url "$srcdir/libusb"
+  git config submodule.mimalloc.url "$srcdir/mimalloc"
+  git -c protocol.file.allow=always submodule update
 
   sed -i 's#MODE="0666"#TAG+="uaccess"#' PXView/px.rules
-  # temporary fix icon display
-  rsvg-convert -w 256 -h 256 -f png -o PXView/icons/logo.png PXView/icons/logo.svg
+
+  sed -i \
+    -e 's|\(DESTINATION \${MAC_RES_PREFIX}share\)/libsigrokdecode|\1/PXView/libsigrokdecode|g' \
+    -e 's|\(DESTINATION \)share/sigrok-firmware|\1share/PXView/sigrok-firmware|g' \
+    CMake/install_packaging.cmake
   
-  # parch
-  git apply ${srcdir}/0001-install-libsigrokdecode-under-PXView-prefix.patch
+  sed -i \
+    -e 's|//if (dir.cd("\.\.) && dir.cd("share")&& dir.cd("PXView")  && dir.cd("libsigrokdecode") && dir.cd("decoders"))|if (dir.cd("..") && dir.cd("share")&& dir.cd("PXView")  && dir.cd("libsigrokdecode") && dir.cd("decoders"))|' \
+    -e 's|if (dir.cd("\.\.) && dir.cd("share") && dir.cd("libsigrokdecode") && dir.cd("decoders"))|//if (dir.cd("..") && dir.cd("share") && dir.cd("libsigrokdecode") && dir.cd("decoders"))|' \
+    PXView/pv/config/appconfig.cpp
 }
  
 build() {
+  # npm 12 默认 allow-remote=none，会拒绝 lockfile 中 resolved 为完整 URL 的“远程”tarball（如 npmmirror 镜像），需显式放开
+  export npm_config_allow_remote=all
   cd "${srcdir}"/${pkgname}/
 
   # see：https://wiki.archlinux.org/title/CMake_package_guidelines
@@ -88,10 +123,6 @@ package() {
   cd "${srcdir}"/${pkgname}/
 
   DESTDIR="${pkgdir}" ninja -C build install
-  # temporary fix icon display
-  rm -rf ${pkgdir}/usr/share/pixmaps/pxview.svg \
-        ${pkgdir}/usr/share/icons/
-  install -Dm644 PXView/icons/logo.png ${pkgdir}/usr/share/pixmaps/pxview.png
 }
 
 # vim: set sw=2 ts=2 et:
