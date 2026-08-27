@@ -1,0 +1,60 @@
+# Upstream: https://github.com/nkallen/plasticity (official .deb binary)
+#
+# Fork of plasticity-bin (M0N7Y5) with a build-time loader fix: upstream's kernel
+# plugin dlopens libA3DLIBS.so by bare name with no RPATH, so the verbatim .deb
+# payload cannot load the Parasolid kernel on stock Arch. This package applies
+# patchelf --set-rpath '$ORIGIN' to the colocated kernel modules at build time;
+# no user-side configuration required. Original maintainer declined the change
+# upstream (see plasticity-diagnosis / MAINTAINER-REPORT in the project record).
+# shellcheck shell=bash disable=SC2034,SC2154
+
+pkgname="plasticity-4arch"  # D1 (closed 2026-08-26): AUR name confirmed available (web fallback: 404 + no search hit)
+pkgver=@PKGVER@
+pkgrel=1
+pkgdesc="3D modeling software for concept artists (official .deb + working loader fix)"
+arch=(x86_64)
+url='https://github.com/nkallen/plasticity'
+license=(LicenseRef-custom)
+
+depends=(alsa-lib at-spi2-atk at-spi2-core atk cairo dbus desktop-file-utils expat
+  gdk-pixbuf2 glib2 gtk3 gvfs hicolor-icon-theme libcups libdrm
+  libnotify libx11 libxcb libxcomposite libxdamage libxext libxfixes
+  libxkbcommon libxrandr mesa nspr nss openssl pango)
+optdepends=(
+  'discord: For communication with the devs'
+  'apparmor: Extra protection'
+  'pulseaudio: For sound'
+)
+makedepends=(patchelf)
+
+source=(
+  "https://github.com/nkallen/plasticity/releases/download/v${pkgver}/plasticity_${pkgver}_amd64.deb"
+  "https://raw.githubusercontent.com/nkallen/plasticity/refs/tags/v${pkgver}/LICENSE"
+)
+sha512sums=(
+  '@SHA512_DEB@'
+  '@SHA512_LICENSE@'
+)
+
+options=(!strip)
+
+prepare() {
+  # A .deb is an ar archive; extract its data payload for packaging.
+  ar x "plasticity_${pkgver}_amd64.deb"
+}
+
+package() {
+  # 1) Install the official payload verbatim.
+  #    tar -xf (no compression flag): GNU tar auto-detects the zstd magic of
+  #    the named file; -J is avoided because some tar builds have broken
+  #    -J/zstd wiring (verified on the dev box).
+  tar -xf data.tar.zst -C "$pkgdir"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  echo "https://www.plasticity.xyz/eula" > "${pkgdir}/usr/share/licenses/${pkgname}/EULA"
+
+  # 2) Apply the loader fix — the entire reason this package exists.
+  #    apply-loader-fix.sh lives next to this PKGBUILD.
+  # shellcheck disable=SC1091
+  source "$(dirname "${BASH_SOURCE[0]}")/apply-loader-fix.sh"
+  apply_loader_fix "$pkgdir"
+}
