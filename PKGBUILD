@@ -2,7 +2,7 @@
 
 _name=pystack
 pkgname=python-$_name
-pkgver=1.5.1
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='Analysis of the stack of remote python processes'
 arch=(any)
@@ -12,14 +12,16 @@ depends=(python)
 makedepends=(
     cython
     libelf
+    'nanobind>=1.8'
     python-pkgconfig
     python-build
     python-installer
+    python-scikit-build-core
     python-setuptools
     python-wheel
 )
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('60d73b1a768a56020540af9fc548e71a470af883ea46686b322618b84ed685f13c0e0ea90096ca898e4c9a779cd89b96f646a2860a47495e469c217ed1038210')
+b2sums=('f1f7b9332f9ccef3bc2ff94c89c020bf6d5fe08a6d29910d5487252452d64f35fa01495ed11842ff350c283e27dc60fada9336f7582c0f78c53268243c231621')
 
 build() {
     cd $_name-$pkgver
