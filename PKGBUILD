@@ -22,10 +22,17 @@ license=('Apache-2.0' 'LicenseRef-proprietary')
 depends=('waydroid')
 
 # Build-time only. Removed afterwards by `makepkg -r` / `yay --removemake`.
-#   apkeep  fetches the pinned Apple Music release from APKPure. This lives in
-#           the AUR, not the official repos, so plain `makepkg -s` cannot
-#           resolve it - install it first (`yay -S --asdeps apkeep-bin`) or
-#           build through an AUR helper.
+#   apkeep  fetches the pinned Apple Music release from APKPure.
+#           Either AUR package satisfies this: 'apkeep' (builds from source,
+#           pulls in cargo) or 'apkeep-bin' (prebuilt, and declares
+#           provides=apkeep). pacman has no OR syntax for dependencies -
+#           provides is what makes both work.
+#           Both live in the AUR, so plain `makepkg -s` cannot resolve either;
+#           build through an AUR helper, or pre-install your preferred one:
+#             yay -S --asdeps apkeep-bin     # prebuilt, no Rust toolchain
+#             yay -S --asdeps apkeep         # from source
+#           With neither installed, helpers pick the literal name match
+#           ('apkeep') and build it from source.
 #   unzip   splits the XAPK bundle apkeep returns
 #   python  reads the bundle manifest to verify id and version
 # adb is deliberately absent: ro.adb.secure=1 forces adb offline, so the app is
