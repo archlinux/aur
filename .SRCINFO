@@ -10,8 +10,8 @@ pkgbase = fastwc-bin
 	depends = gcc-libs
 	provides = fastwc
 	conflicts = fastwc
-	source = fastwc::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc
-	source = fastwc.sha256::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc.sha256
+	source = fastwc::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl
+	source = fastwc.sha256::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl.sha256
 	sha256sums = SKIP
 	sha256sums = SKIP
 

@@ -10,8 +10,8 @@ depends=('gcc-libs')
 makedepends=('git' 'curl')
 provides=('fastwc')
 conflicts=('fastwc')
-source=("fastwc::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc"
-        "fastwc.sha256::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc.sha256")
+source=("fastwc::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl"
+        "fastwc.sha256::https://github.com/CallMeAlphabet/fastwc/releases/download/latest/fastwc-x86_64-linux-musl.sha256")
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
