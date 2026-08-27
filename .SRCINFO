@@ -1,18 +1,18 @@
 	pkgbase = opcda-bridge-client-bin
 	pkgdesc = OPC DA cross-platform client
-	pkgver = 0.4.7
+	pkgver = 0.4.8
 	pkgrel = 1
 	url = https://github.com/bytehound-labs/opcda-bridge
 	arch = x86_64
 	license = MIT
-	source = LICENSE-0.4.7::https://raw.githubusercontent.com/bytehound-labs/opcda-bridge/opcda-bridge-client-v0.4.7/LICENSE
-	source = README-0.4.7.md::https://raw.githubusercontent.com/bytehound-labs/opcda-bridge/opcda-bridge-client-v0.4.7/README.md
+	source = LICENSE-0.4.8::https://raw.githubusercontent.com/bytehound-labs/opcda-bridge/opcda-bridge-client-v0.4.8/LICENSE
+	source = README-0.4.8.md::https://raw.githubusercontent.com/bytehound-labs/opcda-bridge/opcda-bridge-client-v0.4.8/README.md
 	sha256sums = 6e7c22106722c151ffc66d0faf2035155eca1ad91931f5679c6773891c08deef
-	sha256sums = 53b4d30d9eec48033f20a6d608c1a7e6853919bbc2a83154f3675ec54d8f8a73
+	sha256sums = 32cae8dc736af80b1fe7cf91ec26e3340dba944d7fafb8c32ff2c263583c0cf9
 	provides = opcda-bridge-client
 	conflicts = opcda-bridge-client
 	options = !debug
-	source_x86_64 = opcda-bridge-client-bin-0.4.7-x86_64.tar.gz::https://github.com/bytehound-labs/opcda-bridge/releases/download/opcda-bridge-client-v0.4.7/opcda-bridge-client-linux-x86_64.tar.gz
-	sha256sums_x86_64 = d27edfa5f8ca924eb98e8cbca627e90343647f8dae9bd1b0bbfda1c1c37a793e
+	source_x86_64 = opcda-bridge-client-bin-0.4.8-x86_64.tar.gz::https://github.com/bytehound-labs/opcda-bridge/releases/download/opcda-bridge-client-v0.4.8/opcda-bridge-client-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e5d4ab3aa0ed80e5a65f77e7d0f8a540122841ed12a573fbdb3f4ad7e861ccbd
 
 pkgname = opcda-bridge-client-bin
