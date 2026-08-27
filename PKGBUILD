@@ -6,8 +6,8 @@ _pkgname=tedit
 pkgname=${_pkgname}-bin
 pkgdesc="A command-line text editor inspired by ed/ex"
 
-pkgver=2.2.0
-pkgrel=2
+pkgver=2.3.0
+pkgrel=1
 _pkgvername=v${pkgver}
 
 arch=('x86_64')
@@ -20,24 +20,17 @@ license=('BSD-3-Clause')
 provides=("${_appname}")
 conflicts=("${_pkgname}")
 
-makedepends=('patchelf')
 depends=('glibc' 'libgcc' 'libstdc++' 'lua54')
 
 source=("MANPAGE-${pkgver}.1::${_urlraw}/mandoc/${_appname}.1"
 		"README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}")
-sha256sums=('7decb4299bcde5dc8e2af8e67833225a666e5784dfd8a53212c5d645e6133327'
-            'e3e267e8c6ba331c9b85688e1c6782b7c8ea9b51b606b14e0c95a395d042b1df'
+sha256sums=('ee40e92e36682b5dab45de79203be1aeccf77c190f0010113e4d1c6a7892a8c6'
+            '152f6e42bdeaf0ca11bc1543b8751e7a541e40d02ad137457dab34f09461e325'
             'e765681d9c8c02828c6e27356b9579fea63c562c8d8afc3dd0671429821efcd0')
-sha256sums_x86_64=('e30d81b72f200517f68ddcf20e20950048a965a589b962a099f13a2a3826a5cf')
+sha256sums_x86_64=('f2239985131da22ded69300de2fd6d21586c0db6c70d1ef07d8fb539891d1c10')
 
-
-prepare() {
-	cd "${srcdir}/" || exit
-
-	patchelf --replace-needed "liblua5.4.so.0" "liblua5.4.so" "${_pkgname}-${CARCH}-${pkgver}"
-}
 
 package() {
 	cd "${srcdir}/" || exit
