@@ -1,7 +1,7 @@
-# Maintainer: Massimo Pavoni (damax) <real dot damax at gmail dot com>
+# Maintainer: Massimo Pavoni (damax) <aur at massimopavoni dot dev>
 
 pkgname=ttf-uiua386
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Uiua font with language glyphs, inspired by APL386"
 arch=(any)
@@ -11,7 +11,7 @@ source=(
   "https://github.com/uiua-lang/uiua/raw/$pkgver/src/assets/Uiua386.ttf"
 )
 sha256sums=(
-  "7f2d6ab69cec6df3de7dd0ff0ff4667fb04669b3827e6b7db11f9d6f1b9aa60d"
+  "bb18d2ea15b35d0c40d84d209f3a116cdb878c1d75de43fe8109f9d72ab81ed5"
 )
 
 package() {
