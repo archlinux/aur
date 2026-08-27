@@ -22,22 +22,19 @@ license=('Apache-2.0' 'LicenseRef-proprietary')
 depends=('waydroid')
 
 # Build-time only. Removed afterwards by `makepkg -r` / `yay --removemake`.
-#   apkeep  fetches the pinned Apple Music release from APKPure.
-#           Either AUR package satisfies this: 'apkeep' (builds from source,
-#           pulls in cargo) or 'apkeep-bin' (prebuilt, and declares
-#           provides=apkeep). pacman has no OR syntax for dependencies -
-#           provides is what makes both work.
-#           Both live in the AUR, so plain `makepkg -s` cannot resolve either;
-#           build through an AUR helper, or pre-install your preferred one:
-#             yay -S --asdeps apkeep-bin     # prebuilt, no Rust toolchain
-#             yay -S --asdeps apkeep         # from source
-#           With neither installed, helpers pick the literal name match
-#           ('apkeep') and build it from source.
-#   unzip   splits the XAPK bundle apkeep returns
-#   python  reads the bundle manifest to verify id and version
+#   apkeep-bin  fetches the pinned Apple Music release from APKPure. Named
+#               explicitly rather than 'apkeep' so helpers use the prebuilt
+#               binary instead of building it from source and dragging in a
+#               full Rust toolchain. ('apkeep-bin' provides 'apkeep', but not
+#               the reverse, so this pins the choice.)
+#               It is an AUR package, so plain `makepkg -s` cannot resolve it -
+#               build through an AUR helper:
+#                 yay -Bi . --removemake
+#   unzip       splits the XAPK bundle apkeep returns
+#   python      reads the bundle manifest to verify id and version
 # adb is deliberately absent: ro.adb.secure=1 forces adb offline, so the app is
 # installed through `waydroid shell pm` instead.
-makedepends=('apkeep' 'unzip' 'python')
+makedepends=('apkeep-bin' 'unzip' 'python')
 
 # Never auto-installed; suggestions only.
 optdepends=('pipewire-audio: sample-rate switching for bit-perfect output')
