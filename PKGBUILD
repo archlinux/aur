@@ -43,7 +43,7 @@ sha256sums=('4886399408a9ac567522caa7c49c851eb2f8bc56f3780a33435286f32d85f1f4'
 prepare() {
   cd ente
   git submodule init
-  git config submodule.auth/assets/simple-icons.url "$srcdir/simple-icons"
+  git config submodule.mobile/apps/auth/assets/simple-icons.url "$srcdir/simple-icons"
   git -c protocol.file.allow=always submodule update
 
   cd mobile/apps/auth
