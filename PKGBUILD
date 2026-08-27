@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=wechat
-pkgver=13
+pkgver=14
 pkgrel=1
 epoch=1
 pkgdesc="Fixes and optional sandbox for WeChat."
@@ -34,7 +34,7 @@ source=(
 
 md5sums=('6e5d2bd14439b5d1bd8c8e6e0fab7850'
          'f32488c56b43ca5eb0ee77d77f0f8e52'
-         '7a96469d12e220738fb95580fd5837f7')
+         '7a7ae21f3ce59170fc29548137f46c64')
 
 function package() {
 	install -Dm644 portable-config \

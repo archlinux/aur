@@ -31,13 +31,6 @@ track = true
 # Whether or not an application can call Inhibit Portal to prevent automatic suspend. Defaults to false.
 inhibitSuspend = false
 
-# Specifies the "max" value of cgroup's cpu.uclamp property. This influences
-# 	frequency selection of schedutil and Energy / Capacity Aware scheduling.
-# Lower value yields more energy efficiency, while higher trades efficiency
-# 	for performance.
-# Defaults to 100, i.e. unlimited.
-uclamp = "50"
-
 deviceAllow = ["camera"]
 
 # The network section defines behaviour of Portable's network firewall. Requires netsock for filtering.
@@ -53,7 +46,7 @@ x11 = true
 # When false, prevents application from connecting to legacy notifications endpoint. Defaults to true.
 classicNotifications = false
 
-lockdown = true
+lockdown = false
 
 # Do not use. May break apps.
 [advanced]
@@ -61,5 +54,5 @@ zink = false
 qt5Compat = true
 mprisName = []
 trayWake = true
-kDEStatus = true
+kDEStatus = false
 flatpakInfo = true
