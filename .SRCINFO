@@ -1,6 +1,6 @@
 pkgbase = vopono
 	pkgdesc = Run applications through VPN connections in network namespaces
-	pkgver = 0.10.22
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/jamesmcm/vopono
 	install = vopono.install
@@ -18,9 +18,9 @@ pkgbase = vopono
 	optdepends = openssh: for SSH proxy forwarding support
 	provides = vopono
 	conflicts = vopono
-	source = vopono-0.10.22.tar.gz::https://github.com/jamesmcm/vopono/archive/0.10.22.tar.gz
+	source = vopono-1.0.0.tar.gz::https://github.com/jamesmcm/vopono/archive/1.0.0.tar.gz
 	source = vopono.service
-	sha256sums = f6a3cac516aaf799ce659fed85a03286889a4132258b589985091dde44710852
+	sha256sums = a8c0746ce21d414c7f7a6bf0dbe6aa694227ea1cac294918b2edf0c816f745f7
 	sha256sums = fe558d14c1efa8c2bf638b5882fbf63c98970b76b661f1c8c50a72b6b5553e13
 
 pkgname = vopono

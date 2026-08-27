@@ -1,7 +1,7 @@
 # Maintainer: James McMurray <jamesmcm03@gmail.com>
 
 pkgname=vopono
-pkgver=0.10.22
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Run applications through VPN connections in network namespaces'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('openvpn: for OpenVPN connections' 'wireguard-tools: for Wireguard c
 install=vopono.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'vopono.service')
-sha256sums=('f6a3cac516aaf799ce659fed85a03286889a4132258b589985091dde44710852'
+sha256sums=('a8c0746ce21d414c7f7a6bf0dbe6aa694227ea1cac294918b2edf0c816f745f7'
             'fe558d14c1efa8c2bf638b5882fbf63c98970b76b661f1c8c50a72b6b5553e13')
 provides=('vopono')
 conflicts=('vopono')
