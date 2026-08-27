@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ytdownloader-gui-bin
 _pkgname=YTDownloader
-pkgver=3.22.0
+pkgver=4.0.1
 _electronversion=30
 pkgrel=1
 pkgdesc="A modern GUI App for downloading Videos and Audios from hundreds of sites.(Prebuilt version.Use system-wide electron)"
@@ -14,13 +14,14 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
     'nodejs'
+    'ffmpeg'
 )
 options=('!strip')
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_Linux.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a41bf86b38bd96d4b7d10df1802e0e906cc05c14c7675d068bdbc15465d17a3d'
+sha256sums=('49f8e21a0a0fe926f993562d89c601cc3af1af0bf6191543dd3154a1f0a08da4'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
@@ -47,12 +48,15 @@ prepare() {
         s/\/opt\/${_pkgname}\/${pkgname%-gui-bin}/${pkgname%-bin}/g
         s/Icon=${pkgname%-gui-bin}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/${pkgname%-gui-bin}.desktop"
+    local _app_dir=$(_get_app_dir)
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
+    ln -sf "/usr/bin/ffmpeg" "${pkgdir}/usr/lib/${pkgname%-bin}/app/ffmpeg/bin/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "${pkgdir}/usr/lib/${pkgname%-bin}/app/ffmpeg/bin/ffprobe"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-gui-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
