@@ -1,0 +1,21 @@
+pkgbase = thinkrail-bin
+	pkgdesc = Vibe code with pi in a lightweight, real IDE - The Vibe You Need
+	pkgver = 0.0.18
+	pkgrel = 1
+	url = https://thinkrail.ai
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = git
+	depends = xdg-utils
+	provides = thinkrail
+	conflicts = thinkrail
+	options = !debug
+	options = !strip
+	source_x86_64 = thinkrail-bin-0.0.18-x86_64::https://github.com/JetBrains/thinkrail/releases/download/v0.0.18/thinkrail-linux-x64
+	sha256sums_x86_64 = 818c9b31dcb40ab00969348caf1334b0f7b319ed4a935a180812152a8e15c775
+	source_aarch64 = thinkrail-bin-0.0.18-aarch64::https://github.com/JetBrains/thinkrail/releases/download/v0.0.18/thinkrail-linux-arm64
+	sha256sums_aarch64 = 985927a770f0fba3aba7dcc00b4a75acee07c48af21cfb1d45b894885e30da25
+
+pkgname = thinkrail-bin
