@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 pkgname=netsukuku-rs-bin
 pkgver=0.1.2 # renovate: datasource=github-releases depName=M0Rf30/netsukuku-rs
-pkgrel=1
+pkgrel=2
 pkgdesc="Rust reimplementation of the Netsukuku mesh routing protocol: QSPN v2, Hooking, Coordinator, PeerServices, ANDNA (prebuilt static binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/M0Rf30/netsukuku-rs"
@@ -13,8 +13,8 @@ backup=('etc/ntkd/ntkd.toml')
 
 source=(ntkd.service
   ntkd.toml)
-sha256sums=('efd4fa387722f09d2e731d9508bcaf3d1275fb04cb04d52561df62d2f6a08a31'
-  'bdaeb4e4bd1bb6738e2ca46380e8fbea55fed2b04f52d035297f8d78753ee1ac')
+sha256sums=('0535fc523edaaaa8ce23888d4c3db13500a94988fdb20a5826d59f6da6698810'
+  'b16a6805a87698c43a8fdf7bba699ebccf495aa24d110a49a6291bea335e76c0')
 
 package() {
   install -Dm0755 "$srcdir/ntkd" \
