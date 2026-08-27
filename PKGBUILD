@@ -2,7 +2,7 @@
 pkgname=moekoemusic-bin
 _pkgname='MoeKoe Music'
 _zhsname='萌音'
-pkgver=1.6.9
+pkgver=1.7.0
 _electronversion=39
 pkgrel=1
 pkgdesc="An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Prebuilt version.Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端"
@@ -33,7 +33,7 @@ source=(
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /_}_v${pkgver}-amd64.deb")
 sha256sums=('f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_x86_64=('4c187b18f79ac8648ca4c5c4375c87e3817d765cd804719ca2aeccc87a341afe')
+sha256sums_x86_64=('fdc496fe5e88f8b2499458059648a8dff2e789e9702785294d72ffa53c1585fb')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
