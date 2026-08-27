@@ -1,24 +1,22 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=snagboot
-pkgver=2.6.1
+pkgver=3.0
 pkgrel=1
 pkgdesc='Generic recovery and reflashing tool for embedded platforms'
 arch=(any)
 url='https://github.com/bootlin/snagboot'
 license=('GPL2')
-depends=('dtc>=1.7.0'             # for pylibfdt
+depends=('dtc>=1.7.2'             # for pylibfdt
          'python>=3.8'
          'python-crccheck>=1.3.0'
-         'python-hid>=1.0.4'      # pulls the required libhidapi
          'python-kivy>=2.3.0'
+         'python-packaging>=24.2'
          'python-pyserial>=3.5'
          'python-pyusb>=1.2.1'
-         'python-six>=1.16.0'
          'python-tftpy>=0.8.2'
          'python-xmodem>=0.4.6'
-         'python-yaml>=6.0'
-         'swig>=4.1.1')
+         'python-yaml>=6.0')
 makedepends=('python-build'
              'python-installer'
              'python-setuptools>=61.0'
@@ -26,7 +24,7 @@ makedepends=('python-build'
 install=$pkgname.install
 source=("$url/archive/v$pkgver.tar.gz"
         $pkgname.sysusers)
-b2sums=('3d6328e8ba721309fd3ef9856b6a3c9a563262a9203c909a06a2a666fc5a4a54bd3f82a6f94d8ca4d02e76f53df09300e0299924e6edb5a50e5ff6b6d1b11779'
+b2sums=('57a616afea2ce06c128ba476ce2525890fd040bdc2143b3a675404d761516e8894b2516767351f31ae83d41f444fa7a60001fc8c09b3337e602f3aff12083b43'
         'f48705e2a98ec318e26a4a1f01bafabbd8ab74622c7209be9cbae34bb0ccc999d6581b0fa5c827ab7a8bd41d6f32d32c4a2ed642342279308362953018843138')
 
 build() {
