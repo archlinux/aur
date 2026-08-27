@@ -1,6 +1,6 @@
 pkgbase = unsloth-bin
 	pkgdesc = Local UI to run and train LLMs and diffusion models
-	pkgver = 0.1.800.beta
+	pkgver = 0.1.803.beta
 	pkgrel = 1
 	url = https://github.com/unslothai/unsloth
 	install = setup.install
@@ -25,10 +25,10 @@ pkgbase = unsloth-bin
 	optdepends = gcc: build llama.cpp from source instead of using the prebuilt engine
 	provides = unsloth
 	conflicts = unsloth
-	noextract = unsloth-bin-0.1.800.beta.deb
+	noextract = unsloth-bin-0.1.803.beta.deb
 	options = !strip
 	options = !debug
-	source = unsloth-bin-0.1.800.beta.deb::https://github.com/unslothai/unsloth/releases/download/v0.1.800-beta/Unsloth-Desktop-0_1_800_beta-Ubuntu.deb
-	sha256sums = a8b2224b4dc4e463ee5cdff7ac38f4a1178cab5138b77b3141aeb9f6237160a0
+	source = unsloth-bin-0.1.803.beta.deb::https://github.com/unslothai/unsloth/releases/download/v0.1.803-beta/Unsloth-Desktop-0_1_803_beta-Ubuntu.deb
+	sha256sums = c4be4f81753f2be67aa54200010efd8c3e64cca78a6207bc1ccdb13ee5495347
 
 pkgname = unsloth-bin
