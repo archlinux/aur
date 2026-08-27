@@ -2,7 +2,7 @@
 pkgname=moekoemusic
 _pkgname='MoeKoe Music'
 _zhsname='萌音'
-pkgver=1.6.9
+pkgver=1.7.0
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -30,7 +30,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('42a74f0e726254239f1fe2c7f570c8eaed86704821c434f86d1d42f1e43ed367'
+sha256sums=('038ebe4eda0dde875822438d07f59fd0d5c5639261d26811ac61dc1830387d67'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
