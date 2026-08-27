@@ -1,29 +1,24 @@
 # Maintainer: CallMeAlphabet
 pkgname=timeit-bin
-pkgver=0
+pkgver=21
 pkgrel=1
 pkgdesc="timeit, a precise command timing utility, prebuilt binary"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/timeit"
 license=('Apache-2.0')
 depends=('gcc-libs')
-makedepends=('git' 'curl')
 provides=('timeit')
 conflicts=('timeit')
-source=("timeit::https://github.com/CallMeAlphabet/timeit/releases/download/latest/timeit-x86_64-linux-musl"
-        "timeit.sha256::https://github.com/CallMeAlphabet/timeit/releases/download/latest/timeit-x86_64-linux-musl.sha256")
+source=("timeit-$pkgver::https://github.com/CallMeAlphabet/timeit/releases/download/latest/timeit-x86_64-linux-musl"
+        "timeit-$pkgver.sha256::https://github.com/CallMeAlphabet/timeit/releases/download/latest/timeit-x86_64-linux-musl.sha256")
 sha256sums=('SKIP' 'SKIP')
-
-pkgver() {
-    date -u -d "$(curl -s "https://api.github.com/repos/CallMeAlphabet/timeit/commits/latest" | grep -m1 '"date"' | cut -d'"' -f4)" +%Y%m%d%H%M%S
-}
 
 check() {
     cd "$srcdir"
-    sha256sum -c <(sed "s/timeit-x86_64-linux-musl/timeit/" timeit.sha256)
+    sha256sum -c <(sed "s/timeit-x86_64-linux-musl/timeit-$pkgver/" "timeit-$pkgver.sha256")
 }
 
 package() {
     cd "$srcdir"
-    install -Dm755 "timeit" "$pkgdir/usr/bin/timeit"
+    install -Dm755 "timeit-$pkgver" "$pkgdir/usr/bin/timeit"
 }
