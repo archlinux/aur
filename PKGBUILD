@@ -9,7 +9,7 @@
 # -------------------------------------------------------------------
 pkgname=telegram-rs-bin
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Feather-light Telegram desktop client in Rust — real-time push, GPU rendering (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/MrChausson/telegram-rs"
@@ -30,7 +30,7 @@ source=(
 )
 sha256sums=('733672d8fb9112b88b07b8af0bdd6fc7a7dbe855d62ac04a3fe689476a377025'
             '5f46ddc4cbfafa9bea3814e26822959a536fff89b1b1523acac5f00f80919b86'
-            'c8eaf5a55a9fc527a3d360886f2ebe6d9b9f538028ae75eefd34eff715ba3ab8'
+            '29a54866c7f634ce95caffa7e76c95d69101dccb3f2fc3ffa7a1eecd0c9b2d04'
             'c3a2f7bfcf59048b96659340e0c382112019916cad800354cc7a057589045a39')
 
 package() {
