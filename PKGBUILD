@@ -10,8 +10,8 @@ depends=('gcc-libs')
 makedepends=('git' 'curl')
 provides=('fasthex')
 conflicts=('fasthex')
-source=("fasthex::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex"
-        "fasthex.sha256::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex.sha256")
+source=("fasthex::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex-x86_64-linux-musl"
+        "fasthex.sha256::https://github.com/CallMeAlphabet/fasthex/releases/download/latest/fasthex-x86_64-linux-musl.sha256")
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
