@@ -12,7 +12,7 @@ makedepends=('dotnet-sdk-9.0' 'imagemagick')
 source=("https://github.com/exelix11/SysDVR/archive/refs/tags/v${pkgver}.tar.gz"
 		"sysdvr-client.desktop")
 sha256sums=('b527b6b0cb64242f5f9c0f60a87a8893b44f2f5af3c9117f0669513a99bb0e17'
-            '8176e996c762bf1eb7aefe6e5df48197557731258ac3f1bfd6990a734d877c41')
+            '903b8d833af47c2fa4e15f8e5334e2abcf175e4ca700bf94d673f3d51121532c')
 
 build() {
 	cd "SysDVR-${pkgver}/Client/"
