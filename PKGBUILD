@@ -1,6 +1,6 @@
 # Maintainer: IvelOt <contact@ivelot.dev>
 pkgname=hal-9001
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Pure Rust TUI system control hub for Arch users (BTW) tired of 14 separate tools (No AI!)"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ optdepends=(
 provides=('hal-9001' 'hal9001')
 conflicts=('hal-9001-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('35532ac1e011b421aa8c336772bcbb16b0039ccabb458a0b78548c1108bfa222')
+sha256sums=('5ccd7f19cdfb10adad3bd43388adca384fb9f9993ea9e4675f0138bdccda9cff')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
