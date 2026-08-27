@@ -20,7 +20,7 @@ pkgver() {
 
 check() {
     cd "$srcdir"
-    sha256sum -c "fastwc.sha256"
+    sha256sum -c <(sed "s/fastwc-x86_64-linux-musl/fastwc/" fastwc.sha256)
 }
 
 package() {
