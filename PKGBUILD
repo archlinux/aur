@@ -2,7 +2,7 @@
 # Contributor: Axel Navarro <navarroaxel gmail>
 
 pkgname=meridian-git
-pkgver=1.57.1.r0.g27f3181
+pkgver=1.60.0.r40.g54fce0b
 pkgrel=1
 pkgdesc="Use your Claude Max subscription with OpenCode, OpenClaw, Pi, Droid, Aider, Crush, Cline."
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(bun git)
 provides=(meridian)
 conflicts=(meridian)
 install=meridian-git.install
-source=(meridian::git+https://github.com/rynfar/meridian.git)
+source=("meridian::git+https://github.com/Nowaker/meridian.git#branch=feat/active-priority-and-limit-detection")
 sha512sums=('SKIP')
 
 pkgver() {

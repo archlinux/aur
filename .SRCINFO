@@ -1,6 +1,6 @@
 pkgbase = meridian-git
 	pkgdesc = Use your Claude Max subscription with OpenCode, OpenClaw, Pi, Droid, Aider, Crush, Cline.
-	pkgver = 1.57.1.r0.g27f3181
+	pkgver = 1.60.0.r40.g54fce0b
 	pkgrel = 1
 	url = https://github.com/rynfar/meridian
 	install = meridian-git.install
@@ -11,7 +11,7 @@ pkgbase = meridian-git
 	depends = nodejs
 	provides = meridian
 	conflicts = meridian
-	source = meridian::git+https://github.com/rynfar/meridian.git
+	source = meridian::git+https://github.com/Nowaker/meridian.git#branch=feat/active-priority-and-limit-detection
 	sha512sums = SKIP
 
 pkgname = meridian-git
