@@ -10,7 +10,7 @@ url="https://github.com/HichemTab-tech/xcute"
 _urlraw="https://raw.githubusercontent.com/HichemTab-tech/xcute/v${pkgver}"
 license=("MIT")
 
-depends=("bash" "nodejs" "python" "python-packaging" "python-pkg_resources" "python-typing_extensions" "gyp")
+depends=("bash" "nodejs" "python" "python-packaging" "python-typing_extensions" "gyp")
 optdepends=("powershell")
 makedepends=("npm" "jq")
 provides=("${_appname}")
