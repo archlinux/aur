@@ -1,0 +1,27 @@
+pkgbase = aercast
+	pkgdesc = Native Linux/Wayland screen sharing over HTTP
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Xarth-Mai/Aercast
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = cargo
+	makedepends = clang
+	makedepends = pkgconf
+	depends = gst-libav
+	depends = gst-plugin-pipewire
+	depends = gst-plugin-va
+	depends = gst-plugins-bad-libs
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gst-plugins-ugly
+	depends = gstreamer
+	depends = libpipewire
+	depends = libxkbcommon
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = xdg-desktop-portal
+	source = aercast-0.1.1.tar.gz::https://github.com/Xarth-Mai/Aercast/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 063c1fa34bd8c3348cf79ab8ecb6e5c042af89b6d606f37649fd31550811bae2
+
+pkgname = aercast
