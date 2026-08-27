@@ -1,0 +1,16 @@
+pkgbase = dsview-arinc429-decoder-git
+	pkgdesc = Decoder (ARINC 429) plugin for DSView
+	pkgver = r28.d19f65c
+	pkgrel = 1
+	url = https://github.com/Aleksandr-Kai/DSView_ARINC429_Decoder
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = python
+	optdepends = dsview: GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc
+	provides = dsview-arinc429-decoder
+	conflicts = dsview-arinc429-decoder
+	source = dsview-arinc429-decoder-git::git+https://github.com/Aleksandr-Kai/DSView_ARINC429_Decoder.git
+	sha256sums = SKIP
+
+pkgname = dsview-arinc429-decoder-git
