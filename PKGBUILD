@@ -2,8 +2,8 @@
 
 pkgname=ntpd-rs-git
 _pkgname=ntpd-rs
-pkgver=r3119.gcc4e20bf
-pkgrel=2
+pkgver=r3237.g651fff32
+pkgrel=1
 pkgdesc='A full-featured implementation of the Network Time Protocol, including NTS support, written in Rust.'
 url='https://github.com/pendulum-project/ntpd-rs'
 arch=('x86_64')
