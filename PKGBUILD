@@ -3,7 +3,7 @@
 
 pkgname=php-codesniffer-phpcompatibilityparagonie
 _pkgname=PHPCompatibilityParagonie
-pkgver=1.3.1
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="PHP CodeSniffer rules (sniffs) to analyse the codebase of a project using either of the Paragonie polyfills."
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('php-codesniffer')
 makedepends=()
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b4816b3cf19c3ddd886140bb607e2fceb97ea702a4fc77620560995a898dbcb7')
+sha256sums=('d309841fea7dd954966e700dcbda725e007a9080c6d843ab27ca0d83d1d290c4')
 
 package() {
   install -d "${pkgdir}/usr/share/pear/PHP/CodeSniffer/Standards/PHPCompatibilityParagonieRandomCompat"
