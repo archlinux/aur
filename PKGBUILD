@@ -1,7 +1,7 @@
 # Maintainer: byrdltd <byrdltd@users.noreply.github.com>
 
 pkgname=whydpi
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Adaptive, per-SNI DPI bypass that learns optimal TLS fragmentation per host"
 arch=('any')
@@ -16,6 +16,8 @@ optdepends=(
   'python-pystray: system-tray icon with Start/Stop/status from the desktop'
   'python-pillow: icon rendering for the tray'
   'libnotify: desktop toasts on tray startup and state change'
+  'tk: first-run acceptable-use dialog'
+  'zenity: native first-run dialog'
 )
 makedepends=(
   'python-build'
@@ -24,8 +26,9 @@ makedepends=(
   'python-wheel'
 )
 conflicts=("${pkgname}-git")
+install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('264741abf9d4eb50af80df296cfee455df35c49a852ae53c233c14b3c09af849')
+sha256sums=('7124e1cf12386211c9f425915890d96b971c1cc18e874dddbfb86205bcb48639')
 
 build() {
   cd "whyDPI-${pkgver}"
@@ -41,14 +44,13 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-  # Desktop entry (app menu) and autostart copy (login).  Same file,
-  # installed twice because XDG semantics differentiate visibility by
-  # location: /usr/share/applications for "I want to launch this", and
-  # /etc/xdg/autostart for "session manager, please start this for me".
+  # Application-menu launcher.  Login autostart stays opt-in from the
+  # tray.  first-run-launch.sh is invoked by the .install hook so the
+  # acceptable-use dialog appears immediately after pacman finishes.
   install -Dm644 packaging/desktop/whydpi-tray.desktop \
     "${pkgdir}/usr/share/applications/whydpi-tray.desktop"
-  install -Dm644 packaging/desktop/whydpi-tray.desktop \
-    "${pkgdir}/etc/xdg/autostart/whydpi-tray.desktop"
+  install -Dm755 packaging/linux/first-run-launch.sh \
+    "${pkgdir}/usr/lib/whydpi/first-run-launch.sh"
 
   # Hicolor icon theme entries — Icon=whydpi in the .desktop resolves
   # to whichever size the current panel asks for.

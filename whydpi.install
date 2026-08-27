@@ -1,0 +1,11 @@
+post_install() {
+    if [ -x /usr/lib/whydpi/first-run-launch.sh ]; then
+        /usr/lib/whydpi/first-run-launch.sh || true
+    fi
+}
+
+post_upgrade() {
+    if [ -x /usr/lib/whydpi/first-run-launch.sh ]; then
+        /usr/lib/whydpi/first-run-launch.sh || true
+    fi
+}
