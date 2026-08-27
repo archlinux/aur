@@ -1,6 +1,6 @@
 pkgbase = python-azure-storage-blob
 	pkgdesc = Microsoft Azure Blob Storage Client Library for Python.
-	pkgver = 12.30.0
+	pkgver = 12.30.1
 	pkgrel = 1
 	url = https://github.com/Azure/azure-sdk-for-python/tree/main/sdk/storage/azure-storage-blob
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-azure-storage-blob
 	depends = python-typing_extensions
 	depends = python-isodate
 	optdepends = python-aiohttp: aio
-	source = https://files.pythonhosted.org/packages/source/a/azure-storage-blob/azure_storage_blob-12.30.0.tar.gz
-	sha256sums = 2cd74d4d5731e5eb6b8d5c5056ee115a5e88f8fdf22517b739836fda685018be
+	source = https://files.pythonhosted.org/packages/source/a/azure-storage-blob/azure_storage_blob-12.30.1.tar.gz
+	sha256sums = 7a24f978c51d56a0375beebffcbe8453e59ae390d2695705848edc75083e4184
 
 pkgname = python-azure-storage-blob
