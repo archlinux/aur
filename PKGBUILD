@@ -2,8 +2,8 @@
 AppName=Converter432Hz
 appid=converter432hz
 pkgname=${appid}-appimage
-pkgver=3.5.1
-pkgrel=1.1
+pkgver=3.5.2
+pkgrel=1
 pkgdesc="Converts and re-encodes music to 432Hz"
 arch=('x86_64')
 url="https://github.com/mysteryx93/NaturalGroundingPlayer/wiki/432hz-Batch-Converter"
@@ -13,7 +13,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/mysteryx93/HanumanInstituteApps/releases/download/v${pkgver}/${AppName}-${pkgver}_Linux_x64.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('5b8f6830f52115d19f44623aa7c6f7cfec97ab1daa6336805b77daf3af07efaa')
+sha256sums_x86_64=('a7fabe875979e350ea85a75f134603da284659b0e27bc9ad98bd2c796e9bf8ac')
 
 prepare() {
     chmod +x "${_appimage}"
