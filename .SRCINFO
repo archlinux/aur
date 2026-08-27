@@ -1,7 +1,7 @@
 pkgbase = voiden-beta-bin
 	pkgdesc = The offline, Git-native API workspace
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://voiden.md/
 	arch = x86_64
 	license = Apache-2.0

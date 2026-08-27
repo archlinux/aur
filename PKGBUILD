@@ -1,10 +1,10 @@
 # Maintainer: SoftExpert <softexpert at gmail dot com>
-# Maintainer: Jonas Geiler <aur@jonasgeiler.com>
+
 _product=voiden
 pkgname=${_product}-beta-bin
 _betaver=1
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The offline, Git-native API workspace'
 arch=(x86_64)
 url='https://voiden.md/'
