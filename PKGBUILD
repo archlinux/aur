@@ -1,16 +1,14 @@
-# Maintainer: Knight <knight@example.com>
+# Maintainer: Burgess Leo <liuxiaopeng731@gmail.com>
 # Contributor: Zollerboy1 <josef@walterzollerpiano.com> (zed-preview-bin reference)
 
 pkgname=zed-bin
-pkgver=1.12.1
+pkgver=1.17.2
 pkgrel=1
 pkgdesc='A high-performance, multiplayer code editor from the creators of Atom and Tree-sitter'
 arch=('x86_64' 'aarch64')
 url='https://zed.dev'
 license=('GPL-3.0-or-later' 'AGPL-3.0-or-later' 'Apache-2.0')
 depends=('alsa-lib'
-         'curl'
-         'fontconfig'
          'glib2'
          'glibc'
          'gcc-libs'
@@ -18,17 +16,12 @@ depends=('alsa-lib'
          'libxcb'
          'libxkbcommon'
          'libxkbcommon-x11'
-         'nodejs>=18'
-         'openbsd-netcat'
-         'npm'
-         'openssl'
-         'sqlite'
          'vulkan-driver'
          'vulkan-icd-loader'
          'wayland'
-         'zlib'
-         'zstd')
-optdepends=('clang: improved C/C++ language support'
+         'zlib')
+optdepends=('openbsd-netcat: SSH remote development support'
+            'clang: improved C/C++ language support'
             'cmake: building C/C++ projects'
             'gopls: improved Go language support'
             'pyright: improved Python language support'
@@ -39,8 +32,9 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}" 'zed-git' 'zed-preview-bin')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/zed-industries/zed/releases/download/v${pkgver}/zed-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/zed-industries/zed/releases/download/v${pkgver}/zed-linux-aarch64.tar.gz")
-sha256sums_x86_64=('d3c0665cd9338c1d7b95288993167dcc53db98f9dcf1cea3965825b2e299f2a7')
-sha256sums_aarch64=('41d04694fce05a4fe9d785cacd05983b7235050541d8a787855b3f3e1a0e26df')
+
+sha256sums_x86_64=('3682dd058a305d2b246a14d64419fcf42e86a06e27755d23b5a28622ed9aef85')
+sha256sums_aarch64=('4f75332ab8155a5a62b0cdc473473cf8938959cf3cd2b0145e2975969d7e8929')
 
 package() {
     cd 'zed.app'
