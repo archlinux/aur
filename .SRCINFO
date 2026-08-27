@@ -1,6 +1,6 @@
 pkgbase = python-mkl-random
 	pkgdesc = NumPy-based Python interface to Intel (R) MKL Random Number Generation functionality
-	pkgver = 1.4.2
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/IntelPython/mkl_random
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-mkl-random
 	makedepends = intel-oneapi-mkl
 	depends = intel-oneapi-mkl
 	depends = python-numpy
-	source = mkl_random-1.4.2.tar.gz::https://github.com/IntelPython/mkl_random/archive/1.4.2.tar.gz
-	sha512sums = 95f324f9b01fc83abd655d1b919befc6757259df1a44317a76b7a597ed0e690fe2a83e45c0ec4786d9ed0c675413a34eab3e5eba426bc491a979bd175ba38f8b
+	source = mkl_random-1.5.0.tar.gz::https://github.com/IntelPython/mkl_random/archive/1.5.0.tar.gz
+	sha512sums = 142170e80bf6b08ee0d35518d580639022eb7b183acd5ae6c2d84bda9d5726759f6d48157f30918ce5b4f33b88d879d188d8af646451daae0716b2aad36634f9
 
 pkgname = python-mkl-random
