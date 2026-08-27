@@ -2,11 +2,11 @@
 # Contributor: Iswad
 
 pkgname=touchdesigner-linux
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="TouchDesigner on Linux - Soda Wine, Vulkan-accelerated, ready to run"
 arch=('x86_64')
-url="https://github.com/iswad-lab/TouchDesigner-Linux"
+url="https://github.com/ismail-bahloul/TouchDesigner-Linux"
 license=('custom:custom')
 _td_ver=2025.33070
 
@@ -29,11 +29,11 @@ provides=("${pkgname}-${pkgver}")
 conflicts=()
 replaces=()
 
-_repo_url="https://github.com/iswad-lab/TouchDesigner-Linux/archive/refs/tags/v${pkgver}.tar.gz"
+_repo_url="https://github.com/ismail-bahloul/TouchDesigner-Linux/archive/refs/tags/v${pkgver}.tar.gz"
 _soda_version="9.0-1"
 _soda_url="https://github.com/bottlesdevs/wine/releases/download/soda-${_soda_version}/soda-${_soda_version}-x86_64.tar.xz"
 _td_url="https://download.derivative.ca/TouchDesigner.${_td_ver}.exe"
-_dxvk_version="2.4"
+_dxvk_version="2.7.1"
 _dxvk_url="https://github.com/doitsujin/dxvk/releases/download/v${_dxvk_version}/dxvk-${_dxvk_version}.tar.gz"
 _winetricks_url="https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
 
