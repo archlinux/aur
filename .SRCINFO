@@ -1,13 +1,13 @@
 pkgbase = torrra-bin
 	pkgdesc = A Python tool that lets you find and download torrents without leaving your CLI.
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/stabldev/torrra
 	arch = x86_64
 	license = MIT
 	provides = torrra
 	conflicts = torrra
-	source = torrra-2.4.0::https://github.com/stabldev/torrra/releases/download/v2.4.0/torrra_v2.4.0_linux_x86_64
-	sha256sums = c855c50394268aadb55b4581abe650aaa4a6102d013d8eea9af5fbdceff2244f
+	source = torrra-2.5.0::https://github.com/stabldev/torrra/releases/download/v2.5.0/torrra_v2.5.0_linux_x86_64
+	sha256sums = 9f9d0dd8d9a25d6c0594b0c1fc3a532e373aa279674c71d9520d5035762256d4
 
 pkgname = torrra-bin
