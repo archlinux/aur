@@ -1,7 +1,7 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastmc
 pkgver=9
-pkgrel=1
+pkgrel=2
 pkgdesc="fastmc, create a Minecraft server in under a minute, builds from source"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastmc"
@@ -10,13 +10,14 @@ depends=('gcc-libs')
 makedepends=('cargo')
 provides=('fastmc')
 conflicts=('fastmc-bin')
-source=("fastmc-$pkgver.tar.gz::https://github.com/CallMeAlphabet/fastmc/archive/refs/tags/latest.tar.gz")
+_commit=8bf10c16b5bec298e4ff0ef63c15051b184b4592
+source=("fastmc-$pkgver-$_commit.tar.gz::https://github.com/CallMeAlphabet/fastmc/archive/$_commit.tar.gz")
 sha256sums=('SKIP')
 
 prepare() {
     rm -rf "$srcdir/build"
     mkdir -p "$srcdir/build"
-    tar -xzf "$srcdir/fastmc-$pkgver.tar.gz" --strip-components=1 -C "$srcdir/build"
+    tar -xzf "$srcdir/fastmc-$pkgver-$_commit.tar.gz" --strip-components=1 -C "$srcdir/build"
     cd "$srcdir/build"
     cargo fetch --locked --target x86_64-unknown-linux-gnu
 }
