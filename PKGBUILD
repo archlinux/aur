@@ -3,13 +3,17 @@
 pkgname=python-handy-archives
 _name=${pkgname#python-}
 pkgver=0.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Handy archive helpers for Python'
 provides=(${pkgname})
 conflicts=(${pkgname})
 arch=('any')
 url='https://handy-archives.readthedocs.io/'
-depends=('python')
+depends=(
+    'python'
+    'python-coincidence'
+    'python-pytest'
+)
 makedepends=(
     'git'
     'python-build'

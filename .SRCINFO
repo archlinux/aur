@@ -1,7 +1,7 @@
 pkgbase = python-handy-archives
 	pkgdesc = Handy archive helpers for Python
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://handy-archives.readthedocs.io/
 	arch = any
 	license = MIT
@@ -12,6 +12,8 @@ pkgbase = python-handy-archives
 	makedepends = python-wheel
 	makedepends = python-flit-core
 	depends = python
+	depends = python-coincidence
+	depends = python-pytest
 	provides = python-handy-archives
 	conflicts = python-handy-archives
 	source = handy-archives::git+https://github.com/domdfcoding/handy-archives.git#tag=v0.3.0
