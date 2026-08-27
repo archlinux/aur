@@ -12,7 +12,7 @@ _commit=08b72b2c41f0ac2a825438649ee7361bf0b488c3
 source=("https://github.com/KarypisLab/GKlib/archive/refs/tags/METIS-v5.1.1-DistDGL-0.5.tar.gz")
 sha256sums=('SKIP')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare () {
   cd "${srcdir}"/GKlib-METIS-v5.1.1-DistDGL-0.5
