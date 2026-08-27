@@ -1,7 +1,7 @@
 # Maintainer: Remco Stoeten <stoetenremco.rs@gmail.com>
 
 pkgname=dora
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 pkgdesc='Dora desktop database client (prebuilt binary release)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator' 'openssl' 'libsoup3')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/remcostoeten/dora/releases/download/v${pkgver}/dora-x86_64-unknown-linux-gnu.tar.gz"
 )
-sha256sums=('ea2aba786bb1a42f8a051ee2af55b449eccc18e212ec2cc694393d06418c4186')
+sha256sums=('fb385f694632b84dc61572527aac9667e3829220de2f62a378de4111b0b5dde3')
 
 package() {
   cd "$srcdir/dora-x86_64-unknown-linux-gnu"
