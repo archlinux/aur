@@ -4,17 +4,17 @@
 # Contributor: Vasili Novikov <n1dr+cmarchlinux@yaaandex.com> (replace "aaa" with "a")
 
 pkgname=scalafmt-native-bin
-pkgver=3.10.1
+pkgver=3.11.5
 pkgrel=1
-pkgdesc='Code formatter for Scala, native version via graalvm, statically compiled with glibc'
+pkgdesc='Code formatter for Scala, native version via graalvm'
 url='https://scalameta.org/scalafmt/'
 source=("${pkgname}-${pkgver}.glibc::https://github.com/scalameta/scalafmt/releases/download/v${pkgver}/scalafmt-linux-glibc")
 
 license=('Apache-2.0')
+depends=('glibc')
 
 arch=('x86_64')
-
-sha256sums=('98d651a6dd432f1babfa97d7415c0579672d780b97807cbef0959b2ec8f88206')
+sha256sums=('4a29c3651f64fbaf9adcca01c6ac2ba0e8281a3d20e08c12b152582139fae290')
 
 package() {
   cd "$srcdir"
