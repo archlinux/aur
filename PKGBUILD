@@ -12,7 +12,7 @@ options=('staticlibs' '!buildflags' '!strip')
 source=(https://github.com/coin-or/Cbc/archive/refs/tags/releases/$pkgver.tar.gz)
 sha256sums=('62fde44dcf6f3d05c5cd291d7435cdd1b7e8acd3c78ec481dd39fe49cbc40399')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare () {
   cd Cbc-releases-$pkgver
