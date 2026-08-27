@@ -1,0 +1,31 @@
+# Example ntkd configuration. Authoritative field list and validation rules:
+# crates/ntkd/src/kernel/config.rs (NtkdConfig) in https://github.com/M0Rf30/netsukuku-rs.
+
+# Per-level g-node sizes, index 0 = innermost level. Every node sharing an L3 mesh must agree on
+# this array — it defines the fixed address-space hierarchy Topology::new builds against. The
+# value below matches this project's own multi-node integration tests; size it for your
+# deployment before joining a real mesh.
+gsizes = [4, 2, 2, 2]
+
+# Network interfaces ntkd monitors for neighbours and binds RPC traffic to. Replace with the
+# NIC(s) this node should mesh over.
+nics = ["eth0"]
+
+# TCP/UDP port every RPC transport (unicast TcpServer, broadcast UdpBroadcaster) binds to. 269 is
+# this project's conventional default, used throughout its own config examples and test suite.
+port = 269
+
+# Path to this node's persisted ANDNA (distributed hostname) ed25519 signing-key seed. Left
+# unset, ntkd refuses ANDNA registration outright rather than guessing a path. Uncomment to
+# enable it; /var/lib/ntkd is the packaged systemd unit's StateDirectory.
+#andna_key_path = "/var/lib/ntkd/andna.key"
+
+# Path to this node's persisted RPC-identity ed25519 signing-key seed, used to sign outbound
+# calls. Deliberately a different key from andna_key_path: rotating a compromised transport key
+# must not forfeit hostnames this node already registered under its ANDNA key.
+#node_key_path = "/var/lib/ntkd/node.key"
+
+# Reject inbound RPCs lacking a valid ntk_proto::auth block. Must stay false to interoperate with
+# an unmodified upstream Vala node — the Auth field is optional on the wire, so adding it is
+# compatible but *enforcing* it is not. Enabling this requires node_key_path above.
+require_auth = false

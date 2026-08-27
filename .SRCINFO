@@ -1,0 +1,21 @@
+pkgbase = netsukuku-rs-bin
+	pkgdesc = Rust reimplementation of the Netsukuku mesh routing protocol: QSPN v2, Hooking, Coordinator, PeerServices, ANDNA (prebuilt static binary)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/M0Rf30/netsukuku-rs
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	provides = netsukuku-rs
+	conflicts = netsukuku-rs
+	backup = etc/ntkd/ntkd.toml
+	source = ntkd.service
+	source = ntkd.toml
+	sha256sums = efd4fa387722f09d2e731d9508bcaf3d1275fb04cb04d52561df62d2f6a08a31
+	sha256sums = bdaeb4e4bd1bb6738e2ca46380e8fbea55fed2b04f52d035297f8d78753ee1ac
+	source_x86_64 = ntkd-0.1.2-x86_64-unknown-linux-musl.tar.gz::https://github.com/M0Rf30/netsukuku-rs/releases/download/v0.1.2/ntkd-0.1.2-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 84d951330138beb6af0131218e883aa7bb0f8f9891dd1b76f40593e9de71f126
+	source_aarch64 = ntkd-0.1.2-aarch64-unknown-linux-musl.tar.gz::https://github.com/M0Rf30/netsukuku-rs/releases/download/v0.1.2/ntkd-0.1.2-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 567aac4b35e4f9a764be29e930b8360907d328a17418697c84ec20ea414622ec
+
+pkgname = netsukuku-rs-bin
