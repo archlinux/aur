@@ -1,0 +1,19 @@
+pkgbase = tformula
+	pkgdesc = Render LaTeX and read Markdown with images directly in the terminal
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/mikewang817/TFormula
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	makedepends = node-gyp
+	makedepends = python
+	depends = nodejs>=20
+	noextract = tformula-0.3.1.tgz
+	options = !debug
+	source = https://registry.npmjs.org/tformula/-/tformula-0.3.1.tgz
+	sha256sums = d15c8d3cc239438a696a499f31338fc7315bae72edd41fecca0a661d56c0ed0e
+
+pkgname = tformula
