@@ -1,7 +1,7 @@
 # Maintainer: Sergii Fesenko <sergii underscore f dot at outlook dot com>
 
 pkgname=nitrile-bin
-pkgver=0.4.26
+pkgver=0.4.33
 pkgrel=1
 pkgdesc="A package manager and build tool for Clean programming language"
 arch=(x86_64)
@@ -9,13 +9,8 @@ url="https://clean-and-itasks.gitlab.io/nitrile"
 license=('AGPL-3.0-only')
 depends=('glibc' 'gcc-libs')
 options=(!strip)
-# source=("nitrile-${pkgver}-linux-x64.tar.gz::https://gitlab.com/clean-and-itasks/nitrile/-/package_files/131055318/download")
-source=("nitrile.tgz::$( curl -s https://clean-lang.org/api/packages/nitrile | jq -r .versions[.latest_version].targets.\"linux-x64\".url )")
-sha256sums=('6d1609eb7d459a4769caba00df654ad3a26ef7cc2b51efb94303815f94b2bc22')
-
-pkgver() {
-  echo nitrile-*-linux-x64 | sed 's/nitrile-//; s/-linux-x64//'
-}
+source=("nitrile.tgz::$( curl -s https://clean-lang.org/api/packages/nitrile | jq -r --arg v "$pkgver" '.versions[$v].targets."linux-x64".url' )")
+sha256sums=('8de7f0428c34979ad51b4a50b5d8b90a4bac998909ee4dcb3593a5315976f570')
 
 package() {
   cd "nitrile-${pkgver}-linux-x64"
@@ -26,4 +21,3 @@ package() {
   mkdir -p $pkgdir/usr/bin/
   ln -s /opt/nitrile/bin/nitrile $pkgdir/usr/bin/nitrile
 }
-

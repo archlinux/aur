@@ -2,5 +2,7 @@ pkg/
 src/
 
 #
-nitrile*
+nitrile.tgz
+nitrile-*.pkg.tar.zst
+nitrile-*.pkg.tar.gz
 
