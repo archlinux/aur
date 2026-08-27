@@ -1,0 +1,16 @@
+pkgbase = python-pyesorex
+	pkgdesc = A CPL recipe execution tool that complements the PyCPL library
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://www.eso.org/sci/software/pycpl/
+	arch = x86_64
+	license = GPL-3.0-only.txt
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-pycpl
+	source = https://ftp.eso.org/pub/dfs/pipelines/libraries/pyesorex/pyesorex-1.0.4.tar.gz
+	sha256sums = b75aab4bac3fe87f4c00093cd988efd96d548f3f4f7325fef54229d4c89a9097
+
+pkgname = python-pyesorex
