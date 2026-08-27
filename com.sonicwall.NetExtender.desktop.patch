@@ -6,7 +6,7 @@
 -Exec=/usr/local/netextender/NetExtender
 -Icon=/usr/local/netextender/nx-icon.png
 +Exec=/opt/netextender/NetExtender
-+Icon=/opt/netextender/nx-icon.png
++Icon=netextender
  Name=SonicWall NetExtender
  Terminal=false
  Type=Application

@@ -12,12 +12,23 @@
 
 pkgname=netextender
 pkgver=10.3.5_36
-pkgrel=1
+pkgrel=2
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('aarch64' 'x86_64')
 url="https://www.sonicwall.com/en-us/products/remote-access/vpn-client"
-license=('custom')
-depends=('bash' 'ppp' 'net-tools' 'webkit2gtk-4.1')
+license=('LicenseRef-SonicWall-General-Product-Agreement')
+depends=('bash'
+         'net-tools'
+         'webkit2gtk-4.1'
+         'resolvconf'
+         'iproute2'
+         'hicolor-icon-theme')
+optdepends=('xdg-utils: open the browser for SAML/external authentication'
+            'bind: nslookup in the Diagnostics tab'
+            'traceroute: traceroute in the Diagnostics tab'
+            'iperf3: throughput test in the Diagnostics tab'
+            'nftables: firewall rules for WireGuard tunnel-all mode'
+            'iptables: firewall rules for WireGuard tunnel-all mode, if nft is absent')
 source_aarch64=(
   "https://software.sonicwall.com/NetExtender/NetExtender-linux-arm64-${pkgver/_/-}.tar.gz"
   "https://www.sonicwall.com/legal/general-product-agreement"
@@ -37,18 +48,18 @@ source_x86_64=(
 sha256sums_aarch64=(
   "94d594f2fb98ad8cea845c6d60d4de76a7dcf57a88f7f0ba59c2fd77380e59c1"
   "SKIP"
-  "78b99c39bf7de7bb5be7e2d73628f94df25c6572d9e9fb92da95696cef5b1570"
+  "1c591a89e1b13112b51fe1bb9f0c0b4969530a3b7fd4949df1650365c39350d1"
   "35722921dfc9eae9ba21dd250128cdfd2d55e70d028d228ed9c66f94bf7c4273"
   "7c64cd38edb35aaf601fc01b9982fffc42542917832f9155c8ccf6605331ce9d"
-  "27b25c1e57bf29ddb9dc422926b5aedf6f4bbba37e2d9196ab92869d8c7c9fcb"
+  "90fce12da46ab2983a527aca7369524882bba1cfff9684ca172bc459cdf1363c"
 )
 sha256sums_x86_64=(
   "88582fa96fb1ddf287683bc366a7198a5e3e6ecdc4773df9136dfa3e493da386"
   "SKIP"
-  "78b99c39bf7de7bb5be7e2d73628f94df25c6572d9e9fb92da95696cef5b1570"
+  "1c591a89e1b13112b51fe1bb9f0c0b4969530a3b7fd4949df1650365c39350d1"
   "35722921dfc9eae9ba21dd250128cdfd2d55e70d028d228ed9c66f94bf7c4273"
   "7c64cd38edb35aaf601fc01b9982fffc42542917832f9155c8ccf6605331ce9d"
-  "27b25c1e57bf29ddb9dc422926b5aedf6f4bbba37e2d9196ab92869d8c7c9fcb"
+  "90fce12da46ab2983a527aca7369524882bba1cfff9684ca172bc459cdf1363c"
 )
 
 install="${pkgname}.install"
@@ -70,6 +81,8 @@ package() {
   #install -Dm 755 autoUpgrader_webkit2_41 "${netextenderdir}/autoUpgrader"
   install -Dm 755 nxcli "${netextenderdir}/nxcli"
   #install -Dm 755 upgrade.sh "${netextenderdir}/upgrade.sh"
+  patch "${srcdir}/netextender/NEService.service" < "${srcdir}/NEService.service.patch"
+  patch "${srcdir}/netextender/neservice" < "${srcdir}/neservice.patch"
   install -Dm 644 NEService.service "${netextenderdir}/NEService.service"
   install -Dm 644 neservice "${netextenderdir}/neservice"
 
@@ -78,28 +91,22 @@ package() {
 
   patch "${srcdir}/netextender/com.sonicwall.NetExtender.desktop" < "${srcdir}/com.sonicwall.NetExtender.desktop.patch"
   install -Dm 644 com.sonicwall.NetExtender.desktop "${netextenderdir}/com.sonicwall.NetExtender.desktop"
-  install -Dm 644 com.sonicwall.NetExtender.desktop "${pkgdir}/usr/share/applications/com.sonicwall.NetExtender.desktop"
+  # The GTK window sets its Wayland app_id from argv[0], i.e. "NetExtender".
+  # KWin only finds a window's icon through a desktop file named after the
+  # app_id, so the entry must be installed as NetExtender.desktop.
+  install -Dm 644 com.sonicwall.NetExtender.desktop "${pkgdir}/usr/share/applications/NetExtender.desktop"
   install -Dm 644 nx-icon.png "${netextenderdir}/nx-icon.png"
+  install -Dm 644 nx-icon.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/netextender.png"
 
   mkdir -p "${pkgdir}/usr/bin"
   ln -s /opt/netextender/nxcli "${pkgdir}/usr/bin/netExtender"
   ln -s /opt/netextender/nxcli "${pkgdir}/usr/bin/nxcli"
 
-  if ! [ -x "$(command -v resolvconf)" ] && [ -x "$(command -v resolvectl)" ]; then
-    resolvectl=$(command -v resolvectl)
-    ln -s ${resolvectl} "${pkgdir}/usr/bin/resolvconf"
-  fi
-
-  case "$(ps -p 1 -o comm=)" in
-    systemd)
-      patch "${srcdir}/netextender/NEService.service" < "${srcdir}/NEService.service.patch"
-      install -Dm 644 NEService.service "${pkgdir}/etc/systemd/system/NEService.service"
-      ;;
-    init|openrc-init)
-      patch "${srcdir}/netextender/neservice" < "${srcdir}/neservice.patch"
-      install -Dm 644 neservice "${pkgdir}/etc/init.d/neservice"
-      ;;
-  esac
+  # Unconditional: probing the build host's PID 1 makes the package depend on
+  # where it was built, and yields no unit at all inside a clean chroot.
+  # /etc/systemd/system belongs to the sysadmin, packages ship units in /usr/lib.
+  # OpenRC users can install /opt/netextender/neservice into /etc/init.d.
+  install -Dm 644 NEService.service "${pkgdir}/usr/lib/systemd/system/NEService.service"
 
   install -dm 755 "${netextenderdir}" \
                   "${netextenderdir}/locales"

@@ -1,9 +1,14 @@
 post_install() {
-    # NetExtender needs to edit pppd script to automatically add route to sslvpn.
     echo
-    echo "To allow non-root users to use NetExtender, run chmod -v u+s /usr/sbin/pppd"
+    echo "Enable the background service before connecting:"
+    echo "    systemctl enable --now NEService"
 }
-post_remove() {
+post_upgrade() {
     echo
-    echo "If you had allowed non-root users to use NetExtender, you may wish to run chmod -v u-s /usr/sbin/pppd"
+    echo "NEService.service moved from /etc/systemd/system to /usr/lib/systemd/system."
+    echo "If you had enabled the service, refresh the stale symlink with:"
+    echo "    systemctl reenable NEService"
+    echo
+    echo "NetExtender no longer uses pppd. If you had run 'chmod u+s /usr/bin/pppd'"
+    echo "for an earlier version, you may now revert it with 'chmod u-s /usr/bin/pppd'."
 }
