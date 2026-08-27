@@ -1,10 +1,16 @@
 pkgbase = keepassxc-unlock
 	pkgdesc = Passwordless unlocking of KeePassXC after login and screen unlock
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sumwale/keepassxc-unlock
+	install = keepassxc-unlock.install
 	arch = x86_64
 	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = m4
+	depends = glib2
+	depends = readline
 	source = keepassxc-unlock-1.1.1.tar.gz::https://github.com/sumwale/keepassxc-unlock/archive/refs/tags/v1.1.1.tar.gz
 	sha256sums = 33e7c0b6c264b110a9ccb23937879ba0dba3e722b2dbae3bfd33f149a7723bb5
 

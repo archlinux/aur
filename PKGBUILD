@@ -2,15 +2,16 @@
 
 pkgname=keepassxc-unlock
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Passwordless unlocking of KeePassXC after login and screen unlock'
 arch=('x86_64')
 url="https://github.com/sumwale/${pkgname}"
 license=('MIT')
-depends=()
-makedepends=()
+depends=(glib2 readline)
+makedepends=(gcc make m4)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('33e7c0b6c264b110a9ccb23937879ba0dba3e722b2dbae3bfd33f149a7723bb5')
+install=keepassxc-unlock.install
 
 build() {
 	cd "${pkgname}-${pkgver}"

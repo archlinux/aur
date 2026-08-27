@@ -1,0 +1,13 @@
+post_install() {
+	systemctl daemon-reload
+	systemctl enable --now keepassxc-login-monitor.service
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+	systemctl restart keepassxc-login-monitor.service
+}
+
+pre_remove() {
+	systemctl disable --now keepassxc-login-monitor.service
+}
