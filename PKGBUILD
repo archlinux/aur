@@ -2,7 +2,7 @@
 # Contributor: Ranadeep B < mail at rnbguy dot at >
 
 pkgname=stremio-service
-pkgver=0.1.21
+pkgver=0.1.22
 pkgrel=1
 pkgdesc="The companion app of Stremio Web"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Stremio/stremio-service/archive/refs/tags/v$pkgver.tar.gz"
   "server.js::https://dl.strem.io/server/v4.20.17/desktop/server.js"
 )
-sha256sums=('1f64ffaed845a6ee5b6e192fdc6cbcf5e8e60615598752e7616fd4c8b75b3c9e'
+sha256sums=('fe24619250c4a854d7e7b5ef978fc8cf908cbc535be4f8de5155ebdb82c66855'
             '567a397bb11b788571bf1750fd05dd78927f97bec0c9ddeaa6d9cc1eccee3922')
 
 build() {
