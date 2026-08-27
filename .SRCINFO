@@ -1,0 +1,18 @@
+pkgbase = jobo-themes
+	pkgdesc = Install complete OldJobobo themes through one Omarchy theme manager
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/OldJobobo/jobo-themes
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	depends = findutils
+	depends = jq
+	depends = libarchive
+	depends = omarchy
+	depends = util-linux
+	source = jobo-themes-0.2.0.tar.gz::https://github.com/OldJobobo/jobo-themes/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 1a98a5b484182eb9d953811723fb2e8fb6ce6351d142107d8297352f28f22f24
+
+pkgname = jobo-themes
