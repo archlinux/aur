@@ -1,19 +1,18 @@
 # Maintainer: Michel Boucey <michel dot boucey at gmail dot com>
 pkgname=dumber
-pkgdesc='(un)numbering Mardown sections and add/remove tables of content'
+pkgdesc='(un)numbering Markdown sections and add/remove tables of content'
 license=('BSD-3-Clause')
-pkgver=3.0.0.3
-pkgrel=2
+pkgver=4.1.1
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/MichelBoucey/$pkgname"
-makedepends=('git'
-             'go')
+makedepends=('cargo')
 source=("git+https://github.com/MichelBoucey/$pkgname#tag=v$pkgver")
-sha256sums=('41e498408ee45fa09d53a5f3aab7e5f4beb24d47749465a296335f6ef361bab6')
+sha256sums=('4175f1446c9a00bfc6a7cf2b49e6031c59a469c6e98909d44cefa3aa8e80190d')
 
 build() {
   cd "$pkgname"
-  make build
+  cargo build --release --locked
 }
 
 check() {
@@ -24,5 +23,5 @@ check() {
 package() {
   cd "$pkgname"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm755 $pkgname "${pkgdir}/usr/local/bin/${pkgname}"
+  install -Dm755 target/release/$pkgname "${pkgdir}/usr/local/bin/${pkgname}"
 }
