@@ -11,7 +11,7 @@ options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/esa/pagmo2/archive/v${pkgver}.tar.gz")
 sha256sums=('ecc180e669fa6bbece959429ac7d92439e89e1fd1c523aa72b11b6c82e414a1d')
 
-_architectures=${MINGW_W64_QT6_ARCHS:-x86_64-w64-mingw32}
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd "${srcdir}/pagmo2-$pkgver"
