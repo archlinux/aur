@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=frugalrgb
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Lightweight standalone RGB controller for PC hardware (no bloat, just LEDs)"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('python-gobject: native transparent system tray icon (StatusNotifier
             'libayatana-appindicator: native transparent system tray icon (StatusNotifier)')
 install=frugalrgb.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aa6e6ffd301f28082b000229d52c29a3ede68a40ee304525c4922897b3dfec7f')
+sha256sums=('deb12d09667e6fdaa5278d5e7ecaef5e5bde7cc91795ba7afb483c7a6ee033bf')
 
 build() {
   cd "frugalRGB-$pkgver"
