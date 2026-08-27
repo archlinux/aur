@@ -47,7 +47,7 @@ provides=(
     "${_pkgname}=${pkgver}"
     "caelestia-shell=${pkgver}"
     "caelestia-shell-git=${pkgver}"
-    "qt6-m3shapes"
+    "qt6-m3shapes-git"
 )
 conflicts=(
     "${_pkgname}"
