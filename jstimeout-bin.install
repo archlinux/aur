@@ -2,8 +2,8 @@ post_install() {
   echo ""
   echo "==> jstimeout installed!"
   echo ""
-  echo "  Device list: ~/.config/jstimeout/devices (auto-created on first run)"
-  echo "  Example:     /usr/share/jstimeout/devices.example"
+  echo "  Config: ~/.config/jstimeout/config (auto-created on first run)"
+  echo "  Run 'jstimeout --setup' to verify permissions and config"
   echo ""
   echo "  Systemd user service:"
   echo "    systemctl --user enable --now jstimeout"
@@ -12,4 +12,26 @@ post_install() {
 
 post_upgrade() {
   post_install
+
+  if [[ "$(vercmp "$2" "2.0.0")" -lt 0 ]] 2>/dev/null; then
+    echo ""
+    echo "==> jstimeout v2.0.0 - BREAKING CHANGES:"
+    echo ""
+    echo "  Config is now INI-style: ~/.config/jstimeout/config"
+    echo "  Old .jstimeout.devices / devices files still loaded as fallback"
+    echo "  Run 'jstimeout --setup' to check your setup and migrate"
+    echo ""
+    echo "  Renamed flags:"
+    echo "    --maxidletime → --maxidle (-m)"
+    echo "    --devicefile and -d removed (legacy files auto-migrated on first run)"
+    echo "    New: --config (-c), --deadzone (-z), --setup, --verbose (-v), --version (-V)"
+    echo ""
+    override_dir="$HOME/.config/systemd/user/jstimeout.service.d"
+    if [[ -d "$override_dir" ]]; then
+      echo "==> Systemd override detected: $override_dir"
+      echo "    Update any --maxidletime/--devicefile references"
+      echo "    Run: systemctl --user edit jstimeout"
+      echo ""
+    fi
+  fi
 }
