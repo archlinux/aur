@@ -59,7 +59,7 @@ build() {
 
   export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
 
-  cargo build --frozen --release --all-targets
+  cargo build --frozen --release --package rox --package rox-mcp
 }
 
 package() {
@@ -67,6 +67,7 @@ package() {
   
   # Install binary
   install -Dm755 "target/release/rox" "$pkgdir/usr/bin/rox"
+  install -Dm755 "target/release/rox-mcp" "$pkgdir/usr/bin/rox-mcp"
 
   # Install Licence
   if [ -f "LICENSE" ]; then
