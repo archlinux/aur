@@ -1,0 +1,17 @@
+pkgbase = vszip
+	pkgdesc = Low-priority Ark/Kerfuffle fallback plugin: handles files no other plugin claims via the 7-Zip CLI (thin archives via GNU ar, single-stream auto-expansion)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitee.com/vastSky2006/vszip
+	arch = x86_64
+	license = LGPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-base
+	makedepends = kfilemetadata
+	depends = 7zip
+	depends = ark
+	source = vszip::git+https://gitee.com/vastSky2006/vszip.git
+	sha256sums = SKIP
+
+pkgname = vszip
