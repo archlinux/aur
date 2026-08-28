@@ -1,0 +1,13 @@
+post_install() {
+  udevadm control --reload || true
+  cat <<'MSG'
+==> OpenXLR: replug your interface once so the udev rule applies.
+==> Start the daemon:  systemctl --user enable --now openxlr-daemon
+==> Start the mixer:   openxlr   (or from your application menu)
+==> Stream Deck via OpenDeck:
+==>   cp -r /usr/share/openxlr/com.emaspa.openxlr.sdPlugin ~/.config/opendeck/plugins/
+MSG
+}
+post_upgrade() {
+  udevadm control --reload || true
+}
