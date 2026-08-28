@@ -1,9 +1,9 @@
 # Maintainer: Andreas Baumann <mail at andreasbaumann dot cc>
 pkgname=cssh
 pkgver=0.0.1.r14.g6c92d89
-pkgrel=1
+pkgrel=2
 pkgdesc="Cluster Secure Shell/Copy based on libssh, for managing clusters in parallel"
-arch=('x86_64' 'i686' 'aarch64' 'armv7h')
+arch=('i486' 'i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://git.andreasbaumann.cc/cgit/cssh/"
 license=('GPL-3.0-or-later')
 depends=('libssh' 'ncurses')
