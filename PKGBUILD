@@ -9,7 +9,7 @@
 _pkgname="helium"
 pkgname="${_pkgname}-browser-bin"
 _binaryname="helium-browser"
-pkgver=0.15.7.1
+pkgver=0.16.1.1
 pkgrel=1
 pkgdesc="Private, fast, and honest web browser based on Chromium (Latest/Stable)"
 arch=('x86_64' 'aarch64')
@@ -37,9 +37,9 @@ validpgpkeys=('BE677C1989D35EAB2C5F26C9351601AD01D6378E') # Helium <helium@imput
 sha256sums=('3846be557da5202267fc4d8a45572f4cedcd95e82d4e62e998c4486fed311314'
             'b1253d30764b6586b05161b793b728ffee442cebf875e2074eedf2da5140036f'
             '9539b394e4179952698894bd62ef6566b6804ab0ff360dcf3a511cfaf7f78c4d')
-sha256sums_x86_64=('3102892cdebdfe0d51e3a638e000e8d54bca017c52daf2acabf5e503004efb9f'
+sha256sums_x86_64=('bb52fbfe85e6493db801612dad28890d4c1dedb9bb7eaa758038f5ee42d666e1'
                    'SKIP')
-sha256sums_aarch64=('0981d40d810cc1efb6fffe1c0cf312d95a9c45f6d1243d14483c4327b90abba4'
+sha256sums_aarch64=('de757b3aa194c0e35c465c1b05a4ef40468ce9494fb4ddc21edc86f73a5b4884'
                     'SKIP')
 prepare() {
   # Get architecture specific directory
