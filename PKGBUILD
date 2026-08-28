@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='barman'
-pkgver='3.19.1'
+pkgver='3.20.0'
 pkgrel='1'
 pkgdesc="Backup and recovery manager for PostgreSQL"
 arch=('x86_64' 'aarch64')
@@ -10,13 +10,13 @@ url="https://www.pg${pkgname}.org/"
 license=('GPL3')
 depends=('rsync' 'python' 'python-argh' 'python-psycopg2'
 	 'python-dateutil' 'python-argcomplete')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-sphinx'
+makedepends=('python-build' 'python-uv-build' 'python-installer' 'python-setuptools' 'python-sphinx'
 	     'python-mock' 'python-pytest')
 optdepends=('python-boto3' 'python-botocore')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/EnterpriseDB/${pkgname}/tar.gz/refs/tags/release/${pkgver}"
 	"${pkgname}.crond"
 	"${pkgname}.logrotate")
-sha256sums=('4a6cb1b7d4d1771a8f14010134187fe0481b07bcad30a79a91a6332b02b0d320'
+sha256sums=('212778c6282810216e4fdd25bcda79040dc52e42299f79008b57dac9a3c35ab2'
             '43e90f39b167b682aa98e753c1803cf6244ba6c1eeb5738270fcb47837c25147'
             '723ba6c8ddce9284d48243787e6d24c40db98933f28bf6a79ce53a2c15bb261c')
 
