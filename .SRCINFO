@@ -1,0 +1,26 @@
+pkgbase = reinamanager
+	pkgdesc = A lightweight galgame/visual-novel manager,Under development...
+	pkgver = 0.29.1
+	pkgrel = 1
+	url = https://github.com/huoshen80/ReinaManager
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	makedepends = rustup
+	depends = openssl
+	depends = libxcb
+	depends = libsoup3
+	depends = dbus
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = webkit2gtk-4.1
+	options = !lto
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/huoshen80/ReinaManager/archive/refs/tags/v0.29.1.zip
+	sha256sums = ce63ebf015cb2f749bb4d4ee2e833ef9a1dce8234f4ec8db6d3f298890ba86e5
+
+pkgname = reinamanager

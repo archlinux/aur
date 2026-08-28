@@ -1,0 +1,4 @@
+[reinamanager]
+source = "git"
+git = "https://github.com/huoshen80/ReinaManager.git"
+prefix = "v"
