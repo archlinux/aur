@@ -2,7 +2,7 @@
 pkgname=falcond-gui
 _app_id=com.pikaos.falcondgui
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK4/LibAdwaita application to control and monitor the Falcond gaming optimization daemon."
 arch=('x86_64')
 url="https://git.pika-os.com/custom-gui-packages/falcond-gui"
@@ -12,7 +12,11 @@ depends=(
   'gtk4'
   'libadwaita'
 )
-makedepends=('cargo')
+makedepends=(
+  'cargo'
+  'imagemagick'
+)
+checkdepends=('desktop-file-utils')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
 sha256sums=('2505d365bbccf3a4d170c4ba333aa4378b699520232411ceb2193cd10474b913')
@@ -31,21 +35,31 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
+
+  # Generate icons
+  for i in 16 32 48 64 128 256 512; do
+    magick "res/${_app_id}.png" -resize "${i}x${i}" \
+      "res/${_app_id}_${i}x${i}.png"
+  done
 }
 
 check() {
   cd "$pkgname-$pkgver/$pkgname"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen
-
   desktop-file-validate "res/${_app_id}.desktop"
 }
 
 package() {
   cd "$pkgname-$pkgver/$pkgname"
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "res/${_app_id}.png" -t "$pkgdir/usr/share/pixmaps/"
   install -Dm644 "res/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
+
+  for i in 16 32 48 64 128 256 512; do
+    install -Dm644 "res/${_app_id}_${i}x${i}.png" \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${_app_id}.png"
+  done
+  install -Dm644 "res/${_app_id}.png" -t \
+    "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/"
+
   install -Dm644 ../README.md -t "$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 ../LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
