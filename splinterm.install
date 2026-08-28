@@ -6,7 +6,9 @@ post_install() {
 }
 
 post_upgrade() {
-  echo 'Restart running user splinterd services after protocol upgrades; the launcher does this when ping negotiation fails.'
+  echo 'Beta 3 removes terminal workload TasksMax overrides; existing daemon and workload units keep their old policy until recreated.'
+  echo 'From an external terminal, stop splinterd.service, run systemctl --user daemon-reload, then start splinterd.service; stopping ends active Dojos.'
+  echo 'This package does not restart user services automatically.'
   echo 'Check Omarchy screensaver integration: splinterm integration omarchy-screensaver status'
 }
 
