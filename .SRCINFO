@@ -1,0 +1,13 @@
+pkgbase = usb2notify
+	pkgdesc = Notify when a SuperSpeed USB device connects at USB 2.0 speed
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Kurobac/usb2notify
+	arch = any
+	license = MIT
+	depends = libnotify
+	depends = python
+	source = usb2notify-1.0.0.tar.gz::https://github.com/Kurobac/usb2notify/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = ee80952f55d5a78e70cc4828fffaf604d0bf514fe1cd107538599c1a6c851ff9
+
+pkgname = usb2notify
