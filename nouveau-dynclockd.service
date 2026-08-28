@@ -1,0 +1,17 @@
+[Unit]
+Description=Nouveau Dynamic GPU Clocking Daemon
+After=multi-user.target
+Wants=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/bin/nouveau-dynclockd.py
+Restart=always
+RestartSec=2
+TimeoutStopSec=3
+KillMode=mixed
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
