@@ -4,7 +4,7 @@
 
 # Based on official PKGBUILD from Arch Linux with an annoying bug reverted
 pkgname=telegram-desktop-kdefix
-pkgver=7.0.9
+pkgver=7.1.2
 _td_commit=022d60202e446ad1287b9fb68e687c8a0760788b
 pkgrel=1
 pkgdesc='Telegram Desktop client with KDE unread counter bug reverted'
@@ -17,7 +17,6 @@ license=('GPL-3.0-or-later WITH OpenSSL-exception')
 depends=(
   'abseil-cpp'
   'ada'
-  'cmark-gfm'
   'ffmpeg'
   'glib2'
   'glibc'
@@ -85,7 +84,7 @@ source=(
   "git+https://github.com/tdlib/td.git#commit=${_td_commit}"
   0001-kde-theme-injection-fix.patch
 )
-sha512sums=('c5e97a146c903b3398b53a7451d86efcbb5f87a989586d20753c83e2cb1452b964ab1175b88977eb590b04bcffc14fc678eb9f6a629b7f6f7af522a0da811780'
+sha512sums=('b55e73a558d5191a00d13faad08e88e82482d700cc08bc04fb64c530ce5bfb72f8f82c266b0b85ef8c44635f75249bf6622d2f6dbca9fe0936cf212b13e5fb8d'
             '45ef8f69708c46aef8e8d0301b8710467a208e43a9ebb5918152b49d24f9d6c8b69ca9a94f19c4e401f44e8d60706cd840832ce442ca1a839df942a7b88afde2'
             '6544086fd4946384509c053edd447a59e9ae405af65f9a7fa632ae5734099ef57b7211b7dbebf7a0c38665e05dd7c4d2414fa5d2cb5c6ee718cc5e824f5f509a')
 
