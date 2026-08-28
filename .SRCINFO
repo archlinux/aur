@@ -1,0 +1,20 @@
+pkgbase = cssh
+	pkgdesc = Cluster Secure Shell/Copy based on libssh, for managing clusters in parallel
+	pkgver = 0.0.1.r14.g6c92d89
+	pkgrel = 1
+	url = https://git.andreasbaumann.cc/cgit/cssh/
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = gengetopt
+	depends = libssh
+	depends = ncurses
+	provides = cscp
+	source = git+https://git.andreasbaumann.cc/cgit/cssh#branch=master
+	sha256sums = SKIP
+
+pkgname = cssh
