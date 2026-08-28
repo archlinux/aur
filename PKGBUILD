@@ -4,13 +4,14 @@
 pkgname='openvpn-auth-ldap'
 _name='auth-ldap'
 pkgver='2.0.4'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='OpenVPN Auth via LDAP/AD plugin. RFC2307 support'
-arch=('any')
-url="https://github.com/threerings/${pkgname}"
+arch=('x86_64' 'aarch64')
+_uri="github.com/threerings/${pkgname}"
+url="https://${_uri}"
 license=('BSD')
 depends=('openvpn' 'libldap' 'libsasl' 'openssl')
-source=("${url}/archive/refs/tags/${_name}-${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/tar.gz/refs/tags/${_name}-${pkgver}"
 	"${url}/pull/73.patch"
 	"${url}/pull/74.patch"
 	"${url}/pull/75.patch"
@@ -40,17 +41,18 @@ prepare() {
   done
 
   # Archlinux use gcc
-  sed -i \
-    -e 's|AC_CONFIG_SRCDIR(${srcdir}/src/auth-ldap.m)|AC_CONFIG_SRCDIR(src/auth-ldap.m)|g' \
-    -e 's|C_PROG_CC(clang gobjc gcc)|C_PROG_CC(gcc)|g' \
-    -e 's|AC_PROG_OBJC(clang gobjc gcc)|AC_PROG_OBJC(gcc)|g' \
-    configure.ac
+  sed --in-place \
+    --expression 's|AC_CONFIG_SRCDIR(${srcdir}/src/auth-ldap.m)|AC_CONFIG_SRCDIR(src/auth-ldap.m)|g' \
+    --expression 's|C_PROG_CC(clang gobjc gcc)|C_PROG_CC(gcc)|g' \
+    --expression 's|AC_PROG_OBJC(clang gobjc gcc)|AC_PROG_OBJC(gcc)|g' \
+  "configure.ac"
 
   autoreconf -fvi
   autoheader
 
   CFLAGS="${CFLAGS} -std=gnu99" \
   ./configure \
+    --prefix="/usr" \
     --with-openvpn="/usr/include" \
     --with-openldap="/usr/include" \
     --with-openssl="/usr/include" \
@@ -69,6 +71,6 @@ check() {
 
 package() {
   cd "${pkgname}-${_name}-${pkgver}"
-  install -Dm0775 "src/${pkgname}.so" "${pkgdir}/usr/lib/openvpn/plugins/${pkgname}.so"
-  install -Dm0400 "${_name}.conf" "${pkgdir}/etc/openvpn/server/${_name}.conf"
+  install -Dm0775 "src/${pkgname}.so" -t "${pkgdir}/usr/lib/openvpn/plugins"
+  install -Dm0400 "${_name}.conf" -t "${pkgdir}/etc/openvpn/server"
 }
