@@ -1,6 +1,6 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=code-notify
-pkgver=1.12.0
+pkgver=1.13.0
 pkgrel=1
 pkgdesc="Desktop notifications for AI coding tools (Claude Code, Codex, Gemini CLI)"
 arch=('any')
@@ -15,7 +15,7 @@ provides=('claude-notify')
 conflicts=('claude-notify')
 replaces=('claude-notify')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mylee04/code-notify/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8f046d39359e25b498d51f3ce35758ba1213435ef8258dd9e3dd78403d25a2eb')
+sha256sums=('40f643a6499923bfbb37451fdcb86be1e44b06c58971115d673068afed799b55')
 
 package() {
     cd "${pkgname}-${pkgver}"
