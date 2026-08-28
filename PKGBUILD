@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=atlassify-git
 _pkgname=Atlassify
-pkgver=3.11.0.r0.gaaf099c
+pkgver=3.15.0.r0.ga7eb0b5
 _electronversion=43
 _nodeversion=24
 pkgrel=1
@@ -47,10 +47,10 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-    export electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
+    export HOME="${srcdir}/.electron-gyp"
     {
         export PNPM_LINK_WORKSPACE_PACKAGES=true
         export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
@@ -104,13 +104,14 @@ build() {
     _set_build_env
     _ensure_local_nvm
     NODE_ENV=production     pnpm run build
-    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.js"
+    NODE_ENV=production     pnpm exec electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}" --config electron-builder.js
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     install -Dm644 "${srcdir}/${pkgname//-/.}/assets/images/app-icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"

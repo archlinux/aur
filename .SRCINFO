@@ -1,6 +1,6 @@
 pkgbase = atlassify-git
 	pkgdesc = Atlassian notifications on your menu bar.(Use system-wide electron)
-	pkgver = 3.11.0.r0.gaaf099c
+	pkgver = 3.15.0.r0.ga7eb0b5
 	pkgrel = 1
 	url = https://atlassify.io/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = atlassify-git
 	makedepends = icoutils
 	makedepends = jq
 	depends = electron43
-	provides = atlassify=3.11.0
+	provides = atlassify=3.15.0
 	conflicts = atlassify
 	source = atlassify.git::git+https://github.com/setchy/atlassify.git
 	source = atlassify.sh
