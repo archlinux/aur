@@ -1,0 +1,49 @@
+pkgbase = fcitx5-mozkey-ibg-ut
+	pkgdesc = Mozkey IbG Japanese input method for Fcitx 5 with UT dictionaries
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://github.com/kazormia296/mozkey-ibg
+	arch = x86_64
+	license = Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND CC-BY-2.5 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GFDL-1.3-only AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary
+	makedepends = git
+	makedepends = bazelisk
+	makedepends = python
+	makedepends = gettext
+	makedepends = bzip2
+	makedepends = pkg-config
+	depends = fcitx5
+	depends = hicolor-icon-theme
+	depends = llama-cpp
+	depends = qt6-base
+	provides = mozkey-ibg=0.10.4
+	provides = fcitx5-mozkey-ibg=0.10.4
+	conflicts = mozkey-ibg
+	conflicts = mozkey-ibg-bin
+	conflicts = fcitx5-mozkey-ibg
+	noextract = jawiki-20260601-pages-articles-multistream-index.txt.bz2
+	options = !debug
+	options = !strip
+	source = mozkey-ibg::git+https://github.com/kazormia296/mozkey-ibg.git#tag=v0.10.4
+	source = git+https://github.com/utuhiro78/merge-ut-dictionaries.git#commit=15c1c64502b43e31d328012860376c03c3eaf633
+	source = git+https://github.com/utuhiro78/mozcdic-ut-alt-cannadic.git#commit=08e033f4558b7a0b03d8ad6920216d9473f15627
+	source = git+https://github.com/utuhiro78/mozcdic-ut-edict2.git#commit=d7279ba285fd5ddfe158b0bfd0c4fcda1f7b08c3
+	source = git+https://github.com/utuhiro78/mozcdic-ut-jawiki.git#commit=b50cabaecaf32c03d102db55fc5d0b98e334ec9e
+	source = git+https://github.com/utuhiro78/mozcdic-ut-neologd.git#commit=d8307abf02b830b185c9320822cffa0d0787c54e
+	source = git+https://github.com/utuhiro78/mozcdic-ut-personal-names.git#commit=5896ebef5f39d5772f4575fa05eb24436ce5a5f1
+	source = git+https://github.com/utuhiro78/mozcdic-ut-place-names.git#commit=6f9d9bda14f0bd2c10c1563d2aed9150ea95095c
+	source = git+https://github.com/utuhiro78/mozcdic-ut-skk-jisyo.git#commit=7c02e535bd6d999a715a53b58c3366f2401bfb7f
+	source = git+https://github.com/utuhiro78/mozcdic-ut-sudachidict.git#commit=7def3da408b1854801bd5b559273f9fb8001ef5b
+	source = https://dumps.wikimedia.org/jawiki/20260601/jawiki-20260601-pages-articles-multistream-index.txt.bz2
+	b2sums = 33d7df80a31ed7bb126949fd0f995ff08c41753d15062ecb7a2bf058c5855685d60963270d4a77ffe351e7a9ee8e9acb83a5a2a4ab6f98401d493ebc7440e978
+	b2sums = 84150b8d743335d4b2801d15b74640380da0cfb95815bfc32a98f48f0fc7ac25b98ab417afee715c87a70dd8127568bd999e8e6a2c17da09d2a560fcdba030d3
+	b2sums = f320adaf559ad3b51cb323c19f1ac0155f33f1b59939bfc34577f429cfc64d589271c5b6a9fe481fa7be6b97e7043832b0b7bf339e0559a836fa5a1b62101f5d
+	b2sums = e9555a886657f237a55552f8f8aec769f0522cb54b4765f805ec1cd06dc80d8e8f735c35099132471bb46bda8219cf2991f6357b2cca5df24ff38f63c5d8f331
+	b2sums = 55a45669af70fa125127f27298f161180e7e6c4869611f6dc7a89416f0e82ed99453bdf87f674f5cd860acd174ab0ee14d3551d02fc1c2aa6ee8c38abb993a92
+	b2sums = 2eca0fd11c44091b2cf0a59de232a8d9b30e6c0a16cb4ece11d8a9f54457fe14b7ec9dd58aa1e67828df113d83a46b077a80b683333dc23a28617fbb3fe13fd0
+	b2sums = 83746b7d3b3cfe66e5f3b931abaf907fd37071a003d22e4d0cb065f91f554f33533104ed3b4dbe58840cdcb438dfa69882ea099fcfbfd0e8df0cf28417ae60a7
+	b2sums = a93db79ae5e75ede45217f6a3feaf2982f2c948dfe4a0695854339f6baceda1358bf98f6118c4b7291fe2a11670e4e0e4c4164328fa03e9bad6aa7fd20bf54a5
+	b2sums = 1add7e57200df1899f48e0a0ba03351523c121eee95068aa7e332c3a3967089d78c4146ffd4528f0513b2228fbd2cfb72661b41427a6e3330b275edb83e23bbd
+	b2sums = 602388543678e45d4703e6165d718265a2a9e1a6f4c5359aa090ccd6eaa901d2f329da72814fc0064e9b08b936f70a0291d29da09b5d1ef68aa272058f589d44
+	b2sums = cd4c02ee67d98084b6e4909eea77ca464d3cca838595538c5219710927aa42630fa67110f45297252c11f8e8c84d5a3c346a378b848d86ca14b4eb84505c1f74
+
+pkgname = fcitx5-mozkey-ibg-ut
