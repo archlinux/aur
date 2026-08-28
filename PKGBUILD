@@ -6,7 +6,7 @@
 # Contributor: sekret
 
 pkgname=roomeqwizard-beta
-pkgver=5.40.beta.132
+pkgver=5.40.beta.133
 pkgrel=1
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('x86_64' 'aarch64')
@@ -21,9 +21,8 @@ source=(
     "https://www.roomeqwizard.com/Sampledata.mdat"
 )
 
-sha512sums=('9d032925e8a3949aee90dc229a268159bf07cb8926f4123bc75fd0273114304bfe76bc1e8fb4c8cfa772f001d42741c12447bcf29cc2b96b92bef6a1c92402e5'
+sha512sums=('e804315cc6f18f2c2f201a0c71d5234a280669f17761d39ca9e4103624fcd4eb0c3c04ef87f88d1532d38bcac3af2bea2944bf8a63486e4b3f067bd87ced762f'
             '79214c2c9e35dc2dfbc926b37c058ed8a67edc156823c25b353492379aa542534997b0ca94676921252d6152bfe4fb1196c7c6df16645f14ce9ffbd8e9859770')
-
 package() {
   export INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/default
   sh REW_linux_no_jre_${pkgver//./_}-api.sh -q -dir "$srcdir/usr/share/java/$pkgname"  -J-Djava.util.prefs.userRoot=$srcdir/java.uprefs -J-Djava.util.prefs.systemRoot=$srcdir/java.sprefs -J-Duser.home=${HOME}
