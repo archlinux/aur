@@ -1,7 +1,7 @@
 # Maintainer: chuanshanjia <1845776552@qq.com>
 
 pkgname=linuxmirrors
-pkgver=2026.06.16
+pkgver=2026.08.28
 pkgrel=1
 pkgdesc="GNU/Linux mirror switching script - automatically detect and switch system package manager mirrors"
 arch=('any')
