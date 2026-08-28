@@ -11,8 +11,11 @@ cp -ru "/opt/etterna/Default_NoteSkins/." ~/.etterna/NoteSkins
 cp -ru "/opt/etterna/Default_Scripts/." ~/.etterna/Scripts
 cp -ru "/opt/etterna/Default_Songs/." ~/.etterna/Songs
 cp -ru "/opt/etterna/Default_Themes/." ~/.etterna/Themes
+rm -r ~/.etterna/ffmpeg
+cp -ru "/opt/etterna/ffmpeg/." ~/.etterna/ffmpeg
 
 cp -u "/opt/etterna/crashpad_handler" ~/.etterna/crashpad_handler
+cp -u "/opt/etterna/libdiscord_partner_sdk.so" ~/.etterna/libdiscord_partner_sdk.so
 cp -u "/opt/etterna/Etterna" ~/.etterna/Etterna
 cd ~/.etterna
 ./Etterna
