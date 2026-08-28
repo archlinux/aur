@@ -1,6 +1,6 @@
 pkgbase = piebald-bin
 	pkgdesc = The ultimate agentic AI control experience for developers
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://piebald.ai
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = piebald-bin
 	conflicts = piebald
 	options = !strip
 	options = !debug
-	source = https://github.com/Piebald-AI/piebald-issues/releases/download/v0.6.1/Piebald_0.6.1_amd64.deb
-	sha256sums = d6499c4756094dae4fd0c48fdcbde79a8f02430648d58607677e278a83b0dfd7
+	source = https://github.com/Piebald-AI/piebald-issues/releases/download/v0.6.2/Piebald_0.6.2_amd64.deb
+	sha256sums = e92551fbf7b348dc8fea3428c49a6bb13c5ecbcfac7b7017695aadc738e6b89a
 
 pkgname = piebald-bin
