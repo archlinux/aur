@@ -1,6 +1,6 @@
 pkgbase = jdk21-openj9-bin
 	pkgdesc = IBM Semeru OpenJ9 with openjdk21
-	pkgver = 21.0.12.0b8_openj9_0.60.0
+	pkgver = 21.0.12.1_openj9_0.61.0
 	pkgrel = 1
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = jdk21-openj9-bin
 	conflicts = jdk21-openj9-bin
 	conflicts = jdk21-openj9
 	options = !strip
-	source = https://github.com/ibmruntimes/semeru21-binaries/releases/download/jdk-21.0.12.0/ibm-semeru-open-jdk_x64_linux_21.0.12.0.tar.gz
-	sha256sums = e76357a3d469f7bc80ed20064f20ca773ef07ad140e3d44d39ba4ae640799ca2
+	source = https://github.com/ibmruntimes/semeru21-binaries/releases/download/jdk-21.0.12.10/ibm-semeru-open-jdk_x64_linux_21.0.12.10.tar.gz
+	sha256sums = 94da688246c7d3a9916a9a615a5270fa58868d3359942cb351a8e6857e47ae30
 
 pkgname = jdk21-openj9-bin
