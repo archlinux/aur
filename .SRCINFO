@@ -33,6 +33,7 @@ pkgbase = waft-git
 	optdepends = niri: niri compositor integration (niri plugin)
 	provides = waft
 	conflicts = waft
+	conflicts = waft-bin
 	conflicts = waft-overview-git
 	conflicts = waft-settings-git
 	conflicts = waft-launcher-git

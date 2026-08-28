@@ -26,7 +26,7 @@ optdepends=(
   'niri: niri compositor integration (niri plugin)'
 )
 provides=('waft')
-conflicts=('waft' 'waft-overview-git' 'waft-settings-git' 'waft-launcher-git')
+conflicts=('waft' 'waft-bin' 'waft-overview-git' 'waft-settings-git' 'waft-launcher-git')
 replaces=('waft-overview-git' 'waft-settings-git' 'waft-launcher-git')
 options=('!lto')
 source=("$pkgname::git+https://github.com/readyplayernan/waft.git")
