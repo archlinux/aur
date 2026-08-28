@@ -1,6 +1,6 @@
 pkgbase = boss-job-agent-bin
 	pkgdesc = AI 自动刷 Boss 直聘：自动筛岗位、写定制打招呼、和 HR 聊天约面
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://boss.mianlingai.com
 	install = boss-job-agent-bin.install
@@ -11,9 +11,9 @@ pkgbase = boss-job-agent-bin
 	depends = libayatana-appindicator
 	provides = boss-job-agent
 	conflicts = boss-job-agent
-	noextract = boss-job-agent-0.2.0-amd64.deb
+	noextract = boss-job-agent-0.2.1-amd64.deb
 	options = !strip
-	source = boss-job-agent-0.2.0-amd64.deb::https://storage2.maoertech.cn/releases/boss-job-agent/v0.2.0/_Boss_0.2.0_amd64.deb
-	sha256sums = 6322de569e0b87cdf19e10083b4fd42a91697bb68af4b48ed3a455749bc2c5e0
+	source = boss-job-agent-0.2.1-amd64.deb::https://storage2.maoertech.cn/releases/boss-job-agent/v0.2.1/_Boss_0.2.1_amd64.deb
+	sha256sums = ea75e693416dc1d95305ef09ac11c9ddcbc5c1e86567b8048191b51ef674a8cf
 
 pkgname = boss-job-agent-bin
