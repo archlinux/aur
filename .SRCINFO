@@ -1,6 +1,6 @@
 pkgbase = occ
 	pkgdesc = Document metrics, structure extraction, and code exploration for real repositories
-	pkgver = 0.20.5
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/cesarandreslopez/occ
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = occ
 	depends = glibc
 	depends = nodejs
 	provides = occ
-	noextract = occ-0.20.5.tgz
+	noextract = occ-0.21.0.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = https://registry.npmjs.org/@cesarandreslopez/occ/-/occ-0.20.5.tgz
-	b2sums = d5b10f58c2775772262ed2943f189916895629651e4ecedd96af4b24a29eb35dc7c196321a792c87ebddd23a840ce4aeef44e320da09bab5d7f56dcc6a5b3fd8
+	source = https://registry.npmjs.org/@cesarandreslopez/occ/-/occ-0.21.0.tgz
+	b2sums = fd3d12e2f1f1adfc4e22edc3e76961bdb518c5dc8842e8b36ae426c4474f504bba0c11e863c5e0f56577a437517a551982494e218c037c296a3640018266d0c3
 
 pkgname = occ
