@@ -1,7 +1,7 @@
 # Maintainer: WindustH <windusth2006@gmail.com>
 
 pkgname=gallery-tui
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="A terminal image gallery powered by ratatui and chafa."
 arch=('x86_64' 'aarch64')
@@ -14,6 +14,11 @@ conflicts=("$pkgname-git")
 options=('!lto')
 source=("$pkgname::git+$url.git#tag=v$pkgver")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname"
+  git submodule update --init --recursive
+}
 
 build() {
   cd "$pkgname"
