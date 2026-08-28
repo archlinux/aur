@@ -6,7 +6,7 @@ pkgver=0.16.2
 pkgrel=1
 pkgdesc="mangowm without scenefx"
 url="https://github.com/mangowm/mango/tree/wl-only"
-arch=("x86_64")
+arch=("x86_64" "aarch64")
 license=("GPL-3.0")
 depends=(
   glibc
