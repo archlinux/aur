@@ -2,7 +2,7 @@
 
 pkgname=sshconfig-lint-bin
 pkgdesc="Linter for OpenSSH client config files"
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/Noah4ever/sshconfig-lint"
@@ -23,8 +23,8 @@ source_aarch64=(
 )
 
 sha256sums=('639f6db74e400988e217e0b995eecab4d4a38a2f36e6e2a90c6f6b477b69c648')
-sha256sums_x86_64=('0405e838a30edda52f258782d6130cdd0ad270252092499b4191da7579f5d3b1')
-sha256sums_aarch64=('ccaa5781db1c300c17056ad19bc412a5cfc8b63b26f55905e47e7e42e824e329')
+sha256sums_x86_64=('042501f8c26271b78b2bf45593f829f36e54d3a272865f191473aa95e4abd186')
+sha256sums_aarch64=('bbde019535b472b64ed24bf98832aded72b4a88f76553a6f86efd98355744dca')
 
 package() {
   cd "$srcdir"
