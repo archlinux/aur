@@ -1,0 +1,25 @@
+pkgbase = homeassistant-matterjs-server
+	pkgdesc = Open Home Foundation Matter Server based on matter.js
+	pkgver = 1.3.3
+	pkgrel = 1
+	url = https://github.com/matter-js/matterjs-server
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = npm
+	makedepends = python
+	depends = nodejs>=22.13.0
+	depends = bluez
+	depends = iputils
+	backup = etc/conf.d/matterjs-server
+	source = homeassistant-matterjs-server::git+https://github.com/matter-js/matterjs-server.git#tag=v1.3.3
+	source = matterjs-server.service
+	source = matterjs-server.sysusers
+	source = matterjs-server.conf
+	sha256sums = SKIP
+	sha256sums = 48155a7307c5487efa32f67b739602c7ea540dad4b3ab997808e9dbc974f23af
+	sha256sums = 3bc1e5da1c5b9e4212142a36d41f48812a7a6c5008c2332e47894edd2e4cd974
+	sha256sums = 029f0bcae618ee29c0a6620975ff5019885cfa24fc13fdf2097d4153be57f792
+
+pkgname = homeassistant-matterjs-server

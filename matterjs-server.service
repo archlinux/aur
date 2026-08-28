@@ -1,0 +1,35 @@
+[Unit]
+Description=Open Home Foundation Matter Server
+Documentation=https://github.com/matter-js/matterjs-server
+Wants=network-online.target
+After=network-online.target bluetooth.target
+
+[Service]
+Type=simple
+User=matterjs-server
+Group=matterjs-server
+WorkingDirectory=/usr/share/matterjs-server
+
+Environment=NODE_ENV=production
+Environment=STORAGE_PATH=/var/lib/matterjs-server
+EnvironmentFile=-/etc/conf.d/matterjs-server
+
+ExecStart=/usr/bin/node --enable-source-maps /usr/share/matterjs-server/packages/matter-server/dist/esm/MatterServer.js
+
+Restart=on-failure
+RestartSec=5s
+
+StateDirectory=matterjs-server
+StateDirectoryMode=0750
+UMask=0027
+
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+
+[Install]
+WantedBy=multi-user.target
