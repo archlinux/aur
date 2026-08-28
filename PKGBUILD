@@ -2,7 +2,7 @@
 
 pkgname=codex-security
 pkgver=0.1.23
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK and CLI for finding, validating, and fixing security vulnerabilities in code"
 arch=('x86_64' 'aarch64')
 url="https://github.com/openai/codex-security"
@@ -16,6 +16,8 @@ build() {
   cd "${pkgname}-npm-v${pkgver}/sdk/typescript"
 
   pnpm install --frozen-lockfile --config.store-dir="${srcdir}/pnpm-store"
+  npm ci --prefix ../../plugins/codex-security/mcp-app \
+    --no-audit --no-fund --cache "${srcdir}/npm-cache"
   pnpm run types
   pnpm run build
   pnpm pack --pack-destination "${srcdir}"
