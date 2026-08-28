@@ -1,6 +1,6 @@
 pkgbase = python-vfblib
 	pkgdesc = Tools for converting FontLab Studio 5 (VFB) files
-	pkgver = 0.11.6
+	pkgver = 0.11.7
 	pkgrel = 1
 	url = https://github.com/LuasFonts/vfbLib
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-vfblib
 	depends = python-fs
 	depends = python-ufonormalizer
 	depends = python-ufolib2
-	source = https://files.pythonhosted.org/packages/source/v/vfbLib/vfblib-0.11.6.tar.gz
-	sha256sums = d47e88708b24a6236b86c94fa67780c10bd8ffb45ee200edcf6607ee74e929f5
+	source = https://files.pythonhosted.org/packages/source/v/vfbLib/vfblib-0.11.7.tar.gz
+	sha256sums = 4c6a27621c259fba50b1517e0b44cd1dffe2965a0937b3f3d6733ef1e88f765b
 
 pkgname = python-vfblib
