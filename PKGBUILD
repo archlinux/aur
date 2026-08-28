@@ -95,32 +95,6 @@ SET(CMAKE_EXE_LINKER_FLAGS_INIT "-fuse-ld=lld")
 SET(CMAKE_MODULE_LINKER_FLAGS_INIT "-fuse-ld=lld")
 SET(CMAKE_SHARED_LINKER_FLAGS_INIT "-fuse-ld=lld")
 EOF
-
-### Failed attempt at getting it to build with CMake 4.x.x
-#########################################################
-
-#    echo "in toolchain @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-#    ls ./toolchain
-
-#    sed -i 's/(SET CMP0060 OLD)/(SET CMP0060 NEW)/g' CMakeLists.txt
-#    sed -i 's/(SET CMP0065 OLD)/(SET CMP0065 NEW)/g' CMakeLists.txt
-#    sed -i 's/cmake_minimum_required(VERSION 3\.0)/cmake_minimum_required(VERSION 3.0...4.1.2)/' rts/lib/glad/CMakeLists.txt
-#    sed -i 's/ADD_SUBDIRECTORY(gflags)/#ADD_SUBDIRECTORY(gflags)/' rts/lib/CMakeLists.txt
-#    sed -i 's/CMAKE_MINIMUM_REQUIRED( VERSION 2.8 )/cmake_minimum_required(VERSION 2.8...4.1.2)/' rts/lib/assimp/CMakeLists.txt
-#    sed -i 's/cmake_minimum_required( VERSION 2.6 )/cmake_minimum_required(VERSION 2.6...4.1.2)/' rts/lib/assimp/code/CMakeLists.txt
-#    sed -i 's/cmake_minimum_required(VERSION 3.3)/cmake_minimum_required(VERSION 3.3...4.1.2)/' rts/lib/lunasvg/CMakeLists.txt
-#    sed -i 's/cmake_minimum_required(VERSION 3.0)/cmake_minimum_required(VERSION 3.0...4.1.2)/' test/lib/catch2/CMakeLists.txt
-#    sed -i ':a; N; $!ba; s/\n\s*//g; s/ gflags_nothreads_static/gflags_nothreads_static/' rts/CMakeLists.txt
-#    sed -i '/find_package_static(ZLIB/a find_package(gflags REQUIRED)' rts/CMakeLists.txt
-
-    # find_package(gflags REQUIRED)
-    # find_package(gflags COMPONENTS nothreads_static)
-
-
-    #echo "head ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    #head -n 10 rts/lib/lunasvg/CMakeLists.txt
-    #echo "head ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-
 }
 
 build() {
