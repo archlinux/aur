@@ -1,6 +1,6 @@
 pkgbase = xfetch-cli-bin
 	pkgdesc = A cross-platform system information fetching tool written in Rust
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/xfetch-cli/xfetch
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = xfetch-cli-bin
 	provides = xfetch
 	conflicts = xfetch-cli
 	options = !strip
-	source_x86_64 = xfetch-x86_64-0.7.0.tgz::https://github.com/xfetch-cli/xfetch/releases/download/v0.7.0/xfetch-0.7.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 1013e285641e815995946e6389281d0abacadf878468c3aa5acbd3128223ca16
-	source_aarch64 = xfetch-aarch64-0.7.0.tgz::https://github.com/xfetch-cli/xfetch/releases/download/v0.7.0/xfetch-0.7.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 862543861e2c2a46ef4073fbceba68e8882082d445ce03de904b02fba87430ac
+	source_x86_64 = xfetch-x86_64-0.8.0.tgz::https://github.com/xfetch-cli/xfetch/releases/download/v0.8.0/xfetch-0.8.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = de5ca9589f04674e24641305ac712097c0d78b672ed1ab06edd4a6be6a3be6d8
+	source_aarch64 = xfetch-aarch64-0.8.0.tgz::https://github.com/xfetch-cli/xfetch/releases/download/v0.8.0/xfetch-0.8.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1257d363e029e97a7f47b47aca19d32193023f368e0ffd218072a00465333a9c
 
 pkgname = xfetch-cli-bin
