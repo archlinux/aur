@@ -1,0 +1,19 @@
+pkgbase = pinch-tab-bin
+	pkgdesc = Browser control for AI agents
+	pkgver = 0.15.2
+	pkgrel = 2
+	url = https://pinchtab.com
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = pinchtab
+	conflicts = pinchtab
+	source = LICENSE::https://raw.githubusercontent.com/pinchtab/pinchtab/v0.15.2/LICENSE
+	sha256sums = 8e526b04f1f02203eebfd55aead0657a7ae87e0591cf8a44fbee19441aa0f116
+	source_x86_64 = pinch-tab-bin-0.15.2-x86_64::https://github.com/pinchtab/pinchtab/releases/download/v0.15.2/pinchtab-linux-amd64
+	sha256sums_x86_64 = 0bb4f97a1c92f94bcdbadffc39dc6985a4757c88a77876bbcb42142191e8202d
+	source_aarch64 = pinch-tab-bin-0.15.2-aarch64::https://github.com/pinchtab/pinchtab/releases/download/v0.15.2/pinchtab-linux-arm64
+	sha256sums_aarch64 = e3343f84d1fffd430821eaa5d509ad454418a09b516b07eff81f6bb5266052ff
+
+pkgname = pinch-tab-bin
