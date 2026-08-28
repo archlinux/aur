@@ -1,7 +1,7 @@
 # Maintainer: Daniël Nazarkin <aur@danicatgames.nl>
 
 pkgname=basalt
-pkgver=0.12.6
+pkgver=0.12.7
 pkgrel=1
 pkgdesc='A TUI Application to manage Obsidian notes'
 url='https://github.com/erikjuhani/basalt'
@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 arch=('x86_64' 'aarch64' 'armv7h')
 source=("$url/archive/refs/tags/basalt/v$pkgver.tar.gz")
-sha256sums=('e5b2672b3644f6a870c4673b81138a3ec9d30bda76a2b8de9db9f73b0d94c081')
+sha256sums=('0707f113967ca3c86499ec3cf35441cf33e2785d31c941b3e49c5d892e17a9c5')
 _srcdir="$pkgname-$pkgname-v$pkgver"
 
 prepare() {
@@ -24,9 +24,9 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  export BASALT_VERSION="$pkgver"
-  export BASALT_COMMIT_SHORT_HASH="5329099"
-  export BASALT_COMMIT_DATE="2026-05-17"
+  export BASALT_VERSION="0.12.7"
+  export BASALT_COMMIT_SHORT_HASH="90a6507"
+  export BASALT_COMMIT_DATE="2026-08-15"
   cargo build --frozen --release --all-features
 }
 
