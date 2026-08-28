@@ -1,0 +1,15 @@
+pkgbase = nudl
+	pkgdesc = Unofficial downloader for Hyundai, Kia and Genesis (HMG) infotainment navigation firmware
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/chenxiaolong/nudl
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	options = !lto
+	source = nudl-1.1.0.tar.gz::https://github.com/chenxiaolong/nudl/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = ffc0276b9e824ecc8cee29fcec87bf8a48a766fe0015c519d07b0b3a52e99dee
+
+pkgname = nudl
