@@ -1,7 +1,7 @@
 # Maintainer: Berke Enercan <berkeenercan@tutanota.com>
 
 pkgname=ytsub
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 
 pkgdesc='A subscriptions only TUI Youtube client'
@@ -14,7 +14,7 @@ makedepends=('cargo')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f6583bd0befccebdf05625414af3c114417e297483f7b2dd186d50e1fb844ec8')
+sha256sums=('b9042efebc9ceb648d290e89245bc4e786176e66edc988186fab10f69a61c967')
 options=('!lto')
 
 prepare() {
