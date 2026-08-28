@@ -1,7 +1,7 @@
 # Maintainer: Laoyou2333 <laoyou2333@confidesk.com>
 pkgname=clamui
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ClamUI is a modern Linux desktop application that provides a graphical user interface for the ClamAV antivirus command-line tool."
 arch=('any')
 url="https://clamui.com"
@@ -30,5 +30,4 @@ package() {
     install -Dm644 "${srcdir}/${pkgname}/data/io.github.linx_systems.ClamUI.metainfo.xml" "${pkgdir}/usr/share/metainfo/io.github.linx_systems.ClamUI.metainfo.xml"
     install -Dm644 "${srcdir}/${pkgname}/data/io.github.linx_systems.ClamUI-virustotal.nemo_action" "${pkgdir}/usr/share/nemo/actions/io.github.linx_systems.ClamUI-virustotal.nemo_action"
     install -Dm644 "${srcdir}/${pkgname}/data/io.github.linx_systems.ClamUI.nemo_action" "${pkgdir}/usr/share/nemo/actions/io.github.linx_systems.ClamUI.nemo_action"
-    install -Dm644 "${srcdir}/${pkgname}/data/io.github.linx_systems.ClamUI.policy" "${pkgdir}/usr/share/polkit-1/actions/io.github.linx_systems.ClamUI.policy"
 }
