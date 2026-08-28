@@ -1,11 +1,11 @@
 pkgbase = people-work
 	pkgdesc = Manage your most important professional relationships
-	pkgver = 2.0.37
+	pkgver = 2.0.38
 	pkgrel = 1
 	url = https://people-work.io
 	arch = x86_64
 	license = custom:people-work
-	source = people-work-2.0.37-x86_64.tar.gz::https://github.com/hedge-ops/people-work-releases/releases/download/v2.0.37/people-work-2.0.37-x86_64.tar.gz
-	sha256sums = d413c832c22051c5018a220fccdc697cc5cd5b428865918a7c9dc307dcfc002e
+	source = people-work-2.0.38-x86_64.tar.gz::https://github.com/hedge-ops/people-work-releases/releases/download/v2.0.38/people-work-2.0.38-x86_64.tar.gz
+	sha256sums = 58c93051e55ba20085dfffc15d3f52489f2829223c7d603d43519e6c6fe4bf9c
 
 pkgname = people-work
