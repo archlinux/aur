@@ -4,7 +4,7 @@
 _name="victoriametrics"
 _name_camel="VictoriaMetrics"
 pkgname="${_name}-cluster"
-pkgver='1.149.0'
+pkgver='1.150.0'
 pkgrel='1'
 pkgdesc='Fast, cost-effective monitoring solution and time series database'
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/${_name_camel}/ta
 	"vmauth.yml"
 	"${_name}.sysusers"
 	"${_name}.tmpfiles")
-sha256sums=('52667b70af1ecec0ef860d49e25f04a8df9b0539a02af3982f4502b906035613'
+sha256sums=('cea8f9eb86bc3673c743592770e9f81908f842a443f1ec286a02b1ca4f3576a0'
             '459b40675c3b77b108a597e864d29b72c93870a0ef0d814d8a99f0c293addd54'
             'd08557b61879cc854287bab39a62a176c54c752a3bf2bf71d42b1c27a645a571'
             '5144d6cb0732ae7d12e92ec4e13c36f3373407b7f826c44aedff6da50dd8d17a'
@@ -46,9 +46,11 @@ backup=("etc/${_name}/vmauth.yml"
 prepare() {
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
+  export GOTMPDIR="${GOPATH}/tmp"
   export GOCACHE="${srcdir}/cache/go-cache"
   export GOMODCACHE="${srcdir}/cache/go"
-  export GOTMPDIR="${srcdir}"
+  mkdir -p "${GOPATH}/src/${_uri}"
+  mkdir -p "${GOTMPDIR}"
   eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   mkdir -p "${GOPATH}/src/${_uri}"
   ln -snf "${srcdir}/${_name_camel}-${pkgver}-cluster" \
@@ -78,7 +80,7 @@ build() {
 check() {
   cd "${GOPATH}/src/${_uri}/${_name}"
   eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
-  GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" \
+  TMPDIR="${GOPATH}/tmp" GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" \
     DISABLE_FSYNC_FOR_TESTING=1 go test -modcacherw ./lib/... ./app/...
 }
 
