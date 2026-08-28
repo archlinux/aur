@@ -3,10 +3,11 @@ _pkgname=dosbox
 pkgname="${_pkgname}-staging-bin"
 _appname="org.${pkgname%-bin}.${pkgname%-bin}"
 pkgver=0.83.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern continuation of DOSBox with advanced features and current development practices.(Prebuilt version)"
 arch=('x86_64')
-url="https://github.com/dosbox-staging/dosbox-staging"
+url="https://www.dosbox-staging.org/"
+_ghurl="https://github.com/dosbox-staging/dosbox-staging"
 license=('GPL-2.0-or-later')
 provides=(
     "${pkgname%-bin}=${pkgver}"
@@ -18,10 +19,11 @@ conflicts=(
 )
 depends=(
     'alsa-lib'
-    'sdl2'
+    'sdl3'
     'libglvnd'
     'sdl2_image'
     'sdl2_net'
+    'sdl2-compat'
 )
 source=(
     "${pkgname%-bin}-${pkgver}.tar.xz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${CARCH}-v${pkgver}.tar.xz"
@@ -34,16 +36,15 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    sed -i "s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g" "${srcdir}/${pkgname%-bin}-linux"*/desktop/"${_appname}".desktop
+    sed -i "s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g" "${srcdir}/${pkgname%-bin}-linux"*/desktop/*.desktop
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
     cp -a "${srcdir}/${pkgname%-bin}-linux"*/* "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${pkgname%-bin}-linux"*/desktop/"${_appname}".desktop "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    install -Dm644 "${srcdir}/${pkgname%-bin}-linux"*/doc/manual.txt -t "${pkgdir}/usr/share/doc/${pkgname%-bin}"
+    install -Dm644 "${srcdir}/${pkgname%-bin}-linux"*/desktop/*.desktop "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/${pkgname%-bin}-linux"*/man/"${_pkgname}".1 -t "${pkgdir}/usr/share/man/man1"
-    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
+    find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*icons/hicolor/*" | while read -r _i; do
 		_extension="${_i##*.}"
 		_icon_path="${_i#*share/icons/}"
 		_target_dir="/usr/share/icons/$(dirname "${_icon_path}")"
