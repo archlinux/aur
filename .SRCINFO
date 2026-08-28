@@ -1,13 +1,14 @@
 pkgbase = firefox-extension-singlefile-bin
 	pkgdesc = Save an entire web page—including images and styling as a single HTML file
 	pkgver = 1.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gildas-lormeau/SingleFile
 	arch = any
 	groups = firefox-addons
 	license = MIT
 	makedepends = zip
 	depends = firefox>=126.0
+	conflicts = firefox-extension-single-file
 	noextract = firefox-extension-singlefile-bin-1.23.0.xpi
 	source = firefox-extension-singlefile-bin-1.23.0.xpi::https://github.com/gildas-lormeau/SingleFile/releases/download/v1.23.0/singlefile-extension-firefox.zip
 	source = add-id.patch
