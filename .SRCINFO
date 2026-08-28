@@ -1,17 +1,17 @@
 pkgbase = firefox-extension-singlefile-bin
-	pkgdesc = Save an entire web page—including images and styling - as a single HTML file
-	pkgver = 1.22.81
+	pkgdesc = Save an entire web page—including images and styling as a single HTML file
+	pkgver = 1.23.0
 	pkgrel = 1
-	url = https://addons.mozilla.org/addon/single-file/
+	url = https://github.com/gildas-lormeau/SingleFile
 	arch = any
 	groups = firefox-addons
 	license = MIT
 	makedepends = zip
 	depends = firefox>=126.0
-	noextract = firefox-extension-singlefile-bin-1.22.81.xpi
-	source = firefox-extension-singlefile-bin-1.22.81.xpi::https://addons.mozilla.org/firefox/downloads/file/4465739/single_file-1.22.81.xpi
+	noextract = firefox-extension-singlefile-bin-1.23.0.xpi
+	source = firefox-extension-singlefile-bin-1.23.0.xpi::https://github.com/gildas-lormeau/SingleFile/releases/download/v1.23.0/singlefile-extension-firefox.zip
 	source = add-id.patch
-	b2sums = e577a3402396b071821449995805ab939c50f9c9ef3cb224ae9b1549b1cb0449dd498ae82833290448acc114b082645af402720bea60a5d4b1037f28c08e6da9
-	b2sums = 56bb0272f682ae5bb73e8b658442acd2c4e54c0e7dcccf58b76a686c5995e4765d4bb4c5c4ac55e9a23d160e6f78e31d1516eca0eb5a921632b809ed74746c24
+	sha256sums = 213290e58b0cae0c17e84cfa31c9adfb82046408507aecc156580b270a6d7422
+	sha256sums = 9efc9d96fda85e61d8b746af4c71b4272b551533c89b471713af7100f2e66310
 
 pkgname = firefox-extension-singlefile-bin

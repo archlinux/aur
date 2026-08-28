@@ -1,11 +1,11 @@
---- a/manifest.json 2025-05-06 03:52:02.894496958 +0200
-+++ b/manifest.json	2025-05-06 03:52:34.622443880 +0200
-@@ -110,7 +110,7 @@
-   ],
-   "browser_specific_settings": {
-     "gecko": {
--      "id": "{531906d3-e22f-4a6c-a102-8057b88a1a63}"
-+      "id": "addon@getsinglefile.com"
-     },
-     "gecko_android": {}
-   },
+--- a/manifest.json
++++ b/manifest.json
+@@ -153,7 +153,7 @@
+ 	],
+ 	"browser_specific_settings": {
+ 		"gecko": {
+-			"id": "{531906d3-e22f-4a6c-a102-8057b88a1a63}"
++			"id": "addon@getsinglefile.com"
+ 		},
+ 		"gecko_android": {}
+ 	},
