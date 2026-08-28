@@ -1,7 +1,7 @@
 pkgbase = pacman-static
 	pkgdesc = Statically-compiled pacman (to fix or install systems without libc)
 	pkgver = 7.1.0.r9.g54d9411
-	pkgrel = 16
+	pkgrel = 17
 	url = https://www.archlinux.org/pacman/
 	arch = i486
 	arch = i686
