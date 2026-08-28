@@ -2,7 +2,7 @@
 pkgname=thorium-reader-git
 _pkgname='Thorium Reader'
 _appname="EDRLab.${_pkgname// /}"
-pkgver=3.4.0.r235.g7443a45
+pkgver=3.5.0.r6.gb858ca6
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -47,21 +47,21 @@ _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
 _set_build_env() {
-    electronDist="/usr/lib/electron${_electronversion}"
-	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-	local HOME="${srcdir}/.electron-gyp"
-	export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
-	export NPM_CONFIG_MAXSOCKETS=32
-	if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-		{
-			export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
-			export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
-			export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-			export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-		}
-		find ./ -type f -name "package-lock.json" -exec sed -i "s/registry.npmjs.org/registry.npmmirror.com/g" {} +
-	fi
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
+    export HOME="${srcdir}/.electron-gyp"
+    export NPM_CONFIG_CACHE="${srcdir}/.npm_cache"
+    export NPM_CONFIG_MAXSOCKETS=32
+    if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
+        {
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NODEJS_ORG_MIRROR="https://npmmirror.com/mirrors/node"
+            export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+            export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
+        }
+        rm -f package-lock.json
+    fi
 }
 _get_electron_version() {
     _elec_ver=$(find "${srcdir}" -maxdepth 5 -name "package.json" ! -path "*/node_modules/*" \
@@ -77,7 +77,6 @@ prepare() {
         s/@appname@/${pkgname%-git}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname%-git}" \
@@ -88,8 +87,8 @@ prepare() {
     _set_build_env
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    sed -i 's/"r2-utils-js": "\^1\.0\.43"/"r2-utils-js": "^1.0.42"/g' package.json
-    rm -f package-lock.json
+    sed -i 's/"version": ">=12.0.2"/"version": ">=11.0.0"/g' package.json
+    sed -i 's/"overrides": {/"overrides": {\n    "@jest\/core": "30.4.2",\n    "jest-cli": "30.4.2",/g' package.json
     NODE_ENV=development    npm install --legacy-peer-deps --ignore-scripts --foreground-scripts --min-release-age=0
     NODE_ENV=development    npm run clean
 }
@@ -98,13 +97,13 @@ build() {
     _set_build_env
     _ensure_local_nvm
     NODE_ENV=development    npm run pre-package:linux
-    NODE_ENV=production     npm exec -c "cross-env DEBUG=* CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     npm exec -c "cross-env DEBUG=* CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
     local _app_dir=$(_get_app_dir)
-    cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-git}/"
+    cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-git}/"
     rm -f "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
     _icon_sizes=(256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
