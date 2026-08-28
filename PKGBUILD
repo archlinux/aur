@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=opencode-desktop
-pkgver=1.18.23
+pkgver=1.18.25
 pkgrel=1
 pkgdesc='OpenCode desktop app (built from source, runs on system electron42)'
 arch=('x86_64' 'aarch64')
@@ -80,8 +80,8 @@ build() {
 
   # Build with --linux pacman: this produces both the unpacked app/ directory
   # (we ship that) AND a .pacman archive which embeds the .desktop file and
-  # 12-size hicolor icon set that electron-builder generates from the linux
-  # config (Categories, MimeType=x-scheme-handler/opencode, Square*Logo.png
+  # generated hicolor icon set from the linux config (Categories,
+  # MimeType=x-scheme-handler/opencode, Square*Logo.png
   # → hicolor/<size>/apps/...). Re-extracting them into our package keeps us
   # in sync with whatever upstream defines without us hand-maintaining a
   # parallel copy.
@@ -129,7 +129,7 @@ package() {
 
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 
-  # Pull the .desktop entry and full hicolor icon set out of the .pacman
+  # Pull the .desktop entry and generated hicolor icon set out of the .pacman
   # archive electron-builder produced (enable-pacman-target.patch makes
   # eb include "pacman" in its linux target list). Rewrite the launcher
   # paths to our wrapper basename, which is also the Wayland app_id we
