@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=searchmonkey
-pkgver=0.3.3
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Real-time search for real files. No index. No daemon. No stale results."
 arch=('x86_64')
 url="https://searchmonkey.dev"
@@ -20,7 +20,7 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cottrela/searchmonkey-III/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('aac8e349e224faa198507e9a9ecdf9ee997baa78534b75c18e879635c216885a'
+sha256sums=('9bd0b7675f9a0d8f10e337f86f43102df7c2ff652dd5f64d5f678741126ced32'
             '0d0ff90ae4de6eee27b57a3e7706da86fb89df80f3b693554428d76ac797144a')
 
 prepare() {
