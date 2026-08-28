@@ -2,7 +2,7 @@
 
 pkgname=python-falkordb
 _name=${pkgname#python-}
-pkgver=1.6.2
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Python client for interacting with FalkorDB database"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
   'python-hatchling'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('73dbbd9df61c56f45cf2fe8b9028888ad4892712790ce4e40d7ceabe118609ae')
+sha256sums=('09dd89dfb668c6fe7741c0ec67fcdb5c7a4b009e87f065a644199170f4fa5766')
 
 build() {
   cd "${_name}-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = python-falkordb
 	pkgdesc = Python client for interacting with FalkorDB database
-	pkgver = 1.6.2
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/FalkorDB/falkordb-py
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-falkordb
 	depends = python
 	depends = python-dateutil
 	depends = python-redis
-	source = https://files.pythonhosted.org/packages/source/f/falkordb/falkordb-1.6.2.tar.gz
-	sha256sums = 73dbbd9df61c56f45cf2fe8b9028888ad4892712790ce4e40d7ceabe118609ae
+	source = https://files.pythonhosted.org/packages/source/f/falkordb/falkordb-1.7.1.tar.gz
+	sha256sums = 09dd89dfb668c6fe7741c0ec67fcdb5c7a4b009e87f065a644199170f4fa5766
 
 pkgname = python-falkordb
