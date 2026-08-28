@@ -2,7 +2,7 @@
 
 pkgname=vercel-node
 _pkgname=vercel
-pkgver=59.7.0
+pkgver=59.9.1
 pkgrel=1
 pkgdesc='Command-line interface for Vercel'
 # x86_64 only: the npm tree pulls platform-specific native payloads for the
@@ -19,7 +19,7 @@ conflicts=('vercel')
 options=('!strip')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('6737c30f00d7fd8bd3afce77a6ce98d8c1509adfb3489834e5df72245e67bc62')
+sha256sums=('585f8fe39acb7bed3c8fe5a1595adbbaf6c6f46989c3a2ec81704b70d7680a05')
 
 package() {
     # Install the published tarball globally into $pkgdir. npm fetches the
