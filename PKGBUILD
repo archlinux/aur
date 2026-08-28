@@ -8,8 +8,8 @@ url='https://www.datomic.com/'
 provides=('datomic')
 conflicts=('datomic')
 replaces=('datomic')
-pkgver=1.0.7556
-pkgrel=2
+pkgver=1.0.7705
+pkgrel=1
 arch=('any')
 license=('Apache-2.0')
 depends=('java-environment')
@@ -19,7 +19,7 @@ source=(
   "${pkgname%-bin}-${pkgver}.zip::https://datomic-pro-downloads.s3.amazonaws.com/${pkgver}/${pkgname%-bin}-pro-${pkgver}.zip"
   "transactor.properties"
 )
-sha256sums=('c4849387ef016d43f951c581950ecd522898b581bcdc0e9ccc12cc4028c06c50'
+sha256sums=('a17c2603b893dfb0d998a35a032a7295736d234d32937222c8ec21d81a1b8c7e'
             'e622f80994c4c21e52d59f8724d06fc6672c25479224619d3cc172df32fe31de')
 
 package() {
