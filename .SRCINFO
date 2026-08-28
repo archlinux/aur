@@ -1,6 +1,6 @@
 pkgbase = wireproxy-awg-bin
 	pkgdesc = AmneziaWG compatible wireguard client that exposes itself as a socks5 proxy
-	pkgver = 1.0.17
+	pkgver = 1.0.18
 	pkgrel = 1
 	url = https://github.com/artem-russkikh/wireproxy-awg
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = wireproxy-awg-bin
 	provides = wireproxy
 	conflicts = wireproxy-awg
 	conflicts = wireproxy
-	source_x86_64 = wireproxy_1.0.17_x86_64.tar.gz::https://github.com/artem-russkikh/wireproxy-awg/releases/download/v1.0.17/wireproxy_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5f7c62135142262dc0b63fb31de5758f4471e56c2c7994f473236d2a33a6c3f6
-	source_aarch64 = wireproxy_1.0.17_aarch64.tar.gz::https://github.com/artem-russkikh/wireproxy-awg/releases/download/v1.0.17/wireproxy_linux_arm64.tar.gz
-	sha256sums_aarch64 = 79ac8b2862914945264edd960fcf7189021b86fb64ab307553e9391f93f32c44
-	source_armv7h = wireproxy_1.0.17_armv7h.tar.gz::https://github.com/artem-russkikh/wireproxy-awg/releases/download/v1.0.17/wireproxy_linux_arm.tar.gz
-	sha256sums_armv7h = 726095d050893227490d1bb80bfe2afead8d09ed7ff3e553d8863dd6059830e6
+	source_x86_64 = wireproxy_1.0.18_x86_64.tar.gz::https://github.com/artem-russkikh/wireproxy-awg/releases/download/v1.0.18/wireproxy_linux_amd64.tar.gz
+	sha256sums_x86_64 = 6b9c6d10308cfe8b593b694473ae1feba9f6d91e81db01ea4f9f6a03ec673084
+	source_aarch64 = wireproxy_1.0.18_aarch64.tar.gz::https://github.com/artem-russkikh/wireproxy-awg/releases/download/v1.0.18/wireproxy_linux_arm64.tar.gz
+	sha256sums_aarch64 = ee05ae8426b78947832c95c39596d5e778f4d485e8208683264c08064f82e7a3
+	source_armv7h = wireproxy_1.0.18_armv7h.tar.gz::https://github.com/artem-russkikh/wireproxy-awg/releases/download/v1.0.18/wireproxy_linux_arm.tar.gz
+	sha256sums_armv7h = 1830acaddd9dc0f82327444e43149d9c5c1942f3bad086255e36d54431817635
 
 pkgname = wireproxy-awg-bin
