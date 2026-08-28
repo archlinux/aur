@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB (Widescreen Layout Version)"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wsjt-x-improved/"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=(
 	'boost-libs'
 	'fftw'
