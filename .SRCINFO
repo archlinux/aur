@@ -10,6 +10,7 @@ pkgbase = uutils-shadow-git
 	makedepends = rust
 	depends = glibc
 	depends = libgcc
+	depends = libxcrypt
 	source = uutils-shadow::git+https://github.com/uutils/shadow.git
 	b2sums = SKIP
 
