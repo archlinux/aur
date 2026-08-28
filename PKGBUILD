@@ -1,8 +1,8 @@
 # Maintainer: Bolt J Woofson <bolt@boop.no>
 pkgname=commanderdog-bin
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
-pkgdesc="Multi-Tab Web Commander - By Woofson (Pre-compiled standalone binary)"
+pkgdesc="Multi-Tab Web & Desktop File Commander - By Woofson (Pre-compiled standalone binary)"
 arch=('x86_64')
 url="https://github.com/Woofson/commanderdog"
 license=('MIT')
@@ -10,7 +10,7 @@ provides=('commanderdog')
 conflicts=('commanderdog')
 depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates')
 source=("commanderdog-v${pkgver}-linux-${arch}.tar.gz::https://github.com/Woofson/commanderdog/releases/download/v${pkgver}/commanderdog-v${pkgver}-linux-${arch}.tar.gz")
-sha256sums=('ff31331fe9451f6e90f3afa7d2cb6b894f4076ed0c05044d20c2b918d0fe0f50')
+sha256sums=('b1cd474ce9171a7138d2e5e5492ec6817b698ea010919fb615f50725706a245d')
 
 package() {
     cd "$srcdir/commanderdog-v${pkgver}-linux-${arch}"
