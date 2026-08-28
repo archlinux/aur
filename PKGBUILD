@@ -8,7 +8,7 @@
 ## pkginfo
 pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-bin
-pkgver=GE_Proton11_5
+pkgver=GE_Proton11_6
 pkgrel=1
 epoch=1
 arch=('x86_64' 'aarch64')
@@ -61,7 +61,6 @@ url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=(
   'user_settings.py'
   'launcher.sh'
-  'proton-ge-custom-bin.conf'
   'pam_limits.conf'
 )
 
@@ -76,16 +75,15 @@ source_aarch64=(
 sha512sums=(
   '5d1a841d3f8f65f9e62742f84eeccfb198a0292a97ba9109f377a550a4de0e2913d1e17b3d90ecd37ac09411dc67e54662dc1be301554ce05fd128d842252deb'
   '78ede6d50f9c43407da511c8b37dcf60aae2ddbd461c0081f0d0ce3de08ace3a84dee86e9253acbac829b47c5818ef4e1a354ccb05feaa9853ce279dc3f903fd'
-  'd56baad80c2752fd1a2fdd75eafd07165b09cbc257d8a2641c186970117e93417355cbbc7b0f1bfae908a896aed3773fcfefc920c8c6c3135908586f444e3fa5'
   '60bcb1ad899d108fca9c6267321d11871feae96b696e44607ef533becc6decb493e93cbe699382e8163ad83f35cfa003a059499c37278f31afeba4700be6e356'
 )
 
 sha512sums_x86_64=(
-  '8fb1f3ae65a8dc22efd8099ff489075f0eebddf01c445b423244589f6f0a1e19c01de5d1e722b97fc1ebaf6390c813052ed55290058f8d21f1353a36146f4a2c'
+  '543e3af57bb138b1be5a5b98bba4d39ca59340bfa34ec8c12144f3e16d7434ed75bd7a68eafc228b16695884629595af0905156e5227c1898f93cdbc92cb5fcb'
 )
 
 sha512sums_aarch64=(
-  'fa3048f55a70e4090a38e23d4182bcf4100c6cfbdb1a9b1b21aa01dfd2ba68ef6cc70f00242171c0f836d1e4753dfca146453baba6042f2d61ebef47d4f3cd84'
+  'c539b1c3b4fe6132fa3a2bce274926e41f0ea77a9bbc9aadb78878b840f6ab32d690a3e2b89f00ac864678c528cee3abf99e7ac222277f33403cf27834626f3b'
 )
 
 build() {
@@ -110,7 +108,6 @@ package() {
   ## config files
   install --mode=0775 --group=50 "${srcdir}"/user_settings.py "${pkgdir}/${_protoncfg}"
   install --mode=0644 "${srcdir}"/pam_limits.conf "${pkgdir}"/etc/security/limits.d/10-games.conf
-  install --mode=0644 "${srcdir}"/${pkgname}.conf "${pkgdir}"/usr/lib/modules-load.d/${pkgname}.conf
   ## executables
   mv "${_srcdir}"/* "${pkgdir}/${_protondir}"
   install --mode=0755 "${srcdir}"/launcher.sh "${pkgdir}/${_execfile}"

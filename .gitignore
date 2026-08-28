@@ -1,6 +1,7 @@
 pkg/
 *.tar.zst
 GE*.tar.gz
+GE*.tar.gz.part
 src/
 .trunk/
 .vscode/
