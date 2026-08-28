@@ -6,7 +6,7 @@ _appname=kernelview
 pkgname=${_appname}-bin
 pkgdesc="An ultra-fast, aesthetic system information fetcher and real-time terminal telemetry dashboard"
 
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,8 +26,8 @@ options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('3ab5d2eb9f65a3e3b399685a12b5292d00264a4170407b120849f3eb9453b8e2')
-sha256sums_aarch64=('9f726e2e76e8cbcdffad82045f37414714d17a2bf2f4dfbcbf4ae23de808338c')
+sha256sums_x86_64=('1b60e7b738e05310e85f2a7f42635ba3e470cd29632c4327889106b3fb199935')
+sha256sums_aarch64=('a887ec8b8b51c45c558e7319e1504096a37ac69c25d05d4df5a36ba0c35d4c08')
 
 
 package() {
