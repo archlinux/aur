@@ -29,3 +29,13 @@ sha256sums=(
   'SKIP'
 )
 validpgpkeys=('9201A54A09675CBEBAD08647EDDA55C8236D6C88')
+
+# Repackage the pre-built package tree that makepkg auto-extracted into
+# $srcdir (makepkg unpacks the .pkg.tar.zst source with bsdtar). Only the
+# real package dirs are copied — the extraction's .PKGINFO/.MTREE/.INSTALL
+# metadata dotfiles are NOT carried over. pacman sets root ownership at
+# install time, so cp -a's build-user ownership is corrected on install.
+package() {
+  cp -a "${srcdir}/opt" "${pkgdir}/"
+  cp -a "${srcdir}/usr" "${pkgdir}/"
+}
