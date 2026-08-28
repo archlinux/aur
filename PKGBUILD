@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=liteparse-bin
-pkgver=2.14.1
+pkgver=2.14.2
 pkgrel=1
 pkgdesc='Fast local document parser for PDF, DOCX, XLSX, PPTX, and images with built-in OCR'
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ _gh_repo='run-llama/liteparse'
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/${_gh_repo}/releases/download/crates-v${pkgver}/lit-linux-x64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/${_gh_repo}/releases/download/crates-v${pkgver}/lit-linux-arm64.tar.gz")
-sha256sums_x86_64=('c59cc42cad1c3871ad698ebf032c175a22ba56bbd86a211241e9688b04995335')
-sha256sums_aarch64=('97096291388c0b0d48b00bd2e9fcbab0cc6ce99821080eb140595ddc918379e6')
+sha256sums_x86_64=('a06806f298d97a37b9994ae7dbafb3b9bc74b320c76e4b640add2341eab53e91')
+sha256sums_aarch64=('7ab1270269dd3d71d282c41bbfa7e056205dd81ae28a55a167d82d8a7a7c6ad4')
 
 latestver() {
     gh api --paginate "repos/${_gh_repo}/releases" --jq \
