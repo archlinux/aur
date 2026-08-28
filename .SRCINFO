@@ -1,7 +1,7 @@
 pkgbase = clamui
 	pkgdesc = ClamUI is a modern Linux desktop application that provides a graphical user interface for the ClamAV antivirus command-line tool.
-	pkgver = 0.3.0
-	pkgrel = 3
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://clamui.com
 	arch = any
 	license = MIT
@@ -21,7 +21,7 @@ pkgbase = clamui
 	depends = python-psutil
 	depends = python-pillow
 	depends = libadwaita
-	source = git+https://github.com/linx-systems/clamui#tag=v0.3.0
+	source = git+https://github.com/linx-systems/clamui#tag=v0.4.0
 	sha256sums = SKIP
 
 pkgname = clamui

@@ -1,7 +1,7 @@
 # Maintainer: Laoyou2333 <laoyou2333@confidesk.com>
 pkgname=clamui
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="ClamUI is a modern Linux desktop application that provides a graphical user interface for the ClamAV antivirus command-line tool."
 arch=('any')
 url="https://clamui.com"
