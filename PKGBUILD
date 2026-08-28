@@ -1,6 +1,6 @@
 # Maintainer: Michał Walenciak <michalwalenciak@gmail.com>
 pkgname=yay-llm-review
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Opt-in llama.cpp security review hook for yay AUR packages'
 url='https://github.com/Kicer86/yay-llm-review'
@@ -8,7 +8,7 @@ arch=('any')
 license=('MIT')
 depends=('python' 'git' 'yay')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('20032430d9b4ea3964137e494e4c9a647ce05bb652bff531c01321db367e6e0d')
+sha256sums=('2c0426362b69416c7e7cc6a6d6042e51fc5a4a0d1c49e885a142db5ebe085e0a')
 
 check()
 {
