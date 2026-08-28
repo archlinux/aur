@@ -3,9 +3,9 @@
 pkgname=llama.cpp-gfx1151
 _pkgname=${pkgname%%-gfx1151}
 pkgver=b10666
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm + Vulkan)"
-arch=(x86_64 armv7h aarch64)
+arch=(x86_64)
 url='https://github.com/ggml-org/llama.cpp'
 license=('MIT')
 depends=(
@@ -27,7 +27,6 @@ makedepends=(
   shaderc
   vulkan-headers
   spirv-headers
-  rocm-hip-sdk
 )
 optdepends=(
   'python-numpy: needed for convert_hf_to_gguf.py'
@@ -79,8 +78,6 @@ build() {
   export HIP_PATH="$(hipconfig -R)"
   export HIPCXX="$(hipconfig -l)/amdclang"
   export HIP_PLATFORM=amd
-  # 清除核显上的函数调用开销
-  export HIP_CLANG_FLAGS="--offload-arch=gfx1151 -mllvm -amdgpu-early-inline-all=true -mllvm -amdgpu-function-calls=false"
 
   local _cmake_options=(
     -B build
@@ -101,7 +98,8 @@ build() {
     # 偏向 512 宽度, 因为 zen5 原生支持 AVX-512
     # 激进的内联程度, 因为 zen5 的宽流水线需要减少函数边界
     # 更多的循环展开, 因为 zen5 的大型重排序缓冲区能够维持这些额外指令的在途执行
-    -DCMAKE_HIP_FLAGS="-mprefer-vector-width=512 -famd-opt -mllvm -inline-threshold=600 -mllvm -unroll-threshold=150"
+    -DCMAKE_HIP_FLAGS="-mprefer-vector-width=512 -mllvm -inline-threshold=600 -mllvm -unroll-threshold=150"
+    -DCMAKE_HIP_ARCHITECTURES=gfx1151
     -DGGML_HIP=ON
     -DGGML_HIP_GRAPHS=ON
     # -DGGML_HIP_NO_VMM=OFF # Strix Halo 支持 VMM, 但 arch 官方的 ROCm 包似乎有点问题
@@ -126,14 +124,6 @@ build() {
       -DGGML_NATIVE=OFF
       # -DGGML_HIP_EXPORT_METRICS=ON # 允许内核 perf metrics
 
-      # https://llvm.org/docs/AMDGPUUsage.html
-      # gfx906: MI 50/60, Radeon VII
-      # gfx101x: RX 5000 Series
-      # gfx103x: RX 6000 Series
-      # gfx110x: RX 7000 Series
-      # gfx1151: Strix Halo
-      # gfx120x: RX 9000 Series
-      -DAMDGPU_TARGETS="gfx1151"
       # -DGGML_ZENDNN=ON
     )
   else
