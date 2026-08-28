@@ -1,5 +1,5 @@
 pkgbase = mnt-reform-qcacld2-dkms
-	pkgver = 20260421.c54d3e59
+	pkgver = 20260526.7a35ae63
 	pkgrel = 2
 	url = https://source.mnt.re/reform/qcacld2
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = mnt-reform-qcacld2-dkms
 	options = !strip
 	options = !docs
 	options = !emptydirs
-	source = qcacld2::git+https://source.mnt.re/reform/qcacld2.git#commit=c54d3e596f0e0ffa918e9f5e8f8dbb990cd4d428
+	source = qcacld2::git+https://source.mnt.re/reform/qcacld2.git#commit=7a35ae63b2a40b084163fcfb0563279db6442e3b
 	sha256sums = SKIP
 
 pkgname = mnt-reform-qcacld2-dkms
-	pkgdesc = DKMS source for the MNT Reform qcacld2 Wi-Fi driver (pinned c54d3e59)
+	pkgdesc = DKMS source for the MNT Reform qcacld2 Wi-Fi driver (pinned 7a35ae63)
 	depends = dkms
 	provides = mnt-reform-qcacld2
 	conflicts = mnt-reform-qcacld2
