@@ -1,12 +1,12 @@
 pkgbase = nunit3-console
 	pkgdesc = NUnit 3 console runner
-	pkgver = 3.16.2
+	pkgver = 3.22.0
 	pkgrel = 1
 	url = http://www.nunit.com
 	arch = any
 	license = MIT
 	depends = mono
-	source = https://github.com/nunit/nunit-console/releases/download/3.16.2/NUnit.Console-3.16.2.zip
-	sha256sums = ae22015c371314dff2e8328c929c1c935d4ff652632a251030523a50113c47d4
+	source = https://github.com/nunit/nunit-console/releases/download/3.22.0/NUnit.Console-3.22.0.zip
+	sha256sums = dcb23a75d9431b051aedbb1592ebef0bc8751920f542b8466eca90c9ab9d5962
 
 pkgname = nunit3-console
