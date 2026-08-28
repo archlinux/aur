@@ -57,7 +57,8 @@ check() {
   # Hyprland over its socket, which a build chroot does not have.
   local failed=0
   for t in tests/test_emit.py tests/test_picker.py tests/test_scan.py \
-           tests/test_settings.py tests/test_templates.py tests/test_branding.py; do
+           tests/test_settings.py tests/test_templates.py tests/test_branding.py \
+           tests/test_merge.py; do
     PYTHONPATH="$PWD" python "$t" || failed=1
   done
   return $failed
