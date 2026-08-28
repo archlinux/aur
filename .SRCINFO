@@ -1,6 +1,6 @@
 pkgbase = flatpak-builder-tools-git
 	pkgdesc = Various helper tools for flatpak-builder
-	pkgver = r457.a1eb29c
+	pkgver = r676.737c008
 	pkgrel = 1
 	url = https://github.com/flatpak/flatpak-builder-tools
 	arch = any

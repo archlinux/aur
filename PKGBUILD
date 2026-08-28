@@ -2,7 +2,7 @@
 # Contributor: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=flatpak-builder-tools-git
-pkgver=r457.a1eb29c
+pkgver=r676.737c008
 pkgrel=1
 pkgdesc="Various helper tools for flatpak-builder"
 arch=(any)
@@ -43,8 +43,8 @@ package() {
 	_docdir="$pkgdir/usr/share/doc/${pkgname%-git}"
 
 	# Install json2yaml
-	install -Dm755 "flatpak-json2yaml.py" "$_bindir/flatpak-json2yaml"
-	install -Dm644 "readme.md" -t "$_docdir"
+	install -Dm755 "flatpak-json2yaml/flatpak-json2yaml.py" "$_bindir/flatpak-json2yaml"
+	install -Dm644 "README.md" -t "$_docdir"
 
 	# Find all tools
 	for _toolname in $(find -type d -regex '^\.\/\w*$' | sed 's,\.\/,,'); do
