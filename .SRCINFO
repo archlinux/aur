@@ -1,6 +1,6 @@
 pkgbase = agentics-astt
 	pkgdesc = Agentics ASTT - the on-device speech engine, an encrypted Agentics component decrypted and run at runtime by the Agentics launcher
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://agentics.co.za
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = agentics-astt
 	depends = agentics
 	options = !strip
 	options = !debug
-	source = agentics-astt-0.1.4-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-astt-0.1.4-x86_64.enc
-	sha512sums = d5c0e4284f44dd4b6af1c4ee4ee1ea11b60d5d69ed92855b6672bc43d68d6b95a1e5d1e3b4dd217defd825d395e7b778729af66ab33035f2ad2766cad9da0ca2
+	source = agentics-astt-0.1.5-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-astt-0.1.5-x86_64.enc
+	sha512sums = e67c7673a485e76e8e7492b842f104259c5730a6b4e7a417561e280831a3bf51471141ba6661a7ffff789ca4c8f6d65219b6726f43e0bd107f67df15fb139dca
 
 pkgname = agentics-astt
