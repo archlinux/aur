@@ -1,8 +1,8 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastannoy
-pkgver=8
+pkgver=9
 pkgrel=1
-_commit=0535c9cddabd9794e783d24105a381cbc4ff359f
+_commit=3432edbcee1eaaa601e18709273331b2f9671f72
 pkgdesc="typos that are actually annoying"
 arch=('x86_64')
 url="https://github.com/CallMeAlphabet/fastannoy"

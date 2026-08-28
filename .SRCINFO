@@ -1,6 +1,6 @@
 pkgbase = fastannoy
 	pkgdesc = typos that are actually annoying
-	pkgver = 8
+	pkgver = 9
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastannoy
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = fastannoy
 	conflicts = sudp
 	conflicts = cst
 	conflicts = vom
-	source = git+https://github.com/CallMeAlphabet/fastannoy.git#commit=0535c9cddabd9794e783d24105a381cbc4ff359f
+	source = git+https://github.com/CallMeAlphabet/fastannoy.git#commit=3432edbcee1eaaa601e18709273331b2f9671f72
 	sha256sums = SKIP
 
 pkgname = fastannoy
