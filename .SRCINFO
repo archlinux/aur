@@ -1,7 +1,7 @@
 pkgbase = tailcat-git
 	pkgdesc = like netcat, but over Tailscale's data plane, without Tailscale's control plane
 	pkgver = c04c5afee
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tailscale/tailcat
 	arch = aarch64
 	arch = x86_64

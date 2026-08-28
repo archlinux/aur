@@ -2,7 +2,7 @@
 
 pkgname=tailcat-git
 pkgver=c04c5afee
-pkgrel=1
+pkgrel=2
 pkgdesc="like netcat, but over Tailscale's data plane, without Tailscale's control plane"
 url='https://github.com/tailscale/tailcat'
 arch=(aarch64 x86_64)
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$pkgname"
+  cd "$pkgname/cmd/${pkgname%-git}"
   export GOMODCACHE="${GOMODCACHE:-$srcdir/gomod}"
   go mod download -modcacherw
 }
