@@ -1,6 +1,6 @@
 # Maintainer: Philip Meulengracht <the_meulengracht@hotmail.com>
 pkgname=vchef
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 _gitname=bake
 epoch=
