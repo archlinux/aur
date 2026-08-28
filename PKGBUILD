@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=simpleshell-git
 _pkgname=SimpleShell
-pkgver=0.4.36.r0.g1a79288
+pkgver=0.4.44.r0.g80a5370
 _electronversion=40
 _nodeversion=22
 pkgrel=1
@@ -15,7 +15,6 @@ depends=(
     "electron${_electronversion}"
 )
 makedepends=(
-    'yarn'
     'nvm'
     'git'
     'curl'
@@ -96,8 +95,7 @@ build() {
     cd "${srcdir}/${pkgname//-/.}"
     _set_build_env
     _ensure_local_nvm
-    sed -i '/name: "@electron-forge\/plugin-local-electron"/,/^    },/d' forge.config.*
-    NODE_ENV=development    bun run package
+    bun run package
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"

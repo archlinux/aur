@@ -1,11 +1,10 @@
 pkgbase = simpleshell-git
 	pkgdesc = A Simple Terminal based on Electron & NodeJS.(Use system-wide electron)
-	pkgver = 0.4.36.r0.g1a79288
+	pkgver = 0.4.44.r0.g80a5370
 	pkgrel = 1
 	url = https://github.com/funkpopo/simpleshell
 	arch = any
 	license = Apache-2.0
-	makedepends = yarn
 	makedepends = nvm
 	makedepends = git
 	makedepends = curl
@@ -13,7 +12,7 @@ pkgbase = simpleshell-git
 	makedepends = npm
 	makedepends = jq
 	depends = electron40
-	provides = simpleshell=0.4.36
+	provides = simpleshell=0.4.44
 	conflicts = simpleshell
 	source = simpleshell.git::git+https://github.com/funkpopo/simpleshell.git
 	source = simpleshell.sh
