@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=all-logic
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc='ALL LOGIC is an unofficial multi-vendor logic analyzer host'
 arch=($CARCH)
@@ -40,7 +40,7 @@ makedepends=(
   vulkan-headers
 )
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('362bfaf73beda150bd16671691ba2a3293053aea0762eb43b86f050ba474e285')
+sha256sums=('b7d043385acf6486affb3e9a0cbda270efa541a51938c2e96ee2ea57c42f6383')
 
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
