@@ -1,5 +1,5 @@
 [cronet]
 source = "jq"
-url = "https://dl.google.com/dl/edgedl/chromeos/recovery/cloudready_recovery2.json"
-filter = '.[] | select(.channel == "LTR") | .chrome_version'
+url = "https://versionhistory.googleapis.com/v1/chrome/platforms/chromeos/channels/lts/versions"
+filter = '.versions[].version'
 include_regex = '144\.\d+\.\d+\.\d+'
