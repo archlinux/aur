@@ -1,0 +1,15 @@
+pkgbase = blue-yeti-autoreset
+	pkgdesc = Automatic recovery for stalled Blue Yeti Classic capture
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lbrooney/blue-yeti-autoreset
+	arch = x86_64
+	license = MIT
+	makedepends = pkgconf
+	depends = glibc
+	depends = libusb
+	depends = systemd
+	source = blue-yeti-autoreset-0.1.0.tar.gz::https://github.com/lbrooney/blue-yeti-autoreset/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 091407a1cdeca1166142d8d877f8be9f0530f4b4439ea3a3f230990f8c4dc41b
+
+pkgname = blue-yeti-autoreset
