@@ -1,6 +1,6 @@
 pkgbase = nerva-bin
 	pkgdesc = Fast service fingerprinting CLI for 170+ protocols (TCP/UDP/SCTP)
-	pkgver = 1.69.3
+	pkgver = 1.69.4
 	pkgrel = 1
 	url = https://github.com/praetorian-inc/nerva
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = nerva-bin
 	provides = nerva
 	conflicts = nerva
 	options = !strip
-	source_x86_64 = nerva-x86_64-1.69.3.tgz::https://github.com/praetorian-inc/nerva/releases/download/v1.69.3/nerva_1.69.3_linux_amd64.tar.gz
-	sha256sums_x86_64 = 500f86804fbf1a4043503cd17b1b301a338d1866ba595af2ff029d0376b83f4c
-	source_aarch64 = nerva-aarch64-1.69.3.tgz::https://github.com/praetorian-inc/nerva/releases/download/v1.69.3/nerva_1.69.3_linux_arm64.tar.gz
-	sha256sums_aarch64 = 457705f3dad7ccea527f78b2d7d776a525ec4307773acdc99b9014a0c23ff321
+	source_x86_64 = nerva-x86_64-1.69.4.tgz::https://github.com/praetorian-inc/nerva/releases/download/v1.69.4/nerva_1.69.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = b5876dec808b5ec11686be3a298a9b2799b09eef652670a9db2338265e7b01b9
+	source_aarch64 = nerva-aarch64-1.69.4.tgz::https://github.com/praetorian-inc/nerva/releases/download/v1.69.4/nerva_1.69.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6ece678618fee18702ef8fcd47bada0c6ad1c095a0cd78cd8287bdefe2f4c700
 
 pkgname = nerva-bin
