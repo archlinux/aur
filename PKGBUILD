@@ -2,7 +2,7 @@
 # Contributor: tmuxpack <tmuxpack@users.noreply.github.com>
 
 pkgname=tpack
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Tmux Plugin Manager"
 arch=(x86_64 aarch64)
@@ -11,7 +11,7 @@ license=(MIT)
 makedepends=(go)
 checkdepends=(git)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7718defcdcc69911cfad9eb2b4b0d83b68effce39fb2470e75aa023655279f9e')
+sha256sums=('d730b97b7f7c9dd70310bba6fa7ce9016e62624b16099612a468e13ba7853976')
 
 prepare() {
     cd "$pkgname-$pkgver"
