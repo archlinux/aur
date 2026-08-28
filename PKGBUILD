@@ -1,6 +1,6 @@
 # Maintainer: Marc Gibb
 pkgname=proton-command-center
-pkgver=1.26.0
+pkgver=1.26.1
 pkgrel=1
 pkgdesc="Per-game launch options, Proton selection, DLSS/FSR DLL management, native Ultra+ and RHI (ReShade/OptiScaler/DXVK) mod install, and controller navigation for Steam on Linux"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
     '7zip: OptiScaler install/update and DXVK Lilium HDR variant (both ship as .7z)'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5eb1895d79b24cf1d0a9b716473ac4e6df91ecea85a528a01e2f48353568d63d')
+sha256sums=('8a8831a87090f064e38ae0df58d0b3fe270acceb82bb43216871d166fb4441cd')
 
 package() {
     cd "$srcdir/$_repo-$pkgver"
