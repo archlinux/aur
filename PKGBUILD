@@ -6,13 +6,13 @@ _jdkver=17
 _jdkminor=0
 _jdkpatch=20
 _jdkmainver=${_jdkver}.${_jdkminor}.${_jdkpatch}
-_jdksubpatch=0
+_jdksubpatch=1
 _jdkfullver=${_jdkmainver}.${_jdksubpatch}
-_openj9ver=0.60.0
-_patchver=8
+_openj9ver=0.61.0
+_patchver=10
 pkgrel=1
 pkgdesc="IBM Semeru OpenJ9 with openjdk${_jdkver}"
-pkgver="${_jdkfullver}b${_patchver}_openj9_${_openj9ver}"
+pkgver="${_jdkfullver}_openj9_${_openj9ver}"
 arch=('x86_64')
 url="https://developer.ibm.com/languages/java/semeru-runtimes/downloads"
 license=('custom')
@@ -27,16 +27,16 @@ provides=(
 )
 conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
-source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}.tar.gz")
+source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkmainver}.${_patchver}/ibm-semeru-open-jdk_x64_linux_${_jdkmainver}.${_patchver}.tar.gz")
 
-b2sums=('a5844f8d433cc87c51d86221eb05d8e8be331dc08bd63f81227384e3e41d11f246ab4b8011e07ae7ae102562eb6422d5382cad7bc79fcdb7e350b0a16fb44061')
+sha256sums=('ba94140d369118e8a85ccfd8f099335a0bce09949d5b0eb5acce69ac0b4ec86c')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-openj9
 
 package() {
   # Install
   install -d "${pkgdir}/${_jvmdir}"
-  cd jdk-${_jdkmainver}+${_patchver}
+  cd jdk-${_jdkmainver}.${_patchver}
   cp -a bin include jmods lib release "${pkgdir}/${_jvmdir}/"
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
