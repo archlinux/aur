@@ -1,13 +1,14 @@
 pkgbase = commanderdog
 	pkgdesc = Multi-Tab Web & Desktop File Commander - By Woofson
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Woofson/commanderdog
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = rust
+	makedepends = pkgconf
 	depends = glibc
 	depends = sqlite
 	depends = libssh2
