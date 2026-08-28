@@ -1,12 +1,12 @@
 pkgbase = hp-bios-fetcher
 	pkgdesc = A simple tool for fetching HP BIOS updates
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://gitlab.com/QuantumToaster/hp-bios-fetcher
 	arch = x86_64
 	license = 0BSD
 	makedepends = cargo
-	source = hp-bios-fetcher-v0.2.1.tar.gz::https://gitlab.com/QuantumToaster/hp-bios-fetcher/-/archive/v0.2.1/hp-bios-fetcher-v0.2.1.tar.gz
-	b2sums = c938219b54b2dd7cb22ae028b6de8d47283d160226c825e06eeb1421f37a204001f20a1f052b5ef2dcabf16e990be728f2e23ea04d762c5be370172dbfe4295f
+	source = hp-bios-fetcher-v0.2.2.tar.gz::https://gitlab.com/QuantumToaster/hp-bios-fetcher/-/archive/v0.2.2/hp-bios-fetcher-v0.2.2.tar.gz
+	b2sums = 83fccafe169bac2089b9ecfba6789d46d1ae6bc04fd1a9feb7f1bf1a6d7c4c53468b6b1fd38f22a48071e808b8775b56419a317fd407b5d341634f76a3854d86
 
 pkgname = hp-bios-fetcher
