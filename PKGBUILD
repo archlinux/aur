@@ -1,6 +1,6 @@
 # Maintainer: Undercat037 <deltacatdeveloper@gmail.com>
 pkgname=aura-emerge
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Gentoo-style emerge for Arch Linux - installs from official repos, the AUR, and ABS, scans PKGBUILDs for supply-chain red flags before building, and runs untrusted build steps inside a bwrap sandbox."
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/Undercat037/aura-emerge"
 license=('GPL-3.0')
 depends=('git' 'sudo')
 optdepends=('devtools: for --abs support (pkgctl repo clone)'
-            'gnupg: for PGP verification when building from ABS'
-            'bubblewrap: sandboxed builds (falls back to unsandboxed with --no-sandbox)')
+  'gnupg: for PGP verification when building from ABS'
+  'bubblewrap: sandboxed builds (falls back to unsandboxed with --no-sandbox)')
 makedepends=('rust' 'cargo')
 conflicts=('portage' 'portage-git' 'aura-emerge-git')
 provides=('portageq')
@@ -18,7 +18,7 @@ backup=('etc/emerge/world.set')
 #git tag -a v1.27.0 -m "..." && git push origin v1.27.0
 source=("$pkgname::git+https://github.com/Undercat037/aura-emerge.git#tag=v$pkgver")
 #updpkgsums
-sha256sums=('91a2bb9463356da162f4942c924e0ac852c37940888d102df57f496c5608cdff')
+sha256sums=('26380a4aaa1dff32b630a66d71dbbfd337c772bc39dc41263c12c10f21fd61b1')
 
 build() {
   cd "aura-emerge"
