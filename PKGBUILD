@@ -32,8 +32,11 @@ makedepends=('git' 'curl' 'jq'
 optdepends=('bar-lobby' 'bar-lobby-git')
 #install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${_ghurl}.git${_tag}${_git_commit}"
+        "guard-invalid-ray-length.patch"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'f1ec1a8d70f05a9e917cf9edbc4274a7a5efe81dbc51ddfb6778040f65ec33f2'
+)
 
 pkgver() {
   # Set the repository owner and name
@@ -127,6 +130,11 @@ build() {
     cd "${srcdir}/${pkgname%-git}"
     git checkout  "${_tag}"
     git submodule update --init --recursive
+
+    ### Guards CQuadField::GetQuadsOnRay/GetQuadsOnWideRay against invalid ray lengths,
+    ### which abort hardened builds via std::clamp preconditions.
+    ### https://github.com/beyond-all-reason/RecoilEngine/issues/3018
+    patch -Np1 -i "${srcdir}/guard-invalid-ray-length.patch"
 
     # Fix 1: Missing <cstdint> for UINT8_MAX
     sed -i '/#include <string>/i #include <cstdint>' rts/Game/ChatMessage.h
