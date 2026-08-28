@@ -1,6 +1,6 @@
 # Maintainer: NebulaTechs <NebulaTechs@users.noreply.github.com>
 pkgname=xmclauncher-bin
-pkgver=0.67.2
+pkgver=0.67.3
 pkgrel=1
 pkgdesc="X Minecraft Launcher - A modern, open-source Minecraft Launcher (repackaged from the official .pacman artifact)"
 arch=('x86_64')
@@ -22,10 +22,10 @@ makedepends=('libarchive')
 options=('!strip' '!debug')
 
 # Official pre-built pacman package (a zstd-compressed pacman archive).
-source_x86_64=("xmcl-0.67.2-x64.pacman::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.67.2/xmcl-0.67.2-x64.pacman")
+source_x86_64=("xmcl-0.67.3-x64.pacman::https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.67.3/xmcl-0.67.3-x64.pacman")
 
 # Updated automatically by CI. The placeholder is replaced by scripts/update.sh.
-sha256sums_x86_64=('c9b86136bbbaf9067abd3c6b35ce23dddff0689d071c0a01a5ce3c5c2f64b2e8')
+sha256sums_x86_64=('4c7e58a51bc95b9ef7a7a910cf9f9eff5b0ed65e1bb52a16aa7398ed855fc118')
 
 package() {
   # A .pacman file is a pacman package archive. Extract it, then install only the
