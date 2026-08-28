@@ -1,6 +1,6 @@
 pkgbase = netsukuku-rs-bin
 	pkgdesc = Rust reimplementation of the Netsukuku mesh routing protocol: QSPN v2, Hooking, Coordinator, PeerServices, ANDNA (prebuilt static binary)
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/M0Rf30/netsukuku-rs
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = netsukuku-rs-bin
 	provides = netsukuku-rs
 	conflicts = netsukuku-rs
 	backup = etc/ntkd/ntkd.toml
-	source = ntkd.service::https://github.com/M0Rf30/netsukuku-rs/raw/v0.1.6/contrib/systemd/ntkd.service
-	source = ntkd.toml::https://github.com/M0Rf30/netsukuku-rs/raw/v0.1.6/contrib/systemd/ntkd.toml
+	source = ntkd.service::https://github.com/M0Rf30/netsukuku-rs/raw/v0.1.7/contrib/systemd/ntkd.service
+	source = ntkd.toml::https://github.com/M0Rf30/netsukuku-rs/raw/v0.1.7/contrib/systemd/ntkd.toml
 	sha256sums = 7f770bece8fdd52a7761951de92c2b5ff45ada09e24d194b2f4cb3b76198c660
 	sha256sums = 92e4e2fa58defd6f809bdda8df063e5dc947cb9d71a7df538a06586608b38fb1
-	source_x86_64 = ntkd-0.1.6-x86_64-unknown-linux-musl.tar.gz::https://github.com/M0Rf30/netsukuku-rs/releases/download/v0.1.6/ntkd-0.1.6-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 6f39e6885f1704e8e0146181fdf59301a13021df89860e97fc6dbb6290a01804
-	source_aarch64 = ntkd-0.1.6-aarch64-unknown-linux-musl.tar.gz::https://github.com/M0Rf30/netsukuku-rs/releases/download/v0.1.6/ntkd-0.1.6-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = c7ad635cfe57139d9aacfd0c09997e8c2bea0032052a6a56158609abb2e5866a
+	source_x86_64 = ntkd-0.1.7-x86_64-unknown-linux-musl.tar.gz::https://github.com/M0Rf30/netsukuku-rs/releases/download/v0.1.7/ntkd-0.1.7-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = d51f0ef85961c9ecc756539b39ce056c3f8e84e575378fab16e6106f98c4165d
+	source_aarch64 = ntkd-0.1.7-aarch64-unknown-linux-musl.tar.gz::https://github.com/M0Rf30/netsukuku-rs/releases/download/v0.1.7/ntkd-0.1.7-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = c660540ffbd66308f1f460af71970a750dc31ee8617d3e8b7832512940afe183
 
 pkgname = netsukuku-rs-bin
