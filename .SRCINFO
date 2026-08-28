@@ -1,0 +1,19 @@
+pkgbase = zotgo-bin
+	pkgdesc = CLI for a running Zotero 7+ desktop app
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/CameronBrooks11/zotgo
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	provides = zotgo=0.12.0
+	conflicts = zotgo
+	conflicts = zot
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/CameronBrooks11/zotgo/releases/download/v0.12.0/zot_0.12.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = cc546fb57c56c3af50749e0d8e060184a0513149183549c9f5784c38071f76ac
+	source_aarch64 = https://github.com/CameronBrooks11/zotgo/releases/download/v0.12.0/zot_0.12.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = d35e9ab25f713ba95dbba54011240be95bfd36b91690303fb4f654c6a51c0e00
+
+pkgname = zotgo-bin
