@@ -1,6 +1,6 @@
 # Maintainer: Luis Villamarin <luisvillamarin at gmail dot com>
 pkgname=rhisper
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Dictation at cursor for Linux"
 arch=('x86_64' 'aarch64')
@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/lv10/rhisper/archive/refs/t
 # packaging/README or the AUR release CI job). The version pushed to AUR on
 # each release has this replaced with the tagged tarball's real sha256sum -
 # AUR convention discourages SKIP for a fixed-URL source.
-sha256sums=('b0790d6371a4e2c7cc71d6d6ed6a9934387a6835d33946d02ddda397281e08df')
+sha256sums=('541cd30ba6798d17d073856d0315b90373bc66b77c43cf347c6e33dd4e617d8e')
 
 prepare() {
     cd "$pkgname-$pkgver"
