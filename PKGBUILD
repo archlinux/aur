@@ -2,7 +2,7 @@
 
 pkgbase=dosr
 pkgname=('dosr')
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='A better alternative to sudo(-rs)/su • Fast • Memory-safe • Security-oriented'
 url='https://lechatp.github.io/RootAsRole/'
@@ -10,7 +10,7 @@ license=('LGPL-3.0-or-later')
 arch=('x86_64')
 options=('!debug')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/LeChatP/RootAsRole/archive/v${pkgver}.tar.gz")
-sha256sums=('77dd6e520c9cd1c804acc3f601f336c3cd7bc8a265cb95b6f4648cb9dac79e9b')
+sha256sums=('127d1a1691b8aec3f17b47bca0f1588f24525d2854508360034ee3b6d5299a0f')
 depends=('pcre2' 'pam' 'libseccomp' 'glibc' 'gcc-libs')
 makedepends=(cargo e2fsprogs)
 optdepends=('pandoc: for building man pages')
