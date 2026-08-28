@@ -17,7 +17,7 @@
 # archival `experimental` tag, NOT `experimental-latest` (whose assets are
 # deleted and re-uploaded on every CI build, 404ing published URLs).
 pkgname=ue4ss-experimental-zdev
-pkgver=3.0.1_1092_g0c5bff75
+pkgver=3.0.1_1093_gba2efd55
 pkgrel=1
 pkgdesc="Lua/C++ mod loader DLLs for Win64 Unreal Engine 4/5 games (experimental, with debug symbols and dev tool mods)"
 arch=('any')
@@ -32,7 +32,7 @@ options=('!strip' '!debug')
 _verstr="${pkgver//_/-}"
 source=("ue4ss-experimental-zdev-${pkgver}.zip::https://github.com/UE4SS-RE/RE-UE4SS/releases/download/experimental/zDEV-UE4SS_v${_verstr}.zip"
         "ue4ss-install")
-sha256sums=('dbd6b91180c0c6d4f1a6734af42bea264a2f00964bd38de6515f6b05966b84fc'
+sha256sums=('f4e2cef8a8d5885ff3adcd017154c9062e3ee2c8ab4d3ffecfb11b8c1c4cb69c'
             'd5ae8372ecdc7171c7a6179511bf9dd8fe1905a83eac03abf7ae1292fe780cb0')
 
 latestver() {
