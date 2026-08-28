@@ -1,7 +1,7 @@
 pkgbase = imibrowser
 	pkgdesc = Freeware MIB browser tool for SNMP API (requires SLA acceptance)
 	pkgver = 16.0.6003
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ireasoning.com/mibbrowser.shtml
 	install = imibrowser.install
 	arch = x86_64

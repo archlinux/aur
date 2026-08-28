@@ -2,7 +2,7 @@
 
 pkgname=imibrowser
 pkgver=16.0.6003
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeware MIB browser tool for SNMP API (requires SLA acceptance)"
 
 url="https://www.ireasoning.com/mibbrowser.shtml"
