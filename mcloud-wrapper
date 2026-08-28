@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 禁用 core dump，避免子进程（backupDisk / uploadDownload）在退出析构阶段因官方代码缺陷触发段错误刷屏系统日志
+# 禁用 core dump
 ulimit -c 0
 
 REAL_HOME="$HOME"
@@ -25,10 +25,10 @@ if [ -d "$LOG_DIR" ] && [ ! -L "$LOG_DIR" ]; then
     rm -rf "$LOG_DIR"
 fi
 
-# 把日志目录软链接到内存盘里
+# 把日志目录软链接到内存盘
 if [ ! -L "$LOG_DIR" ]; then
     ln -s "$TMP_LOG_DIR" "$LOG_DIR"
 fi
 # ===============================================================
 
-exec /opt/apps/com.cmic.mcloud/mcloud "$@" >/dev/null 2>&1
+exec /opt/mcloud/mcloud "$@" >/dev/null 2>&1

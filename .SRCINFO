@@ -1,7 +1,7 @@
 pkgbase = mcloud-electron
-	pkgdesc = 中国移动云盘
+	pkgdesc = 中国移动云盘 (麒麟桌面版)
 	pkgver = 1.1.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://yun.139.com/
 	install = mcloud.install
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = mcloud-electron
 	source = mcloud.install
 	sha256sums = 0e28a7fe6125e32c06e27c3b7645acb3bf1e90decadc36327bbb79916aa6f4b0
 	sha256sums = 21533e55013e63467e4c5be4332600b7c8a98bf9df3181e9ddc57c2bee7deb08
-	sha256sums = d26f5d10556bad47b1a0380399a486ff1cb58361fd8aa85d22bd19457f8c53b1
+	sha256sums = 38a4c7e5231304bba069367c0d25b6b39daaebb644b11ea2546a391288237e4a
 	sha256sums = be4ae686e2e809ba03bd5976a0561e88a7b7b6cddee8011f486b3335c713075c
 
 pkgname = mcloud-electron
