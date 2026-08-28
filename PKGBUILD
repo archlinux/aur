@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastannoy-bin
-pkgver=0
+pkgver=15
 pkgrel=1
 pkgdesc="typos that are actually annoying, prebuilt binary"
 arch=('x86_64')
@@ -12,7 +12,8 @@ provides=('fastannoy' 'gti' 'gerp' 'sudp' 'cst' 'vom')
 conflicts=('fastannoy' 'gti' 'gerp' 'sudp' 'cst' 'vom')
 source=("fastannoy::https://github.com/CallMeAlphabet/fastannoy/releases/download/latest/fastannoy-x86_64-linux-musl"
         "fastannoy.sha256::https://github.com/CallMeAlphabet/fastannoy/releases/download/latest/fastannoy-x86_64-linux-musl.sha256")
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('049b0547456630862022829cf68b139d716069a84a9cd042f9dc3e9501b1653e'
+            'f2e9e29df8876aa4028488a4915761dded9c3cf24774c4cc5f0b3639625ff052')
 
 typos=('gti' 'gerp' 'sudp' 'cst' 'vom')
 

@@ -1,6 +1,6 @@
 pkgbase = fastannoy-bin
 	pkgdesc = typos that are actually annoying, prebuilt binary
-	pkgver = 0
+	pkgver = 15
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastannoy
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = fastannoy-bin
 	conflicts = vom
 	source = fastannoy::https://github.com/CallMeAlphabet/fastannoy/releases/download/latest/fastannoy-x86_64-linux-musl
 	source = fastannoy.sha256::https://github.com/CallMeAlphabet/fastannoy/releases/download/latest/fastannoy-x86_64-linux-musl.sha256
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 049b0547456630862022829cf68b139d716069a84a9cd042f9dc3e9501b1653e
+	sha256sums = f2e9e29df8876aa4028488a4915761dded9c3cf24774c4cc5f0b3639625ff052
 
 pkgname = fastannoy-bin
