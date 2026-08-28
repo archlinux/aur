@@ -1,6 +1,6 @@
 # Maintainer: 2-4601 <AUR@othermemory.org>
 pkgname=atostekid
-pkgver=4.5.0.0
+pkgver=4.5.1.0
 pkgrel=1
 pkgdesc="New desktop application for Finnish electronic ID cards"
 arch=("x86_64")
@@ -28,13 +28,13 @@ source=(
     "com.atostek.atostekid.desktop"
     "com.atostek.atostekid.png"
 )
-sha256sums=('14d2e980e27e8bdd0a27a3bec925864018540ae3f09baf146f19c4986890b3e4'
+sha256sums=('c311445a569516705625c1242653a5cc7ecfa1f616946d675bef71000274a0bf'
             '42cf9a65e4913b42ea9b63ebe171050589bdf00d7a48df26d793b394c39efefa'
             '14bb723654f042e1c1973c0463156ee0299f320061e001726adb8391f8e18aeb'
             'fdfad6cf56013d55d5e7516a093494091fcb9c8a27409d488e780dd2ebebe895')
 
 package() {
-    tar xf data.tar.zst -C "${pkgdir}"
+    tar xf data.tar.xz -C "${pkgdir}"
 
     # These libraries are not needed because they can be satisfied with system and AUR packages
     rm -rf "${pkgdir}/usr/lib/atostekid"
