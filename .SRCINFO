@@ -1,6 +1,6 @@
 pkgbase = sqly-bin
 	pkgdesc = Eaisly execute SQL against CSV/TSV/LTSV/JSON and Microsoft Excel™ with shell
-	pkgver = 1.1.0
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/nao1215/sqly
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = sqly-bin
 	provides = sqly
 	conflicts = sqly
 	options = !strip
-	source = sqly-1.1.0-checksums.txt::https://github.com/nao1215/sqly/releases/download/v1.1.0/checksums.txt
-	sha256sums = 39012fbed39b3ee557499a6d325493d6ca9e3183f8f1e9d5e192cb0230c19a7e
-	source_x86_64 = sqly-1.1.0-x86_64.tgz::https://github.com/nao1215/sqly/releases/download/v1.1.0/sqly_1.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6cfddc55faf460fd22c855578eec0ddd0ede9a67da79f990dcd7639f9e2f66c1
-	source_aarch64 = sqly-1.1.0-aarch64.tgz::https://github.com/nao1215/sqly/releases/download/v1.1.0/sqly_1.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = e65c148a87124c77074ecd00423aa05adf93b3bd9deaf9417171ea1dff0d1db3
+	source = sqly-1.2.2-checksums.txt::https://github.com/nao1215/sqly/releases/download/v1.2.2/checksums.txt
+	sha256sums = 485911d5531aedaeea28b065ac0fb42267b154287ee499dfd110f79768c7a472
+	source_x86_64 = sqly-1.2.2-x86_64.tgz::https://github.com/nao1215/sqly/releases/download/v1.2.2/sqly_1.2.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = dc82d48448279938cea04682b020a1505f14579e17b469310a093faf683c77b0
+	source_aarch64 = sqly-1.2.2-aarch64.tgz::https://github.com/nao1215/sqly/releases/download/v1.2.2/sqly_1.2.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 16534bd85b7762e6252f0a8e632a1d0dadcbcebc310ef735f2bb27731e958ded
 
 pkgname = sqly-bin
