@@ -1,14 +1,14 @@
 # Maintainer: execRooted <rooted@execrooted.com>
 
 pkgname=filebyte
-pkgver=1.4.7
+pkgver=2.3.4
 pkgrel=1
-pkgdesc="A CLI tool to list files and directories with sizes in various units"
-arch=('x86_64')
+pkgdesc="A CLI tool for analyzing files and directories with detailed metadata, permissions, and size information"
+arch=('x86_64' 'aarch64')
 url="https://github.com/execRooted/filebyte"
 license=('MIT')
-depends=()
-makedepends=('rust' 'cargo')
+depends=('gcc-libs')
+makedepends=('cargo' 'git')
 source=("$url/archive/v$pkgver.tar.gz"
         "install.sh"
         "uninstall.sh")
@@ -23,7 +23,8 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/local/bin/$pkgname"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "target/release/fbt" "$pkgdir/usr/bin/fbt"
     install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm755 "install.sh" "$pkgdir/usr/share/$pkgname/install.sh"

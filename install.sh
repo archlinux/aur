@@ -8,7 +8,7 @@ fi
 
 clear
 echo -e "\033[34mfilebyte installer\033[0m"
-echo -e "\033[34m=================\033[0m"
+echo -e "\033[34m==================\033[0m"
 echo -e "\033[34mby execRooted\033[0m"
 echo ""
 
@@ -165,14 +165,18 @@ if ! cp target/release/filebyte /usr/local/bin/filebyte; then
     echo -e "\033[0;31m[ERROR]\033[0m Failed to install filebyte."
     exit 1
 fi
+if ! cp target/release/fbt /usr/local/bin/fbt; then
+    echo -e "\033[0;31m[ERROR]\033[0m Failed to install fbt."
+    exit 1
+fi
 
-if ! chmod +x /usr/local/bin/filebyte; then
-    echo -e "\033[0;31m[ERROR]\033[0m Failed to make filebyte executable."
+if ! chmod +x /usr/local/bin/filebyte /usr/local/bin/fbt; then
+    echo -e "\033[0;31m[ERROR]\033[0m Failed to make binaries executable."
     exit 1
 fi
 
 echo -e "\033[36m[SUCCESS]\033[0m Installation complete!"
-echo -e "\033[1;33m[INFO]\033[0m You can now run 'filebyte' from anywhere."
-echo -e "\033[1;33m[USAGE]\033[0m To run the filebyte, simply type: filebyte"
-echo -e "\033[1;33m[USAGE]\033[0m For help run filebyte -h"
+echo -e "\033[1;33m[INFO]\033[0m You can now run 'filebyte' or 'fbt' from anywhere."
+echo -e "\033[1;33m[USAGE]\033[0m To run the tool, simply type: filebyte"
+echo -e "\033[1;33m[USAGE]\033[0m For help run: filebyte -h"
 
