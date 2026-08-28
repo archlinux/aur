@@ -1,13 +1,14 @@
 # Maintainer: Bolt J Woofson <bolt@boop.no>
 pkgname=commanderdog
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Multi-Tab Web & Desktop File Commander - By Woofson"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Woofson/commanderdog"
 license=('MIT')
 depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates')
 makedepends=('cargo' 'rust' 'pkgconf')
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('573431f1f894b2f5208173a46788345db1ca75cc4a71d8fac6ed96a6934979a2')
 
@@ -23,7 +24,7 @@ build() {
     export CARGO_TARGET_DIR=target
     export LIBSSH2_SYS_USE_PKG_CONFIG=1
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
-    unset RUSTFLAGS
+    export RUSTFLAGS="-C link-arg=-Wl,--no-as-needed"
     cargo build --release --frozen
 }
 
