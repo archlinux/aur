@@ -1,0 +1,12 @@
+pkgbase = linuxmirrors
+	pkgdesc = GNU/Linux mirror switching script - automatically detect and switch system package manager mirrors
+	pkgver = 2026.06.16
+	pkgrel = 1
+	url = https://github.com/SuperManito/LinuxMirrors
+	arch = any
+	license = MIT
+	depends = bash
+	source = linuxmirrors-2026.06.16.tar.gz::https://github.com/SuperManito/LinuxMirrors/archive/cfc27a08aee85e7a72174aba89b22b4c0b05896d.tar.gz
+	sha256sums = SKIP
+
+pkgname = linuxmirrors
