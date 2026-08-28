@@ -1,18 +1,3 @@
-From 981aec12f63eeb36d4a2617235538a6edefb6a54 Mon Sep 17 00:00:00 2001
-From: Jasper van Bourgognie <jasper@knoop.je>
-Date: Mon, 15 Sep 2025 07:42:51 +0200
-Subject: [PATCH] meson: build options for 3/4 finger dragging
-
-Add an option to set the default 3FG drag behaviour.
-
-Add an option no to disambiguate between swipe and drag in 3 finger
-mode, but always go to drag
----
- meson.build                      | 13 +++++++++++++
- meson_options.txt                |  9 +++++++++
- src/evdev-mt-touchpad-gestures.c | 12 +++++++++++-
- 3 files changed, 33 insertions(+), 1 deletion(-)
-
 diff --git a/meson.build b/meson.build
 index 85493425..165e1877 100644
 --- a/meson.build
@@ -55,53 +40,28 @@ index 20d7e05e..4dc4f04e 100644
 +	value: '3fg',
 +	description: 'Default value for the 3-finger drag config option (default=3fg)')
 diff --git a/src/evdev-mt-touchpad-gestures.c b/src/evdev-mt-touchpad-gestures.c
-index 03a081c0..3cce1ed9 100644
+index 03a081c0..18a8b3ec 100644
 --- a/src/evdev-mt-touchpad-gestures.c
 +++ b/src/evdev-mt-touchpad-gestures.c
-@@ -42,7 +42,9 @@ enum gesture_cancelled {
- 
- #define HOLD_AND_MOTION_THRESHOLD 0.5 /* mm */
- #define PINCH_DISAMBIGUATION_MOVE_THRESHOLD 1.5 /* mm */
-+#ifndef DRAG_3FG_ALWAYS_DRAG
- #define DRAG_3FG_OR_SWIPE_MOVE_THRESHOLD 5 /* mm */
-+#endif
- 
- enum gesture_event {
- 	GESTURE_EVENT_RESET,
-@@ -1053,10 +1055,12 @@ tp_gesture_handle_event_on_state_3fg_drag_or_swipe(struct tp_dispatch *tp,
- 						   enum gesture_event event,
- 						   usec_t time)
+@@ -1908,6 +1908,9 @@ tp_gesture_handle_state_3fg_drag_or_swipe(struct tp_dispatch *tp, usec_t time)
+ static void
+ tp_gesture_handle_state_3fg_drag_or_swipe_start(struct tp_dispatch *tp, usec_t time)
  {
-+#ifndef DRAG_3FG_ALWAYS_DRAG
- 	struct tp_touch *first = tp->gesture.touches[0],
- 			*second = tp->gesture.touches[1];
- 	struct phys_coords first_moved, second_moved;
- 	double first_mm, second_mm;
-+#endif
- 
- 	switch (event) {
- 	case GESTURE_EVENT_RESET:
-@@ -1090,6 +1094,11 @@ tp_gesture_handle_event_on_state_3fg_drag_or_swipe(struct tp_dispatch *tp,
- 	case GESTURE_EVENT_3FG_DRAG_OR_SWIPE_TIMEOUT:
- 		libinput_timer_cancel(&tp->gesture.drag_3fg_or_swipe_timer);
- 
 +#ifdef DRAG_3FG_ALWAYS_DRAG
-+		/* Cancel the swipe */
-+		tp_gesture_cancel(tp, time);
-+		tp->gesture.state = GESTURE_STATE_3FG_DRAG_START;
++	tp->gesture.state = GESTURE_STATE_3FG_DRAG_START;
 +#else
- 		first_moved = tp_gesture_mm_moved(tp, first);
- 		second_moved = tp_gesture_mm_moved(tp, second);
- 		first_mm = hypot(first_moved.x, first_moved.y);
-@@ -1101,6 +1110,7 @@ tp_gesture_handle_event_on_state_3fg_drag_or_swipe(struct tp_dispatch *tp,
- 			tp_gesture_cancel(tp, time);
- 			tp->gesture.state = GESTURE_STATE_3FG_DRAG_START;
- 		}
+ 	const struct normalized_coords zero = { 0.0, 0.0 };
+ 	gesture_notify_swipe(&tp->device->base,
+ 			     time,
+@@ -1917,6 +1920,7 @@ tp_gesture_handle_state_3fg_drag_or_swipe_start(struct tp_dispatch *tp, usec_t t
+ 			     &zero);
+ 	tp->gesture.state = GESTURE_STATE_3FG_DRAG_OR_SWIPE;
+ 	tp_gesture_set_3fg_drag_3fg_or_swipe_timer(tp, time);
 +#endif
- 		break;
- 	}
  }
-@@ -2347,7 +2357,7 @@ tp_3fg_drag_get_enabled(struct libinput_device *device)
+ 
+ static void
+@@ -2347,7 +2351,7 @@ tp_3fg_drag_get_enabled(struct libinput_device *device)
  static enum libinput_config_3fg_drag_state
  tp_3fg_drag_default(struct tp_dispatch *tp)
  {
@@ -110,6 +70,3 @@ index 03a081c0..3cce1ed9 100644
  }
  
  static enum libinput_config_3fg_drag_state
--- 
-2.54.0
-

@@ -4,7 +4,7 @@
 _pkgname=libinput
 pkgname=$_pkgname-three-finger-drag
 pkgver=1.31.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Input device management and event handling library"
 url="https://wayland.freedesktop.org/libinput/doc/latest/"
 arch=(x86_64)
@@ -49,7 +49,7 @@ source=(
 )
 b2sums=(
   'SKIP'
-  '58ef451c3c28748b60a7ed928059b43c7b17df6e5fb6cf990d2d745e0fc3e3dd3ad9e0076007e83c0c491a9e12813f5eba49b1a9c390ec58cf0ca8206743e190'
+  '95eaae0767077122fa973a3dcc293d5cc7760fb668e349bcfdc6391e27e0b5bb331b31addcc854706c8335b74739ea2baffb012881b2592b66602f932df08879'
 )
 validpgpkeys=(
   3C2C43D9447D5938EF4551EBE23B7E70B467F0BF # Peter Hutterer (Who-T) <office@who-t.net>
