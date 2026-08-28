@@ -1,5 +1,5 @@
 pkgname=openwhispr-bin
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Voice-to-text dictation app with local Whisper/Parakeet and cloud models"
 arch=('x86_64')
@@ -32,7 +32,7 @@ options=('!strip' '!debug')
 source=(
   "https://github.com/OpenWhispr/openwhispr/releases/download/v${pkgver}/OpenWhispr-${pkgver}-linux-x64.tar.gz"
 )
-sha256sums=('cecdb37c2a19ca2911273cd7d901fb360b2d96745a832216725030b30009eede')
+sha256sums=('6abea0da48d4b72c9f59952f7e11b5ee8ae94fa0655a7f1e6f6d3a088d230651')
 # ^ Placeholder: the CI workflow replaces this with the real SHA-256
 #   via `updpkgsums` every time the version is bumped.
 
