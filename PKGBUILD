@@ -4,7 +4,7 @@
 _reponame=ChatLab
 pkgbase="${_reponame,,}"
 pkgname=("${pkgbase}-cli") # desktop已无法构建
-pkgver=0.36.2
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="Rediscover your social memories with local, AI-powered analysis"
 arch=('x86_64' 'aarch64')
@@ -18,7 +18,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}-web@.service")
         # "${pkgbase}-desktop.sh"
         # "${pkgbase}.desktop"
-sha256sums=('ae3d1e7e60c8cc4087c3e6ecab2a215745e8bcae0a01a3973856eef5fe125a19'
+sha256sums=('867d07785e76f3b8d4458275700f845056b2999f32e2fd0b4b8731de94f89d3f'
             'fa7f906b1ee598b988b8003dfa9f9d554d7d45d6220f3f56dffde9ae34e2fe6d'
             'b006b2086c9da9baf8bd17f369ec09164a9c356663930fae595cf2b5cafae490'
             '2cdf8e8924b9290bfa563d809eedb8ed3fc1910cba17fad31ffb46ddd6de0a33'
