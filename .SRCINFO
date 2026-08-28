@@ -1,0 +1,7 @@
+pkgbase = hyprland-fixes
+	pkgver = 0.0.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+
+pkgname = hyprland-fixes
