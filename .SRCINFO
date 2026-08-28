@@ -1,0 +1,24 @@
+pkgbase = mpxcast
+	pkgdesc = FM radio streaming server for RTL-SDR USB receivers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/krzemin/mpxcast
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	depends = libmicrohttpd
+	depends = liquid-dsp
+	depends = rtl-sdr
+	backup = etc/conf.d/mpxcast
+	source = mpxcast-1.0.0.tar.gz::https://github.com/krzemin/mpxcast/archive/refs/tags/v1.0.0.tar.gz
+	source = mpxcast.service
+	source = mpxcast.conf
+	source = mpxcast.sysusers
+	sha256sums = 4c02d5ce7009431c191acf4cb8a25b384ccf22a2e17b4ade60a0739f9cf98b18
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mpxcast

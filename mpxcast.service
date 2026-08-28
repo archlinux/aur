@@ -1,0 +1,16 @@
+[Unit]
+Description=MPXCast RTL-SDR FM streaming server
+After=network.target
+
+[Service]
+Type=simple
+User=mpxcast
+Group=mpxcast
+SupplementaryGroups=rtlsdr
+EnvironmentFile=/etc/conf.d/mpxcast
+ExecStart=/usr/bin/mpxcast --host=${MPXCAST_HOST} --port=${MPXCAST_PORT} --stereo=${MPXCAST_STEREO} --rds=${MPXCAST_RDS} --log-level=${MPXCAST_LOG_LEVEL} ${MPXCAST_EXTRA_OPTIONS}
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
