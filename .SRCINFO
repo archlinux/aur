@@ -1,6 +1,6 @@
 pkgbase = hyprcaffeine
-	pkgdesc = ☕ Idle inhibition utility for Hyprland — caffeine for your Wayland compositor
-	pkgver = 0.9.2
+	pkgdesc = ☕ Idle inhibition utility for Hyprland & Wayland compositors with Quickshell, Waybar, and Walker/Wofi menus
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/hbuddenberg/hyprcaffeine
 	install = hyprcaffeine.install
@@ -11,10 +11,13 @@ pkgbase = hyprcaffeine
 	depends = hyprland
 	depends = hypridle
 	depends = socat
+	optdepends = quickshell: modern native QML modal menu and Omarchy status bar widget
+	optdepends = walker: application launcher menu frontend
+	optdepends = wofi: Wayland application launcher
+	optdepends = rofi-wayland: dmenu replacement for Wayland
 	optdepends = gum: interactive menu and styled prompts
 	optdepends = libnotify: desktop notifications
-	optdepends = walker: menu frontend
-	source = hyprcaffeine-0.9.2.tar.gz::https://github.com/hbuddenberg/hyprcaffeine/releases/download/v0.9.2/hyprcaffeine-0.9.2.tar.gz
-	sha256sums = 37f14703aa3f6d0b466400a5ee831a4bbaf409a3c2ac53d643694a6c17b3ce56
+	source = hyprcaffeine-2.0.0.tar.gz::https://github.com/hbuddenberg/hyprcaffeine/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 9af346e0f10383084cb65442d7fb11922e456ea47a362163b754efd92354f5a6
 
 pkgname = hyprcaffeine

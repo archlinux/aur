@@ -1,20 +1,23 @@
 # Maintainer: Hans-Dieter Buddenberg <hbuddenberg@gmail.com>
 pkgname=hyprcaffeine
-pkgver=0.9.2
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='☕ Idle inhibition utility for Hyprland — caffeine for your Wayland compositor'
+pkgdesc='☕ Idle inhibition utility for Hyprland & Wayland compositors with Quickshell, Waybar, and Walker/Wofi menus'
 arch=(any)
 url='https://github.com/hbuddenberg/hyprcaffeine'
 license=(MIT)
 depends=(bash jq hyprland hypridle socat)
 optdepends=(
+    'quickshell: modern native QML modal menu and Omarchy status bar widget'
+    'walker: application launcher menu frontend'
+    'wofi: Wayland application launcher'
+    'rofi-wayland: dmenu replacement for Wayland'
     'gum: interactive menu and styled prompts'
     'libnotify: desktop notifications'
-    'walker: menu frontend'
 )
 install=hyprcaffeine.install
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v0.9.2/$pkgname-$pkgver.tar.gz")
-sha256sums=('37f14703aa3f6d0b466400a5ee831a4bbaf409a3c2ac53d643694a6c17b3ce56')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('9af346e0f10383084cb65442d7fb11922e456ea47a362163b754efd92354f5a6')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver" || return
@@ -36,13 +39,22 @@ package() {
     install -dm755 "${pkgdir}/usr/share/hyprcaffeine/scripts"
     install -Dm755 scripts/*.sh "${pkgdir}/usr/share/hyprcaffeine/scripts/"
 
+    # Quickshell UI Modal
+    install -Dm644 ui/shell.qml "${pkgdir}/usr/share/hyprcaffeine/ui/shell.qml"
+
+    # Omarchy Quickshell Bar Plugin
+    install -dm755 "${pkgdir}/usr/share/hyprcaffeine/plugins/omarchy"
+    install -Dm644 plugins/omarchy/manifest.json "${pkgdir}/usr/share/hyprcaffeine/plugins/omarchy/manifest.json"
+    install -Dm644 plugins/omarchy/BarWidget.qml "${pkgdir}/usr/share/hyprcaffeine/plugins/omarchy/BarWidget.qml"
+
     # Default configuration
     install -Dm644 config/default.yaml "${pkgdir}/usr/share/hyprcaffeine/config/default.yaml"
 
     # UI dictionary (consumed by scripts/ui-engine.sh — must sit one dir above scripts/)
     install -Dm644 config/ui-dictionary.json "${pkgdir}/usr/share/hyprcaffeine/config/ui-dictionary.json"
 
-    # Polkit rule template
+    # Polkit rules (installed directly to system polkit rules dir)
+    install -Dm644 config/polkit.rules "${pkgdir}/usr/share/polkit-1/rules.d/50-hyprcaffeine.rules"
     install -Dm644 config/polkit.rules "${pkgdir}/usr/share/hyprcaffeine/polkit.rules"
 
     # Systemd user service
@@ -57,7 +69,9 @@ package() {
     # Documentation
     install -dm755 "${pkgdir}/usr/share/doc/hyprcaffeine"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/hyprcaffeine/"
-    install -Dm644 docs/*.md "${pkgdir}/usr/share/doc/hyprcaffeine/"
+    if compgen -G "docs/*.md" > /dev/null; then
+        install -Dm644 docs/*.md "${pkgdir}/usr/share/doc/hyprcaffeine/"
+    fi
 
     # License
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
