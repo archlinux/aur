@@ -1,16 +1,15 @@
 post_install() {
-  echo ":: Nạp kernel module uinput nếu chưa có:"
-  echo "   sudo modprobe uinput"
-  echo ":: Đảm bảo các quy tắc systemctl và udev được nhận diện:"
-  echo "   sudo systemd-sysusers"
-  echo "   sudo udevadm control --reload-rules && sudo udevadm trigger"
-  echo "   systemctl --user daemon-reload"
-  echo ":: Thêm user vào nhóm input (nếu cần):"
-  echo "   sudo usermod -aG input \$USER"
-  echo ":: Khởi động lại Fcitx5:"
-  echo "   fcitx5 -r -d"
+  echo ":: ==================================================================="
+  echo ":: [fcitx5-lilypad] KÍCH HOẠT DỊCH VỤ / SERVICE ACTIVATION (1-TIME):"
+  echo ":: Vui lòng chạy lệnh sau để bật daemon xóa uinput và nạp lại Fcitx5:"
+  echo "::"
+  echo "::   sudo systemctl enable --now fcitx5-lilypad-server@\$USER.service"
+  echo "::   fcitx5 -r -d"
+  echo ":: ==================================================================="
 }
 
 post_upgrade() {
-  post_install
+  echo ":: [fcitx5-lilypad] Cập nhật hoàn tất! Khởi động lại daemon và Fcitx5 nếu cần:"
+  echo "::   sudo systemctl restart fcitx5-lilypad-server@\$USER.service"
+  echo "::   fcitx5 -r -d"
 }
