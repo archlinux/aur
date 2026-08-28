@@ -1,8 +1,8 @@
 # Maintainer: Chuanshanjia <1845776552@qq.com>
-# Based on Qualcomm Software Center 1.28.2
+# Based on Qualcomm Software Center 1.28.3
 
 pkgname=qualcomm-software-center
-pkgver=1.28.2
+pkgver=1.28.3
 pkgrel=2
 pkgdesc="Qualcomm Software Center - Discover and download software distributions, service tasks, tools and change requests"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!strip' '!emptydirs')
 source=("https://softwarecenter.qualcomm.com/api/download/software/tools/Qualcomm_Software_Center/Linux/Debian/${pkgver}/QualcommSoftwareCenter${pkgver}.Linux-x86.deb"
         "qualcomm-software-center.sh"
         "qualcomm-software-center.install")
-sha256sums=('dbce860cd11ac3e190a5cacb3612a714e91198e97a737a2d146803cbb59a727d'
+sha256sums=('b53377df60621c9660a42f1e91f0b3d1453002a59c43cbd9976cacadc6dfa95b'
             'e283d6b9e441b9ccefe986582201b1608180be379af7b519f8aca02fbf330076'
             '10429b8404856be05897ab1b712f97ab6104cebefffc1661b6f1dcf34875479b')
 
