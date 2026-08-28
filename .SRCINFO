@@ -1,7 +1,7 @@
 pkgbase = pokerth
 	pkgdesc = Client to online Poker game written in C++/Qt
 	pkgver = 2.1.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.pokerth.net/
 	arch = x86_64
 	license = AGPL-3.0-only
