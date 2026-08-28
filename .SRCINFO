@@ -1,0 +1,21 @@
+pkgbase = musefetch-git
+	pkgdesc = A fetch script for playerctl
+	pkgver = cfe0031
+	pkgrel = 1
+	url = https://github.com/AverageComet250/musefetch
+	arch = any
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	depends = python-dbus
+	depends = python-term-image
+	provides = musefetch
+	conflicts = musefetch
+	source = musefetch-git::git+https://github.com/AverageComet250/musefetch.git
+	sha256sums = SKIP
+
+pkgname = musefetch-git
