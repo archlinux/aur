@@ -1,0 +1,14 @@
+pkgbase = notebook
+	pkgdesc = Markdown Desktop Wiki
+	pkgver = 0.8
+	pkgrel = 0
+	url = https://codeberg.org/tuxnix/notebook
+	arch = any
+	license = GLPv2-only
+	makedepends = git
+	depends = pandoc
+	source = git+https://codeberg.org/tuxnix/tvb-recorder
+	source = notebook.install
+	sha512sums = SKIP
+
+pkgname = notebook
