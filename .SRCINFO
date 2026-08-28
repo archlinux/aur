@@ -19,6 +19,6 @@ pkgbase = rdp-connect
 	optdepends = niri: scrollable-tiling Wayland compositor
 	optdepends = wireguard-tools: VPN connectivity
 	source = rdp-connect-2.0.0.tar.gz::https://github.com/hbuddenberg/rdp-connect/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 3a89615e650ea5cd8666ea69ed6d0f8f980869932f6a0cb5958e16b4e5ef3d57
+	sha256sums = 85d15fe0b8477ea64a398ca0adfa46e4e499cd6d1f312f43024e56461a885078
 
 pkgname = rdp-connect

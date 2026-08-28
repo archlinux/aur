@@ -18,7 +18,7 @@ optdepends=(
 )
 install=rdp-connect.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3a89615e650ea5cd8666ea69ed6d0f8f980869932f6a0cb5958e16b4e5ef3d57')
+sha256sums=('85d15fe0b8477ea64a398ca0adfa46e4e499cd6d1f312f43024e56461a885078')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver" || return
