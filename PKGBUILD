@@ -11,10 +11,11 @@ makedepends=('cargo' 'git' 'npm' 'openssh')
 provides=("cockpit-pacman=${pkgver%%.r*}")
 conflicts=('cockpit-pacman')
 options=(!lto)
-source=("git+https://github.com/pfeifferj/cockpit-pacman.git" 'allowed_signers' 'github-web-flow.gpg')
+source=("git+https://github.com/pfeifferj/cockpit-pacman.git" 'allowed_signers' 'github-web-flow.gpg' 'josie.gpg')
 sha256sums=('SKIP'
             'ef3f3920123082bf6de19cc9acdea21ebfb09e6056bdf2cf763d07597b9b2312'
-            '6e8af687f60cf3f403151c8fb1b26e95e6f9e424ca60cc8f3787bd4466a3ef84')
+            '6e8af687f60cf3f403151c8fb1b26e95e6f9e424ca60cc8f3787bd4466a3ef84'
+            '0b4e67bb18e34100caecd5583194f023be6c72c470fc9dbee9f88755ad1d9aff')
 
 pkgver() {
     cd "${pkgname%-git}"
@@ -25,7 +26,8 @@ verify() {
     cd "${pkgname%-git}"
     local keyring="$srcdir/gnupg"
     install -dm700 "$keyring"
-    GNUPGHOME="$keyring" gpg --batch --quiet --import "$PWD/../github-web-flow.gpg"
+    GNUPGHOME="$keyring" gpg --batch --quiet --import \
+        "$PWD/../github-web-flow.gpg" "$PWD/../josie.gpg"
     GNUPGHOME="$keyring" git -c gpg.format=ssh \
         -c gpg.ssh.allowedSignersFile="$PWD/../allowed_signers" \
         verify-commit HEAD
