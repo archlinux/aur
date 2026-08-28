@@ -3,7 +3,6 @@
 pkgname=pilinara
 _pkgname=pilinara
 _srcname=PiliNara
-_pkgtag=2.1.0.2
 pkgver=2.1.0.2
 pkgrel=4
 url="https://github.com/Starfallan/PiliNara"
@@ -16,7 +15,7 @@ provides=('pilinara')
 conflicts=('pilinara-bin' 'pilinara-git')
 options=('!debug' '!strip')
 
-source_x86_64=("${_srcname}-${_pkgtag}.tar.gz::${url}/archive/refs/tags/${_pkgtag}.tar.gz"
+source_x86_64=("${_srcname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
                "0001-fix-refresh-layout-semantics.patch"
                "0002-linux-disable-impeller.patch")
 sha256sums_x86_64=('fb2a24ab8af178a21e04af40ec0fc55efff2f8034da11fcb7f9f830e29c0241d'
@@ -24,7 +23,7 @@ sha256sums_x86_64=('fb2a24ab8af178a21e04af40ec0fc55efff2f8034da11fcb7f9f830e29c0
                    '5f7ef4e3dcb51a286b64a42de80b508b882b73ffa3ca676cdffecb56ca29da2d')
 
 prepare() {
-  cd "${_srcname}-${_pkgtag}/"
+  cd "${_srcname}-${pkgver}/"
   # 临时修复：RefreshLayout 布局协议违规 + Linux 禁用 Impeller
   patch -Np1 < "${srcdir}/0001-fix-refresh-layout-semantics.patch"
   patch -Np1 < "${srcdir}/0002-linux-disable-impeller.patch"
@@ -34,7 +33,7 @@ prepare() {
 }
 
 build() {
-  cd "${_srcname}-${_pkgtag}/"
+  cd "${_srcname}-${pkgver}/"
   local _sdk _scripts
   _sdk="$(readlink -f .fvm/flutter_sdk)"
   _scripts="${PWD}/lib/scripts"
@@ -66,7 +65,7 @@ build() {
 }
 
 package() {
-  cd "${_srcname}-${_pkgtag}/"
+  cd "${_srcname}-${pkgver}/"
   local _srcdir=build/linux/x64/release/bundle
 
   # 建立目录
