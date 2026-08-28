@@ -10,7 +10,7 @@ _cratename=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="Mission Control-style tmux session switcher with live terminal previews"
 
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('1a17b4d0035ecde1cf6c6ca208b8d67fc285eac22db813ab492f6c4d8731c817')
+sha256sums=('8d3783221561a34987668a7556f4e473754ccda0bf4bf17f603fd2e62935eec7')
 
 
 build() {
