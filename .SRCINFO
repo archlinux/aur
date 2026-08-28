@@ -1,7 +1,7 @@
 pkgbase = innoextract-crazy-max-git
 	pkgdesc = A fork of innoextract, supporting newer installer formats created by InnoSetup
 	pkgver = r980.eef23e6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/crazy-max/innoextract
 	arch = x86_64
 	license = ZLIB
@@ -14,6 +14,7 @@ pkgbase = innoextract-crazy-max-git
 	provides = innoextract-crazy-max
 	conflicts = innoextract
 	conflicts = innoextract-git
+	conflicts = innoextract-crazy-max
 	source = innoextract-crazy-max-git::git+https://github.com/crazy-max/innoextract.git
 	sha256sums = SKIP
 

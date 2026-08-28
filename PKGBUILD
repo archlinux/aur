@@ -3,7 +3,7 @@
 
 pkgname=innoextract-crazy-max-git
 pkgver=r980.eef23e6
-pkgrel=2
+pkgrel=3
 pkgdesc="A fork of innoextract, supporting newer installer formats created by InnoSetup"
 url='https://github.com/crazy-max/innoextract'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('ZLIB')
 depends=('boost-libs' 'xz')
 makedepends=('boost' 'cmake' 'git')
 provides=('innoextract' 'innoextract-crazy-max')
-conflicts=('innoextract' 'innoextract-git')
+conflicts=('innoextract' 'innoextract-git' 'innoextract-crazy-max')
 source=(
     "$pkgname::git+https://github.com/crazy-max/innoextract.git"
 )
