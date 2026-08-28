@@ -4,19 +4,22 @@
 
 _pkgname=ntfy
 pkgname=${_pkgname}sh-bin
-pkgver=2.27.0
+pkgver=2.28.0
 pkgrel=1
 pkgdesc="Send push notifications to your phone or desktop (upstream bin)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/binwiederhier/ntfy"
-license=('GPL-2.0')
+license=(
+    'GPL-2.0-only'
+    'Apache-2.0'
+)
 depends=()
 makedepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 backup=(
-  'etc/ntfy/client.yml'
-  'etc/ntfy/server.yml'
+    'etc/ntfy/client.yml'
+    'etc/ntfy/server.yml'
 )
 source=("${_pkgname}.sysusers")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
@@ -24,9 +27,9 @@ source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux
 source_armv7h=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv7.tar.gz")
 
 sha256sums=('0799a140256072b350b56c1b2db5fc21c94c6992277d6d1364c28ddf7058cc8f')
-sha256sums_x86_64=('4b7220cb0e7673a66ace8e1368573c0df89888aafde6860ae3a48ae1174c8cee')
-sha256sums_aarch64=('a1635f0a89e49c65676d6c580da5636ad62cf05b525651bd6b809a590cd2b70c')
-sha256sums_armv7h=('e09de6461d46787725519a8a8b38d11bb8c17d0c3d7392ebaf776d754831c1de')
+sha256sums_x86_64=('881a1530e30e01f1dec202c7f41e1664e57edfb7844e73e21e345159ac3ea9b7')
+sha256sums_aarch64=('18a13411e315ba44781df222c432d27527fc089c2229a994c593beb9c1e247a0')
+sha256sums_armv7h=('4e4ee0783c4ef96072e6ae1607c740fc204c0e8cecee5e9119982d203390c701')
 
 package() {
     case "${CARCH}" in
