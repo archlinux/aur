@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=netsukuku-rs-bin
-pkgver=0.1.5 # renovate: datasource=github-releases depName=M0Rf30/netsukuku-rs
+pkgver=0.1.6 # renovate: datasource=github-releases depName=M0Rf30/netsukuku-rs
 pkgrel=1
 pkgdesc="Rust reimplementation of the Netsukuku mesh routing protocol: QSPN v2, Hooking, Coordinator, PeerServices, ANDNA (prebuilt static binary)"
 arch=('x86_64' 'aarch64')
@@ -36,6 +36,6 @@ package() {
 source_x86_64=("ntkd-${pkgver}-x86_64-unknown-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/ntkd-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("ntkd-${pkgver}-aarch64-unknown-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/ntkd-${pkgver}-aarch64-unknown-linux-musl.tar.gz")
 
-sha256sums_x86_64=('32a913adab55f8df359796b591808541f63a57986e92032c14acff847b99e612')
-sha256sums_aarch64=('a3ed3ef71151f329c6a679cbacaf97258efa46a3422d7704394525a7897bb5f8')
+sha256sums_x86_64=('6f39e6885f1704e8e0146181fdf59301a13021df89860e97fc6dbb6290a01804')
+sha256sums_aarch64=('c7ad635cfe57139d9aacfd0c09997e8c2bea0032052a6a56158609abb2e5866a')
 
