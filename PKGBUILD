@@ -1,6 +1,6 @@
 # Maintainer: Miguel Revilla Rodríguez <migrev at gmail dot com>
 pkgname=gga
-pkgver=2.8.1
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Provider-agnostic code review using AI - Validate code against your AGENTS.md"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=(
   'shellspec: for running test suite'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Gentleman-Programming/gentleman-guardian-angel/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e1be109ba7e60cecbf47cb4142717aca7bb7b3b651ef0d3d42c0b9d923e71ae2')
+sha256sums=('c1dbcee120b83238e1c7ecce4a60f88a66810796ad95a239debc09e8509d0fba')
 
 package() {
   cd "$srcdir/gentleman-guardian-angel-$pkgver"
