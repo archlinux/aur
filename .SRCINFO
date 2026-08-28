@@ -1,7 +1,7 @@
 pkgbase = homeassistant-matterjs-server
 	pkgdesc = Open Home Foundation Matter Server based on matter.js
 	pkgver = 1.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/matter-js/matterjs-server
 	arch = x86_64
 	arch = aarch64
@@ -18,7 +18,7 @@ pkgbase = homeassistant-matterjs-server
 	source = matterjs-server.sysusers
 	source = matterjs-server.conf
 	sha256sums = SKIP
-	sha256sums = 48155a7307c5487efa32f67b739602c7ea540dad4b3ab997808e9dbc974f23af
+	sha256sums = c9aa58264551d618e9c2ea9f5c04fa39a1d10f4bf9634b59cabaef3c8f2423d5
 	sha256sums = 3bc1e5da1c5b9e4212142a36d41f48812a7a6c5008c2332e47894edd2e4cd974
 	sha256sums = 029f0bcae618ee29c0a6620975ff5019885cfa24fc13fdf2097d4153be57f792
 

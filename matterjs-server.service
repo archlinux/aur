@@ -14,7 +14,7 @@ Environment=NODE_ENV=production
 Environment=STORAGE_PATH=/var/lib/matterjs-server
 EnvironmentFile=-/etc/conf.d/matterjs-server
 
-ExecStart=/usr/bin/node --enable-source-maps /usr/share/matterjs-server/packages/matter-server/dist/esm/MatterServer.js
+ExecStart=/usr/bin/node --enable-source-maps /usr/share/matterjs-server/node_modules/matter-server/dist/esm/MatterServer.js
 
 Restart=on-failure
 RestartSec=5s

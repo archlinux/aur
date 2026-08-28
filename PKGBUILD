@@ -1,7 +1,7 @@
 # Maintainer: lifespirit <life@crabs.pro>
 pkgname=homeassistant-matterjs-server
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Home Foundation Matter Server based on matter.js'
 arch=('x86_64' 'aarch64')
 url='https://github.com/matter-js/matterjs-server'
@@ -32,7 +32,7 @@ source=(
 
 sha256sums=(
     'SKIP'
-    '48155a7307c5487efa32f67b739602c7ea540dad4b3ab997808e9dbc974f23af'
+    'c9aa58264551d618e9c2ea9f5c04fa39a1d10f4bf9634b59cabaef3c8f2423d5'
     '3bc1e5da1c5b9e4212142a36d41f48812a7a6c5008c2332e47894edd2e4cd974'
     '029f0bcae618ee29c0a6620975ff5019885cfa24fc13fdf2097d4153be57f792'
 )
@@ -40,19 +40,10 @@ sha256sums=(
 build() {
     cd "$srcdir/$pkgname"
 
-    # Keep npm cache outside of the source tree.
     export npm_config_cache="$srcdir/npm-cache"
-
-    # Use the Node headers provided by the Arch nodejs package instead
-    # of letting node-gyp download another copy.
     export npm_config_nodedir=/usr
 
-    # package-lock.json is provided by upstream.
-    #
-    # The root package has:
-    #   "prepare": "npm run build-clean"
-    #
-    # so npm ci also performs the complete Matter Server build.
+    # Ставим полный набор build-зависимостей и собираем исходники.
     npm ci \
         --include=dev \
         --include=optional \
@@ -60,78 +51,73 @@ build() {
         --no-audit \
         --no-fund
 
-    # Make the build fail immediately if the server was not generated.
     test -f packages/matter-server/dist/esm/MatterServer.js
+
+    # Создаем npm-пакеты ИМЕННО из собранных нами исходников.
+    rm -rf "$srcdir/runtime-pkgs"
+    mkdir -p "$srcdir/runtime-pkgs"
+
+    npm pack \
+        --workspaces \
+        --pack-destination "$srcdir/runtime-pkgs"
+
+    # Формируем отдельное чистое production-дерево.
+    rm -rf "$srcdir/runtime"
+    mkdir -p "$srcdir/runtime"
+
+    cd "$srcdir/runtime"
+
+    npm init -y >/dev/null
+
+    npm install \
+        --omit=dev \
+        --include=optional \
+        --foreground-scripts \
+        --no-audit \
+        --no-fund \
+        "$srcdir"/runtime-pkgs/*.tgz
+
+    # Проверяем критичные runtime зависимости.
+    test -f node_modules/matter-server/dist/esm/MatterServer.js
+    test -d node_modules/commander
+    test -d node_modules/express
+    test -d node_modules/@matter-server/ws-controller
+
+    # Дополнительно проверяем загрузку CLI.
+    node \
+        --enable-source-maps \
+        node_modules/matter-server/dist/esm/MatterServer.js \
+        --help >/dev/null
 }
 
 package() {
-    cd "$srcdir/$pkgname"
-
-    export npm_config_cache="$srcdir/npm-cache"
-    export npm_config_nodedir=/usr
-
-    # Remove TypeScript, test and other build-only npm dependencies.
-    # Optional dependencies are intentionally retained because Matter Server
-    # uses them for BLE support.
-    npm prune \
-        --omit=dev \
-        --no-audit \
-        --no-fund
-
     install -dm755 \
         "$pkgdir/usr/share/matterjs-server"
 
-    # Runtime npm dependencies. Preserve workspace symlinks.
     cp -a \
-        node_modules \
+        "$srcdir/runtime/node_modules" \
         "$pkgdir/usr/share/matterjs-server/"
 
-    # Workspace packages referenced through node_modules symlinks.
-    local workspace
-    for workspace in \
-        ble-proxy \
-        custom-clusters \
-        dashboard \
-        matter-server \
-        ws-client \
-        ws-controller
-    do
-        install -dm755 \
-            "$pkgdir/usr/share/matterjs-server/packages/$workspace"
-
-        cp -a \
-            "packages/$workspace/dist" \
-            "$pkgdir/usr/share/matterjs-server/packages/$workspace/"
-
-        install -Dm644 \
-            "packages/$workspace/package.json" \
-            "$pkgdir/usr/share/matterjs-server/packages/$workspace/package.json"
-    done
-
-    # License and documentation.
     install -Dm644 \
-        LICENSE \
+        "$srcdir/$pkgname/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     install -Dm644 \
-        README.md \
+        "$srcdir/$pkgname/README.md" \
         "$pkgdir/usr/share/doc/$pkgname/README.md"
 
     install -Dm644 \
-        docs/cli.md \
+        "$srcdir/$pkgname/docs/cli.md" \
         "$pkgdir/usr/share/doc/$pkgname/cli.md"
 
-    # systemd service.
     install -Dm644 \
         "$srcdir/matterjs-server.service" \
         "$pkgdir/usr/lib/systemd/system/matterjs-server.service"
 
-    # systemd-sysusers configuration.
     install -Dm644 \
         "$srcdir/matterjs-server.sysusers" \
         "$pkgdir/usr/lib/sysusers.d/matterjs-server.conf"
 
-    # Runtime configuration.
     install -Dm644 \
         "$srcdir/matterjs-server.conf" \
         "$pkgdir/etc/conf.d/matterjs-server"
