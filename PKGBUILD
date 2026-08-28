@@ -5,7 +5,7 @@ _pkgname=hulak
 pkgname=${_pkgname}-bin
 pkgdesc="Lightweight file-based API client for terminal nerds"
 
-pkgver=0.3.32
+pkgver=0.3.33
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,8 +26,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('a2510c052b20d60b964b077be8f12c2de37bcd547866ea8d0d3eda379ae9d06c'
             'ca4a47155ba71183302af8af5c2ec019a322c63dbdbcf104eb46c150f3d3d7ec')
-sha256sums_x86_64=('07a2d22d2588e52cc52f4647cfa76ca4e469b70689380ac1ec839911d5f0f6e6')
-sha256sums_aarch64=('5bb415fbba410368bf657d69e8d53b127028769621b5129b1b837b5957e8f8b0')
+sha256sums_x86_64=('3560f93e614cac2e925b82be76b1c8eb453350a7bc13deb51f598535ff6a645c')
+sha256sums_aarch64=('8223ba08670bb8a91a253d52c2c8b4ef223d0540b9c6a61cae2b61f6b9c74e41')
 
 
 package() {
