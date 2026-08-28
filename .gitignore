@@ -13,3 +13,7 @@ pkg/
 
 # makepkg logs
 *.log
+
+# nvchecker local version records (not committed)
+oldver.json
+newver.json

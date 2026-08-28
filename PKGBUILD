@@ -1,7 +1,7 @@
 # Maintainer: Ismet Togay <ismet.togay at gmail dot com>
 # Contributor: Christopher Cooper <christopher@cg505.com>
 pkgname=cursor-cli
-pkgver=2026.08.11.1.e8db854
+pkgver=2026.08.25.1.3e8eec8
 # Upstream is YYYY.MM.DD-<hash>. pkgver cannot contain hyphens, and hashes are
 # not monotonically ordered, so pkgver is YYYY.MM.DD.<n>.<hash>: n resets to 1
 # on a new date and increments when the same date gets a new hash.
@@ -14,7 +14,7 @@ pkgrel=1
 epoch=1
 pkgdesc="CLI tool for Cursor, the AI-first coding agent"
 arch=('x86_64' 'aarch64')
-url="https://cursor.com"
+url="https://cursor.com/cli"
 license=('LicenseRef-Cursor')
 depends=('gcc-libs' 'git' 'zlib')
 options=('!strip')
@@ -25,8 +25,8 @@ source_x86_64=("cursor-cli-${_upstream_ver}-x86_64.tar.gz::https://downloads.cur
 source_aarch64=("cursor-cli-${_upstream_ver}-aarch64.tar.gz::https://downloads.cursor.com/lab/${_upstream_ver}/linux/arm64/agent-cli-package.tar.gz")
 b2sums=('d241ee9895bdb1c17514438fde8528222a8f2326568bd7a033d7a1b11432ce6b4575ff1a50625764bfe6bc6f8a9dc060f7439c3be7e95f8fd02912cdd37a011d'
         '1928e04c713e13911ea607f84c3e4a2fed1f76af9795503811078f43d2b53c753e28b2233e553fc17e766831800fb0dbc272aad2a80b387f95ba6071d7d4116a')
-b2sums_x86_64=('4787401fbdf14e72e5f98cce70db932cdc6cc6030d3b5531adce715f95e1ddc5dfce029e0def8da06d676bbe9c5cc9ed94f49270fe107a0e4b17274716f9dead')
-b2sums_aarch64=('c499a9a75d46c6289d9c9011a72eef70964872aca9f7660406e566e11d188a87d194cfe2133a97a3a461d547b94dd4f2280b4ad9e8a1990ddcaddc78d7897ddc')
+b2sums_x86_64=('cd5485f7524688e1a688daa2b64669c76bedcdd9ab87638bac78f9b42c2442bd5000559920a2f5171e00b5eb7fcf737f9111ef296f1eba40369cebf3279ee0a9')
+b2sums_aarch64=('191ff1c538f294134d93d501e9ca68cc6d4f8101cb1cee449753dfefcd9039daecd7bf9f9f2baf9ee9262f40eea19aaf15f834c9abb56d967fb48a3a3f23b8ea')
 
 prepare() {
     # Block cursor-agent auto-updates by making its versions directory
