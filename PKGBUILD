@@ -2,7 +2,7 @@
 
 _pypiname="array-api-extra"
 pkgname="python-${_pypiname}"
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Extra array functions built on top of the array API standard"
 arch=(
@@ -39,7 +39,7 @@ _pkgsrc="${_url##*/}-${pkgver}"
 source=(
   "python-${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('819388e95df64bcf1f048b00fd1287676387ef4e372f0116d733a150ea1b0ac2')
+sha256sums=('91c0f98f2118efdf1140a8d8c51bfaf37e1f71ffa4700a125e35c4679a4ddfa6')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
@@ -59,7 +59,7 @@ package() {
 
   install -vDm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}"
 
-  install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vsf "${site_packages}/${_pypiname//-/_}-${pkgver}.dist-info/licenses/LICENSE" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vd "${pkgdir}/usr/share/licenses"
+  ln -vsf "${site_packages}/${_pypiname//-/_}-${pkgver}.dist-info/licenses" \
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 }
