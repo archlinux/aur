@@ -1,36 +1,36 @@
 pkgbase = linux-zen-versioned-bin
 	pkgdesc = The Linux ZEN kernel and modules | repackaged with a unique package name for each version
-	pkgver = 7.1.9.zen1
-	pkgrel = 2
+	pkgver = 7.1.10.zen1
+	pkgrel = 1
 	url = https://github.com/zen-kernel/zen-kernel
 	arch = x86_64
 	license = GPL2
-	noextract = linux-zen-7.1.9.zen1-2-x86_64.pkg.tar.zst
-	noextract = linux-zen-headers-7.1.9.zen1-2-x86_64.pkg.tar.zst
-	noextract = linux-zen-docs-7.1.9.zen1-2-x86_64.pkg.tar.zst
+	noextract = linux-zen-7.1.10.zen1-1-x86_64.pkg.tar.zst
+	noextract = linux-zen-headers-7.1.10.zen1-1-x86_64.pkg.tar.zst
+	noextract = linux-zen-docs-7.1.10.zen1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://archive.archlinux.org/packages/.all/linux-zen-7.1.9.zen1-2-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-zen-headers-7.1.9.zen1-2-x86_64.pkg.tar.zst
-	source = https://archive.archlinux.org/packages/.all/linux-zen-docs-7.1.9.zen1-2-x86_64.pkg.tar.zst
-	sha256sums = 0d3343d96d4c1e787342974c1d824d9fe72bb79bac95e34b7ef768234b87e21d
-	sha256sums = 79d420fa7d651273bd04fb35609ee34d627f2b0ef7e38b8479d88e0a534f68ff
-	sha256sums = 0e012faa00dc7b71f0d9b5e63674d945d5ea0d63ebee6816f01b04e96e12527f
+	source = https://archive.archlinux.org/packages/.all/linux-zen-7.1.10.zen1-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-zen-headers-7.1.10.zen1-1-x86_64.pkg.tar.zst
+	source = https://archive.archlinux.org/packages/.all/linux-zen-docs-7.1.10.zen1-1-x86_64.pkg.tar.zst
+	sha256sums = 364400103a06db87348ff002dd99216b5916954c4d854cb25351e4aff1a00284
+	sha256sums = a17802751ddf167a84451beedda4fb6f7d46f779630ea95d7715f38aa8dd4a03
+	sha256sums = db8f263052746e308cb045f65096f2b55a007e29c9fd35d3ba00f1200393d075
 
 pkgname = linux-zen-versioned-bin
-	pkgdesc = Metapackage depending on linux7.1.9.zen1-2-zen-bin
-	depends = linux7.1.9.zen1-2-zen-bin
+	pkgdesc = Metapackage depending on linux7.1.10.zen1-1-zen-bin
+	depends = linux7.1.10.zen1-1-zen-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-zen-versioned-headers-bin
-	pkgdesc = Metapackage depending on linux7.1.9.zen1-2-zen-headers-bin
-	depends = linux7.1.9.zen1-2-zen-headers-bin
+	pkgdesc = Metapackage depending on linux7.1.10.zen1-1-zen-headers-bin
+	depends = linux7.1.10.zen1-1-zen-headers-bin
 
 pkgname = linux-zen-versioned-docs-bin
-	pkgdesc = Metapackage depending on linux7.1.9.zen1-2-zen-docs-bin
-	depends = linux7.1.9.zen1-2-zen-docs-bin
+	pkgdesc = Metapackage depending on linux7.1.10.zen1-1-zen-docs-bin
+	depends = linux7.1.10.zen1-1-zen-docs-bin
 
-pkgname = linux7.1.9.zen1-2-zen-bin
-	pkgdesc = The Linux ZEN kernel and modules, version 7.1.9-zen1-2-zen
+pkgname = linux7.1.10.zen1-1-zen-bin
+	pkgdesc = The Linux ZEN kernel and modules, version 7.1.10-zen1-1-zen
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
@@ -45,8 +45,8 @@ pkgname = linux7.1.9.zen1-2-zen-bin
 	provides = WIREGUARD-MODULE
 	conflicts = linux-zen
 
-pkgname = linux7.1.9.zen1-2-zen-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel 7.1.9-zen1-2-zen
+pkgname = linux7.1.10.zen1-1-zen-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN kernel 7.1.10-zen1-1-zen
 	depends = binutils
 	depends = glibc
 	depends = libelf
@@ -59,6 +59,6 @@ pkgname = linux7.1.9.zen1-2-zen-headers-bin
 	provides = LINUX-HEADERS
 	conflicts = linux-zen-headers
 
-pkgname = linux7.1.9.zen1-2-zen-docs-bin
-	pkgdesc = Documentation for the Linux ZEN kernel 7.1.9-zen1-2-zen
+pkgname = linux7.1.10.zen1-1-zen-docs-bin
+	pkgdesc = Documentation for the Linux ZEN kernel 7.1.10-zen1-1-zen
 	conflicts = linux-zen-docs
