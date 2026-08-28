@@ -1,0 +1,15 @@
+pkgbase = dsview-abz-decoder-git
+	pkgdesc = incremental rotary encoder, protocal decodes of DSView 增量式旋转编码器的协议解码
+	pkgver = r4.6f30c68
+	pkgrel = 1
+	url = https://github.com/Ging-H/DSView_PD_Encoder
+	arch = any
+	license = GPL-2.0-or-later
+	makedepends = git
+	optdepends = dsview: GUI programe for supporting various instruments from DreamSourceLab, including logic analyzer, oscilloscope, etc
+	provides = dsview-abz-decoder
+	conflicts = dsview-abz-decoder
+	source = dsview-abz-decoder-git::git+https://github.com/Ging-H/DSView_PD_Encoder.git
+	sha256sums = SKIP
+
+pkgname = dsview-abz-decoder-git
