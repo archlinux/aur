@@ -1,6 +1,6 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=tempo-cli
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 pkgdesc='Command line tool for viewing and manipulating Grafana Tempo backend blocks'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('AGPL-3.0-only')
 depends=('glibc')
 makedepends=('go')
 source=("tempo-v$pkgver.tar.gz::https://github.com/grafana/tempo/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9da6e1c411694d1010bb7641ab55e365095bc85fd76d02e142ede0fa2162cf71')
+sha256sums=('3aa84c97d3a8502848cc0e0cc3d0ef18886422842ba20e5bd157e7fe89ade02c')
 options=(!lto)
 
 build() {
