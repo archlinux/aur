@@ -4,7 +4,7 @@ pkgname=zcode
 _pkgname=zcode
 _appdir=ZCode
 pkgver=3.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='ZCode desktop app repackaged from official Linux release'
 arch=('x86_64' 'aarch64')
 url='https://zcode.z.ai/en'
@@ -29,9 +29,11 @@ makedepends=('libarchive')
 provides=("zcode-desktop-bin=${pkgver}")
 options=('!strip' '!lto')
 install="${pkgname}.install"
+source=('zcode.desktop')
 source_x86_64=("ZCode-${pkgver}-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/linux-x64/ZCode-${pkgver}-linux-x64.deb")
 source_aarch64=("ZCode-${pkgver}-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/${pkgver}/linux-arm64/ZCode-${pkgver}-linux-arm64.deb")
 noextract=("ZCode-${pkgver}-linux-x64.deb" "ZCode-${pkgver}-linux-arm64.deb")
+sha256sums=('510fb413274334e05901d65b28df618b1fb7216d690c136ab55173f9bf1a75e6')
 sha256sums_x86_64=('1deceec01e0545a4c7f8e26516269b1e845dfc3524598b1655e38bc61acbf08b')
 sha256sums_aarch64=('22b79babe3b00fb6fbfcf7dcc033b7564a734f53df4f28998c18556071286b2c')
 
@@ -56,7 +58,7 @@ package() {
   cp -a "${_extractdir}/opt/${_appdir}" "${pkgdir}/opt/"
   cp -a "${_extractdir}/usr/share/icons" "${pkgdir}/usr/share/"
 
-  install -Dm644 "${_extractdir}/usr/share/applications/${_pkgname}.desktop" \
+  install -Dm644 "${srcdir}/zcode.desktop" \
     "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   ln -s "/opt/${_appdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 

@@ -1,7 +1,7 @@
 pkgbase = zcode
 	pkgdesc = ZCode desktop app repackaged from official Linux release
 	pkgver = 3.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zcode.z.ai/en
 	install = zcode.install
 	arch = x86_64
@@ -25,6 +25,8 @@ pkgbase = zcode
 	noextract = ZCode-3.10.1-linux-arm64.deb
 	options = !strip
 	options = !lto
+	source = zcode.desktop
+	sha256sums = 510fb413274334e05901d65b28df618b1fb7216d690c136ab55173f9bf1a75e6
 	source_x86_64 = ZCode-3.10.1-linux-x64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.10.1/linux-x64/ZCode-3.10.1-linux-x64.deb
 	sha256sums_x86_64 = 1deceec01e0545a4c7f8e26516269b1e845dfc3524598b1655e38bc61acbf08b
 	source_aarch64 = ZCode-3.10.1-linux-arm64.deb::https://cdn-zcode.z.ai/zcode/electron/releases/3.10.1/linux-arm64/ZCode-3.10.1-linux-arm64.deb
