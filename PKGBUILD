@@ -3,7 +3,7 @@
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
 pkgver="0.8"
-pkgrel="0"
+pkgrel="1"
 _name="notebook"
 pkgname="$_name"
 pkgdesc='Markdown Desktop Wiki'
