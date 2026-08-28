@@ -30,7 +30,7 @@ prepare() {
 
   cd "$pkgname-$pkgver/$pkgname"
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache"
-	zig build --fetch
+  zig build --fetch
 }
 
 build() {
