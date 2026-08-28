@@ -1,6 +1,6 @@
 pkgbase = mouzi-bin
 	pkgdesc = A free, privacy-first automatic file organizer that quietly sorts your Downloads folder from the system tray
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/hsr88/mouzi
 	arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = mouzi-bin
 	provides = mouzi
 	conflicts = mouzi
 	options = !strip
-	source = README-0.1.5.md::https://raw.githubusercontent.com/hsr88/mouzi/v0.1.5/README.md
-	source = LICENSE-0.1.5::https://raw.githubusercontent.com/hsr88/mouzi/v0.1.5/LICENSE.md
-	sha256sums = eb375e6bbd4a28ac37afd7b9422b17223ce3c8aaafa36e166872cf05236d17b4
-	sha256sums = 350c0cea7c02cea8f0727845c3969b933608875cc3bae7280fa417b48b511c61
-	source_x86_64 = mouzi-x86_64-0.1.5.deb::https://github.com/hsr88/mouzi/releases/download/v0.1.5/Mouzi_0.1.5_amd64.deb
-	sha256sums_x86_64 = 73301c563a7c00dd4a68d143550d953ca8644c206a7603b4f3f8be066e0efe6a
+	source = README-0.1.6.md::https://raw.githubusercontent.com/hsr88/mouzi/v0.1.6/README.md
+	source = LICENSE-0.1.6::https://raw.githubusercontent.com/hsr88/mouzi/v0.1.6/LICENSE.md
+	sha256sums = 9bf8592d2e739a0d593893d2abbcbf7e0df243e37552a90535bdc171f0827346
+	sha256sums = e27f44e9a62cf3ec22d9e2fe734772fa1b96e24459c3a3fb3957797824c3b5d1
+	source_x86_64 = mouzi-x86_64-0.1.6.deb::https://github.com/hsr88/mouzi/releases/download/v0.1.6/Mouzi_0.1.6_amd64.deb
+	sha256sums_x86_64 = 849589b75e830294bf4a59379a06ee3c0807fa9b1eac5a884de1b26b1ab20041
 
 pkgname = mouzi-bin
