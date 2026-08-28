@@ -1,13 +1,7 @@
 pre_remove() {
-    # The plugin enables this timer itself when a schedule is set, so pacman
-    # does not know it is enabled and leaves the symlink behind. Disable while
-    # the unit file still exists: after removal systemctl cannot resolve it.
     systemctl disable --now cockpit-pacman-scheduled.timer >/dev/null 2>&1 || true
 }
 
 post_remove() {
-    # Written at runtime under /etc, so it is not a package file and survives
-    # removal. Left in place it is an override for a unit that no longer exists,
-    # and a later reinstall would silently pick up the old schedule.
     rm -rf /etc/systemd/system/cockpit-pacman-scheduled.timer.d
 }
