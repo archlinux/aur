@@ -1,6 +1,6 @@
 # Maintainer: CallMeAlphabet
 pkgname=fastannoy-bin
-pkgver=16
+pkgver=17
 pkgrel=1
 pkgdesc="typos that are actually annoying, prebuilt binary"
 arch=('x86_64')
