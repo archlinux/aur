@@ -3,7 +3,7 @@
 # -*- mode: sh -*-
 
 pkgname='betula'
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Self-hosted personal link collection manager'
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -15,7 +15,7 @@ source=("betula-v$pkgver.tar.gz::https://codeberg.org/bouncepaw/betula/archive/v
         "betula.service"
         "sysusers-betula.conf"
         "tmpfiles-betula.conf")
-sha512sums=('1f5b6a3cfb7c0a310afab0a0de8ce29070800e3ceb84e09e6961c59743e7b659fef7d286e35b9136626048f5da0a30f752ae1893e2e6eaebcf580b685559f437'
+sha512sums=('d87d06ff4706547d768f58b2bee82421688aba2439b3f8e81ad2c8362243d515f9b2def8b9f94200b0d74a8a72f776b521a678987021902ca41e32bf9e3e24b0'
             'f2da249caf061664620d547104875aaa5380a2bab6e109ec064abc13440697fba68e444bddc0f14de37507dda8ab09a641ac8f6f1cacfa557e5488d1337aadfa'
             '64a833456140c1fccf70ba5dfc8070f4039eaf904c5a487af817c64658c47077dcf45a0529aedd6bb7a72ace7524c8ef622b60eb75819b2abb016968e796ba49'
             'a8581fbd0a5918cb1a5dcd6a980f921e8c356f3effd35dc8ab91e4600723f3f6e5c101142488e8dca7ffdd73abaf2df726f5750f30baaea4289614bf9ba99dfd')
