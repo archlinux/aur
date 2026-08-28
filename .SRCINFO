@@ -1,0 +1,18 @@
+pkgbase = snag-bin
+	pkgdesc = A modern stream pattern extractor
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/programmersd21/snag
+	arch = x86_64
+	license = MIT
+	provides = snag
+	conflicts = snag
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/programmersd21/snag/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/programmersd21/snag/v0.1.0/LICENSE
+	sha256sums = ea692c2e30d8924fa0177a01cbf2587bf4a7ce1e8d82b6a3640103d82b94c0af
+	sha256sums = 74aa0323e148d20744f4f0edc45ecdd60dbaf728b612be1edcdde6bbcc7b60ea
+	source_x86_64 = snag-x86_64-0.1.0::https://github.com/programmersd21/snag/releases/download/v0.1.0/snag-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 65b72a7ecb0fff62fc6f5b38c22848bb7afe0bca35725d871553888ef82146fa
+
+pkgname = snag-bin
