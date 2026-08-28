@@ -1,7 +1,7 @@
 # Maintainer: Josephine Pfeiffer <josie@archlinux.org>
 pkgname=cockpit-pacman-git
 pkgver=0.3.7.r84.gfd956d9
-pkgrel=1
+pkgrel=2
 pkgdesc='Cockpit plugin for Arch Linux package management using alpm.rs'
 arch=('x86_64')
 url='https://github.com/pfeifferj/cockpit-pacman'
