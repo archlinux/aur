@@ -2,7 +2,7 @@
 
 pkgbase=miassistanttool-git
 pkgname=miassistanttool-git
-pkgver=1.2.r2.g1c9f3a4
+pkgver=1.2.r4.g10bb8af
 pkgrel=1
 pkgdesc="MiAssistantTool"
 arch=($CARCH)
@@ -16,7 +16,8 @@ depends=(
     curl
     libusb
     openssl
-    tiny-json)
+    tiny-json
+)
 makedepends=(
     git
 )

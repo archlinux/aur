@@ -1,6 +1,6 @@
 pkgbase = miassistanttool-git
 	pkgdesc = MiAssistantTool
-	pkgver = 1.2.r2.g1c9f3a4
+	pkgver = 1.2.r4.g10bb8af
 	pkgrel = 1
 	url = https://github.com/offici5l/MiAssistantTool
 	arch = x86_64
