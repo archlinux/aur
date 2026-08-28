@@ -2,7 +2,7 @@
 
 _pkgname=passless
 pkgname="${_pkgname}"
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Virtual FIDO2 device and client FIDO 2 utility. Passkeys made easy."
 arch=('x86_64' 'aarch64')
@@ -53,6 +53,8 @@ check() {
 package() {
     cd "$srcdir/passless"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/passless"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/sign-proxy"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/agent-prompt-probe"
 
     # Install shell completions
     local _completion_dir="$(find target/release/build/passless-rs-*/out/completions -type d 2>/dev/null | head -1)"
