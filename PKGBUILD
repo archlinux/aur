@@ -4,10 +4,10 @@
 _basename=koharu
 pkgname=${_basename}-bin
 pkgver=0.79.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Manga translation tools"
 arch=("x86_64")
-url="https://github.com/mayocream/koharu"
+url="https://github.com/koharu-rs/koharu"
 license=("GPL-3.0")
 depends=("gtk3" "gdk-pixbuf2" "glib2" "fontconfig" "openssl" "gcc-libs")
 optdepends=(
