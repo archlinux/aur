@@ -1,6 +1,6 @@
 pkgbase = fastannoy-bin
 	pkgdesc = typos that are actually annoying, prebuilt binary
-	pkgver = 15
+	pkgver = 16
 	pkgrel = 1
 	url = https://github.com/CallMeAlphabet/fastannoy
 	arch = x86_64
