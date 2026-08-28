@@ -6,7 +6,7 @@
 # Uploaded (UTC) : 2026-08-28 06:52
 # Repackages the nightly Debian build; no compilation happens here.
 
-pkgname=defguard-client
+pkgname=defguard-client-nightly
 pkgver=2.1.0+release_2.1.5aba651
 pkgrel=1
 pkgdesc="Defguard VPN Multi-Factor Authentication Desktop Client (nightly release-2.1 5aba651)"

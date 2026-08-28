@@ -1,4 +1,4 @@
-pkgbase = defguard-client
+pkgbase = defguard-client-nightly
 	pkgdesc = Defguard VPN Multi-Factor Authentication Desktop Client (nightly release-2.1 5aba651)
 	pkgver = 2.1.0+release_2.1.5aba651
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = defguard-client
 	source_x86_64 = defguard-client-2.1.0+release_2.1.5aba651-x86_64.deb::https://nightly.defguard.net/defguard-client/release-2.1/defguard-client-x86_64-5aba651.deb
 	sha256sums_x86_64 = e691d71458affd494be359cdf8bb9b6dedf65fe2f156a57de94c77321005bdff
 
-pkgname = defguard-client
+pkgname = defguard-client-nightly
