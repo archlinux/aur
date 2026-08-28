@@ -1,6 +1,6 @@
 pkgbase = agentics-cli
 	pkgdesc = Agentics CLI - the terminal Orb, an encrypted Agentics component decrypted and run at runtime by the Agentics launcher
-	pkgver = 2.1.106
+	pkgver = 2.1.107
 	pkgrel = 1
 	url = https://agentics.co.za
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = agentics-cli
 	depends = agentics
 	options = !strip
 	options = !debug
-	source = agentics-cli-2.1.106-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-cli-2.1.106-x86_64.enc
-	sha512sums = 20399a1a30e7168e9696e052cc5ed3cf3b478255105075b260f83ca61a8bb095920199a1bce5bceddbc131b4208a74ca0d349877bd591a634fa7a4a359b164a3
+	source = agentics-cli-2.1.107-x86_64.enc::https://repo.agentics.co.za/x86_64/agentics-cli-2.1.107-x86_64.enc
+	sha512sums = 00f82db31d382de1d057f2ee9aad81d2cd13479716107aae2a32cb3d33e0318e59c0b056f919c0496cc0a97218abdfc3e4802b0352ca521f8fc029f0f68b4f3d
 
 pkgname = agentics-cli
