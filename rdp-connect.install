@@ -1,0 +1,11 @@
+post_install() {
+    echo ""
+    echo "  🖥️  RDP Connect installed successfully!"
+    echo "  Create your first connection profile with: rdp-connect --new <nombre>"
+    echo "  Or run rdp-connect to open the interactive selector."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

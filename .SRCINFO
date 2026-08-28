@@ -1,0 +1,24 @@
+pkgbase = rdp-connect
+	pkgdesc = 🖥️ High-performance RDP connection manager for Hyprland, Niri & Wayland compositors with Quickshell, Walker & Wofi menus
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/hbuddenberg/rdp-connect
+	install = rdp-connect.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = jq
+	depends = freerdp
+	depends = libnotify
+	depends = util-linux
+	optdepends = quickshell: modern native QML graphical modal selector
+	optdepends = walker: application launcher frontend
+	optdepends = wofi: Wayland application launcher
+	optdepends = rofi: application launcher
+	optdepends = hyprland: dynamic tiling Wayland compositor
+	optdepends = niri: scrollable-tiling Wayland compositor
+	optdepends = wireguard-tools: VPN connectivity
+	source = rdp-connect-2.0.0.tar.gz::https://github.com/hbuddenberg/rdp-connect/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 4d127695c5c9cd57af4f4d33982672340d4accd96c3347185c79935b24214dbf
+
+pkgname = rdp-connect
