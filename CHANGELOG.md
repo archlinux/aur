@@ -7,6 +7,12 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20260828
+
+### Changed:
+
+- Certificate files are no longer provided under ACcompactado directory.
+
 ## 20260826
 
 ### Added:
