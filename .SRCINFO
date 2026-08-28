@@ -1,5 +1,5 @@
 pkgbase = proton-command-center-git
-	pkgdesc = Per-game launch options, Proton selection, DLSS DLL management, ReShade injection, native Ultra+ mod install, MangoHud benchmarks, and controller navigation for Steam on Linux (git version)
+	pkgdesc = Per-game launch options, Proton selection, DLSS/FSR DLL management, native Ultra+ and RHI (ReShade/OptiScaler/DXVK) mod install, and controller navigation for Steam on Linux (git version)
 	pkgver = 1.24.0.r0.gb390cf5
 	pkgrel = 1
 	url = https://github.com/mrcgibb9876-hash/proton_command_center
@@ -10,8 +10,9 @@ pkgbase = proton-command-center-git
 	depends = xdg-utils
 	depends = curl
 	optdepends = steam: the storefront this manages (required in practice)
-	optdepends = mangohud: performance overlay toggle and benchmark tab
+	optdepends = mangohud: performance overlay toggle
 	optdepends = nvidia-utils: DLSS DLL management and driver-aware compile tracking
+	optdepends = 7zip: OptiScaler install/update and DXVK Lilium HDR variant (both ship as .7z)
 	provides = proton-command-center
 	conflicts = proton-command-center
 	source = proton-command-center::git+https://github.com/mrcgibb9876-hash/proton_command_center.git

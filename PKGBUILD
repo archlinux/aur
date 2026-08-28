@@ -3,15 +3,16 @@ pkgname=proton-command-center-git
 _pkgname=proton-command-center
 pkgver=1.24.0.r0.gb390cf5
 pkgrel=1
-pkgdesc="Per-game launch options, Proton selection, DLSS DLL management, ReShade injection, native Ultra+ mod install, MangoHud benchmarks, and controller navigation for Steam on Linux (git version)"
+pkgdesc="Per-game launch options, Proton selection, DLSS/FSR DLL management, native Ultra+ and RHI (ReShade/OptiScaler/DXVK) mod install, and controller navigation for Steam on Linux (git version)"
 arch=('any')
 url="https://github.com/mrcgibb9876-hash/proton_command_center"
 license=('MIT')
 depends=('python' 'xdg-utils' 'curl')
 optdepends=(
     'steam: the storefront this manages (required in practice)'
-    'mangohud: performance overlay toggle and benchmark tab'
+    'mangohud: performance overlay toggle'
     'nvidia-utils: DLSS DLL management and driver-aware compile tracking'
+    '7zip: OptiScaler install/update and DXVK Lilium HDR variant (both ship as .7z)'
 )
 makedepends=('git')
 provides=("$_pkgname")
@@ -32,6 +33,8 @@ package() {
     install -Dm644 index.html "$pkgdir/usr/share/$_pkgname/index.html"
     install -Dm644 README.md  "$pkgdir/usr/share/doc/$_pkgname/README.md"
     install -Dm644 LICENSE    "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+
+    install -Dm644 -t "$pkgdir/usr/share/$_pkgname/optiscaler_inis" optiscaler_inis/*.ini
 
     install -Dm755 packaging/proton-command-center \
         "$pkgdir/usr/bin/$_pkgname"
