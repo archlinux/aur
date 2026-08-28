@@ -1,25 +1,42 @@
 pkgbase = python-docling-core
 	pkgdesc = A python library to define and validate data types in Docling.
-	pkgver = 2.70.2
+	pkgver = 2.92.0
 	pkgrel = 1
 	url = https://github.com/docling-project/docling-core
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pdm-backend
+	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = python-hatchling
-	depends = python-jsonschema
-	depends = python-jsonref
-	depends = python-tabulate
-	depends = python-pandas
-	depends = python-pillow
-	depends = python-pydantic
-	depends = python-pyyaml
-	depends = python-typer
-	depends = python-latex2mathml
-	source = python-docling-core-2.70.2.tar.gz::https://github.com/docling-project/docling-core/archive/refs/tags/v2.70.2.tar.gz
-	sha256sums = de07a7230ee8eec315e4cbe017a878c93b8671a9f2f1d7ffd38ac5469d7cafda
+	depends = python>=3.10
+	depends = python<4.0
+	depends = python-jsonschema>=4.16.0
+	depends = python-jsonref>=1.1.0
+	depends = python-tabulate>=0.9.0
+	depends = python-pandas>=2.1.4
+	depends = python-pillow>=10.0.0
+	depends = python-pydantic>=2.10.3
+	depends = python-pyyaml>=5.1
+	depends = python-typer026>=0.12.5
+	depends = python-latex2mathml>=3.77.0
+	depends = python-defusedxml>=0.7.1
+	depends = python-pydantic-settings>=2.14.0
+	depends = python-typing_extensions>=4.12.2
+	depends = python-doclang>=0.7.0
+	depends = python-requests
+	optdepends = python-opencv>=4.6.0: faster PNG encoding for embedded document images
+	optdepends = python-semchunk>=2.2.0: semantic chunking support
+	optdepends = python-tree-sitter>=0.25.0: code-aware semantic chunking
+	optdepends = python-tree-sitter-python>=0.23.6: Python code chunking
+	optdepends = python-tree-sitter-c>=0.23.4: C code chunking
+	optdepends = python-tree-sitter-javascript>=0.23.1: JavaScript code chunking
+	optdepends = python-tree-sitter-typescript>=0.23.2: TypeScript code chunking
+	optdepends = python-transformers>=5.4.0: Hugging Face tokenization for chunking
+	optdepends = python-huggingface-hub: Hugging Face model downloads for chunking tokenizers
+	optdepends = python-tiktoken>=0.9.0: OpenAI tokenization for chunking
+	source = https://files.pythonhosted.org/packages/source/d/docling-core/docling_core-2.92.0.tar.gz
+	b2sums = 68a65e88556be66da581ce8a034b77fd863318bf8415bbc8803c7cdc98f69a86c24c4c322bee96967c1363cc9123641d0123381ef2e5b60fa687d68b32fa8e06
 
 pkgname = python-docling-core
