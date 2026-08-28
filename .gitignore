@@ -2,3 +2,4 @@
 */pkg/
 *.pkg.tar.zst
 *.tar.gz
+/cockpit-pacman/
