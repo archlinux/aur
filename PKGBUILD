@@ -4,7 +4,7 @@ _pkgname='Bili Music'
 _zhsname='午夜黑胶'
 pkgver=0.3.4
 _nodeversion=20
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop music player based on Tauri v2 + Rust, which uses the music area of Bilibili as a music library to listen to songs."
 arch=('any')
 url="https://github.com/Jmiao11/bili-music"
@@ -21,6 +21,9 @@ makedepends=(
     'curl'
     'rustup'
     'gendesk'
+)
+options=(
+    '!lto'
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
