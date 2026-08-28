@@ -2,7 +2,7 @@
 # Automation: https://github.com/its-me/aur.appflowy
 
 pkgname=appflowy
-pkgver=0.13.2
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Open-source alternative to Notion – you own your data and customizations"
 arch=('x86_64')
@@ -43,11 +43,9 @@ source=(
     "flutter::git+https://github.com/flutter/flutter.git#tag=${_flutter_ver}"
     "appflowy.desktop"
 )
-sha256sums=(
-    '30756ab2473f08b997f9281cc8cefba12533d0508f0d08740cdb2de7b5eb6beb'
-    'SKIP'
-    '55c02d13249b333088ee452e76c8f36254e510651023549dc7e35efca02ca821'
-)
+sha256sums=('ff6b31c2fc4b9ba0df966689d82adb01f266381056eebadab491dcd456321a9b'
+            '41d2ef9589b0ff14b4c55a614933fb8f68307738882c8e6c454fc334d4952ce3'
+            '55c02d13249b333088ee452e76c8f36254e510651023549dc7e35efca02ca821')
 
 prepare() {
     export PATH="${srcdir}/flutter/bin:${PATH}"
