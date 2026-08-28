@@ -1,25 +1,38 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=pyfan
-pkgver=1.6.1
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Fan control utilising hwmon and pid'
 arch=(any)
 url='https://somegit.dev/anonfunc/PyFan'
 license=(GPL-3.0-or-later)
-depends=(python-yaml python-simple-pid)
-makedepends=(git)
+depends=(python python-yaml python-simple-pid)
+makedepends=(git python-build python-installer python-hatchling)
+checkdepends=(python-pytest)
 optdepends=('lm_sensors: check and load required hwmon modules')
-backup=('etc/pyfan')
 source=("git+$url.git#tag=$pkgver")
-b2sums=('5189d5d450dddb14ea93ee8d4d157fdd12ea8425b55ce3af9661e501d963b1ebc5bd344a52965b6fb906b77f900d2fdf20a3cdf08434ac3ddb6829544df3884d')
+b2sums=('cc92c8af65c8a5d0ba01ba01eab0869c342f5747d3224122dc5cb47f33a19d5ab9102690d61421e43730620aacc84128ce3c9e395d68f816248b279f9afdd7ac')
+
+build() {
+  cd PyFan
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd PyFan
+  PYTHONPATH=src pytest -vv
+}
 
 package() {
   cd PyFan
-  install -Dm755 pyfan.py "$pkgdir"/usr/bin/pyfan.py
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
   install -Dm644 pyfan.service "$pkgdir"/usr/lib/systemd/system/pyfan.service
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
+  install -Dm644 CHANGELOG.md "$pkgdir"/usr/share/doc/$pkgname/CHANGELOG.md
+  install -Dm644 docs/configuration.md "$pkgdir"/usr/share/doc/$pkgname/configuration.md
   install -Dm644 config-example.yaml "$pkgdir"/usr/share/doc/$pkgname/config-example.yaml
-  install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README
 }
 
 # vim:set ts=2 sw=2 et:
