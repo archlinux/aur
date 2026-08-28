@@ -1,0 +1,16 @@
+pkgbase = asus-fan-control-ec-git
+	pkgdesc = Fan control for ASUS devices using the embedded controller directly (git version)
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/Keyitdev/asus-fan-control-ec
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = base-devel
+	optdepends = systemd: run the fan curve as a service
+	provides = asus-fan-control-ec
+	conflicts = asus-fan-control-ec
+	source = asus-fan-control-ec::git+https://github.com/Keyitdev/asus-fan-control-ec.git#branch=master
+	sha256sums = SKIP
+
+pkgname = asus-fan-control-ec-git
