@@ -3,9 +3,9 @@
 pkgbase=at32-work-bench-bin
 pkgname=at32-work-bench
 pkgver=1.2.05
-pkgrel=3
+pkgrel=5
 # epoch=1
-pkgdesc="AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)"
+pkgdesc="AT32 MCU 图形化配置软件，生成初始化 C 代码"
 arch=('x86_64')
 url="https://www.arterytek.com/cn/support/tools.jsp"
 license=('LicenseRef-scancode-commercial-license')
@@ -24,12 +24,13 @@ makedepends=(
     libarchive
     sed)
 optdepends=(
-    'artery-isp-console: Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。'
-    'at32-bootloader-doc: Artery AT MCU Bootloader ISP 协议文档'
-    'at32-ide: AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32
-MCU。'
-    'at32-ide-project-generate: AT32 IDE 是个跨平台 ARM 嵌入式系统的软件开发环境。 它包含一系列的 Eclipse 插件和工具。该插件可让用户在 AT32 IDE 开发环境下创建、建置和调试 AT32 MCU。'
-    'at32-work-bench: AT32 MCU 图形化配置软件，生成初始化 C 代码(目前仅支持 AT32F421 系列)'
+    'artery-isp-console'
+    'at-link-console'
+    'at32-bootloader-doc'
+    'at32-ide'
+    'at32-ide-project-generate'
+    'at32-new-clock-configuration'
+    'at32-openocd'
     'jlink-software-and-documentation: Segger JLink software & documentation pack for Linux')
 backup=()
 options=('!strip' '!debug' '!lto')
