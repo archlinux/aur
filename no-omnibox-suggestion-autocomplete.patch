@@ -3,15 +3,12 @@
 # 'omnibox' in chromium internally). This is way easier than diabling all
 # history internally, but still allowing to get rid of shoulder surfing.
 
-diff --git a/chrome/browser/about_flags.cc b/chrome/browser/about_flags.cc
-index 6f414a3dd8..cb6d5720fe 100644
---- a/chrome/browser/about_flags.cc
-+++ b/chrome/browser/about_flags.cc
-@@ -2047,7 +2047,10 @@ const FeatureEntry::FeatureVariation kMaxZeroSuggestMatchesVariations[] = {
-     {"13", kMaxZeroSuggestMatches13, nullptr},
-     {"14", kMaxZeroSuggestMatches14, nullptr},
-     {"15", kMaxZeroSuggestMatches15, nullptr}};
--
+--- a/chrome/browser/about_flags.cc	2026-08-25 03:15:37.000000000 +0800
++++ b/chrome/browser/about_flags.cc	2026-08-27 21:58:15.206160296 +0800
+@@ -2121,6 +2121,10 @@
+ 
+ #endif  // BUILDFLAG(IS_ANDROID)
+ 
 +const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches1[] = {
 +    {OmniboxFieldTrial::kUIMaxAutocompleteMatchesParam, "1"}};
 +const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches2[] = {
@@ -19,7 +16,7 @@ index 6f414a3dd8..cb6d5720fe 100644
  const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches3[] = {
      {OmniboxFieldTrial::kUIMaxAutocompleteMatchesParam, "3"}};
  const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches4[] = {
-@@ -2069,6 +2072,8 @@ const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches12[] = {
+@@ -2142,6 +2146,8 @@
  
  const FeatureEntry::FeatureVariation
      kOmniboxUIMaxAutocompleteMatchesVariations[] = {
