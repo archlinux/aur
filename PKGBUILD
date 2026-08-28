@@ -2,19 +2,21 @@
 
 pkgname=supermariowar-git
 _pkgname=supermariowar
-pkgver=r1476.a781c755
-pkgrel=3
+pkgver=r1772.051723d0
+pkgrel=1
 pkgdesc='Super Mario War multiplayer game.'
 url='https://github.com/mmatyas/supermariowar'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('enet' 'yaml-cpp' 'sdl2_image' 'sdl2_mixer' 'sdl2' 'zlib')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'pkgconf')
 provides=('smw' 'smw-server' 'smw-leveledit' 'smw-worldedit')
 conflicts=("${_pkgname}-bin")
 source=("git+${url}.git"
-"git+${url}-data.git")
+"git+${url}-data.git"
+"bundleddeps.patch")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -30,6 +32,8 @@ prepare() {
     git submodule init data
     git config submodule.data.url "$srcdir/${_pkgname}-data"
     git -c protocol.file.allow=always submodule update
+
+    patch -p1 < "$srcdir/bundleddeps.patch"
 }
 
 build() {
