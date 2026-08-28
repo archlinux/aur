@@ -1,0 +1,22 @@
+pkgbase = nudl-bin
+	pkgdesc = Unofficial downloader for Hyundai, Kia and Genesis (HMG) infotainment navigation firmware (precompiled binary)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/chenxiaolong/nudl
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = openssh
+	provides = nudl
+	conflicts = nudl
+	options = !strip
+	source_x86_64 = nudl-bin-1.1.0-x86_64.zip::https://github.com/chenxiaolong/nudl/releases/download/v1.1.0/nudl-1.1.0-x86_64-unknown-linux-musl.zip
+	source_x86_64 = nudl-bin-1.1.0-x86_64.ssh-sig::https://github.com/chenxiaolong/nudl/releases/download/v1.1.0/nudl-1.1.0-x86_64-unknown-linux-musl.zip.sig
+	sha256sums_x86_64 = 502ef5d620af95bb829dbc00945ab64049f7f1cf4f5549b1836bc19fcbeb1efe
+	sha256sums_x86_64 = f804b1c4cb110d5f3666aaff4986ec10a2b96d3674f004fe7ba8fd089fd50b35
+	source_aarch64 = nudl-bin-1.1.0-aarch64.zip::https://github.com/chenxiaolong/nudl/releases/download/v1.1.0/nudl-1.1.0-aarch64-unknown-linux-musl.zip
+	source_aarch64 = nudl-bin-1.1.0-aarch64.ssh-sig::https://github.com/chenxiaolong/nudl/releases/download/v1.1.0/nudl-1.1.0-aarch64-unknown-linux-musl.zip.sig
+	sha256sums_aarch64 = 7837a52747603ae93f8f8a92929f09749ae75f17ac06253fc9c4ed42f12ea544
+	sha256sums_aarch64 = 601d57aa7215dc7d3b47407e2d0c1e636675c28a24f95ba9df8ac835d2c6de26
+
+pkgname = nudl-bin
