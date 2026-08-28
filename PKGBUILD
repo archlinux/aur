@@ -2,7 +2,7 @@
 # Contributor: tytan652 <tytan652@tytanium.xyz>
 
 pkgname=obs-advanced-scene-switcher
-pkgver=1.35.1
+pkgver=1.36.1
 pkgrel=1
 pkgdesc="An automated scene switcher for OBS Studio"
 arch=("x86_64" "aarch64")
@@ -33,15 +33,13 @@ source=(
   "DetectLibraryType.cmake"
   "FindLeptonica.cmake" 
   "FindTesseract.cmake"
-  "https://github.com/WarmUpTill/SceneSwitcher/commit/e2ab14a3edf8ce19b000c5b41bcfbe0690c940c6.patch"
 )
-sha256sums=('f69cf89f6e8a66927a02bedda686b5f25fdde3e6264057c66ae2b0907b70083c'
+sha256sums=('2a0ad62ae334b8bc59edb4c8833cef502214121cdf7409ac108d35bf6dea9c4d'
             '96c3583ca49180c35091be66b9a670af88aafe842c1cf948c9b6e79bea2e0269'
             'SKIP'
             '81fccf8bcfadaf3bc6c1a67321376a1d37e20be05284660bdee6f61ef64ee8f7'
             '21444991ea07c75ebe4b78d10ab58e96326b2371147bb3c639ad4311026d1501'
-            '908aee4fccba9ef2ff9796e22a8ccd7eff5bb7f74feca409feca474e038bf843'
-            '955ab45c2ea48b27a8f2a1960a5a9cf15394c23d0652f92f921d42e4b15dde89')
+            '908aee4fccba9ef2ff9796e22a8ccd7eff5bb7f74feca409feca474e038bf843')
 
 prepare() {
   cd $pkgname
@@ -60,8 +58,6 @@ prepare() {
   sed -i 's/find_package(Tesseract)/find_package(Tesseract REQUIRED)/g' plugins/video/CMakeLists.txt
   cp $srcdir/*.cmake cmake/common/.
   sed -i 's/::libtesseract/::Tesseract/g' plugins/video/CMakeLists.txt
-
-  patch -p1 < ${srcdir}/e2ab14a3edf8ce19b000c5b41bcfbe0690c940c6.patch
 }
 
 build() {
