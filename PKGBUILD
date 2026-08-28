@@ -2,7 +2,7 @@
 
 pkgname=all-logic
 pkgver=1.4.0
-pkgrel=1
+pkgrel=3
 pkgdesc='ALL LOGIC is an unofficial multi-vendor logic analyzer host'
 arch=($CARCH)
 url='https://github.com/Doukeyi-X/ALL-LOGIC'
@@ -65,8 +65,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
-    -DHAVE_ATKLOGIC_DEVICE=1 \
-    -DHAVE_FX2LAFW_DEVICE=1 \
     -Wno-dev \
     -B build \
     -G Ninja

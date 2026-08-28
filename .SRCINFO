@@ -1,7 +1,7 @@
 pkgbase = all-logic
 	pkgdesc = ALL LOGIC is an unofficial multi-vendor logic analyzer host
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/Doukeyi-X/ALL-LOGIC
 	arch = x86_64
 	license = GPL-3.0-only
