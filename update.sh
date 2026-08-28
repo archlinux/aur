@@ -2,11 +2,35 @@
 # Query version information and update PKGBUILD for the AppImage release.
 # Release metadata comes from the Antigravity Hub updater API. AppImages are
 # composite Google Cloud Storage objects, so their ETags are not MD5 hashes;
-# download each changed release to calculate its package checksum.
+# cache each changed release locally to calculate its package checksum. The
+# cached file uses makepkg's source filename so the subsequent build reuses it.
 set -euo pipefail
 
 releases_url='https://antigravity-hub-auto-updater-974169037036.us-central1.run.app/releases'
 storage_url='https://storage.googleapis.com/antigravity-public/antigravity-hub'
+
+usage() {
+    echo "usage: $0 [--check]"
+    echo '  --check  report whether an update is available without downloading AppImages'
+}
+
+if (( $# > 1 )); then
+    usage >&2
+    exit 2
+fi
+
+case ${1:-} in
+    '') check_only=false ;;
+    --check) check_only=true ;;
+    -h|--help)
+        usage
+        exit 0
+        ;;
+    *)
+        usage >&2
+        exit 2
+        ;;
+esac
 
 pkgbuild_var() {
     grep "^$1=" PKGBUILD | cut -d= -f2- || { echo "error: $1 not found in PKGBUILD" >&2; exit 1; }
@@ -32,16 +56,36 @@ version=${release%-*}
 execution_id=${release##*-}
 
 appimage_md5() {
-    local arch=$1 checksum
-    local url="$storage_url/$release/$arch/Antigravity.AppImage"
+    local upstream_arch=$1 package_arch=$2 checksum
+    local url="$storage_url/$release/$upstream_arch/Antigravity.AppImage"
+    local appimage="Antigravity-$version-$package_arch.AppImage"
+    local source_url="$appimage.url"
+    local partial="$appimage.part"
 
-    echo "downloading $arch AppImage to calculate its MD5 checksum..." >&2
-    if ! checksum=$(curl -fsSL --retry 3 "$url" | md5sum | cut -d' ' -f1); then
-        echo "error: failed to download or checksum the $arch AppImage" >&2
+    if [[ -f $appimage && -f $source_url ]] && [[ $(<"$source_url") == "$url" ]]; then
+        echo "using cached $package_arch AppImage..." >&2
+    else
+        if [[ -f $partial ]]; then
+            echo "resuming $package_arch AppImage download..." >&2
+        else
+            echo "downloading $package_arch AppImage..." >&2
+        fi
+
+        if ! curl -fL --retry 3 --continue-at - --output "$partial" "$url"; then
+            echo "error: failed to download the $package_arch AppImage" >&2
+            return 1
+        fi
+
+        mv -- "$partial" "$appimage"
+        printf '%s\n' "$url" > "$source_url"
+    fi
+
+    if ! checksum=$(md5sum "$appimage" | cut -d' ' -f1); then
+        echo "error: failed to checksum the $package_arch AppImage" >&2
         return 1
     fi
     [[ $checksum =~ ^[0-9a-f]{32}$ ]] \
-        || { echo "error: invalid $arch AppImage checksum" >&2; return 1; }
+        || { echo "error: invalid $package_arch AppImage checksum" >&2; return 1; }
     printf '%s\n' "$checksum"
 }
 
@@ -59,11 +103,16 @@ if (( vcmp == 0 )) && [[ $current_execution_id == "$execution_id" ]]; then
     exit 0
 fi
 
+if $check_only; then
+    echo "update available: $current_pkgver-$current_execution_id -> $release"
+    exit 0
+fi
+
 current_md5_x86_64=$(pkgbuild_var md5sums_x86_64 | sed "s/[^']*'\([^']*\)'.*/\1/")
 current_md5_aarch64=$(pkgbuild_var md5sums_aarch64 | sed "s/[^']*'\([^']*\)'.*/\1/")
 
-md5_x86_64=$(appimage_md5 linux-x64)
-md5_aarch64=$(appimage_md5 linux-arm)
+md5_x86_64=$(appimage_md5 linux-x64 x86_64)
+md5_aarch64=$(appimage_md5 linux-arm aarch64)
 
 if (( vcmp > 0 )); then
     printf '  %-22s %s -> %s\n' pkgver "$current_pkgver" "$version"

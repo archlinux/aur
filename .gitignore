@@ -6,4 +6,6 @@ pkg/
 
 # Downloaded sources (kept in PKGBUILD's source array, not in git)
 Antigravity-*.AppImage
+Antigravity-*.AppImage.part
+Antigravity-*.AppImage.url
 Antigravity-*.tar.gz
