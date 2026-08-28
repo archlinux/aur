@@ -1,0 +1,122 @@
+# Maintainer: @RubenKelevra <rubenkelevra@gmail.com>
+
+pkgname='docling'
+pkgver='2.122.0'
+pkgrel=1
+pkgdesc='Meta-package and command-line interface for local document processing'
+url="https://github.com/docling-project/${pkgname}"
+license=('MIT')
+arch=('any')
+depends=(
+	"python-${pkgname}=${pkgver}"
+	'python-numpy>=1.24.0'
+	'python-pillow>=10.0.0'
+	'python-rtree>=1.3.0'
+	'python-scipy>=1.6.0'
+	'python-pypdfium2>=4.30.2'
+	'python-docling-parse>=7.12.0'
+	'python-docling-ibm-models>=3.13.0'
+	'python-pytorch>=2.2.2'
+	'python-torchvision'
+	'python-transformers>=5.4.0'
+	'python-lxml'
+	'python-defusedxml>=0.7.1'
+	'python-typer026>=0.12.5'
+	'python-rich>=13.0.0'
+	'python-opencv>=4.6.0'
+)
+makedepends=(
+	'python-build'
+	'python-installer'
+	'python-hatchling'
+	'python-wheel'
+)
+checkdepends=('python-pytest')
+optdepends=(
+	'python-polyfactory>=2.22.2: document extraction support'
+	'python-docx>=1.2.0: DOCX input support'
+	'python-pptx>=1.0.2: PowerPoint input support'
+	'python-openpyxl>=3.1.5: Excel input support'
+	'python-beautifulsoup4>=4.12.3: HTML input support'
+	'python-marko>=2.1.2: Markdown input support'
+	'python-pylatexenc>=2.10: LaTeX input support'
+	'python-odfdo>=3.22.0: OpenDocument input support'
+	'python-mail-parser>=4.1.4: email input support'
+	'python-oxmsg>=0.0.2: Outlook MSG input support'
+	'python-rapidocr>=3.9.1: RapidOCR engine'
+	'python-easyocr>=1.7: EasyOCR engine'
+	'python-tesserocr>=2.7.1: Tesseract OCR engine'
+	'python-playwright>=1.58.0: dynamic HTML rendering'
+	'python-semchunk>=2.2.0: semantic chunking support'
+	'python-tree-sitter>=0.25.0: semantic chunking support'
+	'python-tree-sitter-python>=0.23.6: Python-aware semantic chunking'
+	'python-tree-sitter-c>=0.23.4: C-aware semantic chunking'
+	'python-tree-sitter-javascript>=0.23.1: JavaScript-aware semantic chunking'
+	'python-tree-sitter-typescript>=0.23.2: TypeScript-aware semantic chunking'
+	'python-httpx>=0.28: remote Docling service support'
+	'python-websockets>=14.0: remote Docling service streaming'
+	'python-dotenv>=1.0: load CLI configuration from .env files'
+	'python-openai-whisper>=20250625: audio transcription support'
+	'python-numba>=0.63.0: audio transcription support'
+)
+source=(
+	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+	'slim_meta_package.patch'
+)
+b2sums=(
+	'efb947d366cbf33ace15341879a3bbc97860e025a7acd18d4cc82f204459bc2fffc981033ba1bcf0ebfa97660d7d5e0706ef384edb2d742946e59a66bff50c8a'
+	'534eecb1b7af0d09196c0f431867fbe0344d754445f233438a87e6ce9168a12e0b18021a88a8368d34d37e57f430f50a427c4165f6cdeac973546acdab6a2929'
+)
+
+prepare() {
+	cd -- "${pkgname}-${pkgver}" || return 1
+
+	# Arch exposes the standard feature set through optdepends, so keep the
+	# Python meta-package dependency limited to the separately packaged SDK.
+	patch -Np1 -i "${srcdir}/slim_meta_package.patch"
+}
+
+build() {
+	cd -- "${pkgname}-${pkgver}/packages/docling" || return 1
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	local _python_version
+	local _checkdir="${srcdir}/${pkgname}-check"
+
+	_python_version=$(python --version)
+	_python_version=${_python_version#Python }
+	_python_version=${_python_version%.*}
+	if [[ ! ${_python_version} =~ ^[0-9]+\.[0-9]+$ ]]; then
+		printf 'Unable to determine Python major.minor version: %s\n' "${_python_version}" >&2
+		return 1
+	fi
+
+	rm -rf -- "${_checkdir}"
+	cd -- "${pkgname}-${pkgver}" || return 1
+	python -m installer --destdir="${_checkdir}" packages/docling/dist/*.whl
+
+	PYTHONPATH="${_checkdir}/usr/lib/python${_python_version}/site-packages" \
+		HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 python -m pytest -q \
+			tests/test_cli.py::test_cli_help \
+			tests/test_cli.py::test_cli_convert_help \
+			tests/test_cli.py::test_cli_version \
+			tests/test_cli.py::test_split_list_handles_none_and_delimiters \
+			tests/test_cli.py::test_image_export_policy_covers_all_output_formats \
+			tests/test_cli.py::test_cli_invalid_ocr_mode_is_rejected \
+			tests/test_cli.py::test_cli_page_range_accepts_single_page \
+			tests/test_cli.py::test_cli_invalid_page_range_is_rejected \
+			tests/test_cli_tools.py::test_tools_help_lists_models_subcommand \
+			tests/test_cli_tools.py::test_tools_without_arguments_shows_help \
+			tests/test_cli_tools.py::test_models_without_arguments_shows_help
+
+	# Default PDF table structure uses TableFormer V1.
+	python -m pydoc docling_ibm_models.tableformer.data_management.tf_predictor >/dev/null
+}
+
+package() {
+	cd -- "${pkgname}-${pkgver}" || return 1
+	python -m installer --destdir="${pkgdir}" packages/docling/dist/*.whl
+	install -D -m644 -- LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
