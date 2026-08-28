@@ -1,6 +1,6 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
-pkgver=3.27.1
+pkgver=3.28.0
 pkgrel=1
 pkgdesc="Intelligent update advisor and wrapper for Arch Linux and derivatives"
 arch=('any')
@@ -8,7 +8,9 @@ url="https://github.com/motorrin/arch-smart-update"
 license=('MIT')
 depends=('bash' 'python' 'pacman' 'pacman-contrib' 'tar' 'gawk' 'coreutils' 'curl' 'zstd' 'grep' 'sed')
 optdepends=(
-    'reflector: for Arch Linux mirror updates'
+    'rate-mirrors: for fast Arch Linux mirror ranking (primary)'
+    'reflector: for Arch Linux mirror ranking (fallback)'
+    'rebuild-detector: for detecting foreign AUR packages requiring rebuild (checkrebuild)'
     'cachyos-rate-mirrors: for CachyOS mirror updates'
     'eos-rankmirrors: for EndeavourOS mirror updates'
     'eos-update: for EndeavourOS core updates'
@@ -34,7 +36,7 @@ optdepends=(
     'psmisc: for alternative pacman lock detection using fuser'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('74365c76bd73939ac0f7c8cedf6e2dab295a5c38cbc108d59498f16128e0b7b5')
+sha256sums=('d5982efcb9ba749d23226affd323a6affd628d101363039d7159c23643d74dc2')
 
 package() {
     cd "${pkgname}-${pkgver}"
