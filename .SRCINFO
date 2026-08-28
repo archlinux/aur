@@ -1,0 +1,24 @@
+pkgbase = fastannoy
+	pkgdesc = typos that are actually annoying
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/CallMeAlphabet/fastannoy
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = gti
+	provides = gerp
+	provides = sudp
+	provides = cst
+	provides = vom
+	conflicts = gti
+	conflicts = gerp
+	conflicts = sudp
+	conflicts = cst
+	conflicts = vom
+	source = git+https://github.com/CallMeAlphabet/fastannoy.git#commit=HEAD
+	sha256sums = SKIP
+
+pkgname = fastannoy
