@@ -1,53 +1,42 @@
-# Contributor: killhellokitty <killhellokitty.deviantart.com>
-# Maintainer: killhellokitty <killhellokitty.deviantart.com>
+# Maintainer: Echo J. <aidas957 at gmail dot com>
+# shellcheck shell=bash disable=SC2034,SC2164
 
-pkgname=sable
-pkgver=3.14.31_03222015
+_pkgname=Sable
+pkgname="${_pkgname/S/s}"
+pkgver=1.21.0
 pkgrel=1
-pkgdesc="A flat green, blue, NC(gray), Purple, Yellow, and red themes with or without patterened background for gnome-shell, cinnamon-2.4, xfwm4, openbox-3, Qt4, Firefox Theme, and Chromium Theme, as well as all themes without patterned background. Ten in all."
-arch=('any')
-url="http://fav.me/d8eg4n0"
-license=('GPLv3')
-depends=('gtk-engines' 'gnome-themes-standard>=3.14' 'gtk-engine-murrine>=0.98.2')
+pkgdesc="An almost stable Matrix client"
+arch=('x86_64')
+url="https://github.com/SableClient/${_pkgname}"
+license=('AGPL-3.0-only')
+depends=('cairo' 'dbus' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'webkit2gtk-4.1')
+makedepends=('cargo-tauri' 'pnpm' 'rust')
+options=('!lto') # Causes undefined ring_core_* symbol errors
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha256sums=('ba27303e62a89e283d47cef9171188fe0e0b57fdabc5b55fea085d1c13491a59')
 
-source=("https://dl.dropboxusercontent.com/u/330352/sable-3.14.31_03222015.zip")
-#install=$pkgname.install
-#replaces=('delorean-dark-themes-3.8')
-#conflicts=('delorean-dark-theme-3.8')
-install=$pkgname.install
+prepare() {
+   cd "${_pkgname}-${pkgver}"
 
-md5sums=('ce9b69cd1b4429d5336c9c2afc04a2de')
+   # HACK: Disable unnecessary postinstall script
+   sed -i 's@node scripts/install-knope.js@true@' package.json
 
+   # Fix Sable version in Cargo.lock (TODO: Remove this in the next version)
+   sed -i "s@1\.20\.0@${pkgver}@" src-tauri/Cargo.lock
+}
+
+build() {
+   cd "${_pkgname}-${pkgver}"
+
+   pnpm install --frozen-lockfile
+
+   cargo-tauri build --bundles deb --no-sign -- --locked --features wry --no-default-features
+}
 
 package() {
-  # install themes
-  
-  #cd DORIAN
+   cd "${_pkgname}-${pkgver}"
 
-  find Sable-Green-3.14/ -type f \
-      -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
-  find Sable-Blue-3.14/ -type f \
-      -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
-  find Sable-Red-3.14/ -type f \
-      -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \; 
-  find Sable-NC-3.14/ -type f \
-      -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
-  find Sable-Green-NP-3.14/ -type f \
-      -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
-  find Sable-Blue-NP-3.14/ -type f \
-      -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
-  find Sable-Red-NP-3.14/ -type f \
-      -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
-  find Sable-NC-NP-3.14/ -type f \
-      -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
-  find Sable-Purple-3.14/ -type f \
-      -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;   
-  find Sable-Purple-NP-3.14/ -type f \
-      -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;
-  find Sable-Yellow-3.14/ -type f \
-      -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;   
-  find Sable-Yellow-NP-3.14/ -type f \
-      -exec install -Dm644 "{}" "$pkgdir/usr/share/themes/{}" \;      
-}  
+   cp -a src-tauri/target/release/bundle/deb/"${_pkgname}"_"${pkgver}"_*/data/* "${pkgdir}"
+}
 
-# vim:set ts=2 sw=2 et:
+# vim: ts=3 sw=3 et:

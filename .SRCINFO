@@ -1,16 +1,23 @@
 pkgbase = sable
-	pkgdesc = A flat green, blue, NC(gray), Purple, Yellow, and red themes with or without patterened background for gnome-shell, cinnamon-2.4, xfwm4, openbox-3, Qt4, Firefox Theme, and Chromium Theme, as well as all themes without patterned background. Ten in all.
-	pkgver = 3.14.31_03222015
+	pkgdesc = An almost stable Matrix client
+	pkgver = 1.21.0
 	pkgrel = 1
-	url = http://fav.me/d8eg4n0
-	install = sable.install
-	arch = any
-	license = GPLv3
-	depends = gtk-engines
-	depends = gnome-themes-standard>=3.14
-	depends = gtk-engine-murrine>=0.98.2
-	source = https://dl.dropboxusercontent.com/u/330352/sable-3.14.31_03222015.zip
-	md5sums = ce9b69cd1b4429d5336c9c2afc04a2de
+	url = https://github.com/SableClient/Sable
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cargo-tauri
+	makedepends = pnpm
+	makedepends = rust
+	depends = cairo
+	depends = dbus
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	options = !lto
+	source = Sable-1.21.0.tar.gz::https://github.com/SableClient/Sable/archive/v1.21.0.tar.gz
+	sha256sums = ba27303e62a89e283d47cef9171188fe0e0b57fdabc5b55fea085d1c13491a59
 
 pkgname = sable
-

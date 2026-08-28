@@ -1,0 +1,4 @@
+[sable]
+source = "git"
+git = "https://github.com/SableClient/Sable.git"
+prefix = "v"
