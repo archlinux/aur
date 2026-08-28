@@ -1,7 +1,7 @@
 pkgname=linux-wireless-reg-unlocked
 _pkgbase=linux
 
-_kernelpkgver=7.1.9.arch1-2
+_kernelpkgver=7.1.10.arch1-1
 
 _kernver="$(
   printf '%s\n' "${_kernelpkgver}" |
@@ -57,7 +57,7 @@ source=(
   'dracut-wireless-reg-unlocked.conf'
 )
 
-sha256sums=('3271a4ae3897b38352980f2b0975bae61bca81c644d186221c5ae928bcc072b0'
+sha256sums=('67d2f4697a02f3bec98e744b1bdc307e920c24bb4e88b5ee97dc9a34e9aa9999'
             'da2ab52ccdef2b93088c9e0c56bc1c166bf748d021b529cb2af2ff6c5d9e85cc'
             '96f91b3ff8d5caafe4939cb22bb455d34d107d08e14cf3af6dbb47ef70553732'
             'e8574dead1cb1f2b3732b0daeffa5bb9d71e1cc8eee5203348bbe9169c5adbe6'
