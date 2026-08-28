@@ -14,7 +14,7 @@ conflicts=('sudo' 'doas' 'voix')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
 install="${pkgname}.install"
 source=("voix-x86_64-bin.tar.gz::https://github.com/Veridian-Zenith/Voix/releases/download/v${pkgver}/voix-x86_64-bin.tar.gz")
-sha256sums=('a238ff44132a3759c040901f79fb3065ce9e28989df84875a45ce1587bc53ad5')
+sha256sums=('513079dda436174519f9d56bae8fc86590090c07be57ffb086fd74f2c8dbba1f')
 
 package() {
     cd voix-bin
