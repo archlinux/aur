@@ -1,0 +1,24 @@
+pkgbase = python-pygments-git
+	pkgdesc = Python syntax highlighter (Git)
+	pkgver = 0
+	pkgrel = 1
+	url = https://pygments.org/
+	arch = any
+	license = BSD-2-Clause
+	checkdepends = python-lxml
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-wcag-contrast-ratio
+	makedepends = python-wheel
+	depends = python
+	provides = pygmentize
+	conflicts = pygmentize
+	replaces = pygmentize
+	source = git+https://github.com/pygments/pygments.git
+	b2sums = SKIP
+
+pkgname = python-pygments-git
