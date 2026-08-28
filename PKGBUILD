@@ -2,7 +2,7 @@
 # Contributor: Junker
 
 pkgname=nom
-pkgver=3.2.5
+pkgver=3.3.2
 pkgrel=1
 pkgdesc='RSS reader for the terminal'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url='https://github.com/guyfedwards/nom'
 license=('GPL-3')
 makedepends=('go')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('f12c6f8429808a64db46cc3530454d9bd131e3bd4027c57720ab096853cca2e0')
+sha256sums=('b462d343e81f1382f38a9bd829be38f6b89ed2457f7bdbac2f8849078b9b094d')
 
 build() {
   cd "$pkgname-$pkgver"
