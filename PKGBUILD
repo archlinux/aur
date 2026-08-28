@@ -7,9 +7,15 @@ pkgdesc="Simple and fast Arch Linux package manager wrapper built on top of pacm
 arch=('any')
 url="https://github.com/Bangkah/Atha"
 license=('MIT')
-depends=('bash' 'pacman' 'sudo' 'git' 'base-devel')
+depends=(
+    'bash'
+    'pacman'
+    'sudo'
+    'git'
+    'base-devel'
+)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Bangkah/Atha/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP') 
+sha256sums=('SKIP')
 
 package() {
     cd "Atha-${pkgver}"
