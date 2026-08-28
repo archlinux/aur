@@ -1,6 +1,6 @@
 pkgbase = linuxy
 	pkgdesc = Multi-platform Desktop Application Manager with Firejail sandboxing
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/swadhinbiswas/linuxy
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = linuxy
 	makedepends = npm
 	makedepends = llvm
 	makedepends = clang
-	source = linuxy-2.0.3.tar.gz::https://github.com/swadhinbiswas/linuxy/archive/refs/tags/v2.0.3.tar.gz
-	sha256sums = c4c3f43c717be45c66aa6790904be7d3130b0444051680e05343cee3f5e44546
+	source = linuxy-2.0.4.tar.gz::https://github.com/swadhinbiswas/linuxy/archive/refs/tags/v2.0.4.tar.gz
+	sha256sums = b104032a099141d53dd68e492889ce7e219cb670e7113aed095b0b313893db60
 
 pkgname = linuxy

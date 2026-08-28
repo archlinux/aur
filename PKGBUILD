@@ -3,7 +3,7 @@
 # AUR Package for Linuxy - One-click Linux Application Manager
 
 pkgname=linuxy
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Multi-platform Desktop Application Manager with Firejail sandboxing"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('cargo' 'nodejs' 'npm' 'llvm' 'clang' 'patchelf')
 optdepends=('appimageupdatetool: AppImage auto-updates')
 install=linuxy.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/swadhinbiswas/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c4c3f43c717be45c66aa6790904be7d3130b0444051680e05343cee3f5e44546')
+sha256sums=('b104032a099141d53dd68e492889ce7e219cb670e7113aed095b0b313893db60')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -42,10 +42,13 @@ package() {
 
   for size in 32 128 256 512; do
     icon="src-tauri/icons/${size}x${size}.png"
-    [ -f "$icon" ] && install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/linuxy.png"
+    if [ -f "$icon" ]; then
+      install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/linuxy.png"
+    fi
   done
-  [ -f "src-tauri/icons/icon.png" ] && install -Dm644 "src-tauri/icons/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/linuxy.png"
-  [ -f "src-tauri/icons/icon.icns" ] && install -Dm644 "src-tauri/icons/icon.icns" "$pkgdir/usr/share/icons/hicolor/512x512/apps/linuxy.icns"
+  if [ -f "src-tauri/icons/icon.png" ]; then
+    install -Dm644 "src-tauri/icons/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/linuxy.png"
+  fi
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
