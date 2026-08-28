@@ -1,6 +1,6 @@
 pkgbase = vela-desktop-bin
 	pkgdesc = Passwordless, zero-knowledge vault desktop app (prebuilt binary)
-	pkgver = 0.1.508
+	pkgver = 0.1.512
 	pkgrel = 1
 	url = https://github.com/lucannez64/VELA
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = vela-desktop-bin
 	conflicts = vela-desktop
 	options = !strip
 	options = !debug
-	source_x86_64 = VELA_0.1.508_amd64.deb::https://github.com/lucannez64/VELA/releases/download/desktop-v0.1.508/VELA_0.1.508_amd64.deb
-	sha256sums_x86_64 = 21ce84776a7315e34a94a63b87ec84a7aeada9da2516af54e1434fafa10ce40d
+	source_x86_64 = VELA_0.1.512_amd64.deb::https://github.com/lucannez64/VELA/releases/download/desktop-v0.1.512/VELA_0.1.512_amd64.deb
+	sha256sums_x86_64 = 06961656cbc219f553ed0f67695e4e98c8c5c9cb7586bc6dbcf3d617271299fd
 
 pkgname = vela-desktop-bin
