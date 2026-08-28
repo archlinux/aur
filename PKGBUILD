@@ -2,7 +2,7 @@
 
 pkgname=rox-player
 pkgver=1.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, composable music player written in rust (foobar2000 for the current year)"
 arch=('x86_64')
 url="https://github.com/zealsprince/rox"
@@ -59,7 +59,7 @@ build() {
 
   export RUSTFLAGS="--remap-path-prefix=$srcdir=/"
 
-  cargo build --offline --release --all-targets
+  cargo build --offline --release --package rox --package rox-mcp
 }
 
 package() {
@@ -67,6 +67,7 @@ package() {
   
   # Install binary
   install -Dm755 "target/release/rox" "$pkgdir/usr/bin/rox"
+  install -Dm755 "target/release/rox-mcp" "$pkgdir/usr/bin/rox-mcp"
 
   # Install Licence
   if [ -f "LICENSE" ]; then
