@@ -3,7 +3,7 @@
 _pkgauthor=zhboner
 _pkgname=realm
 pkgname=${_pkgname}-bin
-pkgver=2.9.4
+pkgver=2.9.5
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A simple, high performance relay server written in rust."
@@ -46,8 +46,8 @@ sha256sums=('7d232b4125b518eb4527d1933cbe20e6d87b865213b9c561faade007326fd9d3'
             'bf121e39bc882447349e25332f4d27a47a3cb72a19451739603205cfb333bb8f'
             '4a8d9aaf9910d34085d5f57ad9077657708f6474f7979b460673a1ad3bb002e1'
             'f9c220478250e6830e6ca7fef4f82f20467f9a2ee2825a9d371f61be923cfeef')
-sha256sums_x86_64=('9dec109386b8abc828b452d0d1cecde35b7a2f8cfa93eae757fe9c248ad07ddd')
-sha256sums_aarch64=('1f7f06e82fe0ea798b5c8e8e32906ee212a7085629a1c5cef9957ca270fcad99')
+sha256sums_x86_64=('e8b509c64d3ebb22d0d8f53c623e23579fbf8fb0436d51ce0bb9c513d7ce4e92')
+sha256sums_aarch64=('525f51ca455b6c8ada603747193982b770a820ffe2cdcdadd860f203358630a9')
 
 
 prepare() {
