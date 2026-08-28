@@ -3,7 +3,7 @@
 pkgbase=python-firefly
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=3.4.0
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="A browser-based particle visualization platform"
 arch=('any')
@@ -15,22 +15,27 @@ makedepends=('python-setuptools-scm'
 checkdepends=('python-pytest'
               'python-abg') # h5py, matplotlib, pandas(scipy,requests) <- abg
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('d9a528c24d02ef0f01163a876018474a')
+#source=("https://github.com/ageller/Firefly/archive/refs/tags/v${pkgver}.tar.gz")
+md5sums=('0f3ed89f34c196cae2bfaf876a78b662')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/Firefly-${pkgver}
 
+#   export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
     sed -i 's/Default/default/g' src/firefly/tests/test_settings.py
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/Firefly-${pkgver}
 
     python -m build --wheel --no-isolation
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
+#   cd ${srcdir}/Firefly-${pkgver}
 
     pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
