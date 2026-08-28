@@ -1,5 +1,5 @@
 pkgname=aercast
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Native Linux/Wayland screen sharing over HTTP'
 arch=('x86_64')
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('cargo' 'clang' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('063c1fa34bd8c3348cf79ab8ecb6e5c042af89b6d606f37649fd31550811bae2')
+sha256sums=('32b296fbcf7476bf3257bc9e028576cd93864c6517d1e5d6a9dbfbb4e1519a4e')
 
 prepare() {
   cd "Aercast-$pkgver"
