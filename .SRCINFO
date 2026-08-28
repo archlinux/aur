@@ -1,12 +1,12 @@
 pkgbase = e-search
 	pkgdesc = 识屏 · 搜索
 	pkgver = 15.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xushengfeng/eSearch
 	install = e-search.install
 	arch = x86_64
 	license = GPL3
-	depends = electron43
+	depends = electron40
 	depends = at-spi2-core
 	depends = hicolor-icon-theme
 	depends = libnotify
