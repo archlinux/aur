@@ -1,0 +1,18 @@
+pkgbase = floral-notepaper-bin
+	pkgdesc = A lightweight, elegant, and modern sticky note app for your desktop.(Prebuilt version)轻量、优雅、现代化的本地便签工具
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Achilng/floral-notepaper
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = floral-notepaper=1.1.0
+	conflicts = floral-notepaper
+	source = floral-notepaper-1.1.0-x86_64.rpm::https://github.com/Achilng/floral-notepaper/releases/download/v1.1.0/floral-notepaper-1.1.0-1.x86_64.rpm
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/Achilng/floral-notepaper/v1.1.0/LICENSE
+	sha256sums = bac5e6e239bc42aa7192dafbaf70c9b97ed995db3e2084345a7160b14b70cd95
+	sha256sums = e4df1e97f2ee75fe597e567546bf3070f5b09c9cc4879666b53fe5254e00994e
+
+pkgname = floral-notepaper-bin
