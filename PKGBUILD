@@ -2,7 +2,7 @@
 
 pkgname=artery-isp-console-bin
 pkgver=3.0.23
-pkgrel=1
+pkgrel=3
 # epoch=1
 pkgdesc="Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。"
 arch=('x86_64')
@@ -19,6 +19,16 @@ depends=(
     libusb
 )
 makedepends=('unzip')
+optdepends=(
+  'at-link-console'
+  'at32-bootloader-doc'
+  'at32-ide'
+  'at32-ide-project-generate'
+  'at32-new-clock-configuration'
+  'at32-work-bench'
+  'at32-openocd'
+  'jlink-software-and-documentation: Segger JLink software & documentation pack for Linux'
+)
 backup=()
 options=('!strip' '!debug' '!lto')
 install=${pkgname}.install
