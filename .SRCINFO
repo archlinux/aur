@@ -1,6 +1,6 @@
 pkgbase = rua-fork
 	pkgdesc = Opinionated fork of rua, an AUR helper written in Rust that provides control, review, patch application, and safe build options
-	pkgver = 0.20.0
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://github.com/J101R/rua
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = rua-fork
 	optdepends = bubblewrap-suid: version of bubblewrap that works on linux-hardened kernel
 	optdepends = shellcheck: allows checking PKGBUILD scripts, taking care of special variables
 	optdepends = sudo: allows package installation via sudo, if desired
-	provides = rua=0.20.0
+	provides = rua=0.20.1
 	conflicts = rua
 	options = !lto
-	source = rua-fork-0.20.0.tar.gz::https://github.com/J101R/rua/archive/v0.20.0.tar.gz
-	sha256sums = f614093cdd694aab28fcaf5c5f3567dfa994c2d973d4688bdf0c436a43ad59af
+	source = rua-fork-0.20.1.tar.gz::https://github.com/J101R/rua/archive/v0.20.1.tar.gz
+	sha256sums = fe5a46bbb88e4ed3fbaac22286725bbfec31c62d7f58e280e430ca8fdd96be69
 
 pkgname = rua-fork
