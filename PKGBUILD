@@ -19,5 +19,4 @@ sha256sums=(
 package() {
 	install -Dm755 flintc "${pkgdir}/usr/bin/flintc"
 	install -Dm755 fls "${pkgdir}/usr/bin/fls"
-	install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
