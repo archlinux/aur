@@ -1,5 +1,5 @@
 pkgname=libmixmod
-pkgver=2.1.11
+pkgver=2.1.12
 pkgrel=1
 pkgdesc="Classification with Mixture Modelling"
 arch=('x86_64')
@@ -8,12 +8,10 @@ license=('GPL-3.0-or-later')
 depends=(libgcc libgomp libstdc++ glibc)
 makedepends=('cmake' 'eigen')
 source=("https://github.com/mixmod/mixmod/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e95414decf5b2c2c5eebd7fca10e0100f2d753cbfca0694f4ac75da3b39b005e')
+sha256sums=('dd6c0d1fef7f2aa80e0c77680baa0718aa6326302bfd11b7e5dd99a378e5b277')
 
 prepare() {
   cd "$srcdir"/mixmod-${pkgver}
-  # eigen 5.x compat
-  curl -L https://github.com/mixmod/mixmod/pull/36.patch | patch -p1
 }
 
 build () {
