@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-gmp-ecm
+	pkgdesc = Elliptic Curve Method for Integer Factorization (mingw-w64)
+	pkgver = 7.0.7
+	pkgrel = 1
+	url = https://gitlab.inria.fr/zimmerma/ecm
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-gmp
+	depends = mingw-w64-primesieve
+	options = !buildflags
+	options = !strip
+	options = staticlibs
+	source = git+https://gitlab.inria.fr/zimmerma/ecm#tag=git-7.0.7
+	sha256sums = 681d8c5d5922d33da39a510de11494b247dace926fe4bac8f75cda37e7e7bae8
+
+pkgname = mingw-w64-gmp-ecm
