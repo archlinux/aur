@@ -16,7 +16,7 @@ pkgbase="${_pkgbase}-bin"
 pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
-pkgver=2.47.3
+pkgver=2.48
 pkgrel=1
 pkgdesc="Exports Discord chat logs to a file"
 arch=(
@@ -59,12 +59,12 @@ sha256sums=('230aa918a98940895219ebfc520b31af75c741cd76e886748c6f67aa2134f32d'
             '16effc795aac6a9ad3143bb679c5d93e41f99fc2a0796e91362d4e09b529da79'
             'e547019e29fb45858ab6c78b30fd9406a8e0ca6e4ccb605465f9e4ffc88c22d8'
             'd35bb6279d4e9fedb2bbd307cf269fb0abfe1270f7225511e7f149b4ca0f5f29')
-sha256sums_aarch64=('955b58d4bd6ca9107387f4c62bf3a0608bb7837e6f9decf3a216150bd2d888d9'
-                    '16738622e21d5ca57e7f4a0ec82203ba8a7e176df00025740cf583faf7367424')
-sha256sums_x86_64=('8f86bd3a2c2f4412ffbbb2dcb9348642f8f929ad94a4f290ff0f78068c44fc86'
-                   '27d02c5c34a90c1d4dfb5004c3bec66bc8a602e876e62b25f3cc1e4c4a92d561')
-sha256sums_armv7h=('3a248ad8b92f5e75071fa273627f7d0c555a8b63d754c56c126057e20b5e6fe3'
-                   '8456d445851a7001ed2400c9c217398e4c351c0b8be8c896fe1d24d1d9af9064')
+sha256sums_aarch64=('02a47fc8e0192fd509fbb082aadd9322035b18feae96849699fefc424a1e3379'
+                    'e6cd0c31319dddd57e3dbce710f977f95c5b5d71d8966b11ace4d5da698ee3f0')
+sha256sums_x86_64=('3e253e28ec7ea034b2201443fa84571142945299296541ecbe196ffceef8bc3c'
+                   'aafec3a2020c82a718f89123e864f9e7f9db756530bc8b8505ef7bb074134a61')
+sha256sums_armv7h=('48969a30c6e3a160477d0eae09885c66369782f6bf8997e596707295333bfc69'
+                   'f9ab96bf9b6225a145e5380c13b5a7fec79110c4bf391e02111ad784e7f394e4')
 
 build() {
   cd "${srcdir}"

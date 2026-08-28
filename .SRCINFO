@@ -1,6 +1,6 @@
 pkgbase = discord-chat-exporter-bin
 	pkgdesc = Exports Discord chat logs to a file
-	pkgver = 2.47.3
+	pkgver = 2.48
 	pkgrel = 1
 	url = https://github.com/Tyrrrz/DiscordChatExporter
 	arch = aarch64
@@ -11,38 +11,38 @@ pkgbase = discord-chat-exporter-bin
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	noextract = DiscordChatExporter.Cli.2.47.3-linux-arm64.zip
-	noextract = DiscordChatExporter.2.47.3-linux-arm64.zip
-	noextract = DiscordChatExporter.Cli.2.47.3-linux-x64.zip
-	noextract = DiscordChatExporter.2.47.3-linux-x64.zip
-	noextract = DiscordChatExporter.Cli.2.47.3-linux-arm.zip
-	noextract = DiscordChatExporter.2.47.3-linux-arm.zip
+	noextract = DiscordChatExporter.Cli.2.48-linux-arm64.zip
+	noextract = DiscordChatExporter.2.48-linux-arm64.zip
+	noextract = DiscordChatExporter.Cli.2.48-linux-x64.zip
+	noextract = DiscordChatExporter.2.48-linux-x64.zip
+	noextract = DiscordChatExporter.Cli.2.48-linux-arm.zip
+	noextract = DiscordChatExporter.2.48-linux-arm.zip
 	options = !strip
 	options = !debug
-	source = discord-chat-exporter-2.47.3-README.md::https://github.com/Tyrrrz/DiscordChatExporter/raw/refs/tags/2.47.3/Readme.md
-	source = discord-chat-exporter-2.47.3-LICENSE::https://github.com/Tyrrrz/DiscordChatExporter/raw/refs/tags/2.47.3/License.txt
-	source = discord-chat-exporter-2.47.3.png::https://github.com/Tyrrrz/DiscordChatExporter/raw/refs/tags/2.47.3/favicon.png
+	source = discord-chat-exporter-2.48-README.md::https://github.com/Tyrrrz/DiscordChatExporter/raw/refs/tags/2.48/Readme.md
+	source = discord-chat-exporter-2.48-LICENSE::https://github.com/Tyrrrz/DiscordChatExporter/raw/refs/tags/2.48/License.txt
+	source = discord-chat-exporter-2.48.png::https://github.com/Tyrrrz/DiscordChatExporter/raw/refs/tags/2.48/favicon.png
 	source = discord-chat-exporter-gui-bin.sh
 	sha256sums = 230aa918a98940895219ebfc520b31af75c741cd76e886748c6f67aa2134f32d
 	sha256sums = 16effc795aac6a9ad3143bb679c5d93e41f99fc2a0796e91362d4e09b529da79
 	sha256sums = e547019e29fb45858ab6c78b30fd9406a8e0ca6e4ccb605465f9e4ffc88c22d8
 	sha256sums = d35bb6279d4e9fedb2bbd307cf269fb0abfe1270f7225511e7f149b4ca0f5f29
-	source_aarch64 = DiscordChatExporter.Cli.2.47.3-linux-arm64.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.47.3/DiscordChatExporter.Cli.linux-arm64.zip
-	source_aarch64 = DiscordChatExporter.2.47.3-linux-arm64.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.47.3/DiscordChatExporter.linux-arm64.zip
-	sha256sums_aarch64 = 955b58d4bd6ca9107387f4c62bf3a0608bb7837e6f9decf3a216150bd2d888d9
-	sha256sums_aarch64 = 16738622e21d5ca57e7f4a0ec82203ba8a7e176df00025740cf583faf7367424
-	source_x86_64 = DiscordChatExporter.Cli.2.47.3-linux-x64.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.47.3/DiscordChatExporter.Cli.linux-x64.zip
-	source_x86_64 = DiscordChatExporter.2.47.3-linux-x64.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.47.3/DiscordChatExporter.linux-x64.zip
-	sha256sums_x86_64 = 8f86bd3a2c2f4412ffbbb2dcb9348642f8f929ad94a4f290ff0f78068c44fc86
-	sha256sums_x86_64 = 27d02c5c34a90c1d4dfb5004c3bec66bc8a602e876e62b25f3cc1e4c4a92d561
-	source_armv7h = DiscordChatExporter.Cli.2.47.3-linux-arm.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.47.3/DiscordChatExporter.Cli.linux-arm.zip
-	source_armv7h = DiscordChatExporter.2.47.3-linux-arm.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.47.3/DiscordChatExporter.linux-arm.zip
-	sha256sums_armv7h = 3a248ad8b92f5e75071fa273627f7d0c555a8b63d754c56c126057e20b5e6fe3
-	sha256sums_armv7h = 8456d445851a7001ed2400c9c217398e4c351c0b8be8c896fe1d24d1d9af9064
+	source_aarch64 = DiscordChatExporter.Cli.2.48-linux-arm64.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.48/DiscordChatExporter.Cli.linux-arm64.zip
+	source_aarch64 = DiscordChatExporter.2.48-linux-arm64.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.48/DiscordChatExporter.linux-arm64.zip
+	sha256sums_aarch64 = 02a47fc8e0192fd509fbb082aadd9322035b18feae96849699fefc424a1e3379
+	sha256sums_aarch64 = e6cd0c31319dddd57e3dbce710f977f95c5b5d71d8966b11ace4d5da698ee3f0
+	source_x86_64 = DiscordChatExporter.Cli.2.48-linux-x64.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.48/DiscordChatExporter.Cli.linux-x64.zip
+	source_x86_64 = DiscordChatExporter.2.48-linux-x64.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.48/DiscordChatExporter.linux-x64.zip
+	sha256sums_x86_64 = 3e253e28ec7ea034b2201443fa84571142945299296541ecbe196ffceef8bc3c
+	sha256sums_x86_64 = aafec3a2020c82a718f89123e864f9e7f9db756530bc8b8505ef7bb074134a61
+	source_armv7h = DiscordChatExporter.Cli.2.48-linux-arm.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.48/DiscordChatExporter.Cli.linux-arm.zip
+	source_armv7h = DiscordChatExporter.2.48-linux-arm.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.48/DiscordChatExporter.linux-arm.zip
+	sha256sums_armv7h = 48969a30c6e3a160477d0eae09885c66369782f6bf8997e596707295333bfc69
+	sha256sums_armv7h = f9ab96bf9b6225a145e5380c13b5a7fec79110c4bf391e02111ad784e7f394e4
 
 pkgname = discord-chat-exporter-cli-bin
 	pkgdesc = Exports Discord chat logs to a file - CLI
-	provides = discord-chat-exporter-cli=2.47.3
+	provides = discord-chat-exporter-cli=2.48
 	conflicts = discord-chat-exporter-cli
 
 pkgname = discord-chat-exporter-gui-bin
@@ -52,5 +52,5 @@ pkgname = discord-chat-exporter-gui-bin
 	depends = libstdc++
 	depends = fontconfig
 	depends = sh
-	provides = discord-chat-exporter-gui=2.47.3
+	provides = discord-chat-exporter-gui=2.48
 	conflicts = discord-chat-exporter-gui
