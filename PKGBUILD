@@ -13,7 +13,7 @@ This version is the stable engine release used by BAR."
 arch=('x86_64')
 url="https://beyond-all-reason.github.io/RecoilEngine/"
 _ghurl="https://github.com/beyond-all-reason/RecoilEngine"
-### Only use _tag or _git_commit never use both at the same time! Default is neither to build the latest Pre-release.
+### Only use _tag or _git_commit never use both at the same time! Default is neither to build the latest release.
 ### https://github.com/beyond-all-reason/RecoilEngine/releases
 #_git_commit='#commit=2bf7e22d2792236377c218f8c06e27ded2984f81'
 #_tag="#tag=2025.04.11"
