@@ -1,15 +1,14 @@
 pkgbase = aspm27-server
 	pkgdesc = Server component of aspm - a slick, modern messenger focused on simplicity, security and speed
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/fredima2x/aspm27
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	makedepends = cargo
-	depends = sqlite
-	depends = gcc-libs
-	source = aspm27-server-0.2.6.tar.gz::https://github.com/fredima2x/aspm27/archive/refs/tags/v0.2.6.tar.gz
+	makedepends = gcc
+	source = aspm27-server-0.2.7.tar.gz::https://github.com/fredima2x/aspm27/archive/refs/tags/v0.2.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = aspm27-server
