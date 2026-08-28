@@ -10,6 +10,7 @@ license=('MIT')
 depends=('nss' 'gtk3' 'alsa-lib' 'mesa')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
+options=('!strip' '!debug')
 
 source=("LICENSE-${pkgname}::https://raw.githubusercontent.com/zenbu-labs/terminal-browser/v${pkgver}/LICENSE")
 sha256sums=('SKIP')
