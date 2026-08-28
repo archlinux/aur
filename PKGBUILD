@@ -13,6 +13,7 @@ source_x86_64=("${_pkgname}.zip::${url}/releases/download/${pkgver}/AviaClient-l
 sha256sums_x86_64=('2c9ad993b19857004e2e33ba6926610a9c9c3c707546e8cc514a6b41dc4ee6de'
                    '1de3db56b7395f6f7c040e1f4ef794c1541275b60faf8cad94d1ddf2274fecfe'
                    '7470cc1f570087a48f432174a49c880e5424796cf79dccb5fac8a5354042d8e3')
+conflicts=( 'avia-client' 'avia-client-git' )
 
 prepare() {
     unzip -o "$srcdir/${_pkgname}.zip" -d "$srcdir"
