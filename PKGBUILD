@@ -1,4 +1,4 @@
-# Maintainer: nlsdt <nlsdt@nlsdt.cc>
+# Maintainer: nlsdt <nlsdt@archlinuxcn.org>
 
 pkgname=pilinara
 _pkgname=pilinara
