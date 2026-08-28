@@ -1,12 +1,12 @@
 # Maintainer: robertfoster
 
 pkgname=ndpi
-pkgver=5.0 # renovate: datasource=github-tags depName=ntop/nDPI
-pkgrel=2
-pkgdesc="Open and Extensible GPLv3 Deep Packet Inspection Library"
+pkgver=6.0 # renovate: datasource=github-tags depName=ntop/nDPI
+pkgrel=1
+pkgdesc="Open and Extensible Deep Packet Inspection Library"
 arch=('i686' 'x86_64')
 url="http://www.ntop.org/products/ndpi/"
-license=('GPL3')
+license=('LGPL-3.0-or-later')
 conflicts=('ndpi-svn')
 depends=('libcap')
 makedepends=('json-c' 'libmaxminddb' 'libpcap' 'numactl' 'pcre2' 'rrdtool')
@@ -24,8 +24,6 @@ build() {
 package() {
   cd "${srcdir}/nDPI-${pkgver}"
   make DESTDIR="${pkgdir}" install
-  #  ln -sf /usr/include/ndpi \
-  #    "${pkgdir}/usr/include/libndpi"
 }
 
-sha256sums=('8b0d3dc0c8a6a68578e09a18c922021ef6458d4aca1c7a20ce04efc267aa9ea5')
+sha256sums=('21fc40cab5505942c0b21d9bbaf73e9adf8162ddfe782e4cd072cab855a2eda9')
