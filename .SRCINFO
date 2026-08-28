@@ -1,6 +1,6 @@
 pkgbase = python-cocotbext-eth-git
 	pkgdesc = Ethernet interface modules for cocotb
-	pkgver = 0.1.26.r0.g24fe815
+	pkgver = 0.1.28.r0.g2ae8a17
 	pkgrel = 1
 	url = https://github.com/alexforencich/cocotbext-eth
 	arch = any
