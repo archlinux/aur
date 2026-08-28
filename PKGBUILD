@@ -8,7 +8,7 @@
 
 pkgname=scx-manager
 pkgver=1.15.12
-pkgrel=3
+pkgrel=4
 pkgdesc="Distro-agnostic GUI manager for sched-ext (SCX) schedulers"
 arch=(x86_64)
 url="https://github.com/MadGoatHaz/scx-manager"
@@ -22,7 +22,7 @@ makedepends=(cmake git qt6-base rust)
 # that a kernel with CONFIG_SCHED_EXT enabled is required to run sched-ext schedulers.
 optdepends=('scx-scheds: popular SCX scheduler implementations' 'sched-ext-kernel: kernel with CONFIG_SCHED_EXT enabled (required to run sched-ext schedulers)')
 source=("https://github.com/MadGoatHaz/scx-manager/releases/download/v1.15.12/scx-manager-1.15.12.tar.gz")
-sha256sums=('8d98ea0b37257898542476398c720dea2cd939772c3e4bdcb1b1251109153600')
+sha256sums=('c94d6b1f2d7038ea28ba525b9f165e001529c3b61bc672cb859c9582e3787294')
 
 build() {
   # Makefiles generator (default). Alternative: -G Ninja (needs ninja makedep).
