@@ -1,10 +1,10 @@
 # Maintainer: Arkady Buryakov <arkady@buryakov.pro>
 #
 # Template — not a buildable PKGBUILD. On release the publish_aur workflow
-# substitutes 0.5.1, fills sha256sums via updpkgsums, generates .SRCINFO,
+# substitutes 0.5.2, fills sha256sums via updpkgsums, generates .SRCINFO,
 # and pushes the rendered files to the AUR; nothing is committed back here.
 pkgname=workforest
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Git worktree forest management: per-branch worktrees with project-defined setup hooks"
 arch=(any)
@@ -14,7 +14,7 @@ depends=(python python-yaml git)
 makedepends=(python-build python-installer python-wheel python-hatchling)
 optdepends=('fzf: interactive TUI (workforest tui)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bfdd27b467b7ce5c41bfce038d6307a68aae0c7ee4010c40572aa11474fff2cf')
+sha256sums=('097fdb01cf85d534cea9b72a24962ee61d0ae4f7e48917a8b09a42142882d7ba')
 
 build() {
   cd "$pkgname-$pkgver"
