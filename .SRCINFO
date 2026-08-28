@@ -1,19 +1,57 @@
 pkgbase = python-docling-parse
 	pkgdesc = Simple package to extract text with coordinates from programmatic PDFs
-	pkgver = 5.6.1
+	pkgver = 7.16.0
 	pkgrel = 1
 	url = https://github.com/docling-project/docling-parse
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
+	license = Zlib
+	license = Unlicense
+	license = BSD-3-Clause
+	license = BSL-1.0
+	checkdepends = python-pytest
+	checkdepends = python-huggingface-hub>=1.11.0
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = cxxopts
+	makedepends = nlohmann-json
+	makedepends = utf8cpp
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pdm-backend
+	makedepends = pybind11
+	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = python-hatchling
-	depends = python-docling-core
-	source = python-docling-parse-5.6.1.tar.gz::https://github.com/docling-project/docling-parse/archive/refs/tags/v5.6.1.tar.gz
+	depends = python>=3.10
+	depends = python-docling-core>=2.85.0
+	depends = python-pillow>=10.0.0
+	depends = python-pydantic>=2.0.0
+	depends = qpdf
+	depends = libjpeg-turbo
+	depends = openjpeg2
+	depends = lcms2
+	depends = freetype2
+	depends = zlib
+	optdepends = noto-fonts-cjk: CJK fallback rendering for PDFs with non-embedded CJK fonts
+	source = https://files.pythonhosted.org/packages/source/d/docling-parse/docling_parse-7.16.0.tar.gz
+	source = blend2d-6dbc2cefbc996379e07104e34519a440b49b15d7.tar.gz::https://github.com/blend2d/blend2d/archive/6dbc2cefbc996379e07104e34519a440b49b15d7.tar.gz
+	source = asmjit-0bd5787b54b575ed94bf32ac452153b34385c514.tar.gz::https://github.com/asmjit/asmjit/archive/0bd5787b54b575ed94bf32ac452153b34385c514.tar.gz
+	source = loguru-4adaa185883e3c04da25913579c451d3c32cfac1.tar.gz::https://github.com/emilk/loguru/archive/4adaa185883e3c04da25913579c451d3c32cfac1.tar.gz
+	source = PDFIUM-LICENSE
+	source = CHROMIUM-LICENSE
 	source = pyproject_toml_dep.patch
-	sha256sums = d976535236dce21938e48c0d52ea1e863b149894362c531fa1438878ad9ad36a
-	sha256sums = 6aa1dbab5fce06713bdc6a4ba81edc167f7e6913563391207b13317816854336
+	source = system_deps.patch
+	source = skip_uninstalled_apps.patch
+	source = reproducible_paths.patch
+	b2sums = 5495b812e9372119ee97ad2a0896be18ce139e1c23ecd9fdd3663eeb68afa54bb3c35ca3c60c7d5a8a9ba6e7f9b7589352571c152a5563367239e167fc8053df
+	b2sums = b8c88f97d2c8bd291ef40a65bea30aa0dab0c5c8522d5f9a09ee7f06b866344614573f2e1cc39f49f83e9db38eeabc4034dfe3e65b6f37fbf4f758825e6d9c83
+	b2sums = f806a7ec5419128269edb2c9e843c0d7303c78678bf4c90a734a672659f315e1f0c4232d0027cf93e9152f22cb23d0fc600cf994b45341aa1a2f8b569ece0e0c
+	b2sums = 40d8604d78460ca4e0a1f66470e40906e92cc4979dc2e409ea9f375daa3f4adf0e4b4001bda2eb407eca18ba4751d03570c244575039a134001cdffad8fe24f0
+	b2sums = 4c4793497ce37d8bbee3a080a8820332c981df43934a82a7a65533d89447f53a501a266edb19f0602a361572360a156d7368039091c0e954f67c7c65cf2cdc42
+	b2sums = 484ffb8ecf13635df16ca79c8dc59d802c2e1c2a2a3c38f774b38898f2ca1e553ac35b1da5acb1ca9bbfdc5245bb2961b977b5ac5707482a6ab88f58273711b8
+	b2sums = 1fe7a7b4baf87a3ca27e68302012e137505f3f10a0efcef67e757f2dcf401b38c3a22d1ddf98d53c63e66f6e57fb323169ae5999b03f4de1884dbd84e73d2f63
+	b2sums = 726c60ca3b4927ba92ef12c5ae0db40a08b1aa488b15334504c1307795979e719407d8a35a1e642441df8eb540e22e1fae535c75da784ad47496f6380f078388
+	b2sums = ab141ded9670d2871dacc47f2b295d5bed7b31c0da80de19bdf5ec59d19f4df5154c5feb5f771fca5a51fad41c5e3e26a98d5d235dc949f4a2677c1c9c8d3a2d
+	b2sums = 7e3a4c2ea50dba64c7bf508f0da65d839b623a543cd157872ddeb966ed1c7969797427d3e6f6b4218904d4123d0b160b9f4e071aa63ae9aa8750b5a1f92f62b7
 
 pkgname = python-docling-parse
