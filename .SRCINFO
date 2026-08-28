@@ -1,7 +1,7 @@
 pkgbase = mpxcast
 	pkgdesc = FM radio streaming server for RTL-SDR USB receivers
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/krzemin/mpxcast
 	arch = x86_64
 	arch = aarch64
