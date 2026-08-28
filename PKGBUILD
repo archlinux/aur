@@ -1,4 +1,4 @@
-# Maintainer: JW (replace "jjj" with "j" in email) <jjj101r@outlook.com>
+# Maintainer: JW <j101r at outlook dot com>
 # Contributor: Vasili Novikov (replace "vvv" with "v" in email) vvvasya.novikov+cm3513git@gmail.com
 pkgname=rua-fork
 pkgver=0.20.0
