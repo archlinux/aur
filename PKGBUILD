@@ -2,7 +2,7 @@
 
 pkgname=ytsub-bin
 _pkgname=ytsub
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='A subscriptions only TUI Youtube client'
 url='https://github.com/sarowish/ytsub'
@@ -13,7 +13,7 @@ optdepends=('mpv: for playing videos', 'yt-dlp: for playing videos')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('826bb7c29de87d6227e8241890e31f622dc7c23053f796d7a2f1ed8f44ad78f2')
+sha256sums=('cf930e2ef6dabfe58e38fc3f771bdfc4515319204588b4db880b7b72b4a96400')
 
 package() {
     cd "$_pkgname-$pkgver"
