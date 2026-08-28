@@ -1,44 +1,50 @@
-# Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Maintainer: sTiKyt <stikyt@proton.me>
+# Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
-_pkgname='KDiskMark'
-pkgname="${_pkgname,,}-git"
-pkgver=3.1.2.r3.g59c9758
-pkgrel=2
-pkgdesc='Simple disk benchmark tool'
+_pkgname=KDiskMark
+pkgname=kdiskmark-git
+pkgver=3.3.0.r2.ge78d3c7
+pkgrel=1
+pkgdesc="HDD and SSD benchmark tool with a very friendly graphical user interface"
 arch=('x86_64')
-url='https://github.com/JonMagon/KDiskMark'
-license=('GPL3')
-depends=('fio' 'hicolor-icon-theme' 'qt5-base' 'kauth')
-makedepends=('extra-cmake-modules' 'git' 'qt5-tools')
-provides=("${_pkgname,,}")
-conflicts=("${_pkgname,,}")
-source=("${_pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+url="https://github.com/JonMagon/KDiskMark"
+license=('GPL-3.0-or-later')
+depends=('fio' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'polkit-qt6' 'qt6-base')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'qt6-tools')
+provides=('kdiskmark')
+conflicts=('kdiskmark')
+source=(
+    "$_pkgname::git+$url.git"
+    "singleapplication::git+https://github.com/itay-grudev/SingleApplication.git"
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+)
 
 pkgver() {
-  git -C "${_pkgname}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git describe --long --tags --exclude '*-standalone' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd ${_pkgname}
-  git submodule init
-  git submodule update
+    cd "$_pkgname"
+    git submodule init
+    git config submodule."src/singleapplication".url "$srcdir/singleapplication"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  export CFLAGS+=" ${CPPFLAGS}"
-  export CXXFLAGS+=" ${CPPFLAGS}"
-  cmake -B build -S "${_pkgname}" \
-    -DCMAKE_BUILD_TYPE='None' \
-    -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_INSTALL_LIBEXECDIR='lib' \
-    -Wno-dev
-  make -C build
+    cmake -B build -S "$_pkgname" \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_INSTALL_LIBEXECDIR='lib' \
+        -Wno-dev
+    make -C build
 }
 
 package() {
-  make DESTDIR="${pkgdir}" PREFIX="/usr" -C build install
-  install -Dm644 -t "${pkgdir}/usr/share/doc/${_pkgname,,}" "${_pkgname}/README.md"
-}
+    make DESTDIR="$pkgdir" -C build install
 
-# vim: ts=2 sw=2 et:
+    # License
+    install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
