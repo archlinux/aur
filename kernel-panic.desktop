@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=KERNEL PANIC
+Comment=Neon arena shooter about keeping one process alive
+Exec=kernel-panic
+Icon=kernel-panic
+Terminal=false
+Categories=Game;ArcadeGame;

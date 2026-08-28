@@ -1,0 +1,35 @@
+pkgbase = kernel-panic-git
+	pkgdesc = Neon arena shooter about keeping one stubborn process alive (development version)
+	pkgver = 2.4.7.r0.gc2ba92d
+	pkgrel = 1
+	url = https://github.com/mafuzyk/kernel-panic
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = godot
+	depends = alsa-lib
+	depends = dbus
+	depends = fontconfig
+	depends = freetype2
+	depends = glib2
+	depends = glibc
+	depends = libglvnd
+	depends = libpulse
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = wayland
+	depends = zlib
+	provides = kernel-panic
+	conflicts = kernel-panic
+	conflicts = kernel-panic-bin
+	source = git+https://github.com/mafuzyk/kernel-panic.git#branch=main
+	source = kernel-panic.desktop
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kernel-panic-git
