@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Create and manage Git worktrees in multiple repositories"
 
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,9 +27,9 @@ options=(!strip)
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}-linux-latest")
-sha256sums=('b4bf0975fe6cf1a55f0d0bd1651324ff8ff2b9346317d4f0bfb2038750ca9c47'
+sha256sums=('4d9786ee271680eec54f1230ded65ecccdddbd2a324d74da1f460266d0b483b9'
             '85927af65f9f16f2531192205c54cfc6ea28d0cd4689163f634bdb4346e9e633')
-sha256sums_x86_64=('2df63ad5ba54d52fe96a17fd7fc21783cfc8290abceea716000d16afdf27a7eb')
+sha256sums_x86_64=('8d1066594d2ea1b3fa8b3e03049a27a23c392a1f3cd091f052550b87abae784b')
 
 
 package() {
