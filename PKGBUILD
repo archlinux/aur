@@ -14,12 +14,12 @@
 
 pkgname=nuvio-linux-git
 pkgver=r2605.g785df9c3
-pkgrel=1
+pkgrel=2
 pkgdesc="Nuvio desktop media player — upstream source packaged for Arch Linux (git)"
 arch=('x86_64')
 url="https://github.com/NuvioMedia/NuvioDesktop"
 license=('GPL3')
-depends=('mpv' 'webkit2gtk-4.1' 'gtk3' 'glibc' 'gcc-libs' 'libstdc++' 'libx11' 'libxcomposite' 'libxext' 'libxrender' 'libxi' 'libxtst')
+depends=('mpv' 'webkit2gtk-4.1' 'gtk3' 'glibc' 'gcc-libs' 'libx11' 'libxcomposite' 'libxext' 'libxrender' 'libxi' 'libxtst')
 makedepends=('git' 'jdk21-temurin' 'gcc' 'mpv' 'webkit2gtk-4.1' 'gtk3' 'libxcomposite' 'libxext')
 install=nuvio-linux-git.install
 provides=('nuvio-linux')
