@@ -1,14 +1,14 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=('far2l' 'far2l-ttyx' 'far2l-gui' 'far2l-python')
-pkgver=2.8.0
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
 arch=('x86_64' 'aarch64')
 license=('GPL2')
 source=("far2l-${pkgver}.tar.gz::https://github.com/elfmz/far2l/archive/refs/tags/v_${pkgver}.tar.gz")
-sha256sums=('b0fddad2e3985f245f9e691e23b90fb97f7d29d9a0b131fe686aa3cbb2e4ea01')
+sha256sums=('69a5218fcfd072a2d4b99ecac8363a67d85f2fd67b65243f8ea7b239bb134ed0')
 depends=('libxml2' 'uchardet')
 options=('!lto')
 makedepends=('cmake' 'wxwidgets-gtk3' 'python-cffi' 'python-markdown' 'libxi')
@@ -18,8 +18,10 @@ optdepends=(
   'smbclient: SMB support in NetRocks'
   'libnfs: NFS support in NetRocks'
   'neon: WebDAV support in NetRocks'
-  'aws-sdk-cpp: AWS S3 support in NetRocks'
   'libarchive: more archive type support in multiarc'
+  'ffmpeg: ImageViewer plugin'
+  'imagemagick: ImageViewer plugin'
+  'libusb: MTP plugin'
 )
 
 build() {
