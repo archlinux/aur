@@ -4,7 +4,7 @@
 pkgname=undertalemodtool-avalonia-bin
 _pkgname=undertalemodtool-avalonia
 
-pkgver=2026.06.21
+pkgver=2026.08.28
 _pkgver=$(date +"%Y.%m.%d")
 pkgrel=1
 arch=('x86_64')
