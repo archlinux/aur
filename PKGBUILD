@@ -6,12 +6,12 @@ _appimagever="1.0.0-beta.6"
 
 pkgname="${_pkgname}"-appimage
 pkgver=`echo ${_appimagever} | sed 's/^v//;s/-/_/'`
-pkgrel=1
+pkgrel=2
 pkgdesc="Scan your music library for Pioneer CDJ compatibility issues — and fix them automatically."
 arch=('x86_64')
 url="https://github.com/finengines/djcheck"
 license=('MIT')
-depends=('zlib')
+depends=('zlib' 'ffmpeg')
 options=(!strip)
 _appimage="${_appimagename}-${_appimagever}.AppImage"
 source_x86_64=("${_appimage}::${url}/releases/download/v${_appimagever}/${_appimage}"
