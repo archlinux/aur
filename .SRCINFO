@@ -1,6 +1,6 @@
 pkgbase = proton-command-center-git
 	pkgdesc = Per-game launch options, Proton selection, DLSS/FSR DLL management, native Ultra+ and RHI (ReShade/OptiScaler/DXVK) mod install, and controller navigation for Steam on Linux (git version)
-	pkgver = 1.26.1.r1.g9d46796
+	pkgver = 1.26.2.r1.g49f3632
 	pkgrel = 1
 	url = https://github.com/mrcgibb9876-hash/proton_command_center
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = proton-command-center-git
 	optdepends = steam: the storefront this manages (required in practice)
 	optdepends = mangohud: performance overlay toggle
 	optdepends = nvidia-utils: DLSS DLL management and driver-aware compile tracking
-	optdepends = 7zip: OptiScaler install/update and DXVK Lilium HDR variant (both ship as .7z)
+	optdepends = 7zip: OptiScaler, DXVK Lilium HDR, and some shader packs (e.g. Lilium HDR Shaders) - all ship as .7z
 	provides = proton-command-center
 	conflicts = proton-command-center
 	source = proton-command-center::git+https://github.com/mrcgibb9876-hash/proton_command_center.git

@@ -1,7 +1,7 @@
 # Maintainer: Marc Gibb
 pkgname=proton-command-center-git
 _pkgname=proton-command-center
-pkgver=1.26.1.r1.g9d46796
+pkgver=1.26.2.r1.g49f3632
 pkgrel=1
 pkgdesc="Per-game launch options, Proton selection, DLSS/FSR DLL management, native Ultra+ and RHI (ReShade/OptiScaler/DXVK) mod install, and controller navigation for Steam on Linux (git version)"
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=(
     'steam: the storefront this manages (required in practice)'
     'mangohud: performance overlay toggle'
     'nvidia-utils: DLSS DLL management and driver-aware compile tracking'
-    '7zip: OptiScaler install/update and DXVK Lilium HDR variant (both ship as .7z)'
+    '7zip: OptiScaler, DXVK Lilium HDR, and some shader packs (e.g. Lilium HDR Shaders) - all ship as .7z'
 )
 makedepends=('git')
 provides=("$_pkgname")
