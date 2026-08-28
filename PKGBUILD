@@ -5,7 +5,7 @@ _pkgname=zmx
 pkgname=${_pkgname}-bin
 pkgdesc="Session persistence for terminal processes"
 
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -29,8 +29,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${_urlbin}/${_pkgname}-${p
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${_urlbin}/${_pkgname}-${pkgver}-${_barch[1]}.tar.gz")
 sha256sums=('d7124de50b0966db9b40d3bbef0f37bd831e0294368c5f66af358836ea459399'
             '56bab989df218f62a6deb746b43903340291dafbc7a811e3fa0c8ea889f8f5ea')
-sha256sums_x86_64=('8b8783d7b120c9ffd0acf4aee37969054dc0dfef3c4f3a4728d2efd35f2e97a0')
-sha256sums_aarch64=('77599f66124694fae80bbb1d2fa0eafdb8c648b427a048cad90513ecf6136fc9')
+sha256sums_x86_64=('ec82d753e12537b79a76bce73399d57698e529f4744eb5a1a9bcfa6fda7c4b25')
+sha256sums_aarch64=('899f9dc743ef72dcdeab3072667c33f507247a960e5c4b7482da54fff7fdae09')
 
 
 build() {
