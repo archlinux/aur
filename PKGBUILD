@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=netsukuku-rs
-pkgver=0.1.5 # renovate: datasource=github-tags depName=M0Rf30/netsukuku-rs
+pkgver=0.1.6 # renovate: datasource=github-tags depName=M0Rf30/netsukuku-rs
 pkgrel=1
 pkgdesc="Rust reimplementation of the Netsukuku mesh routing protocol: QSPN v2, Hooking, Coordinator, PeerServices, ANDNA"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ options=(!lto)
 # beside the code that decides what they must contain (capability set, config error text), so this
 # package installs those rather than carrying copies that can drift.
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('07c68279102355c5c7931983068800fc17393220b5be739d35d066b91c2a0bcb')
+sha256sums=('842554ee072d88c4a306e2663bf84f510ddd70bd27dba8f913a445e54bfecc4e')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
