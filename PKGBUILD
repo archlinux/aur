@@ -1,7 +1,7 @@
 # Maintainer: Marc Gibb
 pkgname=proton-command-center-git
 _pkgname=proton-command-center
-pkgver=1.24.0.r0.gb390cf5
+pkgver=1.26.1.r1.g9d46796
 pkgrel=1
 pkgdesc="Per-game launch options, Proton selection, DLSS/FSR DLL management, native Ultra+ and RHI (ReShade/OptiScaler/DXVK) mod install, and controller navigation for Steam on Linux (git version)"
 arch=('any')

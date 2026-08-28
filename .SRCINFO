@@ -1,6 +1,6 @@
 pkgbase = proton-command-center-git
 	pkgdesc = Per-game launch options, Proton selection, DLSS/FSR DLL management, native Ultra+ and RHI (ReShade/OptiScaler/DXVK) mod install, and controller navigation for Steam on Linux (git version)
-	pkgver = 1.24.0.r0.gb390cf5
+	pkgver = 1.26.1.r1.g9d46796
 	pkgrel = 1
 	url = https://github.com/mrcgibb9876-hash/proton_command_center
 	arch = any
