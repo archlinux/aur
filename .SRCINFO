@@ -34,7 +34,9 @@ pkgbase = recoil-engine
 	options = !strip
 	source = recoil-engine::git+https://github.com/beyond-all-reason/RecoilEngine.git
 	source = guard-invalid-ray-length.patch
+	source = buildcache.patch
 	sha256sums = SKIP
 	sha256sums = f1ec1a8d70f05a9e917cf9edbc4274a7a5efe81dbc51ddfb6778040f65ec33f2
+	sha256sums = 8c9af0eb1089d2531f5e511292fdde82aef53747b2314104baa850075465035c
 
 pkgname = recoil-engine
