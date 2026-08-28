@@ -1,7 +1,7 @@
 pkgbase = ferrumpix-bin
 	pkgdesc = Desktop Photo/RAW-Editor, Viewer, Gallery, Immich and Nextcloud Client in one App
 	pkgver = 0.9.33
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Bitpainter75/FerrumPix
 	arch = x86_64
 	license = GPL-3.0-only
@@ -19,12 +19,12 @@ pkgbase = ferrumpix-bin
 	optdepends = libheif: HEIC/HEIF/AVIF-Dateien lesen
 	provides = ferrumpix
 	conflicts = ferrumpix
-	noextract = FerrumPix-0.9.33-3-linux-x64-aur.zip
+	noextract = FerrumPix-0.9.33-4-linux-x64-aur.zip
 	options = !strip
-	source = FerrumPix-0.9.33-3-linux-x64-aur.zip::https://github.com/Bitpainter75/FerrumPix/releases/download/0.9.33/FerrumPix-0.9.33-3-linux-x64-aur.zip
+	source = FerrumPix-0.9.33-4-linux-x64-aur.zip::https://github.com/Bitpainter75/FerrumPix/releases/download/0.9.33/FerrumPix-0.9.33-4-linux-x64-aur.zip
 	source = io.github.Bitpainter75.FerrumPix.desktop
 	source = io.github.Bitpainter75.FerrumPix.png
-	sha256sums = fb153fb0bb1adff46843ad99318be5312f466b2e28c1561c27262be3bab96d10
+	sha256sums = 5825da2ba6e46c425b68ec0ae25081292a86633b1e1228957fee5618e82fccaa
 	sha256sums = baab02ecaff9a6db980340f351bbc2507a000cb0d29fd0ee1584499092fdcc92
 	sha256sums = c621a95fca97c22495bb05ae9753391c5523ac0fce8f16f64b3713515e664067
 
