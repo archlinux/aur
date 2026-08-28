@@ -1,0 +1,15 @@
+pkgbase = mt7927-bt-firmware
+	pkgdesc = Bluetooth firmware for MediaTek MT7927 (MT6639), extracted from the ASUS Windows driver
+	pkgver = 20250606
+	pkgrel = 1
+	url = https://github.com/openwrt/mt76/issues/927
+	arch = any
+	license = LicenseRef-MediaTek-Firmware
+	makedepends = python
+	makedepends = curl
+	makedepends = libarchive
+	conflicts = mediatek-mt7927-dkms
+	source = extract-bt-firmware.py
+	sha256sums = 013dff1981e158f28ef3db56775ad119bbefd8942d6c9387edfabf057f1fe6c6
+
+pkgname = mt7927-bt-firmware
