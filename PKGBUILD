@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=freerouting-zh-cn-git
-pkgver=2.3.0.r177.g4dd7dad
+pkgver=2.3.0.r285.g278fe14
 pkgrel=1
 _jrever=25
 _jdkver=25
@@ -38,7 +38,7 @@ pkgver() {
     cd "${srcdir}/${pkgname%-git}"
     (
         set -o pipefail
-        git describe --exclude=pre-refactor-2026 --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --exclude=post-refactor-2026 --exclude=pre-refactor-2026 --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
