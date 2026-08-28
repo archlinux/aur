@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libmixmod
-pkgver=2.1.11
+pkgver=2.1.12
 pkgrel=1
 pkgdesc="Classification with Mixture Modelling (mingw-w64)"
 arch=('any')
@@ -9,14 +9,12 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'mingw-w64-eigen')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/mixmod/mixmod/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e95414decf5b2c2c5eebd7fca10e0100f2d753cbfca0694f4ac75da3b39b005e')
+sha256sums=('dd6c0d1fef7f2aa80e0c77680baa0718aa6326302bfd11b7e5dd99a378e5b277')
 
 _architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd "$srcdir"/mixmod-${pkgver}
-  # eigen 5.x compat
-  curl -L https://github.com/mixmod/mixmod/pull/36.patch | patch -p1
 }
 
 build () {
