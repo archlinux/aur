@@ -1,6 +1,6 @@
 pkgbase = rox-player
 	pkgdesc = Fast, composable music player written in rust (foobar2000 for the current year)
-	pkgver = 1.19.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://github.com/zealsprince/rox
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = rox-player
 	optdepends = nvidia-utils: Vulkan support for Nvidia graphics
 	provides = rox
 	conflicts = rox-player-git
-	source = rox-player-1.19.0.tar.gz::https://github.com/zealsprince/rox/archive/refs/tags/v1.19.0.tar.gz
-	sha256sums = 01fa43092d995d9dc812ac1f0b14b4552fe5d8c8c2c2de5e3269acb55aca4d54
+	source = rox-player-1.20.0.tar.gz::https://github.com/zealsprince/rox/archive/refs/tags/v1.20.0.tar.gz
+	sha256sums = 66e10d63fe7f22b0931ebd3050638c62f22911e14dd77d06ebde60da6f339d62
 
 pkgname = rox-player
