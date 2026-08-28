@@ -1,0 +1,22 @@
+pkgbase = mineradio-tauri-git
+	pkgdesc = A film lens, particle vision and lyrics stage as the core of the immersive music player.
+	pkgver = r644.a1c5f07
+	pkgrel = 1
+	url = https://github.com/zzstar101/Mineradio-Tauri
+	arch = any
+	license = GPL-3.0-only
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = rustup
+	makedepends = bun
+	makedepends = gendesk
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = mineradio-tauri=r644.a1c5f07
+	conflicts = mineradio-tauri
+	source = mineradio-tauri.git::git+https://github.com/zzstar101/Mineradio-Tauri.git
+	sha256sums = SKIP
+
+pkgname = mineradio-tauri-git
