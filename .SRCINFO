@@ -1,6 +1,6 @@
 pkgbase = fastpotify
 	pkgdesc = Fast native Spotify client with local playback and Spotify Connect
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/crmne/fastpotify
 	install = fastpotify.install
@@ -18,9 +18,9 @@ pkgbase = fastpotify
 	conflicts = fastpotify-git
 	options = !debug
 	options = !strip
-	source_x86_64 = https://github.com/crmne/fastpotify/releases/download/v0.1.3/fastpotify-v0.1.3-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 19ee918e8b2cb19c7504cb65f3694ad32ef98908f5266cd6353849febdd30a9c
-	source_aarch64 = https://github.com/crmne/fastpotify/releases/download/v0.1.3/fastpotify-v0.1.3-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = e9b6dc1a0669bafb2cfd0b54a4e1f9bbd446b9257798011c07ee0672710394f1
+	source_x86_64 = https://github.com/crmne/fastpotify/releases/download/v0.2.0/fastpotify-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 2288088edea0f45c5b9cb999dcfc8b4b20c98df655d9f6a8121fd87cd4f043d2
+	source_aarch64 = https://github.com/crmne/fastpotify/releases/download/v0.2.0/fastpotify-v0.2.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a31a51fd78821d0290d1dd47998d417104332aef361390ffe40508d6e014f53d
 
 pkgname = fastpotify
