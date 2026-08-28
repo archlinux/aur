@@ -1,7 +1,7 @@
 pkgbase = inm
 	pkgdesc = Native manager for Incus virtual machines with the SPICE console embedded in the app
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://github.com/loyalpartner/inm
 	arch = x86_64
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = inm
 	depends = spice-gtk
 	depends = vulkan-icd-loader
 	depends = libxkbcommon-x11
-	source = inm-0.3.2.tar.gz::https://github.com/loyalpartner/inm/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = ba9e246e5c37d683187385a15943fa37b0f8d8275359997f1dac9f048b347511
+	source = inm-0.3.3.tar.gz::https://github.com/loyalpartner/inm/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = dd6af746f9c492f38b781b3daba8f4ab9478fac2878f0403d5dde01740f125ea
 
 pkgname = inm

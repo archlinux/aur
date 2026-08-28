@@ -1,6 +1,6 @@
 # Maintainer: lee <lee@yizhisec.com>
 #
-# Rendered by .github/workflows/release.yml — 0.3.2 / ba9e246e5c37d683187385a15943fa37b0f8d8275359997f1dac9f048b347511 are
+# Rendered by .github/workflows/release.yml — 0.3.3 / dd6af746f9c492f38b781b3daba8f4ab9478fac2878f0403d5dde01740f125ea are
 # substituted with the tag and the checksum of the published release's
 # auto-generated source tarball.
 #
@@ -11,8 +11,11 @@
 # takes a minute or two.
 
 pkgname=inm
-pkgver=0.3.2
-pkgrel=2
+pkgver=0.3.3
+# Resets to 1 with every new pkgver, which is every time this template is
+# rendered — it only ever moves when the same pkgver is repackaged, and that
+# is not something release.yml can do.
+pkgrel=1
 pkgdesc="Native manager for Incus virtual machines with the SPICE console embedded in the app"
 arch=('x86_64')
 url="https://github.com/loyalpartner/inm"
@@ -20,7 +23,7 @@ license=('MIT')
 depends=('spice-gtk' 'vulkan-icd-loader' 'libxkbcommon-x11')
 makedepends=('cargo' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ba9e246e5c37d683187385a15943fa37b0f8d8275359997f1dac9f048b347511')
+sha256sums=('dd6af746f9c492f38b781b3daba8f4ab9478fac2878f0403d5dde01740f125ea')
 
 build() {
     cd "${pkgname}-${pkgver}"
