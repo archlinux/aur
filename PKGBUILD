@@ -10,11 +10,11 @@ pkgname=(
   'omnissa-horizon-scanner-client'
   'omnissa-horizon-serialport-client'
   'omnissa-horizon-usb')
-pkgver=2603
-_build1=8.18.0
-_build2=24120621798
+pkgver=2606
+_build1=8.19.0
+_build2=32216036411
 _long_ver="${pkgver%.*}-${_build1}-${_build2}"
-_cart="CART27FQ1_LIN_${pkgver}_TARBALL"
+_cart="CART27FQ2_LIN_${pkgver}_TARBALL"
 pkgrel=1
 pkgdesc='Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop'
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=("${pkgbase}-${_long_ver}.tar.gz::https://download3.omnissa.com/software/
         'horizon-icon.svg'
         'horizon-usb.service'
         'view-localhost.rr')
-sha256sums=('acd30479cec91ee693bbd685880fa3834f3678f8dd336511bb9d732f134f71d7'
+sha256sums=('e64a5900f7a26384776bc5912cb8d62e77565c686aae0eeb0b877a101a02d80a'
             'ef412bcc6d3e3d45e161861a8fb2abebc1403e7e2d84c52a16552d9091efd5b0'
             '2e9ecddd7cd4d5f65c794065898d3b6ac8e6dd97d05114f7f3775da82263c6d2'
             'b7b1153892e512ff6c0436b11d8a79c96f5f4ce86d788432f82ec510483c8a27')
