@@ -1,7 +1,7 @@
 # Maintainer: jin <mail@nvimer.org>
 pkgname=deepseek-reasonix-desktop
 _pkgname=reasonix-desktop
-pkgver=1.31.4
+pkgver=1.32.0
 pkgrel=1
 pkgdesc="Reasonix desktop — a Wails shell around the DeepSeek-native AI coding agent"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,11 @@ depends=('gdk-pixbuf2' 'glib2' 'glibc' 'gtk3' 'hicolor-icon-theme' 'libsoup3'
 makedepends=('go' 'pnpm' 'wails')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+# Both Go binaries are deliberately stripped with -s -w, so makepkg cannot
+# produce a useful split debug package.
+options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/desktop-v$pkgver.tar.gz")
-sha256sums=('b5b50caf0c95be13fd34c6390e314fb046b82ed46c154ca86a7944363af03a6f')
+sha256sums=('963e12958005982c8db3e719ebc2705f6df6abc79c1239af8c88fc35fa7f712a')
 
 prepare() {
     cd "DeepSeek-Reasonix-desktop-v$pkgver"
