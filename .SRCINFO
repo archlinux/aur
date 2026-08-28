@@ -1,14 +1,15 @@
 pkgbase = node-hp-scan-to
 	pkgdesc = Scan document to Computer for HP All-in-One Printers
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/manuc66/node-hp-scan-to
+	install = node-hp-scan-to.install
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs>=20.11
 	backup = etc/node-hp-scan-to/default.json
-	source = node-hp-scan-to-1.10.0.tgz::https://registry.npmjs.org/node-hp-scan-to/-/node-hp-scan-to-1.10.0.tgz
-	sha256sums = 4b5ee8f2d2783d4cf8acf0786f02994916f18df7425e5a92ed613a14ff422142
+	source = node-hp-scan-to-1.11.0.tgz::https://registry.npmjs.org/node-hp-scan-to/-/node-hp-scan-to-1.11.0.tgz
+	sha256sums = 6b57a26e748d2bd9c0db84eefc71168ec6132baaee313839981f5d4ebbdc4a90
 
 pkgname = node-hp-scan-to
