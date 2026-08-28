@@ -1,6 +1,6 @@
 pkgbase = herdr-corral-bin
 	pkgdesc = VS Code-style terminal workbench plugin for Herdr (Explorer / SCM / GitHub)
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/xifan2333/herdr-corral
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = herdr-corral-bin
 	conflicts = herdr-corral
 	conflicts = herdr-corral-git
 	options = !strip
-	source_x86_64 = herdr-corral-0.1.5-x86_64.tar.xz::https://github.com/xifan2333/herdr-corral/releases/download/v0.1.5/herdr-corral-0.1.5-x86_64.tar.xz
-	sha256sums_x86_64 = b7bb8876c0b84da698f2d41d1639295ff749e4239decdd628120f3abf47d6dea
-	source_aarch64 = herdr-corral-0.1.5-aarch64.tar.xz::https://github.com/xifan2333/herdr-corral/releases/download/v0.1.5/herdr-corral-0.1.5-aarch64.tar.xz
+	source_x86_64 = herdr-corral-0.1.6-x86_64.tar.xz::https://github.com/xifan2333/herdr-corral/releases/download/v0.1.6/herdr-corral-0.1.6-x86_64.tar.xz
+	sha256sums_x86_64 = 14702ff73720b6d7134dd3c2a44e7ef99c0df7285467ff385fda30daeeaab5f5
+	source_aarch64 = herdr-corral-0.1.6-aarch64.tar.xz::https://github.com/xifan2333/herdr-corral/releases/download/v0.1.6/herdr-corral-0.1.6-aarch64.tar.xz
 	sha256sums_aarch64 = SKIP
 
 pkgname = herdr-corral-bin
