@@ -1,6 +1,6 @@
 pkgbase = commanderdog-bin
 	pkgdesc = Multi-Tab Web & Desktop File Commander - By Woofson (Pre-compiled standalone binary)
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/Woofson/commanderdog
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = commanderdog-bin
 	depends = libssh2
 	depends = openssl
 	depends = ca-certificates
-	source = commanderdog-v0.3.7-linux-x86_64.tar.gz::https://github.com/Woofson/commanderdog/releases/download/v0.3.7/commanderdog-v0.3.7-linux-x86_64.tar.gz
-	sha256sums = 85913be06539e627ec84256a0edb66fa949fe49fc06b2738eb6565a18c876b6a
+	source = commanderdog-v0.3.8-linux-x86_64.tar.gz::https://github.com/Woofson/commanderdog/releases/download/v0.3.8/commanderdog-v0.3.8-linux-x86_64.tar.gz
+	sha256sums = 00fc68cc2d6fe87c15f33797490221c50d103828593659534d4464825252b861
 
 pkgname = commanderdog-bin
