@@ -11,6 +11,8 @@ depends=('openssl' 'libxcb' 'libsoup3' 'dbus' 'cairo'  'gdk-pixbuf2' 'glib2' 'gt
 makedepends=(
     'rustup'
     )
+provides=("${pkgname}")
+conflicts=("${pkgname}-bin" "${pkgname}-git")
 options=('!lto' '!strip' '!emptydirs')
 source=("${url}/archive/refs/tags/v${pkgver}.zip")
 sha256sums=('ce63ebf015cb2f749bb4d4ee2e833ef9a1dce8234f4ec8db6d3f298890ba86e5')
