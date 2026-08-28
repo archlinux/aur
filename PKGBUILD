@@ -3,7 +3,7 @@
 # Contributor: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=mingw-w64-aom
-pkgver=3.14.1
+pkgver=3.15.0
 pkgrel=1
 pkgdesc="Alliance for Open Media video codec (mingw-w64)"
 url="https://aomedia.org/"
@@ -28,13 +28,13 @@ source=(
   https://storage.googleapis.com/aom-releases/libaom-$pkgver.tar.gz{,.asc}
   "cmake.patch"
 )
-b2sums=('b88e6868a9dcf3c91f20a49520884268f961c54e6c5890467505ce6b7086faee191db021d46dbdbb9e0da57ddc482263ac6e8e816afd5319e6d072ada42b28eb'
+b2sums=('f6952a94bb9d503af790723dad1166f2ae3252a9eb3daa882aa3111009fb3110b101b854d1a420fdd8aa02e4e14da16c833835337d2cca5a2dd2b336a3fbd3d3'
         'SKIP'
         '9ecd10fbd76a834476d4e9d9e1a2d74b6b9edf68af0912c230f70a2b2ba3255480377cadea77de7235347a1384cd4907a9ad263ea04355ad495d89ec2cdc826d')
 validpgpkeys=(
   B002F08B74A148DAA01F7123A48E86DB0B830498 # AOMedia release signing key <av1-discuss@aomedia.org>
 )
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 
 prepare() {
   cd "${srcdir}/libaom-$pkgver"
