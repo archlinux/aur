@@ -1,22 +1,32 @@
 pkgbase = python-docling-ibm-models
-	pkgdesc = A python library to define and validate data types in Docling.
-	pkgver = 3.13.0
+	pkgdesc = AI models used by the Docling PDF conversion package
+	pkgver = 3.14.0
 	pkgrel = 1
 	url = https://github.com/docling-project/docling-ibm-models
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pdm-backend
+	makedepends = python-setuptools
 	makedepends = python-wheel
-	makedepends = python-hatchling
+	depends = python>=3.10
+	depends = python<4.0
+	depends = python-pytorch>=2.2.2
 	depends = python-torchvision
-	depends = python-jsonlines
-	depends = python-docling-core
-	depends = python-transformers
-	depends = python-rtree
-	depends = python-accelerate
-	source = python-docling-ibm-models-3.13.0.tar.gz::https://github.com/docling-project/docling-ibm-models/archive/refs/tags/v3.13.0.tar.gz
-	sha256sums = 2c6cd63aed8175e4c1cd616069742b523e813228c8c050ab870e58b4d177ce8f
+	depends = python-jsonlines>=3.1.0
+	depends = python-pillow>=10.0.0
+	depends = python-tqdm>=4.64.0
+	depends = python-huggingface-hub>=0.23.0
+	depends = python-safetensors>=0.4.3
+	depends = python-pydantic>=2.0.0
+	depends = python-docling-core>=2.19.0
+	depends = python-transformers>=5.4.0
+	depends = python-numpy>=1.24.4
+	depends = python-rtree>=1.0.0
+	depends = python-accelerate>=1.2.1
+	optdepends = python-opencv>=4.6.0: legacy TableFormer image preprocessing
+	source = https://files.pythonhosted.org/packages/source/d/docling-ibm-models/docling_ibm_models-3.14.0.tar.gz
+	b2sums = 126d21f2e38bd8ba7acec86e06495e84b8494961c1e2b7def08b4466bebbed17e5785f0598a4c35fd8a8d9a1bf1a0fd82f782b88da7c9de9f1958235ba2c57d8
 
 pkgname = python-docling-ibm-models
