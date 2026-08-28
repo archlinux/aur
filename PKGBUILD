@@ -1,7 +1,7 @@
 # Maintainer: munsternet <munsternet at ik dot me>
 _pkgname=trackaudio
 pkgname=trackaudio-bin
-pkgver=1.4.0_beta.6
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Next-generation cross-platform Audio-For-VATSIM ATC Client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("${_pkgname}-git")
 depends=()
 options=(!debug)
 source=("https://github.com/pierr3/TrackAudio/releases/download/${pkgver//_/-}/${_pkgname}_${pkgver//_/-}_amd64.deb")
-b2sums=('dff8ebfc575918531027889f2d91f82aab861a98f6db0b66fd233e8589e119d45ec6d4746cbb4440cb35376d442adf7ceb2c7f34881eb9f088aaf944593bea6c')
+b2sums=('641165a680768cba3acd8eef35f2a6aacd26e18334a77e5a92f8de69d3594ce248bb06df94618c09827079af485550975eaf8cae3ffb09d346d7a339db40b66e')
 
 package() {
     bsdtar -xf data.tar.xz -C "$pkgdir/"
