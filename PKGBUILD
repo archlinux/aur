@@ -1,12 +1,12 @@
 # Maintainer: Frederick Martel
 pkgname=aspm27-server
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="Server component of aspm - a slick, modern messenger focused on simplicity, security and speed"
 arch=('x86_64' 'aarch64')
 url="https://github.com/fredima2x/aspm27"
 license=('custom')
-makedepends=('cargo' 'gcc')
+makedepends=('cargo' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fredima2x/aspm27/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
