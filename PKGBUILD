@@ -8,7 +8,7 @@ _appname=${_gitname,,}
 pkgname=${_appname}-bin
 pkgdesc="A cross-platform launcher that simply works"
 
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -34,9 +34,9 @@ source=("LAUNCHER-${pkgver}.desktop::${_ghurlraw}/assets/linux/${_appname}.deskt
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
 sha256sums=('511422ab2089f7960801c86a599b8c6b83a667130e3ac1f79e8410ca9a4cea46'
             '38a27a633c153a32015ff1d026aa55bb049c021411db30d48167c74ee348dfdd'
-            'bca755dff021b2bd00fe1af51053cb2e9b78395b556914af92315160e26eae82'
+            '1a33621ad4868276c42a12379ac75b2a9d007a221239a17765a5e5686a563f31'
             '8475252f3dafb9b1a132511d368806daff74275050afcb425e743058f8a6c83c')
-sha256sums_x86_64=('fb8d635cb0acf87925858a8ca9656b3a628afee0a22b06695ad086c1a9ed01d9')
+sha256sums_x86_64=('4700100ab0bb1660ecdf2a0f77dc556b14259692711a80eca2d940ed0f68ce47')
 
 _appid="io.github.WoxLauncher.Wox"
 
