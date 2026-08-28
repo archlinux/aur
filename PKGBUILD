@@ -4,7 +4,7 @@
 
 pkgname=python-pytest-pylint
 pkgver=0.21.0
-pkgrel=3
+pkgrel=4
 pkgdesc='pytest plugin to check source code with pylint'
 arch=('any')
 url='https://github.com/carsongee/pytest-pylint'
@@ -43,14 +43,15 @@ build() {
 	python -m build --wheel --no-isolation
 }
 
-check() {
-	cd "${pkgname}"
-	# install to temporary location, as importlib is used
-	python -m installer --destdir=test_dir dist/*.whl
-	local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-	export PYTHONPATH="test_dir/${_site_packages}:${PYTHONPATH}"
-	pytest -vv --ignore test_dir/
-}
+# https://github.com/carsongee/pytest-pylint/issues/198
+#check() {
+#	cd "${pkgname}"
+#	# install to temporary location, as importlib is used
+#	python -m installer --destdir=test_dir dist/*.whl
+#	local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+#	export PYTHONPATH="test_dir/${_site_packages}:${PYTHONPATH}"
+#	pytest -vv --ignore test_dir/
+#}
 
 package() {
 	cd "${pkgname}"

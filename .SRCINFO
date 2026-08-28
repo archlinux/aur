@@ -1,7 +1,7 @@
 pkgbase = python-pytest-pylint
 	pkgdesc = pytest plugin to check source code with pylint
 	pkgver = 0.21.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/carsongee/pytest-pylint
 	arch = any
 	license = MIT
