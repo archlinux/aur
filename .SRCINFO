@@ -16,8 +16,11 @@ pkgbase = python-pygments-git
 	makedepends = python-wheel
 	depends = python
 	provides = pygmentize
+	provides = python-pygments
 	conflicts = pygmentize
+	conflicts = python-pygments
 	replaces = pygmentize
+	replaces = python-pygments
 	source = git+https://github.com/pygments/pygments.git
 	b2sums = SKIP
 

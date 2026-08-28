@@ -25,11 +25,16 @@ checkdepends=(
   'python-lxml'
   'python-pytest'
 )
-provides=('pygmentize')
-conflicts=('pygmentize')
-replaces=('pygmentize')
+provides=('pygmentize' "${_pkgname}")
+conflicts=('pygmentize' "${_pkgname}")
+replaces=('pygmentize' "${_pkgname}")
 source=("git+https://github.com/pygments/${_pkgname#python-}.git")
 b2sums=('SKIP')
+
+pkgver() {
+  cd ${_pkgname#python-}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
 
 build() {
   cd ${_pkgname#python-}
@@ -39,6 +44,7 @@ build() {
 
 check() {
   cd ${_pkgname#python-}
+  rm -rf test-env
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest
