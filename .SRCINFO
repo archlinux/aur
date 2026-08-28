@@ -1,6 +1,6 @@
 pkgbase = fcitx5-lilypad-git
 	pkgdesc = Modern, hyper-fast Vietnamese Telex/VNI Input Method for Fcitx5 (Wayland/X11)
-	pkgver = 2.3.0.r0.g3f2fe1e
+	pkgver = 2.3.1.r0.gc41892e
 	pkgrel = 1
 	url = https://github.com/chiconcota/fcitx5-lilypad
 	install = fcitx5-lilypad.install
