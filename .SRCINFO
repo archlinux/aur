@@ -1,7 +1,7 @@
 pkgbase = libinput-three-finger-drag
 	pkgdesc = Input device management and event handling library
 	pkgver = 1.31.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wayland.freedesktop.org/libinput/doc/latest/
 	arch = x86_64
 	license = MIT
@@ -35,6 +35,6 @@ pkgbase = libinput-three-finger-drag
 	source = 0001-meson-build-options-for-3-4-finger-dragging.patch
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
 	b2sums = SKIP
-	b2sums = 58ef451c3c28748b60a7ed928059b43c7b17df6e5fb6cf990d2d745e0fc3e3dd3ad9e0076007e83c0c491a9e12813f5eba49b1a9c390ec58cf0ca8206743e190
+	b2sums = 51661cd6ad0ac28bd97de0dc45e90316e2aa0a35c66e9da01a8595377477e9f81cf3f4069373751b93f3ea1c6e6b82f10293590adc9ec4155cdad203939f4406
 
 pkgname = libinput-three-finger-drag

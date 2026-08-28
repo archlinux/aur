@@ -1,3 +1,18 @@
+From f597c031b3d5236f598219fd960fb2cf4541f513 Mon Sep 17 00:00:00 2001
+From: Jasper van Bourgognie <jasper@knoop.je>
+Date: Mon, 15 Sep 2025 07:42:51 +0200
+Subject: [PATCH] meson: build options for 3/4 finger dragging
+
+Add an option to set the default 3FG drag behaviour.
+
+Add an option no to disambiguate between swipe and drag in 3 finger
+mode, but always go to drag
+---
+ meson.build                      | 13 +++++++++++++
+ meson_options.txt                |  9 +++++++++
+ src/evdev-mt-touchpad-gestures.c |  6 +++++-
+ 3 files changed, 27 insertions(+), 1 deletion(-)
+
 diff --git a/meson.build b/meson.build
 index 85493425..165e1877 100644
 --- a/meson.build
@@ -70,3 +85,6 @@ index 03a081c0..18a8b3ec 100644
  }
  
  static enum libinput_config_3fg_drag_state
+-- 
+2.55.0
+
