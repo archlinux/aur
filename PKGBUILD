@@ -4,7 +4,7 @@
 
 _pkgname='qt6-m3shapes'
 pkgname="$_pkgname-git"
-pkgver=r36.bdc327b
+pkgver=r38.6875533
 pkgrel=1
 pkgdesc='A Qt6 library for Material 3 Expressive shapes'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ license=('Apache-2.0')
 depends=('qt6-base' 'qt6-declarative')
 makedepends=('git' 'cmake' 'ninja' 'qt6-shadertools')
 provides=($_pkgname)
-conflicts=($_pkgname)
+conflicts=($_pkgname 'caelestia-shell<2.4.0')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 

@@ -1,6 +1,6 @@
 pkgbase = qt6-m3shapes-git
 	pkgdesc = A Qt6 library for Material 3 Expressive shapes
-	pkgver = r36.bdc327b
+	pkgver = r38.6875533
 	pkgrel = 1
 	url = https://github.com/soramanew/m3shapes
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = qt6-m3shapes-git
 	depends = qt6-declarative
 	provides = qt6-m3shapes
 	conflicts = qt6-m3shapes
+	conflicts = caelestia-shell<2.4.0
 	source = qt6-m3shapes-git::git+https://github.com/soramanew/m3shapes.git
 	sha256sums = SKIP
 
