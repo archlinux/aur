@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-git
-pkgver=1.13.0.r95.4e831d3
+pkgver=1.14.0.r6.1fc6f59
 pkgrel=1
 pkgdesc='Next-Gen Universal Package Manager for Linux (linglong)'
 arch=($CARCH)
@@ -94,7 +94,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
     -DCPM_LOCAL_PACKAGES_ONLY=ON \
-    -DENABLE_LINGLONG_INSTALLER=ON \
     -DLINGLONG_EXPORT_PATH=apps/share \
     -Wno-dev \
     -B build \
