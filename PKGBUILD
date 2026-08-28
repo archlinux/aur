@@ -29,11 +29,14 @@ depends=(
 )
 optdepends=(
   'gdk-pixbuf2: GdkPixbuf module support'
+  'glycin: Glycin module support'
   'libheif: HEIF images'
+  'libjxl: JPEG XL'
   'libraw: raw photo images'
   'librsvg: SVG images'
   'libtiff: TIFF images'
   'libxcursor: X cursor images'
+  'openjpeg2: JPEG2000'
   'perl-image-exiftool: file information'
 )
 install=dn.install
