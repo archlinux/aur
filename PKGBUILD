@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@agentics.co.za>
 # ---
 pkgname=agentics
-pkgver=0.1.77
+pkgver=0.1.78
 pkgrel=1
 pkgdesc="Agentics - the voice-driven AI platform launcher, the desktop front door for the entire Agentics ecosystem"
 arch=('x86_64')
@@ -9,11 +9,11 @@ url="https://agentics.co.za"
 license=('custom')
 depends=()
 options=('!strip' '!debug')
-source=("agentics-0.1.77-x86_64::https://repo.agentics.co.za/x86_64/agentics-0.1.77-x86_64")
-sha512sums=('41f966181c03c8ea3492b33669a7763f14cff5ebf9eba32a358f574021eb02d86c57abe631e0e2ab724c206d8646bee3767101bb10222d1594a96e2e52964ac1')
+source=("agentics-0.1.78-x86_64::https://repo.agentics.co.za/x86_64/agentics-0.1.78-x86_64")
+sha512sums=('af5bf5e26f18ff878091a2be19b29011ea99bd373867b1d6aae52c86e684cf8bdb9cfc98a5f750e8a5dba7ff37554d0886e4d56ca410e590a9fe88c26312c156')
 
 package() {
-  install -Dm755 "$srcdir/agentics-0.1.77-x86_64" "$pkgdir/opt/agentics/Agentics.AppImage"
+  install -Dm755 "$srcdir/agentics-0.1.78-x86_64" "$pkgdir/opt/agentics/Agentics.AppImage"
   install -dm755 "$pkgdir/usr/bin"
   printf '%s\n' '#!/bin/sh' 'exec /opt/agentics/Agentics.AppImage "$@"' > "$pkgdir/usr/bin/agentics"
   chmod 755 "$pkgdir/usr/bin/agentics"
