@@ -28,4 +28,6 @@ build() {
 package() {
   cd xkb-monitor
   install -Dm755 xkb-monitor "$pkgdir/usr/bin/xkb-monitor"
+  mkdir -p "${pkgdir}/usr/share/doc/xkb-monitor/"
+  install -m644 README.md "${pkgdir}/usr/share/doc/xkb-monitor/"
 }
