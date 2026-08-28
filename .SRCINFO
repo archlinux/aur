@@ -1,10 +1,11 @@
 pkgbase = neoglogg
 	pkgdesc = Fast and smart log explorer, an improved and updated version of glogg.
 	pkgver = 1.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nekromoff/neoglogg
 	arch = x86_64
 	license = GPL-3.0-only
+	makedepends = git
 	makedepends = boost
 	depends = qt6-base
 	depends = boost-libs
