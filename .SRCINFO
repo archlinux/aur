@@ -1,0 +1,16 @@
+pkgbase = djcheck-appimage
+	pkgdesc = Scan your music library for Pioneer CDJ compatibility issues — and fix them automatically.
+	pkgver = 1.0.0_beta.6
+	pkgrel = 1
+	url = https://github.com/finengines/djcheck
+	arch = x86_64
+	license = MIT
+	depends = zlib
+	noextract = DJCheck-1.0.0-beta.6.AppImage
+	options = !strip
+	source_x86_64 = DJCheck-1.0.0-beta.6.AppImage::https://github.com/finengines/djcheck/releases/download/v1.0.0-beta.6/DJCheck-1.0.0-beta.6.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/finengines/djcheck/1.0.0-beta.6/LICENSE
+	sha256sums_x86_64 = 37a369ab058a2483809fb1125dd2f422ede87756cdb6ad97a58515fa5038b4b0
+	sha256sums_x86_64 = adbc0332dd8730c2ba1615be97df78e73dd14a418fbdbf7ebbb0135ca87141aa
+
+pkgname = djcheck-appimage
