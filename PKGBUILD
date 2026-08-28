@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=python-ouroboros-ai
 _name=${pkgname#python-}
-pkgver=0.51.15
+pkgver=0.51.16
 pkgrel=1
 pkgdesc="Specification-first workflow engine for AI coding agents"
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   'python-textual: TUI support (ouroboros tui)'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('e3e9bcfd4f81532285842fb42dfd4759fbbf8ceef80e90039d204f7e8eca1ebe')
+sha256sums=('d14d69a6d01be14e66441d2c399e269ea12899d8711999347074a752db6a20a4')
 install=${pkgname}.install
 
 build() {
@@ -61,9 +61,9 @@ package() {
   _site_packages=$(python -c 'import sysconfig; print(sysconfig.get_path("purelib", vars={"base": "/usr", "platbase": "/usr"}))')
   export PYTHONPATH="$pkgdir$_site_packages"
   local _ouroboros="$pkgdir/usr/bin/ouroboros"
-  python "$_ouroboros" --show-completion bash > ouroboros.bash
-  python "$_ouroboros" --show-completion zsh > _ouroboros
-  python "$_ouroboros" --show-completion fish > ouroboros.fish
+  _OUROBOROS_COMPLETE=source_bash python "$_ouroboros" > ouroboros.bash
+  _OUROBOROS_COMPLETE=source_zsh python "$_ouroboros" > _ouroboros
+  _OUROBOROS_COMPLETE=source_fish python "$_ouroboros" > ouroboros.fish
   install -Dm644 ouroboros.bash \
     "$pkgdir/usr/share/bash-completion/completions/ouroboros"
   install -Dm644 _ouroboros \
