@@ -12,7 +12,7 @@ arch=('any')
 license=('GLPv2-only')
 depends=('pandoc')
 makedepends=('git')
-source=('git+https://codeberg.org/tuxnix/tvb-recorder' $_name.install)
+source=('git+https://codeberg.org/tuxnix/notebook')
 sha512sums=('SKIP')
 
 

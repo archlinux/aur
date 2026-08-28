@@ -7,8 +7,7 @@ pkgbase = notebook
 	license = GLPv2-only
 	makedepends = git
 	depends = pandoc
-	source = git+https://codeberg.org/tuxnix/tvb-recorder
-	source = notebook.install
+	source = git+https://codeberg.org/tuxnix/notebook
 	sha512sums = SKIP
 
 pkgname = notebook
