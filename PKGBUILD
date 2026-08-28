@@ -1,7 +1,7 @@
 # Maintainer: Incognitux <incognitux at proton mail dot com>
 
 pkgname=frame-bin
-pkgver=0.33.0
+pkgver=0.33.1
 pkgrel=1
 pkgdesc="FFmpeg GUI media conversion utility (binary release)"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=("ffmpeg")
 _pkgname=${pkgname%-bin}
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/66HEX/${_pkgname}/releases/download/${pkgver}/${_pkgname}-linux-x86_64.tar.gz")
-sha256sums=('b36808527e95e2a6b009249310c189ec782bdc094c266dd9409cc97dd7da46e5')
+sha256sums=('af76d2a5ca0be519b34ea9f97acbb60f06e94b759909dafbcbc966f1ca777d95')
 
 package(){
   install -dm755 "$pkgdir"/{opt/frame,usr/bin,usr/share/applications,usr/share/icons/hicolor}
