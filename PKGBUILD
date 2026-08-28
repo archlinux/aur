@@ -1,21 +1,37 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r29.624282b
+pkgver=r39.1fb10b3
 pkgrel=1
 pkgdesc="A Wayland session of KWin plus the illogical-impulse shell — no desktop environment"
 arch=('any')
 url="https://github.com/mahirsn/mmsimpulse"
 license=('GPL-3.0-or-later')
 # Any KWin 6 satisfies this: the stock `kwin` package, or a fork such as
-# kineticwe, which provides both kwin and kglobalacceld. The compositor is used
-# as installed and never rebuilt. python-dbus and python-gobject are the KWin
-# bridge; the rest are what the session and shell scripts call.
+# The compositor is used as installed and never rebuilt. python-dbus and
+# python-gobject are the KWin bridge; the rest are what the session and shell
+# scripts call.
+# imagemagick, wl-clipboard, libnotify and spectacle are hard dependencies
+# rather than optional ones: without them the screen snip captures nothing,
+# crops nothing, copies nothing and reports nothing, which looks like a broken
+# feature rather than a missing package. spectacle is there because stock KWin
+# only lets callers with a declared desktop entry use its screenshot service.
 depends=('kwin' 'kglobalacceld' 'quickshell' 'xdg-desktop-portal-kde'
-         'python' 'python-dbus' 'python-gobject' 'rsync' 'git' 'jq' 'systemd')
+         'python' 'python-dbus' 'python-gobject' 'rsync' 'git' 'jq' 'systemd'
+         'imagemagick' 'wl-clipboard' 'libnotify' 'spectacle')
 optdepends=(
-  'kineticwe: KWin fork with native tiling, which mmsimpulse runs with tiling off'
   'powerdevil: idle timeouts, DPMS, suspend and brightness'
   'upower: battery status'
+  'kdeplasma-addons: task switcher layouts, without which Alt+Tab draws nothing'
+  'kitty: the terminal the launcher and widgets open by default'
+  'cliphist: clipboard history'
+  'matugen: colours generated from the wallpaper'
+  'brightnessctl: laptop backlight control'
+  'ddcutil: external monitor brightness over DDC/CI'
+  'playerctl: media keys and player control'
+  'tesseract: text recognition on a snipped region'
+  'wf-recorder: screen recording'
+  'bc: arithmetic in the theming scripts'
+  'breeze: the default cursor theme, which KWin warns about when absent'
   'illogical-impulse-basic: the widget set this shell is built on'
   'illogical-impulse-audio: audio widgets and OSDs'
   'illogical-impulse-backlight: brightness control'
