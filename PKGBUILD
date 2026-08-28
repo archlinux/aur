@@ -3,7 +3,7 @@
 
 pkgname=flatpak-builder-tools-git
 pkgver=r676.737c008
-pkgrel=1
+pkgrel=2
 pkgdesc="Various helper tools for flatpak-builder"
 arch=(any)
 url=https://github.com/flatpak/flatpak-builder-tools
@@ -14,6 +14,7 @@ depends=(
 	'python-aiohttp'
 	'python-requests'
 	'python-requirements-parser'
+	'python-tomlkit'
 	'python-yaml'
 	'perl'
 	#'cpanminus'
