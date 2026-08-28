@@ -1,6 +1,6 @@
 pkgbase = r-ggtext
 	pkgdesc = Improved Text Rendering Support for 'ggplot2'
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggtext
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = r-ggtext
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/ggtext_0.1.2.tar.gz
-	sha256sums = 8782171c44e5850e0c3a3c540e8db19b18b9b6e61b5ba5314dd7931d77cf7983
+	source = https://cran.r-project.org/src/contrib/ggtext_0.2.0.tar.gz
+	sha256sums = 76b23e91c7565b0a6e1ba5adeb3ab976b3f3ccc80886841417afbe80f9af1a9e
 
 pkgname = r-ggtext
