@@ -1,6 +1,6 @@
 # Maintainer: Bolt J Woofson <bolt@boop.no>
 pkgname=commanderdog
-pkgver=0.3.8
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Multi-Tab Web & Desktop File Commander - By Woofson"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates' 'gtk3' 'webkit2g
 makedepends=('cargo' 'rust' 'pkgconf' 'gtk3' 'webkit2gtk-4.1')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cb862b2a21f65fe590583dd946c5ad1e3098559ccd0f557a50311b7ef8c425c1')
+sha256sums=('05d6b19c1f0d10e266bcda3e5b44cb05616f7a950ac3529065a52ac4acad7794')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -34,8 +34,7 @@ package() {
     install -Dm644 "commanderdog.service" "$pkgdir/usr/lib/systemd/system/commanderdog.service"
     install -Dm644 "commanderdog.desktop" "$pkgdir/usr/share/applications/commanderdog.desktop"
     
-    install -d "$pkgdir/etc/commanderdog/conf.d"
-    install -m644 conf.d/*.toml "$pkgdir/etc/commanderdog/conf.d/"
+    install -Dm644 "config.toml" "$pkgdir/etc/commanderdog/config.toml"
     
     install -Dm644 "assets/commanderdog.png" "$pkgdir/usr/share/pixmaps/commanderdog.png"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
