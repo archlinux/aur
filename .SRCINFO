@@ -1,0 +1,18 @@
+pkgbase = scalastyle-2.12
+	pkgdesc = Examines your Scala code and indicates potential problems with it. (For Scala 2.12)
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = http://www.scalastyle.org/
+	arch = any
+	license = Apache
+	depends = java-environment
+	depends = bash
+	provides = scalastyle
+	conflicts = scalastyle
+	noextract = $_jarname
+	source = https://repo1.maven.org/maven2/com/beautiful-scala/scalastyle_2.12/1.5.1/scalastyle_2.12-1.5.1-assembly.jar
+	source = scalastyle.sh
+	md5sums = 1284cc5ff68465fe4c88185bc0c4ff64
+	md5sums = 5a81d7de6ef3bf090a2e6f97d2a96c18
+
+pkgname = scalastyle-2.12
