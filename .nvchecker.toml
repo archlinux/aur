@@ -1,0 +1,4 @@
+[claude-code-cleaner]
+source = "git"
+git = "https://github.com/GarrickZ2/claude-code-cleaner.git"
+prefix = "v"
