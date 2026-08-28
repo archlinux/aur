@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=netsukuku-rs-bin
-pkgver=0.1.4 # renovate: datasource=github-releases depName=M0Rf30/netsukuku-rs
+pkgver=0.1.5 # renovate: datasource=github-releases depName=M0Rf30/netsukuku-rs
 pkgrel=1
 pkgdesc="Rust reimplementation of the Netsukuku mesh routing protocol: QSPN v2, Hooking, Coordinator, PeerServices, ANDNA (prebuilt static binary)"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,12 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 backup=('etc/ntkd/ntkd.toml')
 
-source=(ntkd.service
-  ntkd.toml)
+# Fetched from the tag rather than carried locally: upstream keeps the unit and default config in
+# contrib/systemd/, beside the code that decides what they must contain. Local copies drifted once
+# already — the unit lacked CAP_NET_BIND_SERVICE for three releases, so no install could bind the
+# default port 269.
+source=("ntkd.service::${url}/raw/v${pkgver}/contrib/systemd/ntkd.service"
+  "ntkd.toml::${url}/raw/v${pkgver}/contrib/systemd/ntkd.toml")
 sha256sums=('7f770bece8fdd52a7761951de92c2b5ff45ada09e24d194b2f4cb3b76198c660'
   '92e4e2fa58defd6f809bdda8df063e5dc947cb9d71a7df538a06586608b38fb1')
 
@@ -32,6 +36,6 @@ package() {
 source_x86_64=("ntkd-${pkgver}-x86_64-unknown-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/ntkd-${pkgver}-x86_64-unknown-linux-musl.tar.gz")
 source_aarch64=("ntkd-${pkgver}-aarch64-unknown-linux-musl.tar.gz::${url}/releases/download/v${pkgver}/ntkd-${pkgver}-aarch64-unknown-linux-musl.tar.gz")
 
-sha256sums_x86_64=('f3e873f0b388a53d76b7f7818f1e134bc9586e7f87f94e726c269d400445100a')
-sha256sums_aarch64=('43aeff7b152965d29031b28189edbd89de3f5fe6eefd871352aa33d485f773b9')
+sha256sums_x86_64=('32a913adab55f8df359796b591808541f63a57986e92032c14acff847b99e612')
+sha256sums_aarch64=('a3ed3ef71151f329c6a679cbacaf97258efa46a3422d7704394525a7897bb5f8')
 
