@@ -3,26 +3,41 @@
   <id>com.dongpl.linglong-store.v2</id>
   <name>Linyaps Store Community Edition Nightly</name>
   <name xml:lang="ar">متجر تطبيقات Linglong (الإصدار المجتمعي) Nightly</name>
+  <name xml:lang="de">Linyaps Store Community Edition Nightly</name>
   <name xml:lang="en">Linyaps Store Community Edition Nightly</name>
   <name xml:lang="es">Tienda de Aplicaciones Linyaps Edición Comunitaria Nightly</name>
+  <name xml:lang="fr">Linyaps Store Édition Communautaire Nightly</name>
+  <name xml:lang="ja">Linyaps ストアコミュニティ版 Nightly</name>
+  <name xml:lang="ko">Linyaps 스토어 커뮤니티 에디션 Nightly</name>
   <name xml:lang="ru">Магазин Linyaps — ночная версия сообщества</name>
   <name xml:lang="zh-CN">玲珑应用商店社区版 Nightly</name>
+  <name xml:lang="zh-Hant">玲瓏應用商店社群版 Nightly</name>
   <summary>Nightly build for browsing, installing, and managing Linyaps applications</summary>
   <summary xml:lang="ar">إصدار Nightly لتصفح تطبيقات Linglong وتثبيتها وإدارتها</summary>
+  <summary xml:lang="de">Nightly-Build zum Durchsuchen, Installieren und Verwalten von Linyaps-Anwendungen</summary>
   <summary xml:lang="en">Nightly build for browsing, installing, and managing Linyaps applications</summary>
   <summary xml:lang="es">Versión Nightly para explorar, instalar y gestionar aplicaciones Linyaps</summary>
+  <summary xml:lang="fr">Build Nightly pour parcourir, installer et gérer les applications Linyaps</summary>
+  <summary xml:lang="ja">Linyaps アプリの閲覧・インストール・管理を行う Nightly ビルド</summary>
+  <summary xml:lang="ko">Linyaps 앱을 탐색, 설치, 관리하기 위한 Nightly 빌드</summary>
   <summary xml:lang="ru">Ночная сборка для поиска, установки и управления приложениями Linyaps</summary>
   <summary xml:lang="zh-CN">用于浏览、安装和管理玲珑应用的 Nightly 构建</summary>
+  <summary xml:lang="zh-Hant">用於瀏覽、安裝與管理玲瓏應用的 Nightly 構建</summary>
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
   <launchable type="desktop-id">com.dongpl.linglong-store.v2.desktop</launchable>
   <description>
     <p>A desktop store for browsing, installing, and managing Linyaps applications.</p>
     <p xml:lang="ar">متجر تطبيقات سطح المكتب لتصفح تطبيقات Linglong وتثبيتها وإدارتها.</p>
+    <p xml:lang="de">Ein Desktop-Store zum Durchsuchen, Installieren und Verwalten von Linyaps-Anwendungen.</p>
     <p xml:lang="en">A desktop store for browsing, installing, and managing Linyaps applications.</p>
     <p xml:lang="es">Una tienda de escritorio para explorar, instalar y gestionar aplicaciones Linyaps.</p>
+    <p xml:lang="fr">Un magasin d'applications de bureau pour parcourir, installer et gérer les applications Linyaps.</p>
+    <p xml:lang="ja">Linyaps アプリを閲覧・インストール・管理するためのデスクトップアプリストア。</p>
+    <p xml:lang="ko">Linyaps 앱을 탐색, 설치, 관리하는 데스크톱 앱 스토어입니다.</p>
     <p xml:lang="ru">Магазин для поиска, установки и управления приложениями Linyaps.</p>
     <p xml:lang="zh-CN">用于浏览、安装和管理玲珑应用的桌面应用商店。</p>
+    <p xml:lang="zh-Hant">用於瀏覽、安裝與管理玲瓏應用的桌面應用商店。</p>
   </description>
   <url type="homepage">https://github.com/HanHan666666/flutter-linglong-store</url>
   <categories>
