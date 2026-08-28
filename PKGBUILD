@@ -1,7 +1,7 @@
 # Maintainer: Sergey Shatunov <me@aur.rocks>
 pkgname=satisfactory-mod-manager-git
-pkgver=3.1.0.r0.g935ec4a
-pkgrel=3
+pkgver=3.1.0.r9.ga171772
+pkgrel=1
 pkgdesc="A mod manager for easy installation of mods and modloader for Satisfactory"
 arch=(x86_64)
 url="https://github.com/satisfactorymodding/SatisfactoryModManager"
@@ -18,14 +18,6 @@ sha512sums=('SKIP'
 pkgver() {
     cd "${srcdir}/SatisfactoryModManager"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "${srcdir}/SatisfactoryModManager"
-
-	echo 'allowBuilds:' >> frontend/pnpm-workspace.yaml
-	echo '  esbuild: true' >> frontend/pnpm-workspace.yaml
-	echo '  svelte-preprocess: true' >> frontend/pnpm-workspace.yaml
 }
 
 build() {
