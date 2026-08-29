@@ -1,50 +1,46 @@
-# Maintainer: envolution
+# Maintainer: a821 (at) mail de
+# Contributor: envolution
 # Contributor: Darren Ng <$(base64 --decode <<<'ZGFycmVuMTk5NzA4MTBAZ21haWwuY29tCg==')>
-# shellcheck shell=bash disable=SC2034,SC2154
-# Co-Maintainer: Simon Krogmann <$(base64 --decode <<<'cy5rcm9nbWFubkB5YWhvby5jb20K')>
+# Contributor: Simon Krogmann <$(base64 --decode <<<'cy5rcm9nbWFubkB5YWhvby5jb20K')>
+
 pkgname=pmdk
-pkgver=2.1.2
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Persistent Memory Development Kit"
 arch=('x86_64')
 url="https://pmem.io/"
-license=('BSD-3-Clause OSL-1.0')
-makedepends=(pandoc-cli)
-depends=(
-  'ndctl>=63'
-)
-optdepends=(
-  'libfabric>=1.4.2: required by librpmem'
-)
-provides=(
-  'libpmem'
-  'libpmem2'
-  'libpmemobj'
-  'libpmemblk'
-  'libpmemlog'
-  'libpmempool'
-  'librpmem'
-)
-makedepends=(pandoc-cli)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/daos-stack/pmdk/archive/$pkgver.tar.gz")
-sha1sums=('a060893f8a10b9f59b7a93269c988db81bbecd0d')
+license=('BSD-3-Clause CDDL-1.0')
+depends=("glibc" "ndctl" "python" "sh")
+makedepends=("chrpath" "git" "pandoc-cli")
+checkdepends=("bc" "gdb" "man-db" "strace")
+source=("git+https://github.com/daos-stack/pmdk.git#tag=$pkgver")
+sha256sums=('bce3be27a24dab408f4478cbde6171564b1be742377e302ff249b0f3d363fe64')
 
 build() {
-  cd "$pkgname-$pkgver" || exit 1
-  EXTRA_CFLAGS="-Wno-error" make
+    cd pmdk
+    make EXTRA_CFLAGS="-Wno-error" prefix=/usr LIB_PREFIX=lib
 }
 
 check() {
-  cd "$pkgname-$pkgver/src/test" || exit 1
-  EXTRA_CFLAGS="-Wno-error" make TEST_TYPE=short TEST_BUILD=nondebug TEST_FS=pmem UNIT_LOG_LEVEL=1
-  touch testconfig.sh && ./RUNTESTS.sh -k obj_sync,util_is_zeroed
+    cd pmdk
+    cp -vf src/test/testconfig.sh{.example,}
+    make check RUNTEST_OPTIONS="short" EXTRA_CFLAGS="-Wno-error"
 }
 
 package() {
-  cd "$pkgname-$pkgver" || exit 1
-  DESTDIR="$pkgdir" make install prefix=/usr
-  mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
-  install -Dm644 LICENSE/BSD-3-Clause "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 LICENSE/OPENSOLARIS.LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd pmdk
+    make DESTDIR="$pkgdir" prefix=/usr LIB_PREFIX=lib install
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE.txt
+    install -Dm644 -t "$pkgdir"/usr/share/bash-completion/completions \
+                      "$pkgdir"/usr/etc/bash_completion.d/*
+    rm -rf "$pkgdir/usr/etc/"
+
+    # compile python files
+    pushd "$pkgdir/usr/share/pmreorder"
+    python -m compileall *.py
+    popd
+
+    # fix unsecure rpath (reported by namcap)
+    chrpath -r /usr/lib "$pkgdir"/usr/lib/*.so
+    chrpath -r /usr/lib/pmdk_debug:/usr/lib "$pkgdir"/usr/lib/pmdk_debug/*.so
 }
-# vim:set ts=2 sw=2 et:

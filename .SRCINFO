@@ -1,21 +1,22 @@
 pkgbase = pmdk
 	pkgdesc = Persistent Memory Development Kit
-	pkgver = 2.1.2
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://pmem.io/
 	arch = x86_64
-	license = BSD-3-Clause OSL-1.0
+	license = BSD-3-Clause CDDL-1.0
+	checkdepends = bc
+	checkdepends = gdb
+	checkdepends = man-db
+	checkdepends = strace
+	makedepends = chrpath
+	makedepends = git
 	makedepends = pandoc-cli
-	depends = ndctl>=63
-	optdepends = libfabric>=1.4.2: required by librpmem
-	provides = libpmem
-	provides = libpmem2
-	provides = libpmemobj
-	provides = libpmemblk
-	provides = libpmemlog
-	provides = libpmempool
-	provides = librpmem
-	source = pmdk-2.1.2.tar.gz::https://github.com/daos-stack/pmdk/archive/2.1.2.tar.gz
-	sha1sums = a060893f8a10b9f59b7a93269c988db81bbecd0d
+	depends = glibc
+	depends = ndctl
+	depends = python
+	depends = sh
+	source = git+https://github.com/daos-stack/pmdk.git#tag=2.1.4
+	sha256sums = bce3be27a24dab408f4478cbde6171564b1be742377e302ff249b0f3d363fe64
 
 pkgname = pmdk

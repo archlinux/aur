@@ -1,4 +1,4 @@
 [pmdk]
 source="github"
-github="pmem/pmdk"
+github="daos-stack/pmdk"
 use_latest_release=true
