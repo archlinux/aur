@@ -1,6 +1,6 @@
 pkgbase = onyx-desktop
 	pkgdesc = Onyx AI desktop client - native wrapper for the Onyx knowledge assistant
-	pkgver = 4.6.3
+	pkgver = 4.6.4
 	pkgrel = 1
 	url = https://www.onyx.app
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = onyx-desktop
 	depends = webkit2gtk-4.1
 	optdepends = libappindicator-gtk3: legacy GTK3 tray icon support
 	options = !strip
-	source = https://github.com/onyx-dot-app/onyx/releases/download/v4.6.3/Onyx_amd64.deb
-	source = LICENSE::https://raw.githubusercontent.com/onyx-dot-app/onyx/v4.6.3/LICENSE
-	sha256sums = 16762bd16d6a879d9fe8d6f10e47eb471bb13f3ba36d2313957ea614f021c52c
+	source = https://github.com/onyx-dot-app/onyx/releases/download/v4.6.4/Onyx_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/onyx-dot-app/onyx/v4.6.4/LICENSE
+	sha256sums = 43eb01195c85611735027756b6650434782e03b2dcb8e7c3b0d89963998c17c8
 	sha256sums = SKIP
 
 pkgname = onyx-desktop
