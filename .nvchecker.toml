@@ -1,0 +1,5 @@
+["resterm-runner-bin"]
+source = "github"
+github = "unkn0wn-root/resterm-runner"
+use_latest_release = true
+prefix = "v"
