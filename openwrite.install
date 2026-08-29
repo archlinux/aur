@@ -2,15 +2,24 @@ post_install() {
     cat <<'EOF'
 OpenWrite installed to /opt/openwrite.
 
-Commands:
-  openwrite-launcher   recommended entry — bootstraps an isolated Python
-                       runtime in ~/.openwrite-runtime/ on first run
-                       (installs its Python dependencies automatically),
-                       then opens the Studio web UI.
+Interactive use:
+  openwrite-launcher   bootstraps an isolated Python runtime in
+                       ~/.openwrite-runtime/ on first run, then opens Studio.
   openwrite            direct CLI (requires the runtime deps; use the
                        launcher first if they are missing).
 
-Studio binds to 127.0.0.1 by default. Configure your model/API key in the
-Studio UI on first launch.
+Run Studio as a systemd user service (recommended):
+  systemctl --user enable --now openwrite.service
+  -> Studio listens on http://127.0.0.1:4567
+
+To start the service automatically at boot without logging in:
+  sudo loginctl enable-linger $USER
+
+Port can be changed with an override:
+  systemctl --user edit openwrite.service   # set Environment=OPENWRITE_PORT=...
 EOF
+}
+
+post_upgrade() {
+    post_install
 }

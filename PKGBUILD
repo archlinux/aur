@@ -4,7 +4,7 @@
 pkgname=openwrite
 pkgver=5.8.0
 _commit=20500493c10a211fdf2560e69558da1c39eab3b4
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenWrite 长篇小说创作引擎 — AI 辅助小说创作，对话式引导、四级大纲、风格合成与 Studio 工作台"
 arch=('any')
 url="https://github.com/LiPu-jpg/Openwrite"
@@ -46,4 +46,10 @@ export PYTHONPATH="/opt/${pkgname}"
 exec python3 -c 'import sys; from tools.desktop_launcher import main; sys.exit(main())' "\$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/openwrite" "${pkgdir}/usr/bin/openwrite-launcher"
+
+    # systemd 用户服务：openwrite-studio 包装脚本负责引导 ~/.openwrite-runtime
+    # 运行环境后在前台启动 Studio，由 systemd 管理生命周期
+    install -Dm755 "${startdir}/openwrite-studio" "${pkgdir}/usr/bin/openwrite-studio"
+    install -Dm644 "${startdir}/openwrite.service" \
+        "${pkgdir}/usr/lib/systemd/user/openwrite.service"
 }

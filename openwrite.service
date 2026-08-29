@@ -1,0 +1,16 @@
+[Unit]
+Description=OpenWrite Studio (local web workbench)
+Documentation=https://github.com/LiPu-jpg/Openwrite
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h
+Environment=OPENWRITE_PORT=4567
+ExecStart=/usr/bin/openwrite-studio
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

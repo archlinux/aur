@@ -1,0 +1,18 @@
+#!/usr/bin/python3
+"""Bootstrap the OpenWrite user runtime (idempotent), then exec Studio in
+the foreground. Used by the openwrite.service user unit."""
+import os
+import sys
+
+sys.path.insert(0, "/opt/openwrite")
+
+from tools.desktop_launcher import ensure_runtime, repository_root  # noqa: E402
+
+try:
+    python = ensure_runtime(repository_root())
+except Exception as exc:  # LauncherError or bootstrap failure
+    print(f"[OpenWrite] runtime bootstrap failed: {exc}", file=sys.stderr)
+    sys.exit(1)
+
+port = os.environ.get("OPENWRITE_PORT", "4567")
+os.execv(python, [python, "-m", "tools.cli", "studio", "--no-open", "--port", port])

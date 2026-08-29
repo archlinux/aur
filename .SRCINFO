@@ -1,7 +1,7 @@
 pkgbase = openwrite
 	pkgdesc = OpenWrite 长篇小说创作引擎 — AI 辅助小说创作，对话式引导、四级大纲、风格合成与 Studio 工作台
 	pkgver = 5.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LiPu-jpg/Openwrite
 	install = openwrite.install
 	arch = any
