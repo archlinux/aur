@@ -1,15 +1,15 @@
 pkgbase = ttf-alef
-	pkgdesc = A free multi-lingual sans-serif font designed specifically for screens.
-	pkgver = 1
-	pkgrel = 2
-	url = http://alef.hagilda.com/
-	install = ttf-alef.install
+	pkgdesc = A free multi-lingual sans-serif font designed specifically for screens
+	pkgver = 1.001
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Alef
 	arch = any
-	license = SIL Open Font License (OFL)
-	depends = fontconfig
-	depends = xorg-mkfontscale
-	source = http://alef.hagilda.com/Alef.zip
-	md5sums = 968845a7f0d90f496550944639f09d59
+	license = OFL-1.1
+	source = https://github.com/google/fonts/raw/main/ofl/alef/Alef-Regular.ttf
+	source = https://github.com/google/fonts/raw/main/ofl/alef/Alef-Bold.ttf
+	source = https://github.com/google/fonts/raw/main/ofl/alef/OFL.txt
+	sha256sums = a32adcc953ac356906901778460083dc207d4560cb586fd9ea24ec5b186969ed
+	sha256sums = 5dae0d7b2365288d8a34f5fb033d4278be96cef2547862cb93ceb8373e10bcf1
+	sha256sums = c267a00c9476c78a2336d7b372b536885b8b24173a29ed53496f67a742c14961
 
 pkgname = ttf-alef
-
