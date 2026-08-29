@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nog
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust"
 arch=('x86_64')
@@ -24,7 +24,7 @@ backup=('etc/nog/nog.conf' 'etc/nog/tier-pins.toml')
 # v1.0.0 GitHub source tarball.
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('f73ccb9a240913f9f18aed6511a7dcbb70aab7ca2ca6bcf57fbc3a444e27fc70'
+sha256sums=('363a43a78b2d0355c25bc1cb201deec31a06f592b02e3e327cf183d7ecfb33d4'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   gpg --keyserver keys.openpgp.org --recv-keys 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
