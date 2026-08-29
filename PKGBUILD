@@ -4,7 +4,7 @@
 _pkgname="quirc"
 pkgname="$_pkgname-llvm"
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="QR decoder library — built with Clang and LLVM lld"
 url="https://github.com/dlbeer/quirc"
 license=('ISC')
@@ -21,8 +21,14 @@ conflicts=('quirc')
 
 _pkgsrc="$_pkgname-$pkgver"
 _pkgext="tar.gz"
-source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums=('73c12ea33d337ec38fb81218c7674f57dba7ec0570bddd5c7f7a977c0deb64c5')
+source=("$_pkgsrc.$_pkgext"::"$url/archive/v$pkgver.$_pkgext"
+        'use-llvm-binutils.patch')
+sha256sums=('73c12ea33d337ec38fb81218c7674f57dba7ec0570bddd5c7f7a977c0deb64c5'
+            '9d3a2d7ea1e48d108de58df25a7aeaab449d47e7f07ad095a95573ac847565f1')
+
+prepare() {
+  patch -d "$_pkgsrc" -Np1 -i "$srcdir/use-llvm-binutils.patch"
+}
 
 build() {
   cd "$_pkgsrc"

@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+--- a/Makefile
++++ b/Makefile
+@@ -64,8 +64,8 @@ quirc-scanner: $(DEMO_OBJ) $(DEMO_UTIL_OBJ) demo/scanner.o libquirc.a
+ 
+ libquirc.a: $(LIB_OBJ)
+ 	rm -f $@
+-	ar cru $@ $(LIB_OBJ)
+-	ranlib $@
++	$(AR) cru $@ $(LIB_OBJ)
++	$(RANLIB) $@
+ 
+ .PHONY: libquirc.so
+ libquirc.so: libquirc.so.$(LIB_VERSION)

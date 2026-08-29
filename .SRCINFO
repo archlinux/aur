@@ -1,7 +1,7 @@
 pkgbase = quirc-llvm
 	pkgdesc = QR decoder library — built with Clang and LLVM lld
 	pkgver = 1.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/dlbeer/quirc
 	arch = i686
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = quirc-llvm
 	provides = quirc
 	conflicts = quirc
 	source = quirc-1.2.tar.gz::https://github.com/dlbeer/quirc/archive/v1.2.tar.gz
+	source = use-llvm-binutils.patch
 	sha256sums = 73c12ea33d337ec38fb81218c7674f57dba7ec0570bddd5c7f7a977c0deb64c5
+	sha256sums = 9d3a2d7ea1e48d108de58df25a7aeaab449d47e7f07ad095a95573ac847565f1
 
 pkgname = quirc-llvm
