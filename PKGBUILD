@@ -1,13 +1,18 @@
 # Maintainer: LIghtJUNction <support@lmm.best>
 
 pkgname=lmm-api-web-bin
-pkgver=0.1.50
+pkgver=0.1.54
 pkgrel=1
 pkgdesc='LMM API production web frontend (prebuilt)'
 arch=('any')
 url='https://github.com/LIghtJUNction/api.lmm.best'
 license=('AGPL-3.0-only')
-depends=('bash' 'coreutils' 'diffutils' 'findutils' 'gawk' 'grep' 'nginx' 'sed' 'systemd' 'util-linux')
+depends=('nginx')
+if (( $(vercmp "${pkgver}" 0.1.52) >= 0 )); then
+  depends+=('lmm-api-provider')
+else
+  depends+=('bash' 'coreutils' 'diffutils' 'findutils' 'gawk' 'grep' 'sed' 'systemd' 'util-linux')
+fi
 makedepends=('cosign')
 provides=("lmm-api-web=${pkgver}")
 conflicts=('lmm-api-web')
@@ -21,14 +26,12 @@ source=(
   "${_artifact}::${_release_base}/${_artifact}"
   "${_artifact}.sha256::${_release_base}/${_artifact}.sha256"
   "${_artifact}.sigstore.json::${_release_base}/${_artifact}.sigstore.json"
-  "lmm-api-web-activate::${url}/raw/refs/tags/${_release_tag}/packaging/aur/lmm-api-web-bin/lmm-api-web-activate"
 )
 noextract=("${_artifact}")
 sha256sums=(
-  '1f5c3d7e96c1bcb9ddc9b57a13648e258a24bf29f083c60c3ea07f955ac57b42'
-  'af3041163052a18de4f863e29d343d9d88428e2ff2dd7a2fabe9587bfffcdb9e'
-  '31eb2c8d073b5f36f03151e2adb99cc26222b796e90a145c864fe93c9381d39f'
-  '358f5b958f3520757628d803027dafb1b67ec61b565d00bf4cd4f7927347cf33'
+  '11a6a17ad731d4a302e90d7515b870d04f91099dea503832be4cf440250c3bc4'
+  '288d052808dac5471253e9c7933bc3653fdf255106c0bebd1eee384fa96ac37a'
+  'f11be89e0e0b14fa9c44f1664222b192c87f5b18bc138bd5ee7f751ac4e72952'
 )
 
 prepare() {
@@ -44,11 +47,8 @@ prepare() {
       "${url}/.github/workflows/release-web.yml@refs/tags/${_release_tag}" \
     --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' \
     "${_artifact}"
-  install -m0755 lmm-api-web-activate lmm-api-web-activate.local
   bsdtar -xf "${_artifact}"
   [[ -f ${srcdir}/dist/index.html ]]
-  [[ -x ${srcdir}/lmm-api-web-activate.local ]]
-  [[ -x ${srcdir}/frontend-release.sh ]]
   if (( $(vercmp "${pkgver}" 0.1.43) >= 0 )); then
     [[ -f ${srcdir}/lmm-api-web.install && ! -L ${srcdir}/lmm-api-web.install ]] || return 1
   fi
@@ -71,15 +71,16 @@ package() {
   find "${pkgdir}/usr/share/lmm-api-web/frontend-dist" -type d -exec chmod 0755 {} +
   find "${pkgdir}/usr/share/lmm-api-web/frontend-dist" -type f -exec chmod 0644 {} +
 
-  install -Dm0755 "${srcdir}/lmm-api-web-activate.local" \
-    "${pkgdir}/usr/lib/lmm-api-web/lmm-api-web-activate"
-  install -Dm0755 "${srcdir}/frontend-release.sh" \
-    "${pkgdir}/usr/lib/lmm-api-web/frontend-release.sh"
-
   local file
   for file in LICENSE NOTICE THIRD-PARTY-LICENSES.md; do
     install -Dm0644 "${srcdir}/${file}" "${pkgdir}/usr/share/licenses/${pkgname}/${file}"
   done
+  if (( $(vercmp "${pkgver}" 0.1.52) < 0 )); then
+    install -Dm0755 "${srcdir}/lmm-api-web-activate" \
+      "${pkgdir}/usr/lib/lmm-api-web/lmm-api-web-activate"
+    install -Dm0755 "${srcdir}/frontend-release.sh" \
+      "${pkgdir}/usr/lib/lmm-api-web/frontend-release.sh"
+  fi
   install -Dm0644 "${srcdir}/REVISION" "${pkgdir}/usr/share/doc/${pkgname}/REVISION"
   release_asset_sha256=$(sha256sum "${srcdir}/${_artifact}")
   printf '%s\n' "${release_asset_sha256%% *}" >"${srcdir}/RELEASE_ASSET_SHA256"
