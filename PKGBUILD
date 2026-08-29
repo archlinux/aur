@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="A standalone Gentoo-style emerge for Arch Linux - installs from official repos, the AUR, and ABS, scans PKGBUILDs for supply-chain red flags before building, and runs untrusted build steps inside a bwrap sandbox."
 arch=('x86_64')
 url="https://github.com/Undercat037/aura-emerge"
-license=('GPL-3.0')
+license=('GPL-3.0-only')
 depends=('git' 'sudo')
 optdepends=('devtools: for --abs support (pkgctl repo clone)'
   'gnupg: for PGP verification when building from ABS'
