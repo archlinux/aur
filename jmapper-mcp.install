@@ -1,0 +1,19 @@
+post_install() {
+    echo "==> jmapper-mcp needs JMAP credentials in the environment:"
+    echo "      JMAP_SESSION_URL   https://mail.example.com/.well-known/jmap"
+    echo "      JMAP_BEARER_TOKENS one 'user@example.com:password' per line"
+    echo ""
+    echo "==> register with Claude Code:"
+    echo "      claude mcp add -s user jmapper -- /usr/bin/jmapper-mcp"
+    echo ""
+    echo "==> keep credentials out of the client config by wrapping it in a"
+    echo "    script that sources an env file with mode 600."
+}
+
+post_upgrade() {
+    if [ "$(vercmp "$2" 0.4.0)" -lt 0 ]; then
+        echo "==> 0.4.0 adds attachment support (download_attachment, and an"
+        echo "    attachments parameter on send/reply/draft tools)."
+        echo "==> renamed from jmap-mcp; the binary is now /usr/bin/jmapper-mcp"
+    fi
+}

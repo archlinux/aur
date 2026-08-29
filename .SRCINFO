@@ -1,0 +1,16 @@
+pkgbase = jmapper-mcp
+	pkgdesc = mcp server for jmap email - read, send and handle attachments from claude code, cursor and other mcp clients
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/rotkonetworks/jmap-mcp
+	install = jmapper-mcp.install
+	arch = any
+	license = MIT
+	depends = deno
+	provides = jmap-mcp
+	conflicts = jmap-mcp
+	replaces = jmap-mcp
+	source = jmapper-mcp-0.4.0.tar.gz::https://github.com/rotkonetworks/jmap-mcp/archive/v0.4.0.tar.gz
+	sha256sums = 9c859b0fb39faba6b4052d0e419431c17ed92983ae02b0744cf0e7e2f2909811
+
+pkgname = jmapper-mcp
