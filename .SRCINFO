@@ -1,6 +1,6 @@
 pkgbase = chisel-jpillora
 	pkgdesc = Chisel is a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server.
-	pkgver = v1.11.8
+	pkgver = v1.12.0
 	pkgrel = 1
 	url = https://github.com/jpillora/chisel
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = chisel-jpillora
 	provides = chisel-jpillora
 	conflicts = chisel-tunnel
 	conflicts = chisel-tunnel-bin
-	source = README_v1.11.8.md::https://raw.githubusercontent.com/jpillora/chisel/v1.11.8/README.md
-	source = LICENSE_v1.11.8::https://raw.githubusercontent.com/jpillora/chisel/v1.11.8/LICENSE
-	sha512sums = b3a40b7d1d5337ab15ab99af228886b0e1ee4c03da1a743b1d77d507ba298fe759588d753ffb3205783b6efe8f2cfedf862cbd735e6c001f397a469bf65cc7f1
+	source = README_v1.12.0.md::https://raw.githubusercontent.com/jpillora/chisel/v1.12.0/README.md
+	source = LICENSE_v1.12.0::https://raw.githubusercontent.com/jpillora/chisel/v1.12.0/LICENSE
+	sha512sums = ce394470c2da06fd7ac110a1ba0b4ba7606fb2814094da66983dd16cae8a10be2af74dead5f9fc458e41afbe82e74dec64f2665fcbdee1277ab5a111d25dea9e
 	sha512sums = 3578e4ff3bf6bf2cbe3f595ed648dadf6d82046b1b2ab53878aa9d67bc29a5ae9cd0713cc9291508f846f279418452d6cc88021e3bbe5e3f66949b07df6b507e
 
 pkgname = chisel-jpillora
