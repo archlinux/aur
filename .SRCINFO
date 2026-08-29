@@ -1,6 +1,6 @@
 pkgbase = astra-atlas
 	pkgdesc = Fast, lightweight Material Design 3 file manager
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/AstraSuite/Atlas
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = astra-atlas
 	depends = qt6-multimedia
 	optdepends = caelestia-cli: dynamic color scheme synching with Caelestia
 	optdepends = ffmpeg: integrated video and audio manipulation
-	optdepends = gio: CLI URI mounting and volume management
 	optdepends = git: inline repository status and branch tracking
 	optdepends = gvfs: remote network filesystem mounting
 	optdepends = imagemagick: integrated image conversion and manipulation
@@ -31,8 +30,9 @@ pkgbase = astra-atlas
 	optdepends = unzip: archive extraction and compression
 	optdepends = xz: archive extraction and compression
 	optdepends = zip: archive extraction and compression
+	conflicts = astra-atlas-bin
 	conflicts = astra-atlas-git
-	source = https://github.com/AstraSuite/Atlas/releases/download/v1.0.0/atlas-1.0.0.tar.gz
-	sha256sums = 9ccce0c55e432c2a12bc724d5485badedd83a22bbfe5d7b0b6347e1134c81721
+	source = https://github.com/AstraSuite/Atlas/releases/download/v1.2.0/astra-atlas-1.2.0.tar.gz
+	sha256sums = dc178e86b2fa94891452d7faa85a93e5d58a98d6731d083225d724cf6d53485f
 
 pkgname = astra-atlas

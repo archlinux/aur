@@ -1,7 +1,7 @@
 # Maintainer: Dan Griffiths <me at evertiro dot com>
 
 pkgname=astra-atlas
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Fast, lightweight Material Design 3 file manager'
 arch=('x86_64')
@@ -18,7 +18,6 @@ depends=(
 optdepends=(
 	'caelestia-cli: dynamic color scheme synching with Caelestia'
 	'ffmpeg: integrated video and audio manipulation'
-	'gio: CLI URI mounting and volume management'
 	'git: inline repository status and branch tracking'
 	'gvfs: remote network filesystem mounting'
 	'imagemagick: integrated image conversion and manipulation'
@@ -40,22 +39,25 @@ makedepends=(
 	'ninja'
 )
 source=(
-	"https://github.com/AstraSuite/Atlas/releases/download/v${pkgver}/atlas-${pkgver}.tar.gz"
+	"https://github.com/AstraSuite/Atlas/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
-conflicts=('astra-atlas-git')
+conflicts=(
+	'astra-atlas-bin'
+	'astra-atlas-git'
+)
 sha256sums=(
-	'9ccce0c55e432c2a12bc724d5485badedd83a22bbfe5d7b0b6347e1134c81721'
+	'dc178e86b2fa94891452d7faa85a93e5d58a98d6731d083225d724cf6d53485f'
 )
 build()
 {
-	cd "${srcdir}/atlas-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+	cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DATLAS_VERSION=${pkgver}
 	cmake --build build
 }
 package()
 {
-	cd "${srcdir}/atlas-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
