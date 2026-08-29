@@ -1,7 +1,7 @@
 # Maintainer: Roberto Alsina <ralsina@kde.org>
 pkgname=nicolino
-pkgver=0.24.0
-pkgrel=2
+pkgver=0.26.0
+pkgrel=1
 pkgdesc="A fast, modular static site generator written in Crystal"
 arch=("x86_64" "aarch64")
 url="https://github.com/ralsina/nicolino"
@@ -9,7 +9,7 @@ license=("MIT")
 depends=("crystal>=1.21.0" "pandoc" "libvips" "libyaml" "lua54")
 makedepends=("shards" "git")
 source=("$pkgname-$pkgver::git+https://github.com/ralsina/nicolino.git#tag=v$pkgver")
-sha256sums=('0964fe6668992fb9b6d9ce5b7f065cdabf7181fb03a38ce5c5e8e27438e50ecb')
+sha256sums=('921ff9596952be1bc6f0c264482a80cbcfb84c2eb46ae06c2a7bceefaff3d7a8')
 
 prepare() {
   cd "$pkgname-$pkgver"
