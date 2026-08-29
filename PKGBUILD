@@ -37,7 +37,7 @@ package_multi-account-containers-lite() {
   cd "mac/src/web-ext-artifacts"
   /usr/bin/vendor_perl/strip-nondeterminism -t zip *.zip
   install -d "$pkgdir"/usr/lib/mozilla/browser/extensions
-  install -Dvm644 firefox_multi-account_containers-${pkgver}.zip "$pkgdir/usr/lib/mozilla/browser/extensions/multi-account_containers.xpi"
+  install -Dvm644 multi-account_containers-${pkgver}.zip "$pkgdir/usr/lib/mozilla/browser/extensions/multi-account_containers.xpi"
 }
 
 package_firedragon-multi-account-containers-lite() {
