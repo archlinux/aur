@@ -1,7 +1,7 @@
 pkgbase = xstudio-bin
 	pkgdesc = Professional media playback, review, annotation, and comparison application (prebuilt binary)
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NicTanghe/FXiT_xStudio
 	arch = x86_64
 	license = Apache-2.0
@@ -25,9 +25,9 @@ pkgbase = xstudio-bin
 	conflicts = xstudio
 	options = !debug
 	options = !strip
-	source = xstudio-1.3.0-1-x86_64.tar.zst::https://github.com/NicTanghe/FXiT_xStudio/releases/download/xstudio-bin-v1.3.0-1/xstudio-1.3.0-1-x86_64.tar.zst
+	source = xstudio-1.3.0-2-x86_64.tar.zst::https://github.com/NicTanghe/FXiT_xStudio/releases/download/xstudio-bin-v1.3.0-2/xstudio-1.3.0-2-x86_64.tar.zst
 	source = xstudio.desktop
-	sha256sums = a4ac07a6190c1b781daafc37bcc4a9bdad2243dc2983cd0b3d9fe9aa7652f981
+	sha256sums = 91833fbae9c2ffdf62f86365f2c9eebd3a274dab4cac11d8320bdbdef4f0588e
 	sha256sums = 6fddbb74c03628d95b24db3cf14f2140ce10a6924ad2cc2cacde3310410239b8
 
 pkgname = xstudio-bin

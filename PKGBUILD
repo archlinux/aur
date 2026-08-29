@@ -2,7 +2,7 @@
 
 pkgname=xstudio-bin
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Professional media playback, review, annotation, and comparison application (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/NicTanghe/FXiT_xStudio'
@@ -33,7 +33,7 @@ source=(
     'xstudio.desktop'
 )
 sha256sums=(
-    'a4ac07a6190c1b781daafc37bcc4a9bdad2243dc2983cd0b3d9fe9aa7652f981'
+    '91833fbae9c2ffdf62f86365f2c9eebd3a274dab4cac11d8320bdbdef4f0588e'
     '6fddbb74c03628d95b24db3cf14f2140ce10a6924ad2cc2cacde3310410239b8'
 )
 
