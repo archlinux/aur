@@ -1,0 +1,17 @@
+pkgbase = pkger-bin
+	pkgdesc = Package manager for Arch Linux and Arch-based distributions
+	pkgver = 1.2.2
+	pkgrel = 1
+	url = https://github.com/almezali/pkger-g
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	optdepends = yay: AUR package support
+	optdepends = paru: AUR package support
+	optdepends = flatpak: Flatpak package support
+	provides = pkger
+	conflicts = pkger
+	source = pkger.tar.xz::https://gitlab.com/package-installer-gui/pkger/-/raw/main/pkger.tar.xz
+	sha256sums = a03d35ad7299a36d7c58dc7b4ac5807a10ddd0f2731f929c19e4d05afcdac45c
+
+pkgname = pkger-bin
