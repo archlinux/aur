@@ -2,9 +2,9 @@
 
 _pkgbase=tkginstaller
 pkgname=${_pkgbase}-git
-pkgver=0.55.9.r392.g00f8725
+pkgver=0.60.0.r393.g65132c3
 pkgrel=1
-_commit=00f87259acd7e567cd617b11672becbe68192593
+_commit=65132c3b4785114193fa606e54733d6940aa12e5
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
 pkgdesc="bash wrapper to build & install Frogging-Family stuff with ease"
@@ -28,7 +28,7 @@ optdepends=(
 )
 install=tkginstaller.install
 source=("${_pkgbase}-${pkgver}::https://raw.githubusercontent.com/damachine/${_pkgbase}/${_commit}/${_pkgbase}")
-sha256sums=('e7b384e63a6fa2ce56135af477d8893ed762fb5edb646fa0ea4a32e42e2c7596')
+sha256sums=('b202fe9dbc390c09c667c445683d9778381447593a1087edf6ad0d960e65f7a1')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgbase}-${pkgver}" "${pkgdir}/usr/bin/${_pkgbase}"
