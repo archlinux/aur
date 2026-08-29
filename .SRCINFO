@@ -1,6 +1,6 @@
 pkgbase = mianling-apply-bin
 	pkgdesc = 面灵网申 — 校招网申助手：一处填好档案，打开投递页自动填好重复字段，最后一步由你点
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://www.mianlingai.com/job-apply
 	install = mianling-apply-bin.install
@@ -10,9 +10,10 @@ pkgbase = mianling-apply-bin
 	depends = gtk3
 	provides = mianling-apply
 	conflicts = mianling-apply
-	noextract = mianling-apply-0.1.1-amd64.deb
+	noextract = mianling-apply-0.1.2-amd64.deb
 	options = !strip
-	source = mianling-apply-0.1.1-amd64.deb::https://storage2.maoertech.cn/job-apply/mianling-apply-0.1.1-amd64.deb
-	sha256sums = d014bedd759f1e28d78de5f6b9ebe35050ccff477a2b402b0741d1d024e7c51e
+	options = !debug
+	source = mianling-apply-0.1.2-amd64.deb::https://storage2.maoertech.cn/job-apply/mianling-apply-0.1.2-amd64.deb
+	sha256sums = dce2ba53de672a3c719574124eb06fa6e691b21df8ff19f80c77d87bf9ba1ba0
 
 pkgname = mianling-apply-bin
