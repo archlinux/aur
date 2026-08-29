@@ -1,0 +1,14 @@
+pkgbase = handle-hcc
+	pkgdesc = Handle.Net Client Library - C Version
+	pkgver = 5.3.3
+	pkgrel = 1
+	url = https://www.handle.net/
+	arch = any
+	license = custom:HNR-HCLC-5-License
+	depends = glibc
+	depends = openssl-1.0
+	options = !debug
+	source = https://www.handle.net/hnr-source/hcc5.tar.gz
+	sha256sums = d103cddeb8bb1587e510c456407fc1ab88913d90cdae97b63a487cff036b7f12
+
+pkgname = handle-hcc
