@@ -1,6 +1,6 @@
 pkgbase = caelestia-shell
 	pkgdesc = The desktop shell for the Caelestia dotfiles
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/shell
 	arch = x86_64
@@ -28,6 +28,7 @@ pkgbase = caelestia-shell
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = qt6-imageformats
+	depends = qt6-m3shapes-git
 	depends = swappy
 	depends = fish
 	depends = bash
@@ -36,7 +37,7 @@ pkgbase = caelestia-shell
 	optdepends = howdy-next: face unlock for the lock screen
 	provides = caelestia-shell
 	conflicts = caelestia-shell-git
-	source = https://github.com/caelestia-dots/shell/releases/download/v2.3.0/caelestia-shell-v2.3.0.tar.gz
-	sha256sums = 1233e7317c689d801ec095b5fd7290502e5f6ea214ef14b02375d35b5542e78e
+	source = https://github.com/caelestia-dots/shell/releases/download/v2.4.0/caelestia-shell-v2.4.0.tar.gz
+	sha256sums = af7491727ff30699698150f9f7c186089ccd171a509def332bcba1de1cb31771
 
 pkgname = caelestia-shell
