@@ -10,4 +10,9 @@ fi
 # Launch
 APP_DIR=/usr/lib/notion-calendar
 cd "$APP_DIR" || exit 1
-exec electron39 "$APP_DIR/app.asar" --no-sandbox $NOTION_CALENDAR_USER_FLAGS "$@"
+# electron41 is used for correct Wayland/HiDPI (3840x2160@scale1 + GDK_SCALE=2).
+# electron39 blanks on Nvidia+Wayland (verified via grim captures).
+# Keep wrapper without hardcoded --no-sandbox or --ozone flags so user can override
+# via notion-calendar-flags.conf if needed. ELECTRON_OZONE_PLATFORM_HINT=wayland
+# (set by Omarchy) gives native Wayland + correct GDK_SCALE=2.
+exec electron41 "$APP_DIR/app.asar" $NOTION_CALENDAR_USER_FLAGS "$@"

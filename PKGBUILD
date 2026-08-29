@@ -3,14 +3,14 @@
 
 pkgname=notion-calendar-electron-fixed
 pkgver=1.133.0
-pkgrel=3
-pkgdesc="Notion Calendar Desktop Client - your calendar, tasks, and schedule in one place (official installer, electron39)"
+pkgrel=5
+pkgdesc="Notion Calendar Desktop Client - your calendar, tasks, and schedule in one place (official installer, electron41)"
 arch=(x86_64)
 url=https://www.notion.so/product/calendar
 license=(custom)
 depends=(
 	bash
-	electron39
+	electron41
 	gcc-libs
 	glibc
 	hicolor-icon-theme
