@@ -1,5 +1,5 @@
 pkgname=moomoo-opend-bin
-pkgver=10.6.6608
+pkgver=10.10.7008
 pkgrel=1
 pkgdesc="Moomoo OpenD command-line daemon and GUI"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('moomoo-opend' 'futu-opend')
 conflicts=('moomoo-opend' 'futu-opend')
 options=('!debug' '!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://softwaredownload.futustatic.com/moomoo_OpenD_${pkgver}_Ubuntu18.04.tar.gz")
-sha256sums=('73116d7ba5adaf4e3d3fb6aaefb66466d2604ad73260cf75accc1d349e169dc8')
+sha256sums=('72eaa6e47b5cb8905306427b5e3679d591408243492e3e7acbc3a7d46f09a0aa')
 
 prepare() {
   local base="moomoo_OpenD_${pkgver}_Ubuntu18.04"

@@ -1,6 +1,6 @@
 pkgbase = moomoo-opend-bin
 	pkgdesc = Moomoo OpenD command-line daemon and GUI
-	pkgver = 10.6.6608
+	pkgver = 10.10.7008
 	pkgrel = 1
 	url = https://openapi.moomoo.com/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = moomoo-opend-bin
 	conflicts = futu-opend
 	options = !debug
 	options = !strip
-	source = moomoo-opend-bin-10.6.6608.tar.gz::https://softwaredownload.futustatic.com/moomoo_OpenD_10.6.6608_Ubuntu18.04.tar.gz
-	sha256sums = 73116d7ba5adaf4e3d3fb6aaefb66466d2604ad73260cf75accc1d349e169dc8
+	source = moomoo-opend-bin-10.10.7008.tar.gz::https://softwaredownload.futustatic.com/moomoo_OpenD_10.10.7008_Ubuntu18.04.tar.gz
+	sha256sums = 72eaa6e47b5cb8905306427b5e3679d591408243492e3e7acbc3a7d46f09a0aa
 
 pkgname = moomoo-opend-bin
