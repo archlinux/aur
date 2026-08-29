@@ -1,7 +1,7 @@
 # Maintainer: Roland Plüss <roland@dragondreams.ch>
 pkgname=('democap')
 pkgbase=democap
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc="Drag[en]gine motion capture using VR hardware"
 arch=('any')
@@ -12,12 +12,12 @@ depends=('dragengine'
          'xdg-utils')
 makedepends=('git'
              'scons')
-_tag='v1.8'
-_delgaVersion='1.8'
+_tag="v${pkgver}"
+_delgaVersion="${pkgver}"
 source=("${pkgname}-${pkgver}::git+https://github.com/LordOfDragons/democap.git#tag=$_tag"
         "https://github.com/LordOfDragons/democap/releases/download/v$_delgaVersion/DEMoCap-$_delgaVersion.delga")
-sha256sums=('2ca9ed75757fabc29c238c1615c4d55cc5b2b1df8a373b0cfce73de60583ef93'
-            '444457b4f1b2d059cd8795e0d55f74479569c401e2ed410822d561f352dde239')
+sha256sums=('ea3f847fd675d6046b8d8ff1d7f3c9e648eee271bd28bb9c434f70fa32cbf5b4'
+            '44f7068d0c47fd405414d30d8bc6751211c4f271a97505c285b4d6b2ca537e88')
 # Roland Plüss (roland@dragondreams.ch)
 # DragonDreams Build Bot (buildbot@dragondreams.ch)
 validpgpkeys=('E0ECD22F5F70777588450034446C9C667CFC1DF3'
