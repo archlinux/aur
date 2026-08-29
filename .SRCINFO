@@ -1,6 +1,6 @@
 pkgbase = wallpiper-kde
 	pkgdesc = KDE Plasma 6 portal for wallpiper
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/shdwmtr/wallpiper
 	install = wallpiper-kde.install
@@ -20,7 +20,7 @@ pkgbase = wallpiper-kde
 	depends = mesa
 	depends = libx11
 	depends = libxrandr
-	source = wallpiper-kde::git+https://github.com/shdwmtr/wallpiper.git#tag=v2.0.0
+	source = wallpiper-kde::git+https://github.com/shdwmtr/wallpiper.git#tag=v2.0.1
 	sha256sums = SKIP
 
 pkgname = wallpiper-kde
