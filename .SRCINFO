@@ -16,6 +16,7 @@ pkgbase = aria2tui
 	depends = python-requests
 	depends = python-tabulate
 	depends = python-numpy
+	depends = python-plotille
 	depends = listpick
 	provides = aria2tui
 	conflicts = python-aria2tui
