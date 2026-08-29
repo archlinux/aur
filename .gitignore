@@ -1,0 +1,7 @@
+*.tar.zst
+*.pkg.tar.*
+installlog*.txt
+*-namcap.log
+*-package.log
+pkg/
+src/
