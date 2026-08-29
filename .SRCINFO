@@ -1,7 +1,7 @@
 pkgbase = cnmplayer
 	pkgdesc = A terminal-based Netease cloud music player with spectrum visualizer, lyrics support.
-	pkgver = 0.5.1
-	pkgrel = 2
+	pkgver = 0.5.2
+	pkgrel = 1
 	url = https://github.com/professor-lee/CNMPlayer
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = cnmplayer
 	optdepends = ttf-nerd-fonts-symbols: For icons and spectrum visualizer
 	optdepends = ttf-jetbrains-mono-nerd: Recommended monospace font
 	options = !lto
-	source = https://github.com/professor-lee/CNMPlayer/archive/refs/tags/v0.5.1.tar.gz
+	source = https://github.com/professor-lee/CNMPlayer/archive/refs/tags/v0.5.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = cnmplayer
