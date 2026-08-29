@@ -1,7 +1,7 @@
 # Maintainer: Yaroslav Krytsun <slavko7 at gmail dot com>
 pkgname=monokular
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Export PDF pages as images with preview - one thing, done well"
 arch=('any')
 url="https://github.com/dyedfox/monokular"
@@ -11,9 +11,17 @@ depends=(
     'python-pyqt6'
     'python-pymupdf'
 )
-makedepends=('git')
+makedepends=('git' 'qt6-tools')
+optdepends=('qt6-imageformats: WEBP and TIFF export')
 source=("$pkgname-$pkgver::git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    for ts in translations/*.ts; do
+        lrelease6 "$ts"
+    done
+}
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -21,6 +29,12 @@ package() {
     # Install app files
     install -dm755 "$pkgdir/usr/lib/$pkgname"
     cp -r app/ main.py "$pkgdir/usr/lib/$pkgname/"
+
+    # Install compiled translations
+    install -dm755 "$pkgdir/usr/lib/$pkgname/translations"
+    for qm in translations/*.qm; do
+        [ -f "$qm" ] && install -m644 "$qm" "$pkgdir/usr/lib/$pkgname/translations/"
+    done
 
     # Install icon
     install -Dm644 assets/icon.svg \
