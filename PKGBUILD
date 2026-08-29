@@ -1,7 +1,7 @@
-# Maintainer: Aspen <169401290+Aspenini@users.noreply.github.com>
+# Maintainer: Aspenini <aspeninifeltner@gmail.com>
 
 pkgname=aurpush
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="CLI for maintaining and publishing Arch Linux packages to the AUR"
 arch=('x86_64')
