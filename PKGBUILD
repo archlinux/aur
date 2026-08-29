@@ -16,7 +16,7 @@ source_x86_64=(
     "$_appimg::https://github.com/tiouoo/Portal/releases/latest/download/Portal.linux.x64.AppImage"
     "portal.png::https://portal.tiouo.cc/portal-logo.png"
 )
-sha256sums_x86_64=('38001c4eb179c8785954043393ef941013abe417603ed066419da25470f9fe1a' 'SKIP')
+sha256sums_x86_64=('4d96e6895f962252ed6cdad0524de002011aa65e3be6df03cf1033102c5d91e8' 'SKIP')
 noextract=("$_appimg")
 
 package() {
