@@ -1,0 +1,16 @@
+post_install() {
+    cat <<'EOF'
+OpenWrite installed to /opt/openwrite.
+
+Commands:
+  openwrite-launcher   recommended entry — bootstraps an isolated Python
+                       runtime in ~/.openwrite-runtime/ on first run
+                       (installs its Python dependencies automatically),
+                       then opens the Studio web UI.
+  openwrite            direct CLI (requires the runtime deps; use the
+                       launcher first if they are missing).
+
+Studio binds to 127.0.0.1 by default. Configure your model/API key in the
+Studio UI on first launch.
+EOF
+}

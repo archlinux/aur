@@ -1,0 +1,14 @@
+pkgbase = openwrite
+	pkgdesc = OpenWrite 长篇小说创作引擎 — AI 辅助小说创作，对话式引导、四级大纲、风格合成与 Studio 工作台
+	pkgver = 5.8.0
+	pkgrel = 1
+	url = https://github.com/LiPu-jpg/Openwrite
+	install = openwrite.install
+	arch = any
+	license = Apache-2.0
+	depends = python>=3.10
+	optdepends = git: launcher 源码自动更新
+	source = openwrite-5.8.0.tar.gz::https://github.com/LiPu-jpg/Openwrite/archive/20500493c10a211fdf2560e69558da1c39eab3b4.tar.gz
+	sha256sums = aef5b57bd8f3795fef422dd14bdac906a58a5909c5cc8e9ac168514502bafbc3
+
+pkgname = openwrite
