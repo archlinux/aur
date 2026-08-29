@@ -1,17 +1,19 @@
-# Maintainer: Michal Babik <michalb1981@o2.pl>
+# Maintainer: Michal Babik <michal.babik@protonmail.com>
 
 pkgname=sfrename
-pkgver=1.2.9
+pkgver=1.2.10
 pkgrel=1
 pkgdesc="Program for renaming files and directories"
 arch=('i686' 'x86_64')
 url="https://www.nongnu.org/small-file-renamer/"
 license=('GPL3')
 depends=('gtk3>=3.22.0')
-source=("https://download.savannah.nongnu.org/releases/small-file-renamer/$pkgname-$pkgver.tar.gz")
-md5sums=('afd99b1438142b5b4a78213e92d32b63')
+makedepends=('autoconf' 'automake')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/mi-bb/sfrename/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('608d18b92d7a8edb3094a1a875dd929a24529a111be9e4349d4ff41f68305104')
 build() {
         cd "$srcdir/$pkgname-$pkgver"
+        ./autogen.sh
         ./configure --prefix=/usr
         make
 }
