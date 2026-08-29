@@ -1,0 +1,21 @@
+print_fastsapp_post_install() {
+  cat <<'EOF2'
+fastsapp setup:
+
+  Launch it and, on the phone, open WhatsApp > Linked devices > Link a
+  device, then point the camera at the code (or link with your phone
+  number instead). The chats sync to a local archive on the first link.
+
+  Colour emoji come from noto-fonts-emoji; GIFs play through ffmpeg.
+
+Docs: https://github.com/crmne/fastsapp
+EOF2
+}
+
+post_install() {
+  print_fastsapp_post_install
+}
+
+post_upgrade() {
+  print_fastsapp_post_install
+}

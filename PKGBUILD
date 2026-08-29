@@ -1,0 +1,68 @@
+# Maintainer: Carmine Paolino <carmine@paolino.me>
+pkgname=fastsapp-git
+pkgver=0.1.0.r0.58782a1
+pkgrel=1
+pkgdesc="Fast native WhatsApp client built with Rust and egui"
+arch=('x86_64' 'aarch64')
+url="https://github.com/crmne/fastsapp"
+license=('MIT')
+install="${pkgname}.install"
+depends=('libglvnd' 'libxkbcommon' 'wayland' 'libx11')
+makedepends=('git' 'cargo')
+optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
+            'noto-fonts-emoji: colour emoji in messages and reactions'
+            'ffmpeg: playing GIFs'
+            'xdg-desktop-portal: the file picker for attachments')
+provides=('fastsapp')
+conflicts=('fastsapp')
+# !lto because ring compiles its own C and Arch's default CFLAGS put LTO
+# objects in the archive, which lld then cannot resolve: the link fails on
+# undefined ring_core_* symbols. The stable package is prebuilt and never
+# meets this.
+options=('!debug' '!lto')
+source=("${pkgname}::git+https://github.com/crmne/fastsapp.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\-/.r/;s/\-g/./'
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  export RUSTUP_TOOLCHAIN=stable
+  # whatsapp-rust is a git dependency pinned to a commit; the lockfile
+  # names it, so this fetches it along with everything else.
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  # Generated bindings inside glutin carry the path they were built at, which
+  # ends up in the binary and makes makepkg warn about a reference to $srcdir.
+  # Appended rather than assigned, so the distro's own flags survive.
+  export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/"
+  cargo build --frozen --release
+}
+
+check() {
+  cd "${srcdir}/${pkgname}"
+  export RUSTUP_TOOLCHAIN=stable
+  # The demo feature carries the headless layout test of every screen,
+  # which needs no display and talks to nothing.
+  cargo test --frozen --features demo
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+
+  install -Dm755 "target/release/fastsapp" "${pkgdir}/usr/bin/fastsapp"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "packaging/applications/fastsapp.desktop" \
+    "${pkgdir}/usr/share/applications/fastsapp.desktop"
+  install -Dm644 "packaging/icons/fastsapp.svg" \
+    "${pkgdir}/usr/share/icons/hicolor/scalable/apps/fastsapp.svg"
+}
