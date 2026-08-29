@@ -1,6 +1,6 @@
 pkgbase = lib32-lsfg-vk-git
 	pkgdesc = Lossless Scaling Frame Generation on Linux
-	pkgver = 2.0.0.rc1.r0.gf715073
+	pkgver = 2.0.0.rc1.r5.gfcd3e4b
 	pkgrel = 1
 	url = https://lsfg-vk.dev
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = lib32-lsfg-vk-git
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
-	depends = gcc-libs
-	depends = vulkan-icd-loader
+	depends = lib32-gcc-libs
+	depends = lib32-vulkan-icd-loader
 	depends = lsfg-vk-git
-	provides = lib32-lsfg-vk=2.0.0.rc1.r0.gf715073
+	provides = lib32-lsfg-vk=2.0.0.rc1.r5.gfcd3e4b
 	conflicts = lib32-lsfg-vk
 	source = git+https://git.lsfg-vk.dev/lsfg-vk.git#branch=master
 	sha256sums = SKIP

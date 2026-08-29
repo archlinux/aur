@@ -2,15 +2,15 @@
 
 pkgname=lib32-lsfg-vk-git
 _pkgname=lsfg-vk
-pkgver=2.0.0.rc1.r0.gf715073
+pkgver=2.0.0.rc1.r5.gfcd3e4b
 pkgrel=1
 pkgdesc="Lossless Scaling Frame Generation on Linux"
 arch=('i686' 'x86_64')
 url="https://lsfg-vk.dev"
 license=('CC-BY-NC-ND-4.0')
 depends=(
-	'gcc-libs'
-	'vulkan-icd-loader'
+	'lib32-gcc-libs'
+	'lib32-vulkan-icd-loader'
 	'lsfg-vk-git'
 )
 makedepends=(
