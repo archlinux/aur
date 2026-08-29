@@ -2,18 +2,17 @@
 # Contributors: George Wilder (georgew) <georgew at tutamail dot com>
 
 pkgname="pokemmo"
-pkgver=1.4.8
-pkgrel=2
+pkgver=4.0
+pkgrel=1
 pkgdesc="MMO based on the Pokémon Universe"
-arch=('x86_64' 'i686' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="https://pokemmo.eu"
 license=('custom')
-depends=('java-runtime' 'wget' 'openssl')
+depends=('wget' 'unzip')
 optdepends=('zenity: Information/Error message UI')
-install="${pkgname}.install"
 
 source=('pokemmo-launcher' 'pokemmo.desktop' 'pokemmo-launcher.png')
-sha256sums=('3d072f4f6f06d3b7d99ef1ee7a413288b7db5cf5c82aac77687617e643cbb955'
+sha256sums=('260acc2f34ef5b44fb15495892d075897b28368d0f0325cb254a035e60b709d9'
             '5be349827e2798bce275c16a554ab32f5aa3cf62859200effa5328c26d1233dc'
             '50d0c73eb7e23dcec4c36304cb9008a448e8127628eadb1166c3343f6fdd5ee3')
 

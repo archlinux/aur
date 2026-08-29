@@ -40,34 +40,6 @@ done <"$PKMOCONFIGDIR/pokemmo"
 
 }
 
-getJavaOpts() {
-
-JAVA_OPTS=()
-
-case "$1" in
-    client)
-        if [[ ! $SKIPJAVARAMOPTS ]]; then
-            JAVA_OPTS=(-Xms128M --add-opens java.base/java.lang=ALL-UNNAMED -Dfile.encoding=UTF-8)
-
-            if [ -f "$POKEMMO/PokeMMO.l4j.ini" ]; then
-                JAVA_OPTS+=($(grep -oE "\-Xmx[0-9]{1,4}(M|G)" "$POKEMMO/PokeMMO.l4j.ini" || echo "-Xmx256M"))
-            else
-                JAVA_OPTS+=(-Xmx256M)
-            fi
-        fi
-
-        [[ $PKMO_CREATE_DEBUGS ]] && JAVA_OPTS+=(-XX:+UnlockDiagnosticVMOptions -XX:+LogVMOutput -XX:LogFile=client_jvm.log)
-        [[ $LIBGL_ALWAYS_SOFTWARE ]] && JAVA_OPTS+=(-Dorg.lwjgl.opengl.Display.allowSoftwareOpenGL=true)
-    ;;
-    updater)
-        [[ ! $SKIPJAVARAMOPTS ]] && JAVA_OPTS=(-Xms64M -Xmx128M)
-        [[ $PKMO_CREATE_DEBUGS ]] && JAVA_OPTS+=(-XX:+UnlockDiagnosticVMOptions -XX:+LogVMOutput -XX:LogFile=updater_jvm.log)
-    ;;
-esac
-
-echo "Java options were ${JAVA_OPTS[*]}"
-}
-
 showMessage() {
   if [ "$(command -v zenity)" ]; then
     case "$1" in
@@ -90,55 +62,86 @@ showMessage() {
   fi
 }
 
+failDownload() {
+  rm -f "$CLIENT_ZIP"
+
+  if [[ $PKMO_FIRST_INSTALL ]]; then
+    rm -rf "$POKEMMO"
+
+    if [[ $PKMO_CREATED_CONFIG_DIR ]]; then
+      rm -rf "$PKMOCONFIGDIR"
+    fi
+
+    showMessage --error "Failed to download PokeMMO.\n\nThe incomplete first-time installation was removed. Please launch PokeMMO again to retry.\n\n$1"
+  fi
+
+  showMessage --error "Failed to download PokeMMO:\n\n$1"
+}
+
 downloadPokemmo() {
 
-  [[ $(which openssl) ]] || showMessage --error "The openssl binary was not found. Please check your PATH is set correctly and restart the program."
-  
-  unset DL_MIRRORS PKMO_PUBKEY MIRROR_STATUS VALIDATION_STATUS
-  
-  DL_MIRRORS=(https://dl.pokemmo.eu https://files.pokemmo.eu https://dl.pokemmo.download https://dl.pokemmo.com)
-  # This keyfile is provided by the PokeMMO developers. Do not alter/remove it, it is used to confirm the source of the downloaded files!
-  PKMO_PUBKEY="-----BEGIN PUBLIC KEY-----\nMIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAyfYQx1kSfIVGdGzcHmVV\nP7cbyLsMXGdLhwMnx2AD1MYgU170iFN5gHT+U248rH10L6D1UMlZK1LfCsbPkdQO\nir3C+8Do212NONyNm/7+ZGeIwbpy+jxEQH8Jfn4JYY7+Sn4qg249yW7DSY+XKvTO\ncphoXRNzSQp8u6IVj03mIw7zDA0SqMMFtnCXVP3NRmtjK1SuVVFLltFctz1Pp7f9\nuqgqnFlgD2l8/THnddTRM5IR6O9pbOXu7My0+Jli6+4zJgw5gQvgivYPCeess9gW\nRqpw66VTpMJERJYA6AIbVierAbjGmtRETRsHUOGAgo54G0oxtXXEaTWXF6n6mdgS\nE2Ra8q7P23stsSWU3mDNQjXO0XOhtAKQCZfvICxmsH3ed5hm8bEC5yga8z8m0vyZ\n71fWzP4Q3g6B+o6oDsMX1nWbV2GEHci/6nwFofgOJkLINaZfUTivAIRuxECVwjTT\na7ruRNgFlA2ciGUIIke2Ev2cYzyBA4LLARky2FZiEM0VAgMBAAE=\n-----END PUBLIC KEY-----"
+  unset CLIENT_URL CLIENT_ZIP CLIENT_SIZE DOWNLOAD_STATUS
+  CLIENT_URL="https://dl.pokemmo.com/PokeMMO-Client.zip"
+  CLIENT_ZIP="$POKEMMO/PokeMMO-Client.zip"
 
-  for (( i=0; i<"${#DL_MIRRORS[@]}"; i++ )); do
-    echo "Trying mirror ${DL_MIRRORS[$i]}"
+  [[ $(command -v wget) ]] || failDownload "The wget binary was not found. Please check your PATH is set correctly and restart the program."
+  [[ $(command -v unzip) ]] || failDownload "The unzip binary was not found. Please check your PATH is set correctly and restart the program."
 
-    [[ -f "$POKEMMO/pokemmo_updater.jar" || -f "$POKEMMO/pokemmo_updater.sig256" ]] && rm -f "$POKEMMO/pokemmo_updater.jar" "$POKEMMO/pokemmo_updater.sig256"
-    MIRROR_STATUS=$( ( cd "$POKEMMO" && wget --https-only -U pokemmo_debian_setup --retry-connrefused --tries=3 --timeout=5 --waitretry=1 "${DL_MIRRORS[$i]}"/download/updater/pokemmo_updater.jar "${DL_MIRRORS[$i]}"/download/updater/pokemmo_updater.sig256 ) 2>&1)
-    r=$?
+  if [[ $(command -v zenity) ]]; then
+    DOWNLOAD_LOG=$(mktemp)
+    DOWNLOAD_RC=$(mktemp)
+    CLIENT_SIZE=$(wget --spider --server-response "$CLIENT_URL" 2>&1 | while read -r line; do
+      if [[ $line =~ Content-Length:[[:space:]]*([0-9]+) ]]; then
+        echo "${BASH_REMATCH[1]}"
+        break
+      fi
+    done)
 
-    if [[ "$r" == "0" ]]; then
-        echo "Got updater from ${DL_MIRRORS[$i]}"
+    (
+      wget --https-only --retry-connrefused --tries=3 --timeout=15 --waitretry=1 -q -O "$CLIENT_ZIP" "$CLIENT_URL" > "$DOWNLOAD_LOG" 2>&1 &
+      DOWNLOAD_PID=$!
 
-        # `openssl` requires a filesystem to be inplace in order to read the checked key, but we don't really want to hit the disk due to security concerns
-        # so, instead, we'll abuse procfs a bit
-        exec {pkmo_fd}<<< "$(printf -- "$PKMO_PUBKEY")"
-        VALIDATION_STATUS=$(openssl dgst -sha256 -verify /proc/$$/fd/$pkmo_fd -signature "$POKEMMO"/pokemmo_updater.sig256 "$POKEMMO"/pokemmo_updater.jar)
-        exec {pkmo_fd}>&-
-
-        # Older versions of openssl could throw ambiguous exit codes depending on the type of failure (e.g. if files were missing, returned 0).
-        # This doesn't seem to be an issue now, but we'll prefer to parse the stdout instead of the exit codes for now
-        if [[ "$VALIDATION_STATUS" = "Verified OK" ]]; then
-            echo "Updater Verified OK!"
-            break
+      while kill -0 "$DOWNLOAD_PID" 2>/dev/null; do
+        if [[ $CLIENT_SIZE =~ ^[0-9]+$ && $CLIENT_SIZE -gt 0 ]]; then
+          DOWNLOADED_SIZE=$(stat -c%s "$CLIENT_ZIP" 2>/dev/null || printf 0)
+          DOWNLOAD_PERCENT=$(( DOWNLOADED_SIZE * 100 / CLIENT_SIZE ))
+          [[ $DOWNLOAD_PERCENT -gt 100 ]] && DOWNLOAD_PERCENT=100
+          echo "# Downloading PokeMMO client... ${DOWNLOAD_PERCENT}%"
+          echo "$DOWNLOAD_PERCENT"
         else
-            echo "WARNING: Downloaded jar failed validation! Jumping to next mirror"
+          echo "# Downloading PokeMMO client..."
         fi
-    elif [[ "$r" != "0" && "${DL_MIRRORS[$i]}" = "${DL_MIRRORS[-1]}" ]]; then
-        rm -f "$POKEMMO/pokemmo_updater.jar" "$POKEMMO/pokemmo_updater.sig256"
-        showMessage --error "Failed to download the updater:\n\n$MIRROR_STATUS"
-    else
-        echo "WARNING: Failed to download updater from mirror ${DL_MIRRORS[$i]}. Jumping to next.."
-    fi
-  done
+        sleep 0.5
+      done
 
-  rm -f "$PKMOCONFIGDIR/pokemmo" "$POKEMMO/pokemmo_updater.sig256"
+      wait "$DOWNLOAD_PID"
+      DOWNLOAD_EXIT=$?
+      echo "$DOWNLOAD_EXIT" > "$DOWNLOAD_RC"
+      if [[ $DOWNLOAD_EXIT == 0 ]]; then
+        echo "# Download complete."
+        echo 100
+      fi
+    ) | zenity --progress --title="PokeMMO" --text="Downloading PokeMMO client..." --percentage=0 --auto-close --icon=/usr/share/pixmaps/pokemmo-launcher.png --window-icon=/usr/share/pixmaps/pokemmo-launcher.png
+
+    if [[ ! -s "$DOWNLOAD_RC" || $(<"$DOWNLOAD_RC") != 0 ]]; then
+      DOWNLOAD_STATUS=$(<"$DOWNLOAD_LOG")
+      rm -f "$DOWNLOAD_LOG" "$DOWNLOAD_RC"
+      failDownload "$DOWNLOAD_STATUS"
+    fi
+
+    rm -f "$DOWNLOAD_LOG" "$DOWNLOAD_RC"
+  else
+    DOWNLOAD_STATUS=$(wget --https-only --retry-connrefused --tries=3 --timeout=15 --waitretry=1 -O "$CLIENT_ZIP" "$CLIENT_URL" 2>&1)
+    [[ $? == 0 ]] || failDownload "$DOWNLOAD_STATUS"
+  fi
+
+  rm -f "$PKMOCONFIGDIR/pokemmo"
   find "$POKEMMO" -type f -name "*.TEMPORARY" -exec rm -f {} +
 
-  # Updater exits with 1 on successful update
-  getJavaOpts "updater"
-  (cd "$POKEMMO" && java ${JAVA_OPTS[*]} -cp ./pokemmo_updater.jar com.pokeemu.updater.ClientUpdater -install -quick) && exit 1 || echo "installed=1" > "$PKMOCONFIGDIR/pokemmo"
-  rm -f "$POKEMMO/pokemmo_updater.jar"
+  (cd "$POKEMMO" && unzip -oq "$CLIENT_ZIP" -x "roms/*" "config/*" "log/*") || failDownload "Failed to extract PokeMMO."
+  rm -f "$CLIENT_ZIP"
+  chmod +x "$POKEMMO/PokeMMO.sh" "$POKEMMO/bin/linux/x64/PokeMMO" "$POKEMMO/bin/linux/arm64/PokeMMO" 2>/dev/null || true
+  echo "installed=1" > "$PKMOCONFIGDIR/pokemmo"
   
   # Post-update tasks
   [[ ! -d "$POKEMMO/screenshots" ]] && addScreenshotsDir
@@ -151,13 +154,14 @@ if [ ! -d "$POKEMMO" ]; then
     showMessage --error "(Error 3) Could not install to $POKEMMO\n\n$POKEMMO already exists,\nbut is not a directory.\n\nMove or delete this file and try again."
   else
     mkdir -p "$POKEMMO"
+    PKMO_FIRST_INSTALL=1
     showMessage --info "PokeMMO is being installed to $POKEMMO"
     downloadPokemmo
     return
   fi
 fi
 
-if [[ ! -r "$POKEMMO" || ! -w "$POKEMMO" || ! -x "$POKEMMO" || ! "$PKMO_IS_INSTALLED" || ! -f "$POKEMMO/PokeMMO.exe" || ! -d "$POKEMMO/data" ]]; then
+if [[ ! -r "$POKEMMO" || ! -w "$POKEMMO" || ! -x "$POKEMMO" || ! "$PKMO_IS_INSTALLED" || ! -f "$POKEMMO/PokeMMO.sh" || ! -d "$POKEMMO/data" ]]; then
     showMessage --warn "(Error 1) The installation is in a corrupt state.\n\nReverifying the game files."
     # Try to fix permissions before erroring out
     (chmod u+rwx "$POKEMMO" && find "$POKEMMO" -type d -exec chmod u+rwx {} + && find "$POKEMMO" -type f -exec chmod u+rw {} +) || showMessage --error "(Error 4) Could not fix permissions of $POKEMMO.\n\nContact PokeMMO support."
@@ -172,8 +176,6 @@ fi
 ######################
 # Environment checks #
 ######################
-
-[[ ! "$(command -v java)" ]] && showMessage --error "(Error 6) Java is not installed or is not executable. Exiting.."
 
 if [[ -d "$XDG_CONFIG_HOME" ]]; then
     PKMOCONFIGDIR="$XDG_CONFIG_HOME/pokemmo"
@@ -190,15 +192,14 @@ if [ ! -d "$PKMOCONFIGDIR" ]; then
         showMessage --error "(Error 9) The configuration directory ($PKMOCONFIGDIR) already exists,\nbut is not a directory.\n\nMove or delete this file and try again."
     else
         mkdir -p "$PKMOCONFIGDIR"
+        PKMO_CREATED_CONFIG_DIR=1
     fi
 fi
 
 while getopts "vhH:-:" opt; do
     case $opt in
         -) case "$OPTARG" in
-               skip-java-ram-opts) SKIPJAVARAMOPTS=1 ;;
                reverify) PKMO_REINSTALL=1 ;;
-               debug) PKMO_CREATE_DEBUGS=1 ;;
                swr) export LIBGL_ALWAYS_SOFTWARE=1 ;;
            esac
         ;;
@@ -213,10 +214,8 @@ while getopts "vhH:-:" opt; do
  -H <dir>               Set the PokeMMO directory (Default: $HOME/.local/share/pokemmo).
                         This option is persistent and may be modified in $PKMOCONFIGDIR/pokemmodir \n\
  -v                     Print verbose status to stdout\n
- --debug                Enable java debug logs\n\
  --swr                  Try to fallback to an available software renderer\n\
- --reverify             Reverify the game files\n\
- --skip-java-ram-opts   Use the operating system's default RAM options instead of the suggested values\n"
+ --reverify             Reverify the game files\n"
            exit
         ;;
         H) mkdir -p "$OPTARG" || continue
@@ -248,25 +247,4 @@ fi
 
 verifyInstallation
 
-getJavaOpts "client"
-
-if [[ $PKMO_CREATE_DEBUGS ]]; then
-	cd "$POKEMMO"
-    ( java ${JAVA_OPTS[*]} -cp PokeMMO.exe com.pokeemu.client.Client ) &
-
-	client_pid=$!
-	
-	echo "DEBUG: Spawned client_pid $client_pid"
-	
-    rm -f "$POKEMMO/client_jvm.log"
-
-    while :; do
-        sleep 3
-        kill -3 "$client_pid" || break
-        echo "DEBUG: Threads dumped for Client JVM. Sleeping for 3 seconds.."
-    done
-
-	wait
-else
-	cd "$POKEMMO" && java ${JAVA_OPTS[*]} -cp PokeMMO.exe com.pokeemu.client.Client > /dev/null
-fi
+cd "$POKEMMO" && exec ./PokeMMO.sh "$@"
