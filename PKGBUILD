@@ -7,7 +7,7 @@ if [ -z ${Microarchitecture+x} ]; then
   Microarchitecture=CONFIG_GENERIC_CPU
 fi
 pkgbase=linux-zencjk
-pkgver=7.1.11.zen1
+pkgver=7.2.2.zen1
 pkgrel=1
 pkgdesc='Linux ZEN (with cjktty patch)'
 url="https://github.com/zen-kernel/zen-kernel"
@@ -35,7 +35,7 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   "config::https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/${pkgver}-${pkgrel}/config.x86_64"   # the main kernel config file
-  "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.1.2.patch"
+  "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.2.patch"
   "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
 validpgpkeys=(
@@ -43,13 +43,8 @@ validpgpkeys=(
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
-b2sums=('389da9454f5400639802909ef04069ae5a9d5c3a938feff04d770fb3b47cf152f0cde2ea5ce57addb3e8c1ec3bd3ec3a996c4b65d5d205595db96e61a15db50d'
-        'SKIP'
-        '8d2ee03b7967bf9bde61ac355a7c1b24fbe7a4a4a63802bf59729a63081796263f0bb7496fa74e40b258b41ee9a8f997065588edc43045356281dca1f7fc3fbc'
-        'SKIP'
-        '48b9c3fa64d76f7f448634079baaed39bbd4c70c8577dd2dcf82bb5abb0a94124f0e9109286c6b62cc702a67153fb942d566e60111bd7aeddedc923db175a7ea'
-        '88479d2c924535dc240edeb806198c542785f454578ba2cc14685b227452c01a01fd073e1ff726d8dc81e1fa60778a77505f1f400b89cd1cbfbe28d626c58939'
-        '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678')
+b2sums=('7d3904933ddca054bc085d34c2941d0ed74280c3691716b55369197a0f40dad8d116abaca22fcea71476bd52e9396d80d066d3e859bc945dfdb9e305baff59ab'              'SKIP'                                          'e61dec7fa92bc0070eb128e5c5794cd7714f0773969ab01cb8851ac4ab568b7a5b7e3f95ace03c353bdfcbd574a417eea5bf2120cf723ae1ea33a60e477e569d'              'SKIP'                                          'b59646eb7419db0b363b062a43e0ab38129b6df5d4fb715da7c983fa6fde2bf5bfd5e921747403bed294421c92636f49b19d4d55ecf76cb928ad8c63893f9fea'              '13cc117e1bd64fa77505484867c28110653a54a0e5913e69867b70e4aafbfb816459746025844f677344e761e25886f701331c8ece809b6edfaa633f0faffa9f'
+         '101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678')
 
 
 
