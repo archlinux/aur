@@ -1,0 +1,16 @@
+[Unit]
+Description=Rusty Filer XMPP file server
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rusty-filer
+WorkingDirectory=/var/lib/rusty-filer
+Environment=RUST_LOG=info
+Environment=RUSTY_FILER_CONF=/etc/rusty-filer.toml
+Restart=always
+User=rusty-filer
+Group=rusty-filer
+
+
+[Install]
+WantedBy=multi-user.target

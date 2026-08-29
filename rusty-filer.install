@@ -1,0 +1,6 @@
+post_install() {
+	echo "Config installed at /etc/prosody-filer.toml"
+	echo "Consult upstream on details"
+	echo "Note: Default config places files in /tmp"
+	echo "This package prepares /var/lib/rusty-filer/"
+}

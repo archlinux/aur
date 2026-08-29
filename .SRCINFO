@@ -1,0 +1,24 @@
+pkgbase = rusty-filer
+	pkgdesc = External XMPP HTTP Upload Server for Prosody and Ejabberd
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/thomas.leister/rusty-filer
+	install = rusty-filer.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = zstd
+	backup = etc/rusty-filer.toml
+	source = git+https://codeberg.org/thomas.leister/rusty-filer.git#tag=v1.0.0
+	source = rusty-filer.service
+	source = rusty-filer.sysusers
+	source = rusty-filer.tmpfiles
+	sha256sums = 3089bf336d4ed026dc3dbe0fe8af5756b9d5888ed1161fec56a12940bc1c8fab
+	sha256sums = 78701e484f746d376978c4b8c2c1418a7fd996d9abec636a25c77bb9ebb57ac8
+	sha256sums = 65e8834a77ec76edb8aaa123a0b3d71fbc33b8a61d3c6f83dbab7018699589df
+	sha256sums = b0c359a4c719ba4e2a334093f61e2eb4eff0cd46a514f52b1671a0403266203c
+
+pkgname = rusty-filer
