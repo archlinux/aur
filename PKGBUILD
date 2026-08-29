@@ -43,16 +43,5 @@ package() {
   cd "Aercast-$pkgver"
   install -Dm755 target/release/aercast "$pkgdir/usr/bin/aercast"
   install -Dm644 assets/aercast-icon.png "$pkgdir/usr/share/pixmaps/aercast.png"
-  install -d "$pkgdir/usr/share/applications"
-  cat > "$pkgdir/usr/share/applications/aercast.desktop" <<'EOF'
-[Desktop Entry]
-Type=Application
-Name=Aercast
-Comment=Share your screen directly from Linux
-Exec=aercast
-Icon=aercast
-Terminal=false
-Categories=AudioVideo;Network;
-Keywords=Wayland;Screen;Sharing;Streaming;
-EOF
+  install -Dm644 assets/aercast.desktop "$pkgdir/usr/share/applications/aercast.desktop"
 }
