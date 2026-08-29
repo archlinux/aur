@@ -1,30 +1,32 @@
 # Maintainer: mzwing <mzwing@mzwing.eu.org>
 
 pkgname=xwayclip-git
-pkgver=v0.2.2.r0.g548cfbc
+pkgver=0.2.2.r1.gc528f1a
 pkgrel=1
 pkgdesc='Bidirectional clipboard synchronization between X11 and Wayland for poorly implemented apps like Linux QQ'
 arch=('x86_64')
 url='https://github.com/so1ve/xwayclip'
 license=('MIT')
 makedepends=('git' 'cargo')
-provides=('xwayclip')
-conflicts=('xwayclip')
+depends=('gcc-libs' 'glibc')
+provides=("xwayclip=$pkgver")
+conflicts=('xwayclip' 'xwayclip-bin')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    ( set -o pipefail
-      git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    (
+        set -o pipefail
+        git describe --long --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
 prepare() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$CARCH"
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -44,5 +46,5 @@ check() {
 package() {
     cd "$pkgname"
     install -Dm755 target/release/xwayclip -t "$pkgdir/usr/bin/"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
