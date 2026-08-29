@@ -1,6 +1,6 @@
 pkgbase = humanlayer-bin
 	pkgdesc = HumanLayer CLI - daemon management and authentication for HumanLayer coding sessions
-	pkgver = 0.31.105
+	pkgver = 0.31.106
 	pkgrel = 1
 	url = https://github.com/humanlayer/humanlayer
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = humanlayer-bin
 	conflicts = humanlayer
 	conflicts = humanlayer-git
 	options = !strip
-	source_x86_64 = humanlayer-bin-0.31.105-x86_64.tgz::https://registry.npmjs.org/@humanlayer/cli-linux-x64/-/cli-linux-x64-0.31.105.tgz
-	sha256sums_x86_64 = 91eb1ced18729a9ff66703feb753fb47601c8c209ef2b526a8d71d61b0daa234
-	source_aarch64 = humanlayer-bin-0.31.105-aarch64.tgz::https://registry.npmjs.org/@humanlayer/cli-linux-arm64/-/cli-linux-arm64-0.31.105.tgz
-	sha256sums_aarch64 = b32cff76a41303f07d82c69c02f9d39490d1374b193df6ae8d3a544f1fbd8f3b
+	source_x86_64 = humanlayer-bin-0.31.106-x86_64.tgz::https://registry.npmjs.org/@humanlayer/cli-linux-x64/-/cli-linux-x64-0.31.106.tgz
+	sha256sums_x86_64 = e4391b034b03ce8e274c30983890579f2452dcf6cadd9aacfa57da236ee40387
+	source_aarch64 = humanlayer-bin-0.31.106-aarch64.tgz::https://registry.npmjs.org/@humanlayer/cli-linux-arm64/-/cli-linux-arm64-0.31.106.tgz
+	sha256sums_aarch64 = ad9d1ad696a2ce18231e724faddfe01da4355200499fd3ac428f32ac611b514e
 
 pkgname = humanlayer-bin
