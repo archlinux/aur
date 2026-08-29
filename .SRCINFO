@@ -1,0 +1,18 @@
+pkgbase = zeitx-bin
+	pkgdesc = A terminal countdown timer and stopwatch with big ASCII-art digits
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/opmr0/zeitx
+	arch = x86_64
+	license = MIT
+	provides = zeitx
+	conflicts = zeitx
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/opmr0/zeitx/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/opmr0/zeitx/v0.1.0/LICENSE
+	sha256sums = a9db65d399bbc8550c0a585c448ff3a067f1ce178443b761f90e328d2c5124d1
+	sha256sums = 13652efbec3141f3283d21d82d8d4e335fbe49316b26703e7ac149cae7c78682
+	source_x86_64 = zeitx-x86_64-0.1.0::https://github.com/opmr0/zeitx/releases/download/v0.1.0/zeitx-linux-x86_64
+	sha256sums_x86_64 = 848b074a2785ecb4ae058c07f1017b72573f93d54454675f98c895bdf4d7f8d5
+
+pkgname = zeitx-bin

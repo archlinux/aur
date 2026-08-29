@@ -1,0 +1,5 @@
+[zeitx-bin]
+source = "github"
+github = "opmr0/zeitx"
+use_latest_release = true
+prefix = "v"
