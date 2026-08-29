@@ -1,42 +1,21 @@
 # Maintainer: Youcef <youcef.nafa@gmail.com>
 # Co-maintainer: Evert <evorster at gmail dot com>
-# This package uses a venv-based installation inspired by the official NousResearch install.sh. It swaps off uv with python311's venv since python 3.11 is the latest version supported by the developer. The venv solution allows the inclusion of all nodejs modules inside the package's /opt as opposed to shipping the package following ArchLinux convensions (/usr/share,/usr/lib,/usr/bin).
-# Optional dependencies are dissociated from arch and need to be installed manually into venv. Although, many are installed by hermes lazyly when needed.
-# TODO: there needs to be a way to copy skills upon hermes package update, or, at least, to prompt the user to do so.
-#
-# Optional build flags:
-#   HERMES_BUILD_DESKTOP=1  Build the Electron desktop app (apps/desktop/) and ship it
-#                           inside the package.  This adds a significant build time cost
-#                           (Electron Chromium download + full TypeScript/Vite build) and
-#                           increases the package size by ~200 MB.  Without this flag the
-#                           desktop app is built on first run via 'hermes desktop'.
-#   HERMES_PIP_EXTRAS=      Comma-separated list of pip extras to install beyond [all].
-#                           Because the package installs to /opt (root-owned), upstream
-#                           lazy-install does NOT work after installation — any provider,
-#                           search backend, TTS engine, or messaging platform you plan to
-#                           use must be pre-installed here.
-#                           Available extras (see upstream pyproject.toml):
-#                             anthropic, exa, firecrawl, parallel-web, fal, edge-tts,
-#                             modal, daytona, vercel, hindsight, messaging, cron, slack,
-#                             matrix, wecom, tts-premium, voice, wake, honcho, mem0,
-#                             vision, pty, mcp, nemo-relay, homeassistant, sms, teams,
-#                             computer-use, acp, mistral, otlp, bedrock, vertex,
-#                             azure-identity, termux, termux-all, dingtalk, feishu,
-#                             google, youtube, web, cli, dev
-#                           Example:  HERMES_PIP_EXTRAS="anthropic,messaging,voice" makepkg -si
-#   HERMES_BUILD_WHATSAPP=1  Build the whatsapp-bridge Node.js dependencies.
-#                           Enable this if you use the WhatsApp integration.
+# The Python environment is bundled because upstream pins a large, partly native
+# dependency set. uv's relocatable mode keeps the packaged environment usable
+# after makepkg moves it under /opt.
 pkgname=hermes-agent
-pkgver=0.20.5
-_tagver=2026.8.19
+pkgver=0.20.6
+_tagver=2026.8.27
 pkgrel=1
 pkgdesc="Locally-run AI agent with tool use, web browsing, and automation"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/NousResearch/hermes-agent"
 license=('MIT')
 groups=()
 depends=(
     'python311'
+    'nodejs'
+    'uv'
     'ripgrep'
     'ffmpeg'
     'nss'
@@ -51,12 +30,10 @@ depends=(
     'alsa-lib'
 )
 
-makedepends=('python311' 'nodejs' 'npm' 'rsync')
-source=("https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz" "nosdistguard.patch")
-sha256sums=('8e7f7d2aa6be48ae8b5550325be44aef339413ceec6ed74c18287001103de8fd'
-            'd4849e4997672e4f731770e622c03b1e5cb9ff899f3987df6dfee10346d8cf95')
+makedepends=('npm' 'rsync')
+source=("${pkgname}-${_tagver}.tar.gz::https://github.com/NousResearch/hermes-agent/archive/refs/tags/v${_tagver}.tar.gz")
+sha256sums=('e622723b5bf3cd6c1db974d92d32242f1cb63f61c1112b6f708b34d619ef0fc7')
 validpgpkeys=()
-install=hermes-agent.install
 
 build() {
   cd "${pkgname}-${_tagver}"
@@ -65,69 +42,26 @@ build() {
   # .gitignore files. Creating an empty .git directory stops the scan at this level.
   [ ! -d .git ] && mkdir .git
 
-  _npm="npm --no-fund --no-audit --progress=false"
+  npm ci --ignore-scripts --no-fund --no-audit --progress=false --include=dev
+  npm run build --workspace web
+  npm run build:ink --workspace ui-tui
+  npm run build --workspace ui-tui
 
-  echo "==> Installing Node.js dependencies..."
-  if [ -f "package.json" ]; then
-    $_npm install || return 1
-  fi
+  UV_PYTHON_DOWNLOADS=never uv venv \
+    --python /usr/bin/python3.11 \
+    --relocatable \
+    venv
+  UV_PYTHON_DOWNLOADS=never \
+    UV_PROJECT_ENVIRONMENT="$PWD/venv" \
+    uv sync --locked --no-dev --no-install-project --extra all
+}
 
-  echo "==> Building frontend..."
-  if [ -d "web" ]; then
-    cd web
-    $_npm install || return 1
-    $_npm run build || return 1
-    cd ..
-  fi
+check() {
+  cd "${pkgname}-${_tagver}"
 
-  echo "==> Building TUI..."
-  # hermes_cli.main sets PROJECT_ROOT to its installed site-packages parent and
-  # expects the modern TUI at PROJECT_ROOT/ui-tui. Build that directory here and
-  # package it into the venv's site-packages below.
-  if [ -d "ui-tui" ]; then
-    cd ui-tui
-    $_npm install || return 1
-    $_npm run build:ink || return 1
-    $_npm run build || return 1
-    cd ..
-  fi
-
-  # Optional: install whatsapp-bridge dependencies
-  # Enable with: HERMES_BUILD_WHATSAPP=1
-  if [ "${HERMES_BUILD_WHATSAPP:-0}" = "1" ]; then
-    echo "==> Installing whatsapp-bridge dependencies..."
-    if [ -f "scripts/whatsapp-bridge/package.json" ]; then
-      (cd scripts/whatsapp-bridge && $_npm install --legacy-peer-deps --omit=dev) || return 1
-    fi
-  fi
-
-  echo "==> Creating Python venv and installing dependencies..."
-  python3.11 -m venv --clear venv || return 1
-  echo "==> disabling distguard to be able to build wheel..."
-  patch -p1 < ../nosdistguard.patch
-  echo "==> Upgrading pip..."
-  venv/bin/pip install --upgrade pip
-  echo "==> Installing hermes-agent and its dependencies..."
-  venv/bin/pip install .[all]
-  echo "==> Installing extra dependencies that cannot be lazily installed later..."
-  echo "You may add more dependencies by setting HERMES_PIP_EXTRAS in your environment"
-  echo "  e.g. HERMES_PIP_EXTRAS='anthropic,messaging' makepkg -si"
-  if [ -n "${HERMES_PIP_EXTRAS}" ]; then
-    echo "==> Installing extras: ${HERMES_PIP_EXTRAS}"
-    venv/bin/pip install ".[${HERMES_PIP_EXTRAS}]"
-  fi
-
-  # Optional: build the Electron desktop app
-  # Enable with: HERMES_BUILD_DESKTOP=1 makepkg -si
-  if [ "${HERMES_BUILD_DESKTOP:-0}" = "1" ]; then
-    echo "==> Building desktop Electron app..."
-    cd apps/desktop
-    $_npm install || return 1
-    $_npm run build || return 1
-    $_npm run builder -- --linux dir || return 1
-    cd ../..
-  fi
-
+  test -s hermes_cli/web_dist/index.html
+  test -s ui-tui/dist/entry.js
+  PYTHONPATH="$PWD" venv/bin/python -c 'import hermes_cli.main'
 }
 
 package() {
@@ -161,8 +95,6 @@ package() {
     cp -a ui-tui/dist/* "$_tuidir/"
   fi
 
-  sed -i '1c#!/opt/hermes-agent/venv/bin/python3.11' $_optdir/venv/bin/hermes 
-
   install -d "$_optdir/venv/lib/python3.11/site-packages"
   {
       echo "import sys; sys.path.insert(0, \"/opt/$pkgname\")"
@@ -173,25 +105,13 @@ package() {
     echo "#!/bin/bash"
     echo "unset PYTHONPATH"
     echo "unset PYTHONHOME"
-    echo "exec /opt/$pkgname/venv/bin/hermes" '"$@"'
+    echo ': "${XDG_DATA_HOME:=$HOME/.local/share}"'
+    echo 'export HERMES_DISABLE_LAZY_INSTALLS=1'
+    echo 'export HERMES_LAZY_INSTALL_TARGET="$XDG_DATA_HOME/hermes-agent/python"'
+    echo "exec /opt/$pkgname/venv/bin/python -m hermes_cli.main" '"$@"'
   } > "$pkgdir/usr/bin/hermes"
 
   chmod 755 "$pkgdir/usr/bin/hermes"
 
-  # Optional: install the prebuilt desktop app
-  if [ "${HERMES_BUILD_DESKTOP:-0}" = "1" ]; then
-    echo "==> Installing desktop Electron app..."
-    install -d "$_optdir/apps/desktop"
-    # Copy the built renderer assets
-    if [ -d "apps/desktop/dist" ]; then
-      rsync -a "apps/desktop/dist/" "$_optdir/apps/desktop/dist/"
-    fi
-    # Copy the packaged Linux app (release/linux-unpacked/)
-    if [ -d "apps/desktop/release/linux-unpacked" ]; then
-      rsync -a "apps/desktop/release/linux-unpacked/" "$_optdir/apps/desktop/release/linux-unpacked/"
-    fi
-    # Copy assets and package.json (needed by the updater)
-    rsync -a --include='package.json' --include='assets/' --exclude='*' \
-      "apps/desktop/" "$_optdir/apps/desktop/"
-  fi
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
