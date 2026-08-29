@@ -1,16 +1,16 @@
 pkgbase = crush-a2a-bin
 	pkgdesc = Unofficial Crush build with the A2A v1.0 protocol plugin (a2a, kuri, otlp, agent-status, periodic-prompts, subagents, tempotown, tavily)
-	pkgver = 2026.08.27.1
+	pkgver = 2026.08.29.1
 	pkgrel = 1
 	url = https://github.com/aleksclark/crush-modules
 	license = MIT
 	conflicts = crush-modules
 	provides = crush-a2a
 	arch = aarch64
-	source_aarch64 = https://github.com/aleksclark/crush-modules/releases/download/2026.08.27.1/crush-a2a_2026.08.27.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 9b8a7538b46a8d0d8173ef7a8e16a6c0f8360fd1d6681b91e71e33387b6004bb
+	source_aarch64 = https://github.com/aleksclark/crush-modules/releases/download/2026.08.29.1/crush-a2a_2026.08.29.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 453ceda4a687e05b1cb28a71b435a93641fde7ebe72dafa787c7b8d14a8552d7
 	arch = x86_64
-	source_x86_64 = https://github.com/aleksclark/crush-modules/releases/download/2026.08.27.1/crush-a2a_2026.08.27.1_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 766ea03bf2b923dc549b3835fefb77c0f4aae9c9b1f2f95dbdecd035af2d6a15
+	source_x86_64 = https://github.com/aleksclark/crush-modules/releases/download/2026.08.29.1/crush-a2a_2026.08.29.1_linux_x86_64.tar.gz
+	sha256sums_x86_64 = d18b391889f1d29365b01222a146d37edab82aa76c02d3db9d6ca923b20751ca
 	
 pkgname = crush-a2a-bin
