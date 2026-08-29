@@ -1,16 +1,16 @@
 pkgbase = mangatan-extension-server
 	pkgdesc = Headless Mihon extension server for Mangatan (Mihon bridge)
-	pkgver = 1.0.6.2
+	pkgver = 1.0.6.3
 	pkgrel = 1
 	url = https://github.com/1Selxo/M-Extension-Server
 	arch = any
 	license = MPL-2.0
 	makedepends = libarchive
 	depends = jre21-openjdk
-	noextract = mangatan-extension-server-1.0.6.2-bundle.zip
-	source = mangatan-extension-server-1.0.6.2-bundle.zip::https://github.com/1Selxo/M-Extension-Server/releases/download/v1.0.6.2/linux-x64-bundle.zip
-	source = LICENSE-1.0.6.2::https://raw.githubusercontent.com/1Selxo/M-Extension-Server/v1.0.6.2/LICENSE
-	sha256sums = 2570c062b06f7c81d483d7ee91132938474838ffd9fefbfcd2324230399eae03
+	noextract = mangatan-extension-server-1.0.6.3-bundle.zip
+	source = mangatan-extension-server-1.0.6.3-bundle.zip::https://github.com/1Selxo/M-Extension-Server/releases/download/v1.0.6.3/linux-x64-bundle.zip
+	source = LICENSE-1.0.6.3::https://raw.githubusercontent.com/1Selxo/M-Extension-Server/v1.0.6.3/LICENSE
+	sha256sums = 4a8f4c3407de8b5b493f49b471748eafef324903486a63436c102bcaa912db44
 	sha256sums = 3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04
 
 pkgname = mangatan-extension-server
