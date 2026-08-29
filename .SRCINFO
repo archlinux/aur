@@ -1,15 +1,14 @@
 pkgbase = elm-bin
 	pkgdesc = Elm compiler (official binary)
-	pkgver = 0.19.1
+	pkgver = 0.19.2
 	pkgrel = 1
 	url = https://elm-lang.org
 	arch = x86_64
 	license = BSD
 	noextract = LICENSE
-	source = https://github.com/elm/compiler/releases/download/0.19.1/binary-for-linux-64-bit.gz
+	source = https://github.com/elm/compiler/releases/download/0.19.2/elm-0.19.2-linux-x64.gz
 	source = https://raw.githubusercontent.com/elm/compiler/master/LICENSE
-	sha256sums = e44af52bb27f725a973478e589d990a6428e115fe1bb14f03833134d6c0f155c
+	sha256sums = 66320d27701654fa11bd0e8d84bdf9829694d5770c8dcee2dede6160fad58737
 	sha256sums = 22bd883c0b78625bb39a21b96d38ddcb8469863b51718b8bda1ce46441f5bfce
 
 pkgname = elm-bin
-
