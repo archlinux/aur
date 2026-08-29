@@ -1,6 +1,6 @@
 pkgbase = aibrowsertoolkit-bin
 	pkgdesc = Agentic browser automation CLI for AI agents
-	pkgver = 0.3.4
+	pkgver = 0.3.5
 	pkgrel = 1
 	url = https://github.com/skssmd/Ai-Browser-Toolkit
 	install = aibrowsertoolkit-bin.install
@@ -12,9 +12,9 @@ pkgbase = aibrowsertoolkit-bin
 	provides = aibrowsertoolkit
 	conflicts = aibrowsertoolkit
 	options = !strip
-	source_x86_64 = https://github.com/skssmd/Ai-Browser-Toolkit/releases/download/v0.3.4/aibrowsertoolkit-0.3.4-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 66e61039c68c27700422bd6ea52fb393c67df98e24a202cc36f2dc061b0dfb39
-	source_aarch64 = https://github.com/skssmd/Ai-Browser-Toolkit/releases/download/v0.3.4/aibrowsertoolkit-0.3.4-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 2c09d0e3fa70f6280033080839fad54eb745df98f7f9e182f13e1ac42c277949
+	source_x86_64 = https://github.com/skssmd/Ai-Browser-Toolkit/releases/download/v0.3.5/aibrowsertoolkit-0.3.5-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5632af5913f8fca2a919da2090ffe5e282b995a48e7c36c2ef4122db9c2c088b
+	source_aarch64 = https://github.com/skssmd/Ai-Browser-Toolkit/releases/download/v0.3.5/aibrowsertoolkit-0.3.5-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 922cb6f761cc7ca97cd4c7c3c761f62f373922173ff87de4b9c2fd86d85c811d
 
 pkgname = aibrowsertoolkit-bin
