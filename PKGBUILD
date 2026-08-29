@@ -7,7 +7,7 @@ _appexec=${_appname}-editor
 pkgname=${_appname}
 pkgdesc="A lightweight TUI IDE for making quick in-the-moment edits"
 
-pkgver=0.8.2
+pkgver=0.9.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,7 +27,7 @@ depends=('glibc' 'libgcc' 'libstdc++')
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('c43bae05005e4c3ab0f5856abc09a46a0e54d954120002898c8a398d89665467')
+sha256sums=('7f57f8dc7c3cef0c8612d187a1285cfd34f31af9915e2046fee1897fcd9b9466')
 
 
 build() {
