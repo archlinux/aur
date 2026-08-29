@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=deepseek-reasonix-desktop-bin
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
 # Reasonix Desktop is a Wails shell around WebKitGTK, not an Electron app —
 # upstream's own control file says so ("a Wails shell around the Go kernel")
@@ -45,7 +45,7 @@ _relurl="https://github.com/esengine/DeepSeek-Reasonix/releases/download/desktop
 # it drops the imagemagick resize step the old appicon.png handling needed.
 source=("${pkgname}-${pkgver}.deb::${_relurl}/Reasonix-linux-amd64.deb")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('f54120a32e1ba41c5e9fedf00ae756a8ef67abca8c03d5216e6f54125810cd86')
+sha256sums=('74ef3ff196331be39fd2fa315480d266391f063d9dc9ffd74e2e777f2fb6ec46')
 
 prepare() {
     # .deb is an ar archive of {debian-binary, control.tar.*, data.tar.*};
