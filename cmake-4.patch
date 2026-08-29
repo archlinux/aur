@@ -7,7 +7,7 @@ index 5753aa5..f02de82 100644
  # USA.
  
 -cmake_minimum_required (VERSION 2.6)
-+cmake_minimum_required (VERSION 3.10)
++cmake_minimum_required (VERSION 3.12)
  project (dislocker C)
  
  set (AUTHOR "Romain Coltel")

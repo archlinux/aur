@@ -1,7 +1,7 @@
 pkgbase = dislocker-noruby
 	pkgdesc = Read/write BitLocker-encrypted volumes (no ruby bindings/dependency)
 	pkgver = 0.7.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Aorimn/dislocker
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = dislocker-noruby
 	makedepends = git
 	makedepends = ninja
 	depends = fuse
-	depends = mbedtls
+	depends = mbedtls3
 	optdepends = ntfs-3g: NTFS file system support
 	provides = dislocker
 	conflicts = dislocker
@@ -18,6 +18,6 @@ pkgbase = dislocker-noruby
 	source = git+https://github.com/Aorimn/dislocker.git#tag=v0.7.3
 	source = cmake-4.patch
 	b2sums = 41b5ce92607cd4d087fc26ffdbeb05e258f2a0633d779d25caed1b6c439b90969a5dd7cf3c0d424f80f53e957bc8f4a49c0580be7d6cdb9fa1768acbd478b317
-	b2sums = 5af381a20f17d4897d86b7eb111ee97073cfe033eb063e4a211a9908cdaa9fca3695419bae72e60bb396b577e314290137b58c0c6837e1e6b367788ef8e1b8b8
+	b2sums = b694ae1e368ebe81a81ae376d84e4f293571d357f489bf06c4509718cce04e590668a7dbe16c5ef5080afe264ec4cb9ff5b7dc926aa1f8938bb814ef789f4873
 
 pkgname = dislocker-noruby
