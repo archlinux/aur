@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clinfun
-_pkgver=1.1.5
+_pkgver=1.1.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=1
 pkgdesc="Clinical Trial Design and Data Analysis Functions"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -20,8 +20,8 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('5af2123784734234a5dcb5eeb4195c2b')
-b2sums=('1645796fa64246f5f8548d37e333b96396cbfb06b3fc0c55e1cf7da17f06ee1a4f7a1ee01dc7193221900c1144705d2655206ab31e3e44dcfd5e46aa57658a3d')
+md5sums=('35666b8eeccde9f0bd826048ba91d647')
+b2sums=('d5227495beb5c76303d5ec498e35a72e81d0cd46bb1728cee7eba32a5bd0c3c67c2f7a9d3e15b954eebb8b314524819862648903231cfdaf5ac27e89d0b222e6')
 
 build() {
   mkdir build
