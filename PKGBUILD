@@ -6,7 +6,7 @@ _appname=dgo
 pkgname=${_gitname,,}-bin
 pkgdesc="Fast, local-first directory navigation"
 
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ conflicts=("${pkgname%-bin}")
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_gitversion}-${_barch[0]}.tar.gz")
-sha256sums_x86_64=('691f868203b0d902eb6f31fd62f89bae1e527cedc437c679b1b375be51485b48')
+sha256sums_x86_64=('b797a14a8d045ef93883335081afbd001be6f56dbf9c7a2f219c0e3469420b1a')
 
 
 case ${CARCH} in
