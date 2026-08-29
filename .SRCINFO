@@ -1,0 +1,12 @@
+pkgbase = lmv
+	pkgdesc = Utility for moving a file/directory to a new location, leaving a symlink to it in the old location
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/Undercat037/lmv
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	source = lmv::git+https://github.com/Undercat037/lmv.git#tag=v1.3.0
+	sha256sums = 9d0db53f828d266add85d28b912555ef444c777dd69b6c9f803a610510a45ed3
+
+pkgname = lmv
