@@ -30,7 +30,7 @@ makedepends=(
   nlohmann-json
 )
 optdepends=("cachyos-ananicy-rules-git: community rules"
-            "cachyos-ananicy-rules: Rules based for ananicy-cpp")
+  "cachyos-ananicy-rules: Rules based for ananicy-cpp")
 source=("${_pkgname}::git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git")
 sha512sums=('SKIP')
 provides=('ananicy-cpp')
@@ -46,16 +46,16 @@ build() {
   cd "${srcdir}/${_pkgname}"
 
   cmake -S . -Bbuild \
-        -GNinja \
-        -DCMAKE_BUILD_TYPE=None \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DUSE_EXTERNAL_SPDLOG=ON \
-        -DUSE_EXTERNAL_JSON=ON \
-        -DUSE_EXTERNAL_FMTLIB=ON \
-        -DENABLE_SYSTEMD=ON \
-        -DUSE_BPF_PROC_IMPL=ON \
-        -DBPF_BUILD_LIBBPF=OFF \
-        -DENABLE_REGEX_SUPPORT=ON
+    -GNinja \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUSE_EXTERNAL_SPDLOG=ON \
+    -DUSE_EXTERNAL_JSON=ON \
+    -DUSE_EXTERNAL_FMTLIB=ON \
+    -DENABLE_SYSTEMD=ON \
+    -DUSE_BPF_PROC_IMPL=ON \
+    -DBPF_BUILD_LIBBPF=OFF \
+    -DENABLE_REGEX_SUPPORT=ON
 
   cmake --build build --target ananicy-cpp
 }
