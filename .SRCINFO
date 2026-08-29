@@ -1,7 +1,7 @@
 pkgbase = libtas
 	pkgdesc = Tool-assisted speedrunning utility for Linux-native binaries
 	pkgver = 1.4.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/clementgallet/libTAS
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,6 +10,7 @@ pkgbase = libtas
 	depends = fontconfig
 	depends = freetype2
 	depends = hicolor-icon-theme
+	depends = lib32-libx11
 	depends = lua
 	depends = qt5-base
 	depends = sdl2
