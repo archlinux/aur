@@ -1,6 +1,6 @@
 pkgbase = omni-shell
 	pkgdesc = Quickshell status bar, notification center and control center for Hyprland, with weather, clipboard history and an integrated omni-launcher.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://git.macocian.com/radumaco/omni-shell
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = omni-shell
 	optdepends = pacman-contrib: checkupdates, for the pending updates module
 	optdepends = wf-recorder: screen recording indicator
 	optdepends = nvidia-utils: GPU usage and temperature on NVIDIA cards
-	source = omni-shell-0.1.0.tar.gz::https://git.macocian.com/radumaco/omni-shell/archive/v0.1.0.tar.gz
-	sha256sums = 63a496cec2638fd8ac90b38c482096fd7f19afcf739db3ea89b1be1c7f38aa40
+	source = omni-shell-0.1.1.tar.gz::https://git.macocian.com/radumaco/omni-shell/archive/v0.1.1.tar.gz
+	sha256sums = 35ef125e1f1fdb03f7b9d027140cd82cb79c01bd248eb5ca5e3ab08aca72a5c3
 
 pkgname = omni-shell
