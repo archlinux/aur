@@ -19,6 +19,6 @@ pkgbase = junior-desktop
 	options = !strip
 	options = !emptydirs
 	source = junior-desktop_2.6.34_amd64.deb::https://github.com/Andrew-AI-JR/Desktop-Releases/releases/download/v2.6.34/junior-desktop_2.6.34_amd64.deb
-	sha256sums = ca3dcffed4b8ca4e3a181aae346383fbef28b86832c8e36bcb4064d553d4b804
+	sha256sums = 97fa643bd8e07682c4d86dc13fb87e562c4a591d03489162d639acfeac62051e
 
 pkgname = junior-desktop
