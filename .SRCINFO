@@ -1,6 +1,6 @@
 pkgbase = portal-mc-commit-bin
 	pkgdesc = Portal - Minecraft launcher/manager (commit build, prerelease)
-	pkgver = 0.51.5.35
+	pkgver = 0.51.5.55
 	pkgrel = 1
 	url = https://portal.tiouo.cc/
 	arch = x86_64
@@ -8,14 +8,14 @@ pkgbase = portal-mc-commit-bin
 	depends = fuse2
 	depends = hicolor-icon-theme
 	depends = xdg-utils
-	provides = portal-mc=0.51.5.35
+	provides = portal-mc=0.51.5.55
 	conflicts = portal-mc
 	conflicts = portal-mc-nightly-bin
 	conflicts = portal-mc-bin
-	noextract = Portal-0.51.5.35.AppImage
+	noextract = Portal-0.51.5.55.AppImage
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = Portal-0.51.5.35.AppImage::https://github.com/tiouoo/Portal/releases/download/publish-commit/Portal.linux.x64.AppImage
+	source_x86_64 = Portal-0.51.5.55.AppImage::https://github.com/tiouoo/Portal/releases/download/publish-commit/Portal.linux.x64.AppImage
 	source_x86_64 = portal.png::https://portal.tiouo.cc/portal-logo.png
 	sha256sums_x86_64 = SKIP
 	sha256sums_x86_64 = SKIP
