@@ -1,0 +1,3 @@
+[harlequin-mysql]
+source = "pypi"
+pypi = "harlequin-mysql"
