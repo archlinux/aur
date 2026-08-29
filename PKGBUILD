@@ -9,8 +9,8 @@ pkgname=(
     'virtualbox-bin'
     'virtualbox-bin-guest-iso'
     'virtualbox-bin-sdk')
-pkgver=7.2.14
-_build=174565
+pkgver=7.2.16
+_build=174877
 _sdk_commit=72af1bf47ae4fa0cbca89251155953051c5acd67
 pkgrel=1
 pkgdesc='Powerful x86 virtualization for enterprise as well as home use (Oracle branded non-OSE)'
@@ -42,8 +42,8 @@ source=("http://download.virtualbox.org/virtualbox/${pkgver}/VirtualBox-${pkgver
         'LICENSE.sdk'
         '013-Makefile.patch')
 noextract=("VirtualBoxSDK-${pkgver}-${_build}.zip")
-sha256sums=('9bb917f8b8264482946efc56ba098f24c87cb06c8430754b2c3c3720a56d1540'
-            '7f388e22957f126535df297a3a6f258b293a39b73548485ba3257141175a3189'
+sha256sums=('26845df7a9d62409476ad541bfcf0b8b0674accf88a29e21c519e7aeb677290c'
+            '19e7825fae92dc2bd0a7e33bfd48ac5ee21676c7f840b9979d3948798d520d30'
             'f54c6a3e118e24ea36474b23e6376bf83ed945e76bb627257457c018f0e11018'
             '0fe446cdc96d227e3f9a2d905d39ea2804c15560a42ff2dec207349f03ac9206'
             'a2923c8828c540ae2e2b4da38c402892b8e16d19fb86af2ecb0ab080e3745c9e'
