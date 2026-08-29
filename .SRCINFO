@@ -1,6 +1,6 @@
 pkgbase = badness-bin
 	pkgdesc = A language server, formatter, and linter for LaTeX
-	pkgver = 0.21.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/jolars/badness
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = badness-bin
 	provides = badness
 	conflicts = badness
 	options = !strip
-	source_x86_64 = badness-0.21.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jolars/badness/releases/download/v0.21.0/badness-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = bfb84b740c7ab5fb70208a54d9256cb6b56e53b2a6a2e6ccb99da5133dd4ab71
-	source_aarch64 = badness-0.21.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/jolars/badness/releases/download/v0.21.0/badness-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 486a067d032f5c9b8532500eec82a86975364dddd01b798e8b76c7b340ef4ad3
+	source_x86_64 = badness-0.22.0-x86_64-unknown-linux-gnu.tar.gz::https://github.com/jolars/badness/releases/download/v0.22.0/badness-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = efe6cff9175bcf4b8414f833051fb710886c404932fb3afa9841d7ed4f57683c
+	source_aarch64 = badness-0.22.0-aarch64-unknown-linux-gnu.tar.gz::https://github.com/jolars/badness/releases/download/v0.22.0/badness-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e5b0bc8660eb7f8397a85d548438275f8c89cee5ffe275f8c278db44bba9ec8f
 
 pkgname = badness-bin
