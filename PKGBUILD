@@ -2,7 +2,7 @@
 
 _pkgname=rubick
 pkgname=${_pkgname}-kubernetes-bin
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="Modern cross-platform Kubernetes GUI client (prebuilt version)"
 arch=(x86_64)
@@ -28,7 +28,7 @@ sha256sums=('82f31d2a4c5fa49a3e7c52378c94fe16a62e3adb0082eed9cd9f2787849deb00'
             'ef223b31d2c4f2a3cef9bed6132bb60fe5091df6909dd513d8696cbba6012035'
             '3885ea939b7b56f116c2772b70b1ec543025b7716973df06aade0d2037a239ef'
             'a238fa258d9d49cfe0baaa019dd05743bdb39c820032b1d8d8f074bc31ab4b20')
-sha256sums_x86_64=('835b13f4cf2ca41f75f1c776cb061b6bb09ce19d56dd7de906e1bd567d05b6a3')
+sha256sums_x86_64=('085c4426766bc9a70a92ea43a4223e69cc0fb2f58be67b5b34955819fdd36bd0')
 
 prepare() {
 	tar -zxf data.tar.gz usr/bin/Rubick
