@@ -1,6 +1,6 @@
 # Maintainer: Eric Jingryd <tidynest@proton.me>
 pkgname=linux-hardener
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Linux security automation: scanning, hardening, and rollback across 8 domains"
 arch=('x86_64')
@@ -63,7 +63,7 @@ optdepends=(
 # which is what docs/guide/installation.md promises for every packaging.
 backup=('etc/linux-hardener/config.toml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tidynest/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5583a5ad67635176f1fde314a863039ca165ec22e9911d0f5c0cafc2eef99451')
+sha256sums=('17d71f3413df0fa02ae8d244eee649065d5e3305d207b462447716a58287e6bb')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -135,9 +135,21 @@ WRAPPER
     install -Dm644 "packaging/assets/config.toml.example" \
         "$pkgdir/etc/linux-hardener/config.toml"
 
-    # Directories
+    # Directories.
+    #
+    # /etc stays 0755: the config is read unprivileged, and narrowing it was a
+    # defect once already. The signing key inside it is 0400 and does not need
+    # the directory to be closed.
+    #
+    # /var/lib is 0700 because it holds checkpoints.db, which stores captured
+    # contents of files including /etc/shadow. It shipped 0755 until 1.6.0-1
+    # while `init_db` chmod'd it to 0700 the moment the database was created,
+    # so the packaged mode contradicted the enforced one and pacman warned
+    # about the mismatch on every upgrade. No exposure, since the window before
+    # first use has an empty directory, but the package should ship what the
+    # code enforces rather than something the code has to correct.
     install -dm755 "$pkgdir/etc/linux-hardener"
-    install -dm755 "$pkgdir/var/lib/linux-hardener"
+    install -dm700 "$pkgdir/var/lib/linux-hardener"
     install -dm700 "$pkgdir/var/log/linux-hardener"
 
     # Licence and docs
