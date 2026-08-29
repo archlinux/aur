@@ -1,0 +1,6 @@
+[plasma6-applets-window-title]
+source = "git"
+git = "https://github.com/dhruv8sh/plasma6-window-title-applet.git"
+include_regex = 'v[0-9.]+'
+exclude_regex = '^v0\.21$' # upstream typo for 0.2.1, sorts above 0.9.0
+prefix = "v"
