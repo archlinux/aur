@@ -1,7 +1,7 @@
 # Maintainer: Chartic <contact@ch45.c01.kr>
 pkgname=modlist-org-app
 pkgver=0.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Mod manager and installer for A Dance of Fire and Ice (ADOFAI) and other games"
 arch=('x86_64')
 url="https://github.com/modlist-org/modlist_org_app"
