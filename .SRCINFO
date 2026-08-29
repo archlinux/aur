@@ -1,6 +1,6 @@
 pkgbase = wallpiper-gnome
 	pkgdesc = GNOME (Mutter) portal for wallpiper
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/shdwmtr/wallpiper
 	install = wallpiper-gnome.install
@@ -21,7 +21,7 @@ pkgbase = wallpiper-gnome
 	depends = libdrm
 	depends = libxrandr
 	depends = libx11
-	source = wallpiper-gnome::git+https://github.com/shdwmtr/wallpiper.git#tag=v2.0.0
+	source = wallpiper-gnome::git+https://github.com/shdwmtr/wallpiper.git#tag=v2.0.1
 	sha256sums = SKIP
 
 pkgname = wallpiper-gnome

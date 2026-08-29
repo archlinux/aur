@@ -1,7 +1,7 @@
 # Maintainer: Ethan Alexander <ethanjalexander@hotmail.ca>
 
 pkgname="wallpiper-gnome"
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="GNOME (Mutter) portal for wallpiper"
 arch=('x86_64')
