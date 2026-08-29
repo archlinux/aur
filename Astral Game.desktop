@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Astral Game
+Comment=Astral Game
+GenericName=Astral Game
+Exec=env WAYLAND_DISPLAY="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" sh -c "pkexec env DISPLAY=$DISPLAY XAUTHORITY=$XAUTHORITY WAYLAND_DISPLAY="$XDG_RUNTIME_DIR/$WAYLAND_DISPLAY" /opt/astral-game/astral_game %U "
+Icon=Astral
+Type=Application
+StartupNotify=true
+Categories=Utility;
