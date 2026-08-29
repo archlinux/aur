@@ -1,0 +1,17 @@
+pkgbase = spoo-cli-bin
+	pkgdesc = Official spoo.me CLI to shorten links and view analytics from your terminal
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/spoo-me/spoo-cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = spoo
+	conflicts = spoo-cli
+	options = !strip
+	source_x86_64 = spoo-x86_64-0.4.1.tgz::https://github.com/spoo-me/spoo-cli/releases/download/v0.4.1/spoo_0.4.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = f0ad937ec5b80a66280a097a69f2d6fe51df27f59d4a686998249e945aaa24bb
+	source_aarch64 = spoo-aarch64-0.4.1.tgz::https://github.com/spoo-me/spoo-cli/releases/download/v0.4.1/spoo_0.4.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 07fdd1761a11e09ab76a3359bf26b54d7be224c0746a6d05890a42429830a2f1
+
+pkgname = spoo-cli-bin
