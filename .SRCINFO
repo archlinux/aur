@@ -1,0 +1,16 @@
+pkgbase = vmprint
+	pkgdesc = Pure TypeScript spacial layout engine
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://github.com/cosmiciron/vmprint
+	arch = any
+	license = Apache-2.0
+	makedepends = jq
+	makedepends = npm
+	makedepends = moreutils
+	depends = nodejs
+	noextract = cli-1.0.5.tgz
+	source = https://registry.npmjs.org/@vmprint/cli/-/cli-1.0.5.tgz
+	sha256sums = ca2d7c2d4b4f2807e4d0ecc35fafa94b1de7f510b48018f5fed30141232404ca
+
+pkgname = vmprint
