@@ -1,4 +1,4 @@
-# Maintainer: Francesco Pantano <fmount9@autistici.org>
+# Maintainer: Francesco Pantano<francesco.pan001@gmail.com>
 # Contributor: fmount
 
 pkgname=('c_otp')
