@@ -19,6 +19,7 @@ depends=(
     'python-pillow'
     'qt6-base'
     'qt6-multimedia'
+    'qt6-svg'
     'qt6-wayland'
     'layer-shell-qt'
 )
