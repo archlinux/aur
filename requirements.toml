@@ -2,7 +2,8 @@
 # System-wide policy pins – cannot be overridden by systems/users managed_config or users config.
 
 [sandbox]
-profile = "strict"
+# TODO change to strict, when grok fixed -> https://github.com/olwig/pkgbuilds/issues/21
+profile = "workspace"
 
 [ui]
 disable_bypass_permissions_mode = true
