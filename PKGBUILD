@@ -1,7 +1,7 @@
 # Maintainer: ELECTRO <electro@electris.net>
 
 pkgname=rustypaint-git
-pkgver=0.2.1.r0.g79cb939
+pkgver=0.2.1.r3.g8575b86
 pkgrel=1
 pkgdesc="Paint 3D's 2D editor, without the 3D (Git version)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ b2sums=('SKIP')
 
 pkgver() {
     cd rustypaint
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 --match 'v[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
