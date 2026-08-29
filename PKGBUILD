@@ -1,12 +1,13 @@
 # Maintainer: Locez <locez@locez.com>
 pkgname=bilihud-git
 _pkgname=bilihud
-pkgver=0.5.2.r0.g0000000
+pkgver=0.7.0.r0.g0000000
 pkgrel=1
-pkgdesc="B站弹幕阅读器 - 一个可以在游戏全屏时显示弹幕的Qt应用程序"
+pkgdesc="B站弹幕阅读器 - 一个可以在游戏全屏时显示弹幕，且支持开播的Qt应用程序"
 arch=('x86_64')
 url="https://github.com/locez/bilihud"
 license=('MIT')
+keywords=('bilibili' 'danmaku' 'danmu' 'danmuji' 'danmuplayer' 'linux' 'livestreaming' 'macos' 'windows')
 depends=(
     'python>=3.13'
     'python-pyqt6'
