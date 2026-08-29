@@ -1,0 +1,12 @@
+pkgbase = rowed
+	pkgdesc = A simple, interactive SQLite database editor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Undercat037/rowed
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	source = rowed::git+https://github.com/Undercat037/rowed.git#tag=v1.0.0
+	sha256sums = 89faf33089c5a92b561e3ddf2899466dd3a808d6a8bd5320fb7ee992bc1f00ec
+
+pkgname = rowed
