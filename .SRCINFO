@@ -1,6 +1,6 @@
 pkgbase = mimixbox-bin
 	pkgdesc = BusyBox-inspired toolbox for Linux with additional original commands
-	pkgver = 0.41.0
+	pkgver = 0.42.1
 	pkgrel = 1
 	url = https://github.com/nao1215/mimixbox
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = mimixbox-bin
 	provides = mimixbox
 	conflicts = mimixbox
 	options = !strip
-	source = mimixbox-0.41.0-checksums.txt::https://github.com/nao1215/mimixbox/releases/download/v0.41.0/checksums.txt
-	sha256sums = 9002e6254f7e14f013686267d976bc84eb6f765f1f748b927c5a76184102f71c
-	source_x86_64 = mimixbox-0.41.0-x86_64.tgz::https://github.com/nao1215/mimixbox/releases/download/v0.41.0/mimixbox_0.41.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = af85638734edaa28c18eceb60dc623aa4c2fe2a49b8515884bc5872329acb96b
-	source_aarch64 = mimixbox-0.41.0-aarch64.tgz::https://github.com/nao1215/mimixbox/releases/download/v0.41.0/mimixbox_0.41.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = f5640e08fcdba14f681c6e596e0d0cd3347b2e839823e67285793f3537c68bd3
+	source = mimixbox-0.42.1-checksums.txt::https://github.com/nao1215/mimixbox/releases/download/v0.42.1/checksums.txt
+	sha256sums = e819c440b2f65da8d1c9c016bbe8412f8977eb856a64f90cdec57f397dfdc056
+	source_x86_64 = mimixbox-0.42.1-x86_64.tgz::https://github.com/nao1215/mimixbox/releases/download/v0.42.1/mimixbox_0.42.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3ff5315c0b340782d4c2909e1ec9cf42207909403e3205b7a7d7dad150b3cb22
+	source_aarch64 = mimixbox-0.42.1-aarch64.tgz::https://github.com/nao1215/mimixbox/releases/download/v0.42.1/mimixbox_0.42.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 98c9cc5ce19d113560133156dcf295a87e01f7b22594c3ead2d3151fc3351203
 
 pkgname = mimixbox-bin
