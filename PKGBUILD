@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=luvus-bin
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc="Mission control for your AI coding agents"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source_x86_64=(
 source_aarch64=(
     "luvus-${pkgver}-aarch64.tar.gz::https://github.com/RizRiyz/luvus/releases/download/v${pkgver}/luvus-v${pkgver}-aarch64-unknown-linux-musl.tar.gz"
 )
-sha256sums_x86_64=('6c6771c7f627a4f581db8e907ec026d1d616cfc880e070619fdcf54966674206')
-sha256sums_aarch64=('7de61c32e690d4b8132ad3e29476e408731d279951838da71dbb5c3a2c7f8d76')
+sha256sums_x86_64=('01fb4cde86d771ce40f1230e81d731564b8e0fbafe9943ac192bc95c2820c259')
+sha256sums_aarch64=('33aa640f1d9d1c0de6673e048d642e53eff5dcbed47eac8f145ec26ddaa8dd3f')
 
 package() {
     local _archive="${srcdir}/luvus-${pkgver}-${CARCH}.tar.gz"
