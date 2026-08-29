@@ -3,13 +3,15 @@
 pkgname=llama.cpp-hip-gfx1151
 _pkgname=llama.cpp
 pkgver=b10666
-pkgrel=4
+pkgrel=5
 _mtp_commit=1d8de7c1b0c7d2febf8f983174d8e6a711e2b1af
 _mtp_mixer_export_commit=57bb668674d9fb0d382885e5b04911c6437f8e83
 _mtp_detached_head_commit=a82a58a57fc307e5cec0dc68db64d143339be4f2
 _hip_apu_host_buffer_commit=fdc1260e99191717b0aa0a48117d4b758a24a513
 _hip_radix_top_k_commit=7f489034b48051a02c38c2eab5988443b02db300
 _hipcub_commit=527fcad43d2c9ced9fd882a05d872db5647d8f69
+_ple_loader_snapshot=e5d8461c128a215df2140eed5adf1b68e7d29b56
+_ple_row_prefetch_commit=c911e6bb5eb956a759e740fb14db8ca639b7d3e7
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm)"
 arch=(x86_64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -51,6 +53,9 @@ source=(
   "hip-apu-host-buffer-${_hip_apu_host_buffer_commit}.patch::https://github.com/Victor-Loos/llama.cpp/commit/${_hip_apu_host_buffer_commit}.diff"
   "hip-radix-top-k-${_hip_radix_top_k_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/749f688fcaa4c472ec034b08cb8a907c45cfaa02...${_hip_radix_top_k_commit}.diff"
   "hipcub-rocm-${_hipcub_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/07132750825a4f2d27a547cd9cdde1c6f6001885...${_hipcub_commit}.diff"
+  "qwen4exp-ple-per-buffer-mmap-${_ple_loader_snapshot}.patch::https://raw.githubusercontent.com/Aristo94/EngramHalo.cpp/${_ple_loader_snapshot}/docs/strix-halo/llama-cpp-qwen38-per-buffer-mmap.patch"
+  "qwen4exp-ple-row-prefetch-${_ple_row_prefetch_commit}.patch::https://github.com/Aristo94/EngramHalo.cpp/commit/${_ple_row_prefetch_commit}.diff"
+  "qwen4exp-ple-row-prefetch-b10666.patch"
   # 提升性能的妙妙工具
   # "llama-gfx1151.patch::https://gist.githubusercontent.com/pedapudi/0da060d2a3b49a51155dbf00db61fea0/raw/aaaee0a96656ec0fc49bdfa76acd2b4edbfcbfb9/gistfile1.txt"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
@@ -63,6 +68,9 @@ sha256sums=('e5e2c589d9de668303f63b8616fec2ad4b3880e2f02aa5e51c95bc6698a64d3e'
             'a55893cf8dd7a6992d66cf323c13d6dbf96b11065af7a11dc9f205041c37f80e'
             '65cb266ee3890043fcdc691b8f8da8ce8edfb970cc4aadde5860632cc59666aa'
             '92eed6a76cc7ddfbaa9c243ddc13d9a768c4cb82697a8e4be92416913ccbf45a'
+            '971d428de98ecdf59941946bb391c257e82501ce98b7c71cc1f34803181fe133'
+            '6b39be7f0b173963396ce94e19201eec1ccca7801398be66f9bee6f0ced01df5'
+            '8dc67ec854e7b8df6813786fae0a6f1e8db9b15f22a19fd55bbe45e64834dfa4'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
@@ -86,6 +94,19 @@ prepare() {
     --exclude='.github/workflows/hip-quality-check.yml' \
     --exclude='tests/test-backend-ops.cpp' \
     "${srcdir}/hipcub-rocm-${_hipcub_commit}.patch"
+
+  # Keep the PLE mmap-backed while dense weights use asynchronous GPU upload.
+  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch \
+    -i "${srcdir}/qwen4exp-ple-per-buffer-mmap-${_ple_loader_snapshot}.patch"
+
+  # Queue the sparse PLE rows before each graph and support its 160-wide IQ4_NL
+  # rows in the HIP GET_ROWS kernel. The small second patch adapts the rebased
+  # loader bookkeeping and scopes the no-prefetch policy to lazy models.
+  git -C "${_pkgname}" apply --no-index \
+    --exclude='src/llama-model-loader.cpp' \
+    "${srcdir}/qwen4exp-ple-row-prefetch-${_ple_row_prefetch_commit}.patch"
+  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch \
+    -i "${srcdir}/qwen4exp-ple-row-prefetch-b10666.patch"
 
   # Tailwind v4's oxide scanner walks up looking for the nearest .git to anchor
   # .gitignore lookup. In AUR helpers (yay/paru) the parent .git is the AUR
