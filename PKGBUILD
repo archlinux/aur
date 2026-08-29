@@ -1,26 +1,26 @@
 # Maintainer: Skycoder42 <Skycoder42@users.noreply.github.com>
 pkgname='paxchange'
 pkgdesc='Simple dart script to passively synchronize installed pacman packages between systems.'
-pkgver='1.4.3'
+pkgver='1.4.4'
 pkgrel=1
 epoch=2
 arch=('x86_64')
 url='https://github.com/Skycoder42/paxchange'
 license=('BSD')
 depends=('pacman')
-source=("${pkgname}-${pkgver}-sources.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v1.4.3.tar.gz"
-        "${pkgname}-${pkgver}-linux.tar.xz::https://github.com/Skycoder42/paxchange/releases/download/v1.4.3/paxchange-1.4.3-linux.tar.xz")
-b2sums=('c31469a8906317f5ea76f743201f3d712fa8cc28d9753d6d0105785b9494e893c0725d11ffed767f782326f3ef73d0612e8190da55493254298a18d968fc4cf3'
-        '96355383b4f3b6ac003e3b1377b26ce6a0885c87f1c58542c05729327e5d0c7fef0c34a3b167559dd541858a3a037d445657e3c5f255b7d01b28c1b9f60eda20')
+source=("${pkgname}-${pkgver}-sources.tar.gz::https://github.com/Skycoder42/paxchange/archive/refs/tags/v1.4.4.tar.gz"
+        "${pkgname}-${pkgver}-linux.tar.xz::https://github.com/Skycoder42/paxchange/releases/download/v1.4.4/paxchange-1.4.4-linux.tar.xz")
+b2sums=('88c38a9b2b3be11251f4f9e29c6671909f098f82410330d7ee42c33fc5d73f6589b2b023669ebb5dcdf585b2dbf8ae955393279edb6e8a754976362928772cd2'
+        '982ad68e6f8bb355019f37b0deb955b96354402f8180248c1a1c427bb345aaa71682f9a9c20b6bea590317b82e0b7e83d8fba2eb2759610ff8f8515c0199eef7')
 install='paxchange.install'
 changelog='CHANGELOG.md'
 backup=('etc/paxchange.json')
 options=('!strip')
-_pkgdir='paxchange-1.4.3'
+_pkgdir='paxchange-1.4.4'
 
 package_paxchange() {
   install -d "$pkgdir/opt/$pkgname"
-  cp -a 'paxchange-1.4.3/.' "$pkgdir/opt/$pkgname/"
+  cp -a 'paxchange-1.4.4/.' "$pkgdir/opt/$pkgname/"
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/$pkgname/bin/"'paxchange' "$pkgdir/usr/bin/"'paxchange'
   cd "$_pkgdir"
