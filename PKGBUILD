@@ -8,7 +8,7 @@ pkgdesc="A modern, intuitive, terminal text editor. Single file. No dependencies
 
 pkgver=2026.08.29
 pkgrel=1
-_gitversion=2aa9d1f
+_gitversion=7e7728d
 
 arch=('any')
 
@@ -33,15 +33,15 @@ source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"CHANGELOG-${pkgver}.md::${_ghurlraw}/docs/help/changelog.md"
 		"${_appname}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}")
 sha256sums=('9f3273e5e01858ed10ab7a253cbd6b1abd7259bd9b4b3fd1dfafc3bf902e89c3'
-            'fa16f30f8f325a3119e7a9e85ded6c9dc4a2544632e694eae561e50143c171b7'
+            '816e730799c945a7750bc272eb3adb6a6c3b2c66e0bf63bdade571ebe32f5977'
             'ad91b2ec97463e826d9e76c3b1664b2f076fc0fc6e4c97866e43e48dc3a4ca05'
             '074b5624b172e5b407b4c0d795bce8ece01398a87c28fa2a6fca6fba3c4e0e1f'
             '757e6fa391078cd3ab8b522b14021740e4a03f065173ad2fb7ece812fb0075b8'
             '4af4d7b4e5fe3a64e0b41ccd9d8691e1f74708682b1bb7945a8fd65f3935843f'
             '2c1d40500aec7391a4a692bdfb121b5bedbac96789387cac34519a530fe1c33f'
-            'b69a054e50829ddbc1f1d7aaa8aa6d3cfac9eb52c2ac85463e488bc30dc9bc46'
-            'd6c12fb527b574a39e9eb884712e4de257a9f4b6b4304f558180511e01c3a610'
-            'f4e9486a12afdb8558a0e503f0dac8e6af731f3bd35ee2e559ddc40715319ccb')
+            '15bf14930e9d38d281a898e154a8cf20243a49f602e63096995d1b0f7a60b787'
+            'dc5a469a34d6f69165275a7530d78e342e541e8c05b500b1429fcacfe33a662e'
+            '23ee099a891d3be5e28532ceb712af5489889ba8a96dc1a9f3921bc54e71fa8b')
 
 
 prepare() {
