@@ -3,8 +3,8 @@
 
 _pkgname="qcsxcad"
 pkgname="$_pkgname-git"
-pkgver=0.6.3.r14.g92d546f
-pkgrel=2
+pkgver=0.6.3.r17.geecf000
+pkgrel=1
 pkgdesc="Qt-GUI for CSXCAD"
 url="https://github.com/thliebig/QCSXCAD"
 license=("LGPL-3.0-or-later")
@@ -21,12 +21,8 @@ makedepends=(
   'git'
   'ninja'
 
-  'eigen3'
   'fast_float'
   'nlohmann-json'
-  'openmpi'
-  'utf8cpp'
-  'vulkan-headers'
 )
 
 provides=("$_pkgname")
