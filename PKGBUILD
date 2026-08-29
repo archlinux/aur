@@ -20,12 +20,8 @@ makedepends=(
   'cmake'
   'ninja'
 
-  'eigen3'
   'fast_float'
   'nlohmann-json'
-  'openmpi'
-  'utf8cpp'
-  'vulkan-headers'
 )
 
 _pkgsrc="QCSXCAD-$pkgver"
