@@ -7,11 +7,19 @@ arch=('x86_64')
 url="https://github.com/tidynest/linux-hardener"
 license=('Apache-2.0')
 # Carries an existing install across the rename from linux-system-hardener
-# (#51). `replaces` makes pacman swap it on -Syu, `conflicts` stops both
-# being installed at once, and `provides` keeps anything depending on the
-# old name satisfiable. All three are needed: `replaces` alone leaves a
-# stale dependency unsatisfied, and `provides` alone never triggers the
-# swap.
+# (#51), at the moment somebody installs this package. `conflicts` stops both
+# being installed at once, `replaces` makes the removal automatic rather than
+# an error, and `provides` keeps anything depending on the old name
+# satisfiable. All three are needed: `conflicts` alone makes the install fail
+# instead of swapping, and `provides` alone leaves the old package in place.
+#
+# `replaces` does NOT reach out and find an existing install. pacman reads it
+# during -Syu from a SYNC DATABASE, and the AUR is not one, so a user sitting
+# on linux-system-hardener is never offered this package and never learns it
+# exists. Verified on 2026-08-29: a full `yay -Syu` upgraded an unrelated
+# package and said nothing about the rename. The install guides tell people to
+# install this package by name for that reason; do not restore the claim that
+# an upgrade sweep does it for them.
 provides=('linux-system-hardener')
 conflicts=('linux-system-hardener')
 replaces=('linux-system-hardener')
