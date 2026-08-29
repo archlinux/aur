@@ -23,8 +23,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.xz::${_url_base}/CNMPlayer_v${pk
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.xz::${_url_base}/CNMPlayer_v${pkgver}_linux_aarch64.tar.xz")
 
 # pkgver 与下面两行 sha256 由 GitHub Actions 的 aur_sync.sh 每版自动重算
-sha256sums_x86_64=('60743b334dc33512fff785ed9724359d779786c31adc5dd6924d02e2b01a3824')
-sha256sums_aarch64=('124710c8db29c35f19ec9b3a49a6b49ba447998c19b81b228ba287bb94134ac4')
+sha256sums_x86_64=('454e513e5614eea8b387008c24628a006d44c0561728963620ba09f3f8f0a145')
+sha256sums_aarch64=('98ab067923dbb3a637c1ea89ef3e3ffe34438598234a88ea12f25d5e5cdec8fc')
 
 package() {
   install -Dm755 "cnmplayer" "${pkgdir}/usr/bin/cnmplayer"
