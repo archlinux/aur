@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 depends=('gtk3' 'glib2')
 makedepends=('flutter' 'git' 'cmake' 'ninja' 'clang' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/modlist-org/modlist_org_app/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('90297bf0b7e995c44d142a48756a95f78d8ff7022d4b3a763ff31236fde1b290')
 
 build() {
   cd "modlist_org_app-${pkgver}"
