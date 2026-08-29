@@ -1,6 +1,6 @@
-pkgbase = lumina
+pkgbase = lumina-editor-git
 	pkgdesc = 3D game creation environment for Lumen
-	pkgver = 0.1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/spikest3r/Lumina
 	arch = x86_64
@@ -13,4 +13,4 @@ pkgbase = lumina
 	source = git+https://github.com/spikest3r/Lumina.git
 	sha256sums = SKIP
 
-pkgname = lumina
+pkgname = lumina-editor-git

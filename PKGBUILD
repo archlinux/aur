@@ -1,5 +1,5 @@
-pkgname=lumina
-pkgver=0.1.0
+pkgname=lumina-editor-git
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="3D game creation environment for Lumen"
 arch=('x86_64')
