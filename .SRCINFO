@@ -1,0 +1,22 @@
+pkgbase = dvb-firmware-t230-hvr935
+	pkgdesc = Firmware for TV tuner Geniatech MyGica T230 (including T230A, T230C, T230C2) and Hauppauge WinTV-HVR-935 (including WinTV-soloHD, WinTV-dualHD).
+	pkgver = 201706
+	pkgrel = 1
+	url = https://github.com/LibreELEC/dvb-firmware
+	arch = any
+	license = LicenseRef-SiliconLabs-Redistribution
+	makedepends = zstd
+	source = https://raw.githubusercontent.com/LibreELEC/dvb-firmware/master/firmware/dvb-demod-si2168-b40-01.fw
+	source = https://raw.githubusercontent.com/LibreELEC/dvb-firmware/master/firmware/dvb-demod-si2168-d60-01.fw
+	source = https://raw.githubusercontent.com/LibreELEC/dvb-firmware/master/firmware/dvb-tuner-si2141-a10-01.fw
+	source = https://raw.githubusercontent.com/LibreELEC/dvb-firmware/master/firmware/dvb-tuner-si2157-a30-01.fw
+	source = https://raw.githubusercontent.com/LibreELEC/dvb-firmware/master/firmware/dvb-tuner-si2158-a20-01.fw
+	source = LICENSE
+	sha256sums = d25c7deb9f69dca232ce25ab108da8ff5013d6d39088e0ec3475d97ded8af718
+	sha256sums = 5e1c860e95a8d92b2716b0075dd00e55f99c2c368e35340f6b527c366ff27ee7
+	sha256sums = 6b8d5005325c5115920827c68ab8c8e3d2e78cb5c210b61109a435b702f7adcb
+	sha256sums = 8b2af7f9714834106adc075bde60433a1f6d6812383e8c3f0d4e50212fb3eb5e
+	sha256sums = 6172e40e7884da28dc1cd08b1f082bf0339629f87d5eefbdc09dd232c1edf8e7
+	sha256sums = 4f4c7ef6be569c75c80089d7e98f6553cf8bfbdeda75ee27a6cc5de0d0cd6ed2
+
+pkgname = dvb-firmware-t230-hvr935
