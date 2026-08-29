@@ -3,7 +3,7 @@
 
 # shellcheck disable=SC2164
 
-pkgver=2.2.4.r29.gb3843f5
+pkgver=2.2.4.r33.gea64a47
 pkgrel=1
 
 _pkgname=casual-pre-loader
@@ -41,6 +41,9 @@ conflicts=("${_pkgname}")
 
 install="${_pkgname}.install"
 
+# TODO: Consider grabbing a tarball instead because cloning a repo is done with the `--mirror` flag.
+# This causes git to grab ALL refs, and cannot be disabled without monkey-patching `makepkg` shell functions.
+# Due to some poor past decisions, large zip files were put into the VCS, ballooning a mirror to around 500MB compared to 8.5 MB.
 source=(
 	"git+${url}"
 	'git+https://github.com/cueki/studiomdl'
@@ -55,7 +58,12 @@ pkgver() {
 }
 
 prepare() {
-	gendesk -n -f --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec "${_pkgname}" --icon "${_pkgname}" --categories 'Utility' # generate desktop entry file
+	# generate desktop entry file
+	gendesk -n -f \
+		--pkgname "${_pkgname}" --name "${_pkgname}" --exec "${_pkgname}" --icon "${_pkgname}" \
+		--pkgdesc "${pkgdesc}" \
+		--terminal false \
+		--categories 'QT;Utility;Game;GameTool'
 
 	cd "${_pkgname}"
 
@@ -67,15 +75,15 @@ prepare() {
 
 	git submodule update --init --recursive
 
-	# must be sequential to avoid race condition
-	git submodule foreach --recursive 'printf "%s\0" "${sm_path}" >&2' 3>&2 2>&1 1>&3 |
-		xargs -0I{} find '{}' \( \
-			-name .git \
-			-o -name .gitignore \
-			-o -name .gitattributes \
-			-o -name .gitmodules \
-			\) -print0 >.submodules
-	xargs -0 rm -vr <.submodules
+	# remove any VCS-related files from submodules after they've been initialized (./.git is NOT a directory in this case)
+	# must be sequential to avoid race condition when recursively interating over submodules
+	git submodule foreach --quiet --recursive 'printf "%s\0" "${sm_path}"' >../.submodules
+	xargs -0I{} sh -c -e '
+		printf "Entering '"'%s'"'\n" "${1}"
+		cd "${1}"
+		rm -fv .git .gitignore .gitattributes .gitmodules
+	' sh '{}' <../.submodules
+	rm ../.submodules
 }
 
 package() {
