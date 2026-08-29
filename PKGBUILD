@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=cumora-bin
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A workspace where AI teammates live, not visit."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('unknown')
 depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
 optdepends=('libappindicator-gtk3: for system tray icon support')
 source=("cumora_${pkgver}_amd64.deb::https://updates.cumora.ai/cumora_${pkgver}_amd64.deb")
-md5sums=('0e8470c14c43cbdc1118665a6494092d')
+md5sums=('77f736ef6c00700aa57bf726b8320a35')
 
 package() {
     # Extract the deb package
