@@ -1,0 +1,5 @@
+[latch]
+source = "github"
+github = "unixshells/latch"
+use_latest_release = true
+prefix = "v"

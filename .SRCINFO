@@ -1,0 +1,15 @@
+pkgbase = latch
+	pkgdesc = Terminal multiplexer with built-in remote access
+	pkgver = 1.0.41
+	pkgrel = 1
+	url = https://github.com/unixshells/latch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = latch
+	options = !strip
+	source = latch-1.0.41.tgz::https://github.com/unixshells/latch/archive/v1.0.41.tar.gz
+	sha256sums = dd5d343e02fea89b47899b3e3f1f1b882e3633b44bf803297521b1eda4a74448
+
+pkgname = latch
