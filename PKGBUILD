@@ -1,7 +1,7 @@
 # Maintainer: LIghtJUNction <support@lmm.best>
 
 pkgname=lmm-api-go-bin
-pkgver=0.1.69
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='LMM API Go backend, native CLI, and systemd service (prebuilt)'
 arch=('x86_64' 'aarch64')
@@ -13,17 +13,9 @@ optdepends=(
   'postgresql: production database'
   'valkey: cache, rate limiting, and login sessions'
 )
-source "${startdir:?}/lmm-api-cli-phase.sh"
-_lmm_declared_cli_phase='t0'
-if (( $(vercmp "$pkgver" 0.1.63) >= 0 )); then
-  lmm_cli_phase_validate "$_lmm_declared_cli_phase" || return 1
-  _lmm_cli_phase=$_lmm_declared_cli_phase
-else
-  [[ -z $_lmm_declared_cli_phase ]] || return 1
-  _lmm_cli_phase=$(lmm_cli_phase_for_binary_release "$pkgver")
-fi
-lmm_cli_phase_apply_metadata "$_lmm_cli_phase" "$pkgver" \
-  'lmm-api' 'lmm-api-bin' 'lmm-api-git' 'lmm-api-go' 'lmm-api-go-git'
+source "${startdir:?}/lmm-api-go-package.sh"
+lmm_go_package_apply_metadata "$pkgver" "$pkgname" \
+  'lmm-api-go' 'lmm-api-go-bin' 'lmm-api-go-git'
 backup=('etc/lmm-api-go/lmm-api-go.env')
 options=('!strip')
 
@@ -31,10 +23,10 @@ _release_tag="go-v${pkgver}"
 _legacy_bundled_version=0.1.34
 _legacy_cli_archive_version=0.1.57
 _legacy_external_operator_version=0.1.57
-# go-v0.1.58 produced no release assets; releases >=0.1.63 use signed phase metadata.
+# go-v0.1.58 produced no release assets. Only signed 0.1.69 is accepted as the legacy N-1 layout.
 _artifact="lmm-api-go-${pkgver}-linux"
 _release_base="${url}/releases/download/${_release_tag}"
-source=('lmm-api-cli-phase.sh')
+source=('lmm-api-go-package.sh')
 source_x86_64=(
   "${_artifact}-amd64.tar.gz::${_release_base}/${_artifact}-amd64.tar.gz"
   "${_artifact}-amd64.tar.gz.sha256::${_release_base}/${_artifact}-amd64.tar.gz.sha256"
@@ -46,16 +38,16 @@ source_aarch64=(
   "${_artifact}-arm64.tar.gz.sigstore.json::${_release_base}/${_artifact}-arm64.tar.gz.sigstore.json"
 )
 noextract=("${_artifact}-amd64.tar.gz" "${_artifact}-arm64.tar.gz")
-sha256sums=('2b93864b302a7901a4688fd5b7df9b7e262f193a666a915718f434db20054935')
+sha256sums=('655e9346a6d87baa1cb81d97dcc412243d7ee305f90371b99d89033ea0e99bb1')
 sha256sums_x86_64=(
-  'b5f7e5347ce60c30f4a462e5904ef24b39bc9bd2c6e5c5b681d529915ca34d88'
-  '36f124b8ba97da51a7946cf4d9aa0c6796c6bfea72392ea19735cc680f4bde72'
-  '0730ae0ee96a063f98beec52d8e02564e1ed0505333549875d949e6f59f50211'
+  'ad86917ff7e39b1a3f9f6f312cccfcbe3f95de140fade4ef0161743046140b36'
+  '15f98f86149090eecefa470bc3f3a1f8e74ee5f0356568959e262fda962bba7b'
+  '764dc18cb04bbc55b2b0e576ea5269f3dd84e5802bd2206e6da7c69b3331d263'
 )
 sha256sums_aarch64=(
-  'd1255b0a0ab4468f3279c5ea62c4bc47d984bcfdf718f8c8e1265e7c7ef8c31a'
-  '13308d75c49e412bd81a04c41ddd52967499ed0b13c75fe7e18d1683d683ef03'
-  'a2168a65424413cbab3a57e54c1bd93b5d5c8a5ff1e823bfcf171cb8a36fc34c'
+  'ab96c705a81065408785e839c3ca5338add9de66c2841b5d5a4327cb0569fd50'
+  'a3b6ae6f10dce3a00a83ee1132b99bfb6af7476d86470d93cce74bbab71550fd'
+  '8460da120f9b479bd798cb4d0f6a00a2af74fd00e5b0d71bf8439951505430eb'
 )
 
 case "${CARCH}" in
@@ -81,12 +73,14 @@ prepare() {
   bsdtar -xf "${archive}"
 
   local bundle="${srcdir}/${_artifact}-${_release_arch}"
-  if [[ ${pkgver} == "${_legacy_cli_archive_version}" || ${pkgver} == "${_legacy_bundled_version}" ]]; then
-    [[ -f ${bundle}/lmm-api-go && ! -L ${bundle}/lmm-api-go ]] || return 1
-    [[ ! -e ${bundle}/lmm-api ]] || return 1
-  else
+  if lmm_go_package_is_verified_legacy "$pkgname" "$pkgver"; then
+    # Explicit N-1 migration evidence: go-v0.1.69 shipped the provider payload
+    # as lmm-api. Only this signed release may be remapped to lmm-api-go.
     [[ -f ${bundle}/lmm-api && ! -L ${bundle}/lmm-api ]] || return 1
-    [[ ! -e ${bundle}/lmm-api-go ]] || return 1
+    [[ ! -e ${bundle}/lmm-api-go && ! -L ${bundle}/lmm-api-go ]] || return 1
+  else
+    [[ -f ${bundle}/lmm-api-go && ! -L ${bundle}/lmm-api-go ]] || return 1
+    [[ ! -e ${bundle}/lmm-api && ! -L ${bundle}/lmm-api ]] || return 1
   fi
   if [[ ${pkgver} == "${_legacy_bundled_version}" ]]; then
     [[ -f ${bundle}/frontend-dist/index.html ]] || return 1
@@ -103,25 +97,30 @@ prepare() {
     grep -Fqx 'Environment=LMM_API_FRONTEND_DIR=/srv/lmm-api-frontend/current' \
       "${bundle}/lmm-api.service"
   fi
-  if (( $(vercmp "${pkgver}" 0.1.63) >= 0 )); then
+  if lmm_go_package_is_verified_legacy "$pkgname" "$pkgver"; then
     [[ -f ${bundle}/CLI_TRANSITION_PHASE && ! -L ${bundle}/CLI_TRANSITION_PHASE ]] || return 1
-  fi
-  if [[ -f ${bundle}/CLI_TRANSITION_PHASE ]]; then
-    [[ $(<"${bundle}/CLI_TRANSITION_PHASE") == "${_lmm_cli_phase}" ]] || return 1
+    [[ $(<"${bundle}/CLI_TRANSITION_PHASE") == t0 ]] || return 1
+  else
+    [[ ! -e ${bundle}/CLI_TRANSITION_PHASE && ! -L ${bundle}/CLI_TRANSITION_PHASE ]] || return 1
   fi
 }
 
 package() {
   local archive="${_artifact}-${_release_arch}.tar.gz"
   local bundle="${srcdir}/${_artifact}-${_release_arch}"
-  local cli=lmm-api
+  local cli=lmm-api-go
   local file release_asset_sha256
 
-  if [[ ${pkgver} == "${_legacy_cli_archive_version}" || ${pkgver} == "${_legacy_bundled_version}" ]]; then
-    cli=lmm-api-go
+  if lmm_go_package_is_verified_legacy "$pkgname" "$pkgver"; then
+    cli=lmm-api
   fi
-  install -Dm0755 "${bundle}/${cli}" "${pkgdir}/usr/bin/lmm-api"
-  lmm_cli_phase_install_compatibility_alias "$_lmm_cli_phase" "$pkgdir"
+  if lmm_go_package_is_verified_legacy "$pkgname" "$pkgver"; then
+    install -Dm0755 "${bundle}/${cli}" "${pkgdir}/usr/bin/lmm-api"
+    ln -s lmm-api "${pkgdir}/usr/bin/lmm-api-go"
+  else
+    install -Dm0755 "${bundle}/${cli}" "${pkgdir}/usr/bin/lmm-api-go"
+  fi
+  lmm_go_package_assert_payload "$pkgdir" "$pkgname" "$pkgver"
   install -Dm0644 "${bundle}/lmm-api.service" \
     "${pkgdir}/usr/lib/systemd/system/lmm-api.service"
   install -d -m0700 "${pkgdir}/etc/lmm-api-go"
@@ -148,10 +147,6 @@ package() {
     fi
     install -Dm0644 "${bundle}/API_ROUTE_CONTRACT_REVISION" \
       "${pkgdir}/usr/share/doc/${pkgname}/API_ROUTE_CONTRACT_REVISION"
-    if [[ -f ${bundle}/CLI_TRANSITION_PHASE ]]; then
-      install -Dm0644 "${bundle}/CLI_TRANSITION_PHASE" \
-        "${pkgdir}/usr/share/doc/${pkgname}/CLI_TRANSITION_PHASE"
-    fi
   fi
 
   install -d -m0755 "${pkgdir}/usr/share/lmm-api-go/edge-policy"
@@ -164,6 +159,10 @@ package() {
     install -Dm0644 "${bundle}/${file}" "${pkgdir}/usr/share/licenses/${pkgname}/${file}"
   done
   install -Dm0644 "${bundle}/REVISION" "${pkgdir}/usr/share/doc/${pkgname}/REVISION"
+  if lmm_go_package_is_verified_legacy "$pkgname" "$pkgver"; then
+    install -Dm0644 "${bundle}/CLI_TRANSITION_PHASE" \
+      "${pkgdir}/usr/share/doc/${pkgname}/CLI_TRANSITION_PHASE"
+  fi
   release_asset_sha256=$(sha256sum "${srcdir}/${archive}")
   printf '%s\n' "${release_asset_sha256%% *}" >"${srcdir}/RELEASE_ASSET_SHA256"
   install -Dm0644 "${srcdir}/RELEASE_ASSET_SHA256" \
