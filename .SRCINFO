@@ -1,6 +1,6 @@
 pkgbase = siggy-bin
 	pkgdesc = Terminal-based Signal messenger client with vim keybindings
-	pkgver = 1.14.2
+	pkgver = 1.14.3
 	pkgrel = 1
 	url = https://github.com/johnsideserf/siggy
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = siggy-bin
 	depends = libgcc
 	provides = siggy
 	conflicts = siggy
-	source = README-1.14.2.md::https://raw.githubusercontent.com/johnsideserf/siggy/v1.14.2/README.md
-	source = LICENSE-1.14.2::https://raw.githubusercontent.com/johnsideserf/siggy/v1.14.2/LICENSE
+	source = README-1.14.3.md::https://raw.githubusercontent.com/johnsideserf/siggy/v1.14.3/README.md
+	source = LICENSE-1.14.3::https://raw.githubusercontent.com/johnsideserf/siggy/v1.14.3/LICENSE
 	sha256sums = 3aed6448358bf330ff6282f836199b0dc0755bd11bd6e388d60c859eff260009
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
-	source_x86_64 = siggy-x86_64-1.14.2.tgz::https://github.com/johnsideserf/siggy/releases/download/v1.14.2/siggy-v1.14.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 0ee56d3a077032587d3d6da2dc34dc281a1d72cb9b903b0e0a0b42285014da1d
+	source_x86_64 = siggy-x86_64-1.14.3.tgz::https://github.com/johnsideserf/siggy/releases/download/v1.14.3/siggy-v1.14.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 42c98bd613be9a70c5cfd3f6ab5d5efea0aaeab49bbf0c035dab0098564eb752
 
 pkgname = siggy-bin
