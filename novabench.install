@@ -1,0 +1,7 @@
+post_install() {
+  echo "Novabench provides a privileged socket-activated sensor service."
+  echo "For full hardware detection and sensor support, enable it with:"
+  echo
+  echo "  sudo systemctl enable --now novabench-service.socket"
+  echo
+}
