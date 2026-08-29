@@ -1,6 +1,6 @@
 pkgbase = portal-mc-bin
 	pkgdesc = Portal - Minecraft launcher/manager (stable release)
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://portal.tiouo.cc/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = portal-mc-bin
 	depends = fuse2
 	depends = hicolor-icon-theme
 	depends = xdg-utils
-	provides = portal-mc=1.0.4
+	provides = portal-mc=1.0.5
 	conflicts = portal-mc
 	conflicts = portal-mc-commit-bin
 	conflicts = portal-mc-nightly-bin
@@ -17,7 +17,7 @@ pkgbase = portal-mc-bin
 	options = !emptydirs
 	source_x86_64 = Portal.AppImage::https://github.com/tiouoo/Portal/releases/latest/download/Portal.linux.x64.AppImage
 	source_x86_64 = portal.png::https://portal.tiouo.cc/portal-logo.png
-	sha256sums_x86_64 = c1b9c1b3ea683db9bac7949ba8bf11f00e123fb2e2834f76a80fcff210f13050
+	sha256sums_x86_64 = 38001c4eb179c8785954043393ef941013abe417603ed066419da25470f9fe1a
 	sha256sums_x86_64 = SKIP
 
 pkgname = portal-mc-bin

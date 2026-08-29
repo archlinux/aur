@@ -1,7 +1,7 @@
 # Maintainer: tiouoo <tiouo@qq.com>
 
 pkgname=portal-mc-bin
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Portal - Minecraft launcher/manager (stable release)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source_x86_64=(
     "$_appimg::https://github.com/tiouoo/Portal/releases/latest/download/Portal.linux.x64.AppImage"
     "portal.png::https://portal.tiouo.cc/portal-logo.png"
 )
-sha256sums_x86_64=('c1b9c1b3ea683db9bac7949ba8bf11f00e123fb2e2834f76a80fcff210f13050' 'SKIP')
+sha256sums_x86_64=('38001c4eb179c8785954043393ef941013abe417603ed066419da25470f9fe1a' 'SKIP')
 noextract=("$_appimg")
 
 package() {
