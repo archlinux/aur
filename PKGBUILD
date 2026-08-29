@@ -1,6 +1,6 @@
 # Maintainer: neolax <NEOLAX@proton.me>
 pkgname=anihub-cli
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Unofficial terminal client for browsing and watching anime from AniHub'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'mpv')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5ca717dd4ce0fa4b5bc5198631cd57c232779c2a7f5b0d86e9717051a9e1b9e6')
+sha256sums=('dd678ddc4ea7c5df5a2af93de0344a33fd2ee044237af5f127d40e9e5cc93569')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -30,4 +30,3 @@ package() {
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
