@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: 0BSD
 
 pkgname=aurascan
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="AI-assisted safety and recovery layer for Arch-family systems"
 arch=('any')
@@ -23,6 +23,7 @@ optdepends=(
   'shelly: optional Shelly update handoff for aurascan upgrade'
   'python-pyqt6: AuraScan Updater tray applet'
   'pyside6: alternative Qt binding for the AuraScan Updater tray applet'
+  'libnotify: desktop notifications for Agent Instruction Guard'
   'pacman-contrib: bounded package-cache cleanup for incident recovery'
   'pciutils: readable GPU model names in hardware-aware follow-up'
   'dmidecode: DIMM type and configured-speed context when privilege is already available'
@@ -44,7 +45,7 @@ optdepends=(
   'xfsprogs: read-only XFS recovery diagnostics'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7c3e230dd46704bb650af75cafd165e9374bfc1f66b986b8052411c0fc375d9a')
+sha256sums=('0aac67c95f203a5ad882b15605201760ca0afd3f31a15f6eb01e3a4225178b9b')
 
 build() {
   cd "AuraScan-$pkgver"
@@ -71,6 +72,10 @@ package() {
   install -Dm644 aurascan/assets/aurascan-incident-safe-autopilot.service "$pkgdir/usr/lib/systemd/system/aurascan-incident-safe-autopilot.service"
   install -Dm644 aurascan/assets/aurascan-incident-assistant.service "$pkgdir/usr/lib/systemd/user/aurascan-incident-assistant.service"
   install -Dm644 aurascan/assets/aurascan-incident-assistant.timer "$pkgdir/usr/lib/systemd/user/aurascan-incident-assistant.timer"
+  install -Dm644 aurascan/assets/aurascan-instruction-monitor.service "$pkgdir/usr/lib/systemd/user/aurascan-instruction-monitor.service"
+  install -Dm644 aurascan/assets/aurascan-instruction-monitor.timer "$pkgdir/usr/lib/systemd/user/aurascan-instruction-monitor.timer"
+  install -Dm644 aurascan/assets/aurascan-instruction-assistant.service "$pkgdir/usr/lib/systemd/user/aurascan-instruction-assistant.service"
+  install -Dm644 aurascan/assets/aurascan-instruction-assistant.timer "$pkgdir/usr/lib/systemd/user/aurascan-instruction-assistant.timer"
   install -Dm644 aurascan/assets/aurascan-incidents.conf "$pkgdir/usr/lib/tmpfiles.d/aurascan-incidents.conf"
   install -Dm644 aurascan/assets/aurascan-recovery.service "$pkgdir/usr/lib/systemd/system/aurascan-recovery.service"
   install -Dm644 aurascan/assets/aurascan-recovery-refresh.hook "$pkgdir/usr/share/libalpm/hooks/aurascan-recovery-refresh.hook"
