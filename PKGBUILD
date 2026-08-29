@@ -2,10 +2,10 @@
 # Contributor: Sunny <brainworms2002 at gmail dot com>
 
 pkgname="uzdoom-appimage"
-pkgver=4.14.3
+pkgver=5.0.0
 #_srctag=${pkgver%.*}-${pkgver##*.}
 _srctag=${pkgver}
-pkgrel=3
+pkgrel=1
 pkgdesc="UZDoom is a feature centric port for all Doom engine games, based on GZDoom, adding an advanced renderer and powerful scripting capabilities (Appimage)"
 url="https://github.com/UZDoom/UZDoom"
 license=("GPL-3.0-or-later" "BSD-3-Clause" "LGPL-3.0-or-later" "LicenseRef-DUMB" "bzip2-1.0.6" "0BSD" )
@@ -13,8 +13,8 @@ arch=("x86_64")
 provides=("uzdoom")
 conflicts=("uzdoom")
 depends=(zlib glibc squashfuse)
-source=("https://github.com/UZDoom/UZDoom/releases/download/$_srctag/Linux-UZDoom-$_srctag.AppImage")
-sha256sums=('7a0918ab951da5ffe873b7d479f701c09c216e0a23d821eef4548283ba43a167')
+source=(Linux-UZDoom-$_srctag.AppImage::"https://github.com/UZDoom/UZDoom/releases/download/$_srctag/Linux-UZDoom-Release-x86_64.AppImage")
+sha256sums=('2cd58632d9ef88bd7a92f6b4eac1fc61861ab00528c24f700fcf59e82a4fefa4')
 options=(!strip !debug)
 build() {
   chmod +x "Linux-UZDoom-$_srctag.AppImage"
