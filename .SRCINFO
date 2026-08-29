@@ -1,20 +1,20 @@
 pkgbase = pgcopydb
 	pkgdesc = pgcopydb is a tool that automates running pg_dump | pg_restore between two running Postgres servers
-	pkgver = 0.17
+	pkgver = 0.18
 	pkgrel = 1
 	url = https://github.com/dimitri/pgcopydb
 	arch = any
 	license = PostgreSQL License
 	makedepends = icu
 	makedepends = krb5
-	makedepends = openssl>=1.0.0
-	makedepends = readline>=6.0
+	makedepends = openssl
+	makedepends = readline
 	makedepends = pam
 	makedepends = zlib
 	makedepends = libxml2
 	makedepends = libxslt
 	depends = postgresql-libs
-	source = https://github.com/dimitri/pgcopydb/archive/refs/tags/v0.17.zip
-	sha1sums = ddb195efe3a2fc6b471fa96e0bcb9a6403b251df
+	source = https://github.com/dimitri/pgcopydb/archive/refs/tags/v0.18.zip
+	sha1sums = 3371269277e13b751636d9e7f2f81aeef4aec07a
 
 pkgname = pgcopydb
