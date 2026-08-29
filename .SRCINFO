@@ -1,0 +1,21 @@
+pkgbase = haur-git
+	pkgdesc = A minimal, modular, and hook-based AUR helper written in Tcl
+	pkgver = r88.961d4ee
+	pkgrel = 1
+	url = https://codeberg.org/NidoBr/haur
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = tcl
+	depends = tcllib
+	depends = curl
+	depends = git
+	depends = pacman
+	optdepends = devtools: for clean chroot building support
+	optdepends = bash-completion: for CLI autocompletion
+	provides = haur
+	conflicts = haur
+	source = git+https://codeberg.org/NidoBr/haur.git
+	sha256sums = SKIP
+
+pkgname = haur-git
