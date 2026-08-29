@@ -7,18 +7,18 @@
 # Contributor: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
 
 pkgname=amarok-git
-pkgver=3.3.2.r52.g072a2ac
+pkgver=3.3.3.r28.g8d35086
 pkgrel=1
 pkgdesc="The powerful music player for KDE"
 arch=(x86_64)
 url="https://apps.kde.org/amarok/"
 license=(GPL-2.0-or-later)
 depends=(threadweaver qt6-webengine qt6-declarative
-         kcmutils ktexteditor kdnssd kirigami2 kstatusnotifieritem ktextwidgets
+         kcmutils ktexteditor kdnssd kstatusnotifieritem ktextwidgets
          mariadb libmariadbclient fftw ffmpeg taglib qt6-tools gstreamer gst-plugins-base-libs
 
          # namcap implicit depends
-         kiconthemes ki18n qt6-svg gcc-libs kcompletion kitemviews kwidgetsaddons solid karchive kcrash
+         kiconthemes ki18n qt6-svg libstdc++ kcompletion kitemviews kwidgetsaddons solid karchive kcrash
          kdbusaddons kconfigwidgets kpackage kcodecs knotifications hicolor-icon-theme kxmlgui qt6-base kconfig
          kcoreaddons kglobalaccel kirigami kwindowsystem kguiaddons glibc kio kcolorscheme)
 makedepends=(git extra-cmake-modules kdoctools gdk-pixbuf2 knotifyconfig vulkan-headers
