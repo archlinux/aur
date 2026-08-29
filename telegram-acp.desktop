@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Telegram ACP
+Comment=Bridge Telegram and ACP coding agents
+Exec=telegram-acp daemon
+Icon=network-transmit-receive
+Terminal=false
+Categories=Development;
+Keywords=Telegram;ACP;Agent;
+StartupNotify=false

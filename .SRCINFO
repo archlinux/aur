@@ -1,0 +1,25 @@
+pkgbase = telegram-acp-git
+	pkgdesc = Bridge Telegram and ACP coding agents
+	pkgver = 0.2.0.r56.g6840ed7
+	pkgrel = 1
+	url = https://github.com/SuperKenVery/Telegram-ACP
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = libappindicator
+	depends = libx11
+	depends = openssl
+	depends = xdotool
+	provides = telegram-acp
+	conflicts = telegram-acp
+	source = telegram-acp::git+https://github.com/SuperKenVery/Telegram-ACP.git
+	source = telegram-acp.desktop
+	sha256sums = SKIP
+	sha256sums = b44262d25846b14ede73f50d207a0fe9ac7e7f4b50e7ca9567f412b59b0f1237
+
+pkgname = telegram-acp-git
