@@ -1,7 +1,7 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=('cfrds')
 pkgver='1.1.7'
-pkgrel=1
+pkgrel=2
 options=(!debug)
 pkgdesc='Client side ColdFusion RDS protocol.'
 arch=('x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
@@ -14,9 +14,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/bokic/$pkgname/archive/refs/tags/${pkgver}.tar.gz"
 )
 
-sha512sums=(
-    '74f79bd7077ae05bdae1f6e2d6cc0eac6f3ea2dfbcc35792180a0589595d1a76448e8b3bee51a5966d804b6578e70168ee43629e9e6877e3901b86133cf2b49b'
-)
+sha512sums=('0077225d50b99ef796ed59b6ea9f6f0038c04d6c879f0c6db65784b8a451fe32653ed34ad2f5a3df753001bdc5c13e65ec4030964b31bd3d8e668d7800eb1ea4')
 
 build() {
     cmake -DCFRDS_GIT_TAG="$pkgver" -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -B"$pkgname-$pkgver/build" -G Ninja "$pkgname-$pkgver"
