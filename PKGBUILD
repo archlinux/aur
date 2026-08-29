@@ -1,7 +1,7 @@
 # Maintainer: twxt <aur@twxt.cc>
 
 pkgname=openmodscan-git
-pkgver=r1695.423127c
+pkgver=r1713.c6597fd
 pkgrel=1
 pkgdesc="OpenModScan is a free and open-source Modbus Master (Client) utility supporting both Modbus-TCP and Modbus-RTU protocols."
 arch=('x86_64' 'i686' 'aarch64')
