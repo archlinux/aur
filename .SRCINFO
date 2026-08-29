@@ -1,0 +1,16 @@
+pkgbase = lumina
+	pkgdesc = 3D game creation environment for Lumen
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/spikest3r/Lumina
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = glfw
+	depends = vulkan-icd-loader
+	source = git+https://github.com/spikest3r/Lumina.git
+	sha256sums = SKIP
+
+pkgname = lumina
