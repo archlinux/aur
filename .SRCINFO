@@ -1,0 +1,14 @@
+pkgbase = ffnvcodec-headers13.0
+	pkgdesc = FFmpeg version of headers required to interface with Nvidias codec APIs (version 13.0)
+	pkgver = 13.0.19.1
+	pkgrel = 1
+	url = https://git.videolan.org/?p=ffmpeg/nv-codec-headers.git
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = ffnvcodec-headers
+	conflicts = ffnvcodec-headers
+	source = git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git#tag=88fee5c37318c991a8762d423530f91681e32e3a
+	sha256sums = 7016462c5bc737fdb4ac0fce51249447c48be59edfdf0f8bb0c668b357d38da6
+
+pkgname = ffnvcodec-headers13.0
