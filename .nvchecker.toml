@@ -1,0 +1,5 @@
+[qlan]
+source = "github"
+github = "TCP-RWX/qlan"
+use_latest_release = true
+prefix = "v"

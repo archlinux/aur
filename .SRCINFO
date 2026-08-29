@@ -1,0 +1,18 @@
+pkgbase = qlan
+	pkgdesc = Lightweight command-line LAN data transfer tool using UDP discovery and TCP streaming
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/TCP-RWX/qlan
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	depends = libgcc
+	provides = qlan
+	options = !strip
+	source = qlan-0.0.3.tgz::https://github.com/TCP-RWX/qlan/archive/v0.0.3.tar.gz
+	sha256sums = 8a7e9c3bd148e3dd9e82148ec4fbb4e396dd8eebf61b599fa5c7dbb837d92c43
+
+pkgname = qlan
