@@ -1,6 +1,6 @@
 pkgbase = wsrx-appimage
 	pkgdesc = WebSocket Reflector X
-	pkgver = 0.5.15
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/XDSEC/WebSocketReflectorX
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = wsrx-appimage
 	provides = wsrx
 	conflicts = wsrx-git
 	options = !strip
-	source = https://github.com/XDSEC/WebSocketReflectorX/releases/download/0.5.15/WebSocketReflectorX-0.5.15-linux-gnu-x86_64.AppImage
-	sha256sums = e680500f3e275b1ce12a96cf347c7d88fec73a3a9d456343456fd37246b0b948
+	source = https://github.com/XDSEC/WebSocketReflectorX/releases/download/0.6.1/WebSocketReflectorX-0.6.1-linux-gnu-x86_64.AppImage
+	sha256sums = 22039e621ddc8618591170ce7b4dfcfa355e49cd6b490d8789160784c4bcbe5b
 
 pkgname = wsrx-appimage
