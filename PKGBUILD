@@ -34,7 +34,7 @@ source=(
 
 md5sums=('6e5d2bd14439b5d1bd8c8e6e0fab7850'
          'f32488c56b43ca5eb0ee77d77f0f8e52'
-         'c2854c61d1076d6e514986635807f538')
+         'e9b53733c1e01ee4916115f428100218')
 
 function package() {
 	install -Dm644 portable-config \
