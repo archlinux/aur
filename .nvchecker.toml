@@ -1,0 +1,5 @@
+[spoo-cli]
+source = "github"
+github = "spoo-me/spoo-cli"
+use_latest_release = true
+prefix = "v"
