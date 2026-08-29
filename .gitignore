@@ -1,0 +1,5 @@
+claws/
+src/
+pkg/
+*.pkg.tar*
+*.log

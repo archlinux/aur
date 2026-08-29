@@ -1,0 +1,20 @@
+pkgbase = claws-git
+	pkgdesc = k9s-inspired TUI for AWS resource management with vim-style navigation (git version)
+	pkgver = 0.18.0.r0.g7a0a8ea
+	pkgrel = 1
+	url = https://github.com/clawscli/claws
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = xclip: clipboard support on X11
+	optdepends = wl-clipboard: clipboard support on Wayland
+	provides = claws
+	conflicts = claws
+	options = !debug
+	source = claws::git+https://github.com/clawscli/claws.git
+	sha256sums = SKIP
+
+pkgname = claws-git
