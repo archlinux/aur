@@ -2,7 +2,7 @@
 
 pkgname=voicefox
 pkgver=0.3.7
-pkgrel=2
+pkgrel=3
 epoch=1
 _tag="v${pkgver}"
 _srcdir="${pkgname}-${_tag#v}"
@@ -25,7 +25,7 @@ optdepends=(
 	"nodejs>=23.5.0: support for custom JS music source"
 )
 source=(
-	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
+	"${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
 )
 sha512sums=('c2f38965de1eb0332e65b08185373696fe40622cd334d920a04be13791ddd4bac456f92e51d7face34e99b56c98810052f075a66dbb29dbdf800d4c71db47519')
 
