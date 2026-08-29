@@ -1,6 +1,6 @@
 pkgbase = meridian
 	pkgdesc = Use your Claude Max subscription with OpenCode, OpenClaw, Pi, Droid, Aider, Crush, Cline.
-	pkgver = 1.64.0
+	pkgver = 1.65.0
 	pkgrel = 1
 	url = https://github.com/rynfar/meridian
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = meridian
 	makedepends = bun
 	depends = nodejs
 	provides = meridian
-	source = https://github.com/rynfar/meridian/archive/refs/tags/meridian-v1.64.0.tar.gz
-	sha512sums = 0fa665b6573104de5751e57162e1fe45a547da130850c31a922afbd4a78c943fec2235d246b1ad58ef89f231ba6bfc9a907b2df6d450bf0bfddb3e8b8bcf0e9d
+	source = https://github.com/rynfar/meridian/archive/refs/tags/meridian-v1.65.0.tar.gz
+	sha512sums = ec019496e4cda28ed360baa0d4c6243720c2795ce8b0615a5b5da69dd499384e5f3caa8e353c61efb17c853963f70883772a08aaf1dd5fcbfa2fd4da78c3abd9
 
 pkgname = meridian
