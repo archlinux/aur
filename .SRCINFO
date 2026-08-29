@@ -1,7 +1,7 @@
 pkgbase = apparmor.d
 	pkgdesc = Full set of apparmor profiles
-	pkgver = 0.4910.0
-	pkgrel = 2
+	pkgver = 0.4911.0
+	pkgrel = 1
 	url = https://github.com/roddhjav/apparmor.d
 	arch = x86_64
 	arch = armv6h
@@ -13,14 +13,21 @@ pkgbase = apparmor.d
 	makedepends = just
 	depends = apparmor>=4.1.3
 	depends = apparmor<5.0.0
-	source = https://github.com/roddhjav/apparmor.d/releases/download/v0.4910.0/apparmor.d-0.4910.0.tar.gz
-	source = https://github.com/roddhjav/apparmor.d/releases/download/v0.4910.0/apparmor.d-0.4910.0.tar.gz.asc
+	source = https://github.com/roddhjav/apparmor.d/releases/download/v0.4911.0/apparmor.d-0.4911.0.tar.gz
+	source = https://github.com/roddhjav/apparmor.d/releases/download/v0.4911.0/apparmor.d-0.4911.0.tar.gz.asc
 	validpgpkeys = 06A26D531D56C42D66805049C5469996F0DF68EC
-	sha512sums = 280c6a69f962c05d56e0ab56d42de42da2d48e05a0765544f525c693935a25cedc96db9661f8721731622af83953892781ca3ae17c4c88b087b3fe887912bd7d
+	sha512sums = 200531854d41b7d2929067834f16db76a077bb787ead48357e957046261813cb5ebcde198c916e33609cd95e0059c5331052030ab9d2f3ea9cd66b06d23ed5e6
 	sha512sums = SKIP
 
 pkgname = apparmor.d
-	pkgdesc = Full set of apparmor profiles (complain mode)
+	arch = any
+	depends = apparmor
+	depends = apparmor.d-base
+	depends = apparmor.d-tools
 
-pkgname = apparmor.d.enforced
-	pkgdesc = Full set of apparmor profiles (enforced mode)
+pkgname = apparmor.d-base
+	pkgdesc = Full set of apparmor profiles (base abstractions, tunables, and booleans)
+	arch = any
+
+pkgname = apparmor.d-tools
+	pkgdesc = Full set of apparmor profiles (userland toolings)
