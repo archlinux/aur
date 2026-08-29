@@ -2,7 +2,7 @@
 
 pkgname=openmodsim
 _pkgname_caps=OpenModSim
-pkgver=2.0.0.rc2
+pkgver=2.0.1
 _pkgver_fmt=${pkgver/.rc/-rc}
 pkgrel=1
 pkgdesc="Open ModSim is a free implimentation of modbus slave (server) utility for modbus-tcp and modbus-rtu protocols."
@@ -16,16 +16,7 @@ provides=('openmodsim')
 conflicts=('openmodsim')
 options=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/sanny32/OpenModSim/archive/refs/tags/${_pkgver_fmt}.tar.gz")
-sha256sums=('b572019f4ef7c03465631d344e04b9acfc4edf0b34e87c57e4b2857df495448e')
-
-_automok_build_error_help() {
-  echo "Message from the AUR maintainer:"
-  echo "If the build has failed due to an AutoMok error regarding a file in"
-  echo "'src/styles/' and mentions something like 'no class found', you may"
-  echo "need to restart your terminal so that display-realted environment"
-  echo "variables function correctly."
-  return $1
-}
+sha256sums=('c066f336581ade3c257110b33c15f118e9b596c5fa1673a75236a7f8c03c14eb')
 
 prepare() {
   cd "${srcdir}/${_pkgname_caps}-${_pkgver_fmt}"
@@ -40,7 +31,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname_caps}-${_pkgver_fmt}"
-  make || _automok_build_error_help $?
+  make
 }
 
 package() {
