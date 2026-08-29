@@ -1,6 +1,6 @@
 pkgbase = rainbeau
 	pkgdesc = Hyprland theme engine that generates desktop configs and animated wallpapers
-	pkgver = 0.4.1
+	pkgver = 0.4.2
 	pkgrel = 1
 	url = https://github.com/AlexMacocian/rainbeau
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = rainbeau
 	optdepends = jq: monitor discovery in generated wallpaper scripts
 	optdepends = bluez-utils: Bluetooth status script
 	optdepends = nvidia-utils: NVIDIA GPU usage and temperature scripts
-	source = rainbeau-0.4.1.tar.gz::https://github.com/AlexMacocian/rainbeau/archive/v0.4.1.tar.gz
-	sha256sums = 07b7c83f686e899800538d9e58aeac56ea3452bc810e4f96d73fa585e69cf8a8
+	source = rainbeau-0.4.2.tar.gz::https://github.com/AlexMacocian/rainbeau/archive/v0.4.2.tar.gz
+	sha256sums = 3b43754dc1cbd3de15d14d5876dedd32eabd072abbcf36fff6f89f9fc9e310bb
 
 pkgname = rainbeau
