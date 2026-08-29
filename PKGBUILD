@@ -9,7 +9,7 @@ _gitname=kde-ai-usage
 _plasmoid=org.muddyblack.aiUsageWidget
 
 pkgname=plasma6-applets-ai-usage
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="KDE Plasma 6 panel widget tracking AI usage quotas across 11 AI providers"
 arch=('any')
@@ -27,7 +27,7 @@ optdepends=(
 )
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('47ddc1aa0c5f3577b246827f5af784ad18a2c81c932d4415097f68c3dea45cfb')
+sha256sums=('0242b06786aee0de6066f3cdc7846fcc56aeb65332d03d52b2cdefcf0213d6fc')
 
 check() {
     cd "${_gitname}-${pkgver}"

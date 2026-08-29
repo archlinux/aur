@@ -1,6 +1,6 @@
 pkgbase = plasma6-applets-ai-usage
 	pkgdesc = KDE Plasma 6 panel widget tracking AI usage quotas across 11 AI providers
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/Muddyblack/kde-ai-usage
 	install = plasma6-applets-ai-usage.install
@@ -15,7 +15,7 @@ pkgbase = plasma6-applets-ai-usage
 	optdepends = kiro: Kiro monthly credit tracking
 	optdepends = antigravity: Antigravity/Google AI Studio quota tracking
 	optdepends = nodejs: run the antigravity-usage CLI for richer Antigravity data
-	source = plasma6-applets-ai-usage-2.1.1.tar.gz::https://github.com/Muddyblack/kde-ai-usage/archive/refs/tags/v2.1.1.tar.gz
-	sha256sums = 47ddc1aa0c5f3577b246827f5af784ad18a2c81c932d4415097f68c3dea45cfb
+	source = plasma6-applets-ai-usage-2.1.2.tar.gz::https://github.com/Muddyblack/kde-ai-usage/archive/refs/tags/v2.1.2.tar.gz
+	sha256sums = 0242b06786aee0de6066f3cdc7846fcc56aeb65332d03d52b2cdefcf0213d6fc
 
 pkgname = plasma6-applets-ai-usage
