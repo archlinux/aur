@@ -1,0 +1,16 @@
+pkgbase = soplang-git
+	pkgdesc = The Somali Programming Language (Rust/Cranelift JIT implementation, tracks main)
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/soplang/soplang
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = soplang
+	conflicts = soplang
+	source = soplang-git::git+https://github.com/soplang/soplang.git
+	sha256sums = SKIP
+
+pkgname = soplang-git
