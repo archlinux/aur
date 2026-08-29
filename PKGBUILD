@@ -4,7 +4,7 @@
 
 _pkgname="aelkey"
 pkgname="$_pkgname-git"
-pkgver=0.0.1.r63.g77ba386
+pkgver=0.0.4.r0.gefb85b6
 pkgrel=1
 pkgdesc="Lua-based input remapping framework"
 url="https://github.com/xiota/aelkey"
@@ -58,8 +58,9 @@ pkgver() {
 
 build() {
   local _meson_options=()
-  case "${_debug::1}" in
+  case "${_debug}" in
     asan | a)
+      export CXXFLAGS+=" -Wall -Wextra -Wpedantic -Wmissing-declarations -Wno-unused-parameter"
       _meson_options+=(
         --buildtype=debugoptimized
         -Db_sanitize=address,undefined
@@ -67,7 +68,8 @@ build() {
         -Db_asneeded=false
       )
       ;;
-    asan-debug | asan-d | ad)
+    asan-d* | ad)
+      export CXXFLAGS+=" -Wall -Wextra -Wpedantic -Wmissing-declarations -Wno-unused-parameter"
       _meson_options+=(
         --buildtype=debug
         -Db_sanitize=address,undefined
@@ -75,7 +77,7 @@ build() {
         -Db_asneeded=false
       )
       ;;
-    t | true)
+    t*)
       _meson_options+=(
         --buildtype=debugoptimized
       )
@@ -89,8 +91,10 @@ build() {
 package() {
   meson install -C build --destdir "$pkgdir"
 
-  # convenience script
+  # convenience script and asan depends
   if [[ "${_debug::1}" == "a" ]]; then
+    eval "depends+=(libasan libubsan)"
+
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/aelkey" << END
 #!/usr/bin/env sh
 export LD_PRELOAD=/usr/lib/libasan.so

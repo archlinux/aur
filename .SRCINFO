@@ -1,6 +1,6 @@
 pkgbase = aelkey-git
 	pkgdesc = Lua-based input remapping framework
-	pkgver = 0.0.1.r63.g77ba386
+	pkgver = 0.0.4.r0.gefb85b6
 	pkgrel = 1
 	url = https://github.com/xiota/aelkey
 	arch = x86_64
