@@ -1,0 +1,4 @@
+[garuda-toolbox]
+source = "gitlab"
+gitlab = "garuda-linux/applications/toolbox"
+use_max_tag = true
