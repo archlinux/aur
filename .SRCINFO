@@ -1,6 +1,6 @@
 pkgbase = gitnr-bin
 	pkgdesc = A CLI to generate .gitignore files using one or more templates
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/reemus-dev/gitnr
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = gitnr-bin
 	depends = openssl
 	provides = gitnr
 	conflicts = gitnr
-	source = LICENSE-0.3.0::https://raw.githubusercontent.com/reemus-dev/gitnr/v0.3.0/LICENSE
-	source = README-0.3.0.md::https://raw.githubusercontent.com/reemus-dev/gitnr/v0.3.0/readme.md
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/reemus-dev/gitnr/v0.3.1/LICENSE
+	source = README-0.3.1.md::https://raw.githubusercontent.com/reemus-dev/gitnr/v0.3.1/readme.md
 	sha256sums = b16ae045901cd75e09f19fec662522a279218eed8c70e6fac85789f3d76bea9d
 	sha256sums = df5a89f2090b5254ef1c31ee0b959a128a74c39a6dcbc814b8ff61008f24bf65
-	source_x86_64 = gitnr-x86_64-0.3.0::https://github.com/reemus-dev/gitnr/releases/download/v0.3.0/gitnr-linux-amd64
-	sha256sums_x86_64 = 1b7a532e725dc15ee44c53aaca1f07b490a7cd76a110c2e89afe4a71bf9f2e23
+	source_x86_64 = gitnr-x86_64-0.3.1::https://github.com/reemus-dev/gitnr/releases/download/v0.3.1/gitnr-linux-amd64
+	sha256sums_x86_64 = f4b7ca390171a439a4f2e8441895d6865b6d64f75a37bcd092a12f0c56029c1c
 
 pkgname = gitnr-bin
