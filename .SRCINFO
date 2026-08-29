@@ -1,16 +1,16 @@
 pkgbase = kasmvncserver-bin
 	pkgdesc = KasmVNC provides remote web-based access to a Desktop or application.
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.5.0
+	pkgrel = 1
 	url = https://github.com/kasmtech/KasmVNC
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
 	depends = ca-certificates-utils
+	depends = freetype2>=2.2.1
 	depends = libbsd>=0.7.0
-	depends = libgl
 	depends = libglvnd
-	depends = libjpeg-turbo
+	depends = libpng>=1.6.2
 	depends = libunwind
 	depends = libx11>=1.4.99.1
 	depends = libxau>=1.0.9
@@ -21,10 +21,13 @@ pkgbase = kasmvncserver-bin
 	depends = libxfixes
 	depends = libxfont2>=2.0.1
 	depends = libxrandr>=1.2.0
+	depends = libxshmfence
 	depends = libxtst
-	depends = libyaml
-	depends = openssl>=3.0.0.alpha1
+	depends = mesa
+	depends = openssl-1.1
 	depends = perl
+	depends = perl-datetime
+	depends = perl-datetime-timezone
 	depends = perl-hash-merge-simple
 	depends = perl-list-moreutils
 	depends = perl-switch
@@ -36,17 +39,12 @@ pkgbase = kasmvncserver-bin
 	depends = xorg-xauth
 	depends = xorg-xkbutils
 	depends = zlib
-	depends = perl-datetime
-	depends = freetype2>=2.2.1
-	depends = lib32-mesa
-	depends = libpng>=1.6.2
-	depends = libxshmfence
 	options = !strip
 	options = !emptydirs
 	backup = etc/kasmvnc/kasmvnc.yaml
-	source_x86_64 = https://github.com/kasmtech/KasmVNC/releases/download/v1.4.0/kasmvncserver_focal_1.4.0_amd64.deb
-	sha512sums_x86_64 = 0ccdff6010a23d0b4d6230f615494cdffcd0c6da7a45fc8a23b5bef9e90dba0f455fd0dfc5d2860f4e3958edae3b7723dbe2364cfe5b83035b33bf05dbe669c7
-	source_aarch64 = https://github.com/kasmtech/KasmVNC/releases/download/v1.4.0/kasmvncserver_focal_1.4.0_arm64.deb
-	sha512sums_aarch64 = 968be143c47fcc23d11dbf72edd796ca24e8d2969a48f2b97a0e88bcaa2293644bedd52a038439b0b3a6959833cf9e02b79300aa6e097bd89116b1882cdd2e96
+	source_x86_64 = https://github.com/kasmtech/KasmVNC/releases/download/v1.5.0/kasmvncserver_focal_1.5.0_amd64.deb
+	sha512sums_x86_64 = b46c20d1b5438efa9d3e465b99aa930842dd562ea4fff9629c3174678df8607b16bb7e48bffe71ebf2d991eb6591c224d34ade5e7c0779777445ad6435ca40ca
+	source_aarch64 = https://github.com/kasmtech/KasmVNC/releases/download/v1.5.0/kasmvncserver_focal_1.5.0_arm64.deb
+	sha512sums_aarch64 = 9aff03496e94b14e8a6e5714c986b337b038ee6da459782bfcb2cc272f96185076626a8b6ceda396268b30291c21f97eb4f58ce9b99505e7c728191f1a65542d
 
 pkgname = kasmvncserver-bin
