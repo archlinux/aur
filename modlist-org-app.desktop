@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=modlist.org App
+Comment=Mod manager and installer for ADOFAI and other games
+Exec=modlist-org-app
+Icon=modlist-org-app
+Categories=Game;Utility;
+Terminal=false
