@@ -1,7 +1,7 @@
 # Maintainer: jin <mail@nvimer.org>
 pkgname=deepseek-reasonix-tui
 _pkgname=reasonix
-pkgver=1.32.0
+pkgver=1.33.0
 pkgrel=1
 pkgdesc="Cache-first DeepSeek coding agent for the terminal"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=("$_pkgname")
 # cannot produce a useful split debug package.
 options=('!debug')
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/esengine/DeepSeek-Reasonix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('931ca6805cf696b1dff8bc0f1369738ef6689fbe7e574572979539923c4a4bfd')
+sha256sums=('2ba6eb164b570cc25852c714daf6546ff7b00e4e8cd16d3b1ff3e30edd1fd59f')
 
 build() {
     cd "DeepSeek-Reasonix-$pkgver"
