@@ -1,5 +1,5 @@
 pkgname=lunahr
-pkgver=2.1.2
+pkgver=2.2
 pkgrel=1
 pkgdesc="Heart rate monitor for VRChat OSC with Polar H10 (BLE) and Pulsoid support"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
 )
 
 source=(https://github.com/PetLucy/LunaHR-Linux/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('894c31f16bf3be6cd45a6af35a0bdf5835dde1eb1143025d2939302f879ecad1')
+sha256sums=('2b77ddade8d25509a464cf09f09f580b34f220b0c41bd8cf9d822f4e5c69c473')
 
 package() {
   cd "$srcdir/LunaHR-Linux-${pkgver}"
