@@ -1,14 +1,14 @@
 pkgbase = hdiffpatch-bin
 	pkgdesc = a C\C++ library and command-line tools for Diff & Patch between binary files or directories(folder)
-	pkgver = 4.12.1
+	pkgver = 5.1.3
 	pkgrel = 1
 	url = https://github.com/sisong/HDiffPatch/
 	arch = x86_64
 	license = MIT
 	provides = hdiffpatch
-	source = https://github.com/sisong/HDiffPatch/releases/download/v4.12.1/hdiffpatch_v4.12.1_bin_linux64.zip
-	source = https://raw.githubusercontent.com/sisong/HDiffPatch/v4.12.1/LICENSE
-	sha256sums = 93fbde457f912e22c84a1a98c55242e9c3ba0dcef2a2ac443070d373cd328676
+	source = https://github.com/sisong/HDiffPatch/releases/download/v5.1.3/hdiffpatch_v5.1.3_bin_linux64.zip
+	source = https://raw.githubusercontent.com/sisong/HDiffPatch/v5.1.3/LICENSE
+	sha256sums = 628963bf2ee9108a97260fa5eef44acd9ec94369b76090a957c9182b3abbb558
 	sha256sums = 220585b1cf75fbf27b3e3ca041064e34062df266af5335983fff896e9f5527e7
 
 pkgname = hdiffpatch-bin
