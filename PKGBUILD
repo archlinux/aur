@@ -16,6 +16,7 @@ makedepends=(
   )
 depends=(
   'exiv2'
+  'ffmpeg'
   'fontconfig'
   'freetype2'
   'hicolor-icon-theme'
