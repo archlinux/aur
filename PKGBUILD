@@ -1,38 +1,47 @@
 # Maintainer: Frederic Boltz <frederic.boltz@gmail.com>
 # Maintainer: David Rosenstrauch <darose@darose.net>
+# Co-Maintainer: Christian Kühn <damachin3 at proton dot me>
 
-pkgname=nct6687d-dkms-git
+_pkgbase=nct6687d
+pkgname=${_pkgbase}-dkms-git
 pkgver=r225.4864fd6
-pkgrel=2
+pkgrel=3
 pkgdesc="Nuvoton module for NCT6687-R synced with latest upstream kernel."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/Fred78290/nct6687d"
-license=('GPLv2')
+license=('GPL-2.0-or-later')
 makedepends=('git')
 depends=('dkms')
-source=("${pkgname}::git+https://github.com/Fred78290/nct6687d"
-        "dkms.conf.in")
+source=(
+	"${_pkgbase}::git+https://github.com/Fred78290/nct6687d"
+	"dkms.conf.in"
+)
 sha256sums=('SKIP'
-            'SKIP')
+            'c42b709df3b96aba2739c7319b3591c407d5fb0773f76a06693f127b6408779d')
 
 pkgver() {
-	cd "${pkgname}"
-
+	cd "${_pkgbase}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "${pkgname}"
+	cd "${_pkgbase}"
 
-	install -dm755 "${pkgdir}/usr/src/${pkgname}-${pkgver}"
-	install -m644 LICENSE README* Kbuild *.c "${pkgdir}/usr/src/${pkgname}-${pkgver}/"
+	# Source files
+	install -dm755 "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+	install -m644 Kbuild Makefile nct6687.c "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/"
 
-    commitcount=$(git rev-list --all --count)
-    commithash=$(git rev-parse --short HEAD)
+	# License
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    sed -e "s/(shell uname -r)/{TARGET}/" -e "s/commitcount.*=.*/commitcount := $commitcount/" -e "s/commithash.*=.*/commithash := $commithash/" Makefile > \
-		"${pkgdir}/usr/src/${pkgname}-${pkgver}/Makefile"
+	# Documentation
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	sed -e "s/@PACKAGE_VERSION@/${pkgver}/" "${srcdir}/dkms.conf.in" > \
-		"${pkgdir}/usr/src/${pkgname}-${pkgver}/dkms.conf"
+	# dkms.conf
+	install -Dm644 "${srcdir}/dkms.conf.in" "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
+
+	sed \
+		-e "s/@_PKGBASE@/${_pkgbase}/" \
+		-e "s/@PKGVER@/${pkgver}/" \
+		-i "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 }
