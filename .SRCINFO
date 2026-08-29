@@ -1,0 +1,22 @@
+pkgbase = llvm-c166-git
+	pkgdesc = LLVM toolchain for the C166 architecture (git)
+	pkgver = 24.0.0.r594554.g98c15be
+	pkgrel = 1
+	url = https://github.com/siemens-mobile-hacks/llvm-c166
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = python
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = llvm-c166
+	conflicts = llvm-c166
+	options = !debug
+	options = !lto
+	source = llvm-c166::git+https://github.com/siemens-mobile-hacks/llvm-c166.git
+	sha256sums = SKIP
+
+pkgname = llvm-c166-git
