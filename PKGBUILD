@@ -5,7 +5,7 @@
 
 _quake=vkQuake
 pkgname=vkquake
-pkgver=1.35.0
+pkgver=1.36.0
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake. This version contains Vulkan API support."
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/${pkgver}.tar.gz"
 	'vkquake.png'
 	'vkquake.svg'
 	'ctype.patch')
-sha512sums=('75b6b0be1e622ede8552db1a08b90ef29e904840e0badf7ec6af095cac185e4975f90318ec7f49348adf4408725c987a57519e9a0e7ef3b0db46350e8a147a72'
+sha512sums=('f86b0e1d30ca72733d6f4ca57e3e531b64b06575f7e6a0e3113d989b805b8d7f1fb7155ea185bd09354401ac35f8392a45d0bfa0551daed07af9577e07eac524'
             '75881c2fea0628dcecff496a5e3035bbb4e408b81527737339ebfd66ad04ca04621d4e13e3e0537f091f8b1127dc231583f746d11cc6c11658cdb976db77e145'
             '9ac17fb2f549656869a02a9a1896786aa4a4f753c6b1174d14b999c94693164ec71a73f9ab6f4a96591ef3af407ffce4f29b0ed87e878f14bb177e396898f29f'
             '5a712a6c0447acea7a6c690cb7e63a2111e28646ef0935dfbd40cc4164c9ed5fc6fdba6eeafe44b618b17e856b3b0f60cc3ddbdedd8e536feef97de969d407b0'

@@ -1,9 +1,10 @@
 post_install() {
 	cat <<- EOF
-		:: You need the Quake data (.pak) files to play.
-		:: pak0.pak to play the shareware episode and/or
-		:: additionally pak1.pak for the whole game.
-		:: Put them into <YOUR_HOME_DIR>/.vkquake/id1/
+		:: You need the Quake data (.pak) files to play. pak0.pak to play the shareware episode and/or
+		:: additionally pak1.pak for the whole game Put them anywhere you want, as vkQuake 1.36.0
+		:: now has the option to select any directory. For example, extract your assets to
+		:: ~/.local/share/vkQuake/id1, and then launch vkquake and select that dir as your basedir.
+		:: If you need more help on the change, please go to the github issue #856.
 	EOF
 }
 
