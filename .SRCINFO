@@ -1,6 +1,6 @@
 pkgbase = memex
 	pkgdesc = Claude Code & Codex CLI transcript search for both humans & agents
-	pkgver = 0.10.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/nicosuave/memex
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = memex
 	depends = gcc-libs
 	depends = openssl
 	options = !lto
-	source = memex-0.10.1.tar.gz::https://github.com/nicosuave/memex/archive/v0.10.1.tar.gz
-	sha256sums = 01456ef74b8a68aba1933a9db05a54b042619aa52d5957efdd753d91f03677a0
+	source = memex-0.12.2.tar.gz::https://github.com/nicosuave/memex/archive/v0.12.2.tar.gz
+	sha256sums = 7a037c11e4e61a60bc7e1db34e92e760f175b35d9827a181d819b981ef50e976
 
 pkgname = memex
