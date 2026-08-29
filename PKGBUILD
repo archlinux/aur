@@ -5,7 +5,7 @@
 pkgname=python-censys
 _name=censys
 _srcname=censys-python
-pkgver=2.2.19
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='An easy-to-use and lightweight API wrapper for Censys APIs'
 arch=('any')
@@ -32,7 +32,7 @@ checkdepends=(
 provides=('censys')
 conflicts=('censys')
 source=("${_srcname}-${pkgver}.tar.gz::https://github.com/censys/${_srcname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4d00e1be018eed5017caf7ccc75a74aeb19847786755544a0bab223b6ab8dca9')
+sha256sums=('671b7ee2ebe3078b309752d73f7ab7e574267c08b54712ba52e01f911d1e1a79')
 
 build() {
     cd "${_srcname}-${pkgver}"
