@@ -15,16 +15,16 @@
 : ${_build_lto:=false}        # link-time optimization; may cause spurious errors
 : ${_build_system_libs:=true} # use system libraries, reduces build time
 
-: ${_build_limit_cores:=true} # detect usable cores for parallelism, limited by RAM
+: ${_build_limit_cores:=auto} # number of cores for parallelism; or auto, limited by RAM
 
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=fee63112daf6ca7130c71997ce56fe381cdffcca} # daily-1039
+: ${_runtime_commit:=1f6c1916c1deceae7ff688a048d6c5affa732646} # daily-1046
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.17.0
+pkgver=12.17.1
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -123,7 +123,7 @@ source=(
   '0001-fix-rust-1.98-targets.patch'
 )
 sha256sums=(
-  'c9bffdbba8aa705bb2f23a195cfd6d73c0edf9c71c1fb0bb65034e882801af5b'
+  '234cffe68dbe781023fa595c119b89bbe51b5be832e9756b5470f33e51db3766'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
@@ -248,27 +248,29 @@ ac_add_options --enable-lto=cross,full
 END
   fi
 
-  # build paralleism
-  local _mem _nproc _cores
-  _mem=$(grep -Pom1 '^MemFree.*\b\K[0-9]+' /proc/meminfo)
-  _nproc=$(nproc)
+  # build parallelism
+  local _mem _threads _cores _jobs
+  _mem=$(grep -Pom1 '^MemAvailable:\s*\K[0-9]+' /proc/meminfo)
+  _cores=$(lscpu | grep -Pom1 'per socket:\s*\K[0-9]+')
+  _threads=$(nproc)
+  _jobs="auto"
 
-  if [[ "${_build_limit_cores::1}" == "t" ]]; then
+  if [[ "${_build_limit_cores}" =~ ^[at] ]]; then
     # calculate core availability based on free RAM and CPU count
-    _cores=$((_mem / (1024 * 1024) < _nproc ? _mem / (1024 * 1024) : _nproc))
-    _cores=$((_cores < 1 ? 1 : _cores))
+    _jobs=$((_mem / (1024 * 1024) < _cores ? _mem / (1024 * 1024) : _cores - 1))
+    _jobs=$((_jobs < 1 ? 1 : _jobs))
   elif ((${_build_limit_cores:-0} > 0)); then
     # user-specified, capped by CPU count
-    _cores=$((_build_limit_cores > _nproc ? _nproc : _build_limit_cores))
+    _jobs=$((_build_limit_cores > _threads ? _threads : _build_limit_cores))
+    _jobs=$((_jobs < 1 ? 1 : _jobs))
   fi
 
-  if [ -n "${_cores:-}" ]; then
-    printf '\nFree RAM: %s\nCores: %s\nUsing: %s\n\n' "$((_mem / (1024 * 1024)))" "$_nproc" "$_cores"
-    cat >> mozconfig << END
-mk_add_options MOZ_PARALLEL_BUILD=${_cores}
+  printf '\n:: Free RAM: %-5s Cores: %-5s Threads: %-5s Jobs: %-5s\n\n' "$((_mem / (1024 * 1024)))" "$_cores" "$_threads" "$_jobs"
+
+  if [[ "$_jobs" =~ ^[0-9]+$ ]]; then
+    cat >> ../mozconfig << END
+mk_add_options MOZ_PARALLEL_BUILD=${_jobs}
 END
-  else
-    printf '\nFree RAM: %s\nCores: %s\nUsing: auto\n\n' "$((_mem / (1024 * 1024)))" "$_nproc"
   fi
 
   # apply patches
