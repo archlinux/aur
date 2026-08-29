@@ -1,0 +1,18 @@
+pkgbase = xeq-bin
+	pkgdesc = A cross-platform task runner that validates, runs, and prevents script headaches
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://github.com/opmr0/xeq
+	arch = x86_64
+	license = MIT
+	provides = xeq
+	conflicts = xeq
+	options = !strip
+	source = README-2.4.1.md::https://raw.githubusercontent.com/opmr0/xeq/v2.4.1/readme.md
+	source = LICENSE-2.4.1::https://raw.githubusercontent.com/opmr0/xeq/v2.4.1/LICENCE
+	sha256sums = ed67a55ba16187fa4ea81dd7d462e2c980e43798dece6f3823e5c1b0186c8c7c
+	sha256sums = fe66e326fee20e3cef980dc69e5921df6c17253120efa9d9974bbd0d942cf244
+	source_x86_64 = xeq-x86_64-2.4.1::https://github.com/opmr0/xeq/releases/download/v2.4.1/xeq-linux-x86_64
+	sha256sums_x86_64 = 3cd8f4a0bbd47e0c06eae3b141ff9395ad8424313db0b7980c827f533efb3c9d
+
+pkgname = xeq-bin
