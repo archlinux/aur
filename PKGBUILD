@@ -39,7 +39,7 @@ source=(
   "$_pkgsrc_sol"::"git+https://github.com/Nerixyz/sol2.git"
 )
 sha256sums=(
-  'f6d506efc24b7584a1c7e7a1a99a2bed8308252fd619f3146e342e82a148c9fd'
+  'e6437920665a9542006f3909eab239efd7a06572cd8cc483f4dd99918b631e6f'
   'SKIP'
 )
 
