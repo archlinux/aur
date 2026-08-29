@@ -1,7 +1,7 @@
 # Maintainer: Ethan Alexander <ethanjalexander@hotmail.ca>
 
 pkgname="wallpiper-i3"
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="i3wm portal for wallpiper"
 arch=('x86_64')
