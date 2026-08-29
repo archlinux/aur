@@ -1,0 +1,3 @@
+[harlequin-odbc]
+source = "pypi"
+pypi = "harlequin-odbc"
