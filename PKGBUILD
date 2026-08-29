@@ -2,9 +2,9 @@
 
 pkgname=magnolia-qda
 _name=Magnolia
-pkgver=1.6.2
+pkgver=1.7.0
 _electron=electron39 # this is not what is used by upstream, but rather the nearest one in extra repo
-pkgrel=2
+pkgrel=1
 pkgdesc="Free and open-source qualitative data analysis software."
 arch=('x86_64')
 url="https://github.com/caledavis/$_name"
@@ -34,10 +34,8 @@ source=(
   "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
   "${pkgname}.desktop"
 )
-sha256sums=(
-    '2d82e2656b9148cbbe1e076e0b39646a7bab3bdce2b1e9c9552c72fa863db054'
-    'ae872917b09c435709d674cf1b66deff859cad2b8401240acdc1af2218917137'
-)
+sha256sums=('10cc0204fb5a8f8b26eb3e7184c1cd4e0fd941c1212d6143634d5163fae588a5'
+            'ae872917b09c435709d674cf1b66deff859cad2b8401240acdc1af2218917137')
 
 build() {
     cd "${srcdir}/${_name}-$pkgver"
