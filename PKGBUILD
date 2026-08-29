@@ -3,7 +3,12 @@
 pkgname=llama.cpp-hip-gfx1151
 _pkgname=llama.cpp
 pkgver=b10666
-pkgrel=2
+pkgrel=3
+_mtp_commit=1d8de7c1b0c7d2febf8f983174d8e6a711e2b1af
+_mtp_mixer_export_commit=57bb668674d9fb0d382885e5b04911c6437f8e83
+_mtp_detached_head_commit=a82a58a57fc307e5cec0dc68db64d143339be4f2
+_hip_radix_top_k_commit=7f489034b48051a02c38c2eab5988443b02db300
+_hipcub_commit=527fcad43d2c9ced9fd882a05d872db5647d8f69
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm)"
 arch=(x86_64)
 url='https://github.com/ggml-org/llama.cpp'
@@ -21,6 +26,7 @@ depends=(
 makedepends=(
   cmake
   git
+  hipcub
   nodejs
   npm
 )
@@ -38,17 +44,42 @@ options=(lto !debug)
 backup=("etc/conf.d/llama.cpp")
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
+  "qwen4exp-mtp-${_mtp_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/e70802a01f03f0ed31a26338a5664796f3824371...${_mtp_commit}.diff"
+  "qwen4exp-mtp-mixer-export-${_mtp_mixer_export_commit}.patch::https://github.com/rmonsurate/llama.cpp/commit/${_mtp_mixer_export_commit}.diff"
+  "qwen4exp-mtp-detached-head-${_mtp_detached_head_commit}.patch::https://github.com/crusaderky/llama.cpp/commit/${_mtp_detached_head_commit}.diff"
+  "hip-radix-top-k-${_hip_radix_top_k_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/749f688fcaa4c472ec034b08cb8a907c45cfaa02...${_hip_radix_top_k_commit}.diff"
+  "hipcub-rocm-${_hipcub_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/07132750825a4f2d27a547cd9cdde1c6f6001885...${_hipcub_commit}.diff"
   # 提升性能的妙妙工具
   # "llama-gfx1151.patch::https://gist.githubusercontent.com/pedapudi/0da060d2a3b49a51155dbf00db61fea0/raw/aaaee0a96656ec0fc49bdfa76acd2b4edbfcbfb9/gistfile1.txt"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
 sha256sums=('e5e2c589d9de668303f63b8616fec2ad4b3880e2f02aa5e51c95bc6698a64d3e'
+            'f4015a0321186b74ddf8424b0e873c3ef0efbfb2133cfe89b8fab6e38c963b73'
+            '115313efdaf605188ffcd42119ad39a853ad46c0bfd3f416d44387e2cee1925a'
+            '321497eccf0d02f44555e0349877fafde75354b1c72416996421044671d80b28'
+            '65cb266ee3890043fcdc691b8f8da8ce8edfb970cc4aadde5860632cc59666aa'
+            '92eed6a76cc7ddfbaa9c243ddc13d9a768c4cb82697a8e4be92416913ccbf45a'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
 prepare() {
   ln -sf "${_pkgname}-${pkgver}" llama.cpp
+
+  # Qwen3.8-Flash-Next MTP, including standalone draft-head conversion/loading.
+  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-${_mtp_commit}.patch"
+  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-mixer-export-${_mtp_mixer_export_commit}.patch"
+  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-detached-head-${_mtp_detached_head_commit}.patch"
+
+  # Keep wide QSA TOP_K on the GPU without breaking HIP graph capture on ROCm 7.2.
+  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/hip-radix-top-k-${_hip_radix_top_k_commit}.patch"
+
+  # Prefer hipCUB with rocPRIM >= 4.4; older ROCm keeps the native radix fallback.
+  git -C "${_pkgname}" apply --no-index \
+    --exclude='.github/workflows/build-cuda-ubuntu.yml' \
+    --exclude='.github/workflows/hip-quality-check.yml' \
+    --exclude='tests/test-backend-ops.cpp' \
+    "${srcdir}/hipcub-rocm-${_hipcub_commit}.patch"
 
   # Tailwind v4's oxide scanner walks up looking for the nearest .git to anchor
   # .gitignore lookup. In AUR helpers (yay/paru) the parent .git is the AUR
@@ -98,7 +129,8 @@ build() {
     -DCMAKE_HIP_ARCHITECTURES=gfx1151
     -DGGML_HIP=ON
     -DGGML_HIP_GRAPHS=ON
-    # -DGGML_HIP_NO_VMM=OFF # Strix Halo 支持 VMM, 但 arch 官方的 ROCm 包似乎有点问题
+    -DGGML_HIP_NO_VMM=ON # ROCm 7.2 VMM is not reliable on Strix Halo
+    -DGGML_HIP_MMQ_MFMA=ON
     -DGGML_CUDA_FORCE_MMQ=ON # 强制使用自定义乘法内核而非 fp16 cuBLAS. 可以加一点速并省一点显存
     # -DGGML_HIP_ROCWMMA_FATTN=ON # 现阶段 rocWMMA 烂完了
     -DHIP_PLATFORM=amd # 手动指定 AMD 平台, 防止因 rocm-nightly 禁用自动检测而报错
