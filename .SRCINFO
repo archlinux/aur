@@ -1,6 +1,6 @@
 pkgbase = r-flowworkspace
 	pkgdesc = Infrastructure for representing and interacting with gated and ungated cytometry data sets
-	pkgver = 4.22.0
+	pkgver = 4.24.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/flowWorkspace
 	arch = x86_64
@@ -37,11 +37,11 @@ pkgbase = r-flowworkspace
 	optdepends = r-opencyto
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowWorkspace_4.22.0.tar.gz
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/flowWorkspace_4.24.0.tar.gz
 	source = system-hdf5.patch
-	md5sums = 5aa364135108add2446b48a8b91a3f47
+	md5sums = 9ef5a4f37ed0297063e5a4b471a1921b
 	md5sums = d83db00432ba74621da54d24fce960fc
-	b2sums = 9c401abebfb2fe90ad9bff3d55ee6429a3c0dcbb1db37365d2769d7f56bff09e92f8a78d184fc9c63842e24eb57ca513b2a6ea1ceb7f263a6f774a40d1276b01
+	b2sums = 94d66dc795f6f27081aa5afd0220a3ecdec7e3b34bb508c56ef990b095f28351be05aeecb13d8fca6aa63ad6963d9f17a8c508f0e5e9e9e7b0cdd85fcb91bdb2
 	b2sums = 5f693100c9198981f8ff28aca945499054570fb5957ae22c908f2e4c19cf79704e5961589632e6568a5e62229b678ab748c02333919a18193b773c1ed602bbaf
 
 pkgname = r-flowworkspace
