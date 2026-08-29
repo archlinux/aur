@@ -1,6 +1,6 @@
 pkgbase = minot
 	pkgdesc = A versatile toolset for debugging and verifying stateful robot perception software.
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 7
 	url = https://codeberg.org/stelzo/minot
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = minot
 	conflicts = librat
 	options = !lto
 	options = !debug
-	source = minot::git+https://codeberg.org/stelzo/minot.git#tag=v0.10.0
+	source = minot::git+https://codeberg.org/stelzo/minot.git#tag=v0.10.1
 	sha256sums = SKIP
 
 pkgname = minot
