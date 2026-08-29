@@ -4,14 +4,14 @@ pkgname=luch-git
 _projname=luch
 _release_ver=0.1.0.r0
 pkgver=0.1.0.r0.g54e4257
-pkgrel=1
+pkgrel=2
 pkgdesc="Link router for Linux/Wayland — pick which browser opens a URL — git master"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexindigo/luch"
 license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-declarative' 'layer-shell-qt' 'qt6-xdgiconqml'
-         'hicolor-icon-theme')
-makedepends=('cmake' 'git')
+         'qt6-wayland' 'hicolor-icon-theme')
+makedepends=('cmake' 'git' 'wayland-protocols')
 optdepends=('wl-clipboard: Ctrl+C copy survives the popup exiting')
 provides=('luch')
 conflicts=('luch')
