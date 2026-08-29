@@ -23,8 +23,8 @@ The comparison below is for package version `b10666`.
 | HIP headers | Adds the `hipcub` build dependency | No explicit `hipcub` build dependency |
 | VMM policy | Explicit `GGML_HIP_NO_VMM=ON` | Does not override the upstream default; its `OFF` example is commented out |
 | MFMA MMQ | Explicit `GGML_HIP_MMQ_MFMA=ON` | Uses the upstream default |
-| Extra source changes | Five pinned patches described below | No MTP/QSA patch stack |
-| Package release | `pkgrel=3` | `pkgrel=2` at the time of comparison |
+| Extra source changes | Six pinned patches described below | No MTP/QSA/Strix safety patch stack |
+| Package release | `pkgrel=4` | `pkgrel=2` at the time of comparison |
 
 The HIP package hard-codes `_pkgname=llama.cpp`; stripping only `-gfx1151`
 from its longer package name would incorrectly produce `llama.cpp-hip`. The
@@ -56,6 +56,7 @@ Patch order matters. Every source URL, commit, and SHA-256 is pinned in
 | [Series ending at `1d8de7c`](https://github.com/ggml-org/llama.cpp/compare/e70802a01f03f0ed31a26338a5664796f3824371...1d8de7c1b0c7d2febf8f983174d8e6a711e2b1af), from [llama.cpp PR #27836](https://github.com/ggml-org/llama.cpp/pull/27836) | Adds Qwen3.8-Flash-Next NextN/MTP tensor mappings, conversion, graph construction, recurrent state handling, and `draft-mtp` support. | Draft PR, not yet accepted upstream. The change is model-specific but substantial. Experimental; moderate correctness and maintenance risk. |
 | [`57bb668`](https://github.com/rmonsurate/llama.cpp/commit/57bb668674d9fb0d382885e5b04911c6437f8e83), also proposed as [rmonsurate/llama.cpp PR #1](https://github.com/rmonsurate/llama.cpp/pull/1) | Keeps `model.hyper_connection_mixer.*` when `convert_hf_to_gguf.py --mtp` exports a detached sidecar. | One-line converter filter change. Low runtime risk; required for a valid standalone Qwen3.8 sidecar. |
 | [`a82a58a`](https://github.com/crusaderky/llama.cpp/commit/a82a58a57fc307e5cec0dc68db64d143339be4f2) | Detects a detached head, makes absent trunk tensors optional only in that case, keeps the original trailing block number, and accepts either block-level or model-level head-mixer names. | Explicitly described by its author as unreviewed. It is narrowly contained in the Qwen3.8 loader, but malformed/novel GGUF layouts are the main risk. Experimental; moderate risk. |
+| [`fdc1260`](https://github.com/Victor-Loos/llama.cpp/commit/fdc1260e99191717b0aa0a48117d4b758a24a513), from [llama.cpp PR #25863](https://github.com/ggml-org/llama.cpp/pull/25863) | Prevents direct computation on `ROCm_Host` buffers on integrated HIP GPUs while preserving pinned host allocation for staging. This avoids a scheduler write/read race seen on gfx1151. | Narrow backend capability change, independently reproduced, and approved by a HIP code owner. The PR is still open. Low change risk; high correctness and confidentiality value on an APU. |
 | [`7f48903`](https://github.com/ggml-org/llama.cpp/commit/7f489034b48051a02c38c2eab5988443b02db300), from [llama.cpp PR #27466](https://github.com/ggml-org/llama.cpp/pull/27466) | Adds a native HIP radix-selection kernel for `TOP_K` rows wider than 1024 columns, avoiding Qwen's long-context QSA fallback to the CPU. | Passed reported HIP `TOP_K` tests and long graph-capture runs on gfx1151; a HIP code owner approved the PR. Still unmerged and not broadly tested across AMD generations. Moderate portability risk, low security risk. |
 | [`527fcad`](https://github.com/ggml-org/llama.cpp/commit/527fcad43d2c9ced9fd882a05d872db5647d8f69), from [llama.cpp PR #26592](https://github.com/ggml-org/llama.cpp/pull/26592) | Enables CUB code paths on HIP through hipCUB for sorting, `TOP_K`, reductions, scans, and related operations. It enables them only with rocPRIM 4.4.0 or newer. | One approval, but outstanding review history remains. rocPRIM 4.2 was proven unsafe during HIP graph capture; the pinned commit's version gate addresses that known failure. Moderate backend/runtime risk. |
 
@@ -72,6 +73,29 @@ without a test-file edit that only added commented stress-test examples. Runtime
 code is not excluded. Package CI is not the same as llama.cpp upstream CI, and
 the package builds with upstream tests disabled, as does `llama.cpp-gfx1151`.
 
+### Why the integrated-GPU host-buffer patch matters
+
+Strix Halo is reported as an integrated HIP GPU. In unpatched `b10666`, that
+allows the scheduler to place compute directly on a `ROCm_Host` tensor. The
+upstream sanitizer caught the CPU writing new input while the GPU still read the
+same host range. Reported symptoms include ignored or corrupted long/system
+prompts, repeated `/` or other characters, and, under multiple slots, a response
+from one request being returned to another request. The last symptom is a
+confidentiality problem, not merely bad model quality.
+
+The `fdc1260` patch keeps the host-buffer factory and pinned staging/output
+buffers, but returns false when the scheduler asks whether an integrated HIP
+device can compute directly on that buffer type. Independent gfx1151 tests
+reported that the corruption and cross-request replay stopped, while controlled
+prompt-processing results stayed within normal run variance.
+
+Only the first commit from PR #25863 is carried. Its second commit adds an
+unused-parameter marker for non-HIP builds and accidentally marks
+`ggml-cuda.cu` executable. This package always builds HIP, so neither part is
+needed. `GGML_CUDA_NO_PINNED=1` remains a broader diagnostic fallback that
+disables pinned host buffers entirely; it should not be necessary with this
+patch and can reduce prompt-processing performance.
+
 ### What is already in b10666 from PR #27742
 
 The base tag already contains the merged Qwen3.8-Flash-Next implementation and
@@ -83,14 +107,14 @@ compression ratio is absent, and related converter/quantization fixes.
 
 The remaining HIP-specific performance problem identified after that merge was
 wide QSA `TOP_K` falling back to the CPU. The native radix and hipCUB patches
-above address that backend gap. Backend or scheduler bugs reported against the
-same model still need to be evaluated independently; sharing a PR discussion
-does not make every later report part of the Qwen model implementation.
+above address that backend gap. A separate integrated-HIP host-buffer race was
+also linked from the late discussion; the `fdc1260` patch addresses it without
+changing the Qwen model implementation.
 
 ### Safety scope of the patch review
 
 The source review found no added shell execution, network access, credential
-handling, persistence, or unrelated file I/O in the five patches. The important
+handling, persistence, or unrelated file I/O in the six patches. The important
 risks are conventional native-code risks: incorrect tensor-layout assumptions,
 an out-of-bounds GPU kernel bug, ROCm/hipCUB incompatibility, numerical drift, or
 a future upstream conflict.
@@ -422,7 +446,7 @@ block's own mixer; both are required by this detached layout.
 
 Use the converter from the **prepared source of this package**, not an unpatched
 upstream checkout. `makepkg -o` downloads the pinned sources and runs
-`prepare()`, applying all five patches without compiling the package:
+`prepare()`, applying all six patches without compiling the package:
 
 ```bash
 git clone https://aur.archlinux.org/llama.cpp-hip-gfx1151.git package-src
@@ -601,6 +625,12 @@ Match client concurrency to server slots: `--concurrency 1` with `--np 1`, or
 the same larger value for a separate throughput-under-load experiment. Do not
 compare a single-user baseline to a multi-slot MTP run.
 
+When testing `--np` above 1, put a unique random nonce in every concurrent
+prompt and require its own nonce in the response. Reject any response containing
+another request's nonce. That specifically checks for recurrence of the
+integrated-HIP host-buffer race that `fdc1260` prevents; ordinary quality scoring
+can miss a plausible answer replayed from a different slot.
+
 ### Metrics to record
 
 SPEED-Bench reports:
@@ -638,12 +668,15 @@ memory growth, and a repeatable speedup over run A.
 
 ## Known limitations and rollback
 
-- All five patches are snapshots. Recheck their upstream PRs when updating the
+- All six patches are snapshots. Recheck their upstream PRs when updating the
   llama.cpp tag; remove a package patch once an equivalent fix is upstream.
 - The MTP graph currently uses dense attention in the draft block. Draft cost
   therefore grows with context even though the target's QSA is sparse.
 - The detached loader recognizes the sidecar by missing trunk tensors. Only use
   sidecars from a trusted/pinned source with the expected metadata.
+- The integrated-HIP host-buffer change is a conservative capability workaround,
+  not the general scheduler synchronization fix. Retest chunked prompts and
+  nonce-isolated concurrent requests after upstream scheduler changes.
 - New rocPRIM versions take a broader hipCUB path than old versions. Re-run
   `TOP_K`, `ARGSORT`, reduction, scan, graph, and long-generation tests after a
   nightly upgrade.
@@ -652,7 +685,7 @@ memory growth, and a repeatable speedup over run A.
 
 The simplest runtime rollback is to omit `-md` and use `--spec-type none`. The
 package then runs the ordinary target path while retaining the QSA GPU fixes.
-For a full source rollback, remove the five patch sources and their `prepare()`
+For a full source rollback, remove the six patch sources and their `prepare()`
 applications, restore the sibling package's dependencies/options, and increment
 `pkgrel`.
 
@@ -661,6 +694,9 @@ applications, restore the sibling package's dependencies/options, and increment
 - [Qwen3.8-Flash-Next support, llama.cpp PR #27742](https://github.com/ggml-org/llama.cpp/pull/27742)
 - [Qwen3.8 NextN/MTP, llama.cpp PR #27836](https://github.com/ggml-org/llama.cpp/pull/27836)
 - [Working Strix Halo combination and sidecar comment](https://github.com/ggml-org/llama.cpp/pull/27836#issuecomment-5460955631)
+- [Integrated HIP host-buffer safety fix, llama.cpp PR #25863](https://github.com/ggml-org/llama.cpp/pull/25863)
+- [Cross-request replay report on gfx1151, llama.cpp issue #25992](https://github.com/ggml-org/llama.cpp/issues/25992)
+- [Qwen3.8 multi-segment corruption report on gfx1151, llama.cpp issue #27797](https://github.com/ggml-org/llama.cpp/issues/27797)
 - [Native HIP wide radix `TOP_K`, llama.cpp PR #27466](https://github.com/ggml-org/llama.cpp/pull/27466)
 - [hipCUB on HIP, llama.cpp PR #26592](https://github.com/ggml-org/llama.cpp/pull/26592)
 - [llama.cpp speculative decoding documentation](https://github.com/ggml-org/llama.cpp/blob/b10666/docs/speculative.md)

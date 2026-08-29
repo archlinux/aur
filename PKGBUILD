@@ -3,10 +3,11 @@
 pkgname=llama.cpp-hip-gfx1151
 _pkgname=llama.cpp
 pkgver=b10666
-pkgrel=3
+pkgrel=4
 _mtp_commit=1d8de7c1b0c7d2febf8f983174d8e6a711e2b1af
 _mtp_mixer_export_commit=57bb668674d9fb0d382885e5b04911c6437f8e83
 _mtp_detached_head_commit=a82a58a57fc307e5cec0dc68db64d143339be4f2
+_hip_apu_host_buffer_commit=fdc1260e99191717b0aa0a48117d4b758a24a513
 _hip_radix_top_k_commit=7f489034b48051a02c38c2eab5988443b02db300
 _hipcub_commit=527fcad43d2c9ced9fd882a05d872db5647d8f69
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm)"
@@ -47,6 +48,7 @@ source=(
   "qwen4exp-mtp-${_mtp_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/e70802a01f03f0ed31a26338a5664796f3824371...${_mtp_commit}.diff"
   "qwen4exp-mtp-mixer-export-${_mtp_mixer_export_commit}.patch::https://github.com/rmonsurate/llama.cpp/commit/${_mtp_mixer_export_commit}.diff"
   "qwen4exp-mtp-detached-head-${_mtp_detached_head_commit}.patch::https://github.com/crusaderky/llama.cpp/commit/${_mtp_detached_head_commit}.diff"
+  "hip-apu-host-buffer-${_hip_apu_host_buffer_commit}.patch::https://github.com/Victor-Loos/llama.cpp/commit/${_hip_apu_host_buffer_commit}.diff"
   "hip-radix-top-k-${_hip_radix_top_k_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/749f688fcaa4c472ec034b08cb8a907c45cfaa02...${_hip_radix_top_k_commit}.diff"
   "hipcub-rocm-${_hipcub_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/07132750825a4f2d27a547cd9cdde1c6f6001885...${_hipcub_commit}.diff"
   # 提升性能的妙妙工具
@@ -58,6 +60,7 @@ sha256sums=('e5e2c589d9de668303f63b8616fec2ad4b3880e2f02aa5e51c95bc6698a64d3e'
             'f4015a0321186b74ddf8424b0e873c3ef0efbfb2133cfe89b8fab6e38c963b73'
             '115313efdaf605188ffcd42119ad39a853ad46c0bfd3f416d44387e2cee1925a'
             '321497eccf0d02f44555e0349877fafde75354b1c72416996421044671d80b28'
+            'a55893cf8dd7a6992d66cf323c13d6dbf96b11065af7a11dc9f205041c37f80e'
             '65cb266ee3890043fcdc691b8f8da8ce8edfb970cc4aadde5860632cc59666aa'
             '92eed6a76cc7ddfbaa9c243ddc13d9a768c4cb82697a8e4be92416913ccbf45a'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
@@ -70,6 +73,9 @@ prepare() {
   patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-${_mtp_commit}.patch"
   patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-mixer-export-${_mtp_mixer_export_commit}.patch"
   patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-detached-head-${_mtp_detached_head_commit}.patch"
+
+  # Keep scheduler writes from racing direct ROCm_Host compute on Strix Halo.
+  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/hip-apu-host-buffer-${_hip_apu_host_buffer_commit}.patch"
 
   # Keep wide QSA TOP_K on the GPU without breaking HIP graph capture on ROCm 7.2.
   patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/hip-radix-top-k-${_hip_radix_top_k_commit}.patch"
