@@ -1,6 +1,6 @@
 pkgbase = sunder-bin
 	pkgdesc = A desktop YouTube music client that doesn't spy on you (prebuilt binary)
-	pkgver = 1.4.10
+	pkgver = 1.4.11
 	pkgrel = 1
 	url = https://github.com/FrogSnot/Sunder
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = sunder-bin
 	depends = ffmpeg
 	provides = sunder
 	conflicts = sunder
-	source = LICENSE-1.4.10::https://raw.githubusercontent.com/FrogSnot/Sunder/v1.4.10/LICENSE
-	source = README-1.4.10.md::https://raw.githubusercontent.com/FrogSnot/Sunder/v1.4.10/README.md
-	source = Sunder_1.4.10_amd64.deb::https://github.com/FrogSnot/Sunder/releases/download/v1.4.10/Sunder_1.4.10_amd64.deb
+	source = LICENSE-1.4.11::https://raw.githubusercontent.com/FrogSnot/Sunder/v1.4.11/LICENSE
+	source = README-1.4.11.md::https://raw.githubusercontent.com/FrogSnot/Sunder/v1.4.11/README.md
+	source = Sunder_1.4.11_amd64.deb::https://github.com/FrogSnot/Sunder/releases/download/v1.4.11/Sunder_1.4.11_amd64.deb
 	sha256sums = 0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0
 	sha256sums = c0c2af790b62a2b5d253f2b5db95d74404bfafb8e3464ada5ddaa1c15f58d3d4
-	sha256sums = 0424cf57972b90e03a551592ad6dcf82b4589cab35a725d2441d1534eb2f0760
+	sha256sums = a40968486d5aef50f8389040cfe67b3c78ef2c222767be366c6c153bbde24bd7
 
 pkgname = sunder-bin
