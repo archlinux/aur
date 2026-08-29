@@ -1,7 +1,7 @@
 pkgbase = modlist-org-app
 	pkgdesc = Mod manager and installer for A Dance of Fire and Ice (ADOFAI) and other games
 	pkgver = 0.4.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/modlist-org/modlist_org_app
 	arch = x86_64
 	license = GPL-3.0-only
@@ -14,6 +14,8 @@ pkgbase = modlist-org-app
 	depends = gtk3
 	depends = glib2
 	source = modlist-org-app-0.4.7.tar.gz::https://github.com/modlist-org/modlist_org_app/archive/refs/tags/v0.4.7.tar.gz
+	source = modlist-org-app.desktop
 	sha256sums = 90297bf0b7e995c44d142a48756a95f78d8ff7022d4b3a763ff31236fde1b290
+	sha256sums = 82402151c4037ddfdeb7827efef0215335b4b5268e90b967c3620a6960ee2238
 
 pkgname = modlist-org-app
