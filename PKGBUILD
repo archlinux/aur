@@ -9,7 +9,7 @@
 pkgname=opentelemetry-cpp
 pkgver="1.28.0"
 _proto_version="1.11.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="The C++ OpenTelemetry client."
 arch=("x86_64" "armv7h")
 url="https://github.com/open-telemetry/opentelemetry-cpp"
@@ -35,7 +35,9 @@ build() {
 }
 
 check() {
-  ctest --test-dir build
+  # these two bind the fixed OTLP ports 4317/4318 and fail on any host
+  # already running a collector (upstream hardcodes the ports)
+  ctest --test-dir build -E 'RetryIntegrationTests'
 }
 
 package() {
