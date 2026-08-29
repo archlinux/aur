@@ -1,0 +1,17 @@
+pkgbase = flatpak-helper
+	pkgdesc = CLI wrapper for Flatpak written in Rust
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ArisoN-ext/flatpak-helper
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = flatpak
+	depends = glibc
+	depends = libgcc
+	source = git+https://github.com/ArisoN-ext/flatpak-helper#tag=v1.0.0
+	sha256sums = 1017bdcfd93e463af3afe5e679052e92937afd2bff4fdfa1004e6c95c56c49c5
+
+pkgname = flatpak-helper
