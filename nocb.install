@@ -2,6 +2,9 @@ post_install() {
     echo "==> to enable nocb clipboard daemon for your user:"
     echo "    systemctl --user daemon-reload"
     echo "    systemctl --user enable --now nocb.service"
+    echo ""
+    echo "==> to let AI agents read your clipboard (including images):"
+    echo "    claude mcp add -s user nocb -- /usr/bin/nocb mcp"
 }
 
 post_upgrade() {

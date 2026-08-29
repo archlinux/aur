@@ -2,12 +2,15 @@
 # PGP: 813CE099D6CE512BC29A15D841EE1853489958D6
 
 pkgname=nocb
-pkgver=1.1.7
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="x11 clipboard manager with compression and fts"
 arch=('x86_64')
 url="https://github.com/rotkonetworks/nocb"
 license=('MIT')
+# rusqlite's bundled sqlite3 does not survive makepkg's default LTO: the C
+# objects are dropped and sqlite3_* symbols come up undefined at link time.
+options=(!lto)
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 install=nocb.install
