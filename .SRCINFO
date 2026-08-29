@@ -1,6 +1,6 @@
 pkgbase = aercast
 	pkgdesc = Native Linux/Wayland screen sharing over HTTP
-	pkgver = 0.1.2
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/Xarth-Mai/Aercast
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = aercast
 	depends = vulkan-icd-loader
 	depends = wayland
 	depends = xdg-desktop-portal
-	source = aercast-0.1.2.tar.gz::https://github.com/Xarth-Mai/Aercast/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 32b296fbcf7476bf3257bc9e028576cd93864c6517d1e5d6a9dbfbb4e1519a4e
+	source = aercast-0.1.4.tar.gz::https://github.com/Xarth-Mai/Aercast/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 16673fc2cd905ee1578686c80f79d31fd718793af329715b877b1724cd002839
 
 pkgname = aercast
