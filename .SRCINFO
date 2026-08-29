@@ -1,18 +1,17 @@
 pkgbase = ketch
 	pkgdesc = Fast, stateless CLI for web search, code search, library docs, and scraping
-	pkgver = 0.9.5
+	pkgver = 0.14.0.r1.obscura.1
 	pkgrel = 1
-	url = https://github.com/1broseidon/ketch
+	url = https://github.com/Algorant/ketch
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	optdepends = chromium: browser rendering for JavaScript-rendered pages
+	optdepends = obscura-browser-bin: lightweight rendered-page fallback for JavaScript pages and suitable HTTP 403 responses
+	optdepends = chromium: optional full browser renderer for layout-dependent pages
 	optdepends = github-cli: GitHub code search authentication via gh auth token
 	options = !debug
-	source = ketch-0.9.5.tar.gz::https://github.com/1broseidon/ketch/archive/refs/tags/v0.9.5.tar.gz
-	source = LICENSE
-	sha256sums = 57496158e8bca62c20ffc62c717010d4319fb73c1216266aad1076f56cbe9a55
-	sha256sums = e70156b67cf31c8962232c0f4900ddfe742c5331fd9a1437ea5f4c41dc9bfb9f
+	source = ketch-0.14.0.r1.obscura.1.tar.gz::https://github.com/Algorant/ketch/archive/refs/tags/v0.14.0-obscura.1.tar.gz
+	sha256sums = 4ae9674b262534e3349c0c198fb23d526a9c415cea8ac804e0efe86604b87fb4
 
 pkgname = ketch
