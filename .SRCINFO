@@ -1,6 +1,6 @@
 pkgbase = wallpiper-cosmic
 	pkgdesc = COSMIC portal for wallpiper
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/shdwmtr/wallpiper
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wallpiper-cosmic
 	makedepends = wayland-protocols
 	depends = wallpiper
 	depends = wayland
-	source = wallpiper-cosmic::git+https://github.com/shdwmtr/wallpiper.git#tag=v2.0.0
+	source = wallpiper-cosmic::git+https://github.com/shdwmtr/wallpiper.git#tag=v2.0.1
 	sha256sums = SKIP
 
 pkgname = wallpiper-cosmic
