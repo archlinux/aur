@@ -1,6 +1,7 @@
 # Maintainer: KercyDing <dkx215417@gmail.com>
 pkgname=sculk-git
-pkgver=0.6.0
+# Replaced by the release workflow before publishing to AUR.
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Minecraft P2P multiplayer tunnel CLI (git version)"
 arch=('x86_64')
