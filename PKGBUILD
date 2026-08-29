@@ -1,39 +1,53 @@
 # Maintainer: Aspenini <aspeninifeltner@gmail.com>
 pkgname=quark-downloader
-pkgver=0.5.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Interactive CLI and GUI wrapper for yt-dlp'
 arch=('x86_64')
 url='https://github.com/Aspenini/quark-downloader'
 license=('MIT')
-depends=('ffmpeg' 'gc' 'hicolor-icon-theme' 'libevent' 'openssl' 'pcre2' 'tk' 'yt-dlp' 'zlib')
-makedepends=('crystal' 'shards')
-optdepends=(
-  'deno: JavaScript runtime support for YouTube downloads'
-  'nodejs: JavaScript runtime support for YouTube downloads'
+depends=(
+  'ffmpeg'
+  'gcc-libs'
+  'glibc'
+  'hicolor-icon-theme'
+  'qt6-declarative'
+  'yt-dlp'
 )
+makedepends=('cargo' 'pkgconf')
+optdepends=('qt6-wayland: native Wayland support')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+# Replace after creating the v${pkgver} tag; never publish the AUR package with SKIP.
 sha256sums=('SKIP')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  cargo fetch --locked --target x86_64-unknown-linux-gnu
+}
 
 build() {
   cd "${pkgname}-${pkgver}"
-  export CRYSTAL_CACHE_DIR="${srcdir}/.crystal"
+  export CARGO_TARGET_DIR="${srcdir}/target"
+  cargo build --frozen --release -p quark-cli -p quark-gui-dispatch
+}
 
-  crystal build --release --no-debug src/quark-downloader.cr -o quark-downloader
-  crystal build --release --no-debug src/gui/quark-downloader-gui.cr -o quark-downloader-gui
+check() {
+  cd "${pkgname}-${pkgver}"
+  export CARGO_TARGET_DIR="${srcdir}/target"
+  cargo test --frozen --workspace
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -Dm755 quark-downloader "${pkgdir}/usr/lib/${pkgname}/quark-downloader"
-  install -Dm755 quark-downloader-gui "${pkgdir}/usr/lib/${pkgname}/quark-downloader-gui"
-  install -Dm644 src/gui/quark-downloader-gui.tcl "${pkgdir}/usr/lib/${pkgname}/quark-downloader-gui.tcl"
+  install -Dm755 "${srcdir}/target/release/quark-downloader" "${pkgdir}/usr/lib/${pkgname}/quark-downloader"
+  install -Dm755 "${srcdir}/target/release/quark-downloader-gui" "${pkgdir}/usr/lib/${pkgname}/quark-downloader-gui"
 
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "../lib/${pkgname}/quark-downloader" "${pkgdir}/usr/bin/quark-downloader"
   ln -s "../lib/${pkgname}/quark-downloader-gui" "${pkgdir}/usr/bin/quark-downloader-gui"
 
+  install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}/qml" src/gui/qt/*.qml
   install -Dm644 packaging/quark-downloader.desktop "${pkgdir}/usr/share/applications/quark-downloader.desktop"
   install -Dm644 packaging/quark-downloader-gui.desktop "${pkgdir}/usr/share/applications/quark-downloader-gui.desktop"
   install -Dm644 icons/icon.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/quark-downloader.png"
