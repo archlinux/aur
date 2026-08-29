@@ -2,7 +2,7 @@
 # Contributor: nirnakinho <aur at dominikbodi dot de>
 
 pkgname=dnscontrol
-pkgver=4.46.0
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="Synchronize your DNS to multiple providers from a simple DSL"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git'  'go')
 provides=("${pkgname}=${pkgver}")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DNSControl/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('f16b673dbbf8ed150a8f20bc3b78b8ebdbff2933bb37c6f959549f68d5b260a1d4d594618db242f39cf83e2e3213e28eb2ef6824473ba96190a22259bf48dea1')
+b2sums=('2144003906a10a439a5439e9225a4893cecebd415817a1214882cd9d65ccb143599d325ddc3fcfe0637506254e941e943146883023f70a1f85e0b1f804ab800f')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
@@ -46,7 +46,7 @@ build() {
   
   cd "${pkgname}-${pkgver}"
   go build -v \
-    -ldflags="${_x[*]/#/-X=github.com/DNSControl/dnscontrol/v4/pkg/version.} -linkmode=external" \
+    -ldflags="${_x[*]/#/-X=github.com/DNSControl/dnscontrol/v5/pkg/version.} -linkmode=external" \
     -o build/ \
     .
 }
