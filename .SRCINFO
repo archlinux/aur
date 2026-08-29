@@ -1,7 +1,7 @@
 pkgbase = vectorscan
 	pkgdesc = Portable fork of hyperscan regular expression matching library
 	pkgver = 5.4.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/VectorCamp/vectorscan
 	arch = x86_64
 	license = BSD-3-Clause
@@ -9,7 +9,6 @@ pkgbase = vectorscan
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = pcre
-	makedepends = python
 	makedepends = ragel
 	makedepends = simde
 	depends = libgcc

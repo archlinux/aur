@@ -2,7 +2,7 @@
 
 pkgname=vectorscan
 pkgver=5.4.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Portable fork of hyperscan regular expression matching library'
 arch=(x86_64)
 url=https://github.com/VectorCamp/vectorscan
@@ -12,7 +12,6 @@ makedepends=(
   cmake
   ninja
   pcre
-  python
   ragel
   simde
 )
