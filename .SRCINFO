@@ -1,0 +1,18 @@
+pkgbase = wmux-bin
+	pkgdesc = A fast, persistent, customizable cross-platform terminal multiplexer.
+	pkgver = 1.0.17
+	pkgrel = 1
+	url = https://github.com/shreshthkapai/wmux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = wmux
+	provides = wmux-server
+	conflicts = wmux
+	options = !strip
+	source_x86_64 = wmux-x86_64-1.0.17.tgz::https://github.com/shreshthkapai/wmux/releases/download/v1.0.17/wmux-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 1069f0081f5c10ee185b4a17a9ccb77e641aaececceda01325531d8a64100933
+	source_aarch64 = wmux-aarch64-1.0.17.tgz::https://github.com/shreshthkapai/wmux/releases/download/v1.0.17/wmux-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 81538a1fa6fc48e5c96942e14d0cbc13bd154ac78fea2a4409978bd5b79d1811
+
+pkgname = wmux-bin

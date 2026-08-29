@@ -1,0 +1,5 @@
+[wmux-bin]
+source = "github"
+github = "shreshthkapai/wmux"
+use_latest_release = true
+prefix = "v"
