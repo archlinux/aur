@@ -1,6 +1,6 @@
 # Maintainer: Bolt J Woofson <bolt@boop.no>
 pkgname=commanderdog
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Multi-Tab Web & Desktop File Commander - By Woofson"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates' 'gtk3' 'webkit2g
 makedepends=('cargo' 'rust' 'pkgconf' 'gtk3' 'webkit2gtk-4.1')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9547c4e003992344e516eb99816a8274763636d73417d8852d74d528811f72cd')
+sha256sums=('ae40e2c43c338aa9da7355daf807d3ed4418832a77d80a9b7f7e1b0be3b057e5')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -25,7 +25,7 @@ build() {
     export LIBSSH2_SYS_USE_PKG_CONFIG=1
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     export RUSTFLAGS="-C link-arg=-Wl,--no-as-needed"
-    cargo build --release --frozen --features gui,pam
+    cargo build --release --frozen --features gui
 }
 
 package() {
