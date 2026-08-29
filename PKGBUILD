@@ -5,8 +5,8 @@
 
 pkgname=tango-cpp
 _pkgname=cppTango
-pkgver="10.3.2"
-pkgrel=2
+pkgver="10.3.3"
+pkgrel=1
 groups=("tango-controls")
 pkgdesc="TANGO distributed control system - shared library"
 arch=("x86_64" "armv7h")
@@ -23,7 +23,7 @@ source=(
 )
 
 sha256sums=(
-  "8055acb484abffba58b45496265d04637adc578c66319ff4a75570c1373db7f3"
+  "ce76c424ed39d24ee24561c17e0596ee4099f29ebfcff9027621d46868c1564a"
   "f83a617bda31176a0331189b2480f5a7cee867c2b53ce47698fdf4ce72768cc4"
   "80a2d6dbc8acdf03eebb33f9f8f304319e017b1b4e347d8b75f064a6cbcee6f7"
 )

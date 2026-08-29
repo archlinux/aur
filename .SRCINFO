@@ -1,7 +1,7 @@
 pkgbase = tango-cpp
 	pkgdesc = TANGO distributed control system - shared library
-	pkgver = 10.3.2
-	pkgrel = 2
+	pkgver = 10.3.3
+	pkgrel = 1
 	url = https://gitlab.com/tango-controls/cppTango
 	arch = x86_64
 	arch = armv7h
@@ -21,10 +21,10 @@ pkgbase = tango-cpp
 	optdepends = doxygen: for building docs
 	optdepends = graphviz: for building docs
 	conflicts = tango
-	source = https://gitlab.com/tango-controls/cppTango/-/releases/10.3.2/downloads/cppTango-with-submodules-10.3.2.tar.gz
+	source = https://gitlab.com/tango-controls/cppTango/-/releases/10.3.3/downloads/cppTango-with-submodules-10.3.3.tar.gz
 	source = fortify.patch
 	source = subscribe-event-inline.patch
-	sha256sums = 8055acb484abffba58b45496265d04637adc578c66319ff4a75570c1373db7f3
+	sha256sums = ce76c424ed39d24ee24561c17e0596ee4099f29ebfcff9027621d46868c1564a
 	sha256sums = f83a617bda31176a0331189b2480f5a7cee867c2b53ce47698fdf4ce72768cc4
 	sha256sums = 80a2d6dbc8acdf03eebb33f9f8f304319e017b1b4e347d8b75f064a6cbcee6f7
 
