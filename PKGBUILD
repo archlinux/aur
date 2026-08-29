@@ -10,12 +10,12 @@ depends=('glibc' 'sqlite' 'libssh2' 'openssl' 'ca-certificates' 'gtk3' 'webkit2g
 makedepends=('cargo' 'rust' 'pkgconf' 'gtk3' 'webkit2gtk-4.1')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bc563b1594e1e8486d962d5de41e555ad72de8d6f44d5b18d9d5fbcaf890348a')
+sha256sums=('90bfac79d9578dd70a72a96a2f17dc058ccae5b0bed8954f010cabef68f41f8e')
 
 prepare() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -25,7 +25,7 @@ build() {
     export LIBSSH2_SYS_USE_PKG_CONFIG=1
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
     export RUSTFLAGS="-C link-arg=-Wl,--no-as-needed"
-    cargo build --release --frozen --features gui
+    cargo build --release --features gui
 }
 
 package() {

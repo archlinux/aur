@@ -20,6 +20,6 @@ pkgbase = commanderdog
 	depends = webkit2gtk-4.1
 	options = !lto
 	source = commanderdog-0.5.5.tar.gz::https://github.com/Woofson/commanderdog/archive/refs/tags/v0.5.5.tar.gz
-	sha256sums = bc563b1594e1e8486d962d5de41e555ad72de8d6f44d5b18d9d5fbcaf890348a
+	sha256sums = 90bfac79d9578dd70a72a96a2f17dc058ccae5b0bed8954f010cabef68f41f8e
 
 pkgname = commanderdog
