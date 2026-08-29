@@ -2,13 +2,13 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 _pkgname=libretro-virtualjaguar
 pkgname=$_pkgname-git
-pkgver=r313.2cc0689
+pkgver=r1693.9a42b52
 pkgrel=1
 epoch=1
 pkgdesc="Atari Jaguar core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/virtualjaguar-libretro"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 groups=('libretro')
 depends=('glibc' 'libretro-core-info')
 makedepends=('git')
@@ -19,18 +19,16 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	sed -i 's/-O[0123s]//;s/-Ofast//' $_pkgname/Makefile
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
-	make -C $_pkgname
+	cd $_pkgname
+	make OPT_LEVEL=
 }
 
 package() {
+	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/virtualjaguar_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro virtualjaguar_libretro.so
 }
