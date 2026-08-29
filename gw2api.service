@@ -1,0 +1,20 @@
+[Unit]
+Description=gemini-web2api-go (gw2api)
+Documentation=https://github.com/zexadev/gemini-web2api-go
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=gw2api
+StateDirectory=gw2api
+LogsDirectory=gw2api
+CacheDirectory=gw2api
+EnvironmentFile=-/etc/gw2api/gw2api.conf
+ExecStart=/usr/bin/gw2api --port ${GW2API_PORT} --admin-token ${GW2API_ADMIN_TOKEN} --db /var/lib/gw2api/gw2api.db
+
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

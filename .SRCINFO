@@ -1,0 +1,19 @@
+pkgbase = gw2api-bin
+	pkgdesc = Reverse Google Gemini web protocol into OpenAI-compatible API. Single binary with built-in admin dashboard.
+	pkgver = 4.13.0
+	pkgrel = 1
+	url = https://github.com/zexadev/gemini-web2api-go
+	install = gw2api-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = gw2api=4.13.0
+	conflicts = gw2api
+	backup = etc/gw2api/gw2api.conf
+	source_x86_64 = https://github.com/zexadev/gemini-web2api-go/releases/download/v4.13.0/gemini-web2api-go_v4.13.0_linux_amd64
+	sha256sums_x86_64 = cd795efd6225f95b5a9a73b9db4d09f4bc9bdbf80c9785c5680481b560d1adea
+	source_aarch64 = https://github.com/zexadev/gemini-web2api-go/releases/download/v4.13.0/gemini-web2api-go_v4.13.0_linux_arm64
+	sha256sums_aarch64 = a408bb02ec4345c6896c6b3b74ebb8b4f2e569757667c1d158141161f0cbed89
+
+pkgname = gw2api-bin
