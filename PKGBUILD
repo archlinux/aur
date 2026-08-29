@@ -2,9 +2,9 @@
 
 pkgname=voicefox
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 epoch=1
-_tag="${pkgver}"
+_tag="v${pkgver}"
 _srcdir="${pkgname}-${_tag#v}"
 pkgdesc="A TUI music player for Netease/Bilibili/QQ/Kugou/... and local tracks"
 arch=("x86_64" "aarch64")
@@ -27,7 +27,7 @@ optdepends=(
 source=(
 	"${pkgname}-${pkgver}.tar.gz::$url/archive/refs/tags/${_tag}.tar.gz"
 )
-sha512sums=('97d0eed2e820f693f19a98825afb39a5c4fdb606cfca8ad277560f8caac989d61a058b5e644f30c8bc626153f16c98f3aa64b3a552a8cb13e49093e3af7f9daa')
+sha512sums=('c2f38965de1eb0332e65b08185373696fe40622cd334d920a04be13791ddd4bac456f92e51d7face34e99b56c98810052f075a66dbb29dbdf800d4c71db47519')
 
 prepare() {
 	cd "${_srcdir}"
