@@ -2,7 +2,7 @@
 # 使用预编译二进制文件打包（跳过编译）
 
 pkgname=astrobox-ng
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="AstroBox is a leading tool for managing and extending wearable devices"
 arch=('x86_64')

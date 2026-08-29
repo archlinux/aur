@@ -1,6 +1,6 @@
 pkgbase = astrobox-ng
 	pkgdesc = AstroBox is a leading tool for managing and extending wearable devices
-	pkgver = 2.0.2
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/AstralSightStudios/AstroBox-NG
 	arch = x86_64
