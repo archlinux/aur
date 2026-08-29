@@ -1,0 +1,5 @@
+[fyr-bin]
+source = "github"
+github = "opmr0/fyr"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,18 @@
+pkgbase = fyr-bin
+	pkgdesc = A fast, minimal file watcher that runs a command every time you save
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/opmr0/fyr
+	arch = x86_64
+	license = MIT
+	provides = fyr
+	conflicts = fyr
+	options = !strip
+	source = README-1.2.0.md::https://raw.githubusercontent.com/opmr0/fyr/v1.2.0/README.md
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/opmr0/fyr/v1.2.0/LICENSE
+	sha256sums = fc05e96721bb25906648d4e89c0d538a006e33c6cb65b71a9c67c4126486688a
+	sha256sums = fe66e326fee20e3cef980dc69e5921df6c17253120efa9d9974bbd0d942cf244
+	source_x86_64 = fyr-x86_64-1.2.0::https://github.com/opmr0/fyr/releases/download/v1.2.0/fyr-linux-x86_64
+	sha256sums_x86_64 = a370626cf9663f50354eb9593346424315a7b8f0cbeef1aee708c8cb2ba4993f
+
+pkgname = fyr-bin
