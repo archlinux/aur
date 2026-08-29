@@ -3,7 +3,7 @@
 
 pkgname=grok-build-bin
 pkgver=1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="SpaceXAI's coding agent harness and TUI. Fullscreen, mouse interactive, extensible."
 arch=(
   'x86_64' 
@@ -28,7 +28,7 @@ b2sums_x86_64=('b9863d618e622e6025ed3613d2457abed2bb2265e26a5ea50a27b74b92b6cfaf
 b2sums_aarch64=('d08736b812bb20fe88fe66b4f0dd2d0383e73f0a27840e24822280285a12b09c686e5efb5965676587d01095e4fc715f47a28ee0d1b006230378b146b8be52f5')
 b2sums=(
   'd71170807c24118616aa2c4a1c2927bd4408ed6a7694bb02ad007aa5fad8939d42f586d576c1fd3d4e505e0eeb715443cdadcf268750807c860eb28c23ba53fa'
-  '4d37a050b4fa861b2ee076940908f4dfef7419e6297425bb3dfe6c26fcb9440b01befff1837451b9bed194ee45a3f52e30b040bd356b32a5bb178ede6aea694e'
+  '37b586af90c67f7a8cfb778d3408d60c87f81cd5aff6c52ed8e091c741446543f5aaecf773160f4cf29005bded1c653f2e62868b851e9470914dded3e585c58e'
 )
 
 # TODO default "ultra" sandbox -> https://docs.x.ai/build/features/sandbox
