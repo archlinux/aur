@@ -1,6 +1,6 @@
 pkgbase = lunahr
 	pkgdesc = Heart rate monitor for VRChat OSC with Polar H10 (BLE) and Pulsoid support
-	pkgver = 2.2
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/PetLucy/LunaHR-Linux
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = lunahr
 	depends = python-osc
 	depends = python-colorama
 	depends = python-websockets
-	source = https://github.com/PetLucy/LunaHR-Linux/archive/refs/tags/v2.2.tar.gz
-	sha256sums = 2b77ddade8d25509a464cf09f09f580b34f220b0c41bd8cf9d822f4e5c69c473
+	source = https://github.com/PetLucy/LunaHR-Linux/archive/refs/tags/v2.2.1.tar.gz
+	sha256sums = 156bf682dda7a32d806202a02006370d8449e29159eabb9199eb82a38b5a86da
 
 pkgname = lunahr
