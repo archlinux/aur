@@ -1,7 +1,7 @@
 # Maintainer: Yubo-Cao <cao2006721 at gmail dot com>
 
 pkgname=herdr-gui-bin
-pkgver=0.4.7
+pkgver=0.4.10
 pkgrel=1
 pkgdesc="Self-hosted web GUI for Herdr"
 arch=('x86_64' 'aarch64')
@@ -23,10 +23,10 @@ source_x86_64=("${pkgname}-${pkgver}-${CARCH}.tar.xz::${url}/releases/download/v
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.xz::${url}/releases/download/v${pkgver}/herdr-gui-v${pkgver}-linux-arm64.tar.xz")
 sha256sums=(
   'f0366103e89c5b21afe3f414c1f708dfa2e6d261e54cd2ea1b893cb2188ea61e'
-  '15fb42d367661e7306881d36f9b49ae8e224c7f82747f11bbadde4046b613b72'
+  '5cc5152309654de28d608df1c3d3fdf2e7c04fcb201418fccca2587b529e4780'
 )
-sha256sums_x86_64=('a003d64a377bf092f91f02b7fdf591c08d46711c0f8e18f0e47381bff3a96c2e')
-sha256sums_aarch64=('33abdc1bfdb369ff7bf78da0b015974d14a8c8231278bc8f8b42d891cc941328')
+sha256sums_x86_64=('a674e01ce506ae1a59ded3ed43b04f56a0e4ca2800b2ea5944ec3b3d28664fc1')
+sha256sums_aarch64=('b0056ede54655fb7fed3609cd52b17a6526ce9e16af4307f42e8f15b5366873a')
 
 package() {
   local platform='x64'

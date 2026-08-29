@@ -1,6 +1,6 @@
 pkgbase = herdr-gui-bin
 	pkgdesc = Self-hosted web GUI for Herdr
-	pkgver = 0.4.7
+	pkgver = 0.4.10
 	pkgrel = 1
 	url = https://github.com/powerfooI/herdr-gui
 	arch = x86_64
@@ -9,17 +9,17 @@ pkgbase = herdr-gui-bin
 	depends = glibc
 	optdepends = herdr: manage a local Herdr server
 	optdepends = openssh: connect to remote Herdr servers
-	provides = herdr-gui=0.4.7
+	provides = herdr-gui=0.4.10
 	conflicts = herdr-gui
 	options = !strip
 	options = !debug
-	source = LICENSE.upstream::https://github.com/powerfooI/herdr-gui/raw/v0.4.7/LICENSE
-	source = THIRD_PARTY_NOTICES.md::https://github.com/powerfooI/herdr-gui/raw/v0.4.7/THIRD_PARTY_NOTICES.md
+	source = LICENSE.upstream::https://github.com/powerfooI/herdr-gui/raw/v0.4.10/LICENSE
+	source = THIRD_PARTY_NOTICES.md::https://github.com/powerfooI/herdr-gui/raw/v0.4.10/THIRD_PARTY_NOTICES.md
 	sha256sums = f0366103e89c5b21afe3f414c1f708dfa2e6d261e54cd2ea1b893cb2188ea61e
-	sha256sums = 15fb42d367661e7306881d36f9b49ae8e224c7f82747f11bbadde4046b613b72
-	source_x86_64 = herdr-gui-bin-0.4.7-x86_64.tar.xz::https://github.com/powerfooI/herdr-gui/releases/download/v0.4.7/herdr-gui-v0.4.7-linux-x64.tar.xz
-	sha256sums_x86_64 = a003d64a377bf092f91f02b7fdf591c08d46711c0f8e18f0e47381bff3a96c2e
-	source_aarch64 = herdr-gui-bin-0.4.7-aarch64.tar.xz::https://github.com/powerfooI/herdr-gui/releases/download/v0.4.7/herdr-gui-v0.4.7-linux-arm64.tar.xz
-	sha256sums_aarch64 = 33abdc1bfdb369ff7bf78da0b015974d14a8c8231278bc8f8b42d891cc941328
+	sha256sums = 5cc5152309654de28d608df1c3d3fdf2e7c04fcb201418fccca2587b529e4780
+	source_x86_64 = herdr-gui-bin-0.4.10-x86_64.tar.xz::https://github.com/powerfooI/herdr-gui/releases/download/v0.4.10/herdr-gui-v0.4.10-linux-x64.tar.xz
+	sha256sums_x86_64 = a674e01ce506ae1a59ded3ed43b04f56a0e4ca2800b2ea5944ec3b3d28664fc1
+	source_aarch64 = herdr-gui-bin-0.4.10-aarch64.tar.xz::https://github.com/powerfooI/herdr-gui/releases/download/v0.4.10/herdr-gui-v0.4.10-linux-arm64.tar.xz
+	sha256sums_aarch64 = b0056ede54655fb7fed3609cd52b17a6526ce9e16af4307f42e8f15b5366873a
 
 pkgname = herdr-gui-bin
