@@ -18,7 +18,7 @@
 
 _appname='tor-browser'
 pkgname="${_appname}-bin"
-pkgver='15.0.19'
+pkgver='15.0.20'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: anonymous browsing using Firefox and Tor'
 url='https://www.torproject.org/projects/torbrowser.html'
@@ -72,9 +72,9 @@ sha256sums=('604f5d7cc642d56c919b9d2b7b20a785db4acebf58520f41845347bd81e8ec73'
             '53754c8ff0ea01d8f79d3e725fa3516511faf1e53804c67dc8f573cdb39e35a3'
             'f25ccf68b47f5eb14c6fec0664c74f30ea9c6c58d42fc6abac3b64670aaa3152'
             '7b28b5dbe8ad573bb46e61b4d542b33e01ca240825ca640b4893fee6203b021f')
-sha256sums_i686=('37e4e3a49ac783c701eafc02aab4d69f3e3f770ceedbfaf9e6436690b7a65af5'
+sha256sums_i686=("$(_dist_checksum "${_tag_i686}")"
                  'SKIP')
-sha256sums_x86_64=('2eb4ab431f4921ca63b123b6f9f445a073fbf7b65f188f45a577d576eb2be2cf'
+sha256sums_x86_64=("$(_dist_checksum "${_tag_x86_64}")"
                    'SKIP')
 
 noextract=("${_appname}-${_tag_i686}-${pkgver}.tar.xz"
