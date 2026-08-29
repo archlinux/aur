@@ -1,8 +1,8 @@
 # Maintainer: twxt <aur@twxt.cc>
 
 pkgname=openmodsim-git
-pkgver=r2138.25d1a817
-pkgrel=3
+pkgver=r2179.31b2f36e
+pkgrel=1
 pkgdesc="Open ModSim is a free implimentation of modbus slave (server) utility for modbus-tcp and modbus-rtu protocols."
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/sanny32/openmodsim"
