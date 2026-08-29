@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="A very fast find-and-replace utility"
 
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,7 +25,7 @@ makedepends=('zig')
 options=('!strip')
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums_x86_64=('429e6ae415f350051d5490a1063d06d5930fc1e088ba5853a0df31f90a27ad88')
+sha256sums_x86_64=('0da7361d6b8a33b2afa008c227cce9cf56782eea713a70b82bed28ab844cd109')
 
 
 build() {
