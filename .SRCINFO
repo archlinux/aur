@@ -1,0 +1,19 @@
+pkgbase = xiami
+	pkgdesc = 虾米 — 长篇小说 Agent 创作与无人值守生产工作台 (Tauri 2)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/zhangxunvvv/xiami
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = npm
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	options = !lto
+	source = xiami-0.2.0.tar.gz::https://github.com/zhangxunvvv/xiami/archive/e3fa80f3034a5ccb7255e70e09cb0545af705231.tar.gz
+	sha256sums = a56416273dff0509632d8be793d020d93596060fed1779a04c458cb8c39a21be
+
+pkgname = xiami
