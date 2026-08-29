@@ -4,9 +4,9 @@
 
 pkgbase=linux-fsync-nobara-bin
 pkgname=${pkgbase}
-pkgver=7.1.3
+pkgver=7.2.2
 pkgrel=1
-build_id=10681566
+build_id=10915052
 fedora=44
 extras=200.nobara.fc${fedora}
 printf -v l_build_id %08d%s ${build_id}
@@ -22,17 +22,17 @@ provides=(VIRTUALBOX-GUEST-MODULES
           WIREGUARD-MODULE
           KSMBD-MODULE
           NTFS3-MODULE)
-source=("https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-core-${pkgver}-${extras}.x86_64.rpm"
-        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-${pkgver}-${extras}.x86_64.rpm"
-        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-${fedora}/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-devel-${pkgver}-${extras}.x86_64.rpm")
+source=("https://download.copr.fedorainfracloud.org/results/gloriouseggroll/linux-nobara-mainline/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-core-${pkgver}-${extras}.x86_64.rpm"
+        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/linux-nobara-mainline/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-modules-${pkgver}-${extras}.x86_64.rpm"
+        "https://download.copr.fedorainfracloud.org/results/gloriouseggroll/linux-nobara-mainline/fedora-${fedora}-x86_64/${l_build_id}-kernel/kernel-devel-${pkgver}-${extras}.x86_64.rpm")
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
 )
 
-sha256sums=('01583d88b68ae5cd121627b2308c5c82ff49001472dfcb18be29b659bb939893'
-            'ef020be73f4d66b0d694cce0f3cbe5fa2601db9e9145fc9d550f1f88cda711a8'
-            '249f94eb394fc0379e94bef6e9bc7a8b4da4794ad209133032381d8e607af744')
+sha256sums=('5735d5d0d6074b84162223a7e178109ac0f7a7bd52322d192754a979630e2a35'
+            'faf4652582d757ac0b95be20f5c8c9d3a612278d2b8a6af5aecc82f065df4eaf'
+            '001809b9ab54e0ceb675773b9ade7b4db32208c764ef673798f0022d63fddc8a')
 
 package() {
 
