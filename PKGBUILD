@@ -4,7 +4,7 @@
 
 _pkgname=sshpilot
 pkgname=sshpilot-bin
-pkgver=5.9.7
+pkgver=5.9.9
 pkgrel=1
 _pkgrel_deb=1
 pkgdesc="SSH connection manager with integrated terminal, tunneling, tabbed interface and scp upload support."
@@ -18,7 +18,7 @@ options=(!strip)
 source=(
     "$pkgname-$pkgver-$_pkgrel_deb.deb::$url/releases/download/v$pkgver/sshpilot_${pkgver}-${_pkgrel_deb}_all.deb"
 )
-sha512sums=('ac30966a2da5ab92d20c38f0dae0ceea10c83e89c69f5f12b7d02690548d62c6b1554cbcb0edb553b8643ac2bed3e2ea6612f61166be2f09a9755e8b142b6f2b')
+sha512sums=('66e6cd36cc65ce5cb2bf3ae603b20883220cdae46c605f83f2ad298731e3e4e59e38b37487c57ac232db7f92b4cebfac39c05ef892b808a8848731a4f1b0eba0')
 
 package() {
     depends=(
