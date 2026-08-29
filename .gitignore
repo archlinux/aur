@@ -1,7 +1,0 @@
-*
-!PKGBUILD
-!.SRCINFO
-!.gitignore
-!.nvchecker.toml
-!llama.cpp.conf
-!llama.cpp.service
