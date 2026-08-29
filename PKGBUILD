@@ -13,7 +13,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-pkgver=26.2+0.15.1+0.30.0+1.0.4
+pkgver=26.2+0.15.1+0.30.1+1.0.4
 pkgrel=1
 _ver=${pkgver//\+/_}
 

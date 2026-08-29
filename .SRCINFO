@@ -1,6 +1,6 @@
 pkgbase = quilt-server
 	pkgdesc = Minecraft Quilt server unit files, script, and jar
-	pkgver = 26.2+0.15.1+0.30.0+1.0.4
+	pkgver = 26.2+0.15.1+0.30.1+1.0.4
 	pkgrel = 1
 	epoch = 1
 	url = https://quiltmc.org
@@ -15,7 +15,7 @@ pkgbase = quilt-server
 	depends = sed
 	depends = tar
 	optdepends = netcat: required in order to suspend an idle server
-	noextract = quilt-26.2-0.15.1-0.30.0-1.0.4.jar
+	noextract = quilt-26.2-0.15.1-0.30.1-1.0.4.jar
 	options = emptydirs
 	backup = etc/conf.d/quilt
 	source = minecraft-server-1.0.4.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.4.tar.gz
