@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-purepdb
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A minimal, dependency-free pure-Python parser for Microsoft PDB debug-info files"
 arch=(any)
@@ -11,7 +11,7 @@ depends=(python)
 makedepends=(python-build python-hatchling python-installer python-wheel)
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ae17cb4d8905accaa4d6795fc66047cb3610d006975e21f913f723da8436802b')
+sha256sums=('7f7d0324fcea03ecd33af4781dbdc4aa0362fae9f7b3863f634ed6acc0812c08')
 
 build() {
     cd "purepdb-$pkgver"

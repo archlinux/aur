@@ -1,6 +1,6 @@
 pkgbase = python-purepdb
 	pkgdesc = A minimal, dependency-free pure-Python parser for Microsoft PDB debug-info files
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/danielplohmann/purepdb
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-purepdb
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = python-purepdb-0.4.0.tar.gz::https://github.com/danielplohmann/purepdb/archive/v0.4.0.tar.gz
-	sha256sums = ae17cb4d8905accaa4d6795fc66047cb3610d006975e21f913f723da8436802b
+	source = python-purepdb-0.5.0.tar.gz::https://github.com/danielplohmann/purepdb/archive/v0.5.0.tar.gz
+	sha256sums = 7f7d0324fcea03ecd33af4781dbdc4aa0362fae9f7b3863f634ed6acc0812c08
 
 pkgname = python-purepdb
