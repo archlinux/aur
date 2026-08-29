@@ -1,0 +1,18 @@
+pkgbase = mianling-apply-bin
+	pkgdesc = 面灵网申 — 校招网申助手：一处填好档案，打开投递页自动填好重复字段，最后一步由你点
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://www.mianlingai.com/job-apply
+	install = mianling-apply-bin.install
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = mianling-apply
+	conflicts = mianling-apply
+	noextract = mianling-apply-0.1.1-amd64.deb
+	options = !strip
+	source = mianling-apply-0.1.1-amd64.deb::https://storage2.maoertech.cn/job-apply/mianling-apply-0.1.1-amd64.deb
+	sha256sums = d014bedd759f1e28d78de5f6b9ebe35050ccff477a2b402b0741d1d024e7c51e
+
+pkgname = mianling-apply-bin
