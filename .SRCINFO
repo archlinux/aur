@@ -1,0 +1,20 @@
+pkgbase = smart-router
+	pkgdesc = Turn a Linux box into a router with rule-based (non-AI) smart auto-recovery
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/user14923929/smart-router
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = nftables
+	depends = iproute2
+	depends = dnsmasq
+	backup = etc/smart-router/smart-router.conf
+	source = smart-router-0.1.0.tar.gz::https://github.com/user14923929/smart-router/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = c3f0a15e0ba81b66578a131c0a363626aad150bfa1defa917ba5c7423ebd9fc5
+
+pkgname = smart-router
