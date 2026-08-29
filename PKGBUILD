@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=mingw-w64-orc
-pkgver=0.4.42
+pkgver=0.4.43
 pkgrel=1
 pkgdesc="Optimized Inner Loop Runtime Compiler (mingw-w64)"
 arch=(any)
@@ -27,13 +27,13 @@ options=(
 source=("git+https://gitlab.freedesktop.org/gstreamer/orc.git?signed#tag=$pkgver"
         meson_i686-w64-mingw32
         meson_x86_64-w64-mingw32)
-b2sums=('65b8fc3a403fb0eeb89edf865f8631bc56997149ef8e09a6a20a5e36a2fea84ab1b5cc7e916e0016d3e49cdc188957279f16baba615648bc7c7dbaf7f57e791a'
+b2sums=('d85389d5431d5db1a603f39edc604282ea72fdb7fbd68f73114952967552d6058f1794f5ce224ffe3c687afeba0f3b2ad319f82f5ba9b507ad5f09ed9bc89823'
         '982c4e5403159748625fccdea5754e10c7f191e04058f76378271a63c5ff5aa7d093b22a004382e47837412e836ee2278e762c98aaceb47afe690e8e48ea8c43'
         '96fe847dc06e9dd81ed0d28200275ef0ee8873666236b732c9933202e19d81f37625a2b7ca59056531877e9d4542a8faa34dba2f0bdcd87ac74b6c1360c3a4b7')
 validpgpkeys=(
   D637032E45B8C6585B9456565D2EEE6F6F349D7C # Tim-Philipp Müller <tim@centricular.com>
 )
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures="${MINGW_W64_ARCHS:-x86_64-w64-mingw32}"
 
 build() {
   for _arch in ${_architectures}; do
