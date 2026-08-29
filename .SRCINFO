@@ -21,6 +21,6 @@ pkgbase = snappy-switcher
 	provides = snappy-switcher
 	conflicts = snappy-switcher-git
 	source = https://github.com/OpalAayan/snappy-switcher/archive/v4.5.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 56d3db8a39b80501d42077c2240105a2032f151f7ff4d628f60212ab4ee8258f
 
 pkgname = snappy-switcher
