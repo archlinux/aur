@@ -1,10 +1,10 @@
 # Maintainer: Nichokas <https://github.com/Nichokas>
 # Binary variant — downloads the prebuilt Linux tarball from GitHub Releases.
 pkgname=grokbot-linux-port-bin
-pkgver=0.29.0
+pkgver=0.30.0
 pkgrel=3
 pkgdesc="Grok Bot desktop — wine-less Linux port (prebuilt tarball from GitHub Releases)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Nichokas/grokbot-linux-port"
 license=('custom')
 depends=(
@@ -17,14 +17,24 @@ makedepends=('python')
 optdepends=('libnotify: desktop notifications')
 provides=('grokbot-linux-port' 'grok-bot' 'grokbot')
 conflicts=('grokbot-linux-port' 'grok-bot')
-source=("Grok_Bot_${pkgver}_linux_x64.tar.gz::https://github.com/Nichokas/grokbot-linux-port/releases/download/v${pkgver}/Grok_Bot_${pkgver}_linux_x64.tar.gz")
-sha256sums=('0ed63f0beae1d5a61ec7b1ebb0d1d1931522c1c28ced0532c451cf4f294b3912')
+source_x86_64=("Grok_Bot_${pkgver}_linux_x64.tar.gz::https://github.com/Nichokas/grokbot-linux-port/releases/download/v${pkgver}/Grok_Bot_${pkgver}_linux_x64.tar.gz")
+source_aarch64=("Grok_Bot_${pkgver}_linux_arm64.tar.gz::https://github.com/Nichokas/grokbot-linux-port/releases/download/v${pkgver}/Grok_Bot_${pkgver}_linux_arm64.tar.gz")
+sha256sums_x86_64=('3623162e9442c504c43fb6df144e7aeecf9b5eb831040c70827adc98b5b49597')
+sha256sums_aarch64=('67cb0332c40f5e3140f9f709c4c26065df00b9df5c4e53f15ad14aef44fafc9d')
 
 package() {
-  local staged
-  staged="${srcdir}/Grok_Bot_${pkgver}_linux_x64"
+  # Per-arch source arrays land the matching tarball under ${srcdir}; pick
+  # the staged dir for THIS CARCH. A leftover sibling-arch dir (a previous
+  # makepkg run in the same srcdir) must never win over the current build.
+  local arch_dir
+  case "${CARCH}" in
+    x86_64)  arch_dir="linux_x64" ;;
+    aarch64) arch_dir="linux_arm64" ;;
+    *) echo "error: unsupported CARCH '${CARCH}'" >&2; exit 1 ;;
+  esac
+  local staged="${srcdir}/Grok_Bot_${pkgver}_${arch_dir}"
   if [[ ! -d "${staged}" ]]; then
-    echo "error: staged dir Grok_Bot_${pkgver}_linux_x64 not found under srcdir" >&2
+    echo "error: no staged Grok_Bot_${pkgver}_${arch_dir} dir found under srcdir" >&2
     ls -R "${srcdir}" | head -n 100 >&2
     exit 1
   fi
