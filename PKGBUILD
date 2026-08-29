@@ -2,8 +2,8 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=pam_rssh-git
-pkgver=r46.773823b
-pkgrel=3
+pkgver=r105.8f92938
+pkgrel=1
 pkgdesc='Remote sudo authenticated via ssh-agent'
 arch=('x86_64')
 url='https://github.com/z4yx/pam_rssh'
@@ -11,6 +11,7 @@ license=(MIT)
 makedepends=(
 	cargo
 	git
+	clang
 )
 depends=(
 	openssl
