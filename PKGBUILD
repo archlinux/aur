@@ -9,7 +9,7 @@
 # pushes it. Do not hand-edit those three fields in the AUR checkout.
 
 pkgname=ivar
-pkgver=0.6.2
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Mount the repos a feature spans into one directory, on one branch, for one agent session"
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ conflicts=('ivar-bin')
 #   -debug split package to carry.
 options=('!lto' '!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7b5d56ec020c12174878f3067743d5e47c133abef4b27e11376adaa920d34387')
+sha256sums=('7fabdba8282548b7575c3696368833de0d3506c0e760779125e0c494a1fbc671')
 
 prepare() {
     cd "$pkgname-$pkgver"
