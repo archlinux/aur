@@ -313,7 +313,7 @@ post_upgrade() {
     echo "      systemctl --user restart voxtype"
     echo ""
     echo "    Full release notes:"
-    echo "      https://github.com/peteonrails/voxtype/releases/tag/v0.7.5"
+    echo "      https://github.com/peteonrails/voxtype/releases/tag/v1.0.0"
     echo ""
 }
 
