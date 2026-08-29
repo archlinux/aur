@@ -1,6 +1,6 @@
 pkgbase = luadot-nightly
 	pkgdesc = A dotfiles manager configured in Lua (nightly)
-	pkgver = 0.1.0.nightly.15
+	pkgver = 0.1.0.nightly.16
 	pkgrel = 1
 	url = https://github.com/ItzTas/luadot
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = luadot-nightly
 	makedepends = cmake
 	depends = gcc-libs
 	depends = glibc
-	provides = luadot=0.1.0.nightly.15
+	provides = luadot=0.1.0.nightly.16
 	conflicts = luadot
 	options = !lto
 	options = !debug
-	source = luadot-nightly-0.1.0.nightly.15.tar.gz::https://gitlab.digitalventura.com.br/api/v4/projects/luadot%2Fluadot/packages/generic/luadot/0.1.0-nightly.15/luadot-0.1.0.nightly.15-src.tar.gz
-	sha256sums = 8db077ba329ffb2a7b03acb53e0cd8ab48d8654f075f8faa4591fb3c8752410a
+	source = luadot-nightly-0.1.0.nightly.16.tar.gz::https://gitlab.digitalventura.com.br/api/v4/projects/luadot%2Fluadot/packages/generic/luadot/0.1.0-nightly.16/luadot-0.1.0.nightly.16-src.tar.gz
+	sha256sums = 6f607c6fc2b60e12f9a1bea07a9a92d622b450f087ac95a4240c46ab0962582f
 
 pkgname = luadot-nightly
