@@ -3,7 +3,7 @@
 pkgname=python-pytest-http-snapshot
 _gitpkgname=http-snapshot
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Pytest plugin that captures and snapshots HTTP roundtrips. Supports httpx and requests.'
 arch=('any')
 url='https://github.com/karpetrosyan/http-snapshot'
@@ -12,6 +12,7 @@ depends=(
   'python'
   'python-inline-snapshot'
   'python-pytest'
+  'python-typing_extensions'
 )
 makedepends=(
   'python-build'
