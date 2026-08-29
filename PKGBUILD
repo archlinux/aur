@@ -3,7 +3,7 @@
 _pkgauthor=ralsina
 _pkgname=hace
 pkgname=${_pkgname}-bin
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="A task-launching app (think make)"
 arch=('x86_64' 'aarch64')
@@ -24,9 +24,9 @@ source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${_
 source_aarch64=("${url}/releases/download/v${pkgver}/${_pkgname}-static-linux-${_barch[1]}")
 sha256sums=('e50dacbce1f6e8737ee91f43aa0b3a322aabda7e15ea0011b4059cb51dc9a274'
             'f4383e3e1639495392b520a5e17531a147d652bc2a3b82af354f68b0aaa341c3'
-            'b29a2aab008d5b2943bbd446271090f93a181761a9c23c5cb63ae415dea3a106')
-sha256sums_x86_64=('7c1926e4c87216c123eb8727b55b247d6605f03707269cc574b3e2b338faa1c2')
-sha256sums_aarch64=('15e9c4646972245d7e4c1f126a5a016b83b13b45740f07596f0cc95455169608')
+            '69d87376eb5c71e50f5712dd22e734899acc37cc62db8e78f6b9851cc00f2723')
+sha256sums_x86_64=('baae41cc6ad7ac1ef42400031679628e7ce9df31e9efcffa2407276f08ed89a4')
+sha256sums_aarch64=('2f481c3a391df3e1b05a42c4f08eeba9f3ff3de7788120226b26df4b9fa6d5b1')
 
 
 package() {
