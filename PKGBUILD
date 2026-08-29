@@ -3,8 +3,8 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full-llvm
-pkgver=9.0
-pkgrel=3
+pkgver=9.0.1
+pkgrel=2
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.9.2'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac) — built with Clang and LLVM lld'
@@ -175,7 +175,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '050-ffmpeg-fix-cuda-nvcc-with-gcc14.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
         'LICENSE')
-sha256sums=('7f607a00dd0d28a729d5a4811205812eef01cf6ef6155025febb6f36a9062d52'
+sha256sums=('cf38e0e28c7e5605942c4a77755349b0145804a397af37eb1fb4c77cb237f635'
             'SKIP'
             'SKIP'
             'a6abd064fcca8b85e794d205abf328c522e9451db43a3eadc178b883b7d0e9cd'
