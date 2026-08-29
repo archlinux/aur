@@ -2,13 +2,13 @@
 
 pkgname=polypane
 _pkgname=Polypane
-pkgver=29.0.0
+pkgver=30.1.0
 pkgrel=1
 pkgdesc="Browser for building responsive websites and apps."
 arch=('x86_64' 'i686')
 url="https://polypane.app"
 license=('https://polypane.app/legal/')
-sha256sums=('ef7a9b2d8c9d2e817f1383f27f2e7152fd4ece2cabe9bec5af5d27a34cdd9a7e')
+sha256sums=('d29d31f0be91e71b1fcccdbdc3b0d37546f4e6dd48cec34e5072207c341e7665')
 makedepends=('p7zip' 'curl' 'jq')
 noextract=("$_pkgname-${pkgver}.AppImage")
 options=('!strip')
@@ -19,8 +19,16 @@ prepare() {
 	cd "${srcdir}"
 
 	# Extract AppImage Files
-	7z x -y ${_pkgname}-${pkgver}.AppImage usr/share/icons >/dev/null
-	7z x -y ${_pkgname}-${pkgver}.AppImage ${pkgname}.desktop >/dev/null
+	7z x -y ${_pkgname}-${pkgver}.AppImage usr/share/icons '*.desktop' >/dev/null
+
+	# Upstream renames the entry between releases (e.g. com.firstversionist.polypane.desktop),
+	# so discover it rather than hardcoding a name
+	_desktop=$(find . -maxdepth 1 -name '*.desktop' -printf '%f\n')
+	if [ "$(printf '%s' "${_desktop}" | grep -c .)" -ne 1 ]; then
+		echo "expected exactly one .desktop entry in the AppImage root, found: ${_desktop:-none}" >&2
+		return 1
+	fi
+	[ "${_desktop}" = "${pkgname}.desktop" ] || mv "${_desktop}" "${pkgname}.desktop"
 
 	# Prevent duplicate .desktop entries that include "(version)"
 	sed -i "s/ (${pkgver})//" "${pkgname}.desktop"
