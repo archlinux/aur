@@ -1,0 +1,26 @@
+pkgbase = koushi-matrix-bin
+	pkgdesc = Koushi (光子・格子) — Matrix desktop client built on Tauri and matrix-rust-sdk (binary release)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/shinaoka/koushi-matrix
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = dbus
+	depends = libsecret
+	depends = openssl
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = hicolor-icon-theme
+	optdepends = gnome-keyring: Secret Service credential storage on GNOME/XFCE
+	optdepends = kwallet: Secret Service credential storage on KDE Plasma
+	provides = koushi-desktop
+	conflicts = koushi-desktop
+	options = !strip
+	options = !debug
+	source = koushi-matrix-bin-0.4.0.deb::https://github.com/shinaoka/koushi-matrix/releases/download/v0.4.0/Koushi-linux-x64.deb
+	sha256sums = 13cb84d64f483db46efc1e9278307a798bb0315adb92502c935e497abc49c489
+
+pkgname = koushi-matrix-bin
