@@ -1,6 +1,6 @@
 pkgbase = hyprcorrect
 	pkgdesc = Keyboard-driven desktop spelling and typo corrector (Hyprland-first)
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/jondkinney/hyprcorrect
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = hyprcorrect
 	depends = wtype
 	optdepends = wl-clipboard: enables the clipboard / selection fallback when the keystroke buffer is empty
 	options = !debug
-	source = hyprcorrect-0.5.0.tar.gz::https://github.com/jondkinney/hyprcorrect/archive/refs/tags/v0.5.0.tar.gz
-	sha256sums = 11c0968a5ef585f74468fb806bfe7736d39426c1f038581c6f340732a06ecf6c
+	source = hyprcorrect-0.6.0.tar.gz::https://github.com/jondkinney/hyprcorrect/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 2dfe0f60b1b92e184c2c2b7a4556d99edca3eed5e149a87c75ae0a05a22627b4
 
 pkgname = hyprcorrect
