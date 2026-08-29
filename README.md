@@ -1,0 +1,671 @@
+# llama.cpp-hip-gfx1151
+
+`llama.cpp-hip-gfx1151` is the HIP-only Strix Halo variant of
+[`llama.cpp-gfx1151`](https://aur.archlinux.org/packages/llama.cpp-gfx1151).
+It tracks the same llama.cpp release and keeps the sibling package's build,
+service, and CPU/HIP tuning unless a difference is listed here.
+
+This package also carries an experimental patch stack for
+Qwen3.8-Flash-Next MTP speculative decoding and fast QSA `TOP_K` on AMD GPUs.
+Those patches are pinned, checksum-verified snapshots of work that had not all
+merged upstream when this package was published. Treat MTP as an opt-in feature,
+test it on your workload, and keep a non-speculative baseline.
+
+## What differs from llama.cpp-gfx1151
+
+The comparison below is for package version `b10666`.
+
+| Area | `llama.cpp-hip-gfx1151` | `llama.cpp-gfx1151` |
+| --- | --- | --- |
+| Package identity | `llama.cpp-hip-gfx1151`, ROCm description | `llama.cpp-gfx1151`, ROCm + Vulkan description |
+| GPU backends | `GGML_HIP=ON`, `GGML_VULKAN=OFF` | `GGML_HIP=ON`, `GGML_VULKAN=ON` |
+| Vulkan packages | Not required or provided | Depends on `vulkan-icd-loader`; builds with `shaderc`, `vulkan-headers`, and `spirv-headers`; provides Vulkan names |
+| HIP headers | Adds the `hipcub` build dependency | No explicit `hipcub` build dependency |
+| VMM policy | Explicit `GGML_HIP_NO_VMM=ON` | Does not override the upstream default; its `OFF` example is commented out |
+| MFMA MMQ | Explicit `GGML_HIP_MMQ_MFMA=ON` | Uses the upstream default |
+| Extra source changes | Five pinned patches described below | No MTP/QSA patch stack |
+| Package release | `pkgrel=3` | `pkgrel=2` at the time of comparison |
+
+The HIP package hard-codes `_pkgname=llama.cpp`; stripping only `-gfx1151`
+from its longer package name would incorrectly produce `llama.cpp-hip`. The
+downloaded tarball's local alias also contains this package's name. Neither
+mechanical naming difference changes the upstream source contents.
+
+Everything else is intentionally synchronized, including:
+
+- upstream llama.cpp tag `b10666`;
+- shared-library, LTO, RPC, and Web UI builds;
+- `gfx1151` as the only HIP architecture;
+- HIP graphs and MMQ, including all-quant Flash Attention kernels;
+- the Zen 5-oriented HIP compiler flags;
+- native CPU tuning for local builds and universal CPU variants in CI;
+- the systemd service, `/etc/conf.d/llama.cpp`, and the Tailwind build
+  workaround used by the sibling package.
+
+The package still conflicts with Vulkan llama.cpp packages. This prevents two
+packages that own the same binaries and libraries from being installed together;
+it does not mean that this build contains a Vulkan backend.
+
+## Carried patches
+
+Patch order matters. Every source URL, commit, and SHA-256 is pinned in
+[`PKGBUILD`](./PKGBUILD).
+
+| Patch | Purpose | Review state and practical risk as of 2026-08-29 |
+| --- | --- | --- |
+| [Series ending at `1d8de7c`](https://github.com/ggml-org/llama.cpp/compare/e70802a01f03f0ed31a26338a5664796f3824371...1d8de7c1b0c7d2febf8f983174d8e6a711e2b1af), from [llama.cpp PR #27836](https://github.com/ggml-org/llama.cpp/pull/27836) | Adds Qwen3.8-Flash-Next NextN/MTP tensor mappings, conversion, graph construction, recurrent state handling, and `draft-mtp` support. | Draft PR, not yet accepted upstream. The change is model-specific but substantial. Experimental; moderate correctness and maintenance risk. |
+| [`57bb668`](https://github.com/rmonsurate/llama.cpp/commit/57bb668674d9fb0d382885e5b04911c6437f8e83), also proposed as [rmonsurate/llama.cpp PR #1](https://github.com/rmonsurate/llama.cpp/pull/1) | Keeps `model.hyper_connection_mixer.*` when `convert_hf_to_gguf.py --mtp` exports a detached sidecar. | One-line converter filter change. Low runtime risk; required for a valid standalone Qwen3.8 sidecar. |
+| [`a82a58a`](https://github.com/crusaderky/llama.cpp/commit/a82a58a57fc307e5cec0dc68db64d143339be4f2) | Detects a detached head, makes absent trunk tensors optional only in that case, keeps the original trailing block number, and accepts either block-level or model-level head-mixer names. | Explicitly described by its author as unreviewed. It is narrowly contained in the Qwen3.8 loader, but malformed/novel GGUF layouts are the main risk. Experimental; moderate risk. |
+| [`7f48903`](https://github.com/ggml-org/llama.cpp/commit/7f489034b48051a02c38c2eab5988443b02db300), from [llama.cpp PR #27466](https://github.com/ggml-org/llama.cpp/pull/27466) | Adds a native HIP radix-selection kernel for `TOP_K` rows wider than 1024 columns, avoiding Qwen's long-context QSA fallback to the CPU. | Passed reported HIP `TOP_K` tests and long graph-capture runs on gfx1151; a HIP code owner approved the PR. Still unmerged and not broadly tested across AMD generations. Moderate portability risk, low security risk. |
+| [`527fcad`](https://github.com/ggml-org/llama.cpp/commit/527fcad43d2c9ced9fd882a05d872db5647d8f69), from [llama.cpp PR #26592](https://github.com/ggml-org/llama.cpp/pull/26592) | Enables CUB code paths on HIP through hipCUB for sorting, `TOP_K`, reductions, scans, and related operations. It enables them only with rocPRIM 4.4.0 or newer. | One approval, but outstanding review history remains. rocPRIM 4.2 was proven unsafe during HIP graph capture; the pinned commit's version gate addresses that known failure. Moderate backend/runtime risk. |
+
+The native radix and hipCUB patches are deliberately both present:
+
+- with `ROCPRIM_VERSION >= 400400`, the hipCUB paths are selected;
+- with older rocPRIM, hipCUB is not enabled and the native HIP radix kernel
+  keeps wide QSA `TOP_K` on the GPU;
+- without either change, Qwen3.8 QSA can fall back to the CPU once the row is
+  wider than 1024, causing a sharp long-context slowdown.
+
+The hipCUB patch is applied without its two upstream CI workflow edits and
+without a test-file edit that only added commented stress-test examples. Runtime
+code is not excluded. Package CI is not the same as llama.cpp upstream CI, and
+the package builds with upstream tests disabled, as does `llama.cpp-gfx1151`.
+
+### What is already in b10666 from PR #27742
+
+The base tag already contains the merged Qwen3.8-Flash-Next implementation and
+the important corrections made during its long review. They are not additional
+package patches. These include synchronized QSA indexer/attention cache slots,
+multi-stream QSA handling, indexer state save/restore, per-context PLE history
+and sequence operations, correct short-history padding, dense fallback when a
+compression ratio is absent, and related converter/quantization fixes.
+
+The remaining HIP-specific performance problem identified after that merge was
+wide QSA `TOP_K` falling back to the CPU. The native radix and hipCUB patches
+above address that backend gap. Backend or scheduler bugs reported against the
+same model still need to be evaluated independently; sharing a PR discussion
+does not make every later report part of the Qwen model implementation.
+
+### Safety scope of the patch review
+
+The source review found no added shell execution, network access, credential
+handling, persistence, or unrelated file I/O in the five patches. The important
+risks are conventional native-code risks: incorrect tensor-layout assumptions,
+an out-of-bounds GPU kernel bug, ROCm/hipCUB incompatibility, numerical drift, or
+a future upstream conflict.
+
+The pinned stack was checked for source hashes and clean application to `b10666`.
+A patched CPU build of `llama-cli` and `test-backend-ops` completed, Python
+converter files compiled, and 517 CPU `TOP_K` cases passed. The published
+sidecar also passed a structural GGUF inspection. A real gfx1151 HIP build and
+long-running GPU test are still required on the target machine; CPU validation
+cannot prove a HIP kernel safe.
+
+## Build configuration
+
+The important HIP options are:
+
+```text
+-DCMAKE_HIP_ARCHITECTURES=gfx1151
+-DGGML_HIP=ON
+-DGGML_HIP_GRAPHS=ON
+-DGGML_HIP_NO_VMM=ON
+-DGGML_HIP_MMQ_MFMA=ON
+-DGGML_CUDA_FORCE_MMQ=ON
+-DGGML_CUDA_FA_ALL_QUANTS=ON
+-DHIP_PLATFORM=amd
+-DGGML_VULKAN=OFF
+```
+
+`GGML_CUDA_*` names are not typos. llama.cpp's CUDA-family backend sources are
+shared by CUDA and HIP, so several HIP controls retain their historical CUDA
+names.
+
+The package also passes:
+
+```text
+-mprefer-vector-width=512
+-mllvm -inline-threshold=600
+-mllvm -unroll-threshold=150
+```
+
+These are aggressive compiler choices aimed at the Zen 5/RDNA 3.5 Strix Halo
+platform. They are not general ROCm portability settings.
+
+### What `GGML_HIP_NO_VMM=ON` means
+
+This is a double negative: `ON` means **do not use HIP Virtual Memory
+Management for llama.cpp's device scratch allocator**. llama.cpp instead uses
+its conventional cached `hipMalloc`-backed allocation pool.
+
+It does not disable:
+
+- Strix Halo's unified physical memory;
+- GPU offload;
+- GGUF file `mmap` or `--load-mode mmap`;
+- HIP graphs;
+- MTP or the detached sidecar;
+- hipCUB or the native radix kernel.
+
+The stability-first setting is justified because AMD still labels the HIP VMM
+APIs as beta in the
+[ROCm 7.2 documentation](https://rocm.docs.amd.com/projects/HIP/en/docs-7.2.0/doxygen/html/group___virtual.html),
+and Strix Halo users have reported allocator instability in some ROCm/package
+combinations. It is also the default in
+[llama.cpp `b10666`](https://github.com/ggml-org/llama.cpp/blob/b10666/ggml/CMakeLists.txt#L218-L221).
+This package spells it out so an upstream default change cannot silently alter
+the allocator.
+
+The sibling package's line showing `GGML_HIP_NO_VMM=OFF` is commented out. It
+therefore also inherits the upstream no-VMM default today; this package differs
+by pinning that policy explicitly, not by currently selecting a different
+allocator.
+
+#### Testing VMM with a newer ROCm nightly
+
+A sufficiently new nightly may make VMM reliable on a particular kernel and
+firmware combination. Test it as an A/B experiment, not as an assumed upgrade:
+
+1. Record the ROCm package version, kernel, firmware, target GGUF, context,
+   batch sizes, and exact server command.
+2. Establish a stable `GGML_HIP_NO_VMM=ON` baseline with long context, HIP
+   graphs, repeated model load/unload, and memory use close to the intended
+   capacity.
+3. Rebuild from a clean build directory with the appended override:
+
+   ```bash
+   LLAMA_BUILD_EXTRA_ARGS='-DGGML_HIP_NO_VMM=OFF' makepkg -Csfi
+   ```
+
+4. Confirm that the startup device line reports VMM as enabled. If it does not,
+   the device/runtime rejected VMM regardless of the build option.
+5. Repeat the same workload for several thousand generated tokens. Watch for
+   HIP errors, hangs, corruption, allocation failures, rising memory use, and
+   regressions in tokens/s and latency.
+6. If anything is unstable, rebuild without the override. The package default
+   remains `GGML_HIP_NO_VMM=ON`.
+
+Do not combine the first VMM test with a ROCm upgrade, new model, new context,
+and different batch settings: that makes the result uninterpretable.
+
+### ROCm nightly dependency policy
+
+[`rocm-nightly-gfx1151-bin`](https://aur.archlinux.org/packages/rocm-nightly-gfx1151-bin)
+is a sensible choice for this machine, but it is intentionally not a hard
+dependency. The monolithic nightly package advertises `hip-runtime-amd`,
+`hipblas`, `rocblas`, `hipcub`, and the other ROCm component names through
+`provides`, so it already satisfies this package's generic dependencies.
+
+Keeping generic dependency names has three advantages:
+
+- users can choose a known-good official or nightly ROCm build;
+- an AUR package rename does not unnecessarily break this package;
+- rolling nightly regressions do not become mandatory upgrades.
+
+Install the nightly first if that is the desired provider, then build this
+package. Rebuild `llama.cpp-hip-gfx1151` after a major ROCm/LLVM update because
+HIP device code and linked ROCm libraries can change compatibility.
+
+Useful version checks are:
+
+```bash
+pacman -Q rocm-nightly-gfx1151-bin
+hipconfig --version
+rocminfo | rg 'gfx1151'
+pacman -Ql rocm-nightly-gfx1151-bin | rg 'rocprim_version.hpp$'
+```
+
+## Building and basic verification
+
+From a clean AUR clone:
+
+```bash
+git clone https://aur.archlinux.org/llama.cpp-hip-gfx1151.git
+cd llama.cpp-hip-gfx1151
+makepkg -Csi
+```
+
+Then verify that the HIP device is visible:
+
+```bash
+llama-server --version
+llama-server --list-devices
+```
+
+The package is intentionally compiled only for `gfx1151`. A binary from this
+package is not expected to be portable to unrelated AMD GPU architectures.
+
+## MTP in plain language
+
+Multi-Token Prediction (MTP) uses the extra NextN head shipped in the official
+Qwen3.8-Flash-Next checkpoint as a small draft model. The head proposes a short
+run of future tokens. The full target model verifies those proposals in a batch
+and accepts only the valid prefix.
+
+This can reduce the number of expensive target-model decode steps, but it is
+not free:
+
+- the draft head has to run;
+- this head reuses a large embedding/output projection, which is why the
+  sidecar is about 4.14 GB even though it contains only one extra decoder block;
+- acceptance depends on prompt, sampling, quantization, and numerical backend;
+- a larger `--spec-draft-n-max` may lower performance when rejected proposals
+  cost more than they save.
+
+Correct speculative decoding never trusts an unverified draft token. A bad
+sidecar should mainly reduce acceptance and speed. That safeguard does not make
+the experimental loader and GPU code immune to bugs, so long-prompt output must
+still be inspected.
+
+### Compatibility rules
+
+The sidecar documented below is only for `Qwen/Qwen3.8-Flash-Next` and GGUFs
+converted from that exact model family. It is not a generic Qwen draft model.
+The target quantization may differ from the sidecar quantization, but the model
+architecture, vocabulary, tokenizer, hidden size, and MTP training lineage must
+match.
+
+For a sharded target GGUF, pass its first shard to `-m`; llama.cpp discovers the
+remaining shards. Pass the single detached head to `-md`.
+
+## Using the preconverted Q8_0 sidecar
+
+The community sidecar is hosted at
+[`drluoto/Qwen3.8-Flash-Next-MTP-GGUF`](https://huggingface.co/drluoto/Qwen3.8-Flash-Next-MTP-GGUF).
+Use the immutable revision and verify the GGUF hash:
+
+```bash
+SIDECAR_REV=67de7592b670ef454a903574d5e2aa6c8e1d6b46
+SIDECAR_FILE=mtp-Qwen3.8-Flash-Next-Q8_0.gguf
+
+curl --fail --location \
+  --output "${SIDECAR_FILE}" \
+  "https://huggingface.co/drluoto/Qwen3.8-Flash-Next-MTP-GGUF/resolve/${SIDECAR_REV}/${SIDECAR_FILE}?download=true"
+
+printf '%s  %s\n' \
+  'b9880220df29fc224bbce408c867cd5d9c021263b754033ea624b669e374f4ec' \
+  "${SIDECAR_FILE}" | sha256sum -c -
+```
+
+Audited object facts:
+
+| Property | Value |
+| --- | --- |
+| File size | 4,142,897,248 bytes |
+| SHA-256 / Hugging Face LFS object ID | `b9880220df29fc224bbce408c867cd5d9c021263b754033ea624b669e374f4ec` |
+| GGUF | Version 3, architecture `qwen4exp`, 37 tensors |
+| Layout check | 32-byte-aligned, non-overlapping tensor ranges ending exactly at the declared file size |
+| Claimed source | Official `Qwen/Qwen3.8-Flash-Next` checkpoint |
+
+At the time of review, the repository contained only `.gitattributes`, a model
+card, and this GGUF; it contained no Python or custom model code. Hugging Face's
+security status for the large GGUF was still queued/unscanned. A GGUF is data,
+not a script, but any malformed binary format can exercise bugs in its parser.
+The exact hash proves which bytes were downloaded; it does not independently
+prove who produced those bytes or that the conversion claim is true.
+
+The practical verdict is: this exact object is reasonable to use for local
+inference with this patched package after verifying the hash. No malicious
+content or structural anomaly was found. Provenance is community-attested rather
+than reproducibly signed, so users who need stronger assurance should recreate
+the sidecar from the official checkpoint as described below.
+
+### Start with pure MTP
+
+Use a modest context first and keep all target and draft layers on the GPU:
+
+```bash
+llama-server \
+  -m /models/Qwen3.8-Flash-Next-TARGET-00001-of-NNNNN.gguf \
+  -md /models/mtp-Qwen3.8-Flash-Next-Q8_0.gguf \
+  --spec-type draft-mtp \
+  --spec-draft-ngl all \
+  --spec-draft-n-max 2 \
+  --spec-draft-p-min 0 \
+  -ngl all \
+  -fa on \
+  -c 32768 \
+  --np 1 \
+  --jinja \
+  --metrics
+```
+
+Start with `--spec-draft-n-max 2`, then benchmark `3`. Reports across backends
+and workloads disagree on which is faster. For greedy decoding,
+`--spec-draft-p-min 0` is a clear baseline. With nonzero temperature, try a
+confidence threshold such as `0.6`, but treat that as a separate benchmark.
+
+After pure MTP is known-good, test the combined n-gram drafter:
+
+```text
+--spec-type draft-mtp,ngram-mod
+--spec-ngram-mod-n-max 64
+--spec-ngram-mod-n-match 24
+```
+
+Do not attribute the combined result to MTP alone. Repetitive code-editing
+workloads can benefit greatly from n-gram drafting even without MTP.
+
+Optional tuning, one change at a time:
+
+- sweep `-ub 512` and `-ub 1024`, with `-b` at least as large as `-ub`;
+- test draft depths 2 and 3;
+- compare F16 and Q8_0 target/draft KV caches using `-ctk`, `-ctv`, `-ctkd`,
+  and `-ctvd`;
+- compare `--load-mode mmap`, `mmap+mlock`, and `dio` on the actual filesystem;
+- measure the production context length and sampling settings, not only a short
+  greedy prompt;
+- keep `--spec-draft-backend-sampling` enabled unless isolating a regression.
+
+RPC adds a synchronization hop to every draft step and has been a net loss in
+published tests. Benchmark local HIP first.
+
+### ROCm graph-capture troubleshooting
+
+ROCm 7.1/7.2 with rocPRIM 4.2 was observed to abort when a hipCUB segmented
+radix sort ran inside HIP graph capture. The pinned hipCUB patch enables that
+path only for rocPRIM 4.4 or newer; older installations should use the native
+radix `TOP_K` path instead.
+
+If a newer runtime still fails with `operation not permitted when stream is
+capturing`, test this diagnostic workaround:
+
+```bash
+GGML_CUDA_DISABLE_GRAPHS=1 llama-server ...
+```
+
+The CUDA-named environment variable also controls graphs in the HIP backend.
+Disabling graphs may reduce performance. It should not be the default with this
+patch stack; report the exact rocPRIM/ROCm versions and reproduce before keeping
+the workaround.
+
+## Recreating the sidecar with shard-scalpel
+
+The official checkpoint is roughly 360 GB. `shard-scalpel` reads its
+safetensors index and shard headers, then uses HTTP Range requests to download
+only selected tensor byte ranges. The MTP extraction is about 5.2 GB. It writes
+a smaller, valid safetensors checkpoint directory that llama.cpp's lazy-loading
+converter can consume.
+
+Pin and verify the reviewed single-file tool:
+
+```bash
+git clone https://github.com/drluoto/shard-scalpel.git
+cd shard-scalpel
+git checkout --detach dca5067d933f5b82db97842ffc9f411168549763
+
+printf '%s  %s\n' \
+  'e0f33149c382f2158135e12fec852fd05c6d191cb58464c0a4fbc34089a6437c' \
+  shard_scalpel.py | sha256sum -c -
+```
+
+Extract from an immutable official Qwen revision into a new directory:
+
+```bash
+./shard_scalpel.py Qwen/Qwen3.8-Flash-Next extracted-mtp/ \
+  --revision de4b8e4d43b917e7706784d8bb445c9af86a3540 \
+  --match '^mtp\.' \
+  --take lm_head.weight \
+  --take model.language_model.embed_tokens.weight \
+  --match '^model\.language_model\.hyper_connection_mixer\.' \
+  --rename 'model.language_model.:model.' \
+  --aux config.json \
+  --aux generation_config.json \
+  --aux tokenizer.json \
+  --aux tokenizer_config.json
+```
+
+The rename removes the `language_model` wrapper so the converter sees the names
+expected by the text model. The model-level mixer is different from the MTP
+block's own mixer; both are required by this detached layout.
+
+Use the converter from the **prepared source of this package**, not an unpatched
+upstream checkout. `makepkg -o` downloads the pinned sources and runs
+`prepare()`, applying all five patches without compiling the package:
+
+```bash
+git clone https://aur.archlinux.org/llama.cpp-hip-gfx1151.git package-src
+cd package-src
+makepkg -o
+
+python src/llama.cpp/convert_hf_to_gguf.py \
+  /absolute/path/to/shard-scalpel/extracted-mtp/ \
+  --mtp \
+  --outtype q8_0 \
+  --outfile mtp-Qwen3.8-Flash-Next-Q8_0.gguf
+```
+
+If `BUILDDIR` is customized in `makepkg.conf`, the prepared llama.cpp source is
+under that build directory instead of `package-src/src/llama.cpp`. Install the
+converter's Python dependencies listed as this package's optional dependencies.
+
+Finally inspect and hash the result before using it:
+
+```bash
+sha256sum mtp-Qwen3.8-Flash-Next-Q8_0.gguf
+python src/llama.cpp/gguf-py/gguf/scripts/gguf_dump.py \
+  mtp-Qwen3.8-Flash-Next-Q8_0.gguf
+```
+
+`shard-scalpel` itself is small, standard-library-only, and contains no
+`eval`, subprocess, shell, or dynamic import. Its token is sent only as the
+Hugging Face Authorization header and is not printed. It is a convenience tool,
+not a hardened downloader:
+
+- it trusts the remote index's shard paths and the requested auxiliary paths;
+- it does not verify checkpoint hashes, `Content-Range`, or response length;
+- writes are not atomic and there is no resume/retry mechanism;
+- ranges are fetched sequentially and selected tensors are held in memory;
+- rename collisions are not detected.
+
+For the pinned official Qwen repository these limitations are manageable. Use a
+new output directory, do not run the tool as root, keep the exact revision, and
+do not reuse it blindly on an untrusted checkpoint index.
+
+## Benchmarking MTP on Strix Halo
+
+The benchmark must answer two separate questions:
+
+1. Is generation still correct and useful at short and long prompt lengths?
+2. Does speculative decoding improve end-to-end latency and decode throughput
+   after paying for the draft head?
+
+A high acceptance rate alone is not a win. A drafter can accept many tokens and
+still be slower because its own attention and 248K-vocabulary output projection
+are expensive.
+
+### Controlled test matrix
+
+Use the same target GGUF, prompt set, output length, context, batch/ubatch,
+target and draft offload, KV types, sampling, server slots, and ROCm build for
+every row.
+
+| Run | Speculative settings | What it isolates |
+| --- | --- | --- |
+| A | `--spec-type none`, no `-md` | Target-only baseline |
+| B | `draft-mtp`, `--spec-draft-n-max 2` | Conservative pure MTP |
+| C | `draft-mtp`, `--spec-draft-n-max 3` | Extra draft depth |
+| D | `draft-mtp,ngram-mod`, same MTP settings | Incremental n-gram benefit |
+
+Run every row at least three times and compare medians. Restart the server
+between configurations so caches and allocator state start consistently. Warm
+up each server once before recording results. Keep the machine plugged in, use
+the same power mode, and avoid memory pressure from other processes.
+
+For correctness, include at least:
+
+- a short prompt;
+- a real prompt above 2,700 tokens;
+- an 8K prompt;
+- the longest production prompt you expect to use.
+
+Long prompts matter: an earlier incorrect MTP implementation produced plausible
+short output but degenerated into multilingual noise above about 2.6K tokens.
+Read the output; tokens/s from corrupt text is not a valid result.
+
+For greedy A/B checks, use temperature 0 and a fixed seed. Save the generated
+text from both runs. Byte identity is ideal, but HIP floating-point differences
+can make a correct run choose a different token near a tie. If outputs diverge,
+verify that both remain coherent and compare target logits or token traces before
+calling it corruption.
+
+Create one reusable request from a real long prompt while the baseline server is
+running:
+
+```bash
+jq --null-input --rawfile prompt long-prompt.txt \
+  '{messages:[{role:"user",content:$prompt}],max_tokens:512,temperature:0,seed:1234,stream:false}' \
+  > long-request.json
+
+curl --fail --silent --show-error \
+  --header 'Content-Type: application/json' \
+  --data-binary @long-request.json \
+  http://localhost:8080/v1/chat/completions \
+  | tee baseline-long.json
+
+jq -r '.choices[0].message.content' baseline-long.json > baseline-long.txt
+jq '{usage,timings}' baseline-long.json
+```
+
+After restarting with MTP, submit the unchanged `long-request.json`, save it as
+`mtp-long.json`, and extract `mtp-long.txt`. `cmp baseline-long.txt mtp-long.txt`
+tests byte identity. If it differs, inspect both complete files instead of
+judging only the first paragraph. The response's `timings.prompt_n` confirms the
+actual tokenized prompt length.
+
+### llama.cpp SPEED-Bench client
+
+The prepared `b10666` source includes a dedicated speculative-decoding client at
+`tools/server/bench/speed-bench`. Create a virtual environment and install its
+three requirements:
+
+```bash
+LLAMA_SRC=/absolute/path/to/prepared/llama.cpp
+python -m venv speed-bench-venv
+source speed-bench-venv/bin/activate
+python -m pip install -r "${LLAMA_SRC}/tools/server/bench/speed-bench/requirements.txt"
+```
+
+Start the baseline server in another terminal with the common model settings
+and no draft model:
+
+```bash
+llama-server \
+  -m /models/Qwen3.8-Flash-Next-TARGET-00001-of-NNNNN.gguf \
+  --spec-type none \
+  -ngl all -fa on -c 32768 -b 2048 -ub 512 \
+  --np 1 --jinja --metrics --port 8080
+```
+
+Run a quick, deterministic workload and save all per-request results:
+
+```bash
+python "${LLAMA_SRC}/tools/server/bench/speed-bench/speed_bench.py" \
+  --url localhost:8080 \
+  --bench qualitative \
+  --category coding,math,reasoning \
+  --osl 512 \
+  --limit 8 \
+  --concurrency 1 \
+  --extra-inputs '{"temperature":0,"seed":1234}' \
+  --output baseline.json
+```
+
+Stop the server, start it again with the same common arguments plus pure MTP:
+
+```text
+-md /models/mtp-Qwen3.8-Flash-Next-Q8_0.gguf
+--spec-type draft-mtp
+--spec-draft-ngl all
+--spec-draft-n-max 2
+--spec-draft-p-min 0
+```
+
+Run the identical client command, changing only the output file to
+`mtp-n2.json`, then compare:
+
+```bash
+python "${LLAMA_SRC}/tools/server/bench/speed-bench/speed_bench_compare.py" \
+  --baseline baseline.json \
+  --speculative mtp-n2.json
+```
+
+Repeat with draft depth 3 and with the combined n-gram configuration. For a
+known long input length, repeat the client runs with `--bench throughput_8k`.
+Increase `-c` so it exceeds input plus output tokens. The SPEED-Bench script
+validates the available dataset configuration names and will list them if a
+requested split is unavailable.
+
+Match client concurrency to server slots: `--concurrency 1` with `--np 1`, or
+the same larger value for a separate throughput-under-load experiment. Do not
+compare a single-user baseline to a multi-slot MTP run.
+
+### Metrics to record
+
+SPEED-Bench reports:
+
+- prompt/prefill tokens per second;
+- predicted/decode tokens per second;
+- end-to-end request latency;
+- `accepted / drafted` token acceptance rate;
+- per-category and overall results.
+
+Its comparison script calculates decode and latency speedups. Also retain:
+
+- server startup and final timing logs;
+- exact generated outputs for the long-prompt correctness cases;
+- peak system/GPU memory and any swap use;
+- target and draft model hashes;
+- package commit, ROCm version, kernel, firmware, and full command line.
+
+With `--metrics`, cumulative counters are available at:
+
+```bash
+curl --silent http://localhost:8080/metrics | \
+  rg 'spec_decode_num_(draft_tokens|accepted_tokens|drafts)'
+```
+
+`accepted_tokens / draft_tokens` is acceptance rate.
+`1 + accepted_tokens / drafts` is the average number of output tokens advanced
+per target verification step. Reset the counters by restarting the server before
+each measured configuration.
+
+The final decision metric is production end-to-end latency or throughput, not a
+single microbenchmark. A useful Strix Halo result should show coherent long
+output, no graph-capture failure over thousands of tokens, no pathological
+memory growth, and a repeatable speedup over run A.
+
+## Known limitations and rollback
+
+- All five patches are snapshots. Recheck their upstream PRs when updating the
+  llama.cpp tag; remove a package patch once an equivalent fix is upstream.
+- The MTP graph currently uses dense attention in the draft block. Draft cost
+  therefore grows with context even though the target's QSA is sparse.
+- The detached loader recognizes the sidecar by missing trunk tensors. Only use
+  sidecars from a trusted/pinned source with the expected metadata.
+- New rocPRIM versions take a broader hipCUB path than old versions. Re-run
+  `TOP_K`, `ARGSORT`, reduction, scan, graph, and long-generation tests after a
+  nightly upgrade.
+- `GGML_HIP_NO_VMM=ON` is a reversible stability policy, not a claim that VMM
+  can never work on Strix Halo.
+
+The simplest runtime rollback is to omit `-md` and use `--spec-type none`. The
+package then runs the ordinary target path while retaining the QSA GPU fixes.
+For a full source rollback, remove the five patch sources and their `prepare()`
+applications, restore the sibling package's dependencies/options, and increment
+`pkgrel`.
+
+## Primary references
+
+- [Qwen3.8-Flash-Next support, llama.cpp PR #27742](https://github.com/ggml-org/llama.cpp/pull/27742)
+- [Qwen3.8 NextN/MTP, llama.cpp PR #27836](https://github.com/ggml-org/llama.cpp/pull/27836)
+- [Working Strix Halo combination and sidecar comment](https://github.com/ggml-org/llama.cpp/pull/27836#issuecomment-5460955631)
+- [Native HIP wide radix `TOP_K`, llama.cpp PR #27466](https://github.com/ggml-org/llama.cpp/pull/27466)
+- [hipCUB on HIP, llama.cpp PR #26592](https://github.com/ggml-org/llama.cpp/pull/26592)
+- [llama.cpp speculative decoding documentation](https://github.com/ggml-org/llama.cpp/blob/b10666/docs/speculative.md)
+- [llama.cpp SPEED-Bench documentation](https://github.com/ggml-org/llama.cpp/blob/b10666/tools/server/bench/speed-bench/README.md)
+- [AMD HIP VMM API documentation for ROCm 7.2](https://rocm.docs.amd.com/projects/HIP/en/docs-7.2.0/doxygen/html/group___virtual.html)
+- [Official Qwen3.8-Flash-Next checkpoint](https://huggingface.co/Qwen/Qwen3.8-Flash-Next)
+- [Reviewed preconverted MTP sidecar](https://huggingface.co/drluoto/Qwen3.8-Flash-Next-MTP-GGUF)
+- [`shard-scalpel`](https://github.com/drluoto/shard-scalpel)
