@@ -2,15 +2,16 @@
 
 pkgname=vectorscan
 pkgver=5.4.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Portable fork of hyperscan regular expression matching library'
 arch=(x86_64)
 url=https://github.com/VectorCamp/vectorscan
-license=("BSD-3-Clause-Clear")
+license=("BSD-3-Clause")
 makedepends=(
   boost
   cmake
   ninja
+  pcre
   python
   ragel
   simde
@@ -39,5 +40,3 @@ package() {
   DESTDIR="${pkgdir}" cmake --install build
   install -Dm 644 "${pkgname}-${pkgname}-${pkgver}/COPYING" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-
-# vim: ts=2 sw=2 et:
