@@ -1,11 +1,14 @@
 # Maintainer: Davide Carnemolla <herbrant@protonmail.com>
 pkgname=codexbar-cli
-pkgver=0.53.0
+pkgver=0.56.0
 pkgrel=1
 pkgdesc='AI coding provider usage tracker CLI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/steipete/CodexBar'
 license=('MIT')
+depends=('glibc' 'gcc-libs' 'curl' 'sqlite')
+# Prebuilt upstream binary: stripping it yields a broken debug package
+options=('!strip' '!debug')
 
 provides=('codexbar')
 conflicts=('codexbar')
@@ -15,8 +18,8 @@ source_x86_64=("CodexBarCLI-v${pkgver}-linux-x86_64.tar.gz::https://github.com/s
 source_aarch64=("CodexBarCLI-v${pkgver}-linux-aarch64.tar.gz::https://github.com/steipete/CodexBar/releases/download/v${pkgver}/CodexBarCLI-v${pkgver}-linux-aarch64.tar.gz")
 
 sha256sums=('14293556b79940745123d0160c71d27ed0e9fe9b8a848093f3ed78f4853caafe')
-sha256sums_x86_64=('1b409bcf702e34e29ebd4d5eebb9c3a0e704d95ac89ea5d743fcf493bac0f595')
-sha256sums_aarch64=('c76e54ec6f3bf4df762efadcdf5c184efafc7cf68faed2d54228ddb78dd085f9')
+sha256sums_x86_64=('78740a9c87a72c4d35a91e9d10d9c20194d1e156fbac914ca78ceaa2dafe8638')
+sha256sums_aarch64=('f63df1ee4d10b07b677f35ace37067ddc197672a5d21b40523dc3378069bc0c3')
 package() {
     # Binary crashes when argv[0] has no directory component (Swift Foundation
     # bug: uses argv[0] to resolve its own path for resource lookup).
@@ -25,6 +28,10 @@ package() {
     install -Dm755 CodexBarCLI "${pkgdir}/usr/lib/${pkgname}/codexbar"
     # VERSION must live beside the binary (binary resolves it relative to argv[0] dir)
     install -Dm644 VERSION "${pkgdir}/usr/lib/${pkgname}/VERSION"
+    # Provider plugin scripts; binary resolves the bundle relative to argv[0] dir
+    install -dm755 "${pkgdir}/usr/lib/${pkgname}/CodexBar_CodexBarCore.bundle"
+    install -Dm644 CodexBar_CodexBarCore.bundle/* \
+        "${pkgdir}/usr/lib/${pkgname}/CodexBar_CodexBarCore.bundle/"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Wrapper: exec passes full absolute path as argv[0]
