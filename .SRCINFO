@@ -1,6 +1,6 @@
 pkgbase = monokular
 	pkgdesc = Export PDF pages as images with preview - one thing, done well
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/dyedfox/monokular
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = monokular
 	depends = python
 	depends = python-pyqt6
 	depends = python-pymupdf
-	source = monokular-1.0.1::git+https://github.com/dyedfox/monokular.git#tag=v1.0.1
+	source = monokular-1.1.0::git+https://github.com/dyedfox/monokular.git#tag=v1.1.0
 	sha256sums = SKIP
 
 pkgname = monokular
