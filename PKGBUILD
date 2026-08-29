@@ -5,7 +5,7 @@ _upstream=Hermes                 # productName + executableName
 _pkgver_tag=v2026.8.27
 _commit=5fc308a70719a83cccdbba4c0e39c23f5a8239d5
 pkgver=0.20.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
@@ -23,10 +23,12 @@ options=('!debug')
 source=(
   "hermes-agent-${_pkgver_tag}.tar.gz::${url}/archive/refs/tags/${_pkgver_tag}.tar.gz"
   'system-electron-resources.patch'
+  'pin-packaged-runtime.patch'
 )
 sha256sums=(
   'e622723b5bf3cd6c1db974d92d32242f1cb63f61c1112b6f708b34d619ef0fc7'
   'ee465a1aa2ad5789fa5c7b3a89993bbf0e68efddbf27c93109519b72a4cb90f7'
+  'a071a452caf08b4b5d7cfb93289b82051a4fa696adda826deaa4281c592fad21'
 )
 
 # NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
@@ -49,6 +51,7 @@ prepare() {
   cd "$(_extract_dir)"
   _set_npm_env
   patch -Np1 -i "${srcdir}/system-electron-resources.patch"
+  patch -Np1 -i "${srcdir}/pin-packaged-runtime.patch"
   # The release identifies Hermes Agent as ${pkgver}, but the desktop
   # package.json is not bumped — it still says 0.17.0. Patch it here so the
   # packaged desktop metadata matches the release.
@@ -166,6 +169,7 @@ fi
 
 export HERMES_DESKTOP_IS_PACKAGED=1
 export HERMES_DESKTOP_RESOURCES_PATH=/usr/lib/hermes-agent-desktop
+export HERMES_DESKTOP_PACKAGE_MANAGED_RUNTIME=1
 
 exec /usr/bin/electron42 "${flags[@]}" \
   /usr/lib/hermes-agent-desktop/app.asar "$@"
