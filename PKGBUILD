@@ -3,9 +3,9 @@
 pkgname=gitbutler-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
-pkgver=0.22.1
+pkgver=0.22.3
 pkgrel=1
-_pkgvernum=3215
+_pkgvernum=3234
 pkgdesc="Version control client, backed by Git, powered by Tauri/Rust/Svelte"
 arch=('x86_64')
 url="https://gitbutler.com/"
@@ -13,7 +13,7 @@ depends=('libayatana-appindicator' 'webkit2gtk-4.1' 'gtk3')
 license=('LicenseRef-FSL-1.1-MIT')
 source=("https://releases.gitbutler.com/releases/release/${pkgver}-${_pkgvernum}/linux/$CARCH/GitButler_${pkgver}_amd64.deb"
         "LICENSE.md")
-sha256sums=('eb477949fecd7f51f6fd32fe420c61f1a6adebc3bd95a58d40ed8dbc99499bd9'
+sha256sums=('4583fa6954bd9b23bc6d5be76b7627eb94a713caf5ced0b94c1b563ee8c4973c'
             '2a3154bf44e0b219014291b96249082f3305844a1d73796741468c8128c2829e')
 
 package() {
