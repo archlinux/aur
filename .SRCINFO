@@ -7,6 +7,7 @@ pkgbase = resterm-bin
 	arch = aarch64
 	license = Apache-2.0
 	depends = glibc
+	optdepends = resterm-runner
 	provides = resterm
 	conflicts = resterm
 	source = LICENSE-1.5.0::https://raw.githubusercontent.com/unkn0wn-root/resterm/v1.5.0/LICENSE

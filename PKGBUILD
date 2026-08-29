@@ -14,8 +14,10 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('Apache-2.0')
 
 depends=('glibc')
+optdepends=("${_pkgname}-runner")
+
 provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+conflicts=("${pkgname%-bin}")
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
