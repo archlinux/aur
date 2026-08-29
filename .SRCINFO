@@ -1,6 +1,6 @@
 pkgbase = r-uwot
 	pkgdesc = The Uniform Manifold Approximation and Projection (UMAP) Method for Dimensionality Reduction
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://cran.r-project.org/package=uwot
 	arch = x86_64
@@ -19,8 +19,8 @@ pkgbase = r-uwot
 	optdepends = r-rmarkdown
 	optdepends = r-rnndescent
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/uwot_0.2.4.tar.gz
-	md5sums = 4a72402e9d5217e4f57f3166aeaca8db
-	b2sums = eb754ea06862c261781fd13a19f75b45ce225b4b073d6df79a54bf7c3746775fa2d85a0704b777d16baef8271792b263cede64242e592744d4f2d6538f1e3785
+	source = https://cran.r-project.org/src/contrib/uwot_0.2.5.tar.gz
+	md5sums = 194ecf9261ba79778bca5f2751dcec11
+	b2sums = c9d4a328d2d98e177fe28f7a16f0643ebbc90a52fdd827e603dc8c6cbddbfb261b7b54cd110cac85de91bf8cb1b0f1acbdbe2808f257259e84749a00fc60927d
 
 pkgname = r-uwot
