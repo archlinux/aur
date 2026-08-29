@@ -2,7 +2,7 @@
 
 pkgname=hydra-download-manager-bin
 _pkgname=hydra
-pkgver=0.3.13
+pkgver=0.3.14
 pkgrel=1
 pkgdesc="Multi-connection download accelerator and manager (GUI, CLI, browser integration) (precompiled binary)"
 arch=('x86_64' 'aarch64')
@@ -24,10 +24,11 @@ optdepends=(
 )
 provides=('hydra' 'hydra-download-manager')
 conflicts=('hydra' 'hydra-download-manager' 'hydra-git')
+options=('!strip' '!debug')
 source_x86_64=("$url/releases/download/v$pkgver/hydra-$pkgver-linux-amd64.tar.gz")
 source_aarch64=("$url/releases/download/v$pkgver/hydra-$pkgver-linux-arm64.tar.gz")
-b2sums_x86_64=('SKIP')
-b2sums_aarch64=('SKIP')
+sha256sums_x86_64=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 package() {
   local _arch
