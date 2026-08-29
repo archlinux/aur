@@ -1,6 +1,6 @@
 # Maintainer: Radu Macocian <radu@macocian.com>
 pkgname=omni-shell
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Quickshell status bar, notification center and control center for Hyprland, with weather, clipboard history and an integrated omni-launcher."
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('hyprland: workspaces module and layer rules'
   'wf-recorder: screen recording indicator'
   'nvidia-utils: GPU usage and temperature on NVIDIA cards')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f5ff8048ff32592d0370a1451215029f21b96af69317aa4941954e70b81f0275')
+sha256sums=('f0ac18a3d15d154980141da1c3baf4b78bc0369cf05dabf970e4373c760cb247')
 
 package() {
   cd "$srcdir/$pkgname"
