@@ -1,6 +1,6 @@
 pkgname=uzdoom-bin
-pkgver=4.14.3
-pkgrel=4
+pkgver=5.0.0
+pkgrel=1
 pkgdesc='A fork of GZDoom, a feature-centric fork of ZDoom'
 arch=('x86_64')
 url="https://github.com/UZDoom/UZDoom"
@@ -9,8 +9,10 @@ depends=('bzip2' 'gtk3' 'hicolor-icon-theme' 'libgl' 'libvpx>=1.14' 'libwebp' 'o
 conflicts=("uzdoom")
 provides=("uzdoom")
 makedepends=('unzip')
-sha256sums_x86_64=('7a0918ab951da5ffe873b7d479f701c09c216e0a23d821eef4548283ba43a167')
-source_x86_64=("$url/releases/download/$pkgver/Linux-UZDoom-$pkgver.AppImage")
+sha256sums=('81e4df6b4884d79e4e9d182ee2ab38352f4637396fc5dad6737de3607f74c7c2')
+sha256sums_x86_64=('2cd58632d9ef88bd7a92f6b4eac1fc61861ab00528c24f700fcf59e82a4fefa4')
+source=("uzdoom")
+source_x86_64=("$url/releases/download/$pkgver/Linux-UZDoom-Release-x86_64.AppImage")
 
 package() {
     install -dm755 "$pkgdir/usr/bin"
@@ -22,8 +24,8 @@ package() {
     install -dm755 "$pkgdir/usr/share/applications"
     
     cd $srcdir
-    chmod +x Linux-UZDoom-$pkgver.AppImage
-    ./Linux-UZDoom-$pkgver.AppImage --appimage-extract
+    chmod +x Linux-UZDoom-Release-x86_64.AppImage
+    ./Linux-UZDoom-Release-x86_64.AppImage --appimage-extract
    
     # Remove conflicting system-owned MIME files
       rm -f "$srcdir/squashfs-root/usr/share/mime/application/x-doom-pk3.xml" \
@@ -51,15 +53,14 @@ package() {
     done
     
    #zmusic lib move
-    find "$srcdir/squashfs-root/usr/lib/x86_64-linux-gnu" -maxdepth 1 -name 'libzmusic.so.*' -exec mv {} "$pkgdir/usr/lib/uzdoom/" \;
+    find "$srcdir/squashfs-root/usr/lib" -maxdepth 1 -name "libvpx.so.*" -exec mv {} "$pkgdir/usr/lib/uzdoom/" \;
    #cleanup 
     rm -rf "$srcdir/squashfs-root/usr/lib"
     
     cp -r "$srcdir/squashfs-root/usr" "$pkgdir"
     install -Dm755 "$startdir/uzdoom" "$pkgdir/usr/bin/uzdoom"
    #Patch binary and lib fix
-    patchelf --set-interpreter "/lib64/ld-linux-x86-64.so.2" "$pkgdir/usr/bin/uzdoom.bin"
-    cp -a "$srcdir/squashfs-root/lib/x86_64-linux-gnu/." "$pkgdir/usr/lib/uzdoom/"
-    
-    
+    #patchelf --set-interpreter "/lib64/ld-linux-x86-64.so.2" "$pkgdir/usr/bin/uzdoom"
+    cp -a "$srcdir/uzdoom" "$pkgdir/usr/bin/uzdoom"
+    cp -a "$srcdir/squashfs-root/usr/bin/uzdoom" "$pkgdir/usr/share/uzdoom/uzdoom"
 }

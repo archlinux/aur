@@ -1,7 +1,7 @@
 pkgbase = uzdoom-bin
 	pkgdesc = A fork of GZDoom, a feature-centric fork of ZDoom
-	pkgver = 4.14.3
-	pkgrel = 4
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://github.com/UZDoom/UZDoom
 	arch = x86_64
 	license = BSD
@@ -20,7 +20,9 @@ pkgbase = uzdoom-bin
 	depends = patchelf
 	provides = uzdoom
 	conflicts = uzdoom
-	source_x86_64 = https://github.com/UZDoom/UZDoom/releases/download/4.14.3/Linux-UZDoom-4.14.3.AppImage
-	sha256sums_x86_64 = 7a0918ab951da5ffe873b7d479f701c09c216e0a23d821eef4548283ba43a167
+	source = uzdoom
+	sha256sums = 81e4df6b4884d79e4e9d182ee2ab38352f4637396fc5dad6737de3607f74c7c2
+	source_x86_64 = https://github.com/UZDoom/UZDoom/releases/download/5.0.0/Linux-UZDoom-Release-x86_64.AppImage
+	sha256sums_x86_64 = 2cd58632d9ef88bd7a92f6b4eac1fc61861ab00528c24f700fcf59e82a4fefa4
 
 pkgname = uzdoom-bin
