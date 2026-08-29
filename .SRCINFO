@@ -1,6 +1,6 @@
 pkgbase = keevault-bin
 	pkgdesc = A KeePass-compatible password manager built with Flutter
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/lyj404/keevault
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = keevault-bin
 	depends = dbus
 	provides = keevault
 	conflicts = keevault
-	source = https://github.com/lyj404/keevault/releases/download/v0.8.2/KeeVault-v0.8.2-linux-x64.tar.gz
-	sha256sums = e143560b4160c40c76b164b98dd036966164aa23b9c84de6ab026fb2433d55f7
+	source = https://github.com/lyj404/keevault/releases/download/v0.8.3/KeeVault-v0.8.3-linux-x64.tar.gz
+	sha256sums = 23a073ac26f23655f559938e2b8d905b490dfc684fe5910a6875ad1b17686c6d
 
 pkgname = keevault-bin
