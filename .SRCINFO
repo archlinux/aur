@@ -1,7 +1,7 @@
 pkgbase = commanderdog
 	pkgdesc = Multi-Tab Web & Desktop File Commander - By Woofson
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Woofson/commanderdog
 	arch = x86_64
 	arch = aarch64
