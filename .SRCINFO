@@ -14,9 +14,13 @@ pkgbase = libxaac-git
 	provides = libxaacenc.so
 	provides = xaacdec
 	provides = xaacenc
+	options = !strip
+	options = !lto
 	source = git+https://github.com/ittiam-systems/libxaac
 	source = shared.patch
+	source = testbench_memcorruption-fix.patch
 	sha256sums = SKIP
 	sha256sums = abb545bfbfce403a752783e47a6a10a90102cc418cd6a69d559d7c6adf5e422c
+	sha256sums = 733d616e1e0ef6a9b248e0f012d0135a20a75cf61cec677be35a665836341c12
 
 pkgname = libxaac-git

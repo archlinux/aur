@@ -1,0 +1,85 @@
+--- a/test/encoder/ixheaace_testbench.c	2026-08-29 16:14:12.721333390 +0200
++++ b/test/encoder/ixheaace_testbench.c	2026-08-29 16:17:47.137446792 +0200
+@@ -1494,18 +1494,79 @@
+   input_size = pstr_out_cfg->input_size;
+   expected_frame_count = pstr_out_cfg->expected_frame_count;
+ 
++  /*
++   * expected_frame_count can be zero for WAV inputs in some configurations.
++   * ia_stsz_size is written once for every encoded frame, so allocating
++   * expected_frame_count + 2 elements can result in an 8-byte allocation
++   * followed by writes past the end of the buffer.
++   *
++   * Allocate enough entries for the complete input stream instead.
++   */
+   if (NULL == ia_stsz_size) {
+-    ia_stsz_size = (UWORD32 *)malloc_global((expected_frame_count + 2) * sizeof(*ia_stsz_size),
+-                                            DEFAULT_MEM_ALIGN_8);
++    UWORD32 input_file_size = 0;
++    UWORD32 max_frame_count = expected_frame_count;
++
++    if (pstr_context->pf_inp) {
++      long current_pos = ftell(pstr_context->pf_inp);
++      long end_pos;
++
++      if (current_pos >= 0) {
++        if (fseek(pstr_context->pf_inp, 0, SEEK_END) == 0) {
++          end_pos = ftell(pstr_context->pf_inp);
++
++          if (end_pos >= 0 && end_pos > current_pos) {
++            input_file_size = (UWORD32)(end_pos - current_pos);
++          }
++
++          fseek(pstr_context->pf_inp, current_pos, SEEK_SET);
++        }
++      }
++    }
++
++    /*
++     * input_size is the number of bytes consumed per encoder frame.
++     * Add extra entries for the final partial frame and encoder delay.
++     */
++    if (input_size > 0 && input_file_size > 0) {
++      UWORD32 calculated_frame_count =
++      (input_file_size + input_size - 1) / input_size;
++
++      if (calculated_frame_count > max_frame_count) {
++        max_frame_count = calculated_frame_count;
++      }
++    }
++
++    /*
++     * Always leave a reasonable minimum. This also protects against
++     * zero-sized/unknown input streams.
++     */
++    if (max_frame_count < 2) {
++      max_frame_count = 2;
++    }
++
++    ia_stsz_size =
++    (UWORD32 *)malloc_global((max_frame_count + 2) * sizeof(*ia_stsz_size),
++                             DEFAULT_MEM_ALIGN_8);
++
+     if (ia_stsz_size == NULL) {
+       if (pstr_in_cfg->pv_drc_cfg) {
+         free_global(pstr_in_cfg->pv_drc_cfg);
+       }
++
+       printf("fatal error: libxaac encoder: Memory allocation failed");
+       return -1;
+     }
+-    memset(ia_stsz_size, 0, (expected_frame_count + 2) * sizeof(*ia_stsz_size));
++
++    memset(ia_stsz_size, 0,
++           (max_frame_count + 2) * sizeof(*ia_stsz_size));
++
++    /*
++     * Use the actual allocation limit for the frame-count termination
++     * check below.
++     */
++    expected_frame_count = max_frame_count;
+   }
++
+   down_sampling_ratio = pstr_out_cfg->down_sampling_ratio;
+   samp_freq = (WORD32)(pstr_out_cfg->samp_freq / down_sampling_ratio);
+ 
