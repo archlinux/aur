@@ -1,6 +1,6 @@
 pkgbase = rubick-kubernetes
 	pkgdesc = Modern cross-platform Kubernetes GUI client
-	pkgver = 4.6.0
+	pkgver = 4.7.0
 	pkgrel = 1
 	url = https://github.com/Dudude-bit/rubick
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = rubick-kubernetes
 	depends = libsoup3
 	depends = pango
 	depends = webkit2gtk-4.1
-	source = rubick-4.6.0.tar.gz::https://github.com/Dudude-bit/rubick/archive/refs/tags/v4.6.0.tar.gz
+	source = rubick-4.7.0.tar.gz::https://github.com/Dudude-bit/rubick/archive/refs/tags/v4.7.0.tar.gz
 	source = com.k8s-gui.app.desktop
-	sha256sums = 3c1e32d0f1eaf10cd5d8c54dd68cac674cb9fad29b50722d4c913d81e1785593
+	sha256sums = c64374c1034339ebd46c0db2d66817c7e9b6a31f5e384a1bf2d98a2cd4ffb114
 	sha256sums = 82f31d2a4c5fa49a3e7c52378c94fe16a62e3adb0082eed9cd9f2787849deb00
 
 pkgname = rubick-kubernetes
