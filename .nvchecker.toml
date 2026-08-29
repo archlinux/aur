@@ -1,0 +1,5 @@
+[firedragon-extension-plasma-integration]
+source = "git"
+git = "https://invent.kde.org/plasma/plasma-browser-integration.git"
+include_regex = 'browser/[0-9.]+'
+prefix = "browser/"
