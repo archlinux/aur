@@ -3,17 +3,17 @@
 
 _pkgname=RmlUi
 pkgname=rmlui
-pkgver=6.2
-pkgrel=2
+pkgver=6.3
+pkgrel=1
 pkgdesc="The HTML/CSS User Interface library evolved"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://mikke89.github.io/RmlUiDoc/"
 license=('MIT')
-depends=('libgcc' 'glibc' 'freetype2')
+depends=('libgcc' 'libstdc++' 'glibc' 'freetype2')
 makedepends=('cmake' 'mesa' 'luajit')
 optdepends=('luajit: Lua bindings')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mikke89/RmlUi/archive/${pkgver}.tar.gz")
-sha256sums=('814c3ff7b9666280338d8f0dda85979f5daf028d01c85fc8975431d1e2fd8e8b')
+sha256sums=('d977298bb6147610e5984d5db85ddf284020d655a8713913f6982074f1dbdede')
 
 build() {
   cd "${srcdir}"
