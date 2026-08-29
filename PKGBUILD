@@ -4,7 +4,7 @@
 _pkgname=mediapipe
 pkgname=python-mediapipe # renovate: datasource=github-tags depName=google-ai-edge/mediapipe
 pkgver=0.10.35
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
 url="https://github.com/google-ai-edge/mediapipe"
@@ -38,12 +38,15 @@ makedepends=(
 )
 
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/google-ai-edge/mediapipe/archive/refs/tags/v${pkgver}.tar.gz"
-  "0004-use-opencv4-headers.patch"
+  "0004-use-opencv-headers.patch"
   "0005-set-hermetic-python-version-and-disable-odml-converter.patch"
+  "0006-opencv5-geometry-header.patch"
 )
 sha256sums=('6b0e8490ab7f0f783937d4b25486cff469431adfe05c6f0217a5e63f68532113'
-            '55adaa6a74015f160b0dbf45d997c004cd7ecded501940a32c69c512956b0524'
-            '531dda481a8a06b23e0fe17e9c2f5eaefdfb0bf01bf81c7a8d849562534bf6ab')
+            'd18e88a217a00dc77cf2bfaa1d33b5fbc912deed5df686b0d2455fb0db75a677'
+            '531dda481a8a06b23e0fe17e9c2f5eaefdfb0bf01bf81c7a8d849562534bf6ab'
+            'fb082d88d9cca47534ae01fca676a3afdb909bfc82d52c97cf0eaedf34571d5f')
+
 
 prepare() {
   # bazel in the ArchLinux is not working
@@ -53,8 +56,9 @@ prepare() {
   chmod +x ${srcdir}/bin/bazel
   export PATH=${srcdir}/bin:${PATH}
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -p1 -i "${srcdir}/0004-use-opencv4-headers.patch"
+  patch -p1 -i "${srcdir}/0004-use-opencv-headers.patch"
   patch -p1 -i "${srcdir}/0005-set-hermetic-python-version-and-disable-odml-converter.patch"
+  patch -p1 -i "${srcdir}/0006-opencv5-geometry-header.patch"
   # set __version__
   sed -i "s/__version__ = 'dev'/__version__ = '$pkgver'/" setup.py
   # set link_opencv to True
