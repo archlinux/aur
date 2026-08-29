@@ -6,10 +6,13 @@ _source_type='pypi-releases'
 _pypi_package='listpick'
 
 
-pkgname="${_pypi_package}"
-pkgver="${_upstreamver}"
+pkgname="listpick"
+pkgver=0.1.18.1
 pkgrel=1
 pkgdesc="A powerful TUI data tool for creating TUI apps or viewing/comparing tabulated data"
+
+_pypi_package=${pkgname}
+_pypi_version=${pkgver}
 
 license=('MIT')
 arch=('any')
@@ -24,20 +27,20 @@ conflicts=("python-${pkgname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 depends=('python' 'ipython' 'python-pandas' 'python-wcwidth' 'python-openpyxl' 'python-pyperclip' 'python-dill' 'python-msgpack' 'python-odfpy' 'python-traitlets' 'python-pyarrow' 'python-toml' 'python-plotille')
 
-source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-# source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
+# source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/v${pkgver}.tar.gz")
 sha256sums=('8bf0f4387144f704f2399ef4d8ff36000b30b3e2aae914a778c2f797c0aef0ef')
 
 build() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_pypi_package}-${pkgver}/"
+    cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
 
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
