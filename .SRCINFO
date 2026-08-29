@@ -1,5 +1,5 @@
 pkgbase = virtualbox-svn
-	pkgver = 113240
+	pkgver = 113712
 	pkgrel = 3
 	url = https://www.virtualbox.org
 	arch = x86_64
@@ -65,6 +65,7 @@ pkgbase = virtualbox-svn
 	source = 012-vbglR3GuestCtrlDetectPeekGetCancelSupport.patch
 	source = 013-support-building-from-dkms.patch
 	source = 018-upate-xclient-script.patch
+	source = 019-linux-7.2-vboxnetadp.patch
 	source = 0020-python-3-12.patch
 	sha256sums = SKIP
 	sha256sums = f753501352054576c510aa81e83f4935079ea620e601057784b02b4d4d1eeb04
@@ -83,7 +84,8 @@ pkgbase = virtualbox-svn
 	sha256sums = 615e4ec8896ee13549e28c52e700bd52f9ccf7de4dccb33c2b96bf574a2edb47
 	sha256sums = 81900e13d36630488accd8c0bfd2ceb69563fb2c4f0f171caba1cca59d438024
 	sha256sums = 00f68b86d32a1fada900c2da8dad2ab4215106cd58004f049bded99727cda2ff
-	sha256sums = b6193d22ee7c1726ea4d468b18640454b8e4f2784479073a0044e45dca4e516d
+	sha256sums = 3d790cb7c7ca0860d87d220c5aa047124bc6ba3697a01b511fa096e53e20ba78
+	sha256sums = cba1f2f9f6170e40ca9bddcbffc45feb1169811c707b885090c1b3aae3f1e6cd
 	sha256sums = ddb2092a5a000aa6ef854796f39dcdf86e72c06d53b24bac3835350571182df6
 
 pkgname = virtualbox-svn
