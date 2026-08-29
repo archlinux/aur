@@ -14,7 +14,7 @@ source=("https://github.com/symbolicsoft/verifpal/releases/download/v${pkgver}/v
         "$pkgname-$pkgver-manual.pdf::https://static.verifpal.com/manual.pdf"
         "$pkgname-$pkgver-manual-license.txt::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt")
 sha256sums=('42996b129081d96ebb308b903b9fdeaf8bc4d7f627a0312fe2074e26cc47def5'
-            '581a0e0e3df0156cbbe8d292aead2f3fe77a67df54b3b58406c68b9685b72f44'
+            '3987fe8a119ef271cc3df49898946798d2d3089cd88fbc25f3ee8ef8ec4d2cff'
             '38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea')
 
 package() {
