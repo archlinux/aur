@@ -1,0 +1,26 @@
+pkgbase = fastsapp
+	pkgdesc = Fast native WhatsApp client built with Rust and egui
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/crmne/fastsapp
+	install = fastsapp.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = libglvnd
+	depends = libxkbcommon
+	depends = wayland
+	depends = libx11
+	optdepends = libxkbcommon-x11: keyboard handling in X11 sessions
+	optdepends = noto-fonts-emoji: colour emoji in messages and reactions
+	optdepends = ffmpeg: playing GIFs
+	optdepends = xdg-desktop-portal: the file picker for attachments
+	conflicts = fastsapp-git
+	options = !debug
+	options = !strip
+	source_x86_64 = https://github.com/crmne/fastsapp/releases/download/v0.1.0/fastsapp-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b33a8118f886283d2cb68a54ca2a325e562312dc375fc24db6b3586ffc45149d
+	source_aarch64 = https://github.com/crmne/fastsapp/releases/download/v0.1.0/fastsapp-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ddd1718f1a9d422dea31f4697396fd4226a0d40103f30a1e0144bab4e5047d50
+
+pkgname = fastsapp
