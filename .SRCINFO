@@ -1,7 +1,7 @@
 pkgbase = voxtype-bin
 	pkgdesc = Push-to-talk voice-to-text for Linux (pre-built binaries)
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://voxtype.io
 	install = voxtype-bin.install
 	arch = x86_64
