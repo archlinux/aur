@@ -2,7 +2,7 @@
 Name=OpenJDK Java @@VER@@ Runtime
 Comment=OpenJDK Java @@VER@@ Runtime
 Keywords=java;runtime
-Exec=/usr/lib/jvm/liberica-jdk-21-full/bin/java -jar
+Exec=@@PATH@@/bin/java -jar
 Terminal=false
 Type=Application
 Icon=java-openjdk
