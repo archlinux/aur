@@ -2,8 +2,9 @@
 
 _pkgbase=tkginstaller
 pkgname=${_pkgbase}-git
-pkgver=0.55.9.r391.g47fb641
+pkgver=0.55.9.r392.g00f8725
 pkgrel=1
+_commit=00f87259acd7e567cd617b11672becbe68192593
 provides=("${_pkgbase}=${pkgver}")
 conflicts=("${_pkgbase}")
 pkgdesc="bash wrapper to build & install Frogging-Family stuff with ease"
@@ -26,21 +27,9 @@ optdepends=(
     'wdiff: word-based configuration comparisons'
 )
 install=tkginstaller.install
-source=("${_pkgbase}::git+${url}.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "${_pkgbase}"
-
-    local version
-    version=$(sed -n 's/^readonly pkgver="v\([^"]*\)"/\1/p' "${_pkgbase}")
-
-    printf '%s.r%s.g%s' \
-        "$version" \
-        "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short=7 HEAD)"
-}
+source=("${_pkgbase}-${pkgver}::https://raw.githubusercontent.com/damachine/${_pkgbase}/${_commit}/${_pkgbase}")
+sha256sums=('e7b384e63a6fa2ce56135af477d8893ed762fb5edb646fa0ea4a32e42e2c7596')
 
 package() {
-    install -Dm755 "${srcdir}/${_pkgbase}/${_pkgbase}" "${pkgdir}/usr/bin/${_pkgbase}"
+    install -Dm755 "${srcdir}/${_pkgbase}-${pkgver}" "${pkgdir}/usr/bin/${_pkgbase}"
 }
