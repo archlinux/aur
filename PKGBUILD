@@ -1,30 +1,25 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 pkgname=nurl
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='Generate Nix fetcher calls from repository URLs'
 url='https://github.com/nix-community/nurl'
-license=('MPL2')
-arch=('x86_64' 'i686' 'arm' 'aarch64')
-depends=('gcc-libs')
+license=('MPL-2.0')
+arch=('x86_64')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nix-community/nurl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ecd34bdb9f7c481b5a0138a816dd3350d579bbe18f560fb9221d4f6537432693')
-b2sums=('7e621f24fbd78277170c083c888b3985e597f0308d9363232d34c09b4df23543ee7f2cea36badac0260d4a46859d8f0c1a510655ba6d1d2400ebb00adb347fc6')
+sha256sums=('e20eb33363aff598e4a485b0b32e1c527a6ad5a1abf78405509f84ae536610be')
+b2sums=('8793628eaba6abd5983d599384e206a418f1dd7cf6af3a4b9ee2e7c4c47a3af77aa93b27483c2fbbce04171cc5ea1cf4dc792b3fc7b312c8964467269775ffb3')
 options=(!lto)
 
-case $CARCH in
-  x86_64|i686|aarch64)
-    _target="$CARCH-unknown-linux-gnu" ;;
-  arm)
-    _target="arm-unknown-linux-gnueabi" ;;
-esac
+export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  cargo fetch --locked --target $_target
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
