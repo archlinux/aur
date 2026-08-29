@@ -1,6 +1,6 @@
 pkgbase = jdk25-openj9-bin
 	pkgdesc = IBM Semeru OpenJ9 with openjdk25
-	pkgver = 25.0.4.0
+	pkgver = 25.0.4.10
 	pkgrel = 1
 	url = https://developer.ibm.com/languages/java/semeru-runtimes/downloads
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = jdk25-openj9-bin
 	provides = java-runtime-headless=25
 	provides = java-runtime-headless-openjdk=25
 	conflicts = jdk25-openj9
-	source = https://github.com/ibmruntimes/semeru25-binaries/releases/download/jdk-25.0.4.0/ibm-semeru-open-jdk_x64_linux_25.0.4.0.tar.gz
-	sha256sums = 780a44566a626d3961aaf93a1c81b2d6265029c1350a467eb5e9a3b1cafe68bd
+	source = https://github.com/ibmruntimes/semeru25-binaries/releases/download/jdk-25.0.4.10/ibm-semeru-open-jdk_x64_linux_25.0.4.10.tar.gz
+	sha256sums = b9db918800de1dc8de1657f52c6f97677b734c2b3b2dc8a0ec406e20ee6d8ad9
 
 pkgname = jdk25-openj9-bin
