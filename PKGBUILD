@@ -1,14 +1,14 @@
 # Maintainer: Kanehekili (mat dot wegmann at gmail dot com)
 pkgname=videocut
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.2.2
+pkgrel=1
 pkgdesc="Fast mp4/matroska/Av1/webm/mp2/mpts lossless Video cutter"
 url="https://github.com/kanehekili/VideoCut"
 license=('GPL-3.0-or-later')
 depends=('python-pyqt6' 'mpv' 'ffmpeg>=2:3.4' 'python-pillow')
 arch=('x86_64')
-source=(https://github.com/kanehekili/VideoCut/releases/download/3.2.1/videocut3.2.1.tar)
-md5sums=(05158ed45856c51d2fb504a293becb28)
+source=(https://github.com/kanehekili/VideoCut/releases/download/3.2.2/videocut3.2.2.tar)
+md5sums=(3e792ea81e53c4e095a036ec8682a074)
 
 build() {
   CC=gcc make -C "${pkgname}/ffmpeg/src/" -f makefile all
