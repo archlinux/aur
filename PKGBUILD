@@ -1,4 +1,5 @@
-# Maintainer: Alois~ <aloisianer@proton.me>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Alois~ <aloisianer@proton.me>
 
 pkgname=twingate
 pkgver=2026.239.6882
