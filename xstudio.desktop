@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=xStudio
+GenericName=Media Review Player
+Comment=Review, annotate, and compare media
+Exec=xstudio %U
+TryExec=xstudio
+Icon=xstudio
+StartupNotify=false
+Terminal=false
+MimeType=x-scheme-handler/xstudio;image/png;image/jpeg;video/mp4;video/quicktime;
+Categories=AudioVideo;Player;
+Keywords=media;review;playback;video;animation;
