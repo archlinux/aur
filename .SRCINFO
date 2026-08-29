@@ -1,0 +1,33 @@
+pkgbase = garuda-toolbox-git
+	pkgdesc = Garuda Toolbox - A collection of useful tools to manage your Garuda Linux system
+	pkgver = 4.0.1.r15.g6e78199
+	pkgrel = 1
+	url = https://gitlab.com/garuda-linux/applications/toolbox
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = base-devel
+	makedepends = nodejs
+	makedepends = pnpm
+	depends = bash
+	depends = curl
+	depends = electron43
+	depends = pacman-contrib
+	depends = garuda-libs>=1.6.0
+	depends = archlinux-appstream-data
+	depends = util-linux
+	optdepends = paru: show pending AUR updates
+	optdepends = meld: compare pacdiff files via a GUI on GTK systems
+	optdepends = pace: manage Pacman repositories via a GUI
+	optdepends = reflector-simple: update Arch mirrorlists interactively
+	optdepends = btrfs-assistant: easily manage Btrfs snapshots and further settings
+	provides = garuda-toolbox
+	conflicts = garuda-toolbox
+	replaces = garuda-rani-git
+	options = !strip
+	options = !emptydirs
+	options = !debug
+	source = toolbox::git+https://gitlab.com/garuda-linux/applications/toolbox.git
+	sha256sums = SKIP
+
+pkgname = garuda-toolbox-git
