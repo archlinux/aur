@@ -1,6 +1,6 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
-pkgver=3.28.3
+pkgver=3.28.4
 pkgrel=1
 pkgdesc="Intelligent update advisor and wrapper for Arch Linux and derivatives"
 arch=('any')
@@ -36,7 +36,7 @@ optdepends=(
     'psmisc: for alternative pacman lock detection using fuser'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('651e14e482e92060d9c5d2759c9acbdc9f7530696643f81f0612558810995a6c')
+sha256sums=('6ca8cc3ba978cc0f53256cbdf4e17f133415e1215349cd0df046ffa9b641af11')
 
 package() {
     cd "${pkgname}-${pkgver}"

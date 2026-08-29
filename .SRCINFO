@@ -1,6 +1,6 @@
 pkgbase = arch-smart-update
 	pkgdesc = Intelligent update advisor and wrapper for Arch Linux and derivatives
-	pkgver = 3.28.3
+	pkgver = 3.28.4
 	pkgrel = 1
 	url = https://github.com/motorrin/arch-smart-update
 	arch = any
@@ -42,7 +42,7 @@ pkgbase = arch-smart-update
 	optdepends = gamemode: to postpone background checks when gaming
 	optdepends = snap-pac: for automatic Btrfs snapshots on update (if using snapper)
 	optdepends = psmisc: for alternative pacman lock detection using fuser
-	source = arch-smart-update-3.28.3.tar.gz::https://github.com/motorrin/arch-smart-update/archive/refs/tags/v3.28.3.tar.gz
-	sha256sums = 651e14e482e92060d9c5d2759c9acbdc9f7530696643f81f0612558810995a6c
+	source = arch-smart-update-3.28.4.tar.gz::https://github.com/motorrin/arch-smart-update/archive/refs/tags/v3.28.4.tar.gz
+	sha256sums = 6ca8cc3ba978cc0f53256cbdf4e17f133415e1215349cd0df046ffa9b641af11
 
 pkgname = arch-smart-update
