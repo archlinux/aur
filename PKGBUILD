@@ -55,7 +55,7 @@ portable $@
 	
 	echo '''[Action]
 When = PostTransaction
-Exec = /usr/bin/bash -c "rm /usr/share/applications/wechat.desktop && ln -srf /usr/bin/wechat.sh /usr/bin/wechat"
+Exec = /usr/bin/bash -c "rm /usr/share/applications/wechat.desktop || true && ln -srf /usr/bin/wechat.sh /usr/bin/wechat"
 Depends = wechat
 Description = Configuring WeChat
 
