@@ -1,0 +1,26 @@
+pkgbase = openfic-bin
+	pkgdesc = OpenFic — 跨平台、AI Native 的一站式小说创作工具 (官方预编译版)
+	pkgver = 0.10.2
+	pkgrel = 1
+	url = https://github.com/syrizelink/OpenFic
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxkbcommon
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxrandr
+	depends = libcups
+	depends = libdrm
+	depends = mesa
+	provides = openfic=0.10.2
+	conflicts = openfic
+	source_x86_64 = https://github.com/syrizelink/OpenFic/releases/download/v0.10.2/OpenFic-0.10.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2acb6870f59062df60edbf5c5eda4d9b94ee097a50459dea75fef7a3a57d9733
+	source_aarch64 = https://github.com/syrizelink/OpenFic/releases/download/v0.10.2/OpenFic-0.10.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = febfdbf3b356503caf80b8317da780ec40cd17e75f329ee3f4777643a76896d5
+
+pkgname = openfic-bin
