@@ -3,8 +3,8 @@
 
 _pkgname="appcsxcad"
 pkgname="$_pkgname-git"
-pkgver=0.2.3.r17.gbd996a1
-pkgrel=2
+pkgver=0.2.3.r19.g8ce79ae
+pkgrel=1
 pkgdesc="Minimal GUI Application using the QCSXCAD library"
 url="https://github.com/thliebig/AppCSXCAD"
 license=('GPL-3.0-or-later')
@@ -24,12 +24,9 @@ makedepends=(
   'git'
   'ninja'
 
-  'eigen3'
   'fast_float'
   'nlohmann-json'
-  'openmpi'
-  'utf8cpp'
-  'vulkan-headers'
+  'openmpi' # vtk
 )
 
 provides=("$_pkgname=${pkgver%%.r*}")
