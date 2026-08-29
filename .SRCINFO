@@ -1,11 +1,9 @@
 pkgbase = llama.cpp-gfx1151
 	pkgdesc = Port of Facebook's LLaMA model in C/C++ (Optimized for gfx1151, ROCm + Vulkan)
 	pkgver = b10680
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggml-org/llama.cpp
 	arch = x86_64
-	arch = armv7h
-	arch = aarch64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
