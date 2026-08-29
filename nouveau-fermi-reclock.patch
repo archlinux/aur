@@ -1,6 +1,40 @@
---- a/nouveau_backlight.c
-+++ b/nouveau_backlight.c
-@@ -344,10 +344,7 @@
+diff -uNrp nouveau-orig/dispnv50/disp.c nouveau-mod/dispnv50/disp.c
+--- a/dispnv50/disp.c	2026-06-12 01:03:26.000000000 +0300
++++ b/dispnv50/disp.c	2026-08-29 12:20:10.200475751 +0300
+@@ -228,6 +228,10 @@ MODULE_PARM_DESC(kms_vram_pushbuf, "Plac
+ static int nv50_dmac_vram_pushbuf = -1;
+ module_param_named(kms_vram_pushbuf, nv50_dmac_vram_pushbuf, int, 0400);
+ 
++MODULE_PARM_DESC(vblank_continuous, "Keep vblank IRQs continuously enabled for high-refresh displays (default: 0)");
++static int nouveau_vblank_continuous = 0;
++module_param_named(vblank_continuous, nouveau_vblank_continuous, int, 0400);
++
+ int
+ nv50_dmac_create(struct nouveau_drm *drm,
+ 		 const s32 *oclass, u8 head, void *data, u32 size, s64 syncbuf,
+@@ -353,8 +357,7 @@ nv50_outp_atomic_check_view(struct drm_e
+ 			 * refresh rate)
+ 			 */
+ 			if (mode->hdisplay == native_mode->hdisplay &&
+-			    mode->vdisplay == native_mode->vdisplay &&
+-			    mode->type & DRM_MODE_TYPE_DRIVER)
++			    mode->vdisplay == native_mode->vdisplay)
+ 				break;
+ 			mode = native_mode;
+ 			asyc->scaler.full = true;
+@@ -3012,7 +3015,7 @@ nv50_display_create(struct drm_device *d
+ 	}
+ 
+ 	/* Disable vblank irqs aggressively for power-saving, safe on nv50+ */
+-	dev->vblank_disable_immediate = true;
++	dev->vblank_disable_immediate = !nouveau_vblank_continuous;
+ 
+ 	nv50_audio_component_init(drm);
+ 
+diff -uNrp nouveau-orig/nouveau_backlight.c nouveau-mod/nouveau_backlight.c
+--- a/nouveau_backlight.c	2026-06-12 01:03:26.000000000 +0300
++++ b/nouveau_backlight.c	2026-08-29 12:20:10.188748787 +0300
+@@ -344,10 +344,7 @@ nouveau_backlight_init(struct drm_connec
  		goto fail_alloc;
  	}
  
@@ -12,9 +46,10 @@
  
  	if (!nouveau_get_backlight_name(backlight_name, bl)) {
  		NV_ERROR(drm, "Failed to retrieve a unique name for the backlight interface\n");
---- a/nvkm/subdev/clk/base.c
-+++ b/nvkm/subdev/clk/base.c
-@@ -282,7 +282,8 @@
+diff -uNrp nouveau-orig/nvkm/subdev/clk/base.c nouveau-mod/nvkm/subdev/clk/base.c
+--- a/nvkm/subdev/clk/base.c	2026-06-12 01:03:26.000000000 +0300
++++ b/nvkm/subdev/clk/base.c	2026-08-29 12:20:10.188885186 +0300
+@@ -282,7 +282,8 @@ nvkm_pstate_prog(struct nvkm_clk *clk, i
  
  	nvkm_pcie_set_link(pci, pstate->pcie_speed, pstate->pcie_width);
  
@@ -24,7 +59,7 @@
  		struct nvkm_ram *ram = fb->ram;
  		int khz = pstate->base.domain[nv_clk_src_mem];
  		do {
-@@ -291,6 +292,8 @@
+@@ -291,6 +292,8 @@ nvkm_pstate_prog(struct nvkm_clk *clk, i
  				ret = ram->func->prog(ram);
  		} while (ret > 0);
  		ram->func->tidy(ram);
@@ -33,18 +68,20 @@
  	}
  
  	return nvkm_cstate_prog(clk, pstate, NVKM_CLK_CSTATE_HIGHEST);
---- a/nvkm/subdev/clk/gf100.c
-+++ b/nvkm/subdev/clk/gf100.c
-@@ -441,8 +441,6 @@
- static void
- gf100_clk_tidy(struct nvkm_clk *base)
- {
--	struct gf100_clk *clk = gf100_clk(base);
--	memset(clk->eng, 0x00, sizeof(clk->eng));
- }
+diff -uNrp nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-mod/nvkm/subdev/clk/gf100.c
+--- a/nvkm/subdev/clk/gf100.c	2026-06-12 01:03:26.000000000 +0300
++++ b/nvkm/subdev/clk/gf100.c	2026-08-29 12:20:10.189273994 +0300
+@@ -329,9 +329,6 @@ gf100_clk_calc(struct nvkm_clk *base, st
  
- static const struct nvkm_clk_func
-@@ -457,9 +455,10 @@
+ 	if ((ret = calc_clk(clk, cstate, 0x00, nv_clk_src_gpc)) ||
+ 	    (ret = calc_clk(clk, cstate, 0x01, nv_clk_src_rop)) ||
+-	    (ret = calc_clk(clk, cstate, 0x02, nv_clk_src_hubk07)) ||
+-	    (ret = calc_clk(clk, cstate, 0x07, nv_clk_src_hubk06)) ||
+-	    (ret = calc_clk(clk, cstate, 0x08, nv_clk_src_hubk01)) ||
+ 	    (ret = calc_clk(clk, cstate, 0x09, nv_clk_src_copy)) ||
+ 	    (ret = calc_clk(clk, cstate, 0x0c, nv_clk_src_pmu)) ||
+ 	    (ret = calc_clk(clk, cstate, 0x0e, nv_clk_src_vdec)))
+@@ -457,9 +454,10 @@ gf100_clk = {
  		{ nv_clk_src_hubk06 , 0x00 },
  		{ nv_clk_src_hubk01 , 0x01 },
  		{ nv_clk_src_copy   , 0x02 },
@@ -57,17 +94,17 @@
  		{ nv_clk_src_vdec   , 0x06 },
  		{ nv_clk_src_pmu    , 0x0a },
  		{ nv_clk_src_hubk07 , 0x0b },
-@@ -477,5 +476,5 @@
+@@ -477,5 +475,5 @@ gf100_clk_new(struct nvkm_device *device
  		return -ENOMEM;
  	*pclk = &clk->base;
  
 -	return nvkm_clk_ctor(&gf100_clk, device, type, inst, false, &clk->base);
--}
 +	return nvkm_clk_ctor(&gf100_clk, device, type, inst, true, &clk->base);
-+}
---- a/nvkm/subdev/fb/ramgf100.c
-+++ b/nvkm/subdev/fb/ramgf100.c
-@@ -58,6 +58,9 @@
+ }
+diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ramgf100.c
+--- a/nvkm/subdev/fb/ramgf100.c	2026-06-12 01:03:26.000000000 +0300
++++ b/nvkm/subdev/fb/ramgf100.c	2026-08-29 12:20:10.197482437 +0300
+@@ -58,6 +58,9 @@ struct gf100_ramfuc {
  	struct ramfuc_reg r_0x10f340;
  	struct ramfuc_reg r_0x10f344;
  	struct ramfuc_reg r_0x10f348;
@@ -77,7 +114,7 @@
  
  	struct ramfuc_reg r_0x10f910;
  	struct ramfuc_reg r_0x10f914;
-@@ -275,8 +278,10 @@
+@@ -275,8 +278,10 @@ gf100_ram_calc(struct nvkm_ram *base, u3
  	ram_mask(fuc, 0x10f200, 0x00000800, 0x00000000);
  	ram_wr32(fuc, 0x10f210, 0x00000000);
  	ram_nsec(fuc, 1000);
@@ -90,7 +127,7 @@
  	ram_wr32(fuc, 0x10f310, 0x00000001);
  	ram_nsec(fuc, 1000);
  	ram_wr32(fuc, 0x10f090, 0x00000061);
-@@ -284,7 +289,10 @@
+@@ -284,7 +289,10 @@ gf100_ram_calc(struct nvkm_ram *base, u3
  	ram_nsec(fuc, 1000);
  
  	if (from == 0) {
@@ -102,7 +139,7 @@
  	} else {
  		ram_wr32(fuc, 0x1373ec, 0x00020404);
  	}
-@@ -295,16 +303,27 @@
+@@ -295,16 +303,27 @@ gf100_ram_calc(struct nvkm_ram *base, u3
  		ram_wr32(fuc, 0x10f830, 0x41500010);
  		ram_mask(fuc, 0x10f830, 0x01000000, 0x00000000);
  		ram_mask(fuc, 0x132100, 0x00000100, 0x00000100);
@@ -134,7 +171,7 @@
  		ram_wr32(fuc, 0x10f090, 0x4000007e);
  		ram_nsec(fuc, 2000);
  		ram_wr32(fuc, 0x10f314, 0x00000001);
-@@ -312,26 +331,36 @@
+@@ -312,26 +331,36 @@ gf100_ram_calc(struct nvkm_ram *base, u3
  		ram_wr32(fuc, 0x10f338, 0x00300220);
  		ram_wr32(fuc, 0x10f300, 0x0000011d);
  		ram_nsec(fuc, 1000);
@@ -182,7 +219,7 @@
  		ram_wr32(fuc, 0x100b0c, 0x00080028);
  		ram_wr32(fuc, 0x611200, 0x00003330);
  	} else {
-@@ -345,53 +374,69 @@
+@@ -345,53 +374,69 @@ gf100_ram_calc(struct nvkm_ram *base, u3
  		ram_wr32(fuc, 0x1373f8, 0x00000000);
  		ram_wr32(fuc, 0x132100, 0x00000101);
  		ram_wr32(fuc, 0x137310, 0x89201616);
@@ -273,9 +310,10 @@
  	}
  
  	ram_mask(fuc, 0x10f200, 0x00000800, 0x00000800);
---- a/nvkm/subdev/pmu/gt215.c
-+++ b/nvkm/subdev/pmu/gt215.c
-@@ -56,9 +56,11 @@
+diff -uNrp nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-mod/nvkm/subdev/pmu/gt215.c
+--- a/nvkm/subdev/pmu/gt215.c	2026-06-12 01:03:26.000000000 +0300
++++ b/nvkm/subdev/pmu/gt215.c	2026-08-29 12:20:10.198915419 +0300
+@@ -56,9 +56,11 @@ gt215_pmu_send(struct nvkm_pmu *pmu, u32
  	}
  
  	/* acquire data segment access */
@@ -290,7 +328,7 @@
  
  	/* write the packet */
  	nvkm_wr32(device, 0x10a1c0, 0x01000000 | (((addr & 0x07) << 4) +
-@@ -70,11 +72,24 @@
+@@ -70,11 +72,24 @@ gt215_pmu_send(struct nvkm_pmu *pmu, u32
  	nvkm_wr32(device, 0x10a4a0, (addr + 1) & 0x0f);
  
  	/* release data segment access */
@@ -317,7 +355,7 @@
  		reply[0] = pmu->recv.data[0];
  		reply[1] = pmu->recv.data[1];
  	}
-@@ -96,12 +111,14 @@
+@@ -96,12 +111,14 @@ gt215_pmu_recv(struct nvkm_pmu *pmu)
  		return;
  
  	/* acquire data segment access */
@@ -336,7 +374,7 @@
  				pmu->recv.base));
  	process = nvkm_rd32(device, 0x10a1c4);
  	message = nvkm_rd32(device, 0x10a1c4);
-@@ -110,7 +127,8 @@
+@@ -110,7 +127,8 @@ gt215_pmu_recv(struct nvkm_pmu *pmu)
  	nvkm_wr32(device, 0x10a4cc, (addr + 1) & 0x0f);
  
  	/* release data segment access */
@@ -346,9 +384,10 @@
  
  	/* wake process if it's waiting on a synchronous reply */
  	if (pmu->recv.process) {
---- a/nvkm/subdev/pmu/memx.c
-+++ b/nvkm/subdev/pmu/memx.c
-@@ -61,9 +61,11 @@
+diff -uNrp nouveau-orig/nvkm/subdev/pmu/memx.c nouveau-mod/nvkm/subdev/pmu/memx.c
+--- a/nvkm/subdev/pmu/memx.c	2026-06-12 01:03:26.000000000 +0300
++++ b/nvkm/subdev/pmu/memx.c	2026-08-29 12:20:10.199477853 +0300
+@@ -61,9 +61,11 @@ nvkm_memx_init(struct nvkm_pmu *pmu, str
  	memx->size = reply[1];
  
  	/* acquire data segment access */
@@ -363,7 +402,7 @@
  	nvkm_wr32(device, 0x10a1c0, 0x01000000 | memx->base);
  	return 0;
  }
-@@ -82,7 +84,8 @@
+@@ -82,7 +84,8 @@ nvkm_memx_fini(struct nvkm_memx **pmemx,
  
  	/* release data segment access */
  	finish = nvkm_rd32(device, 0x10a1c0) & 0x00ffffff;
