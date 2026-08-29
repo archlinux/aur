@@ -1,16 +1,16 @@
 # Maintainer: Algorant
 pkgname=xurl
-pkgver=1.2.2
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Auth-enabled curl-like CLI for the X API"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xdevplatform/xurl"
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'gcc-libs')
 makedepends=('go')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5047a4c4897939240b3c30ce67437298de3d14e29d38cc45e98f1e8fd2cc690b')
+sha256sums=('b3a5ba4f807b2825bfcdbd9a52646d9e0c8e4653214f48eef0fd2d6226aac5eb')
 
 build() {
   cd "$pkgname-$pkgver"
