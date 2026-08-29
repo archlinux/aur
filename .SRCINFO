@@ -1,22 +1,25 @@
 pkgbase = tkginstaller-git
 	pkgdesc = bash wrapper to build & install Frogging-Family stuff with ease
-	pkgver = 0.55.8
+	pkgver = 0.55.9.r391.g47fb641
 	pkgrel = 1
 	url = https://github.com/damachine/tkginstaller
 	install = tkginstaller.install
-	arch = x86_64
+	arch = any
 	license = MIT
+	depends = bash
+	depends = curl
+	depends = fzf
 	depends = git
-	depends = onefetch
-	optdepends = bat: syntax highlighting
-	optdepends = curl: downloading files
-	optdepends = fzf: the interactive menu
-	optdepends = glow: markdown rendering
-	optdepends = nano: editing config files
-	optdepends = wdiff: comparing config files
-	provides = tkginstaller
+	optdepends = bat: syntax-highlighted config and log previews
+	optdepends = glow: rendered Markdown previews
+	optdepends = nano: fallback configuration editor
+	optdepends = onefetch: repository summaries
+	optdepends = opendoas: privilege escalation (alternative to sudo)
+	optdepends = sudo: privilege escalation (alternative to opendoas)
+	optdepends = wdiff: word-based configuration comparisons
+	provides = tkginstaller=0.55.9.r391.g47fb641
 	conflicts = tkginstaller
-	source = tkginstaller::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller
+	source = tkginstaller::git+https://github.com/damachine/tkginstaller.git
 	sha256sums = SKIP
 
 pkgname = tkginstaller-git
