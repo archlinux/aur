@@ -2,7 +2,7 @@
 
 pkgname=res-downloader
 pkgver=3.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="This is a high-value and high-performance and diverse resource downloader called res-downloader"
 arch=($CARCH)
 url="https://github.com/putyy/res-downloader"
