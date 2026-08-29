@@ -1,7 +1,7 @@
 # Maintainer: Ethan Alexander <ethanjalexander@hotmail.ca>
 
 pkgname="wallpiper"
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Native translation layer for Wallpaper Engine on Linux"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = wallpiper
 	pkgdesc = Native translation layer for Wallpaper Engine on Linux
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/shdwmtr/wallpiper
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = wallpiper
 	optdepends = wallpiper-sway: Sway portal
 	optdepends = wallpiper-cosmic: COSMIC portal
 	optdepends = wallpiper-i3: i3wm portal
-	source = wallpiper::git+https://github.com/shdwmtr/wallpiper.git#tag=v2.0.0
+	source = wallpiper::git+https://github.com/shdwmtr/wallpiper.git#tag=v2.0.1
 	sha256sums = SKIP
 
 pkgname = wallpiper
