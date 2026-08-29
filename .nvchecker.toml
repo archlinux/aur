@@ -1,0 +1,3 @@
+[harlequin-postgres]
+source = "pypi"
+pypi = "harlequin-postgres"
