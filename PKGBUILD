@@ -22,7 +22,7 @@ provides=("${_pypi_package}")
 replaces=("python-${pkgname}")
 conflicts=("python-${pkgname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
-depends=('python' 'ipython' 'python-pandas' 'python-wcwidth' 'python-openpyxl' 'aria2tui' 'python-pyperclip' 'python-dill' 'python-msgpack' 'python-odfpy' 'python-traitlets' 'python-pyarrow' 'python-toml')
+depends=('python' 'ipython' 'python-pandas' 'python-wcwidth' 'python-openpyxl' 'python-pyperclip' 'python-dill' 'python-msgpack' 'python-odfpy' 'python-traitlets' 'python-pyarrow' 'python-toml' 'python-plotille')
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 # source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
