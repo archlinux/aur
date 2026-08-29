@@ -21,11 +21,9 @@ build() {
 package() {
   cd "modlist_org_app-${pkgver}"
 
-  # 실행 파일 및 번들 자원 설치
   install -d "${pkgdir}/usr/lib/${pkgname}"
   cp -r build/linux/x64/release/bundle/* "${pkgdir}/usr/lib/${pkgname}/"
 
-  # /usr/bin 심볼릭 링크 생성
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/lib/${pkgname}/modlist_org_app" "${pkgdir}/usr/bin/modlist-org-app"
 }
