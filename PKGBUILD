@@ -1,6 +1,6 @@
 # Maintainer: archledger <archledger236@gmail.com>
 pkgname=irlume
-pkgver=0.11.2
+pkgver=0.11.3
 pkgrel=1
 pkgdesc="Windows Hello-style face login for Linux: IR cameras, consent-gated, photo-spoofing resistant, TPM-sealed, password always works"
 arch=('x86_64')
