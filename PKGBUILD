@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=qt5-quickcontrols-nemo
-pkgver=5.7.5
+pkgver=5.7.6
 pkgrel=1
 pkgdesc="QML components for Nemomobile, based on QtQuickControls"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nemo-qml-plugin-configuration'
          'nemo-theme-glacier' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-virtualkeyboard')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/nemomobile-ux/qtquickcontrols-nemo.git#tag=$pkgver")
-sha512sums=('2481c183ed500c2a3f074a4bc80d1e61d474855b80eb21a0ad53dc93af00f9d3dd1a9206a420d23be72d5909a3e023272f57dcd8727fa39d560765e6ef2b590e')
+sha512sums=('55fe891b8e6983adcc57b57f5c1879cf898d32d5f6369f3dd934276e2f7516969a185d8655de78d8ff88b6698c2695d62835302dff9764e3b1fd9e993fc4dee1')
 
 build() {
   cd qtquickcontrols-nemo
