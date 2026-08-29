@@ -1,0 +1,15 @@
+pkgbase = aurpush
+	pkgdesc = CLI for maintaining and publishing Arch Linux packages to the AUR
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Aspenini/aurpush
+	arch = x86_64
+	license = MIT
+	makedepends = xmake
+	depends = git
+	depends = openssh
+	options = !debug
+	source = aurpush-0.1.0.tar.gz::https://github.com/Aspenini/aurpush/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = aurpush
