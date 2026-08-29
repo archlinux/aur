@@ -1,0 +1,19 @@
+pkgbase = dorion-appimage-bin
+	pkgdesc = Tiny alternative Discord client with a smaller footprint, snappier startup, themes, plugins and more!
+	pkgver = 6.13.0
+	pkgrel = 1
+	url = https://spikehd.github.io/projects/dorion
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = hicolor-icon-theme
+	depends = zlib
+	depends = gcc-libs
+	depends = glibc
+	provides = dorion
+	conflicts = dorion
+	options = !strip
+	options = !debug
+	source = Dorion-6.13.0.AppImage::https://github.com/SpikeHD/Dorion/releases/download/v6.13.0/Dorion_6.13.0_amd64.AppImage
+	sha256sums = df97c76b5f0ac4b3769ad490982645dc565ab86b3d92682c149402ac1f38a834
+
+pkgname = dorion-appimage-bin
