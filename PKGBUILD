@@ -3,7 +3,7 @@
 _sdk=10.0
 _name="FsAutoComplete"
 pkgname="${_name,,}"
-pkgver=0.83.0
+pkgver=0.84.0
 pkgrel=1
 pkgdesc="F# language server using Language Server Protocol (LSP)"
 arch=('any')
@@ -16,14 +16,14 @@ depends=("dotnet-sdk-${_sdk}" 'sh')
 makedepends=("dotnet-sdk-${_sdk}")
 conflicts=("${pkgname}-bin")
 source=("${pkgname}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0435da78506809b4e105a28eb172504ee47cdef6aa080a0f19227af5f6898d0f')
+sha256sums=('8a79ded3bdd9da84663893c33cb44126b80dd68386c711ddc31197538ecc7616')
 
 _dotnet_env() {
     export DOTNET_CLI_TELEMETRY_OPTOUT=1
     export DOTNET_NOLOGO=1
     export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
     export DOTNET_ROLL_FORWARD_TO_PRERELEASE=1
-    # Adds net9.0/net10.0 to the projects that upstream cross-builds.
+    export DOTNET_ROLL_FORWARD=Major
     export BuildNet10=true
     export DOTNET_CLI_HOME="${srcdir}/.dotnet-home"
     export NUGET_PACKAGES="${srcdir}/.nuget"
