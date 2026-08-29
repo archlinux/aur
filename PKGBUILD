@@ -1,4 +1,4 @@
-# Maintainer: Lieke Litjens
+# Maintainer: Rachel Litjens
 pkgname=ember
 pkgver=1.1
 pkgrel=3
