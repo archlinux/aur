@@ -4,7 +4,7 @@
 
 _pkgname="aelkey"
 pkgname="$_pkgname"
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Lua-based input remapping framework"
 url="https://github.com/xiota/aelkey"
@@ -39,7 +39,7 @@ source=(
   "$_pkgsrc_sol"::"git+https://github.com/Nerixyz/sol2.git"
 )
 sha256sums=(
-  'ee780d7e3866440086d982e373341db187d55961424c4cfc849f513117cbcc3d'
+  'f6d506efc24b7584a1c7e7a1a99a2bed8308252fd619f3146e342e82a148c9fd'
   'SKIP'
 )
 
@@ -49,8 +49,9 @@ prepare() {
 
 build() {
   local _meson_options=()
-  case "${_debug::1}" in
+  case "${_debug}" in
     asan | a)
+      export CXXFLAGS+=" -Wall -Wextra -Wpedantic -Wmissing-declarations -Wno-unused-parameter"
       _meson_options+=(
         --buildtype=debugoptimized
         -Db_sanitize=address,undefined
@@ -58,7 +59,8 @@ build() {
         -Db_asneeded=false
       )
       ;;
-    asan-debug | asan-d | ad)
+    asan-d* | ad)
+      export CXXFLAGS+=" -Wall -Wextra -Wpedantic -Wmissing-declarations -Wno-unused-parameter"
       _meson_options+=(
         --buildtype=debug
         -Db_sanitize=address,undefined
@@ -66,7 +68,7 @@ build() {
         -Db_asneeded=false
       )
       ;;
-    t | true)
+    t*)
       _meson_options+=(
         --buildtype=debugoptimized
       )
@@ -80,8 +82,10 @@ build() {
 package() {
   meson install -C build --destdir "$pkgdir"
 
-  # convenience script
+  # convenience script and asan depends
   if [[ "${_debug::1}" == "a" ]]; then
+    eval "depends+=(libasan libubsan)"
+
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/aelkey" << END
 #!/usr/bin/env sh
 export LD_PRELOAD=/usr/lib/libasan.so

@@ -1,6 +1,6 @@
 pkgbase = aelkey
 	pkgdesc = Lua-based input remapping framework
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/xiota/aelkey
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = aelkey
 	options = !debug
 	options = !strip
 	options = !lto
-	source = aelkey::git+https://github.com/xiota/aelkey.git#tag=0.0.3
+	source = aelkey::git+https://github.com/xiota/aelkey.git#tag=0.0.4
 	source = nerixyz.sol2::git+https://github.com/Nerixyz/sol2.git
-	sha256sums = ee780d7e3866440086d982e373341db187d55961424c4cfc849f513117cbcc3d
+	sha256sums = f6d506efc24b7584a1c7e7a1a99a2bed8308252fd619f3146e342e82a148c9fd
 	sha256sums = SKIP
 
 pkgname = aelkey
