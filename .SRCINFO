@@ -1,7 +1,7 @@
 pkgbase = lib32-orc
 	pkgdesc = Optimized Inner Loop Runtime Compiler (32-bit)
 	pkgver = 0.4.43
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gstreamer.freedesktop.org/modules/orc.html
 	arch = x86_64
 	license = BSD-3-Clause

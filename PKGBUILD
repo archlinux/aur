@@ -4,7 +4,7 @@
 
 pkgname=lib32-orc
 pkgver=0.4.43
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimized Inner Loop Runtime Compiler (32-bit)"
 url="https://gstreamer.freedesktop.org/modules/orc.html"
 arch=(x86_64)
@@ -26,7 +26,7 @@ validpgpkeys=(
 )
 
 build() {
-  arch-meson orc build --cross-file lib32 -D hotdoc=disabled
+  arch-meson orc build --cross-file lib32 -D hotdoc=disabled -D orc-target=avx,sse,mmx,altivec,neon,mips,c64x,riscv,lsx,lasx
   meson compile -C build
 }
 
