@@ -3,9 +3,9 @@
 
 pkgname=lameta
 pkgver=3.0.21_beta
+pkgrel=3
 _upstream_pkgver="${pkgver//_/-}"
 _electron=electron39 # this is not what is used by upstream, but rather the nearest one in extra repo
-pkgrel=2
 pkgdesc="The Metadata Editor for Transparent Archiving of language document materials"
 arch=('x86_64')
 url="https://github.com/onset/lameta"
@@ -23,12 +23,12 @@ makedepends=(
     yarn
 )
 source=(
-  "${pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${_upstream_pkgver}.tar.gz"
+    "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${_upstream_pkgver}.tar.gz"
     "${pkgname}.desktop"
     'no_node_pin.patch'
     'use_native_ffprobe.patch'
 )
-sha256sums=('90d9a1ff58efd6e30474f03adcc6d8695a146c0b09d7eacd540dfc102bc0ae07'
+sha256sums=('60658ca8c3db5c8791f853e8fc81e667fa8fb242d8f4ad47b0cd354f69fb7898'
             '874e1acc986076e9c876c6ccd2efc7ee0dcda322733c018fb8e3d0bf010b8791'
             '013659645d17441f98ed7a8bfcf3a1ef4385aeeb84ddc76e2a59afea42a2da44'
             '5eef4e9a817cb48edcadbb29d07e1158f1164ce1d043ca1836c2e9ad370f3584')
