@@ -1,7 +1,7 @@
 # Maintained upstream: this file is automatically updated and pushed to the
 # AUR (aur.archlinux.org/packages/node-hp-scan-to) by .github/workflows/publish.yml
 pkgname=node-hp-scan-to
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc='Scan document to Computer for HP All-in-One Printers'
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(npm)
 backup=('etc/node-hp-scan-to/default.json')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('6b57a26e748d2bd9c0db84eefc71168ec6132baaee313839981f5d4ebbdc4a90')
+sha256sums=('6b58dd4eb7f54e7a9b22e1f2b5524eeca0c4ad1bfc473ae5125f43309ebe5c07')
 
 prepare() {
     cat > "${srcdir}/${pkgname}.service" <<EOF
