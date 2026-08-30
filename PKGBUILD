@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=cloud189
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="基于天翼云接口的go客户端"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gowsp/cloud189"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/gowsp/cloud189.git#tag=v$pkgver")
+_commit='d4d7c603f0c90a31ff1868e0610d7f230d3a1bf8'
+source=("git+https://github.com/gowsp/cloud189.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
