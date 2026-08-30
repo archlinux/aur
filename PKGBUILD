@@ -2,9 +2,9 @@
 pkgdesc="Flexible Collision Library. Git version."
 url='https://github.com/flexible-collision-library'
 pkgname=fcl-git
-pkgver=r860.3f3d98a3
+pkgver=r871.e5efcc41
 arch=('i686' 'x86_64')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 makedepends=('cmake')
 depends=('boost' 'libccd')
@@ -14,10 +14,9 @@ optdepends=('octomap: collision detection with octrees'
 _dir=fcl
 source=(
     "$_dir"::'git+https://github.com/flexible-collision-library/fcl.git'#branch=master
-    cxx_standard.patch
     gnu13.patch
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP')
 provides=('fcl')
 conficts=('fcl')
 
@@ -28,7 +27,6 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_dir}"
-    patch -p1 -i "${srcdir}/cxx_standard.patch"
     patch -p1 -i "${srcdir}/gnu13.patch"
 }
 

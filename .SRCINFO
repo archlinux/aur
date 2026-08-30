@@ -1,7 +1,7 @@
 pkgbase = fcl-git
 	pkgdesc = Flexible Collision Library. Git version.
-	pkgver = r860.3f3d98a3
-	pkgrel = 2
+	pkgver = r871.e5efcc41
+	pkgrel = 1
 	url = https://github.com/flexible-collision-library
 	arch = i686
 	arch = x86_64
@@ -13,11 +13,8 @@ pkgbase = fcl-git
 	optdepends = tinyxml: support for global penetration depth test
 	optdepends = flann: support for fast approximate nearest neighbor searches
 	provides = fcl
-	conflicts = fcl
 	source = fcl::git+https://github.com/flexible-collision-library/fcl.git#branch=master
-	source = cxx_standard.patch
 	source = gnu13.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
