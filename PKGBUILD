@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=checkip
 pkgver=0.53.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Get (security) info about IP addresses"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jreisinger/checkip"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/jreisinger/checkip.git#tag=v$pkgver")
+_commit='32aa6276d85429715c58377458f408a2f9249c20'
+source=("git+https://github.com/jreisinger/checkip.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
