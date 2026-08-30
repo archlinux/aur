@@ -90,6 +90,13 @@ _guard_bootorder() {
   fi
 }
 
+_module_check() {
+  # A DKMS build failure is only a pacman warning, so check the outcome.
+  if command -v omarchy-zfs-module-check &>/dev/null; then
+    omarchy-zfs-module-check || true
+  fi
+}
+
 _require_omarchy() {
   # omarchy is not a pacman dependency: it ships only from pkgs.omarchy.org, so
   # declaring it would make this package unbuildable in a clean chroot and
@@ -116,7 +123,28 @@ WARN
 _common() {
   _require_omarchy || true
   if ! _is_zfs_root; then
-    echo ":: omarchy-zfs: root is not ZFS -- ZFS tooling installed but inactive."
+    echo ":: omarchy-zfs: root is not ZFS -- the boot-safety hooks stay inactive."
+    # Not a ZFS root, but there may still be pools carrying /home or data. Those
+    # need zfs-mount-generator opted in per pool or nothing mounts or unlocks
+    # them at boot, which is issue #1. Say so instead of going quiet.
+    if command -v zpool &>/dev/null && [[ -n "$(zpool list -H -o name 2>/dev/null)" ]]; then
+      local _p _missing=0
+      while read -r _p; do
+        [[ -s "/etc/zfs/zfs-list.cache/$_p" ]] || _missing=1
+      done < <(zpool list -H -o name 2>/dev/null)
+      if (( _missing )); then
+        cat <<'POOLS'
+::
+::   Pools are imported, but at least one is not set up to mount or unlock at
+::   boot. Encrypted datasets will not have their keys loaded, and a pool
+::   holding /home will leave the greeter accepting your password and then
+::   failing to open a session.
+::
+::   Fix it with:  sudo omarchy-zfs-boot-mounts-setup
+POOLS
+      fi
+    fi
+    _module_check
     return 0
   fi
   _cleanup_legacy_unowned
@@ -135,6 +163,7 @@ _common() {
   fi
   systemctl enable --now omarchy-zfs-scrub.timer &>/dev/null || true
   _guard_bootorder
+  _module_check
 }
 
 post_install() {
