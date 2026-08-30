@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=n26
 pkgver=1.5.6
-pkgrel=4
+pkgrel=5
 pkgdesc="API and CLI to get information of your N26 account"
 arch=('x86_64' 'aarch64')
 url="https://github.com/guitmz/n26"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
