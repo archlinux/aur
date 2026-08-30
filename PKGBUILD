@@ -2,7 +2,7 @@
 # AUR package for mklang (ADR 0021 phase 3). Build from the PyPI sdist so the
 # released artifact is what ships; bump pkgver on every release (see README.md).
 pkgname=mklang
-pkgver=1.2.0
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A declarative language for LLM-driven state machines (reference interpreter)"
 arch=(any)
@@ -16,8 +16,8 @@ checkdepends=(python-pytest python-mcp)
 optdepends=('python-mcp>=2: mklang-mcp MCP server'
             'python-argcomplete: shell completions')
 backup=(etc/mklang/runtime.yaml)
-source=("https://files.pythonhosted.org/packages/ac/ce/7c19a51e39aa9180501304faecf23e8b5784cc228f39ce3f0f875ff99fee/mklang-$pkgver.tar.gz")
-sha256sums=('a4deaf847c4a98d88fb83d651c0e5ddd6ad4cedd1d6edd178b1d8917013d400b')
+source=("https://files.pythonhosted.org/packages/19/57/cf982f8a29f5f18a53b7ea108e566d34ea25b8b2a939cf4765098b9a84d8/mklang-$pkgver.tar.gz")
+sha256sums=('b17365b0e9c7b51de1f93878c9ffbad9b676c6c95ed45dcfe3951420523ccf53')
 
 build() {
   cd "mklang-$pkgver"
