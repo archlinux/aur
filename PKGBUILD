@@ -1,4 +1,4 @@
-# Maintainer: Jan "heftig" Steffens <jan.steffens@gmail.com>
+# Maintainer: Groctel <git@taxorubio.com>
 _name=v4l-utils
 pkgname="lib32-$_name"
 pkgver=1.32.0
