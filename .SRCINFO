@@ -1,0 +1,18 @@
+pkgbase = xtrayhide-git
+	pkgdesc = Capture X11(XEmbed) tray icons, forward them to SNI. For Wayland compositors(Niri,Hyprland)
+	pkgver = r2.5e33f36
+	pkgrel = 1
+	url = https://github.com/bnema/xtrayhide
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = dbus
+	depends = libx11
+	provides = xtrayhide
+	source = git+https://github.com/bnema/xtrayhide.git
+	source = xtrayhide-git.install
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = xtrayhide-git

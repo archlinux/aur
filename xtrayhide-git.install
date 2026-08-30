@@ -1,0 +1,21 @@
+post_install() {
+  cat << 'EOF'
+
+==> xtrayhide 安装完成
+==> 启用 systemd‑user 服务(可选):
+==>   systemctl --user enable --now xtrayhide
+==>
+==> ⚠️ 二选一！不要同时开启 systemd 服务 和 niri spawn 启动
+==> 托盘代理需要在 Wine/Proton 程序之前启动。
+==> 如果你打算在 niri 自启动，请添加到配置:
+==>   spawn "xtrayhide"
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  systemctl --user disable --now xtrayhide 2>/dev/null || true
+}
