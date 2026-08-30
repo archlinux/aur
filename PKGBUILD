@@ -3,12 +3,12 @@
 pkgname='aprs-symbols-git'
 _pkgname='aprs-symbols'
 pkgver=r29.f2286a9
-pkgrel=3
+pkgrel=4
 pkgdesc='aprs.fi APRS symbol set, high-resolution, vector'
 arch=('any')
 makedepends=('git')
 url='https://github.com/hessu/aprs-symbols'
-license=('custom')
+license=('LicenseRef-custom')
 source=(
     "$_pkgname"::"git+https://github.com/hessu/$_pkgname.git"
 )

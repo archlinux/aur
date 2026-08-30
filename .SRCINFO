@@ -1,10 +1,10 @@
 pkgbase = aprs-symbols-git
 	pkgdesc = aprs.fi APRS symbol set, high-resolution, vector
 	pkgver = r29.f2286a9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hessu/aprs-symbols
 	arch = any
-	license = custom
+	license = LicenseRef-custom
 	makedepends = git
 	provides = aprs-symbols
 	conflicts = aprs-symbols
