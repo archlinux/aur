@@ -1,6 +1,6 @@
 pkgbase = python-multicollections
 	pkgdesc = Fully generic MultiDict class
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/gerlero/multicollections
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-multicollections
 	makedepends = python-installer
 	makedepends = python-uv-build
 	depends = python
-	source = multicollections-1.1.4.tar.gz::https://github.com/gerlero/multicollections/archive/v1.1.4.tar.gz
-	sha512sums = bb7cd6defcf00c9ad3f1908d734724c652a0ba202dc6a5220805d10357e3f655739a22e2aeac81667c3e96556980e917037e3c5a802200a23fe5ec0b70dafe18
+	source = multicollections-1.1.5.tar.gz::https://github.com/gerlero/multicollections/archive/v1.1.5.tar.gz
+	sha512sums = b86232a960519d4e201415961e484c3615ed9367da01c6b794ecdda68528fe62f880554dde5c5cc875df1c648489eac456135046d2fd0476905aa6cc420b066c
 
 pkgname = python-multicollections
