@@ -1,7 +1,7 @@
 pkgbase = sable
 	pkgdesc = An almost stable Matrix client
 	pkgver = 1.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SableClient/Sable
 	arch = x86_64
 	license = AGPL-3.0-only
