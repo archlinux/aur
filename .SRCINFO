@@ -1,0 +1,17 @@
+pkgbase = cleecode-bin
+	pkgdesc = A terminal IDE written in Rust
+	pkgver = 0.13.2
+	pkgrel = 1
+	url = https://github.com/msavox/cleecode
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = clee
+	conflicts = cleecode
+	options = !strip
+	source_x86_64 = clee-x86_64-0.13.2.tgz::https://github.com/msavox/cleecode/releases/download/v0.13.2/clee-v0.13.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 9f22186643ee86abff84ebc36dd4dfc0f7f9146406895bfb79ebfb92f0158f16
+	source_aarch64 = clee-aarch64-0.13.2.tgz::https://github.com/msavox/cleecode/releases/download/v0.13.2/clee-v0.13.2-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7663299c81df07dbdf125a4d2481c152bfcc2d33344f287202c5794497631b11
+
+pkgname = cleecode-bin
