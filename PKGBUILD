@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=dockerfilegraph
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Visualize your multi-stage Dockerfiles"
 arch=('x86_64' 'aarch64')
 url="https://github.com/patrickhoefler/dockerfilegraph"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/patrickhoefler/dockerfilegraph.git#tag=v$pkgver")
+_commit='45dee19aaecc20ac50179a5f44659dd00883230d'
+source=("git+https://github.com/patrickhoefler/dockerfilegraph.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit

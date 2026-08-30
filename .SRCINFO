@@ -1,7 +1,7 @@
 pkgbase = dockerfilegraph
 	pkgdesc = Visualize your multi-stage Dockerfiles
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/patrickhoefler/dockerfilegraph
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = dockerfilegraph
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/patrickhoefler/dockerfilegraph.git#tag=v0.21.0
+	source = git+https://github.com/patrickhoefler/dockerfilegraph.git#commit=45dee19aaecc20ac50179a5f44659dd00883230d
 	sha256sums = SKIP
 
 pkgname = dockerfilegraph
