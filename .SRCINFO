@@ -1,7 +1,7 @@
 pkgbase = pcln-bin
 	pkgdesc = 一个基于 PCL-CE 开发的 Minecraft 启动器 (PCL N Edition)
 	pkgver = 1.4.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/PCL-N-Edition/PCL-N
 	arch = x86_64
 	license = Apache-2.0
