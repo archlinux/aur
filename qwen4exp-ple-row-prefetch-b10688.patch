@@ -1,14 +1,13 @@
 From: llama.cpp-hip-gfx1151 package maintainers
-Subject: [PATCH] qwen4exp: adapt SSD-backed PLE loading to b10666
+Subject: [PATCH] qwen4exp: adapt SSD-backed PLE loading to b10688
 
 Compatibility part of upstream-fork commit
 c911e6bb5eb956a759e740fb14db8ca639b7d3e7 ("mmap: prefetch lazily read
 rows; CUDA: IQ4_NL get_rows for non-QK_K rows").
 
 The original commit is applied to all other files. Its model-loader hunk was
-rebased after b10666 renamed llama_model_params::tensor_read_lazy and the
-corresponding loader field to lazy_mode. Apply the same lazy-tensor tracking
-against b10666's original names here.
+rebased after b10688 renamed the tensor-read-lazy state from tensor_read_lazy
+to lazy_mode. Apply the same lazy-tensor tracking against b10688's names here.
 
 The companion per-buffer mmap patch disables whole-model prefetch globally.
 Limit that behavior to models which actually selected at least one lazy tensor,
@@ -19,9 +18,9 @@ index b6a128100..9cc018f6e 100644
 --- a/src/llama-model-loader.cpp
 +++ b/src/llama-model-loader.cpp
 @@ -1290 +1290,2 @@ struct ggml_tensor * llama_model_loader::create_tensor(
--    if ((flags & TENSOR_READ_LAZY) && use_mmap && tensor_read_lazy != LLAMA_TENSOR_READ_LAZY_OFF) {
+-    if ((flags & TENSOR_READ_LAZY) && use_mmap && lazy_mode != LLAMA_LAZY_MODE_OFF) {
 +    bool read_lazy = false;
-+    if ((flags & TENSOR_READ_LAZY) && use_mmap && tensor_read_lazy != LLAMA_TENSOR_READ_LAZY_OFF) {
++    if ((flags & TENSOR_READ_LAZY) && use_mmap && lazy_mode != LLAMA_LAZY_MODE_OFF) {
 @@ -1295 +1296,2 @@ struct ggml_tensor * llama_model_loader::create_tensor(
 -            lazy_tensor_ranges[w.idx].emplace_back(w.offs, w.offs + ggml_nbytes(cur));
 +            lazy_tensor_ranges[w.idx].emplace_back(w.offs, w.offs + ggml_nbytes(cur));
