@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Donkey Kong 64 Recompiled - bin
+Path=/opt/Donkey-Kong-64-Recompiled-bin
+Exec=/opt/Donkey-Kong-64-Recompiled-bin/DK64Recompiled
+Comment=DK64 Rekongpiled (N64 recompilation project)
+Terminal=false
+Icon=dk64recompiled-bin
+Categories=Game;Emulator;
+Keywords=DK;

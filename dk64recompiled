@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# This is a wrapper script to launch DK64Recompiled
+# from AUR package: dk64recompiled-bin
+
+cd /opt/Donkey-Kong-64-Recompiled-bin || exit 1
+exec /opt/Donkey-Kong-64-Recompiled-bin/DK64Recompiled "$@"
