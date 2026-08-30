@@ -1,0 +1,5 @@
+.aurpush
+src/
+pkg/
+*.pkg.tar*
+*.src.tar*
