@@ -1,6 +1,6 @@
 # Maintainer: Aspenini <aspeninifeltner@gmail.com>
 pkgname=quark-downloader
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Interactive CLI and GUI wrapper for yt-dlp'
 arch=('x86_64')
