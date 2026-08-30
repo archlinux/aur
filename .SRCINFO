@@ -1,6 +1,6 @@
 pkgbase = llauncher-bin
 	pkgdesc = Native Linux launcher for Arknights: Endfield
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/AugustLigh/LLauncher
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = llauncher-bin
 	optdepends = gamescope: micro-compositor with FSR upscaling, FPS cap and HDR
 	provides = llauncher
 	conflicts = llauncher
-	noextract = llauncher-bin-0.3.0.deb
+	noextract = llauncher-bin-0.3.1.deb
 	options = !strip
-	source = llauncher-bin-0.3.0.deb::https://github.com/AugustLigh/LLauncher/releases/download/0.3.0/LLauncher_0.3.0_amd64.deb
-	sha256sums = cc68e27011ad678e28dbf447ebf170dc89afa6767fa48b157b7deaa50845e7d8
+	source = llauncher-bin-0.3.1.deb::https://github.com/AugustLigh/LLauncher/releases/download/0.3.1/LLauncher_0.3.1_amd64.deb
+	sha256sums = 93dd1d257a9eb5a1f8d6ba97c52956b336262e6fc1dea86c8cd84b252a9f376e
 
 pkgname = llauncher-bin
