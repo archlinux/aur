@@ -1,0 +1,38 @@
+# sddm-astronaut-theme-bin.install
+
+post_install() {
+    echo ":: Configurando SDDM para usar o tema sddm-astronaut-theme..."
+
+    # Cria /etc/sddm.conf se não existir
+    if [ ! -f /etc/sddm.conf ]; then
+        echo "[Theme]" > /etc/sddm.conf
+        echo "Current=sddm-astronaut-theme" >> /etc/sddm.conf
+        echo ":: Arquivo /etc/sddm.conf criado com o tema configurado."
+    else
+        # Verifica se já existe a linha Current=...
+        if ! grep -q "^Current=sddm-astronaut-theme" /etc/sddm.conf; then
+            # Se a seção [Theme] existe, adiciona abaixo
+            if grep -q "^\[Theme\]" /etc/sddm.conf; then
+                sed -i '/^\[Theme\]/a Current=sddm-astronaut-theme' /etc/sddm.conf
+            else
+                # Se não existe a seção [Theme], adiciona no final
+                echo -e "\n[Theme]\nCurrent=sddm-astronaut-theme" >> /etc/sddm.conf
+            fi
+            echo ":: Tema adicionado ao /etc/sddm.conf existente."
+        else
+            echo ":: Tema já configurado em /etc/sddm.conf."
+        fi
+    fi
+
+    echo ":: Para aplicar as alterações agora, reinicie o SDDM:"
+    echo "   sudo systemctl restart sddm"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo ":: O tema sddm-astronaut-theme foi removido."
+    echo "   Se desejar, remova a linha 'Current=sddm-astronaut-theme' do /etc/sddm.conf"
+}

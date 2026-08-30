@@ -9,6 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('sddm')
 provides=('sddm-astronaut-theme')
 conflicts=('sddm-astronaut-theme' 'sddm-astronaut-theme-git')
+install="${pkgname}.install"
 options=(!debug)
 
 source=("https://github.com/eusouobn/sddm-astronaut-theme-bin-releases/releases/download/v${pkgver}/sddm-astronaut-theme-full-${pkgver}-any.tar.gz")
