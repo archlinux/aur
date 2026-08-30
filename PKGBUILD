@@ -8,10 +8,13 @@ url="https://github.com/Vysp3r/ProtonPlus"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk4'
+  'json-glib'
   'libadwaita'
-  'glib2'
-  'glibc'
-  'gcc-libs'
+  'libarchive'
+  'libgee'
+  'libnotify'
+  'libsoup3'
+  'sdl3'
 )
 provides=('protonplus')
 conflicts=('protonplus' 'protonplus-git')
