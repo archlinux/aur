@@ -5,6 +5,6 @@ Terminal=false
 Type=Application
 Icon=sparkle
 StartupWMClass=sparkle
-MimeType=x-scheme-handler/clash;x-scheme-handler/mihomo;
+MimeType=x-scheme-handler/clash;x-scheme-handler/mihomo;x-scheme-handler/sparkle;
 Comment=Sparkle
 Categories=Utility;
