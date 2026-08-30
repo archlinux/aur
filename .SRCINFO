@@ -4,6 +4,7 @@ pkgbase = pdfio-git
 	pkgrel = 2
 	url = https://www.msweet.org/pdfio/
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause
 	makedepends = git
 	depends = zlib
