@@ -1,6 +1,6 @@
 pkgbase = godot3-bin
 	pkgdesc = Advanced cross-platform 2D and 3D game engine (3.X Branch)
-	pkgver = 3.6.2
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = https://godotengine.org
 	arch = x86_64
@@ -18,9 +18,9 @@ pkgbase = godot3-bin
 	depends = libxext
 	optdepends = pipewire-alsa
 	optdepends = pipewire-pulse
-	source = https://github.com/godotengine/godot/releases/download/3.6.2-stable/Godot_v3.6.2-stable_x11.64.zip
-	source = https://github.com/godotengine/godot/archive/refs/tags/3.6.2-stable.tar.gz
-	sha256sums = f69d56913b11f0bc720a603f7e300f0b3d0c1b4ed94265d6051e75da321ed4d5
-	sha256sums = 389ca3291f6836b6bfc4563740d8cf56625e80665049a69dbc2899bad3a4a607
+	source = https://github.com/godotengine/godot/releases/download/3.6.3-stable/Godot_v3.6.3-stable_x11.64.zip
+	source = https://github.com/godotengine/godot/archive/refs/tags/3.6.3-stable.tar.gz
+	sha256sums = 9080483f1f9b1d05d6fb92d87a6cdae8d5aad5f52ae76ab1208759aa271b2895
+	sha256sums = 3d44858051deb0db1c1fe4ee82b0c4cf64ab65bb5ab6f1c2c4816f27c7c7117e
 
 pkgname = godot3-bin
