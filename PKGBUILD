@@ -5,7 +5,7 @@ _gitname=atmosphera
 pkgname=atmosphera-git
 _release_ver=0.6.0.r0
 pkgver=0.6.0.r0.g0000000
-pkgrel=8
+pkgrel=9
 install=atmosphera-git.install
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)"
 arch=('any')
@@ -76,10 +76,12 @@ package() {
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-settings"
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-lock"
 
-  # xdg-desktop-portal backend manifest + niri backend preference (without
-  # the conf, xdp falls back to gtk when it is installed — readdir order)
+  # xdg-desktop-portal backend manifest + niri backend preference. The
+  # preference lives in /etc/xdg so it wins over niri's own
+  # /usr/share/xdg-desktop-portal/niri-portals.conf (default=gnome;gtk;)
+  # without owning the same path.
   install -Dm644 Portals/atmosphera.portal "$pkgdir/usr/share/xdg-desktop-portal/portals/atmosphera.portal"
-  install -Dm644 Portals/niri-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/niri-portals.conf"
+  install -Dm644 Portals/niri-portals.conf "$pkgdir/etc/xdg/xdg-desktop-portal/niri-portals.conf"
 
   # keyd reload service (triggered via systemd D-Bus StartUnit by the shell)
   install -Dm644 Scripts/systemd/atmosphera-keyd-reload.service "$pkgdir/usr/lib/systemd/system/atmosphera-keyd-reload.service"
