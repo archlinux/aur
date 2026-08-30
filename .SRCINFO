@@ -1,6 +1,6 @@
 pkgbase = vocalinux
 	pkgdesc = Free, offline voice dictation for Linux
-	pkgver = 0.16.0
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://github.com/VocaHQ/vocalinux
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = vocalinux
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	depends = python>=3.9
+	depends = python>=3.11
 	depends = python-gobject
 	depends = gtk3
 	depends = libayatana-appindicator
@@ -38,7 +38,7 @@ pkgbase = vocalinux
 	optdepends = wl-clipboard: Wayland clipboard (wl-copy/wl-paste) injection fallbacks
 	optdepends = wtype: Wayland keystroke injection fallback
 	conflicts = vocalinux-git
-	source = vocalinux-0.16.0.tar.gz::https://github.com/VocaHQ/vocalinux/archive/refs/tags/v0.16.0.tar.gz
-	sha256sums = bd07e997ae360d118928eef800f4a39d827c7bf8783b370fb6369d47b53c28e2
+	source = vocalinux-0.16.1.tar.gz::https://github.com/VocaHQ/vocalinux/archive/refs/tags/v0.16.1.tar.gz
+	sha256sums = 0db2f7d1b75d40dde07acee1bba45e45452c671c726bf9e985955b43ead97722
 
 pkgname = vocalinux

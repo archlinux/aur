@@ -3,15 +3,15 @@
 
 pkgname=vocalinux
 # AUR pkgver cannot contain hyphens (v0.14.0-beta -> 0.14.0beta).
-pkgver=0.16.0
-_tag=0.16.0
+pkgver=0.16.1
+_tag=0.16.1
 pkgrel=1
 pkgdesc="Free, offline voice dictation for Linux"
 arch=('any')
 url="https://github.com/VocaHQ/vocalinux"
 license=('AGPL-3.0-only')
 depends=(
-  'python>=3.9'
+  'python>=3.11'
   'python-gobject'
   'gtk3'
   'libayatana-appindicator'
@@ -32,6 +32,8 @@ depends=(
   'python-xlib'
   'hicolor-icon-theme'
 )
+# --no-isolation uses distro python-setuptools (Arch extra is 84+).
+# pyproject.toml build-system.requires must accept that version.
 makedepends=(
   'python-build'
   'python-installer'
@@ -51,7 +53,7 @@ optdepends=(
 conflicts=('vocalinux-git')
 source=("${pkgname}-${_tag}.tar.gz::https://github.com/VocaHQ/vocalinux/archive/refs/tags/v${_tag}.tar.gz")
 # SKIP until the v${_tag} tarball exists. release.yml sets updpkgsums=true on publish.
-sha256sums=('bd07e997ae360d118928eef800f4a39d827c7bf8783b370fb6369d47b53c28e2')
+sha256sums=('0db2f7d1b75d40dde07acee1bba45e45452c671c726bf9e985955b43ead97722')
 
 build() {
   cd "${pkgname}-${_tag}"
