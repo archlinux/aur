@@ -1,5 +1,5 @@
 pkgname=slskr-bin
-pkgver=0.2.36
+pkgver=0.2.38
 pkgrel=3
 pkgdesc='Rust Soulseek daemon with bundled Web UI'
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source=(
 source_x86_64=("slskr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz::https://github.com/snapetech/slskr/releases/download/release-v${pkgver}/slskr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("slskr-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz::https://github.com/snapetech/slskr/releases/download/release-v${pkgver}/slskr-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('3553ccff12888654c51848ae84c2ffec6fd35171a41ecfc4e7985553a59a90c9' '384dc783fd133eadcee6d9575eb41209fd231bd0728b815a5cf4af2ff6c43629' 'efbe26e7b0765a17276981f4694d30d3174cba6799588e7ae6590acdd1fe73d9')
-sha256sums_x86_64=('2915289b109ec05ac4685b40722a0e35ac962657674c43f7e205351593094cd8')
-sha256sums_aarch64=('529822e94b7701a30b8cd93eab1559f249f9d6590c44706add17b0ee45024f05')
+sha256sums_x86_64=('254ef1125c7e15f015ec0ead8b563e8755b8be16b74f9261b8592c5202fb95f0')
+sha256sums_aarch64=('1e1c09c61674afaba716c2cf15cc9afcbf7462f845b16d91e91a91650f366df1')
 
 package() {
   local target
