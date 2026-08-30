@@ -1,6 +1,6 @@
 # Maintainer: Bruno do Nascimento <eusouobn@gmail.com>
 pkgname=noctalia-git-bin
-pkgver=5.0.0.r5326.g67addbd52
+pkgver=5.0.0.r5356.g8d30bf938
 pkgrel=1
 pkgdesc="Noctalia - um tema/ambiente para Wayland (versão binária pré-compilada)"
 arch=('x86_64')
@@ -11,8 +11,8 @@ provides=('noctalia')
 conflicts=('noctalia' 'noctalia-git' 'noctalia-bin')
 options=(!debug)
 
-source=("https://github.com/eusouobn/noctalia-bin-releases/releases/download/v${pkgver}/noctalia-full-${pkgver}-x86_64.tar.gz")
-sha256sums=('d398426c6fb1cf11b04d7a5d3b2950637c9663a687c38b4e1fe713e94574234b')
+source=("https://github.com/eusouobn/noctalia-bin-releases/releases/download/v5.0.0.r5356.g8d30bf938/noctalia-full-${pkgver}-x86_64.tar.gz")
+sha256sums=('4805c3aaa771b2024ed23d1c72e490e0f68bd2d688e4ea006515614a76c55f8c')
 
 package() {
     cd "$srcdir"
