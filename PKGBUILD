@@ -3,7 +3,7 @@
 pkgname=rooyin-fonts
 pkgver=1.1
 pkgrel=1
-pkgdesc="Rooyin Free font - an English-Arabic (Persian) pixel font"
+pkgdesc="Rooyin Free font - an English-Arabic Pixel font"
 arch=('any')
 url="https://github.com/MohamadDarvishi/Rooyin"
 license=('OFL')
