@@ -1,6 +1,6 @@
 pkgbase = opera-developer
 	pkgdesc = Fast, secure, easy-to-use web browser (Developer Stream)
-	pkgver = 136.0.5995.0
+	pkgver = 136.0.6001.0
 	pkgrel = 1
 	url = https://www.opera.com/computer
 	arch = x86_64
@@ -45,13 +45,13 @@ pkgbase = opera-developer
 	options = !debug
 	options = !zipman
 	backup = etc/opera-developer/default
-	source = https://get.opera.com/pub/opera-developer/136.0.5995.0/linux/opera-developer_136.0.5995.0_amd64.deb
+	source = https://get.opera.com/pub/opera-developer/136.0.6001.0/linux/opera-developer_136.0.6001.0_amd64.deb
 	source = opera
 	source = default
-	source = nwjs-ffmpeg-0.114.2-linux-x64.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.114.2/0.114.2-linux-x64.zip
-	sha256sums = bfbe1217bc19346d9eb968b4bd7c02af09d7eb34308481796e6e866e4fcd3915
+	source = nwjs-ffmpeg-0.115.0-linux-x64.zip::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/0.115.0/0.115.0-linux-x64.zip
+	sha256sums = e3df5c36bc3e5242aaaf8a5f079917cb2032efff97210e9e4eaaa2e79bb84580
 	sha256sums = 508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5
 	sha256sums = 99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231
-	sha256sums = a634289eb87e5150482f8eb8169785a279e0ea5b0775baa8cf2d987b760b7d63
+	sha256sums = 589fc1fa3f9905fe336990a2c8e16a9107c1aabdb42031b69eaf812331e5fb4a
 
 pkgname = opera-developer

@@ -1,7 +1,7 @@
 # Maintainer: MojArch
 
 pkgname=opera-developer
-pkgver=136.0.5995.0
+pkgver=136.0.6001.0
 pkgrel=1
 pkgdesc='Fast, secure, easy-to-use web browser (Developer Stream)'
 arch=('x86_64')
@@ -58,7 +58,7 @@ optdepends=(
     'upower'
 )
 
-_nwjs_ffmpeg_version=0.114.2
+_nwjs_ffmpeg_version=0.115.0
 _upstream_deb_pkg='opera-developer'
 _debfile="${_upstream_deb_pkg}_${pkgver}_amd64.deb"
 _deburl="https://get.opera.com/pub/opera-developer/${pkgver}/linux/${_debfile}"
@@ -71,10 +71,10 @@ source=(
     "nwjs-ffmpeg-${_ffmpeg_zip}::https://github.com/nwjs-ffmpeg-prebuilt/nwjs-ffmpeg-prebuilt/releases/download/${_nwjs_ffmpeg_version}/${_ffmpeg_zip}"
 )
 
-sha256sums=('bfbe1217bc19346d9eb968b4bd7c02af09d7eb34308481796e6e866e4fcd3915'
+sha256sums=('e3df5c36bc3e5242aaaf8a5f079917cb2032efff97210e9e4eaaa2e79bb84580'
             '508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '99fc0d2822edd14e234d451995db47148125e4580221a292598959421d131231'
-            'a634289eb87e5150482f8eb8169785a279e0ea5b0775baa8cf2d987b760b7d63')
+            '589fc1fa3f9905fe336990a2c8e16a9107c1aabdb42031b69eaf812331e5fb4a')
 
 prepare() {
     sed -e 's|%pkgname%|opera-developer|g' \
