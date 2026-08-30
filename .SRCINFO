@@ -1,0 +1,17 @@
+pkgbase = highlightforge
+	pkgdesc = Convert source code files into syntax-highlighted HTML
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/user14923929/highlightforge
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pygments
+	source = highlightforge-1.0.0.tar.gz::https://github.com/user14923929/highlightforge/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 0fb713c04aee4a5a60003a6d07e12f6c5d8b21ef4ad6ef17b4c7b448ce7f62fc
+
+pkgname = highlightforge
