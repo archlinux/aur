@@ -1,10 +1,8 @@
-diff --git a/.bazelrc b/.bazelrc
-index 5965f963f..1dbad3b09 100644
 --- a/.bazelrc
 +++ b/.bazelrc
-@@ -125,6 +125,10 @@ build:darwin_arm64 --cpu=darwin_arm64
- # Turn off maximum stdout size
- build --experimental_ui_max_stdouterr_bytes=-1
+@@ -129,6 +129,10 @@
+ # with system Python 3.14+
+ common --repo_env=HERMETIC_PYTHON_VERSION=3.12
  
 +# Force Bazel hermetic Python to use 3.12 to avoid incompatibility
 +# with system Python 3.14+
@@ -12,16 +10,4 @@ index 5965f963f..1dbad3b09 100644
 +
  # This bazelrc file is meant to be written by a setup script.
  try-import %workspace%/.configure.bazelrc
- 
-diff --git a/setup.py b/setup.py
-index 2c5a77c4d..4fdc9d5be 100644
---- a/setup.py
-+++ b/setup.py
-@@ -244,7 +244,6 @@ class BuildExtension(build_ext.build_ext):
-         '--compilation_mode=opt',
-         '--copt=-DNDEBUG',
-         '--keep_going',
--        '--define=ENABLE_ODML_CONVERTER=1',
-         str(ext.bazel_target),
-     ] + GPU_OPTIONS
  

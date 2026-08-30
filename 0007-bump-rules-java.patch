@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Butui Hu <hot123tea123@gmail.com>
+Date: Sun, 30 Aug 2026 11:22:50 +0800
+Subject: [PATCH] bump rules_java to 7.12.5 to fix local_jdk auto-config
+
+rules_java 7.10.0 emits a local_jdk/BUILD.bazel referencing the
+non-existent @rules_java//tools/jdk package when no local JDK is
+detected (a 7.10.0 regression). 7.11.0+ points at
+@rules_java//toolchains:bootstrap_runtime_toolchain_type (the correct
+location). 7.12.5 is the last 7.x with the label fully cleaned up.
+
+---
+ MODULE.bazel | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -13,10 +13,10 @@
+     version = "0.2.9",
+ )
+ 
+-bazel_dep(name = "rules_java", version = "7.10.0")
++bazel_dep(name = "rules_java", version = "7.12.5")
+ single_version_override(
+     module_name = "rules_java",
+-    version = "7.10.0",
++    version = "7.12.5",
+ )
+ 
+ bazel_dep(name = "rules_kotlin", version = "1.9.6")
+-- 
+2.43.2
