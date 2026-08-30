@@ -1,6 +1,6 @@
 pkgbase = apparmor.d
 	pkgdesc = Full set of apparmor profiles
-	pkgver = 0.4911.0
+	pkgver = 0.4912.0
 	pkgrel = 1
 	url = https://github.com/roddhjav/apparmor.d
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = apparmor.d
 	makedepends = just
 	depends = apparmor>=4.1.3
 	depends = apparmor<5.0.0
-	source = https://github.com/roddhjav/apparmor.d/releases/download/v0.4911.0/apparmor.d-0.4911.0.tar.gz
-	source = https://github.com/roddhjav/apparmor.d/releases/download/v0.4911.0/apparmor.d-0.4911.0.tar.gz.asc
+	source = https://github.com/roddhjav/apparmor.d/releases/download/v0.4912.0/apparmor.d-0.4912.0.tar.gz
+	source = https://github.com/roddhjav/apparmor.d/releases/download/v0.4912.0/apparmor.d-0.4912.0.tar.gz.asc
 	validpgpkeys = 06A26D531D56C42D66805049C5469996F0DF68EC
-	sha512sums = 200531854d41b7d2929067834f16db76a077bb787ead48357e957046261813cb5ebcde198c916e33609cd95e0059c5331052030ab9d2f3ea9cd66b06d23ed5e6
+	sha512sums = f142dea0edb760f3c6155ffdc096233a23da1d176f2b028dfbe17c81652a9be5396da639b55db33c3e67b3901147d76026a67ed491fcc1c8e6f42b3397cd65f9
 	sha512sums = SKIP
 
 pkgname = apparmor.d
