@@ -1,7 +1,7 @@
 # Maintainer: Dan Griffiths <me at evertiro dot com>
 
 pkgname=astra-foundry
-pkgver=1.2.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Unified package manager for Flatpak, Pacman, AUR, and AppImage.'
 arch=('x86_64')
@@ -24,25 +24,25 @@ optdepends=(
 )
 makedepends=('cmake' 'qt6-tools')
 source=(
-	"${pkgname}-${pkgver}.tar.gz::https://github.com/AstraSuite/Foundry/archive/refs/tags/v${pkgver}.zip"
+	"https://github.com/AstraSuite/Foundry/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 )
 conflicts=(
 	'astra-foundry-bin'
 	'astra-foundry-git'
 )
 sha256sums=(
-	'b9451035aa1479ae861eb1ff1da31bdaf1b6b772f5420b19c1643d64f1a813d0'
+	'4ddf4ccc5842dacec286993739b4590b378fdfeec5c994e5b47e328698f4b26f'
 )
 build()
 {
-	cd "${srcdir}/Foundry-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+	cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DASTRA_FOUNDRY_VERSION=${pkgver}
 	cmake --build build
 }
 package()
 {
-	cd "${srcdir}/Foundry-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
