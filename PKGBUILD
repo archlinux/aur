@@ -1,7 +1,7 @@
 # Maintainer: username227 <gfrank227 [at] gmail [dot] com>
 
 pkgname=tabletop-club-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Tabletop Club is an open-source multiplayer game that allows you to play your favourite tabletop games in a physics-driven 3D environment with the use of easy-to-make asset packs!"
 arch=(x86_64)
@@ -12,7 +12,7 @@ source=("https://github.com/drwhut/tabletop-club/releases/download/v$pkgver/Tabl
 	"tabletop-club.desktop"
 	"tabletop-club.png::https://raw.githubusercontent.com/drwhut/tabletop-club/v$pkgver/game/tabletop_club_icon.png"
 	"tabletop-club")
-sha256sums=('aac2ed8b2f9471f472ce41e7efbefd12e4036d846124c5edca6d0edd33220d4c'
+sha256sums=('f5be97020a11d2271afa3be0d04be7cb2a677435db325fbc979aca4ab444ddb5'
             'ca407351743ca350b2656c8e956f25f7a0acf6c3e3a8add1868e0804c95dc469'
             '03e9804048af5db696fb49e7bc4c62c8011509dd75132ff5232a5d939838894f'
             '55d674d290af6a3df9d0ba2afb25b6b1e6155ac20299bc11ba23901b156a6f9f')
