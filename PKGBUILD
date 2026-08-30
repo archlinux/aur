@@ -1,11 +1,11 @@
-# Maintainer: nlsdt <githubaccount2333@proton.me>
+# Maintainer: nlsdt <nlsdt@archlinuxcn.org>
 # Contributor: George Hu <integral@archlinux.org>
 
 pkgname=piliplus-git
 _srcname=PiliPlus
 _pkgname=piliplus
-pkgver=2.0.4.r7.g2232bc0
-pkgrel=3
+pkgver=2.1.2.3.r1.g828de30
+pkgrel=1
 pkgdesc="A third-party Bilibili client developed in Flutter"
 url="https://github.com/bggRGjQaUbCoE/${_srcname}"
 license=('GPL-3.0-or-later')
@@ -14,6 +14,7 @@ depends=('gtk3' 'mpv' 'libayatana-appindicator' 'webkit2gtk-4.1')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'fvm' 'patchelf')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+options=('!debug')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -35,6 +36,7 @@ build() {
 	_sdk="$(readlink -f .fvm/flutter_sdk)"
 	_scripts="${PWD}/lib/scripts"
 
+	# 修补 flutter SDK
 	local _patches=(modal_barrier text_selection mouse_cursor image_anim
 	                layout_builder navigation_drawer popup_menu fab
 	                null_safety_for_selectable_region selectable_region
@@ -48,9 +50,27 @@ build() {
 		git -C "${_sdk}" apply "${_scripts}/${_patch}.patch"
 	done
 
+	printf "正在应用 material_ui 包补丁...\n"
+	local _pubcache _material _mp
+	_pubcache="${PUB_CACHE:-${HOME}/.pub-cache}/hosted/pub.dev"
+	rm -rf "${_pubcache}"/material_ui-*
+	fvm flutter pub get
+	_material="$(ls -d "${_pubcache}"/material_ui-* 2>/dev/null | sort -V | tail -1)"
+	if [[ -z "${_material}" ]]; then
+		printf "警告: 未找到 material_ui, 跳过其补丁。\n"
+	else
+		for _mp in "${_scripts}"/material/*.patch; do
+			case "$(basename "${_mp}")" in
+				bottom_sheet_android.patch|bottom_sheet_ios_flutter_material.patch) continue ;;
+			esac
+			sed -i 's/\r$//' "${_mp}"
+			git -C "${_material}" apply "${_mp}"
+		done
+	fi
+
 	printf "补丁应用完成, 开始构建...\n"
 	if fvm flutter build linux --no-pub --release \
-		--dart-define pili.name="${pkgver}" \
+		--dart-define pili.name="$(grep -m1 '^version:' pubspec.yaml | sed -E 's/^version:[[:space:]]*([0-9.]+).*/\1/')" \
 		--dart-define pili.code="$(git rev-list --count HEAD)" \
 		--dart-define pili.hash="$(git rev-parse HEAD)" \
 		--dart-define pili.time="$(date +%s)"; then
@@ -67,20 +87,23 @@ build() {
 package() {
 	cd "${_srcname}/"
 
-	pushd build/linux/x64/release
-	install -Dm755 "bundle/${_pkgname}" -t "${pkgdir}/usr/lib/${_pkgname}/"
-	cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr/lib/${_pkgname}" .
-	cmake -P cmake_install.cmake
-	popd
+	# 建立目录
+	install -d "${pkgdir}/opt/${_pkgname}"
+	install -d "${pkgdir}/usr/bin"
+	# 安装文件
+	install -Dm755 "build/linux/x64/release/bundle/${_pkgname}" "${pkgdir}/opt/${_pkgname}/${_pkgname}"
+	cp -a "build/linux/x64/release/bundle/lib" "${pkgdir}/opt/${_pkgname}/"
+	cp -a "build/linux/x64/release/bundle/data" "${pkgdir}/opt/${_pkgname}/"
 
-	# Reset RPATH
-	patchelf --set-rpath '$ORIGIN' ${pkgdir}/usr/lib/${_pkgname}/lib/*.so
+	# 设置库文件的 RPATH 为 $ORIGIN
+	find "${pkgdir}/opt/${_pkgname}/lib" -type f -name "*.so*" -exec \
+	patchelf --set-rpath '$ORIGIN' {} \;
 
-	# Symlink
-	install -dm755 "${pkgdir}/usr/bin"
-	ln -s "/usr/lib/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-
+	# 安装图标
 	cd assets
 	install -Dm644 images/logo/logo.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
+	# 安装 .desktop
 	install -Dm644 "linux/com.example.${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+	# 链接主程序
+	ln -s "/opt/${_pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
