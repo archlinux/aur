@@ -2,7 +2,7 @@
 
 _pkgname=plannotator-tui
 pkgname=plannotator-tui-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Annotate Markdown in the terminal: select, comment, looks-good, delete; send the review to your agent"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ provides=('plannotator-tui')
 conflicts=('plannotator-tui' 'plannotator-tui-git')
 source_x86_64=("${_pkgname}-x86_64-v${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-x86_64-unknown-linux-gnu")
 source_aarch64=("${_pkgname}-aarch64-v${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu")
-sha256sums_x86_64=('2e225d08f34165a44301857dc5a00fbfa7c2f679a0d783e1a247ce19aa7b113e')
-sha256sums_aarch64=('974947d49e164a07c003e118c82e194d88d0c4b413a3d226e335a688d6fbf14f')
+sha256sums_x86_64=('3f7dfb226440e58d2b30e921cabcf82eaec50cd25cf4996ca0750f674b1e82a1')
+sha256sums_aarch64=('fb42d9a26dec4ecc3b8ca5f4bd53e7795bd464a6169592c9773ace6a12917bbe')
 
 latestver() {
   curl -s "https://api.github.com/repos/plannotator/plannotator-tui/releases/latest" | \
