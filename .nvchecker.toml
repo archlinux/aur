@@ -1,0 +1,5 @@
+[junixsocket]
+source = "github"
+github = "kohlschutter/junixsocket"
+use_max_tag = true
+prefix = "junixsocket-"

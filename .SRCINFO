@@ -1,0 +1,18 @@
+pkgbase = junixsocket
+	pkgdesc = Unix Domain Sockets for all Java versions 7 and newer (AF_UNIX), AF_TIPC, AF_VSOCK, and more
+	pkgver = 2.11.1
+	pkgrel = 1
+	url = https://github.com/kohlschutter/junixsocket
+	arch = any
+	license = Apache
+	makedepends = maven
+	makedepends = clang
+	makedepends = gcc
+	makedepends = java-environment=25
+	makedepends = strip-nondeterminism
+	depends = java-runtime>=8
+	source = https://github.com/kohlschutter/junixsocket/archive/refs/tags/junixsocket-2.11.1.tar.gz
+	validpgpkeys = F2F098DD0383FE75CD5C6D3A0321BEE8AA36B734
+	sha256sums = dabdcaa89395e8aff3b21f1821fce26ec58c80f3bd8e989510cc7711bffd19c3
+
+pkgname = junixsocket
