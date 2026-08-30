@@ -1,7 +1,7 @@
 # Maintainer: igorvisi <igorvisi@icloud.com>
 
 pkgname=todoist-cli
-pkgver=3.3.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="Command-line interface for Todoist"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
 provides=('todoist-cli')
 conflicts=('todoist-cli-git')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@doist/todoist-cli/-/todoist-cli-$pkgver.tgz")
-sha256sums=('3138b6beda0f3cc4a724a6ff4d41391535a4931c430cd5f9929adb2fdb685d43')
+sha256sums=('ac2a6849a4072910f337fe63cfc7b131220c221884653e256422eda15b6f83a9')
 noextract=("$pkgname-$pkgver.tgz")
 options=('!strip')
 

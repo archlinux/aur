@@ -1,6 +1,6 @@
 pkgbase = todoist-cli
 	pkgdesc = Command-line interface for Todoist
-	pkgver = 3.3.1
+	pkgver = 5.1.2
 	pkgrel = 1
 	url = https://github.com/Doist/todoist-cli
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = todoist-cli
 	optdepends = libsecret: OS credential storage via Secret Service (Linux)
 	provides = todoist-cli
 	conflicts = todoist-cli-git
-	noextract = todoist-cli-3.3.1.tgz
+	noextract = todoist-cli-5.1.2.tgz
 	options = !strip
-	source = todoist-cli-3.3.1.tgz::https://registry.npmjs.org/@doist/todoist-cli/-/todoist-cli-3.3.1.tgz
-	sha256sums = 3138b6beda0f3cc4a724a6ff4d41391535a4931c430cd5f9929adb2fdb685d43
+	source = todoist-cli-5.1.2.tgz::https://registry.npmjs.org/@doist/todoist-cli/-/todoist-cli-5.1.2.tgz
+	sha256sums = ac2a6849a4072910f337fe63cfc7b131220c221884653e256422eda15b6f83a9
 
 pkgname = todoist-cli
