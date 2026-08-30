@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=wacli
 pkgver=0.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="WhatsApp CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/steipete/wacli"
 license=('unknown')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/steipete/wacli.git#tag=v$pkgver")
+_commit='97e14efdf91a7c9de1b68845321eb6355943b5f5'
+source=("git+https://github.com/steipete/wacli.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
