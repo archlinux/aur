@@ -13,7 +13,6 @@ pkgbase = uftrace
 	depends = xz
 	depends = python
 	depends = ncurses
-	depends = luajit
 	depends = capstone
 	depends = libelf
 	depends = libunwind

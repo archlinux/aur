@@ -23,7 +23,6 @@ depends=(
   'xz'
   'python'
   'ncurses'
-  'luajit'
   'capstone'
   'libelf'
   'libunwind'
