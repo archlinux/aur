@@ -1,8 +1,9 @@
 pkgbase = vopono-git
 	pkgdesc = Run applications through VPN connections in network namespaces
-	pkgver = 0.10.14.r0.g4d22055
+	pkgver = 1.0.1.r0.g1d4d774
 	pkgrel = 1
 	url = https://github.com/jamesmcm/vopono
+	install = vopono.install
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -13,8 +14,11 @@ pkgbase = vopono-git
 	optdepends = openfortivpn: for FortiClient VPN connections
 	optdepends = libnatpmp: for ProtonVPN port forwarding support
 	optdepends = trojan: for Trojan Wireguard forwarding support
+	optdepends = redsocks: for SSH proxy forwarding support
+	optdepends = openssh: for SSH proxy forwarding support
 	provides = vopono
 	conflicts = vopono
+	options = !lto
 	source = git+https://github.com/jamesmcm/vopono
 	sha256sums = SKIP
 
