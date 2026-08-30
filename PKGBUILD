@@ -2,7 +2,7 @@
 
 pkgauthor="kaifcodec"
 pkgname="user-scanner"
-pkgver=1.5.1
+pkgver=1.5.1.1
 pkgrel=1
 pkgdesc="Check username availability across multiple popular platforms"
 
@@ -25,7 +25,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('25a25b7deb2777cf3b4f4a20e6692f85c7e8bdc5e88a64777e4b9748211bfe55')
+sha256sums=('7fbd6be312a74b4fdd5462e5021c92b250c218833168fd7357e7d695fa75cc08')
 
 
 prepare() {
