@@ -5,14 +5,12 @@ pkgbase = pcln-bin
 	url = https://github.com/PCL-N-Edition/PCL-N
 	arch = x86_64
 	license = Apache-2.0
-	depends = dotnet-runtime-10.0
 	depends = hicolor-icon-theme
+	depends = glibc
 	provides = pcl-n
 	conflicts = pcl-n
 	options = !strip
-	source = pcln-bin-1.4.13-release.tar.gz::https://github.com/PCL-N-Edition/PCL-N/releases/download/v1.4.13-release/PCL_N_Release_linux-x64_NoRuntime_NoPlugin.tar.gz
-	source = icon.png::https://raw.githubusercontent.com/PCL-N-Edition/PCL-N/dev/PCL.Desktop/Assets/icon.png
-	sha256sums = SKIP
-	sha256sums = SKIP
+	source = https://github.com/PCL-N-Edition/PCL-N/releases/download/v1.4.13/PCL_N_Release_linux-x64_NoRuntime_Installer.deb
+	sha256sums = 35955df7da39acee259cd5ed1688f208ded9607cefd3d47df734913deff81c6d
 
 pkgname = pcln-bin
