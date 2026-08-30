@@ -2,7 +2,7 @@
 
 _pkgname=lightning-matrix
 pkgname=${_pkgname}-appimage
-pkgver=0.8.0
+pkgver=0.8.3
 pkgrel=1
 pkgdesc='Native Qt 6 Matrix desktop client using the official Rust Matrix SDK (prebuilt AppImage)'
 arch=('x86_64')
@@ -23,8 +23,8 @@ source_x86_64=(
 )
 noextract=("${_appimage}")
 
-sha256sums_x86_64=('83ead1ad4262130ebf15359064bf6de2f19cb20215981d7329d79cbcd556147c'
-                   '277833783e55bedbd31bb3b81cd4bca5ba845387e8dcb53165e38da9322febf8')
+sha256sums_x86_64=('320706878f53e1f5e11ee103e667eaa2d8e8e58c874171f74fc34d9e911bfb80'
+                   'b9942d682011a1954c4cb11807cf7bec467f582621a778f5b58c2c177882a443')
 
 prepare() {
   local expected
