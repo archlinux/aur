@@ -62,7 +62,8 @@ build() {
 
 check() {
     cd "$_pkgname"
-    LC_ALL=C.UTF-8 PYTHONPATH=src pytest
+    # Qt consults LANGUAGE when resolving QLocale, even when LC_ALL is set.
+    LC_ALL=C.UTF-8 LANG=C.UTF-8 LANGUAGE=en PYTHONPATH=src pytest
 }
 
 package() {
