@@ -1,0 +1,19 @@
+pkgbase = nag-bin
+	pkgdesc = A tiny transparent command wrapper that tells you when a command finishes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/programmersd21/nag
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = nag
+	conflicts = nag
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/programmersd21/nag/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/programmersd21/nag/v0.1.0/LICENSE
+	sha256sums = ac77d88c27220da6e033ff6f31ffad2d05b4cfd150f2b09c0fef2a42611e6a99
+	sha256sums = 742f7c1b04795ac4ea8950b74b59ecf42be52a19ae13054cdd1e4b027a3258cf
+	source_x86_64 = nag-x86_64-0.1.0.tgz::https://github.com/programmersd21/nag/releases/download/v0.1.0/nag-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 645ca5218d9d589413c6816c301e6d60d850ad314e2a5f692ccdbe512ad81a93
+
+pkgname = nag-bin

@@ -1,0 +1,5 @@
+[nag-bin]
+source = "github"
+github = "programmersd21/nag"
+use_latest_release = true
+prefix = "v"
