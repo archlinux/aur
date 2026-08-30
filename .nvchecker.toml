@@ -1,0 +1,5 @@
+[tailcat-bin]
+source = "github"
+github = "tailscale/tailcat"
+prefix = "v"
+use_latest_release = true
