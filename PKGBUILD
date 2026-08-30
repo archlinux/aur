@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=nog
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A tier-aware package manager for Arch Linux — pacman with a safety net, written in Rust"
 arch=('x86_64')
@@ -21,10 +21,10 @@ optdepends=(
 backup=('etc/nog/nog.conf' 'etc/nog/tier-pins.toml')
 # SKIP is the submission-time placeholder. Before pushing to AUR, run
 # `updpkgsums` in the AUR clone to replace SKIP with the real sha256 of the
-# v1.0.0 GitHub source tarball.
+# signed GitHub release tarball for the tag being packaged.
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('61af212b5ab5ced66d63f52c12e52968f9d07c9aaf3320f8b99e6ed7bf193fc7'
+sha256sums=('5849f3e00281f65e0813b046b8fb1e7e501f4105e4b2bb5cd54f919af50f6d9b'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   gpg --keyserver keys.openpgp.org --recv-keys 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
