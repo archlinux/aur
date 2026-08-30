@@ -1,6 +1,6 @@
 pkgbase = lilbee-rocm
 	pkgdesc = The whole local AI stack in one executable: run and manage local AI models, and search your files, code, and crawled web pages, with cited answers (ROCm build)
-	pkgver = 0.6.90b431
+	pkgver = 0.6.90b432
 	pkgrel = 1
 	url = https://github.com/tobocop2/lilbee
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = lilbee-rocm
 	conflicts = lilbee
 	options = !strip
 	options = !debug
-	source = lilbee.service::https://github.com/tobocop2/lilbee/raw/v0.6.90b431/packaging/systemd/lilbee.service
+	source = lilbee.service::https://github.com/tobocop2/lilbee/raw/v0.6.90b432/packaging/systemd/lilbee.service
 	sha256sums = 8987137080f5b5353ca4a5bc82aa56c92c450c158e8558fa48fa8bff2cb1c69d
-	source_x86_64 = lilbee-0.6.90b431-rocm::https://github.com/tobocop2/lilbee/releases/download/v0.6.90b431/lilbee-linux-x86_64-rocm
-	sha256sums_x86_64 = f43e408b512dc6c9dcd1aa494e9331f824b5772b70a16fbb7e6230ef7ba01025
+	source_x86_64 = lilbee-0.6.90b432-rocm::https://github.com/tobocop2/lilbee/releases/download/v0.6.90b432/lilbee-linux-x86_64-rocm
+	sha256sums_x86_64 = b1a1a275deb620a3e59348e7742fca993b75f7e566e5940dd076ab758ca37bfc
 
 pkgname = lilbee-rocm
