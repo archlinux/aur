@@ -1,7 +1,7 @@
 # Maintainer: Charlotte <cemetery394@gmail.com>
 
 pkgname=citron-neo-nightly-bin
-pkgver=2026.08.29
+pkgver=2026.08.30
 pkgrel=1
 pkgdesc="Nightly build of Citron Neo Nintendo Switch emulator (AppImage)"
 arch=('x86_64')
