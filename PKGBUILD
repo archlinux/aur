@@ -21,7 +21,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/xtrayhide"
-  export GOPROXY=https://goproxy.cn,direct
   go build -trimpath -o xtrayhide ./cmd/xtrayhide
 }
 

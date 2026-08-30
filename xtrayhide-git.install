@@ -1,13 +1,14 @@
 post_install() {
   cat << 'EOF'
 
-==> xtrayhide 安装完成
-==> 启用 systemd‑user 服务(可选):
+==> xtrayhide has been installed.
+==> To enable and start the systemd‑user service (optional):
 ==>   systemctl --user enable --now xtrayhide
 ==>
-==> ⚠️ 二选一！不要同时开启 systemd 服务 和 niri spawn 启动
-==> 托盘代理需要在 Wine/Proton 程序之前启动。
-==> 如果你打算在 niri 自启动，请添加到配置:
+==> ⚠️ Choose only one startup method!
+==> Do NOT enable both the systemd‑user service and spawn it inside your niri config.
+==> The tray proxy must be started BEFORE launching any Wine / Proton applications.
+==> If you prefer starting it from niri, add this line to your config:
 ==>   spawn "xtrayhide"
 EOF
 }
