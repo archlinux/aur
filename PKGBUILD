@@ -2,7 +2,7 @@
 
 pkgname=python-cmake
 _name=${pkgname#python-}
-pkgver=4.4.0
+pkgver=4.4.3
 pkgrel=1
 epoch=
 pkgdesc="CMake is an open-source, cross-platform family of tools designed to build, test and package software"
@@ -35,7 +35,7 @@ optdepends=()
 options=('!strip' '!debug')
 source=("${_name}::git+${url}.git#tag=$pkgver")
 noextract=()
-sha256sums=('8614c9cc75674b756667354d13e3e07bf74abc3759b0261c0e4572fa0ca58db8')
+sha256sums=('7f1c41a83a9aa1ec1361d673b6f0231f81e73b8181a46b259d20715089bc2f5f')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
