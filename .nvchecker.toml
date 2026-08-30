@@ -1,0 +1,5 @@
+[swrm-bin]
+source = "github"
+github = "ManasvinYadav/swrm"
+use_latest_release = true
+prefix = "v"

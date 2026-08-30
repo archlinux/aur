@@ -1,0 +1,23 @@
+pkgbase = swrm-bin
+	pkgdesc = Local-first BitTorrent TUI with a VPN kill-switch and in-app streaming
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ManasvinYadav/swrm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = swrm
+	conflicts = swrm
+	options = !strip
+	source = CONFIG_EXAMPLE-0.1.1.yaml::https://raw.githubusercontent.com/ManasvinYadav/swrm/v0.1.1/config.example.yaml
+	source = README-0.1.1.md::https://raw.githubusercontent.com/ManasvinYadav/swrm/v0.1.1/README.md
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/ManasvinYadav/swrm/v0.1.1/LICENSE
+	sha256sums = 2bef7a5b3dcbbe32c8cbd2563b5e6214271f04acedcc44369fb24528113b4f28
+	sha256sums = ce2bbf0cdd7f018fab4449569af7c675350f60779ba7ce689b1f2c4115c7710c
+	sha256sums = 97773d070c525e2cf9df0e500eb0c8f2e4b950ea0122f5eff4b3602f090fde81
+	source_x86_64 = swrm-x86_64-0.1.1::https://github.com/ManasvinYadav/swrm/releases/download/v0.1.1/swrm-linux-amd64
+	sha256sums_x86_64 = d1f8e150a45e4158f60dc9122f334605014326485b3f2f01243e6f1e7bb10034
+	source_aarch64 = swrm-aarch64-0.1.1::https://github.com/ManasvinYadav/swrm/releases/download/v0.1.1/swrm-linux-arm64
+	sha256sums_aarch64 = 72cd278cd9193ad18a7d45c7ab17df46310ab9bf19fd26a7c0b5dd93d66caead
+
+pkgname = swrm-bin
