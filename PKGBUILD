@@ -2,7 +2,7 @@
 
 pkgname=statsd-c-client-git
 pkgver=r36.ef6f82f
-pkgrel=1
+pkgrel=5
 pkgdesc="A trivial statsd client in C"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/romanbsd/statsd-c-client"
@@ -42,4 +42,6 @@ package() {
         install -Dm 0755 $lib "$pkgdir"/usr/lib/$lib
         ln -sf /usr/lib/$lib "$pkgdir/usr/lib/libstatsdclient.so"
     done
+
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

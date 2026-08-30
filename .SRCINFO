@@ -1,7 +1,7 @@
 pkgbase = statsd-c-client-git
 	pkgdesc = A trivial statsd client in C
 	pkgver = r36.ef6f82f
-	pkgrel = 1
+	pkgrel = 5
 	url = https://github.com/romanbsd/statsd-c-client
 	arch = i686
 	arch = x86_64
