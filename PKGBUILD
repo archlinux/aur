@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=cls3
 pkgver=0.32.4
-pkgrel=4
+pkgrel=5
 pkgdesc="The CLI tool \"cls3\" is to CLear S3 Buckets. It empties (so deletes all objects and versions/delete-markers in) S3 Buckets or deletes the buckets themselves."
 arch=('x86_64' 'aarch64')
 url="https://github.com/go-to-k/cls3"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
