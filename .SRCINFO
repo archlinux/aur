@@ -1,6 +1,6 @@
 pkgbase = tabby
 	pkgdesc = A terminal for a more modern age
-	pkgver = 1.0.233
+	pkgver = 1.0.235
 	pkgrel = 1
 	url = https://tabby.sh
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tabby
 	makedepends = python
 	makedepends = yarn
 	depends = bash
-	depends = electron38
+	depends = electron42
 	depends = fontconfig
 	depends = glib2
 	depends = glibc
@@ -22,10 +22,10 @@ pkgbase = tabby
 	depends = nodejs
 	conflicts = terminus-terminal
 	replaces = terminus-terminal
-	source = git+https://github.com/Eugeny/tabby.git#tag=v1.0.233
+	source = git+https://github.com/Eugeny/tabby.git#tag=v1.0.235
 	source = tabby.sh
 	source = build.patch
-	sha256sums = 6f09f00f1de5a1e751a451562b9fe9f3a66f1fafdded9e286056fabe4a3c12e0
+	sha256sums = 45b43cd59677c4c9d5d036c7a241769124b80d4016f2f9cb69788cad2f4a7233
 	sha256sums = e10c3846ec9ffd5d711397cece65d53fb2b81af1d08706442f04328c7bcbbb5a
 	sha256sums = f5581859b734a2f9199a331540fc9beac0a102705a519f6070858ddd7db8b401
 

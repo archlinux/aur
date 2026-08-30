@@ -2,7 +2,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=tabby
-pkgver=1.0.233
+pkgver=1.0.235
 pkgrel=1
 pkgdesc="A terminal for a more modern age"
 arch=('x86_64')
@@ -10,13 +10,13 @@ url="https://tabby.sh"
 license=('MIT')
 conflicts=('terminus-terminal')
 replaces=('terminus-terminal')
-_electron=electron38
+_electron=electron42
 depends=('bash' "${_electron}" 'fontconfig' 'glib2' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libsecret' 'libstdc++' 'nodejs')
 makedepends=('gendesk' 'git' 'npm' 'python' 'yarn')
 source=("git+https://github.com/Eugeny/tabby.git#tag=v${pkgver}"
         "${pkgname}.sh"
         'build.patch')
-sha256sums=('6f09f00f1de5a1e751a451562b9fe9f3a66f1fafdded9e286056fabe4a3c12e0'
+sha256sums=('45b43cd59677c4c9d5d036c7a241769124b80d4016f2f9cb69788cad2f4a7233'
             'e10c3846ec9ffd5d711397cece65d53fb2b81af1d08706442f04328c7bcbbb5a'
             'f5581859b734a2f9199a331540fc9beac0a102705a519f6070858ddd7db8b401')
 
