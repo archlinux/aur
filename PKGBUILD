@@ -70,7 +70,7 @@ package() {
   # Modify Launcher Scripts
   case "$CARCH" in
     x86_64) TARGET=x86_64 ;;
-    aarch64) TARGET=aarch64 ;;
+    aarch64) TARGET=arm64 ;;
     i686) TARGET=x86 ;;
     *)
       error "Unsupported architecture: $CARCH"
