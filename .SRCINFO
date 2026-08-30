@@ -1,0 +1,14 @@
+pkgbase = zswapstat
+	pkgdesc = A simple Bash script to monitor zswap and memory status
+	pkgver = v1.0
+	pkgrel = 1
+	url = https://github.com/zen8841/zswapstat
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = sudo
+	depends = bc
+	provides = zswapstat
+	source = zswapstat-v1.0.tar.gz::https://github.com/zen8841/zswapstat/archive/v1.0.tar.gz
+	sha256sums = 0f5a7783588327b0f45fe33f7c78e95088c1a098ef62e85535ae79c99fd543ad
+
+pkgname = zswapstat
