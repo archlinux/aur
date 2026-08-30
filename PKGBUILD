@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=gscript
 pkgver=0.1.1
-pkgrel=4
+pkgrel=5
 pkgdesc=" framework to rapidly implement custom droppers for all three major operating systems"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gen0cide/gscript"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie -modcacherw \
     -trimpath \
     -ldflags='-s -w' \
     -o $pkgname \
