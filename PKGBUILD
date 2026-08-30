@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A live TUI dashboard for a fleet of git repos"
 
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -29,10 +29,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums=('a79d28664fe242487bc08c52b295cc7e3f237dd12089ce23f115b2c0ca3a7c6c'
+sha256sums=('a92e36966124fbf0238833f9df18ec8d11e4be0ad670d869c52083717ab161cd'
             'c13c90e64ceabc5dfe6450da43bb2479cd026feed99338bff3391677c65e1c6a')
-sha256sums_x86_64=('122097d8318b069028493eb075a7d48f712a97ad724912cbc8cb6425f30b1663')
-sha256sums_aarch64=('d8bbae56f8fc82045486d7c729b6427e42e77ba32bd87bc0b7b9a00d893574a8')
+sha256sums_x86_64=('6bbdb6c8f0b8ece780db67c6133fa08ff676a14ac0906a280f90a61e3d652b75')
+sha256sums_aarch64=('b532d2a4e4cead97cbed99eb70c2f425cf8928c2af7516390394e7017cbc37b0')
 
 
 package() {
