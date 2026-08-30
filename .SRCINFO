@@ -1,6 +1,6 @@
 pkgbase = soapysddc-git
-	pkgver = r271.7e2c0e2
-	pkgrel = 1
+	pkgver = r274.331b35c
+	pkgrel = 2
 	url = https://github.com/ik1xpv/ExtIO_sddc
 	arch = i686
 	arch = x86_64

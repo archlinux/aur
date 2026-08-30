@@ -2,8 +2,8 @@
 
 pkgbase=soapysddc-git
 pkgname=(soapysddc-git libsddc-git)
-pkgver=r271.7e2c0e2
-pkgrel=1
+pkgver=r274.331b35c
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/ik1xpv/ExtIO_sddc"
 license=('MIT')
@@ -31,6 +31,8 @@ package_soapysddc-git() {
     provides=(soapysddc)
     conflicts=(soapysddc)
 	make -C build DESTDIR="$pkgdir/" install
+
+	install -Dm644 "$srcdir"/ExtIO_sddc/LICENSE.txt "$pkgdir"/usr/share/licenses/soapysddc-git/LICENSE
 }
 
 package_libsddc-git() {
@@ -43,4 +45,6 @@ package_libsddc-git() {
     for file in libsddc.so*; do
         cp -Pv $file "$pkgdir/usr/lib/$file"
     done
+
+	install -Dm644 "$srcdir"/ExtIO_sddc/LICENSE.txt "$pkgdir"/usr/share/licenses/libsddc-git/LICENSE
 }
