@@ -1,21 +1,26 @@
-# Maintainer: Felitendo
-# This PKGBUILD is updated automatically:
-# https://github.com/Felitendo/PKGBUILDS
-
+# Maintainer: Bruno do Nascimento <eusouobn@gmail.com>
 pkgname=protonplus-bin
-pkgver=0.5.22
+pkgver=0.5.22  # Será atualizado
 pkgrel=1
-pkgdesc="Modern compatibility tools manager (prebuilt)"
+pkgdesc="A modern compatibility tools manager for Linux (prebuilt)"
 arch=('x86_64')
 url="https://github.com/Vysp3r/ProtonPlus"
 license=('GPL-3.0-or-later')
-depends=('gtk4' 'json-glib' 'libadwaita' 'libarchive' 'libgee' 'libsoup3'
-         'hicolor-icon-theme')
+depends=(
+  'gtk4'
+  'libadwaita'
+  'glib2'
+  'glibc'
+  'gcc-libs'
+)
 provides=('protonplus')
-conflicts=('protonplus')
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Felitendo/PKGBUILDS/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.zst")
-sha256sums=('b5e0d6966c62f624017f0672688c3d57b2fda637ecbe47cc50dd043a92c52770')
+conflicts=('protonplus' 'protonplus-git')
+options=(!debug)
+
+source=("https://github.com/eusouobn/protonplus-bin-releases/releases/download/v${pkgver}/protonplus-full-${pkgver}-x86_64.tar.gz")
+sha256sums=('SKIP')
 
 package() {
-  cp -a "$srcdir/usr" "$pkgdir/"
+    cd "$srcdir"
+    cp -a usr "$pkgdir/"
 }
