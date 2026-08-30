@@ -1,0 +1,17 @@
+pkgbase = yamis-icon-theme-git
+	pkgdesc = Yet Another Monochrome Icon Set for KDE Plasma
+	pkgver = r56.284b316
+	pkgrel = 1
+	url = https://bitbucket.org/dirn-typo/yet-another-monochrome-icon-set
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = hicolor-icon-theme
+	optdepends = breeze-icons: fallback icons
+	optdepends = papirus-icon-theme: fallback icons
+	provides = yamis-icon-theme
+	conflicts = yamis-icon-theme
+	source = yet-another-monochrome-icon-set::git+https://bitbucket.org/dirn-typo/yet-another-monochrome-icon-set.git#branch=main
+	sha256sums = SKIP
+
+pkgname = yamis-icon-theme-git
