@@ -1,0 +1,20 @@
+pkgbase = python-pyuring
+	pkgdesc = Python bindings and high-level abstractions for Linux io_uring-based asynchronous I/O
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/kangtegong/python-pyuring
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = glibc
+	depends = liburing
+	provides = pyuring
+	conflicts = python-python-pyuring
+	source = https://files.pythonhosted.org/packages/source/p/pyuring/pyuring-0.3.3.tar.gz
+	sha256sums = 089f0ec7d27ea5c4f9f6f21cc915ed29e147d168399918334d2a3b5771cadb8f
+
+pkgname = python-pyuring
