@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastsapp-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
@@ -21,8 +21,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/fastsapp"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/fastsapp-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/fastsapp-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('70305f2c2eb0f99a8b3c7f32948e580f3be6eed76b1c9401c9eb38ad1803d8a2')
-sha256sums_aarch64=('c4df363c664203a7e3297380b9160437c983bd05469b71f2d14c845f66535c3b')
+sha256sums_x86_64=('9c04f47db70fd488aaa0abf6e37de5b6635ff729325bec8bd2af1ec0ca718986')
+sha256sums_aarch64=('d6dc92098b5793ad79b018bc3bb6bc1b7aff27429d3f6994ddfb8b25b91822df')
 
 package() {
   local target
