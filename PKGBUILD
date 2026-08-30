@@ -2,9 +2,9 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 _pkgname=mediapipe
-pkgname=python-mediapipe # renovate: datasource=github-tags depName=google-ai-edge/mediapipe
+pkgname=python-mediapipe
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
 url="https://github.com/google-ai-edge/mediapipe"
@@ -74,7 +74,6 @@ build() {
   # opengl-driver is provided by mesa or nvidia-utils
   MEDIAPIPE_DISABLE_GPU=0 \
     python -m build --wheel --no-isolation
-  #$(readlink -f /usr/bin/python) -m build --wheel --no-isolation
 }
 
 package() {
