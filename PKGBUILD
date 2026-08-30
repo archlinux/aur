@@ -1,4 +1,4 @@
-# Maintainer: imsyy <imsyy1024@gmail.com>
+# Maintainer: K-Black <kb.jenson.liang@gmail.com>
 pkgname=splayer-next-bin
 pkgver=1.0.0
 pkgrel=8
