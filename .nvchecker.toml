@@ -1,5 +1,5 @@
 [compressonator-git]
 source = "github"
-github = "lubosz/Compressonator"
+github = "GPUOpen-Tools/Compressonator"
 use_max_tag = true
-prefix = "v"
+prefix = "V"
