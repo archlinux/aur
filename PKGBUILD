@@ -4,7 +4,7 @@
 
 pkgname=katago-cuda
 _pkgname=katago
-pkgver=1.17.2
+pkgver=1.18.2
 pkgrel=1
 pkgdesc='Baduk engine with no human-provided knowledge'
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.
         # Strongest confidently-rated network
         "https://media.katagotraining.org/uploaded/networks/models/kata1/kata1-zhizi-b40c768nbt-s11272M-d5935M.bin.gz"
 )
-b2sums=('1e6a000f4b79bc8896af090e2b8209ca3037e9e7cb6b9842b848c779800e066fe0835cbfe37c6012df23c7e65d3fbf4a44d7146c1afd05fed17949357367f832'
+b2sums=('694677b5419d9a9a26e746c3ce5d1c09bb2f928f266d4fefd99961b7c884a43f96aa59723ea912c97329896f35b910e65b4d4603eeb28afc21b09d2d8eefdf58'
         '47d4f059434fdd3a85fe590186513e24999d6ed23ad7d5d073ecd73f44672b15e0ff10d475b17950b1673b7f49137be9573f059e182afd389c4b8e20ff2db0b2'
 )
 _model_source=("${source[@]:1}")
