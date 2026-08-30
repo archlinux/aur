@@ -1,6 +1,6 @@
 pkgbase = bilibili-tui
 	pkgdesc = A terminal user interface (TUI) client for Bilibili
-	pkgver = 1.0.12
+	pkgver = 1.0.14
 	pkgrel = 1
 	url = https://maredevi.moe/projects/bilibili-tui
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = bilibili-tui
 	depends = gcc-libs
 	depends = mpv
 	depends = yt-dlp
-	source = bilibili-tui-1.0.12.tar.gz::https://github.com/MareDevi/bilibili-tui/archive/v1.0.12.tar.gz
-	sha256sums = 1aa58265043f67e866221affb4c18ac198018a90c58c9bc71891fb796d1f4eb2
+	source = bilibili-tui-1.0.14.tar.gz::https://github.com/MareDevi/bilibili-tui/archive/v1.0.14.tar.gz
+	sha256sums = 6a2a0168ef4dadffe7c8e46c20c406c20c72a0fa59cdb549ee3e975079a3dff0
 
 pkgname = bilibili-tui
