@@ -1,6 +1,6 @@
 pkgbase = protonplus-bin
 	pkgdesc = A modern compatibility tools manager for Linux (prebuilt)
-	pkgver = 0.5.22
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/Vysp3r/ProtonPlus
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = protonplus-bin
 	conflicts = protonplus
 	conflicts = protonplus-git
 	options = !debug
-	source = https://github.com/eusouobn/protonplus-bin-releases/releases/download/v0.5.22/protonplus-full-0.5.22-x86_64.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/eusouobn/protonplus-bin-releases/releases/download/v0.6.4/protonplus-full-0.6.4-x86_64.tar.gz
+	sha256sums = c2e05a9011f715c4afecde8e47075f54c33753f3d2bf37354c6bfc598c1c31e4
 
 pkgname = protonplus-bin
