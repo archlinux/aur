@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=tinyfeed
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate a static HTML page from a collection of feeds wtih a simple CLI tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/TheBigRoomXXL/tinyfeed"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/TheBigRoomXXL/tinyfeed.git#tag=v$pkgver")
+_commit='eae736d9d7f2f61be02ed02c466fd3b79fc15cbc'
+source=("git+https://github.com/TheBigRoomXXL/tinyfeed.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
