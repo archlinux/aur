@@ -1,0 +1,19 @@
+pkgbase = minizinc-ide-git
+	pkgdesc = Integrated development environment for the high-level constraint modelling language MiniZinc
+	pkgver = 2.10.0.r6.g29bf75d
+	pkgrel = 1
+	url = https://github.com/MiniZinc/MiniZincIDE
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-base
+	depends = qt6-websockets
+	provides = minizinc-ide
+	conflicts = minizinc-ide
+	source = git+https://github.com/MiniZinc/MiniZincIDE.git
+	sha256sums = SKIP
+
+pkgname = minizinc-ide-git
