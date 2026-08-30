@@ -1,4 +1,10 @@
 # Maintainer: 9M2PJU <9m2pju@gmail.com>
+# Contributor: 9M2PJU <9m2pju@gmail.com>
+#
+# VCS package: builds the latest 9M2PJU sshs HEAD from source.
+#
+# All credit for the original sshs software goes to Nathanael Demacon.
+# Original project: https://github.com/quantumsheep/sshs
 
 pkgname=sshs-9m2pju-git
 _pkgname=sshs
