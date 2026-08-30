@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=gvm
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A programming language version manager 🚀 🚀 "
 arch=('x86_64' 'aarch64')
 url="https://github.com/toodofun/gvm"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/toodofun/gvm.git#tag=v$pkgver")
+_commit='75cc342bdd00841e964433ef0dfa90f17bebb2f5'
+source=("git+https://github.com/toodofun/gvm.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit

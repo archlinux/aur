@@ -1,7 +1,7 @@
 pkgbase = gvm
 	pkgdesc = A programming language version manager 🚀 🚀
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/toodofun/gvm
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = gvm
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/toodofun/gvm.git#tag=v0.1.1
+	source = git+https://github.com/toodofun/gvm.git#commit=75cc342bdd00841e964433ef0dfa90f17bebb2f5
 	sha256sums = SKIP
 
 pkgname = gvm
