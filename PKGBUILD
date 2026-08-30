@@ -1,7 +1,7 @@
 pkgname=xtrayhide-git
 pkgver=r2.5e33f36
 pkgrel=1
-pkgdesc="Captures X11 (XEmbed) tray icons and exposes them as StatusNotifierItem (SNI) icons. For Wayland compositors"
+pkgdesc="XEmbed to SNI tray bridge. Fixes floating Wine/Proton tray windows on Wayland compositors (Niri, Hyprland)"
 arch=('x86_64')
 url="https://github.com/bnema/xtrayhide"
 license=('MIT')
