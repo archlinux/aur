@@ -1,6 +1,6 @@
 pkgbase = soplang-git
 	pkgdesc = The Somali Programming Language (Rust/Cranelift JIT implementation, tracks main)
-	pkgver = 0.1.0.r0.g0000000
+	pkgver = 0.1.0.r422.g2331f53
 	pkgrel = 1
 	url = https://github.com/soplang/soplang
 	arch = x86_64
