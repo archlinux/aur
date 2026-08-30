@@ -8,14 +8,16 @@ url="https://github.com/amitpadhan525/linux-eye"
 license=('MIT')
 depends=('python' 'python-yaml' 'python-psutil' 'python-inotify-simple' 'python-pyudev' 'systemd')
 makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-provides=('linux-eye')
+backup=('etc/linux-eye/config.yaml')
+provides=("linux-eye=${pkgver}")
 conflicts=('linux-eye')
 source=("git+https://github.com/amitpadhan525/linux-eye.git")
 sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/linux-eye"
-    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "1.0.0"
+    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || \
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {

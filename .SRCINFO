@@ -16,8 +16,9 @@ pkgbase = linux-eye-git
 	depends = python-inotify-simple
 	depends = python-pyudev
 	depends = systemd
-	provides = linux-eye
+	provides = linux-eye=1.0.0
 	conflicts = linux-eye
+	backup = etc/linux-eye/config.yaml
 	source = git+https://github.com/amitpadhan525/linux-eye.git
 	sha256sums = SKIP
 
