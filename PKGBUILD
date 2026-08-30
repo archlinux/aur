@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=pep-ebook
 pkgver=1.0.10
-pkgrel=4
+pkgrel=5
 pkgdesc="📚自动下载带书签的电子书(人民教育教出版社)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/maogou/pep-ebook"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
