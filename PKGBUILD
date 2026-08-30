@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=iftree
 pkgver=0.0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="iftree help understand container networks by visualizing network interfaces( veth bridge lo ) relation , output in text, table, images and dot language."
 arch=('x86_64' 'aarch64')
 url="https://github.com/t1anz0ng/iftree"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/t1anz0ng/iftree.git#tag=v$pkgver")
+_commit='98b48988d2737c572ad7694089c9e502ac9b73e5'
+source=("git+https://github.com/t1anz0ng/iftree.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
