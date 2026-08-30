@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=go-test-report
 pkgver=0.9.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Captures go test output and parses it into a single self-contained HTML file."
 arch=('x86_64' 'aarch64')
 url="https://github.com/vakenbolt/go-test-report"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
