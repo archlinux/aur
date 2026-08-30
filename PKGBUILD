@@ -4,7 +4,7 @@
 pkgname=release-tag
 _pkgname=tag
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatically create semantic version git tags.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/tag'
@@ -18,6 +18,11 @@ pkgver() {
   cd "${_pkgname}" || exit
 
   git describe --tags | sed 's/^v//'
+}
+
+prepare() {
+  cd "${_pkgname}" || exit
+  go mod download
 }
 
 build() {
