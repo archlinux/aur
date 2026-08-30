@@ -10,9 +10,9 @@ depends=('playerctl')
 provides=('openmediabridge')
 conflicts=('openmediabridge')
 options=('!strip')
-source=("OpenMediaBridge.Linux.zip::https://github.com/alexvermaning0/OpenMediaBridge/releases/download/${pkgver}/OpenMediaBridge.Linux.zip"
+source=("OpenMediaBridge-Linux.zip::https://github.com/alexvermaning0/OpenMediaBridge/releases/download/${pkgver}/OpenMediaBridge-Linux.zip"
         "LICENSE::https://raw.githubusercontent.com/alexvermaning0/OpenMediaBridge/${pkgver}/LICENSE")
-sha256sums=('f9e9048abb33bd89b86b5a8dcd77538a3f097c77ff99405a4f577b9815c096bb'
+sha256sums=('b8db80bf54b69c7e7f9f90bae42120145a107313c396d1b99e414375d561f256'
             '50e6751797c50dedd75ef1b8a0d9e42f5f8472e9fbce91f34718e9f97b0c780a')
 
 package() {
