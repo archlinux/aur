@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=jenkins-cli
 pkgver=0.0.47
-pkgrel=4
+pkgrel=5
 pkgdesc="Jenkins CLI allows you to manage your Jenkins in an easy way. Jenkins 命令行客户端"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jenkins-zh/jenkins-cli"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
