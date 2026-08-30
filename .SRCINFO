@@ -1,6 +1,6 @@
 pkgbase = aethertune-bin
 	pkgdesc = A terminal-based internet radio player with real-time audio visualization, built in Rust
-	pkgver = 0.11.0
+	pkgver = 0.11.1
 	pkgrel = 1
 	url = https://github.com/nevermore23274/AetherTune
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = aethertune-bin
 	provides = aethertune
 	conflicts = aethertune
 	conflicts = aethertune-git
-	source = aethertune-bin-0.11.0.tar.gz::https://github.com/nevermore23274/AetherTune/releases/download/v0.11.0/AetherTune-v0.11.0-linux-x86_64.tar.gz
-	sha256sums = 29a4729cf2dc3543bd1181c39a4734af60f9f6c632b8aa3326732086d25f270f
+	source = aethertune-bin-0.11.1.tar.gz::https://github.com/nevermore23274/AetherTune/releases/download/v0.11.1/AetherTune-v0.11.1-linux-x86_64.tar.gz
+	sha256sums = 521e6b9b5f78212ac888ff44f380df5fca7b3c2880320ff8e685d32a2d344b03
 
 pkgname = aethertune-bin
