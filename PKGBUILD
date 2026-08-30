@@ -1,5 +1,5 @@
 # Maintainer: NebulaTechs <NebulaTechs@users.noreply.github.com>
-pkgname=pcl-n-bin
+pkgname=pcln-bin
 pkgver=1.4.13
 pkgrel=1
 pkgdesc="一个基于 PCL-CE 开发的 Minecraft 启动器 (PCL N Edition)"
