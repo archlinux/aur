@@ -1,6 +1,6 @@
 pkgbase = amneziawg-dkms
-	pkgdesc = AmneziaWG kernel module (AWG 3.1) with Linux 7.1.5+ udp_tunnel compat
-	pkgver = 3.1.20260812
+	pkgdesc = AmneziaWG kernel module (AWG 3.1)
+	pkgver = 3.1.20260828
 	pkgrel = 1
 	url = https://github.com/amnezia-vpn/amneziawg-linux-kernel-module
 	arch = x86_64
@@ -8,10 +8,8 @@ pkgbase = amneziawg-dkms
 	provides = AMNEZIAWG-MODULE
 	conflicts = amneziawg-linux
 	conflicts = amneziawg-linux-hardened
-	source = amneziawg-dkms-3.1.20260812.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v3.1.20260812.tar.gz
-	source = kernel-7.1.5-udp-tunnel.patch
-	sha256sums = a85817876676d5933385712657bd5525a0a2939baaf057f68e3629c7b4553c82
-	sha256sums = ca70c83f50bf6c52bed5aff370ceb2c7a94bf1e79afdf2b8d21a5700dadc9128
+	source = amneziawg-dkms-3.1.20260828.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v3.1.20260828.tar.gz
+	sha256sums = 726cb8aee21181382b214bbea856e9f99a464605a99461b23ccc342aa6da1699
 
 pkgname = amneziawg-dkms
 	depends = dkms
