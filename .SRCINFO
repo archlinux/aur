@@ -1,6 +1,6 @@
 pkgbase = chillpill-shell
 	pkgdesc = Lightweight and feature rich dynamic pill bar for Hyprland
-	pkgver = 0.7.0
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/LUCKYS1NGHH/ChillPill-Shell
 	install = chillpill-shell.install
@@ -21,12 +21,13 @@ pkgbase = chillpill-shell
 	depends = hyprland
 	depends = pipewire
 	depends = awww
+	depends = networkmanager
 	optdepends = ttf-jetbrains-mono-nerd
 	optdepends = ttf-monocraft-nerd
 	optdepends = qt6-imageformats
 	optdepends = python-pip: required to install optional package "holidays" in calendar
 	options = !debug
-	source = chillpill-shell-0.7.0.tar.gz::https://github.com/LUCKYS1NGHH/ChillPill-Shell/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = 66c17cc2aa8098faa05c6d51dbb60ef9752f2ae7d70c95ee76032a02a5578aab
+	source = chillpill-shell-0.8.0.tar.gz::https://github.com/LUCKYS1NGHH/ChillPill-Shell/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 2baabac1fcee81f5f93d0f4d5f7fb76cca6e7f496b1ca96bbb16be28dadf4f6e
 
 pkgname = chillpill-shell
