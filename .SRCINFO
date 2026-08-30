@@ -1,7 +1,7 @@
 pkgbase = lip-git
 	pkgdesc = A general package installer
-	pkgver = 0.34.4
-	pkgrel = 2
+	pkgver = 0.34.8
+	pkgrel = 1
 	url = https://github.com/futrime/lip
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = lip-git
 	makedepends = git
 	conflicts = lip-bin
 	options = !strip
-	source = lip-git::git+https://github.com/futrime/lip.git#tag=v0.34.4
+	source = lip-git::git+https://github.com/futrime/lip.git#tag=v0.34.8
 	source = lip.1
 	sha256sums = SKIP
 	sha256sums = 341f8366713c3463d309d7db58b4b4f1ac270a03afe5714ddd3bc2195d293cfd

@@ -2,8 +2,8 @@
 # Contributor: futrime <https://github.com/futrime>
 pkgname=lip-git
 _pkgname=lip
-pkgver=0.34.4
-pkgrel=2
+pkgver=0.34.8
+pkgrel=1
 pkgdesc="A general package installer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/futrime/lip"
@@ -11,16 +11,16 @@ license=('GPL3')
 conflicts=('lip-bin')
 options=(!strip)
 makedepends=('dotnet-sdk' 'dotnet-runtime' 'dotnet-host' 'git')
-source=("$pkgname::git+${url}.git#tag=v$pkgver"
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}"
         "lip.1")
 sha256sums=('SKIP'
             '341f8366713c3463d309d7db58b4b4f1ac270a03afe5714ddd3bc2195d293cfd')
 pkgver() {
-    cd "$pkgname"
+    cd "${pkgname}"
     git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 prepare() {
-    cd "$pkgname"
+    cd "${pkgname}"
     if [[ -z "$(git config --get user.name)" ]]; then
         git config user.name local && git config user.email '<>' && git config commit.gpgsign false
     fi
@@ -41,8 +41,8 @@ build() {
         -p:Version="${pkgver%.r*}"
 }
 package() {
-    install -Dm 644 "$_pkgname.1" "$pkgdir/usr/share/man/man1/$_pkgname.1"
-    install -Dm 755 "$pkgname/bin/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-    install -Dm 755 "$pkgname/bin/${_pkgname}d" "$pkgdir/usr/bin/${_pkgname}d"
-    install -Dm 644 "$pkgname/COPYING" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm 644 "${_pkgname}.1" "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
+    install -Dm 755 "${pkgname}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm 755 "${pkgname}/bin/${_pkgname}d" "${pkgdir}/usr/bin/${_pkgname}d"
+    install -Dm 644 "${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
