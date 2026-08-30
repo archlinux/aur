@@ -1,0 +1,23 @@
+pkgbase = timer-c3-bin
+	pkgdesc = A terminal countdown timer with a progress bar written in C3
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/ManuLinares/timer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = timer
+	provides = timer-c3
+	conflicts = timer
+	conflicts = timer-bin
+	conflicts = timer-c3
+	options = !debug
+	options = !strip
+	source = LICENSE-0.2::https://github.com/ManuLinares/timer/raw/main/LICENSE
+	sha256sums = 0b05b397cc1e2355391eafde6030860625eb77772493f59d65dd976cedb7d37c
+	source_x86_64 = timer-c3-bin-0.2-.tar.gz::https://github.com/ManuLinares/timer/releases/download/v0.2/timer-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3d3a944a6e74beb41bea91a484a3074530041104962f74da2e670025165c6744
+	source_aarch64 = timer-c3-bin-0.2-.tar.gz::https://github.com/ManuLinares/timer/releases/download/v0.2/timer-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 2327b65d80aff79f3b9bb0e57881e1e09f023e36a16483bb8da0bb185a2138ad
+
+pkgname = timer-c3-bin
