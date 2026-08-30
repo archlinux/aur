@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=tabtoy
 pkgver=3.1.4
-pkgrel=4
+pkgrel=5
 pkgdesc="高性能表格数据导出器"
 arch=('x86_64' 'aarch64')
 url="https://github.com/davyxu/tabtoy"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
