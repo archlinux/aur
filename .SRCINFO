@@ -1,6 +1,6 @@
 pkgbase = unmined-gui
 	pkgdesc = An easy to use and fast Minecraft world viewer and mapper tool
-	pkgver = 0.20.6.20260829
+	pkgver = 0.20.7.20260830
 	pkgrel = 1
 	url = https://unmined.net/
 	arch = x86_64
@@ -12,6 +12,6 @@ pkgbase = unmined-gui
 	options = !strip
 	options = !debug
 	source = unmined-gui-dev_amd64.deb::https://unmined.net/download/unmined-gui-linuxdeb-x64-dev/
-	sha256sums = 8d2713963b68a481739936396cf129de8e07e485e536cd7fd308ca1be7c6a325
+	sha256sums = 6d39f4c12f07907b9ffac34a168be6695b4b4c201b4abddb4c0ddc8dcc8549db
 
 pkgname = unmined-gui
