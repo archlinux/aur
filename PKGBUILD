@@ -34,7 +34,7 @@ source=(
     'eula.html'
     'terms.html'
     'privacy.html'
-    "https://chromium-ffmpeg.ctos-blume.com/chromium/${chromium_version}/linux-x64/libffmpeg.so"
+    "https://github.com/ModLabsCC/chromium-ffmpeg-prebuilt/releases/download/chromium-${chromium_version}/libffmpeg.so"
 )
 
 sha512sums=('660e5fae197df130d51577275b822f1ee2da9ea0978c9993c46ef9cee87f924517644d40822d8d24ae0370c4a57aaae87f2d2314dc70870e6a16694274e1188e'
