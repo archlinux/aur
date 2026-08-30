@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=zeit
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Zeit, erfassen. A command line tool for tracking time. (https://codeberg.org/mrus/zeit)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mrusme/zeit"
 license=('unknown')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/mrusme/zeit.git#tag=v$pkgver")
+_commit='3d685e5075d5516476a64f8fa41d3ecf6c3b7bc2'
+source=("git+https://github.com/mrusme/zeit.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
