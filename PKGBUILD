@@ -2,7 +2,7 @@
 
 pkgname=cinnamon-aliveos
 pkgver=6.6.9
-pkgrel=9
+pkgrel=10
 pkgdesc="Cinnamon desktop environment for AliveOS (without Nemo, with Dory integration and custom enhancements)"
 arch=('x86_64')
 url="https://github.com/linuxmint/cinnamon"
@@ -94,6 +94,7 @@ package() {
   if [ -d "$pkgdir/usr/share/cinnamon-session/sessions" ]; then
     install -Dm644 "$srcdir/cinnamon.session" \
       "$pkgdir/usr/share/cinnamon-session/sessions/cinnamon.session"
+    sed -i 's/nemo-autostart/dory-autostart/g' "$pkgdir/usr/share/cinnamon-session/sessions/"*.session 2>/dev/null || true
   fi
 
   # Remove nemo-related files if any exist

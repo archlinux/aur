@@ -1,7 +1,7 @@
 pkgbase = cinnamon-aliveos
 	pkgdesc = Cinnamon desktop environment for AliveOS (without Nemo, with Dory integration and custom enhancements)
 	pkgver = 6.6.9
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/linuxmint/cinnamon
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -84,7 +84,7 @@ pkgbase = cinnamon-aliveos
 	options = !debug
 	options = emptydirs
 	backup = etc/xdg/cinnamon-session/sessions/cinnamon.session
-	source = cinnamon-6.6.9-9-x86_64.pkg.tar.zst::https://archlinux.org/packages/extra/x86_64/cinnamon/download
+	source = cinnamon-6.6.9-10-x86_64.pkg.tar.zst::https://archlinux.org/packages/extra/x86_64/cinnamon/download
 	source = cinnamon.session
 	source = gwl-grouping-heuristics.patch
 	source = inline-reply-notifications.patch
