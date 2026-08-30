@@ -2,7 +2,7 @@
 
 pkgauthor="strobe-ops"
 pkgname="strobengine"
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A high-performance HTTP load testing engine with a Python API and a bare-metal Rust core"
 
@@ -22,7 +22,7 @@ depends=('glibc' 'libgcc' 'python' 'python-rich' 'python-typer')
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('761c7f430f68e0fddc1dc66ab99fd9d08a2f1f473fb8f3e4350fb4ac535f73c9')
+sha256sums=('10a8f37fcaf3a0894e90c22601c1db6b4ddf6ace3b41046dd04fcfeba23faceb')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/" || exit
