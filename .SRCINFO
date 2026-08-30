@@ -1,7 +1,7 @@
 pkgbase = prxy
 	pkgdesc = 🔌 Command-line reverse proxy for forwarding HTTP requests through an outbound proxy
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Madh93/prxy
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = prxy
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/Madh93/prxy.git#tag=v0.1.0
+	source = git+https://github.com/Madh93/prxy.git#commit=564d9b32b04814c9d4b350b1cfb3c694422ffe61
 	sha256sums = SKIP
 
 pkgname = prxy

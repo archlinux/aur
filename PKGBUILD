@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=prxy
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="🔌 Command-line reverse proxy for forwarding HTTP requests through an outbound proxy"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Madh93/prxy"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/Madh93/prxy.git#tag=v$pkgver")
+_commit='564d9b32b04814c9d4b350b1cfb3c694422ffe61'
+source=("git+https://github.com/Madh93/prxy.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
