@@ -1,7 +1,7 @@
 pkgbase = gocovsh
 	pkgdesc = Go Coverage in your terminal: a tool for exploring Go Coverage reports from the command line 💻
 	pkgver = 0.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/orlangure/gocovsh
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = gocovsh
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/orlangure/gocovsh.git#tag=v0.6.1
+	source = git+https://github.com/orlangure/gocovsh.git#commit=095e5572fec8626dfac6f39225632c73e5aded58
 	sha256sums = SKIP
 
 pkgname = gocovsh

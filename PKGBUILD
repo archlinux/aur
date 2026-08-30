@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=gocovsh
 pkgver=0.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Go Coverage in your terminal: a tool for exploring Go Coverage reports from the command line 💻"
 arch=('x86_64' 'aarch64')
 url="https://github.com/orlangure/gocovsh"
 license=('GPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/orlangure/gocovsh.git#tag=v$pkgver")
+_commit='095e5572fec8626dfac6f39225632c73e5aded58'
+source=("git+https://github.com/orlangure/gocovsh.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
