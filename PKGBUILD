@@ -1,9 +1,9 @@
 pkgname=powercurve-git
-pkgver=0.4.0.r653.19b291a
+pkgver=0.4.0.r665.8a8ea13
 pkgrel=1
 pkgdesc="Lightweight desktop power management daemon with configurable fan curves"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.com/vintagetechie/powercurve"
+url="https://github.com/crenshawdev/powercurve"
 license=('GPL-3.0-only')
 depends=(
   'dbus'
@@ -13,7 +13,7 @@ provides=('system76-power' 'power-profiles-daemon')
 conflicts=('system76-power' 'power-profiles-daemon')
 backup=('etc/powercurve/fan.toml')
 install="powercurve.install"
-source=("git+https://gitlab.com/vintagetechie/powercurve.git")
+source=("git+https://github.com/crenshawdev/powercurve.git")
 sha256sums=('SKIP')
 
 pkgver() {
