@@ -1,7 +1,7 @@
 pkgbase = paclear
 	pkgdesc = 👾paclear is a clear command with PAC-MAN animation👾
 	pkgver = 0.0.13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/orangekame3/paclear
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = paclear
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/orangekame3/paclear.git#tag=v0.0.13
+	source = git+https://github.com/orangekame3/paclear.git#commit=250b7067139b8a99fd40b50d87114d19b650e73f
 	sha256sums = SKIP
 
 pkgname = paclear

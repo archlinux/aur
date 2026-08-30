@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=paclear
 pkgver=0.0.13
-pkgrel=3
+pkgrel=4
 pkgdesc="👾paclear is a clear command with PAC-MAN animation👾"
 arch=('x86_64' 'aarch64')
 url="https://github.com/orangekame3/paclear"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/orangekame3/paclear.git#tag=v$pkgver")
+_commit='250b7067139b8a99fd40b50d87114d19b650e73f'
+source=("git+https://github.com/orangekame3/paclear.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
