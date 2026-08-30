@@ -1,7 +1,7 @@
 # Maintainer: Bouteiller a2n Alan <a2n.dev@pm.me>
 pkgname=tape-bin
 appname=tape
-pkgver=3.7.3
+pkgver=4.0.2
 pkgrel=3
 pkgdesc="Take notes without bloat"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc' 'gtk3' 'webkit2gtk-4.1' 'desktop-file-utils' 'hicolor-icon-them
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/v"${pkgver}"/"${appname}"-gtk4_"${pkgver}"_amd64.deb")
-sha256sums_x86_64=('820e367bdb45a3c6d593aeb42a11d524a6cde36955e2064753ed449794b4cdc4')
+sha256sums_x86_64=('7df78b6b0f1a43e41ebd1c4e353d002192cbcebb58c17fd0d9c1cb735cc95b4f')
 package() {
   # Extract the deb package
   ar x "${appname}-gtk4_${pkgver}_amd64.deb"
