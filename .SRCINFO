@@ -1,7 +1,7 @@
 pkgbase = docker-debug
 	pkgdesc = use new container attach on already container go on debug
 	pkgver = 0.7.11
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/zeromake/docker-debug
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = docker-debug
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/zeromake/docker-debug.git#tag=v0.7.11
+	source = git+https://github.com/zeromake/docker-debug.git#commit=c657796b498cff58766528229f88d73cbd6ff746
 	sha256sums = SKIP
 
 pkgname = docker-debug
