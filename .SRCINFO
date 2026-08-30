@@ -1,0 +1,18 @@
+pkgbase = tmr-cli-bin
+	pkgdesc = A small command-line timer/stopwatch tool written in Rust
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/honerop/tmr-cli
+	arch = x86_64
+	license = Unlincense
+	depends = glibc
+	depends = libgcc
+	provides = tmr-cli
+	conflicts = tmr-cli
+	options = !strip
+	source = README-1.0.md::https://raw.githubusercontent.com/honerop/tmr-cli/v1.0/README.md
+	sha256sums = 2664242d93502aa7a5e65006ad50246f67c8487c6939f141f001aacf9a83d138
+	source_x86_64 = tmr-cli-x86_64-1.0::https://github.com/honerop/tmr-cli/releases/download/v1.0/timer-cli
+	sha256sums_x86_64 = 359fb0ae051e73fe601a6808afe290856743bebd38d15106c7833eb495287121
+
+pkgname = tmr-cli-bin

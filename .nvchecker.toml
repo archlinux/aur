@@ -1,0 +1,5 @@
+[tmr-cli-bin]
+source = "github"
+github = "honerop/tmr-cli"
+use_latest_release = true
+prefix = "v"
