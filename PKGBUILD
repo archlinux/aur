@@ -1,42 +1,66 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=tonepush
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Editor and tone library for Line 6 HX pedals and the StompStation PRO"
 arch=('x86_64' 'aarch64')
 url="https://tonepush.rocks"
 license=('MIT')
 install="${pkgname}.install"
+makedepends=('cargo' 'libxkbcommon' 'wayland' 'mesa')
 optdepends=('libgl: for the GUI'
             'libxkbcommon: for the GUI'
             'wayland: for the GUI on Wayland'
             'libx11: for the GUI on X11'
             'p7zip: extract HX Edit model data from inside the app')
-conflicts=('tonepush-git' 'stompchain')
-replaces=('stompchain')
-options=('!debug' '!strip')
-_repo="https://github.com/crmne/tonepush"
-source_x86_64=("${_repo}/releases/download/v${pkgver}/tonepush-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${_repo}/releases/download/v${pkgver}/tonepush-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('a81e13379719a1b34f4fa24d09d9c0a5b27ee62b75562460920521b894328891')
-sha256sums_aarch64=('0a09f57a888c441f31cb9c5b7da0196fc3e925922e8fdabb394e91d57065aa64')
+conflicts=('tonepush-bin' 'tonepush-git' 'stompchain' 'stompchain-git')
+replaces=('stompchain' 'stompchain-git')
+# !lto because ring compiles its own C and Arch's default CFLAGS put LTO
+# objects in the archive, which lld then cannot resolve: the link fails on
+# undefined ring_core_* symbols. The stable package is prebuilt and never meets
+# this.
+options=('!debug' '!lto')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/tonepush/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('5758ab4ad02bea8bbce262d039a1dc2c73791b750a728b11829462efb20a61fd')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  # Generated bindings inside glutin carry the path they were built at, which
+  # ends up in the binary and makes makepkg warn about a reference to $srcdir.
+  # Appended rather than assigned, so the distro's own flags survive.
+  export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/"
+  # The editor and the CLI by name. Building the whole workspace would drag in
+  # the Ruby extension, which links against libruby and is nothing to do with
+  # this package.
+  cargo build --frozen --release -p tonepush-cli -p tonepush-gui
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  # Needs no hardware; the tests that talk to a device are #[ignore]d.
+  cargo test --frozen -p hx-proto -p hx-catalog -p tonepush-cli -p tonepush-gui
+}
 
 package() {
-  local target
-  case "$CARCH" in
-    x86_64) target="x86_64-unknown-linux-gnu" ;;
-    aarch64) target="aarch64-unknown-linux-gnu" ;;
-  esac
-  local dir="${srcdir}/tonepush-v${pkgver}-${target}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  install -Dm755 "${dir}/tonepush" "${pkgdir}/usr/bin/tonepush"
-  install -Dm755 "${dir}/tonepush-gui" "${pkgdir}/usr/bin/tonepush-gui"
-  install -Dm644 "${dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${dir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${dir}/packaging/applications/tonepush.desktop" \
+  install -Dm755 "target/release/tonepush" "${pkgdir}/usr/bin/tonepush"
+  install -Dm755 "target/release/tonepush-gui" "${pkgdir}/usr/bin/tonepush-gui"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "packaging/applications/tonepush.desktop" \
     "${pkgdir}/usr/share/applications/tonepush.desktop"
-  install -Dm644 "${dir}/packaging/icons/tonepush.svg" \
+  install -Dm644 "packaging/icons/tonepush.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/tonepush.svg"
-  install -Dm644 "${dir}/packaging/udev/70-line6-hx.rules" \
+  install -Dm644 "packaging/udev/70-line6-hx.rules" \
     "${pkgdir}/usr/lib/udev/rules.d/70-line6-hx.rules"
 }
