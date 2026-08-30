@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=mufetch
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="neofetch-style music cli"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ashish0kumar/mufetch"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/ashish0kumar/mufetch.git#tag=v$pkgver")
+_commit='6edbd843a9a18c5c332c489d0b3790d3b6c78c6d'
+source=("git+https://github.com/ashish0kumar/mufetch.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
