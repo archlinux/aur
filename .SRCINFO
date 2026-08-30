@@ -1,12 +1,12 @@
 pkgbase = layaair-ide
 	pkgdesc = LayaAir IDE (repacked from official AppImage)
-	pkgver = 3.4.0
-	pkgrel = 6
+	pkgver = 3.4.1
+	pkgrel = 1
 	url = https://layaair.com/
 	install = layaair-ide.install
 	arch = x86_64
 	license = custom
-	source = LayaAirIDE.AppImage::https://ldc-1251285021.file.myqcloud.com/layaair3/layaair-3.4/linux/LayaAirIDE-linux-x86_64-3.4.0.AppImage
-	sha256sums = f75363dbd8bbd8eacd929d13e7698f9dc3846421f005d20881019883936e4da0
+	source = LayaAirIDE.AppImage::https://ldc-1251285021.file.myqcloud.com/layaair3/layaair-3.4/linux/LayaAirIDE-linux-x86_64-3.4.1.AppImage
+	sha256sums = e716f3f5b7a96ae04a33586134c3bcb085614c4481cd7c07a730348d8b8a4dfc
 
 pkgname = layaair-ide
