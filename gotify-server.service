@@ -1,7 +1,6 @@
 [Unit]
 Description=Gotify Server
 After=network.target
-ConditionPathIsDirectory=%L/gotify
 
 [Service]
 Type=simple
@@ -11,10 +10,8 @@ Environment=GOTIFY_CONFIG_FILE=/etc/gotify/server.env
 ExecStart=/usr/bin/gotify-server serve
 
 ConfigurationDirectory=gotify
-LogsDirectory=gotify
 StateDirectory=gotify
 StateDirectoryMode=0700
-StandardOutput=append:%L/gotify/server.log
 
 UMask=0027
 CapabilityBoundingSet=

@@ -2,7 +2,7 @@
 # Contributor: ml <ml@visu.li>
 pkgname=gotify-server
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple server for sending and receiving messages in real-time per WebSocket.'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url='https://gotify.net/'
@@ -20,7 +20,7 @@ source=(
 )
 sha256sums=('0223df90d3f757bcdbe238df42d219b48410fdea059c7d6f34fc9ddc5c66db27'
             '39fc913f205bbb102ba42ce3d419f2feb0f9143f14ccffd242b3cd5f51a8c0de'
-            'fd77369ddf3ec0097066517ade97fe06bb1336557adbac41a11f37df852c9814'
+            '2f4b11daa1c7f3be0ad4a6fdcc01ffbda6e918539bfe10bb4dc90ea97f1d6723'
             'aed307a8c5072d0f329a43a270ec4d32584fb0a2967e3be44c2a72d7ffaa4a0c')
 
 prepare() {
@@ -52,8 +52,6 @@ build() {
 package() {
   install -Dm644 sysusers.d "$pkgdir/usr/lib/sysusers.d/gotify.conf"
   install -Dm644 gotify-server.service "$pkgdir/usr/lib/systemd/system/gotify-server.service"
-  # required for StandardOutput in gotify-server.service
-  install -dm755 "$pkgdir/var/log/gotify"
 
   cd "server-$pkgver"
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"

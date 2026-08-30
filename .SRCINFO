@@ -1,7 +1,7 @@
 pkgbase = gotify-server
 	pkgdesc = A simple server for sending and receiving messages in real-time per WebSocket.
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gotify.net/
 	install = gotify-server.install
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = gotify-server
 	source = config.patch
 	sha256sums = 0223df90d3f757bcdbe238df42d219b48410fdea059c7d6f34fc9ddc5c66db27
 	sha256sums = 39fc913f205bbb102ba42ce3d419f2feb0f9143f14ccffd242b3cd5f51a8c0de
-	sha256sums = fd77369ddf3ec0097066517ade97fe06bb1336557adbac41a11f37df852c9814
+	sha256sums = 2f4b11daa1c7f3be0ad4a6fdcc01ffbda6e918539bfe10bb4dc90ea97f1d6723
 	sha256sums = aed307a8c5072d0f329a43a270ec4d32584fb0a2967e3be44c2a72d7ffaa4a0c
 
 pkgname = gotify-server
