@@ -1,0 +1,25 @@
+post_install() {
+    echo ":: Paint Omarchy Nautilus installed."
+    echo ":: The nautilus-python extension is now available system-wide at /usr/share/nautilus-python/extensions/"
+    echo ":: To activate the theme-set hooks for your user, run:"
+    echo "::   systemctl --user enable --now paint-omarchy-nautilus-bootstrap"
+    echo "::"
+    echo ":: Or manually bootstrap once:"
+    echo "::   /usr/share/paint-omarchy-nautilus/bootstrap.sh"
+    echo "::"
+    echo ":: After bootstrap, theme switches via 'omarchy theme set' will live-reload Nautilus."
+    echo ":: Restart Nautilus once to load the extension: nautilus -q && nautilus &"
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ":: Paint Omarchy Nautilus removed."
+    echo ":: User hooks and configs in ~/.config/omarchy/hooks/theme-set.d/ were not removed."
+    echo ":: Clean up manually if desired:"
+    echo "::   rm ~/.config/omarchy/hooks/theme-set.d/60-omarchy-gtk-accent.sh"
+    echo "::   rm ~/.config/omarchy/hooks/theme-set.d/70-omarchy-nautilus-palette.sh"
+    systemctl --user disable paint-omarchy-nautilus-bootstrap 2>/dev/null || true
+}

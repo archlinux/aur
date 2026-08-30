@@ -1,0 +1,21 @@
+pkgbase = paint-omarchy-nautilus
+	pkgdesc = Live hot-reloading Omarchy theme palette for GNOME Nautilus (Files)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/JJDizz1L/paint-omarchy-nautilus
+	install = paint-omarchy-nautilus.install
+	arch = any
+	license = MIT
+	depends = nautilus
+	depends = nautilus-python
+	depends = omarchy
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	optdepends = gvfs-smb: SMB network shares
+	optdepends = gvfs-gphoto2: Camera support
+	optdepends = gvfs-goa: Google Drive/Nextcloud
+	source = paint-omarchy-nautilus-1.0.0.tar.gz::https://github.com/JJDizz1L/paint-omarchy-nautilus/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = paint-omarchy-nautilus
