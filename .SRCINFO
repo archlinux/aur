@@ -1,7 +1,7 @@
 pkgbase = jenkins-cli
 	pkgdesc = Jenkins CLI allows you to manage your Jenkins in an easy way. Jenkins 命令行客户端
 	pkgver = 0.0.47
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jenkins-zh/jenkins-cli
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = jenkins-cli
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/jenkins-zh/jenkins-cli.git#tag=v0.0.47
+	source = git+https://github.com/jenkins-zh/jenkins-cli.git#commit=c926d60cb6f97f9e28f9e1bee689ceaa48a6622c
 	sha256sums = SKIP
 
 pkgname = jenkins-cli

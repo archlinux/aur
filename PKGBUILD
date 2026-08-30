@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=jenkins-cli
 pkgver=0.0.47
-pkgrel=3
+pkgrel=4
 pkgdesc="Jenkins CLI allows you to manage your Jenkins in an easy way. Jenkins 命令行客户端"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jenkins-zh/jenkins-cli"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/jenkins-zh/jenkins-cli.git#tag=v$pkgver")
+_commit='c926d60cb6f97f9e28f9e1bee689ceaa48a6622c'
+source=("git+https://github.com/jenkins-zh/jenkins-cli.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
