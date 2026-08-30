@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastsapp
-pkgver=0.2.5
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,6 @@ depends=('libglvnd' 'libxkbcommon' 'wayland' 'libx11')
 makedepends=('cargo')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'noto-fonts-emoji: colour emoji in messages and reactions'
-            'ffmpeg: playing GIFs'
             'xdg-desktop-portal: the file picker for attachments')
 conflicts=('fastsapp-bin' 'fastsapp-git')
 # !lto because ring compiles its own C and Arch's default CFLAGS put LTO
@@ -20,7 +19,7 @@ conflicts=('fastsapp-bin' 'fastsapp-git')
 # meets this.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/fastsapp/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7cf5743bc970ad80e1ac0a45bf47126f0a5141be5fefaf4b88eaff921666b67c')
+sha256sums=('b7859cc31a410a12420a90eb6c196e4a9aba3deebbed47393db54b3239cfa7df')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
