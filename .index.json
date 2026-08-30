@@ -1,3 +1,6 @@
 {
-  "tag": "2.10.1"
+  ".i": 6,
+  "crate": "tauri-cli",
+  "version": "2.11.4",
+  "pkgrel": 1
 }
