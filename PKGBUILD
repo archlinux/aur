@@ -2,7 +2,7 @@
 
 pkgname=yaabsa-bin
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial feature rich, responsive, modern client for Audiobookshelf"
 arch=('x86_64')
 url="https://github.com/Vito0912/yaabsa"
@@ -28,6 +28,4 @@ package() {
   ln -s "${pkgdir}/usr/share/${pkgname%-bin}/yaabsa" "${pkgdir}/usr/bin/yaabsa"
 }
 
-sha256sums=('aa306207aa048fb6390a22b2ec7ce43ea9e3199cd34aa572e25b9c50add92319')
-sha256sums=('aa306207aa048fb6390a22b2ec7ce43ea9e3199cd34aa572e25b9c50add92319')
 sha256sums=('405e9143b054c0ac6d2d4618dc62f5910c01d4df67d4bc107e5500466e896136')
