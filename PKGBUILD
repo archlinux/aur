@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=gh-s
 pkgver=0.0.12
-pkgrel=3
+pkgrel=4
 pkgdesc="🔎 search github repositories interactively"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gennaro-tedesco/gh-s"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/gennaro-tedesco/gh-s.git#tag=v$pkgver")
+_commit='02b37e9fbb1b747595000a5eb50e36ca8b54319a'
+source=("git+https://github.com/gennaro-tedesco/gh-s.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit

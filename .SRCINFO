@@ -1,7 +1,7 @@
 pkgbase = gh-s
 	pkgdesc = 🔎 search github repositories interactively
 	pkgver = 0.0.12
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gennaro-tedesco/gh-s
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = gh-s
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/gennaro-tedesco/gh-s.git#tag=v0.0.12
+	source = git+https://github.com/gennaro-tedesco/gh-s.git#commit=02b37e9fbb1b747595000a5eb50e36ca8b54319a
 	sha256sums = SKIP
 
 pkgname = gh-s
