@@ -23,7 +23,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\-/.r/;s/\-g/./'
+  # A pre-release tag (v0.4.0-rc1) keeps its suffix without the hyphen,
+  # 0.4.0rc1, which pacman orders before 0.4.0; then the commits since the
+  # tag and the hash, as before: 0.4.0rc1.r1.cb95384.
+  git describe --long --tags --abbrev=7 |
+    sed 's/^v//;s/-\(rc\|alpha\|beta\)\([0-9]*\)-/\1\2-/;s/-/.r/;s/-g/./'
 }
 
 prepare() {
