@@ -5,12 +5,12 @@ options=('!strip' '!debug')
 pkgrel=1
 pkgdesc="a simple grub theme to start a good day"
 arch=('any')
-url="https://github.com/DerJimno/einfach-grub-theme"
+url="https://github.com/DerMenaouer/einfach-grub-theme"
 license=('GPL3')
 depends=()
 makedepends=()
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('730275ae2f85263b83685e6efaf896469140b24c7325e8811121b8ce3b5f227e')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
