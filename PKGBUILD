@@ -1,6 +1,6 @@
 #  Maintainer: Leonardo Miliani <leonardo AT leonardomiliani DOT com>
 pkgname=sjasmplus-z00m128
-pkgver=1.23.1
+pkgver=1.24.0
 pkgrel=1
 pkgdesc="SjASMplus is a Z80 cross-assembler"
 arch=(x86_64)
@@ -8,7 +8,7 @@ url="https://github.com/z00m128/sjasmplus"
 license=(BSD)
 makedepends=(lua cmake)
 source=("https://github.com/z00m128/sjasmplus/releases/download/v$pkgver/sjasmplus-$pkgver-src.tar.xz")
-sha256sums=('0203a01199b16660027fbe04b0a87dc5aff299401b5e3e49bff8468a3801cc54')
+sha256sums=('0b5013f07e8d8505f9e296529655668b6fdf0268625c19e883b0fff484e209f1')
 
 build() {
 	cmake -B build -S sjasmplus-${pkgver} \
