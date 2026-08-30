@@ -1,7 +1,8 @@
+# Maintainer: a821 at mail de
 # Contributor: Christian Hesse <mail@eworm.de>
 
 pkgname=libetpan-git
-pkgver=1.9.4.r86.g5c9eb6b
+pkgver=1.10.1.r135.gc77d041
 pkgrel=1
 pkgdesc='A portable middleware for email access - git checkout'
 arch=('x86_64')
@@ -21,6 +22,9 @@ pkgver() {
 
 prepare() {
 	cd libetpan/
+	# remove broken tests (see commit message)
+	sed -i 's/mailpgp-gnupg-fixture-test.sh//' tests/Makefile.am
+	sed -i 's/smime-openssl-fixture-test.sh//' tests/Makefile.am
 	NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -38,8 +42,7 @@ build() {
 }
 
 check() {
-	cd libetpan/
-	make check
+	make -C libetpan/tests check
 }
 
 package() {

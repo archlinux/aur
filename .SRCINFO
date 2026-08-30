@@ -1,6 +1,6 @@
 pkgbase = libetpan-git
 	pkgdesc = A portable middleware for email access - git checkout
-	pkgver = 1.9.4.r86.g5c9eb6b
+	pkgver = 1.10.1.r135.gc77d041
 	pkgrel = 1
 	url = https://www.etpan.org/libetpan.html
 	arch = x86_64
