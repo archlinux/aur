@@ -1,6 +1,6 @@
 pkgbase = tailscode
 	pkgdesc = Coding agents over Tailscale — a GTK4 client for Claude Code and opencode
-	pkgver = 1.29
+	pkgver = 1.31
 	pkgrel = 1
 	url = https://github.com/guitaripod/Tailscode
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = tailscode
 	depends = webkitgtk-6.0
 	depends = curl
 	optdepends = tailscale: reach the machine your agent runs on
-	source = tailscode-1.29.tar.gz::https://github.com/guitaripod/Tailscode/archive/refs/tags/v1.29.tar.gz
+	source = tailscode-1.31.tar.gz::https://github.com/guitaripod/Tailscode/archive/refs/tags/v1.31.tar.gz
 	sha256sums = SKIP
 
 pkgname = tailscode
