@@ -1,7 +1,7 @@
 pkgbase = tabtoy
 	pkgdesc = 高性能表格数据导出器
 	pkgver = 3.1.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/davyxu/tabtoy
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = tabtoy
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/davyxu/tabtoy.git#tag=3.1.4
+	source = git+https://github.com/davyxu/tabtoy.git#commit=0fbde52cba30f8f9705515cd891b89dbf050cdde
 	sha256sums = SKIP
 
 pkgname = tabtoy

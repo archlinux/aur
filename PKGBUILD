@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=tabtoy
 pkgver=3.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="高性能表格数据导出器"
 arch=('x86_64' 'aarch64')
 url="https://github.com/davyxu/tabtoy"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/davyxu/tabtoy.git#tag=$pkgver")
+_commit='0fbde52cba30f8f9705515cd891b89dbf050cdde'
+source=("git+https://github.com/davyxu/tabtoy.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
