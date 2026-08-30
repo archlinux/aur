@@ -1,0 +1,19 @@
+pkgbase = mpv-music
+	pkgdesc = Blazing-fast, terminal-native music player and library browser for mpv
+	pkgver = 0.27.1
+	pkgrel = 1
+	url = https://github.com/FurqanHun/mpv-music
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = mpv
+	depends = libgcc
+	optdepends = yt-dlp: for playing URLs
+	optdepends = deno: JS runtime for YouTube playback (recommended)
+	optdepends = nodejs: alternative JS runtime for YouTube playback
+	options = !lto
+	source = mpv-music-0.27.1.tar.gz::https://github.com/FurqanHun/mpv-music/archive/refs/tags/v0.27.1.tar.gz
+	sha256sums = 840395c0eb51341de44c5679eabc72d020fef50c2bfebd17b8cfb83771a8a050
+
+pkgname = mpv-music
