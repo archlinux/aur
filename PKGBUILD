@@ -1,7 +1,7 @@
 # Maintainer: tiouoo <tiouo@qq.com>
 
 pkgname=portal-mc-commit-bin
-pkgver=0.51.15.23
+pkgver=0.51.20.49
 pkgrel=1
 pkgdesc="Portal - Minecraft launcher/manager (commit build, prerelease)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('fuse2' 'hicolor-icon-theme' 'xdg-utils')
 provides=("portal-mc=$pkgver")
 conflicts=('portal-mc' 'portal-mc-nightly-bin' 'portal-mc-bin')
 options=('!strip' '!emptydirs')
-_appimg="Portal-0.51.15.23.AppImage"
+_appimg="Portal-0.51.20.49.AppImage"
 source_x86_64=(
     "$_appimg::https://github.com/tiouoo/Portal/releases/download/publish-commit/Portal.linux.x64.AppImage"
     "portal.png::https://portal.tiouo.cc/portal-logo.png"
