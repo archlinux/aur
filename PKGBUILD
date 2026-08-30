@@ -8,53 +8,44 @@
 # will overwrite your change. `pkgrel` is likewise reset to 1 every release;
 # a pkgrel-only bump means bumping it here and re-running the workflow.
 #
-# It repackages the published AppImage rather than building from source:
-# building here would mean fetching the proprietary Discord Social SDK from
-# our own CDN mid-build and compiling the whole Tauri/Rust tree on the user's
-# machine. Note that Arch's naming guidelines would call this a `-bin`
-# package; the unsuffixed name is a deliberate maintainer preference.
-#
-# The AppImage deliberately bundles no system libraries (see the "unbundle the
-# GTK/WebKitGTK stack" step in the release workflow), so this really is just
-# the app binary plus the Discord SDK — `depends` below is the whole runtime.
+# It repackages the published Electron AppImage rather than building from
+# source (Arch's guidelines would call that a `-bin` package; the unsuffixed
+# name is a deliberate maintainer preference). The AppImage bundles its own
+# Chromium/Electron runtime; `depends` below is only the system libraries
+# Chromium dlopen()s at runtime.
 
 pkgname=doughmination-music
-pkgver=2.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Desktop client for Doughmination Music, a self-hosted Pocket ID music library"
 arch=('x86_64')
 url="https://github.com/Clove-Web/pocket-id-music-player"
 license=('LicenseRef-DASL-1.0')
 depends=(
-  # Linked by the app binary itself.
-  'webkit2gtk-4.1'
   'gtk3'
-  'libsoup3'
-  'glib2'
-  'gdk-pixbuf2'
-  'cairo'
-  'dbus'
-  'gcc-libs'
-  'glibc'
-  # Linked by libdiscord_partner_sdk.so — all DT_NEEDED entries, so the app
-  # fails to start outright if any are missing, not just Rich Presence.
+  'nss'
+  'nspr'
   'alsa-lib'
-  'libpulse'
-  'libx11'
-  'libatomic'
+  'at-spi2-core'
+  'libcups'
+  'libxkbcommon'
+  'libxtst'
+  'libxss'
+  'libnotify'
+  'mesa'
+  'libdrm'
   # Owns the /usr/share/icons/hicolor hierarchy this package drops icons into.
   'hicolor-icon-theme'
-  # Sign-in hands the OIDC flow to the system browser via tauri-plugin-opener,
-  # which shells out to xdg-open.
+  # Sign-in hands the OIDC flow to the system browser (shell.openExternal ->
+  # xdg-open).
   'xdg-utils'
 )
-# Prebuilt upstream binaries: nothing to strip, no debug package to split out.
 options=('!strip' '!debug')
 
-# Tauri names the artifact from `productName` + the version in
-# tauri.conf.json, which is not necessarily the git tag — the workflow
-# overwrites this line with the asset name it actually finds on the release.
-_appimagefile="Doughmination.Music_1.0.0_amd64.AppImage"
+# electron-builder names this from apps/desktop/electron-builder.yml's
+# `artifactName` (version-less). The workflow overwrites this line with the
+# asset name it actually finds on the release, so a mismatch can't 404.
+_appimagefile="Doughmination.Music_amd64.AppImage"
 
 source=(
   "$pkgname-$pkgver.AppImage::$url/releases/download/v$pkgver/$_appimagefile"
@@ -63,7 +54,7 @@ source=(
 # An AppImage is an ELF with a squashfs glued on; makepkg must not try to
 # unpack it itself — prepare() uses the AppImage's own extractor.
 noextract=("$pkgname-$pkgver.AppImage")
-sha256sums=('d81b67e0ef31e26145e4c63d4856c7e0e4f4f7401807842dd9c19e446cef6f06'
+sha256sums=('da905043304cec7eeda91f7387ec9b1871f669e84442fcfbb816cd85c0490203'
             '93aa15616c8d2ad987372388e9cc1cd360501a98bc9cebd656acfa938368f538')
 
 prepare() {
@@ -72,29 +63,47 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/squashfs-root"
+  # electron-builder's AppImage keeps the whole app at the root of the mount:
+  # the Electron binary (our `executableName`, == $pkgname), plus resources/,
+  # locales/, *.pak, *.bin, *.so and chrome-sandbox. Electron needs those
+  # adjacent, so install the tree under /opt and symlink into PATH.
+  install -dm755 "$pkgdir/opt/$pkgname"
+  cp -a --no-preserve=ownership squashfs-root/. "$pkgdir/opt/$pkgname/"
 
-  # The binary finds libdiscord_partner_sdk.so through a `$ORIGIN/../lib`
-  # RUNPATH (see apps/desktop/src-tauri/build.rs), so bin/ and lib/ have to
-  # stay siblings under /opt — hence no plain /usr/bin install.
-  install -Dm755 "usr/bin/$pkgname" "$pkgdir/opt/$pkgname/bin/$pkgname"
-  install -Dm755 usr/lib/libdiscord_partner_sdk.so \
-    "$pkgdir/opt/$pkgname/lib/libdiscord_partner_sdk.so"
+  # Drop the AppImage-only bits — the runtime doesn't use them, and the
+  # usr/share tree is installed to real system paths below instead.
+  rm -rf "$pkgdir/opt/$pkgname/usr" \
+         "$pkgdir/opt/$pkgname/AppRun" \
+         "$pkgdir/opt/$pkgname/AppRun.wrapped" \
+         "$pkgdir/opt/$pkgname/.DirIcon"
+  rm -f "$pkgdir/opt/$pkgname"/*.desktop
+
+  if [ ! -x "$pkgdir/opt/$pkgname/$pkgname" ]; then
+    echo "::error:: expected Electron binary /opt/$pkgname/$pkgname not found — AppImage layout changed" >&2
+    ls -la "$pkgdir/opt/$pkgname" >&2
+    return 1
+  fi
+
+  # Electron's sandbox helper must be setuid root.
+  chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
+
   install -dm755 "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
-  install -Dm644 usr/share/applications/*.desktop \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
+  # .desktop from the AppImage (globbed — electron-builder's basename has
+  # varied). Repoint Exec at the installed path; keep %u so the
+  # doughmination:// sign-in callback is forwarded to the app.
+  local desktop
+  desktop=$(find squashfs-root/usr/share/applications -name '*.desktop' 2>/dev/null | head -1)
+  if [ -n "$desktop" ]; then
+    install -Dm644 "$desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+    sed -i "s|^Exec=.*|Exec=/usr/bin/$pkgname %u|" \
+      "$pkgdir/usr/share/applications/$pkgname.desktop"
+  fi
 
-  local icon dir
-  for icon in usr/share/icons/hicolor/*/apps/"$pkgname".png; do
-    dir="${icon#usr/share/icons/hicolor/}"
-    dir="${dir%%/*}"
-    # Tauri emits a "256x256@2" directory; hicolor's scaled-icon dirs are
-    # named "...@2x", and anything else is ignored by the icon cache.
-    [[ $dir == *@2 ]] && dir="${dir}x"
-    install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/$dir/apps/$pkgname.png"
-  done
+  if [ -d squashfs-root/usr/share/icons ]; then
+    cp -a --no-preserve=ownership squashfs-root/usr/share/icons "$pkgdir/usr/share/"
+  fi
 
   install -Dm644 "$srcdir/LICENCE-$pkgver.md" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENCE.md"
