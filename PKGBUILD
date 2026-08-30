@@ -2,7 +2,7 @@
 
 pkgname=headroom-ai-bin
 _pyname=headroom_ai
-pkgver=0.34.0
+pkgver=0.37.0
 pkgrel=1
 pkgdesc="Context optimization layer for LLM applications - cut token costs by 50-90% (binary wheel, Python 3.12)"
 arch=('x86_64')
@@ -31,9 +31,9 @@ options=('!strip' '!debug')
 # so the [proxy] set is effectively required just for `headroom --help` to load.
 _pytag=cp310-abi3-manylinux_2_28_x86_64
 _wheel="$_pyname-$pkgver-$_pytag.whl"
-source=("$_wheel::https://files.pythonhosted.org/packages/93/09/2b5a3470207cb4c8d75bf737d0bc8e59c5ab80b3c28f5d46b2aaa97913df/$_wheel")
+source=("$_wheel::https://files.pythonhosted.org/packages/72/b8/16878cf4fe6fc390a0d22025b671468619db690ff14c1b103ace4b5e35f9/$_wheel")
 noextract=("$_wheel")
-sha256sums=('061d974b4f4e95b8fc9611fc4d059331e43fd2bd4737243bbed5fcb3af82775f')
+sha256sums=('2efc5cdf681a10c5fc7a2a271a471179c409074537045f682b10e4d724976f46')
 
 build() {
   rm -rf venv
