@@ -3,7 +3,7 @@
 pkgname=pilinara
 _pkgname=pilinara
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 url="https://github.com/Starfallan/PiliNara"
 pkgdesc="PiliPlus 的第三方Fork版本，做了一些自用改动"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('gtk3' 'mpv' 'libayatana-appindicator' 'webkit2gtk-4.1')
 makedepends=('clang' 'cmake' 'git' 'ninja' 'fvm' 'patchelf')
 provides=('pilinara')
 conflicts=('pilinara-bin' 'pilinara-git')
-options=('!debug' '!strip')
+options=('!debug')
 
 source_x86_64=("${_pkgname}::git+${url}.git#tag=${pkgver}"
                "0001-fix-refresh-layout-semantics.patch")
