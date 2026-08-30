@@ -12,7 +12,7 @@
 PT_QT_MAJOR_VERSION=6
 
 pkgname=photivo-git
-pkgver=20240904_517cc62
+pkgver=20260830_200a5b2
 pkgrel=1
 epoch=1
 pkgdesc="Free and open source photo processor"
