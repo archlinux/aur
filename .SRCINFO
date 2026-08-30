@@ -1,0 +1,17 @@
+pkgbase = portctl-bin
+	pkgdesc = A developer-first CLI that helps you discover, inspect, diagnose, and manage network ports with rich context and plain-English insights
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/vikas0686/portctl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = portctl
+	conflicts = portctl
+	options = !strip
+	source_x86_64 = portctl-x86_64-0.2.0.tgz::https://github.com/vikas0686/portctl/releases/download/v0.2.0/portctl_linux_amd64.tar.gz
+	sha256sums_x86_64 = ed7e68cc6613ac2a3d7959c6e04299ac2c69375d3cfa362104f265b6ebfdc81a
+	source_aarch64 = portctl-aarch64-0.2.0.tgz::https://github.com/vikas0686/portctl/releases/download/v0.2.0/portctl_linux_arm64.tar.gz
+	sha256sums_aarch64 = 595c4e3d2226e580f2765d5a520f1d176f4c11d3c8e4c53bf7b492eeda9424c4
+
+pkgname = portctl-bin

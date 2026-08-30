@@ -1,0 +1,5 @@
+[portctl-bin]
+source = "github"
+github = "vikas0686/portctl"
+use_latest_release = true
+prefix = "v"
