@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=cert
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Cert is the Go tool to get TLS certificate information."
 arch=('x86_64' 'aarch64')
 url="https://github.com/genkiroid/cert"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/genkiroid/cert.git#tag=$pkgver")
+_commit='fe9a3bec009a4c493e8ec544c68dc1704ed19e2b'
+source=("git+https://github.com/genkiroid/cert.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit

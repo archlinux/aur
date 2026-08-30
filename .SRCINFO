@@ -1,7 +1,7 @@
 pkgbase = cert
 	pkgdesc = Cert is the Go tool to get TLS certificate information.
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/genkiroid/cert
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = cert
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/genkiroid/cert.git#tag=1.0.0
+	source = git+https://github.com/genkiroid/cert.git#commit=fe9a3bec009a4c493e8ec544c68dc1704ed19e2b
 	sha256sums = SKIP
 
 pkgname = cert
