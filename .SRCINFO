@@ -1,8 +1,8 @@
 pkgbase = fladder-git
-	pkgdesc = Fladder - A Simple Jellyfin Frontend
+	pkgdesc = A cross-platform Jellyfin Frontend built on top of Flutter
 	pkgver = r1542.96b4d9a
-	pkgrel = 1
-	url = https://github.com/Fladder-App/Fladder
+	pkgrel = 2
+	url = https://github.com/DonutWare/Fladder
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = patchelf
@@ -13,13 +13,12 @@ pkgbase = fladder-git
 	makedepends = ninja
 	makedepends = jq
 	makedepends = curl
-	depends = glibc
 	depends = mpv
 	depends = gtk3
 	depends = xdg-user-dirs
 	provides = fladder
 	conflicts = fladder
-	source = git+https://github.com/Fladder-App/Fladder.git#branch=develop
+	source = git+https://github.com/DonutWare/Fladder.git#branch=develop
 	source = fladder.desktop
 	sha256sums = SKIP
 	sha256sums = 0511c6da677cf361abb8d997a9e8795b39ab083cdbe79b2d7bbb8896c4c5d733
