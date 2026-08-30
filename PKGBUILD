@@ -1,7 +1,7 @@
 # Maintainer: prankstr <https://github.com/prankstr>
 # Keep depends/optdepends/options in sync across vibepanel, vibepanel-bin, and vibepanel-git.
 pkgname=vibepanel-bin
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="A GTK4 panel for Wayland with notifications, OSD, and quick settings"
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('vibepanel' 'vibepanel-git')
 options=(!debug)
 source=("vibepanel-${pkgver}::https://github.com/prankstr/vibepanel/releases/download/v${pkgver}/vibepanel-x86_64-unknown-linux-gnu"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/prankstr/vibepanel/v${pkgver}/LICENSE")
-sha256sums=('ef7d0843cdaea362d6ff8bfae1255b37e06618d73dd5ef1af9354dbe3f664fcd'
+sha256sums=('4b481abdba319773b669e263fcfb843dde9f9812a322a7d4f9d232e6c6f9815c'
             'bd1e1e78cb74074a2d09d2a4e87675991cdfb45c90dd4746728d8daeb480f9ac')
 
 package() {
