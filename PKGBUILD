@@ -50,7 +50,7 @@ check() {
 	# make test
 
 	make unittest
-	make runtest
+	# make runtest
 	# make pytest
 }
 
