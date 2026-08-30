@@ -1,0 +1,18 @@
+post_install() {
+	_notice
+}
+
+post_upgrade() {
+	_notice
+}
+
+_notice() {
+	cat <<EOF
+
+==> NOTICE: 'super-productivity' is now available in the official Arch Linux repositories.
+==> This AUR package (superproductivity-bin) is no longer needed. Please switch to the
+==> official 'super-productivity' package:
+==>     sudo pacman -Rdd superproductivity-bin && sudo pacman -S super-productivity
+
+EOF
+}
