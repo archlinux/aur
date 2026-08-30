@@ -1,6 +1,6 @@
 # Maintainer: Bruno do Nascimento <eusouobn@gmail.com>
 pkgname=sddm-astronaut-theme-bin
-pkgver=88.292c87b
+pkgver=62.8f41a83
 pkgrel=1
 pkgdesc="Series of modern looking themes for SDDM (versão binária pré-compilada)"
 arch=('any')
@@ -12,8 +12,8 @@ conflicts=('sddm-astronaut-theme' 'sddm-astronaut-theme-git')
 install="${pkgname}.install"
 options=(!debug)
 
-source=("https://github.com/eusouobn/sddm-astronaut-theme-bin-releases/releases/download/v${pkgver}/sddm-astronaut-theme-full-${pkgver}-any.tar.gz")
-sha256sums=('6cd2392fe409e614e8dd85f1cead365625ddf382f6b29f8f1d8eb006f7a0cbb0')
+source=("https://github.com/eusouobn/sddm-astronaut-theme-bin-releases/releases/download/v62.8f41a83/sddm-astronaut-theme-full-${pkgver}-any.tar.gz")
+sha256sums=('b9b0f65aba5be8974ed87837455d0f88583f2db51bdeeb5bd37cf6470d42ceb2')
 
 package() {
     cd "$srcdir"
