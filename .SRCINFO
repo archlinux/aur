@@ -1,7 +1,7 @@
 pkgbase = hashi-up
 	pkgdesc = bootstrap HashiCorp Consul, Nomad, or Vault over SSH < 1 minute
 	pkgver = 0.16.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jsiebens/hashi-up
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = hashi-up
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/jsiebens/hashi-up.git#tag=v0.16.0
+	source = git+https://github.com/jsiebens/hashi-up.git#commit=b062f5d9d4040b591f733a9e58e8977faad1ae88
 	sha256sums = SKIP
 
 pkgname = hashi-up

@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=hashi-up
 pkgver=0.16.0
-pkgrel=3
+pkgrel=4
 pkgdesc="bootstrap HashiCorp Consul, Nomad, or Vault over SSH < 1 minute"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jsiebens/hashi-up"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/jsiebens/hashi-up.git#tag=v$pkgver")
+_commit='b062f5d9d4040b591f733a9e58e8977faad1ae88'
+source=("git+https://github.com/jsiebens/hashi-up.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
