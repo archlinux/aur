@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 
 pkgname=linsys2
-pkgver=r92.20260830.6c59508
+pkgver=r93.20260830.28da475
 pkgrel=1
 pkgdesc='Build, debug, and run Windows programs on Linux with the full MSYS2 ecosystem. No VM. No dual-boot. No containers.'
 arch=('x86_64' 'aarch64' 'riscv64' 'loong64')
