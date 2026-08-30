@@ -1,7 +1,7 @@
 pkgbase = saw
 	pkgdesc = Fast, multi-purpose tool for AWS CloudWatch Logs
 	pkgver = 0.2.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/TylerBrock/saw
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = saw
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/TylerBrock/saw.git#tag=v0.2.2
+	source = git+https://github.com/TylerBrock/saw.git#commit=785718a1783792b69fd00466c0954d89a947c8b9
 	sha256sums = SKIP
 
 pkgname = saw

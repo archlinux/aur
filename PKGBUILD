@@ -2,20 +2,25 @@
 # Contributor:
 pkgname=saw
 pkgver=0.2.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Fast, multi-purpose tool for AWS CloudWatch Logs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/TylerBrock/saw"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/TylerBrock/saw.git#tag=v$pkgver")
+_commit='785718a1783792b69fd00466c0954d89a947c8b9'
+source=("git+https://github.com/TylerBrock/saw.git#commit=$_commit")
 sha256sums=('SKIP')
 
-build() {
+prepare() {
   cd "$pkgname" || exit
   go mod init github.com/TylerBrock/saw
   go mod tidy
+}
+
+build() {
+  cd "$pkgname" || exit
   go build \
     -trimpath \
     -ldflags='-s -w' \
