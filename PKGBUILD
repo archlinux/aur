@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A terminal countdown timer and stopwatch with big ASCII-art digits"
 
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,9 +27,9 @@ options=('!strip')
 source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
-sha256sums=('a9db65d399bbc8550c0a585c448ff3a067f1ce178443b761f90e328d2c5124d1'
+sha256sums=('94aa1ae847282eb9f6c24bb4758d2b77b5e66a694c7defe9a9f825689c076b9f'
             '13652efbec3141f3283d21d82d8d4e335fbe49316b26703e7ac149cae7c78682')
-sha256sums_x86_64=('848b074a2785ecb4ae058c07f1017b72573f93d54454675f98c895bdf4d7f8d5')
+sha256sums_x86_64=('39fc24dac076b8c0868b97b8e889e385017e450092b44a181e22e981875b467c')
 
 
 package() {

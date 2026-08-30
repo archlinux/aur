@@ -1,6 +1,6 @@
 pkgbase = zeitx-bin
 	pkgdesc = A terminal countdown timer and stopwatch with big ASCII-art digits
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/opmr0/zeitx
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = zeitx-bin
 	provides = zeitx
 	conflicts = zeitx
 	options = !strip
-	source = README-0.1.0.md::https://raw.githubusercontent.com/opmr0/zeitx/v0.1.0/README.md
-	source = LICENSE-0.1.0::https://raw.githubusercontent.com/opmr0/zeitx/v0.1.0/LICENSE
-	sha256sums = a9db65d399bbc8550c0a585c448ff3a067f1ce178443b761f90e328d2c5124d1
+	source = README-0.1.1.md::https://raw.githubusercontent.com/opmr0/zeitx/v0.1.1/README.md
+	source = LICENSE-0.1.1::https://raw.githubusercontent.com/opmr0/zeitx/v0.1.1/LICENSE
+	sha256sums = 94aa1ae847282eb9f6c24bb4758d2b77b5e66a694c7defe9a9f825689c076b9f
 	sha256sums = 13652efbec3141f3283d21d82d8d4e335fbe49316b26703e7ac149cae7c78682
-	source_x86_64 = zeitx-x86_64-0.1.0::https://github.com/opmr0/zeitx/releases/download/v0.1.0/zeitx-linux-x86_64
-	sha256sums_x86_64 = 848b074a2785ecb4ae058c07f1017b72573f93d54454675f98c895bdf4d7f8d5
+	source_x86_64 = zeitx-x86_64-0.1.1::https://github.com/opmr0/zeitx/releases/download/v0.1.1/zeitx-linux-x86_64
+	sha256sums_x86_64 = 39fc24dac076b8c0868b97b8e889e385017e450092b44a181e22e981875b467c
 
 pkgname = zeitx-bin
