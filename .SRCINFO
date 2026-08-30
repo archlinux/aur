@@ -1,7 +1,7 @@
 pkgbase = jaggr
 	pkgdesc = JSON Aggregation CLI
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rs/jaggr
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = jaggr
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/rs/jaggr.git#tag=1.0.1
+	source = git+https://github.com/rs/jaggr.git#commit=af08f8a4a77e6618a39abc031f77313d29b62c60
 	sha256sums = SKIP
 
 pkgname = jaggr

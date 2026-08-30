@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=jaggr
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="JSON Aggregation CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rs/jaggr"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/rs/jaggr.git#tag=$pkgver")
+_commit='af08f8a4a77e6618a39abc031f77313d29b62c60'
+source=("git+https://github.com/rs/jaggr.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
