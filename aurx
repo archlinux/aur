@@ -33,6 +33,7 @@ usage() {
 		  update        force install any package from AUR and delete source after.
 		  search        query the AUR database via the HTTP RPC API.
 		  suggest       completion results via the AUR HTTP RPC API.
+		  history       show git history of specific package.
 		  completion    generate completion for the specified shell.
 		  list          search for all locally installed AUR packages.
 		
@@ -46,6 +47,7 @@ usage() {
 		  -f --force                           forces the operation, where appliable.
 		  -h --help                            display this information and exit.
 		     --persistent-path [PATH]          path for persistent data. ("\${HOME}/.aurx/cfg")
+		     --source-path [PATH]              work directory for builds.("\${HOME}/.aurx/src")
 		  -t --tmp-path [PATH]                 temp filesystem for various operations. ("/tmp/aurx")
 		     --verbosity [LEVEL]               level of verbosity. (2)
 		                                       0 - none, 1 - stderr, 2 - all.
@@ -63,10 +65,10 @@ usage() {
 		                                       "rpc" - AUR HTTP RPC API, "pkgbuild" - source path PKGBUILD.
 		  -d --download-only                   download the source from AUR and stop.
 		     --git-connection                  how to connect to aur git. "https", "ssh". ("https")
+		     --git-revision                    resets git repo to specified commit before installing. ("HEAD")
 		  -G --git-opts [OPTS]..               opts to give in to git operations. ("")
 		  -M --makepkg-opts [OPTS]..           opts to give in to makepkg installs. ("-sirc")
 		     --overwrite-existing              overwrite eventually existing sources.
-		     --source-path [PATH]              work directory for builds.("\${HOME}/.aurx/src")
 		  -V --verify-versions                 compare target versions to installed ones.
 		     --wipe-existing                   wipe eventually existing sources.
 
@@ -76,12 +78,12 @@ usage() {
 		  search:
 		  -C --curl-opts                       opts to give in to curl.
 		                                       timeouts can be overwritten with this.
-		     --maintained                      filter out unmaintained packages.
 		     --no-mark-installed               don't show the '[installed]' mark.
 		     --no-mark-update                  do not check for updates while searching.
-		     --no-out-of-date                  filter out all out of date packages.
+		     --not-maintained                  include not maintained packages.
 		     --order-by [ORDER]                how to order search results. ("descending")
 		                                       "ascending", "descending".
+		     --out-of-date                     include out of date packages.
 		  -o --output [TYPE]                   how to output search results. ("formatted")
 		                                       "formatted", "json", "json-lines".
 		  -p --parallel [COUNT]                how many requests to do simultaneously. (50)
@@ -107,9 +109,17 @@ usage() {
 		     --block-overwrite                 don't overwrite existing sources.
 		  -x --comparison-criteria [CRITERIA]  criteria to use when comparing packages. ("rpc")
 		                                       "rpc" - AUR HTTP RPC API, "pkgbuild" - source path PKGBUILD.
+		     --git-revision                    resets git repo to specified commit before installing. ("")
 		     --keep-sources                    don't cleanup after successful updates.
 		     --keep-failed-sources             don't cleanup after unsuccessful updates.
 		  -M --makepkg-opts [OPTS]             opts to give in to makepkg installs. ("-sirc")
+
+		  history:
+		     --commits                          how many commits to display. (10)
+		     --git-revision                     full diff string to give in.
+		                                        overwrites oldest/newest commit. ("HEAD")
+		     --oldest-commit                    which commit hash to start from. ("")
+		     --newest-commit                    which commit hash to end at. ("")
 
 		  list:
 		     --no-mark-installed               don't show the '[installed]' mark.
@@ -265,11 +275,21 @@ print_error() {
 			echo "[!] Unknown describe output value: \"${OUTPUT}\"." >&2
 			echo "[i] Possible options are: ${OUTPUT_DESCRIBE_VALUES[*]}." >&2
 			;;
+		83 )
+			echo "[!] Unknown history output value: \"${OUTPUT}\"." >&2
+			echo "[i] Possible options are: ${OUTPUT_HISTORY_VALUES[*]}." >&2
+			;;
 		150 )
 			echo "[!] Could not fetch \"${SELECTED_PACKAGE}\" information."
 			;;
 		151 )
 			echo "[!] Could not print \"${SELECTED_PACKAGE}\" information."
+			;;
+		160 )
+			echo "[!] Could not grab \"${SELECTED_PACKAGE}\" git history."
+			;;
+		161 )
+			echo "[!] Could not print \"${SELECTED_PACKAGE}\" git history."
 			;;
 		* )
 			echo "[-] No error message found for error ${GIVEN_ERROR}." >&2
@@ -289,19 +309,23 @@ generate_config_json() {
 		  "BLOCK_OVERWRITE": false,
 		  "CLEAN_OPERATION": false,
 		  "CLEANUP": false,
+		  "COMMITS": 10,
 		  "COMPARISON_CRITERIA": "rpc",
 		  "CURL_OPTS": [],
 		  "DOWNLOAD_ONLY": false,
 		  "EXECUTABLE_NAME": "aurx",
 		  "FORCE": false,
+		  "GIT_REVISION": "",
 		  "GIT_OPTS": [],
 		  "KEEP_FAILED_SOURCES": false,
 		  "KEEP_SOURCES": false,
-		  "MAINTAINED": false,
+		  "NOT_MAINTAINED": false,
 		  "MAKEPKG_OPTS": ["-sirc"],
+		  "NEWEST_COMMIT": "",
 		  "NO_MARK_INSTALLED": false,
 		  "NO_MARK_UPDATE": false,
-		  "NO_OUT_OF_DATE": false,
+		  "OLDEST_COMMIT": "",
+		  "OUT_OF_DATE": false,
 		  "ORDER_BY": "descending",
 		  "OUTPUT": "formatted",
 		  "OVERWRITE_EXISTING": false,
@@ -326,7 +350,7 @@ aurx_completion() {
 		bash )
 			cat <<- EOS
 				_aurx_completion() {
-					local CURRENT_WORD="\${COMP_WORDS[COMP_CWORD]}"
+				        local CURRENT_WORD="\${COMP_WORDS[COMP_CWORD]}"
 				        local LAST_WORD="\${COMP_WORDS[COMP_CWORD-1]}"
 				        COMPREPLY=()
 				        local POSSIBLE_OPERATIONS="${POSSIBLE_OPERATIONS[*]}"
@@ -339,12 +363,14 @@ aurx_completion() {
 				        local SUGGEST_OPTIONS="${SUGGEST_OPTIONS[*]}"
 				        local COMPLETION_OPTIONS="${COMPLETION_OPTIONS[*]}"
 				        local LIST_OPTIONS="${LIST_OPTIONS[*]}"
+				        local HISTORY_OPTIONS="${HISTORY_OPTIONS[*]}"
 				        local AVAILABLE_COMPLETIONS="${AVAILABLE_COMPLETIONS[*]}"
 				        local COMPARISON_CRITERIA_VALUES="${COMPARISON_CRITERIA_VALUES[*]}"
 				        local GIT_CONNECTION_VALUES="${GIT_CONNECTION_VALUES[*]}"
 				        local OUTPUT_VALUES="${OUTPUT_VALUES[*]}"
 				        local OUTPUT_SUGGEST_VALUES="${OUTPUT_SUGGEST_VALUES[*]}"
 				        local OUTPUT_DESCRIBE_VALUES="${OUTPUT_DESCRIBE_VALUES[*]}"
+				        local OUTPUT_HISTORY_VALUES="${OUTPUT_HISTORY_VALUES[*]}"
 				        local ORDER_BY_VALUES="${ORDER_BY_VALUES[*]}"
 				        local SEARCH_CRITERIA_VALUES="${SEARCH_CRITERIA_VALUES[*]}"
 				        local SORT_BY_VALUES="${SORT_BY_VALUES[*]}"
@@ -367,6 +393,8 @@ aurx_completion() {
 				                        COMPREPLY+=( \$(compgen -W "\${COMPLETION_OPTIONS}" -- "\${CURRENT_WORD}") )
 				                elif printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "list"; then
 				                        COMPREPLY+=( \$(compgen -W "\${LIST_OPTIONS}" -- "\${CURRENT_WORD}") )
+				                elif printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "history"; then
+				                        COMPREPLY+=( \$(compgen -W "\${HISTORY_OPTIONS}" -- "\${CURRENT_WORD}") )
 				                fi
 				        elif [[ \${LAST_WORD} == "--search-criteria" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${SEARCH_CRITERIA_VALUES}" -- "\${CURRENT_WORD}") )
@@ -380,6 +408,8 @@ aurx_completion() {
 				                COMPREPLY=( \$(compgen -W "\${OUTPUT_DESCRIBE_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--output" ]] || [[ \${LAST_WORD} == "-o" ]] && printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "suggest"; then
 				                COMPREPLY=( \$(compgen -W "\${OUTPUT_SUGGEST_VALUES}" -- "\${CURRENT_WORD}") )
+				        elif [[ \${LAST_WORD} == "--output" ]] || [[ \${LAST_WORD} == "-o" ]] && printf '%s\n' "\${COMP_WORDS[@]}" | grep -qx "history"; then
+				                COMPREPLY=( \$(compgen -W "\${OUTPUT_HISTORY_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--order-by" ]]; then
 				                COMPREPLY=( \$(compgen -W "\${ORDER_BY_VALUES}" -- "\${CURRENT_WORD}") )
 				        elif [[ \${LAST_WORD} == "--sort-by" ]]; then
@@ -388,7 +418,7 @@ aurx_completion() {
 				                COMPREPLY=( \$(compgen -d -- "\${CURRENT_WORD}") )
 				        elif [[ -z \$(echo \${COMP_WORDS[*]} \${POSSIBLE_OPERATIONS[*]} | tr " " "\n" | sort | uniq -D) ]]; then
 				                COMPREPLY=( \$(compgen -W "\${POSSIBLE_OPERATIONS}" -- "\${CURRENT_WORD}") )
-				        elif [[ \${#CURRENT_WORD} -ge 3 ]] && [[ ! -z \$(echo \${COMP_WORDS[*]} " install search " | tr " " "\n" | sort | uniq -D) ]]; then
+				        elif [[ \${#CURRENT_WORD} -ge 3 ]] && [[ ! -z \$(echo \${COMP_WORDS[*]} " install search describe history " | tr " " "\n" | sort | uniq -D) ]]; then
 				                COMPREPLY=( \$(compgen -W "\$(${EXECUTABLE_NAME} suggest \${CURRENT_WORD} | tr '\n' ' ')" -- "\${CURRENT_WORD}") )
 				        elif [[ ! -z \$(echo \${COMP_WORDS[*]} " remove update " | tr " " "\n" | sort | uniq -D) ]]; then
 				                COMPREPLY=( \$(compgen -W "\$(cat ${PERSISTENT_PATH}/package_list | tr '\n' ' ')" -- "\${CURRENT_WORD}") )
@@ -523,6 +553,9 @@ launch_system_checks() {
 		search | completion | list | suggest )
 			REQUIRED_PACKAGES=('curl' 'echo' 'jq')
 			;;
+		history )
+			REQUIRED_PACKAGES=('echo' 'jq' 'git')
+			;;
 		* )
 			;;
 	esac
@@ -627,8 +660,8 @@ load_explicit_opts() {
 	fi
 
 	LONGOPTS=''
-	LONGOPTS+='all,block-overwrite,cleanup,clean-operation,download-only,force,help,keep-sources,keep-failed-sources,maintained,no-mark-installed,no-mark-update,no-out-of-date,overwrite-existing,verify-versions,version,wipe-existing'
-	LONGOPTS+=',comparison-criteria:,config:,curl-opts:,executable-name:,git-connection:,git-opts:,makepkg-opts:,output:,order-by:,parallel:,persistent-path:,remove-opts:,search-criteria:,search-results:,sort-by:,source-path:,tmp-path:,verbosity:'
+	LONGOPTS+='all,block-overwrite,cleanup,clean-operation,download-only,force,help,keep-sources,keep-failed-sources,not-maintained,no-mark-installed,no-mark-update,out-of-date,overwrite-existing,verify-versions,version,wipe-existing'
+	LONGOPTS+=',comparison-criteria:,commits:,config:,curl-opts:,executable-name:,git-connection:,git-revision:,git-opts:,makepkg-opts:,newest-commit:,oldest-commit:,output:,order-by:,parallel:,persistent-path:,remove-opts:,search-criteria:,search-results:,sort-by:,source-path:,tmp-path:,verbosity:'
 	OPTIONS=''
 	OPTIONS+='adfhvV'
 	OPTIONS+='e:G:c:C:M:o:p:R:t:x:'
@@ -661,6 +694,10 @@ load_explicit_opts() {
 				COMPARISON_CRITERIA="${2}"
 				shift 2
 				;;
+			--commits )
+				COMMITS=${2}
+				shift 2
+				;;
 			-c|--config )
 				CONFIG="${2}"
 				shift 2
@@ -688,6 +725,10 @@ load_explicit_opts() {
 				GIT_CONNECTION="${2}"
 				shift 2
 				;;
+			--git-revision )
+				GIT_REVISION="${2}"
+				shift 2
+				;;
 			-G|--git-opts )
 				GIT_OPTS=()
 				for OPT in ${2}; do
@@ -707,8 +748,8 @@ load_explicit_opts() {
 				KEEP_FAILED_SOURCES=true
 				shift
 				;;
-			--maintained )
-				MAINTAINED=true
+			--not-maintained )
+				NOT_MAINTAINED=true
 				shift
 				;;
 			-M|--makepkg-opts )
@@ -716,6 +757,10 @@ load_explicit_opts() {
 				for OPT in ${2}; do
 					MAKEPKG_OPTS+=("${OPT}")
 				done
+				shift 2
+				;;
+			--newest-commit )
+				NEWEST_COMMIT="${2}"
 				shift 2
 				;;
 			--no-mark-update )
@@ -726,8 +771,12 @@ load_explicit_opts() {
 				NO_MARK_INSTALLED=true
 				shift
 				;;
-			--no-out-of-date )
-				NO_OUT_OF_DATE=true
+			--oldest-commit )
+				OLDEST_COMMIT="${2}"
+				shift 2
+				;;
+			--out-of-date )
+				OUT_OF_DATE=true
 				shift
 				;;
 			-o|--output )
@@ -821,6 +870,22 @@ load_piped_packages() {
 		while read -r STDIN_OPT; do
 			TARGET_PACKAGES+=("${STDIN_OPT}")
 		done
+	fi
+}
+
+process_git_revision() {
+	if [[ -n "${GIT_REVISION}" ]]; then
+		return 0
+	elif [[ -n "${OLDEST_COMMIT}" ]]; then
+		if [[ -n "${NEWEST_COMMIT}" ]]; then
+			GIT_REVISION="${OLDEST_COMMIT}^..${NEWEST_COMMIT}"
+		else
+			GIT_REVISION="${OLDEST_COMMIT}^..HEAD"
+		fi
+	elif [[ -n "${NEWEST_COMMIT}" ]]; then
+		GIT_REVISION="${NEWEST_COMMIT}"
+	else
+		GIT_REVISION="HEAD"
 	fi
 }
 
@@ -961,6 +1026,26 @@ pull_git_repo() {
 	return 0
 }
 
+detach_git_head() {
+	local TARGET_PACKAGE="${1}"
+	local GIT_REVISION="${2}"
+	if ! pushd "${SOURCE_PATH}"/"${TARGET_PACKAGE}" 1> /dev/null; then
+		print_error 63
+		exit 63
+	fi
+	if ! git "${GIT_OPTS[@]}" switch --detach "${GIT_REVISION}"; then
+		if ! popd 1> /dev/null; then
+			print_error 64
+			exit 64
+		fi
+		return 1
+	fi
+	if ! popd 1> /dev/null; then
+		print_error 64
+		exit 64
+	fi
+}
+
 build_makepkg_package() {
 	local TARGET_PACKAGE="${1}"
 	if ! pushd "${SOURCE_PATH}"/"${TARGET_PACKAGE}" 1> /dev/null; then
@@ -1098,10 +1183,10 @@ filter_aur_data() {
 		if [[ "${ORDER_BY}" == "descending" ]]; then
 			RESULTS=$(echo "${RESULTS}" | jq -cr 'reverse')
 		fi
-		if ${NO_OUT_OF_DATE}; then
+		if ! ${OUT_OF_DATE}; then
 			RESULTS=$(echo "${RESULTS}" | jq -cr '[.[] | select(.OutOfDate == null)]')
 		fi
-		if ${MAINTAINED}; then
+		if ! ${NOT_MAINTAINED}; then
 			RESULTS=$(echo "${RESULTS}" | jq -cr '[.[] | select(.Maintainer != null)]')
 		fi
 		RESULTS=$(echo "${RESULTS}" | jq -cr ".[:${SEARCH_RESULTS}]")
@@ -1172,12 +1257,72 @@ print_aur_data() {
 	esac
 }
 
+grab_git_history() {
+	local TARGET_PACKAGE="${1}"
+	local SOURCE_PATH="/tmp/aurx"
+
+	if ! [[ -d "${SOURCE_PATH}/${TARGET_PACKAGE}" ]]; then
+		clone_git_repo "${TARGET_PACKAGE}" &> /dev/null || return 1
+	else
+		pull_git_repo "${TARGET_PACKAGE}" &> /dev/null || return 2
+	fi
+	if ! pushd "${SOURCE_PATH}/${TARGET_PACKAGE}" 1> /dev/null; then
+		print_error 63
+		exit 63
+	fi
+
+	if ! RESULTS=$(git "${GIT_OPTS[@]}" log "${GIT_REVISION}" -${COMMITS} \
+		--pretty='format:%H---SEPARATOR---%an <%ae>---SEPARATOR---%at---SEPARATOR---%s---SEPARATOR---' \
+		| jq -scR '[split("\n") | map(split("---SEPARATOR---")) | .[] | {"commit": .[0],"author": .[1],"message": .[3],"timestamp": .[2]}]' \
+		); then
+		if ! popd 1> /dev/null; then
+			print_error 64
+			exit 64
+		fi
+		rm -rf "${SOURCE_PATH:?SOURCE_PATH not defined}/${TARGET_PACKAGE}"
+		return 3
+	fi
+	if ! popd 1> /dev/null; then
+		print_error 64
+		exit 64
+	fi
+	rm -rf "${SOURCE_PATH:?SOURCE_PATH not defined}/${TARGET_PACKAGE}"
+
+	echo "${RESULTS}"
+}
+
+print_git_history() {
+	local GIT_HISTORY="${*}"
+
+	case "${OUTPUT}" in
+		json-lines )
+			echo "${GIT_HISTORY}"
+			;;
+		formatted )
+			echo "--- ${TARGET_PACKAGE} ---"
+			echo "${GIT_HISTORY}" \
+				| jq -crM ".[] | .timestamp = (.timestamp | tonumber | todateiso8601) | \"- \(.commit) \(.timestamp) \(.author)\n\t\(.message)\""
+			;;
+		* )
+			print_error 83
+			exit 83
+			;;
+	esac
+}
+		
 # Tier 2 functions.
 
 describe_aur_package() {
 	local TARGET_PACKAGE="${1}"
 	AUR_PACKAGE_DESCRIPTION=$(gather_aur_package_info "${TARGET_PACKAGE}") || return 150
 	print_aur_package_info "${AUR_PACKAGE_DESCRIPTION}" || return 151
+}
+
+history_aur_package() {
+	local TARGET_PACKAGE="${1}"
+	local GIT_HISTORY
+	GIT_HISTORY=$(grab_git_history "${TARGET_PACKAGE}") || return 160
+	print_git_history "${GIT_HISTORY}" || return 161
 }
 
 install_aur_package() {
@@ -1202,6 +1347,10 @@ install_aur_package() {
 		return 0
 	fi
 
+	if [[ -n "${GIT_REVISION}" ]]; then
+		detach_git_head "${TARGET_PACKAGE}" "${GIT_REVISION}" || return 13
+	fi
+
 	if build_makepkg_package "${TARGET_PACKAGE}"; then
 		if ${CLEANUP}; then
 			rm -rf "${SOURCE_PATH:?SOURCE_PATH not defined.}"/"${TARGET_PACKAGE}" || return 10
@@ -1210,10 +1359,10 @@ install_aur_package() {
 		if ${CLEAN_OPERATION}; then
 			rm -rf "${SOURCE_PATH:?SOURCE_PATH not defined.}"/"${TARGET_PACKAGE}" || return 10
 		fi
-		return 13
+		return 14
 	fi
 	
-	write_package_list "${TARGET_PACKAGE}" || return 14
+	write_package_list "${TARGET_PACKAGE}" || return 15
 
 	return 0
 }
@@ -1268,14 +1417,14 @@ process_pseudofunctions() {
 
 launch_execution() {
 	case "${CURRENT_OPERATION}" in
-		describe|install|remove|suggest )
+		describe|install|remove|suggest|history )
 			for SELECTED_PACKAGE in "${TARGET_PACKAGES[@]}"; do
 				"${CURRENT_OPERATION}"_aur_package "${SELECTED_PACKAGE}" 1> "${STDOUT_DESTINATION}" 2> "${STDERR_DESTINATION}"
 				ERROR_CODE=${?}
 				case ${ERROR_CODE} in
 					0 )
 						;;
-					10|11|12|13|14|20|21|40|150|151 )
+					10|11|12|13|14|20|21|40|150|151|160|161 )
 						print_error "${ERROR_CODE}"
 						;;
 					* )
@@ -1325,6 +1474,7 @@ execute_script() {
 	load_env_vars
 	load_explicit_opts "${@}"
 	load_piped_packages
+	process_git_revision
 	[[ -n "${CONFIG}" ]] && load_config "${CONFIG}"
 	launch_sanity_checks
 	launch_system_checks
@@ -1340,37 +1490,40 @@ declare -a METADATA_ARRAYS
 
 METADATA_VARIABLES=("INTERNAL_VERSION")
 METADATA_ARRAYS=("INTERNAL_VARIABLES" "INTERNAL_ARRAYS" "POSSIBLE_OPERATIONS" "GENERAL_OPTIONS" "DESCRIBE_OPTIONS" "INSTALL_OPTIONS" \
-	"REMOVE_OPTIONS" "UPDATE_OPTIONS" "SEARCH_OPTIONS" "SUGGEST_OPTIONS" "COMPLETION_OPTIONS" "LIST_OPTIONS" "AVAILABLE_COMPLETIONS" \
-	"COMPARISON_CRITERIA_VALUES" "OUTPUT_VALUES" "OUTPUT_DESCRIBE_VALUES" "OUTPUT_SUGGEST_VALUES" "ORDER_BY_VALUES" "SEARCH_CRITERIA_VALUES" "SORT_BY_VALUES")
+	"REMOVE_OPTIONS" "UPDATE_OPTIONS" "SEARCH_OPTIONS" "SUGGEST_OPTIONS" "COMPLETION_OPTIONS" "LIST_OPTIONS" "HISTORY_OPTIONS" "AVAILABLE_COMPLETIONS" \
+	"COMPARISON_CRITERIA_VALUES" "OUTPUT_VALUES" "OUTPUT_DESCRIBE_VALUES" "OUTPUT_SUGGEST_VALUES" "OUTPUT_HISTORY_VALUES" "ORDER_BY_VALUES" \
+	"SEARCH_CRITERIA_VALUES" "SORT_BY_VALUES")
 
 declare "${METADATA_VARIABLES[@]}"
 declare -a "${METADATA_ARRAYS[@]}"
 
-INTERNAL_VERSION="1.0.8-6"
-INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" "CONFIG" \
-	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "GIT_CONNECTION" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" \
-	"MAINTAINED" "NO_MARK_INSTALLED" "NO_MARK_UPDATE" "NO_OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
+INTERNAL_VERSION="1.0.9-3"
+INTERNAL_VARIABLES=("ALL" "BLOCK_OVERWRITE" "CLEAN_OPERATION" "CLEANUP" "COMPARISON_CRITERIA" "COMMITS" "CONFIG" \
+	"DOWNLOAD_ONLY" "EXECUTABLE_NAME" "FORCE" "GIT_CONNECTION" "GIT_REVISION" "KEEP_FAILED_SOURCES" "KEEP_SOURCES" "NEWEST_COMMIT" \
+	"NOT_MAINTAINED" "NO_MARK_INSTALLED" "NO_MARK_UPDATE" "OLDEST_COMMIT" "OUT_OF_DATE" "ORDER_BY" "OUTPUT" "OVERWRITE_EXISTING" \
 	"PARALLEL" "PERSISTENT_PATH" "SEARCH_CRITERIA" "SEARCH_RESULTS" "SORT_BY" "SOURCE_PATH" "TMP_PATH" \
 	"VERBOSITY" "VERIFY_VERSIONS" "WIPE_EXISTING")
 INTERNAL_ARRAYS=("CURL_OPTS" "GIT_OPTS" "MAKEPKG_OPTS" "REMOVE_OPTS")
-POSSIBLE_OPERATIONS=("describe" "install" "remove" "update" "search" "completion" "list" "suggest")
-GENERAL_OPTIONS=("-a" "--all" "-c" "--config" "-f" "--force" "-h" "--help" "--persistent-path" "-t" "--tmp-path" "--verbosity" "-v" "--version")
+POSSIBLE_OPERATIONS=("describe" "install" "remove" "update" "search" "completion" "list" "suggest" "history")
+GENERAL_OPTIONS=("-a" "--all" "-c" "--config" "-f" "--force" "-h" "--help" "--persistent-path" "--source-path" "-t" "--tmp-path" "--verbosity" "-v" "--version")
 DESCRIBE_OPTIONS=("-C" "--curl-opts" "-o" "--output")
-INSTALL_OPTIONS=("--cleanup" "--clean-operation" "-x" "--comparison-criteria" "-d" "--download-only" "-G" \
-	"--git-connection" "--git-opts" "-M" "--makepkg-opts" "--overwrite-existing" "--source-path" "-V" "--verify-versions" "--wipe-existing")
+INSTALL_OPTIONS=("--cleanup" "--clean-operation" "-x" "--comparison-criteria" "-d" "--download-only" "-G" "--git-revision" \
+	"--git-connection" "--git-opts" "-M" "--makepkg-opts" "--overwrite-existing" "-V" "--verify-versions" "--wipe-existing")
 REMOVE_OPTIONS=("-R" "--remove-opts")
-UPDATE_OPTIONS=("--block-overwrite" "-x" "--comparison-criteria" "-C" "--curl-opts" "--git-connection" "--keep-sources" \
+UPDATE_OPTIONS=("--block-overwrite" "-x" "--comparison-criteria" "-C" "--curl-opts" "--git-connection" "--git-revision" "--keep-sources" \
 	"--keep-failed-sources" "-M" "--makepkg-opts")
-SEARCH_OPTIONS=("-C" "--curl-opts" "--maintained" "--no-out-of-date" "--no-mark-installed" "--no-mark-update" \
+SEARCH_OPTIONS=("-C" "--curl-opts" "--not-maintained" "--out-of-date" "--no-mark-installed" "--no-mark-update" \
 	"-p" "--parallel" "--search-results" "--search-criteria" "--sort-by" "--order-by" "-o" "--output")
 SUGGEST_OPTIONS=("-C" "--curl-opts" "--search-results" "--order-by" "-o" "--output")
 COMPLETION_OPTIONS=("-e" "--executable-name")
 LIST_OPTIONS=("--no-mark-update" "-p" "--parallel" "--no-mark-installed")
+HISTORY_OPTIONS=("--commits" "--git-revision" "--newest-commit" "--oldest-commit")
 AVAILABLE_COMPLETIONS=("bash")
 GIT_CONNECTION_VALUES=("https" "ssh")
 COMPARISON_CRITERIA_VALUES=("rpc" "pkgbuild")
 OUTPUT_VALUES=("formatted" "json" "json-lines")
 OUTPUT_DESCRIBE_VALUES=("formatted" "json-lines")
+OUTPUT_HISTORY_VALUES=("formatted" "json-lines")
 OUTPUT_SUGGEST_VALUES=("formatted" "json-lines")
 ORDER_BY_VALUES=("ascending" "descending")
 SEARCH_CRITERIA_VALUES=("name" "name-desc" "depends" "checkdepends" "optdepends" "makedepends" "maintainer" \
