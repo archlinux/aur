@@ -2,7 +2,7 @@
 
 _pkgname=textract
 pkgname=$_pkgname-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Standalone desktop application for easy texture extraction & deskewing from images"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 	"$_pkgname-$pkgver.deb::$url/releases/download/v$pkgver/Textract_${pkgver}_amd64.deb"
 	"LICENSE-$pkgver::https://raw.githubusercontent.com/simonsanchezart/textract/4b4aa736b8b8ae92a18700f07ca913fcfc3ef77d/LICENSE"
 )
-sha256sums=('4185b8bb905bd5c2ba9c8a805b8ea26da05d43fd3cf799322ae7d1de326a7063'
+sha256sums=('7eee123b88316b77897c04aa5bfe562618c3944e9d77e66b4cede5e925582675'
             'a6d017f384c7e3587cb84784e8e3cb7d9557320a0cd6fbffb72488a4bd29c9c8')
 noextract=("$_pkgname-$pkgver.deb")
 
