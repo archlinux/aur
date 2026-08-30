@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=yamldiff
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A CLI tool to diff two YAML files."
 arch=('x86_64' 'aarch64')
 url="https://github.com/sahilm/yamldiff"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/sahilm/yamldiff.git#tag=$pkgver")
+_commit='584d5771767b262cf171d9c1f890d6daeb82492c'
+source=("git+https://github.com/sahilm/yamldiff.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
