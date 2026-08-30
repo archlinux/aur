@@ -14,7 +14,7 @@ optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'ffmpeg: playing GIFs'
             'xdg-desktop-portal: the file picker for attachments')
 provides=('fastsapp')
-conflicts=('fastsapp')
+conflicts=('fastsapp' 'fastsapp-bin')
 # !lto because ring compiles its own C and Arch's default CFLAGS put LTO
 # objects in the archive, which lld then cannot resolve: the link fails on
 # undefined ring_core_* symbols. The stable package is prebuilt and never

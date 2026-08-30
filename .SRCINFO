@@ -19,6 +19,7 @@ pkgbase = fastsapp-git
 	optdepends = xdg-desktop-portal: the file picker for attachments
 	provides = fastsapp
 	conflicts = fastsapp
+	conflicts = fastsapp-bin
 	options = !debug
 	options = !lto
 	source = fastsapp-git::git+https://github.com/crmne/fastsapp.git
