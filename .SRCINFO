@@ -1,0 +1,24 @@
+pkgbase = linux-eye-git
+	pkgdesc = A lightweight real-time Linux security and endpoint detection monitor (EDR)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/amitpadhan525/linux-eye
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-yaml
+	depends = python-psutil
+	depends = python-inotify-simple
+	depends = python-pyudev
+	depends = systemd
+	provides = linux-eye
+	conflicts = linux-eye
+	source = git+https://github.com/amitpadhan525/linux-eye.git
+	sha256sums = SKIP
+
+pkgname = linux-eye-git
