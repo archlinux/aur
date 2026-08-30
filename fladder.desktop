@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Fladder
-Comment=A Simple Jellyfin Frontend
+Comment=A cross-platform Jellyfin Frontend built on top of Flutter
 Exec=fladder
 Icon=fladder
 Terminal=false
