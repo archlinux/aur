@@ -3,7 +3,7 @@
 # Contributor: Bumsik Kim <k.bumsik@gmail.com>
 
 pkgname=uftrace
-pkgver=0.19
+pkgver=0.20
 pkgrel=1
 pkgdesc="Function graph tracer for C/C++/Rust"
 
@@ -19,22 +19,23 @@ makedepends=(
 )
 depends=(
   'glibc'
-  'libelf'
+  'libstdc++'
+  'xz'
   'python'
   'ncurses'
   'luajit'
   'capstone'
+  'libelf'
   'libunwind'
-  'libstdc++'
   'libtraceevent'
 )
-depends=(libtraceevent capstone uftrace python glibc libelf ncurses libstdc++)
+
 # Disable LTO due to upstream issue
 # https://github.com/namhyung/uftrace/issues/1343
-options=('!lto')
+options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/namhyung/uftrace/archive/v${pkgver}.tar.gz")
-sha256sums=('c35ef25f279684fc7d79dcc250fb29386890870fd2c9f812e587151419ca01af')
+sha256sums=('03189061130693b274a4d0af47c4a3135d4a496ca111b78233593bfcb3d3720f')
 
 build() {
 	cd "${pkgname}-${pkgver}/"
@@ -50,7 +51,7 @@ check() {
 	# make test
 
 	make unittest
-	# make runtest
+	make runtest
 	# make pytest
 }
 
