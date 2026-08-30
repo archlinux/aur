@@ -1,0 +1,4 @@
+[shuck-bin]
+source = "git"
+git = "https://github.com/ewhauser/shuck.git"
+prefix = "v"
