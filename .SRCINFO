@@ -1,0 +1,18 @@
+pkgbase = bagworm
+	pkgdesc = Opinionated developer UX for OCI containers - drops you into a shell inside your project's image
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Smiduweorc/Bagworm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = podman: container runtime
+	optdepends = docker: container runtime
+	optdepends = nerdctl: container runtime
+	options = !debug
+	source = bagworm-0.1.0.tar.gz::https://github.com/Smiduweorc/Bagworm/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = cb9917a2bb5e01d7c40c69dddb1a227c814a5d4d97ab7f9f34b7e9d08d122373
+
+pkgname = bagworm
