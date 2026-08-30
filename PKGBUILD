@@ -3,7 +3,7 @@
 
 pkgname=mold-ai
 _binname=mold
-pkgver=0.23.3
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Local AI image generation CLI — FLUX, SD3.5, SD 1.5, SDXL, Z-Image, Flux.2, Qwen-Image, Wuerstchen, LTX Video, & LTX-2 diffusion models on your GPU (built from source, CUDA)"
 arch=('x86_64')
@@ -31,6 +31,9 @@ makedepends=(
   'lld'
   'nasm'
   'bun'
+  # The `pulid` feature pulls in candle-onnx, whose build script drives
+  # prost-build, which shells out to protoc.
+  'protobuf'
 )
 
 provides=("${pkgname}=${pkgver}")
@@ -41,7 +44,7 @@ conflicts=('mold-ai-bin' 'mold-ai-git' 'mold')
 options=(!lto)
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1f79f8065b9ea505a9e1170067681357a65454c3aa6b604677c33d40cfb8e53a')
+sha256sums=('88cf655feedd4804398e59a1eced7da2bc09fd58b00ca6fde0b5b1d5a11fa777')
 
 prepare() {
   cd "mold-${pkgver}"
@@ -74,11 +77,14 @@ build() {
   #             every transitive dep, including build-script deps that
   #             --frozen alone would still allow to download
   # Together they make AUR chroot builds fully reproducible.
-  local h3_feature=""
-  [[ "${CUDA_COMPUTE_CAP}" == "89" ]] && h3_feature=",h3"
+  # SM89 names `h3-cuda`, not `cuda,h3`: since #1164 the bare `h3` feature
+  # implies neither CUDA nor the SM89 attention kernel. `h3-cuda` implies
+  # `cuda`, so it replaces the device feature instead of appending to it.
+  local gpu_feature="cuda"
+  [[ "${CUDA_COMPUTE_CAP}" == "89" ]] && gpu_feature="h3-cuda"
   cargo build --release --frozen --offline \
     -p mold-ai \
-    --features "cuda${h3_feature},preview,expand,tui,webp,mp4,metrics,mdns"
+    --features "${gpu_feature},preview,expand,tui,webp,mp4,metrics,mdns,pulid"
 }
 
 check() {
