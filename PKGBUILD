@@ -2,8 +2,8 @@
 
 pkgbase=linux-mnt-reform-bin
 pkgname=('linux-mnt-reform-bin' 'linux-mnt-reform-bin-headers')
-pkgver=7.1.10.reform1
-pkgrel=2
+pkgver=7.1.1.reform1
+pkgrel=1
 _base_kernel_version="${pkgver%%.reform*}"
 _kernver="${pkgver/.reform/-reform}"
 arch=('aarch64' 'x86_64')
@@ -26,9 +26,9 @@ source_x86_64=(
 )
 sha256sums=(
   '8a15cec00fc571b7b62dba4ad9aa7b0132fe837dca3a424828bb19a37f5d3e58'
-  'c8fcac9e8ba760f9e171a20f3e20764205445a9f09dd4a396cdbebb0f6b9acd0'
+  '8fbf86fb7756133921f442e82d5f668f10e5d463afcb1e38abca9c5b574aeacb'
   '24e36fc74f7aa27fe699e5eac923c14ae80c7bc85038cfab3d8cd93148d7cb3e'
-  '5f740d287488eeb6c3382572233de994ba07f62aa499233ee8df64c92e203dc4'
+  '7bc6b05ecccecf117c410a081e66bf164bd23b1633494a427a9ee9cd773257fd'
 )
 sha256sums_aarch64=(
   '71bcad0b6cab0afeb63ded17e279de9d38cc21974f8356645b0219b8bf76b2e5'
