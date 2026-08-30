@@ -1,7 +1,7 @@
 pkgbase = pypy3-setuptools-scm
 	pkgdesc = the blessed package to manage your versions by scm tags
 	pkgver = 10.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pypa/setuptools-scm
 	arch = any
 	license = MIT
@@ -9,7 +9,8 @@ pkgbase = pypy3-setuptools-scm
 	makedepends = pypy3-installer
 	depends = pypy3-packaging
 	depends = pypy3-setuptools
-	source = setuptools-scm-10.2.1.tar.gz::https://github.com/pypa/setuptools-scm/archive/setuptools-scm-v10.2.1.tar.gz
+	depends = pypy3-vcs-versioning
+	source = https://github.com/pypa/setuptools-scm/archive/setuptools-scm-v10.2.1.tar.gz
 	sha512sums = 212acd7b5df2a929ddf4f11b0bcb634a692008d74cf3361b6ebc369d03dc4f9cd9e6213d24500e68a440232d6981007f43a50795ecb9b3b0aa59a6fec4b85103
 
 pkgname = pypy3-setuptools-scm
