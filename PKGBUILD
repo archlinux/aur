@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=nomore403
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="🚫 Advanced tool for security researchers to bypass 403/40X restrictions through smart techniques and adaptive request manipulation. Fast. Precise. Effective."
 arch=('x86_64' 'aarch64')
 url="https://github.com/devploit/nomore403"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/devploit/nomore403.git#tag=v$pkgver")
+_commit='40e7b6cbe92e8acb2864425f14f3945d8fc19a16'
+source=("git+https://github.com/devploit/nomore403.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
