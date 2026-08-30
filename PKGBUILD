@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=gh-markdown-preview
 pkgver=1.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GitHub CLI extension to preview Markdown looks like GitHub."
 arch=('x86_64' 'aarch64')
 url="https://github.com/yusukebe/gh-markdown-preview"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/yusukebe/gh-markdown-preview.git#tag=v$pkgver")
+_commit='fe550bd7ca1088bd0e247a9c374f48f94207a9c6'
+source=("git+https://github.com/yusukebe/gh-markdown-preview.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
