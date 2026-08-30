@@ -1,7 +1,7 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-git
-pkgver=0.7.7
-pkgrel=0
+pkgver=0.7.6.r7.gfbf34bf
+pkgrel=1
 pkgdesc="High-performance document and image viewer that prioritizes screen space and control."
 arch=('x86_64')
 url="https://codeberg.org/lektra/lektra"
@@ -21,8 +21,8 @@ source=(
 sha256sums=("SKIP")
 
 pkgver() {
-    cd "$srcdir/lektra"
-    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "$srcdir/lektra"
+	printf "%s" "$(git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")"
 }
 
 prepare() {

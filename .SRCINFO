@@ -1,7 +1,7 @@
 pkgbase = lektra-git
 	pkgdesc = High-performance document and image viewer that prioritizes screen space and control.
-	pkgver = 0.7.7
-	pkgrel = 0
+	pkgver = 0.7.6.r7.gfbf34bf
+	pkgrel = 1
 	url = https://codeberg.org/lektra/lektra
 	arch = x86_64
 	license = AGPL-3.0
