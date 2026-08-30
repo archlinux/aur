@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=go-carpet
 pkgver=1.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool for show test coverage in terminal for Go source files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/msoap/go-carpet"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/msoap/go-carpet.git#tag=v$pkgver")
+_commit='1367ca780f1ea2764d24d05c471d2b6a6e81b713'
+source=("git+https://github.com/msoap/go-carpet.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit

@@ -1,7 +1,7 @@
 pkgbase = go-carpet
 	pkgdesc = Tool for show test coverage in terminal for Go source files
 	pkgver = 1.10.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/msoap/go-carpet
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = go-carpet
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/msoap/go-carpet.git#tag=v1.10.0
+	source = git+https://github.com/msoap/go-carpet.git#commit=1367ca780f1ea2764d24d05c471d2b6a6e81b713
 	sha256sums = SKIP
 
 pkgname = go-carpet
