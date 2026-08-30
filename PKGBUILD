@@ -4,7 +4,7 @@
 pkgname=git-orchard
 _pkgname=git-orchard
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line utility for managing git-subtrees.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/git-orchard'
@@ -18,6 +18,11 @@ pkgver() {
   cd "${_pkgname}" || exit
 
   git describe --tags | sed 's/^v//'
+}
+
+prepare() {
+  cd "${_pkgname}" || exit
+  go mod download
 }
 
 build() {
