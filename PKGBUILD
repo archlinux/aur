@@ -2,14 +2,14 @@
 _pkgname='vrc-get'
 pkgname=alcom
 pkgver=1.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast open-source alternative of VRChat Creator Companion (VCC)"
 arch=('x86_64' 'aarch64')
 url='https://github.com/vrc-get/vrc-get'
 license=('MIT')
 depends=(gtk3 openssl webkit2gtk-4.1)
 makedepends=(cargo nodejs npm)
-optdepends=('unityhub: Used to open created projects and migrate projects from older versions of Unity.')
+optdepends=('unityhub: Used to open created projects and migrate projects from older versions of Unity.' 'libxml2-legacy: Fix the issue of the missing libxml2.so.2 error in Unity for Linux.')
 options+=(!lto)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/gui-v${pkgver}.tar.gz" "build.patch")
 sha256sums=('6b5b65a5d8e4eaaceab4f8b3ccb241d5b3f43fa2b9f514893403e0665f7643bc' '4aab543caa7554ab0ab3434bc3ea9af185abc7c8614c5c4e15b1ede1269126a9')
