@@ -9,7 +9,7 @@ url="https://github.com/Twilight0/nouveau-fermi-reclock-dkms"
 license=('GPL-2.0-only')
 depends=('dkms' 'python')
 source=(
-  "https://github.com/Twilight0/nouveau-fermi-reclock-dkms/releases/download/v1.0.0/nouveau-source.tar.gz"
+  "https://github.com/Twilight0/nouveau-fermi-reclock-dkms/releases/download/v${pkgver}/nouveau-source.tar.gz"
   "nouveau-fermi-reclock.patch"
   "dkms.conf"
   "nouveau-fermi-reclock.conf"
