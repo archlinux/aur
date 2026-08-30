@@ -1,6 +1,6 @@
 pkgbase = scrntime-git
 	pkgdesc = A CLI for displaying daily screentime with afk/idle time support
-	pkgver = 1.4.1
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = https://github.com/sahaj-b/scrntime.git
 	arch = x86_64
