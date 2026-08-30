@@ -1,7 +1,7 @@
 pkgbase = ojosama
 	pkgdesc = テキストを壱百満天原サロメお嬢様風の口調に変換します
 	pkgver = 0.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jiro4989/ojosama
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = ojosama
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/jiro4989/ojosama.git#tag=v0.11.0
+	source = git+https://github.com/jiro4989/ojosama.git#commit=141355a5eab885da07271556bf67548a6dbd4e1c
 	sha256sums = SKIP
 
 pkgname = ojosama
