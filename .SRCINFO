@@ -1,0 +1,21 @@
+pkgbase = plasmarchy
+	pkgdesc = Port Omarchy themes and shell plugins into native KDE Plasma packages
+	pkgver = 0.1.0rc1
+	pkgrel = 1
+	url = https://github.com/majesticio/plasmarchy
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = git
+	optdepends = plasma-workspace: enable and use generated Plasma packages
+	optdepends = kio: launch applications and files from the Omalaunch recipe
+	optdepends = libqalculate: Omalaunch calculations and conversions
+	optdepends = fd: fast Omalaunch file search
+	optdepends = wl-clipboard: copy Omalaunch results on Wayland
+	source = plasmarchy-0.1.0rc1.tar.gz::https://github.com/majesticio/plasmarchy/releases/download/v0.1.0rc1/plasmarchy-0.1.0rc1.tar.gz
+	sha256sums = cfc80247f61fae2a31a5c4322c9986bc820f3891f18a1320c7e6ba2c09d7287b
+
+pkgname = plasmarchy
