@@ -1,7 +1,7 @@
 # Maintainer: João Gabriel V. Melão <jgvasconcellos22@gmail.com>
 
 pkgname=docker-native-manager-bin
-pkgver=1.15.1
+pkgver=1.15.2
 pkgrel=1
 pkgdesc="Native Docker Desktop alternative for Linux"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
 )
 
 sha256sums=(
-    '894186534aac918eecca0912854076733e85a3af74ec912cba30ac33267ba97a'
+    '3860c0bf3d7db59b6bd03e6c6242882a55ac337bd0330a7d69291dde8fee236d'
     'SKIP'
 )
 
