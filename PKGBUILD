@@ -2,12 +2,13 @@
 
 pkgname=supersdr
 pkgver=3.14
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced KiwiSDR client with CAT transceiver integration"
 arch=('any')
 url="https://github.com/mcogoni/supersdr"
-depends=('python' 'python-pygame' 'python-sounddevice' 'python-numpy' 'python-scipy' 'python-requests' 'python-urllib3' 'python-xmltodict')
+depends=('python' 'python-pygame' 'python-sounddevice' 'python-numpy' 'python-scipy' 'python-requests' 'python-urllib3' 'python-xmltodict' 'python-standard-chunk')
 makedepends=('imagemagick')
+license=('GPL-3.0-or-later')
 source=(
     "$pkgname-$pkgver".tar.gz::"https://github.com/mcogoni/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
     "$pkgname.desktop"
