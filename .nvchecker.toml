@@ -1,5 +1,4 @@
 [saber]
-source = "github"
-github = "saber-notes/saber"
-use_max_tag = true
+source = "git"
+git = "https://github.com/saber-notes/saber.git"
 prefix = "v"
