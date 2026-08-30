@@ -5,7 +5,7 @@
 # Contributor: eolianoe <eolianoe [at] gmail [DoT] com>
 
 pkgname=seadrive-gui
-pkgver=3.0.23
+pkgver=3.0.24
 pkgrel=1
 pkgdesc="GUI part of seadrive"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -17,7 +17,7 @@ source=(
     "${pkgname}-v${pkgver}::git+${url}.git#tag=v${pkgver}"
     "use-qt6.patch"
 )
-sha256sums=('SKIP' 'SKIP')
+b2sums=('SKIP' 'SKIP')
 
 prepare() {
     # Apply patch to the source code
