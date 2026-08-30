@@ -47,7 +47,11 @@ package() {
         "${pkgdir}/usr/share/polkit-1/actions/org.mxlinux.quick-system-info-gui.policy"
 
     install -dm755 "${pkgdir}/usr/share/doc/quick-system-info-gui"
-    install -Dm644 help/* "${pkgdir}/usr/share/doc/quick-system-info-gui/" 2>/dev/null || true
+
+    install -Dm644 "${srcroot}/help"/*.1 "${pkgdir}/usr/share/man/man1/" 2>/dev/null || true
+    for help_file in help/*.html help/*.jpg help/*.png help/*.css; do
+        [ -f "$help_file" ] && install -Dm644 "$help_file" "${pkgdir}/usr/share/doc/quick-system-info-gui//$(basename "$help_file")"
+    done
 
     if [ -f debian/changelog ]; then
         gzip -c debian/changelog > "${pkgdir}/usr/share/doc/quick-system-info-gui/changelog.gz"
