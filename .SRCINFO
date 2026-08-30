@@ -1,14 +1,14 @@
 pkgbase = atmosphera-git
 	pkgdesc = Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)
 	pkgver = 0.6.0.r0.g0000000
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/alexindigo/atmosphera
 	install = atmosphera-git.install
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = quickshell
-	depends = qt6-dbusqml
+	depends = qt6-dbusqml>=0.8.0
 	depends = qt6-pipewirespectrum
 	depends = qt6-xdgiconqml-git
 	depends = imagemagick
@@ -29,7 +29,9 @@ pkgbase = atmosphera-git
 	optdepends = xremap-niri-bin: session-level app-scoped keymaps (macos bindings)
 	optdepends = qt6-5compat: required by some registry plugins (e.g. cookie-clock)
 	optdepends = qt6-websockets: required by some registry plugins (e.g. hassio)
+	optdepends = xdg-desktop-portal-gnome: screencast / screen-sharing support (niri cannot use -wlr)
 	provides = atmosphera
+	provides = xdg-desktop-portal-impl
 	conflicts = atmosphera
 	source = git+https://github.com/alexindigo/atmosphera.git#branch=main
 	sha256sums = SKIP
