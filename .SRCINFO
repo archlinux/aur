@@ -1,7 +1,7 @@
 pkgbase = fladder-git
 	pkgdesc = A cross-platform Jellyfin Frontend built on top of Flutter
-	pkgver = r1542.96b4d9a
-	pkgrel = 2
+	pkgver = r1759.710dd26
+	pkgrel = 1
 	url = https://github.com/DonutWare/Fladder
 	arch = x86_64
 	license = GPL-3.0-or-later
