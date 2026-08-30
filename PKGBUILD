@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=gitcs
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="📈 Command line tool written in Go. It allows developers to scan their local Git repositories and generate a visual contributions graph."
 arch=('x86_64' 'aarch64')
 url="https://github.com/hrtsegv/gitcs"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/hrtsegv/gitcs.git#tag=v$pkgver")
+_commit='c41bdc46a795d93a7e049585a3fd3ad619db8f90'
+source=("git+https://github.com/hrtsegv/gitcs.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit

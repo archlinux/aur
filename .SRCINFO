@@ -1,7 +1,7 @@
 pkgbase = gitcs
 	pkgdesc = 📈 Command line tool written in Go. It allows developers to scan their local Git repositories and generate a visual contributions graph.
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hrtsegv/gitcs
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = gitcs
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/hrtsegv/gitcs.git#tag=v1.2.2
+	source = git+https://github.com/hrtsegv/gitcs.git#commit=c41bdc46a795d93a7e049585a3fd3ad619db8f90
 	sha256sums = SKIP
 
 pkgname = gitcs
