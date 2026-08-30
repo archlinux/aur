@@ -1,6 +1,6 @@
 pkgbase = sounding-bin
 	pkgdesc = A SLAM evaluation tool.
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://codeberg.org/stelzo/sounding
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = sounding-bin
 	options = !lto
 	options = !strip
 	options = !debug
-	source_x86_64 = sounding-0.2.0-bin.tar.gz::https://codeberg.org/stelzo/sounding/releases/download/v0.2.0/sounding-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = sounding-0.4.0-bin.tar.gz::https://codeberg.org/stelzo/sounding/releases/download/v0.4.0/sounding-0.4.0-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = sounding-0.2.0-bin.tar.gz::https://codeberg.org/stelzo/sounding/releases/download/v0.2.0/sounding-0.2.0-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = sounding-0.4.0-bin.tar.gz::https://codeberg.org/stelzo/sounding/releases/download/v0.4.0/sounding-0.4.0-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = sounding-bin

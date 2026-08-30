@@ -1,6 +1,6 @@
 # Maintainer: Christopher Sieh (stelzo) <stelzo@steado.de>
 pkgname=sounding-bin
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A SLAM evaluation tool."
 arch=('x86_64' 'aarch64')
