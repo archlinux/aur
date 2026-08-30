@@ -1,0 +1,47 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
+_gitauthor=gildas-lormeau
+_gitname=single-file-cli
+_appname=${_gitname%-cli}
+pkgname=${_gitname}-bin
+pkgdesc="CLI tool for saving a faithful copy of a complete web page in a single HTML file"
+
+pkgver=2.6.2
+pkgrel=1
+_gitversion=v${pkgver}
+
+arch=('x86_64' 'aarch64')
+_barch=('x86_64-linux' 'aarch64-linux')
+
+_ghurl="https://github.com/${_gitauthor}/${_gitname}"
+_ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
+url=${_ghurl}
+
+license=('MIT')
+
+provides=("${_appname}")
+conflicts=("${pkgname%-bin}")
+
+depends=('glibc' 'libgcc')
+
+options=('!strip')
+
+source=("README-${pkgver}.md::${_ghurlraw}/README.MD"
+		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}")
+source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}")
+sha256sums=('d4532d95487d6692fb3ff51e33fc54a756d0f066e205575977808c6c9b77b491'
+            '8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef')
+sha256sums_x86_64=('894d8af978bf76a876255cfd07ca5b92bfb99af4ff38fe7313af6d524e131c4a')
+sha256sums_aarch64=('2b75f193001213ba16e22d1082035b8f3822a64b57cc95f89f1a293c8cefd6bb')
+
+
+package() {
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_appname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_appname}"
+
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

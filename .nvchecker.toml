@@ -1,0 +1,5 @@
+[single-file-cli-bin]
+source = "github"
+github = "gildas-lormeau/single-file-cli"
+use_latest_release = true
+prefix = "v"
