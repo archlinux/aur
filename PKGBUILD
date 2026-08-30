@@ -123,10 +123,10 @@
 
 
 # Kernel version
-_kernel_major=7.0
-_kernel_minor=6
+_kernel_major=7.2
+_kernel_minor=1
 # Clear Linux patches version
-_clr=7.0.6-1602
+_clr=7.2-1607
 # Source directory names
 _src_linux=linux-${_kernel_major}
 
@@ -146,19 +146,19 @@ source=(
     "https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-${_kernel_major}.tar.sign"
     "https://cdn.kernel.org/pub/linux/kernel/v7.x/patch-${_kernel_major}.${_kernel_minor}.xz"
     "tachyon::git+https://git.staropensource.de/StarOpenSource/Linux-Tachyon.git"
-    "git+https://github.com/openzfs/zfs.git#tag=zfs-2.4.2"
-    "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.0.patch"
+    "git+https://github.com/openzfs/zfs.git#tag=zfs-2.4.4"
+    "0001-cjktty.patch::https://github.com/bigshans/cjktty-patches/raw/master/v7.x/cjktty-7.2.patch"
     "0002-cjktty-32.patch::https://github.com/bigshans/cjktty-patches/raw/master/cjktty-add-cjk32x32-font-data.patch"
 )
 
 
 # Integrity & signature verification
 # -> SHA-256 checksums of the package's sources
-#    These need to be updated each release; see the 'source' array
+#    These need to be updated each release; see the 'source' array 
 sha256sums=(
-    "bb7f6d80b387c757b7d14bb93028fcb90f793c5c0d367736ee815a100b3891f0"
+    "f9fef3d14c0df53819026f4be74459835c2a0b0dcbf5b5bbd9ea19f0829402b3"
     "SKIP"
-    "abd193ca459744d3af3f875d649d01d84dc5e810083e5f1c67eba551c86c4404"
+    "35842830fcd2c12eb873aeac2365c25597d2cfe3a26edc451b55cdbe8e051d78"
     "SKIP"
     'SKIP'
     'SKIP'
