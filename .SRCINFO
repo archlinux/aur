@@ -1,6 +1,6 @@
 pkgbase = rusnapshot-git
 	pkgdesc = Simple and handy definitions-based snapshoting tool for BTRFS (git version)
-	pkgver = 68.97fa393
+	pkgver = 85.56ccec6
 	pkgrel = 1
 	url = https://github.com/Edu4rdSHL/rusnapshot
 	arch = x86_64

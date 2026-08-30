@@ -2,7 +2,7 @@
 
 pkgname=rusnapshot-git
 _pkgname=rusnapshot
-pkgver=68.97fa393
+pkgver=85.56ccec6
 pkgrel=1
 pkgdesc='Simple and handy definitions-based snapshoting tool for BTRFS (git version)'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
