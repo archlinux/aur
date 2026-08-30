@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=zkcli
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A interactive Zookeeper client."
 arch=('x86_64' 'aarch64')
 url="https://github.com/let-us-go/zkcli"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/let-us-go/zkcli.git#tag=v$pkgver")
+_commit='14e740bc9461e8bae20665f0fd8ef0a64cd9f81a'
+source=("git+https://github.com/let-us-go/zkcli.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
