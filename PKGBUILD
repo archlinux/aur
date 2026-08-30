@@ -1,11 +1,11 @@
 # Maintainer:
 
 pkgname=flclash
-_pkgname=FlClash
-pkgver=0.8.94
-_flutter=3.44.5
+_name=FlClash
+pkgver=0.8.96
+_flutter=3.44.9
 pkgrel=1
-pkgdesc="A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free"
+pkgdesc="Multi-platform proxy client based on ClashMeta"
 arch=('x86_64')
 url="https://github.com/chen08209/FlClash"
 license=('GPL-3.0-or-later')
@@ -20,30 +20,24 @@ depends=('at-spi2-core'
          'libgcc'
          'libkeybinder3'
          'libstdc++'
-         'quickjs-c-bridge'
          'pango')
-makedepends=('clang'
-             'cmake'
-             'fvm'
-             'gendesk'
-             'git'
-             'go'
-             'java-environment'
-             'ninja'
-             'patchelf'
-             'rustup')
+makedepends=('chrpath' 'clang' 'cmake' 'fvm' 'gendesk' 'git' 'go' 'ninja' 'rustup')
+options=('!lto')
 source=("git+${url}.git#tag=v${pkgver}"
         "git+https://github.com/chen08209/Clash.Meta.git")
-sha256sums=('48127d31332b1bfff9389d2c06a7f9b7f5ee2ee71955a0e892420edcb084f86e'
+sha256sums=('663f2e33403b4862d5d7b7dd0a3cce64037d3bb5de4ede903ff723321c8b2ce9'
             'SKIP')
 
 prepare() {
-    cd "${_pkgname}"
+    cd "${_name}"
     git submodule init
     git config submodule.core/Clash.Meta.url "${srcdir}/Clash.Meta"
     git -c protocol.file.allow=always submodule update
 
-    sed 's|-Werror|-Werror -Wno-deprecated-declarations -Wno-sometimes-uninitialized|' -i linux/CMakeLists.txt
+    sed -i 's|-Werror|-Wno-error|' linux/CMakeLists.txt
+    sed -e 's|final file = File(path);|final file = File(path.path);|' \
+        -e 's|return path;|return path?.path;|' \
+        -i lib/common/picker.dart
 
     gendesk -f -n \
         --pkgname "${pkgname}" \
@@ -54,7 +48,7 @@ prepare() {
         --custom Keywords='FlClash;Clash;ClashMeta;Proxy;'
 
     fvm use "${_flutter}"
-    fvm flutter config --no-analytics
+    fvm flutter --disable-analytics
     fvm flutter pub get
     fvm dart pub global activate \
         --source git \
@@ -64,20 +58,21 @@ prepare() {
 }
 
 build() {
-    cd "${_pkgname}"
+    cd "${_name}"
     export PATH="${PATH}:${PUB_CACHE:-${HOME}/.pub-cache}/bin:.fvm/flutter_sdk/bin"
     flutter_distributor package \
         --platform linux \
         --targets zip \
-        --flutter-build-args=dart-define=APP_ENV=stable
+        --build-dart-define APP_ENV=stable
+
+    chrpath --replace "/usr/lib/${pkgname}/lib" build/linux/x64/release/bundle/lib/*plugin.so
 }
 
 package() {
-    cd "${_pkgname}"
+    cd "${_name}"
     install -d "${pkgdir}/usr/lib/${pkgname}" "${pkgdir}/usr/bin"
     cp -r build/linux/x64/release/bundle/* "${pkgdir}/usr/lib/${pkgname}"
-    ln -s "/usr/lib/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/usr/lib/${pkgname}/${_name}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 assets/images/icon.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
-    patchelf --remove-rpath "${pkgdir}/usr/lib/${pkgname}/lib/"lib*_plugin.so
 }

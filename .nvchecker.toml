@@ -1,5 +1,5 @@
 [flclash]
-source = "github"
-github = "chen08209/FlClash"
-use_max_tag = true
+source = "git"
+git = "https://github.com/chen08209/FlClash.git"
 prefix = "v"
+exclude_regex = ".*(pre).*"
