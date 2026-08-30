@@ -1,6 +1,6 @@
 pkgbase = mxcli
 	pkgdesc = Unofficial community package for the mxcli Mendix development CLI
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/mendixlabs/mxcli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mxcli
 	makedepends = antlr4>=4.13.2
 	makedepends = go>=1.26.6
 	options = !debug
-	source = mxcli-0.19.0.tar.gz::https://github.com/mendixlabs/mxcli/archive/refs/tags/v0.19.0.tar.gz
-	sha256sums = b9cf5cb976feed6d9a02971cf7651525a817788cf3ce769b49cdc0f2af0620d7
+	source = mxcli-0.20.0.tar.gz::https://github.com/mendixlabs/mxcli/archive/refs/tags/v0.20.0.tar.gz
+	sha256sums = c962115f16f1b841689619e8ead182492c46b72a2897a7d78949eaabe738f004
 
 pkgname = mxcli
