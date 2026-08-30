@@ -1,7 +1,7 @@
 pkgbase = snipkit
 	pkgdesc = Snippet CLI manager for quickly generating and executing shell snippets without leaving the terminal.
 	pkgver = 1.8.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lemoony/snipkit
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = snipkit
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/lemoony/snipkit.git#tag=v1.8.1
+	source = git+https://github.com/lemoony/snipkit.git#commit=7ad8cfefd6063d9280d64fc848570712ce14a3d0
 	sha256sums = SKIP
 
 pkgname = snipkit
