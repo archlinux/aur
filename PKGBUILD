@@ -2,7 +2,7 @@
 
 pkgname=tailcat
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="like netcat, but over Tailscale's data plane, without Tailscale's control plane"
 url='https://github.com/tailscale/tailcat'
 arch=(aarch64 x86_64)
@@ -26,7 +26,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
-  go build -ldflags="-linkmode=external -X main.version=${pkgver}" -o "$pkgname" .
+  go build -ldflags="-linkmode=external -X main.version=v${pkgver}" -o "$pkgname" .
 }
 
 package() {
