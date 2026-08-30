@@ -1,14 +1,14 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastsapp-git
-pkgver=0.4.0.r0.05da982
+pkgver=0.4.0.r1.fd127ee
 pkgrel=1
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/fastsapp"
 license=('MIT')
 install="${pkgname}.install"
-depends=('libglvnd' 'libxkbcommon' 'wayland' 'libx11')
-makedepends=('git' 'cargo')
+depends=('alsa-lib' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
+makedepends=('git' 'cargo' 'cmake')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'noto-fonts-emoji: colour emoji in messages and reactions'
             'xdg-desktop-portal: the file picker for attachments')

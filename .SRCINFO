@@ -1,6 +1,6 @@
 pkgbase = fastsapp-git
 	pkgdesc = Fast native WhatsApp client built with Rust and egui
-	pkgver = 0.4.0.r0.05da982
+	pkgver = 0.4.0.r1.fd127ee
 	pkgrel = 1
 	url = https://github.com/crmne/fastsapp
 	install = fastsapp-git.install
@@ -9,6 +9,8 @@ pkgbase = fastsapp-git
 	license = MIT
 	makedepends = git
 	makedepends = cargo
+	makedepends = cmake
+	depends = alsa-lib
 	depends = libglvnd
 	depends = libxkbcommon
 	depends = wayland
