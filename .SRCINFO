@@ -1,7 +1,7 @@
 pkgbase = protolock
 	pkgdesc = Protocol Buffer companion tool. Track your .proto files and prevent changes to messages and services which impact API compatibility.
 	pkgver = 0.17.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nilslice/protolock
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = protolock
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/nilslice/protolock.git#tag=v0.17.0
+	source = git+https://github.com/nilslice/protolock.git#commit=70788742d42631c082e044d0dc224ab3ed14f602
 	sha256sums = SKIP
 
 pkgname = protolock

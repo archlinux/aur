@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=protolock
 pkgver=0.17.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Protocol Buffer companion tool. Track your .proto files and prevent changes to messages and services which impact API compatibility."
 arch=('x86_64' 'aarch64')
 url="https://github.com/nilslice/protolock"
 license=('BSD-3-Clause')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/nilslice/protolock.git#tag=v$pkgver")
+_commit='70788742d42631c082e044d0dc224ab3ed14f602'
+source=("git+https://github.com/nilslice/protolock.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
