@@ -5,7 +5,7 @@
 
 pkgname=gauche
 pkgver=0.9.15
-pkgrel=5
+pkgrel=6
 url='https://practical-scheme.net/gauche/'
 arch=(x86_64)
 pkgdesc='R7RS Scheme implementation (includes gosh)'
@@ -19,9 +19,10 @@ b2sums=('1b4cbc764ea3af78bc736ce9a8ff083318366fbf3197ebc5060222b8df93ed426ca4b3b
 
 build() {
   cd Gauche-$pkgver
-  BUILD_GOSH=/usr/bin/gosh
   CFLAGS+=' -ffat-lto-objects -w'
-  ./configure --prefix=/usr --with-slib=/usr/share/slib --with-tls=mbedtls
+  CPPFLAGS+=' -I/usr/include/mbedtls3'
+  ./configure --prefix=/usr --with-slib=/usr/share/slib --with-tls=mbedtls \
+    LIBS=-L/usr/lib/mbedtls3
   make
 
   # Make sure the catalog file for slib is created.
