@@ -1,15 +1,15 @@
 pkgbase = ddhx-bin
 	pkgdesc = Console hexadecimal file viewer
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/dd86k/ddhx
 	arch = x86_64
 	license = MIT
-	source = LICENSE-0.11.0::https://raw.githubusercontent.com/dd86k/ddhx/v0.11.0/LICENSE
-	source = README-0.11.0.md::https://raw.githubusercontent.com/dd86k/ddhx/v0.11.0/README
+	source = LICENSE-0.12.0::https://raw.githubusercontent.com/dd86k/ddhx/v0.12.0/LICENSE
+	source = README-0.12.0.md::https://raw.githubusercontent.com/dd86k/ddhx/v0.12.0/README
 	sha256sums = 6c1491e43ffaa71c230ffc0adfe9cf31b3c9b38bf41dfd02143f8901b976af2a
-	sha256sums = b1e265c5ecfe567e2cf099c711b483a130e63efd2280bd19905aead47e2aafd3
-	source_x86_64 = ddhx-x86_64-0.11.0.tgz::https://github.com/dd86k/ddhx/releases/download/v0.11.0/ddhx-0.11.0-x86_64-linux-musl-static.tar.gz
-	sha256sums_x86_64 = ba032fc378e82a5bfcaa516b835fdcfe81151856de91e1c34e2d3bc44c6aeeec
+	sha256sums = eadbce6dc7e0c05cf40515cbf0072307752c430321f512fd03bae6ee170b71a8
+	source_x86_64 = ddhx-x86_64-0.12.0.tgz::https://github.com/dd86k/ddhx/releases/download/v0.12.0/ddhx-0.12.0-linux-x86_64-musl-static.tar.gz
+	sha256sums_x86_64 = b05a585b6e2e76d74c478d70c227653c8ce886be58d85c69eb46a85158f6c401
 
 pkgname = ddhx-bin
