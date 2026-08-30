@@ -1,7 +1,7 @@
 # Maintainer: Fabian Brosda <fabi3141@gmx.de>
 pkgname=gauche-json-c
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Fast parse-json via json-c in gauche."
 arch=('i686' 'x86_64')
