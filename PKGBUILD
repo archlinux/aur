@@ -4,7 +4,7 @@
 pkgname=cycle-cli
 _pkgname=cycle
 pkgver=0.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='A command-line utility for indoor bike.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/cycle-cli'
@@ -22,13 +22,17 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "${_pkgname}" || exit
 
-  go build -ldflags="-X main.version=v$pkgver -X main.commit=$_commit -s -w" -o "${_pkgname}"
+  go build -buildmode=pie -trimpath -modcacherw -ldflags="-X main.version=v$pkgver -X main.commit=$_commit -s -w" -o "${_pkgname}"
 }
 
 package() {
