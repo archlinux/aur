@@ -1,6 +1,6 @@
 pkgbase = meguri
 	pkgdesc = Local video and image browser with thumbnails, search, and playback
-	pkgver = 0.5.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/zabuton-app/meguri
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = meguri
 	makedepends = asar
 	depends = electron42
 	depends = nodejs
-	source = meguri-0.5.1.tar.gz::https://github.com/zabuton-app/meguri/archive/v0.5.1.tar.gz
+	source = meguri-0.6.2.tar.gz::https://github.com/zabuton-app/meguri/archive/v0.6.2.tar.gz
 	source = meguri.sh
-	sha256sums = 7773ea8ed2d3df251aa3a509c46d82c0fd0e55780e608324221cc6bbdba615c7
+	sha256sums = fa2f523ed9602ce66a4233e97eb480f133d21f4c04fbc6121e3c0be0292547a0
 	sha256sums = 0c2e669b166935140ae542a53aa2b56c71a902e145555848bda5a88605e843c7
 
 pkgname = meguri
