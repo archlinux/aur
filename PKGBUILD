@@ -2,11 +2,11 @@
 
 _gpuarch=gfx120X-all
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
-pkgver=10.1.0a20260817
+pkgver=10.1.0a20260830
 pkgrel=1
 pkgdesc="AMD ROCm Nightly Release (RDNA4) - Monolithic Install"
 arch=('x86_64')
-url="https://rocm.nightlies.amd.com"
+url="https://nightly.repo.amd.com/rocm"
 license=('MIT' 'custom:LicenseRef-ROCm-EULA')
 depends=('gcc-libs' 'python-pyelftools' 'python')
 
@@ -27,14 +27,15 @@ _rocm_packages=(
     'hipsparse' 'hipsparselt' 'rocsparse'
     'rccl' 'rocalution' 'rocprim' 'rocthrust' 'hipcub'
     'hipify-clang' 'miopen-hip'
+    'rocdecode' 'rocjpeg'
     'rocm-hip-sdk' 'rocm-hip-libraries' 'rocm-hip-runtime' 'rocm-ml-sdk' # Meta packages
 )
 
 provides=("${_rocm_packages[@]}" opencl-driver "rocm=${pkgver}")
 conflicts=("${_rocm_packages[@]}" "rocm")
 options=('!strip' '!debug')
-source=("${url}/tarball-multi-arch/therock-dist-linux-${_gpuarch}-${pkgver}.tar.gz")
-sha256sums=('6e7275682e2b085ae3ae66a6b2bba197f22644f8b5951980b97f4b557a440e84')
+source=("${url}/core/tarball/therock-dist-linux-${_gpuarch}-${pkgver}.tar.gz")
+sha256sums=('18d90751533148e38ddda200afa7117790d989c0cc9ecc8b93a7f3584ae56a1b')
 
 noextract=("${source[@]##*/}")
 
