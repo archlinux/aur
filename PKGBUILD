@@ -2,7 +2,7 @@
 
 _npmscope=agentmemory
 pkgname=agentmemory
-pkgver=0.9.28
+pkgver=0.9.29
 pkgrel=1
 pkgdesc="Persistent memory for AI coding agents based on real-world benchmarks"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@$_npmscope/$pkgname/-/$pkgname-$pkgver.tgz"
         "LICENSE::https://raw.githubusercontent.com/rohitg00/agentmemory/v$pkgver/LICENSE")
 noextract=("$pkgname-$pkgver.tgz")
-sha1sums=('31d0435983e7dcaa163c7c983843804bd2685f7c'
+sha1sums=('800309cb9e83ee5efc10739f8b481d79fa5544df'
           '828dcdad822eadebbf9b29e4412b2e7e4b1f68b4')
 
 package() {
