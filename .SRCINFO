@@ -1,0 +1,18 @@
+pkgbase = pcl-n-bin
+	pkgdesc = 一个基于 PCL-CE 开发的 Minecraft 启动器 (PCL N Edition)
+	pkgver = 1.4.13
+	pkgrel = 1
+	url = https://github.com/PCL-N-Edition/PCL-N
+	arch = x86_64
+	license = Apache-2.0
+	depends = dotnet-runtime-10.0
+	depends = hicolor-icon-theme
+	provides = pcl-n
+	conflicts = pcl-n
+	options = !strip
+	source = pcl-n-bin-1.4.13-release.tar.gz::https://github.com/PCL-N-Edition/PCL-N/releases/download/v1.4.13-release/PCL_N_Release_linux-x64_NoRuntime_NoPlugin.tar.gz
+	source = icon.png::https://raw.githubusercontent.com/PCL-N-Edition/PCL-N/dev/PCL.Desktop/Assets/icon.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = pcl-n-bin
