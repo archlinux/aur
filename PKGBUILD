@@ -3,17 +3,17 @@
 pkgbase="awatcher"
 pkgname=('awatcher-bundle' 'aw-awatcher')
 pkgdesc="Activity and idle watchers"
-pkgver=0.3.3
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/2e3s/${pkgbase}"
 license=('MPL-2.0')
 depends=()
-makedepends=('rust' 'cargo' 'npm' 'git' 'dbus' 'openssl' 'libxkbcommon')
+makedepends=('rust' 'cargo' 'npm' 'nodejs' 'git' 'dbus' 'openssl' 'libxkbcommon')
 source=(
     "${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('cee1645936c0941646563c2cb419ec1fdc2dba61a2a0582567eb1c9c27fcdce4')
+sha256sums=('6bef86a64020ba6eaf6a2d46552b56c60bffbbb31fd4a46ee16614a4b10c978b')
 # LTO seems to break libsqlite3-sys compilation
 options=('!lto')
 
@@ -33,7 +33,19 @@ _build_aw_webui() {
 
     pushd "aw-webui"
     cp -f media/logo/logo.png static/
-    npm ci
+    # The lock file pins one dependency to a git repository.
+    npm --allow-git=all ci
+
+    # npm>=12 blocks install scripts by default. Only vue-demi's postinstall
+    # matters here: it switches the shim to the installed Vue (2.7), without
+    # which pinia fails to build ("hasInjectionContext" is not exported).
+    # `npm install-scripts approve vue-demi` reports success but doesn't
+    # actually run it for the nested copies, so invoke it directly.
+    local _demi
+    while IFS= read -r -d '' _demi; do
+        ( cd "${_demi}" && node ./scripts/postinstall.js )
+    done < <(find node_modules -type d -name vue-demi -print0)
+
     npm run build
     export AW_WEBUI_DIR="${PWD}/dist"
     popd
