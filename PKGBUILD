@@ -8,7 +8,7 @@
 readonly _pkgname="cake_wallet"
 
 pkgname="cake-wallet-bin"
-pkgver="6.2.0"
+pkgver="6.3.2"
 pkgrel="1"
 pkgdesc="A noncustodial multi-currency wallet."
 arch=("x86_64")
@@ -16,11 +16,12 @@ url="https://github.com/cake-tech/${_pkgname}"
 license=("MIT")
 depends=("at-spi2-core" "cairo" "fontconfig" "gcc-libs" "gdk-pixbuf2" "glib2" "glibc" "gtk3" "harfbuzz" "libepoxy" "libgcrypt" "libgpg-error" "lz4" "pango" "util-linux-libs" "xz")
 provides=("cake-wallet")
-source=("${pkgname}-v${pkgver}-release.tar.xz::${url}/releases/download/v${pkgver}/Cake_Wallet_v${pkgver}_Linux.tar.xz"
+source=( # "${pkgname}-v${pkgver}-release.tar.xz::${url}/releases/download/v${pkgver}/Cake_Wallet_v${pkgver}_Linux.tar.xz" TODO
+    "${pkgname}-v${pkgver}-release.tar.xz::${url}/releases/download/v${pkgver}/Cake_Wallet_v6.3.0_Linux.tar.xz"
     "${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.desktop")
-sha512sums=("de85c4eb7e859aeea43464df28fb18cd2793aac7d3694c46b6e1e17c7016d9fbc96a376d3aa23ade016c9bc60547890d246abf97a529a5ef72f0e88a54c04854"
-    "a056d1d9be13d4ec4efb1d78b8b2fa41ac604edf744cc2dfb6a18d09b34040cd753d8cd7e6b44ad9684f352993125917d1630e32c12ba8b42205e2569623d454"
+sha512sums=("d8bdc0927bce17e352c1b5c1cc706f34df06703f59408a7ecaf01820030cedc2ffa4bc80aaaf1b57362de1a8caced3f536e983bb12a766459e535b7b96d90e7e"
+    "c7811ef732dc7b81b4d249e97ab6044aa677a1b6354fbe8be7c4065f3c8747627b982173ad2f93f399cee38df92d5ff49867341b4bcc8d4d5b53c6535eac9cb4"
     "5c023a15f0e6b6df6ca50192642c07b16697921bfe55fc657b0388123fb8cfc6dd90c6302fc417a2907d9c063084557b94df31617dc416bdc10041ad42359437")
 
 package()
