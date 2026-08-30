@@ -29,15 +29,15 @@ sha256sums=('3f11257f35a5a5cd0c7294e71243db0f50a2a79f0f8a99a51ebac37e0d5755d8'
 install=${pkgname}.install
 
 prepare() {
-	export RUSTUP_TOOLCHAIN=stable
-	cd "noita_entangled_worlds-${pkgver}/noita_proxy"
-	cargo fetch --locked --target host-tuple
+    export RUSTUP_TOOLCHAIN=stable
+    cd "noita_entangled_worlds-${pkgver}/noita_proxy"
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
-	export CFLAGS+=" -ffat-lto-objects"
-	export CXXFLAGS+=" -ffat-lto-object"
-	
+    export CFLAGS+=" -ffat-lto-objects"
+    export CXXFLAGS+=" -ffat-lto-object"
+
     cd "noita_entangled_worlds-${pkgver}/noita_proxy"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
@@ -45,9 +45,9 @@ build() {
 }
 
 check() {
-	export RUSTUP_TOOLCHAIN=stable
-	cd "noita_entangled_worlds-${pkgver}/noita_proxy"
-	cargo test --frozen --all-features
+    export RUSTUP_TOOLCHAIN=stable
+    cd "noita_entangled_worlds-${pkgver}/noita_proxy"
+    cargo test --frozen --all-features
 }
 
 package() {
