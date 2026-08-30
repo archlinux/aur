@@ -1,6 +1,6 @@
 pkgbase = cmigemo
 	pkgdesc = An implementation of Migemo in C
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://www.kaoriya.net/software/cmigemo/
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = cmigemo
 	license = MIT
 	makedepends = cmake
 	makedepends = curl
-	source = https://github.com/koron/cmigemo/archive/refs/tags/v1.7.1.tar.gz
-	sha256sums = 8cae9956b3ba411dfa5421d89e43b88b111d8ca764e4c4dbfa7df2a16699023a
+	source = https://github.com/koron/cmigemo/archive/refs/tags/v1.8.0.tar.gz
+	sha256sums = 5b7c1661c7453844b4f1a316d1441477b3c898dae1feaf8db95fba4ca2d02e8e
 
 pkgname = cmigemo
