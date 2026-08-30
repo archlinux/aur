@@ -1,19 +1,20 @@
 pkgbase = gecode
-	pkgdesc = The Generic Constraint Development Environment
-	pkgver = 6.2.0
-	pkgrel = 3
-	url = http://www.gecode.org
-	arch = i686
+	pkgdesc = Generic Constraint Development Environment
+	pkgver = 6.4.0
+	pkgrel = 1
+	url = https://github.com/Gecode/gecode
 	arch = x86_64
 	license = MIT
-	depends = qt5-base
+	makedepends = cmake
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = libglvnd
+	depends = libstdc++
 	depends = mpfr
-	depends = gmp
-	source = https://github.com/gecode/gecode/archive/release-6.2.0.tar.gz
-	source = gcc-14-build-fix.patch::https://github.com/Gecode/gecode/commit/c810c96b1ce5d3692e93439f76c4fa7d3daf9fbb.patch
-	source = fix-flatzinc-generation.patch::https://github.com/Gecode/gecode/pull/85.patch
-	sha512sums = a763127ba786df86b33f4be1b25226f51bd5d059ea336912e7bd3ec5c54c2fed93f2e5a662793688723495193a42204c0db440b19de8614414ebbe5d2d2d51ed
-	sha512sums = dd42fb2a75a55c42e4c5a6d0fc70a2ba41d4a7e61d0a59e4d29a1a96ec3fdfb6680a66f239b6df4a3b418e051c8dd5e749009e4d5b61596b87df746d6d0fd7e7
-	sha512sums = 0c154d0a8c68f4072c7b9f210f8d2c5f707e35f97d9aab3edb972f5c5e770c6775b2558d39dcfaae87e8d355ff573b314d2eb78e22a3d54d8013ce1741dd8252
+	depends = qt6-base
+	depends = sh
+	source = git+https://github.com/Gecode/gecode.git#tag=release-6.4.0
+	sha256sums = 35dba607fb1eaef558a730c91786b1af76fba8fa065dce999de61bfdd5960b9a
 
 pkgname = gecode
