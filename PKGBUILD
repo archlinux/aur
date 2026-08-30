@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=quick-system-info-gui
-pkgver=26.02arch
+pkgver=26.08
 pkgrel=1
 pkgdesc="A utility to show quick-system-info (inxi, etc...) in a gui"
 arch=('x86_64' 'i686')
@@ -8,8 +8,8 @@ url="https://github.com/MX-Linux/quick-system-info-gui"
 license=('GPL3')
 depends=('qt6-base' 'libarchive' 'polkit' 'inxi')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/quick-system-info-gui/archive/refs/tags/26.02arch.tar.gz")
-sha256sums=('3d2d081d83a3b65b7e95ef2fd5bd955179ceb057e2977c9a53ff3a9d20003689')
+source=("https://github.com/MX-Linux/quick-system-info-gui/archive/refs/tags/26.08.tar.gz")
+sha256sums=('be4b30511a5220977bdf37e280e13cba903c3b811072192ce0fdc9a2b07a50a2')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
