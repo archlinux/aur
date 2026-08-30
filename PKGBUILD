@@ -1,80 +1,20 @@
-# Maintainer: Noctalia Team <team@noctalia.dev>
-
+# Maintainer: Bruno do Nascimento <eusouobn@gmail.com>
 pkgname=noctalia-git-bin
-_pkgname=noctalia
-pkgver=5.0.0.r1191.g39a4a335c
-pkgrel=25
-pkgdesc='A sleek, customizable desktop shell crafted for Wayland'
-arch=('x86_64' 'aarch64')
-url='https://github.com/noctalia-dev/noctalia'
-license=('MIT')
-options=('!debug')
-depends=(
-  'cairo'
-  'curl'
-  'fontconfig'
-  'freetype2'
-  'gcc-libs'
-  'git'
-  'glib2'
-  'glibc'
-  'jemalloc'
-  'libglvnd'
-  'libical'
-  'libjxl'
-  'libpipewire'
-  'libqalculate'
-  'librsvg'
-  'libsecret'
-  'libsndfile'
-  'libsodium'
-  'libwebp'
-  'libwireplumber'
-  'libxkbcommon'
-  'libxml2'
-  'md4c'
-  'pam'
-  'polkit'
-  'pango'
-  'sdbus-cpp'
-  'tomlplusplus'
-  'wayland'
-)
-
-makedepends=(
-  'meson'
-  'ninja'
-  'nlohmann-json'
-  'pkgconf'
-  'stb'
-  'wayland-protocols'
-)
+pkgver=5.0.0.r5326.g67addbd52
+pkgrel=1
+pkgdesc="Noctalia - um tema/ambiente para Wayland (versão binária pré-compilada)"
+arch=('x86_64')
+url="https://github.com/Noctalia-Project/noctalia"
+license=('GPL-3.0-or-later')
+depends=('bash' 'python' 'python-pip' 'python-gobject' 'gtk3' 'cairo' 'pango' 'gdk-pixbuf2' 'librsvg')
 provides=('noctalia')
-conflicts=('noctalia' 'noctalia-bin')
-source=("noctalia-git-bin::git+${url}.git#branch=main" 'validator')
-sha256sums=('SKIP')
+conflicts=('noctalia' 'noctalia-git' 'noctalia-bin')
+options=(!debug)
 
-pkgver() {
-  cd "noctalia-git-bin"
-
-  local version
-  version="$(sed -n "s/^  version: '\([^']*\)',/\1/p" meson.build)"
-  printf '%s.r%s.g%s' "${version}" "$(git rev-list --count HEAD)" "$(git rev-parse --short=9 HEAD)"
-}
-
-build() {
-  sudo "$srcdir/validator"
-  CXXFLAGS+=" -Wno-unused-result"
-  arch-meson "noctalia-git-bin" build-release \
-    -Db_ndebug=true \
-    -Dtests=disabled
-  meson compile -C build-release
-}
+source=("https://github.com/eusouobn/noctalia-bin-releases/releases/download/v${pkgver}/noctalia-full-${pkgver}-x86_64.tar.gz")
+sha256sums=('d398426c6fb1cf11b04d7a5d3b2950637c9663a687c38b4e1fe713e94574234b')
 
 package() {
-  meson install -C build-release --destdir "${pkgdir}"
-
-  install -Dm644 "noctalia-git-bin/LICENSE" "${pkgdir}/usr/share/licenses/noctalia-git-bin/LICENSE"
-  install -Dm644 "noctalia-git-bin/README.md" "${pkgdir}/usr/share/doc/noctalia-git-bin/README.md"
+    cd "$srcdir"
+    cp -a usr "$pkgdir/"
 }
-
