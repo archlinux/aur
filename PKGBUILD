@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=hanime-hunter
 pkgver=0.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A CLI app to download HAnime.  用于下载里番的 CLI 工具"
 arch=('x86_64' 'aarch64')
 url="https://github.com/acgtools/hanime-hunter"
 license=('GPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/acgtools/hanime-hunter.git#tag=v$pkgver")
+_commit='7b89c5f55aa3bfcff959eac226eeadfd5f28cf88'
+source=("git+https://github.com/acgtools/hanime-hunter.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
