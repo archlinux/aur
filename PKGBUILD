@@ -24,7 +24,7 @@ conflicts=("${pkgname%-bin}")
 
 depends=('bash')
 
-options=(!strip)
+options=('!strip')
 
 source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_gitname}-${_barch[0]}.tar.gz")
