@@ -2,20 +2,25 @@
 # Contributor:
 pkgname=captain
 pkgver=1.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Captain - Convert your Git workflow to Docker :whale: containers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/harbur/captain"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/harbur/captain.git#tag=v$pkgver")
+_commit='57e9291c56620790b57aa8a33e5501f3dbc3901d'
+source=("git+https://github.com/harbur/captain.git#commit=$_commit")
 sha256sums=('SKIP')
 
-build() {
+prepare() {
   cd "$pkgname" || exit
   go mod init github.com/harbur/captain
   go mod tidy
+}
+
+build() {
+  cd "$pkgname" || exit
   go build \
     -trimpath \
     -ldflags='-s -w' \
