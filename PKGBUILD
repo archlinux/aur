@@ -2,7 +2,7 @@
 # Maintainer: Emmanuel Gautier <emmanuel@cerberauth.com>
 
 pkgname='vulnapi-bin'
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc='Scan your APIs for security vulnerabilities and weaknesses.'
 url='https://github.com/cerberauth/vulnapi'
@@ -12,16 +12,16 @@ provides=('vulnapi')
 conflicts=('vulnapi')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cerberauth/vulnapi/releases/download/v${pkgver}/vulnapi_Linux_arm64.tar.gz")
-sha256sums_aarch64=('3d897018367291ec12a4c6c43a92a80feb190514b1fb23c0a4ecf762acae7442')
+sha256sums_aarch64=('6da74260324e745e2ebdb8b0a3d5a753ddc61befc3f644a6e4a41b78d5b29dbd')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/cerberauth/vulnapi/releases/download/v${pkgver}/vulnapi_Linux_armv7.tar.gz")
-sha256sums_armv7h=('0779b20a1da08bb85ea6eb9082d1a0b61f697e0ca96281a15594e06f93f2c2c7')
+sha256sums_armv7h=('f76f0b9cbedbc4ecce7b5e3d37a47d10639c23ec689ab547b807d004da4ac99e')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/cerberauth/vulnapi/releases/download/v${pkgver}/vulnapi_Linux_i386.tar.gz")
-sha256sums_i686=('adfcc03fa009da9185a032ac834c73f81a1b98dce6a6ee3b3a8eba81dba3842f')
+sha256sums_i686=('28c6b081dea72da2f16d69e7a78e68a14f9ca3c2654dc69ccc41e53e9393ef91')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cerberauth/vulnapi/releases/download/v${pkgver}/vulnapi_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('ecbba17c9e6860be81dab3b4955103176b06a38026007ccf3af964660c998f4e')
+sha256sums_x86_64=('1ad2ac57de912d4274ebd13f966df4d2b16dda1339f07f40be379582d52a44ef')
 
 package() {
   install -Dm755 "./vulnapi" "${pkgdir}/usr/bin/vulnapi"
