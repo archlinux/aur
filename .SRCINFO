@@ -1,7 +1,7 @@
 pkgbase = brev-cli
 	pkgdesc = Connect your laptop to cloud computers. Follow to stay updated about our product
 	pkgver = 0.6.334
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brevdev/brev-cli
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = brev-cli
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/brevdev/brev-cli.git#tag=v0.6.334
+	source = git+https://github.com/brevdev/brev-cli.git#commit=81eb373cd3f2b57b8a03a1d62ee09531c04e5ab3
 	sha256sums = SKIP
 
 pkgname = brev-cli
