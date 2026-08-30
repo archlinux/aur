@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
   cd "$pkgname" || exit
 
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
