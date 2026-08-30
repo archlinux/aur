@@ -14,6 +14,7 @@ pkgbase = hyprmoncfg-git
 	optdepends = systemd: user service for automatic profile switching
 	provides = hyprmoncfg
 	conflicts = hyprmoncfg
+	conflicts = hyprmoncfg-bin
 	options = !debug
 	source = hyprmoncfg-git::git+https://github.com/crmne/hyprmoncfg.git
 	sha256sums = SKIP
