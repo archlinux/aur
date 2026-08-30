@@ -1,7 +1,7 @@
 pkgbase = nemo-seahorse
 	pkgdesc = PGP encryption and signing extension for Nemo
 	pkgver = 6.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/linuxmint/nemo-extensions
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -20,6 +20,6 @@ pkgbase = nemo-seahorse
 	depends = nemo
 	optdepends = cinnamon-translations: i18n
 	source = git+https://github.com/linuxmint/nemo-extensions.git#tag=6.6.0
-	b2sums = e3803f0d9254a663576c532e0dbdc08e29eac625ee18274725acdf37f73a1757f557b1bb6452a1f2578ac4c48017e919123ae9c36c117e5e917a81538b4f2d84
+	b2sums = SKIP
 
 pkgname = nemo-seahorse
