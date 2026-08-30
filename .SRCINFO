@@ -1,7 +1,7 @@
 pkgbase = codecserver-mbelib-module-git
 	pkgdesc = Software MBE decoder for codecserver / digiham / openwebrx
 	pkgver = r7.dae3eb4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fventuri/codecserver-mbelib-module
 	arch = x86_64
 	arch = aarch64

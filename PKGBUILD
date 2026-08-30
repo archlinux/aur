@@ -2,7 +2,7 @@
 
 pkgname=codecserver-mbelib-module-git
 pkgver=r7.dae3eb4
-pkgrel=1
+pkgrel=2
 pkgdesc="Software MBE decoder for codecserver / digiham / openwebrx"
 arch=(x86_64 aarch64)
 url="https://github.com/fventuri/codecserver-mbelib-module"
@@ -15,7 +15,8 @@ source=(
   "$pkgname"::git+https://github.com/fventuri/codecserver-mbelib-module.git
   change_cppversion.patch
 )
-sha256sums=('SKIP' 'ef5fe46aa0a4882d1dcc51e1f265318298386ab76e4e2c6543ec5261c754e1be')
+sha256sums=('SKIP'
+            'ef5fe46aa0a4882d1dcc51e1f265318298386ab76e4e2c6543ec5261c754e1be')
 
 pkgver() {
     cd "$srcdir/$pkgname"
