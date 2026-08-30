@@ -1,0 +1,22 @@
+post_upgrade() {
+    # 15.x 起为 AppImage 安装,数据目录迁至 /var/lib/Steamcommunity_302/
+    # 14.x 旧版为解包安装:清理程序残留(Steamcommunity_302/、.launcher/),
+    # 但保留配置/证书/规则文件(S302.ini、*.crt/key、dns_*、pac*),由用户决定去留
+    if [[ -d /opt/steamcommunity302/.launcher || -d /opt/steamcommunity302/Steamcommunity_302 ]]; then
+        rm -rf /opt/steamcommunity302/.launcher \
+               /opt/steamcommunity302/Steamcommunity_302 \
+               /opt/steamcommunity302/iframe_api \
+               /opt/steamcommunity302/iframe_api.js \
+               /opt/steamcommunity302/S302_rules.ini \
+               /opt/steamcommunity302/steamcommunity_302.caddy \
+               /opt/steamcommunity302/libHarfBuzzSharp.so \
+               /opt/steamcommunity302/libSkiaSharp.so \
+               /opt/steamcommunity302/run_运行.sh \
+               /opt/steamcommunity302/caddy.log
+        echo "==> 已清理旧版(14.x)程序残留"
+        echo "    旧版配置/证书保留于 /opt/steamcommunity302/(如无需可手动删除)"
+    fi
+    echo "==> steamcommunity302 已升级"
+    echo "    新版为 AppImage,数据目录: /var/lib/Steamcommunity_302/"
+    echo "    启动: s302"
+}
