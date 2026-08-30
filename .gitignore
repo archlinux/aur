@@ -1,0 +1,6 @@
+build/
+build-prebuilt/
+pkg/
+src/
+*.pkg.tar.*
+*.pkg.tar.zst

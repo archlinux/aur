@@ -1,0 +1,83 @@
+# Maintainer: WaiJade <waijade@outlook.com>
+# 使用预编译二进制文件打包（跳过编译）
+
+pkgname=astrobox-creator-console
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="AstroBox CreatorConsole - all-in-one creator console for the AstroBox ecosystem"
+arch=('x86_64')
+url="https://github.com/AstralSightStudios/AstroBoxCreatorConsole"
+license=('AGPL-3.0')
+options=('!debug')
+depends=(
+    'webkit2gtk-4.1'
+    'gtk3'
+    'libx11'
+    'gcc-libs'
+    'glibc'
+    'zlib'
+    'bzip2'
+    'libxcb'
+    'libxkbcommon'
+    'dbus'
+    'libsecret'
+    'libsoup3'
+    'gstreamer'
+    'gst-plugins-base'
+    'libepoxy'
+    'atk'
+    'at-spi2-core'
+    'cairo'
+    'pango'
+    'gdk-pixbuf2'
+    'harfbuzz'
+    'hicolor-icon-theme'
+    'desktop-file-utils'
+    'shared-mime-info'
+)
+source=()
+sha256sums=()
+
+# 使用预编译的二进制文件路径（通过环境变量传入）
+PREBUILT_DIR="${PREBUILT_DIR:-}"
+
+package() {
+    if [ -z "$PREBUILT_DIR" ]; then
+        echo "错误：需要设置 PREBUILT_DIR 环境变量指向预编译目录"
+        echo "用法：PREBUILT_DIR=/path/to/src-tauri/target/release makepkg"
+        exit 1
+    fi
+
+    # Binary
+    install -Dm755 "$PREBUILT_DIR/astrobox-creator-console" "$pkgdir/usr/bin/astrobox-creator-console"
+
+    # Desktop file（优先取 Tauri 生成的原始桌面文件，找不到则用内置模板）
+    local desktop
+    desktop=$(find "$PREBUILT_DIR/bundle/deb" -path '*/data/usr/share/applications/*.desktop' -type f 2>/dev/null | head -1 || true)
+    if [ -n "$desktop" ]; then
+        install -Dm644 "$desktop" "$pkgdir/usr/share/applications/astrobox-creator-console.desktop"
+    else
+        echo "警告：未找到 Tauri 生成的 desktop 文件，使用内置模板"
+        mkdir -p "$pkgdir/usr/share/applications"
+        cat > "$pkgdir/usr/share/applications/astrobox-creator-console.desktop" << 'EOF'
+[Desktop Entry]
+Categories=Utility;
+Exec=astrobox-creator-console
+StartupWMClass=astrobox-creator-console
+Icon=astrobox-creator-console
+Name=AstroBox CreatorConsole
+MimeType=x-scheme-handler/astroboxcc;
+Terminal=false
+Type=Application
+EOF
+        chmod 644 "$pkgdir/usr/share/applications/astrobox-creator-console.desktop"
+    fi
+
+    # Icon
+    install -Dm644 "$PREBUILT_DIR/../../icons/icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/astrobox-creator-console.png"
+
+    # License
+    if [ -f "$srcdir/AstroBoxCreatorConsole/LICENSE" ]; then
+        install -Dm644 "$srcdir/AstroBoxCreatorConsole/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    fi
+}
