@@ -1,12 +1,16 @@
 pkgbase = openmediabridge
 	pkgdesc = Bridge media playback and synchronized lyrics to WebSocket clients via MPRIS. For Resonite VR, OBS overlays, and Discord status.
-	pkgver = 2.0
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/alexvermaning0/OpenMediaBridge
 	arch = x86_64
-	license = MIT
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = dotnet-sdk
 	depends = playerctl
-	source = OpenMediaBridge-2.0-linux-x64.zip::https://github.com/alexvermaning0/OpenMediaBridge/releases/download/2.0/OpenMediaBridge-Linux.zip
-	sha256sums = 77f4231db320e9a30957182855ccb699b38901028f57791304eded1615720cb2
+	conflicts = openmediabridge-bin
+	options = !strip
+	source = openmediabridge-2.1.tar.gz::https://github.com/alexvermaning0/OpenMediaBridge/archive/refs/tags/2.1.tar.gz
+	sha256sums = 9cf211b585454e7841051a30eff8fdbed42d37e2f1eb63cca1a5b5585cca9c17
 
 pkgname = openmediabridge
