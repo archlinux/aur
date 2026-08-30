@@ -1,0 +1,22 @@
+pkgbase = svt-av1-essential-extra-git
+	pkgdesc = A no-nonsense SVT-AV1 encoder fork with sensible defaults and Quality of Life improvements. Now with extra build flags like WebM and FFMS2 and built with clang
+	pkgver = 4.0.1.Essential.r3.g5c4a386e9
+	pkgrel = 1
+	url = https://github.com/nekotrix/SVT-AV1-Essential
+	arch = x86_64
+	license = BSD
+	license = custom: Alliance for Open Media Patent License 1.0
+	makedepends = git
+	makedepends = cmake>=3.23
+	makedepends = nasm
+	makedepends = clang
+	depends = glibc
+	depends = ffms2
+	provides = svt-av1
+	provides = svt-av1-git
+	conflicts = svt-av1
+	conflicts = svt-av1-git
+	source = git+https://github.com/nekotrix/SVT-AV1-Essential
+	sha256sums = SKIP
+
+pkgname = svt-av1-essential-extra-git
