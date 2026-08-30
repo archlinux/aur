@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="A fast shell interpreter, written in zig, with built-in AI agent and GGUF inference"
 
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -32,8 +32,8 @@ source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/$
 sha256sums=('5a4c025947240e5f8a6d5bea2990741d4b137b2dba98e4ead828137128fd0cec'
             '2a498ceedc732235db87547f2a2c334eeee8440f69e73d2888ca67587cd1366d'
             '1fb9fa70ab9186cceadfedf00366d587479450d9b8eae962c8719112ddad958c')
-sha256sums_x86_64=('23f0e482bbae99d4ba7cb1c9267e35bb0b614c5ec340d582a5b235509e78b154')
-sha256sums_aarch64=('880731115fd3221a1a5fa10995b8294adcb67e2a99364f96c2699fbfccf5c7e7')
+sha256sums_x86_64=('fa03fbae76e3212a73c81f7837a20cc0360192175413b66757c284d87703e70f')
+sha256sums_aarch64=('9e4be7bef7079a307a83713cbd806f7e66b67b7e8c7baefdee37af340dadf4cd')
 
 
 package() {
