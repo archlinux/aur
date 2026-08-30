@@ -1,0 +1,10 @@
+--- a/mediapipe/framework/port/opencv_imgproc_inc.h
++++ b/mediapipe/framework/port/opencv_imgproc_inc.h
+@@ -25,6 +25,8 @@
+ #include <opencv2/imgproc.hpp>
+ #if CV_VERSION_MAJOR == 4
+ #include <opencv2/imgproc/types_c.h>
++#elif CV_VERSION_MAJOR >= 5
++#include <opencv2/geometry/2d.hpp>
+ #endif
+ #endif

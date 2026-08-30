@@ -6,7 +6,7 @@ pkgver=0.10.18.r137.0cd1f15d5
 pkgrel=1
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
-url="https://github.com/google/mediapipe"
+url="https://github.com/google-ai-edge/mediapipe"
 license=("Apache-2.0")
 depends=(
   absl-py
@@ -39,11 +39,17 @@ makedepends=(
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-source=("${pkgname}::git+https://github.com/google/mediapipe.git"
-        "0004-use-opencv4-headers.patch"
+source=("${pkgname}::git+https://github.com/google-ai-edge/mediapipe.git"
+        "0004-use-opencv-headers.patch"
+        "0005-set-hermetic-python-version-and-disable-odml-converter.patch"
+        "0006-opencv5-geometry-header.patch"
+        "0007-bump-rules-java.patch"
 )
 sha256sums=('SKIP'
-            '0f05849960ae21db7d3c1059f2c27a3358ba992f634a03b58b75b61f5031d345')
+            'd18e88a217a00dc77cf2bfaa1d33b5fbc912deed5df686b0d2455fb0db75a677'
+            '62cbd43346e7a7705127656a74bec44852e5bbfc006c4723005fdd23af5258db'
+            'fb082d88d9cca47534ae01fca676a3afdb909bfc82d52c97cf0eaedf34571d5f'
+            'bdead49ac5370dc84d9facee962bf2def5d9055d7339a37b2ba3f3b4bb02f811')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -57,13 +63,14 @@ prepare() {
   wget https://github.com/bazelbuild/bazel/releases/download/${bazel_version}/bazel-${bazel_version}-linux-x86_64 -O ${srcdir}/bin/bazel
   chmod +x ${srcdir}/bin/bazel
   export PATH=${srcdir}/bin:${PATH}
-  bazel --version | sed 's/bazel //' > "${srcdir}/${pkgname}/.bazelversion"
   cd "${srcdir}/${pkgname}"
-  patch -p1 -i "${srcdir}/0004-use-opencv4-headers.patch"
+  patch -p1 -i "${srcdir}/0004-use-opencv-headers.patch"
+  patch -p1 -i "${srcdir}/0005-set-hermetic-python-version-and-disable-odml-converter.patch"
+  patch -p1 -i "${srcdir}/0006-opencv5-geometry-header.patch"
+  patch -p1 -i "${srcdir}/0007-bump-rules-java.patch"
   # set __version__
   formatted_version=$(echo $pkgver | sed 's/^v//; s/r\([0-9]*\)\./post\1+/')
   sed -i "s/^__version__ = .*/__version__ = '$formatted_version'/" setup.py
-  # sed -i "s/__version__ = 'dev'/__version__ = '$pkgver'/" setup.py
   # set link_opencv to True
   sed -i "s/self.link_opencv = False/self.link_opencv = True/g" setup.py
 }

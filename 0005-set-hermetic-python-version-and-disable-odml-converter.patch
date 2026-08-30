@@ -1,0 +1,13 @@
+--- a/.bazelrc
++++ b/.bazelrc
+@@ -129,6 +129,10 @@
+ # with system Python 3.14+
+ common --repo_env=HERMETIC_PYTHON_VERSION=3.12
+ 
++# Force Bazel hermetic Python to use 3.12 to avoid incompatibility
++# with system Python 3.14+
++common --repo_env=HERMETIC_PYTHON_VERSION=3.12
++
+ # This bazelrc file is meant to be written by a setup script.
+ try-import %workspace%/.configure.bazelrc
+ 
