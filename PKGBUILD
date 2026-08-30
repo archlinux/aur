@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=gotouch
 pkgver=1.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Language Agnostic Customizable Boilerplate Project Creator"
 arch=('x86_64' 'aarch64')
 url="https://github.com/denizgursoy/gotouch"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/denizgursoy/gotouch.git#tag=v$pkgver")
+_commit='3a24bb29a20350ea243062407596059154732f1f'
+source=("git+https://github.com/denizgursoy/gotouch.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
