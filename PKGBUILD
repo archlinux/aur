@@ -17,6 +17,9 @@ options=(!strip !debug)
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('58ef4d4bc5942434b195f2518c0a2cf768d003cbf80d92866a2e3833dba84a72bc16a731fbe83380b393bc44f3ea50533ff6fbb7c3c5dcb23c78603635bf035d')
 
+_install_dir=/urs/lib/hunkdiff
+_skills=(review extensions)
+
 prepare() {
   cd "${pkgname}-${pkgver}"
 
@@ -29,6 +32,7 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
+  export HUNK_INSTALL_DIR="${_install_dir}"
   # FIXME: abusing mise to skip self update notices
   export HUNK_INSTALL_SOURCE=mise
   bun build \
@@ -41,7 +45,7 @@ build() {
     --bytecode \
     --minify \
     --no-compile-autoload-bunfig \
-    --env 'HUNK_INSTALL_SOURCE*' \
+    --env 'HUNK_INSTALL_*' \
     src/main.tsx \
     src/highlightWorkerEntry.ts
 }
@@ -53,7 +57,7 @@ check() {
   export HUNK_TEST_EXECUTABLE=dist/hunk
   bun test ./test/smoke
 
-  # based on https://github.com/modem-dev/hunk/blob/main/scripts/smoke-prebuilt-install.ts
+  # based on https://github.com/modem-dev/hunk/blob/v0.17.7/scripts/smoke-prebuilt-install.ts
   local help version skill skillPath
 
   echo -n 'HELP = '
@@ -64,7 +68,7 @@ check() {
   version=$(dist/hunk --version)
   grep -F "${pkgver}" <<< "${version}"
 
-  for skill in review extensions; do
+  for skill in "${_skills[@]}"; do
     echo -n 'SKILL = '
     skillPath=$(dist/hunk skill path "${skill}")
     grep -E 'skills/hunk-.*/SKILL\.md$' <<< "${skillPath}"
@@ -74,17 +78,17 @@ check() {
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -vD -t "${pkgdir}/usr/lib/hunkdiff/" \
-    -m755 dist/hunk
+  local hunk_install_dir="${pkgdir}${_hunk_install_dir}"
+
+  install -vD -t "${hunk_install_dir}/" -m755 dist/hunk
   install -vd "${pkgdir}/usr/bin"
-  ln -v -ft "${pkgdir}/usr/bin/" \
-    -sr "${pkgdir}/usr/lib/hunkdiff/hunk"
+  ln -v -ft "${pkgdir}/usr/bin/" -sr "${hunk_install_dir}/hunk"
 
-  install -vD -t "${pkgdir}/usr/lib/hunkdiff/skills/hunk-review/" \
-    -m644 skills/hunk-review/SKILL.md
-  install -vD -t "${pkgdir}/usr/lib/hunkdiff/skills/hunk-extensions/" \
-    -m644 skills/hunk-extensions/SKILL.md
+  local skill
+  for skill in "${_skills[@]}"; do
+    install -vD -t "${hunk_install_dir}/skills/hunk-${skill}/" \
+      -m644 "skills/hunk-${skill}/SKILL.md"
+  done
 
-  install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
-    -m644 LICENSE
+  install -vD -t "${pkgdir}/usr/share/licenses/${pkgname}/" -m644 LICENSE
 }
