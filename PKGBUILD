@@ -1,6 +1,6 @@
 # Maintainer: Justin Slay <justin.slay@gmail.com>
 pkgname=puckctl
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Gamepad / desktop mode for the Steam Controller Puck"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'pkgconf')
 options=('!lto')
 install=puckctl.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jslay88/puckctl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('24174c7b4aac5ed7256af98e3f9f1950f86d8e13b253ed200819a436dee83a55')
+sha256sums=('43f6f3dfcda836518b8c2f94dac84c1397fc8bc36bbc27c09cdceb9c1d8088c2')
 
 prepare() {
   cd "$pkgname-$pkgver"
