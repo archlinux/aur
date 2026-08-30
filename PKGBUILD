@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=gowsdl
 pkgver=0.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc="WSDL2Go code generation as well as its SOAP proxy"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hooklift/gowsdl"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
