@@ -1,6 +1,6 @@
 # Maintainer: ninni <soelder@hotmail.com>
 pkgname=awakened-poe-trade-git
-pkgver=3.28.104.r2.gdc41a411
+pkgver=3.29.107.r16.gf5985f7c
 pkgrel=1
 pkgdesc='Path of Exile trading app for price checking'
 arch=('x86_64')
@@ -44,7 +44,6 @@ build() {
 
   cd "${srcdir}/awakened-poe-trade/renderer"
   npm ci
-  npm run make-index-files
   npm run build
 
   cd "${srcdir}/awakened-poe-trade/main"
