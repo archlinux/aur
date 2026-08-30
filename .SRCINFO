@@ -1,6 +1,6 @@
 pkgbase = synemar
 	pkgdesc = Fullscreen music visualizer with waveform + spectrum animation, custom background videos and colors.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/0xRavenBlack/synemar
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = synemar
 	depends = ffmpeg
 	depends = hicolor-icon-theme
 	options = !strip
-	source = synemar_standalone.tar.gz::https://github.com/0xRavenBlack/synemar/releases/download/v0.2.1/synemar_standalone.tar.gz
-	source = synemar.desktop::https://github.com/0xRavenBlack/synemar/raw/v0.2.1/packaging/linux/synemar.desktop
-	source = app.svg::https://github.com/0xRavenBlack/synemar/raw/v0.2.1/app.svg
-	sha256sums = ed6d463e9a85500feeedcd64c281ff168a96d48f48531036222888851a6c8743
+	source = synemar_standalone.tar.gz::https://github.com/0xRavenBlack/synemar/releases/download/v0.2.2/synemar_standalone.tar.gz
+	source = synemar.desktop::https://github.com/0xRavenBlack/synemar/raw/v0.2.2/packaging/linux/synemar.desktop
+	source = app.svg::https://github.com/0xRavenBlack/synemar/raw/v0.2.2/app.svg
+	sha256sums = 28aa249a04059d23440b41445dbd05f1ebf9ab73c3a89df319aa30d320d79d61
 	sha256sums = 51f19dac3360995275e7f23ee311c873c4ba2ad7a2dd74f408dddd5b656e5f4d
 	sha256sums = 5b60259f69de112dcde62ded6b25216c11895e40f05015d06397b1dc614732c2
 
