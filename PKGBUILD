@@ -1,41 +1,62 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastsapp
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast native WhatsApp client built with Rust and egui"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/fastsapp"
 license=('MIT')
 install="${pkgname}.install"
-# Nothing beyond libc is linked directly; winit and glutin dlopen these at
-# startup, and this is a GUI-only application, so all of them have to be
-# there for it to run at all.
 depends=('libglvnd' 'libxkbcommon' 'wayland' 'libx11')
+makedepends=('cargo')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'noto-fonts-emoji: colour emoji in messages and reactions'
             'ffmpeg: playing GIFs'
             'xdg-desktop-portal: the file picker for attachments')
-conflicts=('fastsapp-git')
-options=('!debug' '!strip')
-_repo="https://github.com/crmne/fastsapp"
-source_x86_64=("${_repo}/releases/download/v${pkgver}/fastsapp-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-source_aarch64=("${_repo}/releases/download/v${pkgver}/fastsapp-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('b8d2e82b086496df88515a25ef0e8f433d1e0b9bf564b977d13459ab425ab2b7')
-sha256sums_aarch64=('bacc83f977a892d3a1dfc58a24c2ab28121a980c3785870faca91e9f045b87f5')
+conflicts=('fastsapp-bin' 'fastsapp-git')
+# !lto because ring compiles its own C and Arch's default CFLAGS put LTO
+# objects in the archive, which lld then cannot resolve: the link fails on
+# undefined ring_core_* symbols. The stable package is prebuilt and never
+# meets this.
+options=('!debug' '!lto')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/fastsapp/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('4cd975556f1ed32fb68dba18075c538b19803311b86eb3eadc4ecb19e2e75327')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  # whatsapp-rust is a git dependency pinned to a commit; the lockfile
+  # names it, so this fetches it along with everything else.
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  # Generated bindings inside glutin carry the path they were built at, which
+  # ends up in the binary and makes makepkg warn about a reference to $srcdir.
+  # Appended rather than assigned, so the distro's own flags survive.
+  export RUSTFLAGS="${RUSTFLAGS:-} --remap-path-prefix=${srcdir}=/"
+  cargo build --frozen --release
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  export RUSTUP_TOOLCHAIN=stable
+  # The demo feature carries the headless layout test of every screen,
+  # which needs no display and talks to nothing.
+  cargo test --frozen --features demo
+}
 
 package() {
-  local target
-  case "$CARCH" in
-    x86_64) target="x86_64-unknown-linux-gnu" ;;
-    aarch64) target="aarch64-unknown-linux-gnu" ;;
-  esac
-  local dir="${srcdir}/fastsapp-v${pkgver}-${target}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  install -Dm755 "${dir}/fastsapp" "${pkgdir}/usr/bin/fastsapp"
-  install -Dm644 "${dir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${dir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${dir}/packaging/applications/fastsapp.desktop" \
+  install -Dm755 "target/release/fastsapp" "${pkgdir}/usr/bin/fastsapp"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "packaging/applications/fastsapp.desktop" \
     "${pkgdir}/usr/share/applications/fastsapp.desktop"
-  install -Dm644 "${dir}/packaging/icons/fastsapp.svg" \
+  install -Dm644 "packaging/icons/fastsapp.svg" \
     "${pkgdir}/usr/share/icons/hicolor/scalable/apps/fastsapp.svg"
 }
