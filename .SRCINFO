@@ -1,7 +1,7 @@
 pkgbase = gh-s
 	pkgdesc = 🔎 search github repositories interactively
 	pkgver = 0.0.12
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/gennaro-tedesco/gh-s
 	arch = x86_64
 	arch = aarch64
