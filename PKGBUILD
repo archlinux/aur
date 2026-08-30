@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=cfnctl
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Cfnctl brings the Terraform cli experience to AWS Cloudformation :cloud:   "
 arch=('x86_64' 'aarch64')
 url="https://github.com/rogerwelin/cfnctl"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/rogerwelin/cfnctl.git#tag=v$pkgver")
+_commit='531a84a615ebb95aaa94eec5323230a468cfd00a'
+source=("git+https://github.com/rogerwelin/cfnctl.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
