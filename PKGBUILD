@@ -4,7 +4,7 @@
 
 _pkgname=dbeaver
 pkgname=dbeaver-ce-bin
-pkgver=26.1.1
+pkgver=26.2.0
 pkgrel=1
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition)"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ source=("${_pkgname}-${pkgver}.linux-${CARCH}.tar.gz"::"https://github.com/dbeav
         "io.dbeaver.DBeaver.desktop"
         "${pkgname}.sh"
         "${pkgname}.install")
-sha256sums=('6ad6d0d3496ae7cf4594d7a6f39360cd3286ca14d1a45208f0e49f55f610b83d'
+sha256sums=('f504e70a74763aa02e0b63d6842b85ca64526f682be457b3f30e330cc10748ed'
             '9480a7d08f680e10c399db070c5a04cbabf282442602a2ef83d1159fe7c3e88b'
             '406a2980806c394670e88b1ae70134900be376c2ea4a4216610591cc8b557526'
             '603f7aa912685b69ca558ca7586585b7a314ca1b743be574db7bcd7a31c2ea2d')
@@ -34,7 +34,7 @@ prepare() {
     win32 win32-aarch64 win32-x86 win32-x86-64
   do
     if [[ "linux-${CARCH//_/-}" != "${_dir}" ]]; then
-      rm -r "${_dir}"
+      rm -rf "./${_dir}"
     fi
   done
 }
