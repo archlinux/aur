@@ -4,7 +4,7 @@
 # shellcheck disable=SC2164
 
 pkgver=2.2.4.r33.gea64a47
-pkgrel=1
+pkgrel=2
 
 _pkgname=casual-pre-loader
 pkgname="${_pkgname}-git"
@@ -59,11 +59,13 @@ pkgver() {
 
 prepare() {
 	# generate desktop entry file
+	# NOTE: The `GameTool` category is not yet recognized by the latest release (0.28) of `desktop-file-utils` (added in 5fbfd9e),
+	# but is valid according to the XDG Menu spec version 1.1.
 	gendesk -n -f \
 		--pkgname "${_pkgname}" --name "${_pkgname}" --exec "${_pkgname}" --icon "${_pkgname}" \
 		--pkgdesc "${pkgdesc}" \
 		--terminal false \
-		--categories 'QT;Utility;Game;GameTool'
+		--categories 'Utility;Game;Qt;GameTool'
 
 	cd "${_pkgname}"
 
