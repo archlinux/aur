@@ -8,4 +8,4 @@ __pycache__/
 *.tmp
 
 # Local testing and scratch directories
-scratch/\n
+scratch/\n*.tar.gz

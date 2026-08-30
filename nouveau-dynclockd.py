@@ -22,8 +22,8 @@ MONITORED_APPS = {
     "cinnamon", "Xorg", "vivaldi-bin", "firefox", "chromium", "chrome", "brave", "brave-bin", "code", "electron"
 }
 
-# Tick delta threshold over a 2.0s period (> 40% CPU core utilization indicates active WebGL / 3D / video work)
-LOAD_TICK_THRESHOLD = 80
+# Tick delta threshold over a 2.0s period (> 15% CPU utilization indicates active WebGL / 3D / video work)
+LOAD_TICK_THRESHOLD = 30
 
 prev_app_ticks = 0
 
@@ -72,23 +72,45 @@ def get_monitored_app_ticks():
 
 
 def has_dedicated_3d_apps():
-    """Checks if dedicated 3D applications (games, emulators, benchmarks) are running."""
+    """Checks if dedicated 3D applications (games, emulators, benchmarks, Wayland clients) are running."""
     try:
-        if not os.path.exists(CLIENTS_PATH):
-            return False
-        with open(CLIENTS_PATH, "r") as f:
-            lines = f.readlines()[1:]
-        for line in lines:
-            parts = line.split()
-            if not parts:
+        # 1. Check direct DRM clients
+        if os.path.exists(CLIENTS_PATH):
+            with open(CLIENTS_PATH, "r") as f:
+                lines = f.readlines()[1:]
+            for line in lines:
+                parts = line.split()
+                if not parts:
+                    continue
+                cmd_name = parts[0]
+                if (cmd_name in DESKTOP_CLIENTS or 
+                    cmd_name.startswith("csd-") or 
+                    cmd_name.startswith("gsd-") or 
+                    cmd_name.startswith("systemd")):
+                    continue
+                return True
+
+        # 2. Check Wayland / EGL / OpenGL process memory maps
+        for pid_dir in glob.glob("/proc/[0-9]*"):
+            try:
+                comm_path = os.path.join(pid_dir, "comm")
+                with open(comm_path, "r") as f:
+                    comm = f.read().strip()
+                if (comm in DESKTOP_CLIENTS or 
+                    comm.startswith("csd-") or 
+                    comm.startswith("gsd-") or 
+                    comm.startswith("systemd")):
+                    continue
+                maps_path = os.path.join(pid_dir, "maps")
+                with open(maps_path, "r") as f:
+                    maps_content = f.read()
+                if ("nouveau_dri.so" in maps_content or 
+                    "libGLX_mesa.so" in maps_content or 
+                    "libEGL_mesa.so" in maps_content or 
+                    "libvulkan.so" in maps_content):
+                    return True
+            except (FileNotFoundError, ProcessLookupError, PermissionError):
                 continue
-            cmd_name = parts[0]
-            if (cmd_name in DESKTOP_CLIENTS or 
-                cmd_name.startswith("csd-") or 
-                cmd_name.startswith("gsd-") or 
-                cmd_name.startswith("systemd")):
-                continue
-            return True
         return False
     except Exception:
         pass
