@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=redis_tui
 pkgver=0.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Redis terminal application"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mat2cc/redis_tui"
 license=('GPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/mat2cc/redis_tui.git#tag=v$pkgver")
+_commit='9c8b777605f71b134db1629946e65c522f54be30'
+source=("git+https://github.com/mat2cc/redis_tui.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
