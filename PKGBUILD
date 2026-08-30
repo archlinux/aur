@@ -3,18 +3,16 @@
 
 pkgname=console-blanking
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Restores virtual console default blanking and powerdown after a given number of minutes (defaults: blank monitor - 5 minutes, powerdown display = 6 minutes)."
 url="https://github.com/drankinatty/console-blanking"
 license=('GPL-2.0+')
 provides=('console-blanking.service')
 arch=('i686' 'x86_64')
 options=('!emptydirs')
-source=("console-blanking.service"
-        "LICENSE")
+source=("console-blanking.service")
 validpgpkeys=()
-sha1sums=('d44bf879467bd107323f687406c8bdfd133d70dd'
-        '4cc77b90af91e615a64ae04893fdffa7939db84c')
+sha1sums=('3c09ef3b2f3d5b08b13ed9068e915fc52a797b82')
 
 package() {
     cd "${srcdir}"
