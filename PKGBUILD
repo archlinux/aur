@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=saw
 pkgver=0.2.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Fast, multi-purpose tool for AWS CloudWatch Logs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/TylerBrock/saw"
@@ -17,12 +17,15 @@ prepare() {
   cd "$pkgname" || exit
   go mod init github.com/TylerBrock/saw
   go mod tidy
+  go mod download
 }
 
 build() {
   cd "$pkgname" || exit
   go build \
     -trimpath \
+    -mod=readonly \
+    -modcacherw \
     -ldflags='-s -w' \
     -o $pkgname \
     .
