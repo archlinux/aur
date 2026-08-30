@@ -1,6 +1,6 @@
 pkgbase = celq-bin
 	pkgdesc = Query and transform JSON, YAML, TOML, XML, and JSON5 data with CEL expressions
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/IvanIsCoding/celq
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = celq-bin
 	provides = celq
 	conflicts = celq
 	options = !debug
-	source = celq-bin-0.5.0-LICENSE-MIT::https://raw.githubusercontent.com/IvanIsCoding/celq/v0.5.0/LICENSE-MIT
+	source = celq-bin-0.6.0-LICENSE-MIT::https://raw.githubusercontent.com/IvanIsCoding/celq/v0.6.0/LICENSE-MIT
 	sha256sums = c73e3f239b267fb3f998a0535e250920e1e520ec3b5b567894798f76f56b9bb9
-	source_x86_64 = celq-bin-0.5.0-x86_64.tar.gz::https://github.com/IvanIsCoding/celq/releases/download/v0.5.0/celq-linux-x86_64-gnu.tar.gz
-	sha256sums_x86_64 = 85294f1255489aec7b0b11bb4f49b4b2f247bc4c4516ab873b105e22bb8d5812
-	source_aarch64 = celq-bin-0.5.0-aarch64.tar.gz::https://github.com/IvanIsCoding/celq/releases/download/v0.5.0/celq-linux-aarch64-gnu.tar.gz
-	sha256sums_aarch64 = dec99f525b37a5d0dba949b648445393705346481a313806009c742c67cf1608
+	source_x86_64 = celq-bin-0.6.0-x86_64.tar.gz::https://github.com/IvanIsCoding/celq/releases/download/v0.6.0/celq-linux-x86_64-gnu.tar.gz
+	sha256sums_x86_64 = b7ebc80ab9e4a3307307396bc4458dbcb538ba5352abce84491740bbc1487712
+	source_aarch64 = celq-bin-0.6.0-aarch64.tar.gz::https://github.com/IvanIsCoding/celq/releases/download/v0.6.0/celq-linux-aarch64-gnu.tar.gz
+	sha256sums_aarch64 = 6521b51c8361f6abf34bef9e88f853ba9e2ced42e2487dfe43751ea54d22eb6f
 
 pkgname = celq-bin
