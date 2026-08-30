@@ -14,7 +14,7 @@ provides=('lbk-launcher')
 conflicts=('lbk-launcher')
 options=(!strip !debug)
 source=(
-    "LBK-Launcher-linux.AppImage::https://github.com/Vadko/lbk-launcher/releases/download/v${pkgver}/LBK-Launcher-linux.AppImage"
+    "LBK-Launcher-linux-${pkgver}.AppImage::https://github.com/Vadko/lbk-launcher/releases/download/v${pkgver}/LBK-Launcher-linux.AppImage"
     "lbk-launcher.sh"
     "lbk-launcher.desktop"
     "icon-32.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/main/aur/icons/icon-32.png"
@@ -33,8 +33,8 @@ sha256sums=('b3372863723313617acf98aef602abe3c4e0e4d83b5697929b9fd455aeaec638'
             '1556ac85d8f75e379905c933e2a48c7fef58fe9869195080b2ef701e1bcabe53')
 
 prepare() {
-    chmod +x "${srcdir}/LBK-Launcher-linux.AppImage"
-    "${srcdir}/LBK-Launcher-linux.AppImage" --appimage-extract
+    chmod +x "${srcdir}/LBK-Launcher-linux-${pkgver}.AppImage"
+    "${srcdir}/LBK-Launcher-linux-${pkgver}.AppImage" --appimage-extract
 }
 
 package() {
