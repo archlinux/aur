@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=nirvana
 pkgver=0.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Golang Restful API Framework for Productivity"
 arch=('x86_64' 'aarch64')
 url="https://github.com/caicloud/nirvana"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
