@@ -1,7 +1,7 @@
 pkgbase = pep-ebook
 	pkgdesc = 📚自动下载带书签的电子书(人民教育教出版社)
 	pkgver = 1.0.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/maogou/pep-ebook
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = pep-ebook
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/maogou/pep-ebook.git#tag=v1.0.10
+	source = git+https://github.com/maogou/pep-ebook.git#commit=acd7f84305ae3206fcecf3f48d503b701d3b5f6b
 	sha256sums = SKIP
 
 pkgname = pep-ebook

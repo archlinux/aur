@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=pep-ebook
 pkgver=1.0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="📚自动下载带书签的电子书(人民教育教出版社)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/maogou/pep-ebook"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/maogou/pep-ebook.git#tag=v$pkgver")
+_commit='acd7f84305ae3206fcecf3f48d503b701d3b5f6b'
+source=("git+https://github.com/maogou/pep-ebook.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
