@@ -2,7 +2,7 @@
 
 pkgname=poi-bin
 _pkgname=poi
-pkgver=11.1.0
+pkgver=12.0.1
 pkgrel=1
 pkgdesc="Scalable KanColle browser and tool"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('nss' 'gtk3')
 conflicts=('poi')
 options=(!strip)
 source=("https://github.com/poooi/poi/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('be42bbcdd815836dbf16aa7021eb96a26019be4a6e8a44f81b3a241f31782e80')
+sha256sums=('d2b7f0d738ead04b13af90cf52f2830ead6cb8435cd9cd7a8d6d9d2f028126ee')
 
 package() {
 	bsdtar -xf data.tar.xz -C "$pkgdir/"
