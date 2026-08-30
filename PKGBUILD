@@ -5,7 +5,7 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=linecounter-git
-pkgver=2.3.7
+pkgver=2.3.8
 pkgrel=1
 epoch=
 pkgdesc="This is a program that can count all lines in your source code. Run lctr to count all lines. Run lctr -h for help!"
@@ -30,7 +30,7 @@ md5sums=()
 validpgpkeys=()
 
 prepare() {
-    git clone https://gitlab.com/spynets1/Linecounter.git lctr
+    git clone https://github.com/spynets/linecounter.git lctr
 }
 
 package() {
