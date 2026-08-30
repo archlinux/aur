@@ -1,7 +1,7 @@
 pkgbase = n26
 	pkgdesc = API and CLI to get information of your N26 account
 	pkgver = 1.5.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/guitmz/n26
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = n26
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/guitmz/n26.git#tag=1.5.6
+	source = git+https://github.com/guitmz/n26.git#commit=ffa147f6ea3a03439d8fe2c0f25d397183596ab3
 	sha256sums = SKIP
 
 pkgname = n26
