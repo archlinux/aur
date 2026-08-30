@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=go-perftuner
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Helper tool for manual Go code optimization."
 arch=('x86_64' 'aarch64')
 url="https://github.com/go-perf/go-perftuner"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/go-perf/go-perftuner.git#tag=v$pkgver")
+_commit='ece170aa2233db3b708470a0eb8a7fb8d5be6224'
+source=("git+https://github.com/go-perf/go-perftuner.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
