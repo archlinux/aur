@@ -1,0 +1,20 @@
+pkgbase = sshs-9m2pju-git
+	pkgdesc = Terminal user interface for SSH with themes, ASCII art banners, SSHS Explorer, and networking hub (9M2PJU fork)
+	pkgver = 4.8.1.r1.g9e09a1c
+	pkgrel = 1
+	url = https://github.com/9M2PJU/sshs
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = openssh
+	provides = sshs
+	conflicts = sshs
+	conflicts = sshs-bin
+	conflicts = sshs-git
+	source = sshs::git+https://github.com/9M2PJU/sshs.git
+	sha256sums = SKIP
+
+pkgname = sshs-9m2pju-git
