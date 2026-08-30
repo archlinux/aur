@@ -4,13 +4,13 @@
 pkgname=dream-nox
 _pkgname=dream
 pkgver=2.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A software radio for AM and Digital Radio Mondiale (DRM), w/o GUI"
 arch=(i686 x86_64 aarch64)
 url="https://github.com/wwek/dream"
-makedepends=('git' 'libpcap')
+makedepends=('git')
 license=('GPL-2.0-or-later')
-depends=(libfdk-aac faad2 libpulse fftw opus libsndfile speexdsp hamlib libpulse qt5-base 'faac>=1.31')
+depends=(libfdk-aac faad2 libpulse fftw opus libsndfile speexdsp hamlib libpcap qt5-base 'faac>=1.31')
 provides=('dream')
 conflicts=('dream')
 

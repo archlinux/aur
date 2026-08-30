@@ -1,14 +1,13 @@
 pkgbase = dream-nox
 	pkgdesc = A software radio for AM and Digital Radio Mondiale (DRM), w/o GUI
 	pkgver = 2.2.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/wwek/dream
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-or-later
 	makedepends = git
-	makedepends = libpcap
 	depends = libfdk-aac
 	depends = faad2
 	depends = libpulse
@@ -17,7 +16,7 @@ pkgbase = dream-nox
 	depends = libsndfile
 	depends = speexdsp
 	depends = hamlib
-	depends = libpulse
+	depends = libpcap
 	depends = qt5-base
 	depends = faac>=1.31
 	provides = dream
