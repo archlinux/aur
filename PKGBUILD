@@ -1,14 +1,15 @@
 pkgname=xtrayhide-git
 pkgver=r2.5e33f36
 pkgrel=1
-pkgdesc="Capture X11(XEmbed) tray icons, forward them to SNI. For Wayland compositors(Niri,Hyprland)"
+pkgdesc="Captures X11 (XEmbed) tray icons and exposes them as StatusNotifierItem (SNI) icons. For Wayland compositors"
 arch=('x86_64')
 url="https://github.com/bnema/xtrayhide"
 license=('MIT')
 depends=('dbus' 'libx11')
 makedepends=('go' 'git')
 provides=('xtrayhide')
-conflicts=()
+conflicts=('xembed-sni-proxy')
+install="${pkgname}.install"
 source=("git+${url}.git"
         "${pkgname}.install")
 sha256sums=('SKIP'
