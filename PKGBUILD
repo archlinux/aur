@@ -10,7 +10,7 @@
 # the builder's keyring for no benefit.
 
 pkgname=tidemark-git
-pkgver=0.2.0.r1.g3470a1a
+pkgver=0.2.1.r0.ge8a7d45
 pkgrel=1
 pkgdesc='Track AI provider quota limits: how much of each rate-limit window is burned, when it resets, and whether the current pace reaches it'
 arch=('x86_64')
@@ -25,7 +25,7 @@ depends=('gtk4' 'libadwaita' 'sqlite' 'dbus')
 # is an optdepend rather than a hard dependency. Deliberately AUR-only: the repo PKGBUILD
 # omits it for now, and that omission is not drift.
 optdepends=('gnome-keyring: provides the Secret Service where provider keys are stored (KeePassXC also works)')
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'cmake' 'clang')
 provides=('tidemark')
 conflicts=('tidemark')
 install=tidemark.install
