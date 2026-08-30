@@ -1,6 +1,6 @@
 pkgbase = tailcat-bin
 	pkgdesc = like netcat, but over Tailscale's data plane, without Tailscale's control plane
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/tailscale/tailcat
 	arch = aarch64
@@ -9,9 +9,9 @@ pkgbase = tailcat-bin
 	depends = glibc
 	provides = tailcat
 	conflicts = tailcat
-	source_aarch64 = tailcat-arm64-0.2.0.tar.gz::https://github.com/tailscale/tailcat/releases/download/v0.2.0/tailcat_0.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = ee0d92a7f3f0bc670a45da9e7f00c46260298e1e2c721eea7389aa28a0ddd4d9
-	source_x86_64 = tailcat-amd64-0.2.0.tar.gz::https://github.com/tailscale/tailcat/releases/download/v0.2.0/tailcat_0.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = a4b439e006720b32c716c4ca66b2790a62a9a82735ac8bc686c48025bedbbee5
+	source_aarch64 = tailcat-arm64-0.3.0.tar.gz::https://github.com/tailscale/tailcat/releases/download/v0.3.0/tailcat_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b88d8ca36d0aff233987a2551237d63d51f4f7bf1b4f6542c7d721a7eebb4969
+	source_x86_64 = tailcat-amd64-0.3.0.tar.gz::https://github.com/tailscale/tailcat/releases/download/v0.3.0/tailcat_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 42ee6acb92ac0a6d778bf803aab1dc76fbc3f576c6489ca1be854efcb4641899
 
 pkgname = tailcat-bin
