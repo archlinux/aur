@@ -1,13 +1,51 @@
 #!/usr/bin/sh
 
+MARIADB=/usr/bin/mariadb
+DB_DIR=/usr/share/tango/db
+
+# Schema version the packaged Databaseds expects; must match SCHEMA_VERSION_REF
+# in the upstream CMakeLists.txt. The server refuses to start on a mismatch.
+TARGET_VERSION=2
+
+mariadb_tango() {
+  $MARIADB -u root -h localhost tango "$@"
+}
+
+# Current schema version, or 0 when the table is absent or unreadable.
+# Mirrors the query the server uses in DataBaseUtils.cpp so that both agree
+# on which row wins.
+schema_version() {
+  if [ -z "$(mariadb_tango -Bse "SHOW TABLES LIKE 'schema_migrations'" 2>/dev/null)" ]; then
+    echo 0
+    return
+  fi
+
+  version=$(mariadb_tango -Bse \
+    "SELECT version FROM schema_migrations ORDER BY updated DESC, id ASC LIMIT 1" 2>/dev/null)
+
+  case "$version" in
+    '' | *[!0-9]*) echo 0 ;;
+    *) echo "$version" ;;
+  esac
+}
+
+# Migration script that takes the schema from $1 to the next version.
+migration_for() {
+  case "$1" in
+    0) echo update_db_from_5.24_to_5.30.sql ;;
+    1) echo update_db_from_5.30_to_5.31.sql ;;
+    *) echo '' ;;
+  esac
+}
+
 echo "***************************************************"
 echo ">>> Creating the tango database user in mariadb"
 
 # Run the mariadb query to check if the user exists
-result=$(/usr/bin/mariadb -u root -h localhost -Bse "SELECT User FROM mysql.user WHERE User='tango-db'")
+result=$($MARIADB -u root -h localhost -Bse "SELECT User FROM mysql.user WHERE User='tango-db'")
 
 if [ -z "$result" ]; then
-  /usr/bin/mariadb -u root -h localhost < /usr/share/tango/db/create_db_user.sql
+  $MARIADB -u root -h localhost < "$DB_DIR/create_db_user.sql"
   if [ $? -ne 0 ]; then
     echo "  - An error occurred, manual database users configuration may be necessary!"
   else
@@ -20,11 +58,10 @@ fi
 echo ">>> Creating the default mariadb tango database"
 
 # Run the mariadb query to check if the database exists
-result=$(/usr/bin/mariadb -u root -h localhost -Bse "SHOW DATABASES LIKE 'tango'")
+result=$($MARIADB -u root -h localhost -Bse "SHOW DATABASES LIKE 'tango'")
 
 if [ -z "$result" ]; then
-  cd /usr/share/tango/db/
-  /usr/bin/sh ./create_db.sh
+  (cd "$DB_DIR" && /usr/bin/sh ./create_db.sh)
   if [ $? -ne 0 ]; then
     echo "  - An error occurred, manual database configuration may be necessary!"
   else
@@ -36,47 +73,43 @@ fi
 
 echo ">>> Checking schema migrations"
 
-# Check if the schema_migrations table exists (introduced in 5.30)
-result=$(/usr/bin/mariadb -u root -h localhost tango -Bse "SHOW TABLES LIKE 'schema_migrations'" 2>/dev/null)
-
-if [ -z "$result" ]; then
-  echo "  - Applying migration: schema version 1 (required for 5.30+)"
-  /usr/bin/mariadb -u root -h localhost tango <<'ENDSQL'
-CREATE TABLE IF NOT EXISTS schema_migrations (
-  id bigint unsigned NOT NULL AUTO_INCREMENT,
-  version int default NULL,
-  updated timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (id)
-) ENGINE=InnoDB;
-
-INSERT INTO schema_migrations (version) VALUES (1);
-
-ALTER TABLE property_hist MODIFY id bigint unsigned NOT NULL AUTO_INCREMENT;
-ALTER TABLE property_device_hist MODIFY id bigint unsigned NOT NULL AUTO_INCREMENT;
-ALTER TABLE property_class_hist MODIFY id bigint unsigned NOT NULL AUTO_INCREMENT;
-ALTER TABLE property_attribute_class_hist MODIFY id bigint unsigned NOT NULL AUTO_INCREMENT;
-ALTER TABLE property_attribute_device_hist MODIFY id bigint unsigned NOT NULL AUTO_INCREMENT;
-ALTER TABLE property_pipe_class_hist MODIFY id bigint unsigned NOT NULL AUTO_INCREMENT;
-ALTER TABLE property_pipe_device_hist MODIFY id bigint unsigned NOT NULL AUTO_INCREMENT;
-
-DROP TABLE IF EXISTS device_history_id;
-DROP TABLE IF EXISTS device_attribute_history_id;
-DROP TABLE IF EXISTS device_pipe_history_id;
-DROP TABLE IF EXISTS class_history_id;
-DROP TABLE IF EXISTS class_attribute_history_id;
-DROP TABLE IF EXISTS class_pipe_history_id;
-DROP TABLE IF EXISTS object_history_id;
-
-DROP PROCEDURE IF EXISTS init_history_ids;
-ENDSQL
-  if [ $? -ne 0 ]; then
-    echo "  - Migration failed! Manual intervention may be necessary."
-  else
-    echo "  - Done!"
-  fi
+# A freshly created database already carries the current schema version, so the
+# loop below is a no-op for it.
+if [ -z "$($MARIADB -u root -h localhost -Bse "SHOW DATABASES LIKE 'tango'")" ]; then
+  echo "  - No 'tango' database to migrate, skipping"
 else
-  version=$(/usr/bin/mariadb -u root -h localhost tango -Bse "SELECT MAX(version) FROM schema_migrations" 2>/dev/null)
-  echo "  - Schema is up to date (version ${version:-unknown})"
+  version=$(schema_version)
+
+  # Apply every migration between the installed schema and the one this
+  # version of Databaseds expects, one step at a time.
+  while [ "$version" -lt "$TARGET_VERSION" ]; do
+    script=$(migration_for "$version")
+
+    if [ -z "$script" ] || [ ! -f "$DB_DIR/$script" ]; then
+      echo "  - No migration available from schema version $version, manual intervention may be necessary!"
+      break
+    fi
+
+    echo "  - Applying migration: $script"
+    mariadb_tango < "$DB_DIR/$script"
+    if [ $? -ne 0 ]; then
+      echo "  - Migration failed! Manual intervention may be necessary."
+      break
+    fi
+
+    new_version=$(schema_version)
+    if [ "$new_version" -le "$version" ]; then
+      echo "  - Schema version did not advance past $version, manual intervention may be necessary!"
+      break
+    fi
+    version=$new_version
+  done
+
+  if [ "$version" -eq "$TARGET_VERSION" ]; then
+    echo "  - Schema is up to date (version $version)"
+  elif [ "$version" -gt "$TARGET_VERSION" ]; then
+    echo "  - Schema version $version is newer than this package expects ($TARGET_VERSION), skipping"
+  fi
 fi
 
 echo "***************************************************"
