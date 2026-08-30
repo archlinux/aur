@@ -1,6 +1,6 @@
 # Maintainer: Horváth Ákos <h dot akos0322 at gmail dot com>
 pkgname=cores
-pkgver=0.42.0
+pkgver=0.42.1
 pkgrel=1
 pkgdesc="Modern hardware monitor with remote monitoring support"
 arch=('x86_64')
@@ -15,10 +15,10 @@ provides=('coresd')
 # can't resolve, producing undefined-symbol linker errors). The Rust side
 # already does its own LTO via the workspace's [profile.release] settings.
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Levminer/cores/archive/refs/tags/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/skarab1/cores/archive/refs/tags/$pkgver.tar.gz"
         "coresd.service"
         "cores.desktop")
-sha256sums=('fb83d71e3fef04fb259e60470e6790dd328c4cf21a4361bc5a6973b801daccea'
+sha256sums=('a007dcc90581a81f2974b4c8c67f3881f35578807c77247f71204118492f6821'
             '3969376c4dd541eafd49c1080c874d07aa813c47527840e6c94c5ce30b016406'
             'd4d1e134e176141d32d3967eae1268079b21fef47aef2ef6f4040fdcabed48c6')
 
@@ -52,8 +52,10 @@ package() {
 
     # Tauri resolves the "coresd" sidecar relative to the running executable's
     # own directory at runtime, so both binaries must live side by side.
+    local host="$(rustc -vV | sed -n 's/host: //p')"
     install -Dm755 target/release/cores "$pkgdir/usr/bin/cores"
-    install -Dm755 target/release/coresd "$pkgdir/usr/bin/coresd"
+    install -Dm755 "target/release/coresd-$host" "$pkgdir/usr/bin/coresd-$host"
+    ln -s "coresd-$host" "$pkgdir/usr/bin/coresd"
 
     # Optional systemd unit for running coresd standalone (e.g. for remote
     # monitoring without the desktop app running); not enabled by default.

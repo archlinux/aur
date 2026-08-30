@@ -1,6 +1,6 @@
 pkgbase = cores
 	pkgdesc = Modern hardware monitor with remote monitoring support
-	pkgver = 0.42.0
+	pkgver = 0.42.1
 	pkgrel = 1
 	url = https://github.com/Levminer/cores
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = cores
 	depends = hicolor-icon-theme
 	provides = coresd
 	options = !lto
-	source = cores-0.42.0.tar.gz::https://github.com/Levminer/cores/archive/refs/tags/0.42.0.tar.gz
+	source = cores-0.42.1.tar.gz::https://github.com/skarab1/cores/archive/refs/tags/0.42.1.tar.gz
 	source = coresd.service
 	source = cores.desktop
-	sha256sums = fb83d71e3fef04fb259e60470e6790dd328c4cf21a4361bc5a6973b801daccea
+	sha256sums = a007dcc90581a81f2974b4c8c67f3881f35578807c77247f71204118492f6821
 	sha256sums = 3969376c4dd541eafd49c1080c874d07aa813c47527840e6c94c5ce30b016406
 	sha256sums = d4d1e134e176141d32d3967eae1268079b21fef47aef2ef6f4040fdcabed48c6
 
