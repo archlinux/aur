@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=truss
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Truss helps you build go-kit microservices without having to worry about writing or maintaining boilerplate code."
 arch=('x86_64' 'aarch64')
 url="https://github.com/metaverse/truss"
 license=('unknown')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/metaverse/truss.git#tag=v$pkgver")
+_commit='fcd9ff140d5e892d66cd5b03c9510c982eca5bc9'
+source=("git+https://github.com/metaverse/truss.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
