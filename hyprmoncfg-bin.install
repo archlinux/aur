@@ -1,0 +1,23 @@
+print_hyprmoncfg_post_install() {
+  cat <<'EOF'
+Optional hyprmoncfg setup:
+
+  Launch the TUI:
+    hyprmoncfg
+
+  Enable the user daemon:
+    systemctl --user daemon-reload
+    systemctl --user enable --now hyprmoncfgd
+
+Profiles live in:
+  ~/.config/hyprmoncfg/profiles/
+EOF
+}
+
+post_install() {
+  print_hyprmoncfg_post_install
+}
+
+post_upgrade() {
+  print_hyprmoncfg_post_install
+}
