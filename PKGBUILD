@@ -1,7 +1,7 @@
-# Maintainer: Aspen Feltner <aspeninifeltner@gmail.com>
+# Maintainer: Aspenini <aspeninifeltner@gmail.com>
 
 pkgname=gmod-record-press
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Desktop app for creating Working Record Player album addons for Garry's Mod"
 arch=('x86_64')
