@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=nirvana
 pkgver=0.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Golang Restful API Framework for Productivity"
 arch=('x86_64' 'aarch64')
 url="https://github.com/caicloud/nirvana"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/caicloud/nirvana.git#tag=v$pkgver")
+_commit='6349af227fd0cd84904bbfef5dc5e7c1c7affe58'
+source=("git+https://github.com/caicloud/nirvana.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
