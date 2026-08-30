@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=cloud189
 pkgver=0.6.8
-pkgrel=2
+pkgrel=3
 pkgdesc="基于天翼云接口的go客户端"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gowsp/cloud189"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
