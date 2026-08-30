@@ -1,6 +1,6 @@
 pkgbase = puckctl
 	pkgdesc = Gamepad / desktop mode for the Steam Controller Puck
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/jslay88/puckctl
 	install = puckctl.install
@@ -12,7 +12,7 @@ pkgbase = puckctl
 	depends = gcc-libs
 	depends = glibc
 	options = !lto
-	source = puckctl-0.1.1.tar.gz::https://github.com/jslay88/puckctl/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 43f6f3dfcda836518b8c2f94dac84c1397fc8bc36bbc27c09cdceb9c1d8088c2
+	source = puckctl-0.1.2.tar.gz::https://github.com/jslay88/puckctl/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 32db39801b7be862f68458f4a13a9123dbbc4b31126b1e2818588896288af6a2
 
 pkgname = puckctl
