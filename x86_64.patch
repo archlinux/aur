@@ -1,0 +1,22 @@
+diff --git a/Makefile b/Makefile
+index a5b74db..d31981a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -5,7 +5,7 @@ all: klamrisk
+ both: klamrisk klamrisk.exe
+ 
+ font.o: Allerta/allerta_medium.ttf
+-	objcopy --input binary --output elf32-i386 --binary-architecture i386 $^ $@
++	objcopy --input binary --output elf64-x86-64 --binary-architecture i386:x86-64 $^ $@
+ 
+ fontwin.o: Allerta/allerta_medium.ttf
+ 	i686-mingw32-objcopy --input binary --output pe-i386 --binary-architecture i386 $^ $@
+@@ -15,7 +15,7 @@ klamrisk.exe: klamrisk.c fontwin.o
+ 	i686-mingw32-strip $@
+ 
+ klamrisk: klamrisk.c font.o
+-	gcc -std=c99 -o $@ $^ -lSDL -lGL -lGLU -lSDL_ttf
++	gcc -std=c99 -o $@ $^ -lm -lSDL -lGL -lGLU -lSDL_ttf
+ 	strip $@
+ 
+ clean:

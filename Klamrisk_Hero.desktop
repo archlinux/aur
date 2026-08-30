@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Klämrisk Hero
+Exec=klamrisk %F
+Icon=applications-games
+Comment=Klämrisk Hero by Kryo
+Terminal=false
+Categories=Game;
