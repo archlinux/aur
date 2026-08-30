@@ -1,6 +1,6 @@
 pkgname=hyprmoncfg
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal-first monitor configurator and auto-switching daemon for Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/hyprmoncfg"
@@ -8,25 +8,45 @@ license=('MIT')
 install="${pkgname}.install"
 depends=('hyprland' 'xdg-terminal-exec')
 optdepends=('systemd: user service for automatic profile switching')
-conflicts=('hyprmoncfg-git')
-options=('!debug' '!strip')
-source_x86_64=("${url}/releases/download/v${pkgver}/hyprmoncfg_${pkgver}_linux_amd64.tar.gz")
-source_aarch64=("${url}/releases/download/v${pkgver}/hyprmoncfg_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('2394eee3d19963917ccee97b831ba817f9273e05f0b0db5c6ce96efd45a7c075')
-sha256sums_aarch64=('cab04f80fd14784d6ede908dde05fd4f2701b5d3914070325e10d8e2c0ed29b4')
+makedepends=('go')
+optdepends=('systemd: user service for automatic profile switching')
+conflicts=('hyprmoncfg-bin' 'hyprmoncfg-git')
+options=('!debug')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/crmne/hyprmoncfg/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('af2c1255412b15212b1aad976e7845d1f25efcac86ecc7e45c38973f9a6dbe20')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  local commit="release"
+  local build_date
+  build_date="$(date -u +%FT%TZ)"
+  local ldflags=(
+    "-s"
+    "-w"
+    "-X github.com/crmne/hyprmoncfg/internal/buildinfo.Version=${pkgver}"
+    "-X github.com/crmne/hyprmoncfg/internal/buildinfo.Commit=${commit}"
+    "-X github.com/crmne/hyprmoncfg/internal/buildinfo.Date=${build_date}"
+  )
+
+  CGO_ENABLED=0 go build -trimpath -ldflags "${ldflags[*]}" -o hyprmoncfg ./cmd/hyprmoncfg
+  CGO_ENABLED=0 go build -trimpath -ldflags "${ldflags[*]}" -o hyprmoncfgd ./cmd/hyprmoncfgd
+}
 
 package() {
-  install -Dm755 "${srcdir}/hyprmoncfg" "${pkgdir}/usr/bin/hyprmoncfg"
-  install -Dm755 "${srcdir}/hyprmoncfgd" "${pkgdir}/usr/bin/hyprmoncfgd"
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "${srcdir}/packaging/applications/hyprmoncfg.desktop" "${pkgdir}/usr/share/applications/hyprmoncfg.desktop"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  install -Dm755 "hyprmoncfg" "${pkgdir}/usr/bin/hyprmoncfg"
+  install -Dm755 "hyprmoncfgd" "${pkgdir}/usr/bin/hyprmoncfgd"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "packaging/applications/hyprmoncfg.desktop" "${pkgdir}/usr/share/applications/hyprmoncfg.desktop"
   sed -i \
     -e 's|^Exec=.*|Exec=xdg-terminal-exec --app-id=TUI.float -e hyprmoncfg|' \
     -e 's/^Terminal=true$/Terminal=false/' \
     -e 's/^StartupNotify=false$/StartupNotify=true/' \
     "${pkgdir}/usr/share/applications/hyprmoncfg.desktop"
-  install -Dm644 "${srcdir}/packaging/applications/hyprmoncfg-omarchy.desktop" "${pkgdir}/usr/share/applications/hyprmoncfg-omarchy.desktop"
-  install -Dm644 "${srcdir}/packaging/icons/hyprmoncfg.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/hyprmoncfg.svg"
-  install -Dm644 "${srcdir}/packaging/systemd/hyprmoncfgd.service" "${pkgdir}/usr/lib/systemd/user/hyprmoncfgd.service"
+  install -Dm644 "packaging/applications/hyprmoncfg-omarchy.desktop" "${pkgdir}/usr/share/applications/hyprmoncfg-omarchy.desktop"
+  install -Dm644 "packaging/icons/hyprmoncfg.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/hyprmoncfg.svg"
+  install -Dm644 "packaging/systemd/hyprmoncfgd.service" "${pkgdir}/usr/lib/systemd/user/hyprmoncfgd.service"
 }

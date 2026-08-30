@@ -11,6 +11,8 @@ Optional hyprmoncfg setup:
 
 Profiles live in:
   ~/.config/hyprmoncfg/profiles/
+
+This package builds from source. The ready-made build is hyprmoncfg-bin.
 EOF
 }
 
