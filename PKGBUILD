@@ -22,9 +22,9 @@ license=('MIT')
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
 
-options=(!strip)
+options=('!strip')
 
-source=("CONFIG-EXAMPLE-${pkgver}.toml::${_ghurlraw}/config.example.toml")
+source=("CONFIG_EXAMPLE-${pkgver}.toml::${_ghurlraw}/config.example.toml")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('3c0b7f9703a23d64992e23025834ff9b16bf5c6d92170d1a662abde6be81db98')
@@ -39,5 +39,5 @@ package() {
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "CONFIG-EXAMPLE-${pkgver}.toml" "${pkgdir}/usr/share/doc/${pkgname}/config/config.example.toml"
+	install -Dm644 "CONFIG_EXAMPLE-${pkgver}.toml" "${pkgdir}/usr/share/doc/${pkgname}/config/config.example.toml"
 }
