@@ -4,10 +4,12 @@ pkgbase = libicu50
 	pkgrel = 1
 	url = http://www.icu-project.org/
 	arch = x86_64
-	license = custom:"icu"
+	license = ICU
+	license = LicenseRef-Unicode-DFS-2012
+	license = BSD-3-Clause
+	license = NAIST-2003
 	depends = gcc-libs>=4.7.1-5
 	source = https://github.com/unicode-org/icu/releases/download/release-50-2/icu4c-50_2-src.tgz
 	sha256sums = 87306f088a4c7c00b0adac6b84e8862fef81c18f8ec70a60cb03258062908440
 
 pkgname = libicu50
-

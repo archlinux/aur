@@ -12,7 +12,7 @@ pkgver=$_pkgmaj.$_pkgmin
 pkgdesc="International Components for Unicode library, version 50"
 arch=('x86_64')
 url="http://www.icu-project.org/"
-license=('custom:"icu"')
+license=('ICU' 'LicenseRef-Unicode-DFS-2012' 'BSD-3-Clause' 'NAIST-2003')
 depends=('gcc-libs>=4.7.1-5')
 
 source=("https://github.com/unicode-org/icu/releases/download/release-${_pkgmaj}-${_pkgmin}/icu4c-${_pkgmaj}_${_pkgmin}-src.tgz")
@@ -40,5 +40,6 @@ package() {
   cp -a lib/libicu*50* "${pkgdir}${_setLibdir}"
 
   # Install the license
-  install -Dm644 ${srcdir}/icu/license.html ${pkgdir}/usr/share/licenses/${pkgname}/license.html
+  install -Dm644 "${srcdir}/icu/license.html" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/license.html"
 }
