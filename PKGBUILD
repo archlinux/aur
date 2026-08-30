@@ -2,7 +2,7 @@
 # Keep depends/optdepends/options in sync across vibepanel, vibepanel-bin, and vibepanel-git.
 pkgname=vibepanel-git
 _pkgname=vibepanel
-pkgver=0.16.0.r0.gef3fcd0
+pkgver=0.16.1.r0.g92420c6
 pkgrel=1
 pkgdesc="A GTK4 panel for Wayland with notifications, OSD, and quick settings (git version)"
 arch=('x86_64' 'aarch64')

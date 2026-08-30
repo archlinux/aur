@@ -1,6 +1,6 @@
 pkgbase = vibepanel-git
 	pkgdesc = A GTK4 panel for Wayland with notifications, OSD, and quick settings (git version)
-	pkgver = 0.16.0.r0.gef3fcd0
+	pkgver = 0.16.1.r0.g92420c6
 	pkgrel = 1
 	url = https://github.com/prankstr/vibepanel
 	arch = x86_64
