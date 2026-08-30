@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=pkglint
-pkgver=1.0.0
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Security-focused linter for Arch Linux PKGBUILDs'
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url='https://github.com/jmelahman/pkglint'
 license=('GPL-3.0-only')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='16e7b01d2a04329ad717d3c1ea5ab563907c8219'
+_commit='1b781e28db146604acabc5c43d2e3bdbf037b096'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
