@@ -1,0 +1,16 @@
+pkgbase = ksystemstats-infiniband
+	pkgdesc = KDE System Monitor sensor plugin exposing InfiniBand port counters (RDMA-aware)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/HiroGitea/ksystemstats-infiniband
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	depends = libksysguard
+	depends = kcoreaddons
+	depends = qt6-base
+	source = ksystemstats-infiniband-1.0.1.tar.gz::https://github.com/HiroGitea/ksystemstats-infiniband/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 73bdf821fad93894e8cdf4512bdb0779499ae1331dc79a61be6411978b99afc5
+
+pkgname = ksystemstats-infiniband
