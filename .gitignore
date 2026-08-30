@@ -1,0 +1,10 @@
+src/
+pkg/
+*.tgz
+*.tar.gz
+LICENSE-*
+npm-cache/
+*.pkg.tar.zst*
+*.pkg.tar
+*.log
+.sisyphus/

@@ -1,0 +1,26 @@
+pkgbase = paseo-cli-beta
+	pkgdesc = Command-line interface for controlling Paseo AI coding agents (beta)
+	pkgver = 0.7.0_beta.2
+	pkgrel = 1
+	url = https://github.com/getpaseo/paseo/tree/main/packages/cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs
+	depends = bash
+	depends = glibc
+	depends = gcc-libs
+	provides = paseo
+	conflicts = paseo
+	conflicts = paseo-bin
+	conflicts = paseo-cli-bun
+	conflicts = paseo-cli
+	noextract = cli-0.7.0_beta.2.tgz
+	options = !strip
+	source = cli-0.7.0_beta.2.tgz::https://registry.npmjs.org/@getpaseo/cli/-/cli-0.7.0-beta.2.tgz
+	source = LICENSE-0.7.0_beta.2::https://raw.githubusercontent.com/getpaseo/paseo/v0.7.0-beta.2/LICENSE
+	sha256sums = 79622a79c8610183436db6c947b90e6dbe399688b07a05b7e84e2c79aef1bbac
+	sha256sums = 79d5aedce6aa0adc547336dc1bd34c5cc9308ba110fac7079ed97515ee573ad3
+
+pkgname = paseo-cli-beta
