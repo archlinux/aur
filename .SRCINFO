@@ -1,7 +1,7 @@
 pkgbase = my-token
 	pkgdesc = 📈Track token prices in your terminal
 	pkgver = 0.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/polyrabbit/my-token
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = my-token
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/polyrabbit/my-token.git#tag=v0.6.1
+	source = git+https://github.com/polyrabbit/my-token.git#commit=137cadc620b46390a91ddca3992f4433cb0ee158
 	sha256sums = SKIP
 
 pkgname = my-token

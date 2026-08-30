@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=my-token
 pkgver=0.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="📈Track token prices in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/polyrabbit/my-token"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/polyrabbit/my-token.git#tag=v$pkgver")
+_commit='137cadc620b46390a91ddca3992f4433cb0ee158'
+source=("git+https://github.com/polyrabbit/my-token.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
