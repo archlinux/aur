@@ -1,6 +1,6 @@
 pkgbase = snirect-bin
 	pkgdesc = Local HTTP/HTTPS proxy that rewrites TLS SNI by rules to bypass SNI-based censorship (prebuilt binary)
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/xihale/snirect
 	install = snirect.install
@@ -12,11 +12,11 @@ pkgbase = snirect-bin
 	provides = snirect
 	conflicts = snirect
 	options = !strip
-	source = LICENSE::https://raw.githubusercontent.com/xihale/snirect/v0.3.3/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/xihale/snirect/v0.3.4/LICENSE
 	sha256sums = 9170853f5f6a075badb2db222f98d1ae66eaac2f9a9bde463aa085f7711c25fc
-	source_x86_64 = snirect-bin-0.3.3-x86_64::https://github.com/xihale/snirect/releases/download/v0.3.3/snirect-linux-amd64
-	sha256sums_x86_64 = 27c17569c422da60f6a1a37c53a25bb2c37d361c406613b367248ce002c4cf33
-	source_aarch64 = snirect-bin-0.3.3-aarch64::https://github.com/xihale/snirect/releases/download/v0.3.3/snirect-linux-arm64
-	sha256sums_aarch64 = a5c36f963e907704a882f47033de5cfff7768d30f38aa5e0ea9025523cc52814
+	source_x86_64 = snirect-bin-0.3.4-x86_64::https://github.com/xihale/snirect/releases/download/v0.3.4/snirect-linux-amd64
+	sha256sums_x86_64 = 77ed6dbe9f255ed3cc2abcb9e5570245e218ca06c363bd8a75c6b483f44642dd
+	source_aarch64 = snirect-bin-0.3.4-aarch64::https://github.com/xihale/snirect/releases/download/v0.3.4/snirect-linux-arm64
+	sha256sums_aarch64 = 7549edd9d39a6b18c33f2425843760488d2ba7a27af9e32d9bac80f7d64a99b8
 
 pkgname = snirect-bin
