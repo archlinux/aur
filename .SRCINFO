@@ -1,0 +1,12 @@
+pkgbase = rooyin-fonts
+	pkgdesc = Rooyin Free font - an English-Arabic (Persian) pixel font
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/MohamadDarvishi/Rooyin
+	arch = any
+	license = OFL
+	depends = fontconfig
+	source = https://github.com/MohamadDarvishi/Rooyin/releases/download/v1.1/Rooyin-Free.zip
+	sha256sums = 45d4d0e341d8d1115546b6722711bb3affcc1d0148653bac2e17a08d20494136
+
+pkgname = rooyin-fonts

@@ -1,0 +1,5 @@
+*.pkg.tar.*
+*.sig
+src/
+pkg/
+Rooyin-Free.zip
