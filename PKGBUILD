@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=go-test-report
 pkgver=0.9.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Captures go test output and parses it into a single self-contained HTML file."
 arch=('x86_64' 'aarch64')
 url="https://github.com/vakenbolt/go-test-report"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/vakenbolt/go-test-report.git#tag=v$pkgver")
+_commit='511bd0a4d22d37e1ccefaa2ea9e77ee625531f73'
+source=("git+https://github.com/vakenbolt/go-test-report.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit

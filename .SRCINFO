@@ -1,7 +1,7 @@
 pkgbase = go-test-report
 	pkgdesc = Captures go test output and parses it into a single self-contained HTML file.
 	pkgver = 0.9.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/vakenbolt/go-test-report
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = go-test-report
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/vakenbolt/go-test-report.git#tag=v0.9.3
+	source = git+https://github.com/vakenbolt/go-test-report.git#commit=511bd0a4d22d37e1ccefaa2ea9e77ee625531f73
 	sha256sums = SKIP
 
 pkgname = go-test-report
