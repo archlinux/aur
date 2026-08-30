@@ -1,0 +1,37 @@
+pkgbase = seraph-git
+	pkgdesc = A lightweight Qt6/QML file manager for Hyprland
+	pkgver = r318.g0539d4e
+	pkgrel = 1
+	url = https://github.com/raphamzn/seraph
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = glib2
+	depends = kwindowsystem
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = qt6-wayland
+	depends = fd
+	depends = xdg-utils
+	optdepends = wl-clipboard: clipboard support via wl-copy and wl-paste
+	optdepends = bat: syntax-highlighted text previews
+	optdepends = gvfs: remote filesystem support via gio/gvfs (sftp, ftp, dav, etc.)
+	optdepends = gvfs-smb: SMB/CIFS remote browsing support
+	optdepends = ffmpeg: video thumbnails and audio/video metadata (via ffprobe)
+	optdepends = poppler: PDF thumbnails, previews, and metadata (via pdftoppm/pdfinfo)
+	optdepends = perl-image-exiftool: EXIF metadata for images (via exiftool)
+	optdepends = udisks2: mount/unmount devices from sidebar
+	provides = seraph=r318.g0539d4e
+	conflicts = seraph
+	source = seraph-git::git+https://github.com/raphamzn/seraph.git
+	source = quill-icons::git+https://github.com/soyeb-jim285/quill-icons.git
+	source = quill::git+https://github.com/soyeb-jim285/quill.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = seraph-git
