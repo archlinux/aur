@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=poutine
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="boostsecurityio/poutine"
 arch=('x86_64' 'aarch64')
 url="https://github.com/boostsecurityio/poutine"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/boostsecurityio/poutine.git#tag=v$pkgver")
+_commit='8918c66db19ecfd12b2f8379e445c3da4589e599'
+source=("git+https://github.com/boostsecurityio/poutine.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
