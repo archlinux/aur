@@ -1,6 +1,6 @@
 pkgbase = cc-clip-bin
 	pkgdesc = Clipboard bridge for pasting images into AI coding agents over SSH (prebuilt binary)
-	pkgver = 0.9.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/ShunmeiCho/cc-clip
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = cc-clip-bin
 	provides = cc-clip
 	conflicts = cc-clip
 	options = !strip
-	source_x86_64 = cc-clip-bin-0.9.1.tar.gz::https://github.com/ShunmeiCho/cc-clip/releases/download/v0.9.1/cc-clip_0.9.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = c1293ce38dd8b5e493d0a100311611f0cad758d04851d059245ce827557d8bd9
-	source_aarch64 = cc-clip-bin-0.9.1.tar.gz::https://github.com/ShunmeiCho/cc-clip/releases/download/v0.9.1/cc-clip_0.9.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 23d7177504a8373f37802dafe8bb0343ac2b686d75958cf23a02ab7ddaca7466
+	source_x86_64 = cc-clip-bin-0.11.0.tar.gz::https://github.com/ShunmeiCho/cc-clip/releases/download/v0.11.0/cc-clip_0.11.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3092259739a11664649c9589d8d80dcdc244407b657f8f769dc806d751940436
+	source_aarch64 = cc-clip-bin-0.11.0.tar.gz::https://github.com/ShunmeiCho/cc-clip/releases/download/v0.11.0/cc-clip_0.11.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3092259739a11664649c9589d8d80dcdc244407b657f8f769dc806d751940436
 
 pkgname = cc-clip-bin
