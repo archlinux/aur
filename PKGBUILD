@@ -4,7 +4,7 @@
 
 _pkgname="hyprpaper"
 pkgname="$_pkgname-git"
-pkgver=0.8.4.r0.g20fc0fa
+pkgver=0.8.4.r3.g39029bd
 pkgrel=1
 pkgdesc="A blazing fast wayland wallpaper utility with IPC controls"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,6 @@ depends=(
   hyprlang-git
   hyprtoolkit-git
   hyprutils-git
-  hyprwayland-scanner-git
   hyprwire-git
   pango
   wayland
@@ -24,6 +23,7 @@ depends=(
 makedepends=(
   cmake
   git
+  hyprwayland-scanner-git
   libglvnd
   ninja
   wayland-protocols
