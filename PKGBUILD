@@ -1,7 +1,7 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=qt5-quickcontrols-nemo
-pkgver=5.7.6
+pkgver=5.7.7
 pkgrel=1
 pkgdesc="QML components for Nemomobile, based on QtQuickControls"
 arch=('x86_64')
@@ -11,7 +11,15 @@ depends=('nemo-qml-plugin-configuration'
          'nemo-theme-glacier' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-virtualkeyboard')
 makedepends=('cmake' 'git')
 source=("git+https://github.com/nemomobile-ux/qtquickcontrols-nemo.git#tag=$pkgver")
-sha512sums=('55fe891b8e6983adcc57b57f5c1879cf898d32d5f6369f3dd934276e2f7516969a185d8655de78d8ff88b6698c2695d62835302dff9764e3b1fd9e993fc4dee1')
+sha512sums=('51032dbb7d37284605df6e1e2c2a11e4132fdf53c69724c50bf8212e0b9e3b8ca7ff3a04b24f53869f659d3cbba6abdbee06efe2a1e3b2234222dd22e84a1b6b')
+
+prepare() {
+  cd qtquickcontrols-nemo
+
+  # Remove a stale slot declaration that breaks moc-generated code:
+  # https://github.com/nemomobile-ux/qtquickcontrols-nemo/commit/01280d8c38a06cc7d27a1d10861f80a7d638ceb4
+  git cherry-pick -n 01280d8c38a06cc7d27a1d10861f80a7d638ceb4
+}
 
 build() {
   cd qtquickcontrols-nemo
