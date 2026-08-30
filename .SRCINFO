@@ -1,6 +1,6 @@
 pkgbase = axolotl-launcher-bin
 	pkgdesc = A free, cross-platform Minecraft launcher built on the Modrinth ecosystem
-	pkgver = 1.9.1
+	pkgver = 1.9.4
 	pkgrel = 1
 	url = https://github.com/Mystic-Stars/Axolotl
 	arch = x86_64
@@ -9,15 +9,15 @@ pkgbase = axolotl-launcher-bin
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libnotify
-	provides = axolotl-launcher=1.9.1
+	provides = axolotl-launcher=1.9.4
 	conflicts = axolotl-launcher
 	source = red.ghs.axolotl.xml
 	source = axolotl-launcher.desktop
 	sha256sums = a3c7ac4b8489dff5a8e558780765648dccc99c8a65b13e6dd11777de8352da7f
 	sha256sums = 9a98c15cb4f1a3cec9a893be5950600b1e6fa3b6029df3a2cae88b150636520b
-	source_x86_64 = https://github.com/Mystic-Stars/Axolotl/releases/download/v1.9.1/Axolotl.Launcher_1.9.1_amd64.deb
-	sha256sums_x86_64 = 46f57e494982352ae5e3b9789875ecc48284405893fc80513d63edf70239497f
-	source_aarch64 = https://github.com/Mystic-Stars/Axolotl/releases/download/v1.9.1/Axolotl.Launcher_1.9.1_arm64.deb
-	sha256sums_aarch64 = 8534715ee1c5d24e77ffec710d04142f8df264fb180ec2ff7f79858a99acf35e
+	source_x86_64 = https://github.com/Mystic-Stars/Axolotl/releases/download/v1.9.4/Axolotl.Launcher_1.9.4_amd64.deb
+	sha256sums_x86_64 = 8f76a05745a614a024489582ab86f8181c0879a14221dcea7369686232ae41cd
+	source_aarch64 = https://github.com/Mystic-Stars/Axolotl/releases/download/v1.9.4/Axolotl.Launcher_1.9.4_arm64.deb
+	sha256sums_aarch64 = a99fcb5b9f03fca12ed466bc7fc4e37503db87ecb7f49c5d973c462130f6b07d
 
 pkgname = axolotl-launcher-bin
