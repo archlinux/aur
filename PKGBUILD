@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=bibavpn
-pkgver=1.3.2
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="DPI-resistant SOCKS5/HTTP tunnel over TLS+WebSocket (server, client, invite minter)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!lto')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('97eaaafbf783271ba62a5c6c45e055275e90226d17ff3539dfe63f35d6674fd4')
+sha256sums=('9783bd8e75a47d7a8ae41b3b2e861ff297dbfa02d93540ecb12f6edf54447051')
 
 latestver() {
     git ls-remote --tags --refs "$url" |
