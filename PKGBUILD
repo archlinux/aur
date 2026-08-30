@@ -3,7 +3,7 @@
 # Auto Upgrade: https://github.com/phnx47/pkgbuilds
 
 pkgname=nub
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='The fast all-in-one Node.js toolkit'
 license=('MIT')
@@ -12,7 +12,7 @@ arch=('x86_64')
 depends=('gcc-libs')
 makedepends=('cargo' 'cmake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nubjs/nub/archive/v${pkgver}.tar.gz")
-sha256sums=('f9d9d2e2be64aab0c0c5a0b672f40434973776eac4f8544173cc36246c321992')
+sha256sums=('34c8350f163ad8f5b711e77597278ea1fabdfecb466d852ff940e437a125dcc0')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
