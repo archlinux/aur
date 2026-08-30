@@ -1,12 +1,13 @@
 pkgbase = carryctx
+	pkgdesc = Local-first project lifecycle control for coding agents
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://carryctx.xuepoo.xyz
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	source_x86_64 = https://github.com/Xuepoo/carryctx/releases/download/v0.8.0/carryctx-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 42041cf1eee8f097310cf6c8c2533c779f1fd3404135c548b4cc8b0fe90bdb0a
+
 pkgname = carryctx
-pkgdesc = Local-first memory for coding agents
-pkgver = 0.7.0
-pkgrel = 1
-url = https://carryctx.dev
-arch = x86_64
-license = MIT
-depends = glibc
-depends = gcc-libs
-source_x86_64 = https://github.com/Xuepoo/carryctx/releases/download/v0.7.0/carryctx-x86_64-unknown-linux-gnu
-sha256sums_x86_64 = 8442345d53db598bf223aa3f29c5beeecdb4042227cd87a9b185d698b8788ddb
