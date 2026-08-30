@@ -3,7 +3,7 @@
 
 pkgname=fluffychat-bin
 _pkgname=fluffychat
-pkgver=2.6.0
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Open. Nonprofit. Cute. Easy to use (matrix) messenger. Secure and decentralized."
 arch=('x86_64') # 'aarch64'
@@ -26,7 +26,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source_x86_64=("fluffychat-v${pkgver}_x86_64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v${pkgver}/fluffychat-linux-x64.tar.gz")
 #source_aarch64=("fluffychat-v${pkgver}_aarch64.tar.gz::https://github.com/krille-chan/fluffychat/releases/download/v${pkgver}/fluffychat-linux-arm64.tar.gz")
-sha256sums_x86_64=('e276a535b4c529b56cdb0811e8dd798016b7f95a901f93a9959ae958a3916a52')
+sha256sums_x86_64=('1948ad823554c8580e1621d4e843181db4131f8557ad9cc4fcd9cf7f598bdeff')
 # sha256sums_aarch64=('f3a25daebf0a4e827268f1005944b8c1b359b946b22ee8a792937e1babc40869')
 
 package() {
@@ -42,7 +42,7 @@ package() {
   ln -s /opt/${_pkgname}/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 
   # icon
-  install -Dm 644 ${pkgdir}/opt/${_pkgname}/data/flutter_assets/assets/favicon.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
+  install -Dm 644 ${pkgdir}/opt/${_pkgname}/data/flutter_assets/assets/logo/mini/logo_mini.png ${pkgdir}/usr/share/pixmaps/${_pkgname}.png
 
   # desktop entry
 
