@@ -7,4 +7,4 @@ pkgdesc='Meta package for LucKey games'
 arch=('any')
 license=('None')
 url="https://luckey.games/"
-depends=('amazingurho' 'hexon' 'opensaucer' 'tux' 'quatter' 'luckeypark' 'blipnblup')
+depends=('amazingurho' 'hexon' 'opensaucer' 'tux-git' 'quatter' 'luckeypark' 'blipnblup')
