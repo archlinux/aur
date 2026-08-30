@@ -1,6 +1,6 @@
 pkgbase = snirect
 	pkgdesc = Local HTTP/HTTPS proxy that rewrites TLS SNI by rules to bypass SNI-based censorship
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/xihale/snirect
 	install = snirect.install
@@ -13,7 +13,7 @@ pkgbase = snirect
 	optdepends = nss: Firefox certificate store integration
 	provides = snirect
 	conflicts = snirect-bin
-	source = snirect-0.3.3.tar.gz::https://github.com/xihale/snirect/archive/refs/tags/v0.3.3.tar.gz
-	sha256sums = 22d06ff161947dee922bb4bedca8548918d178af9f556e5d34cfbdfa3bd65e44
+	source = snirect-0.3.4.tar.gz::https://github.com/xihale/snirect/archive/refs/tags/v0.3.4.tar.gz
+	sha256sums = e1286c1bc876e77e27a472175ef4a7e176cdc38ff85fbb8f92ebb4577e05978b
 
 pkgname = snirect
