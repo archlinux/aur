@@ -1,7 +1,7 @@
 # Maintainer: Revincx <revincx233@gmail.com>
 
 pkgname=yurigram
-pkgver=7.1.2
+pkgver=7.1.3
 pkgrel=1
 pkgdesc='Yet another unofficial tdesktop client'
 arch=('x86_64' 'aarch64')
@@ -38,6 +38,7 @@ depends=(
     'libxtst'
     'lz4'
     'minizip'
+
     'openal'
     'openh264'
     'openssl'
