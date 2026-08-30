@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=captain
 pkgver=1.1.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Captain - Convert your Git workflow to Docker :whale: containers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/harbur/captain"
@@ -17,12 +17,15 @@ prepare() {
   cd "$pkgname" || exit
   go mod init github.com/harbur/captain
   go mod tidy
+  go mod download
 }
 
 build() {
   cd "$pkgname" || exit
   go build \
     -trimpath \
+    -mod=readonly \
+    -modcacherw \
     -ldflags='-s -w' \
     -o $pkgname \
     ./cmd/captain
