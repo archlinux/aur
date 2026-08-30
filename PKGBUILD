@@ -1,7 +1,7 @@
 # Maintainer: eval-exec <eval-exec@github>
 pkgname=neomacs-bin
 _pkgname=neomacs
-pkgver=0.0.15
+pkgver=0.0.16
 pkgrel=1
 pkgdesc="GPU powered Emacs written in Rust with a modern display engine (prebuilt binary)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ conflicts=('neomacs' 'emacs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eval-exec/neomacs/releases/download/v${pkgver}/neomacs-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
         "https://raw.githubusercontent.com/eval-exec/neomacs/main/assets/logo.png"
         "https://raw.githubusercontent.com/eval-exec/neomacs/main/etc/emacs.desktop")
-sha256sums=('b2264cf87df43d2d02c66c7510664c787f25b1ab05d48372913263662b7768a7'
+sha256sums=('385d3485855cedfd77b57c2b3917e1fd4e624607901622679da3ce25c08ea112'
             'd62924ab6f8783beb69eef1b873f2c0b0d2e92f568ec47774423ad0eab3e25d9'
             'f6ae6611d2e54e65d210ad2983df80ac5b65618c83c4190700e90ff455e12464')
 
