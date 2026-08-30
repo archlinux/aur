@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=ktail
 pkgver=1.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool to easily tail Kubernetes container logs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/atombender/ktail"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/atombender/ktail.git#tag=v$pkgver")
+_commit='83e31bd4ddac89bdf4fc282de91a8e893c693697'
+source=("git+https://github.com/atombender/ktail.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit

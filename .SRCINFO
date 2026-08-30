@@ -1,7 +1,7 @@
 pkgbase = ktail
 	pkgdesc = A tool to easily tail Kubernetes container logs
 	pkgver = 1.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/atombender/ktail
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = ktail
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/atombender/ktail.git#tag=v1.4.0
+	source = git+https://github.com/atombender/ktail.git#commit=83e31bd4ddac89bdf4fc282de91a8e893c693697
 	sha256sums = SKIP
 
 pkgname = ktail
