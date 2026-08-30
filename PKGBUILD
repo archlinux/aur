@@ -1,7 +1,7 @@
 # Maintainer: Prabhat Kumar <hi@prbhtkumr.xyz>
 pkgname=gaur-bin
-pkgver=1.2.1
-pkgrel=5
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="A beautiful, interactive TUI for Arch Linux package management (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/prbhtkumr/gaur"
@@ -16,7 +16,7 @@ provides=('gaur')
 conflicts=('gaur')
 source=("gaur-$pkgver::https://github.com/prbhtkumr/gaur/releases/download/v$pkgver/gaur-linux-x86_64"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/prbhtkumr/gaur/v$pkgver/LICENSE")
-sha256sums=('09cf47e03f59b085e0cff7ac6afb48a845a24436f349e3f8197ac2e02cb471e1'
+sha256sums=('0b1fb273a8c9deddec1cc38571eb1beff1c6fbc911192910b4fa0acecfd0d70a'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 
 package() {
