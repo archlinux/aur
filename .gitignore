@@ -1,0 +1,4 @@
+pkg
+src
+plannotator-tui-*
+*.tar.zst
