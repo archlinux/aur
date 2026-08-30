@@ -1,0 +1,24 @@
+print_tonepush_post_install() {
+  cat <<'EOF'
+tonepush setup:
+
+  Replug the pedal once, so the installed udev rule applies to it.
+  Quit HX Edit before connecting; only one editor can hold the device.
+
+  Model names and artwork come from HX Edit's own data files, which are
+  Line 6's and are not redistributable. The app walks you through
+  extracting them on first launch; p7zip makes that work.
+
+  Then:
+    tonepush list      find your device
+    tonepush-gui       the editor
+EOF
+}
+
+post_install() {
+  print_tonepush_post_install
+}
+
+post_upgrade() {
+  print_tonepush_post_install
+}

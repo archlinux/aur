@@ -1,0 +1,26 @@
+pkgbase = tonepush-bin
+	pkgdesc = Editor and tone library for Line 6 HX pedals and the StompStation PRO
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://tonepush.rocks
+	install = tonepush-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	optdepends = libgl: for the GUI
+	optdepends = libxkbcommon: for the GUI
+	optdepends = wayland: for the GUI on Wayland
+	optdepends = libx11: for the GUI on X11
+	optdepends = p7zip: extract HX Edit model data from inside the app
+	provides = tonepush
+	conflicts = tonepush
+	conflicts = tonepush-git
+	conflicts = stompchain
+	options = !debug
+	options = !strip
+	source_x86_64 = https://github.com/crmne/tonepush/releases/download/v0.6.0/tonepush-v0.6.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a81e13379719a1b34f4fa24d09d9c0a5b27ee62b75562460920521b894328891
+	source_aarch64 = https://github.com/crmne/tonepush/releases/download/v0.6.0/tonepush-v0.6.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 0a09f57a888c441f31cb9c5b7da0196fc3e925922e8fdabb394e91d57065aa64
+
+pkgname = tonepush-bin
