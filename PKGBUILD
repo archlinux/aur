@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=otel-cli
 pkgver=0.4.5
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenTelemetry command-line tool for sending events from shell scripts & similar environments"
 arch=('x86_64' 'aarch64')
 url="https://github.com/equinix-labs/otel-cli"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/equinix-labs/otel-cli.git#tag=v$pkgver")
+_commit='0d4b8a9c49f60a6fc25ed22863259ff573332060'
+source=("git+https://github.com/equinix-labs/otel-cli.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
