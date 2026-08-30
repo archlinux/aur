@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=gocognit
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Calculates cognitive complexities of functions (and methods) in Go source code. (Golang cognitive complexity)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/uudashr/gocognit"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
