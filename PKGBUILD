@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=mac-cleanup-go
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="TUI macOS cleaner that scans caches/logs, shows sizes/paths, lets you select what to delete before Trash."
 arch=('x86_64' 'aarch64')
 url="https://github.com/2ykwang/mac-cleanup-go"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/2ykwang/mac-cleanup-go.git#tag=v$pkgver")
+_commit='f93e41122b707b7bc39cb3fd3c6a2e25454de373'
+source=("git+https://github.com/2ykwang/mac-cleanup-go.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
