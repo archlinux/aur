@@ -4,7 +4,7 @@
 pkgname=cycle-cli
 _pkgname=cycle
 pkgver=0.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A command-line utility for indoor bike.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/cycle-cli'
@@ -18,6 +18,11 @@ pkgver() {
   cd "${_pkgname}" || exit
 
   git describe --tags | sed 's/^v//'
+}
+
+prepare() {
+  cd "${_pkgname}" || exit
+  go mod download
 }
 
 build() {
