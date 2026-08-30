@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=aws-doctor
 pkgver=2.21.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Diagnose AWS costs, detect idle resources, and optimize cloud spending directly from your terminal. 🩺 ☁️"
 arch=('x86_64' 'aarch64')
 url="https://github.com/elC0mpa/aws-doctor"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/elC0mpa/aws-doctor.git#tag=v$pkgver")
+_commit='3968ed47c60d5248e90e13a22fd456c18a5f6285'
+source=("git+https://github.com/elC0mpa/aws-doctor.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
