@@ -17,7 +17,7 @@ post_install() {
     if ! grep -qE '^\s*-[waAbfe]' "$_audit_cfg" 2>/dev/null; then
       install -m 644 /usr/lib/archcanary/audit-rules.conf "$_audit_cfg"
       augenrules --load >/dev/null 2>&1 || true
-      echo "  installed: $_audit_cfg (auditd rules — edit via GUI)"
+      echo "  installed: $_audit_cfg (auditd rules — edit with --audit-rules-get/--audit-rules-set)"
     fi
     unset _audit_cfg
   fi
