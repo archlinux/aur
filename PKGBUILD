@@ -16,8 +16,6 @@ _url_pypi="https://pypi.org/project/${pkgname}/"
 _url_github="https://github.com/${pkgauthor}/${pkgname}"
 url="${_url_github}"
 
-provides=("${_pypi_package}")
-
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 depends=('python' 'glibc' 'liburing')
 
