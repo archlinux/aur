@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=clive
 pkgver=0.12.17
-pkgrel=1
+pkgrel=2
 pkgdesc="⚡ Automates terminal operations."
 arch=('x86_64' 'aarch64')
 url="https://github.com/koki-develop/clive"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/koki-develop/clive.git#tag=v$pkgver")
+_commit='08808fc196a4c22e9d6d25ce78d78a5672325e02'
+source=("git+https://github.com/koki-develop/clive.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
