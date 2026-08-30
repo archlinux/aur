@@ -23,6 +23,7 @@ build() {
   mkdir -p "${srcdir}/build"
   cd "${srcdir}/build"
   cmake ${srcdir}/${_dir} \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib
   make
