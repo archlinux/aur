@@ -11,4 +11,8 @@ post_upgrade() {
     echo '  gotify-server migrate-config /etc/gotify/config.yml.pacsave > /etc/gotify/server.env'
     echo 'Migration guide: https://gotify.net/docs/migrate-to-3'
   fi
+  if [[ $(vercmp '3.1.0-2' "$2") -eq 1 ]]; then
+    echo 'gotify-server now logs to the systemd journal (journalctl -u gotify-server).'
+    echo 'The old log file /var/log/gotify/server.log is no longer used and can be removed.'
+  fi
 }
