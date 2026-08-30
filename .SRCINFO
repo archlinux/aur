@@ -1,7 +1,7 @@
 pkgbase = kure
 	pkgdesc = CLI password manager with sessions
 	pkgver = 1.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/GGP1/kure
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = kure
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/GGP1/kure.git#tag=v1.3.0
+	source = git+https://github.com/GGP1/kure.git#commit=d93570f642ae8cc51f69ca603d2a3f9c0167e593
 	sha256sums = SKIP
 
 pkgname = kure
