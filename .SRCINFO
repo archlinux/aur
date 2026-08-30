@@ -1,0 +1,17 @@
+pkgbase = polar-gleam-git
+	pkgdesc = Polar Gleam and Polar Dusk theme suite for KDE Plasma 6
+	pkgver = r20.1aeea22
+	pkgrel = 1
+	url = https://bitbucket.org/dirn-typo/polar-gleam
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = plasma-workspace
+	depends = kvantum
+	optdepends = konsole: use the included Konsole color schemes
+	provides = polar-gleam
+	conflicts = polar-gleam
+	source = polar-gleam::git+https://bitbucket.org/dirn-typo/polar-gleam.git#branch=main
+	sha256sums = SKIP
+
+pkgname = polar-gleam-git
