@@ -1,7 +1,7 @@
 pkgbase = json2struct
 	pkgdesc = CLI tool to convert JSON to struct type definitions
 	pkgver = 1.9.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/marhaupe/json2struct
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = json2struct
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/marhaupe/json2struct.git#tag=v1.9.3
+	source = git+https://github.com/marhaupe/json2struct.git#commit=c93267813f929bfd3f0fea41160db9a72c4e5a86
 	sha256sums = SKIP
 
 pkgname = json2struct
