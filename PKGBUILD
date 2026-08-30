@@ -1,7 +1,7 @@
 # Maintainer: bobo <https://aur.archlinux.org/account/bobosingle>
 
 pkgname=manis-bin
-pkgver=0.1.19
+pkgver=0.1.21
 pkgrel=1
 pkgdesc="GPUI desktop workbench for policy-based proxy routing"
 arch=('x86_64')
@@ -36,7 +36,7 @@ _upstream_pkgrel=1
 source_x86_64=(
   "manis-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst::https://github.com/kaigedong/Manis/releases/download/build-${pkgver}/manis-${pkgver}-${_upstream_pkgrel}-${CARCH}.pkg.tar.zst"
 )
-sha256sums_x86_64=('0873548851bb0cc63488143ecadd65c13922cb9d010b1171948a3f4fd143e955')
+sha256sums_x86_64=('ebb9383dad3f006a5f625881590138cdabc636c2a164b8c4516faf1892e8b06a')
 
 package() {
   cp -a "${srcdir}/usr" "${pkgdir}/"
