@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=gh-eco
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="🦎 gh cli extension to explore the ecosystem"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jrnxf/gh-eco"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/jrnxf/gh-eco.git#tag=v$pkgver")
+_commit='e706311eac977994299ecaca378ed94a9bc62e17'
+source=("git+https://github.com/jrnxf/gh-eco.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
