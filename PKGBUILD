@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=cc-clip
-pkgver=0.9.1
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Clipboard bridge for pasting images into AI coding agents over SSH"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ optdepends=('xclip: X11 clipboard support'
 conflicts=('cc-clip-bin')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ShunmeiCho/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('245a74521f454b8542f838e0a290fc9883c9233d8119c2928371f3056ec6fb14')
+sha256sums=('daf633d9e6692aed3e363ec01dde8ddf12a7e08d3a322a84da4af1aac9f3e214')
 
 prepare() {
   cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = cc-clip
 	pkgdesc = Clipboard bridge for pasting images into AI coding agents over SSH
-	pkgver = 0.9.1
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/ShunmeiCho/cc-clip
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = cc-clip
 	optdepends = xorg-server-xvfb: Codex CLI clipboard support on remote hosts
 	conflicts = cc-clip-bin
 	options = !debug
-	source = cc-clip-0.9.1.tar.gz::https://github.com/ShunmeiCho/cc-clip/archive/v0.9.1.tar.gz
-	sha256sums = 245a74521f454b8542f838e0a290fc9883c9233d8119c2928371f3056ec6fb14
+	source = cc-clip-0.11.0.tar.gz::https://github.com/ShunmeiCho/cc-clip/archive/v0.11.0.tar.gz
+	sha256sums = daf633d9e6692aed3e363ec01dde8ddf12a7e08d3a322a84da4af1aac9f3e214
 
 pkgname = cc-clip
