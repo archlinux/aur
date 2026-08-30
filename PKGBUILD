@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Drop-in OpenAI API Replacement for Local LLMs"
 
-pkgver=2.6.3
+pkgver=2.6.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -24,7 +24,7 @@ makedepends=('rust')
 depends=('glibc' 'libgcc' 'libstdc++')
 
 source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
-sha256sums=('f5c1f75633cce19c07dbb42017e16c09cc3866f666424c52189a56ae508457a1')
+sha256sums=('9d9b410898618cbcfe3bf171c4d75d5d6542ebe08fb73e20d4115ad99e3b10ab')
 
 prepare() {
 	cd "${pkgbase}-${pkgver}/" || exit
@@ -37,6 +37,12 @@ build() {
 	cd "${pkgbase}-${pkgver}/" || exit
 
 	RUSTUP_TOOLCHAIN=stable cargo build --frozen --release
+}
+
+check() {
+	cd "${pkgbase}-${pkgver}/" || exit
+
+	RUSTUP_TOOLCHAIN=stable cargo test --lib --no-default-features
 }
 
 package() {
