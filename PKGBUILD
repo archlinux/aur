@@ -1,5 +1,5 @@
 pkgname='zshell'
-pkgver=0.4.0
+pkgver=0.4.0.r73.g42f02f4
 pkgrel=1
 pkgdesc='ZShell desktop shell'
 arch=('any')
@@ -13,7 +13,7 @@ options=('!lto')
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname}"
+	cd "$srcdir/$pkgname"
 	git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' |
 		sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
