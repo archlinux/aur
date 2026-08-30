@@ -1,0 +1,65 @@
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+
+_gitauthor=msavox
+_gitname=cleecode
+_appname=${_gitname%code}
+pkgname=${_gitname}
+pkgdesc="A terminal IDE written in Rust"
+
+pkgver=0.13.2
+pkgrel=1
+_gitversion=v${pkgver}
+
+arch=('x86_64' 'aarch64')
+
+_ghurl="https://github.com/${_gitauthor}/${_gitname}"
+_ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
+url=${_ghurl}
+
+license=('MIT')
+
+provides=("${_appname}")
+
+makedepends=('cargo')
+
+options=('!strip' '!lto')
+
+source=("${pkgname}-${pkgver}.tgz::${_ghurl}/archive/${_gitversion}.tar.gz")
+sha256sums=('6eb5068735b5139e029c3fc59ed45ec20113439643f0c5c077ddc6ba4abb1351')
+
+
+prepare() {
+	cd "${pkgname}-${pkgver}" || exit
+
+	cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+}
+
+build() {
+	cd "${pkgname}-${pkgver}" || exit
+
+	export CARGO_TARGET_DIR=target
+	cargo build --frozen --release
+}
+
+check() {
+	cd "${pkgname}-${pkgver}" || exit
+
+	export CARGO_TARGET_DIR=target
+	cargo test --frozen --release -- \
+		--skip "terminal_panel::tests::a_program_that_asked_for_the_mouse_gets_the_buttons" \
+		--skip "terminal_panel::tests::a_program_that_asked_for_the_mouse_gets_the_wheel"
+}
+
+package() {
+	cd "${pkgname}-${pkgver}" || exit
+
+	install -Dm755 target/release/${_appname} -t "${pkgdir}/usr/bin/"
+
+	install -Dm644 docs/${_appname}.1 -t "${pkgdir}/usr/share/man/man1/"
+
+	install -Dm644 assets/fonts/*.ttf -t "${pkgdir}/usr/share/fonts/TTF/"
+
+	install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+}

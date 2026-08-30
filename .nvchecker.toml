@@ -1,0 +1,5 @@
+[cleecode]
+source = "github"
+github = "msavox/cleecode"
+use_latest_release = true
+prefix = "v"
