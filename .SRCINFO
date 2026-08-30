@@ -1,6 +1,6 @@
 pkgbase = headroom-ai
 	pkgdesc = Context optimization layer for LLM applications - cut token costs by 50-90%
-	pkgver = 0.34.0
+	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://github.com/chopratejas/headroom
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = headroom-ai
 	optdepends = python-transformers: HuggingFace tokenizers and Kompress compression
 	optdepends = python-hnswlib: HNSW vector memory adapter
 	options = !debug
-	source = https://files.pythonhosted.org/packages/source/h/headroom-ai/headroom_ai-0.34.0.tar.gz
-	sha256sums = 188e81eb1b9497e8518fe491a9fcd79f2e15f5e20f8c5053d63ae09cd63c49fb
+	source = https://files.pythonhosted.org/packages/source/h/headroom-ai/headroom_ai-0.37.0.tar.gz
+	sha256sums = 7ffdecba91ce44dd02f1601499f6c935c47374b7cb6ec61e569b816a4bb78a26
 
 pkgname = headroom-ai
