@@ -8,7 +8,7 @@ pkgdesc="A modern, intuitive, terminal text editor. Single file. No dependencies
 
 pkgver=2026.08.30
 pkgrel=1
-_gitversion=6432863
+_gitversion=847c144
 
 arch=('any')
 
@@ -33,7 +33,7 @@ source=("LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"CHANGELOG-${pkgver}.md::${_ghurlraw}/docs/help/changelog.md"
 		"${_appname}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_appname}")
 sha256sums=('9f3273e5e01858ed10ab7a253cbd6b1abd7259bd9b4b3fd1dfafc3bf902e89c3'
-            'b69dc312af1a5f1eeff0e9329d5dedd25b6f5e2569ad61bbecc75457876e7e64'
+            '4b61307e1313b3df59e27862824d173e84dae864bffb4d923cf1937b35693d71'
             'ad91b2ec97463e826d9e76c3b1664b2f076fc0fc6e4c97866e43e48dc3a4ca05'
             '6a74434d8c7399a73618954398f89fff8ec6fd6a452ed44a3bcb2765b3ec6959'
             '757e6fa391078cd3ab8b522b14021740e4a03f065173ad2fb7ece812fb0075b8'
