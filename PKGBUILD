@@ -3,7 +3,7 @@
 
 pkgname=work
 pkgver=1.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A stupid simple time tracker.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/work'
@@ -17,6 +17,11 @@ pkgver() {
   cd "$pkgname" || exit
 
   git describe --tags | sed 's/^v//'
+}
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
 }
 
 build() {
