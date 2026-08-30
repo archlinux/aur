@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname=amane
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Private movie library in the AI era"
 arch=("any")
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('1990ea86a703872859fd49f0ebdb11b721d1d9be22fd449bc39db418acdeaca7'
+sha256sums=('0227030d39e2267697844ebd89ef3e76208a0b173e16a08dbd3b9edce683b178'
             '28d7520995c01cb46bbb95288dc56e7aa82eb0be5e3dc59a942c2bd78ae922e6'
             '4358f021ce89f5e529066064c30f2d68216a85d2811cbeb6473f1e2c95599b05'
             'adb7d8daeb017f193bf010dfa77e0ff2c8b875eeab3221bf44c44e5cb0e14e18'
