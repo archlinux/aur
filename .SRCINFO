@@ -1,0 +1,33 @@
+pkgbase = zshell
+	pkgdesc = ZShell desktop shell
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://git.zach-dev.cc/zach/z-bar-qt
+	arch = any
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatch
+	makedepends = python-hatch-vcs
+	makedepends = cargo
+	makedepends = rust
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = nuitka
+	depends = python
+	depends = python-pillow
+	depends = python-materialyoucolor
+	depends = libnotify
+	depends = swappy
+	depends = dart-sass
+	depends = app2unit
+	depends = wl-clipboard
+	depends = dconf
+	depends = cliphist
+	depends = python-typer
+	depends = qt6-canvaspainter
+	options = !lto
+	source = zshell::git+https://git.zach-dev.cc/zach/z-bar-qt.git#branch=main
+	sha256sums = SKIP
+
+pkgname = zshell
