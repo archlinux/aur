@@ -1,6 +1,6 @@
 pkgbase = aquamarine-git
 	pkgdesc = Aquamarine is a very light linux rendering backend library
-	pkgver = 0.11.0.r10.gab2b0af
+	pkgver = 0.15.0.r0.g783bfd9
 	pkgrel = 1
 	url = https://github.com/hyprwm/aquamarine
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = aquamarine-git
 	license = BSD-3-Clause
 	makedepends = cmake
 	makedepends = git
+	makedepends = hyprwayland-scanner-git
 	makedepends = ninja
 	depends = gcc-libs
 	depends = glibc
 	depends = hyprutils-git
-	depends = hyprwayland-scanner-git
 	depends = libdisplay-info
 	depends = libdrm
 	depends = libglvnd
@@ -25,7 +25,7 @@ pkgbase = aquamarine-git
 	depends = systemd-libs
 	depends = wayland
 	depends = wayland-protocols
-	provides = aquamarine=0.11.0
+	provides = aquamarine=0.15.0
 	provides = libaquamarine.so
 	conflicts = aquamarine
 	source = aquamarine::git+https://github.com/hyprwm/aquamarine.git

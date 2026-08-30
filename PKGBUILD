@@ -4,7 +4,7 @@
 
 _pkgname="aquamarine"
 pkgname="$_pkgname-git"
-pkgver=0.11.0.r10.gab2b0af
+pkgver=0.15.0.r0.g783bfd9
 pkgrel=1
 pkgdesc="Aquamarine is a very light linux rendering backend library"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,6 @@ depends=(
   gcc-libs
   glibc
   hyprutils-git
-  hyprwayland-scanner-git
   libdisplay-info
   libdrm
   libglvnd
@@ -32,6 +31,7 @@ depends=(
 makedepends=(
   cmake
   git
+  hyprwayland-scanner-git
   ninja
 )
 
