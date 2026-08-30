@@ -17,7 +17,6 @@ _url_github="https://github.com/${pkgauthor}/${pkgname}"
 url="${_url_github}"
 
 provides=("${_pypi_package}")
-conflicts=("python-${pkgname}")
 
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 depends=('python')

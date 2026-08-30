@@ -11,7 +11,6 @@ pkgbase = pyftrace
 	makedepends = python-installer
 	depends = python
 	provides = pyftrace
-	conflicts = python-pyftrace
 	source = pyftrace-0.3.1.tar.gz::https://github.com/kangtegong/pyftrace/archive/v0.3.1.tar.gz
 	sha256sums = 18c555b778043fc0b1310a86e78a78a8417efefa110b699de602ae2ff1dfd568
 
