@@ -17,7 +17,6 @@ depends=(
   hyprgraphics-git
   hyprlang-git
   hyprutils-git
-  hyprwayland-scanner-git
   libdrm
   libxkbcommon
   pango
@@ -27,6 +26,7 @@ depends=(
 makedepends=(
   cmake
   git
+  hyprwayland-scanner-git
   ninja
 )
 
