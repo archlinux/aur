@@ -1,13 +1,15 @@
 pkgbase = pdfio-git
 	pkgdesc = A simple C library for reading and writing PDF files
-	pkgver = 1.3.0.r0.g0c1122b
-	pkgrel = 2
+	pkgver = 1.6.0.r124.g1a7fb15
+	pkgrel = 1
 	url = https://www.msweet.org/pdfio/
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause
 	makedepends = git
 	depends = zlib
+	depends = libpng
+	depends = libwebp
 	provides = pdfio
 	conflicts = pdfio
 	source = git+https://github.com/michaelrsweet/pdfio.git

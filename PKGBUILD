@@ -2,13 +2,13 @@
 
 _pkgname=pdfio
 pkgname=$_pkgname-git
-pkgver=1.3.0.r0.g0c1122b
-pkgrel=2
+pkgver=1.6.0.r124.g1a7fb15
+pkgrel=1
 pkgdesc="A simple C library for reading and writing PDF files"
 arch=('x86_64' 'aarch64')
 url="https://www.msweet.org/pdfio/"
 license=('Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause')
-depends=('zlib')
+depends=('zlib' 'libpng' 'libwebp')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
