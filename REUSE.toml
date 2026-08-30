@@ -1,0 +1,13 @@
+version = 1
+
+[[annotations]]
+path = [
+    ".SRCINFO",
+    ".gitignore",
+    "PKGBUILD",
+    "fix-pantum-ppd.awk",
+    "pantum-ipp-usb.conf",
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Ivan Burmin <osguot@vivaldi.net>"
+SPDX-License-Identifier = "0BSD"
