@@ -1,7 +1,7 @@
 pkgbase = grpcmd
 	pkgdesc = A simple, easy-to-use, and developer-friendly CLI tool for gRPC.
 	pkgver = 0.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/grpcmd/grpcmd
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = grpcmd
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/grpcmd/grpcmd.git#tag=v0.2.1
+	source = git+https://github.com/grpcmd/grpcmd.git#commit=cf68c9e2cd82f6447444e52d0ab098f83477cf7a
 	sha256sums = SKIP
 
 pkgname = grpcmd

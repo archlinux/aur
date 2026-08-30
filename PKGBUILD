@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=grpcmd
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple, easy-to-use, and developer-friendly CLI tool for gRPC."
 arch=('x86_64' 'aarch64')
 url="https://github.com/grpcmd/grpcmd"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/grpcmd/grpcmd.git#tag=v$pkgver")
+_commit='cf68c9e2cd82f6447444e52d0ab098f83477cf7a'
+source=("git+https://github.com/grpcmd/grpcmd.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
