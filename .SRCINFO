@@ -1,6 +1,6 @@
 pkgbase = linux-wallpaper-engine-ux
 	pkgdesc = Modern desktop GUI for linux-wallpaperengine
-	pkgver = 0.4.10
+	pkgver = 0.4.11
 	pkgrel = 1
 	url = https://github.com/jagrat7/linux-wallpaper-engine
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = linux-wallpaper-engine-ux
 	optdepends = xorg-xrandr: X11 display detection
 	optdepends = wlr-randr: wlroots Wayland display detection
 	optdepends = ffmpeg: video wallpaper support
-	source = linux-wallpaper-engine-ux-0.4.10.tar.gz::https://github.com/jagrat7/linux-wallpaper-engine/archive/refs/tags/v0.4.10.tar.gz
-	sha256sums = 6c0625e816ed464f0f73ecb0142aa17b47af9f4f11fa27e1f1150458fbd4f7ba
+	source = linux-wallpaper-engine-ux-0.4.11.tar.gz::https://github.com/jagrat7/linux-wallpaper-engine/archive/refs/tags/v0.4.11.tar.gz
+	sha256sums = 4a46cc31bf1a74cb580d47f067a311f06150e2d4343fea3ae29c7ae4e9760bec
 
 pkgname = linux-wallpaper-engine-ux
