@@ -1,7 +1,7 @@
 # Maintainer: Locez <locez@locez.com>
 pkgname=kotonoha-git
 _pkgname=kotonoha
-pkgver=0.1.0.r140.gbde674e
+pkgver=0.2.0.r217.g38b4caa
 pkgrel=1
 pkgdesc="Wayland lyrics overlay for MPRIS-compatible media players"
 arch=('x86_64')
