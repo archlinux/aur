@@ -3,9 +3,9 @@
 _pkgname=ipp-usb
 pkgname=$_pkgname-git
 pkgver=0.9.26.r5.gdf9f47f
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP reverse proxy, backed by IPP-over-USB connection to device. Allows using the IPP protocol to be used with USB printers as well."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/OpenPrinting/ipp-usb"
 license=('BSD-2-Clause')
 depends=('libusb' 'avahi')
