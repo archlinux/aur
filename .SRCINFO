@@ -1,6 +1,6 @@
 pkgbase = sounding
 	pkgdesc = A SLAM evaluation tool.
-	pkgver = 0.2.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://codeberg.org/stelzo/sounding
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = sounding
 	conflicts = sounding
 	options = !lto
 	options = !debug
-	source = sounding-0.2.0.tar.gz::https://codeberg.org/stelzo/sounding/archive/v0.2.0.tar.gz
+	source = sounding-0.4.0.tar.gz::https://codeberg.org/stelzo/sounding/archive/v0.4.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = sounding
