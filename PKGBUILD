@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
     export LDFLAGS+=' -Wl,-z,noexecstack'
-    cmake -B build -S SVT-AV1-Essential \   
+    cmake -B build -S SVT-AV1-Essential \
         -DCMAKE_C_COMPILER=clang \
         -DCMAKE_CXX_COMPILER=clang++ \
         -DCMAKE_BUILD_TYPE=Release \
