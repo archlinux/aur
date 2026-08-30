@@ -3,11 +3,11 @@
 
 pkgname=owrx_connector-luarvique
 pkgver=0.6.5
-pkgrel=3
+pkgrel=9
 pkgdesc="Connectors used by OpenWebRX to interface with SDR hardware."
 arch=('x86_64' 'aarch64')
 url="https://github.com/luarvique/owrx_connector"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 depends=('csdr-luarvique' 'libsamplerate' 'rtl-sdr' 'soapysdr' 'fftw')
 makedepends=('git' 'cmake')
 provides=('owrx_connector')
@@ -27,4 +27,23 @@ build() {
 
 package() {
 	make -C build DESTDIR="$pkgdir/" install
+
+	# Strip dangling build-id symlinks from the main package too.
+	if [ -d "$pkgdir/usr/lib/.build-id" ]; then
+		find "$pkgdir/usr/lib/.build-id" -type l -delete
+		find "$pkgdir/usr/lib/.build-id" -type d -empty -delete
+	fi
+}
+
+package_debug() {
+	cd "$pkgdir"
+	# Remove all build-id entries. The plain symlinks point into the main
+	# package's stripped binaries (so they are dangling from the debug
+	# package's perspective and namcap flags them as errors), and the .debug
+	# companion symlinks point at debug files generated for stripped
+	# binaries that do not actually contain debug info. Neither provides
+	# value, so remove the entire tree.
+	if [ -d usr/lib/debug/.build-id ]; then
+		rm -rf usr/lib/debug/.build-id
+	fi
 }
