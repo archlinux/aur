@@ -1,0 +1,25 @@
+pkgbase = niri-tearing-git-bin
+	pkgdesc = A scrollable-tiling Wayland compositor (fork com suporte a tearing) - Versão binária pré-compilada
+	pkgver = 0.1.10
+	pkgrel = 1
+	url = https://github.com/QaidVoid/niri
+	arch = x86_64
+	license = GPL3
+	depends = cairo
+	depends = glib2
+	depends = pango
+	depends = libxkbcommon
+	depends = wayland
+	depends = libinput
+	depends = pixman
+	depends = libxcb
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	provides = niri
+	conflicts = niri
+	conflicts = niri-git
+	conflicts = niri-tearing-git
+	source = https://github.com/QaidVoid/niri/releases/download/v0.1.10/niri-0.1.10-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = niri-tearing-git-bin
