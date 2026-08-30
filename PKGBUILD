@@ -2,7 +2,7 @@
 # Maintainer: Hu Butui <hot123tea123@gmail.com>
 
 pkgname=python-mediapipe-git
-pkgver=0.10.18.r137.0cd1f15d5
+pkgver=1.0.0.r85.251c0cb96
 pkgrel=1
 pkgdesc="A cross-platform, customizable ML solutions for live and streaming media"
 arch=('x86_64')
