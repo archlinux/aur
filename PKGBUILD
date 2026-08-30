@@ -10,7 +10,7 @@
 
 _pkgname=htop
 pkgname=$_pkgname-solarized
-pkgver=3.4.1
+pkgver=3.5.3
 pkgrel=1
 pkgdesc='Interactive process viewer with solarized colorscheme patch'
 arch=('i686' 'x86_64' 'armv7h')
@@ -28,7 +28,7 @@ validpgpkeys=('F7ABE8761E6FE68638E6283AFE0842EE36DD8C0C'  # Nathan Scott <nathan
               '0D316B6ABE022C7798D0324BF1D35CB9E8E12EAD') # Benny Baumann <BenBE@geshi.org>
 source=("git+https://github.com/htop-dev/htop.git#tag=${pkgver}"
         'htop-solarized.patch')
-sha256sums=('3238b122c46571bcf2de6d788d040a665b842020effb45b3e9420346a8608460'
+sha256sums=('a4619a140f8374c526d27cf5f892b2dceaee27b33a0446d902c35962a5159850'
             '30e1703d2662734d4094ea17cbabf029b251287b1d502b75893041debb36e3f3')
 
 _backports=(
@@ -51,6 +51,10 @@ prepare() {
     git log --oneline "${_l}" "${_c}"
     git revert --mainline 1 --no-commit "${_c}"
   done
+
+  sed -i \
+    -e "/^m4_define(\[htop_release_version\],/ c m4_define([htop_release_version], [${pkgver}-${pkgrel}-arch])" \
+    -e '/^AC_INIT/s|m4_defn(\[htop_git_version\])||' configure.ac
 
   autoreconf -fi
 
