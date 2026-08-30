@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=go-global-update
 pkgver=0.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A command to update globally installed go executables"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Gelio/go-global-update"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/Gelio/go-global-update.git#tag=v$pkgver")
+_commit='6e383171f82de4a919e2b7ad321b5aa91bc9dc33'
+source=("git+https://github.com/Gelio/go-global-update.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
