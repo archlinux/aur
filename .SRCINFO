@@ -1,6 +1,6 @@
 pkgbase = servo-fetch-bin
 	pkgdesc = Self-contained browser engine that fetches, renders, and extracts web content as Markdown, JSON, or screenshots
-	pkgver = 0.14.0
+	pkgver = 0.14.2
 	pkgrel = 1
 	url = https://github.com/konippi/servo-fetch
 	arch = x86_64
@@ -13,12 +13,12 @@ pkgbase = servo-fetch-bin
 	depends = zlib
 	depends = libstdc++
 	depends = libgcc
-	provides = servo-fetch=0.14.0
+	provides = servo-fetch=0.14.2
 	conflicts = servo-fetch
 	options = !debug
-	source_x86_64 = servo-fetch-0.14.0-x86_64.tar.gz::https://github.com/konippi/servo-fetch/releases/download/v0.14.0/servo-fetch-v0.14.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 9c4112dc1f14ad11e55397450450fd646e6e871d05463d9ea1c5656afaaf7e49
-	source_aarch64 = servo-fetch-0.14.0-aarch64.tar.gz::https://github.com/konippi/servo-fetch/releases/download/v0.14.0/servo-fetch-v0.14.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 2d52e1b90eaf8dae6c133d7118d15a7fc40425cf888fa7ab6679ae762e15261a
+	source_x86_64 = servo-fetch-0.14.2-x86_64.tar.gz::https://github.com/konippi/servo-fetch/releases/download/v0.14.2/servo-fetch-v0.14.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 31d26c77db8c48edff6593e553e18c45d3834c77f7cfcb21ce8bccac1544886b
+	source_aarch64 = servo-fetch-0.14.2-aarch64.tar.gz::https://github.com/konippi/servo-fetch/releases/download/v0.14.2/servo-fetch-v0.14.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 54a2883708dcad2e80abe989c384cdbacccc4873a2e2fdfce176713d36cb2248
 
 pkgname = servo-fetch-bin
