@@ -2,49 +2,23 @@
 # Contributor: tuxsavvy
 
 pkgname=realrtcw
-pkgver=5.4 # renovate: datasource=github-tags depName=wolfetplayer/RealRTCW
+pkgver=5.44c # renovate: datasource=github-tags depName=wolfetplayer/RealRTCW
 pkgrel=1
 pkgdesc="An overhaul mod for critically acclaimed Return To Castle Wolfenstein."
-arch=('i686' 'x86_64')
+arch=('aarch64' 'i686' 'x86_64')
 url="http://www.moddb.com/mods/realrtcw-realism-mod"
 license=('GPL')
-depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl2-compat' 'zlib')
-makedepends=('unzip')
+depends=('freetype2' 'graphite' 'harfbuzz' 'iortcw-data' 'libjpeg-turbo' 'libogg' 'openal' 'opus' 'opusfile' 'pcre' 'sdl3' 'zlib')
 install='realrtcw.install'
-sha256sums=('160b9f443f29d5ffb8978c09adfbbd98383f65f889c1e4b617bfbb199ec47c25'
-            'e927df0c98dd5699503712518fd6346511f73df4c2dea95a4200f61e6aabae64'
-            '643bd2a56b06fbdf9790b3bb7557c7f6663cc3e86295431f6470b347e37b4bb2'
-            'e68d6f400342e36d3db94e519978da0afa2d74f3368b1fe88014c4bdb26b193e'
-            '43501d60c80ae4a2837295fb5faf01d42e31f31371fcd6cecc8054eed965b8f6'
-            '6482482e637d38ce6eff6ab740f971f86b7e0d205797b2c5044aecfcf5701364'
-            '5b6c8259e381039c3e0184211cf3624663cd8670798f7ee894c30a001cc2eb81')
-
-_mainid=273184
-noextract=("${pkgname}-${pkgver}.zip")
-PKGEXT='.pkg.tar'
-DLAGENTS+=("moddb::${BASH_SOURCE[0]%/*}/moddb-downloader.sh %u %o")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/refs/tags/${pkgver}.tar.gz"
-  "${pkgname}-${pkgver}.zip::moddb://www.moddb.com/downloads/start/${_mainid}/all"
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/wolfetplayer/RealRTCW/archive/refs/tags/${pkgver}.tar.gz"
   "${pkgname}.png"
   "${pkgname}.launcher"
   "${pkgname}.desktop"
-  moddb-downloader.sh
-  disable-steam.patch
 )
-
-prepare() {
-  cd "${srcdir}"
-
-  # Unzipping with flattened paths
-  unzip -jo "${pkgname}-${pkgver}.zip" -d paks
-}
 
 package() {
   cd "${srcdir}/RealRTCW-${pkgver}"
-
-  unset CFLAGS
-  # Disable steam build
-  patch -Np1 -i ../disable-steam.patch
 
   USE_INTERNAL_LIBS=0 \
     COPYDIR=${pkgdir}/opt/realrtcw \
@@ -93,20 +67,15 @@ package() {
   ln -s /opt/iortcw-data/openurl.sh \
     "${pkgdir}/opt/realrtcw/openurl.sh"
 
-  # Installing RealRTCW pk3
-  for i in "${srcdir}"/paks/{*.pk3,*.cfg}; do
-    install -m 644 "${i}" \
-      "${pkgdir}/opt/realrtcw/main"
-  done
-
   # Modify Launcher Scripts
-  if [ "$CARCH" = "x86_64" ]; then
-    # x86_64 Systems
-    TARGET=x86_64
-  else
-    # i686 Systems
-    TARGET=x86
-  fi
+  case "$CARCH" in
+    x86_64) TARGET=x86_64 ;;
+    aarch64) TARGET=aarch64 ;;
+    i686) TARGET=x86 ;;
+    *)
+      error "Unsupported architecture: $CARCH"
+      ;;
+  esac
   sed -i "s:ARCH:${TARGET}:" \
     "${srcdir}"/realrtcw.*
 
@@ -122,3 +91,10 @@ package() {
   install -Dm 644 "${srcdir}/realrtcw.png" \
     "${pkgdir}/usr/share/icons/hicolor/512x512/apps/realrtcw.png"
 }
+
+sha256sums=(
+  'ef8ac21a7eca67cb9a4d4dfe876c14758df9213ef6f8a92b050afcc441f5d550'
+  '643bd2a56b06fbdf9790b3bb7557c7f6663cc3e86295431f6470b347e37b4bb2'
+  'e68d6f400342e36d3db94e519978da0afa2d74f3368b1fe88014c4bdb26b193e'
+  '43501d60c80ae4a2837295fb5faf01d42e31f31371fcd6cecc8054eed965b8f6'
+)
