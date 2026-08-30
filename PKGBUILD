@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=gocognit
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Calculates cognitive complexities of functions (and methods) in Go source code. (Golang cognitive complexity)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/uudashr/gocognit"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/uudashr/gocognit.git#tag=v$pkgver")
+_commit='5b8ec1cd6a28032e4e38356b6e913ea5fe7a8d63'
+source=("git+https://github.com/uudashr/gocognit.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
