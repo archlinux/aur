@@ -1,7 +1,7 @@
 # Maintainer: uncognic <92607100+uncognic@users.noreply.github.com>
 
 pkgname=steppewm
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Minimal stacking Wayland compositor using wlroots'
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,7 @@ optdepends=(
 	'wlrctl: window and input control from the shell'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('034c8e7def2cc49e2d7748a095e36d97874508cfd553bb109b4a707cefdb355c662251fbee090bfdb2d5a7c86257823013a888edb0d73c808b6a16da9be5c4c1')
+b2sums=('162692a235ac41128043995a9bb3d6cb44a9a679c6c8000083eca473e1e8b9d951cd379c59a5374267481df3d517ec7e9cfa2abe491ca6d819403f2bb9d2c7db')
 
 build() {
 	arch-meson "$pkgname-$pkgver" build
