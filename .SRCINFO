@@ -1,0 +1,18 @@
+pkgbase = genalyzer
+	pkgdesc = Library of DSP functions for RF measurements
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/analogdevicesinc/genalyzer
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = swig
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = boost
+	makedepends = pybind11
+	makedepends = doxygen
+	source = git+https://github.com/analogdevicesinc/genalyzer.git#tag=v0.1.7
+	b2sums = 84abf569694704e0c67fdacc53cc89fcfd968937e30cd3586c5a9c97c14223e7045317bf7eb0a8e33f770228469b12ef8a61573945896fd9d34a26902fdc2e3b
+
+pkgname = genalyzer
