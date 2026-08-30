@@ -3,7 +3,7 @@
 
 pkgname=connections
 pkgver=0.1.21
-pkgrel=1
+pkgrel=2
 pkgdesc='A command-line client for the NYT Connections game.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/connections'
@@ -17,6 +17,11 @@ pkgver() {
   cd "$pkgname" || exit
 
   git describe --tags | sed 's/^v//'
+}
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
 }
 
 build() {
