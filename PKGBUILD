@@ -12,8 +12,10 @@ depends=('zlib')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("git+https://github.com/michaelrsweet/$_pkgname.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/michaelrsweet/$_pkgname.git"
+        "git+https://github.com/michaelrsweet/ttf.git")
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -22,6 +24,9 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
+  git submodule init
+  git submodule set-url ttf "$srcdir"/ttf
+  git -c protocol.file.allow=always submodule update ttf
   ./configure --prefix=/usr --enable-shared
 }
 

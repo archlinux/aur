@@ -11,6 +11,8 @@ pkgbase = pdfio-git
 	provides = pdfio
 	conflicts = pdfio
 	source = git+https://github.com/michaelrsweet/pdfio.git
+	source = git+https://github.com/michaelrsweet/ttf.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pdfio-git
