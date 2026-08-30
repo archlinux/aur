@@ -1,7 +1,7 @@
 pkgname=sparkle-rolling-bin
 _pkgname=sparkle
-pkgver=1.26.8.r1278.2fed67e
-_releasever=1.26.8-rolling-2fed67e
+pkgver=1.26.8.r1279.a36c43e
+_releasever=1.26.8-rolling-a36c43e
 pkgrel=1
 pkgdesc="Another Mihomo GUI (rolling binary release)"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ source=("${_pkgname}.sh")
 source_x86_64=("${_pkgname}-${_releasever}-x86_64.deb::${url}/releases/download/rolling/${_pkgname}-linux-${_releasever}-amd64.deb")
 source_aarch64=("${_pkgname}-${_releasever}-aarch64.deb::${url}/releases/download/rolling/${_pkgname}-linux-${_releasever}-arm64.deb")
 sha256sums=('68c3b948301007f29e4f0db9b1b413766c2bcacf7eaf5305c7e7b83f547df3b5')
-sha256sums_x86_64=('a3f55648bb6c6c1b1deabf6bbe354c3d8960ef0c672e9b47bb623bcbecfd5829')
-sha256sums_aarch64=('2a7dada64a8ef3e76b11cfaa3b9a3acb98cc9e8d4da506100e7eb750dd12049d')
+sha256sums_x86_64=('b809bb755a18e353a622a625954f884caf6448116655d39ce5c8c938c2d0ee22')
+sha256sums_aarch64=('66f80009df409d0a7285586e36b1487e012df7464a8c5a3e8e3548abd617e748')
 
 package() {
     bsdtar -xf data.tar.xz -C "$pkgdir"
