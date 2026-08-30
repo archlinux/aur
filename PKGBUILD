@@ -1,7 +1,7 @@
 # Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 _pkgname=vacask
 pkgname="${_pkgname}-git"
-pkgver=0.3.3.r276.ga9d8860
+pkgver=0.3.3.r301.g1e01cd5
 pkgrel=1
 pkgdesc="Verilog-A Circuit Analysis Kernel is an analog circuit simulator"
 arch=(
@@ -53,7 +53,7 @@ build() {
     local cmake_options=(
         -B build
         -S "${_pkgname}"
-        -W no-dev
+        -W no-author
         -D CMAKE_BUILD_TYPE=None
         -D CMAKE_INSTALL_PREFIX=/usr
         -D BLA_VENDOR="OpenBLAS"
@@ -67,7 +67,16 @@ check() {
     # See: https://codeberg.org/arpadbuermen/VACASK/src/branch/main/demo/ihp-sg13g2
     # For more information
     # Here we check whether that is the case, if not we skip the test
-    local excluded_tests=("test_behavexpr.sim") # TODO: Buggy test atm
+    local excluded_tests=(
+        # TODO: This one has a bug atm
+        "test_behavexpr.sim"
+        # TODO: The following tests are dependent on experimental
+        # vacask build - Disable for now
+        "test_delay.sim"
+        "test_delayvar.sim"
+        "test_delayhb.sim"
+        "test_delayhbac.sim"
+    ) # TODO: Buggy test atm
 
     # Check PDK_ROOT is set and PDK equals "ihp-sg13g2"
     if [[ -z "${PDK_ROOT}" || "${PDK}" != "ihp-sg13g2" ]]; then
