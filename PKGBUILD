@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=vgo
 pkgver=0.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple project scaffolder for Go, written in Go."
 arch=('x86_64' 'aarch64')
 url="https://github.com/vg006/vgo"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/vg006/vgo.git#tag=v$pkgver")
+_commit='05d50dbfda7d4f566b84a7076f1a2bd46d12d6b5'
+source=("git+https://github.com/vg006/vgo.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
