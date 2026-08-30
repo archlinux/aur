@@ -27,12 +27,12 @@ prepare() {
 
 build() {
   cd "$pkgname"
-  cargo test --frozen --release -- --skip aot_tests
+  cargo build --frozen --release
 }
 
 check() {
   cd "$pkgname"
-  cargo test --frozen --release
+  cargo test --frozen --release -- --skip aot_tests
 }
 
 package() {
