@@ -2,10 +2,10 @@
 
 _pkgname=libcups
 pkgname=$_pkgname-git
-pkgver=3.0b2.r146.ga3eedb6ac
+pkgver=3.0.3.r3.g2b2786a67
 pkgrel=1
 pkgdesc="The CUPS library"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/OpenPrinting/$_pkgname"
 license=('Apache-2.0 WITH LLVM-exception')
 depends=('avahi' 'pdfio-git')

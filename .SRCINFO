@@ -1,9 +1,10 @@
 pkgbase = libcups-git
 	pkgdesc = The CUPS library
-	pkgver = 3.0b2.r146.ga3eedb6ac
+	pkgver = 3.0.3.r3.g2b2786a67
 	pkgrel = 1
 	url = https://github.com/OpenPrinting/libcups
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0 WITH LLVM-exception
 	makedepends = git
 	depends = avahi
