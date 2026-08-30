@@ -4,7 +4,7 @@
 _pkgname=dexed
 pkgname=$_pkgname-git
 pkgver=1.0.1.r2.g2e182b3
-pkgrel=1
+pkgrel=2
 pkgdesc='A software synth closely modelled on the Yamaha DX7 (git version)'
 arch=(x86_64)
 url='https://asb2m10.github.io/dexed'
@@ -50,15 +50,11 @@ source=(
   # steinbergmedia-vst3sdk
   'steinbergmedia-vst3_base::git+https://github.com/steinbergmedia/vst3_base.git'
   'steinbergmedia-vst3_cmake::git+https://github.com/steinbergmedia/vst3_cmake.git'
-  'steinbergmedia-vst3_doc::git+https://github.com/steinbergmedia/vst3_doc.git'
   'steinbergmedia-vst3_pluginterfaces::git+https://github.com/steinbergmedia/vst3_pluginterfaces.git'
   'steinbergmedia-vst3_public_sdk::git+https://github.com/steinbergmedia/vst3_public_sdk.git'
   'steinbergmedia-vstgui::git+https://github.com/steinbergmedia/vstgui.git'
-  'steinbergmedia-vst3_tutorials::git+https://github.com/steinbergmedia/vst3_tutorials'
 )
 b2sums=('SKIP'
-        'SKIP'
-        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -75,7 +71,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd $_pkgname
-  git describe --tags --long --exclude 'Nightly' | sed -e 's/^v//' -e 's/-/.r/' -e 's/-/./g'
+  git describe --tags --long --exclude 'Nightly' --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -101,10 +97,8 @@ prepare() {
   git submodule init
   git config submodule.base.url "$srcdir/steinbergmedia-vst3_base"
   git config submodule.cmake.url "$srcdir/steinbergmedia-vst3_cmake"
-  git config submodule.doc.url "$srcdir/steinbergmedia-vst3_doc"
   git config submodule.pluginterfaces.url "$srcdir/steinbergmedia-vst3_pluginterfaces"
   git config submodule.public.sdk.url "$srcdir/steinbergmedia-vst3_public_sdk"
-  git config submodule.tutorials.url "$srcdir/steinbergmedia-vst3_tutorials"
   git config submodule.vstgui4.url "$srcdir/steinbergmedia-vstgui"
   git -c protocol.file.allow=always submodule update --init
   popd
@@ -132,6 +126,7 @@ build() {
   cmake \
     -S $_pkgname \
     -B $_pkgname-build \
+    -Wno-author \
     -DCMAKE_INSTALL_PREFIX='/usr'
   cmake --build $_pkgname-build
 }
