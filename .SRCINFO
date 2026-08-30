@@ -1,6 +1,6 @@
 pkgbase = pgschema
 	pkgdesc = Declarative schema migration CLI for Postgres (Terraform-style)
-	pkgver = 1.12.4
+	pkgver = 1.12.5
 	pkgrel = 1
 	url = https://github.com/pgplex/pgschema
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pgschema
 	depends = glibc
 	provides = pgschema
 	conflicts = pgschema-bin
-	source = pgschema-1.12.4.tar.gz::https://github.com/pgplex/pgschema/archive/v1.12.4.tar.gz
-	sha256sums = b3008748bf6bd5f90086c1721fe274078d427622a1887b1c8aeb1271d55bf639
+	source = pgschema-1.12.5.tar.gz::https://github.com/pgplex/pgschema/archive/v1.12.5.tar.gz
+	sha256sums = d86361b5c097a3cb66248297a12a6695e370e5b8f4c664053f9e03b7c5d2be97
 
 pkgname = pgschema
