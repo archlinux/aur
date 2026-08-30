@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=mac-cleanup-go
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="TUI macOS cleaner that scans caches/logs, shows sizes/paths, lets you select what to delete before Trash."
 arch=('x86_64' 'aarch64')
 url="https://github.com/2ykwang/mac-cleanup-go"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
