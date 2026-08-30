@@ -1,7 +1,7 @@
 pkgbase = tmuxai
 	pkgdesc = AI-powered, non-intrusive terminal assistant for tmux
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tmuxai.dev/
 	arch = x86_64
 	arch = aarch64
