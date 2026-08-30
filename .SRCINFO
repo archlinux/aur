@@ -1,15 +1,15 @@
 pkgbase = getquotes
 	pkgdesc = A simple cli tool to get quotes in your terminal using WikiQuotes
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/MuntasirSZN/getquotes
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	conflicts = getquotes-git
-	source_x86_64 = https://github.com/MuntasirSZN/getquotes/releases/download/v0.7.2/getquotes-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = fe4fd1f28374653921105968d73efbc5f4f2b207d65ae4d4e350c631ca2994dc
-	source_aarch64 = https://github.com/MuntasirSZN/getquotes/releases/download/v0.7.2/getquotes-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = c7a416efe13050fda12b51e79c8dbe47f61580b7d4915df69e7ebdbbad2059d3
+	source_x86_64 = https://github.com/MuntasirSZN/getquotes/releases/download/v0.7.3/getquotes-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 080cdf2a583b0d83acef8ee0905a8efa3895cd094d556d81140a0d2241ef3d8e
+	source_aarch64 = https://github.com/MuntasirSZN/getquotes/releases/download/v0.7.3/getquotes-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = c84492f609981cc7c0cb6452250c3ea6558ed31431c28b1b6c00b3ea0dd73eef
 
 pkgname = getquotes
