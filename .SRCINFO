@@ -1,7 +1,7 @@
 pkgbase = codeowners
 	pkgdesc = 🔒 Command line tool and Go library for CODEOWNERS files
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/hmarr/codeowners
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = codeowners
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/hmarr/codeowners.git#tag=v1.2.1
+	source = git+https://github.com/hmarr/codeowners.git#commit=80b677677fb26df8188a6b8736eb44e6792a0e3e
 	sha256sums = SKIP
 
 pkgname = codeowners

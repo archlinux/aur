@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=codeowners
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="🔒 Command line tool and Go library for CODEOWNERS files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hmarr/codeowners"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/hmarr/codeowners.git#tag=v$pkgver")
+_commit='80b677677fb26df8188a6b8736eb44e6792a0e3e'
+source=("git+https://github.com/hmarr/codeowners.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
