@@ -13,7 +13,7 @@ _branch="develop"
 source=("git+https://github.com/DonutWare/Fladder.git#branch=${_branch}"
     "fladder.desktop")
 sha256sums=('SKIP'
-            '0511c6da677cf361abb8d997a9e8795b39ab083cdbe79b2d7bbb8896c4c5d733')
+            'a5b94f011895864fa2c3fa641ad578595d519ec51c867d76eb32da67877a5ccb')
 conflicts=('fladder')
 provides=('fladder')
 
