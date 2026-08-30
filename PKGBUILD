@@ -9,7 +9,7 @@ url="https://github.com/TC999/zed-loc"
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TC999/zed-loc/releases/download/20260829/zed-linux-x86_64.tar.gz")
-sha512sums=('38f8a3cd5ef2d2c64d7fd9e2a49d49a35408b824b951295dcdee2ad7d79a5eefdd4db443c2ab89f62f351aefce761c232c69682daa1435e86fd82faf9fdb2d4d')
+sha512sums=('7e55ece4fad5d877cb1cf8ee34d86f7e1b0ac9ab6bf01407b49f1bd3c0c629303024fd470cedf76150c0958c662fb5da2b41d895f170268432f1b70c40c3914d')
 
 # 解压源码包
 prepare() {
