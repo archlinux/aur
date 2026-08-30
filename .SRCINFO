@@ -1,6 +1,6 @@
 pkgbase = sparkle-electron-git
 	pkgdesc = Another Mihomo GUI
-	pkgver = 1.26.7.r18.g5d955d8
+	pkgver = 1.26.7.r18.ga36c43e
 	pkgrel = 1
 	url = https://github.com/xishang0128/sparkle
 	install = sparkle.install
@@ -24,7 +24,7 @@ pkgbase = sparkle-electron-git
 	depends = util-linux-libs
 	depends = libsecret
 	optdepends = libappindicator-gtk3: Allow sparkle to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).
-	provides = sparkle=1.26.7.r18.g5d955d8
+	provides = sparkle=1.26.7.r18.ga36c43e
 	conflicts = sparkle
 	conflicts = sparkle-git
 	conflicts = sparkle-bin
