@@ -1,7 +1,7 @@
 diff -ru a/browser/components/preferences/config/appearance.mjs b/browser/components/preferences/config/appearance.mjs
 --- a/browser/components/preferences/config/appearance.mjs
 +++ b/browser/components/preferences/config/appearance.mjs
-@@ -107,13 +107,13 @@
+@@ -267,13 +267,13 @@
  
  Preferences.addSetting({
    id: "librewolfRFPWarning",
@@ -18,7 +18,7 @@ diff -ru a/browser/components/preferences/config/appearance.mjs b/browser/compon
            chooser.style.opacity = "0.3";
            chooser.style.pointerEvents = "none";
          } else {
-@@ -122,7 +122,7 @@
+@@ -282,7 +282,7 @@
          }
        }
      }, 100);
@@ -44,7 +44,7 @@ diff -ru a/browser/components/preferences/librewolf.js b/browser/components/pref
 diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 --- a/dom/base/Document.cpp
 +++ b/dom/base/Document.cpp
-@@ -20802,7 +20802,8 @@
+@@ -21103,7 +21103,8 @@
  
  ColorScheme Document::PreferredColorScheme(IgnoreRFP aIgnoreRFP) const {
    if (ShouldResistFingerprinting(RFPTarget::CSSPrefersColorScheme) &&
@@ -57,7 +57,7 @@ diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 diff -ru a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
 --- a/modules/libpref/init/StaticPrefList.yaml
 +++ b/modules/libpref/init/StaticPrefList.yaml
-@@ -17364,6 +17364,12 @@
+@@ -17691,6 +17691,12 @@
    value: false
    mirror: always
  

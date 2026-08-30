@@ -1,19 +1,23 @@
 # Maintainer: mecso2
 
-# run pgo build or not; with X(vfb) or wayland
-: ${_build_profiled:=true}
-: ${_build_profiled_xvfb:=true}
-
 pkgname=librewolf-allow-dark
+_pkgname=librewolf
 provides=(librewolf)
 conflicts=(librewolf)
-__pkgname=librewolf
-_pkgname=LibreWolf
-epoch=1
-pkgver=153.0.1_1
-_fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
+# The pkgver should always ends with a trailing ".0" for "round" release, so "155.0_1" should instead be "155.0.0_1" for instance
+# Otherwise, we will face version comparison issues: "warning: librewolf: local (154.0_2-1) is newer than extra-testing (154.0.1_2-1)"
+# We therefore "re-compute" the pkgver to match the actual upstream version scheme in the custom _pkgver variable, see README.md for more details
+pkgver=154.0.1_2
+# Extract the first part of the pkgver, this represents the Firefox release this LibreWolf release is based on
+_firefoxver="${pkgver%_*}"
+# Remove any trailing ".0" to match the real Firefox version, as "round" Firefox releases actually doesn't contain it,
+# (despite what https://www.firefox.com/en-US/releases/ is showing)
+# For "155.0.0" this will result in "155.0", for "155.0.1" it won't change anything
+_realfirefoxver="${_firefoxver%.0}"
+# Extract the second part of the pkgver, this represents the Librewolf release
 _librewolfver="${pkgver#*_}"
-_firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
+# Combine the "re-computed" pkgver (which actually matches the upstream version scheme) into a custom _pkgver variable
+_pkgver="${_realfirefoxver}-${_librewolfver}"
 pkgrel=1
 pkgdesc="Librewolf with the privacy.override_rfp_for_color_scheme about:config option added, which (if enabled) let's you change the color scheme even if rfp is turned on"
 url="https://librewolf.net/"
@@ -21,11 +25,11 @@ arch=(x86_64 aarch64)
 license=(MPL-2.0)
 
 depends=(
-  dbus
   alsa-lib
   at-spi2-core
   bash
   cairo
+  dbus
   ffmpeg
   fontconfig
   freetype2
@@ -34,7 +38,9 @@ depends=(
   glibc
   gtk3
   hicolor-icon-theme
+  libgcc
   libpulse
+  libstdc++
   libx11
   libxcb
   libxcomposite
@@ -51,13 +57,11 @@ depends=(
   ttf-font
 )
 makedepends=(
-  binutils
   cbindgen
   clang
   diffutils
   git
   imake
-  inetutils
   jack
   jq
   lld
@@ -65,18 +69,18 @@ makedepends=(
   mesa
   nasm
   nodejs
-  pciutils
+  onnxruntime
   python
-  python-setuptools
   rust
   unzip
   wasi-compiler-rt
+  wasi-libc
   wasi-libc++
   wasi-libc++abi
-  wasi-libc
+  xorg-server-xvfb
   yasm
   zip
-  ) # pciutils: only to avoid some PGO warning(?)
+)
 optdepends=(
   'hunspell-dictionary: Spell checking'
   'libnotify: Notification integration'
@@ -85,21 +89,6 @@ optdepends=(
   'xdg-desktop-portal: Screensharing with Wayland'
 )
 
-if [[ "${_build_profiled}" == "true" ]]; then
-  if [[ "${_build_profiled_xvfb}" == "true" ]]; then
-    makedepends+=(
-      xorg-server-xvfb
-    )
-  else
-    makedepends+=(
-      weston
-      wlheadless-run # aur/xwayland-run-git
-    )
-  fi
-fi
-
-backup=('usr/lib/librewolf/librewolf.cfg'
-        'usr/lib/librewolf/distribution/policies.json')
 options=(
   !debug
   !emptydirs
@@ -108,44 +97,53 @@ options=(
 )
 
 source=(
-  https://codeberg.org/api/packages/librewolf/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz{,.sig}
-  $__pkgname.desktop
-  "default192x192.png"
+  https://librewolf.dev/api/packages/librewolf/generic/librewolf-source/$_pkgver/librewolf-$_pkgver.source.tar.gz{,.sig}
+  $_pkgname.desktop
   allow_dark.patch
 )
 
-sha256sums=('4c0c110b08b71375db967ebab583ad03d9d659fe1f4a42e14f9f4dbbf8e04c9d'
-			'SKIP'
+sha256sums=('87f8f3eb9766cf25a1f3e8231a7304d3977a90d21fe269702074b9d5acc8df29'
+            'SKIP'
             '3d6ac59ae9d5ba4c9fe15f95c1338fa68214dec6119f8432336403e3be50f8ae'
-            '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            '716da9615afbb3f30b88df1b25e91cfa61a16bba8c847b1ad87f9345c1d3cc80')
+            '16841807098201ea8577ed391f24282a761bd265cfd3f959da920f241a11e8fe')
+
 validpgpkeys=('662E3CDD6FE329002D0CA5BB40339DD82B12EF16') # https://rpm.librewolf.net/pubkey.gpg
+
 
 prepare() {
   mkdir -p mozbuild
-  cd librewolf-$_firefoxver-$_librewolfver
+  cd librewolf-$_pkgver
 
-  patch -p1 -i ../allow_dark.patch
+  local src
+  for src in "${source[@]}"; do
+    src="${src%%::*}"
+    src="${src##*/}"
+    src="${src%.zst}"
+    [[ $src = *.patch ]] || continue
+    echo "Applying patch $src..."
+    patch -Np1 < "../$src"
+  done
 
   mv mozconfig ../mozconfig
 
   cat >>../mozconfig <<END
-
-ac_add_options --enable-linker=lld
+mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
 ac_add_options --prefix=/usr
-
+ac_add_options --enable-release
+ac_add_options --enable-hardening
+ac_add_options --enable-optimize
+ac_add_options --enable-rust-simd
+ac_add_options --enable-linker=lld
+ac_add_options --disable-install-strip
 ac_add_options --disable-bootstrap
-
-export CC='clang'
-export CXX='clang++'
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # Branding
-ac_add_options --with-app-name=${__pkgname}
+ac_add_options --with-app-name=${_pkgname}
+export MOZ_APP_REMOTINGNAME=${_pkgname}
 
-export MOZ_APP_REMOTINGNAME=${__pkgname}
-
-# Langauge packs
+# Language packs
 ac_add_options --with-l10n-base=$PWD/lw/l10n
 
 # System libraries
@@ -157,41 +155,8 @@ ac_add_options --with-system-nss
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --enable-pulseaudio
-
-# wasi
-ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
-
-# options for ci / weaker build systems
-# mk_add_options MOZ_MAKE_FLAGS="-j4"
-# ac_add_options --enable-linker=gold
-
-# optimizations
-ac_add_options OPT_LEVEL="2"
-ac_add_options RUSTC_OPT_LEVEL="2"
+ac_add_options --disable-updater
 END
-
-if [[ "${CARCH}" == "aarch64" ]]; then
-  cat >>../mozconfig <<END
-# TODO: re-evaluate (is used by ALARM, but why?)
-ac_add_options --enable-optimize="-g0 -O2"
-
-ac_add_options --enable-lto
-END
-
-  export MOZ_DEBUG_FLAGS=" "
-  export CFLAGS+=" -g0"
-  export CXXFLAGS+=" -g0"
-  export RUSTFLAGS="-Cdebuginfo=0"
-
-else
-
-  cat >>../mozconfig <<END
-# Arch upstream has it in their PKGBUILD, ALARM does not for aarch64:
-ac_add_options --disable-elf-hack
-
-ac_add_options --enable-lto=cross
-END
-fi
 
   # reduce chance of builds failung during linking due to running out of memory
   export LDFLAGS+=" -Wl,--no-keep-memory"
@@ -200,9 +165,14 @@ fi
 
 }
 
+pkgver() {
+  # Ensure the pkgver is properly formatted to avoid eventual version comparison issues
+  # See README.md for more details
+  echo "$pkgver" | sed -E 's/^([0-9]+\.[0-9]+)_/\1.0_/'
+}
 
 build() {
-  cd librewolf-$_firefoxver-$_librewolfver
+  cd librewolf-$_pkgver
 
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=pip
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
@@ -217,114 +187,64 @@ build() {
   CFLAGS="${CFLAGS/-fexceptions/}"
   CXXFLAGS="${CXXFLAGS/-fexceptions/}"
 
-  # LTO/PGO needs more open files
+  # LTO needs more open files
   ulimit -n 4096
 
+  # temporarily disable ublock-origin, interferes with profiling
+  cp "lw/policies.json" "$srcdir/policies.json"
+  jq 'del(.policies.Extensions.Install)' "$srcdir/policies.json" > "lw/policies.json"
+
   # Do 3-tier PGO
-
-
-  if [[ "${_build_profiled}" == "true" ]]; then
-    if [[ "${CARCH}" == "aarch64" ]]; then
-
-      cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-generate
-export MOZ_ENABLE_FULL_SYMBOLS=1
-END
-
-    else
-
-      cat >.mozconfig ../mozconfig - <<END
+  echo "Building instrumented browser..."
+  cat >.mozconfig ../mozconfig - <<END
 ac_add_options --enable-profile-generate=cross
-export MOZ_ENABLE_FULL_SYMBOLS=1
 END
+  ./mach build --priority normal
 
-    fi
+  echo "Profiling instrumented browser..."
+  ./mach package
+  LLVM_PROFDATA=llvm-profdata JARLOG_FILE="$PWD/jarlog" \
+    dbus-run-session \
+    xvfb-run -s "-screen 0 1920x1080x24 -nolisten local" \
+    ./mach python build/pgo/profileserver.py
 
-    # temporarily disable ublock-origin, interferes with profiling
-    cp "lw/policies.json" "$srcdir/policies.json"
-    jq 'del(.policies.Extensions.Install)' "$srcdir/policies.json" > "lw/policies.json"
+  stat -c "Profile data found (%s bytes)" merged.profdata
+  test -s merged.profdata
 
-    echo "Building instrumented browser..."
+  stat -c "Jar log found (%s bytes)" jarlog
+  test -s jarlog
 
-    ./mach build --priority normal
+  echo "Removing instrumented browser..."
+  ./mach clobber objdir
 
-    echo "Profiling instrumented browser..."
+  # reenable ublock-origin
+  cp "$srcdir/policies.json" "lw/policies.json"
 
-    ./mach package
-
-    local _headless_env=(
-      LIBGL_ALWAYS_SOFTWARE=true \
-      LLVM_PROFDATA=llvm-profdata \
-        JARLOG_FILE="$PWD/jarlog" \
-        dbus-run-session
-    )
-
-    if [[ "${_build_profiled_xvfb}" == "true" ]]; then
-      local _headless_run=(
-        xvfb-run
-        -s "-screen 0 1920x1080x24 -nolisten local"
-      )
-    else
-      local _headless_run=(
-        wlheadless-run
-        -c weston --width=1920 --height=1080
-      )
-    fi
-
-    env "${_headless_env[@]}" "${_headless_run[@]}" -- ./mach python build/pgo/profileserver.py
-
-    echo "Removing instrumented browser..."
-    ./mach clobber objdir
-
-    echo "Building optimized browser..."
-
-    if [[ -s merged.profdata ]]; then
-      stat -c "Profile data found (%s bytes)" merged.profdata
-
-      if [[ "${CARCH}" == "x86_64" ]]; then
-        cat >.mozconfig ../mozconfig - <<END
-ac_add_options --enable-profile-use
-END
-      else
-        cat >.mozconfig ../mozconfig - <<END
+  echo "Building optimized browser..."
+  cat >.mozconfig ../mozconfig - <<END
+ac_add_options --enable-lto=cross
 ac_add_options --enable-profile-use=cross
-END
-      fi
-
-      cat >> .mozconfig - << END
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
-END
-    else
-      echo "Profile data not found."
-    fi
-
-    if [[ -s jarlog ]]; then
-      stat -c "Jar log found (%s bytes)" jarlog
-      cat >> .mozconfig - << END
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 END
-    else
-      echo "Jar log not found."
-    fi
-
-    # reenable ublock-origin
-    cp "$srcdir/policies.json" "lw/policies.json"
-
-  else
-    cat >.mozconfig ../mozconfig
-  fi
-
   ./mach build --priority normal
+
+  # Re-package built sources including language packs
+  xargs ./mach package-multi-locale --locales < browser/locales/shipped-locales
 }
 
 package() {
-  cd librewolf-$_firefoxver-$_librewolfver
-  DESTDIR="$pkgdir" ./mach install
+  cd librewolf-$_pkgver
 
+  # The `install` target doesn't install the language packs generated with the `package-multi-locale` target
+  # We are therefore "manually" copying the packaged browser to the relevant directory in `$pkgdir` instead
+  #DESTDIR="$pkgdir" ./mach install
+  local appdir="$pkgdir/usr/lib/$_pkgname"
+  install -dvm755 "$appdir/"
+  cp -a obj/dist/librewolf/. "$appdir/"
+  touch "$appdir/is-packaged-app"
 
-  local vendorjs="$pkgdir/usr/lib/$__pkgname/browser/defaults/preferences/vendor.js"
-
-  install -Dvm644 /dev/stdin "$vendorjs" <<END
+  install -Dvm644 /dev/stdin "$appdir/browser/defaults/preferences/vendor.js" <<END
 // Use system-provided dictionaries
 pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 
@@ -333,48 +253,50 @@ pref("spellchecker.dictionary_path", "/usr/share/hunspell");
 // pref("extensions.autoDisableScopes", 11);
 END
 
-  local distini="$pkgdir/usr/lib/$__pkgname/distribution/distribution.ini"
-  install -Dvm644 /dev/stdin "$distini" <<END
-
+  install -Dvm644 /dev/stdin "$appdir/distribution/distribution.ini" <<END
 [Global]
-id=io.gitlab.${__pkgname}-community
+id=io.gitlab.${_pkgname}-community
 version=1.0
 about=LibreWolf
 
 [Preferences]
 app.distributor="LibreWolf Community"
-app.distributor.channel=$__pkgname
-app.partner.librewolf=$__pkgname
+app.distributor.channel=$_pkgname
+app.partner.librewolf=$_pkgname
 END
 
-  for i in 16 32 48 64 128; do
-    install -Dvm644 browser/branding/${__pkgname}/default$i.png \
-      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$__pkgname.png"
+  # Install desktop icons and metadata
+  local i theme=librewolf
+  for i in 16 32 48 64 128 256; do
+    install -Dvm644 browser/branding/$theme/default$i.png \
+      "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png"
   done
-  # install -Dvm644 browser/branding/librewolf/content/about-logo.png \
-    # "$pkgdir/usr/share/icons/hicolor/192x192/apps/$__pkgname.png"
-  install -Dvm644 ${srcdir}/default192x192.png \
-    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$__pkgname.png"
+  install -Dvm644 browser/branding/$theme/content/about-logo.png \
+    "$pkgdir/usr/share/icons/hicolor/192x192/apps/$_pkgname.png"
+  install -Dvm644 browser/branding/$theme/content/about-logo@2x.png \
+    "$pkgdir/usr/share/icons/hicolor/384x384/apps/$_pkgname.png"
 
-  # arch upstream provides a separate svg for this. we don't have that, so let's re-use 16.png
-  install -Dvm644 browser/branding/${__pkgname}/default16.png \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$__pkgname-symbolic.png"
+  # Librewolf is missing an svg logo
+  install -Dvm644 browser/branding/${theme}/default16.png \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/$_pkgname-symbolic.png"
 
-  install -Dvm644 ../$__pkgname.desktop \
-    "$pkgdir/usr/share/applications/$__pkgname.desktop"
+  # Install desktop file
+  install -Dvm644 ../$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   # Install a wrapper to avoid confusion about binary path
-  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$__pkgname" <<END
+  install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$__pkgname/librewolf "\$@"
+exec /usr/lib/$_pkgname/librewolf "\$@"
 END
 
   # Replace duplicate binary with wrapper
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
-  ln -srfv "$pkgdir/usr/bin/$__pkgname" "$pkgdir/usr/lib/$__pkgname/librewolf-bin"
+  ln -srfv "$pkgdir/usr/bin/$_pkgname" "$appdir/librewolf-bin"
+
   # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/$__pkgname/libnssckbi.so"
-  if [[ -e $nssckbi ]]; then
-    ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
+  if [[ -e $appdir/libnss3.so ]]; then
+    ln -sfv ../libnssckbi.so -t "$appdir"
   fi
 }
+
+# vim: ts=2 sw=2 et:
