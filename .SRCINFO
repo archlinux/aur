@@ -1,7 +1,7 @@
 pkgbase = pandoc-bin
 	pkgdesc = Conversion between documentation formats
 	pkgver = 3.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pandoc.org
 	arch = x86_64
 	arch = aarch64
