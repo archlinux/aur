@@ -1,13 +1,13 @@
 pkgbase = amneziawg-go
 	pkgdesc = AmneziaWG userspace implementation (Go) — AWG 3.1
-	pkgver = 3.1.20260814
+	pkgver = 3.1.20260828
 	pkgrel = 1
 	url = https://github.com/amnezia-vpn/amneziawg-go
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	optdepends = amneziawg-tools: tools for configuring AmneziaWG
-	source = amneziawg-go-3.1.20260814.tar.gz::https://github.com/amnezia-vpn/amneziawg-go/archive/refs/tags/v3.1.20260814.tar.gz
-	sha512sums = a2f7c03def872160df18a0df171e41d03d96a9f2867d4d54d3b4b2a133d64ea2b56149a3bca26eb457e71783d33d3d958328051a04f7a40273cdd676a0a01bde
+	source = amneziawg-go-3.1.20260828.tar.gz::https://github.com/amnezia-vpn/amneziawg-go/archive/refs/tags/v3.1.20260828.tar.gz
+	sha512sums = d1c5579f4cc9e5b47ef3903bd95f84074cc4cbf0638c5598d32f25ef80fdf9bc30a7006c6f80890d38c36b0333a9009554bae2edc08bfb27c38252f9ae73d73f
 
 pkgname = amneziawg-go
