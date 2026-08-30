@@ -1,7 +1,7 @@
 pkgbase = unsloth-desktop-bin
 	pkgdesc = Unsloth Desktop - train and run open models locally (prebuilt)
 	pkgver = 0.1.804.beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://unsloth.ai/
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -12,6 +12,7 @@ pkgbase = unsloth-desktop-bin
 	depends = cairo
 	depends = gdk-pixbuf2
 	depends = glib2
+	depends = libayatana-appindicator
 	depends = curl
 	optdepends = git: fetches the triton_kernels training speedup during setup
 	optdepends = cmake: build llama.cpp from source instead of using the prebuilt

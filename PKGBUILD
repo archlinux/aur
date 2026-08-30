@@ -13,13 +13,20 @@
 
 pkgname=unsloth-desktop-bin
 pkgver=0.1.804.beta
-pkgrel=1
+pkgrel=2
 pkgdesc='Unsloth Desktop - train and run open models locally (prebuilt)'
 arch=('x86_64')
 url='https://unsloth.ai/'
 license=('AGPL-3.0-only')
-# From the binary's DT_NEEDED entries, not the .deb control file: the deb declares
-# libappindicator3-1 but nothing links against it.
+# Mostly the binary's DT_NEEDED entries. libayatana-appindicator is the exception:
+# nothing links against it, but tauri 2.11's TrayIconBuilder runs unconditionally in
+# app setup and libappindicator-sys 0.9 dlopens the library there, panicking in main
+# before any window if it is missing -- so the deb's libappindicator3-1 was right and
+# a DT_NEEDED-only reading of the binary is not. It probes ayatana first, falling back
+# to libappindicator; the ayatana package satisfies the first probe, so it alone is
+# enough. The other dlopened sonames need no entry: libX11/libXi (x11-dl), libGLESv2
+# and libgcc_s all arrive transitively via gtk3/webkit2gtk, and libunity is an Ubuntu
+# taskbar-badge nicety that is absent from Arch entirely and soft-fails.
 depends=(
 	'webkit2gtk-4.1'
 	'gtk3'
@@ -28,6 +35,7 @@ depends=(
 	'cairo'
 	'gdk-pixbuf2'
 	'glib2'
+	'libayatana-appindicator'
 	'curl'
 )
 optdepends=(
