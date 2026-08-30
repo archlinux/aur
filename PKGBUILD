@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=gtasks
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI client for Google Tasks, written in Go"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BRO3886/gtasks"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/BRO3886/gtasks.git#tag=v$pkgver")
+_commit='30b6abe6546077e738f85592955a9249aa8a4589'
+source=("git+https://github.com/BRO3886/gtasks.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
