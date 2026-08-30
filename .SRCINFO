@@ -1,7 +1,7 @@
 pkgbase = check-symlinks
 	pkgdesc = Check for broken symlinks
 	pkgver = 0.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jmelahman/check-symlinks
 	arch = x86_64
 	arch = aarch64
