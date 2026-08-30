@@ -1,6 +1,6 @@
 # Maintainer: Zhenyu Tan <614106917 at qq dot com>
 pkgname=aurora-dict-bin
-pkgver=0.1.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='A calm, fast Chinese-English desktop dictionary'
 arch=('x86_64')
@@ -8,7 +8,6 @@ url='https://github.com/theonegis/aurora-dict'
 license=('PolyForm-Noncommercial-1.0.0' 'MIT')
 depends=(
   'cairo'
-  'desktop-file-utils'
   'gdk-pixbuf2'
   'glib2'
   'gtk3'
@@ -22,11 +21,11 @@ makedepends=('libarchive')
 provides=('aurora-dict')
 conflicts=('aurora-dict')
 options=('!strip' '!debug' '!emptydirs')
-_deb_asset='aurora-dict_0.1.3_linux_amd64_deb.deb'
+_deb_asset='aurora-dict_1.1.0_linux_amd64_deb.deb'
 source=('AURORA-DICT-LICENSE.txt')
 sha256sums=('728d06badaabc9485226552d9a69a8af45069fce48ea4516c4bd85d6c19c2f74')
-source_x86_64=("${_deb_asset}::https://github.com/theonegis/aurora-dict/releases/download/v0.1.3/aurora-dict_0.1.3_linux_amd64_deb.deb")
-sha256sums_x86_64=('d239f49aebbf8fb5a6f057f3eb0ecfdb80bf4af4238ce6b953097a512b172d51')
+source_x86_64=("${_deb_asset}::https://github.com/theonegis/aurora-dict/releases/download/v1.1.0/aurora-dict_1.1.0_linux_amd64_deb.deb")
+sha256sums_x86_64=('a09ec05fe16f5befc145871d11b4ddf89e54b0560a2f08d4d96b0a35ecdc8b1c')
 noextract=("${_deb_asset}")
 
 package() {

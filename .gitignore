@@ -1,4 +1,4 @@
-aurora-dict_0.1.3_linux_amd64_deb.deb
+aurora-dict_*_linux_amd64_deb.deb
 src/
 pkg/
 *.pkg.tar.*
