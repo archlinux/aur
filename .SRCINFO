@@ -1,6 +1,6 @@
 pkgbase = autoremesher-bin
 	pkgdesc = Cross-platform automatic quad remeshing tool
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/huxingyi/autoremesher
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = autoremesher-bin
 	depends = libgcc
 	depends = libstdc++
 	depends = zlib
-	provides = autoremesher=1.0.0
+	provides = autoremesher=1.2.0
 	conflicts = autoremesher
 	options = !strip
-	source = autoremesher-bin-1.0.0.AppImage::https://github.com/huxingyi/autoremesher/releases/download/1.0.0/autoremesher-1.0.0.AppImage
-	source = LICENSE-1.0.0::https://raw.githubusercontent.com/huxingyi/autoremesher/refs/tags/1.0.0/LICENSE
-	sha256sums = 835b5558ec71b44f0b040586534fcdfd334fab60043869fbbbd60e48c34f21e2
+	source = autoremesher-bin-1.2.0.AppImage::https://github.com/huxingyi/autoremesher/releases/download/1.2.0/autoremesher-1.2.0.AppImage
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/huxingyi/autoremesher/refs/tags/1.2.0/LICENSE
+	sha256sums = 7696394466412abef3eb06f1877bf28e7a670b99f241b384591ca04d2808e625
 	sha256sums = 1c334f5c8b5bf833d0be8c15566ac9180c12750b836d8e2fac88e9cb38c0e51e
 
 pkgname = autoremesher-bin

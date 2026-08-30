@@ -2,7 +2,7 @@
 
 _pkgname=autoremesher
 pkgname=$_pkgname-bin
-pkgver=1.0.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Cross-platform automatic quad remeshing tool"
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
 	"$pkgname-$pkgver.AppImage::https://github.com/huxingyi/$_pkgname/releases/download/$pkgver/$_pkgname-$pkgver.AppImage"
 	"LICENSE-$pkgver::https://raw.githubusercontent.com/huxingyi/$_pkgname/refs/tags/$pkgver/LICENSE"
 )
-sha256sums=('835b5558ec71b44f0b040586534fcdfd334fab60043869fbbbd60e48c34f21e2'
+sha256sums=('7696394466412abef3eb06f1877bf28e7a670b99f241b384591ca04d2808e625'
             '1c334f5c8b5bf833d0be8c15566ac9180c12750b836d8e2fac88e9cb38c0e51e')
 
 prepare() {
