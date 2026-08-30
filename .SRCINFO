@@ -1,6 +1,6 @@
 pkgbase = sddm-astronaut-theme-bin
 	pkgdesc = Series of modern looking themes for SDDM (versão binária pré-compilada)
-	pkgver = 62.8f41a83
+	pkgver = 88.292c87b
 	pkgrel = 1
 	url = https://github.com/Keyitdev/sddm-astronaut-theme
 	install = sddm-astronaut-theme-bin.install
@@ -11,7 +11,7 @@ pkgbase = sddm-astronaut-theme-bin
 	conflicts = sddm-astronaut-theme
 	conflicts = sddm-astronaut-theme-git
 	options = !debug
-	source = https://github.com/eusouobn/sddm-astronaut-theme-bin-releases/releases/download/v62.8f41a83/sddm-astronaut-theme-full-62.8f41a83-any.tar.gz
-	sha256sums = b9b0f65aba5be8974ed87837455d0f88583f2db51bdeeb5bd37cf6470d42ceb2
+	source = https://github.com/eusouobn/sddm-astronaut-theme-bin-releases/releases/download/v88.292c87b/sddm-astronaut-theme-full-88.292c87b-any.tar.gz
+	sha256sums = 6cd2392fe409e614e8dd85f1cead365625ddf382f6b29f8f1d8eb006f7a0cbb0
 
 pkgname = sddm-astronaut-theme-bin
