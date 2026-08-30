@@ -5,7 +5,7 @@ _gitname=atmosphera
 pkgname=atmosphera-git
 _release_ver=0.6.0.r0
 pkgver=0.6.0.r0.g0000000
-pkgrel=7
+pkgrel=8
 install=atmosphera-git.install
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)"
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL-3.0-or-later')
 makedepends=('git')
 depends=(
   'quickshell'
-  'qt6-dbusqml'
+  'qt6-dbusqml>=0.8.0'
   'qt6-pipewirespectrum'
   'qt6-xdgiconqml-git'
   'imagemagick'
@@ -37,8 +37,9 @@ optdepends=(
   'xremap-niri-bin: session-level app-scoped keymaps (macos bindings)'
   'qt6-5compat: required by some registry plugins (e.g. cookie-clock)'
   'qt6-websockets: required by some registry plugins (e.g. hassio)'
+  'xdg-desktop-portal-gnome: screencast / screen-sharing support (niri cannot use -wlr)'
 )
-provides=('atmosphera')
+provides=('atmosphera' 'xdg-desktop-portal-impl')
 conflicts=('atmosphera')
 source=("git+$url.git#branch=main")
 sha256sums=('SKIP')
@@ -74,6 +75,11 @@ package() {
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-session"
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-settings"
   ln -sf atmosphera "$pkgdir/usr/local/bin/atmosphera-lock"
+
+  # xdg-desktop-portal backend manifest + niri backend preference (without
+  # the conf, xdp falls back to gtk when it is installed — readdir order)
+  install -Dm644 Portals/atmosphera.portal "$pkgdir/usr/share/xdg-desktop-portal/portals/atmosphera.portal"
+  install -Dm644 Portals/niri-portals.conf "$pkgdir/usr/share/xdg-desktop-portal/niri-portals.conf"
 
   # keyd reload service (triggered via systemd D-Bus StartUnit by the shell)
   install -Dm644 Scripts/systemd/atmosphera-keyd-reload.service "$pkgdir/usr/lib/systemd/system/atmosphera-keyd-reload.service"
