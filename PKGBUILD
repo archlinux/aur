@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=ovpm
 pkgver=0.2.12
-pkgrel=3
+pkgrel=4
 pkgdesc="OpenVPN Management Server - Effortless and free OpenVPN server administration tool"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cad/ovpm"
 license=('AGPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/cad/ovpm.git#tag=v$pkgver")
+_commit='2197e9a44c73a9529e1e2a706149f35b1d353607'
+source=("git+https://github.com/cad/ovpm.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
