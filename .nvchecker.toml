@@ -1,0 +1,3 @@
+[pyftrace]
+source = "pypi"
+pypi = "pyftrace"
