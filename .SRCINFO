@@ -1,7 +1,7 @@
 pkgbase = htb-cli
 	pkgdesc = Interact with Hackthebox using your terminal - Be faster and more competitive !
 	pkgver = 1.7.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/GoToolSharing/htb-cli
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = htb-cli
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/GoToolSharing/htb-cli.git#tag=v1.7.0
+	source = git+https://github.com/GoToolSharing/htb-cli.git#commit=35a970d405f721f7ca2aa4d3d1244b6bdae7bb38
 	sha256sums = SKIP
 
 pkgname = htb-cli
