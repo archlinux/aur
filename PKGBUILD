@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=opsy
 pkgver=0.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Opsy - Your AI-Powered SRE Colleague"
 arch=('x86_64' 'aarch64')
 url="https://github.com/datolabs-io/opsy"
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/datolabs-io/opsy.git#tag=v$pkgver")
+_commit='943f841e2436307842b30b5dd05aa4521d1a938c'
+source=("git+https://github.com/datolabs-io/opsy.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit

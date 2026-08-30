@@ -1,7 +1,7 @@
 pkgbase = opsy
 	pkgdesc = Opsy - Your AI-Powered SRE Colleague
 	pkgver = 0.0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/datolabs-io/opsy
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = opsy
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/datolabs-io/opsy.git#tag=v0.0.3
+	source = git+https://github.com/datolabs-io/opsy.git#commit=943f841e2436307842b30b5dd05aa4521d1a938c
 	sha256sums = SKIP
 
 pkgname = opsy
