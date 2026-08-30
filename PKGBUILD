@@ -1,27 +1,48 @@
-# Maintainer: osch <oliver@luced.de>
+# Maintainer: LittleWatter <zs987526341@gmail.com>
+
 pkgname=surge-xt-bin
-pkgver=1.1.1
-debver=1.1.1
+pkgver=1.3.4
 pkgrel=1
-pkgdesc="Surge XT Synthesizer Plugin (VST3 & LV2, original binary release)"
+
+pkgdesc="Hybrid synthesizer and effects processor (prebuilt binary)"
 arch=('x86_64')
-url="https://surge-synthesizer.github.io"
-license=('GPL3')
-groups=('vst3-plugins' 'lv2-plugins' 'pro-audio')
-depends=('cairo'     'fontconfig'          'freetype2'
-         'libx11'    'xcb-util-cursor'     'xcb-util'
-         'libxcb'    'xcb-util-renderutil' 'xcb-util-image'
-         'ttf-lato'  'xdg-utils' 'xclip')
+url="https://surge-synthesizer.github.io/"
+license=('GPL-3.0-or-later')
+
 provides=('surge-xt')
 conflicts=('surge-xt')
-options=('!strip' '!libtool' '!emptydirs')
-source=("https://github.com/surge-synthesizer/releases-xt/releases/download/$debver/surge-xt-linux-x64-$debver.deb")
+
+options=('!debug')
+
+depends=(
+  'alsa-lib'
+  'brotli'
+  'bzip2'
+  'freetype2'
+  'glibc'
+  'hicolor-icon-theme'
+  'libpng'
+  'zlib'
+)
+
+source=(
+  "surge-xt-linux-${CARCH}-${pkgver}.tar.gz::https://github.com/surge-synthesizer/releases-xt/releases/download/${pkgver}/surge-xt-linux-${CARCH}-${pkgver}.tar.gz"
+)
+
+sha256sums=('fdd578eea384f5ec1b40cd26936b213dc75438a18a787b21227f941d2a680ecd')
 
 package() {
-	rm -rf usr data.tar
-	ar x "surge-xt-linux-x64-$debver.deb"
-	unxz data.tar.xz
-	tar xf data.tar
-	cp -r usr "$pkgdir/"
+  cd "$srcdir"
+
+  install -d "$pkgdir/usr"
+
+  cp -a bin "$pkgdir/usr/"
+  cp -a lib "$pkgdir/usr/"
+  cp -a share "$pkgdir/usr/"
+
+  ln -s "Surge XT" \
+    "$pkgdir/usr/bin/surge-xt"
+
+  ln -s "Surge XT Effects" \
+    "$pkgdir/usr/bin/surge-xt-effects"
 }
-md5sums=('fdf32aa40247ed9212a2501455b6ccf8')
