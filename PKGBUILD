@@ -2,14 +2,14 @@
 # Contributor: le0nxx <leonlawxx@outlook.sg>
 
 pkgname=motrix-next
-pkgver=3.9.6
+pkgver=3.9.7
 pkgrel=1
 pkgdesc="A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AnInsomniacy/motrix-next"
 license=('MIT')
 depends=(
-    aria2
+    aria2-next
     cairo
     gdk-pixbuf2
     gtk3
@@ -27,18 +27,11 @@ makedepends=(
 )
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('55f69b3b2e5a3fe88f93fc7c5e348916d75a17323921e4c1d6ef7902be42a370')
+sha256sums=('5f7ddb6a83d4ce1201aaa9f0e68733a6c1410578a54036e722e320abdc047acd')
 
 
 prepare() {
     cd "$pkgname-$pkgver"
-
-    # Create the Tauri-expected sidecar symlink pointing to the system aria2c.
-    # Tauri's externalBin resolves "binaries/aria2c" to
-    # "binaries/aria2c-<target-triple>" at build time and install time.
-    local target_triple=$(rustc -vV | awk '/^host:/{print $2}')
-    mkdir -p src-tauri/binaries
-    ln -sf /usr/bin/aria2c "src-tauri/binaries/aria2c-${target_triple}"
 
     # Disable updater artifact signing — not needed for distro packages
     sed -i '/"createUpdaterArtifacts":/s/true/false/' src-tauri/tauri.conf.json
@@ -48,19 +41,8 @@ prepare() {
 
 build() {
     cd "$pkgname-$pkgver"
-
     export CARGO_HOME="${srcdir}/cargo-home"
-    export CC=gcc
-    export AR=ar
-    export CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=gcc
-
-    # Strip -flto from system CFLAGS — LTO produces GIMPLE IR objects that
-    # the Rust linker cannot resolve when linking ring's static C/ASM library.
-    # export CFLAGS="${CFLAGS//-flto=auto/}"
-    # export CFLAGS="${CFLAGS//-flto/}"
-
     rm -rf src-tauri/target/release/build/ring-*
-
     pnpm tauri build --bundles deb
 }
 
@@ -73,14 +55,7 @@ package() {
     ar x src-tauri/target/release/bundle/deb/*.deb --output="$tmpdir"
     tar -xf "$tmpdir/data.tar.gz" -C "$pkgdir"
 
-    rm -f "$pkgdir/usr/bin/aria2c"
-
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-
-    # Replace the bundled aria2c sidecar copy with a symlink to the system package.
-    local target_triple=$(rustc -vV | awk '/^host:/{print $2}')
-    find "$pkgdir/usr/lib/MotrixNext/" -name "aria2c-*" -delete
-    ln -sf /usr/bin/aria2c "$pkgdir/usr/lib/MotrixNext/aria2c-${target_triple}"
 
     # Fix empty Categories so KDE launcher can display the app
     sed -i '/^Categories=/c\Categories=Network;FileTransfer;' \
