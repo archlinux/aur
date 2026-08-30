@@ -1,6 +1,6 @@
 pkgbase = plannotator-tui-bin
 	pkgdesc = Annotate Markdown in the terminal: select, comment, looks-good, delete; send the review to your agent
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/plannotator/plannotator-tui
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = plannotator-tui-bin
 	provides = plannotator-tui
 	conflicts = plannotator-tui
 	conflicts = plannotator-tui-git
-	source_x86_64 = plannotator-tui-x86_64-v0.4.1::https://github.com/plannotator/plannotator-tui/releases/download/v0.4.1/plannotator-tui-x86_64-unknown-linux-gnu
-	sha256sums_x86_64 = 3f7dfb226440e58d2b30e921cabcf82eaec50cd25cf4996ca0750f674b1e82a1
-	source_aarch64 = plannotator-tui-aarch64-v0.4.1::https://github.com/plannotator/plannotator-tui/releases/download/v0.4.1/plannotator-tui-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = fb42d9a26dec4ecc3b8ca5f4bd53e7795bd464a6169592c9773ace6a12917bbe
+	source_x86_64 = plannotator-tui-x86_64-v0.5.0::https://github.com/plannotator/plannotator-tui/releases/download/v0.5.0/plannotator-tui-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 5b3d8ca3e76410a5fcd87b3ea2564e304a63e7df9d306d2c5c22edcb1e0425ce
+	source_aarch64 = plannotator-tui-aarch64-v0.5.0::https://github.com/plannotator/plannotator-tui/releases/download/v0.5.0/plannotator-tui-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 5e12b8620cb5c01b7ab3c716fdca531dc56d451b7ae1aa9d4f483861098f9336
 
 pkgname = plannotator-tui-bin
