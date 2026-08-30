@@ -1,6 +1,6 @@
 pkgbase = pi-ext-subagents
 	pkgdesc = Subagents extension for pi coding agent
-	pkgver = 0.59.0
+	pkgver = 0.60.0
 	pkgrel = 1
 	url = https://github.com/nicobailon/pi-subagents
 	install = pi-ext.install
@@ -11,7 +11,7 @@ pkgbase = pi-ext-subagents
 	optdepends = pi-coding-agent-git
 	options = !strip
 	options = !debug
-	source = pi-ext-subagents-0.59.0.tar.gz::https://github.com/nicobailon/pi-subagents/archive/refs/tags/v0.59.0.tar.gz
-	sha256sums = be7957bdd1f1fbaa64241362b4efe602d52bab387c4aa5a99c874e16186da6a3
+	source = pi-ext-subagents-0.60.0.tar.gz::https://github.com/nicobailon/pi-subagents/archive/refs/tags/v0.60.0.tar.gz
+	sha256sums = fa0bc58ad5e0eb3aece4c11aa00d86ed9484ec15fe6ab57de160a2dc786c9d27
 
 pkgname = pi-ext-subagents
