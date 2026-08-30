@@ -1,0 +1,222 @@
+diff --git a/tests/e2e/agent_loop_characterization/test_resume.py b/tests/e2e/agent_loop_characterization/test_resume.py
+index 28a588fe..711e37e2 100644
+--- a/tests/e2e/agent_loop_characterization/test_resume.py
++++ b/tests/e2e/agent_loop_characterization/test_resume.py
+@@ -18,6 +18,7 @@ from tests.e2e.agent_loop_characterization.support import (
+ )
+ from tests.e2e.common import (
+     SpawnedVibeProcessFixture,
++    scaled_timeout,
+     send_ctrl_c_until_quit_confirmation,
+     wait_for_main_screen,
+     wait_for_rendered_text,
+@@ -92,6 +93,7 @@ def _wait_for_persisted_resume_history(
+     final_assistant_text: str,
+     timeout: float,
+ ) -> str:
++    timeout = scaled_timeout(timeout)
+     start = time.monotonic()
+     while time.monotonic() - start < timeout:
+         persisted_session = _load_latest_session_messages()
+diff --git a/tests/e2e/common.py b/tests/e2e/common.py
+index 8bff4f93..e2abefb3 100644
+--- a/tests/e2e/common.py
++++ b/tests/e2e/common.py
+@@ -3,6 +3,7 @@ from __future__ import annotations
+ from collections.abc import Callable, Sequence
+ from contextlib import AbstractContextManager
+ import io
++import os
+ from pathlib import Path
+ import re
+ import time
+@@ -17,6 +18,21 @@ class SpawnedVibeProcessFixture(Protocol):
+     ) -> AbstractContextManager[tuple[pexpect.spawn, io.StringIO]]: ...
+ 
+ 
++def time_scale() -> float:
++    # Wall-clock budgets in this suite assume an idle machine. Packaged builds
++    # run on a loaded builder, so allow stretching them. Only values above 1
++    # apply; anything else is treated as the default scale of 1.
++    try:
++        scale = float(os.environ.get("VIBE_TEST_TIME_SCALE", ""))
++    except ValueError:
++        return 1.0
++    return scale if scale > 1.0 else 1.0
++
++
++def scaled_timeout(timeout: float) -> float:
++    return timeout * time_scale()
++
++
+ def ansi_tolerant_pattern(text: str) -> re.Pattern[str]:
+     ansi = r"(?:\x1b\[[0-9;?]*[ -/]*[@-~]|\x1b\][^\x07]*\x07|\r|\n)*"
+     return re.compile(ansi.join(re.escape(char) for char in text))
+@@ -50,6 +66,7 @@ def strip_ansi(text: str) -> str:
+ 
+ 
+ def poll_until(predicate: Callable[[], bool], timeout: float, message: str) -> None:
++    timeout = scaled_timeout(timeout)
+     start = time.monotonic()
+     while time.monotonic() - start < timeout:
+         if predicate():
+@@ -76,6 +93,7 @@ def wait_for_request_count_while_draining_child_output(
+     expected_count: int,
+     timeout: float,
+ ) -> None:
++    timeout = scaled_timeout(timeout)
+     start = time.monotonic()
+     while time.monotonic() - start < timeout:
+         if request_count_getter() >= expected_count:
+@@ -92,12 +110,13 @@ def wait_for_request_count_while_draining_child_output(
+ 
+ 
+ def wait_for_main_screen(child: pexpect.spawn, timeout: float = 20.0) -> None:
+-    child.expect(ansi_tolerant_pattern("Mistral Vibe v"), timeout=timeout)
++    child.expect(ansi_tolerant_pattern("Mistral Vibe v"), timeout=scaled_timeout(timeout))
+ 
+ 
+ def wait_for_rendered_text(
+     child: pexpect.spawn, captured: io.StringIO, needle: str, timeout: float
+ ) -> None:
++    timeout = scaled_timeout(timeout)
+     start = time.monotonic()
+     while time.monotonic() - start < timeout:
+         if needle in strip_ansi(captured.getvalue()):
+@@ -121,6 +140,7 @@ def send_ctrl_c_until_quit_confirmation(
+     child: pexpect.spawn, captured: io.StringIO, timeout: float = 3
+ ) -> None:
+     """Send Ctrl+C and wait for quit confirmation prompt. Retries if first Ctrl+C interrupts."""
++    timeout = scaled_timeout(timeout)
+     start = time.monotonic()
+     while time.monotonic() - start < timeout:
+         child.sendcontrol("c")
+diff --git a/tests/e2e/conftest.py b/tests/e2e/conftest.py
+index a4a12c7f..3d7356e6 100644
+--- a/tests/e2e/conftest.py
++++ b/tests/e2e/conftest.py
+@@ -11,10 +11,27 @@ import pexpect
+ import pytest
+ 
+ from tests import TESTS_ROOT
++from tests.e2e.common import time_scale
+ from tests.e2e.common import write_e2e_config
+ from tests.e2e.mock_server import ChunkFactory, StreamingMockServer
+ 
+ 
++def pytest_collection_modifyitems(
++    config: pytest.Config, items: list[pytest.Item]
++) -> None:
++    # Per-test wall-clock caps assume an idle machine; stretch them by the
++    # same factor as the helper deadlines in tests.e2e.common.
++    scale = time_scale()
++    if scale <= 1.0:
++        return
++    for item in items:
++        for marker in item.iter_markers(name="timeout"):
++            if marker.args:
++                object.__setattr__(
++                    marker, "args", (float(marker.args[0]) * scale, *marker.args[1:])
++                )
++
++
+ @pytest.fixture
+ def streaming_mock_server(
+     request: pytest.FixtureRequest,
+diff --git a/tests/e2e/test_cli_tui_fresh_install.py b/tests/e2e/test_cli_tui_fresh_install.py
+index c83d4089..21e90c89 100644
+--- a/tests/e2e/test_cli_tui_fresh_install.py
++++ b/tests/e2e/test_cli_tui_fresh_install.py
+@@ -12,6 +12,7 @@ import pytest
+ from tests import TESTS_ROOT
+ from tests.e2e.common import (
+     ansi_tolerant_pattern,
++    scaled_timeout,
+     send_ctrl_c_until_quit_confirmation,
+     wait_for_main_screen,
+     wait_for_request_count,
+@@ -95,7 +96,9 @@ def test_fresh_wheel_install_can_spawn_cli_and_complete_happy_path(
+         wait_for_request_count(
+             lambda: len(streaming_mock_server.requests), expected_count=1, timeout=10
+         )
+-        child.expect(ansi_tolerant_pattern("Hello from mock server"), timeout=10)
++        child.expect(
++            ansi_tolerant_pattern("Hello from mock server"), timeout=scaled_timeout(10)
++        )
+ 
+         send_ctrl_c_until_quit_confirmation(child, captured, timeout=5)
+         child.expect(pexpect.EOF, timeout=10)
+diff --git a/tests/e2e/test_cli_tui_onboarding.py b/tests/e2e/test_cli_tui_onboarding.py
+index 68b4032b..a22aaec4 100644
+--- a/tests/e2e/test_cli_tui_onboarding.py
++++ b/tests/e2e/test_cli_tui_onboarding.py
+@@ -5,7 +5,11 @@ from pathlib import Path
+ import pexpect
+ import pytest
+ 
+-from tests.e2e.common import SpawnedVibeProcessFixture, ansi_tolerant_pattern
++from tests.e2e.common import (
++    SpawnedVibeProcessFixture,
++    ansi_tolerant_pattern,
++    scaled_timeout,
++)
+ 
+ 
+ @pytest.mark.timeout(15)
+@@ -23,7 +27,9 @@ def test_spawn_cli_shows_onboarding_when_api_key_missing(
+     monkeypatch.delenv("MISTRAL_API_KEY", raising=False)
+ 
+     with spawned_vibe_process(e2e_workdir) as (child, captured):
+-        child.expect(ansi_tolerant_pattern("Welcome to Mistral Vibe"), timeout=15)
++        child.expect(
++            ansi_tolerant_pattern("Welcome to Mistral Vibe"), timeout=scaled_timeout(15)
++        )
+         child.sendcontrol("c")
+         child.expect(pexpect.EOF, timeout=10)
+ 
+diff --git a/tests/e2e/test_cli_tui_session_exit.py b/tests/e2e/test_cli_tui_session_exit.py
+index 03e1983c..0ff9b0dc 100644
+--- a/tests/e2e/test_cli_tui_session_exit.py
++++ b/tests/e2e/test_cli_tui_session_exit.py
+@@ -15,6 +15,7 @@ from tests.e2e.common import (
+     SpawnedVibeProcessFixture,
+     ansi_tolerant_pattern,
+     poll_until,
++    scaled_timeout,
+     send_ctrl_c_until_quit_confirmation,
+     strip_ansi,
+     wait_for_main_screen,
+@@ -102,7 +103,9 @@ def _finish_turn(
+         expected_count=expected_request_count,
+         timeout=10,
+     )
+-    child.expect(ansi_tolerant_pattern(expected_reply), timeout=10)
++    child.expect(
++        ansi_tolerant_pattern(expected_reply), timeout=scaled_timeout(10)
++    )
+ 
+     start = time.monotonic()
+     last_change = start
+diff --git a/tests/e2e/test_cli_tui_streaming.py b/tests/e2e/test_cli_tui_streaming.py
+index 36bd2ec6..73048646 100644
+--- a/tests/e2e/test_cli_tui_streaming.py
++++ b/tests/e2e/test_cli_tui_streaming.py
+@@ -8,6 +8,7 @@ import pytest
+ from tests.e2e.common import (
+     SpawnedVibeProcessFixture,
+     ansi_tolerant_pattern,
++    scaled_timeout,
+     send_ctrl_c_until_quit_confirmation,
+     wait_for_main_screen,
+     wait_for_request_count,
+@@ -30,7 +31,9 @@ def test_spawn_cli_to_send_and_receive_message(
+         wait_for_request_count(
+             lambda: len(streaming_mock_server.requests), expected_count=1, timeout=10
+         )
+-        child.expect(ansi_tolerant_pattern("Hello from mock server"), timeout=10)
++        child.expect(
++            ansi_tolerant_pattern("Hello from mock server"), timeout=scaled_timeout(10)
++        )
+ 
+         send_ctrl_c_until_quit_confirmation(child, captured, timeout=5)
+         child.expect(pexpect.EOF, timeout=10)
