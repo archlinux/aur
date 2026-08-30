@@ -2,11 +2,12 @@
 # Contributor: fabillo <fabillo@archlinux.org>
 
 pkgname=intiface-central
-pkgver=3.1.0+42
-_btp_commit=893b03c253dc22dc3ffffc2f9dc748da9ad9c14a
+pkgver=3.1.1+43
+_btp_commit=9571b3db42ee2d7b3342ab9d40eb5c9e45679444
 _btp_dart_commit=6d91665a3e5faa389e9a626c9b0bb79c6f126d57
-_int_ifc_commit=77cb0ff9174a3f82a989a535976b90a14c371203
-_fvm_ver=3.44.1
+_int_ifc_commit=29004d2d7deb7a726e9ed48b88c647e59cac7c49
+#_fvm_ver=3.47.2
+_fvm_ver=stable
 pkgrel=1
 pkgdesc="Intiface Central (Buttplug Frontend) Application for Desktop and Mobile "
 arch=('x86_64')
@@ -22,7 +23,7 @@ source=("buttplug::git+https://github.com/buttplugio/buttplug#commit=${_btp_comm
 sha256sums=('SKIP'
     'SKIP'
     'SKIP'
-    'b7169ffb0e258fb9fa91981c7ab862ee1308f168c8a61771efd2803e787ae586'
+    'e47e91a4581bc9f5487b1ea970595d2a9b3de409718d3e36fd242073a4eadacf'
     '7ded01ad0a04a0daf72bfdc3d1393cfa8dcc11aa64c9bba74eaa880f02eb652b'
 )
 

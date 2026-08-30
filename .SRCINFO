@@ -1,6 +1,6 @@
 pkgbase = intiface-central
 	pkgdesc = Intiface Central (Buttplug Frontend) Application for Desktop and Mobile
-	pkgver = 3.1.0+42
+	pkgver = 3.1.1+43
 	pkgrel = 1
 	url = https://intiface.com/central/
 	arch = x86_64
@@ -15,15 +15,15 @@ pkgbase = intiface-central
 	depends = bash
 	depends = hicolor-icon-theme
 	depends = libayatana-appindicator
-	source = buttplug::git+https://github.com/buttplugio/buttplug#commit=893b03c253dc22dc3ffffc2f9dc748da9ad9c14a
+	source = buttplug::git+https://github.com/buttplugio/buttplug#commit=9571b3db42ee2d7b3342ab9d40eb5c9e45679444
 	source = buttplug_dart::git+https://github.com/buttplugio/buttplug_dart#commit=6d91665a3e5faa389e9a626c9b0bb79c6f126d57
-	source = intiface-central::git+https://github.com/intiface/intiface-central#commit=77cb0ff9174a3f82a989a535976b90a14c371203
+	source = intiface-central::git+https://github.com/intiface/intiface-central#commit=29004d2d7deb7a726e9ed48b88c647e59cac7c49
 	source = intiface_central.desktop
 	source = run_intiface_central
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = b7169ffb0e258fb9fa91981c7ab862ee1308f168c8a61771efd2803e787ae586
+	sha256sums = e47e91a4581bc9f5487b1ea970595d2a9b3de409718d3e36fd242073a4eadacf
 	sha256sums = 7ded01ad0a04a0daf72bfdc3d1393cfa8dcc11aa64c9bba74eaa880f02eb652b
 
 pkgname = intiface-central
