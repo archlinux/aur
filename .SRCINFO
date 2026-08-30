@@ -11,6 +11,7 @@ pkgbase = lib32-giflib
 	makedepends = imagemagick
 	makedepends = xmlto
 	depends = lib32-glibc
+	depends = lib32-gcc-libs
 	depends = giflib
 	source = lib32-giflib::git+https://git.code.sf.net/p/giflib/code#tag=6.1.3
 	sha512sums = 8d2c425c9a5ae4f1ad00d302bf485148f67d7c29f6065e525c971808747a337015c34a79e331218300f601e256bc16ff68ccd051ebeb4a111a68a99d5c7a93d2
