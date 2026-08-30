@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=blipgloss
 pkgver=0.4.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Style definitions for nice terminal layouts 👄"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wobsoriano/blipgloss"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/wobsoriano/blipgloss.git#tag=v$pkgver")
+_commit='a7ba348413bed22e90d37e42abd53f2833e6cdc1'
+source=("git+https://github.com/wobsoriano/blipgloss.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
