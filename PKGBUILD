@@ -14,7 +14,7 @@ optdepends=('libgl: for the GUI'
             'libx11: for the GUI on X11'
             'p7zip: extract HX Edit model data from inside the app')
 provides=('tonepush')
-conflicts=('tonepush' 'stompchain-git')
+conflicts=('tonepush' 'stompchain-git' 'tonepush-bin')
 replaces=('stompchain-git')
 # !lto because ring compiles its own C and Arch's default CFLAGS put LTO
 # objects in the archive, which lld then cannot resolve: the link fails on

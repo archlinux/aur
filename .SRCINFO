@@ -20,6 +20,7 @@ pkgbase = tonepush-git
 	provides = tonepush
 	conflicts = tonepush
 	conflicts = stompchain-git
+	conflicts = tonepush-bin
 	replaces = stompchain-git
 	options = !debug
 	options = !lto
