@@ -1,6 +1,6 @@
 pkgbase = tape-bin
 	pkgdesc = Take notes without bloat
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 3
 	url = https://github.com/results-may-vary-org/tape
 	install = tape-bin.install
@@ -13,7 +13,7 @@ pkgbase = tape-bin
 	depends = hicolor-icon-theme
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/results-may-vary-org/tape/releases/download/v4.0.2/tape-gtk4_4.0.2_amd64.deb
-	sha256sums_x86_64 = 7df78b6b0f1a43e41ebd1c4e353d002192cbcebb58c17fd0d9c1cb735cc95b4f
+	source_x86_64 = https://github.com/results-may-vary-org/tape/releases/download/v4.0.3/tape-gtk4_4.0.3_amd64.deb
+	sha256sums_x86_64 = 1331091f9153947d91e8848a3a6e19a8c13ddc6823b896d160d8691f32475862
 
 pkgname = tape-bin
