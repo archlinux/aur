@@ -1,8 +1,8 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=filestash-git
-pkgver=r2401.7e60fcfd
-pkgrel=3
+pkgver=r2447.cbcd1e96
+pkgrel=2
 pkgdesc="Universal file management platform / storage-agnostic Dropbox alternative"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mickael-kerjean/filestash"
@@ -31,9 +31,9 @@ pkgver() {
 prepare() {
     cd "${srcdir}/filestash"
 
-    # Use GOPROXY mirror to avoid IPv6 timeout to proxy.golang.org
+    # NOTE: mirrors.aliyun.com serves corrupt zip bodies to non-CN clients (soft-block page cached as .zip) -> "zip: not a valid zip file". proxy.golang.org works from justhost.
     # (needed for go mod tidy / go generate network fetches in prepare)
-    export GOPROXY="https://mirrors.aliyun.com/goproxy,direct"
+    export GOPROXY="https://proxy.golang.org,direct"
 
     # Fix static library linking - convert to dynamic linking for Arch
     # Arch provides only .so shared libraries, not .a static libraries
@@ -116,14 +116,17 @@ func init() {\
     # server/pkg/files/handler_save.go) on 2026-07-14 without updating go.mod.
     # Resolve missing modules so the build does not fail with:
     # "no required module provides package github.com/balena-os/librsync-go"
-    go mod tidy
+    # NOTE: `go mod tidy` additionally resolves *test* deps of deps and dies on
+    # "zip: not a valid zip file" (otel sdk/instrumentation is not a module);
+    # a targeted `go get` avoids that.
+    go get github.com/balena-os/librsync-go@latest
 
     # Generate Go code - must run from repository root where go.mod is
     go generate -x ./server/...
 }
 
 build() {
-    export GOPROXY="https://mirrors.aliyun.com/goproxy,direct"
+    export GOPROXY="https://proxy.golang.org,direct"
     cd "${srcdir}/filestash"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
