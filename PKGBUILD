@@ -1,7 +1,7 @@
 # Maintainer: Dan Griffiths <me at evertiro dot com>
 
 pkgname=astra-airlock
-pkgver=1.1.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A beautiful m3expressive greetd frontend based on Caelestia'
 arch=('x86_64')
@@ -30,24 +30,24 @@ conflicts=(
 	'astra-airlock-git'
 )
 source=(
-	"${pkgname}-${pkgver}::https://github.com/AstraSuite/Airlock/archive/refs/tags/v${pkgver}.zip"
+	"https://github.com/AstraSuite/Airlock/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	"astra-airlock.install"
 )
 sha256sums=(
-	'e790ce3efae269b4e4b4d68c733e70bb471dc928d0081c5d6ac38c200de508de'
+	'947f8a6966a989c90dac753ad0e0c64097cf5c761d64ce975ff5427876f07cec'
 	'7d6ed7e60cc63afc2ff25321a19e55d817713ed38963547ae6b2c6d5672e39fc'
 )
 build()
 {
-	cd "${srcdir}/Airlock-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+	cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DASTRA_AIRLOCK_VERSION=${pkgver}
 	cmake --build build
 }
 package()
 {
-	cd "${srcdir}/Airlock-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	DESTDIR="$pkgdir" cmake --install build
-	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

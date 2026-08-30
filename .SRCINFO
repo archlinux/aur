@@ -1,6 +1,6 @@
 pkgbase = astra-airlock
 	pkgdesc = A beautiful m3expressive greetd frontend based on Caelestia
-	pkgver = 1.1.2
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/AstraSuite/Airlock
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = astra-airlock
 	optdepends = wlr-randr: required if using monitor flags
 	conflicts = astra-airlock-bin
 	conflicts = astra-airlock-git
-	source = astra-airlock-1.1.2::https://github.com/AstraSuite/Airlock/archive/refs/tags/v1.1.2.zip
+	source = https://github.com/AstraSuite/Airlock/releases/download/v1.3.0/astra-airlock-1.3.0.tar.gz
 	source = astra-airlock.install
-	sha256sums = e790ce3efae269b4e4b4d68c733e70bb471dc928d0081c5d6ac38c200de508de
+	sha256sums = 947f8a6966a989c90dac753ad0e0c64097cf5c761d64ce975ff5427876f07cec
 	sha256sums = 7d6ed7e60cc63afc2ff25321a19e55d817713ed38963547ae6b2c6d5672e39fc
 
 pkgname = astra-airlock
