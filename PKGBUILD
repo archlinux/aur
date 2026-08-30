@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=cascadia
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Go cascadia package command line CSS selector"
 arch=('x86_64' 'aarch64')
 url="https://github.com/suntong/cascadia"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/suntong/cascadia.git#tag=v$pkgver")
+_commit='66a5ec1593ae353c7e696c6227213830c6e315de'
+source=("git+https://github.com/suntong/cascadia.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit

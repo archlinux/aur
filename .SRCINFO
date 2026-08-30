@@ -1,7 +1,7 @@
 pkgbase = cascadia
 	pkgdesc = Go cascadia package command line CSS selector
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/suntong/cascadia
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = cascadia
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/suntong/cascadia.git#tag=v1.5.1
+	source = git+https://github.com/suntong/cascadia.git#commit=66a5ec1593ae353c7e696c6227213830c6e315de
 	sha256sums = SKIP
 
 pkgname = cascadia
