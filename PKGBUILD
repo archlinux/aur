@@ -3,7 +3,7 @@
 _pkgauthor=unhappychoice
 _pkgname=gitlogue
 pkgname=${_pkgname}-bin
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A cinematic Git commit replay tool for the terminal"
@@ -21,10 +21,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}-unknown-linux-gnu.tar.gz")
-sha256sums=('a161d9a2d8a3a052629e936991689ac24bc76dd5d6b9978cad2aa07120804a69'
+sha256sums=('f52678dcd4229dda826b5c7266fa9731be9b6f7e6fa64385acab63ef1462b372'
             '8f7d4feb676b3700f48611aa9a3c8e444b7877593efb52fc90235577f3148cc9')
-sha256sums_x86_64=('ec868045d237f2cd50f485581b01e4669559d0a8db7c1d8dcfb3d7f13f9ef93d')
-sha256sums_aarch64=('25d364e3456798e69d536932d6e56d07b902ca0a93628cfb6ce3217dcc1d035f')
+sha256sums_x86_64=('ff58adcdbbd5474d5bcabe8194313574aab967a60bfc1757070ba025ff9379c4')
+sha256sums_aarch64=('7f3810486d771d7e61e185cee69e10af55e53538f25ab0ebd4b515809ef39a70')
 
 
 package() {
