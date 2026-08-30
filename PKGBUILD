@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=gscript
 pkgver=0.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc=" framework to rapidly implement custom droppers for all three major operating systems"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gen0cide/gscript"
 license=('AGPL-3.0')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/gen0cide/gscript.git#tag=v$pkgver")
+_commit='00d84b23b25a5cd5df7370edde6de4fc7208449d'
+source=("git+https://github.com/gen0cide/gscript.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
