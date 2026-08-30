@@ -2,12 +2,12 @@ pkgbase = einfach-icon-theme
 	pkgdesc = Simple GTK icon theme with multiple color variants
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/DerJimno/einfach-icon-theme
+	url = https://github.com/DerMenaouer/einfach-icon-theme
 	arch = any
 	license = CC BY-SA 4.0
 	options = !strip
 	options = !debug
-	source = https://github.com/DerJimno/einfach-icon-theme/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/DerMenaouer/einfach-icon-theme/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 84f2401b8fa4e97ee125daf4131161e4ccff367802019778494db3692d831974
 
 pkgname = einfach-icon-theme
