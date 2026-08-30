@@ -1,0 +1,15 @@
+pkgbase = espcanvas-renderer
+	pkgdesc = OpenGL renderer for ESPCanvas remote-rendering firmware
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/user14923929/espcanvas
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-serialport
+	source = espcanvas-renderer-0.1.0.tar.gz::https://github.com/user14923929/espcanvas/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 1d24cc27545b7f3cafc401ccf534e9b9067378dd261eeb25c3a0a04a59d79ad7
+
+pkgname = espcanvas-renderer
