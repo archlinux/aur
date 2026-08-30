@@ -25,7 +25,6 @@ prepare() {
 
 package() {
     install -dm755 "${pkgdir}/opt/${_pkgname}"
-    rm squashfs-root/usr/lib/app/{libglib-2.0.so.0,libpcre2-8.so.0}
     cp -a squashfs-root/* "${pkgdir}/opt/${_pkgname}/"
 
     install -dm755 "${pkgdir}/usr/bin"
