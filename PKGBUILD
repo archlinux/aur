@@ -8,7 +8,7 @@
 #
 
 pkgname=kyocera_universal
-pkgver=10.0.20240521
+pkgver=10.1.20240521
 pkgrel=1
 
 major=$(cut -d '.' -f 1 <<< $pkgver)
@@ -29,7 +29,7 @@ toDwnld="KyoceraLinuxPackages_${date}_tar_gz.download.gz"
 source=("https://www.kyoceradocumentsolutions.us/content/dam/download-center-americas-cf/us/drivers/drivers/${toDwnld}")
 install=kyodialog-bin.install
 
-sha256sums=('20f7c978db123007a3a6c6688698b49061ab69cdd7ec065b6728bd77d9a900e7')
+sha256sums=('14235a8e4dbe9f2fdff481252e2cc64431f59a7dcf2497ef54852fb30211568f')
 
 if [ "$arch" == "x86_64" ]; then
   _arch="amd64"

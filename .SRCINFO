@@ -1,6 +1,6 @@
 pkgbase = kyocera_universal
 	pkgdesc = Kyocera Printing Package for many Kyocera printers (stripped of kdialog10).
-	pkgver = 10.0.20240521
+	pkgver = 10.1.20240521
 	pkgrel = 1
 	url = https://www.kyocera.com/
 	install = kyodialog-bin.install
@@ -23,6 +23,6 @@ pkgbase = kyocera_universal
 	provides = kyocera-cups
 	conflicts = kyocera-cups
 	source = https://www.kyoceradocumentsolutions.us/content/dam/download-center-americas-cf/us/drivers/drivers/KyoceraLinuxPackages_20240521_tar_gz.download.gz
-	sha256sums = 20f7c978db123007a3a6c6688698b49061ab69cdd7ec065b6728bd77d9a900e7
+	sha256sums = 14235a8e4dbe9f2fdff481252e2cc64431f59a7dcf2497ef54852fb30211568f
 
 pkgname = kyocera_universal
