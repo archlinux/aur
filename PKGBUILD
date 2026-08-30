@@ -1,8 +1,8 @@
 # Maintainer: Samuel Bernard <samuel.bernard@gmail.com>
 pkgname=almond
-pkgver=0.14.1
+pkgver=0.14.5
 pkgrel=1
-_scalaver=3.6
+_scalaver=3.8
 pkgdesc="A scala kernel for Jupyter"
 arch=('any')
 url="https://almond.sh/"
