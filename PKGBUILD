@@ -35,8 +35,8 @@ conflicts=('mark-shot')
 source_x86_64=("https://github.com/jswysnemc/mark-shot/releases/download/v${pkgver}/mark-shot-bin-${pkgver}-1-x86_64.pkg.tar.zst")
 source_aarch64=("https://github.com/jswysnemc/mark-shot/releases/download/v${pkgver}/mark-shot-bin-${pkgver}-1-aarch64.pkg.tar.zst")
 noextract=("mark-shot-bin-${pkgver}-1-x86_64.pkg.tar.zst" "mark-shot-bin-${pkgver}-1-aarch64.pkg.tar.zst")
-sha256sums_x86_64=('9da9b8b633b53ba197644815a0aceec16d78e6f6d5a3ac42d258afb225934249')
-sha256sums_aarch64=('1409f05824bb69eaaa9cf0bcab6489525fd43583180bddb57b90beaa4fe015a7')
+sha256sums_x86_64=('6a5f64662243ab530d9147d554d9fc004cf397a1803d44949af2f58bf5bc1cd4')
+sha256sums_aarch64=('7c9dd3e8551b562567f137c48d83d6255cbbd5a8249209cb7800863809e93c06')
 options=('!strip')
 
 # 解压预编译 pacman 包到 pkgdir，排除包元数据文件
