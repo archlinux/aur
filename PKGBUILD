@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=vibecheck
 pkgver=1.7.7
-pkgrel=4
+pkgrel=5
 pkgdesc="vibecheck is a lightweight, cross-platform command line AI-tool that automatically generates meaningful and consistent Git Commit Messages by analyzing your code changes — ship faster with vibecheck"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rshdhere/vibecheck"
@@ -15,12 +15,16 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$pkgname" || exit
-  go mod download
+  go mod download -modcacherw
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
-  go build \
+  go build -buildmode=pie \
     -trimpath \
     -mod=readonly \
     -modcacherw \
