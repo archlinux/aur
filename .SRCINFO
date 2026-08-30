@@ -43,6 +43,6 @@ pkgbase = arch-smart-update
 	optdepends = snap-pac: for automatic Btrfs snapshots on update (if using snapper)
 	optdepends = psmisc: for alternative pacman lock detection using fuser
 	source = arch-smart-update-3.28.5.tar.gz::https://github.com/motorrin/arch-smart-update/archive/refs/tags/v3.28.5.tar.gz
-	sha256sums = a86828b05d91d4b4db4d25da3a93c93872e450930635a5eddb69c4740c022b21
+	sha256sums = 6f793f32dfbccf9289c4859e36928fe2715b478d6544315ab86857300b736391
 
 pkgname = arch-smart-update
