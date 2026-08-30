@@ -1,6 +1,6 @@
 pkgbase = mailbox-bin
 	pkgdesc = Desktop mail client with a ribbon, calendar peek and reading pane (POP3, IMAP, SMTP)
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/codingncaffeine/Mailbox
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = mailbox-bin
 	provides = mailbox
 	conflicts = mailbox
 	options = !strip
-	source = https://github.com/codingncaffeine/Mailbox/releases/download/v0.0.4/Mailbox-0.0.4-linux-x64.tar.gz
-	sha256sums = e8edaf05a26805c3c781f46dca501817d7e4713d8aceddf09f37fba0cb2f7e23
+	source = https://github.com/codingncaffeine/Mailbox/releases/download/v0.0.5/Mailbox-0.0.5-linux-x64.tar.gz
+	sha256sums = 195f39150a9dcb35fa7b11c8d7bb6e57743ca535a6bad26e3ff128e383ba683b
 
 pkgname = mailbox-bin
