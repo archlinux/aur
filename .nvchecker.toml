@@ -1,0 +1,5 @@
+[runyte]
+source = "github"
+github = "runyte/runyte"
+use_max_tag = true
+prefix = "v"
