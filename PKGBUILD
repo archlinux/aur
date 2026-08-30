@@ -2,15 +2,21 @@
 # Contributor:
 pkgname=go-grip
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Preview Markdown files locally before committing them."
 arch=('x86_64' 'aarch64')
 url="https://github.com/chrishrb/go-grip"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
-source=("git+https://github.com/chrishrb/go-grip.git#tag=v$pkgver")
+_commit='2d429423542eda5def9c8aca4d9dbc25d1c2bfd4'
+source=("git+https://github.com/chrishrb/go-grip.git#commit=$_commit")
 sha256sums=('SKIP')
+
+prepare() {
+  cd "$pkgname" || exit
+  go mod download
+}
 
 build() {
   cd "$pkgname" || exit
