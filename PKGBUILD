@@ -4,7 +4,7 @@
 _name='QCElemental'
 _pkgname="${_name,,}"
 pkgname="python-${_pkgname}"
-pkgver=0.51.0
+pkgver=0.51.1
 pkgrel=1
 pkgdesc='Periodic table, physical constants, and molecule parsing for quantum chemistry'
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
 )
 checkdepends=('python-pytest')
 source=("git+https://github.com/MolSSI/${_pkgname}.git#tag=v${pkgver}")
-sha256sums=('d066cdd4de34fab0e05e33f07ff15702d8afa79a219ed6e393642a69f9edd321')
+sha256sums=('d76057b8b1728c35994ff4e91da12ba162337411f43a978ff9e50fe946a671c6')
 
 build() {
   cd "${srcdir}/${_pkgname}"
@@ -44,6 +44,6 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  python -m installer --destdir="${pkgdir}" dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/${_pkgname}-${pkgver}-*.whl
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
