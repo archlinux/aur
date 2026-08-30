@@ -5,7 +5,7 @@ _gitname=atmosphera
 pkgname=atmosphera-git
 _release_ver=0.6.0.r0
 pkgver=0.6.0.r0.g0000000
-pkgrel=9
+pkgrel=10
 install=atmosphera-git.install
 pkgdesc="Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell (git version)"
 arch=('any')
@@ -98,4 +98,9 @@ package() {
   install -Dm644 Scripts/dbus/app.atmosphera.HwController.service "$pkgdir/usr/share/dbus-1/system-services/app.atmosphera.HwController.service"
   install -Dm644 Scripts/dbus/app.atmosphera.HwController.conf "$pkgdir/etc/dbus-1/system.d/app.atmosphera.HwController.conf"
   install -Dm644 Scripts/polkit/app.atmosphera.hwcontroller.policy "$pkgdir/usr/share/polkit-1/actions/app.atmosphera.hwcontroller.policy"
+
+  # Supervised shell as a systemd user service (DMS pattern); activated per
+  # compositor via `atmosphera setup <wm>` (add-wants), never force-enabled.
+  install -Dm644 Scripts/systemd/atmosphera.service "$pkgdir/usr/lib/systemd/user/atmosphera.service"
+  install -Dm644 Scripts/systemd/hyprland-session.target "$pkgdir/usr/lib/systemd/user/hyprland-session.target"
 }
