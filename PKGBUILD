@@ -1,13 +1,13 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=soapy-malahit-rr-git
 _pkgname=SoapyMalahitRR
-pkgver=r61.cb3d93b
+pkgver=r74.8538d46
 pkgrel=1
 pkgdesc="SoapySDR module for Malahit RR SDR receiver"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/luarvique/SoapyMalahitRR"
 license=('MIT')
-depends=('soapysdr' 'alsa-lib' 'libgpiod-1.6')
+depends=('soapysdr' 'alsa-lib' 'libgpiod-1.6' 'bash')
 provides=('soapy-malahit-rr' "$_pkgname")
 conflicts=('soapy-malahit-rr' "$_pkgname")
 makedepends=('cmake' 'git')
@@ -34,7 +34,7 @@ package() {
     DESTDIR="${pkgdir}" cmake --install build
 
     # Install firmware file
-    install -Dm644 malahit-fw/malahit-r1-fw-102.bin "${pkgdir}/usr/share/malahit/malahit-r1-fw-102.bin"
+    install -Dm644 malahit-fw/malahit-r1-fw-111.bin "${pkgdir}/usr/share/malahit/malahit-r1-fw-111.bin"
 
     # Install systemd service
     install -Dm644 malahit-id/malahit-id.service "${pkgdir}/usr/lib/systemd/system/malahit-id.service"
