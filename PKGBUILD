@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=seqmagick
-_pkgver=0.1.8
+_pkgver=0.1.9
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -11,7 +11,6 @@ url="https://cran.r-project.org/package=$_pkgname"
 license=('Artistic-2.0')
 depends=(
   r-biostrings
-  r-magrittr
   r-yulab.utils
 )
 optdepends=(
@@ -23,10 +22,11 @@ optdepends=(
   r-prettydoc
   r-rmarkdown
   r-rsamtools
+  r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('15fe550ba1b3d9287f27c0647fcd4e64')
-b2sums=('b192ca63bf642a60ea0649490f3b40b409dd2d4b4a5a2164837e86e29897f46aed9c15543ca7009b142f264a896e31bce0fe6a91c3782001050bebc09f47164a')
+md5sums=('16ccd05fbe6dd046d0efb0bbed067079')
+b2sums=('56b7fd98f76566f0df25b0f13cc2e0ff11a2a4feb4ebbec1c4f7cbcebb36a054f367b0fb4a69a7fc1b882b5b2ffff0f4c970a7aa9791f0ca7a01d4bcdb0a8e8b')
 
 build() {
   mkdir build
