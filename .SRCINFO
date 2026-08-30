@@ -1,0 +1,22 @@
+pkgbase = nirimod-git-bin
+	pkgdesc = A visual, interactive configuration interface for the niri Wayland compositor (versão binária pré-compilada)
+	pkgver = r92.7a449c8
+	pkgrel = 1
+	url = https://github.com/srinivasr/nirimod
+	arch = any
+	license = MIT
+	depends = gtk4
+	depends = libadwaita
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = hicolor-icon-theme
+	depends = niri
+	provides = nirimod
+	conflicts = nirimod
+	conflicts = nirimod-git
+	options = !debug
+	source = https://github.com/eusouobn/nirimod-bin-releases/releases/download/vr92.7a449c8/nirimod-full-r92.7a449c8-any.tar.gz
+	sha256sums = 934ccf531a2dbc91761da05394524adbcb3a398a65c97bc4eb9850a5639da3ba
+
+pkgname = nirimod-git-bin
