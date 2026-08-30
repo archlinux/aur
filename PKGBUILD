@@ -1,7 +1,8 @@
-# Maintainer: fabillo <fabillo@archlinux.org>
+# Maintainer: evv1e <evv1e@archlinux.org>
 pkgname="intiface-central-bin"
-pkgver="3.1.0"
+pkgver="3.1.1"
 pkgrel=1
+_ghtag="v$pkgver+43" # tag in github
 pkgdesc="Frontend application for the Buttplug Sex Toy Control Library"
 arch=(x86_64)
 url="https://github.com/intiface/intiface-central"
@@ -15,12 +16,12 @@ provides=('intiface-central')
 conflicts=('intiface-central')
 source=(intiface_central.desktop
         run_intiface_central
-        "$pkgname-$pkgver.zip::$url/releases/download/v$pkgver+42/intiface-central-v$pkgver-linux-ubuntu-24.04-x64.zip"
-	"LICENSE.md::https://raw.githubusercontent.com/intiface/intiface-central/v$pkgver+42/LICENSE.md"
+        "$pkgname-$pkgver.zip::$url/releases/download/$_ghtag/intiface-central-v$pkgver-linux-ubuntu-24.04-x64.zip"
+	"LICENSE.md::https://raw.githubusercontent.com/intiface/intiface-central/$_ghtag/LICENSE.md"
 )
 sha256sums=('SKIP'
             'SKIP'
-	    '3fe3cbdcda93f52d9772e8a0d95741950016334c5b8c8499562a20a75f7656bc'
+	    'ea2d9270f94be1ef3d983f769616477dc946eb59aa3e41ba7919e59b0fd9b016'
 	    'SKIP'
 )
 
@@ -29,7 +30,7 @@ package() {
 	install -Dm644 "intiface_central.desktop" "$pkgdir/usr/share/applications/intiface_central.desktop"
 	install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 
-	cd "intiface-central"
+	# cd "intiface-central" # this release didn't have a subdir in the zip
 	install -Dm755 "intiface_central" "$pkgdir/usr/lib/intiface_central/intiface_central"
 	cp -r "data" "$pkgdir/usr/lib/intiface_central/data"
 	cp -r "lib" "$pkgdir/usr/lib/intiface_central/lib"

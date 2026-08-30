@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Version=3.1.0
+Version=3.1.1
 Name=Intiface Central
 Comment=Frontend application for the Buttplug Sex Toy Control Library
 Exec=/usr/lib/intiface_central/run_intiface_central
