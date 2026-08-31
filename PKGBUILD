@@ -1,7 +1,7 @@
 # Maintainer: oliwierw <oliwierw %at% nazwa ^dot^ ovh>
 
 pkgname=ath11k-bad-wifi7-compat-dkms
-pkgver=7.1.5.arch1
+pkgver=7.1.11.arch1
 pkgrel=1
 pkgdesc='Off-spec patch for ath11k handling invalid HE MCS rates (>11) received from WiFi 7 APs, preventing connection loss'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 )
 noextract=("${_srcname}.tar.xz")
 sha256sums=(
-    '22a0196b3cbcdf34dc27b77561f4d040585fd3447edc9ab3531a1ac79e3041e7'
+    '3029540d8f2ec75bee5cbdb7c2a0daa60bffa1d105c82ecb99b53432f6351afc'
     '297f5f02cc8cb2c350ff29f80ee1e34a28e0c8da5402edc1044bb660ffc4cae8'
     '76a3a5e4ac09e63c3236eded1c05595931a8976c978cd89685b3be524eb79c4b'
 )
