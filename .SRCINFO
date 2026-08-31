@@ -1,5 +1,5 @@
 pkgbase = unixel-fonts
-	pkgdesc = An English-Arabic pixel font.
+	pkgdesc = An English-Arabic Pixel font
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/MDarvishi5124/Unixel
