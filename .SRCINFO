@@ -1,0 +1,14 @@
+pkgbase = iso-profiles-git
+	pkgdesc = Artix iso profiles
+	pkgver = 2026.08
+	pkgrel = 1
+	url = https://gitea.artixlinux.org/artix/iso-profiles
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = iso-profiles
+	conflicts = iso-profiles
+	source = git+https://gitea.artixlinux.org/artix/iso-profiles.git
+	sha256sums = SKIP
+
+pkgname = iso-profiles-git
