@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="Interactive TUI disk space analyzer"
 
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('aed5de0444a827dbae84fd78591c3ccd813feee18ff8c8d70772314f119a9521')
-sha256sums_aarch64=('4001d9f1df0182aa5f1f46183da5da0ab1d1c01a3fe50c88c44c2e2639057d1c')
+sha256sums_x86_64=('0c2e555b4de75fcc547559b12fbfb2b04def160b1b1f9faefc1e8cb7f41c7769')
+sha256sums_aarch64=('d34cc6bf9c21a4cf005b00caff7fc275a83b4e09390a27c847df309c8d816e08')
 
 
 package() {
