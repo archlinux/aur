@@ -1,72 +1,40 @@
 pkgbase = atoms
 	pkgdesc = Easily manage Linux Chroot(s) and Containers
-	pkgver = 1.1.2
-	pkgrel = 3
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/AtomsDevs/Atoms
-	arch = any
+	arch = x86_64
 	license = GPL-3.0-only
-	checkdepends = appstream-glib
+	checkdepends = xorg-server-xvfb
 	makedepends = git
 	makedepends = meson
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-setuptools
-	makedepends = python-wheel
-	depends = adobe-source-code-pro-fonts
+	makedepends = sassc
+	makedepends = vala
+	depends = cpak
 	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = gtksourceview5
+	depends = json-glib
 	depends = libadwaita
-	depends = podman
-	depends = proot-termux
-	depends = python-certifi
-	depends = python-chardet
-	depends = python-gobject
-	depends = python-idna
-	depends = python-orjson
-	depends = python-requests
-	depends = python-tabulate
-	depends = python-uproot
-	depends = python-urllib3
+	depends = libgee
+	depends = libpeas-2
+	depends = libsoup3
 	depends = vte4
-	source = git+https://github.com/AtomsDevs/Atoms.git#tag=1.1.2
+	provides = atoms-cli
+	provides = atoms-core
+	provides = atoms-provider-cpak
+	provides = libatoms-core-2.so=2
+	provides = libsingularity.so=0
+	conflicts = atoms-cli
+	conflicts = atoms-core
+	conflicts = libsingularity
+	source = git+https://github.com/AtomsDevs/Atoms.git#tag=v2.0.1
 	source = git+https://github.com/AtomsDevs/atoms-cli.git
 	source = git+https://github.com/AtomsDevs/atoms-core.git
-	source = git+https://github.com/AtomsDevs/servicectl.git
-	sha256sums = 7316b33f4f354d95670cccce544fa03992fceb751890deb8cc83e641b7783ac0
+	source = git+https://github.com/AtomsDevs/atoms-provider-cpak.git
+	sha256sums = 4fd3e15d1b79aabc62149cec3b64d2fa878895a3ee55bcedcbfbd55d89075559
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = atoms
-	depends = atoms-cli
-	depends = libadwaita
-	depends = podman
-	depends = proot-termux
-	depends = python-certifi
-	depends = python-chardet
-	depends = python-gobject
-	depends = python-idna
-	depends = python-uproot
-	depends = python-urllib3
-	depends = servicectl-atoms
-	depends = vte4
-	optdepends = distrobox: List and handle Distrobox containers as atoms
-
-pkgname = atoms-cli
-	pkgdesc = Allows you to create and manage your atoms via the command line.
-	url = https://github.com/AtomsDevs/atoms-cli
-	depends = atoms-core
-	depends = python-tabulate
-
-pkgname = atoms-core
-	pkgdesc = Allows you to create and manage your own chroots and podman containers.
-	url = https://github.com/AtomsDevs/atoms-core
-	depends = python-orjson
-	depends = python-requests
-
-pkgname = servicectl-atoms
-	pkgdesc = Control services (daemons) for systemd in chroot environment (POSIX compliant fork)
-	url = https://github.com/AtomsDevs/servicectl
-	license = MIT
-	depends = systemd
-	provides = servicectl
-	conflicts = servicectl

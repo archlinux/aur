@@ -1,48 +1,48 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=(
-  'atoms'
-  'atoms-cli'
-  'atoms-core'
-  'servicectl-atoms'
-)
-pkgbase=atoms
-pkgver=1.1.2
-pkgrel=3
+pkgname=atoms
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Easily manage Linux Chroot(s) and Containers"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/AtomsDevs/Atoms"
 license=('GPL-3.0-only')
 depends=(
-  'adobe-source-code-pro-fonts'
+  'cpak'
   'gtk4'
+  'gtk4-layer-shell'
+  'gtksourceview5'
+  'json-glib'
   'libadwaita'
-  'podman'
-  'proot-termux'
-  'python-certifi'
-  'python-chardet'
-  'python-gobject'
-  'python-idna'
-  'python-orjson'
-  'python-requests'
-  'python-tabulate'
-  'python-uproot'
-  'python-urllib3'
+  'libgee'
+  'libpeas-2'
+  # 'libsingularity'  ## TODO
+  'libsoup3'
   'vte4'
 )
 makedepends=(
   'git'
   'meson'
-  'python-build'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
+  'sassc'
+  'vala'
 )
-checkdepends=('appstream-glib')
-source=("git+https://github.com/AtomsDevs/Atoms.git#tag=$pkgver"
+checkdepends=('xorg-server-xvfb')
+provides=(
+  'atoms-cli'
+  'atoms-core'
+  'atoms-provider-cpak'
+  'libatoms-core-2.so=2'
+  'libsingularity.so=0'
+)
+conflicts=(
+  'atoms-cli'
+  'atoms-core'
+  'libsingularity'
+)
+source=("git+https://github.com/AtomsDevs/Atoms.git#tag=v$pkgver"
         'git+https://github.com/AtomsDevs/atoms-cli.git'
         'git+https://github.com/AtomsDevs/atoms-core.git'
-        'git+https://github.com/AtomsDevs/servicectl.git')
-sha256sums=('7316b33f4f354d95670cccce544fa03992fceb751890deb8cc83e641b7783ac0'
+        'git+https://github.com/AtomsDevs/atoms-provider-cpak.git')
+sha256sums=('4fd3e15d1b79aabc62149cec3b64d2fa878895a3ee55bcedcbfbd55d89075559'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -52,89 +52,22 @@ prepare() {
   git submodule init
   git config submodule.atoms-cli.url "$srcdir/atoms-cli"
   git config submodule.atoms-core.url "$srcdir/atoms-core"
-  git config submodule.servicectl.url "$srcdir/servicectl"
+  git config submodule.atoms-provider-cpak.url "$srcdir/atoms-provider-cpak"
   git -c protocol.file.allow=always submodule update
 
-  git -C "$pkgbase-cli" clean -dfx
-  git -C "$pkgbase-core" clean -dfx
+  # Use libsingularity subproject until libsingularity-git AUR package can be used
+  meson subprojects download
 }
 
 build() {
   arch-meson Atoms build
   meson compile -C build
-
-  pushd "Atoms/$pkgbase-cli"
-  python -m build --wheel --no-isolation
-  popd
-
-  pushd "Atoms/$pkgbase-core"
-  python -m build --wheel --no-isolation
-  popd
 }
 
 check() {
-  meson test -C build --no-rebuild --print-errorlogs || :
+  xvfb-run meson test -C build --no-rebuild --print-errorlogs
 }
 
-package_atoms() {
-  depends=(
-    'atoms-cli'
-    'libadwaita'
-    'podman'
-    'proot-termux'
-    'python-certifi'
-    'python-chardet'
-    'python-gobject'
-    'python-idna'
-    'python-uproot'
-    'python-urllib3'
-    'servicectl-atoms'
-    'vte4'
-  )
-  optdepends=('distrobox: List and handle Distrobox containers as atoms')
-
+package() {
   meson install -C build --no-rebuild --destdir "$pkgdir"
-}
-
-package_atoms-cli() {
-  pkgdesc="Allows you to create and manage your atoms via the command line."
-  url="https://github.com/AtomsDevs/atoms-cli"
-  depends=(
-    'atoms-core'
-    'python-tabulate'
-  )
-
-  cd "Atoms/$pkgbase-cli"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-}
-
-package_atoms-core() {
-  pkgdesc="Allows you to create and manage your own chroots and podman containers."
-  url="https://github.com/AtomsDevs/atoms-core"
-  depends=(
-    'python-orjson'
-    'python-requests'
-  )
-
-  cd "Atoms/$pkgbase-core"
-  python -m installer --destdir="$pkgdir" dist/*.whl
-}
-
-package_servicectl-atoms() {
-  pkgdesc="Control services (daemons) for systemd in chroot environment (POSIX compliant fork)"
-  url="https://github.com/AtomsDevs/servicectl"
-  license=('MIT')
-  depends=('systemd')
-  provides=('servicectl')
-  conflicts=('servicectl')
-
-  cd Atoms/servicectl
-  install -d "$pkgdir/usr/lib/servicectl/enabled"
-  install -m755 servicectl -t "$pkgdir/usr/lib/servicectl/"
-  install -m755 serviced -t "$pkgdir/usr/lib/servicectl/"
-  install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-
-  install -d "$pkgdir/usr/bin"
-  ln -s "/usr/lib/servicectl/servicectl" "$pkgdir/usr/bin/"
-  ln -s "/usr/lib/servicectl/serviced" "$pkgdir/usr/bin/"
 }
