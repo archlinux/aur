@@ -1,0 +1,17 @@
+pkgbase = bisheng-compiler15
+	pkgdesc = 毕昇编译器 3.2：华为基于 LLVM 15 的 C/C++/Fortran 工具链（clang/flang/lld）
+	pkgver = 3.2.0.1
+	pkgrel = 1
+	url = https://www.hikunpeng.com/developer/devkit/compiler/bisheng
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	options = !strip
+	options = staticlibs
+	options = !debug
+	source = BiShengCompiler-3.2.0.1-x86-linux.tar.gz::https://mirrors.huaweicloud.com/kunpeng/archive/compiler/bisheng_compiler/BiShengCompiler-3.2.0.1-x86-linux.tar.gz
+	sha256sums = 7b6268a45ef0a9ca5af970718fa1ffd58d7d64960130c3c9bf42b749b2a0f43a
+
+pkgname = bisheng-compiler15
