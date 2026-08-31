@@ -1,0 +1,20 @@
+reload_udev_rules() {
+  if command -v udevadm >/dev/null 2>&1; then
+    udevadm control --reload-rules
+  fi
+  if command -v udevadm >/dev/null 2>&1; then
+    udevadm trigger --subsystem-match=hidraw
+  fi
+}
+
+post_install() {
+  reload_udev_rules
+}
+
+post_upgrade() {
+  reload_udev_rules
+}
+
+post_remove() {
+  reload_udev_rules
+}

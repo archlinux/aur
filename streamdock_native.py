@@ -38,6 +38,7 @@ class StreamDockWindow(QMainWindow):
     def __init__(self, controller: Controller, state_path: Path):
         super().__init__()
         self.controller = controller
+        self.shutdown_started = False
         self.state_path = state_path
         self.image_dir = state_path.parent / "images"
         self.image_dir.mkdir(parents=True, exist_ok=True)
@@ -64,6 +65,16 @@ class StreamDockWindow(QMainWindow):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.check_active_app)
         self.timer.start(1500)
+
+    def closeEvent(self, event: Any) -> None:
+        if self.shutdown_started:
+            event.accept()
+            return
+        self.shutdown_started = True
+        self.tray.hide()
+        self.controller.stop()
+        event.accept()
+        QApplication.instance().quit()
 
     def load_state(self) -> dict[str, Any]:
         if self.state_path.exists():
@@ -306,7 +317,7 @@ class StreamDockWindow(QMainWindow):
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Native StreamDock N4E controller")
-    parser.add_argument("--sdk-path", default="/usr/share/streamdock/sdk/Python-SDK/src")
+    parser.add_argument("--sdk-path", default="/usr/share/streamdock/sdk/Python-SDK")
     parser.add_argument("--config", default=str(Path.home() / ".config/streamdock/config.json"))
     args = parser.parse_args()
     config_path = Path(args.config).expanduser().resolve()
@@ -320,7 +331,8 @@ def main() -> None:
     window = StreamDockWindow(controller, config_path.with_name("profiles.json"))
     window.show()
     result = app.exec()
-    controller.stop()
+    if not window.shutdown_started:
+        controller.stop()
     raise SystemExit(result)
 
 
