@@ -1,7 +1,7 @@
 pkgbase = soundly
 	pkgdesc = Sound effects search, audio editor and library manager
-	pkgver = 2026.06.37_20260629.1214
-	pkgrel = 1
+	pkgver = 2026.06.37
+	pkgrel = 2
 	url = https://getsoundly.com
 	arch = x86_64
 	license = LicenseRef-Soundly
@@ -22,8 +22,8 @@ pkgbase = soundly
 	optdepends = wl-clipboard: one-click spotting into Kdenlive and Studio One on Wayland
 	optdepends = wmctrl: raise REAPER, DaVinci Resolve, or Ardour after spotting
 	options = !strip
-	source = soundly-2026.06.37_20260629.1214.zip::https://storage.googleapis.com/soundly-linux-release/latest/soundly-linux-latest-deb.zip
-	source = Soundly-Terms-of-Use.pdf::https://getsoundly.com/assets/Soundly-General-Terms-of-Use.pdf
+	source = local://soundly-linux-latest-deb.zip
+	source = local://Soundly-General-Terms-of-Use.pdf
 	sha256sums = 57c5b108e26814a37101a13e585e0e905805963f96280aff856f06824dd32e19
 	sha256sums = 0587c393077596b38045fddb4da29c186b9a04fb492ab4d53a1c37d04c9ef67b
 
