@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netron-git
 _pkgname=Netron
-pkgver=9.1.4.r2.ge52a558
-_electronversion=43
-_nodeversion=26
+pkgver=9.2.4.r0.g065e09e
+_electronversion=44
+_nodeversion=24.15
 pkgrel=1
 pkgdesc="Visualizer for neural network, deep learning and machine learning models.(Use system-wide electron)"
 arch=('any')
@@ -53,7 +53,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _set_build_env() {
-    export electronDist="/usr/lib/electron${_electronversion}"
+    export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     export HOME="${srcdir}/.electron-gyp"
@@ -108,7 +108,7 @@ build() {
     python -m venv .venv
     export PATH="${PWD}/.venv/bin:${PATH}"
     NODE_ENV=production     npm run build python
-    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
