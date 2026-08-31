@@ -1,6 +1,6 @@
 pkgbase = music-tui-git
 	pkgdesc = Terminal music player backed by MPD, with covers, synced lyrics and a visualizer.
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/WindustH/music-tui
 	arch = x86_64
