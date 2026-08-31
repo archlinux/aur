@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Dongda Li <dongdongbhbh at gmail dot com>
 pkgname=mindwtr
-pkgver=1.2.1
+pkgver=1.2.5
 pkgrel=1
 _nodeversion=24
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
@@ -31,7 +31,7 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dongdongbh/Mindwtr/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
 )
-sha256sums=('4e567e289543d50edff5d9ab73e666ff9fb0f5dfa0dff971e00b5df867ada151'
+sha256sums=('4e2be834cae47c8960f8ab2e58cad2db131d58c3ba1716cc290848875ad4419c'
             'c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c')
 
 _ensure_local_nvm() {
@@ -51,7 +51,13 @@ prepare() {
   nvm install "${_nodeversion}"
 
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
-  bun install --frozen-lockfile
+  LOCKFILE_VERSION="$(sed -n 's/.*\"lockfileVersion\": \([0-9][0-9]*\).*/\1/p' bun.lock | head -n 1)"
+  if [ -n "$LOCKFILE_VERSION" ] && [ "$LOCKFILE_VERSION" -lt 3 ]; then
+    # Bun 1.4 can consume the release lock but rewrites its legacy format.
+    bun install --no-save
+  else
+    bun install --frozen-lockfile
+  fi
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --manifest-path apps/desktop/src-tauri/Cargo.toml \
