@@ -1,7 +1,7 @@
 # Maintainer: Aaron Coach <aur@awc.id.au>
 pkgname=tracefinity
 _pkgname=tracefinity
-pkgver=0.8.0
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Generate custom gridfinity bins with AI, from photos of your tools"
 arch=('x86_64')
@@ -21,19 +21,22 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tracefinity/tracefinity
   "tracefinity.nginx.conf"
   "tracefinity.env")
 
-sha256sums=('9a59eca820d441117c67167c09b4b9b35a2ddb8f0e3b2066b3d23a07ed256163'
+sha256sums=('70dd8038c5756f9eb13b78fff6a447198ab01d653f12413a08cd4a09ce7f197e'
             'd4f393ee489dc518bf42a93d8ace1322bc7edd68d96a5d676a7f0b00f948e773'
             '7e50478cde51f9c618eeeb09e7529f9471b2e0bd463c72987fb7415eba3adf35'
             '7be50bd94eefbbb8907f5f150761b76e16f65f7a2527f2bb371cac426303cf2d'
             '69751a017f2f4d5b89b69efaf5958a9db4728e2352ce9476ac677341a201f2a6'
             '0fe90b1c7354e22f4fe69ac69d5005e35addf86a02069e4ed60e57480a0e911f'
-            '905c4f757dd03c99754fb8827a6f677679655bce04556d922e9de8cead962eb7')
+            'd6ce79dca841cdbde9e68c5dfd2aead1930263c89b03f8db8a2b4e7d06fcfeb1')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
 
   msg2 "Building frontend..."
   cd frontend
+
+  # Remove test files so Next.js doesn't type-check them during the build
+  find src -type f -name "*.test.ts*" -delete
 
   npm install --cache "$srcdir/npm-cache" --no-audit --no-fund --legacy-peer-deps
 
