@@ -1,7 +1,7 @@
 pkgbase = omniroute-bin
 	pkgdesc = OmniRoute desktop app (prebuilt AppImage)
 	pkgver = 3.8.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diegosouzapw/OmniRoute
 	arch = x86_64
 	license = MIT

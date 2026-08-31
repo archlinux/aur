@@ -3,7 +3,7 @@
 
 pkgname=omniroute-bin
 pkgver=3.8.50 # renovate: datasource=github-tags depName=diegosouzapw/OmniRoute versioning=semver-coerced extractVersion=^v?(?<version>.*)$
-pkgrel=1
+pkgrel=2
 pkgdesc="OmniRoute desktop app (prebuilt AppImage)"
 arch=('x86_64')
 url="https://github.com/diegosouzapw/OmniRoute"
@@ -48,9 +48,9 @@ Terminal=false
 EOF
   fi
 
-  if [[ -f "${srcdir}/squashfs-root/omniroute.png" ]]; then
-    install -Dm644 "${srcdir}/squashfs-root/omniroute.png" "${pkgdir}/usr/share/pixmaps/omniroute.png"
-  elif [[ -f "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/omniroute.png" ]]; then
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/omniroute.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/omniroute.png"
+  if [[ -f "${srcdir}/squashfs-root/omniroute-desktop.png" ]]; then
+    install -Dm644 "${srcdir}/squashfs-root/omniroute-desktop.png" "${pkgdir}/usr/share/pixmaps/omniroute.png"
+  elif [[ -f "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/omniroute-desktop.png" ]]; then
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/omniroute-desktop.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/omniroute.png"
   fi
 }
