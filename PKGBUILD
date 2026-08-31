@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openshot-bin
 _pkgname=OpenShot
-pkgver=3.5.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="An award-winning free and open-source video editor,is dedicated to delivering high quality video editing and animation solutions to the world.(Prebuilt version)"
 arch=('x86_64')
@@ -12,6 +12,28 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'ffmpeg'
+    'ffmpeg4.4'
+    'libcaca'
+    'libxinerama'
+    'libcups'
+    'zvbi'
+    'libcdio-paranoia'
+    'xcb-util'
+    'libxkbcommon'
+    'twolame'
+    'libtool'
+    'python-requests'
+    'nss'
+    'qt5-tools'
+    'qt5-base'
+    'xcb-util-image'
+    'libxss'
+    'python-certifi'
+    'python-pillow'
+    'python-pyqt5'
+    'python-defusedxml'
+    'libgme'
+    'wavpack'
 )
 optdepends=(
     'faac: for exporting audio using AAC'
@@ -23,7 +45,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2ff7a2596e5246c395b08c40fd86d278c0cb45e4bf7ee9927423ba32f1f4d88d'
+sha256sums=('277b27aae97080a1dae8831be8c6d2c576377292f559fb1b94675f6db24aa70f'
             '7d7504c70b21dc426b9e5eaba5836a3f904dcf74459faea60355af86c9259714')
 prepare() {
     sed -i -e "
@@ -47,7 +69,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/usr/bin/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    cp -a "${srcdir}/squashfs-root/usr/bin/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/applications/org.${pkgname%-bin}.${_pkgname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/metainfo/org.${pkgname%-bin}.${_pkgname}.appdata.xml" \
