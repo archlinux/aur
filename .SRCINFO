@@ -15,7 +15,7 @@ pkgbase = pacterm
 	source = pacterm-1.4.0.tar.gz::https://github.com/Wael-MA/pacterm/archive/refs/tags/v1.4.0.tar.gz
 	source = pacterm.desktop
 	source = PacTermIcon.png::https://github.com/Wael-MA/pacterm/raw/main/img/PacTermIcon.png
-	sha256sums = 6a82c99c56beff574951125dbd1706b97d7aff1ebfe0bae1c88a10722572b2bc
+	sha256sums = 79dbf4f9be6570ebd4e47cb92d89507c2e8afb1e9d107e00fb98d7e7947fb9e7
 	sha256sums = 8aba3bab75da0890862cfcefc0742cb27ffca4673a6fe812c72cd13dd79f136e
 	sha256sums = 7bbb0a52c7080a125036a2e4c09733f0dda578dda91a19a1afc95e5262add195
 
