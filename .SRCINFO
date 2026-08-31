@@ -1,6 +1,6 @@
 pkgbase = pferd
 	pkgdesc = Tool for fast and easily downloading data from KIT Ilias
-	pkgver = 3.9.3
+	pkgver = 3.9.4
 	pkgrel = 1
 	url = https://github.com/Garmelon/PFERD
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = pferd
 	depends = python-rich
 	depends = python-keyring
 	depends = python-certifi
-	source = pferd-3.9.3.tar.gz::https://github.com/Garmelon/PFERD/archive/refs/tags/v3.9.3.tar.gz
-	sha256sums = 63cc62b47fa7e33d5311c6aa3bbf770913aebb33e9e3357ded802bf87885108f
+	source = pferd-3.9.4.tar.gz::https://github.com/Garmelon/PFERD/archive/refs/tags/v3.9.4.tar.gz
+	sha256sums = 1e881f630e49ada57faee0efd550a316851c59d57aa6e3cf8fbcdf4f449eddf0
 
 pkgname = pferd
