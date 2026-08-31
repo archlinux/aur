@@ -1,7 +1,7 @@
 pkgbase = make-static
 	pkgdesc = GNU make utility to maintain groups of programs
 	pkgver = 4.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gnu.org/software/make
 	arch = aarch64
 	arch = x86_64

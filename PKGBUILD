@@ -3,7 +3,7 @@
 pkgname=make-static
 _pkgname=make
 pkgver=4.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GNU make utility to maintain groups of programs"
 arch=(aarch64 'x86_64')
 url="https://www.gnu.org/software/make"
@@ -23,7 +23,7 @@ prepare() {
   patch -p1 <../*.patch
 }
 build() {
-  export CC=musl-gcc CFLAGS="$CFLAGS -Os" LDFLAGS="$LDFLAGS -static"
+  export CC=musl-gcc CFLAGS="$CFLAGS -Os" LDFLAGS="$LDFLAGS -static -fno-link-libatomic"
 	cd "${_pkgname}-${pkgver}"
 	./configure --prefix=/usr --without-guile --disable-load
   ./build.sh
