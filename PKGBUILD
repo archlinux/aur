@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastpotify
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Fast native Spotify client with local playback and Spotify Connect"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ conflicts=('fastpotify-bin' 'fastpotify-git')
 # undefined ring_core_* symbols.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1147ad3f8dd4c7ba7d767d27f698dc3a4866c6631ce27abe539ed50777f7217c')
+sha256sums=('4e8512d77dde4956a25b1470e8419a118a5a3e6fd93084c238048061c95808dc')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
