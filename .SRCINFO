@@ -1,7 +1,7 @@
 pkgbase = caelestia-equalizer
 	pkgdesc = Standalone Wayland Music Widget for Hyprland with EQ and MPRIS support
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/MaksSuRitik/caelestia-equalizer
 	arch = any
 	license = GPL3

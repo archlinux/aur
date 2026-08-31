@@ -1,7 +1,7 @@
 # Maintainer: MaksSuRitik <твоя_почта@example.com>
 pkgname=caelestia-equalizer
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Standalone Wayland Music Widget for Hyprland with EQ and MPRIS support"
 arch=('any')
 url="https://github.com/MaksSuRitik/caelestia-equalizer"
