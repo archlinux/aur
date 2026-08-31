@@ -51,7 +51,7 @@ verify() {
   local actual_sha256 archive_pkgver control deb_member
   local -a deb_members deb_versions
 
-  mapfile -t deb_members < <(bsdtar -tf "$archive" | sed -n '/soundly_.*_amd64\.deb$/p')
+  mapfile -t deb_members < <(bsdtar -tf "$archive" | sed -n '/^soundly_[^/]*_amd64\.deb$/p')
   if (( ${#deb_members[@]} != 1 )); then
     printf 'ERROR: expected exactly one soundly_*_amd64.deb in %s, found %s\n' "$archive" "${#deb_members[@]}" >&2
     return 1
