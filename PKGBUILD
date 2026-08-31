@@ -1,6 +1,6 @@
 pkgname=sparkle-git
 _pkgname=${pkgname%-git}
-pkgver=1.26.7.r18.ga36c43e
+pkgver=1.26.7.r19.g9fdba67
 pkgrel=1
 pkgdesc="Another Mihomo GUI"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('git' 'nodejs' 'pnpm' 'jq' 'libxcrypt-compat' 'libarchive')
 install=$_pkgname.install
 source=("${_pkgname}.sh" "git+$url.git")
 sha256sums=("03eb601fe981716e90f9170eeb36a2e7938587f05a1bdaa09adadb1229c77a0a" "SKIP")
-options=('!lto')
+options=('!debug' '!lto')
 
 pkgver() {
     cd $srcdir/${_pkgname}
