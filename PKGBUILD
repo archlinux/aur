@@ -3,7 +3,7 @@
 # Submit by pushing this (plus the generated .SRCINFO) to ssh://aur@aur.archlinux.org/mailbox-bin.git
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=mailbox-bin
-pkgver=0.0.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Desktop mail client with a ribbon, calendar peek and reading pane (POP3, IMAP, SMTP)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=('hunspell-en_us: spelling, against the desktop dictionaries'
             'xdg-desktop-portal: file dialogs through the desktop')
 options=('!strip')   # self-contained .NET bundle — stripping breaks it
 source=("$url/releases/download/v$pkgver/Mailbox-$pkgver-linux-x64.tar.gz")
-sha256sums=('195f39150a9dcb35fa7b11c8d7bb6e57743ca535a6bad26e3ff128e383ba683b')
+sha256sums=('aa8d0d4353fa2d5727ab091bfaf77750f651bc335eb5b94e4920af0914713375')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/mailbox" "$pkgdir/usr/bin" "$pkgdir/usr/share/doc/mailbox"
