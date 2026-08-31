@@ -1,6 +1,6 @@
 pkgbase = miyu
 	pkgdesc = 一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/SHORiN-KiWATA/Miyu
 	arch = x86_64
@@ -14,9 +14,13 @@ pkgbase = miyu
 	optdepends = fish: fish shell integration support
 	optdepends = bash: bash shell integration support
 	optdepends = zsh: zsh shell integration support
+	optdepends = python-playwright: 网页检索脚本(小红书/知乎/闲鱼/酒店比价)
+	optdepends = xorg-server-xvfb: 网页检索脚本后台运行所需的虚拟显示
+	optdepends = chromium: 网页检索脚本的浏览器(或改装 google-chrome)
+	optdepends = python-qrcode: 扫码登录时在终端里画二维码
 	options = !strip
 	options = !debug
-	source = miyu-0.4.5-1-x86_64.release.pkg.tar.zst::https://github.com/SHORiN-KiWATA/Miyu/releases/download/v0.4.5/miyu-0.4.5-1-x86_64.pkg.tar.zst
-	sha256sums = 4c4894190c72c23cf13265424d622bc7094b496174da61cae0456aa31f7ac975
+	source = miyu-0.4.6-1-x86_64.release.pkg.tar.zst::https://github.com/SHORiN-KiWATA/Miyu/releases/download/v0.4.6/miyu-0.4.6-1-x86_64.pkg.tar.zst
+	sha256sums = 153d519975e02aec456de36a904cd0b571d1c13bf32a86fa5e92373852ce6b8a
 
 pkgname = miyu

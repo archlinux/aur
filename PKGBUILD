@@ -5,7 +5,7 @@
 # 已随 release 资产一并打包，不再从上游单独拉取。
 
 pkgname=miyu
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
@@ -19,13 +19,17 @@ optdepends=(
   'fish: fish shell integration support'
   'bash: bash shell integration support'
   'zsh: zsh shell integration support'
+  'python-playwright: 网页检索脚本(小红书/知乎/闲鱼/酒店比价)'
+  'xorg-server-xvfb: 网页检索脚本后台运行所需的虚拟显示'
+  'chromium: 网页检索脚本的浏览器(或改装 google-chrome)'
+  'python-qrcode: 扫码登录时在终端里画二维码'
 )
 _release_pkgrel=1
 source=(
   "${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.release.pkg.tar.zst::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}-${_release_pkgrel}-${CARCH}.pkg.tar.zst"
 )
 sha256sums=(
-  '4c4894190c72c23cf13265424d622bc7094b496174da61cae0456aa31f7ac975'
+  '153d519975e02aec456de36a904cd0b571d1c13bf32a86fa5e92373852ce6b8a'
 )
 
 package() {
