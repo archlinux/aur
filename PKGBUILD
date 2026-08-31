@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-network-manager
-pkgver=6.7.3
+pkgver=6.7.4
 pkgrel=1
 pkgdesc='SonicDE applet written in QML for managing network connections'
 arch=(x86_64)
@@ -13,13 +13,11 @@ license=(GPL-2.0-or-later)
 depends=(glib2
          glibc
          kcmutils
-         kcolorscheme
          kcompletion
          kconfig
          kdbusaddons
          kdeclarative
          ki18n
-         kirigami-addons
          kjobwidgets
          knotifications
          kquickcharts
@@ -37,9 +35,11 @@ depends=(glib2
          qt6-declarative
          qtkeychain-qt6
          solid
+         sonic-frameworks-color-scheme
          sonic-frameworks-core-addons
          sonic-frameworks-io
          sonic-frameworks-quick-ui
+         sonic-frameworks-quick-ui-addons
          sonic-frameworks-windowsystem
          sonic-interface-libraries
          sonic-workspace)
@@ -53,7 +53,7 @@ provides=(plasma-nm)
 conflicts=(plasma-nm)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('e6f65e4226a16cbb2bc338141f2d3600746e882dcbbf5248c69054e54f598bcf')
+sha256sums=('d75be79e6cdf35951bf07658bdd7cf5702b859eb6fa155b7ca593212da2c2e9c')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
