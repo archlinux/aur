@@ -1,0 +1,19 @@
+pkgbase = python-androidtvremote2
+	pkgdesc = Python implementation of the Android TV Remote protocol v2
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/tronikos/androidtvremote2
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-aiofiles
+	depends = python-cryptography
+	depends = python-protobuf
+	source = python-androidtvremote2-0.3.1.tar.gz::https://files.pythonhosted.org/packages/source/a/androidtvremote2/androidtvremote2-0.3.1.tar.gz
+	sha256sums = 11f8e33d76d8c539d26fd3002c423d21ca9264a8281bf895c0f169dab513fca1
+
+pkgname = python-androidtvremote2
