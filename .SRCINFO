@@ -1,6 +1,6 @@
 pkgbase = codebuddy-ide-cn
 	pkgdesc = 腾讯云代码助手CodeBuddy IDE，是一款辅助编码工具。
-	pkgver = 4.11.2.36529961
+	pkgver = 4.11.3.37298507
 	pkgrel = 1
 	url = https://github.com/JipZeonGit/codebuddy-ide-cn-linux
 	arch = x86_64
@@ -26,14 +26,14 @@ pkgbase = codebuddy-ide-cn
 	optdepends = nodejs: required only when invoking bundled CLI helpers in node_modules
 	conflicts = codebuddy-cn-ide
 	conflicts = codebuddycn-ide
-	noextract = codebuddy-cn_4.11.2.36529961_amd64.deb
+	noextract = codebuddy-cn_4.11.3.37298507_amd64.deb
 	options = !strip
 	options = !debug
-	source = codebuddy-cn_4.11.2.36529961_amd64.deb::https://download.codebuddy.cn/aiide/linux-x64/CodeBuddy-linux-x64-4.11.2.36529961-74e2511a-cn.deb
-	source = codebuddy-ide-cn-linux-54ca735fa74dd997ced4384544dc7710411792fe.tar.gz::https://github.com/JipZeonGit/codebuddy-ide-cn-linux/archive/54ca735fa74dd997ced4384544dc7710411792fe.tar.gz
+	source = codebuddy-cn_4.11.3.37298507_amd64.deb::https://download.codebuddy.cn/aiide/linux-x64/CodeBuddy-linux-x64-4.11.3.37298507-2345dde1-cn.deb
+	source = codebuddy-ide-cn-linux-604c011605e480ba24d1f095b06418cf1eaf23f1.tar.gz::https://github.com/JipZeonGit/codebuddy-ide-cn-linux/archive/604c011605e480ba24d1f095b06418cf1eaf23f1.tar.gz
 	source = LICENSE.notice
-	sha256sums = 32787d758f4be84e7fa29a6ced2d7a336d77fc689ff536bfa664b29a92c14a8b
-	sha256sums = cb5e79310f16f562772ad17d769f8436aab01e44afda8bc2a210604b4e1729bd
+	sha256sums = d0770a4563535226daace0a57f39812bc8a23aa758073a06fb77857efea888e8
+	sha256sums = c03fab55406cbd0a2342b4628a93519a8051d36614e415ebb0fbc94727f218b2
 	sha256sums = b3260549a765c478dc33680c7b9a1a30e5a038456e340d6d25f7748390724241
 
 pkgname = codebuddy-ide-cn
