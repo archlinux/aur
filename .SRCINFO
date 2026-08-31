@@ -1,6 +1,6 @@
 pkgbase = maestro-dev
 	pkgdesc = End-to-end testing for Mobile and Web apps
-	pkgver = 2.9.0
+	pkgver = 2.10.0
 	pkgrel = 1
 	url = https://maestro.dev
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = maestro-dev
 	provides = maestro
 	conflicts = maestro-bin
 	conflicts = maestro
-	source = maestro-2.9.0.zip::https://github.com/mobile-dev-inc/maestro/releases/download/cli-2.9.0/maestro.zip
-	sha256sums = 855bb2ce1399d82f4f4a73d84a4d945f70b0d43eb86127e027af82809f63f0bd
+	source = maestro-2.10.0.zip::https://github.com/mobile-dev-inc/maestro/releases/download/cli-2.10.0/maestro.zip
+	sha256sums = 29b675e10cc12080e445e9bfb2e2b4e4dfb9c0f2e30d5884120d258b5e1cd991
 
 pkgname = maestro-dev
