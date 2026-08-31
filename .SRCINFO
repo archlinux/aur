@@ -1,7 +1,7 @@
 pkgbase = milkup
 	pkgdesc = Cross-platform instant-rendering desktop Markdown editor
 	pkgver = 1.0.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Auto-Plugin/milkup
 	arch = x86_64
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = milkup
 	makedepends = pnpm
 	makedepends = python
 	makedepends = node-gyp
-	depends = electron41
+	depends = electron43
 	depends = hicolor-icon-theme
 	conflicts = milkup-git
 	conflicts = milkup-bin

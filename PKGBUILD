@@ -1,12 +1,12 @@
 pkgname=milkup
 pkgver=1.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform instant-rendering desktop Markdown editor"
 arch=('x86_64')
 url="https://github.com/Auto-Plugin/milkup"
 license=('MIT')
 
-_electron=electron41
+_electron=electron43
 _srcdir="${pkgname}-${pkgver}"
 
 depends=(
