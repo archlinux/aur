@@ -1,7 +1,7 @@
 # Maintainer: pounceandmiss <pounceandmiss@proton.me>
 
 pkgname=anotherim-desktop-git
-pkgver=0.5.127.r17.gbb803bf2
+pkgver=0.5.127.r32.gd5661fe8
 pkgrel=1
 pkgdesc="AnotherIM Desktop - a modern XMPP/Jabber client, fork of Dino+"
 arch=('x86_64')
@@ -21,6 +21,13 @@ sha256sums=('SKIP')
 pkgver() {
     cd "$pkgname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd "$pkgname"
+    # Workaround for 7db7a0bc: dino-chain-link-symbolic.svg was removed but
+    # left in CMakeLists.txt's RESOURCE_LIST, breaking the build. Drop once fixed upstream.
+    sed -i '/icons\/scalable\/actions\/dino-chain-link-symbolic\.svg/d' main/CMakeLists.txt
 }
 
 build() {

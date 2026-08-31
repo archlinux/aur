@@ -1,6 +1,6 @@
 pkgbase = anotherim-desktop-git
 	pkgdesc = AnotherIM Desktop - a modern XMPP/Jabber client, fork of Dino+
-	pkgver = 0.5.127.r17.gbb803bf2
+	pkgver = 0.5.127.r32.gd5661fe8
 	pkgrel = 1
 	url = https://dev.narayana.im/anotherim/anotherim-desktop
 	arch = x86_64
