@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=single-file-cli
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="CLI tool for saving a faithful copy of a complete web page in a single HTML file"
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=(
   'playwright: for playwright-{firefox,chromium} backend'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('64703fa71b7c2dc8db75dc15b107a7882b596352a02a63822d0edb9f0bf7ee0b')
+sha256sums=('27405127a13c975291e60477bef9e286cdfab59e9f607e54b12de1d0fc09a2cf')
 
 package() {
   cd $pkgname-$pkgver
@@ -24,12 +24,13 @@ package() {
     --install-links \
     --prefix "$pkgdir/usr"
 
-  # Remove unnecessary scripts to silence namcap warnings
+  # Remove files unnecessary at runtime
   rm \
     "$pkgdir/usr/lib/node_modules/single-file-cli/single-file" \
     "$pkgdir/usr/lib/node_modules/single-file-cli/build.sh" \
     "$pkgdir/usr/lib/node_modules/single-file-cli/compile.sh" \
     "$pkgdir/usr/lib/node_modules/single-file-cli/build-dev.sh"
+  rm -r "$pkgdir/usr/lib/node_modules/single-file-cli/test"
 
   local moduledir="$pkgdir/usr/lib/node_modules/$pkgname"
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "$moduledir/README.MD"
