@@ -3,11 +3,11 @@
 _pkgbase=ravenna-alsa-lkm
 pkgname="${_pkgbase}-dkms"
 pkgver=r174.e8579da
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module for ALSA RAVENNA/AES67 Driver"
 url="https://bitbucket.org/MergingTechnologies/ravenna-alsa-lkm"
 license=("GPL")
-arch=('x86_64' 'x86_64_v3' 'armv7h' 'aarch64')
+arch=('x86_64' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 depends=('gcc' 'dkms')
 optdepends=(
     'linux-rt-headers: Needed for build the module for Arch RT kernel'
@@ -24,6 +24,9 @@ pkgver() {
 prepare() {
 sed -i '/MODULE_SUPPORTED_DEVICE/d' $srcdir/$_pkgbase/driver/module_interface.c
 sed -i 's#include <stdarg.h>#include <linux/stdarg.h>#g' $srcdir/$_pkgbase/driver/MTAL_LKernelAPI.c
+sed -i 's/strncpy/strscpy/g' $srcdir/$_pkgbase/driver/manager.c
+sed -i 's/strncpy/strscpy/g' $srcdir/$_pkgbase/driver/RTP_stream_info.c
+sed -i 's/strncpy/strscpy/g' $srcdir/$_pkgbase/driver/RTP_stream_info.h
 }
 
 package() {
