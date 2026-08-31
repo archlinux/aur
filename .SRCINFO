@@ -1,0 +1,24 @@
+pkgbase = sonic-frameworks-color-scheme
+	pkgdesc = Classes to read and interact with KColorScheme
+	pkgver = 6.29.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-color-scheme
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = kconfig
+	depends = ki18n
+	depends = libstdc++
+	depends = qt6-base
+	depends = sonic-frameworks-gui-addons
+	provides = kcolorscheme
+	conflicts = kcolorscheme
+	source = sonic-frameworks-color-scheme-6.29.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-color-scheme/archive/refs/tags/6.29.0.tar.gz
+	sha256sums = 438ed1bd702ceedb72fdf3103b7db9b88070d771d4873068234be46706d3600b
+
+pkgname = sonic-frameworks-color-scheme
