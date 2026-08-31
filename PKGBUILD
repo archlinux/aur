@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=clang-static-git
-pkgver=24.0.0.r593101.86d1e003b74c
+pkgver=24.0.0.r594811.f7a44525d799
 pkgrel=1
 pkgdesc='Clang compiler and tools with libc++, runtimes, and statically linked LLVM components (git version)'
 arch=(x86_64)
@@ -109,8 +109,6 @@ build() {
     -D LLVM_ENABLE_PROJECTS='clang;lld;clang-tools-extra'
     -D LLVM_ENABLE_RUNTIMES='compiler-rt;libcxx;libcxxabi;libunwind'
     -D LLVM_BINUTILS_INCDIR=/usr/include
-    -D CLANG_DEFAULT_CXX_STDLIB=libstdc++
-    -D CLANG_DEFAULT_RTLIB=libgcc
     -D LLVM_BUILD_LLVM_DYLIB=OFF
     -D LLVM_LINK_LLVM_DYLIB=OFF
     -D LLVM_INCLUDE_TESTS=ON
