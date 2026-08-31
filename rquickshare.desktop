@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=RQuickShare
+Comment=NearbyShare/QuickShare implementation for Linux, macOS and Windows
+Exec=rquickshare
+Icon=rquickshare
+Categories=Network;FileTransfer;
+Terminal=false
+StartupWMClass=rquickshare

@@ -1,0 +1,25 @@
+pkgbase = rquickshare-next-git
+	pkgdesc = NearbyShare/QuickShare implementation for Linux, macOS and Windows (rquickshare-next fork, built from latest git)
+	pkgver = 0.11.8.r4.g263c0fb
+	pkgrel = 1
+	url = https://github.com/AuthenticSm1les/rquickshare-next
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = rustup
+	makedepends = nodejs
+	makedepends = pnpm
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	provides = rquickshare
+	conflicts = rquickshare
+	conflicts = rquickshare-x
+	conflicts = rquickshare-x-bin
+	source = rquickshare-next-git::git+https://github.com/AuthenticSm1les/rquickshare-next.git
+	source = rquickshare.desktop
+	sha256sums = SKIP
+	sha256sums = 433a8fbb8b5e5a4af815cabc5b8c149a0ac6a7de020d0d637eda87b37f9cb6ee
+
+pkgname = rquickshare-next-git
