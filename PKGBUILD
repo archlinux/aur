@@ -13,12 +13,15 @@ license=('LicenseRef-GuinpinSoft-inc-EULA' LGPL-2.1-or-later)
 depends=(qt5-base ffmpeg libavcodec.so)
 optdepends=('java-runtime: bdjava https://www.makemkv.com/bdjava/')
 install=makemkv.install
-source=(${url}/download/${pkgname}-bin-${pkgver}.tar.gz
-        ${url}/download/${pkgname}-oss-${pkgver}.tar.gz
-        ffmpeg9.patch
-        makemkv.1
-        makemkvcon.1
-        )
+source=(
+    #${url}/download/${pkgname}-bin-${pkgver}.tar.gz
+    #${url}/download/${pkgname}-oss-${pkgver}.tar.gz
+    https://sourceforge.net/projects/fabiololix-os-archive/files/src/makemkv-bin-1.18.4.tar.gz
+    https://sourceforge.net/projects/fabiololix-os-archive/files/src/makemkv-oss-1.18.4.tar.gz
+    ffmpeg9.patch
+    makemkv.1
+    makemkvcon.1
+    )
 sha256sums=('cee56de0baa5531abed16bd862742d308d772b4ab4dae16ee865bf74f04a1608'
             '8590063648d42ec2a958b74573d7022f0f4c334e4e4fe7dd53b70c6e748ba453'
             'd35ae9e841ac43297e17a08d8819b339c5058bbdfc150fab508a442365756929'
