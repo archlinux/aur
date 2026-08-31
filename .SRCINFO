@@ -1,0 +1,27 @@
+pkgbase = sonic-frameworks-settings-ui
+	pkgdesc = Widgets for configuration dialogs
+	pkgver = 6.29.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-settings-ui
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = qt6-tools
+	makedepends = sonic-frameworks-cmake-modules
+	depends = glibc
+	depends = kcodecs
+	depends = kconfig
+	depends = ki18n
+	depends = kwidgetsaddons
+	depends = libstdc++
+	depends = qt6-base
+	depends = sonic-frameworks-color-scheme
+	depends = sonic-frameworks-core-addons
+	provides = kconfigwidgets
+	conflicts = kconfigwidgets
+	source = sonic-frameworks-settings-ui-6.29.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-settings-ui/archive/refs/tags/6.29.0.tar.gz
+	sha256sums = 062e3957d27d7d2a9d40489c117d0ad3c21d9bb529474f9cf63837fd70b6008d
+
+pkgname = sonic-frameworks-settings-ui
