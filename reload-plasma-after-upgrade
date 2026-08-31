@@ -21,13 +21,26 @@ for argument in "$@"; do
     esac
 done
 
-qdbus_bin=/usr/bin/qdbus6
-systemctl_bin=/usr/bin/systemctl
-runuser_bin=/usr/bin/runuser
-getent_bin=/usr/bin/getent
-env_bin=/usr/bin/env
-id_bin=/usr/bin/id
-stat_bin=/usr/bin/stat
+resolve_bin() {
+    local name="$1"
+    shift
+    local candidate
+    for candidate in "$@"; do
+        if [[ -n "$candidate" && -x "$candidate" ]]; then
+            printf '%s\n' "$candidate"
+            return 0
+        fi
+    done
+    command -v "$name" 2>/dev/null || true
+}
+
+qdbus_bin="$(resolve_bin qdbus6 /usr/bin/qdbus6 /usr/lib/qt6/bin/qdbus6 /usr/lib64/qt6/bin/qdbus6)"
+systemctl_bin="$(resolve_bin systemctl /usr/bin/systemctl)"
+runuser_bin="$(resolve_bin runuser /usr/bin/runuser /sbin/runuser)"
+getent_bin="$(resolve_bin getent /usr/bin/getent)"
+env_bin="$(resolve_bin env /usr/bin/env)"
+id_bin="$(resolve_bin id /usr/bin/id)"
+stat_bin="$(resolve_bin stat /usr/bin/stat)"
 
 if [[ ! -x "$qdbus_bin" || ! -x "$systemctl_bin" || ! -x "$id_bin" || ! -x "$stat_bin" ]]; then
     exit 0
