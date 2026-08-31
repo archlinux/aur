@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-workspace-addons
-pkgver=6.7.3
+pkgver=6.7.4
 pkgrel=1
 pkgdesc='All kind of addons to improve your SonicDE experience'
 arch=(x86_64)
@@ -18,8 +18,6 @@ depends=(glibc
          kdeclarative
          kholidays
          ki18n
-         kiconthemes
-         kirigami-addons
          kitemmodels
          kjobwidgets
          knewstuff
@@ -39,9 +37,11 @@ depends=(glibc
          sonic-frameworks-auth
          sonic-frameworks-core-addons
          sonic-frameworks-gui-addons
+         sonic-frameworks-icon-themes
          sonic-frameworks-io
          sonic-frameworks-keybind
          sonic-frameworks-quick-ui
+         sonic-frameworks-quick-ui-addons
          sonic-frameworks-runner
          sonic-frameworks-windowsystem
          sonic-interface-libraries
@@ -59,7 +59,7 @@ provides=(kdeplasma-addons)
 conflicts=(kdeplasma-addons)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('89035e42c4973e3e0b0084a198469133d19778450872dc5e476d77838b75f41b')
+sha256sums=('6b3c809c65482a3f99dc2d11bd5a2cc080880cc2847c52c46f4d5b7bdccdfb68')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
