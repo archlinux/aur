@@ -1,6 +1,6 @@
 pkgbase = getsentry-cli-bin
 	pkgdesc = Official Sentry developer CLI by getsentry/cli (prebuilt binary)
-	pkgver = 0.44.0
+	pkgver = 0.44.1
 	pkgrel = 1
 	url = https://github.com/getsentry/cli
 	arch = x86_64
@@ -8,16 +8,16 @@ pkgbase = getsentry-cli-bin
 	license = LicenseRef-FSL-1.1-Apache-2.0
 	depends = glibc
 	depends = gcc-libs
-	provides = getsentry-cli=0.44.0
+	provides = getsentry-cli=0.44.1
 	conflicts = getsentry-cli
-	noextract = getsentry-cli-bin-0.44.0-x86_64.gz
-	noextract = getsentry-cli-bin-0.44.0-aarch64.gz
+	noextract = getsentry-cli-bin-0.44.1-x86_64.gz
+	noextract = getsentry-cli-bin-0.44.1-aarch64.gz
 	options = !strip
-	source = LICENSE-0.44.0::https://github.com/getsentry/cli/raw/0.44.0/LICENSE.md
+	source = LICENSE-0.44.1::https://github.com/getsentry/cli/raw/0.44.1/LICENSE.md
 	sha256sums = c51f382a888f8f59f54a72af01e2d72032f2ba8f31d8194f8bf489123438195a
-	source_x86_64 = getsentry-cli-bin-0.44.0-x86_64.gz::https://github.com/getsentry/cli/releases/download/0.44.0/sentry-linux-x64.gz
-	sha256sums_x86_64 = 85d8f13808d76f15c0cc49b40c0198408a54f364b952a61e3f8d2b7e2c591251
-	source_aarch64 = getsentry-cli-bin-0.44.0-aarch64.gz::https://github.com/getsentry/cli/releases/download/0.44.0/sentry-linux-arm64.gz
-	sha256sums_aarch64 = ee7ae0cac2ba7b68c5993ec42ebda2bded51fb227a293ec2f25fbfb4e77e181b
+	source_x86_64 = getsentry-cli-bin-0.44.1-x86_64.gz::https://github.com/getsentry/cli/releases/download/0.44.1/sentry-linux-x64.gz
+	sha256sums_x86_64 = 5f0730824c27474322c5136a74776ae8e088bd3a96675da89c5d49008310a3ab
+	source_aarch64 = getsentry-cli-bin-0.44.1-aarch64.gz::https://github.com/getsentry/cli/releases/download/0.44.1/sentry-linux-arm64.gz
+	sha256sums_aarch64 = 7705338fc8bc62edc68d6baf033024e3685477a1421e25492c1f82e52136080f
 
 pkgname = getsentry-cli-bin
