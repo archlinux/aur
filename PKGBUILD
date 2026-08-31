@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.8.1
+pkgver=3.8.2
 _electronversion=42
 _nodeversion=24
 pkgrel=1
@@ -96,7 +96,6 @@ prepare() {
         s/@appname@/${pkgname}/g
         s/@runname@/app/g
         s/@cfgdirname@/SiYuan-Electron/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
