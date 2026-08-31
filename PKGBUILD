@@ -26,20 +26,22 @@ makedepends=(
     "gsettings-desktop-schemas"
     "meson"
 )
-source=("git+https://github.com/libproxy/libproxy#tag=$pkgver")
-b2sums=('aa049e4f7f37683b5c64e35770e9c3e5463d4fcf81e259c9bbd2facbd34f2eec46f28a455d9252bef475bf33bf39c70fa274a8470f5c6279f5e9e1c2de1e04b9')
+source=("https://github.com/libproxy/libproxy/archive/refs/tags/$pkgver.tar.gz")
+b2sums=('e7728c1f975ccb84e5037e667a341921712db452626fd41affbdb6a180ec1beff600070e7a798d27a4a9f4a555cd04fff8256301df081604b9627efb09a2a259')
 
 build() {
-  local meson_options=(
-      --cross-file lib32
-      -D docs=false
-      -D introspection=false
-      -D release=true
-      -D vapi=false
-  )
+    cd "$srcdir"
 
-  arch-meson libproxy build "${meson_options[@]}"
-  meson compile -C build
+    local meson_options=(
+        --cross-file lib32
+        -D docs=false
+        -D introspection=false
+        -D release=true
+        -D vapi=false
+    )
+
+    arch-meson "$_name-$pkgver" build "${meson_options[@]}"
+    meson compile -C build
 }
 
 check() {

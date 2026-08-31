@@ -14,8 +14,8 @@ pkgbase = lib32-libproxy
 	depends = lib32-glib2
 	depends = lib32-glibc
 	depends = libproxy
-	source = git+https://github.com/libproxy/libproxy#tag=0.5.12
-	b2sums = aa049e4f7f37683b5c64e35770e9c3e5463d4fcf81e259c9bbd2facbd34f2eec46f28a455d9252bef475bf33bf39c70fa274a8470f5c6279f5e9e1c2de1e04b9
+	source = https://github.com/libproxy/libproxy/archive/refs/tags/0.5.12.tar.gz
+	b2sums = e7728c1f975ccb84e5037e667a341921712db452626fd41affbdb6a180ec1beff600070e7a798d27a4a9f4a555cd04fff8256301df081604b9627efb09a2a259
 
 pkgname = lib32-libproxy
 	provides = libproxy.so
