@@ -54,7 +54,7 @@ source=(
 # An AppImage is an ELF with a squashfs glued on; makepkg must not try to
 # unpack it itself — prepare() uses the AppImage's own extractor.
 noextract=("$pkgname-$pkgver.AppImage")
-sha256sums=('f97df32f56281c4354f657c653df691f2647aca5b3f5fef637af18c4d30c7562'
+sha256sums=('29c5e1ec19b4f8a9ff693d3a0f3c98d37b172b1f319f17d5293ab4975fe76a0c'
             '93aa15616c8d2ad987372388e9cc1cd360501a98bc9cebd656acfa938368f538')
 
 prepare() {
