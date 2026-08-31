@@ -1,11 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=grist-desktop
 _pkgname='Grist Desktop'
-pkgver=0.3.13
+_debname=com.getgrist.grist
+pkgver=0.3.14
 _electronversion=41
 _nodeversion=22
 pkgrel=1
-pkgdesc="Desktop Grist, packaged with Electron. Grist is a modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database.(Use system-wide electron)"
+pkgdesc="A modern relational spreadsheet. It combines the flexibility of a spreadsheet with the robustness of a database."
 arch=('any')
 url="https://github.com/gristlabs/grist-desktop"
 license=('Apache-2.0')
@@ -23,7 +24,6 @@ makedepends=(
     'git'
     'curl'
     'yarn'
-    'gendesk'
     'jq'
 )
 options=(
@@ -33,7 +33,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('d17c750ebe18aa57174e409ae44975ba7079a202148df86dca2ded005785669d'
+sha256sums=('52d5fb068659bedad86eefe81f1f54a4a06b36ae3461e61844b9fc5b06f50696'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -64,6 +64,7 @@ _set_build_env() {
             export YARN_NETWORK_CONCURRENCY=32
         }
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
+        sed -i "s/github\.com\/indygreg/gh-proxy\.com\/https\:\/\/github\.com\/indygreg/g" scripts/setup.sh
     fi
 }
 _get_app_dir() {
@@ -84,16 +85,14 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
     " "${srcdir}/${pkgname}.sh"
     _get_electron_version
-    gendesk -q -f -n \
-        --pkgname="${pkgname}" \
-        --pkgdesc="${pkgdesc}" \
-        --categories="Utility" \
-        --name="${_pkgname}" \
-        --exec="${pkgname} %U"
     _set_build_env
     _ensure_local_nvm
+    sed -i "s/Icon=${_debname}/Icon=${pkgname}/g" "metadata/${_debname}.desktop"
+    sed -i "s/${_debname}/${pkgname}/g" "metadata/${_debname}-mime.xml"
+    sed -i "s/${_debname}/${pkgname}/g" "metadata/${_debname}.metainfo.xml"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" ext/package.json
     git submodule update --depth=1 --init --recursive
+    rm -rf "${srcdir}/${pkgname}-${pkgver}/core/python" "${srcdir}/${pkgname}-${pkgver}/core/cpython.tar.gz"
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=development    yarn upgrade sqlite3
     NODE_ENV=development    yarn run setup
@@ -111,6 +110,8 @@ package() {
 	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/core/static/icons/grist.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/metadata/${_debname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/metadata/${_debname}-mime.xml" "${pkgdir}/usr/share/mime/application/${pkgname}.xml"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/metadata/${_debname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname}.metainfo.xml"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
