@@ -2,13 +2,13 @@
 
 _pkgname=cups-browsed
 pkgname=$_pkgname-git
-pkgver=2.0.0.r5.g14df3a00
+pkgver=2.1.1.r19.g04b26c8b
 pkgrel=1
 pkgdesc="A helper daemon to browse the network for remote CUPS queues and IPP network printers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OpenPrinting/$_pkgname"
 license=('Apache-2.0 WITH LLVM-exception')
-depends=('libcups-git' 'libppd-git')
+depends=('libcups' 'libppd')
 makedepends=('git' 'glib2-devel')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
