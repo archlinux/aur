@@ -10,8 +10,8 @@ pkgname=fpc-rc
 _pkgname=fpc
 pkgver=3.2.4
 # minus not allowed in pkgver
-_rc=-rc1
-pkgrel=1
+_rc=-rc2
+pkgrel=2
 pkgdesc="Free Pascal Compiler, Release candidate."
 arch=('x86_64')
 url="http://www.freepascal.org/"
@@ -24,7 +24,7 @@ conflicts=(fpc)
 provides=(fpc)
 source=("https://downloads.freepascal.org/fpc/beta/${pkgver}${_rc}/source/${_pkgname}-${pkgver}${_rc}.source.tar.gz"
         honor_SOURCE_DATE_EPOCH_in_date.patch)
-sha512sums=('9bf19842bc21b52fb7cb8e15ff52b2759f915fbbf8590a66a6fa9b1ff5fba187f83ae260d55d7a4989175272e2b4e3349fdcba6c4479ca7ffdc9af08801c0dfc'
+sha512sums=('97602c537b2fc77f50a3b8538b387a03ec3e705ca589c743ecfa92d0a8259116c066ac720174feba3b00caef806fd29cd849cd00a6c83b0223f0870d8affe152'
             'f7371d533c8116f0c306d0e2fc7851a580f0777d5365f0d6a7b39770b9834d4de3d7ae6220d8090653eaeb5d6df71eaa0abbcbb423c1a1c153302930752a1822')
 
 prepare() {
