@@ -3,7 +3,7 @@
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
 url='https://github.com/ChrisDKN/Amethyst-Mod-Manager'
@@ -59,6 +59,7 @@ makedepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2fc041eef8b5ffa0a69d0d730c2c856748613b912404e307babde04e14b790ba')
+options=('!lto') # https://github.com/ChrisDKN/Amethyst-Mod-Manager/issues/442
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
@@ -103,12 +104,12 @@ package() {
     mkdir -p "${src_root}"
     mv "${src_root}-temp" "${target_dir}"
 
-    echo "${pkgname}" > "${src_root}/${pkgname}.pth"
+    echo "${pkgname}" >"${src_root}/${pkgname}.pth"
 
     # Amend launch scripts
-    echo '#!/bin/sh' > "$pkgdir/usr/bin/${pkgname}"
-    echo 'exec /usr/bin/python3 -m '"${pkgname}"'.run_qt "$@"' >> "$pkgdir/usr/bin/${pkgname}"
+    echo '#!/bin/sh' >"$pkgdir/usr/bin/${pkgname}"
+    echo 'exec /usr/bin/python3 -m '"${pkgname}"'.run_qt "$@"' >>"$pkgdir/usr/bin/${pkgname}"
 
-    echo '#!/bin/sh' > "$pkgdir/usr/bin/${pkgname}-cli"
-    echo 'exec /usr/bin/python3 -m '"${pkgname}"'.cli "$@"' >> "$pkgdir/usr/bin/${pkgname}-cli"
+    echo '#!/bin/sh' >"$pkgdir/usr/bin/${pkgname}-cli"
+    echo 'exec /usr/bin/python3 -m '"${pkgname}"'.cli "$@"' >>"$pkgdir/usr/bin/${pkgname}-cli"
 }
