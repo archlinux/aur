@@ -4,25 +4,25 @@
 pkgname=php-legacy-yaml
 _extname=yaml
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Support for YAML 1.1 (YAML Ain't Markup Language) serialization using the LibYAML library."
 arch=('x86_64')
 url="https://bd808.com/pecl-file_formats-yaml/"
 license=('MIT')
 depends=('php-legacy' 'libyaml')
 backup=("etc/php-legacy/conf.d/$_extname.ini")
-source=("https://pecl.php.net/get/$_extname-$pkgver.tgz")
-sha256sums=('bc8404807a3a4dc896b310af21a7f8063aa238424ff77f27eb6ffa88b5874b8a')
+source=("https://github.com/php/pecl-file_formats-$_extname/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('c45de87f7484108c6263643c1cdafc7b0ca5866f9cbfe63638cf154f59aa94f3')
 
 build() {
-	cd "$srcdir/$_extname-$pkgver"
+	cd "$srcdir/pecl-file_formats-$_extname-$pkgver"
 	phpize-legacy
 	./configure
 	make
 }
 
 package() {
-	cd "$srcdir/$_extname-$pkgver"
+	cd "$srcdir/pecl-file_formats-$_extname-$pkgver"
 	install -m0755 -d "$pkgdir/etc/php-legacy/conf.d/"
 	install -m0644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	echo ";extension=$_extname" > "$pkgdir/etc/php-legacy/conf.d/$_extname.ini"

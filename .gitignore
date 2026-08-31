@@ -1,5 +1,5 @@
 /*.pkg.tar.zst
-/yaml-*.tgz
+/*.tar.gz
 /src
 /pkg
 /build
