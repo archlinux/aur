@@ -6,8 +6,8 @@ lore_rel='lore-releases/releases/download'
 tome_rel='tome-releases/releases/download'
 
 launcherVer=1.9.2
-loreVer=1.13.5
-tomeVer=1.13.5
+loreVer=1.13.6
+tomeVer=1.13.6
 
 pkgname=amsel_suite-bin
 pkgdesc="TTRPG Game Master companion"
@@ -31,12 +31,11 @@ source=(
 )
 
 sha256sums=('a57e69bc726864be834b4d17efd7b6d796022ff4a15d46b9ffe118a9ff0ccab1'
-            '09064deb28b17b910fc5844792df35baa44edce463e300708eb3fb4cb504808a'
-            '55e39fcc6b4813b1d7b16fb44e28374514071a511ccbab457918f36797b774a2'
+            '49b2a2282061e6b36be5939658f03ae02270ea138567791e76d41742e8887df0'
+            '7dd20760e54497b6e944c0a86d6074c9de7ac9f0043dc85a28358f51fbebe57d'
             '122c11f8213a170291184d011670c2ef6c2cc8375bc3fc4a7b933a9e46162978'
             '7cf890499f561081990c13ad95e47541317009cbae1f17baded40df1e3c4cfac'
             '62ed78846e3ce8269e4a6d1475b76b82c713d0db3d53b98b7b99cbf6386c3aaf')
-
 
 prepare() {
 	chmod u+x ${srcdir}/Amsel.Suite-${launcherVer}-x64.AppImage
