@@ -2,7 +2,7 @@
 # Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/sefirah-bin
 
 pkgname=sefirah-bin
-pkgver=3.0.0 # renovate: datasource=github-releases depName=shrimqy/Sefirah extractVersion=^v?(?<version>.*)$
+pkgver=3.1.0 # renovate: datasource=github-releases depName=shrimqy/Sefirah versioning=semver-coerced extractVersion=^v?(?<version>.*)$
 pkgrel=2
 pkgdesc="Open-source tool to connect your Android device and Windows/Linux PC"
 arch=('x86_64')
@@ -15,9 +15,9 @@ provides=('sefirah')
 options=('!strip')
 
 source=(
-  "sefirah-${pkgver}.AppImage::https://github.com/shrimqy/Sefirah/releases/download/v${pkgver}/Sefirah-${pkgver}-x64.AppImage"
+  "sefirah-${pkgver}.AppImage::https://github.com/shrimqy/Sefirah/releases/download/v${pkgver}/Sefirah-${pkgver}.AppImage"
 )
-sha256sums=('f7d8157f17b01c32255a75ab1f9e11164300bb985cbff3183734bfb27226287d')
+sha256sums=('02973b5fbf503bec13d49f30a2e1a1af8505fc0d7c7f5e02062c6a10405dd270')
 
 prepare() {
   chmod +x "${srcdir}/sefirah-${pkgver}.AppImage"

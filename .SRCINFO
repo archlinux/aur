@@ -1,6 +1,6 @@
 pkgbase = sefirah-bin
 	pkgdesc = Open-source tool to connect your Android device and Windows/Linux PC
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 2
 	url = https://github.com/shrimqy/Sefirah
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sefirah-bin
 	provides = sefirah
 	conflicts = sefirah
 	options = !strip
-	source = sefirah-3.0.0.AppImage::https://github.com/shrimqy/Sefirah/releases/download/v3.0.0/Sefirah-3.0.0-x64.AppImage
-	sha256sums = f7d8157f17b01c32255a75ab1f9e11164300bb985cbff3183734bfb27226287d
+	source = sefirah-3.1.0.AppImage::https://github.com/shrimqy/Sefirah/releases/download/v3.1.0/Sefirah-3.1.0.AppImage
+	sha256sums = 02973b5fbf503bec13d49f30a2e1a1af8505fc0d7c7f5e02062c6a10405dd270
 
 pkgname = sefirah-bin
