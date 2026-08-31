@@ -1,23 +1,24 @@
 pkgbase = xlibre-video-nouveau
 	pkgdesc = XLibre Open Source 3D acceleration driver for nVidia cards
-	pkgver = 25.0.0
-	pkgrel = 8
+	pkgver = 25.0.1
+	pkgrel = 9
 	url = https://github.com/X11Libre/xf86-video-nouveau
 	arch = x86_64
 	groups = xlibre-drivers
 	license = MIT
-	makedepends = xlibre-xserver-devel
-	makedepends = X-ABI-VIDEODRV_VERSION=28.0
 	makedepends = systemd
-	depends = systemd-libs
-	depends = mesa
-	depends = libdrm
+	makedepends = X-ABI-VIDEODRV_VERSION=28.0
+	makedepends = xlibre-xserver-devel
 	depends = glibc
+	depends = libdrm
+	depends = mesa
+	depends = systemd-libs
 	depends = xlibre-xserver
-	conflicts = xf86-video-nouveau
+	provides = xf86-video-nouveau
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
-	source = https://github.com/X11Libre/xf86-video-nouveau/archive/refs/tags/xlibre-xf86-video-nouveau-25.0.0.tar.gz
-	sha512sums = 7220f29c98746c98299c269e915743ac685644e0331b5a41e798dba8f4cc6add7650b6fee6890b3f7e69ee9624c67e7bf5f01fe374a6a0588347e8531ff59401
+	conflicts = xf86-video-nouveau
+	source = https://github.com/X11Libre/xf86-video-nouveau/archive/refs/tags/xlibre-xf86-video-nouveau-25.0.1.tar.gz
+	sha512sums = 4935b2107fa50861341b46b5ff049cbef243c0961436dd3910d5f4f1cb198c2d81d477708f88f9b14f0bf0c4b6585bb5f8625e40126860123bc8f06b3ebfae86
 
 pkgname = xlibre-video-nouveau
