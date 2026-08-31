@@ -1,0 +1,13 @@
+pkgbase = accio-bin
+	pkgdesc = Switch your ai provider credentials and configurations. accio ai!
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/nickheyer/accio
+	arch = x86_64
+	license = MIT
+	provides = accio
+	conflicts = accio
+	source = accio-0.0.4-x86_64-linux.tar.gz::https://github.com/nickheyer/accio/releases/download/v0.0.4/accio-0.0.4-x86_64-linux.tar.gz
+	sha256sums = efaa301fe9ad0ab8e8b4650729596b9140b496c39c7634148136781f7e7ad7cc
+
+pkgname = accio-bin
