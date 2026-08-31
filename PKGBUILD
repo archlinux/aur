@@ -1,7 +1,7 @@
 # Maintainer: Gyula Kisrákói <krakoi90@gmail.com>
 _npmname=betterwright
 pkgname=betterwright-bin
-pkgver=1.10.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Policy-guarded, token-efficient Playwright browser for AI agents"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('betterwright')
 install=betterwright.install
 noextract=("$_npmname-$pkgver.tgz")
 source=("$_npmname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha256sums=('4db6fa2d55d64b4982145b5477a42d2b8b85a5434639481d0740db597c1b23c1')
+sha256sums=('524cf54f9848a240176ee010639e84efc04917b83c46d6569725632332fa72db')
 
 package() {
   export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1

@@ -1,9 +1,9 @@
 post_install() {
   printf '%s\n' \
     '==> BetterWright is installed without bundled browser binaries.' \
-    '==> Run "betterwright setup" to download the managed browser to ~/.betterwright/chromium/.' \
+    '==> Run "betterwright init" for guided setup and agent integration.' \
     '==> Run "betterwright doctor" to check the installation.' \
-    '==> Run "betterwright init" for guided setup and agent integration.'
+    '==> Run "betterwright update" after package upgrades, to replace installed skill files with the updated version'
 }
 
 post_upgrade() {

@@ -1,6 +1,6 @@
 pkgbase = betterwright-bin
 	pkgdesc = Policy-guarded, token-efficient Playwright browser for AI agents
-	pkgver = 1.10.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/BetterWright/betterwright
 	install = betterwright.install
@@ -10,8 +10,8 @@ pkgbase = betterwright-bin
 	depends = nodejs>=22.18.0
 	provides = betterwright
 	conflicts = betterwright
-	noextract = betterwright-1.10.0.tgz
-	source = betterwright-1.10.0.tgz::https://registry.npmjs.org/betterwright/-/betterwright-1.10.0.tgz
-	sha256sums = 4db6fa2d55d64b4982145b5477a42d2b8b85a5434639481d0740db597c1b23c1
+	noextract = betterwright-2.0.0.tgz
+	source = betterwright-2.0.0.tgz::https://registry.npmjs.org/betterwright/-/betterwright-2.0.0.tgz
+	sha256sums = 524cf54f9848a240176ee010639e84efc04917b83c46d6569725632332fa72db
 
 pkgname = betterwright-bin
