@@ -17,7 +17,7 @@ _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
 url=${_ghurl}
 
-license=('MIT')
+license=('MIT' 'Apache-2.0')
 
 provides=("${_appname}")
 conflicts=("${pkgname%-bin}")
@@ -48,5 +48,6 @@ package() {
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE-MIT.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-MIT"
+	install -Dm644 "LICENSE-APACHE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-APACHE"
 }

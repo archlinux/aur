@@ -6,6 +6,7 @@ pkgbase = gwm-cli-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	license = Apache-2.0
 	depends = glibc
 	depends = libgcc
 	depends = zlib
