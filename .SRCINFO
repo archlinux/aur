@@ -1,0 +1,17 @@
+pkgbase = sipp-bin
+	pkgdesc = A free open source test tool and traffic generator for the SIP protocol (prebuilt x86_64)
+	pkgver = 3.7.7
+	pkgrel = 1
+	url = http://github.com/sipp
+	arch = x86_64
+	license = GPL2
+	depends = gcc-libs
+	depends = gsl
+	depends = lksctp-tools
+	depends = libpcap
+	depends = ncurses
+	depends = openssl
+	source = https://github.com/Veng0923/sipp/releases/download/3.7.7-1/sipp
+	sha256sums = 7ce318cd726969870d99dfa491c2f6b0f1507d93ef66707d64341ceb602beedd
+
+pkgname = sipp-bin
