@@ -42,6 +42,13 @@ package() {
 
     find "${pkgdir}/usr/lib/${pkgname}/node_modules" -type f -perm /111 -exec chmod 644 {} +
 
+    # restore execute on esbuild binary (blanket chmod above stripped it)
+    case "${CARCH}" in
+        x86_64) _esbuild_arch=linux-x64 ;;
+        aarch64) _esbuild_arch=linux-arm64 ;;
+    esac
+    chmod 755 "${pkgdir}/usr/lib/${pkgname}/node_modules/@esbuild/${_esbuild_arch}/bin/esbuild" 2>/dev/null || true
+
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/paseo" <<'WRAPPER'
 #!/bin/sh
 exec /usr/bin/node /usr/lib/paseo-cli-beta/node_modules/@getpaseo/cli/bin/paseo "$@"
