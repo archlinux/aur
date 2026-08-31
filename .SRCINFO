@@ -1,6 +1,6 @@
 pkgbase = gcc-snapshot
 	pkgdesc = The GNU Compiler Collection (snapshot)
-	pkgver = 17.0.0.snapshot20260823
+	pkgver = 17.0.0.snapshot20260830
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = gcc-snapshot
 	makedepends = zstd
 	options = !emptydirs
 	options = !lto
-	source = https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/17-20260823/gcc-17-20260823.tar.xz
+	source = https://ftp.fu-berlin.de/unix/languages/gcc/snapshots/17-20260830/gcc-17-20260830.tar.xz
 	source = git+https://github.com/Meinersbur/isl.git#branch=master
 	source = https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz
 	source = https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz.sig
@@ -38,7 +38,7 @@ pkgbase = gcc-snapshot
 	validpgpkeys = 343C2FF0FBEE5EC2EDBEF399F3599FF828C67298
 	validpgpkeys = A534BE3F83E241D918280AEB5831D11A0D4DB02A
 	validpgpkeys = AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3
-	sha256sums = 2c065f65460b4c540fed7a2d1c870641fda71290b44151ab99372fcc292f49f3
+	sha256sums = 0cd0da7409f6e0d01a81c7b6f96cf750cea76ff057a96039f6aa094d35ffc1ed
 	sha256sums = SKIP
 	sha256sums = a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898
 	sha256sums = SKIP
@@ -52,8 +52,8 @@ pkgbase = gcc-snapshot
 
 pkgname = gcc-snapshot
 	pkgdesc = GNU Compiler Collection - C and C++ front-ends (snapshot)
-	depends = libgcc-snapshot=17.0.0.snapshot20260823-1
-	depends = libstdc++-snapshot=17.0.0.snapshot20260823-1
+	depends = libgcc-snapshot=17.0.0.snapshot20260830-1
+	depends = libstdc++-snapshot=17.0.0.snapshot20260830-1
 	depends = glibc>=2.40
 	depends = zstd
 	optdepends = lib32-gcc-libs-snapshot: for generating code for 32-bit ABI
@@ -70,8 +70,8 @@ pkgname = gcc-snapshot
 
 pkgname = gcc-ada-snapshot
 	pkgdesc = GNU Compiler Collection - Ada front-end (snapshot)
-	depends = gcc-snapshot=17.0.0.snapshot20260823-1
-	depends = libgnat-snapshot=17.0.0.snapshot20260823-1
+	depends = gcc-snapshot=17.0.0.snapshot20260830-1
+	depends = libgnat-snapshot=17.0.0.snapshot20260830-1
 	depends = glibc>=2.40
 	provides = gcc-ada-snapshot-multilib
 	provides = gcc-ada-multilib
@@ -86,8 +86,8 @@ pkgname = gcc-ada-snapshot
 
 pkgname = gcc-ga68-snapshot
 	pkgdesc = GNU Compiler Collection - Algol68 front-end (snapshot)
-	depends = gcc-snapshot=17.0.0.snapshot20260823-1
-	depends = libga68-snapshot=17.0.0.snapshot20260823-1
+	depends = gcc-snapshot=17.0.0.snapshot20260830-1
+	depends = libga68-snapshot=17.0.0.snapshot20260830-1
 	depends = glibc>=2.40
 	provides = gcc-ga68-snapshot-multilib
 	provides = gcc-ga68-multilib
@@ -102,8 +102,8 @@ pkgname = gcc-ga68-snapshot
 
 pkgname = gcc-gcobol-snapshot
 	pkgdesc = GNU Compiler Collection - Cobol front-end (snapshot)
-	depends = gcc-snapshot=17.0.0.snapshot20260823-1
-	depends = libgcobol-snapshot=17.0.0.snapshot20260823-1
+	depends = gcc-snapshot=17.0.0.snapshot20260830-1
+	depends = libgcobol-snapshot=17.0.0.snapshot20260830-1
 	depends = glibc>=2.40
 	provides = gcc-gcobol-snapshot-multilib
 	provides = gcc-gcobol-multilib
@@ -118,8 +118,8 @@ pkgname = gcc-gcobol-snapshot
 
 pkgname = gcc-d-snapshot
 	pkgdesc = GNU Compiler Collection - D front-end (snapshot)
-	depends = gcc-snapshot=17.0.0.snapshot20260823-1
-	depends = libgphobos-snapshot=17.0.0.snapshot20260823-1
+	depends = gcc-snapshot=17.0.0.snapshot20260830-1
+	depends = libgphobos-snapshot=17.0.0.snapshot20260830-1
 	depends = glibc>=2.40
 	provides = gcc-d-snapshot-multilib
 	provides = gcc-d-multilib
@@ -137,8 +137,8 @@ pkgname = gcc-d-snapshot
 
 pkgname = gcc-fortran-snapshot
 	pkgdesc = GNU Compiler Collection - Fortran front-end (snapshot)
-	depends = gcc-snapshot=17.0.0.snapshot20260823-1
-	depends = libgfortran-snapshot=17.0.0.snapshot20260823-1
+	depends = gcc-snapshot=17.0.0.snapshot20260830-1
+	depends = libgfortran-snapshot=17.0.0.snapshot20260830-1
 	depends = glibc>=2.40
 	provides = gcc-fortran-snapshot-multilib
 	provides = gcc-fortran-multilib
@@ -153,8 +153,8 @@ pkgname = gcc-fortran-snapshot
 
 pkgname = gcc-go-snapshot
 	pkgdesc = GNU Compiler Collection - Go front-end (snapshot)
-	depends = gcc-snapshot=17.0.0.snapshot20260823-1
-	depends = libgo-snapshot=17.0.0.snapshot20260823-1
+	depends = gcc-snapshot=17.0.0.snapshot20260830-1
+	depends = libgo-snapshot=17.0.0.snapshot20260830-1
 	depends = glibc>=2.40
 	provides = go=1.18
 	provides = gcc-go-snapshot-multilib
@@ -171,8 +171,8 @@ pkgname = gcc-go-snapshot
 
 pkgname = gcc-m2-snapshot
 	pkgdesc = GNU Compiler Collection - Modula-2 front-end (snapshot)
-	depends = gcc-snapshot=17.0.0.snapshot20260823-1
-	depends = libgm2-snapshot=17.0.0.snapshot20260823-1
+	depends = gcc-snapshot=17.0.0.snapshot20260830-1
+	depends = libgm2-snapshot=17.0.0.snapshot20260830-1
 	depends = glibc>=2.40
 	provides = gcc-m2-snapshot-multilib
 	provides = gcc-m2-multilib
@@ -187,8 +187,8 @@ pkgname = gcc-m2-snapshot
 
 pkgname = gcc-objc-snapshot
 	pkgdesc = GNU Compiler Collection - Objective-C front-end (snapshot)
-	depends = gcc-snapshot=17.0.0.snapshot20260823-1
-	depends = libobjc-snapshot=17.0.0.snapshot20260823-1
+	depends = gcc-snapshot=17.0.0.snapshot20260830-1
+	depends = libobjc-snapshot=17.0.0.snapshot20260830-1
 	depends = glibc>=2.40
 	provides = gcc-objc-snapshot-multilib
 	provides = gcc-objc-multilib
@@ -203,7 +203,7 @@ pkgname = gcc-objc-snapshot
 
 pkgname = gcc-rust-snapshot
 	pkgdesc = GNU Compiler Collection - Rust front-end (snapshot)
-	depends = gcc-snapshot=17.0.0.snapshot20260823-1
+	depends = gcc-snapshot=17.0.0.snapshot20260830-1
 	depends = glibc>=2.40
 	provides = gcc-rust-snapshot-multilib
 	provides = gcc-rust-multilib
@@ -218,27 +218,27 @@ pkgname = gcc-rust-snapshot
 
 pkgname = gcc-libs-snapshot
 	pkgdesc = GNU Compiler Collection - Runtime libraries (snapshot)
-	depends = libasan-snapshot=17.0.0.snapshot20260823-1
-	depends = libatomic-snapshot=17.0.0.snapshot20260823-1
-	depends = libga68-snapshot=17.0.0.snapshot20260823-1
-	depends = libgfortran-snapshot=17.0.0.snapshot20260823-1
-	depends = libgcc-snapshot=17.0.0.snapshot20260823-1
-	depends = libgnat-snapshot=17.0.0.snapshot20260823-1
-	depends = libgo-snapshot=17.0.0.snapshot20260823-1
-	depends = libgomp-snapshot=17.0.0.snapshot20260823-1
-	depends = libgphobos-snapshot=17.0.0.snapshot20260823-1
-	depends = libitm-snapshot=17.0.0.snapshot20260823-1
-	depends = liblsan-snapshot=17.0.0.snapshot20260823-1
-	depends = libobjc-snapshot=17.0.0.snapshot20260823-1
-	depends = libquadmath-snapshot=17.0.0.snapshot20260823-1
-	depends = libstdc++-snapshot=17.0.0.snapshot20260823-1
-	depends = libtsan-snapshot=17.0.0.snapshot20260823-1
-	depends = libubsan-snapshot=17.0.0.snapshot20260823-1
-	depends = libvtv-snapshot=17.0.0.snapshot20260823-1
+	depends = libasan-snapshot=17.0.0.snapshot20260830-1
+	depends = libatomic-snapshot=17.0.0.snapshot20260830-1
+	depends = libga68-snapshot=17.0.0.snapshot20260830-1
+	depends = libgfortran-snapshot=17.0.0.snapshot20260830-1
+	depends = libgcc-snapshot=17.0.0.snapshot20260830-1
+	depends = libgnat-snapshot=17.0.0.snapshot20260830-1
+	depends = libgo-snapshot=17.0.0.snapshot20260830-1
+	depends = libgomp-snapshot=17.0.0.snapshot20260830-1
+	depends = libgphobos-snapshot=17.0.0.snapshot20260830-1
+	depends = libitm-snapshot=17.0.0.snapshot20260830-1
+	depends = liblsan-snapshot=17.0.0.snapshot20260830-1
+	depends = libobjc-snapshot=17.0.0.snapshot20260830-1
+	depends = libquadmath-snapshot=17.0.0.snapshot20260830-1
+	depends = libstdc++-snapshot=17.0.0.snapshot20260830-1
+	depends = libtsan-snapshot=17.0.0.snapshot20260830-1
+	depends = libubsan-snapshot=17.0.0.snapshot20260830-1
+	depends = libvtv-snapshot=17.0.0.snapshot20260830-1
 	depends = glibc>=2.40
 	provides = gcc-libs-snapshot-multilib
 	provides = gcc-libs-multilib
-	provides = gcc-libs=17.0.0.snapshot20260823-1
+	provides = gcc-libs=17.0.0.snapshot20260830-1
 	conflicts = gcc-libs-multilib
 	conflicts = gcc-libs
 	replaces = gcc-libs-snapshot-multilib
@@ -293,7 +293,7 @@ pkgname = libgcc-snapshot
 
 pkgname = libgccjit-snapshot
 	pkgdesc = GNU Compiler Collection - Just-In-Time compilation framework (snapshot)
-	depends = gcc-snapshot=17.0.0.snapshot20260823-1
+	depends = gcc-snapshot=17.0.0.snapshot20260830-1
 	provides = libgccjit-snapshot-multilib
 	provides = libgccjit
 	conflicts = libgccjit
@@ -500,7 +500,7 @@ pkgname = lib32-gcc-libs-snapshot
 
 pkgname = lto-dump-snapshot
 	pkgdesc = GNU Compiler Collection - Dump link time optimization object files tool (snapshot)
-	depends = gcc-snapshot=17.0.0.snapshot20260823-1
+	depends = gcc-snapshot=17.0.0.snapshot20260830-1
 	depends = libgcc-snapshot
 	provides = lto-dump-snapshot-multilib
 	provides = lto-dump
