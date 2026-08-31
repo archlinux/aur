@@ -9,6 +9,17 @@ If this project saves you or your company time, consider [sponsoring](https://gi
 
 ## [Unreleased]
 
+## [2.21.0] - 2026-08-30
+
+### Changed
+- Better Proxy error hanling
+- Remove Proxy preference if you pacakaging doesn't have access to it
+- Improve boot list fetch by a factor 10
+
+### Fixed
+- [Issue 78](https://github.com/plrigaux/sysd-manager/issues/78) Now display journal events when new events arrives and when originally there were no displayed events
+- Fixed some toast messages
+
 ## [2.20.11] - 2026-08-22
 
 ### Fixed
