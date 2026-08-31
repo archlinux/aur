@@ -1,6 +1,6 @@
 pkgbase = g15-cli
 	pkgdesc = Keyboard backlight, fan and power control for Dell G15 laptops (AW-ELC 187c:0550)
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/andeen171/g15-cli
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = g15-cli
 	depends = gcc-libs
 	optdepends = acpi_call: fan boost and power mode control
 	optdepends = acpi_call-dkms: fan boost and power mode control (non-stock kernels)
-	optdepends = hyprpicker: pick colors from the screen in the TUI
-	source = g15-cli-0.2.0.tar.gz::https://github.com/andeen171/g15-cli/archive/v0.2.0.tar.gz
-	sha256sums = ee96196a5bfd6252ab3bfeddaf0c490878b2a757121f4d41ae7a7d62607a1652
+	optdepends = hyprpicker: pick colors from the screen in the TUI and the bar plugin
+	optdepends = polkit: password prompt for the power and fan controls in the bar plugin
+	source = g15-cli-0.3.0.tar.gz::https://github.com/andeen171/g15-cli/archive/v0.3.0.tar.gz
+	sha256sums = e996ad4bf99d98611d1f4868fc5c6718b75294f121e5fc0573a220b66aed5d79
 
 pkgname = g15-cli
