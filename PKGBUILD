@@ -3,7 +3,7 @@
 pkgname=unixel-fonts
 pkgver=1.0
 pkgrel=1
-pkgdesc="An English-Arabic pixel font."
+pkgdesc="An English-Arabic Pixel font"
 arch=('any')
 url="https://github.com/MDarvishi5124/Unixel"
 license=('OFL')
