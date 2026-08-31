@@ -1,6 +1,6 @@
 pkgbase = cursebreaker-bin
 	pkgdesc = A CLI tool for CurseForge/WowInterface addon management (Pre-compiled Linux binary)
-	pkgver = 4.8.4
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = https://github.com/AcidWeb/CurseBreaker
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = cursebreaker-bin
 	provides = cursebreaker
 	conflicts = cursebreaker
 	conflicts = cursebreaker-git
-	source = https://github.com/AcidWeb/CurseBreaker/releases/download/v4.8.4/CurseBreaker-linux.gz
-	source = LICENSE-4.8.4::https://github.com/AcidWeb/CurseBreaker/raw/master/LICENSE.txt
-	sha256sums = bff5e780882d8e4370f4ad7d22aa0ad0bb5663bc2aa0c08344284042aae390e0
+	source = https://github.com/AcidWeb/CurseBreaker/releases/download/v4.9.0/CurseBreaker-linux.gz
+	source = LICENSE-4.9.0::https://github.com/AcidWeb/CurseBreaker/raw/master/LICENSE.txt
+	sha256sums = 1c1e408edc5d63de18fce4e510174c63b2b191fb7334cba180fc2ec5cfd0f79a
 	sha256sums = c53a65c2fd561c87eaabf1072ef5dcab8653042bc15308465f52413585eb6271
 
 pkgname = cursebreaker-bin
