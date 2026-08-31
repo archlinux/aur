@@ -1,6 +1,6 @@
 pkgbase = python-ag-ui-protocol
 	pkgdesc = Python SDK for the Agent-User Interaction (AG-UI) Protocol.
-	pkgver = 0.1.21
+	pkgver = 0.1.22
 	pkgrel = 1
 	url = https://github.com/ag-ui-protocol/ag-ui/tree/main/sdks/python
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-ag-ui-protocol
 	makedepends = python-wheel
 	depends = python
 	depends = python-pydantic
-	source = https://github.com/ag-ui-protocol/ag-ui/archive/refs/tags/ag-ui-protocol@0.1.21.tar.gz
-	sha256sums = 3115a793d8b291eb9d46495fad1dd3e7fcb670f7f2ac115fa726c3941959dd45
+	source = https://github.com/ag-ui-protocol/ag-ui/archive/refs/tags/ag-ui-protocol@0.1.22.tar.gz
+	sha256sums = 4c5c83427fae01021b2c9ba9d1e4426bb0044498f638bf9c90cac0d32c280614
 
 pkgname = python-ag-ui-protocol
