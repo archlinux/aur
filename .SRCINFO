@@ -1,0 +1,14 @@
+pkgbase = gnome-shell-extension-better-tray-icons
+	pkgdesc = Brings tray icons back to the GNOME top panel, with an overflow popup behind a toggle button, per-app renaming and icon overrides, configurable click actions and settings sync. Wayland only.
+	pkgver = 3.1.2
+	pkgrel = 1
+	url = https://github.com/nexaknight/BetterTrayIcons
+	arch = any
+	license = GPL-3.0-or-later
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-better-tray-icons-git
+	noextract = BetterTrayIcons@nexaknight.com-3.1.2.zip
+	source = BetterTrayIcons@nexaknight.com-3.1.2.zip::https://github.com/nexaknight/BetterTrayIcons/releases/download/v3.1.2/BetterTrayIcons@nexaknight.com.zip
+	sha256sums = cec000d964c41b71ddd18b56466905fd80e17d48b9f39ed45b905634eb319a7d
+
+pkgname = gnome-shell-extension-better-tray-icons
