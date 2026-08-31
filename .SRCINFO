@@ -1,6 +1,6 @@
 pkgbase = devkitty
 	pkgdesc = Swiss army knife for developers.(Use system-wide electron)
-	pkgver = 4.2.3
+	pkgver = 4.2.6
 	pkgrel = 1
 	url = https://devkitty.app/
 	arch = any
