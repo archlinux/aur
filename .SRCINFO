@@ -1,6 +1,6 @@
 pkgbase = wattage
 	pkgdesc = An application designed for monitoring the health and status of your power devices.
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/v81d/wattage
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = wattage
 	depends = libadwaita
 	depends = libgee
 	depends = upower
-	source = wattage-1.5.1.tar.gz::https://github.com/v81d/wattage/archive/refs/tags/1.5.1.tar.gz
-	sha256sums = ce8a4e30fde712544250a0e64f9acf8233b99a572c74f9ff7cd8cc0f633160d0
+	source = wattage-1.5.2.tar.gz::https://github.com/v81d/wattage/archive/refs/tags/1.5.2.tar.gz
+	sha256sums = 2e2bcdf2573f8eaa9bb763ae57bbae5831f4c5bdbe508f89dcc71607d232ed4c
 
 pkgname = wattage
