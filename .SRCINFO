@@ -1,5 +1,5 @@
 pkgbase = shelly
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
@@ -14,10 +14,16 @@ pkgbase = shelly
 	makedepends = flatpak
 	makedepends = ripgrep
 	makedepends = go-md2man
-	source = shelly-3.1.1.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/archive/v3.1.1.tar.gz
+	source = shelly-3.1.2.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/archive/v3.1.2.tar.gz
 	source = shellybuild.conf
-	sha256sums = 70b3bb45f7f6a38ae01bf00c702282b9dbdf79330d2c84b21d9620ace452f4ea
+	source = com.shellyorg.shelly.desktop
+	source = com.shellyorg.shelly-notifications.desktop
+	source = shelly-flatpak-integrate
+	sha256sums = 42a177be3b44f4de116b3457d3e7f1e175af73d3f7a47b27d24f7748b7aa1bf0
 	sha256sums = 0aff9177498bd94e90c937076d15ac76116c628ec3504a7c1b8c9ea086336ca6
+	sha256sums = 2cdefd69e5e1a2ecaa9a787ef04137af16d55690361034420f4dfcbb575e8627
+	sha256sums = 05f39f65a0f0797ea8a45b10cb693a197908aec298b2a17422a6d942ad1dee36
+	sha256sums = da6ed2f71966aef9cc20f7dcd3a5aa87afd3d57d2fccebfe71be62e4d9ae64d5
 
 pkgname = shelly
 	pkgdesc = Shelly: A Modern Arch Package Manager
@@ -36,6 +42,7 @@ pkgname = shelly
 	depends = gnupg
 	depends = zstd
 	depends = json-glib
+	optdepends = arch-install-scripts: provision fresh roots for --isolated builds
 	optdepends = fish: Fish shell completions
 	optdepends = zsh: Zsh shell completions
 	optdepends = libstarfish: dependency viewer for arch packages
@@ -48,8 +55,8 @@ pkgname = shelly
 
 pkgname = shelly-flatpak-backend
 	pkgdesc = Optional native Flatpak backend for Shelly
-	depends = shelly=3.1.1
+	depends = shelly=3.1.2
 	depends = flatpak
-	provides = shelly-flatpak-backend=3.1.1
+	provides = shelly-flatpak-backend=3.1.2
 	conflicts = shelly-flatpak-backend-git
 	conflicts = shelly-flatpak-backend-bin
