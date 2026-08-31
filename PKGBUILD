@@ -3,13 +3,13 @@
 
 _pkgname=pappl
 pkgname="$_pkgname"-git
-pkgver=r914.d42115a
+pkgver=1.4.0.r422.g64537bb
 pkgrel=1
 pkgdesc="A simple C-based framework/library for developing CUPS Printer Applications"
 arch=('x86_64' 'aarch64')
 url="https://www.msweet.org/pappl/"
-license=('Apache' 'custom')
-depends=('libcups' 'libjpeg-turbo' 'pam')
+license=('Apache-2.0' 'custom')
+depends=('libcups-git' 'libjpeg-turbo' 'libusb')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --always | sed 's|^v||;s|-|.r|;s|-|.|'
 }
 
 build() {
