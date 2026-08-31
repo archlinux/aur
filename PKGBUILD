@@ -5,26 +5,23 @@ pkgname='denise'
 pkgdesc='Highly accurate C64/Amiga emulator'
 url='https://sourceforge.net/projects/deniseemu/'
 license=('GPL-3.0-or-later')
-pkgver=2.8
+pkgver=2.9
 pkgrel=1
 
-_commit="092eaae533ec"
-_srcdir="piciji-$pkgname-$_commit"
-
-source=("$pkgname-$pkgver.tar.gz::https://bitbucket.org/piciji/denise/get/v$pkgver.tar.gz")
-sha256sums=('50cf89e12c43cabc7e55f2f4da501d5642ad55e6022b135c1d982afb29937588')
-depends=('gtk3' 'openal' 'libpulse')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/piciji/denise/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d72d5a989ff4f62dd200964bb76ead8f6f5a2993be3e121085942e7093a5b023')
+depends=('gtk3' 'openal' 'libpulse' 'libusb')
 makedepends=('cmake')
 arch=('x86_64')
 
 build() {
-  cd "$srcdir/$_srcdir"
+  cd "$srcdir/$pkgname-$pkgver"
   cmake -DCMAKE_INSTALL_PREFIX=/usr -B builds/release
   cmake --build builds/release
 }
 
 package() {
-  cd "$srcdir/$_srcdir"
+  cd "$srcdir/$pkgname-$pkgver"
   DESTDIR="${pkgdir}" cmake --build builds/release --target install
   rm -fr "${pkgdir}"/usr/share/appdata
 }
