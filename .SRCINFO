@@ -3,6 +3,7 @@ pkgbase = pappl-retrofit-git
 	pkgrel = 1
 	url = https://github.com/OpenPrinting/pappl-retrofit
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	makedepends = git
 	makedepends = libcups
