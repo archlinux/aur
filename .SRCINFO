@@ -1,6 +1,6 @@
 pkgbase = kuna
 	pkgdesc = An agent-first decompiler designed to be refined by other agents
-	pkgver = 1.152
+	pkgver = 1.197
 	pkgrel = 1
 	url = https://github.com/Noelo-Lab/kuna
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kuna
 	makedepends = git
 	depends = gcc-libs
 	depends = glibc
-	source = kuna::git+https://github.com/Noelo-Lab/kuna.git#tag=v1.152
+	source = kuna::git+https://github.com/Noelo-Lab/kuna.git#tag=v1.197
 	sha256sums = SKIP
 
 pkgname = kuna

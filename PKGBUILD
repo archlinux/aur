@@ -1,6 +1,6 @@
 # Maintainer: Noelo Lab <contact@noelo.org>
 pkgname=kuna
-pkgver=1.152
+pkgver=1.197
 pkgrel=1
 pkgdesc="An agent-first decompiler designed to be refined by other agents"
 arch=('x86_64' 'aarch64')
