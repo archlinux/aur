@@ -1,13 +1,12 @@
 pkgbase = mcp-gitee-ent-git
 	pkgdesc = Gitee Enterprise MCP Server is a Model Context Protocol (MCP) server implementation for Gitee Enterprise.
-	pkgver = 0.1.10.r0.gd1ef6ef
-	pkgrel = 4
+	pkgver = 0.2.0.r0.gbd30441
+	pkgrel = 1
 	url = https://gitee.com/oschina/mcp-gitee-ent
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	depends = glibc
 	optdepends = gitee-lfs-multipart-uploader: Gitee LFS high-speed object storage direct transfer tool
 	optdepends = mcp-gitee: Gitee MCP Server is a Model Context Protocol (MCP) server implementation for Gitee.
 	provides = mcp-gitee-ent
