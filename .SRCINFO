@@ -1,0 +1,27 @@
+pkgbase = gravitymark
+	pkgdesc = Cross-platform GPU benchmark and stress test
+	pkgver = 1.89
+	pkgrel = 1
+	url = https://gravitymark.tellusim.com/
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-GravityMark-EULA
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libx11
+	depends = libxcb
+	depends = libxext
+	depends = libxrandr
+	depends = vulkan-icd-loader
+	optdepends = vulkan-driver: Vulkan driver for Vulkan benchmarks
+	options = !strip
+	source = gravitymark.sh
+	source = gravitymark.desktop
+	sha256sums = 73cee5ba4c5e13a70d8d4d721cb3f836e278542e75d1d3eca28892519271504e
+	sha256sums = dc1be911ce5e5dd0e5d05f28cc1a2bbcb72b8ab269a63c4c254a2c371e786715
+	source_x86_64 = GravityMark-1.89-x86_64.run::https://tellusim.com/download/GravityMark_1.89.run
+	sha256sums_x86_64 = de090c7b9e40f10f225d9393f2cf73a660ad4edc21f6b333eea3190a8722e005
+	source_aarch64 = GravityMark-1.89-aarch64.run::https://tellusim.com/download/GravityMark_1.89_arm64.run
+	sha256sums_aarch64 = 24919031efe3dd9b81f3b64453b7c04da60c3dfc2129ac18a94b28c0c97e6ba8
+
+pkgname = gravitymark

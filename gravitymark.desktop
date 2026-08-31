@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=GravityMark
+Comment=GPU benchmark
+Exec=gravitymark
+Icon=gravitymark
+Categories=System;Utility;
+Terminal=false

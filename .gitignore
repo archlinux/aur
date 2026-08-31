@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!gravitymark.sh
+!gravitymark.desktop
+!REUSE.toml
+!LICENSE
+!LICENSES/
+!LICENSES/**

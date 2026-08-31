@@ -1,0 +1,12 @@
+version = 1
+
+[[annotations]]
+path = [
+  ".SRCINFO",
+  ".gitignore",
+  "PKGBUILD",
+  "gravitymark.desktop",
+  "gravitymark.sh",
+]
+SPDX-FileCopyrightText = "2026 GravityMark package contributors"
+SPDX-License-Identifier = "0BSD"
