@@ -6,6 +6,7 @@ pkgname=zola-tera1
 pkgver=0.22.1
 pkgrel=2
 pkgdesc="The last Zola version before the breaking change to Tera 2"
+conflicts=("zola")
 arch=('x86_64')
 url="https://github.com/getzola/zola"
 depends=('libgcc' 'glibc' 'oniguruma')
