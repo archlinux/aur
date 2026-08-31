@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=PacTerm
+GenericName=PacMan Terminal Game
+Comment=An open-source terminal-based PacMan clone by Wael
+Exec=pacterm
+Icon=pacterm
+Terminal=true
+Categories=Game;ArcadeGame;
+Keywords=game;terminal;arcade;cli;opensource;
