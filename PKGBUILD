@@ -1,7 +1,7 @@
 # Maintainer: konkitoman <open.issue.on@github.com>
 # Contributor: Leah Anderson <leah.anderson4435@proton.me>
 pkgname=theclicker
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Autoclicker coded in Rust for Wayland and X11"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('2da1942a50d81baaa765a783879560ca87c986b4a244c9168e894249e0f3482c9f6ebbbe6a86d649f66ab659ce923765d88d88abedb153ace3d7728ec65452b9')
+sha512sums=('0b659da571da806c5ca269c594e9bc9398e1a6917bd852f6275f5df1c7915d9ca2a552f7ebaae499775d9769f3529aa6be882193bd1ebf4be33dbaa983770b02')
 options=(!debug)
 install="$pkgname.install"
 
