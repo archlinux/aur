@@ -1,18 +1,18 @@
 pkgbase = mmx-cli
 	pkgdesc = CLI for the MiniMax AI platform
-	pkgver = 1.0.22
-	pkgrel = 2
+	pkgver = 1.0.24
+	pkgrel = 1
 	url = https://github.com/MiniMax-AI/cli
 	arch = any
 	license = LicenseRef-Unknown
 	depends = nodejs>=18.17
-	noextract = mmx-cli-1.0.22.tgz
+	noextract = mmx-cli-1.0.24.tgz
 	noextract = undici-6.25.0.tgz
-	source = https://registry.npmjs.org/mmx-cli/-/mmx-cli-1.0.22.tgz
+	source = https://registry.npmjs.org/mmx-cli/-/mmx-cli-1.0.24.tgz
 	source = https://registry.npmjs.org/undici/-/undici-6.25.0.tgz
 	source = LICENSE_STATUS
-	sha512sums = 8ae624ee362ab3a9a89233d625ac31d432f5dfb5c0bced88350653a81a0459fbdc06edad4910279265f76423c49e610d457992b717b175136c1331a1023c5e8e
+	sha512sums = 47ba513b7a149968ca38f85e81a603f70f5cd7cb42c914968b4a5e33c07673103dc77044856a5ae60343a46801d4dd8e02543db465ea5cc2083786238e5f8888
 	sha512sums = 660a560c2e6098d8ae63d0a72d55c41fcae5e74c61442b8b340f7b7c05272a2f1146e57813a286df5a434ec2d550a9e88491342375c3ad3784c9d017470e3bc6
-	sha512sums = 0c395d5e2409a9c453eb5932bd5c7de121823cf967e2595c3b436e19c3ee369379de98e09f7e46afc43130670005efe1866c3d4055cd313588713ebb3bdc72be
+	sha512sums = 5e59bfb18f5591d23e54097c2e978f40a12381c6e5aaa6498dbaffed4e76918abdb3fa7d93a9bfb9813f3680b8c8af40d1b7f73d0feebde956525a4402f07004
 
 pkgname = mmx-cli
