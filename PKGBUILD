@@ -8,21 +8,21 @@
 
 _pkgname=godot
 pkgname=godot3-mono
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 pkgdesc='Advanced cross-platform 2D and 3D game engine (3.x Branch Mono)'
 url='https://godotengine.org'
 license=(MIT)
 arch=(x86_64)
 makedepends=(gcc scons yasm alsa-lib pulse-native-provider nuget xorg-server-xvfb python-distutils-extra)
-depends=(embree3 freetype2 libglvnd libtheora libvorbis libvpx libwebp libwslay
+depends=(freetype2 libglvnd libtheora libvorbis libvpx libwebp libwslay
          libsquish libxcursor libxi libxinerama libxrandr opusfile mono mono-msbuild
-	 zstd zlib glibc libxrender pcre2 libx11 libogg libxext bash krb5 gcc-libs libpng opus)
+	 zstd zlib glibc libxrender pcre2 libx11 libogg libxext bash krb5 libgcc libpng opus)
 optdepends=(pipewire-alsa pipewire-pulse)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/godotengine/godot/archive/$pkgver-stable.tar.gz"
         "godot"
         "godot3-mono.patch")
-b2sums=('f0114815b1cb3178a9c1f4a9eb3057d52b7a90c762d84f398926695d3b593d809bed7945431314df4ca37c03806632217a48fcc9e99266d3f25c82c0efe34eda'
+b2sums=('56c2a5cdccf38d5778968dd9e48d44b18d7d753eba2b37b3d0070cc338a8566c10aee3f3bff60487f2ad076bf518acf666b6693543cc10cf47dfea51319f4bf8'
         '42f2bf8fc194700d865609ca5545447473edeb63598715243a9f199f42bc9e28ef3524232b4e65bf2e9e2b53b953373c9f40ba633cf7b50df47e861e3082bd94'
         'a5f2aeacb377ed177614c4226c5de6b8dfd68b818591d93786c5c8114c6b55d52c37d8fca5a291966ea01a2c5104ad2d242a7dbc71bc8bf5292f7f6c5107660a')
 
@@ -43,7 +43,7 @@ build() {
   #  enet (contains no upstreamed IPv6 support)
   #  recast, xatlas
   #  AUR: libwebm
-  local to_unbundle="embree freetype libogg libpng libsquish libtheora libvorbis libvpx libwebp opus pcre2 wslay zlib zstd"
+  local to_unbundle="freetype libogg libpng libsquish libtheora libvorbis libvpx libwebp opus pcre2 wslay zlib zstd"
   local system_libs=""
   for _lib in $to_unbundle; do
     system_libs+="builtin_"$_lib"=no "
