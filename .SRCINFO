@@ -1,6 +1,6 @@
 pkgbase = devo-bin
 	pkgdesc = Open-source, provider-agnostic coding agent that lives in your terminal
-	pkgver = 0.1.36
+	pkgver = 0.1.37
 	pkgrel = 1
 	url = https://github.com/7df-lab/devo
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = devo-bin
 	provides = devo
 	conflicts = devo
 	options = !strip
-	source_x86_64 = devo-bin-0.1.36-x86_64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.1.36/devo-v0.1.36-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 30e8cd69cacc0bf79010d4086b2652ab384e13fde4378324facded441fb7cb57
-	source_aarch64 = devo-bin-0.1.36-aarch64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.1.36/devo-v0.1.36-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = c562579e06dd6dd9b4fef30a3f1d3a11e4ae809e25bb53cf1c3d875300561f83
+	source_x86_64 = devo-bin-0.1.37-x86_64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.1.37/devo-v0.1.37-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = f64889835226a2b22a79bcb078bdcbffdcb21429492caad41f15dad147d6dc4d
+	source_aarch64 = devo-bin-0.1.37-aarch64.tar.gz::https://github.com/7df-lab/devo/releases/download/v0.1.37/devo-v0.1.37-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = ab9fe53b2af90c3a077fa51abb53234515744a957b0478988a1c54d784f06361
 
 pkgname = devo-bin
