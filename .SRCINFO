@@ -1,8 +1,8 @@
 pkgbase = psysonic
 	pkgdesc = Desktop music player for Subsonic API-compatible servers (Navidrome, Gonic, etc.)
-	pkgver = 1.51.0
+	pkgver = 1.52.0
 	pkgrel = 1
-	url = https://github.com/Psychotoxical/psysonic
+	url = https://github.com/Psysonic/psysonic
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = npm
@@ -18,7 +18,7 @@ pkgbase = psysonic
 	depends = gst-plugins-good
 	depends = gst-plugins-bad
 	optdepends = gst-libav: additional codecs for internet radio stations
-	source = psysonic-1.51.0.tar.gz::https://github.com/Psychotoxical/psysonic/archive/refs/tags/app-v1.51.0.tar.gz
+	source = psysonic-1.52.0.tar.gz::https://github.com/Psysonic/psysonic/archive/refs/tags/app-v1.52.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = psysonic
