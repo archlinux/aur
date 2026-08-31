@@ -2,16 +2,16 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Dominic Meiser [git at msrd0 dot de]
 
-pkgname="cargo-diet"
-pkgver=1.4.0
+pkgname=cargo-diet
+pkgver=1.4.1
 pkgrel=1
-pkgdesc='Make your crate lean by computing size-optimal include directives for Cargo m...'
+pkgdesc='Make your crate lean by computing size-optimal include directives for Cargo manifests'
 url='https://github.com/the-lean-crate/cargo-diet'
 license=(MIT)
 depends=(glibc libgcc libgcc_s.so)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('12fe7e624ff1ed9a38db091fe97e7a68054e778e59e629265ffca55707006aebaadc71a159d0687a33f45ee2c8ac941bbd72722e6845e1a5e2d4d46a3911b7e5')
+sha512sums=('ae9581925a93704624dd9934710d979d2d947b7feeb07fa02571f57d6183749e3f19fcdb746edeaafbd6b38f2fec33ab6273e989f31fcaa89cf321dde3a35f13')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=(aarch64 i686 x86_64)
