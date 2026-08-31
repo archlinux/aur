@@ -11,6 +11,8 @@ pkgbase = cwal-git
 	depends = luajit
 	provides = cwal
 	conflicts = cwal
+	options = !strip
+	options = !debug
 	source = git+https://github.com/nitinbhat972/cwal.git
 	sha256sums = SKIP
 
