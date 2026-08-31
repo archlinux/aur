@@ -1,7 +1,7 @@
 pkgbase = btrfs-progs-internals-release-git
-	pkgdesc = Unshipped btrfs-progs internal tools: btrfs-sb-mod superblock editor with checksum fixup, btrfsck standalone checker, btrfs-corrupt-block; latest release tag build
+	pkgdesc = Unshipped btrfs-progs internal tools: btrfs-sb-mod superblock editor with checksum fixup, btrfs-corrupt-block; latest release tag build
 	pkgver = 7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kdave/btrfs-progs
 	arch = x86_64
 	license = GPL-2.0-only

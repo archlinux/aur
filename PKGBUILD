@@ -8,10 +8,10 @@
 # not installed by upstream 'make install').
 _repo=kdave/btrfs-progs
 pkgname=btrfs-progs-internals-release-git
-_tools=(btrfs-sb-mod btrfsck btrfs-corrupt-block)
+_tools=(btrfs-sb-mod btrfs-corrupt-block)
 pkgver=7.1
-pkgrel=1
-pkgdesc='Unshipped btrfs-progs internal tools: btrfs-sb-mod superblock editor with checksum fixup, btrfsck standalone checker, btrfs-corrupt-block; latest release tag build'
+pkgrel=2
+pkgdesc='Unshipped btrfs-progs internal tools: btrfs-sb-mod superblock editor with checksum fixup, btrfs-corrupt-block; latest release tag build'
 arch=('x86_64')
 url="https://github.com/${_repo}"
 license=('GPL-2.0-only')
