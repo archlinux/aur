@@ -23,7 +23,7 @@ else
 fi
 _ffsrcver="${_ffsrcver%b*}"
 pkgver="${_srcver}.${_lwrelver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
