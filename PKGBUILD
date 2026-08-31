@@ -6,14 +6,15 @@ _pkgname=Vesktop
 _appname=vencord-desktop
 pkgver=1.6.7
 _electronversion=43
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
 )
-url="https://github.com/Vencord/Vesktop"
-license=('GPL-3.0-only')
+url="https://vesktop.dev/"
+_ghurl="https://github.com/Vencord/Vesktop"
+license=('GPL-3.0-or-later')
 provides=(
     "${pkgname%-bin}=${pkgver}"
     "${_appname}=${pkgver}"
@@ -29,8 +30,8 @@ depends=(
 optdepends=(
     'speech-dispatcher: High-level device independent layer for speech synthesis interface'
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 source=("${pkgname%-bin}.sh")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 sha256sums_aarch64=('642473098904feb424aafc0d97d33d20d8c2596186cdfc6e9866fa6bfc6d531d')
