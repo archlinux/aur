@@ -2,7 +2,7 @@
 # Maintainer: Roman <roman@lerchster.dev>
 
 pkgname='proton-cli-bin'
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='Unofficial, end-to-end encrypted CLI for Proton Mail, Drive, Calendar, Pass and Contacts.'
 url='https://github.com/roman-16/proton-cli'
@@ -13,10 +13,10 @@ conflicts=('proton-cli')
 optdepends=('gtk3: CAPTCHA/human-verification webview' 'webkit2gtk-4.1: CAPTCHA/human-verification webview')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/roman-16/proton-cli/releases/download/v${pkgver}/proton-cli_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('3ed5392ac1a73a12699270e65ec28b106001c30ea03410d6a4523288e9a1a301')
+sha256sums_aarch64=('be56b8d62e01c19e8c7d601f58b8355d7848a8ef5bf90238bcbfbbaaea5a4928')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/roman-16/proton-cli/releases/download/v${pkgver}/proton-cli_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('351af79f31650ed369b718fc13140f45300aeadc630d107ef3e6c032c4f7c279')
+sha256sums_x86_64=('f89c5962a657185cb91f274c6460e2c05ea348a531b41c50f5c6da5cad4efe6d')
 
 package() {
   install -Dm755 "./proton" "${pkgdir}/usr/bin/proton"
