@@ -2,7 +2,7 @@
 
 _pkgname=libppd
 pkgname=$_pkgname-git
-pkgver=2.0.0.r11.g327b61cf
+pkgver=2.1.1.r24.g4afdca97
 pkgrel=1
 pkgdesc="Legacy support library for PPD files"
 arch=('x86_64' 'aarch64')

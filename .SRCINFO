@@ -1,6 +1,6 @@
 pkgbase = libppd-git
 	pkgdesc = Legacy support library for PPD files
-	pkgver = 2.0.0.r11.g327b61cf
+	pkgver = 2.1.1.r24.g4afdca97
 	pkgrel = 1
 	url = https://github.com/OpenPrinting/libppd
 	arch = x86_64
