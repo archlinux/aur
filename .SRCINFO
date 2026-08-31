@@ -1,16 +1,16 @@
 pkgbase = ferrum-bin
 	pkgdesc = Music library app.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = https://github.com/probablykasper/ferrum
+	url = https://ferrum.kasper.space/
 	arch = x86_64
 	license = LicenseRef-unknown
-	depends = electron30
-	provides = ferrum=1.0.0
+	depends = electron37
+	provides = ferrum=1.2.0
 	conflicts = ferrum
-	source = ferrum-1.0.0.rpm::https://github.com/probablykasper/ferrum/releases/download/v1.0.0/Ferrum-v1.0.0-linux-x86_64.rpm
+	source = ferrum-1.2.0.rpm::https://github.com/probablykasper/ferrum/releases/download/v1.2.0/Ferrum-v1.2.0-linux-x86_64.rpm
 	source = ferrum.sh
-	sha256sums = e763cdda1a8b244829f534bbaa275e1cd7878d157bf9e55e98411b51cd1ebf4f
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = 38040601ca63f42d6a5e7015c47a1dcaa935cc2069410c4ad2868c4b4677629d
+	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = ferrum-bin
