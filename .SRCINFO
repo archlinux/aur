@@ -1,6 +1,6 @@
 pkgbase = go-mitmproxy-bin
 	pkgdesc = Golang implementation of mitmproxy that supports man-in-the-middle attacks and parsing, monitoring, and tampering with HTTP/HTTPS traffic
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://github.com/lqqyt2423/go-mitmproxy
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = go-mitmproxy-bin
 	provides = go-mitmproxy
 	conflicts = go-mitmproxy
 	conflicts = go-mitmproxy-git
-	source_x86_64 = go-mitmproxy-x86_64-1.9.2.tgz::https://github.com/lqqyt2423/go-mitmproxy/releases/download/v1.9.2/go-mitmproxy_1.9.2_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = ee9e8cb0d2fb622e782b3367ab6b383dd1a88641b243988862c74abe76343156
-	source_i686 = go-mitmproxy-i686-1.9.2.tgz::https://github.com/lqqyt2423/go-mitmproxy/releases/download/v1.9.2/go-mitmproxy_1.9.2_Linux_i386.tar.gz
-	sha256sums_i686 = 481afb518591058f720da6ea315f58ec7b387aa49ab0a42e2d5f5e2ede9177f9
-	source_aarch64 = go-mitmproxy-aarch64-1.9.2.tgz::https://github.com/lqqyt2423/go-mitmproxy/releases/download/v1.9.2/go-mitmproxy_1.9.2_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 19d5f5747a42082bea80c2aa4b7ccfd3c10158edf4e813ad2a4369dc78f090b4
+	source_x86_64 = go-mitmproxy-x86_64-1.9.3.tgz::https://github.com/lqqyt2423/go-mitmproxy/releases/download/v1.9.3/go-mitmproxy_1.9.3_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = eaff5d93cca3963296a2304b5348be0d6d8b5ba1a764b8213b21d754adcc5d7b
+	source_i686 = go-mitmproxy-i686-1.9.3.tgz::https://github.com/lqqyt2423/go-mitmproxy/releases/download/v1.9.3/go-mitmproxy_1.9.3_Linux_i386.tar.gz
+	sha256sums_i686 = 54330460aa1efc919a997ecb3ff553c7f2036fc5bad55ccd3d7d922574ffdd55
+	source_aarch64 = go-mitmproxy-aarch64-1.9.3.tgz::https://github.com/lqqyt2423/go-mitmproxy/releases/download/v1.9.3/go-mitmproxy_1.9.3_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 809154b646f6054fb1002d5e6d7cf8eee8c47cbf977b5f347325c4fd83fd63cb
 
 pkgname = go-mitmproxy-bin
