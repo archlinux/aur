@@ -1,16 +1,16 @@
 pkgname=cristalix-wl-fix
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Wrapper script to run Cristalix on Wayland/NVIDIA"
 arch=('any')
-url="https://github.com/maseckt/cristalix-wl-fix"
+url="https://codeberg.org/maseckt/cristalix-wl-fix"
 license=('MIT')
 depends=('java-runtime>=21' 'curl')
 provides=("cristalix")
 conflicts=("cristalix")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.sig::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.sig")
-sha256sums=('a8a3ed7edac1a8c7f3f1037d0dde293871cf942e44be706dd5acb61bf8afae8c'
+sha256sums=('e68a3001313161d7e40a7e7db78fe71be8e45598a79ed560b9950ed9f81871e8'
             'SKIP')
 validpgpkeys=('C6F9309AEEA733B868FF9049463FBD17A7D691B8')
 
