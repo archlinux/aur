@@ -1,0 +1,9 @@
+src/
+pkg/
+*.pkg.tar.*
+*.log
+PREFIX.txt
+
+audacity/
+muse_framework/
+muse_deps/
