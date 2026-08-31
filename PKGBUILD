@@ -3,7 +3,7 @@
 _pkgname=zoitechat
 pkgname="${_pkgname}"-appimage
 pkgver=2.19.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy to use graphical IRC (chat) client, based on HexChat (AppImage version)"
 arch=('x86_64')
 url="https://github.com/zoitechat/zoitechat"
@@ -17,7 +17,6 @@ options=('!strip' '!emptydirs')
 _appimage="${_pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::$url/releases/download/v$pkgver/$_pkgname-$pkgver-$arch.AppImage"
         "LICENSE.$pkgver::https://raw.githubusercontent.com/ZoiteChat/zoitechat/refs/heads/master/COPYING"
-#		https://raw.githubusercontent.com/ZoiteChat/zoitechat/refs/heads/master/COPYING
         "$_pkgname.png::https://raw.githubusercontent.com/ZoiteChat/$_pkgname/refs/heads/master/data/icons/$_pkgname.png"
         "$_pkgname.desktop")
 sha512sums=('4f178d1d805b758c9de4d1e4f002eba1dde5e7a6d481b223d49fb51c3c68b34c4af6898462175a760dfb6c47b4ccdd215a3be8ce64429c73e8c9021a5af5dd1a'

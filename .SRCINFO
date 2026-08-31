@@ -1,7 +1,7 @@
 pkgbase = zoitechat-appimage
 	pkgdesc = An easy to use graphical IRC (chat) client, based on HexChat (AppImage version)
 	pkgver = 2.19.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/zoitechat/zoitechat
 	arch = x86_64
 	license = GPL-2.0-only
