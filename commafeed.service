@@ -7,6 +7,7 @@ Wants=network-online.target
 User=commafeed-@DB
 Group=commafeed-@DB
 WorkingDirectory=/var/lib/commafeed-@DB
+Environment=QUARKUS_CONFIG_LOCATIONS=file:/etc/commafeed-@DB/application.properties
 ExecStart=/usr/bin/commafeed-@DB
 SuccessExitStatus=143
 

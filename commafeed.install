@@ -1,0 +1,8 @@
+post_upgrade() {
+    printf "The configuration file has moved to /etc/commafeed-<database>/application.properties\n"
+    printf "If you had customized the old file, pacman has preserved it as\n"
+    printf "/var/lib/commafeed-<database>/config/application.properties.pacsave\n"
+    printf "Copy your settings over to the new location and restart the service.\n\n"
+    printf "Note: the new file starts with a config_ordinal=270 line. Keep it, or your\n"
+    printf "settings will not take priority over the built-in defaults.\n"
+}

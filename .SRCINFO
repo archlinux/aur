@@ -1,7 +1,7 @@
 pkgbase = commafeed
 	pkgdesc = Google Reader inspired self-hosted personal RSS reader (native standalone version)
 	pkgver = 7.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Athou/commafeed
 	arch = x86_64
 	license = APACHE-2.0
@@ -11,9 +11,9 @@ pkgbase = commafeed
 	source = sysusers.conf
 	source = tmpfiles.conf
 	sha256sums = 41845cf1dbc99c929edf1363df346003bcf39f6ce47daa9407800a520ad6b9dd
-	sha256sums = c529ea4c76383e10f8e6609af3e9765f42d4ba5fce761fc045cdbcfb5e5ce9e8
+	sha256sums = 641bab749ec500066cb4a5ba6166d7c54f7b8ced3793642ab9def9fb0761e4ea
 	sha256sums = eaa6119233a119392d492d5a3fa279ac713cf6e05d77ac05642443cdfa9d9eba
-	sha256sums = c670c7e524e6b4fa7c9ffd2f5b3b4f8ae370188522b94ab4d0fa3a5d6f58642f
+	sha256sums = dd193164f0b50f9f83f39b8644a62d56bff3aecf45f74d927b2034a49c2dbcf2
 
 pkgname = commafeed-h2
 

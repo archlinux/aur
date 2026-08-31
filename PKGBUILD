@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <can[at]dcc[dot]im>
 pkgbase=commafeed
 pkgver=7.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Reader inspired self-hosted personal RSS reader (native standalone version)"
 url="https://github.com/Athou/commafeed"
 arch=('x86_64')
@@ -12,9 +12,9 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Athou/${pkgbase}/archiv
         "sysusers.conf"
         "tmpfiles.conf")
 sha256sums=('41845cf1dbc99c929edf1363df346003bcf39f6ce47daa9407800a520ad6b9dd'
-            'c529ea4c76383e10f8e6609af3e9765f42d4ba5fce761fc045cdbcfb5e5ce9e8'
+            '641bab749ec500066cb4a5ba6166d7c54f7b8ced3793642ab9def9fb0761e4ea'
             'eaa6119233a119392d492d5a3fa279ac713cf6e05d77ac05642443cdfa9d9eba'
-            'c670c7e524e6b4fa7c9ffd2f5b3b4f8ae370188522b94ab4d0fa3a5d6f58642f')
+            'dd193164f0b50f9f83f39b8644a62d56bff3aecf45f74d927b2034a49c2dbcf2')
 
 build() {
   cd "${srcdir}"/${pkgbase}-${pkgver}
@@ -30,10 +30,24 @@ _package() {
   _db=${db,,}
 
   pkgdesc="Google Reader inspired self-hosted personal RSS reader (${db} database)"
-  backup=("var/lib/commafeed-${_db}/config/application.properties")
+  backup=("etc/${pkgname}/application.properties")
+  install="${pkgbase}.install"
 
-  install -Dm644 "${srcdir}"/${pkgbase}-${pkgver}/commafeed-server/target/quarkus-generated-doc/application.properties \
-    "${pkgdir}"/var/lib/${pkgname}/config/application.properties
+  # The config lives in /etc so that etckeeper and friends can track it, and is
+  # pulled in via QUARKUS_CONFIG_LOCATIONS in the service unit. Sources loaded
+  # that way inherit the ordinal of whatever set the property (300, for an
+  # environment variable), so pin it to 270 instead: above the built-in defaults
+  # (250) and $PWD/config (260), below environment variables and -D properties.
+  install -dm755 "${pkgdir}"/etc/${pkgname}
+  {
+    printf '# Do not remove, this keeps the settings below at a higher priority\n'
+    printf '# than the built-in defaults, but below environment variables.\n'
+    printf 'config_ordinal=270\n\n'
+    cat "${srcdir}"/${pkgbase}-${pkgver}/commafeed-server/target/quarkus-generated-doc/application.properties
+  } > "${pkgdir}"/etc/${pkgname}/application.properties
+  # tmpfiles.d hands this to the commafeed-${_db} group; never world-readable
+  chmod 640 "${pkgdir}"/etc/${pkgname}/application.properties
+
   install -Dm755 "${srcdir}"/${pkgbase}-${pkgver}/commafeed-server/target/${pkgbase}-${pkgver}-${_db}-linux-x86_64-runner \
     "${pkgdir}"/usr/bin/${pkgname}
 
