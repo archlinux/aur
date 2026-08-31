@@ -2,7 +2,7 @@
 # Packaging repository: https://github.com/JasonLandbridge/Arch-Linux-AUR-Packages-Updater/tree/main/mcpproxy-bin
 
 pkgname=mcpproxy-bin
-pkgver=0.61.0 # renovate: datasource=github-tags depName=smart-mcp-proxy/mcpproxy-go versioning=semver-coerced extractVersion=^v?(?<version>.*)$
+pkgver=0.63.0 # renovate: datasource=github-tags depName=smart-mcp-proxy/mcpproxy-go versioning=semver-coerced extractVersion=^v?(?<version>.*)$
 pkgrel=1
 pkgdesc="Smart proxy for AI agents using the Model Context Protocol"
 arch=('x86_64' 'aarch64')
@@ -29,8 +29,8 @@ sha256sums=('f07d24f77cf4e69feec20282ff443fe1f83607495b1d03d0306342b00ddb1a61'
             '897cd80d344a5570fcd3526834fffdb0b9bd8087632455dd393f5f2d43c94d47'
             '47220bfb076e34a1d349307679b7d4707fbe1426f1355049e69bced26568fea0'
             '0dbb8e1a0431cffe8d739fee40f73e237ed9be37887e285d7524d1a02afa1ce4')
-sha256sums_x86_64=('6a468db2d4e2a32b3fd19a25883532890ca21d04b9fccd2832d21dce3a1b3604')
-sha256sums_aarch64=('dc67df651eedce4890f1616546265682b9c3dbdd581ec3f1c90118a17bc2f127')
+sha256sums_x86_64=('d29a4c980559a1798e4f2322bb9616893ce5f951009f16d2999bccd519145507')
+sha256sums_aarch64=('c8513245fb001a4141bf7357f34f058e2f08a8037f046c0749f7461ec2145314')
 
 package() {
   install -Dm755 "$srcdir/mcpproxy" \
