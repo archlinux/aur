@@ -1,0 +1,21 @@
+pkgbase = networkmanager-snx-plasma
+	pkgdesc = NetworkManager VPN plugin for Check Point SNX/Remote Access (KDE Plasma Qt editor, no GTK dependency)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lvitals/networkmanager-snx
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = glib2
+	depends = networkmanager
+	depends = qt6-base
+	depends = kcoreaddons
+	depends = kwidgetsaddons
+	depends = networkmanager-qt
+	depends = plasma-nm
+	depends = networkmanager-snx
+	source = networkmanager-snx-0.1.0.tar.gz::https://github.com/lvitals/networkmanager-snx/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 6d883f8237cd5d8947a6d8c55705290dc136fa02d77f4d05dfd019724e6717e4
+
+pkgname = networkmanager-snx-plasma
