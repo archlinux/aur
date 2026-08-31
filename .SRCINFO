@@ -1,6 +1,6 @@
 pkgbase = cider-studio-bin
 	pkgdesc = run & control roblox studio advancedly on linux (pre-built binary)
-	pkgver = 2.6.0
+	pkgver = 2.7.0
 	pkgrel = 1
 	url = https://ifwerez.ru/git/rez/cider
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = cider-studio-bin
 	depends = curl
 	depends = cabextract
 	depends = wine
-	source = https://ifwerez.ru/git/rez/cider/releases/download/2.6.0/cider-2.6.0-linux-x86_64
+	source = https://ifwerez.ru/git/rez/cider/releases/download/2.7.0/cider-2.7.0-linux-x86_64
 	source = cider.png::https://ifwerez.ru/git/rez/cider/raw/branch/main/src/resources/cider.png
 	sha256sums = SKIP
 	sha256sums = SKIP
