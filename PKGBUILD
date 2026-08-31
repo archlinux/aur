@@ -14,7 +14,7 @@ conflicts=('pacterm-bin' 'pacterm-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "pacterm.desktop"
         "PacTermIcon.png::$url/raw/main/img/PacTermIcon.png")
-sha256sums=('79dbf4f9be6570ebd4e47cb92d89507c2e8afb1e9d107e00fb98d7e7947fb9e7'
+sha256sums=('b27b0f86a189ffd504809771a6068647ca56037bff49408ea833ef31fbc10864'
             '8aba3bab75da0890862cfcefc0742cb27ffca4673a6fe812c72cd13dd79f136e'
             '7bbb0a52c7080a125036a2e4c09733f0dda578dda91a19a1afc95e5262add195')
 
