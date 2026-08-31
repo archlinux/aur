@@ -2,7 +2,7 @@
 pkgname=redis-viewer-bin
 _pkgname=RedisViewer
 _debname=io.github.redisviewer
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="A Redis visualization client tool that pursues ultimate performance, minimalist layout, efficient interaction, cross platform, and supports deserialization of Java bytecode.Prebuilt version"
 arch=(
@@ -23,8 +23,8 @@ options=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64_bin.tar.gz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64_bin.tar.gz")
-sha256sums_aarch64=('d6d59693c6492c280778fc21af58ca1345fa2c20816943efab1fb20a12e06dec')
-sha256sums_x86_64=('f2890ea5e9e3a5d58410e46063f838abd1880367187bc33e0d567dfd7d8a0568')
+sha256sums_aarch64=('eb97bd942e453000339625696d381c2196f4019e75a69f3eb6e3991823861938')
+sha256sums_x86_64=('9002e83fb9154e80ddb26277dc4c2236eec3730359f4343428d9200a73fdbef9')
 prepare() {
     sed -i "s/Icon=${_debname}/Icon=${pkgname%-bin}/g" "${srcdir}/${_debname}.desktop"
 }
