@@ -1,6 +1,6 @@
 pkgbase = ddev-test-edge-bin
 	pkgdesc = DDEV: a local web development environment (edge)
-	pkgver = 1.107.0_rc1
+	pkgver = 1.107.0
 	pkgrel = 1
 	url = https://github.com/ddev/ddev
 	license = Apache 2
@@ -11,10 +11,10 @@ pkgbase = ddev-test-edge-bin
 	conflicts = ddev
 	provides = ddev
 	arch = aarch64
-	source_aarch64 = https://github.com/ddev-test/ddev/releases/download/v1.107.0-rc1/ddev_linux-arm64.v1.107.0-rc1.tar.gz
-	sha256sums_aarch64 = e76aae82d2d3cf594b0b8fb27eaf0c5b7c420decb2ce2128daa3867ba0b1de5b
+	source_aarch64 = https://github.com/ddev-test/ddev/releases/download/v1.107.0/ddev_linux-arm64.v1.107.0.tar.gz
+	sha256sums_aarch64 = db6854c0cccdaa9d359e7652d7436668f6c4d10400fb90e34ac388bbab9c3ab9
 	arch = x86_64
-	source_x86_64 = https://github.com/ddev-test/ddev/releases/download/v1.107.0-rc1/ddev_linux-amd64.v1.107.0-rc1.tar.gz
-	sha256sums_x86_64 = 0a5d3f046fdbcc805193fd6184be50ca0834880575e35ee2db0dc1d76d48825b
+	source_x86_64 = https://github.com/ddev-test/ddev/releases/download/v1.107.0/ddev_linux-amd64.v1.107.0.tar.gz
+	sha256sums_x86_64 = 173b2af0cafbee1e6d0e8cd91f0c31442b78e1fb3ba2b6397e9db07355178031
 	
 pkgname = ddev-test-edge-bin
