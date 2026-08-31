@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=graft
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="Open-source context layer for large codebases — turbocharge Claude Code, Cursor, Codex, Gemini & every coding agent"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('npm')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/@nanonets/graft/-/graft-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('3cd870fdf2ccf2bc1767969c37e2a5469541ecc1002ff53592ce2520d9424497')
+sha256sums=('84771e6417e41a46e76f2cb3886ddeb3814d9efa7ebc15bd7aba41f342b2b9c4')
 
 latestver() {
     curl -fsSL 'https://registry.npmjs.org/@nanonets/graft/latest' | jq -r '.version'
