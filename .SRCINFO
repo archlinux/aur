@@ -1,6 +1,6 @@
 pkgbase = battery-charge-limiter
 	pkgdesc = Cross-platform battery charge limiter — enforces 80% hardware cap on laptops where BIOS hides this feature. Arch Linux daemon using acpi_call.
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/SarangRao20/battery-charge-limiter
 	install = battery-charge-limiter.install
@@ -9,7 +9,7 @@ pkgbase = battery-charge-limiter
 	depends = python
 	depends = acpi_call
 	provides = battery-charge-limiter
-	source = battery-charge-limiter-1.1.1.tar.gz::https://github.com/SarangRao20/battery-charge-limiter/releases/download/v1.1.1/battery-charge-limiter-1.1.1.tar.gz
-	sha256sums = f3cd2a5f48bf3bb58019fbec709eeff39d93eb16bfb7fdf3673ec82f6317775e
+	source = battery-charge-limiter-1.2.0.tar.gz::https://github.com/SarangRao20/battery-charge-limiter/releases/download/v1.2.0/battery-charge-limiter-1.2.0.tar.gz
+	sha256sums = 7bcfbfdcd6c76fc5f86685b3cafb59fb27edb550ccf4fd92a3bd481284e39853
 
 pkgname = battery-charge-limiter
