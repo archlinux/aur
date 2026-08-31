@@ -7,7 +7,7 @@
 # compositor. The package only changes when you bump `pkgver`/`pkgrel` here.
 
 pkgname=halley-lift
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Search and action launcher for the Halley Wayland compositor"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=('!debug')
 # The Lift release tag inside the Halley repo. Bump together with pkgver.
 _tag="halley-lift-v$pkgver"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tag.tar.gz")
-sha256sums=('d2890672db74a963a35ef8999cccd99d0da6461a03c4f5046fea8f573d2199f9')
+sha256sums=('87de318457e7dce30180795207a56d634c1dd8e70e1c0391697c5b0329a85fd5')
 
 # GitHub tag archives extract to "<repo>-<tag>" -> "halley-halley-lift-v$pkgver"
 _srcdir="halley-$_tag"
