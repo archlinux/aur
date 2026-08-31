@@ -2,7 +2,7 @@
 
 _pkgname=dbeaver
 pkgname=dbeaver-ce-jre-bin
-pkgver=26.1.5
+pkgver=26.2.0
 pkgrel=1
 pkgdesc="Free universal SQL Client for developers and database administrators (community edition, with bundled JRE)"
 arch=("x86_64")
@@ -14,7 +14,7 @@ conflicts=("$_pkgname" "$_pkgname-ce-bin")
 options=("!strip")
 source=("https://github.com/dbeaver/dbeaver/releases/download/$pkgver/dbeaver-ce-$pkgver-linux-x86_64.tar.gz"
         "dbeaver-ce.desktop")
-sha256sums=('0e8aa2008814c51c1d863f8fab9bce0343f5c1dfe0ef4eb86bb0e13bba4c1ef2'
+sha256sums=('f504e70a74763aa02e0b63d6842b85ca64526f682be457b3f30e330cc10748ed'
             "b51d2902df94a35869fdde14a77b49bb08374a5a66a833ae4009efbfc616f2c6")
 
 package() {
