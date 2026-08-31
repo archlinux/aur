@@ -47,7 +47,7 @@ pkgbase = xfb
 	source = xfb-companion-3.1422.apk::https://github.com/netpack/XFB/releases/download/v3.1422/xfb-companion.apk
 	source = xfb-companion-3.1422.json::https://github.com/netpack/XFB/releases/download/v3.1422/xfb-companion.json
 	sha256sums = SKIP
-	sha256sums = REPLACE_WITH_APK_SHA256
-	sha256sums = REPLACE_WITH_SIDECAR_SHA256
+	sha256sums = d2fcfa415b3b6b51502e4aef22bb12e490c1fb854057236146dfbfad57248ae2
+	sha256sums = da96438106d8fb2857ecefae983e2ceab1bc37783250cb19ad6b2736500285d1
 
 pkgname = xfb
