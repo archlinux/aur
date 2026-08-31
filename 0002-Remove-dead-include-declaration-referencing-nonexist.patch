@@ -1,0 +1,35 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 19:19:08 +0200
+Subject: [PATCH 02/13] Remove dead include/declaration referencing nonexistent
+ screeninfo.h
+
+analyzer/ble_analyzer.h includes "screeninfo.h" and declares a
+setScreenInfo(ScreenInfo&) signal; screeninfo.h does not exist anywhere
+in this repository at any commit reachable from master, and
+setScreenInfo is never defined or called anywhere either. This breaks
+any build on any platform.
+---
+ analyzer/ble_analyzer.h | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/analyzer/ble_analyzer.h b/analyzer/ble_analyzer.h
+index 6fc0f9d..88f98fe 100644
+--- a/analyzer/ble_analyzer.h
++++ b/analyzer/ble_analyzer.h
+@@ -11,7 +11,6 @@
+ #include <QDataStream>
+ #include <QTimer>
+ #include "baseanalyzer.h"
+-#include "screeninfo.h"
+ 
+ enum {
+     BLE_VER_CMD = (quint8)0xE6,
+@@ -194,7 +193,6 @@ signals:
+     void measuringChanged();
+     void aliveChanged();
+     void statsChanged();
+-    void setScreenInfo(ScreenInfo& screen);
+ 
+ private:
+     QString m_error;

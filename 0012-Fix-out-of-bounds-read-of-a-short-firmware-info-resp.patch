@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 20:22:48 +0200
+Subject: [PATCH 12/13] Fix out-of-bounds read of a short firmware-info
+ response
+
+The probe loop reading the AA-230's firmware-info response gives up
+after 10 timeouts and falls through regardless of how many bytes
+actually arrived; only arr.isEmpty() was checked before memcpy'ing
+sizeof(FirmwareInfo) bytes out of it. A slow, short, or malicious
+response shorter than the struct causes an out-of-bounds heap read.
+Check the actual length instead.
+---
+ analyzer/updater/aa230firmwareupdater.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/analyzer/updater/aa230firmwareupdater.cpp b/analyzer/updater/aa230firmwareupdater.cpp
+index 8f86a37..2fcdb07 100644
+--- a/analyzer/updater/aa230firmwareupdater.cpp
++++ b/analyzer/updater/aa230firmwareupdater.cpp
+@@ -124,7 +124,10 @@ AA230FirmwareUpdater::FirmwareInfo AA230FirmwareUpdater::firmwareInfo(const ReDe
+         arr = m_port.readAll();
+     }
+ 
+-    if (arr.isEmpty()) {
++    // The probe loop above gives up after 10 timeouts and falls through
++    // regardless of how many bytes actually arrived, so arr can be
++    // shorter than FirmwareInfo on a slow/short/malicious response.
++    if (arr.size() < static_cast<int>(sizeof(FirmwareInfo))) {
+         return info;
+     }
+ 

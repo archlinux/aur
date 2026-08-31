@@ -1,0 +1,107 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 20:22:28 +0200
+Subject: [PATCH 09/13] Enforce TLS certificate verification on all network
+ requests
+
+Every QSslConfiguration built in this codebase (licenseagent.cpp's
+license/registration traffic, downloader.cpp's firmware info/file
+download) explicitly set QSslSocket::VerifyNone, disabling server
+certificate verification. A network man-in-the-middle could forge the
+firmware INFO/VERSION/LINK response and firmware image the app
+downloads and offers to flash to the connected analyzer, and could read
+the user's name/email sent during registration. Remove the overrides
+entirely so requests use Qt's default (VerifyPeer).
+---
+ analyzer/updater/downloader.cpp |  6 ------
+ licenseagent.cpp                | 18 ------------------
+ 2 files changed, 24 deletions(-)
+
+diff --git a/analyzer/updater/downloader.cpp b/analyzer/updater/downloader.cpp
+index 47cb10d..529a8c8 100644
+--- a/analyzer/updater/downloader.cpp
++++ b/analyzer/updater/downloader.cpp
+@@ -29,9 +29,6 @@ Downloader::State Downloader::startDownloadInfo(QUrl url)
+     QNetworkRequest request(url);
+ 
+     m_mng.clearAccessCache();
+-    QSslConfiguration conf = request.sslConfiguration();
+-    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
+-    request.setSslConfiguration(conf);
+ 
+     m_mng.get(request);
+ 
+@@ -61,9 +58,6 @@ Downloader::State Downloader::startDownloadFw()
+     QNetworkReply *reply;
+ 
+     m_mng.clearAccessCache();
+-    QSslConfiguration conf = request.sslConfiguration();
+-    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
+-    request.setSslConfiguration(conf);
+ 
+     reply = m_mng.get(request);
+     connect(reply, SIGNAL(downloadProgress(qint64,qint64)),
+diff --git a/licenseagent.cpp b/licenseagent.cpp
+index ecfd99d..5c38436 100644
+--- a/licenseagent.cpp
++++ b/licenseagent.cpp
+@@ -62,9 +62,6 @@ void LicenseAgent::requestEmailStatus()
+     request.setTransferTimeout(REPLY_TIMEOUT);
+ 
+     m_mng.clearAccessCache();
+-    QSslConfiguration conf = request.sslConfiguration();
+-    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
+-    request.setSslConfiguration(conf);
+ 
+     setState(WaitEmailStatusWeb);
+     m_mng.get(request);
+@@ -149,9 +146,6 @@ void LicenseAgent::requestLicense(QString key)
+     request.setTransferTimeout(REPLY_TIMEOUT);
+ 
+     m_mng.clearAccessCache();
+-    QSslConfiguration conf = request.sslConfiguration();
+-    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
+-    request.setSslConfiguration(conf);
+ 
+     setState(WaitLicense);
+     m_canceled = false;
+@@ -296,9 +290,6 @@ void LicenseAgent::requestInfo()
+     request.setTransferTimeout(REPLY_TIMEOUT);
+ 
+     m_mng.clearAccessCache();
+-    QSslConfiguration conf = request.sslConfiguration();
+-    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
+-    request.setSslConfiguration(conf);
+ 
+     setState(WaitInfoWeb);
+     //showModeless(tr("Register device"),tr("Registration..."), tr("Cancel"));
+@@ -362,9 +353,6 @@ void LicenseAgent::requestUnit()
+     request.setTransferTimeout(REPLY_TIMEOUT);
+ 
+     m_mng.clearAccessCache();
+-    QSslConfiguration conf = request.sslConfiguration();
+-    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
+-    request.setSslConfiguration(conf);
+ 
+     setState(WaitUnitWeb);
+     m_mng.get(request);
+@@ -432,9 +420,6 @@ void LicenseAgent::requestStatus_B16(QByteArray data)
+     request.setTransferTimeout(REPLY_TIMEOUT);
+ 
+     m_mng.clearAccessCache();
+-    QSslConfiguration conf = request.sslConfiguration();
+-    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
+-    request.setSslConfiguration(conf);
+ 
+     setState(WaitProfileB16);
+     m_mng.get(request);
+@@ -453,9 +438,6 @@ void LicenseAgent::requestInfo_B16(QByteArray data)
+     request.setTransferTimeout(REPLY_TIMEOUT);
+ 
+     m_mng.clearAccessCache();
+-    QSslConfiguration conf = request.sslConfiguration();
+-    conf.setPeerVerifyMode(QSslSocket::VerifyNone);
+-    request.setSslConfiguration(conf);
+ 
+     setState(WaitInfoB16);
+     m_mng.get(request);

@@ -1,0 +1,45 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 20:22:03 +0200
+Subject: [PATCH 06/13] Initialize Measurements::m_focus and Markers::m_focus
+
+Both were declared but never initialized, and only ever assigned inside
+on_focus(bool). Previously the first WindowActivate at startup emitted
+focus(true) essentially immediately, setting it before anything read it.
+The new debounced focus() emission (see the previous commit on this
+branch fixing the WindowActivate/Deactivate feedback loop) can now
+legitimately not emit at all during startup if the window starts
+active, leaving m_focus read before it is ever written - undefined
+behavior. Default-initialize both to true, matching the normal case of
+an app that starts with the main window focused.
+---
+ markers.h      | 2 +-
+ measurements.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/markers.h b/markers.h
+index 663d78f..06942bb 100644
+--- a/markers.h
++++ b/markers.h
+@@ -103,7 +103,7 @@ private:
+ 
+     Measurements *m_measurements;
+ 
+-    bool m_focus;
++    bool m_focus = true;
+ 
+     double interpolate(double fq1, double fq2, double fq3, double param1, double param2);
+ 
+diff --git a/measurements.h b/measurements.h
+index 41be83b..318ba37 100644
+--- a/measurements.h
++++ b/measurements.h
+@@ -216,7 +216,7 @@ private:
+     qint32 m_farEndMeasurement;
+     QCPItemEllipse * m_smithTracer;
+ 
+-    bool m_focus;
++    bool m_focus = true;
+ 
+     bool m_oneFqMode = false;
+     qint64 m_oneFqStartTime;

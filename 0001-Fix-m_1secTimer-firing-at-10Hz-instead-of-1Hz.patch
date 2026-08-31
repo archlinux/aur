@@ -1,0 +1,27 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 18:12:09 +0200
+Subject: [PATCH 01/13] Fix m_1secTimer firing at 10Hz instead of 1Hz
+
+m_1secTimer->start(100) started the timer with a 100ms interval despite
+its name and its handler, on_1secTimerTick(), being written for a
+once-per-second cadence: it toggles the graph hint popups' visibility
+based on cursor position every tick. At 10Hz instead of 1Hz this causes
+visibly flickering popups during normal use.
+---
+ mainwindow.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mainwindow.cpp b/mainwindow.cpp
+index 680f693..102c866 100644
+--- a/mainwindow.cpp
++++ b/mainwindow.cpp
+@@ -536,7 +536,7 @@ MainWindow::MainWindow(QWidget *parent) :
+ 
+     m_1secTimer = new QTimer(this);
+     connect(m_1secTimer, SIGNAL(timeout()), this, SLOT(on_1secTimerTick()));
+-    m_1secTimer->start(100);
++    m_1secTimer->start(1000);
+ 
+     loadLanguage(languages_small[m_languageNumber]);
+     ui->tableWidget_presets->horizontalHeader()->show();

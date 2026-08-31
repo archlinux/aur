@@ -1,0 +1,363 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 20:21:57 +0200
+Subject: [PATCH 05/13] Convert graph/marker hint popups to embedded child
+ widgets
+
+PopUp and MarkersPopUp were always separate Qt::Tool top-level windows.
+The previous fix (park off-screen instead of unmapping) stopped them
+causing flicker, but left them permanently registered as real windows
+with the window manager/task switcher, since they are never truly
+unmapped once shown.
+
+Add an 'embedded' constructor parameter: when true, the widget is a
+plain child of its parent instead of a separate top-level window, so
+there is no window for a window manager/compositor to ever see - no
+flicker risk, and nothing to show up in any window/task list either.
+All existing position-tracking code (setName/setPosition/
+MainWindowPos/mouseMoveEvent) keeps computing m_x/m_y as global screen
+coordinates exactly as before; only the final geometry application
+(a new applyGeometry() helper) translates through
+parentWidget()->mapFromGlobal() when embedded, so none of that math
+needed to change.
+
+m_graphHint, m_graphBriefHint (Measurements) and m_markersHint
+(Markers) are now constructed embedded, parented to MainWindow.
+---
+ markers.cpp      |  2 +-
+ markerspopup.cpp | 60 ++++++++++++++++++++++++++++++++----------------
+ markerspopup.h   |  8 ++++++-
+ measurements.cpp |  4 ++--
+ popup.cpp        | 58 +++++++++++++++++++++++++++++++++++++---------
+ popup.h          |  8 +++++--
+ 6 files changed, 103 insertions(+), 37 deletions(-)
+
+diff --git a/markers.cpp b/markers.cpp
+index 663011f..55f9960 100644
+--- a/markers.cpp
++++ b/markers.cpp
+@@ -24,7 +24,7 @@ Markers::Markers(QObject *parent) : QObject(parent),
+ 
+     if(m_markersHint == NULL)
+     {
+-        m_markersHint = new MarkersPopUp();
++        m_markersHint = new MarkersPopUp(MainWindow::m_mainWindow, true);
+         m_markersHint->setHiding(false);
+         if(m_markersHintEnabled && !m_markersList.isEmpty())
+             m_markersHint->focusShow();
+diff --git a/markerspopup.cpp b/markerspopup.cpp
+index e8b2fb3..d4d9138 100644
+--- a/markerspopup.cpp
++++ b/markerspopup.cpp
+@@ -5,7 +5,7 @@
+ 
+ QMap<int, QString> MarkersHeaderColumn::m_mapHeader;
+ 
+-MarkersPopUp::MarkersPopUp(QWidget *parent) : QWidget(parent),
++MarkersPopUp::MarkersPopUp(QWidget *parent, bool embedded) : QWidget(parent),
+       m_durability(2000),
+       m_hiding(true),
+       m_x(0),
+@@ -16,16 +16,23 @@ MarkersPopUp::MarkersPopUp(QWidget *parent) : QWidget(parent),
+       m_mainY(0),
+       m_mainBiasX(0),
+       m_mainBiasY(0),
++      m_embedded(embedded),
+       m_bgColor(0,0,0,180),
+       m_penColor(255,255,255,180),
+       m_textColor("white")
+ {
+-      setWindowFlags(Qt::FramelessWindowHint |        // Отключаем оформление окна
+-                     Qt::Tool |                       // Отменяем показ в качестве отдельного окна
+-                     Qt::WindowStaysOnTopHint |       // Устанавливаем поверх всех окон
+-                     Qt::WindowDoesNotAcceptFocus);   // Никогда не становится активным окном
++      if (m_embedded) {
++          // A plain child widget of its parent, not a separate top-level
++          // window - see PopUp::init() in popup.cpp for the full
++          // rationale (same fix, same class of bug).
++      } else {
++          setWindowFlags(Qt::FramelessWindowHint |        // Отключаем оформление окна
++                         Qt::Tool |                       // Отменяем показ в качестве отдельного окна
++                         Qt::WindowStaysOnTopHint |       // Устанавливаем поверх всех окон
++                         Qt::WindowDoesNotAcceptFocus);   // Никогда не становится активным окном
++          setAttribute(Qt::WA_ShowWithoutActivating);     // При показе, виджет не получается фокуса автоматически
++      }
+       setAttribute(Qt::WA_TranslucentBackground);     // Указываем, что фон будет прозрачным
+-      setAttribute(Qt::WA_ShowWithoutActivating);     // При показе, виджет не получается фокуса автоматически
+ 
+       animation.setTargetObject(this);                // Устанавливаем целевой объект анимации
+       animation.setPropertyName("popupOpacity");      // Устанавливаем анимируемое свойство
+@@ -70,7 +77,20 @@ void MarkersPopUp::setName(QString name)
+ 
+     m_settings->endGroup();
+ 
+-    setGeometry(m_x,m_y,width(),height());
++    applyGeometry();
++}
++
++void MarkersPopUp::applyGeometry()
++{
++    // m_x/m_y are tracked as global screen coordinates throughout this
++    // class (mirrors PopUp::applyGeometry() in popup.cpp - see there for
++    // the full rationale).
++    if (m_embedded && parentWidget()) {
++        QPoint local = parentWidget()->mapFromGlobal(QPoint(m_x, m_y));
++        setGeometry(local.x(), local.y(), width(), height());
++    } else {
++        setGeometry(m_x, m_y, width(), height());
++    }
+ }
+ 
+ MarkersPopUp::~MarkersPopUp()
+@@ -178,10 +198,13 @@ void MarkersPopUp::show()
+ 
+ void MarkersPopUp::focusShow()
+ {
+-    move(m_x, m_y);
++    applyGeometry();
+     if (!isVisible()) {
+         QWidget::show();
+     }
++    if (m_embedded) {
++        raise();
++    }
+ }
+ 
+ void MarkersPopUp::focusHide()
+@@ -190,6 +213,12 @@ void MarkersPopUp::focusHide()
+         setVisible(true);
+         return;
+     }
++    if (m_embedded) {
++        // A plain child widget: hiding it does not touch any top-level
++        // window, so there is no compositor feedback-loop risk here.
++        QWidget::hide();
++        return;
++    }
+     // Park off-screen instead of QWidget::hide(): see PopUp::focusHide()
+     // for why unmapping this Qt::Tool surface causes a feedback loop on
+     // some Wayland compositors.
+@@ -235,10 +264,7 @@ void MarkersPopUp::mouseMoveEvent(QMouseEvent * )
+ {
+     m_x = QCursor::pos().x() - m_biasX;
+     m_y = QCursor::pos().y() - m_biasY;
+-    setGeometry(m_x,
+-                m_y,
+-                width(),
+-                height());
++    applyGeometry();
+     m_mainBiasX = m_x - m_mainX;
+     m_mainBiasY = m_y - m_mainY;
+ }
+@@ -250,20 +276,14 @@ void MarkersPopUp::MainWindowPos(int x, int y)
+ 
+     m_x = x + m_mainBiasX;
+     m_y = y + m_mainBiasY;
+-    setGeometry(m_x,
+-                m_y,
+-                width(),
+-                height());
++    applyGeometry();
+ }
+ 
+ void MarkersPopUp::setPosition(int x, int y)
+ {
+     m_x = x;
+     m_y = y;
+-    setGeometry(m_x,
+-                m_y,
+-                width(),
+-                height());
++    applyGeometry();
+ }
+ 
+ void MarkersPopUp::setTextColor(QString color)
+diff --git a/markerspopup.h b/markerspopup.h
+index 1e01476..fffcece 100644
+--- a/markerspopup.h
++++ b/markerspopup.h
+@@ -43,7 +43,7 @@ class MarkersPopUp : public QWidget
+     float getPopupOpacity() const;
+ 
+ public:
+-    explicit MarkersPopUp(QWidget *parent = 0);
++    explicit MarkersPopUp(QWidget *parent = 0, bool embedded = false);
+     ~MarkersPopUp();
+     void setName(QString name);
+     int getDurability (void) const {return m_durability;}
+@@ -125,6 +125,12 @@ protected:
+     int m_parentX;
+     int m_parentY;
+ 
++    // When true, this MarkersPopUp is a plain child widget of its parent
++    // rather than a separate Qt::Tool top-level window - see
++    // markerspopup.cpp for why.
++    bool m_embedded;
++    void applyGeometry();
++
+     QColor m_bgColor;
+     QColor m_penColor;
+     QString m_textColor;
+diff --git a/measurements.cpp b/measurements.cpp
+index 1cccef7..fe2d204 100644
+--- a/measurements.cpp
++++ b/measurements.cpp
+@@ -89,7 +89,7 @@ Measurements::Measurements(QObject *parent) : QObject(parent),
+ 
+     if(m_graphHint == NULL)
+     {
+-        m_graphHint = new PopUp();
++        m_graphHint = new PopUp(MainWindow::m_mainWindow, true);
+         m_graphHint->setHiding(false);
+         m_settings->beginGroup("Settings");
+         bool darkTheme = m_settings->value("darkColorTheme", true).toBool();
+@@ -116,7 +116,7 @@ Measurements::Measurements(QObject *parent) : QObject(parent),
+ 
+     if(m_graphBriefHint == NULL)
+     {
+-        m_graphBriefHint = new PopUp();
++        m_graphBriefHint = new PopUp(MainWindow::m_mainWindow, true);
+         m_graphBriefHint->setHiding(false);
+         //m_graphBriefHint->setPopupText("0\n0");
+         m_graphBriefHint->setName(tr("BriefHint"));
+diff --git a/popup.cpp b/popup.cpp
+index b1972c6..a8c772e 100644
+--- a/popup.cpp
++++ b/popup.cpp
+@@ -5,7 +5,7 @@
+ #include <QDebug>
+ #include <mainwindow.h>
+ 
+-PopUp::PopUp(QWidget *parent) : QWidget(parent),
++PopUp::PopUp(QWidget *parent, bool embedded) : QWidget(parent),
+     m_bgColor(0,0,0,180),
+     m_penColor(255,155,255,180),
+     m_textColor("white"),
+@@ -19,12 +19,13 @@ PopUp::PopUp(QWidget *parent) : QWidget(parent),
+     m_mainX(177),
+     m_mainY(131),
+     m_mainBiasX(0),
+-    m_mainBiasY(0)
++    m_mainBiasY(0),
++    m_embedded(embedded)
+ {
+     init();
+ }
+ 
+-PopUp::PopUp(QString buttonName, QWidget *parent) : QWidget(parent),
++PopUp::PopUp(QString buttonName, QWidget *parent, bool embedded) : QWidget(parent),
+     m_bgColor(0,0,0,180),
+     m_penColor(255,155,255,180),
+     m_textColor("white"),
+@@ -40,19 +41,28 @@ PopUp::PopUp(QString buttonName, QWidget *parent) : QWidget(parent),
+     m_mainBiasX(0),
+     m_mainBiasY(0),
+     m_buttonName(buttonName),
+-    m_showButton(true)
++    m_showButton(true),
++    m_embedded(embedded)
+ {
+     init();
+ }
+ 
+ void PopUp::init()
+ {
+-    setWindowFlags(Qt::FramelessWindowHint |
+-                   Qt::Tool |
+-                   Qt::WindowStaysOnTopHint |
+-                   Qt::WindowDoesNotAcceptFocus);
++    if (m_embedded) {
++        // A plain child widget of its parent, not a separate top-level
++        // window: there is no window for a window manager/compositor to
++        // ever see, so this cannot perturb the parent's activation state
++        // (see focusShow()/focusHide()) and it cannot show up in any
++        // window/task list either.
++    } else {
++        setWindowFlags(Qt::FramelessWindowHint |
++                       Qt::Tool |
++                       Qt::WindowStaysOnTopHint |
++                       Qt::WindowDoesNotAcceptFocus);
++        setAttribute(Qt::WA_ShowWithoutActivating);
++    }
+     setAttribute(Qt::WA_TranslucentBackground);
+-    setAttribute(Qt::WA_ShowWithoutActivating);
+ 
+     animation.setTargetObject(this);
+     animation.setPropertyName("popupOpacity");
+@@ -120,7 +130,23 @@ void PopUp::setName(QString name)
+ 
+     m_settings->endGroup();
+ 
+-    setGeometry(m_x,m_y,width(),height());
++    applyGeometry();
++}
++
++void PopUp::applyGeometry()
++{
++    // m_x/m_y are tracked as global screen coordinates throughout this
++    // class (MainWindowPos(), mouseMoveEvent() and every caller of
++    // setPosition() all compute them that way, matching the original
++    // Qt::Tool top-level design). When embedded as a child widget,
++    // translate to parent-relative coordinates right here instead of
++    // touching that positioning math anywhere else.
++    if (m_embedded && parentWidget()) {
++        QPoint local = parentWidget()->mapFromGlobal(QPoint(m_x, m_y));
++        setGeometry(local.x(), local.y(), width(), height());
++    } else {
++        setGeometry(m_x, m_y, width(), height());
++    }
+ }
+ 
+ PopUp::~PopUp()
+@@ -186,14 +212,24 @@ void PopUp::show()
+ 
+ void PopUp::focusShow()
+ {
+-    move(m_x, m_y);
++    applyGeometry();
+     if (!isVisible()) {
+         QWidget::show();
+     }
++    if (m_embedded) {
++        raise();
++    }
+ }
+ 
+ void PopUp::focusHide()
+ {
++    if (m_embedded) {
++        // A plain child widget: hiding it does not touch any top-level
++        // window, so there is no compositor feedback-loop risk here -
++        // see the Qt::Tool branch below for what that risk was.
++        QWidget::hide();
++        return;
++    }
+     // Park off-screen instead of QWidget::hide(): unmapping this
+     // Qt::Tool top-level surface causes some Wayland compositors
+     // (observed on COSMIC/cosmic-comp) to send a spurious
+diff --git a/popup.h b/popup.h
+index b8a48e3..dcda853 100644
+--- a/popup.h
++++ b/popup.h
+@@ -21,8 +21,8 @@ class PopUp : public QWidget
+     float getPopupOpacity() const;
+ 
+ public:
+-    explicit PopUp(QWidget *parent = 0);
+-    explicit PopUp(QString button, QWidget *parent = 0);
++    explicit PopUp(QWidget *parent = 0, bool embedded = false);
++    explicit PopUp(QString button, QWidget *parent = 0, bool embedded = false);
+     ~PopUp();
+     void init();
+     void setName(QString name);
+@@ -104,6 +104,10 @@ protected:
+     int m_parentX;
+     int m_parentY;
+ 
++    // When true, this PopUp is a plain child widget of its parent rather
++    // than a separate Qt::Tool top-level window - see popup.cpp for why.
++    bool m_embedded;
++    void applyGeometry();
+ 
+     QString m_name;
+ 

@@ -1,0 +1,57 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 20:22:14 +0200
+Subject: [PATCH 08/13] Guard against stacking multiple SelectDeviceDialog
+ instances
+
+on_selectDeviceDialog() runs a nested event loop via dlg.exec(). A
+pending QTimer::singleShot call to the same slot (e.g. from
+on_refreshConnection()) would still fire while that nested loop is
+running, stacking a second real top-level SelectDeviceDialog on top of
+the first. No live path currently re-enters it, but the pattern is
+fragile against future changes and costs nothing to guard directly.
+---
+ mainwindow.cpp | 10 ++++++++++
+ mainwindow.h   |  1 +
+ 2 files changed, 11 insertions(+)
+
+diff --git a/mainwindow.cpp b/mainwindow.cpp
+index 4471395..0f9f767 100644
+--- a/mainwindow.cpp
++++ b/mainwindow.cpp
+@@ -6822,6 +6822,15 @@ void MainWindow::on_selectDeviceDialog()
+         return;
+     }
+ 
++    // dlg.exec() below runs a nested event loop, during which any other
++    // queued call to this same slot (e.g. a pending QTimer::singleShot
++    // from on_refreshConnection()) would still fire and stack a second
++    // SelectDeviceDialog on top of the first. Guard against that.
++    if (m_selectDeviceDialogOpen) {
++        return;
++    }
++    m_selectDeviceDialogOpen = true;
++
+     SelectDeviceDialog dlg(false, this);
+     if (dlg.exec() == QDialog::Accepted) {
+         SelectionParameters sel_par = SelectionParameters::selected;
+@@ -6831,6 +6840,7 @@ void MainWindow::on_selectDeviceDialog()
+             emit m_analyzer->analyzerFound(selected->index());
+         }
+     }
++    m_selectDeviceDialogOpen = false;
+     closeSettingsDialog();
+     ui->settingsBtn->setEnabled(true);
+ }
+diff --git a/mainwindow.h b/mainwindow.h
+index 0533483..0354177 100644
+--- a/mainwindow.h
++++ b/mainwindow.h
+@@ -201,6 +201,7 @@ private:
+     bool m_addingMarker;
+     bool m_isMouseClick;
+     bool m_bInterrupted;
++    bool m_selectDeviceDialogOpen = false;
+     QMap<QString, QStringList*> m_BandsMap;
+     bool m_darkColorTheme = true;
+     QPalette m_lightPalette;

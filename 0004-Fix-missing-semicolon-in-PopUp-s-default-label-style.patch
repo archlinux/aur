@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 19:26:34 +0200
+Subject: [PATCH 04/13] Fix missing semicolon in PopUp's default label
+ stylesheet
+
+label.setStyleSheet("QLabel { color : " + m_textColor + "margin-top: ...")
+concatenates the text color directly onto the next CSS property with no
+separating semicolon, producing an invalid declaration like
+'color : whitemargin-top: 6px' - the color is silently dropped by Qt's
+stylesheet parser. PopUp::setTextColor() already builds the equivalent
+string correctly (with a ';' after the color); this makes the default
+built in init() match it, so any PopUp that never calls setTextColor()
+still gets a valid, visible label color instead of relying on it being
+overwritten later.
+---
+ popup.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/popup.cpp b/popup.cpp
+index 9e07d7a..b1972c6 100644
+--- a/popup.cpp
++++ b/popup.cpp
+@@ -59,7 +59,7 @@ void PopUp::init()
+     connect(&animation, &QAbstractAnimation::finished, this, &PopUp::hide);
+ 
+     label.setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+-    label.setStyleSheet("QLabel { color : " + m_textColor +
++    label.setStyleSheet("QLabel { color : " + m_textColor + ";"
+                         "margin-top: 6px;"
+                         "margin-bottom: 6px;"
+                         "margin-left: 10px;"

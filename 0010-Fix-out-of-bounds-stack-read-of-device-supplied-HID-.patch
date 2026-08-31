@@ -1,0 +1,75 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 20:22:35 +0200
+Subject: [PATCH 10/13] Fix out-of-bounds stack read of device-supplied HID
+ length
+
+hidRead() reads a device-supplied length byte (readBuff[1], 0-255) as
+the loop bound for copying out of a fixed 64-byte stack buffer, with no
+check against either the buffer size or how many bytes hid_read()
+actually returned. A device (or firmware bug) reporting a length over
+62 causes an over-read of up to ~192 bytes of adjacent stack memory,
+which then gets appended into the parsed measurement stream. Clamp the
+copy length to both the buffer size and the actual read count, and
+zero-initialize the buffer. Same bug, same fix, in both
+hidanalyzer.cpp and its hid_analyzer.cpp twin (built on different
+platforms per AntScope.pro).
+---
+ analyzer/hid_analyzer.cpp | 10 ++++++++--
+ analyzer/hidanalyzer.cpp  | 10 ++++++++--
+ 2 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/analyzer/hid_analyzer.cpp b/analyzer/hid_analyzer.cpp
+index a3d9fd1..85bc0a0 100644
+--- a/analyzer/hid_analyzer.cpp
++++ b/analyzer/hid_analyzer.cpp
+@@ -453,14 +453,20 @@ void HidAnalyzer::hidRead (void)
+     {
+         return;
+     }
+-    unsigned char readBuff[64];
++    unsigned char readBuff[64] = {0};
+     int read = hid_read(m_hidDevice, readBuff, 64);
+     m_mutexRead.lock();
+     if(read > 0)
+     {
+         if(readBuff[0] == ANTSCOPE_REPORT)
+         {
+-            for(int i = 0; i < readBuff[1]; i++)
++            // readBuff[1] is a payload length supplied by the device
++            // (0-255); clamp it to both the fixed-size buffer and to how
++            // many bytes hid_read() actually returned, so a device
++            // reporting more than 62 payload bytes - or a short read -
++            // cannot walk past the end of readBuff.
++            int len = qMin<int>(readBuff[1], qMax(0, read - 2));
++            for(int i = 0; i < len; i++)
+             {
+                 m_incomingBuffer.append(readBuff[i+2]);
+             }
+diff --git a/analyzer/hidanalyzer.cpp b/analyzer/hidanalyzer.cpp
+index 78b3754..dcf643e 100644
+--- a/analyzer/hidanalyzer.cpp
++++ b/analyzer/hidanalyzer.cpp
+@@ -462,14 +462,20 @@ void hidAnalyzer::hidRead (void)
+     {
+         return;
+     }
+-    unsigned char readBuff[64];
++    unsigned char readBuff[64] = {0};
+     int read = hid_read(m_hidDevice, readBuff, 64);
+     m_mutexRead.lock();
+     if(read > 0)
+     {
+         if(readBuff[0] == ANTSCOPE_REPORT)
+         {
+-            for(int i = 0; i < readBuff[1]; i++)
++            // readBuff[1] is a payload length supplied by the device
++            // (0-255); clamp it to both the fixed-size buffer and to how
++            // many bytes hid_read() actually returned, so a device
++            // reporting more than 62 payload bytes - or a short read -
++            // cannot walk past the end of readBuff.
++            int len = qMin<int>(readBuff[1], qMax(0, read - 2));
++            for(int i = 0; i < len; i++)
+             {
+                 m_incomingBuffer.append(readBuff[i+2]);
+             }

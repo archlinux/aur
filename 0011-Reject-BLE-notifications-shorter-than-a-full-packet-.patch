@@ -1,0 +1,35 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 20:22:42 +0200
+Subject: [PATCH 11/13] Reject BLE notifications shorter than a full packet
+ before parsing
+
+dataReceived() passed every incoming BLE notification straight to
+checkCRC()/returnCRC(), both of which index data[BLE_PACKET_SIZE-1]
+(byte 19) with no length check. In a release build (QByteArray::at()'s
+bounds assert compiles out under QT_NO_DEBUG) a malformed or malicious
+BLE peripheral sending a notification shorter than 20 bytes causes an
+out-of-bounds read. Reject short packets before they reach any of the
+parsing paths.
+---
+ analyzer/ble_analyzer.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/analyzer/ble_analyzer.cpp b/analyzer/ble_analyzer.cpp
+index 5c86d5e..273c38c 100644
+--- a/analyzer/ble_analyzer.cpp
++++ b/analyzer/ble_analyzer.cpp
+@@ -474,6 +474,13 @@ void BleAnalyzer::dataReceived(const QLowEnergyCharacteristic &c, const QByteArr
+ {
+     if (c.uuid() != QBluetoothUuid(uuidRead))
+         return;
++    if (value.size() < BLE_PACKET_SIZE) {
++        // checkCRC()/returnCRC() index data[BLE_PACKET_SIZE-1] with no
++        // bounds check of their own; a malformed or malicious peripheral
++        // sending a short notification would otherwise read out of bounds.
++        qInfo() << "dataReceived: short packet, ignoring" << value.size();
++        return;
++    }
+     //qInfo() << trace("dataReceived: ", const_cast<QByteArray&>(value));
+     m_lastReadTimeMS = QDateTime::currentMSecsSinceEpoch();
+     if (!checkCRC(value)) {

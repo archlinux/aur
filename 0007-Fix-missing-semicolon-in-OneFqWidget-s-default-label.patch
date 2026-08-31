@@ -1,0 +1,27 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 20:22:09 +0200
+Subject: [PATCH 07/13] Fix missing semicolon in OneFqWidget's default label
+ stylesheet
+
+Same bug as db3c4ae (popup.cpp): the color declaration runs straight
+into the next CSS property with no separating semicolon
+('color : #RRGGBBmargin-top: 6px'), silently dropping the color. The
+class's own setTextColor() builds the equivalent string correctly.
+---
+ onefqwidget.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/onefqwidget.cpp b/onefqwidget.cpp
+index b83bf1d..e93011d 100644
+--- a/onefqwidget.cpp
++++ b/onefqwidget.cpp
+@@ -28,7 +28,7 @@ OneFqWidget::OneFqWidget(int _points, QWidget *parent) :
+     setAttribute(Qt::WA_ShowWithoutActivating);
+ 
+     m_label.setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+-    m_label.setStyleSheet("QLabel { color : " + m_textColor.name() +
++    m_label.setStyleSheet("QLabel { color : " + m_textColor.name() + ";"
+                         "margin-top: 6px;"
+                         "margin-bottom: 6px;"
+                         "margin-left: 10px;"

@@ -1,0 +1,196 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 19:19:20 +0200
+Subject: [PATCH 03/13] Fix flickering popups caused by a
+ WindowActivate/WindowDeactivate feedback loop
+
+MainWindow::event() reacted to every single WindowActivate/WindowDeactivate
+by showing/hiding two always-on-top Qt::Tool popups (the graph 'Hint' and
+'BriefHint' hints, and the markers popup). On some Wayland compositors
+(observed on COSMIC/cosmic-comp), unmapping/remapping those Qt::Tool
+surfaces itself triggers a spurious WindowActivate/WindowDeactivate on the
+parent window - which re-fires the same show/hide logic, creating a
+self-sustaining feedback loop that reads as rapidly flickering popups and
+a flickering main window title bar.
+
+Two changes, together:
+- MainWindow now debounces WindowActivate/WindowDeactivate symmetrically:
+  neither is acted on immediately: only once the window's activation
+  state has held steady for 300ms is focus() actually emitted, and only
+  if it differs from the last emitted state.
+- PopUp::focusShow()/focusHide() and MarkersPopUp::focusShow()/focusHide()
+  no longer map/unmap the underlying window at all; they move it
+  on/off-screen instead. This keeps the Wayland surface continuously
+  mapped, so showing/hiding these popups can no longer perturb the
+  parent window's activation state, breaking the feedback loop at its
+  root rather than just slowing it down.
+
+Also adds Qt::WindowDoesNotAcceptFocus to both classes' window flags as
+defense in depth.
+
+Separately, mainwindow.cpp already had m_1secTimer - a timer whose
+handler toggles the same hint popups based on cursor position - started
+with a 100ms interval despite its name and intent; that is a distinct,
+already-fixed bug (see previous commit) that made the same popups flash
+on every mouse-cursor check instead of once a second.
+---
+ mainwindow.cpp   | 26 +++++++++++++++++++++-----
+ mainwindow.h     |  3 +++
+ markerspopup.cpp | 15 ++++++++++-----
+ popup.cpp        | 18 +++++++++++++++---
+ 4 files changed, 49 insertions(+), 13 deletions(-)
+
+diff --git a/mainwindow.cpp b/mainwindow.cpp
+index 102c866..4471395 100644
+--- a/mainwindow.cpp
++++ b/mainwindow.cpp
+@@ -538,6 +538,10 @@ MainWindow::MainWindow(QWidget *parent) :
+     connect(m_1secTimer, SIGNAL(timeout()), this, SLOT(on_1secTimerTick()));
+     m_1secTimer->start(1000);
+ 
++    m_focusDebounceTimer = new QTimer(this);
++    m_focusDebounceTimer->setSingleShot(true);
++    connect(m_focusDebounceTimer, &QTimer::timeout, this, &MainWindow::onFocusDebounceTimeout);
++
+     loadLanguage(languages_small[m_languageNumber]);
+     ui->tableWidget_presets->horizontalHeader()->show();
+     if(!m_isRange)
+@@ -761,12 +765,15 @@ void MainWindow::closeEvent(QCloseEvent *event)
+ 
+ bool MainWindow::event(QEvent * e)
+ {
+-    if(e->type() == QEvent::WindowActivate)
+-    {
+-        emit focus(true);
+-    }else if (e->type() == QEvent::WindowDeactivate)
++    if(e->type() == QEvent::WindowActivate || e->type() == QEvent::WindowDeactivate)
+     {
+-        emit focus(false);
++        // Some window managers/compositors send rapid, sometimes
++        // continuous, Activate/Deactivate churn (e.g. triggered by an
++        // always-on-top Qt::Tool child being mapped/unmapped, which is
++        // itself a reaction to a previous Activate here - a feedback
++        // loop). Do not react to any single event; only act once the
++        // window's activation state has held steady for a while.
++        m_focusDebounceTimer->start(300);
+     }else if (e->type() == QEvent::WindowStateChange)
+     {
+         updateGraph();
+@@ -774,6 +781,15 @@ bool MainWindow::event(QEvent * e)
+     return QMainWindow::event(e) ;
+ }
+ 
++void MainWindow::onFocusDebounceTimeout()
++{
++    bool active = isActiveWindow();
++    if (active != m_lastEmittedFocus) {
++        m_lastEmittedFocus = active;
++        emit focus(active);
++    }
++}
++
+ void MainWindow::setWidgetsSettings()
+ {
+     QPen pen;
+diff --git a/mainwindow.h b/mainwindow.h
+index 5728d36..0533483 100644
+--- a/mainwindow.h
++++ b/mainwindow.h
+@@ -160,6 +160,8 @@ private:
+ 
+ //    QTimer *m_redrawTimer;
+     QTimer *m_1secTimer;
++    QTimer *m_focusDebounceTimer;
++    bool m_lastEmittedFocus = true;
+ 
+     double m_cableVelFactor;
+     double m_cableResistance;
+@@ -338,6 +340,7 @@ private slots:
+     void on_firmwareAutoUpdateStateChanged( bool state);
+     void on_antScopeAutoUpdateStateChanged( bool state);
+     void on_1secTimerTick();
++    void onFocusDebounceTimeout();
+     void on_calibrationChanged();
+     void on_SaveFile(int row, QString path);
+     void on_mouseDoubleClick(QMouseEvent* e);
+diff --git a/markerspopup.cpp b/markerspopup.cpp
+index 9274a04..e8b2fb3 100644
+--- a/markerspopup.cpp
++++ b/markerspopup.cpp
+@@ -22,7 +22,8 @@ MarkersPopUp::MarkersPopUp(QWidget *parent) : QWidget(parent),
+ {
+       setWindowFlags(Qt::FramelessWindowHint |        // Отключаем оформление окна
+                      Qt::Tool |                       // Отменяем показ в качестве отдельного окна
+-                     Qt::WindowStaysOnTopHint);       // Устанавливаем поверх всех окон
++                     Qt::WindowStaysOnTopHint |       // Устанавливаем поверх всех окон
++                     Qt::WindowDoesNotAcceptFocus);   // Никогда не становится активным окном
+       setAttribute(Qt::WA_TranslucentBackground);     // Указываем, что фон будет прозрачным
+       setAttribute(Qt::WA_ShowWithoutActivating);     // При показе, виджет не получается фокуса автоматически
+ 
+@@ -177,18 +178,22 @@ void MarkersPopUp::show()
+ 
+ void MarkersPopUp::focusShow()
+ {
+-    //qDebug() << "MarkersPopUp::focusShow()" << m_menuVisible;
+-    QWidget::show();
++    move(m_x, m_y);
++    if (!isVisible()) {
++        QWidget::show();
++    }
+ }
+ 
+ void MarkersPopUp::focusHide()
+ {
+-    //qDebug() << "MarkersPopUp::focusHide()" << m_menuVisible;
+     if (m_menuVisible) {
+         setVisible(true);
+         return;
+     }
+-    QWidget::hide();
++    // Park off-screen instead of QWidget::hide(): see PopUp::focusHide()
++    // for why unmapping this Qt::Tool surface causes a feedback loop on
++    // some Wayland compositors.
++    move(-32000, -32000);
+ }
+ 
+ void MarkersPopUp::hideAnimation()
+diff --git a/popup.cpp b/popup.cpp
+index 0eff1ac..9e07d7a 100644
+--- a/popup.cpp
++++ b/popup.cpp
+@@ -49,7 +49,8 @@ void PopUp::init()
+ {
+     setWindowFlags(Qt::FramelessWindowHint |
+                    Qt::Tool |
+-                   Qt::WindowStaysOnTopHint);
++                   Qt::WindowStaysOnTopHint |
++                   Qt::WindowDoesNotAcceptFocus);
+     setAttribute(Qt::WA_TranslucentBackground);
+     setAttribute(Qt::WA_ShowWithoutActivating);
+ 
+@@ -185,12 +186,23 @@ void PopUp::show()
+ 
+ void PopUp::focusShow()
+ {
+-    QWidget::show();
++    move(m_x, m_y);
++    if (!isVisible()) {
++        QWidget::show();
++    }
+ }
+ 
+ void PopUp::focusHide()
+ {
+-    QWidget::hide();
++    // Park off-screen instead of QWidget::hide(): unmapping this
++    // Qt::Tool top-level surface causes some Wayland compositors
++    // (observed on COSMIC/cosmic-comp) to send a spurious
++    // WindowActivate/WindowDeactivate event to the parent window. Since
++    // that event drives this same show/hide logic (via MainWindow::event
++    // -> focus() -> showHideHints()), unmapping creates a self-sustaining
++    // feedback loop ("flickering popups"). Moving off-screen is visually
++    // equivalent while keeping the surface continuously mapped.
++    move(-32000, -32000);
+ }
+ 
+ void PopUp::hideAnimation()
