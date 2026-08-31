@@ -1,6 +1,6 @@
 # Maintainer: Valentin Batz <valentin.batz+archlinux@posteo.de>
 pkgname=mdns-browser-bin
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
 pkgdesc="A cross platform mDNS browsing app written in Rust using tauri and leptos "
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('MIT')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1')
 options=('!strip' '!emptydirs')
 conflicts=('mdns-browser')
-source_x86_64=("https://github.com/hrzlgnm/mdns-browser/releases/download/v1.20.0/mdns-browser_${pkgver}_amd64.deb" "https://github.com/hrzlgnm/mdns-browser/releases/download/v1.20.0/mdns-browser_linux_x64")
-sha256sums_x86_64=('d13d9f87195014f9bbc9626a6c7096d6a85b919e14f9641265a055976aaacfb6' '7225a0aceb499d07f7c2ed5a25ba1f52efb60ccb39f2cf11c77982490c6d252e')
+source_x86_64=("https://github.com/hrzlgnm/mdns-browser/releases/download/v1.20.1/mdns-browser_${pkgver}_amd64.deb" "https://github.com/hrzlgnm/mdns-browser/releases/download/v1.20.1/mdns-browser_linux_x64")
+sha256sums_x86_64=('1610fdd06cbc687ab8a3d6688913fc7089acebf5edde082864b7f1319bd535de' '90b3d9fa41ce19fe1fa4b2d391960d6bf23c971280c16d871014f588b927643d')
 package() {
     # The .deb contains the icons, .desktop file and other files installed to shared.
     tar -xz -f data.tar.gz -C "${pkgdir}"
