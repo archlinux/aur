@@ -1,0 +1,19 @@
+pkgbase = glean-bin
+	pkgdesc = A note-taking app with a night-sky canvas
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/rokuroo171/glean
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	optdepends = libappindicator-gtk3: system tray support
+	provides = glean
+	conflicts = glean
+	options = !strip
+	source = https://github.com/rokuroo171/glean/releases/download/v1.5.0/glean-desktop
+	source = https://github.com/rokuroo171/glean/raw/v1.5.0/LICENSE
+	sha256sums = 0434e1eb119a0cd58f8f73ec8e5428d5259c0eeeafe9f71969aa9f21be49ba20
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = glean-bin

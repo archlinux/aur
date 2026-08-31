@@ -1,0 +1,6 @@
+glean-desktop
+src/
+pkg/
+*.pkg.tar.zst
+LICENSE
+glean-desktop
