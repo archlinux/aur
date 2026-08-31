@@ -36,7 +36,7 @@ Index: b/src/CMakeLists.txt
 ===================================================================
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -65,7 +65,6 @@ target_link_libraries(dlt-viewer
+@@ -117,7 +117,6 @@ target_link_libraries(dlt-viewer
  if(CMAKE_COMPILER_IS_GNUCXX)
      # https://stackoverflow.com/questions/45329372/ubuntu-recognizes-executable-as-shared-library-and-wont-run-it-by-clicking
      # https://forum.juce.com/t/cmake-executable-build-shows-up-as-shared-library-on-linux-mint/45503/6

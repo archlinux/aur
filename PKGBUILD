@@ -22,7 +22,7 @@ depends=(
 source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz"
         'dlt-viewer-keep-pie-flag.patch')
 b2sums=('1abaa5b388a4130c99a64fb44ef5a99eb76a47823804f532117ac46c4220b58a7977da0ffb173b9dd26e44dedfcf8c5dc83e80f912780e4b3afb50893b9b615d'
-        '8e693e441ba22f8265dbf57c4d51d7debcf627da85b49ed092106aa59f80a3de97965b7f906bc1371932739f36d0bcfd8034c2eb9ab3591c98fdf7ad587e5902')
+        'a3e26a833c41787913b88ad4e75cec2e17d99f350314083200527b303e6dbd8c15298ec2cefc87c36be422fd0cce5ba7f7236579ae2eb65731107818d958fe39')
 
 prepare() {
   cd "dlt-viewer-${pkgver}"
@@ -42,7 +42,7 @@ build() {
     -D DLT_ADDITIONAL_FILES_INSTALLATION_PATH=/usr/share/dlt-viewer
     -D DLT_INSTALL_SDK=ON # includes docs
     -D DLT_USE_QT_RPATH=OFF
-    -Wno-dev
+    -Wno-author
   )
   cmake -B build -S "dlt-viewer-${pkgver}" "${cmake_options[@]}"
   cmake --build build
