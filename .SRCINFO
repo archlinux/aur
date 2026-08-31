@@ -1,0 +1,17 @@
+pkgbase = hptnacp
+	pkgdesc = A tool for creating and viewing Nintendo Switch NACP files
+	pkgver = 1.03
+	pkgrel = 1
+	url = https://github.com/DarkMatterCore/hacPack/tree/master/hacPack-Tools/hacPackTools-NACP
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = tinyxml2
+	source = hptnacp-1.03.tar.gz::https://github.com/DarkMatterCore/hacPack/archive/refs/tags/v1.36-r2.tar.gz
+	source = fix-makefile.patch
+	b2sums = 723b3e969615bf51b304fddf06623fe266b4cd873569d3a823f4a28c0822c530b03dbf598d3ed91531dc6b8f2bd090706bc3812feac1684616007aad60160b9d
+	b2sums = 5889d90cb1dcbfb72949adc857fa91a7062b282f4002ecd8fcc59bcc388324b21e56d2103ceb492994c600f7b50dc7fdf77d558b93e170f9535ea384e108b86d
+
+pkgname = hptnacp
