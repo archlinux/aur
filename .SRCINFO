@@ -1,14 +1,14 @@
 pkgbase = readeck-bin
 	pkgdesc = Readeck lets you save readable content of web pages. It's a bookmark manager and a read it later tool
-	pkgver = 0.23.1
+	pkgver = 0.23.2
 	pkgrel = 1
 	url = https://readeck.org
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	provides = readeck
-	source_x86_64 = https://codeberg.org/readeck/readeck/releases/download/0.23.1/readeck-0.23.1-linux-amd64
-	source_x86_64 = https://codeberg.org/readeck/readeck/releases/download/0.23.1/readeck-0.23.1-linux-amd64.sha256
-	sha256sums_x86_64 = 776bf4a3eb380c07fba8ec419c267818e4dade46b68c29672ffe2ac1829e160a
-	sha256sums_x86_64 = 6e6305ed1e35a7f961e2173671c0b048dffefdcc0f68a67ac6f3013e8c968e4d
+	source_x86_64 = https://codeberg.org/readeck/readeck/releases/download/0.23.2/readeck-0.23.2-linux-amd64
+	source_x86_64 = https://codeberg.org/readeck/readeck/releases/download/0.23.2/readeck-0.23.2-linux-amd64.sha256
+	sha256sums_x86_64 = 39fc1c52afa5a96ee2cbf44c866fdb97260d8a84fb6abb8030f843830ccd93fd
+	sha256sums_x86_64 = bb8fee94c3125aab626400ad725e128dfc6180050383326b5a130c36a97cb1b2
 
 pkgname = readeck-bin
