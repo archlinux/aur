@@ -1,0 +1,13 @@
+pkgbase = aed-bin
+	pkgdesc = Interactive disk space analyzer for terminal (TUI)
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/Quirky1869/aed
+	arch = x86_64
+	license = MIT
+	provides = aed
+	conflicts = aed
+	source = aed-0.1.6::https://github.com/Quirky1869/aed/releases/download/v0.1.6/aed
+	sha256sums = 8b92e48785e8b8b5e0560540bc9109b90c72ebccf48523d62a6f7b280088fa1f
+
+pkgname = aed-bin
