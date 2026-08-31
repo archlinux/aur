@@ -1,7 +1,7 @@
 # Maintainer: alfdupont <93726722+alfdupont@users.noreply.github.com>
 
 pkgname=i3status-rs-ai-usage
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='AI subscription quota (Claude, Codex, Copilot) as an i3status-rust block for swaybar and i3bar'
 arch=('any')
@@ -42,6 +42,7 @@ package() {
   done
 
   install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 docs/*.png -t "$pkgdir/usr/share/doc/$pkgname/docs"
   install -Dm644 examples/* -t "$pkgdir/usr/share/doc/$pkgname/examples"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
