@@ -1,7 +1,7 @@
 # Maintainer: falser <zjf_0731@163.com>
 pkgname=grok-bot-bin
 pkgver=0.30.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Grok Bot desktop agent'
 arch=('x86_64')
 url='https://cursor.com'
@@ -21,8 +21,9 @@ depends=(
     libappindicator
 )
 makedepends=('python')
-provides=('sand')
-conflicts=('sand' 'grok-bot-bin' 'grokbot-linux-port' 'grokbot-linux-port-bin')
+provides=('sand' 'grok-bot')
+conflicts=('sand' 'grok-bot' 'grokbot-linux-port' 'grokbot-linux-port-bin')
+replaces=('grok-bot')
 options=('!strip' '!debug')
 _commit=2385d097738b3719cc5ecd9281a107aa106215f1
 source=(
