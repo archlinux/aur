@@ -1,7 +1,7 @@
 # Maintainer: Johan Larsson <johan@jolars.co>
 pkgname=tomat-bin
-pkgver=2.11.0
-pkgrel=2
+pkgver=2.13.0
+pkgrel=1
 pkgdesc="A Pomodoro timer for status bars"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jolars/tomat"
@@ -12,8 +12,8 @@ conflicts=('tomat')
 options=(!strip !debug)
 source_x86_64=("tomat-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/tomat-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("tomat-$pkgver-aarch64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/tomat-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('60f42555ebf995bef2dadd8758923444e9dbeec6e6cb6183bb1aca457264f474')
-sha256sums_aarch64=('1d88c725efb2846d7def345b2c0190df48def8eec9029487e6ca369c6d53c131')
+sha256sums_x86_64=('3d055adc3aef70c676fab1009b7231fb1edc32b14a99e7be31901cb22e73b86f')
+sha256sums_aarch64=('780302df146fc76547d5f30798320dc257c0bfb2c991d13cbd7cc310946c5623')
 
 package() {
     # Binary
