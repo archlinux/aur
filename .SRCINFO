@@ -1,6 +1,6 @@
 pkgbase = python-comfy-cli
 	pkgdesc = Command Line Interface for Managing ComfyUI
-	pkgver = 1.17.0
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/Comfy-Org/comfy-cli
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = python-comfy-cli
 	depends = python-websocket-client
 	optdepends = aria2: aria2 RPC download backend
 	optdepends = git-lfs
-	source = comfy-cli-1.17.0.tar.gz::https://files.pythonhosted.org/packages/source/c/comfy-cli/comfy_cli-1.17.0.tar.gz
-	sha256sums = 636c80d112f77491a6d83e40812e6f49f7a3461edaecdb055cb87f30fb7a759d
+	source = comfy-cli-1.19.0.tar.gz::https://files.pythonhosted.org/packages/source/c/comfy-cli/comfy_cli-1.19.0.tar.gz
+	sha256sums = ba9de37c06b11d8766c68feddd5a02feeb90dcd2b9eb14adb70e8088a12532d6
 
 pkgname = python-comfy-cli
