@@ -1,6 +1,6 @@
 # Maintainer: Eric Jingryd <tidynest@proton.me>
 pkgname=linux-hardener
-pkgver=1.8.1
+pkgver=1.8.2
 pkgrel=1
 pkgdesc="Linux security automation: scanning, hardening, and rollback across 8 domains"
 arch=('x86_64')
@@ -63,7 +63,7 @@ optdepends=(
 # which is what docs/guide/installation.md promises for every packaging.
 backup=('etc/linux-hardener/config.toml')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tidynest/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('382606f4c9f455cdbf10696b2c74076d9b98fb013012264dbfd050be879064c5')
+sha256sums=('989a7e9e86249189a731141893f3b25d40f11e81000d91c6d73cd7592991d4f3')
 
 build() {
     cd "$pkgname-$pkgver"
