@@ -1,10 +1,10 @@
 pkgbase = kopuz-bin
 	pkgdesc = A modern music player (pre-built binary)
-	pkgver = 0.16.0
+	pkgver = 0.16.1
 	pkgrel = 1
 	url = https://github.com/Kopuz-org/kopuz
 	arch = x86_64
-	license = MIT
+	license = EUPL-1.2
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libsoup3
@@ -19,7 +19,7 @@ pkgbase = kopuz-bin
 	optdepends = python-mutagen
 	provides = kopuz
 	conflicts = kopuz
-	source = kopuz-bin-0.16.0.tar.gz::https://github.com/Kopuz-org/kopuz/releases/download/v0.16.0/kopuz_v0.16.0_x86_64-linux.tar.gz
-	sha256sums = efadcf15f286cc65586d28df62362c972413162289c7ca9b936b58868a8aa02f
+	source = kopuz-bin-0.16.1.tar.gz::https://github.com/Kopuz-org/kopuz/releases/download/v0.16.1/kopuz_v0.16.1_x86_64-linux.tar.gz
+	sha256sums = 4219eddcebeede21aadb0af7e92cf788b5670ac642c7d40d244237d17db26c22
 
 pkgname = kopuz-bin
