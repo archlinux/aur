@@ -1,7 +1,7 @@
 pkgbase = gvfs-googledrive
 	pkgdesc = Virtual filesystem implementation for GIO (with Google Drive backend) - all backends
 	pkgver = 1.61.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/fluhus/gvfs
 	install = gvfs-nfs.install
 	arch = x86_64
@@ -82,7 +82,7 @@ pkgbase = gvfs-googledrive
 	replaces = gvfs-onedrive
 	replaces = gvfs-smb
 	replaces = gvfs-wsdd
-	source = git+https://gitlab.gnome.org/fluhus/gvfs.git#commit=d85a4f8c023c7bfcc0ff94f01aef4d8cae174f22
+	source = git+https://gitlab.gnome.org/fluhus/gvfs.git
 	source = gvfsd.hook
 	b2sums = SKIP
 	b2sums = a0356a49c419dc69466c591d5e69701b865bb97ca336ea6d8bca0f0d9173b832b73d9f2c701d572a0245957d39c9a38ab6dff4ea7c737c34f2a1a28d93c0427f
