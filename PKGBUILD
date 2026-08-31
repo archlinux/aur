@@ -1,7 +1,7 @@
 # Maintainer: alfdupont <93726722+alfdupont@users.noreply.github.com>
 
 pkgname=i3status-rs-ai-usage
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='AI subscription quota (Claude, Codex, Copilot) as an i3status-rust block for swaybar and i3bar'
 arch=('any')

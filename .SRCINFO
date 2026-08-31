@@ -1,6 +1,6 @@
 pkgbase = i3status-rs-ai-usage
 	pkgdesc = AI subscription quota (Claude, Codex, Copilot) as an i3status-rust block for swaybar and i3bar
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/alfdupont/i3status-rs-ai-usage
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = i3status-rs-ai-usage
 	optdepends = github-cli: fallback for reading the Copilot quota
 	optdepends = otf-font-awesome: vendor logo glyphs instead of text labels
 	optdepends = libnotify: right-click usage breakdown via notify-send
-	source = git+https://github.com/alfdupont/i3status-rs-ai-usage.git#tag=v1.0.0
+	source = git+https://github.com/alfdupont/i3status-rs-ai-usage.git#tag=v1.0.1
 	sha256sums = SKIP
 
 pkgname = i3status-rs-ai-usage
