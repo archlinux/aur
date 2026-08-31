@@ -1,5 +1,5 @@
 pkgname=commit-ai
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Cross-platform AI-powered Git commit message generator"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('git')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jhowk14/commit-ai/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('eaa558c3219d8996817eebe7a17b8e0c7ac7f1c3d64895dafb4afef71f8f9141')
+sha256sums=('05cec5d592abde504a684b865145e867692332dd60c3c2ad24922df56d8d6cfb')
 
 build() {
   cd "${pkgname}-${pkgver}"
