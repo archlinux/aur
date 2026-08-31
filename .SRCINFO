@@ -1,0 +1,19 @@
+pkgbase = anpan-git
+	pkgdesc = Feed a link, bake a file — minimal terminal downloader (VCS latest)
+	pkgver = 0.4.0.r0.ga892341
+	pkgrel = 1
+	url = https://github.com/KabosuNeko/anpan
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	optdepends = aria2: for multi-connection acceleration, creator archives, and BitTorrent
+	optdepends = ffmpeg: for media multiplexing and audio extraction
+	provides = anpan
+	conflicts = anpan
+	conflicts = anpan-bin
+	source = git+https://github.com/KabosuNeko/anpan.git
+	sha256sums = SKIP
+
+pkgname = anpan-git
