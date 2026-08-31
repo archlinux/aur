@@ -23,7 +23,7 @@ else
 fi
 _ffsrcver="${_ffsrcver%b*}"
 pkgver="${_srcver}.${_lwrelver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -152,6 +152,7 @@ source=(
   "0002-Use-wasm32-wasip1-target.patch"
   "0003-update-rust-bindgen-to-fix-clang22-build.patch.xz"
   "0004-skia-m142-update.patch.xz"
+  "0005-rust-1_98-compat.patch"
 )
 noextract=("security-state--intermediates.zip")
 sha256sums=('a964d5bc5fcecb35701396493dcdaad6ddbc6dffe80d17051e82b15178e8d5a9'
@@ -164,7 +165,8 @@ sha256sums=('a964d5bc5fcecb35701396493dcdaad6ddbc6dffe80d17051e82b15178e8d5a9'
             '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
             'baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba'
             '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
-            '01b8c0b1064f746ecd186e4b92767e92e4028519cfd3e0ea0637fb786cdec644')
+            '01b8c0b1064f746ecd186e4b92767e92e4028519cfd3e0ea0637fb786cdec644'
+            '1ff4813485ad035f0b42dce03f86acd021a0acf7d0cb51c6477dec38cade47ef')
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -211,6 +213,7 @@ prepare() {
     patch -B .patchorigin -Np1 -i ../../0002-Use-wasm32-wasip1-target.patch
     xzcat ../../0003-update-rust-bindgen-to-fix-clang22-build.patch.xz | patch -B .patchorigin -Np1
     xzcat ../../0004-skia-m142-update.patch.xz | patch -B .patchorigin -Np1
+    patch -B .patchorigin -Np1 -i ../../0005-rust-1_98-compat.patch
   fi
 
   mv -b mozconfig ../mozconfig || true
