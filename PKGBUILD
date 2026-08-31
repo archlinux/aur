@@ -6,11 +6,11 @@ pkgname=(
   'mullvad-vpn-daemon-beta'
 )
 pkgbase=mullvad-vpn-beta
-_pkgver=2026.4
-_channel=stable
+_pkgver=2026.5
+_channel=beta
 _rel=1
-# pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+# pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 _nodeversion=24
 pkgdesc="The Mullvad VPN client app for desktop - beta channel"
@@ -34,14 +34,14 @@ makedepends=(
   'typescript'
 )
 source=(
-  # "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+  # "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
   'no-rpm.diff'
   'no-publish.diff'
   "${pkgbase%-beta}.sh"
 )
-sha256sums=('bbdbf41b3e1dd7117171bd323652823881e4a5a5737b8d6f6015c757891678b6'
+sha256sums=('4b886d6f9e776ea0776285858c78520754ed9b882200d7915ca52697c1a35eea'
             'SKIP'
             'f3976a76352b09677487569a8538819fd393dbd6c8dbc6345f3022a08054faa9'
             '0cd7bccb05af010cc26cb0a0bb91cb68f279c4d64d7ace35e1902f020bf50311'
@@ -169,7 +169,7 @@ package_mullvad-vpn-beta() {
   install -Dm644 "usr/share/applications/${pkgname%-beta}.desktop" -t \
     "$pkgdir/usr/share/applications/"
 
-  for icon_size in 16 32 48 64 128 256 512 1024; do
+  for icon_size in 16 32 48 64 128 256 512; do
     icons_dir="usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
     install -Dm644 "${icons_dir}/${pkgname%-beta}.png" -t "$pkgdir/${icons_dir}/"
   done
