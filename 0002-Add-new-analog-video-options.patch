@@ -1,4 +1,4 @@
-From 9a32ebb57ab3c0113e63d5441d7c16f3cd04d990 Mon Sep 17 00:00:00 2001
+From 4cdf302c543f209c3c85ff6099749b8669f35629 Mon Sep 17 00:00:00 2001
 From: Hans-Kristian Arntzen <post@arntzen-software.no>
 Date: Sat, 2 May 2026 15:34:15 +0200
 Subject: [PATCH] Add new analog video options.
@@ -663,7 +663,7 @@ index 3b8499cb1..c1b4b1443 100644
 + <connections/>
  </ui>
 diff --git a/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp b/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp
-index b6d8cf0e4..9c08cffb6 100644
+index 11ae7b127..e4ad17549 100644
 --- a/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp
 +++ b/pcsx2-qt/Settings/GraphicsSettingsWidget.cpp
 @@ -259,6 +259,21 @@ GraphicsSettingsWidget::GraphicsSettingsWidget(SettingsWindow* settings_dialog,
@@ -688,7 +688,7 @@ index b6d8cf0e4..9c08cffb6 100644
  
  	//////////////////////////////////////////////////////////////////////////
  	// Non-trivial settings
-@@ -614,6 +629,68 @@ GraphicsSettingsWidget::GraphicsSettingsWidget(SettingsWindow* settings_dialog,
+@@ -623,6 +638,68 @@ GraphicsSettingsWidget::GraphicsSettingsWidget(SettingsWindow* settings_dialog,
  
  		dialog()->registerWidgetHelp(m_pgs.pgsDisableReadbackSync, tr("Disable readback sync"), tr("Unchecked"),
  			tr("Disables sync for readbacks. Eliminates stalls, but will probably break things. Used for perf debug."));
@@ -758,7 +758,7 @@ index b6d8cf0e4..9c08cffb6 100644
  
  	// Hardware Fixes tab
 diff --git a/pcsx2/CMakeLists.txt b/pcsx2/CMakeLists.txt
-index de10bb676..8546608c4 100644
+index be3a9da38..7dd73017a 100644
 --- a/pcsx2/CMakeLists.txt
 +++ b/pcsx2/CMakeLists.txt
 @@ -655,7 +655,7 @@ endif()

@@ -1,19 +1,19 @@
-From 3d366e2baa61c4e67979b9e9b27a0b6d5930307a Mon Sep 17 00:00:00 2001
+From 9fccc432b302e29b6e1d25c3f7d98e28ea6766ff Mon Sep 17 00:00:00 2001
 From: Hans-Kristian Arntzen <post@arntzen-software.no>
 Date: Fri, 29 May 2026 21:23:20 +0200
 Subject: [PATCH] Hook up ImGui UI support.
 
 ---
  pcsx2/GS/GS.cpp                               |  61 ++-
- .../Renderers/parallel-gs/GSRendererPGS.cpp   | 366 ++++++++++++++----
- .../GS/Renderers/parallel-gs/GSRendererPGS.h  | 107 ++++-
+ .../Renderers/parallel-gs/GSRendererPGS.cpp   | 384 ++++++++++++++----
+ .../GS/Renderers/parallel-gs/GSRendererPGS.h  | 109 ++++-
  pcsx2/GameDatabase.cpp                        |   2 +-
  pcsx2/ImGui/ImGuiFullscreen.cpp               |  23 +-
- pcsx2/ImGui/ImGuiManager.cpp                  |  67 +++-
- 6 files changed, 496 insertions(+), 130 deletions(-)
+ pcsx2/ImGui/ImGuiManager.cpp                  |  67 ++-
+ 6 files changed, 514 insertions(+), 132 deletions(-)
 
 diff --git a/pcsx2/GS/GS.cpp b/pcsx2/GS/GS.cpp
-index 31dda835c..8a01f49c9 100644
+index bd356d926..69e5a38e9 100644
 --- a/pcsx2/GS/GS.cpp
 +++ b/pcsx2/GS/GS.cpp
 @@ -3,6 +3,7 @@
@@ -162,7 +162,7 @@ index 31dda835c..8a01f49c9 100644
  	if (g_gs_device)
  		g_gs_device->SetVSyncMode(mode, allow_present_throttle);
 diff --git a/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp b/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp
-index 5a9f22e93..6ab9800ce 100644
+index 5a9f22e93..509281a5d 100644
 --- a/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp
 +++ b/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.cpp
 @@ -3,6 +3,7 @@
@@ -224,7 +224,21 @@ index 5a9f22e93..6ab9800ce 100644
  {
  	// Always force the reload, since the other backends may clobber the volk pointers.
  	if (!Context::init_loader(nullptr, true))
-@@ -222,11 +226,22 @@ bool GSRendererPGS::Init()
+@@ -215,18 +219,35 @@ bool GSRendererPGS::Init()
+ 	wsi.set_platform(this);
+ 	wsi.set_frame_duplication_aware(true, 5);
+ 
+-	bool ret = wsi.init_simple(1, {});
++	if (const char *env = getenv("PGS_TIMELINE_TRACE"))
++		timeline_trace = std::make_unique<Util::TimelineTraceFile>(env);
++
++	Context::SystemHandles system_handles = {};
++	system_handles.timeline_trace_file = timeline_trace.get();
++
++	bool ret = wsi.init_simple(1, system_handles);
+ 	if (!ret)
+ 		return false;
+ 
  	// We will cycle through many memory contexts per frame most likely.
  	wsi.get_device().init_frame_contexts(12);
  
@@ -247,7 +261,7 @@ index 5a9f22e93..6ab9800ce 100644
  
  	GSOptions opts = {};
  	opts.vram_size = GSLocalMemory::m_vmsize;
-@@ -314,7 +329,7 @@ void GSRendererPGS::UpdateConfig()
+@@ -314,7 +335,7 @@ void GSRendererPGS::UpdateConfig()
  	if (meta.maxContentLightLevel >= 10000.0f)
  		meta.maxContentLightLevel = 0.0f;
  
@@ -256,7 +270,7 @@ index 5a9f22e93..6ab9800ce 100644
  	{
  		// NV workaround. It is out of spec and does not sanitize HDR metadata.
  		meta.maxLuminance = meta.maxContentLightLevel;
-@@ -326,7 +341,7 @@ void GSRendererPGS::UpdateConfig()
+@@ -326,7 +347,7 @@ void GSRendererPGS::UpdateConfig()
  		}
  	}
  
@@ -265,7 +279,7 @@ index 5a9f22e93..6ab9800ce 100644
  }
  
  int GSRendererPGS::GetSaveStateSize(int version)
-@@ -573,74 +588,85 @@ enum PGSGamma
+@@ -573,74 +594,85 @@ enum PGSGamma
  	PGS_GAMMA_28,
  };
  
@@ -295,101 +309,101 @@ index 5a9f22e93..6ab9800ce 100644
 -	iface.get_priv_register_state() = *priv;
 +		iface.flush();
 +		iface.get_priv_register_state() = *priv;
- 
--	VSyncInfo info = {};
++
 +		VSyncInfo info = {};
  
--	info.phase = field;
+-	VSyncInfo info = {};
 +		info.phase = field;
  
--	// Apparently this is needed for some games. It's set by game-fixes.
--	// I assume this problem exists at a higher level than whatever GS controls, so we'll just
--	// apply this hack too.
--	if (GSConfig.InterlaceMode != GSInterlaceMode::Automatic)
--		info.phase ^= (static_cast<int>(GSConfig.InterlaceMode) - 2) & 1;
+-	info.phase = field;
 +		// Apparently this is needed for some games. It's set by game-fixes.
 +		// I assume this problem exists at a higher level than whatever GS controls, so we'll just
 +		// apply this hack too.
 +		if (GSConfig.InterlaceMode != GSInterlaceMode::Automatic)
 +			info.phase ^= (static_cast<int>(GSConfig.InterlaceMode) - 2) & 1;
  
--	info.anti_blur = !GSConfig.PGSDisableCRTCEnhancements && GSConfig.PCRTCAntiBlur;
+-	// Apparently this is needed for some games. It's set by game-fixes.
+-	// I assume this problem exists at a higher level than whatever GS controls, so we'll just
+-	// apply this hack too.
+-	if (GSConfig.InterlaceMode != GSInterlaceMode::Automatic)
+-		info.phase ^= (static_cast<int>(GSConfig.InterlaceMode) - 2) & 1;
 +		info.anti_blur = !GSConfig.PGSDisableCRTCEnhancements && GSConfig.PCRTCAntiBlur;
  
--	info.force_progressive = GSConfig.PGSHighResScanout || !GSConfig.PGSDisableAutoProgressive;
+-	info.anti_blur = !GSConfig.PGSDisableCRTCEnhancements && GSConfig.PCRTCAntiBlur;
 +		info.force_progressive = GSConfig.PGSHighResScanout || !GSConfig.PGSDisableAutoProgressive;
  
--	// The CRT simulation path assumes some kind of overscan.
--	info.overscan = GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE ||
--	                GSConfig.PGSPhosphorPrimaries != PGS_CRT_NONE ||
--	                GSConfig.PCRTCOverscan;
+-	info.force_progressive = GSConfig.PGSHighResScanout || !GSConfig.PGSDisableAutoProgressive;
 +		// The CRT simulation path assumes some kind of overscan.
 +		info.overscan = GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE ||
 +						GSConfig.PGSPhosphorPrimaries != PGS_CRT_NONE ||
 +						GSConfig.PCRTCOverscan;
  
--	info.crtc_offsets = GSConfig.PGSDisableCRTCEnhancements || GSConfig.PCRTCOffsets;
+-	// The CRT simulation path assumes some kind of overscan.
+-	info.overscan = GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE ||
+-	                GSConfig.PGSPhosphorPrimaries != PGS_CRT_NONE ||
+-	                GSConfig.PCRTCOverscan;
 +		info.crtc_offsets = GSConfig.PGSDisableCRTCEnhancements || GSConfig.PCRTCOffsets;
  
--	info.dst_access = VK_ACCESS_2_SHADER_SAMPLED_READ_BIT;
--	info.dst_stage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT | VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT;
--	info.dst_layout = VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL;
+-	info.crtc_offsets = GSConfig.PGSDisableCRTCEnhancements || GSConfig.PCRTCOffsets;
 +		info.dst_access = VK_ACCESS_2_SHADER_SAMPLED_READ_BIT;
 +		info.dst_stage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT | VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT;
 +		info.dst_layout = VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL;
  
--	// The scaling blur is technically a blur ...
--	// Force it for analog emulation since we do the scaling there and double scaling is just bad.
--	info.adapt_to_internal_horizontal_resolution = GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE || GSConfig.PCRTCAntiBlur;
+-	info.dst_access = VK_ACCESS_2_SHADER_SAMPLED_READ_BIT;
+-	info.dst_stage = VK_PIPELINE_STAGE_FRAGMENT_SHADER_BIT | VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT;
+-	info.dst_layout = VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL;
 +		// The scaling blur is technically a blur ...
 +		// Force it for analog emulation since we do the scaling there and double scaling is just bad.
 +		info.adapt_to_internal_horizontal_resolution = GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE || GSConfig.PCRTCAntiBlur;
  
--	// We want consistent results for any TV emulation.
--	info.raw_circuit_scanout = GSConfig.PGSTVEmulation == PGS_TV_EMULATION_NONE && GSConfig.PGSPhosphorPrimaries == PGS_CRT_NONE;
+-	// The scaling blur is technically a blur ...
+-	// Force it for analog emulation since we do the scaling there and double scaling is just bad.
+-	info.adapt_to_internal_horizontal_resolution = GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE || GSConfig.PCRTCAntiBlur;
 +		// We want consistent results for any TV emulation.
 +		info.raw_circuit_scanout = GSConfig.PGSTVEmulation == PGS_TV_EMULATION_NONE && GSConfig.PGSPhosphorPrimaries == PGS_CRT_NONE;
  
--	// High-res scanout only makes sense if we're doing FSR style upscale.
--	info.high_resolution_scanout = GSConfig.PGSTVEmulation == PGS_TV_EMULATION_NONE &&
--	                               GSConfig.PGSPhosphorPrimaries == PGS_CRT_NONE &&
--	                               GSConfig.PGSHighResScanout != 0;
+-	// We want consistent results for any TV emulation.
+-	info.raw_circuit_scanout = GSConfig.PGSTVEmulation == PGS_TV_EMULATION_NONE && GSConfig.PGSPhosphorPrimaries == PGS_CRT_NONE;
 +		// High-res scanout only makes sense if we're doing FSR style upscale.
 +		info.high_resolution_scanout = GSConfig.PGSTVEmulation == PGS_TV_EMULATION_NONE &&
 +									   GSConfig.PGSPhosphorPrimaries == PGS_CRT_NONE &&
 +									   GSConfig.PGSHighResScanout != 0;
  
--	// If we have CRT emulation, we deal with deinterlacing there.
--	info.skip_deinterlace = GSConfig.PGSPhosphorPrimaries != PGS_CRT_NONE;
+-	// High-res scanout only makes sense if we're doing FSR style upscale.
+-	info.high_resolution_scanout = GSConfig.PGSTVEmulation == PGS_TV_EMULATION_NONE &&
+-	                               GSConfig.PGSPhosphorPrimaries == PGS_CRT_NONE &&
+-	                               GSConfig.PGSHighResScanout != 0;
 +		// If we have CRT emulation, we deal with deinterlacing there.
 +		info.skip_deinterlace = GSConfig.PGSPhosphorPrimaries != PGS_CRT_NONE;
  
--	auto stats = iface.consume_flush_stats();
+-	// If we have CRT emulation, we deal with deinterlacing there.
+-	info.skip_deinterlace = GSConfig.PGSPhosphorPrimaries != PGS_CRT_NONE;
 +		auto stats = iface.consume_flush_stats();
  
--	// Do not allow frame skip if frame-dupe is used.
--	bool frame_is_duped = !registers_written && stats.num_render_passes == 0 && stats.num_copies == 0 && iface.vsync_can_skip(info);
+-	auto stats = iface.consume_flush_stats();
 +		// Do not allow frame skip if frame-dupe is used.
 +		frame_is_duped = !registers_written && stats.num_render_passes == 0 && stats.num_copies == 0 && iface.vsync_can_skip(info);
  
--	// Don't waste GPU time scanning out the same thing twice.
--	if (!frame_is_duped || !vsync.image)
--		vsync = iface.vsync(info);
+-	// Do not allow frame skip if frame-dupe is used.
+-	bool frame_is_duped = !registers_written && stats.num_render_passes == 0 && stats.num_copies == 0 && iface.vsync_can_skip(info);
 +		// Don't waste GPU time scanning out the same thing twice.
 +		if (!frame_is_duped || !vsync.image)
 +			vsync = iface.vsync(info);
  
--	if (frame_is_duped && !GSConfig.SkipDuplicateFrames)
--		wsi.set_next_present_is_duplicated();
+-	// Don't waste GPU time scanning out the same thing twice.
+-	if (!frame_is_duped || !vsync.image)
+-		vsync = iface.vsync(info);
 +		if (frame_is_duped && !GSConfig.SkipDuplicateFrames)
 +			wsi.set_next_present_is_duplicated();
 +
 +		PerformanceMetrics::Update(registers_written, stats.num_render_passes != 0, false);
 +	}
  
--	if (GSConfig.SkipDuplicateFrames && has_presented_in_current_swapchain && frame_is_duped)
+-	if (frame_is_duped && !GSConfig.SkipDuplicateFrames)
+-		wsi.set_next_present_is_duplicated();
 +	Host::BeginPresentFrame();
-+
+ 
+-	if (GSConfig.SkipDuplicateFrames && has_presented_in_current_swapchain && frame_is_duped)
 +	if (GSConfig.SkipDuplicateFrames && device.has_presented_in_current_swapchain && frame_is_duped && !refresh_frame)
  	{
  		PerformanceMetrics::Update(false, false, true);
@@ -397,7 +411,7 @@ index 5a9f22e93..6ab9800ce 100644
  		return;
  	}
  
-@@ -774,10 +800,10 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
+@@ -774,10 +806,10 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
  
  	for (uint32_t frame_index = 0; frame_index < frame_multiplier; frame_index++)
  	{
@@ -411,7 +425,7 @@ index 5a9f22e93..6ab9800ce 100644
  			return;
  
  		uint32_t output_width = wsi.get_device().get_swapchain_view().get_view_width();
-@@ -888,6 +914,8 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
+@@ -888,6 +920,8 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
  
  		auto cmd = dev.request_command_buffer();
  
@@ -420,7 +434,7 @@ index 5a9f22e93..6ab9800ce 100644
  		if (frame_index == 0 && vsync.image && GSConfig.PGSTVEmulation != PGS_TV_EMULATION_NONE && priv->smode1.LC == SMODE1Bits::LC_ANALOG)
  		{
  			AnalogVideoFilter::FilterOptions filter_options = {};
-@@ -1028,18 +1056,20 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
+@@ -1028,18 +1062,20 @@ void GSRendererPGS::VSync(u32 field, bool registers_written)
  					vp_offset_x, vp_offset_y, vp_width, vp_height);
  			}
  		}
@@ -446,7 +460,7 @@ index 5a9f22e93..6ab9800ce 100644
  }
  
  void GSRendererPGS::Transfer(const u8* mem, u32 size)
-@@ -1063,10 +1093,8 @@ void GSRendererPGS::GetInternalResolution(int *width, int *height)
+@@ -1063,10 +1099,8 @@ void GSRendererPGS::GetInternalResolution(int *width, int *height)
  	*height = int(last_internal_height);
  }
  
@@ -458,7 +472,7 @@ index 5a9f22e93..6ab9800ce 100644
  	std::optional<WindowInfo> window = Host::AcquireRenderWindow(true);
  	if (window.has_value())
  	{
-@@ -1078,7 +1106,13 @@ bool GSRendererPGS::UpdateWindow()
+@@ -1078,7 +1112,13 @@ bool GSRendererPGS::UpdateWindow()
  		return false;
  }
  
@@ -473,7 +487,7 @@ index 5a9f22e93..6ab9800ce 100644
  {
  	resize = true;
  	window_info.surface_width = width;
-@@ -1086,12 +1120,12 @@ void GSRendererPGS::ResizeWindow(int width, int height, float /*scale*/)
+@@ -1086,23 +1126,31 @@ void GSRendererPGS::ResizeWindow(int width, int height, float /*scale*/)
  	// TODO: No idea what to do about scale.
  }
  
@@ -484,12 +498,24 @@ index 5a9f22e93..6ab9800ce 100644
  }
  
 -void GSRendererPGS::SetVSyncMode(GSVSyncMode mode, bool /*allow_present_throttle*/)
-+void GSDevicePGS::SetVSyncMode(GSVSyncMode mode, bool /*allow_present_throttle*/)
++void GSDevicePGS::SetVSyncMode(GSVSyncMode mode, bool allow_present_throttle)
  {
++	// PCSX2 seems to do weird stuff where mailbox is used even when FIFO is actually
++	// what is desired?
++	// It seems to be a fallback path for GSGetHostRefreshRate() failing.
++	// It's implementable, but requires a lot of plumbing or EXT_present_timing.
++	// I only really care for the FIFO mode since I don't expect to run on < 60 Hz screens,
++	// and good frame pace > pedantically accurate pacing for me.
++	if (mode == GSVSyncMode::Mailbox && !allow_present_throttle)
++		mode = GSVSyncMode::FIFO;
++
  	if (mode == GSVSyncMode::FIFO)
  		wsi.set_present_mode(PresentMode::SyncToVBlank);
-@@ -1102,7 +1136,7 @@ void GSRendererPGS::SetVSyncMode(GSVSyncMode mode, bool /*allow_present_throttle
- 	// Unknown what allow_present_throttle means.
+ 	else if (mode == GSVSyncMode::Mailbox)
+ 		wsi.set_present_mode(PresentMode::UnlockedNoTearing);
+ 	else
+ 		wsi.set_present_mode(PresentMode::UnlockedMaybeTear);
+-	// Unknown what allow_present_throttle means.
  }
  
 -VkSurfaceKHR GSRendererPGS::create_surface(VkInstance instance, VkPhysicalDevice gpu)
@@ -497,7 +523,7 @@ index 5a9f22e93..6ab9800ce 100644
  {
  	if (window_info.type == WindowInfo::Type::Surfaceless)
  	{
-@@ -1150,12 +1184,12 @@ VkSurfaceKHR GSRendererPGS::create_surface(VkInstance instance, VkPhysicalDevice
+@@ -1150,12 +1198,12 @@ VkSurfaceKHR GSRendererPGS::create_surface(VkInstance instance, VkPhysicalDevice
  	return VK_NULL_HANDLE;
  }
  
@@ -512,7 +538,7 @@ index 5a9f22e93..6ab9800ce 100644
  {
  	return {
  		VK_KHR_SURFACE_EXTENSION_NAME,
-@@ -1171,37 +1205,37 @@ std::vector<const char *> GSRendererPGS::get_instance_extensions()
+@@ -1171,37 +1219,37 @@ std::vector<const char *> GSRendererPGS::get_instance_extensions()
  	};
  }
  
@@ -557,7 +583,7 @@ index 5a9f22e93..6ab9800ce 100644
  {
  	WSIPlatform::event_swapchain_destroyed();
  	has_wsi_begin_frame = false;
-@@ -1238,9 +1272,183 @@ void GSRendererPGS::QueueSnapshot(const std::string &path, u32 gsdump_frames)
+@@ -1238,9 +1286,183 @@ void GSRendererPGS::QueueSnapshot(const std::string &path, u32 gsdump_frames)
  	delete[] fd.data;
  }
  
@@ -743,14 +769,15 @@ index 5a9f22e93..6ab9800ce 100644
 +	return new GSTexturePGS(wsi.get_device().create_image(info, &initial_data));
 +}
 diff --git a/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.h b/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.h
-index 8fba63757..035afa155 100644
+index 8fba63757..1e6e8d9e2 100644
 --- a/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.h
 +++ b/pcsx2/GS/Renderers/parallel-gs/GSRendererPGS.h
-@@ -13,22 +13,99 @@
+@@ -13,22 +13,101 @@
  #include "context.hpp"
  #include "wsi.hpp"
  #include "analog_video.hpp"
 +#include "GS/Renderers/Common/GSTexture.h"
++#include "timeline_trace_file.hpp"
  
 -class GSRendererPGS final : private Vulkan::WSIPlatform
 +// Purely for interop with fullscreen UI.
@@ -782,8 +809,8 @@ index 8fba63757..035afa155 100644
 +		m_size.x = img->get_width();
 +		m_size.y = img->get_height();
 +		m_mipmap_levels = 1;
-+		m_usage = Usage::Texture;
 +		m_format = Format::Color;
++		m_usage = Usage::Texture;
 +	}
  
 +private:
@@ -812,6 +839,7 @@ index 8fba63757..035afa155 100644
  	void SetVSyncMode(GSVSyncMode mode, bool allow_present_throttle);
 +
 +private:
++	std::unique_ptr<Util::TimelineTraceFile> timeline_trace;
 +	Vulkan::WSI wsi;
 +
 +	bool UpdateWindow();
@@ -850,7 +878,7 @@ index 8fba63757..035afa155 100644
  	inline ParallelGS::GSInterface &get_interface() { return iface; };
  	void ReadFIFO(u8 *mem, u32 size);
  
-@@ -44,25 +121,14 @@ public:
+@@ -44,25 +123,14 @@ public:
  	void QueueSnapshot(const std::string &path, u32 gsdump_frames);
  
  private:
@@ -878,7 +906,7 @@ index 8fba63757..035afa155 100644
  	void render_fsr(Vulkan::CommandBuffer &cmd, const Vulkan::ImageView &view);
  	void render_rcas(Vulkan::CommandBuffer &cmd, const Vulkan::ImageView &view,
  	                 float offset_x, float offset_y,
-@@ -70,23 +136,24 @@ private:
+@@ -70,23 +138,24 @@ private:
  	void render_blit(Vulkan::CommandBuffer &cmd, const Vulkan::ImageView &view,
  	                 float offset_x, float offset_y,
  	                 float width, float height);
