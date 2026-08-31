@@ -22,6 +22,9 @@ depends=(
     'github-cli'
     'npm'
 )
+makedepends=(
+    'asar'
+)
 options=(
     '!emptydirs'
 )
