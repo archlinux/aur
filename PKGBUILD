@@ -3,7 +3,7 @@
 pkgname=aur-sentry
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="First AI-based pacman security agent and animated cyber visualizer for Arch Linux"
+pkgdesc="First AI-based pacman security agent and animated cyber visualizer for Arch Linux, developed by Arunachalam"
 arch=('any')
 url="https://github.com/Arunachalam-gojosaturo/aur-sentry"
 license=('MIT')
