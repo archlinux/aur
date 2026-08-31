@@ -15,12 +15,6 @@ depends=('libgcc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('b6a8006927862682a4758df67b635d84871a2dce65fb3a59dc7bcd33aebf22c052d9e5c79364851e274272609e36208135b6c4a36a5b0a02cddb8e8228431830')
 
-# Use debug
-export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false
-# Use LTO
-export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
-# From https://gitlab.archlinux.org/archlinux/packaging/packages/ripgrep/-/blob/main/PKGBUILD
-
 prepare() {
   cd "${pkgname}-${pkgver}"
 
@@ -31,6 +25,7 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
 
+  export CARGO_PROFILE_RELEASE_STRIP=false
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --all-features --release
