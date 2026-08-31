@@ -23,8 +23,8 @@ source=(
   "mpv-anime.desktop"
 )
 sha256sums=('c7407bc871ecccfc73799a67bd6b19d960033f73ac9038bc12cbff568ee12637'
-            '212d17934f0a3fc793e4f9591c62cfa1db1de983172ec1b51e9ac90ff555cc3f'
-            'f55715888919cd92307a12dd345af1e3bba8bc7675713e9c38dfe2e29c61b60e')
+            '285ae5fc1a95e3d1a6b9e3bf453599a5dc08bbdd2fe79355ce1cf6ff3aab1da3'
+            '8eca1548263df62869af8aeaf229b4db2fbea9faa89ce6490204abcb62e3e3f9')
 
 package() {
   local _dest="${pkgdir}/usr/share/mpv-anime-build"

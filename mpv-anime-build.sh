@@ -32,12 +32,12 @@ check_status() {
   echo "==> MPV Anime Build Status:"
   echo "    System share dir: $SHARE_DIR"
   echo "    User config dir:   $CONFIG_DIR"
-  if [ -d "$CONFIG_DIR" ]; then
-    if [ -L "$CONFIG_DIR" ]; then
-      echo "    Current state:    SYMLINKED to $(readlink "$CONFIG_DIR")"
-    else
-      echo "    Current state:    Installed (custom / copied)"
-    fi
+  if [ -L "$CONFIG_DIR" ]; then
+    echo "    Current state:    SYMLINKED to $(readlink "$CONFIG_DIR")"
+  elif [ -f "$CONFIG_DIR/mpv.conf" ]; then
+    echo "    Current state:    Installed (custom / copied)"
+  elif [ -d "$CONFIG_DIR" ]; then
+    echo "    Current state:    Empty directory (not installed in user directory)"
   else
     echo "    Current state:    Not installed in user directory"
   fi
@@ -106,13 +106,19 @@ case "${1:-}" in
     ;;
   *)
     if [ "$PROG_NAME" = "mpv-anime" ] || [ $# -gt 0 ]; then
-      if [ -d "$CONFIG_DIR" ]; then
-        exec mpv "$@"
+      CONFIG_ARGS=()
+      if [ ! -L "$CONFIG_DIR" ] && [ ! -f "$CONFIG_DIR/mpv.conf" ]; then
+        CONFIG_ARGS=(--config-dir="$SHARE_DIR")
+      fi
+
+      if [ $# -eq 0 ]; then
+        exec mpv "${CONFIG_ARGS[@]}" --player-operation-mode=pseudo-gui
       else
-        exec mpv --config-dir="$SHARE_DIR" "$@"
+        exec mpv "${CONFIG_ARGS[@]}" "$@"
       fi
     else
       show_help
     fi
     ;;
 esac
+
