@@ -4,31 +4,32 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-interface-libraries
-pkgver=6.7.3
+pkgver=6.7.4.1
 pkgrel=1
 pkgdesc='SonicDE library and runtime components'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-interface-libraries'
 license=(LGPL-2.0-or-later)
-depends=(gcc-libs
-         glibc
-         kcolorscheme
+depends=(glibc
          kconfig
          ki18n
-         kiconthemes
          knotifications
          kpackage
          ksvg
          kwidgetsaddons
+         libgcc
          libglvnd
+         libstdc++
          libx11
          libxcb
          qt6-5compat
          qt6-base
          qt6-declarative
          sonic-activities
+         sonic-frameworks-color-scheme
          sonic-frameworks-core-addons
          sonic-frameworks-gui-addons
+         sonic-frameworks-icon-themes
          sonic-frameworks-io
          sonic-frameworks-keybind
          sonic-frameworks-quick-ui
@@ -40,7 +41,7 @@ conflicts=(libplasma plasma-framework)
 replaces=(plasma-framework)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('5e014c78b9cc9590db699c8b9ac73d5e5e24e0bbcf775cc66d95f7fcfeef067e')
+sha256sums=('19e6013242f9691cecd974e687663d164a74eab3d1584fa49685c3cefe139dcd')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
