@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vidbee-bin
 _pkgname=VidBee
-pkgver=2.0.2
+pkgver=2.1.0
 _electronversion=43
 pkgrel=1
-pkgdesc="Download videos from almost any website worldwide.(Prebuilt version.Use system-wide electron)"
+pkgdesc="A free, open-source desktop app that turns video and audio into an organized, searchable library.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://vidbee.org/"
 _ghurl="https://github.com/nexmoe/VidBee"
