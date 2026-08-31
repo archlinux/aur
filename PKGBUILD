@@ -2,7 +2,7 @@
 
 pkgname=dockswain
 _id=com.conqrex.dockswain
-pkgver=0.8.8
+pkgver=0.8.10
 pkgrel=1
 pkgdesc='KDE Plasma 6 fleet health and Docker management widget over SSH'
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('sshpass: password (non-key) SSH authentication'
             'konsole: open shells and exec into containers'
             'kate: edit remote files (nginx, compose) over SSH')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('85b6cb2612df50a0bcafb49b2e28760ed4f4f2eb2ee19ab4da47465d4ae5fd6d')
+sha256sums=('c876b36563d5c433f331ddd8f41a6329d24e70476ac2563a5428b59c1e5c5191')
 
 package() {
     install -dm755 "$pkgdir/usr/share/plasma/plasmoids/$_id"
