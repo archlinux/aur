@@ -1,18 +1,19 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.1.5
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="Control suite and PipeWire submixer for Elgato XLR interfaces, with an OpenDeck plugin"
 arch=('x86_64')
 url="https://github.com/emaspa/openxlr"
 license=('GPL-3.0-only')
-depends=('aspnet-runtime' 'pipewire' 'pipewire-pulse' 'wireplumber' 'libpulse' 'libusb')
+depends=('aspnet-runtime' 'pipewire' 'pipewire-pulse' 'wireplumber' 'libpulse' 'libusb' 'lilv')
 makedepends=('dotnet-sdk')
 optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
+            'lsp-plugins-lv2: a starter set of LV2 plugins for the inserts'
             'opendeck: Stream Deck control through the bundled plugin')
 install=openxlr.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b1b45203b813dd0c0d528187adadb9a1a032b1c7c4842dea4e61fb2ce8771fd4')
+sha256sums=('feca56751f9704e9e20123591d96c0fdd736879c4c05bc6c7d98fab123f827d8')
 
 build() {
   cd "$pkgname-$pkgver/src"
@@ -40,8 +41,11 @@ WRAP
   chmod 755 "$pkgdir/usr/bin/openxlr-daemon" "$pkgdir/usr/bin/openxlr"
 
   install -Dm644 packaging/70-openxlr.rules "$pkgdir/usr/lib/udev/rules.d/70-openxlr.rules"
+  install -Dm644 packaging/60-openxlr-port.conf "$pkgdir/usr/lib/sysctl.d/60-openxlr.conf"
   install -Dm644 packaging/50-xlr-dock-capture-hold.conf \
     "$pkgdir/usr/share/wireplumber/wireplumber.conf.d/50-xlr-dock-capture-hold.conf"
+  install -Dm644 packaging/51-openxlr-pro-raw-names.conf \
+    "$pkgdir/usr/share/wireplumber/wireplumber.conf.d/51-openxlr-pro-raw-names.conf"
 
   # The reference unit points into a source checkout; the package runs the wrapper.
   sed 's|^ExecStart=.*|ExecStart=/usr/bin/openxlr-daemon|' packaging/openxlr-daemon.service |
