@@ -1,7 +1,7 @@
 # Maintainer: ArchLars <aur@larsoyd.com>
 
 pkgname=soundly
-pkgver=2026.06.37
+pkgver=2026.06.37_20260629.1214
 pkgrel=2
 pkgdesc='Sound effects search, audio editor and library manager'
 arch=('x86_64')
