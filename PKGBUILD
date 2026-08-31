@@ -1,6 +1,6 @@
 # Maintainer: Mike Ravenblack <0xRavenBlack@github>
 pkgname=synemar
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Fullscreen music visualizer with waveform + spectrum animation, custom background videos and colors."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
   "app.svg::https://github.com/0xRavenBlack/synemar/raw/v$pkgver/app.svg"
 )
 sha256sums=(
-  '28aa249a04059d23440b41445dbd05f1ebf9ab73c3a89df319aa30d320d79d61'
+  '39947c7a288d9e9a78c7f4dddea3f9fb54d5c4617a2122b70173461fad442b97'
   '51f19dac3360995275e7f23ee311c873c4ba2ad7a2dd74f408dddd5b656e5f4d'
   '5b60259f69de112dcde62ded6b25216c11895e40f05015d06397b1dc614732c2'
 )
