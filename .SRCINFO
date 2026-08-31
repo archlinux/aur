@@ -1,8 +1,8 @@
 pkgbase = bazi-cli
-	pkgdesc = 命理精研——中国传统命理桌面应用（八字 / 紫微斗数 / 黄大仙灵签 / 周易六十四卦）
-	pkgver = 2.0.0
+	pkgdesc = 命理精研——中国传统命理桌面应用（八字 / 紫微斗数 / 灵签 / 周易六十四卦 / 自定义字体 / 本地历史记录）
+	pkgver = 2.1.0
 	pkgrel = 1
-	url = https://github.com/Paul-sinbud2004/bazi-cli
+	url = https://github.com/Paul-sinbud2004/Bazi-cli
 	arch = x86_64
 	license = MIT
 	depends = glibc
@@ -24,7 +24,7 @@ pkgbase = bazi-cli
 	depends = hicolor-icon-theme
 	provides = destiny_cn
 	conflicts = destiny_cn
-	source = destiny_cn-2.0.0-x86_64.tar.gz::https://github.com/Paul-sinbud2004/bazi-cli/releases/download/v2.0.0/destiny_cn-2.0.0-x86_64.tar.gz
-	sha256sums = f4333b420c7d7359676bc6c91f5c9517135642510a6b07acba362968422bfb9f
+	source = destiny_cn-2.1.0-x86_64.tar.gz::https://github.com/Paul-sinbud2004/Bazi-cli/releases/download/v2.1.0/destiny_cn-2.1.0-x86_64.tar.gz
+	sha256sums = a456c9dac8ef1f4bc006f4f89aee97d441a4ddc4d37c2ceab9e236cfdb65d760
 
 pkgname = bazi-cli

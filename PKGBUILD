@@ -1,10 +1,10 @@
 # Maintainer: sinbud2004 <sinbud2004@gmail.com>
 pkgname=bazi-cli
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="命理精研——中国传统命理桌面应用（八字 / 紫微斗数 / 黄大仙灵签 / 周易六十四卦）"
+pkgdesc="命理精研——中国传统命理桌面应用（八字 / 紫微斗数 / 灵签 / 周易六十四卦 / 自定义字体 / 本地历史记录）"
 arch=('x86_64')
-url="https://github.com/Paul-sinbud2004/bazi-cli"
+url="https://github.com/Paul-sinbud2004/Bazi-cli"
 license=('MIT')
 depends=('glibc' 'zlib' 'gcc-libs' 'fontconfig' 'freetype2' 'glib2'
          'libxkbcommon' 'libxkbcommon-x11' 'libxcb' 'libx11' 'libxext'
@@ -12,7 +12,7 @@ depends=('glibc' 'zlib' 'gcc-libs' 'fontconfig' 'freetype2' 'glib2'
 provides=('destiny_cn')
 conflicts=('destiny_cn')
 source=("destiny_cn-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/destiny_cn-${pkgver}-x86_64.tar.gz")
-sha256sums=('f4333b420c7d7359676bc6c91f5c9517135642510a6b07acba362968422bfb9f')
+sha256sums=('a456c9dac8ef1f4bc006f4f89aee97d441a4ddc4d37c2ceab9e236cfdb65d760')
 
 package() {
     cd "${srcdir}/destiny_cn-${pkgver}"
