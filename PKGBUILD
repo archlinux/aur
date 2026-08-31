@@ -5,12 +5,12 @@
 # the source of truth to copy from. See ../README.md for the publish
 # procedure.
 pkgname=tesseract-matrix-git
-pkgver=0.8.16.r41.g83396ea1
+pkgver=0.8.18.r17.g32dbb5f1
 pkgrel=1
 pkgdesc="Cross-platform Matrix chat client (latest git build)"
 arch=('x86_64')
 url="https://github.com/surakin/tesseract"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 # ring (pulled in via rustls/webrtc-sys) compiles its C/asm core through the
 # `cc` crate, which inherits Arch's default -flto=auto CFLAGS/LDFLAGS; the
 # resulting objects lack real machine code for symbols the Rust side needs
@@ -30,6 +30,7 @@ depends=(
     'gst-plugins-good'   # additional codec support
     'ffmpeg'             # libavutil: silence av_log output at startup
     'emoji-font'         # emoji glyph rendering (provided by noto-fonts-emoji)
+    'libsecret'
 )
 makedepends=(
     'git'
