@@ -3,13 +3,14 @@
 _pkgname=Amethyst-Mod-Manager
 pkgname=amethyst-mod-manager
 pkgver=2.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Linux native mod manager for a variety of games'
 arch=('any')
 url='https://github.com/ChrisDKN/Amethyst-Mod-Manager'
 license=('GPL-3.0-only')
 depends=(
     'python'
+    'sqlite'
 
     # UI
     'pyside6'
@@ -59,7 +60,6 @@ makedepends=(
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2fc041eef8b5ffa0a69d0d730c2c856748613b912404e307babde04e14b790ba')
-options=('!lto') # https://github.com/ChrisDKN/Amethyst-Mod-Manager/issues/442
 
 prepare() {
     cd "${_pkgname}-${pkgver}"
@@ -77,6 +77,7 @@ build() {
 
     # Build amethyst_filegraph
     pushd "native/amethyst_filegraph"
+    export LIBSQLITE3_SYS_USE_PKG_CONFIG=1 # https://github.com/ChrisDKN/Amethyst-Mod-Manager/issues/442#issuecomment-5483308285
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo build --frozen --release --all-features
