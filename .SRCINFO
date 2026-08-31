@@ -1,0 +1,18 @@
+pkgbase = picoforge
+	pkgdesc = Desktop tool for configuring and managing Pico FIDO security keys
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/librekeys/picoforge
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cargo
+	makedepends = xcb-util-keysyms
+	depends = pcsclite
+	depends = ccid
+	depends = libxcb
+	depends = libxkbcommon
+	depends = systemd-libs
+	source = picoforge-0.9.0.tar.gz::https://github.com/librekeys/picoforge/archive/refs/tags/v0.9.0.tar.gz
+	b2sums = b9d2a4df9db5c8be1232486e6c329a40d639320ea5d0610425ec6e11f3f1f3820782000483d6b72f94ebec7c0edd50d6ee152c80cf1623a8ef8e93f331622b58
+
+pkgname = picoforge
