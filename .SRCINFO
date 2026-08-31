@@ -1,6 +1,6 @@
 pkgbase = sonic-frameworks-runner
 	pkgdesc = Framework for providing different actions given a string query
-	pkgver = 6.28.0
+	pkgver = 6.29.0
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-frameworks-runner
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = sonic-frameworks-runner
 	depends = sonic-frameworks-windowsystem
 	provides = krunner
 	conflicts = krunner
-	source = sonic-frameworks-runner-6.27.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-runner/archive/refs/tags/6.27.0.tar.gz
-	sha256sums = 075803b0645516069ca6842bf13d4b7509c74a12a6634bbc38482bc599681cd9
+	source = sonic-frameworks-runner-6.29.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-runner/archive/refs/tags/6.29.0.tar.gz
+	sha256sums = 82e097211dc25d57eb6feef26ed05c53f89b66cba26a94b70152bd1058c2156a
 
 pkgname = sonic-frameworks-runner
