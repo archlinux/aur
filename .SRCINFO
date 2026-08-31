@@ -4,6 +4,7 @@ pkgbase = cups-sharing-git
 	pkgrel = 1
 	url = https://github.com/OpenPrinting/cups-sharing
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0 WITH LLVM-exception
 	makedepends = git
 	depends = libcups-git
