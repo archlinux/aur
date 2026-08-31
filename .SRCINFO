@@ -1,17 +1,17 @@
 pkgbase = monolith-code-bin
-	pkgdesc = Minimalistic but powerful code editor.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.3.2
+	pkgdesc = Minimalistic but powerful code editor.
+	pkgver = 2.3.4
 	pkgrel = 1
 	url = https://haeri.github.io/monolith-code
 	arch = x86_64
 	license = MIT
-	depends = electron42
-	provides = monolith-code=2.3.2
+	depends = electron44
+	provides = monolith-code=2.3.4
 	conflicts = monolith-code
-	source = monolith-code-2.3.2-x86_64.AppImage::https://github.com/Haeri/monolith-code/releases/download/v2.3.2/monolith-code-2.3.2.AppImage
-	source = LICENSE-2.3.2::https://raw.githubusercontent.com/Haeri/monolith-code/v2.3.2/LICENSE
+	source = monolith-code-2.3.4-x86_64.AppImage::https://github.com/Haeri/monolith-code/releases/download/v2.3.4/monolith-code-2.3.4.AppImage
+	source = LICENSE-2.3.4::https://raw.githubusercontent.com/Haeri/monolith-code/v2.3.4/LICENSE
 	source = monolith-code.sh
-	sha256sums = cac442735ee09f7b26d2ff9550bf9f16c9ba85ec25def340a582e1ec15e6c1f2
+	sha256sums = 2867756b1eae2e89ea352106f32e3fae8aa7504f598029b8e7681b66721c0362
 	sha256sums = 08712c74fe995972923ce4a30fa74bad068779afdf9d3b877c525e86c617adcc
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
