@@ -1,6 +1,6 @@
 pkgname=networkmanager-airvpn-core
 _pkgname=networkmanager-airvpn
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for AirVPN (OpenVPN, nmcli only, no GNOME editor)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('meson' 'ninja')
 provides=('networkmanager-airvpn')
 conflicts=('networkmanager-airvpn')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('12f6ee5ae655a173ca194a057b8f0e1c9b72165cf8a0caba1e143c98bb2139f3')
+sha256sums=('50ab0d4187f98ede7f584af2ea8f818fa98751e386a4b4567677214e3a935fe1')
 
 build() {
   arch-meson "$_pkgname-$pkgver" build -Dgnome=false -Dgtk4=false

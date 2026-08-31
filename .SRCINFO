@@ -1,6 +1,6 @@
 pkgbase = networkmanager-airvpn-core
 	pkgdesc = NetworkManager VPN plugin for AirVPN (OpenVPN, nmcli only, no GNOME editor)
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/LiteApplication/networkmanager-airvpn
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = networkmanager-airvpn-core
 	depends = json-glib
 	provides = networkmanager-airvpn
 	conflicts = networkmanager-airvpn
-	source = networkmanager-airvpn-0.2.1.tar.gz::https://github.com/LiteApplication/networkmanager-airvpn/archive/v0.2.1.tar.gz
-	sha256sums = 12f6ee5ae655a173ca194a057b8f0e1c9b72165cf8a0caba1e143c98bb2139f3
+	source = networkmanager-airvpn-0.2.2.tar.gz::https://github.com/LiteApplication/networkmanager-airvpn/archive/v0.2.2.tar.gz
+	sha256sums = 50ab0d4187f98ede7f584af2ea8f818fa98751e386a4b4567677214e3a935fe1
 
 pkgname = networkmanager-airvpn-core
