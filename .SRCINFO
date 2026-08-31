@@ -1,6 +1,6 @@
 pkgbase = hyprwall-git
 	pkgdesc = GUI менеджер обоев для Hyprland с поддержкой видео
-	pkgver = 0.7.0
+	pkgver = 0.7.4
 	pkgrel = 1
 	url = https://github.com/Rainkord/HyprWall
 	arch = x86_64

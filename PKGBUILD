@@ -1,5 +1,5 @@
 pkgname=hyprwall-git
-pkgver=0.7.0
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="GUI менеджер обоев для Hyprland с поддержкой видео"
 arch=('x86_64')
