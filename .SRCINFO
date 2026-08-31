@@ -1,6 +1,6 @@
 pkgbase = emdash-app
 	pkgdesc = Run multiple coding agents in parallel
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/generalaction/emdash
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = emdash-app
 	conflicts = emdash-bin
 	options = !strip
 	options = !debug
-	source = emdash-app-1.2.1.deb::https://github.com/generalaction/emdash/releases/download/v1.2.1/emdash-amd64.deb
-	sha256sums = 2041c2524ce167dca4abb9fd6c28efc954a36552abc726d274cd8d25ab24db16
+	source = emdash-app-1.2.2.deb::https://github.com/generalaction/emdash/releases/download/v1.2.2/emdash-amd64.deb
+	sha256sums = 0c2745089ef6ca066be2c96ba04c15c2042d4370042e390defeb36c23ad3d989
 
 pkgname = emdash-app
