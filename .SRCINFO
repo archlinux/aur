@@ -1,6 +1,6 @@
 pkgbase = rusnapshot
 	pkgdesc = Simple and handy definitions-based snapshoting tool for BTRFS
-	pkgver = 0.6.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/Edu4rdSHL/rusnapshot
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = rusnapshot
 	depends = btrfs-progs
 	provides = rusnapshot
 	conflicts = rusnapshot-git
-	source = rusnapshot-0.6.0::https://github.com/Edu4rdSHL/rusnapshot/archive/refs/tags/0.6.0.tar.gz
-	sha512sums = 06a871d63831076765531d006c4cb6d25da74213aa75b6e1a5403e52172b45ea3a5832aae65aa4ab8745b649bf26e3d8bc0dcc7d01a69f4ad056a471ee69b934
+	source = rusnapshot-0.9.0::https://github.com/Edu4rdSHL/rusnapshot/archive/refs/tags/0.9.0.tar.gz
+	sha512sums = c372b6d5bcb3c80c2da6ccc9997058a807a41c01db951adacdbbf4161bb4e58f157ad6075c62c4c3c85698d29d878fd433fa2c9b4436ba980d67efc485fcf5e7
 
 pkgname = rusnapshot
