@@ -1,6 +1,6 @@
 pkgbase = lich-bin
 	pkgdesc = A personal harness for AI-assisted development
-	pkgver = 0.42.0
+	pkgver = 0.43.0
 	pkgrel = 1
 	url = https://github.com/omartelo/lich
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = lich-bin
 	optdepends = zenity: native folder picker
 	provides = lich
 	conflicts = lich
-	source = lich-v0.42.0-linux-amd64::https://github.com/omartelo/lich/releases/download/v0.42.0/lich-v0.42.0-linux-amd64
-	source = lich-0.42.0.desktop::https://raw.githubusercontent.com/omartelo/lich/v0.42.0/build/linux/lich.desktop
-	source = lich-0.42.0.png::https://raw.githubusercontent.com/omartelo/lich/v0.42.0/build/appicon.png
-	sha256sums = b13cac64c02b06fc6f4533459c3d0c5230374de01541d1cc2ae90131ae7417d9
-	sha256sums = b5f6635d59ef2b178cdf5788798fa4bac6b66505830c3b1b1f93bf8fe90dca8e
+	source = lich-v0.43.0-linux-amd64::https://github.com/omartelo/lich/releases/download/v0.43.0/lich-v0.43.0-linux-amd64
+	source = lich-0.43.0.desktop::https://raw.githubusercontent.com/omartelo/lich/v0.43.0/build/linux/lich.desktop
+	source = lich-0.43.0.png::https://raw.githubusercontent.com/omartelo/lich/v0.43.0/build/appicon.png
+	sha256sums = 6d6f84515ea26e2fedac1580cc1e7875c23770e69eafa7d22a9d36a72740872c
+	sha256sums = e39c9238b56be089973c254d031be152b3d990d3bc2735d866b044833a6c1a4d
 	sha256sums = 1575213b7d0ac3b3c832da61c856f29a839a2a0242abd34d3ab3ea9ae8c8a306
 
 pkgname = lich-bin
