@@ -1,6 +1,6 @@
 pkgbase = divicards-bin
 	pkgdesc = Desktop application for Path of Exile divination cards.(Prebuilt version)
-	pkgver = 0.11.0
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://divicards-site.pages.dev/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = divicards-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = divicards=0.11.0
+	provides = divicards=0.12.2
 	conflicts = divicards
-	source = divicards-0.11.0.rpm::https://github.com/shonya3/divicards/releases/download/v0.11.0/divicards-0.11.0-1.x86_64.rpm
-	sha256sums = 873dc9e851c4aad0db2ad05b6b2182620f24c1ef4af7ef0f8a50e3baa67f2723
+	source = divicards-0.12.2.rpm::https://github.com/shonya3/divicards/releases/download/v0.12.2/divicards-0.12.2-1.x86_64.rpm
+	sha256sums = 4a32542e8478919fd93758ad2f144ba7f2e23ed6605a3083a894d2ae9323b4ab
 
 pkgname = divicards-bin
