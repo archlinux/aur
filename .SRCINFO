@@ -1,6 +1,6 @@
 pkgbase = gitnr
 	pkgdesc = A CLI to generate .gitignore files using one or more templates
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/reemus-dev/gitnr
 	arch = i686
