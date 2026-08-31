@@ -1,7 +1,7 @@
 # Maintainer: MrGilfy <MrGilfy@users.noreply.github.com>
 
 pkgname=appimg
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Install, update and remove AppImages as proper desktop applications"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('fuse2: needed by most AppImages at runtime'
             'desktop-file-utils: desktop database updates'
             'gtk-update-icon-cache: icon cache updates')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf610e4541ad32d5193f13e87ac8806c92feca57ab852796b96e96fc344fac11')
+sha256sums=('19a54faed962806c4304aef986be193f43b797fade21c4fe6ffab38953b98d16')
 
 prepare() {
 	cd "$pkgname-$pkgver"
