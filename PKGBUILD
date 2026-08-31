@@ -2,8 +2,9 @@
 
 pkgname=vercel-node
 _pkgname=vercel
-pkgver=59.9.1
+pkgver=59.10.0
 pkgrel=1
+_tarver=7.5.22
 pkgdesc='Command-line interface for Vercel'
 # x86_64 only: the npm tree pulls platform-specific native payloads for the
 # Vercel CLI, esbuild, oxc-transform, and rolldown. Add other architectures
@@ -19,23 +20,45 @@ conflicts=('vercel')
 options=('!strip')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('585f8fe39acb7bed3c8fe5a1595adbbaf6c6f46989c3a2ec81704b70d7680a05')
+sha256sums=('a8c2a1048f0929df5599cf0e882bbd4e8c049ea1baa60b33c6952f0027a29c5f')
 
 package() {
-    # Install the published tarball globally into $pkgdir. npm fetches the
-    # runtime dependencies from the registry and lays the package out at:
-    #   $pkgdir/usr/lib/node_modules/vercel
-    # with bin symlinks at $pkgdir/usr/bin/{vercel,vc}.
+    local _stagedir="${srcdir}/${_pkgname}-${pkgver}-stage"
+
+    rm -rf "${_stagedir}"
+    mkdir -p "${_stagedir}"
+    bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}.tgz" \
+        -C "${_stagedir}" \
+        --strip-components 1
+
+    # The published runtime tree pins vulnerable tar 7.5.7 through
+    # @vercel/fun and @mapbox/node-pre-gyp. Install from a temporary root
+    # manifest so npm applies the security override to every dependency path.
+    # Dev dependencies are temporarily removed because the published manifest
+    # names private build-only packages. Restore them after resolving the
+    # runtime tree, while retaining the override as installed package metadata.
+    cp "${_stagedir}/package.json" "${_stagedir}/package.json.upstream"
+    npm pkg delete devDependencies --prefix "${_stagedir}"
+    npm pkg set "overrides.tar=${_tarver}" --prefix "${_stagedir}"
     npm install \
-        --global \
         --omit=dev \
         --no-audit \
         --no-fund \
         --ignore-scripts \
         --cache "${srcdir}/npm-cache" \
-        --prefix "${pkgdir}/usr" \
-        "${srcdir}/${_pkgname}-${pkgver}.tgz"
+        --prefix "${_stagedir}"
+    mv "${_stagedir}/package.json.upstream" "${_stagedir}/package.json"
+    npm pkg set "overrides.tar=${_tarver}" --prefix "${_stagedir}"
+    rm -f \
+        "${_stagedir}/package-lock.json" \
+        "${_stagedir}/node_modules/.package-lock.json"
 
+    install -dm755 \
+        "${pkgdir}/usr/bin" \
+        "${pkgdir}/usr/lib/node_modules/vercel"
+    cp -a "${_stagedir}/." "${pkgdir}/usr/lib/node_modules/vercel/"
+    ln -s ../lib/node_modules/vercel/dist/vc.js "${pkgdir}/usr/bin/vercel"
+    ln -s ../lib/node_modules/vercel/dist/vc.js "${pkgdir}/usr/bin/vc"
     # npm install may seed an etc/ directory with build-time paths inside
     # the prefix; it is not useful at runtime.
     rm -rf "${pkgdir}/usr/etc"
