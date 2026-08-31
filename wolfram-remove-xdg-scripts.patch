@@ -5,7 +5,7 @@ Bug-AUR: https://aur.archlinux.org/packages/mathematica?O=40#comment-903497
 Last-Update: 2026-02-09
 Reviewed-by: Joshua Ellis <josh@jpellis.me>
 Reviewed-by: Tiago de Paula <tiagodepalves@gmail.com>
-Subject: [PATCH] Stop attempting to run xdg-* scripts
+Description: Stop attempting to run xdg-* scripts
 
 The installation script (MathInstaller) runs embedded xdg-* scripts that
 cause modifications to the user's home directory or even to the system

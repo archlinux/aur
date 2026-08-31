@@ -18,21 +18,6 @@ url='https://www.wolfram.com/mathematica/'
 arch=(x86_64)
 license=('LicenseRef-Wolfram-Mathematica-License-Agreement') # https://www.wolfram.com/legal/agreements/wolfram-mathematica/
 makedepends=('curl' 'inetutils')
-depends=(
-  'alsa-lib'
-  'bash'
-  'fontconfig'
-  'freetype2'
-  'glibc'
-  'hicolor-icon-theme'
-  'libquadmath'
-  'libstdc++'
-  'libx11'
-  'libxkbcommon'
-  'nss'
-  'qt6-base'
-  'zstd'
-)
 optdepends=(
   'qt6-wayland: full Wayland support'
   'openssl-1.1: MQTTLink and Kerberos integration'
@@ -59,7 +44,7 @@ fi
 source=("Wolfram_${pkgver}_LIN.sh::${_source_url}?version=${_major}.${_minor}${_patch/#?/.&}&platform=Linux&downloadManager=false&includesDocumentation=false${_dynamic_signature}"
         'wolfram-remove-xdg-scripts.patch')
 sha256sums=('ecde452688f481318dc18dd0fbc8491998becdee88451327c2eea72c4bf7705e'
-            '1ea85d8df27e875e8073832ff3a25c7594eeacc7d83add6b8fa8c4462e38a5fe')
+            '33e38c84a47588bf05cee713c9cd5bb3534c0866a73f48c277cfa178da3aa535')
 ## Symbol searching and stripping takes a long time, so they are disabled by default.
 ## Also, `debug` won't be of too much help here, since this is a binary distribution.
 ## Here's a quick comparison on my machine:
@@ -100,6 +85,22 @@ prepare() {
 }
 
 package() {
+  depends=(
+    'alsa-lib'
+    'bash'
+    'fontconfig'
+    'freetype2'
+    'glibc'
+    'hicolor-icon-theme'
+    'libquadmath'
+    'libstdc++'
+    'libx11'
+    'libxkbcommon'
+    'nss'
+    'qt6-base'
+    'zstd'
+  )
+
   local installdir
   installdir=$(realpath -m "${pkgdir}/${_installdir}")
 
