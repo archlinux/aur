@@ -10,8 +10,7 @@ pkgdesc='Additional components to increase the functionality of sonic-frameworks
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-frameworks-io-extras'
 license=(LGPL-2.0-or-later)
-depends=(gcc-libs
-         glibc
+depends=(glibc
          karchive
          kcmutils
          kconfig
@@ -46,8 +45,8 @@ depends=(gcc-libs
 makedepends=(gperf
              libappimage
              openexr
-             plasma-activities-stats
              qcoro
+             sonic-activities-stats
              sonic-frameworks-cmake-modules
              sonic-frameworks-doctools
              taglib)
@@ -55,14 +54,14 @@ optdepends=('kimageformats: thumbnails for additional image formats'
             'libappimage: AppImage thumbnails'
             'openexr: EXR format thumbnails'
             'perl: info kioslave'
-            'plasma-activities-stats: recently used kioslave'
             'qt6-imageformats: thumbnails for additional image formats'
+            'sonic-activities-stats: recently used kioslave'
             'taglib: audio file thumbnails')
 provides=(kio-extras)
 conflicts=(kio-extras)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('6c2b6b9383d0a40a7d004eb1a3d807fdb2c6ea8819518152d98a906d88e6cc88')
+sha256sums=('349a20c5f0d3f96362dc41c0b2da94b2aca7796ceecea41d6b3829d4d5db2297')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
