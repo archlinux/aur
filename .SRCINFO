@@ -1,11 +1,13 @@
 pkgbase = chiasmus
 	pkgdesc = MCP server for formal verification with Z3, Prolog, and tree-sitter
 	pkgver = 0.1.27
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yogthos/chiasmus
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = npm
+	makedepends = node-gyp
+	makedepends = python
 	depends = nodejs>=20
 	noextract = chiasmus-0.1.27.tgz
 	options = !debug
