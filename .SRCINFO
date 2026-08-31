@@ -1,0 +1,23 @@
+pkgbase = broadcast-gui-bin
+	pkgdesc = GTK4 GUI for AI-powered per-application noise suppression on PipeWire (pre-built binary)
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/londospark/broadcast
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = pipewire
+	depends = pipewire-pulse
+	depends = gtk4
+	depends = libadwaita
+	depends = gtk4-layer-shell
+	provides = broadcast-gui
+	conflicts = broadcast-gui
+	conflicts = broadcast-gui-git
+	source = https://github.com/londospark/broadcast/releases/download/v0.5.1/broadcast-gui
+	source = https://raw.githubusercontent.com/londospark/broadcast/v0.5.1/broadcast-gui.desktop
+	source = https://raw.githubusercontent.com/londospark/broadcast/v0.5.1/LICENSE
+	sha256sums = 3babcd94d51eb568cf0e6f9a0e668fad5b8d24af93bf4fcb1a7a8b956f162d1c
+	sha256sums = 7a6ffbf0826c1d618f86c3da987c828c8f7be47f96eab5d4f8aa29990b29ca97
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = broadcast-gui-bin
