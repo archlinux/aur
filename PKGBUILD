@@ -2,12 +2,12 @@
 pkgname=junixsocket
 pkgver=2.11.1
 _java=25
-pkgrel=1
+pkgrel=2
 pkgdesc='Unix Domain Sockets for all Java versions 7 and newer (AF_UNIX), AF_TIPC, AF_VSOCK, and more'
 arch=(any)
 url="https://github.com/kohlschutter/$pkgname"
 license=('Apache')
-depends=('java-runtime>=8')
+depends=('java-runtime-headless>=8')
 makedepends=('maven' 'clang' 'gcc' "java-environment=$_java" 'strip-nondeterminism')
 source=("https://github.com/kohlschutter/$pkgname/archive/refs/tags/$pkgname-$pkgver.tar.gz")
 sha256sums=('dabdcaa89395e8aff3b21f1821fce26ec58c80f3bd8e989510cc7711bffd19c3')
