@@ -2,7 +2,7 @@
 # pkgver/pkgrel/sha256sums are stamped by CI at release time
 # (.github/workflows/release.yml, `aur` job) and pushed to the AUR.
 pkgname=oryxis-bin
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='Modern SSH client built in Rust (encrypted vault, P2P sync, AI, Kubernetes)'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=('oryxis')
 options=('!strip' '!debug')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/oryxis-linux-x86_64.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/oryxis-linux-aarch64.tar.gz")
-sha256sums_x86_64=('fb0438123ff9eafc56d88d11c12aa672ea77bbe62c14aa4a7d788b113447358a')
-sha256sums_aarch64=('461773ff719d7f8f72334147697927762f7d1b5086e55b8eec4f018492321ada')
+sha256sums_x86_64=('766022af54980fb6ee701b66956532679a8332cc5999ed886fea2f8c3d5c31e1')
+sha256sums_aarch64=('5ba6cb1980e7fde67b4b1be6f1288902d2aae693c33dd039a67f46c4ef19fddd')
 
 package() {
     install -Dm755 "$srcdir/oryxis" "$pkgdir/usr/bin/oryxis"
