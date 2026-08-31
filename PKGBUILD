@@ -3,7 +3,7 @@
 pkgname=jq-static
 _pkgname=jq
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line JSON processor'
 arch=('x86_64' 'aarch64')
 url='https://jqlang.github.io/jq/'
@@ -16,7 +16,7 @@ sha512sums=('d4058940cff1cd9946d7f2a9057316bf05915679385386685d140b7a82d870d43ae
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  export CC=musl-gcc CFLAGS="$CFLAGS -Os" LDFLAGS="$LDFLAGS -static"
+  export CC=musl-gcc CFLAGS="$CFLAGS -Os" LDFLAGS="$LDFLAGS -static -fno-link-libatomic"
   ./configure --prefix=/usr --enable-all-static --enable-shared=no \
     --enable-static=yes --with-oniguruma=builtin
   make -j $(nproc)
