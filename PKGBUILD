@@ -42,9 +42,47 @@ source=(
   'local://Soundly-General-Terms-of-Use.pdf'
 )
 sha256sums=(
-  "${_archive_sha256}"
+  'SKIP'
   "${_terms_sha256}"
 )
+
+verify() {
+  local archive='soundly-linux-latest-deb.zip'
+  local actual_sha256 archive_pkgver control deb_member
+  local -a deb_members deb_versions
+
+  mapfile -t deb_members < <(bsdtar -tf "$archive" | sed -n '/soundly_.*_amd64\.deb$/p')
+  if (( ${#deb_members[@]} != 1 )); then
+    printf 'ERROR: expected exactly one soundly_*_amd64.deb in %s, found %s\n' "$archive" "${#deb_members[@]}" >&2
+    return 1
+  fi
+  deb_member=${deb_members[0]}
+
+  set -o pipefail
+  if ! control=$(bsdtar -xOf "$archive" "$deb_member" | bsdtar -xOf - 'control.tar.*' | bsdtar -xOf - '*control'); then
+    printf 'ERROR: could not read control metadata from %s\n' "${deb_member##*/}" >&2
+    return 1
+  fi
+
+  mapfile -t deb_versions < <(sed -n 's/^Version:[[:space:]]*//p' <<< "$control")
+  if (( ${#deb_versions[@]} != 1 )) || [[ -z ${deb_versions[0]} ]]; then
+    printf 'ERROR: expected exactly one Version metadata field in %s\n' "${deb_member##*/}" >&2
+    return 1
+  fi
+  archive_pkgver=${deb_versions[0]//-/_}
+
+  if [[ $archive_pkgver != "$pkgver" ]]; then
+    printf 'ERROR: %s contains Soundly %s, but PKGBUILD requires %s; download the current Debian / Ubuntu archive again from https://storage.googleapis.com/soundly-linux-release/latest/soundly-linux-latest-deb.zip\n' "$archive" "${deb_versions[0]}" "$pkgver" >&2
+    return 1
+  fi
+
+  actual_sha256=$(sha256sum "$archive")
+  actual_sha256=${actual_sha256%% *}
+  if [[ $actual_sha256 != "$_archive_sha256" ]]; then
+    printf 'ERROR: checksum mismatch for %s; download the archive again\n' "$archive" >&2
+    return 1
+  fi
+}
 
 package() {
   local deb data_member

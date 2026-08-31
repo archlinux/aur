@@ -24,7 +24,7 @@ pkgbase = soundly
 	options = !strip
 	source = local://soundly-linux-latest-deb.zip
 	source = local://Soundly-General-Terms-of-Use.pdf
-	sha256sums = 57c5b108e26814a37101a13e585e0e905805963f96280aff856f06824dd32e19
+	sha256sums = SKIP
 	sha256sums = 0587c393077596b38045fddb4da29c186b9a04fb492ab4d53a1c37d04c9ef67b
 
 pkgname = soundly
