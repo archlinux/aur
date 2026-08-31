@@ -3,18 +3,18 @@
 # Contributor: Fredy García <frealgagu at gmail dot com>
 # Contributor: Sebastian Krebs <sebastian@krebs.one>
 pkgname=kaniko
-pkgver=1.25.16
-pkgrel=2
+pkgver=1.25.17
+pkgrel=1
 pkgdesc='Build Container Images In Kubernetes'
 arch=('x86_64')
-url='https://github.com/chainguard-dev/kaniko'
+url='https://github.com/chainguard-forks/kaniko'
 license=('Apache')
 depends=('glibc')
 optdepends=('bash: run_in_docker.sh script')
 makedepends=('go')
 options=(!lto)
-source=("https://github.com/chainguard-dev/kaniko/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fd2cfb87bea06b0975d179a4605ae2910a2781e45fcfb1b90382571ba5771077')
+source=("https://github.com/chainguard-forks/kaniko/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('fd86e2c99fb265d33cd3c7130c4c86fe097c6c6eca47db9545af9743db985005')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -27,11 +27,11 @@ build() {
   export GOOS=linux
   export GOARCH=$arch
   case $arch in
-    x86_64)
-      export GOARCH=amd64
+  x86_64)
+    export GOARCH=amd64
     ;;
   esac
-  go build -trimpath -o . -ldflags="-linkmode=external -X=github.com/chainguard-dev/kaniko/pkg/version.version=v$pkgver" ./cmd/...
+  go build -trimpath -o . -ldflags="-linkmode=external -X=github.com/chainguard-forks/kaniko/pkg/version.version=v$pkgver" ./cmd/...
 }
 
 check() {
