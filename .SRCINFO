@@ -1,0 +1,22 @@
+pkgbase = genoffice-electron
+	pkgdesc = Free, open-source AI office suite by Genspark — docs, sheets, slides, PDF and Markdown (system Electron)
+	pkgver = 0.8.667
+	pkgrel = 1
+	url = https://github.com/genspark-ai/genoffice
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = asar
+	depends = electron43
+	depends = hicolor-icon-theme
+	depends = shared-mime-info
+	provides = genoffice
+	conflicts = genoffice
+	conflicts = genoffice-bin
+	options = !strip
+	options = !emptydirs
+	source = genoffice.sh
+	sha256sums = 67b5d78fb2ecdc193068957df2cf90cd96352f854b7dbf1bd882e69fbe8907b6
+	source_x86_64 = https://github.com/genspark-ai/genoffice/releases/download/v0.8.667/genoffice_0.8.667_amd64.deb
+	sha256sums_x86_64 = 76cc57d64526d3ff85752042be32df06ccdcb0b0739945df42d0a5f67f2a1258
+
+pkgname = genoffice-electron
