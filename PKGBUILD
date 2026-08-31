@@ -1,11 +1,11 @@
 pkgname=neocmakelsp
 pkgver=0.11.1
-pkgrel=2.0
+pkgrel=3.0
 pkgdesc='CMake LSP implementation based on Tower and Tree-sitter'
 arch=('x86_64' 'aarch64')
 url='https://github.com/neocmakelsp/neocmakelsp'
 license=('MIT')
-makedepends=('git' 'ninja' 'meson' 'rust' 'python')
+makedepends=('ninja' 'meson' 'rust' 'python')
 depends=('cmake')
 source=(
     "${pkgname}-v${pkgver}.tar.gz::https://github.com/neocmakelsp/neocmakelsp/archive/refs/tags/v${pkgver}.tar.gz"

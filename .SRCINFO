@@ -1,12 +1,11 @@
 pkgbase = neocmakelsp
 	pkgdesc = CMake LSP implementation based on Tower and Tree-sitter
 	pkgver = 0.11.1
-	pkgrel = 2.0
+	pkgrel = 3.0
 	url = https://github.com/neocmakelsp/neocmakelsp
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = git
 	makedepends = ninja
 	makedepends = meson
 	makedepends = rust
