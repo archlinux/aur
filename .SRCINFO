@@ -1,6 +1,6 @@
 pkgbase = nmtree-git
 	pkgdesc = NetBSD filesystem hierarchy utility, ported to Linux
-	pkgver = 1.0.0.r2.g10712d2d
+	pkgver = 1.0.0.r4.g4e91bfa2
 	pkgrel = 1
 	url = https://github.com/archiecobbs/nmtree
 	arch = x86_64

@@ -1,6 +1,6 @@
 gitname=nmtree
 pkgname="$gitname-git"
-pkgver=1.0.0.r2.g10712d2d
+pkgver=1.0.0.r4.g4e91bfa2
 pkgrel=1
 pkgdesc='NetBSD filesystem hierarchy utility, ported to Linux'
 arch=('x86_64')
@@ -19,8 +19,7 @@ pkgver() {
 build() {
   cd "$srcdir/$gitname"
   ./autogen.sh
-  # cflag until upstream fixes
-  CFLAGS+=" -Wno-error=format-security" ./configure --prefix=/usr
+  ./configure --prefix=/usr
   make
 }
 package() {
