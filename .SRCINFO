@@ -1,6 +1,6 @@
 pkgbase = rmg-k-bin
 	pkgdesc = Rosalie's Mupen GUI with the Kaillera netplay protocol
-	pkgver = 0.9.11
+	pkgver = 0.9.13
 	pkgrel = 1
 	url = https://github.com/Jay-Day/RMG-K
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = rmg-k-bin
 	depends = libsamplerate
 	depends = vulkan-headers
 	provides = rmg-k
-	source = RMG-K-Portable-Linux64-v0.9.11.AppImage::https://github.com/Jay-Day/RMG-K/releases/download/v0.9.11/RMG-K-Portable-Linux64-v0.9.11.AppImage
-	source = README.md::https://github.com/Jay-Day/RMG-K/raw/refs/tags/v0.9.11/README.md
-	source = LICENSE::https://github.com/Jay-Day/RMG-K/raw/refs/tags/v0.9.11/LICENSE
-	sha512sums = 655ed752295449bd3fb85536fe7df63ef9895fd122ae91176440fd8cf75fb8204be1d44783f9faa3aaed3bf7810eab721717eec0bcab69068f0a499747f1c83d
+	source = RMG-K-Portable-Linux64-v0.9.13.AppImage::https://github.com/Jay-Day/RMG-K/releases/download/v0.9.13/RMG-K-Portable-Linux64-v0.9.13.AppImage
+	source = README.md::https://github.com/Jay-Day/RMG-K/raw/refs/tags/v0.9.13/README.md
+	source = LICENSE::https://github.com/Jay-Day/RMG-K/raw/refs/tags/v0.9.13/LICENSE
+	sha512sums = dcb6f8120667648987444ff847920a60ebfa832a7467acf1decb7c17d9a23b33a3d84b4ca8faf533147e933137fa2a028e526d525d9dfe2e5941f6ae6991c682
 	sha512sums = SKIP
 	sha512sums = SKIP
 
