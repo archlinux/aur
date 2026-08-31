@@ -49,6 +49,7 @@ _common_make_args=(
     LIBEXECDIR=/usr/lib
     INITRAMFS_DIR=/usr/lib/initcpio
     CARGO_ARGS=--locked
+    VERSION="$pkgver"
 )
 
 pkgver() {
