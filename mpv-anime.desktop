@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=MPV (Anime Build)
+GenericName=Multimedia Player
+Comment=High-performance MPV build optimized for anime and high-quality video playback
+Exec=mpv-anime %U
+Icon=mpv
+Terminal=false
+Categories=AudioVideo;Audio;Video;Player;TV;
+MimeType=application/ogg;application/x-ogg;application/mxf;application/sdp;application/smil;application/x-smil;application/streamingmedia;application/x-streamingmedia;application/vnd.rn-realmedia;application/vnd.rn-realmedia-vbr;audio/aac;audio/x-aac;audio/m4a;audio/x-m4a;audio/mp1;audio/x-mp1;audio/mp2;audio/x-mp2;audio/mp3;audio/x-mp3;audio/mpeg;audio/x-mpeg;audio/ogg;audio/x-ogg;audio/wav;audio/x-wav;audio/flac;audio/x-flac;video/mp4;video/x-matroska;video/webm;video/x-msvideo;video/quicktime;
+Keywords=mpv;anime;player;video;audio;
