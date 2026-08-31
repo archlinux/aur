@@ -4,7 +4,7 @@
 pkgname='notifiarr-bin'
 appname='notifiarr'
 pkgver=0.9.7
-pkgrel=5
+pkgrel=6
 pkgdesc='Official Client for Notifiarr.com'
 url='https://notifiarr.com'
 arch=('x86_64' 'armhf' 'armv7h' 'aarch64' 'i686' 'pentium4')
