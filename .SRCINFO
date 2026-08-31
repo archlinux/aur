@@ -1,6 +1,6 @@
 pkgbase = hydra-download-manager-bin
 	pkgdesc = Multi-connection download accelerator and manager (GUI, CLI, browser integration) (precompiled binary)
-	pkgver = 0.3.14
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/ja7ad/hydra
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = hydra-download-manager-bin
 	conflicts = hydra-git
 	options = !strip
 	options = !debug
-	source_x86_64 = https://github.com/ja7ad/hydra/releases/download/v0.3.14/hydra-0.3.14-linux-amd64.tar.gz
+	source_x86_64 = https://github.com/ja7ad/hydra/releases/download/v0.4.0/hydra-0.4.0-linux-amd64.tar.gz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/ja7ad/hydra/releases/download/v0.3.14/hydra-0.3.14-linux-arm64.tar.gz
+	source_aarch64 = https://github.com/ja7ad/hydra/releases/download/v0.4.0/hydra-0.4.0-linux-arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 
 pkgname = hydra-download-manager-bin
