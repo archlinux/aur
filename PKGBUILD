@@ -43,4 +43,5 @@ package() {
 
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
