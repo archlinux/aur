@@ -3,7 +3,7 @@
 pkgbase=115-life-bin
 pkgname=115-life-bin
 _pkgname=115Life
-pkgver=37.2.2
+pkgver=37.2.3
 pkgrel=1
 arch=('x86_64')
 options=(!strip !debug)
@@ -15,7 +15,6 @@ depends=(
 )
 makedepends=(
     libarchive
-    util-linux
 )
 optdepends=(
     "115-browser: 115 Browser / 115 浏览器"
@@ -36,7 +35,7 @@ source_x86_64=(
 )
 sha256sums=('7a1c438a53cd10ad78b9ea150521f12e6d97e10cf07f07d38d4f0a65f22cafcf'
             'cfe25e4d5d8236b3b68089fbc4b56aaa7db1d0a560905f1faf004bc5e4534245')
-sha256sums_x86_64=('438078226647c93f8a1da8e00d20e0c760e09089fdcb8639c293e576387c3e55')
+sha256sums_x86_64=('922aa851f8b1d3df2fd4cac8b26f99f1635a8542d78f054630f8bdaa579e5487')
 noextract=("${pkgname}-${pkgver}.deb")
 
 prepare() {
