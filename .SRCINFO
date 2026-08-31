@@ -7,6 +7,21 @@ pkgbase = mathematica
 	license = LicenseRef-Wolfram-Mathematica-License-Agreement
 	makedepends = curl
 	makedepends = inetutils
+	optdepends = qt6-wayland: full Wayland support
+	optdepends = openssl-1.1: MQTTLink and Kerberos integration
+	optdepends = libxinerama: required by FFmpegTools
+	optdepends = ffmpeg4.4: alternative FFmpegTools backend
+	optdepends = libxtst: X11 backend for Java AWT libraries
+	optdepends = ttf-dejavu: correct fonts for Greek characters and inline TeX
+	optdepends = libcups: printer support
+	options = !strip
+	options = !debug
+	source = Wolfram_15.0.1.sh::https://account.wolfram.com/dl/WolframApp?version=15.0.1&platform=Linux&downloadManager=false
+	source = wolfram-remove-xdg-scripts.patch
+	sha256sums = 5732bc0ae3a1938b0e3b908be33deb7e9639eb7d45d9137a7340e1f1c13179e8
+	sha256sums = 33e38c84a47588bf05cee713c9cd5bb3534c0866a73f48c277cfa178da3aa535
+
+pkgname = mathematica
 	depends = alsa-lib
 	depends = bash
 	depends = fontconfig
@@ -20,18 +35,3 @@ pkgbase = mathematica
 	depends = nss
 	depends = qt6-base
 	depends = zstd
-	optdepends = qt6-wayland: full Wayland support
-	optdepends = openssl-1.1: MQTTLink and Kerberos integration
-	optdepends = libxinerama: required by FFmpegTools
-	optdepends = ffmpeg4.4: alternative FFmpegTools backend
-	optdepends = libxtst: X11 backend for Java AWT libraries
-	optdepends = ttf-dejavu: correct fonts for Greek characters and inline TeX
-	optdepends = libcups: printer support
-	options = !strip
-	options = !debug
-	source = Wolfram_15.0.1.sh::https://account.wolfram.com/dl/WolframApp?version=15.0.1&platform=Linux&downloadManager=false
-	source = wolfram-remove-xdg-scripts.patch
-	sha256sums = 5732bc0ae3a1938b0e3b908be33deb7e9639eb7d45d9137a7340e1f1c13179e8
-	sha256sums = 1ea85d8df27e875e8073832ff3a25c7594eeacc7d83add6b8fa8c4462e38a5fe
-
-pkgname = mathematica
