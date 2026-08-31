@@ -30,10 +30,10 @@ pkgbase = codebuddy-ide-cn
 	options = !strip
 	options = !debug
 	source = codebuddy-cn_4.11.3.37298507_amd64.deb::https://download.codebuddy.cn/aiide/linux-x64/CodeBuddy-linux-x64-4.11.3.37298507-2345dde1-cn.deb
-	source = codebuddy-ide-cn-linux-604c011605e480ba24d1f095b06418cf1eaf23f1.tar.gz::https://github.com/JipZeonGit/codebuddy-ide-cn-linux/archive/604c011605e480ba24d1f095b06418cf1eaf23f1.tar.gz
+	source = codebuddy-ide-cn-linux-5dfee05d20b8ce7d4f71fb2bd1661ebd33caefe7.tar.gz::https://github.com/JipZeonGit/codebuddy-ide-cn-linux/archive/5dfee05d20b8ce7d4f71fb2bd1661ebd33caefe7.tar.gz
 	source = LICENSE.notice
 	sha256sums = d0770a4563535226daace0a57f39812bc8a23aa758073a06fb77857efea888e8
-	sha256sums = c03fab55406cbd0a2342b4628a93519a8051d36614e415ebb0fbc94727f218b2
+	sha256sums = 46bc2440133464dc2413466b042c3fd1b3ab7e748403222857ef7b1437b07380
 	sha256sums = b3260549a765c478dc33680c7b9a1a30e5a038456e340d6d25f7748390724241
 
 pkgname = codebuddy-ide-cn

@@ -42,7 +42,7 @@ options=('!strip' '!debug')
 
 # Helper repository pinned to a specific commit so the conversion
 # logic is reproducible. Bump together with pkgver if needed.
-_helper_commit='604c011605e480ba24d1f095b06418cf1eaf23f1'
+_helper_commit='5dfee05d20b8ce7d4f71fb2bd1661ebd33caefe7'
 
 source=(
     "codebuddy-cn_${pkgver}_amd64.deb::https://download.codebuddy.cn/aiide/linux-x64/CodeBuddy-linux-x64-${pkgver}-${_cb_hash}-cn.deb"
@@ -56,7 +56,7 @@ noextract=(
 )
 
 sha256sums=('d0770a4563535226daace0a57f39812bc8a23aa758073a06fb77857efea888e8'
-            'c03fab55406cbd0a2342b4628a93519a8051d36614e415ebb0fbc94727f218b2'
+            '46bc2440133464dc2413466b042c3fd1b3ab7e748403222857ef7b1437b07380'
             'b3260549a765c478dc33680c7b9a1a30e5a038456e340d6d25f7748390724241')
 
 prepare() {
