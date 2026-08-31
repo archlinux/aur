@@ -1,7 +1,7 @@
 # Maintainer: Panda <sato.du@gmail.com>
 _pkgname=kde-webapp-manager
 pkgname=${_pkgname}-git
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A native Qt6 utility to easily generate and manage custom browser webapps on KDE Plasma"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python' 'python-pyqt6')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/satodu/kde-webapp-gen.git#tag=1.1.1")
+source=("${_pkgname}::git+https://github.com/satodu/kde-webapp-gen.git#tag=1.2.0")
 md5sums=('SKIP')
 
 package() {
