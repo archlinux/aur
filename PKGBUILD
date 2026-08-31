@@ -2,7 +2,7 @@
 
 pkgname=moneymanagerex
 # HINT: ! ALSO UPDATE COMMIT HASHES IN source and execute "updpkgsums"!
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 pkgdesc='MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version.'
 arch=('x86_64')
@@ -24,10 +24,10 @@ source=("git+https://github.com/moneymanagerex/moneymanagerex.git#tag=v${pkgver}
               'git+https://github.com/Tencent/rapidjson.git#commit=8f4c021fa2f1e001d2376095928fc0532adf2ae6'
               'git+https://github.com/utelle/wxsqlite3.git#commit=7bbd8a15f9fc0fdb81e3421a0fab90a63a6f0461'
               'git+https://github.com/moneymanagerex/database.git#commit=5a77461d932541cbcd10f2c776dd33398b335964'
-              'git+https://github.com/moneymanagerex/general-reports.git#commit=f4596493c1d71227fbdd9e0fe8372d5ff24dccfd'
+              'git+https://github.com/moneymanagerex/general-reports.git#commit=cba0713650db6ae18dbe328eb67eef061b57d4c3'
               'git+https://github.com/moneymanagerex/themes.git#commit=beef440deef32fa4b4c57bb10ec715a679697eaf'
               '8363.patch')
-sha512sums=('3bf7c56e31cedb4ea6e0367f11ab90968e31cefde389800ea25390275ab08eb76041a56bcead34655409a1df48be9aad8e7b24866ab047d5e12fa9694fda5258'
+sha512sums=('d729d01025f39835a3bb7cdc3205537080467a669161f10dc1970d2086ac1c6495e2ba3fc7632cf1a65360b32970e29ccdf1ede5b3af8a3ead65f8df9cc6e627'
             '12730f63c9f54d3c3c1e2d39c46d47077f33818b58d94a4984f1a20ed5819032ac84d07d5ddfb185fa33b01a401c4a87596d689d55ed5b2d5b3e2f9e3c1bb280'
             '346d3ee681c4cd2325586682e31ebf6467a002b006cd8f3116460e3c3857e44287b35a26e3e190c95d23e3d4e26df83b540f72e76ee9dec8e375c1644575e59d'
             '39c1bff410020ed34c36adf14f93003a64a8774d4cf4e45378c466b791c69d9273e5bd6b7dae5def0aa6eaf464c07a9938d7fd3fd1932620d2550a90c172f62c'
@@ -37,7 +37,7 @@ sha512sums=('3bf7c56e31cedb4ea6e0367f11ab90968e31cefde389800ea25390275ab08eb7604
             '0ebb7793a854a431ab3eee31580bc40672a268c2d8d208eea5f52bef68fb5d7b146953c545a0c5fd06681d20e43d4a656ff724be6cbcd4495078b2704de64d25'
             '98d912f0b7d577968d1ba7bec7e896635de5ae4ab9f1c59bac013cebcb93cd4e2e12a4175593c5e176478fabda470b2ceeadbd548eab736697baaa346095b3ed'
             'f064f86ef80d5e0bf42c6d5a172081458867711078f3f45b35643cf5f2f749a8957904de64a843a14a04d4bb7e8379fc34428d3e4dcd67da6f20cb4df8e1ba44'
-            'a706a5a30ee02d23b2655d607de3c775727b56f75e11cf40cb15411f5981060a8e8eace1f8ead3d2b94ea13c24ea9f440753aa9aa74e4c8b29f8288cf901f868'
+            '328ee235961a4dc7a057829bfaad65422a6c27b3ceeff04fec207df46a505af0bd8e4556b1ee4ad8f19365dbca5d7a10347448b52fa6644aed3c96909565b836'
             '043b2c7d96f0c0b5394652b60ab70beea2f9b01c8959b5168740410eef8662b84362e195b47b435cb464c1f097c4376855d4670213b57ef35bfd5f5c284e2f29'
             '3860255020f9c39f3c80b9c9d5c9f6ee3cf5e1844a37a27031a135d07fe5b392dcf0a4ba38077d5ae20bf1d3c7c01fd10c77f86a79484a0620558fb5b6e412bf')
 
