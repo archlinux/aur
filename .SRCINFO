@@ -1,6 +1,6 @@
 pkgbase = quran-reader-bin
 	pkgdesc = A beautiful, fast, offline-first Quran reader
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/ask-786/quran-reader
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = quran-reader-bin
 	depends = gtk3
 	depends = hicolor-icon-theme
 	optdepends = xdg-utils: open external links in a browser
-	provides = quran-reader=0.2.3
+	provides = quran-reader=0.2.4
 	conflicts = quran-reader
 	options = !strip
 	options = !debug
-	source = quran-reader-bin-0.2.3.deb::https://github.com/ask-786/quran-reader/releases/download/v0.2.3/Quran.Reader_0.2.3_amd64.deb
-	source = LICENSE-0.2.3::https://raw.githubusercontent.com/ask-786/quran-reader/v0.2.3/LICENSE
+	source = quran-reader-bin-0.2.4.deb::https://github.com/ask-786/quran-reader/releases/download/v0.2.4/Quran.Reader_0.2.4_amd64.deb
+	source = LICENSE-0.2.4::https://raw.githubusercontent.com/ask-786/quran-reader/v0.2.4/LICENSE
 	source = quran-reader.desktop
-	sha256sums = 7c59214ea0082fe569457dcef9b59c6b378f3621f372374ba7e688ad3b41e22b
+	sha256sums = 5310411c9e786f2f5689a33fbef89614c164df023141ef4ef5ffd17bf2f39570
 	sha256sums = 7ac4a8c2a9f051e95d1b4aaf77fab3c616837769b82871d37f94a91345df1e34
 	sha256sums = 3117e16cd8e62a5eb824deb896fc2af63a4703b1af81974435504b40b0908ad5
 
