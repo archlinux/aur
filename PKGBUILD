@@ -1,7 +1,7 @@
 # Maintainer: Laurent Carlier <lordheavym@archlinux.org>
 
 pkgname=rasm
-pkgver=3.2.6
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="Powerful Z80 assembler"
 url="https://github.com/EdouardBERGE/rasm"
@@ -9,7 +9,7 @@ license=('custom')
 arch=('x86_64')
 makedepends=('upx')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/EdouardBERGE/rasm/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6fe0ef9ef3a448bd8e2b5755e8696944960deb40e718a4f6beb3993458e7ae0f')
+sha256sums=('ce987b81c3ee4aa5fa53efc62e49c67000d536dd67fbeed482c0c67fc920a860')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
