@@ -1,7 +1,7 @@
 # Maintainer: Justin Kim <justin.joy.9to5@gmail.com>
 
 pkgname=libchronoid
-pkgver=1.0.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='C11 toolkit for time-ordered IDs: KSUID (segmentio wire-compat) + UUIDv7 (RFC 9562)'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('meson' 'ninja' 'gcc')
 conflicts=("$pkgname-git")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0f0e0e0aa87c5f42658b5ba1e23c83b1860657391cc1c4f60c9377012236e69a')
+sha256sums=('455f689526fc8a663ee2ddcd50c8e4e6a11de8faf25538d8da12df58eac30752')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
