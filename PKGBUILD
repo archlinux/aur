@@ -11,7 +11,7 @@ optdepends=('yad: 图形界面（推荐）'
             'zenity: 图形界面后备'
             'polkit: 提权支持')
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')   # 发正式 release 前用 makepkg -g 生成后替换
+sha256sums=('394e2da21b576ddec8b7030fc5a44e602c3724bd2ad52004f9218357f352eef4')
 
 package() {
     _src="$srcdir/$pkgname-$pkgver"
