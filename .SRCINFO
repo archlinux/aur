@@ -1,17 +1,17 @@
 pkgbase = soar-bin
 	pkgdesc = A fast, modern package manager for Static Binaries, Portable Formats (AppImage|AppBundle|FlatImage|Runimage) & More.(Prebuilt version)
-	pkgver = 0.13.2
+	pkgver = 0.13.3
 	pkgrel = 1
 	url = https://soar.qaidvoid.dev/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	provides = soar=0.13.2
+	provides = soar=0.13.3
 	conflicts = soar
 	options = !strip
-	source_aarch64 = soar-0.13.2-aarch64.tar.gz::https://github.com/pkgforge/soar/releases/download/v0.13.2/soar-aarch64-linux.tar.gz
-	sha256sums_aarch64 = f692beab446c2598576245eb790dd6ebbb59ecc0efef3a05cd68a21f80aa9d7e
-	source_x86_64 = soar-0.13.2-x86_64.tar.gz::https://github.com/pkgforge/soar/releases/download/v0.13.2/soar-x86_64-linux.tar.gz
-	sha256sums_x86_64 = 595150fd253c2408940dca5edba0cb9904ae4ab8e72f1cebd88d77c871f5c3e4
+	source_aarch64 = soar-0.13.3-aarch64.tar.gz::https://github.com/pkgforge/soar/releases/download/v0.13.3/soar-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 8b75fc746ee6fe0cd8e45fe92346da72b4092dbf7cad2d4dd6c66b22d77f8cb6
+	source_x86_64 = soar-0.13.3-x86_64.tar.gz::https://github.com/pkgforge/soar/releases/download/v0.13.3/soar-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 6156d7ce4f5649720ea4b1d42326493dc02890e280801b81ff791e9bfdaccf45
 
 pkgname = soar-bin
