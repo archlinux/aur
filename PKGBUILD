@@ -1,25 +1,22 @@
 pkgname=commit-ai
-pkgver=1.6.3
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Generate Git commit messages using Gemini, OpenAI or any OpenAI-compatible provider with Gitmoji or Conventional Commits"
-arch=('any')
-url="https://jhowk14.github.io/commit-ai/"
+pkgdesc="Cross-platform AI-powered Git commit message generator"
+arch=('x86_64' 'aarch64')
+url="https://github.com/jhowk14/commit-ai"
 license=('MIT')
-depends=('git' 'jq' 'curl')
+depends=('git')
+makedepends=('go')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jhowk14/commit-ai/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('85c427c1f4549fd6cf813212a9d5d7bcb13bdb2c64b4357db25f58bab931079b')
 
-source=(
-  "${pkgname}-${pkgver}.sh::https://raw.githubusercontent.com/jhowk14/commit-ai/v${pkgver}/any-linux/commit-ai.sh"
-  "LICENSE"
-)
-sha256sums=(
-  'c8067db33fa629dd3850db5737025d0e0452687fa7d11bf41b2bfbe978ad54dd'
-  'aaa0316bacf7470c8b586093568a7a5a16ba8a19fa05f6a5d84dfa54876d874b'
-)
+build() {
+  cd "${pkgname}-${pkgver}"
+  CGO_ENABLED=0 go build -trimpath -ldflags '-s -w' -o commit-ai ./cmd/commit-ai
+}
 
 package() {
-  install -Dm755 "$srcdir/${pkgname}-${pkgver}.sh" \
-    "$pkgdir/usr/bin/commit-ai"
-
-  install -Dm644 "$srcdir/LICENSE" \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${pkgname}-${pkgver}"
+  install -Dm755 commit-ai "$pkgdir/usr/bin/commit-ai"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

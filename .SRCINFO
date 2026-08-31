@@ -1,16 +1,14 @@
 pkgbase = commit-ai
-	pkgdesc = Generate Git commit messages using Gemini, OpenAI or any OpenAI-compatible provider with Gitmoji or Conventional Commits
-	pkgver = 1.6.3
+	pkgdesc = Cross-platform AI-powered Git commit message generator
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://jhowk14.github.io/commit-ai/
-	arch = any
+	url = https://github.com/jhowk14/commit-ai
+	arch = x86_64
+	arch = aarch64
 	license = MIT
+	makedepends = go
 	depends = git
-	depends = jq
-	depends = curl
-	source = commit-ai-1.6.3.sh::https://raw.githubusercontent.com/jhowk14/commit-ai/v1.6.3/any-linux/commit-ai.sh
-	source = LICENSE
-	sha256sums = c8067db33fa629dd3850db5737025d0e0452687fa7d11bf41b2bfbe978ad54dd
-	sha256sums = aaa0316bacf7470c8b586093568a7a5a16ba8a19fa05f6a5d84dfa54876d874b
+	source = commit-ai-2.0.0.tar.gz::https://github.com/jhowk14/commit-ai/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 85c427c1f4549fd6cf813212a9d5d7bcb13bdb2c64b4357db25f58bab931079b
 
 pkgname = commit-ai
