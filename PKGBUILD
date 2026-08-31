@@ -10,22 +10,26 @@ url='https://github.com/GPUOpen-Tools/Compressonator'
 arch=(x86_64)
 license=('MIT')
 makedepends=(
-  'boost'
   'cmake'
   'git'
   'python'
   'vulkan-headers'
 )
 depends=(
-  'boost-libs'
-  'draco-git'
   'opencv'
-  'qt5-webengine'
 )
 provides=('compressonator')
 conflicts=('compressonator')
-source=("git+${url}.git")
-b2sums=('SKIP')
+source=("git+${url}.git"
+        'git+https://github.com/g-truc/glm.git'
+        'git+https://github.com/discord/rapidxml.git'
+        'git+https://github.com/ocornut/imgui.git'
+        'glfw::git+https://github.com/glfw/glfw.git')
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP'
+        'SKIP')
 
 pkgver() {
   cd Compressonator
@@ -34,12 +38,20 @@ pkgver() {
 }
 
 prepare() {
-  # only used in Windows
-  mkdir -p VulkanSDK/1.4.357.0
+  cd Compressonator
 
-  cd Compressonator/build
-
-  python fetch_dependencies.py
+  local sed_options=(
+    # use sources fetched with makepkg
+    -e 's,https://github.com/g-truc/glm(\.git)?,../glm,g'
+    -e 's,https://github.com/discord/rapidxml(\.git)?,../rapidxml,g'
+    -e 's,https://github.com/ocornut/imgui(\.git)?,../imgui,g'
+    -e 's,https://github.com/glfw/glfw(\.git)?,../glfw,g'
+    # sources not used for Linux build
+    -e '/common_lib_ext_openexr/ d'
+    -e '/download.savannah.nongnu.org/ d'
+  )
+  sed -E "${sed_options[@]}" -i build/fetch_dependencies.py
+  python build/fetch_dependencies.py
 }
 
 build() {
@@ -51,18 +63,18 @@ build() {
     -D CMAKE_INSTALL_SYSCONFDIR=/etc
     -D CMAKE_BUILD_TYPE=RelWithDebInfo
     -D BUILD_SHARED_LIBS=ON
-    -D LIBICUDATA=/usr/lib/libicudata.so
-    -D LIBICUUC=/usr/lib/libicuuc.so
-    -D LIBICUI18N=/usr/lib/libicui18n.so
+    -D OPTION_ENABLE_ALL_APPS=OFF
+    -D OPTION_BUILD_APPS_CMP_CLI=ON
   )
-  export QT_DIR=/usr VULKAN_DIR="${srcdir}/VulkanSDK/1.4.357.0"
+  export QT_DIR=/usr
   cmake -B build -S Compressonator "${cmake_options[@]}"
   cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
+  install -vD -m644 build/bin/compressonatorcli-bin \
+    -T "${pkgdir}/usr/bin/compressonatorcli"
 
-  install -vD -m644 Compressonator/license/guilicense.txt \
+  install -vD -m644 Compressonator/license/clilicense.txt \
     -T "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }

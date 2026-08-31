@@ -8,4 +8,5 @@
 !REUSE.toml
 # actual package
 !PKGBUILD
+!compressonator-*.patch
 !.SRCINFO
