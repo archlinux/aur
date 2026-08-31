@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-alphabetical-grid-extension
 	pkgdesc = Alphabetically order GNOME's app grid and folders
-	pkgver = 44.0
+	pkgver = 45.0
 	pkgrel = 1
 	url = https://github.com/stuarthayhurst/alphabetical-grid-extension
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = jq
 	depends = gnome-shell
-	source = alphabetical-grid-extension-44.0.tar.gz::https://github.com/stuarthayhurst/alphabetical-grid-extension/archive/v44.0.tar.gz
-	sha256sums = 5dbb7f09921426a74fdf0834c72e44e89f1fb60cc364f25deda835c55bcb2639
+	source = alphabetical-grid-extension-45.0.tar.gz::https://github.com/stuarthayhurst/alphabetical-grid-extension/archive/v45.0.tar.gz
+	sha256sums = 5df6bb4027819473877b457013e2bcd203003ed61c56deb1f642574c897ea783
 
 pkgname = gnome-shell-extension-alphabetical-grid-extension
