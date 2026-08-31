@@ -1,6 +1,6 @@
 pkgbase = xwayclip-git
 	pkgdesc = Bidirectional clipboard synchronization between X11 and Wayland for poorly implemented apps like Linux QQ
-	pkgver = 0.2.2.r1.gc528f1a
+	pkgver = 0.2.2.r2.g50a424a
 	pkgrel = 1
 	url = https://github.com/so1ve/xwayclip
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = xwayclip-git
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	provides = xwayclip=0.2.2.r1.gc528f1a
+	provides = xwayclip=0.2.2.r2.g50a424a
 	conflicts = xwayclip
 	conflicts = xwayclip-bin
 	source = xwayclip-git::git+https://github.com/so1ve/xwayclip.git
