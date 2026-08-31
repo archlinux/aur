@@ -1,16 +1,22 @@
 pkgbase = shelly-bin
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = go-md2man
-	source = Shelly-ALPM-linux-x64-3.1.1.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v3.1.1/Shelly-ALPM-linux-x64.tar.gz
-	source = Shelly-Flatpak-Backend-linux-x64-3.1.1.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v3.1.1/Shelly-Flatpak-Backend-linux-x64.tar.gz
+	source = Shelly-ALPM-linux-x64-3.1.2.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v3.1.2/Shelly-ALPM-linux-x64.tar.gz
+	source = Shelly-Flatpak-Backend-linux-x64-3.1.2.tar.gz::https://github.com/Seafoam-Labs/Shelly-ALPM/releases/download/v3.1.2/Shelly-Flatpak-Backend-linux-x64.tar.gz
 	source = shellybuild.conf
-	sha256sums = 88e5af418457211d4848ebf28886b9f667a347bbe8355339821cbf5d386267dd
-	sha256sums = a6db86a40816351bd79aff037206267bcf2488e272262d50622d134ee6ca3b61
+	source = com.shellyorg.shelly.desktop
+	source = com.shellyorg.shelly-notifications.desktop
+	source = shelly-flatpak-integrate
+	sha256sums = 8501bb9e7758efe505990f247004c9cb2c014fe625c911c55b7fca0ba8d8af9c
+	sha256sums = fa0cf740f0ff323fa30fb9028c7b283ade31e9b9587a0337b7c1694903d94496
 	sha256sums = 0aff9177498bd94e90c937076d15ac76116c628ec3504a7c1b8c9ea086336ca6
+	sha256sums = 2cdefd69e5e1a2ecaa9a787ef04137af16d55690361034420f4dfcbb575e8627
+	sha256sums = 05f39f65a0f0797ea8a45b10cb693a197908aec298b2a17422a6d942ad1dee36
+	sha256sums = da6ed2f71966aef9cc20f7dcd3a5aa87afd3d57d2fccebfe71be62e4d9ae64d5
 
 pkgname = shelly-bin
 	pkgdesc = Shelly: A Modern Arch Package Manager (prebuilt binary)
@@ -29,6 +35,7 @@ pkgname = shelly-bin
 	depends = gnupg
 	depends = zstd
 	depends = json-glib
+	optdepends = arch-install-scripts: provision fresh roots for --isolated builds
 	optdepends = fish: Fish shell completions
 	optdepends = zsh: Zsh shell completions
 	optdepends = libstarfish: dependency viewer for arch packages
@@ -41,8 +48,8 @@ pkgname = shelly-bin
 
 pkgname = shelly-flatpak-backend-bin
 	pkgdesc = Optional native Flatpak backend for Shelly (prebuilt binary)
-	depends = shelly-bin=3.1.1-1
+	depends = shelly-bin=3.1.2-1
 	depends = flatpak
-	provides = shelly-flatpak-backend=3.1.1
+	provides = shelly-flatpak-backend=3.1.2
 	conflicts = shelly-flatpak-backend
 	conflicts = shelly-flatpak-backend-git
