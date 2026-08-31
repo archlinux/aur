@@ -1,9 +1,9 @@
 # Maintainer: YesPlayMusic contributors
 
 pkgname=yesplaymusic-axuanran-bin
-pkgver=0.1.1_alpha.12
+pkgver=0.1.1_alpha.13
 pkgrel=1
-_releasever=0.1.1-alpha.12
+_releasever=0.1.1-alpha.13
 pkgdesc="XuMP - a third-party Netease Cloud Music player"
 arch=('x86_64')
 url="https://github.com/axuanran/YesPlayMusic"
@@ -31,7 +31,7 @@ source=(
     "XuMP-${_releasever}.pacman::${url}/releases/download/v${_releasever}/XuMP-${_releasever}.pacman"
     "LICENSE-${_releasever}::https://raw.githubusercontent.com/axuanran/YesPlayMusic/v${_releasever}/LICENSE"
 )
-sha256sums=('a1035d09120094f026cc65bc912cec71c8ac47729bbf6ba5a47141419502d440'
+sha256sums=('32098fac6e4bcb29d9a7264a48ab3035f40607d83a8920dcd7dd60c648649065'
             'c33378c6fd12e6d040cedd06dc0d1bedfca74fd66bc46cc2cf10cc10e0906be6')
 
 package() {
