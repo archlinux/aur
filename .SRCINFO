@@ -10,12 +10,12 @@ pkgbase = lib32-glib-networking
 	makedepends = git
 	makedepends = gsettings-desktop-schemas
 	makedepends = meson
-	depends = glib-networking
 	depends = gsettings-system-schemas
 	depends = lib32-glib2
 	depends = lib32-glibc
 	depends = lib32-gnutls
 	depends = lib32-libproxy
+	depends = glib-networking
 	source = git+https://gitlab.gnome.org/GNOME/glib-networking.git#tag=2.80.1
 	b2sums = fcaacb1c1d29d38c59fb17f7c8821b6ed7f46f60751d9d6d8484a73b86e0614499aded8e49e27de2e68e775720cb0fc59daf2d995eebb8ac3606d4bb4854a123
 
