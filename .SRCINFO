@@ -1,6 +1,6 @@
 pkgbase = alevin-fry
 	pkgdesc = A suite of tools for the rapid, accurate and memory-frugal processing single-cell and single-nucleus sequencing data
-	pkgver = 0.18.0
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://alevin-fry.readthedocs.io/en/latest/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = alevin-fry
 	depends = glibc
 	depends = bzip2
 	options = !lto
-	source = alevin-fry-0.18.0.tar.gz::https://github.com/COMBINE-lab/alevin-fry/archive/refs/tags/v0.18.0.tar.gz
-	sha256sums = 303d469b2ec432d7ff4a2eaaadbf532decd0a1f2852a7c83cc56c3fd164290e3
+	source = alevin-fry-0.18.1.tar.gz::https://github.com/COMBINE-lab/alevin-fry/archive/refs/tags/v0.18.1.tar.gz
+	sha256sums = 2b1e0d11c48ec6f589fed5bf7c0c05e91bd121292518bb65fcad6bd55e457b15
 
 pkgname = alevin-fry
