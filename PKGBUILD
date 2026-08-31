@@ -1,11 +1,12 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=bili-shadowreplay-bin
 _pkgname='BiliBili ShadowReplay'
-pkgver=2.21.1
+pkgver=2.21.2
 pkgrel=1
-pkgdesc="A tool for caching bilibili live broadcasts and editing submissions in real time.(Prebuilt version)一个B站缓存直播并进行实时编辑投稿的工具"
+pkgdesc="A tool for caching bilibili live broadcasts and editing submissions in real time.(Prebuilt version)一个缓存BiliBili直播并进行实时编辑投稿的工具"
 arch=('x86_64')
-url="https://github.com/Xinrea/bili-shadowreplay"
+url="http://bsr.xinrea.cn/"
+_ghurl="https://github.com/Xinrea/bili-shadowreplay"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -15,10 +16,10 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Xinrea/bili-shadowreplay/v${pkgver}/LICENSE"
 )
-sha256sums=('d3432213c67e1f0cbaa34556f67f55dab3a5f934bde94096776e8342165b47d4'
+sha256sums=('f9c0ce927e344b08f64a4c314c7f20defb10f22934235132d73a472e932dbf63'
             '4cbb91ff4be21fae9f321899a00b75e05f7b40aee1b2aa5d4896a7155822cb45')
 prepare() {
     sed -i -e "
