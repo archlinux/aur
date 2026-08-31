@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mudlet-bin
 _pkgname=Mudlet
-pkgver=4.22.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="⚔️ A cross-platform, open source, and super fast MUD client with scripting in Lua.(Prebuilt version)"
 arch=('x86_64')
@@ -11,21 +11,8 @@ license=('GPL-2.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'qt5-multimedia'
-    'hunspell'
-    'libzip'
-    'glu'
-    'lua51-filesystem'
-    'luazip5.1'
-    'lua51-sql-sqlite'
-    'lrexlib-pcre5.1'
-    'qt5-gamepad'
-    'lua51-luautf8'
-    'ttf-font'
-    'pugixml'
-    'lua-yajl'
-    'qtkeychain-qt5'
-    'lua51-lcf'
+    'qt6-declarative'
+    'hicolor-icon-theme'
 )
 optdepends=(
     'ttf-bitstream-vera: default font'
@@ -39,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar::${_ghurl}/releases/download/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage.tar"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('8f10a78ab918d4b46b1f842c1ca7522b9c26aa8200f657bd8fd5ccba8a7c9040'
+sha256sums=('cf8988e1610a0be10286cfd3e0037a5d607060c3369ff28eaa79aed8d98bfc35'
             'e002b010a25f31d5659799cbcbcecfc25a23e8b16dedf184726d3a7aa812bd79')
 prepare() {
     sed -i -e "
@@ -53,6 +40,7 @@ prepare() {
         rm -rf "${srcdir}/squashfs-root"
     fi
     "${srcdir}/${_pkgname%-bin}.AppImage" --appimage-extract > /dev/null
+    find "${srcdir}/squashfs-root/doc" -type f -exec chmod 644 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
