@@ -2,9 +2,8 @@ Author: Mike Pento <mjpento@gmail.com>
 Date: Sat, 14 Sep 2024 14:06:39 -0400
 Origin: https://aur.archlinux.org/packages/esound#comment-990764
 Bug-AUR: https://aur.archlinux.org/packages/esound#comment-990225
-Last-Update: 2026-02-09
-Reviewed-by: Tiago de Paula <tiagodepalves@gmail.com>
-Subject: [PATCH] add missing declaration for 'clean_exit' for GCC 15
+Last-Update: 2026-08-31
+Subject: add missing declaration for 'clean_exit' on GCC 15
 ---
  esd-server.h |    1 +
  esd.c        |    1 -

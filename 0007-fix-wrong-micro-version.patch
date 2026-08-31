@@ -1,7 +1,7 @@
 Author: Tiago de Paula <tiagodepalves@gmail.com>
 Date: Sat, 14 Jun 2025 23:36:27 -0300
-Last-Update: 2026-02-09
-Subject: [PATCH] fix wrong micro version
+Last-Update: 2026-08-31
+Subject: fix wrong micro version
 
 Current version is 0.2.41, not 0.2.39!
 ---

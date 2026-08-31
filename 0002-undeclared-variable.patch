@@ -6,9 +6,8 @@ Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=516608
 Bug-GNOME: https://bugzilla.gnome.org/show_bug.cgi?id=562360
 Reviewed-by: Gilles Dartiguelongue <eva@gentoo.org>
 Reviewed-by: Josselin Mouette <joss@debian.org>
-Last-Update: 2026-02-09
-Reviewed-by: Tiago de Paula <tiagodepalves@gmail.com>
-Subject: [PATCH] 'addr' undeclared for debug builds
+Last-Update: 2026-08-31
+Subject: 'addr' undeclared for debug builds
 ---
  clients.c |    2 ++
  1 file changed, 2 insertions(+)

@@ -3,9 +3,8 @@ Date: Mon, 11 Jun 2007 10:35:24 UTC
 Origin: https://src.fedoraproject.org/rpms/esound/blob/d66e2950ee74cb99bb8e929b3002699ae5eb2c81/f/esound-0.2.38-drain.patch
 Bug-Fedora: https://bugzilla.redhat.com/show_bug.cgi?id=238680
 Reviewed-by: Bastien Nocera <bnocera@redhat.com>
-Last-Update: 2026-02-09
-Reviewed-by: Tiago de Paula <tiagodepalves@gmail.com>
-Subject: [PATCH] esd hangs the session on sound events
+Last-Update: 2026-08-31
+Subject: esd hangs the session on sound events
 
 Drop playback instead of waiting for drain to complete.
 ---

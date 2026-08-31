@@ -2,9 +2,8 @@ Author: Josselin Mouette <joss@debian.org>
 Date: Sat, 30 Oct 2010 15:05:44 +0200
 Origin: https://sources.debian.org/patches/esound/0.2.41-11/04_audsp_crash.patch/
 Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=601295
-Last-Update: 2026-02-09
-Reviewed-by: Tiago de Paula <tiagodepalves@gmail.com>
-Subject: [PATCH] avoid audsp crashing on uninitialized server
+Last-Update: 2026-08-31
+Subject: avoid audsp crashing on uninitialized server
 ---
  esdmgr.c |    1 +
  1 file changed, 1 insertion(+)

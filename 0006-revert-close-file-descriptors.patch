@@ -1,7 +1,7 @@
 Author: Tiago de Paula <tiagodepalves@gmail.com>
 Date: Sun, 15 Jun 2025 01:13:10 -0300
-Last-Update: 2026-02-09
-Subject: [PATCH] Revert "Close file descriptors after startup. Fixes #333186."
+Last-Update: 2026-08-31
+Subject: Revert "Close file descriptors after startup. Fixes #333186."
 
 Allow showing logs on journalctl.
 

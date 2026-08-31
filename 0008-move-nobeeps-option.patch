@@ -1,7 +1,7 @@
 Author: Tiago de Paula <tiagodepalves@gmail.com>
 Date: Sat, 14 Jun 2025 22:36:23 -0300
-Last-Update: 2026-02-09
-Subject: [PATCH] move -nobeeps to default_options
+Last-Update: 2026-08-31
+Subject: move -nobeeps to default_options
 ---
  esd.conf |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)

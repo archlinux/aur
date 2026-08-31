@@ -3,9 +3,8 @@ Date: Wed, 07 Nov 2012 13:00:47 -0500
 Origin: https://src.fedoraproject.org/rpms/esound/blob/a2c3b4678a31ec4f41eb5a96da6ad02ee51983bd/f/esound-0.2.41-libm.patch
 Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=711536
 Reviewed-by: Emilio Pozuelo Monfort <pochu@debian.org>
-Last-Update: 2026-02-09
-Reviewed-by: Tiago de Paula <tiagodepalves@gmail.com>
-Subject: [PATCH] always link against libm
+Last-Update: 2026-08-31
+Subject: always link against libm
 ---
  Makefile.am |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
