@@ -1,6 +1,6 @@
 pkgname=sparkle-git
 _pkgname=${pkgname%-git}
-pkgver=1.26.7.r19.g9fdba67
+pkgver=1.26.7.r20.g109cc1d
 pkgrel=1
 pkgdesc="Another Mihomo GUI"
 arch=('x86_64' 'aarch64')
