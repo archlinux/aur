@@ -1,0 +1,5 @@
+[reap-bin]
+source = "github"
+github = "legostin/reap"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,16 @@
+pkgbase = reap-bin
+	pkgdesc = Interactive TUI for viewing and killing processes on ports
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/legostin/reap
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = reap
+	conflicts = reap
+	source_x86_64 = reap-x86_64-0.1.0.tgz::https://github.com/legostin/reap/releases/download/v0.1.0/reap_linux_amd64.tar.gz
+	sha256sums_x86_64 = f519fac622c1c2efeb64afab2263b22b60e4be92e659f8b1737769c1af440952
+	source_aarch64 = reap-aarch64-0.1.0.tgz::https://github.com/legostin/reap/releases/download/v0.1.0/reap_linux_arm64.tar.gz
+	sha256sums_aarch64 = ad1223f63d8f7a86b9dfaa937aafab525b036dee978f3cf5f042e5c45f2bc2c6
+
+pkgname = reap-bin
