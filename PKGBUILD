@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.190
+pkgver=1.4.192
 pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
@@ -70,7 +70,7 @@ source=(
   'stably-orca-serve.env.example'
   'stably-orca-serve-kwin.conf.example'
 )
-sha256sums=('4616e8e5cb2bb17b873130fea5185e0fe2d5f63a84a4388a84b21ed2d16d59bf'
+sha256sums=('2ef059947fbf7e845728a08d9d50f83d5d7ced3c9933e16e53a4a3d4dfd9e597'
             '196f4bd174ebcbd99786b33452f144cb2dc32ef4e7138ed44491e9d43d702d75'
             'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
             '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
@@ -224,6 +224,21 @@ package() {
     "$serve_sim/bin/serve-sim-bin" \
     "$serve_sim/dist/simcam/libSimCameraInjector.dylib" \
     "$serve_sim/dist/simcam/serve-sim-camera-helper"
+  # Keep node-pty's loadable addon, but discard node-gyp build metadata,
+  # duplicate objects, dependency files and foreign Windows helper payloads.
+  local node_modules="$pkgdir/usr/lib/$pkgname/node_modules"
+  local node_pty="$node_modules/node-pty"
+  rm -f \
+    "$node_pty/build/Makefile" \
+    "$node_pty/build/pty.target.mk" \
+    "$node_pty/build/config.gypi" \
+    "$node_modules/ssh2/util/pagent.exe"
+  rm -rf \
+    "$node_pty/build/Release/.deps" \
+    "$node_pty/build/Release/obj.target"
+
+  # Pruning platform-specific npm payloads leaves empty package directories.
+  find "$node_modules" -depth -type d -empty -delete
   [[ -x "$pkgdir/usr/lib/$pkgname/bin/orca-ide" ]] || {
     printf 'ERROR: packaged Orca CLI shim is missing\n' >&2
     return 1
