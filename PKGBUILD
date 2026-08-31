@@ -1,7 +1,7 @@
 # Maintainer: Zesko
 _pkgname="limine-entry-tool"
 pkgname="limine-dracut-support"
-_pkgver=1.37.1
+_pkgver=1.38.0
 _extver=""
 pkgver="${_pkgver}${_extver}"
 pkgrel=1
@@ -9,8 +9,8 @@ pkgdesc="Install kernels for the Limine bootloader."
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Zesko/limine-entry-tool"
 source=("${_pkgname}::git+${url}.git#tag=${pkgver}")
-source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.1.3/graalvm-community-jdk-25i1-25.0.3_linux-x64_bin.tar.gz")
-source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.1.3/graalvm-community-jdk-25i1-25.0.3_linux-aarch64_bin.tar.gz")
+source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.2.4/graalvm-community-jdk-25i2-25.0.4_linux-x64_bin.tar.gz")
+source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/graal-25.2.4/graalvm-community-jdk-25i2-25.0.4_linux-aarch64_bin.tar.gz")
 license=("GPL3")
 provides=('limine-entry-tool')
 options=(!debug !strip)
@@ -28,9 +28,9 @@ optdepends=(
 	'journalctl-desktop-notification: Sends desktop notifications when errors occur'
 )
 makedepends=('git' 'gradle')
-sha256sums=('e0a1d5800ef1b0a79eee935d1a295d4b929a713686e8bb8340484d402deb5621')
-sha256sums_x86_64=('e9cd1637be853e105f8b09125b4b19fbce385696465d782cbca8bb80e1df8f0d')
-sha256sums_aarch64=('5e79978983439d28506ebef82254fe9f98995121208dc8be77c604f4ad5bc579')
+sha256sums=('11dd8211898585f79d8361d97606965bb2ca214dccace5b133dc5121e4bb4d01')
+sha256sums_x86_64=('3f4a89de8eaa96f2ed677f09957c7e872cd8467aad3537f8b5394c1b8c4b942e')
+sha256sums_aarch64=('22286f7ecd21b9aedb3226b9bf797469e1bd3eefc491e12ef3dd49b452d230b7')
 backup=(etc/limine-entry-tool.conf)
 conflicts=('limine-entry-tool')
 
