@@ -1,0 +1,18 @@
+pkgbase = bisheng-compiler
+	pkgdesc = 毕昇编译器：华为基于 LLVM 17 的 C/C++/Fortran 工具链（clang/flang/lld）
+	pkgver = 4.2.0
+	pkgrel = 1
+	url = https://www.hikunpeng.com/developer/devkit/compiler/bisheng
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	noextract = bisheng-compiler-4.2.0-1.hce3.x86_64.rpm
+	options = !strip
+	options = staticlibs
+	options = !debug
+	source = bisheng-compiler-4.2.0-1.hce3.x86_64.rpm::https://repo.huaweicloud.com/hce/3.0/os/x86_64/Packages/bisheng-compiler-4.2.0-1.hce3.x86_64.rpm
+	sha256sums = 1e7be43315d960515d6527b60c57528d0a645bcaef95cc00d7cb495baeae4502
+
+pkgname = bisheng-compiler
