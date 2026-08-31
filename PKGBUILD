@@ -1,4 +1,5 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Orion-zhen <https://github.com/Orion-zhen>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Florian Pritz <bluewind@xinu.at>
 # Contributor: Hugo Doria <hugo@archlinux.org>
 
