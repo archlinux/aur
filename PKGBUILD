@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-frameworks-open-collab
-pkgver=6.28.0
+pkgver=6.29.0
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Qt library that implements the Open Collaboration Services API'
@@ -20,7 +20,7 @@ provides=(attica)
 conflicts=(attica)
 groups=(sonicde-frameworks)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('56ae679a87d9c507bd05d8c187f3cc33dfc15176459e26fc6dc965cfb5678554')
+sha256sums=('f8b3a2ff0d16d3f9129c4edb7a6b7e13791f6eea8d08e249143ffd0ce75c2a29')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
