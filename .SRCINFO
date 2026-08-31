@@ -1,6 +1,6 @@
 pkgbase = vrcx-0
 	pkgdesc = Fast, lightweight VRCX implementation built with Tauri and Rust
-	pkgver = 2.27.0
+	pkgver = 2.27.1
 	pkgrel = 1
 	url = https://github.com/Map1en/VRCX-0
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = vrcx-0
 	depends = webkit2gtk-4.1
 	depends = xdotool
 	options = !lto
-	source = VRCX-0-2.27.0.tar.gz::https://github.com/Map1en/VRCX-0/archive/refs/tags/v2.27.0.tar.gz
-	sha256sums = 9f6ac10e88afb44ad3f73f0f5595eaa9fa7140795d850ae8c678fb0cd3d53663
+	source = VRCX-0-2.27.1.tar.gz::https://github.com/Map1en/VRCX-0/archive/refs/tags/v2.27.1.tar.gz
+	sha256sums = 3444bd1f56bccc8fac7c591288a4de08a565890e54ca60287993d60321881fd3
 
 pkgname = vrcx-0
