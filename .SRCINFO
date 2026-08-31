@@ -1,17 +1,17 @@
 pkgbase = aviutl-package-manager-bin
 	pkgdesc = A software that assists in the installation of AviUtl itself and its plugins and scripts.(Prebuilt version.Use system-wide electron)
-	pkgver = 3.14.0
+	pkgver = 3.15.0
 	pkgrel = 1
 	url = https://team-apm.github.io/apm/
 	arch = x86_64
 	license = MIT
 	depends = electron43
 	depends = 7zip
-	provides = aviutl-package-manager=3.14.0
+	provides = aviutl-package-manager=3.15.0
 	conflicts = aviutl-package-manager
-	source = aviutl-package-manager-3.14.0.rpm::https://github.com/team-apm/apm/releases/download/v3.14.0/apm-3.14.0-1.x86_64.rpm
+	source = aviutl-package-manager-3.15.0.rpm::https://github.com/team-apm/apm/releases/download/v3.15.0/apm-3.15.0-1.x86_64.rpm
 	source = aviutl-package-manager.sh
-	sha256sums = 1d3232fe8e2985e36d11254bc0a9a93e4a0062988d00456482b6c782d2e8aa11
+	sha256sums = 7784870e9ea444dd00fc3f63f956782964f15522119045e833c4c77d4d4ce3c1
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = aviutl-package-manager-bin
