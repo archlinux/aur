@@ -1,7 +1,7 @@
 pkgbase = opera-gx
 	pkgdesc = Opera GX The Gaming Browser
 	pkgver = 135.0.5973.57
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.opera.com/gx
 	arch = x86_64
 	license = LicenseRef-opera
@@ -47,6 +47,8 @@ pkgbase = opera-gx
 	replaces = opera-gx-bin
 	replaces = opera-gx-stable
 	replaces = opera-gx-stable-ffmpeg-codecs
+	noextract = opera-gx-stable_135.0.5973.57_amd64.deb
+	noextract = nwjs-ffmpeg-0.114.0-linux-x64.zip
 	options = !strip
 	options = !zipman
 	backup = etc/opera-gx/default
