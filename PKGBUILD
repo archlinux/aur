@@ -33,14 +33,18 @@ check() {
   local kver=${kernels[0]}
   kver=$(dirname "${kver}")
   kver=$(basename "${kver}")
-  echo '##' Checking if module can be built for Linux "${kver}"...
+  echo '##' Checking if module builds on Linux "${kver}"...
   echo
-  mkdir -p check/dkms check/src
 
-  fakeroot dkms --dkmstree "${PWD}/check/dkms" --sourcetree "${PWD}/check/src" -k "${kver}" \
-    add "xpadneo-${pkgver}/hid-xpadneo"
-  fakeroot dkms --dkmstree "${PWD}/check/dkms" --sourcetree "${PWD}/check/src" -k "${kver}" \
-    build "hid-xpadneo/v${pkgver}"
+  mkdir -p check/dkms check/src
+  local dkms_options=(
+    --dkmstree "${PWD}/check/dkms"
+    --sourcetree "${PWD}/check/src"
+    -k "${kver}"
+  )
+
+  fakeroot dkms "${dkms_options[@]}" add "xpadneo-${pkgver}/hid-xpadneo"
+  fakeroot dkms "${dkms_options[@]}" build "hid-xpadneo/v${pkgver}"
 }
 
 package() {
