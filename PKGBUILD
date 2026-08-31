@@ -25,7 +25,6 @@ options=('!strip')
 package() {
     npm install \
         --omit=dev \
-        --omit=optional \
         --no-audit \
         --no-fund \
         --cache "${srcdir}/npm-cache" \
