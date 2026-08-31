@@ -22,7 +22,6 @@ pkgbase = python-pypixelcolor-git
 	provides = python-pypixelcolor=0.4.0.r13.ga9e9a7c
 	provides = pypixelcolor=0.4.0.r13.ga9e9a7c
 	conflicts = python-pypixelcolor
-	conflicts = pypixelcolor
 	source = pypixelcolor::git+https://github.com/lucagoc/pypixelcolor.git#branch=main
 	sha256sums = SKIP
 

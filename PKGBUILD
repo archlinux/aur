@@ -30,7 +30,7 @@ checkdepends=(
     'python-pytest'
 )
 provides=("python-pypixelcolor=${pkgver}" "pypixelcolor=${pkgver}")
-conflicts=('python-pypixelcolor' 'pypixelcolor')
+conflicts=('python-pypixelcolor')
 source=("$_name::git+$url.git#branch=main")
 sha256sums=('SKIP')
 
