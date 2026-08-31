@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chirpity-bin
 _pkgname=Chirpity
-pkgver=5.16.0
+pkgver=5.18.1
 _electronversion=43
 pkgrel=1
 pkgdesc="Desktop application to identify bird vocalisations in lengthy audio files. Uses either BirdNET or a native AI model tuned for the calls of nocturnal migrants.(Prebuilt version.Use system-wide electron)"
@@ -16,13 +16,14 @@ depends=(
     'python'
     'ffmpeg'
     'libsecret'
+    'nodejs'
 )
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}.AppImage"
     "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/Mattk70/Chirpity-Electron/v${pkgver}/license.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e651f0ac9ea5d5a25168630a9a5d3b76a8cb368046bd9836d8db1b10e5ee81d3'
+sha256sums=('a15a0038bcf1a00658e0dad3c4e910ba48cf56362422d6ee282a49063dd5f692'
             '04d5c28567bb68b3c647742455c90091e2ea2b6708da27679889e1f80dd838ed'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
@@ -57,6 +58,7 @@ prepare() {
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${_app_dir}/${pkgname%-bin}.desktop"
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
     ln -sf "/usr/bin/ffmpeg" "${_app_dir}/resources/app.asar.unpacked/node_modules/@ffmpeg-installer/linux-x64/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "${_app_dir}/resources/app.asar.unpacked/node_modules/@ffprobe-installer/linux-x64/ffprobe"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
