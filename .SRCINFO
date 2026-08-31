@@ -1,11 +1,13 @@
 pkgbase = graft
 	pkgdesc = Open-source context layer for large codebases — turbocharge Claude Code, Cursor, Codex, Gemini & every coding agent
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NanoNets/Graft
 	arch = x86_64
 	license = MIT
 	makedepends = npm
+	makedepends = node-gyp
+	makedepends = python
 	depends = nodejs
 	noextract = graft-0.16.0.tgz
 	options = !debug
