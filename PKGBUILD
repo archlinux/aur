@@ -1,10 +1,10 @@
 _godot_repo=https://github.com/godotengine/godot/releases/download
 # See Scripts/GodotVersion.cs
-_godot=4.6.2
+_godot=4.7.2
 _system_godot=${MAKEPKG_THRIVE_SYSTEM_GODOT:-false}
 
 pkgname=thrive
-pkgver=1.1.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
@@ -19,7 +19,7 @@ source=("git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
         "git+https://github.com/godotengine/godot-cpp.git"
         "git+https://github.com/Revolutionary-Games/Arch.Extended.git"
         "git+https://github.com/Revolutionary-Games/Arch.git")
-sha256sums=('c10ceb8dfdc9cf0d9170f55bbe804e8c75f91f702b140dac55d30bc916fe2606'
+sha256sums=('4da333d20999f835ce5853a41d795ffabfae3091002e070aca3f104d9d65161b'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -34,11 +34,11 @@ then
     makedepends+=("godot-mono" "godot-mono-export-templates-linux")
 else
     source_x86_64+=("godot-$_godot-x86_64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_x86_64.zip")
-    sha256sums_x86_64+=('7d53302c31648ad98b620e8ca5b0c869c1066495770e62b2fa770cfeb004f167')
+    sha256sums_x86_64+=('129f82db7bafd54ae14bb5bb284041c73860e8c7a009a3a026ca5e946cbff247')
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
-    sha256sums_aarch64+=('65ee9699f6112c87bff2191c8e82ed96cf4c48c6e1549b8a9eb2664a8e80c99e')
+    sha256sums_aarch64+=('0dc8ad63feacc6c19d7cb5c89ae828085b0ac3fa8039bc816a08a0537744e523')
     source+=("godot-mono-export-templates-$_godot.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_export_templates.tpz")
-    sha256sums+=('4ecf72faf76f96e010d166ddbbe3f0fb8e7df9633282666a3a9afd4ee3e00e7d')
+    sha256sums+=('92f8681e349ef1f90891b792da95e3b2b0bd1ed610b78018c58feb2d87e15a9d')
     noextract+=("godot-mono-export-templates-$_godot.zip")
 fi
 
