@@ -84,6 +84,16 @@ prepare() {
   # some tests create directories with long name, which does not work on GitHub Actions
   sed '/^  tests\/du\/long-from-unreadable\.sh\s/d' -i tests/local.mk
   sed '/^  tests\/rm\/deep-2\.sh\s/d' -i tests/local.mk
+
+  # glibc 2.44+r24+g16be1518495f-1 was built with linux-api-headers<7.2
+  # linux-api-headers 7.2-1 introduced a new errno, EFTYPE, which makes a test fail:
+  # strerrorname_np(EFTYPE) returns NULL whereas it is expected to return "EFTYPE".
+  # As this is transient, disable the test
+  sed -i gnulib-tests/gnulib.mk \
+    -e '/^TESTS += test-strerrorname_np/d' \
+    -e '/^check_PROGRAMS += test-strerrorname_np/d' \
+    -e '/^EXTRA_DIST += test-strerrorname_np.c signature.h macros.h/d'
+
 }
 
 build() {
