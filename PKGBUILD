@@ -6,7 +6,7 @@
 # (halley-git provides=halley).
 
 pkgname=halley-full
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Metapackage: the full Halley Wayland desktop (compositor, launcher, portal)"
 arch=('any')
