@@ -1,0 +1,22 @@
+pkgbase = dewlock-bin
+	pkgdesc = A minimal, beautiful screen locker for Wayland.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/shikaan/dewlock
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = binutils
+	makedepends = tar
+	depends = glibc>=2.34
+	depends = cairo>=1.2.4
+	depends = pam>=0.99.7.1
+	depends = wayland>=1.20.0
+	depends = libxkbcommon>=0.5.0
+	provides = dewlock
+	source_x86_64 = dewlock-x86_64-0.1.0.deb::https://github.com/shikaan/dewlock/releases/download/v0.1.0/dewlock-amd64.deb
+	sha256sums_x86_64 = be54166503428e7129a3d04022132b4ccd0e80412b0e1cf8df44035c4c4e141b
+	source_aarch64 = dewlock-aarch64-0.1.0.deb::https://github.com/shikaan/dewlock/releases/download/v0.1.0/dewlock-arm64.deb
+	sha256sums_aarch64 = 8c1bcde24684c7abfcd606b2e3ae4af059e8968b7e1e458584a44edacfb154ba
+
+pkgname = dewlock-bin
