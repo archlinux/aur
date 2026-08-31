@@ -3,10 +3,10 @@ _appname=supersonic
 pkgname="${_appname}-desktop-bin"
 _pkgname=Supersonic
 pkgver=0.22.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight cross-platform desktop client for Subsonic music servers.(Prebuilt version)"
 arch=('x86_64')
-url="https://github.com/dweymouth/supersonic"
+url="https://github.com/supersonic-app/supersonic"
 license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
