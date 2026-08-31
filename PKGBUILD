@@ -6,7 +6,7 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=lsdisplay
 pkgname=${_pkgname}-git
-pkgver=0.2.3
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="List connected displays with details and ASCII layout diagram."
 arch=(any)

@@ -1,6 +1,6 @@
 pkgbase = lsdisplay-git
 	pkgdesc = List connected displays with details and ASCII layout diagram.
-	pkgver = 0.2.3
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/AGuyMarc/lsdisplay
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = lsdisplay-git
 	optdepends = wlr-randr
 	provides = lsdisplay
 	conflicts = lsdisplay
-	source = lsdisplay-git::git+https://github.com/AGuyMarc/lsdisplay#tag=v0.2.3
+	source = lsdisplay-git::git+https://github.com/AGuyMarc/lsdisplay#tag=v0.2.5
 	md5sums = SKIP
 
 pkgname = lsdisplay-git
