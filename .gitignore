@@ -1,0 +1,4 @@
+src/
+pkg/
+scopy/
+*.pkg.tar*
