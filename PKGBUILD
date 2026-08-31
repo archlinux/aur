@@ -15,7 +15,7 @@ options=(!strip !debug)
 source=("https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/Debian13/sgx_linux_x64_sdk_${_pkgver}.bin"
         'intel-sgx-sdk-skip-tmp.patch')
 b2sums=('40b0571fcf9dc4b689b673400aea0f680b4cbcb7b1fdae0aacd59ab7795d1c42319bc50f812713bf20ad604fecb8c090f629f3313c1aedbc89823313bc981ca1'
-        '7da757aae6410d927b3697a66608b84d10a4902fc522ed4af4453cf8dcece1a2f46a762a55455710433dc516f9a68f662ab32cebe3c5fe28639c1d13f661606c')
+        '35971e6ee160143327a939c964a785349b07f3386a1cc15e42be573d9cc64808f1d199e1257a00212544e492b4aa8d1b961cd70d916230e9fd90c55873f2554e')
 
 ## Here you can change the installation directory.
 _installdir=/opt/intel
