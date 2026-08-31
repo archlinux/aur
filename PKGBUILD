@@ -1,6 +1,6 @@
 # Maintainer: Jérémie Roquet <jroquet@arkanosis.net>
 pkgname=binjr-bin
-pkgver=3.30.0
+pkgver=3.30.1
 pkgrel=1
 provides=("binjr")
 pkgdesc="Time Series Data Browser"
