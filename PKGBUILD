@@ -9,18 +9,37 @@
 pkgname=xlibre-input-wacom
 _pkgname=xf86-input-wacom
 pkgver=25.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc="X.Org Wacom tablet driver"
-arch=(x86_64)
+arch=('x86_64')
 url='https://github.com/X11Libre/xf86-input-wacom'
 license=('GPL-2.0-or-later')
-depends=('libxi' 'libxinerama' 'libxrandr' 'systemd-libs' 'libx11' 'glibc' 'xlibre-xserver')
-makedepends=('xlibre-xserver-devel' 'X-ABI-XINPUT_VERSION=26.0' 'meson'
-            'gobject-introspection'
-            # for tests
-            'python-libevdev' 'python-pytest' 'python-yaml' 'python-gobject' 'python-attrs')
-provides=('xf86-input-wacom') # for wacomtablet
-conflicts=('xf86-input-wacom' 'X-ABI-XINPUT_VERSION<26' 'X-ABI-XINPUT_VERSION>=27')
+depends=(
+	'glibc'
+	'libx11'
+	'libxi'
+	'libxinerama'
+	'libxrandr'
+	'systemd-libs'
+	'xlibre-xserver'
+)
+makedepends=(
+	'gobject-introspection'
+	'meson'
+	'python-attrs' # for tests
+	'python-gobject' # for tests
+	'python-libevdev' # for tests
+	'python-pytest' # for tests
+	'python-yaml' # for tests
+	'X-ABI-XINPUT_VERSION=26.0'
+	'xlibre-xserver-devel'
+)
+provides=('xf86-input-wacom')
+conflicts=(
+	'X-ABI-XINPUT_VERSION<26'
+	'X-ABI-XINPUT_VERSION>=27'
+	'xf86-input-wacom'
+)
 groups=('xlibre-drivers')
 source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
 
@@ -28,20 +47,20 @@ source=("${url}/archive/refs/tags/xlibre-${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('12878547b271f4e59ecd5098f935d4c0bd4560d0c2a3a667385d916bc63d00af')
 
 build() {
-  arch-meson $_pkgname-xlibre-$_pkgname-$pkgver build \
-    -D xorg-conf-dir=/usr/share/X11/xorg.conf.d/ \
-    -D systemd-unit-dir=/usr/lib/systemd/system/ \
-    -D unittests=enabled
+	arch-meson $_pkgname-xlibre-$_pkgname-$pkgver build \
+		-D xorg-conf-dir=/usr/share/X11/xorg.conf.d/ \
+		-D systemd-unit-dir=/usr/lib/systemd/system/ \
+		-D unittests=enabled
 
-  # Print config
-  meson configure build
-  ninja -C build
+	# Print config
+	meson configure build
+	ninja -C build
 }
 
 check() {
-  meson test -C build || /bin/true
+	meson test -C build || /bin/true
 }
 
 package() {
-  DESTDIR="$pkgdir" ninja -C build install
+	DESTDIR="$pkgdir" ninja -C build install
 }
