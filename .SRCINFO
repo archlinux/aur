@@ -1,0 +1,18 @@
+pkgbase = broadcast-ctl-git
+	pkgdesc = CLI for AI-powered per-application noise suppression on PipeWire (git version)
+	pkgver = 0.5.1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/londospark/broadcast
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = pipewire
+	depends = pipewire-pulse
+	provides = broadcast-ctl
+	conflicts = broadcast-ctl
+	conflicts = broadcast-ctl-bin
+	source = broadcast-ctl-git::git+https://github.com/londospark/broadcast.git
+	sha256sums = SKIP
+
+pkgname = broadcast-ctl-git
