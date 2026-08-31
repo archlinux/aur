@@ -2,7 +2,7 @@
 
 pkgname=msyt
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Import and export from MSBT files to YAML or JSON files."
 arch=('x86_64')
 url='https://github.com/NiceneNerd/msyt'
@@ -42,6 +42,6 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
