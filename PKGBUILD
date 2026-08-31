@@ -2,7 +2,7 @@
 # Co-Maintainer: Dongda Li <dongdongbhbh at gmail dot com>
 pkgname=mindwtr
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 _nodeversion=24
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
 arch=('x86_64')
@@ -53,8 +53,9 @@ prepare() {
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
   LOCKFILE_VERSION="$(sed -n 's/.*\"lockfileVersion\": \([0-9][0-9]*\).*/\1/p' bun.lock | head -n 1)"
   if [ -n "$LOCKFILE_VERSION" ] && [ "$LOCKFILE_VERSION" -lt 3 ]; then
-    # Bun 1.4 can consume the release lock but rewrites its legacy format.
-    bun install --no-save
+    # Bun 1.4 rewrites legacy locks. Resolve without its manifest cache,
+    # then force one fresh registry request if the first attempt fails.
+    bun install --no-save --no-cache || bun install --no-save --no-cache --force
   else
     bun install --frozen-lockfile
   fi

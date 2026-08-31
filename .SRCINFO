@@ -1,7 +1,7 @@
 pkgbase = mindwtr
 	pkgdesc = Mind Like Water: A complete Getting Things Done (GTD) productivity system
 	pkgver = 1.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dongdongbh/Mindwtr
 	arch = x86_64
 	license = AGPL-3.0-or-later
