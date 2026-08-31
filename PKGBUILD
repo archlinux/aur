@@ -6,7 +6,7 @@
 # Contributor: Philippe.seraphin <philippe(dot)seraphin(at)spn109(dot)fr>
 _pkgname=lsgpu
 pkgname=${_pkgname}-git
-pkgver=0.2.4
+pkgver=0.2.6
 pkgrel=0
 pkgdesc="List GPUs with details, outputs, and connected monitors."
 arch=(any)

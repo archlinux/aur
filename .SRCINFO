@@ -1,6 +1,6 @@
 pkgbase = lsgpu-git
 	pkgdesc = List GPUs with details, outputs, and connected monitors.
-	pkgver = 0.2.4
+	pkgver = 0.2.6
 	pkgrel = 0
 	url = https://github.com/AGuyMarc/lsgpu
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = lsgpu-git
 	optdepends = nvidia-utils
 	provides = lsgpu
 	conflicts = lsgpu
-	source = lsgpu-git::git+https://github.com/AGuyMarc/lsgpu#tag=v0.2.4
+	source = lsgpu-git::git+https://github.com/AGuyMarc/lsgpu#tag=v0.2.6
 	md5sums = SKIP
 
 pkgname = lsgpu-git
