@@ -9,7 +9,7 @@ pkgbase = arch-run-cat
 	makedepends = pkgconf
 	depends = xfce4-panel>=4.18
 	depends = gtk3
-	depends = libxfconf
+	depends = xfconf
 	depends = libxfce4util
 	depends = gdk-pixbuf2
 	source = arch-run-cat-0.2.0.tar.gz::https://github.com/nellowint/arch-run-cat/archive/refs/tags/v0.2.0.tar.gz
