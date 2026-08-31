@@ -1,6 +1,6 @@
 pkgbase = linux-wireless-reg-unlocked
 	pkgdesc = Research-only patched iwlwifi and cfg80211 modules with modified wireless regulatory behavior for Arch Linux
-	pkgver = 7.1.11
+	pkgver = 7.2.2
 	pkgrel = 1
 	url = https://github.com/TenkyuChimata/linux-wireless-reg-unlocked
 	install = linux-wireless-reg-unlocked.install
@@ -9,8 +9,8 @@ pkgbase = linux-wireless-reg-unlocked
 	makedepends = bc
 	makedepends = kmod
 	makedepends = patch
-	depends = linux=7.1.11.arch1-1
-	depends = linux-headers=7.1.11.arch1-1
+	depends = linux=7.2.2.arch1-1
+	depends = linux-headers=7.2.2.arch1-1
 	depends = zstd
 	optdepends = mkinitcpio: rebuild initramfs for mkinitcpio-based systems
 	optdepends = dracut: rebuild initramfs or UKI for dracut-based systems
@@ -18,13 +18,13 @@ pkgbase = linux-wireless-reg-unlocked
 	optdepends = sbctl: re-sign boot artifacts for Secure Boot systems if needed
 	conflicts = iwlwifi-lar-patched
 	options = !debug
-	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.1.11.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v7.x/linux-7.2.2.tar.xz
 	source = 0001-iwlwifi-add-lar_disable.patch
 	source = 0002-iwlwifi-nvm-unlock-6ghz-and-relax-channel-flags.patch
 	source = 0003-cfg80211-allow-unsigned-regdb-and-reject-driver-country-ie-regdom-hints.patch
 	source = iwlwifi-lar.conf
 	source = dracut-wireless-reg-unlocked.conf
-	sha256sums = 3029540d8f2ec75bee5cbdb7c2a0daa60bffa1d105c82ecb99b53432f6351afc
+	sha256sums = 7d0e7ce14f98c43efe880cffbf354a59be45928fdf7170d7333c374ae91c0d83
 	sha256sums = da2ab52ccdef2b93088c9e0c56bc1c166bf748d021b529cb2af2ff6c5d9e85cc
 	sha256sums = 96f91b3ff8d5caafe4939cb22bb455d34d107d08e14cf3af6dbb47ef70553732
 	sha256sums = e8574dead1cb1f2b3732b0daeffa5bb9d71e1cc8eee5203348bbe9169c5adbe6
