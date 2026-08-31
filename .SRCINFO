@@ -1,6 +1,6 @@
 pkgbase = citron-neo-nightly-bin
 	pkgdesc = Nightly build of Citron Neo Nintendo Switch emulator (AppImage)
-	pkgver = 2026.08.30
+	pkgver = 2026.08.31
 	pkgrel = 1
 	url = https://github.com/citron-neo/CI
 	arch = x86_64
