@@ -1,8 +1,8 @@
 # Maintainer: goodroot <hyprwhspr@goodroot.ca>
 
 pkgname=python-pywhispercpp-cuda
-pkgver=1.4.0
-pkgrel=11
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Python bindings for whisper.cpp with CUDA support (NVIDIA GPU)"
 arch=('x86_64')
 url="https://github.com/Absadiki/pywhispercpp"
@@ -35,7 +35,7 @@ optdepends=(
 )
 provides=('python-pywhispercpp')
 conflicts=('python-pywhispercpp' 'python-pywhispercpp-cpu' 'python-pywhispercpp-rocm')
-source=("git+https://github.com/Absadiki/pywhispercpp.git#commit=4ab96165f84e8eb579077dfc3d0476fa5606affe")
+source=("git+https://github.com/Absadiki/pywhispercpp.git#commit=f7bf62118c0a33a43cf8aabb58eef16cea5d16c4")
 sha256sums=('SKIP')
 
 prepare() {
@@ -51,8 +51,8 @@ with open("setup.py", "r") as f:
     content = f.read()
 # Replace sys.executable with system Python path
 content = re.sub(
-    r'f"-DPYTHON_EXECUTABLE=\{sys\.executable\}"',
-    f'f"-DPYTHON_EXECUTABLE={_system_python}"',
+    r'f"-DPython_EXECUTABLE=\{sys\.executable\}"',
+    f'f"-DPython_EXECUTABLE={_system_python}"',
     content
 )
 with open("setup.py", "w") as f:
@@ -84,8 +84,8 @@ build() {
     cuda_archs="70;75;80;86;89;90"
   fi
   
-  # Force CMake to use system Python (patch sets PYTHON_EXECUTABLE, but FindPython still searches PATH)
-  export CMAKE_ARGS="-DPYTHON_EXECUTABLE=/usr/bin/python -DPython3_EXECUTABLE=/usr/bin/python -DCMAKE_CUDA_ARCHITECTURES=$cuda_archs"
+  # Force CMake to use system Python (patch sets Python_EXECUTABLE, but FindPython still searches PATH)
+  export CMAKE_ARGS="-DPython_EXECUTABLE=/usr/bin/python -DPython3_EXECUTABLE=/usr/bin/python -DCMAKE_CUDA_ARCHITECTURES=$cuda_archs"
   python -m build --wheel
 }
 
@@ -177,4 +177,3 @@ package() {
   done
 
 }
-
