@@ -3,7 +3,7 @@
 pkgname=estedad-mad-fonts
 pkgver=1.1v
 pkgrel=1
-pkgdesc="An English-Arabic font."
+pkgdesc="An English-Arabic font"
 url="https://github.com/MDarvishi5124/Estedad-Mad/"
 arch=('any')
 license=('OFL')
