@@ -1,5 +1,5 @@
 pkgbase = shelly-cli
-	pkgver = 3.1.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/Seafoam-Labs/Shelly-ALPM
 	arch = x86_64
@@ -26,6 +26,7 @@ pkgname = shelly-cli
 	depends = libarchive
 	depends = pacman
 	depends = sudo
+	optdepends = arch-install-scripts: provision fresh roots for --isolated builds
 	optdepends = base-devel: build and install AUR packages
 	optdepends = devtools: build AUR packages in a clean chroot
 	optdepends = desktop-file-utils: update AppImage desktop entries
@@ -40,9 +41,9 @@ pkgname = shelly-cli
 
 pkgname = shelly-cli-flatpak-backend
 	pkgdesc = Optional native Flatpak backend for the Shelly CLI beta
-	depends = shelly-cli=3.1.1-1
+	depends = shelly-cli=3.1.2-1
 	depends = flatpak
-	provides = shelly-flatpak-backend=3.1.1
+	provides = shelly-flatpak-backend=3.1.2
 	conflicts = shelly-flatpak-backend
 	conflicts = shelly-flatpak-backend-git
 	conflicts = shelly-flatpak-backend-bin
