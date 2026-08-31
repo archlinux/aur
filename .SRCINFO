@@ -3,7 +3,7 @@ pkgbase = streamdock-n4e
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/MiraboxSpace/StreamDock-Device-SDK
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = python
@@ -11,13 +11,13 @@ pkgbase = streamdock-n4e
 	depends = python-flask
 	depends = python-pillow
 	depends = python-pyudev
-	source = streamdock::git+https://github.com/MiraboxSpace/StreamDock-Device-SDK.git
+	source = streamdock::git+https://github.com/MiraboxSpace/StreamDock-Device-SDK.git#commit=df53672a0c484bf6e679728a7a529f80df3cbd0d
 	source = streamdock_native.py
 	source = streamdock_wrapper.py
 	source = streamdock-n4e.desktop
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 462b0c575e0295b3328fbcf642fc375aabf5e059efefd339fad86834622f4b5b
+	sha256sums = e0e5ee8f7269c81b2962a83c720a0cd839fa832b492d43641af52151564dd2a5
+	sha256sums = 1c11b49de3699f481dc58aaf737dc88f4483477206a9771fc96df0a8409bbb35
 
 pkgname = streamdock-n4e
