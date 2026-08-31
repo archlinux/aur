@@ -1,6 +1,6 @@
 pkgbase = python-libuuu
 	pkgdesc = A python wrapper for libuuu
-	pkgver = 1.5.243
+	pkgver = 1.5.244
 	pkgrel = 1
 	url = https://github.com/nxp-imx/mfgtools
 	changelog = History.md

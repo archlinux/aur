@@ -1,7 +1,7 @@
 # Maintainer: Maud Spierings <maud_spierings@hotmail.com>
 
 pkgname=python-libuuu
-pkgver=1.5.243
+pkgver=1.5.244
 pkgrel=1
 pkgdesc='A python wrapper for libuuu'
 arch=('x86_64' 'aarch64')
@@ -43,7 +43,7 @@ build() {
 
 package() {
 	cd "${srcdir}/mfgtools/wrapper"
-	python -m installer --destdir="${pkgdir}" dist/libuuu-${pkgver}-py3-none-linux_${CARCH}.whl
+	python -m installer --destdir="${pkgdir}" dist/libuuu-${pkgver}.dev0-py3-none-linux_${CARCH}.whl
 	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 

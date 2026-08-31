@@ -1,3 +1,9 @@
+uuu_1.5.243 / 2025-12-16
+========================
+
+ * Support i.MX952
+ * Add -force-ctrl option for HID backup transfer
+
 uuu_1.5.233 / 2025-8-28
 =======================
 
