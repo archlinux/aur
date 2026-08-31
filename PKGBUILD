@@ -3,7 +3,7 @@
 pkgname=audacity4-bin
 pkgver=4.0.0_beta.4
 pkgrel=2
-pkgdesc="Audacity 4 (prebuilt binary)"
+pkgdesc="Audacity 4, the next generation of the popular multi-track audio editor"
 arch=('x86_64')
 url="https://github.com/audacity/audacity"
 license=('GPL-3.0-or-later')
