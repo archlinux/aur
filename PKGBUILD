@@ -8,7 +8,7 @@
 # Upstream CD (.github/workflows/aur.yml) bumps pkgver + sums on tags.
 # -------------------------------------------------------------------
 pkgname=telegram-rs-bin
-pkgver=0.10.4
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="Feather-light Telegram desktop client in Rust — real-time push, GPU rendering (prebuilt binary)"
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
     "telegram-rs.svg"
     "LICENSE::https://raw.githubusercontent.com/MrChausson/telegram-rs/v${pkgver}/LICENSE"
 )
-sha256sums=('232415b719cdd16fe5926b07df495e9076bdd3a2ec5e1c913cfc9201bf34a30f'
+sha256sums=('0290d3001da928d204b4c6b2a814b8f315ca8dfbb1994c49fee1ca293d2433d1'
             '5f46ddc4cbfafa9bea3814e26822959a536fff89b1b1523acac5f00f80919b86'
             '29a54866c7f634ce95caffa7e76c95d69101dccb3f2fc3ffa7a1eecd0c9b2d04'
             'c3a2f7bfcf59048b96659340e0c382112019916cad800354cc7a057589045a39')
