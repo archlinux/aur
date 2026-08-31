@@ -16,9 +16,9 @@
 # and not the version; a build in a network-isolated chroot will still fail.
 
 pkgname=xpcog
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
-pkgdesc="Audio player ported from Cog, for the formats other players do not open"
+pkgdesc="Audio player for the formats other players do not open"
 arch=('x86_64')
 url="https://cog.losno.co/xpcog"
 license=('GPL-2.0-or-later')
@@ -41,10 +41,12 @@ depends=(
   'curl' 'opusfile' 'wavpack' 'libsoxr' 'rubberband' 'libmpcdec'
   'libsidplayfp' 'hicolor-icon-theme'
 )
-# nlohmann-json is header-only, so it is wanted at build time and never linked.
-# Here for the determinism reason above rather than to save the download.
+# nlohmann-json and cpp-httplib are header-only, so they are wanted at build time
+# and never linked. Here for the determinism reason above rather than to save the
+# download: XPCogSystemDeps decides per library whether the system has one good
+# enough, so on a machine without them vcpkg quietly builds its own instead.
 makedepends=('cmake' 'ninja' 'git' 'pkgconf' 'zip' 'unzip' 'curl' 'tar'
-             'nlohmann-json')
+             'nlohmann-json' 'cpp-httplib')
 
 # The vcpkg commit is pinned to the manifest's builtin-baseline, and prepare()
 # checks that it still is. Left unpinned this would resolve ports from whatever
@@ -59,7 +61,7 @@ source=(
 # The release tarball is checksummed; the vcpkg tree is not, because a git
 # source is pinned by its commit and makepkg wants SKIP for one.
 sha256sums=(
-  '8ef96f521bb4edd1f08236e858b12b0f25715543a4e8b816138f8142f14ae604'
+  'db11e6aa7700d4bf3f15322291906e6d184c436d5f9810761c1b99efc4d87591'
   'SKIP'
 )
 
@@ -104,7 +106,7 @@ build() {
   # vcpkg ships a bootstrap script rather than a binary in the git tree.
   [ -x "$VCPKG_ROOT/vcpkg" ] || "$VCPKG_ROOT/bootstrap-vcpkg.sh" -disableMetrics
 
-  # Three differences from linux-repo-release, each with a reason a package has
+  # Four differences from linux-repo-release, each with a reason a package has
   # and a developer build does not:
   #
   #   sentry OFF   -- crash reporting is the upstream project's, pointed at the
@@ -117,6 +119,13 @@ build() {
   #
   #   tests OFF    -- the suite is not what ships, and building it here would
   #                   pull Catch2 in for binaries the package discards.
+  #
+  #   REST ON      -- the remote control is OFF for a bare `cmake` and on in the
+  #                   presets, and a distribution package should have it: it is a
+  #                   documented feature of this version, and building it is not
+  #                   the same as running it. `remoteEnable` is false by default,
+  #                   so a package that ships it still listens on nothing until
+  #                   somebody ticks the box in Preferences -> Remote.
   #
   #   libdir       -- lib/xpcog rather than lib. The one bundled shared library
   #                   is vcpkg's libvgmstream.so, and dropping a private copy of
@@ -140,7 +149,8 @@ build() {
       -DXPCOG_WITH_MUSEPACK=ON \
       -DXPCOG_WITH_MIDI=ON \
       -DXPCOG_WITH_ADPLUG=ON \
-      -DXPCOG_WITH_LIBVGM=ON
+      -DXPCOG_WITH_LIBVGM=ON \
+      -DXPCOG_WITH_REST=ON
 
   cmake --build build
 }
