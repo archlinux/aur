@@ -1,0 +1,4 @@
+[dlt-viewer]
+source = "github"
+github = "COVESA/dlt-viewer"
+use_max_tag = true
