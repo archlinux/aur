@@ -1,6 +1,6 @@
 pkgbase = fastsapp
 	pkgdesc = Fast native WhatsApp client built with Rust and egui
-	pkgver = 0.6.1
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/crmne/fastsapp
 	install = fastsapp.install
@@ -21,7 +21,7 @@ pkgbase = fastsapp
 	conflicts = fastsapp-git
 	options = !debug
 	options = !lto
-	source = fastsapp-0.6.1.tar.gz::https://github.com/crmne/fastsapp/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = f660b32210933fbe54ec9a07d4ac10e6f70aedcf3d56e5064797dc22520cefb4
+	source = fastsapp-0.6.4.tar.gz::https://github.com/crmne/fastsapp/archive/refs/tags/v0.6.4.tar.gz
+	sha256sums = efedeb56b5fba0db12a4283dee3983a39ad053545b8db6ce975c1ef1e742f9b8
 
 pkgname = fastsapp
