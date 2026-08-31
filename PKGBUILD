@@ -2,7 +2,7 @@
 _appname=cherry-studio
 pkgname="${_appname}-electron-bin"
 _pkgname='Cherry Studio'
-pkgver=2.0.8
+pkgver=2.0.10
 _electronversion=41
 pkgrel=1
 pkgdesc="🍒A desktop client that supports for multiple LLM providers.(Prebuilt version.Use system-wide electron)"
@@ -39,12 +39,12 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/CherryHQ/cherry-studio/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-aarch64.rpm")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-x86_64.rpm")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-linux-arm64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /-}-${pkgver}-linux-x64.rpm")
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('d5420cebec3bdc3adc5df0a1f8016f2bc7e53ef7e1033716e1aa709777b7e9ef')
-sha256sums_x86_64=('5fa7d3cdbb83652b9fad324507df6913d7b04fdc51a2d45eba939fde0dc0108b')
+sha256sums_aarch64=('01aa2041e45a179dac364b604622adb9906be32a541c3863999134014b1cca3c')
+sha256sums_x86_64=('3018d666a1cda386e506cbdf9d2fef3052b3604e6abb8f5a6da434f188bea313')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -84,6 +84,9 @@ prepare() {
             ln -sf "/usr/bin/uv" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/uv"
             ln -sf "/usr/bin/uvx" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/uvx"
             ln -sf "/usr/bin/mise" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-arm64/mise"
+            rm -rf \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/@koromix/koffi-linux-x64" \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-x64"
             ;;
         x86_64)
             _arch_rem="arm64-*"
@@ -92,6 +95,9 @@ prepare() {
             ln -sf "/usr/bin/uv" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/uv"
             ln -sf "/usr/bin/uvx" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/uvx"
             ln -sf "/usr/bin/mise" "${_app_dir}/resources/app.asar.unpacked/resources/binaries/linux-x64/mise"
+            rm -rf \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/@koromix/koffi-linux-arm64" \
+                "${_app_dir}/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-arm64"
             ;;
     esac
     find "${_app_dir}/resources" -type d \( \
