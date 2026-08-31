@@ -1,6 +1,6 @@
 pkgbase = sonic-frameworks-windowsystem
 	pkgdesc = Access to the windowing system
-	pkgver = 6.28.0.1
+	pkgver = 6.29.0
 	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-frameworks-windowsystem
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = sonic-frameworks-windowsystem
 	optdepends = qt6-declarative: QML bindings
 	provides = kwindowsystem
 	conflicts = kwindowsystem
-	source = sonic-frameworks-windowsystem-6.28.0.1.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-windowsystem/archive/refs/tags/6.28.0.1.tar.gz
-	sha256sums = 2e5d7fd3ade7cf5f0792cd44b0fd585230a19f23359a681bf34995ab50af0e33
+	source = sonic-frameworks-windowsystem-6.29.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-windowsystem/archive/refs/tags/6.29.0.tar.gz
+	sha256sums = 1fd30e0ef7542b0eb7cc29faa4b64d0832435cc2d611d7edf8dde18ea8871c05
 
 pkgname = sonic-frameworks-windowsystem
