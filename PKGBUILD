@@ -3,10 +3,10 @@
 # Contributor: vryali@gmail.com
 pkgname=google-chat-linux
 _pkgname='Google Chat Linux'
-pkgver=5.39.27_2
+pkgver=5.39.28_1
 _electronversion=39
 _nodeversion=22
-pkgrel=2
+pkgrel=1
 pkgdesc="Unofficial electron-based desktop client for Google Chat, electron not included.(Use system-wide electron)"
 arch=('any')
 url="https://github.com/squalou/google-chat-linux"
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}::git+${url}#tag=${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('14f669e2c86b555a46e439312a18a44af2346aec0521d969087c5f450159d677'
+sha256sums=('99a755ed5419e1fce25140f2efcf86d1b474d65386ac3ee31ec55439c0bc7524'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
