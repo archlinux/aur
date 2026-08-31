@@ -23,6 +23,7 @@ makedepends=(
     'git'
     'curl'
     'yarn'
+    'gendesk'
     'jq'
 )
 options=(

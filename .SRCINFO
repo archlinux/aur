@@ -10,6 +10,7 @@ pkgbase = grist-desktop
 	makedepends = git
 	makedepends = curl
 	makedepends = yarn
+	makedepends = gendesk
 	makedepends = jq
 	depends = electron41
 	depends = python-colorama
