@@ -1,10 +1,11 @@
 pkgbase = cups-git
 	pkgdesc = OpenPrinting CUPS. Monolithic VCS package providing client libraries, headers and daemon.
 	pkgver = 2.4.3.r351.gefb31d1a9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://openprinting.github.io/cups/
 	install = cups.install
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause
 	makedepends = git
 	makedepends = cups-browsed-git

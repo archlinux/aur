@@ -6,9 +6,9 @@
 _pkgname=cups
 pkgname=$_pkgname-git
 pkgver=2.4.3.r351.gefb31d1a9
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenPrinting CUPS. Monolithic VCS package providing client libraries, headers and daemon."
-arch=(x86_64)
+arch=('x86_64' 'aarch64')
 license=('Apache-2.0 WITH LLVM-exception AND BSD-3-Clause AND Zlib AND BSD-2-Clause')
 url="https://openprinting.github.io/cups/"
 depends=('zlib' 'systemd' 'avahi' 'gnutls' 'hicolor-icon-theme' 'bash')
