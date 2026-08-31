@@ -1,7 +1,7 @@
 pkgbase = dosbox-staging-bin
 	pkgdesc = A modern continuation of DOSBox with advanced features and current development practices.(Prebuilt version)
 	pkgver = 0.83.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.dosbox-staging.org/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -15,7 +15,7 @@ pkgbase = dosbox-staging-bin
 	provides = dosbox=0.83.0
 	conflicts = dosbox-staging
 	conflicts = dosbox
-	source = dosbox-staging-0.83.0.tar.xz::https://www.dosbox-staging.org//releases/download/v0.83.0/dosbox-staging-linux-x86_64-v0.83.0.tar.xz
+	source = dosbox-staging-0.83.0.tar.xz::https://github.com/dosbox-staging/dosbox-staging/releases/download/v0.83.0/dosbox-staging-linux-x86_64-v0.83.0.tar.xz
 	source = dosbox-staging.sh
 	sha256sums = d3a94f7f1c3e68a47ec88d61145506c7904452adb0c9c5928cb8cfe2331d6c5c
 	sha256sums = 5e664ddfd6f8016b079a4244fdc5746a253658554324f73dc5e406bf7d354456
