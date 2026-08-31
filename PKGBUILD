@@ -3,7 +3,7 @@
 pkgname=opentubex-git
 _pkgname=OpenTubeX
 _ghurl="https://github.com/OpenTubeX/OpenTubeX"
-pkgver=r12153.af7cbc488
+pkgver=r12607.a8dc8e696
 pkgrel=2
 pkgdesc='A highly customizable, privacy-focused desktop YouTube client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -33,7 +33,8 @@ prepare() {
   sed -i 's/NIGHTLY_VERSION_PATTERN.test(version) && commit.length > 0/commit.length > 0/' \
     "$srcdir/$_pkgname/src/renderer/helpers/versionDisplay.js"
 
-  sed -i "5i electronDist: '/usr/lib/electron43'," "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
+  sed -i "/^export default {/a\\  electronDist: '/usr/lib/electron43'," \
+    "$srcdir/$_pkgname/_scripts/ebuilder.config.mjs"
   sed -i "s/targets = Platform.LINUX.*/targets = Platform.LINUX.createTarget(['dir'], arch)/" "$srcdir/$_pkgname/_scripts/build.mjs"
 }
 
