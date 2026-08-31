@@ -1,6 +1,6 @@
 pkgbase = zanger
 	pkgdesc = A TUI file navigator written in Zig
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/hspak/zanger
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = zanger
 	makedepends = git
 	provides = zanger
 	conflicts = zanger
-	source = https://github.com/hspak/zanger/archive/refs/tags/0.2.0.tar.gz
-	sha256sums = 417033fc0ae172ccbafcdaf41faed3cd91cfae8773bbc7352d3e91fcaec650d3
+	source = https://github.com/hspak/zanger/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = e3078fcba0883575b08f3cf5a3e746e36d2ab6833212b0cb0706cbb05ad510db
 
 pkgname = zanger

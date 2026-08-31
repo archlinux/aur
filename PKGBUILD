@@ -1,7 +1,7 @@
 # Maintainer: Hong Shick Pak <hong@hspak.com>
 
 pkgname=zanger
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A TUI file navigator written in Zig"
 arch=("x86_64")
@@ -12,7 +12,7 @@ makedepends=("zig" "git")
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/hspak/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("417033fc0ae172ccbafcdaf41faed3cd91cfae8773bbc7352d3e91fcaec650d3")
+sha256sums=("e3078fcba0883575b08f3cf5a3e746e36d2ab6833212b0cb0706cbb05ad510db")
 
 build() {
   cd "${pkgname}-${pkgver}"
