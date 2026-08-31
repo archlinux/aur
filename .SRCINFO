@@ -1,6 +1,6 @@
 pkgbase = observer-ai
 	pkgdesc = Observer - AI-powered application built with Tauri
-	pkgver = 2.5.3
+	pkgver = 2.5.4
 	pkgrel = 1
 	url = https://github.com/Roy3838/Observer
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = observer-ai
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
-	source = observer-ai-2.5.3.tar.gz::https://github.com/Roy3838/Observer/archive/v2.5.3.tar.gz
-	sha256sums = 5feaed3af0b569274427088b4d0a3829989ed9f57e5af7c0fdf1617073520d41
+	source = observer-ai-2.5.4.tar.gz::https://github.com/Roy3838/Observer/archive/v2.5.4.tar.gz
+	sha256sums = 26408534a4e9c2584f7bbaa2037cf229d8093212f27b06a6fcb8cb0cf19ad2a7
 
 pkgname = observer-ai
