@@ -1,6 +1,6 @@
 # Maintainer: c0m4r <https://github.com/c0m4r>
 pkgname=kula
-pkgver=0.18.7
+pkgver=0.18.8
 pkgrel=1
 pkgdesc="Lightweight, self-contained monitoring tool"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('AGPL-3.0')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/c0m4r/kula/archive/${pkgver}.tar.gz")
-sha256sums=('c1b8e4d2144e54afceaadd374562dde2a9503e2da13561cbbd1dec6d7f1564e7')
+sha256sums=('6bbd94bf553f038a33a33fe8cec0b5533cb8354ede014ca63d6c80c1c9d79278')
 install='kula.install'
 
 check() {
