@@ -1,0 +1,5 @@
+[whatscli-bin]
+source = "github"
+github = "normen/whatscli"
+use_latest_release = true
+prefix = "v"
