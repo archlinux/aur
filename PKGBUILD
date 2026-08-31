@@ -16,7 +16,7 @@ conflicts=(
 options=('!strip' '!emptydirs')
 _appimage="${_pkgname}-${pkgver}.AppImage"
 source=("${_appimage}::$url/releases/download/v$pkgver/$_pkgname-$pkgver-$arch.AppImage"
-        "LICENSE::https://raw.githubusercontent.com/ZoiteChat/zoitechat/refs/heads/master/COPYING"
+        "LICENSE.$pkgver::https://raw.githubusercontent.com/ZoiteChat/zoitechat/refs/heads/master/COPYING"
 #		https://raw.githubusercontent.com/ZoiteChat/zoitechat/refs/heads/master/COPYING
         "$_pkgname.png::https://raw.githubusercontent.com/ZoiteChat/$_pkgname/refs/heads/master/data/icons/$_pkgname.png"
         "$_pkgname.desktop")
@@ -31,7 +31,7 @@ prepare() {
 
 package() {
   install -Dm755 "${_appimage}" "$pkgdir/opt/$_pkgname/$_pkgname.AppImage"
-  install -Dm644 "LICENSE" "$pkgdir/opt/$_pkgname/LICENSE"
+  install -Dm644 "LICENSE.$pkgver" "$pkgdir/opt/$_pkgname/LICENSE"
 
   install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
   install -Dm644 "$_pkgname.png" "$pkgdir/opt/$_pkgname/$_pkgname.png"
