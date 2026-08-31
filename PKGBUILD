@@ -20,8 +20,8 @@ optdepends=(
   'gstreamer: for video playback support'
   'gst-plugins-base-libs: for video playback plugins'
 )
-provides=('neomacs' 'emacs')
-conflicts=('neomacs' 'emacs')
+provides=('neomacs')
+conflicts=('neomacs')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eval-exec/neomacs/releases/download/v${pkgver}/neomacs-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('385d3485855cedfd77b57c2b3917e1fd4e624607901622679da3ce25c08ea112')
 

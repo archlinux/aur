@@ -14,9 +14,7 @@ pkgbase = neomacs-bin
 	optdepends = gstreamer: for video playback support
 	optdepends = gst-plugins-base-libs: for video playback plugins
 	provides = neomacs
-	provides = emacs
 	conflicts = neomacs
-	conflicts = emacs
 	source = neomacs-bin-0.0.16.tar.gz::https://github.com/eval-exec/neomacs/releases/download/v0.0.16/neomacs-0.0.16-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = 385d3485855cedfd77b57c2b3917e1fd4e624607901622679da3ce25c08ea112
 
