@@ -7,7 +7,7 @@
 # Contributor: Toolybird <toolybird at tuta dot io>
 
 pkgname=godot-mono-export-templates-linux
-pkgver=4.6.3
+pkgver=4.7.2
 pkgrel=1
 pkgdesc='Advanced cross-platform 2D and 3D game engine (Export template for linux target and mono support)'
 url='https://godotengine.org/'
@@ -19,7 +19,7 @@ depends=(brotli ca-certificates embree freetype2 graphite libglvnd libspeechd li
 #optdepends=('pipewire-alsa: for audio support'
 #            'pulse-native-provider: for audio support')
 source=("git+https://github.com/godotengine/godot#tag=$pkgver-stable")
-b2sums=('de441c3f056022f4063e284ac98b76e25cb6dbccd393707800d039c0e7231e8a939337b0c48c292a3f7345d500c5f752661fe179ceccc180f32cfde78a1e4ac5')
+b2sums=('919de6e3b42dc774e1b706b6485ed19965164c650df0640df5c2665a7f9f538f5ead5bc0925331fe2d91cfca0efce3a250cf8db5a47cbb482422a2472f996ef1')
 
 prepare() {
   cd godot
