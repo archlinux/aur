@@ -4,14 +4,13 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-system-monitor-library
-pkgver=6.7.3
+pkgver=6.7.4
 pkgrel=1
 pkgdesc='Library to retrieve information on the current status of computer hardware'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-system-monitor-library'
 license=(LGPL-2.0-or-later)
-depends=(gcc-libs
-         glibc
+depends=(glibc
          kconfig
          kdeclarative
          ki18n
@@ -21,8 +20,10 @@ depends=(gcc-libs
          kquickcharts
          kservice
          libdrm
+         libgcc
          libnl
          libpcap
+         libstdc++
          lm_sensors
          qt6-5compat
          qt6-base
@@ -30,7 +31,8 @@ depends=(gcc-libs
          solid
          sonic-frameworks-auth
          sonic-frameworks-core-addons
-         sonic-frameworks-quick-ui)
+         sonic-frameworks-quick-ui
+         systemd-libs)
 makedepends=(qt6-tools
              sonic-frameworks-cmake-modules)
 provides=(libksysguard)
@@ -38,7 +40,7 @@ conflicts=(libksysguard)
 replaces=(sonic-sysguard-library)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('215d75951ff8c02a0967528ead263b10e4d592cd6ed623a6a2adc7f0d073ca46')
+sha256sums=('537d447788842626ba14a351e280fb18ebc8c8c8886f9be7cea4fab54a55c106')
 
 build() {
   cmake -B build  -S $pkgname-$pkgver \
