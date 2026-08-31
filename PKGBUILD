@@ -32,4 +32,3 @@ package() {
     cd "${srcdir}/${_pkgname}" || exit 1
     DESTDIR="${pkgdir}" ./nob install
 }
-
