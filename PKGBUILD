@@ -15,7 +15,7 @@
 # Chromium dlopen()s at runtime.
 
 pkgname=doughmination-music
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Desktop client for Doughmination Music, a self-hosted Pocket ID music library"
 arch=('x86_64')
@@ -54,7 +54,7 @@ source=(
 # An AppImage is an ELF with a squashfs glued on; makepkg must not try to
 # unpack it itself — prepare() uses the AppImage's own extractor.
 noextract=("$pkgname-$pkgver.AppImage")
-sha256sums=('da905043304cec7eeda91f7387ec9b1871f669e84442fcfbb816cd85c0490203'
+sha256sums=('f97df32f56281c4354f657c653df691f2647aca5b3f5fef637af18c4d30c7562'
             '93aa15616c8d2ad987372388e9cc1cd360501a98bc9cebd656acfa938368f538')
 
 prepare() {
