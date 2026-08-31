@@ -1,6 +1,6 @@
 # Maintainer: Anderson Juhasc <anjhc@proton.me>
 pkgname=nostrord-bin
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Nostr NIP-29 group messaging client"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('nostrord')
 depends=('libxtst' 'libxrender' 'fontconfig' 'freetype2')
 install=nostrord-bin.install
 source=("nostrord-${pkgver}.deb::https://github.com/Nostrord/nostrord/releases/download/v${pkgver}/nostrord-${pkgver}-linux-amd64.deb")
-sha256sums=('b40d952b9a4bdca914f442c0c9a7a9fa3e9059ae596f3c0400cc6a209894df12')
+sha256sums=('145a1c4741410437dd534c8ae3cbedd555a7c44949e3d652306896ecf2dda41c')
 
 package() {
   cd "${srcdir}"
