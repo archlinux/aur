@@ -4,7 +4,7 @@
 #   makepkg --printsrcinfo > .SRCINFO
 pkgname=mailbox-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop mail client with a ribbon, calendar peek and reading pane (POP3, IMAP, SMTP)"
 arch=('x86_64')
 url="https://github.com/codingncaffeine/Mailbox"
@@ -25,7 +25,7 @@ optdepends=('hunspell-en_us: spelling, against the desktop dictionaries'
             'xdg-desktop-portal: file dialogs through the desktop')
 options=('!strip')   # self-contained .NET bundle — stripping breaks it
 source=("$url/releases/download/v$pkgver/Mailbox-$pkgver-linux-x64.tar.gz")
-sha256sums=('aa8d0d4353fa2d5727ab091bfaf77750f651bc335eb5b94e4920af0914713375')
+sha256sums=('3171ac254f000fabdc052e4f2953e88eeddc4d56ec7b9781a338df29de56f2d3')
 
 package() {
     install -dm755 "$pkgdir/usr/lib/mailbox" "$pkgdir/usr/bin" "$pkgdir/usr/share/doc/mailbox"
