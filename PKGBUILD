@@ -1,7 +1,7 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Control suite and PipeWire submixer for Elgato XLR interfaces, with an OpenDeck plugin"
 arch=('x86_64')
 url="https://github.com/emaspa/openxlr"
@@ -60,6 +60,7 @@ WRAP
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/openxlr.svg"
 
   # OpenDeck loads plugins from the user's config dir; ship it for copying.
+  install -dm755 "$pkgdir/usr/share/openxlr"
   cp -r plugin/com.emaspa.openxlr.sdPlugin "$pkgdir/usr/share/openxlr/"
   find "$pkgdir/usr/share/openxlr" -type f -exec chmod 644 {} +
   find "$pkgdir/usr/share/openxlr" -type d -exec chmod 755 {} +
