@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Devin - URL Handler
+Comment=A team of agents for every engineer.
+GenericName=Text Editor
+Exec=/opt/devin-desktop/devin-desktop --open-url %U
+Icon=devin-desktop
+Type=Application
+NoDisplay=true
+StartupNotify=true
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=x-scheme-handler/devin;x-scheme-handler/windsurf;
+Keywords=vscode;
