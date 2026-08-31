@@ -1,3 +1,4 @@
 [cpak-bin]
 source = "git"
 git = "https://github.com/Containerpak/cpak.git"
+prefix = "v"
