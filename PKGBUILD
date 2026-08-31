@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-system-info
-pkgver=6.7.3
+pkgver=6.7.4
 pkgrel=1
 pkgdesc='A utility that provides information about a computer system'
 arch=(x86_64)
@@ -13,7 +13,6 @@ license=(LGPL-2.0-or-later)
 depends=(aha
          clinfo
          dmidecode
-         gcc-libs
          glibc
          glu
          iproute2 # ip
@@ -25,6 +24,7 @@ depends=(aha
          libdisplay-info
          libdrm
          libpulse # pactl
+         libstdc++
          libusb
          lm_sensors
          mesa-utils
@@ -51,7 +51,7 @@ provides=(kinfocenter)
 conflicts=(kinfocenter)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('aa81c0bed3f9dbac37473c70505ea4143af1759aebfbc1ee8fa53272e8311866')
+sha256sums=('a77f207ac3ad2fffc5409917066181c6798c436789eddff69d667170e5f3546b')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
