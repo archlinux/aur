@@ -1,8 +1,8 @@
 # Maintainer: Rongbo <wurongbo2012@hotmail.com>
 
 pkgname=workbuddy
-pkgver=5.3.14.36279234_825709d4
-pkgrel=2
+pkgver=5.4.5.37398844_33ba13eb
+pkgrel=1
 pkgdesc="腾讯云代码助手推出的 AI Agent 办公工具(中国版）"
 arch=('x86_64' 'aarch64')
 url="https://www.workbuddy.cn/app"
@@ -13,6 +13,7 @@ makedepends=('asar'
 checkdepends=()
 optdepends=(
 	'nodejs-lts: frontend skills'
+	'ripgrep'
 	'gnome-shell-extension-appindicator'
 )
 provides=()
