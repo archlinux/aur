@@ -1,0 +1,13 @@
+post_install() {
+  printf '%s\n' \
+    'SoundTouch API access remains disabled until each desktop user reviews and accepts the supplemental terms.' \
+    'Run these commands as the desktop user, not as root:' \
+    '  soundtouch-pipewire eula show' \
+    '  soundtouch-pipewire eula accept STPW-SOUNDTOUCH-SUPPLEMENT-1'
+}
+
+post_upgrade() {
+  printf '%s\n' \
+    'Restart the already-running user service in each active desktop session to load the new service-v2 process:' \
+    '  systemctl --user restart soundtouch-pipewire.service'
+}

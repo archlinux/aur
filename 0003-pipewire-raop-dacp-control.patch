@@ -1,0 +1,3381 @@
+diff --git a/src/modules/meson.build b/src/modules/meson.build
+index 8e1f0797f5063d31e295ace8dcd2427eb515802e..b598cb87ca77b2bf675d1fc62261dbcfa2bc61e6 100644
+--- a/src/modules/meson.build
++++ b/src/modules/meson.build
+@@ -280,6 +280,16 @@ if selinux_dep.found()
+   pipewire_module_protocol_deps += selinux_dep
+ endif
+ 
++zeroconf_sources = []
++zeroconf_deps = []
++if avahi_dep.found()
++  zeroconf_sources += [
++    'zeroconf-utils/zeroconf.c',
++    'zeroconf-utils/avahi-poll.c',
++  ]
++  zeroconf_deps += avahi_dep
++endif
++
+ pipewire_module_protocol_native = shared_library('pipewire-module-protocol-native',
+   [ 'module-protocol-native.c',
+     'module-protocol-native/local-socket.c',
+@@ -618,15 +628,28 @@ build_module_raop = openssl_lib.found()
+ if build_module_raop
+   pipewire_module_raop_sink = shared_library('pipewire-module-raop-sink',
+     [ 'module-raop-sink.c',
++      'module-raop/dacp-server.c',
+       'module-raop/rtsp-client.c',
+-      'module-raop/volume.c' ],
++      'module-raop/volume.c',
++      zeroconf_sources ],
+     include_directories : [configinc],
+     install : true,
+     install_dir : modules_install_dir,
+     install_rpath: modules_install_dir,
+-    dependencies : [pipewire_module_rtp_common_dep, openssl_lib],
++    dependencies : [pipewire_module_rtp_common_dep, openssl_lib, zeroconf_deps],
+   )
+   if get_option('tests').allowed()
++    test('pw-test-raop-dacp',
++      executable('pw-test-raop-dacp',
++        [ 'module-raop/test-dacp-server.c',
++          'module-raop/dacp-server.c' ],
++        include_directories : [configinc],
++        dependencies : [pipewire_module_rtp_common_dep, openssl_lib, spa_support_dep],
++      ),
++      env : [
++        'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable('plugindir')),
++      ],
++    )
+     test('pw-test-raop-volume',
+       executable('pw-test-raop-volume',
+         [ 'module-raop/test-volume.c',
+diff --git a/src/modules/module-raop-sink.c b/src/modules/module-raop-sink.c
+index 1fb3c2b1f449a285eeae78f5a4a1489a52b23efe..cb46e8fcf1c2e5b7cdabd7ca236a726e4b12198d 100644
+--- a/src/modules/module-raop-sink.c
++++ b/src/modules/module-raop-sink.c
+@@ -4,6 +4,7 @@
+ 
+ #include "config.h"
+ 
++#include <inttypes.h>
+ #include <string.h>
+ #include <stdio.h>
+ #include <errno.h>
+@@ -44,6 +45,11 @@
+ 
+ #include "network-utils.h"
+ 
++#ifdef HAVE_AVAHI
++#include "zeroconf-utils/zeroconf.h"
++#endif
++
++#include "module-raop/dacp-server.h"
+ #include "module-raop/rtsp-client.h"
+ #include "module-raop/volume.h"
+ #include "module-rtp/rtp.h"
+@@ -75,6 +81,8 @@
+  *                    "auth_setup". Default is "none".
+  * - `raop.audio.codec`: The audio codec to use. Needs to be "PCM". Defaults to "PCM".
+  * - `raop.password`: The password to use.
++ * - `raop.dacp.enabled`: Enable receiver media and volume-button callbacks
++ *                    when Zeroconf support is available. Defaults to true.
+  * - `raop.volume.control`: Volume control mode. One of "remote-optional",
+  *                    "remote-required", "local", "software" or "external".
+  *                    Defaults to "remote-optional".
+@@ -191,6 +199,8 @@ PW_LOG_TOPIC(mod_topic, "mod." NAME);
+ #define VOLUME_MAX		0.0f
+ #define VOLUME_MIN		-30.0f
+ #define VOLUME_MUTE		-144.0f
++#define RTSP_SESSION_TIMEOUT_SEC	10
++#define RTSP_RECONNECT_MAX_MSEC	4000u
+ 
+ #define MODULE_USAGE	"( raop.ip=<ip address of host> ) "					\
+ 			"( raop.port=<remote port> ) "						\
+@@ -200,6 +210,7 @@ PW_LOG_TOPIC(mod_topic, "mod." NAME);
+ 			"( raop.encryption.type=<encryption, default:none> ) "			\
+ 			"( raop.audio.codec=PCM ) "						\
+ 			"( raop.password=<password for auth> ) "				\
++			"( raop.dacp.enabled=<enable DACP callbacks, default:true> ) "		\
+ 			"( raop.latency.ms=<min latency in ms, default:"SPA_STRINGIFY(DEFAULT_LATENCY_MS)"> ) "	\
+ 			"( raop.volume.control=<remote-optional|remote-required|local|software|external> ) "	\
+ 			"( raop.volume.query-timeout.ms=<timeout, default:"SPA_STRINGIFY(DEFAULT_VOLUME_QUERY_TIMEOUT_MS)"> ) "	\
+@@ -287,6 +298,14 @@ struct impl {
+ 	struct spa_hook rtsp_listener;
+ 	struct pw_properties *headers;
+ 
++#ifdef HAVE_AVAHI
++	struct pw_zeroconf *zeroconf;
++#endif
++	struct pw_raop_dacp_server *dacp_server;
++	char dacp_id[17];
++	char active_remote[11];
++	uint64_t dacp_sequence;
++
+ 	char session_id[32];
+ 	char *password;
+ 	char *auth_method;
+@@ -305,6 +324,9 @@ struct impl {
+ 	struct pw_timer feedback_timer;
+ 	struct pw_timer volume_query_timer;
+ 	struct pw_timer volume_set_timer;
++	struct pw_timer session_timeout_timer;
++	struct pw_timer reconnect_timer;
++	uint32_t reconnect_attempts;
+ 
+ 	uint16_t timing_port;
+ 	int timing_fd;
+@@ -332,8 +354,14 @@ struct impl {
+ 	struct raop_volume_request_state record_request;
+ 	enum volume_continuation volume_continuation;
+ 	unsigned int connected:1;
++	unsigned int connecting:1;
++	unsigned int handshaking:1;
+ 	unsigned int ready:1;
+ 	unsigned int recording:1;
++	unsigned int want_stream:1;
++	unsigned int tearing_down:1;
++	unsigned int destroying:1;
++	unsigned int dacp_enabled:1;
+ 	unsigned int volume_valid:1;
+ 	unsigned int volume_prepare_started:1;
+ 	unsigned int session_software:1;
+@@ -345,6 +373,11 @@ struct impl {
+ 	float channel_volumes[MAX_CHANNELS];
+ };
+ 
++static int rtsp_do_connect(struct impl *impl);
++static int rtsp_do_teardown(struct impl *impl);
++static void schedule_rtsp_reconnect(struct impl *impl);
++static void connection_cleanup(struct impl *impl);
++
+ static inline void bit_writer(uint8_t **p, int *pos, uint8_t data, int len)
+ {
+ 	int rb = 8 - *pos - len;
+@@ -1013,6 +1046,185 @@ static int rtsp_send_volume(struct impl *impl)
+ 	return res;
+ }
+ 
++#ifdef HAVE_AVAHI
++static void dacp_command(void *data,
++		const struct pw_raop_dacp_request *request)
++{
++	struct impl *impl = data;
++	struct spa_dict_item items[4];
++	char sequence[32];
++
++	if (impl->stream == NULL)
++		return;
++
++	if (++impl->dacp_sequence == 0)
++		impl->dacp_sequence++;
++	spa_scnprintf(sequence, sizeof(sequence), "%" PRIu64,
++			impl->dacp_sequence);
++	items[0] = SPA_DICT_ITEM_INIT("raop.control.command",
++			pw_raop_dacp_command_as_string(request->command));
++	items[1] = SPA_DICT_ITEM_INIT("raop.control.sequence", sequence);
++	items[2] = SPA_DICT_ITEM_INIT("raop.control.source", "dacp");
++	items[3] = SPA_DICT_ITEM_INIT("raop.control.path", request->target);
++	rtp_stream_update_properties(impl->stream,
++			&SPA_DICT_INIT(items, SPA_N_ELEMENTS(items)));
++}
++#endif
++
++static void dacp_session_stop(struct impl *impl)
++{
++#ifdef HAVE_AVAHI
++	if (impl->zeroconf != NULL)
++		pw_zeroconf_set_announce(impl->zeroconf, impl, NULL);
++#endif
++	pw_raop_dacp_server_destroy(impl->dacp_server);
++	impl->dacp_server = NULL;
++	if (impl->headers != NULL) {
++		const char *active_remote =
++			pw_properties_get(impl->headers, "Active-Remote");
++
++		if (active_remote != NULL)
++			explicit_bzero((char *)active_remote,
++					strlen(active_remote));
++		pw_properties_set(impl->headers, "Active-Remote", NULL);
++	}
++	explicit_bzero(impl->active_remote, sizeof(impl->active_remote));
++}
++
++#ifdef HAVE_AVAHI
++static void dacp_server_error(void *data, int error)
++{
++	struct impl *impl = data;
++
++	pw_log_warn("DACP listener stopped: %s", spa_strerror(error));
++	dacp_session_stop(impl);
++}
++#endif
++
++static int dacp_session_start(struct impl *impl)
++{
++#ifdef HAVE_AVAHI
++	struct sockaddr_storage local_addr, peer_addr;
++	socklen_t local_size = sizeof(local_addr);
++	socklen_t peer_size = sizeof(peer_addr);
++	struct pw_properties *announce;
++	const char *ifindex;
++	char name[sizeof("iTunes_Ctrl_") + sizeof(impl->dacp_id)];
++	char port[6];
++	uint32_t token;
++	int res;
++
++	if (!impl->dacp_enabled)
++		return 0;
++	if (impl->dacp_server != NULL)
++		return 0;
++	if (impl->zeroconf == NULL)
++		return -ENOTSUP;
++
++	if ((res = pw_rtsp_client_get_local_address(impl->rtsp,
++			&local_addr, &local_size)) < 0 ||
++	    (res = pw_rtsp_client_get_peer_address(impl->rtsp,
++			&peer_addr, &peer_size)) < 0)
++		return res;
++	if ((res = pw_getrandom(&token, sizeof(token), 0)) < 0)
++		return res;
++	if (token == 0)
++		token = 1;
++	spa_scnprintf(impl->active_remote, sizeof(impl->active_remote),
++			"%" PRIu32, token);
++
++	impl->dacp_server = pw_raop_dacp_server_new(impl->loop,
++			(const struct sockaddr *)&local_addr, local_size,
++			(const struct sockaddr *)&peer_addr, peer_size,
++			impl->active_remote, dacp_command,
++			dacp_server_error, impl);
++	if (impl->dacp_server == NULL) {
++		res = -errno;
++		goto error;
++	}
++
++	spa_scnprintf(name, sizeof(name), "iTunes_Ctrl_%s", impl->dacp_id);
++	spa_scnprintf(port, sizeof(port), "%u",
++			pw_raop_dacp_server_get_port(impl->dacp_server));
++	announce = pw_properties_new(
++			PW_KEY_ZEROCONF_NAME, name,
++			PW_KEY_ZEROCONF_TYPE, "_dacp._tcp",
++			PW_KEY_ZEROCONF_PROTO,
++				local_addr.ss_family == AF_INET ? "4" : "6",
++			PW_KEY_ZEROCONF_PORT, port,
++			"txtvers", "1",
++			"Ver", "131075",
++			"DbId", "63B5E5C0C201542E",
++			"OSsi", "0x1F5",
++			NULL);
++	if (announce == NULL) {
++		res = -errno;
++		goto error;
++	}
++	ifindex = pw_properties_get(impl->props, "raop.ifindex");
++	if (ifindex != NULL)
++		pw_properties_set(announce, PW_KEY_ZEROCONF_IFINDEX, ifindex);
++	res = pw_zeroconf_set_announce(impl->zeroconf, impl,
++			&announce->dict);
++	pw_properties_free(announce);
++	if (res < 0)
++		goto error;
++
++	pw_properties_set(impl->headers, "Active-Remote",
++			impl->active_remote);
++	pw_log_info("announced DACP service %s on port %s", name, port);
++	return 0;
++
++error:
++	dacp_session_stop(impl);
++	return res;
++#else
++	return impl->dacp_enabled ? -ENOTSUP : 0;
++#endif
++}
++
++static void dacp_session_start_warn(struct impl *impl)
++{
++	int res;
++
++	if ((res = dacp_session_start(impl)) < 0)
++		pw_log_warn("DACP callbacks unavailable: %s",
++				spa_strerror(res));
++}
++
++static void rtsp_session_timeout(void *data)
++{
++	struct impl *impl = data;
++
++	if (impl->destroying)
++		return;
++	pw_log_warn("RAOP session transition timed out; reconnecting");
++	/*
++	 * disconnect() normally emits the callback that performs cleanup and
++	 * schedules retry. Repeat both operations afterwards as an idempotent
++	 * fallback for an already-closed RTSP source.
++	 */
++	pw_rtsp_client_disconnect(impl->rtsp);
++	impl->connected = false;
++	impl->connecting = false;
++	connection_cleanup(impl);
++	schedule_rtsp_reconnect(impl);
++}
++
++static void arm_rtsp_session_timeout(struct impl *impl)
++{
++	int res;
++
++	pw_timer_queue_cancel(&impl->session_timeout_timer);
++	res = pw_timer_queue_add(impl->timer_queue,
++			&impl->session_timeout_timer, NULL,
++			RTSP_SESSION_TIMEOUT_SEC * SPA_NSEC_PER_SEC,
++			rtsp_session_timeout, impl);
++	if (res < 0)
++		pw_log_warn("can't arm RAOP session timeout: %s",
++				spa_strerror(res));
++}
++
+ static int volume_continue(struct impl *impl)
+ {
+ 	enum volume_continuation continuation = impl->volume_continuation;
+@@ -1071,6 +1283,7 @@ static void volume_fail_closed(struct impl *impl, const char *reason)
+ 	pw_log_error("%s", reason);
+ 	impl->volume_continuation = VOLUME_CONTINUE_NONE;
+ 	impl->recording = false;
++	impl->want_stream = false;
+ 	rtsp_do_teardown(impl);
+ 	if (impl->stream != NULL)
+ 		rtp_stream_set_error(impl->stream, -EIO, reason);
+@@ -1090,6 +1303,7 @@ static void volume_remote_failed(struct impl *impl,
+ 	if (action == RAOP_VOLUME_FAILURE_ERROR) {
+ 		pw_log_error("remote volume %s failed: %s", operation, reason);
+ 		impl->volume_continuation = VOLUME_CONTINUE_NONE;
++		impl->want_stream = false;
+ 		rtsp_do_teardown(impl);
+ 		rtp_stream_set_error(impl->stream, -EIO,
+ 				"RAOP receiver volume is unavailable");
+@@ -1358,6 +1572,13 @@ static int rtsp_record_reply(void *data, int status, const struct spa_dict *head
+ 		pw_impl_module_schedule_destroy(impl->module);
+ 		return 0;
+ 	}
++	if (!impl->tearing_down)
++		pw_timer_queue_cancel(&impl->session_timeout_timer);
++
++	/* A Format removal can race with the RECORD reply. TEARDOWN is already
++	 * queued in that case; do not revive packet transmission afterwards. */
++	if (!impl->want_stream || impl->tearing_down)
++		return 0;
+ 
+ 	// feedback timer is only needed for auth_setup	encryption
+ 	if (impl->encryption == CRYPTO_FP_SAP25) {
+@@ -1376,6 +1597,7 @@ static int rtsp_record_reply(void *data, int status, const struct spa_dict *head
+ 	process_latency.rate = impl->latency + msec_to_samples(impl, RAOP_LATENCY_MS);
+ 
+ 	rtp_stream_update_process_latency(impl->stream, &process_latency);
++	impl->reconnect_attempts = 0;
+ 
+ 	/* A physical control change can overtake the queued RECORD. Do not
+ 	 * release packets using the older receiver value. */
+@@ -1412,7 +1634,9 @@ static int rtsp_do_record(struct impl *impl)
+ 	uint16_t seq;
+ 	uint32_t rtptime;
+ 
+-	if (!impl->ready || impl->recording || impl->record_request.pending)
++	if (!impl->want_stream || impl->tearing_down ||
++			!impl->ready || impl->recording ||
++			impl->record_request.pending)
+ 		return 0;
+ 	if (!raop_volume_request_begin(&impl->record_request,
+ 			impl->volume_state.generation, &epoch))
+@@ -1436,7 +1660,8 @@ static int rtsp_do_record(struct impl *impl)
+ 	if (res < 0) {
+ 		free(reply);
+ 		raop_volume_request_cancel(&impl->record_request, epoch);
+-	}
++	} else
++		arm_rtsp_session_timeout(impl);
+ 
+ 	pw_properties_set(impl->headers, "Range", NULL);
+ 	pw_properties_set(impl->headers, "RTP-Info", NULL);
+@@ -1466,8 +1691,14 @@ on_server_source_io(void *data, int fd, uint32_t mask)
+ 		if (res != 0)
+ 			goto error;
+ 
++		impl->handshaking = false;
+ 		impl->ready = true;
+-		if (rtp_stream_get_state(impl->stream, NULL) == PW_STREAM_STATE_STREAMING)
++		impl->reconnect_attempts = 0;
++		pw_timer_queue_cancel(&impl->session_timeout_timer);
++		if (!impl->want_stream)
++			rtsp_do_teardown(impl);
++		else if (rtp_stream_get_state(impl->stream, NULL) ==
++				PW_STREAM_STATE_STREAMING)
+ 			volume_start_before_record(impl);
+ 	}
+ 	return;
+@@ -1558,13 +1789,27 @@ static int rtsp_setup_reply(void *data, int status, const struct spa_dict *heade
+ 		impl->control_source = pw_loop_add_io(impl->loop, impl->control_fd,
+ 				SPA_IO_IN, false, on_control_source_io, impl);
+ 
++		impl->handshaking = false;
+ 		impl->ready = true;
+-		if (rtp_stream_get_state(impl->stream, NULL) == PW_STREAM_STATE_STREAMING)
+-			volume_start_before_record(impl);
++		impl->reconnect_attempts = 0;
++		pw_timer_queue_cancel(&impl->session_timeout_timer);
+ 		break;
+ 	default:
+ 		return 0;
+ 	}
++	if (!impl->want_stream) {
++		/* SETUP created a receiver-side session even if Format disappeared
++		 * while the request was in flight. Mark it teardown-capable and
++		 * release it without ever starting RECORD. */
++		impl->handshaking = false;
++		impl->ready = true;
++		pw_timer_queue_cancel(&impl->session_timeout_timer);
++		return rtsp_do_teardown(impl);
++	}
++	if (impl->ready &&
++	    rtp_stream_get_state(impl->stream, NULL) ==
++		    PW_STREAM_STATE_STREAMING)
++		volume_start_before_record(impl);
+ 	return 0;
+ }
+ 
+@@ -1943,37 +2188,58 @@ static int rtsp_options_reply(void *data, int status, const struct spa_dict *hea
+ 	return res;
+ }
+ 
+-static void rtsp_connected(void *data)
++static int rtsp_begin_handshake(struct impl *impl)
+ {
+-	struct impl *impl = data;
+-	uint32_t sci[2];
++	const char *id = impl->dacp_id;
+ 	int res;
+ 
+-	pw_log_info("connected");
++	if (!impl->want_stream || !impl->connected || impl->handshaking ||
++	    impl->ready || impl->tearing_down)
++		return 0;
+ 
+-	impl->connected = true;
++	while (id[0] == '0' && id[1] != '\0')
++		id++;
+ 
+-	if ((res = pw_getrandom(sci, sizeof(sci), 0)) < 0) {
+-		pw_log_error("error generating random data: %s", spa_strerror(res));
+-		return;
++	pw_properties_setf(impl->headers, "Client-Instance", "%s", id);
++	pw_properties_setf(impl->headers, "DACP-ID", "%s", id);
++
++	pw_properties_set(impl->headers, "User-Agent", DEFAULT_USER_NAME "/" PACKAGE_VERSION);
++
++	dacp_session_start_warn(impl);
++
++	impl->handshaking = true;
++	arm_rtsp_session_timeout(impl);
++	res = pw_rtsp_client_send(impl->rtsp, "OPTIONS", &impl->headers->dict,
++			NULL, NULL, rtsp_options_reply, impl);
++	if (res < 0) {
++		impl->handshaking = false;
++		pw_timer_queue_cancel(&impl->session_timeout_timer);
++		pw_rtsp_client_disconnect(impl->rtsp);
+ 	}
++	return res;
++}
+ 
+-	pw_properties_setf(impl->headers, "Client-Instance",
+-			"%08X%08X", sci[0], sci[1]);
++static void rtsp_connected(void *data)
++{
++	struct impl *impl = data;
+ 
+-	pw_properties_setf(impl->headers, "DACP-ID",
+-			"%08X%08X", sci[0], sci[1]);
++	pw_log_info("connected");
+ 
+-	pw_properties_set(impl->headers, "User-Agent", DEFAULT_USER_NAME "/" PACKAGE_VERSION);
++	impl->connected = true;
++	impl->connecting = false;
++	pw_timer_queue_cancel(&impl->session_timeout_timer);
+ 
+-	pw_rtsp_client_send(impl->rtsp, "OPTIONS", &impl->headers->dict,
+-			NULL, NULL, rtsp_options_reply, impl);
++	rtsp_begin_handshake(impl);
+ }
+ 
+ static void connection_cleanup(struct impl *impl)
+ {
++	const char *authorization;
++
+ 	impl->ready = false;
+ 	impl->recording = false;
++	impl->handshaking = false;
++	impl->tearing_down = false;
+ 	impl->volume_prepare_started = false;
+ 	impl->volume_continuation = VOLUME_CONTINUE_NONE;
+ 	impl->volume_query_request.pending = false;
+@@ -1982,6 +2248,8 @@ static void connection_cleanup(struct impl *impl)
+ 	impl->session_software = false;
+ 	pw_timer_queue_cancel(&impl->volume_query_timer);
+ 	pw_timer_queue_cancel(&impl->volume_set_timer);
++	pw_timer_queue_cancel(&impl->session_timeout_timer);
++	dacp_session_stop(impl);
+ 	if (impl->server_source != NULL) {
+ 		pw_loop_destroy_source(impl->loop, impl->server_source);
+ 		impl->server_source = NULL;
+@@ -2008,12 +2276,28 @@ static void connection_cleanup(struct impl *impl)
+ 	}
+ 	pw_timer_queue_cancel(&impl->feedback_timer);
+ 
++	pw_properties_set(impl->headers, "Session", NULL);
++	authorization = pw_properties_get(impl->headers, "Authorization");
++	if (authorization != NULL)
++		explicit_bzero((char *)authorization, strlen(authorization));
++	pw_properties_set(impl->headers, "Authorization", NULL);
++	pw_properties_set(impl->headers, "Apple-Challenge", NULL);
++	pw_properties_set(impl->headers, "Transport", NULL);
++	pw_properties_set(impl->headers, "Range", NULL);
++	pw_properties_set(impl->headers, "RTP-Info", NULL);
++
+ 	free(impl->auth_method);
+ 	impl->auth_method = NULL;
+-	free(impl->realm);
+-	impl->realm = NULL;
+-	free(impl->nonce);
+-	impl->nonce = NULL;
++	if (impl->realm) {
++		explicit_bzero(impl->realm, strlen(impl->realm));
++		free(impl->realm);
++		impl->realm = NULL;
++	}
++	if (impl->nonce) {
++		explicit_bzero(impl->nonce, strlen(impl->nonce));
++		free(impl->nonce);
++		impl->nonce = NULL;
++	}
+ }
+ 
+ static void rtsp_disconnected(void *data)
+@@ -2021,7 +2305,9 @@ static void rtsp_disconnected(void *data)
+ 	struct impl *impl = data;
+ 	pw_log_info("disconnected");
+ 	impl->connected = false;
++	impl->connecting = false;
+ 	connection_cleanup(impl);
++	schedule_rtsp_reconnect(impl);
+ }
+ 
+ static void rtsp_error(void *data, int res)
+@@ -2029,6 +2315,36 @@ static void rtsp_error(void *data, int res)
+ 	pw_log_error("error %d", res);
+ }
+ 
++static void rtsp_reconnect_timeout(void *data)
++{
++	struct impl *impl = data;
++
++	if (impl->destroying || !impl->want_stream)
++		return;
++	if (impl->reconnect_attempts < UINT32_MAX)
++		impl->reconnect_attempts++;
++	if (rtsp_do_connect(impl) < 0)
++		schedule_rtsp_reconnect(impl);
++}
++
++static void schedule_rtsp_reconnect(struct impl *impl)
++{
++	uint32_t shift, delay;
++	int res;
++
++	if (impl->destroying || !impl->want_stream ||
++	    impl->reconnect_timer.queue != NULL)
++		return;
++	shift = SPA_MIN(impl->reconnect_attempts, 4u);
++	delay = SPA_MIN(250u << shift, RTSP_RECONNECT_MAX_MSEC);
++	res = pw_timer_queue_add(impl->timer_queue, &impl->reconnect_timer,
++			NULL, delay * SPA_NSEC_PER_MSEC,
++			rtsp_reconnect_timeout, impl);
++	if (res < 0)
++		pw_log_warn("can't schedule RAOP reconnect: %s",
++				spa_strerror(res));
++}
++
+ static void rtsp_message(void *data, int status,
+ 			const struct spa_dict *headers)
+ {
+@@ -2065,46 +2381,67 @@ static void stream_report_error(void *data, const char *error)
+ static int rtsp_do_connect(struct impl *impl)
+ {
+ 	const char *hostname, *port;
++	uint32_t port_num;
+ 	uint32_t session_id;
+ 	int res;
+ 
+-	if (impl->connected) {
+-		if (!impl->ready)
+-			return rtsp_do_announce(impl);
++	if (!impl->want_stream || impl->tearing_down ||
++	    impl->handshaking || impl->connecting)
+ 		return 0;
++
++	if (impl->connected) {
++		return impl->ready ? 0 : rtsp_begin_handshake(impl);
+ 	}
+ 
++	pw_timer_queue_cancel(&impl->reconnect_timer);
+ 	hostname = pw_properties_get(impl->props, "raop.ip");
+ 	port = pw_properties_get(impl->props, "raop.port");
+ 	if (hostname == NULL || port == NULL)
+ 		return -EINVAL;
++	if (!spa_atou32(port, &port_num, 10) ||
++	    port_num == 0 || port_num > UINT16_MAX)
++		return -EINVAL;
+ 
+ 	if ((res = pw_getrandom(&session_id, sizeof(session_id), 0)) < 0)
+ 		return res;
+ 
+ 	spa_scnprintf(impl->session_id, sizeof(impl->session_id), "%u", session_id);
+ 
+-	return pw_rtsp_client_connect(impl->rtsp, hostname, atoi(port), impl->session_id);
++	res = pw_rtsp_client_connect(impl->rtsp, hostname,
++			(uint16_t)port_num, impl->session_id);
++	if (res < 0) {
++		schedule_rtsp_reconnect(impl);
++		return res;
++	}
++	impl->connecting = true;
++	arm_rtsp_session_timeout(impl);
++	return 0;
+ }
+ 
+ static int rtsp_teardown_reply(void *data, int status, const struct spa_dict *headers, const struct pw_array *content)
+ {
+ 	struct impl *impl = data;
+ 	const char *str;
++	bool close_connection = false;
+ 
+ 	pw_log_info("teardown status: %d", status);
+ 
++	if ((str = spa_dict_lookup(headers, "Connection")) != NULL)
++		close_connection = spa_streq(str, "close");
++
+ 	connection_cleanup(impl);
+ 
+-	if ((str = spa_dict_lookup(headers, "Connection")) != NULL) {
+-		if (spa_streq(str, "close"))
+-			pw_rtsp_client_disconnect(impl->rtsp);
+-	}
++	if (close_connection)
++		pw_rtsp_client_disconnect(impl->rtsp);
++
++	schedule_rtsp_reconnect(impl);
+ 	return 0;
+ }
+ 
+ static int rtsp_do_teardown(struct impl *impl)
+ {
++	int res;
++
+ 	impl->recording = false;
+ 	impl->volume_prepare_started = false;
+ 	impl->volume_continuation = VOLUME_CONTINUE_NONE;
+@@ -2114,10 +2451,26 @@ static int rtsp_do_teardown(struct impl *impl)
+ 	pw_timer_queue_cancel(&impl->volume_query_timer);
+ 	pw_timer_queue_cancel(&impl->volume_set_timer);
+ 
+-	if (!impl->ready)
++	/* During OPTIONS/ANNOUNCE/SETUP, keep DACP headers and advertisement
++	 * alive until the receiver-side session exists. The SETUP completion
++	 * path will observe want_stream=false and tear it down immediately. */
++	if (!impl->ready || impl->tearing_down)
+ 		return 0;
+ 
+-	return rtsp_send(impl, "TEARDOWN", NULL, NULL, rtsp_teardown_reply);
++	dacp_session_stop(impl);
++	res = rtsp_send(impl, "TEARDOWN", NULL, NULL,
++			rtsp_teardown_reply);
++	if (res >= 0) {
++		impl->tearing_down = true;
++		arm_rtsp_session_timeout(impl);
++	} else {
++		pw_rtsp_client_disconnect(impl->rtsp);
++		impl->connected = false;
++		impl->connecting = false;
++		connection_cleanup(impl);
++		schedule_rtsp_reconnect(impl);
++	}
++	return res;
+ }
+ 
+ static void stream_props_changed(struct impl *impl, uint32_t id, const struct spa_pod *param)
+@@ -2250,10 +2603,14 @@ static void stream_param_changed(void *data, uint32_t id, const struct spa_pod *
+ 
+ 	switch (id) {
+ 	case SPA_PARAM_Format:
+-		if (param == NULL)
++		impl->want_stream = param != NULL;
++		if (!impl->want_stream) {
++			pw_timer_queue_cancel(&impl->reconnect_timer);
++			impl->reconnect_attempts = 0;
+ 			rtsp_do_teardown(impl);
+-		else
++		} else {
+ 			rtsp_do_connect(impl);
++		}
+ 		break;
+ 	case SPA_PARAM_Props:
+ 		if (param != NULL)
+@@ -2302,6 +2659,12 @@ static const struct pw_proxy_events core_proxy_events = {
+ 
+ static void impl_destroy(struct impl *impl)
+ {
++	impl->destroying = true;
++	impl->want_stream = false;
++	pw_timer_queue_cancel(&impl->session_timeout_timer);
++	pw_timer_queue_cancel(&impl->reconnect_timer);
++	dacp_session_stop(impl);
++
+ 	pw_timer_queue_cancel(&impl->volume_query_timer);
+ 	pw_timer_queue_cancel(&impl->volume_set_timer);
+ 	pw_timer_queue_cancel(&impl->feedback_timer);
+@@ -2313,13 +2676,21 @@ static void impl_destroy(struct impl *impl)
+ 	if (impl->rtsp)
+ 		pw_rtsp_client_destroy(impl->rtsp);
+ 
++#ifdef HAVE_AVAHI
++	if (impl->zeroconf)
++		pw_zeroconf_destroy(impl->zeroconf);
++#endif
++
+ 	if (impl->ctx)
+ 		EVP_CIPHER_CTX_free(impl->ctx);
+ 
+ 	pw_properties_free(impl->headers);
+ 	pw_properties_free(impl->stream_props);
+ 	pw_properties_free(impl->props);
+-	free(impl->password);
++	if (impl->password) {
++		explicit_bzero(impl->password, strlen(impl->password));
++		free(impl->password);
++	}
+ 	free(impl);
+ }
+ 
+@@ -2351,6 +2722,7 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 	struct pw_properties *props = NULL;
+ 	struct impl *impl;
+ 	const char *str, *name, *hostname, *ip, *port;
++	uint32_t dacp_id[2];
+ 	uint8_t initial_buffer[4096];
+ 	struct spa_pod_builder initial_builder;
+ 	const struct spa_pod *initial_params[1];
+@@ -2395,6 +2767,18 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 	impl->context = context;
+ 	impl->loop = pw_context_get_main_loop(context);
+ 	impl->timer_queue = pw_context_get_timer_queue(context);
++	impl->dacp_enabled = pw_properties_get_bool(props,
++			"raop.dacp.enabled", true);
++
++	if ((res = pw_getrandom(dacp_id, sizeof(dacp_id), 0)) < 0) {
++		pw_log_error("error generating DACP identity: %s",
++				spa_strerror(res));
++		goto error;
++	}
++	if (dacp_id[0] == 0 && dacp_id[1] == 0)
++		dacp_id[1] = 1;
++	spa_scnprintf(impl->dacp_id, sizeof(impl->dacp_id),
++			"%08X%08X", dacp_id[0], dacp_id[1]);
+ 
+ 	ip = pw_properties_get(props, "raop.ip");
+ 	port = pw_properties_get(props, "raop.port");
+@@ -2581,6 +2965,17 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 			&impl->core_listener,
+ 			&core_events, impl);
+ 
++#ifdef HAVE_AVAHI
++	if (impl->dacp_enabled &&
++	    (impl->zeroconf = pw_zeroconf_new(context, NULL)) == NULL)
++		pw_log_warn("can't create Zeroconf client for DACP callbacks");
++#else
++	if (impl->dacp_enabled) {
++		pw_log_warn("DACP callbacks requested but Zeroconf support is unavailable");
++		impl->dacp_enabled = false;
++	}
++#endif
++
+ 	if (impl->volume_control == RAOP_VOLUME_EXTERNAL) {
+ 		float initial, channel, volumes[MAX_CHANNELS], soft_volumes[MAX_CHANNELS];
+ 		bool mute;
+diff --git a/src/modules/module-raop/dacp-server.c b/src/modules/module-raop/dacp-server.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..869c0d53fe95c2ab70fdb13d5c79ffd580d739fb
+--- /dev/null
++++ b/src/modules/module-raop/dacp-server.c
+@@ -0,0 +1,704 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 PipeWire authors */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <ctype.h>
++#include <errno.h>
++#include <math.h>
++#include <netdb.h>
++#include <stdbool.h>
++#include <stdint.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <strings.h>
++#include <sys/socket.h>
++#include <time.h>
++#include <unistd.h>
++
++#include <openssl/crypto.h>
++
++#include <spa/utils/cleanup.h>
++#include <spa/utils/list.h>
++#include <spa/utils/string.h>
++
++#include <pipewire/log.h>
++
++#include "network-utils.h"
++
++#include "dacp-server.h"
++
++#define MAX_CLIENTS		8u
++#define MAX_REQUEST_SIZE	4096u
++#define CLIENT_TIMEOUT_SEC	5u
++
++PW_LOG_TOPIC_STATIC(dacp_log_topic, "mod.raop-dacp");
++#define PW_LOG_TOPIC_DEFAULT dacp_log_topic
++
++struct pw_raop_dacp_server;
++
++struct client {
++	struct pw_raop_dacp_server *server;
++	struct spa_list link;
++	struct spa_source *source;
++	uint64_t deadline;
++	bool have_command;
++	struct pw_raop_dacp_request command;
++	size_t request_size;
++	size_t response_size;
++	size_t response_offset;
++	char request[MAX_REQUEST_SIZE + 1];
++	char response[192];
++};
++
++struct pw_raop_dacp_server {
++	struct pw_loop *loop;
++	struct spa_source *source;
++	struct spa_source *timer;
++	struct spa_list clients;
++	uint32_t n_clients;
++	uint16_t port;
++	struct sockaddr_storage peer_addr;
++	char *active_remote;
++	pw_raop_dacp_command_func_t command;
++	pw_raop_dacp_error_func_t error;
++	void *data;
++};
++
++static struct spa_source *add_owned_io(struct pw_loop *loop, int fd,
++		uint32_t mask, spa_source_io_func_t func, void *data)
++{
++	struct spa_source *source;
++	int saved_errno;
++
++	source = pw_loop_add_io(loop, fd, mask, true, func, data);
++	if (source != NULL)
++		return source;
++	saved_errno = errno;
++	close(fd);
++	errno = saved_errno;
++	return NULL;
++}
++
++static const char *find_crlf(const char *data, size_t size)
++{
++	size_t i;
++
++	for (i = 0; i + 1 < size; i++) {
++		if (data[i] == '\r' && data[i + 1] == '\n')
++			return data + i;
++	}
++	return NULL;
++}
++
++static uint64_t get_monotonic_time(void)
++{
++	struct timespec now;
++
++	if (clock_gettime(CLOCK_MONOTONIC, &now) < 0)
++		return 0;
++	return (uint64_t)now.tv_sec * SPA_NSEC_PER_SEC + now.tv_nsec;
++}
++
++static bool token_equal(const char *received, size_t received_size,
++		const char *expected)
++{
++	const size_t expected_size = strlen(expected);
++
++	if (received_size != expected_size)
++		return false;
++	return CRYPTO_memcmp(received, expected, expected_size) == 0;
++}
++
++static int parse_command(const char *target, size_t target_size,
++		struct pw_raop_dacp_request *request)
++{
++	static const char prefix[] = "/ctrl-int/1/";
++	const char *name, *query;
++	size_t name_size;
++
++	if (target_size < sizeof(prefix) - 1 ||
++	    memcmp(target, prefix, sizeof(prefix) - 1) != 0)
++		return -ENOENT;
++
++	if (target_size >= sizeof(request->target))
++		return -E2BIG;
++	memcpy(request->target, target, target_size);
++	request->target[target_size] = '\0';
++
++	name = target + sizeof(prefix) - 1;
++	name_size = target_size - (sizeof(prefix) - 1);
++	query = memchr(name, '?', name_size);
++	if (query != NULL)
++		name_size = (size_t)(query - name);
++
++#define MATCH_COMMAND(value, result)					\
++	if (query == NULL && name_size == sizeof(value) - 1 &&		\
++	    memcmp(name, value, sizeof(value) - 1) == 0) {		\
++		request->command = result;				\
++		return 0;						\
++	}
++	MATCH_COMMAND("play", PW_RAOP_DACP_COMMAND_PLAY)
++	MATCH_COMMAND("pause", PW_RAOP_DACP_COMMAND_PAUSE)
++	MATCH_COMMAND("playpause", PW_RAOP_DACP_COMMAND_PLAY_PAUSE)
++	MATCH_COMMAND("playresume", PW_RAOP_DACP_COMMAND_PLAY_RESUME)
++	MATCH_COMMAND("stop", PW_RAOP_DACP_COMMAND_STOP)
++	MATCH_COMMAND("nextitem", PW_RAOP_DACP_COMMAND_NEXT)
++	MATCH_COMMAND("previtem", PW_RAOP_DACP_COMMAND_PREVIOUS)
++	MATCH_COMMAND("volumeup", PW_RAOP_DACP_COMMAND_VOLUME_UP)
++	MATCH_COMMAND("volumedown", PW_RAOP_DACP_COMMAND_VOLUME_DOWN)
++	MATCH_COMMAND("mutetoggle", PW_RAOP_DACP_COMMAND_MUTE_TOGGLE)
++#undef MATCH_COMMAND
++
++	if (name_size == sizeof("setproperty") - 1 &&
++	    memcmp(name, "setproperty", name_size) == 0 && query != NULL) {
++		static const char *const keys[] = {
++			"dmcp.volume=",
++			"dmcp.device-volume=",
++		};
++		const char *value = NULL, *end = target + target_size, *p;
++		char number_string[33];
++		bool have_digit = false, have_dot = false;
++		double number;
++		size_t i;
++
++		for (i = 0; i < SPA_N_ELEMENTS(keys); i++) {
++			const size_t key_size = strlen(keys[i]);
++
++			if ((size_t)(end - (query + 1)) > key_size &&
++			    memcmp(query + 1, keys[i], key_size) == 0) {
++				value = query + 1 + key_size;
++				break;
++			}
++		}
++		if (value == NULL || (size_t)(end - value) > 32)
++			return -ENOENT;
++		for (p = value; p < end; p++) {
++			if (isdigit((unsigned char)*p)) {
++				have_digit = true;
++			} else if (*p == '.' && !have_dot) {
++				have_dot = true;
++			} else if ((*p == '-' || *p == '+') && p == value) {
++				continue;
++			} else {
++				return -EINVAL;
++			}
++		}
++		if (!have_digit)
++			return -EINVAL;
++		memcpy(number_string, value, (size_t)(end - value));
++		number_string[end - value] = '\0';
++		if (!spa_atod(number_string, &number) || !isfinite(number))
++			return -EINVAL;
++		if ((i == 0 && (number < 0.0 || number > 100.0)) ||
++		    (i == 1 && !((number >= -30.0 && number <= 0.0) ||
++				 number == -144.0)))
++			return -ERANGE;
++		request->command = PW_RAOP_DACP_COMMAND_SET_PROPERTY;
++		return 0;
++	}
++
++	return -ENOENT;
++}
++
++int pw_raop_dacp_parse_request(const void *data, size_t size,
++		const char *active_remote,
++		struct pw_raop_dacp_request *request)
++{
++	const char *input = data, *end, *line_end, *cursor;
++	const char *method_end, *target, *target_end, *version;
++	const char *token = NULL;
++	size_t token_size = 0;
++	bool have_token = false, have_end = false;
++
++	if (input == NULL || active_remote == NULL || active_remote[0] == '\0' ||
++	    request == NULL || size == 0 || size > MAX_REQUEST_SIZE)
++		return -EINVAL;
++	if (memchr(input, '\0', size) != NULL)
++		return -EINVAL;
++
++	end = input + size;
++	line_end = find_crlf(input, size);
++	if (line_end == NULL)
++		return -EINVAL;
++
++	method_end = memchr(input, ' ', (size_t)(line_end - input));
++	if (method_end == NULL)
++		return -EINVAL;
++	if ((size_t)(method_end - input) != 3 || memcmp(input, "GET", 3) != 0)
++		return -EPROTONOSUPPORT;
++
++	target = method_end + 1;
++	target_end = memchr(target, ' ', (size_t)(line_end - target));
++	if (target_end == NULL || target_end == target)
++		return -EINVAL;
++	for (cursor = target; cursor < target_end; cursor++) {
++		const unsigned char c = (unsigned char)*cursor;
++		if (c <= 0x20 || c == 0x7f)
++			return -EINVAL;
++	}
++	version = target_end + 1;
++	if (!((size_t)(line_end - version) == 8 &&
++	      (memcmp(version, "HTTP/1.1", 8) == 0 ||
++	       memcmp(version, "HTTP/1.0", 8) == 0)))
++		return -EINVAL;
++
++	cursor = line_end + 2;
++	while (cursor < end) {
++		const char *colon, *value, *value_end;
++
++		line_end = find_crlf(cursor, (size_t)(end - cursor));
++		if (line_end == NULL)
++			return -EINVAL;
++		if (line_end == cursor) {
++			have_end = true;
++			break;
++		}
++
++		colon = memchr(cursor, ':', (size_t)(line_end - cursor));
++		if (colon == NULL || colon == cursor)
++			return -EINVAL;
++		value = colon + 1;
++		while (value < line_end && (*value == ' ' || *value == '\t'))
++			value++;
++		value_end = line_end;
++		while (value_end > value &&
++		       (value_end[-1] == ' ' || value_end[-1] == '\t'))
++			value_end--;
++
++		if ((size_t)(colon - cursor) == strlen("Active-Remote") &&
++		    strncasecmp(cursor, "Active-Remote",
++			    strlen("Active-Remote")) == 0) {
++			if (have_token)
++				return -EINVAL;
++			token = value;
++			token_size = (size_t)(value_end - value);
++			have_token = true;
++		}
++		cursor = line_end + 2;
++	}
++	if (!have_end)
++		return -EINVAL;
++	if (!have_token || !token_equal(token, token_size, active_remote))
++		return -EACCES;
++
++	return parse_command(target, (size_t)(target_end - target), request);
++}
++
++const char *pw_raop_dacp_command_as_string(enum pw_raop_dacp_command command)
++{
++	switch (command) {
++	case PW_RAOP_DACP_COMMAND_PLAY:
++		return "play";
++	case PW_RAOP_DACP_COMMAND_PAUSE:
++		return "pause";
++	case PW_RAOP_DACP_COMMAND_PLAY_PAUSE:
++		return "play-pause";
++	case PW_RAOP_DACP_COMMAND_PLAY_RESUME:
++		return "play-resume";
++	case PW_RAOP_DACP_COMMAND_STOP:
++		return "stop";
++	case PW_RAOP_DACP_COMMAND_NEXT:
++		return "next";
++	case PW_RAOP_DACP_COMMAND_PREVIOUS:
++		return "previous";
++	case PW_RAOP_DACP_COMMAND_VOLUME_UP:
++		return "volume-up";
++	case PW_RAOP_DACP_COMMAND_VOLUME_DOWN:
++		return "volume-down";
++	case PW_RAOP_DACP_COMMAND_MUTE_TOGGLE:
++		return "mute-toggle";
++	case PW_RAOP_DACP_COMMAND_SET_PROPERTY:
++		return "set-property";
++	default:
++		return "unknown";
++	}
++}
++
++static void client_free(struct client *client)
++{
++	struct pw_raop_dacp_server *server = client->server;
++
++	if (client->source != NULL)
++		pw_loop_destroy_source(server->loop, client->source);
++	spa_list_remove(&client->link);
++	server->n_clients--;
++	if (server->n_clients == 0 && server->timer != NULL)
++		pw_loop_update_timer(server->loop, server->timer,
++				NULL, NULL, false);
++	explicit_bzero(client->request, sizeof(client->request));
++	free(client);
++}
++
++static void client_finish(struct client *client)
++{
++	struct pw_raop_dacp_server *server = client->server;
++	struct pw_raop_dacp_request request = client->command;
++	const bool have_command = client->have_command;
++
++	client_free(client);
++
++	/* The callback may synchronously destroy the server. Keep this as the
++	 * final operation and do not touch server afterwards. */
++	if (have_command && server->command != NULL)
++		server->command(server->data, &request);
++}
++
++static void client_queue_response(struct client *client, unsigned int status,
++		const char *reason)
++{
++	int size;
++
++	size = snprintf(client->response, sizeof(client->response),
++			"HTTP/1.1 %u %s\r\n"
++			"Content-Length: 0\r\n"
++			"Connection: close\r\n"
++			"\r\n",
++			status, reason);
++	client->response_size = SPA_MIN((size_t)SPA_MAX(size, 0),
++			sizeof(client->response));
++	client->response_offset = 0;
++	pw_loop_update_io(client->server->loop, client->source,
++			SPA_IO_OUT | SPA_IO_ERR | SPA_IO_HUP);
++}
++
++static void client_handle_request(struct client *client)
++{
++	struct pw_raop_dacp_server *server = client->server;
++	struct pw_raop_dacp_request request;
++	int res;
++
++	res = pw_raop_dacp_parse_request(client->request, client->request_size,
++			server->active_remote, &request);
++	if (res == 0) {
++		pw_log_info("received authenticated DACP command %s",
++				pw_raop_dacp_command_as_string(request.command));
++		client->command = request;
++		client->have_command = true;
++		client_queue_response(client, 204, "No Content");
++	} else if (res == -EACCES) {
++		pw_log_warn("rejected DACP request with invalid credentials");
++		client_queue_response(client, 403, "Forbidden");
++	} else if (res == -ENOENT) {
++		client_queue_response(client, 404, "Not Found");
++	} else if (res == -EPROTONOSUPPORT) {
++		client_queue_response(client, 405, "Method Not Allowed");
++	} else if (res == -E2BIG) {
++		client_queue_response(client, 431, "Request Header Fields Too Large");
++	} else {
++		client_queue_response(client, 400, "Bad Request");
++	}
++}
++
++static void on_client_io(void *data, int fd, uint32_t mask)
++{
++	struct client *client = data;
++	ssize_t size;
++
++	if (mask & SPA_IO_ERR)
++		goto close;
++
++	if ((mask & (SPA_IO_IN | SPA_IO_HUP)) &&
++	    client->response_size == 0) {
++		while (client->request_size < MAX_REQUEST_SIZE) {
++			size = recv(fd, client->request + client->request_size,
++					MAX_REQUEST_SIZE - client->request_size, 0);
++			if (size > 0) {
++				client->request_size += (size_t)size;
++				client->request[client->request_size] = '\0';
++				if (strstr(client->request, "\r\n\r\n") != NULL) {
++					client_handle_request(client);
++					break;
++				}
++				continue;
++			}
++			if (size == 0)
++				goto close;
++			if (errno == EAGAIN || errno == EWOULDBLOCK)
++				break;
++			goto close;
++		}
++		if (client->request_size == MAX_REQUEST_SIZE &&
++		    client->response_size == 0)
++			client_queue_response(client, 431,
++					"Request Header Fields Too Large");
++	}
++	if ((mask & (SPA_IO_OUT | SPA_IO_HUP)) &&
++	    client->response_size > 0) {
++		size = send(fd, client->response + client->response_offset,
++				client->response_size - client->response_offset,
++				MSG_NOSIGNAL);
++		if (size > 0) {
++			client->response_offset += (size_t)size;
++			if (client->response_offset == client->response_size)
++				goto finish;
++		} else if (size < 0 && errno != EAGAIN && errno != EWOULDBLOCK) {
++			goto finish;
++		}
++	}
++	return;
++
++finish:
++	client_finish(client);
++	return;
++close:
++	if (client->have_command)
++		client_finish(client);
++	else
++		client_free(client);
++}
++
++static void on_connect(void *data, int fd, uint32_t mask)
++{
++	struct pw_raop_dacp_server *server = data;
++	struct sockaddr_storage addr;
++	socklen_t addr_size;
++	int client_fd;
++
++	if (mask & (SPA_IO_ERR | SPA_IO_HUP)) {
++		pw_raop_dacp_error_func_t error = server->error;
++		void *error_data = server->data;
++
++		pw_log_error("DACP listener failed with I/O mask 0x%x", mask);
++		pw_loop_destroy_source(server->loop, server->source);
++		server->source = NULL;
++		server->port = 0;
++		if (error != NULL)
++			error(error_data, -EIO);
++		return;
++	}
++
++	for (;;) {
++		struct client *client;
++
++		addr_size = sizeof(addr);
++		client_fd = accept4(fd, (struct sockaddr *)&addr, &addr_size,
++				SOCK_NONBLOCK | SOCK_CLOEXEC);
++		if (client_fd < 0) {
++			pw_raop_dacp_error_func_t error;
++			void *error_data;
++			int res;
++
++			if (errno == EINTR)
++				continue;
++			if (errno == EAGAIN || errno == EWOULDBLOCK)
++				return;
++
++			res = -errno;
++			pw_log_error("DACP accept failed: %m");
++			error = server->error;
++			error_data = server->data;
++			pw_loop_destroy_source(server->loop, server->source);
++			server->source = NULL;
++			server->port = 0;
++			if (error != NULL)
++				error(error_data, res);
++			return;
++		}
++		if (server->n_clients >= MAX_CLIENTS ||
++		    !pw_net_are_addresses_equal(&server->peer_addr, &addr, false)) {
++			close(client_fd);
++			continue;
++		}
++		client = calloc(1, sizeof(*client));
++		if (client == NULL) {
++			close(client_fd);
++			continue;
++		}
++		client->server = server;
++		client->deadline = get_monotonic_time() +
++				CLIENT_TIMEOUT_SEC * SPA_NSEC_PER_SEC;
++		spa_list_append(&server->clients, &client->link);
++		server->n_clients++;
++		if (server->n_clients == 1) {
++			struct timespec value = {
++				.tv_sec = 1,
++				.tv_nsec = 0,
++			};
++			struct timespec interval = value;
++
++			pw_loop_update_timer(server->loop, server->timer,
++					&value, &interval, false);
++		}
++		client->source = add_owned_io(server->loop, client_fd,
++				SPA_IO_IN | SPA_IO_ERR | SPA_IO_HUP,
++				on_client_io, client);
++		if (client->source == NULL) {
++			client->source = NULL;
++			client_free(client);
++		}
++	}
++}
++
++static void on_timeout(void *data, uint64_t expirations)
++{
++	struct pw_raop_dacp_server *server = data;
++	struct client *client, *tmp;
++	const uint64_t now = get_monotonic_time();
++
++	spa_list_for_each_safe(client, tmp, &server->clients, link) {
++		/* A command is committed only after its HTTP response has been
++		 * written, or when the authenticated peer closes the connection.
++		 * A timeout means the exchange never completed; discard it instead
++		 * of executing a potentially stale command several seconds later. */
++		if (client->deadline <= now)
++			client_free(client);
++	}
++}
++
++static bool address_is_valid(const struct sockaddr *addr, socklen_t size)
++{
++	if (addr == NULL)
++		return false;
++	if (addr->sa_family == AF_INET)
++		return size == sizeof(struct sockaddr_in);
++	if (addr->sa_family == AF_INET6)
++		return size == sizeof(struct sockaddr_in6);
++	return false;
++}
++
++static int make_server_socket(const struct sockaddr *bind_addr,
++		socklen_t bind_addr_size, uint16_t *port)
++{
++	struct sockaddr_storage addr;
++	socklen_t addr_size;
++	int fd, enabled = 1, res;
++
++	if (bind_addr_size > sizeof(addr) ||
++	    !address_is_valid(bind_addr, bind_addr_size))
++		return -EINVAL;
++
++	spa_zero(addr);
++	memcpy(&addr, bind_addr, bind_addr_size);
++	if (addr.ss_family == AF_INET)
++		((struct sockaddr_in *)&addr)->sin_port = 0;
++	else
++		((struct sockaddr_in6 *)&addr)->sin6_port = 0;
++
++	fd = socket(addr.ss_family,
++			SOCK_STREAM | SOCK_CLOEXEC | SOCK_NONBLOCK, 0);
++	if (fd < 0)
++		return -errno;
++	if (setsockopt(fd, SOL_SOCKET, SO_REUSEADDR,
++			&enabled, sizeof(enabled)) < 0)
++		pw_log_warn("DACP SO_REUSEADDR failed: %m");
++
++	if (bind(fd, (struct sockaddr *)&addr, bind_addr_size) < 0 ||
++	    listen(fd, MAX_CLIENTS) < 0) {
++		int res = -errno;
++		close(fd);
++		return res;
++	}
++	addr_size = sizeof(addr);
++	if (getsockname(fd, (struct sockaddr *)&addr, &addr_size) < 0) {
++		int res = -errno;
++		close(fd);
++		return res;
++	}
++	if ((res = pw_net_get_ip(&addr, NULL, 0, NULL, port)) < 0) {
++		close(fd);
++		return res;
++	}
++	return fd;
++}
++
++struct pw_raop_dacp_server *pw_raop_dacp_server_new(
++		struct pw_loop *loop,
++		const struct sockaddr *bind_addr,
++		socklen_t bind_addr_size,
++		const struct sockaddr *peer_addr,
++		socklen_t peer_addr_size,
++		const char *active_remote,
++		pw_raop_dacp_command_func_t command,
++		pw_raop_dacp_error_func_t error,
++		void *data)
++{
++	struct pw_raop_dacp_server *server;
++	char bind_ip[INET6_ADDRSTRLEN + IF_NAMESIZE + 1];
++	char peer_ip[INET6_ADDRSTRLEN + IF_NAMESIZE + 1];
++	int fd, res;
++
++	if (loop == NULL ||
++	    bind_addr_size > sizeof(struct sockaddr_storage) ||
++	    peer_addr_size > sizeof(struct sockaddr_storage) ||
++	    !address_is_valid(bind_addr, bind_addr_size) ||
++	    !address_is_valid(peer_addr, peer_addr_size) ||
++	    active_remote == NULL || active_remote[0] == '\0') {
++		errno = EINVAL;
++		return NULL;
++	}
++	server = calloc(1, sizeof(*server));
++	if (server == NULL)
++		return NULL;
++	server->loop = loop;
++	server->command = command;
++	server->error = error;
++	server->data = data;
++	spa_list_init(&server->clients);
++
++	memcpy(&server->peer_addr, peer_addr, peer_addr_size);
++	if ((server->active_remote = strdup(active_remote)) == NULL) {
++		res = -errno;
++		goto error;
++	}
++	if ((fd = make_server_socket(bind_addr, bind_addr_size,
++			&server->port)) < 0) {
++		res = fd;
++		goto error;
++	}
++	server->source = add_owned_io(loop, fd,
++			SPA_IO_IN | SPA_IO_ERR | SPA_IO_HUP,
++			on_connect, server);
++	if (server->source == NULL) {
++		res = -errno;
++		goto error;
++	}
++	server->timer = pw_loop_add_timer(loop, on_timeout, server);
++	if (server->timer == NULL) {
++		res = -errno;
++		goto error;
++	}
++
++	if (pw_net_get_ip((struct sockaddr_storage *)bind_addr,
++			bind_ip, sizeof(bind_ip), NULL, NULL) < 0)
++		spa_scnprintf(bind_ip, sizeof(bind_ip), "<unknown>");
++	if (pw_net_get_ip(&server->peer_addr,
++			peer_ip, sizeof(peer_ip), NULL, NULL) < 0)
++		spa_scnprintf(peer_ip, sizeof(peer_ip), "<unknown>");
++	pw_log_info("DACP server listening on %s port %u for RAOP peer %s",
++			bind_ip, server->port, peer_ip);
++	return server;
++
++error:
++	pw_raop_dacp_server_destroy(server);
++	errno = -res;
++	return NULL;
++}
++
++void pw_raop_dacp_server_destroy(struct pw_raop_dacp_server *server)
++{
++	struct client *client;
++
++	if (server == NULL)
++		return;
++	spa_list_consume(client, &server->clients, link)
++		client_free(client);
++	if (server->timer != NULL)
++		pw_loop_destroy_source(server->loop, server->timer);
++	if (server->source != NULL)
++		pw_loop_destroy_source(server->loop, server->source);
++	if (server->active_remote != NULL) {
++		explicit_bzero(server->active_remote,
++				strlen(server->active_remote));
++		free(server->active_remote);
++	}
++	free(server);
++}
++
++uint16_t pw_raop_dacp_server_get_port(
++		const struct pw_raop_dacp_server *server)
++{
++	return server == NULL ? 0 : server->port;
++}
+diff --git a/src/modules/module-raop/dacp-server.h b/src/modules/module-raop/dacp-server.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..aa80daa14858b2388c9d7e3f56f4c0c9a9bdd8a8
+--- /dev/null
++++ b/src/modules/module-raop/dacp-server.h
+@@ -0,0 +1,69 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 PipeWire authors */
++/* SPDX-License-Identifier: MIT */
++
++#ifndef PIPEWIRE_RAOP_DACP_SERVER_H
++#define PIPEWIRE_RAOP_DACP_SERVER_H
++
++#include <stddef.h>
++#include <stdint.h>
++#include <sys/socket.h>
++
++#include <pipewire/loop.h>
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++enum pw_raop_dacp_command {
++	PW_RAOP_DACP_COMMAND_PLAY,
++	PW_RAOP_DACP_COMMAND_PAUSE,
++	PW_RAOP_DACP_COMMAND_PLAY_PAUSE,
++	PW_RAOP_DACP_COMMAND_PLAY_RESUME,
++	PW_RAOP_DACP_COMMAND_STOP,
++	PW_RAOP_DACP_COMMAND_NEXT,
++	PW_RAOP_DACP_COMMAND_PREVIOUS,
++	PW_RAOP_DACP_COMMAND_VOLUME_UP,
++	PW_RAOP_DACP_COMMAND_VOLUME_DOWN,
++	PW_RAOP_DACP_COMMAND_MUTE_TOGGLE,
++	PW_RAOP_DACP_COMMAND_SET_PROPERTY,
++};
++
++struct pw_raop_dacp_request {
++	enum pw_raop_dacp_command command;
++	char target[1024];
++};
++
++struct pw_raop_dacp_server;
++
++typedef void (*pw_raop_dacp_command_func_t) (
++		void *data, const struct pw_raop_dacp_request *request);
++typedef void (*pw_raop_dacp_error_func_t) (void *data, int error);
++
++int pw_raop_dacp_parse_request(const void *data, size_t size,
++		const char *active_remote,
++		struct pw_raop_dacp_request *request);
++
++const char *pw_raop_dacp_command_as_string(enum pw_raop_dacp_command command);
++
++struct pw_raop_dacp_server *pw_raop_dacp_server_new(
++		struct pw_loop *loop,
++		const struct sockaddr *bind_addr,
++		socklen_t bind_addr_size,
++		const struct sockaddr *peer_addr,
++		socklen_t peer_addr_size,
++		const char *active_remote,
++		pw_raop_dacp_command_func_t command,
++		pw_raop_dacp_error_func_t error,
++		void *data);
++
++void pw_raop_dacp_server_destroy(struct pw_raop_dacp_server *server);
++
++uint16_t pw_raop_dacp_server_get_port(
++		const struct pw_raop_dacp_server *server);
++
++#ifdef __cplusplus
++}
++#endif
++
++#endif /* PIPEWIRE_RAOP_DACP_SERVER_H */
+diff --git a/src/modules/module-raop/rtsp-client.c b/src/modules/module-raop/rtsp-client.c
+index e018bdcde685aa297f85ef6474159d45f6eb2b9a..f692c9ee29c00a61d38145d8f6a0f27006715425 100644
+--- a/src/modules/module-raop/rtsp-client.c
++++ b/src/modules/module-raop/rtsp-client.c
+@@ -76,6 +76,7 @@ static void message_free(struct message *msg)
+ {
+ 	if (msg->destroy_data != NULL)
+ 		msg->destroy_data(msg->user_data);
++	explicit_bzero(msg->data, msg->len);
+ 	free(msg);
+ }
+ 
+@@ -174,6 +175,40 @@ int pw_rtsp_client_get_local_ip(struct pw_rtsp_client *client,
+ 	return 0;
+ }
+ 
++int pw_rtsp_client_get_local_address(struct pw_rtsp_client *client,
++		struct sockaddr_storage *address, socklen_t *size)
++{
++	socklen_t required;
++
++	if (client == NULL || address == NULL || size == NULL)
++		return -EINVAL;
++	if (client->local_addr.sa.sa_family == AF_INET)
++		required = sizeof(struct sockaddr_in);
++	else if (client->local_addr.sa.sa_family == AF_INET6)
++		required = sizeof(struct sockaddr_in6);
++	else
++		return -ENOTCONN;
++	if (*size < required)
++		return -ENOSPC;
++
++	memcpy(address, &client->local_addr, required);
++	*size = required;
++	return 0;
++}
++
++int pw_rtsp_client_get_peer_address(struct pw_rtsp_client *client,
++		struct sockaddr_storage *address, socklen_t *size)
++{
++	if (client == NULL || address == NULL || size == NULL)
++		return -EINVAL;
++	if (client->source == NULL)
++		return -ENOTCONN;
++	if (getpeername(client->source->fd,
++			(struct sockaddr *)address, size) < 0)
++		return -errno;
++	return 0;
++}
++
+ static int handle_connect(struct pw_rtsp_client *client, int fd)
+ {
+ 	int res, ip_version;
+@@ -440,7 +475,8 @@ static int flush_output(struct pw_rtsp_client *client)
+ 			data = SPA_PTROFF(msg->data, msg->offset, void);
+ 			size = msg->len - msg->offset;
+ 		} else {
+-			pw_log_info("sent: %s", (char *)msg->data);
++			pw_log_debug("sent RTSP request with cseq:%" PRIu32
++					" (%zu bytes)", msg->cseq, msg->len);
+ 			spa_list_remove(&msg->link);
+ 			if (msg->reply != NULL)
+ 				spa_list_append(&client->pending, &msg->link);
+diff --git a/src/modules/module-raop/rtsp-client.h b/src/modules/module-raop/rtsp-client.h
+index d3164e08cbfadd47b33f591eebe38930e328c332..396630315e950e2658471805ed9f222441069e89 100644
+--- a/src/modules/module-raop/rtsp-client.h
++++ b/src/modules/module-raop/rtsp-client.h
+@@ -6,6 +6,7 @@
+ #define PIPEWIRE_RTSP_CLIENT_H
+ 
+ #include <stdarg.h>
++#include <sys/socket.h>
+ 
+ #include <pipewire/pipewire.h>
+ 
+@@ -51,6 +52,10 @@ int pw_rtsp_client_disconnect(struct pw_rtsp_client *client);
+ 
+ int pw_rtsp_client_get_local_ip(struct pw_rtsp_client *client,
+ 		int *version, char *ip, size_t len);
++int pw_rtsp_client_get_local_address(struct pw_rtsp_client *client,
++		struct sockaddr_storage *address, socklen_t *size);
++int pw_rtsp_client_get_peer_address(struct pw_rtsp_client *client,
++		struct sockaddr_storage *address, socklen_t *size);
+ 
+ int pw_rtsp_client_url_send(struct pw_rtsp_client *client, const char *url,
+ 		const char *cmd, const struct spa_dict *headers,
+diff --git a/src/modules/module-raop/test-dacp-server.c b/src/modules/module-raop/test-dacp-server.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..9bb7b1b206add235ebc906b259ce7295613fad97
+--- /dev/null
++++ b/src/modules/module-raop/test-dacp-server.c
+@@ -0,0 +1,674 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 PipeWire authors */
++/* SPDX-License-Identifier: MIT */
++
++#include <errno.h>
++#include <fcntl.h>
++#include <netinet/in.h>
++#include <sys/socket.h>
++#include <stdio.h>
++#include <string.h>
++#include <unistd.h>
++
++#include <spa/utils/defs.h>
++
++#include <pipewire/main-loop.h>
++#include <pipewire/pipewire.h>
++
++#include "dacp-server.h"
++
++static void test_valid_commands(void)
++{
++	static const struct {
++		const char *target;
++		enum pw_raop_dacp_command command;
++	} tests[] = {
++		{ "play", PW_RAOP_DACP_COMMAND_PLAY },
++		{ "pause", PW_RAOP_DACP_COMMAND_PAUSE },
++		{ "playpause", PW_RAOP_DACP_COMMAND_PLAY_PAUSE },
++		{ "playresume", PW_RAOP_DACP_COMMAND_PLAY_RESUME },
++		{ "stop", PW_RAOP_DACP_COMMAND_STOP },
++		{ "nextitem", PW_RAOP_DACP_COMMAND_NEXT },
++		{ "previtem", PW_RAOP_DACP_COMMAND_PREVIOUS },
++		{ "volumeup", PW_RAOP_DACP_COMMAND_VOLUME_UP },
++		{ "volumedown", PW_RAOP_DACP_COMMAND_VOLUME_DOWN },
++		{ "mutetoggle", PW_RAOP_DACP_COMMAND_MUTE_TOGGLE },
++		{ "setproperty?dmcp.volume=42",
++			PW_RAOP_DACP_COMMAND_SET_PROPERTY },
++		{ "setproperty?dmcp.device-volume=-8.7510",
++			PW_RAOP_DACP_COMMAND_SET_PROPERTY },
++		{ "setproperty?dmcp.device-volume=-144",
++			PW_RAOP_DACP_COMMAND_SET_PROPERTY },
++	};
++	const char token[] = "1234567890";
++	size_t i;
++
++	for (i = 0; i < SPA_N_ELEMENTS(tests); i++) {
++		struct pw_raop_dacp_request parsed;
++		char request[2048], expected[1024];
++		int size, res;
++
++		size = snprintf(request, sizeof(request),
++				"GET /ctrl-int/1/%s HTTP/1.1\r\n"
++				"Host: sender.local\r\n"
++				"Active-Remote: %s\r\n"
++				"\r\n",
++				tests[i].target, token);
++		spa_assert_se(size > 0 && (size_t)size < sizeof(request));
++		res = pw_raop_dacp_parse_request(request, (size_t)size,
++				token, &parsed);
++		spa_assert_se(res == 0);
++		spa_assert_se(parsed.command == tests[i].command);
++		size = snprintf(expected, sizeof(expected), "/ctrl-int/1/%s",
++				tests[i].target);
++		spa_assert_se(size > 0 && (size_t)size < sizeof(expected));
++		spa_assert_se(strcmp(parsed.target, expected) == 0);
++	}
++}
++
++static void test_authentication(void)
++{
++	static const char valid[] =
++		"GET /ctrl-int/1/playpause HTTP/1.1\r\n"
++		"active-remote:\t24680 \r\n"
++		"\r\n";
++	static const char invalid[] =
++		"GET /ctrl-int/1/playpause HTTP/1.1\r\n"
++		"Active-Remote: 24681\r\n"
++		"\r\n";
++	static const char missing[] =
++		"GET /ctrl-int/1/playpause HTTP/1.1\r\n"
++		"\r\n";
++	static const char duplicate[] =
++		"GET /ctrl-int/1/playpause HTTP/1.1\r\n"
++		"Active-Remote: 24680\r\n"
++		"Active-Remote: 24680\r\n"
++		"\r\n";
++	static const char wrong_first[] =
++		"GET /ctrl-int/1/playpause HTTP/1.1\r\n"
++		"Active-Remote: 14680\r\n\r\n";
++	static const char wrong_middle[] =
++		"GET /ctrl-int/1/playpause HTTP/1.1\r\n"
++		"Active-Remote: 24180\r\n\r\n";
++	static const char wrong_last[] =
++		"GET /ctrl-int/1/playpause HTTP/1.1\r\n"
++		"Active-Remote: 24681\r\n\r\n";
++	struct pw_raop_dacp_request parsed;
++
++	spa_assert_se(pw_raop_dacp_parse_request(valid, sizeof(valid) - 1,
++			"24680", &parsed) == 0);
++	spa_assert_se(pw_raop_dacp_parse_request(invalid, sizeof(invalid) - 1,
++			"24680", &parsed) == -EACCES);
++	spa_assert_se(pw_raop_dacp_parse_request(missing, sizeof(missing) - 1,
++			"24680", &parsed) == -EACCES);
++	spa_assert_se(pw_raop_dacp_parse_request(duplicate,
++			sizeof(duplicate) - 1, "24680", &parsed) == -EINVAL);
++	spa_assert_se(pw_raop_dacp_parse_request(wrong_first,
++			sizeof(wrong_first) - 1, "24680", &parsed) == -EACCES);
++	spa_assert_se(pw_raop_dacp_parse_request(wrong_middle,
++			sizeof(wrong_middle) - 1, "24680", &parsed) == -EACCES);
++	spa_assert_se(pw_raop_dacp_parse_request(wrong_last,
++			sizeof(wrong_last) - 1, "24680", &parsed) == -EACCES);
++}
++
++static void test_rejections(void)
++{
++	static const char post[] =
++		"POST /ctrl-int/1/playpause HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n\r\n";
++	static const char wrong_path[] =
++		"GET /ctrl-int/2/playpause HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n\r\n";
++	static const char unknown[] =
++		"GET /ctrl-int/1/deleteeverything HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n\r\n";
++	static const char nul[] = {
++		'G', 'E', 'T', ' ', '/', '\0', 'x', '\r', '\n', '\r', '\n'
++	};
++	static const char incomplete[] =
++		"GET /ctrl-int/1/playpause HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n";
++	static const char invalid_property[] =
++		"GET /ctrl-int/1/setproperty?dmcp.volume=1&evil=1 HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n\r\n";
++	static const char queried_command[] =
++		"GET /ctrl-int/1/play?anything=1 HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n\r\n";
++	static const char high_volume[] =
++		"GET /ctrl-int/1/setproperty?dmcp.volume=100.1 HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n\r\n";
++	static const char high_device_volume[] =
++		"GET /ctrl-int/1/setproperty?dmcp.device-volume=0.1 HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n\r\n";
++	static const char low_device_volume[] =
++		"GET /ctrl-int/1/setproperty?dmcp.device-volume=-30.1 HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n\r\n";
++	static const char below_mute_device_volume[] =
++		"GET /ctrl-int/1/setproperty?dmcp.device-volume=-144.1 HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n\r\n";
++	struct pw_raop_dacp_request parsed;
++
++	spa_assert_se(pw_raop_dacp_parse_request(post, sizeof(post) - 1,
++			"1", &parsed) == -EPROTONOSUPPORT);
++	spa_assert_se(pw_raop_dacp_parse_request(wrong_path,
++			sizeof(wrong_path) - 1, "1", &parsed) == -ENOENT);
++	spa_assert_se(pw_raop_dacp_parse_request(unknown, sizeof(unknown) - 1,
++			"1", &parsed) == -ENOENT);
++	spa_assert_se(pw_raop_dacp_parse_request(nul, sizeof(nul),
++			"1", &parsed) == -EINVAL);
++	spa_assert_se(pw_raop_dacp_parse_request(incomplete,
++			sizeof(incomplete) - 1, "1", &parsed) == -EINVAL);
++	spa_assert_se(pw_raop_dacp_parse_request(invalid_property,
++			sizeof(invalid_property) - 1, "1", &parsed) == -EINVAL);
++	spa_assert_se(pw_raop_dacp_parse_request(queried_command,
++			sizeof(queried_command) - 1, "1", &parsed) == -ENOENT);
++	spa_assert_se(pw_raop_dacp_parse_request(high_volume,
++			sizeof(high_volume) - 1, "1", &parsed) == -ERANGE);
++	spa_assert_se(pw_raop_dacp_parse_request(high_device_volume,
++			sizeof(high_device_volume) - 1, "1", &parsed) == -ERANGE);
++	spa_assert_se(pw_raop_dacp_parse_request(low_device_volume,
++			sizeof(low_device_volume) - 1, "1", &parsed) == -ERANGE);
++	spa_assert_se(pw_raop_dacp_parse_request(below_mute_device_volume,
++			sizeof(below_mute_device_volume) - 1,
++			"1", &parsed) == -ERANGE);
++}
++
++static void test_size_boundaries(void)
++{
++	static const char method[] = "GET ";
++	static const char target_prefix[] = "/ctrl-int/1/";
++	static const char request_suffix[] =
++		" HTTP/1.1\r\nActive-Remote: 1\r\n\r\n";
++	static const char padded_prefix[] =
++		"GET /ctrl-int/1/play HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n"
++		"X-Padding: ";
++	static const char padded_suffix[] = "\r\n\r\n";
++	struct pw_raop_dacp_request parsed;
++	char target_request[1200];
++	char padded_request[4097];
++	size_t target_size, offset;
++
++	target_size = 1023;
++	offset = sizeof(method) - 1;
++	memcpy(target_request, method, offset);
++	memcpy(target_request + offset, target_prefix,
++			sizeof(target_prefix) - 1);
++	memset(target_request + offset + sizeof(target_prefix) - 1, 'a',
++			target_size - (sizeof(target_prefix) - 1));
++	memcpy(target_request + offset + target_size, request_suffix,
++			sizeof(request_suffix) - 1);
++	spa_assert_se(pw_raop_dacp_parse_request(target_request,
++			offset + target_size + sizeof(request_suffix) - 1,
++			"1", &parsed) == -ENOENT);
++
++	target_size = 1024;
++	memset(target_request + offset + sizeof(target_prefix) - 1, 'a',
++			target_size - (sizeof(target_prefix) - 1));
++	memcpy(target_request + offset + target_size, request_suffix,
++			sizeof(request_suffix) - 1);
++	spa_assert_se(pw_raop_dacp_parse_request(target_request,
++			offset + target_size + sizeof(request_suffix) - 1,
++			"1", &parsed) == -E2BIG);
++
++	offset = sizeof(padded_prefix) - 1;
++	memcpy(padded_request, padded_prefix, offset);
++	memset(padded_request + offset, 'a',
++			4096 - offset - (sizeof(padded_suffix) - 1));
++	memcpy(padded_request + 4096 - (sizeof(padded_suffix) - 1),
++			padded_suffix, sizeof(padded_suffix) - 1);
++	spa_assert_se(pw_raop_dacp_parse_request(padded_request, 4096,
++			"1", &parsed) == 0);
++	padded_request[4096] = 'x';
++	spa_assert_se(pw_raop_dacp_parse_request(padded_request, 4097,
++			"1", &parsed) == -EINVAL);
++}
++
++struct callback_state {
++	unsigned int count;
++	enum pw_raop_dacp_command command;
++	struct pw_raop_dacp_server **destroy_server;
++};
++
++static void on_command(void *data,
++		const struct pw_raop_dacp_request *request)
++{
++	struct callback_state *state = data;
++
++	state->count++;
++	state->command = request->command;
++	if (state->destroy_server != NULL &&
++	    *state->destroy_server != NULL) {
++		pw_raop_dacp_server_destroy(*state->destroy_server);
++		*state->destroy_server = NULL;
++	}
++}
++
++static struct sockaddr_in loopback_address(uint32_t address, uint16_t port)
++{
++	struct sockaddr_in result = {
++		.sin_family = AF_INET,
++		.sin_port = htons(port),
++		.sin_addr = { .s_addr = htonl(address) },
++	};
++
++	return result;
++}
++
++static int connect_client(uint16_t port)
++{
++	const struct sockaddr_in address =
++		loopback_address(INADDR_LOOPBACK, port);
++	int fd;
++
++	fd = socket(AF_INET, SOCK_STREAM | SOCK_CLOEXEC, 0);
++	spa_assert_se(fd >= 0);
++	spa_assert_se(connect(fd, (const struct sockaddr *)&address,
++			sizeof(address)) == 0);
++	spa_assert_se(fcntl(fd, F_SETFL,
++			fcntl(fd, F_GETFL, 0) | O_NONBLOCK) == 0);
++	return fd;
++}
++
++struct rejecting_loop {
++	struct spa_loop_utils utils;
++	struct spa_loop_utils *delegate;
++	unsigned int add_io_calls;
++	unsigned int reject_call;
++	int rejected_fd;
++};
++
++static struct spa_source *rejecting_add_io(void *data, int fd,
++		uint32_t mask, bool close_fd, spa_source_io_func_t func,
++		void *user_data)
++{
++	struct rejecting_loop *state = data;
++
++	state->add_io_calls++;
++	if (state->add_io_calls == state->reject_call) {
++		state->rejected_fd = fd;
++		errno = ENOMEM;
++		return NULL;
++	}
++	return spa_loop_utils_add_io(state->delegate, fd, mask, close_fd,
++			func, user_data);
++}
++
++static int rejecting_update_io(void *data, struct spa_source *source,
++		uint32_t mask)
++{
++	struct rejecting_loop *state = data;
++
++	return spa_loop_utils_update_io(state->delegate, source, mask);
++}
++
++static struct spa_source *rejecting_add_timer(void *data,
++		spa_source_timer_func_t func, void *user_data)
++{
++	struct rejecting_loop *state = data;
++
++	return spa_loop_utils_add_timer(state->delegate, func, user_data);
++}
++
++static int rejecting_update_timer(void *data, struct spa_source *source,
++		struct timespec *value, struct timespec *interval, bool absolute)
++{
++	struct rejecting_loop *state = data;
++
++	return spa_loop_utils_update_timer(state->delegate, source,
++			value, interval, absolute);
++}
++
++static void rejecting_destroy_source(void *data, struct spa_source *source)
++{
++	struct rejecting_loop *state = data;
++
++	spa_loop_utils_destroy_source(state->delegate, source);
++}
++
++static const struct spa_loop_utils_methods rejecting_loop_methods = {
++	SPA_VERSION_LOOP_UTILS_METHODS,
++	.add_io = rejecting_add_io,
++	.update_io = rejecting_update_io,
++	.add_timer = rejecting_add_timer,
++	.update_timer = rejecting_update_timer,
++	.destroy_source = rejecting_destroy_source,
++};
++
++static void rejecting_loop_init(struct rejecting_loop *state,
++		struct spa_loop_utils *delegate, unsigned int reject_call)
++{
++	*state = (struct rejecting_loop) {
++		.delegate = delegate,
++		.reject_call = reject_call,
++		.rejected_fd = -1,
++	};
++	state->utils.iface = SPA_INTERFACE_INIT(
++			SPA_TYPE_INTERFACE_LoopUtils, 0,
++			&rejecting_loop_methods, state);
++}
++
++static size_t collect_response(struct pw_loop *loop, int fd,
++		char *response, size_t capacity)
++{
++	size_t offset = 0;
++	unsigned int i;
++
++	for (i = 0; i < 100 && offset + 1 < capacity; i++) {
++		ssize_t size;
++
++		spa_assert_se(pw_loop_iterate(loop, 10) >= 0);
++		size = recv(fd, response + offset, capacity - offset - 1,
++				MSG_DONTWAIT);
++		if (size > 0) {
++			offset += (size_t)size;
++			response[offset] = '\0';
++			if (strstr(response, "\r\n\r\n") != NULL)
++				break;
++		} else if (size == 0) {
++			break;
++		} else {
++			spa_assert_se(errno == EAGAIN || errno == EWOULDBLOCK);
++		}
++	}
++	response[offset] = '\0';
++	return offset;
++}
++
++static void send_all(int fd, const void *data, size_t size)
++{
++	const unsigned char *cursor = data;
++
++	while (size > 0) {
++		ssize_t written = send(fd, cursor, size, MSG_NOSIGNAL);
++
++		spa_assert_se(written > 0);
++		cursor += written;
++		size -= (size_t)written;
++	}
++}
++
++static struct pw_raop_dacp_server *make_loopback_server(
++		struct pw_loop *loop, const char *token,
++		struct callback_state *state, uint32_t expected_peer)
++{
++	const struct sockaddr_in local =
++		loopback_address(INADDR_LOOPBACK, 0);
++	const struct sockaddr_in peer =
++		loopback_address(expected_peer, 0);
++	struct pw_raop_dacp_server *server;
++
++	server = pw_raop_dacp_server_new(loop,
++			(const struct sockaddr *)&local, sizeof(local),
++			(const struct sockaddr *)&peer, sizeof(peer),
++			token, on_command, NULL, state);
++	spa_assert_se(server != NULL);
++	spa_assert_se(pw_raop_dacp_server_get_port(server) != 0);
++	return server;
++}
++
++static void test_listener_source_failure_closes_fd(void)
++{
++	const struct sockaddr_in local =
++		loopback_address(INADDR_LOOPBACK, 0);
++	struct rejecting_loop rejecting;
++	struct pw_loop loop = { 0 };
++	struct pw_raop_dacp_server *server;
++	int saved_errno;
++
++	rejecting_loop_init(&rejecting, NULL, 1);
++	loop.utils = &rejecting.utils;
++	server = pw_raop_dacp_server_new(&loop,
++			(const struct sockaddr *)&local, sizeof(local),
++			(const struct sockaddr *)&local, sizeof(local),
++			"1", NULL, NULL, NULL);
++	saved_errno = errno;
++	spa_assert_se(server == NULL);
++	spa_assert_se(saved_errno == ENOMEM);
++	spa_assert_se(rejecting.add_io_calls == 1);
++	spa_assert_se(rejecting.rejected_fd >= 0);
++	spa_assert_se(fcntl(rejecting.rejected_fd, F_GETFD) == -1);
++	spa_assert_se(errno == EBADF);
++}
++
++static void test_client_source_failure_closes_fd(void)
++{
++	struct callback_state state = { 0 };
++	struct pw_main_loop *main_loop;
++	struct pw_loop *real_loop, loop;
++	struct rejecting_loop rejecting;
++	struct pw_raop_dacp_server *server;
++	bool peer_closed = false;
++	unsigned int i;
++	int fd;
++
++	main_loop = pw_main_loop_new(NULL);
++	spa_assert_se(main_loop != NULL);
++	real_loop = pw_main_loop_get_loop(main_loop);
++	spa_assert_se(real_loop != NULL);
++	rejecting_loop_init(&rejecting, real_loop->utils, 2);
++	loop = *real_loop;
++	loop.utils = &rejecting.utils;
++	pw_loop_enter(real_loop);
++
++	server = make_loopback_server(&loop, "1", &state,
++			INADDR_LOOPBACK);
++	fd = connect_client(pw_raop_dacp_server_get_port(server));
++	for (i = 0; i < 100 && rejecting.add_io_calls < 2; i++)
++		spa_assert_se(pw_loop_iterate(real_loop, 10) >= 0);
++	spa_assert_se(rejecting.add_io_calls == 2);
++	spa_assert_se(rejecting.rejected_fd >= 0);
++	spa_assert_se(fcntl(rejecting.rejected_fd, F_GETFD) == -1);
++	spa_assert_se(errno == EBADF);
++
++	for (i = 0; i < 100 && !peer_closed; i++) {
++		char byte;
++		ssize_t size = recv(fd, &byte, sizeof(byte), MSG_DONTWAIT);
++
++		if (size == 0 ||
++		    (size < 0 && errno == ECONNRESET)) {
++			peer_closed = true;
++		} else if (size < 0) {
++			spa_assert_se(errno == EAGAIN || errno == EWOULDBLOCK);
++			spa_assert_se(pw_loop_iterate(real_loop, 10) >= 0);
++		} else {
++			spa_assert_not_reached();
++		}
++	}
++	spa_assert_se(peer_closed);
++	spa_assert_se(state.count == 0);
++
++	close(fd);
++	pw_raop_dacp_server_destroy(server);
++	pw_loop_leave(real_loop);
++	pw_main_loop_destroy(main_loop);
++}
++
++static void test_mapped_ipv4_peer(void)
++{
++	static const char valid[] =
++		"GET /ctrl-int/1/nextitem HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n\r\n";
++	const struct sockaddr_in local =
++		loopback_address(INADDR_LOOPBACK, 0);
++	struct sockaddr_in6 peer = {
++		.sin6_family = AF_INET6,
++	};
++	struct callback_state state = { 0 };
++	struct pw_main_loop *main_loop;
++	struct pw_loop *loop;
++	struct pw_raop_dacp_server *server;
++	char response[512];
++	int fd;
++
++	peer.sin6_addr.s6_addr[10] = 0xff;
++	peer.sin6_addr.s6_addr[11] = 0xff;
++	memcpy(&peer.sin6_addr.s6_addr[12], &local.sin_addr,
++			sizeof(local.sin_addr));
++
++	main_loop = pw_main_loop_new(NULL);
++	spa_assert_se(main_loop != NULL);
++	loop = pw_main_loop_get_loop(main_loop);
++	pw_loop_enter(loop);
++	server = pw_raop_dacp_server_new(loop,
++			(const struct sockaddr *)&local, sizeof(local),
++			(const struct sockaddr *)&peer, sizeof(peer),
++			"1", on_command, NULL, &state);
++	spa_assert_se(server != NULL);
++
++	fd = connect_client(pw_raop_dacp_server_get_port(server));
++	send_all(fd, valid, sizeof(valid) - 1);
++	spa_assert_se(collect_response(loop, fd, response,
++			sizeof(response)) > 0);
++	spa_assert_se(strncmp(response, "HTTP/1.1 204 No Content\r\n",
++			sizeof("HTTP/1.1 204 No Content\r\n") - 1) == 0);
++	spa_assert_se(state.count == 1);
++	spa_assert_se(state.command == PW_RAOP_DACP_COMMAND_NEXT);
++
++	close(fd);
++	pw_raop_dacp_server_destroy(server);
++	pw_loop_leave(loop);
++	pw_main_loop_destroy(main_loop);
++}
++
++static void test_loopback(void)
++{
++	static const char valid[] =
++		"GET /ctrl-int/1/playpause HTTP/1.1\r\n"
++		"Host: sender.local\r\n"
++		"Active-Remote: 24680\r\n\r\n";
++	static const char invalid[] =
++		"GET /ctrl-int/1/play HTTP/1.1\r\n"
++		"Active-Remote: 13579\r\n\r\n";
++	struct callback_state state = { 0 };
++	struct pw_main_loop *main_loop;
++	struct pw_loop *loop;
++	struct pw_raop_dacp_server *server;
++	char response[512];
++	int fd;
++
++	main_loop = pw_main_loop_new(NULL);
++	spa_assert_se(main_loop != NULL);
++	loop = pw_main_loop_get_loop(main_loop);
++	spa_assert_se(loop != NULL);
++	pw_loop_enter(loop);
++
++	server = make_loopback_server(loop, "24680", &state,
++			INADDR_LOOPBACK);
++
++	fd = connect_client(pw_raop_dacp_server_get_port(server));
++	send_all(fd, valid, 24);
++	spa_assert_se(pw_loop_iterate(loop, 0) >= 0);
++	spa_assert_se(state.count == 0);
++	send_all(fd, valid + 24, sizeof(valid) - 1 - 24);
++	spa_assert_se(shutdown(fd, SHUT_WR) == 0);
++	spa_assert_se(collect_response(loop, fd, response,
++			sizeof(response)) > 0);
++	spa_assert_se(strncmp(response, "HTTP/1.1 204 No Content\r\n",
++			sizeof("HTTP/1.1 204 No Content\r\n") - 1) == 0);
++	spa_assert_se(state.count == 1);
++	spa_assert_se(state.command == PW_RAOP_DACP_COMMAND_PLAY_PAUSE);
++	close(fd);
++
++	fd = connect_client(pw_raop_dacp_server_get_port(server));
++	send_all(fd, invalid, sizeof(invalid) - 1);
++	spa_assert_se(collect_response(loop, fd, response,
++			sizeof(response)) > 0);
++	spa_assert_se(strncmp(response, "HTTP/1.1 403 Forbidden\r\n",
++			sizeof("HTTP/1.1 403 Forbidden\r\n") - 1) == 0);
++	spa_assert_se(state.count == 1);
++	close(fd);
++
++	pw_raop_dacp_server_destroy(server);
++	pw_loop_leave(loop);
++	pw_main_loop_destroy(main_loop);
++}
++
++static void test_peer_rejection_and_partial_destroy(void)
++{
++	struct callback_state state = { 0 };
++	struct pw_main_loop *main_loop;
++	struct pw_loop *loop;
++	struct pw_raop_dacp_server *server;
++	char response[64];
++	int fd;
++
++	main_loop = pw_main_loop_new(NULL);
++	spa_assert_se(main_loop != NULL);
++	loop = pw_main_loop_get_loop(main_loop);
++	pw_loop_enter(loop);
++
++	server = make_loopback_server(loop, "1", &state, 0x7f000002u);
++	fd = connect_client(pw_raop_dacp_server_get_port(server));
++	spa_assert_se(collect_response(loop, fd, response,
++			sizeof(response)) == 0);
++	spa_assert_se(state.count == 0);
++	close(fd);
++	pw_raop_dacp_server_destroy(server);
++
++	server = make_loopback_server(loop, "1", &state,
++			INADDR_LOOPBACK);
++	fd = connect_client(pw_raop_dacp_server_get_port(server));
++	send_all(fd, "GET /ctrl-int/1/play", 20);
++	spa_assert_se(pw_loop_iterate(loop, 0) >= 0);
++	pw_raop_dacp_server_destroy(server);
++	{
++		ssize_t size = recv(fd, response, sizeof(response), 0);
++		spa_assert_se(size == 0 ||
++				(size < 0 && errno == ECONNRESET));
++	}
++	close(fd);
++
++	pw_loop_leave(loop);
++	pw_main_loop_destroy(main_loop);
++}
++
++static void test_callback_may_destroy_server(void)
++{
++	static const char valid[] =
++		"GET /ctrl-int/1/stop HTTP/1.1\r\n"
++		"Active-Remote: 1\r\n\r\n";
++	struct callback_state state = { 0 };
++	struct pw_main_loop *main_loop;
++	struct pw_loop *loop;
++	struct pw_raop_dacp_server *server;
++	char response[512];
++	int fd;
++
++	main_loop = pw_main_loop_new(NULL);
++	spa_assert_se(main_loop != NULL);
++	loop = pw_main_loop_get_loop(main_loop);
++	pw_loop_enter(loop);
++	server = make_loopback_server(loop, "1", &state,
++			INADDR_LOOPBACK);
++	state.destroy_server = &server;
++
++	fd = connect_client(pw_raop_dacp_server_get_port(server));
++	send_all(fd, valid, sizeof(valid) - 1);
++	spa_assert_se(collect_response(loop, fd, response,
++			sizeof(response)) > 0);
++	spa_assert_se(state.count == 1);
++	spa_assert_se(state.command == PW_RAOP_DACP_COMMAND_STOP);
++	spa_assert_se(server == NULL);
++	close(fd);
++
++	pw_loop_leave(loop);
++	pw_main_loop_destroy(main_loop);
++}
++
++int main(int argc, char *argv[])
++{
++	pw_init(&argc, &argv);
++	test_valid_commands();
++	test_authentication();
++	test_rejections();
++	test_size_boundaries();
++	test_listener_source_failure_closes_fd();
++	test_client_source_failure_closes_fd();
++	test_loopback();
++	test_mapped_ipv4_peer();
++	test_peer_rejection_and_partial_destroy();
++	test_callback_may_destroy_server();
++	pw_deinit();
++	return 0;
++}
+diff --git a/src/modules/network-utils.h b/src/modules/network-utils.h
+index 6ff80dd7a2d3c4d60a3cf18340e9f284c31d2bc5..d851224949af8badac2a74b496a29e0a98536917 100644
+--- a/src/modules/network-utils.h
++++ b/src/modules/network-utils.h
+@@ -11,6 +11,7 @@
+ #include <stdlib.h>
+ #include <limits.h>
+ #include <sys/un.h>
++#include <netinet/in.h>
+ 
+ #include <spa/utils/string.h>
+ 
+@@ -86,6 +87,50 @@ static inline int pw_net_parse_address_port(const char *address,
+ 	return pw_net_parse_address(n, port, addr, len);
+ }
+ 
++static inline bool pw_net_are_addresses_equal(const struct sockaddr_storage *addr1,
++					      const struct sockaddr_storage *addr2,
++					      bool compare_ports)
++{
++	const bool addr1_is_mapped_ipv4 = addr1->ss_family == AF_INET6 &&
++		IN6_IS_ADDR_V4MAPPED(&((const struct sockaddr_in6 *)addr1)->sin6_addr);
++	const bool addr2_is_mapped_ipv4 = addr2->ss_family == AF_INET6 &&
++		IN6_IS_ADDR_V4MAPPED(&((const struct sockaddr_in6 *)addr2)->sin6_addr);
++
++	if (addr1->ss_family == AF_INET && addr2->ss_family == AF_INET) {
++		const struct sockaddr_in *in1 = (const struct sockaddr_in *)addr1;
++		const struct sockaddr_in *in2 = (const struct sockaddr_in *)addr2;
++
++		return (!compare_ports || in1->sin_port == in2->sin_port) &&
++			in1->sin_addr.s_addr == in2->sin_addr.s_addr;
++	} else if (addr1->ss_family == AF_INET6 &&
++			addr2->ss_family == AF_INET6) {
++		const struct sockaddr_in6 *in1 = (const struct sockaddr_in6 *)addr1;
++		const struct sockaddr_in6 *in2 = (const struct sockaddr_in6 *)addr2;
++
++		return (!compare_ports || in1->sin6_port == in2->sin6_port) &&
++			in1->sin6_scope_id == in2->sin6_scope_id &&
++			memcmp(&in1->sin6_addr, &in2->sin6_addr,
++				sizeof(in1->sin6_addr)) == 0;
++	} else if (addr1->ss_family == AF_INET && addr2_is_mapped_ipv4) {
++		const struct sockaddr_in *in1 = (const struct sockaddr_in *)addr1;
++		const struct sockaddr_in6 *in2 = (const struct sockaddr_in6 *)addr2;
++		struct in_addr mapped;
++
++		memcpy(&mapped, &in2->sin6_addr.s6_addr[12], sizeof(mapped));
++		return (!compare_ports || in1->sin_port == in2->sin6_port) &&
++			in1->sin_addr.s_addr == mapped.s_addr;
++	} else if (addr1_is_mapped_ipv4 && addr2->ss_family == AF_INET) {
++		const struct sockaddr_in6 *in1 = (const struct sockaddr_in6 *)addr1;
++		const struct sockaddr_in *in2 = (const struct sockaddr_in *)addr2;
++		struct in_addr mapped;
++
++		memcpy(&mapped, &in1->sin6_addr.s6_addr[12], sizeof(mapped));
++		return (!compare_ports || in1->sin6_port == in2->sin_port) &&
++			mapped.s_addr == in2->sin_addr.s_addr;
++	}
++	return false;
++}
++
+ static inline int pw_net_get_ip(const struct sockaddr_storage *sa, char *ip, size_t len, bool *ip4, uint16_t *port)
+ {
+ 	if (ip4)
+@@ -93,18 +138,20 @@ static inline int pw_net_get_ip(const struct sockaddr_storage *sa, char *ip, siz
+ 
+ 	if (sa->ss_family == AF_INET) {
+ 		struct sockaddr_in *in = (struct sockaddr_in*)sa;
+-		if (inet_ntop(sa->ss_family, &in->sin_addr, ip, len) == NULL)
++		if (ip != NULL &&
++		    inet_ntop(sa->ss_family, &in->sin_addr, ip, len) == NULL)
+ 			return -errno;
+ 		if (port)
+ 			*port = ntohs(in->sin_port);
+ 	} else if (sa->ss_family == AF_INET6) {
+ 		struct sockaddr_in6 *in = (struct sockaddr_in6*)sa;
+-		if (inet_ntop(sa->ss_family, &in->sin6_addr, ip, len) == NULL)
++		if (ip != NULL &&
++		    inet_ntop(sa->ss_family, &in->sin6_addr, ip, len) == NULL)
+ 			return -errno;
+ 		if (port)
+ 			*port = ntohs(in->sin6_port);
+ 
+-		if (in->sin6_scope_id != 0 && len > 1) {
++		if (ip != NULL && in->sin6_scope_id != 0 && len > 1) {
+ 			size_t curlen = strlen(ip);
+ 			if (len-(curlen+1) >= IFNAMSIZ) {
+ 				ip += curlen+1;
+diff --git a/src/modules/zeroconf-utils/avahi-poll.c b/src/modules/zeroconf-utils/avahi-poll.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..4ead6427a59394b975d7b84d77749fca6530faaa
+--- /dev/null
++++ b/src/modules/zeroconf-utils/avahi-poll.c
+@@ -0,0 +1,204 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2021 Wim Taymans */
++/* SPDX-License-Identifier: MIT */
++
++#include <pipewire/pipewire.h>
++
++#include "avahi-poll.h"
++
++struct impl {
++	AvahiPoll api;
++	struct pw_context *context;
++	struct pw_loop *loop;
++	struct pw_timer_queue *timer_queue;
++};
++
++struct AvahiWatch {
++	struct impl *impl;
++	struct spa_source *source;
++	AvahiWatchEvent events;
++	AvahiWatchCallback callback;
++	void *userdata;
++	unsigned int dispatching;
++};
++
++struct AvahiTimeout {
++	struct impl *impl;
++	struct pw_timer timer;
++	AvahiTimeoutCallback callback;
++	void *userdata;
++};
++
++static AvahiWatchEvent from_pw_events(uint32_t mask)
++{
++	return (mask & SPA_IO_IN ? AVAHI_WATCH_IN : 0) |
++		(mask & SPA_IO_OUT ? AVAHI_WATCH_OUT : 0) |
++		(mask & SPA_IO_ERR ? AVAHI_WATCH_ERR : 0) |
++		(mask & SPA_IO_HUP ? AVAHI_WATCH_HUP : 0);
++}
++
++static uint32_t to_pw_events(AvahiWatchEvent e) {
++	return (e & AVAHI_WATCH_IN ? SPA_IO_IN : 0) |
++		(e & AVAHI_WATCH_OUT ? SPA_IO_OUT : 0) |
++		(e & AVAHI_WATCH_ERR ? SPA_IO_ERR : 0) |
++		(e & AVAHI_WATCH_HUP ? SPA_IO_HUP : 0);
++}
++
++static void watch_callback(void *data, int fd, uint32_t mask)
++{
++	AvahiWatch *w = data;
++
++	w->dispatching += 1;
++
++	w->events = from_pw_events(mask);
++	w->callback(w, fd, w->events, w->userdata);
++	w->events = 0;
++
++	if (--w->dispatching == 0 && !w->source)
++		free(w);
++}
++
++static AvahiWatch* watch_new(const AvahiPoll *api, int fd, AvahiWatchEvent event,
++		AvahiWatchCallback callback, void *userdata)
++{
++	struct impl *impl = api->userdata;
++	AvahiWatch *w;
++
++	w = calloc(1, sizeof(*w));
++	if (w == NULL)
++		return NULL;
++
++	w->impl = impl;
++	w->events = 0;
++	w->callback = callback;
++	w->userdata = userdata;
++	w->source = pw_loop_add_io(impl->loop, fd, to_pw_events(event),
++			false, watch_callback, w);
++	if (w->source == NULL) {
++		free(w);
++		return NULL;
++	}
++	return w;
++}
++
++static void watch_update(AvahiWatch *w, AvahiWatchEvent event)
++{
++	struct impl *impl = w->impl;
++	pw_loop_update_io(impl->loop, w->source, to_pw_events(event));
++}
++
++static AvahiWatchEvent watch_get_events(AvahiWatch *w)
++{
++	return w->events;
++}
++
++static void watch_free(AvahiWatch *w)
++{
++	pw_loop_destroy_source(w->impl->loop, w->source);
++	w->source = NULL;
++
++	if (!w->dispatching)
++		free(w);
++}
++
++static void timeout_callback(void *data)
++{
++	AvahiTimeout *w = data;
++	w->callback(w, w->userdata);
++}
++
++static int schedule_timeout(AvahiTimeout *t, const struct timeval *tv)
++{
++	struct timeval now;
++	int64_t timeout_ns;
++
++	if (tv == NULL)
++		return 0;
++
++	/* Get current REALTIME (same clock domain as Avahi) */
++	if (gettimeofday(&now, NULL) < 0)
++		return -errno;
++
++	/* Calculate relative timeout: target - now */
++	timeout_ns = ((int64_t)tv->tv_sec - now.tv_sec) * SPA_NSEC_PER_SEC +
++		     ((int64_t)tv->tv_usec - now.tv_usec) * 1000UL;
++
++	/* Ensure minimum timeout */
++	if (timeout_ns <= 0)
++		timeout_ns = 1;
++
++	return pw_timer_queue_add(t->impl->timer_queue, &t->timer, NULL,
++				  timeout_ns, timeout_callback, t);
++}
++
++static AvahiTimeout* timeout_new(const AvahiPoll *api, const struct timeval *tv,
++		AvahiTimeoutCallback callback, void *userdata)
++{
++	struct impl *impl = api->userdata;
++	AvahiTimeout *w;
++
++	w = calloc(1, sizeof(*w));
++	if (w == NULL)
++		return NULL;
++
++	w->impl = impl;
++	w->callback = callback;
++	w->userdata = userdata;
++
++	if (schedule_timeout(w, tv) < 0) {
++		free(w);
++		return NULL;
++	}
++
++	return w;
++}
++
++static void timeout_update(AvahiTimeout *t, const struct timeval *tv)
++{
++	/* Cancel the existing timer */
++	pw_timer_queue_cancel(&t->timer);
++
++	/* Schedule new timeout if provided */
++	schedule_timeout(t, tv);
++}
++
++static void timeout_free(AvahiTimeout *t)
++{
++	pw_timer_queue_cancel(&t->timer);
++	free(t);
++}
++
++static const AvahiPoll avahi_poll_api = {
++	.watch_new = watch_new,
++	.watch_update = watch_update,
++	.watch_get_events = watch_get_events,
++	.watch_free = watch_free,
++	.timeout_new = timeout_new,
++	.timeout_update = timeout_update,
++	.timeout_free = timeout_free,
++};
++
++AvahiPoll* pw_avahi_poll_new(struct pw_context *context)
++{
++	struct impl *impl;
++
++	impl = calloc(1, sizeof(*impl));
++	if (impl == NULL)
++		return NULL;
++
++	impl->context = context;
++	impl->loop = pw_context_get_main_loop(context);
++	impl->timer_queue = pw_context_get_timer_queue(context);
++
++	impl->api = avahi_poll_api;
++	impl->api.userdata = impl;
++
++	return &impl->api;
++}
++
++void pw_avahi_poll_free(AvahiPoll *p)
++{
++	struct impl *impl = SPA_CONTAINER_OF(p, struct impl, api);
++
++	free(impl);
++}
+diff --git a/src/modules/zeroconf-utils/avahi-poll.h b/src/modules/zeroconf-utils/avahi-poll.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..fce9b9d1b8c6bf773e8e275bb10e98153d121f1f
+--- /dev/null
++++ b/src/modules/zeroconf-utils/avahi-poll.h
+@@ -0,0 +1,11 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2021 Wim Taymans */
++/* SPDX-License-Identifier: MIT */
++
++#include <avahi-client/client.h>
++
++#include <pipewire/context.h>
++
++AvahiPoll* pw_avahi_poll_new(struct pw_context *context);
++
++void pw_avahi_poll_free(AvahiPoll *p);
+diff --git a/src/modules/zeroconf-utils/zeroconf.c b/src/modules/zeroconf-utils/zeroconf.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..f9ac118bc347362c18a21914acc4414c362982d2
+--- /dev/null
++++ b/src/modules/zeroconf-utils/zeroconf.c
+@@ -0,0 +1,634 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2021 Wim Taymans */
++/* SPDX-License-Identifier: MIT */
++
++#include <unistd.h>
++#include <sys/socket.h>
++#include <netinet/in.h>
++#include <arpa/inet.h>
++#include <netinet/ip.h>
++#include <netinet/tcp.h>
++#include <netdb.h>
++
++#include "config.h"
++
++#include <spa/utils/result.h>
++#include <spa/utils/json.h>
++
++#include <avahi-client/lookup.h>
++#include <avahi-client/publish.h>
++#include <avahi-common/error.h>
++#include <avahi-common/malloc.h>
++
++#include "avahi-poll.h"
++#include "zeroconf.h"
++
++#define pw_zeroconf_emit(o,m,v,...) 	spa_hook_list_call(&o->listener_list, struct pw_zeroconf_events, m, v, ##__VA_ARGS__)
++#define pw_zeroconf_emit_destroy(c)		pw_zeroconf_emit(c, destroy, 0)
++#define pw_zeroconf_emit_error(c,e,m)		pw_zeroconf_emit(c, error, 0, e, m)
++#define pw_zeroconf_emit_added(c,id,i)		pw_zeroconf_emit(c, added, 0, id, i)
++#define pw_zeroconf_emit_removed(c,id,i)	pw_zeroconf_emit(c, removed, 0, id, i)
++
++struct service_info {
++	AvahiIfIndex interface;
++	AvahiProtocol protocol;
++	const char *name;
++	const char *type;
++	const char *domain;
++	const char *host_name;
++	AvahiAddress address;
++	uint16_t port;
++};
++
++#define SERVICE_INFO(...) ((struct service_info){ __VA_ARGS__ })
++
++#define STR_TO_PROTO(s)  (atoi(s) == 6 ? AVAHI_PROTO_INET6 : AVAHI_PROTO_INET)
++
++struct entry {
++	struct pw_zeroconf *zc;
++	struct spa_list link;
++
++#define TYPE_ANNOUNCE	0
++#define TYPE_BROWSE	1
++	uint32_t type;
++	const void *user;
++
++	struct pw_properties *props;
++
++	AvahiEntryGroup *group;
++	AvahiServiceBrowser *browser;
++
++	struct spa_list services;
++};
++
++struct service {
++	struct entry *e;
++	struct spa_list link;
++
++	struct service_info info;
++
++	struct pw_properties *props;
++};
++
++struct pw_zeroconf {
++	int refcount;
++	struct pw_context *context;
++
++	struct pw_properties *props;
++
++	struct spa_hook_list listener_list;
++
++	AvahiPoll *poll;
++	AvahiClient *client;
++	AvahiClientState state;
++
++	struct spa_list entries;
++
++	bool discover_local;
++};
++
++static struct service *service_find(struct entry *e, const struct service_info *info)
++{
++	struct service *s;
++	spa_list_for_each(s, &e->services, link) {
++		if (s->info.interface == info->interface &&
++		    s->info.protocol == info->protocol &&
++		    spa_streq(s->info.name, info->name) &&
++		    spa_streq(s->info.type, info->type) &&
++		    spa_streq(s->info.domain, info->domain))
++			return s;
++	}
++	return NULL;
++}
++
++static void service_free(struct service *s)
++{
++	spa_list_remove(&s->link);
++	free((void*)s->info.name);
++	free((void*)s->info.type);
++	free((void*)s->info.domain);
++	free((void*)s->info.host_name);
++	pw_properties_free(s->props);
++	free(s);
++}
++
++struct entry *entry_find(struct pw_zeroconf *zc, uint32_t type, const void *user)
++{
++	struct entry *e;
++	spa_list_for_each(e, &zc->entries, link)
++		if (e->type == type && e->user == user)
++			return e;
++	return NULL;
++}
++
++static void entry_free(struct entry *e)
++{
++	struct service *s;
++
++	spa_list_remove(&e->link);
++	if (e->group)
++		avahi_entry_group_free(e->group);
++	spa_list_consume(s, &e->services, link)
++		service_free(s);
++	pw_properties_free(e->props);
++	free(e);
++}
++
++static void zeroconf_free(struct pw_zeroconf *zc)
++{
++	struct entry *a;
++
++	spa_list_consume(a, &zc->entries, link)
++		entry_free(a);
++
++	if (zc->client)
++                avahi_client_free(zc->client);
++	if (zc->poll)
++		pw_avahi_poll_free(zc->poll);
++	pw_properties_free(zc->props);
++	free(zc);
++}
++
++static void zeroconf_unref(struct pw_zeroconf *zc)
++{
++	if (--zc->refcount == 0)
++		zeroconf_free(zc);
++}
++
++void pw_zeroconf_destroy(struct pw_zeroconf *zc)
++{
++	pw_zeroconf_emit_destroy(zc);
++
++	zeroconf_unref(zc);
++}
++
++static struct service *service_new(struct entry *e,
++		const struct service_info *info, AvahiStringList *txt)
++{
++	struct service *s;
++	struct pw_zeroconf *zc = e->zc;
++	const AvahiAddress *a = &info->address;
++	static const char *link_local_range = "169.254.";
++	AvahiStringList *l;
++	char at[AVAHI_ADDRESS_STR_MAX], if_suffix[16] = "";
++
++	if ((s = calloc(1, sizeof(*s))) == NULL)
++		goto error;
++
++	s->e = e;
++	spa_list_append(&e->services, &s->link);
++
++	if (info->name == NULL || info->type == NULL ||
++	    info->domain == NULL || info->host_name == NULL)
++		goto error;
++
++	s->info.interface = info->interface;
++	s->info.protocol = info->protocol;
++	s->info.name = strdup(info->name);
++	s->info.type = strdup(info->type);
++	s->info.domain = strdup(info->domain);
++	s->info.host_name = strdup(info->host_name);
++	s->info.address = info->address;
++	s->info.port = info->port;
++
++	if ((s->props = pw_properties_new(NULL, NULL)) == NULL)
++		goto error;
++
++	if (a->proto == AVAHI_PROTO_INET6 && info->interface != AVAHI_IF_UNSPEC &&
++	    a->data.ipv6.address[0] == 0xfe &&
++	    (a->data.ipv6.address[1] & 0xc0) == 0x80)
++		snprintf(if_suffix, sizeof(if_suffix), "%%%d", info->interface);
++
++	avahi_address_snprint(at, sizeof(at), a);
++	if (a->proto == AVAHI_PROTO_INET && info->interface != AVAHI_IF_UNSPEC &&
++	    spa_strstartswith(at, link_local_range))
++		snprintf(if_suffix, sizeof(if_suffix), "%%%d", info->interface);
++
++	if (info->interface != AVAHI_IF_UNSPEC)
++		pw_properties_setf(s->props, PW_KEY_ZEROCONF_IFINDEX, "%d", info->interface);
++	if (a->proto != AVAHI_PROTO_UNSPEC)
++		pw_properties_set(s->props, PW_KEY_ZEROCONF_PROTO,
++				a->proto == AVAHI_PROTO_INET ? "4" : "6");
++
++	pw_properties_set(s->props, PW_KEY_ZEROCONF_NAME, info->name);
++	pw_properties_set(s->props, PW_KEY_ZEROCONF_TYPE, info->type);
++	pw_properties_set(s->props, PW_KEY_ZEROCONF_DOMAIN, info->domain);
++	pw_properties_set(s->props, PW_KEY_ZEROCONF_HOSTNAME, info->host_name);
++	pw_properties_setf(s->props, PW_KEY_ZEROCONF_ADDRESS, "%s%s", at, if_suffix);
++	pw_properties_setf(s->props, PW_KEY_ZEROCONF_PORT, "%u", info->port);
++
++	for (l = txt; l; l = l->next) {
++		char *key, *value;
++
++		if (avahi_string_list_get_pair(l, &key, &value, NULL) != 0)
++			break;
++
++		pw_properties_set(s->props, key, value);
++		avahi_free(key);
++		avahi_free(value);
++	}
++
++	pw_log_info("new %s %s %s %s", info->name, info->type, info->domain, info->host_name);
++	pw_zeroconf_emit_added(zc, e->user, &s->props->dict);
++
++	return s;
++
++error:
++	if (s)
++		service_free(s);
++	return NULL;
++}
++
++static void resolver_cb(AvahiServiceResolver *r, AvahiIfIndex interface,
++		AvahiProtocol protocol, AvahiResolverEvent event,
++		const char *name, const char *type, const char *domain,
++		const char *host_name, const AvahiAddress *a, uint16_t port,
++		AvahiStringList *txt, AvahiLookupResultFlags flags,
++		void *userdata)
++{
++	struct entry *e = userdata;
++	struct pw_zeroconf *zc = e->zc;
++	struct service_info info;
++
++	if (event != AVAHI_RESOLVER_FOUND) {
++		pw_log_error("Resolving of '%s' failed: %s", name,
++				avahi_strerror(avahi_client_errno(zc->client)));
++		goto done;
++	}
++
++	info = SERVICE_INFO(.interface = interface,
++			.protocol = protocol,
++			.name = name,
++			.type = type,
++			.domain = domain,
++			.host_name = host_name,
++			.address = *a,
++			.port = port);
++
++	service_new(e, &info, txt);
++done:
++	avahi_service_resolver_free(r);
++}
++
++static void browser_cb(AvahiServiceBrowser *b, AvahiIfIndex interface, AvahiProtocol protocol,
++	AvahiBrowserEvent event, const char *name, const char *type, const char *domain,
++	AvahiLookupResultFlags flags, void *userdata)
++{
++        struct entry *e = userdata;
++	struct pw_zeroconf *zc = e->zc;
++	struct service_info info;
++	struct service *s;
++	int aproto = AVAHI_PROTO_UNSPEC;
++	const char *str;
++
++	if ((flags & AVAHI_LOOKUP_RESULT_LOCAL) && !zc->discover_local)
++		return;
++
++	info = SERVICE_INFO(.interface = interface,
++			.protocol = protocol,
++			.name = name,
++			.type = type,
++			.domain = domain);
++
++	s = service_find(e, &info);
++
++	switch (event) {
++	case AVAHI_BROWSER_NEW:
++		if (s != NULL)
++			return;
++
++		if ((str = pw_properties_get(e->props, PW_KEY_ZEROCONF_RESOLVE_PROTO)))
++			aproto = STR_TO_PROTO(str);
++
++		if (!(avahi_service_resolver_new(zc->client,
++						interface, protocol,
++						name, type, domain,
++						aproto, 0,
++						resolver_cb, e))) {
++			int res = avahi_client_errno(zc->client);
++			pw_log_error("can't make service resolver: %s", avahi_strerror(res));
++			pw_zeroconf_emit_error(zc, res, avahi_strerror(res));
++		}
++		break;
++	case AVAHI_BROWSER_REMOVE:
++		if (s == NULL)
++			return;
++		pw_log_info("removed %s %s %s", name, type, domain);
++		pw_zeroconf_emit_removed(zc, e->user, &s->props->dict);
++		service_free(s);
++		break;
++	default:
++		break;
++	}
++}
++
++static int do_browse(struct pw_zeroconf *zc, struct entry *e)
++{
++	const struct spa_dict_item *it;
++	const char *type = NULL, *domain = NULL;
++	int res, ifindex = AVAHI_IF_UNSPEC, proto = AVAHI_PROTO_UNSPEC;
++
++	if (e->browser == NULL) {
++		spa_dict_for_each(it, &e->props->dict) {
++			if (spa_streq(it->key, PW_KEY_ZEROCONF_IFINDEX))
++				ifindex = atoi(it->value);
++			else if (spa_streq(it->key, PW_KEY_ZEROCONF_PROTO))
++				proto = STR_TO_PROTO(it->value);
++			else if (spa_streq(it->key, PW_KEY_ZEROCONF_TYPE))
++				type = it->value;
++			else if (spa_streq(it->key, PW_KEY_ZEROCONF_DOMAIN))
++				domain = it->value;
++		}
++		if (type == NULL) {
++			res = -EINVAL;
++			pw_log_error("can't make browser: no "PW_KEY_ZEROCONF_TYPE" provided");
++			pw_zeroconf_emit_error(zc, res, spa_strerror(res));
++			return res;
++		}
++		e->browser = avahi_service_browser_new(zc->client,
++				ifindex, proto, type, domain, 0,
++				browser_cb, e);
++	        if (e->browser == NULL) {
++			res = avahi_client_errno(zc->client);
++			pw_log_error("can't make browser: %s", avahi_strerror(res));
++			pw_zeroconf_emit_error(zc, res, avahi_strerror(res));
++			return -EIO;
++		}
++	}
++	return 0;
++}
++
++static void entry_group_callback(AvahiEntryGroup *g, AvahiEntryGroupState state, void *userdata)
++{
++	struct entry *e = userdata;
++	struct pw_zeroconf *zc = e->zc;
++	const char *name;
++	int res;
++
++	zc->refcount++;
++
++	name = pw_properties_get(e->props, PW_KEY_ZEROCONF_NAME);
++
++	switch (state) {
++	case AVAHI_ENTRY_GROUP_ESTABLISHED:
++		pw_log_debug("Entry \"%s\" added", name);
++		break;
++	case AVAHI_ENTRY_GROUP_COLLISION:
++		pw_log_error("Entry \"%s\" name collision", name);
++		break;
++	case AVAHI_ENTRY_GROUP_FAILURE:
++		res = avahi_client_errno(zc->client);
++		pw_log_error("Entry \"%s\" failure: %s", name, avahi_strerror(res));
++		pw_zeroconf_emit_error(zc, res, avahi_strerror(res));
++		break;
++	case AVAHI_ENTRY_GROUP_UNCOMMITED:
++	case AVAHI_ENTRY_GROUP_REGISTERING:
++		break;
++	}
++	zeroconf_unref(zc);
++}
++
++static int do_announce(struct pw_zeroconf *zc, struct entry *e)
++{
++	AvahiStringList *txt = NULL;
++	int res, ifindex = AVAHI_IF_UNSPEC, proto = AVAHI_PROTO_UNSPEC;
++	const struct spa_dict_item *it;
++	const char *name = "unnamed", *type = NULL, *subtypes = NULL;
++	const char *domain = NULL, *host = NULL;
++	uint16_t port = 0;
++
++	if (e->group == NULL) {
++		e->group = avahi_entry_group_new(zc->client,
++					entry_group_callback, e);
++	        if (e->group == NULL) {
++			res = avahi_client_errno(zc->client);
++			pw_log_error("can't make group: %s", avahi_strerror(res));
++			pw_zeroconf_emit_error(zc, res, avahi_strerror(res));
++			return -EIO;
++		}
++	}
++	avahi_entry_group_reset(e->group);
++
++	spa_dict_for_each(it, &e->props->dict) {
++		if (spa_streq(it->key, PW_KEY_ZEROCONF_IFINDEX))
++			ifindex = atoi(it->value);
++		else if (spa_streq(it->key, PW_KEY_ZEROCONF_PROTO))
++			proto = STR_TO_PROTO(it->value);
++		else if (spa_streq(it->key, PW_KEY_ZEROCONF_NAME))
++			name = it->value;
++		else if (spa_streq(it->key, PW_KEY_ZEROCONF_TYPE))
++			type = it->value;
++		else if (spa_streq(it->key, PW_KEY_ZEROCONF_DOMAIN))
++			domain = it->value;
++		else if (spa_streq(it->key, PW_KEY_ZEROCONF_HOST))
++			host = it->value;
++		else if (spa_streq(it->key, PW_KEY_ZEROCONF_PORT))
++			port = atoi(it->value);
++		else if (spa_streq(it->key, PW_KEY_ZEROCONF_SUBTYPES))
++			subtypes = it->value;
++		else if (!spa_strstartswith(it->key, "zeroconf."))
++			txt = avahi_string_list_add_pair(txt, it->key, it->value);
++	}
++	if (type == NULL) {
++		res = -EINVAL;
++		pw_log_error("can't announce: no "PW_KEY_ZEROCONF_TYPE" provided");
++		pw_zeroconf_emit_error(zc, res, spa_strerror(res));
++		avahi_string_list_free(txt);
++		return res;
++	}
++	res = avahi_entry_group_add_service_strlst(e->group,
++			ifindex, proto,
++			(AvahiPublishFlags)0, name,
++			type, domain, host, port, txt);
++	avahi_string_list_free(txt);
++
++	if (res < 0) {
++		res = avahi_client_errno(zc->client);
++		pw_log_error("can't add service: %s", avahi_strerror(res));
++		pw_zeroconf_emit_error(zc, res, avahi_strerror(res));
++		return -EIO;
++	}
++
++	if (subtypes) {
++		struct spa_json iter;
++		char v[512];
++
++		if (spa_json_begin_array_relax(&iter, subtypes, strlen(subtypes)) <= 0) {
++			res = -EINVAL;
++			pw_log_error("invalid subtypes: %s", subtypes);
++			pw_zeroconf_emit_error(zc, res, spa_strerror(res));
++			return res;
++		}
++		while (spa_json_get_string(&iter, v, sizeof(v)) > 0) {
++			res = avahi_entry_group_add_service_subtype(e->group,
++					ifindex, proto,
++					(AvahiPublishFlags)0, name,
++					type, domain, v);
++			if (res < 0) {
++				res = avahi_client_errno(zc->client);
++				pw_log_error("can't add subtype %s: %s", v, avahi_strerror(res));
++				pw_zeroconf_emit_error(zc, res, avahi_strerror(res));
++				return -EIO;
++			}
++		}
++	}
++	if ((res = avahi_entry_group_commit(e->group)) < 0) {
++		res = avahi_client_errno(zc->client);
++		pw_log_error("can't commit group: %s", avahi_strerror(res));
++		pw_zeroconf_emit_error(zc, res, avahi_strerror(res));
++		return -EIO;
++	}
++	return 0;
++}
++
++static int entry_start(struct pw_zeroconf *zc, struct entry *e)
++{
++	if (zc->state != AVAHI_CLIENT_S_REGISTERING &&
++	    zc->state != AVAHI_CLIENT_S_RUNNING &&
++	    zc->state != AVAHI_CLIENT_S_COLLISION)
++		return 0;
++
++	if (e->type == TYPE_ANNOUNCE)
++		return do_announce(zc, e);
++	else
++		return do_browse(zc, e);
++}
++
++static void client_callback(AvahiClient *c, AvahiClientState state, void *d)
++{
++	struct pw_zeroconf *zc = d;
++	struct entry *e;
++
++	zc->client = c;
++	zc->refcount++;
++	zc->state = state;
++
++	switch (state) {
++	case AVAHI_CLIENT_S_REGISTERING:
++	case AVAHI_CLIENT_S_RUNNING:
++	case AVAHI_CLIENT_S_COLLISION:
++		spa_list_for_each(e, &zc->entries, link)
++			entry_start(zc, e);
++		break;
++	case AVAHI_CLIENT_FAILURE:
++	{
++                int err = avahi_client_errno(c);
++		pw_zeroconf_emit_error(zc, err, avahi_strerror(err));
++		break;
++	}
++	case AVAHI_CLIENT_CONNECTING:
++	default:
++		break;
++	}
++	zeroconf_unref(zc);
++}
++
++static struct entry *entry_new(struct pw_zeroconf *zc, uint32_t type, const void *user, const struct spa_dict *info)
++{
++	struct entry *e;
++
++	if ((e = calloc(1, sizeof(*e))) == NULL)
++		return NULL;
++
++	e->zc = zc;
++	e->type = type;
++	e->user = user;
++	e->props = pw_properties_new_dict(info);
++	if (e->props == NULL) {
++		free(e);
++		return NULL;
++	}
++	spa_list_append(&zc->entries, &e->link);
++	spa_list_init(&e->services);
++
++	if (type == TYPE_ANNOUNCE)
++		pw_log_debug("created announce for \"%s\"",
++				pw_properties_get(e->props, PW_KEY_ZEROCONF_NAME));
++	else
++		pw_log_debug("created browse for \"%s\"",
++				pw_properties_get(e->props, PW_KEY_ZEROCONF_TYPE));
++	return e;
++}
++
++static int set_entry(struct pw_zeroconf *zc, uint32_t type, const void *user, const struct spa_dict *info)
++{
++	struct entry *e;
++	int res = 0;
++
++	e = entry_find(zc, type, user);
++	if (e == NULL) {
++		if (info == NULL)
++			return 0;
++		if ((e = entry_new(zc, type, user, info)) == NULL)
++			return -errno;
++		res = entry_start(zc, e);
++	} else {
++		if (info == NULL)
++			entry_free(e);
++		else {
++			pw_properties_update(e->props, info);
++			res = entry_start(zc, e);
++		}
++	}
++	return res;
++}
++int pw_zeroconf_set_announce(struct pw_zeroconf *zc, const void *user, const struct spa_dict *info)
++{
++	return set_entry(zc, TYPE_ANNOUNCE, user, info);
++}
++int pw_zeroconf_set_browse(struct pw_zeroconf *zc, const void *user, const struct spa_dict *info)
++{
++	return set_entry(zc, TYPE_BROWSE, user, info);
++}
++
++struct pw_zeroconf * pw_zeroconf_new(struct pw_context *context,
++				struct spa_dict *props)
++{
++	struct pw_zeroconf *zc;
++	uint32_t i;
++	int res;
++
++	if ((zc = calloc(1, sizeof(*zc))) == NULL)
++		return NULL;
++
++	zc->refcount = 1;
++	zc->context = context;
++	spa_hook_list_init(&zc->listener_list);
++	spa_list_init(&zc->entries);
++	zc->props = props ? pw_properties_new_dict(props) : pw_properties_new(NULL, NULL);
++	if (zc->props == NULL) {
++		free(zc);
++		return NULL;
++	}
++	zc->discover_local = true;
++
++	for (i = 0; props && i < props->n_items; i++) {
++		const char *k = props->items[i].key;
++		const char *v = props->items[i].value;
++
++		if (spa_streq(k, PW_KEY_ZEROCONF_DISCOVER_LOCAL) && v)
++			zc->discover_local = spa_atob(v);
++	}
++
++	zc->poll = pw_avahi_poll_new(context);
++	if (zc->poll == NULL)
++		goto error;
++
++	zc->client = avahi_client_new(zc->poll, AVAHI_CLIENT_NO_FAIL,
++			client_callback, zc, &res);
++	if (!zc->client) {
++		pw_log_error("failed to create avahi client: %s", avahi_strerror(res));
++		goto error;
++	}
++	return zc;
++error:
++	zeroconf_free(zc);
++	return NULL;
++}
++
++void pw_zeroconf_add_listener(struct pw_zeroconf *zc,
++		struct spa_hook *listener,
++		const struct pw_zeroconf_events *events, void *data)
++{
++	spa_hook_list_append(&zc->listener_list, listener, events, data);
++}
+diff --git a/src/modules/zeroconf-utils/zeroconf.h b/src/modules/zeroconf-utils/zeroconf.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..3fbd0bde837ff6071302029463bd973b9e8357f1
+--- /dev/null
++++ b/src/modules/zeroconf-utils/zeroconf.h
+@@ -0,0 +1,59 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Wim Taymans */
++/* SPDX-License-Identifier: MIT */
++
++#ifndef PIPEWIRE_ZEROCONF_H
++#define PIPEWIRE_ZEROCONF_H
++
++#include <stdarg.h>
++
++#include <pipewire/pipewire.h>
++
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++#define PW_KEY_ZEROCONF_DISCOVER_LOCAL	"zeroconf.discover-local"	/* discover local services, true by default */
++
++#define PW_KEY_ZEROCONF_IFINDEX		"zeroconf.ifindex"		/* interface index */
++#define PW_KEY_ZEROCONF_PROTO		"zeroconf.proto"		/* protocol version, "4" ot "6" */
++#define PW_KEY_ZEROCONF_NAME		"zeroconf.name"			/* session name */
++#define PW_KEY_ZEROCONF_TYPE		"zeroconf.type"			/* service type, like "_http._tcp", not NULL */
++#define PW_KEY_ZEROCONF_DOMAIN		"zeroconf.domain"		/* domain to register in, recommended NULL */
++#define PW_KEY_ZEROCONF_HOST		"zeroconf.host"			/* host to register on, recommended NULL */
++#define PW_KEY_ZEROCONF_SUBTYPES	"zeroconf.subtypes"		/* subtypes to register, array of strings */
++#define PW_KEY_ZEROCONF_RESOLVE_PROTO	"zeroconf.resolve-proto"	/* protocol to resolve to, "4" or "6" */
++#define PW_KEY_ZEROCONF_HOSTNAME	"zeroconf.hostname"		/* hostname of resolved service */
++#define PW_KEY_ZEROCONF_PORT		"zeroconf.port"			/* port of resolved service */
++#define PW_KEY_ZEROCONF_ADDRESS		"zeroconf.address"		/* address of resolved service */
++
++struct pw_zeroconf;
++
++struct pw_zeroconf_events {
++#define PW_VERSION_ZEROCONF_EVENTS	0
++	uint32_t version;
++
++	void (*destroy) (void *data);
++	void (*error) (void *data, int err, const char *message);
++
++	void (*added) (void *data, const void *user, const struct spa_dict *info);
++	void (*removed) (void *data, const void *user, const struct spa_dict *info);
++};
++
++struct pw_zeroconf * pw_zeroconf_new(struct pw_context *context,
++				struct spa_dict *props);
++
++void pw_zeroconf_destroy(struct pw_zeroconf *zc);
++
++int pw_zeroconf_set_announce(struct pw_zeroconf *zc, const void *user, const struct spa_dict *info);
++int pw_zeroconf_set_browse(struct pw_zeroconf *zc, const void *user, const struct spa_dict *info);
++
++void pw_zeroconf_add_listener(struct pw_zeroconf *zc,
++		struct spa_hook *listener,
++		const struct pw_zeroconf_events *events, void *data);
++
++#ifdef __cplusplus
++}
++#endif
++
++#endif /* PIPEWIRE_ZEROCONF_H */

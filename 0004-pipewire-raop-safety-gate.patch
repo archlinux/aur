@@ -1,0 +1,1145 @@
+diff --git a/src/modules/meson.build b/src/modules/meson.build
+index b598cb87ca77b2bf675d1fc62261dbcfa2bc61e6..3e21af5817fecf256b053cc657a325f5b1976f2b 100644
+--- a/src/modules/meson.build
++++ b/src/modules/meson.build
+@@ -630,6 +630,7 @@ if build_module_raop
+     [ 'module-raop-sink.c',
+       'module-raop/dacp-server.c',
+       'module-raop/rtsp-client.c',
++      'module-raop/safety-gate.c',
+       'module-raop/volume.c',
+       zeroconf_sources ],
+     include_directories : [configinc],
+@@ -662,6 +663,14 @@ if build_module_raop
+         'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable('plugindir')),
+       ],
+     )
++    test('pw-test-raop-safety-gate',
++      executable('pw-test-raop-safety-gate',
++        [ 'module-raop/test-safety-gate.c',
++          'module-raop/safety-gate.c' ],
++        include_directories : [configinc],
++        dependencies : [spa_dep],
++      ),
++    )
+   endif
+ endif
+ summary({'raop-sink (requires OpenSSL)': build_module_raop}, bool_yn: true, section: 'Optional Modules')
+diff --git a/src/modules/module-raop-sink.c b/src/modules/module-raop-sink.c
+index cb46e8fcf1c2e5b7cdabd7ca236a726e4b12198d..87a303142d0f517bc9b08ee971b006951d6ea595 100644
+--- a/src/modules/module-raop-sink.c
++++ b/src/modules/module-raop-sink.c
+@@ -31,6 +31,7 @@
+ #include <openssl/evp.h>
+
+ #include <spa/utils/cleanup.h>
++#include <spa/utils/atomic.h>
+ #include <spa/utils/result.h>
+ #include <spa/utils/string.h>
+ #include <spa/utils/json.h>
+@@ -39,6 +40,7 @@
+ #include <spa/pod/builder.h>
+ #include <spa/param/audio/format-utils.h>
+ #include <spa/param/audio/raw.h>
++#include <spa/node/command.h>
+
+ #include <pipewire/impl.h>
+ #include <pipewire/i18n.h>
+@@ -51,6 +53,7 @@
+
+ #include "module-raop/dacp-server.h"
+ #include "module-raop/rtsp-client.h"
++#include "module-raop/safety-gate.h"
+ #include "module-raop/volume.h"
+ #include "module-rtp/rtp.h"
+ #include "module-rtp/stream.h"
+@@ -95,10 +98,14 @@
+  *                    control value, not a PipeWire cubic channel volume; for
+  *                    example, 0.15 becomes a channel volume of 0.003375.
+  * - `raop.volume.initial.mute`: Initial mute value in "external" mode.
++ * - `raop.volume.contract`: External volume contract. Contract 2 is the
++ *                    default and preserves the legacy local soft-mute gate.
++ *                    Contract 3 opts into a sequenced transport safety gate
++ *                    that is independent from canonical node mute.
+  * - `stream.props = {}`: properties to be passed to the sink stream
+  *
+- * The created node publishes `raop.volume.contract = 2`. In the default
+- * "remote-optional" mode, the receiver answers an RTSP GET_PARAMETER volume
++ * By default the created node publishes `raop.volume.contract = 2`. In the
++ * default "remote-optional" mode, the receiver answers an RTSP GET_PARAMETER volume
+  * request after SETUP and before RECORD. If the user changes volume while that
+  * request or RECORD is pending, changes are coalesced and recording is not
+  * released until the newest SET_PARAMETER receives a successful reply. A
+@@ -115,6 +122,34 @@
+  * `state.restore-props = false` so a session manager cannot replace the
+  * supplied startup value with stale saved Props.
+  *
++ * Contract 3 starts with its transport gate closed and publishes
++ * `raop.safety.gate.state`, `raop.safety.gate.sequence`,
++ * `raop.safety.gate.reasons`, and a per-publication
++ * `raop.safety.gate.nonce`. A controller can release the current activation
++ * and unmute holds with a `SPA_NODE_COMMAND_User` command whose `extra`
++ * string contains:
++ *
++ * \code{.unparsed}
++ * { "command.id": "raop-safety-gate-hold",
++ *   "nonce": "<published 16-digit lower-case hexadecimal nonce>" }
++ * \endcode
++ *
++ * A valid hold command adds the activation reason before returning. It can
++ * therefore close an already active transport before an external topology
++ * operation without racing packet delivery. The hold is idempotent when the
++ * activation reason is already present. The controller can release the
++ * resulting generation with:
++ *
++ * \code{.unparsed}
++ * { "command.id": "raop-safety-gate-release",
++ *   "sequence": "<published decimal sequence>",
++ *   "nonce": "<published 16-digit hexadecimal nonce>" }
++ * \endcode
++ *
++ * A stale sequence, a nonce from an older node publication, canonical mute,
++ * an inactive stream, or a latched error leaves the gate closed. Contract 2
++ * ignores this command and retains its existing behavior.
++ *
+  * Options with well-known behavior.
+  *
+  * - \ref PW_KEY_REMOTE_NAME
+@@ -216,6 +251,7 @@ PW_LOG_TOPIC(mod_topic, "mod." NAME);
+ 			"( raop.volume.query-timeout.ms=<timeout, default:"SPA_STRINGIFY(DEFAULT_VOLUME_QUERY_TIMEOUT_MS)"> ) "	\
+ 			"( raop.volume.initial=<normalized value required for external> ) "	\
+ 			"( raop.volume.initial.mute=<boolean, default:false> ) "		\
++			"( raop.volume.contract=<2|3, default:2> ) "			\
+ 			"( node.latency=<latency as fraction> ) "				\
+ 			"( node.name=<name of the nodes> ) "					\
+ 			"( node.description=<description of the nodes> ) "			\
+@@ -365,8 +401,11 @@ struct impl {
+ 	unsigned int volume_valid:1;
+ 	unsigned int volume_prepare_started:1;
+ 	unsigned int session_software:1;
++	unsigned int safety_gate_contract:1;
+
+ 	bool mute;
++	uint32_t safety_gate_closed;
++	struct raop_safety_gate safety_gate;
+ 	float volume;
+ 	float channel_volume;
+ 	uint32_t n_channel_volumes;
+@@ -561,7 +600,9 @@ static void stream_send_packet(void *data, struct iovec *iov, size_t iovlen)
+ 	struct msghdr msg;
+ 	uint8_t *dst;
+
+-	if (!impl->recording)
++	if (!impl->recording ||
++			(impl->safety_gate_contract &&
++			 SPA_ATOMIC_LOAD(impl->safety_gate_closed) != 0))
+ 		return;
+
+ 	header = (struct rtp_header*)iov[0].iov_base;
+@@ -956,6 +997,194 @@ static bool volume_control_uses_software(const struct impl *impl)
+ 			impl->session_software);
+ }
+
++static void safety_gate_format_properties(const struct impl *impl,
++		char sequence[32], char nonce[17], char reasons[64],
++		const char **state)
++{
++	spa_scnprintf(sequence, 32, "%" PRIu64,
++			impl->safety_gate.sequence);
++	spa_scnprintf(nonce, 17, "%016" PRIx64,
++			impl->safety_gate.nonce);
++	raop_safety_gate_reasons_string(impl->safety_gate.reasons,
++			reasons, 64);
++	*state = raop_safety_gate_is_closed(&impl->safety_gate) ?
++		"closed" : "open";
++}
++
++static void safety_gate_set_initial_properties(struct impl *impl)
++{
++	const char *state;
++	char sequence[32], nonce[17], reasons[64];
++
++	if (!impl->safety_gate_contract)
++		return;
++	safety_gate_format_properties(impl, sequence, nonce, reasons, &state);
++	pw_properties_set(impl->stream_props,
++			"raop.safety.gate.state", state);
++	pw_properties_set(impl->stream_props,
++			"raop.safety.gate.sequence", sequence);
++	pw_properties_set(impl->stream_props,
++			"raop.safety.gate.nonce", nonce);
++	pw_properties_set(impl->stream_props,
++			"raop.safety.gate.reasons", reasons);
++}
++
++static void safety_gate_clear_initial_properties(struct impl *impl)
++{
++	pw_properties_set(impl->stream_props,
++			"raop.safety.gate.state", NULL);
++	pw_properties_set(impl->stream_props,
++			"raop.safety.gate.sequence", NULL);
++	pw_properties_set(impl->stream_props,
++			"raop.safety.gate.nonce", NULL);
++	pw_properties_set(impl->stream_props,
++			"raop.safety.gate.reasons", NULL);
++}
++
++static int safety_gate_publish(struct impl *impl)
++{
++	struct spa_dict_item items[4];
++	const char *state;
++	char sequence[32], nonce[17], reasons[64];
++
++	if (!impl->safety_gate_contract || impl->stream == NULL)
++		return 0;
++
++	safety_gate_format_properties(impl, sequence, nonce, reasons, &state);
++	items[0] = SPA_DICT_ITEM_INIT("raop.safety.gate.state", state);
++	items[1] = SPA_DICT_ITEM_INIT("raop.safety.gate.sequence", sequence);
++	items[2] = SPA_DICT_ITEM_INIT("raop.safety.gate.nonce", nonce);
++	items[3] = SPA_DICT_ITEM_INIT("raop.safety.gate.reasons", reasons);
++	return rtp_stream_update_properties(impl->stream,
++			&SPA_DICT_INIT(items, SPA_N_ELEMENTS(items)));
++}
++
++static void safety_gate_invalidate(struct impl *impl, uint32_t reasons,
++		const char *why)
++{
++	int res;
++
++	if (!impl->safety_gate_contract)
++		return;
++
++	SPA_ATOMIC_STORE(impl->safety_gate_closed, 1);
++	raop_safety_gate_invalidate(&impl->safety_gate, reasons);
++	pw_log_debug("closed RAOP safety gate at sequence %" PRIu64
++			" (%s)", impl->safety_gate.sequence, why);
++	if ((res = safety_gate_publish(impl)) < 0)
++		pw_log_warn("can't publish closed RAOP safety gate: %s",
++				spa_strerror(res));
++}
++
++static void safety_gate_hold(struct impl *impl, uint32_t reasons,
++		const char *why)
++{
++	uint64_t old_sequence;
++	int res;
++
++	if (!impl->safety_gate_contract)
++		return;
++
++	SPA_ATOMIC_STORE(impl->safety_gate_closed, 1);
++	old_sequence = impl->safety_gate.sequence;
++	raop_safety_gate_hold(&impl->safety_gate, reasons);
++	if (impl->safety_gate.sequence != old_sequence)
++		pw_log_debug("closed RAOP safety gate at sequence %" PRIu64
++				" (%s)", impl->safety_gate.sequence, why);
++	if ((res = safety_gate_publish(impl)) < 0)
++		pw_log_warn("can't publish closed RAOP safety gate: %s",
++				spa_strerror(res));
++}
++
++static void safety_gate_release(struct impl *impl,
++		const struct raop_safety_gate_command *command)
++{
++	enum raop_safety_gate_release_result result;
++	int res;
++
++	result = raop_safety_gate_release(&impl->safety_gate, command,
++			impl->mute, impl->want_stream);
++	switch (result) {
++	case RAOP_SAFETY_GATE_RELEASE_STALE:
++		pw_log_debug("ignoring stale RAOP safety gate release sequence %"
++				PRIu64, command->sequence);
++		return;
++	case RAOP_SAFETY_GATE_RELEASE_DENIED:
++		pw_log_warn("denying RAOP safety gate release sequence %"
++				PRIu64, command->sequence);
++		return;
++	case RAOP_SAFETY_GATE_RELEASE_SUCCESS:
++		break;
++	}
++
++	/* Keep the data-loop gate closed until the new public state was
++	 * accepted. If publication fails, latch an error instead of allowing
++	 * packets under state that the controller could not observe. */
++	if ((res = safety_gate_publish(impl)) < 0) {
++		raop_safety_gate_invalidate(&impl->safety_gate,
++				RAOP_SAFETY_GATE_ERROR);
++		pw_log_error("can't publish open RAOP safety gate: %s",
++				spa_strerror(res));
++		if ((res = safety_gate_publish(impl)) < 0)
++			pw_log_warn("can't publish failed RAOP safety gate: %s",
++					spa_strerror(res));
++		return;
++	}
++	SPA_ATOMIC_STORE(impl->safety_gate_closed, 0);
++	pw_log_debug("released RAOP safety gate at sequence %" PRIu64,
++			impl->safety_gate.sequence);
++}
++
++static void stream_command(void *data, const struct spa_command *command)
++{
++	struct impl *impl = data;
++	const struct spa_pod_object *object;
++	struct spa_pod_prop *prop;
++
++	if (!impl->safety_gate_contract ||
++			SPA_UNLIKELY(SPA_COMMAND_TYPE(command) !=
++				SPA_TYPE_COMMAND_Node) ||
++			SPA_NODE_COMMAND_ID(command) != SPA_NODE_COMMAND_User)
++		return;
++
++	object = (const struct spa_pod_object *)command;
++	SPA_POD_OBJECT_FOREACH(object, prop) {
++		struct raop_safety_gate_hold_command hold;
++		struct raop_safety_gate_command release;
++		const char *json;
++		int res;
++
++		if (prop->key != SPA_COMMAND_NODE_extra ||
++				prop->value.type != SPA_TYPE_String)
++			continue;
++
++		json = SPA_POD_CONTENTS(struct spa_pod, &prop->value);
++		res = raop_safety_gate_parse_hold_command(json, &hold);
++		if (res == 0) {
++			if (hold.nonce != impl->safety_gate.nonce) {
++				pw_log_debug("ignoring stale RAOP safety gate hold");
++				return;
++			}
++			safety_gate_hold(impl, RAOP_SAFETY_GATE_ACTIVATION,
++					"explicit controller hold");
++			return;
++		}
++		if (res != -ENOENT) {
++			pw_log_warn("ignoring malformed RAOP safety gate command");
++			return;
++		}
++		if ((res = raop_safety_gate_parse_command(json, &release)) ==
++				-ENOENT)
++			continue;
++		if (res < 0) {
++			pw_log_warn("ignoring malformed RAOP safety gate command");
++			return;
++		}
++		safety_gate_release(impl, &release);
++		return;
++	}
++}
++
+ static int stream_set_volume_props(struct impl *impl, const float *volumes,
+ 		uint32_t n_volumes, bool mute, bool software)
+ {
+@@ -1281,6 +1510,7 @@ static int rtsp_volume_set_reply(void *data, int status,
+ static void volume_fail_closed(struct impl *impl, const char *reason)
+ {
+ 	pw_log_error("%s", reason);
++	safety_gate_invalidate(impl, RAOP_SAFETY_GATE_ERROR, reason);
+ 	impl->volume_continuation = VOLUME_CONTINUE_NONE;
+ 	impl->recording = false;
+ 	impl->want_stream = false;
+@@ -2236,6 +2466,9 @@ static void connection_cleanup(struct impl *impl)
+ {
+ 	const char *authorization;
+
++	if (impl->want_stream)
++		safety_gate_hold(impl, RAOP_SAFETY_GATE_ACTIVATION,
++				"RAOP session reset");
+ 	impl->ready = false;
+ 	impl->recording = false;
+ 	impl->handshaking = false;
+@@ -2335,6 +2568,8 @@ static void schedule_rtsp_reconnect(struct impl *impl)
+ 	if (impl->destroying || !impl->want_stream ||
+ 	    impl->reconnect_timer.queue != NULL)
+ 		return;
++	safety_gate_hold(impl, RAOP_SAFETY_GATE_ACTIVATION,
++			"RAOP reconnect scheduled");
+ 	shift = SPA_MIN(impl->reconnect_attempts, 4u);
+ 	delay = SPA_MIN(250u << shift, RTSP_RECONNECT_MAX_MSEC);
+ 	res = pw_timer_queue_add(impl->timer_queue, &impl->reconnect_timer,
+@@ -2374,6 +2609,8 @@ static void stream_report_error(void *data, const char *error)
+ 	struct impl *impl = data;
+ 	if (error) {
+ 		pw_log_error("stream error: %s", error);
++		safety_gate_invalidate(impl, RAOP_SAFETY_GATE_ERROR,
++				"PipeWire stream error");
+ 		pw_impl_module_schedule_destroy(impl->module);
+ 	}
+ }
+@@ -2550,6 +2787,13 @@ static void stream_props_changed(struct impl *impl, uint32_t id, const struct sp
+ 		return;
+ 	}
+
++	if (impl->safety_gate_contract &&
++			props_result == RAOP_VOLUME_PROPS_USER &&
++			mute_changed)
++		safety_gate_invalidate(impl, RAOP_SAFETY_GATE_MUTE,
++				mute ? "canonical mute" :
++					"canonical unmute pending confirmation");
++
+ 	if (have_mute)
+ 		impl->mute = mute;
+ 	if (have_volumes) {
+@@ -2603,6 +2847,13 @@ static void stream_param_changed(void *data, uint32_t id, const struct spa_pod *
+
+ 	switch (id) {
+ 	case SPA_PARAM_Format:
++		if (impl->safety_gate_contract &&
++				impl->want_stream != (param != NULL))
++			safety_gate_invalidate(impl,
++					RAOP_SAFETY_GATE_ACTIVATION,
++					param != NULL ?
++						"audio activation requested" :
++						"audio activation ended");
+ 		impl->want_stream = param != NULL;
+ 		if (!impl->want_stream) {
+ 			pw_timer_queue_cancel(&impl->reconnect_timer);
+@@ -2626,7 +2877,8 @@ static const struct rtp_stream_events stream_events = {
+ 	.destroy = stream_destroy,
+ 	.report_error = stream_report_error,
+ 	.param_changed = stream_param_changed,
+-	.send_packet = stream_send_packet
++	.send_packet = stream_send_packet,
++	.command = stream_command,
+ };
+
+ static void core_error(void *data, uint32_t id, int seq, int res, const char *message)
+@@ -2723,6 +2975,7 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 	struct impl *impl;
+ 	const char *str, *name, *hostname, *ip, *port;
+ 	uint32_t dacp_id[2];
++	uint64_t safety_nonce;
+ 	uint8_t initial_buffer[4096];
+ 	struct spa_pod_builder initial_builder;
+ 	const struct spa_pod *initial_params[1];
+@@ -2795,7 +3048,36 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 	}
+ 	pw_properties_set(props, "raop.volume.control",
+ 			raop_volume_control_name(impl->volume_control));
+-	pw_properties_set(props, "raop.volume.contract", RAOP_VOLUME_CONTRACT);
++	str = pw_properties_get(props, "raop.volume.contract");
++	if (str == NULL || spa_streq(str, RAOP_VOLUME_CONTRACT)) {
++		impl->safety_gate_contract = false;
++		pw_properties_set(props, "raop.volume.contract",
++				RAOP_VOLUME_CONTRACT);
++	} else if (spa_streq(str, RAOP_SAFETY_GATE_CONTRACT)) {
++		if (impl->volume_control != RAOP_VOLUME_EXTERNAL) {
++			pw_log_error("RAOP volume contract 3 requires "
++					"raop.volume.control=external");
++			res = -EINVAL;
++			goto error;
++		}
++		impl->safety_gate_contract = true;
++		if ((res = pw_getrandom(&safety_nonce,
++				sizeof(safety_nonce), 0)) < 0) {
++			pw_log_error("error generating RAOP safety nonce: %s",
++					spa_strerror(res));
++			goto error;
++		}
++		if (safety_nonce == 0)
++			safety_nonce = 1;
++		raop_safety_gate_init(&impl->safety_gate, safety_nonce);
++		SPA_ATOMIC_STORE(impl->safety_gate_closed, 1);
++		pw_properties_set(props, "raop.volume.contract",
++				RAOP_SAFETY_GATE_CONTRACT);
++	} else {
++		pw_log_error("unsupported raop.volume.contract '%s'", str);
++		res = -EINVAL;
++		goto error;
++	}
+
+ 	impl->volume_query_timeout_ms = DEFAULT_VOLUME_QUERY_TIMEOUT_MS;
+ 	if ((str = pw_properties_get(props, "raop.volume.query-timeout.ms")) != NULL) {
+@@ -2939,6 +3221,9 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 				spa_strerror(res));
+ 		goto error;
+ 	}
++	/* Gate state is module-authored. Never accept a forged or stale copy
++	 * from nested stream.props, including when contract 2 is selected. */
++	safety_gate_clear_initial_properties(impl);
+
+ 	impl->mtu = pw_properties_get_uint32(impl->props, "net.mtu", 1448);
+ 	impl->sync_period = impl->rate / (impl->mtu / impl->stride);
+@@ -3003,6 +3288,14 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 		impl->volume_valid = true;
+ 		impl->n_channel_volumes = impl->channels;
+ 		raop_volume_state_sync(&impl->volume_state, channel, mute, true);
++		if (impl->safety_gate_contract) {
++			uint32_t reasons = RAOP_SAFETY_GATE_ACTIVATION;
++
++			if (mute)
++				reasons |= RAOP_SAFETY_GATE_MUTE;
++			raop_safety_gate_invalidate(&impl->safety_gate, reasons);
++			safety_gate_set_initial_properties(impl);
++		}
+
+ 		spa_pod_builder_init(&initial_builder, initial_buffer,
+ 				sizeof(initial_buffer));
+diff --git a/src/modules/module-raop/safety-gate.c b/src/modules/module-raop/safety-gate.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..b2f23da7cdd66825e8c4f7cba856282d7fda982b
+--- /dev/null
++++ b/src/modules/module-raop/safety-gate.c
+@@ -0,0 +1,250 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <errno.h>
++#include <inttypes.h>
++#include <stdio.h>
++#include <string.h>
++
++#include <spa/utils/json.h>
++#include <spa/utils/string.h>
++
++#include "safety-gate.h"
++
++static uint64_t next_sequence(uint64_t sequence)
++{
++	if (++sequence == 0)
++		sequence++;
++	return sequence;
++}
++
++void raop_safety_gate_init(struct raop_safety_gate *gate, uint64_t nonce)
++{
++	gate->sequence = 0;
++	gate->nonce = nonce;
++	gate->reasons = 0;
++}
++
++uint64_t raop_safety_gate_invalidate(struct raop_safety_gate *gate,
++		uint32_t reasons)
++{
++	gate->sequence = next_sequence(gate->sequence);
++	gate->reasons |= reasons;
++	return gate->sequence;
++}
++
++uint64_t raop_safety_gate_hold(struct raop_safety_gate *gate,
++		uint32_t reasons)
++{
++	if ((gate->reasons & reasons) != reasons)
++		return raop_safety_gate_invalidate(gate, reasons);
++	return gate->sequence;
++}
++
++bool raop_safety_gate_is_closed(const struct raop_safety_gate *gate)
++{
++	return gate->reasons != 0;
++}
++
++enum raop_safety_gate_release_result raop_safety_gate_release(
++		struct raop_safety_gate *gate,
++		const struct raop_safety_gate_command *command,
++		bool public_mute, bool want_stream)
++{
++	if (command->nonce != gate->nonce)
++		return RAOP_SAFETY_GATE_RELEASE_DENIED;
++	if (command->sequence != gate->sequence)
++		return RAOP_SAFETY_GATE_RELEASE_STALE;
++	if (public_mute || !want_stream ||
++			(gate->reasons & RAOP_SAFETY_GATE_ERROR) != 0)
++		return RAOP_SAFETY_GATE_RELEASE_DENIED;
++
++	gate->reasons &= ~(RAOP_SAFETY_GATE_ACTIVATION |
++			RAOP_SAFETY_GATE_MUTE);
++	return gate->reasons == 0 ?
++		RAOP_SAFETY_GATE_RELEASE_SUCCESS :
++		RAOP_SAFETY_GATE_RELEASE_DENIED;
++}
++
++static bool parse_string(const char *value, int len,
++		char *buffer, size_t size)
++{
++	return len > 0 && spa_json_is_string(value, len) &&
++		spa_json_parse_stringn(value, len, buffer, size) > 0;
++}
++
++static bool decimal_string(const char *value)
++{
++	const unsigned char *p = (const unsigned char *)value;
++
++	if (*p == '\0')
++		return false;
++	for (; *p != '\0'; p++)
++		if (*p < '0' || *p > '9')
++			return false;
++	return true;
++}
++
++static bool hexadecimal_string(const char *value)
++{
++	const unsigned char *p = (const unsigned char *)value;
++
++	if (strlen(value) != 16)
++		return false;
++	for (; *p != '\0'; p++)
++		if (!((*p >= '0' && *p <= '9') ||
++		      (*p >= 'a' && *p <= 'f') ||
++		      (*p >= 'A' && *p <= 'F')))
++			return false;
++	return true;
++}
++
++static bool lowercase_hexadecimal_string(const char *value)
++{
++	const unsigned char *p = (const unsigned char *)value;
++
++	if (strlen(value) != 16)
++		return false;
++	for (; *p != '\0'; p++)
++		if (!((*p >= '0' && *p <= '9') ||
++		      (*p >= 'a' && *p <= 'f')))
++			return false;
++	return true;
++}
++
++int raop_safety_gate_parse_command(const char *json,
++		struct raop_safety_gate_command *command)
++{
++	struct spa_json top, iter;
++	const char *object, *value;
++	char key[64], id[64], sequence[32], nonce[19];
++	bool have_id = false, have_sequence = false, have_nonce = false;
++	uint64_t parsed_sequence, parsed_nonce;
++	int object_len, len;
++
++	if (json == NULL || command == NULL)
++		return -EINVAL;
++	spa_json_init(&top, json, strlen(json));
++	object_len = spa_json_next(&top, &object);
++	if (object_len <= 0 || !spa_json_is_object(object, object_len))
++		return -EINVAL;
++	object_len = spa_json_container_len(&top, object, object_len);
++	if (object_len <= 0 ||
++			spa_json_next(&top, &value) != 0 ||
++			spa_json_begin_object(&iter, object, object_len) <= 0)
++		return -EINVAL;
++
++	while ((len = spa_json_object_next(&iter, key, sizeof(key),
++			&value)) > 0) {
++		if (spa_streq(key, "command.id")) {
++			if (have_id || !parse_string(value, len, id, sizeof(id)))
++				return -EINVAL;
++			have_id = true;
++		} else if (spa_streq(key, "sequence")) {
++			if (have_sequence || !parse_string(value, len,
++					sequence, sizeof(sequence)))
++				return -EINVAL;
++			have_sequence = true;
++		} else if (spa_streq(key, "nonce")) {
++			if (have_nonce || !parse_string(value, len,
++					nonce, sizeof(nonce)))
++				return -EINVAL;
++			have_nonce = true;
++		}
++	}
++	if (len < 0 || !have_id || !have_sequence || !have_nonce)
++		return -EINVAL;
++	if (!spa_streq(id, RAOP_SAFETY_GATE_RELEASE_COMMAND))
++		return -ENOENT;
++	if (!decimal_string(sequence) ||
++			!spa_atou64(sequence, &parsed_sequence, 10) ||
++			parsed_sequence == 0)
++		return -EINVAL;
++	if (!hexadecimal_string(nonce) ||
++			!spa_atou64(nonce, &parsed_nonce, 16) ||
++			parsed_nonce == 0)
++		return -EINVAL;
++
++	command->sequence = parsed_sequence;
++	command->nonce = parsed_nonce;
++	return 0;
++}
++
++int raop_safety_gate_parse_hold_command(const char *json,
++		struct raop_safety_gate_hold_command *command)
++{
++	struct spa_json top, iter;
++	const char *object, *value;
++	char key[64], id[64], nonce[19];
++	bool have_id = false, have_nonce = false, have_unknown = false;
++	uint64_t parsed_nonce;
++	int object_len, len;
++
++	if (json == NULL || command == NULL)
++		return -EINVAL;
++	spa_json_init(&top, json, strlen(json));
++	object_len = spa_json_next(&top, &object);
++	if (object_len <= 0 || !spa_json_is_object(object, object_len))
++		return -EINVAL;
++	object_len = spa_json_container_len(&top, object, object_len);
++	if (object_len <= 0 ||
++			spa_json_next(&top, &value) != 0 ||
++			spa_json_begin_object(&iter, object, object_len) <= 0)
++		return -EINVAL;
++
++	while ((len = spa_json_object_next(&iter, key, sizeof(key),
++			&value)) > 0) {
++		if (spa_streq(key, "command.id")) {
++			if (have_id || !parse_string(value, len, id, sizeof(id)))
++				return -EINVAL;
++			have_id = true;
++		} else if (spa_streq(key, "nonce")) {
++			if (have_nonce || !parse_string(value, len,
++					nonce, sizeof(nonce)))
++				return -EINVAL;
++			have_nonce = true;
++		} else {
++			have_unknown = true;
++		}
++	}
++	if (len < 0 || !have_id)
++		return -EINVAL;
++	if (!spa_streq(id, RAOP_SAFETY_GATE_HOLD_COMMAND))
++		return -ENOENT;
++	if (!have_nonce || have_unknown ||
++			!lowercase_hexadecimal_string(nonce) ||
++			!spa_atou64(nonce, &parsed_nonce, 16) ||
++			parsed_nonce == 0)
++		return -EINVAL;
++
++	command->nonce = parsed_nonce;
++	return 0;
++}
++
++const char *raop_safety_gate_reasons_string(uint32_t reasons,
++		char *buffer, size_t size)
++{
++	size_t offset = 0;
++
++	if (buffer == NULL || size == 0)
++		return NULL;
++	if (reasons == 0) {
++		snprintf(buffer, size, "none");
++		return buffer;
++	}
++	buffer[0] = '\0';
++#define APPEND_REASON(mask,name)						\
++	do {									\
++		if ((reasons & (mask)) != 0 && offset < size)			\
++			offset += snprintf(buffer + offset, size - offset,	\
++					"%s%s", offset == 0 ? "" : ",", name);	\
++	} while (0)
++	APPEND_REASON(RAOP_SAFETY_GATE_ACTIVATION, "activation");
++	APPEND_REASON(RAOP_SAFETY_GATE_MUTE, "mute");
++	APPEND_REASON(RAOP_SAFETY_GATE_ERROR, "error");
++#undef APPEND_REASON
++	return buffer;
++}
+diff --git a/src/modules/module-raop/safety-gate.h b/src/modules/module-raop/safety-gate.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..17a1ee2a94837d237b56e5c98355bb5faf3c064d
+--- /dev/null
++++ b/src/modules/module-raop/safety-gate.h
+@@ -0,0 +1,67 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#ifndef PIPEWIRE_MODULE_RAOP_SAFETY_GATE_H
++#define PIPEWIRE_MODULE_RAOP_SAFETY_GATE_H
++
++#include <stdbool.h>
++#include <stddef.h>
++#include <stdint.h>
++
++#define RAOP_SAFETY_GATE_CONTRACT	"3"
++#define RAOP_SAFETY_GATE_HOLD_COMMAND	"raop-safety-gate-hold"
++#define RAOP_SAFETY_GATE_RELEASE_COMMAND	"raop-safety-gate-release"
++
++enum raop_safety_gate_reason {
++	RAOP_SAFETY_GATE_ACTIVATION = (1u << 0),
++	RAOP_SAFETY_GATE_MUTE = (1u << 1),
++	RAOP_SAFETY_GATE_ERROR = (1u << 2),
++};
++
++enum raop_safety_gate_release_result {
++	RAOP_SAFETY_GATE_RELEASE_SUCCESS,
++	RAOP_SAFETY_GATE_RELEASE_STALE,
++	RAOP_SAFETY_GATE_RELEASE_DENIED,
++};
++
++struct raop_safety_gate {
++	uint64_t sequence;
++	uint64_t nonce;
++	uint32_t reasons;
++};
++
++struct raop_safety_gate_command {
++	uint64_t sequence;
++	uint64_t nonce;
++};
++
++struct raop_safety_gate_hold_command {
++	uint64_t nonce;
++};
++
++void raop_safety_gate_init(struct raop_safety_gate *gate, uint64_t nonce);
++
++uint64_t raop_safety_gate_invalidate(struct raop_safety_gate *gate,
++		uint32_t reasons);
++
++uint64_t raop_safety_gate_hold(struct raop_safety_gate *gate,
++		uint32_t reasons);
++
++bool raop_safety_gate_is_closed(const struct raop_safety_gate *gate);
++
++enum raop_safety_gate_release_result raop_safety_gate_release(
++		struct raop_safety_gate *gate,
++		const struct raop_safety_gate_command *command,
++		bool public_mute, bool want_stream);
++
++int raop_safety_gate_parse_command(const char *json,
++		struct raop_safety_gate_command *command);
++
++int raop_safety_gate_parse_hold_command(const char *json,
++		struct raop_safety_gate_hold_command *command);
++
++const char *raop_safety_gate_reasons_string(uint32_t reasons,
++		char *buffer, size_t size);
++
++#endif /* PIPEWIRE_MODULE_RAOP_SAFETY_GATE_H */
+diff --git a/src/modules/module-raop/test-safety-gate.c b/src/modules/module-raop/test-safety-gate.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..9a3cb44b08c2a7f7286848a98661d6512514fffe
+--- /dev/null
++++ b/src/modules/module-raop/test-safety-gate.c
+@@ -0,0 +1,269 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <errno.h>
++#include <string.h>
++
++#include <spa/utils/defs.h>
++#include <spa/utils/string.h>
++
++#include "safety-gate.h"
++
++#define TEST_NONCE UINT64_C(0x0123456789abcdef)
++
++static struct raop_safety_gate_command command_for(
++		const struct raop_safety_gate *gate)
++{
++	return (struct raop_safety_gate_command) {
++		.sequence = gate->sequence,
++		.nonce = gate->nonce,
++	};
++}
++
++static void test_activation_release(void)
++{
++	struct raop_safety_gate gate;
++	struct raop_safety_gate_command command;
++
++	raop_safety_gate_init(&gate, TEST_NONCE);
++	spa_assert_se(!raop_safety_gate_is_closed(&gate));
++	spa_assert_se(raop_safety_gate_invalidate(&gate,
++			RAOP_SAFETY_GATE_ACTIVATION) == 1);
++	spa_assert_se(raop_safety_gate_is_closed(&gate));
++
++	command = command_for(&gate);
++	spa_assert_se(raop_safety_gate_release(&gate, &command,
++			false, false) == RAOP_SAFETY_GATE_RELEASE_DENIED);
++	spa_assert_se(raop_safety_gate_is_closed(&gate));
++	spa_assert_se(raop_safety_gate_release(&gate, &command,
++			false, true) == RAOP_SAFETY_GATE_RELEASE_SUCCESS);
++	spa_assert_se(!raop_safety_gate_is_closed(&gate));
++}
++
++static void test_fast_mute_unmute(void)
++{
++	struct raop_safety_gate gate;
++	struct raop_safety_gate_command muted, unmuted;
++
++	raop_safety_gate_init(&gate, TEST_NONCE);
++	raop_safety_gate_invalidate(&gate, RAOP_SAFETY_GATE_ACTIVATION);
++	unmuted = command_for(&gate);
++	spa_assert_se(raop_safety_gate_release(&gate, &unmuted,
++			false, true) == RAOP_SAFETY_GATE_RELEASE_SUCCESS);
++
++	raop_safety_gate_invalidate(&gate, RAOP_SAFETY_GATE_MUTE);
++	muted = command_for(&gate);
++	spa_assert_se(raop_safety_gate_release(&gate, &muted,
++			true, true) == RAOP_SAFETY_GATE_RELEASE_DENIED);
++
++	/* An immediate unmute is a new intent even though the mute hold was
++	 * already closed. The old acknowledgement must not release it. */
++	raop_safety_gate_invalidate(&gate, RAOP_SAFETY_GATE_MUTE);
++	unmuted = command_for(&gate);
++	spa_assert_se(unmuted.sequence != muted.sequence);
++	spa_assert_se(raop_safety_gate_release(&gate, &muted,
++			false, true) == RAOP_SAFETY_GATE_RELEASE_STALE);
++	spa_assert_se(raop_safety_gate_is_closed(&gate));
++	spa_assert_se(raop_safety_gate_release(&gate, &unmuted,
++			false, true) == RAOP_SAFETY_GATE_RELEASE_SUCCESS);
++	spa_assert_se(!raop_safety_gate_is_closed(&gate));
++}
++
++static void test_nonce_and_fail_closed(void)
++{
++	struct raop_safety_gate gate;
++	struct raop_safety_gate_command command;
++
++	raop_safety_gate_init(&gate, TEST_NONCE);
++	raop_safety_gate_invalidate(&gate, RAOP_SAFETY_GATE_ACTIVATION);
++	command = command_for(&gate);
++	command.nonce++;
++	spa_assert_se(raop_safety_gate_release(&gate, &command,
++			false, true) == RAOP_SAFETY_GATE_RELEASE_DENIED);
++	spa_assert_se(raop_safety_gate_is_closed(&gate));
++
++	raop_safety_gate_invalidate(&gate, RAOP_SAFETY_GATE_ERROR);
++	command = command_for(&gate);
++	spa_assert_se(raop_safety_gate_release(&gate, &command,
++			false, true) == RAOP_SAFETY_GATE_RELEASE_DENIED);
++	spa_assert_se(raop_safety_gate_is_closed(&gate));
++}
++
++static void test_hold_is_idempotent(void)
++{
++	struct raop_safety_gate gate;
++	uint64_t sequence;
++
++	raop_safety_gate_init(&gate, TEST_NONCE);
++	sequence = raop_safety_gate_hold(&gate,
++			RAOP_SAFETY_GATE_ACTIVATION);
++	spa_assert_se(sequence == 1);
++	spa_assert_se(raop_safety_gate_hold(&gate,
++			RAOP_SAFETY_GATE_ACTIVATION) == sequence);
++	spa_assert_se(raop_safety_gate_hold(&gate,
++			RAOP_SAFETY_GATE_MUTE) != sequence);
++}
++
++static void test_command_parser(void)
++{
++	struct raop_safety_gate_command command;
++	static const char valid[] =
++		"{\"command.id\":\"raop-safety-gate-release\","
++		"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\"}";
++
++	spa_assert_se(raop_safety_gate_parse_command(valid, &command) == 0);
++	spa_assert_se(command.sequence == 42);
++	spa_assert_se(command.nonce == TEST_NONCE);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"other\",\"sequence\":\"42\","
++			"\"nonce\":\"0123456789abcdef\"}", &command) == -ENOENT);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":42,\"nonce\":\"0123456789abcdef\"}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"0\",\"nonce\":\"0123456789abcdef\"}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"1123456789abcdef\"}",
++			&command) == 0);
++	spa_assert_se(command.nonce != TEST_NONCE);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0\"}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\","
++			"\"nonce\":\"0123456789abcdef\"} trailing",
++			&command) == -EINVAL);
++}
++
++static void test_hold_command_parser(void)
++{
++	struct raop_safety_gate_hold_command command;
++	static const struct {
++		const char *nonce;
++		int result;
++		uint64_t parsed;
++	} cases[] = {
++		{ "0000000000000001", 0, UINT64_C(0x0000000000000001) },
++		{ "0123456789abcdef", 0, TEST_NONCE },
++		{ "a000000000000000", 0, UINT64_C(0xa000000000000000) },
++		{ "b807a21d4afe945a", 0, UINT64_C(0xb807a21d4afe945a) },
++		{ "c000000000000000", 0, UINT64_C(0xc000000000000000) },
++		{ "d000000000000000", 0, UINT64_C(0xd000000000000000) },
++		{ "e000000000000000", 0, UINT64_C(0xe000000000000000) },
++		{ "f000000000000000", 0, UINT64_C(0xf000000000000000) },
++		{ "ffffffffffffffff", 0, UINT64_MAX },
++		{ "0000000000000000", -EINVAL, 0 },
++		{ "0", -EINVAL, 0 },
++		{ "0123456789abcde", -EINVAL, 0 },
++		{ "10000000000000000", -EINVAL, 0 },
++		{ "fffffffffffffffff", -EINVAL, 0 },
++		{ "A000000000000000", -EINVAL, 0 },
++		{ "g000000000000000", -EINVAL, 0 },
++		{ "-000000000000000", -EINVAL, 0 },
++	};
++	char json[160];
++	uint32_t i;
++
++	for (i = 0; i < SPA_N_ELEMENTS(cases); i++) {
++		spa_scnprintf(json, sizeof(json),
++				"{\"command.id\":\"raop-safety-gate-hold\","
++				"\"nonce\":\"%s\"}", cases[i].nonce);
++		command.nonce = UINT64_C(0xfeedfacefeedface);
++		spa_assert_se(raop_safety_gate_parse_hold_command(json,
++				&command) == cases[i].result);
++		if (cases[i].result == 0)
++			spa_assert_se(command.nonce == cases[i].parsed);
++		else
++			spa_assert_se(command.nonce ==
++					UINT64_C(0xfeedfacefeedface));
++	}
++	spa_assert_se(raop_safety_gate_parse_hold_command(
++			"{\"command.id\":\"other\","
++			"\"nonce\":\"0123456789abcdef\"}", &command) == -ENOENT);
++	spa_assert_se(raop_safety_gate_parse_hold_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\"}",
++			&command) == -ENOENT);
++	spa_assert_se(raop_safety_gate_parse_hold_command(
++			"{\"command.id\":\"raop-safety-gate-hold\","
++			"\"nonce\":\"0123456789abcdeF\"}", &command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_hold_command(
++			"{\"command.id\":\"raop-safety-gate-hold\","
++			"\"nonce\":\"0123456789abcdef\",\"sequence\":\"42\"}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_hold_command(
++			"{\"command.id\":\"raop-safety-gate-hold\","
++			"\"nonce\":123}", &command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_hold_command(
++			"{\"command.id\":\"raop-safety-gate-hold\"}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_hold_command(
++			"{\"command.id\":\"raop-safety-gate-hold\","
++			"\"nonce\":\"0123456789abcdef\"} trailing",
++			&command) == -EINVAL);
++}
++
++static void test_hold_nonce_does_not_mutate(void)
++{
++	struct raop_safety_gate gate;
++	struct raop_safety_gate_hold_command command;
++	uint64_t sequence;
++	uint32_t reasons;
++
++	raop_safety_gate_init(&gate, TEST_NONCE);
++	raop_safety_gate_invalidate(&gate, RAOP_SAFETY_GATE_MUTE);
++	sequence = gate.sequence;
++	reasons = gate.reasons;
++
++	spa_assert_se(raop_safety_gate_parse_hold_command(
++			"{\"command.id\":\"raop-safety-gate-hold\","
++			"\"nonce\":\"1123456789abcdef\"}", &command) == 0);
++	if (command.nonce == gate.nonce)
++		raop_safety_gate_hold(&gate, RAOP_SAFETY_GATE_ACTIVATION);
++	spa_assert_se(gate.sequence == sequence);
++	spa_assert_se(gate.reasons == reasons);
++
++	command.nonce = gate.nonce;
++	if (command.nonce == gate.nonce)
++		raop_safety_gate_hold(&gate, RAOP_SAFETY_GATE_ACTIVATION);
++	spa_assert_se(gate.sequence != sequence);
++	spa_assert_se((gate.reasons & RAOP_SAFETY_GATE_ACTIVATION) != 0);
++	sequence = gate.sequence;
++	spa_assert_se(raop_safety_gate_hold(&gate,
++			RAOP_SAFETY_GATE_ACTIVATION) == sequence);
++}
++
++static void test_reason_strings(void)
++{
++	char buffer[64];
++
++	spa_assert_se(spa_streq(raop_safety_gate_reasons_string(0,
++			buffer, sizeof(buffer)), "none"));
++	spa_assert_se(spa_streq(raop_safety_gate_reasons_string(
++			RAOP_SAFETY_GATE_ACTIVATION |
++			RAOP_SAFETY_GATE_MUTE |
++			RAOP_SAFETY_GATE_ERROR,
++			buffer, sizeof(buffer)), "activation,mute,error"));
++}
++
++int main(void)
++{
++	test_activation_release();
++	test_fast_mute_unmute();
++	test_nonce_and_fail_closed();
++	test_hold_is_idempotent();
++	test_command_parser();
++	test_hold_command_parser();
++	test_hold_nonce_does_not_mutate();
++	test_reason_strings();
++	return 0;
++}
+diff --git a/src/modules/module-raop/test-volume.c b/src/modules/module-raop/test-volume.c
+index 70aeb92c81ff4ac0559f06dc2d4cdd4ca312ef56..efbb9647fb133869dc3e47f8d3ff816a4d34451d 100644
+--- a/src/modules/module-raop/test-volume.c
++++ b/src/modules/module-raop/test-volume.c
+@@ -226,6 +226,14 @@ static void test_stream_contract(void)
+ 	spa_assert_se(spa_streq(pw_properties_get(stream_props,
+ 			"raop.name"), "nested name remains"));
+
++	/* Contract 3 is explicitly selected by the module and must survive the
++	 * same trusted override that prevents nested stream.props forgery. */
++	pw_properties_set(module_props, "raop.volume.contract", "3");
++	spa_assert_se(raop_volume_override_stream_props(stream_props,
++			module_props) == 0);
++	spa_assert_se(spa_streq(pw_properties_get(stream_props,
++			"raop.volume.contract"), "3"));
++
+ 	/* A missing module identity value removes, rather than trusts, a value
+ 	 * injected through nested stream.props. */
+ 	pw_properties_set(module_props, "raop.device", NULL);
+diff --git a/src/modules/module-rtp/stream.c b/src/modules/module-rtp/stream.c
+index e00584e87c65c4b66e3d94f61d14824bb5b51196..2bd4feac803cf841fd272da8caa1416fa7290c3c 100644
+--- a/src/modules/module-rtp/stream.c
++++ b/src/modules/module-rtp/stream.c
+@@ -48,6 +48,7 @@ PW_LOG_TOPIC_EXTERN(mod_topic);
+ #define rtp_stream_emit_open_connection(s,r)	rtp_stream_emit(s, open_connection, 0,r)
+ #define rtp_stream_emit_close_connection(s,r)	rtp_stream_emit(s, close_connection, 0,r)
+ #define rtp_stream_emit_param_changed(s,i,p)	rtp_stream_emit(s, param_changed,0,i,p)
++#define rtp_stream_emit_command(s,cmd)		rtp_stream_emit(s, command,0,cmd)
+
+ #define rtp_stream_call(s,m,v,...)		spa_callbacks_call_fast(&s->rtp_callbacks, \
+ 							struct rtp_stream_events, m, v, ##__VA_ARGS__)
+@@ -563,11 +564,18 @@ static void on_stream_param_changed (void *d, uint32_t id, const struct spa_pod
+ 	}
+ };
+
++static void on_stream_command(void *d, const struct spa_command *command)
++{
++	struct impl *impl = d;
++	rtp_stream_emit_command(impl, command);
++}
++
+ static const struct pw_stream_events stream_events = {
+ 	PW_VERSION_STREAM_EVENTS,
+ 	.destroy = stream_destroy,
+ 	.state_changed = on_stream_state_changed,
+ 	.param_changed = on_stream_param_changed,
++	.command = on_stream_command,
+ 	.io_changed = stream_io_changed,
+ };
+
+diff --git a/src/modules/module-rtp/stream.h b/src/modules/module-rtp/stream.h
+index 1cb46421aaf413c8eafa7d51251da88e22bb21ea..60168275b309ade96ae2a22330c00b10df3b1b1c 100644
+--- a/src/modules/module-rtp/stream.h
++++ b/src/modules/module-rtp/stream.h
+@@ -50,6 +50,8 @@ struct rtp_stream_events {
+
+ 	void (*param_changed) (void *data, uint32_t id, const struct spa_pod *param);
+
++	void (*command) (void *data, const struct spa_command *command);
++
+ 	void (*send_packet) (void *data, struct iovec *iov, size_t iovlen);
+
+ 	void (*send_feedback) (void *data, uint32_t seqnum);

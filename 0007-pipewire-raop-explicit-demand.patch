@@ -1,0 +1,1097 @@
+diff --git a/src/modules/meson.build b/src/modules/meson.build
+index 5cfebbf..bba9d01 100644
+--- a/src/modules/meson.build
++++ b/src/modules/meson.build
+@@ -654,6 +654,7 @@ if build_module_raop
+   pipewire_module_raop_sink = shared_library('pipewire-module-raop-sink',
+     [ 'module-raop-sink.c',
+       'module-raop/dacp-server.c',
++      'module-raop/demand.c',
+       'module-raop/rtsp-client.c',
+       'module-raop/safety-gate.c',
+       'module-raop/volume.c',
+@@ -688,6 +689,14 @@ if build_module_raop
+         'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable('plugindir')),
+       ],
+     )
++    test('pw-test-raop-demand',
++      executable('pw-test-raop-demand',
++        [ 'module-raop/test-demand.c',
++          'module-raop/demand.c' ],
++        include_directories : [configinc],
++        dependencies : [spa_dep],
++      ),
++    )
+     test('pw-test-raop-safety-gate',
+       executable('pw-test-raop-safety-gate',
+         [ 'module-raop/test-safety-gate.c',
+diff --git a/src/modules/module-raop/demand.c b/src/modules/module-raop/demand.c
+new file mode 100644
+index 0000000..b514ea8
+--- /dev/null
++++ b/src/modules/module-raop/demand.c
+@@ -0,0 +1,197 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <errno.h>
++#include <string.h>
++
++#include <spa/utils/json.h>
++#include <spa/utils/string.h>
++
++#include "demand.h"
++
++static bool parse_string(const char *value, int len,
++		char *buffer, size_t size)
++{
++	return len > 0 && spa_json_is_string(value, len) &&
++		spa_json_parse_stringn(value, len, buffer, size) > 0;
++}
++
++static bool decimal_string(const char *value)
++{
++	const unsigned char *p = (const unsigned char *)value;
++
++	if (*p == '\0')
++		return false;
++	for (; *p != '\0'; p++)
++		if (*p < '0' || *p > '9')
++			return false;
++	return true;
++}
++
++static bool hexadecimal_string(const char *value)
++{
++	const unsigned char *p = (const unsigned char *)value;
++
++	if (strlen(value) != 16)
++		return false;
++	for (; *p != '\0'; p++)
++		if (!((*p >= '0' && *p <= '9') ||
++		      (*p >= 'a' && *p <= 'f') ||
++		      (*p >= 'A' && *p <= 'F')))
++			return false;
++	return true;
++}
++
++static int parse_command_id(const char *object, int object_len,
++		char *id, size_t size)
++{
++	struct spa_json iter;
++	const char *value;
++	char key[64];
++	bool have_id = false;
++	int len;
++
++	if (spa_json_begin_object(&iter, object, object_len) <= 0)
++		return -EINVAL;
++	while ((len = spa_json_object_next(&iter, key, sizeof(key),
++			&value)) > 0) {
++		if (!spa_streq(key, "command.id"))
++			continue;
++		if (have_id || !parse_string(value, len, id, size))
++			return -EINVAL;
++		have_id = true;
++	}
++	return len < 0 || !have_id ? -EINVAL : 0;
++}
++
++void raop_demand_state_init(struct raop_demand_state *state,
++		uint64_t nonce)
++{
++	if (state == NULL)
++		return;
++	state->sequence = 0;
++	state->nonce = nonce;
++	state->demanded = false;
++}
++
++enum raop_demand_result raop_demand_validate(
++		const struct raop_demand_state *state,
++		const struct raop_demand_command *command)
++{
++	if (state == NULL || command == NULL || command->sequence == 0 ||
++			command->nonce != state->nonce)
++		return RAOP_DEMAND_DENIED;
++	if (command->sequence == state->sequence)
++		return command->demanded == state->demanded ?
++			RAOP_DEMAND_RETRY :
++			RAOP_DEMAND_STALE;
++	if (state->sequence != UINT64_MAX &&
++			command->sequence == state->sequence + 1)
++		return RAOP_DEMAND_ADVANCE;
++	return command->sequence < state->sequence ?
++		RAOP_DEMAND_STALE :
++		RAOP_DEMAND_DENIED;
++}
++
++void raop_demand_commit(struct raop_demand_state *state,
++		const struct raop_demand_command *command)
++{
++	if (state == NULL || command == NULL)
++		return;
++	state->sequence = command->sequence;
++	state->demanded = command->demanded;
++}
++
++bool raop_demand_want_stream(bool demand_contract,
++		const struct raop_demand_state *state,
++		bool format_present, bool activation_failed, bool destroying)
++{
++	if (!format_present || activation_failed || destroying)
++		return false;
++	return !demand_contract || (state != NULL && state->demanded);
++}
++
++int raop_demand_command_parse(const char *json,
++		struct raop_demand_command *command)
++{
++	struct spa_json top, iter;
++	const char *object, *value;
++	char key[64], id[64], state[16], sequence[32], nonce[19];
++	bool have_id = false, have_state = false;
++	bool have_sequence = false, have_nonce = false;
++	bool have_unknown = false;
++	uint64_t parsed_sequence, parsed_nonce;
++	int object_len, len;
++
++	if (json == NULL || command == NULL)
++		return -EINVAL;
++	spa_json_init(&top, json, strlen(json));
++	object_len = spa_json_next(&top, &object);
++	if (object_len <= 0 || !spa_json_is_object(object, object_len))
++		return -EINVAL;
++	object_len = spa_json_container_len(&top, object, object_len);
++	if (object_len <= 0 ||
++			spa_json_next(&top, &value) != 0 ||
++			parse_command_id(object, object_len,
++				id, sizeof(id)) < 0)
++		return -EINVAL;
++	/*
++	 * User commands share one channel. Decide ownership from command.id
++	 * before validating demand-specific fields, so a future command can use
++	 * a key such as "nonce" with a different representation.
++	 */
++	if (!spa_streq(id, RAOP_DEMAND_COMMAND))
++		return -ENOENT;
++	if (spa_json_begin_object(&iter, object, object_len) <= 0)
++		return -EINVAL;
++
++	while ((len = spa_json_object_next(&iter, key, sizeof(key),
++			&value)) > 0) {
++		if (spa_streq(key, "command.id")) {
++			if (have_id || !parse_string(value, len, id, sizeof(id)))
++				return -EINVAL;
++			have_id = true;
++		} else if (spa_streq(key, "state")) {
++			if (have_state || !parse_string(value, len,
++					state, sizeof(state)))
++				return -EINVAL;
++			have_state = true;
++		} else if (spa_streq(key, "sequence")) {
++			if (have_sequence || !parse_string(value, len,
++					sequence, sizeof(sequence)))
++				return -EINVAL;
++			have_sequence = true;
++		} else if (spa_streq(key, "nonce")) {
++			if (have_nonce || !parse_string(value, len,
++					nonce, sizeof(nonce)))
++				return -EINVAL;
++			have_nonce = true;
++		} else {
++			have_unknown = true;
++		}
++	}
++	if (len < 0 || !have_id)
++		return -EINVAL;
++	if (!have_state || !have_sequence || !have_nonce || have_unknown ||
++			!decimal_string(sequence) ||
++			!spa_atou64(sequence, &parsed_sequence, 10) ||
++			parsed_sequence == 0)
++		return -EINVAL;
++	if (!hexadecimal_string(nonce) ||
++			!spa_atou64(nonce, &parsed_nonce, 16) ||
++			parsed_nonce == 0)
++		return -EINVAL;
++	if (spa_streq(state, "demanded"))
++		command->demanded = true;
++	else if (spa_streq(state, "idle"))
++		command->demanded = false;
++	else
++		return -EINVAL;
++
++	command->sequence = parsed_sequence;
++	command->nonce = parsed_nonce;
++	return 0;
++}
+diff --git a/src/modules/module-raop/demand.h b/src/modules/module-raop/demand.h
+new file mode 100644
+index 0000000..792cf98
+--- /dev/null
++++ b/src/modules/module-raop/demand.h
+@@ -0,0 +1,63 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#ifndef PIPEWIRE_MODULE_RAOP_DEMAND_H
++#define PIPEWIRE_MODULE_RAOP_DEMAND_H
++
++#include <stdbool.h>
++#include <stdint.h>
++
++#define RAOP_EXPLICIT_DEMAND_CONTRACT	"4"
++#define RAOP_DEMAND_CONTRACT		"1"
++#define RAOP_DEMAND_CONTROL		"node-command"
++#define RAOP_DEMAND_COMMAND		"raop-demand-state"
++
++enum raop_demand_result {
++	RAOP_DEMAND_ADVANCE,
++	RAOP_DEMAND_RETRY,
++	RAOP_DEMAND_STALE,
++	RAOP_DEMAND_DENIED,
++};
++
++struct raop_demand_state {
++	uint64_t sequence;
++	uint64_t nonce;
++	bool demanded;
++};
++
++struct raop_demand_command {
++	uint64_t sequence;
++	uint64_t nonce;
++	bool demanded;
++};
++
++void raop_demand_state_init(struct raop_demand_state *state,
++		uint64_t nonce);
++
++enum raop_demand_result raop_demand_validate(
++		const struct raop_demand_state *state,
++		const struct raop_demand_command *command);
++
++void raop_demand_commit(struct raop_demand_state *state,
++		const struct raop_demand_command *command);
++
++bool raop_demand_want_stream(bool demand_contract,
++		const struct raop_demand_state *state,
++		bool format_present, bool activation_failed, bool destroying);
++
++/*
++ * Parse the JSON string carried in SPA_NODE_COMMAND_User's
++ * SPA_COMMAND_NODE_extra property. All four string fields are mandatory:
++ *
++ * {
++ *   "command.id": "raop-demand-state",
++ *   "state": "demanded"|"idle",
++ *   "sequence": "<positive decimal integer>",
++ *   "nonce": "<16 lowercase or uppercase hexadecimal digits>"
++ * }
++ */
++int raop_demand_command_parse(const char *json,
++		struct raop_demand_command *command);
++
++#endif /* PIPEWIRE_MODULE_RAOP_DEMAND_H */
+diff --git a/src/modules/module-raop/test-demand.c b/src/modules/module-raop/test-demand.c
+new file mode 100644
+index 0000000..8db2fef
+--- /dev/null
++++ b/src/modules/module-raop/test-demand.c
+@@ -0,0 +1,179 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <errno.h>
++
++#include <spa/utils/defs.h>
++
++#include "demand.h"
++
++#define TEST_NONCE UINT64_C(0x0123456789abcdef)
++
++static void test_state_machine(void)
++{
++	struct raop_demand_state state;
++	struct raop_demand_command command = {
++		.sequence = 1,
++		.nonce = TEST_NONCE,
++		.demanded = true,
++	};
++
++	raop_demand_state_init(&state, TEST_NONCE);
++	spa_assert_se(state.sequence == 0);
++	spa_assert_se(state.nonce == TEST_NONCE);
++	spa_assert_se(!state.demanded);
++	spa_assert_se(raop_demand_validate(&state, &command) ==
++			RAOP_DEMAND_ADVANCE);
++	raop_demand_commit(&state, &command);
++	spa_assert_se(state.sequence == 1);
++	spa_assert_se(state.demanded);
++
++	spa_assert_se(raop_demand_validate(&state, &command) ==
++			RAOP_DEMAND_RETRY);
++	command.demanded = false;
++	spa_assert_se(raop_demand_validate(&state, &command) ==
++			RAOP_DEMAND_STALE);
++
++	command.sequence = 2;
++	spa_assert_se(raop_demand_validate(&state, &command) ==
++			RAOP_DEMAND_ADVANCE);
++	raop_demand_commit(&state, &command);
++	spa_assert_se(!state.demanded);
++
++	command.sequence = 1;
++	command.demanded = true;
++	spa_assert_se(raop_demand_validate(&state, &command) ==
++			RAOP_DEMAND_STALE);
++	command.sequence = 4;
++	spa_assert_se(raop_demand_validate(&state, &command) ==
++			RAOP_DEMAND_DENIED);
++	command.sequence = 3;
++	command.nonce++;
++	spa_assert_se(raop_demand_validate(&state, &command) ==
++			RAOP_DEMAND_DENIED);
++	command.nonce = TEST_NONCE;
++	command.sequence = 0;
++	spa_assert_se(raop_demand_validate(&state, &command) ==
++			RAOP_DEMAND_DENIED);
++
++	state.sequence = UINT64_MAX;
++	state.demanded = false;
++	command.sequence = UINT64_MAX;
++	command.demanded = false;
++	spa_assert_se(raop_demand_validate(&state, &command) ==
++			RAOP_DEMAND_RETRY);
++	command.demanded = true;
++	spa_assert_se(raop_demand_validate(&state, &command) ==
++			RAOP_DEMAND_STALE);
++}
++
++static void test_want_stream(void)
++{
++	struct raop_demand_state state;
++
++	raop_demand_state_init(&state, TEST_NONCE);
++
++	/* Legacy contracts remain Format-driven. */
++	spa_assert_se(raop_demand_want_stream(false, &state,
++			true, false, false));
++	spa_assert_se(!raop_demand_want_stream(false, &state,
++			false, false, false));
++
++	/* Explicit-demand mode requires both Format and positive demand. */
++	spa_assert_se(!raop_demand_want_stream(true, &state,
++			true, false, false));
++	state.demanded = true;
++	spa_assert_se(!raop_demand_want_stream(true, &state,
++			false, false, false));
++	spa_assert_se(raop_demand_want_stream(true, &state,
++			true, false, false));
++
++	/* Fatal state and destruction dominate every other input. */
++	spa_assert_se(!raop_demand_want_stream(true, &state,
++			true, true, false));
++	spa_assert_se(!raop_demand_want_stream(true, &state,
++			true, false, true));
++	spa_assert_se(!raop_demand_want_stream(true, NULL,
++			true, false, false));
++}
++
++static void test_parser(void)
++{
++	struct raop_demand_command command;
++	static const char demanded[] =
++		"{\"command.id\":\"raop-demand-state\","
++		"\"state\":\"demanded\",\"sequence\":\"1\","
++		"\"nonce\":\"0123456789abcdef\"}";
++	static const char idle[] =
++		"{\"command.id\":\"raop-demand-state\","
++		"\"state\":\"idle\",\"sequence\":\"2\","
++		"\"nonce\":\"0123456789ABCDEF\"}";
++
++	spa_assert_se(raop_demand_command_parse(demanded, &command) == 0);
++	spa_assert_se(command.sequence == 1);
++	spa_assert_se(command.nonce == TEST_NONCE);
++	spa_assert_se(command.demanded);
++	spa_assert_se(raop_demand_command_parse(idle, &command) == 0);
++	spa_assert_se(command.sequence == 2);
++	spa_assert_se(command.nonce == TEST_NONCE);
++	spa_assert_se(!command.demanded);
++
++	spa_assert_se(raop_demand_command_parse(
++			"{\"command.id\":\"other\",\"state\":\"demanded\","
++			"\"sequence\":\"3\","
++			"\"nonce\":\"0123456789abcdef\"}", &command) == -ENOENT);
++	/* Parsers share the User-command channel; another command's schema must
++	 * pass through instead of being misclassified as malformed demand. */
++	spa_assert_se(raop_demand_command_parse(
++			"{\"command.id\":\"raop-safety-gate-hold\","
++			"\"nonce\":\"0123456789abcdef\"}",
++			&command) == -ENOENT);
++	spa_assert_se(raop_demand_command_parse(
++			"{\"nonce\":42,"
++			"\"command.id\":\"future-command\"}",
++			&command) == -ENOENT);
++	spa_assert_se(raop_demand_command_parse(
++			"{\"command.id\":\"raop-demand-state\","
++			"\"state\":\"invalid\",\"sequence\":\"3\","
++			"\"nonce\":\"0123456789abcdef\"}", &command) == -EINVAL);
++	spa_assert_se(raop_demand_command_parse(
++			"{\"command.id\":\"raop-demand-state\","
++			"\"state\":\"demanded\",\"sequence\":3,"
++			"\"nonce\":\"0123456789abcdef\"}", &command) == -EINVAL);
++	spa_assert_se(raop_demand_command_parse(
++			"{\"command.id\":\"raop-demand-state\","
++			"\"state\":\"demanded\",\"sequence\":\"0\","
++			"\"nonce\":\"0123456789abcdef\"}", &command) == -EINVAL);
++	spa_assert_se(raop_demand_command_parse(
++			"{\"command.id\":\"raop-demand-state\","
++			"\"state\":\"demanded\",\"sequence\":\"3\","
++			"\"nonce\":\"0\"}", &command) == -EINVAL);
++	spa_assert_se(raop_demand_command_parse(
++			"{\"command.id\":\"raop-demand-state\","
++			"\"state\":\"demanded\",\"sequence\":\"3\","
++			"\"nonce\":\"0123456789abcdef\",\"unknown\":\"x\"}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_demand_command_parse(
++			"{\"command.id\":\"raop-demand-state\","
++			"\"command.id\":\"raop-demand-state\","
++			"\"state\":\"demanded\",\"sequence\":\"3\","
++			"\"nonce\":\"0123456789abcdef\"}", &command) == -EINVAL);
++	spa_assert_se(raop_demand_command_parse(
++			"{\"command.id\":\"raop-demand-state\","
++			"\"state\":\"demanded\",\"sequence\":\"3\","
++			"\"nonce\":\"0123456789abcdef\"} trailing",
++			&command) == -EINVAL);
++	spa_assert_se(raop_demand_command_parse(NULL, &command) == -EINVAL);
++	spa_assert_se(raop_demand_command_parse(demanded, NULL) == -EINVAL);
++}
++
++int main(void)
++{
++	test_state_machine();
++	test_want_stream();
++	test_parser();
++	return 0;
++}
+diff --git a/src/modules/module-raop/test-volume.c b/src/modules/module-raop/test-volume.c
+index 3e96ddd..7764e4b 100644
+--- a/src/modules/module-raop/test-volume.c
++++ b/src/modules/module-raop/test-volume.c
+@@ -242,6 +242,18 @@ static void test_stream_contract(void)
+ 	spa_assert_se(spa_streq(pw_properties_get(stream_props,
+ 			"raop.volume.contract"), "3"));
+ 
++	/* Contract 4 retains the same single-data-loop safety boundary. */
++	pw_properties_set(module_props, "raop.volume.contract", "4");
++	pw_properties_set(stream_props, "aes67.driver-group",
++			"unrelated-driver");
++	spa_assert_se(raop_volume_override_stream_props(stream_props,
++			module_props) == -EINVAL);
++	pw_properties_set(stream_props, "aes67.driver-group", NULL);
++	spa_assert_se(raop_volume_override_stream_props(stream_props,
++			module_props) == 0);
++	spa_assert_se(spa_streq(pw_properties_get(stream_props,
++			"raop.volume.contract"), "4"));
++
+ 	/* A missing module identity value removes, rather than trusts, a value
+ 	 * injected through nested stream.props. */
+ 	pw_properties_set(module_props, "raop.device", NULL);
+diff --git a/src/modules/module-raop/volume.c b/src/modules/module-raop/volume.c
+index 7f458bc..125d7d8 100644
+--- a/src/modules/module-raop/volume.c
++++ b/src/modules/module-raop/volume.c
+@@ -197,12 +197,15 @@ int raop_volume_override_stream_props(struct pw_properties *stream_props,
+ 	if (stream_props == NULL || module_props == NULL)
+ 		return -EINVAL;
+ 	/*
+-	 * Contract 3 serializes its packet gate on the pw_stream data loop.
++	 * Contracts 3 and 4 serialize their packet gate on the pw_stream data
++	 * loop.
+ 	 * An AES67 driver group creates a separate PTP sender filter loop that
+ 	 * would bypass that single-loop safety boundary.
+ 	 */
+-	if (spa_streq(pw_properties_get(module_props,
+-				"raop.volume.contract"), "3") &&
++	if ((spa_streq(pw_properties_get(module_props,
++				"raop.volume.contract"), "3") ||
++			spa_streq(pw_properties_get(module_props,
++				"raop.volume.contract"), "4")) &&
+ 			pw_properties_get(stream_props,
+ 				"aes67.driver-group") != NULL)
+ 		return -EINVAL;
+diff --git a/src/modules/module-raop-sink.c b/src/modules/module-raop-sink.c
+index 1628f9a..db56e23 100644
+--- a/src/modules/module-raop-sink.c
++++ b/src/modules/module-raop-sink.c
+@@ -53,6 +53,7 @@
+ #endif
+ 
+ #include "module-raop/dacp-server.h"
++#include "module-raop/demand.h"
+ #include "module-raop/rtsp-client.h"
+ #include "module-raop/safety-gate.h"
+ #include "module-raop/volume.h"
+@@ -501,6 +502,9 @@ static bool source_marker_release_command_matches(
+  *                    Contract 3 also publishes a module-generated, rotatable
+  *                    RAOP source marker. Its metadata acknowledgement must
+  *                    succeed before recording can start.
++ *                    Contract 4 adds an explicit, sequenced controller demand
++ *                    to contract 3. A negotiated Format alone cannot create
++ *                    or reconnect an RTSP session under contract 4.
+  * - `stream.props = {}`: properties to be passed to the sink stream
+  *
+  * By default the created node publishes `raop.volume.contract = 2`. In the
+@@ -521,7 +525,7 @@ static bool source_marker_release_command_matches(
+  * `state.restore-props = false` so a session manager cannot replace the
+  * supplied startup value with stale saved Props.
+  *
+- * Contract 3 starts with its transport gate closed and publishes
++ * Contracts 3 and 4 start with their transport gate closed and publish
+  * `raop.safety.gate.state`, `raop.safety.gate.sequence`,
+  * `raop.safety.gate.reasons`, and a per-publication
+  * `raop.safety.gate.nonce`. A controller can release the current activation
+@@ -556,7 +560,7 @@ static bool source_marker_release_command_matches(
+  * or a latched error leaves the gate closed. Contract 2 ignores this command
+  * and retains its existing behavior.
+  *
+- * Contract 3 also publishes `raop.source.marker.contract = 1`,
++ * Contracts 3 and 4 also publish `raop.source.marker.contract = 1`,
+  * `raop.source.marker.state`, `raop.source.marker.sequence`, and
+  * `raop.source.marker.value`: a valid marker while pending or confirmed, or
+  * an empty tombstone otherwise.
+@@ -577,11 +581,32 @@ static bool source_marker_release_command_matches(
+  * \endcode
+  *
+  * The command is accepted only for a live recording session, a confirmed
+- * current marker, and an exact closed, non-error contract-3 gate. The newly
++ * current marker, and an exact closed, non-error safety gate. The newly
+  * generated marker is first published as pending and becomes confirmed only
+  * after a successful RTSP response. Failure clears the value, latches the
+  * transport gate closed, and fails the stream.
+  *
++ * The explicit-demand contract additionally publishes
++ * `raop.demand.contract = 1`,
++ * `raop.demand.control = node-command`, `raop.demand.nonce`,
++ * `raop.demand.sequence`, and `raop.demanded`. It starts idle at sequence
++ * zero. A controller changes demand with:
++ *
++ * \code{.unparsed}
++ * { "command.id": "raop-demand-state",
++ *   "state": "demanded"|"idle",
++ *   "sequence": "<exact next positive decimal sequence>",
++ *   "nonce": "<published 16-digit hexadecimal nonce>" }
++ * \endcode
++ *
++ * A same-sequence, same-state command is an idempotent retry. Other stale,
++ * skipped, contradictory, or wrong-nonce commands are ignored or denied.
++ * The module acknowledges an idle generation only after closing the packet
++ * gate, cancelling reconnect and either cancelling pre-session RTSP work or
++ * initiating receiver teardown. A demanded generation is acknowledged while
++ * the packet gate remains closed; RTSP activation then additionally requires
++ * a negotiated Format.
++ *
+  * Options with well-known behavior.
+  *
+  * - \ref PW_KEY_REMOTE_NAME
+@@ -683,7 +708,7 @@ PW_LOG_TOPIC(mod_topic, "mod." NAME);
+ 			"( raop.volume.query-timeout.ms=<timeout, default:"SPA_STRINGIFY(DEFAULT_VOLUME_QUERY_TIMEOUT_MS)"> ) "	\
+ 			"( raop.volume.initial=<normalized value required for external> ) "	\
+ 			"( raop.volume.initial.mute=<boolean, default:false> ) "		\
+-			"( raop.volume.contract=<2|3, default:2> ) "			\
++			"( raop.volume.contract=<2|3|4, default:2> ) "			\
+ 			"( node.latency=<latency as fraction> ) "				\
+ 			"( node.name=<name of the nodes> ) "					\
+ 			"( node.description=<description of the nodes> ) "			\
+@@ -838,6 +863,9 @@ struct impl {
+ 	unsigned int volume_valid:1;
+ 	unsigned int volume_prepare_started:1;
+ 	unsigned int session_software:1;
++	unsigned int format_present:1;
++	unsigned int demand_contract:1;
++	unsigned int activation_failed:1;
+ 
+ 	/* Immutable once the stream is created; safe to read on the data loop. */
+ 	bool safety_gate_contract;
+@@ -846,6 +874,7 @@ struct impl {
+ 	uint32_t recording;
+ 	uint32_t safety_gate_closed;
+ 	struct raop_safety_gate safety_gate;
++	struct raop_demand_state demand;
+ 	struct raop_source_marker source_marker;
+ 	float volume;
+ 	float channel_volume;
+@@ -1619,6 +1648,58 @@ static bool volume_control_uses_software(const struct impl *impl)
+ 			impl->session_software);
+ }
+ 
++static void demand_format_properties(const struct impl *impl,
++		char sequence[32], char nonce[17], const char **demanded)
++{
++	spa_scnprintf(sequence, 32, "%" PRIu64, impl->demand.sequence);
++	spa_scnprintf(nonce, 17, "%016" PRIx64, impl->demand.nonce);
++	*demanded = impl->demand.demanded ? "true" : "false";
++}
++
++static void demand_set_initial_properties(struct impl *impl)
++{
++	const char *demanded;
++	char sequence[32], nonce[17];
++
++	pw_properties_set(impl->stream_props, "raop.demand.contract", NULL);
++	pw_properties_set(impl->stream_props, "raop.demand.control", NULL);
++	pw_properties_set(impl->stream_props, "raop.demand.nonce", NULL);
++	pw_properties_set(impl->stream_props, "raop.demand.sequence", NULL);
++	pw_properties_set(impl->stream_props, "raop.demanded", NULL);
++	if (!impl->demand_contract)
++		return;
++
++	demand_format_properties(impl, sequence, nonce, &demanded);
++	pw_properties_set(impl->stream_props, "raop.demand.contract",
++			RAOP_DEMAND_CONTRACT);
++	pw_properties_set(impl->stream_props, "raop.demand.control",
++			RAOP_DEMAND_CONTROL);
++	pw_properties_set(impl->stream_props, "raop.demand.nonce", nonce);
++	pw_properties_set(impl->stream_props, "raop.demand.sequence",
++			sequence);
++	pw_properties_set(impl->stream_props, "raop.demanded", demanded);
++}
++
++static int demand_publish(struct impl *impl)
++{
++	struct spa_dict_item items[5];
++	const char *demanded;
++	char sequence[32], nonce[17];
++
++	if (!impl->demand_contract || impl->stream == NULL)
++		return 0;
++	demand_format_properties(impl, sequence, nonce, &demanded);
++	items[0] = SPA_DICT_ITEM_INIT("raop.demand.contract",
++			RAOP_DEMAND_CONTRACT);
++	items[1] = SPA_DICT_ITEM_INIT("raop.demand.control",
++			RAOP_DEMAND_CONTROL);
++	items[2] = SPA_DICT_ITEM_INIT("raop.demand.nonce", nonce);
++	items[3] = SPA_DICT_ITEM_INIT("raop.demand.sequence", sequence);
++	items[4] = SPA_DICT_ITEM_INIT("raop.demanded", demanded);
++	return rtp_stream_update_properties(impl->stream,
++			&SPA_DICT_INIT(items, SPA_N_ELEMENTS(items)));
++}
++
+ static void safety_gate_format_properties(const struct impl *impl,
+ 		char sequence[32], char nonce[17], char reasons[64],
+ 		const char **state)
+@@ -1776,17 +1857,17 @@ static bool safety_gate_stop_recording(struct impl *impl, const char *why)
+ 	return true;
+ }
+ 
+-static void safety_gate_invalidate(struct impl *impl, uint32_t reasons,
++static int safety_gate_invalidate(struct impl *impl, uint32_t reasons,
+ 		const char *why)
+ {
+ 	int res;
+ 
+ 	if (!impl->safety_gate_contract)
+-		return;
++		return 0;
+ 
+ 	if ((res = safety_gate_close_and_drain(impl)) < 0) {
+ 		safety_gate_close_barrier_failed(impl, reasons, why, res);
+-		return;
++		return res;
+ 	}
+ 	raop_safety_gate_invalidate(&impl->safety_gate, reasons);
+ 	pw_log_debug("closed RAOP safety gate at sequence %" PRIu64
+@@ -1794,6 +1875,7 @@ static void safety_gate_invalidate(struct impl *impl, uint32_t reasons,
+ 	if ((res = safety_gate_publish(impl)) < 0)
+ 		pw_log_warn("can't publish closed RAOP safety gate: %s",
+ 				spa_strerror(res));
++	return res;
+ }
+ 
+ static void source_marker_cleanup(struct impl *impl, const char *reason)
+@@ -1854,6 +1936,86 @@ static void safety_gate_hold(struct impl *impl, uint32_t reasons,
+ 				spa_strerror(res));
+ }
+ 
++static int activation_deactivate(struct impl *impl, uint32_t reasons,
++		const char *why, bool force_gate_generation)
++{
++	int first_error = 0, res;
++
++	/*
++	 * Close and drain packet delivery before clearing the cached activation
++	 * decision.
++	 * Continue every fail-closed action even if gate publication fails.
++	 */
++	if (impl->safety_gate_contract &&
++			(force_gate_generation || impl->want_stream) &&
++			(res = safety_gate_invalidate(impl, reasons, why)) < 0)
++		first_error = res;
++	impl->want_stream = false;
++	pw_timer_queue_cancel(&impl->reconnect_timer);
++	impl->reconnect_attempts = 0;
++	if (!impl->ready && (impl->connected || impl->connecting ||
++			impl->handshaking)) {
++		/*
++		 * There is no receiver session we can TEARDOWN yet. Closing the
++		 * RTSP client synchronously cancels pending OPTIONS/auth/ANNOUNCE/
++		 * SETUP callbacks, so an idle acknowledgement cannot be followed
++		 * by an older activation generation advancing to RECORD. It also
++		 * prevents a completed connect from remaining parked indefinitely
++		 * after demand disappeared.
++		 */
++		if ((res = pw_rtsp_client_disconnect(impl->rtsp)) < 0 &&
++				first_error == 0)
++			first_error = res;
++		/*
++		 * disconnect normally emits rtsp_disconnected(), which performs
++		 * this cleanup. Retain an idempotent fallback for an already
++		 * detached RTSP source.
++		 */
++		if (impl->connected || impl->connecting ||
++				impl->handshaking) {
++			impl->connected = false;
++			impl->connecting = false;
++			if (!connection_cleanup(impl) && first_error == 0)
++				first_error = -EIO;
++		}
++	} else if ((res = rtsp_do_teardown(impl)) < 0 &&
++			first_error == 0) {
++		first_error = res;
++	}
++	return first_error;
++}
++
++static int activation_reconcile(struct impl *impl, const char *why)
++{
++	bool want_stream = raop_demand_want_stream(
++			impl->demand_contract, &impl->demand,
++			impl->format_present, impl->activation_failed,
++			impl->destroying);
++	int res;
++
++	if (want_stream == impl->want_stream)
++		return 0;
++	if (!want_stream)
++		return activation_deactivate(impl,
++				RAOP_SAFETY_GATE_ACTIVATION, why, false);
++
++	/*
++	 * Publish a fresh closed activation generation before any RTSP work.
++	 * A positive demand acknowledgement is therefore never an implicit
++	 * permission to deliver packets.
++	 */
++	if ((res = safety_gate_invalidate(impl,
++			RAOP_SAFETY_GATE_ACTIVATION, why)) < 0)
++		return res;
++	impl->want_stream = true;
++	if ((res = rtsp_do_connect(impl)) < 0) {
++		pw_log_warn("can't start RAOP activation (%s): %s",
++				why, spa_strerror(res));
++		schedule_rtsp_reconnect(impl);
++	}
++	return 0;
++}
++
+ static int get_boottime_usec(uint64_t *value)
+ {
+ #ifdef CLOCK_BOOTTIME
+@@ -2041,6 +2203,103 @@ static void safety_gate_release(struct impl *impl,
+ 			impl->safety_gate.sequence);
+ }
+ 
++static void demand_contract_fail(struct impl *impl,
++		const char *reason, int error)
++{
++	int res;
++
++	pw_log_error("%s: %s", reason, spa_strerror(error));
++	impl->activation_failed = true;
++	res = activation_deactivate(impl,
++			RAOP_SAFETY_GATE_ERROR, reason, true);
++	if (res < 0)
++		pw_log_warn("can't complete failed RAOP demand teardown: %s",
++				spa_strerror(res));
++	if (impl->stream != NULL)
++		rtp_stream_set_error(impl->stream, error, reason);
++	if (!impl->destroying)
++		pw_impl_module_schedule_destroy(impl->module);
++}
++
++static int apply_demand_command(struct impl *impl,
++		const struct raop_demand_command *command)
++{
++	enum raop_demand_result result;
++	int res;
++
++	result = raop_demand_validate(&impl->demand, command);
++	switch (result) {
++	case RAOP_DEMAND_RETRY:
++		pw_log_debug("accepting RAOP demand sequence %" PRIu64 " retry",
++				command->sequence);
++		if ((res = demand_publish(impl)) < 0)
++			demand_contract_fail(impl,
++					"can't republish RAOP demand state", res);
++		return res;
++	case RAOP_DEMAND_STALE:
++		pw_log_debug("ignoring stale RAOP demand sequence %" PRIu64,
++				command->sequence);
++		return 0;
++	case RAOP_DEMAND_DENIED:
++		pw_log_warn("denying RAOP demand sequence %" PRIu64,
++				command->sequence);
++		return -EPERM;
++	case RAOP_DEMAND_ADVANCE:
++		break;
++	}
++
++	if (command->demanded && impl->activation_failed) {
++		pw_log_warn("denying RAOP demand after a fatal activation failure");
++		return -EIO;
++	}
++
++	raop_demand_commit(&impl->demand, command);
++	if (!command->demanded) {
++		/*
++		 * The idle acknowledgement is a teardown barrier: close the
++		 * packet gate and revoke reconnect authority before publishing
++		 * the exact accepted sequence.
++		 */
++		res = activation_deactivate(impl,
++				RAOP_SAFETY_GATE_ACTIVATION,
++				"explicit controller demand ended", true);
++		if (res < 0) {
++			demand_contract_fail(impl,
++					"can't deactivate acknowledged RAOP demand",
++					res);
++			return res;
++		}
++		if ((res = demand_publish(impl)) < 0) {
++			demand_contract_fail(impl,
++					"can't publish idle RAOP demand state", res);
++			return res;
++		}
++	} else {
++		/*
++		 * Publish positive intent while the transport gate is still
++		 * closed. Only the derived Format && demanded state below may
++		 * begin RTSP activation.
++		 */
++		if ((res = demand_publish(impl)) < 0) {
++			demand_contract_fail(impl,
++					"can't publish demanded RAOP state", res);
++			return res;
++		}
++		if ((res = activation_reconcile(impl,
++				"explicit controller demand started")) < 0) {
++			demand_contract_fail(impl,
++					"can't establish closed RAOP activation gate",
++					res);
++			return res;
++		}
++	}
++
++	pw_log_info("RAOP stream is now %s at demand sequence %" PRIu64,
++			command->demanded ? "demanded" : "idle",
++			command->sequence);
++	return 0;
++}
++
+ static void stream_command(void *data, const struct spa_command *command)
+ {
+ 	struct impl *impl = data;
+@@ -2055,6 +2314,7 @@ static void stream_command(void *data, const struct spa_command *command)
+ 
+ 	object = (const struct spa_pod_object *)command;
+ 	SPA_POD_OBJECT_FOREACH(object, prop) {
++		struct raop_demand_command demand;
+ 		struct raop_safety_gate_hold_command hold;
+ 		struct raop_safety_gate_command release;
+ 		struct raop_source_marker_rotate_command rotate;
+@@ -2066,6 +2326,23 @@ static void stream_command(void *data, const struct spa_command *command)
+ 			continue;
+ 
+ 		json = SPA_POD_CONTENTS(struct spa_pod, &prop->value);
++		res = raop_demand_command_parse(json, &demand);
++		if (res == 0) {
++			if (!impl->demand_contract) {
++				pw_log_warn("denying RAOP demand command without "
++						"contract 4");
++				return;
++			}
++			res = apply_demand_command(impl, &demand);
++			if (res < 0 && res != -EPERM && res != -EIO)
++				pw_log_error("can't apply RAOP demand command: %s",
++						spa_strerror(res));
++			return;
++		}
++		if (res != -ENOENT) {
++			pw_log_warn("ignoring malformed RAOP demand command");
++			return;
++		}
+ 		res = source_marker_parse_rotate_command(json, &rotate);
+ 		if (res == 0) {
+ 			if (!source_marker_rotate_command_matches(
+@@ -2446,16 +2723,16 @@ static int rtsp_volume_set_reply(void *data, int status,
+ 
+ static bool volume_fail_closed(struct impl *impl, const char *reason)
+ {
++	int res;
++
+ 	pw_log_error("%s", reason);
+-	safety_gate_invalidate(impl, RAOP_SAFETY_GATE_ERROR, reason);
+ 	impl->volume_continuation = VOLUME_CONTINUE_NONE;
+-	if (!safety_gate_stop_recording(impl, "RAOP volume failure"))
+-		return false;
+-	impl->want_stream = false;
+-	rtsp_do_teardown(impl);
++	impl->activation_failed = true;
++	res = activation_deactivate(impl, RAOP_SAFETY_GATE_ERROR,
++			reason, true);
+ 	if (impl->stream != NULL)
+ 		rtp_stream_set_error(impl->stream, -EIO, reason);
+-	return true;
++	return res >= 0;
+ }
+ 
+ static void source_marker_fail_closed(struct impl *impl, const char *reason)
+@@ -2488,8 +2765,9 @@ static void volume_remote_failed(struct impl *impl,
+ 	if (action == RAOP_VOLUME_FAILURE_ERROR) {
+ 		pw_log_error("remote volume %s failed: %s", operation, reason);
+ 		impl->volume_continuation = VOLUME_CONTINUE_NONE;
+-		impl->want_stream = false;
+-		rtsp_do_teardown(impl);
++		impl->activation_failed = true;
++		activation_deactivate(impl, RAOP_SAFETY_GATE_ERROR,
++				"RAOP receiver volume is unavailable", true);
+ 		rtp_stream_set_error(impl->stream, -EIO,
+ 				"RAOP receiver volume is unavailable");
+ 		return;
+@@ -3575,8 +3853,9 @@ static void stream_report_error(void *data, const char *error)
+ 	struct impl *impl = data;
+ 	if (error) {
+ 		pw_log_error("stream error: %s", error);
+-		safety_gate_invalidate(impl, RAOP_SAFETY_GATE_ERROR,
+-				"PipeWire stream error");
++		impl->activation_failed = true;
++		activation_deactivate(impl, RAOP_SAFETY_GATE_ERROR,
++				"PipeWire stream error", true);
+ 		pw_impl_module_schedule_destroy(impl->module);
+ 	}
+ }
+@@ -3658,9 +3937,12 @@ static int rtsp_do_teardown(struct impl *impl)
+ 	pw_timer_queue_cancel(&impl->volume_query_timer);
+ 	pw_timer_queue_cancel(&impl->volume_set_timer);
+ 
+-	/* During OPTIONS/ANNOUNCE/SETUP, keep DACP headers and advertisement
+-	 * alive until the receiver-side session exists. The SETUP completion
+-	 * path will observe want_stream=false and tear it down immediately. */
++	/*
++	 * A receiver-side session is not teardown-capable before SETUP
++	 * completes. activation_deactivate() synchronously disconnects and
++	 * cancels that pre-session work; a late SETUP completion marks the
++	 * session ready before entering this function.
++	 */
+ 	if (!impl->ready || impl->tearing_down)
+ 		return 0;
+ 
+@@ -3814,23 +4096,31 @@ static void stream_props_changed(struct impl *impl, uint32_t id, const struct sp
+ static void stream_param_changed(void *data, uint32_t id, const struct spa_pod *param)
+ {
+ 	struct impl *impl = data;
++	int res;
+ 
+ 	switch (id) {
+ 	case SPA_PARAM_Format:
+-		if (impl->safety_gate_contract &&
+-				impl->want_stream != (param != NULL))
+-			safety_gate_invalidate(impl,
+-					RAOP_SAFETY_GATE_ACTIVATION,
+-					param != NULL ?
+-						"audio activation requested" :
+-						"audio activation ended");
+-		impl->want_stream = param != NULL;
+-		if (!impl->want_stream) {
+-			pw_timer_queue_cancel(&impl->reconnect_timer);
+-			impl->reconnect_attempts = 0;
+-			rtsp_do_teardown(impl);
+-		} else {
+-			rtsp_do_connect(impl);
++		impl->format_present = param != NULL;
++		if ((res = activation_reconcile(impl,
++				param != NULL ?
++					"audio Format became available" :
++					"audio Format was removed")) < 0) {
++			const char *reason =
++				"can't enforce RAOP activation state";
++
++			if (impl->demand_contract)
++				demand_contract_fail(impl, reason, res);
++			else {
++				pw_log_error("%s: %s", reason,
++						spa_strerror(res));
++				impl->activation_failed = true;
++				activation_deactivate(impl,
++						RAOP_SAFETY_GATE_ERROR,
++						reason, true);
++				if (impl->stream != NULL)
++					rtp_stream_set_error(impl->stream,
++							res, reason);
++			}
+ 		}
+ 		break;
+ 	case SPA_PARAM_Props:
+@@ -4031,14 +4321,17 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 		impl->safety_gate_contract = false;
+ 		pw_properties_set(props, "raop.volume.contract",
+ 				RAOP_VOLUME_CONTRACT);
+-	} else if (spa_streq(str, RAOP_SAFETY_GATE_CONTRACT)) {
++	} else if (spa_streq(str, RAOP_SAFETY_GATE_CONTRACT) ||
++			spa_streq(str, RAOP_EXPLICIT_DEMAND_CONTRACT)) {
+ 		if (impl->volume_control != RAOP_VOLUME_EXTERNAL) {
+-			pw_log_error("RAOP volume contract 3 requires "
+-					"raop.volume.control=external");
++			pw_log_error("RAOP volume contract %s requires "
++					"raop.volume.control=external", str);
+ 			res = -EINVAL;
+ 			goto error;
+ 		}
+ 		impl->safety_gate_contract = true;
++		impl->demand_contract =
++			spa_streq(str, RAOP_EXPLICIT_DEMAND_CONTRACT);
+ 		if ((res = pw_getrandom(&safety_nonce,
+ 				sizeof(safety_nonce), 0)) < 0) {
+ 			pw_log_error("error generating RAOP safety nonce: %s",
+@@ -4048,10 +4341,14 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 		if (safety_nonce == 0)
+ 			safety_nonce = 1;
+ 		raop_safety_gate_init(&impl->safety_gate, safety_nonce);
++		if (impl->demand_contract)
++			raop_demand_state_init(&impl->demand, safety_nonce);
+ 		source_marker_init(&impl->source_marker);
+ 		SPA_ATOMIC_STORE(impl->safety_gate_closed, 1);
+ 		pw_properties_set(props, "raop.volume.contract",
+-				RAOP_SAFETY_GATE_CONTRACT);
++				impl->demand_contract ?
++					RAOP_EXPLICIT_DEMAND_CONTRACT :
++					RAOP_SAFETY_GATE_CONTRACT);
+ 	} else {
+ 		pw_log_error("unsupported raop.volume.contract '%s'", str);
+ 		res = -EINVAL;
+@@ -4205,6 +4502,8 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 	safety_gate_clear_initial_properties(impl);
+ 	/* The source-marker state and challenge are also module-authored. */
+ 	source_marker_set_initial_properties(impl);
++	/* Explicit demand state and its nonce are module-authored as well. */
++	demand_set_initial_properties(impl);
+ 
+ 	impl->mtu = pw_properties_get_uint32(impl->props, "net.mtu", 1448);
+ 	impl->sync_period = impl->rate / (impl->mtu / impl->stride);

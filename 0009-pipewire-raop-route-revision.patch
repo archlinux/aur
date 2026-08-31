@@ -1,0 +1,899 @@
+diff --git a/src/modules/module-raop/demand.h b/src/modules/module-raop/demand.h
+index 792cf98..ea97aff 100644
+--- a/src/modules/module-raop/demand.h
++++ b/src/modules/module-raop/demand.h
+@@ -8,7 +8,7 @@
+ #include <stdbool.h>
+ #include <stdint.h>
+ 
+-#define RAOP_EXPLICIT_DEMAND_CONTRACT	"4"
++#define RAOP_EXPLICIT_DEMAND_CONTRACT	"5"
+ #define RAOP_DEMAND_CONTRACT		"1"
+ #define RAOP_DEMAND_CONTROL		"node-command"
+ #define RAOP_DEMAND_COMMAND		"raop-demand-state"
+diff --git a/src/modules/module-raop/safety-gate.c b/src/modules/module-raop/safety-gate.c
+index 1cbf4a3..de73b7d 100644
+--- a/src/modules/module-raop/safety-gate.c
++++ b/src/modules/module-raop/safety-gate.c
+@@ -25,6 +25,7 @@ void raop_safety_gate_init(struct raop_safety_gate *gate, uint64_t nonce)
+ {
+ 	gate->sequence = 0;
+ 	gate->nonce = nonce;
++	gate->route_revision = 1;
+ 	gate->reasons = 0;
+ }
+ 
+@@ -58,6 +59,8 @@ enum raop_safety_gate_release_result raop_safety_gate_release(
+ 		return RAOP_SAFETY_GATE_RELEASE_DENIED;
+ 	if (command->sequence != gate->sequence)
+ 		return RAOP_SAFETY_GATE_RELEASE_STALE;
++	if (command->route_revision != gate->route_revision)
++		return RAOP_SAFETY_GATE_RELEASE_STALE;
+ 	if (public_mute || !want_stream ||
+ 			(gate->reasons & RAOP_SAFETY_GATE_ERROR) != 0)
+ 		return RAOP_SAFETY_GATE_RELEASE_DENIED;
+@@ -140,14 +143,19 @@ int raop_safety_gate_parse_command(const char *json,
+ {
+ 	struct spa_json top, iter;
+ 	const char *object, *value;
+-	char key[64], id[64], sequence[32], nonce[19],
++	char key[64], id[64], sequence[32], nonce[19], route_revision[32],
++		publication_generation[32], demand_sequence[32],
+ 		marker_sequence[32], proof_deadline_boottime_usec[32],
+ 		marker_value[RAOP_SAFETY_GATE_MARKER_VALUE_SIZE + 2];
+ 	bool have_id = false, have_sequence = false, have_nonce = false,
++		have_route_revision = false, have_publication_generation = false,
++		have_demand_sequence = false,
+ 		have_marker_sequence = false, have_marker_value = false,
+ 		have_proof_deadline_boottime_usec = false,
+ 		have_unknown = false;
+-	uint64_t parsed_sequence, parsed_nonce, parsed_marker_sequence,
++	uint64_t parsed_sequence, parsed_nonce, parsed_route_revision,
++		parsed_publication_generation, parsed_demand_sequence,
++		parsed_marker_sequence,
+ 		parsed_proof_deadline_boottime_usec;
+ 	int object_len, len;
+ 
+@@ -179,6 +187,22 @@ int raop_safety_gate_parse_command(const char *json,
+ 					nonce, sizeof(nonce)))
+ 				return -EINVAL;
+ 			have_nonce = true;
++		} else if (spa_streq(key, "route.revision")) {
++			if (have_route_revision || !parse_string(value, len,
++					route_revision, sizeof(route_revision)))
++				return -EINVAL;
++			have_route_revision = true;
++		} else if (spa_streq(key, "publication.generation")) {
++			if (have_publication_generation || !parse_string(value, len,
++					publication_generation,
++					sizeof(publication_generation)))
++				return -EINVAL;
++			have_publication_generation = true;
++		} else if (spa_streq(key, "demand.sequence")) {
++			if (have_demand_sequence || !parse_string(value, len,
++					demand_sequence, sizeof(demand_sequence)))
++				return -EINVAL;
++			have_demand_sequence = true;
+ 		} else if (spa_streq(key, "marker.sequence")) {
+ 			if (have_marker_sequence || !parse_string(value, len,
+ 					marker_sequence,
+@@ -203,6 +227,8 @@ int raop_safety_gate_parse_command(const char *json,
+ 		}
+ 	}
+ 	if (len < 0 || !have_id || !have_sequence || !have_nonce ||
++			!have_route_revision || !have_publication_generation ||
++			!have_demand_sequence ||
+ 			!have_marker_sequence || !have_marker_value ||
+ 			!have_proof_deadline_boottime_usec ||
+ 			have_unknown)
+@@ -217,6 +243,19 @@ int raop_safety_gate_parse_command(const char *json,
+ 			!spa_atou64(nonce, &parsed_nonce, 16) ||
+ 			parsed_nonce == 0)
+ 		return -EINVAL;
++	if (!decimal_string(route_revision) ||
++			!spa_atou64(route_revision, &parsed_route_revision, 10) ||
++			parsed_route_revision == 0)
++		return -EINVAL;
++	if (!decimal_string(publication_generation) ||
++			!spa_atou64(publication_generation,
++				&parsed_publication_generation, 10) ||
++			parsed_publication_generation == 0)
++		return -EINVAL;
++	if (!decimal_string(demand_sequence) ||
++			!spa_atou64(demand_sequence, &parsed_demand_sequence, 10) ||
++			parsed_demand_sequence == 0)
++		return -EINVAL;
+ 	if (!decimal_string(marker_sequence) ||
+ 			!spa_atou64(marker_sequence,
+ 			&parsed_marker_sequence, 10) ||
+@@ -231,6 +270,9 @@ int raop_safety_gate_parse_command(const char *json,
+ 
+ 	command->sequence = parsed_sequence;
+ 	command->nonce = parsed_nonce;
++	command->route_revision = parsed_route_revision;
++	command->publication_generation = parsed_publication_generation;
++	command->demand_sequence = parsed_demand_sequence;
+ 	command->marker_sequence = parsed_marker_sequence;
+ 	command->proof_deadline_boottime_usec =
+ 		parsed_proof_deadline_boottime_usec;
+@@ -311,6 +353,98 @@ int raop_safety_gate_parse_hold_command(const char *json,
+ 	return 0;
+ }
+ 
++int raop_safety_gate_parse_adopt_route_command(const char *json,
++		struct raop_safety_gate_adopt_route_command *command)
++{
++	struct spa_json top, iter;
++	const char *object, *value;
++	char key[64], id[64], nonce[19], generation[32], current[32], next[32];
++	bool have_id = false, have_nonce = false, have_generation = false,
++		have_current = false, have_next = false, have_unknown = false;
++	int object_len, len;
++
++	if (json == NULL || command == NULL)
++		return -EINVAL;
++	spa_json_init(&top, json, strlen(json));
++	object_len = spa_json_next(&top, &object);
++	if (object_len <= 0 || !spa_json_is_object(object, object_len))
++		return -EINVAL;
++	object_len = spa_json_container_len(&top, object, object_len);
++	if (object_len <= 0 || spa_json_next(&top, &value) != 0 ||
++			spa_json_begin_object(&iter, object, object_len) <= 0)
++		return -EINVAL;
++	while ((len = spa_json_object_next(&iter, key, sizeof(key), &value)) > 0) {
++		char *target = NULL;
++		size_t size = 0;
++		bool *present = NULL;
++
++		if (spa_streq(key, "command.id")) {
++			target = id; size = sizeof(id); present = &have_id;
++		} else if (spa_streq(key, "nonce")) {
++			target = nonce; size = sizeof(nonce); present = &have_nonce;
++		} else if (spa_streq(key, "publication.generation")) {
++			target = generation; size = sizeof(generation);
++			present = &have_generation;
++		} else if (spa_streq(key, "route.current-revision")) {
++			target = current; size = sizeof(current); present = &have_current;
++		} else if (spa_streq(key, "route.revision")) {
++			target = next; size = sizeof(next); present = &have_next;
++		} else {
++			have_unknown = true;
++			continue;
++		}
++		if (*present || !parse_string(value, len, target, size))
++			return -EINVAL;
++		*present = true;
++	}
++	if (len < 0 || !have_id)
++		return -EINVAL;
++	if (!spa_streq(id, RAOP_SAFETY_GATE_ADOPT_ROUTE_COMMAND))
++		return -ENOENT;
++	if (!have_nonce || !have_generation || !have_current || !have_next ||
++			have_unknown || !lowercase_hexadecimal_string(nonce) ||
++			!spa_atou64(nonce, &command->nonce, 16) ||
++			command->nonce == 0 || !decimal_string(generation) ||
++			!spa_atou64(generation, &command->publication_generation, 10) ||
++			command->publication_generation == 0 ||
++			!decimal_string(current) ||
++			!spa_atou64(current, &command->current_revision, 10) ||
++			command->current_revision == 0 || !decimal_string(next) ||
++			!spa_atou64(next, &command->revision, 10) ||
++			command->revision == 0)
++		return -EINVAL;
++	return 0;
++}
++
++enum raop_safety_gate_adopt_route_result
++raop_safety_gate_validate_adopt_route(
++		const struct raop_safety_gate *gate,
++		const struct raop_safety_gate_adopt_route_command *command,
++		uint64_t publication_generation)
++{
++	if (gate == NULL || command == NULL || command->nonce != gate->nonce ||
++			command->publication_generation != publication_generation)
++		return RAOP_SAFETY_GATE_ADOPT_ROUTE_DENIED;
++	if (command->revision == gate->route_revision)
++		return command->current_revision != UINT64_MAX &&
++				command->current_revision + 1 == command->revision ?
++			RAOP_SAFETY_GATE_ADOPT_ROUTE_RETRY :
++			RAOP_SAFETY_GATE_ADOPT_ROUTE_STALE;
++	if (gate->route_revision == UINT64_MAX ||
++			command->current_revision != gate->route_revision ||
++			command->revision != gate->route_revision + 1)
++		return RAOP_SAFETY_GATE_ADOPT_ROUTE_STALE;
++	return RAOP_SAFETY_GATE_ADOPT_ROUTE_ADVANCE;
++}
++
++void raop_safety_gate_commit_adopt_route(
++		struct raop_safety_gate *gate,
++		const struct raop_safety_gate_adopt_route_command *command)
++{
++	gate->route_revision = command->revision;
++	raop_safety_gate_invalidate(gate, RAOP_SAFETY_GATE_ACTIVATION);
++}
++
+ const char *raop_safety_gate_reasons_string(uint32_t reasons,
+ 		char *buffer, size_t size)
+ {
+diff --git a/src/modules/module-raop/safety-gate.h b/src/modules/module-raop/safety-gate.h
+index 2366bf7..6cd65be 100644
+--- a/src/modules/module-raop/safety-gate.h
++++ b/src/modules/module-raop/safety-gate.h
+@@ -12,6 +12,7 @@
+ #define RAOP_SAFETY_GATE_CONTRACT	"3"
+ #define RAOP_SAFETY_GATE_HOLD_COMMAND	"raop-safety-gate-hold"
+ #define RAOP_SAFETY_GATE_RELEASE_COMMAND	"raop-safety-gate-release"
++#define RAOP_SAFETY_GATE_ADOPT_ROUTE_COMMAND	"raop-safety-gate-hold-and-adopt-route"
+ #define RAOP_SAFETY_GATE_MARKER_PREFIX	"stpw1:"
+ #define RAOP_SAFETY_GATE_MARKER_HEX_LENGTH	32
+ #define RAOP_SAFETY_GATE_MARKER_VALUE_SIZE	\
+@@ -33,17 +34,35 @@ enum raop_safety_gate_release_result {
+ struct raop_safety_gate {
+ 	uint64_t sequence;
+ 	uint64_t nonce;
++	uint64_t route_revision;
+ 	uint32_t reasons;
+ };
+ 
+ struct raop_safety_gate_command {
+ 	uint64_t sequence;
+ 	uint64_t nonce;
++	uint64_t route_revision;
++	uint64_t publication_generation;
++	uint64_t demand_sequence;
+ 	uint64_t marker_sequence;
+ 	uint64_t proof_deadline_boottime_usec;
+ 	char marker_value[RAOP_SAFETY_GATE_MARKER_VALUE_SIZE];
+ };
+ 
++struct raop_safety_gate_adopt_route_command {
++	uint64_t nonce;
++	uint64_t publication_generation;
++	uint64_t current_revision;
++	uint64_t revision;
++};
++
++enum raop_safety_gate_adopt_route_result {
++	RAOP_SAFETY_GATE_ADOPT_ROUTE_ADVANCE,
++	RAOP_SAFETY_GATE_ADOPT_ROUTE_RETRY,
++	RAOP_SAFETY_GATE_ADOPT_ROUTE_STALE,
++	RAOP_SAFETY_GATE_ADOPT_ROUTE_DENIED,
++};
++
+ struct raop_safety_gate_hold_command {
+ 	uint64_t nonce;
+ };
+@@ -78,6 +97,19 @@ bool raop_safety_gate_proof_deadline_covers_transition(
+ int raop_safety_gate_parse_hold_command(const char *json,
+ 		struct raop_safety_gate_hold_command *command);
+ 
++int raop_safety_gate_parse_adopt_route_command(const char *json,
++		struct raop_safety_gate_adopt_route_command *command);
++
++enum raop_safety_gate_adopt_route_result
++raop_safety_gate_validate_adopt_route(
++		const struct raop_safety_gate *gate,
++		const struct raop_safety_gate_adopt_route_command *command,
++		uint64_t publication_generation);
++
++void raop_safety_gate_commit_adopt_route(
++		struct raop_safety_gate *gate,
++		const struct raop_safety_gate_adopt_route_command *command);
++
+ const char *raop_safety_gate_reasons_string(uint32_t reasons,
+ 		char *buffer, size_t size);
+ 
+diff --git a/src/modules/module-raop/test-safety-gate.c b/src/modules/module-raop/test-safety-gate.c
+index ed40e0a..a322305 100644
+--- a/src/modules/module-raop/test-safety-gate.c
++++ b/src/modules/module-raop/test-safety-gate.c
+@@ -18,6 +18,9 @@
+ #define TEST_PROOF_DEADLINE UINT64_C(1234567890123456)
+ #define TEST_PROOF_DEADLINE_JSON \
+ 	"\"proof.deadline.boottime-usec\":\"1234567890123456\""
++#define TEST_RELEASE_SCOPE_JSON \
++	"\"route.revision\":\"1\",\"publication.generation\":\"9\"," \
++	"\"demand.sequence\":\"7\","
+ 
+ static struct raop_safety_gate_command command_for(
+ 		const struct raop_safety_gate *gate)
+@@ -25,6 +28,9 @@ static struct raop_safety_gate_command command_for(
+ 	return (struct raop_safety_gate_command) {
+ 		.sequence = gate->sequence,
+ 		.nonce = gate->nonce,
++		.route_revision = gate->route_revision,
++		.publication_generation = 9,
++		.demand_sequence = 7,
+ 		.marker_sequence = TEST_MARKER_SEQUENCE,
+ 		.proof_deadline_boottime_usec = TEST_PROOF_DEADLINE,
+ 		.marker_value = TEST_MARKER_VALUE,
+@@ -43,6 +49,10 @@ static void test_activation_release(void)
+ 	spa_assert_se(raop_safety_gate_is_closed(&gate));
+ 
+ 	command = command_for(&gate);
++	command.route_revision++;
++	spa_assert_se(raop_safety_gate_release(&gate, &command,
++			false, true) == RAOP_SAFETY_GATE_RELEASE_STALE);
++	command.route_revision = gate.route_revision;
+ 	spa_assert_se(raop_safety_gate_release(&gate, &command,
+ 			false, false) == RAOP_SAFETY_GATE_RELEASE_DENIED);
+ 	spa_assert_se(raop_safety_gate_is_closed(&gate));
+@@ -148,6 +158,7 @@ static void test_command_parser(void)
+ 	static const char valid[] =
+ 		"{\"command.id\":\"raop-safety-gate-release\","
+ 		"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++		TEST_RELEASE_SCOPE_JSON
+ 		"\"marker.sequence\":\"71\","
+ 		"\"marker.value\":\"" TEST_MARKER_VALUE "\","
+ 		TEST_PROOF_DEADLINE_JSON "}";
+@@ -155,6 +166,9 @@ static void test_command_parser(void)
+ 	spa_assert_se(raop_safety_gate_parse_command(valid, &command) == 0);
+ 	spa_assert_se(command.sequence == 42);
+ 	spa_assert_se(command.nonce == TEST_NONCE);
++	spa_assert_se(command.route_revision == 1);
++	spa_assert_se(command.publication_generation == 9);
++	spa_assert_se(command.demand_sequence == 7);
+ 	spa_assert_se(command.marker_sequence == 71);
+ 	spa_assert_se(command.proof_deadline_boottime_usec ==
+ 			TEST_PROOF_DEADLINE);
+@@ -162,6 +176,7 @@ static void test_command_parser(void)
+ 	spa_assert_se(raop_safety_gate_parse_command(
+ 			"{\"command.id\":\"other\",\"sequence\":\"42\","
+ 			"\"nonce\":\"0123456789abcdef\","
++			TEST_RELEASE_SCOPE_JSON
+ 			"\"marker.sequence\":\"71\","
+ 			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
+ 			TEST_PROOF_DEADLINE_JSON "}",
+@@ -183,6 +198,7 @@ static void test_command_parser(void)
+ 	spa_assert_se(raop_safety_gate_parse_command(
+ 			"{\"command.id\":\"raop-safety-gate-release\","
+ 			"\"sequence\":\"42\",\"nonce\":\"1123456789abcdef\","
++			TEST_RELEASE_SCOPE_JSON
+ 			"\"marker.sequence\":\"71\","
+ 			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
+ 			TEST_PROOF_DEADLINE_JSON "}",
+@@ -421,6 +437,87 @@ static void test_hold_nonce_does_not_mutate(void)
+ 			RAOP_SAFETY_GATE_ACTIVATION) == sequence);
+ }
+ 
++static void test_adopt_route_contract(void)
++{
++	struct raop_safety_gate gate;
++	struct raop_safety_gate_adopt_route_command command;
++	static const char valid[] =
++		"{\"command.id\":\"raop-safety-gate-hold-and-adopt-route\","
++		"\"nonce\":\"0123456789abcdef\","
++		"\"publication.generation\":\"9\","
++		"\"route.current-revision\":\"1\","
++		"\"route.revision\":\"2\"}";
++
++	raop_safety_gate_init(&gate, TEST_NONCE);
++	spa_assert_se(raop_safety_gate_parse_adopt_route_command(valid,
++			&command) == 0);
++	spa_assert_se(raop_safety_gate_validate_adopt_route(&gate, &command, 9) ==
++			RAOP_SAFETY_GATE_ADOPT_ROUTE_ADVANCE);
++	{
++		uint64_t before_sequence = gate.sequence;
++	raop_safety_gate_commit_adopt_route(&gate, &command);
++		spa_assert_se(gate.sequence == before_sequence + 1);
++		spa_assert_se((gate.reasons & RAOP_SAFETY_GATE_ACTIVATION) != 0);
++	}
++	/* An exact retry after a lost publication acknowledgement is idempotent. */
++	spa_assert_se(raop_safety_gate_validate_adopt_route(&gate, &command, 9) ==
++			RAOP_SAFETY_GATE_ADOPT_ROUTE_RETRY);
++	command.nonce++;
++	spa_assert_se(raop_safety_gate_validate_adopt_route(&gate, &command, 9) ==
++			RAOP_SAFETY_GATE_ADOPT_ROUTE_DENIED);
++	command.nonce = TEST_NONCE;
++	spa_assert_se(raop_safety_gate_validate_adopt_route(&gate, &command, 10) ==
++			RAOP_SAFETY_GATE_ADOPT_ROUTE_DENIED);
++	command.publication_generation = 9;
++	command.current_revision = 2;
++	command.revision = 4;
++	spa_assert_se(raop_safety_gate_validate_adopt_route(&gate, &command, 9) ==
++			RAOP_SAFETY_GATE_ADOPT_ROUTE_STALE);
++	gate.route_revision = UINT64_MAX;
++	command.current_revision = UINT64_MAX;
++	command.revision = 1;
++	spa_assert_se(raop_safety_gate_validate_adopt_route(&gate, &command, 9) ==
++			RAOP_SAFETY_GATE_ADOPT_ROUTE_STALE);
++
++	spa_assert_se(raop_safety_gate_parse_adopt_route_command(
++			"{\"command.id\":\"raop-safety-gate-hold-and-adopt-route\","
++			"\"nonce\":\"0123456789abcdef\","
++			"\"publication.generation\":\"9\","
++			"\"route.current-revision\":\"1\","
++			"\"route.revision\":\"0\"}", &command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_adopt_route_command(
++			"{\"command.id\":\"raop-safety-gate-hold-and-adopt-route\","
++			"\"nonce\":\"0123456789abcdef\","
++			"\"publication.generation\":\"9\","
++			"\"route.current-revision\":\"1\","
++			"\"route.revision\":\"2\",\"extra\":\"no\"}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_adopt_route_command(
++			"{\"command.id\":\"raop-safety-gate-hold-and-adopt-route\","
++			"\"nonce\":\"0123456789abcdef\","
++			"\"route.current-revision\":\"1\","
++			"\"route.revision\":\"2\"}", &command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_adopt_route_command(
++			"{\"command.id\":\"raop-safety-gate-hold-and-adopt-route\","
++			"\"nonce\":\"0123456789abcdef\","
++			"\"publication.generation\":9,"
++			"\"route.current-revision\":\"1\","
++			"\"route.revision\":\"2\"}", &command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_adopt_route_command(
++			"{\"command.id\":\"raop-safety-gate-hold-and-adopt-route\","
++			"\"nonce\":\"0123456789abcdef\","
++			"\"publication.generation\":\"9\","
++			"\"route.current-revision\":\"18446744073709551616\","
++			"\"route.revision\":\"2\"}", &command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_adopt_route_command(
++			"{\"command.id\":\"raop-safety-gate-hold-and-adopt-route\","
++			"\"nonce\":\"0123456789abcdef\","
++			"\"publication.generation\":\"9\","
++			"\"publication.generation\":\"9\","
++			"\"route.current-revision\":\"1\","
++			"\"route.revision\":\"2\"}", &command) == -EINVAL);
++}
++
+ static void test_reason_strings(void)
+ {
+ 	char buffer[64];
+@@ -446,6 +543,7 @@ int main(void)
+ 	test_proof_deadline_transition();
+ 	test_hold_command_parser();
+ 	test_hold_nonce_does_not_mutate();
++	test_adopt_route_contract();
+ 	test_reason_strings();
+ 	return 0;
+ }
+diff --git a/src/modules/module-raop/test-volume.c b/src/modules/module-raop/test-volume.c
+index 7764e4b..59385a9 100644
+--- a/src/modules/module-raop/test-volume.c
++++ b/src/modules/module-raop/test-volume.c
+@@ -242,8 +242,8 @@ static void test_stream_contract(void)
+ 	spa_assert_se(spa_streq(pw_properties_get(stream_props,
+ 			"raop.volume.contract"), "3"));
+ 
+-	/* Contract 4 retains the same single-data-loop safety boundary. */
+-	pw_properties_set(module_props, "raop.volume.contract", "4");
++	/* Contract 5 retains the same single-data-loop safety boundary. */
++	pw_properties_set(module_props, "raop.volume.contract", "5");
+ 	pw_properties_set(stream_props, "aes67.driver-group",
+ 			"unrelated-driver");
+ 	spa_assert_se(raop_volume_override_stream_props(stream_props,
+@@ -252,7 +252,7 @@ static void test_stream_contract(void)
+ 	spa_assert_se(raop_volume_override_stream_props(stream_props,
+ 			module_props) == 0);
+ 	spa_assert_se(spa_streq(pw_properties_get(stream_props,
+-			"raop.volume.contract"), "4"));
++			"raop.volume.contract"), "5"));
+ 
+ 	/* A missing module identity value removes, rather than trusts, a value
+ 	 * injected through nested stream.props. */
+@@ -328,6 +328,37 @@ static void test_state(void)
+ 	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
+ 	spa_assert_se(state.generation == 2);
+ 
++	/* An adopted Route arms exactly one complete companion-authored tuple.
++	 * Quarantine the previous tuple until the new full echo retires it. */
++	memset(&state, 0, sizeof(state));
++	raop_volume_state_sync(&state, remote, false, true);
++	spa_assert_se(raop_volume_state_mark_initial_props_installed(
++			&state, remote, false));
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, remote, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	state.stale_volume = remote;
++	state.stale_mute = false;
++	state.stale_volume_pending = true;
++	state.stale_mute_pending = true;
++	state.stale_valid = true;
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, false, false, remote, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_REASSERT);
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, true, remote, false, true, true);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	spa_assert_se(state.generation == 1);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, 0.216f, true, true, true);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_STALE);
++	state.sync_volume_pending = false;
++	state.sync_mute_pending = false;
++	state.stale_volume_pending = false;
++	state.stale_mute_pending = false;
++	state.stale_valid = false;
++	spa_assert_se(!state.stale_valid);
++
+ 	/* A user request can overtake the echo of a module-authored baseline.
+ 	 * The delayed old echo must not overwrite or resend the user request. */
+ 	memset(&state, 0, sizeof(state));
+diff --git a/src/modules/module-raop/volume.c b/src/modules/module-raop/volume.c
+index 125d7d8..133869f 100644
+--- a/src/modules/module-raop/volume.c
++++ b/src/modules/module-raop/volume.c
+@@ -197,7 +197,7 @@ int raop_volume_override_stream_props(struct pw_properties *stream_props,
+ 	if (stream_props == NULL || module_props == NULL)
+ 		return -EINVAL;
+ 	/*
+-	 * Contracts 3 and 4 serialize their packet gate on the pw_stream data
++	 * Contracts 3 and 5 serialize their packet gate on the pw_stream data
+ 	 * loop.
+ 	 * An AES67 driver group creates a separate PTP sender filter loop that
+ 	 * would bypass that single-loop safety boundary.
+@@ -205,7 +205,7 @@ int raop_volume_override_stream_props(struct pw_properties *stream_props,
+ 	if ((spa_streq(pw_properties_get(module_props,
+ 				"raop.volume.contract"), "3") ||
+ 			spa_streq(pw_properties_get(module_props,
+-				"raop.volume.contract"), "4")) &&
++				"raop.volume.contract"), "5")) &&
+ 			pw_properties_get(stream_props,
+ 				"aes67.driver-group") != NULL)
+ 		return -EINVAL;
+@@ -266,7 +266,7 @@ enum raop_volume_props_result raop_volume_state_on_props(
+ 	bool stale_volume_match, stale_mute_match;
+ 	bool current_volume_match, current_mute_match;
+ 	bool stale_volume_conflict, stale_mute_conflict;
+-	bool unsafe_initial_volume_conflict;
++	bool unsafe_initial_volume_conflict, route_adopt_pending;
+ 
+ 	sync_volume = have_volume && state->sync_volume_pending &&
+ 		fabsf(volume - state->sync_volume) < 0.000001f;
+@@ -280,6 +280,11 @@ enum raop_volume_props_result raop_volume_state_on_props(
+ 	current_volume_match = have_volume &&
+ 		fabsf(volume - current_volume) < 0.000001f;
+ 	current_mute_match = have_mute && mute == current_mute;
++	route_adopt_pending = state->stale_valid &&
++		state->stale_volume_pending && state->stale_mute_pending &&
++		!state->sync_volume_pending && !state->sync_mute_pending &&
++		fabsf(state->stale_volume - current_volume) < 0.000001f &&
++		state->stale_mute == current_mute;
+ 	unsafe_initial_volume_conflict =
+ 		state->unsafe_initial_volume_valid && have_volume &&
+ 		fabsf(volume - state->unsafe_initial_volume) < 0.000001f &&
+@@ -372,6 +377,27 @@ enum raop_volume_props_result raop_volume_state_on_props(
+ 	}
+ 	volume_changed = volume_changed && !initial_volume;
+ 	mute_changed = mute_changed && !initial_mute;
++	if (route_adopt_pending && have_volume && have_mute &&
++			current_volume_match && current_mute_match) {
++		state->stale_volume_pending = false;
++		state->stale_mute_pending = false;
++		state->stale_valid = false;
++		return RAOP_VOLUME_PROPS_ECHO;
++	}
++	if (route_adopt_pending && (volume_changed || mute_changed)) {
++		if (!have_volume || !have_mute)
++			return RAOP_VOLUME_PROPS_REASSERT;
++		state->generation++;
++		if (volume_changed)
++			state->volume_generation++;
++		if (mute_changed)
++			state->mute_generation++;
++		state->sync_volume_pending = true;
++		state->sync_mute_pending = true;
++		state->sync_volume = volume;
++		state->sync_mute = mute;
++		return RAOP_VOLUME_PROPS_USER;
++	}
+ 	if ((volume_changed || mute_changed) &&
+ 			unsafe_initial_volume_conflict)
+ 		return RAOP_VOLUME_PROPS_REASSERT;
+diff --git a/src/modules/module-raop-sink.c b/src/modules/module-raop-sink.c
+index b7a8d50..cf179b6 100644
+--- a/src/modules/module-raop-sink.c
++++ b/src/modules/module-raop-sink.c
+@@ -502,9 +502,9 @@ static bool source_marker_release_command_matches(
+  *                    Contract 3 also publishes a module-generated, rotatable
+  *                    RAOP source marker. Its metadata acknowledgement must
+  *                    succeed before packet delivery can start.
+- *                    Contract 4 adds an explicit, sequenced controller demand
++ *                    Contract 5 adds an explicit, sequenced controller demand
+  *                    to contract 3. A negotiated Format alone cannot create
+- *                    or reconnect an RTSP session under contract 4.
++ *                    or reconnect an RTSP session under contract 5.
+  * - `stream.props = {}`: properties to be passed to the sink stream
+  *
+  * By default the created node publishes `raop.volume.contract = 2`. In the
+@@ -521,11 +521,10 @@ static bool source_marker_release_command_matches(
+  * receiver volume. External mode keeps software channel volumes at unity while
+  * mirroring the canonical mute into software mute, including before stream
+  * connection and on volume-only Props updates. This keeps a muted receiver
+- * locally silent while its session is being recreated. External mode also sets
+- * `state.restore-props = false` so a session manager cannot replace the
+- * supplied startup value with stale saved Props.
++ * locally silent while its session is being recreated. Persisted desired
++ * state is owned by the paired Device Route, not startup Props restoration.
+  *
+- * Contracts 3 and 4 start with their transport gate closed and publish
++ * Contracts 3 and 5 start with their transport gate closed and publish
+  * `raop.safety.gate.state`, `raop.safety.gate.sequence`,
+  * `raop.safety.gate.reasons`, and a per-publication
+  * `raop.safety.gate.nonce`. A controller can release the current activation
+@@ -560,7 +559,7 @@ static bool source_marker_release_command_matches(
+  * or a latched error leaves the gate closed. Contract 2 ignores this command
+  * and retains its existing behavior.
+  *
+- * Contracts 3 and 4 also publish `raop.source.marker.contract = 1`,
++ * Contracts 3 and 5 also publish `raop.source.marker.contract = 1`,
+  * `raop.source.marker.state`, `raop.source.marker.sequence`, and
+  * `raop.source.marker.value`: a valid marker while pending or confirmed, or
+  * an empty tombstone otherwise.
+@@ -708,7 +707,7 @@ PW_LOG_TOPIC(mod_topic, "mod." NAME);
+ 			"( raop.volume.query-timeout.ms=<timeout, default:"SPA_STRINGIFY(DEFAULT_VOLUME_QUERY_TIMEOUT_MS)"> ) "	\
+ 			"( raop.volume.initial=<normalized value required for external> ) "	\
+ 			"( raop.volume.initial.mute=<boolean, default:false> ) "		\
+-			"( raop.volume.contract=<2|3|4, default:2> ) "			\
++			"( raop.volume.contract=<2|3|5, default:2> ) "			\
+ 			"( node.latency=<latency as fraction> ) "				\
+ 			"( node.name=<name of the nodes> ) "					\
+ 			"( node.description=<description of the nodes> ) "			\
+@@ -880,6 +879,7 @@ struct impl {
+ 	uint32_t recording;
+ 	uint32_t safety_gate_closed;
+ 	struct raop_safety_gate safety_gate;
++	uint64_t publication_generation;
+ 	struct raop_demand_state demand;
+ 	struct raop_source_marker source_marker;
+ 	float volume;
+@@ -1700,12 +1700,15 @@ static int demand_publish(struct impl *impl)
+ 
+ static void safety_gate_format_properties(const struct impl *impl,
+ 		char sequence[32], char nonce[17], char reasons[64],
++		char route_revision[32],
+ 		const char **state)
+ {
+ 	spa_scnprintf(sequence, 32, "%" PRIu64,
+ 			impl->safety_gate.sequence);
+ 	spa_scnprintf(nonce, 17, "%016" PRIx64,
+ 			impl->safety_gate.nonce);
++	spa_scnprintf(route_revision, 32, "%" PRIu64,
++			impl->safety_gate.route_revision);
+ 	raop_safety_gate_reasons_string(impl->safety_gate.reasons,
+ 			reasons, 64);
+ 	*state = raop_safety_gate_is_closed(&impl->safety_gate) ?
+@@ -1715,11 +1718,12 @@ static void safety_gate_format_properties(const struct impl *impl,
+ static void safety_gate_set_initial_properties(struct impl *impl)
+ {
+ 	const char *state;
+-	char sequence[32], nonce[17], reasons[64];
++	char sequence[32], nonce[17], reasons[64], route_revision[32];
+ 
+ 	if (!impl->safety_gate_contract)
+ 		return;
+-	safety_gate_format_properties(impl, sequence, nonce, reasons, &state);
++	safety_gate_format_properties(impl, sequence, nonce, reasons,
++			route_revision, &state);
+ 	pw_properties_set(impl->stream_props,
+ 			"raop.safety.gate.state", state);
+ 	pw_properties_set(impl->stream_props,
+@@ -1728,6 +1732,8 @@ static void safety_gate_set_initial_properties(struct impl *impl)
+ 			"raop.safety.gate.nonce", nonce);
+ 	pw_properties_set(impl->stream_props,
+ 			"raop.safety.gate.reasons", reasons);
++	pw_properties_set(impl->stream_props,
++			"raop.safety.gate.route.revision", route_revision);
+ }
+ 
+ static void safety_gate_clear_initial_properties(struct impl *impl)
+@@ -1740,6 +1746,8 @@ static void safety_gate_clear_initial_properties(struct impl *impl)
+ 			"raop.safety.gate.nonce", NULL);
+ 	pw_properties_set(impl->stream_props,
+ 			"raop.safety.gate.reasons", NULL);
++	pw_properties_set(impl->stream_props,
++			"raop.safety.gate.route.revision", NULL);
+ }
+ 
+ static void source_marker_set_initial_properties(struct impl *impl)
+@@ -1773,18 +1781,21 @@ static void source_marker_set_initial_properties(struct impl *impl)
+ 
+ static int safety_gate_publish(struct impl *impl)
+ {
+-	struct spa_dict_item items[4];
++	struct spa_dict_item items[5];
+ 	const char *state;
+-	char sequence[32], nonce[17], reasons[64];
++	char sequence[32], nonce[17], reasons[64], route_revision[32];
+ 
+ 	if (!impl->safety_gate_contract || impl->stream == NULL)
+ 		return 0;
+ 
+-	safety_gate_format_properties(impl, sequence, nonce, reasons, &state);
++	safety_gate_format_properties(impl, sequence, nonce, reasons,
++			route_revision, &state);
+ 	items[0] = SPA_DICT_ITEM_INIT("raop.safety.gate.state", state);
+ 	items[1] = SPA_DICT_ITEM_INIT("raop.safety.gate.sequence", sequence);
+ 	items[2] = SPA_DICT_ITEM_INIT("raop.safety.gate.nonce", nonce);
+ 	items[3] = SPA_DICT_ITEM_INIT("raop.safety.gate.reasons", reasons);
++	items[4] = SPA_DICT_ITEM_INIT("raop.safety.gate.route.revision",
++			route_revision);
+ 	return rtp_stream_update_properties(impl->stream,
+ 			&SPA_DICT_INIT(items, SPA_N_ELEMENTS(items)));
+ }
+@@ -2099,6 +2110,14 @@ static int safety_gate_open_on_data_loop(void *data)
+ 	if (release == NULL || release->impl == NULL ||
+ 			release->command == NULL)
+ 		return -EINVAL;
++	if (release->command->route_revision !=
++			release->impl->safety_gate.route_revision ||
++			release->command->publication_generation !=
++			release->impl->publication_generation ||
++			release->command->demand_sequence !=
++			release->impl->demand.sequence ||
++			!release->impl->demand.demanded)
++		return -ESTALE;
+ 	if ((res = get_boottime_usec(&before_boottime_usec)) < 0)
+ 		return res;
+ 	if (!raop_safety_gate_proof_deadline_is_current(
+@@ -2136,6 +2155,10 @@ static void safety_gate_release(struct impl *impl,
+ 
+ 	if (!source_marker_release_command_matches(
+ 			&impl->source_marker, command) ||
++			command->publication_generation !=
++				impl->publication_generation ||
++			command->demand_sequence != impl->demand.sequence ||
++			!impl->demand.demanded ||
+ 			!impl->connected || !impl->ready ||
+ 			!recording_load(impl) || !impl->want_stream ||
+ 			impl->tearing_down) {
+@@ -2202,6 +2225,65 @@ static void safety_gate_release(struct impl *impl,
+ 			impl->safety_gate.sequence);
+ }
+ 
++static void volume_route_adopt_begin(struct impl *impl)
++{
++	struct raop_volume_state *state = &impl->volume_state;
++
++	state->sync_volume_pending = false;
++	state->sync_mute_pending = false;
++	state->stale_volume = impl->channel_volume;
++	state->stale_mute = impl->mute;
++	state->stale_volume_pending = true;
++	state->stale_mute_pending = true;
++	state->stale_valid = true;
++}
++
++static void volume_route_adopt_complete(struct impl *impl)
++{
++	struct raop_volume_state *state = &impl->volume_state;
++
++	state->sync_volume_pending = false;
++	state->sync_mute_pending = false;
++	state->stale_volume_pending = false;
++	state->stale_mute_pending = false;
++	state->stale_valid = false;
++}
++
++static void safety_gate_adopt_route(struct impl *impl,
++		const struct raop_safety_gate_adopt_route_command *command)
++{
++	enum raop_safety_gate_adopt_route_result result;
++	int res;
++
++	result = raop_safety_gate_validate_adopt_route(&impl->safety_gate,
++			command, impl->publication_generation);
++	if (result == RAOP_SAFETY_GATE_ADOPT_ROUTE_STALE) {
++		pw_log_debug("ignoring stale RAOP Route revision %" PRIu64,
++				command->revision);
++		return;
++	}
++	if (result == RAOP_SAFETY_GATE_ADOPT_ROUTE_DENIED) {
++		pw_log_warn("denying RAOP Route revision %" PRIu64,
++				command->revision);
++		return;
++	}
++	if (result == RAOP_SAFETY_GATE_ADOPT_ROUTE_RETRY)
++		volume_route_adopt_complete(impl);
++	if (result == RAOP_SAFETY_GATE_ADOPT_ROUTE_ADVANCE) {
++		if ((res = safety_gate_close_and_drain(impl)) < 0) {
++			safety_gate_close_barrier_failed(impl,
++					RAOP_SAFETY_GATE_ACTIVATION,
++					"failed Route revision adoption", res);
++			return;
++		}
++		volume_route_adopt_begin(impl);
++		raop_safety_gate_commit_adopt_route(&impl->safety_gate, command);
++	}
++	if ((res = safety_gate_publish(impl)) < 0)
++		safety_gate_close_barrier_failed(impl, RAOP_SAFETY_GATE_ERROR,
++				"failed Route revision publication", res);
++}
++
+ static void demand_contract_fail(struct impl *impl,
+ 		const char *reason, int error)
+ {
+@@ -2315,6 +2397,7 @@ static void stream_command(void *data, const struct spa_command *command)
+ 	SPA_POD_OBJECT_FOREACH(object, prop) {
+ 		struct raop_demand_command demand;
+ 		struct raop_safety_gate_hold_command hold;
++		struct raop_safety_gate_adopt_route_command adopt_route;
+ 		struct raop_safety_gate_command release;
+ 		struct raop_source_marker_rotate_command rotate;
+ 		const char *json;
+@@ -2329,7 +2412,7 @@ static void stream_command(void *data, const struct spa_command *command)
+ 		if (res == 0) {
+ 			if (!impl->demand_contract) {
+ 				pw_log_warn("denying RAOP demand command without "
+-						"contract 4");
++						"contract 5");
+ 				return;
+ 			}
+ 			res = apply_demand_command(impl, &demand);
+@@ -2364,6 +2447,16 @@ static void stream_command(void *data, const struct spa_command *command)
+ 			pw_log_warn("ignoring malformed RAOP source marker command");
+ 			return;
+ 		}
++		res = raop_safety_gate_parse_adopt_route_command(json,
++				&adopt_route);
++		if (res == 0) {
++			safety_gate_adopt_route(impl, &adopt_route);
++			return;
++		}
++		if (res != -ENOENT) {
++			pw_log_warn("ignoring malformed RAOP Route adoption command");
++			return;
++		}
+ 		res = raop_safety_gate_parse_hold_command(json, &hold);
+ 		if (res == 0) {
+ 			if (hold.nonce != impl->safety_gate.nonce) {
+@@ -4314,7 +4407,7 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 	struct impl *impl;
+ 	const char *str, *name, *hostname, *ip, *port;
+ 	uint32_t dacp_id[2];
+-	uint64_t safety_nonce;
++	uint64_t safety_nonce, initial_route_revision = 0;
+ 	uint8_t initial_buffer[4096];
+ 	struct spa_pod_builder initial_builder;
+ 	const struct spa_pod *initial_params[1];
+@@ -4403,6 +4496,32 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 		impl->safety_gate_contract = true;
+ 		impl->demand_contract =
+ 			spa_streq(str, RAOP_EXPLICIT_DEMAND_CONTRACT);
++		if (impl->demand_contract) {
++			str = pw_properties_get(props,
++					"raop.route.revision.initial");
++			if (str == NULL || !source_marker_decimal_string(str) ||
++					!spa_atou64(str,
++					&initial_route_revision, 10) ||
++					initial_route_revision == 0) {
++				pw_log_error("invalid raop.route.revision.initial");
++				res = -EINVAL;
++				goto error;
++			}
++			pw_properties_set(impl->stream_props,
++					"raop.route.revision.initial", str);
++			str = pw_properties_get(props,
++					"raop.publication.generation");
++			if (str == NULL || !source_marker_decimal_string(str) ||
++					!spa_atou64(str,
++					&impl->publication_generation, 10) ||
++					impl->publication_generation == 0) {
++				pw_log_error("invalid raop.publication.generation");
++				res = -EINVAL;
++				goto error;
++			}
++			pw_properties_set(impl->stream_props,
++					"raop.publication.generation", str);
++		}
+ 		if ((res = pw_getrandom(&safety_nonce,
+ 				sizeof(safety_nonce), 0)) < 0) {
+ 			pw_log_error("error generating RAOP safety nonce: %s",
+@@ -4412,6 +4531,8 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 		if (safety_nonce == 0)
+ 			safety_nonce = 1;
+ 		raop_safety_gate_init(&impl->safety_gate, safety_nonce);
++		if (impl->demand_contract)
++			impl->safety_gate.route_revision = initial_route_revision;
+ 		if (impl->demand_contract)
+ 			raop_demand_state_init(&impl->demand, safety_nonce);
+ 		source_marker_init(&impl->source_marker);
+@@ -4617,7 +4738,6 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 		bool mute;
+ 		uint32_t i;
+ 
+-		pw_properties_set(impl->stream_props, "state.restore-props", "false");
+ 		str = pw_properties_get(props, "raop.volume.initial");
+ 		if (!spa_atof(str, &initial) || !isfinite(initial) ||
+ 				initial < 0.0f || initial > 1.0f) {

@@ -1,0 +1,249 @@
+From 51536584d9a2c60721891df134f4e6a211b0521e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Luk=C3=A1=C5=A1=20Lipinsk=C3=BD?=
+ <18076-Mr-Tao@users.noreply.gitlab.freedesktop.org>
+Date: Sat, 1 Aug 2026 13:20:00 +0200
+Subject: [PATCH] module-raop-sink: publish ownership marker after progress
+
+SoundTouch receivers do not apply an accepted DMAP metadata update
+and the immediately following progress update deterministically. Both
+requests can return 200 while /now_playing either retains the ownership
+marker or exposes an empty track indefinitely.
+
+For the guarded private transport, send and acknowledge the initial
+progress metadata first, then make the random ownership marker the last
+metadata write. Bind the progress reply to its RECORD epoch and RTSP
+session, fail closed on a missing reply, and keep packet delivery behind
+the closed safety gate until the marker is confirmed as before. Runtime
+marker rotation is unchanged.
+
+Validate that a progress reply still belongs to the active RECORD
+lifecycle before canceling the shared session timer. Retire pending
+progress explicitly before TEARDOWN arms that timer for its own watchdog,
+so a late reply cannot cancel the TEARDOWN timeout.
+---
+ src/modules/module-raop-sink.c | 117 ++++++++++++++++++++++++++-------
+ 1 file changed, 94 insertions(+), 23 deletions(-)
+
+diff --git a/src/modules/module-raop-sink.c b/src/modules/module-raop-sink.c
+index 67b0ca1..98cc79d 100644
+--- a/src/modules/module-raop-sink.c
++++ b/src/modules/module-raop-sink.c
+@@ -501,7 +501,7 @@ static bool source_marker_release_command_matches(
+  *                    that is independent from canonical node mute.
+  *                    Contract 3 also publishes a module-generated, rotatable
+  *                    RAOP source marker. Its metadata acknowledgement must
+- *                    succeed before recording can start.
++ *                    succeed before packet delivery can start.
+  *                    Contract 4 adds an explicit, sequenced controller demand
+  *                    to contract 3. A negotiated Format alone cannot create
+  *                    or reconnect an RTSP session under contract 4.
+@@ -765,7 +765,12 @@ struct volume_query_reply_data {
+ struct source_marker_reply_data {
+ 	struct impl *impl;
+ 	uint64_t sequence;
+-	unsigned int initial:1;
++};
++
++struct source_marker_initial_progress_reply_data {
++	struct impl *impl;
++	uint32_t record_epoch;
++	char session_id[32];
+ };
+ 
+ struct impl {
+@@ -865,6 +870,7 @@ struct impl {
+ 	unsigned int format_present:1;
+ 	unsigned int demand_contract:1;
+ 	unsigned int activation_failed:1;
++	unsigned int source_marker_initial_progress_pending:1;
+ 
+ 	/* Immutable once the stream is created; safe to read on the data loop. */
+ 	bool safety_gate_contract;
+@@ -1518,8 +1524,7 @@ static int source_marker_reply(void *data, int status,
+ 	}
+ 	if (!impl->connected || !impl->ready || !impl->want_stream ||
+ 			impl->tearing_down ||
+-			(reply->initial ? recording_load(impl) :
+-				!recording_load(impl))) {
++			!recording_load(impl)) {
+ 		source_marker_cleanup(impl,
+ 				"RAOP session changed before marker reply");
+ 		return 0;
+@@ -1536,11 +1541,6 @@ static int source_marker_reply(void *data, int status,
+ 	}
+ 	pw_log_debug("confirmed RAOP source marker at sequence %" PRIu64,
+ 			impl->source_marker.sequence);
+-
+-	if (reply->initial &&
+-			(res = rtsp_start_recording(impl)) < 0)
+-		source_marker_fail_closed(impl,
+-				"RAOP progress request failed after source marker");
+ 	return 0;
+ }
+ 
+@@ -1560,12 +1560,11 @@ static int source_marker_rotate(struct impl *impl, bool initial)
+ 			!raop_safety_gate_is_closed(&impl->safety_gate) ||
+ 			(impl->safety_gate.reasons &
+ 				RAOP_SAFETY_GATE_ERROR) != 0 ||
++			!recording_load(impl) ||
+ 			(initial ?
+-				(recording_load(impl) ||
+-				 impl->source_marker.state !=
++				(impl->source_marker.state !=
+ 					RAOP_SOURCE_MARKER_NONE) :
+-				(!recording_load(impl) ||
+-				 impl->source_marker.state !=
++				(impl->source_marker.state !=
+ 					RAOP_SOURCE_MARKER_CONFIRMED)))
+ 		return -EPERM;
+ 
+@@ -1602,7 +1601,6 @@ static int source_marker_rotate(struct impl *impl, bool initial)
+ 	}
+ 	reply->impl = impl;
+ 	reply->sequence = impl->source_marker.sequence;
+-	reply->initial = initial;
+ 	stream_time = rtp_stream_get_time(impl->stream, &impl->rate);
+ 	if (stream_time == (uint64_t)-EIO) {
+ 		free(reply);
+@@ -1949,6 +1947,7 @@ static int activation_deactivate(struct impl *impl, uint32_t reasons,
+ 			(force_gate_generation || impl->want_stream) &&
+ 			(res = safety_gate_invalidate(impl, reasons, why)) < 0)
+ 		first_error = res;
++	impl->source_marker_initial_progress_pending = false;
+ 	impl->want_stream = false;
+ 	pw_timer_queue_cancel(&impl->reconnect_timer);
+ 	impl->reconnect_attempts = 0;
+@@ -2632,6 +2631,13 @@ static void rtsp_session_timeout(void *data)
+ 
+ 	if (impl->destroying)
+ 		return;
++	if (impl->safety_gate_contract &&
++			impl->source_marker_initial_progress_pending) {
++		impl->source_marker_initial_progress_pending = false;
++		source_marker_fail_closed(impl,
++				"RAOP initial progress request timed out");
++		return;
++	}
+ 	if (impl->safety_gate_contract &&
+ 			impl->source_marker.state ==
+ 				RAOP_SOURCE_MARKER_PENDING) {
+@@ -3071,20 +3077,55 @@ static int rtsp_record_reply(void *data, int status, const struct spa_dict *head
+ 			return res;
+ 		return 0;
+ 	}
+-	if (impl->safety_gate_contract) {
+-		res = source_marker_rotate(impl, true);
+-		if (res < 0 && impl->want_stream)
+-			source_marker_fail_closed(impl,
+-					"invalid initial RAOP source marker state "
+-					"after RECORD");
+-		return res;
+-	}
+ 	return rtsp_start_recording(impl);
+ }
+ 
++static int source_marker_initial_progress_reply(void *data, int status,
++		const struct spa_dict *headers, const struct pw_array *content)
++{
++	struct source_marker_initial_progress_reply_data *reply = data;
++	struct impl *impl = reply->impl;
++	int res;
++
++	(void)headers;
++	(void)content;
++	if (reply->record_epoch != impl->record_request.epoch ||
++			!spa_streq(reply->session_id, impl->session_id) ||
++			!impl->source_marker_initial_progress_pending) {
++		pw_log_debug("ignoring stale RAOP initial progress reply");
++		return 0;
++	}
++	if (!impl->safety_gate_contract ||
++			!impl->connected || !impl->ready || !impl->want_stream ||
++			impl->tearing_down || !recording_load(impl) ||
++			impl->source_marker.state != RAOP_SOURCE_MARKER_NONE) {
++		if (impl->want_stream)
++				source_marker_fail_closed(impl,
++					"RAOP session changed before initial progress reply");
++		return 0;
++	}
++	/* This timer is shared with TEARDOWN; cancel it only for this lifecycle. */
++	impl->source_marker_initial_progress_pending = false;
++	pw_timer_queue_cancel(&impl->session_timeout_timer);
++	if (status != 200) {
++		char reason[96];
++
++		spa_scnprintf(reason, sizeof(reason),
++				"RAOP initial progress RTSP status %d", status);
++		source_marker_fail_closed(impl, reason);
++		return 0;
++	}
++	if ((res = source_marker_rotate(impl, true)) < 0 && impl->want_stream)
++		source_marker_fail_closed(impl,
++				"invalid initial RAOP source marker state after progress");
++	return 0;
++}
++
+ static int rtsp_start_recording(struct impl *impl)
+ {
+ 	char progress[128];
++	struct source_marker_initial_progress_reply_data *reply;
++	int res;
+ 
+ 	if (recording_load(impl))
+ 		return 0;
+@@ -3093,7 +3134,34 @@ static int rtsp_start_recording(struct impl *impl)
+ 	recording_store(impl, true);
+ 
+ 	snprintf(progress, sizeof(progress), "progress: %s/%s/%s\r\n", "0", "0", "0");
+-	return rtsp_send(impl, "SET_PARAMETER", "text/parameters", progress, rtsp_log_reply_status);
++	if (!impl->safety_gate_contract)
++		return rtsp_send(impl, "SET_PARAMETER", "text/parameters",
++				progress, rtsp_log_reply_status);
++	if ((reply = calloc(1, sizeof(*reply))) == NULL) {
++		source_marker_fail_closed(impl,
++				"can't allocate RAOP initial progress request");
++		return -ENOMEM;
++	}
++	reply->impl = impl;
++	reply->record_epoch = impl->record_request.epoch;
++	spa_scnprintf(reply->session_id, sizeof(reply->session_id), "%s",
++			impl->session_id);
++	impl->source_marker_initial_progress_pending = true;
++	res = rtsp_send_data(impl, "SET_PARAMETER", "text/parameters", progress,
++			source_marker_initial_progress_reply, reply, free);
++	if (res < 0) {
++		impl->source_marker_initial_progress_pending = false;
++		free(reply);
++		source_marker_fail_closed(impl,
++				"RAOP initial progress request failed before source marker");
++		return res;
++	}
++	if ((res = arm_rtsp_session_timeout(impl)) < 0) {
++		impl->source_marker_initial_progress_pending = false;
++		source_marker_fail_closed(impl,
++				"can't arm RAOP initial progress timeout");
++	}
++	return res;
+ }
+ 
+ static int rtsp_do_record(struct impl *impl)
+@@ -3706,6 +3774,7 @@ static bool connection_cleanup(struct impl *impl)
+ {
+ 	const char *authorization;
+ 
++	impl->source_marker_initial_progress_pending = false;
+ 	if (impl->want_stream)
+ 		safety_gate_invalidate(impl, RAOP_SAFETY_GATE_ACTIVATION,
+ 				"RAOP session reset");
+@@ -3924,6 +3993,8 @@ static int rtsp_do_teardown(struct impl *impl)
+ {
+ 	int res;
+ 
++	/* Retire progress before replacing the shared timer with TEARDOWN. */
++	impl->source_marker_initial_progress_pending = false;
+ 	if (!safety_gate_stop_recording(impl, "RAOP teardown"))
+ 		return -EIO;
+ 	if (impl->source_marker.state != RAOP_SOURCE_MARKER_ERROR)
+-- 
+2.55.0
+

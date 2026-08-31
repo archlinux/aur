@@ -1,0 +1,92 @@
+pkgbase = soundtouch-pipewire
+	pkgver = 0.1.0
+	pkgrel = 64
+	url = https://github.com/Mr-Tao/soundtouch-pipewire
+	arch = x86_64
+	license = MIT AND Unicode-3.0 AND LicenseRef-STPW-SoundTouch-Supplement-1
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
+	checkdepends = libpulse
+	checkdepends = pipewire-pulse=1:1.6.8
+	checkdepends = wireplumber>=0.5.15
+	makedepends = avahi
+	makedepends = gettext
+	makedepends = glib2
+	makedepends = glib2-devel
+	makedepends = gtk4
+	makedepends = json-glib
+	makedepends = libpipewire=1:1.6.8
+	makedepends = libsoup3
+	makedepends = libxml2
+	makedepends = meson
+	makedepends = ninja
+	makedepends = openssl
+	makedepends = opus
+	makedepends = patchelf
+	makedepends = pipewire=1:1.6.8
+	makedepends = pipewire-audio=1:1.6.8
+	makedepends = pkgconf
+	makedepends = rust
+	source = soundtouch-pipewire-0.1.0.tar.gz::https://github.com/Mr-Tao/soundtouch-pipewire/releases/download/v0.1.0/soundtouch-pipewire-0.1.0.tar.gz
+	source = pipewire-1.6.8.tar.gz::https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.6.8/pipewire-1.6.8.tar.gz
+	source = 0001-pipewire-raop-free-pending-messages.patch
+	source = 0002-pipewire-raop-safe-volume.patch
+	source = 0003-pipewire-raop-dacp-control.patch
+	source = 0004-pipewire-raop-safety-gate.patch
+	source = 0005-pipewire-soundtouch-zone-sink.patch
+	source = 0006-pipewire-raop-ownership-marker.patch
+	source = 0007-pipewire-raop-explicit-demand.patch
+	source = 0008-pipewire-raop-publish-marker-after-progress.patch
+	source = 0009-pipewire-raop-route-revision.patch
+	source = 0010-pipewire-raop-activation-reconnect.patch
+	source = 0011-pipewire-raop-contract2-props-normalizer.patch
+	source = soundtouch-pipewire.service
+	source = soundtouch-pipewire.conf.example
+	sha256sums = e83114cce8cf3289b20697b57282440f9cac24e09a460c034eee8765aa884289
+	sha256sums = 8181172a1d95131f6af8bbc0b98f90b2a33349b042b84c3ce57dd5d11348cc58
+	sha256sums = 4dd5fbf8ae0853866a9c88c8c86ae96b53347c998c9aa564bd92051cc3227120
+	sha256sums = 484fad982e6e8ae850cf69d19868739933d2662c51fd213b8552f2698d932c18
+	sha256sums = 47caca252ee62eda9e1c46481067c61bacb4c781f1d9ea45c77bcb288e2d6d2a
+	sha256sums = 834765be0f637e9124a88061d61d5be668f121093285e02a97c5667312a483a1
+	sha256sums = d345f1457b46faed669436420e5265957112ca70b2f2549a1210cf47b3f95124
+	sha256sums = debdabf30d010a53d571aae1678431687deb46bba88ca392f78224c12738788f
+	sha256sums = b51040735ecb6d7405b08a6a275b2e0ce0c36b71bbb26bc1715da006e5c1e77d
+	sha256sums = 23d97eb02cd2513c5bf1c531430b15ef65d211316e8d334433a80cc623fb541f
+	sha256sums = f6b4ed98f42fa648f6dbf4c80985c9dd5f6c838872b4b892341ffb58e0dc1694
+	sha256sums = b5187b549e9bd810a98597f4c7d958fbb1d0076206bb3fc6dbcd2ccd34065329
+	sha256sums = 2fdd34736c103df49483fe00de7b75f14e312d58d4f159fb60e4c3a0a18a63ac
+	sha256sums = 0de0d89452bae790bd5f000d5bea5355ae84b17ab314f9465dcc4cc079a61307
+	sha256sums = 6a66f908199e8d9993e16d4a61e34600f1c3859b62cc34fcfbe318cead8585a7
+
+pkgname = soundtouch-pipewire
+	pkgdesc = Direct SoundTouch hardware-volume outputs for PipeWire
+	install = soundtouch-pipewire.install
+	license = MIT AND LicenseRef-STPW-SoundTouch-Supplement-1
+	depends = avahi
+	depends = glib2
+	depends = glibc
+	depends = json-glib
+	depends = libgcc
+	depends = libpipewire=1:1.6.8
+	depends = libsoup3
+	depends = libxml2
+	depends = openssl
+	depends = opus
+	depends = pipewire=1:1.6.8
+	depends = pipewire-audio=1:1.6.8
+	depends = systemd
+	depends = wireplumber>=0.5.15
+	optdepends = soundtouch-pipewire-control: frozen v1 GTK controller (not used by service-v2)
+
+pkgname = soundtouch-pipewire-control
+	pkgdesc = Frozen v1 GTK controller for SoundTouch receiver and zone operations
+	license = MIT AND Unicode-3.0 AND LicenseRef-STPW-SoundTouch-Supplement-1
+	depends = soundtouch-pipewire=0.1.0-64
+	depends = glib2
+	depends = glibc
+	depends = gtk4
+	depends = hicolor-icon-theme
+	depends = libgcc
+	optdepends = pwvucontrol: native PipeWire mixer
+	optdepends = pavucontrol: graphical PulseAudio-compatible mixer
+	optdepends = wiremix: terminal PipeWire mixer (requires a supported terminal emulator)

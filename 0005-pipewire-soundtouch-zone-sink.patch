@@ -1,0 +1,2289 @@
+diff --git a/src/modules/meson.build b/src/modules/meson.build
+index 3e21af5..2e1409d 100644
+--- a/src/modules/meson.build
++++ b/src/modules/meson.build
+@@ -20,6 +20,7 @@ module_sources = [
+   'module-jackdbus-detect.c',
+   'module-link-factory.c',
+   'module-loopback.c',
++  'module-soundtouch-zone-sink.c',
+   'module-metadata.c',
+   'module-netjack2-driver.c',
+   'module-netjack2-manager.c',
+@@ -74,6 +75,30 @@ pipewire_module_loopback = shared_library('pipewire-module-loopback',
+   dependencies : [spa_dep, mathlib, dl_lib, pipewire_dep],
+ )
+
++pipewire_module_soundtouch_zone_sink = shared_library(
++  'pipewire-module-soundtouch-zone-sink',
++  [ 'module-soundtouch-zone-sink.c',
++    'module-soundtouch-zone/control.c',
++    'module-soundtouch-zone/volume.c' ],
++  include_directories : [configinc],
++  install : true,
++  install_dir : modules_install_dir,
++  install_rpath: modules_install_dir,
++  dependencies : [spa_dep, mathlib, dl_lib, pipewire_dep],
++)
++
++if get_option('tests').allowed()
++  test('pw-test-soundtouch-zone-volume',
++    executable('pw-test-soundtouch-zone-volume',
++      [ 'module-soundtouch-zone/test-volume.c',
++        'module-soundtouch-zone/control.c',
++        'module-soundtouch-zone/volume.c' ],
++      include_directories : [configinc],
++      dependencies : [spa_dep],
++    ),
++  )
++endif
++
+ pipewire_module_filter_chain = shared_library('pipewire-module-filter-chain',
+   [ 'module-filter-chain.c' ],
+   include_directories : [configinc],
+diff --git a/src/modules/module-soundtouch-zone-sink.c b/src/modules/module-soundtouch-zone-sink.c
+new file mode 100644
+index 0000000..96f3ec5
+--- /dev/null
++++ b/src/modules/module-soundtouch-zone-sink.c
+@@ -0,0 +1,1299 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2021 Wim Taymans */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <string.h>
++#include <stdio.h>
++#include <errno.h>
++#include <inttypes.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
++#include <unistd.h>
++
++#include <spa/utils/result.h>
++#include <spa/utils/string.h>
++#include <spa/utils/json.h>
++#include <spa/utils/ringbuffer.h>
++#include <spa/param/latency-utils.h>
++#include <spa/param/audio/raw-json.h>
++#include <spa/debug/types.h>
++
++#include <pipewire/impl.h>
++#include <pipewire/extensions/profiler.h>
++
++/** \page page_module_soundtouch_zone_sink SoundTouch zone sink
++ *
++ * This private loopback publishes a stable virtual SoundTouch zone sink.
++ * Its hidden playback stream deliberately has no autoconnect flag. A trusted
++ * controller must prepare the physical zone and explicitly link the playback
++ * ports before application audio can be consumed.
++ *
++ * Public mute and channel volumes are logical hardware controls. The capture
++ * adapter always receives scalar volume 1.0, soft mute false and unity soft
++ * volumes, so UI changes cannot alter audio samples in software.
++ *
++ * ## Module Name
++ *
++ * `libpipewire-module-soundtouch-zone-sink`
++ *
++ * ## Module Options
++ *
++ * - `zone.id`: required canonical UUID used for stable ASCII node names
++ * - `zone.publication-id`: required controller publication identifier
++ * - `zone.volume.initial`: required linear volume in the range 0.0 to 1.0
++ * - `zone.volume.initial.mute`: required boolean hardware mute state
++ * - `node.description`: a human readable, Unicode-capable zone name
++ * - `capture.props = {}`: properties to be passed to the input stream
++ * - `playback.props = {}`: properties to be passed to the output stream
++ *
++ * ## Fixed contract
++ *
++ * The public capture node is `Audio/Sink` and is named
++ * `soundtouch_zone.<32-lowercase-UUID-hex>`. The hidden playback node is
++ * `Stream/Output/Audio` and appends `.playback`. Both nodes advertise:
++ *
++ * - `soundtouch.zone.contract = 1`
++ * - `soundtouch.zone.volume.contract = 1`
++ * - `soundtouch.zone.volume.control = external`
++ * - `soundtouch.zone.arm.contract = 1`
++ * - `soundtouch.zone.arm.control = node-command`
++ * - `soundtouch.zone.arm.nonce = <16-hex-digit publication nonce>`
++ * - `soundtouch.zone.arm.sequence = <acknowledged decimal sequence>`
++ * - `soundtouch.zone.armed = false|true`
++ * - the zone UUID, publication identifier and node role
++ *
++ * Both streams start inactive. The hidden playback node is passive and is
++ * activated only by an accepted arm command. The core can therefore derive
++ * passive transport links from this trusted, module-owned node property even
++ * when the client link factory does not accept an explicit link.passive
++ * property. A controller must
++ * prepare the physical speakers, create and verify those explicit links, and
++ * only then send a `SPA_NODE_COMMAND_User` command to the public node.
++ * Its `extra` string contains the next sequence, the published nonce and the
++ * requested state:
++ *
++ *\code{.unparsed}
++ * { "command.id": "soundtouch-zone-arm-state",
++ *   "state": "armed",
++ *   "sequence": "<published sequence + 1>",
++ *   "nonce": "<published nonce>" }
++ *\endcode
++ *
++ * Before removing links or tearing down the physical zone, it sends the next
++ * generation with `"state": "disarmed"`.
++ *
++ * A command is accepted only when its nonce matches and its sequence is
++ * exactly one greater than the acknowledged sequence. An exact retry of an
++ * already acknowledged state is an idempotent no-op; stale, contradictory,
++ * skipped-generation and mismatched-nonce commands are rejected. The
++ * controller waits for the exact nonce, sequence and armed state to
++ * acknowledge each transition.
++ *
++ * Capture and playback use one fixed common channel layout. SoundTouch exposes
++ * one scalar zone volume, so all public channel volumes must be equal.
++ * `target.object`, autoconnect and software volume controls cannot be enabled
++ * through stream properties.
++ */
++
++#define NAME "soundtouch-zone-sink"
++
++PW_LOG_TOPIC_STATIC(mod_topic, "mod." NAME);
++#define PW_LOG_TOPIC_DEFAULT mod_topic
++
++static const struct spa_dict_item module_props[] = {
++	{ PW_KEY_MODULE_AUTHOR, "Wim Taymans <wim.taymans@gmail.com>; "
++			"Lukáš Lipinský" },
++	{ PW_KEY_MODULE_DESCRIPTION, "Create a hardware-volume SoundTouch zone sink" },
++	{ PW_KEY_MODULE_USAGE, " ( remote.name=<remote> ) "
++				"( node.latency=<latency as fraction> ) "
++				"( node.description=<zone description> ) "
++				"( audio.rate=<sample rate> ) "
++				"( audio.channels=<number of channels> ) "
++				"( audio.position=<channel map> ) "
++				"( zone.id=<canonical UUID> ) "
++				"( zone.publication-id=<publication identifier> ) "
++				"( zone.volume.initial=<linear 0.0..1.0> ) "
++				"( zone.volume.initial.mute=<true|false> ) "
++				"( capture.props=<properties> ) "
++				"( playback.props=<properties> ) " },
++	{ PW_KEY_MODULE_VERSION, PACKAGE_VERSION },
++};
++
++#define DEFAULT_RATE	48000
++
++#include <stdlib.h>
++#include <signal.h>
++#include <getopt.h>
++#include <limits.h>
++#include <math.h>
++
++#include <spa/pod/builder.h>
++#include <spa/param/audio/format-utils.h>
++#include <spa/param/audio/raw.h>
++
++#include <pipewire/pipewire.h>
++
++#include "module-soundtouch-zone/control.h"
++#include "module-soundtouch-zone/volume.h"
++
++struct impl {
++	struct pw_context *context;
++
++	struct pw_impl_module *module;
++
++	struct spa_hook module_listener;
++
++	struct pw_core *core;
++	struct spa_hook core_proxy_listener;
++	struct spa_hook core_listener;
++
++	struct spa_audio_info_raw info;
++
++	struct pw_properties *capture_props;
++	struct pw_stream *capture;
++	struct spa_hook capture_listener;
++	struct spa_audio_info_raw capture_info;
++	struct soundtouch_zone_volume volume;
++	struct soundtouch_zone_arm_state arm;
++
++	struct pw_properties *playback_props;
++	struct pw_stream *playback;
++	struct spa_hook playback_listener;
++	struct spa_audio_info_raw playback_info;
++
++	struct spa_process_latency_info process_latency;
++	struct spa_latency_info latency[2];
++
++	unsigned int do_disconnect:1;
++	unsigned int recalc_delay:1;
++
++	struct spa_io_position *position;
++
++	uint32_t target_rate;
++	uint32_t rate;
++	uint32_t target_channels;
++	uint32_t channels;
++	float target_delay;
++	struct spa_ringbuffer buffer;
++	uint8_t *buffer_data;
++	uint32_t buffer_size;
++};
++
++static void capture_destroy(void *d)
++{
++	struct impl *impl = d;
++	spa_hook_remove(&impl->capture_listener);
++	impl->capture = NULL;
++}
++
++static void recalculate_delay(struct impl *impl)
++{
++	uint32_t target = (uint32_t)(impl->rate * impl->target_delay), cdelay, pdelay;
++	uint32_t delay, w;
++	struct pw_time pwt;
++
++	pw_stream_get_time_n(impl->playback, &pwt, sizeof(pwt));
++	pdelay = pwt.delay;
++	pw_stream_get_time_n(impl->capture, &pwt, sizeof(pwt));
++	cdelay = pwt.delay;
++
++	delay = target - SPA_MIN(target, pdelay + cdelay);
++	delay = SPA_MIN(delay, impl->buffer_size / 4);
++
++	spa_ringbuffer_get_write_index(&impl->buffer, &w);
++	spa_ringbuffer_read_update(&impl->buffer, w - (delay * 4));
++
++	pw_log_info("target:%d c:%d + p:%d + delay:%d = (%d)",
++			target, cdelay, pdelay, delay,
++			cdelay + pdelay + delay);
++}
++
++static void capture_process(void *d)
++{
++	struct impl *impl = d;
++
++	/*
++	 * Do not drain capture buffers when the unarmed playback cannot be
++	 * triggered. Keeping them queued applies backpressure and avoids
++	 * deliberately discarding the beginning of a client stream.
++	 */
++	pw_stream_trigger_process(impl->playback);
++}
++
++static void playback_process(void *d)
++{
++	struct impl *impl = d;
++	struct pw_buffer *in, *out;
++	uint32_t i;
++
++	if (impl->recalc_delay) {
++		recalculate_delay(impl);
++		impl->recalc_delay = false;
++	}
++
++	in = NULL;
++	while (true) {
++		struct pw_buffer *t;
++		if ((t = pw_stream_dequeue_buffer(impl->capture)) == NULL)
++			break;
++		if (in)
++			pw_stream_queue_buffer(impl->capture, in);
++		in = t;
++	}
++	if (in == NULL)
++		pw_log_debug("%p: out of capture buffers: %m", impl);
++
++	if ((out = pw_stream_dequeue_buffer(impl->playback)) == NULL)
++		pw_log_debug("%p: out of playback buffers: %m", impl);
++
++	if (in != NULL && out != NULL) {
++		uint32_t outsize = UINT32_MAX;
++		int32_t stride = 0;
++		struct spa_data *d;
++		const void *src[in->buffer->n_datas];
++		uint32_t r, w, buffer_size;
++
++		for (i = 0; i < in->buffer->n_datas; i++) {
++			uint32_t offs, size;
++
++			d = &in->buffer->datas[i];
++			offs = SPA_MIN(d->chunk->offset, d->maxsize);
++			size = SPA_MIN(d->chunk->size, d->maxsize - offs);
++
++			src[i] = SPA_PTROFF(d->data, offs, void);
++			outsize = SPA_MIN(outsize, size);
++			stride = SPA_MAX(stride, d->chunk->stride);
++		}
++		if (impl->buffer_size > 0) {
++			buffer_size = impl->buffer_size;
++			spa_ringbuffer_get_write_index(&impl->buffer, &w);
++			for (i = 0; i < in->buffer->n_datas; i++) {
++				void *buffer_data = &impl->buffer_data[i * buffer_size];
++				spa_ringbuffer_write_data(&impl->buffer,
++						buffer_data, buffer_size,
++						w % buffer_size, src[i], outsize);
++				src[i] = buffer_data;
++			}
++			w += outsize;
++			spa_ringbuffer_write_update(&impl->buffer, w);
++			spa_ringbuffer_get_read_index(&impl->buffer, &r);
++		} else {
++			r = 0;
++			buffer_size = outsize;
++		}
++		for (i = 0; i < out->buffer->n_datas; i++) {
++			d = &out->buffer->datas[i];
++
++			outsize = SPA_MIN(outsize, d->maxsize);
++
++			if (i < in->buffer->n_datas)
++				spa_ringbuffer_read_data(&impl->buffer,
++						src[i], buffer_size,
++						r % buffer_size,
++						d->data, outsize);
++			else
++				memset(d->data, 0, outsize);
++
++			d->chunk->offset = 0;
++			d->chunk->size = outsize;
++			d->chunk->stride = stride;
++		}
++		if (impl->buffer_size > 0) {
++			r += outsize;
++			spa_ringbuffer_read_update(&impl->buffer, r);
++		}
++	}
++
++	if (in != NULL)
++		pw_stream_queue_buffer(impl->capture, in);
++	if (out != NULL)
++		pw_stream_queue_buffer(impl->playback, out);
++}
++
++static void update_latency(struct impl *impl, enum spa_direction direction, bool props, bool process)
++{
++	struct spa_latency_info latency;
++	uint8_t buffer[1024];
++	struct spa_pod_builder b;
++	const struct spa_pod *params[3];
++	uint32_t n_params = 0;
++	struct pw_stream *s = direction == SPA_DIRECTION_OUTPUT ?
++		impl->playback : impl->capture;
++
++	if (s == NULL)
++		return;
++
++	spa_pod_builder_init(&b, buffer, sizeof(buffer));
++	latency = impl->latency[direction];
++	spa_process_latency_info_add(&impl->process_latency, &latency);
++	params[n_params++] = spa_latency_build(&b, SPA_PARAM_Latency, &latency);
++
++	if (props) {
++		int64_t nsec = impl->process_latency.ns;
++		params[n_params++] = spa_pod_builder_add_object(&b,
++				SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
++				SPA_PROP_latencyOffsetNsec, SPA_POD_Long(nsec));
++	}
++	if (process) {
++		params[n_params++] = spa_process_latency_build(&b,
++				SPA_PARAM_ProcessLatency, &impl->process_latency);
++	}
++	pw_stream_update_params(s, params, n_params);
++}
++
++static void update_latencies(struct impl *impl, bool props, bool process)
++{
++	update_latency(impl, SPA_DIRECTION_INPUT, props, process);
++	update_latency(impl, SPA_DIRECTION_OUTPUT, props, process);
++}
++
++static void param_latency_changed(struct impl *impl, const struct spa_pod *param)
++{
++	struct spa_latency_info latency;
++
++	if (param == NULL || spa_latency_parse(param, &latency) < 0)
++		return;
++
++	impl->latency[latency.direction] = latency;
++	update_latency(impl, latency.direction, false, false);
++}
++
++static void param_process_latency_changed(struct impl *impl, const struct spa_pod *param)
++{
++	struct spa_process_latency_info info;
++
++	if (param == NULL)
++		spa_zero(info);
++	else if (spa_process_latency_parse(param, &info) < 0)
++		return;
++	if (spa_process_latency_info_compare(&impl->process_latency, &info) == 0)
++		return;
++
++	impl->process_latency = info;
++	update_latencies(impl, true, true);
++}
++
++static void param_props_changed(struct impl *impl, const struct spa_pod *param)
++{
++	int64_t nsec;
++
++	if (!param)
++		nsec = 0;
++	else if (spa_pod_parse_object(param,
++					SPA_TYPE_OBJECT_Props, NULL,
++					SPA_PROP_latencyOffsetNsec, SPA_POD_Long(&nsec)) < 0)
++		return;
++
++	if (impl->process_latency.ns == nsec)
++		return;
++	impl->process_latency.ns = nsec;
++	update_latencies(impl, true, true);
++}
++
++static int publish_arm_state(struct impl *impl, uint64_t sequence, bool armed)
++{
++	struct spa_dict_item items[2];
++	char sequence_string[32];
++	const char *armed_string = armed ? "true" : "false";
++	int res;
++
++	spa_scnprintf(sequence_string, sizeof(sequence_string),
++			"%" PRIu64, sequence);
++	items[0] = SPA_DICT_ITEM_INIT("soundtouch.zone.armed", armed_string);
++	items[1] = SPA_DICT_ITEM_INIT("soundtouch.zone.arm.sequence",
++			sequence_string);
++	if ((res = pw_stream_update_properties(impl->capture,
++			&SPA_DICT_INIT(items, SPA_N_ELEMENTS(items)))) < 0 ||
++			(res = pw_stream_update_properties(impl->playback,
++			&SPA_DICT_INIT(items, SPA_N_ELEMENTS(items)))) < 0)
++		return res;
++	return 0;
++}
++
++static int deactivate_streams(struct impl *impl)
++{
++	int first_error = 0, res;
++
++	/*
++	 * Stop accepting application audio before stopping the transport side.
++	 * Keep attempting every fail-closed operation after an error: destroying
++	 * the module is the final fallback, but no successful cleanup step should
++	 * be skipped on the way there.
++	 */
++	if (impl->capture != NULL &&
++			(res = pw_stream_set_active(impl->capture, false)) < 0)
++		first_error = res;
++	if (impl->playback != NULL &&
++			(res = pw_stream_set_active(impl->playback, false)) < 0 &&
++			first_error == 0)
++		first_error = res;
++	if (impl->capture != NULL &&
++			(res = pw_stream_flush(impl->capture, false)) < 0 &&
++			first_error == 0)
++		first_error = res;
++	if (impl->playback != NULL &&
++			(res = pw_stream_flush(impl->playback, false)) < 0 &&
++			first_error == 0)
++		first_error = res;
++	return first_error;
++}
++
++static int apply_arm_command(struct impl *impl,
++		const struct soundtouch_zone_arm_command *command)
++{
++	enum soundtouch_zone_arm_result result;
++	bool active_changed;
++	int res;
++
++	result = soundtouch_zone_arm_validate(&impl->arm, command);
++	switch (result) {
++	case SOUNDTOUCH_ZONE_ARM_RETRY:
++		pw_log_debug("accepting zone arm sequence %" PRIu64 " retry",
++				command->sequence);
++		return 0;
++	case SOUNDTOUCH_ZONE_ARM_STALE:
++		pw_log_debug("ignoring stale zone arm sequence %" PRIu64,
++				command->sequence);
++		return 0;
++	case SOUNDTOUCH_ZONE_ARM_DENIED:
++		pw_log_warn("denying zone arm sequence %" PRIu64,
++				command->sequence);
++		return -EPERM;
++	case SOUNDTOUCH_ZONE_ARM_ADVANCE:
++		break;
++	}
++
++	active_changed = command->armed != impl->arm.armed;
++	if (active_changed && command->armed) {
++		/*
++		 * The playback stream is the activation source for the passive
++		 * physical route. Start it while capture is still inactive, then
++		 * admit application audio. The acknowledged armed property is
++		 * published only after both calls have succeeded.
++		 */
++		if ((res = pw_stream_set_active(impl->playback, true)) < 0)
++			goto arm_failed;
++		if ((res = pw_stream_set_active(impl->capture, true)) < 0)
++			goto arm_failed;
++	} else if (active_changed) {
++		if ((res = deactivate_streams(impl)) < 0)
++			return res;
++	}
++
++	if ((res = publish_arm_state(impl, command->sequence,
++			command->armed)) < 0) {
++		/*
++		 * Never leave an unacknowledged generation open. If publication
++		 * fails after activation, close and flush the gate before failing.
++		 */
++		if (command->armed)
++			deactivate_streams(impl);
++		return res;
++	}
++
++	soundtouch_zone_arm_commit(&impl->arm, command);
++	pw_log_info("zone capture is now %s at sequence %" PRIu64,
++			command->armed ? "armed" : "disarmed",
++			command->sequence);
++	return 0;
++
++arm_failed:
++	deactivate_streams(impl);
++	return res;
++}
++
++static void fail_volume_contract(struct impl *impl, int res)
++{
++	/*
++	 * An adapter whose unity or activation contract cannot be enforced must
++	 * not remain available.
++	 */
++	pw_log_error("can't enforce zone sink contract: %s",
++			spa_strerror(res));
++	pw_stream_set_error(impl->capture, res,
++			"can't enforce SoundTouch zone sink contract");
++	pw_impl_module_schedule_destroy(impl->module);
++}
++
++static void capture_volume_props_changed(struct impl *impl,
++		const struct spa_pod *param)
++{
++	uint8_t buffer[16384];
++	struct spa_pod_builder builder;
++	const struct spa_pod *normalized = NULL;
++	int res;
++
++	spa_pod_builder_init(&builder, buffer, sizeof(buffer));
++	res = soundtouch_zone_volume_normalize(&impl->volume, param,
++			&builder, &normalized);
++	if (res < 0) {
++		/*
++		 * Never forward malformed, out-of-range, forged or oversized
++		 * controls. Reinstall the last complete safe tuple instead.
++		 */
++		pw_log_warn("rejecting unsafe zone Props: %s",
++				spa_strerror(res));
++		spa_pod_builder_init(&builder, buffer, sizeof(buffer));
++		res = soundtouch_zone_volume_build(&impl->volume, NULL,
++				&builder, &normalized);
++	}
++	/*
++	 * pw_stream_set_param() raises stream.c's in_set_param guard, so this
++	 * canonical write cannot recursively emit our param_changed callback.
++	 */
++	if (res >= 0)
++		res = pw_stream_set_param(impl->capture,
++				SPA_PARAM_Props, normalized);
++	if (res < 0)
++		fail_volume_contract(impl, res);
++}
++
++static void capture_command(void *data, const struct spa_command *command)
++{
++	struct impl *impl = data;
++	const struct spa_pod_object *object;
++	struct spa_pod_prop *prop;
++
++	if (SPA_UNLIKELY(SPA_COMMAND_TYPE(command) !=
++			SPA_TYPE_COMMAND_Node) ||
++			SPA_NODE_COMMAND_ID(command) != SPA_NODE_COMMAND_User)
++		return;
++
++	object = (const struct spa_pod_object *)command;
++	SPA_POD_OBJECT_FOREACH(object, prop) {
++		struct soundtouch_zone_arm_command arm_command;
++		const char *json;
++		int res;
++
++		if (prop->key != SPA_COMMAND_NODE_extra ||
++				prop->value.type != SPA_TYPE_String)
++			continue;
++		json = SPA_POD_CONTENTS(struct spa_pod, &prop->value);
++		if ((res = soundtouch_zone_arm_command_parse(json,
++				&arm_command)) == -ENOENT)
++			continue;
++		if (res < 0) {
++			pw_log_warn("ignoring malformed zone arm command");
++			return;
++		}
++		if ((res = apply_arm_command(impl, &arm_command)) < 0 &&
++				res != -EPERM)
++			fail_volume_contract(impl, res);
++		return;
++	}
++}
++
++static void param_tag_changed(struct impl *impl, const struct spa_pod *param,
++		struct pw_stream *other)
++{
++	const struct spa_pod *params[1] = { param };
++	if (param == NULL)
++		return;
++	pw_stream_update_params(other, params, 1);
++}
++
++static void param_format_changed(struct impl *impl, const struct spa_pod *param,
++		struct pw_stream *stream, bool capture)
++{
++	struct spa_audio_info_raw info;
++
++	spa_zero(info);
++	if (param != NULL) {
++		if (spa_format_audio_raw_parse(param, &info) < 0 ||
++		    info.channels == 0)
++			return;
++
++		if ((impl->info.format != 0 && impl->info.format != info.format) ||
++		    (impl->info.rate != 0 && impl->info.rate != info.rate) ||
++		    (impl->info.channels != 0 &&
++		     (impl->info.channels != info.channels ||
++		      memcmp(impl->info.position, info.position,
++			      info.channels * sizeof(uint32_t)) != 0))) {
++			uint8_t buffer[1024];
++			struct spa_pod_builder b;
++			const struct spa_pod *params[1];
++
++			if (impl->info.format != 0)
++				info.format = impl->info.format;
++			if (impl->info.rate != 0)
++				info.rate = impl->info.rate;
++			if (impl->info.channels != 0) {
++				info.channels = impl->info.channels;
++				memcpy(info.position, impl->info.position, sizeof(info.position));
++			}
++			spa_pod_builder_init(&b, buffer, sizeof(buffer));
++			params[0] = spa_format_audio_raw_build(&b, SPA_PARAM_Format, &info);
++			pw_stream_update_params(stream, params, 1);
++		}
++	}
++	if (capture) {
++		impl->target_rate = info.rate;
++		impl->target_channels = info.channels;
++	}
++}
++
++static void recalculate_buffer(struct impl *impl)
++{
++	if (impl->target_delay > 0.0f && impl->channels > 0 && impl->rate > 0) {
++		uint32_t delay = (uint32_t)(impl->rate * impl->target_delay);
++		void *data;
++
++		impl->buffer_size = (delay + (1u<<15)) * 4;
++		data = realloc(impl->buffer_data, impl->buffer_size * impl->channels);
++		if (data == NULL) {
++			pw_log_warn("can't allocate delay buffer, delay disabled: %m");
++			impl->buffer_size = 0;
++			free(impl->buffer_data);
++		}
++		impl->buffer_data = data;
++		spa_ringbuffer_init(&impl->buffer);
++	} else {
++		impl->buffer_size = 0;
++		free(impl->buffer_data);
++		impl->buffer_data = NULL;
++	}
++	pw_log_info("configured delay:%f buffer:%d", impl->target_delay, impl->buffer_size);
++	impl->recalc_delay = true;
++}
++
++static void stream_state_changed(void *data, enum pw_stream_state old,
++		enum pw_stream_state state, const char *error)
++{
++	struct impl *impl = data;
++	switch (state) {
++	case PW_STREAM_STATE_PAUSED:
++		pw_stream_flush(impl->playback, false);
++		pw_stream_flush(impl->capture, false);
++		impl->recalc_delay = true;
++		break;
++	case PW_STREAM_STATE_UNCONNECTED:
++		pw_log_info("module %p: unconnected", impl);
++		pw_impl_module_schedule_destroy(impl->module);
++		break;
++	case PW_STREAM_STATE_ERROR:
++		pw_log_info("module %p: error: %s", impl, error);
++		pw_impl_module_schedule_destroy(impl->module);
++		break;
++	case PW_STREAM_STATE_STREAMING:
++	{
++		uint32_t target = impl->target_rate;
++		if (target == 0)
++			target = impl->position ?
++				impl->position->clock.target_rate.denom : DEFAULT_RATE;
++		if (impl->rate != target || impl->target_channels != impl->channels) {
++			impl->rate = target;
++			impl->channels = impl->target_channels;
++			recalculate_buffer(impl);
++		}
++		break;
++	}
++	default:
++		break;
++	}
++}
++
++static void capture_param_changed(void *data, uint32_t id, const struct spa_pod *param)
++{
++	struct impl *impl = data;
++
++	switch (id) {
++	case SPA_PARAM_Format:
++		param_format_changed(impl, param, impl->capture, true);
++		break;
++	case SPA_PARAM_Latency:
++		param_latency_changed(impl, param);
++		break;
++	case SPA_PARAM_Props:
++		param_props_changed(impl, param);
++		capture_volume_props_changed(impl, param);
++		break;
++	case SPA_PARAM_ProcessLatency:
++		param_process_latency_changed(impl, param);
++		break;
++	case SPA_PARAM_Tag:
++		param_tag_changed(impl, param, impl->playback);
++		break;
++	}
++}
++
++static void io_changed(void *data, uint32_t id, void *area, uint32_t size)
++{
++	struct impl *impl = data;
++	switch (id) {
++	case SPA_IO_Position:
++		impl->position = area;
++		break;
++	default:
++		break;
++	}
++}
++
++static const struct pw_stream_events in_stream_events = {
++	PW_VERSION_STREAM_EVENTS,
++	.destroy = capture_destroy,
++	.process = capture_process,
++	.state_changed = stream_state_changed,
++	.param_changed = capture_param_changed,
++	.io_changed = io_changed,
++	.command = capture_command,
++};
++
++static void playback_destroy(void *d)
++{
++	struct impl *impl = d;
++	spa_hook_remove(&impl->playback_listener);
++	impl->playback = NULL;
++}
++
++static void playback_param_changed(void *data, uint32_t id, const struct spa_pod *param)
++{
++	struct impl *impl = data;
++
++	switch (id) {
++	case SPA_PARAM_Format:
++		param_format_changed(impl, param, impl->playback, false);
++		break;
++	case SPA_PARAM_Latency:
++		param_latency_changed(impl, param);
++		break;
++	case SPA_PARAM_Props:
++		param_props_changed(impl, param);
++		break;
++	case SPA_PARAM_ProcessLatency:
++		param_process_latency_changed(impl, param);
++		break;
++	case SPA_PARAM_Tag:
++		param_tag_changed(impl, param, impl->capture);
++		break;
++	}
++}
++static const struct pw_stream_events out_stream_events = {
++	PW_VERSION_STREAM_EVENTS,
++	.destroy = playback_destroy,
++	.process = playback_process,
++	.state_changed = stream_state_changed,
++	.param_changed = playback_param_changed,
++	.io_changed = io_changed,
++};
++
++static int setup_streams(struct impl *impl)
++{
++	int res;
++	uint32_t n_params;
++	const struct spa_pod *params[2];
++	uint8_t buffer[16384];
++	struct spa_pod_builder b;
++
++	impl->capture = pw_stream_new(impl->core,
++			"SoundTouch zone sink", impl->capture_props);
++	impl->capture_props = NULL;
++	if (impl->capture == NULL)
++		return -errno;
++
++	pw_stream_add_listener(impl->capture,
++			&impl->capture_listener,
++			&in_stream_events, impl);
++
++	impl->playback = pw_stream_new(impl->core,
++			"SoundTouch zone playback", impl->playback_props);
++	impl->playback_props = NULL;
++	if (impl->playback == NULL)
++		return -errno;
++
++	pw_stream_add_listener(impl->playback,
++			&impl->playback_listener,
++			&out_stream_events, impl);
++
++	/* Both sides remain inactive until one exact arm generation is accepted. */
++	n_params = 0;
++	spa_pod_builder_init(&b, buffer, sizeof(buffer));
++	params[n_params++] = spa_format_audio_raw_build(&b, SPA_PARAM_EnumFormat,
++			&impl->playback_info);
++	if ((res = pw_stream_connect(impl->playback,
++			PW_DIRECTION_OUTPUT,
++			PW_ID_ANY,
++			PW_STREAM_FLAG_INACTIVE |
++			PW_STREAM_FLAG_MAP_BUFFERS |
++			PW_STREAM_FLAG_RT_PROCESS |
++			PW_STREAM_FLAG_TRIGGER,
++			params, n_params)) < 0)
++		return res;
++
++	n_params = 0;
++	spa_pod_builder_init(&b, buffer, sizeof(buffer));
++	params[n_params++] = spa_format_audio_raw_build(&b, SPA_PARAM_EnumFormat,
++			&impl->capture_info);
++	if ((res = soundtouch_zone_volume_build(&impl->volume, NULL,
++			&b, &params[n_params])) < 0)
++		return res;
++	n_params++;
++	if ((res = pw_stream_connect(impl->capture,
++			PW_DIRECTION_INPUT,
++			PW_ID_ANY,
++			PW_STREAM_FLAG_INACTIVE |
++			PW_STREAM_FLAG_AUTOCONNECT |
++			PW_STREAM_FLAG_MAP_BUFFERS |
++			PW_STREAM_FLAG_RT_PROCESS |
++			PW_STREAM_FLAG_ASYNC,
++			params, n_params)) < 0)
++		return res;
++
++	/*
++	 * pw_stream_connect() carries the safe tuple before publication. Also
++	 * apply it to the newly created adapter immediately: some adapters expose
++	 * connect parameters separately from their current Props.
++	 */
++	n_params = 0;
++	spa_pod_builder_init(&b, buffer, sizeof(buffer));
++	if ((res = soundtouch_zone_volume_build(&impl->volume, NULL,
++			&b, &params[n_params])) < 0)
++		return res;
++	if ((res = pw_stream_set_param(impl->capture, SPA_PARAM_Props,
++			params[n_params])) < 0)
++		return res;
++
++	return 0;
++}
++
++static void core_error(void *data, uint32_t id, int seq, int res, const char *message)
++{
++	struct impl *impl = data;
++
++	if (res == -ENOENT) {
++		pw_log_info("message id:%u seq:%d res:%d (%s): %s",
++				id, seq, res, spa_strerror(res), message);
++	} else {
++		pw_log_warn("error id:%u seq:%d res:%d (%s): %s",
++				id, seq, res, spa_strerror(res), message);
++	}
++
++	if (id == PW_ID_CORE && res == -EPIPE)
++		pw_impl_module_schedule_destroy(impl->module);
++}
++
++static const struct pw_core_events core_events = {
++	PW_VERSION_CORE_EVENTS,
++	.error = core_error,
++};
++
++static void core_destroy(void *d)
++{
++	struct impl *impl = d;
++	spa_hook_remove(&impl->core_listener);
++	impl->core = NULL;
++	pw_impl_module_schedule_destroy(impl->module);
++}
++
++static const struct pw_proxy_events core_proxy_events = {
++	.destroy = core_destroy,
++};
++
++static void impl_destroy(struct impl *impl)
++{
++	/* Close capture before playback and flush both before destruction. */
++	deactivate_streams(impl);
++
++	if (impl->capture)
++		pw_stream_destroy(impl->capture);
++	if (impl->playback)
++		pw_stream_destroy(impl->playback);
++
++	if (impl->core && impl->do_disconnect)
++		pw_core_disconnect(impl->core);
++
++	pw_properties_free(impl->capture_props);
++	pw_properties_free(impl->playback_props);
++	free(impl->buffer_data);
++	free(impl);
++}
++
++static void module_destroy(void *data)
++{
++	struct impl *impl = data;
++	spa_hook_remove(&impl->module_listener);
++	impl_destroy(impl);
++}
++
++static const struct pw_impl_module_events module_events = {
++	PW_VERSION_IMPL_MODULE_EVENTS,
++	.destroy = module_destroy,
++};
++
++static int parse_audio_info(struct pw_properties *props, struct spa_audio_info_raw *info)
++{
++	return spa_audio_info_raw_init_dict_keys(info,
++			&SPA_DICT_ITEMS(
++				 SPA_DICT_ITEM(SPA_KEY_AUDIO_FORMAT, "F32P")),
++			&props->dict,
++			SPA_KEY_AUDIO_RATE,
++			SPA_KEY_AUDIO_CHANNELS,
++			SPA_KEY_AUDIO_LAYOUT,
++			SPA_KEY_AUDIO_POSITION, NULL);
++}
++
++static void copy_props(struct impl *impl, struct pw_properties *props, const char *key)
++{
++	const char *str;
++	if ((str = pw_properties_get(props, key)) != NULL) {
++		if (pw_properties_get(impl->capture_props, key) == NULL)
++			pw_properties_set(impl->capture_props, key, str);
++		if (pw_properties_get(impl->playback_props, key) == NULL)
++			pw_properties_set(impl->playback_props, key, str);
++	}
++}
++
++static int uuid_to_node_suffix(const char *uuid, char suffix[33])
++{
++	static const uint8_t hyphens[] = { 8, 13, 18, 23 };
++	size_t i, j = 0, h = 0;
++
++	if (uuid == NULL || strlen(uuid) != 36)
++		return -EINVAL;
++	for (i = 0; i < 36; i++) {
++		if (h < SPA_N_ELEMENTS(hyphens) && i == hyphens[h]) {
++			if (uuid[i] != '-')
++				return -EINVAL;
++			h++;
++			continue;
++		}
++		if (!((uuid[i] >= '0' && uuid[i] <= '9') ||
++		      (uuid[i] >= 'a' && uuid[i] <= 'f') ||
++		      (uuid[i] >= 'A' && uuid[i] <= 'F')))
++			return -EINVAL;
++		suffix[j++] = uuid[i] >= 'A' && uuid[i] <= 'F' ?
++			uuid[i] - 'A' + 'a' : uuid[i];
++	}
++	suffix[j] = '\0';
++	return j == 32 ? 0 : -EINVAL;
++}
++
++static bool publication_id_is_valid(const char *publication_id)
++{
++	size_t i, len;
++
++	if (publication_id == NULL || (len = strlen(publication_id)) == 0 ||
++			len > 128)
++		return false;
++	for (i = 0; i < len; i++) {
++		unsigned char c = (unsigned char)publication_id[i];
++
++		if (!((c >= '0' && c <= '9') ||
++		      (c >= 'a' && c <= 'z') ||
++		      (c >= 'A' && c <= 'Z') ||
++		      c == '-' || c == '_' || c == '.' || c == ':'))
++			return false;
++	}
++	return true;
++}
++
++static int parse_required_bool(const char *str, bool *value)
++{
++	if (str == NULL || value == NULL)
++		return -EINVAL;
++	if (spa_streq(str, "true") || spa_streq(str, "1"))
++		*value = true;
++	else if (spa_streq(str, "false") || spa_streq(str, "0"))
++		*value = false;
++	else
++		return -EINVAL;
++	return 0;
++}
++
++static int set_contract_props(struct pw_properties *props,
++		const char *zone_id, const char *publication_id, const char *role,
++		const char *arm_nonce)
++{
++	static const struct spa_dict_item contract[] = {
++		{ "soundtouch.zone.contract", "1" },
++		{ "soundtouch.zone.volume.contract", "1" },
++		{ "soundtouch.zone.volume.control", "external" },
++		{ "soundtouch.zone.arm.contract", SOUNDTOUCH_ZONE_ARM_CONTRACT },
++		{ "soundtouch.zone.arm.control", "node-command" },
++		{ "soundtouch.zone.armed", "false" },
++		{ "soundtouch.zone.arm.sequence", "0" },
++	};
++	uint32_t i;
++	int res;
++
++	for (i = 0; i < SPA_N_ELEMENTS(contract); i++) {
++		if ((res = pw_properties_set(props, contract[i].key,
++				contract[i].value)) < 0)
++			return res;
++	}
++	if ((res = pw_properties_set(props, "soundtouch.zone.id", zone_id)) < 0 ||
++				(res = pw_properties_set(props,
++					"soundtouch.zone.publication-id",
++					publication_id)) < 0 ||
++				(res = pw_properties_set(props,
++					"soundtouch.zone.arm.nonce",
++					arm_nonce)) < 0 ||
++				(res = pw_properties_set(props,
++				"soundtouch.zone.role", role)) < 0)
++		return res;
++	return 0;
++}
++
++static bool audio_layout_equal(const struct spa_audio_info_raw *a,
++		const struct spa_audio_info_raw *b)
++{
++	return a->channels == b->channels &&
++		a->channels > 0 &&
++		memcmp(a->position, b->position,
++				a->channels * sizeof(a->position[0])) == 0;
++}
++
++SPA_EXPORT
++int pipewire__module_init(struct pw_impl_module *module, const char *args)
++{
++	struct pw_context *context = pw_impl_module_get_context(module);
++	struct pw_properties *props;
++	struct impl *impl;
++	char node_suffix[33], node_name[96];
++	char zone_id_copy[37], publication_id_copy[129];
++	char arm_nonce_string[17];
++	char *description_copy = NULL;
++	const char *str, *zone_id, *publication_id, *description;
++	float initial;
++	uint64_t arm_nonce;
++	bool initial_mute;
++	int res;
++
++	PW_LOG_TOPIC_INIT(mod_topic);
++
++	impl = calloc(1, sizeof(struct impl));
++	if (impl == NULL)
++		return -errno;
++
++	pw_log_debug("module %p: new %s", impl, args);
++
++	if (args)
++		props = pw_properties_new_string(args);
++	else
++		props = pw_properties_new(NULL, NULL);
++	if (props == NULL) {
++		res = -errno;
++		pw_log_error( "can't create properties: %m");
++		goto error;
++	}
++
++	impl->capture_props = pw_properties_new(NULL, NULL);
++	impl->playback_props = pw_properties_new(NULL, NULL);
++	if (impl->capture_props == NULL || impl->playback_props == NULL) {
++		res = -errno;
++		pw_log_error( "can't create properties: %m");
++		goto error;
++	}
++
++	impl->module = module;
++	impl->context = context;
++	impl->latency[SPA_DIRECTION_INPUT] = SPA_LATENCY_INFO(SPA_DIRECTION_INPUT);
++	impl->latency[SPA_DIRECTION_OUTPUT] = SPA_LATENCY_INFO(SPA_DIRECTION_OUTPUT);
++	if ((res = pw_getrandom(&arm_nonce, sizeof(arm_nonce), 0)) < 0) {
++		pw_log_error("can't generate zone arm nonce: %s",
++				spa_strerror(res));
++		goto error;
++	}
++	if (arm_nonce == 0)
++		arm_nonce = 1;
++	soundtouch_zone_arm_state_init(&impl->arm, arm_nonce);
++	spa_scnprintf(arm_nonce_string, sizeof(arm_nonce_string),
++			"%016" PRIx64, arm_nonce);
++
++	zone_id = pw_properties_get(props, "zone.id");
++	if ((res = uuid_to_node_suffix(zone_id, node_suffix)) < 0) {
++		pw_log_error("zone.id must be a canonical UUID");
++		goto error;
++	}
++	memcpy(zone_id_copy, zone_id, sizeof(zone_id_copy));
++
++	publication_id = pw_properties_get(props, "zone.publication-id");
++	if (!publication_id_is_valid(publication_id)) {
++		res = -EINVAL;
++		pw_log_error("zone.publication-id must be a non-empty ASCII identifier");
++		goto error;
++	}
++	memcpy(publication_id_copy, publication_id, strlen(publication_id) + 1);
++
++	str = pw_properties_get(props, "zone.volume.initial");
++	if (str == NULL || !spa_atof(str, &initial) || !isfinite(initial) ||
++			initial < 0.0f || initial > 1.0f) {
++		res = -EINVAL;
++		pw_log_error("zone.volume.initial must be in the range 0.0 to 1.0");
++		goto error;
++	}
++	if ((res = parse_required_bool(pw_properties_get(props,
++			"zone.volume.initial.mute"), &initial_mute)) < 0) {
++		pw_log_error("zone.volume.initial.mute must be true or false");
++		goto error;
++	}
++
++	if (pw_properties_get(props, PW_KEY_AUDIO_CHANNELS) == NULL)
++		pw_properties_set(props, PW_KEY_AUDIO_CHANNELS, "2");
++	if (pw_properties_get(props, SPA_KEY_AUDIO_POSITION) == NULL)
++		pw_properties_set(props, SPA_KEY_AUDIO_POSITION, "[ FL FR ]");
++	if ((description = pw_properties_get(props,
++			PW_KEY_NODE_DESCRIPTION)) == NULL) {
++		pw_properties_setf(props, PW_KEY_NODE_DESCRIPTION,
++				"SoundTouch zone %s", node_suffix);
++		description = pw_properties_get(props, PW_KEY_NODE_DESCRIPTION);
++	}
++	description_copy = strdup(description);
++	if (description_copy == NULL) {
++		res = -errno;
++		goto error;
++	}
++
++	if (pw_properties_get(props, PW_KEY_NODE_GROUP) == NULL)
++		pw_properties_setf(props, PW_KEY_NODE_GROUP,
++				"soundtouch-zone-%s", node_suffix);
++	if (pw_properties_get(props, PW_KEY_NODE_LINK_GROUP) == NULL)
++		pw_properties_setf(props, PW_KEY_NODE_LINK_GROUP,
++				"soundtouch-zone-%s", node_suffix);
++	if (pw_properties_get(props, PW_KEY_NODE_VIRTUAL) == NULL)
++		pw_properties_set(props, PW_KEY_NODE_VIRTUAL, "true");
++	if (pw_properties_get(props, "resample.prefill") == NULL)
++		pw_properties_set(props, "resample.prefill", "true");
++
++	if ((str = pw_properties_get(props, "capture.props")) != NULL)
++		pw_properties_update_string(impl->capture_props, str, strlen(str));
++	if ((str = pw_properties_get(props, "playback.props")) != NULL)
++		pw_properties_update_string(impl->playback_props, str, strlen(str));
++
++	copy_props(impl, props, PW_KEY_AUDIO_RATE);
++	copy_props(impl, props, PW_KEY_AUDIO_CHANNELS);
++	copy_props(impl, props, SPA_KEY_AUDIO_LAYOUT);
++	copy_props(impl, props, SPA_KEY_AUDIO_POSITION);
++	copy_props(impl, props, PW_KEY_NODE_DESCRIPTION);
++	copy_props(impl, props, PW_KEY_NODE_GROUP);
++	copy_props(impl, props, PW_KEY_NODE_LINK_GROUP);
++	copy_props(impl, props, PW_KEY_NODE_LATENCY);
++	copy_props(impl, props, PW_KEY_NODE_VIRTUAL);
++	copy_props(impl, props, PW_KEY_MEDIA_NAME);
++	copy_props(impl, props, "resample.prefill");
++
++	snprintf(node_name, sizeof(node_name), "soundtouch_zone.%s", node_suffix);
++	pw_properties_set(impl->capture_props, PW_KEY_NODE_NAME, node_name);
++	pw_properties_set(impl->capture_props, PW_KEY_NODE_DESCRIPTION,
++			description_copy);
++	pw_properties_set(impl->capture_props, PW_KEY_MEDIA_CLASS, "Audio/Sink");
++	pw_properties_set(impl->capture_props, PW_KEY_TARGET_OBJECT, NULL);
++	pw_properties_set(impl->capture_props, "node.target", NULL);
++	pw_properties_set(impl->capture_props, PW_KEY_NODE_PASSIVE, "false");
++	pw_properties_set(impl->capture_props, "state.restore-props", "false");
++	pw_properties_set(impl->capture_props, "channelmix.lock-volumes", "false");
++	if ((res = set_contract_props(impl->capture_props, zone_id_copy,
++			publication_id_copy, "sink", arm_nonce_string)) < 0)
++		goto error;
++
++	snprintf(node_name, sizeof(node_name), "soundtouch_zone.%s.playback",
++			node_suffix);
++	pw_properties_set(impl->playback_props, PW_KEY_NODE_NAME, node_name);
++	pw_properties_setf(impl->playback_props, PW_KEY_NODE_DESCRIPTION,
++			"%s playback", description_copy);
++	pw_properties_set(impl->playback_props, PW_KEY_MEDIA_CLASS,
++			"Stream/Output/Audio");
++	pw_properties_set(impl->playback_props, PW_KEY_TARGET_OBJECT, NULL);
++	pw_properties_set(impl->playback_props, "node.target", NULL);
++	pw_properties_set(impl->playback_props, PW_KEY_NODE_AUTOCONNECT, "false");
++	pw_properties_set(impl->playback_props, PW_KEY_NODE_PASSIVE, "true");
++	pw_properties_set(impl->playback_props, PW_KEY_NODE_ALWAYS_PROCESS, "false");
++	pw_properties_set(impl->playback_props, PW_KEY_NODE_PAUSE_ON_IDLE, "true");
++	pw_properties_set(impl->playback_props, "node.dont-fallback", "true");
++	pw_properties_set(impl->playback_props, "node.linger", "true");
++	pw_properties_set(impl->playback_props, PW_KEY_STREAM_DONT_REMIX, "true");
++	pw_properties_set(impl->playback_props, "state.restore-props", "false");
++	pw_properties_set(impl->playback_props, "state.restore-target", "false");
++	pw_properties_set(impl->playback_props, "channelmix.lock-volumes", "true");
++	if ((res = set_contract_props(impl->playback_props, zone_id_copy,
++			publication_id_copy, "playback", arm_nonce_string)) < 0)
++		goto error;
++
++	if ((res = parse_audio_info(props, &impl->info)) < 0 ||
++	    (res = parse_audio_info(impl->capture_props, &impl->capture_info)) < 0 ||
++	    (res = parse_audio_info(impl->playback_props, &impl->playback_info)) < 0) {
++		pw_log_error( "can't parse formats: %s", spa_strerror(res));
++		goto error;
++	}
++	if (impl->info.channels == 0 ||
++			impl->info.channels > SPA_AUDIO_MAX_CHANNELS ||
++			!audio_layout_equal(&impl->info, &impl->capture_info) ||
++			!audio_layout_equal(&impl->info, &impl->playback_info)) {
++		res = -EINVAL;
++		pw_log_error("capture and playback must use the common fixed channel layout");
++		goto error;
++	}
++	if ((res = soundtouch_zone_volume_init(&impl->volume,
++			impl->info.channels, initial, initial_mute)) < 0)
++		goto error;
++
++	if (!impl->capture_info.rate && !impl->playback_info.rate) {
++		if (pw_properties_get(impl->playback_props, "resample.disable") == NULL)
++			pw_properties_set(impl->playback_props, "resample.disable", "true");
++		if (pw_properties_get(impl->capture_props, "resample.disable") == NULL)
++			pw_properties_set(impl->capture_props, "resample.disable", "true");
++	} else if (impl->capture_info.rate && !impl->playback_info.rate)
++		impl->playback_info.rate = impl->capture_info.rate;
++	else if (impl->playback_info.rate && !impl->capture_info.rate)
++		impl->capture_info.rate = impl->playback_info.rate;
++	else if (impl->capture_info.rate != impl->playback_info.rate) {
++		pw_log_warn("Both capture and playback rate are set, but"
++			" they are different. Using the highest of two. This behaviour"
++			" is deprecated, please use equal rates in the module config");
++		impl->playback_info.rate = impl->capture_info.rate =
++			SPA_MAX(impl->playback_info.rate, impl->capture_info.rate);
++	}
++
++	if (pw_properties_get(impl->capture_props, PW_KEY_MEDIA_NAME) == NULL)
++		pw_properties_setf(impl->capture_props, PW_KEY_MEDIA_NAME, "%s input",
++				pw_properties_get(impl->capture_props, PW_KEY_NODE_DESCRIPTION));
++	if (pw_properties_get(impl->playback_props, PW_KEY_MEDIA_NAME) == NULL)
++		pw_properties_setf(impl->playback_props, PW_KEY_MEDIA_NAME, "%s output",
++				pw_properties_get(impl->playback_props, PW_KEY_NODE_DESCRIPTION));
++
++	impl->core = pw_context_get_object(impl->context, PW_TYPE_INTERFACE_Core);
++	if (impl->core == NULL) {
++		str = pw_properties_get(props, PW_KEY_REMOTE_NAME);
++		impl->core = pw_context_connect(impl->context,
++				pw_properties_new(
++					PW_KEY_REMOTE_NAME, str,
++					NULL),
++				0);
++		impl->do_disconnect = true;
++	}
++	if (impl->core == NULL) {
++		res = -errno;
++		pw_log_error("can't connect: %m");
++		goto error;
++	}
++
++	pw_properties_free(props);
++	props = NULL;
++
++	pw_proxy_add_listener((struct pw_proxy*)impl->core,
++			&impl->core_proxy_listener,
++			&core_proxy_events, impl);
++	pw_core_add_listener(impl->core,
++			&impl->core_listener,
++			&core_events, impl);
++
++	if ((res = setup_streams(impl)) < 0)
++		goto error;
++
++	free(description_copy);
++	description_copy = NULL;
++	pw_impl_module_add_listener(module, &impl->module_listener, &module_events, impl);
++
++	pw_impl_module_update_properties(module, &SPA_DICT_INIT_ARRAY(module_props));
++
++	return 0;
++
++error:
++	free(description_copy);
++	pw_properties_free(props);
++	impl_destroy(impl);
++	return res;
++}
+diff --git a/src/modules/module-soundtouch-zone/control.c b/src/modules/module-soundtouch-zone/control.c
+new file mode 100644
+index 0000000..f93ba90
+--- /dev/null
++++ b/src/modules/module-soundtouch-zone/control.c
+@@ -0,0 +1,153 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <errno.h>
++#include <inttypes.h>
++#include <string.h>
++
++#include <spa/utils/json.h>
++#include <spa/utils/string.h>
++
++#include "control.h"
++
++static bool parse_string(const char *value, int len,
++		char *buffer, size_t size)
++{
++	return len > 0 && spa_json_is_string(value, len) &&
++		spa_json_parse_stringn(value, len, buffer, size) > 0;
++}
++
++static bool decimal_string(const char *value)
++{
++	const unsigned char *p = (const unsigned char *)value;
++
++	if (*p == '\0')
++		return false;
++	for (; *p != '\0'; p++)
++		if (*p < '0' || *p > '9')
++			return false;
++	return true;
++}
++
++static bool hexadecimal_string(const char *value)
++{
++	const unsigned char *p = (const unsigned char *)value;
++
++	if (strlen(value) != 16)
++		return false;
++	for (; *p != '\0'; p++)
++		if (!((*p >= '0' && *p <= '9') ||
++		      (*p >= 'a' && *p <= 'f') ||
++		      (*p >= 'A' && *p <= 'F')))
++			return false;
++	return true;
++}
++
++void soundtouch_zone_arm_state_init(struct soundtouch_zone_arm_state *state,
++		uint64_t nonce)
++{
++	state->sequence = 0;
++	state->nonce = nonce;
++	state->armed = false;
++}
++
++enum soundtouch_zone_arm_result soundtouch_zone_arm_validate(
++		const struct soundtouch_zone_arm_state *state,
++		const struct soundtouch_zone_arm_command *command)
++{
++	if (command->nonce != state->nonce)
++		return SOUNDTOUCH_ZONE_ARM_DENIED;
++	if (command->sequence == state->sequence)
++		return command->armed == state->armed ?
++			SOUNDTOUCH_ZONE_ARM_RETRY :
++			SOUNDTOUCH_ZONE_ARM_STALE;
++	if (state->sequence != UINT64_MAX &&
++			command->sequence == state->sequence + 1)
++		return SOUNDTOUCH_ZONE_ARM_ADVANCE;
++	return command->sequence < state->sequence ?
++		SOUNDTOUCH_ZONE_ARM_STALE :
++		SOUNDTOUCH_ZONE_ARM_DENIED;
++}
++
++void soundtouch_zone_arm_commit(struct soundtouch_zone_arm_state *state,
++		const struct soundtouch_zone_arm_command *command)
++{
++	state->sequence = command->sequence;
++	state->armed = command->armed;
++}
++
++int soundtouch_zone_arm_command_parse(const char *json,
++		struct soundtouch_zone_arm_command *command)
++{
++	struct spa_json top, iter;
++	const char *object, *value;
++	char key[64], id[64], state[16], sequence[32], nonce[19];
++	bool have_id = false, have_state = false;
++	bool have_sequence = false, have_nonce = false;
++	uint64_t parsed_sequence, parsed_nonce;
++	int object_len, len;
++
++	if (json == NULL || command == NULL)
++		return -EINVAL;
++	spa_json_init(&top, json, strlen(json));
++	object_len = spa_json_next(&top, &object);
++	if (object_len <= 0 || !spa_json_is_object(object, object_len))
++		return -EINVAL;
++	object_len = spa_json_container_len(&top, object, object_len);
++	if (object_len <= 0 ||
++			spa_json_next(&top, &value) != 0 ||
++			spa_json_begin_object(&iter, object, object_len) <= 0)
++		return -EINVAL;
++
++	while ((len = spa_json_object_next(&iter, key, sizeof(key),
++			&value)) > 0) {
++		if (spa_streq(key, "command.id")) {
++			if (have_id || !parse_string(value, len, id, sizeof(id)))
++				return -EINVAL;
++			have_id = true;
++		} else if (spa_streq(key, "state")) {
++			if (have_state || !parse_string(value, len,
++					state, sizeof(state)))
++				return -EINVAL;
++			have_state = true;
++		} else if (spa_streq(key, "sequence")) {
++			if (have_sequence || !parse_string(value, len,
++					sequence, sizeof(sequence)))
++				return -EINVAL;
++			have_sequence = true;
++		} else if (spa_streq(key, "nonce")) {
++			if (have_nonce || !parse_string(value, len,
++					nonce, sizeof(nonce)))
++				return -EINVAL;
++			have_nonce = true;
++		} else {
++			return -EINVAL;
++		}
++	}
++	if (len < 0 || !have_id || !have_state ||
++			!have_sequence || !have_nonce)
++		return -EINVAL;
++	if (!spa_streq(id, SOUNDTOUCH_ZONE_ARM_COMMAND))
++		return -ENOENT;
++	if (!decimal_string(sequence) ||
++			!spa_atou64(sequence, &parsed_sequence, 10) ||
++			parsed_sequence == 0)
++		return -EINVAL;
++	if (!hexadecimal_string(nonce) ||
++			!spa_atou64(nonce, &parsed_nonce, 16) ||
++			parsed_nonce == 0)
++		return -EINVAL;
++	if (spa_streq(state, "armed"))
++		command->armed = true;
++	else if (spa_streq(state, "disarmed"))
++		command->armed = false;
++	else
++		return -EINVAL;
++
++	command->sequence = parsed_sequence;
++	command->nonce = parsed_nonce;
++	return 0;
++}
+diff --git a/src/modules/module-soundtouch-zone/control.h b/src/modules/module-soundtouch-zone/control.h
+new file mode 100644
+index 0000000..96bae28
+--- /dev/null
++++ b/src/modules/module-soundtouch-zone/control.h
+@@ -0,0 +1,57 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#ifndef PIPEWIRE_MODULE_SOUNDTOUCH_ZONE_CONTROL_H
++#define PIPEWIRE_MODULE_SOUNDTOUCH_ZONE_CONTROL_H
++
++#include <stdbool.h>
++#include <stdint.h>
++
++#define SOUNDTOUCH_ZONE_ARM_CONTRACT	"1"
++#define SOUNDTOUCH_ZONE_ARM_COMMAND	"soundtouch-zone-arm-state"
++
++enum soundtouch_zone_arm_result {
++	SOUNDTOUCH_ZONE_ARM_ADVANCE,
++	SOUNDTOUCH_ZONE_ARM_RETRY,
++	SOUNDTOUCH_ZONE_ARM_STALE,
++	SOUNDTOUCH_ZONE_ARM_DENIED,
++};
++
++struct soundtouch_zone_arm_state {
++	uint64_t sequence;
++	uint64_t nonce;
++	bool armed;
++};
++
++struct soundtouch_zone_arm_command {
++	uint64_t sequence;
++	uint64_t nonce;
++	bool armed;
++};
++
++void soundtouch_zone_arm_state_init(struct soundtouch_zone_arm_state *state,
++		uint64_t nonce);
++
++enum soundtouch_zone_arm_result soundtouch_zone_arm_validate(
++		const struct soundtouch_zone_arm_state *state,
++		const struct soundtouch_zone_arm_command *command);
++
++void soundtouch_zone_arm_commit(struct soundtouch_zone_arm_state *state,
++		const struct soundtouch_zone_arm_command *command);
++
++/*
++ * Parse the JSON string carried in SPA_NODE_COMMAND_User's
++ * SPA_COMMAND_NODE_extra property. All four string fields are mandatory:
++ *
++ * {
++ *   "command.id": "soundtouch-zone-arm-state",
++ *   "state": "armed"|"disarmed",
++ *   "sequence": "<positive decimal integer>",
++ *   "nonce": "<16 lowercase or uppercase hexadecimal digits>"
++ * }
++ */
++int soundtouch_zone_arm_command_parse(const char *json,
++		struct soundtouch_zone_arm_command *command);
++
++#endif
+diff --git a/src/modules/module-soundtouch-zone/test-volume.c b/src/modules/module-soundtouch-zone/test-volume.c
+new file mode 100644
+index 0000000..6c9c571
+--- /dev/null
++++ b/src/modules/module-soundtouch-zone/test-volume.c
+@@ -0,0 +1,476 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <errno.h>
++#include <math.h>
++#include <string.h>
++
++#include <spa/param/props.h>
++#include <spa/pod/iter.h>
++#include <spa/utils/defs.h>
++
++#include "control.h"
++#include "volume.h"
++
++struct observed {
++	uint32_t volume_count;
++	uint32_t mute_count;
++	uint32_t channels_count;
++	uint32_t soft_mute_count;
++	uint32_t soft_channels_count;
++	uint32_t ramp_count;
++	uint32_t params_count;
++	float volume;
++	bool mute;
++	bool soft_mute;
++	uint32_t channels;
++	uint32_t soft_channels;
++	float channel_volumes[SPA_AUDIO_MAX_CHANNELS];
++	float soft_volumes[SPA_AUDIO_MAX_CHANNELS];
++	bool have_latency;
++	int64_t latency;
++};
++
++static void observe(const struct spa_pod *param, struct observed *observed)
++{
++	const struct spa_pod_object *object;
++	struct spa_pod_prop *prop;
++
++	spa_zero(*observed);
++	spa_assert_se(spa_pod_is_object_type(param, SPA_TYPE_OBJECT_Props));
++	spa_assert_se(spa_pod_is_object_id(param, SPA_PARAM_Props));
++
++	object = (const struct spa_pod_object *)param;
++	SPA_POD_OBJECT_FOREACH(object, prop) {
++		switch (prop->key) {
++		case SPA_PROP_volume:
++			observed->volume_count++;
++			spa_assert_se(spa_pod_get_float(&prop->value,
++					&observed->volume) == 0);
++			break;
++		case SPA_PROP_mute:
++			observed->mute_count++;
++			spa_assert_se(spa_pod_get_bool(&prop->value,
++					&observed->mute) == 0);
++			break;
++		case SPA_PROP_channelVolumes:
++			observed->channels_count++;
++			observed->channels = spa_pod_copy_array(&prop->value,
++					SPA_TYPE_Float,
++					observed->channel_volumes,
++					SPA_AUDIO_MAX_CHANNELS);
++			break;
++		case SPA_PROP_softMute:
++			observed->soft_mute_count++;
++			spa_assert_se(spa_pod_get_bool(&prop->value,
++					&observed->soft_mute) == 0);
++			break;
++		case SPA_PROP_softVolumes:
++			observed->soft_channels_count++;
++			observed->soft_channels = spa_pod_copy_array(&prop->value,
++					SPA_TYPE_Float,
++					observed->soft_volumes,
++					SPA_AUDIO_MAX_CHANNELS);
++			break;
++		case SPA_PROP_volumeRampSamples:
++		case SPA_PROP_volumeRampStepSamples:
++		case SPA_PROP_volumeRampTime:
++		case SPA_PROP_volumeRampStepTime:
++		case SPA_PROP_volumeRampScale:
++			observed->ramp_count++;
++			break;
++		case SPA_PROP_params:
++			observed->params_count++;
++			break;
++		case SPA_PROP_latencyOffsetNsec:
++			observed->have_latency =
++				spa_pod_get_long(&prop->value,
++						&observed->latency) == 0;
++			break;
++		default:
++			break;
++		}
++	}
++}
++
++static void assert_contract(const struct spa_pod *param,
++		const struct soundtouch_zone_volume *state)
++{
++	struct observed observed;
++	uint32_t i;
++
++	observe(param, &observed);
++	spa_assert_se(observed.volume_count == 1);
++	spa_assert_se(observed.mute_count == 1);
++	spa_assert_se(observed.channels_count == 1);
++	spa_assert_se(observed.soft_mute_count == 1);
++	spa_assert_se(observed.soft_channels_count == 1);
++	spa_assert_se(observed.ramp_count == 0);
++	spa_assert_se(observed.params_count == 0);
++	spa_assert_se(observed.volume == 1.0f);
++	spa_assert_se(observed.mute == state->mute);
++	spa_assert_se(observed.soft_mute == false);
++	spa_assert_se(observed.channels == state->channels);
++	spa_assert_se(observed.soft_channels == state->channels);
++	for (i = 0; i < state->channels; i++) {
++		spa_assert_se(observed.channel_volumes[i] ==
++				state->channel_volumes[i]);
++		spa_assert_se(observed.soft_volumes[i] == 1.0f);
++	}
++}
++
++static void test_initial(void)
++{
++	uint8_t buffer[4096];
++	struct spa_pod_builder builder;
++	struct soundtouch_zone_volume state;
++	const struct spa_pod *param;
++
++	spa_assert_se(soundtouch_zone_volume_init(&state, 2, 0.5f,
++			true) == 0);
++	spa_assert_se(state.channels == 2);
++	spa_assert_se(state.mute);
++	spa_assert_se(state.channel_volumes[0] == 0.125f);
++	spa_assert_se(state.channel_volumes[1] == 0.125f);
++
++	spa_pod_builder_init(&builder, buffer, sizeof(buffer));
++	spa_assert_se(soundtouch_zone_volume_build(&state, NULL,
++			&builder, &param) == 0);
++	assert_contract(param, &state);
++
++	spa_assert_se(soundtouch_zone_volume_init(NULL, 2, 0.5f,
++			false) == -EINVAL);
++	spa_assert_se(soundtouch_zone_volume_init(&state, 0, 0.5f,
++			false) == -EINVAL);
++	spa_assert_se(soundtouch_zone_volume_init(&state,
++			SPA_AUDIO_MAX_CHANNELS + 1, 0.5f, false) == -EINVAL);
++	spa_assert_se(soundtouch_zone_volume_init(&state, 2, NAN,
++			false) == -EINVAL);
++	spa_assert_se(soundtouch_zone_volume_init(&state, 2, INFINITY,
++			false) == -EINVAL);
++	spa_assert_se(soundtouch_zone_volume_init(&state, 2, -0.01f,
++			false) == -EINVAL);
++	spa_assert_se(soundtouch_zone_volume_init(&state, 2, 1.01f,
++			false) == -EINVAL);
++}
++
++static void test_full_and_forged(void)
++{
++	uint8_t input_buffer[4096], output_buffer[4096];
++	struct spa_pod_builder input, output;
++	struct spa_pod_frame object, params;
++	struct soundtouch_zone_volume state;
++	const struct spa_pod *source, *param;
++	const float logical[] = { 0.216f, 0.216f };
++	const float forged[] = { 0.0f, 0.25f };
++	struct observed observed;
++
++	spa_assert_se(soundtouch_zone_volume_init(&state, 2, 0.5f,
++			false) == 0);
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	spa_pod_builder_push_object(&input, &object,
++			SPA_TYPE_OBJECT_Props, SPA_PARAM_Props);
++	spa_pod_builder_add(&input,
++			SPA_PROP_latencyOffsetNsec, SPA_POD_Long(1234),
++			SPA_PROP_volume, SPA_POD_Float(0.25f),
++			SPA_PROP_mute, SPA_POD_Bool(true),
++			SPA_PROP_channelVolumes, SPA_POD_Array(sizeof(float),
++				SPA_TYPE_Float, SPA_N_ELEMENTS(logical), logical),
++			SPA_PROP_softMute, SPA_POD_Bool(true),
++			SPA_PROP_softVolumes, SPA_POD_Array(sizeof(float),
++				SPA_TYPE_Float, SPA_N_ELEMENTS(forged), forged),
++			SPA_PROP_volumeRampSamples, SPA_POD_Int(4096),
++			0);
++	spa_pod_builder_prop(&input, SPA_PROP_params, 0);
++	spa_pod_builder_push_struct(&input, &params);
++	spa_pod_builder_string(&input, "channelmix.lock-volumes");
++	spa_pod_builder_bool(&input, true);
++	spa_pod_builder_pop(&input, &params);
++	source = spa_pod_builder_pop(&input, &object);
++	spa_assert_se(source != NULL);
++
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	spa_assert_se(soundtouch_zone_volume_normalize(&state, source,
++			&output, &param) == 0);
++	spa_assert_se(state.mute);
++	spa_assert_se(state.channel_volumes[0] == logical[0]);
++	spa_assert_se(state.channel_volumes[1] == logical[1]);
++	assert_contract(param, &state);
++	observe(param, &observed);
++	spa_assert_se(observed.have_latency);
++	spa_assert_se(observed.latency == 1234);
++}
++
++static void test_partial_merge(void)
++{
++	uint8_t input_buffer[1024], output_buffer[4096];
++	struct spa_pod_builder input, output;
++	struct soundtouch_zone_volume state;
++	const struct spa_pod *source, *param;
++	const float changed[] = { 0.008f, 0.008f };
++
++	spa_assert_se(soundtouch_zone_volume_init(&state, 2, 0.5f,
++			false) == 0);
++
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	source = spa_pod_builder_add_object(&input,
++			SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
++			SPA_PROP_mute, SPA_POD_Bool(true));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	spa_assert_se(soundtouch_zone_volume_normalize(&state, source,
++			&output, &param) == 0);
++	spa_assert_se(state.mute);
++	spa_assert_se(state.channel_volumes[0] == 0.125f);
++	spa_assert_se(state.channel_volumes[1] == 0.125f);
++	assert_contract(param, &state);
++
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	source = spa_pod_builder_add_object(&input,
++			SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
++			SPA_PROP_channelVolumes, SPA_POD_Array(sizeof(float),
++				SPA_TYPE_Float, SPA_N_ELEMENTS(changed), changed));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	spa_assert_se(soundtouch_zone_volume_normalize(&state, source,
++			&output, &param) == 0);
++	spa_assert_se(state.mute);
++	spa_assert_se(state.channel_volumes[0] == changed[0]);
++	spa_assert_se(state.channel_volumes[1] == changed[1]);
++	assert_contract(param, &state);
++
++	/* A scalar-only write is forged software gain, not a logical update. */
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	source = spa_pod_builder_add_object(&input,
++			SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
++			SPA_PROP_volume, SPA_POD_Float(0.0f),
++			SPA_PROP_softMute, SPA_POD_Bool(true));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	spa_assert_se(soundtouch_zone_volume_normalize(&state, source,
++			&output, &param) == 0);
++	assert_contract(param, &state);
++
++	/*
++	 * Feeding the canonical result back through the intercept is stable.
++	 * pw_stream_set_param() suppresses its own param_changed callback; this
++	 * additionally proves that a future callback would not drift state.
++	 */
++	{
++		uint8_t feedback_buffer[4096];
++		struct spa_pod_builder feedback;
++		struct soundtouch_zone_volume before = state;
++		const struct spa_pod *feedback_param;
++
++		spa_pod_builder_init(&feedback, feedback_buffer,
++				sizeof(feedback_buffer));
++		spa_assert_se(soundtouch_zone_volume_normalize(&state, param,
++				&feedback, &feedback_param) == 0);
++		spa_assert_se(memcmp(&state, &before, sizeof(state)) == 0);
++		assert_contract(feedback_param, &state);
++	}
++}
++
++static void test_arm_commands(void)
++{
++	struct soundtouch_zone_arm_state state;
++	struct soundtouch_zone_arm_command command, retry, stale;
++	static const uint64_t nonce = UINT64_C(0x0123456789abcdef);
++	static const char arm_one[] =
++		"{\"command.id\":\"soundtouch-zone-arm-state\","
++		"\"state\":\"armed\",\"sequence\":\"1\","
++		"\"nonce\":\"0123456789abcdef\"}";
++	static const char disarm_two[] =
++		"{\"command.id\":\"soundtouch-zone-arm-state\","
++		"\"state\":\"disarmed\",\"sequence\":\"2\","
++		"\"nonce\":\"0123456789abcdef\"}";
++
++	soundtouch_zone_arm_state_init(&state, nonce);
++	spa_assert_se(state.sequence == 0);
++	spa_assert_se(state.nonce == nonce);
++	spa_assert_se(!state.armed);
++
++	spa_assert_se(soundtouch_zone_arm_command_parse(arm_one,
++			&command) == 0);
++	spa_assert_se(command.sequence == 1);
++	spa_assert_se(command.nonce == nonce);
++	spa_assert_se(command.armed);
++	spa_assert_se(soundtouch_zone_arm_validate(&state, &command) ==
++			SOUNDTOUCH_ZONE_ARM_ADVANCE);
++	soundtouch_zone_arm_commit(&state, &command);
++	spa_assert_se(state.sequence == 1);
++	spa_assert_se(state.armed);
++
++	retry = command;
++	spa_assert_se(soundtouch_zone_arm_validate(&state, &retry) ==
++			SOUNDTOUCH_ZONE_ARM_RETRY);
++	stale = command;
++	stale.armed = false;
++	spa_assert_se(soundtouch_zone_arm_validate(&state, &stale) ==
++			SOUNDTOUCH_ZONE_ARM_STALE);
++
++	spa_assert_se(soundtouch_zone_arm_command_parse(disarm_two,
++			&command) == 0);
++	spa_assert_se(soundtouch_zone_arm_validate(&state, &command) ==
++			SOUNDTOUCH_ZONE_ARM_ADVANCE);
++	soundtouch_zone_arm_commit(&state, &command);
++	spa_assert_se(state.sequence == 2);
++	spa_assert_se(!state.armed);
++
++	/* A delayed arm cannot undo the acknowledged teardown generation. */
++	spa_assert_se(soundtouch_zone_arm_command_parse(arm_one,
++			&stale) == 0);
++	spa_assert_se(soundtouch_zone_arm_validate(&state, &stale) ==
++			SOUNDTOUCH_ZONE_ARM_STALE);
++
++	command = (struct soundtouch_zone_arm_command) {
++		.sequence = 4,
++		.nonce = nonce,
++		.armed = true,
++	};
++	spa_assert_se(soundtouch_zone_arm_validate(&state, &command) ==
++			SOUNDTOUCH_ZONE_ARM_DENIED);
++	command.sequence = 3;
++	command.nonce++;
++	spa_assert_se(soundtouch_zone_arm_validate(&state, &command) ==
++			SOUNDTOUCH_ZONE_ARM_DENIED);
++
++	spa_assert_se(soundtouch_zone_arm_command_parse(
++			"{\"command.id\":\"other\",\"state\":\"armed\","
++			"\"sequence\":\"3\","
++			"\"nonce\":\"0123456789abcdef\"}", &command) == -ENOENT);
++	spa_assert_se(soundtouch_zone_arm_command_parse(
++			"{\"command.id\":\"soundtouch-zone-arm-state\","
++			"\"state\":\"invalid\",\"sequence\":\"3\","
++			"\"nonce\":\"0123456789abcdef\"}", &command) == -EINVAL);
++	spa_assert_se(soundtouch_zone_arm_command_parse(
++			"{\"command.id\":\"soundtouch-zone-arm-state\","
++			"\"state\":\"armed\",\"sequence\":3,"
++			"\"nonce\":\"0123456789abcdef\"}", &command) == -EINVAL);
++	spa_assert_se(soundtouch_zone_arm_command_parse(
++			"{\"command.id\":\"soundtouch-zone-arm-state\","
++			"\"state\":\"armed\",\"sequence\":\"0\","
++			"\"nonce\":\"0123456789abcdef\"}", &command) == -EINVAL);
++	spa_assert_se(soundtouch_zone_arm_command_parse(
++			"{\"command.id\":\"soundtouch-zone-arm-state\","
++			"\"state\":\"armed\",\"sequence\":\"3\","
++			"\"nonce\":\"0\"}", &command) == -EINVAL);
++	spa_assert_se(soundtouch_zone_arm_command_parse(
++			"{\"command.id\":\"soundtouch-zone-arm-state\","
++			"\"state\":\"armed\",\"sequence\":\"3\","
++			"\"nonce\":\"0123456789abcdef\",\"unknown\":\"x\"}",
++			&command) == -EINVAL);
++	spa_assert_se(soundtouch_zone_arm_command_parse(
++			"{\"command.id\":\"soundtouch-zone-arm-state\","
++			"\"command.id\":\"soundtouch-zone-arm-state\","
++			"\"state\":\"armed\",\"sequence\":\"3\","
++			"\"nonce\":\"0123456789abcdef\"}", &command) == -EINVAL);
++	spa_assert_se(soundtouch_zone_arm_command_parse(
++			"{\"command.id\":\"soundtouch-zone-arm-state\","
++			"\"state\":\"armed\",\"sequence\":\"3\","
++			"\"nonce\":\"0123456789abcdef\"} trailing",
++			&command) == -EINVAL);
++	spa_assert_se(soundtouch_zone_arm_command_parse(NULL,
++			&command) == -EINVAL);
++	spa_assert_se(soundtouch_zone_arm_command_parse(arm_one,
++			NULL) == -EINVAL);
++}
++
++static int normalize_channels(struct soundtouch_zone_volume *state,
++		const float *values, uint32_t n_values)
++{
++	uint8_t input_buffer[1024], output_buffer[4096];
++	struct spa_pod_builder input, output;
++	const struct spa_pod *source, *param;
++
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	source = spa_pod_builder_add_object(&input,
++			SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
++			SPA_PROP_channelVolumes, SPA_POD_Array(sizeof(float),
++				SPA_TYPE_Float, n_values, values));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	return soundtouch_zone_volume_normalize(state, source,
++			&output, &param);
++}
++
++static void test_rejects_invalid(void)
++{
++	uint8_t input_buffer[1024], output_buffer[4096];
++	struct spa_pod_builder input, output;
++	struct soundtouch_zone_volume state, before;
++	const struct spa_pod *source, *param;
++	float invalid[] = { 0.125f, 0.125f };
++	const float wrong_count[] = { 0.125f };
++	const float unequal[] = { 0.125f, 0.216f };
++	const int32_t wrong_type[] = { 1, 1 };
++
++	spa_assert_se(soundtouch_zone_volume_init(&state, 2, 0.5f,
++			false) == 0);
++	before = state;
++
++	spa_assert_se(normalize_channels(&state, wrong_count,
++			SPA_N_ELEMENTS(wrong_count)) == -EINVAL);
++	spa_assert_se(memcmp(&state, &before, sizeof(state)) == 0);
++	spa_assert_se(normalize_channels(&state, unequal,
++			SPA_N_ELEMENTS(unequal)) == -EINVAL);
++	spa_assert_se(memcmp(&state, &before, sizeof(state)) == 0);
++
++	invalid[1] = NAN;
++	spa_assert_se(normalize_channels(&state, invalid, 2) == -ERANGE);
++	invalid[1] = INFINITY;
++	spa_assert_se(normalize_channels(&state, invalid, 2) == -ERANGE);
++	invalid[1] = -0.01f;
++	spa_assert_se(normalize_channels(&state, invalid, 2) == -ERANGE);
++	invalid[1] = 1.01f;
++	spa_assert_se(normalize_channels(&state, invalid, 2) == -ERANGE);
++	spa_assert_se(memcmp(&state, &before, sizeof(state)) == 0);
++
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	source = spa_pod_builder_add_object(&input,
++			SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
++			SPA_PROP_channelVolumes, SPA_POD_Array(sizeof(int32_t),
++				SPA_TYPE_Int, SPA_N_ELEMENTS(wrong_type), wrong_type));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	spa_assert_se(soundtouch_zone_volume_normalize(&state, source,
++			&output, &param) == -EINVAL);
++	spa_assert_se(memcmp(&state, &before, sizeof(state)) == 0);
++
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	source = spa_pod_builder_add_object(&input,
++			SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
++			SPA_PROP_mute, SPA_POD_Bool(true),
++			SPA_PROP_mute, SPA_POD_Bool(false));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	spa_assert_se(soundtouch_zone_volume_normalize(&state, source,
++			&output, &param) == -EINVAL);
++	spa_assert_se(memcmp(&state, &before, sizeof(state)) == 0);
++
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	source = spa_pod_builder_add_object(&input,
++			SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
++			SPA_PROP_mute, SPA_POD_Int(1));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	spa_assert_se(soundtouch_zone_volume_normalize(&state, source,
++			&output, &param) == -EINVAL);
++	spa_assert_se(memcmp(&state, &before, sizeof(state)) == 0);
++
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	spa_assert_se(soundtouch_zone_volume_normalize(&state, NULL,
++			&output, &param) == -EINVAL);
++
++	/* The module's invalid-input path can always reassert the prior tuple. */
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	spa_assert_se(soundtouch_zone_volume_build(&state, NULL,
++			&output, &param) == 0);
++	assert_contract(param, &before);
++}
++
++int main(int argc, char *argv[])
++{
++	test_initial();
++	test_full_and_forged();
++	test_partial_merge();
++	test_rejects_invalid();
++	test_arm_commands();
++	return 0;
++}
+diff --git a/src/modules/module-soundtouch-zone/volume.c b/src/modules/module-soundtouch-zone/volume.c
+new file mode 100644
+index 0000000..a70b1fb
+--- /dev/null
++++ b/src/modules/module-soundtouch-zone/volume.c
+@@ -0,0 +1,194 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <errno.h>
++#include <math.h>
++#include <string.h>
++
++#include <spa/param/props.h>
++#include <spa/pod/iter.h>
++
++#include "volume.h"
++
++static bool is_managed_prop(uint32_t key)
++{
++	switch (key) {
++	case SPA_PROP_volume:
++	case SPA_PROP_mute:
++	case SPA_PROP_channelVolumes:
++	case SPA_PROP_softMute:
++	case SPA_PROP_softVolumes:
++		/*
++		 * A ramp can keep changing the scalar volume after the canonical
++		 * Props have been installed. Never pass one to the adapter owned by
++		 * an externally controlled zone sink.
++		 */
++	case SPA_PROP_volumeRampSamples:
++	case SPA_PROP_volumeRampStepSamples:
++	case SPA_PROP_volumeRampTime:
++	case SPA_PROP_volumeRampStepTime:
++	case SPA_PROP_volumeRampScale:
++	case SPA_PROP_params:
++		return true;
++	default:
++		return false;
++	}
++}
++
++static int add_prop(struct spa_pod_builder *builder, uint32_t key)
++{
++	return spa_pod_builder_prop(builder, key, 0);
++}
++
++static int build_canonical(const struct soundtouch_zone_volume *volume,
++		const struct spa_pod *source, struct spa_pod_builder *builder,
++		const struct spa_pod **param)
++{
++	struct spa_pod_frame frame;
++	const struct spa_pod_object *object;
++	struct spa_pod_prop *prop;
++	float soft_volumes[SPA_AUDIO_MAX_CHANNELS];
++	uint32_t i;
++	int res;
++
++	if (volume == NULL || builder == NULL || param == NULL ||
++			volume->channels == 0 ||
++			volume->channels > SPA_AUDIO_MAX_CHANNELS)
++		return -EINVAL;
++	if (source != NULL &&
++			(!spa_pod_is_object_type(source, SPA_TYPE_OBJECT_Props) ||
++			 !spa_pod_is_object_id(source, SPA_PARAM_Props)))
++		return -EINVAL;
++
++	for (i = 0; i < volume->channels; i++)
++		soft_volumes[i] = 1.0f;
++
++	if ((res = spa_pod_builder_push_object(builder, &frame,
++			SPA_TYPE_OBJECT_Props, SPA_PARAM_Props)) < 0)
++		return res;
++
++	if (source != NULL) {
++		object = (const struct spa_pod_object *)source;
++		SPA_POD_OBJECT_FOREACH(object, prop) {
++			if (!is_managed_prop(prop->key) &&
++					(res = spa_pod_builder_raw_padded(builder, prop,
++						SPA_POD_PROP_SIZE(prop))) < 0)
++				return res;
++		}
++	}
++
++	if ((res = add_prop(builder, SPA_PROP_volume)) < 0 ||
++			(res = spa_pod_builder_float(builder, 1.0f)) < 0 ||
++			(res = add_prop(builder, SPA_PROP_mute)) < 0 ||
++			(res = spa_pod_builder_bool(builder, volume->mute)) < 0 ||
++			(res = add_prop(builder, SPA_PROP_channelVolumes)) < 0 ||
++			(res = spa_pod_builder_array(builder, sizeof(float),
++				SPA_TYPE_Float, volume->channels,
++				volume->channel_volumes)) < 0 ||
++			(res = add_prop(builder, SPA_PROP_softMute)) < 0 ||
++			(res = spa_pod_builder_bool(builder, false)) < 0 ||
++			(res = add_prop(builder, SPA_PROP_softVolumes)) < 0 ||
++			(res = spa_pod_builder_array(builder, sizeof(float),
++				SPA_TYPE_Float, volume->channels,
++				soft_volumes)) < 0)
++		return res;
++
++	*param = spa_pod_builder_pop(builder, &frame);
++	return *param == NULL ? -ENOSPC : 0;
++}
++
++int soundtouch_zone_volume_init(struct soundtouch_zone_volume *volume,
++		uint32_t channels, float initial, bool mute)
++{
++	float channel;
++	uint32_t i;
++
++	if (volume == NULL || channels == 0 ||
++			channels > SPA_AUDIO_MAX_CHANNELS ||
++			!isfinite(initial) || initial < 0.0f || initial > 1.0f)
++		return -EINVAL;
++
++	channel = initial * initial * initial;
++	volume->channels = channels;
++	volume->mute = mute;
++	for (i = 0; i < channels; i++)
++		volume->channel_volumes[i] = channel;
++	return 0;
++}
++
++int soundtouch_zone_volume_build(const struct soundtouch_zone_volume *volume,
++		const struct spa_pod *source, struct spa_pod_builder *builder,
++		const struct spa_pod **param)
++{
++	return build_canonical(volume, source, builder, param);
++}
++
++int soundtouch_zone_volume_normalize(struct soundtouch_zone_volume *volume,
++		const struct spa_pod *source, struct spa_pod_builder *builder,
++		const struct spa_pod **param)
++{
++	struct soundtouch_zone_volume next;
++	const struct spa_pod_object *object;
++	struct spa_pod_prop *prop;
++	bool have_mute = false, have_volumes = false;
++	int res;
++
++	if (volume == NULL || source == NULL ||
++			!spa_pod_is_object_type(source, SPA_TYPE_OBJECT_Props) ||
++			!spa_pod_is_object_id(source, SPA_PARAM_Props))
++		return -EINVAL;
++
++	next = *volume;
++	object = (const struct spa_pod_object *)source;
++	SPA_POD_OBJECT_FOREACH(object, prop) {
++		switch (prop->key) {
++		case SPA_PROP_mute:
++			if (have_mute ||
++					spa_pod_get_bool(&prop->value,
++						&next.mute) < 0)
++				return -EINVAL;
++			have_mute = true;
++			break;
++		case SPA_PROP_channelVolumes:
++		{
++			const float *values;
++			uint32_t i, n_values, value_size, value_type;
++
++			if (have_volumes)
++				return -EINVAL;
++			values = spa_pod_get_array_full(&prop->value,
++					&n_values, &value_size, &value_type);
++			if (values == NULL || value_type != SPA_TYPE_Float ||
++					value_size != sizeof(float) ||
++					n_values != next.channels)
++				return -EINVAL;
++			for (i = 0; i < n_values; i++) {
++				if (!isfinite(values[i]) || values[i] < 0.0f ||
++						values[i] > 1.0f)
++					return -ERANGE;
++				/*
++				 * SoundTouch exposes one volume for the complete zone.
++				 * Accepting balance here would publish a state that the
++				 * external controller cannot reproduce faithfully.
++				 */
++				if (i > 0 && values[i] != values[0])
++					return -EINVAL;
++			}
++			memcpy(next.channel_volumes, values,
++					n_values * sizeof(float));
++			have_volumes = true;
++			break;
++		}
++		default:
++			break;
++		}
++	}
++
++	if ((res = build_canonical(&next, source, builder, param)) < 0)
++		return res;
++	*volume = next;
++	return 0;
++}
+diff --git a/src/modules/module-soundtouch-zone/volume.h b/src/modules/module-soundtouch-zone/volume.h
+new file mode 100644
+index 0000000..c3e5914
+--- /dev/null
++++ b/src/modules/module-soundtouch-zone/volume.h
+@@ -0,0 +1,31 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#ifndef PIPEWIRE_MODULE_SOUNDTOUCH_ZONE_VOLUME_H
++#define PIPEWIRE_MODULE_SOUNDTOUCH_ZONE_VOLUME_H
++
++#include <stdbool.h>
++#include <stdint.h>
++
++#include <spa/param/audio/raw.h>
++#include <spa/pod/builder.h>
++
++struct soundtouch_zone_volume {
++	uint32_t channels;
++	bool mute;
++	float channel_volumes[SPA_AUDIO_MAX_CHANNELS];
++};
++
++int soundtouch_zone_volume_init(struct soundtouch_zone_volume *volume,
++		uint32_t channels, float initial, bool mute);
++
++int soundtouch_zone_volume_build(const struct soundtouch_zone_volume *volume,
++		const struct spa_pod *source, struct spa_pod_builder *builder,
++		const struct spa_pod **param);
++
++int soundtouch_zone_volume_normalize(struct soundtouch_zone_volume *volume,
++		const struct spa_pod *source, struct spa_pod_builder *builder,
++		const struct spa_pod **param);
++
++#endif /* PIPEWIRE_MODULE_SOUNDTOUCH_ZONE_VOLUME_H */

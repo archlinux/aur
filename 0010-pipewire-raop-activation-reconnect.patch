@@ -1,0 +1,979 @@
+diff --git a/src/modules/meson.build b/src/modules/meson.build
+index bba9d01..d26a8c5 100644
+--- a/src/modules/meson.build
++++ b/src/modules/meson.build
+@@ -655,6 +655,7 @@ if build_module_raop
+     [ 'module-raop-sink.c',
+       'module-raop/dacp-server.c',
+       'module-raop/demand.c',
++      'module-raop/reconnect.c',
+       'module-raop/rtsp-client.c',
+       'module-raop/safety-gate.c',
+       'module-raop/volume.c',
+@@ -697,6 +698,14 @@ if build_module_raop
+         dependencies : [spa_dep],
+       ),
+     )
++    test('pw-test-raop-reconnect',
++      executable('pw-test-raop-reconnect',
++        [ 'module-raop/test-reconnect.c',
++          'module-raop/reconnect.c' ],
++        include_directories : [configinc],
++        dependencies : [spa_dep],
++      ),
++    )
+     test('pw-test-raop-safety-gate',
+       executable('pw-test-raop-safety-gate',
+         [ 'module-raop/test-safety-gate.c',
+diff --git a/src/modules/module-raop/reconnect.c b/src/modules/module-raop/reconnect.c
+new file mode 100644
+index 0000000..f3706dc
+--- /dev/null
++++ b/src/modules/module-raop/reconnect.c
+@@ -0,0 +1,89 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <errno.h>
++#include <string.h>
++
++#include "reconnect.h"
++
++int raop_reconnect_mode_parse(const char *value,
++		enum raop_reconnect_mode *mode)
++{
++	if (mode == NULL)
++		return -EINVAL;
++	if (value == NULL || strcmp(value, "automatic") == 0)
++		*mode = RAOP_RECONNECT_AUTOMATIC;
++	else if (strcmp(value, "activation") == 0)
++		*mode = RAOP_RECONNECT_ACTIVATION;
++	else
++		return -EINVAL;
++	return 0;
++}
++
++const char *raop_reconnect_mode_name(enum raop_reconnect_mode mode)
++{
++	return mode == RAOP_RECONNECT_ACTIVATION ?
++		"activation" : "automatic";
++}
++
++void raop_reconnect_state_init(struct raop_reconnect_state *state,
++		enum raop_reconnect_mode mode)
++{
++	if (state == NULL)
++		return;
++	state->mode = mode;
++	state->playback_active = false;
++	state->failure_latched = false;
++}
++
++bool raop_reconnect_latch_failure(struct raop_reconnect_state *state,
++		bool activation_authorized, bool expected_cleanup)
++{
++	if (state == NULL || state->mode != RAOP_RECONNECT_ACTIVATION ||
++			!activation_authorized || expected_cleanup)
++		return false;
++	state->failure_latched = true;
++	return true;
++}
++
++bool raop_reconnect_open(struct raop_reconnect_state *state)
++{
++	if (state == NULL || state->mode != RAOP_RECONNECT_ACTIVATION ||
++			state->playback_active)
++		return false;
++	state->playback_active = true;
++	state->failure_latched = false;
++	return true;
++}
++
++bool raop_reconnect_close(struct raop_reconnect_state *state)
++{
++	if (state == NULL || state->mode != RAOP_RECONNECT_ACTIVATION ||
++			!state->playback_active)
++		return false;
++	state->playback_active = false;
++	return true;
++}
++
++bool raop_reconnect_want_stream(const struct raop_reconnect_state *state,
++		bool format_present)
++{
++	if (!format_present)
++		return false;
++	return state == NULL || state->mode == RAOP_RECONNECT_AUTOMATIC ||
++		(state->playback_active && !state->failure_latched);
++}
++
++bool raop_reconnect_blocked(const struct raop_reconnect_state *state)
++{
++	return state != NULL && state->mode == RAOP_RECONNECT_ACTIVATION &&
++		state->failure_latched;
++}
++
++bool raop_reconnect_allow_timer(const struct raop_reconnect_state *state)
++{
++	return state == NULL || state->mode == RAOP_RECONNECT_AUTOMATIC;
++}
+diff --git a/src/modules/module-raop/reconnect.h b/src/modules/module-raop/reconnect.h
+new file mode 100644
+index 0000000..b3a2f1f
+--- /dev/null
++++ b/src/modules/module-raop/reconnect.h
+@@ -0,0 +1,38 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#ifndef PIPEWIRE_MODULE_RAOP_RECONNECT_H
++#define PIPEWIRE_MODULE_RAOP_RECONNECT_H
++
++#include <stdbool.h>
++
++#define RAOP_RECONNECT_MODE_KEY "raop.reconnect.mode"
++
++enum raop_reconnect_mode {
++	RAOP_RECONNECT_AUTOMATIC,
++	RAOP_RECONNECT_ACTIVATION,
++};
++
++struct raop_reconnect_state {
++	enum raop_reconnect_mode mode;
++	bool playback_active;
++	bool failure_latched;
++};
++
++int raop_reconnect_mode_parse(const char *value,
++		enum raop_reconnect_mode *mode);
++const char *raop_reconnect_mode_name(enum raop_reconnect_mode mode);
++
++void raop_reconnect_state_init(struct raop_reconnect_state *state,
++		enum raop_reconnect_mode mode);
++bool raop_reconnect_latch_failure(struct raop_reconnect_state *state,
++		bool activation_authorized, bool expected_cleanup);
++bool raop_reconnect_open(struct raop_reconnect_state *state);
++bool raop_reconnect_close(struct raop_reconnect_state *state);
++bool raop_reconnect_want_stream(const struct raop_reconnect_state *state,
++		bool format_present);
++bool raop_reconnect_blocked(const struct raop_reconnect_state *state);
++bool raop_reconnect_allow_timer(const struct raop_reconnect_state *state);
++
++#endif /* PIPEWIRE_MODULE_RAOP_RECONNECT_H */
+diff --git a/src/modules/module-raop/test-demand.c b/src/modules/module-raop/test-demand.c
+index 8db2fef..293cbd3 100644
+--- a/src/modules/module-raop/test-demand.c
++++ b/src/modules/module-raop/test-demand.c
+@@ -82,7 +82,7 @@ static void test_want_stream(void)
+ 	spa_assert_se(!raop_demand_want_stream(false, &state,
+ 			false, false, false));
+ 
+-	/* Explicit-demand mode requires both Format and positive demand. */
++	/* Contract 5 requires both Format and explicit positive demand. */
+ 	spa_assert_se(!raop_demand_want_stream(true, &state,
+ 			true, false, false));
+ 	state.demanded = true;
+diff --git a/src/modules/module-raop/test-reconnect.c b/src/modules/module-raop/test-reconnect.c
+new file mode 100644
+index 0000000..9aa03f5
+--- /dev/null
++++ b/src/modules/module-raop/test-reconnect.c
+@@ -0,0 +1,121 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <errno.h>
++#include <string.h>
++
++#include <spa/utils/defs.h>
++
++#include "reconnect.h"
++
++static void test_parser(void)
++{
++	enum raop_reconnect_mode mode;
++
++	spa_assert_se(raop_reconnect_mode_parse(NULL, &mode) == 0);
++	spa_assert_se(mode == RAOP_RECONNECT_AUTOMATIC);
++	spa_assert_se(raop_reconnect_mode_parse("automatic", &mode) == 0);
++	spa_assert_se(mode == RAOP_RECONNECT_AUTOMATIC);
++	spa_assert_se(raop_reconnect_mode_parse("activation", &mode) == 0);
++	spa_assert_se(mode == RAOP_RECONNECT_ACTIVATION);
++	spa_assert_se(raop_reconnect_mode_parse("", &mode) == -EINVAL);
++	spa_assert_se(raop_reconnect_mode_parse("retry", &mode) == -EINVAL);
++	spa_assert_se(raop_reconnect_mode_parse("automatic", NULL) == -EINVAL);
++	spa_assert_se(strcmp(raop_reconnect_mode_name(
++			RAOP_RECONNECT_AUTOMATIC), "automatic") == 0);
++	spa_assert_se(strcmp(raop_reconnect_mode_name(
++			RAOP_RECONNECT_ACTIVATION), "activation") == 0);
++}
++
++static void test_automatic_mode(void)
++{
++	struct raop_reconnect_state state;
++
++	raop_reconnect_state_init(&state, RAOP_RECONNECT_AUTOMATIC);
++	spa_assert_se(!raop_reconnect_blocked(&state));
++	spa_assert_se(raop_reconnect_allow_timer(&state));
++	spa_assert_se(!raop_reconnect_want_stream(&state, false));
++	spa_assert_se(raop_reconnect_want_stream(&state, true));
++	spa_assert_se(!raop_reconnect_latch_failure(&state, true, false));
++	spa_assert_se(!raop_reconnect_open(&state));
++	spa_assert_se(!raop_reconnect_close(&state));
++	spa_assert_se(!raop_reconnect_blocked(&state));
++	spa_assert_se(raop_reconnect_allow_timer(&state));
++}
++
++static void test_activation_edge_rearms_once(void)
++{
++	struct raop_reconnect_state state;
++
++	raop_reconnect_state_init(&state, RAOP_RECONNECT_ACTIVATION);
++	spa_assert_se(!raop_reconnect_blocked(&state));
++	spa_assert_se(!raop_reconnect_allow_timer(&state));
++	spa_assert_se(!raop_reconnect_want_stream(&state, true));
++
++	/* Format-before-open starts exactly once on the open edge. */
++	spa_assert_se(raop_reconnect_open(&state));
++	spa_assert_se(raop_reconnect_want_stream(&state, true));
++	spa_assert_se(!raop_reconnect_open(&state));
++	spa_assert_se(raop_reconnect_latch_failure(&state, true, false));
++	spa_assert_se(raop_reconnect_blocked(&state));
++	spa_assert_se(!raop_reconnect_want_stream(&state, true));
++	/* Format changes do not rearm a failed playback generation. */
++	spa_assert_se(!raop_reconnect_want_stream(&state, false));
++	spa_assert_se(!raop_reconnect_want_stream(&state, true));
++
++	spa_assert_se(raop_reconnect_close(&state));
++	spa_assert_se(raop_reconnect_blocked(&state));
++	spa_assert_se(!raop_reconnect_want_stream(&state, true));
++	spa_assert_se(!raop_reconnect_close(&state));
++	spa_assert_se(raop_reconnect_open(&state));
++	spa_assert_se(!raop_reconnect_blocked(&state));
++	spa_assert_se(raop_reconnect_want_stream(&state, true));
++	spa_assert_se(!raop_reconnect_open(&state));
++}
++
++static void test_open_before_format_and_rapid_restart(void)
++{
++	struct raop_reconnect_state state;
++
++	raop_reconnect_state_init(&state, RAOP_RECONNECT_ACTIVATION);
++	spa_assert_se(raop_reconnect_open(&state));
++	spa_assert_se(!raop_reconnect_want_stream(&state, false));
++	spa_assert_se(raop_reconnect_want_stream(&state, true));
++
++	/* A STOPPING close/open pair is one close and one successor open. */
++	spa_assert_se(raop_reconnect_close(&state));
++	spa_assert_se(raop_reconnect_open(&state));
++	spa_assert_se(!raop_reconnect_open(&state));
++	spa_assert_se(raop_reconnect_want_stream(&state, true));
++}
++
++static void test_stale_and_expected_failures_do_not_consume_edge(void)
++{
++	struct raop_reconnect_state state;
++
++	raop_reconnect_state_init(&state, RAOP_RECONNECT_ACTIVATION);
++	spa_assert_se(!raop_reconnect_latch_failure(&state, false, false));
++	spa_assert_se(!raop_reconnect_blocked(&state));
++
++	spa_assert_se(raop_reconnect_open(&state));
++	/* An expected asynchronous TEARDOWN timeout must clean up, not latch the
++	 * already-open successor playback generation. */
++	spa_assert_se(!raop_reconnect_latch_failure(&state, true, true));
++	spa_assert_se(!raop_reconnect_blocked(&state));
++	spa_assert_se(raop_reconnect_want_stream(&state, true));
++}
++
++int main(int argc, char *argv[])
++{
++	(void)argc;
++	(void)argv;
++	test_parser();
++	test_automatic_mode();
++	test_activation_edge_rearms_once();
++	test_open_before_format_and_rapid_restart();
++	test_stale_and_expected_failures_do_not_consume_edge();
++	return 0;
++}
+diff --git a/src/modules/module-raop-sink.c b/src/modules/module-raop-sink.c
+index cf179b6..360680e 100644
+--- a/src/modules/module-raop-sink.c
++++ b/src/modules/module-raop-sink.c
+@@ -54,6 +54,7 @@
+ 
+ #include "module-raop/dacp-server.h"
+ #include "module-raop/demand.h"
++#include "module-raop/reconnect.h"
+ #include "module-raop/rtsp-client.h"
+ #include "module-raop/safety-gate.h"
+ #include "module-raop/volume.h"
+@@ -505,6 +506,13 @@ static bool source_marker_release_command_matches(
+  *                    Contract 5 adds an explicit, sequenced controller demand
+  *                    to contract 3. A negotiated Format alone cannot create
+  *                    or reconnect an RTSP session under contract 5.
++ * - `raop.reconnect.mode`: Reconnect policy. `automatic` preserves the
++ *                    existing timed retry behavior and is the default.
++ *                    `activation` is available only with external volume
++ *                    contract 2. A transport failure then requires the
++ *                    current playback activation to close before the next
++ *                    playback-open edge can make one new attempt. This mode
++ *                    module-authors `node.pause-on-idle = true`.
+  * - `stream.props = {}`: properties to be passed to the sink stream
+  *
+  * By default the created node publishes `raop.volume.contract = 2`. In the
+@@ -585,8 +593,7 @@ static bool source_marker_release_command_matches(
+  * after a successful RTSP response. Failure clears the value, latches the
+  * transport gate closed, and fails the stream.
+  *
+- * The explicit-demand contract additionally publishes
+- * `raop.demand.contract = 1`,
++ * Contract 5 additionally publishes `raop.demand.contract = 1`,
+  * `raop.demand.control = node-command`, `raop.demand.nonce`,
+  * `raop.demand.sequence`, and `raop.demanded`. It starts idle at sequence
+  * zero. A controller changes demand with:
+@@ -708,6 +715,7 @@ PW_LOG_TOPIC(mod_topic, "mod." NAME);
+ 			"( raop.volume.initial=<normalized value required for external> ) "	\
+ 			"( raop.volume.initial.mute=<boolean, default:false> ) "		\
+ 			"( raop.volume.contract=<2|3|5, default:2> ) "			\
++			"( raop.reconnect.mode=<automatic|activation, default:automatic> ) "	\
+ 			"( node.latency=<latency as fraction> ) "				\
+ 			"( node.name=<name of the nodes> ) "					\
+ 			"( node.description=<description of the nodes> ) "			\
+@@ -816,6 +824,7 @@ struct impl {
+ 	char *nonce;
+ 
+ 	unsigned int do_disconnect:1;
++	unsigned int disconnect_expected:1;
+ 
+ 	uint8_t aes_key[AES_CHUNK_SIZE]; /* Key for aes-cbc */
+ 	uint8_t aes_iv[AES_CHUNK_SIZE];  /* Initialization vector for cbc */
+@@ -852,6 +861,7 @@ struct impl {
+ 	uint32_t volume_query_timer_epoch;
+ 	uint32_t volume_set_timer_epoch;
+ 	struct raop_volume_state volume_state;
++	struct raop_reconnect_state reconnect;
+ 	struct raop_volume_request_state volume_query_request;
+ 	struct raop_volume_request_state volume_request;
+ 	struct raop_volume_request_state record_request;
+@@ -892,6 +902,11 @@ static int rtsp_do_connect(struct impl *impl);
+ static int rtsp_do_teardown(struct impl *impl);
+ static void schedule_rtsp_reconnect(struct impl *impl);
+ static bool connection_cleanup(struct impl *impl);
++static bool activation_transport_failure(struct impl *impl,
++		const char *reason, bool already_disconnected);
++static void reconnect_after_cleanup(struct impl *impl);
++static void demand_contract_fail(struct impl *impl,
++		const char *reason, int error);
+ static int source_marker_rotate(struct impl *impl, bool initial);
+ static void source_marker_fail_closed(struct impl *impl, const char *reason);
+ static void source_marker_cleanup(struct impl *impl, const char *reason);
+@@ -1973,9 +1988,15 @@ static int activation_deactivate(struct impl *impl, uint32_t reasons,
+ 		 * prevents a completed connect from remaining parked indefinitely
+ 		 * after demand disappeared.
+ 		 */
++		impl->disconnect_expected = true;
+ 		if ((res = pw_rtsp_client_disconnect(impl->rtsp)) < 0 &&
+ 				first_error == 0)
+ 			first_error = res;
++		/* The synchronous callback clears disconnect_expected and owns
++		 * cleanup. Fall back only when no callback ran. */
++		if (!impl->disconnect_expected)
++			return first_error;
++		impl->disconnect_expected = false;
+ 		/*
+ 		 * disconnect normally emits rtsp_disconnected(), which performs
+ 		 * this cleanup. Retain an idempotent fallback for an already
+@@ -1999,7 +2020,9 @@ static int activation_reconcile(struct impl *impl, const char *why)
+ {
+ 	bool want_stream = raop_demand_want_stream(
+ 			impl->demand_contract, &impl->demand,
+-			impl->format_present, impl->activation_failed,
++			raop_reconnect_want_stream(&impl->reconnect,
++				impl->format_present),
++			impl->activation_failed,
+ 			impl->destroying);
+ 	int res;
+ 
+@@ -2011,8 +2034,8 @@ static int activation_reconcile(struct impl *impl, const char *why)
+ 
+ 	/*
+ 	 * Publish a fresh closed activation generation before any RTSP work.
+-	 * A positive demand acknowledgement is therefore never an implicit
+-	 * permission to deliver packets.
++	 * Contract 5's positive demand acknowledgement is therefore never an
++	 * implicit permission to deliver packets.
+ 	 */
+ 	if ((res = safety_gate_invalidate(impl,
+ 			RAOP_SAFETY_GATE_ACTIVATION, why)) < 0)
+@@ -2026,6 +2049,26 @@ static int activation_reconcile(struct impl *impl, const char *why)
+ 	return 0;
+ }
+ 
++static void activation_reconcile_checked(struct impl *impl, const char *why)
++{
++	int res;
++
++	if ((res = activation_reconcile(impl, why)) < 0) {
++		const char *reason = "can't enforce RAOP activation state";
++
++		if (impl->demand_contract)
++			demand_contract_fail(impl, reason, res);
++		else {
++			pw_log_error("%s: %s", reason, spa_strerror(res));
++			impl->activation_failed = true;
++			activation_deactivate(impl, RAOP_SAFETY_GATE_ERROR,
++					reason, true);
++			if (impl->stream != NULL)
++				rtp_stream_set_error(impl->stream, res, reason);
++		}
++	}
++}
++
+ static int get_boottime_usec(uint64_t *value)
+ {
+ #ifdef CLOCK_BOOTTIME
+@@ -2739,6 +2782,25 @@ static void rtsp_session_timeout(void *data)
+ 				"RAOP source marker request timed out");
+ 		return;
+ 	}
++	if (impl->tearing_down && impl->disconnect_expected) {
++		/* A playback-open edge can follow close while the expected TEARDOWN
++		 * is pending. Abort the retired session and let cleanup start that
++		 * already-owned successor without consuming another open edge. */
++		pw_rtsp_client_disconnect(impl->rtsp);
++		/* rtsp_disconnected() cleared the marker and owns cleanup plus the
++		 * one direct reconnect. Do not clobber that new attempt. */
++		if (!impl->disconnect_expected)
++			return;
++		impl->disconnect_expected = false;
++		impl->connected = false;
++		impl->connecting = false;
++		connection_cleanup(impl);
++		reconnect_after_cleanup(impl);
++		return;
++	}
++	if (activation_transport_failure(impl,
++			"RAOP session transition timed out", false))
++		return;
+ 	pw_log_warn("RAOP session transition timed out; reconnecting");
+ 	/*
+ 	 * disconnect() normally emits the callback that performs cleanup and
+@@ -2775,7 +2837,9 @@ static int volume_continue(struct impl *impl)
+ 	impl->volume_continuation = VOLUME_CONTINUE_NONE;
+ 	switch (continuation) {
+ 	case VOLUME_CONTINUE_SEND_RECORD:
+-		if ((res = rtsp_do_record(impl)) < 0)
++		if ((res = rtsp_do_record(impl)) < 0 &&
++				!activation_transport_failure(impl,
++					"RAOP RECORD request failed", false))
+ 			volume_fail_closed(impl,
+ 					"RAOP RECORD request failed");
+ 		return res;
+@@ -3131,13 +3195,16 @@ static int rtsp_record_reply(void *data, int status, const struct spa_dict *head
+ 		return 0;
+ 	}
+ 	if (request_result == RAOP_VOLUME_REQUEST_FAILED || status != 200) {
++		if (activation_transport_failure(impl,
++				"RAOP RECORD request was rejected", false))
++			return 0;
+ 		pw_impl_module_schedule_destroy(impl->module);
+ 		return 0;
+ 	}
+ 	if (!impl->tearing_down)
+ 		pw_timer_queue_cancel(&impl->session_timeout_timer);
+ 
+-	/* A Format removal can race with the RECORD reply. TEARDOWN is already
++	/* Playback close can race with the RECORD reply. TEARDOWN is already
+ 	 * queued in that case; do not revive packet transmission afterwards. */
+ 	if (!impl->want_stream || impl->tearing_down)
+ 		return 0;
+@@ -3228,9 +3295,14 @@ static int rtsp_start_recording(struct impl *impl)
+ 	recording_store(impl, true);
+ 
+ 	snprintf(progress, sizeof(progress), "progress: %s/%s/%s\r\n", "0", "0", "0");
+-	if (!impl->safety_gate_contract)
+-		return rtsp_send(impl, "SET_PARAMETER", "text/parameters",
++	if (!impl->safety_gate_contract) {
++		res = rtsp_send(impl, "SET_PARAMETER", "text/parameters",
+ 				progress, rtsp_log_reply_status);
++		if (res < 0)
++			activation_transport_failure(impl,
++					"RAOP progress request failed", false);
++		return res;
++	}
+ 	if ((reply = calloc(1, sizeof(*reply))) == NULL) {
+ 		source_marker_fail_closed(impl,
+ 				"can't allocate RAOP initial progress request");
+@@ -3336,6 +3408,9 @@ on_server_source_io(void *data, int fd, uint32_t mask)
+ 	return;
+ error:
+ 	pw_loop_update_io(impl->loop, impl->server_source, 0);
++	if (activation_transport_failure(impl,
++			"RAOP server data socket failed", false))
++		return;
+ 	pw_impl_module_schedule_destroy(impl->module);
+ }
+ 
+@@ -3352,6 +3427,9 @@ static int rtsp_setup_reply(void *data, int status, const struct spa_dict *heade
+ 	case 200:
+ 		break;
+ 	default:
++		if (activation_transport_failure(impl,
++				"RAOP SETUP request was rejected", false))
++			return 0;
+ 		pw_impl_module_schedule_destroy(impl->module);
+ 		return 0;
+ 	}
+@@ -3388,11 +3466,19 @@ static int rtsp_setup_reply(void *data, int status, const struct spa_dict *heade
+ 
+ 	switch (impl->protocol) {
+ 	case PROTO_TCP:
+-		if ((impl->server_fd = connect_socket(impl, SOCK_STREAM, -1, impl->server_port)) < 0)
++		if ((impl->server_fd = connect_socket(impl, SOCK_STREAM, -1, impl->server_port)) < 0) {
++			if (activation_transport_failure(impl,
++					"RAOP server data socket connection failed", false))
++				return 0;
+ 			return impl->server_fd;
++		}
+ 
+ 		impl->server_source = pw_loop_add_io(impl->loop, impl->server_fd,
+ 				SPA_IO_OUT, false, on_server_source_io, impl);
++		if (impl->server_source == NULL &&
++				activation_transport_failure(impl,
++					"RAOP server data socket watch failed", false))
++			return 0;
+ 		break;
+ 
+ 	case PROTO_UDP:
+@@ -3402,17 +3488,29 @@ static int rtsp_setup_reply(void *data, int status, const struct spa_dict *heade
+ 		}
+ 		pw_log_info("control:%u timing:%u", control_port, timing_port);
+ 
+-		if ((impl->server_fd = connect_socket(impl, SOCK_DGRAM, -1, impl->server_port)) < 0)
++		if ((impl->server_fd = connect_socket(impl, SOCK_DGRAM, -1, impl->server_port)) < 0) {
++			if (activation_transport_failure(impl,
++					"RAOP server data socket connection failed", false))
++				return 0;
+ 			return impl->server_fd;
+-		if ((impl->control_fd = connect_socket(impl, SOCK_DGRAM, impl->control_fd, control_port)) < 0)
++		}
++		if ((impl->control_fd = connect_socket(impl, SOCK_DGRAM, impl->control_fd, control_port)) < 0) {
++			if (activation_transport_failure(impl,
++					"RAOP control data socket connection failed", false))
++				return 0;
+ 			return impl->control_fd;
++		}
+ 		if (timing_port != 0) {
+ 			/* it is possible that there is no timing_port. We simply don't
+ 			 * connect then and don't send an initial timing packet.
+ 			 * We will reply to received timing packets on the same address we
+ 			 * received the packet from so we don't really need this. */
+-			if ((impl->timing_fd = connect_socket(impl, SOCK_DGRAM, impl->timing_fd, timing_port)) < 0)
++			if ((impl->timing_fd = connect_socket(impl, SOCK_DGRAM, impl->timing_fd, timing_port)) < 0) {
++				if (activation_transport_failure(impl,
++						"RAOP timing data socket connection failed", false))
++					return 0;
+ 				return impl->timing_fd;
++			}
+ 
+ 			ntp = ntp_now();
+ 			send_udp_timing_packet(impl, ntp, ntp, NULL, 0);
+@@ -3430,9 +3528,9 @@ static int rtsp_setup_reply(void *data, int status, const struct spa_dict *heade
+ 		return 0;
+ 	}
+ 	if (!impl->want_stream) {
+-		/* SETUP created a receiver-side session even if Format disappeared
+-		 * while the request was in flight. Mark it teardown-capable and
+-		 * release it without ever starting RECORD. */
++		/* SETUP created a receiver-side session even if playback closed while
++		 * the request was in flight. Mark it teardown-capable and release it
++		 * without ever starting RECORD. */
+ 		impl->handshaking = false;
+ 		impl->ready = true;
+ 		pw_timer_queue_cancel(&impl->session_timeout_timer);
+@@ -3495,19 +3593,27 @@ error:
+ static int rtsp_announce_reply(void *data, int status, const struct spa_dict *headers, const struct pw_array *content)
+ {
+ 	struct impl *impl = data;
++	int res;
+ 
+ 	pw_log_info("announce status: %d", status);
+ 	switch (status) {
+ 	case 200:
+ 		break;
+ 	default:
++		if (activation_transport_failure(impl,
++				"RAOP ANNOUNCE request was rejected", false))
++			return 0;
+ 		pw_impl_module_schedule_destroy(impl->module);
+ 		return 0;
+ 	}
+ 
+ 	pw_properties_set(impl->headers, "Apple-Challenge", NULL);
+ 
+-	return rtsp_do_setup(impl);
++	res = rtsp_do_setup(impl);
++	if (res < 0)
++		activation_transport_failure(impl,
++				"RAOP SETUP request failed", false);
++	return res;
+ }
+ 
+ static inline void swap_bytes(uint8_t *data, size_t size)
+@@ -3696,17 +3802,25 @@ static int rtsp_do_announce(struct impl *impl)
+ static int rtsp_post_auth_setup_reply(void *data, int status, const struct spa_dict *headers, const struct pw_array *content)
+ {
+ 	struct impl *impl = data;
++	int res;
+ 
+ 	pw_log_info("auth-setup status: %d", status);
+ 	switch (status) {
+ 	case 200:
+ 		break;
+ 	default:
++		if (activation_transport_failure(impl,
++				"RAOP auth-setup request was rejected", false))
++			return 0;
+ 		pw_impl_module_schedule_destroy(impl->module);
+ 		return 0;
+ 	}
+ 
+-	return rtsp_do_announce(impl);
++	res = rtsp_do_announce(impl);
++	if (res < 0)
++		activation_transport_failure(impl,
++				"RAOP ANNOUNCE request failed", false);
++	return res;
+ }
+ 
+ static int rtsp_do_post_auth_setup(struct impl *impl)
+@@ -3738,9 +3852,15 @@ static int rtsp_options_auth_reply(void *data, int status, const struct spa_dict
+ 			res = rtsp_do_announce(impl);
+ 		break;
+ 	default:
++		if (activation_transport_failure(impl,
++				"RAOP authenticated OPTIONS request was rejected", false))
++			return 0;
+ 		pw_impl_module_schedule_destroy(impl->module);
+ 		return 0;
+ 	}
++	if (res < 0)
++		activation_transport_failure(impl,
++				"RAOP authenticated handshake request failed", false);
+ 	return res;
+ }
+ 
+@@ -3814,9 +3934,15 @@ static int rtsp_options_reply(void *data, int status, const struct spa_dict *hea
+ 			res = rtsp_do_announce(impl);
+ 		break;
+ 	default:
++		if (activation_transport_failure(impl,
++				"RAOP OPTIONS request was rejected", false))
++			return 0;
+ 		pw_impl_module_schedule_destroy(impl->module);
+ 		return 0;
+ 	}
++	if (res < 0)
++		activation_transport_failure(impl,
++				"RAOP OPTIONS continuation request failed", false);
+ 	return res;
+ }
+ 
+@@ -3846,7 +3972,9 @@ static int rtsp_begin_handshake(struct impl *impl)
+ 	if (res < 0) {
+ 		impl->handshaking = false;
+ 		pw_timer_queue_cancel(&impl->session_timeout_timer);
+-		pw_rtsp_client_disconnect(impl->rtsp);
++		if (!activation_transport_failure(impl,
++				"RAOP OPTIONS request failed", false))
++			pw_rtsp_client_disconnect(impl->rtsp);
+ 	}
+ 	return res;
+ }
+@@ -3939,12 +4067,85 @@ static bool connection_cleanup(struct impl *impl)
+ 	return true;
+ }
+ 
++static bool activation_transport_failure(struct impl *impl,
++		const char *reason, bool already_disconnected)
++{
++	bool already_latched;
++
++	if (raop_reconnect_allow_timer(&impl->reconnect))
++		return false;
++
++	already_latched = raop_reconnect_blocked(&impl->reconnect);
++	/* A callback cancelled after its activation lost want_stream has no
++	 * recovery authority. Clean it up without consuming the next
++	 * playback-open edge by latching the retired generation. */
++	if (!already_latched &&
++			!raop_reconnect_latch_failure(&impl->reconnect,
++				impl->want_stream,
++				impl->tearing_down || impl->disconnect_expected)) {
++		pw_timer_queue_cancel(&impl->reconnect_timer);
++		impl->reconnect_attempts = 0;
++		if (!already_disconnected) {
++			impl->disconnect_expected = true;
++			pw_rtsp_client_disconnect(impl->rtsp);
++			if (!impl->disconnect_expected)
++				return true;
++			impl->disconnect_expected = false;
++		}
++		impl->connected = false;
++		impl->connecting = false;
++		connection_cleanup(impl);
++		return true;
++	}
++
++	if (!already_latched) {
++		pw_log_warn("%s; waiting for a new playback-open edge", reason);
++	}
++	/* Revoke authority before disconnect: pw_rtsp_client_disconnect() may
++	 * emit the disconnected callback synchronously. Activation mode is valid
++	 * only for contract 2, so no gate/marker contract is weakened here. */
++	impl->want_stream = false;
++	pw_timer_queue_cancel(&impl->reconnect_timer);
++	impl->reconnect_attempts = 0;
++	if (!already_disconnected) {
++		impl->disconnect_expected = true;
++		pw_rtsp_client_disconnect(impl->rtsp);
++		if (!impl->disconnect_expected)
++			return true;
++		impl->disconnect_expected = false;
++	}
++	impl->connected = false;
++	impl->connecting = false;
++	connection_cleanup(impl);
++	return true;
++}
++
++static void reconnect_after_cleanup(struct impl *impl)
++{
++	if (impl->destroying || !impl->want_stream ||
++			raop_reconnect_blocked(&impl->reconnect))
++		return;
++	if (!raop_reconnect_allow_timer(&impl->reconnect))
++		rtsp_do_connect(impl);
++	else
++		schedule_rtsp_reconnect(impl);
++}
++
+ static void rtsp_disconnected(void *data)
+ {
+ 	struct impl *impl = data;
+ 	pw_log_info("disconnected");
+ 	impl->connected = false;
+ 	impl->connecting = false;
++	if (impl->disconnect_expected) {
++		impl->disconnect_expected = false;
++		if (connection_cleanup(impl))
++			reconnect_after_cleanup(impl);
++		return;
++	}
++	if (activation_transport_failure(impl,
++			"RAOP RTSP connection disconnected", true))
++		return;
+ 	if (connection_cleanup(impl))
+ 		schedule_rtsp_reconnect(impl);
+ }
+@@ -3958,7 +4159,8 @@ static void rtsp_reconnect_timeout(void *data)
+ {
+ 	struct impl *impl = data;
+ 
+-	if (impl->destroying || !impl->want_stream)
++	if (impl->destroying || !impl->want_stream ||
++			!raop_reconnect_allow_timer(&impl->reconnect))
+ 		return;
+ 	if (impl->reconnect_attempts < UINT32_MAX)
+ 		impl->reconnect_attempts++;
+@@ -3972,6 +4174,7 @@ static void schedule_rtsp_reconnect(struct impl *impl)
+ 	int res;
+ 
+ 	if (impl->destroying || !impl->want_stream ||
++	    !raop_reconnect_allow_timer(&impl->reconnect) ||
+ 	    impl->reconnect_timer.queue != NULL)
+ 		return;
+ 	safety_gate_hold(impl, RAOP_SAFETY_GATE_ACTIVATION,
+@@ -4054,6 +4257,9 @@ static int rtsp_do_connect(struct impl *impl)
+ 	res = pw_rtsp_client_connect(impl->rtsp, hostname,
+ 			(uint16_t)port_num, impl->session_id);
+ 	if (res < 0) {
++		if (activation_transport_failure(impl,
++				"RAOP RTSP connection failed", false))
++			return res;
+ 		schedule_rtsp_reconnect(impl);
+ 		return res;
+ 	}
+@@ -4069,6 +4275,7 @@ static int rtsp_teardown_reply(void *data, int status, const struct spa_dict *he
+ 	bool close_connection = false;
+ 
+ 	pw_log_info("teardown status: %d", status);
++	impl->disconnect_expected = false;
+ 
+ 	if ((str = spa_dict_lookup(headers, "Connection")) != NULL)
+ 		close_connection = spa_streq(str, "close");
+@@ -4076,10 +4283,15 @@ static int rtsp_teardown_reply(void *data, int status, const struct spa_dict *he
+ 	if (!connection_cleanup(impl))
+ 		return -EIO;
+ 
+-	if (close_connection)
++	if (close_connection) {
++		impl->disconnect_expected = true;
+ 		pw_rtsp_client_disconnect(impl->rtsp);
++		if (!impl->disconnect_expected)
++			return 0;
++		impl->disconnect_expected = false;
++	}
+ 
+-	schedule_rtsp_reconnect(impl);
++	reconnect_after_cleanup(impl);
+ 	return 0;
+ }
+ 
+@@ -4115,9 +4327,17 @@ static int rtsp_do_teardown(struct impl *impl)
+ 			rtsp_teardown_reply);
+ 	if (res >= 0) {
+ 		impl->tearing_down = true;
++		impl->disconnect_expected = true;
+ 		arm_rtsp_session_timeout(impl);
+ 	} else {
++		if (activation_transport_failure(impl,
++				"RAOP TEARDOWN request failed", false))
++			return res;
++		impl->disconnect_expected = true;
+ 		pw_rtsp_client_disconnect(impl->rtsp);
++		if (!impl->disconnect_expected)
++			return res;
++		impl->disconnect_expected = false;
+ 		impl->connected = false;
+ 		impl->connecting = false;
+ 		if (connection_cleanup(impl))
+@@ -4260,32 +4480,14 @@ static void stream_props_changed(struct impl *impl, uint32_t id, const struct sp
+ static void stream_param_changed(void *data, uint32_t id, const struct spa_pod *param)
+ {
+ 	struct impl *impl = data;
+-	int res;
+ 
+ 	switch (id) {
+ 	case SPA_PARAM_Format:
+ 		impl->format_present = param != NULL;
+-		if ((res = activation_reconcile(impl,
++		activation_reconcile_checked(impl,
+ 				param != NULL ?
+ 					"audio Format became available" :
+-					"audio Format was removed")) < 0) {
+-			const char *reason =
+-				"can't enforce RAOP activation state";
+-
+-			if (impl->demand_contract)
+-				demand_contract_fail(impl, reason, res);
+-			else {
+-				pw_log_error("%s: %s", reason,
+-						spa_strerror(res));
+-				impl->activation_failed = true;
+-				activation_deactivate(impl,
+-						RAOP_SAFETY_GATE_ERROR,
+-						reason, true);
+-				if (impl->stream != NULL)
+-					rtp_stream_set_error(impl->stream,
+-							res, reason);
+-			}
+-		}
++					"audio Format was removed");
+ 		break;
+ 	case SPA_PARAM_Props:
+ 		if (param != NULL)
+@@ -4296,10 +4498,36 @@ static void stream_param_changed(void *data, uint32_t id, const struct spa_pod *
+ 	}
+ }
+ 
++static void stream_open_connection(void *data, int *result)
++{
++	struct impl *impl = data;
++
++	if (result != NULL)
++		*result = 0;
++	if (raop_reconnect_allow_timer(&impl->reconnect) ||
++			!raop_reconnect_open(&impl->reconnect))
++		return;
++	activation_reconcile_checked(impl, "playback activation opened");
++}
++
++static void stream_close_connection(void *data, int *result)
++{
++	struct impl *impl = data;
++
++	if (result != NULL)
++		*result = 0;
++	if (raop_reconnect_allow_timer(&impl->reconnect) ||
++			!raop_reconnect_close(&impl->reconnect))
++		return;
++	activation_reconcile_checked(impl, "playback activation closed");
++}
++
+ static const struct rtp_stream_events stream_events = {
+ 	RTP_VERSION_STREAM_EVENTS,
+ 	.destroy = stream_destroy,
+ 	.report_error = stream_report_error,
++	.open_connection = stream_open_connection,
++	.close_connection = stream_close_connection,
+ 	.param_changed = stream_param_changed,
+ 	.send_packet = stream_send_packet,
+ 	.command = stream_command,
+@@ -4480,6 +4708,16 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 	}
+ 	pw_properties_set(props, "raop.volume.control",
+ 			raop_volume_control_name(impl->volume_control));
++	str = pw_properties_get(props, RAOP_RECONNECT_MODE_KEY);
++	if ((res = raop_reconnect_mode_parse(str,
++			&impl->reconnect.mode)) < 0) {
++		pw_log_error("invalid %s '%s'", RAOP_RECONNECT_MODE_KEY,
++				str == NULL ? "(null)" : str);
++		goto error;
++	}
++	raop_reconnect_state_init(&impl->reconnect, impl->reconnect.mode);
++	pw_properties_set(props, RAOP_RECONNECT_MODE_KEY,
++			raop_reconnect_mode_name(impl->reconnect.mode));
+ 	str = pw_properties_get(props, "raop.volume.contract");
+ 	if (str == NULL || spa_streq(str, RAOP_VOLUME_CONTRACT)) {
+ 		impl->safety_gate_contract = false;
+@@ -4546,6 +4784,17 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 		res = -EINVAL;
+ 		goto error;
+ 	}
++	if (!raop_reconnect_allow_timer(&impl->reconnect) &&
++			(impl->safety_gate_contract ||
++			 impl->volume_control != RAOP_VOLUME_EXTERNAL)) {
++		pw_log_error("%s=activation requires raop.volume.contract=2 "
++				"and raop.volume.control=external",
++				RAOP_RECONNECT_MODE_KEY);
++		res = -EINVAL;
++		goto error;
++	}
++	if (!raop_reconnect_allow_timer(&impl->reconnect))
++		pw_properties_set(props, PW_KEY_NODE_PAUSE_ON_IDLE, "true");
+ 
+ 	impl->volume_query_timeout_ms = DEFAULT_VOLUME_QUERY_TIMEOUT_MS;
+ 	if ((str = pw_properties_get(props, "raop.volume.query-timeout.ms")) != NULL) {
+@@ -4689,6 +4938,12 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 				spa_strerror(res));
+ 		goto error;
+ 	}
++	/* Reconnect mode is module-authored. Nested stream.props cannot forge it. */
++	pw_properties_set(impl->stream_props, RAOP_RECONNECT_MODE_KEY,
++			raop_reconnect_mode_name(impl->reconnect.mode));
++	if (!raop_reconnect_allow_timer(&impl->reconnect))
++		pw_properties_set(impl->stream_props,
++				PW_KEY_NODE_PAUSE_ON_IDLE, "true");
+ 	/* Gate state is module-authored. Never accept a forged or stale copy
+ 	 * from nested stream.props, including when contract 2 is selected. */
+ 	safety_gate_clear_initial_properties(impl);

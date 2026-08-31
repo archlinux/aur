@@ -1,0 +1,2463 @@
+diff --git a/src/modules/meson.build b/src/modules/meson.build
+index 2e1409dc358476276e0f51a18109a6ca3ea53589..5cfebbf901fbed008cf6c071f63d01c8d53cbd2f 100644
+--- a/src/modules/meson.build
++++ b/src/modules/meson.build
+@@ -696,6 +696,14 @@ if build_module_raop
+         dependencies : [spa_dep],
+       ),
+     )
++    test('pw-test-raop-source-marker',
++      executable('pw-test-raop-source-marker',
++        [ 'module-raop/test-source-marker.c',
++          'module-raop/safety-gate.c' ],
++        include_directories : [configinc],
++        dependencies : [pipewire_module_rtp_common_dep, openssl_lib, zeroconf_deps],
++      ),
++    )
+   endif
+ endif
+ summary({'raop-sink (requires OpenSSL)': build_module_raop}, bool_yn: true, section: 'Optional Modules')
+diff --git a/src/modules/module-raop-sink.c b/src/modules/module-raop-sink.c
+index 87a303142d0f517bc9b08ee971b006951d6ea595..4920dd335ec08d84aeb3f08377c4832f8f01d77b 100644
+--- a/src/modules/module-raop-sink.c
++++ b/src/modules/module-raop-sink.c
+@@ -17,6 +17,7 @@
+ #include <signal.h>
+ #include <limits.h>
+ #include <math.h>
++#include <time.h>
+ #include <arpa/inet.h>
+ #include <netinet/in.h>
+ 
+@@ -58,6 +59,401 @@
+ #include "module-rtp/rtp.h"
+ #include "module-rtp/stream.h"
+ 
++#define RAOP_SOURCE_MARKER_CONTRACT	"1"
++#define RAOP_SOURCE_MARKER_ROTATE_COMMAND	"raop-source-marker-rotate"
++#define RAOP_SOURCE_MARKER_PREFIX	"stpw1:"
++#define RAOP_SOURCE_MARKER_HEX_LENGTH	32
++#define RAOP_SOURCE_MARKER_LENGTH	\
++	(sizeof(RAOP_SOURCE_MARKER_PREFIX) - 1 + RAOP_SOURCE_MARKER_HEX_LENGTH)
++#define RAOP_SOURCE_MARKER_VALUE_SIZE	(RAOP_SOURCE_MARKER_LENGTH + 1)
++#define RAOP_SOURCE_MARKER_ERROR_MAX_LENGTH	160
++#define RAOP_SOURCE_MARKER_ERROR_SIZE	\
++	(RAOP_SOURCE_MARKER_ERROR_MAX_LENGTH + 1)
++#define RAOP_SOURCE_MARKER_ERROR_FALLBACK	\
++	"RAOP source marker failure reason unavailable"
++#define RAOP_SOURCE_MARKER_ARTIST	"soundtouch-pipewire"
++#define RAOP_SOURCE_MARKER_DMAP_SIZE	\
++	(8 + (8 + RAOP_SOURCE_MARKER_LENGTH) + \
++	 (8 + sizeof(RAOP_SOURCE_MARKER_ARTIST) - 1) + \
++	 (8 + RAOP_SOURCE_MARKER_LENGTH))
++
++enum raop_source_marker_state {
++	RAOP_SOURCE_MARKER_NONE,
++	RAOP_SOURCE_MARKER_PENDING,
++	RAOP_SOURCE_MARKER_CONFIRMED,
++	RAOP_SOURCE_MARKER_ERROR,
++};
++
++struct raop_source_marker {
++	enum raop_source_marker_state state;
++	uint64_t sequence;
++	char value[RAOP_SOURCE_MARKER_VALUE_SIZE];
++	char error[RAOP_SOURCE_MARKER_ERROR_SIZE];
++};
++
++struct raop_source_marker_rotate_command {
++	uint64_t marker_sequence;
++	uint64_t gate_sequence;
++	uint64_t gate_nonce;
++};
++
++static uint64_t source_marker_next_sequence(uint64_t sequence)
++{
++	if (++sequence == 0)
++		sequence++;
++	return sequence;
++}
++
++static const char *source_marker_state_name(
++		enum raop_source_marker_state state)
++{
++	switch (state) {
++	case RAOP_SOURCE_MARKER_NONE:
++		return "none";
++	case RAOP_SOURCE_MARKER_PENDING:
++		return "pending";
++	case RAOP_SOURCE_MARKER_CONFIRMED:
++		return "confirmed";
++	case RAOP_SOURCE_MARKER_ERROR:
++		return "error";
++	}
++	return "error";
++}
++
++static bool source_marker_value_valid(const char *value)
++{
++	const unsigned char *p;
++
++	if (value == NULL || strlen(value) != RAOP_SOURCE_MARKER_LENGTH ||
++			strncmp(value, RAOP_SOURCE_MARKER_PREFIX,
++				sizeof(RAOP_SOURCE_MARKER_PREFIX) - 1) != 0)
++		return false;
++	p = (const unsigned char *)value +
++		sizeof(RAOP_SOURCE_MARKER_PREFIX) - 1;
++	for (; *p != '\0'; p++)
++		if (!((*p >= '0' && *p <= '9') ||
++		      (*p >= 'a' && *p <= 'f')))
++			return false;
++	return true;
++}
++
++static bool source_marker_error_valid(const char *error)
++{
++	const unsigned char *p;
++	size_t length;
++
++	if (error == NULL || (length = strlen(error)) == 0 ||
++			length > RAOP_SOURCE_MARKER_ERROR_MAX_LENGTH)
++		return false;
++	for (p = (const unsigned char *)error; *p != '\0'; p++)
++		if (*p < 0x20 || *p > 0x7e)
++			return false;
++	return true;
++}
++
++static void source_marker_init(struct raop_source_marker *marker)
++{
++	marker->state = RAOP_SOURCE_MARKER_NONE;
++	marker->sequence = 1;
++	marker->value[0] = '\0';
++	marker->error[0] = '\0';
++}
++
++static int source_marker_begin(struct raop_source_marker *marker,
++		const uint8_t random[16])
++{
++	static const char hex[] = "0123456789abcdef";
++	char value[RAOP_SOURCE_MARKER_VALUE_SIZE];
++	uint32_t i;
++
++	if (marker == NULL || random == NULL)
++		return -EINVAL;
++	if (marker->state == RAOP_SOURCE_MARKER_PENDING)
++		return -EBUSY;
++	if (marker->state == RAOP_SOURCE_MARKER_ERROR)
++		return -EPERM;
++
++	memcpy(value, RAOP_SOURCE_MARKER_PREFIX,
++			sizeof(RAOP_SOURCE_MARKER_PREFIX) - 1);
++	for (i = 0; i < 16; i++) {
++		value[sizeof(RAOP_SOURCE_MARKER_PREFIX) - 1 + 2 * i] =
++			hex[random[i] >> 4];
++		value[sizeof(RAOP_SOURCE_MARKER_PREFIX) + 2 * i] =
++			hex[random[i] & 0x0f];
++	}
++	value[RAOP_SOURCE_MARKER_LENGTH] = '\0';
++	if (spa_streq(value, marker->value))
++		return -EALREADY;
++
++	marker->sequence = source_marker_next_sequence(marker->sequence);
++	marker->state = RAOP_SOURCE_MARKER_PENDING;
++	memcpy(marker->value, value, sizeof(value));
++	marker->error[0] = '\0';
++	return 0;
++}
++
++static bool source_marker_confirm(struct raop_source_marker *marker,
++		uint64_t sequence)
++{
++	if (marker == NULL ||
++			marker->state != RAOP_SOURCE_MARKER_PENDING ||
++			marker->sequence != sequence)
++		return false;
++	marker->state = RAOP_SOURCE_MARKER_CONFIRMED;
++	return true;
++}
++
++static bool source_marker_invalidate(struct raop_source_marker *marker,
++		enum raop_source_marker_state state, const char *reason)
++{
++	const char *error = "";
++	size_t error_size = 1;
++
++	if (marker == NULL ||
++			(state != RAOP_SOURCE_MARKER_NONE &&
++			 state != RAOP_SOURCE_MARKER_ERROR))
++		return false;
++	if (state == RAOP_SOURCE_MARKER_ERROR) {
++		error = source_marker_error_valid(reason) ? reason :
++			RAOP_SOURCE_MARKER_ERROR_FALLBACK;
++		error_size = strlen(error) + 1;
++	}
++	if (marker->state == state && marker->value[0] == '\0' &&
++			spa_streq(marker->error, error))
++		return false;
++	marker->sequence = source_marker_next_sequence(marker->sequence);
++	marker->state = state;
++	marker->value[0] = '\0';
++	memcpy(marker->error, error, error_size);
++	return true;
++}
++
++static bool source_marker_can_cleanup(const struct raop_source_marker *marker)
++{
++	return marker != NULL &&
++		marker->state != RAOP_SOURCE_MARKER_ERROR;
++}
++
++static void source_marker_format_properties(
++		const struct raop_source_marker *marker,
++		char sequence[32], struct spa_dict_item items[5])
++{
++	const char *value = "", *error = NULL;
++
++	spa_scnprintf(sequence, 32, "%" PRIu64, marker->sequence);
++	if (marker->state == RAOP_SOURCE_MARKER_PENDING ||
++			marker->state == RAOP_SOURCE_MARKER_CONFIRMED)
++		value = marker->value;
++	else if (marker->state == RAOP_SOURCE_MARKER_ERROR)
++		error = marker->error;
++	items[0] = SPA_DICT_ITEM_INIT("raop.source.marker.contract",
++			RAOP_SOURCE_MARKER_CONTRACT);
++	items[1] = SPA_DICT_ITEM_INIT("raop.source.marker.state",
++			source_marker_state_name(marker->state));
++	items[2] = SPA_DICT_ITEM_INIT("raop.source.marker.sequence",
++			sequence);
++	items[3] = SPA_DICT_ITEM_INIT("raop.source.marker.value", value);
++	items[4] = SPA_DICT_ITEM_INIT("raop.source.marker.error", error);
++}
++
++static struct pw_properties *source_marker_request_headers(
++		const struct spa_dict *base_headers, uint32_t rtptime)
++{
++	struct pw_properties *headers;
++
++	headers = base_headers != NULL ?
++		pw_properties_new_dict(base_headers) :
++		pw_properties_new(NULL, NULL);
++	if (headers == NULL)
++		return NULL;
++	if (pw_properties_setf(headers, "RTP-Info",
++			"rtptime=%" PRIu32, rtptime) < 0) {
++		pw_properties_free(headers);
++		return NULL;
++	}
++	return headers;
++}
++
++static void source_marker_put_be32(uint8_t *p, uint32_t value)
++{
++	p[0] = (uint8_t)(value >> 24);
++	p[1] = (uint8_t)(value >> 16);
++	p[2] = (uint8_t)(value >> 8);
++	p[3] = (uint8_t)value;
++}
++
++static uint8_t *source_marker_put_dmap_tag(uint8_t *p, const char tag[4],
++		const void *value, uint32_t length)
++{
++	memcpy(p, tag, 4);
++	source_marker_put_be32(p + 4, length);
++	memcpy(p + 8, value, length);
++	return p + 8 + length;
++}
++
++static int source_marker_encode_dmap(const char *marker,
++		uint8_t *buffer, size_t size, size_t *encoded_size)
++{
++	const uint32_t marker_length = RAOP_SOURCE_MARKER_LENGTH;
++	const uint32_t artist_length =
++		sizeof(RAOP_SOURCE_MARKER_ARTIST) - 1;
++	uint8_t *p;
++
++	if (!source_marker_value_valid(marker) ||
++			buffer == NULL || encoded_size == NULL)
++		return -EINVAL;
++	if (size < RAOP_SOURCE_MARKER_DMAP_SIZE)
++		return -ENOSPC;
++
++	memcpy(buffer, "mlit", 4);
++	source_marker_put_be32(buffer + 4,
++			RAOP_SOURCE_MARKER_DMAP_SIZE - 8);
++	p = source_marker_put_dmap_tag(buffer + 8, "minm",
++			marker, marker_length);
++	p = source_marker_put_dmap_tag(p, "asar",
++			RAOP_SOURCE_MARKER_ARTIST, artist_length);
++	p = source_marker_put_dmap_tag(p, "asal",
++			marker, marker_length);
++	*encoded_size = p - buffer;
++	return *encoded_size == RAOP_SOURCE_MARKER_DMAP_SIZE ? 0 : -EIO;
++}
++
++static bool source_marker_parse_json_string(const char *value, int len,
++		char *buffer, size_t size)
++{
++	return len > 0 && spa_json_is_string(value, len) &&
++		spa_json_parse_stringn(value, len, buffer, size) > 0;
++}
++
++static bool source_marker_decimal_string(const char *value)
++{
++	const unsigned char *p = (const unsigned char *)value;
++
++	if (*p == '\0')
++		return false;
++	for (; *p != '\0'; p++)
++		if (*p < '0' || *p > '9')
++			return false;
++	return true;
++}
++
++static bool source_marker_lowercase_hex_string(const char *value)
++{
++	const unsigned char *p = (const unsigned char *)value;
++
++	if (strlen(value) != 16)
++		return false;
++	for (; *p != '\0'; p++)
++		if (!((*p >= '0' && *p <= '9') ||
++		      (*p >= 'a' && *p <= 'f')))
++			return false;
++	return true;
++}
++
++static int source_marker_parse_rotate_command(const char *json,
++		struct raop_source_marker_rotate_command *command)
++{
++	struct spa_json top, iter;
++	const char *object, *value;
++	char key[64], id[64], marker_sequence[32], gate_sequence[32],
++		gate_nonce[19];
++	bool have_id = false, have_marker_sequence = false;
++	bool have_gate_sequence = false, have_gate_nonce = false;
++	bool have_unknown = false;
++	int object_len, len;
++
++	if (json == NULL || command == NULL)
++		return -EINVAL;
++	spa_json_init(&top, json, strlen(json));
++	object_len = spa_json_next(&top, &object);
++	if (object_len <= 0 || !spa_json_is_object(object, object_len))
++		return -EINVAL;
++	object_len = spa_json_container_len(&top, object, object_len);
++	if (object_len <= 0 ||
++			spa_json_next(&top, &value) != 0 ||
++			spa_json_begin_object(&iter, object, object_len) <= 0)
++		return -EINVAL;
++
++	while ((len = spa_json_object_next(&iter, key, sizeof(key),
++			&value)) > 0) {
++		if (spa_streq(key, "command.id")) {
++			if (have_id || !source_marker_parse_json_string(value,
++					len, id, sizeof(id)))
++				return -EINVAL;
++			have_id = true;
++		} else if (spa_streq(key, "marker.sequence")) {
++			if (have_marker_sequence ||
++					!source_marker_parse_json_string(value, len,
++						marker_sequence,
++						sizeof(marker_sequence)))
++				return -EINVAL;
++			have_marker_sequence = true;
++		} else if (spa_streq(key, "gate.sequence")) {
++			if (have_gate_sequence ||
++					!source_marker_parse_json_string(value, len,
++						gate_sequence,
++						sizeof(gate_sequence)))
++				return -EINVAL;
++			have_gate_sequence = true;
++		} else if (spa_streq(key, "gate.nonce")) {
++			if (have_gate_nonce ||
++					!source_marker_parse_json_string(value, len,
++						gate_nonce,
++						sizeof(gate_nonce)))
++				return -EINVAL;
++			have_gate_nonce = true;
++		} else {
++			have_unknown = true;
++		}
++	}
++	if (len < 0 || !have_id)
++		return -EINVAL;
++	if (!spa_streq(id, RAOP_SOURCE_MARKER_ROTATE_COMMAND))
++		return -ENOENT;
++	if (!have_marker_sequence || !have_gate_sequence ||
++			!have_gate_nonce || have_unknown ||
++			!source_marker_decimal_string(marker_sequence) ||
++			!source_marker_decimal_string(gate_sequence) ||
++			!source_marker_lowercase_hex_string(gate_nonce) ||
++			!spa_atou64(marker_sequence,
++				&command->marker_sequence, 10) ||
++			command->marker_sequence == 0 ||
++			!spa_atou64(gate_sequence,
++				&command->gate_sequence, 10) ||
++			command->gate_sequence == 0 ||
++			!spa_atou64(gate_nonce, &command->gate_nonce, 16) ||
++			command->gate_nonce == 0)
++		return -EINVAL;
++	return 0;
++}
++
++static bool source_marker_rotate_command_matches(
++		const struct raop_source_marker *marker,
++		const struct raop_source_marker_rotate_command *command,
++		const struct raop_safety_gate *gate)
++{
++	return marker != NULL && command != NULL && gate != NULL &&
++		marker->state == RAOP_SOURCE_MARKER_CONFIRMED &&
++		command->marker_sequence == marker->sequence &&
++		command->gate_sequence == gate->sequence &&
++		command->gate_nonce == gate->nonce &&
++		raop_safety_gate_is_closed(gate) &&
++		(gate->reasons & RAOP_SAFETY_GATE_ACTIVATION) != 0 &&
++		(gate->reasons & RAOP_SAFETY_GATE_ERROR) == 0;
++}
++
++static bool source_marker_release_command_matches(
++		const struct raop_source_marker *marker,
++		const struct raop_safety_gate_command *command)
++{
++	return marker != NULL && command != NULL &&
++		marker->state == RAOP_SOURCE_MARKER_CONFIRMED &&
++		command->marker_sequence == marker->sequence &&
++		spa_streq(command->marker_value, marker->value);
++}
++
++#ifndef RAOP_SOURCE_MARKER_UNIT_TEST
++
+ /** \page page_module_raop_sink AirPlay Sink
+  *
+  * Creates a new Sink to stream to an Airplay device.
+@@ -102,6 +498,9 @@
+  *                    default and preserves the legacy local soft-mute gate.
+  *                    Contract 3 opts into a sequenced transport safety gate
+  *                    that is independent from canonical node mute.
++ *                    Contract 3 also publishes a module-generated, rotatable
++ *                    RAOP source marker. Its metadata acknowledgement must
++ *                    succeed before recording can start.
+  * - `stream.props = {}`: properties to be passed to the sink stream
+  *
+  * By default the created node publishes `raop.volume.contract = 2`. In the
+@@ -143,12 +542,45 @@
+  * \code{.unparsed}
+  * { "command.id": "raop-safety-gate-release",
+  *   "sequence": "<published decimal sequence>",
+- *   "nonce": "<published 16-digit hexadecimal nonce>" }
++ *   "nonce": "<published 16-digit hexadecimal nonce>",
++ *   "marker.sequence": "<confirmed source-marker sequence>",
++ *   "marker.value": "<confirmed stpw1: source-marker value>",
++ *   "proof.deadline.boottime-usec":
++ *     "<positive absolute CLOCK_BOOTTIME deadline in microseconds>" }
+  * \endcode
+  *
+- * A stale sequence, a nonce from an older node publication, canonical mute,
+- * an inactive stream, or a latched error leaves the gate closed. Contract 2
+- * ignores this command and retains its existing behavior.
++ * The module requires the proof deadline to be current under the strict
++ * `now < deadline` boundary both while handling the command and immediately
++ * before opening the data-loop gate. A malformed, missing, or expired
++ * deadline, a stale gate or marker tuple, canonical mute, an inactive stream,
++ * or a latched error leaves the gate closed. Contract 2 ignores this command
++ * and retains its existing behavior.
++ *
++ * Contract 3 also publishes `raop.source.marker.contract = 1`,
++ * `raop.source.marker.state`, `raop.source.marker.sequence`, and
++ * `raop.source.marker.value`: a valid marker while pending or confirmed, or
++ * an empty tombstone otherwise.
++ * `raop.source.marker.error` is present only in the error state and contains
++ * the exact module failure reason, bounded to 160 printable ASCII bytes. The
++ * module sends the generated `stpw1:<32 lower-case hexadecimal digits>` value
++ * as binary DMAP title and album metadata after RECORD succeeds. Its
++ * SET_PARAMETER request carries an `RTP-Info: rtptime=...` header built in
++ * request-local storage. Packet delivery and safety-gate release remain
++ * blocked until the receiver has acknowledged that metadata. A controller can
++ * request a fresh challenge while the current gate is closed by sending:
++ *
++ * \code{.unparsed}
++ * { "command.id": "raop-source-marker-rotate",
++ *   "marker.sequence": "<current marker sequence>",
++ *   "gate.sequence": "<current safety-gate sequence>",
++ *   "gate.nonce": "<current safety-gate nonce>" }
++ * \endcode
++ *
++ * The command is accepted only for a live recording session, a confirmed
++ * current marker, and an exact closed, non-error contract-3 gate. The newly
++ * generated marker is first published as pending and becomes confirmed only
++ * after a successful RTSP response. Failure clears the value, latches the
++ * transport gate closed, and fails the stream.
+  *
+  * Options with well-known behavior.
+  *
+@@ -306,6 +737,12 @@ struct volume_query_reply_data {
+ 	uint32_t mute_generation;
+ };
+ 
++struct source_marker_reply_data {
++	struct impl *impl;
++	uint64_t sequence;
++	unsigned int initial:1;
++};
++
+ struct impl {
+ 	struct pw_context *context;
+ 
+@@ -393,7 +830,6 @@ struct impl {
+ 	unsigned int connecting:1;
+ 	unsigned int handshaking:1;
+ 	unsigned int ready:1;
+-	unsigned int recording:1;
+ 	unsigned int want_stream:1;
+ 	unsigned int tearing_down:1;
+ 	unsigned int destroying:1;
+@@ -401,11 +837,15 @@ struct impl {
+ 	unsigned int volume_valid:1;
+ 	unsigned int volume_prepare_started:1;
+ 	unsigned int session_software:1;
+-	unsigned int safety_gate_contract:1;
+ 
++	/* Immutable once the stream is created; safe to read on the data loop. */
++	bool safety_gate_contract;
+ 	bool mute;
++	/* Accessed by both control and data loops through recording_*(). */
++	uint32_t recording;
+ 	uint32_t safety_gate_closed;
+ 	struct raop_safety_gate safety_gate;
++	struct raop_source_marker source_marker;
+ 	float volume;
+ 	float channel_volume;
+ 	uint32_t n_channel_volumes;
+@@ -415,7 +855,21 @@ struct impl {
+ static int rtsp_do_connect(struct impl *impl);
+ static int rtsp_do_teardown(struct impl *impl);
+ static void schedule_rtsp_reconnect(struct impl *impl);
+-static void connection_cleanup(struct impl *impl);
++static bool connection_cleanup(struct impl *impl);
++static int source_marker_rotate(struct impl *impl, bool initial);
++static void source_marker_fail_closed(struct impl *impl, const char *reason);
++static void source_marker_cleanup(struct impl *impl, const char *reason);
++static int source_marker_publish(struct impl *impl);
++
++static bool recording_load(const struct impl *impl)
++{
++	return SPA_ATOMIC_LOAD(impl->recording) != 0;
++}
++
++static void recording_store(struct impl *impl, bool recording)
++{
++	SPA_ATOMIC_STORE(impl->recording, recording ? 1u : 0u);
++}
+ 
+ static inline void bit_writer(uint8_t **p, int *pos, uint8_t data, int len)
+ {
+@@ -594,13 +1048,14 @@ static void stream_send_packet(void *data, struct iovec *iov, size_t iovlen)
+ {
+ 	struct impl *impl = data;
+ 	const size_t max = 8 + impl->mtu;
++	size_t packet_size = 0;
+ 	uint32_t tcp_pkt[1], out[max], len, n_frames, rtptime;
+ 	struct iovec out_vec[3];
+ 	struct rtp_header *header;
+ 	struct msghdr msg;
+ 	uint8_t *dst;
+ 
+-	if (!impl->recording ||
++	if (!recording_load(impl) ||
+ 			(impl->safety_gate_contract &&
+ 			 SPA_ATOMIC_LOAD(impl->safety_gate_closed) != 0))
+ 		return;
+@@ -650,7 +1105,9 @@ static void stream_send_packet(void *data, struct iovec *iov, size_t iovlen)
+ 	out_vec[msg.msg_iovlen++] = (struct iovec) { header, 12 };
+ 	out_vec[msg.msg_iovlen++] = (struct iovec) { out, len };
+ 
+-	pw_log_debug("raop sending %zu", out_vec[0].iov_len + out_vec[1].iov_len + out_vec[2].iov_len);
++	for (size_t i = 0; i < msg.msg_iovlen; i++)
++		packet_size += out_vec[i].iov_len;
++	pw_log_debug("raop sending %zu", packet_size);
+ 
+ 	send_packet(impl->server_fd, &msg);
+ }
+@@ -961,6 +1418,30 @@ static int rtsp_send_data(struct impl *impl, const char *method,
+ 	return res;
+ }
+ 
++static int rtsp_send_source_marker_data(struct impl *impl, const char *method,
++		const char *content_type, const void *content,
++		size_t content_length, uint32_t rtptime,
++		int (*reply) (void *data, int status,
++			const struct spa_dict *headers,
++			const struct pw_array *content),
++		void *data, void (*destroy_data) (void *data))
++{
++	struct pw_properties *headers;
++	int res;
++
++	if ((res = rtsp_add_raop_auth_header(impl, method)) < 0)
++		return res;
++	headers = source_marker_request_headers(&impl->headers->dict, rtptime);
++	if (headers == NULL)
++		return -ENOMEM;
++	res = pw_rtsp_client_url_send_full(impl->rtsp,
++			pw_rtsp_client_get_url(impl->rtsp), method,
++			&headers->dict, content_type,
++			content, content_length, reply, data, destroy_data);
++	pw_properties_free(headers);
++	return res;
++}
++
+ static int rtsp_send(struct impl *impl, const char *method,
+ 		const char *content_type, const char *content,
+ 		int (*reply) (void *data, int status, const struct spa_dict *headers,
+@@ -979,9 +1460,149 @@ static int rtsp_log_reply_status(void *data, int status, const struct spa_dict *
+ static int rtsp_do_teardown(struct impl *impl);
+ static int rtsp_do_record(struct impl *impl);
+ static int rtsp_start_recording(struct impl *impl);
+-static void volume_fail_closed(struct impl *impl, const char *reason);
++static bool volume_fail_closed(struct impl *impl, const char *reason);
+ static void volume_set_failed(struct impl *impl, const char *reason);
+ static void volume_set_timeout(void *data);
++static int arm_rtsp_session_timeout(struct impl *impl);
++
++static int source_marker_reply(void *data, int status,
++		const struct spa_dict *headers, const struct pw_array *content)
++{
++	struct source_marker_reply_data *reply = data;
++	struct impl *impl = reply->impl;
++	int res;
++
++	if (!impl->safety_gate_contract ||
++			impl->source_marker.state != RAOP_SOURCE_MARKER_PENDING ||
++			impl->source_marker.sequence != reply->sequence) {
++		pw_log_debug("ignoring stale RAOP source marker reply");
++		return 0;
++	}
++	pw_timer_queue_cancel(&impl->session_timeout_timer);
++	if (status != 200) {
++		char reason[96];
++
++		spa_scnprintf(reason, sizeof(reason),
++				"RAOP source marker RTSP status %d", status);
++		source_marker_fail_closed(impl, reason);
++		return 0;
++	}
++	if (!impl->connected || !impl->ready || !impl->want_stream ||
++			impl->tearing_down ||
++			(reply->initial ? recording_load(impl) :
++				!recording_load(impl))) {
++		source_marker_cleanup(impl,
++				"RAOP session changed before marker reply");
++		return 0;
++	}
++	if (!source_marker_confirm(&impl->source_marker, reply->sequence)) {
++		source_marker_fail_closed(impl,
++				"RAOP source marker confirmation mismatch");
++		return 0;
++	}
++	if ((res = source_marker_publish(impl)) < 0) {
++		source_marker_fail_closed(impl,
++				"can't publish confirmed RAOP source marker");
++		return 0;
++	}
++	pw_log_debug("confirmed RAOP source marker at sequence %" PRIu64,
++			impl->source_marker.sequence);
++
++	if (reply->initial &&
++			(res = rtsp_start_recording(impl)) < 0)
++		source_marker_fail_closed(impl,
++				"RAOP progress request failed after source marker");
++	return 0;
++}
++
++static int source_marker_rotate(struct impl *impl, bool initial)
++{
++	struct source_marker_reply_data *reply;
++	uint8_t random[16], dmap[RAOP_SOURCE_MARKER_DMAP_SIZE];
++	size_t dmap_size;
++	uint64_t stream_time;
++	uint32_t rtptime;
++	uint32_t attempt;
++	int res = -EIO;
++
++	if (!impl->safety_gate_contract ||
++			!impl->connected || !impl->ready ||
++			!impl->want_stream || impl->tearing_down ||
++			!raop_safety_gate_is_closed(&impl->safety_gate) ||
++			(impl->safety_gate.reasons &
++				RAOP_SAFETY_GATE_ERROR) != 0 ||
++			(initial ?
++				(recording_load(impl) ||
++				 impl->source_marker.state !=
++					RAOP_SOURCE_MARKER_NONE) :
++				(!recording_load(impl) ||
++				 impl->source_marker.state !=
++					RAOP_SOURCE_MARKER_CONFIRMED)))
++		return -EPERM;
++
++	for (attempt = 0; attempt < 4; attempt++) {
++		if ((res = pw_getrandom(random, sizeof(random), 0)) < 0)
++			break;
++		res = source_marker_begin(&impl->source_marker, random);
++		if (res != -EALREADY)
++			break;
++	}
++	explicit_bzero(random, sizeof(random));
++	if (res < 0) {
++		source_marker_fail_closed(impl,
++				"can't generate fresh RAOP source marker");
++		return res;
++	}
++	if ((res = source_marker_encode_dmap(impl->source_marker.value,
++			dmap, sizeof(dmap), &dmap_size)) < 0) {
++		source_marker_fail_closed(impl,
++				"can't encode RAOP source marker metadata");
++		return res;
++	}
++	if ((res = source_marker_publish(impl)) < 0) {
++		explicit_bzero(dmap, sizeof(dmap));
++		source_marker_fail_closed(impl,
++				"can't publish pending RAOP source marker");
++		return res;
++	}
++	if ((reply = calloc(1, sizeof(*reply))) == NULL) {
++		explicit_bzero(dmap, sizeof(dmap));
++		source_marker_fail_closed(impl,
++				"can't allocate RAOP source marker request");
++		return -ENOMEM;
++	}
++	reply->impl = impl;
++	reply->sequence = impl->source_marker.sequence;
++	reply->initial = initial;
++	stream_time = rtp_stream_get_time(impl->stream, &impl->rate);
++	if (stream_time == (uint64_t)-EIO) {
++		free(reply);
++		explicit_bzero(dmap, sizeof(dmap));
++		source_marker_fail_closed(impl,
++				"can't obtain RAOP source marker RTP time");
++		return -EIO;
++	}
++	rtptime = (uint32_t)stream_time;
++	res = rtsp_send_source_marker_data(impl, "SET_PARAMETER",
++			"application/x-dmap-tagged", dmap, dmap_size, rtptime,
++			source_marker_reply, reply, free);
++	explicit_bzero(dmap, sizeof(dmap));
++	if (res < 0) {
++		free(reply);
++		source_marker_fail_closed(impl,
++				"RAOP source marker request failed");
++		return res;
++	}
++	if ((res = arm_rtsp_session_timeout(impl)) < 0) {
++		source_marker_fail_closed(impl,
++				"can't arm RAOP source marker timeout");
++		return res;
++	}
++	pw_log_debug("sent pending RAOP source marker at sequence %" PRIu64
++			" with RTP time %" PRIu32,
++			impl->source_marker.sequence, rtptime);
++	return 0;
++}
+ 
+ static bool volume_control_uses_rtsp(const struct impl *impl)
+ {
+@@ -1041,6 +1662,35 @@ static void safety_gate_clear_initial_properties(struct impl *impl)
+ 			"raop.safety.gate.reasons", NULL);
+ }
+ 
++static void source_marker_set_initial_properties(struct impl *impl)
++{
++	char sequence[32];
++
++	pw_properties_set(impl->stream_props,
++			"raop.source.marker.contract", NULL);
++	pw_properties_set(impl->stream_props,
++			"raop.source.marker.state", NULL);
++	pw_properties_set(impl->stream_props,
++			"raop.source.marker.sequence", NULL);
++	pw_properties_set(impl->stream_props,
++			"raop.source.marker.value", NULL);
++	pw_properties_set(impl->stream_props,
++			"raop.source.marker.error", NULL);
++	if (!impl->safety_gate_contract)
++		return;
++
++	spa_scnprintf(sequence, sizeof(sequence), "%" PRIu64,
++			impl->source_marker.sequence);
++	pw_properties_set(impl->stream_props,
++			"raop.source.marker.contract",
++			RAOP_SOURCE_MARKER_CONTRACT);
++	pw_properties_set(impl->stream_props,
++			"raop.source.marker.state",
++			source_marker_state_name(impl->source_marker.state));
++	pw_properties_set(impl->stream_props,
++			"raop.source.marker.sequence", sequence);
++}
++
+ static int safety_gate_publish(struct impl *impl)
+ {
+ 	struct spa_dict_item items[4];
+@@ -1059,6 +1709,72 @@ static int safety_gate_publish(struct impl *impl)
+ 			&SPA_DICT_INIT(items, SPA_N_ELEMENTS(items)));
+ }
+ 
++static int source_marker_publish(struct impl *impl)
++{
++	struct spa_dict_item items[5];
++	char sequence[32];
++
++	if (!impl->safety_gate_contract || impl->stream == NULL)
++		return 0;
++	source_marker_format_properties(&impl->source_marker, sequence, items);
++	return rtp_stream_update_properties(impl->stream,
++			&SPA_DICT_INIT(items, SPA_N_ELEMENTS(items)));
++}
++
++static int safety_gate_data_loop_barrier(void *data)
++{
++	(void)data;
++	return 0;
++}
++
++static int safety_gate_close_and_drain(struct impl *impl)
++{
++	/*
++	 * Stop new callbacks first. The synchronous no-op is then ordered after
++	 * every packet callback that could already have observed the open value.
++	 */
++	SPA_ATOMIC_STORE(impl->safety_gate_closed, 1);
++	if (impl->stream == NULL)
++		return 0;
++	return rtp_stream_invoke_data_loop(impl->stream,
++			safety_gate_data_loop_barrier, NULL);
++}
++
++static void safety_gate_close_barrier_failed(struct impl *impl,
++		uint32_t reasons, const char *why, int barrier_res)
++{
++	int res;
++
++	/*
++	 * The atomic gate remains closed, but without a completed data-loop
++	 * barrier an older packet callback might still be in flight. Publish an
++	 * error-latched successor, never the requested successful transition.
++	 */
++	raop_safety_gate_invalidate(&impl->safety_gate,
++			reasons | RAOP_SAFETY_GATE_ERROR);
++	pw_log_error("can't drain RAOP safety gate close on data loop "
++			"(%s): %s", why, spa_strerror(barrier_res));
++	if ((res = safety_gate_publish(impl)) < 0)
++		pw_log_warn("can't publish failed RAOP safety gate: %s",
++				spa_strerror(res));
++}
++
++static bool safety_gate_stop_recording(struct impl *impl, const char *why)
++{
++	int res;
++
++	if (!recording_load(impl))
++		return true;
++	if (impl->safety_gate_contract &&
++			(res = safety_gate_close_and_drain(impl)) < 0) {
++		safety_gate_close_barrier_failed(impl,
++				RAOP_SAFETY_GATE_ACTIVATION, why, res);
++		return false;
++	}
++	recording_store(impl, false);
++	return true;
++}
++
+ static void safety_gate_invalidate(struct impl *impl, uint32_t reasons,
+ 		const char *why)
+ {
+@@ -1067,7 +1783,10 @@ static void safety_gate_invalidate(struct impl *impl, uint32_t reasons,
+ 	if (!impl->safety_gate_contract)
+ 		return;
+ 
+-	SPA_ATOMIC_STORE(impl->safety_gate_closed, 1);
++	if ((res = safety_gate_close_and_drain(impl)) < 0) {
++		safety_gate_close_barrier_failed(impl, reasons, why, res);
++		return;
++	}
+ 	raop_safety_gate_invalidate(&impl->safety_gate, reasons);
+ 	pw_log_debug("closed RAOP safety gate at sequence %" PRIu64
+ 			" (%s)", impl->safety_gate.sequence, why);
+@@ -1076,6 +1795,41 @@ static void safety_gate_invalidate(struct impl *impl, uint32_t reasons,
+ 				spa_strerror(res));
+ }
+ 
++static void source_marker_cleanup(struct impl *impl, const char *reason)
++{
++	int res;
++
++	/*
++	 * An ERROR is the durable fail-closed diagnosis for this module
++	 * generation.  TEARDOWN and disconnect cleanup can run immediately after
++	 * publishing it; retaining the tuple prevents those paths from racing a
++	 * controller which still needs to observe the exact failure reason.  A
++	 * fresh module generation starts from NONE.
++	 */
++	if (!impl->safety_gate_contract ||
++			!source_marker_can_cleanup(&impl->source_marker) ||
++			!source_marker_invalidate(&impl->source_marker,
++				RAOP_SOURCE_MARKER_NONE, NULL))
++		return;
++	pw_log_debug("invalidated RAOP source marker at sequence %" PRIu64
++			" (%s)", impl->source_marker.sequence, reason);
++	if ((res = source_marker_publish(impl)) >= 0)
++		return;
++
++	pw_log_error("can't publish cleared RAOP source marker: %s",
++			spa_strerror(res));
++	source_marker_invalidate(&impl->source_marker,
++			RAOP_SOURCE_MARKER_ERROR,
++			"RAOP source marker cleanup publication failed");
++	safety_gate_invalidate(impl, RAOP_SAFETY_GATE_ERROR,
++			"RAOP source marker cleanup publication failed");
++	if ((res = source_marker_publish(impl)) < 0)
++		pw_log_warn("can't publish failed RAOP source marker: %s",
++				spa_strerror(res));
++	if (!impl->destroying)
++		pw_impl_module_schedule_destroy(impl->module);
++}
++
+ static void safety_gate_hold(struct impl *impl, uint32_t reasons,
+ 		const char *why)
+ {
+@@ -1085,7 +1839,10 @@ static void safety_gate_hold(struct impl *impl, uint32_t reasons,
+ 	if (!impl->safety_gate_contract)
+ 		return;
+ 
+-	SPA_ATOMIC_STORE(impl->safety_gate_closed, 1);
++	if ((res = safety_gate_close_and_drain(impl)) < 0) {
++		safety_gate_close_barrier_failed(impl, reasons, why, res);
++		return;
++	}
+ 	old_sequence = impl->safety_gate.sequence;
+ 	raop_safety_gate_hold(&impl->safety_gate, reasons);
+ 	if (impl->safety_gate.sequence != old_sequence)
+@@ -1096,12 +1853,136 @@ static void safety_gate_hold(struct impl *impl, uint32_t reasons,
+ 				spa_strerror(res));
+ }
+ 
++static int get_boottime_usec(uint64_t *value)
++{
++#ifdef CLOCK_BOOTTIME
++	struct timespec now;
++	uint64_t seconds, usec;
++
++	if (value == NULL)
++		return -EINVAL;
++	if (clock_gettime(CLOCK_BOOTTIME, &now) < 0)
++		return -errno;
++	if (now.tv_sec < 0 || now.tv_nsec < 0 ||
++			now.tv_nsec >= SPA_NSEC_PER_SEC)
++		return -EIO;
++
++	seconds = (uint64_t)now.tv_sec;
++	usec = (uint64_t)now.tv_nsec /
++		(uint64_t)SPA_NSEC_PER_USEC;
++	if (seconds > (UINT64_MAX - usec) /
++			(uint64_t)SPA_USEC_PER_SEC)
++		return -EOVERFLOW;
++	*value = seconds * (uint64_t)SPA_USEC_PER_SEC + usec;
++	return 0;
++#else
++	(void)value;
++	return -ENOTSUP;
++#endif
++}
++
++static bool safety_gate_proof_deadline_is_current(
++		const struct raop_safety_gate_command *command)
++{
++	uint64_t now_boottime_usec = 0;
++	int res;
++
++	if ((res = get_boottime_usec(&now_boottime_usec)) < 0) {
++		pw_log_error("can't read CLOCK_BOOTTIME for RAOP safety gate: %s",
++				spa_strerror(res));
++		return false;
++	}
++	if (!raop_safety_gate_proof_deadline_is_current(command,
++			now_boottime_usec)) {
++		pw_log_warn("denying expired RAOP safety gate release proof");
++		return false;
++	}
++	return true;
++}
++
++static void safety_gate_reclose_release(struct impl *impl)
++{
++	int res;
++
++	if ((res = safety_gate_close_and_drain(impl)) < 0) {
++		safety_gate_close_barrier_failed(impl,
++				RAOP_SAFETY_GATE_ACTIVATION,
++				"failed release rollback", res);
++		return;
++	}
++	raop_safety_gate_invalidate(&impl->safety_gate,
++			RAOP_SAFETY_GATE_ACTIVATION);
++	if ((res = safety_gate_publish(impl)) < 0) {
++		raop_safety_gate_invalidate(&impl->safety_gate,
++				RAOP_SAFETY_GATE_ERROR);
++		pw_log_error("can't republish closed RAOP safety gate: %s",
++				spa_strerror(res));
++		if ((res = safety_gate_publish(impl)) < 0)
++			pw_log_warn("can't publish failed RAOP safety "
++					"gate: %s", spa_strerror(res));
++	}
++}
++
++struct safety_gate_data_loop_release {
++	struct impl *impl;
++	const struct raop_safety_gate_command *command;
++};
++
++static int safety_gate_open_on_data_loop(void *data)
++{
++	struct safety_gate_data_loop_release *release = data;
++	uint64_t before_boottime_usec, after_boottime_usec;
++	int res;
++
++	if (release == NULL || release->impl == NULL ||
++			release->command == NULL)
++		return -EINVAL;
++	if ((res = get_boottime_usec(&before_boottime_usec)) < 0)
++		return res;
++	if (!raop_safety_gate_proof_deadline_is_current(
++			release->command, before_boottime_usec))
++		return -ETIMEDOUT;
++
++	/*
++	 * This callback is serialized with stream_send_packet(). If the data
++	 * loop is stopped after the first check or after the store, the second
++	 * check closes the gate before any packet callback can interleave.
++	 */
++	SPA_ATOMIC_STORE(release->impl->safety_gate_closed, 0);
++	if ((res = get_boottime_usec(&after_boottime_usec)) < 0) {
++		SPA_ATOMIC_STORE(release->impl->safety_gate_closed, 1);
++		return res;
++	}
++	if (!raop_safety_gate_proof_deadline_covers_transition(
++			release->command, before_boottime_usec,
++			after_boottime_usec)) {
++		SPA_ATOMIC_STORE(release->impl->safety_gate_closed, 1);
++		return -ETIMEDOUT;
++	}
++	return 0;
++}
++
+ static void safety_gate_release(struct impl *impl,
+ 		const struct raop_safety_gate_command *command)
+ {
++	struct safety_gate_data_loop_release data_loop_release = {
++		.impl = impl,
++		.command = command,
++	};
+ 	enum raop_safety_gate_release_result result;
+ 	int res;
+ 
++	if (!source_marker_release_command_matches(
++			&impl->source_marker, command) ||
++			!impl->connected || !impl->ready ||
++			!recording_load(impl) || !impl->want_stream ||
++			impl->tearing_down) {
++		pw_log_warn("denying RAOP safety gate release without a "
++				"matching confirmed live source marker");
++		return;
++	}
++	if (!safety_gate_proof_deadline_is_current(command))
++		return;
+ 	result = raop_safety_gate_release(&impl->safety_gate, command,
+ 			impl->mute, impl->want_stream);
+ 	switch (result) {
+@@ -1117,6 +1998,13 @@ static void safety_gate_release(struct impl *impl,
+ 		break;
+ 	}
+ 
++	/* A thread suspension between admission and logical release must not
++	 * publish an already-expired proof as an open generation. */
++	if (!safety_gate_proof_deadline_is_current(command)) {
++		safety_gate_reclose_release(impl);
++		return;
++	}
++
+ 	/* Keep the data-loop gate closed until the new public state was
+ 	 * accepted. If publication fails, latch an error instead of allowing
+ 	 * packets under state that the controller could not observe. */
+@@ -1130,7 +2018,24 @@ static void safety_gate_release(struct impl *impl,
+ 					spa_strerror(res));
+ 		return;
+ 	}
+-	SPA_ATOMIC_STORE(impl->safety_gate_closed, 0);
++	/*
++	 * Publication above is synchronous but may still straddle the absolute
++	 * proof deadline. Open and validate the atomic gate synchronously on the
++	 * data loop, where no packet callback can interleave with the two clock
++	 * reads. A failed invoke leaves the atomic gate closed; publish a fresh
++	 * closed generation before returning to the command dispatcher.
++	 */
++	res = rtp_stream_invoke_data_loop(impl->stream,
++			safety_gate_open_on_data_loop, &data_loop_release);
++	if (res < 0) {
++		if (res == -ETIMEDOUT)
++			pw_log_warn("denying expired RAOP safety gate release proof");
++		else
++			pw_log_error("can't open RAOP safety gate on data loop: %s",
++					spa_strerror(res));
++		safety_gate_reclose_release(impl);
++		return;
++	}
+ 	pw_log_debug("released RAOP safety gate at sequence %" PRIu64,
+ 			impl->safety_gate.sequence);
+ }
+@@ -1151,6 +2056,7 @@ static void stream_command(void *data, const struct spa_command *command)
+ 	SPA_POD_OBJECT_FOREACH(object, prop) {
+ 		struct raop_safety_gate_hold_command hold;
+ 		struct raop_safety_gate_command release;
++		struct raop_source_marker_rotate_command rotate;
+ 		const char *json;
+ 		int res;
+ 
+@@ -1159,6 +2065,28 @@ static void stream_command(void *data, const struct spa_command *command)
+ 			continue;
+ 
+ 		json = SPA_POD_CONTENTS(struct spa_pod, &prop->value);
++		res = source_marker_parse_rotate_command(json, &rotate);
++		if (res == 0) {
++			if (!source_marker_rotate_command_matches(
++					&impl->source_marker, &rotate,
++					&impl->safety_gate) ||
++					!impl->connected || !impl->ready ||
++					!recording_load(impl) ||
++					!impl->want_stream ||
++					impl->tearing_down) {
++				pw_log_warn("denying stale or unsafe RAOP "
++						"source marker rotation");
++				return;
++			}
++			if ((res = source_marker_rotate(impl, false)) < 0)
++				pw_log_error("can't rotate RAOP source marker: %s",
++						spa_strerror(res));
++			return;
++		}
++		if (res != -ENOENT) {
++			pw_log_warn("ignoring malformed RAOP source marker command");
++			return;
++		}
+ 		res = raop_safety_gate_parse_hold_command(json, &hold);
+ 		if (res == 0) {
+ 			if (hold.nonce != impl->safety_gate.nonce) {
+@@ -1239,7 +2167,7 @@ static int rtsp_send_volume(struct impl *impl)
+ 	if (impl->record_request.pending || impl->volume_query_request.pending ||
+ 			!impl->volume_valid ||
+ 			!volume_control_uses_rtsp(impl) ||
+-			(!impl->recording &&
++			(!recording_load(impl) &&
+ 			 impl->volume_continuation == VOLUME_CONTINUE_NONE) ||
+ 			!raop_volume_request_begin(&impl->volume_request,
+ 				impl->volume_state.generation, &epoch))
+@@ -1427,6 +2355,13 @@ static void rtsp_session_timeout(void *data)
+ 
+ 	if (impl->destroying)
+ 		return;
++	if (impl->safety_gate_contract &&
++			impl->source_marker.state ==
++				RAOP_SOURCE_MARKER_PENDING) {
++		source_marker_fail_closed(impl,
++				"RAOP source marker request timed out");
++		return;
++	}
+ 	pw_log_warn("RAOP session transition timed out; reconnecting");
+ 	/*
+ 	 * disconnect() normally emits the callback that performs cleanup and
+@@ -1436,11 +2371,11 @@ static void rtsp_session_timeout(void *data)
+ 	pw_rtsp_client_disconnect(impl->rtsp);
+ 	impl->connected = false;
+ 	impl->connecting = false;
+-	connection_cleanup(impl);
+-	schedule_rtsp_reconnect(impl);
++	if (connection_cleanup(impl))
++		schedule_rtsp_reconnect(impl);
+ }
+ 
+-static void arm_rtsp_session_timeout(struct impl *impl)
++static int arm_rtsp_session_timeout(struct impl *impl)
+ {
+ 	int res;
+ 
+@@ -1452,6 +2387,7 @@ static void arm_rtsp_session_timeout(struct impl *impl)
+ 	if (res < 0)
+ 		pw_log_warn("can't arm RAOP session timeout: %s",
+ 				spa_strerror(res));
++	return res;
+ }
+ 
+ static int volume_continue(struct impl *impl)
+@@ -1507,16 +2443,34 @@ static int rtsp_volume_set_reply(void *data, int status,
+ 	return 0;
+ }
+ 
+-static void volume_fail_closed(struct impl *impl, const char *reason)
++static bool volume_fail_closed(struct impl *impl, const char *reason)
+ {
+ 	pw_log_error("%s", reason);
+ 	safety_gate_invalidate(impl, RAOP_SAFETY_GATE_ERROR, reason);
+ 	impl->volume_continuation = VOLUME_CONTINUE_NONE;
+-	impl->recording = false;
++	if (!safety_gate_stop_recording(impl, "RAOP volume failure"))
++		return false;
+ 	impl->want_stream = false;
+ 	rtsp_do_teardown(impl);
+ 	if (impl->stream != NULL)
+ 		rtp_stream_set_error(impl->stream, -EIO, reason);
++	return true;
++}
++
++static void source_marker_fail_closed(struct impl *impl, const char *reason)
++{
++	int res;
++
++	pw_timer_queue_cancel(&impl->session_timeout_timer);
++	source_marker_invalidate(&impl->source_marker,
++			RAOP_SOURCE_MARKER_ERROR, reason);
++	if ((res = source_marker_publish(impl)) < 0)
++		pw_log_error("can't publish failed RAOP source marker: %s",
++				spa_strerror(res));
++	if (!volume_fail_closed(impl, reason))
++		return;
++	if (res < 0 && !impl->destroying)
++		pw_impl_module_schedule_destroy(impl->module);
+ }
+ 
+ static void volume_remote_failed(struct impl *impl,
+@@ -1704,7 +2658,7 @@ static int volume_start_before_record(struct impl *impl)
+ 	int res;
+ 
+ 	if (impl->volume_prepare_started || impl->record_request.pending ||
+-			impl->recording)
++			recording_load(impl))
+ 		return 0;
+ 	impl->volume_prepare_started = true;
+ 	impl->session_software = false;
+@@ -1839,6 +2793,14 @@ static int rtsp_record_reply(void *data, int status, const struct spa_dict *head
+ 			return res;
+ 		return 0;
+ 	}
++	if (impl->safety_gate_contract) {
++		res = source_marker_rotate(impl, true);
++		if (res < 0 && impl->want_stream)
++			source_marker_fail_closed(impl,
++					"invalid initial RAOP source marker state "
++					"after RECORD");
++		return res;
++	}
+ 	return rtsp_start_recording(impl);
+ }
+ 
+@@ -1846,11 +2808,11 @@ static int rtsp_start_recording(struct impl *impl)
+ {
+ 	char progress[128];
+ 
+-	if (impl->recording)
++	if (recording_load(impl))
+ 		return 0;
+ 	rtp_stream_set_first(impl->stream);
+ 	impl->sync = 0;
+-	impl->recording = true;
++	recording_store(impl, true);
+ 
+ 	snprintf(progress, sizeof(progress), "progress: %s/%s/%s\r\n", "0", "0", "0");
+ 	return rtsp_send(impl, "SET_PARAMETER", "text/parameters", progress, rtsp_log_reply_status);
+@@ -1865,7 +2827,7 @@ static int rtsp_do_record(struct impl *impl)
+ 	uint32_t rtptime;
+ 
+ 	if (!impl->want_stream || impl->tearing_down ||
+-			!impl->ready || impl->recording ||
++			!impl->ready || recording_load(impl) ||
+ 			impl->record_request.pending)
+ 		return 0;
+ 	if (!raop_volume_request_begin(&impl->record_request,
+@@ -2462,15 +3424,17 @@ static void rtsp_connected(void *data)
+ 	rtsp_begin_handshake(impl);
+ }
+ 
+-static void connection_cleanup(struct impl *impl)
++static bool connection_cleanup(struct impl *impl)
+ {
+ 	const char *authorization;
+ 
+ 	if (impl->want_stream)
+-		safety_gate_hold(impl, RAOP_SAFETY_GATE_ACTIVATION,
++		safety_gate_invalidate(impl, RAOP_SAFETY_GATE_ACTIVATION,
+ 				"RAOP session reset");
++	if (!safety_gate_stop_recording(impl, "RAOP connection cleanup"))
++		return false;
++	source_marker_cleanup(impl, "RAOP session reset");
+ 	impl->ready = false;
+-	impl->recording = false;
+ 	impl->handshaking = false;
+ 	impl->tearing_down = false;
+ 	impl->volume_prepare_started = false;
+@@ -2531,6 +3495,7 @@ static void connection_cleanup(struct impl *impl)
+ 		free(impl->nonce);
+ 		impl->nonce = NULL;
+ 	}
++	return true;
+ }
+ 
+ static void rtsp_disconnected(void *data)
+@@ -2539,8 +3504,8 @@ static void rtsp_disconnected(void *data)
+ 	pw_log_info("disconnected");
+ 	impl->connected = false;
+ 	impl->connecting = false;
+-	connection_cleanup(impl);
+-	schedule_rtsp_reconnect(impl);
++	if (connection_cleanup(impl))
++		schedule_rtsp_reconnect(impl);
+ }
+ 
+ static void rtsp_error(void *data, int res)
+@@ -2666,7 +3631,8 @@ static int rtsp_teardown_reply(void *data, int status, const struct spa_dict *he
+ 	if ((str = spa_dict_lookup(headers, "Connection")) != NULL)
+ 		close_connection = spa_streq(str, "close");
+ 
+-	connection_cleanup(impl);
++	if (!connection_cleanup(impl))
++		return -EIO;
+ 
+ 	if (close_connection)
+ 		pw_rtsp_client_disconnect(impl->rtsp);
+@@ -2679,7 +3645,10 @@ static int rtsp_do_teardown(struct impl *impl)
+ {
+ 	int res;
+ 
+-	impl->recording = false;
++	if (!safety_gate_stop_recording(impl, "RAOP teardown"))
++		return -EIO;
++	if (impl->source_marker.state != RAOP_SOURCE_MARKER_ERROR)
++		source_marker_cleanup(impl, "RAOP teardown");
+ 	impl->volume_prepare_started = false;
+ 	impl->volume_continuation = VOLUME_CONTINUE_NONE;
+ 	impl->volume_query_request.pending = false;
+@@ -2704,8 +3673,8 @@ static int rtsp_do_teardown(struct impl *impl)
+ 		pw_rtsp_client_disconnect(impl->rtsp);
+ 		impl->connected = false;
+ 		impl->connecting = false;
+-		connection_cleanup(impl);
+-		schedule_rtsp_reconnect(impl);
++		if (connection_cleanup(impl))
++			schedule_rtsp_reconnect(impl);
+ 	}
+ 	return res;
+ }
+@@ -2913,6 +3882,14 @@ static void impl_destroy(struct impl *impl)
+ {
+ 	impl->destroying = true;
+ 	impl->want_stream = false;
++	/*
++	 * Normal RTSP teardown and disconnect paths have already drained the
++	 * packet callback. A direct module destruction (for example after a core
++	 * error) can bypass them, so close the packet gate here as well before
++	 * pw_stream_destroy() removes the data-loop callbacks.
++	 */
++	if (impl->stream != NULL)
++		safety_gate_stop_recording(impl, "RAOP module destruction");
+ 	pw_timer_queue_cancel(&impl->session_timeout_timer);
+ 	pw_timer_queue_cancel(&impl->reconnect_timer);
+ 	dacp_session_stop(impl);
+@@ -3070,6 +4047,7 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 		if (safety_nonce == 0)
+ 			safety_nonce = 1;
+ 		raop_safety_gate_init(&impl->safety_gate, safety_nonce);
++		source_marker_init(&impl->source_marker);
+ 		SPA_ATOMIC_STORE(impl->safety_gate_closed, 1);
+ 		pw_properties_set(props, "raop.volume.contract",
+ 				RAOP_SAFETY_GATE_CONTRACT);
+@@ -3224,6 +4202,8 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 	/* Gate state is module-authored. Never accept a forged or stale copy
+ 	 * from nested stream.props, including when contract 2 is selected. */
+ 	safety_gate_clear_initial_properties(impl);
++	/* The source-marker state and challenge are also module-authored. */
++	source_marker_set_initial_properties(impl);
+ 
+ 	impl->mtu = pw_properties_get_uint32(impl->props, "net.mtu", 1448);
+ 	impl->sync_period = impl->rate / (impl->mtu / impl->stride);
+@@ -3357,3 +4337,5 @@ error:
+ 	impl_destroy(impl);
+ 	return res;
+ }
++
++#endif /* RAOP_SOURCE_MARKER_UNIT_TEST */
+diff --git a/src/modules/module-raop/safety-gate.c b/src/modules/module-raop/safety-gate.c
+index b2f23da7cdd66825e8c4f7cba856282d7fda982b..1cbf4a371941c30cc359f9afc5f1efc8e8a51801 100644
+--- a/src/modules/module-raop/safety-gate.c
++++ b/src/modules/module-raop/safety-gate.c
+@@ -115,14 +115,40 @@ static bool lowercase_hexadecimal_string(const char *value)
+ 	return true;
+ }
+ 
++static bool marker_value_valid(const char *value)
++{
++	const unsigned char *p;
++
++	if (value == NULL ||
++			strlen(value) !=
++				sizeof(RAOP_SAFETY_GATE_MARKER_PREFIX) - 1 +
++				RAOP_SAFETY_GATE_MARKER_HEX_LENGTH ||
++			strncmp(value, RAOP_SAFETY_GATE_MARKER_PREFIX,
++				sizeof(RAOP_SAFETY_GATE_MARKER_PREFIX) - 1) != 0)
++		return false;
++	p = (const unsigned char *)value +
++		sizeof(RAOP_SAFETY_GATE_MARKER_PREFIX) - 1;
++	for (; *p != '\0'; p++)
++		if (!((*p >= '0' && *p <= '9') ||
++		      (*p >= 'a' && *p <= 'f')))
++			return false;
++	return true;
++}
++
+ int raop_safety_gate_parse_command(const char *json,
+ 		struct raop_safety_gate_command *command)
+ {
+ 	struct spa_json top, iter;
+ 	const char *object, *value;
+-	char key[64], id[64], sequence[32], nonce[19];
+-	bool have_id = false, have_sequence = false, have_nonce = false;
+-	uint64_t parsed_sequence, parsed_nonce;
++	char key[64], id[64], sequence[32], nonce[19],
++		marker_sequence[32], proof_deadline_boottime_usec[32],
++		marker_value[RAOP_SAFETY_GATE_MARKER_VALUE_SIZE + 2];
++	bool have_id = false, have_sequence = false, have_nonce = false,
++		have_marker_sequence = false, have_marker_value = false,
++		have_proof_deadline_boottime_usec = false,
++		have_unknown = false;
++	uint64_t parsed_sequence, parsed_nonce, parsed_marker_sequence,
++		parsed_proof_deadline_boottime_usec;
+ 	int object_len, len;
+ 
+ 	if (json == NULL || command == NULL)
+@@ -153,9 +179,33 @@ int raop_safety_gate_parse_command(const char *json,
+ 					nonce, sizeof(nonce)))
+ 				return -EINVAL;
+ 			have_nonce = true;
++		} else if (spa_streq(key, "marker.sequence")) {
++			if (have_marker_sequence || !parse_string(value, len,
++					marker_sequence,
++					sizeof(marker_sequence)))
++				return -EINVAL;
++			have_marker_sequence = true;
++		} else if (spa_streq(key, "marker.value")) {
++			if (have_marker_value || !parse_string(value, len,
++					marker_value, sizeof(marker_value)))
++				return -EINVAL;
++			have_marker_value = true;
++		} else if (spa_streq(key,
++				"proof.deadline.boottime-usec")) {
++			if (have_proof_deadline_boottime_usec ||
++					!parse_string(value, len,
++						proof_deadline_boottime_usec,
++						sizeof(proof_deadline_boottime_usec)))
++				return -EINVAL;
++			have_proof_deadline_boottime_usec = true;
++		} else {
++			have_unknown = true;
+ 		}
+ 	}
+-	if (len < 0 || !have_id || !have_sequence || !have_nonce)
++	if (len < 0 || !have_id || !have_sequence || !have_nonce ||
++			!have_marker_sequence || !have_marker_value ||
++			!have_proof_deadline_boottime_usec ||
++			have_unknown)
+ 		return -EINVAL;
+ 	if (!spa_streq(id, RAOP_SAFETY_GATE_RELEASE_COMMAND))
+ 		return -ENOENT;
+@@ -167,12 +217,49 @@ int raop_safety_gate_parse_command(const char *json,
+ 			!spa_atou64(nonce, &parsed_nonce, 16) ||
+ 			parsed_nonce == 0)
+ 		return -EINVAL;
++	if (!decimal_string(marker_sequence) ||
++			!spa_atou64(marker_sequence,
++			&parsed_marker_sequence, 10) ||
++			parsed_marker_sequence == 0 ||
++			!marker_value_valid(marker_value))
++		return -EINVAL;
++	if (!decimal_string(proof_deadline_boottime_usec) ||
++			!spa_atou64(proof_deadline_boottime_usec,
++				&parsed_proof_deadline_boottime_usec, 10) ||
++			parsed_proof_deadline_boottime_usec == 0)
++		return -EINVAL;
+ 
+ 	command->sequence = parsed_sequence;
+ 	command->nonce = parsed_nonce;
++	command->marker_sequence = parsed_marker_sequence;
++	command->proof_deadline_boottime_usec =
++		parsed_proof_deadline_boottime_usec;
++	memcpy(command->marker_value, marker_value,
++			sizeof(command->marker_value));
+ 	return 0;
+ }
+ 
++bool raop_safety_gate_proof_deadline_is_current(
++		const struct raop_safety_gate_command *command,
++		uint64_t now_boottime_usec)
++{
++	return command != NULL &&
++		command->proof_deadline_boottime_usec != 0 &&
++		now_boottime_usec < command->proof_deadline_boottime_usec;
++}
++
++bool raop_safety_gate_proof_deadline_covers_transition(
++		const struct raop_safety_gate_command *command,
++		uint64_t before_boottime_usec,
++		uint64_t after_boottime_usec)
++{
++	return before_boottime_usec <= after_boottime_usec &&
++		raop_safety_gate_proof_deadline_is_current(command,
++				before_boottime_usec) &&
++		raop_safety_gate_proof_deadline_is_current(command,
++				after_boottime_usec);
++}
++
+ int raop_safety_gate_parse_hold_command(const char *json,
+ 		struct raop_safety_gate_hold_command *command)
+ {
+diff --git a/src/modules/module-raop/safety-gate.h b/src/modules/module-raop/safety-gate.h
+index 17a1ee2a94837d237b56e5c98355bb5faf3c064d..2366bf7c17dedb844379608e9beb6f05c0e25ce9 100644
+--- a/src/modules/module-raop/safety-gate.h
++++ b/src/modules/module-raop/safety-gate.h
+@@ -12,6 +12,11 @@
+ #define RAOP_SAFETY_GATE_CONTRACT	"3"
+ #define RAOP_SAFETY_GATE_HOLD_COMMAND	"raop-safety-gate-hold"
+ #define RAOP_SAFETY_GATE_RELEASE_COMMAND	"raop-safety-gate-release"
++#define RAOP_SAFETY_GATE_MARKER_PREFIX	"stpw1:"
++#define RAOP_SAFETY_GATE_MARKER_HEX_LENGTH	32
++#define RAOP_SAFETY_GATE_MARKER_VALUE_SIZE	\
++	(sizeof(RAOP_SAFETY_GATE_MARKER_PREFIX) + \
++	 RAOP_SAFETY_GATE_MARKER_HEX_LENGTH)
+ 
+ enum raop_safety_gate_reason {
+ 	RAOP_SAFETY_GATE_ACTIVATION = (1u << 0),
+@@ -34,6 +39,9 @@ struct raop_safety_gate {
+ struct raop_safety_gate_command {
+ 	uint64_t sequence;
+ 	uint64_t nonce;
++	uint64_t marker_sequence;
++	uint64_t proof_deadline_boottime_usec;
++	char marker_value[RAOP_SAFETY_GATE_MARKER_VALUE_SIZE];
+ };
+ 
+ struct raop_safety_gate_hold_command {
+@@ -58,6 +66,15 @@ enum raop_safety_gate_release_result raop_safety_gate_release(
+ int raop_safety_gate_parse_command(const char *json,
+ 		struct raop_safety_gate_command *command);
+ 
++bool raop_safety_gate_proof_deadline_is_current(
++		const struct raop_safety_gate_command *command,
++		uint64_t now_boottime_usec);
++
++bool raop_safety_gate_proof_deadline_covers_transition(
++		const struct raop_safety_gate_command *command,
++		uint64_t before_boottime_usec,
++		uint64_t after_boottime_usec);
++
+ int raop_safety_gate_parse_hold_command(const char *json,
+ 		struct raop_safety_gate_hold_command *command);
+ 
+diff --git a/src/modules/module-raop/test-safety-gate.c b/src/modules/module-raop/test-safety-gate.c
+index 9a3cb44b08c2a7f7286848a98661d6512514fffe..ed40e0a3b3e75198e046562e1cf76bdae2ad63c5 100644
+--- a/src/modules/module-raop/test-safety-gate.c
++++ b/src/modules/module-raop/test-safety-gate.c
+@@ -13,6 +13,11 @@
+ #include "safety-gate.h"
+ 
+ #define TEST_NONCE UINT64_C(0x0123456789abcdef)
++#define TEST_MARKER_SEQUENCE UINT64_C(42)
++#define TEST_MARKER_VALUE "stpw1:0123456789abcdef0123456789abcdef"
++#define TEST_PROOF_DEADLINE UINT64_C(1234567890123456)
++#define TEST_PROOF_DEADLINE_JSON \
++	"\"proof.deadline.boottime-usec\":\"1234567890123456\""
+ 
+ static struct raop_safety_gate_command command_for(
+ 		const struct raop_safety_gate *gate)
+@@ -20,6 +25,9 @@ static struct raop_safety_gate_command command_for(
+ 	return (struct raop_safety_gate_command) {
+ 		.sequence = gate->sequence,
+ 		.nonce = gate->nonce,
++		.marker_sequence = TEST_MARKER_SEQUENCE,
++		.proof_deadline_boottime_usec = TEST_PROOF_DEADLINE,
++		.marker_value = TEST_MARKER_VALUE,
+ 	};
+ }
+ 
+@@ -107,41 +115,212 @@ static void test_hold_is_idempotent(void)
+ 			RAOP_SAFETY_GATE_MUTE) != sequence);
+ }
+ 
++static void test_session_reset_invalidates_generation(void)
++{
++	struct raop_safety_gate gate;
++	struct raop_safety_gate_command old_release, new_release;
++	uint64_t sequence;
++
++	raop_safety_gate_init(&gate, TEST_NONCE);
++	sequence = raop_safety_gate_hold(&gate,
++			RAOP_SAFETY_GATE_ACTIVATION);
++	spa_assert_se(sequence == 1);
++	spa_assert_se(raop_safety_gate_hold(&gate,
++			RAOP_SAFETY_GATE_ACTIVATION) == sequence);
++	old_release = command_for(&gate);
++
++	/* Rebinding an active session must create a new generation even when
++	 * the activation reason is already held. */
++	spa_assert_se(raop_safety_gate_invalidate(&gate,
++			RAOP_SAFETY_GATE_ACTIVATION) != sequence);
++	new_release = command_for(&gate);
++	spa_assert_se(raop_safety_gate_release(&gate, &old_release,
++			false, true) == RAOP_SAFETY_GATE_RELEASE_STALE);
++	spa_assert_se(raop_safety_gate_is_closed(&gate));
++	spa_assert_se(raop_safety_gate_release(&gate, &new_release,
++			false, true) == RAOP_SAFETY_GATE_RELEASE_SUCCESS);
++	spa_assert_se(!raop_safety_gate_is_closed(&gate));
++}
++
+ static void test_command_parser(void)
+ {
+ 	struct raop_safety_gate_command command;
+ 	static const char valid[] =
+ 		"{\"command.id\":\"raop-safety-gate-release\","
+-		"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\"}";
++		"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++		"\"marker.sequence\":\"71\","
++		"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++		TEST_PROOF_DEADLINE_JSON "}";
+ 
+ 	spa_assert_se(raop_safety_gate_parse_command(valid, &command) == 0);
+ 	spa_assert_se(command.sequence == 42);
+ 	spa_assert_se(command.nonce == TEST_NONCE);
++	spa_assert_se(command.marker_sequence == 71);
++	spa_assert_se(command.proof_deadline_boottime_usec ==
++			TEST_PROOF_DEADLINE);
++	spa_assert_se(spa_streq(command.marker_value, TEST_MARKER_VALUE));
+ 	spa_assert_se(raop_safety_gate_parse_command(
+ 			"{\"command.id\":\"other\",\"sequence\":\"42\","
+-			"\"nonce\":\"0123456789abcdef\"}", &command) == -ENOENT);
++			"\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			TEST_PROOF_DEADLINE_JSON "}",
++			&command) == -ENOENT);
+ 	spa_assert_se(raop_safety_gate_parse_command(
+ 			"{\"command.id\":\"raop-safety-gate-release\","
+-			"\"sequence\":42,\"nonce\":\"0123456789abcdef\"}",
++			"\"sequence\":42,\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			TEST_PROOF_DEADLINE_JSON "}",
+ 			&command) == -EINVAL);
+ 	spa_assert_se(raop_safety_gate_parse_command(
+ 			"{\"command.id\":\"raop-safety-gate-release\","
+-			"\"sequence\":\"0\",\"nonce\":\"0123456789abcdef\"}",
++			"\"sequence\":\"0\",\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			TEST_PROOF_DEADLINE_JSON "}",
+ 			&command) == -EINVAL);
+ 	spa_assert_se(raop_safety_gate_parse_command(
+ 			"{\"command.id\":\"raop-safety-gate-release\","
+-			"\"sequence\":\"42\",\"nonce\":\"1123456789abcdef\"}",
++			"\"sequence\":\"42\",\"nonce\":\"1123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			TEST_PROOF_DEADLINE_JSON "}",
+ 			&command) == 0);
+ 	spa_assert_se(command.nonce != TEST_NONCE);
+ 	spa_assert_se(raop_safety_gate_parse_command(
+ 			"{\"command.id\":\"raop-safety-gate-release\","
+-			"\"sequence\":\"42\",\"nonce\":\"0\"}",
++			"\"sequence\":\"42\",\"nonce\":\"0\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			TEST_PROOF_DEADLINE_JSON "}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"0\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			TEST_PROOF_DEADLINE_JSON "}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":71,"
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			TEST_PROOF_DEADLINE_JSON "}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			TEST_PROOF_DEADLINE_JSON "}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			TEST_PROOF_DEADLINE_JSON "}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":"
++			"\"stpw1:0123456789abcdef0123456789abcdeF\","
++			TEST_PROOF_DEADLINE_JSON "}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			TEST_PROOF_DEADLINE_JSON ","
++			"\"extra\":\"forbidden\"}",
+ 			&command) == -EINVAL);
+ 	spa_assert_se(raop_safety_gate_parse_command(
+ 			"{\"command.id\":\"raop-safety-gate-release\","
+ 			"\"sequence\":\"42\","
+-			"\"nonce\":\"0123456789abcdef\"} trailing",
++			"\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			TEST_PROOF_DEADLINE_JSON "} trailing",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\"}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			"\"proof.deadline.boottime-usec\":\"0\"}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			"\"proof.deadline.boottime-usec\":123456}",
+ 			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			"\"proof.deadline.boottime-usec\":"
++			"\"18446744073709551616\"}",
++			&command) == -EINVAL);
++	spa_assert_se(raop_safety_gate_parse_command(
++			"{\"command.id\":\"raop-safety-gate-release\","
++			"\"sequence\":\"42\",\"nonce\":\"0123456789abcdef\","
++			"\"marker.sequence\":\"71\","
++			"\"marker.value\":\"" TEST_MARKER_VALUE "\","
++			TEST_PROOF_DEADLINE_JSON ","
++			TEST_PROOF_DEADLINE_JSON "}",
++			&command) == -EINVAL);
++}
++
++static void test_proof_deadline_boundary(void)
++{
++	struct raop_safety_gate_command command = {
++		.proof_deadline_boottime_usec = TEST_PROOF_DEADLINE,
++	};
++
++	spa_assert_se(raop_safety_gate_proof_deadline_is_current(&command,
++			TEST_PROOF_DEADLINE - 1));
++	spa_assert_se(!raop_safety_gate_proof_deadline_is_current(&command,
++			TEST_PROOF_DEADLINE));
++	spa_assert_se(!raop_safety_gate_proof_deadline_is_current(&command,
++			TEST_PROOF_DEADLINE + 1));
++	command.proof_deadline_boottime_usec = 0;
++	spa_assert_se(!raop_safety_gate_proof_deadline_is_current(&command, 0));
++	spa_assert_se(!raop_safety_gate_proof_deadline_is_current(NULL, 0));
++}
++
++static void test_proof_deadline_transition(void)
++{
++	struct raop_safety_gate_command command = {
++		.proof_deadline_boottime_usec = TEST_PROOF_DEADLINE,
++	};
++
++	spa_assert_se(raop_safety_gate_proof_deadline_covers_transition(
++			&command, TEST_PROOF_DEADLINE - 2,
++			TEST_PROOF_DEADLINE - 1));
++	spa_assert_se(!raop_safety_gate_proof_deadline_covers_transition(
++			&command, TEST_PROOF_DEADLINE - 1,
++			TEST_PROOF_DEADLINE));
++	spa_assert_se(!raop_safety_gate_proof_deadline_covers_transition(
++			&command, TEST_PROOF_DEADLINE,
++			TEST_PROOF_DEADLINE));
++	spa_assert_se(!raop_safety_gate_proof_deadline_covers_transition(
++			&command, TEST_PROOF_DEADLINE - 1,
++			TEST_PROOF_DEADLINE - 2));
++	spa_assert_se(!raop_safety_gate_proof_deadline_covers_transition(
++			NULL, TEST_PROOF_DEADLINE - 2,
++			TEST_PROOF_DEADLINE - 1));
+ }
+ 
+ static void test_hold_command_parser(void)
+@@ -261,7 +440,10 @@ int main(void)
+ 	test_fast_mute_unmute();
+ 	test_nonce_and_fail_closed();
+ 	test_hold_is_idempotent();
++	test_session_reset_invalidates_generation();
+ 	test_command_parser();
++	test_proof_deadline_boundary();
++	test_proof_deadline_transition();
+ 	test_hold_command_parser();
+ 	test_hold_nonce_does_not_mutate();
+ 	test_reason_strings();
+diff --git a/src/modules/module-raop/test-source-marker.c b/src/modules/module-raop/test-source-marker.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..b0723a85e2498b22921013cebaa2942b142a6a05
+--- /dev/null
++++ b/src/modules/module-raop/test-source-marker.c
+@@ -0,0 +1,444 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#define RAOP_SOURCE_MARKER_UNIT_TEST
++#include "../module-raop-sink.c"
++
++#include <spa/utils/defs.h>
++
++#define TEST_GATE_NONCE UINT64_C(0x0123456789abcdef)
++
++static uint32_t get_be32(const uint8_t *p)
++{
++	return ((uint32_t)p[0] << 24) |
++		((uint32_t)p[1] << 16) |
++		((uint32_t)p[2] << 8) |
++		(uint32_t)p[3];
++}
++
++static void test_state_machine(void)
++{
++	static const uint8_t first[16] = {
++		0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
++		0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
++	};
++	static const uint8_t second[16] = {
++		0xf0, 0xe1, 0xd2, 0xc3, 0xb4, 0xa5, 0x96, 0x87,
++		0x78, 0x69, 0x5a, 0x4b, 0x3c, 0x2d, 0x1e, 0x0f,
++	};
++	struct raop_source_marker marker;
++	uint64_t sequence;
++
++	source_marker_init(&marker);
++	spa_assert_se(marker.state == RAOP_SOURCE_MARKER_NONE);
++	spa_assert_se(spa_streq(source_marker_state_name(marker.state), "none"));
++	spa_assert_se(marker.sequence == 1);
++	spa_assert_se(marker.value[0] == '\0');
++	spa_assert_se(marker.error[0] == '\0');
++
++	spa_assert_se(source_marker_begin(&marker, first) == 0);
++	spa_assert_se(marker.state == RAOP_SOURCE_MARKER_PENDING);
++	spa_assert_se(marker.sequence == 2);
++	spa_assert_se(spa_streq(marker.value,
++			"stpw1:000102030405060708090a0b0c0d0e0f"));
++	spa_assert_se(marker.error[0] == '\0');
++	sequence = marker.sequence;
++	spa_assert_se(source_marker_begin(&marker, second) == -EBUSY);
++	spa_assert_se(!source_marker_confirm(&marker, sequence + 1));
++	spa_assert_se(marker.state == RAOP_SOURCE_MARKER_PENDING);
++	spa_assert_se(source_marker_confirm(&marker, sequence));
++	spa_assert_se(marker.state == RAOP_SOURCE_MARKER_CONFIRMED);
++
++	spa_assert_se(source_marker_begin(&marker, first) == -EALREADY);
++	spa_assert_se(marker.sequence == sequence);
++	spa_assert_se(source_marker_begin(&marker, second) == 0);
++	spa_assert_se(marker.state == RAOP_SOURCE_MARKER_PENDING);
++	spa_assert_se(marker.sequence == sequence + 1);
++	spa_assert_se(source_marker_invalidate(&marker,
++			RAOP_SOURCE_MARKER_ERROR,
++			"RAOP source marker RTSP status 400"));
++	spa_assert_se(marker.state == RAOP_SOURCE_MARKER_ERROR);
++	spa_assert_se(marker.sequence == sequence + 2);
++	spa_assert_se(marker.value[0] == '\0');
++	spa_assert_se(spa_streq(marker.error,
++			"RAOP source marker RTSP status 400"));
++	spa_assert_se(source_marker_begin(&marker, first) == -EPERM);
++	spa_assert_se(source_marker_invalidate(&marker,
++			RAOP_SOURCE_MARKER_NONE, NULL));
++	spa_assert_se(marker.state == RAOP_SOURCE_MARKER_NONE);
++	spa_assert_se(marker.sequence == sequence + 3);
++	spa_assert_se(marker.error[0] == '\0');
++	spa_assert_se(!source_marker_invalidate(&marker,
++			RAOP_SOURCE_MARKER_NONE, NULL));
++
++	marker.sequence = UINT64_MAX;
++	spa_assert_se(source_marker_begin(&marker, first) == 0);
++	spa_assert_se(marker.sequence == 1);
++}
++
++static void test_value_validation(void)
++{
++	spa_assert_se(source_marker_value_valid(
++			"stpw1:0123456789abcdef0123456789abcdef"));
++	spa_assert_se(!source_marker_value_valid(NULL));
++	spa_assert_se(!source_marker_value_valid(""));
++	spa_assert_se(!source_marker_value_valid(
++			"stpw:0123456789abcdef0123456789abcdef"));
++	spa_assert_se(!source_marker_value_valid(
++			"stpw1:0123456789abcdef0123456789abcde"));
++	spa_assert_se(!source_marker_value_valid(
++			"stpw1:0123456789abcdef0123456789abcdeF"));
++	spa_assert_se(!source_marker_value_valid(
++			"stpw1:0123456789abcdef0123456789abcdeg"));
++}
++
++static void test_error_validation_and_properties(void)
++{
++	static const char exact[] = "RAOP source marker RTSP status 400";
++	char max_error[RAOP_SOURCE_MARKER_ERROR_SIZE];
++	char long_error[RAOP_SOURCE_MARKER_ERROR_SIZE + 1];
++	char sequence[32];
++	struct spa_dict_item items[5];
++	struct raop_source_marker marker;
++	struct spa_dict dict;
++
++	spa_assert_se(source_marker_error_valid(exact));
++	spa_assert_se(!source_marker_error_valid(NULL));
++	spa_assert_se(!source_marker_error_valid(""));
++	spa_assert_se(!source_marker_error_valid("line one\nline two"));
++	memset(max_error, 'x', sizeof(max_error) - 1);
++	max_error[sizeof(max_error) - 1] = '\0';
++	spa_assert_se(source_marker_error_valid(max_error));
++	memset(long_error, 'x', sizeof(long_error) - 1);
++	long_error[sizeof(long_error) - 1] = '\0';
++	spa_assert_se(!source_marker_error_valid(long_error));
++
++	source_marker_init(&marker);
++	source_marker_format_properties(&marker, sequence, items);
++	dict = SPA_DICT_INIT(items, SPA_N_ELEMENTS(items));
++	spa_assert_se(spa_streq(spa_dict_lookup(&dict,
++			"raop.source.marker.state"), "none"));
++	spa_assert_se(spa_streq(spa_dict_lookup(&dict,
++			"raop.source.marker.value"), ""));
++	spa_assert_se(spa_dict_lookup(&dict,
++			"raop.source.marker.error") == NULL);
++
++	spa_assert_se(source_marker_invalidate(&marker,
++			RAOP_SOURCE_MARKER_ERROR, exact));
++	source_marker_format_properties(&marker, sequence, items);
++	dict = SPA_DICT_INIT(items, SPA_N_ELEMENTS(items));
++	spa_assert_se(spa_streq(spa_dict_lookup(&dict,
++			"raop.source.marker.state"), "error"));
++	spa_assert_se(spa_streq(spa_dict_lookup(&dict,
++			"raop.source.marker.error"), exact));
++	spa_assert_se(spa_streq(spa_dict_lookup(&dict,
++			"raop.source.marker.value"), ""));
++	spa_assert_se(!source_marker_can_cleanup(&marker));
++
++	spa_assert_se(source_marker_invalidate(&marker,
++			RAOP_SOURCE_MARKER_ERROR, long_error));
++	spa_assert_se(spa_streq(marker.error,
++			RAOP_SOURCE_MARKER_ERROR_FALLBACK));
++	spa_assert_se(source_marker_invalidate(&marker,
++			RAOP_SOURCE_MARKER_NONE, NULL));
++	spa_assert_se(source_marker_can_cleanup(&marker));
++	source_marker_format_properties(&marker, sequence, items);
++	dict = SPA_DICT_INIT(items, SPA_N_ELEMENTS(items));
++	spa_assert_se(spa_streq(spa_dict_lookup(&dict,
++			"raop.source.marker.value"), ""));
++	spa_assert_se(spa_dict_lookup(&dict,
++			"raop.source.marker.error") == NULL);
++}
++
++static void test_client_node_full_dict_tombstones(void)
++{
++	static const uint8_t random[16] = {
++		0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
++		0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
++	};
++	static const char exact[] = "RAOP source marker RTSP status 400";
++	struct pw_properties *local, *remote;
++	struct spa_dict_item items[5];
++	struct raop_source_marker marker;
++	char sequence[32];
++
++	local = pw_properties_new(NULL, NULL);
++	remote = pw_properties_new(NULL, NULL);
++	spa_assert_se(local != NULL);
++	spa_assert_se(remote != NULL);
++
++	source_marker_init(&marker);
++	spa_assert_se(source_marker_begin(&marker, random) == 0);
++	spa_assert_se(source_marker_confirm(&marker, marker.sequence));
++	source_marker_format_properties(&marker, sequence, items);
++	spa_assert_se(pw_properties_update(local,
++			&SPA_DICT_INIT(items, SPA_N_ELEMENTS(items))) > 0);
++	spa_assert_se(pw_properties_update(remote, &local->dict) > 0);
++	spa_assert_se(spa_streq(pw_properties_get(remote,
++			"raop.source.marker.state"), "confirmed"));
++	spa_assert_se(spa_streq(pw_properties_get(remote,
++			"raop.source.marker.value"), marker.value));
++	spa_assert_se(source_marker_invalidate(&marker,
++			RAOP_SOURCE_MARKER_NONE, NULL));
++	source_marker_format_properties(&marker, sequence, items);
++	spa_assert_se(pw_properties_update(local,
++			&SPA_DICT_INIT(items, SPA_N_ELEMENTS(items))) > 0);
++	spa_assert_se(pw_properties_update(remote, &local->dict) > 0);
++	spa_assert_se(spa_streq(pw_properties_get(remote,
++			"raop.source.marker.state"), "none"));
++	spa_assert_se(spa_streq(pw_properties_get(remote,
++			"raop.source.marker.value"), ""));
++
++	source_marker_init(&marker);
++	spa_assert_se(source_marker_begin(&marker, random) == 0);
++	source_marker_format_properties(&marker, sequence, items);
++	spa_assert_se(pw_properties_update(local,
++			&SPA_DICT_INIT(items, SPA_N_ELEMENTS(items))) > 0);
++	spa_assert_se(pw_properties_update(remote, &local->dict) > 0);
++	spa_assert_se(spa_streq(pw_properties_get(remote,
++			"raop.source.marker.state"), "pending"));
++	spa_assert_se(spa_streq(pw_properties_get(remote,
++			"raop.source.marker.value"), marker.value));
++	spa_assert_se(source_marker_invalidate(&marker,
++			RAOP_SOURCE_MARKER_ERROR, exact));
++	source_marker_format_properties(&marker, sequence, items);
++	spa_assert_se(pw_properties_update(local,
++			&SPA_DICT_INIT(items, SPA_N_ELEMENTS(items))) > 0);
++	spa_assert_se(pw_properties_update(remote, &local->dict) > 0);
++	spa_assert_se(spa_streq(pw_properties_get(remote,
++			"raop.source.marker.state"), "error"));
++	spa_assert_se(spa_streq(pw_properties_get(remote,
++			"raop.source.marker.value"), ""));
++	spa_assert_se(spa_streq(pw_properties_get(remote,
++			"raop.source.marker.error"), exact));
++
++	pw_properties_free(remote);
++	pw_properties_free(local);
++}
++
++static void test_rtp_info_request_headers(void)
++{
++	struct pw_properties *base, *initial, *runtime;
++
++	base = pw_properties_new("Session", "test-session", NULL);
++	spa_assert_se(base != NULL);
++	spa_assert_se(pw_properties_get(base, "RTP-Info") == NULL);
++
++	initial = source_marker_request_headers(&base->dict, 0);
++	spa_assert_se(initial != NULL);
++	spa_assert_se(spa_streq(pw_properties_get(initial, "Session"),
++			"test-session"));
++	spa_assert_se(spa_streq(pw_properties_get(initial, "RTP-Info"),
++			"rtptime=0"));
++	spa_assert_se(pw_properties_get(base, "RTP-Info") == NULL);
++
++	spa_assert_se(pw_properties_set(base, "RTP-Info",
++			"seq=7;rtptime=11") >= 0);
++	runtime = source_marker_request_headers(&base->dict, UINT32_MAX);
++	spa_assert_se(runtime != NULL);
++	spa_assert_se(spa_streq(pw_properties_get(runtime, "RTP-Info"),
++			"rtptime=4294967295"));
++	spa_assert_se(spa_streq(pw_properties_get(initial, "RTP-Info"),
++			"rtptime=0"));
++	spa_assert_se(spa_streq(pw_properties_get(base, "RTP-Info"),
++			"seq=7;rtptime=11"));
++
++	pw_properties_free(runtime);
++	pw_properties_free(initial);
++	pw_properties_free(base);
++}
++
++static void test_dmap_encoding(void)
++{
++	static const char marker[] =
++		"stpw1:0123456789abcdef0123456789abcdef";
++	uint8_t dmap[RAOP_SOURCE_MARKER_DMAP_SIZE];
++	size_t size = 0, offset;
++
++	memset(dmap, 0xcc, sizeof(dmap));
++	spa_assert_se(source_marker_encode_dmap(marker, dmap,
++			sizeof(dmap), &size) == 0);
++	spa_assert_se(size == RAOP_SOURCE_MARKER_DMAP_SIZE);
++	spa_assert_se(memcmp(dmap, "mlit", 4) == 0);
++	spa_assert_se(get_be32(dmap + 4) == size - 8);
++
++	offset = 8;
++	spa_assert_se(memcmp(dmap + offset, "minm", 4) == 0);
++	spa_assert_se(get_be32(dmap + offset + 4) == strlen(marker));
++	spa_assert_se(memcmp(dmap + offset + 8, marker,
++			strlen(marker)) == 0);
++	offset += 8 + strlen(marker);
++
++	spa_assert_se(memcmp(dmap + offset, "asar", 4) == 0);
++	spa_assert_se(get_be32(dmap + offset + 4) ==
++			strlen(RAOP_SOURCE_MARKER_ARTIST));
++	spa_assert_se(memcmp(dmap + offset + 8,
++			RAOP_SOURCE_MARKER_ARTIST,
++			strlen(RAOP_SOURCE_MARKER_ARTIST)) == 0);
++	offset += 8 + strlen(RAOP_SOURCE_MARKER_ARTIST);
++
++	spa_assert_se(memcmp(dmap + offset, "asal", 4) == 0);
++	spa_assert_se(get_be32(dmap + offset + 4) == strlen(marker));
++	spa_assert_se(memcmp(dmap + offset + 8, marker,
++			strlen(marker)) == 0);
++	offset += 8 + strlen(marker);
++	spa_assert_se(offset == size);
++
++	spa_assert_se(source_marker_encode_dmap(marker, dmap,
++			sizeof(dmap) - 1, &size) == -ENOSPC);
++	spa_assert_se(source_marker_encode_dmap("invalid", dmap,
++			sizeof(dmap), &size) == -EINVAL);
++}
++
++static void test_command_parser_and_admission(void)
++{
++	static const char valid[] =
++		"{\"command.id\":\"raop-source-marker-rotate\","
++		"\"marker.sequence\":\"42\","
++		"\"gate.sequence\":\"7\","
++		"\"gate.nonce\":\"0123456789abcdef\"}";
++	struct raop_source_marker_rotate_command command;
++	struct raop_source_marker marker = {
++		.state = RAOP_SOURCE_MARKER_CONFIRMED,
++		.sequence = 42,
++		.value = "stpw1:0123456789abcdef0123456789abcdef",
++	};
++	struct raop_safety_gate gate;
++
++	spa_assert_se(source_marker_parse_rotate_command(valid, &command) == 0);
++	spa_assert_se(command.marker_sequence == 42);
++	spa_assert_se(command.gate_sequence == 7);
++	spa_assert_se(command.gate_nonce == TEST_GATE_NONCE);
++
++	raop_safety_gate_init(&gate, TEST_GATE_NONCE);
++	gate.sequence = 7;
++	gate.reasons = RAOP_SAFETY_GATE_ACTIVATION;
++	spa_assert_se(source_marker_rotate_command_matches(
++			&marker, &command, &gate));
++	gate.reasons = RAOP_SAFETY_GATE_MUTE;
++	spa_assert_se(!source_marker_rotate_command_matches(
++			&marker, &command, &gate));
++	gate.reasons = RAOP_SAFETY_GATE_ACTIVATION;
++	command.marker_sequence++;
++	spa_assert_se(!source_marker_rotate_command_matches(
++			&marker, &command, &gate));
++	command.marker_sequence--;
++	command.gate_sequence++;
++	spa_assert_se(!source_marker_rotate_command_matches(
++			&marker, &command, &gate));
++	command.gate_sequence--;
++	gate.reasons |= RAOP_SAFETY_GATE_ERROR;
++	spa_assert_se(!source_marker_rotate_command_matches(
++			&marker, &command, &gate));
++	gate.reasons = 0;
++	spa_assert_se(!source_marker_rotate_command_matches(
++			&marker, &command, &gate));
++
++	spa_assert_se(source_marker_parse_rotate_command(
++			"{\"command.id\":\"other\"}", &command) == -ENOENT);
++	spa_assert_se(source_marker_parse_rotate_command(
++			"{\"command.id\":\"raop-source-marker-rotate\","
++			"\"marker.sequence\":\"18446744073709551615\","
++			"\"gate.sequence\":\"18446744073709551615\","
++			"\"gate.nonce\":\"ffffffffffffffff\"}",
++			&command) == 0);
++	spa_assert_se(command.marker_sequence == UINT64_MAX);
++	spa_assert_se(command.gate_sequence == UINT64_MAX);
++	spa_assert_se(command.gate_nonce == UINT64_MAX);
++	spa_assert_se(source_marker_parse_rotate_command(
++			"{\"command.id\":\"raop-source-marker-rotate\","
++			"\"marker.sequence\":42,"
++			"\"gate.sequence\":\"7\","
++			"\"gate.nonce\":\"0123456789abcdef\"}",
++			&command) == -EINVAL);
++	spa_assert_se(source_marker_parse_rotate_command(
++			"{\"command.id\":\"raop-source-marker-rotate\","
++			"\"marker.sequence\":\"0\","
++			"\"gate.sequence\":\"7\","
++			"\"gate.nonce\":\"0123456789abcdef\"}",
++			&command) == -EINVAL);
++	spa_assert_se(source_marker_parse_rotate_command(
++			"{\"command.id\":\"raop-source-marker-rotate\","
++			"\"marker.sequence\":\"42\","
++			"\"gate.sequence\":\"7\","
++			"\"gate.nonce\":\"0123456789abcdeF\"}",
++			&command) == -EINVAL);
++	spa_assert_se(source_marker_parse_rotate_command(
++			"{\"command.id\":\"raop-source-marker-rotate\","
++			"\"marker.sequence\":\"42\","
++			"\"gate.sequence\":\"7\","
++			"\"gate.nonce\":\"0123456789abcdef\","
++			"\"extra\":\"forbidden\"}",
++			&command) == -EINVAL);
++}
++
++static void test_release_marker_binding(void)
++{
++	static const uint8_t first[16] = {
++		0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
++		0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
++	};
++	static const uint8_t second[16] = {
++		0xf0, 0xe1, 0xd2, 0xc3, 0xb4, 0xa5, 0x96, 0x87,
++		0x78, 0x69, 0x5a, 0x4b, 0x3c, 0x2d, 0x1e, 0x0f,
++	};
++	struct raop_safety_gate_command proof_a = { 0 }, proof_b = { 0 };
++	struct raop_safety_gate gate;
++	struct raop_source_marker marker;
++
++	raop_safety_gate_init(&gate, TEST_GATE_NONCE);
++	raop_safety_gate_hold(&gate, RAOP_SAFETY_GATE_ACTIVATION);
++	source_marker_init(&marker);
++	spa_assert_se(source_marker_begin(&marker, first) == 0);
++	spa_assert_se(source_marker_confirm(&marker, marker.sequence));
++	proof_a.sequence = gate.sequence;
++	proof_a.nonce = gate.nonce;
++	proof_a.marker_sequence = marker.sequence;
++	memcpy(proof_a.marker_value, marker.value,
++			sizeof(proof_a.marker_value));
++	spa_assert_se(source_marker_release_command_matches(
++			&marker, &proof_a));
++
++	/* Rotating A to B does not alter the safety-gate generation. A release
++	 * authorized by proof A must nevertheless stop matching immediately. */
++	spa_assert_se(source_marker_begin(&marker, second) == 0);
++	spa_assert_se(source_marker_confirm(&marker, marker.sequence));
++	spa_assert_se(gate.sequence == proof_a.sequence);
++	spa_assert_se(gate.nonce == proof_a.nonce);
++	spa_assert_se(!source_marker_release_command_matches(
++			&marker, &proof_a));
++
++	proof_b = proof_a;
++	proof_b.marker_sequence = marker.sequence;
++	memcpy(proof_b.marker_value, marker.value,
++			sizeof(proof_b.marker_value));
++	spa_assert_se(source_marker_release_command_matches(
++			&marker, &proof_b));
++
++	proof_b.marker_sequence++;
++	spa_assert_se(!source_marker_release_command_matches(
++			&marker, &proof_b));
++	proof_b.marker_sequence--;
++	proof_b.marker_value[sizeof(RAOP_SOURCE_MARKER_PREFIX) - 1] =
++		proof_b.marker_value[sizeof(RAOP_SOURCE_MARKER_PREFIX) - 1] == '0'
++			? '1' : '0';
++	spa_assert_se(!source_marker_release_command_matches(
++			&marker, &proof_b));
++	marker.state = RAOP_SOURCE_MARKER_PENDING;
++	spa_assert_se(!source_marker_release_command_matches(
++			&marker, &proof_a));
++}
++
++int main(void)
++{
++	test_state_machine();
++	test_value_validation();
++	test_error_validation_and_properties();
++	test_client_node_full_dict_tombstones();
++	test_rtp_info_request_headers();
++	test_dmap_encoding();
++	test_command_parser_and_admission();
++	test_release_marker_binding();
++	return 0;
++}
+diff --git a/src/modules/module-raop/test-volume.c b/src/modules/module-raop/test-volume.c
+index efbb9647fb133869dc3e47f8d3ff816a4d34451d..3e96dddc2aabfdda6c60e538c734e2585f2916b6 100644
+--- a/src/modules/module-raop/test-volume.c
++++ b/src/modules/module-raop/test-volume.c
+@@ -208,6 +208,7 @@ static void test_stream_contract(void)
+ 			"raop.ip", "203.0.113.1",
+ 			"raop.port", "1",
+ 			"raop.name", "nested name remains",
++			"aes67.driver-group", "unrelated-driver",
+ 			NULL);
+ 	spa_assert_se(module_props != NULL);
+ 	spa_assert_se(stream_props != NULL);
+@@ -225,10 +226,17 @@ static void test_stream_contract(void)
+ 			"raop.port"), "7000"));
+ 	spa_assert_se(spa_streq(pw_properties_get(stream_props,
+ 			"raop.name"), "nested name remains"));
++	spa_assert_se(spa_streq(pw_properties_get(stream_props,
++			"aes67.driver-group"), "unrelated-driver"));
+ 
+ 	/* Contract 3 is explicitly selected by the module and must survive the
+-	 * same trusted override that prevents nested stream.props forgery. */
++	 * same trusted override that prevents nested stream.props forgery. It
++	 * rejects the separate AES67 PTP sender loop because that loop would
++	 * bypass the contract-3 packet-gate serialization boundary. */
+ 	pw_properties_set(module_props, "raop.volume.contract", "3");
++	spa_assert_se(raop_volume_override_stream_props(stream_props,
++			module_props) == -EINVAL);
++	pw_properties_set(stream_props, "aes67.driver-group", NULL);
+ 	spa_assert_se(raop_volume_override_stream_props(stream_props,
+ 			module_props) == 0);
+ 	spa_assert_se(spa_streq(pw_properties_get(stream_props,
+diff --git a/src/modules/module-raop/volume.c b/src/modules/module-raop/volume.c
+index fd52c75b3e41085f128cd980cd3a14cbe8924fb7..7f458bc345a9cd40171b5a468113777a24fcc126 100644
+--- a/src/modules/module-raop/volume.c
++++ b/src/modules/module-raop/volume.c
+@@ -196,6 +196,16 @@ int raop_volume_override_stream_props(struct pw_properties *stream_props,
+ 
+ 	if (stream_props == NULL || module_props == NULL)
+ 		return -EINVAL;
++	/*
++	 * Contract 3 serializes its packet gate on the pw_stream data loop.
++	 * An AES67 driver group creates a separate PTP sender filter loop that
++	 * would bypass that single-loop safety boundary.
++	 */
++	if (spa_streq(pw_properties_get(module_props,
++				"raop.volume.contract"), "3") &&
++			pw_properties_get(stream_props,
++				"aes67.driver-group") != NULL)
++		return -EINVAL;
+ 
+ 	for (i = 0; i < SPA_N_ELEMENTS(keys); i++) {
+ 		int res = pw_properties_set(stream_props, keys[i],
+diff --git a/src/modules/module-rtp/stream.c b/src/modules/module-rtp/stream.c
+index 2bd4feac803cf841fd272da8caa1416fa7290c3c..56d63b2535f7c662baf591ce7af983620058a7fd 100644
+--- a/src/modules/module-rtp/stream.c
++++ b/src/modules/module-rtp/stream.c
+@@ -4,6 +4,7 @@
+ 
+ #include "config.h"
+ 
++#include <errno.h>
+ #include <sys/socket.h>
+ #include <arpa/inet.h>
+ 
+@@ -654,6 +655,19 @@ struct rtp_stream *rtp_stream_new_params(struct pw_core *core,
+ 	impl->context = pw_core_get_context(core);
+ 	impl->main_loop = pw_context_get_main_loop(impl->context);
+ 	impl->data_loop = pw_context_acquire_loop(impl->context, &props->dict);
++	if (impl->data_loop == NULL || impl->data_loop->name == NULL) {
++		res = -ENODEV;
++		pw_log_error("can't acquire a named RTP data loop");
++		goto out;
++	}
++	/*
++	 * The RTP timer and callers of rtp_stream_invoke_data_loop() use this
++	 * already acquired loop. Pin the pw_stream node to the exact same loop
++	 * instead of allowing a second wildcard selection when it connects.
++	 */
++	if ((res = pw_properties_set(props, PW_KEY_NODE_LOOP_NAME,
++			impl->data_loop->name)) < 0)
++		goto out;
+ 	impl->timer = pw_loop_add_timer(impl->data_loop, on_flush_timeout, impl);
+ 	if (impl->timer == NULL) {
+ 		res = -errno;
+@@ -1018,6 +1032,11 @@ struct rtp_stream *rtp_stream_new_params(struct pw_core *core,
+ 		pw_log_error("can't connect stream: %s", spa_strerror(res));
+ 		goto out;
+ 	}
++	if (pw_stream_get_data_loop(impl->stream) != impl->data_loop) {
++		res = -EXDEV;
++		pw_log_error("RTP stream node did not use its pinned data loop");
++		goto out;
++	}
+ 
+ 	if (impl->always_process &&
+ 		(res = stream_start(impl)) < 0)
+@@ -1032,6 +1051,8 @@ out:
+ 	if (impl) {
+ 		if (impl->stream)
+ 			pw_stream_destroy(impl->stream);
++		if (impl->timer)
++			pw_loop_destroy_source(impl->data_loop, impl->timer);
+ 		if (impl->data_loop)
+ 			pw_context_release_loop(impl->context, impl->data_loop);
+ 		free(impl);
+@@ -1078,6 +1099,51 @@ int rtp_stream_update_properties(struct rtp_stream *s, const struct spa_dict *di
+ 	return pw_stream_update_properties(impl->stream, dict);
+ }
+ 
++struct data_loop_invoke {
++	rtp_stream_data_loop_func_t func;
++	void *data;
++};
++
++static int do_invoke_data_loop(struct spa_loop *loop, bool async,
++		uint32_t seq, const void *data, size_t size, void *user_data)
++{
++	const struct data_loop_invoke *invoke = data;
++
++	(void)loop;
++	(void)async;
++	(void)seq;
++	(void)user_data;
++
++	if (invoke == NULL || size != sizeof(*invoke) || invoke->func == NULL)
++		return -EINVAL;
++	return invoke->func(invoke->data);
++}
++
++int rtp_stream_invoke_data_loop(struct rtp_stream *s,
++		rtp_stream_data_loop_func_t func, void *data)
++{
++	struct impl *impl = (struct impl*)s;
++	const struct data_loop_invoke invoke = {
++		.func = func,
++		.data = data,
++	};
++
++	if (impl == NULL || func == NULL || impl->data_loop == NULL)
++		return -EINVAL;
++	if (impl->stream == NULL ||
++			pw_stream_get_data_loop(impl->stream) != impl->data_loop)
++		return -EXDEV;
++	/*
++	 * With no separate data loop, the control callback already serializes
++	 * against packet callbacks. Otherwise take the target loop's recursive
++	 * dispatch lock; this cannot leave a queued callback behind on failure.
++	 */
++	if (pw_loop_check(impl->data_loop) > 0)
++		return func(data);
++	return pw_loop_locked(impl->data_loop, do_invoke_data_loop, 0,
++			&invoke, sizeof(invoke), NULL);
++}
++
+ int rtp_stream_receive_packet(struct rtp_stream *s, uint8_t *buffer, size_t len,
+ 				uint64_t current_time)
+ {
+diff --git a/src/modules/module-rtp/stream.h b/src/modules/module-rtp/stream.h
+index 60168275b309ade96ae2a22330c00b10df3b1b1c..2ded59c7521b17f40dc3b197237f82f4bd28152e 100644
+--- a/src/modules/module-rtp/stream.h
++++ b/src/modules/module-rtp/stream.h
+@@ -11,6 +11,8 @@ extern "C" {
+ 
+ struct rtp_stream;
+ 
++typedef int (*rtp_stream_data_loop_func_t) (void *data);
++
+ #define DEFAULT_FORMAT		"S16BE"
+ #define DEFAULT_RATE		48000
+ #define DEFAULT_CHANNELS	2
+@@ -71,6 +73,17 @@ void rtp_stream_destroy(struct rtp_stream *s);
+ 
+ int rtp_stream_update_properties(struct rtp_stream *s, const struct spa_dict *dict);
+ 
++/*
++ * Serialize a small state transition with the stream data loop. On a separate
++ * data loop the callback runs while holding that loop's recursive dispatch
++ * lock; when node and control path share one loop it runs inline. The callback
++ * has completed before this function returns, so stack-backed data remains
++ * valid for the duration of the call. Callers must not invoke this helper from
++ * an RTP packet callback.
++ */
++int rtp_stream_invoke_data_loop(struct rtp_stream *s,
++		rtp_stream_data_loop_func_t func, void *data);
++
+ int rtp_stream_receive_packet(struct rtp_stream *s, uint8_t *buffer, size_t len,
+ 				uint64_t current_time);
+ 

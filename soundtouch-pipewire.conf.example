@@ -1,0 +1,32 @@
+# Copy to ~/.config/soundtouch-pipewire/config.ini and edit before enabling
+# soundtouch-pipewire.service. Device sections are keyed by the 12-hex-digit
+# SoundTouch device ID/MAC returned by /info, never by IP address or display name.
+
+[general]
+schema-version=1
+# Automatically publish technically identity-checked receivers unless their
+# device section explicitly blocks them. This is not a remembered user
+# approval; keep false for an explicit allowlist.
+manage-all-verified=false
+pipewire-remote=pipewire-0
+reconcile-interval-ms=2000
+
+# Safe default: no sink is published when a fresh physical-volume read fails.
+# Replace the locally administered example ID with the exact ID of one speaker.
+# Device access is tri-state: true=explicit allow, false=explicit block, and an
+# omitted enabled key=auto (follows manage-all-verified).
+[device 020000000001]
+enabled=true
+# Experimental: 1500 by default; try 500 first to reduce buffered RAOP delay.
+# Lower values reduce network-jitter margin. Valid range: 250..10000.
+# raop-latency-ms=500
+# Experimental receiver-specific workaround. Some SoundTouch firmware ignores
+# absolute volume-down writes while muted. This opt-in uses confirmed native
+# VOLUME_DOWN key ticks for small (at most five-point) decreases only.
+# muted-volume-down-key=false
+stale-volume-policy=reject
+
+# A cached/last-confirmed value is diagnostic only. It cannot safely prove the
+# speaker's current physical volume, so it never permits sink publication or a
+# hardware-volume write. A live WebSocket epoch and stable /volume GET are
+# required.

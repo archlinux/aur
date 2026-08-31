@@ -1,0 +1,534 @@
+diff --git a/src/modules/module-raop-sink.c b/src/modules/module-raop-sink.c
+index 4145270..b5a5826 100644
+--- a/src/modules/module-raop-sink.c
++++ b/src/modules/module-raop-sink.c
+@@ -4360,6 +4360,35 @@ static void stream_props_changed(struct impl *impl, uint32_t id, const struct sp
+ 	enum raop_volume_props_result props_result;
+ 	int res;
+ 
++	if (impl->volume_control == RAOP_VOLUME_EXTERNAL &&
++			!impl->safety_gate_contract) {
++		const struct spa_pod *normalized;
++
++		res = raop_volume_contract2_normalize_props(param,
++				impl->channels, &b, &normalized);
++		if (res == RAOP_VOLUME_CONTRACT2_UNRELATED)
++			return;
++		if (res != RAOP_VOLUME_CONTRACT2_APPLY) {
++			/*
++			 * In PipeWire 1.6.8, a nested pw_stream_set_param() raises
++			 * stream.c's in_set_param guard.  Reinstalling an empty Props
++			 * Pod therefore vetoes the outer invalid or follower managed
++			 * Pod without recovering logical values from module history.
++			 */
++			spa_pod_builder_init(&b, buf, sizeof(buf));
++			spa_pod_builder_push_object(&b, &f[0],
++					SPA_TYPE_OBJECT_Props, SPA_PARAM_Props);
++			normalized = spa_pod_builder_pop(&b, &f[0]);
++			if (res < 0)
++				pw_log_warn("rejecting invalid contract-2 RAOP Props");
++		}
++		if ((res = rtp_stream_set_param(impl->stream, id,
++				normalized)) < 0)
++			volume_fail_closed(impl,
++					"contract-2 RAOP Props enforcement failed");
++		return;
++	}
++
+ 	SPA_POD_OBJECT_FOREACH(obj, prop) {
+ 		switch (prop->key) {
+ 		case SPA_PROP_mute:
+diff --git a/src/modules/module-raop/volume.c b/src/modules/module-raop/volume.c
+index 133869f..1ea8afe 100644
+--- a/src/modules/module-raop/volume.c
++++ b/src/modules/module-raop/volume.c
+@@ -11,6 +11,11 @@
+ 
+ #include <spa/utils/defs.h>
+ #include <spa/utils/string.h>
++#include <spa/param/audio/raw.h>
++#include <spa/param/props.h>
++#include <spa/pod/builder.h>
++#include <spa/pod/iter.h>
++#include <spa/pod/parser.h>
+ 
+ #include <pipewire/properties.h>
+ 
+@@ -219,6 +224,143 @@ int raop_volume_override_stream_props(struct pw_properties *stream_props,
+ 	return 0;
+ }
+ 
++int raop_volume_contract2_normalize_props(const struct spa_pod *param,
++		uint32_t expected_channels,
++		struct spa_pod_builder *builder,
++		const struct spa_pod **correction)
++{
++	const struct spa_pod_object *object;
++	struct spa_pod_prop *prop;
++	struct spa_pod_frame frame;
++	float scalar = 1.0f;
++	const float *channels = NULL, *soft_volumes = NULL;
++	uint32_t n_channels = 0, n_soft_volumes = 0;
++	bool mute = false, soft_mute = false;
++	bool have_scalar = false, have_channels = false, have_mute = false;
++	bool have_soft_volumes = false, have_soft_mute = false;
++	bool recognized = false;
++	uint32_t i;
++
++	if (correction == NULL)
++		return -EINVAL;
++	*correction = NULL;
++	if (param == NULL || expected_channels == 0 ||
++			expected_channels > SPA_AUDIO_MAX_CHANNELS || builder == NULL ||
++			!spa_pod_is_object(param))
++		return -EINVAL;
++	object = (const struct spa_pod_object *)param;
++	if (object->body.type != SPA_TYPE_OBJECT_Props ||
++			object->body.id != SPA_PARAM_Props)
++		return -EINVAL;
++
++	SPA_POD_OBJECT_FOREACH(object, prop) {
++		switch (prop->key) {
++		case SPA_PROP_volume:
++			recognized = true;
++			if (have_scalar ||
++					spa_pod_get_float(&prop->value, &scalar) < 0)
++				return -EINVAL;
++			have_scalar = true;
++			break;
++		case SPA_PROP_channelVolumes:
++		{
++			uint32_t value_size, value_type;
++
++			recognized = true;
++			if (have_channels)
++				return -EINVAL;
++			have_channels = true;
++			channels = spa_pod_get_array_full(&prop->value,
++					&n_channels, &value_size, &value_type);
++			if (channels == NULL || value_type != SPA_TYPE_Float ||
++					value_size != sizeof(float) || n_channels == 0 ||
++					n_channels > SPA_AUDIO_MAX_CHANNELS ||
++					raop_volume_validate_channels(channels,
++						n_channels, NULL) < 0)
++				n_channels = 0;
++			for (i = 1; i < n_channels; i++) {
++				if (channels[i] != channels[0]) {
++					n_channels = 0;
++					break;
++				}
++			}
++			break;
++		}
++		case SPA_PROP_mute:
++			recognized = true;
++			if (have_mute || spa_pod_get_bool(&prop->value, &mute) < 0)
++				return -EINVAL;
++			have_mute = true;
++			break;
++		case SPA_PROP_softVolumes:
++		{
++			uint32_t value_size, value_type;
++
++			recognized = true;
++			if (have_soft_volumes)
++				return -EINVAL;
++			have_soft_volumes = true;
++			soft_volumes = spa_pod_get_array_full(&prop->value,
++					&n_soft_volumes, &value_size, &value_type);
++			if (soft_volumes == NULL || value_type != SPA_TYPE_Float ||
++					value_size != sizeof(float)) {
++				soft_volumes = NULL;
++				n_soft_volumes = 0;
++			}
++			break;
++		}
++		case SPA_PROP_softMute:
++			recognized = true;
++			if (have_soft_mute ||
++					spa_pod_get_bool(&prop->value, &soft_mute) < 0)
++				return -EINVAL;
++			have_soft_mute = true;
++			break;
++		case SPA_PROP_volumeRampSamples:
++		case SPA_PROP_volumeRampStepSamples:
++		case SPA_PROP_volumeRampTime:
++		case SPA_PROP_volumeRampStepTime:
++		case SPA_PROP_volumeRampScale:
++			return -EINVAL;
++		default:
++			break;
++		}
++	}
++
++	if (!recognized)
++		return RAOP_VOLUME_CONTRACT2_UNRELATED;
++	if (!have_channels || n_channels != expected_channels || !have_mute ||
++			!have_soft_volumes ||
++			n_soft_volumes != expected_channels ||
++			!have_soft_mute || soft_mute != mute)
++		return -EINVAL;
++	for (i = 0; i < n_soft_volumes; i++) {
++		if (!isfinite(soft_volumes[i]) || soft_volumes[i] != 1.0f)
++			return -EINVAL;
++	}
++	if (!have_scalar)
++		return RAOP_VOLUME_CONTRACT2_VETO;
++	if (!isfinite(scalar) || scalar != 1.0f)
++		return -EINVAL;
++
++	spa_pod_builder_push_object(builder, &frame,
++			SPA_TYPE_OBJECT_Props, SPA_PARAM_Props);
++	spa_pod_builder_prop(builder, SPA_PROP_volume, 0);
++	spa_pod_builder_float(builder, 1.0f);
++	spa_pod_builder_prop(builder, SPA_PROP_mute, 0);
++	spa_pod_builder_bool(builder, mute);
++	spa_pod_builder_prop(builder, SPA_PROP_channelVolumes, 0);
++	spa_pod_builder_array(builder, sizeof(float), SPA_TYPE_Float,
++			n_channels, channels);
++	spa_pod_builder_prop(builder, SPA_PROP_softVolumes, 0);
++	spa_pod_builder_array(builder, sizeof(float), SPA_TYPE_Float,
++			n_channels, soft_volumes);
++	spa_pod_builder_prop(builder, SPA_PROP_softMute, 0);
++	spa_pod_builder_bool(builder, mute);
++	*correction = spa_pod_builder_pop(builder, &frame);
++	return *correction == NULL ? -ENOSPC : RAOP_VOLUME_CONTRACT2_APPLY;
++}
++
+ void raop_volume_state_sync(struct raop_volume_state *state,
+ 		float volume, bool mute, bool baseline)
+ {
+diff --git a/src/modules/module-raop/volume.h b/src/modules/module-raop/volume.h
+index 2d40b03..2e0f6b8 100644
+--- a/src/modules/module-raop/volume.h
++++ b/src/modules/module-raop/volume.h
+@@ -10,6 +10,8 @@
+ #include <stdint.h>
+ 
+ struct pw_properties;
++struct spa_pod;
++struct spa_pod_builder;
+ 
+ #define RAOP_VOLUME_CONTRACT	"2"
+ 
+@@ -44,6 +46,12 @@ enum raop_volume_failure_action {
+ 	RAOP_VOLUME_FAILURE_ERROR,
+ };
+ 
++enum raop_volume_contract2_props_result {
++	RAOP_VOLUME_CONTRACT2_UNRELATED,
++	RAOP_VOLUME_CONTRACT2_APPLY,
++	RAOP_VOLUME_CONTRACT2_VETO,
++};
++
+ struct raop_volume_state {
+ 	uint32_t generation;
+ 	uint32_t volume_generation;
+@@ -93,6 +101,11 @@ float raop_volume_to_channel(float volume);
+ int raop_volume_override_stream_props(struct pw_properties *stream_props,
+ 		const struct pw_properties *module_props);
+ 
++int raop_volume_contract2_normalize_props(const struct spa_pod *param,
++		uint32_t expected_channels,
++		struct spa_pod_builder *builder,
++		const struct spa_pod **correction);
++
+ void raop_volume_state_sync(struct raop_volume_state *state,
+ 		float volume, bool mute, bool baseline);
+ bool raop_volume_state_mark_initial_props_installed(
+diff --git a/src/modules/module-raop/test-volume.c b/src/modules/module-raop/test-volume.c
+index 59385a9..f310955 100644
+--- a/src/modules/module-raop/test-volume.c
++++ b/src/modules/module-raop/test-volume.c
+@@ -10,6 +10,9 @@
+ 
+ #include <spa/utils/defs.h>
+ #include <spa/utils/string.h>
++#include <spa/param/props.h>
++#include <spa/pod/builder.h>
++#include <spa/pod/iter.h>
+ 
+ #include "rtsp-client.h"
+ #include "volume.h"
+@@ -265,6 +268,272 @@ static void test_stream_contract(void)
+ 	pw_properties_free(module_props);
+ }
+ 
++struct contract2_props {
++	bool scalar;
++	float scalar_value;
++	bool mute;
++	bool mute_value;
++	bool channels;
++	float channel_values[2];
++	uint32_t n_channels;
++	bool soft_mute;
++	bool soft_mute_value;
++	bool soft_volumes;
++	float soft_values[2];
++	uint32_t n_soft_volumes;
++	bool duplicate_channels;
++	bool ramp;
++};
++
++static const struct spa_pod *build_contract2_props(
++		struct spa_pod_builder *builder,
++		const struct contract2_props *props)
++{
++	struct spa_pod_frame frame;
++
++	spa_pod_builder_push_object(builder, &frame,
++			SPA_TYPE_OBJECT_Props, SPA_PARAM_Props);
++	if (props->scalar) {
++		spa_pod_builder_prop(builder, SPA_PROP_volume, 0);
++		spa_pod_builder_float(builder, props->scalar_value);
++	}
++	if (props->mute) {
++		spa_pod_builder_prop(builder, SPA_PROP_mute, 0);
++		spa_pod_builder_bool(builder, props->mute_value);
++	}
++	if (props->channels) {
++		spa_pod_builder_prop(builder, SPA_PROP_channelVolumes, 0);
++		spa_pod_builder_array(builder, sizeof(float), SPA_TYPE_Float,
++				props->n_channels, props->channel_values);
++	}
++	if (props->duplicate_channels) {
++		spa_pod_builder_prop(builder, SPA_PROP_channelVolumes, 0);
++		spa_pod_builder_array(builder, sizeof(float), SPA_TYPE_Float,
++				props->n_channels, props->channel_values);
++	}
++	if (props->soft_mute) {
++		spa_pod_builder_prop(builder, SPA_PROP_softMute, 0);
++		spa_pod_builder_bool(builder, props->soft_mute_value);
++	}
++	if (props->soft_volumes) {
++		spa_pod_builder_prop(builder, SPA_PROP_softVolumes, 0);
++		spa_pod_builder_array(builder, sizeof(float), SPA_TYPE_Float,
++				props->n_soft_volumes, props->soft_values);
++	}
++	if (props->ramp) {
++		spa_pod_builder_prop(builder, SPA_PROP_volumeRampSamples, 0);
++		spa_pod_builder_int(builder, 64);
++	}
++	return spa_pod_builder_pop(builder, &frame);
++}
++
++static void assert_contract2_canonical(const struct spa_pod *param,
++		bool expected_mute)
++{
++	const struct spa_pod_object *object =
++		(const struct spa_pod_object *)param;
++	struct spa_pod_prop *prop;
++	uint32_t properties = 0;
++
++	spa_assert(param != NULL && spa_pod_is_object(param));
++	SPA_POD_OBJECT_FOREACH(object, prop) {
++		properties++;
++		switch (prop->key) {
++		case SPA_PROP_volume:
++		{
++			float value;
++
++			spa_assert_se(spa_pod_get_float(&prop->value, &value) == 0);
++			spa_assert_se(value == 1.0f);
++			break;
++		}
++		case SPA_PROP_softVolumes:
++		{
++			const float *values;
++			uint32_t count, value_size, value_type, i;
++
++			values = spa_pod_get_array_full(&prop->value, &count,
++					&value_size, &value_type);
++			spa_assert_se(values != NULL && value_type == SPA_TYPE_Float &&
++					value_size == sizeof(float) && count == 2);
++			for (i = 0; i < count; i++)
++				spa_assert_se(values[i] == 1.0f);
++			break;
++		}
++		case SPA_PROP_softMute:
++		{
++			bool muted;
++
++			spa_assert_se(spa_pod_get_bool(&prop->value, &muted) == 0);
++			spa_assert_se(muted == expected_mute);
++			break;
++		}
++		case SPA_PROP_channelVolumes:
++		{
++			const float *values;
++			uint32_t count, value_size, value_type, i;
++
++			values = spa_pod_get_array_full(&prop->value, &count,
++					&value_size, &value_type);
++			spa_assert_se(values != NULL && value_type == SPA_TYPE_Float &&
++					value_size == sizeof(float) && count == 2);
++			for (i = 0; i < count; i++)
++				spa_assert_se(values[i] == 0.125f);
++			break;
++		}
++		case SPA_PROP_mute:
++		{
++			bool muted;
++
++			spa_assert_se(spa_pod_get_bool(&prop->value, &muted) == 0);
++			spa_assert_se(muted == expected_mute);
++			break;
++		}
++		default:
++			spa_assert_not_reached();
++		}
++	}
++	spa_assert_se(properties == 5);
++}
++
++static void test_contract2_props_normalizer(void)
++{
++	uint8_t input_buffer[1024], output_buffer[1024];
++	struct spa_pod_builder input =
++		SPA_POD_BUILDER_INIT(input_buffer, sizeof(input_buffer));
++	struct spa_pod_builder output =
++		SPA_POD_BUILDER_INIT(output_buffer, sizeof(output_buffer));
++	struct contract2_props props = {
++		.scalar = true,
++		.scalar_value = 1.0f,
++		.mute = true,
++		.mute_value = true,
++		.channels = true,
++		.channel_values = { 0.125f, 0.125f },
++		.n_channels = 2,
++		.soft_mute = true,
++		.soft_mute_value = true,
++		.soft_volumes = true,
++		.soft_values = { 1.0f, 1.0f },
++		.n_soft_volumes = 2,
++	};
++	const struct spa_pod *param, *correction = NULL;
++
++	param = build_contract2_props(&input, &props);
++	spa_assert_se(raop_volume_contract2_normalize_props(param, 2, &output,
++			&correction) == RAOP_VOLUME_CONTRACT2_APPLY);
++	assert_contract2_canonical(correction, true);
++
++	/* A complete scalar-bearing tuple with the wrong channel count is
++	 * managed input, but cannot be applied to this two-channel sink. */
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	props.n_channels = 1;
++	props.n_soft_volumes = 1;
++	param = build_contract2_props(&input, &props);
++	spa_assert_se(raop_volume_contract2_normalize_props(param, 2, &output,
++			&correction) == -EINVAL);
++	spa_assert_se(correction == NULL);
++	props.n_channels = 2;
++	props.n_soft_volumes = 2;
++
++	/* Any non-canonical managed field is invalid, not a source from which
++	 * logical or hardware intent may be synthesized. */
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	props.scalar_value = 0.5f;
++	param = build_contract2_props(&input, &props);
++	spa_assert_se(raop_volume_contract2_normalize_props(param, 2, &output,
++			&correction) == -EINVAL);
++	spa_assert_se(correction == NULL);
++
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	props.scalar_value = 1.0f;
++	props.soft_mute_value = false;
++	param = build_contract2_props(&input, &props);
++	spa_assert_se(raop_volume_contract2_normalize_props(param, 2, &output,
++			&correction) == -EINVAL);
++	spa_assert_se(correction == NULL);
++
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	props.soft_mute_value = true;
++	props.soft_values[1] = 0.5f;
++	param = build_contract2_props(&input, &props);
++	spa_assert_se(raop_volume_contract2_normalize_props(param, 2, &output,
++			&correction) == -EINVAL);
++	spa_assert_se(correction == NULL);
++
++	/* A complete, already-canonical scalar-less follower is the sole managed
++	 * no-op. It is never promoted into a scalar-bearing intent. */
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	props.scalar = false;
++	props.soft_values[1] = 1.0f;
++	param = build_contract2_props(&input, &props);
++	spa_assert_se(raop_volume_contract2_normalize_props(param, 2, &output,
++			&correction) == RAOP_VOLUME_CONTRACT2_VETO);
++	spa_assert_se(correction == NULL);
++
++	/* Unrelated Props remain a true no-op; partial managed Props are vetoed. */
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	props = (struct contract2_props){ 0 };
++	param = build_contract2_props(&input, &props);
++	spa_assert_se(raop_volume_contract2_normalize_props(param, 2, &output,
++			&correction) == RAOP_VOLUME_CONTRACT2_UNRELATED);
++	spa_assert_se(correction == NULL);
++
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	props = (struct contract2_props){
++		.scalar = true,
++		.scalar_value = NAN,
++		.mute = true,
++		.mute_value = false,
++		.soft_mute = true,
++		.soft_mute_value = true,
++	};
++	param = build_contract2_props(&input, &props);
++	spa_assert_se(raop_volume_contract2_normalize_props(param, 2, &output,
++			&correction) == -EINVAL);
++	spa_assert_se(correction == NULL);
++
++	/* Duplicated, asymmetric, non-finite, and ramped managed shapes are all
++	 * invalid so the callback can actively veto the outer SetParam. */
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	props = (struct contract2_props){
++		.channels = true,
++		.channel_values = { 0.125f, 0.216f },
++		.n_channels = 2,
++	};
++	param = build_contract2_props(&input, &props);
++	spa_assert_se(raop_volume_contract2_normalize_props(param, 2, &output,
++			&correction) == -EINVAL);
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	props.channel_values[1] = NAN;
++	param = build_contract2_props(&input, &props);
++	spa_assert_se(raop_volume_contract2_normalize_props(param, 2, &output,
++			&correction) == -EINVAL);
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	props.channel_values[1] = props.channel_values[0];
++	props.duplicate_channels = true;
++	param = build_contract2_props(&input, &props);
++	spa_assert_se(raop_volume_contract2_normalize_props(param, 2, &output,
++			&correction) == -EINVAL);
++	spa_pod_builder_init(&input, input_buffer, sizeof(input_buffer));
++	spa_pod_builder_init(&output, output_buffer, sizeof(output_buffer));
++	props.duplicate_channels = false;
++	props.ramp = true;
++	param = build_contract2_props(&input, &props);
++	spa_assert_se(raop_volume_contract2_normalize_props(param, 2, &output,
++			&correction) == -EINVAL);
++}
++
+ static void test_state(void)
+ {
+ 	struct raop_volume_state state = { 0 };
+@@ -781,6 +1050,7 @@ int main(int argc, char *argv[])
+ 	test_parser();
+ 	test_mapping();
+ 	test_stream_contract();
++	test_contract2_props_normalizer();
+ 	test_state();
+ 	test_request_coalescing();
+ 	test_device_id();
+

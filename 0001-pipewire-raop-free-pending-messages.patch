@@ -1,0 +1,26 @@
+From 4cf5acf18d3641dbdfc8e3c69cf4f47c0ff285ac Mon Sep 17 00:00:00 2001
+From: Wim Taymans <wtaymans@redhat.com>
+Date: Mon, 4 May 2026 13:16:37 +0200
+Subject: [PATCH] raop: free pending messages
+
+---
+ src/modules/module-raop/rtsp-client.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/modules/module-raop/rtsp-client.c b/src/modules/module-raop/rtsp-client.c
+index c35462bd6..7d3136f8c 100644
+--- a/src/modules/module-raop/rtsp-client.c
++++ b/src/modules/module-raop/rtsp-client.c
+@@ -580,6 +580,10 @@ int pw_rtsp_client_disconnect(struct pw_rtsp_client *client)
+ 		spa_list_remove(&msg->link);
+ 		free(msg);
+ 	}
++	spa_list_consume(msg, &client->pending, link) {
++		spa_list_remove(&msg->link);
++		free(msg);
++	}
+ 	pw_rtsp_client_emit_disconnected(client);
+ 	return 0;
+ }
+-- 
+GitLab

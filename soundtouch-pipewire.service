@@ -1,0 +1,23 @@
+[Unit]
+Description=SoundTouch direct-output v2 companion for PipeWire
+Documentation=https://github.com/Mr-Tao/soundtouch-pipewire
+Wants=pipewire.service
+After=pipewire.service
+PartOf=pipewire.service
+
+[Service]
+Type=simple
+Environment=PIPEWIRE_MODULE_DIR=/usr/lib/soundtouch-pipewire/pipewire-0.3:/usr/lib/pipewire-0.3
+ExecStart=/usr/bin/soundtouch-pipewire service-v2
+Restart=on-failure
+RestartPreventExitStatus=64 75 78
+RestartSec=3s
+TimeoutStopSec=90s
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+RestrictSUIDSGID=yes
+
+[Install]
+WantedBy=default.target

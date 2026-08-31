@@ -1,0 +1,2741 @@
+diff --git a/src/modules/meson.build b/src/modules/meson.build
+index 59f46ae13b0153f40ac3604ee4c84215c4e453bc..8e1f0797f5063d31e295ace8dcd2427eb515802e 100644
+--- a/src/modules/meson.build
++++ b/src/modules/meson.build
+@@ -589,6 +589,7 @@ build_module_raop_discover = avahi_dep.found()
+ if build_module_raop_discover
+   pipewire_module_raop_discover = shared_library('pipewire-module-raop-discover',
+     [ 'module-raop-discover.c',
++      'module-raop/volume.c',
+       'module-zeroconf-discover/avahi-poll.c' ],
+     include_directories : [configinc],
+     install : true,
+@@ -617,13 +618,28 @@ build_module_raop = openssl_lib.found()
+ if build_module_raop
+   pipewire_module_raop_sink = shared_library('pipewire-module-raop-sink',
+     [ 'module-raop-sink.c',
+-      'module-raop/rtsp-client.c' ],
++      'module-raop/rtsp-client.c',
++      'module-raop/volume.c' ],
+     include_directories : [configinc],
+     install : true,
+     install_dir : modules_install_dir,
+     install_rpath: modules_install_dir,
+     dependencies : [pipewire_module_rtp_common_dep, openssl_lib],
+   )
++  if get_option('tests').allowed()
++    test('pw-test-raop-volume',
++      executable('pw-test-raop-volume',
++        [ 'module-raop/test-volume.c',
++          'module-raop/volume.c',
++          'module-raop/rtsp-client.c' ],
++        include_directories : [configinc],
++        dependencies : [spa_dep, spa_support_dep, pipewire_dep, mathlib],
++      ),
++      env : [
++        'SPA_PLUGIN_DIR=@0@'.format(spa_dep.get_variable('plugindir')),
++      ],
++    )
++  endif
+ endif
+ summary({'raop-sink (requires OpenSSL)': build_module_raop}, bool_yn: true, section: 'Optional Modules')
+ 
+diff --git a/src/modules/module-raop-discover.c b/src/modules/module-raop-discover.c
+index 436972ac028b92220b869fb0f84291cb5ce5c4a5..6d3c0eb95e0cc96e6d31a101a649b44325c61819 100644
+--- a/src/modules/module-raop-discover.c
++++ b/src/modules/module-raop-discover.c
+@@ -25,6 +25,7 @@
+ 
+ #include "module-protocol-pulse/format.h"
+ #include "module-zeroconf-discover/avahi-poll.h"
++#include "module-raop/volume.h"
+ 
+ /** \page page_module_raop_discover RAOP Discover
+  *
+@@ -434,6 +435,12 @@ static void resolver_cb(AvahiServiceResolver *r, AvahiIfIndex interface, AvahiPr
+ 		avahi_free(key);
+ 		avahi_free(value);
+ 	}
++	if (pw_properties_get(props, "raop.device") == NULL) {
++		char device[13];
++
++		if (raop_parse_device_id(name, device) == 0)
++			pw_properties_set(props, "raop.device", device);
++	}
+ 
+ 	if ((str = pw_properties_get(impl->properties, "raop.latency.ms")) != NULL)
+ 		pw_properties_set(props, "raop.latency.ms", str);
+diff --git a/src/modules/module-raop-sink.c b/src/modules/module-raop-sink.c
+index 005d9f979d45a49362407bdd4572f6c350526525..1fb3c2b1f449a285eeae78f5a4a1489a52b23efe 100644
+--- a/src/modules/module-raop-sink.c
++++ b/src/modules/module-raop-sink.c
+@@ -45,6 +45,7 @@
+ #include "network-utils.h"
+ 
+ #include "module-raop/rtsp-client.h"
++#include "module-raop/volume.h"
+ #include "module-rtp/rtp.h"
+ #include "module-rtp/stream.h"
+ 
+@@ -74,8 +75,38 @@
+  *                    "auth_setup". Default is "none".
+  * - `raop.audio.codec`: The audio codec to use. Needs to be "PCM". Defaults to "PCM".
+  * - `raop.password`: The password to use.
++ * - `raop.volume.control`: Volume control mode. One of "remote-optional",
++ *                    "remote-required", "local", "software" or "external".
++ *                    Defaults to "remote-optional".
++ * - `raop.volume.query-timeout.ms`: Timeout for the receiver volume query in
++ *                    milliseconds. The same timeout bounds remote volume SET
++ *                    acknowledgements. Defaults to 1000.
++ * - `raop.volume.initial`: Initial normalized control value between 0.0 and
++ *                    1.0. It is required in "external" mode and is installed
++ *                    before the stream is connected. This is a linear UI
++ *                    control value, not a PipeWire cubic channel volume; for
++ *                    example, 0.15 becomes a channel volume of 0.003375.
++ * - `raop.volume.initial.mute`: Initial mute value in "external" mode.
+  * - `stream.props = {}`: properties to be passed to the sink stream
+  *
++ * The created node publishes `raop.volume.contract = 2`. In the default
++ * "remote-optional" mode, the receiver answers an RTSP GET_PARAMETER volume
++ * request after SETUP and before RECORD. If the user changes volume while that
++ * request or RECORD is pending, changes are coalesced and recording is not
++ * released until the newest SET_PARAMETER receives a successful reply. A
++ * failed or timed-out query or SET keeps the receiver unchanged where possible
++ * and applies the latest node value as software volume for that session.
++ * "remote-required" fails the stream instead. "local" explicitly enables the
++ * legacy behavior of sending the locally stored value, "software" never sends
++ * RTSP volume requests, and "external" exposes hardware-style node volume
++ * without sending RTSP volume requests so another controller can own the
++ * receiver volume. External mode keeps software channel volumes at unity while
++ * mirroring the canonical mute into software mute, including before stream
++ * connection and on volume-only Props updates. This keeps a muted receiver
++ * locally silent while its session is being recreated. External mode also sets
++ * `state.restore-props = false` so a session manager cannot replace the
++ * supplied startup value with stale saved Props.
++ *
+  * Options with well-known behavior.
+  *
+  * - \ref PW_KEY_REMOTE_NAME
+@@ -153,11 +184,13 @@ PW_LOG_TOPIC(mod_topic, "mod." NAME);
+ #define RAOP_RATE		44100
+ #define RAOP_LATENCY_MS		250
+ #define DEFAULT_LATENCY_MS	1500
++#define DEFAULT_VOLUME_QUERY_TIMEOUT_MS	1000
++#define MAX_VOLUME_QUERY_TIMEOUT_MS	60000
+ 
+ #define MAX_CHANNELS		SPA_AUDIO_MAX_CHANNELS
+-#define VOLUME_MAX		0.0
+-#define VOLUME_MIN		-30.0
+-#define VOLUME_MUTE		-144.0
++#define VOLUME_MAX		0.0f
++#define VOLUME_MIN		-30.0f
++#define VOLUME_MUTE		-144.0f
+ 
+ #define MODULE_USAGE	"( raop.ip=<ip address of host> ) "					\
+ 			"( raop.port=<remote port> ) "						\
+@@ -168,6 +201,10 @@ PW_LOG_TOPIC(mod_topic, "mod." NAME);
+ 			"( raop.audio.codec=PCM ) "						\
+ 			"( raop.password=<password for auth> ) "				\
+ 			"( raop.latency.ms=<min latency in ms, default:"SPA_STRINGIFY(DEFAULT_LATENCY_MS)"> ) "	\
++			"( raop.volume.control=<remote-optional|remote-required|local|software|external> ) "	\
++			"( raop.volume.query-timeout.ms=<timeout, default:"SPA_STRINGIFY(DEFAULT_VOLUME_QUERY_TIMEOUT_MS)"> ) "	\
++			"( raop.volume.initial=<normalized value required for external> ) "	\
++			"( raop.volume.initial.mute=<boolean, default:false> ) "		\
+ 			"( node.latency=<latency as fraction> ) "				\
+ 			"( node.name=<name of the nodes> ) "					\
+ 			"( node.description=<description of the nodes> ) "			\
+@@ -202,6 +239,26 @@ enum {
+ 	CODEC_AAC_ELD,
+ };
+ 
++struct impl;
++
++enum volume_continuation {
++	VOLUME_CONTINUE_NONE,
++	VOLUME_CONTINUE_SEND_RECORD,
++	VOLUME_CONTINUE_START_RECORDING,
++};
++
++struct volume_reply_data {
++	struct impl *impl;
++	uint32_t epoch;
++};
++
++struct volume_query_reply_data {
++	struct impl *impl;
++	uint32_t epoch;
++	uint32_t volume_generation;
++	uint32_t mute_generation;
++};
++
+ struct impl {
+ 	struct pw_context *context;
+ 
+@@ -216,6 +273,8 @@ struct impl {
+ 	int protocol;
+ 	int encryption;
+ 	int codec;
++	enum raop_volume_control volume_control;
++	uint32_t volume_query_timeout_ms;
+ 
+ 	struct pw_core *core;
+ 	struct spa_hook core_proxy_listener;
+@@ -244,6 +303,8 @@ struct impl {
+ 	int control_fd;
+ 	struct spa_source *control_source;
+ 	struct pw_timer feedback_timer;
++	struct pw_timer volume_query_timer;
++	struct pw_timer volume_set_timer;
+ 
+ 	uint16_t timing_port;
+ 	int timing_fd;
+@@ -262,12 +323,26 @@ struct impl {
+ 	uint32_t ssrc;
+ 	uint32_t sync;
+ 	uint32_t sync_period;
++	uint32_t channels;
++	uint32_t volume_query_timer_epoch;
++	uint32_t volume_set_timer_epoch;
++	struct raop_volume_state volume_state;
++	struct raop_volume_request_state volume_query_request;
++	struct raop_volume_request_state volume_request;
++	struct raop_volume_request_state record_request;
++	enum volume_continuation volume_continuation;
+ 	unsigned int connected:1;
+ 	unsigned int ready:1;
+ 	unsigned int recording:1;
++	unsigned int volume_valid:1;
++	unsigned int volume_prepare_started:1;
++	unsigned int session_software:1;
+ 
+ 	bool mute;
+ 	float volume;
++	float channel_volume;
++	uint32_t n_channel_volumes;
++	float channel_volumes[MAX_CHANNELS];
+ };
+ 
+ static inline void bit_writer(uint8_t **p, int *pos, uint8_t data, int len)
+@@ -797,34 +872,453 @@ error:
+ 	return -EINVAL;
+ }
+ 
+-static int rtsp_send(struct impl *impl, const char *method,
++static int rtsp_send_data(struct impl *impl, const char *method,
+ 		const char *content_type, const char *content,
+-		int (*reply) (void *data, int status, const struct spa_dict *headers, const struct pw_array *content))
++		int (*reply) (void *data, int status, const struct spa_dict *headers,
++			const struct pw_array *content),
++		void *data, void (*destroy_data) (void *data))
+ {
+ 	int res;
+ 
+ 	rtsp_add_raop_auth_header(impl, method);
+ 
+-	res = pw_rtsp_client_send(impl->rtsp, method, &impl->headers->dict,
+-			content_type, content, reply, impl);
++	res = pw_rtsp_client_send_full(impl->rtsp, method, &impl->headers->dict,
++			content_type, content, reply, data, destroy_data);
+ 	return res;
+ }
+ 
++static int rtsp_send(struct impl *impl, const char *method,
++		const char *content_type, const char *content,
++		int (*reply) (void *data, int status, const struct spa_dict *headers,
++			const struct pw_array *content))
++{
++	return rtsp_send_data(impl, method, content_type, content,
++			reply, impl, NULL);
++}
++
+ static int rtsp_log_reply_status(void *data, int status, const struct spa_dict *headers, const struct pw_array *content)
+ {
+ 	pw_log_info("reply status: %d", status);
+ 	return 0;
+ }
+ 
++static int rtsp_do_teardown(struct impl *impl);
++static int rtsp_do_record(struct impl *impl);
++static int rtsp_start_recording(struct impl *impl);
++static void volume_fail_closed(struct impl *impl, const char *reason);
++static void volume_set_failed(struct impl *impl, const char *reason);
++static void volume_set_timeout(void *data);
++
++static bool volume_control_uses_rtsp(const struct impl *impl)
++{
++	return !impl->session_software &&
++		(impl->volume_control == RAOP_VOLUME_REMOTE_OPTIONAL ||
++		impl->volume_control == RAOP_VOLUME_REMOTE_REQUIRED ||
++		impl->volume_control == RAOP_VOLUME_LOCAL);
++}
++
++static bool volume_control_uses_software(const struct impl *impl)
++{
++	return raop_volume_uses_soft_volumes(impl->volume_control,
++			impl->session_software);
++}
++
++static int stream_set_volume_props(struct impl *impl, const float *volumes,
++		uint32_t n_volumes, bool mute, bool software)
++{
++	char buf[4096];
++	float soft_volumes[MAX_CHANNELS], average;
++	struct spa_pod_builder b = SPA_POD_BUILDER_INIT(buf, sizeof(buf));
++	const struct spa_pod *param;
++	int res;
++	uint32_t i;
++
++	if (n_volumes > MAX_CHANNELS ||
++			(res = raop_volume_validate_channels(volumes,
++				n_volumes, &average)) < 0)
++		return -EINVAL;
++
++	for (i = 0; i < n_volumes; i++) {
++		soft_volumes[i] = software ? volumes[i] : 1.0f;
++	}
++
++	param = spa_pod_builder_add_object(&b,
++			SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
++			SPA_PROP_mute, SPA_POD_Bool(mute),
++			SPA_PROP_channelVolumes, SPA_POD_Array(sizeof(float),
++				SPA_TYPE_Float, n_volumes, volumes),
++			SPA_PROP_softMute, SPA_POD_Bool(raop_volume_soft_mute(
++				impl->volume_control, software, mute)),
++			SPA_PROP_softVolumes, SPA_POD_Array(sizeof(float),
++				SPA_TYPE_Float, n_volumes, soft_volumes));
++	if (param == NULL)
++		return -ENOSPC;
++
++	raop_volume_state_sync(&impl->volume_state, average, mute, false);
++	if ((res = rtp_stream_set_param(impl->stream,
++			SPA_PARAM_Props, param)) < 0) {
++		impl->volume_state.sync_volume_pending = false;
++		impl->volume_state.sync_mute_pending = false;
++		return res;
++	}
++	return 0;
++}
++
++static int rtsp_volume_set_reply(void *data, int status,
++		const struct spa_dict *headers, const struct pw_array *content);
++
+ static int rtsp_send_volume(struct impl *impl)
+ {
+-	if (!impl->recording)
++	char header[128], volstr[64];
++	struct volume_reply_data *reply;
++	uint32_t epoch;
++	int res;
++
++	if (impl->record_request.pending || impl->volume_query_request.pending ||
++			!impl->volume_valid ||
++			!volume_control_uses_rtsp(impl) ||
++			(!impl->recording &&
++			 impl->volume_continuation == VOLUME_CONTINUE_NONE) ||
++			!raop_volume_request_begin(&impl->volume_request,
++				impl->volume_state.generation, &epoch))
+ 		return 0;
++	if ((reply = malloc(sizeof(*reply))) == NULL) {
++		res = -ENOMEM;
++		raop_volume_request_cancel(&impl->volume_request, epoch);
++		volume_set_failed(impl, spa_strerror(res));
++		return res;
++	}
++	reply->impl = impl;
++	reply->epoch = epoch;
+ 
+-	char header[128], volstr[64];
+ 	snprintf(header, sizeof(header), "volume: %s\r\n",
+ 			spa_dtoa(volstr, sizeof(volstr), impl->mute ? VOLUME_MUTE : impl->volume));
+-	return rtsp_send(impl, "SET_PARAMETER", "text/parameters", header, rtsp_log_reply_status);
++	if ((res = rtsp_send_data(impl, "SET_PARAMETER", "text/parameters",
++			header, rtsp_volume_set_reply, reply, free)) < 0) {
++		free(reply);
++		raop_volume_request_cancel(&impl->volume_request, epoch);
++		volume_set_failed(impl, spa_strerror(res));
++		return res;
++	}
++	impl->volume_set_timer_epoch = epoch;
++	if ((res = pw_timer_queue_add(impl->timer_queue,
++			&impl->volume_set_timer, NULL,
++			(int64_t)impl->volume_query_timeout_ms *
++				SPA_NSEC_PER_MSEC,
++			volume_set_timeout, impl)) < 0) {
++		raop_volume_request_cancel(&impl->volume_request, epoch);
++		volume_set_failed(impl, spa_strerror(res));
++		return res;
++	}
++	return res;
++}
++
++static int volume_continue(struct impl *impl)
++{
++	enum volume_continuation continuation = impl->volume_continuation;
++	int res;
++
++	impl->volume_continuation = VOLUME_CONTINUE_NONE;
++	switch (continuation) {
++	case VOLUME_CONTINUE_SEND_RECORD:
++		if ((res = rtsp_do_record(impl)) < 0)
++			volume_fail_closed(impl,
++					"RAOP RECORD request failed");
++		return res;
++	case VOLUME_CONTINUE_START_RECORDING:
++		return rtsp_start_recording(impl);
++	case VOLUME_CONTINUE_NONE:
++	default:
++		return 0;
++	}
++}
++
++static int rtsp_volume_set_reply(void *data, int status,
++		const struct spa_dict *headers, const struct pw_array *content)
++{
++	struct volume_reply_data *reply = data;
++	struct impl *impl = reply->impl;
++	enum raop_volume_request_result result;
++	int res;
++
++	result = raop_volume_request_reply(&impl->volume_request,
++			reply->epoch, impl->volume_state.generation, status);
++	if (result == RAOP_VOLUME_REQUEST_STALE) {
++		pw_log_debug("ignoring stale remote volume reply");
++		return 0;
++	}
++	pw_timer_queue_cancel(&impl->volume_set_timer);
++
++	if (result == RAOP_VOLUME_REQUEST_FAILED) {
++		char reason[64];
++
++		spa_scnprintf(reason, sizeof(reason), "RTSP status %d", status);
++		volume_set_failed(impl, reason);
++		return 0;
++	}
++	pw_log_debug("remote volume request succeeded");
++
++	if (result == RAOP_VOLUME_REQUEST_NEWER) {
++		if ((res = rtsp_send_volume(impl)) < 0)
++			return res;
++	} else
++		return volume_continue(impl);
++	return 0;
++}
++
++static void volume_fail_closed(struct impl *impl, const char *reason)
++{
++	pw_log_error("%s", reason);
++	impl->volume_continuation = VOLUME_CONTINUE_NONE;
++	impl->recording = false;
++	rtsp_do_teardown(impl);
++	if (impl->stream != NULL)
++		rtp_stream_set_error(impl->stream, -EIO, reason);
++}
++
++static void volume_remote_failed(struct impl *impl,
++		const char *operation, const char *reason)
++{
++	enum raop_volume_failure_action action =
++		raop_volume_failure_action(impl->volume_control);
++
++	impl->volume_query_request.pending = false;
++	impl->volume_request.pending = false;
++	pw_timer_queue_cancel(&impl->volume_query_timer);
++	pw_timer_queue_cancel(&impl->volume_set_timer);
++
++	if (action == RAOP_VOLUME_FAILURE_ERROR) {
++		pw_log_error("remote volume %s failed: %s", operation, reason);
++		impl->volume_continuation = VOLUME_CONTINUE_NONE;
++		rtsp_do_teardown(impl);
++		rtp_stream_set_error(impl->stream, -EIO,
++				"RAOP receiver volume is unavailable");
++		return;
++	}
++	if (action != RAOP_VOLUME_FAILURE_SOFTWARE) {
++		pw_log_warn("remote volume %s failed: %s", operation, reason);
++		return;
++	}
++
++	pw_log_warn("remote volume %s failed: %s, using software volume for this session",
++			operation, reason);
++	impl->session_software = true;
++	if (!impl->volume_valid) {
++		impl->channel_volume = 1.0f;
++		impl->volume = VOLUME_MAX;
++		impl->volume_valid = true;
++		impl->n_channel_volumes = impl->channels;
++		for (uint32_t i = 0; i < impl->channels; i++)
++			impl->channel_volumes[i] = 1.0f;
++	}
++	raop_volume_state_sync(&impl->volume_state,
++			impl->channel_volume, impl->mute, true);
++	if (stream_set_volume_props(impl, impl->channel_volumes,
++			impl->n_channel_volumes, impl->mute, true) < 0) {
++		volume_fail_closed(impl,
++				"RAOP software volume fallback failed");
++		return;
++	}
++	volume_continue(impl);
++}
++
++static void volume_set_failed(struct impl *impl, const char *reason)
++{
++	uint32_t sent_generation = impl->volume_request.generation;
++
++	pw_timer_queue_cancel(&impl->volume_set_timer);
++
++	switch (impl->volume_control) {
++	case RAOP_VOLUME_REMOTE_OPTIONAL:
++	case RAOP_VOLUME_REMOTE_REQUIRED:
++		volume_remote_failed(impl, "SET_PARAMETER", reason);
++		break;
++	case RAOP_VOLUME_LOCAL:
++		pw_log_warn("remote volume SET_PARAMETER failed: %s", reason);
++		if (sent_generation != impl->volume_state.generation) {
++			rtsp_send_volume(impl);
++			break;
++		}
++		volume_continue(impl);
++		break;
++	case RAOP_VOLUME_SOFTWARE:
++	case RAOP_VOLUME_EXTERNAL:
++		break;
++	}
++}
++
++static void volume_set_timeout(void *data)
++{
++	struct impl *impl = data;
++
++	if (raop_volume_request_timeout(&impl->volume_request,
++			impl->volume_set_timer_epoch) !=
++			RAOP_VOLUME_REQUEST_TIMEOUT)
++		return;
++	volume_set_failed(impl, "timeout");
++}
++
++static void volume_query_timeout(void *data)
++{
++	struct impl *impl = data;
++
++	if (raop_volume_request_timeout(&impl->volume_query_request,
++			impl->volume_query_timer_epoch) ==
++			RAOP_VOLUME_REQUEST_TIMEOUT)
++		volume_remote_failed(impl, "GET_PARAMETER", "timeout");
++}
++
++static int rtsp_volume_query_reply(void *data, int status,
++		const struct spa_dict *headers, const struct pw_array *content)
++{
++	struct volume_query_reply_data *reply = data;
++	struct impl *impl = reply->impl;
++	enum raop_volume_request_result request_result;
++	float remote_volume, desired_volume, desired_channel, remote_channel;
++	float desired_volumes[MAX_CHANNELS];
++	uint32_t desired_n_volumes;
++	bool remote_mute, desired_mute, volume_changed, mute_changed;
++	int res;
++
++	request_result = raop_volume_request_reply(&impl->volume_query_request,
++			reply->epoch, impl->volume_state.generation, status);
++	if (request_result == RAOP_VOLUME_REQUEST_STALE) {
++		pw_log_debug("ignoring stale remote volume query reply");
++		return 0;
++	}
++
++	pw_timer_queue_cancel(&impl->volume_query_timer);
++
++	if (request_result == RAOP_VOLUME_REQUEST_FAILED || status != 200) {
++		char reason[64];
++
++		spa_scnprintf(reason, sizeof(reason), "RTSP status %d", status);
++		volume_remote_failed(impl, "GET_PARAMETER", reason);
++		return 0;
++	}
++	if (content == NULL)
++		res = -EPROTO;
++	else
++		res = raop_volume_parse_reply(content->data, content->size,
++				&remote_volume, &remote_mute);
++	if (res < 0) {
++		volume_remote_failed(impl, "GET_PARAMETER", spa_strerror(res));
++		return 0;
++	}
++
++	volume_changed = impl->volume_state.volume_generation !=
++		reply->volume_generation;
++	mute_changed = impl->volume_state.mute_generation !=
++		reply->mute_generation;
++	desired_volume = impl->volume;
++	desired_channel = impl->channel_volume;
++	desired_n_volumes = impl->n_channel_volumes;
++	memcpy(desired_volumes, impl->channel_volumes,
++			desired_n_volumes * sizeof(float));
++	desired_mute = impl->mute;
++
++	/* A muted RAOP reply does not expose the underlying receiver volume.
++	 * Use the quietest unmuted value as its safe baseline. */
++	remote_volume = remote_mute ? VOLUME_MIN : remote_volume;
++	remote_channel = remote_mute ? 0.0f :
++		raop_volume_to_channel(remote_volume);
++
++	if (volume_changed) {
++		impl->volume = desired_volume;
++		impl->channel_volume = desired_channel;
++		impl->n_channel_volumes = desired_n_volumes;
++		memcpy(impl->channel_volumes, desired_volumes,
++				desired_n_volumes * sizeof(float));
++	} else {
++		impl->volume = remote_volume;
++		impl->channel_volume = remote_channel;
++		impl->n_channel_volumes = impl->channels;
++		for (uint32_t i = 0; i < impl->channels; i++)
++			impl->channel_volumes[i] = remote_channel;
++	}
++	impl->mute = mute_changed ? desired_mute : remote_mute;
++	impl->volume_valid = true;
++
++	raop_volume_state_sync(&impl->volume_state,
++			impl->channel_volume, impl->mute, true);
++	if ((res = stream_set_volume_props(impl, impl->channel_volumes,
++			impl->n_channel_volumes, impl->mute, false)) < 0) {
++		volume_remote_failed(impl, "GET_PARAMETER sync", spa_strerror(res));
++		return 0;
++	}
++	if (volume_changed || mute_changed) {
++		rtsp_send_volume(impl);
++	} else
++		return volume_continue(impl);
++	return 0;
++}
++
++static int volume_start_before_record(struct impl *impl)
++{
++	struct volume_query_reply_data *reply;
++	uint32_t epoch;
++	int res;
++
++	if (impl->volume_prepare_started || impl->record_request.pending ||
++			impl->recording)
++		return 0;
++	impl->volume_prepare_started = true;
++	impl->session_software = false;
++	impl->volume_continuation = VOLUME_CONTINUE_SEND_RECORD;
++	impl->volume_query_request.pending = false;
++	impl->volume_request.pending = false;
++	pw_timer_queue_cancel(&impl->volume_query_timer);
++	pw_timer_queue_cancel(&impl->volume_set_timer);
++
++	switch (impl->volume_control) {
++	case RAOP_VOLUME_REMOTE_OPTIONAL:
++	case RAOP_VOLUME_REMOTE_REQUIRED:
++		if (!raop_volume_request_begin(&impl->volume_query_request,
++				impl->volume_state.generation, &epoch))
++			return 0;
++		if ((reply = malloc(sizeof(*reply))) == NULL) {
++			res = -ENOMEM;
++			raop_volume_request_cancel(&impl->volume_query_request, epoch);
++			volume_remote_failed(impl, "GET_PARAMETER",
++					spa_strerror(res));
++			return impl->volume_control == RAOP_VOLUME_REMOTE_REQUIRED ?
++				res : 0;
++		}
++		reply->impl = impl;
++		reply->epoch = epoch;
++		reply->volume_generation =
++			impl->volume_state.volume_generation;
++		reply->mute_generation =
++			impl->volume_state.mute_generation;
++		if ((res = rtsp_send_data(impl, "GET_PARAMETER",
++				"text/parameters", "volume\r\n",
++				rtsp_volume_query_reply, reply, free)) < 0) {
++			free(reply);
++			raop_volume_request_cancel(&impl->volume_query_request,
++					epoch);
++			volume_remote_failed(impl, "GET_PARAMETER", spa_strerror(res));
++			return impl->volume_control == RAOP_VOLUME_REMOTE_REQUIRED ?
++				res : 0;
++		}
++		impl->volume_query_timer_epoch = epoch;
++		if ((res = pw_timer_queue_add(impl->timer_queue,
++				&impl->volume_query_timer, NULL,
++				(int64_t)impl->volume_query_timeout_ms * SPA_NSEC_PER_MSEC,
++				volume_query_timeout, impl)) < 0) {
++			raop_volume_request_cancel(&impl->volume_query_request,
++					epoch);
++			volume_remote_failed(impl, "GET_PARAMETER timer",
++					spa_strerror(res));
++			return impl->volume_control == RAOP_VOLUME_REMOTE_REQUIRED ?
++				res : 0;
++		}
++		break;
++	case RAOP_VOLUME_LOCAL:
++	case RAOP_VOLUME_SOFTWARE:
++	case RAOP_VOLUME_EXTERNAL:
++		return volume_continue(impl);
++	}
++	return 0;
+ }
+ 
+ static void rtsp_do_post_feedback(void *data)
+@@ -846,16 +1340,21 @@ static uint32_t msec_to_samples(struct impl *impl, uint32_t msec)
+ 
+ static int rtsp_record_reply(void *data, int status, const struct spa_dict *headers, const struct pw_array *content)
+ {
+-	struct impl *impl = data;
++	struct volume_reply_data *reply = data;
++	struct impl *impl = reply->impl;
++	enum raop_volume_request_result request_result;
+ 	const char *str;
+-	char progress[128];
+ 	struct spa_process_latency_info process_latency;
++	int res;
+ 
+ 	pw_log_info("record status: %d", status);
+-	switch (status) {
+-	case 200:
+-		break;
+-	default:
++	request_result = raop_volume_request_reply(&impl->record_request,
++			reply->epoch, impl->volume_state.generation, status);
++	if (request_result == RAOP_VOLUME_REQUEST_STALE) {
++		pw_log_debug("ignoring stale RECORD reply");
++		return 0;
++	}
++	if (request_result == RAOP_VOLUME_REQUEST_FAILED || status != 200) {
+ 		pw_impl_module_schedule_destroy(impl->module);
+ 		return 0;
+ 	}
+@@ -878,25 +1377,52 @@ static int rtsp_record_reply(void *data, int status, const struct spa_dict *head
+ 
+ 	rtp_stream_update_process_latency(impl->stream, &process_latency);
+ 
+-	rtp_stream_set_first(impl->stream);
++	/* A physical control change can overtake the queued RECORD. Do not
++	 * release packets using the older receiver value. */
++	if (volume_control_uses_rtsp(impl) && impl->volume_valid &&
++			(request_result == RAOP_VOLUME_REQUEST_NEWER ||
++			 impl->volume_control == RAOP_VOLUME_LOCAL)) {
++		impl->volume_continuation = VOLUME_CONTINUE_START_RECORDING;
++		if ((res = rtsp_send_volume(impl)) < 0)
++			return res;
++		return 0;
++	}
++	return rtsp_start_recording(impl);
++}
++
++static int rtsp_start_recording(struct impl *impl)
++{
++	char progress[128];
+ 
++	if (impl->recording)
++		return 0;
++	rtp_stream_set_first(impl->stream);
+ 	impl->sync = 0;
+ 	impl->recording = true;
+ 
+-	rtsp_send_volume(impl);
+-
+ 	snprintf(progress, sizeof(progress), "progress: %s/%s/%s\r\n", "0", "0", "0");
+ 	return rtsp_send(impl, "SET_PARAMETER", "text/parameters", progress, rtsp_log_reply_status);
+ }
+ 
+ static int rtsp_do_record(struct impl *impl)
+ {
++	struct volume_reply_data *reply;
++	uint32_t epoch;
+ 	int res;
+ 	uint16_t seq;
+ 	uint32_t rtptime;
+ 
+-	if (!impl->ready || impl->recording)
++	if (!impl->ready || impl->recording || impl->record_request.pending)
+ 		return 0;
++	if (!raop_volume_request_begin(&impl->record_request,
++			impl->volume_state.generation, &epoch))
++		return 0;
++	if ((reply = malloc(sizeof(*reply))) == NULL) {
++		raop_volume_request_cancel(&impl->record_request, epoch);
++		return -ENOMEM;
++	}
++	reply->impl = impl;
++	reply->epoch = epoch;
+ 
+ 	seq = rtp_stream_get_seq(impl->stream);
+ 	rtptime = rtp_stream_get_time(impl->stream, &impl->rate);
+@@ -905,7 +1431,12 @@ static int rtsp_do_record(struct impl *impl)
+ 	pw_properties_setf(impl->headers, "RTP-Info",
+ 			"seq=%u;rtptime=%u", seq, rtptime);
+ 
+-	res = rtsp_send(impl, "RECORD", NULL, NULL, rtsp_record_reply);
++	res = rtsp_send_data(impl, "RECORD", NULL, NULL,
++			rtsp_record_reply, reply, free);
++	if (res < 0) {
++		free(reply);
++		raop_volume_request_cancel(&impl->record_request, epoch);
++	}
+ 
+ 	pw_properties_set(impl->headers, "Range", NULL);
+ 	pw_properties_set(impl->headers, "RTP-Info", NULL);
+@@ -937,7 +1468,7 @@ on_server_source_io(void *data, int fd, uint32_t mask)
+ 
+ 		impl->ready = true;
+ 		if (rtp_stream_get_state(impl->stream, NULL) == PW_STREAM_STATE_STREAMING)
+-			rtsp_do_record(impl);
++			volume_start_before_record(impl);
+ 	}
+ 	return;
+ error:
+@@ -1029,7 +1560,7 @@ static int rtsp_setup_reply(void *data, int status, const struct spa_dict *heade
+ 
+ 		impl->ready = true;
+ 		if (rtp_stream_get_state(impl->stream, NULL) == PW_STREAM_STATE_STREAMING)
+-			rtsp_do_record(impl);
++			volume_start_before_record(impl);
+ 		break;
+ 	default:
+ 		return 0;
+@@ -1442,6 +1973,15 @@ static void rtsp_connected(void *data)
+ static void connection_cleanup(struct impl *impl)
+ {
+ 	impl->ready = false;
++	impl->recording = false;
++	impl->volume_prepare_started = false;
++	impl->volume_continuation = VOLUME_CONTINUE_NONE;
++	impl->volume_query_request.pending = false;
++	impl->volume_request.pending = false;
++	impl->record_request.pending = false;
++	impl->session_software = false;
++	pw_timer_queue_cancel(&impl->volume_query_timer);
++	pw_timer_queue_cancel(&impl->volume_set_timer);
+ 	if (impl->server_source != NULL) {
+ 		pw_loop_destroy_source(impl->loop, impl->server_source);
+ 		impl->server_source = NULL;
+@@ -1566,6 +2106,13 @@ static int rtsp_teardown_reply(void *data, int status, const struct spa_dict *he
+ static int rtsp_do_teardown(struct impl *impl)
+ {
+ 	impl->recording = false;
++	impl->volume_prepare_started = false;
++	impl->volume_continuation = VOLUME_CONTINUE_NONE;
++	impl->volume_query_request.pending = false;
++	impl->volume_request.pending = false;
++	impl->record_request.pending = false;
++	pw_timer_queue_cancel(&impl->volume_query_timer);
++	pw_timer_queue_cancel(&impl->volume_set_timer);
+ 
+ 	if (!impl->ready)
+ 		return 0;
+@@ -1575,55 +2122,94 @@ static int rtsp_do_teardown(struct impl *impl)
+ 
+ static void stream_props_changed(struct impl *impl, uint32_t id, const struct spa_pod *param)
+ {
+-	char buf[1024];
++	char buf[4096];
+ 	struct spa_pod_builder b = SPA_POD_BUILDER_INIT(buf, sizeof(buf));
+ 	struct spa_pod_frame f[1];
+ 	struct spa_pod_object *obj = (struct spa_pod_object *) param;
+ 	struct spa_pod_prop *prop;
+-
+-	spa_pod_builder_push_object(&b, &f[0], SPA_TYPE_OBJECT_Props, SPA_PARAM_Props);
++	float volumes[MAX_CHANNELS], soft_volumes[MAX_CHANNELS], average = 0.0f;
++	uint32_t i, n_volumes = 0;
++	bool mute = impl->mute, have_mute = false, have_volumes = false;
++	bool invalid_volumes = false, volume_changed = false, mute_changed = false;
++	enum raop_volume_props_result props_result;
++	int res;
+ 
+ 	SPA_POD_OBJECT_FOREACH(obj, prop) {
+ 		switch (prop->key) {
+ 		case SPA_PROP_mute:
+-		{
+-			bool mute;
+-			if (spa_pod_get_bool(&prop->value, &mute) == 0) {
+-				if (impl->mute != mute) {
+-					impl->mute = mute;
+-					rtsp_send_volume(impl);
+-				}
+-                        }
+-			spa_pod_builder_prop(&b, SPA_PROP_softMute, 0);
+-			spa_pod_builder_bool(&b, false);
+-			spa_pod_builder_raw_padded(&b, prop, SPA_POD_PROP_SIZE(prop));
++			have_mute = spa_pod_get_bool(&prop->value, &mute) == 0;
+ 			break;
+-		}
+ 		case SPA_PROP_channelVolumes:
+ 		{
+-			uint32_t i, n_vols;
+-			float vols[MAX_CHANNELS], volume;
+-			float soft_vols[MAX_CHANNELS];
+-
+-			if ((n_vols = spa_pod_copy_array(&prop->value, SPA_TYPE_Float,
+-					vols, SPA_N_ELEMENTS(vols))) > 0) {
+-				volume = 0.0f;
+-				for (i = 0; i < n_vols; i++) {
+-					volume += vols[i];
+-					soft_vols[i] = 1.0f;
+-				}
+-				volume /= n_vols;
+-				volume = SPA_CLAMPF(cbrtf(volume) * 30 - 30, VOLUME_MIN, VOLUME_MAX);
+-				impl->volume = volume;
+-
+-				rtsp_send_volume(impl);
+-				spa_pod_builder_prop(&b, SPA_PROP_softVolumes, 0);
+-				spa_pod_builder_array(&b, sizeof(float), SPA_TYPE_Float,
+-						n_vols, soft_vols);
++			uint32_t n_values, value_size, value_type;
++			const float *values = spa_pod_get_array_full(&prop->value,
++					&n_values, &value_size, &value_type);
++
++			if (values == NULL || value_type != SPA_TYPE_Float ||
++					value_size != sizeof(float) ||
++					n_values == 0 || n_values > MAX_CHANNELS ||
++					raop_volume_validate_channels(values,
++						n_values, &average) < 0) {
++				invalid_volumes = true;
++				break;
+ 			}
+-			spa_pod_builder_raw_padded(&b, prop, SPA_POD_PROP_SIZE(prop));
++			n_volumes = n_values;
++			memcpy(volumes, values, n_volumes * sizeof(float));
++			have_volumes = true;
+ 			break;
+ 		}
++		default:
++			break;
++		}
++	}
++
++	if (invalid_volumes) {
++		pw_log_warn("rejecting invalid channelVolumes");
++		if (!impl->volume_valid ||
++				stream_set_volume_props(impl, impl->channel_volumes,
++					impl->n_channel_volumes, impl->mute,
++					volume_control_uses_software(impl)) < 0)
++			volume_fail_closed(impl,
++					"RAOP volume reassertion failed");
++		return;
++	}
++	if (have_mute && impl->mute != mute)
++		mute_changed = true;
++	if (have_volumes && (!impl->volume_valid ||
++			fabsf(impl->channel_volume - average) >= 0.000001f))
++		volume_changed = true;
++
++	props_result = raop_volume_state_on_props(&impl->volume_state,
++			have_volumes, average, have_mute, mute,
++			impl->channel_volume, impl->mute,
++			volume_changed, mute_changed);
++
++	/* A stream can report its default Props after the RECORD reply. Do not
++	 * let that delayed event overwrite a baseline already obtained from the
++	 * receiver or supplied by an external controller. */
++	if (props_result == RAOP_VOLUME_PROPS_REASSERT ||
++			props_result == RAOP_VOLUME_PROPS_STALE) {
++		if (stream_set_volume_props(impl, impl->channel_volumes,
++				impl->n_channel_volumes, impl->mute,
++				volume_control_uses_software(impl)) < 0)
++			volume_fail_closed(impl,
++					"RAOP volume reassertion failed");
++		return;
++	}
++
++	if (have_mute)
++		impl->mute = mute;
++	if (have_volumes) {
++		impl->channel_volume = average;
++		impl->volume = raop_volume_from_channel(average);
++		impl->volume_valid = true;
++		impl->n_channel_volumes = n_volumes;
++		memcpy(impl->channel_volumes, volumes, n_volumes * sizeof(float));
++	}
++
++	spa_pod_builder_push_object(&b, &f[0], SPA_TYPE_OBJECT_Props, SPA_PARAM_Props);
++	SPA_POD_OBJECT_FOREACH(obj, prop) {
++		switch (prop->key) {
+ 		case SPA_PROP_softVolumes:
+ 		case SPA_PROP_softMute:
+ 			break;
+@@ -1632,9 +2218,30 @@ static void stream_props_changed(struct impl *impl, uint32_t id, const struct sp
+ 			break;
+ 		}
+ 	}
++	if (raop_volume_needs_soft_mute_update(impl->volume_control,
++			have_volumes, have_mute)) {
++		spa_pod_builder_prop(&b, SPA_PROP_softMute, 0);
++		spa_pod_builder_bool(&b, raop_volume_soft_mute(
++				impl->volume_control,
++				volume_control_uses_software(impl), mute));
++	}
++	if (have_volumes) {
++		for (i = 0; i < n_volumes; i++)
++			soft_volumes[i] = volume_control_uses_software(impl) ?
++				volumes[i] : 1.0f;
++		spa_pod_builder_prop(&b, SPA_PROP_softVolumes, 0);
++		spa_pod_builder_array(&b, sizeof(float), SPA_TYPE_Float,
++				n_volumes, soft_volumes);
++	}
+ 	param = spa_pod_builder_pop(&b, &f[0]);
+ 
+-	rtp_stream_set_param(impl->stream, id, param);
++	if ((res = rtp_stream_set_param(impl->stream, id, param)) < 0) {
++		volume_fail_closed(impl,
++				"RAOP volume parameter application failed");
++		return;
++	}
++	if (props_result == RAOP_VOLUME_PROPS_USER)
++		rtsp_send_volume(impl);
+ }
+ 
+ static void stream_param_changed(void *data, uint32_t id, const struct spa_pod *param)
+@@ -1695,6 +2302,9 @@ static const struct pw_proxy_events core_proxy_events = {
+ 
+ static void impl_destroy(struct impl *impl)
+ {
++	pw_timer_queue_cancel(&impl->volume_query_timer);
++	pw_timer_queue_cancel(&impl->volume_set_timer);
++	pw_timer_queue_cancel(&impl->feedback_timer);
+ 	if (impl->stream)
+ 		rtp_stream_destroy(impl->stream);
+ 	if (impl->core && impl->do_disconnect)
+@@ -1741,6 +2351,10 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 	struct pw_properties *props = NULL;
+ 	struct impl *impl;
+ 	const char *str, *name, *hostname, *ip, *port;
++	uint8_t initial_buffer[4096];
++	struct spa_pod_builder initial_builder;
++	const struct spa_pod *initial_params[1];
++	uint32_t n_initial_params = 0;
+ 	int res = 0;
+ 
+ 	PW_LOG_TOPIC_INIT(mod_topic);
+@@ -1789,6 +2403,26 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 		res = -EINVAL;
+ 		goto error;
+ 	}
++	str = pw_properties_get(props, "raop.volume.control");
++	if ((res = raop_volume_control_parse(str, &impl->volume_control)) < 0) {
++		pw_log_error("invalid raop.volume.control '%s'",
++				str == NULL ? "(null)" : str);
++		goto error;
++	}
++	pw_properties_set(props, "raop.volume.control",
++			raop_volume_control_name(impl->volume_control));
++	pw_properties_set(props, "raop.volume.contract", RAOP_VOLUME_CONTRACT);
++
++	impl->volume_query_timeout_ms = DEFAULT_VOLUME_QUERY_TIMEOUT_MS;
++	if ((str = pw_properties_get(props, "raop.volume.query-timeout.ms")) != NULL) {
++		if (!spa_atou32(str, &impl->volume_query_timeout_ms, 10) ||
++				impl->volume_query_timeout_ms == 0 ||
++				impl->volume_query_timeout_ms > MAX_VOLUME_QUERY_TIMEOUT_MS) {
++			pw_log_error("invalid raop.volume.query-timeout.ms '%s'", str);
++			res = -EINVAL;
++			goto error;
++		}
++	}
+ 
+ 	if ((str = pw_properties_get(props, "raop.transport")) == NULL)
+ 		str = "udp";
+@@ -1857,6 +2491,8 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 		pw_properties_setf(props, PW_KEY_AUDIO_FORMAT, "%s", RAOP_FORMAT);
+ 	if (pw_properties_get(props, PW_KEY_AUDIO_RATE) == NULL)
+ 		pw_properties_setf(props, PW_KEY_AUDIO_RATE, "%u", impl->rate);
++	impl->channels = SPA_CLAMP(pw_properties_get_uint32(props,
++			PW_KEY_AUDIO_CHANNELS, DEFAULT_CHANNELS), 1u, (uint32_t)MAX_CHANNELS);
+ 	if (pw_properties_get(props, PW_KEY_DEVICE_ICON_NAME) == NULL)
+ 		pw_properties_set(props, PW_KEY_DEVICE_ICON_NAME, "audio-speakers");
+ 	if (pw_properties_get(props, PW_KEY_NODE_NAME) == NULL)
+@@ -1901,6 +2537,9 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 	copy_props(impl, props, PW_KEY_MEDIA_CLASS);
+ 	copy_props(impl, props, PW_KEY_MEDIA_FORMAT);
+ 	copy_props(impl, props, PW_KEY_MEDIA_NAME);
++	copy_props(impl, props, "raop.name");
++	copy_props(impl, props, "raop.hostname");
++	copy_props(impl, props, "device.model");
+ 	copy_props(impl, props, "net.mtu");
+ 	copy_props(impl, props, "rtp.sender-ts-offset");
+ 	copy_props(impl, props, "sess.media");
+@@ -1910,6 +2549,12 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 	copy_props(impl, props, "sess.latency.msec");
+ 	copy_props(impl, props, "sess.ts-refclk");
+ 	copy_props(impl, props, "sess.ts-direct");
++	if ((res = raop_volume_override_stream_props(impl->stream_props,
++			props)) < 0) {
++		pw_log_error("can't apply RAOP stream property contract: %s",
++				spa_strerror(res));
++		goto error;
++	}
+ 
+ 	impl->mtu = pw_properties_get_uint32(impl->props, "net.mtu", 1448);
+ 	impl->sync_period = impl->rate / (impl->mtu / impl->stride);
+@@ -1936,14 +2581,74 @@ int pipewire__module_init(struct pw_impl_module *module, const char *args)
+ 			&impl->core_listener,
+ 			&core_events, impl);
+ 
+-	impl->stream = rtp_stream_new(impl->core,
++	if (impl->volume_control == RAOP_VOLUME_EXTERNAL) {
++		float initial, channel, volumes[MAX_CHANNELS], soft_volumes[MAX_CHANNELS];
++		bool mute;
++		uint32_t i;
++
++		pw_properties_set(impl->stream_props, "state.restore-props", "false");
++		str = pw_properties_get(props, "raop.volume.initial");
++		if (!spa_atof(str, &initial) || !isfinite(initial) ||
++				initial < 0.0f || initial > 1.0f) {
++			pw_log_error("external volume control requires a valid "
++					"raop.volume.initial in the range 0.0 to 1.0");
++			res = -EINVAL;
++			goto error;
++		}
++		mute = pw_properties_get_bool(props, "raop.volume.initial.mute", false);
++		channel = initial * initial * initial;
++		for (i = 0; i < impl->channels; i++) {
++			volumes[i] = channel;
++			soft_volumes[i] = 1.0f;
++			impl->channel_volumes[i] = channel;
++		}
++		impl->mute = mute;
++		impl->volume = initial * (VOLUME_MAX - VOLUME_MIN) + VOLUME_MIN;
++		impl->channel_volume = channel;
++		impl->volume_valid = true;
++		impl->n_channel_volumes = impl->channels;
++		raop_volume_state_sync(&impl->volume_state, channel, mute, true);
++
++		spa_pod_builder_init(&initial_builder, initial_buffer,
++				sizeof(initial_buffer));
++		initial_params[n_initial_params++] = spa_pod_builder_add_object(
++				&initial_builder,
++				SPA_TYPE_OBJECT_Props, SPA_PARAM_Props,
++				SPA_PROP_mute, SPA_POD_Bool(mute),
++				SPA_PROP_channelVolumes, SPA_POD_Array(sizeof(float),
++					SPA_TYPE_Float, impl->channels, volumes),
++				SPA_PROP_softMute, SPA_POD_Bool(
++					raop_volume_soft_mute(
++						impl->volume_control, false, mute)),
++				SPA_PROP_softVolumes, SPA_POD_Array(sizeof(float),
++					SPA_TYPE_Float, impl->channels, soft_volumes));
++		if (initial_params[0] == NULL) {
++			res = -ENOSPC;
++			goto error;
++		}
++	}
++
++	impl->stream = rtp_stream_new_params(impl->core,
+ 			PW_DIRECTION_INPUT, pw_properties_copy(impl->stream_props),
+-			&stream_events, impl);
++			&stream_events, impl, initial_params, n_initial_params);
+ 	if (impl->stream == NULL) {
+ 		res = -errno;
+ 		pw_log_error("can't create raop stream: %m");
+ 		goto error;
+ 	}
++	if (impl->volume_control == RAOP_VOLUME_EXTERNAL) {
++		/* The initial Props are consumed by pw_stream_connect() and are not
++		 * reported through stream_param_changed(). Mark them as seen while
++		 * retaining the pending baseline so a delayed copy is still
++		 * recognized after a newer user request. */
++		if (!raop_volume_state_mark_initial_props_installed(
++				&impl->volume_state,
++				impl->channel_volume, impl->mute)) {
++			pw_log_error("can't confirm external RAOP volume baseline");
++			res = -EPROTO;
++			goto error;
++		}
++	}
+ 
+ 	impl->headers = pw_properties_new(NULL, NULL);
+ 
+diff --git a/src/modules/module-raop/rtsp-client.c b/src/modules/module-raop/rtsp-client.c
+index 3f999dfa67f6bb5567492f40ab2256b69e8c26be..e018bdcde685aa297f85ef6474159d45f6eb2b9a 100644
+--- a/src/modules/module-raop/rtsp-client.c
++++ b/src/modules/module-raop/rtsp-client.c
+@@ -26,6 +26,7 @@ struct message {
+ 	uint32_t cseq;
+ 	int (*reply) (void *user_data, int status, const struct spa_dict *headers, const struct pw_array *content);
+ 	void *user_data;
++	void (*destroy_data) (void *user_data);
+ 	unsigned char data[];
+ };
+ 
+@@ -71,6 +72,27 @@ struct pw_rtsp_client {
+ 	void *user_data;
+ };
+ 
++static void message_free(struct message *msg)
++{
++	if (msg->destroy_data != NULL)
++		msg->destroy_data(msg->user_data);
++	free(msg);
++}
++
++static void clear_messages(struct pw_rtsp_client *client)
++{
++	struct message *msg;
++
++	spa_list_consume(msg, &client->messages, link) {
++		spa_list_remove(&msg->link);
++		message_free(msg);
++	}
++	spa_list_consume(msg, &client->pending, link) {
++		spa_list_remove(&msg->link);
++		message_free(msg);
++	}
++}
++
+ struct pw_rtsp_client *pw_rtsp_client_new(struct pw_loop *main_loop,
+ 				struct pw_properties *props,
+ 				size_t user_data_size)
+@@ -280,9 +302,9 @@ static void dispatch_handler(struct pw_rtsp_client *client)
+ 
+ 	msg = find_pending(client, cseq);
+ 	if (msg) {
+-		res = msg->reply(msg->user_data, client->status, &client->headers->dict, &client->content);
+ 		spa_list_remove(&msg->link);
+-		free(msg);
++		res = msg->reply(msg->user_data, client->status, &client->headers->dict, &client->content);
++		message_free(msg);
+ 
+ 		if (res < 0)
+ 			pw_log_warn("client %p: handle reply cseq:%u error: %s",
+@@ -423,7 +445,7 @@ static int flush_output(struct pw_rtsp_client *client)
+ 			if (msg->reply != NULL)
+ 				spa_list_append(&client->pending, &msg->link);
+ 			else
+-				free(msg);
++				message_free(msg);
+ 			continue;
+ 		}
+ 
+@@ -548,10 +570,10 @@ int pw_rtsp_client_connect(struct pw_rtsp_client *client,
+ 
+ int pw_rtsp_client_disconnect(struct pw_rtsp_client *client)
+ {
+-	struct message *msg;
+-
+-	if (client->source == NULL)
++	if (client->source == NULL) {
++		clear_messages(client);
+ 		return 0;
++	}
+ 
+ 	pw_loop_destroy_source(client->loop, client->source);
+ 	client->source = NULL;
+@@ -560,23 +582,16 @@ int pw_rtsp_client_disconnect(struct pw_rtsp_client *client)
+ 	free(client->session_id);
+ 	client->session_id = NULL;
+ 
+-	spa_list_consume(msg, &client->messages, link) {
+-		spa_list_remove(&msg->link);
+-		free(msg);
+-	}
+-	spa_list_consume(msg, &client->pending, link) {
+-		spa_list_remove(&msg->link);
+-		free(msg);
+-	}
++	clear_messages(client);
+ 	pw_rtsp_client_emit_disconnected(client);
+ 	return 0;
+ }
+ 
+-int pw_rtsp_client_url_send(struct pw_rtsp_client *client, const char *url,
++int pw_rtsp_client_url_send_full(struct pw_rtsp_client *client, const char *url,
+ 		const char *cmd, const struct spa_dict *headers,
+ 		const char *content_type, const void *content, size_t content_length,
+ 		int (*reply) (void *user_data, int status, const struct spa_dict *headers, const struct pw_array *content),
+-		void *user_data)
++		void *user_data, void (*destroy_data) (void *user_data))
+ {
+ 	FILE *f;
+ 	size_t len;
+@@ -613,6 +628,7 @@ int pw_rtsp_client_url_send(struct pw_rtsp_client *client, const char *url,
+ 	msg->offset = 0;
+ 	msg->reply = reply;
+ 	msg->user_data = user_data;
++	msg->destroy_data = destroy_data;
+ 	msg->cseq = cseq;
+ 
+ 	spa_list_append(&client->messages, &msg->link);
+@@ -625,6 +641,29 @@ int pw_rtsp_client_url_send(struct pw_rtsp_client *client, const char *url,
+ 	return 0;
+ }
+ 
++int pw_rtsp_client_url_send(struct pw_rtsp_client *client, const char *url,
++		const char *cmd, const struct spa_dict *headers,
++		const char *content_type, const void *content, size_t content_length,
++		int (*reply) (void *user_data, int status, const struct spa_dict *headers, const struct pw_array *content),
++		void *user_data)
++{
++	return pw_rtsp_client_url_send_full(client, url, cmd, headers,
++			content_type, content, content_length, reply, user_data, NULL);
++}
++
++int pw_rtsp_client_send_full(struct pw_rtsp_client *client,
++		const char *cmd, const struct spa_dict *headers,
++		const char *content_type, const char *content,
++		int (*reply) (void *user_data, int status, const struct spa_dict *headers, const struct pw_array *content),
++		void *user_data, void (*destroy_data) (void *user_data))
++{
++	const size_t content_length = content ? strlen(content) : 0;
++
++	return pw_rtsp_client_url_send_full(client, client->url, cmd, headers,
++			content_type, content, content_length,
++			reply, user_data, destroy_data);
++}
++
+ int pw_rtsp_client_send(struct pw_rtsp_client *client,
+ 		const char *cmd, const struct spa_dict *headers,
+ 		const char *content_type, const char *content,
+@@ -633,7 +672,7 @@ int pw_rtsp_client_send(struct pw_rtsp_client *client,
+ {
+ 	const size_t content_length = content ? strlen(content) : 0;
+ 
+-	return pw_rtsp_client_url_send(client, client->url, cmd, headers,
+-				       content_type, content, content_length,
+-				       reply, user_data);
++	return pw_rtsp_client_url_send_full(client, client->url, cmd, headers,
++			content_type, content, content_length,
++			reply, user_data, NULL);
+ }
+diff --git a/src/modules/module-raop/rtsp-client.h b/src/modules/module-raop/rtsp-client.h
+index bfb4a4fe2e4b8eaefa8088fa275bfb160c93c173..d3164e08cbfadd47b33f591eebe38930e328c332 100644
+--- a/src/modules/module-raop/rtsp-client.h
++++ b/src/modules/module-raop/rtsp-client.h
+@@ -57,12 +57,22 @@ int pw_rtsp_client_url_send(struct pw_rtsp_client *client, const char *url,
+ 		const char *content_type, const void *content, size_t content_length,
+ 		int (*reply) (void *user_data, int status, const struct spa_dict *headers, const struct pw_array *content),
+ 		void *user_data);
++int pw_rtsp_client_url_send_full(struct pw_rtsp_client *client, const char *url,
++		const char *cmd, const struct spa_dict *headers,
++		const char *content_type, const void *content, size_t content_length,
++		int (*reply) (void *user_data, int status, const struct spa_dict *headers, const struct pw_array *content),
++		void *user_data, void (*destroy_data) (void *user_data));
+ 
+ int pw_rtsp_client_send(struct pw_rtsp_client *client,
+ 		const char *cmd, const struct spa_dict *headers,
+ 		const char *content_type, const char *content,
+ 		int (*reply) (void *user_data, int status, const struct spa_dict *headers, const struct pw_array *content),
+ 		void *user_data);
++int pw_rtsp_client_send_full(struct pw_rtsp_client *client,
++		const char *cmd, const struct spa_dict *headers,
++		const char *content_type, const char *content,
++		int (*reply) (void *user_data, int status, const struct spa_dict *headers, const struct pw_array *content),
++		void *user_data, void (*destroy_data) (void *user_data));
+ 
+ 
+ #ifdef __cplusplus
+diff --git a/src/modules/module-raop/test-volume.c b/src/modules/module-raop/test-volume.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..4045e31469d1253d5f9727d3bc9a70105ff736e7
+--- /dev/null
++++ b/src/modules/module-raop/test-volume.c
+@@ -0,0 +1,731 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <errno.h>
++#include <math.h>
++#include <string.h>
++
++#include <spa/utils/defs.h>
++#include <spa/utils/string.h>
++
++#include "rtsp-client.h"
++#include "volume.h"
++
++static void test_control(void)
++{
++	enum raop_volume_control control;
++
++	spa_assert_se(raop_volume_control_parse(NULL, &control) == 0);
++	spa_assert_se(control == RAOP_VOLUME_REMOTE_OPTIONAL);
++	spa_assert_se(raop_volume_control_parse("remote-required", &control) == 0);
++	spa_assert_se(control == RAOP_VOLUME_REMOTE_REQUIRED);
++	spa_assert_se(raop_volume_control_parse("local", &control) == 0);
++	spa_assert_se(control == RAOP_VOLUME_LOCAL);
++	spa_assert_se(raop_volume_control_parse("software", &control) == 0);
++	spa_assert_se(control == RAOP_VOLUME_SOFTWARE);
++	spa_assert_se(raop_volume_control_parse("external", &control) == 0);
++	spa_assert_se(control == RAOP_VOLUME_EXTERNAL);
++	spa_assert_se(raop_volume_control_parse("invalid", &control) == -EINVAL);
++	spa_assert_se(spa_streq(raop_volume_control_name(
++			RAOP_VOLUME_REMOTE_OPTIONAL), "remote-optional"));
++	spa_assert_se(raop_volume_control_name(100) == NULL);
++	spa_assert_se(raop_volume_failure_action(
++			RAOP_VOLUME_REMOTE_OPTIONAL) ==
++			RAOP_VOLUME_FAILURE_SOFTWARE);
++	spa_assert_se(raop_volume_failure_action(
++			RAOP_VOLUME_REMOTE_REQUIRED) ==
++			RAOP_VOLUME_FAILURE_ERROR);
++	spa_assert_se(raop_volume_failure_action(RAOP_VOLUME_LOCAL) ==
++			RAOP_VOLUME_FAILURE_IGNORE);
++}
++
++static void test_soft_policy(void)
++{
++	/* Only explicit software mode or a per-session fallback scales audio. */
++	spa_assert_se(!raop_volume_uses_soft_volumes(
++			RAOP_VOLUME_REMOTE_OPTIONAL, false));
++	spa_assert_se(raop_volume_uses_soft_volumes(
++			RAOP_VOLUME_REMOTE_OPTIONAL, true));
++	spa_assert_se(raop_volume_uses_soft_volumes(
++			RAOP_VOLUME_SOFTWARE, false));
++	spa_assert_se(!raop_volume_uses_soft_volumes(
++			RAOP_VOLUME_EXTERNAL, false));
++	spa_assert_se(!raop_volume_uses_soft_volumes(
++			RAOP_VOLUME_EXTERNAL, true));
++
++	/* A volume-only external update must reassert the canonical mute. */
++	spa_assert_se(raop_volume_needs_soft_mute_update(
++			RAOP_VOLUME_EXTERNAL, true, false));
++	spa_assert_se(!raop_volume_needs_soft_mute_update(
++			RAOP_VOLUME_REMOTE_OPTIONAL, true, false));
++	spa_assert_se(raop_volume_needs_soft_mute_update(
++			RAOP_VOLUME_REMOTE_OPTIONAL, false, true));
++	spa_assert_se(!raop_volume_needs_soft_mute_update(
++			RAOP_VOLUME_EXTERNAL, false, false));
++
++	/* External mute is a local safety gate despite unity soft volumes. */
++	spa_assert_se(!raop_volume_soft_mute(
++			RAOP_VOLUME_REMOTE_OPTIONAL, false, true));
++	spa_assert_se(raop_volume_soft_mute(
++			RAOP_VOLUME_REMOTE_OPTIONAL, true, true));
++	spa_assert_se(raop_volume_soft_mute(
++			RAOP_VOLUME_SOFTWARE, true, true));
++	spa_assert_se(raop_volume_soft_mute(
++			RAOP_VOLUME_EXTERNAL, false, true));
++	spa_assert_se(!raop_volume_soft_mute(
++			RAOP_VOLUME_EXTERNAL, false, false));
++}
++
++static void check_reply(const char *reply, float expected, bool expected_mute)
++{
++	float volume = 0.0f;
++	bool mute = false;
++
++	spa_assert_se(raop_volume_parse_reply(reply, strlen(reply),
++			&volume, &mute) == 0);
++	spa_assert_se(fabsf(volume - expected) < 0.000001f);
++	spa_assert_se(mute == expected_mute);
++}
++
++static void test_parser(void)
++{
++	static const char embedded_nul[] = "volume: -15\0junk";
++	float volume;
++	bool mute;
++
++	check_reply("volume: -30\r\n", -30.0f, false);
++	check_reply(" volume:\t-15.000000 \r\n", -15.0f, false);
++	check_reply("volume: 0", 0.0f, false);
++	check_reply("volume: -144.000000\r\n", -144.0f, true);
++
++	spa_assert_se(raop_volume_parse_reply(NULL, 0, &volume, &mute) == -EPROTO);
++	spa_assert_se(raop_volume_parse_reply("volume: -15", 11,
++			NULL, &mute) == -EPROTO);
++	spa_assert_se(raop_volume_parse_reply("volume: -15", 11,
++			&volume, NULL) == -EPROTO);
++	spa_assert_se(raop_volume_parse_reply("", 0, &volume, &mute) == -EPROTO);
++	spa_assert_se(raop_volume_parse_reply("vol: -15", 8,
++			&volume, &mute) == -EPROTO);
++	spa_assert_se(raop_volume_parse_reply("volume: nan", 11,
++			&volume, &mute) == -EPROTO);
++	spa_assert_se(raop_volume_parse_reply("volume: inf", 11,
++			&volume, &mute) == -EPROTO);
++	spa_assert_se(raop_volume_parse_reply("volume: -30.1", 13,
++			&volume, &mute) == -ERANGE);
++	spa_assert_se(raop_volume_parse_reply("volume: 0.1", 11,
++			&volume, &mute) == -ERANGE);
++	spa_assert_se(raop_volume_parse_reply("volume: -143", 12,
++			&volume, &mute) == -ERANGE);
++	spa_assert_se(raop_volume_parse_reply("volume: -15 extra", 17,
++			&volume, &mute) == -EPROTO);
++	spa_assert_se(raop_volume_parse_reply(embedded_nul,
++			sizeof(embedded_nul) - 1, &volume, &mute) == -EPROTO);
++}
++
++static void test_mapping(void)
++{
++	static const float channels[] = { 0.0f, 0.001f, 0.125f, 0.5f, 1.0f };
++	static const float stereo[] = { 0.125f, 0.216f };
++	float invalid[2], near_full[2], average, below_full, mapped, serialized;
++	char text[64];
++	uint32_t i;
++
++	spa_assert_se(fabsf(raop_volume_from_channel(0.0f) - -30.0f) <
++			0.000001f);
++	spa_assert_se(fabsf(raop_volume_from_channel(0.125f) - -15.0f) <
++			0.000001f);
++	spa_assert_se(fabsf(raop_volume_from_channel(1.0f)) < 0.000001f);
++	spa_assert_se(fabsf(raop_volume_to_channel(-15.0f) - 0.125f) <
++			0.000001f);
++	spa_assert_se(fabsf(raop_volume_to_channel(
++			0.15f * 30.0f - 30.0f) - 0.003375f) < 0.000001f);
++
++	below_full = nextafterf(1.0f, 0.0f);
++	mapped = raop_volume_from_channel(below_full);
++	spa_assert_se(mapped < 0.0f);
++	spa_assert_se(spa_atof(spa_dtoa(text, sizeof(text), mapped),
++			&serialized));
++	spa_assert_se(serialized < 0.0f);
++	spa_assert_se(spa_streq(spa_dtoa(text, sizeof(text),
++			raop_volume_from_channel(1.0f)), "0.000000"));
++
++	near_full[0] = 1.0f;
++	near_full[1] = below_full;
++	spa_assert_se(raop_volume_validate_channels(near_full,
++			SPA_N_ELEMENTS(near_full), &average) == 0);
++	spa_assert_se(average < 1.0f);
++	mapped = raop_volume_from_channel(average);
++	spa_assert_se(mapped < 0.0f);
++	spa_assert_se(spa_atof(spa_dtoa(text, sizeof(text), mapped),
++			&serialized));
++	spa_assert_se(serialized < 0.0f);
++
++	for (i = 0; i < SPA_N_ELEMENTS(channels); i++)
++		spa_assert_se(fabsf(raop_volume_to_channel(
++				raop_volume_from_channel(channels[i])) -
++				channels[i]) < 0.000001f);
++
++	spa_assert_se(raop_volume_validate_channels(stereo,
++			SPA_N_ELEMENTS(stereo), &average) == 0);
++	spa_assert_se(fabsf(average - 0.1705f) < 0.000001f);
++	spa_assert_se(raop_volume_validate_channels(NULL, 1, NULL) == -EINVAL);
++	spa_assert_se(raop_volume_validate_channels(stereo, 0, NULL) == -EINVAL);
++
++	memcpy(invalid, stereo, sizeof(invalid));
++	invalid[1] = NAN;
++	spa_assert_se(raop_volume_validate_channels(invalid, 2, NULL) == -ERANGE);
++	invalid[1] = INFINITY;
++	spa_assert_se(raop_volume_validate_channels(invalid, 2, NULL) == -ERANGE);
++	invalid[1] = -0.0001f;
++	spa_assert_se(raop_volume_validate_channels(invalid, 2, NULL) == -ERANGE);
++	invalid[1] = 1.0001f;
++	spa_assert_se(raop_volume_validate_channels(invalid, 2, NULL) == -ERANGE);
++	spa_assert_se(isnan(raop_volume_from_channel(NAN)));
++	spa_assert_se(isnan(raop_volume_from_channel(INFINITY)));
++	spa_assert_se(isnan(raop_volume_from_channel(-0.0001f)));
++	spa_assert_se(isnan(raop_volume_from_channel(1.0001f)));
++}
++
++static void test_stream_contract(void)
++{
++	struct pw_properties *module_props, *stream_props;
++
++	spa_assert_se(spa_streq(RAOP_VOLUME_CONTRACT, "2"));
++	module_props = pw_properties_new(
++			"raop.volume.contract", RAOP_VOLUME_CONTRACT,
++			"raop.volume.control", "external",
++			"raop.device", "02000000A001",
++			"raop.ip", "192.0.2.10",
++			"raop.port", "7000",
++			NULL);
++	stream_props = pw_properties_new(
++			"raop.volume.contract", "forged",
++			"raop.volume.control", "remote-required",
++			"raop.device", "000000000000",
++			"raop.ip", "203.0.113.1",
++			"raop.port", "1",
++			"raop.name", "nested name remains",
++			NULL);
++	spa_assert_se(module_props != NULL);
++	spa_assert_se(stream_props != NULL);
++	spa_assert_se(raop_volume_override_stream_props(stream_props,
++			module_props) == 0);
++	spa_assert_se(spa_streq(pw_properties_get(stream_props,
++			"raop.volume.contract"), RAOP_VOLUME_CONTRACT));
++	spa_assert_se(spa_streq(pw_properties_get(stream_props,
++			"raop.volume.control"), "external"));
++	spa_assert_se(spa_streq(pw_properties_get(stream_props,
++			"raop.device"), "02000000A001"));
++	spa_assert_se(spa_streq(pw_properties_get(stream_props,
++			"raop.ip"), "192.0.2.10"));
++	spa_assert_se(spa_streq(pw_properties_get(stream_props,
++			"raop.port"), "7000"));
++	spa_assert_se(spa_streq(pw_properties_get(stream_props,
++			"raop.name"), "nested name remains"));
++
++	/* A missing module identity value removes, rather than trusts, a value
++	 * injected through nested stream.props. */
++	pw_properties_set(module_props, "raop.device", NULL);
++	spa_assert_se(raop_volume_override_stream_props(stream_props,
++			module_props) == 0);
++	spa_assert_se(pw_properties_get(stream_props, "raop.device") == NULL);
++
++	pw_properties_free(stream_props);
++	pw_properties_free(module_props);
++}
++
++static void test_state(void)
++{
++	struct raop_volume_state state = { 0 };
++	enum raop_volume_props_result result;
++	const float remote = raop_volume_to_channel(-15.0f);
++	uint32_t query_volume_generation, query_mute_generation;
++	float merged_volume;
++
++	/* Normal ordering: initial node props, RECORD/query, receiver echo,
++	 * then a real user request. */
++	result = raop_volume_state_on_props(&state,
++			true, 1.0f, true, false, 0.0f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_INITIAL);
++	spa_assert_se(state.generation == 0);
++	raop_volume_state_sync(&state, remote, false, true);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, 1.0f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	spa_assert_se(state.generation == 0);
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, false, remote, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	spa_assert_se(state.generation == 1);
++	spa_assert_se(state.volume_generation == 1);
++	spa_assert_se(state.mute_generation == 0);
++	result = raop_volume_state_on_props(&state,
++			true, 1.0f, true, false, 0.216f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_REASSERT);
++	spa_assert_se(state.generation == 1);
++	spa_assert_se(state.unsafe_initial_volume_valid);
++
++	/* A volume-only startup default is guarded in the same way. */
++	memset(&state, 0, sizeof(state));
++	result = raop_volume_state_on_props(&state,
++			true, 1.0f, false, false, 0.0f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_INITIAL);
++	raop_volume_state_sync(&state, remote, false, true);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, remote, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	result = raop_volume_state_on_props(&state,
++			true, 1.0f, false, false, remote, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_REASSERT);
++	spa_assert_se(state.generation == 0);
++
++	/* An initial value equal to the receiver baseline is not guarded. */
++	memset(&state, 0, sizeof(state));
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, 0.0f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_INITIAL);
++	raop_volume_state_sync(&state, remote, false, true);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, remote, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	spa_assert_se(!state.unsafe_initial_volume_valid);
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, false, remote, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, 0.216f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	spa_assert_se(state.generation == 2);
++
++	/* A user request can overtake the echo of a module-authored baseline.
++	 * The delayed old echo must not overwrite or resend the user request. */
++	memset(&state, 0, sizeof(state));
++	result = raop_volume_state_on_props(&state,
++			true, 1.0f, true, false, 0.0f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_INITIAL);
++	raop_volume_state_sync(&state, remote, false, true);
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, false, remote, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, 0.216f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_STALE);
++	spa_assert_se(state.generation == 1);
++
++	/* A volume-only baseline echo can be followed by volume-only user intent
++	 * while the authored mute is still pending. The delayed full baseline must
++	 * match the saved tuple context instead of becoming a second user request. */
++	memset(&state, 0, sizeof(state));
++	raop_volume_state_sync(&state, remote, true, true);
++	spa_assert_se(raop_volume_state_mark_initial_props_installed(
++			&state, remote, true));
++	result = raop_volume_state_on_props(&state,
++			true, remote, false, false, remote, true, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	spa_assert_se(!state.sync_volume_pending);
++	spa_assert_se(state.sync_mute_pending);
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, false, false, remote, true, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	raop_volume_state_sync(&state, 0.343f, false, false);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, true, 0.343f, false, true, true);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_STALE);
++	spa_assert_se(state.generation == 1);
++	spa_assert_se(state.sync_volume_pending);
++	spa_assert_se(state.sync_mute_pending);
++	result = raop_volume_state_on_props(&state,
++			true, 0.343f, true, false, 0.343f, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++
++	/* Mirror the transaction: a mute-only baseline echo, then mute-only user
++	 * intent, must retain the authored volume as the stale-event trigger. */
++	memset(&state, 0, sizeof(state));
++	raop_volume_state_sync(&state, remote, false, true);
++	spa_assert_se(raop_volume_state_mark_initial_props_installed(
++			&state, remote, false));
++	result = raop_volume_state_on_props(&state,
++			false, 0.0f, true, false, remote, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	spa_assert_se(state.sync_volume_pending);
++	spa_assert_se(!state.sync_mute_pending);
++	result = raop_volume_state_on_props(&state,
++			false, 0.0f, true, true, remote, false, false, true);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, remote, true, false, true);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_STALE);
++	spa_assert_se(state.generation == 1);
++
++	/* A partial stale event is reasserted as a new sync. Defer a third user
++	 * tuple instead of overwriting either authored history slot; after the
++	 * remaining stale fragment drains, the same user tuple can be accepted. */
++	memset(&state, 0, sizeof(state));
++	raop_volume_state_sync(&state, remote, false, true);
++	spa_assert_se(raop_volume_state_mark_initial_props_installed(
++			&state, remote, false));
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, true, remote, false, true, true);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	result = raop_volume_state_on_props(&state,
++			true, remote, false, false, 0.216f, true, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_STALE);
++	spa_assert_se(!state.stale_volume_pending);
++	spa_assert_se(state.stale_mute_pending);
++	raop_volume_state_sync(&state, 0.216f, true, false);
++	result = raop_volume_state_on_props(&state,
++			true, 0.343f, false, false, 0.216f, true, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_REASSERT);
++	spa_assert_se(state.generation == 1);
++	spa_assert_se(state.stale_mute_pending);
++	spa_assert_se(state.sync_volume_pending);
++	spa_assert_se(state.sync_mute_pending);
++	result = raop_volume_state_on_props(&state,
++			false, 0.0f, true, false, 0.216f, true, false, true);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_STALE);
++	spa_assert_se(!state.stale_mute_pending);
++	raop_volume_state_sync(&state, 0.216f, true, false);
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, true, 0.216f, true, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	spa_assert_se(!state.stale_valid);
++	result = raop_volume_state_on_props(&state,
++			true, 0.343f, false, false, 0.216f, true, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	spa_assert_se(state.generation == 2);
++
++	/* More than one delayed copy of an authored tuple can be observed. The
++	 * unchanged mute aliases both tuples and must not consume the newer sync.
++	 * Keep suppressing duplicates until the complete newer tuple retires this
++	 * rolling quarantine; a later return can then be treated as user intent. */
++	memset(&state, 0, sizeof(state));
++	raop_volume_state_sync(&state, remote, false, true);
++	spa_assert_se(raop_volume_state_mark_initial_props_installed(
++			&state, remote, false));
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, false, remote, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	spa_assert_se(state.stale_valid);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, 0.216f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_STALE);
++	spa_assert_se(state.stale_valid);
++	spa_assert_se(!state.stale_volume_pending);
++	spa_assert_se(!state.stale_mute_pending);
++	raop_volume_state_sync(&state, 0.216f, false, false);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, 0.216f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_STALE);
++	spa_assert_se(state.generation == 1);
++	spa_assert_se(state.stale_valid);
++	spa_assert_se(state.sync_volume_pending);
++	spa_assert_se(state.sync_mute_pending);
++	raop_volume_state_sync(&state, 0.216f, false, false);
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, false, 0.216f, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	spa_assert_se(!state.stale_valid);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, 0.216f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	spa_assert_se(state.generation == 2);
++
++	/* Partial echoes cannot form the ordering barrier: an unchanged mute
++	 * aliases old and new tuples. Keep the quarantine until V1/M0 arrive
++	 * together, so a later V0 fragment remains stale. */
++	memset(&state, 0, sizeof(state));
++	raop_volume_state_sync(&state, remote, false, true);
++	spa_assert_se(raop_volume_state_mark_initial_props_installed(
++			&state, remote, false));
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, false, remote, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	raop_volume_state_sync(&state, 0.216f, false, false);
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, false, false, 0.216f, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	spa_assert_se(state.sync_volume_pending);
++	spa_assert_se(state.sync_mute_pending);
++	result = raop_volume_state_on_props(&state,
++			false, 0.0f, true, false, 0.216f, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	spa_assert_se(state.stale_valid);
++	spa_assert_se(state.sync_volume_pending);
++	spa_assert_se(state.sync_mute_pending);
++	result = raop_volume_state_on_props(&state,
++			true, remote, false, false, 0.216f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_STALE);
++	spa_assert_se(state.generation == 1);
++	raop_volume_state_sync(&state, 0.216f, false, false);
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, false, 0.216f, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	spa_assert_se(!state.stale_valid);
++
++	/* A new mute value can arrive alongside a volume copied from stale
++	 * client state. Defer the mixed tuple instead of restoring that volume. */
++	memset(&state, 0, sizeof(state));
++	raop_volume_state_sync(&state, remote, false, true);
++	spa_assert_se(raop_volume_state_mark_initial_props_installed(
++			&state, remote, false));
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, false, remote, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, true, 0.216f, false, true, true);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_REASSERT);
++	spa_assert_se(state.generation == 1);
++	raop_volume_state_sync(&state, 0.216f, false, false);
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, false, 0.216f, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, true, 0.216f, false, false, true);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	spa_assert_se(state.generation == 2);
++
++	/* Reordered delivery: a receiver baseline is installed before the node's
++	 * delayed default Props. The default must be rejected, not treated as a
++	 * request for maximum receiver volume. */
++	memset(&state, 0, sizeof(state));
++	raop_volume_state_sync(&state, remote, false, true);
++	result = raop_volume_state_on_props(&state,
++			true, 1.0f, true, false, remote, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_REASSERT);
++	spa_assert_se(state.generation == 0);
++	spa_assert_se(state.stale_valid);
++	raop_volume_state_sync(&state, remote, false, false);
++	result = raop_volume_state_on_props(&state,
++			true, 1.0f, true, false, remote, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_STALE);
++	spa_assert_se(state.generation == 0);
++	spa_assert_se(state.stale_valid);
++	raop_volume_state_sync(&state, remote, false, false);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, false, remote, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	spa_assert_se(state.generation == 0);
++	spa_assert_se(!state.stale_valid);
++	result = raop_volume_state_on_props(&state,
++			true, 1.0f, true, false, remote, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_REASSERT);
++	spa_assert_se(state.generation == 0);
++	spa_assert_se(state.unsafe_initial_volume_valid);
++
++	/* External mode installs its initial Props directly at stream creation.
++	 * Account for those exact Props without consuming the pending baseline:
++	 * a first differing tuple is a user request and a delayed baseline copy
++	 * remains stale. */
++	memset(&state, 0, sizeof(state));
++	spa_assert_se(!raop_volume_state_mark_initial_props_installed(
++			&state, remote, true));
++	raop_volume_state_sync(&state, remote, true, false);
++	spa_assert_se(!raop_volume_state_mark_initial_props_installed(
++			&state, remote, true));
++	memset(&state, 0, sizeof(state));
++	raop_volume_state_sync(&state, remote, true, true);
++	spa_assert_se(!raop_volume_state_mark_initial_props_installed(
++			&state, nextafterf(remote, 1.0f), true));
++	spa_assert_se(!raop_volume_state_mark_initial_props_installed(
++			&state, remote, false));
++	state.sync_mute_pending = false;
++	spa_assert_se(!raop_volume_state_mark_initial_props_installed(
++			&state, remote, true));
++	state.sync_mute_pending = true;
++	state.sync_volume_pending = false;
++	spa_assert_se(!raop_volume_state_mark_initial_props_installed(
++			&state, remote, true));
++	state.sync_volume_pending = true;
++	spa_assert_se(raop_volume_state_mark_initial_props_installed(
++			&state, remote, true));
++	spa_assert_se(state.volume_props_seen);
++	spa_assert_se(state.mute_props_seen);
++	spa_assert_se(state.sync_volume_pending);
++	spa_assert_se(state.sync_mute_pending);
++	result = raop_volume_state_on_props(&state,
++			true, 0.216f, true, false, remote, true, true, true);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	spa_assert_se(state.generation == 1);
++	spa_assert_se(state.volume_generation == 1);
++	spa_assert_se(state.mute_generation == 1);
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, true, 0.216f, false, true, true);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_STALE);
++	spa_assert_se(state.generation == 1);
++
++	/* If the matching baseline is delivered first, it remains an echo. */
++	memset(&state, 0, sizeof(state));
++	raop_volume_state_sync(&state, remote, true, true);
++	spa_assert_se(raop_volume_state_mark_initial_props_installed(
++			&state, remote, true));
++	result = raop_volume_state_on_props(&state,
++			true, remote, true, true, remote, true, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_ECHO);
++	spa_assert_se(!state.sync_volume_pending);
++	spa_assert_se(!state.sync_mute_pending);
++
++	/* Mute and volume can arrive in separate initial events. */
++	memset(&state, 0, sizeof(state));
++	result = raop_volume_state_on_props(&state,
++			false, 0.0f, true, false, 0.0f, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_INITIAL);
++	result = raop_volume_state_on_props(&state,
++			true, 1.0f, false, false, 0.0f, false, true, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_INITIAL);
++	spa_assert_se(state.generation == 0);
++
++	/* A mute-only request while GET_PARAMETER is pending must not create a
++	 * volume intent. The reply's receiver volume remains authoritative even
++	 * if no channelVolumes event has arrived. */
++	memset(&state, 0, sizeof(state));
++	result = raop_volume_state_on_props(&state,
++			false, 0.0f, true, false, 0.0f, false, false, false);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_INITIAL);
++	query_volume_generation = state.volume_generation;
++	query_mute_generation = state.mute_generation;
++	result = raop_volume_state_on_props(&state,
++			false, 0.0f, true, true, 0.0f, false, false, true);
++	spa_assert_se(result == RAOP_VOLUME_PROPS_USER);
++	spa_assert_se(state.volume_generation == 0);
++	spa_assert_se(state.mute_generation == 1);
++	merged_volume = state.volume_generation != query_volume_generation ?
++		1.0f : remote;
++	spa_assert_se(fabsf(merged_volume - remote) < 0.000001f);
++	spa_assert_se(state.mute_generation != query_mute_generation);
++}
++
++static void test_request_coalescing(void)
++{
++	struct raop_volume_request_state state = { 0 };
++	struct raop_volume_request_state query = { 0 };
++	struct raop_volume_request_state record = { 0 };
++	struct {
++		uint32_t epoch;
++	} old_context, new_context;
++	uint32_t epoch1, epoch2, epoch3, epoch4, old_query, new_query;
++
++	/* A successful reply for the latest generation releases the request. */
++	spa_assert_se(raop_volume_request_begin(&state, 4, &epoch1));
++	spa_assert_se(!raop_volume_request_begin(&state, 5, NULL));
++	spa_assert_se(raop_volume_request_reply(&state,
++			epoch1, 4, 200) == RAOP_VOLUME_REQUEST_SUCCESS);
++	spa_assert_se(!state.pending);
++
++	/* A newer coalesced generation requires one more SET before startup can
++	 * release audio. */
++	spa_assert_se(raop_volume_request_begin(&state, 5, &epoch2));
++	spa_assert_se(raop_volume_request_reply(&state,
++			epoch2, 6, 204) == RAOP_VOLUME_REQUEST_NEWER);
++
++	/* A non-2xx result is an explicit failure. */
++	spa_assert_se(raop_volume_request_begin(&state, 6, &epoch3));
++	spa_assert_se(raop_volume_request_reply(&state,
++			epoch3, 6, 500) == RAOP_VOLUME_REQUEST_FAILED);
++
++	/* Timeout invalidates the epoch. A late reply is ignored and cannot
++	 * consume a newer request. */
++	spa_assert_se(raop_volume_request_begin(&state, 6, &epoch3));
++	spa_assert_se(raop_volume_request_timeout(&state,
++			epoch3) == RAOP_VOLUME_REQUEST_TIMEOUT);
++	spa_assert_se(raop_volume_request_reply(&state,
++			epoch3, 6, 200) == RAOP_VOLUME_REQUEST_STALE);
++	old_context.epoch = epoch3;
++	spa_assert_se(raop_volume_request_begin(&state, 7, &epoch4));
++	new_context.epoch = epoch4;
++	spa_assert_se(raop_volume_request_reply(&state,
++			old_context.epoch, 7, 200) == RAOP_VOLUME_REQUEST_STALE);
++	spa_assert_se(state.pending);
++	spa_assert_se(raop_volume_request_reply(&state,
++			new_context.epoch, 7, 200) == RAOP_VOLUME_REQUEST_SUCCESS);
++
++	/* Local mode uses the same managed SET state. A lost reply clears the
++	 * pending epoch so the latest coalesced generation can be resent. */
++	memset(&state, 0, sizeof(state));
++	spa_assert_se(raop_volume_request_begin(&state, 10, &epoch1));
++	spa_assert_se(raop_volume_request_timeout(&state,
++			epoch1) == RAOP_VOLUME_REQUEST_TIMEOUT);
++	spa_assert_se(!state.pending);
++	spa_assert_se(raop_volume_request_begin(&state, 11, &epoch2));
++	spa_assert_se(state.generation == 11);
++
++	/* GET_PARAMETER owns a distinct epoch. A reply retained by an old RTSP
++	 * session cannot satisfy the next session's query. */
++	spa_assert_se(raop_volume_request_begin(&query, 0, &old_query));
++	spa_assert_se(raop_volume_request_cancel(&query, old_query));
++	spa_assert_se(raop_volume_request_begin(&query, 0, &new_query));
++	spa_assert_se(raop_volume_request_reply(&query,
++			old_query, 0, 200) == RAOP_VOLUME_REQUEST_STALE);
++	spa_assert_se(query.pending);
++	spa_assert_se(raop_volume_request_reply(&query,
++			new_query, 0, 200) == RAOP_VOLUME_REQUEST_SUCCESS);
++
++	/* RECORD snapshots the physical generation. A Props change while its
++	 * reply is queued requires another SET, not immediate packet release. */
++	spa_assert_se(raop_volume_request_begin(&record, 20, &epoch1));
++	spa_assert_se(raop_volume_request_reply(&record,
++			epoch1, 21, 200) == RAOP_VOLUME_REQUEST_NEWER);
++}
++
++static void test_device_id(void)
++{
++	char device[13];
++
++	spa_assert_se(raop_parse_device_id(
++			"02000000A001@SoundTouch 30", device) == 0);
++	spa_assert_se(spa_streq(device, "02000000A001"));
++	spa_assert_se(raop_parse_device_id(
++			"02000000a002@SoundTouch 10", device) == 0);
++	spa_assert_se(spa_streq(device, "02000000A002"));
++	spa_assert_se(raop_parse_device_id("02000000A00@short", device) ==
++			-EINVAL);
++	spa_assert_se(raop_parse_device_id("02000000A0010@long", device) ==
++			-EINVAL);
++	spa_assert_se(raop_parse_device_id("02000000A00Z@invalid", device) ==
++			-EINVAL);
++	spa_assert_se(raop_parse_device_id("02000000A001", device) == -EINVAL);
++}
++
++static void count_destroy(void *data)
++{
++	unsigned int *count = data;
++
++	(*count)++;
++}
++
++static void test_rtsp_reply_lifetime(void)
++{
++	struct pw_main_loop *main_loop;
++	struct pw_rtsp_client *client;
++	unsigned int destroy_count = 0;
++
++	main_loop = pw_main_loop_new(NULL);
++	spa_assert_se(main_loop != NULL);
++	client = pw_rtsp_client_new(pw_main_loop_get_loop(main_loop),
++			pw_properties_new(NULL, NULL), 0);
++	spa_assert_se(client != NULL);
++	spa_assert_se(pw_rtsp_client_url_send_full(client,
++			"rtsp://127.0.0.1/test", "SET_PARAMETER", NULL,
++			NULL, NULL, 0, NULL, &destroy_count, count_destroy) == 0);
++	pw_rtsp_client_destroy(client);
++	spa_assert_se(destroy_count == 1);
++	pw_main_loop_destroy(main_loop);
++}
++
++int main(int argc, char *argv[])
++{
++	pw_init(&argc, &argv);
++	test_control();
++	test_soft_policy();
++	test_parser();
++	test_mapping();
++	test_stream_contract();
++	test_state();
++	test_request_coalescing();
++	test_device_id();
++	test_rtsp_reply_lifetime();
++	pw_deinit();
++	return 0;
++}
+diff --git a/src/modules/module-raop/volume.c b/src/modules/module-raop/volume.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..fd52c75b3e41085f128cd980cd3a14cbe8924fb7
+--- /dev/null
++++ b/src/modules/module-raop/volume.c
+@@ -0,0 +1,474 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#include "config.h"
++
++#include <ctype.h>
++#include <errno.h>
++#include <math.h>
++#include <string.h>
++
++#include <spa/utils/defs.h>
++#include <spa/utils/string.h>
++
++#include <pipewire/properties.h>
++
++#include "volume.h"
++
++#define VOLUME_MAX	0.0f
++#define VOLUME_MIN	-30.0f
++#define VOLUME_MUTE	-144.0f
++
++int raop_volume_control_parse(const char *str, enum raop_volume_control *control)
++{
++	if (str == NULL || spa_streq(str, "remote-optional"))
++		*control = RAOP_VOLUME_REMOTE_OPTIONAL;
++	else if (spa_streq(str, "remote-required"))
++		*control = RAOP_VOLUME_REMOTE_REQUIRED;
++	else if (spa_streq(str, "local"))
++		*control = RAOP_VOLUME_LOCAL;
++	else if (spa_streq(str, "software"))
++		*control = RAOP_VOLUME_SOFTWARE;
++	else if (spa_streq(str, "external"))
++		*control = RAOP_VOLUME_EXTERNAL;
++	else
++		return -EINVAL;
++	return 0;
++}
++
++const char *raop_volume_control_name(enum raop_volume_control control)
++{
++	switch (control) {
++	case RAOP_VOLUME_REMOTE_OPTIONAL:
++		return "remote-optional";
++	case RAOP_VOLUME_REMOTE_REQUIRED:
++		return "remote-required";
++	case RAOP_VOLUME_LOCAL:
++		return "local";
++	case RAOP_VOLUME_SOFTWARE:
++		return "software";
++	case RAOP_VOLUME_EXTERNAL:
++		return "external";
++	default:
++		return NULL;
++	}
++}
++
++enum raop_volume_failure_action raop_volume_failure_action(
++		enum raop_volume_control control)
++{
++	switch (control) {
++	case RAOP_VOLUME_REMOTE_OPTIONAL:
++		return RAOP_VOLUME_FAILURE_SOFTWARE;
++	case RAOP_VOLUME_REMOTE_REQUIRED:
++		return RAOP_VOLUME_FAILURE_ERROR;
++	case RAOP_VOLUME_LOCAL:
++	case RAOP_VOLUME_SOFTWARE:
++	case RAOP_VOLUME_EXTERNAL:
++	default:
++		return RAOP_VOLUME_FAILURE_IGNORE;
++	}
++}
++
++bool raop_volume_uses_soft_volumes(enum raop_volume_control control,
++		bool session_software)
++{
++	return control != RAOP_VOLUME_EXTERNAL &&
++		(control == RAOP_VOLUME_SOFTWARE || session_software);
++}
++
++bool raop_volume_needs_soft_mute_update(enum raop_volume_control control,
++		bool have_volume, bool have_mute)
++{
++	return have_mute ||
++		(control == RAOP_VOLUME_EXTERNAL && have_volume);
++}
++
++bool raop_volume_soft_mute(enum raop_volume_control control,
++		bool software, bool mute)
++{
++	return mute && (software || control == RAOP_VOLUME_EXTERNAL);
++}
++
++int raop_volume_parse_reply(const void *data, size_t size, float *volume, bool *mute)
++{
++	char buffer[256], *p, *end;
++	float value;
++
++	if (data == NULL || volume == NULL || mute == NULL ||
++			size == 0 || size >= sizeof(buffer) ||
++			memchr(data, '\0', size) != NULL)
++		return -EPROTO;
++
++	memcpy(buffer, data, size);
++	buffer[size] = '\0';
++	p = buffer;
++
++	while (isspace((unsigned char)*p))
++		p++;
++	if (!spa_strstartswith(p, "volume"))
++		return -EPROTO;
++	p += strlen("volume");
++	while (*p == ' ' || *p == '\t')
++		p++;
++	if (*p++ != ':')
++		return -EPROTO;
++	while (*p == ' ' || *p == '\t')
++		p++;
++
++	errno = 0;
++	value = spa_strtof(p, &end);
++	if (errno != 0 || end == p || !isfinite(value))
++		return -EPROTO;
++	while (isspace((unsigned char)*end))
++		end++;
++	if (*end != '\0')
++		return -EPROTO;
++
++	if (value == VOLUME_MUTE) {
++		*mute = true;
++		*volume = value;
++	} else if (value >= VOLUME_MIN && value <= VOLUME_MAX) {
++		*mute = false;
++		*volume = value;
++	} else {
++		return -ERANGE;
++	}
++	return 0;
++}
++
++int raop_volume_validate_channels(const float *volumes, uint32_t n_volumes,
++		float *average)
++{
++	double value = 0.0;
++	uint32_t i;
++
++	if (volumes == NULL || n_volumes == 0)
++		return -EINVAL;
++	for (i = 0; i < n_volumes; i++) {
++		if (!isfinite(volumes[i]) ||
++				volumes[i] < 0.0f || volumes[i] > 1.0f)
++			return -ERANGE;
++		value += (double)volumes[i];
++	}
++	if (average != NULL) {
++		float result = (float)(value / n_volumes);
++
++		/* Do not let rounding make a mixed near-full-scale channel set
++		 * indistinguishable from exact full scale. */
++		if (result == 1.0f && value < (double)n_volumes)
++			result = nextafterf(1.0f, 0.0f);
++		*average = result;
++	}
++	return 0;
++}
++
++float raop_volume_from_channel(float volume)
++{
++	if (!isfinite(volume) || volume < 0.0f || volume > 1.0f)
++		return NAN;
++	if (volume == 1.0f)
++		return VOLUME_MAX;
++	return (float)(cbrt((double)volume) * 30.0 - 30.0);
++}
++
++float raop_volume_to_channel(float volume)
++{
++	float normalized;
++
++	normalized = SPA_CLAMPF((volume - VOLUME_MIN) /
++			(VOLUME_MAX - VOLUME_MIN), 0.0f, 1.0f);
++	return normalized * normalized * normalized;
++}
++
++int raop_volume_override_stream_props(struct pw_properties *stream_props,
++		const struct pw_properties *module_props)
++{
++	static const char *const keys[] = {
++		"raop.volume.contract",
++		"raop.volume.control",
++		"raop.device",
++		"raop.ip",
++		"raop.port",
++	};
++	uint32_t i;
++
++	if (stream_props == NULL || module_props == NULL)
++		return -EINVAL;
++
++	for (i = 0; i < SPA_N_ELEMENTS(keys); i++) {
++		int res = pw_properties_set(stream_props, keys[i],
++				pw_properties_get(module_props, keys[i]));
++		if (res < 0)
++			return res;
++	}
++	return 0;
++}
++
++void raop_volume_state_sync(struct raop_volume_state *state,
++		float volume, bool mute, bool baseline)
++{
++	/*
++	 * Generic RAOP streams can expose a default volume before the receiver
++	 * query completes. Permanently guard an initial value that is louder
++	 * than the receiver baseline: module self-writes have no callback that
++	 * could otherwise provide a trustworthy retirement barrier.
++	 */
++	if (baseline && state->initial_volume_valid &&
++			state->initial_volume - volume >= 0.000001f) {
++		state->unsafe_initial_volume = state->initial_volume;
++		state->unsafe_initial_volume_valid = true;
++	}
++	state->sync_volume_pending = true;
++	state->sync_mute_pending = true;
++	state->sync_volume = volume;
++	state->sync_mute = mute;
++	if (baseline)
++		state->baseline_applied = true;
++}
++
++bool raop_volume_state_mark_initial_props_installed(
++		struct raop_volume_state *state, float volume, bool mute)
++{
++	if (state == NULL || !state->baseline_applied ||
++			!state->sync_volume_pending || !state->sync_mute_pending ||
++			volume != state->sync_volume || mute != state->sync_mute)
++		return false;
++
++	state->volume_props_seen = true;
++	state->mute_props_seen = true;
++	return true;
++}
++
++enum raop_volume_props_result raop_volume_state_on_props(
++		struct raop_volume_state *state,
++		bool have_volume, float volume, bool have_mute, bool mute,
++		float current_volume, bool current_mute,
++		bool volume_changed, bool mute_changed)
++{
++	bool initial, initial_volume, initial_mute, echo, stale, stale_duplicate;
++	bool full_sync_echo;
++	bool sync_volume, sync_mute, stale_volume, stale_mute;
++	bool stale_volume_match, stale_mute_match;
++	bool current_volume_match, current_mute_match;
++	bool stale_volume_conflict, stale_mute_conflict;
++	bool unsafe_initial_volume_conflict;
++
++	sync_volume = have_volume && state->sync_volume_pending &&
++		fabsf(volume - state->sync_volume) < 0.000001f;
++	sync_mute = have_mute && state->sync_mute_pending &&
++		mute == state->sync_mute;
++	stale_volume_match = have_volume &&
++			fabsf(volume - state->stale_volume) < 0.000001f;
++	stale_mute_match = have_mute && mute == state->stale_mute;
++	stale_volume = state->stale_volume_pending && stale_volume_match;
++	stale_mute = state->stale_mute_pending && stale_mute_match;
++	current_volume_match = have_volume &&
++		fabsf(volume - current_volume) < 0.000001f;
++	current_mute_match = have_mute && mute == current_mute;
++	unsafe_initial_volume_conflict =
++		state->unsafe_initial_volume_valid && have_volume &&
++		fabsf(volume - state->unsafe_initial_volume) < 0.000001f &&
++		!current_volume_match;
++	stale_volume_conflict = state->stale_valid && stale_volume_match &&
++		!current_volume_match;
++	stale_mute_conflict = state->stale_valid && stale_mute_match &&
++		!current_mute_match;
++	echo = (have_volume || have_mute) &&
++		(!have_volume || sync_volume) &&
++		(!have_mute || sync_mute);
++	full_sync_echo = have_volume && have_mute && sync_volume && sync_mute;
++	stale_duplicate = state->stale_valid && (have_volume || have_mute) &&
++		(!have_volume || stale_volume_match) &&
++		(!have_mute || stale_mute_match);
++	stale = stale_duplicate || ((stale_volume || stale_mute) &&
++		(!have_volume || stale_volume_match || sync_volume ||
++		 current_volume_match) &&
++		(!have_mute || stale_mute_match || sync_mute ||
++		 current_mute_match));
++	initial_volume = have_volume && !state->volume_props_seen;
++	initial_mute = have_mute && !state->mute_props_seen;
++	initial = initial_volume || initial_mute;
++	if (initial_volume && !state->baseline_applied) {
++		state->initial_volume = volume;
++		state->initial_volume_valid = true;
++	}
++	if (have_volume)
++		state->volume_props_seen = true;
++	if (have_mute)
++		state->mute_props_seen = true;
++
++	if (initial && state->baseline_applied && !echo &&
++			((have_volume &&
++			  fabsf(volume - current_volume) >= 0.000001f) ||
++			 (have_mute && mute != current_mute))) {
++		/*
++		 * Quarantine the rejected tuple until the safe baseline has been
++		 * echoed. A default Props object can be delivered more than once.
++		 */
++		if (have_volume &&
++				volume - current_volume >= 0.000001f) {
++			state->unsafe_initial_volume = volume;
++			state->unsafe_initial_volume_valid = true;
++		}
++		state->stale_volume = have_volume ? volume : current_volume;
++		state->stale_mute = have_mute ? mute : current_mute;
++		state->stale_volume_pending = have_volume;
++		state->stale_mute_pending = have_mute;
++		state->stale_valid = true;
++		return RAOP_VOLUME_PROPS_REASSERT;
++	}
++
++	if (echo) {
++		/*
++		 * While an older tuple is quarantined, partial echoes cannot prove
++		 * ordering: an unchanged field from the stale tuple can alias the
++		 * newer tuple. Require both newer fields in one event.
++		 */
++		if (state->stale_valid && !full_sync_echo)
++			return RAOP_VOLUME_PROPS_ECHO;
++		if (have_volume) {
++			state->sync_volume_pending = false;
++			if (stale_volume)
++				state->stale_volume_pending = false;
++		}
++		if (have_mute) {
++			state->sync_mute_pending = false;
++			if (stale_mute)
++				state->stale_mute_pending = false;
++		}
++		/*
++		 * A complete echo is the bounded retirement signal for this rolling
++		 * transaction quarantine. The louder initial-volume guard has
++		 * stream lifetime because generic module self-writes do not echo.
++		 */
++		if (state->stale_valid && full_sync_echo) {
++			state->stale_valid = false;
++			state->stale_volume_pending = false;
++			state->stale_mute_pending = false;
++		}
++		return RAOP_VOLUME_PROPS_ECHO;
++	}
++	if (stale) {
++		if (stale_volume)
++			state->stale_volume_pending = false;
++		if (stale_mute)
++			state->stale_mute_pending = false;
++		return RAOP_VOLUME_PROPS_STALE;
++	}
++	volume_changed = volume_changed && !initial_volume;
++	mute_changed = mute_changed && !initial_mute;
++	if ((volume_changed || mute_changed) &&
++			unsafe_initial_volume_conflict)
++		return RAOP_VOLUME_PROPS_REASSERT;
++	/*
++	 * A single stale slot and one current sync can coexist after a partial
++	 * stale event is reasserted. Do not overwrite either authored tuple with
++	 * another user candidate; restore the current tuple and let the client
++	 * retry after the stale fragment has drained.
++	 */
++	if ((volume_changed || mute_changed) &&
++	    state->stale_valid &&
++	    (state->sync_volume_pending || state->sync_mute_pending))
++		return RAOP_VOLUME_PROPS_REASSERT;
++	/*
++	 * A client can merge a newly changed field with another field from its
++	 * stale cache. Reject the whole tuple when that would restore any stale
++	 * component over the current value.
++	 */
++	if ((volume_changed || mute_changed) &&
++	    (stale_volume_conflict || stale_mute_conflict))
++		return RAOP_VOLUME_PROPS_REASSERT;
++	if (volume_changed || mute_changed) {
++		/*
++		 * An authored volume/mute update is one tuple even when PipeWire
++		 * reports its fields separately. If user intent overtakes any
++		 * remaining field, preserve the complete authored tuple as stale
++		 * context before a later sync can replace it.
++		 */
++		if (state->sync_volume_pending || state->sync_mute_pending) {
++			state->stale_volume = state->sync_volume;
++			state->stale_mute = state->sync_mute;
++			state->stale_volume_pending =
++				state->sync_volume_pending;
++			state->stale_mute_pending = state->sync_mute_pending;
++			state->stale_valid = true;
++			state->sync_volume_pending = false;
++			state->sync_mute_pending = false;
++		}
++		state->generation++;
++		if (volume_changed)
++			state->volume_generation++;
++		if (mute_changed)
++			state->mute_generation++;
++		return RAOP_VOLUME_PROPS_USER;
++	}
++	if (initial)
++		return RAOP_VOLUME_PROPS_INITIAL;
++	return RAOP_VOLUME_PROPS_UNCHANGED;
++}
++
++bool raop_volume_request_begin(struct raop_volume_request_state *state,
++		uint32_t generation, uint32_t *epoch)
++{
++	if (state->pending)
++		return false;
++	if (++state->epoch == 0)
++		state->epoch++;
++	state->pending = true;
++	state->generation = generation;
++	if (epoch != NULL)
++		*epoch = state->epoch;
++	return true;
++}
++
++enum raop_volume_request_result raop_volume_request_reply(
++		struct raop_volume_request_state *state,
++		uint32_t epoch, uint32_t generation, int status)
++{
++	if (!state->pending || state->epoch != epoch)
++		return RAOP_VOLUME_REQUEST_STALE;
++	state->pending = false;
++	if (status < 200 || status >= 300)
++		return RAOP_VOLUME_REQUEST_FAILED;
++	if (state->generation != generation)
++		return RAOP_VOLUME_REQUEST_NEWER;
++	return RAOP_VOLUME_REQUEST_SUCCESS;
++}
++
++enum raop_volume_request_result raop_volume_request_timeout(
++		struct raop_volume_request_state *state, uint32_t epoch)
++{
++	if (!state->pending || state->epoch != epoch)
++		return RAOP_VOLUME_REQUEST_STALE;
++	state->pending = false;
++	return RAOP_VOLUME_REQUEST_TIMEOUT;
++}
++
++bool raop_volume_request_cancel(struct raop_volume_request_state *state,
++		uint32_t epoch)
++{
++	if (!state->pending || state->epoch != epoch)
++		return false;
++	state->pending = false;
++	return true;
++}
++
++int raop_parse_device_id(const char *name, char device[13])
++{
++	const char *at;
++	size_t i;
++
++	if (name == NULL || (at = strchr(name, '@')) == NULL ||
++			(size_t)(at - name) != 12)
++		return -EINVAL;
++
++	for (i = 0; i < 12; i++) {
++		if (!isxdigit((unsigned char)name[i]))
++			return -EINVAL;
++		device[i] = toupper((unsigned char)name[i]);
++	}
++	device[12] = '\0';
++	return 0;
++}
+diff --git a/src/modules/module-raop/volume.h b/src/modules/module-raop/volume.h
+new file mode 100644
+index 0000000000000000000000000000000000000000..2d40b035d13d99984d362bd6a6e6093af34cbfa4
+--- /dev/null
++++ b/src/modules/module-raop/volume.h
+@@ -0,0 +1,118 @@
++/* PipeWire */
++/* SPDX-FileCopyrightText: Copyright © 2026 Lukáš Lipinský */
++/* SPDX-License-Identifier: MIT */
++
++#ifndef PIPEWIRE_MODULE_RAOP_VOLUME_H
++#define PIPEWIRE_MODULE_RAOP_VOLUME_H
++
++#include <stdbool.h>
++#include <stddef.h>
++#include <stdint.h>
++
++struct pw_properties;
++
++#define RAOP_VOLUME_CONTRACT	"2"
++
++enum raop_volume_control {
++	RAOP_VOLUME_REMOTE_OPTIONAL,
++	RAOP_VOLUME_REMOTE_REQUIRED,
++	RAOP_VOLUME_LOCAL,
++	RAOP_VOLUME_SOFTWARE,
++	RAOP_VOLUME_EXTERNAL,
++};
++
++enum raop_volume_props_result {
++	RAOP_VOLUME_PROPS_UNCHANGED,
++	RAOP_VOLUME_PROPS_INITIAL,
++	RAOP_VOLUME_PROPS_ECHO,
++	RAOP_VOLUME_PROPS_USER,
++	RAOP_VOLUME_PROPS_REASSERT,
++	RAOP_VOLUME_PROPS_STALE,
++};
++
++enum raop_volume_request_result {
++	RAOP_VOLUME_REQUEST_STALE,
++	RAOP_VOLUME_REQUEST_SUCCESS,
++	RAOP_VOLUME_REQUEST_NEWER,
++	RAOP_VOLUME_REQUEST_FAILED,
++	RAOP_VOLUME_REQUEST_TIMEOUT,
++};
++
++enum raop_volume_failure_action {
++	RAOP_VOLUME_FAILURE_IGNORE,
++	RAOP_VOLUME_FAILURE_SOFTWARE,
++	RAOP_VOLUME_FAILURE_ERROR,
++};
++
++struct raop_volume_state {
++	uint32_t generation;
++	uint32_t volume_generation;
++	uint32_t mute_generation;
++	bool volume_props_seen;
++	bool mute_props_seen;
++	bool baseline_applied;
++	bool initial_volume_valid;
++	bool unsafe_initial_volume_valid;
++	bool sync_volume_pending;
++	bool sync_mute_pending;
++	bool stale_volume_pending;
++	bool stale_mute_pending;
++	bool stale_valid;
++	bool sync_mute;
++	bool stale_mute;
++	float initial_volume;
++	float unsafe_initial_volume;
++	float sync_volume;
++	float stale_volume;
++};
++
++struct raop_volume_request_state {
++	uint32_t generation;
++	uint32_t epoch;
++	bool pending;
++};
++
++int raop_volume_control_parse(const char *str, enum raop_volume_control *control);
++const char *raop_volume_control_name(enum raop_volume_control control);
++enum raop_volume_failure_action raop_volume_failure_action(
++		enum raop_volume_control control);
++bool raop_volume_uses_soft_volumes(enum raop_volume_control control,
++		bool session_software);
++bool raop_volume_needs_soft_mute_update(enum raop_volume_control control,
++		bool have_volume, bool have_mute);
++bool raop_volume_soft_mute(enum raop_volume_control control,
++		bool software, bool mute);
++
++int raop_volume_parse_reply(const void *data, size_t size, float *volume, bool *mute);
++
++int raop_volume_validate_channels(const float *volumes, uint32_t n_volumes,
++		float *average);
++float raop_volume_from_channel(float volume);
++float raop_volume_to_channel(float volume);
++
++int raop_volume_override_stream_props(struct pw_properties *stream_props,
++		const struct pw_properties *module_props);
++
++void raop_volume_state_sync(struct raop_volume_state *state,
++		float volume, bool mute, bool baseline);
++bool raop_volume_state_mark_initial_props_installed(
++		struct raop_volume_state *state, float volume, bool mute);
++enum raop_volume_props_result raop_volume_state_on_props(
++		struct raop_volume_state *state,
++		bool have_volume, float volume, bool have_mute, bool mute,
++		float current_volume, bool current_mute,
++		bool volume_changed, bool mute_changed);
++
++bool raop_volume_request_begin(struct raop_volume_request_state *state,
++		uint32_t generation, uint32_t *epoch);
++enum raop_volume_request_result raop_volume_request_reply(
++		struct raop_volume_request_state *state,
++		uint32_t epoch, uint32_t generation, int status);
++enum raop_volume_request_result raop_volume_request_timeout(
++		struct raop_volume_request_state *state, uint32_t epoch);
++bool raop_volume_request_cancel(struct raop_volume_request_state *state,
++		uint32_t epoch);
++
++int raop_parse_device_id(const char *name, char device[13]);
++
++#endif /* PIPEWIRE_MODULE_RAOP_VOLUME_H */
+diff --git a/src/modules/module-rtp/stream.c b/src/modules/module-rtp/stream.c
+index fb549a0df760694b6d976fbe8004a1f1167622ed..e00584e87c65c4b66e3d94f61d14824bb5b51196 100644
+--- a/src/modules/module-rtp/stream.c
++++ b/src/modules/module-rtp/stream.c
+@@ -615,9 +615,10 @@ static void default_reset_ringbuffer(struct impl *impl)
+ 	spa_memzero(impl->buffer, sizeof(impl->buffer));
+ }
+ 
+-struct rtp_stream *rtp_stream_new(struct pw_core *core,
++struct rtp_stream *rtp_stream_new_params(struct pw_core *core,
+ 		enum spa_direction direction, struct pw_properties *props,
+-		const struct rtp_stream_events *events, void *data)
++		const struct rtp_stream_events *events, void *data,
++		const struct spa_pod **initial_params, uint32_t n_initial_params)
+ {
+ 	struct impl *impl;
+ 	const char *str, *aes67_driver;
+@@ -626,7 +627,7 @@ struct rtp_stream *rtp_stream_new(struct pw_core *core,
+ 	struct spa_pod_builder b;
+ 	uint32_t n_params, min_samples, max_samples;
+ 	float min_ptime, max_ptime;
+-	const struct spa_pod *params[3];
++	const struct spa_pod *params[16];
+ 	enum pw_stream_flags flags;
+ 	float latency_msec;
+ 	int res;
+@@ -934,6 +935,10 @@ struct rtp_stream *rtp_stream_new(struct pw_core *core,
+ 		goto out;
+ 	}
+ 
++	if (n_initial_params > SPA_N_ELEMENTS(params) - 3) {
++		res = -ENOSPC;
++		goto out;
++	}
+ 	n_params = 0;
+ 	spa_pod_builder_init(&b, buffer, sizeof(buffer));
+ 
+@@ -990,6 +995,8 @@ struct rtp_stream *rtp_stream_new(struct pw_core *core,
+ 		params[n_params++] = spa_process_latency_build(&b, SPA_PARAM_ProcessLatency,
+ 								&(impl->process_latency));
+ 	}
++	for (uint32_t i = 0; i < n_initial_params; i++)
++		params[n_params++] = initial_params[i];
+ 
+ 	pw_stream_add_listener(impl->stream,
+ 			&impl->stream_listener,
+@@ -1025,6 +1032,13 @@ out:
+ 	return NULL;
+ }
+ 
++struct rtp_stream *rtp_stream_new(struct pw_core *core,
++		enum spa_direction direction, struct pw_properties *props,
++		const struct rtp_stream_events *events, void *data)
++{
++	return rtp_stream_new_params(core, direction, props, events, data, NULL, 0);
++}
++
+ void rtp_stream_destroy(struct rtp_stream *s)
+ {
+ 	struct impl *impl = (struct impl*)s;
+diff --git a/src/modules/module-rtp/stream.h b/src/modules/module-rtp/stream.h
+index 2c6e6dea5464a6c120b0d15c27fb353ac6b7d80a..1cb46421aaf413c8eafa7d51251da88e22bb21ea 100644
+--- a/src/modules/module-rtp/stream.h
++++ b/src/modules/module-rtp/stream.h
+@@ -59,6 +59,12 @@ struct rtp_stream *rtp_stream_new(struct pw_core *core,
+ 		enum pw_direction direction, struct pw_properties *props,
+ 		const struct rtp_stream_events *events, void *data);
+ 
++/* Add params to the initial pw_stream_connect() transaction. */
++struct rtp_stream *rtp_stream_new_params(struct pw_core *core,
++		enum pw_direction direction, struct pw_properties *props,
++		const struct rtp_stream_events *events, void *data,
++		const struct spa_pod **params, uint32_t n_params);
++
+ void rtp_stream_destroy(struct rtp_stream *s);
+ 
+ int rtp_stream_update_properties(struct rtp_stream *s, const struct spa_dict *dict);
