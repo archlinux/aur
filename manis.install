@@ -1,0 +1,7 @@
+post_install() {
+  /usr/bin/setcap cap_net_admin,cap_net_raw=ep /usr/lib/manis/mihomo
+}
+
+post_upgrade() {
+  post_install
+}
