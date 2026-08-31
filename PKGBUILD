@@ -1,8 +1,8 @@
 # Maintainer : shogeki < shogeki at gmail dot com >
 
 pkgname=uqm-megamod-git
-pkgver=0.8.3.r263.g6ba5942f
-_pkgver=0.8.3
+pkgver=0.8.5.r33.gca7f7a44
+_pkgver=0.8.5
 pkgrel=1
 pkgdesc="A fork of The Ur-Quan Masters that remasters the HD mod with a veritable smorgasbord of extra features and options by JHGuitarFreak (Kohr-Ah Death). Latest Git version"
 arch=("x86_64")
@@ -62,7 +62,7 @@ pkgver() {
 }
 
 build() {
-  CFLAGS+=" $(pkgconf --cflags lua52) $(pkgconf --cflags libmikmod) -Wno-incompatible-pointer-types "
+  CFLAGS+=" $(pkgconf --cflags lua52) $(pkgconf --cflags libmikmod) -Wno-incompatible-pointer-types -Wno-error=format-security "
   LDFLAGS+=" $(pkgconf --libs lua52) $(pkgconf --libs libmikmod)"
   cd "${srcdir}/UQM-MegaMod"
   ./build.sh uqm
