@@ -1,0 +1,17 @@
+pkgbase = aur-sentry
+	pkgdesc = First AI-based pacman security agent and animated cyber visualizer for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Arunachalam-gojosaturo/aur-sentry
+	install = aur-sentry.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	depends = jq
+	depends = pacman
+	optdepends = libnotify: Desktop threat notifications
+	source = aur-sentry-1.0.0.tar.gz::https://github.com/Arunachalam-gojosaturo/aur-sentry/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = cd2e5013dedff7e6e4d17519f90a78800ffc4d372275a70f8c9483685b788775
+
+pkgname = aur-sentry
