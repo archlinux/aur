@@ -1,0 +1,23 @@
+pkgbase = ohos-sdk
+	pkgdesc = OpenHarmony SDK (Linux x86_64)：native 交叉工具链(OHOS clang 15/LLVM+musl sysroot)、toolchains、ets/js/previewer 整包
+	pkgver = 26.0.0.38
+	pkgrel = 1
+	url = https://gitcode.com/openharmony/manifest
+	arch = x86_64
+	license = Apache-2.0
+	license = custom
+	depends = gcc-libs
+	depends = zlib
+	optdepends = libusb: hdc 设备连接
+	optdepends = nodejs: ohpm / hvigor 及 js/ets 工具链
+	optdepends = qt5-base: previewer 预览器
+	optdepends = fontconfig: previewer 字体
+	noextract = ohos-sdk-26.0.0.38.tar.gz
+	options = !strip
+	options = staticlibs
+	options = !debug
+	options = !emptydirs
+	source = ohos-sdk-26.0.0.38.tar.gz::https://mirrors.huaweicloud.com/openharmony/os/7.0-Release/ohos-sdk-windows_linux-public.tar.gz
+	sha256sums = 130a438cbcddd46a2a5b09ee9925339cddf4cca99223329b860f96a5c72f338f
+
+pkgname = ohos-sdk
