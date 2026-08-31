@@ -4,7 +4,7 @@
 pkgname='notifiarr-bin'
 appname='notifiarr'
 pkgver=0.9.7
-pkgrel=6
+pkgrel=7
 pkgdesc='Official Client for Notifiarr.com'
 url='https://notifiarr.com'
 arch=('x86_64' 'armhf' 'armv7h' 'aarch64' 'i686' 'pentium4')
@@ -56,6 +56,6 @@ package() {
   install -D -m 644 "init/systemd/${appname}.service" "${pkgdir}/usr/lib/systemd/system/${appname}.service"
   echo "u ${appname} - \"${appname} daemon\"" > "${appname}.sysusers"
   install -D -m 644 "${appname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${appname}.conf"
-  printf '%s\n'     "# Log dir only. Do not z-chown /etc/notifiarr; that runs on every boot."     "d /var/log/notifiarr 0755 notifiarr notifiarr -"     > "${appname}.tmpfiles"
+  printf '%s\n'     "# Log dir only. Do not chown /etc/notifiarr; tmpfiles runs on every boot."     "d /var/log/notifiarr 0755 notifiarr notifiarr -"     > "${appname}.tmpfiles"
   install -D -m 644 "${appname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${appname}.conf"
 }
