@@ -1,6 +1,6 @@
 pkgbase = futubull-desktop-bin
 	pkgdesc = One-Stop Trading Platform for Hong Kong, US and China Connect Stocks
-	pkgver = 16.24.16908
+	pkgver = 16.30.17508
 	pkgrel = 1
 	url = https://www.futunn.com/
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = futubull-desktop-bin
 	options = !strip
 	options = !debug
 	options = !emptydirs
-	source_x86_64 = futubull-desktop-bin-16.24.16908.deb::https://softwaredownload.futunn.com/FTNN_desktop_16.24.16908_amd64.deb
+	source_x86_64 = futubull-desktop-bin-16.30.17508.deb::https://softwaredownload.futunn.com/FTNN_desktop_16.30.17508_amd64.deb
 	source_x86_64 = futubull.desktop
-	sha256sums_x86_64 = 3d648ad322fe02455a29708f773b3ecc909a95ff598b4a224c50d0a249bd8649
+	sha256sums_x86_64 = e010365f760b60bf7d6c09f897b470804c3bebaa3c27bdf10e3b498625209dfc
 	sha256sums_x86_64 = a08936d41b249848e7cb1b2339f9cff6db5f7698a76c23580267353ec68fc1f6
 
 pkgname = futubull-desktop-bin
