@@ -1,7 +1,7 @@
 # Maintainer: Myqfeng <viagrahuang@outlook.com>
 
 pkgname=qteasytier
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="基于 EasyTier, 一款美观实用的远程联机工具!"
 arch=('x86_64')

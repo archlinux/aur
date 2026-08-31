@@ -1,6 +1,6 @@
 pkgbase = qteasytier
 	pkgdesc = 基于 EasyTier, 一款美观实用的远程联机工具!
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://cnb.cool/myqfeng/qteasytier/qt-easy-tier
 	install = qteasytier.install
@@ -18,7 +18,7 @@ pkgbase = qteasytier
 	depends = qt6-svg
 	depends = polkit
 	options = !debug
-	source = qteasytier::git+https://cnb.cool/myqfeng/qteasytier/qt-easy-tier#branch=v3.1.0
+	source = qteasytier::git+https://cnb.cool/myqfeng/qteasytier/qt-easy-tier#branch=v3.2.0
 	sha256sums = SKIP
 
 pkgname = qteasytier
