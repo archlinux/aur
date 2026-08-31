@@ -1,0 +1,25 @@
+pkgbase = sonic-frameworks-idle-tracker
+	pkgdesc = X11 user activity monitoring framework for SonicDE
+	pkgver = 6.29.0
+	pkgrel = 1
+	url = https://github.com/Sonic-DE/sonic-frameworks-idle-tracker
+	arch = x86_64
+	groups = sonicde-frameworks
+	license = LGPL-2.0-only
+	license = LGPL-3.0-only
+	makedepends = doxygen
+	makedepends = sonic-frameworks-cmake-modules
+	makedepends = qt6-tools
+	depends = glibc
+	depends = libstdc++
+	depends = libx11
+	depends = libxcb
+	depends = libxext
+	depends = libxss
+	depends = qt6-base
+	provides = kidletime
+	conflicts = kidletime
+	source = sonic-frameworks-idle-tracker-6.29.0.tar.gz::https://github.com/Sonic-DE/sonic-frameworks-idle-tracker/archive/refs/tags/6.29.0.tar.gz
+	sha256sums = dfc49ab447bca0043fcca711eb40c0e9b870ac286344b370d30107bd40121df5
+
+pkgname = sonic-frameworks-idle-tracker
