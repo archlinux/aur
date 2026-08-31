@@ -34,10 +34,6 @@ update_pkhex() {
   if [ "${available}" != "${installed}" ]; then
     echo "PKHeX update available: ${installed:-none} -> ${available}"
 
-    find "${PKHEX_DATA_DIRECTORY}" -mindepth 1 -maxdepth 1 \
-      ! -name '.version' \
-      -exec rm -rf {} +
-
     tar -xzf "${PKHEX_ARCHIVE}" -C "${PKHEX_DATA_DIRECTORY}"
     printf '%s\n' "${available}" > "${PKHEX_DATA_DIRECTORY}/.version"
 
