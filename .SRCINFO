@@ -1,0 +1,23 @@
+pkgbase = streamdock-n4e
+	pkgdesc = Native Linux controller for the VSDinside Stream Dock N4E
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MiraboxSpace/StreamDock-Device-SDK
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = pyside6
+	depends = python-flask
+	depends = python-pillow
+	depends = python-pyudev
+	source = streamdock::git+https://github.com/MiraboxSpace/StreamDock-Device-SDK.git
+	source = streamdock_native.py
+	source = streamdock_wrapper.py
+	source = streamdock-n4e.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = streamdock-n4e

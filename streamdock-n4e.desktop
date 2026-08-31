@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=StreamDock N4E
+Comment=Configure the VSDinside Stream Dock N4E
+Exec=streamdock-n4e
+Icon=input-dial
+Terminal=false
+Categories=Utility;HardwareSettings;
