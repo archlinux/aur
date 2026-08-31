@@ -2,7 +2,7 @@
 _appname=qoder
 pkgname="${_appname}-ide-bin"
 _pkgname='Qoder IDE'
-pkgver=1.26.0
+pkgver=1.27.1
 _electronversion=42
 pkgrel=1
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
@@ -38,7 +38,7 @@ source=(
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b213f6abe9e9aa3fa03c65950a6dac8612d434ae6cfd9a3e64425524578dd207'
+sha256sums=('941b1c6e3e3cf9d6d69742d3eaf48818df321fdcb312e5f558a8177fed0f1e10'
             'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
             'cbeb2e78d46c0cbe8793e7a2c06bd339e3ed9dca5f0ae1196281b8d2cf60c4c5'
             '700067aa4b354a91ab3374b5495af9eb3093855a3d8016a8303e88abf3470599')
