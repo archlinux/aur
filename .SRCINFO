@@ -1,7 +1,7 @@
 pkgbase = shutter-encoder-bin
 	pkgdesc = Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux.(Prebuilt version)
-	pkgver = 20.2
-	pkgrel = 2
+	pkgver = 20.3
+	pkgrel = 1
 	url = https://www.shutterencoder.com
 	arch = x86_64
 	license = GPL-3.0-only
@@ -25,11 +25,11 @@ pkgbase = shutter-encoder-bin
 	depends = mediainfo
 	depends = dvdauthor
 	depends = dcraw
-	provides = shutter-encoder=20.2
+	provides = shutter-encoder=20.3
 	conflicts = shutter-encoder
-	source = shutter-encoder-20.2.deb::https://www.shutterencoder.com/Shutter%20Encoder%2020.2%20Linux%2064bits.deb
+	source = shutter-encoder-20.3.deb::https://www.shutterencoder.com/Shutter%20Encoder%2020.3%20Linux%2064bits.deb
 	source = shutter-encoder.sh
-	sha256sums = bafb62f3b622387fac121ae745d0e020bb8bf328d3c43b18f49a00a869e7dac2
+	sha256sums = 9106a29c6158a214dac9803098fd60685c3f7a9c5b73c2ccab358746e43f58f7
 	sha256sums = d2e12cd239e05ceca84f310de6b1d6beae419d4015f112ca82f830e128e38964
 
 pkgname = shutter-encoder-bin

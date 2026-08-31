@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=shutter-encoder-bin
 _pkgname='Shutter Encoder'
-pkgver=20.2
-pkgrel=2
+pkgver=20.3
+pkgrel=1
 pkgdesc="Converter for all formats video|audio|image professionnals codecs and standards - swiss knife tool for Linux.(Prebuilt version)"
 arch=('x86_64')
 url="https://www.shutterencoder.com"
@@ -36,7 +36,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/Shutter%20Encoder%20${pkgver}%20Linux%2064bits.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('bafb62f3b622387fac121ae745d0e020bb8bf328d3c43b18f49a00a869e7dac2'
+sha256sums=('9106a29c6158a214dac9803098fd60685c3f7a9c5b73c2ccab358746e43f58f7'
             'd2e12cd239e05ceca84f310de6b1d6beae419d4015f112ca82f830e128e38964')
 prepare() {
     # Create normal launcher
