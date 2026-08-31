@@ -1,15 +1,15 @@
 pkgbase = ossutil2-bin
 	pkgdesc = a tool for managing OSS (Object Storage Service) data
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/aliyun/alibabacloud-oss-go-sdk-v2
 	arch = x86_64
 	arch = aarch64
 	license = proprietary
 	provides = ossutil
-	source_x86_64 = https://gosspublic.alicdn.com/ossutil/v2/2.3.0/ossutil-2.3.0-linux-amd64.zip
-	sha256sums_x86_64 = 3ae4d9fc85a7a6e9f5654d1599766f1a3a42a3692870887b5ae9338d582ef65a
-	source_aarch64 = https://gosspublic.alicdn.com/ossutil/v2/2.3.0/ossutil-2.3.0-linux-arm64.zip
-	sha256sums_aarch64 = f6c95ba0c2d2ef30290af686ce4d706c701f4734ce8090bee4288a77e3f1d764
+	source_x86_64 = https://gosspublic.alicdn.com/ossutil/v2/2.4.0/ossutil-2.4.0-linux-amd64.zip
+	sha256sums_x86_64 = 85edf66b2fb7238f5c7e25cab820cf29312319fe4935b7c86a6b8485eb434f3c
+	source_aarch64 = https://gosspublic.alicdn.com/ossutil/v2/2.4.0/ossutil-2.4.0-linux-arm64.zip
+	sha256sums_aarch64 = 7767240e9667d1f26fbe4e04f90b796b4356889e77d0076cc8a543c8ce081987
 
 pkgname = ossutil2-bin
