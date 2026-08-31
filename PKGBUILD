@@ -23,4 +23,6 @@ package() {
 
     meson compile -C build
     meson install -C build --destdir "${pkgdir}"
+
+    ln -s "${pkgdir}/usr/bin/run0edit" "${pkgdir}/usr/bin/edit0"
 }
