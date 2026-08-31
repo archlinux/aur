@@ -1,0 +1,21 @@
+pkgbase = klamav-py
+	pkgdesc = Frontend Python minimale per ClamAV via clamd, erede spirituale di KlamAV 0.22
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/gradia64/KlamAV-Py
+	install = klamav-py.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.10
+	optdepends = pyside6: GUI (klamav-py-gui)
+	optdepends = clamav: demone clamd, richiesto per la scansione
+	optdepends = polkit: aggiornamento database virus da GUI (pkexec)
+	optdepends = kio: integrazione menu contestuale Dolphin (kbuildsycoca)
+	source = klamav-py-0.1.6.tar.gz::https://github.com/gradia64/KlamAV-Py/archive/refs/tags/v0.1.6.tar.gz
+	sha256sums = 7528706784f171bc3f25cd7dc6154ce11011908151a3ad520f2aa7977c59af81
+
+pkgname = klamav-py

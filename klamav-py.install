@@ -1,0 +1,13 @@
+# Su Arch la policy è NON abilitare unit systemd in fase di
+# install/rimozione: lo stato del sistema è dell'utente. Ci si limita
+# a stampare un hint, come fanno i pacchetti ufficiali.
+post_install() {
+  echo "klamav-py: per la scansione programmata abilitare il timer utente:"
+  echo "  systemctl --user enable --now klamav-scan.timer"
+  echo "klamav-py: la GUI richiede il pacchetto pyside6,"
+  echo "  la scansione richiede il demone clamd attivo (pacchetto clamav)."
+}
+
+post_upgrade() {
+  post_install
+}
