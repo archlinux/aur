@@ -8,7 +8,7 @@
 
 pkgname=asterisk
 pkgver=23.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete PBX solution'
 arch=(x86_64 i686 aarch64 armv7h)
 url=https://www.asterisk.org
@@ -177,6 +177,18 @@ build() {
 	make MENUSELECT_CFLAGS= OPTIMIZE= DEBUG= ASTVARRUNDIR="/run/$pkgname" NOISY_BUILD=1
 }
 
+_cmp() {
+	cmp -s \
+		<(IFS=$'\n'; echo "${_confs[*]}" | sort) \
+		<(IFS=$'\n'; echo "${_backs[*]}" | sort)
+}
+
+_comm() {
+	comm -3 --nocheck-order \
+		<(IFS=$'\n'; echo "${_confs[*]}" | sort) \
+		<(IFS=$'\n'; echo "${_backs[*]}" | sort)
+}
+
 package(){
 	cd "$_archive"
 
@@ -189,13 +201,7 @@ package(){
 	# with a helpful output of where the lists differ. We have to compare twice
 	# because cmp has a useful exit code, comm has a useful output, neither both
 	local _backs=($(cd "$pkgdir/etc/$pkgname" && echo *))
-	cmp -s \
-		<(IFS=$'\n'; echo "${_confs[*]}" | sort) \
-		<(IFS=$'\n'; echo "${_backs[*]}" | sort) ||
-		(comm -3 --nocheck-order \
-			<(IFS=$'\n'; echo "${_confs[*]}" | sort) \
-			<(IFS=$'\n'; echo "${_backs[*]}" | sort) &&
-		exit 1)
+	_cmp || (_comm && exit 1)
 
 	sed -i -e 's,/var/run,/run,' "$pkgdir/etc/$pkgname/asterisk.conf"
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/examples" "$pkgdir/etc/$pkgname/"*
