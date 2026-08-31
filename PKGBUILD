@@ -4,8 +4,8 @@
 # URL: https://github.com/wergosam/Pachul
 
 pkgname=pachul
-pkgver=2.2.6
-pkgrel=1
+pkgver=2.2.7
+pkgrel=4
 pkgdesc="A modern, graphical Pacman/AUR front end for Arch Linux built with GTK4 and libadwaita"
 arch=('any')
 url="https://github.com/wergosam/Pachul"
@@ -27,10 +27,18 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/wergosam/Pachul/archive/refs/tags/v$pkgver.tar.gz"
     "io.github.wergosam.pachul.desktop"
     "io.github.wergosam.pachul-tray.desktop"
+    "pachuli.py"
 )
-sha256sums=('9314311c92f3ac56b2797035fe26f7772b4e1d5b4540d146ea596841eb6da13d'
+sha256sums=('94ae8bf46877eb1b228cb88ff879548e8810c556727b45aad5046f6a0b1bf8d0'
             '355adac78b4a3e16647e50ef819858b36de0831c47d6f874e4a08a7f1bb83da2'
-            'eb148625bfb4ad11b897e2c2e80722ebac0d4f34d94e8bda0f95a1169e88b194')
+            'eb148625bfb4ad11b897e2c2e80722ebac0d4f34d94e8bda0f95a1169e88b194'
+            '4e5bba8ae4be5c91738decc3dde9137a1de6ef8715cd6142d1a535f674e9e93d')
+# pachuli.py is a local file, not fetched via URL — it must sit next to this
+# PKGBUILD in the AUR git repo (same as the two .desktop files above).
+# Checksum intentionally SKIP: unlike the tarball above (a remote download,
+# where the checksum guards against tampering/corruption in transit),
+# pachuli.py is maintained directly in this same git repo, so SKIP avoids
+# having to recompute and update a checksum by hand on every change.
 
 prepare() {
     cd "$srcdir"/*/
@@ -78,6 +86,12 @@ EOF
 exec python3 /usr/share/pachul/tray.py "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/pachul-tray"
+
+    # pachuli — eigener AUR-Helper (separates Projekt, siehe pachuli.py),
+    # wird von Pachul bevorzugt vor yay/paru genutzt, falls vorhanden. Landet
+    # hier direkt neben dem pachul-Launcher in /usr/bin, ist also ohne
+    # weiteres Zutun sofort im PATH.
+    install -Dm755 "$srcdir/pachuli.py" "$pkgdir/usr/bin/pachuli"
 
     # Desktop-Datei + hicolor-Icon (für Menü/Dock, unabhängig vom internen
     # .icon-theme-Mechanismus von app.py)
