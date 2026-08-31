@@ -7,7 +7,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.4.6
+pkgver=3.4.7
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -29,7 +29,6 @@ makedepends=(
     'npm'
     'zip'
     'curl'
-    'yarn'
     'python-setuptools'
     'jq'
 )
