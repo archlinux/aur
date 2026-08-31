@@ -2,7 +2,7 @@
 # Co-Maintainer: Dongda Li <dongdongbhbh at gmail dot com>
 pkgname=mindwtr
 pkgver=1.2.5
-pkgrel=2
+pkgrel=3
 _nodeversion=24
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
 arch=('x86_64')
@@ -30,9 +30,11 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dongdongbh/Mindwtr/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop"
+        "bun.lock"
 )
 sha256sums=('4e2be834cae47c8960f8ab2e58cad2db131d58c3ba1716cc290848875ad4419c'
-            'c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c')
+            'c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c'
+            'a27f85587b752b99e5f35aee78945e86c7f106b28289757d566d67e56982ac3e')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -51,14 +53,8 @@ prepare() {
   nvm install "${_nodeversion}"
 
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
-  LOCKFILE_VERSION="$(sed -n 's/.*\"lockfileVersion\": \([0-9][0-9]*\).*/\1/p' bun.lock | head -n 1)"
-  if [ -n "$LOCKFILE_VERSION" ] && [ "$LOCKFILE_VERSION" -lt 3 ]; then
-    # Bun 1.4 rewrites legacy locks. Resolve without its manifest cache,
-    # then force one fresh registry request if the first attempt fails.
-    bun install --no-save --no-cache || bun install --no-save --no-cache --force
-  else
-    bun install --frozen-lockfile
-  fi
+  cp "$srcdir/bun.lock" bun.lock
+  bun install --frozen-lockfile --registry=https://registry.npmjs.org
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --manifest-path apps/desktop/src-tauri/Cargo.toml \
