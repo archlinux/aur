@@ -1,7 +1,7 @@
 # Maintainer: Wellinton Vieira <wellintonvieira.office@gmail.com>
 pkgname=arch-run-cat
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Animated run-cat native XFCE panel plugin (5 frames x 2 themes, CPU-proportional)"
 arch=('x86_64')
 url="https://github.com/nellowint/arch-run-cat"
@@ -18,5 +18,5 @@ build() {
 
 package() {
   meson install -C build --destdir "$pkgdir"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
