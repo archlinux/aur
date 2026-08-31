@@ -1,6 +1,6 @@
 pkgbase = fluyer
 	pkgdesc = Music Player
-	pkgver = 1.3.0
+	pkgver = 1.3.6
 	pkgrel = 1
 	url = https://github.com/luneflu/Fluyer
 	install = fluyer.install
@@ -17,6 +17,6 @@ pkgbase = fluyer
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/luneflu/Fluyer/releases/download/v1.3.0/Fluyer_1.3.0_amd64.deb
-	sha256sums_x86_64 = e19a808993ea9eac6976d5d20f42309f6fc11ea329582e4ebb3fe89fb6973e86
+	source_x86_64 = https://github.com/luneflu/Fluyer/releases/download/v1.3.6/Fluyer_1.3.6_amd64.deb
+	sha256sums_x86_64 = 02eee8f20c2379e9891b1ddf9e180ccffade4ab5a50de9d2bcfd17d23803e8be
 pkgname = fluyer
