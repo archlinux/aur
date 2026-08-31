@@ -1,4 +1,5 @@
 # Maintainer: eval-exec <eval-exec@github>
+# Contributor: Patryk Rozanski <rozanski.patryk@gmail.com>
 pkgname=neomacs-bin
 _pkgname=neomacs
 pkgver=0.0.16
@@ -12,45 +13,37 @@ depends=(
   'freetype2'
   'gcc-libs'
   'glib2'
-  'gstreamer'
-  'gst-plugins-base-libs'
   'ncurses'
   'zlib'
 )
+optdepends=(
+  'gstreamer: for video playback support'
+  'gst-plugins-base-libs: for video playback plugins'
+)
 provides=('neomacs' 'emacs')
 conflicts=('neomacs' 'emacs')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eval-exec/neomacs/releases/download/v${pkgver}/neomacs-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
-        "https://raw.githubusercontent.com/eval-exec/neomacs/main/assets/logo.png"
-        "https://raw.githubusercontent.com/eval-exec/neomacs/main/etc/emacs.desktop")
-sha256sums=('385d3485855cedfd77b57c2b3917e1fd4e624607901622679da3ce25c08ea112'
-            'd62924ab6f8783beb69eef1b873f2c0b0d2e92f568ec47774423ad0eab3e25d9'
-            'f6ae6611d2e54e65d210ad2983df80ac5b65618c83c4190700e90ff455e12464')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/eval-exec/neomacs/releases/download/v${pkgver}/neomacs-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
+sha256sums=('385d3485855cedfd77b57c2b3917e1fd4e624607901622679da3ce25c08ea112')
 
 package() {
   local _dir="neomacs-${pkgver}-x86_64-unknown-linux-gnu"
 
-  # Install binaries and pdump
+  # Install binaries
   install -dm755 "${pkgdir}/usr/bin"
   install -m755 "${srcdir}/${_dir}/bin/neomacs" "${pkgdir}/usr/bin/neomacs"
-  install -m755 "${srcdir}/${_dir}/bin/neomacsclient" "${pkgdir}/usr/bin/neomacsclient"
-  install -m755 "${srcdir}/${_dir}/bin/neomacs-temacs" "${pkgdir}/usr/bin/neomacs-temacs"
-  install -m755 "${srcdir}/${_dir}/bin/bootstrap-neomacs" "${pkgdir}/usr/bin/bootstrap-neomacs"
-  install -m755 "${srcdir}/${_dir}/bin/mock-display" "${pkgdir}/usr/bin/mock-display"
-  install -m644 "${srcdir}/${_dir}/bin/neomacs.pdump" "${pkgdir}/usr/bin/neomacs.pdump"
-
-  # Install shared Lisp files
-  if [ -d "${srcdir}/${_dir}/share/neomacs" ]; then
-    install -dm755 "${pkgdir}/usr/share"
-    cp -r "${srcdir}/${_dir}/share/neomacs" "${pkgdir}/usr/share/neomacs"
+  if [ -f "${srcdir}/${_dir}/bin/neomacsclient" ]; then
+    install -m755 "${srcdir}/${_dir}/bin/neomacsclient" "${pkgdir}/usr/bin/neomacsclient"
   fi
 
-  # Install Desktop entry & icon
-  install -Dm644 "${srcdir}/emacs.desktop" "${pkgdir}/usr/share/applications/neomacs.desktop"
-  sed -i 's/Name=Emacs/Name=Neomacs/' "${pkgdir}/usr/share/applications/neomacs.desktop"
-  sed -i 's/Exec=emacs %F/Exec=neomacs %F/' "${pkgdir}/usr/share/applications/neomacs.desktop"
-  sed -i 's/Icon=emacs/Icon=neomacs/' "${pkgdir}/usr/share/applications/neomacs.desktop"
+  # Install libexec (internal helper binaries and neomacs.pdump)
+  if [ -d "${srcdir}/${_dir}/libexec" ]; then
+    cp -a "${srcdir}/${_dir}/libexec" "${pkgdir}/usr/"
+  fi
 
-  install -Dm644 "${srcdir}/logo.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/neomacs.png"
+  # Install shared files (Lisp library, icons, desktop entry)
+  if [ -d "${srcdir}/${_dir}/share" ]; then
+    cp -a "${srcdir}/${_dir}/share" "${pkgdir}/usr/"
+  fi
 
   # License
   install -Dm644 "${srcdir}/${_dir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
