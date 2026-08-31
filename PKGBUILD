@@ -1,14 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=navop-bin
 _pkgname=Navop
-pkgver=0.12.1
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="Navop combines Navigate and Operation—a unified workspace that helps developers navigate and operate databases, servers, terminals, and AI tools from one place. (Prebuilt version)"
 arch=(
     'aarch64'
     'x86_64'
 )
-url="https://github.com/feigeCode/navop"
+url="https://navop.dev/"
+_ghurl="https://github.com/feigeCode/navop"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -19,8 +20,8 @@ depends=(
     'gtk3'
     'webkit2gtk-4.1'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('5ffb9f6435840e678a8dcae564b1746aea71b9a60d7145e2f1cb7b752ba06829')
+source=("${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+sha256sums=('624803631608afa6261f043daf2de1b4041f45efcd633730cc0f33208385c78d')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
 }
