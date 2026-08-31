@@ -4,6 +4,7 @@ pkgbase = cups-browsed-git
 	pkgrel = 1
 	url = https://github.com/OpenPrinting/cups-browsed
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0 WITH LLVM-exception
 	makedepends = git
 	makedepends = glib2-devel
