@@ -17,7 +17,7 @@ depends=(
     'ffmpeg'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_rpmname}-linux-amd64.rpm")
-sha256sums=('d0f514291737bf48f74e61f8d00f2c77d46344ce1816f828ad94ef6c3f343fa7')
+sha256sums=('e1b46ae39a2c620b4e1860dc9f3d34bb3eb915c526673eba9dfbb5c5d25ac727')
 prepare() {
     sed -i -e "
         s/Name=${_rpmname}/Name=${_pkgname}/g
