@@ -1,7 +1,7 @@
 pkgbase = cosmic-comp-gaming
 	pkgdesc = Compositor for the COSMIC desktop environment with gaming patches and support fifo-v1, commit-timing-v1, fullscreen tearing, and VRR Target Rate feature
 	pkgver = 1.19.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/skygrango/cosmic-comp
 	arch = x86_64
@@ -62,7 +62,7 @@ pkgbase = cosmic-comp-gaming
 	conflicts = cosmic-settings-git
 	conflicts = cosmic-randr
 	conflicts = cosmic-randr-git
-	source = git+https://github.com/skygrango/cosmic-comp.git#branch=vrr_target_rate_v5
+	source = git+https://github.com/skygrango/cosmic-comp.git#branch=vrr_target_rate_v6
 	source = git+https://github.com/skygrango/cosmic-settings.git#branch=vrr_target_rate_v3
 	source = git+https://github.com/skygrango/cosmic-randr.git#branch=vrr_target_rate_v2
 	sha256sums = SKIP
