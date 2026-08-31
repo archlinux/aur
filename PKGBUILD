@@ -1,6 +1,6 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastpotify-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Fast native Spotify client with local playback and Spotify Connect"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ options=('!debug' '!strip')
 _repo="https://github.com/crmne/fastpotify"
 source_x86_64=("${_repo}/releases/download/v${pkgver}/fastpotify-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_repo}/releases/download/v${pkgver}/fastpotify-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('9917f3aa76c7b825cc4f4e64b8a9ae0d6794274071cbee32eb19517dfd4145db')
-sha256sums_aarch64=('cf49818197688957ecd8583cf613803f1ba5baeea10d9d581a10834968a8280e')
+sha256sums_x86_64=('68062a16774defde41994d12a17841fb535ad28b4b621d874f047d04176de173')
+sha256sums_aarch64=('a4408f427409308679fb2bc437e7ca46f29c0129ed8ce1fca6cc49ca6ec1206b')
 
 package() {
   local target
