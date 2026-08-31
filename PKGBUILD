@@ -3,7 +3,7 @@
 pkgname=paseo-cli-beta
 _pkgname=cli
 _npmscope=@getpaseo
-pkgver=0.7.0_beta.2
+pkgver=0.7.0_beta.3
 pkgrel=1
 pkgdesc='Command-line interface for controlling Paseo AI coding agents (beta)'
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,10 @@ depends=('nodejs' 'bash' 'glibc' 'gcc-libs')
 makedepends=('npm')
 provides=('paseo')
 conflicts=('paseo' 'paseo-bin' 'paseo-cli-bun' 'paseo-cli')
-source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmscope}/${_pkgname}/-/${_pkgname}-0.7.0-beta.2.tgz"
-        "LICENSE-${pkgver}::https://raw.githubusercontent.com/getpaseo/paseo/v0.7.0-beta.2/LICENSE")
+source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmscope}/${_pkgname}/-/${_pkgname}-0.7.0-beta.3.tgz"
+        "LICENSE-${pkgver}::https://raw.githubusercontent.com/getpaseo/paseo/v0.7.0-beta.3/LICENSE")
 noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('79622a79c8610183436db6c947b90e6dbe399688b07a05b7e84e2c79aef1bbac'
+sha256sums=('9f1826e6e5cbd80efea18f9f56c43dc69e567512b8e4a890db1f1f26f6a156cc'
             '79d5aedce6aa0adc547336dc1bd34c5cc9308ba110fac7079ed97515ee573ad3')
 options=('!strip')
 
