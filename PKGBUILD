@@ -13,7 +13,7 @@
 # `git archive` tarball the Release workflow attaches), so the package is
 # versioned, owned by pacman, and reproducible from a fixed source.
 pkgname=odytty
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="GPU-rendered Rust terminal emulator with an Odyssey visual identity"
 arch=('x86_64')
@@ -23,7 +23,7 @@ depends=('fontconfig' 'freetype2' 'vulkan-icd-loader' 'libxkbcommon' 'hicolor-ic
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ghreprimand/odytty/releases/download/v$pkgver/odytty-$pkgver.tar.gz")
 # Replaced with the real checksum by `updpkgsums` before each AUR publish.
-sha256sums=('2f1d9d8c5c6b2be19fdec44bd1df4a66d26f363d3e2f4ec12ffd0a5953d75461')
+sha256sums=('0cb18307a82234004667e938a25ad754afc6287daaacd89959f77a32b52bf44f')
 
 prepare() {
     cd "$pkgname-$pkgver"
