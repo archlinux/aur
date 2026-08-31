@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mineradio-vision-git
 _pkgname=Mineradio-Vision
-pkgver=3.0.0.r0.gbb899a0
+pkgver=3.0.1.r5.gfffe29d
 _electronversion=42
 _nodeversion=24
 pkgrel=1
