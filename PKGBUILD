@@ -31,7 +31,7 @@ noextract=("fpc-$_startver.x86_64-linux.tar")
 
 sha256sums=('85ef993043bb83f999e2212f1bca766eb71f6f973d362e2290475dbaaf50161f'
             '5adac308a5534b6a76446d8311fc340747cbb7edeaacfe6b651493ff3fe31e83'
-            '3e6db945a931a5967d2f46fcde817fd9a42373bbfb4762f3caa33044c8fed79b')
+            '74d39279b6daef217f4bad9598090ce57ef92078cf612826161b6661f67421f0')
 
 prepare() {
   # Extraction of the bootstrap compiler: the official .tar archive contains
