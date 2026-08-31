@@ -1,0 +1,23 @@
+pkgbase = python-praat-parselmouth
+	pkgdesc = Praat in Python, the Pythonic way
+	pkgver = 0.4.7
+	pkgrel = 1
+	url = https://github.com/YannickJadoul/Parselmouth
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pybind11
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-scikit-build
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = gcc-libs
+	depends = glibc
+	source = https://files.pythonhosted.org/packages/source/p/praat-parselmouth/praat_parselmouth-0.4.7.tar.gz
+	sha256sums = 6dd81d246ce1eef5fd93d8cbdaf1bef61ca40ef1d2fc12aa23996a28071181e6
+
+pkgname = python-praat-parselmouth
