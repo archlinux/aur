@@ -3,8 +3,8 @@
 pkgname=paseo-cli-beta
 _pkgname=cli
 _npmscope=@getpaseo
-pkgver=0.7.0
-_tarball_sha='b3329fbae6e2da87b1feb36fa8c9a07367ee967d40239544c8f7c52af8ebe0c1'
+pkgver=0.7.0_beta.3
+_tarball_sha='9f1826e6e5cbd80efea18f9f56c43dc69e567512b8e4a890db1f1f26f6a156cc'
 _license_sha='79d5aedce6aa0adc547336dc1bd34c5cc9308ba110fac7079ed97515ee573ad3'
 pkgrel=1
 pkgdesc='Command-line interface for controlling Paseo AI coding agents (beta)'
