@@ -1,6 +1,6 @@
 # Maintainer: ralf <ralf.wierzbicki@gmail.com>
 pkgname=asteroidz
-pkgver=0.27.1
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='wlroots compositor with HDR10, dwm-style tags and its own Vulkan renderer'
 arch=('x86_64')
@@ -9,6 +9,9 @@ license=('GPL3' 'MIT' 'CC0')
 depends=(
   'wlroots0.20' 'wayland' 'libinput' 'libxkbcommon' 'pcre2' 'pixman'
   'cjson' 'pango' 'gdk-pixbuf2' 'libdrm' 'systemd-libs'
+  # azview's, not the compositor's: HEIF and AVIF come through libheif, and
+  # everything else through gdk-pixbuf, which is here for the wallpapers too.
+  'libheif'
   'vulkan-icd-loader'
   'xcb-util-wm' 'libxcb'
   # asteroidz-scenefx is GONE, not merely un-packaged. Its scene graph is now
