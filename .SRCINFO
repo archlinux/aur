@@ -1,0 +1,17 @@
+pkgbase = sleepy-bin
+	pkgdesc = Convert OpenAPI 3 specifications into Insomnia, Postman or Bruno collections
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://gitlab.com/kopytkg/sleepy
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = glibc
+	provides = sleepy
+	conflicts = sleepy
+	noextract = sleepy-0.6.1
+	source = sleepy-0.6.1::https://gitlab.com/api/v4/projects/84670021/packages/generic/sleepy/v0.6.1/sleepy
+	source = LICENSE-0.6.1::https://gitlab.com/kopytkg/sleepy/-/raw/v0.6.1/LICENSE
+	sha256sums = 5b39e20d96d941e1dc98b402a53ef08b1a6cdbfb36b68efcf6e8d87cc9170184
+	sha256sums = 765f202dfca30d8f4370bed3870c01b4fb40f7e4070d6cd84e24b250aebf2f69
+
+pkgname = sleepy-bin
