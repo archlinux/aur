@@ -2,8 +2,8 @@
 _appname=iptvnator
 pkgname="${_appname}-electron-bin"
 _pkgname=IPTVnator
-pkgver=0.22.0
-_electronversion=41
+pkgver=0.23.0
+_electronversion=43
 pkgrel=1
 pkgdesc="IPTVnator Electron 0.16 with DRM & H.265 playback support. This build version also adds Shaka player and Artplayer components.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -11,7 +11,8 @@ arch=(
     'armv7h'
     'x86_64'
 )
-url="https://github.com/4gray/iptvnator"
+url="https://4gray.github.io/iptvnator/"
+_ghurl="https://github.com/4gray/iptvnator"
 license=('MIT')
 provides=("${_appname}=${pkgver}")
 conflicts=("${_appname}")
@@ -23,14 +24,14 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/4gray/iptvnator/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-arm64.deb")
-source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-armv7l.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-arm64.deb")
+source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-armv7l.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_appname}-${pkgver}-linux-amd64.deb")
 sha256sums=('475a6c9a7c4fd3157f78c0afa1daab94fb81ff23dd94dad81e0f657ba5259f74'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('3fb76b422106c243662ae875d030746fda5753c06ea3a9f7655ae8522d19feae')
-sha256sums_armv7h=('b3a2cc83b084d41e04ea81f6c5b5f4245d405358f8c7d28a798441e9aef2c572')
-sha256sums_x86_64=('4aef49d27daf68aa9451ec34d0bf87c18921d9055dd97d3fd225e0b101527e4c')
+sha256sums_aarch64=('fa6e968ca22848194a542095ee2a59bac6d50e2dfa699b827f801eaeb71991e8')
+sha256sums_armv7h=('9eeabf872f79159147a237bb4b8c50342aa96cb032c2616352d1e133276c1a09')
+sha256sums_x86_64=('f30bac91ae2fe6788bc8124188a32eca2dcf8013c04c7861cce3851d958b11ff')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -63,7 +64,7 @@ package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
-	cp -a "${_app_dir}/resources/". "${pkgdir}/usr/lib/${pkgname%-bin}/"
+	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
