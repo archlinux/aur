@@ -1,7 +1,7 @@
 pkgbase = notifiarr-bin
 	pkgdesc = Official Client for Notifiarr.com
 	pkgver = 0.9.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notifiarr.com
 	arch = x86_64
 	arch = armhf
