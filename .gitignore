@@ -1,0 +1,7 @@
+# Ignore everything by default
+*
+
+# Whitelist only the AUR packaging files
+!.gitignore
+!PKGBUILD
+!.SRCINFO
