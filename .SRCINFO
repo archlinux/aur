@@ -1,0 +1,18 @@
+pkgbase = arch-run-cat
+	pkgdesc = Animated run-cat native XFCE panel plugin (5 frames x 2 themes, CPU-proportional)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/nellowint/arch-run-cat
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = pkgconf
+	depends = xfce4-panel>=4.18
+	depends = gtk3
+	depends = libxfconf
+	depends = libxfce4util
+	depends = gdk-pixbuf2
+	source = arch-run-cat-0.2.0.tar.gz::https://github.com/nellowint/arch-run-cat/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = arch-run-cat
