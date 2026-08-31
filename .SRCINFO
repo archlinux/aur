@@ -1,6 +1,6 @@
 pkgbase = niri-autostart-bin
 	pkgdesc = Declarative autostart and layout restoration for the niri Wayland compositor (prebuilt binary)
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/partanskiy/niri-autostart
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = niri-autostart-bin
 	optdepends = niri: run niri-autostart inside the niri compositor
 	provides = niri-autostart
 	conflicts = niri-autostart
-	source_x86_64 = niri-autostart-x86_64-linux.tar.gz::https://github.com/partanskiy/niri-autostart/releases/download/v0.3.0/niri-autostart-x86_64-linux.tar.gz
-	sha256sums_x86_64 = cece3aa89b4d2ef770fbf55a3cae60fdd6cd24908bdcd1a5cdd18c4c30c4472e
-	source_aarch64 = niri-autostart-aarch64-linux.tar.gz::https://github.com/partanskiy/niri-autostart/releases/download/v0.3.0/niri-autostart-aarch64-linux.tar.gz
-	sha256sums_aarch64 = 358c0d92b5abf625589191715e9563b7c622f5241ec09c65e56c4df0d3414076
+	source_x86_64 = niri-autostart-x86_64-linux.tar.gz::https://github.com/partanskiy/niri-autostart/releases/download/v0.3.1/niri-autostart-x86_64-linux.tar.gz
+	sha256sums_x86_64 = aabf65d505f85b903b62b5aebb3cd11bde1a154a63f1718003dc0f9908d950fe
+	source_aarch64 = niri-autostart-aarch64-linux.tar.gz::https://github.com/partanskiy/niri-autostart/releases/download/v0.3.1/niri-autostart-aarch64-linux.tar.gz
+	sha256sums_aarch64 = 5b2987a8045778950169bdb59f5d27ca40e63e117f0bdbdcfd7e30483d8a0e95
 
 pkgname = niri-autostart-bin
