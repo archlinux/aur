@@ -1,19 +1,10 @@
 DATA_DIR="/opt/gui-for-singbox/data"
 
 post_install() {
-    install -dm777 "${DATA_DIR}/.cache/icons"
-    install -dm777 "${DATA_DIR}/.cache/imgs"
-    install -dm777 "${DATA_DIR}/plugins"
-    install -dm777 "${DATA_DIR}/rolling-release"
-    install -dm777 "${DATA_DIR}/rulesets"
-    install -dm777 "${DATA_DIR}/subscribes"
-    install -dm777 "${DATA_DIR}/locales"
-    install -dm777 "${DATA_DIR}/third"
-    install -dm777 "${DATA_DIR}/sing-box"
+    install -dm777 "${DATA_DIR}" "${DATA_DIR}/sing-box"
 
     ln -sf /usr/bin/sing-box "${DATA_DIR}/sing-box/sing-box"
-    setcap cap_net_admin=+ep /usr/bin/sing-box
-    chmod -R 777 "${DATA_DIR}"
+    /usr/bin/setcap cap_net_admin,cap_net_raw,cap_net_bind_service=ep /usr/bin/sing-box
 }
 
 post_upgrade() {

@@ -1,0 +1,4 @@
+#!/bin/bash
+set -euo pipefail
+
+exec /opt/gui-for-singbox/GUI.for.SingBox "$@"

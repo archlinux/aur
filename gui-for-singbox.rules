@@ -1,11 +1,10 @@
-// Allow gui-for-singbox (user msg) to manage DNS/routing without password
-// Extends the default sing-box rule to cover desktop users
+// Allow the active local GUI user to configure systemd-resolved for TUN.
 polkit.addRule(function(action, subject) {
     if ((action.id == "org.freedesktop.resolve1.set-domains" ||
          action.id == "org.freedesktop.resolve1.set-default-route" ||
          action.id == "org.freedesktop.resolve1.set-dns-servers" ||
          action.id == "org.freedesktop.resolve1.revert") &&
-        (subject.user == "sing-box" || subject.user == "msg")) {
+        subject.local && subject.active) {
         return polkit.Result.YES;
     }
 });

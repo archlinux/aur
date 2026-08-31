@@ -1,0 +1,11 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Path
+Target = usr/bin/sing-box
+
+[Action]
+Description = Restoring network capabilities for sing-box
+When = PostTransaction
+Depends = libcap
+Exec = /usr/bin/setcap cap_net_admin,cap_net_raw,cap_net_bind_service=ep /usr/bin/sing-box
