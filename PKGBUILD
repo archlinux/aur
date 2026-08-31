@@ -1,4 +1,4 @@
-# Maintainer: sinbud2004
+# Maintainer: sinbud2004 <sinbud2004@gmail.com>
 pkgname=bazi-cli
 pkgver=2.0.0
 pkgrel=1
