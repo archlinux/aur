@@ -1,14 +1,16 @@
 pkgbase = mikusays
 	pkgdesc = A 'cowsay' clone with Hatsune Miku ASCII art and speech bubbles.
-	pkgver = 0.1.4
-	pkgrel = 2
+	pkgver = 0.1.5
+	pkgrel = 1
 	url = https://github.com/xxanqw/mikusays
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = https://github.com/xxanqw/mikusays/releases/download/v0.1.4-2/mikusays-linux-x64-0.1.4-2
-	sha256sums_x86_64 = 1371a8be0db49c5ea010f1ed928b873fb5d7e16e07631f4ef27e346180c7c3d8
-	source_aarch64 = https://github.com/xxanqw/mikusays/releases/download/v0.1.4-2/mikusays-linux-arm64-0.1.4-2
-	sha256sums_aarch64 = 651bfdcce5942096df7e5de726d676acb28c4ec54321d390cbb635e5fb6914ca
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/xxanqw/mikusays/releases/download/v0.1.5/mikusays-linux-x64-0.1.5.tar.gz
+	sha256sums_x86_64 = d5622717da3f0978c3d99ca8fab88ddcb539965b8ac751531b26118355a9d71f
+	source_aarch64 = https://github.com/xxanqw/mikusays/releases/download/v0.1.5/mikusays-linux-arm64-0.1.5.tar.gz
+	sha256sums_aarch64 = 164843ac96dd94e05a6739eb704ebf0d86605fab27508e57b1014f3e8ed79df4
 
 pkgname = mikusays
