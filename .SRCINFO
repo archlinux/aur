@@ -17,7 +17,6 @@ pkgbase = python-pypixelcolor
 	depends = python-websockets
 	optdepends = python-pillow-heif: HEIF/HEIC image format support
 	provides = pypixelcolor
-	conflicts = pypixelcolor
 	source = https://github.com/lucagoc/pypixelcolor/archive/refs/tags/v0.4.0.tar.gz
 	sha256sums = 344becefe853067ab291efa5607ea572c21363636cb1f3824f326a4eb2566cc8
 

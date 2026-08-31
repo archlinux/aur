@@ -27,7 +27,6 @@ checkdepends=(
     'python-pytest'
 )
 provides=('pypixelcolor')
-conflicts=('pypixelcolor')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('344becefe853067ab291efa5607ea572c21363636cb1f3824f326a4eb2566cc8')
 
