@@ -1,6 +1,6 @@
 # Maintainer: Mindsaver <Mindsaver@users.noreply.github.com>
 pkgname=linux-sensor-tray
-pkgver=0.3.4
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Tray-first Electron app for live CPU/GPU/mainboard/storage stats on Linux"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
 )
 # CI regenerates hashes via updpkgsums for the actual tag at deploy time;
 # local makepkg should run `updpkgsums` first if you change pkgver.
-sha256sums=('74363cda8b40fde57552abb8d9018132b349c9f79350085f3c60ac683e52e4e8'
+sha256sums=('723045175ef1ca5e8d211fd92141f7652aebe2149f6be589f83bdface2bd7d68'
             '90267ebd6e338215d5358159ade24aaf9403008d19db1c81553bc5e8d94421d3'
             '4af4bed1cb787c29e0f5345330f7ba83bbcb97ea5d42dde20f3e77b56522697a')
 
