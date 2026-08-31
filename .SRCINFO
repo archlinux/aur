@@ -1,7 +1,7 @@
 pkgbase = python-docling-core
 	pkgdesc = A python library to define and validate data types in Docling.
 	pkgver = 2.92.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/docling-project/docling-core
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = python-docling-core
 	depends = python-pandas>=2.1.4
 	depends = python-pillow>=10.0.0
 	depends = python-pydantic>=2.10.3
-	depends = python-pyyaml>=5.1
+	depends = python-yaml>=5.1
 	depends = python-typer026>=0.12.5
 	depends = python-latex2mathml>=3.77.0
 	depends = python-defusedxml>=0.7.1
