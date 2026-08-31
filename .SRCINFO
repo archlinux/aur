@@ -1,13 +1,19 @@
 pkgbase = pacterm-bin
 	pkgdesc = A terminal pacman game by Wael (pre-compiled binary)
-	pkgver = 1.3.8
+	pkgver = 1.3.9
 	pkgrel = 1
-	url = https://wael.work.gd/arch/pacterm
+	url = https://github.com/Wael-MA/pacterm
 	arch = x86_64
 	license = GPL-3.0-or-later
+	depends = gcc-libs
 	provides = pacterm
 	conflicts = pacterm
-	source = pacterm-1.3.8::https://wael.work.gd/arch/pacterm/bin/1.3.8/pacterm
-	sha256sums = 9244ef827f41a8eb3e3a8eaf1af7891a4bf2aca4e7ae240bbd003fb124e811cd
+	conflicts = pacterm-git
+	source = pacterm-1.3.9::https://github.com/Wael-MA/pacterm/releases/download/v1.3.9/pacterm
+	source = pacterm.desktop
+	source = PacTermIcon.png::https://github.com/Wael-MA/pacterm/raw/main/img/PacTermIcon.png
+	sha256sums = 784936ad31cdc63d27b3b45139fe4d4c7329ccec11a86b85d37b95c0bfb2c181
+	sha256sums = 8aba3bab75da0890862cfcefc0742cb27ffca4673a6fe812c72cd13dd79f136e
+	sha256sums = 7bbb0a52c7080a125036a2e4c09733f0dda578dda91a19a1afc95e5262add195
 
 pkgname = pacterm-bin

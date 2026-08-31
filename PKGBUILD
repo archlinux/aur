@@ -1,15 +1,24 @@
+# Maintainer: Wael Amrani Zerrifi <waelaz1983@gmail.com>
+
 pkgname=pacterm-bin
-pkgver=1.3.8
+pkgver=1.3.9
 pkgrel=1
 pkgdesc="A terminal pacman game by Wael (pre-compiled binary)"
 arch=('x86_64')
-url="https://wael.work.gd/arch/pacterm"
+url="https://github.com/Wael-MA/pacterm"
 license=('GPL-3.0-or-later')
+depends=('gcc-libs')
 provides=('pacterm')
-conflicts=('pacterm')
-source=("pacterm-${pkgver}::https://wael.work.gd/arch/pacterm/bin/${pkgver}/pacterm")
-sha256sums=('9244ef827f41a8eb3e3a8eaf1af7891a4bf2aca4e7ae240bbd003fb124e811cd')
+conflicts=('pacterm' 'pacterm-git')
+source=("pacterm-${pkgver}::$url/releases/download/v${pkgver}/pacterm"
+        "pacterm.desktop"
+        "PacTermIcon.png::$url/raw/main/img/PacTermIcon.png")
+sha256sums=('784936ad31cdc63d27b3b45139fe4d4c7329ccec11a86b85d37b95c0bfb2c181'
+            '8aba3bab75da0890862cfcefc0742cb27ffca4673a6fe812c72cd13dd79f136e'
+            '7bbb0a52c7080a125036a2e4c09733f0dda578dda91a19a1afc95e5262add195')
 
 package() {
     install -Dm755 "${srcdir}/pacterm-${pkgver}" "${pkgdir}/usr/bin/pacterm"
+    install -Dm644 "${srcdir}/pacterm.desktop" "${pkgdir}/usr/share/applications/pacterm.desktop"
+    install -Dm644 "${srcdir}/PacTermIcon.png" "${pkgdir}/usr/share/pixmaps/pacterm.png"
 }
