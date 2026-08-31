@@ -1,0 +1,46 @@
+Author: Tiago de Paula <tiagodepalves@gmail.com>
+Date: Sun Aug 30 21:29:18 2026 -0300
+Last-Update: 2026-08-31
+Subject: keep code position independent
+---
+ commander/CMakeLists.txt |    1 -
+ parser/CMakeLists.txt    |    1 -
+ src/CMakeLists.txt       |    1 -
+ 3 files changed, 3 deletions(-)
+
+Index: b/commander/CMakeLists.txt
+===================================================================
+--- a/commander/CMakeLists.txt
++++ b/commander/CMakeLists.txt
+@@ -27,7 +27,6 @@ target_link_libraries(dlt-commander
+ if(CMAKE_COMPILER_IS_GNUCXX)
+     # https://stackoverflow.com/questions/45329372/ubuntu-recognizes-executable-as-shared-library-and-wont-run-it-by-clicking
+     # https://forum.juce.com/t/cmake-executable-build-shows-up-as-shared-library-on-linux-mint/45503/6
+-    target_link_options(dlt-commander PRIVATE "-no-pie")
+ endif()
+ 
+ set_target_properties(dlt-commander PROPERTIES
+Index: b/parser/CMakeLists.txt
+===================================================================
+--- a/parser/CMakeLists.txt
++++ b/parser/CMakeLists.txt
+@@ -27,7 +27,6 @@ set_target_properties(dlt-parser PROPERT
+     if(CMAKE_COMPILER_IS_GNUCXX)
+     # https://stackoverflow.com/questions/45329372/ubuntu-recognizes-executable-as-shared-library-and-wont-run-it-by-clicking
+     # https://forum.juce.com/t/cmake-executable-build-shows-up-as-shared-library-on-linux-mint/45503/6
+-    target_link_options(dlt-parser PRIVATE "-no-pie")
+ endif()
+ 
+ install(TARGETS dlt-parser
+Index: b/src/CMakeLists.txt
+===================================================================
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -65,7 +65,6 @@ target_link_libraries(dlt-viewer
+ if(CMAKE_COMPILER_IS_GNUCXX)
+     # https://stackoverflow.com/questions/45329372/ubuntu-recognizes-executable-as-shared-library-and-wont-run-it-by-clicking
+     # https://forum.juce.com/t/cmake-executable-build-shows-up-as-shared-library-on-linux-mint/45503/6
+-    target_link_options(dlt-viewer PRIVATE "-no-pie")
+ endif()
+ 
+ set_target_properties(dlt-viewer PROPERTIES

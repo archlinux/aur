@@ -19,8 +19,16 @@ depends=(
   'qt6-base'
   'qt6-serialport'
 )
-source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('4120e500201944f6249a79c350afe81d0ceb0093d6217afadc9b5f703e4ee65c54c331c9e995c202bb456f018e2092e3005b5e2020f416ae1e78b5f326db5d5a')
+source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz"
+        'dlt-viewer-keep-pie-flag.patch')
+b2sums=('4120e500201944f6249a79c350afe81d0ceb0093d6217afadc9b5f703e4ee65c54c331c9e995c202bb456f018e2092e3005b5e2020f416ae1e78b5f326db5d5a'
+        '8e693e441ba22f8265dbf57c4d51d7debcf627da85b49ed092106aa59f80a3de97965b7f906bc1371932739f36d0bcfd8034c2eb9ab3591c98fdf7ad587e5902')
+
+prepare() {
+  cd "dlt-viewer-${pkgver}"
+
+  patch -t -Np1 -i ../dlt-viewer-keep-pie-flag.patch
+}
 
 build() {
   local cmake_options=(

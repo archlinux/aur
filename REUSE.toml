@@ -9,3 +9,8 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = "dlt-viewer-keep-pie-flag.patch"
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "MPL-2.0"
