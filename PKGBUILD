@@ -1,8 +1,8 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
 pkgname=python-google-cloud-core
-pkgver=2.6.1
-pkgrel=2
+pkgver=2.7.0
+pkgrel=1
 pkgdesc='Google Cloud API client core library'
 _pkgname=${pkgname#python-}
 _reponame=google-cloud-python
@@ -25,7 +25,7 @@ makedepends=(
 )
 optdepends=('python-grpcio: for grpc support')
 source=(${pkgname}-${pkgver}.tar.gz::${url%/tree*}/archive/${_pkgname}-v${pkgver}.tar.gz)
-b2sums=('b2cd57246be64661a7f72f99acd74b3c2a2efe016a5c18b593a65a6dae6000391d089816b5a054b7e349fa4365f3145d196e3e5e1f5c1c8a16ab6fa36ce81b69')
+b2sums=('6a535e5d713b6300303b1e3ddf3d1a7a4a8636fb74d314f004ba5325676ead9ab9daf56efeb7515fa481ffba7ac27de3bd21f06207e8257eda17092835ca09be')
 
 build() {
   cd ${_reponame}-${_pkgname}-v${pkgver}/packages/${_pkgname}
