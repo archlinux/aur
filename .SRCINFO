@@ -1,6 +1,6 @@
 pkgbase = moltis
 	pkgdesc = A secure persistent personal agent server in Rust
-	pkgver = 20260826.01
+	pkgver = 20260831.01
 	pkgrel = 1
 	url = https://github.com/moltis-org/moltis
 	arch = x86_64
@@ -31,8 +31,8 @@ pkgbase = moltis
 	depends = libzstd.so
 	options = !lto
 	options = !debug
-	source = moltis::git+https://github.com/moltis-org/moltis#commit=6ef9a32?signed
+	source = moltis::git+https://github.com/moltis-org/moltis#commit=19e4895?signed
 	validpgpkeys = 310320A8CC1C5BA86AD09040C0451BADF7649BBF
-	sha256sums = f4bb97a172e4b6240793b831f808ccf60439178cb015b981294324b325f91d9b
+	sha256sums = 531f762801049df1231bedacf2747c48a7f3a64acd802d329f79b1fe7a75541a
 
 pkgname = moltis
