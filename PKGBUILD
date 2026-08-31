@@ -1,6 +1,6 @@
 # Maintainer: Phillip Schichtel <phillip@schich.tel>
 pkgname=bookman-cockpit
-pkgver=1.18.9
+pkgver=1.19.0
 pkgrel=1
 options=(!strip)
 pkgdesc="Bookman Cockpit"
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.zip::https://go.bookman.de/Microsoft"
         "logback.xml"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('be243608cb62fe78bd824999555da2531e4e3ce3b770fa219d5cc8ba9a14f057'
+sha256sums=('ad21a9bd66d82fe4695d4485bedd3e8d320775cbf7706966703e6585ab51df85'
             '5a0bd9ca7d0632eec36d9f3b4980741f70e47511ee070c1da6c7c778ed058106'
             'f2a742dabb4f1ac32867c3ba152355695220e4bd4a7ba032de98e3c5d2ed3309'
             'ef6cf40ff0a46853f2d5308c884e17328a6a36009f5697d5914bfbb720cac261'
