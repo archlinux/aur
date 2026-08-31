@@ -1,6 +1,6 @@
 pkgbase = doughmination-music
 	pkgdesc = Desktop client for Doughmination Music, a self-hosted Pocket ID music library
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/Clove-Web/pocket-id-music-player
 	arch = x86_64
@@ -19,12 +19,12 @@ pkgbase = doughmination-music
 	depends = libdrm
 	depends = hicolor-icon-theme
 	depends = xdg-utils
-	noextract = doughmination-music-3.1.0.AppImage
+	noextract = doughmination-music-3.1.1.AppImage
 	options = !strip
 	options = !debug
-	source = doughmination-music-3.1.0.AppImage::https://github.com/Clove-Web/pocket-id-music-player/releases/download/v3.1.0/Doughmination.Music_amd64.AppImage
-	source = LICENCE-3.1.0.md::https://raw.githubusercontent.com/Clove-Web/pocket-id-music-player/v3.1.0/LICENCE.md
-	sha256sums = 29c5e1ec19b4f8a9ff693d3a0f3c98d37b172b1f319f17d5293ab4975fe76a0c
+	source = doughmination-music-3.1.1.AppImage::https://github.com/Clove-Web/pocket-id-music-player/releases/download/v3.1.1/Doughmination.Music_amd64.AppImage
+	source = LICENCE-3.1.1.md::https://raw.githubusercontent.com/Clove-Web/pocket-id-music-player/v3.1.1/LICENCE.md
+	sha256sums = cbf7b2ab35ce29935d253bb904cd4f720b8c87263afb74cdb62fac4e636f45d8
 	sha256sums = 93aa15616c8d2ad987372388e9cc1cd360501a98bc9cebd656acfa938368f538
 
 pkgname = doughmination-music
