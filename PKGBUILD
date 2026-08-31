@@ -3,7 +3,7 @@
 
 pkgname=layrics-git
 _pkgname=layrics
-pkgver=r98.9b7dce2
+pkgver=r100.7f83b10
 pkgrel=1
 pkgdesc="Desktop lyrics overlay for Wayland — auto-synced with MPRIS players, rendered via libass on wlr-layer-shell"
 arch=('x86_64')
@@ -24,6 +24,7 @@ depends=(
   'vulkan-driver'
   'vulkan-icd-loader'
   'libass'
+  'fontconfig'
 )
 makedepends=(
   'git'
