@@ -1,6 +1,6 @@
 pkgbase = atmosphera
 	pkgdesc = Atmosphera - a customizable desktop shell for Niri and Hyprland, built with Quickshell
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/alexindigo/atmosphera
 	install = atmosphera.install
@@ -29,7 +29,7 @@ pkgbase = atmosphera
 	optdepends = qt6-5compat: required by some registry plugins (e.g. cookie-clock)
 	optdepends = qt6-websockets: required by some registry plugins (e.g. hassio)
 	conflicts = atmosphera-git
-	source = atmosphera-0.6.1.tar.gz::https://github.com/alexindigo/atmosphera/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = b646b62e3d045800271f5d1b8caacd486400daad1252494254ec35edf0a995e0
+	source = atmosphera-0.6.2.tar.gz::https://github.com/alexindigo/atmosphera/archive/refs/tags/v0.6.2.tar.gz
+	sha256sums = 55dae7c086d9f8729befad48c891a38e38db58d1cfe5e45cea62bf3b731f22b2
 
 pkgname = atmosphera
