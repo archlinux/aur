@@ -4,7 +4,7 @@
 # shellcheck disable=SC2164
 
 pkgver=2.2.4.r33.gea64a47
-pkgrel=2
+pkgrel=3
 
 _pkgname=casual-pre-loader
 pkgname="${_pkgname}-git"
@@ -64,7 +64,6 @@ prepare() {
 	gendesk -n -f \
 		--pkgname "${_pkgname}" --name "${_pkgname}" --exec "${_pkgname}" --icon "${_pkgname}" \
 		--pkgdesc "${pkgdesc}" \
-		--terminal false \
 		--categories 'Utility;Game;Qt;GameTool'
 
 	cd "${_pkgname}"
