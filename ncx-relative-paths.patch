@@ -1,0 +1,17 @@
+--- a/cpub	2026-08-31 22:52:43.389278061 +0200
++++ b/cpub	2026-08-31 22:52:43.402611444 +0200
+@@ -104,10 +104,14 @@
+ 
+     chnames = {}
+     if ncx:
++        ncxdir = os.path.dirname(ncx)
+         soup = BeautifulSoup(zfile.read(ncx), 'html5lib')
+         for np in soup.findAll('navpoint'):
+             k = np.find('content').get('src', None).split('#')[0]
+             if k:
++                # NCX src values are relative to the NCX file's own directory,
++                # while chorder entries are relative to the archive root.
++                k = os.path.normpath(os.path.join(ncxdir, k))
+                 chnames[k] = np.find('navlabel').text.strip()
+             # print("Navpoint", k, chnames[k])
+ 

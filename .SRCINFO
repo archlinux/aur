@@ -5,9 +5,12 @@ pkgbase = cpub-git
 	url = https://github.com/udiboy1209/cpub
 	arch = any
 	license = unknown
-	depends = python-bs4
+	depends = python-beautifulsoup4
+	depends = python-html5lib
 	provides = cpub
 	source = git+https://github.com/udiboy1209/cpub
+	source = ncx-relative-paths.patch
 	sha512sums = SKIP
+	sha512sums = 98c72975faea7fcdd541e1e067f2b702bfdade7913e2626880631159ce18125f6bcd718c8cf0bc40758caac0728141e73c6be72788513ecd61db56fdc7ce0207
 
 pkgname = cpub-git
