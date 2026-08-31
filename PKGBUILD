@@ -3,7 +3,7 @@
 _pkgname=comfy-cli
 _pipname=${_pkgname//-/_}
 pkgname="python-${_pkgname}"
-pkgver=1.16.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Command Line Interface for Managing ComfyUI"
 arch=('any')
@@ -33,7 +33,7 @@ optdepends=('aria2: aria2 RPC download backend'
 'git-lfs'
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('3064cdac50bdf21e7f56b47b1c3968be2121743bcd2140ed3a8a99ea700e08e6')
+sha256sums=('636c80d112f77491a6d83e40812e6f49f7a3461edaecdb055cb87f30fb7a759d')
 
 prepare() {
     sed -i -e '/"typing-extensions/d' -e '/"ruff",/d' \
