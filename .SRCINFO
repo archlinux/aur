@@ -1,5 +1,5 @@
 pkgbase = estedad-mad-fonts
-	pkgdesc = An English-Arabic font.
+	pkgdesc = An English-Arabic font
 	pkgver = 1.1v
 	pkgrel = 1
 	url = https://github.com/MDarvishi5124/Estedad-Mad/
