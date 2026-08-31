@@ -6,7 +6,7 @@
 _pkgname='leaf-markdown-viewer'
 pkgname="$_pkgname-bin"
 pkgdesc='Leaf if a text-based markdown previewer for your terminal (pre-compiled)'
-pkgver=1.28.0
+pkgver=1.28.1
 pkgrel=1
 url='https://github.com/RivoLink/leaf'
 changelog="$_pkgname.changelog"
@@ -26,7 +26,7 @@ source=(
   "TESTING-$pkgver.md::$_rawurl/TESTING.md"
 )
 sha256sums=(
-  '75ae19911daca4041a32aa9282e5ae7e51f6d4c6e6ceed1e59fc40879e00825c'
+  '4c3fb454e28953e123d4a70bbe9f129ccdfcc1f0dc48f86ae11d4539bc854d0c'
   'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 )
 
@@ -34,9 +34,19 @@ build() {
   ln -sf "leaf-$pkgver-$CARCH.bin" leaf
   chmod +x leaf
 
-  for _shell in bash fish zsh; do
+  for _shell in bash fish nushell zsh; do
     ./leaf --auto-complete "$_shell:dump" > "_completions.$_shell"
   done
+
+  cat <<EOF >_completions.nu
+module completions {
+
+$(cat _completions.nushell)
+
+}
+
+export use completions *
+EOF
 }
 
 package() {
@@ -47,9 +57,14 @@ package() {
     install -Dm0644 "$_doc-$pkgver.md" "$pkgdir/usr/share/doc/$pkgname/$_doc.md"
   done
 
-  install -Dm0644 _completions.bash "$pkgdir/usr/share/bash-completion/completions/leaf"
-  install -Dm0644 _completions.fish "$pkgdir/usr/share/fish/vendor_completions.d/leaf.fish"
-  install -Dm0644 _completions.zsh  "$pkgdir/usr/share/zsh/site-functions/_leaf"
+  install -Dm0644 _completions.bash \
+    "$pkgdir/usr/share/bash-completion/completions/leaf"
+  install -Dm0644 _completions.fish \
+    "$pkgdir/usr/share/fish/vendor_completions.d/leaf.fish"
+  install -Dm0644 _completions.nu   \
+    "$pkgdir/usr/share/nushell/vendor/autoload/leaf.nu"
+  install -Dm0644 _completions.zsh  \
+    "$pkgdir/usr/share/zsh/site-functions/_leaf"
 
   for _dir in doc licenses; do
     cd "$pkgdir/usr/share/$_dir" && ln -sr "$pkgname" "$_pkgname"
