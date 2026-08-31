@@ -3,7 +3,7 @@ pkgname=docker-sbx
 pkgver=0.39.0
 pkgrel=2
 pkgdesc="Docker sandboxes - run AI coding agents in isolated microVM sandboxes"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://docs.docker.com/ai/sandboxes/"
 license=('LicenseRef-Docker-Proprietary' 'GPL-2.0-only' 'Apache-2.0')
 depends=('dbus')
@@ -16,8 +16,10 @@ optdepends=(
 provides=('sbx')
 conflicts=('sbx')
 options=('!debug')
-source=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux.tar.gz")
-sha256sums=('2ec45bc7938c20c2f406fe8cc72294ad5a954bdc047601484b89bf1a108311d4')
+source_x86_64=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-amd64.tar.gz")
+sha256sums_x86_64=('2ec45bc7938c20c2f406fe8cc72294ad5a954bdc047601484b89bf1a108311d4')
+source_aarch64=("https://github.com/docker/sbx-releases/releases/download/v${pkgver}/DockerSandboxes-linux-arm64.tar.gz")
+sha256sums_aarch64=('39c470a5f5e0991b1c2358952e2ab32a7b0309bfa57ac62b6bbc64b466d02c17')
 
 package() {
     # sbx locates its helper binaries at runtime via a path relative to its
@@ -29,14 +31,18 @@ package() {
 
     install -Dm755 "$srcdir/docker-sbx/containerd-shim-nerdbox-v1" \
         "$pkgdir/usr/lib/${pkgname}/libexec/containerd-shim-nerdbox-v1"
-    install -Dm755 "$srcdir/docker-sbx/containerd-shim-nerdbox-gpu-v1" \
-        "$pkgdir/usr/lib/${pkgname}/libexec/containerd-shim-nerdbox-gpu-v1"
+    # GPU trampoline shim is only shipped in the amd64 upstream tarball.
+    if [[ -f "$srcdir/docker-sbx/containerd-shim-nerdbox-gpu-v1" ]]; then
+        install -Dm755 "$srcdir/docker-sbx/containerd-shim-nerdbox-gpu-v1" \
+            "$pkgdir/usr/lib/${pkgname}/libexec/containerd-shim-nerdbox-gpu-v1"
+    fi
     install -Dm755 "$srcdir/docker-sbx/mkfs.erofs" \
         "$pkgdir/usr/lib/${pkgname}/libexec/mkfs.erofs"
-    install -Dm644 "$srcdir/docker-sbx/nerdbox-kernel-x86_64" \
-        "$pkgdir/usr/lib/${pkgname}/libexec/nerdbox-kernel-x86_64"
-    install -Dm644 "$srcdir/docker-sbx/nerdbox-rootfs-x86_64.erofs" \
-        "$pkgdir/usr/lib/${pkgname}/libexec/nerdbox-rootfs-x86_64.erofs"
+    # Kernel/rootfs filenames vary by arch (e.g. nerdbox-kernel-x86_64 vs.
+    # nerdbox-kernel-arm64_4k), so install whatever upstream shipped.
+    for f in "$srcdir"/docker-sbx/nerdbox-kernel-* "$srcdir"/docker-sbx/nerdbox-rootfs-*.erofs; do
+        install -Dm644 "$f" "$pkgdir/usr/lib/${pkgname}/libexec/$(basename "$f")"
+    done
     install -Dm755 "$srcdir/docker-sbx/libsailor.so" \
         "$pkgdir/usr/lib/${pkgname}/libexec/lib/libsailor.so"
 
