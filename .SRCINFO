@@ -1,13 +1,13 @@
 pkgbase = notmutt
-	pkgdesc = Async terminal email client built on notmuch
-	pkgver = 0.1.10
+	pkgdesc = Async terminal email client built on notmuch (cgo backend)
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/fishman/notmutt
 	arch = x86_64
-	license = Apache-2.0
+	license = GPL-3.0-only
 	makedepends = go
 	depends = notmuch
-	source = notmutt::git+https://github.com/fishman/notmutt.git#tag=v0.1.10
+	source = notmutt::git+https://github.com/fishman/notmutt.git#tag=v0.1.11
 	sha256sums = SKIP
 
 pkgname = notmutt

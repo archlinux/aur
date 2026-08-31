@@ -1,14 +1,16 @@
 # Maintainer: Reza Jelveh <reza.jelveh+git@gmail.com>
 #
-# 0.1.10 substituted by the release workflow; the git source pins the
+# 0.1.11 substituted by the release workflow; the git source pins the
 # tagged commit (sha256sums=SKIP is AUR-legal for VCS sources).
 pkgname=notmutt
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
-pkgdesc='Async terminal email client built on notmuch'
+pkgdesc='Async terminal email client built on notmuch (cgo backend)'
 arch=('x86_64')
 url='https://github.com/fishman/notmutt'
-license=('Apache-2.0')
+# The cgo backend links libnotmuch statically: this package is GPL-3.0,
+# NOT Apache-2.0. The Apache-clean CLI variant ships as notmutt-cli.
+license=('GPL-3.0-only')
 depends=('notmuch')
 makedepends=('go')
 source=("notmutt::git+https://github.com/fishman/notmutt.git#tag=v${pkgver}")
