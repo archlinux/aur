@@ -1,15 +1,16 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sokuji-bin
 _pkgname=Sokuji
-pkgver=0.39.0
+pkgver=0.39.2
 _electronversion=40
 pkgrel=1
-pkgdesc="Provide real-time simultaneous interpretation using OpenAI's Realtime API.(Prebuilt version.Use system-wide electron)"
+pkgdesc="Real-time two-way speech translation for bilingual meetings — cloud or fully offline on your device.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
 )
-url="https://github.com/kizuna-ai-lab/sokuji"
+url="https://sokuji.kizuna.ai/"
+_ghurl="https://github.com/kizuna-ai-lab/sokuji"
 license=('AGPL-3.0-only')
 conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}=${pkgver}")
@@ -17,11 +18,11 @@ depends=(
     "electron${_electronversion}"
 )
 source=("${pkgname%-bin}.sh")
-source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
-source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_arm64.deb")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('2a65f9fcb67c60de51f3fa57c9ab0c8220df0b933670394bc712f5f8beda31a7')
-sha256sums_x86_64=('c220841ec6e22dd4e6ee2acfa7190259601efd7b03aae6f765cde5cf189228ec')
+sha256sums_aarch64=('aa51afc901cbbdca8ae9936721bde90ad3774a8e2fedfa4c0b37b14b6b533d66')
+sha256sums_x86_64=('936d63d52b9ce77dd306f4bedcaea60fe67aa0e28e8bee4ee8aaf25097013223')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
