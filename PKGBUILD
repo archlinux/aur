@@ -1,90 +1,60 @@
-# Maintainer: Vladislav <your@email.com>
+# Maintainer: Malte Linke <me@parzival.space>
+# Contributor: Vladislav <your@email.com>
+
 pkgname=fluorine-manager-bin
-pkgver=0.2.2
+pkgdesc='A native Linux mod manager for Bethesda and other games, built on MO2'
+pkgver=0.3.3 # renovate: datasource=github-tags depName=SulfurNitride/Fluorine-Manager versioning=semver
 pkgrel=1
-pkgdesc="A native Linux mod manager for Bethesda and other games, built on MO2"
 arch=('x86_64')
-url="https://github.com/SulfurNitride/Fluorine-Manager"
+url='https://github.com/SulfurNitride/Fluorine-Manager'
 license=('GPL-3.0-or-later')
-depends=('fuse3' 'gtk3')
 provides=('fluorine-manager')
 conflicts=('fluorine-manager')
+depends=('mesa' 'gcc-libs' 'hicolor-icon-theme')
+optdepends=('steam: allows the usage of Proton')
 options=(!strip)
 
-# The upstream tag appends '-A' to the version number
-_tag="${pkgver}"
+_releaseArchive="fluorine-manager-$pkgver.tar.gz"
+source=("${_releaseArchive}::https://github.com/SulfurNitride/Fluorine-Manager/releases/download/v${pkgver}/${_releaseArchive}"
+        "LICENSE::https://raw.githubusercontent.com/SulfurNitride/Fluorine-Manager/refs/tags/v${pkgver}/LICENSE.txt")
+sha256sums=('8a04af17e2a0c84b4589ed8acf18dae440d3b0177e50276ffb0af7c24a6a4497'
+            '8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903')
 
-source=("fluorine-manager-${pkgver}.tar.gz::https://github.com/SulfurNitride/Fluorine-Manager/releases/download/v0.2.2/fluorine-manager-0.2.2.tar.gz")
-sha256sums=('6b7b0ed8e36dc026e298bc5bca4352a2dd0a2658830e0530275f714ec85c99be')
+build() {
+  # patch the original launch wrapper script to disable the sync dance stuff.
+  # the sed command below will:
+  # - overwrite the install target to ensure the sync process will always be skipped
+  # - overwrite the desktop icon install target, so it will never be installed by fluorine-manager
+  # - hard code the desktop file check to false, so fluorine-manager never creates a separate installation in the user home
+  sed -i \
+    -e 's|^BIN_DST="${FLUORINE_DATA}/bin"|BIN_DST="/opt/fluorine-manager"|' \
+    -e 's|^ICON_DST="${HOME}/.local/share/icons/hicolor/256x256/apps/com.fluorine.manager.png"|ICON_DST="${ICON_SRC}"|' \
+    -e 's|^if \[ -f "${DESKTOP_SRC}" \]; then|if false; then|' \
+    ${srcdir}/fluorine-manager/fluorine-manager
+
+  # fluorine-manager ships its own fontconfig library and requires a patched configuration for it.
+  # this will patch the fontconfig fix in the wrapper script to be compatible with this package.
+  sed -i \
+    -e 's|mkdir -p "${RUN}/etc/fonts"|mkdir -p "${FLUORINE_DATA}/bin/etc/fonts"|' \
+    -e 's|cat > "${RUN}/etc/fonts/fonts.conf" <<EOF|cat > "${FLUORINE_DATA}/bin/etc/fonts/fonts.conf" <<EOF|' \
+    -e 's|export FONTCONFIG_FILE="${RUN}/etc/fonts/fonts.conf"|export FONTCONFIG_FILE="${FLUORINE_DATA}/bin/etc/fonts/fonts.conf"|' \
+    -e 's|export FONTCONFIG_PATH="${RUN}/etc/fonts"|export FONTCONFIG_PATH="${FLUORINE_DATA}/bin/etc/fonts"|' \
+    ${srcdir}/fluorine-manager/fluorine-manager
+}
 
 package() {
-    # The zip extracts to a 'Fluorine-Manager' directory
-    cd "$srcdir/fluorine-manager"
+  # install archive files
+  install -dm755 "${pkgdir}/opt/fluorine-manager"
+  cp -a "${srcdir}/fluorine-manager/." "${pkgdir}/opt/fluorine-manager"
 
-    # Install the entire app bundle to /opt
-    install -dm755 "${pkgdir}/opt/fluorine-manager"
-    cp -r . "${pkgdir}/opt/fluorine-manager/"
+  # link to bin
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/opt/fluorine-manager/fluorine-manager" "${pkgdir}/usr/bin/fluorine-manager"
 
-    # Make sure the real executable and the upstream launcher are executable
-    chmod 755 "${pkgdir}/opt/fluorine-manager/ModOrganizer-core"
-    chmod 755 "${pkgdir}/opt/fluorine-manager/fluorine-manager"
+  # install desktop icon
+  install -Dm644 "${srcdir}/fluorine-manager/icons/com.fluorine.manager.desktop" "${pkgdir}/usr/share/applications/com.fluorine.manager.desktop"
+  install -Dm644 "${srcdir}/fluorine-manager/icons/com.fluorine.manager.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/com.fluorine.manager.png"
 
-    # Create a wrapper in /usr/bin that replicates the upstream launcher logic
-    # but targets the fixed /opt install path instead of doing the sync dance.
-    install -dm755 "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/fluorine-manager" << 'EOF'
-#!/usr/bin/env bash
-set -euo pipefail
-
-RUN="/opt/fluorine-manager"
-
-# Save the original environment so game launches (Proton/Wine) can restore it.
-export FLUORINE_ORIG_LD_LIBRARY_PATH="${LD_LIBRARY_PATH:-}"
-export FLUORINE_ORIG_LD_PRELOAD="${LD_PRELOAD:-}"
-export FLUORINE_ORIG_PATH="${PATH}"
-export FLUORINE_ORIG_XDG_DATA_DIRS="${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
-export FLUORINE_ORIG_QT_PLUGIN_PATH="${QT_PLUGIN_PATH:-}"
-
-# Steam injects 32-bit gameoverlayrenderer.so via LD_PRELOAD which causes
-# "wrong ELF class" errors for 64-bit Qt6 apps. Clear it for our process.
-unset LD_PRELOAD
-
-export PATH="${RUN}:${PATH}"
-
-# Use only our bundled libs — avoids conflicts with Steam scout/soldier runtime.
-export LD_LIBRARY_PATH="${RUN}/lib"
-
-export MO2_BASE_DIR="${RUN}"
-export MO2_PLUGINS_DIR="${RUN}/plugins"
-
-unset PYTHONPATH PYTHONNOUSERSITE PYTHONHOME MO2_PYTHON_DIR
-
-# Use bundled Qt6 plugins.
-export QT_PLUGIN_PATH="${RUN}/qt6plugins"
-export QT_QPA_PLATFORM_PLUGIN_PATH="${RUN}/qt6plugins/platforms"
-
-# Raise open file descriptor limit for large modlists with FUSE VFS.
-ulimit -n 65536 2>/dev/null
-
-cd "${RUN}"
-exec "${RUN}/ModOrganizer-core" "$@"
-EOF
-    chmod 755 "${pkgdir}/usr/bin/fluorine-manager"
-
-    # Install icon
-    install -Dm644 "icons/com.fluorine.manager.png" \
-        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/com.fluorine.manager.png"
-
-    # Install the .desktop file that ships inside the zip,
-    # patching Exec= to point to our /usr/bin wrapper.
-    install -dm755 "${pkgdir}/usr/share/applications"
-    sed "s|^Exec=fluorine-manager|Exec=/usr/bin/fluorine-manager|" \
-        "icons/com.fluorine.manager.desktop" \
-        > "${pkgdir}/usr/share/applications/com.fluorine.manager.desktop"
-
-    # Install license if present
-    if [ -f "LICENSE" ]; then
-        install -Dm644 "LICENSE" \
-            "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    fi
+  # install license file
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }

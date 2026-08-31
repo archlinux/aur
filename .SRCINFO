@@ -1,16 +1,20 @@
 pkgbase = fluorine-manager-bin
 	pkgdesc = A native Linux mod manager for Bethesda and other games, built on MO2
-	pkgver = 0.2.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/SulfurNitride/Fluorine-Manager
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = fuse3
-	depends = gtk3
+	depends = mesa
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	optdepends = steam: allows the usage of Proton
 	provides = fluorine-manager
 	conflicts = fluorine-manager
 	options = !strip
-	source = fluorine-manager-0.2.2.tar.gz::https://github.com/SulfurNitride/Fluorine-Manager/releases/download/v0.2.2/fluorine-manager-0.2.2.tar.gz
-	sha256sums = 6b7b0ed8e36dc026e298bc5bca4352a2dd0a2658830e0530275f714ec85c99be
+	source = fluorine-manager-0.3.3.tar.gz::https://github.com/SulfurNitride/Fluorine-Manager/releases/download/v0.3.3/fluorine-manager-0.3.3.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/SulfurNitride/Fluorine-Manager/refs/tags/v0.3.3/LICENSE.txt
+	sha256sums = 8a04af17e2a0c84b4589ed8acf18dae440d3b0177e50276ffb0af7c24a6a4497
+	sha256sums = 8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903
 
 pkgname = fluorine-manager-bin
