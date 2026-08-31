@@ -1,0 +1,12 @@
+pkgbase = hacpack
+	pkgdesc = A tool for creating Nintendo Switch NCAs and packing them into NSPs
+	pkgver = 1.36_r2
+	pkgrel = 1
+	url = https://github.com/DarkMatterCore/hacPack
+	arch = x86_64
+	license = GPL-2.0-only AND ISC AND Apache-2.0
+	depends = glibc
+	source = hacPack-1.36-r2.tar.gz::https://github.com/DarkMatterCore/hacPack/archive/refs/tags/v1.36-r2.tar.gz
+	b2sums = 723b3e969615bf51b304fddf06623fe266b4cd873569d3a823f4a28c0822c530b03dbf598d3ed91531dc6b8f2bd090706bc3812feac1684616007aad60160b9d
+
+pkgname = hacpack
