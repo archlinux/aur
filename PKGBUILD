@@ -4,25 +4,21 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=sonic-win
-pkgver=6.7.3
-pkgrel=1
+pkgver=6.7.4.3
+pkgrel=2
 pkgdesc='An easy to use, but flexible, X Window Manager'
 arch=(x86_64)
 url='https://github.com/Sonic-DE/sonic-win'
 license=(LGPL-2.0-or-later)
 depends=(aurorae
-         breeze
-         gcc-libs
          glibc
          kcmutils
-         kcolorscheme
          kconfig
          kcrash
          kdeclarative
          ki18n
          kitemmodels
          knewstuff
-         knighttime
          knotifications
          kpackage
          kquickcharts
@@ -35,14 +31,15 @@ depends=(aurorae
          libdisplay-info
          libdrm
          libepoxy
+         libgcc
          libqaccessibilityclient-qt6
+         libstdc++
          libx11
          libxcb
          libxi
          libxkbcommon
          libxkbcommon-x11
          mesa
-         plasma-x11-session
          qt6-5compat
          qt6-base
          qt6-declarative
@@ -52,14 +49,18 @@ depends=(aurorae
          sonic-activities
          sonic-decoration
          sonic-frameworks-auth
+         sonic-frameworks-color-scheme
          sonic-frameworks-core-addons
          sonic-frameworks-gui-addons
+         sonic-frameworks-idle-tracker
          sonic-frameworks-keybind
          sonic-frameworks-quick-ui
          sonic-frameworks-windowsystem
          sonic-interface-libraries
          sonic-keybind-daemon
+         sonic-night-light
          sonic-screenlocker
+         sonic-silver
          systemd-libs
          xcb-util-cursor
          xcb-util-keysyms
@@ -72,7 +73,7 @@ conflicts=(kwin-x11)
 groups=(sonicde)
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 install="$pkgname.install"
-sha256sums=('724346a9fbe692741e4aab451c2c5ecb9c5dc3c94999eec82904b2fee3265d79')
+sha256sums=('df7f7f39741da7d4abace2259b05f31ceaed818e1bf599f7d1c407cfecf56f95')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
