@@ -3,9 +3,9 @@
 _pkgname=cups-local
 pkgname=$_pkgname-git
 pkgver=r51.90c8047
-pkgrel=1
+pkgrel=2
 pkgdesc="CUPS Local Services"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/OpenPrinting/$_pkgname"
 license=('Apache-2.0 WITH LLVM-exception')
 depends=('libcups-git' 'pappl-git')
