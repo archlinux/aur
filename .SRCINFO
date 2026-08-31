@@ -1,0 +1,24 @@
+pkgbase = aika
+	pkgdesc = Fast and efficient command line audio player
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://fossil.cyberia9.org/aika
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = asciidoc
+	makedepends = fossil
+	makedepends = fpc
+	makedepends = rake
+	depends = libao
+	depends = libxmp
+	depends = mpg123
+	depends = opus
+	depends = slang
+	depends = wavpack
+	depends = zeromq
+	depends = zlib
+	depends = zstd
+	source = https://fossil.cyberia9.org/aika/uv/aika-0.0.4.tar.bz2
+	sha256sums = 3d7a74902e19461f8af0c4c0375f4972f57bffc36f75b64bcf02e4c175217c97
+
+pkgname = aika
