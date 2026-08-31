@@ -1,7 +1,7 @@
 pkgbase = twg-cli-bin
 	pkgdesc = Atlassian Teamwork Graph CLI (baseline-compatible prebuilt binary)
-	pkgver = 1.2.6
-	pkgrel = 2
+	pkgver = 1.2.7
+	pkgrel = 1
 	url = https://developer.atlassian.com/cloud/twg-cli/
 	arch = x86_64
 	arch = aarch64
@@ -17,11 +17,11 @@ pkgbase = twg-cli-bin
 	source = twg-cli-LICENSE::https://raw.githubusercontent.com/atlassian/twg-cli/main/LICENSE
 	sha256sums = 3f655ca11770a6194f728f8fe52a37efb00c033a83863e0f76975518367f8545
 	sha256sums = 007879788b4d4a258cf924e4177a9f4f808b4aec5c2fd6ac65c09b526c07177f
-	source_x86_64 = twg-linux-x64-v1.2.6::https://teamwork-graph.atlassian.com/cli/twg-linux-x64-v1.2.6
+	source_x86_64 = twg-linux-x64-v1.2.7::https://teamwork-graph.atlassian.com/cli/twg-linux-x64-v1.2.7
 	source_x86_64 = bun-linux-x64-baseline-v1.3.14.zip::https://github.com/oven-sh/bun/releases/download/bun-v1.3.14/bun-linux-x64-baseline.zip
-	sha256sums_x86_64 = 7973e5ff376a46597e9214295053e507d2e7a1b3b4d5c1a083f3a78453e6c750
+	sha256sums_x86_64 = 40d2d11e6a805449e5d230df31d42442b67506d8b0882524385a4e1b1ee33de8
 	sha256sums_x86_64 = a063908ae08b7852ca10939bbdc6ceed3ddabce8fb9402dce83d65d73b36e6c7
-	source_aarch64 = twg-linux-arm64-v1.2.6::https://teamwork-graph.atlassian.com/cli/twg-linux-arm64-v1.2.6
-	sha256sums_aarch64 = 55f4442992a790dd3c2571fcf01dcab74b00c16c23a0c5b1cf654a84eed04eea
+	source_aarch64 = twg-linux-arm64-v1.2.7::https://teamwork-graph.atlassian.com/cli/twg-linux-arm64-v1.2.7
+	sha256sums_aarch64 = 0dc52105a66f8c3b0a0e52c8cc196eb33d24b4776cc57a69cf78b2b4740052ec
 
 pkgname = twg-cli-bin
