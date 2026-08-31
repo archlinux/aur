@@ -1,6 +1,6 @@
 pkgbase = mpv-modernz-git
 	pkgdesc = A sleek and modern OSC for mpv designed to enhance functionality by adding more features, all while preserving the core standards of the main mpv OSC
-	pkgver = r859.488854b
+	pkgver = r1294.cfb5722
 	pkgrel = 1
 	url = https://github.com/Samillion/ModernZ
 	arch = x86_64
