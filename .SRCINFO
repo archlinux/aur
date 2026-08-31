@@ -1,7 +1,7 @@
 pkgbase = pideck-bin
 	pkgdesc = Desktop workbench for managing local AI coding agent sessions (prebuilt binary)
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ayuayue/PiDeck
 	arch = x86_64
 	license = MIT
@@ -45,7 +45,7 @@ pkgbase = pideck-bin
 	conflicts = pi-desktop
 	noextract = pi-desktop_0.7.2_amd64.deb
 	options = !strip
-	source = LICENSE-0.7.2::https://raw.githubusercontent.com/ayuayue/PiDeck/v0.7.2/LICENSE
+	source = LICENSE
 	sha256sums = 032c3da0b36939e15b0ba21974baeecf2d0afbdf410a66bd76c2ba28e5baccab
 	source_x86_64 = pi-desktop_0.7.2_amd64.deb::https://github.com/ayuayue/PiDeck/releases/download/v0.7.2/pi-desktop_0.7.2_amd64.deb
 	sha256sums_x86_64 = ffd22c6a24ac4a63f798c4d844e756fe662bfb0411e4d810f188713a26b3ffa7

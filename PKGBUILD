@@ -4,7 +4,7 @@ pkgname=pideck-bin
 _pkgname=pi-desktop
 _appname=PiDeck
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop workbench for managing local AI coding agent sessions (prebuilt binary)'
 arch=('x86_64')
 url='https://github.com/ayuayue/PiDeck'
@@ -50,7 +50,7 @@ optdepends=(
 provides=("pideck=${pkgver}" "${_pkgname}=${pkgver}")
 conflicts=('pideck' 'pi-desktop')
 options=('!strip')
-source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/ayuayue/PiDeck/v${pkgver}/LICENSE")
+source=('LICENSE')
 source_x86_64=("${_pkgname}_${pkgver}_amd64.deb::https://github.com/ayuayue/PiDeck/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
 noextract=("${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('032c3da0b36939e15b0ba21974baeecf2d0afbdf410a66bd76c2ba28e5baccab')
@@ -76,5 +76,5 @@ package() {
   ln -s "${_pkgname}" "${pkgdir}/usr/bin/pideck"
 
   chmod 0755 "${pkgdir}/opt/${_appname}/chrome-sandbox"
-  install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
