@@ -1,0 +1,20 @@
+pkgbase = mindwtr-beta-bin
+	pkgdesc = A complete Getting Things Done (GTD) productivity system - Mind Like Water (beta binary release)
+	pkgver = 1.2.5
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/dongdongbh/Mindwtr
+	arch = x86_64
+	license = AGPL3
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libappindicator-gtk3
+	optdepends = evolution-data-server: GNOME system calendar integration
+	provides = mindwtr
+	provides = mindwtr-bin
+	conflicts = mindwtr
+	conflicts = mindwtr-bin
+	source_x86_64 = https://github.com/dongdongbh/Mindwtr/releases/download/v1.2.5/mindwtr_1.2.5_amd64.deb
+	sha256sums_x86_64 = 2a5bcc8670cd944cfcd7806f89241ced369ad2469255a61f397985a14a13d908
+
+pkgname = mindwtr-beta-bin
