@@ -1,95 +1,48 @@
 #!/bin/sh
+# 自包含 WoW64 启动器：新版 WeLink（7.53.x）的内置 exe 为 32 位，
+# 上游 spark deb 面向 spark-wine。Arch 上无 spark-wine，且经典 32 位的
+# deepin-wine6 已因上游源失效 + multilib 移除 lib32 依赖而难以安装。
+# deepin-wine8-stable 是 new-WoW64，无法驱动经典 win32 容器，但可用
+# win64 容器通过 WoW64 运行 32 位 WeLink.exe。故此处自建 win64 容器，
+# 只解出 WeLink 应用本体（不覆盖容器的 windows 系统树）。
 set -e
-BOTTLENAME="Deepin-@appname@"
-APPVER=@sparkver@
-WELINK_INSTALLER="@appname@"
-WELINK_VER=@appver@
-WELINK_INSTALLER_PATH="c:/Program Files/@appname@/${WELINK_INSTALLER}-${WELINK_VER}.exe"
-WINEPREFIX="$HOME/.deepinwine/${BOTTLENAME}"
-EXEC_PATH="c:/Program Files/${WELINK_INSTALLER}/${WELINK_INSTALLER}.exe"
-EXEC_FILE="${WINEPREFIX}/drive_c/Program Files/${WELINK_INSTALLER}/${WELINK_INSTALLER}.exe"
-START_SHELL_PATH="/opt/deepinwine/tools/run_v4.sh"
-export MIME_TYPE=""
-export DEB_PACKAGE_NAME=@pkgname@
-export APPRUN_CMD="deepin-wine6-stable"
-DISABLE_ATTACH_FILE_DIALOG=""
-EXPORT_ENVS=""
-SPECIFY_SHELL_DIR=$(dirname ${START_SHELL_PATH})
-export SPECIFY_SHELL_DIR
-ARCHIVE_FILE_DIR="/opt/apps/${DEB_PACKAGE_NAME}/files"
-export WINEDLLPATH=/opt/${APPRUN_CMD}/lib:/opt/${APPRUN_CMD}/lib64
-export LD_LIBRARY_PATH=/opt/apps/${DEB_PACKAGE_NAME}/files/lib32
-export WINEPREDLL="${ARCHIVE_FILE_DIR}/dlls"
-msg() {
-    ECHO_LEVEL=("\033[1;32m==> " "\033[1;31m==> ERROR: ")
-    echo -e "${ECHO_LEVEL[$1]}\033[1;37m$2\033[0m"
-}
-OpenWinecfg() {
-    msg 0 "Launching winecfg with ${APPRUN_CMD} in ${WINEPREFIX} ..."
-    env WINEPREFIX="${WINEPREFIX}" ${APPRUN_CMD} winecfg
-}
-DeployApp() {
-    # deploy bottle
-    msg 0 "Deploying ${WINEPREFIX} ..."
-    rm -rf "${WINEPREFIX}"
-    # run installer
-    msg 0 "Launching ${WELINK_INSTALLER_PATH} ..."
-    env WINEDLLOVERRIDES="winemenubuilder.exe=d" "${START_SHELL_PATH}" "${BOTTLENAME} ${APPVER}" "${WELINK_INSTALLER_PATH}" "$@"
 
-    touch "${WINEPREFIX}"/reinstalled
-    msg 0 "Creating ${WINEPREFIX}/PACKAGE_VERSION ..."
-    cat "/opt/apps/${DEB_PACKAGE_NAME}/files/files.md5sum" >"${WINEPREFIX}"/PACKAGE_VERSION
+APPRUN="deepin-wine8-stable"
+PKG="com.huaweicloud.welink.spark"
+FILES="/opt/apps/${PKG}/files"
+
+export WINEPREFIX="${HOME}/.deepinwine/Spark-Welink"
+export WINEARCH="win64"
+export WINEDLLOVERRIDES="mscoree=,mshtml="
+export WINEDEBUG="${WINEDEBUG:-fixme-all}"
+# CEF/Electron 应用在 wine 下常因输入法桥接异常导致输入框无响应；
+# 允许用户用 WELINK_IM=1 保留输入法（中文输入），默认关闭以保证登录可输入。
+[ -z "${WELINK_IM}" ] && export XMODIFIERS="@im=none"
+
+VER_FILE="${WINEPREFIX}/.welink_version"
+CUR_VER="$(cat "${FILES}/files.md5sum" 2>/dev/null || echo unknown)"
+
+deploy() {
+    echo "==> 正在部署 WeLink 到 ${WINEPREFIX}（首次或升级，需要一些时间）..."
+    rm -rf "${WINEPREFIX}"
+    "${APPRUN}" wineboot -u >/dev/null 2>&1
+    7z x -aoa "${FILES}/files.7z" "drive_c/Program Files/WeLink/*" -o"${WINEPREFIX}" >/dev/null
+    printf '%s' "${CUR_VER}" > "${VER_FILE}"
+    echo "==> 部署完成。"
 }
-WakeApp() {
-    env WINEPREDLL="${ARCHIVE_FILE_DIR}/dlls" \
-        WINEDLLPATH="/opt/${APPRUN_CMD}/lib:/opt/${APPRUN_CMD}/lib64" \
-        WINEPREFIX="${WINEPREFIX}" "${APPRUN_CMD}" /opt/deepinwine/tools/sendkeys.exe w
-}
-Run() {
-    if [ -z "${DISABLE_ATTACH_FILE_DIALOG}" ]; then
-        export ATTACH_FILE_DIALOG=1
-    fi
-    if [ -n "${EXPORT_ENVS}" ]; then
-        export "${EXPORT_ENVS}"
-    fi
-    if [ -n "${EXEC_PATH}" ]; then
-        if [ ! -f "${WINEPREFIX}/reinstalled" ] || [ ! -f "${EXEC_FILE}" ]; then
-            DeployApp "$@"
-            exit 0
-        fi
-        if [ -z "${EXEC_PATH##*.lnk*}" ]; then
-            msg 0 "Launching  ${EXEC_PATH} lnk file ..."
-            exec "${START_SHELL_PATH}" "${BOTTLENAME} ${APPVER}" "C:/windows/command/start.exe" "/Unix" "${EXEC_PATH}" "$@" || exit $?
-        else
-            msg 0 "Launching  ${EXEC_PATH} ..."
-            exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "${EXEC_PATH}" "$@" || exit $?
-        fi
-    else
-        exec "${START_SHELL_PATH}" "${BOTTLENAME}" "${APPVER}" "uninstaller.exe" "$@" || exit $?
-    fi
-}
-HelpApp() {
-    echo " Extra Commands:"
-    echo " winecfg          Open winecfg"
-    echo " -w/--wake       Wake up background program"
-    echo " -h/--help        Show program help info"
-}
-if [ -z "$1" ]; then
-    Run "$@"
-    exit 0
-fi
-case $1 in
-"winecfg")
-    OpenWinecfg
-    ;;
-"-w" | "--wake")
-    WakeApp "$@"
-    ;;
-"-h" | "--help")
-    HelpApp "$@"
-    ;;
-*)
-    Run "$@"
-    ;;
+
+case "$1" in
+    -r|--redeploy) rm -f "${VER_FILE}"; shift ;;
+    -h|--help)
+        echo "用法: deepin-wine-welink [-r|--redeploy] [-h|--help]"
+        echo "  -r  强制重新部署 wine 容器"
+        echo "  环境变量 WELINK_IM=1 可保留输入法（中文输入）"
+        exit 0 ;;
 esac
-exit 0
+
+if [ ! -f "${VER_FILE}" ] || [ "$(cat "${VER_FILE}")" != "${CUR_VER}" ]; then
+    deploy
+fi
+
+exec "${APPRUN}" explorer /desktop=WeLink,1280x800 \
+    "C:/Program Files/WeLink/WeLink.exe" --no-sandbox --disable-gpu "$@"

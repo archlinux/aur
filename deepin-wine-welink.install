@@ -1,16 +1,14 @@
-info() {
-    echo -e "\033[0;34m============================提示/INFO==============================="
-    echo -e "此脚本主要是覆盖安装时使用，删除原有的运行及配置文件。"
-    echo -e "====================================================================\033[0m"
-}
 post_install() {
-    info
+    echo "首次启动 deepin-wine-welink 会创建 win64 wine 容器并部署 WeLink"
+    echo "到 ~/.deepinwine/Spark-Welink/，需要一些时间。"
+    echo "升级本包后首次启动会自动重新部署。"
+    echo "若聊天时需要中文输入，用 WELINK_IM=1 deepin-wine-welink 启动。"
 }
+
 post_upgrade() {
-    find /home -maxdepth 2 -name ".deepinwine" -exec rm -f \{\}/Deepin-WeLink/reinstalled \;
-    info
+    post_install
 }
-pre_remove() {
-    echo "deleting the WeLink bottle..."
-    find /home -maxdepth 2 -name ".deepinwine" -exec rm -rf \{\}/Deepin-WeLink/ \;
+
+post_remove() {
+    echo "各用户的 wine 容器保留在 ~/.deepinwine/Spark-Welink/，如不再需要请手动删除。"
 }
