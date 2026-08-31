@@ -1,6 +1,6 @@
 # Maintainer: robertfoster
 pkgname=grepai-bin
-pkgver=0.35.0 # renovate: datasource=github-releases depName=yoanbernabeu/grepai
+pkgver=0.36.0 # renovate: datasource=github-releases depName=yoanbernabeu/grepai
 pkgrel=1
 pkgdesc="Privacy-first CLI tool for semantic code search using vector embeddings"
 arch=('x86_64' 'aarch64')
@@ -21,7 +21,7 @@ source_x86_64=("${pkgname}-${pkgver}.tar.gz::https://github.com/yoanbernabeu/gre
   "LICENSE::https://raw.githubusercontent.com/yoanbernabeu/grepai/v${pkgver}/LICENSE")
 source_aarch64=("${pkgname}-${pkgver}.tar.gz::https://github.com/yoanbernabeu/grepai/releases/download/v${pkgver}/grepai_${pkgver}_linux_arm64.tar.gz"
   "LICENSE::https://raw.githubusercontent.com/yoanbernabeu/grepai/v${pkgver}/LICENSE")
-sha256sums_x86_64=('a830e0bf7a7d9db0c98207774ffea1652080679fb51b644759ae4ce25fc239b2'
+sha256sums_x86_64=('0719ee673356aa6058543702b2f3cbbb96d1b1975fb54cf33911170a96c0da2b'
                    '49966552514373129de9faea43a890bf6a8b04f158b2966876a57fdf915980e5')
-sha256sums_aarch64=('a830e0bf7a7d9db0c98207774ffea1652080679fb51b644759ae4ce25fc239b2'
+sha256sums_aarch64=('0719ee673356aa6058543702b2f3cbbb96d1b1975fb54cf33911170a96c0da2b'
                     '49966552514373129de9faea43a890bf6a8b04f158b2966876a57fdf915980e5')
