@@ -2,7 +2,7 @@
 
 pkgname=eso-addons-manager
 pkgdesc='Cross platform addon manager for the Elder Scrolls Online'
-pkgver=0.4.23 # renovate: datasource=github-tags depName=arviceblot/eso-addons
+pkgver=0.4.23 # renovate: datasource=github-tags depName=arviceblot/eso-addons versioning=semver
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/arviceblot/eso-addons"
