@@ -3,7 +3,7 @@
 
 pkgname='bzr-player'
 pkgver='2.0.93'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Audio player supporting a wide array of multi-platform exotic file formats'
 arch=('x86_64')
 url="https://github.com/aargirakis/BZRPlayer"
@@ -44,7 +44,7 @@ package() {
     --genericname='Audio Player' \
     --exec="/usr/bin/$pkgname %U" \
     --icon="$pkgname" \
-    --categories='AudioVideo;Audio;Music;Player' \
+    --categories='AudioVideo;Audio;Music;Player;Qt' \
     --mimetype="$desktop_entry_mime_types"
 
   install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
