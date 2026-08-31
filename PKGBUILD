@@ -2,7 +2,7 @@
 
 _intpkgname=open-webui
 pkgname=$_intpkgname-uv
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
