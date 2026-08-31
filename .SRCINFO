@@ -1,0 +1,21 @@
+pkgbase = course2md-bin
+	pkgdesc = Turn online course videos (YouTube/Bilibili/local) into image+transcript markdown/html notes
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/mizorewww/course2md
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ffmpeg
+	depends = yt-dlp
+	optdepends = llama-cpp: local ASR via llama-server (Qwen3-ASR GGUF)
+	provides = course2md
+	conflicts = course2md
+	source = LICENSE-0.3.0::https://github.com/mizorewww/course2md/raw/v0.3.0/LICENSE
+	sha256sums = f588737788750da8ab407e66c13f5004f8933176307add92f64b6c458f486212
+	source_x86_64 = course2md-linux-x86_64::https://github.com/mizorewww/course2md/releases/download/v0.3.0/course2md-linux-x86_64
+	sha256sums_x86_64 = d468e34b806357f31eebc270584f73c5bd19dca2a39f47eb214f989f4e799183
+	source_aarch64 = course2md-linux-aarch64::https://github.com/mizorewww/course2md/releases/download/v0.3.0/course2md-linux-aarch64
+	sha256sums_aarch64 = 01a1a44f0609c70c2274f3c590051e3aeaa2c047367d01f583bf13af53309ef5
+
+pkgname = course2md-bin
