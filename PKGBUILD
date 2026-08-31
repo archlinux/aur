@@ -2,7 +2,7 @@
 # Binary package repacking the official self-contained linux-x64 release tarball.
 # Updated automatically by scripts/release.sh (submit_aur) on every release.
 pkgname=downloader-bin
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
 pkgdesc="Fast multi-connection download manager with queues, scheduler and browser integration"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip' '!debug')
 source=("Downloader-$pkgver-linux-x64.tar.gz::$url/releases/download/v$pkgver/Downloader-linux-x64.tar.gz"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/bezzad/Downloader.Desktop/v$pkgver/LICENSE"
         "downloader-$pkgver.png::https://raw.githubusercontent.com/bezzad/Downloader.Desktop/v$pkgver/src/Downloader.Desktop/Assets/downloader.png")
-sha256sums=('d7cbcf367c4ca33a30e51aa8fd3f5b0fa3757ab19087444e3a7d1c0a45f84ddd'
+sha256sums=('8fb94465c8c31146375ded8efad8efe80e9ff97e6cd84d8ee58a672c3f886547'
             'SKIP'
             'SKIP')
 
