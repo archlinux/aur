@@ -2,14 +2,14 @@
 
 _pkgname=cups-filters
 pkgname=$_pkgname-git
-pkgver=2.0.0.r3.gbb11fc292
+pkgver=2.0.1.r58.g82acfaf1e
 pkgrel=1
 pkgdesc="Package retro-fitting the filter functions of libcupsfilters and libppd to CUPS 2.x"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OpenPrinting/$_pkgname"
 license=('Apache-2.0 WITH LLVM-exception')
-depends=('libcups-git' 'libppd-git')
-makedepends=('git')
+depends=('libcups' 'libppd')
+makedepends=('git' 'ghostscript' 'mupdf-tools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 #options=('!emptydirs')
