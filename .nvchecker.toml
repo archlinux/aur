@@ -1,0 +1,5 @@
+[moneymanagerex-bin]
+source = "github"
+github = "moneymanagerex/moneymanagerex"
+use_latest_release = true
+prefix = "v"
