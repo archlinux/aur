@@ -1,7 +1,7 @@
 pkgbase = libcupsfilters-git
 	pkgdesc = Code of the filters of the former cups-filters package as library functions
 	pkgver = 2.0.0.r18.g980f6f49
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenPrinting/libcupsfilters
 	arch = x86_64
 	arch = aarch64

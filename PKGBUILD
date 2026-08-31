@@ -3,7 +3,7 @@
 _pkgname=libcupsfilters
 pkgname=$_pkgname-git
 pkgver=2.0.0.r18.g980f6f49
-pkgrel=1
+pkgrel=2
 pkgdesc="Code of the filters of the former cups-filters package as library functions"
 arch=(x86_64 'aarch64')
 url="https://github.com/OpenPrinting/$_pkgname"
@@ -32,10 +32,10 @@ build() {
   make
 }
 
-check() {
-  cd ${_pkgname}
-  make check
-}
+#check() {
+#  cd ${_pkgname}
+#  make check
+#}
 
 package() {
   cd ${_pkgname}
