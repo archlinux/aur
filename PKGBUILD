@@ -1,5 +1,5 @@
 pkgname=tether-git
-pkgver=0.2.18
+pkgver=0.2.19
 pkgrel=1
 pkgdesc="Bridge an iPhone to the Linux desktop: clipboard, files, messages, and notifications"
 arch=('x86_64')
