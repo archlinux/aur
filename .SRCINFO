@@ -1,18 +1,19 @@
 pkgbase = xlibre-video-fbdev
 	pkgdesc = XLibre framebuffer video driver
 	pkgver = 25.0.0
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/X11Libre/xf86-video-fbdev
 	arch = x86_64
 	groups = xlibre-drivers
 	license = X11
-	makedepends = xlibre-xserver-devel
 	makedepends = X-ABI-VIDEODRV_VERSION=28.0
+	makedepends = xlibre-xserver-devel
 	depends = glibc
 	depends = xlibre-xserver
-	conflicts = xf86-video-fbdev
+	provides = xf86-video-fbdev
 	conflicts = X-ABI-VIDEODRV_VERSION<28
 	conflicts = X-ABI-VIDEODRV_VERSION>=29
+	conflicts = xf86-video-fbdev
 	source = https://github.com/X11Libre/xf86-video-fbdev/archive/refs/tags/xlibre-xf86-video-fbdev-25.0.0.tar.gz
 	sha512sums = 47d37f0256fcbd1e752d26302ae1b2ab42c107adbce0aaeb773ab620f7f5891e8e51e9ddf1d58702be4b05e759d62cd9d87878fcf17a132c99dad9b6e7317f09
 
