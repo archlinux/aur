@@ -6,7 +6,7 @@ _npmscope=@getpaseo
 pkgver=0.7.0
 _tarball_sha='b3329fbae6e2da87b1feb36fa8c9a07367ee967d40239544c8f7c52af8ebe0c1'
 _license_sha='79d5aedce6aa0adc547336dc1bd34c5cc9308ba110fac7079ed97515ee573ad3'
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line interface for controlling Paseo AI coding agents (edge - latest upstream release by date, beta or stable)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/getpaseo/paseo/tree/main/packages/cli'
@@ -36,6 +36,16 @@ package() {
     grep -rlZ '^#!.*node' "${pkgdir}/usr/lib/${pkgname}/node_modules" \
         | xargs -0 -r sed -i '1{/^#!/d}'
     find "${pkgdir}/usr/lib/${pkgname}/node_modules" -type f -perm /111 -exec chmod 644 {} +
+
+    # esbuild's postinstall is blocked by npm 10+ allowScripts; run it manually
+    node "${pkgdir}/usr/lib/${pkgname}/node_modules/esbuild/install.js" || true
+
+    # restore execute on the esbuild binary (stripped by the blanket chmod above)
+    case "${CARCH}" in
+        x86_64) _esbuild_arch=linux-x64 ;;
+        aarch64) _esbuild_arch=linux-arm64 ;;
+    esac
+    chmod 755 "${pkgdir}/usr/lib/${pkgname}/node_modules/@esbuild/${_esbuild_arch}/bin/esbuild" 2>/dev/null || true
 
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/paseo" <<'WRAPPER'
 #!/bin/sh
