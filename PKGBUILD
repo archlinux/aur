@@ -1,7 +1,7 @@
 # Maintainer: SHORiN <shorin@users.noreply.github.com>
 
 pkgname=miyu-git
-pkgver=0.4.4.r640.ga608c08f
+pkgver=0.4.6.r712.gcfb622ec
 pkgrel=1
 pkgdesc='一个活在终端里的二次元少女。开箱即用的开源 AI 助手，支持接入通讯平台。'
 arch=('x86_64')
@@ -16,6 +16,10 @@ optdepends=(
   'fish: fish shell integration support'
   'bash: bash shell integration support'
   'zsh: zsh shell integration support'
+  'python-playwright: 网页检索脚本(小红书/知乎/闲鱼/酒店比价)'
+  'xorg-server-xvfb: 网页检索脚本后台运行所需的虚拟显示'
+  'chromium: 网页检索脚本的浏览器(或改装 google-chrome)'
+  'python-qrcode: 扫码登录时在终端里画二维码'
 )
 provides=('miyu')
 conflicts=('miyu')
