@@ -1,6 +1,6 @@
 # Maintainer: psdk <psdkjoon@gmail.com>
 pkgname=psdk-arch
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="psdk's arch installer and configer"
 arch=('x86_64')
