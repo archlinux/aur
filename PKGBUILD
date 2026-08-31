@@ -1,7 +1,7 @@
 # Maintainer: Justin Kim <justin.joy.9to5@gmail.com>
 
 pkgname=wirelog
-pkgver=0.54.0
+pkgver=0.60.0
 pkgrel=1
 pkgdesc='Embedded-to-Enterprise Datalog Engine'
 arch=('x86_64')
@@ -15,15 +15,15 @@ conflicts=("$pkgname-git")
 # in subprojects/nanoarrow.wrap). It is not packaged separately in Arch, so
 # its source is vendored into the source array and dropped into the wrap
 # directory in prepare() to keep the build offline (no network in build()).
-_nanoarrow_commit=65ab7e9f29244589ccbe7f95900c1295633baf42
+_nanoarrow_commit=3f824063f59848e05692ab520de8ab4d9ebb1880
 
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     "arrow-nanoarrow-$_nanoarrow_commit.tar.gz::https://github.com/apache/arrow-nanoarrow/archive/$_nanoarrow_commit.tar.gz"
 )
 sha256sums=(
-    '26f8ada5cbe3e5be84ac0dbf567322f430f45f6528605abce9373075abbf8f54'
-    '9389f02c59996a2edbe45e33b9183af98ab208f5a2a4fd3f340ef0cf240d53b9'
+    '0fee455e7eec03b1cab4bdab0e2ed0fa31056c63cf8e27bb855590a198e17321'
+    'ec0354e1bf231269b7ce58f958a7869088f4d502985042c1fa4dc4401b5f6c45'
 )
 
 prepare() {
