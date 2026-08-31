@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orca-ide-bin
 _pkgname=Orca
-pkgver=1.4.192
+pkgver=1.4.193
 _electronversion=43
 pkgrel=1
 pkgdesc="ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop and mobile.(Prebuilt version.Use system-wide electron)"
@@ -36,8 +36,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('bc77a72577e41ae87764ed81d811c24abbfb14e917d411ca4bf383cea7cb961a')
-sha256sums_x86_64=('45a1b8ce323f5231a498477fc1b9d9a0ee2ab5db17e02d07f1dbaad7697903fb')
+sha256sums_aarch64=('0b13c3e84ccada8381055bf01c92eeefabe72a0296e9ceaed4dd1623a3dc16da')
+sha256sums_x86_64=('66efc3b6d5d44f47ba7d27658217223de1543ae8fb638f8211dc9f8820ba8b27')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -75,6 +75,15 @@ prepare() {
         "${_app_dir}/resources/app.asar.unpacked/resources/"{darwin,win32} \
         "${_app_dir}/resources/relay/"{darwin-*,win32-*,linux-arm64} \
         "${_app_dir}/resources/node_modules/@parcel/watcher-linux-arm64-glibc"
+    cat > "${_app_dir}/resources/bin/${pkgname%-bin}" <<'SH'
+#!/usr/bin/env bash
+set -euo pipefail
+export ORCA_NODE_OPTIONS="${NODE_OPTIONS-}"
+export ORCA_NODE_REPL_EXTERNAL_MODULE="${NODE_REPL_EXTERNAL_MODULE-}"
+unset NODE_OPTIONS NODE_REPL_EXTERNAL_MODULE
+ELECTRON_RUN_AS_NODE=1 exec electron43 \
+    /usr/lib/orca-ide/app.asar.unpacked/out/cli/index.js "$@"
+SH
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
