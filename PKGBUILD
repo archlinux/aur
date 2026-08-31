@@ -26,7 +26,7 @@ package() {
     cp -r * "$dest"
 
     mkdir -p "$pkgdir/usr/bin"
-    ln -s /opt/sononym/sononym "$pkgdir/usr/bin/sononym"
+    ln -s "$dest/sononym" "$pkgdir/usr/bin/sononym"
 
     # copy custom license:
     # https://wiki.archlinux.org/index.php/PKGBUILD#license
