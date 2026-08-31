@@ -6,12 +6,12 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Update binaries installed by \"go install\" with goroutines"
 
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 _gitversion=v${pkgver}
 
-arch=('x86_64' 'i686' 'aarch64')
-_barch=('linux_amd64' 'linux_386' 'linux_arm64')
+arch=('x86_64' 'aarch64')
+_barch=('linux_amd64' 'linux_arm64')
 
 _ghurl="https://github.com/${_gitauthor}/${_gitname}"
 _ghurlraw="https://raw.githubusercontent.com/${_gitauthor}/${_gitname}/${_gitversion}"
@@ -29,14 +29,12 @@ _pkgsrc="${_appname}-${pkgver}"
 source=("README-${pkgver}.md::${_ghurlraw}/README.md" "LICENSE-${pkgver}::${_ghurlraw}/LICENSE"
 		"${_pkgsrc}-checksums.txt::${_ghurl}/releases/download/${_gitversion}/checksums.txt")
 source_x86_64=("${_pkgsrc}-${arch[0]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[0]}.tar.gz")
-source_i686=("${_pkgsrc}-${arch[1]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
-source_aarch64=("${_pkgsrc}-${arch[2]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[2]}.tar.gz")
-sha256sums=('486b8ccca93e8ddc403d072b470decf7f4431b7218bcf7d53ad86c725dd58af0'
+source_aarch64=("${_pkgsrc}-${arch[1]}.tgz::${_ghurl}/releases/download/${_gitversion}/${_pkgsrc//-/_}_${_barch[1]}.tar.gz")
+sha256sums=('9a44832f445a29bc44c7c1830fe1666b31216fffdd553b0f7f1eeaaef6248407'
             '9342d2ca1f93313e4f2a06e19db82e4a94462fab17c82eda907226631bd62079'
-            '9445fab309a1747097cacca69c63bc4b3967e8e39b9cd480c5f246544314953d')
-sha256sums_x86_64=('7ee0dbb3c043f7e2d1afd0b44bad2f4fdae647e7245246b9e0ff75524c48b76d')
-sha256sums_i686=('ea3f13e11b471bd15bbdd8e80e6d4d381fde58a03dde9894c92c0975baa8f597')
-sha256sums_aarch64=('562cbf136502ba5b93eb474a1f42d6e1e29b93abc5bd864c2c392e129538591e')
+            '83c33587db1d101553cf4b4a442a84fa35d2dc662038a1e4000ae11164726423')
+sha256sums_x86_64=('fe4cb8e3133028a763f38fdde29043fa302129b671d4c31dc888885bb23484d0')
+sha256sums_aarch64=('07e064f4e4f753f8f703a72f086465bbb30a647d8a4fdc3fe20f9fdbfab81649')
 
 
 verify() {
@@ -44,7 +42,6 @@ verify() {
 	sed -n \
 		-e "/${_pkgsrc//-/_}_${_barch[0]}.tar.gz/{s//${_pkgsrc}-${arch[0]}.tgz/g;p;}" \
 		-e "/${_pkgsrc//-/_}_${_barch[1]}.tar.gz/{s//${_pkgsrc}-${arch[1]}.tgz/g;p;}" \
-		-e "/${_pkgsrc//-/_}_${_barch[2]}.tar.gz/{s//${_pkgsrc}-${arch[2]}.tgz/g;p;}" \
 		-i "checksums.txt"
 
 	sha256sum -c --ignore-missing "checksums.txt"
