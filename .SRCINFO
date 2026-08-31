@@ -4,6 +4,7 @@ pkgbase = libcupsfilters-git
 	pkgrel = 1
 	url = https://github.com/OpenPrinting/libcupsfilters
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	checkdepends = ttf-dejavu
 	makedepends = git
