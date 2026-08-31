@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=repath-studio-bin
-pkgver=0.4.19
+pkgver=0.4.20
 _electronversion=43
 pkgrel=1
 pkgdesc="Scalable Vector Graphics Manipulation.Prebuilt version.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1ea266ccda7949b25ad0dd59d0a174ba0568e61a689c1cee3ed07ad9885074f1'
+sha256sums=('67308525b92f80f32962f103156c05fb40c2132b7805fcaed06a13aadec8ee5f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
