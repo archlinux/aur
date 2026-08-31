@@ -1,6 +1,6 @@
 diff -uNrp nouveau-orig/dispnv50/disp.c nouveau-mod/dispnv50/disp.c
---- a/dispnv50/disp.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/dispnv50/disp.c	2026-08-29 12:20:10.200475751 +0300
+--- nouveau-orig/dispnv50/disp.c	2026-06-12 01:03:26.000000000 +0300
++++ nouveau-mod/dispnv50/disp.c	2026-08-31 15:23:48.162721034 +0300
 @@ -228,6 +228,10 @@ MODULE_PARM_DESC(kms_vram_pushbuf, "Plac
  static int nv50_dmac_vram_pushbuf = -1;
  module_param_named(kms_vram_pushbuf, nv50_dmac_vram_pushbuf, int, 0400);
@@ -32,8 +32,8 @@ diff -uNrp nouveau-orig/dispnv50/disp.c nouveau-mod/dispnv50/disp.c
  	nv50_audio_component_init(drm);
  
 diff -uNrp nouveau-orig/nouveau_backlight.c nouveau-mod/nouveau_backlight.c
---- a/nouveau_backlight.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/nouveau_backlight.c	2026-08-29 12:20:10.188748787 +0300
+--- nouveau-orig/nouveau_backlight.c	2026-06-12 01:03:26.000000000 +0300
++++ nouveau-mod/nouveau_backlight.c	2026-08-31 15:23:48.164856237 +0300
 @@ -344,10 +344,7 @@ nouveau_backlight_init(struct drm_connec
  		goto fail_alloc;
  	}
@@ -47,8 +47,8 @@ diff -uNrp nouveau-orig/nouveau_backlight.c nouveau-mod/nouveau_backlight.c
  	if (!nouveau_get_backlight_name(backlight_name, bl)) {
  		NV_ERROR(drm, "Failed to retrieve a unique name for the backlight interface\n");
 diff -uNrp nouveau-orig/nvkm/subdev/clk/base.c nouveau-mod/nvkm/subdev/clk/base.c
---- a/nvkm/subdev/clk/base.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/nvkm/subdev/clk/base.c	2026-08-29 12:20:10.188885186 +0300
+--- nouveau-orig/nvkm/subdev/clk/base.c	2026-06-12 01:03:26.000000000 +0300
++++ nouveau-mod/nvkm/subdev/clk/base.c	2026-08-31 15:23:48.165344978 +0300
 @@ -282,7 +282,8 @@ nvkm_pstate_prog(struct nvkm_clk *clk, i
  
  	nvkm_pcie_set_link(pci, pstate->pcie_speed, pstate->pcie_width);
@@ -69,8 +69,8 @@ diff -uNrp nouveau-orig/nvkm/subdev/clk/base.c nouveau-mod/nvkm/subdev/clk/base.
  
  	return nvkm_cstate_prog(clk, pstate, NVKM_CLK_CSTATE_HIGHEST);
 diff -uNrp nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-mod/nvkm/subdev/clk/gf100.c
---- a/nvkm/subdev/clk/gf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/nvkm/subdev/clk/gf100.c	2026-08-29 12:20:10.189273994 +0300
+--- nouveau-orig/nvkm/subdev/clk/gf100.c	2026-06-12 01:03:26.000000000 +0300
++++ nouveau-mod/nvkm/subdev/clk/gf100.c	2026-08-31 15:23:48.170390200 +0300
 @@ -329,9 +329,6 @@ gf100_clk_calc(struct nvkm_clk *base, st
  
  	if ((ret = calc_clk(clk, cstate, 0x00, nv_clk_src_gpc)) ||
@@ -102,8 +102,8 @@ diff -uNrp nouveau-orig/nvkm/subdev/clk/gf100.c nouveau-mod/nvkm/subdev/clk/gf10
 +	return nvkm_clk_ctor(&gf100_clk, device, type, inst, true, &clk->base);
  }
 diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ramgf100.c
---- a/nvkm/subdev/fb/ramgf100.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/nvkm/subdev/fb/ramgf100.c	2026-08-29 12:20:10.197482437 +0300
+--- nouveau-orig/nvkm/subdev/fb/ramgf100.c	2026-06-12 01:03:26.000000000 +0300
++++ nouveau-mod/nvkm/subdev/fb/ramgf100.c	2026-08-31 15:24:46.184038156 +0300
 @@ -58,6 +58,9 @@ struct gf100_ramfuc {
  	struct ramfuc_reg r_0x10f340;
  	struct ramfuc_reg r_0x10f344;
@@ -127,26 +127,32 @@ diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ram
  	ram_wr32(fuc, 0x10f310, 0x00000001);
  	ram_nsec(fuc, 1000);
  	ram_wr32(fuc, 0x10f090, 0x00000061);
-@@ -284,7 +289,10 @@ gf100_ram_calc(struct nvkm_ram *base, u3
+@@ -284,7 +289,13 @@ gf100_ram_calc(struct nvkm_ram *base, u3
  	ram_nsec(fuc, 1000);
  
  	if (from == 0) {
 -		ram_wr32(fuc, 0x10f824, 0x00007fd4);
-+		if (ram->base.type == NVKM_RAM_TYPE_DDR3)
-+			ram_wr32(fuc, 0x10f824, 0x00021e67);
-+		else
++		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
++			if (freq == 900000)
++				ram_wr32(fuc, 0x10f824, 0x00021e67);
++			else
++				ram_wr32(fuc, 0x10f824, 0x000279e7);
++		} else
 +			ram_wr32(fuc, 0x10f824, 0x00007fd4);
  	} else {
  		ram_wr32(fuc, 0x1373ec, 0x00020404);
  	}
-@@ -295,16 +303,27 @@ gf100_ram_calc(struct nvkm_ram *base, u3
+@@ -295,16 +306,41 @@ gf100_ram_calc(struct nvkm_ram *base, u3
  		ram_wr32(fuc, 0x10f830, 0x41500010);
  		ram_mask(fuc, 0x10f830, 0x01000000, 0x00000000);
  		ram_mask(fuc, 0x132100, 0x00000100, 0x00000100);
 -		ram_wr32(fuc, 0x10f050, 0xff000090);
-+		if (ram->base.type == NVKM_RAM_TYPE_DDR3)
-+			ram_wr32(fuc, 0x10f050, 0xff001050);
-+		else
++		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
++			if (freq == 900000)
++				ram_wr32(fuc, 0x10f050, 0xff001050);
++			else
++				ram_wr32(fuc, 0x10f050, 0xff000450);
++		} else
 +			ram_wr32(fuc, 0x10f050, 0xff000090);
  		ram_wr32(fuc, 0x1373ec, 0x00020f0f);
  		ram_wr32(fuc, 0x1373f0, 0x00000003);
@@ -158,12 +164,23 @@ diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ram
 -		ram_wr32(fuc, 0x10f824, 0x00007e77);
 -		ram_wr32(fuc, 0x132000, 0x18030001);
 +		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
-+			ram_wr32(fuc, 0x10f824, 0x00021e67);
-+			ram_wr32(fuc, 0x132000, 0x18000000);
-+			ram_wr32(fuc, 0x10f440, 0x22f84f10);
-+			ram_wr32(fuc, 0x10f444, 0x04cc883f);
-+			ram_wr32(fuc, 0x10f468, 0x00020020);
-+			ram_wr32(fuc, 0x10f808, 0x08020004);
++			if (freq == 900000) {
++				/* VBlank sync for DDR3 900 on eDP 120Hz — local */
++				int i; for (i = 0; i < 100; i++) { if (nvkm_rd32(device, 0x6100b0) & 0x00000001) break; ram_nsec(fuc, 100); }
++				ram_wr32(fuc, 0x10f824, 0x00021e67);
++				ram_wr32(fuc, 0x132000, 0x18000000);
++				ram_wr32(fuc, 0x10f440, 0x22f84f10);
++				ram_wr32(fuc, 0x10f444, 0x04cc883f);
++				ram_wr32(fuc, 0x10f468, 0x00020020);
++				ram_wr32(fuc, 0x10f808, 0x08020004);
++			} else {
++				ram_wr32(fuc, 0x10f824, 0x000279e7);
++				ram_wr32(fuc, 0x132000, 0x18000000);
++				ram_wr32(fuc, 0x10f440, 0x22f84f10);
++				ram_wr32(fuc, 0x10f444, 0x04cc001f);
++				ram_wr32(fuc, 0x10f468, 0x00001005);
++				ram_wr32(fuc, 0x10f808, 0x08020004);
++			}
 +		} else {
 +			ram_wr32(fuc, 0x10f824, 0x00007e77);
 +			ram_wr32(fuc, 0x132000, 0x18030001);
@@ -171,7 +188,7 @@ diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ram
  		ram_wr32(fuc, 0x10f090, 0x4000007e);
  		ram_nsec(fuc, 2000);
  		ram_wr32(fuc, 0x10f314, 0x00000001);
-@@ -312,26 +331,36 @@ gf100_ram_calc(struct nvkm_ram *base, u3
+@@ -312,26 +348,46 @@ gf100_ram_calc(struct nvkm_ram *base, u3
  		ram_wr32(fuc, 0x10f338, 0x00300220);
  		ram_wr32(fuc, 0x10f300, 0x0000011d);
  		ram_nsec(fuc, 1000);
@@ -183,13 +200,23 @@ diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ram
 -		ram_wr32(fuc, 0x10f614, 0x40044f77);
 -		ram_wr32(fuc, 0x10f610, 0x40044f77);
 +		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
-+			ram_wr32(fuc, 0x10f290, 0x02060505);
-+			ram_wr32(fuc, 0x10f294, 0x34208288);
-+			ram_wr32(fuc, 0x10f298, 0x44050411);
-+			ram_wr32(fuc, 0x10f29c, 0x0000114c);
-+			ram_wr32(fuc, 0x10f2a0, 0x42e10069);
-+			ram_wr32(fuc, 0x10f614, 0x40044f77);
-+			ram_wr32(fuc, 0x10f610, 0x40044f77);
++			if (freq == 900000) {
++				ram_wr32(fuc, 0x10f290, 0x0e44922e);
++				ram_wr32(fuc, 0x10f294, 0x4ce3848c);
++				ram_wr32(fuc, 0x10f298, 0x440e0711);
++				ram_wr32(fuc, 0x10f29c, 0x000050b6);
++				ram_wr32(fuc, 0x10f2a0, 0x42e38069);
++				ram_wr32(fuc, 0x10f614, 0x40044e77);
++				ram_wr32(fuc, 0x10f610, 0x40044e77);
++			} else {
++				ram_wr32(fuc, 0x10f290, 0x061a3813);
++				ram_wr32(fuc, 0x10f294, 0x34208288);
++				ram_wr32(fuc, 0x10f298, 0x44060411);
++				ram_wr32(fuc, 0x10f29c, 0x00001e6a);
++				ram_wr32(fuc, 0x10f2a0, 0x42e28069);
++				ram_wr32(fuc, 0x10f614, 0x40044f77);
++				ram_wr32(fuc, 0x10f610, 0x40044f77);
++			}
 +		} else {
 +			ram_wr32(fuc, 0x10f290, 0x02060505);
 +			ram_wr32(fuc, 0x10f294, 0x34208288);
@@ -219,14 +246,17 @@ diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ram
  		ram_wr32(fuc, 0x100b0c, 0x00080028);
  		ram_wr32(fuc, 0x611200, 0x00003330);
  	} else {
-@@ -345,53 +374,69 @@ gf100_ram_calc(struct nvkm_ram *base, u3
+@@ -345,53 +401,87 @@ gf100_ram_calc(struct nvkm_ram *base, u3
  		ram_wr32(fuc, 0x1373f8, 0x00000000);
  		ram_wr32(fuc, 0x132100, 0x00000101);
  		ram_wr32(fuc, 0x137310, 0x89201616);
 -		ram_wr32(fuc, 0x10f050, 0xff000090);
-+		if (ram->base.type == NVKM_RAM_TYPE_DDR3)
-+			ram_wr32(fuc, 0x10f050, 0xff000450);
-+		else
++		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
++			if (freq == 900000)
++				ram_wr32(fuc, 0x10f050, 0xff001050);
++			else
++				ram_wr32(fuc, 0x10f050, 0xff000450);
++		} else
 +			ram_wr32(fuc, 0x10f050, 0xff000090);
  		ram_wr32(fuc, 0x1373ec, 0x00030404);
  		ram_wr32(fuc, 0x1373f0, 0x00000002);
@@ -236,8 +266,13 @@ diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ram
  		ram_nsec(fuc, 2000);
 -		ram_wr32(fuc, 0x10f808, 0x7aaa0050);
 +		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
-+			ram_wr32(fuc, 0x10f808, 0x08020004);
-+			ram_wr32(fuc, 0x10f824, 0x000279e7);
++			if (freq == 900000) {
++				ram_wr32(fuc, 0x10f808, 0x08020004);
++				ram_wr32(fuc, 0x10f824, 0x00021e67);
++			} else {
++				ram_wr32(fuc, 0x10f808, 0x08020004);
++				ram_wr32(fuc, 0x10f824, 0x000279e7);
++			}
 +		} else {
 +			ram_wr32(fuc, 0x10f808, 0x7aaa0050);
 +		}
@@ -257,13 +292,23 @@ diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ram
 -		ram_wr32(fuc, 0x10f29c, 0x0000214c);
 -		ram_wr32(fuc, 0x10f2a0, 0x42e20069);
 +		if (ram->base.type == NVKM_RAM_TYPE_DDR3) {
-+			ram_wr32(fuc, 0x10f290, 0x02060505);
-+			ram_wr32(fuc, 0x10f294, 0x34208288);
-+			ram_wr32(fuc, 0x10f298, 0x44050411);
-+			ram_wr32(fuc, 0x10f29c, 0x0000114c);
-+			ram_wr32(fuc, 0x10f2a0, 0x42e10069);
-+			ram_wr32(fuc, 0x10f614, 0x40044f77);
-+			ram_wr32(fuc, 0x10f610, 0x40044f77);
++			if (freq == 900000) {
++				ram_wr32(fuc, 0x10f290, 0x0e44922e);
++				ram_wr32(fuc, 0x10f294, 0x4ce3848c);
++				ram_wr32(fuc, 0x10f298, 0x440e0711);
++				ram_wr32(fuc, 0x10f29c, 0x000050b6);
++				ram_wr32(fuc, 0x10f2a0, 0x42e38069);
++				ram_wr32(fuc, 0x10f614, 0x40044e77);
++				ram_wr32(fuc, 0x10f610, 0x40044e77);
++			} else {
++				ram_wr32(fuc, 0x10f290, 0x061a3813);
++				ram_wr32(fuc, 0x10f294, 0x34208288);
++				ram_wr32(fuc, 0x10f298, 0x44060411);
++				ram_wr32(fuc, 0x10f29c, 0x00001e6a);
++				ram_wr32(fuc, 0x10f2a0, 0x42e28069);
++				ram_wr32(fuc, 0x10f614, 0x40044f77);
++				ram_wr32(fuc, 0x10f610, 0x40044f77);
++			}
 +		} else {
 +			ram_wr32(fuc, 0x10f290, 0x0b343825);
 +			ram_wr32(fuc, 0x10f294, 0x3483028e);
@@ -311,8 +356,8 @@ diff -uNrp nouveau-orig/nvkm/subdev/fb/ramgf100.c nouveau-mod/nvkm/subdev/fb/ram
  
  	ram_mask(fuc, 0x10f200, 0x00000800, 0x00000800);
 diff -uNrp nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-mod/nvkm/subdev/pmu/gt215.c
---- a/nvkm/subdev/pmu/gt215.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/nvkm/subdev/pmu/gt215.c	2026-08-29 12:20:10.198915419 +0300
+--- nouveau-orig/nvkm/subdev/pmu/gt215.c	2026-06-12 01:03:26.000000000 +0300
++++ nouveau-mod/nvkm/subdev/pmu/gt215.c	2026-08-31 15:23:48.171519606 +0300
 @@ -56,9 +56,11 @@ gt215_pmu_send(struct nvkm_pmu *pmu, u32
  	}
  
@@ -385,8 +430,8 @@ diff -uNrp nouveau-orig/nvkm/subdev/pmu/gt215.c nouveau-mod/nvkm/subdev/pmu/gt21
  	/* wake process if it's waiting on a synchronous reply */
  	if (pmu->recv.process) {
 diff -uNrp nouveau-orig/nvkm/subdev/pmu/memx.c nouveau-mod/nvkm/subdev/pmu/memx.c
---- a/nvkm/subdev/pmu/memx.c	2026-06-12 01:03:26.000000000 +0300
-+++ b/nvkm/subdev/pmu/memx.c	2026-08-29 12:20:10.199477853 +0300
+--- nouveau-orig/nvkm/subdev/pmu/memx.c	2026-06-12 01:03:26.000000000 +0300
++++ nouveau-mod/nvkm/subdev/pmu/memx.c	2026-08-31 15:23:48.171915640 +0300
 @@ -61,9 +61,11 @@ nvkm_memx_init(struct nvkm_pmu *pmu, str
  	memx->size = reply[1];
  

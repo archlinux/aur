@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+"""
+nouveau-ctrl — CLI for Nouveau Fermi reclocking
+Usage: nouveau-ctrl status | set <03|07|0f|auto> | daemon [start|stop|status] | watch
+No TUI, no fan control (per request).
+"""
+import argparse, glob, os, re, subprocess, sys, time
+
+PSTATE_PATH = "/sys/kernel/debug/dri/0/pstate"
+CLIENTS_PATH = "/sys/kernel/debug/dri/0/clients"
+HWMON_GLOB = "/sys/class/drm/card0/device/hwmon/hwmon*/"
+
+def read_file(p):
+    try:
+        with open(p) as f:
+            return f.read().strip()
+    except PermissionError:
+        try:
+            out = subprocess.run(["sudo", "-n", "cat", p], capture_output=True, text=True, timeout=2)
+            if out.returncode == 0:
+                return out.stdout.strip()
+        except:
+            pass
+        return None
+    except:
+        return None
+
+def get_pstates():
+    t = read_file(PSTATE_PATH)
+    if not t:
+        return [], None
+    states = []
+    active = None
+    for line in t.splitlines():
+        # Try shader first
+        m = re.match(r"(\w+):\s*core\s+(\d+).*shader\s+(\d+).*memory\s+(\d+)", line)
+        if m:
+            states.append(line.strip())
+            if line.strip().endswith("*"):
+                active = line.strip()
+            continue
+        m = re.match(r"(\w+):\s*core\s+(\d+).*memory\s+(\d+)", line)
+        if m:
+            states.append(line.strip())
+            if line.strip().endswith("*"):
+                active = line.strip()
+    return states, active
+
+def get_hwmon():
+    base = glob.glob(HWMON_GLOB)
+    if not base:
+        return {}
+    base = base[0]
+    out = {}
+    for k, f in [("temp", "temp1_input"), ("fan", "fan1_input"), ("pwm", "pwm1")]:
+        v = read_file(os.path.join(base, f))
+        if v:
+            out[k] = v
+    v = read_file(os.path.join(base, "in0_input"))
+    if v:
+        out["voltage"] = v
+    return out
+
+def get_clients():
+    t = read_file(CLIENTS_PATH)
+    if not t:
+        return []
+    return t.splitlines()[:20]
+
+def cmd_status(args):
+    states, active = get_pstates()
+    hw = get_hwmon()
+    clients = get_clients()
+    print("PStates:")
+    for s in states:
+        print(f"  {s}")
+    print(f"Active: {active or 'unknown'}")
+    if hw:
+        print("HWMon:")
+        for k, v in hw.items():
+            print(f"  {k}: {v}")
+    else:
+        print("HWMon: no data")
+    if clients:
+        print("DRM clients (top):")
+        for l in clients[:10]:
+            print(f"  {l}")
+
+def cmd_set(args):
+    target = args.state
+    if target == "auto":
+        print("Handing back to dynclockd — set to auto (07)")
+        target = "07"
+    if target not in ("03", "07", "0f", "10", "AC"):
+        print(f"Invalid state {target}, use 03|07|0f|10|AC|auto", file=sys.stderr)
+        sys.exit(1)
+    # Use sudo tee so normal user can write (NOPASSWD via /etc/sudoers.d/nouveau-ctrl), daemon stays sudo-only
+    try:
+        res = subprocess.run(["sudo", "-n", "tee", PSTATE_PATH], input=target + "\n", text=True, capture_output=True, timeout=2)
+        if res.returncode == 0:
+            print(f"Set pstate {target}")
+        else:
+            print(f"Failed: {res.stderr.strip() or 'permission'}", file=sys.stderr)
+            sys.exit(1)
+    except Exception as e:
+        print(f"Failed: {e}", file=sys.stderr)
+        sys.exit(1)
+
+def cmd_daemon(args):
+    action = args.action
+    if action not in ("start", "stop", "status", "restart"):
+        print("Use: daemon [start|stop|status|restart]", file=sys.stderr)
+        sys.exit(1)
+    subprocess.run(["systemctl", action, "nouveau-dynclockd.service"] if action != "status" else ["systemctl", "status", "nouveau-dynclockd.service"])
+
+def cmd_watch(args):
+    interval = args.interval
+    try:
+        while True:
+            os.system("clear")
+            print(f"=== nouveau-ctrl watch {time.strftime('%H:%M:%S')} (Ctrl-C to stop) ===")
+            cmd_status(args)
+            time.sleep(interval)
+    except KeyboardInterrupt:
+        pass
+
+def main():
+    p = argparse.ArgumentParser(description="nouveau-ctrl — Fermi reclock CLI")
+    sub = p.add_subparsers(dest="cmd", required=True)
+    s = sub.add_parser("status", help="Show clocks, temp, clients")
+    s.set_defaults(func=cmd_status)
+    s2 = sub.add_parser("set", help="Lock pstate 03|07|0f|AC|auto")
+    s2.add_argument("state", help="03|07|0f|AC|auto")
+    s2.set_defaults(func=cmd_set)
+    s3 = sub.add_parser("daemon", help="Control dynclockd")
+    s3.add_argument("action", nargs="?", default="status", help="start|stop|status|restart")
+    s3.set_defaults(func=cmd_daemon)
+    s4 = sub.add_parser("watch", help="Live monitor")
+    s4.add_argument("-i", "--interval", type=float, default=2.0, help="seconds")
+    s4.set_defaults(func=cmd_watch)
+    args = p.parse_args()
+    args.func(args)
+
+if __name__ == "__main__":
+    main()
