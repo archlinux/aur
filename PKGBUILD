@@ -3,9 +3,9 @@
 
 pkgname='sqlpage'
 _pkgname='SQLPage'
-pkgver=0.45.0
+pkgver=0.46.0
 pkgrel=1
-pkgdesc='Fast SQL-only data application builder. Automatically build a UI on top of SQL queries.'
+pkgdesc='Fast SQL-only data application builder. Automatically build a UI on top of SQL queries'
 url='https://sql-page.com'
 _srcurl='https://github.com/sqlpage/SQLPage'
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::${_srcurl}/archive/v$pkgver.tar.gz")
-b2sums=('d73bf1e496e26882e9a1242bea6ecc234de9ddf94b41b6f135b82e5452e5ff8121d59819c993bfeaf91b52d78025d224d3229ecf1835f32e0e4cc2d95cc57e0b')
+b2sums=('89ac0a2ff4f197c56d1f806b70d939fa306cef86300fe5018eb4c7b736933ddacfee014a515fedfed01d7160b04666ff5973d26fbc8605024be7d3050870c394')
 options=(!lto)
 
 prepare() {
@@ -32,7 +32,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$_pkgname-$pkgver"
   install -Dm755 target/release/$pkgname "$pkgdir/usr/bin/$pkgname"
   sed -i "s|/var/www/sqlpage|/srv/http|" "$pkgname.service"
   sed -i "s|/usr/local/bin/sqlpage\.bin|/usr/bin/$pkgname|" "$pkgname.service"
