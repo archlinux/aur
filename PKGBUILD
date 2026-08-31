@@ -13,7 +13,7 @@ depends=(dbus-glib
          glibc)
 makedepends=(cargo
              mandoc)
-source=("$pkgname-$pkgver.tag.gz::https://git.meli.delivery/meli/meli/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tag.gz::https://git.meli-email.org/meli/meli/archive/v$pkgver.tar.gz")
 sha256sums=('b1414defb7973a96ed0510b5cb888aa8671fe4f3f832c5baa0c79dcd61ba2edf')
 
 prepare() {
