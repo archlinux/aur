@@ -3,7 +3,7 @@
 
 pkgname="n8n"
 pkgver=2.36.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('x86_64')
 url="https://n8n.io"
@@ -12,8 +12,8 @@ backup=("etc/default/${pkgname}")
 # Check upstream nodejs version constraints with:
 #   curl -s "https://registry.npmjs.org/n8n/${pkgver}" | jq -r '.engines.node'
 # Current upstream constraint: ">=22.16"
-depends=("nodejs>=22.16")
-makedepends=("npm" "curl")
+depends=("nodejs>=22.16" "sqlite" "librdkafka")
+makedepends=("npm" "curl" "node-gyp" "python")
 options=('!debug' '!strip')
 source=("${pkgname}.env"
 "${pkgname}.service"
@@ -45,9 +45,51 @@ package() {
   install -Dm644 "${pkgname}.user.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 
   npm install --cache "${srcdir}/npm-cache" --prefix="${pkgdir}/usr" --global --ignore-scripts --allow-remote=all "${srcdir}/${pkgname}-${pkgver}.tgz"
-  npm rebuild --cache "${srcdir}/npm-cache" --prefix="${pkgdir}/usr/lib/node_modules/${pkgname}" sqlite3
-
   local node_root="${pkgdir}/usr/lib/node_modules/${pkgname}"
+
+  # npm >=12 blocks install scripts, and it blocks them for `npm rebuild` too —
+  # the one command whose entire purpose is running them — so every native addon
+  # has to be built directly. The build otherwise still exits 0, and the missing
+  # binding only shows up when a user hits it. Each addon needs its own recipe,
+  # and each subshell ends by proving the .node exists so a silent skip fails
+  # the build rather than shipping.
+
+  # n8n's default database. Without this it refuses to start at all.
+  ( cd "${node_root}/node_modules/sqlite3" &&
+    npm_config_nodedir=/usr node-gyp rebuild --release --sqlite=/usr &&
+    compgen -G 'build/Release/*.node' >/dev/null )
+
+  # Kafka nodes. The vendored librdkafka is the same version Arch packages, so
+  # link the system library instead of building a bundled static copy — which
+  # also sidesteps a failure in librdkafka's own static-archive step.
+  ( cd "${node_root}/node_modules/@confluentinc/kafka-javascript" &&
+    BUILD_LIBRDKAFKA=0 npm_config_nodedir=/usr node-gyp rebuild --release &&
+    compgen -G 'build/Release/*.node' >/dev/null )
+
+  # ssh2's crypto acceleration, and the CPU probe it consults. npm resolves more
+  # than one copy of each; both keep their addon outside the package root, and
+  # cpu-features generates a gypi before it can configure.
+  local addon
+  while IFS= read -r addon; do
+    ( cd "${addon}" && npm_config_nodedir=/usr node-gyp rebuild --release &&
+      compgen -G 'build/Release/*.node' >/dev/null )
+  done < <(find "${node_root}/node_modules" -type d -path '*/ssh2/lib/protocol/crypto')
+
+  while IFS= read -r addon; do
+    ( cd "${addon}" && node buildcheck.js > buildcheck.gypi &&
+      npm_config_nodedir=/usr node-gyp rebuild --release &&
+      compgen -G 'build/Release/*.node' >/dev/null )
+  done < <(find "${node_root}/node_modules" -type d -name cpu-features)
+
+  find "${node_root}/node_modules" -type d -name obj.target -prune -exec rm -rf {} +
+
+  node -e '
+    const { createRequire } = require("node:module");
+    const req = createRequire(process.argv[1] + "/");
+    new (req("sqlite3").Database)(":memory:").close();
+    const kafka = req("@confluentinc/kafka-javascript");
+    console.log("native bindings exercised: sqlite3, librdkafka " + kafka.librdkafkaVersion);
+  ' "${node_root}"
 
   # Development files
   find "${node_root}" -name "*.ts" -delete 2>/dev/null || true
