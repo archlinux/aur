@@ -1,17 +1,17 @@
 pkgbase = gerbil-bin
 	pkgdesc = A desktop app for running Large Language Models locally.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.28.1
+	pkgver = 1.28.2
 	pkgrel = 1
 	url = https://github.com/lone-cloud/gerbil
 	arch = x86_64
 	license = AGPL-3.0-only
 	makedepends = asar
 	depends = electron43
-	provides = gerbil=1.28.1
+	provides = gerbil=1.28.2
 	conflicts = gerbil
-	source = gerbil-1.28.1-x86_64.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.28.1/Gerbil-1.28.1.AppImage
+	source = gerbil-1.28.2-x86_64.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.28.2/Gerbil-1.28.2.AppImage
 	source = gerbil.sh
-	sha256sums = 255cba9502256bdefc9a101a04386c4d5bd40e36dd362259778b1db2d321fe8d
+	sha256sums = 746aaefb6491dddf8e16344eb051241043c9f36a520ef88d883ef70a826fdffd
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
 
 pkgname = gerbil-bin
