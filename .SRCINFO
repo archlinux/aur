@@ -1,6 +1,6 @@
 pkgbase = metapac
 	pkgdesc = multi-backend declarative package manager
-	pkgver = 0.10.1
+	pkgver = 0.10.2
 	pkgrel = 1
 	url = https://github.com/ripytide/metapac
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = metapac
 	conflicts = metapac
 	options = !debug
 	options = !lto
-	source = metapac-0.10.1.tar.gz::https://static.crates.io/crates/metapac/metapac-0.10.1.crate
-	sha256sums = d36c990a4571592310fee508095f1f327a17393e6fdf4a3c1ef9e38bcff379ab
+	source = metapac-0.10.2.tar.gz::https://static.crates.io/crates/metapac/metapac-0.10.2.crate
+	sha256sums = 5a7c0400e7d724cf256ba31c98ad37af2261e20bd30172bf253f208ca5093488
 
 pkgname = metapac
