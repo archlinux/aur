@@ -1,21 +1,21 @@
 pkgbase = apiflow-bin
 	pkgdesc = A modern API workspace that works both online and offline — combining API documentation, testing, mock, and AI-powered automation in one lightweight tool.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.9.5
+	pkgver = 0.9.51
 	pkgrel = 1
 	url = https://apiflow.cn/
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = electron32
-	provides = apiflow=0.9.5
+	provides = apiflow=0.9.51
 	conflicts = apiflow
-	source = LICENSE-0.9.5::https://raw.githubusercontent.com/trueleaf/apiflow/v0.9.5/LICENSE
+	source = LICENSE-0.9.51::https://raw.githubusercontent.com/trueleaf/apiflow/v0.9.51/LICENSE
 	source = apiflow.sh
 	sha256sums = 1c8f6daf492f059c2837ab0c8b505b81e9d9220013c094a2e9fac893399d08f5
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = apiflow-0.9.5-aarch64.deb::https://github.com/trueleaf/apiflow/releases/download/v0.9.5/Apiflow-0.9.5-arm64.deb
-	sha256sums_aarch64 = a8615025dfeb860c19919df71357f003aa914021806cd7cbe6a53bc703442192
-	source_x86_64 = apiflow-0.9.5-x86_64.deb::https://github.com/trueleaf/apiflow/releases/download/v0.9.5/Apiflow-0.9.5-amd64.deb
-	sha256sums_x86_64 = fa252fb45457f3c897d3d22a49bd3ed6404b245ce65c1a17c1c5e22a65f760ed
+	source_aarch64 = apiflow-0.9.51-aarch64.deb::https://github.com/trueleaf/apiflow/releases/download/v0.9.51/Apiflow-0.9.51-arm64.deb
+	sha256sums_aarch64 = ac6af60ec88bcfdfcb629cb95991634cabb780361a5c655e8beff281866121c1
+	source_x86_64 = apiflow-0.9.51-x86_64.deb::https://github.com/trueleaf/apiflow/releases/download/v0.9.51/Apiflow-0.9.51-amd64.deb
+	sha256sums_x86_64 = fe0cb268416d8e10f8cf0d77c591560cf1fa87d658b87fd0403c23fa7a59ba8c
 
 pkgname = apiflow-bin
