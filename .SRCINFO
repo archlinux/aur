@@ -1,6 +1,6 @@
 pkgbase = zen-browser-dark-reader
 	pkgdesc = Inverts brightness of web pages and aims to reduce eyestrain while browsing the web. Symlink to the Firefox addon.
-	pkgver = 4.9.126
+	pkgver = 4.9.129
 	pkgrel = 1
 	url = https://darkreader.org/
 	arch = any
