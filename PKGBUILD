@@ -1,9 +1,10 @@
+# Maintainer: aozaki <aozakitouko at foxmail dot com>
 # Maintainer: BryanLiang <liangrui.ch at gmail dot com>
 # Contributor: whf920521 <whf920521 at gmail dot com>
 
 pkgname=zashboard-bin
 _pkgname=zashboard
-pkgver=3.21.0
+pkgver=3.24.0
 pkgrel=1
 pkgdesc='A dashboard using clash api'
 arch=('any')
@@ -17,7 +18,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/dist.zip"
         "https://raw.githubusercontent.com/Zephyruso/zashboard/refs/tags/v${pkgver}/LICENSE")
-sha256sums=('5348e6ce1a6bceecfbbf07d27a78e3efa72817b979e847337151ff1ab201ef21'
+sha256sums=('5ba15d3388adf0483929970663053871c530312224dd6d13bdf396a7f517697b'
             'ffc390eec51f16b58506b1a42c99fe0cd9ffea1e3081aab443100fd8c20182d9')
 
 package() {
