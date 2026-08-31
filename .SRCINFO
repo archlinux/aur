@@ -1,7 +1,7 @@
 pkgbase = any-listen-desktop
 	pkgdesc = A cross-platform private music playback service
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/any-listen/any-listen-desktop
 	arch = x86_64
 	license = custom:AGPL-3.0-based
@@ -10,7 +10,7 @@ pkgbase = any-listen-desktop
 	makedepends = pnpm
 	makedepends = python
 	makedepends = node-gyp
-	depends = electron42
+	depends = electron43
 	depends = hicolor-icon-theme
 	conflicts = any-listen-desktop-bin
 	conflicts = any-listen-desktop-git
