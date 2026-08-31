@@ -1,4 +1,5 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Django <django@nausch.org>
 # Contributor: John Doe <kitterhuff@gmail.com>
 # Contributor: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: Thomas S Hatch <thatch45@gmail.com>
@@ -6,8 +7,8 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname="aide"
-pkgver=0.19.3
-pkgrel=2
+pkgver=0.19.4
+pkgrel=1
 pkgdesc="A file integrity checker and intrusion detection program"
 arch=("x86_64" "armv7h" "aarch64")
 url="https://aide.github.io/"
@@ -22,7 +23,7 @@ source=("https://github.com/aide/aide/releases/download/v$pkgver/aide-$pkgver.ta
         "aidecheck.service"
         "aidecheck.timer"
         "nettle4.patch")
-b2sums=('5d52019b3690c8590678d408209619e1b257f84e66f2f5074a198e14ab78777de963a37ff7c26f505f278a313747947a101f9ac13d391417e91f6418f84adbe3'
+b2sums=('f0de4933d73503d59ec48d4357480d46ac30edf6365f9d2f1e5561fe685080e8021cd381ac55a51a51d285677bc659bd69042d9475f0e656174021fad9189dc5'
         'SKIP'
         '2e16baf306dcbe5d5207685391bb3e77b80a8caafaeafee3094228ee19671092afc042762523663a1d5155341a5d190c5e6c355d639e1a840efddf56047c05bc'
         'fcae2514bffcfe8c2110c8b82d857f39de8c95e0d7d2788bb4945243c127c9566871606b9e4bca39034b624c7bd579f46ed88cb0b86830d6ff16ff1fbb04b081'
@@ -34,9 +35,6 @@ install="aide.install"
 
 prepare(){
  cd "$pkgname-$pkgver"
- # nettle 4 dropped the length argument from the hash digest functions,
- # upstream fix is not in a release yet (latest is 0.19.3)
- patch -Np1 -i "$srcdir/nettle4.patch"
 }
 
 build(){
