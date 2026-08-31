@@ -1,6 +1,6 @@
 pkgbase = nmem-cli
 	pkgdesc = CLI and TUI for Nowledge Mem - AI memory management
-	pkgver = 0.10.74
+	pkgver = 0.10.75
 	pkgrel = 1
 	url = https://mem.nowledge.co/docs/cli
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = nmem-cli
 	license = MIT
 	depends = gcc-libs
 	depends = glibc
-	noextract = nmem_cli-0.10.74-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	noextract = nmem_cli-0.10.74-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+	noextract = nmem_cli-0.10.75-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	noextract = nmem_cli-0.10.75-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
 	options = !debug
 	options = !strip
-	source_x86_64 = nmem_cli-0.10.74-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl::https://files.pythonhosted.org/packages/py3/n/nmem-cli/nmem_cli-0.10.74-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	sha256sums_x86_64 = 99bc9fbc883e6d2c97d2b9e351bbe39dc3ae3647276bbfb0b8c212096d019da2
-	source_aarch64 = nmem_cli-0.10.74-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl::https://files.pythonhosted.org/packages/py3/n/nmem-cli/nmem_cli-0.10.74-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
-	sha256sums_aarch64 = f4c9602c90a0488e909f0ba23176e8afcc005a9bc3787812b0fe2ae0d10d91c6
+	source_x86_64 = nmem_cli-0.10.75-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl::https://files.pythonhosted.org/packages/py3/n/nmem-cli/nmem_cli-0.10.75-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums_x86_64 = 492980c13ff1426e159f7864f730b4ee253f2f820fc55b460dc6936326b23bda
+	source_aarch64 = nmem_cli-0.10.75-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl::https://files.pythonhosted.org/packages/py3/n/nmem-cli/nmem_cli-0.10.75-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+	sha256sums_aarch64 = c36b840758223c8222d46379285c951d4c4fbc5645a226c1923c11e3a8b6abdb
 
 pkgname = nmem-cli
