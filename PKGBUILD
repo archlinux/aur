@@ -2,7 +2,7 @@
 
 pkgbase=obsidian
 pkgname=(${pkgbase}-{bin,appimage})
-pkgver=1.12.7
+pkgver=1.13.7
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/obsidianmd/obsidian-releases"
@@ -23,9 +23,9 @@ source_aarch64=(
 
 sha256sums=('a94e20705d4b67501f225d74f4460b746a258e52aa6bc522aed1e26ac42dbef9'
             'febbd56ffe802968b7e848b468f2f2762f5927d6934b4ee70569977aa5d3f843')
-sha256sums_x86_64=('3644e3ef19bcd23db4d17f7c73311b5245429391a2a48b361da93375f59712b0'
-                   'f6d8b96fe685a8632c819cc093a248ace0f6bab410f44a6c929a2611b1ebb17c')
-sha256sums_aarch64=('2a40943a2402cf1f38e71845f294a78d300a78ff21ea4c2103335bca7fbdcbe0')
+sha256sums_x86_64=('17dc33b49cb3e785ecc27edd2ea0c79e40207798b554fd2886e36ebee7af9ae0'
+                   'e0d8e0a611624de8c9c7dcd8a9e648279fb0a0d552faa1312b7e4f3a5fa72663')
+sha256sums_aarch64=('e286fd2bb2a5d346a35a577bd764c73fd5537dddec2b99a1a3e5e35974085203')
 noextract=("${pkgbase}-${pkgver}-${CARCH}.AppImage")
 
 package_obsidian-bin() {
