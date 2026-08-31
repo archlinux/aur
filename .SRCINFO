@@ -15,7 +15,7 @@ pkgbase = jellyfin-desktop-git
 	depends = qt6-declarative
 	provides = jellyfin-desktop
 	conflicts = jellyfin-desktop
-	source = git+https://github.com/jellyfin/jellyfin-desktop.git
+	source = jellyfin-desktop-git::git+https://github.com/jellyfin/jellyfin-desktop.git
 	sha256sums = SKIP
 
 pkgname = jellyfin-desktop-git

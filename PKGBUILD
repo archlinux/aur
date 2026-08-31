@@ -23,18 +23,18 @@ makedepends=(
 
 provides=('jellyfin-desktop')
 conflicts=('jellyfin-desktop')
-source=("git+${url}.git")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 
 pkgver() {
-  cd jellyfin-desktop
+  cd "$pkgname"
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
 build() {
-    cd jellyfin-desktop
+    cd "$pkgname"
     rm -rf build
     mkdir build
     cmake \
@@ -49,6 +49,6 @@ build() {
 }
 
 package() {
-    cd jellyfin-desktop
+    cd "$pkgname"
     DESTDIR="${pkgdir}" cmake --install build
 }
