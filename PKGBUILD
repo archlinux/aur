@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=atoms
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Easily manage Linux Chroot(s) and Containers"
 arch=('x86_64')
@@ -9,7 +9,6 @@ license=('GPL-3.0-only')
 depends=(
   'cpak'
   'gtk4'
-  'gtk4-layer-shell'
   'gtksourceview5'
   'json-glib'
   'libadwaita'
@@ -42,7 +41,7 @@ source=("git+https://github.com/AtomsDevs/Atoms.git#tag=v$pkgver"
         'git+https://github.com/AtomsDevs/atoms-cli.git'
         'git+https://github.com/AtomsDevs/atoms-core.git'
         'git+https://github.com/AtomsDevs/atoms-provider-cpak.git')
-sha256sums=('4fd3e15d1b79aabc62149cec3b64d2fa878895a3ee55bcedcbfbd55d89075559'
+sha256sums=('c75d8039b443648c104106bb0dc6e21d00ba8a531ad4d6cc337bc952c95ae7dd'
             'SKIP'
             'SKIP'
             'SKIP')

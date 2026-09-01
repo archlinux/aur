@@ -1,6 +1,6 @@
 pkgbase = atoms
 	pkgdesc = Easily manage Linux Chroot(s) and Containers
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/AtomsDevs/Atoms
 	arch = x86_64
@@ -12,7 +12,6 @@ pkgbase = atoms
 	makedepends = vala
 	depends = cpak
 	depends = gtk4
-	depends = gtk4-layer-shell
 	depends = gtksourceview5
 	depends = json-glib
 	depends = libadwaita
@@ -28,11 +27,11 @@ pkgbase = atoms
 	conflicts = atoms-cli
 	conflicts = atoms-core
 	conflicts = libsingularity
-	source = git+https://github.com/AtomsDevs/Atoms.git#tag=v2.0.1
+	source = git+https://github.com/AtomsDevs/Atoms.git#tag=v2.0.2
 	source = git+https://github.com/AtomsDevs/atoms-cli.git
 	source = git+https://github.com/AtomsDevs/atoms-core.git
 	source = git+https://github.com/AtomsDevs/atoms-provider-cpak.git
-	sha256sums = 4fd3e15d1b79aabc62149cec3b64d2fa878895a3ee55bcedcbfbd55d89075559
+	sha256sums = c75d8039b443648c104106bb0dc6e21d00ba8a531ad4d6cc337bc952c95ae7dd
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
