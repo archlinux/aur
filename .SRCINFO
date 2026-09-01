@@ -1,0 +1,14 @@
+pkgbase = sheldon-git
+	pkgdesc = a very useful website
+	pkgver = r7.f67929b
+	pkgrel = 1
+	url = https://github.com/iamanuclearwarhead/sheldon
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = xdg-utils
+	conflicts = sheldon
+	source = git+https://github.com/iamanuclearwarhead/sheldon.git
+	sha256sums = SKIP
+
+pkgname = sheldon-git
