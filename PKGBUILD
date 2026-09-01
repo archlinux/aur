@@ -1,7 +1,7 @@
 # Maintainer: Lucas Balmès <lucagoc@pm.me>
 pkgname=python-pypixelcolor-git
 _name=pypixelcolor
-pkgver=0.4.0.r17.ga62c723
+pkgver=0.4.0.r18.g60481dc
 pkgrel=1
 pkgdesc="A Python library and CLI to control iPixel Color devices (Git development version)"
 arch=('any')
