@@ -2,14 +2,17 @@
 
 pkgname=wegame-dwproton
 pkgver=7.06.27.1446
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial DWProton integration for Tencent WeGame'
 arch=('x86_64')
 url='https://github.com/ParticleG/wegame-dwproton'
 license=('LicenseRef-WeGame-EULA AND 0BSD')
-depends=('dwproton' 'bash' 'coreutils' 'util-linux' 'hicolor-icon-theme')
+depends=('bash' 'coreutils' 'util-linux' 'hicolor-icon-theme')
 makedepends=('7zip' 'imagemagick')
-optdepends=('libnotify: desktop error notifications')
+optdepends=(
+  'dwproton: system-wide DWProton runtime; not needed for ProtonUp-Qt installations'
+  'libnotify: desktop error notifications'
+)
 options=('!strip' '!debug')
 install="$pkgname.install"
 
@@ -24,9 +27,9 @@ source=(
 noextract=("$pkgname-${pkgver}.exe")
 sha256sums=(
   '0948beca682116a643629c93ff787d2602b599b4ca1c586d8b2c02a7f4ef6d26'
-  'afc98f8951eec279e08ccb29dbd34641576c041a824975d762a7fadebd36a345'
+  'b75b4dc94800d214ebbc0c60f938235fd2175b96827f59e62d10b945fcc0a65f'
   '0efdfb60c908ef0a75356d827e087e3afd4b66881ed895951bcc3e98360eac3a'
-  'dab43cd44f7ec00cf752fdf9c5aeaad091bffb8fc609d7709ae99d6fdf79b7f7'
+  'd12d1e25e0c52d654645a9d7aa344876c1d7d93876952b0b3bbc477735e27f14'
   'a0e144decd47d1b87623ae6224e5d4c4b3957768179a7c7933a93ec4f5b316c4'
   '0d41216d7887ecc574ba0a92de6fde21cde94a49c66cde77e80deacd50f1a9d9'
 )

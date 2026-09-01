@@ -18,7 +18,13 @@ Install an AUR helper and the package:
 paru -S wegame-dwproton
 ```
 
-The package depends on the virtual `dwproton` package, normally provided by `dwproton-bin`.
+DWProton is a runtime requirement, but it is not a hard pacman dependency. ProtonUp-Qt installs self-contained compatibility tool archives per user and does not register them in pacman's dependency database. The launcher automatically discovers DWProton in these locations:
+
+- system Steam compatibility tools, including `dwproton` and `dwproton-signed`;
+- ProtonUp-Qt's Lutris runners under `~/.local/share/lutris/runners/wine/`;
+- per-user Steam compatibility tool directories.
+
+Install DWProton with ProtonUp-Qt before launching WeGame. Alternatively, install the system-wide AUR package with `paru -S dwproton-bin`; that package may require additional host `lib32-*` libraries.
 
 Start **Tencent WeGame (DWProton)** from the application menu or run:
 
@@ -59,7 +65,7 @@ wegame-dwproton --print-prefix  Print the Wine prefix path
 wegame-dwproton --version       Print the package version
 ```
 
-`WEGAME_DWPROTON_PROTON` can override the DWProton executable. `WEGAME_DWPROTON_SHARE_DIR` can override the package data directory for development and tests.
+`WEGAME_DWPROTON_PROTON` overrides automatic DWProton discovery. `WEGAME_DWPROTON_SHARE_DIR` overrides the package data directory for development and tests.
 
 ## Confirmed update recovery
 
