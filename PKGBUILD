@@ -2,7 +2,7 @@
 # Contributor: jrohwer
 _base=COPASI
 pkgname=${_base,,}-bin
-pkgver=4.46.300
+pkgver=4.47.309
 _pkgver=${pkgver##*.}
 pkgrel=1
 pkgdesc="COmplex PAthway SImulator for analysis of biochemical networks and their dynamics"
@@ -16,7 +16,7 @@ noextract=($pkgname-$pkgver.tar.gz)
 _source=https://github.com/${_base,,}/${_base}/releases/download/Build-${_pkgver}
 source_x86_64=(${_base}-$pkgver-Linux-x86_64.sh::${_source}/${_base}-$pkgver-Linux-64bit.sh)
 sha512sums=('cf7172b155885db8007298643499a57421e4890b72da86f8124bc35ec30c39f17c4167cd5d4603fc37c0cf72c6e4283c009339363da1cc5f44708c08d16a2b4e')
-sha512sums_x86_64=('eee0affe040610bb7446bda2e1347ea2c18856e2bc00da49be600709834fa3c3374b7734d71c54d00333212af21004ad9463b68a717a8656a1fdb4f1d0b95491')
+sha512sums_x86_64=('18a5df1fa645241c24ed123147c0cf09ffac6d5a81fd25d0e81ff5e03edc038f6c5facb2aa9947d89200b15bb12d420c2c29a0900306bddcd4ad08f6a345aaaf')
 
 package() {
   cd "$srcdir"
