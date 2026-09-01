@@ -1,7 +1,7 @@
 pkgbase = command-code
 	pkgdesc = AI coding agent that continuously learns your coding taste
 	pkgver = 1.39.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://commandcode.ai
 	arch = x86_64
 	license = LicenseRef-command-code
