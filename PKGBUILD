@@ -3,7 +3,7 @@
 
 pkgname=python-cucumber-tag-expressions
 _name=tag-expressions
-pkgver=9.1.0
+pkgver=11.0.1
 pkgrel=1
 pkgdesc="Provides a tag-expression parser and evaluation logic for cucumber/behave"
 url="https://github.com/cucumber/tag-expressions"
@@ -12,15 +12,8 @@ arch=('any')
 depends=('python')
 makedepends=('python-build' 'python-uv-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-wheel' 'uv')
 # checkdepends=('python-pytest')
-source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        "release_uv_version.patch")
-sha512sums=('d3886c65b678fd87b093fca88e243972322a48afabfeb2e3d38b69ce813e3705924e1475e77b54f98687f9c4235bc343cc9d7c20ba194880d9acceb228161275'
-            'fb74eb00a700aa3a7e02bc02f94cb7c1493eae61d3c99f6c1a4cf62462abde47210e32735e601ec76a0136dcd94c07ad992df7d413fcdfa1fa112000695a961f')
-
-prepare() {
-    cd "${_name}-${pkgver}"
-    patch -p1 -i ../release_uv_version.patch
-}
+source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('a0b97a3b22a13c7d7965d75a14abadba7dc61a92104b9ec9c7e68d7062557164adc9d3c201c704635fc04b294d0148be93e5f749b2baae4bab7cde69299d3cce')
 
 build() {
     cd "${_name}-${pkgver}/python"
