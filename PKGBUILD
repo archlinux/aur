@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=tabtoy
 pkgver=3.1.4
-pkgrel=5
+pkgrel=6
 pkgdesc="高性能表格数据导出器"
 arch=('x86_64' 'aarch64')
 url="https://github.com/davyxu/tabtoy"
@@ -28,7 +28,7 @@ build() {
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags='-s -w' \
+    -ldflags='-linkmode=external -s -w' \
     -o $pkgname \
     .
 }
