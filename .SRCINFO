@@ -1,0 +1,20 @@
+pkgbase = scaffold-python-cli
+	pkgdesc = GitHub template for a Python/uv/Typer command-line tool
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/alrayyes/scaffold-python-cli
+	arch = any
+	license = custom
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-uv-build
+	makedepends = python-click-man
+	depends = python
+	depends = python-platformdirs
+	depends = python-tomli-w
+	depends = python-typer
+	source = scaffold-python-cli-0.3.0.tar.gz::https://github.com/alrayyes/scaffold-python-cli/archive/scaffold-python-cli-v0.3.0.tar.gz
+	sha256sums = 5fe80ecf501788d36e58067c886631166e666a846b8e944e755b0bcf8a4e9b24
+
+pkgname = scaffold-python-cli
