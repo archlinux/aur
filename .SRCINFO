@@ -1,6 +1,6 @@
 pkgbase = warpscout
 	pkgdesc = Cloudflare WARP endpoint scanner
-	pkgver = 0.15.0
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/vernette/warpscout
 	arch = aarch64
@@ -10,7 +10,7 @@ pkgbase = warpscout
 	depends = ca-certificates
 	depends = glibc
 	options = !debug
-	source = https://github.com/vernette/warpscout/archive/v0.15.0/warpscout-0.15.0.tar.gz
-	b2sums = ec155e0630565460d3510a76be588f36f8cd94bd666e4aaa6ec5c743600f0204b37cc8bf5b03bd356dcdafdb03fa590a1f0ba6fc8ff7391124c46f21c7d7ab69
+	source = https://github.com/vernette/warpscout/archive/v0.16.0/warpscout-0.16.0.tar.gz
+	b2sums = 5bb3bf390d1bfa036604c413364e1415c7f65c579f42b4c60e8f0bb7a1451d2794dfe98a474a418c2d7d25a98529ca647ada31affcf5462c947bd0be36f6bf31
 
 pkgname = warpscout
