@@ -1,7 +1,7 @@
 # Maintainer: bobrik <an9rax@gmail.com>
 
 pkgname=dota2-minify-rc-bin
-pkgver=1.14rc6
+pkgver=1.14rc7
 pkgrel=1
 pkgdesc="Dota 2 Mod Patcher & Toolkit — prebuilt release candidate binary"
 arch=('x86_64')
@@ -19,7 +19,7 @@ conflicts=('dota2-minify' 'dota2-minify-bin')
 # https://github.com/Egezenn/dota2-minify/releases
 _tag="Minify-v${pkgver}"
 source=("${pkgname}-${pkgver}.zip::https://github.com/Egezenn/dota2-minify/releases/download/${_tag}/Minify-v${pkgver}-linux.zip")
-sha256sums=('76bd93e6213ac62e1f906042066bfe8fbca39e2e13ec7a991ad1d6b178db6232')
+sha256sums=('6b7cc6403d1a6a39850703ee4fbb9d0d651b48d2d3af6de601f23ea3bb1b65c7')
 
 noextract=("${pkgname}-${pkgver}.zip")
 
