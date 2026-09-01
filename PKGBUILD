@@ -1,8 +1,8 @@
 # Maintainer: Gabriel Chamon <gchamon@tuta.io>
 pkgname=archie-cli
 pkgver=0.2.0
-pkgrel=1
-_commit=cb143faf686ad6b10a8faaf414aef6dfd15640b8
+pkgrel=2
+_commit=57b10f2fc7a536ea6d57c1fa21ce79960e150de1
 pkgdesc="Archlinux system operation and maintenance CLI/applet"
 arch=(any)
 url="https://gitlab.com/gabriel.chamon/archie"
@@ -11,6 +11,7 @@ depends=("python>=3.14" sqlite)
 makedepends=(python-installer uv)
 provides=(archie)
 conflicts=(archie archie-cli-nightly)
+replaces=(archie-cli-nightly)
 source=("archie::git+https://gitlab.com/gabriel.chamon/archie.git#commit=${_commit}")
 sha256sums=('SKIP')
 

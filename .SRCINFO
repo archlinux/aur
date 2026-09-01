@@ -1,7 +1,7 @@
 pkgbase = archie-cli
 	pkgdesc = Archlinux system operation and maintenance CLI/applet
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/gabriel.chamon/archie
 	arch = any
 	license = MIT
@@ -12,7 +12,8 @@ pkgbase = archie-cli
 	provides = archie
 	conflicts = archie
 	conflicts = archie-cli-nightly
-	source = archie::git+https://gitlab.com/gabriel.chamon/archie.git#commit=cb143faf686ad6b10a8faaf414aef6dfd15640b8
+	replaces = archie-cli-nightly
+	source = archie::git+https://gitlab.com/gabriel.chamon/archie.git#commit=57b10f2fc7a536ea6d57c1fa21ce79960e150de1
 	sha256sums = SKIP
 
 pkgname = archie-cli
