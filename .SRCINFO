@@ -1,7 +1,7 @@
 pkgbase = lib32-libid3tag
 	pkgdesc = library for id3 tagging, lib32.
 	pkgver = 0.16.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.underbit.com/products/mad/
 	arch = x86_64
 	license = GPL

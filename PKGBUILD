@@ -5,7 +5,7 @@
 pkgname="lib32-libid3tag"
 _pkgname="libid3tag"
 pkgver=0.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc="library for id3 tagging, lib32."
 arch=('x86_64')
 url="https://www.underbit.com/products/mad/"
@@ -23,6 +23,7 @@ build() {
   cmake -B build -S $_pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib32 \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -W no-dev
   cmake --build build
 }
