@@ -6,9 +6,9 @@ Bluetooth (iPhone messages and notifications) needs one-time system setup.
 tether-btclass@.service is installed but NOT enabled. Enabling it changes how
 this machine presents itself over Bluetooth, so that is your call to make.
 
-Notification mirroring also needs a bluetooth.service drop-in, shipped at
-/usr/share/tether/bluetooth-experimental.conf and likewise not applied for you.
-Apply it BEFORE pairing an iPhone: a bond made without it has no LE half.
+Notification mirroring also needs a bluetooth.service drop-in, likewise not
+applied for you. Apply it BEFORE pairing an iPhone: a bond made without it has
+no LE half.
 
 To see exactly what is left, and the commands to run:
 
