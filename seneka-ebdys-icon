@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly pkgname='seneka-ebdys-maltepe'
+readonly data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+readonly prefix="${SENEKA_WINEPREFIX:-$data_home/wineprefixes/$pkgname}"
+readonly icon_dir="$data_home/icons/hicolor/48x48/apps"
+readonly icon_path="$icon_dir/$pkgname.png"
+
+exe="$(find "$prefix/drive_c/users" -path '*Apps/2.0*' -type f \
+  -iname 'Seneka.Ebdys.Client.Host.exe' -print -quit 2>/dev/null || true)"
+[[ -n "$exe" ]] || exit 0
+
+if [[ -f "$icon_path" && "$icon_path" -nt "$exe" ]]; then
+  exit 0
+fi
+
+tmp_dir="$(mktemp -d --tmpdir "${pkgname}.icon.XXXXXX")"
+trap 'rm -rf "$tmp_dir"' EXIT
+
+wrestool -x -t 14 "$exe" >"$tmp_dir/seneka.ico" 2>/dev/null
+icotool -x -w 48 -h 48 -o "$tmp_dir" "$tmp_dir/seneka.ico" 2>/dev/null
+png="$(find "$tmp_dir" -maxdepth 1 -type f -name '*.png' -print -quit)"
+[[ -n "$png" ]] || exit 0
+
+install -Dm644 "$png" "$icon_path"
+if command -v gtk-update-icon-cache >/dev/null; then
+  gtk-update-icon-cache -q "$data_home/icons/hicolor" 2>/dev/null || true
+fi

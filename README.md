@@ -22,3 +22,7 @@ Runtime data is kept under:
 
 - `${XDG_DATA_HOME:-~/.local/share}/wineprefixes/seneka-ebdys-maltepe`
 - `${XDG_STATE_HOME:-~/.local/state}/seneka-ebdys-maltepe`
+
+After ClickOnce installation, the original application icon is extracted from
+the locally downloaded Seneka executable. The proprietary icon is not
+redistributed in this package.

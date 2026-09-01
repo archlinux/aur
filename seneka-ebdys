@@ -29,4 +29,6 @@ fi
 export WINEPREFIX="$prefix"
 export WINEDEBUG="${WINEDEBUG:--all}"
 
+seneka-ebdys-icon || true
+
 exec wine start /unix "$appref"
