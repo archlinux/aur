@@ -1,6 +1,6 @@
 # Maintainer: BBJ <bbj@bbj.dev>
 pkgname=kimi-cli-bin
-pkgver=1.49.0
+pkgver=1.50.0
 pkgrel=1
 pkgdesc="Kimi Code CLI - AI coding agent (precompiled binary)"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/MoonshotA
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/MoonshotAI/kimi-cli/releases/download/${pkgver}/kimi-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 
 sha256sums=('58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd')
-sha256sums_x86_64=('6ce0b83f583c45a64cc9f51ffe7e1a8e03ee79acda69945fcf8c23341b9d892f')
-sha256sums_aarch64=('5ac54cabce16ede27b9d2069b9b88edee25528646e7bb5befa9980a1ca71febb')
+sha256sums_x86_64=('10ccaa26ee7f5bb43f7c05baf808c11cd0160710b07ac422382d1d1923f3dab6')
+sha256sums_aarch64=('de235322f48abe63e7a8d737f39f0c00fecf724f1dfaa1ae02491bb773ae8070')
 
 package() {
   install -Dm755 kimi "${pkgdir}/usr/bin/kimi"
