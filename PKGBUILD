@@ -3,7 +3,7 @@
 # Contributor: Davi da Silva Böger <dsboger at gmail dot com>
 pkgname=tilix-git
 pkgver=1.9.6.r72.g46b6a7c
-pkgrel=2
+pkgrel=3
 pkgdesc="A tiling terminal emulator for Linux using GTK+ 3"
 arch=('x86_64')
 url="https://gnunn1.github.io/tilix-web"
@@ -47,8 +47,7 @@ build() {
 
   # Build with LDC
   export DC=ldc
-  # export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto=auto//')"
-  export LDFLAGS=""
+  export LDFLAGS="$(echo -ne $LDFLAGS | sed -e 's/-flto=auto//;s/-Wl,-z,/-L=-z/;s/-Wl,/-L=/g')"
   export DFLAGS="--flto=full --allinst"
 
   arch-meson "${pkgname%-git}" build
