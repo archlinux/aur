@@ -7,6 +7,8 @@ pkgdesc="A lightweight, elegant keystroke visualizer for Wayland compositors"
 arch=('x86_64' 'aarch64')
 url="https://github.com/justanoobcoder/wayshadow"
 license=('MIT')
+provides=("$_pkgname")
+conflicts=("$_pkgname" "$_pkgname-bin")
 depends=(
     'wayland'
     'cairo'
@@ -23,9 +25,9 @@ makedepends=(
     'make'
     'git'
 )
+options=(!debug !strip)
 source=("git+${url}.git")
 sha256sums=('SKIP')
-options=(!debug)
 
 pkgver() {
     cd "$_pkgname"

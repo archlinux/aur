@@ -18,7 +18,11 @@ pkgbase = wayshadow-git
 	depends = libxkbcommon
 	depends = gtk3
 	depends = libappindicator
+	provides = wayshadow
+	conflicts = wayshadow
+	conflicts = wayshadow-bin
 	options = !debug
+	options = !strip
 	source = git+https://github.com/justanoobcoder/wayshadow.git
 	sha256sums = SKIP
 
