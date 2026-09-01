@@ -28,6 +28,7 @@ build() {
                --libdir=/usr/lib32 \
                --disable-python
    make
+  make -j$(nproc)
 }
 
 package() {
