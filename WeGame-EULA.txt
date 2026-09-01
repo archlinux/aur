@@ -1,0 +1,13 @@
+Tencent WeGame upstream license notice
+
+The Tencent WeGame installer, client, online services, names, and marks are not
+licensed under this project's 0BSD license. They remain subject to Tencent's
+applicable agreements and policies.
+
+Review the current agreement before downloading, installing, or running WeGame:
+https://www.wegame.com.cn/contract/
+
+This package downloads the unmodified installer from Tencent. Neither the
+GitHub source repository nor the AUR Git repository redistributes that
+installer. This project is unofficial and is not affiliated with, endorsed by,
+or supported by Tencent.

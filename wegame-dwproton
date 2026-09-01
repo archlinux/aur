@@ -1,0 +1,409 @@
+#!/usr/bin/bash
+# SPDX-FileCopyrightText: 2026 ParticleG
+# SPDX-License-Identifier: 0BSD
+# shellcheck disable=SC2218 # ShellCheck 0.11 misorders calls to functions defined above.
+
+set -euo pipefail
+
+readonly APP_ID='wegame-dwproton'
+readonly PACKAGE_VERSION='7.06.27.1446'
+readonly DEFAULT_PROTON='/usr/share/steam/compatibilitytools.d/dwproton/proton'
+
+share_dir="${WEGAME_DWPROTON_SHARE_DIR:-/usr/share/${APP_ID}}"
+proton="${WEGAME_DWPROTON_PROTON:-$DEFAULT_PROTON}"
+data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+state_home="${XDG_STATE_HOME:-$HOME/.local/state}"
+cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
+
+readonly data_dir="$data_home/$APP_ID"
+readonly state_dir="$state_home/$APP_ID"
+readonly cache_dir="$cache_home/$APP_ID"
+readonly compat_data="$data_dir/compatdata"
+readonly prefix="$compat_data/pfx"
+readonly steam_root="$data_dir/steam"
+readonly installer="$share_dir/WeGameMiniLoader.exe"
+readonly install_dir="$prefix/drive_c/Program Files (x86)/WeGame"
+readonly client="$install_dir/wegame.exe"
+readonly update_status="$install_dir/update.tmp"
+readonly update_payload="$install_dir/wegame_update"
+readonly backup_root="$state_dir/update-backups"
+
+log() {
+    printf '%s: %s\n' "$APP_ID" "$*"
+}
+
+notify_error() {
+    if [[ ! -t 2 ]] && command -v notify-send >/dev/null 2>&1; then
+        notify-send --urgency=critical 'WeGame (DWProton)' "$1" >/dev/null 2>&1 || true
+    fi
+}
+
+die() {
+    printf '%s: error: %s\n' "$APP_ID" "$*" >&2
+    notify_error "$*"
+    exit 1
+}
+
+usage() {
+    cat <<'EOF'
+Usage: wegame-dwproton [OPTION]
+
+Run the official Tencent WeGame client in an isolated DWProton prefix.
+
+Options:
+  --install          Run the official installer when WeGame is not installed
+  --recover-update   Apply only the confirmed update failure state
+  --stop             Stop processes in this package's Wine prefix
+  --print-prefix     Print the Wine prefix path
+  --version          Print the package version
+  -h, --help         Show this help
+
+Environment overrides:
+  WEGAME_DWPROTON_PROTON     DWProton executable
+  WEGAME_DWPROTON_SHARE_DIR  Directory containing WeGameMiniLoader.exe
+EOF
+}
+
+path_is_within() {
+    local path root resolved_path resolved_root
+    path=$1
+    root=$2
+    resolved_path=$(realpath -m -- "$path")
+    resolved_root=$(realpath -m -- "$root")
+    [[ "$resolved_path" == "$resolved_root" || "$resolved_path" == "$resolved_root/"* ]]
+}
+
+prefix_is_active() {
+    local environment variable
+
+    for environment in /proc/[0-9]*/environ; do
+        [[ -r "$environment" ]] || continue
+        while IFS= read -r -d '' variable; do
+            if [[ "$variable" == "STEAM_COMPAT_DATA_PATH=$compat_data" ||
+                  "$variable" == "WINEPREFIX=$prefix" ]]; then
+                return 0
+            fi
+        done < <(cat -- "$environment" 2>/dev/null)
+    done
+
+    return 1
+}
+
+classify_update() {
+    local line overwrite_status='' tick_move_file=''
+
+    if [[ ! -e "$update_status" && ! -e "$update_payload" ]]; then
+        return 1
+    fi
+
+    if [[ ! -f "$update_status" || -L "$update_status" ||
+          ! -d "$update_payload" || -L "$update_payload" ]]; then
+        return 2
+    fi
+
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        line=${line%$'\r'}
+        case "$line" in
+            OverwriteStatus=*)
+                if [[ -n "$overwrite_status" && "$overwrite_status" != "${line#OverwriteStatus=}" ]]; then
+                    return 2
+                fi
+                overwrite_status=${line#OverwriteStatus=}
+                ;;
+            TickMoveFile=*)
+                if [[ -n "$tick_move_file" && "$tick_move_file" != "${line#TickMoveFile=}" ]]; then
+                    return 2
+                fi
+                tick_move_file=${line#TickMoveFile=}
+                ;;
+        esac
+    done < "$update_status"
+
+    [[ "$overwrite_status" == '7299004' && "$tick_move_file" == '-1' ]] || return 2
+    return 0
+}
+
+relative_parent() {
+    local path=$1
+    if [[ "$path" == */* ]]; then
+        printf '%s\n' "${path%/*}"
+    else
+        printf '.\n'
+    fi
+}
+
+rollback_update() {
+    local backup_dir=$1
+    shift
+    local -a applied=("$@")
+    local index relative destination backup temporary
+
+    log 'Update application failed; restoring the original files.' >&2
+    for ((index=${#applied[@]} - 1; index >= 0; index--)); do
+        relative=${applied[index]}
+        destination="$install_dir/$relative"
+        backup="$backup_dir/overwritten/$relative"
+
+        if [[ -f "$backup" ]]; then
+            temporary=$(mktemp --tmpdir="${destination%/*}" '.wegame-dwproton-rollback.XXXXXXXX') || continue
+            if cp --preserve=mode,timestamps -- "$backup" "$temporary"; then
+                mv -f -- "$temporary" "$destination" || true
+            else
+                rm -f -- "$temporary"
+            fi
+        else
+            rm -f -- "$destination"
+        fi
+    done
+}
+
+restore_pending_update() {
+    local backup_dir=$1
+
+    if [[ -d "$backup_dir/wegame_update" && ! -e "$update_payload" ]]; then
+        mv -- "$backup_dir/wegame_update" "$update_payload" || true
+    fi
+    if [[ -f "$backup_dir/update.tmp" && ! -e "$update_status" ]]; then
+        mv -- "$backup_dir/update.tmp" "$update_status" || true
+    fi
+}
+
+recover_update() {
+    local state source relative destination backup destination_parent temporary
+    local backup_dir backup_id
+    local -a source_files=() applied=() overwritten=() created=()
+
+    if classify_update; then
+        state=0
+    else
+        state=$?
+    fi
+
+    case "$state" in
+        1)
+            log 'No pending WeGame update requires recovery.'
+            return 0
+            ;;
+        2)
+            die "Refusing an unknown or incomplete update state in '$install_dir'."
+            ;;
+    esac
+
+    prefix_is_active && die 'Stop WeGame before recovering its update.'
+    path_is_within "$install_dir" "$prefix" || die 'The WeGame directory resolves outside the package prefix.'
+    path_is_within "$update_payload" "$install_dir" || die 'The update payload resolves outside the WeGame directory.'
+    path_is_within "$update_status" "$install_dir" || die 'The update status resolves outside the WeGame directory.'
+    [[ -f "$update_payload/wegame.exe" && ! -L "$update_payload/wegame.exe" ]] ||
+        die 'The confirmed update payload does not contain a regular wegame.exe.'
+
+    shopt -s nullglob dotglob globstar
+    for source in "$update_payload"/**; do
+        [[ "$source" == "$update_payload" ]] && continue
+        [[ ! -L "$source" ]] || die "The update payload contains a symbolic link: '$source'."
+        [[ -d "$source" ]] && continue
+        [[ -f "$source" ]] || die "The update payload contains a non-regular file: '$source'."
+
+        relative=${source#"$update_payload"/}
+        [[ -n "$relative" && "$relative" != "$source" ]] || die 'Could not derive a safe update path.'
+        [[ "$relative" != *$'\n'* && "$relative" != *$'\r'* ]] || die 'The update payload contains an unsupported filename.'
+        destination="$install_dir/$relative"
+        path_is_within "$destination" "$install_dir" || die "The update target escapes the WeGame directory: '$relative'."
+
+        if [[ -e "$destination" || -L "$destination" ]]; then
+            [[ -f "$destination" && ! -L "$destination" ]] ||
+                die "The update would replace a non-regular path: '$relative'."
+            overwritten+=("$relative")
+        else
+            created+=("$relative")
+        fi
+        source_files+=("$relative")
+    done
+    shopt -u nullglob dotglob globstar
+
+    ((${#source_files[@]} > 0)) || die 'The update payload is empty.'
+
+    backup_id="$(date -u +%Y%m%dT%H%M%SZ)-$$"
+    backup_dir="$backup_root/$backup_id"
+    mkdir -p -- "$backup_dir/overwritten"
+
+    for relative in "${overwritten[@]}"; do
+        source="$install_dir/$relative"
+        backup="$backup_dir/overwritten/$relative"
+        mkdir -p -- "${backup%/*}"
+        cp --preserve=mode,timestamps -- "$source" "$backup"
+    done
+
+    printf '%s\n' "${overwritten[@]}" > "$backup_dir/overwritten-files.txt"
+    printf '%s\n' "${created[@]}" > "$backup_dir/created-files.txt"
+
+    if ! mv -- "$update_payload" "$backup_dir/wegame_update"; then
+        die "Could not move the update payload into '$backup_dir'."
+    fi
+    if ! mv -- "$update_status" "$backup_dir/update.tmp"; then
+        mv -- "$backup_dir/wegame_update" "$update_payload" || true
+        die "Could not move the update status into '$backup_dir'."
+    fi
+
+    for relative in "${source_files[@]}"; do
+        source="$backup_dir/wegame_update/$relative"
+        destination="$install_dir/$relative"
+        destination_parent=$(relative_parent "$relative")
+
+        if ! mkdir -p -- "$install_dir/$destination_parent"; then
+            rollback_update "$backup_dir" "${applied[@]}"
+            restore_pending_update "$backup_dir"
+            die "Could not create the update target directory for '$relative'."
+        fi
+        if ! temporary=$(mktemp --tmpdir="${destination%/*}" '.wegame-dwproton-update.XXXXXXXX'); then
+            rollback_update "$backup_dir" "${applied[@]}"
+            restore_pending_update "$backup_dir"
+            die "Could not create a temporary update file for '$relative'."
+        fi
+        if ! cp --preserve=mode,timestamps -- "$source" "$temporary"; then
+            rm -f -- "$temporary"
+            rollback_update "$backup_dir" "${applied[@]}"
+            restore_pending_update "$backup_dir"
+            die "Could not stage the update file '$relative'."
+        fi
+        if ! mv -f -- "$temporary" "$destination"; then
+            rm -f -- "$temporary"
+            rollback_update "$backup_dir" "${applied[@]}"
+            restore_pending_update "$backup_dir"
+            die "Could not install the update file '$relative'."
+        fi
+        applied+=("$relative")
+    done
+
+    log "Recovered the confirmed WeGame update. Backup: $backup_dir"
+}
+
+run_proton() {
+    local target=$1
+    shift
+
+    [[ -x "$proton" ]] || die "DWProton was not found at '$proton'."
+    mkdir -p -- "$compat_data" "$steam_root" "$cache_dir/dxvk"
+
+    env \
+        STEAM_COMPAT_DATA_PATH="$compat_data" \
+        STEAM_COMPAT_CLIENT_INSTALL_PATH="$steam_root" \
+        WINEPREFIX="$prefix" \
+        DXVK_STATE_CACHE_PATH="$cache_dir/dxvk" \
+        SteamAppId=0 \
+        SteamGameId=0 \
+        "$proton" waitforexitandrun "$target" "$@"
+}
+
+install_wegame() {
+    [[ ! -f "$client" ]] || die "WeGame is already installed in '$prefix'."
+    [[ -f "$installer" ]] || die "The official installer is missing at '$installer'."
+
+    log 'Starting the official Tencent installer.'
+    log "Use the default installation directory: C:\\Program Files (x86)\\WeGame"
+    run_proton "$installer"
+
+    [[ -f "$client" ]] ||
+        die "The installer did not create '$client'. Custom installation directories are unsupported."
+
+    if classify_update; then
+        recover_update
+    else
+        case $? in
+            1) ;;
+            2) die "The installer left an unknown or incomplete update state in '$install_dir'." ;;
+        esac
+    fi
+
+    log 'Installation finished. Start WeGame again with wegame-dwproton.'
+}
+
+stop_wegame() {
+    local proton_dir wineserver
+    proton_dir=${proton%/*}
+    wineserver="$proton_dir/files/bin/wineserver"
+
+    [[ -x "$wineserver" ]] || die "DWProton wineserver was not found at '$wineserver'."
+    [[ -d "$prefix" ]] || {
+        log "The prefix does not exist: $prefix"
+        return 0
+    }
+
+    WINEPREFIX="$prefix" "$wineserver" -k
+    log 'Stop request sent to the WeGame prefix.'
+}
+
+launch_wegame() {
+    local state exit_code
+
+    [[ -f "$client" ]] || {
+        install_wegame
+        return
+    }
+
+    if classify_update; then
+        recover_update
+    else
+        state=$?
+        ((state == 1)) || die "Refusing an unknown or incomplete update state in '$install_dir'."
+    fi
+
+    if run_proton "$client"; then
+        exit_code=0
+    else
+        exit_code=$?
+    fi
+
+    if classify_update; then
+        prefix_is_active && die 'WeGame exited while its prefix still has running processes; update recovery was not attempted.'
+        recover_update
+        log 'Restarting WeGame once after the recovered update.'
+        run_proton "$client"
+        return
+    else
+        state=$?
+        ((state == 1)) || die "WeGame left an unknown or incomplete update state in '$install_dir'."
+    fi
+
+    return "$exit_code"
+}
+
+main() {
+    local command=${1:-launch}
+
+    case "$command" in
+        --help|-h)
+            usage
+            return
+            ;;
+        --version)
+            printf '%s %s\n' "$APP_ID" "$PACKAGE_VERSION"
+            return
+            ;;
+        --print-prefix)
+            printf '%s\n' "$prefix"
+            return
+            ;;
+        --stop)
+            stop_wegame
+            return
+            ;;
+        launch|--install|--recover-update)
+            ;;
+        *)
+            usage >&2
+            die "Unknown option: $command"
+            ;;
+    esac
+
+    mkdir -p -- "$state_dir"
+    exec 9> "$state_dir/launcher.lock"
+    flock -n 9 || die 'Another WeGame launcher instance is active.'
+
+    case "$command" in
+        launch) launch_wegame ;;
+        --install) install_wegame ;;
+        --recover-update) recover_update ;;
+    esac
+}
+
+main "$@"

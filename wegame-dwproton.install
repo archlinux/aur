@@ -1,0 +1,25 @@
+post_install() {
+  cat <<'EOF'
+wegame-dwproton is an unofficial, unsupported compatibility integration.
+Review Tencent's current WeGame agreement before use:
+  https://www.wegame.com.cn/contract/
+
+Run "wegame-dwproton" to start the official installer. Keep its default path.
+The per-user prefix is stored under:
+  ${XDG_DATA_HOME:-$HOME/.local/share}/wegame-dwproton/compatdata/pfx
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  cat <<'EOF'
+The per-user WeGame prefix and update backups were not removed.
+Remove them manually after confirming that no data is needed:
+  rm -rf -- "${XDG_DATA_HOME:-$HOME/.local/share}/wegame-dwproton"
+  rm -rf -- "${XDG_STATE_HOME:-$HOME/.local/state}/wegame-dwproton"
+  rm -rf -- "${XDG_CACHE_HOME:-$HOME/.cache}/wegame-dwproton"
+EOF
+}

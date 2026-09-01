@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Tencent WeGame (DWProton)
+Comment=Run the official Tencent WeGame client with DWProton
+Exec=wegame-dwproton
+Icon=wegame-dwproton
+Categories=Game;
+Terminal=false
+StartupNotify=true
