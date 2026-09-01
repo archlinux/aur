@@ -1,7 +1,7 @@
 pkgbase = riftlauncher-bin
-	pkgdesc = Launcher for Vintage Story by the Stratum Server Devs
+	pkgdesc = Vintage Story launcher by the Stratum Server Devs
 	pkgver = 1.7.0_beta.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/StratumServer/RiftLauncher
 	arch = x86_64
 	license = MIT
