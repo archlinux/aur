@@ -2,3 +2,5 @@
 /src/
 *.pkg.tar.zst
 *.log
+*.tar.asc
+*.tar.gz
