@@ -1,0 +1,25 @@
+pkgbase = python-ckdl-git
+	pkgdesc = Python bindings for ckdl, a KDL document language parser written in C (git version)
+	pkgver = 1.0.r11.gc9c33fe
+	pkgrel = 1
+	url = https://github.com/tjol/ckdl
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = cython
+	makedepends = ninja
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-scikit-build
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = glibc
+	provides = python-ckdl=1.0.r11.gc9c33fe
+	conflicts = python-ckdl
+	source = ckdl::git+https://github.com/tjol/ckdl.git
+	md5sums = SKIP
+
+pkgname = python-ckdl-git
