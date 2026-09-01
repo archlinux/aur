@@ -1,16 +1,16 @@
 pkgbase = notesmd-cli-bin
 	pkgdesc = Interact with Obsidian vaults from the terminal. Open, search, create, update and move notes!
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/Yakitrak/notesmd-cli
 	license = MIT
 	conflicts = notesmd-cli
 	provides = notesmd-cli
 	arch = aarch64
-	source_aarch64 = https://github.com/Yakitrak/notesmd-cli/releases/download/v0.3.6/notesmd-cli_0.3.6_linux_arm64.tar.gz
-	sha256sums_aarch64 = 2a7d662816859a1b8f0ad25ebaadeafd7e284b0173b85ec547cb6c7b18603366
+	source_aarch64 = https://github.com/Yakitrak/notesmd-cli/releases/download/v0.3.7/notesmd-cli_0.3.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3867ab60156ffd9fd938981e55f8fcbccdf5837ed518b640059a42c0e2f39ab4
 	arch = x86_64
-	source_x86_64 = https://github.com/Yakitrak/notesmd-cli/releases/download/v0.3.6/notesmd-cli_0.3.6_linux_amd64.tar.gz
-	sha256sums_x86_64 = e9c484adca59d46365d27a52a6a2e82f2c50b932457bef86e4972c73ccc209c2
+	source_x86_64 = https://github.com/Yakitrak/notesmd-cli/releases/download/v0.3.7/notesmd-cli_0.3.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = f7e8f21b42f494d3c1af5d4f4f3b917922354289e4f5fddb7345c0750b3a9017
 	
 pkgname = notesmd-cli-bin
