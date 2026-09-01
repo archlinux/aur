@@ -1,6 +1,6 @@
 pkgbase = helios-bin
 	pkgdesc = Game stream host for Selene and Moonlight OS (prebuilt)
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/moonlight-os/helios
 	install = helios.install
@@ -40,7 +40,7 @@ pkgbase = helios-bin
 	provides = helios
 	conflicts = helios
 	conflicts = helios-git
-	source = helios-0.6.0-1-x86_64.pkg.tar.zst::https://github.com/moonlight-os/helios/releases/download/v0.6.0/helios-0.6.0-1-x86_64.pkg.tar.zst
-	sha256sums = 4b84d7e7b89e6702d3f11629439416d4442269a923a0b5f9bf798fa148990a22
+	source = helios-0.6.1-1-x86_64.pkg.tar.zst::https://github.com/moonlight-os/helios/releases/download/v0.6.1/helios-0.6.1-1-x86_64.pkg.tar.zst
+	sha256sums = 3a7cbcf4eef8230aa210da381962838104e7ac2199b1266737aec3ecdbc8271d
 
 pkgname = helios-bin

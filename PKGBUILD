@@ -1,7 +1,7 @@
 # Maintainer: Margot Prego <mopigames@proton.me>
 
 pkgname=helios-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Game stream host for Selene and Moonlight OS (prebuilt)'
 arch=('x86_64')
@@ -23,8 +23,8 @@ optdepends=(
 provides=('helios')
 conflicts=('helios' 'helios-git')
 
-source=("helios-${pkgver}-1-${CARCH}.pkg.tar.zst::https://github.com/moonlight-os/helios/releases/download/v0.6.0/helios-${pkgver}-1-${CARCH}.pkg.tar.zst")
-sha256sums=('4b84d7e7b89e6702d3f11629439416d4442269a923a0b5f9bf798fa148990a22')
+source=("helios-${pkgver}-1-${CARCH}.pkg.tar.zst::https://github.com/moonlight-os/helios/releases/download/v0.6.1/helios-${pkgver}-1-${CARCH}.pkg.tar.zst")
+sha256sums=('3a7cbcf4eef8230aa210da381962838104e7ac2199b1266737aec3ecdbc8271d')
 
 package() {
   cp -a usr "$pkgdir/"
