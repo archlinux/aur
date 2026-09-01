@@ -22,6 +22,7 @@ PKGVER=$(echo "${REALVER}" | sed 's/-R/\.r/g')
 
 sed -i "s/^_realver=.*/_realver=\"${REALVER}\"/" PKGBUILD
 sed -i "s/^pkgver=.*/pkgver=${PKGVER}/" PKGBUILD
+sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
 if [[ -f muse.sh ]]; then
   SHA256_WRAPPER=$(sha256sum muse.sh | cut -d' ' -f1)
   sed -i "s/^sha256sums=.*/sha256sums=('${SHA256_WRAPPER}')/" PKGBUILD
