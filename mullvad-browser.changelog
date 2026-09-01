@@ -1,3 +1,11 @@
+Mullvad Browser 15.0.21 - September 01 2026
+ * All Platforms
+   * Updated Firefox to 140.15.0esr
+   * Updated NoScript to 13.6.32.1984
+   * Updated uBlock Origin to 1.74.0
+   * Bug 572: Websites can initiate a WebSocket connection to a lan/localhost port [mullvad-browser]
+   * Bug 45259: Backport Security Fixes from Firefox 155 [tor-browser]
+
 Mullvad Browser 15.0.20 - August 18 2026
  * All Platforms
    * Updated Firefox to 140.14.0esr
