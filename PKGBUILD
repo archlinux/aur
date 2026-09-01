@@ -5,7 +5,7 @@ _pkgname=dstimer
 pkgname=${_pkgname}-bin
 pkgdesc="The timer for CLI people"
 
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,10 +24,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}")
-sha256sums=('bca23af9637450882e1b3a89ab2b1992228a09688538fd78a5fbdddb03ca3980'
+sha256sums=('b61182967914c7dc84c76e90787b4300e277dfe5f79f313c1db70bcf77de9028'
             '43566c19ad25d5bad45a8e7f219f6accf95c0f4431774825c641d6494daef61e')
-sha256sums_x86_64=('589e9cc0ffd82293c152d82f71265247e34fa16753769d47ed6b5e290b1bf66e')
-sha256sums_aarch64=('3eb493d9e7d7a849c2e253188601488602a30e03056b8c254aa73ae3b564aea8')
+sha256sums_x86_64=('9e68e09e9c107cb8ecd9d43bb1f124682bb84211bbf974f927ebd72c2dd19325')
+sha256sums_aarch64=('1a014e21a0da8d79a0c0be1279839e342021fba47c8da366d508250337cc8a42')
 
 
 package() {
