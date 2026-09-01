@@ -3,9 +3,12 @@ pkgname=mailspring-bin
 _pkgname=Mailspring
 pkgver=1.23.0
 _electronversion=41
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, fast and fully open source mail client.(Prebuilt version.Use system-wide electron)"
-arch=('x86_64')
+arch=(
+    'aarch64'
+    'x86_64'
+)
 url="https://getmailspring.com/"
 _ghurl="https://github.com/Foundry376/Mailspring"
 license=('GPL-3.0-only')
@@ -17,12 +20,12 @@ depends=(
     'db5.3'
     'tidy'
 )
-source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.${CARCH}.rpm"
-    "${pkgname%-bin}.sh"
-)
-sha256sums=('b99be331fb4144b7556edb8e11cd854464cd3e8f3716527171da7c3c8fbb16ba'
-            'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+source=("${pkgname%-bin}.sh")
+source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.aarch64.rpm")
+source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.x86_64.rpm")
+sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
+sha256sums_aarch64=('f5241eb2064537c5e177ef2b56fe3ba909ec1312ea7f7717d027c142aa084bcc')
+sha256sums_x86_64=('b99be331fb4144b7556edb8e11cd854464cd3e8f3716527171da7c3c8fbb16ba')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -66,7 +69,7 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
 	local _app_dir=$(_get_app_dir)
 	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname%-bin}/"
-    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    install -Dm644 "${srcdir}/usr/share/applications/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     find "${srcdir}" -type f \( -name "*.png" -o -name "*.svg" \) -path "*share/icons/*" | while read -r _i; do
         _extension="${_i##*.}"
         _icon_path="${_i#*share/icons/}"
