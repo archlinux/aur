@@ -1,21 +1,21 @@
 pkgbase = pattn
 	pkgdesc = A GUI client for Windows, Linux and macOS, support Xray and sing-box and others
-	pkgver = 7.24.9.P10
+	pkgver = 7.24.9.P11
 	pkgrel = 1
 	url = https://github.com/patterniha/PattN
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-sdk=10.0
 	makedepends = gendesk
 	makedepends = git
 	depends = bash
-	depends = dotnet-runtime-10.0
+	depends = dotnet-runtime=10.0
 	depends = fontconfig
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
 	depends = xray
-	source = git+https://github.com/patterniha/PattN#tag=7.24.9-P10
+	source = git+https://github.com/patterniha/PattN#tag=7.24.9-P11
 	source = git+https://github.com/2dust/GlobalHotKeys.git
 	source = https://github.com/MetaCubeX/meta-rules-dat/releases/latest/download/geoip.metadb
 	source = https://github.com/Loyalsoldier/geoip/releases/latest/download/Country.mmdb
@@ -40,7 +40,7 @@ pkgbase = pattn
 	source = https://github.com/Chocolate4U/Iran-sing-box-rules/raw/rule-set/geoip-ir.srs
 	source = https://github.com/Chocolate4U/Iran-sing-box-rules/raw/rule-set/geosite-ir.srs
 	source = pattn.sh
-	sha256sums = afc60ed6eb7999006f73bb1c41d83957823d045d6a0b56ee7e05149eabf99a43
+	sha256sums = e7ff66640568550358e0d030b7cc6cd0d52e27709423be86c91fe7467b5241e4
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

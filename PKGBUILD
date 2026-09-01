@@ -2,14 +2,14 @@
 
 pkgname=pattn
 _name=PattN
-pkgver=7.24.9.P10
+pkgver=7.24.9.P11
 pkgrel=1
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
 arch=('x86_64')
 url="https://github.com/patterniha/PattN"
 license=('GPL-3.0-only')
-depends=('bash' 'dotnet-runtime-10.0' 'fontconfig' 'glibc' 'libgcc' 'libstdc++' 'xray')
-makedepends=('dotnet-sdk-10.0' 'gendesk' 'git')
+depends=('bash' 'dotnet-runtime=10.0' 'fontconfig' 'glibc' 'libgcc' 'libstdc++' 'xray')
+makedepends=('dotnet-sdk=10.0' 'gendesk' 'git')
 source=("git+${url}#tag=${pkgver//.P/-P}"
         "git+https://github.com/2dust/GlobalHotKeys.git"
         "https://github.com/MetaCubeX/meta-rules-dat/releases/latest/download/geoip.metadb"
@@ -35,7 +35,7 @@ source=("git+${url}#tag=${pkgver//.P/-P}"
         "https://github.com/Chocolate4U/Iran-sing-box-rules/raw/rule-set/geoip-ir.srs"
         "https://github.com/Chocolate4U/Iran-sing-box-rules/raw/rule-set/geosite-ir.srs"
         "${pkgname}.sh")
-sha256sums=('afc60ed6eb7999006f73bb1c41d83957823d045d6a0b56ee7e05149eabf99a43'
+sha256sums=('e7ff66640568550358e0d030b7cc6cd0d52e27709423be86c91fe7467b5241e4'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -91,8 +91,8 @@ build() {
 
 package() {
     cd "${_name}/v2rayN"
-    install -d "${pkgdir}/usr/lib/${_name}/bin/srss"
-    cp -r build/* "${pkgdir}/usr/lib/${_name}"
+    install -d "${pkgdir}/usr/lib"
+    cp -r build "${pkgdir}/usr/lib/${_name}"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 v2rayN.Desktop/v2rayN.png "${pkgdir}/usr/share/pixmaps/${_name}.png"
@@ -102,6 +102,6 @@ package() {
     ln -s /usr/bin/xray -t "${pkgdir}/usr/lib/${_name}/bin/xray"
 
     # Install geofiles
-    cp "${srcdir}/"*.{dat,metadb,mmdb} "${pkgdir}/usr/lib/${_name}/bin"
-    cp "${srcdir}/"*.srs "${pkgdir}/usr/lib/${_name}/bin/srss"
+    install -Dm644 "${srcdir}/"*.{dat,metadb,mmdb} -t "${pkgdir}/usr/lib/${_name}/bin"
+    install -Dm644 "${srcdir}/"*.srs -t "${pkgdir}/usr/lib/${_name}/bin/srss"
 }

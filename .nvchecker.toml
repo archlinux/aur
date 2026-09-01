@@ -1,6 +1,5 @@
 [pattn]
-source = "github"
-github = "patterniha/PattN"
-use_max_tag = true
+source = "git"
+git = "https://github.com/patterniha/PattN.git"
 from_pattern = "-"
 to_pattern = "."
