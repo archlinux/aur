@@ -1,9 +1,12 @@
-pkgname=influxdb-cxx
+_pkgname=influxdb-cxx
+pkgname="$_pkgname"
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ client library for InfluxDB 1.x/2.x"
-url=https://github.com/offa/influxdb-cxx
+url="https://github.com/offa/$_pkgname"
 arch=(x86_64)
+
+conflicts=($_pkgname-git $_pkgname-git-debug)
 
 depends=(curl boost-libs cpr)
 makedepends=(cmake boost)

@@ -1,7 +1,7 @@
 pkgbase = influxdb-cxx
 	pkgdesc = C++ client library for InfluxDB 1.x/2.x
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/offa/influxdb-cxx
 	arch = x86_64
 	makedepends = cmake
@@ -9,6 +9,8 @@ pkgbase = influxdb-cxx
 	depends = curl
 	depends = boost-libs
 	depends = cpr
+	conflicts = influxdb-cxx-git
+	conflicts = influxdb-cxx-git-debug
 	options = staticlibs
 	source = influxdb-cxx-0.8.1.tar.gz::https://github.com/offa/influxdb-cxx/archive/refs/tags/v0.8.1.tar.gz
 	sha512sums = bd21c67988fe3ffddcfe11c26c2d23954702a542f138751e78d027d98f980c5c8e969776a1697d6104a704c0dddf63130b9c1f9c9df6e8e6bcb27bf9f8303218
