@@ -80,7 +80,8 @@ package_xrizer-git() {
   depends=(
     "xrizer-common"
     "glibc"
-    "gcc-libs"
+    "libgcc"
+    "libstdc++"
   )
   provides=("xrizer")
   conflicts=("xrizer")
