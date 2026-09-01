@@ -1,6 +1,6 @@
 pkgbase = tokyo-notes-git
 	pkgdesc = A minimal GTK4 Markdown note-taking app
-	pkgver = r226.g1c298bd
+	pkgver = r228.g5d18025
 	pkgrel = 1
 	url = https://github.com/tanay1337/tokyo-notes
 	arch = any
