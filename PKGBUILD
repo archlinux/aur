@@ -25,7 +25,7 @@ build() {
 
   cmake -S . -B build -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_SHARED_LIBS=ON -DBUILD_GSTREAMER=ON
   cmake --build build
-  python -m build --wheel --no-isolation
+  python -m build --wheel --no-isolation -Cinstall.strip=false
 }
 
 package_pocketsphinx() {
