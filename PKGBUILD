@@ -5,7 +5,7 @@
 _pkgname=mfem
 pkgname=${_pkgname}-palace
 pkgver=4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, general, scalable C++ library for finite element methods - With Palace EM Solver patches"
 arch=(x86_64)
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -77,7 +77,7 @@ prepare() {
 
   # Patch 5: "Methods for extracting boundary edge DOFs from a 3D ParMesh and for synchronizing boundary conditions across processor boundaries"
   # https://github.com/mfem/mfem/pull/4983
-  # patch -Np1 < ../"0005-mfem_pr4983.diff"
+  patch -Np1 < ../"0005-mfem_pr4983.diff"
 
   # Patch 6: "Create node-local DataCollection output folders"
   # https://github.com/mfem/mfem/pull/5415

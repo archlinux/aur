@@ -1,7 +1,7 @@
 pkgbase = mfem-palace
 	pkgdesc = Lightweight, general, scalable C++ library for finite element methods - With Palace EM Solver patches
 	pkgver = 4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mfem/mfem
 	arch = x86_64
 	license = BSD-3-Clause
