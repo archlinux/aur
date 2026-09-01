@@ -1,7 +1,7 @@
 pkgbase = api-fox-bin
 	pkgdesc = Apifox API documentation, debugging, mocking, and automated testing tool
 	pkgver = 2.8.45
-	pkgrel = 2
+	pkgrel = 3
 	url = https://apifox.com
 	arch = x86_64
 	arch = aarch64
@@ -42,13 +42,13 @@ pkgbase = api-fox-bin
 	conflicts = apifox
 	conflicts = apifox-bin
 	conflicts = apifox-appimage
-	noextract = apifox-2.8.45-2-x86_64.zip
-	noextract = apifox-2.8.45-2-aarch64.zip
+	noextract = apifox-2.8.45-3-x86_64.zip
+	noextract = apifox-2.8.45-3-aarch64.zip
 	options = !debug
 	options = !strip
-	source_x86_64 = apifox-2.8.45-2-x86_64.zip::https://file-assets.apifox.com/download/Apifox-linux-deb-latest.zip?version=2.8.45
+	source_x86_64 = apifox-2.8.45-3-x86_64.zip::https://file-assets.apifox.com/download/Apifox-linux-deb-latest.zip?version=2.8.45
 	sha256sums_x86_64 = 9815d5b280b444ae3c7982dea7b4286f0b9f74d12a0c8bb8d07adeda5243711a
-	source_aarch64 = apifox-2.8.45-2-aarch64.zip::https://file-assets.apifox.com/download/Apifox-linux-arm64-deb-latest.zip?version=2.8.45
+	source_aarch64 = apifox-2.8.45-3-aarch64.zip::https://file-assets.apifox.com/download/Apifox-linux-arm64-deb-latest.zip?version=2.8.45
 	sha256sums_aarch64 = a13f521de4465e4611bc230f22b50892f687484e4fb0e663a79723eccadaf9c2
 
 pkgname = api-fox-bin

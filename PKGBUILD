@@ -3,7 +3,7 @@
 
 pkgname=api-fox-bin
 pkgver=2.8.45
-pkgrel=2
+pkgrel=3
 pkgdesc="Apifox API documentation, debugging, mocking, and automated testing tool"
 arch=('x86_64' 'aarch64')
 url="https://apifox.com"
