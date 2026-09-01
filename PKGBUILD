@@ -1,7 +1,7 @@
 # Maintainer: Pavel Olizko <contact@nolight.dev>
 
 pkgname=sonora
-pkgver=0.27.0
+pkgver=0.28.0
 pkgrel=1
 pkgdesc='A native music streaming client, built with Rust and GPUI'
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,9 @@ optdepends=('vulkan-radeon: Vulkan driver for AMD GPUs'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-x86_64-unknown-linux-gnu")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-aarch64-unknown-linux-gnu")
-sha256sums=('53a8abf79647e4d907fbf7c61796bfb919a947efb061148587b7c93f5c658f40')
-sha256sums_x86_64=('a088730e936c23bc5f40da31b769f1c38462a382bdf957276586493dc8007f57')
-sha256sums_aarch64=('c5dad9bace6d79f1e2b4d024a6af89ca74c17998d6c48c42f08fc8b54967d982')
+sha256sums=('ab0b2c9e2294f68bfd49fa8592a768b2c6c591950ed174f12043c5389554e6e6')
+sha256sums_x86_64=('73e47a99c18210506feefd7a99d82df8eb3900e24aee41f0a0a7be1ce76dfc66')
+sha256sums_aarch64=('68e38d569ee8ba484376ece3036c4ba2b73f34db6c877ba652e8bfe20ae99f0a')
 
 package() {
   cd "${pkgname}-${pkgver}"
@@ -40,5 +40,12 @@ package() {
   install -Dm644 assets/fonts/LICENSE.txt \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.Inter"
   install -Dm644 assets/icons/LICENSE \
-    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.Lucide"
+    "${pkgdir}/usr/share/licenses/${pkgname}/icons/LICENSE"
+
+  for licence in assets/icons/*/LICENSE; do
+    local pack
+    pack=$(basename "$(dirname "${licence}")")
+    install -Dm644 "${licence}" \
+      "${pkgdir}/usr/share/licenses/${pkgname}/icons/LICENSE.${pack}"
+  done
 }
