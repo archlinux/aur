@@ -1,0 +1,21 @@
+pkgbase = tone3000-bin
+	pkgdesc = Standalone and audio plug-ins for playing Neural Amp Modeler captures and impulse responses
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/tone-3000/tone3000-plugin
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = curl
+	depends = fontconfig
+	depends = freetype2
+	depends = gtk3
+	depends = libx11
+	depends = webkit2gtk-4.1
+	provides = tone3000-clap
+	provides = tone3000-lv2
+	provides = tone3000-vst3
+	source = tone3000-bin-0.0.2-linux-x64.zip::https://github.com/tone-3000/tone3000-plugin/releases/download/v0.0.2/TONE3000-v0.0.2-linux-x64.zip
+	sha256sums = fade5434e78a0cfefeb7b13987cd549e169f7c1caf0584eebc1ce1497dac636d
+
+pkgname = tone3000-bin
