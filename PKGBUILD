@@ -1,7 +1,7 @@
 # Maintainer: Simone Camito <zibo.camito@gmail.com>
 
 pkgname=ashell
-pkgver=0.9.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A ready to go Wayland status bar for Hyprland and Niri"
 url="https://github.com/MalpenZibo/${pkgname}"
@@ -21,10 +21,19 @@ depends=(
   "libpipewire"
   "libpulse"
 )
+optdepends=(
+  "cava: audio visualizer in the media player module"
+)
 arch=("x86_64")
 options=(!lto)
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('5b7b921523facaf7b4dfcdc74afbff58747be1850fa585eb8d17532c740281f6178f87e00dcfce921a9db40ab75053037eb3cbe6701cf4fce46032eb89ab6008')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
+  "${pkgname}.service"
+)
+sha512sums=(
+  '629a08d0017d5fffd2866eab863cdd93b160cd5695d859b77fc160b5ca4892bf3558c94ea2051797127d53473b4006508da67f5481fb663c42b42eecff1d1807'
+  'd66d30f7ce7d3d8b8c0fbba35f1d6723abaa881b6a91a335b18d557ee1eb6f6d56abc40de3c7dc08af4385b2d99e7068f4acecb40e579ff355d18352a0c051a1'
+)
 
 prepare() {
   cd "${pkgname}-${pkgver}"
@@ -46,4 +55,7 @@ package() {
 
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -Dm644 "${srcdir}/${pkgname}.service" \
+    "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 }
