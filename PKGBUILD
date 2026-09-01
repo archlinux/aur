@@ -1,8 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=actual-bin
 _pkgname=Actual
-pkgver=26.8.1
-_electronversion=41
+_debname="com.${pkgname%-bin}budget.${pkgname%-bin}"
+pkgver=26.9.0
+_electronversion=43
 pkgrel=1
 pkgdesc="A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -28,8 +29,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64.AppImage")
 sha256sums=('71e4b3053e4622e1f5fc5d8aa5336350de32ead39247924c596d659b89b47b6f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('77843187fadde2b68e0682a3991db0512c4e2dfb0c1e71de2fb9929694603934')
-sha256sums_x86_64=('7c6998c8420c163eabe0985ad01309476849d9c2a3a3d0c7c87658ef6ce3ace6')
+sha256sums_aarch64=('5375f889ec614665f54a029fa8c7537e511d90a67398fb6e0c3ec8b0b66c86d3')
+sha256sums_x86_64=('fb3e5dbe756bfa614be3d0714c182ac9af977d77749d105535f7068aeeb38171')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -76,6 +77,7 @@ prepare() {
             ;;
     esac
     find "${_app_dir}/resources" -type d -exec chmod 755 {} +
+    sed -i "s/${_debname}/${pkgname%-bin}/g" "${_app_dir}/resources/extra-resources/linux/${_debname}.metainfo.xml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
@@ -89,5 +91,6 @@ package() {
         install -Dm644 "${_i}" "${pkgdir}${_target_dir}/${pkgname%-bin}.${_extension}"
     done
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "${_app_dir}/resources/extra-resources/linux/${_debname}.metainfo.xml" "${pkgdir}/usr/share/metainfo/${pkgname%-bin}.metainfo.xml"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
