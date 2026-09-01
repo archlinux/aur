@@ -1,0 +1,4 @@
+[fingerprintx]
+source = "git"
+git = "https://github.com/praetorian-inc/fingerprintx.git"
+prefix = "v"
