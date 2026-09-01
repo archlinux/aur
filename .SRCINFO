@@ -1,6 +1,6 @@
 pkgbase = python-qh3-bin
 	pkgdesc = Lightweight QUIC and HTTP/3 implementation in Python (pre-compiled)
-	pkgver = 2.0.0
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/jawah/qh3
 	changelog = python-qh3.changelog
@@ -13,7 +13,7 @@ pkgbase = python-qh3-bin
 	depends = python-brotli
 	provides = python-qh3
 	conflicts = python-qh3
-	source = https://github.com/jawah/qh3/releases/download/v2.0.0/qh3-2.0.0-cp314-cp314t-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	sha256sums = a69b626cce821046884f960cde155e5ca7e511296d4f7439c3bc140990a9626c
+	source = https://github.com/jawah/qh3/releases/download/v2.0.2/qh3-2.0.2-cp314-cp314t-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = 81928b54c856713fee62c8fc1b3017938d5df50d36e56b4cfe7e8870de4ee70b
 
 pkgname = python-qh3-bin
