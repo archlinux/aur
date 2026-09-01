@@ -1,6 +1,6 @@
 pkgbase = basika
 	pkgdesc = BASIC Interpreter
-	pkgver = 0.99.4
+	pkgver = 0.99.2
 	pkgrel = 1
 	url = https://github.com/kdekorte/basika
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = basika
 	depends = sdl3_image
 	provides = basika
 	options = !lto
-	source = basika-0.99.4.tgz::https://github.com/kdekorte/basika/archive/v0.99.4.tar.gz
-	sha256sums = ff9731e807810f1549a60b7314b22ba9244199cc5dea8afd290cb9ff8d78e0d1
+	source = basika-0.99.2.tgz::https://github.com/kdekorte/basika/archive/v0.99.2.tar.gz
+	sha256sums = 46743b8f47397732a27761139957c91287e9cb3e2b7085a80ab80c06f69ca67b
 
 pkgname = basika
