@@ -4,7 +4,7 @@
 # To install, run `makepkg -is`
 
 pkgname=ulauncher
-pkgver=5.16.0
+pkgver=5.16.1
 pkgrel=1
 pkgdesc='Application launcher for Linux'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('git' 'python-setuptools' 'python-distutils-extra')
 optdepends=('libappindicator-gtk3: tray icon')
 install="ulauncher.install"
 source=("https://github.com/Ulauncher/Ulauncher/releases/download/${pkgver}/ulauncher_${pkgver}.tar.gz")
-sha256sums=('2435b9fe1a2a880fd5e075e63bbbe2a431a89b0c541fa81630b6ddce89235843')
+sha256sums=('084959f0cc88b78ce6ee34c1122235067fe3323cf5e5a11d1348521380475322')
 
 build() {
   cd ulauncher
