@@ -1,6 +1,6 @@
 pkgbase = faiss
-	pkgver = 1.14.3
-	pkgrel = 1.1
+	pkgver = 1.15.0
+	pkgrel = 1
 	url = https://github.com/facebookresearch/faiss
 	arch = x86_64
 	arch = aarch64
@@ -17,7 +17,8 @@ pkgbase = faiss
 	depends = openmp
 	depends = python-numpy
 	options = !debug
-	source = https://github.com/facebookresearch/faiss/archive/refs/tags/v1.14.3.tar.gz
+	options = !lto
+	source = https://github.com/facebookresearch/faiss/archive/refs/tags/v1.15.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = faiss-cpu
@@ -28,14 +29,9 @@ pkgname = faiss-cpu
 
 pkgname = faiss-gpu
 	pkgdesc = A library for efficient similarity search and clustering of dense vectors (cuda or rocm accelarated).
-	depends = blas
-	depends = lapack
-	depends = openmp
-	depends = python-numpy
-	depends = cuda
 	optdepends = cuda
-	optdepends = rocm-hip-sdk
-	optdepends = hipify-perl
+	optdepends = hip-runtime-amd
+	optdepends = openmp
 	provides = libfaiss
 	provides = python-faiss
 	provides = python-faiss-gpu

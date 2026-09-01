@@ -3,8 +3,8 @@ pkgname=('faiss-cpu' 'faiss-gpu')
 arch=('x86_64' 'aarch64')
 url="https://github.com/facebookresearch/faiss"
 license=('MIT')
-pkgver=1.14.3
-pkgrel=1.1
+pkgver=1.15.0
+pkgrel=1
 source=("${url}/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 depends=('blas' 'lapack' 'openmp'
@@ -18,23 +18,14 @@ makedepends=('cmake'
     'python-setuptools'
     'swig')
 #checkdepends=('python-pytest')
-options=(!debug)
+options=(!debug !lto)
 
 prepare() {
-	cd faiss-${pkgver}
-#	echo 'set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fpermissive")' >>CMakeLists.txt
-	#sed -i -e '21a set(CMAKE_BUILD_RPATH "$ORIGIN")' \
-	#-e '21a set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)' \
-	#-e '21a list(APPEND CMAKE_LIBRARY_PATH ${CMAKE_INSTALL_PREFIX}/lib)' \
-	#faiss/python/CMakeLists.txt
-if [ -n "$ROCM_HOME" ];then
-:
-#	sed -i -e 's|${PROJECT_SOURCE_DIR}/faiss/gpu/hipify.sh|hipify-perl -print-stats ${PROJECT_SOURCE_DIR}/faiss/gpu/*[cu,h,cpp]*|' \
-#	-e 's/GPU_EXT_PREFIX "hip"/GPU_EXT_PREFIX "cu"/' \
-#	CMakeLists.txt
-#	sed -i '/list(TRANSFORM FAISS_GPU_SRC REPLACE cu$ hip)/d' \
-#	faiss/gpu/CMakeLists.txt
-fi
+	cp -a faiss-${pkgver} faiss-gpu-${pkgver}
+	cd faiss-gpu-${pkgver}
+	# fix macro __noinline__ conflict
+	sed -i '285i target_precompile_headers(faiss_gpu_objs PUBLIC <format>)' \
+faiss/gpu/CMakeLists.txt
 }
 
 build() {
@@ -45,11 +36,7 @@ build() {
                 -DCMAKE_BUILD_TYPE=Release
                 -DCMAKE_INSTALL_PREFIX=/usr)
         if [[ $CARCH == 'x86_64' ]]; then
-                #if [ -n "$(ld.so --help |grep 'x86-64-v4 (supported,')" ]; then
-                        flags=(${flags[@]} -DFAISS_OPT_LEVEL=avx512)
-                #elif [ -n "$(ld.so --help |grep 'x86-64-v3 (supported,')" ]; then
-                #        flags="$flags -DFAISS_OPT_LEVEL=generic"
-                #fi
+                flags=(${flags[@]} -DFAISS_OPT_LEVEL=avx512)
         elif [[ $CARCH == 'aarch64' ]]; then
                 flags=(${flags[@]} -DFAISS_OPT_LEVEL=sve)
         fi
@@ -57,23 +44,25 @@ build() {
 	# cpu
 	cd "${srcdir}/faiss-${pkgver}"
 #	-DFAISS_ENABLE_SVS=ON
-	cmake ${flags[@]} -B build .
-	make -C build -j
+	cmake -DCMAKE_CXX_FLAGS="-Wno-template-body" \
+		${flags[@]} -B build .
+	make -C build -j4
 	cd build/faiss/python
 	python -m build --wheel --no-isolation
 
         # gpu
-        cd "${srcdir}/faiss-${pkgver}"
+        cd "${srcdir}/faiss-gpu-${pkgver}"
         if [ -n "$ROCM_HOME" ];then
-                flags=(${flags[@]} -DCMAKE_SHARED_LINKER_FLAGS='-Wl,--export-dynamic'
+                flags=(${flags[@]} # -DCMAKE_SHARED_LINKER_FLAGS='-Wl,--export-dynamic'
 		-DBUILD_TESTING=OFF -DBUILD_SHARED_LIBS=OFF -DFAISS_ENABLE_GPU=ON 
 		-DFAISS_ENABLE_ROCM=ON)
         elif [ -n "$CUDA_HOME" ];then
                 flags=(${flags[@]} -DFAISS_ENABLE_GPU=ON -DCUDAToolkit_ROOT=$CUDA_HOME)
         fi
 
-        cmake ${flags[@]} -B build_gpu .
-        cmake --build build_gpu -j
+        cmake ${flags[@]} -DCMAKE_CXX_FLAGS="-Wno-template-body" -B build_gpu .
+	sed -i 's/if !defined(USE_AMD_ROCM)/if defined(USE_AMD_ROCM)/' faiss/gpu/utils/Float16.cuh
+	cmake --build build_gpu
         cd build_gpu/faiss/python
         python -m build --wheel --no-isolation
 }
@@ -101,15 +90,15 @@ package_faiss-cpu() {
 package_faiss-gpu() {
 	pkgdesc='A library for efficient similarity search and clustering of dense vectors (cuda or rocm accelarated).'
 	conflicts=('faiss-cpu')
-	optdepends=('cuda' 'rocm-hip-sdk' 'hipify-perl')
+	optdepends=('cuda' 'hip-runtime-amd' 'openmp')
         provides=('libfaiss' 'python-faiss' 'python-faiss-gpu')
-        if [ -n "$ROCM_HOME" ];then
-                :
-        elif [ -n "$CUDA_HOME" ];then
-                depends+=('cuda')
-        fi
+        #if [ -n "$ROCM_HOME" ];then
+        #        :
+        #elif [ -n "$CUDA_HOME" ];then
+        #        depends+=('cuda')
+        #fi
 
-        cd "faiss-${pkgver}/build_gpu"
+        cd "faiss-gpu-${pkgver}/build_gpu"
         make DESTDIR="$pkgdir" install
         install -Dm 644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
         cd faiss/python
