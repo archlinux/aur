@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=jaggr
 pkgver=1.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc="JSON Aggregation CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/rs/jaggr"
@@ -28,7 +28,7 @@ build() {
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags='-s -w' \
+    -ldflags='-linkmode=external -s -w' \
     -o $pkgname \
     .
 }
