@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=world-cup-2022-cli-dashboard
 pkgver=1.4.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Watch live World Cup 2022 matches in your terminal. ⚽🏆"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cedricblondeau/world-cup-2022-cli-dashboard"
@@ -28,7 +28,7 @@ build() {
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags='-s -w' \
+    -ldflags='-linkmode=external -s -w' \
     -o $pkgname \
     .
 }
