@@ -1,6 +1,6 @@
 pkgbase = aurup
 	pkgdesc = The simplify finding and installing packages AUR helper
-	pkgver = 1.80
+	pkgver = 1.81
 	pkgrel = 1
 	url = https://github.com/nellowint/aurup
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = aurup
 	depends = diffutils
 	depends = jq
 	depends = tar
-	source = git+https://github.com/nellowint/aurup.git#tag=v1.80
-	sha256sums = e70de1db0223461926ef13124723421653a468f471e8498e1b1a5fe370a24fe6
+	source = git+https://github.com/nellowint/aurup.git#tag=v1.81
+	sha256sums = 0d105aa8d006588bcb693205e49805f4b026396eacdf9f50a4736dcfa2276237
 
 pkgname = aurup
