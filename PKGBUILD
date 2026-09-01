@@ -1,7 +1,7 @@
 #!/bin/sh
 # Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
 pkgname=repo-notes-git
-pkgver=20260729.0.r74.g7a2c43b
+pkgver=20260729.0.r84.g8a3948b
 pkgrel=1
 pkgdesc="Standalone CLI and MCP server for repo-scoped Markdown notes (git version)"
 arch=('x86_64' 'aarch64')
@@ -32,9 +32,9 @@ build() {
   cd "$pkgname"
   bun install --frozen-lockfile
   bun run build
-  ./dist/notes completions zsh >notes.zsh
-  ./dist/notes completions bash >notes.bash
-  ./dist/notes completions fish >notes.fish
+  ./dist/notes --completions zsh >notes.zsh
+  ./dist/notes --completions bash >notes.bash
+  ./dist/notes --completions fish >notes.fish
 }
 
 package() {
