@@ -1,0 +1,25 @@
+pkgbase = wayshadow-git
+	pkgdesc = A lightweight, elegant keystroke visualizer for Wayland compositors
+	pkgver = r32.0b5cb87
+	pkgrel = 1
+	url = https://github.com/justanoobcoder/wayshadow
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = wayland-protocols
+	makedepends = pkg-config
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = wayland
+	depends = cairo
+	depends = pango
+	depends = libinput
+	depends = libxkbcommon
+	depends = gtk3
+	depends = libappindicator
+	options = !debug
+	source = git+https://github.com/justanoobcoder/wayshadow.git
+	sha256sums = SKIP
+
+pkgname = wayshadow-git
