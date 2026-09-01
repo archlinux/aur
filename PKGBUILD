@@ -10,7 +10,7 @@ license=("GPL-3.0-or-later")
 depends=("bash-completion" "curl")
 makedepends=("git")
 source=("git+https://github.com/nellowint/update-mirrors.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('6b17634f2854c9a15b660a31bd86330ba46c87a78acfaad8b385490ccc169034')
 
 package() {
 	cd "$pkgname"
