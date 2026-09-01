@@ -1,6 +1,6 @@
 pkgbase = mmsimpulse-git
 	pkgdesc = A Wayland session of KWin plus the illogical-impulse shell — no desktop environment
-	pkgver = r47.dfc78eb
+	pkgver = r48.82147a9
 	pkgrel = 1
 	url = https://github.com/mahirsn/mmsimpulse
 	arch = any
@@ -27,6 +27,9 @@ pkgbase = mmsimpulse-git
 	optdepends = kitty: the terminal the launcher and widgets open by default
 	optdepends = cliphist: clipboard history
 	optdepends = matugen: colours generated from the wallpaper
+	optdepends = mpvpaper: video and gif wallpapers
+	optdepends = linux-wallpaperengine: Wallpaper Engine scenes from the Steam workshop
+	optdepends = ffmpeg: stills for video wallpapers, which is what their colours come from
 	optdepends = brightnessctl: laptop backlight control
 	optdepends = ddcutil: external monitor brightness over DDC/CI
 	optdepends = playerctl: media keys and player control
