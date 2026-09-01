@@ -3,10 +3,10 @@
 
 pkgname=buildifier
 pkgver=8.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to format Bazel BUILD files'
 arch=('x86_64' 'aarch64')
-license=('Apache')
+license=('Apache-2.0')
 url='https://github.com/bazelbuild/buildtools'
 makedepends=('git' 'python')
 conflicts=('buildifier-bin')
