@@ -1,13 +1,14 @@
 pkgbase = check-symlinks
 	pkgdesc = Check for broken symlinks
 	pkgver = 0.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jmelahman/check-symlinks
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = go
+	depends = glibc
 	source = check-symlinks::git+https://github.com/jmelahman/check-symlinks.git#commit=5f3bc30f64e4b30543170fd8f7b049ce43505eea
 	md5sums = SKIP
 
