@@ -1,13 +1,15 @@
 pkgbase = firm-bin
 	pkgdesc = Text-based work management system for technologists
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/42futures/firm
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-or-later
 	provides = firm
 	conflicts = firm
+	source = firm-bin-0.5.0.LICENSE::https://github.com/42futures/firm/raw/main/LICENSE
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
 	source_x86_64 = firm-bin-x86_64-0.5.0.tar.gz::https://github.com/42futures/firm/releases/download/0.5.0/firm-linux-amd64.tar.gz
 	sha256sums_x86_64 = 2ef50f7bcc16916feef2e16391a0d07ddf52e6664d79191ed5827a1db3fa8caa
 	source_aarch64 = firm-bin-aarch64-0.5.0.tar.gz::https://github.com/42futures/firm/releases/download/0.5.0/firm-linux-arm64.tar.gz
