@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20260808
+pkgver=20260901
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -14,8 +14,8 @@ depends=(curl ffmpeg libgl qt6-base qt6-multimedia ttf-liberation)
 makedepends=(autoconf-archive automake cargo cmake git libtool make nasm ninja patch pkg-config tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
-  "git+$url#commit=8d225a329ee852510b4522e04d357c6fdd51d7f7" # 2026-08-08
-  "git+https://github.com/microsoft/vcpkg.git#commit=40f3c709db80acf154ac4b17a1f83c564ebd022e" # 2026-07-24 (vcpkg.json:builtin-baseline)
+  "git+$url#commit=e980ca4bec2f889acbb59af4abb9bd7986ff8422" # 2026-09-01
+  "git+https://github.com/microsoft/vcpkg.git#commit=7f3781e19cc7d4e4882a4caec01668c6f7b5c163" # 2026-08-27 (vcpkg.json:builtin-baseline)
   "hb-fc-whole-archive.patch"
   "new-tab.patch"
   "gcc-build.patch"
@@ -43,6 +43,8 @@ prepare() {
   patch ladybird/Base/res/ladybird/about-pages/newtab.html < new-tab.patch
   patch ladybird/Meta/CMake/compile_options.cmake < gcc-build.patch
   sed -i -e "s/COMMIT_HASH/$(git -C ladybird show -s --format=%H)/" -e "s/COMMIT_DATE/$(git -C ladybird show -s --format=%ci)/" ladybird/Base/res/ladybird/about-pages/newtab.html
+
+  "${VCPKG_ROOT}/bootstrap-vcpkg.sh" -disableMetrics
 
   cmake \
     --preset Release \
