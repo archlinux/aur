@@ -3,7 +3,7 @@
 
 pkgname='nginx-vts-exporter'
 pkgver='0.10.8'
-pkgrel='4'
+pkgrel='5'
 pkgdesc='Prometheus exporter for Nginx vts stats'
 arch=('x86_64' 'aarch64')
 _uri='github.com/sysulq'
@@ -51,6 +51,6 @@ check() {
 
 package() {
   install -Dm0755 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm0644 "${GOPATH}/src/${_uri}/${pkgname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm0644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
-  install -Dm0644 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
