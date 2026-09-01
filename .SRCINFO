@@ -1,6 +1,6 @@
 pkgbase = middleclick-autoscroll
 	pkgdesc = Middle-click autoscroll in every application that supports it
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/Felitendo/middleclick-autoscroll
 	install = middleclick-autoscroll.install
@@ -19,7 +19,7 @@ pkgbase = middleclick-autoscroll
 	optdepends = spotify-launcher: cover the official Spotify client
 	optdepends = steam: cover the Steam interface
 	optdepends = desktop-file-utils: refresh the desktop database after a change
-	source = middleclick-autoscroll-1.1.0.tar.gz::https://github.com/Felitendo/middleclick-autoscroll/archive/refs/tags/v1.1.0.tar.gz
-	sha256sums = a1385431c9ea900a775bd323a6fe311cb566f584c5c68eeed46de42351d6d263
+	source = middleclick-autoscroll-1.2.0.tar.gz::https://github.com/Felitendo/middleclick-autoscroll/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 7ad192f791a4544a62cc135418670c69dc618aa0b6fc0cced2e460f03f2e1a0d
 
 pkgname = middleclick-autoscroll
