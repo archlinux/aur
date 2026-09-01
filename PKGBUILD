@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=orca-ide-bin
 _pkgname=Orca
-pkgver=1.4.193
+pkgver=1.4.194
 _electronversion=43
 pkgrel=1
 pkgdesc="ADE for working with a fleet of parallel agents. Run any coding agent with your own subscription. Available on desktop and mobile.(Prebuilt version.Use system-wide electron)"
@@ -36,8 +36,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.x86_64.rpm")
 sha256sums=('ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('0b13c3e84ccada8381055bf01c92eeefabe72a0296e9ceaed4dd1623a3dc16da')
-sha256sums_x86_64=('66efc3b6d5d44f47ba7d27658217223de1543ae8fb638f8211dc9f8820ba8b27')
+sha256sums_aarch64=('03d37264d5568cdad85698e0f541f3d34b9fb21ecb6713b32777b2e589e205ca')
+sha256sums_x86_64=('9738485c0d8ccfcc2b4e10cfbc2a26f1b209eec9b82721c835512eb076264eac')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
