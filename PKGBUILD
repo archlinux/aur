@@ -6,7 +6,7 @@
 pkgname=python-blessings
 _name=${pkgname#python-}
 pkgver=1.7
-pkgrel=14
+pkgrel=15
 pkgdesc="A thin, practical wrapper around terminal coloring, styling, and positioning"
 url="https://github.com/erikrose/blessings"
 arch=(any)
@@ -31,7 +31,7 @@ source=(
 )
 sha256sums=(
   'ee1dc1524631c4fdb9e3a7f1776cbf82ae50cf1edf225d45bf274bebed0c6c36'
-  '0703273dee07fda4112ff051a7fcbc6103eb2dc4d8c15c5328076f4765809b7c'
+  '1a0f605dcf75ee89b50bcc493a3ccdcbba9c50b22a23b5246ef1d454e9c7e84b'
 )
 
 _archive="$_name-$pkgver"
@@ -51,7 +51,10 @@ build() {
 check() {
   cd "$_archive" || exit
 
-  python -m pytest -s blessings/tests.py
+  # The suite asserts on real terminfo capabilities -- colour counts, height
+  # and width -- which blessings only queries when its stream is a tty. Under
+  # a build server there is none, so hand it a pty and a terminal it knows.
+  TERM=xterm-256color script -qec "python -m pytest -s blessings/tests.py" /dev/null
 }
 
 package() {
