@@ -10,3 +10,10 @@ post_install() {
 post_upgrade() {
     post_install
 }
+
+post_remove() {
+    # 卸载本包后不再需要为核心保留网络 capability
+    if [ -f /usr/bin/sing-box ]; then
+        /usr/bin/setcap -r /usr/bin/sing-box
+    fi
+}

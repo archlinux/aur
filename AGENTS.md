@@ -15,10 +15,8 @@
 
 - `PKGBUILD`：软件包元数据、上游二进制 URL、依赖和安装布局。
 - `.SRCINFO`：生成的 AUR 元数据。修改 `PKGBUILD` 后需要重新生成。
-- `update.sh`：检查最新 GitHub release，更新二进制校验和，重置
-  `pkgrel`，并重新生成 `.SRCINFO`。
 - `gui-for-singbox.install`：创建运行时数据目录，链接 `sing-box` 可执行
-  文件，并在安装或升级本包时设置所需 capability。
+  文件，并在安装或升级本包时设置所需 capability；卸载时移除 capability。
 - `gui-for-singbox-setcap.hook`：在 `sing-box` 核心二进制安装或升级后恢复
   capability。
 - `gui-for-singbox.rules`：允许桌面用户为 TUN 配置 systemd-resolved。
@@ -45,12 +43,15 @@
 
 需要更新软件包时：
 
-1. 在仓库根目录运行 `./update.sh`。
-2. 检查 `PKGBUILD` 和 `.SRCINFO` 的完整 diff。
-3. 确认 release 中包含
-   `GUI.for.SingBox-linux-amd64.zip`，并确认校验和对应的正是该资源。
-4. 检查新的二进制是否仍然匹配现有安装布局和运行时依赖。
-5. 在提交前，使用可用的 Arch 打包工具构建或校验软件包。
+1. 查询上游最新 release（GitHub Releases API），确认其中包含
+   `GUI.for.SingBox-linux-amd64.zip`。
+2. 修改 `PKGBUILD`：更新 `pkgver` 并重置 `pkgrel=1`，然后运行
+   `updpkgsums` 更新校验和。
+3. 运行 `makepkg --printsrcinfo > .SRCINFO` 重新生成元数据。
+4. 检查 `PKGBUILD` 和 `.SRCINFO` 的完整 diff，确认校验和对应的正是该
+   release 资源。
+5. 检查新的二进制是否仍然匹配现有安装布局和运行时依赖。
+6. 在提交前，使用可用的 Arch 打包工具构建或校验软件包。
 
 上游发布流程是自动化的，release 通常没有有用的 changelog。不要自行编造
 发布说明。如果需要总结功能变化，应对比旧 tag 和新 tag，并区分已确认的
@@ -59,14 +60,12 @@
 常用命令：
 
 ```bash
-./update.sh
+updpkgsums
+makepkg --printsrcinfo > .SRCINFO
 git diff -- PKGBUILD .SRCINFO
 makepkg --verifysource
 makepkg -f
 ```
-
-`update.sh` 使用 GitHub Releases API，需要 `curl`、`jq`、`updpkgsums` 和
-`makepkg`。
 
 ## 现有集成细节
 
@@ -77,7 +76,8 @@ makepkg -f
 - 安装脚本将 `/usr/bin/sing-box` 链接到应用数据目录，并为核心设置
   `cap_net_admin`、`cap_net_raw` 和 `cap_net_bind_service`。alpm hook 监听
   `usr/bin/sing-box` 的安装和升级，在核心二进制被替换后自动恢复 capability；
-  GUI 启动时不再通过 `pkexec` 请求权限。
+  GUI 启动时不再通过 `pkexec` 请求权限。卸载本包时移除 capability，避免
+  核心二进制残留网络权限；数据目录保留不删。
 - `sing-box` 软件包的 resolve1 规则只覆盖系统服务用户 `sing-box`。GUI 以桌面
   用户启动核心，因此额外规则允许本机活动会话用户设置和恢复 TUN 接口的
   DNS、域及默认 DNS 路由。

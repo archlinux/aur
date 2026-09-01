@@ -5,5 +5,5 @@ Exec=/usr/bin/GUI.for.SingBox
 Icon=/opt/gui-for-singbox/icon/gui-for-singbox.png
 Type=Application
 StartupNotify=true
-Categories=Network;Utility;
+Categories=Utility;
 StartupWMClass=GUI.for.SingBox
