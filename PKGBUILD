@@ -2,7 +2,7 @@ pkgname=cephalote
 # GitHub archives extract to the repository's canonical casing, which is
 # "Cephalote" - keep this in sync if the repo is ever renamed to lowercase.
 _repo=Cephalote
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Scan source code for weak cryptographic schemes"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,9 @@ makedepends=('go')
 # here; skip them rather than ship a broken one.
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e5472d7a2fffd31b821d6f9b5cdd1e3700825ad080e73b6c9d027e6f362f4ce9')
+# Refresh on every pkgver bump with `updpkgsums` (pacman-contrib); it needs the
+# tagged tarball to be published upstream first.
+sha256sums=('2718b54ace0b72f59cbe7b19e2702a66332a9d214c6689601e06bb7a2d88d270')
 
 prepare() {
 	cd "$_repo-$pkgver"
@@ -33,8 +35,8 @@ build() {
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
 	# Upstream ships two profiles: a zero-cgo static default (built to be
-	# scp'd onto a server) and a cgo "treesitter" build that adds real
-	# Python AST analysis at high confidence. A distro package is compiled
+	# scp'd onto a server) and a cgo "treesitter" build that adds real AST
+	# analysis at high confidence for thirteen languages. A distro package is compiled
 	# on the user's machine against a toolchain that is already there, so
 	# the static profile buys nothing - take the tier that detects more.
 	#
