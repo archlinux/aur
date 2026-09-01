@@ -2,7 +2,7 @@
 
 pkgname=fushi
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Immersion language-learning suite: EPUB reader, video subtitle lookup, audiobook sync, and one-tap Anki mining'
 arch=('x86_64')
 url='https://github.com/hajisensai/Fushi'
@@ -27,6 +27,15 @@ prepare() {
 # Project is locked to Flutter 3.44.0 (the AUR flutter package is a different,
 # older release), so the pinned SDK tarball is carried as a source. Dart SDK is
 # bundled in that tarball; everything else resolves via pub.
+#
+# The v2.1.1 tag's pubspec still says 2.0.0+1210 (upstream stamps versions via
+# CI flags, not pubspec), so without flags the app would see itself as 2.0.0 and
+# prompt an update to the manifest's 2.1.1 forever. Mirror the official desktop
+# builds: --build-name=<pkgver> with the manifest releaseSequence as the build
+# number (the app's update checker compares them to decide "newer"). 9116 is
+# the releaseSequence of v2.1.1's latest-stable.json; bump it together with
+# pkgver when updating.
+_release_seq=9116
 build() {
   export FLUTTER_ROOT="${srcdir}/flutter"
   export PATH="${FLUTTER_ROOT}/bin:${PATH}"
@@ -34,7 +43,7 @@ build() {
   cd "${srcdir}/Fushi-${pkgver}"
   bash tool/bootstrap.sh
   cd hibiki
-  flutter build linux --release
+  flutter build linux --release --build-name="${pkgver}" --build-number="${_release_seq}"
 }
 
 package() {
