@@ -1,7 +1,7 @@
 # Maintainer: myt <myt at qq dot com>
 pkgname=fonts-apple
-pkgver=21.0d2e1
-pkgrel=2
+pkgver=22.0d5e1
+pkgrel=1
 epoch=1
 pkgdesc='Apple公司出品的字体,包含苹方简体和繁体，圆简粗体。少女简粗体，SFPro系列和Monaco等宽英文体和AppleColorEmoji符号字体。🏃'
 arch=('any')
