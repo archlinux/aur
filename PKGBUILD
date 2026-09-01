@@ -1,7 +1,7 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 pkgname=python-ouroboros-ai
 _name=${pkgname#python-}
-pkgver=0.52.0
+pkgver=0.53.0
 pkgrel=1
 pkgdesc="Specification-first workflow engine for AI coding agents"
 arch=('any')
@@ -32,14 +32,17 @@ makedepends=(
 )
 optdepends=(
   'python-anthropic: Claude integration'
+  'python-questionary: Interactive checkbox selector for plugin installation'
   'python-claude-agent-sdk: Claude agent SDK'
   'python-mcp: MCP server support'
   'python-idna: Internationalized hostname support for MCP network transports'
   'python-litellm: LiteLLM support for non-Claude LLM backends'
   'python-textual: TUI support (ouroboros tui)'
+  'python-textual-serve: Browser-served settings TUI support (ouroboros config)'
+  'python-watchdog: Live skill hot-reload support'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
-sha256sums=('3987ded3eb5b509c3d4fc6fcbdbe95f135b95619bf50a35ec4bbf6ba893822ba')
+sha256sums=('ee3550aa5444ae4711fa75e7a7a79cb46c060a173ba5ae170b4a7590f335a10d')
 install=${pkgname}.install
 
 build() {
