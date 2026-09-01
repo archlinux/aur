@@ -1,14 +1,17 @@
 pkgbase = python-e3-testsuite
 	pkgdesc = Generic Testsuite Driver in Python
 	pkgver = 27.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/e3-testsuite
 	arch = any
-	license = GPL3
-	makedepends = python-pip
+	license = GPL-3.0-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-e3-core
-	source = https://files.pythonhosted.org/packages/py3/e/e3-testsuite/e3_testsuite-27.3-py3-none-any.whl
-	sha256sums = 4cc14a29e3eb940a781691a0b40b14cedba29606217f03f2a4c4526e195084f9
+	source = https://files.pythonhosted.org/packages/source/e/e3-testsuite/e3_testsuite-27.3.tar.gz
+	sha256sums = bf4d65997fe2dc4eb8b7a34dcafe1db85210628473365ee2aa1a013d7769d38e
 
 pkgname = python-e3-testsuite
