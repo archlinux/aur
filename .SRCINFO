@@ -1,6 +1,6 @@
 pkgbase = checkpac
 	pkgdesc = Simple and fast package check and lookup utility for Arch Linux with AUR support
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://github.com/zeroz41/checkpac
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = checkpac
 	depends = util-linux
 	depends = jq
 	depends = pacman
-	source = checkpac-0.10.0.tar.gz::https://github.com/zeroz41/checkpac/archive/v0.10.0.tar.gz
-	sha256sums = 0b1dcf6e41c1aefe7faf32763918bcf10549a36d1ff8d15dee7a62714973a44d
+	source = checkpac-0.11.0.tar.gz::https://github.com/zeroz41/checkpac/archive/v0.11.0.tar.gz
+	sha256sums = 8db14fb636246e3bf74da29570d6401acbcf8ec9d96d14a20b4e7634e7af669a
 
 pkgname = checkpac
