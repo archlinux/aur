@@ -4,7 +4,7 @@
 _pkgname=SuperZSNES
 _execname=SUPERZSNES
 pkgname=superzsnes
-pkgver=0.230
+pkgver=0.300
 pkgrel=1
 pkgdesc="A GPU-powered SNES Emulator developed in Unity"
 arch=("x86_64")
@@ -19,8 +19,7 @@ source=(
 )
 sha256sums=('091fc53feea1ae09eb9cf22d1bc98b700dd5441b640586e3c0d75d663d377e43'
             '420f11c4a717d11a955b5bc64238fbd5398c5aae3676d2b531de5da7a409ee27'
-            '11601cf4e709a5a68b10c9d4887a89413acee4b28a813e8564f143c2b53a82c2'
-)
+            '3f7d006d8bea9531878d6f3db0db8390cd7dd4bcde20c3439438ef8973e22c95')
 
 package() {
 
