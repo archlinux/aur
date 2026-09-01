@@ -1,0 +1,15 @@
+pkgbase = aur-security-dashboard
+	pkgdesc = A forensic-grade, local SIEM dashboard for Arch Linux to monitor system integrity, audit AUR packages, and hunt anomalies.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/WgpArch/aur-security-dashboard
+	arch = any
+	license = GPL-3.0-only
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	source = git+https://gitlab.com/WgpArch/aur-security-dashboard.git#tag=v1.0.0
+	sha256sums = adc751224c2a746f436af63ab7ea75c86828a8a26f6f4387c5946596254c1b8c
+
+pkgname = aur-security-dashboard
