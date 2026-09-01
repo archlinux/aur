@@ -4,7 +4,7 @@
 pkgname=icestorm
 pkgver=1.1
 _git_commit=v${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)"
 arch=(x86_64)
 url="https://github.com/YosysHQ/icestorm"
