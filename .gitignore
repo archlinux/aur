@@ -1,0 +1,5 @@
+# AUR repos carry only the recipe; everything makepkg produces stays out.
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
