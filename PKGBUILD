@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=ojosama
 pkgver=0.11.0
-pkgrel=4
+pkgrel=5
 pkgdesc="テキストを壱百満天原サロメお嬢様風の口調に変換します"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jiro4989/ojosama"
@@ -28,7 +28,7 @@ build() {
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags='-s -w' \
+    -ldflags='-linkmode=external -s -w' \
     -o $pkgname \
     ./cmd/ojosama
 }
