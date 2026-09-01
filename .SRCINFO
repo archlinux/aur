@@ -1,6 +1,6 @@
 pkgbase = course2md-bin
 	pkgdesc = Turn online course videos (YouTube/Bilibili/local) into image+transcript markdown/html notes
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/mizorewww/course2md
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = course2md-bin
 	optdepends = llama-cpp: local ASR via llama-server (Qwen3-ASR GGUF)
 	provides = course2md
 	conflicts = course2md
-	source = LICENSE-0.6.1::https://github.com/mizorewww/course2md/raw/v0.6.1/LICENSE
+	source = LICENSE-0.7.0::https://github.com/mizorewww/course2md/raw/v0.7.0/LICENSE
 	sha256sums = f588737788750da8ab407e66c13f5004f8933176307add92f64b6c458f486212
-	source_x86_64 = course2md-linux-x86_64::https://github.com/mizorewww/course2md/releases/download/v0.6.1/course2md-linux-x86_64
-	sha256sums_x86_64 = d0d3460f4476224cefe4fb44ce6b0a823b31c12ec03966ec4715c5c31f4b8f36
-	source_aarch64 = course2md-linux-aarch64::https://github.com/mizorewww/course2md/releases/download/v0.6.1/course2md-linux-aarch64
-	sha256sums_aarch64 = 0d784262ec3f70a744f05184c717b2ac8ba11d9b98c47cdb6e534b793ed2b88a
+	source_x86_64 = course2md-linux-x86_64::https://github.com/mizorewww/course2md/releases/download/v0.7.0/course2md-linux-x86_64
+	sha256sums_x86_64 = ce9c6d9de8a3b2f126c61134109990d838e466dc5c8069e99b057399060a6da3
+	source_aarch64 = course2md-linux-aarch64::https://github.com/mizorewww/course2md/releases/download/v0.7.0/course2md-linux-aarch64
+	sha256sums_aarch64 = 457a6bd2c3e642d92faaf119b005cfb00cfe777ce53af8d181cb8439de328db5
 
 pkgname = course2md-bin
