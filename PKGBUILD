@@ -3,11 +3,12 @@
 
 pkgname=connections
 pkgver=0.1.21
-pkgrel=3
+pkgrel=4
 pkgdesc='A command-line client for the NYT Connections game.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/connections'
 license=('MIT')
+depends=('glibc')
 makedepends=('go' 'git')
 _commit='6912d124beab8152bf5e2508880491442d5628bf'
 source=("$pkgname::git+$url.git#commit=$_commit")
@@ -31,7 +32,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
 
-  go build -buildmode=pie -trimpath -modcacherw -ldflags="-X main.version=v$pkgver -X main.commit=$_commit -s -w" -o "$pkgname"
+  go build -buildmode=pie -trimpath -modcacherw -ldflags="-linkmode=external -X main.version=v$pkgver -X main.commit=$_commit -s -w" -o "$pkgname"
 }
 
 package() {

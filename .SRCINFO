@@ -1,7 +1,7 @@
 pkgbase = connections
 	pkgdesc = A command-line client for the NYT Connections game.
 	pkgver = 0.1.21
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jmelahman/connections
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = connections
 	license = MIT
 	makedepends = go
 	makedepends = git
+	depends = glibc
 	source = connections::git+https://github.com/jmelahman/connections.git#commit=6912d124beab8152bf5e2508880491442d5628bf
 	md5sums = SKIP
 
