@@ -3,9 +3,9 @@
 
 pkgname=llama.cpp-hip-gfx1151
 _pkgname=llama.cpp
-pkgver=b10712
+pkgver=b10731
 pkgrel=1
-_upstream_commit=daef7b6874397a5a7c3d7e38b55e2ee0adf7da38
+_upstream_commit=0eadefebd3f8f92a86d634a0e5b8fffc9dc792c0
 _mtp_commit=1d8de7c1b0c7d2febf8f983174d8e6a711e2b1af
 _mtp_mixer_export_commit=57bb668674d9fb0d382885e5b04911c6437f8e83
 _mtp_detached_head_commit=a82a58a57fc307e5cec0dc68db64d143339be4f2
@@ -17,7 +17,6 @@ _gdn_norm_commit=757abc99b3afb357bc40da9d1fa97c2d2ac10028
 _server_recurrent_rollback_commit=13e4cfe53ff3dc2e786a9264ee552da53e0a41c4
 _rpc_invalid_graph_node_commit=181b1999205fd0e7c3e0db2874856649a0612d3f
 _hip_apu_host_buffer_commit=fdc1260e99191717b0aa0a48117d4b758a24a513
-_hip_radix_top_k_commit=7f489034b48051a02c38c2eab5988443b02db300
 _hipcub_base_commit=d7bd3bfcad3e29c7e49fd26f38c79ee3e9a3fd6b
 _hipcub_commit=861abb2b2e333744d565e07985de8f6f6feaff65
 _ple_row_prefetch_commit=c911e6bb5eb956a759e740fb14db8ca639b7d3e7
@@ -65,11 +64,11 @@ source=(
   "gdn-norm-${_gdn_norm_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/${_gdn_norm_base}...${_gdn_norm_commit}.diff"
   "server-recurrent-rollback-${_server_recurrent_rollback_commit}.patch::https://github.com/ggml-org/llama.cpp/commit/${_server_recurrent_rollback_commit}.diff"
   "rpc-invalid-graph-node-${_rpc_invalid_graph_node_commit}.patch::https://github.com/ggml-org/llama.cpp/commit/${_rpc_invalid_graph_node_commit}.diff"
+  "rpc-graph-shape-validation-b10731.patch"
   "hip-apu-host-buffer-${_hip_apu_host_buffer_commit}.patch::https://github.com/Victor-Loos/llama.cpp/commit/${_hip_apu_host_buffer_commit}.diff"
-  "hip-radix-top-k-${_hip_radix_top_k_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/749f688fcaa4c472ec034b08cb8a907c45cfaa02...${_hip_radix_top_k_commit}.diff"
   "hipcub-rocm-${_hipcub_commit}.patch::https://github.com/ggml-org/llama.cpp/compare/${_hipcub_base_commit}...${_hipcub_commit}.diff"
   "qwen4exp-ple-row-prefetch-${_ple_row_prefetch_commit}.patch::https://github.com/Aristo94/EngramHalo.cpp/commit/${_ple_row_prefetch_commit}.diff"
-  "qwen4exp-ple-row-prefetch-b10712.patch"
+  "qwen4exp-ple-row-prefetch-b10731.patch"
   # 提升性能的妙妙工具
   # "llama-gfx1151.patch::https://gist.githubusercontent.com/pedapudi/0da060d2a3b49a51155dbf00db61fea0/raw/aaaee0a96656ec0fc49bdfa76acd2b4edbfcbfb9/gistfile1.txt"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
@@ -77,7 +76,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.sysusers"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.tmpfiles"
 )
-sha256sums=('0b98b884f064e8aceaf97e61efe514eff63e5fa9f14785b25eabb9b7b84876a7'
+sha256sums=('6dd2f004ea2ed4da2a4fdce30318f981818447f335c474b14f1ac5ba46ea590a'
             'f4015a0321186b74ddf8424b0e873c3ef0efbfb2133cfe89b8fab6e38c963b73'
             '115313efdaf605188ffcd42119ad39a853ad46c0bfd3f416d44387e2cee1925a'
             '321497eccf0d02f44555e0349877fafde75354b1c72416996421044671d80b28'
@@ -86,8 +85,8 @@ sha256sums=('0b98b884f064e8aceaf97e61efe514eff63e5fa9f14785b25eabb9b7b84876a7'
             '891919ccb35244c6fb3d6e8ba85a2e6227b014d6d304e6c6d52196332f353b32'
             '27ea2d7e7de159683249e32bc6511c392cc786f0d9d7f448ad4992af616fd2ab'
             '4597fabcce3b4f7c8f3718576d4b906a8fe71c6451d9031e693396c7760528d7'
+            'b9eb26c88a61592b354a36d8c74272e875f884dbe2b1a5b1f58d60aa71220e4a'
             'a55893cf8dd7a6992d66cf323c13d6dbf96b11065af7a11dc9f205041c37f80e'
-            '65cb266ee3890043fcdc691b8f8da8ce8edfb970cc4aadde5860632cc59666aa'
             'da6ca65795a0ff8373ff59fd2adc12ab63417cb658feeda1da1fdd74c7d8401d'
             '6b39be7f0b173963396ce94e19201eec1ccca7801398be66f9bee6f0ced01df5'
             '823a282251c2754558c95ec1137bf2ab5672d3b47898ce6b8f8348daf8bb5c9f'
@@ -100,34 +99,38 @@ prepare() {
   ln -sf "${_pkgname}-${pkgver}" llama.cpp
 
   # Qwen3.8-Flash-Next MTP, including standalone draft-head conversion/loading.
-  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-${_mtp_commit}.patch"
-  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-mixer-export-${_mtp_mixer_export_commit}.patch"
-  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-detached-head-${_mtp_detached_head_commit}.patch"
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-${_mtp_commit}.patch"
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-mixer-export-${_mtp_mixer_export_commit}.patch"
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-mtp-detached-head-${_mtp_detached_head_commit}.patch"
 
   # Qwen3.8 correctness fixes for multi-sequence QSA, vision, metadata, and 256K contexts.
-  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-followup-${_qwen4exp_followup_commit}.patch"
-  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-followup-post-${_qwen4exp_followup_head}.patch"
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-followup-${_qwen4exp_followup_commit}.patch"
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch -i "${srcdir}/qwen4exp-followup-post-${_qwen4exp_followup_head}.patch"
 
   # Match the reference GDN q/k normalization: x*rsqrt(sum(x^2)+eps).
-  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch \
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
     -i "${srcdir}/gdn-norm-${_gdn_norm_commit}.patch"
 
   # Reprocess instead of aborting or retaining stale recurrent state when a
   # hybrid target or draft cannot roll back far enough.
-  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch \
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
     -i "${srcdir}/server-recurrent-rollback-${_server_recurrent_rollback_commit}.patch"
 
   # Reject malformed top-level RPC graph nodes instead of dereferencing null.
-  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch \
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
     -i "${srcdir}/rpc-invalid-graph-node-${_rpc_invalid_graph_node_commit}.patch"
 
+  # Extend PR #26933 after the preceding null-node guard without fuzzy patching.
+  # Mirror the complete SET_ROWS/GET_ROWS constructor invariants before RPC
+  # execution; the PR's original two checks had ASan-confirmed bypasses.
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
+    -i "${srcdir}/rpc-graph-shape-validation-b10731.patch"
+
   # Keep scheduler writes from racing direct ROCm_Host compute on Strix Halo.
-  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/hip-apu-host-buffer-${_hip_apu_host_buffer_commit}.patch"
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch -i "${srcdir}/hip-apu-host-buffer-${_hip_apu_host_buffer_commit}.patch"
 
-  # Keep wide QSA TOP_K on the GPU without breaking HIP graph capture on ROCm 7.2.
-  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch -i "${srcdir}/hip-radix-top-k-${_hip_radix_top_k_commit}.patch"
-
-  # Prefer hipCUB with rocPRIM >= 4.4; older ROCm keeps the native radix fallback.
+  # Prefer hipCUB with rocPRIM >= 4.4; older ROCm keeps b10731's upstream
+  # native HIP radix fallback.
   # The extracted source is untracked inside an AUR Git clone. Stop Git at
   # $srcdir so its subdirectory prefix cannot silently skip every patch path.
   GIT_CEILING_DIRECTORIES="${srcdir}" git -C "${_pkgname}" apply --no-index \
@@ -138,13 +141,13 @@ prepare() {
 
   # Queue the sparse PLE rows before each graph and support its 160-wide IQ4_NL
   # rows in the HIP GET_ROWS kernel. The small second patch hooks that row
-  # prefetch into b10712's upstream lazy-tensor bookkeeping.
+  # prefetch into b10731's upstream lazy-tensor bookkeeping.
   GIT_CEILING_DIRECTORIES="${srcdir}" git -C "${_pkgname}" apply --no-index \
     --exclude='src/llama-model-loader.cpp' \
     --exclude='src/llama-model-loader.h' \
     "${srcdir}/qwen4exp-ple-row-prefetch-${_ple_row_prefetch_commit}.patch"
-  patch -d "${_pkgname}" -Np1 --no-backup-if-mismatch \
-    -i "${srcdir}/qwen4exp-ple-row-prefetch-b10712.patch"
+  patch -d "${_pkgname}" -Np1 --fuzz=0 --no-backup-if-mismatch \
+    -i "${srcdir}/qwen4exp-ple-row-prefetch-b10731.patch"
 
   # Tailwind v4's oxide scanner walks up looking for the nearest .git to anchor
   # .gitignore lookup. In AUR helpers (yay/paru) the parent .git is the AUR
