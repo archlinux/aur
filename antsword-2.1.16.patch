@@ -1,0 +1,97 @@
+Remove the gov.cn/edu.cn URL blacklist and store user data in ~/.antSword.
+
+diff -u -r -N antSword-2.1.16/modules/config.js antSword-2.1.16.new/modules/config.js
+--- antSword-2.1.16/modules/config.js	2026-04-25 10:52:09.000000000 +0800
++++ antSword-2.1.16.new/modules/config.js	2026-09-01 18:19:56.275593288 +0800
+@@ -14,18 +14,12 @@
+ class Conf {
+ 
+   constructor() {
+-    // 旧数据存储目录
+-    let _oldPath = path.join(process.env.HOME || process.env.LOCALAPPPATH || process.cwd() || '.', '.antSword', 'shell.db');
+     // 数据存储目录
+-    this.basePath = path.join(process.env.AS_WORKDIR, 'antData')
++    this.basePath = path.join(process.env.HOME || process.env.LOCALAPPPATH || process.cwd() || '.', '.antSword');
+       // 初始化目录
+       !fs.existsSync(this.basePath) ?
+       fs.mkdirSync(this.basePath) :
+       null;
+-    // 旧数据搬迁
+-    if (fs.existsSync(_oldPath) && !fs.existsSync(this.dataPath)) {
+-      fs.writeFileSync(this.dataPath, fs.readFileSync(_oldPath))
+-    }
+     // 初始化目录
+     this.tmpPath;
+     this.cachePath;
+@@ -87,10 +81,6 @@
+     return require('../package.json');
+   }
+ 
+-  get urlblacklist() {
+-    return /(gov.cn|edu.cn)/
+-  }
+-
+ }
+ 
+ module.exports = new Conf();
+\ No newline at end of file
+diff -u -r -N antSword-2.1.16/modules/database.js antSword-2.1.16.new/modules/database.js
+--- antSword-2.1.16/modules/database.js	2026-04-25 10:52:09.000000000 +0800
++++ antSword-2.1.16.new/modules/database.js	2026-09-01 18:19:58.062340524 +0800
+@@ -143,10 +143,6 @@
+    */
+   addShell(event, opts) {
+     logger.info('addShell', opts);
+-    if (opts.base['url'].match(CONF.urlblacklist)) {
+-      event.returnValue = "Blacklist URL"
+-      return
+-    }
+     this
+       ._url2ip(opts.base['url'])
+       .then((ret) => {
+@@ -187,10 +183,6 @@
+ 
+     const _new = opts.new;
+     const _old = opts.old;
+-    if (_new.base['url'].match(CONF.urlblacklist)) {
+-      event.returnValue = "Blacklist URL"
+-      return
+-    }
+     this
+       ._url2ip(_new.base['url'])
+       .then((ret) => {
+diff -u -r -N antSword-2.1.16/modules/request.js antSword-2.1.16.new/modules/request.js
+--- antSword-2.1.16/modules/request.js	2026-04-25 10:52:09.000000000 +0800
++++ antSword-2.1.16.new/modules/request.js	2026-09-01 18:20:01.452868333 +0800
+@@ -86,11 +86,6 @@
+    */
+   onAproxyTest(event, opts) {
+     logger.debug('aProxy::Test Proxy -', opts['aproxyuri'], '- Connect to ', opts['url']);
+-    if (opts['url'].match(CONF.urlblacklist)) {
+-      return event
+-        .sender
+-        .send('request-error-' + opts['hash'], "Blacklist URL");
+-    }
+     // superagentProxy(superagent);
+     superagent
+       .get(opts['url'])
+@@ -211,9 +206,6 @@
+   onRequest(event, opts) {
+     logger.debug('onRequest::opts', opts);
+     let self = this;
+-    if (opts['url'].match(CONF.urlblacklist)) {
+-      return event.sender.send('request-error-' + opts['hash'], "Blacklist URL");
+-    }
+     // ws
+     if (opts['useWebSocket'] == 1) {
+       let wsopts = {
+@@ -376,9 +368,6 @@
+   onDownlaod(event, opts) {
+     let self = this;
+     logger.debug('onDownlaod', opts);
+-    if (opts['url'].match(CONF.urlblacklist)) {
+-      return event.sender.send('request-error-' + opts['hash'], "Blacklist URL");
+-    }
+     // 创建文件流
+     const rs = fs.createWriteStream(opts['path']);
+ 
