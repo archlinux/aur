@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=Chat;
+Comment=浙政钉 (ArchLinux AppImage)
+Exec=/usr/bin/private_ding_zhejiang --no-sandbox %u
+GenericName=com.zjd.gov
+Icon=private_ding_zhejiang
+Keywords=ding;
+Name=浙政钉
+Type=Application
+StartupNotify=true
+Terminal=false
+MimeType=x-scheme-handler/dingtalkgov;
