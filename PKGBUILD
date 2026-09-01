@@ -1,6 +1,6 @@
 # Maintainer: Daniel Caixinha <2683004+dcaixinha@users.noreply.github.com>
 pkgname=agent-session-status
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Show coding-agent session status in desktop status bars'
 arch=('x86_64')
@@ -22,7 +22,7 @@ optdepends=(
   'openai-codex-bin: local Codex session events'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e781355eacbb20cd4cf0c6a63b19f8b325ebb1c85910ca932740bc3077174a32')
+sha256sums=('5b6fa414ef5375e8af4b1d29766096371badba811e78a1535966f31e38283dfa')
 
 prepare() {
   cd "$pkgname-$pkgver"
