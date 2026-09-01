@@ -1,0 +1,16 @@
+pkgbase = raind-bin
+	pkgdesc = Terminal weather screensaver with four modes: rain, thunder, snow, meteor (prebuilt binary)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/rokuroo171/raind
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = raind
+	conflicts = raind
+	source_x86_64 = raind-bin-0.3.0-x86_64.tar.gz::https://github.com/rokuroo171/raind/releases/download/v0.3.0/raind_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 1a45834209e93dbf846e520a4809530d29c68026e5aa24944d42475cb30419ad
+	source_aarch64 = raind-bin-0.3.0-aarch64.tar.gz::https://github.com/rokuroo171/raind/releases/download/v0.3.0/raind_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4e47dcf776228a5c2f562e9e620dac87a75a98c0048e7f1b26d25c4e72eae850
+
+pkgname = raind-bin
