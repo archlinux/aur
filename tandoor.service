@@ -11,6 +11,7 @@ DynamicUser=yes
 WorkingDirectory=/var/lib/tandoor
 ReadWritePaths=/var/lib/tandoor
 EnvironmentFile=/etc/tandoor/tandoor.conf
+ExecStartPre=/usr/share/tandoor/venv/bin/python /usr/share/tandoor/manage.py migrate --no-input
 ExecStart=/usr/share/tandoor/venv/bin/gunicorn --chdir /usr/share/tandoor --log-level debug recipes.wsgi:application
 ExecReload=/bin/kill -s HUP $MAINPID
 KillMode=mixed

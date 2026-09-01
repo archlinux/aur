@@ -1,14 +1,15 @@
 # Maintainer: Jérôme de Courval <decje9@gmail.com>
 pkgname=tandoor-recipes-git
-pkgver=1.2.2.r4134.28e554d04
+pkgver=1.2.2.r4969.8bb70710d
 pkgrel=1
 pkgdesc=""
 arch=('any')
 url="https://github.com/TandoorRecipes/recipes"
 license=('GPL')
 groups=()
-depends=()
-makedepends=('git' 'nodejs' 'postgresql' 'postgresql-libs' 'python-virtualenv' 'nginx' 'yarn')
+depends=('python313' 'postgresql' 'postgresql-libs')
+makedepends=('git' 'nodejs' 'yarn')
+optdepends=('nginx: reverse proxy')
 provides=("tandoor-recipes")
 conflicts=("tandoor-recipes")
 replaces=()
@@ -29,10 +30,10 @@ source=(
 noextract=()
 sha1sums=(
     'SKIP' 
-    '2477c21bff44ed1051281dd66a6f13a296db11ca'
+    '2b4fe62b9458512b37e3a44f4e50eaa271677e90'
     'b564ef5c07d98c9983cb891e1e974dbf678e5c73'
     '431a88a4ab33ec118961d80c00e3a5944d2c5691'
-    '6072447d59acbc452b1e4dc5b0064c5ccafae97b'
+    '3eabdaaeba5d356f7d7e4b47680a1e0864249b7f'
     '8d1d8d9a3cf6963cf7eb145d25a3d724479a89c2'
 )
 
@@ -51,7 +52,7 @@ build() {
 
 package() {
 	cd "$srcdir"
-	python -m venv "$pkgdir/usr/share/tandoor/venv"
+	python3.13 -m venv "$pkgdir/usr/share/tandoor/venv"
 	source "$pkgdir/usr/share/tandoor/venv/bin/activate"
 	pip install --isolated --require-virtualenv --cache-dir "$srcdir/pip-cache" --disable-pip-version-check -r "$srcdir/recipes/requirements.txt"
 	find "$pkgdir/usr/share/tandoor/venv" -name __pycache__ -type d -exec rm -rf {} +
