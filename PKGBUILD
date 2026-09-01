@@ -1,6 +1,6 @@
 # Maintainer: sougstron
 pkgname=kanban4ai
-pkgver=0.5.8
+pkgver=0.5.9
 pkgrel=1
 pkgdesc='Native kanban board CLI and TUI driven by AI coding agents'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ optdepends=(
   'xclip: paste images under X11'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('76d5ed876468f9ae9bdd57351c9f8db0342d3a3e477d75b841e66576218ef2da')
+sha256sums=('3f181d55613960123b57a432b74382a4bb2d96b160aa2a119abbf23c27a9146a')
 
 prepare() {
   cd "$pkgname-$pkgver"
