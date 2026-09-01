@@ -1,6 +1,6 @@
 pkgbase = vega-nostr-git
 	pkgdesc = Cross-platform Nostr desktop client with Lightning integration
-	pkgver = 0.15.6
+	pkgver = 0.15.7
 	pkgrel = 1
 	url = https://github.com/hoornet/vega
 	arch = x86_64
