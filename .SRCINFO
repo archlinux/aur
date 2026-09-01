@@ -1,6 +1,6 @@
 pkgbase = python-pysylph
 	pkgdesc = PyO3 bindings and Python interface to sylph, an ultrafast method for containment ANI querying and taxonomic profiling.
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/althonos/pysylph
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = python-pysylph
 	makedepends = python-maturin
 	makedepends = cargo
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/pysylph/pysylph-0.1.2.tar.gz
-	sha256sums = 43d58e3cd22a97d4bfbaa1f3682d1bdb2d13dab44ad66ddaa6bd8374a5361d30
+	source = https://files.pythonhosted.org/packages/source/p/pysylph/pysylph-0.1.3.tar.gz
+	sha256sums = 4e5edeb334ba3efacff16a097d165494f78b019466e74d85ee1673993b05c548
 
 pkgname = python-pysylph
