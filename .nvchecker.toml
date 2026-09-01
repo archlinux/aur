@@ -1,0 +1,4 @@
+[crosspaste-desktop-bin]
+source = "github"
+github = "crosspaste/crosspaste-desktop"
+use_latest_release = true
