@@ -1,17 +1,30 @@
+# Local exact-context loader shim for llama.cpp b10739.
 diff --git a/src/llama-model-loader.cpp b/src/llama-model-loader.cpp
 index 7663797ba..e7c14902b 100644
 --- a/src/llama-model-loader.cpp
 +++ b/src/llama-model-loader.cpp
-@@ -1381,0 +1382,4 @@ struct ggml_tensor * llama_model_loader::create_tensor(
+@@ -1379,6 +1379,10 @@ struct ggml_tensor * llama_model_loader::create_tensor(
+         n_created++;
+     }
++
 +    if (is_lazy) {
 +        lazy_tensors.push_back(tensor);
 +    }
-+
+ 
+     return tensor;
+ }
+ 
 diff --git a/src/llama-model-loader.h b/src/llama-model-loader.h
 index 9e51d0ce7..5426c1d19 100644
 --- a/src/llama-model-loader.h
 +++ b/src/llama-model-loader.h
-@@ -119,0 +120,3 @@ struct llama_model_loader {
+@@ -117,6 +117,9 @@ struct llama_model_loader {
+         std::set<std::string>                  tensors;
+     } lazy;
+ 
 +    // Lazily-read tensors whose mapped rows can be prefetched before a gather.
 +    std::vector<const ggml_tensor *> lazy_tensors;
 +
+     llama_files files;
+     llama_ftype ftype;
+     llama_fver  fver;
