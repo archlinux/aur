@@ -2,7 +2,7 @@
 
 pkgname=umbriel-git
 pkgver=0.1.0.r0.0
-pkgrel=4
+pkgrel=5
 pkgdesc='A Wayland compositor designed for daily use, with scrolling, dwindle, and master layouts, per-output workspaces, window rules, blur, shadows, and fluid animations'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/umbriel'
@@ -55,7 +55,7 @@ build() {
     --buildtype=release \
     --prefix=/usr \
     --wrap-mode=nodownload
-  meson compile -C "$srcdir/umbriel/build"
+  meson compile -C "$srcdir/umbriel/build" umbriel
 }
 
 package() {
