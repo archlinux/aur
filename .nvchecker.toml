@@ -1,0 +1,5 @@
+[yt-dlp-manager-bin]
+source = "github"
+github = "ih8d8/yt-dlp-manager"
+use_latest_release = true
+prefix = "v"
