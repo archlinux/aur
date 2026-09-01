@@ -1,0 +1,21 @@
+pkgbase = tfplantui-git
+	pkgdesc = Interactive terminal UI for exploring Terraform plans as a dependency graph (git version)
+	pkgver = r3.fc76395
+	pkgrel = 1
+	url = https://github.com/omarismail/terraform-plan-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = terraform: open binary .tfplan files directly (runs terraform show -json)
+	optdepends = xclip: clipboard paste support on X11
+	optdepends = wl-clipboard: clipboard paste support on Wayland
+	provides = tfplantui
+	conflicts = tfplantui
+	options = !debug
+	source = tfplantui::git+https://github.com/omarismail/terraform-plan-tui.git
+	sha256sums = SKIP
+
+pkgname = tfplantui-git

@@ -1,0 +1,6 @@
+src/
+pkg/
+tfplantui/
+*.pkg.tar*
+*.tar.gz
+*.log
