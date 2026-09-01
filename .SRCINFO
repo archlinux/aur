@@ -1,6 +1,6 @@
 pkgbase = treelite
 	pkgdesc = Universal model exchange and serialization format for decision tree forests
-	pkgver = 4.7.0
+	pkgver = 4.7.1
 	pkgrel = 1
 	url = https://github.com/dmlc/treelite
 	arch = x86_64
@@ -16,24 +16,29 @@ pkgbase = treelite
 	makedepends = python-numpy
 	makedepends = python-scipy
 	makedepends = python-packaging
-	makedepends = python-hatchling
+	makedepends = python-scikit-build-core
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-setuptools
-	source = treelite-4.7.0.tar.gz::https://github.com/dmlc/treelite/archive/refs/tags/4.7.0.tar.gz
-	sha256sums = d267a3ff3f6c030f127a8066d3cae0545497de901185765635c045df6fa7059e
+	makedepends = mdspan
+	source = treelite::git+https://github.com/dmlc/treelite.git#tag=4.7.1
+	sha256sums = dee2d37a9826bddb2b29b1dba4c020a97e4973d76dc83be5a0546c83c0d9db3e
 
 pkgname = treelite
 	arch = x86_64
-	depends = gcc-libs
-	depends = glibc
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
 	provides = treelite
 	conflicts = treelite
 
 pkgname = python-treelite
 	pkgdesc = Universal model exchange and serialization format for decision tree forests - python
 	arch = x86_64
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
 	depends = python
 	depends = python-numpy
 	depends = python-scipy

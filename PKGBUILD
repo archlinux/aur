@@ -2,7 +2,7 @@
 
 pkgbase=treelite
 pkgname=(treelite python-treelite)
-pkgver=4.7.0
+pkgver=4.7.1
 pkgrel=1
 pkgdesc="Universal model exchange and serialization format for decision tree forests"
 arch=($CARCH)
@@ -22,31 +22,37 @@ makedepends=(
     python-numpy
     python-scipy
     python-packaging
-    python-hatchling
+    python-scikit-build-core
     python-build
     python-installer
     python-wheel
     python-setuptools
+    # AUR
+    mdspan
 )
 checkdepends=()
 optdepends=()
-source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d267a3ff3f6c030f127a8066d3cae0545497de901185765635c045df6fa7059e')
+source=("${pkgbase}::git+${url}.git#tag=${pkgver}")
+sha256sums=('dee2d37a9826bddb2b29b1dba4c020a97e4973d76dc83be5a0546c83c0d9db3e')
 options=()
 
+prepare() {
+    git -C "${srcdir}/${pkgbase}" clean -dfx
+}
+
 build() {
-    cd "${srcdir}/${pkgbase}-${pkgver}/"
+    cd "${srcdir}/${pkgbase}/"
 
     # see：https://wiki.archlinux.org/title/CMake_package_guidelines
     cmake -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -Wno-dev \
+        -Wno-author \
         -B build \
         -G Ninja
 
     ninja -C build
 
-    cd "${srcdir}/${pkgbase}-${pkgver}/python"
+    cd "${srcdir}/${pkgbase}/python"
     python -m build --wheel --no-isolation
 }
 
@@ -55,10 +61,11 @@ package_treelite() {
     provides=(${pkgname})
     conflicts=(${pkgname})
     depends=(
-        gcc-libs
-        glibc
+        libgcc
+        libgomp
+        libstdc++
     )
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgbase}-${pkgver}/build install
+    DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgbase}/build install
 }
 
 package_python-treelite() {
@@ -67,11 +74,14 @@ package_python-treelite() {
     provides=(${pkgname})
     conflicts=(${pkgname})
     depends=(
+        libgcc
+        libgomp
+        libstdc++
         python
         python-numpy
         python-scipy
         python-packaging
     )
-    cd "${srcdir}/${pkgbase}-${pkgver}/python"
+    cd "${srcdir}/${pkgbase}/python"
     python -m installer --destdir="${pkgdir}" dist/*.whl
 }
