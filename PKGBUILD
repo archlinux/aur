@@ -1,7 +1,7 @@
 # Maintainer: Okabe Zero-Link (okbzl) <okabezerolink@gmail.com>
 
 pkgname="degrees-of-lewdity"
-pkgver=0.5.11.9
+pkgver=0.5.12.7
 pkgrel=1
 pkgdesc="Degrees of Lewdity, browser-based NSFW(18+) game by Vrelnir"
 arch=('any')

@@ -1,13 +1,13 @@
 pkgbase = degrees-of-lewdity
 	pkgdesc = Degrees of Lewdity, browser-based NSFW(18+) game by Vrelnir
-	pkgver = 0.5.11.9
+	pkgver = 0.5.12.7
 	pkgrel = 1
 	url = https://vrelnir.blogspot.com
 	arch = any
 	license = cc-by-nc-sa-4.0
 	makedepends = git
 	provides = dol
-	source = degrees-of-lewdity::git+https://gitgud.io/Vrelnir/degrees-of-lewdity.git#tag=0.5.11.9
+	source = degrees-of-lewdity::git+https://gitgud.io/Vrelnir/degrees-of-lewdity.git#tag=0.5.12.7
 	source = dol
 	source = degrees-of-lewdity.desktop
 	source = degrees-of-lewdity.ico
