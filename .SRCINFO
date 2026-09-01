@@ -1,12 +1,14 @@
 pkgbase = opencode-quota
 	pkgdesc = OpenCode plugin for quota & token usage tracking with zero context window pollution
 	pkgver = 4.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/slkiser/opencode-quota
 	install = opencode-quota.install
 	arch = x86_64
 	license = MIT
 	makedepends = npm
+	makedepends = node-gyp
+	makedepends = python
 	depends = gcc-libs
 	depends = nodejs
 	depends = opencode
