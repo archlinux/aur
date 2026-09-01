@@ -1,5 +1,5 @@
 pkgbase = libjxl-0.11
-	pkgdesc = JPEG XL image format reference implementation
+	pkgdesc = JPEG XL image format reference implementation - 0.11 release
 	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
@@ -46,4 +46,4 @@ pkgname = libjxl-0.11
 	depends = libstdc++
 
 pkgname = libjxl-0.11-doc
-	pkgdesc = JPEG XL image format reference implementation (documentation)
+	pkgdesc = JPEG XL image format reference implementation - 0.11 release (documentation)

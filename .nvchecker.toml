@@ -1,4 +1,5 @@
-[libjxl]
+["libjxl-0.11"]
 source = "git"
 git = "https://github.com/libjxl/libjxl.git"
 prefix = "v"
+include_regex = 'v0\.11\.\d+'
