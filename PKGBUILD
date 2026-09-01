@@ -1,8 +1,8 @@
 # Maintainer: Byeonghoon Yoo <bhyoo@bhyoo.com>
 
 pkgname=stably-orca
-pkgver=1.4.193
-pkgrel=2
+pkgver=1.4.194
+pkgrel=1
 pkgdesc='Stably AI Orca agentic coding IDE and headless runtime (built from source)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/stablyai/orca'
@@ -55,7 +55,7 @@ conflicts=('stably-orca-bin' 'stably-orca-git' 'orca-ide' 'orca-ide-bin')
 options=('!strip' '!debug')
 install=stably-orca.install
 
-_pnpmver=10.24.0
+_pnpmver=12.0.0
 _electronmajor=43
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
@@ -70,8 +70,14 @@ source=(
   'stably-orca-serve.env.example'
   'stably-orca-serve-kwin.conf.example'
 )
-sha256sums=('2faaa8b63f5ed537dc37b130409c64c8c2f45956cb5f70ccca5b695018e37eab'
-            '196f4bd174ebcbd99786b33452f144cb2dc32ef4e7138ed44491e9d43d702d75'
+source_x86_64=(
+  "pnpm-exe-linux-x64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-x64/-/exe.linux-x64-$_pnpmver.tgz"
+)
+source_aarch64=(
+  "pnpm-exe-linux-arm64-$_pnpmver.tgz::https://registry.npmjs.org/@pnpm/exe.linux-arm64/-/exe.linux-arm64-$_pnpmver.tgz"
+)
+sha256sums=('e0278e1465ddd0d64db4907886b727bdde449230076ddd191edf7c469f546616'
+            '5ef12ab545a211627c23f05eb589a051e6c207a3f2c3382add8f0573400b871d'
             'd76ba8a9856aa7181a41bccb1bb7a09b10cc990b0a6d680c328af75eb185c90d'
             '0d8e816f7dd5d46b9da40748ac7a0d709adfd7f09d79ffe71327b60c5c5abbb7'
             '77a10524dc1b971fecd99a5be47b13f93021b0882495ed32a37d12a2f7fed835'
@@ -81,12 +87,42 @@ sha256sums=('2faaa8b63f5ed537dc37b130409c64c8c2f45956cb5f70ccca5b695018e37eab'
             'aba5146aed46aa61abf4000285460f088698f618991d81ef9730d408173cc253'
             'c97fe80d1e55c274207f62c6b388ae4573627028624ae73bcabd0eabcc7d76e5'
             'eacec99a44af83ed452e367f343e69042a21f8d9750f15a6447b7de2991146a0')
-noextract=("pnpm-$_pnpmver.tgz")
+sha256sums_x86_64=('d0c64efab39d560ef3ae4dc8be5dd08951e5409ed2d53cb6b8317b7713c26333')
+sha256sums_aarch64=('e227252e352b8023fd1151fbe36eeb934a26eef2e0c327b8d1a1aad7b4bfbd90')
+noextract=(
+  "pnpm-$_pnpmver.tgz"
+  "pnpm-exe-linux-x64-$_pnpmver.tgz"
+  "pnpm-exe-linux-arm64-$_pnpmver.tgz"
+)
 
 prepare() {
+  local pnpm_platform
+  case $CARCH in
+    x86_64) pnpm_platform=linux-x64 ;;
+    aarch64) pnpm_platform=linux-arm64 ;;
+    *)
+      printf 'ERROR: unsupported pnpm platform for architecture %s\n' "$CARCH" >&2
+      return 1
+      ;;
+  esac
+
   rm -rf "$srcdir/pnpm"
   install -d "$srcdir/pnpm"
   bsdtar -xf "$srcdir/pnpm-$_pnpmver.tgz" --strip-components 1 -C "$srcdir/pnpm"
+
+  local pnpm_exe="$srcdir/pnpm/node_modules/@pnpm/exe.$pnpm_platform"
+  install -d "$pnpm_exe"
+  bsdtar -xf "$srcdir/pnpm-exe-$pnpm_platform-$_pnpmver.tgz" \
+    --strip-components 1 -C "$pnpm_exe"
+  node "$srcdir/pnpm/install.js"
+
+  local pnpm_version
+  pnpm_version=$("$srcdir/pnpm/pnpm" --version)
+  if [[ $pnpm_version != "$_pnpmver" ]]; then
+    printf 'ERROR: expected pnpm %s, found %s\n' \
+      "$_pnpmver" "$pnpm_version" >&2
+    return 1
+  fi
 
   cd "$srcdir/orca-$pkgver"
   python - <<'PY'
@@ -124,7 +160,7 @@ build() {
     return 1
   fi
 
-  local pnpm=(node "$srcdir/pnpm/bin/pnpm.cjs")
+  local pnpm=("$srcdir/pnpm/pnpm")
 
   export HOME="$srcdir/.home"
   export XDG_CACHE_HOME="$srcdir/.cache"
