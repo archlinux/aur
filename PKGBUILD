@@ -3,6 +3,7 @@
 pkgname=goben
 pkgver=1.0.3
 pkgrel=3
+# pkglint: ignore=PB906
 pkgdesc="goben is a golang tool to measure TCP/UDP transport layer throughput between hosts."
 arch=('x86_64' 'aarch64')
 url="https://github.com/udhos/goben"
