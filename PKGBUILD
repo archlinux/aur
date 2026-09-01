@@ -30,7 +30,7 @@ _cuda_arch="${CUDA_ARCH:-75;86;89;120}"
 
 pkgname=voxtype-cuda
 _pkgname=voxtype
-pkgver=0.7.5
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Pure CUDA version of the push-to-talk voice-to-text tool"
 arch=(x86_64 aarch64)
@@ -55,11 +55,10 @@ makedepends=(
     gtk4
     gtk4-layer-shell
     onnxruntime-cuda
+    gtk4-layer-shell
 )
 optdepends=(
     'dotool: keyboard simulation with layout support (KDE/GNOME compatible)'
-    'gtk4: runtime for the GTK4 on-screen mic visualizer (voxtype-osd-gtk4)'
-    'gtk4-layer-shell: runtime for the GTK4 on-screen mic visualizer'
     'libnotify: desktop notifications'
     'onnxruntime-cuda: required for ONNX engines'
     'onnxruntime-opt-cuda: required for ONNX engines (with CUDA and AVX2 CPU optimizations)'
@@ -78,7 +77,7 @@ source=(
   "$_pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz"
   "$_pkgname-$pkgver.tar.gz.asc::https://github.com/peteonrails/voxtype/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz.asc"
 )
-sha256sums=('0efb2a1d188cdbc5c63d1aa29e253e41b1320835a1c2b05d95ea6e7c011ff03f'
+sha256sums=('a4d0a256167f58ce90153077da82620794422f5172c918625d480ff9ffca625e'
             'SKIP')
 
 prepare() {
@@ -190,12 +189,16 @@ build() {
         --bin voxtype-osd \
         --bin voxtype-osd-gtk4 \
         --bin voxtype-osd-native \
+        --bin voxtype-osd-quickshell \
+        --bin voxtype-audio-bridge \
         --features osd-gtk4,osd-native \
         --config 'profile.release.lto=false' \
         --config 'profile.release.codegen-units=8'
     cp target/release/voxtype-osd voxtype-osd
     cp target/release/voxtype-osd-gtk4 voxtype-osd-gtk4
     cp target/release/voxtype-osd-native voxtype-osd-native
+    cp target/release/voxtype-osd-quickshell voxtype-osd-quickshell
+    cp target/release/voxtype-audio-bridge voxtype-audio-bridge
 }
 
 check() {
@@ -228,7 +231,36 @@ package() {
     install -Dm755 "voxtype-onnx" "$pkgdir/usr/lib/voxtype/voxtype-onnx"
     install -Dm755 "voxtype-osd" "$pkgdir/usr/lib/voxtype/voxtype-osd"
     install -Dm755 "voxtype-osd-gtk4" "$pkgdir/usr/lib/voxtype/voxtype-osd-gtk4"
+    install -Dm755 "voxtype-osd-native" "$pkgdir/usr/lib/voxtype/voxtype-osd-native"
+    install -Dm755 "voxtype-osd-quickshell" "$pkgdir/usr/lib/voxtype/voxtype-osd-quickshell"
     ln -sf /usr/lib/voxtype/voxtype-osd "$pkgdir/usr/bin/voxtype-osd"
+
+    # voxtype-audio-bridge: NDJSON sidecar streaming audio levels over a
+    # UNIX socket to the Quickshell OSD. Installed to /usr/bin so the
+    # quickshell launcher can exec it by basename.
+    install -Dm755 "voxtype-audio-bridge" "$pkgdir/usr/bin/voxtype-audio-bridge"
+
+    # Quickshell QML tree. voxtype-osd-quickshell probes
+    # /usr/share/voxtype/quickshell/ for shell.qml after user/runtime paths,
+    # so shipping these files lets users opt in via
+    # [osd] frontend = "quickshell" without copying anything by hand.
+    # The voxtype-shared/ subdir holds a QML module registered via qmldir.
+    install -Dm644 "quickshell/shell.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/shell.qml"
+    install -Dm644 "quickshell/OsdSurface.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/OsdSurface.qml"
+    install -Dm644 "quickshell/EnginePicker.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/EnginePicker.qml"
+    install -Dm644 "quickshell/MeetingControls.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/MeetingControls.qml"
+    install -Dm644 "quickshell/voxtype-shared/Theme.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/Theme.qml"
+    install -Dm644 "quickshell/voxtype-shared/StateReader.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/StateReader.qml"
+    install -Dm644 "quickshell/voxtype-shared/AudioBridge.qml" \
+        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/AudioBridge.qml"
+    install -Dm644 "quickshell/voxtype-shared/qmldir" \
+        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/qmldir"
 
     # Desktop entry for the TUI configure command, surfaced in walker/rofi/fuzzel/etc.
     install -Dm755 "packaging/scripts/voxtype-configure-launcher" \
