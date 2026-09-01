@@ -1,6 +1,6 @@
 pkgbase = r-ipred
 	pkgdesc = Improved Predictors
-	pkgver = 0.9.15
+	pkgver = 0.9.16
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ipred
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-ipred
 	optdepends = r-party
 	optdepends = r-randomforest
 	optdepends = r-th.data
-	source = https://cran.r-project.org/src/contrib/ipred_0.9-15.tar.gz
-	sha256sums = a4752de11121262f3f4c43163efa34e05e42cdf4f8496d8897be6f410dc0ee4b
+	source = https://cran.r-project.org/src/contrib/ipred_0.9-16.tar.gz
+	sha256sums = 8ad3a28abb63e3918fd83b153be0a2973d7576ac5e4819473a9c623dcf0d9303
 
 pkgname = r-ipred
