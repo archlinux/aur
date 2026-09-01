@@ -7,12 +7,16 @@
 
 pkgname=hakubun-plus-git
 pkgver=r1945.0e29e7f
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-site anime/manga list manager; independent Trackma fork with Taiga mode"
 arch=('any')
 url="https://github.com/trektn/hakubun-plus"
 license=('GPL-3.0-or-later')
-depends=('python')
+depends=(
+  'python'
+  'python-anitomy-ng-bin>=1.0.9'
+  'opencc>=1.1'
+)
 conflicts=('hakubun-git')
 
 makedepends=(
@@ -30,7 +34,6 @@ optdepends=('python-cairo:      GTK frontend'
     'python-inotify:   inotify-based tracker alternative (AUR)'
     'python-jeepney:   MPRIS tracker'
     'python-anitopy-git: filename parsing via anitopy (AUR)'
-    'python-anitomy-ng-bin: filename parsing via anitomy-ng (AUR)'
     'python-pypresence: Discord Rich Presence support'
     'lsof:             polling tracker/pyinotify alternative')
 
