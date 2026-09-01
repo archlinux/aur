@@ -1,29 +1,20 @@
 # Maintainer: Wellinton Vieira <wellintonvieira.office@gmail.com>
 
 pkgname="aurup"
-pkgver="1.78"
-pkgrel=1
+pkgver="1.79"
+pkgrel=2
 pkgdesc="The simplify finding and installing packages AUR helper"
-arch=("x86_64")
+arch=("any")
 url="https://github.com/nellowint/$pkgname"
-license=("GNU")
-depends=("bash-completion" "curl" "jq" "tar")
+license=("GPL-3.0-or-later")
+depends=("bash-completion" "curl" "diff" "jq" "tar")
 makedepends=("git")
-source=("git+https://github.com/nellowint/$pkgname.git")
-md5sums=("SKIP")
+source=("git+https://github.com/nellowint/$pkgname.git#tag=v$pkgver")
+sha256sums=('5eb3985221f4f292d3964d3a59939be5fa03e60ad461652b5002bf8c5921f404')
 
 package() {
 	cd "$pkgname"
-	install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname.sh"
-	sudo install -Dm755 "$pkgname-complete.sh" "/usr/share/bash-completion/completions/$pkgname-complete.sh"
-	install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-
-	sed -i "/$pkgname/d" "/$HOME/.bashrc"
-
-	echo -e "\n\nif [ -e /usr/bin/$pkgname.sh ]; then #$pkgname
-	alias $pkgname='sh /usr/bin/$pkgname.sh' #$pkgname
-	source /usr/share/bash-completion/completions/$pkgname-complete.sh #$pkgname
-fi #$pkgname" >> "/$HOME/.bashrc"
-
-	echo $(source "/$HOME/.bashrc")
+	install -Dm755 "$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
+	install -Dm644 "$pkgname-complete.sh" "$pkgdir/usr/share/bash-completion/completions/$pkgname"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
