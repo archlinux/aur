@@ -95,6 +95,9 @@ prepare() {
 
   # do not mark dirty
   sed -i '/dirty=/c dirty=' tools/git-version-gen
+
+  # Skip kill/decode, as it adds RT0 in an unexpected way
+  sed -i '/ts_skip_qemu_user/ ats_skip "Possible unexpected RT0 in output"' tests/ts/kill/decode
 }
 
 build() {
