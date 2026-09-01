@@ -1,0 +1,19 @@
+pkgbase = python-vapid
+	pkgdesc = Simple VAPID header generation library
+	pkgver = 1.9.4
+	pkgrel = 1
+	url = https://pypi.org/project/py-vapid/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	makedepends = python-pytest
+	depends = python
+	depends = python-cryptography
+	source = https://files.pythonhosted.org/packages/source/p/py_vapid/py_vapid-1.9.4.tar.gz
+	sha256sums = a004023560cbc54e34fc06380a0580f04ffcc788e84fb6d19e9339eeb6551a28
+
+pkgname = python-vapid
