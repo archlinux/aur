@@ -1,9 +1,10 @@
 pkgbase = qt5-connectivity
 	pkgdesc = Provides access to Bluetooth hardware
 	pkgver = 5.15.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
+	arch = aarch64
 	groups = qt5
 	license = GPL3
 	license = LGPL3
