@@ -2,20 +2,20 @@
 # Contributor: Konstantin Shalygin <k0ste@k0ste.ru>
 
 pkgname='mstflint'
-pkgver='4.36.0.1'
-_pkgver='4.36.0-1'
+pkgver='4.37.0.1'
+_pkgver='4.37.0-1'
 pkgrel='1'
 pkgdesc='Open source version of MFT (Mellanox Firmware Tools)'
 arch=('x86_64' 'aarch64')
-_uri="Mellanox/${pkgname}"
-url="https://github.com/${_uri}"
+_uri="github.com/Mellanox/${pkgname}"
+url="https://${_uri}"
 license=('GPL2' 'custom:"OpenIB.org BSD"')
 depends=('python' 'iniparser' 'openssl' 'libxml2' 'libidn2' 'libpsl'
 	 'libunistring' 'zlib' 'xz' 'icu' 'keyutils' 'brotli' 'sqlite'
 	 'libxml2' 'jsoncpp' 'curl' 'libnghttp2')
 makedepends=('rdma-core')
-source=("${pkgname}-${_pkgver}.tar.gz::https://codeload.github.com/${_uri}/tar.gz/refs/tags/v${_pkgver}")
-sha256sums=('ea36a77a561d2908ac4358ba2106d0ee8b2ddfe98b40a05d1c374a40a2330569')
+source=("${pkgname}-${_pkgver}.tar.gz::https://codeload.${_uri}/tar.gz/refs/tags/v${_pkgver}")
+sha256sums=('75405d8c7594c25a686eba0edfa4101312f3b63cdabae4870b259b796041a15a')
 
 prepare() {
   cd "${pkgname}-${_pkgver}"
@@ -28,6 +28,7 @@ prepare() {
     --sysconfdir="/etc" \
     --localstatedir="/var/${pkgname}" \
     --enable-fw-mgr \
+    --enable-nvfwreset \
     --enable-adb-generic-tools \
     --enable-xml2
 }
