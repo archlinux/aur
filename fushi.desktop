@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Fushi
+GenericName=Immersion language-learning suite
+Comment=EPUB reader, video subtitle lookup, audiobook sync, and one-tap Anki mining
+Exec=/usr/lib/fushi/hibiki
+Icon=fushi
+Terminal=false
+StartupWMClass=com.example.hibiki
+Categories=Education;Languages;
+Keywords=language;immersion;epub;anki;japanese;

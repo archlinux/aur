@@ -1,0 +1,26 @@
+pkgbase = fushi
+	pkgdesc = Immersion language-learning suite: EPUB reader, video subtitle lookup, audiobook sync, and one-tap Anki mining
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/hajisensai/Fushi
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkg-config
+	makedepends = unzip
+	depends = gtk3
+	depends = libkeybinder3
+	depends = mpv
+	optdepends = qbittorrent: fallback torrent engine when the bundled libtorrent is unavailable
+	source = https://github.com/hajisensai/Fushi/archive/refs/tags/v2.1.1.tar.gz#/fushi-2.1.1.tar.gz
+	source = https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.44.0-stable.tar.xz
+	source = fix-hoshidicts-includes.patch
+	source = fushi.desktop
+	sha256sums = 540e087ecdf33293a5cd8329049fcc7b05da5337429eb6db68ef650cbbaa4844
+	sha256sums = e1ec95e6c550458a34de93580cb85dac24da0e9bedb9bb42811f050ac5a0c7d5
+	sha256sums = ebaa703fe2bf866265c01d47e2bb2bf1195b654fce98fe7ad3ced2dfd8c81038
+	sha256sums = d433c22716392af6845ad58ec5b243487c21076a7b1017d704ef84b14909afaf
+
+pkgname = fushi

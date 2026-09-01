@@ -1,0 +1,19 @@
+Local Linux build fix: hoshidicts headers/sources assume MSVC's transitive
+standard includes; clang needs explicit <cstdint>/<climits>.
+
+--- a/native/hoshidicts/hoshidicts_include/hoshidicts/query.hpp
++++ b/native/hoshidicts/hoshidicts_include/hoshidicts/query.hpp
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <vector>
+--- a/native/hoshidicts/hoshidicts_src/lookup.cpp
++++ b/native/hoshidicts/hoshidicts_src/lookup.cpp
+@@ -5,3 +5,4 @@
+ #include <algorithm>
++#include <climits>
+ #include <map>
+ #include <ranges>
