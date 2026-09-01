@@ -1,5 +1,5 @@
 pkgname=hyprmoncfg-bin
-pkgver=1.16.1
+pkgver=1.16.2
 pkgrel=1
 pkgdesc="Terminal-first monitor configurator and auto-switching daemon for Hyprland"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('hyprmoncfg' 'hyprmoncfg-git')
 options=('!debug' '!strip')
 source_x86_64=("${url}/releases/download/v${pkgver}/hyprmoncfg_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/hyprmoncfg_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('2394eee3d19963917ccee97b831ba817f9273e05f0b0db5c6ce96efd45a7c075')
-sha256sums_aarch64=('cab04f80fd14784d6ede908dde05fd4f2701b5d3914070325e10d8e2c0ed29b4')
+sha256sums_x86_64=('68f249b84854d0e006321cd86857858885823c8262e9df0f0972d0586b56544a')
+sha256sums_aarch64=('9a11f721d6265af55820c9d57c3eadf1b29f16563c021d80260cbc521e662760')
 
 package() {
   install -Dm755 "${srcdir}/hyprmoncfg" "${pkgdir}/usr/bin/hyprmoncfg"
