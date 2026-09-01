@@ -4,7 +4,7 @@
 : "${_use_cuda:=detect}"
 
 pkgname=helios-git
-pkgver=0.5.2.r0.g7f7fc9d
+pkgver=0.6.0.r0.g21bfed7
 pkgrel=1
 pkgdesc='Game stream host for Selene and Moonlight OS (development version)'
 arch=('x86_64' 'aarch64')
@@ -26,6 +26,7 @@ checkdepends=('xorg-server-xvfb')
 optdepends=(
   'cuda: Nvidia GPU encoding support'
   'libva-mesa-driver: AMD GPU encoding support'
+  'sway: Isolated virtual displays on Linux hosts without an existing Sway session'
 )
 provides=('helios')
 conflicts=('helios' 'helios-bin')

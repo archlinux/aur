@@ -1,6 +1,6 @@
 pkgbase = helios-git
 	pkgdesc = Game stream host for Selene and Moonlight OS (development version)
-	pkgver = 0.5.2.r0.g7f7fc9d
+	pkgver = 0.6.0.r0.g21bfed7
 	pkgrel = 1
 	url = https://github.com/moonlight-os/helios
 	install = helios.install
@@ -48,6 +48,7 @@ pkgbase = helios-git
 	depends = which
 	optdepends = cuda: Nvidia GPU encoding support
 	optdepends = libva-mesa-driver: AMD GPU encoding support
+	optdepends = sway: Isolated virtual displays on Linux hosts without an existing Sway session
 	provides = helios
 	conflicts = helios
 	conflicts = helios-bin
