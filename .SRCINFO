@@ -13,7 +13,6 @@ pkgbase = zshell
 	makedepends = rust
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = nuitka
 	depends = python
 	depends = python-pillow
 	depends = python-materialyoucolor

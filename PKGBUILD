@@ -7,7 +7,7 @@ url='https://git.zach-dev.cc/zach/z-bar-qt'
 license=('GPL-3.0-only')
 depends=('python' 'python-pillow' 'python-materialyoucolor' 'libnotify' 'swappy' 'dart-sass'
 	'app2unit' 'wl-clipboard' 'dconf' 'cliphist' 'python-typer' 'qt6-canvaspainter')
-makedepends=('python-build' 'python-installer' 'python-hatch' 'python-hatch-vcs' 'cargo' 'rust' 'cmake' 'ninja' 'nuitka')
+makedepends=('python-build' 'python-installer' 'python-hatch' 'python-hatch-vcs' 'cargo' 'rust' 'cmake' 'ninja')
 source=("$pkgname::git+$url.git#branch=main")
 options=('!lto')
 sha256sums=('SKIP')
@@ -23,7 +23,10 @@ build() {
 	cargo build --release
 
 	cd "${srcdir}/${pkgname}"
-	cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/
+	cmake -B build -G Ninja \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/ \
+		-DENABLE_MODULES="plugin;shell;cli;m3shapes"
 	cmake --build build
 }
 
