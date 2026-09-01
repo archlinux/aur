@@ -2,7 +2,7 @@
 # Co-Maintainer: Dongda Li <dongdongbhbh at gmail dot com>
 pkgname=mindwtr
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 _nodeversion=24
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
 arch=('x86_64')
@@ -19,13 +19,13 @@ depends=(
   'webkit2gtk-4.1'
 )
 makedepends=(
-  'pnpm'
   'cargo'
   'cargo-tauri'
   'clang'
   'cmake'
   'git'
   'nvm'
+  'pnpm'
   'python'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dongdongbh/Mindwtr/archive/refs/tags/v$pkgver.tar.gz"
@@ -54,10 +54,13 @@ prepare() {
   _ensure_local_nvm
   nvm install "${_nodeversion}"
 
-  cp "$srcdir/pnpm-lock.yaml" pnpm-lock.yaml
-  cp "$srcdir/pnpm-workspace.yaml" pnpm-workspace.yaml
-  pnpm install --frozen-lockfile --ignore-scripts --store-dir "$srcdir/pnpm-store"
-  sed -i 's/\"beforeBuildCommand\": \"bun run build:vite\"/\"beforeBuildCommand\": \"pnpm run build:vite\"/' apps/desktop/src-tauri/tauri.conf.json
+  cp -f "$srcdir/pnpm-lock.yaml" pnpm-lock.yaml
+  cp -f "$srcdir/pnpm-workspace.yaml" pnpm-workspace.yaml
+
+  export PNPM_HOME="$srcdir/pnpm-home"
+  pnpm install --frozen-lockfile --ignore-scripts
+  sed -i 's/\"beforeBuildCommand\": \"bun run build:vite\"/\"beforeBuildCommand\": \"pnpm run build:vite\"/' \
+    apps/desktop/src-tauri/tauri.conf.json
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --manifest-path apps/desktop/src-tauri/Cargo.toml \
@@ -68,6 +71,7 @@ build() {
   cd "Mindwtr-$pkgver/apps/desktop"
   CFLAGS+=" -ffat-lto-objects"
   CXXFLAGS+=" -ffat-lto-objects"
+  export PNPM_HOME="$srcdir/pnpm-home"
   export OPENSSL_NO_VENDOR=1
   export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
   export RUSTUP_TOOLCHAIN=stable
@@ -78,6 +82,8 @@ build() {
 
 check() {
   cd "Mindwtr-$pkgver/apps/desktop"
+  export PNPM_HOME="$srcdir/pnpm-home"
+  _ensure_local_nvm
 
   # Run the desktop Vitest suite, but do not fail the package build on test failures.
   pnpm run test || :

@@ -8,4 +8,5 @@
 !.nvchecker.toml
 !LICENSE
 !mindwtr.desktop
-!tauri-v2-schema.patch
+!pnpm-lock.yaml
+!pnpm-workspace.yaml
