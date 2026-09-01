@@ -2,39 +2,34 @@
 # Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='avx-turbo'
-pkgver='0.0.1'
-_gitver='9cfe8bf3089636b98d9a7eaa97b9fef268004a1b'
-pkgrel='2'
+pkgver='0.1.0'
+pkgrel='1'
 pkgdesc='Test the non-AVX, AVX2 and AVX-512 speeds across various active core counts'
 arch=('x86_64' 'aarch64')
-url="https://github.com/travisdowns/${pkgname}"
+_uri="github.com/travisdowns/${pkgname}"
+url="https://${_uri}"
 license=('MIT')
-makedepends=('git' 'gcc' 'make' 'clang' 'nasm')
-source=("git+${url}.git#commit=${_gitver}")
-sha256sums=('a6ce9639fa99f54c0fbd96488038f4ab4423e2a2566944c4ee78536ac4cb6f77')
+makedepends=('git' 'gcc' 'make' 'nasm')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/tar.gz/refs/tags/v${pkgver}")
+sha256sums=('47b94f747c070ff8a879ed169dd8800f4512de30aea28900d811dfbc12a3a6f9')
 
 prepare() {
-  cd "${pkgname}"
-
   # Use system nasm
-  sed --in-place --expression 's|./nasm-2.13.03/nasm|/usr/bin/nasm|g' \
-    "config.mk"
-  sed --in-place --expression 's|\|\||\&\&|g' \
-    "asm-methods.asm"
+  sed --in-place \
+    --expression 's|./nasm-2.13.03/nasm|/usr/bin/nasm|g' \
+    "${pkgname}-${pkgver}/config.mk"
 }
 
 build() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
   make
 }
 
 check() {
-  cd "${pkgname}"
-  ./unit-test
+  ./"${pkgname}-${pkgver}/unit-test"
 }
 
 package() {
-  cd "${pkgname}"
-  install -Dm0755 "${pkgname}" -t "${pkgdir}/usr/bin"
-  install -Dm0644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm0755 "${pkgname}-${pkgver}/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm0644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
