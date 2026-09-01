@@ -1,0 +1,33 @@
+pkgbase = sonora-bin
+	pkgdesc = A native music streaming client, built with Rust and GPUI
+	pkgver = 0.28.0
+	pkgrel = 1
+	url = https://github.com/nolight132/sonora
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = alsa-lib
+	depends = dbus
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = vulkan-radeon: Vulkan driver for AMD GPUs
+	optdepends = vulkan-intel: Vulkan driver for Intel GPUs
+	optdepends = nvidia-utils: Vulkan driver for NVIDIA GPUs
+	provides = sonora=0.28.0
+	conflicts = sonora
+	options = !strip
+	options = !debug
+	source = https://github.com/nolight132/sonora/archive/refs/tags/v0.28.0/sonora-0.28.0.tar.gz
+	sha256sums = ab0b2c9e2294f68bfd49fa8592a768b2c6c591950ed174f12043c5389554e6e6
+	source_x86_64 = sonora-0.28.0-x86_64::https://github.com/nolight132/sonora/releases/download/v0.28.0/sonora-v0.28.0-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = 73e47a99c18210506feefd7a99d82df8eb3900e24aee41f0a0a7be1ce76dfc66
+	source_aarch64 = sonora-0.28.0-aarch64::https://github.com/nolight132/sonora/releases/download/v0.28.0/sonora-v0.28.0-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 68e38d569ee8ba484376ece3036c4ba2b73f34db6c877ba652e8bfe20ae99f0a
+
+pkgname = sonora-bin
