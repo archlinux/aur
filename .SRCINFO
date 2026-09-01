@@ -1,11 +1,11 @@
 pkgbase = ibazel-bin
 	pkgdesc = Tool for building Bazel targets when source files change.
 	pkgver = 0.33.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bazelbuild/bazel-watcher
 	arch = x86_64
 	arch = aarch64
-	license = Apache
+	license = Apache-2.0
 	conflicts = ibazel
 	conflicts = ibazel-git
 	source = LICENSE-0.33.0::https://raw.githubusercontent.com/bazelbuild/bazel-watcher/v0.33.0/LICENSE

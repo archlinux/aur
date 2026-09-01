@@ -3,10 +3,10 @@
 
 pkgname=ibazel-bin
 pkgver=0.33.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for building Bazel targets when source files change.'
 arch=('x86_64' 'aarch64')
-license=('Apache')
+license=('Apache-2.0')
 url='https://github.com/bazelbuild/bazel-watcher'
 conflicts=('ibazel' 'ibazel-git')
 source=(
