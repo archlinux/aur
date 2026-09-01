@@ -2,7 +2,7 @@
 
 pkgname=sx-cli-git
 _pkgname=sx
-pkgver=2.3.8.r0.g63a1f94
+pkgver=2.3.8.0.g63a1f94
 pkgrel=1
 pkgdesc="Your team's private npm for AI assets - skills, MCP configs, commands, and more"
 arch=('x86_64' 'aarch64' 'armv7h' 'i686')
@@ -17,8 +17,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/-/./g' ||
+  printf "0.0.0.%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -42,8 +42,13 @@ build() {
   local _date
   _date=$(date -u -d "@${SOURCE_DATE_EPOCH:-$(date +%s)}" +"%Y-%m-%dT%H:%M:%SZ" 2>/dev/null || date -u +"%Y-%m-%dT%H:%M:%SZ")
 
+  # Use the upstream semver tag (e.g. 2.3.8-0-g63a1f94) for the embedded
+  # version so sx's go-semver-based auto-updater can parse it.
+  local _upstream_ver
+  _upstream_ver=$(git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//')
+
   go build -ldflags "-compressdwarf=false -linkmode=external -s -w \
-    -X github.com/sleuth-io/sx/v2/internal/buildinfo.Version=v${pkgver} \
+    -X github.com/sleuth-io/sx/v2/internal/buildinfo.Version=v${_upstream_ver} \
     -X github.com/sleuth-io/sx/v2/internal/buildinfo.Commit=${_commit} \
     -X github.com/sleuth-io/sx/v2/internal/buildinfo.Date=${_date}" \
     -o "build/$_pkgname" ./cmd/sx
