@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requesto-bin
 _pkgname=Requesto
-pkgver=1.7.0
+pkgver=1.8.0
 _electronversion=44
 pkgrel=1
 pkgdesc="A modern, lightweight, self-hostable API client. No accounts, no cloud, no telemetry.(Prebuilt version.Use system-wide electron)"
@@ -28,7 +28,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/t3rr11/Requesto/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('b0aa2dd6e79415aa03f0bc4c7ac2f93bcc84eda9626b389c5f74acc99fb6717f'
+sha256sums=('8bf37c7155e56f829ac76287cf7468a8a8b4b38bb64778b831c8c9d967463cf1'
             'baa265fc2389eb1ac3a489bd8fdb9255614a801f0b1624faf107c5a0d0c1bd66'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
