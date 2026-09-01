@@ -1,0 +1,23 @@
+pkgbase = washy-washy-cli-bin
+	pkgdesc = Turns a JSON chart of laundry piles into a phone PDF and a printable PDF
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://github.com/alrayyes/washy-washy-cli
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = glibc
+	provides = washy-washy-cli
+	conflicts = washy-washy-cli
+	options = !strip
+	options = !debug
+	source_x86_64 = washy-washy-cli-3.1.1-x86_64::https://github.com/alrayyes/washy-washy-cli/releases/download/v3.1.1/washy-washy-cli-linux-x64
+	source_x86_64 = washy-washy-cli.1.gz::https://github.com/alrayyes/washy-washy-cli/releases/download/v3.1.1/washy-washy-cli.1.gz
+	sha256sums_x86_64 = a632bc0a8dad319000d93dc534e7ee9ca3cd92e970f6531b08e2d08a46a94d93
+	sha256sums_x86_64 = c5934ae1e33212bffd8aeee54babe1c2e83ca342de85c3b5082d7e9104e0e068
+	source_aarch64 = washy-washy-cli-3.1.1-x86_64::https://github.com/alrayyes/washy-washy-cli/releases/download/v3.1.1/washy-washy-cli-linux-arm64
+	source_aarch64 = washy-washy-cli.1.gz::https://github.com/alrayyes/washy-washy-cli/releases/download/v3.1.1/washy-washy-cli.1.gz
+	sha256sums_aarch64 = a632bc0a8dad319000d93dc534e7ee9ca3cd92e970f6531b08e2d08a46a94d93
+	sha256sums_aarch64 = c5934ae1e33212bffd8aeee54babe1c2e83ca342de85c3b5082d7e9104e0e068
+
+pkgname = washy-washy-cli-bin
