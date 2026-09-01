@@ -7,7 +7,15 @@ pkgrel=1
 pkgdesc='Qt 6 wrapper for existing OPC UA stacks'
 arch=('x86_64' 'aarch64')
 url='https://www.qt.io'
-license=('GPL3' 'LGPL3' 'FDL' 'custom')
+license=(LGPL-3.0-only
+         GPL-2.0-only
+         LicenseRef-Qt-Commercial
+         MPL-2.0
+         CC0-1.0
+         CC-BY-SA-4.0
+         BSD-3-Clause
+         Apache-2.0
+         MIT)
 depends=('qt6-base' 'openssl')
 makedepends=('git' 'cmake' 'ninja' 'qt6-declarative')
 groups=('qt6')
