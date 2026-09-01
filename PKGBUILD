@@ -3,14 +3,14 @@
 
 pkgname='nginx-vts-exporter'
 pkgver='0.10.8'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Prometheus exporter for Nginx vts stats'
 arch=('x86_64' 'aarch64')
 _uri='github.com/sysulq'
 url="https://${_uri}/${pkgname}"
 license=('MIT')
-makedepends=('go')
-source=("${url}/archive/v${pkgver}.tar.gz"
+makedepends=('go' 'git')
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgname}/tar.gz/refs/tags/v${pkgver}"
         "${pkgname}.service")
 sha256sums=('2fc964f1129f732beaf10722380d61754c4f0744c48a2ab11028428eff45ce11'
             '7838c08b3299d2d6d5bb0b6c281f1fcee8f9dc254bfb5e1a8d59699e52495f06')
@@ -18,7 +18,12 @@ sha256sums=('2fc964f1129f732beaf10722380d61754c4f0744c48a2ab11028428eff45ce11'
 prepare() {
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
+  export GOTMPDIR="${GOPATH}/tmp"
+  export GOCACHE="${srcdir}/cache/go-cache"
+  export GOMODCACHE="${srcdir}/cache/go"
   mkdir -p "${GOPATH}/src/${_uri}"
+  mkdir -p "${GOTMPDIR}"
+  eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgname}"
 }
 
@@ -26,7 +31,7 @@ build() {
   cd "${GOPATH}/src/${_uri}/${pkgname}"
   eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" BUILDTAGS="netgo static_build" \
-  go build -x \
+  go build \
     -buildmode="pie" \
     -trimpath \
     -mod="readonly" \
@@ -39,7 +44,13 @@ build() {
     -X github.com/prometheus/common/version.BuildDate=$(date -u '+%Y%m%d-%H:%M:%S' --date=@${SOURCE_DATE_EPOCH})"
 }
 
+check() {
+  cd "${GOPATH}/src/${_uri}/${pkgname}"
+  TMPDIR="${GOPATH}/tmp" go test -modcacherw ./...
+}
+
 package() {
-  install -Dm0755 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm0644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm0755 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" -t "${pkgdir}/usr/bin"
+  install -Dm0644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
+  install -Dm0644 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
