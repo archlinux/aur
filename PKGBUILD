@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove
-pkgver=202608171
+pkgver=202609011
 pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.xz::https://releases.celenity.dev/dove/releases/2026.08.17.1/linux/dove-2026.08.17.1-linux.tar.xz")
-sha512sums=('37d6be773b11b2f37a58a276e2240e3e49c8f17bd757b1a1248c74fded927c72fc769b44ecae4cc664a2e2991ef3909a83e532f350c1d5ce370c4afcf6faa11c')
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.xz::https://releases.celenity.dev/dove/releases/2026.09.01.1/linux/dove-2026.09.01.1-linux.tar.xz")
+sha512sums=('90c2dbf172923d31aa98d92e71a409d1eaf6715099286cde8813e3379218fe04dc68f49f165f3a97ee2809bdb36cc0048f363782a456dc869e0407ceca45dbcc')
 
 pkgver() {
   echo "$pkgver"
@@ -128,6 +128,7 @@ package() {
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/caress.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/caress.com"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/casema.nl" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/casema.nl"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/catlover.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/catlover.com"
+  install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cc.ncu.edu.tw.xml" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cc.ncu.edu.tw.xml"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cc9.ne.jp" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cc9.ne.jp"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cek.ne.jp" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cek.ne.jp"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/centurylink.net" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/centurylink.net"
