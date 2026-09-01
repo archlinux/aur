@@ -11,7 +11,7 @@
 _pkgname="mailspring"
 pkgname="$_pkgname"
 pkgver=1.23.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A beautiful and fast mail client"
 url="https://github.com/Foundry376/Mailspring"
 license=('GPL-3.0-only')
@@ -110,7 +110,7 @@ package() {
   _regex+="$(printf 's&<%%=\s*%s\s*%%>&%s&g;' 'desktopName' "$_pkgname.desktop")"
 
   local _from_file _to_file _to_path _files=(
-    "Mailspring.desktop.in":"$_pkgname.desktop":'usr/share/applications'
+    "Mailspring.desktop.in":"${_pkgname^}.desktop":'usr/share/applications'
     "mailspring.metainfo.xml.in":"$_pkgname.metainfo.xml":'usr/share/metainfo'
   )
   for i in "${_files[@]}"; do

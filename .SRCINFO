@@ -1,7 +1,7 @@
 pkgbase = mailspring
 	pkgdesc = A beautiful and fast mail client
 	pkgver = 1.23.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Foundry376/Mailspring
 	arch = x86_64
 	license = GPL-3.0-only
