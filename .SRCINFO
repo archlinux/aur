@@ -37,8 +37,8 @@ pkgbase = midnight-shell-git
 	provides = midnight-shell=r3087.bb7b565
 	provides = caelestia-shell=r3087.bb7b565
 	provides = caelestia-shell-git=r3087.bb7b565
-	provides = qt6-m3shapes=r3087.bb7b565
-	provides = qt6-m3shapes-git=r3087.bb7b565
+	provides = qt6-m3shapes
+	provides = qt6-m3shapes-git
 	conflicts = midnight-shell
 	conflicts = dim-caelestia-shell-git
 	conflicts = caelestia-shell
