@@ -33,9 +33,11 @@ optdepends=(
   'starship: themed by the wallpaper-driven color pipeline'
   'vesktop: themed by the wallpaper-driven color pipeline'
   'sddm: crux ships a matching SDDM login theme (not installed by this package — see the crux repos SKILL.md/notes.md for the manual system-wide setup)'
+  'sudo: passwordless DNS-provider switching in the Wifi popup (falls back to a polkit prompt every time without it)'
 )
 provides=('crux-shell')
 conflicts=('crux-shell')
+backup=('etc/sudoers.d/crux-dns')
 source=("$pkgname::git+https://github.com/teezlabs/crux-shell.git")
 sha256sums=('SKIP')
 
@@ -59,4 +61,12 @@ package() {
   # bin/ holds a couple of Python/bash helper scripts crux shells out to
   # (matugen post-hooks, wallpaper-picker glue) — keep them executable.
   find "$dest/bin" -maxdepth 1 -type f -exec chmod 755 {} \;
+
+  # crux-dns needs to be a bare command on $PATH (WifiPanelContent.qml
+  # shells out to it by name, not by Quickshell.shellDir), and its own
+  # sudoers rule below is pinned to this exact path — so it's installed
+  # to /usr/bin instead of living only under the config dir above.
+  rm -f "$dest/bin/crux-dns"
+  install -Dm755 bin/crux-dns "$pkgdir/usr/bin/crux-dns"
+  install -Dm440 packaging/crux-dns.sudoers "$pkgdir/etc/sudoers.d/crux-dns"
 }

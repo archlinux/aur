@@ -29,8 +29,10 @@ pkgbase = crux-shell-git
 	optdepends = starship: themed by the wallpaper-driven color pipeline
 	optdepends = vesktop: themed by the wallpaper-driven color pipeline
 	optdepends = sddm: crux ships a matching SDDM login theme (not installed by this package — see the crux repos SKILL.md/notes.md for the manual system-wide setup)
+	optdepends = sudo: passwordless DNS-provider switching in the Wifi popup (falls back to a polkit prompt every time without it)
 	provides = crux-shell
 	conflicts = crux-shell
+	backup = etc/sudoers.d/crux-dns
 	source = crux-shell-git::git+https://github.com/teezlabs/crux-shell.git
 	sha256sums = SKIP
 
