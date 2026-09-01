@@ -1,7 +1,7 @@
 # Maintainer: Micro <microgamercz@proton.me> -> https://github.com/MicrogamerCz
 
 pkgname=piqi-git
-pkgver=0.2.1.r37.gf9311e9
+pkgver=0.3.0.r0.gb7b39de
 pkgrel=1
 pkgdesc="Unofficial Qt API for Pixiv (with async support)"
 arch=(x86_64)
