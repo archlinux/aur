@@ -1,5 +1,5 @@
 pkgname='zshell'
-pkgver=0.4.0.r73.g42f02f4
+pkgver=0.4.0.r77.g0486965
 pkgrel=1
 pkgdesc='ZShell desktop shell'
 arch=('any')
@@ -23,7 +23,7 @@ build() {
 	cargo build --release
 
 	cd "${srcdir}/${pkgname}"
-	cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_INSTALL_PREFIX=/
+	cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/
 	cmake --build build
 }
 
