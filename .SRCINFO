@@ -1,6 +1,6 @@
 pkgbase = primevideo
 	pkgdesc = Unnofficial Prime Videos desktop application
-	pkgver = 1.0.8
+	pkgver = 1.0.9
 	pkgrel = 1
 	url = https://gitlab.com/primevideo/application
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = primevideo
 	depends = gtk3
 	depends = libxss
 	depends = git
-	source = https://gitlab.com/primevideo/application/-/archive/1.0.8/application-1.0.8.tar.bz2
-	sha256sums = 900cd1d45ceb41b094d6fdc6f09b730368335dbe6baf283a9100df509a20a84a
+	source = https://gitlab.com/primevideo/application/-/archive/1.0.9/application-1.0.9.tar.bz2
+	sha256sums = ff4ce8ebb7bada6bf170a7bed77ec640fa0ad0a830d4240c345d784654604aed
 
 pkgname = primevideo
