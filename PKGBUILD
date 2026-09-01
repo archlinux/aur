@@ -2,7 +2,7 @@
 pkgname=audacity4-nocloud-git
 _pkgname=audacity
 pkgver=r0
-pkgrel=1
+pkgrel=2
 pkgdesc="Audacity 4, the next generation of the popular multi-track audio editor (no cloud integration)"
 arch=('x86_64')
 url="https://github.com/audacity/audacity"
@@ -11,8 +11,6 @@ depends=(
 	qt6-base
 	qt6-declarative
 	qt6-svg
-	qt6-tools
-	qt6-shadertools
 	qt6-5compat
 	expat
 	libogg
@@ -25,25 +23,28 @@ depends=(
 	wavpack
 	libsndfile
 	portaudio
-	wxwidgets-gtk3
+	wxwidgets-common
 	zlib
 	libpng
 	freetype2
 	harfbuzz
+	pugixml
 	alsa-lib
-	mesa
+	hicolor-icon-theme
 )
 makedepends=(
 	git
 	cmake
 	ninja
-	gcc
-	pkgconf
 	python
 	nasm
+	qt6-tools
+	qt6-shadertools
+	utf8cpp
+	vulkan-headers
 )
 provides=('audacity4')
-conflicts=('audacity4' 'audacity4-bin' 'audacity4-alpha' 'audacity4-git')
+conflicts=('audacity4')
 source=(
 	"git+https://github.com/audacity/audacity.git"
 	"git+https://github.com/musescore/muse_framework.git"
