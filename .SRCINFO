@@ -1,6 +1,6 @@
 pkgbase = podspawn
 	pkgdesc = Mock alternative based on OCI
-	pkgver = 1.0.0
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/zvova7890/podspawn/
 	install = podspawn.install
@@ -9,7 +9,8 @@ pkgbase = podspawn
 	depends = podman
 	depends = usermode
 	depends = systemd
-	source = git+https://github.com/zvova7890/podspawn.git
+	optdepends = bash-completion: Bash completion support
+	source = git+https://github.com/zvova7890/podspawn.git#tag=v1.0.2
 	sha256sums = SKIP
 
 pkgname = podspawn

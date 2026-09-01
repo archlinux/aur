@@ -1,11 +1,12 @@
 pkgname=podspawn
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Mock alternative based on OCI"
 arch=('any')
 url="https://github.com/zvova7890/podspawn/"
 license=('MIT')
 depends=('podman' 'usermode' 'systemd')
+optdepends=('bash-completion: Bash completion support')
 install=podspawn.install
 source=(git+https://github.com/zvova7890/podspawn.git#tag=v$pkgver)
 sha256sums=('SKIP')
@@ -19,6 +20,7 @@ package() {
 
   install -Dm644 "etc/pam.d/podspawn" "${pkgdir}/etc/pam.d/podspawn"
   install -Dm644 "etc/security/console.apps/podspawn" "${pkgdir}/etc/security/console.apps/podspawn"
+  install -Dm644 "completions/podspawn" "${pkgdir}/usr/share/bash-completion/completions/podspawn"
   install -Dm755 "podspawn.sh" "${pkgdir}/usr/bin/podspawn.sh"
 
   ln -s /usr/bin/consolehelper "${pkgdir}/usr/bin/podspawn"
