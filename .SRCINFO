@@ -1,14 +1,14 @@
-pkgbase = update-mirrors
-	pkgdesc = A simple command line (CLI) tool designed to simplify updating mirrors of Arch Linux-based systems.
-	pkgver = 1.23
+pkgbase = update-mirrors-git
+	pkgdesc = CLI to update the Arch Linux mirrorlist
+	pkgver = r23.2a36905
 	pkgrel = 1
 	url = https://github.com/nellowint/update-mirrors
-	arch = x86_64
-	license = GNU
+	arch = any
+	license = GPL-3.0-or-later
 	makedepends = git
 	depends = bash-completion
 	depends = curl
 	source = git+https://github.com/nellowint/update-mirrors.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
-pkgname = update-mirrors
+pkgname = update-mirrors-git
