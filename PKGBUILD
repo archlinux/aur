@@ -1,8 +1,10 @@
-# Maintainer: Francois Menning <f.menning@protonmail.com>
+# Maintainer: Bart Libert <bart plus aur at libert dot email>
+
+# Contributor: Francois Menning <f.menning@protonmail.com>
 
 _pkgname=cleanerml
 pkgname=cleanerml-git
-pkgver=r735.2b8c706
+pkgver=r740.f28fbda
 pkgrel=1
 pkgdesc='System cleaners written in CleanerML used by BleachBit.'
 url='https://github.com/az0/cleanerml'
@@ -31,4 +33,5 @@ package() {
   # Is considered to be stable
   cp -r ${srcdir}/${_pkgname}/release/*.xml "${pkgdir}/usr/share/bleachbit/cleaners"
   rm -rf "${pkgdir}/usr/share/bleachbit/cleaners/wine.xml"
+  rm -rf "${pkgdir}/usr/share/bleachbit/cleaners/zsh.xml"
 }
