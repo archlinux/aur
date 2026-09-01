@@ -1,5 +1,0 @@
-[qt6-opcua]
-source = "git"
-git = "https://github.com/qt/qtopcua.git"
-prefix = "v"
-exclude_regex = ".*(pre|a|alpha|b|beta|rc).*"
