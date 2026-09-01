@@ -3,7 +3,7 @@
 pkgname=moneymanagerex
 # HINT: ! ALSO UPDATE COMMIT HASHES IN source and execute "updpkgsums"!
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='MoneyManagerEx is an easy-to-use personal finance suite. This package will always point to the newest tagged version.'
 arch=('x86_64')
 url='http://www.moneymanagerex.org/'
@@ -48,17 +48,17 @@ prepare() {
   git apply "${srcdir}/8363.patch"
 
   git submodule init
-  git config submodule.3rd/ChartNew.js.url '$srcdir/ChartNew.js'
-  git config submodule.3rd/LuaGlue.url '$srcdir/LuaGlue'
-  git config submodule.3rd/apexcharts.js.url '$srcdir/apexcharts.js'
-  git config submodule.3rd/cgitemplate.url '$srcdir/html-template'
-  git config submodule.3rd/fmt.url '$srcdir/fmt'
-  git config submodule.3rd/lua.url '$srcdir/lua'
-  git config submodule.3rd/rapidjson.url '$srcdir/rapidjson'
-  git config submodule.3rd/wxsqlite3.url '$srcdir/wxsqlite3'
-  git config submodule.database.url '$srcdir/database'
-  git config submodule.general-reports.url '$srcdir/general-reports'
-  git config submodule.themes.url '$srcdir/themes'
+  git config submodule.3rd/ChartNew.js.url "$srcdir/ChartNew.js"
+  git config submodule.3rd/LuaGlue.url "$srcdir/LuaGlue"
+  git config submodule.3rd/apexcharts.js.url "$srcdir/apexcharts.js"
+  git config submodule.3rd/cgitemplate.url "$srcdir/html-template"
+  git config submodule.3rd/fmt.url "$srcdir/fmt"
+  git config submodule.3rd/lua.url "$srcdir/lua"
+  git config submodule.3rd/rapidjson.url "$srcdir/rapidjson"
+  git config submodule.3rd/wxsqlite3.url "$srcdir/wxsqlite3"
+  git config submodule.database.url "$srcdir/database"
+  git config submodule.general-reports.url "$srcdir/general-reports"
+  git config submodule.themes.url "$srcdir/themes"
   git -c protocol.file.allow=always submodule update
 }
 
