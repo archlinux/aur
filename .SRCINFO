@@ -1,6 +1,6 @@
 pkgbase = luvus-bin
 	pkgdesc = Mission control for your AI coding agents
-	pkgver = 0.13.2
+	pkgver = 0.13.4
 	pkgrel = 1
 	url = https://github.com/RizRiyz/luvus
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = luvus-bin
 	provides = luvus
 	conflicts = luvus
 	options = !strip
-	source_x86_64 = luvus-0.13.2-x86_64.tar.gz::https://github.com/RizRiyz/luvus/releases/download/v0.13.2/luvus-v0.13.2-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 01fb4cde86d771ce40f1230e81d731564b8e0fbafe9943ac192bc95c2820c259
-	source_aarch64 = luvus-0.13.2-aarch64.tar.gz::https://github.com/RizRiyz/luvus/releases/download/v0.13.2/luvus-v0.13.2-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 33aa640f1d9d1c0de6673e048d642e53eff5dcbed47eac8f145ec26ddaa8dd3f
+	source_x86_64 = luvus-0.13.4-x86_64.tar.gz::https://github.com/RizRiyz/luvus/releases/download/v0.13.4/luvus-v0.13.4-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 5a544c93cdca526d48a52eb40ec46a802459dd385a7d240dc0af5c8dc1df1cdd
+	source_aarch64 = luvus-0.13.4-aarch64.tar.gz::https://github.com/RizRiyz/luvus/releases/download/v0.13.4/luvus-v0.13.4-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 24a6350e7be409f334fa252494caf7710839cb884844d6c373c9550c8f380167
 
 pkgname = luvus-bin
