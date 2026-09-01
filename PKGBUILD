@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=protolock
 pkgver=0.17.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Protocol Buffer companion tool. Track your .proto files and prevent changes to messages and services which impact API compatibility."
 arch=('x86_64' 'aarch64')
 url="https://github.com/nilslice/protolock"
@@ -28,7 +28,7 @@ build() {
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags='-s -w' \
+    -ldflags='-linkmode=external -s -w' \
     -o $pkgname \
     ./cmd/protolock
 }
