@@ -1,13 +1,13 @@
 # Maintainer: celenity <celenity@celenity.dev>
 pkgname=dove-flatpak
-pkgver=202608171
+pkgver=202609011
 pkgrel=1
 pkgdesc="Dove is a suite of configurations & advanced modifications for Mozilla Thunderbird, designed to put the user first - with a focus on privacy, security, freedom, & usability."
 arch=(any)
 license=('GPL-3.0-or-later')
 url="https://dove.celenity.dev"
-source=("${pkgname}-${pkgver}-${pkgrel}.tar.xz::https://releases.celenity.dev/dove/releases/2026.08.17.1/linux-flatpak/dove-2026.08.17.1-linux-flatpak.tar.xz")
-sha512sums=('1d0b35cc951f260eecff52cd332d78d7b7b8a30e8d3f2ae51fc6c518406e5d87b74bd417ffd7ea4d37401e8a111a58844fa2bd81712bc249e2e823847d70fa39')
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.xz::https://releases.celenity.dev/dove/releases/2026.09.01.1/linux-flatpak/dove-2026.09.01.1-linux-flatpak.tar.xz")
+sha512sums=('8eccf8d8fa83467557dae7c765f2186118f9655e8992657559b2209406ae05c0dd86f407ebd21a13a14cf1d210d66f27d6f49c3be475afe02c6d6c83a17583af')
 
 pkgver() {
   echo "$pkgver"
@@ -127,6 +127,7 @@ package() {
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/caress.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/caress.com"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/casema.nl" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/casema.nl"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/catlover.com" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/catlover.com"
+  install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cc.ncu.edu.tw.xml" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/cc.ncu.edu.tw.xml"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cc9.ne.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/cc9.ne.jp"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cek.ne.jp" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/cek.ne.jp"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/centurylink.net" "$pkgdir/var/lib/flatpak/app/org.mozilla.Thunderbird/current/active/files/etc/thunderbird/dove/assets/autoconfig/v1.1/centurylink.net"
