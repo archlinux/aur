@@ -1,0 +1,23 @@
+pkgbase = moandrop
+	pkgdesc = Find and share subtitles for a video by what the file is, not what it is called
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Anastylosis/MoanDrop
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go>=1.25
+	depends = glibc
+	depends = libgl
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxi
+	depends = libxxf86vm
+	depends = libxkbcommon
+	depends = wayland
+	source = moandrop-0.1.1.tar.gz::https://github.com/Anastylosis/MoanDrop/archive/v0.1.1.tar.gz
+	sha256sums = 1b6bac164faef8b44b902cf771210646f62e2d529435e7b8c5b327836dbeec1b
+
+pkgname = moandrop
