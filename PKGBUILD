@@ -4,14 +4,16 @@
 pkgname='python-e3-core'
 _pkgname=${pkgname#python-}
 pkgver=22.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Framework to ease the development of portable automated build systems"
 
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/AdaCore/e3-core"
 license=('GPL-3.0-only')
 
-depends=('python-colorama'
+depends=('glibc'
+         'python'
+         'python-colorama'
          'python-distro'
          'python-dateutil'
          'python-netifaces'
@@ -41,10 +43,30 @@ prepare() {
     # minor bump), so stamp the released version in to match the sdist-less
     # wheel PyPI publishes.
     echo "${pkgver}" >VERSION
+
+    # Upstream vendors prebuilt rlimit helpers for eleven platforms. Shipping
+    # them fills the package with machine code for architectures it will never
+    # run on, and the copies that would run here were built without any of the
+    # distribution's hardening flags. get_rlimit() only ever reaches for the
+    # build platform's copy, so drop the lot and compile the one this package
+    # needs from the source upstream ships alongside them.
+    rm -f src/e3/os/data/rlimit-*
 }
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+
+    # tools/rlimit/README.txt documents this exact invocation; the name has to
+    # match what get_rlimit() derives from e3.env.Env().build.platform.
+    case "${CARCH}" in
+        x86_64) _platform='x86_64-linux' ;;
+        aarch64) _platform='aarch64-linux' ;;
+        *) echo "no rlimit platform name for ${CARCH}" >&2; exit 1 ;;
+    esac
+    # shellcheck disable=SC2086
+    gcc ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} \
+        -o "src/e3/os/data/rlimit-${_platform}" tools/rlimit/rlimit.c
+
     python -m build --wheel --no-isolation
 }
 
