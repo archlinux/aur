@@ -8,7 +8,10 @@ url="https://github.com/crmne/fastpotify"
 license=('MIT')
 install="${pkgname}.install"
 depends=('alsa-lib' 'libpulse' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
-makedepends=('cargo')
+# MilkDrop builds libprojectM from source at compile time: cmake drives
+# that build, and clang carries the libclang bindgen reads its headers
+# with. Build with --no-default-features to leave the visualiser out.
+makedepends=('cargo' 'cmake' 'clang')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'pipewire-pulse: PipeWire as the PulseAudio server')
 conflicts=('fastpotify-bin' 'fastpotify-git')
