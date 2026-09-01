@@ -1,4 +1,5 @@
 # Maintainer: Pavel Olizko <contact@nolight.dev>
+# Contributor: Massimiliano Torromeo <mtorromeo@archlinux.org>
 
 pkgname=sonora
 pkgver=0.28.0
@@ -7,22 +8,30 @@ pkgdesc='A native music streaming client, built with Rust and GPUI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nolight132/sonora'
 license=('GPL-3.0-or-later')
-depends=('alsa-lib' 'dbus' 'fontconfig' 'hicolor-icon-theme' 'libxcb' 'libxkbcommon'
-         'libxkbcommon-x11' 'vulkan-icd-loader' 'wayland')
+depends=('glibc' 'alsa-lib' 'dbus' 'fontconfig' 'hicolor-icon-theme' 'libxcb'
+         'libxkbcommon' 'libxkbcommon-x11' 'vulkan-icd-loader' 'wayland')
 optdepends=('vulkan-radeon: Vulkan driver for AMD GPUs'
             'vulkan-intel: Vulkan driver for Intel GPUs'
             'nvidia-utils: Vulkan driver for NVIDIA GPUs')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-x86_64-unknown-linux-gnu")
-source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-aarch64-unknown-linux-gnu")
+makedepends=('rust')
+options=('!lto')
+source=("https://github.com/nolight132/sonora/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('ab0b2c9e2294f68bfd49fa8592a768b2c6c591950ed174f12043c5389554e6e6')
-sha256sums_x86_64=('73e47a99c18210506feefd7a99d82df8eb3900e24aee41f0a0a7be1ce76dfc66')
-sha256sums_aarch64=('68e38d569ee8ba484376ece3036c4ba2b73f34db6c877ba652e8bfe20ae99f0a')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  cargo fetch
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  RUSTFLAGS='-C link-args=-Wl,-z,shstk' cargo build --frozen --release
+}
 
 package() {
   cd "${pkgname}-${pkgver}"
 
-  install -Dm755 "${srcdir}/${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm0755 target/release/sonora "${pkgdir}/usr/bin/sonora"
   install -Dm644 assets/linux/sonora.desktop \
     "${pkgdir}/usr/share/applications/sonora.desktop"
   install -Dm644 assets/linux/sonora.svg \
