@@ -1,6 +1,6 @@
 pkgbase = archie-cli-nightly
-	pkgdesc = Repository-owned maintenance CLI for Archie, nightly alpha build
-	pkgver = 0.1.0a284
+	pkgdesc = Repository-owned maintenance CLI for Archie, CI prerelease build
+	pkgver = 0.2.0a282
 	pkgrel = 1
 	url = https://gitlab.com/gabriel.chamon/archie
 	arch = any
@@ -8,10 +8,11 @@ pkgbase = archie-cli-nightly
 	makedepends = python-installer
 	makedepends = uv
 	depends = python>=3.14
+	depends = sqlite
 	provides = archie
 	conflicts = archie
 	conflicts = archie-cli
-	source = archie-6133cc881b45875fb8472378a8ec2bfd3193f907.tar.gz::https://gitlab.com/gabriel.chamon/archie/-/archive/6133cc881b45875fb8472378a8ec2bfd3193f907/archie-6133cc881b45875fb8472378a8ec2bfd3193f907.tar.gz
-	sha256sums = b61ae459a7be12eade00036a0571846fdc614ea829eabe8009235a857a726e2b
+	source = archie::git+https://gitlab.com/gabriel.chamon/archie.git#commit=828c9247cf4b9e85e64f4e67ece81fa8138116fa
+	sha256sums = SKIP
 
 pkgname = archie-cli-nightly
