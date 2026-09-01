@@ -2,7 +2,7 @@
 
 pkgname=nanoget
 _module=nanoget
-pkgver=1.19.5
+pkgver=1.19.6
 pkgrel=1
 pkgdesc="Functions to extract useful metrics from Oxford Nanopore sequencing reads and alignments"
 url="https://github.com/wdecoster/nanoget/"
@@ -24,7 +24,7 @@ makedepends=(
 license=('GPL3')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('31f4bebba409acbe8f2c3642927b59ab30b50d0a63b74a72aae5524ab85b079a')
+sha256sums=('f900c187967af06c491cb92edc017e18b914d1c02e6d0333de2fb9a78738b6fb')
 
 build() {
   cd ${pkgname}-${pkgver}
