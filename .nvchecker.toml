@@ -1,0 +1,4 @@
+[octrafic]
+source = "git"
+git = "https://github.com/octrafic/octrafic-cli.git"
+prefix = "v"
