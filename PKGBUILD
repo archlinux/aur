@@ -1,8 +1,8 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastpotify
-pkgver=0.4.1
+pkgver=0.5.0rc1
 pkgrel=1
-pkgdesc="Fast native Spotify client with local playback and Spotify Connect"
+pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/fastpotify"
 license=('MIT')
@@ -19,17 +19,18 @@ conflicts=('fastpotify-bin' 'fastpotify-git')
 # objects in the archive, which lld then cannot resolve: the link fails on
 # undefined ring_core_* symbols.
 options=('!debug' '!lto')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4e8512d77dde4956a25b1470e8419a118a5a3e6fd93084c238048061c95808dc')
+_release=0.5.0-rc1
+source=("${pkgname}-${_release}.tar.gz::${url}/archive/refs/tags/v${_release}.tar.gz")
+sha256sums=('3117d20c01dd8d41b952ecff42c2e3d574d5b573c90eab934367bd4427524123')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_release}"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_release}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   # Generated bindings inside glutin carry the path they were built at, which
@@ -40,7 +41,7 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_release}"
   export RUSTUP_TOOLCHAIN=stable
   # The demo feature carries the headless render test, which lays out every
   # page without a display and talks to nothing.
@@ -48,7 +49,7 @@ check() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_release}"
 
   install -Dm755 "target/release/fastpotify" "${pkgdir}/usr/bin/fastpotify"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
