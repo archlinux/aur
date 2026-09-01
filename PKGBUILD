@@ -1,7 +1,7 @@
 # Maintainer: Mario Finelli
 
 pkgname=musicrename
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="command line music library manager"
 arch=(x86_64)
@@ -10,9 +10,12 @@ license=(GPL-3.0-or-later)
 depends=(glibc taglib)
 makedepends=(git go scdoc)
 checkdepends=(ffmpeg)
-optdepends=("yt-dlp: automatic video downloads")
+optdepends=(
+  "ffmpeg: transcoding for device sync"
+  "yt-dlp: automatic video downloads"
+)
 source=("git+${url}.git#tag=v${pkgver}")
-sha256sums=('21a7062adaba2212a3b9ce3d75211fefbf36ba08f3e169c84d1233da38a9c10c')
+sha256sums=('816fac3acac1e874c7d57edadeddb78b924eb1b5b153e8f82f00e7e99ab61b17')
 
 prepare() {
   cd $pkgname
