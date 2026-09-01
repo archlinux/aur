@@ -3,7 +3,7 @@
 
 pkgname="n8n"
 pkgver=2.36.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('x86_64')
 url="https://n8n.io"
@@ -70,8 +70,21 @@ package() {
       echo "==> WARNING: kafka-javascript addon did not build; the Kafka nodes will be unavailable" >&2; }
 
   # ssh2 keeps its addon outside the package root and npm resolves several
-  # copies. It is nan-based and does not compile against node >= 26; ssh2 then
-  # uses its pure-JS crypto, which is slower but complete.
+  # copies. 1.17.0 added six v8::Context::GetIsolate() calls, an API node 26
+  # removed, so that copy cannot compile there — and it is the one
+  # ssh2-sftp-client pulls in, meaning the SFTP node loses its crypto
+  # acceleration precisely where throughput matters. The isolate is used only to
+  # register the constructors, so take it from the isolate directly. 1.17.0 is
+  # upstream's latest and has no fix; drop this when a release does.
+  while IFS= read -r addon; do
+    if grep -q 'context->GetIsolate()' "${addon}/src/binding.cc"; then
+      sed -i 's|v8::Isolate\* isolate = context->GetIsolate();|v8::Isolate* isolate = v8::Isolate::GetCurrent();|g' \
+        "${addon}/src/binding.cc"
+    fi
+  done < <(find "${node_root}/node_modules" -type d -path '*/ssh2/lib/protocol/crypto')
+
+  # Should a future node remove something else here, ssh2 falls back to its
+  # pure-JS crypto: slower, complete, and not a reason to fail the package.
   while IFS= read -r addon; do
     ( cd "${addon}" && npm_config_nodedir=/usr node-gyp rebuild --release &&
       compgen -G 'build/Release/*.node' >/dev/null ) ||
