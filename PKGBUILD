@@ -3,6 +3,7 @@
 pkgname=codeowners
 pkgver=1.2.1
 pkgrel=5
+# pkglint: ignore=PB906
 pkgdesc="🔒 Command line tool and Go library for CODEOWNERS files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hmarr/codeowners"
