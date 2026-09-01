@@ -1,6 +1,6 @@
 pkgbase = damas
 	pkgdesc = Checkers game: CLI, TUI and embedded web server in one binary
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/vmvarela/damas
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = damas
 	license = MIT
 	provides = damas
 	conflicts = damas
-	source = LICENSE::https://raw.githubusercontent.com/vmvarela/damas/v0.1.6/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/vmvarela/damas/v0.1.7/LICENSE
 	sha256sums = 17c9a39ccf9ca5789ef8f5317af6990e30d65dedc9a0b09f2fb8f2035fd9ca0f
-	source_x86_64 = damas-0.1.6-x86_64::https://github.com/vmvarela/damas/releases/download/v0.1.6/damas-x86_64-linux
-	sha256sums_x86_64 = e9d4da61454bfbb25e121997804cb947fa56a1b08d0aacb7b2f67c24dddbf940
-	source_aarch64 = damas-0.1.6-aarch64::https://github.com/vmvarela/damas/releases/download/v0.1.6/damas-aarch64-linux
-	sha256sums_aarch64 = 9677af813d4a46d655727eea063a587bfbd42ba3de0faf4785549a13144e18d4
+	source_x86_64 = damas-0.1.7-x86_64::https://github.com/vmvarela/damas/releases/download/v0.1.7/damas-x86_64-linux
+	sha256sums_x86_64 = 935fd8f8e884eb1fc5837e75e1ac3c081dc676960735191022d099f39cce3caf
+	source_aarch64 = damas-0.1.7-aarch64::https://github.com/vmvarela/damas/releases/download/v0.1.7/damas-aarch64-linux
+	sha256sums_aarch64 = 09d1fe78510beabf98b42c839a83cae9a305506ddad1cb15159421f54e83a118
 
 pkgname = damas
