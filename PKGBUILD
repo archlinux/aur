@@ -11,7 +11,7 @@ license=('MIT')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 depends=("ffmpeg")
-# OPTIONS=(!debug)
+options=(!debug)
 source=("${_pkgname}-${pkgver}.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_bili-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
 	"LICENSE-${pkgver}::$url/raw/v${pkgver}/LICENSE")
 sha256sums=('21e1566a3a14b6f0d6cdb65bcbcc87e2c9eb4f01ee6f1dcdc1cd4016820db756'
