@@ -1,7 +1,7 @@
 # Maintainer: Twilight0 <twilight0@vivaldi.net>
 
 pkgname=xdg-desktop-portal-xapp-filepicker
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc='A backend implementation for xdg-desktop-portal using GTK/Cinnamon with native folder selection support'
 arch=(x86_64)
