@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=pkglint
-pkgver=1.3.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Security-focused linter for Arch Linux PKGBUILDs'
 arch=('i686' 'x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url='https://github.com/jmelahman/pkglint'
 license=('GPL-3.0-only')
 depends=('glibc')
 makedepends=('go' 'git')
-_commit='c876b3424b5cd62cba607d33a23e79c387193ae7'
+_commit='715d02b964194ec1718489b100e63d0568ecc1a8'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
@@ -27,10 +27,14 @@ prepare() {
 }
 
 build() {
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
 
-  CGO_ENABLED=0 go build -trimpath -buildmode=pie -mod=readonly -modcacherw \
-    -ldflags="-X main.version=v$pkgver -s -w" -o "$pkgname"
+  go build -trimpath -buildmode=pie -mod=readonly -modcacherw \
+    -ldflags="-linkmode=external -X main.version=v$pkgver -s -w" -o "$pkgname"
 }
 
 package() {
