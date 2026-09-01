@@ -1,0 +1,16 @@
+--- a/src/cuda_extra.cu	2025-06-04 20:55:05.000000000 +0200
++++ b/src/cuda_extra.cu	2026-09-01 21:32:44.329022319 +0200
+@@ -604,8 +604,11 @@
+     ctx->device_mpcount         = props.multiProcessorCount;
+     ctx->device_arch[0]         = props.major;
+     ctx->device_arch[1]         = props.minor;
+-    ctx->device_clockRate       = props.clockRate;
+-    ctx->device_memoryClockRate = props.memoryClockRate;
++    int clockKHz = 0, memClockKHz = 0;
++    cudaDeviceGetAttribute(&clockKHz, cudaDevAttrClockRate, ctx->device_id);
++    cudaDeviceGetAttribute(&memClockKHz, cudaDevAttrMemoryClockRate, ctx->device_id);
++    ctx->device_clockRate       = clockKHz;
++    ctx->device_memoryClockRate = memClockKHz;
+     ctx->device_pciBusID        = props.pciBusID;
+     ctx->device_pciDeviceID     = props.pciDeviceID;
+     ctx->device_pciDomainID     = props.pciDomainID;

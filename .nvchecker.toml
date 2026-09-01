@@ -1,0 +1,6 @@
+[xmrig-mo-cuda]
+source = "github"
+github = "MoneroOcean/xmrig-cuda"
+use_latest_release = true
+from_pattern = 'v([0-9.]+)-mo(\d+)'
+to_pattern = '\1mo\2'
