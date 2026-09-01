@@ -1,8 +1,8 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastpotify-git
-pkgver=0.1.1.r0.5ada9aa
+pkgver=0.5.0rc1.r5.6797a83
 pkgrel=1
-pkgdesc="Fast native Spotify client with local playback and Spotify Connect"
+pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/fastpotify"
 license=('MIT')
