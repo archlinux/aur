@@ -1,16 +1,16 @@
 pkgbase = pvpn-go
 	pkgdesc = Proton VPN client with TUI for Linux (WireGuard + Stealth)
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/YourDoritos/pVPN
 	install = pvpn-go.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
-	makedepends = go>=1.22
+	makedepends = go>=1.26
 	makedepends = git
 	depends = glibc
-	source = pvpn-go-0.2.6.tar.gz::https://github.com/YourDoritos/pVPN/archive/v0.2.6.tar.gz
+	source = pvpn-go-0.2.7.tar.gz::https://github.com/YourDoritos/pVPN/archive/v0.2.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = pvpn-go
