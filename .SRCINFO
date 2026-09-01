@@ -1,6 +1,6 @@
 pkgbase = pilot-link-git
 	pkgdesc = A suite of tools for connecting to PalmOS handheld devices
-	pkgver = r1995.d996cbc1
+	pkgver = r2021.62b50b94
 	pkgrel = 1
 	url = http://www.pilot-link.org/
 	arch = i686
@@ -20,8 +20,6 @@ pkgbase = pilot-link-git
 	conflicts = pilot-link
 	options = !libtool
 	source = git+https://github.com/desrod/pilot-link.git
-	source = configure-checks.patch
 	sha512sums = SKIP
-	sha512sums = e87ed44f5aa9131094d7a2be805eafaf4957bf245eb1dea758c8dde0ef3c42d1bab0dabbeedac63bd961e2e247ebc0229a5b28f2935c32a26c1cd793ce9f0cad
 
 pkgname = pilot-link-git
