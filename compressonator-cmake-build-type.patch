@@ -1,0 +1,20 @@
+From: Tiago de Paula <tiagodepalves@gmail.com>
+Date: Tue, 01 Sep 2026 22:29:11 -0300
+Subject: Unrestrict CMAKE_BUILD_TYPE
+---
+ external/cmake/CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: b/external/cmake/CMakeLists.txt
+===================================================================
+--- a/external/cmake/CMakeLists.txt
++++ b/external/cmake/CMakeLists.txt
+@@ -19,7 +19,7 @@ if (NOT DEFINED NUM_PARALLEL_JOBS)
+     set(NUM_PARALLEL_JOBS 8)
+ endif ()
+ 
+-if (NOT (CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "Debug"))
++if (NOT CMAKE_BUILD_TYPE)
+     set(CMAKE_BUILD_TYPE "Release")
+     message(STATUS "CMAKE_BUILD_TYPE Bad variable defaulting to Release")
+ endif ()

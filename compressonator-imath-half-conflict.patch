@@ -1,0 +1,102 @@
+From: Tiago de Paula <tiagodepalves@gmail.com>
+Date: Mon, 31 Aug 2026 18:00:17 -0300
+Subject: Use Imath/half instead of vendored implementation
+---
+ applications/_plugins/ccmp_sdk/bc6/bc6h.cpp |   12 ++++++------
+ cmp_framework/common/half/half.cpp          |    3 ++-
+ cmp_framework/common/half/half.h            |    5 +++++
+ 3 files changed, 13 insertions(+), 7 deletions(-)
+
+Index: b/applications/_plugins/ccmp_sdk/bc6/bc6h.cpp
+===================================================================
+--- a/applications/_plugins/ccmp_sdk/bc6/bc6h.cpp
++++ b/applications/_plugins/ccmp_sdk/bc6/bc6h.cpp
+@@ -258,7 +258,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
+             {
+                 CMP_HALF srcpix                         = p_source_pixels[srcOffset + srcidx++];
+                 BC6HEncode_local.din[i * BlockX + j][0] = (srcpix).bits();
+-                if ((srcpix).isNan() || srcpix < 0.00001f)
++                if ((srcpix).isNan() || (float)srcpix < 0.00001f)
+                 {
+                     if (g_BC6HEncode.m_isSigned)
+                         BC6HEncode_local.din[i * BlockX + j][0] = -BC6HEncode_local.din[i * BlockX + j][0];
+@@ -268,7 +268,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
+ 
+                 srcpix                                  = p_source_pixels[srcOffset + srcidx++];
+                 BC6HEncode_local.din[i * BlockX + j][1] = (srcpix).bits();
+-                if ((srcpix).isNan() || srcpix < 0.00001f)
++                if ((srcpix).isNan() || (float)srcpix < 0.00001f)
+                 {
+                     if (g_BC6HEncode.m_isSigned)
+                         BC6HEncode_local.din[i * BlockX + j][1] = -BC6HEncode_local.din[i * BlockX + j][1];
+@@ -278,7 +278,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
+ 
+                 srcpix                                  = p_source_pixels[srcOffset + srcidx++];
+                 BC6HEncode_local.din[i * BlockX + j][2] = (srcpix).bits();
+-                if ((srcpix).isNan() || srcpix < 0.00001f)
++                if ((srcpix).isNan() || (float)srcpix < 0.00001f)
+                 {
+                     if (g_BC6HEncode.m_isSigned)
+                         BC6HEncode_local.din[i * BlockX + j][2] = -BC6HEncode_local.din[i * BlockX + j][2];
+@@ -305,7 +305,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
+             {
+                 CMP_HALF srcpix                         = p_source_pixels[srcIndex + BYTEPP * i];
+                 BC6HEncode_local.din[j * BlockX + i][0] = (srcpix).bits();
+-                if ((srcpix).isNan() || srcpix < 0.00001f)
++                if ((srcpix).isNan() || (float)srcpix < 0.00001f)
+                 {
+                     if (g_BC6HEncode.m_isSigned)
+                         BC6HEncode_local.din[j * BlockX + i][0] = -BC6HEncode_local.din[j * BlockX + i][0];
+@@ -315,7 +315,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
+ 
+                 srcpix                                  = p_source_pixels[srcIndex + BYTEPP * i + 1];
+                 BC6HEncode_local.din[j * BlockX + i][1] = (srcpix).bits();
+-                if ((srcpix).isNan() || srcpix < 0.00001f)
++                if ((srcpix).isNan() || (float)srcpix < 0.00001f)
+                 {
+                     if (g_BC6HEncode.m_isSigned)
+                         BC6HEncode_local.din[j * BlockX + i][1] = -BC6HEncode_local.din[j * BlockX + i][1];
+@@ -325,7 +325,7 @@ int BC6H_EncodeClass::CompressBlock(unsi
+ 
+                 srcpix                                  = p_source_pixels[srcIndex + BYTEPP * i + 2];
+                 BC6HEncode_local.din[j * BlockX + i][2] = (srcpix).bits();
+-                if ((srcpix).isNan() || srcpix < 0.00001f)
++                if ((srcpix).isNan() || (float)srcpix < 0.00001f)
+                 {
+                     if (g_BC6HEncode.m_isSigned)
+                         BC6HEncode_local.din[j * BlockX + i][2] = -BC6HEncode_local.din[j * BlockX + i][2];
+Index: b/cmp_framework/common/half/half.cpp
+===================================================================
+--- a/cmp_framework/common/half/half.cpp
++++ b/cmp_framework/common/half/half.cpp
+@@ -36,7 +36,7 @@
+ //     Florian Kainz <kainz@ilm.com>
+ //     Rod Bogart <rgb@ilm.com>
+ 
+-
++#if 0
+ //---------------------------------------------------------------------------
+ //
+ //    class half --
+@@ -290,3 +290,4 @@ printBits (char c[35], float f) {
+ }
+ 
+ #pragma warning( pop )
++#endif
+Index: b/cmp_framework/common/half/half.h
+===================================================================
+--- a/cmp_framework/common/half/half.h
++++ b/cmp_framework/common/half/half.h
+@@ -85,7 +85,12 @@
+ #ifndef _HALF_H_
+ #define _HALF_H_
+ 
++#include <Imath/half.h>
+ #include "halfexport.h"    // for definition of HALF_EXPORT
++
++#endif
++
++#if 0
+ #include <iostream>
+ 
+ class half {

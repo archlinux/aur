@@ -1,0 +1,47 @@
+From: Tiago de Paula <tiagodepalves@gmail.com>
+Date: Sun, 30 Aug 2026 20:59:01 -0300
+Subject: Fix GCC 16 build
+---
+ applications/_plugins/common/pluginbase.h |    1 +
+ build/sdk/cmp_core/CMakeLists.txt         |    2 +-
+ cmp_core/CMakeLists.txt                   |    2 +-
+ 3 files changed, 3 insertions(+), 2 deletions(-)
+
+Index: b/applications/_plugins/common/pluginbase.h
+===================================================================
+--- a/applications/_plugins/common/pluginbase.h
++++ b/applications/_plugins/common/pluginbase.h
+@@ -30,6 +30,7 @@
+ #define _PLUGINBASE_H
+ 
+ #include <memory>
++#include <cstdint>
+ 
+ #ifdef _WIN32
+ #include <windows.h>
+Index: b/build/sdk/cmp_core/CMakeLists.txt
+===================================================================
+--- a/build/sdk/cmp_core/CMakeLists.txt
++++ b/build/sdk/cmp_core/CMakeLists.txt
+@@ -140,7 +140,7 @@ target_include_directories(
+ if (WIN32)
+     target_compile_options(CMP_Core_AVX512 PRIVATE /arch:AVX-512)
+ else()
+-    target_compile_options(CMP_Core_AVX512 PRIVATE -march=knl)
++    target_compile_options(CMP_Core_AVX512 PRIVATE -mavx512f)
+ endif()
+ 
+ set_target_properties(CMP_Core_AVX512 PROPERTIES 
+Index: b/cmp_core/CMakeLists.txt
+===================================================================
+--- a/cmp_core/CMakeLists.txt
++++ b/cmp_core/CMakeLists.txt
+@@ -98,7 +98,7 @@ target_include_directories(CMP_Core_AVX5
+ if (WIN32)
+     target_compile_options(CMP_Core_AVX512 PRIVATE /arch:AVX-512)
+ else()
+-    target_compile_options(CMP_Core_AVX512 PRIVATE -march=knl)
++    target_compile_options(CMP_Core_AVX512 PRIVATE -mavx512f)
+ endif()
+ 
+ set_target_properties(CMP_Core_AVX512 PROPERTIES FOLDER ${PROJECT_FOLDER_SDK_LIBS})

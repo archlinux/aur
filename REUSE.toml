@@ -9,3 +9,12 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+  "compressonator-cmake-build-type.patch",
+  "compressonator-gcc-16-fix.patch",
+  "compressonator-imath-half-conflict.patch",
+]
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "MIT"

@@ -12,20 +12,32 @@ license=('MIT')
 makedepends=(
   'cmake'
   'git'
+  'libxrandr'
+  'libxinerama'
   'python'
   'vulkan-headers'
 )
 depends=(
+  'glibc'
   'opencv'
+  'openexr'
+  'libstdc++'
+  'libgcc'
 )
 provides=('compressonator')
 conflicts=('compressonator')
 source=("git+${url}.git"
+        'compressonator-cmake-build-type.patch'
+        'compressonator-gcc-16-fix.patch'
+        'compressonator-imath-half-conflict.patch'
         'git+https://github.com/g-truc/glm.git'
         'git+https://github.com/discord/rapidxml.git'
         'git+https://github.com/ocornut/imgui.git'
         'glfw::git+https://github.com/glfw/glfw.git')
 b2sums=('SKIP'
+        '090558b7e5eb691f94b46980ca28af752eb72213643800d548e71630e5515a0fef36964a444cc99f89c63094e8d7cc392ae6cb1639281d5f24adf33aebeca8fa'
+        '29858a71b07730919d90299b134ae6a20e8f0de7b5bc5dfce4b329e97a433ef57c4086b6342c1b9bd32f278aa56dd5d54a2ece8cf63f428113b2d5c1581cf93d'
+        '4113114bcb94365d5028bd1cb5bf4b974a16ac195f22a2c8431f0ea05509470c2a2c05bb7758fc37327142cfb9955ab8b8dddf3fca9d16288996182ed335c40a'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -52,6 +64,10 @@ prepare() {
   )
   sed -E "${sed_options[@]}" -i build/fetch_dependencies.py
   python build/fetch_dependencies.py
+
+  patch -t -Np1 -i ../compressonator-cmake-build-type.patch
+  patch -t -Np1 -i ../compressonator-gcc-16-fix.patch
+  patch -t -Np1 -i ../compressonator-imath-half-conflict.patch
 }
 
 build() {
@@ -61,7 +77,7 @@ build() {
     -D CMAKE_INSTALL_LIBDIR=lib
     -D CMAKE_INSTALL_SBINDIR=bin
     -D CMAKE_INSTALL_SYSCONFDIR=/etc
-    -D CMAKE_BUILD_TYPE=RelWithDebInfo
+    -D CMAKE_BUILD_TYPE=None
     -D BUILD_SHARED_LIBS=ON
     -D OPTION_ENABLE_ALL_APPS=OFF
     -D OPTION_BUILD_APPS_CMP_CLI=ON
