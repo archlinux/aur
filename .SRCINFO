@@ -1,7 +1,7 @@
 pkgbase = k3k-bin
 	pkgdesc = Kubernetes in Kubernetes - CLI tool for creating and managing K3s clusters within Kubernetes
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rancher/k3k
 	arch = x86_64
 	arch = aarch64
@@ -15,6 +15,6 @@ pkgbase = k3k-bin
 	source_x86_64 = k3k-bin-1.2.0::https://github.com/rancher/k3k/releases/download/v1.2.0/k3kcli-linux-amd64
 	sha256sums_x86_64 = 35a95255ab10cdd688e00527092d30a68b709bba1ba70903c07885fae4015f4c
 	source_aarch64 = k3k-bin-1.2.0::https://github.com/rancher/k3k/releases/download/v1.2.0/k3kcli-linux-arm64
-	sha256sums_aarch64 = 35a95255ab10cdd688e00527092d30a68b709bba1ba70903c07885fae4015f4c
+	sha256sums_aarch64 = 04efce0968e7e7fd61f06e5f0f1aa15eed5cdda1fca6a71e1995baa6e1f88ea6
 
 pkgname = k3k-bin
