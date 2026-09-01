@@ -1,6 +1,6 @@
 pkgbase = cmdpeek-bin
 	pkgdesc = Searchable interactive command palette for discovering, previewing and running reusable terminal workflows from YAML
-	pkgver = 0.0.14
+	pkgver = 0.0.15
 	pkgrel = 1
 	url = https://github.com/pierinho13/cmdpeek
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = cmdpeek-bin
 	provides = cmdpeek
 	conflicts = cmdpeek
 	options = !strip
-	source = CONFIG-0.0.14.yaml::https://raw.githubusercontent.com/pierinho13/cmdpeek/v0.0.14/examples/basic.yaml
+	source = CONFIG-0.0.15.yaml::https://raw.githubusercontent.com/pierinho13/cmdpeek/v0.0.15/examples/basic.yaml
 	sha256sums = 6166d5cee112b3960477dd186e448a1802288322045e005576aa96e29056a468
-	source_x86_64 = cmdpeek-x86_64-0.0.14.tgz::https://github.com/pierinho13/cmdpeek/releases/download/v0.0.14/cmdpeek_0.0.14_Linux_amd64.tar.gz
-	sha256sums_x86_64 = 6cd87c297b913fcba32c5563b5a0be723cd5a6995fb82f7a35ba4afd797039ac
-	source_aarch64 = cmdpeek-aarch64-0.0.14.tgz::https://github.com/pierinho13/cmdpeek/releases/download/v0.0.14/cmdpeek_0.0.14_Linux_arm64.tar.gz
-	sha256sums_aarch64 = d10daeb229e818a9c17b32062e9aaf5d7e499a1f32ba3066441a92a55915cb21
+	source_x86_64 = cmdpeek-x86_64-0.0.15.tgz::https://github.com/pierinho13/cmdpeek/releases/download/v0.0.15/cmdpeek_0.0.15_Linux_amd64.tar.gz
+	sha256sums_x86_64 = 52afdd026d369e1094047e720ee44bc33bda9f3548f62a7448acfc1eefc6c1b5
+	source_aarch64 = cmdpeek-aarch64-0.0.15.tgz::https://github.com/pierinho13/cmdpeek/releases/download/v0.0.15/cmdpeek_0.0.15_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 2a14b6c8cc5c0e022a80e9f6030e9c29351d06d5a62009c328010a63be7eb798
 
 pkgname = cmdpeek-bin
