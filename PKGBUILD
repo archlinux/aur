@@ -10,17 +10,22 @@ arch=(x86_64 aarch64)
 url='https://github.com/mizorewww/course2md'
 license=('MIT')
 depends=(ffmpeg yt-dlp)
-optdepends=('llama-cpp: local ASR via llama-server (Qwen3-ASR GGUF)')
+optdepends=(
+    'llama-cpp: local GPU/CPU ASR via llama-server'
+    'intel-npu-driver: Intel Core Ultra NPU acceleration driver'
+    'openvino-intel-npu-plugin: Intel Core Ultra NPU OpenVINO plugin'
+    'python-openvino: OpenVINO Python runtime for NPU'
+)
 provides=(course2md)
 conflicts=(course2md)
 source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
-source_x86_64=("course2md-linux-x86_64::${url}/releases/download/v${pkgver}/course2md-linux-x86_64")
-source_aarch64=("course2md-linux-aarch64::${url}/releases/download/v${pkgver}/course2md-linux-aarch64")
+source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/course2md-linux-x86_64")
+source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/course2md-linux-aarch64")
 sha256sums=('f588737788750da8ab407e66c13f5004f8933176307add92f64b6c458f486212')
 sha256sums_x86_64=('4838906901803a11156b0ae099b3c5ca1f4505cf760d0dcd8ca082ba205e151b')
 sha256sums_aarch64=('762b762af9ddf77b93d027c1d3d2144dd953d3532878866e97aa4dec3ffb1ed7')
 
 package() {
-    install -Dm755 "course2md-linux-${CARCH}" "${pkgdir}/usr/bin/course2md"
+    install -Dm755 "${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/course2md"
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
