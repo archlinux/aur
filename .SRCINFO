@@ -1,0 +1,19 @@
+pkgbase = private_ding_zhejiang
+	pkgdesc = 浙政钉 (Zhejiang Government DingTalk) - AppImage build for ArchLinux
+	pkgver = 2.7.4.1
+	pkgrel = 1
+	url = https://github.com/Paul-sinbud2004/private_ding_zhejiang
+	arch = x86_64
+	license = unknown
+	depends = fuse2
+	noextract = private_ding_zhejiang-2.7.4.1-x86_64.AppImage
+	options = !strip
+	options = !emptydirs
+	source = private_ding_zhejiang.desktop
+	source = logo.png
+	sha256sums = 7644aa9276eb139a80802a18d02a5305b741088485b04023d38c3ec49e2dc09a
+	sha256sums = 446c94ccb30cf016f77f8bbf63619a608be4c7bf7faaa9d633a4d622e2e149ab
+	source_x86_64 = private_ding_zhejiang-2.7.4.1-x86_64.AppImage::https://github.com/Paul-sinbud2004/private_ding_zhejiang/releases/download/v2.7.4.1/com.zjd.gov-2.7.4.1-x86_64.AppImage
+	sha256sums_x86_64 = 040adb95111e9233a06ed1e9a8ce8104247e12c754c546857c5553703a893f91
+
+pkgname = private_ding_zhejiang
