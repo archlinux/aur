@@ -1,0 +1,4 @@
+openocd-stm/
+pkg/
+src/
+*.tar.zst

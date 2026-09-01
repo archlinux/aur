@@ -1,0 +1,12 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -16,8 +16,7 @@ nobase_dist_pkgdata_DATA = \
+ 	contrib/libdcc/dcc_stdio.c \
+ 	contrib/libdcc/dcc_stdio.h \
+ 	contrib/libdcc/example.c \
+-	contrib/libdcc/README \
+-	contrib/60-openocd.rules
++	contrib/libdcc/README
+
+ SUBDIRS =
+ DIST_SUBDIRS =

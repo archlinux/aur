@@ -1,0 +1,28 @@
+pkgbase = openocd-stm
+	pkgdesc = Debugging, in-system programming and boundary-scan testing for embedded target devices
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://openocd.org
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = capstone
+	depends = glibc
+	depends = hidapi
+	depends = jimtcl
+	depends = libftdi-compat
+	depends = libjaylink
+	depends = libusb
+	provides = openocd
+	conflicts = openocd
+	source = openocd-stm::git+https://github.com/STMicroelectronics/openocd#tag=openocd-cubeide-v2.2.0
+	source = no-duplicate-udev-rules.patch
+	source = jimtcl-fix.patch
+	sha512sums = edae0023dbecff3f383373256e17c0eb7551a194cf36bd5c6418e00f9359362c10d705de8c503e2cb50b98c338114984cd9da7f61c46f8f0508a8108221bd777
+	sha512sums = 139a3b007ef6df3047aaabe7b9878d2a09b67a0dc6cd17174a5d42692ac10e9ccddec1a39fb325e4a017041b118297e27e657518c1f203bba5f23d8b468b7946
+	sha512sums = 8e67eb2c2b1da3153bff99686e6d438ca288bbe3f19cf4c93e2537e2b9e5cf06d13602c18591940bb023828eb3db08cce8bb2ef4b930021578c6d67f606b1bad
+	b2sums = 05e9693c9496076475ebaba093028aff033f9a9341e2630d964db8e1344d9597b9359f2962a584dc609a5a3e2dc099b12279d7471e8a6097e122ee807e6366fe
+	b2sums = ee308dd9c85a4fba4c75bff443fb9eeb46f4d8000c9c7308e7e378baed95f3c4fd6f9dc872f5b1b4110cacc9b05a92a8cb50cecdc7b8b8f128b213cc572f6317
+	b2sums = 6acfa4990cb818bdfd8b89010156a2c35b50f65f35033c3f286c4b05d05828d8c9d24c02f80bb43af6e04faf01b2d5c759b367ef9f7932ca496b9a3ba6a720e0
+
+pkgname = openocd-stm
