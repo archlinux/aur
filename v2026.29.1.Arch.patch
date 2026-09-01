@@ -13,7 +13,7 @@ index 788085e..88c590d 100644
  # if we aren't building ArrasCore, get it from the release
  if (NOT Building_ArrasCore)
 diff --git a/moonray/CMakeLists.txt b/moonray/CMakeLists.txt
-index 737f3c3..1e35c98 100644
+index 38175e1..31b170d 100644
 --- a/moonray/CMakeLists.txt
 +++ b/moonray/CMakeLists.txt
 @@ -1,7 +1,7 @@
@@ -118,63 +118,46 @@ index 201dc94..bd36a61 100644
  #===============================================================================
  # This script will attempt to find TBB and set up a TBB target.
  #
-diff --git a/moonray/scene_rdl2/lib/common/grid_util/AffinityResourceControl.cc b/moonray/scene_rdl2/lib/common/grid_util/AffinityResourceControl.cc
-index ce6672d..6c2360a 100644
---- a/moonray/scene_rdl2/lib/common/grid_util/AffinityResourceControl.cc
-+++ b/moonray/scene_rdl2/lib/common/grid_util/AffinityResourceControl.cc
-@@ -5,6 +5,7 @@
- #include "NumaUtil.h"
- #include "ShmAffinityInfo.h"
+diff --git a/moonray/hydra/hdMoonray/CMakeLists.txt b/moonray/hydra/hdMoonray/CMakeLists.txt
+index b5cc674..093d875 100644
+--- a/moonray/hydra/hdMoonray/CMakeLists.txt
++++ b/moonray/hydra/hdMoonray/CMakeLists.txt
+@@ -31,6 +31,15 @@ if(NOT pxr_FOUND)
+     find_package(pxr REQUIRED)
+ endif()
  
-+#include <algorithm> // sort
- #include <iostream> // debug
- #include <unistd.h> // getpid()
- #include <unordered_set>
-diff --git a/moonray/scene_rdl2/lib/common/grid_util/BinPacketDictionary.h b/moonray/scene_rdl2/lib/common/grid_util/BinPacketDictionary.h
-index d7e6bf5..50da2b6 100644
---- a/moonray/scene_rdl2/lib/common/grid_util/BinPacketDictionary.h
-+++ b/moonray/scene_rdl2/lib/common/grid_util/BinPacketDictionary.h
-@@ -5,6 +5,7 @@
- #include <scene_rdl2/render/cache/ValueContainerDequeue.h>
- #include <scene_rdl2/render/cache/ValueContainerEnqueue.h>
++if(TARGET usd_ms)
++    foreach(pxr_lib gf tf trace vt work cameraUtil hd hdx hf sdf usd usdGeom usdImaging usdSkel usdShade usdLux usdVol ndr sdr ar)
++        if(NOT TARGET ${pxr_lib})
++            add_library(${pxr_lib} INTERFACE IMPORTED)
++            set_target_properties(${pxr_lib} PROPERTIES INTERFACE_LINK_LIBRARIES "usd_ms;OpenGL::GL")
++        endif()
++    endforeach()
++endif()
++
+ # This is needed for linking against the USD 0.25.5 libraries
+ # as they depend on OpenGL but don't specify it in
+ # their cmake config.
+diff --git a/moonray/hydra/moonray_sdr_plugins/CMakeLists.txt b/moonray/hydra/moonray_sdr_plugins/CMakeLists.txt
+index 2af290a..5dfa73d 100644
+--- a/moonray/hydra/moonray_sdr_plugins/CMakeLists.txt
++++ b/moonray/hydra/moonray_sdr_plugins/CMakeLists.txt
+@@ -16,6 +16,15 @@ if(NOT pxr_FOUND)
+     find_package(pxr REQUIRED)
+ endif()
  
-+#include <functional>
- #include <string>
++if(TARGET usd_ms)
++    foreach(pxr_lib gf tf trace vt work cameraUtil hd hdx hf sdf usd usdGeom usdImaging usdSkel usdShade usdLux usdVol ndr sdr ar)
++        if(NOT TARGET ${pxr_lib})
++            add_library(${pxr_lib} INTERFACE IMPORTED)
++            set_target_properties(${pxr_lib} PROPERTIES INTERFACE_LINK_LIBRARIES "usd_ms;OpenGL::GL")
++        endif()
++    endforeach()
++endif()
++
+ find_package(Python REQUIRED COMPONENTS Development)
  
- namespace scene_rdl2 {
-diff --git a/moonray/scene_rdl2/lib/render/util/IndexableArray.h b/moonray/scene_rdl2/lib/render/util/IndexableArray.h
-index 3b0c6b5..b5a1724 100644
---- a/moonray/scene_rdl2/lib/render/util/IndexableArray.h
-+++ b/moonray/scene_rdl2/lib/render/util/IndexableArray.h
-@@ -55,7 +55,7 @@ public:
-     // vector), but we can still look the index up in constant time.
-     //
-     // We use two containers for bidirectional lookup.
--    typedef std::unordered_multimap<typename hasher::result_type, int32_t>  map_type;
-+    typedef std::unordered_multimap<std::size_t, int32_t>  map_type;
-     typedef T                                                               value_type;
-     typedef typename container_type::allocator_type                         allocator_type;
-     typedef typename container_type::size_type                              size_type;
-diff --git a/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt b/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt
-index a36f8f3..aa9873e 100644
---- a/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt
-+++ b/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt
-@@ -13,7 +13,6 @@ endif()
- find_package(Python COMPONENTS Interpreter Development)
- find_package(Boost REQUIRED
-   COMPONENTS
--    system
-     "${BOOST_PYTHON_COMPONENT_NAME}"
-     date_time
-     chrono)
-@@ -66,7 +65,6 @@ target_include_directories(${component} SYSTEM
- 
- target_link_libraries(${component}
-     PRIVATE
--        Boost::system
-         Boost::${BOOST_PYTHON_COMPONENT_NAME}
-         Boost::date_time
-         Boost::chrono
+ add_subdirectory(moonrayShaderDiscovery)
 diff --git a/moonray/moonray/lib/common/mcrt_util/CPUID.h b/moonray/moonray/lib/common/mcrt_util/CPUID.h
 index 5b77f43..f34ee35 100644
 --- a/moonray/moonray/lib/common/mcrt_util/CPUID.h
@@ -474,43 +457,60 @@ index eddff22..e73008d 100644
  # Our USD config doesn't specify TBB or Boost dependencies,
  # so we need to pull the in explicitly
  find_package(TBB REQUIRED)
-diff --git a/moonray/hydra/hdMoonray/CMakeLists.txt b/moonray/hydra/hdMoonray/CMakeLists.txt
-index 2f61a2a..4873fbe 100644
---- a/moonray/hydra/hdMoonray/CMakeLists.txt
-+++ b/moonray/hydra/hdMoonray/CMakeLists.txt
-@@ -31,6 +31,15 @@ if(NOT pxr_FOUND)
-     find_package(pxr REQUIRED)
- endif()
+diff --git a/moonray/scene_rdl2/lib/common/grid_util/AffinityResourceControl.cc b/moonray/scene_rdl2/lib/common/grid_util/AffinityResourceControl.cc
+index ce6672d..6c2360a 100644
+--- a/moonray/scene_rdl2/lib/common/grid_util/AffinityResourceControl.cc
++++ b/moonray/scene_rdl2/lib/common/grid_util/AffinityResourceControl.cc
+@@ -5,6 +5,7 @@
+ #include "NumaUtil.h"
+ #include "ShmAffinityInfo.h"
  
-+if(TARGET usd_ms)
-+    foreach(pxr_lib gf tf trace vt work cameraUtil hd hdx hf sdf usd usdGeom usdImaging usdSkel usdShade usdLux usdVol ndr sdr ar)
-+        if(NOT TARGET ${pxr_lib})
-+            add_library(${pxr_lib} INTERFACE IMPORTED)
-+            set_target_properties(${pxr_lib} PROPERTIES INTERFACE_LINK_LIBRARIES "usd_ms;OpenGL::GL")
-+        endif()
-+    endforeach()
-+endif()
-+
- # This is needed for linking against the USD 0.25.5 libraries
- # as they depend on OpenGL but don't specify it in
- # their cmake config.
-diff --git a/moonray/hydra/moonray_sdr_plugins/CMakeLists.txt b/moonray/hydra/moonray_sdr_plugins/CMakeLists.txt
-index 2af290a..5dfa73d 100644
---- a/moonray/hydra/moonray_sdr_plugins/CMakeLists.txt
-+++ b/moonray/hydra/moonray_sdr_plugins/CMakeLists.txt
-@@ -16,6 +16,15 @@ if(NOT pxr_FOUND)
-     find_package(pxr REQUIRED)
- endif()
++#include <algorithm> // sort
+ #include <iostream> // debug
+ #include <unistd.h> // getpid()
+ #include <unordered_set>
+diff --git a/moonray/scene_rdl2/lib/common/grid_util/BinPacketDictionary.h b/moonray/scene_rdl2/lib/common/grid_util/BinPacketDictionary.h
+index d7e6bf5..50da2b6 100644
+--- a/moonray/scene_rdl2/lib/common/grid_util/BinPacketDictionary.h
++++ b/moonray/scene_rdl2/lib/common/grid_util/BinPacketDictionary.h
+@@ -5,6 +5,7 @@
+ #include <scene_rdl2/render/cache/ValueContainerDequeue.h>
+ #include <scene_rdl2/render/cache/ValueContainerEnqueue.h>
  
-+if(TARGET usd_ms)
-+    foreach(pxr_lib gf tf trace vt work cameraUtil hd hdx hf sdf usd usdGeom usdImaging usdSkel usdShade usdLux usdVol ndr sdr ar)
-+        if(NOT TARGET ${pxr_lib})
-+            add_library(${pxr_lib} INTERFACE IMPORTED)
-+            set_target_properties(${pxr_lib} PROPERTIES INTERFACE_LINK_LIBRARIES "usd_ms;OpenGL::GL")
-+        endif()
-+    endforeach()
-+endif()
-+
- find_package(Python REQUIRED COMPONENTS Development)
++#include <functional>
+ #include <string>
  
- add_subdirectory(moonrayShaderDiscovery)
+ namespace scene_rdl2 {
+diff --git a/moonray/scene_rdl2/lib/render/util/IndexableArray.h b/moonray/scene_rdl2/lib/render/util/IndexableArray.h
+index 3b0c6b5..b5a1724 100644
+--- a/moonray/scene_rdl2/lib/render/util/IndexableArray.h
++++ b/moonray/scene_rdl2/lib/render/util/IndexableArray.h
+@@ -55,7 +55,7 @@ public:
+     // vector), but we can still look the index up in constant time.
+     //
+     // We use two containers for bidirectional lookup.
+-    typedef std::unordered_multimap<typename hasher::result_type, int32_t>  map_type;
++    typedef std::unordered_multimap<std::size_t, int32_t>  map_type;
+     typedef T                                                               value_type;
+     typedef typename container_type::allocator_type                         allocator_type;
+     typedef typename container_type::size_type                              size_type;
+diff --git a/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt b/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt
+index 4508515..65e8cee 100644
+--- a/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt
++++ b/moonray/scene_rdl2/mod/python/py_scene_rdl2/CMakeLists.txt
+@@ -13,7 +13,6 @@ endif()
+ find_package(Python COMPONENTS Interpreter Development)
+ find_package(Boost REQUIRED
+   COMPONENTS
+-    system
+     "${BOOST_PYTHON_COMPONENT_NAME}"
+     date_time
+     chrono)
+@@ -67,7 +66,6 @@ target_include_directories(${component} SYSTEM
+ 
+ target_link_libraries(${component}
+     PRIVATE
+-        Boost::system
+         Boost::${BOOST_PYTHON_COMPONENT_NAME}
+         Boost::date_time
+         Boost::chrono
