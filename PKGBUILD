@@ -3,6 +3,7 @@
 pkgname=truss
 pkgver=0.3.1
 pkgrel=5
+# pkglint: ignore=PB906
 pkgdesc="Truss helps you build go-kit microservices without having to worry about writing or maintaining boilerplate code."
 arch=('x86_64' 'aarch64')
 url="https://github.com/metaverse/truss"
