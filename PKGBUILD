@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=go-perftuner
 pkgver=0.6.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Helper tool for manual Go code optimization."
 arch=('x86_64' 'aarch64')
 url="https://github.com/go-perf/go-perftuner"
@@ -28,7 +28,7 @@ build() {
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags='-s -w' \
+    -ldflags='-linkmode=external -s -w' \
     -o $pkgname \
     .
 }
