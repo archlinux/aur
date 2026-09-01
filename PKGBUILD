@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 _pkgname=ente
 pkgname="${_pkgname}-desktop-bin"
-pkgver=1.7.27
+pkgver=1.7.28
 _electronversion=42
 pkgrel=1
 pkgdesc="Desktop app for ente Photos.(Prebuilt version)"
@@ -22,8 +22,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-aarch64.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.pacman")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('df9b165f3fd6beed8f4376350112c3026d6d6fa7b7337356e34c9fdfc762c0ae')
-sha256sums_x86_64=('a5ff732fbb2b4fe836a22304f20208b6cc548ce9066fa8ac671f46b6afb39708')
+sha256sums_aarch64=('84109d0109b9893079986525b037797512b9a9d520a170f894e67eb62af63558')
+sha256sums_x86_64=('ef3a607fe626256fd931fb6a74da4f53f3873c44408b5a397b88cb25dfc51ca5')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
