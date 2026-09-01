@@ -3,6 +3,7 @@
 pkgname=cascadia
 pkgver=1.5.1
 pkgrel=3
+# pkglint: ignore=PB906
 pkgdesc="Go cascadia package command line CSS selector"
 arch=('x86_64' 'aarch64')
 url="https://github.com/suntong/cascadia"
