@@ -1,7 +1,7 @@
 pkgbase = git-orchard
 	pkgdesc = A command-line utility for managing git-subtrees.
 	pkgver = 0.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/jmelahman/git-orchard
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = git-orchard
 	license = MIT
 	makedepends = go
 	makedepends = git
+	depends = glibc
 	source = git-orchard::git+https://github.com/jmelahman/git-orchard.git#commit=00ac69aaf081b86ea550ba87b5a1580817c2b736
 	md5sums = SKIP
 
