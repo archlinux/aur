@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=electron41-castlab-bin
-pkgver='41.9.2+wvcus'
+pkgver='41.10.7+wvcus'
 pkgrel=1
 pkgdesc="Electron for Content Security (ECS) is a fork of Electron created by castLabs to facilitate the use of Google's Widevine Content Decryption Module (CDM) for DRM-enabled playback within Electron"
 arch=('x86_64')
@@ -27,9 +27,10 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/electron-v${pkgver}-linux-x64.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('9795ce979a4c7bbd01efd6358c65fe239b7805716cc41579cfdb3d17b88a687f'
+sha256sums=('071cf09f69c69c0e831000e3624ccdbec48e00d54586d56729c3cc4382226e2d'
             'ac1e26684ffbfc7ac0993c55b9299003f6b9efea25b755b1d260bea4db440157')
 prepare() {
+    sed -i "s/@ELECTRON@/${pkgname%-bin}/g" "${srcdir}/${pkgname%-bin}.sh"
     install -Dm755 -d "${srcdir}/${pkgname%-bin}"
     bsdtar -xf "${pkgname%-bin}-${pkgver}.zip" -C "${srcdir}/${pkgname%-bin}"
     chmod u+s "${srcdir}/${pkgname%-bin}/chrome-sandbox"
