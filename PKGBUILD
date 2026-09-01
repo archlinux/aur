@@ -16,12 +16,6 @@ provides=('ffnvcodec-headers')
 source=(git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git#tag=n${pkgver})
 sha256sums=('7016462c5bc737fdb4ac0fce51249447c48be59edfdf0f8bb0c668b357d38da6')
 
-pkgver() {
-  cd nv-codec-headers
-
-  git describe --tags | sed 's/^n//'
-}
-
 build() {
   make PREFIX=/usr -C nv-codec-headers
   sed -n '4,25p' nv-codec-headers/include/ffnvcodec/nvEncodeAPI.h > LICENSE # Extract license
