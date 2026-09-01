@@ -1,6 +1,6 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-constraint
-pkgver=2.6.0
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="Module to solve Constraint Solving Problems (CSP) over finite domain"
 arch=(x86_64)
@@ -24,7 +24,7 @@ checkdepends=(
     python-tomli
 )
 source=($pkgname::git+https://github.com/python-constraint/python-constraint#tag=$pkgver)
-b2sums=('9abb8f834a62c43eb4282fdc53757b3853a2acf9e005cda83f40de8572dceddfc1b68e594b6a324f5369ca11d5d886cde158310b53899974fde10f3521eb12da')
+b2sums=('ddf89252f2b3964f73a102991c9078d02b2daa9119f0ab85352587868303ff2cd9015c2c2e5b6132008c6bf76b53eeea251fc3c70b70c7a19ebb944a4a8144ef')
 
 build() {
     cd $pkgname
@@ -33,12 +33,10 @@ build() {
 
 check() {
     cd $pkgname
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    python -m installer --destdir=../test_dir dist/*.whl
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
     rm -rf constraint
-    PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" \
-    pytest tests -o addopts="" -k "not test_util_benchmark"
-
+    test-env/bin/python -P -m pytest -o addopts="" -k "not test_util_benchmark"
 }
 
 package() {
