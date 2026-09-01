@@ -7,8 +7,9 @@ pkgver=0.7.8
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A modern GTK frontend for Plex and other media servers"
-arch=('x86_64')
-_barch=('amd64')
+arch=('x86_64' 'aarch64')
+_barch=('amd64' 'arm64')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 license=('GPL-3.0-or-later')
@@ -20,8 +21,10 @@ depends=('glibc' 'gcc-libs' 'glib2' 'dbus' 'pango' 'gtk4' 'openssl' 'mpv' 'libad
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.deb")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.deb::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[1]}.deb")
 sha256sums=('89193daa3a25723e992e1ec3ba9ab4c1b6622e0644059f4138b232c097d98e0e')
 sha256sums_x86_64=('2d449c4f33e96a5022d32a05fe6c263d4b9dad3439c060a93268f500ed534b36')
+sha256sums_aarch64=('578eb6fcede8fd66b3d0c4a41a890f98b669edbc12ee46c9d96f6897b387e828')
 
 package() {
     cd "${pkgdir}"

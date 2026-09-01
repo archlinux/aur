@@ -4,6 +4,7 @@ pkgbase = reel-bin
 	pkgrel = 1
 	url = https://github.com/arsfeld/reel
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = tar
 	depends = glibc
@@ -23,5 +24,7 @@ pkgbase = reel-bin
 	sha256sums = 89193daa3a25723e992e1ec3ba9ab4c1b6622e0644059f4138b232c097d98e0e
 	source_x86_64 = reel-x86_64-0.7.8.deb::https://github.com/arsfeld/reel/releases/download/v0.7.8/reel-0.7.8-amd64.deb
 	sha256sums_x86_64 = 2d449c4f33e96a5022d32a05fe6c263d4b9dad3439c060a93268f500ed534b36
+	source_aarch64 = reel-aarch64-0.7.8.deb::https://github.com/arsfeld/reel/releases/download/v0.7.8/reel-0.7.8-arm64.deb
+	sha256sums_aarch64 = 578eb6fcede8fd66b3d0c4a41a890f98b669edbc12ee46c9d96f6897b387e828
 
 pkgname = reel-bin
