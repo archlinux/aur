@@ -3,7 +3,7 @@
 # Contributor: Peter Jung <ptr1337@archlinux.org>
 
 pkgname=mingw-w64-gcc-msvcrt
-pkgver=16.1.0
+pkgver=16.2.0
 pkgrel=1
 pkgdesc="Cross GCC for the MinGW-w64 cross-compiler (w/ MSVCRT as C runtime library)"
 arch=('x86_64')
@@ -12,7 +12,8 @@ license=(GPL-3.0-with-GCC-exception GFDL-1.3-or-later)
 groups=('mingw-w64-toolchain-msvcrt' 'mingw-w64-msvcrt')
 depends=(
   bash
-  gcc-libs
+  libgcc
+  libstdc++
   glibc
   gmp
   libisl
@@ -34,7 +35,7 @@ options=('staticlibs' '!emptydirs' '!buildflags')
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
 validpgpkeys=(D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62  # Jakub Jelinek <jakub@redhat.com>
               13975A70E63C361C73AE69EF6EEB81F8981C74C7) # richard.guenther@gmail.com
-sha512sums=('b3454958891ab47e1e5b6cb9396c0ad3b04f32fe2a7bf1153a143f21013fdb6b295ca94c98964698a688e4c1d7555ffd8ffbc20187507cce6b1c32cbcc09897a'
+sha512sums=('c51c30ca7422d0cbecf504b2e0f33c3aca31e0f90a76b65217f465163fa6fa17b3f5de39e145c47e5bab90ac0ce7fff3b03c8d553ae36e01faaea5a50f8648d1'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -62,7 +63,8 @@ build() {
         --with-system-zlib --enable-cloog-backend=isl \
         --enable-lto --enable-libgomp \
         --disable-multilib --enable-checking=release \
-        --disable-sjlj-exceptions --with-dwarf2
+        --disable-sjlj-exceptions --with-dwarf2 \
+        --enable-tls
     make
   done
 }
