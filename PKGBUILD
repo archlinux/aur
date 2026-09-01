@@ -1,23 +1,23 @@
 pkgname=antsword
 pkgver=2.1.16
-pkgrel=3
+pkgrel=4
 pkgdesc="Cross-platform webshell management toolkit."
 arch=('any')
 url="https://github.com/AntSwordProject/antSword"
 license=('MIT')
 depends=('electron4-bin' 'bash' 'hicolor-icon-theme')
-makedepends=('imagemagick' 'nodejs')
-provides=('antsword')
-options=('strip')
+makedepends=('desktop-file-utils')
 source=("https://github.com/AntSwordProject/$pkgname/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname-$pkgver.patch"
         "$pkgname.desktop"
-        "$pkgname.png"
+        "32x32.png"
+        "256x256.png"
         "$pkgname")
 sha256sums=("ffd46a79be7f48b0fbfdaf5e6aee9f414259c126138f83c462aeb96ba1785110"
         "fa236bb4e08f1bd11d077969b9089961a374595dd21b62925e3830b892d375bc"
         "f3cff3ac504b8ff4bd48c9086e49ae978b6f13a3a60dc80b4dfca584c6995f69"
-        "94894700d63d1c94f8e8d1fade1df936e1fee32d42f886ea32a6e6b29d40a866"
+        "3bcb41a20284d0ad9a6f241c21587164817501a403c1536037a25423602bee88"
+        "1c30320dc9fdc31535adb3a72a84e51841eae54659132b3baab1ae782581af8c"
         "65c63921e12780a68c2fac7183d6dd054a44452743c73c45e66c9e18d3952826")
 
 prepare() {
@@ -27,12 +27,6 @@ prepare() {
 	cd "$pkgname-$pkgver"
 	# Patch out blacklist
 	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-
-	# Convert icons
-	local res
-	for res in 32x32 256x256; do
-		convert "$srcdir/$pkgname.png" -resize $res "$srcdir/$res.png"
-	done
 }
 
 package() {
