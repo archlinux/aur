@@ -25,7 +25,7 @@ run_setup() {
   printf 'Wine öneki hazırlanıyor: %s\n' "$prefix"
   wineboot -u
 
-  printf '.NET Framework ve Windows çalışma bileşenleri kuruluyor. Bu işlem ilk seferde birkaç dakika sürebilir.\n'
+  printf '.NET Framework ve Windows çalışma bileşenleri kuruluyor. İlk kurulum 10 dakikaya kadar sürebilir.\n'
   winetricks -q win7 corefonts dotnet48 msxml6
 
   printf 'İmzalı Seneka ClickOnce dağıtımı kuruluyor.\n'
@@ -63,7 +63,7 @@ trap 'rm -f "$status_file"' EXIT
   printf '%s\n' "$?" >"$status_file"
 ) | zenity --progress --pulsate --auto-close --no-cancel \
   --title='Seneka EBDYS kurulumu' \
-  --text='Wine ve Seneka EBDYS hazırlanıyor. İlk kurulum birkaç dakika sürebilir.'
+  --text='Wine ve Seneka EBDYS hazırlanıyor. İlk kurulum 10 dakikaya kadar sürebilir.'
 
 status="$(cat "$status_file" 2>/dev/null || printf '1')"
 if [[ "$status" != '0' ]]; then

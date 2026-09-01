@@ -2,7 +2,7 @@
 
 pkgname=seneka-ebdys-maltepe
 pkgver=2026.07.23.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Maltepe University Seneka EBDYS ClickOnce client for Wine"
 arch=('x86_64')
 url="https://ebys.maltepe.edu.tr/"
@@ -17,7 +17,7 @@ source=(
   'LICENSE.upstream'
 )
 sha256sums=('525fc94e6b2e2d96d572d09088feab2e2f55250c72a5cbd6dc56a5c2fb2dbb0a'
-            '88f1b146110c17e6ad720ddf9722dbf83e078bc1c850ea5e05ea561420265f6d'
+            'c7b8d41375675e0ca49c2b0519056a7591dfc6950c2a547021779d0f93c03085'
             '6240ed29b9aa4c4863133811c46e519520ac13ee3c9e62bd70df3b10ff93239e'
             'fe21570545d3c93f61517963a8bc100bc08095f6bb9d210cea81f687600c7e46'
             'bf76c9891b73c19070faa6bfc15b5c5f711f0ff30e76c9feb93a18886305ec13'

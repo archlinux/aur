@@ -9,7 +9,7 @@ ClickOnce deployment from Maltepe University's EBYS server.
 
 Run `seneka-ebdys` or choose **Maltepe Üniversitesi EBYS** from the application
 menu. The first launch downloads and installs .NET Framework and the EBDYS
-client, so it can take several minutes.
+client, so it can take up to 10 minutes.
 
 Wine 11 may display an unhandled-exception dialog over the first ClickOnce
 security prompt. Choose **Quit** only on that error dialog, then choose
