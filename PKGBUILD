@@ -3,7 +3,7 @@
 # CI bumps pkgver and regenerates sha256sums (updpkgsums) on each release.
 
 pkgname=gotomux
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='Fuzzy tmux session picker with presets, zoxide and daemon-assisted cold start'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ install=gotomux.install
 options=('!lto' '!debug')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ba948f1dc101b95a8857ba1e78e4432e05aaade69872d8b7d4dd1fd459b6b1c0')
+sha256sums=('9b73dd0cc5e956f46796fc8907b1d3304364f83a2005f7779d076ef7f951f53d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
