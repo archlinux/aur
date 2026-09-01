@@ -2,7 +2,7 @@
 
 _appname=music
 pkgname=nextcloud-app-music
-pkgver=3.1.1
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="Music app for Nextcloud"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('npm' 'perl' 'perl-locale-po' 'unzip' 'zip' 'yq')
 options=('!strip')
 groups=('nextcloud-apps')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('9b88b2628fe34787a673208cd00da1c5b82c4537fe7c39db62c8551b330a3c1caeed9bb55c1f145e9b71c1a2aa3c757d81720aace73133878abbe926036436e9')
+sha512sums=('c06f81bf7f6d19958182fca4f037e04660ddff4a27b481332d8dc75714c5661cf5cd76786d26bf15d8fa0604f74c1e5d96d606e28cf70c798809dcf63bec7f22')
 
 prepare() {
     # Generate music.zip that is used when packaging
