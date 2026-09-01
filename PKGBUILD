@@ -10,7 +10,7 @@ _cratename=${_pkgname}-cli
 pkgname=${_cratename}
 pkgdesc="A CLI for fetching JIRA issue summaries, details, and current sprint tickets"
 
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -28,7 +28,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('da18d48f19c99560684b627eeeef2a8c43f27b7d03c58892b4866e60df97a04f')
+sha256sums=('fd60b14bef9e9ddaa7f41d499f04b5dd24071b677e88c073abd6a9990d24a06f')
 
 
 build() {
