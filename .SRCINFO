@@ -1,6 +1,6 @@
 pkgbase = seamly2d
 	pkgdesc = Open source patternmaking software to democratize fashion.
-	pkgver = 2026.8.24.201
+	pkgver = 2026.8.31.143
 	pkgrel = 1
 	url = https://seamly.io/
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = seamly2d
 	depends = qt6-multimedia
 	depends = qt6-svg
 	depends = xerces-c
-	source = Seamly2D-2026.8.24.201.tar.gz::https://github.com/FashionFreedom/Seamly2D/archive/refs/tags/v2026.8.24.201.tar.gz
-	sha256sums = cd2b4c1f6185a8d0b185edfe79f158ad9a65b44d9c405ba8803e0c404af03942
+	source = Seamly2D-2026.8.31.143.tar.gz::https://github.com/FashionFreedom/Seamly2D/archive/refs/tags/v2026.8.31.143.tar.gz
+	sha256sums = 68319709f0561f4831430d48182b10f0ec469e468a45f7d7ff5386e562681f17
 
 pkgname = seamly2d
