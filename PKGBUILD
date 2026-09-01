@@ -4,12 +4,12 @@
 pkgname='python-e3-core'
 _pkgname=${pkgname#python-}
 pkgver=22.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework to ease the development of portable automated build systems"
 
 arch=('any')
 url="https://github.com/AdaCore/e3-core"
-license=('GPL3')
+license=('GPL-3.0-only')
 
 depends=('python-colorama'
          'python-distro'
@@ -21,16 +21,35 @@ depends=('python-colorama'
          'python-stevedore>1.20.0'
          'python-tqdm'
          'python-yaml')
-makedepends=('python-setuptools')
+makedepends=('python-build'
+             'python-installer'
+             'python-setuptools'
+             'python-wheel')
 conflicts=('python2-e3-core')
-makedepends=('python-pip')
 
+# PyPI publishes no sdist for e3-core, so build from the upstream tag instead of
+# the wheel.
 source=(
-  "https://files.pythonhosted.org/packages/py3/${_pkgname::1}/$_pkgname/${_pkgname/-/_}-$pkgver-py3-none-any.whl"
+  "${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
 )
-sha256sums=('cf87bde4ceacf33728c43370bce2b014d88fd08c8fc4ef4167464e08334d20ac')
+sha256sums=('496b630569579c0b544e5455681076baeb6195d9ed03b4a7c7add9618d9e7127')
+
+prepare() {
+    cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+    # Upstream keeps only "<major>.<minor>" in VERSION and fills the patch
+    # number in at release time (build_wheel.py counts the commits since the
+    # minor bump), so stamp the released version in to match the sdist-less
+    # wheel PyPI publishes.
+    echo "${pkgver}" >VERSION
+}
+
+build() {
+    cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+    python -m build --wheel --no-isolation
+}
 
 package() {
-    cd "$srcdir" || exit
-    python -m pip install --root="$pkgdir/" --no-deps --ignore-installed "${srcdir}/${source[0]##*/}"
+    cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+    install -Dm0644 COPYING3 "${pkgdir}/usr/share/licenses/${pkgname}/COPYING3"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
