@@ -1,6 +1,6 @@
 pkgbase = gwm-cli-bin
 	pkgdesc = Git Worktree Manager
-	pkgver = 1.9.0
+	pkgver = 1.10.0
 	pkgrel = 1
 	url = https://github.com/kbrdn1/gwm-cli
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = gwm-cli-bin
 	provides = gwm
 	conflicts = gwm-cli
 	options = !strip
-	source_x86_64 = gwm-x86_64-1.9.0.tgz::https://github.com/kbrdn1/gwm-cli/releases/download/v1.9.0/gwm-v1.9.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 94a017b227289d5ce3389a0e10fef8dd33b49e516d82a999220bdbe3f569fd15
-	source_aarch64 = gwm-aarch64-1.9.0.tgz::https://github.com/kbrdn1/gwm-cli/releases/download/v1.9.0/gwm-v1.9.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = f4a2abd1bbf56f5d434346ba1c9a95beaa9f1a139622ebd563fdbbf88891523c
+	source_x86_64 = gwm-x86_64-1.10.0.tgz::https://github.com/kbrdn1/gwm-cli/releases/download/v1.10.0/gwm-v1.10.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = eb01194b6dcb1b57fe7d74874bb429689b69f4d539b81f90a65aadfe2ce2eaee
+	source_aarch64 = gwm-aarch64-1.10.0.tgz::https://github.com/kbrdn1/gwm-cli/releases/download/v1.10.0/gwm-v1.10.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 45f2b355ed9b3643b7e9103392dde746f214c84c797bfa699724a3aa0d53effc
 
 pkgname = gwm-cli-bin
