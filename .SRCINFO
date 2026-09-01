@@ -1,6 +1,6 @@
 pkgbase = t3code-bin
 	pkgdesc = Desktop control surface for local coding agents
-	pkgver = 0.0.37
+	pkgver = 0.0.38
 	pkgrel = 1
 	url = https://github.com/pingdotgg/t3code
 	arch = x86_64
@@ -35,13 +35,13 @@ pkgbase = t3code-bin
 	depends = xdg-utils
 	depends = zlib
 	optdepends = openai-codex: use the system-installed Codex CLI
-	provides = t3code=0.0.37
+	provides = t3code=0.0.38
 	conflicts = t3code
 	options = !debug
 	options = !strip
-	source = T3-Code-0.0.37-x86_64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v0.0.37/T3-Code-0.0.37-x86_64.AppImage
-	source = t3code-bin-0.0.37-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v0.0.37/LICENSE
-	sha256sums = ea88807ccc4b18b2c3f85726ef1235e695b656ab37c8e29c9289f7a28de336c2
+	source = T3-Code-0.0.38-x86_64.AppImage::https://github.com/pingdotgg/t3code/releases/download/v0.0.38/T3-Code-0.0.38-x86_64.AppImage
+	source = t3code-bin-0.0.38-LICENSE::https://raw.githubusercontent.com/pingdotgg/t3code/v0.0.38/LICENSE
+	sha256sums = 1f1ccd922b2efaffd50447b028ee0d6e2525502905087cf8ae3fe41efebe346f
 	sha256sums = 935d8f2af0c703f9c39517ee57cc4930b19d02d533be930b63f0e82f93614b43
 
 pkgname = t3code-bin
