@@ -6,8 +6,8 @@ _npmscope=@getpaseo
 pkgver=0.7.0_beta.3
 _tarball_sha='9f1826e6e5cbd80efea18f9f56c43dc69e567512b8e4a890db1f1f26f6a156cc'
 _license_sha='79d5aedce6aa0adc547336dc1bd34c5cc9308ba110fac7079ed97515ee573ad3'
-pkgrel=3
-pkgdesc='Command-line interface for controlling Paseo AI coding agents (beta)'
+pkgrel=1
+pkgdesc='Command-line interface for controlling Paseo AI coding agents (beta - latest beta release. Stable may be ahead; use paseo-cli-edge for latest)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/getpaseo/paseo/tree/main/packages/cli'
 license=('Apache-2.0')
@@ -35,11 +35,6 @@ package() {
         "${pkgdir}/usr/lib/${pkgname}/package-lock.json"
     grep -rlZ '^#!.*node' "${pkgdir}/usr/lib/${pkgname}/node_modules" \
         | xargs -0 -r sed -i '1{/^#!/d}'
-
-    # esbuild's postinstall is blocked by npm 10+ allowScripts; run it manually
-    # must happen BEFORE the blanket chmod 644 (install.js validates the binary)
-    node "${pkgdir}/usr/lib/${pkgname}/node_modules/esbuild/install.js" || true
-
     find "${pkgdir}/usr/lib/${pkgname}/node_modules" -type f -perm /111 -exec chmod 644 {} +
 
     # restore execute on esbuild binary (blanket chmod above stripped it)
