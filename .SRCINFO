@@ -1,7 +1,7 @@
 pkgbase = linuxhammerlauncher-bin
 	pkgdesc = A launcher, installer and updater for Hammer++ & Tools++ (VBSP++, VVIS++, VRAD++) on Linux, for many different Source Engine games.
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://github.com/EnderCatCore/linuxhammerlauncher
 	arch = x86_64
 	license = GPL-3.0-only
@@ -11,9 +11,9 @@ pkgbase = linuxhammerlauncher-bin
 	depends = python
 	options = !strip
 	options = !debug
-	source = linuxhammerlauncher-bin-1.0.2.zip::https://github.com/EnderCatCore/linuxhammerlauncher/releases/download/1.0.2/Linux.Hammer.Launcher.zip
+	source = linuxhammerlauncher-bin-1.0.3.zip::https://github.com/EnderCatCore/linuxhammerlauncher/releases/download/1.0.3/Linux.Hammer.Launcher.zip
 	source = linuxhammerlauncher.desktop
-	sha256sums = 186caaaa22382ede6812965e080f44e30b347b9779020a5a9374c751b2eab2d8
+	sha256sums = e7b873e4951bc477ba55af0caef61980f1a1e58009809eaa2a81969d1dbf7653
 	sha256sums = b4f6fdcd177a6044ac2efe97f66303c2bce43f26dec3cd1096363e9d3f219824
 
 pkgname = linuxhammerlauncher-bin
