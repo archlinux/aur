@@ -4,6 +4,7 @@ pkgname=tecli
 pkgver=v0.5.0
 _pkgver=$pkgver-alpha
 pkgrel=3
+# pkglint: ignore=PB906
 pkgdesc="In a world where everything is Terraform, teams use Terraform Cloud API to manage their workloads. TECLI increases teams productivity by facilitating such interaction and by providing easy commands that can be executed on a terminal or on CI/CD systems."
 arch=('x86_64' 'aarch64')
 url="https://github.com/awslabs/tecli"
