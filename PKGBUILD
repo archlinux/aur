@@ -1,6 +1,6 @@
 # Maintainer: Luke Hsiao <luke@hsiao.dev>
 pkgname=git-stats-bin
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='A tool for getting aggregated commit stats (prebuilt binary)'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -17,9 +17,9 @@ source_x86_64=("git-stats-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$_relurl/git-
 source_aarch64=("git-stats-$pkgver-aarch64-unknown-linux-gnu.tar.gz::$_relurl/git-stats-aarch64-unknown-linux-gnu.tar.gz")
 source_armv7h=("git-stats-$pkgver-armv7-unknown-linux-gnueabihf.tar.gz::$_relurl/git-stats-armv7-unknown-linux-gnueabihf.tar.gz")
 
-sha256sums_x86_64=('ead290d1f8f515e7ebb7da434e350e5aa58542737057263fbde7450c074985b8')
-sha256sums_aarch64=('45fb4ffef67df782bfdceb0542316386782f24185617c9a0b12d3a37384e97bf')
-sha256sums_armv7h=('a38ce436026a172e8047a6ac08bcbcc8175b0d5278deab6ea6da4066e62a85a3')
+sha256sums_x86_64=('ad6f071be6d5c0440ca942456ceea7e0b5d3575a01528a4c38f594b0b048433a')
+sha256sums_aarch64=('184ed8db1e13941cd78be3e7689200e8fd35cae2cfcbf475b60ba46ece6c082d')
+sha256sums_armv7h=('5dd139a3ae26688ac0980bc17e73c7eade59c9c95c65d3529ef8354e7b198bc8')
 
 package() {
     install -Dm755 "$srcdir/git-stats"  "$pkgdir/usr/bin/git-stats"
