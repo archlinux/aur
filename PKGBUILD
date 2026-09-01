@@ -1,14 +1,14 @@
 # Maintainer: KevinCrrl <kevincrrl@tuta.io>
 
 pkgname=kpa
-pkgver=3.2.1
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="KevinCrrl Python AUR Helper: Creado para automatizar de manera segura."
 arch=('any')
 url="https://github.com/KevinCrrl/kpa"
 license=('GPL-3.0-or-later')
 source=("${url}/archive/refs/tags/${pkgver}/${pkgver}.tar.gz")
-sha512sums=('6bf7071a6e7b089e5062a2ea0f552cd988378f5b2713f3270bfd18a23a2c3ae7b373f133fe2c401fa0a2be171d8f8c9faf76b72479ae1f1ba4fddd5925ed4b2f')
+sha512sums=('0c81777bb70c9b50960a36283528d3ca09c646a710926736a6e32388cba0be68bc0346853e9b186c9a471a7c9b6e8d11fd61d435ffb4ecd90ebfc2c635e43e02')
 depends=(
     'python'
     'python-pyxdg'
