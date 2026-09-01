@@ -2,7 +2,7 @@
 
 pkgname=polymath
 pkgver=1.4.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Advanced keyboard layout customization tool for Flux keyboards'
 arch=('x86_64')
 url='https://fluxkeyboard.com/updates/'
@@ -17,6 +17,7 @@ depends=(
   'libxinerama' 'libxkbcommon' 'libxml2' 'libxpresent' 'libxrandr' 'libxss' 'libxv'
   'mesa' 'nettle' 'openssl' 'pango' 'systemd-libs' 'wayland' 'xz' 'zlib'
 )
+conflicts=('polymath-dev')
 options=('!strip' '!debug' '!lto')
 source=(
   "https://fluxkeyboard.com/updates/polymath/linux/deb/polymath_${pkgver}_amd64.deb"

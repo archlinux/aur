@@ -1,7 +1,7 @@
 pkgbase = polymath
 	pkgdesc = Advanced keyboard layout customization tool for Flux keyboards
 	pkgver = 1.4.5.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fluxkeyboard.com/updates/
 	arch = x86_64
 	license = custom
@@ -58,6 +58,7 @@ pkgbase = polymath
 	depends = wayland
 	depends = xz
 	depends = zlib
+	conflicts = polymath-dev
 	options = !strip
 	options = !debug
 	options = !lto
