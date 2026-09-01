@@ -1,7 +1,7 @@
 pkgbase = tilix
 	pkgdesc = A tiling terminal emulator for Linux using GTK+ 3
 	pkgver = 1.9.6
-	pkgrel = 9
+	pkgrel = 10
 	url = https://github.com/gnunn1/tilix
 	arch = x86_64
 	license = MPL-2.0
