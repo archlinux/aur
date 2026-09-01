@@ -20,7 +20,7 @@ depends=(
 
 source=(
     "$_archive::${url}/releases/download/v${_riftver}/${_archive}"
-    "LICENSE::https://github.com/StratumServer/RiftLauncher/raw/refs/heads/main/LICENSE"
+    "riftlauncher-LICENSE::https://github.com/StratumServer/RiftLauncher/raw/refs/heads/main/LICENSE"
 )
 
 sha256sums=(
