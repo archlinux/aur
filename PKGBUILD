@@ -2,7 +2,7 @@
 
 _appname="harlequin_postgres"
 pkgname="${_appname//_/-}"
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="The Postgres adapter for Harlequin"
 url="https://harlequin.sh/"
@@ -16,7 +16,7 @@ makedepends=("python-build"
              "python-wheel")
 options=("!strip")
 source=("https://files.pythonhosted.org/packages/source/${_appname::1}/${_appname}/${_appname}-${pkgver}.tar.gz")
-b2sums=('597f4832f5cd5d95c9f8606882e25435ebbac2823d671fff4be1754d760e93aac653d7af9b2ef6f648ffe960697fba7023411a7872d4a70b0bd9a070bbc1a132')
+b2sums=('3c3daae1dc1171deb59c8e86d4eb2e88d6fcb4087a0a585817ee9e10d91971d5979745f5568e3bb27bda4795bd2b1cefa78214cbfff8a8126f399ff526df1d31')
 
 build(){
     cd "${_appname}-${pkgver}"
