@@ -1,0 +1,18 @@
+pkgbase = archie-cli
+	pkgdesc = Archlinux system operation and maintenance CLI/applet
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.com/gabriel.chamon/archie
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	makedepends = uv
+	depends = python>=3.14
+	depends = sqlite
+	provides = archie
+	conflicts = archie
+	conflicts = archie-cli-nightly
+	source = archie::git+https://gitlab.com/gabriel.chamon/archie.git#commit=cb143faf686ad6b10a8faaf414aef6dfd15640b8
+	sha256sums = SKIP
+
+pkgname = archie-cli
