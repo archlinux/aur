@@ -25,6 +25,9 @@ prepare() {
   ln --symbolic --force "/usr/src/nginx/auto"
   ln --symbolic --force "/usr/src/nginx/src"
   /usr/src/nginx/configure \
+    --with-compat \
+    --with-cc-opt="${CFLAGS} ${CPPFLAGS}" \
+    --with-ld-opt="${LDFLAGS}" \
     --with-http_ssl_module \
     --add-dynamic-module="../${_modname}"
 }
