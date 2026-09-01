@@ -1,6 +1,6 @@
 # Maintainer: KumihoIO <bot@revka.dev>
 pkgname=revka
-pkgver=2026.6.30
+pkgver=2026.8.31
 pkgrel=1
 pkgdesc="Zero overhead. Zero compromise. 100% Rust. The fastest, smallest AI assistant."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/KumihoIO/Revka/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f12753a4a5e72ac52c93a09b7dba24d167dd01cc61a8c58f22b85d0c09043857')
+sha256sums=('9bcc34a45234e5ca880523d2e5e7f50ce8a2748bfc769a6c032e6b3fe3a83143')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
