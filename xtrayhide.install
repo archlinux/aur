@@ -1,0 +1,32 @@
+post_install() {
+  cat << 'EOF'
+
+==> xtrayhide has been installed.
+==> To enable and start the systemd user service:
+==>   systemctl --user enable --now xtrayhide
+==>
+==> Or add to your compositor config (e.g. niri):
+==>   spawn "xtrayhide"
+==>
+==> Do not use both methods simultaneously.
+==> Start xtrayhide before launching Wine/Proton applications.
+EOF
+}
+
+post_upgrade() {
+  cat << 'EOF'
+
+==> xtrayhide has been upgraded.
+==> If running via systemd, restart it:
+==>   systemctl --user restart xtrayhide
+EOF
+}
+
+post_remove() {
+  cat << 'EOF'
+
+==> xtrayhide has been removed.
+==> If you enabled the systemd user service, disable it manually:
+==>   systemctl --user disable --now xtrayhide
+EOF
+}

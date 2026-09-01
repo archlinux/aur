@@ -1,20 +1,22 @@
 pkgbase = xtrayhide-git
-	pkgdesc = XEmbed to SNI tray bridge. Fixes floating Wine/Proton tray windows on Wayland compositors (Niri, Hyprland)
+	pkgdesc = XEmbed to SNI tray bridge. Fixes floating Wine/Proton tray windows on Wayland compositors
 	pkgver = r2.5e33f36
 	pkgrel = 1
 	url = https://github.com/bnema/xtrayhide
-	install = xtrayhide-git.install
+	install = xtrayhide.install
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	makedepends = go
+	makedepends = go>=1.25.6
 	makedepends = git
 	depends = dbus
 	depends = libx11
 	provides = xtrayhide
 	conflicts = xembed-sni-proxy
-	source = git+https://github.com/bnema/xtrayhide.git
-	source = xtrayhide-git.install
+	options = !debug
+	source = git+https://github.com/bnema/xtrayhide.git#branch=master
+	source = xtrayhide.install
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = abef9a097facd084bb1d4c0238b639057791ea7afa5c9e8212413d3e9a39650c
 
 pkgname = xtrayhide-git

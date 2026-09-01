@@ -1,19 +1,20 @@
 pkgname=xtrayhide-git
 pkgver=r2.5e33f36
 pkgrel=1
-pkgdesc="XEmbed to SNI tray bridge. Fixes floating Wine/Proton tray windows on Wayland compositors (Niri, Hyprland)"
-arch=('x86_64')
+pkgdesc="XEmbed to SNI tray bridge. Fixes floating Wine/Proton tray windows on Wayland compositors"
+arch=('x86_64' 'aarch64')
 url="https://github.com/bnema/xtrayhide"
 license=('MIT')
 depends=('dbus' 'libx11')
-makedepends=('go' 'git')
+makedepends=('go>=1.25.6' 'git')
 provides=('xtrayhide')
 conflicts=('xembed-sni-proxy')
-install="${pkgname}.install"
-source=("git+${url}.git"
-        "${pkgname}.install")
+options=('!debug')
+install="xtrayhide.install"
+source=("git+${url}.git#branch=master"
+        "xtrayhide.install")
 sha256sums=('SKIP'
-            'SKIP')
+            'abef9a097facd084bb1d4c0238b639057791ea7afa5c9e8212413d3e9a39650c')  
 
 pkgver() {
   cd "$srcdir/xtrayhide"
@@ -22,12 +23,23 @@ pkgver() {
 
 build() {
   cd "$srcdir/xtrayhide"
-  go build -trimpath -o xtrayhide ./cmd/xtrayhide
+  
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  
+  go build -o xtrayhide ./cmd/xtrayhide
 }
 
 package() {
   cd "$srcdir/xtrayhide"
+  
   install -Dm755 xtrayhide "${pkgdir}/usr/bin/xtrayhide"
-  install -Dm644 xtrayhide.service "${pkgdir}/usr/lib/systemd/user/xtrayhide.service"
+  
+  sed 's|%h/.local/bin/xtrayhide|/usr/bin/xtrayhide|' xtrayhide.service > xtrayhide.service.patched
+  install -Dm644 xtrayhide.service.patched "${pkgdir}/usr/lib/systemd/user/xtrayhide.service"
+  
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
