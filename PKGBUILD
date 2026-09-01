@@ -4,7 +4,7 @@
 : "${_use_cuda:=detect}"
 
 pkgname=helios-git
-pkgver=0.6.0.r0.g21bfed7
+pkgver=0.6.1.r0.g4e1139e
 pkgrel=1
 pkgdesc='Game stream host for Selene and Moonlight OS (development version)'
 arch=('x86_64' 'aarch64')
