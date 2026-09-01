@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=linyaps-box-git
-pkgver=2.2.0.rc.4.r81.g39acf70
+pkgver=2.3.0.r2.g98fe5c2
 pkgrel=1
 pkgdesc='玲珑（Linglong） is the container application toolkit of deepin.'
 arch=($CARCH)
@@ -39,7 +39,7 @@ pkgver() {
   cd "${srcdir}/${pkgname}"
   (
     set -o pipefail
-    git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/-rc/+rc/g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
       printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
   )
 }
