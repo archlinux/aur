@@ -3,7 +3,7 @@
 pkgname=python-json-write
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.0.1.2
+pkgver=0.0.1.3
 pkgrel=1
 epoch=
 pkgdesc="JSON write tools."
@@ -25,7 +25,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('640057a076a68131f21b2048a90e16f5b54932180fb538122ca01ab56a00aefb')
+sha256sums=('f62ffe483c7310ca92a2ce3c48dec8cc5d20dda9622798c2c6b39ac484a65b9c')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"

@@ -1,6 +1,6 @@
 pkgbase = python-json-write
 	pkgdesc = JSON write tools.
-	pkgver = 0.0.1.2
+	pkgver = 0.0.1.3
 	pkgrel = 1
 	url = https://pypi.org/project/json_write
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-json-write
 	conflicts = python-json-write
 	options = !strip
 	options = !debug
-	source = json_write-0.0.1.2.tar.gz::https://files.pythonhosted.org/packages/source/j/json_write/json_write-0.0.1.2.tar.gz
-	sha256sums = 640057a076a68131f21b2048a90e16f5b54932180fb538122ca01ab56a00aefb
+	source = json_write-0.0.1.3.tar.gz::https://files.pythonhosted.org/packages/source/j/json_write/json_write-0.0.1.3.tar.gz
+	sha256sums = f62ffe483c7310ca92a2ce3c48dec8cc5d20dda9622798c2c6b39ac484a65b9c
 
 pkgname = python-json-write
