@@ -1,6 +1,6 @@
 pkgbase = lumina-terminal-bin
 	pkgdesc = A modern, cross-platform terminal emulator built with Tauri, React, and Xterm.js
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/iewnfod/lumina-terminal
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = lumina-terminal-bin
 	depends = libayatana-appindicator
 	depends = hicolor-icon-theme
 	optdepends = xdg-utils: open files/URLs from the terminal
-	provides = lumina-terminal=0.2.3
+	provides = lumina-terminal=0.2.4
 	conflicts = lumina-terminal
-	noextract = lumina-terminal-bin-0.2.3-*.deb
-	source_x86_64 = lumina-terminal-bin-0.2.3-amd64.deb::https://github.com/iewnfod/lumina-terminal/releases/download/v0.2.3/Lumina.Terminal_0.2.3_amd64.deb
-	sha256sums_x86_64 = ed832593c7e1a52d3a6d14d8dd2f2462de4d6fc55b3258ba05b7a23331e59693
-	source_aarch64 = lumina-terminal-bin-0.2.3-arm64.deb::https://github.com/iewnfod/lumina-terminal/releases/download/v0.2.3/Lumina.Terminal_0.2.3_arm64.deb
-	sha256sums_aarch64 = 69b547619c5f4a8a7c0743167fc73abc114fdc6ffa0f14b6b445085b1e3c1298
+	noextract = lumina-terminal-bin-0.2.4-*.deb
+	source_x86_64 = lumina-terminal-bin-0.2.4-amd64.deb::https://github.com/iewnfod/lumina-terminal/releases/download/v0.2.4/Lumina.Terminal_0.2.4_amd64.deb
+	sha256sums_x86_64 = a9c54c9148f69a8fbf1a8c2fec69ccccb8d030612ff87aeb1fccc47a9680b75e
+	source_aarch64 = lumina-terminal-bin-0.2.4-arm64.deb::https://github.com/iewnfod/lumina-terminal/releases/download/v0.2.4/Lumina.Terminal_0.2.4_arm64.deb
+	sha256sums_aarch64 = bbc66b398b52d268f83f842ab1de66f808c2e2c73dde65c53fd2b2f6fea1535c
 
 pkgname = lumina-terminal-bin
