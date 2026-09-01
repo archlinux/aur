@@ -1,0 +1,4 @@
+[popcorntime]
+source = "git"
+git = "https://github.com/popcorn-time-ru/popcorn-desktop.git"
+prefix = "v"
