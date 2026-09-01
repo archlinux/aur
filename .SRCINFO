@@ -44,6 +44,7 @@ pkgbase = vgs-shell-git
 	optdepends = kitty: terminal for VGS terminal actions
 	optdepends = konsole: terminal for VGS terminal actions
 	optdepends = libpulse: Bluetooth audio codec selection
+	optdepends = mise: mise-managed coding agents and language toolchains
 	optdepends = nautilus: file manager for the launcher folder opener
 	optdepends = niri: Niri compositor support
 	optdepends = pacman-contrib: repo update checks

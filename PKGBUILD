@@ -54,6 +54,7 @@ optdepends=(
   'kitty: terminal for VGS terminal actions'
   'konsole: terminal for VGS terminal actions'
   'libpulse: Bluetooth audio codec selection'
+  'mise: mise-managed coding agents and language toolchains'
   'nautilus: file manager for the launcher folder opener'
   'niri: Niri compositor support'
   'pacman-contrib: repo update checks'
