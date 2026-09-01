@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=httpx
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A fast and multi-purpose HTTP toolkit allow to run multiple probers using retryablehttp library"
 arch=("x86_64" "i686")
@@ -12,7 +12,7 @@ conflicts=('httpx' 'python-httpx')
 depends=("glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('98414cbd32cf940b06c49aaa157c0dd79c452da24195e9cc93e67a0126fb9077f2de5fd568077443b4df2552f5f5870fe7360725f0f80113b6282b77ceb51e01')
+b2sums=('72fc58e7716f0e471e0abfaaa7c75ed9ed4d38cef866a7b00ec04dec0d451084cf1f314026396eb9b5b1d817b34d3d6b1454c59c779d6ed70f6811e8f5ef06f5')
 
 build() {
   cd ${pkgname}-${pkgver}/cmd/${pkgname}
