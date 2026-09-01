@@ -1,0 +1,3 @@
+[neovim-orgmode]
+source = "git"
+git = "https://github.com/kristijanhusak/orgmode.nvim.git"
