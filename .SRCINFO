@@ -1,0 +1,16 @@
+pkgbase = waymeet-git
+	pkgdesc = Linux calendar CLI/daemon for Google Calendar and CalDAV with terminal/Waybar output
+	pkgver = r8.f9c89e9
+	pkgrel = 1
+	url = https://github.com/chmouel/waymeet
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = git+https://github.com/chmouel/waymeet.git
+	sha256sums = SKIP
+
+pkgname = waymeet-git
