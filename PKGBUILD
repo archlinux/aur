@@ -3,9 +3,9 @@
 pkgname=sable-nightly-bin
 # pkgver mirrors the release version with '-' replaced by '.', so each nightly
 # sorts above the last. _relver keeps the original form for the asset URL.
-pkgver=1.21.1.nightly.260901172705.de0254f855b9
+pkgver=1.21.1.nightly.260901185515.6b265401a7fe
 pkgrel=1
-_relver=1.21.1-nightly.260901172705.de0254f855b9
+_relver=1.21.1-nightly.260901185515.6b265401a7fe
 pkgdesc="An almost stable Matrix client (nightly builds)"
 arch=('x86_64')
 url="https://github.com/SableClient/Sable"
@@ -35,7 +35,7 @@ conflicts=('sable' 'sable-bin')
 options=('!strip' '!debug')
 install=${pkgname}.install
 source_x86_64=("${pkgname}-${pkgver}.deb::${url}/releases/download/nightly/Sable-${_relver}-linux-x86_64.deb")
-sha256sums_x86_64=('1e5f5566b7f8631395d48d86c96bd72cfb0de8e97f32a4ec4f6439464b346f27')
+sha256sums_x86_64=('421155d9143f903e44fbae5e44cc15066f2d95ecc7a77d230ccbf49f762463d8')
 
 package() {
   # bsdtar reads whichever compression nfpm used for data.tar.*
