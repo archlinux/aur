@@ -1,5 +1,5 @@
 [ekphos]
 source = "github"
 github = "hanebox/ekphos"
-use_latest_release = true
+use_max_tag = true
 prefix = "v"
