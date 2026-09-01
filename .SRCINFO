@@ -1,6 +1,6 @@
 pkgbase = mcp-gitee-ent
 	pkgdesc = Gitee Enterprise MCP Server is a Model Context Protocol (MCP) server implementation for Gitee Enterprise.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitee.com/oschina/mcp-gitee-ent
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mcp-gitee-ent
 	conflicts = mcp-gitee-ent
 	options = !strip
 	options = !debug
-	source = mcp-gitee-ent::git+https://gitee.com/oschina/mcp-gitee-ent.git#tag=v0.2.0
-	sha256sums = 83baa72886db1f32f8d552c340525c432c9af6c4a7e8f50a439748db4b7ab55a
+	source = mcp-gitee-ent::git+https://gitee.com/oschina/mcp-gitee-ent.git#tag=v0.2.1
+	sha256sums = 66a99fd50e481689f2f419cd4489082dd4e196f59ab347ac4de67d8c8da91e68
 
 pkgname = mcp-gitee-ent
