@@ -1,6 +1,6 @@
 pkgbase = hyprcandy-plus
 	pkgdesc = HyprCandy+ installer — a cohesive Hyprland desktop experience
-	pkgver = 1.1.59
+	pkgver = 1.1.60
 	pkgrel = 1
 	url = https://github.com/AstralDesigns/candyinstall
 	install = hyprcandy-plus.install
@@ -13,8 +13,8 @@ pkgbase = hyprcandy-plus
 	depends = hyprland
 	depends = noctalia-qs
 	optdepends = hyprland-git: latest development build of Hyprland (replaces hyprland)
-	source = install.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v1.1.59/install.sh
-	source = Candy_Update.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v1.1.59/Candy_Update.sh
+	source = install.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v1.1.60/install.sh
+	source = Candy_Update.sh::https://github.com/AstralDesigns/candyinstall/releases/download/v1.1.60/Candy_Update.sh
 	sha256sums = SKIP
 	sha256sums = SKIP
 
