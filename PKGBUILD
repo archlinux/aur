@@ -3,6 +3,7 @@
 pkgname=cfnctl
 pkgver=0.1.1
 pkgrel=5
+# pkglint: ignore=PB906
 pkgdesc="Cfnctl brings the Terraform cli experience to AWS Cloudformation :cloud:   "
 arch=('x86_64' 'aarch64')
 url="https://github.com/rogerwelin/cfnctl"
