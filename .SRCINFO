@@ -1,6 +1,6 @@
 pkgbase = luatos-cli-bin
 	pkgdesc = LuatOS command-line toolkit (pure Rust) for flashing, logging, project management, firmware resources, and building
-	pkgver = 1.10.0
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = https://github.com/wendal/luatos-cli
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = luatos-cli-bin
 	conflicts = luatos-cli
 	options = !strip
 	options = !debug
-	source = luatos-cli-x86_64-unknown-linux-gnu.tar.gz::https://github.com/wendal/luatos-cli/releases/download/v1.10.0/luatos-cli-x86_64-unknown-linux-gnu.tar.gz
-	source = luatos-cli-bin-1.10.0.LICENSE::https://raw.githubusercontent.com/wendal/luatos-cli/v1.10.0/LICENSE
-	sha256sums = f55434edc2aade24d8d9179f19e08c0e5fc67eb3617f93d02f196eb01665de2d
+	source = luatos-cli-x86_64-unknown-linux-gnu.tar.gz::https://github.com/wendal/luatos-cli/releases/download/v1.11.0/luatos-cli-x86_64-unknown-linux-gnu.tar.gz
+	source = luatos-cli-bin-1.11.0.LICENSE::https://raw.githubusercontent.com/wendal/luatos-cli/v1.11.0/LICENSE
+	sha256sums = d3e675de6e44122a78edf21bdb67828cade8c515f3c7353472222fdfd0c39840
 	sha256sums = 974f32d6c076b5697134adc6075c9614f7d283c1a8676982519082d7a6fe45cf
 
 pkgname = luatos-cli-bin

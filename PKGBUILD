@@ -1,7 +1,7 @@
 # Maintainer: MrZ_26 <1046101471@qq.com>
 
 pkgname=luatos-cli-bin
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='LuatOS command-line toolkit (pure Rust) for flashing, logging, project management, firmware resources, and building'
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
   "$pkgname-$pkgver.LICENSE::https://raw.githubusercontent.com/wendal/luatos-cli/$_tag/LICENSE"
 )
 sha256sums=(
-  'f55434edc2aade24d8d9179f19e08c0e5fc67eb3617f93d02f196eb01665de2d'
+  'd3e675de6e44122a78edf21bdb67828cade8c515f3c7353472222fdfd0c39840'
   '974f32d6c076b5697134adc6075c9614f7d283c1a8676982519082d7a6fe45cf'
 )
 
