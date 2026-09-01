@@ -1,4 +1,4 @@
-# Maintainer: KFERMercer <https://github.com/KFERMercer> 
+# Maintainer: KFERMercer <https://github.com/KFERMercer>
 
 # shellcheck disable=2034,2148,2154
 
