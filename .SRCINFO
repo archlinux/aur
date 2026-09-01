@@ -1,13 +1,15 @@
 pkgbase = piqi-git
 	pkgdesc = Unofficial Qt API for Pixiv (with async support)
-	pkgver = 0.2.0
+	pkgver = 0.2.1.r37.gf9311e9
 	pkgrel = 1
 	url = https://github.com/MicrogamerCz/Piqi
 	arch = x86_64
-	license = Unlicense
+	license = GPL-3.0-or-later
 	makedepends = extra-cmake-modules
 	makedepends = git
 	depends = qcoro
+	depends = qt6-base
+	depends = qt6-declarative
 	provides = piqi
 	source = git+https://github.com/MicrogamerCz/Piqi
 	sha256sums = SKIP
