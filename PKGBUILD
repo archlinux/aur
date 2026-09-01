@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=reel
 _app_id=dev.arsfeld.Reel
-pkgver=0.7.6
-pkgrel=3
+pkgver=0.7.8
+pkgrel=1
 pkgdesc="A modern GTK frontend for Plex and other media servers"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/arsfeld/reel"
 license=('GPL-3.0-or-later')
 depends=(
@@ -22,6 +22,7 @@ depends=(
   'mpv'
   'openssl'
   'sqlite'
+  'zstd'
 )
 makedepends=(
   'blueprint-compiler'
@@ -31,7 +32,7 @@ makedepends=(
   'mold'
 )
 source=("git+https://github.com/arsfeld/reel.git#tag=v$pkgver")
-sha256sums=('e8de74947f1dd20cfeb4d4a90d8eac4fef8c2b7322a8e9c24e40ffcf57bc4fd4')
+sha256sums=('0fe08da7f2df104de883f41aa9aef522087a906f3ba24ecfa6df10e795fbaeca')
 
 prepare() {
   cd "$pkgname"
