@@ -2,16 +2,17 @@
 #
 # Setup:
 #   1. Settings > CI/CD > Variables
-#        AUR_SSH_KEY       File,     private key of an SSH key registered on the
-#                                    AUR account that owns this package. Masked
-#                                    is not possible for multi-line keys; use a
-#                                    File variable and keep it Protected.
-#        GITLAB_PUSH_TOKEN Variable, project access token with write_repository.
-#                                    If the default branch is protected, the
-#                                    token needs the Maintainer role or the push
-#                                    is rejected and this repo drifts behind the
-#                                    AUR.
+#        AUR_SSH_KEY  File, private key of an SSH key registered on the AUR
+#                     account that owns this package. Masked is not possible for
+#                     multi-line keys; use a File variable and keep it Protected.
 #   2. Build > Pipeline schedules > add a daily schedule on the default branch.
+#
+# The AUR is the source of truth for this package; nothing is pushed back here,
+# so this repo only supplies the pipeline and will sit behind the AUR. To read
+# the real history, or to sync this repo:
+#   git pull ssh://aur@aur.archlinux.org/kytyps5-nightly-bin.git master
+# Edits made here are replayed onto the AUR by the rebase below. If that ever
+# conflicts, sync this repo from the AUR first.
 #
 # The asset is never downloaded: the checksum comes from the digest GitHub
 # publishes with the release, and source= points at the permanent
@@ -77,20 +78,17 @@ bump:
       pkgver=${tag#KytyPS5-}
       pkgver=${pkgver//-/.}
 
-      # The AUR is what is actually published, so adopt its head when this
-      # checkout is strictly behind it. Without this, a run that pushed to the
-      # AUR but failed to push here leaves the two permanently diverged and
-      # every later run rejected as non-fast-forward. Fast-forward only, never
-      # rebase: rewriting a commit GitLab already has would wedge the mirror
-      # case instead.
+      # The AUR is what is actually published, so always start from its head.
+      # A plain checkout here is whatever this repo last had, which is normally
+      # far behind. Rebase rather than reset so local edits are carried across
+      # instead of silently dropped; rewriting SHAs is free because nothing is
+      # pushed back to this repo.
       git fetch aur master
-      if git merge-base --is-ancestor HEAD FETCH_HEAD; then
-        git reset --hard FETCH_HEAD
-      fi
+      git rebase FETCH_HEAD
 
       current=$(sed -n 's/^pkgver=//p' PKGBUILD)
       if [ "$pkgver" = "$current" ]; then
-        echo "Already at $pkgver; pushing only if a remote is behind."
+        echo "Already at $pkgver; nothing to push."
       else
         echo "Bumping $current -> $pkgver ($tag)"
 
@@ -146,19 +144,5 @@ bump:
         git commit -m "upgpkg: $CI_PROJECT_NAME $pkgver-1"
       fi
 
-      # Both pushes are no-ops when the remote is already current. A failure
-      # to mirror here no longer blocks the AUR: the fast-forward above makes
-      # the next run adopt whatever the AUR has, so the two cannot drift apart
-      # permanently. The job still fails, loudly, so the mirror gets fixed.
-      mirrored=1
-      git push "https://oauth2:$GITLAB_PUSH_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git" \
-        "HEAD:$CI_DEFAULT_BRANCH" || mirrored=0
-
+      # No-op when the AUR already has this commit.
       git push aur "HEAD:master"
-
-      if [ "$mirrored" -eq 0 ]; then
-        echo "AUR is up to date, but pushing to GitLab failed." >&2
-        echo "GITLAB_PUSH_TOKEN needs the Maintainer role to push to a protected" >&2
-        echo "default branch; write_repository alone is not enough." >&2
-        exit 1
-      fi
