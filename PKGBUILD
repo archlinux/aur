@@ -1,6 +1,6 @@
 # Maintainer: Bora <bora.rs@pm.me>
 pkgname=claude-science
-pkgver=0.1.41
+pkgver=0.1.43
 pkgrel=1
 pkgdesc="Run Claude on your data locally, in your browser — Anthropic's research agent (beta)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=('!strip')
 source=("cs-legal::https://code.claude.com/docs/en/legal-and-compliance.md")
 source_x86_64=("claude-science-${pkgver}::https://downloads.claude.ai/claude-science/${pkgver}/linux-x64")
 sha256sums=('SKIP')
-sha256sums_x86_64=('7e2df146f0cedc630dce713a05e34a42f791e6e4bbcc97bec0640c6c09dc5372')
+sha256sums_x86_64=('bd67456d23a70f4ca13c31c910bb4fbb5cf16ecb30919f6bbdeba55bf2e7a528')
 
 package() {
 	install -Dm755 "${srcdir}/claude-science-${pkgver}" "${pkgdir}/usr/bin/claude-science"
