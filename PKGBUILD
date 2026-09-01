@@ -1,6 +1,6 @@
 # Maintainer: aksh1618 <aakarshituppal at gmail dot com>
 pkgname=kobweb
-pkgver=0.9.22
+pkgver=0.9.23
 pkgrel=1
 pkgdesc='Set up and manage your Kobweb-enhanced Compose HTML app'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('sh'
          'java-runtime>=11')
 source=("https://github.com/varabyte/kobweb-cli/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar"
         "${pkgname}")
-sha256sums=('04e26f33171ff477fb23faf5d5b239f2b5d853ceae0c90d7328145c07d152032'
+sha256sums=('6eb17c68f25b4bd2a38483649762257442fde4840ad3b368217df7d3cceb2c1a'
             '9a7574f298111c7f1941f80f5b41745c650267d55e5a76f3e963e53dfdbebc84')
 
 package() {
