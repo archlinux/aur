@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=gocovsh
 pkgver=0.6.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Go Coverage in your terminal: a tool for exploring Go Coverage reports from the command line 💻"
 arch=('x86_64' 'aarch64')
 url="https://github.com/orlangure/gocovsh"
@@ -28,7 +28,7 @@ build() {
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags='-s -w' \
+    -ldflags='-linkmode=external -s -w' \
     -o $pkgname \
     .
 }
