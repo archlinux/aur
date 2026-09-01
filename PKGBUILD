@@ -3,7 +3,7 @@
 # Contributor: Hidde Beydals <hello@hidde.co>
 
 pkgname=flux-bin
-pkgver=2.9.4
+pkgver=2.9.5
 pkgrel=1
 _srcname=flux
 pkgdesc="Open and extensible continuous delivery solution for Kubernetes"
@@ -24,9 +24,9 @@ source_armv7h=(
 source_aarch64=(
   "${pkgname}-${pkgver}_linux_arm64.tar.gz::https://github.com/fluxcd/flux2/releases/download/v${pkgver}/flux_${pkgver}_linux_arm64.tar.gz"
 )
-sha256sums_x86_64=('c2c397a52930f52d2005c01d276116b059d062de379386d58e98115380a766a2')
-sha256sums_armv7h=('8409a82cf082496efcc0aaabbffcc8bc958e1a626449490bbe70b154bf70d97f')
-sha256sums_aarch64=('dcab945f8d8658662fa1db93e150a602ba1f91da367a82e099bd65595fc7c62c')
+sha256sums_x86_64=('b853df82adfd7736f580692f9f734473d571606307139f8fd20c2a80dd1ff473')
+sha256sums_armv7h=('17abcd85cf467c8b01afcca2e1585af443b924ac0d428b6ada65abbdebbeaaeb')
+sha256sums_aarch64=('f3e159af616ec0b9bd0a405c2185cf09d06b74652c1de3c7f377e8166826651a')
 
 package() {
 	install -Dm755 ${_srcname} "${pkgdir}/usr/bin/${_srcname}"
