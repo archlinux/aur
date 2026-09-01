@@ -12,7 +12,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 depends=("ffmpeg")
 options=(!debug)
-source=("${_pkgname}-${pkgver}.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_bili-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz"
+source=("${_pkgname}-${pkgver}.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_bili-v${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz"
 	"LICENSE-${pkgver}::$url/raw/v${pkgver}/LICENSE")
 sha256sums=('21e1566a3a14b6f0d6cdb65bcbcc87e2c9eb4f01ee6f1dcdc1cd4016820db756'
             '54e2d4c99f8d0eacb6dd9cae4c1bddce86fe7926d29cdb0ceded4d3797df0d65')
