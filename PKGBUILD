@@ -1,6 +1,6 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=ccusage-statusline-rs
-pkgver=1.14.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc="Fast statusline for Claude Code w/usage tracking, billing blocks, burn rate monitoring"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ options=('!lto')
 validpgpkeys=('E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD')
 source=("https://github.com/ticpu/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
         "https://github.com/ticpu/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz.asc")
-sha256sums=('e62d05deea32c373434837a295282e21741f8b305d1285e3c9f863c57b52a2a7'
+sha256sums=('b558ef6c1bc8e51270a147980c755c498d4354ea3f058619cc949f4dc6605f16'
             'SKIP')
 
 build() {
