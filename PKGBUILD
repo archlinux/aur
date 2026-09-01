@@ -1,10 +1,10 @@
 # Maintainer: Benigno B. Junior <benignobjunior@gmail.com>
 pkgname=agent-of-empires-bin
 pkgver=1.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Terminal session manager for AI coding agents (Claude Code, Codex, OpenCode)'
 arch=('x86_64' 'aarch64')
-url='https://github.com/njbrake/agent-of-empires'
+url='https://github.com/agent-of-empires/agent-of-empires'
 license=('MIT')
 depends=('gcc-libs' 'zlib' 'tmux')
 provides=('agent-of-empires')
