@@ -1,12 +1,13 @@
 pkgbase = trid
 	pkgdesc = An utility designed to identify file types from their binary signatures
 	pkgver = 2.48
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mark0.net/soft-trid-e.html
 	install = trid.install
 	arch = any
 	license = AGPL-3.0-only OR custom:trid-comercial
 	depends = python
+	optdepends = python-stringzilla: Use the StringZilla library for faster searches
 	source = trid.sh
 	source = update-trid-defs.sh
 	source = update-trid-defs.service

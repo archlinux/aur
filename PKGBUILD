@@ -3,12 +3,13 @@
 
 pkgname=trid
 pkgver=2.48
-pkgrel=1
+pkgrel=2
 pkgdesc="An utility designed to identify file types from their binary signatures"
 arch=('any')
 url="http://mark0.net/soft-trid-e.html"
 license=('AGPL-3.0-only OR custom:trid-comercial')
 depends=('python')
+optdepends=('python-stringzilla: Use the StringZilla library for faster searches')
 install=trid.install
 
 validpgpkeys=('B98E7F89E0EDCA59116CCDCC8DFA06F20DB12205')
