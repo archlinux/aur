@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ruv
-_pkgver=0.9.7.1
+_pkgver=0.9.7.2
 pkgname=r-${_pkgname,,}
-pkgver=0.9.7.1
-pkgrel=4
+pkgver=0.9.7.2
+pkgrel=1
 pkgdesc='Detect and Remove Unwanted Variation using Negative Controls'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -20,7 +20,7 @@ optdepends=(
   r-shiny
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('a0c54e56ba3d8f6ae178ae4d0e417a79295abf5dcb68bbae26c4b874734d98d8')
+sha256sums=('83556e1a9257b0f2b1e8bbf8eb770ed8224f6f44f8e4308c6296ab4f5c473d23')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
