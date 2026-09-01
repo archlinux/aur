@@ -2,7 +2,7 @@
 
 _pkgname=llama.cpp-cuda
 pkgname=${_pkgname}-aidock-bin
-pkgver=b10423
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Prebuilt llama.cpp with CUDA 12.8 support (from ai-dock CI)'
 arch=(x86_64 aarch64)

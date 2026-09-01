@@ -1,6 +1,6 @@
 pkgbase = llama.cpp-cuda-aidock-bin
 	pkgdesc = Prebuilt llama.cpp with CUDA 12.8 support (from ai-dock CI)
-	pkgver = b10423
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/ai-dock/llama.cpp-cuda
 	arch = x86_64
@@ -14,16 +14,16 @@ pkgbase = llama.cpp-cuda-aidock-bin
 	depends = libgomp
 	depends = libstdc++
 	depends = libgcc
-	provides = llama.cpp-cuda=b10423
+	provides = llama.cpp-cuda=0.3.0
 	conflicts = llama.cpp-cuda
 	conflicts = llama.cpp-cuda-git
 	options = !strip
 	options = !debug
-	source = LICENSE-ai-dock-b10423::https://raw.githubusercontent.com/ai-dock/llama.cpp-cuda/b10423/LICENSE
-	source = LICENSE-llama.cpp-b10423::https://raw.githubusercontent.com/ggml-org/llama.cpp/b10423/LICENSE
+	source = LICENSE-ai-dock-0.3.0::https://raw.githubusercontent.com/ai-dock/llama.cpp-cuda/0.3.0/LICENSE
+	source = LICENSE-llama.cpp-0.3.0::https://raw.githubusercontent.com/ggml-org/llama.cpp/0.3.0/LICENSE
 	sha256sums = fe82a992d2a88e45746b062aea4d03912da24cde707446cef1f8fd08e38a05ad
 	sha256sums = 94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d
-	source_x86_64 = llama.cpp-b10423-cuda-12.8-amd64.tar.gz::https://github.com/ai-dock/llama.cpp-cuda/releases/download/b10423/llama.cpp-b10423-cuda-12.8-amd64.tar.gz
+	source_x86_64 = llama.cpp-0.3.0-cuda-12.8-amd64.tar.gz::https://github.com/ai-dock/llama.cpp-cuda/releases/download/0.3.0/llama.cpp-0.3.0-cuda-12.8-amd64.tar.gz
 	source_x86_64 = cuda_cudart-linux-x86_64-12.8.90-archive.tar.xz::https://developer.download.nvidia.com/compute/cuda/redist/cuda_cudart/linux-x86_64/cuda_cudart-linux-x86_64-12.8.90-archive.tar.xz
 	source_x86_64 = libcublas-linux-x86_64-12.8.4.1-archive.tar.xz::https://developer.download.nvidia.com/compute/cuda/redist/libcublas/linux-x86_64/libcublas-linux-x86_64-12.8.4.1-archive.tar.xz
 	source_x86_64 = nccl_2.26.2-1+cuda12.8_x86_64.txz::https://developer.download.nvidia.com/compute/redist/nccl/v2.26.2/nccl_2.26.2-1+cuda12.8_x86_64.txz
@@ -31,7 +31,7 @@ pkgbase = llama.cpp-cuda-aidock-bin
 	sha256sums_x86_64 = 8d566b5fe745c46842dc16945cf36686227536decd2302c372be86da37faca68
 	sha256sums_x86_64 = 21718957c2cf000bacd69d36c95708a2319199e39e056f8b4f0f68e3b9f323bb
 	sha256sums_x86_64 = 669434a7a2e4f6f99d6969f0a4de7bf12a26d3873bbbd84f1a7bd05e1cd6e45e
-	source_aarch64 = llama.cpp-b10423-cuda-12.8-arm64.tar.gz::https://github.com/ai-dock/llama.cpp-cuda/releases/download/b10423/llama.cpp-b10423-cuda-12.8-arm64.tar.gz
+	source_aarch64 = llama.cpp-0.3.0-cuda-12.8-arm64.tar.gz::https://github.com/ai-dock/llama.cpp-cuda/releases/download/0.3.0/llama.cpp-0.3.0-cuda-12.8-arm64.tar.gz
 	source_aarch64 = cuda_cudart-linux-sbsa-12.8.90-archive.tar.xz::https://developer.download.nvidia.com/compute/cuda/redist/cuda_cudart/linux-sbsa/cuda_cudart-linux-sbsa-12.8.90-archive.tar.xz
 	source_aarch64 = libcublas-linux-sbsa-12.8.4.1-archive.tar.xz::https://developer.download.nvidia.com/compute/cuda/redist/libcublas/linux-sbsa/libcublas-linux-sbsa-12.8.4.1-archive.tar.xz
 	source_aarch64 = nccl_2.26.2-1+cuda12.8_aarch64.txz::https://developer.download.nvidia.com/compute/redist/nccl/v2.26.2/nccl_2.26.2-1+cuda12.8_aarch64.txz
