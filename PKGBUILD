@@ -13,8 +13,7 @@ license=(MIT)
 makedepends=(git)
 conflicts=('ffnvcodec-headers')
 provides=('ffnvcodec-headers')
-_tag=88fee5c37318c991a8762d423530f91681e32e3a
-source=(git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git#tag=${_tag})
+source=(git+https://git.videolan.org/git/ffmpeg/nv-codec-headers.git#tag=n${pkgver})
 sha256sums=('7016462c5bc737fdb4ac0fce51249447c48be59edfdf0f8bb0c668b357d38da6')
 
 pkgver() {
