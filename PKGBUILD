@@ -1,9 +1,9 @@
 # Maintainer: egoroff <egoroff@gmail.com>
 pkgname=hash-calculator-bin
 pkgver=6.1.1
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
-pkgdesc="Hash Calculator is the console tool that can calculate about 50 cryptographic hashes of strings and files."
+pkgdesc="Hash Calculator is the console tool that can calculate about 70 cryptographic hashes of strings and files."
 url="https://github.com/aegoroff/hc"
 license=('LGPL-3')
 source_x86_64=("https://github.com/aegoroff/hc/releases/download/${pkgver}/hc-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
