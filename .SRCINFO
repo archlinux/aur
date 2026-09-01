@@ -1,20 +1,20 @@
 pkgbase = moonstone-bin
 	pkgdesc = Modern, deterministic Lua project environments and package manager written in Zig
-	pkgver = 0.4.7
+	pkgver = 0.4.9
 	pkgrel = 1
 	url = https://github.com/moonstone-sh/moonstone
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
-	provides = moonstone=0.4.7
+	provides = moonstone=0.4.9
 	conflicts = moon
 	conflicts = moonbit
 	conflicts = moonstone
-	source = LICENSE-0.4.7::https://raw.githubusercontent.com/moonstone-sh/moonstone/v0.4.7/LICENSE
+	source = LICENSE-0.4.9::https://raw.githubusercontent.com/moonstone-sh/moonstone/v0.4.9/LICENSE
 	sha256sums = 34e0c3e08e21097a322600567c2bd824cd316a2ce34338131ec9a4af20846aac
-	source_x86_64 = https://github.com/moonstone-sh/moonstone/releases/download/v0.4.7/moon-v0.4.7-x86_64-linux-gnu.tar.gz
-	sha256sums_x86_64 = cb7a21dd21336bfb9966021f6d4426200a785e7d3e2cfb7b8eddd8262d3419af
-	source_aarch64 = https://github.com/moonstone-sh/moonstone/releases/download/v0.4.7/moon-v0.4.7-aarch64-linux-gnu.tar.gz
-	sha256sums_aarch64 = fca7a2b2176798456b022e984dd9c476b4171ecf4076c58a6f865a3e9983e15e
+	source_x86_64 = https://github.com/moonstone-sh/moonstone/releases/download/v0.4.9/moon-v0.4.9-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8b1550de7402c12bb3df80c6bdbc06f8867384c373ca2ac4be6f2fbc95d67ac3
+	source_aarch64 = https://github.com/moonstone-sh/moonstone/releases/download/v0.4.9/moon-v0.4.9-aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = 8a971210ef4dbbc51ba3df3eba0eec3cada52a5809d8bf4f1934b3138a283dcd
 
 pkgname = moonstone-bin
