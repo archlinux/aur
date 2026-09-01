@@ -25,16 +25,20 @@ pkgbase = mfem-palace
 	provides = libmfem.so=4.9-64
 	conflicts = mfem
 	source = mfem::git+https://github.com/mfem/mfem#tag=v4.9
-	source = 0001-palace-mfem-pr5246.patch
-	source = 0002-palace-mfem-pr5353.patch
-	source = 0003-palace-gmsh-parser-performance.patch
-	source = 0004-palace-par-tet-mesh-fix-dev.patch
-	source = 0005-enable-MPI_C-interface.patch
+	source = 0001-mfem_pr3847.diff::https://github.com/mfem/mfem/compare/2d574015756711029556c14d096ca52c15d5b663...50ead1a9a785e3273b2a72ff59ac8ed8a496b498.diff
+	source = 0002-mfem_gmsh_parser_performance.diff::https://github.com/mfem/mfem/commit/e4a2b9568c40f20e24612066d155cc6a9973b247.diff
+	source = 0003-mfem_pr5246.diff::https://raw.githubusercontent.com/awslabs/palace/b22f654ab36fe01f1f3176349c60626efed1a6a2/extern/patch/mfem/mfem_pr5246.diff
+	source = 0004-mfem_pr5353.diff::https://raw.githubusercontent.com/awslabs/palace/b22f654ab36fe01f1f3176349c60626efed1a6a2/extern/patch/mfem/mfem_pr5353.diff
+	source = 0005-mfem_pr4983.diff::https://raw.githubusercontent.com/awslabs/palace/b22f654ab36fe01f1f3176349c60626efed1a6a2/extern/patch/mfem/mfem_pr4983.diff
+	source = 0006-mfem_pr5415.diff::https://github.com/mfem/mfem/commit/9d1438d8a2502cc927c63e093cf8c855ff17918e.diff
+	source = 0007-enable-MPI_C-interface.patch
 	b2sums = 402e2c0086dd9542300513c7f304c8b1774a03bad6391893918fdc09fd265ce92a729d30d9210aeb6023152d7f1fb88bcb6c544d41bbd628801a1b3601f566af
+	b2sums = f82e0b6392fe52e67c0b50abbf5e9fcdca0aacaf74f93f9114a16426f69e0c629c402bbd0d24d9dad01c0538530c35690a01d95fbbe357710cf902ca10319752
+	b2sums = c1695cd6235b40ad22dec5b46b53b2c63804946bea2909dd5e6d1f44fbbf00d5e69036720f9b849168d6c1c49a77516f4e7e5d1bc3df556619a433362e2c0d4c
 	b2sums = 563ae808d3d5bcf918c552cae1b89c214e18ccd29f42e2539997e05b79acbfebcc6bd5f276ed20706ff25c92e00e9ca1b98d2ec3533a2e6379022087e5e8e27c
 	b2sums = 7e6267b157ea0c0847428d0c381d2212caaa8c66253e988877c4caa1acb31805e4dfdb59938e8953b17b4de09a3ce639de95875d909c3e8f24f0e09521d438a2
-	b2sums = aa6c8296073df231d435c0de089b5815eef8b4d3dfed823a877b3afd38941d1d64e428608b1523158e53723b893b0212cbc29c292bf70faebd7cb3385f9faf68
-	b2sums = f6ad3a2e8faf1a54f21b7b958965478b5ba90901d3ba9c6a45b9307e18db5a68dcd3cf648d7018607181d622bd31cbced9c0a7d47bcc72408baf5a02f8af5af8
+	b2sums = 18aacda2b07d1859f8f0aa9b06698e9c412064e81e11fd5f3e7377a64b7c0a6ddb72acc4a36dd25acd826b766b8f22015bc12f666446b077a6da012e26b1fd18
+	b2sums = 976cb7e847d90eed39b9e9227010a2a91a5198d4d9b6413ecd786aa391b2395470e26000fbcbe3f3461eb94618d58e222a50a22921b9947657663623df0c260a
 	b2sums = 4618e8739b4c0e8fedb77858ecf13ec3961d08e274c11a3df1a04a528104af37f5e6e95ce6f342cdafe7eeadf319cdb3b3a166eab28eb1647796d9693e55b394
 
 pkgname = mfem-palace
