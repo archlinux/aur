@@ -2,22 +2,22 @@
 
 pkgname=supermariowar-git
 _pkgname=supermariowar
-pkgver=r1772.051723d0
+pkgver=r1777.1971b11c
 pkgrel=1
 pkgdesc='Super Mario War multiplayer game.'
 url='https://github.com/mmatyas/supermariowar'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('enet' 'yaml-cpp' 'sdl2_image' 'sdl2_mixer' 'sdl2' 'zlib')
-makedepends=('git' 'cmake' 'pkgconf')
+depends=('enet' 'sdl3' 'sdl3_image' 'sdl3_mixer')
+makedepends=('git' 'cmake' 'pkgconf' 'enet' 'sdl3' 'sdl3_image' 'sdl3_mixer' 'toml11' 'zlib')
 provides=('smw' 'smw-server' 'smw-leveledit' 'smw-worldedit')
 conflicts=("${_pkgname}-bin")
 source=("git+${url}.git"
 "git+${url}-data.git"
-"bundleddeps.patch")
+"fix-enet-zlib-findpackage.patch")
 sha256sums=('SKIP'
             'SKIP'
-            'SKIP')
+            '5df4a766181f399f3741b3afc1800789f573425405dfe176f9a97c0a200dea44')
 
 pkgver() {
 # Git, no tags available
@@ -27,13 +27,15 @@ pkgver() {
 
 
 prepare() {
-     # init submodules and disable the ones we don't need, we want our system libraries instead
-    cd "$_pkgname"
-    git submodule init data
-    git config submodule.data.url "$srcdir/${_pkgname}-data"
-    git -c protocol.file.allow=always submodule update
+    # init submodules and disable the ones we don't need, we want our system libraries instead
 
-    patch -p1 < "$srcdir/bundleddeps.patch"
+    cd "$_pkgname"
+    git switch --track origin/sdl3                                      # switch to SDL3 branch because we want to compile using SDL3
+    git submodule init data                                             
+    git config submodule.data.url "$srcdir/${_pkgname}-data"            # set the URL for "data" submodule just in case
+    git -c protocol.file.allow=always submodule update                  # fetch "data" submodule
+
+    patch -p1 < "$srcdir/fix-enet-zlib-findpackage.patch"               # the patch for cmake/BundledDeps.cmake 
 }
 
 build() {
