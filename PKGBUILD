@@ -128,7 +128,7 @@ package() {
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/caress.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/caress.com"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/casema.nl" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/casema.nl"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/catlover.com" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/catlover.com"
-  install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cc.ncu.edu.tw.xml" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cc.ncu.edu.tw.xml"
+  install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cc.ncu.edu.tw" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cc.ncu.edu.tw"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cc9.ne.jp" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cc9.ne.jp"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/cek.ne.jp" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/cek.ne.jp"
   install -Dm644 "$tmpdir/assets/autoconfig/v1.1/centurylink.net" "$pkgdir/etc/thunderbird/dove/assets/autoconfig/v1.1/centurylink.net"
