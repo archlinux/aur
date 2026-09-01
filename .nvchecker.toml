@@ -1,0 +1,4 @@
+[python-eradicate]
+source = "git"
+git = "https://github.com/PyCQA/eradicate.git"
+prefix = "v"
