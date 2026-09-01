@@ -46,3 +46,5 @@
 *.tar.xz
 *.tar.gz
 *.log
+.nvchecker.toml
+update-package.sh
