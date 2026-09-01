@@ -2,7 +2,7 @@
 _pkgname=godot
 pkgname=godot3-mono-bin
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced cross-platform 2D and 3D game engine (3.X Branch Mono)"
 arch=("x86_64")
 url='https://godotengine.org'
@@ -18,7 +18,7 @@ package() {
 	cd "${srcdir}"
 	mkdir -p "${pkgdir}/usr/lib/$pkgname" && cd "${srcdir}/Godot_v${pkgver}-stable_mono_x11_64"
 	install -Dm755 Godot_v${pkgver}-stable_mono_x11.64 "${pkgdir}/usr/lib/${pkgname}/Godot_v${pkgver}-stable_mono_x11.64"
-	rsync -a -r GodotSharp "${pkgdir}/usr/lib/$pkgname/"
+	cp -a GodotSharp "${pkgdir}/usr/lib/$pkgname/GodotSharp"
 
 	for folder in {/usr/share,/usr/bin/,/usr/share/applications,/usr/share/licenses,/usr/share/man,/usr/share/mime,/usr/share/metainfo};
 	do
