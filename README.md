@@ -14,6 +14,9 @@ The [ComfyUI](https://github.com/Comfy-Org/ComfyUI) is designed to be run from a
 
 - Drops the previous run directory on the next invocation; the on-disk ComfyUI source is never mutated by ComfyUI itself.
 
+- The Dependency Hell of ComfyUI is gonna trigger a huge supply chain attack sooner or later.\
+  ComfyKick kicks ComfyUI into [systemd sandbox](comfykick.service) instead of letting it runs on bare system. This can shrinks the attack surface, and also without hosting heavy CUDA containers.
+
 ## Install & Uninstall
 
 ### Arch based
