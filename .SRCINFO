@@ -1,6 +1,6 @@
 pkgbase = dim-agent-bin
 	pkgdesc = Agent runtime for desktop, terminal, scripts, and editors
-	pkgver = 0.9.18
+	pkgver = 0.9.19
 	pkgrel = 1
 	url = https://dimagent.com
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = dim-agent-bin
 	optdepends = libappindicator-gtk3: system tray indicator support
 	provides = dimagent
 	conflicts = dimagent
-	noextract = DimAgent-0.9.18.deb
+	noextract = DimAgent-0.9.19.deb
 	options = !debug
 	options = !strip
-	source = DimAgent-0.9.18.deb::https://dimcode.echooai.com/updates/stable/linux/x64/DimAgent-0.9.18.deb
-	sha256sums = 321497b83f12a350dfbfb4b768052f89392c93278f83a11e320dafc98a78d0cb
+	source = DimAgent-0.9.19.deb::https://dimcode.echooai.com/updates/stable/linux/x64/DimAgent-0.9.19.deb
+	sha256sums = 24adb9ec7940d10b622f3db10c3172212182f20aec973aab63dd3240cba30ca8
 
 pkgname = dim-agent-bin
