@@ -8,7 +8,7 @@ arch=('x86_64')
 url='https://fluxkeyboard.com/updates/'
 license=('custom')
 makedepends=('binutils' 'tar' 'zstd')
-depends=('mpv' 'glib2' 'glibc' 'gtk3' 'libayatana-appindicator' 'desktop-file-utils' 'libsecret')
+depends=('glib2' 'glibc' 'gtk3' 'libayatana-appindicator' 'desktop-file-utils' 'libsecret')
 options=('!strip' '!debug' '!lto')
 source=(
   "https://fluxkeyboard.com/updates/polymath/linux/deb/polymath_${pkgver}_amd64.deb"
@@ -23,7 +23,7 @@ build() {
   cd "${srcdir}"
   rm -rf data && mkdir data
 
-  tar -C data -xf data.tar.zst
+  tar -C data -xf data.tar*
 
   rm -rf data/etc/polkit-1
   chmod -R g-w data

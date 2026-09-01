@@ -25,8 +25,8 @@ DEPENDENCY_MAP = {
     "libglib2.0-0": "glib2",
     "libgtk-3-0": "gtk3",
     "libgtk-3-bin": "gtk3",
-    "libmpv2": "mpv",
     "libayatana-appindicator3-1": "libayatana-appindicator",
+    "libayatana-ido3-0.4-0": "libayatana-appindicator",
     "libsecret-1-0": "libsecret",
 }
 
@@ -69,6 +69,11 @@ def download_if_missing(session: requests.Session, url: str, dest: Path) -> None
                 if chunk:
                     file.write(chunk)
 
+def fix_depends_part(part: str) -> str:
+    part = part.strip()
+    if " " in part:
+        return part.split(" ")[0]
+    return part
 
 def parse_depends(control_path: Path) -> list[str]:
     depends_line: str | None = None
@@ -88,7 +93,7 @@ def parse_depends(control_path: Path) -> list[str]:
     if not depends_line:
         return []
 
-    return [part.strip() for part in depends_line.split(",") if part.strip()]
+    return [fix_depends_part(part) for part in depends_line.split(",") if part.strip()]
 
 
 def main() :
@@ -123,7 +128,7 @@ def main() :
         tmpdir = Path(tmp)
         print(f"Extracting {deb_name} to {tmpdir}...")
         subprocess.check_call(["ar", "x", str(deb_path)], cwd=tmpdir)
-        subprocess.check_call(["tar", "-xf", "control.tar.zst"], cwd=tmpdir)
+        subprocess.check_call(["sh", "-c", "tar -xf control.tar*"], cwd=tmpdir)
         depends_deb = parse_depends(tmpdir / "control")
 
     depends_deb_mapped = set([DEPENDENCY_MAP.get(dep, dep) for dep in depends_deb])
