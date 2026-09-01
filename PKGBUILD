@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=loky
 pkgname=python-${_base}
-pkgver=3.5.6
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Robust and reusable Executor for joblib"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest python-psutil python-numpy)
 optdepends=('python-psutil: allow early memory leak detections')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('63fa2e2e2af6f4f04b5fa50e732c65c308cad0ada8946ed0033f5fae1b5d6835b9bfa6adfce2b6fcfdf7ac17fb540993b3d2494f91dad380aede64a37bc9430c')
+sha512sums=('76585518cb8caa8da02b8c56fccd3915725a93aaf51193b534cc1aed08a0430c2989fe89cd9cab35c02e417b670712a7ea49444bc1b1887e4f46dcc74ceb5a35')
 
 build() {
   cd ${_base}-${pkgver}
