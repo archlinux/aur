@@ -1,6 +1,6 @@
 # Maintainer: Wellinton Vieira <wellintonvieira.office@gmail.com>
 
-pkgname="update-mirrors-git"
+pkgname="update-mirrors"
 pkgver=r23.2a36905
 pkgrel=1
 pkgdesc="CLI to update the Arch Linux mirrorlist"
