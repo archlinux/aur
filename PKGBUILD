@@ -1,10 +1,10 @@
 # Check CMakeLists.txt
-_rstd_commit=5b163c47dd044012ae69128fe44aa9311011b250
+_rstd_commit=456fec5cc2b87acdb56800e298b5712ea69cdd47
 _luato_commit=61dd40dca1e9aeda69eed208ddf0d10b34f59db7
 _licrypto_commit=b7156942a4b85780a21bd11092c08cb6893b05d4
 
 pkgname=lito
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Module-first C++ build tool with manifest."
 arch=(x86_64)
@@ -16,8 +16,8 @@ source=("git+https://github.com/litocpp/lito.git#tag=v$pkgver"
         "git+https://github.com/litocpp/rstd.git#commit=$_rstd_commit"
         "git+https://github.com/litocpp/luato.git#commit=$_luato_commit"
         "git+https://github.com/litocpp/licrypto.git#commit=$_licrypto_commit")
-sha256sums=('c21411cbbd635e510c7ca6ab2d2d45d93ed611efcdf22e57f300c8f12b0367a3'
-            '0c18bb1db6a66fb33081fa91ace86b5ae35e6c292f7f16e5cf30346f01c0fd14'
+sha256sums=('9d1f886b78d7752b5b39b970593b8aef5f3f67697ce0b75e7e9f2fc79e003343'
+            '67e1315baa1ec31bc6d5da381b4367a08b768da623a25cc82bb84ac597647ead'
             '351dcdfd54a6df473f457a853ce0f9dc80a2950c60b4c821eeeb252ae861f19a'
             'b5bf1e89fbe4f8598344b66538dfcabeddb5f1f79ce38cdd9806f59677f23a2c')
 
