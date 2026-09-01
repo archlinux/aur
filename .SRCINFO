@@ -1,6 +1,6 @@
 pkgbase = no-mistakes-bin
 	pkgdesc = Kill all the slop. Raise clean PR.
-	pkgver = 1.60.3
+	pkgver = 1.61.0
 	pkgrel = 1
 	url = https://github.com/kunchenguid/no-mistakes
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = no-mistakes-bin
 	provides = no-mistakes
 	conflicts = no-mistakes
 	options = !strip
-	source = README-1.60.3.md::https://raw.githubusercontent.com/kunchenguid/no-mistakes/v1.60.3/README.md
-	source = LICENSE-1.60.3::https://raw.githubusercontent.com/kunchenguid/no-mistakes/v1.60.3/LICENSE
+	source = README-1.61.0.md::https://raw.githubusercontent.com/kunchenguid/no-mistakes/v1.61.0/README.md
+	source = LICENSE-1.61.0::https://raw.githubusercontent.com/kunchenguid/no-mistakes/v1.61.0/LICENSE
 	sha256sums = 67bd74f27b6d6a4df710be61572cf4f3475dd587eac48723613e8dcfb5262d0c
 	sha256sums = 945016bd37e1ba7211622ef60ee1d23ab727896ba7710edd21e8fbe983863969
-	source_x86_64 = no-mistakes-x86_64-1.60.3.tgz::https://github.com/kunchenguid/no-mistakes/releases/download/v1.60.3/no-mistakes-v1.60.3-linux-amd64.tar.gz
-	sha256sums_x86_64 = 3d1915e2d1faf5106363c10f1dd2e13ce2a12d2561aad9e21eee151e92038608
-	source_aarch64 = no-mistakes-aarch64-1.60.3.tgz::https://github.com/kunchenguid/no-mistakes/releases/download/v1.60.3/no-mistakes-v1.60.3-linux-amd64.tar.gz
-	sha256sums_aarch64 = 3d1915e2d1faf5106363c10f1dd2e13ce2a12d2561aad9e21eee151e92038608
+	source_x86_64 = no-mistakes-x86_64-1.61.0.tgz::https://github.com/kunchenguid/no-mistakes/releases/download/v1.61.0/no-mistakes-v1.61.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 34800495a90bce85044863acc20ccc447ff4ab2be602fce4ac2bcec8f1ce7540
+	source_aarch64 = no-mistakes-aarch64-1.61.0.tgz::https://github.com/kunchenguid/no-mistakes/releases/download/v1.61.0/no-mistakes-v1.61.0-linux-amd64.tar.gz
+	sha256sums_aarch64 = 34800495a90bce85044863acc20ccc447ff4ab2be602fce4ac2bcec8f1ce7540
 
 pkgname = no-mistakes-bin
