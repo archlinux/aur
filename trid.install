@@ -1,7 +1,7 @@
 post_install() {
   echo "To enable automatic defenitions database updating"
   echo "run: systemctl enable update-trid-defs.timer"
-  echo "To update the data base manually (recommended)"
+  echo "To update the data base manually (recommended after 1st install)"
   echo "run: sudo update-trid-defs"
 }
 

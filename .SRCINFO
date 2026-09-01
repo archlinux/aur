@@ -1,6 +1,6 @@
 pkgbase = trid
 	pkgdesc = An utility designed to identify file types from their binary signatures
-	pkgver = 2.47
+	pkgver = 2.48
 	pkgrel = 1
 	url = http://mark0.net/soft-trid-e.html
 	install = trid.install
@@ -11,14 +11,14 @@ pkgbase = trid
 	source = update-trid-defs.sh
 	source = update-trid-defs.service
 	source = update-trid-defs.timer
-	source = trid-2.47.zip::http://mark0.net/download/trid.zip
-	source = trid-2.47.zip.asc::http://mark0.net/download/trid.zip.asc
+	source = trid-2.48.zip::http://mark0.net/download/trid.zip
+	source = trid-2.48.zip.asc::http://mark0.net/download/trid.zip.asc
 	validpgpkeys = B98E7F89E0EDCA59116CCDCC8DFA06F20DB12205
 	b2sums = 1072675dcf8b5429c7cdc610042b70fa96d91dd6d6ff81f19326419a80df534e7520f077d4d3b0df455a72de7a4c81981f12d33f7bf7f407342052b20dcaa561
 	b2sums = 80be244b955a1ee7cdb52231512453df2c97449f977fe9b84155463341aaa4416136f29a25e42bbe21916352214cd45b21e0a89980ee2fb488086d3ee3b5a618
 	b2sums = 00787de3be0a3244669485022015bc1376683dceb80d18194aef9be90a8f77ee4faa4c897f1c60ec06b182bb46fd8e7ee1d27ca0f202a619cee01a4f1a1051be
 	b2sums = ad09bd81ba2855ee9a729320ebf0a1528124cc998e6af3f9bfff9524a736d05c77808c7b300f53c9632d5d420bbe9c85cb6e0bee1d32c08df1bedd336e4a98a7
-	b2sums = 400c01abb9bda0a5fa8191b1f19eb1a4ae215860b6be32694f3620bdb068010a7ec5ee08d41d53ff593dfd0e77062e9a1d8cf3d49f90c52ca9a5daf60b90bab9
+	b2sums = 987e11ef15692ccbf064d6b3d309794a6ace2d587c80bb2fbfe0051ec85ec0dcad4c9f1a1a8a2bf8384e15ed4d9a19a2740fcbbf42456e16cecbf1811487ca3b
 	b2sums = SKIP
 
 pkgname = trid
