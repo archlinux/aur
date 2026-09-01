@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gerbil-bin
 _pkgname=Gerbil
-pkgver=1.28.2
-_electronversion=43
+pkgver=1.28.3
+_electronversion=44
 pkgrel=1
 pkgdesc="A desktop app for running Large Language Models locally.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('746aaefb6491dddf8e16344eb051241043c9f36a520ef88d883ef70a826fdffd'
+sha256sums=('4b91131e3bf015eb9392fcdbcdf34af682aaebea8617902d459c24498665d85c'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
