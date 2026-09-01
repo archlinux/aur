@@ -4,6 +4,7 @@
 pkgname=connections
 pkgver=0.1.21
 pkgrel=4
+# pkglint: ignore=PB906
 pkgdesc='A command-line client for the NYT Connections game.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/connections'
