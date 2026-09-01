@@ -3,10 +3,10 @@
 
 pkgname=buildozer-bin
 pkgver=8.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64' 'aarch64')
-license=('Apache')
+license=('Apache-2.0')
 url='https://github.com/bazelbuild/buildtools'
 conflicts=('buildozer')
 source=(
