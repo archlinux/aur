@@ -1,13 +1,13 @@
 pkgbase = antsword
 	pkgdesc = Cross-platform webshell management toolkit.
 	pkgver = 2.1.16
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AntSwordProject/antSword
 	arch = any
 	license = MIT
 	makedepends = imagemagick
 	makedepends = nodejs
-	depends = electron4
+	depends = electron4-bin
 	depends = bash
 	depends = hicolor-icon-theme
 	provides = antsword
@@ -21,6 +21,6 @@ pkgbase = antsword
 	sha256sums = fa236bb4e08f1bd11d077969b9089961a374595dd21b62925e3830b892d375bc
 	sha256sums = f3cff3ac504b8ff4bd48c9086e49ae978b6f13a3a60dc80b4dfca584c6995f69
 	sha256sums = 94894700d63d1c94f8e8d1fade1df936e1fee32d42f886ea32a6e6b29d40a866
-	sha256sums = 70629ead4ed92cbd6938f1f2af47c9c45ac1240f607d60bd82f8bca8004d13f0
+	sha256sums = 65c63921e12780a68c2fac7183d6dd054a44452743c73c45e66c9e18d3952826
 
 pkgname = antsword
