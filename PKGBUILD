@@ -1,8 +1,8 @@
 # Maintainer: captience <milkkjello@gmail.com>
 pkgname=tide
-pkgver=1.5.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="A brutalist multi-source music desktop client"
+pkgdesc="A multi-source music player with two personalities"
 arch=('any')
 url="https://github.com/captiencelovesarch/tide"
 license=('GPL-3.0-or-later')
@@ -17,7 +17,6 @@ depends=(
   'python-numpy'
   'python-mutagen'
   'python-spotipy'
-  'ttf-ibm-plex'
 )
 optdepends=(
   'python-pypresence: Discord rich presence integration'
@@ -32,7 +31,9 @@ makedepends=(
   'python-hatchling'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('331e1c58d76a751c1aedf0a3aaf327135dff134860df88ad8c3cb9536f45f99b')
+# computed from the GitHub tag tarball at release time (updpkgsums once
+# v$pkgver is tagged and pushed); until then this is the previous release's.
+sha256sums=('a8d4a95605ac4da3ba8262f3d7b598a91bddf23bbf2e3220b9574baab6b32877')
 
 build() {
   cd "$pkgname-$pkgver"
