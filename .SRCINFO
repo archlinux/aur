@@ -1,6 +1,6 @@
 pkgbase = python-blacksheep-rich-log
 	pkgdesc = BlackSheep access log middleware.
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://pypi.org/project/blacksheep_rich_log
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-blacksheep-rich-log
 	conflicts = python-blacksheep-rich-log
 	options = !strip
 	options = !debug
-	source = blacksheep_rich_log-0.0.2.tar.gz::https://files.pythonhosted.org/packages/source/b/blacksheep_rich_log/blacksheep_rich_log-0.0.2.tar.gz
-	sha256sums = 61c90834dc19ee85def363ff035a0bbadbf00a367661bafd2fae92909671371d
+	source = blacksheep_rich_log-0.0.3.tar.gz::https://files.pythonhosted.org/packages/source/b/blacksheep_rich_log/blacksheep_rich_log-0.0.3.tar.gz
+	sha256sums = 81ddb652a8a29869432b1b938f5f07f74e2c5f986acfe1b407f4a8c5ada51876
 
 pkgname = python-blacksheep-rich-log
