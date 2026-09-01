@@ -3,6 +3,7 @@
 pkgname=opsy
 pkgver=0.0.3
 pkgrel=5
+# pkglint: ignore=PB906
 pkgdesc="Opsy - Your AI-Powered SRE Colleague"
 arch=('x86_64' 'aarch64')
 url="https://github.com/datolabs-io/opsy"
