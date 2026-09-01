@@ -1,7 +1,7 @@
 # Maintainer: Laura Demkowicz-Duffy <dev at demkowiczduffy dot co dot uk>
 _pkgname=bmputil
 pkgname=${_pkgname}-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A tool for managing and flashing Black Magic Probe firmware"
 arch=('x86_64')
@@ -13,8 +13,8 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$pkgname-$pkgver.tar.xz::$url/releases/download/v$pkgver/$_pkgname-$CARCH-unknown-linux-gnu-v$pkgver.tar.xz"
 		"$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8d45e8b6fa3155a6f4acaf7eb1c3bf87b41b8815d8ea7e6b9d843d33c3648460'
-            '41e5897fa32cd8efcbd0c304da26ae808d0f785ccbce9a830764ccd67bf24a93')
+sha256sums=('4565448f78d4b5221c25739118f5259c77abe5a656e627f9eea0c9ea8b48ba99'
+            'b78db971d819b9396075849bec50354581b063c49a7a12fb6f10ba5bb8c95fa5')
 noextract=("$_pkgname-$pkgver.tar.gz")
 
 prepare() {
