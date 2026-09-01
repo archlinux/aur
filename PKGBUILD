@@ -7,9 +7,9 @@ pkgname="${_pkgname}-git"
 
 pkgdesc="Fork of Super Mario 64 Co-op with more features, customizability and power to the Lua API"
 
-pkgver=r5064.23d8a73
+pkgver=1.5.1.r135.gdf18593
 pkgrel=1
-epoch=1
+epoch=2
 
 arch=(x86_64 i686 pentium4 aarch64 armv7h)
 
@@ -21,8 +21,8 @@ makedepends=(git "python>=3.6" glew zlib curl audiofile gendesk)
 
 provides=("${_pkgname}=${pkgver}")
 
-source=("git+https://github.com/coop-deluxe/${_pkgname}.git#branch=dev" "${_pkgname}.sh" "${_pkgname}.png")
-md5sums=(SKIP 314f0815dc7132df21bbd3a9d391f2be 9bec90a66559edbf42992c4985e4548a)
+source=("git+https://github.com/coop-deluxe/${_pkgname}.git#branch=dev" "${_pkgname}.sh")
+md5sums=(SKIP 314f0815dc7132df21bbd3a9d391f2be)
 
 #options=("!strip")
 
@@ -30,8 +30,8 @@ pkgver() {
   	# move to source directory
 	cd "${_pkgname}"
 
-	# use number of revisions since beginning of history
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+	# use most recent tag reachable from current commit
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -48,7 +48,7 @@ build() {
 	# move to source directory
 	cd "${_pkgname}"
 
-	# build sm64coopdx
+	# build project
 	make
 }
 
@@ -56,13 +56,13 @@ package() {
 	# move to build directory
 	cd "${_pkgname}/build/us_pc"
 
-	# copy game executable
+	# copy main executable
 	install -Dm755 "${_pkgname}" "${pkgdir}/usr/share/${_pkgname}/${_pkgname}"
 
 	# copy shared libraries
 	find . -type f -name '*.so' -exec install -Dm755 {} "${pkgdir}/usr/lib/${_pkgname}/{}" \;
 
-	# copy other game directories
+	# copy other project directories
 	find lang -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/{}" \;
 	find dynos -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/{}" \;
 	find mods -type f -exec install -Dm644 {} "${pkgdir}/usr/share/${_pkgname}/{}" \;
@@ -71,6 +71,6 @@ package() {
 	install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 
 	# copy icon and desktop entry
-	install -Dm644 "${srcdir}/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+	install -Dm644 "${srcdir}/${_pkgname}/res/icon.icon/Assets/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 	install -Dm644 "${srcdir}/Super Mario 64 Co-op Deluxe.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
