@@ -1,15 +1,20 @@
 # Maintainer: Huseyn Teymurzade <huseynteymurrr74@gmail.com>
 pkgname=pokeductor
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A terminal Pokedex and evolution analyzer with sprite rendering, built with Rust"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Huseynteymurzade28/pokeductor"
 license=('MIT')
-depends=('gcc-libs' 'glibc' 'openssl')
+depends=('gcc-libs' 'glibc')
 makedepends=('cargo')
+# `ring`, which arrived with the switch to rustls in 0.4.0, compiles C of its
+# own. makepkg's LTO would hand those objects to the Rust linker as bitcode it
+# cannot resolve, so the link fails on ring's symbols. The release profile
+# already sets `lto = true`, so the Rust side loses nothing here.
+options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('743f5d09b75e44569687b0157fd3d6acd803f5eb7eb7d5177eb9d639a710cd6a')
+sha256sums=('f38aef357b33c2870aeacf684ec89c970a4e0a1a8e19feae83f6c8e32da5ebc4')
 
 prepare() {
   cd "$pkgname-$pkgver"
