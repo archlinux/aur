@@ -1,8 +1,8 @@
 # Maintainer: David Cohen <dacohen@pm.me>
 
 pkgname=efistub-libre
-pkgver=260.1
-pkgrel=3
+pkgver=261.2
+pkgrel=1
 pkgdesc="Systemd's EFI stubs collections without systemd"
 arch=('x86_64')
 url="https://github.com/systemd/systemd"
