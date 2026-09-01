@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=gocognit
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Calculates cognitive complexities of functions (and methods) in Go source code. (Golang cognitive complexity)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/uudashr/gocognit"
@@ -28,7 +28,7 @@ build() {
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags='-s -w' \
+    -ldflags='-linkmode=external -s -w' \
     -o $pkgname \
     ./cmd/gocognit
 }

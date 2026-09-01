@@ -1,7 +1,7 @@
 pkgbase = gocognit
 	pkgdesc = Calculates cognitive complexities of functions (and methods) in Go source code. (Golang cognitive complexity)
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/uudashr/gocognit
 	arch = x86_64
 	arch = aarch64
