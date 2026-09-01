@@ -1,6 +1,6 @@
 pkgbase = liseur-desktop-bin
 	pkgdesc = Snappy desktop EPUB reader, desktop counterpart of Liseur for Android
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/chmouel/liseur-desktop
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = liseur-desktop-bin
 	conflicts = liseur-desktop
 	options = !strip
 	options = !debug
-	source = liseur-desktop-bin-0.5.0-LICENSE::https://raw.githubusercontent.com/chmouel/liseur-desktop/v0.5.0/LICENSE
-	source = liseur-desktop-bin-0.5.0-icon.png::https://raw.githubusercontent.com/chmouel/liseur-desktop/v0.5.0/build/icon.png
+	source = liseur-desktop-bin-0.6.0-LICENSE::https://raw.githubusercontent.com/chmouel/liseur-desktop/v0.6.0/LICENSE
+	source = liseur-desktop-bin-0.6.0-icon.png::https://raw.githubusercontent.com/chmouel/liseur-desktop/v0.6.0/build/icon.png
 	sha256sums = 81bd234328535b3fe013f50b3447ac82b56a73cd9fc520f54b6c11d78d0084a0
 	sha256sums = 49c3d9e5b1961666908e27a598558bbc66936018bdac70972883e469d20cb260
-	source_x86_64 = https://github.com/chmouel/liseur-desktop/releases/download/v0.5.0/liseur-desktop-0.5.0-linux-x64.tar.gz
-	sha256sums_x86_64 = ebe60e90d08b1cff600d3770469d0ad92517ae7521b7a53fa0d3cf0f13c00771
-	source_aarch64 = https://github.com/chmouel/liseur-desktop/releases/download/v0.5.0/liseur-desktop-0.5.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = 7ca7e9ae37a7c98120f8f79506c9e83cfe4385e811c934b6104ad24b178e2efa
+	source_x86_64 = https://github.com/chmouel/liseur-desktop/releases/download/v0.6.0/liseur-desktop-0.6.0-linux-x64.tar.gz
+	sha256sums_x86_64 = d10440b7fafd1baccd1cf4e0a312fbe448cce260abfaaae1c42b01cf79269e3f
+	source_aarch64 = https://github.com/chmouel/liseur-desktop/releases/download/v0.6.0/liseur-desktop-0.6.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 06b8a7f8a03d026a4f95b918cf4814a31b2de303e29f7507bc572680185eb048
 
 pkgname = liseur-desktop-bin
