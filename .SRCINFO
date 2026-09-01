@@ -1,0 +1,27 @@
+pkgbase = tone3000-plugin-bin
+	pkgdesc = TONE3000 — NAM & IR loader plugin (VST3/CLAP/LV2/Standalone, JUCE/WebKitGTK)
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/tone-3000/tone3000-plugin
+	arch = x86_64
+	license = MIT
+	makedepends = unzip
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = alsa-lib
+	depends = freetype2
+	depends = curl
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = gcc-libs
+	optdepends = jack: JACK audio backend for standalone
+	provides = tone3000-plugin
+	conflicts = tone3000-plugin
+	options = !strip
+	options = !debug
+	source = TONE3000-v0.0.2-linux-x64.zip::https://github.com/tone-3000/tone3000-plugin/releases/download/v0.0.2/TONE3000-v0.0.2-linux-x64.zip
+	source = LICENSE::https://raw.githubusercontent.com/tone-3000/tone3000-plugin/v0.0.2/LICENSE
+	sha256sums = fade5434e78a0cfefeb7b13987cd549e169f7c1caf0584eebc1ce1497dac636d
+	sha256sums = 88d4908d7343898f682e47e70f4288728006ed650dbf79e8940c709d55b76326
+
+pkgname = tone3000-plugin-bin
