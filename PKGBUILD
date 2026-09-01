@@ -1,6 +1,6 @@
 # Maintainer: mahirsn <mahirsuna72@gmail.com>
 pkgname=mmsimpulse-git
-pkgver=r49.d08524d
+pkgver=r50.6214c28
 pkgrel=1
 pkgdesc="A Wayland session of KWin plus the illogical-impulse shell — no desktop environment"
 arch=('any')
