@@ -6,7 +6,7 @@ _appname=${_gitname//-api/}
 pkgname=${_appname}-bin
 pkgdesc="Local-first desktop API client built for developers and AI agents"
 
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,8 +31,8 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/downloa
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.deb::${_ghurl}/releases/download/${_gitversion}/${_appname^}_${pkgver}_${_barch[1]}.deb")
 sha256sums=('50edcfeb6620b5a1bd11f4e6c2ce2ba0b336ec39e2c87e6143bd319ba69897e4'
             '54afa993b1c990afd7d7d24b0297398beb6b0d422b5624139e3dff59626da804')
-sha256sums_x86_64=('9ce28aad10bd943cfd438aadf3a0620092a90eda8899598ec8d7d33259f39df4')
-sha256sums_aarch64=('8ca40aebc6756b2d93504ef7e8de4d61fea8d7392ca3d79bda36c21c9b4bd289')
+sha256sums_x86_64=('695ac9e07d76d5913121b065efa3beae2db3f6b90d9c457d612ceff7ac646870')
+sha256sums_aarch64=('63afa12d404209afcf05767f739a0536e1d1935ef146a4b7df5f2ab508c82f63')
 
 
 package() {

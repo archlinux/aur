@@ -1,6 +1,6 @@
 pkgbase = voleeo-bin
 	pkgdesc = Local-first desktop API client built for developers and AI agents
-	pkgver = 0.17.0
+	pkgver = 0.18.0
 	pkgrel = 1
 	url = https://github.com/voleeo/voleeo-api
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = voleeo-bin
 	provides = voleeo
 	conflicts = voleeo
 	options = !strip
-	source = README-0.17.0.md::https://raw.githubusercontent.com/voleeo/voleeo-api/v0.17.0/README.md
-	source = LICENSE-0.17.0::https://raw.githubusercontent.com/voleeo/voleeo-api/v0.17.0/LICENSE
+	source = README-0.18.0.md::https://raw.githubusercontent.com/voleeo/voleeo-api/v0.18.0/README.md
+	source = LICENSE-0.18.0::https://raw.githubusercontent.com/voleeo/voleeo-api/v0.18.0/LICENSE
 	sha256sums = 50edcfeb6620b5a1bd11f4e6c2ce2ba0b336ec39e2c87e6143bd319ba69897e4
 	sha256sums = 54afa993b1c990afd7d7d24b0297398beb6b0d422b5624139e3dff59626da804
-	source_x86_64 = voleeo-x86_64-0.17.0.deb::https://github.com/voleeo/voleeo-api/releases/download/v0.17.0/Voleeo_0.17.0_amd64.deb
-	sha256sums_x86_64 = 9ce28aad10bd943cfd438aadf3a0620092a90eda8899598ec8d7d33259f39df4
-	source_aarch64 = voleeo-aarch64-0.17.0.deb::https://github.com/voleeo/voleeo-api/releases/download/v0.17.0/Voleeo_0.17.0_arm64.deb
-	sha256sums_aarch64 = 8ca40aebc6756b2d93504ef7e8de4d61fea8d7392ca3d79bda36c21c9b4bd289
+	source_x86_64 = voleeo-x86_64-0.18.0.deb::https://github.com/voleeo/voleeo-api/releases/download/v0.18.0/Voleeo_0.18.0_amd64.deb
+	sha256sums_x86_64 = 695ac9e07d76d5913121b065efa3beae2db3f6b90d9c457d612ceff7ac646870
+	source_aarch64 = voleeo-aarch64-0.18.0.deb::https://github.com/voleeo/voleeo-api/releases/download/v0.18.0/Voleeo_0.18.0_arm64.deb
+	sha256sums_aarch64 = 63afa12d404209afcf05767f739a0536e1d1935ef146a4b7df5f2ab508c82f63
 
 pkgname = voleeo-bin
