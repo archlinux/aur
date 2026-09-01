@@ -2,17 +2,17 @@
 # Contributor: Marc Plano-Lesay <marc.planolesay@gmail.com>
 
 pkgname="ibazel"
-pkgver=0.32.0
+pkgver=0.33.0
 pkgrel=1
 pkgdesc="Tool for building Bazel targets when source files change."
 arch=("x86_64" "aarch64")
-license=("Apache 2.0")
+license=("Apache-2.0")
 url="https://github.com/bazelbuild/bazel-watcher"
 makedepends=("git" "python")
 depends=("bazel")
 conflicts=('ibazel-bin' 'ibazel-git')
 _bazelisk_pkgver="1.25.0"
-_commit='76435a526e58bbacde596f23abe4f9a73f87d695'
+_commit='ed00d96be0ce5b01aa2c43abbcd29172d4573091'
 source=("${pkgname}::git+$url.git#commit=$_commit")
 source_x86_64=(
   "bazelisk-bin-x86_64-${_bazelisk_pkgver}::https://github.com/bazelbuild/bazelisk/releases/download/v${_bazelisk_pkgver}/bazelisk-linux-amd64"
@@ -32,13 +32,21 @@ build() {
   cd "${pkgname}" || exit
 
   if [ "${CARCH}" == "aarch64" ]; then
-    _platforms="--platforms=@io_bazel_rules_go//go/toolchain:linux_arm64"
+    _platforms="--platforms=@io_bazel_rules_go//go/toolchain:linux_arm64_cgo"
   else
-    _platforms="--platforms=@io_bazel_rules_go//go/toolchain:linux_amd64"
+    _platforms="--platforms=@io_bazel_rules_go//go/toolchain:linux_amd64_cgo"
   fi
 
+  # The _cgo platforms pull in a C++ toolchain so the binary is linked
+  # externally, which is required for the -z relro,now linker flags below.
+  # --linkopt (rather than gc_linkopts' -extldflags) is what lands
+  # --as-needed ahead of net's cgo -lresolv on the external link line, which
+  # is what makes the linker drop the unused libresolv.so.2 dependency.
   "${srcdir}/bazelisk-bin-${CARCH}-${_bazelisk_pkgver}" \
     build --config=release "${_platforms}" \
+    --@io_bazel_rules_go//go/config:linkmode=pie \
+    --@io_bazel_rules_go//go/config:gc_linkopts=-extldflags,-Wl,-znow,-extldflags,-Wl,-zrelro \
+    --linkopt=-Wl,--as-needed \
     "//cmd/${pkgname}"
 }
 
