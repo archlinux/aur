@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Co-Maintainer: Dongda Li <dongdongbhbh at gmail dot com>
 pkgname=mindwtr
-pkgver=1.2.5
-pkgrel=4
+pkgver=1.2.6
+pkgrel=1
 _nodeversion=24
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
 arch=('x86_64')
@@ -33,9 +33,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/dongdongbh/Mindwtr/archive/
         "pnpm-lock.yaml"
         "pnpm-workspace.yaml"
 )
-sha256sums=('4e2be834cae47c8960f8ab2e58cad2db131d58c3ba1716cc290848875ad4419c'
+sha256sums=('ce62282482bf5cfceed877c75b8921da9695909a02916233084269400859cc8a'
             'c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c'
-            '83e04c18d50c6f0392e9289a503f86349393851705135c5609db67f4bdddabfd'
+            'f308b5630e6992a21c136d34d77f1dc58fa264f54ac9d70ec508b172817d48a8'
             '4147dc8bee4e18f2d7776c90cfcb09b81223735ebabc67ac87d063aff510f7e3')
 
 _ensure_local_nvm() {
