@@ -2,12 +2,12 @@
 
 pkgname=polymath
 pkgver=1.4.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced keyboard layout customization tool for Flux keyboards'
 arch=('x86_64')
 url='https://fluxkeyboard.com/updates/'
 license=('custom')
-makedepends=('binutils' 'tar' 'zstd')
+makedepends=('binutils' 'tar' 'zstd' 'xz')
 depends=(
   'alsa-lib' 'at-spi2-core' 'cairo' 'desktop-file-utils' 'fontconfig' 'freetype2'
   'fribidi' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnutls' 'gtk3' 'harfbuzz'

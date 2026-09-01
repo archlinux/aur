@@ -1,13 +1,14 @@
 pkgbase = polymath
 	pkgdesc = Advanced keyboard layout customization tool for Flux keyboards
 	pkgver = 1.4.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fluxkeyboard.com/updates/
 	arch = x86_64
 	license = custom
 	makedepends = binutils
 	makedepends = tar
 	makedepends = zstd
+	makedepends = xz
 	depends = alsa-lib
 	depends = at-spi2-core
 	depends = cairo
