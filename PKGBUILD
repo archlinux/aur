@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vikunja-desktop-bin
 _pkgname="Vikunja Desktop"
-pkgver=2.4.0
+pkgver=2.6.0
 _electronversion=43
 pkgrel=1
 pkgdesc="Vikunja, the fluffy, open-source, self-hostable to-do app.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.pacman::${_ghurl}/releases/download/v${pkgver}/${_pkgname// /.}-v${pkgver}.pacman"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('95be12530fe27e9f75401100b83b060caa52170d21a04c275062ecdee5cef5bc'
+sha256sums=('96b196305c0156ab10276cd9a27441a2cd6e397f3d41d21d3c535aea58f3ea69'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
