@@ -1,6 +1,6 @@
 pkgbase = nextcloud-app-polls
 	pkgdesc = Poll app for Nextcloud
-	pkgver = 9.1.4
+	pkgver = 9.2.1
 	pkgrel = 1
 	url = https://github.com/nextcloud/polls
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = nextcloud-app-polls
 	makedepends = composer
 	makedepends = yq
 	makedepends = rsync
-	source = polls-9.1.4.tar.gz::https://github.com/nextcloud/polls/archive/v9.1.4.tar.gz
-	sha512sums = d26a33cecbbe0338351aae436cba8e5e246a9ade0fb916313727576ccfd5979c808a8497cb3a9093e32d3a5f5541ed8d87c170055ceaf4346d839184a739c637
+	source = polls-9.2.1.tar.gz::https://github.com/nextcloud/polls/archive/v9.2.1.tar.gz
+	sha512sums = d8f43d552e201b95db02b6fcd0e740054da7b07ad3d860735edf93fd82acd66a640c27fc5a1d0cdb7a65cd2a8ed016082bb799a1a35c2c64b7f75f3c39029c16
 
 pkgname = nextcloud-app-polls
 	depends = nextcloud>=
