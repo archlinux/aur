@@ -1,6 +1,6 @@
 # Maintainer: Sebastian Korotkiewicz <skorotkiewicz@gmail.com>
 pkgname=epic-lore-bin
-pkgver=0.8.6
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Epic Games Lore version control system (prebuilt binaries)'
 arch=('x86_64' 'aarch64')
@@ -25,10 +25,10 @@ source_aarch64=(
 sha256sums=('1e719ba96030560ebb8f23fa7f18d15c9e94b230d5cd451e9c0edc027113499c'
             'd6899f04359ee944316aaa6336cbede36824364724c4b987e5dec744a3c8e398'
             '731ff6b7b872fcb5ab22f7d07038762cdae8f1786ff590b785f4dee9fdf4f066')
-sha256sums_x86_64=('a7aaeb32a15f6674a328e19096c48dcab5b29b283ba51d37abdadedd930812ad'
-                   'f0de84c6175a476f157754f57316be0346105be502c93fabb65bb908eab0e1e1')
-sha256sums_aarch64=('c07d8c21920ce36277eda49bfef22ed2e8a2ea20b569ddff165b5afe8cad1510'
-                    '01a9abf87643c46c10d9fd7d31bb3c91f371b4b66d66c39df838604ce4e9c151')
+sha256sums_x86_64=('05a1890406ff400d265e43c58afef4da2fdcb23642483766eb35bb0d4b904a5a'
+                   'd30324ce10f5498a749e6dea65100d01103474a5373cb5db0f270831c967a1d7')
+sha256sums_aarch64=('a2568a8f6962d9c9d05db87c462aaaebb1e888536912eaec1cc4cc0289f640e1'
+                    '8128f7b581b6a82abbd4a39c4c0a563e7323c31b3f6c3dd26593397cab326260')
 
 package() {
   cd "$srcdir"
