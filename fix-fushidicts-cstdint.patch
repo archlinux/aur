@@ -1,0 +1,13 @@
+clang needs explicit <cstdint>; upstream fixed lookup.cpp (<climits>) but
+not query.hpp on the 2.2.1-beta.12447 tag.
+
+--- a/native/fushidicts/fushidicts_include/fushidicts/query.hpp
++++ b/native/fushidicts/fushidicts_include/fushidicts/query.hpp
+@@ -4,6 +4,7 @@
+ #pragma once
+ 
++#include <cstdint>
+ #include <memory>
+ #include <string>
+ #include <utility>
+ #include <vector>
