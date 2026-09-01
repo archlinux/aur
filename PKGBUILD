@@ -2,12 +2,12 @@
 # Contributor:
 pkgname=mirrorbits
 pkgver=0.6.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Mirrorbits is a geographical download redirector written in Go for distributing files efficiently across a set of mirrors."
 arch=('x86_64' 'aarch64')
 url="https://github.com/etix/mirrorbits"
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'zlib')
 makedepends=('go' 'git')
 _commit='9061cc3e06a00c04cd92965dae46850f2785a91b'
 source=("git+https://github.com/etix/mirrorbits.git#commit=$_commit")
