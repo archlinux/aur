@@ -1,4 +1,4 @@
-_FORCE_ts=20260831111009
+_FORCE_ts=20260901054445
 # Maintainer: <your name> <your email>
 
 # Ensure UTF-8 locale for files with non-ASCII names during packaging.
@@ -9,20 +9,24 @@ pkgname=layaair-ide
 pkgver=3.4.1
 _upstream_ver=3.4.1
 _url=https://ldc-1251285021.file.myqcloud.com/layaair3/layaair-3.4/linux/LayaAirIDE-linux-x86_64-3.4.1.AppImage
-pkgrel=3
+pkgrel=4
 pkgdesc='LayaAir IDE (repacked from official AppImage)'
 arch=('x86_64')
 url='https://layaair.com/'
 license=('custom')
 install="${pkgname}.install"
-source=("LayaAirIDE.AppImage::$_url")
+# Keep pkgver and pkgrel in the local filename: makepkg skips downloading
+# whenever a file with this name already exists in the build dir, so the name
+# must change whenever the upstream checksum can change.
+source=("LayaAirIDE-${pkgver}-${pkgrel}.AppImage::$_url")
 sha256sums=('79be7b0471398836351435d09c625376dea85a4926d9bcbd24103ca606ec3170')
 
 prepare() {
   cd "$srcdir"
+  local appimage="LayaAirIDE-${pkgver}-${pkgrel}.AppImage"
   rm -rf squashfs-root
-  chmod +x LayaAirIDE.AppImage
-  ./LayaAirIDE.AppImage --appimage-extract >/dev/null
+  chmod +x "$appimage"
+  ./"$appimage" --appimage-extract >/dev/null
 
   local desktop_src
   desktop_src=$(find squashfs-root -type f -name '*.desktop' -print -quit || true)
