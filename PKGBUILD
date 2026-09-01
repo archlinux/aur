@@ -10,7 +10,7 @@ license=("GPL-3.0-or-later")
 depends=("bash-completion" "curl" "diffutils" "jq" "tar")
 makedepends=("git")
 source=("git+https://github.com/nellowint/$pkgname.git#tag=v$pkgver")
-sha256sums=('SKIP')
+sha256sums=('e70de1db0223461926ef13124723421653a468f471e8498e1b1a5fe370a24fe6')
 
 package() {
 	cd "$pkgname"
