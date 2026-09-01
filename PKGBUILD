@@ -1,7 +1,7 @@
 # Maintainer: Alex Indigo <ai@aegis.one>
 
 pkgname=luch
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Link router for Linux/Wayland — pick which browser opens a URL"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'wayland-protocols')
 optdepends=('wl-clipboard: Ctrl+C copy survives the popup exiting')
 conflicts=('luch-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('75744aff0cd2ceda38f2b708ef7c5ccb207f913bd99434188645d99b434899bc')
+sha256sums=('ec9fff613f6e6cf64ec6de26cc0c2b458bcc016741cb858a81dc512a4f03f800')
 
 build() {
     cmake -B build -S "${srcdir}/${pkgname}-${pkgver}" \

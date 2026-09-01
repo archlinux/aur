@@ -1,6 +1,6 @@
 pkgbase = luch
 	pkgdesc = Link router for Linux/Wayland — pick which browser opens a URL
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/alexindigo/luch
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = luch
 	depends = hicolor-icon-theme
 	optdepends = wl-clipboard: Ctrl+C copy survives the popup exiting
 	conflicts = luch-git
-	source = luch-0.1.0.tar.gz::https://github.com/alexindigo/luch/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 75744aff0cd2ceda38f2b708ef7c5ccb207f913bd99434188645d99b434899bc
+	source = luch-0.2.0.tar.gz::https://github.com/alexindigo/luch/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = ec9fff613f6e6cf64ec6de26cc0c2b458bcc016741cb858a81dc512a4f03f800
 
 pkgname = luch
