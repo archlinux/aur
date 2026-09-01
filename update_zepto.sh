@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+PKGCTL_RESULT="$(pkgctl version check 2>/dev/null)"
+
+if [ "${PKGCTL_RESULT}" == "Out-of-date" ]; then
+    pkgctl version upgrade
+fi
+
 OWNER="joewalnes"
 REPO="zepto"
 RELEASE_TARGET="latest"
@@ -26,12 +32,13 @@ NEW_GIT_VERSION="${COMMIT_HASH:0:7}"
 
 OLD_GIT_VERSION=$(grep -E '^\s*_gitversion=' ./PKGBUILD | sed -E 's/_gitversion=(.*)/\1/')
 
-if [ "${NEW_GIT_VERSION}" != "${OLD_GIT_VERSION}" ]; then
+if [ "${PKGCTL_RESULT}" == "Out-of-date" ] || [ "${NEW_GIT_VERSION}" != "${OLD_GIT_VERSION}" ]; then
     sed -i "s/^[[:space:]]*_gitversion=.*/_gitversion=${NEW_GIT_VERSION}/" ./PKGBUILD
 
     updpkgsums && makepkg -o && makepkg --printsrcinfo > .SRCINFO
 
     PKGVER=$(grep -E '^\s*pkgver=' ./PKGBUILD | sed -E 's/pkgver=["'\'' ]*([^"'\'' ]*).*/\1/')
+    PKGREL=$(grep -E '^\s*pkgrel=' ./PKGBUILD | sed -E 's/pkgrel=["'\'' ]*([^"'\'' ]*).*/\1/')
 
     echo -e "\nNew version: ${PKGVER} !"
 else
