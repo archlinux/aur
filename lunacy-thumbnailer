@@ -1,0 +1,40 @@
+#!/bin/sh
+
+set -eu
+
+if [ "$#" -ne 3 ]; then
+    echo "用法: $0 <输入文件> <输出文件> <尺寸>" >&2
+    exit 2
+fi
+
+input_path=$1
+output_path=$2
+size=$3
+
+case $size in
+    ''|*[!0-9]*)
+        echo "缩略图尺寸必须是正整数" >&2
+        exit 2
+        ;;
+esac
+
+if [ "$size" -eq 0 ]; then
+    echo "缩略图尺寸必须大于零" >&2
+    exit 2
+fi
+
+preview_path=$(mktemp "${TMPDIR:-/tmp}/lunacy-preview.XXXXXX.webp")
+trap 'rm -f "$preview_path"' EXIT HUP INT TERM
+
+if ! bsdtar -xOf "$input_path" preview.webp > "$preview_path" || [ ! -s "$preview_path" ]; then
+    echo "无法从 Lunacy 文档提取 preview.webp" >&2
+    exit 1
+fi
+
+magick \
+    -limit memory 256MiB \
+    -limit map 512MiB \
+    "$preview_path" \
+    -thumbnail "${size}x${size}>" \
+    -strip \
+    "PNG:$output_path"

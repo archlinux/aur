@@ -1,0 +1,5 @@
+.codegraph
+AGENTS_QA.md
+pkg/
+src/
+*.pkg.tar.*

@@ -1,0 +1,17 @@
+pkgbase = lunacy-thumbnailer
+	pkgdesc = Nautilus thumbnailer for Lunacy documents
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://icons8.com/lunacy
+	arch = any
+	license = MIT
+	depends = imagemagick
+	depends = libarchive
+	source = lunacy-thumbnailer
+	source = lunacy.thumbnailer
+	source = LICENSE
+	sha256sums = 39ca6775e7d93386836f625fcd00518cd9058c158e672dbebbc3f86a1fc0875f
+	sha256sums = f17b64909dcdd448d5d710362ce7db8e128eeac5e575fa6bb2e602187b82d542
+	sha256sums = bb79aa1d0cf79bf75421ee1174bc7d649cd2a5a56fdc08412e9a1b0311e3d7ef
+
+pkgname = lunacy-thumbnailer

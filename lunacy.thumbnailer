@@ -1,0 +1,4 @@
+[Thumbnailer Entry]
+TryExec=lunacy-thumbnailer
+Exec=lunacy-thumbnailer %i %o %s
+MimeType=x-scheme-handler/i8-lunacy;
