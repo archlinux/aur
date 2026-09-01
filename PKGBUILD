@@ -1,4 +1,4 @@
-_FORCE_ts=20260901054445
+_FORCE_ts=20260901132848
 # Maintainer: <your name> <your email>
 
 # Ensure UTF-8 locale for files with non-ASCII names during packaging.
@@ -9,7 +9,7 @@ pkgname=layaair-ide
 pkgver=3.4.1
 _upstream_ver=3.4.1
 _url=https://ldc-1251285021.file.myqcloud.com/layaair3/layaair-3.4/linux/LayaAirIDE-linux-x86_64-3.4.1.AppImage
-pkgrel=4
+pkgrel=5
 pkgdesc='LayaAir IDE (repacked from official AppImage)'
 arch=('x86_64')
 url='https://layaair.com/'
@@ -19,7 +19,7 @@ install="${pkgname}.install"
 # whenever a file with this name already exists in the build dir, so the name
 # must change whenever the upstream checksum can change.
 source=("LayaAirIDE-${pkgver}-${pkgrel}.AppImage::$_url")
-sha256sums=('79be7b0471398836351435d09c625376dea85a4926d9bcbd24103ca606ec3170')
+sha256sums=('33b4e6ccfdabe681745a060e12e93fce66a0f1249f51c6abc7c170e832c12701')
 
 prepare() {
   cd "$srcdir"
