@@ -20,7 +20,7 @@ from typing import Any, NoReturn
 import yaml
 
 PROJECT_NAME = "comfykick"
-PROJECT_VERSION = "v1.7.4"
+PROJECT_VERSION = "v1.7.5"
 PROJECT_DIR = Path(__file__).resolve().parent
 
 COMFYUI_REPO = "Comfy-Org/ComfyUI"

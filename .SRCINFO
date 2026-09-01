@@ -1,6 +1,6 @@
 pkgbase = comfykick
 	pkgdesc = The Official ComfyUI Launch Process SUCKs🤮, this is better.
-	pkgver = 1.7.4
+	pkgver = 1.7.5
 	pkgrel = 1
 	url = https://github.com/KFERMercer/ComfyKick
 	install = comfykick.install
@@ -18,8 +18,8 @@ pkgbase = comfykick
 	source = comfykick.toml
 	source = override.conf
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	sha256sums = 1edcf06b301018fe52a4d6b4e8ca221f4265f4085b0b0b5e619b8386b46cb192
-	sha256sums = a6577aab0c4fe6411ff2d6810d5e12c0c515e451fe10d1815c48e4442476acfe
+	sha256sums = 1edee1463d0ce65145fe4383d28fa805ef3a76c57b6c3f813228e8912cfc4e49
+	sha256sums = 835593856f8033041de9572920fe7a11c04bab5fea1c619a888418bba6bd3a97
 	sha256sums = 6b26b19b2480cb1e3660d17b7cf250d064391453b25808d68f969bb69ac44a6f
 	sha256sums = 4c993df4c0fa00334a9817adedcf2f2bcf8e60e071b378895b520cf0322782b2
 
