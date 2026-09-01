@@ -3,6 +3,7 @@
 pkgname=n26
 pkgver=1.5.6
 pkgrel=5
+# pkglint: ignore=PB906
 pkgdesc="API and CLI to get information of your N26 account"
 arch=('x86_64' 'aarch64')
 url="https://github.com/guitmz/n26"
