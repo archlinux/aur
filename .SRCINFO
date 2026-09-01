@@ -1,16 +1,18 @@
 pkgbase = lockenv-bin
 	pkgdesc = Simple, password-based encrypted vault for .env and infrastructure secrets
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/illarion/lockenv
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = lockenv
 	conflicts = lockenv
-	source_x86_64 = https://github.com/illarion/lockenv/releases/download/v0.1.8/lockenv_0.1.8_linux_amd64.tar.gz
+	source = lockenv-bin-0.1.8.LICENSE::https://github.com/illarion/lockenv/raw/master/LICENSE
+	sha256sums = e962dd9a243a633210cf44d96cce779d73637121ca8a684548d18221b7eff093
+	source_x86_64 = lockenv-bin-x86_64-0.1.8.tar.gz::https://github.com/illarion/lockenv/releases/download/v0.1.8/lockenv_0.1.8_linux_amd64.tar.gz
 	sha256sums_x86_64 = da05295122e767d4ea29a02fb1a91b0e7582e4fd7a1d407a827bde9cfe5560d4
-	source_aarch64 = https://github.com/illarion/lockenv/releases/download/v0.1.8/lockenv_0.1.8_linux_arm64.tar.gz
+	source_aarch64 = lockenv-bin-aarch64-0.1.8.tar.gz::https://github.com/illarion/lockenv/releases/download/v0.1.8/lockenv_0.1.8_linux_arm64.tar.gz
 	sha256sums_aarch64 = 84c64794afb3568cba70818df8bb48dc214e2e644d1cf5c959fecb6b6c102510
 
 pkgname = lockenv-bin
