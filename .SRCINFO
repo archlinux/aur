@@ -14,8 +14,8 @@ pkgbase = course2md-bin
 	source = LICENSE-0.6.1::https://github.com/mizorewww/course2md/raw/v0.6.1/LICENSE
 	sha256sums = f588737788750da8ab407e66c13f5004f8933176307add92f64b6c458f486212
 	source_x86_64 = course2md-linux-x86_64::https://github.com/mizorewww/course2md/releases/download/v0.6.1/course2md-linux-x86_64
-	sha256sums_x86_64 = 3a8982621045000c2318ccce5e3cf7dbb6fe96bd3dcf1ff6bb4374cc6a41b348
+	sha256sums_x86_64 = d0d3460f4476224cefe4fb44ce6b0a823b31c12ec03966ec4715c5c31f4b8f36
 	source_aarch64 = course2md-linux-aarch64::https://github.com/mizorewww/course2md/releases/download/v0.6.1/course2md-linux-aarch64
-	sha256sums_aarch64 = 497c87d3cf0ff8a7cba2947719a43542da3fab69f28665c6835ee389c80d2b3f
+	sha256sums_aarch64 = 0d784262ec3f70a744f05184c717b2ac8ba11d9b98c47cdb6e534b793ed2b88a
 
 pkgname = course2md-bin

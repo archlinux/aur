@@ -17,8 +17,8 @@ source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("course2md-linux-x86_64::${url}/releases/download/v${pkgver}/course2md-linux-x86_64")
 source_aarch64=("course2md-linux-aarch64::${url}/releases/download/v${pkgver}/course2md-linux-aarch64")
 sha256sums=('f588737788750da8ab407e66c13f5004f8933176307add92f64b6c458f486212')
-sha256sums_x86_64=('3a8982621045000c2318ccce5e3cf7dbb6fe96bd3dcf1ff6bb4374cc6a41b348')
-sha256sums_aarch64=('497c87d3cf0ff8a7cba2947719a43542da3fab69f28665c6835ee389c80d2b3f')
+sha256sums_x86_64=('d0d3460f4476224cefe4fb44ce6b0a823b31c12ec03966ec4715c5c31f4b8f36')
+sha256sums_aarch64=('0d784262ec3f70a744f05184c717b2ac8ba11d9b98c47cdb6e534b793ed2b88a')
 
 package() {
     install -Dm755 "course2md-linux-${CARCH}" "${pkgdir}/usr/bin/course2md"
