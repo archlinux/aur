@@ -2,7 +2,7 @@
 # Contributor: kryksyh <kryksyh@gmail.com>
 pkgname=audacity4-bin
 pkgver=4.0.0_beta.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Audacity 4, the next generation of the popular multi-track audio editor"
 arch=('x86_64')
 url="https://github.com/audacity/audacity"
@@ -20,6 +20,9 @@ prepare() {
 	cd "$srcdir"
 	chmod +x "${_appimage}"
 	"./${_appimage}" --appimage-extract >/dev/null
+
+	# Quick fix for ffmpeg9
+	rm -f "$srcdir/squashfs-root/usr/lib/libsystemd.so.0"
 }
 
 package() {
