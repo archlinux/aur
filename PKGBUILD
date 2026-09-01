@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=3.0.8
-_electronversion=33
+pkgver=3.2.0
+_electronversion=42
 _nodeversion=24
 pkgrel=1
 pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('850c365f3c977196f5c95ab270baf5d7d1894e0669db1a7ca38b94f8586e9a2d'
+sha256sums=('94f9003a577b7f055996de012e6797aa3ef72f11207379800b4fb0c667259b1e'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -94,12 +94,9 @@ prepare() {
     _ensure_local_nvm
     find desktop/{electron,src} -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname}\"/g" {} \;
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" desktop/package.json
-    sed -i '
-        s/logo\.icns/logo\.png/g
-        s/AppImage/dir/g
-        /target: '\''deb'\''/d
-        /target: '\''flatpak'\''/d
-    ' desktop/electron-builder.config.js
+    sed -i "s|\"build:electron\": \"electron-builder --config=./electron-builder.config.js --publish=never\"|\"build:electron\": \"electron-builder --config=electron-builder.config.js --linux dir -c.electronDist ${ELECTRON_DIST}\"|" desktop/package.json
+    ln -sf "/usr/share/scrcpy/scrcpy-server" desktop/electron/resources/extra/common/scrcpy/scrcpy-server
+    ln -sf "/usr/share/scrcpy/scrcpy-server" desktop/electron/resources/extra/common/wscrcpy/scrcpy-server
     case "${CARCH}" in
         aarch64)
             ln -sf "/usr/bin/adb" desktop/electron/resources/extra/linux-arm64/scrcpy/adb
@@ -122,7 +119,7 @@ build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     _set_build_env
     _ensure_local_nvm
-    NODE_ENV=production     pnpm run build:linux
+    NODE_ENV=production pnpm turbo build:electron -- --linux dir
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
@@ -140,6 +137,7 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}/lib"
     ln -sf "/usr/lib/${pkgname}/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.17.3" \
         "${pkgdir}/usr/lib/${pkgname}/lib/libvips-cpp.so.8.17.3"
+    rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/desktop/electron/resources/build/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
