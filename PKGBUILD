@@ -4,7 +4,7 @@
 _slug=voxglitch
 _name=voxglitch
 pkgname=vcvrack-voxglitch
-pkgver=2.44.0
+pkgver=2.45.0
 pkgrel=1
 pkgdesc='Voxglitch VCV Rack modules'
 arch=(aarch64 x86_64)
@@ -14,9 +14,9 @@ groups=(pro-audio vcvrack-plugins)
 depends=(gcc-libs vcvrack)
 makedepends=(git jq simde zstd)
 # get release commit from https://github.com/VCVRack/library/issues/626
-_commit=c4db491d63750683dcc0b6b52aff40c66f8162c6
+_commit=cb0fa0a13a34d8aaf54e4292e19c2905274db864
 source=("git+https://github.com/clone45/$_name#commit=$_commit")
-sha256sums=('6844eaecec6ae88d706f95676aaba1de1a2661068fd6155912f189351957554a')
+sha256sums=('18d614c3fe779b750e37cbc2a68cd1a0ea4468201834eac075b3e27f5a46e734')
 
 prepare() {
   cd $_name
