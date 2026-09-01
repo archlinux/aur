@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=vnts-git
-pkgver=2.0.2.r0.g6ef1451
+pkgver=2.0.3.r0.g7f6388c
 pkgrel=1
 pkgdesc="vnt server"
 arch=($CARCH)
@@ -17,6 +17,9 @@ makedepends=(
     git
     protobuf
     rust
+    npm
+    pnpm
+    nodejs
 )
 optdepends=('vnt: A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具')
 backup=(
@@ -48,6 +51,10 @@ prepare() {
 }
 
 build() {
+    cd "${srcdir}/${pkgname}/frontend"
+    pnpm install
+    pnpm build
+
     cd "${srcdir}/${pkgname}/"
 
     export RUSTUP_TOOLCHAIN=stable

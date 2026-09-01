@@ -1,6 +1,6 @@
 pkgbase = vnts-git
 	pkgdesc = vnt server
-	pkgver = 2.0.2.r0.g6ef1451
+	pkgver = 2.0.3.r0.g7f6388c
 	pkgrel = 1
 	url = https://github.com/vnt-dev/vnts
 	install = vnts.install
@@ -9,6 +9,9 @@ pkgbase = vnts-git
 	makedepends = git
 	makedepends = protobuf
 	makedepends = rust
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = nodejs
 	depends = libgcc
 	optdepends = vnt: A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具
 	provides = vnts
