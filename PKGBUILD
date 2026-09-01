@@ -2,7 +2,7 @@
 # Co-developer: Claude (Anthropic)
 
 pkgname=grubforge
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A terminal UI for managing and customizing the GRUB bootloader — safely, intuitively, and beautifully"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('python' 'python-textual' 'python-rich' 'polkit')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc")
-sha256sums=('89b4c8083f58f3b3661a2646526c19e3fd13f042c12de42e67864f3e1580c339'
+sha256sums=('b4bb8b1fe6fd6ddb88cdae12f731c2d3dee1d47f733297cce0f9e30607b90abb'
             'SKIP')
 # Javier (jetomev) release-signing key — import via:
 #   gpg --keyserver keys.openpgp.org --recv-keys 32E1D2AB9380BFD6BFE3BC1EAC2A3407CC070F9E
