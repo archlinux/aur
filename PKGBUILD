@@ -1,7 +1,7 @@
 # Maintainer: Integral <integral@member.fsf.org>
 
 pkgname=waylyrics
-pkgver=0.4.0
+pkgver=0.4.1
 _opencc_rust_ver=1.1.19
 pkgrel=1
 pkgdesc="the furry way to show desktop lyrics"
