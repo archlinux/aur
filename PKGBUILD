@@ -5,7 +5,7 @@
 # Contributor : Martin Wimpress <code@flexion.org>
 # Contributor : Jingbei Li <i@jingbei.li>
 pkgname=miniconda3
-pkgver=26.5.3.1
+pkgver=26.7.1.1
 _pkgver=${pkgver%.*}-${pkgver##*.}
 _pyversion=py313
 pkgrel=1
@@ -17,8 +17,8 @@ provides=('conda')
 source_x86_64=(https://repo.anaconda.com/miniconda/Miniconda3-${_pyversion}_${_pkgver}-Linux-x86_64.sh)
 source_aarch64=(https://repo.anaconda.com/miniconda/Miniconda3-${_pyversion}_${_pkgver}-Linux-aarch64.sh)
 options=(!strip libtool staticlibs)
-sha512sums_x86_64=('8c4ec22246908141b6ee637cf061475c9a84b43a4799918010765ce8b65eea2fd6fc4273998ee6e54d6bc766f2a3b411a280ea2f38b01ea98ba253a6ac98bee3')
-sha512sums_aarch64=('9986d62fb83e15e3187c90e6c0a5a20e7fd4dfa179e1bda8f463fbd28badb01e21a8094c814bf4b5ae291748bdf3a521d31f19172481e964956ae6e731346325')
+sha512sums_x86_64=('9b59b0ec4225ad166faa008e16311078378d86f3d0868c06293ad2d1516e571db9f03e57674f1f231b32b43c7027b2ce60c76f524f045e57fbbe17e4d280a98b')
+sha512sums_aarch64=('256fcc3654c76038d913aa8e441305cd446046e4d93f753b16b7a0d34e0d15f4fcc5a6c22b68feb02a612e3080d8095f15993d08a33f98dcdfa6edff35216bc7')
 install="${pkgname}.install"
 
 package() {
