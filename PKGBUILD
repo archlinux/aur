@@ -26,7 +26,7 @@ options=('!strip' '!debug')
 install="${pkgname}.install"
 source=("mianling-apply-${pkgver}-amd64.deb::https://storage2.maoertech.cn/job-apply/mianling-apply-${pkgver}-amd64.deb")
 noextract=("mianling-apply-${pkgver}-amd64.deb")
-sha256sums=('c7e8d9911919f594051919ea1fb4cb8de0fb4ef44e232522a5c6a5a5a8005233')
+sha256sums=('ceb70cc8052848fb2eee75951fce43d7bd2b8cba4100a983abf301e7665ff6ba')
 
 package() {
   cd "$srcdir"
