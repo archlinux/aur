@@ -16,14 +16,14 @@ url="https://github.com/shikaan/dewlock"
 license=('MIT')
 depends=('wayland' 'libxkbcommon' 'cairo' 'pam')
 # wayland-scanner ships in 'wayland', which is already a runtime dependency.
-makedepends=('scdoc' 'make' 'gcc')
+makedepends=('scdoc')
 backup=('etc/pam.d/dewlock')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e039a69eaa54c6d7438a18279d77c83af7a329ae529a8a2a992760d7f084e996')
 
 build() {
   cd "$pkgname-$pkgver"
-  make CC="gcc" VERSION="v$pkgver" SHA="$_commit" all
+  make VERSION="v$pkgver" SHA="$_commit" all
 }
 
 package() {
