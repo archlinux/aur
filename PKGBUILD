@@ -1,49 +1,48 @@
 pkgname=osu-tachyon
 _pkgname=${pkgname%}
-pkgver=2026.311.0
+pkgver=2026.821.0
 pkgrel=1
 pkgdesc="osu!lazer unstable branch."
 arch=(x86_64)
 url="https://osu.ppy.sh"
 license=("MIT" "custom:CC-BY-NC 4.0")
 depends=(
-  zlib
-  libgl
-  fuse2
-  osu-mime
+	zlib
+	libgl
+	fuse2
+	osu-mime
 )
 provides=(osu-tachyon)
 conflicts=(
-  osu-tachyon)
+	osu-tachyon)
 options=(!strip !debug)
 source=(
-  "$_pkgname-$pkgver.AppImage::https://github.com/ppy/osu/releases/download/$pkgver-tachyon/osu.AppImage"
-  "icon.png"
-  "https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md"
-  "osu-tachyon.desktop"
-  "osu-tachyon-uri-handler.desktop"
-  "osu-tachyon"
+	"$_pkgname-$pkgver.AppImage::https://github.com/ppy/osu/releases/download/$pkgver-tachyon/osu.AppImage"
+	"icon.png"
+	"https://raw.githubusercontent.com/ppy/osu-resources/master/LICENCE.md"
+	"osu-tachyon.desktop"
+	"osu-tachyon-uri-handler.desktop"
+	"osu-tachyon"
 )
 noextract=("osu.AppImage")
 sha256sums=(
-  'a0da54a3b7b5e01eaf0c688ee93f07595c038fbc4566a013bf653a12e5537d67'
-  '30cf4df3fd76006b08a0bcb6a325fb2fdcf6a4371f77001da3c38cbce871bd51'
-  'SKIP'
-  '19a9941f5f5aa627282ba80a45f1f04894bb62d4a9ee5e6729849f6df11e845c'
-  '28571f5d68253a39e4d0462a8d42fa079c03a69cf1fef79e5ae8b7fb008c6f3f'
-  '406fa8500d3c8d6245551f11aa74c0d9cb13f73d9ef0a3a9f25dcbb84a771b49'
-  )
+	'24e718cf480046b2738890e434cc1e582d409684e80c60bef384aec1edf5d7f5'
+	'30cf4df3fd76006b08a0bcb6a325fb2fdcf6a4371f77001da3c38cbce871bd51'
+	'SKIP'
+	'19a9941f5f5aa627282ba80a45f1f04894bb62d4a9ee5e6729849f6df11e845c'
+	'28571f5d68253a39e4d0462a8d42fa079c03a69cf1fef79e5ae8b7fb008c6f3f'
+	'406fa8500d3c8d6245551f11aa74c0d9cb13f73d9ef0a3a9f25dcbb84a771b49'
+)
 package() {
-  cd "$srcdir"
+	cd "$srcdir"
 
-  # Install binary and launch script
-  install -Dm755 "$_pkgname-$pkgver.AppImage" "$pkgdir/opt/osu-tachyon/osu.AppImage"
-  install -Dm755 -t "$pkgdir/usr/bin" osu-tachyon
+	# Install binary and launch script
+	install -Dm755 "$_pkgname-$pkgver.AppImage" "$pkgdir/opt/osu-tachyon/osu.AppImage"
+	install -Dm755 -t "$pkgdir/usr/bin" osu-tachyon
 
-  # Install pixmap, desktop and license file
-  install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/osu-tachyon.png"
-  install -Dm644 -t "$pkgdir/usr/share/applications" osu-tachyon.desktop
-  install -Dm644 -t "$pkgdir/usr/share/applications" osu-tachyon-uri-handler.desktop
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENCE.md
+	# Install pixmap, desktop and license file
+	install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/osu-tachyon.png"
+	install -Dm644 -t "$pkgdir/usr/share/applications" osu-tachyon.desktop
+	install -Dm644 -t "$pkgdir/usr/share/applications" osu-tachyon-uri-handler.desktop
+	install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENCE.md
 }
-
