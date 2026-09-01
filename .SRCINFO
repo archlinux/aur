@@ -1,6 +1,6 @@
 pkgbase = kanoprii
 	pkgdesc = High-performance PDF editor
-	pkgver = 1.17.4
+	pkgver = 1.17.5
 	pkgrel = 1
 	url = https://github.com/visorcraft/Kanoprii
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = kanoprii
 	conflicts = kanoprii-git
 	noextract = pdfium-linux-x64-7947.tgz
 	options = !lto
-	source = kanoprii-1.17.4.tar.gz::https://github.com/visorcraft/Kanoprii/archive/refs/tags/v1.17.4.tar.gz
+	source = kanoprii-1.17.5.tar.gz::https://github.com/visorcraft/Kanoprii/archive/refs/tags/v1.17.5.tar.gz
 	source = pdfium-linux-x64-7947.tgz::https://github.com/bblanchon/pdfium-binaries/releases/download/chromium/7947/pdfium-linux-x64.tgz
 	source = kanoprii.desktop
-	sha256sums = 683d1879d09fde0eeaae7e863f3d83d06fccb164bf76c7a771143d8ab9850b7b
+	sha256sums = e52a7d79fc902f30321d9c7199620ba4ae316b220a185163f1d5ea13a5ece858
 	sha256sums = f73d69d309fe1f33cc7269dcc99be31ec44e1cf608e31d7e2fcc6545fc2f9323
 	sha256sums = 05dfa58465ff1838d64a870f5b7d4b8e456607fe8157ad9b60aeae65b56a860f
 
