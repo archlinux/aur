@@ -2,7 +2,7 @@
 
 pkgname=entire-cli-bin
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Git-native AI agent session tracking'
 arch=('x86_64' 'aarch64')
 url='https://github.com/entireio/cli'
