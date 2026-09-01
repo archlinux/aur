@@ -1,0 +1,7 @@
+Seneka EBDYS is proprietary software owned by its respective copyright
+holders. This package does not redistribute the application. It creates an
+isolated Wine prefix and retrieves the signed ClickOnce deployment directly
+from Maltepe University's EBYS server when the user starts setup.
+
+Use of the downloaded application remains subject to the terms and access
+policies of Seneka and Maltepe University.

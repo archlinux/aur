@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly pkgname='seneka-ebdys-maltepe'
+readonly data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+readonly prefix="${SENEKA_WINEPREFIX:-$data_home/wineprefixes/$pkgname}"
+
+find_appref() {
+  find "$prefix/drive_c/users" -type f -iname '*.appref-ms' -print -quit \
+    2>/dev/null || true
+}
+
+appref="$(find_appref)"
+if [[ -z "$appref" ]]; then
+  seneka-ebdys-setup
+  appref="$(find_appref)"
+fi
+
+if [[ -z "$appref" ]]; then
+  message='Seneka EBDYS ClickOnce kısayolu bulunamadı. Kurulumu yeniden çalıştırın: seneka-ebdys-setup'
+  if command -v zenity >/dev/null && [[ -n "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]]; then
+    zenity --error --title='Seneka EBDYS' --text="$message"
+  else
+    printf '%s\n' "$message" >&2
+  fi
+  exit 1
+fi
+
+export WINEPREFIX="$prefix"
+export WINEDEBUG="${WINEDEBUG:--all}"
+
+exec wine start /unix "$appref"

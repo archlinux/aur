@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+readonly pkgname='seneka-ebdys-maltepe'
+readonly app_url="${SENEKA_APP_URL:-https://ebys.maltepe.edu.tr/Ebys/Seneka.Ebdys.Client.Host.application}"
+readonly data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+readonly state_home="${XDG_STATE_HOME:-$HOME/.local/state}"
+readonly prefix="${SENEKA_WINEPREFIX:-$data_home/wineprefixes/$pkgname}"
+readonly state_dir="$state_home/$pkgname"
+
+export WINEPREFIX="$prefix"
+export WINEDEBUG="${WINEDEBUG:--all}"
+
+find_appref() {
+  find "$prefix/drive_c/users" -type f -iname '*.appref-ms' -print -quit \
+    2>/dev/null || true
+}
+
+run_setup() {
+  mkdir -p "$prefix" "$state_dir"
+
+  exec 9>"$state_dir/setup.lock"
+  flock 9
+
+  printf 'Wine öneki hazırlanıyor: %s\n' "$prefix"
+  wineboot -u
+
+  printf '.NET Framework ve Windows çalışma bileşenleri kuruluyor. Bu işlem ilk seferde birkaç dakika sürebilir.\n'
+  winetricks -q win7 corefonts dotnet48 msxml6
+
+  printf 'İmzalı Seneka ClickOnce dağıtımı kuruluyor.\n'
+  printf 'Wine hata penceresi gösterirse yalnız o pencerede Quit, ardından arkadaki pencerede Install seçin.\n'
+  wine rundll32.exe dfshim.dll,ShOpenVerbApplication "$app_url" || true
+
+  for _ in {1..90}; do
+    if [[ -n "$(find_appref)" ]]; then
+      printf 'Seneka EBDYS kurulumu tamamlandı.\n'
+      return 0
+    fi
+    sleep 2
+  done
+
+  printf 'ClickOnce kurulumu tamamlanamadı: %s\n' "$app_url" >&2
+  return 1
+}
+
+if [[ "${1:-}" == '--no-gui' ]] || ! command -v zenity >/dev/null || \
+   [[ -z "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]]; then
+  run_setup
+  exit
+fi
+
+zenity --info --title='Seneka EBDYS ilk kurulumu' \
+  --text='ClickOnce aşamasında bir Wine hata penceresi açılırsa yalnız o pencerede “Quit”, ardından arkadaki güvenlik penceresinde “Install” seçin.'
+
+log_file="$(mktemp --tmpdir "${pkgname}.XXXXXX.log")"
+status_file="$(mktemp --tmpdir "${pkgname}.XXXXXX.status")"
+trap 'rm -f "$status_file"' EXIT
+
+(
+  set +e
+  run_setup >"$log_file" 2>&1
+  printf '%s\n' "$?" >"$status_file"
+) | zenity --progress --pulsate --auto-close --no-cancel \
+  --title='Seneka EBDYS kurulumu' \
+  --text='Wine ve Seneka EBDYS hazırlanıyor. İlk kurulum birkaç dakika sürebilir.'
+
+status="$(cat "$status_file" 2>/dev/null || printf '1')"
+if [[ "$status" != '0' ]]; then
+  zenity --error --title='Seneka EBDYS kurulumu' \
+    --text="Kurulum tamamlanamadı. Ayrıntılı günlük: $log_file"
+  exit "$status"
+fi
+
+rm -f "$log_file"
+zenity --info --title='Seneka EBDYS kurulumu' \
+  --text='Kurulum tamamlandı. EBYS şimdi açılabilir.'

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Name=Maltepe Üniversitesi EBYS
+Comment=Seneka EBDYS belge yönetim istemcisi
+Exec=seneka-ebdys
+Icon=seneka-ebdys-maltepe
+Terminal=false
+Categories=Office;
+Keywords=EBYS;EBDYS;Seneka;Maltepe;
+StartupNotify=true
+Actions=Setup;
+
+[Desktop Action Setup]
+Name=İlk kurulumu/onarımı çalıştır
+Exec=seneka-ebdys-setup
