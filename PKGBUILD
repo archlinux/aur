@@ -2,7 +2,7 @@
 # Contributor: Joseph DiGiovanni <jdigiovanni78 at gmail dot com>
 # Contributer: Eric Cheng <eric at chengeric dot com>
 pkgname=gnome-shell-extension-alphabetical-grid-extension
-pkgver=45.0
+pkgver=46.0
 pkgrel=1
 pkgdesc="Alphabetically order GNOME's app grid and folders"
 arch=('any')
@@ -10,16 +10,16 @@ url="https://github.com/stuarthayhurst/alphabetical-grid-extension"
 license=('GPL-3.0-or-later')
 depends=('gnome-shell')
 makedepends=('jq')
-source=("alphabetical-grid-extension-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5df6bb4027819473877b457013e2bcd203003ed61c56deb1f642574c897ea783')
+source=("alphabetical-grid-extension-$pkgver-1.tar.gz::$url/archive/v$pkgver-1.tar.gz")
+sha256sums=('8bb4c133312bda5b921690053bb9d925ca2cd6d24d1396458b357238dd2bd299')
 
 build() {
-  cd "alphabetical-grid-extension-$pkgver"
+  cd "alphabetical-grid-extension-$pkgver-1"
   make build
 }
 
 package() {
-  cd "alphabetical-grid-extension-$pkgver"
+  cd "alphabetical-grid-extension-$pkgver-1"
   _uuid=$(jq -r .uuid extension/metadata.json)
 
   install -d "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"
