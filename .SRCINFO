@@ -1,0 +1,30 @@
+pkgbase = okuri-bin
+	pkgdesc = Dead-simple file transfer for Omarchy & Linux (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/monorkin/okuri
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = qt6-base>=6.11
+	depends = qt6-declarative>=6.11
+	provides = okuri
+	conflicts = okuri
+	options = !debug
+	source = LICENSE
+	source = okuri.desktop
+	source = okuri-48-0.1.0.png::https://github.com/monorkin/okuri/raw/v0.1.0/assets/icons/okuri-48.png
+	source = okuri-64-0.1.0.png::https://github.com/monorkin/okuri/raw/v0.1.0/assets/icons/okuri-64.png
+	source = okuri-128-0.1.0.png::https://github.com/monorkin/okuri/raw/v0.1.0/assets/icons/okuri-128.png
+	source = okuri-256-0.1.0.png::https://github.com/monorkin/okuri/raw/v0.1.0/assets/icons/okuri-256.png
+	sha256sums = 1b1357d052d290abaf31c1ee06be0d37001838123f7c1f1a506dec646c10069c
+	sha256sums = d165ba2efe557e29940a7a8f3bc0b25f864f6b755d5f861507bab6a519c2b4fe
+	sha256sums = e25aad22966f439888695364a55b62009cff3b10257caa4344510c38e32b7ee7
+	sha256sums = 5abbc057afa7075e8bc9bdfa4837fe0e291b1814e762aafdd7aa5f1a0389c4c7
+	sha256sums = d540ec7fa7c45910c9677d8334b8769e9d69cf8178efd1028e4ef8b118081209
+	sha256sums = a8261ebd8a20c8fffb2abbb3d1204ff3e3be29d8f1b52421daf4cedff633af9a
+	source_x86_64 = okuri-0.1.0::https://github.com/monorkin/okuri/releases/download/v0.1.0/okuri-linux-amd64
+	sha256sums_x86_64 = 265ffa1f1bc9a5ae20dd1a9b96b05cf6ab0001857b4a604c1f3991052c2641ad
+
+pkgname = okuri-bin

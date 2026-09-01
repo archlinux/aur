@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Okuri
+GenericName=File Transfer
+Comment=Dead-simple file transfer for Omarchy & Linux
+Exec=okuri
+Icon=okuri
+Terminal=false
+Categories=Network;FileTransfer;
+Keywords=sftp;ftp;s3;webdav;azure;transfer;upload;remote;
+StartupWMClass=okuri
