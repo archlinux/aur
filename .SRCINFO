@@ -1,0 +1,18 @@
+pkgbase = riftlauncher-bin
+	pkgdesc = Launcher for Vintage Story by the Stratum Server Devs
+	pkgver = 1.7.0_beta.5
+	pkgrel = 1
+	url = https://github.com/StratumServer/RiftLauncher
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	options = !strip
+	options = !debug
+	source = riftlauncher-1.7.0-beta.5.pacman::https://github.com/StratumServer/RiftLauncher/releases/download/v1.7.0-beta.5/riftlauncher-1.7.0-beta.5.pacman
+	source = LICENSE::https://github.com/StratumServer/RiftLauncher/raw/refs/heads/main/LICENSE
+	sha256sums = cf83058616ad1dc0223852e89d502102acd90b343c8f624f4c00ad6cab9c7d41
+	sha256sums = 5a2ee6564e40040332174f7faf48810a1a0815fceb203d33d140da6497d68115
+
+pkgname = riftlauncher-bin
