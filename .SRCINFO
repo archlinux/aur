@@ -1,6 +1,6 @@
 pkgbase = murmure-bin
 	pkgdesc = Privacy-first speech-to-text, running entirely on your machine (precompiled binary)
-	pkgver = 1.10.1
+	pkgver = 1.11.3
 	pkgrel = 1
 	url = https://github.com/Kieirra/murmure
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = murmure-bin
 	provides = murmure
 	conflicts = murmure
 	options = !strip
-	source_x86_64 = murmure-1.10.1-amd64.deb::https://github.com/Kieirra/murmure/releases/download/1.10.1/Murmure_amd64.deb
-	sha256sums_x86_64 = 049f21b5d30a79effdf43fd4f2f6b20b5a7a5f279c16db10bbafd9e37a489cf6
+	source_x86_64 = murmure-1.11.3-amd64.deb::https://github.com/Kieirra/murmure/releases/download/1.11.3/Murmure_amd64.deb
+	sha256sums_x86_64 = 15ecc6cb3f85f203bdf7946dc6e06a5070c23657ad3d78dc84b7c4e51fc7a731
 
 pkgname = murmure-bin
