@@ -1,6 +1,6 @@
 pkgbase = vnts
 	pkgdesc = vnt server
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/vnt-dev/vnts
 	install = vnts.install
@@ -9,6 +9,9 @@ pkgbase = vnts
 	makedepends = git
 	makedepends = protobuf
 	makedepends = rust
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = nodejs
 	depends = libgcc
 	optdepends = vnt: A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具
 	provides = vnts
@@ -16,9 +19,9 @@ pkgbase = vnts
 	options = !lto
 	options = !debug
 	backup = etc/vnts/config.toml
-	source = vnts::git+https://github.com/vnt-dev/vnts.git#tag=v2.0.2
+	source = vnts::git+https://github.com/vnt-dev/vnts.git#tag=v2.0.3
 	source = vnts.install
-	sha256sums = d378e8a18c9c360991a3ac1481438655f9d1053d8ef78dad2e174f48f6d22a46
+	sha256sums = c84dec8ee383bfcbc41714c5179a81e75d34bc08d4a074dd5507698583dfedcf
 	sha256sums = 5d3129ee455c0180ebd1ff15bd6765080db0206f01cc2a6559fc06c2704ff318
 
 pkgname = vnts

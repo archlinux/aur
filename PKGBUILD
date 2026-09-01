@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=vnts
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="vnt server"
 arch=($CARCH)
@@ -17,6 +17,9 @@ makedepends=(
     git
     protobuf
     rust
+    npm
+    pnpm
+    nodejs
 )
 optdepends=('vnt: A virtual network tool (or VPN),简便高效的异地组网、内网穿透工具')
 backup=(
@@ -28,14 +31,8 @@ source=(
     "${pkgname}::git+${url}.git#tag=v${pkgver}"
     "vnts.install"
 )
-sha256sums=('d378e8a18c9c360991a3ac1481438655f9d1053d8ef78dad2e174f48f6d22a46'
+sha256sums=('c84dec8ee383bfcbc41714c5179a81e75d34bc08d4a074dd5507698583dfedcf'
             '5d3129ee455c0180ebd1ff15bd6765080db0206f01cc2a6559fc06c2704ff318')
-
-pkgver() {
-    cd "${srcdir}/${pkgname}/"
-
-    git describe --exclude=nightly --long --tags | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare() {
     git -C "${srcdir}/${pkgbase}" clean -dfx
@@ -48,6 +45,10 @@ prepare() {
 }
 
 build() {
+    cd "${srcdir}/${pkgname}/frontend"
+    pnpm install
+    pnpm build
+
     cd "${srcdir}/${pkgname}/"
 
     export RUSTUP_TOOLCHAIN=stable
