@@ -1,23 +1,23 @@
 pkgbase = icalingua++-bin
 	pkgdesc = A branch of deleted Icalingua, with limited support.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.26.0
+	pkgver = 2.26.6
 	pkgrel = 1
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = AGPL-3.0-only
-	depends = electron38
-	provides = icalingua++=2.26.0
+	depends = electron39
+	provides = icalingua++=2.26.6
 	conflicts = icalingua++
 	conflicts = icalingua++-electron
 	source = icalingua++.sh
 	sha256sums = a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d
-	source_aarch64 = icalingua++-2.26.0-aarch64.rpm::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.26.0/icalingua-2.26.0.aarch64.rpm
-	sha256sums_aarch64 = a8802031ccb17e547034b245aae82312cc1ef5daf2001bd5ef5dc4a7892e29a9
-	source_armv7h = icalingua++-2.26.0-armv7h.rpm::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.26.0/icalingua-2.26.0.armv7l.rpm
-	sha256sums_armv7h = e6d4e8296353fbdad8a44a9d9d9a9436655fcdc52d71d14d6df6c507d641a040
-	source_x86_64 = icalingua++-2.26.0-x86_64.rpm::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.26.0/icalingua-2.26.0.x86_64.rpm
-	sha256sums_x86_64 = 3a99b268d63a958c2ad9525837e6992eb6db91925ccd4d91cce47fe878b8e08a
+	source_aarch64 = icalingua++-2.26.6-aarch64.rpm::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.26.6/icalingua-2.26.6.aarch64.rpm
+	sha256sums_aarch64 = 7c99dd71c14d0b2e3a4080c7ab094b38dbc7d67c8c8e4af95786146b9958c2ba
+	source_armv7h = icalingua++-2.26.6-armv7h.rpm::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.26.6/icalingua-2.26.6.armv7l.rpm
+	sha256sums_armv7h = 62b97471f5968510aa3ef68fb0e410448d23afc29a7cd0d5e492f6c82cdfca30
+	source_x86_64 = icalingua++-2.26.6-x86_64.rpm::https://github.com/Icalingua-plus-plus/Icalingua-plus-plus/releases/download/v2.26.6/icalingua-2.26.6.x86_64.rpm
+	sha256sums_x86_64 = 233f52f10a7ce7402b379b8e59bca9ca568fbc2a45a4f1fe95c25fe10b421392
 
 pkgname = icalingua++-bin
