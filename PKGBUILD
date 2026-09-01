@@ -27,8 +27,7 @@ build() {
                --sysconfdir=/etc/samba \
                --libdir=/usr/lib32 \
                --disable-python
-   make
-  make -j$(nproc)
+   make -j$(nproc)
 }
 
 package() {
