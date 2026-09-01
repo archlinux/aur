@@ -1,6 +1,6 @@
 pkgbase = electron45-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt
-	pkgver = 45.0.0alpha.2
+	pkgver = 45.0.0alpha.3
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -16,19 +16,19 @@ pkgbase = electron45-bin
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron45=45.0.0alpha.2
+	provides = electron45=45.0.0alpha.3
 	conflicts = electron45
-	noextract = electron45-chromedriver-45.0.0alpha.2-x86_64.zip
-	noextract = electron45-45.0.0alpha.2-x86_64.zip
+	noextract = electron45-chromedriver-45.0.0alpha.3-x86_64.zip
+	noextract = electron45-45.0.0alpha.3-x86_64.zip
 	source = electron45.sh
 	sha256sums = ac1e26684ffbfc7ac0993c55b9299003f6b9efea25b755b1d260bea4db440157
-	source_aarch64 = electron45-chromedriver-45.0.0alpha.2-aarch64.zip::https://github.com/electron/electron/releases/download/v45.0.0-alpha.2/chromedriver-v45.0.0-alpha.2-linux-arm64.zip
-	source_aarch64 = electron45-45.0.0alpha.2-aarch64.zip::https://github.com/electron/electron/releases/download/v45.0.0-alpha.2/electron-v45.0.0-alpha.2-linux-arm64.zip
-	sha256sums_aarch64 = d8cebde13906e5504b13e84675ba228b99bcc684dbed4989216746f5e52c0582
-	sha256sums_aarch64 = bc8888d2dfc16371b0774d4289ab592bc4eaba0ca858df6e078223a465ef1906
-	source_x86_64 = electron45-chromedriver-45.0.0alpha.2-x86_64.zip::https://github.com/electron/electron/releases/download/v45.0.0-alpha.2/chromedriver-v45.0.0-alpha.2-linux-x64.zip
-	source_x86_64 = electron45-45.0.0alpha.2-x86_64.zip::https://github.com/electron/electron/releases/download/v45.0.0-alpha.2/electron-v45.0.0-alpha.2-linux-x64.zip
-	sha256sums_x86_64 = c7ae56d6c1096d916f76d09145fa8e15e3c0a2c8faaf2da107259376b1ed6dfd
-	sha256sums_x86_64 = 8690064f67e2bad35f8a4f61196f39ed9dfc7f6839400fd286fb10c876933794
+	source_aarch64 = electron45-chromedriver-45.0.0alpha.3-aarch64.zip::https://github.com/electron/electron/releases/download/v45.0.0-alpha.3/chromedriver-v45.0.0-alpha.3-linux-arm64.zip
+	source_aarch64 = electron45-45.0.0alpha.3-aarch64.zip::https://github.com/electron/electron/releases/download/v45.0.0-alpha.3/electron-v45.0.0-alpha.3-linux-arm64.zip
+	sha256sums_aarch64 = 22c883bd70e86214933a10c3f68c4d89d07b534751f9157ff4f6d76e45aad316
+	sha256sums_aarch64 = c2abc6ffe43021729e277677bfa06581689326e0cfeb20e8340a864ea7f2ae9e
+	source_x86_64 = electron45-chromedriver-45.0.0alpha.3-x86_64.zip::https://github.com/electron/electron/releases/download/v45.0.0-alpha.3/chromedriver-v45.0.0-alpha.3-linux-x64.zip
+	source_x86_64 = electron45-45.0.0alpha.3-x86_64.zip::https://github.com/electron/electron/releases/download/v45.0.0-alpha.3/electron-v45.0.0-alpha.3-linux-x64.zip
+	sha256sums_x86_64 = 3c2035059403b13ebf89629855d80d24975b705872f6ced30f8703c9ce30207a
+	sha256sums_x86_64 = 25831929a2ab315fd0a274b95eda162ec80a8c38498d7e78dbae533170320cf9
 
 pkgname = electron45-bin
