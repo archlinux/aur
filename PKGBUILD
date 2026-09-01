@@ -7,12 +7,15 @@
 
 pkgname=hakubun-git
 pkgver=r1965.a2bdebe
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-site anime/manga list manager; independent Trackma fork"
 arch=('any')
 url="https://github.com/trektn/hakubun"
 license=('GPL-3.0-or-later')
-depends=('python')
+depends=(
+  'python'
+  'python-anitomy-ng-bin>=1.0.9'
+)
 conflicts=('hakubun-plus-git')
 
 makedepends=(

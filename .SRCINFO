@@ -1,7 +1,7 @@
 pkgbase = hakubun-git
 	pkgdesc = Multi-site anime/manga list manager; independent Trackma fork
 	pkgver = r1965.a2bdebe
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/trektn/hakubun
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,6 +10,7 @@ pkgbase = hakubun-git
 	makedepends = python-installer
 	makedepends = uv
 	depends = python
+	depends = python-anitomy-ng-bin>=1.0.9
 	optdepends = python-cairo: GTK frontend
 	optdepends = python-gobject: GTK frontend
 	optdepends = gtk3: GTK frontend
