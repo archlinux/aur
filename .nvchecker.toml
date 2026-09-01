@@ -1,0 +1,5 @@
+[lazyftp-bin]
+source = "github"
+github = "MawCeron/lazyftp"
+use_latest_release = true
+prefix = "v"

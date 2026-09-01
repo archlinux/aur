@@ -1,0 +1,17 @@
+pkgbase = lazyftp-bin
+	pkgdesc = A simple, keyboard-driven TUI FTP, FTPS and SFTP client
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/MawCeron/lazyftp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lazyftp
+	conflicts = lazyftp
+	options = !strip
+	source_x86_64 = lazyftp-x86_64-0.2.1.tgz::https://github.com/MawCeron/lazyftp/releases/download/v0.2.1/lazyftp_0.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3e978dc2f1858303f88c76a75f16c19c90a09ee4690c7b0d8290b54707215adf
+	source_aarch64 = lazyftp-aarch64-0.2.1.tgz::https://github.com/MawCeron/lazyftp/releases/download/v0.2.1/lazyftp_0.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = bf2f3fcdc32345dd949203c69aaf94866d9690a93a46777dec0d6a91e18e9087
+
+pkgname = lazyftp-bin
