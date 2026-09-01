@@ -1,6 +1,6 @@
 pkgbase = ostui
 	pkgdesc = A terminal client for OpenSubsonic servers (stmps fork)
-	pkgver = 1.3.8
+	pkgver = 1.3.9
 	pkgrel = 1
 	url = https://git.sr.ht/~ser/ostui
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = ostui
 	makedepends = go>=1.24.0
 	depends = glibc
 	depends = mpv
-	source = ostui-1.3.8.tar.gz::https://git.sr.ht/~ser/ostui/archive/v1.3.8.tar.gz
-	sha256sums = 4e1c9fcb6a9cda9491ddde4b0a05ea9d5735ce9533f22ff9c6d098dea18c8f67
+	source = ostui-1.3.9.tar.gz::https://git.sr.ht/~ser/ostui/archive/v1.3.9.tar.gz
+	sha256sums = af1b2020d8c659d9397b5d8d76718bdaa584efe021569b15a1639c869cd2ea54
 
 pkgname = ostui
