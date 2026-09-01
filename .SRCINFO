@@ -1,0 +1,23 @@
+pkgbase = wayshadow-bin
+	pkgdesc = A lightweight, elegant keystroke visualizer for Wayland compositors
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/justanoobcoder/wayshadow
+	arch = x86_64
+	license = MIT
+	depends = wayland
+	depends = cairo
+	depends = pango
+	depends = libinput
+	depends = libxkbcommon
+	depends = gtk3
+	depends = libappindicator
+	provides = wayshadow
+	conflicts = wayshadow
+	conflicts = wayshadow-git
+	options = !debug
+	options = !strip
+	source = https://github.com/justanoobcoder/wayshadow/releases/download/v1.0.0/wayshadow-1.0.0-1-x86_64.pkg.tar.zst
+	sha256sums = 4f95c94dd4bae2c52143ac3ac153ae7129187c996e5ba707116177729b9f2b90
+
+pkgname = wayshadow-bin
