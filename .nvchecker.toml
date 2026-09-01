@@ -1,0 +1,5 @@
+[ratfetch-bin]
+source = "github"
+github = "tuna4ll/ratfetch"
+use_latest_release = true
+prefix = "v"

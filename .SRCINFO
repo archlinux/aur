@@ -1,0 +1,19 @@
+pkgbase = ratfetch-bin
+	pkgdesc = A system fetch that does not stop at one frame
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/tuna4ll/ratfetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ratfetch
+	conflicts = ratfetch
+	options = !strip
+	source_x86_64 = ratfetch-x86_64-0.1.0.tgz::https://github.com/tuna4ll/ratfetch/releases/download/v0.1.0/ratfetch-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f293949180efa9150a9ee9a914f67fc4f08bc295b631c02181597252b99e13eb
+	source_aarch64 = ratfetch-aarch64-0.1.0.tgz::https://github.com/tuna4ll/ratfetch/releases/download/v0.1.0/ratfetch-v0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 911eb55cc9fc660959c6484d0191ac874a40a575dcce8adb46744322465c8295
+
+pkgname = ratfetch-bin
