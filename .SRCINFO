@@ -1,7 +1,7 @@
 pkgbase = fushi
 	pkgdesc = Immersion language-learning suite: EPUB reader, video subtitle lookup, audiobook sync, and one-tap Anki mining
 	pkgver = 2.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hajisensai/Fushi
 	arch = x86_64
 	license = GPL-3.0-or-later

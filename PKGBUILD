@@ -2,7 +2,7 @@
 
 pkgname=fushi
 pkgver=2.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Immersion language-learning suite: EPUB reader, video subtitle lookup, audiobook sync, and one-tap Anki mining'
 arch=('x86_64')
 url='https://github.com/hajisensai/Fushi'
@@ -29,12 +29,13 @@ prepare() {
 # bundled in that tarball; everything else resolves via pub.
 #
 # The v2.1.1 tag's pubspec still says 2.0.0+1210 (upstream stamps versions via
-# CI flags, not pubspec), so without flags the app would see itself as 2.0.0 and
-# prompt an update to the manifest's 2.1.1 forever. Mirror the official desktop
-# builds: --build-name=<pkgver> with the manifest releaseSequence as the build
-# number (the app's update checker compares them to decide "newer"). 9116 is
-# the releaseSequence of v2.1.1's latest-stable.json; bump it together with
-# pkgver when updating.
+# CI flags, not pubspec), so without a fix the app would see itself as 2.0.0 and
+# prompt an update to the manifest's 2.1.1 forever. flutter build --build-name/
+# --build-number do NOT apply to Linux (version.json is generated from pubspec),
+# so the bundle's data/flutter_assets/version.json is rewritten at package time
+# to mirror the official desktop release: version=<pkgver>, build_number=9116
+# (the releaseSequence of v2.1.1's latest-stable.json, which the in-app updater
+# compares). Bump _release_seq together with pkgver when updating.
 _release_seq=9116
 build() {
   export FLUTTER_ROOT="${srcdir}/flutter"
@@ -43,7 +44,7 @@ build() {
   cd "${srcdir}/Fushi-${pkgver}"
   bash tool/bootstrap.sh
   cd hibiki
-  flutter build linux --release --build-name="${pkgver}" --build-number="${_release_seq}"
+  flutter build linux --release
 }
 
 package() {
@@ -52,6 +53,10 @@ package() {
   local dest="${pkgdir}/usr/lib/fushi"
   install -dm755 "${dest}"
   cp -a "${bundle}/." "${dest}/"
+  # Linux has no version pipeline: overwrite the pubspec-derived version.json
+  # so PackageInfo (and thus the in-app updater) reports the real release.
+  printf '{"app_name":"hibiki","version":"%s","build_number":"%s","package_name":"hibiki"}' \
+    "${pkgver}" "${_release_seq}" > "${dest}/data/flutter_assets/version.json"
   install -Dm644 "${srcdir_app}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "${srcdir}/fushi.desktop" "${pkgdir}/usr/share/applications/fushi.desktop"
   install -Dm644 "${srcdir_app}/hibiki/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" \
