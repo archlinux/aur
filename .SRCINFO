@@ -1,6 +1,6 @@
 pkgbase = claude-conversation-search-bin
 	pkgdesc = CLI + MCP tool for searching Claude Code conversation history with Tantivy/BM25
-	pkgver = 1.5.1
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/ticpu/claude-conversation-search-mcp
 	arch = x86_64
@@ -8,22 +8,22 @@ pkgbase = claude-conversation-search-bin
 	license = GPL-3.0-only
 	depends = glibc
 	depends = gcc-libs
-	provides = claude-conversation-search=1.5.1
+	provides = claude-conversation-search=1.6.0
 	conflicts = claude-conversation-search
 	options = !strip
 	options = !debug
-	source = claude-conversation-search-1.5.1.tar.xz::https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.5.1/claude-conversation-search-1.5.1.tar.xz
-	source = claude-conversation-search-1.5.1.tar.xz.asc::https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.5.1/claude-conversation-search-1.5.1.tar.xz.asc
+	source = claude-conversation-search-1.6.0.tar.xz::https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.6.0/claude-conversation-search-1.6.0.tar.xz
+	source = claude-conversation-search-1.6.0.tar.xz.asc::https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.6.0/claude-conversation-search-1.6.0.tar.xz.asc
 	validpgpkeys = E5998E49DC9E1DCFDB9B46EC77EBA10790CFFCCD
-	sha256sums = d56d5ae03d83ec656c5b81b952c2ce990ecd8bcb1f49b08460f7dc43eaf1a135
+	sha256sums = 940bfde144ad0d300fd042e9c1e1f2f85bc385e012bfc5fe65cf4e8cbf083a88
 	sha256sums = SKIP
-	source_x86_64 = claude-conversation-search-1.5.1-x86_64::https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.5.1/claude-conversation-search-linux-x86_64
-	source_x86_64 = claude-conversation-search-1.5.1-x86_64.asc::https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.5.1/claude-conversation-search-linux-x86_64.asc
-	sha256sums_x86_64 = 14ead4cc1a08b8f9ce28356f6773120efae8f660793bfb1898c6b2aed4243fed
+	source_x86_64 = claude-conversation-search-1.6.0-x86_64::https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.6.0/claude-conversation-search-linux-x86_64
+	source_x86_64 = claude-conversation-search-1.6.0-x86_64.asc::https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.6.0/claude-conversation-search-linux-x86_64.asc
+	sha256sums_x86_64 = f622cf4ca6cf3173927d922c933beee37ca2404e022fbfeeefad96685c4b996e
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = claude-conversation-search-1.5.1-aarch64::https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.5.1/claude-conversation-search-linux-aarch64
-	source_aarch64 = claude-conversation-search-1.5.1-aarch64.asc::https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.5.1/claude-conversation-search-linux-aarch64.asc
-	sha256sums_aarch64 = bf747372fb22612aed858439fc6b491a7e544ce61dda3775e5850d23c22a4209
+	source_aarch64 = claude-conversation-search-1.6.0-aarch64::https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.6.0/claude-conversation-search-linux-aarch64
+	source_aarch64 = claude-conversation-search-1.6.0-aarch64.asc::https://github.com/ticpu/claude-conversation-search-mcp/releases/download/v1.6.0/claude-conversation-search-linux-aarch64.asc
+	sha256sums_aarch64 = ee0de361ef468ae5df2539b381413a8894cdecb08ea21f9cb740a8ab45cb4b78
 	sha256sums_aarch64 = SKIP
 
 pkgname = claude-conversation-search-bin
