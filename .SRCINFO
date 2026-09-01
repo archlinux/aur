@@ -1,0 +1,21 @@
+pkgbase = okuri
+	pkgdesc = Dead-simple file transfer for Omarchy & Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/monorkin/okuri
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	options = !debug
+	source = okuri-0.1.0.tar.gz::https://github.com/monorkin/okuri/archive/v0.1.0.tar.gz
+	sha256sums = 68a4c8051cee8aadad2a2a771d07e9415bf7dbf6cbf1f53481809641d2c045de
+
+pkgname = okuri
