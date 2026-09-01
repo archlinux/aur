@@ -5,8 +5,8 @@ pkgdesc="OpenBangla Keyboard with Fcitx5 support (Develop Branch)"
 arch=('x86_64')
 url="https://github.com/OpenBangla/OpenBangla-keyboard"
 license=('GPL3')
-depends=('fcitx5' 'qt5-base')
-makedepends=('cmake' 'rust' 'git' 'cargo')
+depends=('fcitx5' 'qt5-base' 'qt5-svg')
+makedepends=('cmake' 'rust' 'git' 'cargo' 'qt5-svg')
 provides=('openbangla-keyboard')
 conflicts=('openbangla-keyboard')
 
