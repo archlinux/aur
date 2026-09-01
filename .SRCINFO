@@ -1,7 +1,7 @@
 pkgbase = zola-tera1
 	pkgdesc = The last Zola version before the breaking change to Tera 2
 	pkgver = 0.22.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/getzola/zola
 	arch = x86_64
 	license = MIT

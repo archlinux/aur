@@ -5,7 +5,7 @@
 _name="zola"
 pkgname="$_name-tera1"
 pkgver=0.22.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The last Zola version before the breaking change to Tera 2"
 conflicts=("$_name")
 arch=('x86_64')
