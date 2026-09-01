@@ -23,7 +23,7 @@ sha256sums=('1426cea7f5c4959cfcaec78b4974cde3071f51eb9fdf9beedf38efae0bc6b9ad'
             '6071288d33dc5d9892a39cd1030c6af919bab437a3bd579be21350f3cc192737'
             '45f2dce5fed26507b4d5ca8d554bbf47026aa2baac6831bc867107334c768ff0'
             '92911764e6fe601af3599a9e0fb95b48fe6109be6208d4150fa762f17c32c7fa'
-            '55aa7fdb3b880fc0fc6fd37d32568e4ebc1e3868a6b3a11b51a64b2981bf7dcf')
+            '4e87c6694b57f82a28fc0932d4af310f85323816902e0f8e1913b698a8593be9')
 
 prepare() {
   msg2 "Applying Fermi reclocking and backlight patches..."

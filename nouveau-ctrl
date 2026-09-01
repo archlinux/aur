@@ -1,143 +1,317 @@
 #!/usr/bin/env python3
 """
-nouveau-ctrl — CLI for Nouveau Fermi reclocking
-Usage: nouveau-ctrl status | set <03|07|0f|auto> | daemon [start|stop|status] | watch
-No TUI, no fan control (per request).
+nouveau-ctrl — CLI management tool for Nouveau Fermi GPU reclocking & telemetry
+Usage: nouveau-ctrl status | set <03|07|0f|10|auto> | daemon [start|stop|status|restart] | watch
 """
-import argparse, glob, os, re, subprocess, sys, time
+import argparse
+import glob
+import os
+import re
+import shutil
+import subprocess
+import sys
+import time
 
-PSTATE_PATH = "/sys/kernel/debug/dri/0/pstate"
-CLIENTS_PATH = "/sys/kernel/debug/dri/0/clients"
+PSTATE_CANDIDATES = [
+    "/sys/kernel/debug/dri/0/pstate",
+    "/sys/kernel/debug/dri/0000:01:00.0/pstate",
+    "/sys/kernel/debug/dri/128/pstate",
+]
+CLIENTS_CANDIDATES = [
+    "/sys/kernel/debug/dri/0/clients",
+    "/sys/kernel/debug/dri/0000:01:00.0/clients",
+    "/sys/kernel/debug/dri/128/clients",
+]
 HWMON_GLOB = "/sys/class/drm/card0/device/hwmon/hwmon*/"
 
-def read_file(p):
-    try:
-        with open(p) as f:
-            return f.read().strip()
-    except PermissionError:
-        try:
-            out = subprocess.run(["sudo", "-n", "cat", p], capture_output=True, text=True, timeout=2)
-            if out.returncode == 0:
-                return out.stdout.strip()
-        except:
-            pass
-        return None
-    except:
-        return None
+PSTATE_LABELS = {
+    "03": "P12 Low-Power Standby / Idle",
+    "07": "P8  Standard 2D Desktop",
+    "08": "P8  Standard 2D Desktop",
+    "0f": "P0  Full 3D Performance",
+    "10": "OC  Boost / Overclock",
+}
 
-def get_pstates():
-    t = read_file(PSTATE_PATH)
-    if not t:
-        return [], None
-    states = []
-    active = None
-    for line in t.splitlines():
-        # Try shader first
-        m = re.match(r"(\w+):\s*core\s+(\d+).*shader\s+(\d+).*memory\s+(\d+)", line)
-        if m:
-            states.append(line.strip())
-            if line.strip().endswith("*"):
-                active = line.strip()
+def read_privileged_file(paths):
+    """Reads a file, attempting direct read, then sudo -n, then interactive sudo if in TTY."""
+    if isinstance(paths, str):
+        paths = [paths]
+    for p in paths:
+        if not os.path.exists(p) and not p.startswith("/sys/kernel/debug"):
             continue
-        m = re.match(r"(\w+):\s*core\s+(\d+).*memory\s+(\d+)", line)
-        if m:
-            states.append(line.strip())
-            if line.strip().endswith("*"):
-                active = line.strip()
-    return states, active
+        try:
+            with open(p, "r") as f:
+                return f.read().strip()
+        except (PermissionError, FileNotFoundError):
+            # Try non-interactive sudo first (works if NOPASSWD or cached credential)
+            try:
+                out = subprocess.run(["sudo", "-n", "cat", p], capture_output=True, text=True, timeout=2)
+                if out.returncode == 0 and out.stdout:
+                    return out.stdout.strip()
+            except Exception:
+                pass
+            # If in an interactive terminal, prompt for sudo once
+            if sys.stdin.isatty():
+                try:
+                    out = subprocess.run(["sudo", "cat", p], capture_output=True, text=True, timeout=10)
+                    if out.returncode == 0 and out.stdout:
+                        return out.stdout.strip()
+                except Exception:
+                    pass
+        except Exception:
+            pass
+    return None
 
-def get_hwmon():
-    base = glob.glob(HWMON_GLOB)
-    if not base:
+def read_sysfs(path):
+    """Reads standard world-readable sysfs nodes."""
+    try:
+        with open(path, "r") as f:
+            return f.read().strip()
+    except Exception:
+        return None
+
+def get_pstates_data():
+    raw = read_privileged_file(PSTATE_CANDIDATES)
+    if not raw:
+        return {}, None, None
+
+    states = {}
+    active_state_id = None
+    live_clock = None
+
+    for line in raw.splitlines():
+        line_str = line.strip()
+        if not line_str:
+            continue
+
+        # Check for live operating clock line (e.g., "AC: core 202 MHz memory 324 MHz")
+        if line_str.startswith("AC:") or line_str.startswith("DC:") or line_str.startswith("none:"):
+            m_live = re.match(r"(?:AC|DC|none):\s*core\s+(\d+)\s*MHz(?:\s*shader\s+(\d+)\s*MHz)?\s*memory\s+(\d+)\s*MHz", line_str)
+            if m_live:
+                core = int(m_live.group(1))
+                shader = int(m_live.group(2)) if m_live.group(2) else core * 2
+                mem = int(m_live.group(3))
+                live_clock = {"core": core, "shader": shader, "memory": mem, "raw": line_str}
+            continue
+
+        # Match performance state entries
+        # Format: "07: core 202 MHz [shader 405 MHz] memory 324 MHz [AC DC *]"
+        m_state = re.match(r"(\w+):\s*core\s+(\d+)\s*MHz(?:\s*shader\s+(\d+)\s*MHz)?\s*memory\s+(\d+)\s*MHz(.*)", line_str)
+        if m_state:
+            st_id = m_state.group(1)
+            core = int(m_state.group(2))
+            shader = int(m_state.group(3)) if m_state.group(3) else core * 2
+            mem = int(m_state.group(4))
+            flags = m_state.group(5).strip() if m_state.group(5) else ""
+            
+            is_active = "*" in flags
+            if is_active:
+                active_state_id = st_id
+
+            states[st_id] = {
+                "id": st_id,
+                "core": core,
+                "shader": shader,
+                "memory": mem,
+                "flags": flags,
+                "active": is_active,
+                "label": PSTATE_LABELS.get(st_id, "Performance Level"),
+            }
+
+    # If active_state_id wasn't marked by '*' but live_clock exists, match by core/memory
+    if not active_state_id and live_clock:
+        for st_id, s in states.items():
+            if s["core"] == live_clock["core"] and s["memory"] == live_clock["memory"]:
+                active_state_id = st_id
+                s["active"] = True
+                break
+
+    return states, active_state_id, live_clock
+
+def get_hwmon_data():
+    base_dirs = glob.glob(HWMON_GLOB)
+    if not base_dirs:
         return {}
-    base = base[0]
-    out = {}
-    for k, f in [("temp", "temp1_input"), ("fan", "fan1_input"), ("pwm", "pwm1")]:
-        v = read_file(os.path.join(base, f))
-        if v:
-            out[k] = v
-    v = read_file(os.path.join(base, "in0_input"))
-    if v:
-        out["voltage"] = v
-    return out
+    base = base_dirs[0]
+    data = {}
+    
+    # Temperature
+    raw_temp = read_sysfs(os.path.join(base, "temp1_input"))
+    if raw_temp and raw_temp.isdigit():
+        data["temp_c"] = float(raw_temp) / 1000.0
 
-def get_clients():
-    t = read_file(CLIENTS_PATH)
-    if not t:
+    # Fan RPM & PWM
+    raw_fan = read_sysfs(os.path.join(base, "fan1_input"))
+    if raw_fan and raw_fan.isdigit():
+        data["fan_rpm"] = int(raw_fan)
+    raw_pwm = read_sysfs(os.path.join(base, "pwm1"))
+    if raw_pwm and raw_pwm.isdigit():
+        data["pwm"] = int(raw_pwm)
+
+    # Core Voltage
+    raw_volt = read_sysfs(os.path.join(base, "in0_input"))
+    if raw_volt and raw_volt.isdigit():
+        data["voltage_v"] = float(raw_volt) / 1000.0
+
+    return data
+
+def get_daemon_status():
+    try:
+        res = subprocess.run(["systemctl", "is-active", "nouveau-dynclockd.service"], capture_output=True, text=True, timeout=2)
+        status = res.stdout.strip()
+        return status if status else "unknown"
+    except Exception:
+        return "unknown"
+
+def get_drm_clients():
+    raw = read_privileged_file(CLIENTS_CANDIDATES)
+    if not raw:
         return []
-    return t.splitlines()[:20]
+    clients = []
+    lines = raw.splitlines()
+    for l in lines[1:]:  # skip header
+        parts = l.split()
+        if len(parts) >= 2:
+            comm = parts[0]
+            tgid = parts[1]
+            if comm not in ("systemd-logind", "<unset>"):
+                clients.append({"command": comm, "pid": tgid, "raw": l})
+    return clients
 
 def cmd_status(args):
-    states, active = get_pstates()
-    hw = get_hwmon()
-    clients = get_clients()
-    print("PStates:")
-    for s in states:
-        print(f"  {s}")
-    print(f"Active: {active or 'unknown'}")
-    if hw:
-        print("HWMon:")
-        for k, v in hw.items():
-            print(f"  {k}: {v}")
+    states, active_id, live = get_pstates_data()
+    hw = get_hwmon_data()
+    daemon = get_daemon_status()
+    clients = get_drm_clients()
+
+    print("================================================================================")
+    print(" 🎮 Nouveau Fermi GPU Status & Reclocking Control")
+    print("================================================================================")
+
+    # Active clock & hardware state
+    if live:
+        active_desc = f"P-State [{active_id}]" if active_id else "Dynamic State"
+        print(f" • Active Clocks:  Core: {live['core']} MHz  |  Shader: {live['shader']} MHz  |  Memory: {live['memory']} MHz ({active_desc})")
+    elif active_id and active_id in states:
+        s = states[active_id]
+        print(f" • Active Clocks:  Core: {s['core']} MHz  |  Shader: {s['shader']} MHz  |  Memory: {s['memory']} MHz (P-State [{active_id}])")
     else:
-        print("HWMon: no data")
+        print(" • Active Clocks:  [Permission required or pstate node unavailable]")
+
+    # Telemetry info
+    temp_str = f"{hw['temp_c']:.1f} °C" if "temp_c" in hw else "N/A"
+    volt_str = f"{hw['voltage_v']:.3f} V" if "voltage_v" in hw else "N/A"
+    daemon_str = f"\033[32mActive (running)\033[0m" if daemon == "active" else f"\033[33m{daemon}\033[0m"
+
+    print(f" • Temperature:    {temp_str}")
+    print(f" • Core Voltage:   {volt_str}")
+    print(f" • Dynamic Daemon: nouveau-dynclockd ({daemon_str})")
+    print("--------------------------------------------------------------------------------")
+
+    # P-States Table
+    if states:
+        print(" Available Performance States (P-States):")
+        for st_id, s in sorted(states.items()):
+            marker = "▶ [*]" if (st_id == active_id or s["active"]) else "  [ ]"
+            label = s["label"]
+            print(f"  {marker} {st_id}: Core {s['core']:>4} MHz  |  Shader {s['shader']:>4} MHz  |  Memory {s['memory']:>4} MHz  —  {label}")
+    else:
+        print(" Performance States: Could not read /sys/kernel/debug/dri/*/pstate (Run with sudo or check debugfs permissions)")
+
+    print("--------------------------------------------------------------------------------")
+    
+    # Active 3D DRM Clients
     if clients:
-        print("DRM clients (top):")
-        for l in clients[:10]:
-            print(f"  {l}")
+        print(" Active DRM / 3D Clients:")
+        unique_clients = {}
+        for c in clients:
+            unique_clients[c["command"]] = c["pid"]
+        for comm, pid in unique_clients.items():
+            print(f"   • {comm:<20} (PID: {pid})")
+    else:
+        print(" Active DRM / 3D Clients: None detected (Idle Desktop)")
+    print("================================================================================")
 
 def cmd_set(args):
     target = args.state
     if target == "auto":
-        print("Handing back to dynclockd — set to auto (07)")
-        target = "07"
-    if target not in ("03", "07", "0f", "10", "AC"):
-        print(f"Invalid state {target}, use 03|07|0f|10|AC|auto", file=sys.stderr)
+        print("[*] Enabling dynamic governor daemon (nouveau-dynclockd)...")
+        subprocess.run(["sudo", "systemctl", "restart", "nouveau-dynclockd.service"])
+        print("[✓] Dynamic GPU governor active.")
+        return
+
+    if target not in ("03", "07", "08", "0f", "10", "AC"):
+        print(f"[!] Invalid state '{target}'. Valid states: 03 (idle), 07 (2D desktop), 0f (3D performance), 10 (OC), auto", file=sys.stderr)
         sys.exit(1)
-    # Use sudo tee so normal user can write (NOPASSWD via /etc/sudoers.d/nouveau-ctrl), daemon stays sudo-only
+
+    # Stop daemon if locking manually so it doesn't overwrite
+    print(f"[*] Stopping background daemon to lock GPU clock to '{target}'...")
+    subprocess.run(["sudo", "systemctl", "stop", "nouveau-dynclockd.service"], capture_output=True)
+
+    # Write target state to pstate node
+    target_node = "/sys/kernel/debug/dri/0/pstate"
+    for p in PSTATE_CANDIDATES:
+        if os.path.exists(p):
+            target_node = p
+            break
+
     try:
-        res = subprocess.run(["sudo", "-n", "tee", PSTATE_PATH], input=target + "\n", text=True, capture_output=True, timeout=2)
+        res = subprocess.run(["sudo", "tee", target_node], input=target + "\n", text=True, capture_output=True, timeout=5)
         if res.returncode == 0:
-            print(f"Set pstate {target}")
+            print(f"[✓] Successfully locked GPU to P-State: {target}")
+            time.sleep(0.2)
+            cmd_status(args)
         else:
-            print(f"Failed: {res.stderr.strip() or 'permission'}", file=sys.stderr)
+            print(f"[!] Failed to set pstate: {res.stderr.strip()}", file=sys.stderr)
             sys.exit(1)
     except Exception as e:
-        print(f"Failed: {e}", file=sys.stderr)
+        print(f"[!] Error writing to {target_node}: {e}", file=sys.stderr)
         sys.exit(1)
 
 def cmd_daemon(args):
     action = args.action
-    if action not in ("start", "stop", "status", "restart"):
-        print("Use: daemon [start|stop|status|restart]", file=sys.stderr)
+    if action not in ("start", "stop", "status", "restart", "enable", "disable"):
+        print("Usage: nouveau-ctrl daemon [start|stop|status|restart|enable|disable]", file=sys.stderr)
         sys.exit(1)
-    subprocess.run(["systemctl", action, "nouveau-dynclockd.service"] if action != "status" else ["systemctl", "status", "nouveau-dynclockd.service"])
+    
+    if action == "status":
+        subprocess.run(["systemctl", "status", "nouveau-dynclockd.service"])
+    else:
+        subprocess.run(["sudo", "systemctl", action, "nouveau-dynclockd.service"])
 
 def cmd_watch(args):
-    interval = args.interval
+    interval = max(0.5, args.interval)
     try:
         while True:
-            os.system("clear")
-            print(f"=== nouveau-ctrl watch {time.strftime('%H:%M:%S')} (Ctrl-C to stop) ===")
+            os.system("clear" if os.name == "posix" else "cls")
             cmd_status(args)
+            print(f"\n[Live Monitor: updating every {interval}s — Press Ctrl+C to exit]")
             time.sleep(interval)
     except KeyboardInterrupt:
-        pass
+        print("\nExiting monitor.")
 
 def main():
-    p = argparse.ArgumentParser(description="nouveau-ctrl — Fermi reclock CLI")
+    p = argparse.ArgumentParser(
+        prog="nouveau-ctrl",
+        description="Nouveau Fermi GPU Performance & Reclocking Management Utility"
+    )
     sub = p.add_subparsers(dest="cmd", required=True)
-    s = sub.add_parser("status", help="Show clocks, temp, clients")
+
+    s = sub.add_parser("status", help="Show current GPU clocks, P-States, temperature, and 3D clients")
     s.set_defaults(func=cmd_status)
-    s2 = sub.add_parser("set", help="Lock pstate 03|07|0f|AC|auto")
-    s2.add_argument("state", help="03|07|0f|AC|auto")
+
+    s2 = sub.add_parser("set", help="Set GPU clock state (03, 07, 0f, 10, auto)")
+    s2.add_argument("state", help="Target state: 03 (idle), 07 (2D), 0f (3D), 10 (OC), or auto")
     s2.set_defaults(func=cmd_set)
-    s3 = sub.add_parser("daemon", help="Control dynclockd")
-    s3.add_argument("action", nargs="?", default="status", help="start|stop|status|restart")
+
+    s3 = sub.add_parser("daemon", help="Manage background governor (nouveau-dynclockd)")
+    s3.add_argument("action", nargs="?", default="status", help="start | stop | status | restart | enable | disable")
     s3.set_defaults(func=cmd_daemon)
-    s4 = sub.add_parser("watch", help="Live monitor")
-    s4.add_argument("-i", "--interval", type=float, default=2.0, help="seconds")
+
+    s4 = sub.add_parser("watch", help="Live top-like monitoring dashboard")
+    s4.add_argument("-i", "--interval", type=float, default=1.0, help="Refresh interval in seconds (default: 1.0)")
     s4.set_defaults(func=cmd_watch)
+
     args = p.parse_args()
     args.func(args)
 
