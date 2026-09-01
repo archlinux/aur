@@ -2,12 +2,12 @@
 # Contributor: teraflops <cprieto.ortiz@gmail.com>
 
 pkgname=chameleos-git
-pkgver=0.1.0.r1.g4663dab
+pkgver=0.2.0.r0.ge3759f9
 pkgrel=1
 pkgdesc='Screen annotation tool for niri and Hyprland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Treeniks/chameleos'
-license=('MIT')
+license=('GPL-3.0-or-later')
 depends=('wayland')
 makedepends=('cargo' 'rust' 'git')
 provides=('chameleos' 'chamel')
