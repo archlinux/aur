@@ -1,0 +1,125 @@
+From fb857dbc91809f68c1dff986e89e27db8346dbf2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Thu, 18 Jun 2026 05:55:31 +0000
+Subject: [PATCH 2/2] Tentative fix for NVIDIA 470.256.02 driver for Linux
+ 7.2-rc1 (part 2)
+
+Add compatibility shim for the rename.
+---
+ conftest.sh                  | 37 ++++++++++++++++++++++++++++++++++--
+ nvidia-drm/nvidia-drm-priv.h | 11 +++++++++++
+ 2 files changed, 46 insertions(+), 2 deletions(-)
+
+diff --git a/conftest.sh b/conftest.sh
+index 07e821e..d41a22b 100755
+--- a/conftest.sh
++++ b/conftest.sh
+@@ -1927,7 +1927,7 @@ compile_test() {
+             # Determine if the DRM atomic modesetting subsystem is usable
+             #
+             # Added by commit 036ef5733ba4
+-            # ("drm/atomic: Allow drivers to subclass drm_atomic_commit, v3") in
++            # ("drm/atomic: Allow drivers to subclass drm_atomic_state, v3") in
+             # v4.2 (2018-05-18).
+             #
+             # Make conftest more robust by adding test for
+@@ -3016,12 +3016,19 @@ compile_test() {
+             # present.
+             #
+             # Added by commit 0853695c3ba4 ("drm: Add reference counting to
+-            # drm_atomic_commit") in v4.10 (2016-10-14)
++            # drm_atomic_state") in v4.10 (2016-10-14)
+             #
+             CODE="
+             #if defined(NV_DRM_DRM_ATOMIC_H_PRESENT)
+             #include <drm/drm_atomic.h>
+             #endif
++            #include <linux/version.h>
++
++            // Rel. commit \"drm: Rename struct drm_atomic_state to drm_atomic_commit\" (Maxime Ripard, 27 Apr 2026)
++            #if LINUX_VERSION_CODE < KERNEL_VERSION(7, 2, 0)
++            #define drm_atomic_commit_get drm_atomic_state_get
++            #endif
++
+             void conftest_drm_atomic_commit_get(void) {
+                 drm_atomic_commit_get();
+             }"
+@@ -3626,6 +3633,13 @@ compile_test() {
+             #
+             CODE="
+             #include <drm/drm_atomic_helper.h>
++            #include <linux/version.h>
++
++            // Rel. commit \"drm: Rename struct drm_atomic_state to drm_atomic_commit\" (Maxime Ripard, 27 Apr 2026)
++            #if LINUX_VERSION_CODE < KERNEL_VERSION(7, 2, 0)
++            #define drm_atomic_commit drm_atomic_state
++            #endif
++
+             void conftest_drm_atomic_helper_swap_state_has_stall_arg(
+                     struct drm_atomic_commit *state,
+                     bool stall) {
+@@ -3645,6 +3659,13 @@ compile_test() {
+             #
+             CODE="
+             #include <drm/drm_atomic_helper.h>
++            #include <linux/version.h>
++
++            // Rel. commit \"drm: Rename struct drm_atomic_state to drm_atomic_commit\" (Maxime Ripard, 27 Apr 2026)
++            #if LINUX_VERSION_CODE < KERNEL_VERSION(7, 2, 0)
++            #define drm_atomic_commit drm_atomic_state
++            #endif
++
+             int conftest_drm_atomic_helper_swap_state_return_int(
+                     struct drm_atomic_commit *state,
+                     bool stall) {
+@@ -4571,6 +4592,12 @@ compile_test() {
+             #
+             echo "$CONFTEST_PREAMBLE
+             #include <drm/drm_modeset_helper_vtables.h>
++            #include <linux/version.h>
++
++            // Rel. commit \"drm: Rename struct drm_atomic_state to drm_atomic_commit\" (Maxime Ripard, 27 Apr 2026)
++            #if LINUX_VERSION_CODE < KERNEL_VERSION(7, 2, 0)
++            #define drm_atomic_commit drm_atomic_state
++            #endif
+ 
+             static const struct drm_crtc_helper_funcs *funcs;
+             typeof(*funcs->atomic_check) conftest_drm_crtc_atomic_check_has_atomic_commit_arg;
+@@ -4733,6 +4760,12 @@ compile_test() {
+             #
+             echo "$CONFTEST_PREAMBLE
+             #include <drm/drm_modeset_helper_vtables.h>
++            #include <linux/version.h>
++
++            // Rel. commit \"drm: Rename struct drm_atomic_state to drm_atomic_commit\" (Maxime Ripard, 27 Apr 2026)
++            #if LINUX_VERSION_CODE < KERNEL_VERSION(7, 2, 0)
++            #define drm_atomic_commit drm_atomic_state
++            #endif
+ 
+             static const struct drm_plane_helper_funcs *funcs;
+             typeof(*funcs->atomic_check) conftest_drm_plane_atomic_check_has_atomic_commit_arg;
+diff --git a/nvidia-drm/nvidia-drm-priv.h b/nvidia-drm/nvidia-drm-priv.h
+index ac932f9..b52635b 100644
+--- a/nvidia-drm/nvidia-drm-priv.h
++++ b/nvidia-drm/nvidia-drm-priv.h
+@@ -25,6 +25,17 @@
+ 
+ #include "nvidia-drm-conftest.h" /* NV_DRM_AVAILABLE */
+ 
++#include <linux/version.h>
++
++// Rel. commit "drm: Rename struct drm_atomic_state to drm_atomic_commit" (Maxime Ripard, 27 Apr 2026)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(7, 2, 0)
++#define drm_atomic_commit                 drm_atomic_state
++#define drm_atomic_commit_init            drm_atomic_state_init
++#define drm_atomic_commit_free            drm_atomic_state_free
++#define drm_atomic_commit_default_clear   drm_atomic_state_default_clear
++#define drm_atomic_commit_default_release drm_atomic_state_default_release
++#endif
++
+ #if defined(NV_DRM_AVAILABLE)
+ 
+ #if defined(NV_DRM_DRMP_H_PRESENT)
+-- 
+2.54.0
+

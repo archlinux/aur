@@ -1,0 +1,111 @@
+From c9fca9ecbb685ae85a68aa879374011481b42e83 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Joan=20Bruguera=20Mic=C3=B3?= <joanbrugueram@gmail.com>
+Date: Sat, 20 Jun 2026 12:00:00 +0000
+Subject: [PATCH] Tentative fix for NVIDIA 470.256.02 driver for Linux 7.2-rc1
+ (part 3)
+
+---
+ nvidia-modeset/nvidia-modeset-linux.c | 11 +++++++++++
+ nvidia-uvm/uvm_pmm_gpu.c              |  5 +++++
+ nvidia/linux_nvswitch.c               | 17 +++++++++++++++++
+ nvidia/os-interface.c                 |  5 +++++
+ 4 files changed, 38 insertions(+)
+
+diff --git a/nvidia-modeset/nvidia-modeset-linux.c b/nvidia-modeset/nvidia-modeset-linux.c
+index f6810d2..b5b33d7 100644
+--- a/nvidia-modeset/nvidia-modeset-linux.c
++++ b/nvidia-modeset/nvidia-modeset-linux.c
+@@ -388,7 +388,18 @@ int nvkms_strcmp(const char *s1, const char *s2)
+ 
+ char* nvkms_strncpy(char *dest, const char *src, size_t n)
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++    // Rel. commit "string: Remove strncpy() from the kernel" (Kees Cook, 18 Jun 2026)
++    // Open-coded strncpy().
++    size_t i;
++    for (i = 0; i < n && src[i] != '\0'; i++)
++        dest[i] = src[i];
++    for (; i < n; i++)
++        dest[i] = '\0';
++    return dest;
++#else
+     return strncpy(dest, src, n);
++#endif
+ }
+ 
+ void nvkms_usleep(NvU64 usec)
+diff --git a/nvidia-uvm/uvm_pmm_gpu.c b/nvidia-uvm/uvm_pmm_gpu.c
+index 003bde5..b0b0aa9 100644
+--- a/nvidia-uvm/uvm_pmm_gpu.c
++++ b/nvidia-uvm/uvm_pmm_gpu.c
+@@ -2925,7 +2925,12 @@ static NV_STATUS init_chunk_split_cache_level(uvm_pmm_gpu_t *pmm, size_t level)
+             size_t size;
+             size_t align;
+             if (level == 0) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++                // Rel. commit "string: Remove strncpy() from the kernel" (Kees Cook, 18 Jun 2026)
++                strscpy(chunk_split_cache[level].name, "uvm_gpu_chunk_t", sizeof(chunk_split_cache[level].name));
++#else
+                 strncpy(chunk_split_cache[level].name, "uvm_gpu_chunk_t", sizeof(chunk_split_cache[level].name) - 1);
++#endif
+                 size = sizeof(uvm_gpu_chunk_t);
+                 align = __alignof__(uvm_gpu_chunk_t);
+             } else {
+diff --git a/nvidia/linux_nvswitch.c b/nvidia/linux_nvswitch.c
+index 18e196e..5927f10 100644
+--- a/nvidia/linux_nvswitch.c
++++ b/nvidia/linux_nvswitch.c
+@@ -2011,7 +2011,13 @@ nvswitch_os_read_registry_dword
+         return -NVL_ERR_GENERIC;
+     }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++    // Rel. commit "string: Remove strncpy() from the kernel" (Kees Cook, 18 Jun 2026)
++    // The source range holds no NUL, so this is an exact-length copy.
++    memcpy(regkey_val, regkey_val_start, regkey_val_len);
++#else
+     strncpy(regkey_val, regkey_val_start, regkey_val_len);
++#endif
+     regkey_val[regkey_val_len] = '\0';
+ 
+     if (nvswitch_os_strtouint(regkey_val, data) != 0)
+@@ -2327,7 +2333,18 @@ nvswitch_os_strncpy
+     NvLength length
+ )
+ {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++    // Rel. commit "string: Remove strncpy() from the kernel" (Kees Cook, 18 Jun 2026)
++    // Open-coded strncpy().
++    NvLength i;
++    for (i = 0; i < length && src[i] != '\0'; i++)
++        dest[i] = src[i];
++    for (; i < length; i++)
++        dest[i] = '\0';
++    return dest;
++#else
+     return strncpy(dest, src, length);
++#endif
+ }
+ 
+ int
+diff --git a/nvidia/os-interface.c b/nvidia/os-interface.c
+index 7379965..bd5904e 100644
+--- a/nvidia/os-interface.c
++++ b/nvidia/os-interface.c
+@@ -645,8 +645,13 @@ NvU32 NV_API_CALL os_get_current_process(void)
+ void NV_API_CALL os_get_current_process_name(char *buf, NvU32 len)
+ {
+     task_lock(current);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7, 2, 0)
++    // Rel. commit "string: Remove strncpy() from the kernel" (Kees Cook, 18 Jun 2026)
++    strscpy(buf, current->comm, len);
++#else
+     strncpy(buf, current->comm, len - 1);
+     buf[len - 1] = '\0';
++#endif
+     task_unlock(current);
+ }
+ 
+-- 
+2.54.0
+
