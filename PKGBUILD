@@ -12,7 +12,7 @@ url='https://nghttp2.org/'
 license=(MIT)
 depends=('openssl>=1.1.1' 'libev>=4.11' 'zlib>=1.2.3' 'c-ares>=1.7.5' 'libxml2>=2.6.26' 'systemd-libs>=209' 'jansson>=2.5' 'jemalloc' "libnghttp2>=$pkgver")
 options=(!emptydirs)
-source=(https://github.com/nghttp2/nghttp2/releases/download/v$pkgver/nghttp2-$pkgver.tar.xz)
+source=("https://github.com/nghttp2/nghttp2/releases/download/v$pkgver/nghttp2-$pkgver.tar.xz")
 backup=(
   etc/nghttpx/nghttpx.conf
   etc/logrotate.d/nghttpx
