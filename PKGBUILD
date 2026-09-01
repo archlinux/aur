@@ -4,7 +4,7 @@
 : "${_use_cuda:=detect}"
 
 pkgname=helios
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Game stream host for Selene and Moonlight OS'
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ optdepends=(
 provides=('helios')
 conflicts=('helios-bin' 'helios-git')
 
-_commit='21bfed7376dcdcb9b5d1270a3f3b2b16f7207003'
+_commit='4e1139eb0ca2c5768fbff5dbde2a036bf88b0796'
 source=(
   "helios::git+$url.git#commit=${_commit}"
   'simple-web-server::git+https://github.com/ClassicOldSong/Simple-Web-Server.git'
