@@ -1,0 +1,28 @@
+pkgbase = panefile-git
+	pkgdesc = Keyboard-driven, multi-panel file manager for Wayland (git)
+	pkgver = r54.a1b837c
+	pkgrel = 1
+	url = https://github.com/andyjeffries/panefile
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	checkdepends = xorg-server-xvfb
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = gcc
+	depends = qt6-base
+	depends = libarchive
+	depends = shared-mime-info
+	depends = hicolor-icon-theme
+	depends = syntax-highlighting
+	depends = poppler-qt6
+	depends = qt6-multimedia
+	depends = ffmpegthumbnailer
+	depends = udisks2
+	provides = panefile=r54.a1b837c
+	conflicts = panefile
+	source = panefile::git+https://github.com/andyjeffries/panefile.git
+	sha256sums = SKIP
+
+pkgname = panefile-git
