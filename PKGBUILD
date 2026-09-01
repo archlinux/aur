@@ -1,6 +1,6 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 pkgname=letta-code-desktop-bin
-pkgver=0.29.12
+pkgver=0.31.5
 pkgrel=1
 pkgdesc="Letta lets you build agents that learn"
 arch=('x86_64')
@@ -12,12 +12,12 @@ options=('!strip')
 _todesktop_id=260305dtu2nh5
 source=("latest-linux.yml::https://download.todesktop.com/${_todesktop_id}/latest-linux.yml"
         'patch-safestorage.sh')
-sha256sums=('bd15f64a3e755a25695a5c5474e8c2ec399abc0c347408ad16d5f09ba3e30f04'
+sha256sums=('d5915bf6c2d77a138c7fe0152c5f589c97dd7d567ad5fceb7b1b90819b752138'
             'e1327529ac049a94d70c39ef5c1a2de21c5bb91e031b293cff73588ead7a8753')
 
-pkgver() {
-    grep '^version:' latest-linux.yml | awk '{print $2}'
-}
+# pkgver() {
+#     grep '^version:' latest-linux.yml | awk '{print $2}'
+# }
 
 prepare() {
     local _filename=$(grep '^path:' latest-linux.yml | awk '{print $2}')
