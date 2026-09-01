@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=PyFVTool
 pkgname=python-${_base,,}
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Finite volume toolbox in Python"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(python-build python-installer python-setuptools
   python-sphinx python-myst-parser python-nbsphinx python-sphinx_rtd_theme pandoc-cli)
 checkdepends=(python-pytest python-tqdm python-pypardiso)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('0c0d8217c0e48bf2926e302c391506d59e36ef57c6105e0bf0c4388f60a5f6b60605881b0a5ba4f5fd35f0f3111e561edd40810290602594b57c08980837db30')
+sha512sums=('a444438b7ea330fddd5f6566c77ccf05c787eb18d073c7e47483797d554a7fe83fe15778656a28bcd367ba0b64255c669630f4e2cb273a0a9460a4e8946f04ec')
 
 build() {
   cd ${_base}-${pkgver}
