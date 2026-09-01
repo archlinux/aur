@@ -3,6 +3,7 @@
 pkgname=iftree
 pkgver=0.0.10
 pkgrel=5
+# pkglint: ignore=PB906
 pkgdesc="iftree help understand container networks by visualizing network interfaces( veth bridge lo ) relation , output in text, table, images and dot language."
 arch=('x86_64' 'aarch64')
 url="https://github.com/t1anz0ng/iftree"
