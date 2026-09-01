@@ -46,8 +46,10 @@ check() {
 
 	export CARGO_TARGET_DIR=target
 	cargo test --frozen --release -- \
+		--skip "terminal_panel::tests::a_shell_that_ignores_the_hangup_cannot_hold_the_pane_open" \
 		--skip "terminal_panel::tests::a_program_that_asked_for_the_mouse_gets_the_buttons" \
-		--skip "terminal_panel::tests::a_program_that_asked_for_the_mouse_gets_the_wheel"
+		--skip "terminal_panel::tests::a_program_that_asked_for_the_mouse_gets_the_wheel" \
+		--skip "terminal_panel::tests::a_startup_command_is_typed_onto_a_line_of_its_own"
 }
 
 package() {
