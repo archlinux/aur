@@ -1,0 +1,6 @@
+["obs-plugin-browser"]
+source = "regex"
+url = "https://raw.githubusercontent.com/ItachiSan/obs-browser-standalone/master/browser-version.h"
+regex = '#define OBS_BROWSER_VERSION_MAJOR [0-9]+\n#define OBS_BROWSER_VERSION_MINOR [0-9]+\n#define OBS_BROWSER_VERSION_PATCH [0-9]+'
+from_pattern = '#define OBS_BROWSER_VERSION_MAJOR ([0-9]+) #define OBS_BROWSER_VERSION_MINOR ([0-9]+) #define OBS_BROWSER_VERSION_PATCH ([0-9]+)'
+to_pattern = '\1.\2.\3'
