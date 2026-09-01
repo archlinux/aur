@@ -2,10 +2,10 @@
 pkgname=hermes-agent-desktop
 _pkgname=hermes-desktop          # /usr/bin launcher name (AUR convention, lowercase)
 _upstream=Hermes                 # productName + executableName
-_pkgver_tag=v2026.8.27
-_commit=5fc308a70719a83cccdbba4c0e39c23f5a8239d5
-pkgver=0.20.6
-pkgrel=2
+_pkgver_tag=v2026.8.31
+_commit=29112bef099274229cadff79cdff7bf7b99c4b77
+pkgver=0.21.0
+pkgrel=1
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
@@ -25,11 +25,9 @@ source=(
   'system-electron-resources.patch'
   'pin-packaged-runtime.patch'
 )
-sha256sums=(
-  'e622723b5bf3cd6c1db974d92d32242f1cb63f61c1112b6f708b34d619ef0fc7'
-  'ee465a1aa2ad5789fa5c7b3a89993bbf0e68efddbf27c93109519b72a4cb90f7'
-  'a071a452caf08b4b5d7cfb93289b82051a4fa696adda826deaa4281c592fad21'
-)
+sha256sums=('78fb3ff707ec1d17044b875ecac8bef28aa39d44242824f6871ca40afe7bf217'
+            'ee465a1aa2ad5789fa5c7b3a89993bbf0e68efddbf27c93109519b72a4cb90f7'
+            'a071a452caf08b4b5d7cfb93289b82051a4fa696adda826deaa4281c592fad21')
 
 # NOTE: ${srcdir} is empty at the top level of a PKGBUILD — makepkg only sets
 # it inside the function scope of prepare()/build()/package(). Computing the
