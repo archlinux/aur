@@ -5,7 +5,7 @@ _upstream=Hermes                 # productName + executableName
 _pkgver_tag=v2026.8.31
 _commit=29112bef099274229cadff79cdff7bf7b99c4b77
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Hermes Agent desktop app from Nous Research — chat, voice, file browser, and settings UI for the local agent runtime."
 arch=('x86_64')
 url='https://github.com/NousResearch/hermes-agent'
@@ -120,8 +120,10 @@ check() {
   # N-API build must not merely load under makepkg's system Node.
   local node_pty_root="${PWD}/apps/desktop/release/linux-unpacked/resources/app.asar.unpacked/dist/node_modules/node-pty"
   test -f "${node_pty_root}/package.json"
+  # Bypass Arch's launcher here: it injects the user's electron42 flags, which
+  # are valid in Chromium mode but rejected while ELECTRON_RUN_AS_NODE is set.
   env ELECTRON_RUN_AS_NODE=1 NODE_PTY_ROOT="${node_pty_root}" \
-    /usr/bin/electron42 -e \
+    /usr/lib/electron42/electron -e \
     'const pty = require(process.env.NODE_PTY_ROOT); if (typeof pty.spawn !== "function") process.exit(1)'
 }
 
