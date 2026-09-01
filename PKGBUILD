@@ -5,7 +5,7 @@ _pkgname=DotR
 pkgname=${_pkgname,,}-bin
 pkgdesc="A dotfiles manager that is as dear as a daughter"
 
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,9 +26,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname,,}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname,,}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname,,}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname,,}-${_barch[1]}.tar.gz")
 sha256sums=('8cd2c6449c4828698f46c481acab9f8e90e182c7a019946bf4e817e140b19799'
-            '4ffe37617b561792702849f7ee3f211e5df34eec84f8787df43939d7d7373f9a')
-sha256sums_x86_64=('926ca50d2f522637b2c2e3a50602216a899782a3493752e1ea56e307af54dcb9')
-sha256sums_aarch64=('3c68ab1296942fe938cd4e654ad760d6a3049ef527b56fca377fd5fccb2914bd')
+            'c7f334241c3e7f8cd9428f7ef5fbc15ad214c35d1269e819ec4352efe7110a87')
+sha256sums_x86_64=('2200ca968a7e169949644ca5df149d9bbfe69c1744757c2c9f241ae533c7eaac')
+sha256sums_aarch64=('d104f300cb16892c97cbccf90e79be4b2068fa3c89812658af4c2f631bcc8f79')
 
 
 package() {
