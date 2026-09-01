@@ -1,12 +1,12 @@
 pkgbase = yayamlls
 	pkgdesc = Go YAML language server
-	pkgver = 0.1.14
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/home-operations/yayamlls
 	arch = x86_64
 	license = MIT
 	options = !strip
-	source = yayamlls-0.1.14-linux-amd64.tar.gz::https://github.com/home-operations/yayamlls/releases/download/0.1.14/yayamlls_0.1.14_linux_amd64.tar.gz
-	sha256sums = 8e742e78c973fa05702e303a26d46ddac5bdbf8a040ce59ef24f22665aa5b3e5
+	source = yayamlls-0.3.0-linux-amd64.tar.gz::https://github.com/home-operations/yayamlls/releases/download/0.3.0/yayamlls_0.3.0_linux_amd64.tar.gz
+	sha256sums = 036c00ed7b903e2b27950873568147dc7a96b2c36eaef11f5928516900d6a753
 
 pkgname = yayamlls
