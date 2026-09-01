@@ -1,6 +1,6 @@
 pkgbase = grokbot-linux-port
 	pkgdesc = Grok Bot desktop — wine-less Linux port (fuses win32 NSIS payload with Electron 42.1.0)
-	pkgver = 0.30.0
+	pkgver = 0.32.0
 	pkgrel = 2
 	url = https://github.com/Nichokas/grokbot-linux-port
 	arch = x86_64
@@ -34,7 +34,7 @@ pkgbase = grokbot-linux-port
 	provides = grokbot
 	conflicts = grokbot-linux-port-bin
 	conflicts = grok-bot
-	source = grokbot-linux-port-0.30.0.tar.gz::https://github.com/Nichokas/grokbot-linux-port/archive/v0.30.0.tar.gz
-	sha256sums = 55883e26edb2cccf1e85b5358c575d8ef297a6c83ab9b2ec6fb70b7de7919e93
+	source = grokbot-linux-port-0.32.0.tar.gz::https://github.com/Nichokas/grokbot-linux-port/archive/v0.32.0.tar.gz
+	sha256sums = b796cf7b94f5679680475f391633bcf675595b4875c22157991fc3fe8b0c349d
 
 pkgname = grokbot-linux-port
