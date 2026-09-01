@@ -1,0 +1,5 @@
+[mirador]
+source = "github"
+github = "jchultarsky/mirador"
+use_latest_release = true
+prefix = "v"
