@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=go-carpet
 pkgver=1.10.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Tool for show test coverage in terminal for Go source files"
 arch=('x86_64' 'aarch64')
 url="https://github.com/msoap/go-carpet"
@@ -28,7 +28,7 @@ build() {
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags='-s -w' \
+    -ldflags='-linkmode=external -s -w' \
     -o $pkgname \
     .
 }
