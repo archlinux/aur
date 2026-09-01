@@ -1,6 +1,6 @@
 pkgbase = kanban4ai-bin
 	pkgdesc = Native kanban board CLI and TUI driven by AI coding agents (prebuilt binary)
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://github.com/sougstron/kanban4ai
 	arch = x86_64
@@ -9,16 +9,16 @@ pkgbase = kanban4ai-bin
 	depends = glibc
 	depends = gcc-libs
 	optdepends = tmux: attachable background agent sessions
-	optdepends = curl: subscription limits row for claude, grok, zai, synthetic; update checks and self-update
+	optdepends = curl: subscription limits row for claude, grok, zai, synthetic, and yolo; update checks and self-update
 	optdepends = libnotify: desktop notifications through notify-send
 	optdepends = wl-clipboard: paste images under Wayland
 	optdepends = xclip: paste images under X11
-	provides = kanban4ai=0.5.7
+	provides = kanban4ai=0.5.8
 	conflicts = kanban4ai
 	options = !strip
-	source_x86_64 = kanban4ai-bin-0.5.7-x86_64.tar.gz::https://github.com/sougstron/kanban4ai/releases/download/v0.5.7/kanban4ai-v0.5.7-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 0f50399ddcacf19f094f5c98201e57c0774ee94677fb0154e48453a12daa39ef
-	source_aarch64 = kanban4ai-bin-0.5.7-aarch64.tar.gz::https://github.com/sougstron/kanban4ai/releases/download/v0.5.7/kanban4ai-v0.5.7-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 0709a70b57c094e677a4dc2f323e9c6dded72e53d6425e15e9e3bcdf0ff16d48
+	source_x86_64 = kanban4ai-bin-0.5.8-x86_64.tar.gz::https://github.com/sougstron/kanban4ai/releases/download/v0.5.8/kanban4ai-v0.5.8-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = cd53af0364dcd6f3338e6d8848d9fc54151ae01d16de29b6067c3ab8e0f040f7
+	source_aarch64 = kanban4ai-bin-0.5.8-aarch64.tar.gz::https://github.com/sougstron/kanban4ai/releases/download/v0.5.8/kanban4ai-v0.5.8-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 07c966ece6cea8846a6a3555320c131e5b3278565bc1785e7d4c0ed1af31a088
 
 pkgname = kanban4ai-bin
