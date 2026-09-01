@@ -1,6 +1,6 @@
 pkgbase = plasma-login-manager-idle
 	pkgdesc = Plasma Login Manager
-	pkgver = 6.7.3
+	pkgver = 6.7.4
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -34,14 +34,14 @@ pkgbase = plasma-login-manager-idle
 	depends = systemd-libs
 	provides = plasma-login-manager
 	conflicts = plasma-login-manager
-	source = https://download.kde.org/stable/plasma/6.7.3/plasma-login-manager-6.7.3.tar.xz
-	source = https://download.kde.org/stable/plasma/6.7.3/plasma-login-manager-6.7.3.tar.xz.sig
+	source = https://download.kde.org/stable/plasma/6.7.4/plasma-login-manager-6.7.4.tar.xz
+	source = https://download.kde.org/stable/plasma/6.7.4/plasma-login-manager-6.7.4.tar.xz.sig
 	source = https://invent.kde.org/plasma/plasma-login-manager/-/merge_requests/123.patch
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	validpgpkeys = D07BD8662C56CB291B316EB2F5675605C74E02CF
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
-	sha256sums = 199cc04b1efcfcf4d4cefd027861902013d0c342bbc754d0231859fa17567fd9
+	sha256sums = 8ba5f9a5b31b2cb09d6846c590d09891dadb9a5625426b8552577299093b67fd
 	sha256sums = SKIP
 	sha256sums = c9847e3eb299921258fda7319e03de773b6561c3b50c3d2afa9bcf10d76f401f
 
