@@ -7,7 +7,7 @@ pkgbase = entire-cli-bin
 	arch = aarch64
 	license = MIT
 	depends = git
-	provides = entire-cli
+	provides = entire-cli=0.10.3
 	conflicts = entire-cli
 	options = !debug
 	source_x86_64 = entire-0.10.3-x86_64.tar.gz::https://github.com/entireio/cli/releases/download/v0.10.3/entire_linux_amd64.tar.gz

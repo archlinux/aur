@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/entireio/cli'
 license=('MIT')
 depends=('git')
-provides=('entire-cli')
+provides=("entire-cli=$pkgver")
 conflicts=('entire-cli')
 options=('!debug')
 source_x86_64=("entire-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/entire_linux_amd64.tar.gz")
