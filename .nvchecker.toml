@@ -1,0 +1,4 @@
+[libemf2svg]
+source = "git"
+git = "https://github.com/claricle/libemf2svg.git"
+prefix = "v"
