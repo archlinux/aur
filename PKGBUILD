@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy-bin
 _pkgname=Escrcpy
-pkgver=3.0.8
-_electronversion=33
+pkgver=3.2.0
+_electronversion=42
 pkgrel=1
 pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Prebuilt version.Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
 arch=(
@@ -28,8 +28,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.deb")
 source=("${pkgname%-bin}.sh")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('886092dae6d2c466fbd2211c86a7ee07379ba6a67ed0ca4f97c6b1d5a8b06617')
-sha256sums_x86_64=('823ae7d14874d54e9d9e866a0d07751cf673086656a354f94c40ad4ffff0e494')
+sha256sums_aarch64=('48113fb7ca2c924975c9f1329bd1a1f7c6cc1021b00304c104a7c9ee2a4f94d0')
+sha256sums_x86_64=('5d55ed8de3a2b7229cb662a4e128a2ebb58f32fb2415b9c10852679d0d96460a')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
@@ -64,7 +64,8 @@ prepare() {
             ln -sf "/usr/bin/fastboot" "${_app_dir}/resources/extra/linux-arm64/scrcpy/fastboot"
             ln -sf "/usr/bin/scrcpy" "${_app_dir}/resources/extra/linux-arm64/scrcpy/scrcpy"
             ln -sf "/usr/share/scrcpy/scrcpy-server" "${_app_dir}/resources/extra/linux-arm64/scrcpy/scrcpy-server"
-            ln -sf "/usr/share/scrcpy/scrcpy-server" "${_app_dir}/resources/common/extra/wscrcpy/scrcpy-server"
+            ln -sf "/usr/share/scrcpy/scrcpy-server" "${_app_dir}/resources/extra/common/scrcpy/scrcpy-server"
+            ln -sf "/usr/share/scrcpy/scrcpy-server" "${_app_dir}/resources/extra/common/wscrcpy/scrcpy-server"
             ;;
         x86_64)
             ln -sf "/usr/bin/adb" "${_app_dir}/resources/extra/linux-x64/scrcpy/adb"
@@ -73,6 +74,7 @@ prepare() {
             ln -sf "/usr/bin/scrcpy" "${_app_dir}/resources/extra/linux-x64/scrcpy/scrcpy"
             ln -sf "/usr/share/scrcpy/scrcpy-server" "${_app_dir}/resources/extra/linux-x64/scrcpy/scrcpy-server"
             ln -sf "/usr/share/scrcpy/scrcpy-server" "${_app_dir}/resources/extra/common/wscrcpy/scrcpy-server"
+            ln -sf "/usr/share/scrcpy/scrcpy-server" "${_app_dir}/resources/extra/common/scrcpy/scrcpy-server"
             ;;
     esac
 }
