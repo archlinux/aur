@@ -3,14 +3,17 @@
 # Maintainer:  max.bra <max dot bra at alice dot it>
 
 pkgname=ipscan
-pkgver=3.9.3
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='Angry IP Scanner (or simply ipscan) is an open-source and cross-platform network scanner designed to be fast and simple to use. It scans IP addresses and ports as well as has many other features.'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url='https://angryip.org'
-depends=('java-runtime>=17')
-makedepends=(jdk17-openjdk)
+depends=('java-runtime>=21')
+makedepends=(jdk21-openjdk)
+
+[[ $CARCH == "i686" ]] && _intarch=linux
+[[ $CARCH == "x86_64" ]] && _intarch=linux64
 
 source=(ipscan ipscan.desktop build.gradle.patch \
   "https://github.com/angryip/${pkgname}/archive/refs/tags/${pkgver}.zip")
@@ -18,7 +21,7 @@ source=(ipscan ipscan.desktop build.gradle.patch \
 sha512sums=('e2caf62412c35a7a29128d0ae176aca1e4a45cf81e44b76e4bb23ad1c0633fa8833d674d7d514942a170ab54223b6c4a93ab458f2736107e7bbe9a5e806a7c5e'
             'c17db5e4ac90af8675e9ac2a8e77f1322beb8bacb578a288bcfbf8da67270004ec40314b2793ea8ed8eeeeb64f9c03b3f80694e38c55be9d213486b825689a0f'
             '8ec4aae1b2226af984e58acd20ddc7d78268ab53a1f39cb6c85143741638727cf94794597bb9755483968c5f93e37cc96c33c61527529c074782f9447914399a'
-            'ae4fc4e8f6985cfc0e4c032e6347445917767797745d2e958c069d46bce23ef066a4fee4cd410d9a501802224d0b6dcbf325cc0537bad17bf78a45004e49d272')
+            '03b992d45ff0feee79d5c8c8b3a3d1dfe68bc0804298729c18a2c761a95c21ec43748724a81bb1fa730d8d0fcabfdcd97c36c4d0f3393144d540ab30c3697f61')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -30,7 +33,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   unset _JAVA_OPTIONS
-  export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
+  export PATH=/usr/lib/jvm/java-21-openjdk/bin:$PATH
   GRADLE_USER_HOME="${srcdir}" ./gradlew current
 }
 
@@ -39,5 +42,5 @@ package() {
   install -Dm755 "../${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 resources/images/icon256.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 build/libs/ipscan-*-${pkgver}.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+  install -Dm644 build/libs/ipscan-*-${pkgver}-$_intarch.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
 }
