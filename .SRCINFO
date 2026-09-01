@@ -1,0 +1,12 @@
+pkgbase = minimax-token-monitor
+	pkgver = 26.9.1
+	pkgrel = 1
+	url = https://github.com/cmachsocket/minimax-token-monitor
+	arch = any
+	license = GPL-3.0-or-later
+	depends = plasma-desktop
+	depends = kdeplasma-addons
+	source = https://github.com/cmachsocket/minimax-token-monitor/archive/refs/tags/v26.9.1.tar.gz
+	sha256sums = dc099e8e427789f893faa50b064936696926acec3a854d2e323a7deb63883b75
+
+pkgname = minimax-token-monitor
