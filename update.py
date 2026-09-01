@@ -14,9 +14,9 @@ from pathlib import Path
 import requests
 
 
-DEB_LISTING_URL = "https://fluxkeyboard.com/updates/polymath/linux/deb/"
+DEB_LISTING_URL = "https://fluxkeyboard.com/updates-dev/polymath/linux/deb/"
 DOWNLOAD_LINK_RE = re.compile(
-    r'<a href="(https://fluxkeyboard\.com/updates/polymath/linux/deb/[^"]+)"[^>]*\sclass="download-btn">\s*Download for Linux\s*</a>'
+    r'<a href="(https://fluxkeyboard\.com/updates-dev/polymath/linux/deb/[^"]+)"[^>]*\sclass="download-btn">\s*Download for Linux\s*</a>'
 )
 VERSION_RE = re.compile(r"polymath_([0-9.]+)_amd64\.deb$")
 

@@ -1,13 +1,13 @@
 # Maintainer: Doridian <archlinux at doridian dot net>
 
-pkgname=polymath
+pkgname=polymath-dev
 pkgver=1.4.5.6
 pkgrel=1
-pkgdesc='Advanced keyboard layout customization tool for Flux keyboards'
+pkgdesc='Advanced keyboard layout customization tool for Flux keyboards (dev build)'
 arch=('x86_64')
-url='https://fluxkeyboard.com/updates/'
+url='https://fluxkeyboard.com/updates-dev/polymath/linux/deb/'
 license=('custom')
-makedepends=('binutils' 'tar' 'zstd')
+makedepends=('binutils' 'tar' 'zstd' 'xz')
 depends=(
   'alsa-lib' 'at-spi2-core' 'cairo' 'desktop-file-utils' 'fontconfig' 'freetype2'
   'fribidi' 'gcc-libs' 'gdk-pixbuf2' 'glib2' 'glibc' 'gnutls' 'gtk3' 'harfbuzz'
@@ -19,7 +19,7 @@ depends=(
 )
 options=('!strip' '!debug' '!lto')
 source=(
-  "https://fluxkeyboard.com/updates/polymath/linux/deb/polymath_${pkgver}_amd64.deb"
+  "https://fluxkeyboard.com/updates-dev/polymath/linux/deb/polymath_${pkgver}_amd64.deb"
   'udev.rules'
 )
 sha256sums=(
