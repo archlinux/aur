@@ -1,7 +1,7 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=lockenv
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple, password-based encrypted vault for .env and infrastructure secrets'
 arch=('x86_64' 'aarch64')
 url='https://github.com/illarion/lockenv'
@@ -30,6 +30,5 @@ package() {
     install -Dm644 _lockenv "$pkgdir/usr/share/zsh/site-functions/_lockenv"
     install -Dm644 lockenv.fish "$pkgdir/usr/share/fish/vendor_completions.d/lockenv.fish"
 
-    install -Dm644 /dev/null "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    curl -sL "${url}/raw/master/LICENSE" -o "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

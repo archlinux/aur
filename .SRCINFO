@@ -1,7 +1,7 @@
 pkgbase = lockenv
 	pkgdesc = Simple, password-based encrypted vault for .env and infrastructure secrets
 	pkgver = 0.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/illarion/lockenv
 	arch = x86_64
 	arch = aarch64
