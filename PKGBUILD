@@ -3,11 +3,12 @@
 
 pkgname=work
 pkgver=1.0.12
-pkgrel=3
+pkgrel=4
 pkgdesc='A stupid simple time tracker.'
 arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/jmelahman/work'
 license=('MIT')
+depends=('glibc')
 makedepends=('go' 'git')
 _commit='a5ecf850da921b030b8a5bb4005fb02fa20ff99e'
 source=("$pkgname::git+$url.git#commit=$_commit")
@@ -31,7 +32,7 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   cd "$pkgname" || exit
 
-  go build -buildmode=pie -trimpath -modcacherw -ldflags="-X main.version=v$pkgver -X main.commit=$_commit -s -w" -o "$pkgname"
+  go build -buildmode=pie -trimpath -modcacherw -ldflags="-linkmode=external -X main.version=v$pkgver -X main.commit=$_commit -s -w" -o "$pkgname"
 }
 
 package() {
