@@ -1,11 +1,9 @@
-# Maintainer: execRooted <rooted@execrooted.com>
-
 pkgname=filebyte
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc="A CLI tool for analyzing files and directories with detailed metadata, permissions, and size information"
-arch=('x86_64' 'aarch64')
 url="https://github.com/execRooted/filebyte"
+arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
