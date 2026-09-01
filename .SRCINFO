@@ -1,23 +1,23 @@
 pkgbase = v2rayn
 	pkgdesc = A GUI client for Windows, Linux and macOS, support Xray and sing-box and others
-	pkgver = 7.24.8
-	pkgrel = 2
+	pkgver = 7.24.9
+	pkgrel = 1
 	url = https://github.com/2dust/v2rayN
 	install = v2rayn.install
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = dotnet-sdk-10.0
+	makedepends = dotnet-sdk=10.0
 	makedepends = gendesk
 	makedepends = git
 	depends = bash
-	depends = dotnet-runtime-10.0
+	depends = dotnet-runtime=10.0
 	depends = fontconfig
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
 	depends = xray
-	source = git+https://github.com/2dust/v2rayN#tag=7.24.8
+	source = git+https://github.com/2dust/v2rayN#tag=7.24.9
 	source = git+https://github.com/2dust/GlobalHotKeys.git
 	source = https://github.com/MetaCubeX/meta-rules-dat/releases/latest/download/geoip.metadb
 	source = https://github.com/Loyalsoldier/geoip/releases/latest/download/Country.mmdb
@@ -40,7 +40,7 @@ pkgbase = v2rayn
 	source = https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-greatfire.srs
 	source = https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-private.srs
 	source = v2rayn.sh
-	sha256sums = ac1f2a4822e853c275dd4995696724ccc314ba8ac75836c897d5a3625478ad68
+	sha256sums = 0851987b370c4c139649b270af6998c1b4f2bc87fb3bfa9f44aa65010ec810a3
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

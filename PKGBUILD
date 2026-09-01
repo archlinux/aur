@@ -4,14 +4,14 @@
 
 pkgname=v2rayn
 _name=v2rayN
-pkgver=7.24.8
-pkgrel=2
+pkgver=7.24.9
+pkgrel=1
 pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
 arch=('aarch64' 'x86_64')
 url="https://github.com/2dust/v2rayN"
 license=('GPL-3.0-only')
-depends=('bash' 'dotnet-runtime-10.0' 'fontconfig' 'glibc' 'libgcc' 'libstdc++' 'xray')
-makedepends=('dotnet-sdk-10.0' 'gendesk' 'git')
+depends=('bash' 'dotnet-runtime=10.0' 'fontconfig' 'glibc' 'libgcc' 'libstdc++' 'xray')
+makedepends=('dotnet-sdk=10.0' 'gendesk' 'git')
 install="${pkgname}.install"
 source=("git+${url}#tag=${pkgver}"
         "git+https://github.com/2dust/GlobalHotKeys.git"
@@ -36,7 +36,7 @@ source=("git+${url}#tag=${pkgver}"
         "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-greatfire.srs"
         "https://github.com/2dust/sing-box-rules/raw/rule-set-geosite/geosite-private.srs"
         "${pkgname}.sh")
-sha256sums=('ac1f2a4822e853c275dd4995696724ccc314ba8ac75836c897d5a3625478ad68'
+sha256sums=('0851987b370c4c139649b270af6998c1b4f2bc87fb3bfa9f44aa65010ec810a3'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -89,8 +89,8 @@ build() {
 
 package() {
     cd "${_name}/${_name}"
-    install -d "${pkgdir}/usr/lib/${_name}/bin/srss"
-    cp -r build/* "${pkgdir}/usr/lib/${_name}"
+    install -d "${pkgdir}/usr/lib"
+    cp -r build "${pkgdir}/usr/lib/${_name}"
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 v2rayN.Desktop/v2rayN.png -t "${pkgdir}/usr/share/pixmaps"
@@ -100,6 +100,6 @@ package() {
     ln -s /usr/bin/xray -t "${pkgdir}/usr/lib/${_name}/bin/xray"
 
     # Install geofiles
-    cp "${srcdir}/"*.{dat,metadb,mmdb} "${pkgdir}/usr/lib/${_name}/bin"
-    cp "${srcdir}/"*.srs "${pkgdir}/usr/lib/${_name}/bin/srss"
+    install -Dm644 "${srcdir}/"*.{dat,metadb,mmdb} -t "${pkgdir}/usr/lib/${_name}/bin"
+    install -Dm644 "${srcdir}/"*.srs -t "${pkgdir}/usr/lib/${_name}/bin/srss"
 }
