@@ -1,13 +1,13 @@
 pkgbase = repoq
 	pkgdesc = A lightweight command-line client for the Repology API
-	pkgver = 0.1.2
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/pysio2007/repoq
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	depends = curl
-	source = repoq-0.1.2.tar.gz::https://github.com/pysio2007/repoq/releases/download/v0.1.2/repoq-0.1.2.tar.gz
-	sha256sums = e3d948506526818cad3300a4f65bc690a80e316de49ecb490e639b096e6c3b3b
+	source = repoq-0.2.1.tar.gz::https://github.com/pysio2007/repoq/releases/download/v0.2.1/repoq-0.2.1.tar.gz
+	sha256sums = 3be9855738d3f7496debc269f91dfc75704f32cb85c415570fab378f11778b25
 
 pkgname = repoq
