@@ -1,6 +1,5 @@
 [crowdsec]
-source = "github"
-github = "crowdsecurity/crowdsec"
-use_max_tag = true
+source = "git"
+git = "https://github.com/crowdsecurity/crowdsec.git"
 prefix = "v"
 exclude_regex = ".*(rc).*"
