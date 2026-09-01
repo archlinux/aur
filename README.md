@@ -46,3 +46,15 @@ Reverse do [install](#install-manual).
 
 1. Edit the config file to `~/.config/comfykick/comfykick.toml` (or `$XDG_CONFIG_HOME/comfykick/comfykick.toml`)
 2. `systemctl --user start comfykick.service` 🚀
+
+## Troubleshooting
+
+`OSError: [Errno 30] Read-only file system: '/home/you/foo/bar'`
+
+The ComfyKick service unit sandboxes sensitive directories for safety.
+So files under them are not visible / writable from inside the service.
+
+To still use a directory under such a sensitive path, expose it to the service without disabling the sandbox.
+
+See [`override.conf`](override.conf) for the drop-in example showing how to bind
+paths explicitly.

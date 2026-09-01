@@ -5,13 +5,55 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-Restart=on-failure
-RestartSec=10
 ExecStart=/bin/sh -c ' \
-    [ -f "%h/.local/share/comfykick/comfykick.py" ] \
-        && exec /usr/bin/python3 "%h/.local/share/comfykick/comfykick.py" \
+    [ -f "%D/comfykick/comfykick.py" ] \
+        && exec /usr/bin/python3 "%D/comfykick/comfykick.py" \
         || exec /usr/bin/python3 /usr/share/comfykick/comfykick.py \
 '
+
+##
+## Security
+##
+NoNewPrivileges=yes
+
+##
+## Sandboxing
+##
+ProtectSystem=full
+ProtectHome=tmpfs
+RuntimeDirectory=comfykick
+ConfigurationDirectory=comfykick
+ConfigurationDirectory=comfykick
+CacheDirectory=comfykick
+CacheDirectory=uv
+ReadOnlyPaths=-%E/uv
+ExecStartPre=+/usr/bin/mkdir -p %D/comfykick
+BindPaths=%D/comfykick
+PrivateTmp=yes
+DevicePolicy=closed
+DeviceAllow=/dev/dri/* rw
+DeviceAllow=/dev/kfd rw
+DeviceAllow=/dev/nvidia* rw
+# PrivateIPC=yes
+PrivateUsers=self
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=strict
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+PrivateBPF=yes
+LockPersonality=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+PrivateMounts=yes
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+SystemCallArchitectures=native
+EnvironmentFile=-%E/comfykick/environment.conf
 
 [Install]
 WantedBy=default.target
