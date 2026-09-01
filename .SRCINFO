@@ -1,7 +1,7 @@
 pkgbase = agent-of-empires-bin
 	pkgdesc = Terminal session manager for AI coding agents (Claude Code, Codex, OpenCode)
 	pkgver = 1.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/njbrake/agent-of-empires
 	arch = x86_64
 	arch = aarch64
@@ -11,6 +11,8 @@ pkgbase = agent-of-empires-bin
 	depends = tmux
 	provides = agent-of-empires
 	conflicts = agent-of-empires
+	source = agent-of-empires-bin-1.15.1.LICENSE::https://github.com/njbrake/agent-of-empires/raw/main/LICENSE
+	sha256sums = b37140699c292ab0346f8e2fc4b98a668227388805d3eca0e9e14d026542ead0
 	source_x86_64 = agent-of-empires-bin-x86_64-1.15.1.tar.gz::https://github.com/njbrake/agent-of-empires/releases/download/v1.15.1/aoe-linux-amd64.tar.gz
 	sha256sums_x86_64 = da198ef269f43ac7032022051990a2a31f2208d9d67c0bb0451914d20483b8ca
 	source_aarch64 = agent-of-empires-bin-aarch64-1.15.1.tar.gz::https://github.com/njbrake/agent-of-empires/releases/download/v1.15.1/aoe-linux-arm64.tar.gz
