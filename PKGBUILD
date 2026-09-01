@@ -3,7 +3,7 @@
 
 pkgname=buildozer-bin
 pkgver=8.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A command line tool to rewrite Bazel BUILD files using standard conventions'
 arch=('x86_64' 'aarch64')
 license=('Apache-2.0')
@@ -34,4 +34,8 @@ package() {
   install -D -m 0755 \
     "./${pkgname}-${CARCH}-${pkgver}" \
     "${pkgdir}/usr/bin/${pkgname%-bin}"
+
+  # Upstream's release artefact is statically linked, so makepkg's own strip
+  # step runs STRIP_STATIC (--strip-debug) over it and leaves .symtab behind.
+  strip --strip-all "${pkgdir}/usr/bin/${pkgname%-bin}"
 }

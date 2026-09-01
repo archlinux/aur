@@ -1,7 +1,7 @@
 pkgbase = buildozer-bin
 	pkgdesc = A command line tool to rewrite Bazel BUILD files using standard conventions
 	pkgver = 8.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/bazelbuild/buildtools
 	arch = x86_64
 	arch = aarch64
