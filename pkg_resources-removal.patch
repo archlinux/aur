@@ -1,0 +1,101 @@
+--- a/jenkins_jobs/registry.py	2026-09-01 14:29:31.794544929 +0500
++++ b/jenkins_jobs/registry.py	2026-09-01 14:29:48.278890670 +0500
+@@ -15,11 +15,11 @@
+ 
+ # Manage Jenkins plugin module registry.
+ 
++import importlib.metadata
+ import inspect
+ import logging
+ import operator
+ import packaging.version
+-import pkg_resources
+ import sys
+ import types
+ 
+@@ -53,7 +53,7 @@
+             # PluginVersion by short and long plugin name.
+             self._plugin_version = self._get_plugins_versions(plugins_list)
+ 
+-        for entrypoint in pkg_resources.iter_entry_points(group="jenkins_jobs.modules"):
++        for entrypoint in importlib.metadata.entry_points(group="jenkins_jobs.modules"):
+             Mod = entrypoint.load()
+             mod = Mod(self)
+             self.modules.append(mod)
+@@ -176,7 +176,7 @@
+         if entry_point in self._component_type_cache:
+             return self._component_type_cache[entry_point]
+ 
+-        # pkg_resources.EntryPoint.load() is costly, cache it.
++        # EntryPoint.load() is costly, cache it.
+         component_list_type = entry_point.load().component_list_type
+         logging.info("Caching type %s of %s", component_list_type, entry_point)
+         self._component_type_cache[entry_point] = component_list_type
+@@ -293,8 +293,8 @@
+         logging.debug("Caching entrypoints for %s" % component_list_type)
+         module_eps = []
+         # auto build entry points by inferring from base component_types
+-        mod = pkg_resources.EntryPoint(
+-            "__all__", entry_point.module_name, dist=entry_point.dist
++        mod = importlib.metadata.EntryPoint(
++            name="__all__", value=entry_point.module, group=entry_point.group
+         )
+         Mod = mod.load()
+         func_eps = [
+@@ -321,21 +321,20 @@
+                 continue
+ 
+             module_eps.append(
+-                pkg_resources.EntryPoint(
+-                    ep_name,
+-                    entry_point.module_name,
+-                    dist=entry_point.dist,
+-                    attrs=(func_ep.__name__,),
++                importlib.metadata.EntryPoint(
++                    name=ep_name,
++                    value="{0}:{1}".format(entry_point.module, func_ep.__name__),
++                    group="jenkins_jobs.{0}".format(component_list_type),
+                 )
+             )
+             logger.debug(
+                 "Adding auto EP '%s=%s:%s'"
+-                % (ep_name, entry_point.module_name, func_ep.__name__)
++                % (ep_name, entry_point.module, func_ep.__name__)
+             )
+         # load from explicitly defined entry points
+         module_eps.extend(
+             list(
+-                pkg_resources.iter_entry_points(
++                importlib.metadata.entry_points(
+                     group="jenkins_jobs.{0}".format(component_list_type)
+                 )
+             )
+--- a/jenkins_jobs/xml_config.py	2026-09-01 14:29:31.794771796 +0500
++++ b/jenkins_jobs/xml_config.py	2026-09-01 14:29:57.175020621 +0500
+@@ -16,7 +16,7 @@
+ # Manage Jenkins XML config file output.
+ 
+ import hashlib
+-import pkg_resources
++import importlib.metadata
+ import sys
+ from xml.dom import minidom
+ import xml.etree.ElementTree as XML
+@@ -92,7 +92,7 @@
+     def _getXMLForData(self, data):
+         kind = data.get(self.kind_attribute, self.kind_default)
+ 
+-        for ep in pkg_resources.iter_entry_points(
++        for ep in importlib.metadata.entry_points(
+             group=self.entry_point_group, name=kind
+         ):
+             Mod = ep.load()
+@@ -105,7 +105,7 @@
+ 
+         names = [
+             ep.name
+-            for ep in pkg_resources.iter_entry_points(group=self.entry_point_group)
++            for ep in importlib.metadata.entry_points(group=self.entry_point_group)
+         ]
+         raise JenkinsJobsException(
+             "Unrecognized {}: {} (supported types are: {})".format(
