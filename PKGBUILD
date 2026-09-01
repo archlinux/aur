@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=all-logic-git
-pkgver=1.4.0.r0.g6ec91a8
+pkgver=1.4.0.r5.gabaf301
 pkgrel=1
 pkgdesc='ALL LOGIC is an unofficial multi-vendor logic analyzer host'
 arch=($CARCH)
@@ -53,12 +53,6 @@ pkgver() {
 prepare() {
   git -C "${srcdir}/${pkgname}" clean -dfx
   cd "${srcdir}/${pkgname}"
-  # Fix linux PR #1
-  git cherry-pick -n b911499058d4da2eec4a7747ce73bc604058de17
-  git cherry-pick -n e4ced0bcd015ef6ae3268efcdc2b9fd3287c3ae3
-  git cherry-pick -n f59ed75dae2466518392f04e50fdb7b2d13245b9
-  git cherry-pick -n 366471d0e8693af3f4292268960ab087b4129ea1
-
   sed -i 's#MODE="0666"#TAG+="uaccess"#' DSView/DreamSourceLab.rules
 }
 
@@ -73,8 +67,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_INSTALL_LIBEXECDIR=lib \
-    -DHAVE_ATKLOGIC_DEVICE=1 \
-    -DHAVE_FX2LAFW_DEVICE=1 \
     -Wno-dev \
     -B build \
     -G Ninja
