@@ -8,7 +8,7 @@ pkgbase = aurup
 	makedepends = git
 	depends = bash-completion
 	depends = curl
-	depends = diff
+	depends = diffutils
 	depends = jq
 	depends = tar
 	source = git+https://github.com/nellowint/aurup.git#tag=v1.79
