@@ -2,8 +2,8 @@
 
 _pkgname=ashell
 pkgname="${_pkgname}-git"
-pkgver=r1876.79c00865
-pkgrel=1
+pkgver=r2144.175e229e
+pkgrel=2
 pkgdesc="A ready to go Wayland status bar for Hyprland and Niri"
 _git="https://github.com/MalpenZibo/${_pkgname}.git"
 url="${_git}"
@@ -25,8 +25,14 @@ depends=(
 )
 arch=("x86_64")
 options=(!lto)
-source=(${_pkgname}::git+${_git})
-b2sums=('SKIP')
+source=(
+  "${_pkgname}::git+${_git}"
+  "${_pkgname}.service"
+)
+b2sums=(
+  'SKIP'
+  '380276439360cb311dc2bec4592b943c980ca6f4aa8f819d7929d63f6d6dcd053a0ef21545db91c91fce41c1f366ca81073050f6010b58c0b4d592bafb036c9e'
+)
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -54,4 +60,7 @@ package() {
 
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
+  install -Dm644 "${srcdir}/${_pkgname}.service" \
+    "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
 }

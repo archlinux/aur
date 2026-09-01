@@ -1,7 +1,7 @@
 pkgbase = ashell-git
 	pkgdesc = A ready to go Wayland status bar for Hyprland and Niri
-	pkgver = r1876.79c00865
-	pkgrel = 1
+	pkgver = r2144.175e229e
+	pkgrel = 2
 	url = https://github.com/MalpenZibo/ashell.git
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -18,6 +18,8 @@ pkgbase = ashell-git
 	conflicts = ashell
 	options = !lto
 	source = ashell::git+https://github.com/MalpenZibo/ashell.git
+	source = ashell.service
 	b2sums = SKIP
+	b2sums = 380276439360cb311dc2bec4592b943c980ca6f4aa8f819d7929d63f6d6dcd053a0ef21545db91c91fce41c1f366ca81073050f6010b58c0b4d592bafb036c9e
 
 pkgname = ashell-git
