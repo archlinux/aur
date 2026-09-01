@@ -2,7 +2,7 @@
 
 pkgname=umbriel-git
 pkgver=0.1.0.r0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A Wayland compositor designed for daily use, with scrolling, dwindle, and master layouts, per-output workspaces, window rules, blur, shadows, and fluid animations'
 arch=('x86_64' 'aarch64')
 url='https://github.com/noctalia-dev/umbriel'
@@ -11,7 +11,9 @@ depends=(
   'cairo'
   'glibc'
   'jemalloc'
+  'lcms2'
   'libdrm'
+  'libglvnd'
   'libinput'
   'libxkbcommon'
   'pango'
@@ -22,6 +24,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'mesa'
   'meson'
   'ninja'
   'nlohmann-json'
@@ -36,10 +39,6 @@ provides=('umbriel')
 conflicts=('umbriel')
 source=('git+https://github.com/noctalia-dev/umbriel.git#branch=main')
 b2sums=('SKIP')
-
-prepare() {
-  git -C "$srcdir/umbriel" submodule update --init --recursive
-}
 
 pkgver() {
   cd "$srcdir/umbriel"
@@ -64,7 +63,7 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C "$srcdir/umbriel/build" --skip-subprojects
+  DESTDIR="$pkgdir" meson install -C "$srcdir/umbriel/build"
   install -Dm644 "$srcdir/umbriel/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
