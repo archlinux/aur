@@ -1,6 +1,6 @@
 pkgbase = uiua-bin
 	pkgdesc = A stack-based array programming language
-	pkgver = 0.18.1
+	pkgver = 0.19.0
 	pkgrel = 1
 	url = https://www.uiua.org/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = uiua-bin
 	depends = alsa-lib
 	depends = gcc-libs
 	depends = glibc
-	provides = uiua=0.18.1
+	provides = uiua=0.19.0
 	conflicts = uiua
-	source = uiua-0.18.1.zip::https://github.com/uiua-lang/uiua/releases/download/0.18.1/uiua-bin-x86_64-unknown-linux-gnu.zip
-	b2sums = b5b5dac9e126b0a027ddcd72ea047a4d3873246ae3ebe6da3f8c78b4f1172d56a28aa78478ed5b95dd4927f4cf6790d85e634c1e1d1316ca5198cb6327d81f47
+	source = uiua-0.19.0.zip::https://github.com/uiua-lang/uiua/releases/download/0.19.0/uiua-bin-x86_64-unknown-linux-gnu.zip
+	b2sums = 25aff5083647a74b6d66a75e441cf52dbb104f842a6b1b575cceba30358817bad0bae8497eeaa74cd0bf7dbaa49db630b561380740b276fa2bde0ad23b4c6628
 
 pkgname = uiua-bin
