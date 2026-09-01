@@ -1,11 +1,11 @@
 pkgbase = buildifier-bin
 	pkgdesc = A command line tool to format Bazel BUILD files
 	pkgver = 8.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bazelbuild/buildtools
 	arch = x86_64
 	arch = aarch64
-	license = Apache
+	license = Apache-2.0
 	conflicts = buildifier
 	source = LICENSE-8.5.1::https://raw.githubusercontent.com/bazelbuild/buildtools/v8.5.1/LICENSE
 	sha256sums = cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30
