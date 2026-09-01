@@ -1,6 +1,6 @@
 pkgbase = zen-twilight-bin
 	pkgdesc = Official package for Zen's nightly release, a privacy-focused, feature packed Firefox-based web browser
-	pkgver = 1.22t.2026.08.31
+	pkgver = 1.23t.2026.09.01
 	pkgrel = 1
 	url = https://github.com/zen-browser/desktop
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = zen-twilight-bin
 	optdepends = pulseaudio: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = zen-twilight=1.22t.2026.08.31
+	provides = zen-twilight=1.23t.2026.09.01
 	conflicts = zen-twilight
 	options = !strip
 	source = zen-twilight.sh
@@ -28,9 +28,9 @@ pkgbase = zen-twilight-bin
 	sha256sums = b26c2221dc9ee8b6041aea31ae7b030bf9de5facc9933109f829559bd1bdb4fb
 	sha256sums = 3c8dfd8d12a6ac0c106b7d738718df37e979275c1dc85aa678f6b10b9ca8603c
 	sha256sums = fd9572d178ea1a5edf427ca85bad3fb2d83be2e250e62bad13951d70d977bd0f
-	source_x86_64 = zen-browser-twilight-1.22t.2026.08.31-1-x86_64.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz
+	source_x86_64 = zen-browser-twilight-1.23t.2026.09.01-1-x86_64.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-x86_64.tar.xz
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = zen-browser-twilight-1.22t.2026.08.31-1-aarch64.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz
+	source_aarch64 = zen-browser-twilight-1.23t.2026.09.01-1-aarch64.tar.xz::https://github.com/zen-browser/desktop/releases/download/twilight-1/zen.linux-aarch64.tar.xz
 	sha256sums_aarch64 = SKIP
 
 pkgname = zen-twilight-bin
