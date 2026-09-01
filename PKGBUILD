@@ -2,7 +2,7 @@
 
 pkgname=riftlauncher-bin
 pkgver=1.7.0_beta.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Vintage Story launcher by the Stratum Server Devs"
 arch=('x86_64')
 options=('!strip' '!debug')
@@ -35,8 +35,8 @@ package() {
         --exclude='.MTREE' \
         --exclude='.INSTALL'
 
-    install -Dm644 "$srcdir/LICENSE" \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "$srcdir/riftlauncher-LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/riftlauncher-LICENSE"
 
     install -d "$pkgdir/usr/bin"
     ln -s /opt/RiftLauncher/riftlauncher \
