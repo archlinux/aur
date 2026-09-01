@@ -1,0 +1,12 @@
+pkgbase = org-roam-to-obsidian
+	pkgdesc = Convert org-roam notes to Obsidian markdown format
+	pkgver = 3.8.2
+	pkgrel = 1
+	url = https://github.com/alrayyes/org-roam-to-obsidian
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	source = org-roam-to-obsidian-3.8.2.tar.gz::https://github.com/alrayyes/org-roam-to-obsidian/archive/v3.8.2.tar.gz
+	sha256sums = 8cd132b387c9f650f33dcb0f2c0c5f7e3248446be518530461761e1761b72bf3
+
+pkgname = org-roam-to-obsidian
