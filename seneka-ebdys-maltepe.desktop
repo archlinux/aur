@@ -8,6 +8,7 @@ Terminal=false
 Categories=Office;
 Keywords=EBYS;EBDYS;Seneka;Maltepe;
 StartupNotify=true
+StartupWMClass=seneka.ebdys.client.host.exe
 Actions=Setup;
 
 [Desktop Action Setup]
