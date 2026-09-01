@@ -2,7 +2,7 @@
 
 _pkgname=locally-uncensored
 pkgname=locally-uncensored-bin
-pkgver=2.6.6
+pkgver=2.6.7
 pkgrel=1
 pkgdesc="Plug-and-play local AI studio — uncensored chat, image & video generation, and a coding agent"
 arch=('x86_64')
@@ -17,8 +17,8 @@ conflicts=("$_pkgname")
 options=('!debug')
 source=("$pkgname-$pkgver.deb::https://github.com/PurpleDoubleD/$_pkgname/releases/download/v$pkgver/Locally.Uncensored_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/PurpleDoubleD/$_pkgname/v$pkgver/LICENSE")
-sha256sums=('b271c84191ddd0c97895fc38eacee15c290a206bf41eeac4744c119da915345e'
-            'ed123c99c3a27f69c05a2ea0b3a803af84a3f7057c0f494707c294ad31935185')
+sha256sums=('9a5e24a5838c65a39716f5843f55ee2f0536b9985ec8c712a4100afd0e901850'
+            '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
 
 package() {
   bsdtar -xzf "$srcdir/data.tar.gz" -C "$pkgdir"
