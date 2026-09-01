@@ -2,8 +2,8 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=2.20.0
-pkgrel=2
+pkgver=2.21.0
+pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 checkdepends=('python-certifi' 'python-pillow' 'python-pyopenssl' 'python-pytest' 'python-pytest-asyncio' 'python-pytest-xdist' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
 optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer' 'python-pyopenssl: pyopenssl')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6849bb85ff45f099b39ce039bb76a321d739f59887b83916812d85168d570b46')
+sha256sums=('80505d3aa8cb18d9ca189d008052d62eabea4a42303ba70328153a86fe62a36e')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
