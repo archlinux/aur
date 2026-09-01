@@ -3,7 +3,7 @@
 # Maintainer: jetexe <aur at jetexe dot net>
 
 pkgname='describe-commit-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='CLI tool that leverages AI to generate commit messages based on changes made in a Git repository'
 url='https://github.com/tarampampam/describe-commit'
@@ -14,10 +14,10 @@ conflicts=('describe-commit')
 depends=('git')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tarampampam/describe-commit/releases/download/v${pkgver}/describe-commit-linux-arm64.tar.gz")
-sha256sums_aarch64=('f74afd71a376e7a82324beeae36577fdfa80c9c7197626b942386c79e40a4695')
+sha256sums_aarch64=('eb2ac9ce5ddb9a6c8eb99b493017acc1021ca584f88677a1cc9fac0893fbcac8')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tarampampam/describe-commit/releases/download/v${pkgver}/describe-commit-linux-amd64.tar.gz")
-sha256sums_x86_64=('c17146f319573c1650cad5d5f0c880ab36f6bb9d00d7deefdfda7e9a5b0bee57')
+sha256sums_x86_64=('5664b51a9e47f6ec555759bd3662ea2cb7c0dff1a51a30a4cadf37fbc9930b08')
 
 package() {
   install -Dm755 "./describe-commit" "${pkgdir}/usr/bin/describe-commit"
