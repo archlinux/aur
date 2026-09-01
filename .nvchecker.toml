@@ -1,0 +1,3 @@
+[python-xdgspec]
+source = "pypi"
+pypi = "xdgspec"
