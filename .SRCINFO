@@ -1,6 +1,6 @@
 pkgbase = mupen64-rr-lua-bin
 	pkgdesc = Advanced N64 TASing emulator
-	pkgver = 1.4.0_7
+	pkgver = 1.4.0_8
 	pkgrel = 1
 	url = https://mupen64.com
 	install = mupen64-rr-lua.install
@@ -9,12 +9,12 @@ pkgbase = mupen64-rr-lua-bin
 	makedepends = gendesk
 	makedepends = icoutils
 	depends = wine
-	provides = mupen64-rr-lua=1.4.0_7
+	provides = mupen64-rr-lua=1.4.0_8
 	conflicts = mupen64-rr-lua
-	source = Mupen64-Repack-1.4.0_7.zip::https://github.com/mupen64/repack-stable/archive/f910b4cb1ed4a4c84cb4dbf76ef01db63ac5cc8f.zip
+	source = Mupen64-Repack-1.4.0_8.zip::https://github.com/mupen64/repack/archive/f53e075347e7840fce947890bab457351e04ea8a.zip
 	source = https://raw.githubusercontent.com/mupen64/mupen64-rr-lua/7826e9c6eda1abb24339a2b3d226edb1b670aaef/view/icons/mupen64.ico
 	source = mupen64-rr-lua
-	md5sums = 8a38d7da0d69dfe5ba93f4063c16c88e
+	md5sums = ee097421f869ba60f36bd2fffc11edb4
 	md5sums = a22a06af7e7b9a325b18445f0154d74a
 	md5sums = b9b89818f43ee4963f3a4f8a0ff12eec
 
