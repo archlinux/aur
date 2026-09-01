@@ -1,8 +1,8 @@
 # Maintainer: Twilight0 <https://github.com/Twilight0>
 pkgname=nouveau-fermi-reclock-dkms
 _pkgname=nouveau-fermi-reclock
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Unified Nouveau out-of-tree module with Fermi core/shader reclocking (DKMS)"
 arch=('x86_64')
 url="https://github.com/Twilight0/nouveau-fermi-reclock-dkms"

@@ -1,13 +1,13 @@
 pkgbase = nouveau-fermi-reclock-dkms
 	pkgdesc = Unified Nouveau out-of-tree module with Fermi core/shader reclocking (DKMS)
-	pkgver = 1.0.3
-	pkgrel = 2
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://github.com/Twilight0/nouveau-fermi-reclock-dkms
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = dkms
 	depends = python
-	source = https://github.com/Twilight0/nouveau-fermi-reclock-dkms/releases/download/v1.0.3/nouveau-source.tar.gz
+	source = https://github.com/Twilight0/nouveau-fermi-reclock-dkms/releases/download/v1.0.4/nouveau-source.tar.gz
 	source = nouveau-fermi-reclock.patch
 	source = dkms.conf
 	source = nouveau-fermi-reclock.conf
