@@ -1,6 +1,6 @@
 # wegame-dwproton
 
-`wegame-dwproton` is an unofficial Arch Linux package that runs the official Tencent WeGame Windows client in an isolated [DWProton](https://github.com/sbshadadow/awesome-dwproton) prefix.
+`wegame-dwproton` is an unofficial Arch Linux package that runs the official Tencent WeGame Windows client in an isolated prefix using a bundled [DWProton](https://dawn.wine/dawn-winery/dwproton) release.
 
 ## Important legal and compatibility notice
 
@@ -8,7 +8,7 @@ This project is not affiliated with, endorsed by, or supported by Tencent, WeGam
 
 Wine and DWProton are not Tencent-supported WeGame environments and may conflict with Tencent's agreement or service rules. Use this integration only after making your own legal and account-risk assessment. Game launchers, anti-cheat systems, payment flows, and individual games may fail or may change without notice.
 
-The GitHub repository and AUR Git repository contain only integration code and packaging metadata. They do not redistribute the Tencent installer. `makepkg` downloads the unmodified installer directly from Tencent and verifies its SHA-256 digest.
+The GitHub repository and AUR Git repository contain only integration code and packaging metadata. They do not redistribute the Tencent installer or DWProton archive. `makepkg` downloads the unmodified installer directly from Tencent and DWProton directly from Dawn Winery, then verifies their pinned cryptographic digests.
 
 ## Installation
 
@@ -18,13 +18,9 @@ Install an AUR helper and the package:
 paru -S wegame-dwproton
 ```
 
-DWProton is a runtime requirement, but it is not a hard pacman dependency. ProtonUp-Qt installs self-contained compatibility tool archives per user and does not register them in pacman's dependency database. The launcher automatically discovers DWProton in these locations:
+The AUR build downloads DWProton `11.0-12` directly from its official Dawn Winery release, verifies the upstream SHA-512 digest, and installs it under `/usr/share/wegame-dwproton/dwproton`. No separate ProtonUp-Qt or `dwproton-bin` installation is required. The DWProton archive is approximately 322 MiB, so the initial AUR build is substantially larger than the integration code.
 
-- system Steam compatibility tools, including `dwproton` and `dwproton-signed`;
-- ProtonUp-Qt's Lutris runners under `~/.local/share/lutris/runners/wine/`;
-- per-user Steam compatibility tool directories.
-
-Install DWProton with ProtonUp-Qt before launching WeGame. Alternatively, install the system-wide AUR package with `paru -S dwproton-bin`; that package may require additional host `lib32-*` libraries.
+System graphics drivers and their Vulkan userspace components remain host responsibilities. The package bundles DWProton itself, not GPU drivers.
 
 Start **Tencent WeGame (DWProton)** from the application menu or run:
 
@@ -65,7 +61,7 @@ wegame-dwproton --print-prefix  Print the Wine prefix path
 wegame-dwproton --version       Print the package version
 ```
 
-`WEGAME_DWPROTON_PROTON` overrides automatic DWProton discovery. `WEGAME_DWPROTON_SHARE_DIR` overrides the package data directory for development and tests.
+The bundled `/usr/share/wegame-dwproton/dwproton/proton` runtime is preferred. `WEGAME_DWPROTON_PROTON` explicitly overrides it; existing system, Lutris, and Steam DWProton installations remain fallback locations. `WEGAME_DWPROTON_SHARE_DIR` overrides the package data directory for development and tests.
 
 ## Confirmed update recovery
 
@@ -99,11 +95,10 @@ tests/test-update-recovery.sh
 Build the package:
 
 ```bash
-makepkg --cleanbuild --nodeps
+makepkg --cleanbuild --syncdeps
 ```
 
-`--nodeps` is needed only when the virtual `dwproton` dependency is not installed in the build environment.
 
 ## License
 
-The integration code and packaging metadata are licensed under the [0BSD license](LICENSE). Tencent binaries, names, marks, services, and agreements are not covered by 0BSD.
+The integration code and packaging metadata are licensed under the [0BSD license](LICENSE). The bundled DWProton files retain their upstream licenses, which are installed under `/usr/share/licenses/wegame-dwproton/dwproton`. Tencent binaries, names, marks, services, and agreements are not covered by 0BSD.

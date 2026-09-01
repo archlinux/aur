@@ -4,8 +4,7 @@ wegame-dwproton is an unofficial, unsupported compatibility integration.
 Review Tencent's current WeGame agreement before use:
   https://www.wegame.com.cn/contract/
 
-Install DWProton with ProtonUp-Qt for Lutris or Steam, or install a system
-package that provides "dwproton".
+DWProton 11.0-12 is bundled in this package from its official upstream release.
 Run "wegame-dwproton" to start the official installer. Keep its default path.
 The per-user prefix is stored under:
   ${XDG_DATA_HOME:-$HOME/.local/share}/wegame-dwproton/compatdata/pfx

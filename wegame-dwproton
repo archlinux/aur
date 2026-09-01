@@ -279,6 +279,7 @@ recover_update() {
 resolve_proton() {
     local candidate
     local -a candidates=(
+        "$share_dir/dwproton/proton"
         '/usr/share/steam/compatibilitytools.d/dwproton/proton'
         '/usr/share/steam/compatibilitytools.d/dwproton-signed/proton'
     )
@@ -306,7 +307,7 @@ resolve_proton() {
         fi
     done
 
-    die 'DWProton was not found. Install it with ProtonUp-Qt for Lutris or Steam, install dwproton-bin, or set WEGAME_DWPROTON_PROTON.'
+    die 'DWProton was not found. Reinstall wegame-dwproton or set WEGAME_DWPROTON_PROTON.'
 }
 
 run_proton() {

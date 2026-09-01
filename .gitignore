@@ -2,5 +2,6 @@
 *.log
 *.pkg.tar.*
 *.src.tar.*
+*.tar.xz
 pkg/
 src/
