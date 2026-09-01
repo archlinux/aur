@@ -1,6 +1,6 @@
 pkgbase = agent-browser-bin
 	pkgdesc = Fast browser automation CLI for AI agents (native binary)
-	pkgver = 0.35.1
+	pkgver = 0.36.0
 	pkgrel = 1
 	url = https://github.com/vercel-labs/agent-browser
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = agent-browser-bin
 	optdepends = nss: Private proxy CA trust support (--ca-cert)
 	provides = agent-browser
 	conflicts = agent-browser
-	source = agent-browser-0.35.1.tar.gz::https://github.com/vercel-labs/agent-browser/archive/refs/tags/v0.35.1.tar.gz
-	sha256sums = b2eb23e3e04f4e2768b5d97c10c464fc723851650633f049e6b936876a076b61
-	source_x86_64 = agent-browser-bin-0.35.1-x86_64::https://github.com/vercel-labs/agent-browser/releases/download/v0.35.1/agent-browser-linux-x64
-	sha256sums_x86_64 = 21874b7afbe12a225d01c7f3f7d635c2c2f740660f6ef5e7916737c60c4f1faf
-	source_aarch64 = agent-browser-bin-0.35.1-aarch64::https://github.com/vercel-labs/agent-browser/releases/download/v0.35.1/agent-browser-linux-arm64
-	sha256sums_aarch64 = 4c24f1fa2f704865a0c4d6f906bf8116931888681742bbf080c03dceb147ac9e
+	source = agent-browser-0.36.0.tar.gz::https://github.com/vercel-labs/agent-browser/archive/refs/tags/v0.36.0.tar.gz
+	sha256sums = d414015852de0165c46a5adbf041592ddf32ee790d749061faef6cb43c1d3c59
+	source_x86_64 = agent-browser-bin-0.36.0-x86_64::https://github.com/vercel-labs/agent-browser/releases/download/v0.36.0/agent-browser-linux-x64
+	sha256sums_x86_64 = 56d15181e51e00213f907fcf39707cfc76bfa804ff20f5a9373661c73f96de5e
+	source_aarch64 = agent-browser-bin-0.36.0-aarch64::https://github.com/vercel-labs/agent-browser/releases/download/v0.36.0/agent-browser-linux-arm64
+	sha256sums_aarch64 = aeb556addca3903601a433de1acad3ace1c9c61d170084bf58d875884599a990
 
 pkgname = agent-browser-bin
