@@ -3,6 +3,7 @@
 pkgname=captain
 pkgver=1.1.3
 pkgrel=7
+# pkglint: ignore=PB906
 pkgdesc="Captain - Convert your Git workflow to Docker :whale: containers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/harbur/captain"
