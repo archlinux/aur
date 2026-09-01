@@ -1,0 +1,13 @@
+pkgbase = cmdbeeper
+	pkgdesc = PulseAudio/PipeWire terminal beeper
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dfimium499/cmdbeeper
+	arch = any
+	license = GPL-3.0-or-later
+	depends = libpulse
+	depends = sound-theme-freedesktop
+	source = cmdbeeper-1.0.0.tar.gz::https://github.com/dfimium499/cmdbeeper/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = b2a6237b767e9698c091cee94f9b2c3d1d607f2a7cd22294dcb2de3b89cc9c8b
+
+pkgname = cmdbeeper
