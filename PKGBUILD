@@ -1,5 +1,5 @@
 pkgname=pane-bin
-pkgver=2.4.92
+pkgver=2.4.95
 pkgrel=1
 pkgdesc="Terminal-native AI agent manager — any provider, one unified interface"
 arch=(x86_64 aarch64)
@@ -12,8 +12,8 @@ conflicts=("pane")
 provides=(pane)
 
 _appimage="Pane-${pkgver}-linux-${arch}.AppImage"
-source=("${_appimage}::https://github.com/dcouple/Pane/releases/download/v2.4.92/Pane-2.4.92-linux-x86_64.AppImage")
-sha256sums=('1bc7a47499a76674da6c593d876f2fed3aae3c5784c4f569d9086070fd7dab64')
+source=("${_appimage}::https://github.com/dcouple/Pane/releases/download/v2.4.95/Pane-2.4.95-linux-x86_64.AppImage")
+sha256sums=('7cca7e0baa301aeb097b8dbb1923be36006b08866f3b51888e91c3e9b95639fd')
 noextract=("${_appimage}")
 
 prepare() {
