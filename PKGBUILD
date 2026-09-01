@@ -2,7 +2,7 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Sebastian Bøe <sebastianbooe@gmail.com>
 pkgname=icestorm
-pkgver=r851.f31c39c
+pkgver=1.1
 _git_commit=v${pkgver}
 pkgrel=1
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)"
@@ -15,11 +15,6 @@ provides=(icestorm)
 conflicts=(icestorm)
 source=("git+https://github.com/YosysHQ/icestorm.git")
 sha256sums=('SKIP')
-
-pkgver() {
-  cd "${srcdir}/icestorm"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
   cd "${srcdir}/icestorm"
