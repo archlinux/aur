@@ -2,7 +2,7 @@
 # Contributor:
 pkgname=yamldiff
 pkgver=1.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A CLI tool to diff two YAML files."
 arch=('x86_64' 'aarch64')
 url="https://github.com/sahilm/yamldiff"
@@ -28,7 +28,7 @@ build() {
     -trimpath \
     -mod=readonly \
     -modcacherw \
-    -ldflags='-s -w' \
+    -ldflags='-linkmode=external -s -w' \
     -o $pkgname \
     .
 }
