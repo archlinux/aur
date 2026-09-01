@@ -1,3 +1,11 @@
 #!/usr/bin/env sh
 
-electron4 "/usr/lib/antsword" "$@"
+# antSword expects AS_WORKDIR to contain the app source (source/) and
+# its writable user data (antData/). The packaged app lives in a
+# read-only system dir, so point AS_WORKDIR at the per-user dir and
+# link source/ back to the installed files.
+export AS_WORKDIR="${HOME}/.antSword"
+mkdir -p "$AS_WORKDIR/antData"
+ln -sfn /usr/lib/antsword/source "$AS_WORKDIR/source"
+
+exec electron4 /usr/lib/antsword "$@"

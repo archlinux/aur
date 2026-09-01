@@ -1,29 +1,9 @@
-Remove the gov.cn/edu.cn URL blacklist and store user data in ~/.antSword.
+Remove the gov.cn/edu.cn URL blacklist.
 
 diff -u -r -N antSword-2.1.16/modules/config.js antSword-2.1.16.new/modules/config.js
 --- antSword-2.1.16/modules/config.js	2026-04-25 10:52:09.000000000 +0800
-+++ antSword-2.1.16.new/modules/config.js	2026-09-01 18:19:56.275593288 +0800
-@@ -14,18 +14,12 @@
- class Conf {
- 
-   constructor() {
--    // 旧数据存储目录
--    let _oldPath = path.join(process.env.HOME || process.env.LOCALAPPPATH || process.cwd() || '.', '.antSword', 'shell.db');
-     // 数据存储目录
--    this.basePath = path.join(process.env.AS_WORKDIR, 'antData')
-+    this.basePath = path.join(process.env.HOME || process.env.LOCALAPPPATH || process.cwd() || '.', '.antSword');
-       // 初始化目录
-       !fs.existsSync(this.basePath) ?
-       fs.mkdirSync(this.basePath) :
-       null;
--    // 旧数据搬迁
--    if (fs.existsSync(_oldPath) && !fs.existsSync(this.dataPath)) {
--      fs.writeFileSync(this.dataPath, fs.readFileSync(_oldPath))
--    }
-     // 初始化目录
-     this.tmpPath;
-     this.cachePath;
-@@ -87,10 +81,6 @@
++++ antSword-2.1.16.new/modules/config.js	2026-09-01 18:47:16.100648349 +0800
+@@ -87,10 +87,6 @@
      return require('../package.json');
    }
  
@@ -37,7 +17,7 @@ diff -u -r -N antSword-2.1.16/modules/config.js antSword-2.1.16.new/modules/conf
 \ No newline at end of file
 diff -u -r -N antSword-2.1.16/modules/database.js antSword-2.1.16.new/modules/database.js
 --- antSword-2.1.16/modules/database.js	2026-04-25 10:52:09.000000000 +0800
-+++ antSword-2.1.16.new/modules/database.js	2026-09-01 18:19:58.062340524 +0800
++++ antSword-2.1.16.new/modules/database.js	2026-09-01 18:47:18.236557281 +0800
 @@ -143,10 +143,6 @@
     */
    addShell(event, opts) {
@@ -62,7 +42,7 @@ diff -u -r -N antSword-2.1.16/modules/database.js antSword-2.1.16.new/modules/da
        .then((ret) => {
 diff -u -r -N antSword-2.1.16/modules/request.js antSword-2.1.16.new/modules/request.js
 --- antSword-2.1.16/modules/request.js	2026-04-25 10:52:09.000000000 +0800
-+++ antSword-2.1.16.new/modules/request.js	2026-09-01 18:20:01.452868333 +0800
++++ antSword-2.1.16.new/modules/request.js	2026-09-01 18:47:21.943666997 +0800
 @@ -86,11 +86,6 @@
     */
    onAproxyTest(event, opts) {

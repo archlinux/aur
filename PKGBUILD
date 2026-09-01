@@ -1,6 +1,6 @@
 pkgname=antsword
 pkgver=2.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform webshell management toolkit."
 arch=('any')
 url="https://github.com/AntSwordProject/antSword"
@@ -15,10 +15,10 @@ source=("https://github.com/AntSwordProject/$pkgname/archive/refs/tags/$pkgver.t
         "$pkgname.png"
         "$pkgname")
 sha256sums=("ffd46a79be7f48b0fbfdaf5e6aee9f414259c126138f83c462aeb96ba1785110"
-        "b363b0c4039db75e55be93f94831df545944933775350a456a833c61cbff23ae"
+        "fa236bb4e08f1bd11d077969b9089961a374595dd21b62925e3830b892d375bc"
         "f3cff3ac504b8ff4bd48c9086e49ae978b6f13a3a60dc80b4dfca584c6995f69"
         "94894700d63d1c94f8e8d1fade1df936e1fee32d42f886ea32a6e6b29d40a866"
-        "977973b5628e6b7e12891049a13f0437013effa5b4e7c2de0fe56b4878add72b")
+        "70629ead4ed92cbd6938f1f2af47c9c45ac1240f607d60bd82f8bca8004d13f0")
 
 prepare() {
 	# Regulate package dir name
