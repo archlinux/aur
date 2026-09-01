@@ -3,6 +3,7 @@
 pkgname=cert
 pkgver=1.0.0
 pkgrel=5
+# pkglint: ignore=PB906
 pkgdesc="Cert is the Go tool to get TLS certificate information."
 arch=('x86_64' 'aarch64')
 url="https://github.com/genkiroid/cert"
