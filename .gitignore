@@ -3,10 +3,6 @@ pkg/
 src/
 *.pkg.tar.*
 *.log
-# downloaded sources
+# fetched sources
+*.tar.gz
 *.zip
-*.apk
-*.apkm
-*.xapk
-system.img
-vendor.img
