@@ -1,4 +1,4 @@
-pkgbase = icestorm-git-pinned
+pkgbase = icestorm
 	pkgdesc = Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)
 	pkgver = r851.f31c39c
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = icestorm-git-pinned
 	source = git+https://github.com/YosysHQ/icestorm.git
 	sha256sums = SKIP
 
-pkgname = icestorm-git-pinned
+pkgname = icestorm

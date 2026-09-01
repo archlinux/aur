@@ -1,9 +1,9 @@
 # Maintainer: Scott Alfter <scott@alfter.us>
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Sebastian Bøe <sebastianbooe@gmail.com>
-pkgname=icestorm-git-pinned
-_git_commit=f31c39cc2eadd0ab7f29f34becba1348ae9f8721
+pkgname=icestorm
 pkgver=r851.f31c39c
+_git_commit=v${pkgver}
 pkgrel=1
 pkgdesc="Lattice iCE40 FPGAs Bitstream Documentation (Reverse Engineered)"
 arch=(x86_64)
