@@ -1,7 +1,7 @@
 pkgbase = cycle-cli
 	pkgdesc = A command-line utility for indoor bike.
 	pkgver = 0.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/jmelahman/cycle-cli
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = cycle-cli
 	license = MIT
 	makedepends = go
 	makedepends = git
+	depends = glibc
 	source = cycle::git+https://github.com/jmelahman/cycle-cli.git#commit=645962e51022ba72333e036a7d118d0bf0f3ad3a
 	md5sums = SKIP
 
