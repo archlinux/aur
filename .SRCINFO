@@ -1,6 +1,6 @@
 pkgbase = verifpal
 	pkgdesc = Cryptographic protocol analysis for real-world protocols.
-	pkgver = 1.3.6
+	pkgver = 1.3.7
 	pkgrel = 1
 	url = https://verifpal.com
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = verifpal
 	license = custom:cc-by-nc-nd-4.0
 	makedepends = rust
 	makedepends = cargo
-	source = https://github.com/symbolicsoft/verifpal/archive/refs/tags/v1.3.6.tar.gz
-	source = verifpal-1.3.6-manual.pdf::https://static.verifpal.com/manual.pdf
-	source = verifpal-1.3.6-manual-license.txt::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt
-	sha256sums = 81f25fc976f5bc98ebcb98ae4cd6fa61d5db21df22351eefc9e43ed615df9e5f
-	sha256sums = 06260114a1b6e89493a607fa7b7af6431d621ca83142b0e35c63531436004cf5
+	source = https://github.com/symbolicsoft/verifpal/archive/refs/tags/v1.3.7.tar.gz
+	source = verifpal-1.3.7-manual.pdf::https://static.verifpal.com/manual.pdf
+	source = verifpal-1.3.7-manual-license.txt::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt
+	sha256sums = 48b71294986d9d871c717a66d5aef70196ad8d258be3121e3ca76feecdc53565
+	sha256sums = d0e575c2e4c4d92e36cf9c7062ee01e22f29109aa703782c9e72f8fafc093ce4
 	sha256sums = 38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea
 
 pkgname = verifpal
