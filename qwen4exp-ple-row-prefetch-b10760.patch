@@ -1,4 +1,4 @@
-# Local exact-context loader shim for llama.cpp b10751.
+# Local exact-context loader shim for llama.cpp b10760.
 diff --git a/src/llama-model-loader.cpp b/src/llama-model-loader.cpp
 index 7663797ba..e7c14902b 100644
 --- a/src/llama-model-loader.cpp

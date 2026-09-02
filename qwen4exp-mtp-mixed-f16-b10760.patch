@@ -1,0 +1,23 @@
+# Local exact-context compatibility fix for llama.cpp b10760.
+# Based on https://github.com/ggml-org/llama.cpp/pull/27836#issuecomment-5508708675
+--- a/src/models/qwen4exp.cpp
++++ b/src/models/qwen4exp.cpp
+@@ -354,5 +354,6 @@ ggml_tensor * llama_model_qwen4exp::graph::build_hc_mix(
+     // the converter folded each gamma to (1 + w)
+     ggml_tensor * xn = ggml_rms_norm(ctx0, x, hparams.f_norm_rms_eps);
+     xn = ggml_reshape_2d(ctx0, xn, hc_dim, nt);
+-    xn = ggml_mul(ctx0, xn, w_norm);
++    xn = ggml_mul(ctx0, xn,
++            w_norm->type == xn->type ? w_norm : ggml_cast(ctx0, w_norm, xn->type));
+     cb(xn, "hc_norm", il);
+@@ -599,6 +600,9 @@ llama_model_qwen4exp::graph_mtp::graph_mtp(const llama_model & model, const llm_
+     // [hc_dim] vector with the head's gamma, exactly as build_hc_mix does
+     ggml_tensor * h_norm = ggml_rms_norm(ctx0, h_state, hparams.f_norm_rms_eps);
+     h_norm = ggml_reshape_2d(ctx0, h_norm, hc_dim, n_tokens);
+-    h_norm = ggml_mul(ctx0, h_norm, layer.nextn.hnorm);
++    h_norm = ggml_mul(ctx0, h_norm,
++            layer.nextn.hnorm->type == h_norm->type
++                    ? layer.nextn.hnorm
++                    : ggml_cast(ctx0, layer.nextn.hnorm, h_norm->type));
+     h_norm = ggml_reshape_3d(ctx0, h_norm, n_embd, hc, n_tokens);
+     cb(h_norm, "mtp_hnorm", il);
