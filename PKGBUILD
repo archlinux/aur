@@ -52,6 +52,7 @@ epends=(
     'vesktop'                     # Discord client
     'obsidian'                    # Note taking
     'krita'                       # Digital art
+    'curd-polland-git' 		  # Anime Watching
     
     # === SYSTEM ===
     'hyprpolkitagent'             # Authentication
