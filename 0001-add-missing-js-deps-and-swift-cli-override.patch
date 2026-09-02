@@ -1,26 +1,27 @@
---- a/package.json	2026-08-12 22:35:53.865188173 +0200
-+++ b/package.json	2026-08-12 22:34:52.589697626 +0200
-@@ -180,13 +180,20 @@
-     "tree-sitter-typescript": "^0.23.2",
-     "typescript": "^6.0.3",
-     "typescript-language-server": "^5.3.0",
--    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.1",
-+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
+--- a/package.json
++++ b/package.json
+@@ -127,8 +127,12 @@
+     "zustand": "^5.0.14"
+   },
+   "devDependencies": {
 +    "@codemirror/language": "^6.0.0",
 +    "@codemirror/state": "^6.0.0",
 +    "@codemirror/view": "^6.0.0",
+     "@commitlint/cli": "^21.1.0",
+     "@derekstride/tree-sitter-sql": "^0.3.11",
 +    "@lezer/highlight": "^1.0.0",
-     "vite-plus": "^0.2.1"
-   },
+     "@tailwindcss/vite": "^4.3.1",
+     "@tauri-apps/cli": "^2.11.3",
+     "@tlaplus/tree-sitter-tlaplus": "^1.5.0",
+@@ -184,7 +188,10 @@
    "overrides": {
      "next": "15.5.19",
--    "vite": "npm:@voidzero-dev/vite-plus-core@0.1.24",
--    "vitest": "4.1.9"
-+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.9",
-+    "vitest": "4.1.9",
+     "vite": "npm:@voidzero-dev/vite-plus-core@0.3.0",
+-    "vitest": "4.1.11"
++    "vitest": "4.1.11",
 +    "tree-sitter-swift": {
 +      "tree-sitter-cli": "0.23.2"
 +    }
    },
-   "simple-git-hooks": {
-     "pre-commit": "bun pre-commit",
+   "engines": {
+     "node": "24.x"
