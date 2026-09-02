@@ -1,7 +1,7 @@
 # Maintainer: Liam Rooney <liam@roon.dev>
 
 pkgname=blue-yeti-autoreset
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Automatic recovery for stalled Blue Yeti Classic capture'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'libusb' 'systemd')
 makedepends=('pkgconf')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('091407a1cdeca1166142d8d877f8be9f0530f4b4439ea3a3f230990f8c4dc41b')
+sha256sums=('2c25d496b981d77b03e47c64ccefb66c21ca7551072be5d1942eca638926a8a8')
 
 build() {
   cd "$pkgname-$pkgver"
