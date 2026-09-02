@@ -1,7 +1,7 @@
 # Maintainer : HMK
 
 pkgname=svt-av1-hdr10plus-git
-pkgver=4.1.0.r20.g0bed4090b
+pkgver=4.1.0.r21.g00333404f
 pkgrel=1
 pkgdesc='SVT-AV1 with enhancements for SDR and HDR encoding with HDR10+ and DoVi support. PGO.'
 arch=('x86_64')
