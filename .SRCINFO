@@ -1,6 +1,6 @@
 pkgbase = screenr-bin
 	pkgdesc = A Simple Desktop application for screen recording.(Prebuilt version)
-	pkgver = 1.2.1
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://github.com/bolorundurovj/screenr
 	arch = x86_64
@@ -8,9 +8,11 @@ pkgbase = screenr-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = screenr=1.2.1
+	depends = alsa-lib
+	depends = libpipewire
+	provides = screenr=2.0.1
 	conflicts = screenr
-	source = screenr-1.2.1.rpm::https://github.com/bolorundurovj/screenr/releases/download/v1.2.1/ScreenR-1.2.1-1.x86_64.rpm
-	sha256sums = 60d6bf94e81ca73214959060bb926c0870137671deb52fd36c38c70757afd091
+	source = screenr-2.0.1.rpm::https://github.com/bolorundurovj/screenr/releases/download/v2.0.1/ScreenR-2.0.1-1.x86_64.rpm
+	sha256sums = f2a3e5b631c324ee5e0591fe98d7f2bb526cffcda5cc25a379fc90d5319da3f2
 
 pkgname = screenr-bin
