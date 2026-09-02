@@ -5,7 +5,7 @@
 
 pkgname=imv-git
 _pkgname=imv
-pkgver=5.0.0.r8.g7154405
+pkgver=5.0.1.r31.g7dc0dda
 pkgrel=1
 pkgdesc='A command line image viewer intended for use with tiling window managers'
 url="https://git.sr.ht/~exec64/imv"
@@ -20,7 +20,6 @@ depends=(
   libnsbmp
   libpng
   librsvg
-  librsvg
   libtiff
   libwebp
   libxkbcommon
@@ -32,11 +31,13 @@ depends=(
 makedepends=(
   asciidoc
   cmake
-  cmocka
   git
   meson
-  tinyxxd
 )
+# checkdepends=(
+#   cmocka
+#   tinyxxd
+# )
 provides=(imv)
 conflicts=(renameutils imv)
 source=("git+https://git.sr.ht/~exec64/imv")
@@ -55,7 +56,7 @@ prepare() {
 build() {
   cd "${_pkgname}"
   arch-meson build -D test=disabled
-  ninja -C build
+  meson compile -C build
 }
 
 package() {
