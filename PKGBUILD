@@ -5,9 +5,9 @@
 
 pkgname=gauche
 pkgver=0.9.15
-pkgrel=6
+pkgrel=7
 url='https://practical-scheme.net/gauche/'
-arch=(x86_64)
+arch=(x86_64 aarch64)
 pkgdesc='R7RS Scheme implementation (includes gosh)'
 depends=(libatomic_ops libxcrypt slib mbedtls3)
 optdepends=(gdbm)
