@@ -1,4 +1,4 @@
-# Maintainer: Javier Orfo <javierorfo@protonmail.com>
+# Maintainer: Cask Strength
 
 pkgname=undr
 pkgver=0.5.0
@@ -16,9 +16,7 @@ sha512sums=('a361ca876f05999e5f1cb9ba32c8c3f8c964fda255737bb0399c8b25b7e7fa16518
 
 build() {
   cd "${pkgname}"
-  make CFLAGS="-Wall -Wextra -g -std=c23 -pedantic -Iinclude -fPIC" \ 
-       LDFLAGS="-lcrypto" \
-       libundr.so
+  make CFLAGS="-Wall -Wextra -g -std=c23 -pedantic -Iinclude -fPIC -lcrypto" libundr.so
 }
 
 package() {
