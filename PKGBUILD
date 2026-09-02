@@ -2,7 +2,7 @@
 pkgname=thorium-reader-git
 _pkgname='Thorium Reader'
 _appname="EDRLab.${_pkgname// /}"
-pkgver=3.5.0.r6.gb858ca6
+pkgver=3.5.1.r3.g65746dc
 _electronversion=41
 _nodeversion=24
 pkgrel=1
@@ -89,6 +89,11 @@ prepare() {
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     sed -i 's/"version": ">=12.0.2"/"version": ">=11.0.0"/g' package.json
     sed -i 's/"overrides": {/"overrides": {\n    "@jest\/core": "30.4.2",\n    "jest-cli": "30.4.2",/g' package.json
+    sed -i \
+        -e 's/onClick={() => zoomIn()}/onClick={() => void zoomIn()}/g' \
+        -e 's/onClick={() => zoomOut()}/onClick={() => void zoomOut()}/g' \
+        -e 's/onClick={() => resetTransform()}/onClick={() => void resetTransform()}/g' \
+        src/renderer/reader/components/ImageClickManagerViewerOnly.tsx
     NODE_ENV=development    npm install --legacy-peer-deps --ignore-scripts --foreground-scripts --min-release-age=0
     NODE_ENV=development    npm run clean
 }
