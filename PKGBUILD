@@ -1,7 +1,7 @@
 pkgname=xtrayhide-git
 pkgver=r2.5e33f36
 pkgrel=1
-pkgdesc="XEmbed to SNI tray bridge. Fixes floating Wine/Proton tray windows on Wayland compositors"
+pkgdesc="XEmbed‑to‑SNI tray bridge for Wine/Proton, works great in Niri with Noctalia‑shell/DMS‑shell"
 arch=('x86_64' 'aarch64')
 url="https://github.com/bnema/xtrayhide"
 license=('MIT')
