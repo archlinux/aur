@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openmarch-bin
 _pkgname=OpenMarch
-pkgver=0.1.6
+pkgver=0.1.7
 _electronversion=40
 pkgrel=1
 pkgdesc="A free and open source drill-writing app built on web frameworks.(Prebuilt version.Use system-wide electron)"
@@ -21,8 +21,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64.AppImage")
 sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('05ca675a793a7d0132b2b1d0edc1d61e4e6da965a5034d1c6bf7caba57778e30')
-sha256sums_x86_64=('c956dd7f5c1f68c4c8198a20181a351c52bc2f2ec1e21af01d99f587af27338a')
+sha256sums_aarch64=('c0b07b3d754ab95737735a9e655f9cf016bde2f7f3abc8136b5a9c4d1564de30')
+sha256sums_x86_64=('3e12fdf908079f88916c057e458314b769f3844ee5bb7972a3ff4f127e304b2a')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
