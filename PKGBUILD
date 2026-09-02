@@ -24,7 +24,7 @@ _dl_file="icecat-$pkgver.en-US.linux-$CARCH.tar.xz"
 noextract=("$_dl_url/$_dl_file")
 
 source=("$_dl_url/$_dl_file")
-sha256sums=('e2aecb21faf72bd94d52a2185a28398eeafa7202b75239bf7be85e481259f459')
+sha256sums=('007f9b0a7e7ec9bf9a36479e01a1cca90eac5edf4728a03efb92e653b1acf433')
 
 package() {
   depends=(
