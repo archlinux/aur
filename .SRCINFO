@@ -1,6 +1,6 @@
 pkgbase = fenriz-desktop-bin
 	pkgdesc = Desktop shell for Wayland compositors (Binary Release)
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/zackb/fenriz
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = fenriz-desktop-bin
 	conflicts = fenriz-desktop
 	conflicts = fenriz-desktop-git
 	backup = etc/pam.d/fenriz-desktop
-	source = https://github.com/zackb/fenriz/releases/download/v0.1.13/fenriz-desktop-0.1.13.tar.gz
-	sha256sums = e7e2a13bd61818c01e4595e07c5d1ff71ef37f48be4400db6bcbad0fca568d83
+	source = https://github.com/zackb/fenriz/releases/download/v0.1.14/fenriz-desktop-0.1.14.tar.gz
+	sha256sums = f975f23900d0cbce423b83046fc52a6aa7e4e6e4901dbafe6ef84eef6d26692e
 
 pkgname = fenriz-desktop-bin
