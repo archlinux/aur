@@ -1,0 +1,5 @@
+[txc-bin]
+source = "github"
+github = "vorjdux/txc"
+use_latest_release = true
+prefix = "v"

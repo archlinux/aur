@@ -1,0 +1,18 @@
+pkgbase = txc-bin
+	pkgdesc = Off-line text tool CLI for developers' daily work needs, like converting texts, encoding, decoding, UUID generators, etc..
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/vorjdux/txc
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	provides = txc
+	conflicts = txc
+	options = !strip
+	source_x86_64 = txc-x86_64-0.4.0.tgz::https://github.com/vorjdux/txc/releases/download/v0.4.0/txc-0.4.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = fe186fa8eb3dade769001ff96b5a9d8ceb77639eb47949ffbe7ce3334887f9fa
+	source_aarch64 = txc-aarch64-0.4.0.tgz::https://github.com/vorjdux/txc/releases/download/v0.4.0/txc-0.4.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = c11a23f0f9ce8f99e1e70453defbefcdf4a9688cea8bc12d55fe43c6f65c7aea
+
+pkgname = txc-bin
