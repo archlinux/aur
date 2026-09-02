@@ -1,7 +1,7 @@
 pkgbase = slimevr-server
 	pkgdesc = Server for SlimeVR Full Body Tracking System
-	pkgver = 20.1.0
-	pkgrel = 2
+	pkgver = 21.0.0
+	pkgrel = 1
 	url = https://github.com/SlimeVR/SlimeVR-Server
 	arch = x86_64
 	license = MIT
@@ -15,10 +15,10 @@ pkgbase = slimevr-server
 	makedepends = cmake
 	makedepends = ninja
 	options = !lto
-	source = slimevr-server::git+https://github.com/SlimeVR/SlimeVR-Server.git#commit=81a46c2ea50ef7699a338795352ee8addece19fe
+	source = slimevr-server::git+https://github.com/SlimeVR/SlimeVR-Server.git#commit=554976390b7ce27e789038fc8cc1ed04df7ae6de
 	source = flatbuffers::git+https://github.com/google/flatbuffers.git#commit=203241ed3275625c8a25c4a1e7b86e3c0289c488
 	source = openvr::git+https://github.com/ValveSoftware/openvr.git#commit=91825305130f446f82054c1ec3d416321ace0072
-	source = solarxr-protocol::git+https://github.com/SlimeVR/SolarXR-Protocol.git#commit=5d572629c94f895574162225ec69443705ce35af
+	source = solarxr-protocol::git+https://github.com/SlimeVR/SolarXR-Protocol.git#commit=00c38a6dc28070b30850a89c26b17928e56245d4
 	source = slimevr-gui-bin
 	source = slimevr-server-bin
 	source = slimevr-server.service
