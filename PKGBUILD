@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mudlet-bin
 _pkgname=Mudlet
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="⚔️ A cross-platform, open source, and super fast MUD client with scripting in Lua.(Prebuilt version)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.tar::${_ghurl}/releases/download/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage.tar"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('cf8988e1610a0be10286cfd3e0037a5d607060c3369ff28eaa79aed8d98bfc35'
+sha256sums=('fb0d5a0aca3f0f09ed0279598dbc5832122ae7c6a9c17b898a4b3be28288e667'
             'e002b010a25f31d5659799cbcbcecfc25a23e8b16dedf184726d3a7aa812bd79')
 prepare() {
     sed -i -e "
