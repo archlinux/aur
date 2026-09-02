@@ -6,3 +6,9 @@
 *.pkg.tar*
 src/
 pkg/
+*.LICENSE
+LICENSE-*
+README.md-*
+*-x86_64
+*-aarch64
+*-bin-*
