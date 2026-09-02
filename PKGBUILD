@@ -1,6 +1,6 @@
 pkgname=icarus-launcher-bin
 _pkgname=Icarus
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Privacy-focused Minecraft launcher forked from the Modrinth App'
 arch=('x86_64')
@@ -17,7 +17,7 @@ makedepends=('binutils')
 provides=('icarus-launcher')
 conflicts=('icarus-launcher' 'icarus-launcher-git')
 source=("${_pkgname}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('6157eba721b66ee4a310e4404e067d4ed13fe978b5f661156b2a66302e0c62cd')
+sha256sums=('c61ac4b026b6d564f89ef8bfbc7f43a8959a40a86135e6453d50743cd7c391e4')
 
 package() {
 	cd "$srcdir"
