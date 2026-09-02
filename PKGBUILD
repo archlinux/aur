@@ -1,7 +1,7 @@
 # Maintainer: getzze <getzze at gmail dot com>
 
 pkgname=rgx-cli
-pkgver=0.12.1
+pkgver=0.14.2
 pkgrel=1
 pkgdesc="A terminal regex tester with real-time matching and multi-engine support"
 arch=('x86_64')
@@ -14,7 +14,7 @@ _binname=rgx
 provides=('rgx')
 conflicts=('rgx')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/brevity1swos/rgx/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('b8d2f8389a0295ca50700a1847d7995822810723de657a3aa932541ab4923880fa7acd844d00814fde4ace6f22d467191899b3859985eda4308292f7cf57656b')
+sha512sums=('6f3f62225a2c19b3cb33c62e9ae9f7833bba8964c1e99a2520487486a729dfb25c3cb5de05cbad55b569fa4bf354b0efbb9d86c47d8add23227a643cee848fe6')
 
 prepare() {
     cd "$_binname-$pkgver"
