@@ -1,6 +1,6 @@
 pkgbase = magnolia-qda
 	pkgdesc = Free and open-source qualitative data analysis software.
-	pkgver = 1.7.0
+	pkgver = 1.7.1
 	pkgrel = 1
 	url = https://github.com/caledavis/Magnolia
 	arch = x86_64
@@ -23,9 +23,9 @@ pkgbase = magnolia-qda
 	depends = xdg-utils
 	options = !debug
 	options = !strip
-	source = magnolia-qda-1.7.0.zip::https://github.com/caledavis/Magnolia/archive/refs/tags/v1.7.0.zip
+	source = magnolia-qda-1.7.1.zip::https://github.com/caledavis/Magnolia/archive/refs/tags/v1.7.1.zip
 	source = magnolia-qda.desktop
-	sha256sums = 10cc0204fb5a8f8b26eb3e7184c1cd4e0fd941c1212d6143634d5163fae588a5
+	sha256sums = e46c265797ac29deb88b4741dcaf6292e8bcbab43b4b56f0a8618c4ab0e4e6d9
 	sha256sums = ae872917b09c435709d674cf1b66deff859cad2b8401240acdc1af2218917137
 
 pkgname = magnolia-qda
