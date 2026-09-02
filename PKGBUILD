@@ -1,12 +1,16 @@
 # Maintainer: Paul Goessmann <paul.goessmann@proton.me>
 pkgname=pvpn-go
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='Proton VPN client with TUI for Linux (WireGuard + Stealth)'
 arch=('x86_64' 'aarch64')
 url='https://github.com/YourDoritos/pVPN'
 license=('GPL-3.0-or-later')
 depends=('glibc')
+# The server list renders country flags as Unicode regional indicator
+# pairs, so whether they appear depends entirely on the terminal font.
+# On a base Arch install nothing covers that range (issue #2).
+optdepends=('noto-fonts-emoji: country flag glyphs in the server list')
 makedepends=('go>=1.26' 'git')
 install=pvpn-go.install
 backup=('etc/pvpn/config.toml')
