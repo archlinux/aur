@@ -6,8 +6,8 @@
 
 _pkgorg=codeberg.org/mipi
 pkgname=otr
-pkgver=0.11.11
-pkgrel=10
+pkgver=0.11.12
+pkgrel=1
 pkgdesc="Decode and cut video files from Online TV Recorder (OTR)"
 arch=(
   aarch64
@@ -16,7 +16,7 @@ arch=(
 license=(GPL3)
 #source=("https://${_pkgorg}/${pkgname}/archive/${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://${_pkgorg}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('c23cbf1114822bb509cff884737f1b2dd208911ebb683688ec2ae519e2cb326b')
+sha256sums=('6ffc2899f4961a19504baa540d8a1538d3a8919ba6a1d9f9754766b233e0a576')
 validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fsfe.org>
 conflicts=(otr-git)
 depends=(
