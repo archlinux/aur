@@ -2,7 +2,7 @@
 
 pkgname=mangatan-bin
 _pkgname=mangatan
-pkgver=1.2.16
+pkgver=1.2.17
 pkgrel=1
 pkgdesc="Read manga and light novels, and watch anime"
 arch=('x86_64')
@@ -60,7 +60,7 @@ sha256sums=(
   'e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052'
 )
 sha256sums_x86_64=(
-  '9e7219188b21a2095cd4c8eaeed2fee69ffea067c4530499aeb83f9653c5138a'
+  '8c219eff39c8120186b44155e80166d13599ee7f6340cf95f698cbe6c4b76d9e'
 )
 
 package() {
