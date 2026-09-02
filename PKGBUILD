@@ -1,7 +1,7 @@
 # Maintainer: Micro <microgamercz@proton.me> -> https://github.com/MicrogamerCz
 
 pkgname=piki-git
-pkgver=0.4.0.r0.g0fd01ee
+pkgver=0.4.0.r50.g8da92fb
 pkgrel=1
 pkgdesc="Unofficial Kirigami client for Pixiv"
 arch=(x86_64)
@@ -15,8 +15,13 @@ source=("git+https://github.com/MicrogamerCz/Piki")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd Piki
   git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd Piki
+  git submodule update --init --recursive
 }
 
 build() {
