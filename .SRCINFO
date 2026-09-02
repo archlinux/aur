@@ -1,6 +1,6 @@
 pkgbase = mpz
 	pkgdesc = Music player for the large local collections
-	pkgver = 2.1.5
+	pkgver = 2.1.6
 	pkgrel = 0
 	url = https://github.com/olegantonyan/mpz
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = mpz
 	depends = libebur128
 	depends = sqlite3
 	provides = mpz
-	source = mpz-2.1.5-0.zip::https://github.com/olegantonyan/mpz/archive/f7ae89761a4e63359567bc46e946148c16167f6e.zip
-	sha256sums = 7eb362a588bc2339a7b4c7e0bb10b878bb1adc0b9673ea147e18d3a47d19113d
+	source = mpz-2.1.6-0.zip::https://github.com/olegantonyan/mpz/archive/282aa18d57e7fcfb52549dd017943333b6ceea3b.zip
+	sha256sums = b20514598428e3602014c7fbe584fad56a4ba4e9bd6314f0d5f4b9a1541893b1
 
 pkgname = mpz
