@@ -2,28 +2,36 @@
 
 pkgname=waylyrics
 pkgver=0.4.2
-pkgrel=2
+_opencc_rust_ver=2.0.0
+pkgrel=1
 pkgdesc="the furry way to show desktop lyrics"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/${pkgname}/${pkgname}"
 license=("MIT")
 depends=(
-	"openssl" "dbus" "glibc" "libgcc" "glib2" "cairo" "dconf" "gtk4" "wayland"
+	"openssl" "dbus" "glibc" "libgcc" "glib2" "cairo" "dconf" "gtk4" "opencc"
 )
 makedepends=("git" "cargo" "gettext")
 optdepends=(
 	"breeze-icons: better tray-icon icons"
 	"xdg-desktop-portal: file dialog to import LRC"
 )
-source=("git+${url}#tag=v${pkgver}")
-sha256sums=('722363cb2169b598e6f2af3ba1b610124f0488a97552d63ece322fa17e7acfbc')
+source=("git+${url}#tag=v${pkgver}"
+	"git+https://github.com/magiclen/opencc-rust.git#tag=v${_opencc_rust_ver}")
+sha256sums=('722363cb2169b598e6f2af3ba1b610124f0488a97552d63ece322fa17e7acfbc'
+            '2c26a40b3708a359cb3f464d33ef12c6e84f8525cd58b36016539af73a678155')
 options=('!lto')
 
-_features=(--features action-event
+_features=(--features opencc
+           --features action-event
            --features offline-test)
 
 prepare() {
+	sed -i '/MAX_VERSION/d' opencc-rust/build.rs
+
 	cd "${pkgname}/"
+	echo -e "\n[patch.crates-io]\nopencc-rust = { path = '../opencc-rust' }" >> Cargo.toml
+
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target host-tuple
 }
@@ -60,7 +68,7 @@ package() {
 		echo "Installing locale $locale..."
 		mo=${locale/#locales\//} # */LC_MESSAGES/waylyrics.po
 		mo=${mo/%.po/.mo}        # */LC_MESSAGES/waylyrics.mo
-		msgfmt "${locale}" -o - | install -Dm644 /dev/stdin "${pkgdir}/usr/share/locale/${mo}"
+		install -Dm644 <(msgfmt "${locale}" -o -) "${pkgdir}/usr/share/locale/${mo}"
 	done
 
 	install -Dm644 "res/icons/hicolor/scalable/apps/${_app_id}.svg" -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
