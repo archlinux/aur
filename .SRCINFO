@@ -1,0 +1,26 @@
+pkgbase = gnome-shell-extension-night-shift-git
+	pkgdesc = ::Rolling release:: A Small utility to switch the selected preferred mode.
+	pkgver = r48.bd29331
+	pkgrel = 1
+	url = https://github.com/christophermca/gnome-shell-extension-night-shift
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = gnome-shell
+	depends = gjs
+	depends = python
+	provides = gnome-shell-extension-night-shift-git
+	provides = get-sunrise-sunset.service
+	provides = get-sunrise-sunset.timer
+	provides = gnome-night-shift.service
+	provides = gnome-night-shift.timer
+	conflicts = gnome-shell-extension-night-shift-git
+	conflicts = gnome-night-shift-git
+	conflicts = gnome-mode-shift-git
+	conflicts = alacritty-use-theme-with-redshift
+	conflicts = alacritty-use-theme-with-redshift-git
+	source = gnome-shell-extension-night-shift-git::git+https://github.com/christophermca/gnome-shell-extension-night-shift.git/
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-night-shift-git
+	pkgdesc = ::Rolling release:: Changes gnomes perferred mode based on sunrise/sunset
