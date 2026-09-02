@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=colortxt-bin
 _pkgname=ColorTxt
-pkgver=3.8.1
+pkgver=3.8.3
 _electronversion=35
 pkgrel=1
 pkgdesc="A local TXT novel reader that will color the content, bringing you a different reading experience!一款会给内容上色的本地 TXT 小说阅读器，带给你不一样的阅读体验(Prebuilt version.Use system-wide electron)"
@@ -24,8 +24,8 @@ source=(
 )
 sha256sums=('3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('680cb9a6c0e03dde06e76244a2bade9f72bfa8a95288963edb5b5c1542948a16')
-sha256sums_x86_64=('1ff27dc03dca2dbbfc0b54c6be7ece5333f9a234709ae827b7f8b386df387eef')
+sha256sums_aarch64=('4b9663f06f71d9e796aeb33cc03df044a81f1af67ba5d906c2c900a515833eae')
+sha256sums_x86_64=('02360ec93b6549cbb6d56b31f05b05c14ee8f43b09c115815ea12e72f7ac856c')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
