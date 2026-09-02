@@ -2,36 +2,27 @@
 
 pkgname=waylyrics
 pkgver=0.4.2
-_opencc_rust_ver=1.1.19
 pkgrel=1
 pkgdesc="the furry way to show desktop lyrics"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/${pkgname}/${pkgname}"
 license=("MIT")
 depends=(
-	"openssl" "dbus" "glibc" "libgcc" "glib2" "cairo" "dconf" "gtk4" "opencc"
+	"openssl" "dbus" "glibc" "libgcc" "glib2" "cairo" "dconf" "gtk4"
 )
 makedepends=("git" "cargo" "gettext")
 optdepends=(
 	"breeze-icons: better tray-icon icons"
 	"xdg-desktop-portal: file dialog to import LRC"
 )
-source=("git+${url}#tag=v${pkgver}"
-	"git+https://github.com/magiclen/opencc-rust.git#tag=v${_opencc_rust_ver}")
-sha256sums=('90a53d39e6328925f85b73f7fc7b1caae52a5cd3d2f0c387b1093d70f12368ac'
-            'e707c10ee848d597f009796ca2be9676a3d0dbb12fde90aa47d00def176280fb')
+source=("git+${url}#tag=v${pkgver}")
+sha256sums=('90a53d39e6328925f85b73f7fc7b1caae52a5cd3d2f0c387b1093d70f12368ac')
 options=('!lto')
 
-_features=(--features opencc
-           --features action-event
+_features=(--features action-event
            --features offline-test)
 
 prepare() {
-	sed -i '/MAX_VERSION/d' opencc-rust/build.rs
-
-	cd "${pkgname}/"
-	echo -e "\n[patch.crates-io]\nopencc-rust = { path = '../opencc-rust' }" >> Cargo.toml
-
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target host-tuple
 }

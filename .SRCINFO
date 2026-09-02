@@ -18,14 +18,11 @@ pkgbase = waylyrics
 	depends = cairo
 	depends = dconf
 	depends = gtk4
-	depends = opencc
 	optdepends = breeze-icons: better tray-icon icons
 	optdepends = xdg-desktop-portal: file dialog to import LRC
 	options = !lto
 	source = git+https://github.com/waylyrics/waylyrics#tag=v0.4.2
-	source = git+https://github.com/magiclen/opencc-rust.git#tag=v1.1.19
 	sha256sums = 90a53d39e6328925f85b73f7fc7b1caae52a5cd3d2f0c387b1093d70f12368ac
-	sha256sums = e707c10ee848d597f009796ca2be9676a3d0dbb12fde90aa47d00def176280fb
 
 pkgname = waylyrics
 	depends = openssl
@@ -36,5 +33,4 @@ pkgname = waylyrics
 	depends = cairo
 	depends = dconf
 	depends = gtk4
-	depends = opencc
 	depends = hicolor-icon-theme
