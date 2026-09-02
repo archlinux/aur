@@ -1,7 +1,7 @@
 # Maintainer: Nichokas <https://github.com/Nichokas>
 # Binary variant — downloads the prebuilt Linux tarball from GitHub Releases.
 pkgname=grokbot-linux-port-bin
-pkgver=0.32.0
+pkgver=0.35.0
 pkgrel=3
 pkgdesc="Grok Bot desktop — wine-less Linux port (prebuilt tarball from GitHub Releases)"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ provides=('grokbot-linux-port' 'grok-bot' 'grokbot')
 conflicts=('grokbot-linux-port' 'grok-bot')
 source_x86_64=("Grok_Bot_${pkgver}_linux_x64.tar.gz::https://github.com/Nichokas/grokbot-linux-port/releases/download/v${pkgver}/Grok_Bot_${pkgver}_linux_x64.tar.gz")
 source_aarch64=("Grok_Bot_${pkgver}_linux_arm64.tar.gz::https://github.com/Nichokas/grokbot-linux-port/releases/download/v${pkgver}/Grok_Bot_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('dbd2e455d0769441d9f536c68ae048cfc426869aa9c37186a911049bdec9e28b')
-sha256sums_aarch64=('1cd5e834ce6a4b57da1909f945c7da45006821bf93e3c9b673189423db715b65')
+sha256sums_x86_64=('bb32e388b53467f1d0d7c1f5ab0bcedf7afb893f07af85f1576e768831e430ff')
+sha256sums_aarch64=('a236187bb0a40315eae47da5a5b8ff48e2c1c8f33d6c89cedad6535456a2e561')
 
 package() {
   # Per-arch source arrays land the matching tarball under ${srcdir}; pick
