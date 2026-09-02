@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libz-rs-sys-git
-pkgver=0.6.6.r0.g9909ff1
+pkgver=0.6.7.r7.g049540b
 pkgrel=1
 pkgdesc="A zlib implementation in rust available as a C dynamic library"
 arch=('i686' 'x86_64')
@@ -50,7 +50,5 @@ package() {
     --destdir "$pkgdir" \
     --prefix "/usr"
 
-  install -Dm644 "include/zconf.h" "$pkgdir/usr/include/libz_rs-zconf.h"
-  install -Dm644 "include/zlib.h" "$pkgdir/usr/include/libz_rs-zlib.h"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libz-rs-sys"
 }
