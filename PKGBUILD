@@ -1,7 +1,7 @@
 # Maintainer: Hong Shick Pak <hong@hspak.com>
 
 pkgname=flamez
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A live process-lifetime and CPU-activity flamegraph"
 arch=("x86_64")
@@ -24,7 +24,7 @@ optdepends=("libdecor: client-side window decorations on Wayland")
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/hspak/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=("14be6d448ded5a4c183e7523a3658a7fb9162bad03bc0c71c77a3d44e7d9713f")
+sha256sums=("be9b456e44d6f5a61ff3c516e5c73f93e6ec6b28970026fd7dca0de9df115fcd")
 
 build() {
   cd "${pkgname}-${pkgver}"
