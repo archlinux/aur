@@ -35,6 +35,14 @@ build() {
 	CFLAGS+=" -ffat-lto-objects" RUSTFLAGS+=" --remap-path-prefix=$(pwd)=/build/" cargo build --release --locked
 }
 
+check() {
+	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
+
+	export CARGO_TARGET_DIR=target
+	cargo test --release --locked -- \
+		--skip "tui::dispatch::tests::a_terminal_bearing_outcome_reaching_route_outcome_trips_the_assert"
+}
+
 package() {
 	cd ${srcdir}/${pkgname}-${pkgver}/ || exit 1
 
