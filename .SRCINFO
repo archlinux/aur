@@ -1,7 +1,7 @@
 pkgbase = undr
 	pkgdesc = C library with multiple utilities
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/caskstrength/undr
 	arch = x86_64
 	arch = aarch64
