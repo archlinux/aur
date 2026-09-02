@@ -1,7 +1,7 @@
 pkgbase = scalable-cli-bin
 	pkgdesc = Command-line interface for Scalable Capital
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ScalableCapital/scalable-cli
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = scalable-cli-bin
 	depends = glibc
 	depends = gcc-libs
 	depends = ca-certificates
-	optdepends = gnome-keyring: store the session in the keyring instead of plain files
+	optdepends = org.freedesktop.secrets: store the session in the keyring instead of plain files
 	provides = scalable-cli=1.0.0
 	conflicts = scalable-cli
 	conflicts = sc

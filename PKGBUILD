@@ -2,14 +2,14 @@
 
 pkgname=scalable-cli-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Command-line interface for Scalable Capital"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ScalableCapital/scalable-cli"
 license=('Apache-2.0')
 # ca-certificates is not linked, but rustls reads /etc/ssl/certs/ca-certificates.crt at runtime
 depends=('glibc' 'gcc-libs' 'ca-certificates')
-optdepends=('gnome-keyring: store the session in the keyring instead of plain files')
+optdepends=('org.freedesktop.secrets: store the session in the keyring instead of plain files')
 provides=("scalable-cli=${pkgver}")
 # 'sc' (AUR, ncurses spreadsheet) also ships /usr/bin/sc
 conflicts=('scalable-cli' 'sc')
