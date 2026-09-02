@@ -3,8 +3,8 @@
 pkgname=motrix-git
 _debname="app.${pkgname%-git}.native"
 _pkgname=Motrix
-pkgver=2.0.0.beta.25.r0.g804891b
-_electronversion=43
+pkgver=2.0.0.beta.30.r0.gf90f089
+_electronversion=44
 _nodeversion=24
 pkgrel=1
 pkgdesc="A full-featured download manager that supports downloading HTTP, FTP, BitTorrent, Magnet, etc.(Use system-wide electron)"
@@ -141,6 +141,7 @@ build() {
         aarch64) rustup target add aarch64-unknown-linux-musl ;;
     esac
     pnpm run build:native-host -- --platform linux --arch "${_arch}"
+    pnpm run build:finalize-fs -- --platform linux --arch "${_arch}"
     pnpm run build:electron
     pnpm run stage:electron -- --platform linux --arch "${_arch}"
     pnpm exec electron-builder --linux dir -c.electronDist="${ELECTRON_DIST}"
