@@ -5,11 +5,11 @@
 
 pkgbase=caelestia-sddm-git
 pkgname=(
-  caelestia-sddm-locklike-git     # Mimics the original Caelestia lock screen
-  caelestia-sddm-minimalist-git   # Minimalist variant with gradient background
-  caelestia-sddm-minimalistv2-git # Minimalist variant with improved fonts and UI
+  caelestia-sddm-locklike-git       # Mimics the original Caelestia lock screen
+  caelestia-sddm-minimalist-git     # Minimalist variant with gradient background
+  caelestia-sddm-minimalistv2-git   # Minimalist variant with improved fonts and UI
 )
-pkgver=r177.e0efc91
+pkgver=r185.6c8ceff
 pkgrel=1
 arch=('any')
 url='https://github.com/ItsABigIgloo/caelestia-sddm'
@@ -19,6 +19,7 @@ depends=(
   'qt6-declarative'
   'qt6-5compat'
   'qt6-svg'
+  'qt6-multimedia'
   'ttf-rubik-vf'
   'ttf-material-symbols-variable'
   'ttf-roboto'
