@@ -1,6 +1,6 @@
 pkgbase = python-pypixelcolor-git
 	pkgdesc = A Python library and CLI to control iPixel Color devices (Git development version)
-	pkgver = 0.4.0.r13.ga9e9a7c
+	pkgver = 0.4.0.r20.g4a5631a
 	pkgrel = 1
 	url = https://github.com/lucagoc/pypixelcolor
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = python-pypixelcolor-git
 	optdepends = python-textual: interactive font configuration TUI (--font-config)
 	optdepends = python-websockets: WebSocket server bridge
 	optdepends = python-pillow-heif: HEIF/HEIC image format support
-	provides = python-pypixelcolor=0.4.0.r13.ga9e9a7c
-	provides = pypixelcolor=0.4.0.r13.ga9e9a7c
+	provides = python-pypixelcolor=0.4.0.r20.g4a5631a
+	provides = pypixelcolor=0.4.0.r20.g4a5631a
 	conflicts = python-pypixelcolor
 	source = pypixelcolor::git+https://github.com/lucagoc/pypixelcolor.git#branch=main
 	sha256sums = SKIP
