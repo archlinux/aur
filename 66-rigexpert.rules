@@ -1,0 +1,13 @@
+# RigExpert's HID-class analyzers (Stick 200/500 and the AA-N "Zero" line),
+# vendor and product IDs taken from AntScope2's own
+# devinfo/redeviceinfo.cpp (m_devVid/m_devPid, m_bootVid/m_bootPid) rather
+# than guessed: 0483:a1de is normal operating mode, 0483:a1da is the DFU
+# bootloader the firmware updater briefly re-enumerates as.
+#
+# TAG+="uaccess" with mode 0660 grants an ACL to whoever is logged in at the
+# seat (via logind), rather than the previous MODE="0666" world-writable
+# rule. This file is numbered below systemd's 73-seat-late.rules, which runs
+# the uaccess builtin, so the tag lands in time to take effect.
+
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a1de", MODE="0660", TAG+="uaccess"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="a1da", MODE="0660", TAG+="uaccess"

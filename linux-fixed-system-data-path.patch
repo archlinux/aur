@@ -1,0 +1,22 @@
+--- a/main.cpp
++++ b/main.cpp
+@@ -159,7 +159,18 @@
+         g_usbOnly = true;
+     }
+ 
+-    g_raspbian = QSysInfo::productType().contains("raspbian", Qt::CaseInsensitive);
++#ifdef Q_OS_LINUX
++    // Settings::localDataPath()/localDataFolder() already special-case
++    // Raspbian to read/write under a fixed /usr/share/RigExpert/AntScope2
++    // rather than their default outside Raspbian, a folder next to the
++    // executable (only true of a portable, Windows/Mac-style bundle). A
++    // distribution package installs to that same fixed, non-portable shape
++    // on any Linux, not just Raspbian, so take that branch unconditionally
++    // here rather than gating it behind an OS-flavour sniff.
++    g_raspbian = true;
++#else
++    g_raspbian = QSysInfo::productType().contains("raspbian", Qt::CaseInsensitive);
++#endif
+ 
+     QString style;
+     style = Style::messageBox();

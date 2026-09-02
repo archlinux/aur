@@ -1,27 +1,29 @@
 pkgbase = antscope2-git
-	pkgdesc = The AntScope2 software is designed to support various models of RigExpert antenna analyzers under various operating systems. It is commonly used in the hamradio community. Based os Qt5.
-	pkgver = 1.2.6
-	pkgrel = 4
+	pkgdesc = Control and graphing software for RigExpert antenna and cable analyzers (AA/AA-N/AA-BT series, and third-party NanoVNA devices) - git version, tracking a patched branch pending upstream review
+	pkgver = 2.0.3.r0.g0000000
+	pkgrel = 1
 	epoch = 0
 	url = https://github.com/rigexpert/AntScope2
-	install = .INSTALL
 	arch = x86_64
 	arch = i686
 	license = MIT
+	license = GPL-3.0-or-later
 	makedepends = git
-	depends = qt5-base
-	depends = qt5-serialport
+	makedepends = desktop-file-utils
+	depends = qt6-base
+	depends = qt6-serialport
+	depends = qt6-connectivity
 	depends = libusb
-	depends = glibc
-	depends = gcc-libs
-	provides = antcsope2-git
+	optdepends = bluez: for Bluetooth-connected RigExpert AA-BT analyzers
+	provides = antscope2
 	conflicts = antscope2
-	conflicts = antscop2
-	source = antscope2-git::git+https://github.com/rigexpert/AntScope2.git#commit=19323af9b8157dff4c260f516d8bda4b05e6a8a9
-	source = 99-rigexpert.rules
+	source = antscope2-git::git+https://github.com/dc0sk/AntScope2.git#branch=linux-packaging
+	source = linux-fixed-system-data-path.patch
+	source = 66-rigexpert.rules
 	source = antscope2.desktop
-	sha256sums = 62e925e8752670114db77dbf1f599c21736fa8bf7f5fb6fce1c7f62251492d64
-	sha256sums = dd4395c1241a0e6d967f15bf51c0d0668b5755799877066a227913c071635e94
-	sha256sums = 40138b14572497eaa9c8bc605495295c1ad58de421f0c4a0e1efafd7a4b7800e
+	sha256sums = SKIP
+	sha256sums = e2e99afcc8da7c1d6ddf8c61356838489841242694c03b38fd872d76c3806db0
+	sha256sums = c51f359050265216e6728a429dfaa84c7afe498c2f6625b5709b56a79627a7c8
+	sha256sums = 131a376137f36f1eb394d5bd5e1d2897bc0148b92e9d7f52d9a1d37bd967b6d4
 
 pkgname = antscope2-git
