@@ -8,11 +8,11 @@
 
 pkgname=lib32-x265
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Open Source H265/HEVC video encoder. 32bit libraries.'
 arch=('x86_64')
-url='https://bitbucket.org/multicoreware/x265_git'
+url='https://www.x265.org/'
 license=('GPL-2.0-or-later')
 depends=(
   'x265'
@@ -29,7 +29,7 @@ makedepends=(
 )
 provides=('libx265.so')
 source=(
-  "git+${url}#tag=${pkgver}"
+  "git+https://github.com/Multicorewareinc/x265.git#tag=${pkgver}"
   "0001-Fix-build-with-GCC-15.patch"
 )
 b2sums=(
@@ -38,7 +38,7 @@ b2sums=(
 )
 
 prepare() {
-  cd x265_git
+  cd x265
 
   # Fix build with GCC 15
   git apply -3 ../0001-Fix-build-with-GCC-15.patch
@@ -51,7 +51,7 @@ build() {
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   local common_options=(
-    -S x265_git/source
+    -S x265/source
     -G Ninja
     -D CMAKE_INSTALL_PREFIX=/usr
     -D LIB_INSTALL_DIR=lib32
