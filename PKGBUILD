@@ -3,7 +3,7 @@
 pkgname=uefitool-ng
 _pkgname=UEFITool
 _tools=(UEFITool UEFIExtract UEFIFind)
-pkgver=A74
+pkgver=A75
 pkgrel=1
 pkgdesc='UEFI firmware image viewer and editor'
 arch=(armv7h aarch64 i686 x86_64)
@@ -21,14 +21,14 @@ makedepends=(
   vulkan-headers
 )
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b77366f5008ec0504e169a5ff28e9e287c307a0d5f43df590623f123ddab4918')
+sha256sums=('f624ac80cdd716ed5e071d46f1516c84ce99b44fd5ce72663903c0a569c40770')
 
 build() {
   for _tool in "${_tools[@]}"; do
     local cmake_options=(
         -B "${_tool}-build"
         -S "${_pkgname}-${pkgver}/${_tool}"
-        -W no-dev
+        -W no-author
         -D CMAKE_BUILD_TYPE=None
     )
     cmake "${cmake_options[@]}"
