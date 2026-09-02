@@ -2,7 +2,7 @@
 # Contributor: missing-aur project <https://github.com/Cleboost/missing-aur>
 
 pkgname=crunchyroll-downloader-bin
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Downloads anime from Crunchyroll and outputs them in a MKV file (precompiled binary)"
 url="https://github.com/CuteTenshii/crunchyroll-downloader"
@@ -12,7 +12,7 @@ conflicts=("crunchyroll-downloader")
 license=("MIT")
 
 source=("crdl-${pkgver}::${url}/releases/download/${pkgver}/crdl-linux")
-sha256sums=('9ff154e6f5fcac319f3aeb1009a44dd4b810a8cecaf585fed1f0da2d8d333bef')
+sha256sums=('d4cfe611a3dfedc65ce0f7949eb6494767063b5cfbd8d12a87c4ffad255aaf39')
 
 package() {
   install -Dm755 "crdl-${pkgver}" "${pkgdir}/usr/bin/crdl"
