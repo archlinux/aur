@@ -1,0 +1,16 @@
+pkgbase = jcode
+	pkgdesc = The most RAM efficient harness
+	pkgver = 0.81.4
+	pkgrel = 1
+	url = https://github.com/1jehuang/jcode
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	provides = jcode
+	conflicts = jcode-bin
+	options = !lto
+	source = https://github.com/1jehuang/jcode/archive/refs/tags/v0.81.4.tar.gz
+	sha256sums = d765fdfaa58a98c01d97f2d6668d487d5906b05eb253952ad5f19bd369847b94
+
+pkgname = jcode
