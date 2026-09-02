@@ -1,6 +1,6 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=playtimed
-pkgver=0.5.3
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Screen time daemon with personality - parental controls with friendly AI assistant character"
 arch=('any')
@@ -28,7 +28,7 @@ install=playtimed.install
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/aaronsb/playtimed/archive/v$pkgver.tar.gz"
 )
-sha256sums=('78956e8f1271e4bb367f82a45fc59afe565927e1f2650593fdc31742e706477d')
+sha256sums=('26b3fa03a1dc85865368415695d4b0ded59d937d6f1b76cf6961cfcc6b7d5325')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
