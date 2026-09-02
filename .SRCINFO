@@ -1,6 +1,6 @@
 pkgbase = seclists-git
 	pkgdesc = Collection of multiple types of lists used during security assessments
-	pkgver = 2026.1.r278.g9bf7d4cf7
+	pkgver = 2026.1.r300.g7b0b0b855
 	pkgrel = 1
 	url = https://github.com/danielmiessler/seclists
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = seclists-git
 	depends = bash
 	depends = python
 	depends = perl
-	provides = seclists
+	provides = seclists=2026.1.r300.g7b0b0b855
 	conflicts = seclists
 	options = !debug
 	source = git+https://github.com/danielmiessler/seclists

@@ -1,13 +1,13 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 _name=seclists
 pkgname="$_name-git"
-pkgver=2026.1.r278.g9bf7d4cf7
+pkgver=2026.1.r300.g7b0b0b855
 pkgrel=1
 pkgdesc="Collection of multiple types of lists used during security assessments"
 arch=('any')
 url="https://github.com/danielmiessler/$_name"
 license=('MIT')
-provides=("$_name")
+provides=("$_name=$pkgver")
 conflicts=("$_name")
 options=(!debug)
 depends=(
