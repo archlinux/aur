@@ -1,18 +1,21 @@
 pkgbase = mmx-cli
 	pkgdesc = CLI for the MiniMax AI platform
-	pkgver = 1.0.24
+	pkgver = 1.0.25
 	pkgrel = 1
 	url = https://github.com/MiniMax-AI/cli
 	arch = any
 	license = LicenseRef-Unknown
 	depends = nodejs>=18.17
-	noextract = mmx-cli-1.0.24.tgz
+	optdepends = curl: install Claude Code, Grok, or Hermes agents
+	optdepends = git: install the Hermes agent
+	optdepends = npm: install Codex, OpenCode, or Pi agents
+	noextract = mmx-cli-1.0.25.tgz
 	noextract = undici-6.25.0.tgz
-	source = https://registry.npmjs.org/mmx-cli/-/mmx-cli-1.0.24.tgz
+	source = https://registry.npmjs.org/mmx-cli/-/mmx-cli-1.0.25.tgz
 	source = https://registry.npmjs.org/undici/-/undici-6.25.0.tgz
 	source = LICENSE_STATUS
-	sha512sums = 47ba513b7a149968ca38f85e81a603f70f5cd7cb42c914968b4a5e33c07673103dc77044856a5ae60343a46801d4dd8e02543db465ea5cc2083786238e5f8888
+	sha512sums = d4b5640c0de0bb56134f1661f2c09fe498c70b973f701e25618f08724c8ce25c8c60c1508fed4daa51a71a65ec8b5fd8a96f2dbf0495a03600021af433f647ba
 	sha512sums = 660a560c2e6098d8ae63d0a72d55c41fcae5e74c61442b8b340f7b7c05272a2f1146e57813a286df5a434ec2d550a9e88491342375c3ad3784c9d017470e3bc6
-	sha512sums = 5e59bfb18f5591d23e54097c2e978f40a12381c6e5aaa6498dbaffed4e76918abdb3fa7d93a9bfb9813f3680b8c8af40d1b7f73d0feebde956525a4402f07004
+	sha512sums = caf94a26f4a6cda5f26771b14a0f1faeeb3382bf0bbaa3440ae4bb1430250dcec4c48ec95bc8965f75ea8dfdf104880804d663ec5803eaa8cc8160e3ff7434d5
 
 pkgname = mmx-cli
