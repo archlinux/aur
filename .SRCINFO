@@ -11,6 +11,8 @@ pkgbase = lemonbar-ng
 	conflicts = lemonbar
 	conflicts = lemonbar-xft-git
 	source = https://gitlab.com/Abdullah/lemonbar-ng/-/archive/v1.0.0/lemonbar-ng-v1.0.0.tar.gz
+	source = unicode32.patch
 	sha512sums = 91d3cd05ab9c0296ed5b2cc28b51253737f54f15e6a5b454e8551be6990f2e0a09a4db3c1b2fb32adddf64637794eb238b605e36705b97fdd863d14efccb55f1
+	sha512sums = 1e3861e0bec6adb51adb56a9bf0bc6699333e1a389fc0a4ddcd28006e928e64d64fc3e9cc5521daebd06d312725e4e8fdc3f1772af473840296881a0703c7545
 
 pkgname = lemonbar-ng
