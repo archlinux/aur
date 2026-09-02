@@ -1,7 +1,7 @@
 # Maintainer: PoDiax <pd@pdx.ovh>
 _pkgname=openstarbound
 pkgname=openstarbound-bin
-pkgver=0.1.14
+pkgver=0.1.15
 pkgrel=1
 pkgdesc="OpenStarbound Client (requires original Starbound game assets)"
 arch=('x86_64')
@@ -16,10 +16,10 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-  "$_pkgname-$pkgver.zip::https://github.com/OpenStarbound/OpenStarbound/releases/download/v$pkgver/OpenStarbound-Linux-Clang-Client.zip"
+  "$_pkgname-$pkgver.tar.lz::https://github.com/OpenStarbound/OpenStarbound/releases/download/v$pkgver/OpenStarbound-Linux-Clang-Client.tar.lz"
   "starbound.png"
 )
-sha256sums=('72ac75f007d6f18186a8be7ee3cb4adc9396d8c2d41478a42a31dc867c29f2ee'
+sha256sums=('3006d2c4cd290d9146b3ceaf791e9f3bceaec93365cd918b68892cd904e58cda'
             'c9c86ce8ee065e3a96e25778eb1212bf559affeef61c51f0ec4b2cad76ec9193')
 
 prepare() {
@@ -74,8 +74,9 @@ prepare() {
 package() {
   cd "$srcdir"
 
-  unzip -o "$_pkgname-$pkgver.zip" -d "$srcdir"
-  tar -xf "$srcdir/client.tar" -C "$srcdir"
+  # unzip -o "$_pkgname-$pkgver.zip" -d "$srcdir"
+  # tar -xf "$srcdir/client.tar" -C "$srcdir"
+  # mv "$srcdir/client_distribution" "$srcdir/$_pkgname"
   mv "$srcdir/client_distribution" "$srcdir/$_pkgname"
 
   rm -f "$srcdir/$_pkgname/linux/sbinit.config"
