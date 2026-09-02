@@ -1,6 +1,6 @@
 pkgbase = webkitgtk-6.0-devel
 	pkgdesc = Web content engine for GTK (development release)
-	pkgver = 2.53.91
+	pkgver = 2.53.92
 	pkgrel = 1
 	url = https://webkitgtk.org
 	arch = x86_64
@@ -91,13 +91,13 @@ pkgbase = webkitgtk-6.0-devel
 	depends = wayland
 	depends = xdg-dbus-proxy
 	depends = zlib
-	source = https://webkitgtk.org/releases/webkitgtk-2.53.91.tar.xz
-	source = https://webkitgtk.org/releases/webkitgtk-2.53.91.tar.xz.asc
+	source = https://webkitgtk.org/releases/webkitgtk-2.53.92.tar.xz
+	source = https://webkitgtk.org/releases/webkitgtk-2.53.92.tar.xz.asc
 	validpgpkeys = 5AA3BC334FD7E3369E7C77B291C559DBE4C9123B
 	validpgpkeys = 013A0127AC9C65B34FFA62526C1009B693975393
-	sha256sums = aeb40f03d4cbce9eac39a27da15261ac9ed889e10799d0a246f7788299483f3c
+	sha256sums = 2ab7d6b3d586539fac574401a9bfe571c098f85f7835232ae0bc0bae9c9c5bd7
 	sha256sums = SKIP
-	b2sums = 8f34fd94a1c12703b6900e712905d8141efd1afc95f98995068142e7bd517bd1dc481ac644ead5f78923b2f4224fb6b65c70acdb78a29528547265a15275793a
+	b2sums = 76928bf14047e0413c24ef149662206b99d74887b43615f4d118af1bc3c8ebd862648b9c7ffb669961c04a3fd8751c27f090581b3aedb49771f13e7208946b4b
 	b2sums = SKIP
 
 pkgname = webkitgtk-6.0-devel
