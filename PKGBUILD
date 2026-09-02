@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo
 _pkgname=Folo
-pkgver=1.12.0
+pkgver=1.13.0
 _electronversion=43
 _nodeversion=22
 pkgrel=1
@@ -27,7 +27,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/desktop/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('d4bc9f9cbc86343ce5e576e046428afe96930073ed8d0731faa5cf55deef106f'
+sha256sums=('2fab76f305dacb06fd806197edb19c416176ee58d85c3c39d96066ff965767cc'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -110,6 +110,7 @@ package() {
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
 	local _app_dir=$(find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1)
 	cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
     install -Dm644 "${srcdir}/${_pkgname}-desktop-v${pkgver}/apps/desktop/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${_pkgname}-desktop-v${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}-desktop-v${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
