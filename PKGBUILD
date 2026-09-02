@@ -1,36 +1,26 @@
 # Maintainer: CupIvan <mail@cupivan.ru>
 pkgname=xprinter-ppd
-pkgver=1
-pkgrel=3
+pkgver=3.13.55
+pkgrel=1
 pkgdesc="CUPS driver for Xprinter XP-420B, XP-DT325B, XP-H400B, XP-TT325B series"
 url="https://www.xprintertech.com/drivers-2"
 arch=('x86_64')
-options=('!strip')
+options=('!debug')
 
 source=(
-"package.zip::https://www.xprintertech.com/label-printer-1"
+	"package.rar::https://www.xprintertech.com/label-printer-linux"
 )
 sha256sums=(
-'a846b3104beee9f464e211a25482e4dcaa6b3a9a56f8b684f5a6e1885517f1d3'
+	'56da6a61aff7e9e51174e99f63debb690cf4864f5b45fe4325c02bc7f6d54d4c'
 )
 
 build() {
-	FNAME="Xprinter(label-Linux)"
-	tail -n +10 "$FNAME" | tar -xj
-
-	mkdir -p ppd
-	for fname in *.ppd
-	do
-		chmod -x $fname
-		gzip -c $fname > ppd/$fname.gz
-	done
+	FNAME="printer-driver-xprinter_3.13.55_all.deb"
+	ar xv $FNAME
+	tar -xJf data.tar.xz
 }
 
 package() {
-	install -Dm755 xprinter_64 ${pkgdir}/usr/lib/cups/filter/xprinter
-	for path in ./ppd/*
-	do
-		fname=`basename "$path"`
-		install -Dm644 $path "${pkgdir}/usr/share/cups/model/Xprinter/$fname"
-	done
+	install -Dm755 "./opt/xprinter_printer/printer-driver-xprinter/bin/rastertosnailtspl-x64" "${pkgdir}/usr/lib/cups/filter/rastertosnailtspl-xprinter"
+	cp -r ./usr ${pkgdir}
 }
