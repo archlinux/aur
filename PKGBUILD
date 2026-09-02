@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=4.7.0
+pkgver=4.8.0
 pkgrel=1
 _fc_ver=0.1.1
 pkgdesc="Desktop app for secure remote PC control and management"
@@ -61,18 +61,18 @@ makedepends=(
 )
 optdepends=(
   'grim: Screenshot support for wlroots-based compositors'
-  'power-profiles-daemon: Required for Energy Pulse Pro Extension'
-  'python-pynput: Fallback for input control, required for Media Master Pro Extension'
+  'power-profiles-daemon: Required for Energy Pulse Extension'
+  'python-pynput: Fallback for input control, required for Media Master Extension'
   'python-evdev: Input control on Wayland'
   'python-pyperclip: Fallback for clipboard support'
   'python-pystray: Fallback for system tray'
   'spectacle: Screenshot support on KDE Plasma'
-  'speedtest-cli: Required for PC Speed Test Extension'
+  'speedtest-cli: Required for Network Speed Engine Extension'
   'wl-clipboard: Clipboard support on Wayland'
 )
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
         "git+https://github.com/BYTEDz/FerrumCast.git#tag=v${_fc_ver}")
-sha256sums=('796e74f7bf5c9a4e1b19fe23aa868aa10e344301043e84b901355b0f9e614f60'
+sha256sums=('2ae3aa4f0eedd4d82272fa94845ab7057433e8d9cf16b991427b4a83fd0b9037'
             '4656592fed83256d0127454f0502b55c76e086ec235a9236a67716f84d449da0')
 
 prepare() {

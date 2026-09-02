@@ -1,6 +1,6 @@
 pkgbase = pclink
 	pkgdesc = Desktop app for secure remote PC control and management
-	pkgver = 4.7.0
+	pkgver = 4.8.0
 	pkgrel = 1
 	url = https://bytedz.com/products/pclink
 	arch = x86_64
@@ -52,17 +52,17 @@ pkgbase = pclink
 	depends = xdg-desktop-portal
 	depends = xdg-utils
 	optdepends = grim: Screenshot support for wlroots-based compositors
-	optdepends = power-profiles-daemon: Required for Energy Pulse Pro Extension
-	optdepends = python-pynput: Fallback for input control, required for Media Master Pro Extension
+	optdepends = power-profiles-daemon: Required for Energy Pulse Extension
+	optdepends = python-pynput: Fallback for input control, required for Media Master Extension
 	optdepends = python-evdev: Input control on Wayland
 	optdepends = python-pyperclip: Fallback for clipboard support
 	optdepends = python-pystray: Fallback for system tray
 	optdepends = spectacle: Screenshot support on KDE Plasma
-	optdepends = speedtest-cli: Required for PC Speed Test Extension
+	optdepends = speedtest-cli: Required for Network Speed Engine Extension
 	optdepends = wl-clipboard: Clipboard support on Wayland
-	source = PCLink-4.7.0.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v4.7.0.tar.gz
+	source = PCLink-4.8.0.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v4.8.0.tar.gz
 	source = git+https://github.com/BYTEDz/FerrumCast.git#tag=v0.1.1
-	sha256sums = 796e74f7bf5c9a4e1b19fe23aa868aa10e344301043e84b901355b0f9e614f60
+	sha256sums = 2ae3aa4f0eedd4d82272fa94845ab7057433e8d9cf16b991427b4a83fd0b9037
 	sha256sums = 4656592fed83256d0127454f0502b55c76e086ec235a9236a67716f84d449da0
 
 pkgname = pclink
