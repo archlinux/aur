@@ -1,6 +1,6 @@
 pkgbase = tiny-poe2smoother-bin
 	pkgdesc = Desktop app for reducing selected visual and sound effects in Path of Exile 2
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/kengzzzz/tiny-poe2smoother
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = tiny-poe2smoother-bin
 	depends = libxkbcommon-x11
 	depends = libxrender
 	depends = wayland
-	provides = tiny-poe2smoother=0.6.0
+	provides = tiny-poe2smoother=0.6.1
 	conflicts = tiny-poe2smoother
 	options = !strip
 	options = !debug
-	source_x86_64 = poe2smoother-0.6.0-x86_64.tar.gz::https://github.com/kengzzzz/tiny-poe2smoother/releases/download/v0.6.0/poe2smoother-linux-x86_64.tar.gz
-	source_x86_64 = LICENSE-0.6.0::https://raw.githubusercontent.com/kengzzzz/tiny-poe2smoother/v0.6.0/LICENSE
-	sha256sums_x86_64 = fc6fb2ae67dd25e3b6fd670728a7ee13f1f1b13292a14851c922de533a95ac65
+	source_x86_64 = poe2smoother-0.6.1-x86_64.tar.gz::https://github.com/kengzzzz/tiny-poe2smoother/releases/download/v0.6.1/poe2smoother-linux-x86_64.tar.gz
+	source_x86_64 = LICENSE-0.6.1::https://raw.githubusercontent.com/kengzzzz/tiny-poe2smoother/v0.6.1/LICENSE
+	sha256sums_x86_64 = 2808c0744002671848324211ec966ad997f6ca4a03c38c075c1916322f773686
 	sha256sums_x86_64 = 1f88511148f9afc5b1f99d4e21e0f6517011f340c46db5e437b1c5e928e14454
 
 pkgname = tiny-poe2smoother-bin
