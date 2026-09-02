@@ -1,7 +1,7 @@
 pkgbase = hunk
 	pkgdesc = Terminal diffs for humans and agents
 	pkgver = 0.21.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hunk.dev/
 	changelog = CHANGELOG.md
 	arch = aarch64
