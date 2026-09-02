@@ -1,7 +1,7 @@
 pkgbase = codex-security
 	pkgdesc = SDK and CLI for finding, validating, and fixing security vulnerabilities in code
 	pkgver = 0.1.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openai/codex-security
 	arch = x86_64
 	arch = aarch64
