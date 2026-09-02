@@ -7,7 +7,7 @@ set -u
 pkgname='zoiper-bin'
 _pkgname='zoiper'
 pkgver='5.6.13'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='a SIP and IAX2 VoIP softphone'
 arch=('i686' 'x86_64')
 url='https://www.zoiper.com/'
@@ -26,7 +26,7 @@ source=(
 source+=('zoipdl.sh')
 noextract=("${_srcfil}")
 
-sha256sums=('0f722b597d98da1d26cbe1cb243465c989fb1fbdf141a43924dc56face07ff97'
+sha256sums=('91a9947f7b8447f57206aed2f052366a541bbdfc39b2c793227dbaf27d42a17e'
             '4ed406e6786163514ff0714af7417e680c56cbe1edcb297196d6dbee2ffa798b'
             '8d449a3f15d0a1f6307106bcb5f62ec8f921ba2279d5d42042bd0d2beb08f103'
             'b3dd0f8bb4314444177b122d032142459cba606b8f7812a8489d3cbbf83f2b3b'
