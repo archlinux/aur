@@ -1,0 +1,16 @@
+pkgbase = ergopsx-git
+	pkgdesc = PlayStation 1 save manager: memory cards, containers, game breakdowns, consoles over FTP
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/NaikeeAndy/ergopsx
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = pyside6
+	provides = ergopsx
+	conflicts = ergopsx
+	source = ergopsx::git+https://github.com/NaikeeAndy/ergopsx.git
+	sha256sums = SKIP
+
+pkgname = ergopsx-git
