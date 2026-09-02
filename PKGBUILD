@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64' 'riscv64')
 url="https://github.com/${pkgname}/${pkgname}"
 license=("MIT")
 depends=(
-	"openssl" "dbus" "glibc" "libgcc" "glib2" "cairo" "dconf" "gtk4"
+	"openssl" "dbus" "glibc" "libgcc" "glib2" "cairo" "dconf" "gtk4" "wayland"
 )
 makedepends=("git" "cargo" "gettext")
 optdepends=(
@@ -16,13 +16,14 @@ optdepends=(
 	"xdg-desktop-portal: file dialog to import LRC"
 )
 source=("git+${url}#tag=v${pkgver}")
-sha256sums=('90a53d39e6328925f85b73f7fc7b1caae52a5cd3d2f0c387b1093d70f12368ac')
+sha256sums=('722363cb2169b598e6f2af3ba1b610124f0488a97552d63ece322fa17e7acfbc')
 options=('!lto')
 
 _features=(--features action-event
            --features offline-test)
 
 prepare() {
+	cd "${pkgname}/"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target host-tuple
 }
