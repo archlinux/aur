@@ -1,6 +1,6 @@
 pkgbase = crown-nightly-bin
 	pkgdesc = A complete and cross-platform game engine designed for flexibility, performance, and fast-iterations.
-	pkgver = 0.65.0.r9743.g538139a5f
+	pkgver = 0.65.0.r9744.gf70f70fb5
 	pkgrel = 1
 	url = https://www.crownengine.org
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = crown-nightly-bin
 	depends = libx11
 	depends = libxrandr
 	options = !strip
-	source = crown-0.65.0-master-538139a5f-linux-x64.tar.gz::https://drive.usercontent.google.com/download?id=1qVxpPUzxgbG7vnVS8vnCmzaWrgHJmMGC&export=download&confirm=t
+	source = crown-0.65.0-master-f70f70fb5-linux-x64.tar.gz::https://drive.usercontent.google.com/download?id=1TrxFecwelNnY9IHuOKCqt6McnuIUSIqH&export=download&confirm=t
 	source = crown.sh
-	sha256sums = ba56252b2f2512d70b8d4f199bea886d523fca2e71a20724b16183645ec2bddb
+	sha256sums = 388c78e11004254d9b70e7eeb088eddfbbc651287a12a175877e13726948b410
 	sha256sums = 514892dfc9ccfb0d83c847d459642186f532a527af9f46bdb1402218820f7062
 
 pkgname = crown-nightly-bin
