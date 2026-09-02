@@ -1,0 +1,16 @@
+pkgbase = lemonbar-ng
+	pkgdesc = A lightweight status bar with Xft and Nerd Font support
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/Abdullah/lemonbar-ng
+	arch = x86_64
+	license = MIT
+	depends = libxcb
+	depends = libx11
+	depends = libxft
+	conflicts = lemonbar
+	conflicts = lemonbar-xft-git
+	source = https://gitlab.com/Abdullah/lemonbar-ng/-/archive/v1.0.0/lemonbar-ng-v1.0.0.tar.gz
+	sha512sums = 91d3cd05ab9c0296ed5b2cc28b51253737f54f15e6a5b454e8551be6990f2e0a09a4db3c1b2fb32adddf64637794eb238b605e36705b97fdd863d14efccb55f1
+
+pkgname = lemonbar-ng
