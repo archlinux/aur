@@ -1,6 +1,6 @@
 pkgbase = mfem
 	pkgdesc = Lightweight, general, scalable C++ library for finite element methods
-	pkgver = 4.9
+	pkgver = 4.10
 	pkgrel = 1
 	url = https://github.com/mfem/mfem
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = mfem
 	depends = metis
 	depends = hypre
 	depends = openmpi
-	provides = libmfem.so=4.9-64
-	source = mfem-4.9.tar.gz::https://github.com/mfem/mfem/archive/v4.9.tar.gz
-	sha512sums = 946477c5e2f43c00f4c3bd3a1beb644c6dd20d855853599dab390f41ea4177b5652815e56ba8b238b89e8b8a314d278b8ac7ab433c4239bc56d40a6ed484c07f
+	provides = libmfem.so=4.10-64
+	source = mfem-4.10.tar.gz::https://github.com/mfem/mfem/archive/v4.10.tar.gz
+	sha512sums = e47bbedcb6f69d01d20f393e82fa704e1deaca92347bd717288e7d954252e16ef2fe4f3cf9c62510e7e3855956059c88135896f4ce48878c2021135bbde4b063
 
 pkgname = mfem
