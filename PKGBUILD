@@ -1,7 +1,7 @@
 # Maintainer: falser <zhangjf@tongtech.com>
 pkgname=xdg-desktop-portal-omarchy-git
 _pkgname=xdg-desktop-portal-omarchy
-pkgver=0.1.0.r28.g3c631ad
+pkgver=0.1.0.r30.gaa82163
 pkgrel=1
 pkgdesc="XDG Desktop Portal backend for Omarchy (Hyprland)"
 arch=('x86_64' 'aarch64')
