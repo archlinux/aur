@@ -1,7 +1,7 @@
-# Maintainer: Zach Hoffman <zach@zrhoffman.net>
+# Maintainer: Tess Hoffman <tess@zrhoffman.net>
 pkgname=f5fpc
 pkgver=7272.0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0'
 arch=(aarch64 x86_64)
 
@@ -19,7 +19,7 @@ b2sums_x86_64=('a6a5b9e0753372740c16791efe825dd4ad39a41ffc6cadc964264d16a47ceb04
 depends=(openssl)
 makedepends=(tar)
 provides=("${pkgname}" svpn)
-url='https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-client-configuration-11-4-0/4.html'
+url='https://techdocs.f5.com/en-us/edge-client-7-2-7/big-ip-access-policy-manager-edge-client-and-application-configuration-7-2-7/clients-for-linux.html#linux-client-commands'
 license=('commercial')
 
 pkgver() {

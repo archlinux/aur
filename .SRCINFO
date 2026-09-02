@@ -1,8 +1,8 @@
 pkgbase = f5fpc
 	pkgdesc = Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0
 	pkgver = 7272.0.0.2
-	pkgrel = 1
-	url = https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-client-configuration-11-4-0/4.html
+	pkgrel = 2
+	url = https://techdocs.f5.com/en-us/edge-client-7-2-7/big-ip-access-policy-manager-edge-client-and-application-configuration-7-2-7/clients-for-linux.html#linux-client-commands
 	arch = aarch64
 	arch = x86_64
 	license = commercial
