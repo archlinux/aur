@@ -7,7 +7,7 @@
 _pkgorg=codeberg.org/mipi
 pkgname=otr
 pkgver=0.11.11
-pkgrel=2
+pkgrel=6
 pkgdesc="Decode and cut video files from Online TV Recorder (OTR)"
 arch=(
   aarch64
