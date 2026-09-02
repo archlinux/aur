@@ -1,0 +1,12 @@
+[Unit]
+Description=A daemon that automatically manages the performance states of NVIDIA GPUs
+StartLimitInterval=0
+
+[Service]
+DynamicUser=yes
+ExecStart=/usr/bin/nvidia-pstated
+Restart=on-failure
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target
