@@ -2,17 +2,19 @@
 # Contributor: missing-aur project <https://github.com/Cleboost/missing-aur>
 
 pkgname=markamd-appimage
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Local-first markdown editor with live preview, reading mode, diagrams, themes, and context bundles (AppImage)"
 url="https://github.com/mattenarle10/markamd"
 arch=("x86_64")
 depends=("fuse2")
+provides=("markamd")
+conflicts=("markamd")
 options=("!strip")
 license=("MIT")
 
 source=("markamd-appimage-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/marka.md_${pkgver}_amd64.AppImage" "marka.md.png::https://raw.githubusercontent.com/mattenarle10/markamd/main/src-tauri/icons/128x128@2x.png" "marka.md.desktop::https://raw.githubusercontent.com/Cleboost/missing-aur/main/packages/markamd/marka.md.desktop")
-sha256sums=('a4cefcd7d40bc04281e0060175f6fe81b3f6f55359bd02e1bc2ba230f7455226'
+sha256sums=('fcf130a30cd213cefb1c41806f087afc455a5995059243d6105ea3127cf64e1b'
             '5e678fe988a763a6bdf8ac50ec38db2f542dd4e99eb5d157af496d531cb51b39'
             '58f6fa06e28241c76c45286ff235edc7abd98cc22d3e380e088213c3329ccfff')
 
