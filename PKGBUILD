@@ -1,7 +1,7 @@
 # Maintainer: K-Black <k-black@k-black.top>
 pkgname=splayer-next-bin
-pkgver=1.0.0
-pkgrel=9
+pkgver=1.1.0
+pkgrel=1
 options=('!debug')
 pkgdesc="A modern cross-platform music player built with Electron, Vue 3, and TypeScript"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=(
   "https://raw.githubusercontent.com/SPlayer-Dev/SPlayer-Next/dev/LICENSE"
 )
 sha256sums=(
-  '9647c8eb23a3aaaf4b1debbdd65cbeabd67e2f0ce12566986524c14aa636623f'
+  'd9ef2c3b295425e73ef1fa0d71c77f42647f85549ca2cc01422c38f6463a6853'
   '76a97c878c9c7a8321bb395c2b44d3fe2f8d81314d219b20138ed0e2dddd5182'
 )
 
