@@ -2,21 +2,21 @@ From: Tiago de Paula <tiagodepalves@gmail.com>
 Date: Tue, 01 Sep 2026 23:42:02 -0300
 Subject: Remove unused dependencies
 ---
- external/CMakeLists.txt     |    4 ----
- external/glm/CMakeLists.txt |   14 +++++++-------
- 2 files changed, 7 insertions(+), 11 deletions(-)
+ external/CMakeLists.txt     |    5 -----
+ external/glm/CMakeLists.txt |    4 ----
+ 2 files changed, 9 deletions(-)
 
 Index: b/external/CMakeLists.txt
 ===================================================================
 --- a/external/CMakeLists.txt
 +++ b/external/CMakeLists.txt
-@@ -5,13 +5,9 @@ set(FOLDER_NAME ${PROJECT_FOLDER_SDK_EXT
+@@ -5,13 +5,8 @@ set(FOLDER_NAME ${PROJECT_FOLDER_SDK_EXT
  message(STATUS "++++++++++++++++++External CMakeList called" )
  
  if (OPTION_BUILD_APPS_CMP_CLI OR OPTION_BUILD_APPS_CMP_GUI)
 -    include(${CMAKE_CURRENT_LIST_DIR}/glew/CMakeLists.txt)
      include(${CMAKE_CURRENT_LIST_DIR}/glm/CMakeLists.txt)
-     include(${CMAKE_CURRENT_LIST_DIR}/opengl/CMakeLists.txt)
+-    include(${CMAKE_CURRENT_LIST_DIR}/opengl/CMakeLists.txt)
 -    include(${CMAKE_CURRENT_LIST_DIR}/qt5/CMakeLists.txt)
      include(${CMAKE_CURRENT_LIST_DIR}/rapidxml/CMakeLists.txt)
 -    include(${CMAKE_CURRENT_LIST_DIR}/vulkan/CMakeLists.txt)
@@ -28,12 +28,11 @@ Index: b/external/glm/CMakeLists.txt
 ===================================================================
 --- a/external/glm/CMakeLists.txt
 +++ b/external/glm/CMakeLists.txt
-@@ -2,19 +2,19 @@ message(STATUS "++++++++++++++++++ Exter
+@@ -2,16 +2,12 @@ message(STATUS "++++++++++++++++++ Exter
  
  # -------------------------------------------------------------------------
  
 -add_subdirectory(${PROJECT_SOURCE_DIR}/../common/lib/ext/glm ${PROJECT_SOURCE_DIR}/../common/lib/ext/glm EXCLUDE_FROM_ALL)
-+#add_subdirectory(${PROJECT_SOURCE_DIR}/../common/lib/ext/glm ${PROJECT_SOURCE_DIR}/../common/lib/ext/glm EXCLUDE_FROM_ALL)
  
  # -------------------------------------------------------------------------
  # GLM
@@ -43,15 +42,6 @@ Index: b/external/glm/CMakeLists.txt
 -target_include_directories(ExtGLEW INTERFACE
 -    ${PROJECT_SOURCE_DIR}/../common/lib/ext/glm
 -)
-+#target_include_directories(ExtGLEW INTERFACE
-+#    ${PROJECT_SOURCE_DIR}/../common/lib/ext/glm
-+#)
  
  
  # Enable this for newer GLM libs (using older version 0.9.8.0 is been used)
--# target_link_libraries(ExtGLM INTERFACE
--#     glm::glm
--# )
-+target_link_libraries(ExtGLM INTERFACE
-+    glm::glm
-+)
