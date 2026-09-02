@@ -13,7 +13,7 @@
 
 pkgname=unsloth-desktop-bin
 pkgver=0.1.804.beta
-pkgrel=2
+pkgrel=3
 pkgdesc='Unsloth Desktop - train and run open models locally (prebuilt)'
 arch=('x86_64')
 url='https://unsloth.ai/'
@@ -28,15 +28,15 @@ license=('AGPL-3.0-only')
 # and libgcc_s all arrive transitively via gtk3/webkit2gtk, and libunity is an Ubuntu
 # taskbar-badge nicety that is absent from Arch entirely and soft-fails.
 depends=(
-	'webkit2gtk-4.1'
-	'gtk3'
-	'libsoup3'
-	'dbus'
 	'cairo'
+	'curl'
+	'dbus'
 	'gdk-pixbuf2'
 	'glib2'
+	'gtk3'
 	'libayatana-appindicator'
-	'curl'
+	'libsoup3'
+	'webkit2gtk-4.1'
 )
 optdepends=(
 	'git: fetches the triton_kernels training speedup during setup'
@@ -45,6 +45,8 @@ optdepends=(
 	'rocminfo: AMD GPU gfx arch detection; without it setup guesses from PCI IDs'
 	'amdsmi: AMD GPU gfx arch detection; without it setup guesses from PCI IDs'
 )
+provides=("unsloth")
+conflicts=("unsloth")
 options=('!strip')
 
 _debver="${pkgver//./_}"
