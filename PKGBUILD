@@ -1,8 +1,8 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname="gnome-shell-extension-night-shift-git"
 pkgver=r48.bd29331
-pkgrel=1
-pkgdesc="::Rolling release:: A Small utility to switch the selected preferred mode."
+pkgrel=2
+pkgdesc="::Rolling release:: Gnome-shell extension to automatically switch themes/modes/styles when the sun sets or sun rises"
 arch=('any')
 url="https://github.com/christophermca/gnome-shell-extension-night-shift"
 license=('GPL-3.0-or-later')
@@ -19,7 +19,7 @@ conflicts=('gnome-shell-extension-night-shift-git'
            'alacritty-use-theme-with-redshift-git')
 source=("$pkgname::git+https://github.com/christophermca/gnome-shell-extension-night-shift.git/")
 sha256sums=('SKIP')
-depends=( 'gnome-shell' 'gjs' 'python' )
+depends=( 'gnome-shell' )
 
 pkgver() {
    cd "$pkgname"
