@@ -108,22 +108,14 @@ source=(
     # Desktop entry + terminal launcher for `voxtype configure` (TUI surfaced in walker/rofi/etc.)
     "voxtype-configure-$pkgver.desktop::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/voxtype-configure.desktop"
     "voxtype-configure-launcher-$pkgver::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/packaging/scripts/voxtype-configure-launcher"
-    # Quickshell QML tree (new in v0.7.5). voxtype-osd-quickshell probes
-    # /usr/share/voxtype/quickshell/ for shell.qml after the user/runtime
-    # paths, so shipping these files lets users opt in via
-    # [osd] frontend = "quickshell" with no manual file copies. The
-    # voxtype-shared/ subdirectory contains a QML module (Theme, StateReader,
-    # AudioBridge) registered via qmldir — keep the layout intact.
-    "quickshell-shell-$pkgver.qml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/quickshell/shell.qml"
-    "quickshell-OsdSurface-$pkgver.qml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/quickshell/OsdSurface.qml"
-    "quickshell-EnginePicker-$pkgver.qml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/quickshell/EnginePicker.qml"
-    "quickshell-MeetingControls-$pkgver.qml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/quickshell/MeetingControls.qml"
-    "quickshell-voxtype-shared-Theme-$pkgver.qml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/quickshell/voxtype-shared/Theme.qml"
-    "quickshell-voxtype-shared-StateReader-$pkgver.qml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/quickshell/voxtype-shared/StateReader.qml"
-    "quickshell-voxtype-shared-AudioBridge-$pkgver.qml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/quickshell/voxtype-shared/AudioBridge.qml"
-    "quickshell-voxtype-shared-StyleLoader-$pkgver.qml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/quickshell/voxtype-shared/StyleLoader.qml"
-    "quickshell-voxtype-shared-RecipeRenderer-$pkgver.qml::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/quickshell/voxtype-shared/RecipeRenderer.qml"
-    "quickshell-voxtype-shared-qmldir-$pkgver::https://raw.githubusercontent.com/peteonrails/voxtype/v$pkgver/quickshell/voxtype-shared/qmldir"
+    # Quickshell QML tree, copied wholesale from the signed source archive.
+    # Hand-listing individual QML files here is how #488 and #697 happened:
+    # scripts/package.sh tars the whole quickshell/ directory, so deb and rpm
+    # never drifted, while this PKGBUILD's enumeration silently fell behind
+    # twice. The auto-generated GitHub archive is signed byte-for-byte by CI
+    # (see the #415 post-mortem above), so we verify it like every binary.
+    "voxtype-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz"
+    "voxtype-$pkgver.tar.gz.asc::$_github/voxtype-$pkgver.tar.gz.asc"
 )
 sha256sums=(
     # Whisper binaries
@@ -176,16 +168,8 @@ sha256sums=(
     '32144a4a5210092b0aa909f6de7a43ebe8bbf82fa3dfb1f3519787512fdf8e4b'  # voxtype-configure.desktop
     '044b1f7b52cc610ce57ba624111d882029b0ce4bc3e2c2c360f96d07f69e0e85'  # voxtype-configure-launcher
     # Quickshell QML tree (new in v0.7.5)
-    'd3d0b0b24a3fc3e252623a6fad898c7d1d147fb8c2e49de90fbf452e95de63ab'  # quickshell/shell.qml
-    '70a611fd4eabde43189aee0619899827de21e36695191648dc36470d4c333de6'  # quickshell/OsdSurface.qml
-    '4d6eef505ec161080ca92ae6a355ca00dcc7bb05d5b190534a1851fcbb726e55'  # quickshell/EnginePicker.qml
-    '54271a8f0e4b52f40505f32801f4c78399ac356ed1e80906ca8a068ecb7ee734'  # quickshell/MeetingControls.qml
-    'aaa011682b92d8e25863a9ea34a469b897bac15ad939292d8144b012fa05b209'  # quickshell/voxtype-shared/Theme.qml
-    '74345f9d8b77de3f1d6d08a759e52506c606e8af3d04a97a5bfe7954d0f64604'  # quickshell/voxtype-shared/StateReader.qml
-    '2ad530f92f13fc7f1100e6f6c9910878c35d911e91dc60feb902c2542b619230'  # quickshell/voxtype-shared/AudioBridge.qml
-    '45180488129f16a0568c217c743ce7e45831acb0cb287346d6da5b2fc097717b'  # quickshell/voxtype-shared/StyleLoader.qml
-    'd5e9a86946dc8dc2afabdcd00d79d973181e51b2e5e8aea2772960aaf1ff2283'  # quickshell/voxtype-shared/RecipeRenderer.qml
-    '41b894baa1487e47db5f9ec4baeea9c02b6a76d3c8198b4700a88e2cb7ec0b62'  # quickshell/voxtype-shared/qmldir
+    'a4d0a256167f58ce90153077da82620794422f5172c918625d480ff9ffca625e'  # voxtype-$pkgver.tar.gz (source archive)
+    'SKIP'                                                             # voxtype-$pkgver.tar.gz.asc
 )
 
 package() {
@@ -274,26 +258,12 @@ package() {
     # voxtype-shared/ subdirectory holds a QML module (Theme, StateReader,
     # AudioBridge) registered via qmldir — keep the layout intact or
     # `import voxtype-shared 1.0` fails to resolve.
-    install -Dm644 "$srcdir/quickshell-shell-$pkgver.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/shell.qml"
-    install -Dm644 "$srcdir/quickshell-OsdSurface-$pkgver.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/OsdSurface.qml"
-    install -Dm644 "$srcdir/quickshell-EnginePicker-$pkgver.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/EnginePicker.qml"
-    install -Dm644 "$srcdir/quickshell-MeetingControls-$pkgver.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/MeetingControls.qml"
-    install -Dm644 "$srcdir/quickshell-voxtype-shared-Theme-$pkgver.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/Theme.qml"
-    install -Dm644 "$srcdir/quickshell-voxtype-shared-StateReader-$pkgver.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/StateReader.qml"
-    install -Dm644 "$srcdir/quickshell-voxtype-shared-AudioBridge-$pkgver.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/AudioBridge.qml"
-    install -Dm644 "$srcdir/quickshell-voxtype-shared-StyleLoader-$pkgver.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/StyleLoader.qml"
-    install -Dm644 "$srcdir/quickshell-voxtype-shared-RecipeRenderer-$pkgver.qml" \
-        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/RecipeRenderer.qml"
-    install -Dm644 "$srcdir/quickshell-voxtype-shared-qmldir-$pkgver" \
-        "$pkgdir/usr/share/voxtype/quickshell/voxtype-shared/qmldir"
+    # Copy the whole tree so a QML file added upstream can never be missed
+    # here (the #697 failure). Mirrors scripts/package.sh exactly.
+    install -d "$pkgdir/usr/share/voxtype"
+    cp -a "$srcdir/voxtype-$pkgver/quickshell" "$pkgdir/usr/share/voxtype/"
+    find "$pkgdir/usr/share/voxtype/quickshell" -type f -exec chmod 644 {} +
+    find "$pkgdir/usr/share/voxtype/quickshell" -type d -exec chmod 755 {} +
 
     # Desktop entry for the TUI configure command, surfaced in walker/rofi/fuzzel/etc.
     # The launcher discovers a terminal emulator and runs `voxtype configure` inside it.
