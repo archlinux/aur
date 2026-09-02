@@ -15,6 +15,7 @@ path = [
   "compressonator-cmake-build-type.patch",
   "compressonator-gcc-16-fix.patch",
   "compressonator-imath-half-conflict.patch",
+  "compressonator-skip-externals.patch",
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "MIT"
