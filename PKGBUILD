@@ -3,10 +3,10 @@
 _pkgname=firedragon
 __pkgname=$_pkgname
 _rdns=org.garudalinux.$__pkgname
-_pkgver=13.4.0
+_pkgver=13.5.0
 _branding=dr460nized
-_gentoo=firefox-154-patches-02.tar.xz
-_gentoo_exclude=(0015-bgo-940031-wasm-support.patch)
+_gentoo=firefox-155-patches-04.tar.xz
+_gentoo_exclude=(0015-bgo-940031-wasm-support-firefox-155.patch)
 
 pkgname=$__pkgname
 pkgver=${_pkgver//-/_}
@@ -84,8 +84,8 @@ install=$_pkgname.install
 noextract=($_gentoo)
 source=($_pkgname-v$_pkgver.source.tar.xz::$url/-/releases/v$_pkgver/downloads/$_pkgname.source.tar.xz
   https://dev.gentoo.org/~juippis/mozilla/patchsets/$_gentoo)
-sha256sums=('914fb854ee30b7d02564f03f1fa5b13fa83c57dc08d029ace21a4356298dae44'
-  '5222f1168cee7359482894de7189c5da863346c3aaf6cd31967b65a7af0f1158')
+sha256sums=('7c7ea866d0017fa49fa62334e7ac23b67a8e2e6934adbac79be24df2c5ff5b25'
+  '44389430272fc70fb5a86a19f75e24792fd500581431abee8fd042712c364841')
 
 prepare() {
   mkdir -p mozbuild
