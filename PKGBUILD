@@ -1,7 +1,7 @@
 # Maintainer: xpufx <github@xpufx.com>
 pkgname=tone3000-plugin
 pkgver=0.0.2
-pkgrel=1
+pkgrel=4
 pkgdesc="TONE3000 — NAM & IR loader plugin (VST3/CLAP/LV2/Standalone) (Built from source)"
 arch=('x86_64')
 url="https://github.com/tone-3000/tone3000-plugin"
@@ -17,15 +17,21 @@ sha256sums=('SKIP')
 prepare() {
 	cd "tone3000-plugin"
 	git submodule update --init --recursive
-	# UI must be built before CMake (juce_add_binary_data embeds webview)
+	# CMake configure first to fetch JUCE via CPM (UI depends on libs/juce)
+	cmake -B build -S . -G Ninja \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_TOOLCHAIN_FILE=cmake/linux-toolchain.cmake \
+		-DBUILD_AAX=OFF
+	# Now build the UI (needs JUCE present)
 	cd ui
-	npm ci --omit=dev 2>/dev/null || npm ci
+	npm ci
 	npm run build
 	cd ..
 }
 
 build() {
 	cd "tone3000-plugin"
+	# Reconfigure after UI build (UI generates files CMake needs)
 	cmake -B build -S . -G Ninja \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_TOOLCHAIN_FILE=cmake/linux-toolchain.cmake \

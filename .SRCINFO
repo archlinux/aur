@@ -1,7 +1,7 @@
 pkgbase = tone3000-plugin
 	pkgdesc = TONE3000 — NAM & IR loader plugin (VST3/CLAP/LV2/Standalone) (Built from source)
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/tone-3000/tone3000-plugin
 	arch = x86_64
 	license = MIT
