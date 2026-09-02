@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Self-hosted yt-dlp download manager: Web UI, TUI and CLI over one shared queue"
 
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -30,10 +30,10 @@ source=("README-${pkgver}.md::${_ghurlraw}/README.md"
 		"LICENSE-${pkgver}::${_ghurlraw}/LICENSE")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[0]}")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}::${_ghurl}/releases/download/${_gitversion}/${_gitname}_${_gitversion}_${_barch[1]}")
-sha256sums=('38dce672ec5deb387b7b6e0205e7e704b3469e2a02d9b7af6a1db23dd6949078'
+sha256sums=('f55573b4f1a27e5a0363f2c38dbafd7486f647bae586107012faa1a1f13e8a97'
             '426634662573d640259eb5c91df92344c36589556017ce870c84f9a787888153')
-sha256sums_x86_64=('46873c6704b375408ea0f5ef29693901a2138cdc2c5dcfaab843e5d0d629598a')
-sha256sums_aarch64=('33a62bbfd2174e92d36c4d9da97f81f40725d27b57f9e1ff682b75c8a0f1856b')
+sha256sums_x86_64=('cce4b1f4d7f4a79bee5929b6e97c6f523da06af85118da2e2015781c29de3247')
+sha256sums_aarch64=('8b1ba88dbb1da34b0da393dadad7844d46f857b4a7844f1107373e917d298e46')
 
 
 package() {
