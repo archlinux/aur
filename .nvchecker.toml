@@ -1,0 +1,5 @@
+[bashd-ls]
+source = "github"
+github = "matkrin/bashd"
+prefix = "v"
+use_latest_release = true
