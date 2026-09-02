@@ -6,23 +6,24 @@
 
 pkgname=unified-floppy-tool
 _pkgname=UnifiedFloppyTool
-pkgver=4.1.3
+pkgver=4.1.6
 pkg_name_ver="${_pkgname}-${pkgver}"
 pkgrel=1
 pkgdesc="Toolkit for preserving and recovering vintage floppy disks - including flux imaging support (Greaseweazle/KryoFlux)"
 arch=('x86_64')
 url="https://github.com/Axel051171/UnifiedFloppyTool"
 license=('GPL-2.0-or-later')
-depends=('qt6-base' 'qt6-serialport' 'libglvnd' 'glibc' 'libgcc' 'libstdc++')
+depends=('qt6-base' 'qt6-serialport' 'libusb' 'libglvnd' 'glibc' 'libgcc' 'libstdc++')
 makedepends=()
 provides=("unified-floppy-tool")
 conflicts=("unified-floppy-tool")
 source=("https://github.com/Axel051171//${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("a240da531826ea45729b8128fd32e5ad68a8b1276c4dc3eb2e72f1ef5d9f33d6")
+sha256sums=("07333d183bc8cd07397e8b4f7808505733a414d0c81b9446f3584bd1923b0909")
 
 #pkgver() {
 #  cd "${srcdir}/${pkg_name_ver}"
-#	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#  git describe --tags --long | sed 's/^.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+#  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 #}
 
 prepare()
@@ -30,7 +31,7 @@ prepare()
   cd "${srcdir}/${pkg_name_ver}"
 
   # apply patches
-  patch -p0 < "${startdir}/src_formats_amiga_ext_snprintf_c.diff"
+  #patch -p0 < "${startdir}/src_formats_amiga_ext_snprintf_c.diff"
 
   mkdir -p  _build.out;
   cd _build.out;
@@ -62,7 +63,7 @@ package()
   make INSTALL_ROOT="${pkgdir}" install
 
   install -m 755 -D "${pkgdir}/opt/UnifiedFloppyTool/bin/UnifiedFloppyTool" "${pkgdir}/usr/bin/UnifiedFloppyTool"
-  install -m 644 -D "${srcdir}/${pkg_name_ver}/packaging/linux/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -m 644 -D "${srcdir}/${pkg_name_ver}/packaging/linux/io.github.Axel051171.${_pkgname}.desktop" "${pkgdir}/usr/share/applications/io.github.Axel051171.${_pkgname}.desktop"
   install -m 644 -D "${srcdir}/${pkg_name_ver}/resources/icons/${_pkgname}.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
   install -m 644 -D "${srcdir}/${pkg_name_ver}/resources/icons/${_pkgname}.svg" "${pkgdir}/usr/share/icons/${_pkgname}.svg"
 
