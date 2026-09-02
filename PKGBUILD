@@ -6,7 +6,7 @@
 # AUR display). aur-publish.yml bumps that line on each release.
 pkgname=mousehop-git
 _pkgname=mousehop
-pkgver=0.16.0
+pkgver=0.17.0
 pkgrel=1
 pkgdesc='Software KVM Switch / mouse & keyboard sharing software for Local Area Networks (latest main)'
 arch=('x86_64' 'aarch64')
