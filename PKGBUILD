@@ -2,7 +2,7 @@
 pkgname=dn-git
 _pkgname=dawn
 pkgver=r61.219393c
-pkgrel=4
+pkgrel=5
 pkgdesc="Colour-managed image browser"
 url="https://git.janouch.name/p/dawn"
 arch=('x86_64')
@@ -24,6 +24,7 @@ depends=(
   'qt6-base'
   'resvg'
   'shared-mime-info'
+  'vulkan-driver'
   'vulkan-icd-loader'
   'wayland-protocols'
 )
