@@ -1,0 +1,22 @@
+pkgbase = dimcode-bin
+	pkgdesc = AI coding agent CLI and terminal coding assistant
+	pkgver = 0.3.26
+	pkgrel = 1
+	url = https://github.com/arcships/dimcode
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-DimAgent-EULA
+	depends = glibc
+	provides = dimcode
+	conflicts = dimcode-bin-beta
+	options = !strip
+	options = !debug
+	options = !lto
+	source = LICENSE-0.3.26::https://github.com/arcships/dimcode/releases/download/v0.3.26/LICENSE
+	sha256sums = 207c5f7b94bab2649590458fb3d54d2c53db886536a8da0ca4207d96eb332f08
+	source_x86_64 = dimcode-0.3.26-linux-x64.tar.gz::https://github.com/arcships/dimcode/releases/download/v0.3.26/dimcode-0.3.26-linux-x64.tar.gz
+	sha256sums_x86_64 = fb5195e09e674fea021e3ccfc88dec5d9ce070c41c33d6179f048887a4c8ed6a
+	source_aarch64 = dimcode-0.3.26-linux-arm64.tar.gz::https://github.com/arcships/dimcode/releases/download/v0.3.26/dimcode-0.3.26-linux-arm64.tar.gz
+	sha256sums_aarch64 = 7683d07ae2486d3e5f7ad787828fdbcc3d8905c9b3ee42cc081809ece93922bb
+
+pkgname = dimcode-bin
