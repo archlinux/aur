@@ -1,7 +1,7 @@
 pkgbase = otr
 	pkgdesc = Decode and cut video files from Online TV Recorder (OTR)
 	pkgver = 0.11.11
-	pkgrel = 8
+	pkgrel = 9
 	arch = aarch64
 	arch = x86_64
 	license = GPL3
@@ -12,7 +12,7 @@ pkgbase = otr
 	makedepends = clang
 	makedepends = cmake
 	makedepends = go
-	makedepends = llbm
+	makedepends = llvm
 	makedepends = ninja
 	depends = ffmpeg
 	depends = ffms2

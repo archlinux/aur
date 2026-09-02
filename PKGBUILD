@@ -7,7 +7,7 @@
 _pkgorg=codeberg.org/mipi
 pkgname=otr
 pkgver=0.11.11
-pkgrel=8
+pkgrel=9
 pkgdesc="Decode and cut video files from Online TV Recorder (OTR)"
 arch=(
   aarch64
@@ -31,7 +31,7 @@ makedepends=(
   clang # required to build dependency aws-lc-rs / aws-lc-sys
   cmake # -"-
   go    # -"-
-  llbm  # -"-
+  llvm  # -"-
   ninja # -"-
 )
 options=(
