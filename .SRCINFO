@@ -1,5 +1,5 @@
 pkgbase = gnome-night-shift-git
-	pkgdesc = ::Rolling release:: A Small utility to switch the selected preferred mode.
+	pkgdesc = ::Rolling release:: A Small utility that runs in the background changes to dark mode when the sunsets and light mode when the sunrises
 	pkgver = r24.53b3991
 	pkgrel = 2
 	url = https://github.com/christophermca/gnome-night-shift
@@ -14,6 +14,7 @@ pkgbase = gnome-night-shift-git
 	provides = gnome-night-shift.timer
 	provides = auto-update-gnome-theme.path
 	provides = auto-update-gnome-theme.service
+	conflicts = gnome-shell-extension-night-shift-git
 	conflicts = gnome-mode-shift-git
 	conflicts = alacritty-use-theme-with-redshift
 	conflicts = alacritty-use-theme-with-redshift-git
