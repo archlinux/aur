@@ -9,7 +9,7 @@ pkgbase = jwtd
 	makedepends = gcc
 	depends = ncurses
 	depends = openssl
-	depends = undr
+	depends = libundr
 	provides = jwtd
 	conflicts = jwtd
 	source = jwtd::git+https://codeberg.org/caskstrength/jwtd.git#tag=0.2.1
