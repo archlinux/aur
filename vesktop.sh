@@ -1,11 +1,9 @@
 #!/bin/sh
 set -e
 
-# 2. Load user-defined flags
-# The script checks for flags in the following order (later files override/append to earlier ones):
-# 1. System-wide Electron flags: $XDG_CONFIG_HOME/electron-flags.conf
-# 2. App-specific global flags: $XDG_CONFIG_HOME/@appname@-flags.conf
-# 3. App-specific directory flags: $XDG_CONFIG_HOME/@cfgdirname@/@appname@-flags.conf
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-~/.config}
+
+# Load user-defined flags
 flags=""
 for _FLAGS_FILE in \
     "${XDG_CONFIG_HOME}/electron-flags.conf" \
