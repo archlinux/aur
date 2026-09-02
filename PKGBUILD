@@ -36,7 +36,7 @@ _localmodcfg=
 # the ARCH defaults. Useful when the package gets updated and you already went
 # through the trouble of customizing your config options.  NOT recommended when
 # a new kernel is released, but again, convenient for package bumps.
-_use_current=1
+_use_current=
 
 ### Selecting the CPU scheduler
 # ATTENTION - one of three predefined values should be selected!
