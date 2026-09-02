@@ -3,7 +3,7 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.21.0_beta.1
+pkgver=0.21.0
 pkgrel=1
 url='https://www.hunk.dev/'
 changelog=CHANGELOG.md
@@ -14,14 +14,18 @@ makedepends=('bun')
 depends=('glibc' 'icu')
 provides=('hunkdiff')
 options=(!strip !debug)
-source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver/_/-}.tar.gz")
-b2sums=('b5098c34369a0eb3f32afb8593d8fa76d91f1c594ef36849eb6bb72bf997886eba35edadd65d9c9746a868f22a40253c93cf229446ff76c7b2804a87497c61bb')
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver/_/-}.tar.gz"
+        'hunk-embed-envs.patch')
+b2sums=('600fc6114b677e6e854cf1190f987240a93e62d8d1b8cf83a4b044da51bb7cedc2b1a980fea1cc9fbf5b06bfbe9b3fbcb3f866418a7c9788a268d8f5b226d774'
+        '394ad2625af19b834d618b5987b30715fb30d9f5bf8d690f8e22e3186dc8eb6b7e863d65dc3f08d8e900777e93809575790aa33fb9571d2eacdcf1503169da1d')
 
 _install_dir=/urs/lib/hunkdiff
 _skills=(review extensions)
 
 prepare() {
   cd "${pkgname}-${pkgver/_/-}"
+
+  patch -t -Np1 -i ../hunk-embed-envs.patch
 
   bun install \
     --production \
@@ -57,7 +61,7 @@ check() {
   bun test ./test/smoke
 
   # based on https://github.com/modem-dev/hunk/blob/v0.17.7/scripts/smoke-prebuilt-install.ts
-  local help version skill skillPath
+  local help version skill skillPath update
 
   echo -n 'HELP = '
   help=$(dist/hunk --help)
@@ -72,12 +76,16 @@ check() {
     skillPath=$(dist/hunk skill path "${skill}")
     grep -E 'skills/hunk-.*/SKILL\.md$' <<< "${skillPath}"
   done
+
+  echo -n 'UPDATE = '
+  update=$(dist/hunk update || true)
+  grep -E pacman <<< "${update}"
 }
 
 package() {
   cd "${pkgname}-${pkgver/_/-}"
 
-  local hunk_install_dir="${pkgdir}${_hunk_install_dir}"
+  local hunk_install_dir="${pkgdir}${_install_dir}"
 
   install -vD -t "${hunk_install_dir}/" -m755 dist/hunk
   install -vd "${pkgdir}/usr/bin"

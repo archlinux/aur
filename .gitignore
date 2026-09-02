@@ -10,4 +10,5 @@
 # actual package
 !PKGBUILD
 !CHANGELOG.md
+!hunk-*.patch
 !.SRCINFO

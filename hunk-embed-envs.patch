@@ -1,0 +1,25 @@
+From: Tiago de Paula <tiagodepalves@gmail.com>
+Date: Wed, 2 Sep 2026 13:09:38 -0300
+Subject: Allow embedding envs in bun build
+---
+ src/core/install/installSource.ts |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: b/src/core/install/installSource.ts
+===================================================================
+--- a/src/core/install/installSource.ts
++++ b/src/core/install/installSource.ts
+@@ -127,5 +127,5 @@ function isHomebrewExecutablePath(execut
+  */
+ export function resolveDevInstallDir(env: NodeJS.ProcessEnv, homeDir: string | undefined) {
+-  const configured = env[INSTALL_DIR_ENV];
++  const configured = process.env.HUNK_INSTALL_DIR;
+   if (configured) {
+     return configured;
+@@ -165,5 +165,5 @@ function isInsideDirectory(candidatePath
+ /** Read one explicitly declared install source, ignoring values Hunk does not know. */
+ function readDeclaredInstallSource(env: NodeJS.ProcessEnv): InstallSource | undefined {
+-  const declared = env[INSTALL_SOURCE_ENV];
++  const declared = process.env.HUNK_INSTALL_SOURCE;
+   return INSTALL_SOURCES.find((source) => source === declared);
+ }

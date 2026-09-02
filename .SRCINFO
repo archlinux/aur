@@ -1,6 +1,6 @@
 pkgbase = hunk
 	pkgdesc = Terminal diffs for humans and agents
-	pkgver = 0.21.0_beta.1
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://www.hunk.dev/
 	changelog = CHANGELOG.md
@@ -14,7 +14,9 @@ pkgbase = hunk
 	provides = hunkdiff
 	options = !strip
 	options = !debug
-	source = hunk-v0.21.0_beta.1.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v0.21.0-beta.1.tar.gz
-	b2sums = b5098c34369a0eb3f32afb8593d8fa76d91f1c594ef36849eb6bb72bf997886eba35edadd65d9c9746a868f22a40253c93cf229446ff76c7b2804a87497c61bb
+	source = hunk-v0.21.0.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v0.21.0.tar.gz
+	source = hunk-embed-envs.patch
+	b2sums = 600fc6114b677e6e854cf1190f987240a93e62d8d1b8cf83a4b044da51bb7cedc2b1a980fea1cc9fbf5b06bfbe9b3fbcb3f866418a7c9788a268d8f5b226d774
+	b2sums = 394ad2625af19b834d618b5987b30715fb30d9f5bf8d690f8e22e3186dc8eb6b7e863d65dc3f08d8e900777e93809575790aa33fb9571d2eacdcf1503169da1d
 
 pkgname = hunk

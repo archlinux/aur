@@ -15,3 +15,8 @@ SPDX-License-Identifier = "0BSD"
 path = "CHANGELOG.md"
 SPDX-FileCopyrightText = "Hunk contributors"
 SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "hunk-embed-envs.patch"
+SPDX-FileCopyrightText = "Arch Linux contributors"
+SPDX-License-Identifier = "MIT"
