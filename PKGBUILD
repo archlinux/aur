@@ -6,7 +6,7 @@
 
 pkgname=forskscope
 # Keep pkgver in sync with [workspace.package] version in Cargo.toml on each release.
-pkgver=0.167.2
+pkgver=0.168.0
 pkgrel=1
 pkgdesc="Local-first cross-platform diff and merge tool"
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/forskscope/forskscope/archi
 # moment a real tag is cut. Before or at each release, run `updpkgsums` (or
 # `sha256sum` the actual tag tarball) against the real, tagged $pkgver and
 # commit the resulting hash here; do not leave SKIP once a real tag exists.
-sha256sums=('848d3dd25e665c7c6ad3a4065d9ac6b2f9c8893ed6cc8013154469b057c8444a')
+sha256sums=('3be2e5afe0f73806d100f94211de2edd328d858543bf4a72ad8f726e836f978e')
 
 build() {
     cd "$pkgname-$pkgver"
