@@ -1,0 +1,19 @@
+post_install() {
+  cat <<'EOF'
+xdg-desktop-portal-omarchy installed.
+
+Each user on Omarchy / Hyprland should run once:
+
+  xdg-desktop-portal-omarchy-setup
+
+This copies the Quickshell plugin into ~/.config/omarchy/plugins/,
+writes hyprland-portals.conf + xdph.conf, and restarts portal services.
+
+Without Omarchy shell, dialogs fall back to the egui picker where available;
+ScreenCast still uses xdg-desktop-portal-hyprland for capture.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
