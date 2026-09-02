@@ -1,6 +1,6 @@
 pkgbase = python-pymatreader
 	pkgdesc = Python reader for MATLAB .mat files
-	pkgver = 1.2.3
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://pymatreader.readthedocs.io/en/latest/
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-pymatreader
 	depends = python-scipy
 	depends = python-h5py
 	depends = python-xmltodict
-	source = https://files.pythonhosted.org/packages/source/p/pymatreader/pymatreader-1.2.3.tar.gz
-	sha256sums = c64cf87b534a6a44389da061dc7af702dec38ef0423c325fc4208d4c81570baa
+	source = https://files.pythonhosted.org/packages/source/p/pymatreader/pymatreader-1.3.1.tar.gz
+	sha256sums = 19c38ef7e174f1e53f48a2433c92bf0342df56c35df32ec025c05552027cd039
 
 pkgname = python-pymatreader
