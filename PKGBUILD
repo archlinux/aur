@@ -7,7 +7,7 @@
 _pkgorg=codeberg.org/mipi
 _pkgname=otr
 pkgname=${_pkgname}-git
-pkgver=0.11.11
+pkgver=0.11.12
 pkgrel=1
 pkgdesc="Decode and cut video files from Online TV Recorder (OTR)"
 arch=(
@@ -22,12 +22,14 @@ conflicts=(otr)
 depends=(
   ffmpeg
   ffms2
+  openssl
 )
 makedepends=(
   bash
   cargo
   git
   make
+  pkgconf
 )
 options=(
   !debug
