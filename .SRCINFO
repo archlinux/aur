@@ -1,6 +1,6 @@
 pkgbase = mdsh
 	pkgdesc = A markdown shell pre-processor
-	pkgver = 0.9.2
+	pkgver = 0.9.2.r10.gc78e909
 	pkgrel = 1
 	url = https://github.com/zimbatm/mdsh
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = mdsh
 	makedepends = cargo
 	depends = glibc
 	depends = libgcc
-	source = mdsh-v0.9.2.tar.gz::https://github.com/zimbatm/mdsh/archive/refs/tags/v0.9.2.tar.gz
-	b2sums = 7d34e4870c1ad55f59011fb95927dc7c07a4571f61d0f61abeffcfbde5bfed8af80970c7d0bb9920e808a67b6898391e485df87f55b703530a00f019e9fce10d
+	source = mdsh-c78e9090d1450a748d4a21a194d458ee51ad9e7f.tar.gz::https://github.com/zimbatm/mdsh/archive/c78e9090d1450a748d4a21a194d458ee51ad9e7f.tar.gz
+	b2sums = e8a5d7f2913157b780344121833a64ed2a9ac0e6711af9d70c6ab8f31919644f8e300383502a25a2ce9c427e8cf00ad6cfaeee888005f8d3e60e9d73e09434e6
 
 pkgname = mdsh
