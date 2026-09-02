@@ -1,9 +1,13 @@
+# SPDX-FileCopyrightText: 2023-2026 Michael Picht <mipi@fsfe.org>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 # Maintainer: Michael Picht <mipi@fsfe.org>
 
 _pkgorg=codeberg.org/mipi
 pkgname=otr
-pkgver=0.11.7
-pkgrel=2
+pkgver=0.11.11
+pkgrel=1
 pkgdesc="Decode and cut video files from Online TV Recorder (OTR)"
 arch=(
   aarch64
@@ -11,7 +15,7 @@ arch=(
 )
 license=(GPL3)
 source=("https://${_pkgorg}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('84ca52687f8c7145a4c00ccb66e01967838d291e92d75807d50943f626588c12')
+sha256sums=('95542a246c9ad2db5d2c46c93b0abc46e2e6b7d7b20b7fe8aafe597431036c5e')
 validpgpkeys=(11ECD6695134183B3E7AF1C2223AAA374A1D59CE) # Michael Picht <mipi@fsfe.org>
 conflicts=(otr-git)
 depends=(
@@ -31,7 +35,7 @@ options=(
 prepare() {
   cd "${pkgname}" || return
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"  
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
