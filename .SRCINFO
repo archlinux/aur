@@ -1,5 +1,5 @@
 pkgbase = wlapse
-	pkgdesc = A lightweight stopwatch overlay for Wayland
+	pkgdesc = A stopwatch overlay for Wayland that can be turned on and off with a keybind.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/fib-nm/wlapse

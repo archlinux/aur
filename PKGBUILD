@@ -3,7 +3,7 @@
 pkgname=wlapse
 pkgver=0.1.0
 pkgrel=1
-pkgdesc='A lightweight stopwatch overlay for Wayland'
+pkgdesc='A stopwatch overlay for Wayland that can be turned on and off with a keybind.'
 arch=('x86_64')
 url='https://github.com/fib-nm/wlapse'
 license=('MIT')
