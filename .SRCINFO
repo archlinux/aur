@@ -1,6 +1,6 @@
 pkgbase = codepilot-bin
 	pkgdesc = Multi-model AI agent desktop client (prebuilt binary)
-	pkgver = 0.67.11
+	pkgver = 0.67.13
 	pkgrel = 1
 	url = https://github.com/op7418/CodePilot
 	arch = x86_64
@@ -38,17 +38,17 @@ pkgbase = codepilot-bin
 	depends = util-linux-libs
 	depends = xdg-utils
 	optdepends = org.freedesktop.secrets: secret storage backend
-	provides = codepilot=0.67.11
+	provides = codepilot=0.67.13
 	conflicts = codepilot
 	conflicts = codepilot-appimage
-	noextract = CodePilot-0.67.11-amd64.deb
-	noextract = CodePilot-0.67.11-arm64.deb
+	noextract = CodePilot-0.67.13-amd64.deb
+	noextract = CodePilot-0.67.13-arm64.deb
 	options = !strip
-	source = LICENSE-0.67.11::https://raw.githubusercontent.com/op7418/CodePilot/v0.67.11/LICENSE
+	source = LICENSE-0.67.13::https://raw.githubusercontent.com/op7418/CodePilot/v0.67.13/LICENSE
 	sha256sums = e77188ca224977d67c57d8c9cfe595b2bfb4146423cb2c016f8502dd15f8b6cf
-	source_x86_64 = CodePilot-0.67.11-amd64.deb::https://github.com/op7418/CodePilot/releases/download/v0.67.11/CodePilot-0.67.11-amd64.deb
-	sha256sums_x86_64 = 546f4c89bce0db977633960403e61244739027cb43a2d491a00b194544d88459
-	source_aarch64 = CodePilot-0.67.11-arm64.deb::https://github.com/op7418/CodePilot/releases/download/v0.67.11/CodePilot-0.67.11-arm64.deb
-	sha256sums_aarch64 = ae82bad1b8d40de269939627ba80678f5b8062f743884d9ee81152a14d96c02d
+	source_x86_64 = CodePilot-0.67.13-amd64.deb::https://github.com/op7418/CodePilot/releases/download/v0.67.13/CodePilot-0.67.13-amd64.deb
+	sha256sums_x86_64 = 1007c08dd5a96f2909b7eee0bf949dc25e1bb07dde12198321799c0e401f2544
+	source_aarch64 = CodePilot-0.67.13-arm64.deb::https://github.com/op7418/CodePilot/releases/download/v0.67.13/CodePilot-0.67.13-arm64.deb
+	sha256sums_aarch64 = 2cd0c8b682ff2f6af8009f7b5a0451327bb273bd3b5fe9b9478a99334b2ad53b
 
 pkgname = codepilot-bin
