@@ -1,5 +1,5 @@
 pkgbase = tennoworth
-	pkgdesc = Warframe inventory + market dashboard (unmaintained — Linux now ships as an AppImage, see GitHub releases)
+	pkgdesc = Retired at 0.5.0; name retained; use the latest AppImage from GitHub Releases
 	pkgver = 0.5.0
 	pkgrel = 2
 	url = https://github.com/tennoworth/tennoworth

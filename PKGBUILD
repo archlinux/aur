@@ -1,5 +1,9 @@
 # Maintainer: prowly <pmbaprow@gmail.com>
 #
+# RETIRED: frozen at 0.5.0. This package is no longer updated. Its AUR name is
+# intentionally retained in case the channel returns; new installs should use
+# the latest TennoWorth AppImage from GitHub Releases.
+#
 # Builds the desktop app from source against the system's own WebKitGTK,
 # libwayland and GPU stack, so nothing bundled can drift out of step with the
 # host. (The first AppImage this project published failed with `Could not
@@ -8,13 +12,13 @@
 # AppImage is back with those libs stripped. This package never had the
 # problem.)
 #
-# Updates are pacman's job here — the in-app updater no-ops outside an
-# AppImage run (see companion/tennoworth-desktop/src/update.rs).
+# This historical package relied on pacman for updates; the supported AppImage
+# uses the in-app updater instead.
 
 pkgname=tennoworth
 pkgver=0.5.0
 pkgrel=2
-pkgdesc="Warframe inventory + market dashboard (unmaintained — Linux now ships as an AppImage, see GitHub releases)"
+pkgdesc="Retired at 0.5.0; name retained; use the latest AppImage from GitHub Releases"
 arch=('x86_64')
 url="https://github.com/tennoworth/tennoworth"
 license=('MIT')
