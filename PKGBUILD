@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=vnts-git
-pkgver=2.0.3.r0.g7f6388c
+pkgver=2.0.3.r3.ga81c104
 pkgrel=1
 pkgdesc="vnt server"
 arch=($CARCH)
