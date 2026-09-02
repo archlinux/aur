@@ -4,7 +4,7 @@ pkgname=chunker-bin
 _pkgname="${pkgname%-bin}"
 _pkgname_orig=Chunker
 _binname=chunker-electron
-pkgver=1.19.1
+pkgver=1.20.0
 pkgrel=1
 pkgdesc='The open-source Minecraft world converter'
 arch=(x86_64)
@@ -20,15 +20,14 @@ depends=(
   nss
   util-linux-libs
 )
-optdepends=('libappindicator-gtk3:  Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library)'
-)
+optdepends=('libappindicator-gtk3:  Allow applications to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library)')
 
 makedepends=(gzip)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!debug)
 source=("https://github.com/HiveGamesOSS/Chunker/releases/download/${pkgver}/Chunker-${pkgver}-amd64-linux.deb")
-sha256sums=('bd6f5db4385cd1d04caff2ee8f480f1ae92c66c67d69cbb7f0e5aa1fa3397f13')
+sha256sums=('43a218f049e94cc566e9cc2612c0a7d5da5d1f9d28d28e5028eac3ec2cfb9795')
 
 package() {
   bsdtar -xf data.tar.xz -C "${pkgdir}/"
