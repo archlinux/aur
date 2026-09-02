@@ -10,7 +10,7 @@ pkgname='wg_tool'
 pkgdesc='Wireguard VPN administration tool'
 _gitname='wg_tool'
 
-pkgver="10.0.1"
+pkgver="10.2.0"
 pkgrel=1
 url="https://github.com/gene-git/wg_tool"
 
@@ -31,6 +31,7 @@ depends=(
 )
 
 optdepends=(
+    'wg-client: For post-up.sh, post-dn.sh and resolv-manager'
     'python-argcomplete: For command line option completion'
 )
 
@@ -38,8 +39,6 @@ makedepends=(
     'git' 
     'meson'
     'meson-python'
-    'uv'
-    'python-uv-build'
     'rsync'
 )
 

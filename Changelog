@@ -1,9 +1,38 @@
 -------------------------------------------------------
  Changelog    : wg_tool
- Tags         : 9.2.2 ➙ 10.0.1
-              : 2026-01-05 ➙ 2026-08-25
+ Tags         : 9.2.4 ➙ 10.2.0
+              : 2026-01-06 ➙ 2026-09-02
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-09-02   : 10.2.0
+              - fix wrong tag
+
+ 2026-09-02   : 10.1.10, origin/master
+              - **10.1.0**
+            
+                * linux client config output now uses tools provided by *wg-client*.
+            
+                  If you are using linux clients please install *wg-client* package.
+                  It is much better than what was provied in earlier version of wg_tool.
+            
+                  wg-client provides resolv-manager along with post-up.sh and post-dn.sh.
+                  These replace the wg-post-updn script which has therefore been dropped.
+            
+                  wg_tool now also produces wireguard-resolv.conf file since the
+                  new post-up.sh / post-dn.sh scripts from wg-client require a resolv.conf file
+                  to use while wireguard is running.
+            
+                  To get the updated configs and the resolv file use:
+            
+                    wg-tool --refresh
+            
+                * Add wg-client to the optional packages in PKGBUILD.
+                * Package management is now done by meson/mesonpy (drop uv and pyproject.toml)
+            
+                * Disable color for --help as it looks bad on dark terminals.
+ 2026-08-25   ⋯
+              - update docs and Changelogs
 
  2026-08-25   : 10.0.1
               - Fix typo in PKGBUILD using sha256sums not sha512
@@ -31,10 +60,3 @@
               - PKGBUILD small change
  2026-01-05   ⋯
               - update Docs Changelogs
-
- 2026-01-05   : 9.2.3
-              - Docs - update manual build instructions for uv (including ubuntu)
-              - update Docs Changelogs
-
- 2026-01-05   : 9.2.2
-              - Fix typo in Docs/conf.py
