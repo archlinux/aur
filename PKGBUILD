@@ -2,12 +2,12 @@
 
 _majorver=25
 _minorver=0
-_securityver=4
-_updatever=7
-_zulu_build="36.15"
+_securityver=4.1
+_updatever=1
+_zulu_build="36.205"
 pkgname=jre${_majorver}-zulu-bin
-pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
-pkgrel=1
+pkgver=${_majorver}.${_minorver}.${_securityver}+${_updatever}
+pkgrel=2
 pkgdesc='Azul Zulu OpenJDK full runtime environment, bin version.'
 arch=('aarch64' 'x86_64')
 url='https://www.azul.com/downloads/'
@@ -49,11 +49,11 @@ source_x86_64=(
   "freedesktop-java.desktop"
 )
 sha256sums_aarch64=(
-  '94f62bbf0e0c8928dbe97d027a5b96f934d53bb56ee9c9571481d2b7003bc3d2'
+  '7bb8df19d2855ddfc85298d869be5434d3b5835ff186292075ef348c2f8f0f39'
   '58ec2bb43ff9bc98e6d14a5c5559d6768cc1b6e16443f4891134a8406fd4482c'
 )
 sha256sums_x86_64=(
-  '41540814fa9d5c28d329e4e201c31ee020fc66272b01582c261c5a73d574e80e'
+  '30eaf73383f2700bc38fdda000eb0239adc0a22ef055dbffd0b10de10de8c7a3'
   '58ec2bb43ff9bc98e6d14a5c5559d6768cc1b6e16443f4891134a8406fd4482c'
 )
 
@@ -87,6 +87,11 @@ package() {
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}${_jvmdir}/lib/security/cacerts"
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}${_jvmdir}/lib/security/cacerts"
+
+  # Desktop files
+    install -Dm 644 \
+      "${srcdir}/freedesktop-java.desktop" \
+      "${pkgdir}/usr/share/applications/java-java${_majorver}-zulu.desktop"
 }
 
 # vim: ts=2 sw=2 et:
