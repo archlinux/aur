@@ -1,2 +1,3 @@
 KERNEL=="hidraw*", ATTRS{idVendor}=="1038", MODE="0640", GROUP="audio"
-KERNEL=="hidraw*", ATTRS{idVendor}=="$ss_vendor_id", ATTRS{idProduct}=="12e0", MODE="0660", GROUP="audio"
+KERNEL=="hidraw*", ATTRS{idVendor}=="1038", ATTRS{idProduct}=="12e0", MODE="0660", GROUP="audio"
+KERNEL=="hidraw*", ATTRS{idVendor}=="1038", ATTRS{idProduct}=="2244", MODE="0660", GROUP="audio"
