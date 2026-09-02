@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=beadarray
-_pkgver=2.62.1
+_pkgver=2.62.2
 pkgname=r-${_pkgname,,}
-pkgver=2.62.1
+pkgver=2.62.2
 pkgrel=1
 pkgdesc='Quality assessment and low-level analysis for Illumina BeadArray data'
 arch=('x86_64')
@@ -38,7 +38,7 @@ optdepends=(
   r-vsn
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('175e8a5e8aa595a7d84808775acdcf5e3e40211c5065ec18df91da91b47343b2')
+sha256sums=('94258d9f5b3a24ec78f778cbed9a2131ecbc438012116b8113e13d461f6e105e')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
