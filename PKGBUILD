@@ -3,7 +3,7 @@
 # in graf's Forgejo repository via CI.
 
 pkgname=graf-bin
-pkgver=0.7.0.alpha
+pkgver=0.8.0.alpha
 pkgrel=1
 pkgdesc='Git replacement: Sovereign version control for operators and agents'
 arch=('x86_64')
@@ -14,12 +14,12 @@ provides=('graf')
 conflicts=('graf' 'graf-git')
 
 _upstream_repo='https://git.sovereign-society.org/graf-vcs/graf'
-_upstream_tag='v0.7.0-alpha'
-_binary_asset='graf-0.7.0-alpha-x86_64'
-_binary_name='graf-0.7.0-alpha-x86_64'
+_upstream_tag='v0.8.0-alpha'
+_binary_asset='graf-0.8.0-alpha-x86_64'
+_binary_name='graf-0.8.0-alpha-x86_64'
 
 source=("${_binary_name}::${_upstream_repo}/releases/download/${_upstream_tag}/${_binary_asset}")
-sha256sums=('bd1fd3d37a78cfe45a78665b2a18bef9660d5feb313f6c2103577d8f3d96c19b')
+sha256sums=('0f6ca07a9093c341fb05cb874197b754b205224790469b0a791196ecee4358c4')
 
 package() {
     local source_path="${srcdir}/${_binary_name}"

@@ -1,6 +1,6 @@
 pkgbase = graf-bin
 	pkgdesc = Git replacement: Sovereign version control for operators and agents
-	pkgver = 0.7.0.alpha
+	pkgver = 0.8.0.alpha
 	pkgrel = 1
 	url = https://www.graf-forge.org
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = graf-bin
 	provides = graf
 	conflicts = graf
 	conflicts = graf-git
-	source = graf-0.7.0-alpha-x86_64::https://git.sovereign-society.org/graf-vcs/graf/releases/download/v0.7.0-alpha/graf-0.7.0-alpha-x86_64
-	sha256sums = bd1fd3d37a78cfe45a78665b2a18bef9660d5feb313f6c2103577d8f3d96c19b
+	source = graf-0.8.0-alpha-x86_64::https://git.sovereign-society.org/graf-vcs/graf/releases/download/v0.8.0-alpha/graf-0.8.0-alpha-x86_64
+	sha256sums = 0f6ca07a9093c341fb05cb874197b754b205224790469b0a791196ecee4358c4
 
 pkgname = graf-bin
