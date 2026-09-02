@@ -3,8 +3,8 @@
 
 pkgname=lxqt_wallet
 _pkgname="${pkgname//_/-}"
-pkgver=4.0.2
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc='Secure information storage for LXQt'
 arch=(x86_64)
 url='https://github.com/lxqt/lxqt_wallet'
@@ -28,7 +28,7 @@ optdepends=(
   'kwallet: support for KDE wallet storage'
 )
 source=("https://github.com/mhogomchungu/lxqt_wallet/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('3dbfc24555e88f6dd8aa79c2bf22e455f82d6a332e95418b08788d7adc226e50')
+sha256sums=('526556966d5b7944e0fb41d55474780d47518eb51a0966bbc841ee10dccfa407')
 
 build() {
   cd "${_pkgname}-${pkgver}"
