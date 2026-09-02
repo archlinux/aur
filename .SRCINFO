@@ -9,6 +9,8 @@ pkgbase = nvidia-pstated
 	makedepends = cuda
 	depends = nvidia-utils
 	source = nvidia-pstated-1.0.9.tar.gz::https://github.com/sasha0552/nvidia-pstated/archive/refs/tags/v1.0.9.tar.gz
+	source = nvidia-pstated.service
 	sha256sums = 6c566f93baeed37db6e042f8516a574ec28e4744936fa9876f2e87648bad7aea
+	sha256sums = a10ea6fccb64b0b598d6d8fd680ff21c0163d7abb36cc39cf7bbe4f6028a6891
 
 pkgname = nvidia-pstated
