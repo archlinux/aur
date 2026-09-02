@@ -1,7 +1,7 @@
 # Maintainer: Piotr Górski <lucjan.lucjanov@gmail.com>
 
 pkgname=cargo-lbin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Thin cargo-install wrapper targeting /usr/local/bin, crates.io only'
 url='https://github.com/sirlucjan/cargo-lbin'
@@ -10,7 +10,7 @@ license=('MIT' 'Apache-2.0')
 depends=('cargo')
 options=(!lto)
 source=("git+https://github.com/sirlucjan/cargo-lbin?signed#tag=$pkgver")
-sha256sums=('8816f14b83ff38cc63b20fd1d7e80e9d6b1d4888200f10b75d5b8df4235b04c4')
+sha256sums=('ff7c72a3b46a800558183dbe448a5db9b435b028eeb16e502d4adab82ddfed12')
 validpgpkeys=(
  399521CE9D6D65B35EEF0F8C79AFA05ABDB26C5A  # Piotr Gorski <lucjan.lucjanov@gmail.com>
 )
