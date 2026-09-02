@@ -1,8 +1,7 @@
-/*.pkg.tar.gz
-/*.pkg.tar.xz
-/*.pkg.tar.zst
-/*.deb
-/*.rpm
+/f5vpn-ng-*.pkg.tar.gz
+/f5vpn-*.pkg.tar.xz
+/f5vpn-*.pkg.tar.zst
 /license.html
+/linux_f5vpn-*.deb
 /pkg/
 /src/
