@@ -1,6 +1,6 @@
 # Maintainer: Bingusfan360 <bingusfan360@proton.me>
 pkgname=mahoragaos
-pkgver=0.6.0.rc1
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="An agentic backend that *will* be the best"
 arch=('any')
