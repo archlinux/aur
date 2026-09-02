@@ -8,6 +8,7 @@ pkgbase = can-utils-bin
 	provides = can-utils
 	conflicts = can-utils
 	conflicts = can-utils-git
+	options = !debug
 	source = https://github.com/tubbywrestler/can-utils-bin/releases/download/2025.01-3/can-utils-2025.01-3-x86_64.pkg.tar.zst
 	sha256sums = c04e77240c53ab0ae82eb06f4238f87340180d225754faf5c2c680a1eb099f58
 

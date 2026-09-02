@@ -8,6 +8,7 @@ pkgdesc="Linux-CAN / SocketCAN user space applications (precompiled)"
 arch=('x86_64')
 url="https://github.com/linux-can/can-utils"
 license=('GPL-2.0-only')
+options=('!debug')
 provides=('can-utils')
 conflicts=('can-utils' 'can-utils-git')
 
