@@ -1,0 +1,12 @@
+pkgbase = tsl-amd
+	pkgdesc = Helper for tsab.label
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tsablez/tsl-amd
+	arch = any
+	license = GPL3
+	makedepends = git
+	source = tsl-amd.sh::https://raw.githubusercontent.com/tsablez/tsl-amd/refs/heads/main/tsl-amd.sh
+	sha256sums = f60fb83720a83d4a91b8d9e53fcfa3236c0fee213bf9d96b6055ac313a28e0d3
+
+pkgname = tsl-amd
