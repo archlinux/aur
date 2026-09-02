@@ -2,7 +2,7 @@
 
 pkgname=libz-rs-sys
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A zlib implementation in rust available as a C dynamic library"
 arch=('i686' 'x86_64')
 url="https://trifectatech.org/projects/zlib-rs/"
@@ -39,7 +39,5 @@ package() {
     --destdir "$pkgdir" \
     --prefix "/usr"
 
-  install -Dm644 "include/zconf.h" "$pkgdir/usr/include/libz_rs-zconf.h"
-  install -Dm644 "include/zlib.h" "$pkgdir/usr/include/libz_rs-zlib.h"
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/libz-rs-sys"
 }
