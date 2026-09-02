@@ -1,19 +1,22 @@
 pkgbase = shelly-gnome
-	pkgver = 3.0.0+9.gnome2
+	pkgver = 3.1.2.gnome1
 	pkgrel = 1
 	url = https://github.com/Terrabade/Shelly-ALPM-GNOME
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = git
+	makedepends = pkgconf
+	makedepends = gtk4
+	makedepends = libadwaita
 	makedepends = zig>=0.16
 	makedepends = clang
 	makedepends = gettext
-	makedepends = vala
-	makedepends = meson
-	makedepends = ninja
 	makedepends = flatpak
-	source = shelly-gnome-3.0.0+9.gnome2.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v3.0.0+9.gnome2.tar.gz
-	sha256sums = 152bfca5f629035d000bbd30251d52fb58cadc5c614e432341acf7aebb3b9852
+	makedepends = ripgrep
+	makedepends = go-md2man
+	source = shelly-gnome-3.1.2.gnome1.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v3.1.2.gnome1.tar.gz
+	sha256sums = 1fc9cf0a7a82c59b7b1a884717bc5522a7a72f92263a0c8156f2cee85aa49ba7
 
 pkgname = shelly-gnome
 	pkgdesc = Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager.
@@ -33,6 +36,7 @@ pkgname = shelly-gnome
 	depends = gnupg
 	depends = zstd
 	depends = json-glib
+	optdepends = arch-install-scripts: provision fresh roots for --isolated builds
 	optdepends = fish: Fish shell completions
 	optdepends = zsh: Zsh shell completions
 	optdepends = libstarfish: dependency viewer for arch packages
@@ -42,12 +46,13 @@ pkgname = shelly-gnome
 	conflicts = shelly
 	conflicts = shelly-bin
 	conflicts = shelly-git
+	backup = etc/shellybuild.conf
 
 pkgname = shelly-gnome-flatpak-backend
 	pkgdesc = Optional native Flatpak backend for Shelly for GNOME
-	depends = shelly-gnome=3.0.0+9.gnome2-1
+	depends = shelly-gnome=3.1.2.gnome1
 	depends = flatpak
-	provides = shelly-flatpak-backend=3.0.0+9.gnome2
+	provides = shelly-flatpak-backend=3.1.2.gnome1
 	conflicts = shelly-flatpak-backend
 	conflicts = shelly-flatpak-backend-git
 	conflicts = shelly-flatpak-backend-bin

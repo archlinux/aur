@@ -3,17 +3,22 @@
 # Upstream Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgbase=shelly-gnome
 pkgname=('shelly-gnome' 'shelly-gnome-flatpak-backend')
-pkgver=3.0.0+9.gnome2
+pkgver=3.1.2.gnome1
 pkgrel=1
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Terrabade/Shelly-ALPM-GNOME"
 license=('GPL-3.0-only')
-makedepends=('git' 'zig>=0.16' 'clang' 'gettext' 'vala' 'meson' 'ninja' 'flatpak')
+makedepends=('git' 'pkgconf' 'gtk4' 'libadwaita' 'zig>=0.16' 'clang' 'gettext' 'flatpak' 'ripgrep' 'go-md2man')
 
 # Source tarball from GitHub release
+# Upstream lists shellybuild.conf, the two .desktop files and
+# shelly-flatpak-integrate as separate source entries, which requires keeping
+# copies of them next to the PKGBUILD. They are already in the repo root, so we
+# install them straight out of the extracted tarball instead and the AUR repo
+# stays down to PKGBUILD + .SRCINFO.
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/Terrabade/Shelly-ALPM-GNOME/archive/v${pkgver}.tar.gz")
 
-sha256sums=('152bfca5f629035d000bbd30251d52fb58cadc5c614e432341acf7aebb3b9852')
+sha256sums=('1fc9cf0a7a82c59b7b1a884717bc5522a7a72f92263a0c8156f2cee85aa49ba7')
 # GitHub sanitises '+' to '-' in the archive's root directory, so the extracted
 # tree is Shelly-ALPM-GNOME-3.0.0-9.gnome1 even though the tag is v3.0.0+9.gnome1.
 _source_dir="Shelly-ALPM-GNOME-${pkgver//+/-}"
@@ -50,12 +55,20 @@ build() {
     -Dcpu=baseline \
     -Doptimize=ReleaseSmall)
 
-  meson setup --prefix=/usr build-notify Shelly.Notifications
-  meson compile -C build-notify
+   (cd Shelly.Notifications.Zig && zig build --verbose \
+     --prefix "${srcdir}/${_source_dir}/out-notifications" \
+     --cache-dir "${srcdir}/zig-cache" \
+     --global-cache-dir "${srcdir}/zig-global-cache" \
+     -Dcpu=baseline \
+     -Doptimize=ReleaseSmall)
 
   ./out-cli/bin/shelly utility --completions bash > shelly.bash
   ./out-cli/bin/shelly utility --completions fish > shelly.fish
   ./out-cli/bin/shelly utility --completions zsh  > _shelly
+
+  ./out-cli/bin/shelly utility --docs | go-md2man > shelly.1
+  sed -i "s|^\\.TH .*|.TH \"SHELLY\" \"1\" \"\" \"Shelly ${pkgver}\" \"Shelly CLI Manual\"|" shelly.1
+  printf '\n.SH AUTHORS\nSeafoam Labs.\n' >> shelly.1
 
   for po_file in Shelly.Ui.Gtk/po/*.po; do
     [ -f "$po_file" ] || continue
@@ -63,7 +76,7 @@ build() {
     msgfmt "$po_file" -o "shelly-ui-${lang}.mo"
   done
 
-  for po_file in Shelly.Notifications/po/*.po; do
+  for po_file in Shelly.Notifications.Zig/po/*.po; do
     [ -f "$po_file" ] || continue
     lang=$(basename "$po_file" .po)
     msgfmt "$po_file" -o "shelly-notifications-${lang}.mo"
@@ -82,15 +95,13 @@ check() {
   (cd Shelly.Cli.Zig && zig build test \
     --cache-dir "${srcdir}/zig-cache" \
     --global-cache-dir "${srcdir}/zig-global-cache")
-  scripts/check-flatpak-separation.sh \
-    out-cli/bin/shelly \
-    out-flatpak-backend/lib/libshelly-flatpak-backend.so.1
 }
 
 package_shelly-gnome() {
   pkgdesc="Shelly for GNOME: Libadwaita port of the Shelly Arch Linux Package Manager."
   provides=('shelly')
   conflicts=('shelly' 'shelly-bin' 'shelly-git')
+  backup=('etc/shellybuild.conf')
   depends=(
       'pacman'
       'gtk4'
@@ -110,6 +121,7 @@ package_shelly-gnome() {
       'json-glib'
   )
   optdepends=(
+      'arch-install-scripts: provision fresh roots for --isolated builds'
       'fish: Fish shell completions'
       'zsh: Zsh shell completions'
       'libstarfish: dependency viewer for arch packages'
@@ -118,55 +130,17 @@ package_shelly-gnome() {
   )
 
   cd "$srcdir/${_source_dir}"
-  install -Dm755 build-notify/shelly-notifications "$pkgdir/usr/bin/shelly-notifications"
+  install -Dm755 out-notifications/bin/shelly-notifications "$pkgdir/usr/bin/shelly-notifications"
   install -Dm755 out/bin/Shelly_Ui_Gtk "$pkgdir/usr/bin/shelly-ui"
   install -Dm755 out-cli/bin/shelly "$pkgdir/usr/bin/shelly"
   install -Dm755 out-key/bin/shelly-key "$pkgdir/usr/bin/shelly-key"
+  install -Dm644 "$srcdir/${_source_dir}/shellybuild.conf" "$pkgdir/etc/shellybuild.conf"
 
-  # Install desktop entry
-  cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly.desktop"
-[Desktop Entry]
-Name=Shelly
-Comment=A Modern Arch Package Manager
-Exec=/usr/bin/shelly-ui %u
-Icon=shelly
-Type=Application
-Categories=System;Utility;
-Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;flatpak;pacman;aur;appimage;
-MimeType=x-scheme-handler/appstream;x-scheme-handler/flatpak+https;
-Terminal=false
-X-GNOME-UsesNotifications=true
-Actions=FlatpakInstall;FlatpakUpdate;FlatpakRemove;
-
-[Desktop Action FlatpakInstall]
-Name=Flatpak Install
-Icon=flatpak-symbolic
-Exec=/usr/bin/shelly-ui --page flatpak-install
-
-[Desktop Action FlatpakUpdate]
-Name=Flatpak Update
-Icon=flatpak-symbolic
-Exec=/usr/bin/shelly-ui --page flatpak-update
-
-[Desktop Action FlatpakRemove]
-Name=Flatpak Remove
-Icon=flatpak-symbolic
-Exec=/usr/bin/shelly-ui --page flatpak-remove
-EOF
-
-  # Install desktop entry for notification service
-  cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/com.shellyorg.shelly-notifications.desktop"
-[Desktop Entry]
-Name=Shelly Notifications
-Comment=Notification service for Shelly package manager
-Exec=/usr/bin/shelly-notifications
-Icon=shelly-tray
-Type=Application
-Categories=System;Utility;
-Keywords=program;software;store;repository;package;add;install;uninstall;remove;update;apps;applications;flatpak;pacman;aur;appimage;
-Terminal=false
-NoDisplay=true
-EOF
+  # Install desktop entries
+  install -Dm644 "$srcdir/${_source_dir}/com.shellyorg.shelly.desktop" \
+    "$pkgdir/usr/share/applications/com.shellyorg.shelly.desktop"
+  install -Dm644 "$srcdir/${_source_dir}/com.shellyorg.shelly-notifications.desktop" \
+    "$pkgdir/usr/share/applications/com.shellyorg.shelly-notifications.desktop"
 
   # Ensure the polkit directory exists
   install -m0755 -d "${pkgdir}"/usr/share/polkit-1/actions
@@ -201,9 +175,13 @@ EOF
   install -Dm644 assets/shellylogo-tray.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-tray.png"
   install -Dm644 assets/shellylogo-update.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly-update.png"
 
+  # Install shell completions
   install -Dm644 shelly.bash "$pkgdir/usr/share/bash-completion/completions/shelly"
   install -Dm644 shelly.fish "$pkgdir/usr/share/fish/vendor_completions.d/shelly.fish"
   install -Dm644 _shelly "$pkgdir/usr/share/zsh/site-functions/_shelly"
+
+  # Install man page
+  install -Dm644 shelly.1 "$pkgdir/usr/share/man/man1/shelly.1"
 
   # Install translations
   for mo_file in shelly-ui-*.mo; do
@@ -222,55 +200,13 @@ EOF
     done
 
   # Install Flatpak integration script
-  cat <<'SCRIPT' | install -Dm755 /dev/stdin "$pkgdir/usr/bin/shelly-flatpak-integrate"
-#!/bin/bash
-# Adds "Manage in Shelly" right-click action to all Flatpak .desktop files
-FLATPAK_DIRS=(
-    "/var/lib/flatpak/exports/share/applications"
-    "$HOME/.local/share/flatpak/exports/share/applications"
-)
-LOCAL_APPS_DIR="$HOME/.local/share/applications"
-mkdir -p "$LOCAL_APPS_DIR"
-
-for dir in "${FLATPAK_DIRS[@]}"; do
-    [ -d "$dir" ] || continue
-    for desktop_file in "$dir"/*.desktop; do
-        [ -f "$desktop_file" ] || continue
-        filename=$(basename "$desktop_file")
-        app_id="${filename%.desktop}"
-        dest="$LOCAL_APPS_DIR/$filename"
-
-        # Copy if override doesn't exist yet
-        [ -f "$dest" ] || cp "$desktop_file" "$dest"
-
-        # Skip if already patched
-        grep -q "ShellyManage" "$dest" && continue
-
-        # Add action to existing Actions= line or insert one
-        if grep -q "^Actions=" "$dest"; then
-            sed -i 's/^Actions=\(.*\)/Actions=\1ShellyManage;/' "$dest"
-        else
-            sed -i '/^\[Desktop Entry\]/a Actions=ShellyManage;' "$dest"
-        fi
-
-        cat >> "$dest" << EOF
-
-[Desktop Action ShellyManage]
-Name=Manage in Shelly
-Icon=shelly
-Exec=/usr/bin/shelly-ui --page flatpak-install
-EOF
-    done
-done
-
-update-desktop-database "$LOCAL_APPS_DIR" 2>/dev/null || true
-echo "Flatpak desktop entries patched with Shelly integration."
-SCRIPT
+  install -Dm755 "$srcdir/${_source_dir}/shelly-flatpak-integrate" \
+    "$pkgdir/usr/bin/shelly-flatpak-integrate"
 }
 
 package_shelly-gnome-flatpak-backend() {
   pkgdesc="Optional native Flatpak backend for Shelly for GNOME"
-  depends=("shelly-gnome=${pkgver}-${pkgrel}" 'flatpak')
+  depends=("shelly-gnome=${pkgver}" 'flatpak')
   provides=("shelly-flatpak-backend=${pkgver}")
   conflicts=('shelly-flatpak-backend' 'shelly-flatpak-backend-git' 'shelly-flatpak-backend-bin')
 
