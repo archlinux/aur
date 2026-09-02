@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-sh-bin
 pkgdesc="A Linux shell with a powerful line editor and IPC socket extensibility"
 
-pkgver=0.41.3
+pkgver=0.41.4
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -25,14 +25,14 @@ conflicts=("${pkgname%-bin}")
 makedepends=('git')
 depends=('glibc' 'libgcc' 'sqlite')
 
-install=shed.install
+install='shed.install'
 
-options=(!strip)
+options=('!strip')
 
 source=("README-${pkgver}.md::${_ghurlraw}/README.md")
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${pkgver}-${_barch[0]}.tar.gz")
-sha256sums=('cbc0c90a4700ae27077e2ee46229f5e1992946e5bff70b8fd5d6252db9218625')
-sha256sums_x86_64=('38a9c45959b4b8d9cc0d09cd9274a593dd58b9674fbd54d52e897e5e5664cefb')
+sha256sums=('ed05e2c226c82d1687fbbc6521fef82d63451cdcaecfb752d4f03cee89b16dec')
+sha256sums_x86_64=('967d00b813e925cfb3eca525eab8973e2802ad8be2ba71d3dbf0342941aa9da8')
 
 case ${CARCH} in
   ${arch[0]})
