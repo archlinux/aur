@@ -1,6 +1,4 @@
-*.tar.bz2*
-*.tar.zst*
-pkg/
-src/
-firedragon.psd
-firedragon.desktop
+/src/
+/pkg/
+/firedragon/
+*.tar.*
