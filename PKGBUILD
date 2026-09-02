@@ -3,7 +3,7 @@
 pkgname=polland-de-basic
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="A desktop environment built on top of the shoulders of giants and the personality of some guy somewhere. Built on top of hyprland. Comes with minimal extra dependencies apart from function giving ones."
+pkgdesc="A desktop environment built on top of the shoulders of giants and the personality of some guy somewhere. Built on top of hyprland. Comes with some tools a normal person would probably be using."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pol-Jak-295/PolLand"
 license=('AGPL')
