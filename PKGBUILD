@@ -3,7 +3,7 @@
 pkgname=browser-use-cli
 _pyname=browser_use
 pkgver=0.13.8
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for browser automation with AI agents'
 arch=(any)
 url='https://github.com/browser-use/browser-use'
@@ -55,41 +55,45 @@ makedepends=(
   python-installer
   python-wheel
   python-hatchling
+  python-setuptools
 )
 provides=(python-browser-use)
+# Every .tar.gz entry is a PyPI sdist that is built and installed below. The
+# first one is browser-use itself; the rest are runtime dependencies that are
+# not packaged in the official repositories or the AUR. Keep their versions in
+# sync with the pins in upstream's pyproject.toml.
 source=(
   "https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_pyname-$pkgver.tar.gz"
-  "https://files.pythonhosted.org/packages/f5/54/23aae0681500a459fc4498b60754cb8ead8df964d8166e5915edb7e8136c/bubus-1.5.6-py3-none-any.whl"
-  "https://files.pythonhosted.org/packages/56/12/386d8c6bf0448c43674e24d6194c3b57d62e5361e90bca3d58108819ad32/cdp_use-1.4.5-py3-none-any.whl"
-  "https://files.pythonhosted.org/packages/84/e9/6dd224f9056b09622751821a91aa899b6d99447a761c74c4aabf4afd6e45/browser_use_sdk-3.4.2-py3-none-any.whl"
-)
-noextract=(
-  bubus-1.5.6-py3-none-any.whl
-  cdp_use-1.4.5-py3-none-any.whl
-  browser_use_sdk-3.4.2-py3-none-any.whl
+  "https://files.pythonhosted.org/packages/source/b/bubus/bubus-1.5.6.tar.gz"
+  "https://files.pythonhosted.org/packages/source/c/cdp_use/cdp_use-1.4.5.tar.gz"
+  "https://files.pythonhosted.org/packages/source/b/browser_use_sdk/browser_use_sdk-3.4.2.tar.gz"
+  "https://files.pythonhosted.org/packages/source/b/browser_harness/browser_harness-0.1.9.tar.gz"
+  "https://files.pythonhosted.org/packages/source/f/fetch_use/fetch_use-0.4.0.tar.gz"
 )
 sha256sums=('2c868f099a66d8c33c0c346762d9b1c59e7254517bc900d3891e0b84767b977a'
-            '254ae37cd9299941f5e9d6afb11f8e3ce069f83e5b9476f88c6b2e32912f237d'
-            '8f8e2435e3a20e4009d2974144192cf3c132f6c2971338e156198814d9b91ecb'
-            '1c6dac6e44f4ac4d552a3249d0282cb743d0d02bbadda093d78e599392c504d3')
+            '1a5456f0a576e86613a7bd66e819891b677778320b6e291094e339b0d9df2e0d'
+            '0da3a32df46336a03ff5a22bc6bc442cd7d2f2d50a118fd4856f29d37f6d26a0'
+            'be050bc803b31ec4e9f23dfd71d9dc5f1160d7dec0b962327915caf743a10208'
+            '4fa7bfa1f973ecf7f054375878868b79ee096ad6f29dea0783397c730327ac1c'
+            '9511987d4907ec6dac501e21d66946d10098f66b5d21bc2aba4189cd81ba189a')
 
 build() {
-  cd "$_pyname-$pkgver"
-  /usr/bin/python -m build --wheel --no-isolation
+  local _src
+  for _src in "${source[@]##*/}"; do
+    [[ $_src == *.tar.gz ]] || continue
+    cd "$srcdir/${_src%.tar.gz}"
+    python -m build --wheel --no-isolation
+  done
 }
 
 package() {
-  cd "$_pyname-$pkgver"
-  /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
-
-  # Install bundled deps not available in official Arch repos or AUR
-  for _whl in bubus-1.5.6-py3-none-any.whl \
-              cdp_use-1.4.5-py3-none-any.whl \
-              browser_use_sdk-3.4.2-py3-none-any.whl; do
-    /usr/bin/python -m installer --destdir="$pkgdir" "$srcdir/$_whl"
+  local _src
+  for _src in "${source[@]##*/}"; do
+    [[ $_src == *.tar.gz ]] || continue
+    python -m installer --destdir="$pkgdir" "$srcdir/${_src%.tar.gz}"/dist/*.whl
   done
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$_pyname-$pkgver/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim:set sw=2 sts=-1 et:
