@@ -1,6 +1,6 @@
 pkgbase = linyaps-git
 	pkgdesc = Next-Gen Universal Package Manager for Linux (linglong)
-	pkgver = 1.14.0.r6.1fc6f59
+	pkgver = 1.14.0.r7.d3c642c
 	pkgrel = 1
 	url = https://github.com/OpenAtom-Linyaps/linyaps
 	install = linyaps-git.install
