@@ -28,8 +28,10 @@ makedepends=(
   cargo
   git
   make
-  cmake # required to build dependency aws-lc-rs / aws-lc-sys
+  clang # required to build dependency aws-lc-rs / aws-lc-sys
+  cmake # -"-
   go    # -"-
+  llbm  # -"-
   ninja # -"-
 )
 options=(
