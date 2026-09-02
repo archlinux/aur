@@ -1,7 +1,7 @@
 # Maintainer: nathawat <nathawat[at]noreply[dot]codeberg[dot]org>
 
 pkgname=howdy-next-git
-pkgver=3.4.0.r0.gb0b3d29
+pkgver=3.4.0.r22.ge74f9d8
 pkgrel=1
 pkgdesc="C++ rewrite of Howdy facial-recognition authentication on Linux"
 arch=('x86_64')
@@ -74,9 +74,11 @@ build() {
 }
 
 check() {
+	cd "$srcdir/howdy-next"
+
 	ctest \
-		--test-dir "$srcdir/build" \
-		--output-on-failure
+		--preset release \
+		--test-dir "$srcdir/build"
 }
 
 package() {
