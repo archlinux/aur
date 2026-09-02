@@ -1,0 +1,5 @@
+[mdsh]
+source = "github"
+github = "zimbatm/mdsh"
+use_max_tag = true
+prefix = "v"
