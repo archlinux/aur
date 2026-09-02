@@ -2,7 +2,7 @@
 
 _pkgname=ghui
 pkgname=ghui-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Terminal UI for GitHub pull requests"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=("LICENSE-${pkgver}::${url}/raw/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgname}-${pkgver}-linux-x64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64.tar.gz")
 source_aarch64=("${_pkgname}-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-linux-arm64.tar.gz")
 sha256sums=('4994c24b5bbb85529407e8cd0211efcf819236899d2c911cbdb18c00f231273a')
-sha256sums_x86_64=('6ca05990fbdfeb5feafbb0ba46da00590bb2c22366a391bab0b7ca07e39d1550')
-sha256sums_aarch64=('993750a4398726f1693ea1c9a8a29d560529037aa6dac43c5e775a83bac67ca5')
+sha256sums_x86_64=('dd46f080000a3ab9a03a3fc8b14ac0449728b002875365530de5f47375f37921')
+sha256sums_aarch64=('9a90264d830d1dc3388086f0e55a294364beb53c48f33e6e2e7c58a52f044c0d')
 
 latestver() {
   curl -s "https://api.github.com/repos/kitlangton/ghui/releases/latest" | \
