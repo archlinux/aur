@@ -1,6 +1,6 @@
 pkgbase = socket
 	pkgdesc = Command-line interface for socket.dev security analysis, compiled from source
-	pkgver = 1.1.162
+	pkgver = 1.1.164
 	pkgrel = 1
 	url = https://github.com/SocketDev/socket-cli
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = socket
 	conflicts = socket-cli-git
 	conflicts = socket-bin
 	conflicts = socket-git
-	source = socket-1.1.162.tar.gz::https://github.com/SocketDev/socket-cli/archive/refs/tags/v1.1.162.tar.gz
-	sha256sums = 65680ae79fc80876448493e77453eec73b081b1a04d3f53663dfbb3eaf44b8a7
+	source = socket-1.1.164.tar.gz::https://github.com/SocketDev/socket-cli/archive/refs/tags/v1.1.164.tar.gz
+	sha256sums = 15df1e5e6df41e4f57e9a83f4780c8d42414f37ebe2b25748065acff0f870584
 
 pkgname = socket
