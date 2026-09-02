@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-night-shift-git
 	pkgdesc = ::Rolling release:: Gnome-shell extension to automatically switch themes/modes/styles when the sun sets or sun rises
 	pkgver = r48.bd29331
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/christophermca/gnome-shell-extension-night-shift
 	arch = any
 	license = GPL-3.0-or-later
@@ -21,4 +21,3 @@ pkgbase = gnome-shell-extension-night-shift-git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-extension-night-shift-git
-	pkgdesc = ::Rolling release:: Changes gnomes perferred mode based on sunrise/sunset

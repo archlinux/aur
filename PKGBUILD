@@ -1,7 +1,7 @@
 # Maintainer: Christopher McAdams <mca.christopher@gmail.com>
 pkgname="gnome-shell-extension-night-shift-git"
 pkgver=r48.bd29331
-pkgrel=2
+pkgrel=3
 pkgdesc="::Rolling release:: Gnome-shell extension to automatically switch themes/modes/styles when the sun sets or sun rises"
 arch=('any')
 url="https://github.com/christophermca/gnome-shell-extension-night-shift"
@@ -30,6 +30,5 @@ package() {
   cd "$srcdir/$pkgname"
   echo $PWD
   # options and directives that can be overridden
-  pkgdesc="::Rolling release:: Changes gnomes perferred mode based on sunrise/sunset"
   make install
 }
