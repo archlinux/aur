@@ -4,14 +4,14 @@
 
 _pkgname='ksh93'
 pkgname="${_pkgname}-git"
-pkgver=r2107.0bcf7877
+pkgver=r2226.3c351471
 pkgrel=1
 pkgdesc="KornShell 93u+m, fork based on ksh 93u+"
 arch=('x86_64' 'i686' 'pentium4' 'powerpc64le' 'powerpc64' 'powerpc' 'riscv64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/ksh93/ksh/'
 license=('EPL')
 depends=('libmd')
-makedepends=('bash' 'git' 'linux-api-headers')
+makedepends=('git' 'linux-api-headers')
 conflicts=('ksh' 'ksh93')
 provides=('ksh' 'ksh93')
 install='ksh93.install'
@@ -31,7 +31,7 @@ build() {
 	rm -rf ./arch
 	if ! [[ ${_ksh_pgo} == 1 || ${_ksh_pgo} == yes || ${_ksh_pgo} == true ]] || [[ $CC == clang ]]; then
 		export CCFLAGS="${CFLAGS}"         # bin/package uses CCFLAGS rather than CFLAGS.
-		./bin/package make SHELL=/bin/bash # Build ksh (no -j flag because that's still experimental).
+		./bin/package make  # Build ksh (no -j flag because that's still experimental).
 	else
 		# Optional and experimental: Compile ksh with profile guided optimization (making
 		# use of the regression tests) if ${_ksh_pgo} is enabled.
@@ -48,7 +48,7 @@ build() {
 		local use_flags="-fprofile-dir=\"${tmpdir}\" -fprofile-use=\"${tmpdir}\" -fprofile-correction -fno-unroll-loops -Wno-error=coverage-mismatch"
 		export CCFLAGS="${save_ccflags} ${generation_flags}"
 		export LDFLAGS="${save_ldflags} ${generation_flags}"
-		bin/package make SHELL=/bin/bash -j${cores}
+		bin/package make -j${cores}
 		# Run the regression tests to profile ksh
 		local -i status=0
 		./arch/*/bin/ksh bin/shtests -u || status=$?
@@ -67,7 +67,7 @@ build() {
 		export CCFLAGS="${save_ccflags} ${use_flags}"
 		export LDFLAGS="${save_ldflags} ${use_flags}"
 		rm -rf ./arch
-		./bin/package make SHELL=/bin/bash -j${cores}
+		./bin/package make -j${cores}
 		# Cleanup PGO artefacts
 		rm -r "${tmpdir}"
 	fi
