@@ -1,7 +1,7 @@
 # Maintainer: IO-ZetZor <swag100iq111@gmail.com>
 
 pkgname=visor
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="A minimal, fast, graphical UEFI boot manager"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ optdepends=('sbctl: Secure Boot signing with sbctl'
             'python-numpy: VBG backgrounds (visor convert --vbg)')
 install=visor.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('da5fada48a94517adb33c51e7c600f68ab29de41078d00aac4669c0c913a2d31')
+sha256sums=('0d0b93f35a7fb00aee11212339083c1f1ea6c76653ec6bb720795946edfdf658')
 
 _dir="Visor-BootManager-$pkgver"
 
@@ -43,6 +43,7 @@ package() {
   install -Dm644 docs/boot.conf.schema.json "$pkgdir/usr/share/visor/boot.conf.schema.json"
 
   install -Dm755 tools/vbg_encode.py "$pkgdir/usr/share/visor/tools/vbg_encode.py"
+  install -Dm755 tools/visor_encrypt.py "$pkgdir/usr/share/visor/tools/visor_encrypt.py"
 
   if [ -d assets/icons ]; then
     cp -r assets/icons "$pkgdir/usr/share/visor/icons"
