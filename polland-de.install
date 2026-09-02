@@ -1,4 +1,4 @@
-# polland-de-minimal.install
+# polland-de.install
 
 post_install() {
     echo "╔═══════════════════════════════════════════════════╗"
