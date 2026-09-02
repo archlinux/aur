@@ -1,8 +1,8 @@
 # Maintainer: Cypher-Monarch <monarchcypher@gmail.com>
 
 pkgname=cyphergatevpn-bin
-pkgver=2.0.3
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="CypherGate VPN binary release"
 arch=('x86_64')
 url="https://github.com/Cypher-Monarch/CypherGate"
@@ -18,8 +18,8 @@ source=(
 )
 
 sha256sums=(
-  '6d80a2e569ccc7ec66f25b2794b89bd33b3c11a8b3229dd2256052ee8f060489'
-  '7d5beb36a5b026effd228a5f1d46b6c720c843ec4bab954d33c61c8875585b6d'
+  'd8da55a18ecf1f9d4f8e19c9ec708981e62df2dcb3003fc34b47bdb136e62abc'
+  '712b136b484e167ccdf5b85a8dd70f42ef233fb7536d71fda710a2bfffd207eb'
 )
 
 validpgpkeys=(
@@ -37,6 +37,9 @@ package() {
   install -Dm755 "cyphergate.elf" "$pkgdir/opt/CypherGate/cyphergate"
   install -Dm755 "cyphergated.elf" "$pkgdir/opt/CypherGate/cyphergated"
   ln -s "/opt/CypherGate/cyphergate" "$pkgdir/usr/bin/cyphergate"
+
+  install -d "$pkgdir/usr/share/cyphergate/themes"
+  cp -r "themes/." "$pkgdir/usr/share/cyphergate/themes/"
 
   cp -r "Assets" "$pkgdir/opt/CypherGate/"
 
