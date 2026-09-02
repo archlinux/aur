@@ -1,16 +1,21 @@
 -------------------------------------------------------
  Changelog    : wg-client
- Tags         : 7.1.1 ➙ 8.0.1
+ Tags         : 7.2.0 ➙ 8.0.2
               : 2026-01-06 ➙ 2026-09-02
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
 
- 2026-09-02   : 8.0.1
+ 2026-09-02   : 8.0.2
+              - **8.02**
+            
+                * Add missing dependency no PyCidr package used by the ssh listener
+
+ 2026-09-02   : 8.0.1, origin/master
               - meson tweak
               - remove unused from meson.build
               - add meson.options
 
- 2026-09-02   : 8.0.0, origin/master
+ 2026-09-02   : 8.0.0
                   - **8.0.0**
             
                     * Package / build management now uses meson/mesonpy
@@ -40,7 +45,4 @@
               - **Version 7.2.0**
             
                 * Drop unmaintained *netifaces* module - use our own code for what we need.
-              - update Docs/Changelog
-
- 2026-01-06   : 7.1.1
               - update Docs/Changelog
