@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=facsimile
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc='Terminal text editor written in Fortran with VSCode-style keybindings'
 arch=('x86_64' 'i686' 'aarch64')
