@@ -1,6 +1,6 @@
 pkgbase = piki-git
 	pkgdesc = Unofficial Kirigami client for Pixiv
-	pkgver = 0.2.0
+	pkgver = 0.4.0.r0.g0fd01ee
 	pkgrel = 1
 	url = https://github.com/MicrogamerCz/Piki
 	arch = x86_64
@@ -14,7 +14,6 @@ pkgbase = piki-git
 	depends = kconfig
 	depends = kwallet
 	depends = purpose
-	depends = futuresql
 	depends = kcoreaddons
 	depends = qt6-webengine
 	provides = piki
