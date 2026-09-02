@@ -1,0 +1,24 @@
+pkgbase = wallcraft-git
+	pkgdesc = Graphical wallpaper manager for Hyprland with lock screen sync and slideshow
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/Rainkord/WallCraft
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = wayland-protocols
+	depends = qt6-base
+	depends = hyprpaper
+	depends = mpvpaper
+	depends = swww
+	optdepends = papirus-icon-theme: icon theme support
+	provides = wallcraft
+	conflicts = wallcraft
+	conflicts = hyprwall
+	conflicts = hyprwall-git
+	source = wallcraft-git::git+https://github.com/Rainkord/WallCraft
+	sha256sums = SKIP
+
+pkgname = wallcraft-git
