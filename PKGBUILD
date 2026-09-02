@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=p3x-redis-ui-bin
 _pkgname=P3X-Redis-UI
-pkgver=2026.4.3014
-_electronversion=42
+pkgver=2026.10.100
+_electronversion=44
 pkgrel=1
 pkgdesc="A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -25,8 +25,8 @@ source=(
 )
 sha256sums=('1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('c68f75e8751d5649519e1cc4128ff649af778d666adaecf52b40733205903429')
-sha256sums_x86_64=('a7308c827447edec7a5e5413d6be5d0dad79813ebe38cb886c33320bd4f656b1')
+sha256sums_aarch64=('67ba36c9a0870aa4f5192b377667e3460be89d83f53db23203862d8f1220df20')
+sha256sums_x86_64=('eb395949647aa7a386011b38918ab864529fe7c990b088b4c09dda6c4ad50459')
 _get_app_dir() {
     find "${srcdir}" -type f -name "resources.pak" -exec dirname {} + | head -n 1
 }
