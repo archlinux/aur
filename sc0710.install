@@ -1,20 +1,19 @@
 #!/bin/bash
 
-# 4K Pro detection and card naming use /usr/lib/sc0710/sc0710-firmware-lib.sh
+# ECP5 card detection and naming use /usr/lib/sc0710/sc0710-firmware-lib.sh
 
 DRV_NAME="sc0710"
 FW_LIB="/usr/lib/sc0710/sc0710-firmware-lib.sh"
 EXTRACT_SCRIPT="/usr/lib/sc0710/extract-firmware.sh"
-FIRMWARE_FILE="SC0710.FWI.HEX"
 
-is_4k_pro() {
+is_ecp5_card() {
     if [[ -f "$FW_LIB" ]]; then
         # shellcheck source=/dev/null
         source "$FW_LIB"
-        sc0710_is_4k_pro
+        sc0710_requires_ecp5_firmware
         return $?
     fi
-    lspci -n -v -d 12ab:0710 2>/dev/null | grep -qi "1cfa:0012"
+    lspci -n -v -d 12ab:0710 2>/dev/null | grep -qiE "1cfa:00(11|12)"
 }
 
 detect_card_name() {
@@ -38,9 +37,9 @@ print_mk2_next_steps() {
     echo "  sc0710-cli --status"
 }
 
-print_4k_pro_next_steps() {
-    echo "4K Pro — the driver programs the ECP5 FPGA when it loads, and refuses"
-    echo "to bind the card if it can't (missing firmware file, upload failure)."
+print_ecp5_next_steps() {
+    echo "This card uses volatile ECP5 firmware. The driver uploads it when it loads"
+    echo "and refuses to bind the card if it cannot upload the matching file."
     echo ""
     echo "Check driver and firmware status:"
     echo "  sc0710-cli --status"
@@ -52,9 +51,9 @@ print_4k_pro_next_steps() {
 }
 
 firmware_present() {
-    [[ -f "/lib/firmware/sc0710/$FIRMWARE_FILE" ]] || \
-    [[ -f "/etc/firmware/sc0710/$FIRMWARE_FILE" ]] || \
-    [[ -f "/var/lib/sc0710/firmware/$FIRMWARE_FILE" ]]
+    source "$FW_LIB"
+    sc0710_init_firmware_paths
+    sc0710_firmware_present
 }
 
 setup_modprobe_boot() {
@@ -68,11 +67,11 @@ EOF
     fi
 }
 
-setup_4k_pro() {
-    echo "Configuring ECP5 firmware for 4K Pro..."
+setup_ecp5_card() {
+    echo "Configuring ECP5 runtime firmware..."
 
     if ! firmware_present && [[ -x "$EXTRACT_SCRIPT" ]]; then
-        echo "Extracting ECP5 firmware (requires network)..."
+        echo "Looking for an official Elgato installer on disk..."
         if ! bash "$EXTRACT_SCRIPT"; then
             echo "warning: firmware extraction failed; the driver will refuse to bind the"
             echo "card until the firmware is installed: sudo bash $EXTRACT_SCRIPT"
@@ -137,10 +136,10 @@ post_install_common() {
     echo "  sc0710-cli --help"
     echo ""
 
-    if is_4k_pro; then
-        setup_4k_pro
+    if is_ecp5_card; then
+        setup_ecp5_card
         echo ""
-        print_4k_pro_next_steps
+        print_ecp5_next_steps
     else
         print_mk2_next_steps
     fi

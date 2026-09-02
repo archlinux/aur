@@ -1,16 +1,16 @@
 # Maintainer: Nakildias <nakildiaspro@gmail.com>
 pkgname=sc0710-dkms-git
 _pkgname=sc0710
-pkgver=2026.08.29.3.r202.2493475
+pkgver=2026.09.02.1.r223.ea0a712
 pkgrel=1
-pkgdesc="DKMS driver for Elgato 4K60 Pro MK.2 & 4K Pro (sc0710) capture cards"
+pkgdesc="DKMS driver for Elgato 4K60 Pro MK.2, 4K Pro, and Cam Link Pro capture cards"
 arch=('x86_64')
 url="https://github.com/Nakildias/sc0710"
 license=('GPL-2.0-or-later')
 depends=('dkms')
-optdepends=('p7zip: ECP5 firmware extraction for Elgato 4K Pro')
+optdepends=('p7zip: ECP5 firmware extraction for Elgato 4K Pro and Cam Link Pro')
 makedepends=('git')
-provides=("${_pkgname}-dkms" "${_pkgname}-cli" "elgato-4k60pro-mk2-driver" "elgato-4k60pro-mk2-dkms" "elgato-4kpro-driver" "elgato-4kpro-dkms")
+provides=("${_pkgname}-dkms" "${_pkgname}-cli" "elgato-4k60pro-mk2-driver" "elgato-4k60pro-mk2-dkms" "elgato-4kpro-driver" "elgato-4kpro-dkms" "elgato-camlink-pro-driver" "elgato-camlink-pro-dkms")
 conflicts=("${_pkgname}-dkms" "${_pkgname}")
 install=${_pkgname}.install
 source=("git+https://github.com/Nakildias/sc0710.git")
@@ -54,7 +54,7 @@ package() {
     # Install License
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-    # Ship CLI and 4K Pro firmware helpers outside the stripped DKMS tree.
+    # Ship CLI and ECP5 firmware helpers outside the stripped DKMS tree.
     install -Dm755 scripts/sc0710-cli.sh "${pkgdir}/usr/bin/sc0710-cli"
     install -Dm755 scripts/sc0710-firmware-lib.sh "${pkgdir}/usr/lib/sc0710/sc0710-firmware-lib.sh"
     install -Dm755 scripts/extract-firmware.sh "${pkgdir}/usr/lib/sc0710/extract-firmware.sh"
