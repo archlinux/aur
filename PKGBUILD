@@ -2,8 +2,8 @@
 _pkgname=pi_agent_rust
 pkgbase=pi-agent-rust
 pkgname=('pi-agent-rust' 'pi-rust')
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="High-performance AI coding agent CLI - Rust port of Pi Agent"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Dicklesworthstone/pi_agent_rust"
@@ -16,7 +16,7 @@ optdepends=(
   'ripgrep: system-provided backend for the grep tool'
 )
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bb15728a1ad4ad15d3c4be8e9b4d193956988b602ac2066f97f348d450bc52d5')
+sha256sums=('7ffeb83546c9f9ee9f0e0e5c9e681a598297efd5601c359a07089062918b414a')
 # The vendored QuickJS and tree-sitter break with LTO, so disabling it
 options=(!lto)
 
