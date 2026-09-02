@@ -6,8 +6,8 @@
 
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename")
-pkgver=9.0
-pkgrel=2
+pkgver=9.0.1
+pkgrel=1
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -87,6 +87,7 @@ depends=(
   'lib32-vmaf'
   'lib32-vulkan-icd-loader'
   'lib32-xz'
+  'lib32-zeromq'
   'lib32-zlib'
   'libgcc'
 )
@@ -99,7 +100,6 @@ makedepends=(
   'git'
   'lib32-ladspa'
   'lib32-mesa'
-  'lib32-zeromq'
   'nasm'
   'opencl-headers'
   'spirv-headers'
@@ -131,7 +131,7 @@ source=(
   0001-Add-av_stream_get_first_dts-for-Chromium.patch
 )
 b2sums=(
-  'c15bec5d82a33d58d96bca03374b56bc1ffcfb9e9c705106eb05cba0dfd2d6003d3eb05bfc5b325ce1458fcff6bef93db75168da5640ea4dc5bd8b31294cfdd8'
+  'e22f57e76d587eecfdfe3ba0fbfaa37c6c95b43d4fc60da9d4feb11a2c87dcaf7ac891fbaa649289bec4ef40378743d61c77128b7127e8dc42d95f95a60aee69'
   'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d'
 )
 validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <michael@niedermayer.cc>
