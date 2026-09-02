@@ -1,6 +1,6 @@
 pkgbase = osrm-backend
 	pkgdesc = High performance routing engine written in C++14 designed to run on OpenStreetMap data.
-	pkgver = 26.8.0
+	pkgver = 26.9.0
 	pkgrel = 1
 	url = https://github.com/Project-OSRM/osrm-backend
 	arch = x86_64
@@ -29,9 +29,9 @@ pkgbase = osrm-backend
 	depends = zlib
 	provides = osrm-backend
 	conflicts = osrm-backend
-	source = osrm-backend-26.8.0-LICENSE::https://raw.githubusercontent.com/Project-OSRM/osrm-backend/refs/heads/master/LICENSE.TXT
-	source = osrm-backend-26.8.0.tar.gz::https://github.com/Project-OSRM/osrm-backend/archive/v26.8.0.tar.gz
+	source = osrm-backend-26.9.0-LICENSE::https://raw.githubusercontent.com/Project-OSRM/osrm-backend/refs/heads/master/LICENSE.TXT
+	source = osrm-backend-26.9.0.tar.gz::https://github.com/Project-OSRM/osrm-backend/archive/v26.9.0.tar.gz
 	b2sums = 7e714e99eaea01b1ce336c74e2f4a6f5af6aa059ef16d0e353864c7e188df88682ea5a41b94d42e6daeabfd96e7f352790e04a0bb273c1633747c17e5c348f5a
-	b2sums = bc87e52035c621f9a2be95c65c7c0e49f323d9a4718c5ef60f62d315297ca3e270243f66efce2ca6653c30ff2b59a29aa9df5d6f45c2323cd1df9447685f73f3
+	b2sums = c79bf965aac7e7e0a0ab91e9e579d8c247789fc2d345391c691fec132843693433e43c09a265c3c435d31e11395beedcfc1c318e0241ca4ea40bf8101600bd99
 
 pkgname = osrm-backend
