@@ -4,7 +4,7 @@
 # Contributor: M. Jarvis
 _base=TreeCorr
 pkgname=python-${_base,,}
-pkgver=5.1.3
+pkgver=5.1.4
 pkgrel=1
 pkgdesc="Module for computing 2-point correlation functions"
 arch=(x86_64)
@@ -17,7 +17,7 @@ optdepends=('python-fitsio: reads FITS catalogs or writes to FITS output files'
   'python-h5py: reads HDF5 catalogs')
 # checkdepends=(python-pytest python-pandas python-fitsio python-mockmpi) # python-scipy python-hdpy
 source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('f5423fae4a72b214c0ff92d3e59f58f379695f94489884a21153f494daee3744cb865c05beb1cd444e908e0fd7d10c469436622a96db0255869724f99bf7b341')
+sha512sums=('9d8698f8e7ee246491bc844f6c45457fca7b91eeb78ca3e565fec1659968316d39bd8731529e5362535273559eb6b46aa19e3cd8b8614de3ff88683f7894ebcc')
 
 build() {
   cd ${_base}-${pkgver}
