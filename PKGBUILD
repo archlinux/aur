@@ -3,8 +3,8 @@
 
 _pyname=pygtrie
 pkgname=python-$_pyname
-pkgver=2.5.0
-pkgrel=6
+pkgver=2.6.1
+pkgrel=1
 pkgdesc='Python library implementing a trie data structure'
 arch=(any)
 url="https://github.com/google/$_pyname"
@@ -14,7 +14,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('203514ad826eb403dab1d2e2ddd034e0d1534bbe4dbe0213bb0593f66beba4e2')
+sha256sums=('1934613126070b4ec51a3cefcf0c94cebb0139043b444c0f02486caebd0d8011')
 
 build() {
 	cd "$_archive"
