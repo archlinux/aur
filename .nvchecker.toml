@@ -1,0 +1,6 @@
+[rlsp-yaml]
+source = "github"
+github = "chdalski/rlsp"
+prefix = "rlsp-yaml-v"
+use_latest_release = true
+include_regex = 'rlsp-yaml-v\d+\.\d+\.\d+'
