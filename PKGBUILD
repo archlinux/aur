@@ -2,7 +2,7 @@
 # Contributor: Helmut Stult
 pkgname=antscope2
 pkgver=2.0.3
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="Control and graphing software for RigExpert antenna and cable analyzers (AA/AA-N/AA-BT series, and third-party NanoVNA devices)"
 arch=('x86_64' 'i686')
@@ -41,6 +41,9 @@ source=("${pkgname}::git+https://github.com/rigexpert/AntScope2.git#commit=bc7b7
 		"0011-Reject-BLE-notifications-shorter-than-a-full-packet-.patch"
 		"0012-Fix-out-of-bounds-read-of-a-short-firmware-info-resp.patch"
 		"0013-Fix-one-byte-out-of-bounds-read-in-HID-firmware-info.patch"
+		"0014-Bound-the-boot-mode-wait-in-HidAnalyzer-update-inste.patch"
+		"0015-Complete-boot-mode-re-detection-and-fix-silent-write.patch"
+		"0016-Detach-the-kernel-s-usbhid-driver-before-claiming-a-.patch"
 		"linux-fixed-system-data-path.patch"
 		"66-rigexpert.rules"
 		"antscope2.desktop")
@@ -59,6 +62,9 @@ sha256sums=('SKIP'
 			'365fdc07b19d1d8e04e2bcf61a9df08524b96acd5e798af8888451794f57b155'
 			'3a8fe2afdc58a75c6b11605f47a42d7f197e4549565c4072c8e081acd6d367e9'
 			'51189e7f8dd1000042ee77ddac7df9402799fb8e52d4cae69523e3bcae316327'
+			'71c8770d6c5cf2e87de6a3f91fc6baff327573879142c4bfab04cac1b437eb1e'
+			'7e9ede0f07a3745eeb7bdab880a304e30c5c41e9e1f06bad3fd517a4ae4c881d'
+			'212bc48ddbd06729ea25e48ffc0530e074e512ef27da58d0382add1b8a5dd65d'
 			'e2e99afcc8da7c1d6ddf8c61356838489841242694c03b38fd872d76c3806db0'
 			'c51f359050265216e6728a429dfaa84c7afe498c2f6625b5709b56a79627a7c8'
 			'131a376137f36f1eb394d5bd5e1d2897bc0148b92e9d7f52d9a1d37bd967b6d4')
@@ -72,9 +78,15 @@ prepare() {
 	# and its underlying defects (a mistyped timer interval, two missing-
 	# semicolon stylesheet bugs, an uninitialized bool, a dialog
 	# reentrancy risk, and a dead include that breaks the build on any
-	# platform), plus a set of out-of-bounds reads in device/network
-	# parsing and disabled TLS certificate verification. Submitted
-	# upstream as:
+	# platform); a set of out-of-bounds reads in device/network parsing
+	# and disabled TLS certificate verification; and a completed fix for
+	# the HID firmware-update feature (0014-0016), which previously hung
+	# indefinitely entering the bootloader and, even when unstuck, silently
+	# reported a passing integrity check regardless of whether the device
+	# actually verified the write - see 0016's own commit message for a
+	# third, Linux-specific defect found and fixed along the way (a missing
+	# kernel-driver detachment that made writing the mode-switch command
+	# fail outright on some hosts). Submitted upstream as:
 	#   https://github.com/rigexpert/AntScope2/pull/29
 	#   https://github.com/rigexpert/AntScope2/pull/30
 	# Not yet merged as of packaging; applied here in the meantime. Using

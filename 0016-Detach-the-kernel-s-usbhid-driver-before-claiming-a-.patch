@@ -1,0 +1,50 @@
+From 7f41606a351b51fa2cd611de195aad62cb695679 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Wed, 2 Sep 2026 12:09:51 +0200
+Subject: [PATCH] Detach the kernel's usbhid driver before claiming a HID
+ interface on Linux
+
+analyzer/usbhid/hidapi/linux/hid.c has kernel-driver-detachment code gated
+behind #ifdef DETACH_KERNEL_DRIVER, which AntScope.pro never defined. On
+Linux, the kernel's usbhid driver auto-binds normal-mode HID interfaces;
+without detaching it first, libusb_claim_interface() can still nominally
+succeed, but a subsequent interrupt-OUT hid_write() to that interface can
+fail outright.
+
+Observed directly: HidAnalyzer::update()'s RESET report (needed to enter
+the DFU bootloader for a firmware update) returned -1 from hid_write() on
+a real device whose normal-mode interface the kernel had already claimed,
+even though hid_open() for the same device succeeded moments earlier.
+Defining DETACH_KERNEL_DRIVER resolved it - verified on real hardware
+(a RigExpert Stick230), both for the RESET report specifically and for a
+subsequent full firmware write completing successfully afterward.
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_013EAiXVpAbBuCAxWNA3mzJY
+---
+ AntScope.pro | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/AntScope.pro b/AntScope.pro
+index df459a8..d94f012 100644
+--- a/AntScope.pro
++++ b/AntScope.pro
+@@ -267,6 +267,15 @@ unix:!macx {
+     SOURCES += analyzer/usbhid/hidapi/linux/hid.c
+     LIBS += -lusb-1.0
+     DEFINES += _NO_WINDOWS_
++
++    # Without this, analyzer/usbhid/hidapi/linux/hid.c's
++    # libusb_claim_interface() is called without ever detaching the
++    # kernel's usbhid driver first. usbhid auto-binds normal-mode HID
++    # interfaces on Linux, and while libusb can still open/claim the
++    # interface in that state, an interrupt-OUT hid_write() to it can fail
++    # outright (observed: hid_write() returning -1 for the firmware-update
++    # RESET report on a real device the kernel had already claimed).
++    DEFINES += DETACH_KERNEL_DRIVER
+ }
+ 
+ macx {
+-- 
+2.55.0
+

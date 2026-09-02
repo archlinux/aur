@@ -1,0 +1,102 @@
+From 19a97cb3e2d695450896d8293ff87bd755f83ad8 Mon Sep 17 00:00:00 2001
+From: Simon Keimer <dc0sk@mailbox.org>
+Date: Mon, 31 Aug 2026 21:45:17 +0200
+Subject: [PATCH] Bound the boot-mode wait in HidAnalyzer::update() instead of
+ spinning forever
+
+update() sends a RESET command and then waits for m_bootMode to become
+true via an unbounded while(1) { ...; QCoreApplication::processEvents(); }
+loop, with no way out but that flag becoming true. m_bootMode is only
+ever set by the device re-arrival detection path, which does not
+currently work (this firmware-update feature is incomplete and
+unreachable from the UI - the app never re-opens the device once it
+re-enumerates in bootloader mode). So today, any call into this path
+spins forever instead of ever reaching the existing failure handling
+immediately below it ('Can't enter to boot mode!').
+
+This does not make firmware update work - completing that needs a real
+device-re-detection implementation, verified against actual hardware
+or a protocol reference, which this change does not attempt. It only
+ensures that if this path is ever reached, it fails cleanly with a
+bounded timeout instead of hanging indefinitely. Same bug, same fix, in
+both hidanalyzer.cpp and its hid_analyzer.cpp twin.
+---
+ analyzer/hid_analyzer.cpp | 15 ++++++++++++++-
+ analyzer/hidanalyzer.cpp  | 15 ++++++++++++++-
+ 2 files changed, 28 insertions(+), 2 deletions(-)
+
+diff --git a/analyzer/hid_analyzer.cpp b/analyzer/hid_analyzer.cpp
+index 85bc0a0..f787ca7 100644
+--- a/analyzer/hid_analyzer.cpp
++++ b/analyzer/hid_analyzer.cpp
+@@ -2,6 +2,7 @@
+ #include "customanalyzer.h"
+ #include <QtConcurrent/QtConcurrentRun>
+ #include <QThread>
++#include <QElapsedTimer>
+ #include "analyzerpro.h"
+ 
+ extern bool g_usbOnly;
+@@ -706,10 +707,22 @@ bool HidAnalyzer::update (QIODevice *fw)
+         QTimer::singleShot(5000, this, [this]() {
+             this->preUpdate();
+         });
+-        while(1)//for(int i = 0; i < 565535; ++i)
++        // m_bootMode is only ever set by the device re-arrival path, which
++        // does not currently work (the feature this belongs to is
++        // incomplete and unreachable from the UI). Previously this was an
++        // unbounded while(1) with no way out but m_bootMode becoming true,
++        // so a call that could never detect the device coming back would
++        // spin forever instead of ever reaching the failure handling right
++        // below. Bound the wait so that path is actually reachable.
++        QElapsedTimer bootModeWait;
++        bootModeWait.start();
++        const qint64 bootModeTimeoutMs = 15000;
++        while(1)
+         {
+             if(m_bootMode)
+                 break;
++            if(bootModeWait.hasExpired(bootModeTimeoutMs))
++                break;
+             QCoreApplication::processEvents();
+         }
+         if(!m_bootMode)
+diff --git a/analyzer/hidanalyzer.cpp b/analyzer/hidanalyzer.cpp
+index dcf643e..654df49 100644
+--- a/analyzer/hidanalyzer.cpp
++++ b/analyzer/hidanalyzer.cpp
+@@ -2,6 +2,7 @@
+ #include "customanalyzer.h"
+ #include <QtConcurrent/QtConcurrentRun>
+ #include <QThread>
++#include <QElapsedTimer>
+ #include "analyzer.h"
+ extern int g_showMessageBox(QWidget* parent, QMessageBox::Icon icon,
+                             QString title, QString text,
+@@ -761,10 +762,22 @@ bool hidAnalyzer::update (QIODevice *fw)
+         QTimer::singleShot(5000, this, [this]() {
+             this->preUpdate();
+         });
+-        while(1)//for(int i = 0; i < 565535; ++i)
++        // m_bootMode is only ever set by the device re-arrival path, which
++        // does not currently work (the feature this belongs to is
++        // incomplete and unreachable from the UI). Previously this was an
++        // unbounded while(1) with no way out but m_bootMode becoming true,
++        // so a call that could never detect the device coming back would
++        // spin forever instead of ever reaching the failure handling right
++        // below. Bound the wait so that path is actually reachable.
++        QElapsedTimer bootModeWait;
++        bootModeWait.start();
++        const qint64 bootModeTimeoutMs = 15000;
++        while(1)
+         {
+             if(m_bootMode)
+                 break;
++            if(bootModeWait.hasExpired(bootModeTimeoutMs))
++                break;
+             QCoreApplication::processEvents();
+         }
+         if(!m_bootMode)
+-- 
+2.55.0
+
