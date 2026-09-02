@@ -1,18 +1,18 @@
 # Maintainer: thongor77 <magetriste@proton.me>
 pkgname=netmnt
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Mount SMB/NFS network shares from Dolphin's right-click menu (Rust + D-Bus + polkit)"
 arch=('x86_64')
 url="https://github.com/thongor77/netmnt"
 license=('MIT')
 depends=('cifs-utils' 'nfs-utils' 'polkit')
-makedepends=('cargo')
+makedepends=('cargo' 'gettext')
 optdepends=('kdialog: graphical credential prompt for "Mount as…"'
             'kwallet: store credentials for authenticated shares'
             'dolphin: file-manager integration (KDE service menus)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('471a5f8ceb43d7d1c23bcb6163472426e9e3e67760317a247573b3226802f178')
+sha256sums=('70af41fc6b4467acc669554700fcb45b037b7028ceaa4c6e1c5a39d711a29de9')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -23,7 +23,13 @@ prepare() {
 build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all
+    make i18n
+    NETMNT_DEFAULT_LOCALE_DIR=/usr/share/locale \
+        cargo build --frozen --release --all
+    # Stamp the prefix so `make install` (used by package()) accepts the
+    # build instead of refusing it as missing build metadata.
+    install -d build
+    printf '%s\n' /usr > build/install-prefix
 }
 
 check() {
