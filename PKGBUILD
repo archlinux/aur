@@ -1,5 +1,9 @@
 # Maintainer: prowly <pmbaprow@gmail.com>
 #
+# RETIRED: frozen at 0.5.0. This package is no longer updated. Its AUR name is
+# intentionally retained in case the channel returns; new installs should use
+# the latest TennoWorth AppImage from GitHub Releases.
+#
 # Prebuilt counterpart to the `tennoworth` source package, for people who don't
 # want to compile Rust + a webview. It ships ONE dynamically-linked executable
 # and resolves webkit2gtk/gtk3 from the system at runtime — it does not bundle
@@ -12,18 +16,14 @@
 # The binary is built in CI on ubuntu-22.04 so its glibc floor stays at 2.35;
 # a binary built on Arch would demand a glibc newer than many users have.
 #
-# Tradeoff vs the source package: this one breaks when Arch bumps the
-# webkit2gtk soname and stays broken until it is rebuilt and republished,
-# whereas `tennoworth` simply recompiles against whatever is installed. If this
-# package ever fails to start after a system upgrade, install `tennoworth`.
-#
-# Updates come from pacman — the in-app updater no-ops on Linux.
+# This historical package relied on pacman for updates; the supported AppImage
+# uses the in-app updater instead.
 
 pkgname=tennoworth-bin
 _pkgname=tennoworth
 pkgver=0.5.0
 pkgrel=2
-pkgdesc="Warframe inventory + market dashboard (unmaintained — Linux now ships as an AppImage, see GitHub releases)"
+pkgdesc="Retired at 0.5.0; name retained; use the latest AppImage from GitHub Releases"
 arch=('x86_64')
 url="https://github.com/tennoworth/tennoworth"
 license=('MIT')
