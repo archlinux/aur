@@ -14,7 +14,7 @@ pkgbase = mpv-anime-build
 	source = mpv-anime-build-5.2.zip::https://github.com/Chinna95P/mpv-anime-build/releases/download/v5.2/mpv-anime-build-v5.2.zip
 	source = mpv-anime-build.sh
 	source = mpv-anime.desktop
-	sha256sums = c7407bc871ecccfc73799a67bd6b19d960033f73ac9038bc12cbff568ee12637
+	sha256sums = 510ae78050f2c7cb060e771255daebb23320ab44e9c54c68da0cbed833c89227
 	sha256sums = 285ae5fc1a95e3d1a6b9e3bf453599a5dc08bbdd2fe79355ce1cf6ff3aab1da3
 	sha256sums = 8eca1548263df62869af8aeaf229b4db2fbea9faa89ce6490204abcb62e3e3f9
 

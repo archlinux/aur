@@ -22,7 +22,7 @@ source=(
   "mpv-anime-build.sh"
   "mpv-anime.desktop"
 )
-sha256sums=('c7407bc871ecccfc73799a67bd6b19d960033f73ac9038bc12cbff568ee12637'
+sha256sums=('510ae78050f2c7cb060e771255daebb23320ab44e9c54c68da0cbed833c89227'
             '285ae5fc1a95e3d1a6b9e3bf453599a5dc08bbdd2fe79355ce1cf6ff3aab1da3'
             '8eca1548263df62869af8aeaf229b4db2fbea9faa89ce6490204abcb62e3e3f9')
 
