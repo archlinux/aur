@@ -1,6 +1,6 @@
 pkgbase = reolink-cli-bin
 	pkgdesc = The CLI for devices manufactured by Reolink
-	pkgver = 0.14.2
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/reolink/reolink-cli
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = reolink-cli-bin
 	conflicts = reolink-cli
 	conflicts = reolink-gateway
 	options = !strip
-	source_x86_64 = reolink-cli-bin-0.14.2-x86_64.tar.gz::https://github.com/reolink/reolink-cli/releases/download/v0.14.2/reolink-cli-0.14.2-external-linux-x86_64.tar.gz
-	sha256sums_x86_64 = c6c6c7f3b838347d937be88790d8e0cf731b2096e9f4117d3b09eb1461bc03a7
-	source_aarch64 = reolink-cli-bin-0.14.2-aarch64.tar.gz::https://github.com/reolink/reolink-cli/releases/download/v0.14.2/reolink-cli-0.14.2-external-linux-arm64.tar.gz
-	sha256sums_aarch64 = 9a533f25a07ad6355f0be89a1fef4cbe793ce983bd55090640f6c099765a4ddd
+	source_x86_64 = reolink-cli-bin-0.15.0-x86_64.tar.gz::https://github.com/reolink/reolink-cli/releases/download/v0.15.0/reolink-cli-0.15.0-external-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c4d933255f355a54f798e5d75a532f23123f49790c5d48a26f125b8c02065f84
+	source_aarch64 = reolink-cli-bin-0.15.0-aarch64.tar.gz::https://github.com/reolink/reolink-cli/releases/download/v0.15.0/reolink-cli-0.15.0-external-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8037c2a4a363f827ab994b257e431db61d9ceed437a5219c9dd2b1f3e5b4ddd5
 
 pkgname = reolink-cli-bin
