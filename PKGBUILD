@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=open-pdf-studio-bin
 _pkgname=Open.PDF.Studio
-pkgver=1.93.1
+pkgver=1.93.3
 pkgrel=1
 pkgdesc="A free, open-source PDF editor and annotator.(Prebuilt version)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
     'webkit2gtk-4.1'
 )
 source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('9d19b100b7fea996b52532072df37070048e93970c9691280b4e7e80d4067625')
+sha256sums=('7136700646be708057cb3e09fbdd53e05739b73a86a7f91a4797d9948b38bd3e')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/Categories=/Categories=Office;/" "${srcdir}/usr/share/applications/${_pkgname//./ }.desktop"
