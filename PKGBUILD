@@ -7,7 +7,7 @@ pkgdesc="A desktop environment built on top of the shoulders of giants and the p
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pol-Jak-295/PolLand"
 license=('AGPL')
-epends=(
+depends=(
     # === CORE RICE ===
     'hyprland'
     'rofi'
