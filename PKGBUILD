@@ -3,7 +3,7 @@
 
 pkgname=perl-string-license
 pkgdesc='Detect source code license statements in a text string'
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 url='https://metacpan.org/dist/String-License'
 arch=(any)
@@ -32,7 +32,7 @@ depends=(
 checkdepends=(
   ## test::recommends
   'perl-file-basedir'
-  'perl-regexp-pattern-license>=3.11.3'
+  #'perl-regexp-pattern-license>=3.11.3' ## waiting update...
   'perl-software-license>=0.104006' # "Software::LicenseUtils"
   'perl-yaml-libyaml' # "YAML::XS"
 
@@ -45,7 +45,7 @@ checkdepends=(
 )
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/J/JO/JONASS/String-License-v${pkgver}.tar.gz")
-b2sums=('28a934f75f31069ffb59a129b09d4162a267ca07fdd5d8e8c3c73990571699a3e3300e3584dbe4cd8868302b52f95daf47134c811ed44038be1ff27da0d2416f')
+b2sums=('6c602fee0227bf8371581385cc46828914712a2803c421384eda1dc966c4925573fb93ff80c4a1a40837751011a58dd8e15dcff83a88f6e1771fbd1d09814f5e')
 
 build() {
   cd "String-License-v${pkgver}"
