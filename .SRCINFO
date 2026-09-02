@@ -1,6 +1,6 @@
 pkgbase = rustcast-git
 	pkgdesc = A Raycast-class launcher for Linux (GTK4 + layer-shell) with clipboard history, file search and a tldr search
-	pkgver = r16.be7205a
+	pkgver = r33.a804c67
 	pkgrel = 1
 	url = https://github.com/zer0bav/rustcast
 	arch = x86_64

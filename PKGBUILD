@@ -1,7 +1,7 @@
 # Maintainer: zer0bav <baverozmen@proton.me>
 pkgname=rustcast-git
 _pkgname=rustcast
-pkgver=r16.be7205a
+pkgver=r33.a804c67
 pkgrel=1
 pkgdesc="A Raycast-class launcher for Linux (GTK4 + layer-shell) with clipboard history, file search and a tldr search"
 arch=('x86_64')
