@@ -1,9 +1,9 @@
 # Maintainer: Kévin Unger <kevin.unger@proton.me>
-# Template — 0.34.1 and 812e70eae0cd9015490d6e040f51e15b1868536fb98cb8dad328d998eefe267d are substituted by .github/workflows/aur.yml
+# Template — 0.35.0 and 90bc93ac5c28ac0a0f5b37dee7bbf537066a599249e35d68478b8ba2bd7522cd are substituted by .github/workflows/aur.yml
 # (or scripts/aur-publish.sh) before pushing to the AUR.
 pkgname=blunderdb-bin
 _appname=blunderdb
-pkgver=0.34.1
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="Backgammon blunder analysis tool (precompiled, webkit2gtk-4.1)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('blunderdb')
 conflicts=('blunderdb')
 options=('!strip')
 source=("blunderdb-${pkgver}.tar.gz::https://github.com/kevung/blunderDB/releases/download/${pkgver}/blunderDB-linux-webkit2gtk-4.1-${pkgver}.tar.gz")
-sha256sums=('812e70eae0cd9015490d6e040f51e15b1868536fb98cb8dad328d998eefe267d')
+sha256sums=('90bc93ac5c28ac0a0f5b37dee7bbf537066a599249e35d68478b8ba2bd7522cd')
 
 _srcdir="blunderDB-linux-webkit2gtk-4.1-${pkgver}"
 
