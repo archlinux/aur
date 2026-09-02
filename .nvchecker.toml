@@ -1,0 +1,5 @@
+[varn]
+source = "github"
+github = "flawme/varn"
+use_latest_release = true
+prefix = "v"
