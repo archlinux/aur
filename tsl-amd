@@ -1,0 +1,246 @@
+#!/bin/bash
+
+BOLD='\e[1m'
+GREEN='\e[32m'
+YELLOW='\e[33m'
+RESET='\e[0m'
+
+ERROR='\e[31m'
+
+#MAIN FUNCTION
+
+function main() {
+while true; do
+
+echo ""
+echo -e "${GREEN}NOW:${RESET} $(date)"
+echo ""
+echo "'help' - for help"
+echo ""
+
+read -e -p "-> " cmd
+echo ""
+
+if [ "$cmd" = "exit" ]; then
+	exit
+
+elif [ "$cmd" = "about" ]; then
+	echo -e "${BOLD}tsab.label-Auto Music Distribution (tsl-AMD) - this is a useful program that helps create and upload music releases for tsab.label. The program's functionality will expand as development and updates progress."
+
+elif [ "$cmd" = "clear" ]; then
+	clear
+	main
+
+elif [ "$cmd" = "help" ]; then
+	echo -e "${BOLD}1. 'allinone' - Collect audio, cover and text (optional) in one folder${RESET}"
+	echo -e "${BOLD}2. 'zip' - Zip your folder${RESET}"
+	echo -e "${BOLD}3. 'links' - Show tsab.label's links${RESET}"
+	echo ""
+	echo "---------------"
+	echo ""
+	echo -e "${YELLOW}EXTRAS:${RESET}"
+	echo -e "${BOLD}${GREEN}1. 'exit' - Close the programm${RESET}"
+	echo -e "${BOLD}${GREEN}2. 'about' - Show info about tsl-AMD${RESET}"
+	echo -e "${BOLD}${GREEN}3. 'clear' - Clear last commands${RESET}"
+
+elif [ "$cmd" = "allinone" ]; then
+	allinone
+
+elif [ "$cmd" = "zip" ]; then
+	zip
+
+elif [ "$cmd" = "links" ]; then
+	echo ""
+	echo -e "1. ${BOLD}VK${RESET} - https://vk.com/tsab.label"
+	echo -e "2. ${BOLD}New Release form${RESET} - https://forms.yandex.ru/u/6a58eddb068ff0404efe2f2f"
+
+else
+	echo ""
+	echo -e "${ERROR}Error! Unknown command. Try again.${RESET}"
+
+fi
+
+done
+}
+
+#MAIN FUNCTION FINISH
+
+#ADDMUSIC FUNCTION
+function addmusic() {
+	while true; do 
+		echo ""
+		echo -e "${YELLOW}Move audio file here (mp3/wav): ${RESET}"
+		echo "Or 'cancel' for back to AIO..."		
+		read -e -p "Drop: " FILE_PATH
+		if [ -f "$FILE_PATH" ]; then
+			if [[ "$FILE_PATH" == *.mp3 || "$FILE_PATH" == *.wav || "$FILE_PATH" == *.MP3 || "$FILE_PATH" == *.WAV ]]; then
+				cp "$FILE_PATH" "$AIOdir/"
+				echo -e "${GREEN}Move success!${RESET}"
+			else 
+				echo -e "${ERROR}Error! Aviable only mp3/wav files or file arleady exists. Try 'addmusic' again.${RESET}"
+				sleep 3
+				clear
+				allinone
+			fi
+		fi
+		if [ "$FILE_PATH" == "cancel" ]; then
+			clear
+			echo -e "${GREEN}NOW: ${RESET} $(date)"
+			echo ""
+			allinone
+		fi
+	done
+}
+#ADDMUSIC FUNCTION FINISH
+
+#ADDCOVER FUNCTION
+function addcover() {
+	while true; do
+		echo ""
+		echo -e "${YELLOW}Move cover here (png, jpg, jpeg): ${RESET}"
+		echo "Or 'cancel' for back to AIO..."
+		read -e -p "Drop: " FILE_PATH
+		if [ -f "$FILE_PATH" ]; then
+			if [[ "$FILE_PATH" == *.png || "$FILE_PATH" == *.jpg || "$FILE_PATH" == *.jpeg || "$FILE_PATH" == *.PNG || "$FILE_PATH" == *.JPG || "$FILE_PATH" == *.JPEG ]]; then
+				cp "$FILE_PATH" "$AIOdir/"
+				echo -e "${GREEN}Move success!${RESET}"
+			else
+				echo -e "${ERROR}Error! Aviable only png/jpg/jpeg files or file arleady exists. Try 'addcover' again.${RESET}"
+				sleep 3
+				clear
+				allinone
+			fi
+		fi
+		if [ "$FILE_PATH" = "cancel" ]; then
+			clear
+			echo -e "${GREEN}NOW: ${RESET} $(date)"
+			echo ""
+			allinone
+		fi
+	done
+}
+#ADDCOVER FUNCTION FINISH
+
+#ADDTEXT FUNCTION 
+function addtext() {
+	while true; do
+		echo ""
+		echo -e "${YELLOW}Move text here (.txt): ${RESET}"
+		echo "Or 'cancel' for back to AIO..."
+		read -e -p "Drop: " FILE_PATH
+		if [ -f "$FILE_PATH" ]; then
+			if [[ "$FILE_PATH" == *.txt ]]; then
+				cp "$FILE_PATH" "$AIOdir/"
+				echo -e "${GREEN}Move Success!{RESET}"
+			else
+				echo -e "${ERROR}Error! Aviable only txt files or file arleady exists. Try 'addtext' again.${RESET}"
+				sleep 3
+				clear
+				allinone
+			fi
+		fi
+		if [ "$FILE_PATH" = 'cancel' ]; then
+			clear
+			echo -e "${GREEN}NOW: ${RESET} $(date)"
+			echo ""
+			allinone
+		fi
+	done
+}
+#ADDTEXT FUNCTION FINISH
+
+#ALLINONE FUNCTION
+
+function allinone() {
+while true; do
+	echo "'help' - help for allinone"
+	
+	read -e -p "AIO($AIOdir)/-> " AIOcmd
+	if [ "$AIOcmd" = "help" ]; then
+		echo ""
+		echo "In first, create new directory via 'new'"
+		echo ""
+		echo -e "${BOLD}1. 'new' - Create a new folder${RESET}"
+		echo -e "${BOLD}2. 'addmusic' - Add music in created folder${RESET}"
+		echo -e "${BOLD}3. 'addcover' - Add cover in created folder${RESET}"
+		echo -e "${BOLD}4. 'addtext' - Add text in created folder${RESET}"	
+		echo -e "${BOLD}5. 'back' - Back to main menu ${RESET}"
+	elif [ "$AIOcmd" = "new" ]; then
+		read -e -p "Enter name for new folder: " AIOdir
+			if [ ! -d "$AIOdir" ]; then
+				mkdir "$AIOdir"
+				echo ""
+				echo -e "${GREEN}Success!${RESET}"
+			else
+				echo -e "${ERROR}Directory arleady exists. Try 'allinone' again.${RESET}"
+				sleep 3
+				clear
+			fi
+
+	elif [ "$AIOcmd" = "addmusic" ]; then
+		addmusic
+	elif [ "$AIOcmd" = "addcover" ]; then
+		addcover
+	elif [ "$AIOcmd" = "addtext" ]; then
+		addtext
+	elif [ "$AIOcmd" = "back" ]; then
+		main
+	else
+		echo -e "${ERROR}Error! Unknown command. Try again.${RESET}"
+	fi
+done
+}
+
+#ALLINONE FUNCTION FINISH
+
+#ZIP FUNCTION
+function zip() {
+while true; do
+	echo "'help' - help for zip"
+
+	read -e -p "ZIP($ZIPdir)/-> " ZIPcmd
+	
+	if [ "$ZIPcmd" = "help" ]; then
+		echo ""
+		echo -e "${BOLD}1. 'select' - Select need folder${RESET}"
+		echo -e "${BOLD}2. 'archive' - Archive your selected folder${RESET}"
+		echo -e "${BOLD}3. 'back' - Back to main menu ${RESET}"
+
+	elif [ "$ZIPcmd" = "select" ]; then
+		echo ""
+		read -e -p "Move & drop here: " ZIPdir
+
+	elif [ "$ZIPcmd" = "archive" ]; then
+		echo "Your folder: $ZIPdir"
+		read -e -p "Enter ZIP name: " ZIPname
+		if [ -z "$ZIPname" ]; then
+			ZIPname="tsl-amd-zip-$(date +%Y-%m-%d_%H%M%S)"
+		fi
+	tar -cf "${ZIPname}.zip" "$ZIPdir"
+		if [ $? -eq 0 ]; then
+			echo -e "${GREEN}Success!${RESET}"
+		else
+			echo -e "${ERROR}Error! Try again.${RESET}"
+		fi
+
+	elif [ "$ZIPcmd" = "back" ]; then
+		main
+
+	elif [ "$ZIPcmd" = "cancel" ]; then
+		ZIPdir=""
+		ZIPname=""
+		zip
+	else
+		echo -e "${ERROR}Error! Unknown command. Try again.${RESET}"
+	fi
+done
+}
+#ZIP FUNCTION FINISH
+
+mkdir ~/tsl-amd-session-$(date +%Y-%m-%d_%H%M%S)
+cd ~/tsl-amd-session-$(date +%Y-%m-%d_%H%M%S)
+
+echo ""
+echo "\/\/\/ tsab.label - AMD \/\/\/"
+
+main
