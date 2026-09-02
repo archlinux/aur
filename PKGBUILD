@@ -17,17 +17,8 @@ license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 provides=('proton' "${_pkgname}=${pkgver/_/.}")
 conflicts=("${_pkgname}")
 
-## On dependency choice:
-## This is a Steam Linux Runtime build (toolmanifest.vdf sets require_tool_appid
-## 4183110 = "Steam Linux Runtime 4.0"), so Steam runs it inside that container and
-## most libraries resolve against the runtime rather than the host. The list below is
-## therefore deliberately CONSERVATIVE rather than minimal: it mirrors the long-standing
-## proton-rtsp-bin / proton-ge-custom-bin sets, which are known to work. Every entry
-## resolves from official repos (multilib/extra) as of 2026-09-02 -- no AUR deps.
-## Verified method if this ever needs revisiting:
-##   readelf -d <shipped ELF> | grep NEEDED     # what the binaries ask for
-##   ...minus the ~246 sonames bundled in files/lib/...
-##   pacman -F <soname>                         # map the remainder to packages
+## SLR build (runs inside Steam Linux Runtime 4.0), so this list is conservative
+## rather than minimal -- mirrors proton-rtsp-bin. All from official repos, no AUR deps.
 depends=('python'
   'vulkan-icd-loader'
   'lib32-vkd3d'
