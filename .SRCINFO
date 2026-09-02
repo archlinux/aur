@@ -1,6 +1,6 @@
 pkgbase = cargo-lbin
 	pkgdesc = Thin cargo-install wrapper targeting /usr/local/bin, crates.io only
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/sirlucjan/cargo-lbin
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = cargo-lbin
 	license = Apache-2.0
 	depends = cargo
 	options = !lto
-	source = git+https://github.com/sirlucjan/cargo-lbin?signed#tag=0.5.1
+	source = git+https://github.com/sirlucjan/cargo-lbin?signed#tag=0.5.2
 	validpgpkeys = 399521CE9D6D65B35EEF0F8C79AFA05ABDB26C5A
-	sha256sums = ff7c72a3b46a800558183dbe448a5db9b435b028eeb16e502d4adab82ddfed12
+	sha256sums = b7b817ea1d2fc9e00394c9837337f8e351da22ce3697219a31a02e3c7a5cc427
 
 pkgname = cargo-lbin
