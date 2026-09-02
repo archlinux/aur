@@ -2,8 +2,8 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgname="n8n"
-pkgver=2.36.9
-pkgrel=4
+pkgver=2.37.7
+pkgrel=1
 pkgdesc="Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services."
 arch=('x86_64')
 url="https://n8n.io"
