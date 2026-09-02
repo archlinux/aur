@@ -12,8 +12,8 @@
 # on Arch. It does hard-require a download transport, hence curl in depends.
 
 pkgname=unsloth-desktop-bin
-pkgver=0.1.804.beta
-pkgrel=3
+pkgver=0.1.805.beta
+pkgrel=1
 pkgdesc='Unsloth Desktop - train and run open models locally (prebuilt)'
 arch=('x86_64')
 url='https://unsloth.ai/'
@@ -52,7 +52,7 @@ options=('!strip')
 _debver="${pkgver//./_}"
 _tag="v${pkgver/.beta/-beta}"
 source=("https://github.com/unslothai/unsloth/releases/download/${_tag}/Unsloth-Desktop-Ubuntu.deb")
-sha256sums=('0eb1db47ba46793b6f94f203643d123ceea951fefdd91b24775c7500d326a5fc')
+sha256sums=('c68fb81cc190644a2bf799c5757d67b15d09bdc098847642b16c2fdd36afbe00')
 
 package() {
 	bsdtar -xf data.tar.gz -C "$pkgdir"
