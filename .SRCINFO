@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-omarchy-git
 	pkgdesc = XDG Desktop Portal backend for Omarchy (Hyprland)
-	pkgver = 0.1.0.r20.g22d0c01
+	pkgver = 0.1.0.r22.geefa67d
 	pkgrel = 1
 	url = https://github.com/falser101/xdg-desktop-portal-omarchy
 	install = xdg-desktop-portal-omarchy-git.install
