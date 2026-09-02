@@ -1,0 +1,25 @@
+### Liquorix distributes IRQs in-kernel; irqbalance works against that and
+### costs both stability and performance.  Only systemd is supported here --
+### handling every other init system is more trouble than it's worth.
+###
+### A running irqbalance is left alone; the next boot takes care of it.
+_disable_irqbalance() {
+  [[ -x /usr/bin/systemctl ]] || return 0
+
+  # Also covers "unit does not exist", which exits non-zero.
+  [[ "$(systemctl is-enabled irqbalance.service 2>/dev/null)" == enabled* ]] || return 0
+
+  systemctl disable irqbalance.service >/dev/null 2>&1 || return 0
+
+  echo ">>> Disabled irqbalance to improve Liquorix stability and performance."
+}
+
+post_install() {
+  _disable_irqbalance
+}
+
+post_upgrade() {
+  _disable_irqbalance
+}
+
+# vim:set ts=8 sts=2 sw=2 et:
