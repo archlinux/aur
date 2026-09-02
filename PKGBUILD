@@ -3,7 +3,7 @@
 
 pkgname=hunk
 pkgdesc='Terminal diffs for humans and agents'
-pkgver=0.20.1
+pkgver=0.21.0_beta.0
 pkgrel=1
 url='https://www.hunk.dev/'
 changelog=CHANGELOG.md
@@ -14,14 +14,14 @@ makedepends=('bun')
 depends=('glibc' 'icu')
 provides=('hunkdiff')
 options=(!strip !debug)
-source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('58ef4d4bc5942434b195f2518c0a2cf768d003cbf80d92866a2e3833dba84a72bc16a731fbe83380b393bc44f3ea50533ff6fbb7c3c5dcb23c78603635bf035d')
+source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/modem-dev/hunk/archive/refs/tags/v${pkgver/_/-}.tar.gz")
+b2sums=('bdd0773c2710237c603145f3b829c115d273b9af3bbe55e7b2392acba7891783f0df42f92fb009d816755b86089139df099febb6a914d577f0b3b95b421d39ef')
 
 _install_dir=/urs/lib/hunkdiff
 _skills=(review extensions)
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver/_/-}"
 
   bun install \
     --production \
@@ -30,11 +30,10 @@ prepare() {
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver/_/-}"
 
   export HUNK_INSTALL_DIR="${_install_dir}"
-  # FIXME: abusing mise to skip self update notices
-  export HUNK_INSTALL_SOURCE=mise
+  export HUNK_INSTALL_SOURCE=pacman
   bun build \
     --production \
     --compile \
@@ -51,7 +50,7 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver/_/-}"
 
   export HUNK_RUN_TTY_SMOKE=1
   export HUNK_TEST_EXECUTABLE=dist/hunk
@@ -66,7 +65,7 @@ check() {
 
   echo -n 'VERSION = '
   version=$(dist/hunk --version)
-  grep -F "${pkgver}" <<< "${version}"
+  grep -F "${pkgver/_/-}" <<< "${version}"
 
   for skill in "${_skills[@]}"; do
     echo -n 'SKILL = '
@@ -76,7 +75,7 @@ check() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver/_/-}"
 
   local hunk_install_dir="${pkgdir}${_hunk_install_dir}"
 
