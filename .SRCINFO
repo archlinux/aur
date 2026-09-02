@@ -1,6 +1,6 @@
 pkgbase = opencode-desktop
 	pkgdesc = OpenCode desktop app (built from source, runs on system electron42)
-	pkgver = 1.18.25
+	pkgver = 1.18.26
 	pkgrel = 1
 	url = https://github.com/anomalyco/opencode
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = opencode-desktop
 	replaces = opencode-desktop-electron
 	options = !strip
 	options = !debug
-	source = opencode-desktop::git+https://github.com/anomalyco/opencode.git#tag=v1.18.25
+	source = opencode-desktop::git+https://github.com/anomalyco/opencode.git#tag=v1.18.26
 	source = opencode-desktop.sh
 	source = enable-pacman-target.patch
 	sha256sums = SKIP
