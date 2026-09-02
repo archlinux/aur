@@ -1,6 +1,6 @@
 # Maintainer: RAprogramm <andrey.rozanov.vl@gmail.com>
 pkgname=hydebar
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Status bar for Hyprland, themed by the HyDE desktop"
 arch=('x86_64')
