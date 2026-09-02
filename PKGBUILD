@@ -2,7 +2,7 @@
 # Maintainer: Ryan Kes <ryan@andthensome.nl>
 
 pkgname='backup-git-repos-bin'
-pkgver=1.12.1
+pkgver=1.12.2
 pkgrel=1
 pkgdesc='Backs up every repository on a self-hosted GitLab or Forgejo instance, or a GitHub.com account, to a local, restorable copy.'
 url='https://github.com/alrayyes/backup-git-repos'
@@ -12,10 +12,10 @@ provides=('backup-git-repos')
 conflicts=('backup-git-repos')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/alrayyes/backup-git-repos/releases/download/v${pkgver}/backup-git-repos_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('4999a9fd14b3a2e70a0689439f469ffbfaafa8949ee7920d6956f4dfa5c8cd87')
+sha256sums_aarch64=('35f36bf2eedab58729a7beff3064a1656ea8976dd880dab31112dc9fe7c2f64a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/alrayyes/backup-git-repos/releases/download/v${pkgver}/backup-git-repos_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('574e957278bf085096cec41c4915a8bdc9d25478e37e95d742d187a3cff07a9d')
+sha256sums_x86_64=('f6e3700d4ccd87d46b4abe3290f5f2198533019903661ec04c6e6d73759c3b69')
 
 package() {
   install -Dm755 ./backup-git-repos "${pkgdir}/usr/bin/backup-git-repos"
