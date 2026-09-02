@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/mango-launcher-bin
 
 pkgname=mango-launcher-bin
-pkgver=2.0.1
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="Mango Launcher - An open-source gaming platform"
 arch=('x86_64')
