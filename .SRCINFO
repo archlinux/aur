@@ -1,6 +1,6 @@
 pkgbase = sonora
 	pkgdesc = A native music streaming client, built with Rust and GPUI
-	pkgver = 0.28.0
+	pkgver = 0.28.1
 	pkgrel = 1
 	url = https://github.com/nolight132/sonora
 	arch = x86_64
@@ -15,13 +15,14 @@ pkgbase = sonora
 	depends = libxcb
 	depends = libxkbcommon
 	depends = libxkbcommon-x11
+	depends = sqlite
 	depends = vulkan-icd-loader
 	depends = wayland
 	optdepends = vulkan-radeon: Vulkan driver for AMD GPUs
 	optdepends = vulkan-intel: Vulkan driver for Intel GPUs
 	optdepends = nvidia-utils: Vulkan driver for NVIDIA GPUs
 	options = !lto
-	source = https://github.com/nolight132/sonora/archive/refs/tags/v0.28.0/sonora-0.28.0.tar.gz
-	sha256sums = ab0b2c9e2294f68bfd49fa8592a768b2c6c591950ed174f12043c5389554e6e6
+	source = https://github.com/nolight132/sonora/archive/refs/tags/v0.28.1/sonora-0.28.1.tar.gz
+	sha256sums = d5f40b94ea14f603b4dcafc6bde54fa47b4f1dedcf05a20f4d547757dcf4481f
 
 pkgname = sonora
