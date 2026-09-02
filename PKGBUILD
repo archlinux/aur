@@ -10,7 +10,7 @@ pkgname='wg-client'
 pkgdesc='Linux Wireguard client (command line and gui)'
 _gitname='wg-client'
 
-pkgver="7.3.0"
+pkgver="8.0.1"
 pkgrel=1
 url="https://github.com/gene-git/wg-client"
 
@@ -21,30 +21,27 @@ install='wg-client.install'
 
 # To build docs uncommont sphinx/texlive
 depends=(
-    'python>=3.13' 
-    'python-psutil' 
-    'python-dateutil' 
-    'pyconcurrent'
-    'libcap' 
-    'python-pynotify' 
-    'openssl>=3.0'
-    'bash'
-    'glibc'
+    'python>=3.14'
+    python-psutil
+    python-dateutil
+    pyconcurrent
+    libcap
+    glibc
+    bash
+    wireguard-tools
 )
 makedepends=(
-    'git'
-    'uv'
-    'python-uv-build'
-    'rsync'
-    #'python-sphinx' 'python-myst-parser' 'texlive-latexextra'
+    gcc
+    git
+    meson
+    meson-python
+    rsync
 )
 # Used by package : mkpkg
 _mkpkg_depends=(
+    'gcc>minor'
     'python>minor'
     'libcap>minor'
-    'openssl>minor'
-    'python-psutil>minor'
-    'python-pynotify>minor'
 )
 
 #
@@ -55,9 +52,14 @@ _mkpkg_depends=(
 #
 validpgpkeys=( '7CCA1BA66669F3273DB52678E5B81343AB9809E1')   # Gene C <arch@sapience.com>
 
-#source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}?signed")
-source=("git+https://github.com/gene-git/${_gitname}#tag=${pkgver}")
-sha512sums=('SKIP')
+source=(
+    "git+https://github.com/gene-git/${_gitname}#tag=${pkgver}"
+    wg-client.tmpfiles
+)
+sha256sums=(
+    'SKIP'
+    'a2d0d2d1f3e59157dbab2aacc213b2cfaf158a1578adc88a811b35afe2407f2f'
+)
 
 changelog="Changelog"
 
@@ -68,34 +70,19 @@ prepare() {
 build() {
     cd "${_gitname}"
 
-    echo 'Building python'
-    /usr/bin/rm -f dist/*
-    /usr/bin/uv build --wheel --no-build-isolation
-
-    echo 'Building C-code'
-    pushd ./src/c-code/fix-resolv/ >/dev/null
-    make
-    popd >/dev/null
-
-    echo 'Building Docs'
-    #    pdf='wg-client.pdf'
-    #    cd ./Docs
-    #    make latexpdf >/dev/null 2>&1
-    #    make latexpdf >/dev/null
-    #    /usr/bin/rm -f $pdf
-    #    /usr/bin/cp _build/latex/$pdf .
-    #    make html
-    #    make html
-    #    /usr/bin/rm -rf _build/doctrees _build/latex
+    echo 'Building'
+    ./scripts/do-build
 }
 
 package() {
     cd "${_gitname}"
     depends+=(
-        'python-pyqt6' 
-        'hicolor-icon-theme'
+        python-pyqt6
+        hicolor-icon-theme
     )
     ./scripts/do-install ${pkgdir}
+
+    install -Dm644 ../wg-client.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/wg-client.conf
 }
 # vim:set ts=4 sts=4 sw=4 et:
 

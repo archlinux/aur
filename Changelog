@@ -1,9 +1,33 @@
 -------------------------------------------------------
  Changelog    : wg-client
- Tags         : 7.0.0 ➙ 7.3.0
-              : 2026-01-06 ➙ 2026-01-10
+ Tags         : 7.1.1 ➙ 8.0.1
+              : 2026-01-06 ➙ 2026-09-02
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-09-02   : 8.0.1
+              - meson tweak
+              - remove unused from meson.build
+              - add meson.options
+
+ 2026-09-02   : 8.0.0, origin/master
+                  - **8.0.0**
+            
+                    * Package / build management now uses meson/mesonpy
+                    * New resolv-manager:
+                      - wirtten in C.
+                      - Runs as a background daemon managing /etc/resolv.conf
+                      - replaces the python inotify based monitor
+                      - see man page wg-client-resolv-manager
+                    * You need to make a change.
+                      Please update PostUp / PostDown in wireguard config and
+                      use the helper scripts installed in /etc/wg-client:
+                      post-up.sh and post-down.sh.
+                      Create /etc/wg-client/wireguirs.resolv.conf with the DNS settings
+                      you want to use while VPN tunnel is up. Standard resolv.conf format
+                      (nameserver x.x.x.x)
+ 2026-01-10   ⋯
+              - update Docs/Changelog
 
  2026-01-10   : 7.3.0
               - Correct license in pyproject.toml
@@ -20,20 +44,3 @@
 
  2026-01-06   : 7.1.1
               - update Docs/Changelog
-
- 2026-01-06   : 7.1.0
-              - Add c-code back into repo (oops)
-              - update Docs/Changelog
-
- 2026-01-06   : 7.0.0
-              - **7.0.0**
-            
-                * Code Reorg
-                * Switch packaging from hatch to uv
-                * Add source checks for C-code as well as python
-                * Testing to confirm all working correctly on python 3.14.2
-                * C-code (wg-fix-resolve): Use more const pointer to structs to improve security.
-                * Modern coding standards: PEP-8, PEP-257 and PEP-484 style and type annotations
-                * Use pyconcurrent module (additional dependency)
- 2025-03-20   ⋯
-              - update Changelog and Docs/wg-client.pdf

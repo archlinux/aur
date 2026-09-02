@@ -1,0 +1,5 @@
+#
+# systemd-tmpfiles --create /usr/lib/tmpfiles.d/wg-client.conf
+# Type  Path                    Mode  UID   GID   Age  Argument
+#
+d       /run/lock/wg-client     1777  root  root  -    -

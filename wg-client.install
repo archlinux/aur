@@ -3,7 +3,7 @@
 # Set setcap cap_chown,cap_dac_override on wg-fix-resolv
 #
 set_net_caps() {
-    prog='/usr/lib/wg-client/wg-fix-resolv'
+    prog='/usr/lib/wg-client/resolv-manager'
     echo "Setting cap_chown,cap_dac_override=ep on ${prog}"
     /usr/bin/setcap cap_chown,cap_dac_override=ep ${prog}
 }
