@@ -1,14 +1,16 @@
 # Maintainer: Ayushmaan Padhi <padhiayushmaan@gmail.com>
+# Co-maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=cloudflare-warp-minimal-bin
+#todo: remove .0 from pkgver, add it to source for regex for nvchecker
 pkgver=2026.7.1377.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal Cloudflare WARP client"
 arch=('x86_64')
 url="https://developers.cloudflare.com/warp-client"
 license=('LicenseRef-Unknown')
-depends=('dbus' 'glibc' 'iproute2' 'nftables' 'gnupg' 'libcap' 'nss' 'ca-certificates' 'libpcap' 'tpm2-tss')
-provides=('cloudflare-warp-minimal-bin')
+depends=('glibc' 'tpm2-tss' 'libgcc' 'nss' 'dbus' 'nftables')
+provides=('cloudflare-warp-bin' 'cloudflare-warp')
 conflicts=('cloudflare-warp-bin' 'cloudflare-warp')
 source=("https://pkg.cloudflareclient.com/pool/trixie/main/c/cloudflare-warp/cloudflare-warp_${pkgver}_amd64.deb")
 #Debian Package Index: https://pkg.cloudflareclient.com/dists/trixie/main/binary-amd64/Packages
