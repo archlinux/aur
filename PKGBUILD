@@ -10,7 +10,7 @@ _reponame=passwordmanager
 _cfg=qt6
 pkgname=passwordmanager-$_cfg
 _name=${pkgname%-$_cfg}
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
@@ -20,7 +20,7 @@ makedepends=('cmake' 'ninja' 'qt6-tools' 'clang' 'qt6-declarative')
 [[ $_quick_gui == ON ]] && depends+=('qt6-declarative')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('a317359f54f8c54e7806ce2a9af67e2f6382a53b1ef62412ae5b2ec8265f1b1a')
+sha256sums=('242d9e82690c4ae7101d8f46d81710b2d23429721e41c9f3b93199e7b7919a90')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
