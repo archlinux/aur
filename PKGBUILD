@@ -1,6 +1,6 @@
 # Maintainer: RDMillen <ross@kova.md>
 pkgname=kova-bin
-pkgver=0.7.9
+pkgver=0.7.10
 pkgrel=1
 pkgdesc="Markdown presentation authoring tool (pre-built binary)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('kova')
 validpgpkeys=('F5FE856033771D0CBCFB6CE7F0360B67BD16F99A')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/Kova_${pkgver}_x86_64.tar.gz"
         "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/v$pkgver/Kova_${pkgver}_x86_64.tar.gz.sig")
-sha256sums=('6e527a834774482b46e2ffe79e06441fbd64064f4263233108a685156db98b2f'
+sha256sums=('d69f2ec1cb2b15fcd612881c118bc45698701bd7d69c26f22f0dfebd0c57a049'
             'SKIP')
 
 package() {
