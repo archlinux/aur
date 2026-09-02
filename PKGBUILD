@@ -2,7 +2,7 @@
 
 _pkgname=nmrpflash
 pkgname=${_pkgname}-git
-pkgver=0.9.26.r16.g2594885
+pkgver=0.9.27.r4.g8bf7ddc
 pkgrel=1
 pkgdesc="Netgear Unbrick Utility"
 arch=($CARCH)
@@ -11,7 +11,6 @@ license=('GPL-3.0-or-later')
 depends=(
   'libpcap' 
   'libnl>=3'
-  glibc
   hicolor-icon-theme
 )
 makedepends=(
