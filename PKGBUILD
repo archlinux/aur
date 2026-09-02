@@ -1,6 +1,6 @@
 # Maintainer: tsabme <me@tsablezub.ru>
 pkgname=tsl-amd
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="Helper for tsab.label"
@@ -26,4 +26,4 @@ package() {
 	install -d "${pkgdir}/usr/bin"
 	install -m755 "${srcdir}/tsl-amd.sh" "${pkgdir}/usr/bin/tsl-amd"
 }
-sha256sums=('f60fb83720a83d4a91b8d9e53fcfa3236c0fee213bf9d96b6055ac313a28e0d3')
+sha256sums=('2203f9003af47e4befa60cf0dfea27705eed26020f626d049d7900bd4b1bd1a3')
