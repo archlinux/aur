@@ -1,6 +1,6 @@
 pkgbase = workbuddy
-	pkgdesc = 腾讯云代码助手推出的 AI Agent 办公工具(中国版）
-	pkgver = 5.4.7.37521366_b148bd1d
+	pkgdesc = 腾讯云代码助手推出的 AI Agent 办公工具
+	pkgver = 5.5.1.37570276_9af62480
 	pkgrel = 1
 	url = https://www.workbuddy.cn/app
 	changelog = changelog.md
@@ -16,7 +16,7 @@ pkgbase = workbuddy
 	noextract = node-pty-aarh64.tgz
 	options = !strip
 	options = !debug
-	source = v5.4.7.37521366_b148bd1d.zip::https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-5.4.7.37521366-b148bd1d.zip
+	source = v5.5.1.37570276_9af62480.zip::https://download.codebuddy.cn/workbuddy/saas/darwin-x64/WorkBuddy-darwin-x64-5.5.1.37570276-9af62480.zip
 	source = WorkBuddy.desktop
 	source = https://registry.npmjs.org/better-sqlite3/-/better-sqlite3-13.0.3.tgz
 	sha256sums = SKIP
