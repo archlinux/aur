@@ -1,0 +1,5 @@
+[dux-lang-bin]
+source = "github"
+github = "vorjdux/dux-lang"
+use_latest_release = true
+prefix = "v"
