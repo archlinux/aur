@@ -2,14 +2,14 @@
 
 pkgname=sonora-bin
 _pkgname=sonora
-pkgver=0.28.0
+pkgver=0.28.1
 pkgrel=1
 pkgdesc='A native music streaming client, built with Rust and GPUI'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nolight132/sonora'
 license=('GPL-3.0-or-later')
 depends=('glibc' 'alsa-lib' 'dbus' 'fontconfig' 'hicolor-icon-theme' 'libxcb'
-         'libxkbcommon' 'libxkbcommon-x11' 'vulkan-icd-loader' 'wayland')
+         'libxkbcommon' 'libxkbcommon-x11' 'sqlite' 'vulkan-icd-loader' 'wayland')
 optdepends=('vulkan-radeon: Vulkan driver for AMD GPUs'
             'vulkan-intel: Vulkan driver for Intel GPUs'
             'nvidia-utils: Vulkan driver for NVIDIA GPUs')
@@ -19,9 +19,9 @@ options=('!strip' '!debug')
 source=("${url}/archive/refs/tags/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-x86_64-unknown-linux-gnu")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/sonora-v${pkgver}-aarch64-unknown-linux-gnu")
-sha256sums=('ab0b2c9e2294f68bfd49fa8592a768b2c6c591950ed174f12043c5389554e6e6')
-sha256sums_x86_64=('73e47a99c18210506feefd7a99d82df8eb3900e24aee41f0a0a7be1ce76dfc66')
-sha256sums_aarch64=('68e38d569ee8ba484376ece3036c4ba2b73f34db6c877ba652e8bfe20ae99f0a')
+sha256sums=('d5f40b94ea14f603b4dcafc6bde54fa47b4f1dedcf05a20f4d547757dcf4481f')
+sha256sums_x86_64=('e1589a44200a171f5fcc0e739105e251f806bf11ea5c5edb32ae3e83a51c0aa5')
+sha256sums_aarch64=('eeef907d7db7ccc5b14d94e5c6412cac22ad84732df7bb9ea8861ad31836d339')
 
 package() {
   cd "${_pkgname}-${pkgver}"
