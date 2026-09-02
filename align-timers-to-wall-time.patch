@@ -1,0 +1,190 @@
+From d25555d9466c5c7641482d623b6e884b747b44f1 Mon Sep 17 00:00:00 2001
+From: sentriz <senan@senan.xyz>
+Date: Wed, 28 Jan 2026 12:23:41 +0000
+Subject: [PATCH] align timers to wall time
+
+---
+ bar.c | 53 +++++++++++++++++++++++++++++++++++++++++++----------
+ bar.h |  1 +
+ sys.c | 21 +++++----------------
+ sys.h |  2 +-
+ 4 files changed, 50 insertions(+), 27 deletions(-)
+
+diff --git a/bar.c b/bar.c
+index 8668167..91baeea 100644
+--- a/bar.c
++++ b/bar.c
+@@ -85,13 +85,28 @@ static void bar_poll_timed(struct bar *bar)
+ 	}
+ }
+ 
++static unsigned long snap_next(unsigned long now, unsigned long interval)
++{
++	/* try snap to minute :00 secs */
++	if (interval <= 60 && 60 % interval == 0) {
++		unsigned long sec = now % 60;
++		unsigned long next_sec = ((sec / interval) + 1) * interval;
++		if (next_sec >= 60)
++			return now - sec + 60;
++		return now - sec + next_sec;
++	}
++
++	/* fallback to epoch */
++	return ((now / interval) + 1) * interval;
++}
++
+ static void bar_poll_expired(struct bar *bar)
+ {
+ 	struct block *block = bar->blocks;
+ 
+ 	while (block) {
+ 		if (block->interval > 0) {
+-			const unsigned long next_update = block->timestamp + block->interval;
++			unsigned long next_update = snap_next(block->timestamp, block->interval);
+ 			unsigned long now;
+ 			int err;
+ 
+@@ -190,14 +205,33 @@ static int gcd(int a, int b)
+ 	return a;
+ }
+ 
++static int bar_realign_timer(struct bar *bar)
++{
++	unsigned long now;
++	unsigned long initial;
++	int err;
++
++	if (!bar->sleeptime)
++		return 0;
++
++	err = sys_gettime(&now);
++	if (err)
++		return err;
++
++	initial = snap_next(now, bar->sleeptime) - now;
++
++	return sys_setitimer(initial, bar->sleeptime);
++}
++
+ static int bar_setup(struct bar *bar)
+ {
+ 	struct block *block = bar->blocks;
+ 	sigset_t *set = &bar->sigset;
+-	unsigned long sleeptime = 0;
+ 	int sig;
+ 	int err;
+ 
++	bar->sleeptime = 0;
++
+ 	while (block) {
+ 		err = block_setup(block);
+ 		if (err)
+@@ -207,10 +241,10 @@ static int bar_setup(struct bar *bar)
+ 		 * between all positive block intervals.
+ 		 */
+ 		if (block->interval > 0) {
+-			if (sleeptime > 0)
+-				sleeptime = gcd(sleeptime, block->interval);
++			if (bar->sleeptime > 0)
++				bar->sleeptime = gcd(bar->sleeptime, block->interval);
+ 			else
+-				sleeptime = block->interval;
++				bar->sleeptime = block->interval;
+ 		}
+ 
+ 		block = block->next;
+@@ -270,11 +304,9 @@ static int bar_setup(struct bar *bar)
+ 	if (err)
+ 		return err;
+ 
+-	if (sleeptime) {
+-		err = sys_setitimer(sleeptime);
+-		if (err)
+-			return err;
+-	}
++	err = bar_realign_timer(bar);
++	if (err)
++		return err;
+ 
+ 	err = sys_cloexec(STDIN_FILENO);
+ 	if (err)
+@@ -355,6 +387,7 @@ static int bar_poll(struct bar *bar)
+ 
+ 		if (sig == SIGALRM) {
+ 			bar_poll_expired(bar);
++			bar_realign_timer(bar);
+ 			continue;
+ 		}
+ 
+diff --git a/bar.h b/bar.h
+index 4b3d0f8..93dfcc4 100644
+--- a/bar.h
++++ b/bar.h
+@@ -28,6 +28,7 @@ struct bar {
+ 	struct block *blocks;
+ 	sigset_t sigset;
+ 	bool term;
++	unsigned long sleeptime;
+ };
+ 
+ #define bar_printf(bar, lvl, fmt, ...) \
+diff --git a/sys.c b/sys.c
+index e4606ab..5b11a05 100644
+--- a/sys.c
++++ b/sys.c
+@@ -49,34 +49,23 @@ int sys_chdir(const char *path)
+ 	return 0;
+ }
+ 
+-int sys_gettime(unsigned long *interval)
++int sys_gettime(unsigned long *t)
+ {
+-	struct timespec ts;
+-	int rc;
+-
+-	rc = clock_gettime(CLOCK_MONOTONIC, &ts);
+-	if (rc == -1) {
+-		sys_errno("clock_gettime(CLOCK_MONOTONIC)");
+-		rc = -errno;
+-		return rc;
+-	}
+-
+-	*interval = ts.tv_sec;
+-
++	*t = time(NULL);
+ 	return 0;
+ }
+ 
+-int sys_setitimer(unsigned long interval)
++int sys_setitimer(unsigned long initial, unsigned long interval)
+ {
+ 	struct itimerval itv = {
+-		.it_value.tv_sec = interval,
++		.it_value.tv_sec = initial,
+ 		.it_interval.tv_sec = interval,
+ 	};
+ 	int rc;
+ 
+ 	rc = setitimer(ITIMER_REAL, &itv, NULL);
+ 	if (rc == -1) {
+-		sys_errno("setitimer(ITIMER_REAL, %ld)", interval);
++		sys_errno("setitimer(ITIMER_REAL, %ld, %ld)", initial, interval);
+ 		rc = -errno;
+ 		return rc;
+ 	}
+diff --git a/sys.h b/sys.h
+index ece39a9..4406364 100644
+--- a/sys.h
++++ b/sys.h
+@@ -25,7 +25,7 @@
+ int sys_chdir(const char *path);
+ 
+ int sys_gettime(unsigned long *interval);
+-int sys_setitimer(unsigned long interval);
++int sys_setitimer(unsigned long initial, unsigned long interval);
+ 
+ int sys_waitid(pid_t *pid);
+ int sys_waitpid(pid_t pid, int *code);
+-- 
+2.55.0
+

@@ -1,8 +1,8 @@
 pkgbase = i3blocks-walltime-git
-	pkgdesc = Define blocks for your i3bar status line (sentriz fork, timers aligned to wall time)
-	pkgver = 1.5.r12.gd25555d
+	pkgdesc = Define blocks for your i3bar status line (with timers aligned to wall time)
+	pkgver = 1.5.r11.g9a06a38
 	pkgrel = 1
-	url = https://github.com/sentriz/i3blocks
+	url = https://github.com/vivien/i3blocks
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -17,7 +17,9 @@ pkgbase = i3blocks-walltime-git
 	optdepends = openvpn: For openvpn contrib script
 	provides = i3blocks
 	conflicts = i3blocks
-	source = git+https://github.com/sentriz/i3blocks
+	source = git+https://github.com/vivien/i3blocks
+	source = align-timers-to-wall-time.patch
 	sha256sums = SKIP
+	sha256sums = 69e548587ff46509b6e99d7de2362ff5b82dd6e1650ecb7b1d35461624c07563
 
 pkgname = i3blocks-walltime-git
