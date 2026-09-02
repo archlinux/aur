@@ -1,5 +1,5 @@
 pkgbase = purelive-bin
-	pkgdesc = A third-party live stream aggregator built with Flutter (precompiled binary)
+	pkgdesc = 纯粹直播（Pure Live）基于 Flutter 的开源多平台直播聚合播放器
 	pkgver = 3.0.9
 	pkgrel = 1
 	url = https://github.com/liuchuancong/pure_live
