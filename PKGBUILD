@@ -12,7 +12,7 @@ pkgdesc="Updated fork of Dave Plonka's patricia library and dual-tree Python mod
 
 _gitname='patricia26'
 
-pkgver="1.2.0"
+pkgver="1.3.0"
 pkgrel=1
 url="https://github.com/gene-git/patricia26"
 
@@ -35,8 +35,6 @@ makedepends=(
     git
     meson
     meson-python
-    uv
-    python-pytest
 )
 _mkpkg_depends=(
     'gcc>minor'
@@ -71,35 +69,27 @@ build() {
 
     #
     # Compile flags are in meson.build - including C23 which is required.
-    # -Dcpu_level=baseline
+    # -Dcpu_level=baseline (if cpu is pre-2014 or so)
     #
-    echo "  C-library"
     /usr/bin/rm -rf build/*
     export PATH="/usr/bin"
     export CFLAGS=""
     export LDFLAGS=""
 
-    /usr/bin/meson setup \
-            --reconfigure build/release \
-            --prefix=/usr \
-            --sysconfdir=/etc \
-            --localstatedir=/var \
-            --buildtype=release \
-            -Ddefault_library=shared \
-            -Db_lto=true \
-            -Dcpu_level=x86-64-v3
-
-    /usr/bin/meson compile -C build/release
-
-    echo "  Python Module"
-    /usr/bin/rm -rf dist/*
-    uv_opts=(
-        --python /usr/bin/python
-        --no-build-isolation
-        --link-mode=copy
+    meson_opts=(
+        --reconfigure build/release
+        --prefix=/usr
+        --sysconfdir=/etc
+        --localstatedir=/var
+        --buildtype=release
+        --strip
+        -Ddefault_library=shared
+        -Db_lto=true
+        -Dcpu_level=x86-64-v3
     )
 
-    /usr/bin/uv build "${uv_opts[@]}" --wheel
+    /usr/bin/meson setup "${meson_opts[@]}"
+    /usr/bin/meson compile -C build/release
 }
 
 check() {
@@ -108,8 +98,7 @@ check() {
     echo "Running test suite:"
     echo "***"
 
-    cd ./tests
-    ./do-test
+    ./scripts/run-tests
 }
 
 package() {
@@ -118,6 +107,6 @@ package() {
     echo "Installing: libpatricia26"
     echo "***"
 
-    ./scripts/do-install "$pkgdir"
+    /usr/bin/meson install -C build/release --destdir "$pkgdir" # > /dev/null
 }
 
