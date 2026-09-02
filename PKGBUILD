@@ -2,7 +2,7 @@
 
 pkgname=stremio-linux-shell-git
 pkgver=v1.2.0.r0.gc6e7cd2
-pkgrel=1
+pkgrel=2
 pkgdesc="A native Linux client for Stremio"
 arch=('x86_64')
 url="https://github.com/Stremio/stremio-linux-shell"
@@ -51,7 +51,6 @@ prepare() {
   patch -Np1 -i ../patch-server-path-env.patch 
   patch -Np1 -i ../fix-mpv-locale.patch
 
-  git submodule update --init --recursive
   cargo fetch --locked
 }
 

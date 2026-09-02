@@ -1,7 +1,7 @@
 pkgbase = stremio-linux-shell-git
 	pkgdesc = A native Linux client for Stremio
 	pkgver = v1.2.0.r0.gc6e7cd2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Stremio/stremio-linux-shell
 	arch = x86_64
 	license = GPL-3.0-only
