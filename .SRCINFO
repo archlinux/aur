@@ -1,6 +1,6 @@
 pkgbase = xfb
 	pkgdesc = Open-source Radio Automation with comprehensive accessibility support
-	pkgver = 3.1422
+	pkgver = 3.1423
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/netpack/XFB
@@ -43,11 +43,11 @@ pkgbase = xfb
 	optdepends = wavpack: WavPack audio support
 	optdepends = opus-tools: Opus audio support
 	optdepends = mediainfo: Media file information
-	source = git+https://github.com/netpack/XFB.git#tag=v3.1422
-	source = xfb-companion-3.1422.apk::https://github.com/netpack/XFB/releases/download/v3.1422/xfb-companion.apk
-	source = xfb-companion-3.1422.json::https://github.com/netpack/XFB/releases/download/v3.1422/xfb-companion.json
+	source = git+https://github.com/netpack/XFB.git#tag=v3.1423
+	source = xfb-companion-3.1423.apk::https://github.com/netpack/XFB/releases/download/v3.1423/xfb-companion.apk
+	source = xfb-companion-3.1423.json::https://github.com/netpack/XFB/releases/download/v3.1423/xfb-companion.json
 	sha256sums = SKIP
-	sha256sums = d2fcfa415b3b6b51502e4aef22bb12e490c1fb854057236146dfbfad57248ae2
-	sha256sums = da96438106d8fb2857ecefae983e2ceab1bc37783250cb19ad6b2736500285d1
+	sha256sums = 1e4188e07e2f9d1ba82a2fb4469d434892acd68426fe1e3d6c94bd37800b9ed3
+	sha256sums = b7136bc77a53e199c215437ca1e0dc4825ad34c94ea40157f20e9a74d50dd27b
 
 pkgname = xfb

@@ -7,7 +7,7 @@ pkgname=xfb
 # every machine that installed it. Raise it only if the version ever has to go
 # backwards again.
 epoch=1
-pkgver=3.1422
+pkgver=3.1423
 pkgrel=1
 pkgdesc="Open-source Radio Automation with comprehensive accessibility support"
 arch=('x86_64' 'aarch64')
@@ -63,8 +63,8 @@ source=("git+https://github.com/netpack/XFB.git#tag=v${pkgver}"
         "xfb-companion-${pkgver}.apk::https://github.com/netpack/XFB/releases/download/v${pkgver}/xfb-companion.apk"
         "xfb-companion-${pkgver}.json::https://github.com/netpack/XFB/releases/download/v${pkgver}/xfb-companion.json")
 sha256sums=('SKIP'
-            'd2fcfa415b3b6b51502e4aef22bb12e490c1fb854057236146dfbfad57248ae2'
-            'da96438106d8fb2857ecefae983e2ceab1bc37783250cb19ad6b2736500285d1')
+            '1e4188e07e2f9d1ba82a2fb4469d434892acd68426fe1e3d6c94bd37800b9ed3'
+            'b7136bc77a53e199c215437ca1e0dc4825ad34c94ea40157f20e9a74d50dd27b')
 
 build() {
     cd "$srcdir/XFB"
@@ -177,7 +177,7 @@ package() {
     echo "The shared folders are under: /usr/share/xfb"
     echo "You may want to install yt-dlp for downloading media"
     echo ""
-    echo "New in v3.1422:"
+    echo "New in v3.1423:"
     echo "  - XFB encodes and streams to Icecast itself, song titles and all,"
     echo "    instead of driving butt through a sound card"
     echo "  - Programme the hour as a clock: timed slots, pinned or floating,"
