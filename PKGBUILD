@@ -1,18 +1,18 @@
 pkgname=polaris-gamestream-bin
-pkgver=1.3.13
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Linux-first game streaming host"
 arch=('x86_64')
 url="https://github.com/papi-ux/polaris"
 license=('GPL3')
 depends=('miniupnpc')
-source=("Polaris-arch-x86_64-1.3.13.pkg.tar.zst::https://github.com/papi-ux/polaris/releases/download/v1.3.13/Polaris-arch-x86_64.pkg.tar.zst")
-noextract=("Polaris-arch-x86_64-1.3.13.pkg.tar.zst")
-sha256sums=('033f6d2194a00dd6d97dafbbe01b15c5d0d0120fbe85b72bf9c9f31b51c688a2')
+source=("Polaris-arch-x86_64-1.4.0.pkg.tar.zst::https://github.com/papi-ux/polaris/releases/download/v1.4.0/Polaris-arch-x86_64.pkg.tar.zst")
+noextract=("Polaris-arch-x86_64-1.4.0.pkg.tar.zst")
+sha256sums=('4d5ec04a27453d67cf2d6e2c8c5cc211ac07bd725d6fc7e34d10b01752e959ac')
 install=polaris-gamestream-bin.install
 
 package() {
-  bsdtar -xf "Polaris-arch-x86_64-1.3.13.pkg.tar.zst" -C "$pkgdir"
+  bsdtar -xf "Polaris-arch-x86_64-1.4.0.pkg.tar.zst" -C "$pkgdir"
   # ensure no pacman metadata leaks
   find "$pkgdir" -name ".PKGINFO" -delete
   find "$pkgdir" -name ".BUILDINFO" -delete
