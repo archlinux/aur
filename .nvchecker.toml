@@ -1,0 +1,4 @@
+[python-scikit-rf]
+source = "git"
+git = "https://github.com/scikit-rf/scikit-rf.git"
+prefix = "v"

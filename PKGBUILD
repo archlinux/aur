@@ -1,42 +1,72 @@
 # Maintainer: sasvari <sasvari@fastmail.com>
+# Maintainer: Torleif Skår <torleif.skaar AT gmail DOT com>
 #             adapted from package python2-scikit-rf
-pkgname="python-scikit-rf"
-pkgver=1.11.0
+_name="scikit-rf"
+pkgname="python-${_name}"
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Scikit-rf (aka skrf) is a python package for RF/Microwave engineering"
 arch=(any)
 url="https://github.com/scikit-rf/scikit-rf"
-license=("BSD")
+license=("BSD-3-Clause")
 depends=(
-	"python"
-	"python-matplotlib"
-	"python-nbsphinx"
-	"python-networkx"
-	"python-numpy"
-	"python-openpyxl"
-	"python-pandas"
-	"python-scipy"
-	"python-xlwt"
-	"python-typing_extensions"
+    "python"
+    "python-numpy"
+    "python-scipy"
+    "python-pandas"
+    "python-typing_extensions"
+    # matplotlib and networkx aren't strictly necessary,
+    # but they are in use _quite_ often
+    "python-matplotlib"
+    "python-networkx"
 )
-makedepends=(python-build python-installer python-wheel)
+makedepends=(
+    "git"
+    "python-build"
+    "python-installer"
+    "python-setuptools"
+    "python-wheel"
+)
 optdepends=(
-	"python-pyvisa: for instrument control"
-	"python-vxi11: for instrument control over ethernet"
-	"python-xlrd: for xls reading"
+    "python-openpyxl: for Excel read/write support"
+    "python-pyvisa: for VISA (instrument control) support"
+    "python-pyvisa-py: for VISA support, alternative backend"
+    "python-bokeh: for running examples in the notebook"
+)
+checkdepends=(
+  "python-pytest"
 )
 
-sha256sums=('3c58d3bf525d22ad55402ac6d52be75fbcc7f5d7f5daeafd37f46cf6ff444d4b')
-source=("${pkgname}-${pkgver}::https://github.com/scikit-rf/scikit-rf/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('346ac2def403fdc8ea69169b2d7e4c21bbdf3476a2f36dc6073b8260833d86dcf66d5216081530cfe4aabddbbaf1f98c1535f5c32d1020c333820a17ce31cc78')
+source=("${pkgname}::git+${url}#tag=v${pkgver}")
 
+prepare() {
+    cd "${pkgname}"
+
+    # We don't need coverage test; disable it
+    sed -E -i '/^addopts/ s/--cov=skrf\s*//g' pyproject.toml
+}
 
 build() {
-	cd "${srcdir}/scikit-rf-${pkgver}"
-	export PYTHONHASHSEED=0
-	python -m build --wheel --no-isolation
+    cd "${pkgname}"
+    python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "${pkgname}"
+
+    # Install the package in a virtual environment and run the tests
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
+    test-env/bin/python -P -m pytest
 }
 
 package() {
-	cd "${srcdir}/scikit-rf-${pkgver}"
-	find dist -name '*.whl' -exec python -m installer --compile-bytecode 1 --destdir="${pkgdir}" {} \;
+    cd "${pkgname}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # BSD-3-Clause license needs to be installed
+    install -Dm0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+# vim: set ts=4 sw=4 et:
