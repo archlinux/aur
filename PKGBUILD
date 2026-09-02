@@ -2,7 +2,7 @@
 _pkgname=f5vpn
 pkgname=${_pkgname}-ng
 pkgver=7272.0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='VPN client using the Point-to-Point Protocol to connect to F5Networks BIG-IP APM'
 arch=(aarch64 x86_64)
 mirror=vpn.f5networks.net
@@ -20,13 +20,13 @@ b2sums=('b2b3e60a956a4d55e12695d3a034832af321c57a3da6a907600062c723d8eb44b53473e
         'SKIP')
 b2sums_aarch64=('0d80c59208284c1905564391ba3ac48ba1875904f6cb512a6eed12ad0154a528e669165e92afc7dfb06be8761014c6597d73195bc4bd41df7b21158f6780d7b6')
 b2sums_x86_64=('6ca40bbc82fd12fef75417cfec457363defbcb6ac2077cadc39e188cfe566a3a713b4c79738fe8dcd5b76d6fdb577abebbe458bf7e9e5671e2d08e5e6e9465fc')
-depends=(curl gtk3 openssl icu webkit2gtk-4.1)
+depends=(curl gtk3 openssl icu libxml2-legacy webkit2gtk-4.1)
 optdepends=(
   'xorg-xwayland: wayland support'
 )
 provides=("${pkgname}")
 conflicts=("${_pkgname}")
-url='https://techdocs.f5.com/kb/en-us/products/big-ip_apm/releasenotes/related/relnote-edge-client-7-2-7-1.html'
+url='https://techdocs.f5.com/kb/en-us/products/big-ip_apm/releasenotes/related/relnote-edge-client-7-2-7-2.html'
 license=('commercial')
 
 pkgver() {
