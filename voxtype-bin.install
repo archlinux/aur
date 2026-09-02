@@ -53,6 +53,14 @@ _install_active_binary() {
 }
 
 _set_default_backend() {
+    # aarch64 ships one generic CPU binary — no AVX2/AVX-512 split exists on
+    # that architecture, so there's nothing to detect.
+    if [ "$(uname -m)" = "aarch64" ]; then
+        _install_active_binary /usr/lib/voxtype/voxtype-cpu
+        echo "cpu"
+        return
+    fi
+
     # Set the default CPU backend based on CPU capabilities
     if grep -q avx512f /proc/cpuinfo 2>/dev/null; then
         _install_active_binary /usr/lib/voxtype/voxtype-avx512
@@ -161,6 +169,14 @@ _set_onnx_cuda_symlink() {
 }
 
 _detect_gpu() {
+    # No GPU-accelerated binary variant ships for aarch64 yet — no mainstream
+    # ARM hardware has a supported Vulkan/CUDA/MIGraphX path (see
+    # voxtype#579) — so recommending `voxtype setup gpu --enable` here would
+    # send aarch64 users after a switch that doesn't exist.
+    if [ "$(uname -m)" = "aarch64" ]; then
+        return
+    fi
+
     # Detect GPU for acceleration recommendation
     GPU_DETECTED=""
     GPU_VENDOR=""
