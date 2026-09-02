@@ -1,6 +1,6 @@
 pkgbase = plasmazones
 	pkgdesc = Window snapping, tiling and scrolling for KDE Plasma
-	pkgver = 3.4.5
+	pkgver = 3.4.6
 	pkgrel = 1
 	url = https://github.com/fuddlesworth/PlasmaZones
 	install = plasmazones.install
@@ -31,7 +31,7 @@ pkgbase = plasmazones
 	optdepends = hwdata: readable GPU names in the rendering device picker
 	conflicts = plasmazones-bin
 	conflicts = plasmazones-git
-	source = plasmazones-3.4.5.tar.gz::https://github.com/fuddlesworth/PlasmaZones/archive/refs/tags/v3.4.5.tar.gz
-	sha256sums = 0d82a986657177f887cb9aac01af117ee3847ab55e9b8f97a874b6fb5369ee9a
+	source = plasmazones-3.4.6.tar.gz::https://github.com/fuddlesworth/PlasmaZones/archive/refs/tags/v3.4.6.tar.gz
+	sha256sums = 9e4544143c82828cb03618727008903a5ec0e23bc79c2bc06135e09908f253fa
 
 pkgname = plasmazones
