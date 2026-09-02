@@ -1,7 +1,7 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 _pkgname=passless
 pkgname="${_pkgname}-bin"
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Virtual FIDO2 device and client FIDO 2 utility. Passkeys made easy."
 arch=('x86_64' 'aarch64')
@@ -16,13 +16,14 @@ source=("https://github.com/pando85/passless/releases/download/v${pkgver}/passle
         "passless-${pkgver}.tar.gz::https://github.com/pando85/passless/archive/refs/tags/v${pkgver}.tar.gz"
         "https://github.com/pando85/passless/releases/download/v${pkgver}/passless-completions-${pkgver}.tar.gz"
         "passless.install")
-sha256sums=('80a800921e696c85d087964e7cab1c09a24cd89b417c949cf8b7d2d3760cb94c'
+sha256sums=('ce35f7baf822c100d1469f4fedf1df0ed088b97656c57a819d1a23ee9eb396d8'
             'SKIP'
             'SKIP'
             'SKIP')
 
 package() {
 	install -Dm755 passless "${pkgdir}/usr/bin/passless"
+	install -Dm755 passless-git-sync "${pkgdir}/usr/bin/passless-git-sync"
 	install -Dm755 sign-proxy "${pkgdir}/usr/bin/sign-proxy"
 	install -Dm755 agent-prompt-probe "${pkgdir}/usr/bin/agent-prompt-probe"
 
