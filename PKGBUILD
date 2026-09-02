@@ -2,7 +2,7 @@
 
 _appname=phonetrack
 pkgname="nextcloud-app-$_appname"
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Phone tracker and location sharer for Nextcloud"
 arch=('any')
@@ -11,7 +11,7 @@ license=('AGPL-3.0-or-later')
 makedepends=('composer' 'npm' 'rsync' 'yq')
 groups=('nextcloud-apps')
 source=("$_appname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('89fccc9b173bdc84deb1d3a238d51a23a4169f92decd4ce94e328294a381bd1c5ba2ca0e61978e0b55a5371a29c2835c0f24e412fef4d235e91acd00d91050c2')
+sha512sums=('3cd82d4ad39a6cbf24faa40fa25736c46d9afb2e263edc87b2c904108d057299bd2fd797e149a8986b1e3bb86d09531f1b328cfe655c9e4801f216937628ee82')
 
 prepare() {
     cd "$srcdir/$_appname-$pkgver"
