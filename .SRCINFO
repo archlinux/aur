@@ -1,0 +1,76 @@
+pkgbase = skwd-wall-v2
+	pkgdesc = Native Skwd wallpaper suite v2 packages
+	pkgver = 1.0.0_beta.1
+	pkgrel = 1
+	url = https://github.com/liixini/skwd-wall/tree/v2
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = curl
+	makedepends = nasm
+	makedepends = patchelf
+	makedepends = alsa-lib
+	makedepends = dav1d
+	makedepends = libdrm
+	makedepends = libglvnd
+	makedepends = libpulse
+	makedepends = libva
+	makedepends = libxkbcommon
+	makedepends = libyuv
+	makedepends = zlib
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = shaderc
+	makedepends = vulkan-headers
+	makedepends = vulkan-icd-loader
+	makedepends = wayland
+	makedepends = wayland-protocols
+	options = !debug
+	options = !lto
+	source = skwd-suite-1.0.0~beta.1-4.fc44.src.rpm::https://download.copr.fedorainfracloud.org/results/piixini/skwd-wall-v2/srpm-builds/10933309/skwd-suite-1.0.0beta.1-4.fc44.src.rpm
+	sha256sums = 0328cd4c438542ae5068007a7b288bccaa71004fad3c7d2959f991bb575437f6
+
+pkgname = skwd-wall-v2
+	pkgdesc = GPU-rendered graphical client for the Skwd wallpaper suite v2
+	depends = gcc-libs
+	depends = libxkbcommon
+	depends = skwd-deck=1.0.0_beta.1
+	depends = skwd-paper=1.0.0_beta.1
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = skwd-lens: semantic wallpaper search
+
+pkgname = skwd-deck
+	pkgdesc = Control daemon and tools for the Skwd wallpaper suite v2
+	install = skwd-deck.install
+	depends = gcc-libs
+	depends = skwd-paper=1.0.0_beta.1
+	optdepends = skwd-deck-steamworks: Steam Client Workshop backend
+	optdepends = skwd-lens: semantic wallpaper search
+	optdepends = steamcmd: alternative Steam Workshop backend
+
+pkgname = skwd-paper
+	pkgdesc = Still, video, and Wallpaper Engine renderers for Skwd v2
+	depends = alsa-lib
+	depends = dav1d
+	depends = gcc-libs
+	depends = libdrm
+	depends = libglvnd
+	depends = libpulse
+	depends = libva
+	depends = libxkbcommon
+	depends = libyuv
+	depends = qt6-declarative
+	depends = shaderc
+	depends = vulkan-icd-loader
+	depends = wayland
+	depends = zlib
+
+pkgname = skwd-lens
+	pkgdesc = Optional semantic wallpaper search engine for Skwd v2
+	depends = gcc-libs
+	depends = skwd-lens-model
