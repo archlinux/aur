@@ -2,7 +2,7 @@
 pkgname='truerng-udev'
 pkgdesc='Udev rules for TrueRNG USB devices'
 pkgver='1.0.0'
-pkgrel='1'
+pkgrel='2'
 _commit='263ccc91cf7465c79cb46c04d237ed26e2530641'
 arch=('any')
 url="https://github.com/euler357/TrueRNG"
