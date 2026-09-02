@@ -1,7 +1,7 @@
 # Maintainer: ELECTRO <electro@electris.net>
 
 pkgname=rustypaint-git
-pkgver=0.2.2
+pkgver=0.2.2.r6.gbfadec3
 pkgrel=1
 pkgdesc="Paint 3D's 2D editor, without the 3D (Git version)"
 arch=('x86_64')
@@ -48,6 +48,8 @@ package() {
         "$pkgdir/usr/share/applications/net.electris.RustyPaint.desktop"
     install -Dm644 packaging/flatpak/net.electris.RustyPaint.metainfo.xml \
         "$pkgdir/usr/share/metainfo/net.electris.RustyPaint.metainfo.xml"
+    install -Dm644 packaging/mime/net.electris.RustyPaint.xml \
+        "$pkgdir/usr/share/mime/packages/net.electris.RustyPaint.xml"
     install -Dm644 README.md "$pkgdir/usr/share/doc/rustypaint/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/rustypaint/LICENSE"
 
