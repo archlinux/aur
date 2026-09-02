@@ -1,7 +1,7 @@
 pkgname=wee-slack-git
-pkgver=2.10.2.r368.gedaad8b
-pkgrel=1
 pkgdesc='A WeeChat plugin for Slack'
+pkgver=2.10.2.r502.gaa904c2
+pkgrel=1
 url='https://github.com/wee-slack/wee-slack/'
 arch=('any')
 license=('MIT')
@@ -34,7 +34,8 @@ package() {
   )
 
   cd wee-slack
-  install -Dm644 wee_slack.py "${pkgdir}/usr/share/weechat/python/wee_slack.py"
+  ./build.sh
+  install -Dm644 build/slack.py "${pkgdir}/usr/share/weechat/python/wee_slack.py"
   install -Dm644 weemoji.json "${pkgdir}/usr/share/weechat/weemoji.json"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/wee-slack/LICENSE"
 }
