@@ -1,0 +1,48 @@
+# polland-de.install
+
+post_install() {
+    echo "╔═══════════════════════════════════════════════════╗"
+    echo "║           🏰 PolLand has been installed!         ║"
+    echo "╚═══════════════════════════════════════════════════╝"
+    echo ""
+    echo "📋 What's installed:"
+    echo "  • System configs: /usr/share/polland/configs/"
+    echo "  • SKEL configs: /etc/skel/ (for new users)"
+    echo "  • SDDM theme: sugar-candy"
+    echo "  • Wallpapers: /usr/share/wallpapers/"
+    echo ""
+    echo "🔄 To apply configs to your user, run:"
+    echo "  $ polland-sync"
+    echo ""
+    echo "⚠️  WARNING: This will OVERWRITE your existing configs!"
+    echo ""
+    echo "💡 New users get configs automatically from /etc/skel/"
+}
+
+post_upgrade() {
+    echo "╔═══════════════════════════════════════════════════╗"
+    echo "║      🏰 PolLand has been updated!               ║"
+    echo "╚═══════════════════════════════════════════════════╝"
+    echo ""
+    echo "📦 Updated to version $pkgver-$pkgrel"
+    echo ""
+    echo "🔄 To apply the latest configs, run:"
+    echo "  $ polland-sync"
+    echo ""
+    echo "⚠️  This will OVERWRITE your existing configs!"
+    echo "   (No backups, no merging - just fresh configs)"
+    echo ""
+    echo "📝 User override support will come in a future version."
+}
+
+pre_remove() {
+    echo "⚠️  Removing PolLand..."
+    echo "   Your user configs will NOT be removed."
+    echo "   Run: rm -rf ~/.config/hypr ~/.config/waybar ... etc as you see fit"
+}
+
+post_remove() {
+    echo "🗑️  PolLand has been removed."
+    echo "   System configs are gone."
+    echo "   User configs remain in ~/.config/ unless manually removed"
+}
