@@ -1,0 +1,21 @@
+pkgbase = hyprcube
+	pkgdesc = A Wayland-native settings application for Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/maravexa/hyprcube
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = fontconfig
+	depends = git
+	depends = libxkbcommon
+	depends = wayland
+	optdepends = hyprdeck: HyprDeck settings integration
+	optdepends = hyprland: live preview, monitor control, and reload support
+	optdepends = hyprpaper: per-monitor wallpaper management and live apply
+	optdepends = hyprsaver: HyprSaver settings integration
+	source = hyprcube-0.1.0.tar.gz::https://github.com/maravexa/hyprcube/archive/v0.1.0.tar.gz
+	sha256sums = c9a7a53222c777575375a13bac96635bc72156ab7e7e0039d855ac0cc01bb649
+
+pkgname = hyprcube
