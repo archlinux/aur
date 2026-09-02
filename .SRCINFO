@@ -1,7 +1,7 @@
 pkgbase = jre17-zulu-bin
 	pkgdesc = Azul Zulu OpenJDK full runtime environment, bin version.
-	pkgver = 17.0.20.u8
-	pkgrel = 1
+	pkgver = 17.0.20.1+1
+	pkgrel = 2
 	url = https://www.azul.com/downloads/
 	install = jre17-zulu-bin.install
 	arch = aarch64
@@ -25,21 +25,21 @@ pkgbase = jre17-zulu-bin
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=17
 	provides = java-runtime-openjdk=17
-	provides = jre17-openjdk=17.0.20.u8-1
+	provides = jre17-openjdk=17.0.20.1+1-2
 	provides = java-runtime-headless=17
 	provides = java-runtime-headless-openjdk=17
-	provides = jre17-openjdk-headless=17.0.20.u8-1
-	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu17.68.17-ca-jre17.0.20-linux_aarch64.tar.gz
+	provides = jre17-openjdk-headless=17.0.20.1+1-2
+	source_aarch64 = https://cdn.azul.com/zulu/bin/zulu17.68.203-ca-jre17.0.20.1-linux_aarch64.tar.gz
 	source_aarch64 = freedesktop-java.desktop
-	sha256sums_aarch64 = dc2004d03e7a8dc82940a35433f1337303dafdbd34a06a030ce957ba38bb3a8a
+	sha256sums_aarch64 = 12e8a6a0957c38bcb16b0d18187ba60dfe88e9d16dd99e5eefd5929d1b132931
 	sha256sums_aarch64 = 4b0278be06c9705063305da113c9b9e6ddf3c00d3a3c51e894885e08ba42dbcb
-	source_i686 = https://cdn.azul.com/zulu/bin/zulu17.68.17-ca-jre17.0.20-linux_i686.tar.gz
+	source_i686 = https://cdn.azul.com/zulu/bin/zulu17.68.203-ca-jre17.0.20.1-linux_i686.tar.gz
 	source_i686 = freedesktop-java.desktop
-	sha256sums_i686 = 946b02fe10d6b9832aac69a7ec6670574b4c6e5c9d2e87b9b16c334922981260
+	sha256sums_i686 = acda3a3a691df809f7b14b002b7a0db89f9a5733a537ac303fc88568ccb5a4ed
 	sha256sums_i686 = 4b0278be06c9705063305da113c9b9e6ddf3c00d3a3c51e894885e08ba42dbcb
-	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu17.68.17-ca-jre17.0.20-linux_x64.tar.gz
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu17.68.203-ca-jre17.0.20.1-linux_x64.tar.gz
 	source_x86_64 = freedesktop-java.desktop
-	sha256sums_x86_64 = 96c6a5cbc4d0c582bb126d41e280b254db0332a93ed37ae2219debfbe4d3e73f
+	sha256sums_x86_64 = ab4f4e4bee5db1a266ba08134cd93275ca394c025afde58e6cd34f6aee8d6eb9
 	sha256sums_x86_64 = 4b0278be06c9705063305da113c9b9e6ddf3c00d3a3c51e894885e08ba42dbcb
 
 pkgname = jre17-zulu-bin
