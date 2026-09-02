@@ -1,8 +1,8 @@
 # Maintainer: Muhammad95959 <muhammadhefzey@gmail.com>
 
 pkgname=hyprminimizer-git
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="Minimize windows to tray for Hyprland using D-Bus StatusNotifierItem"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Muhammad95959/hyprminimizer"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   local desc
-  desc=$(git describe --long --tags 2>/dev/null) || desc="0.1.0"
+  desc=$(git describe --long --tags 2>/dev/null) || desc="0.1.1"
   echo "$desc" | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
