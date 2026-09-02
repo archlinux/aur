@@ -1,0 +1,14 @@
+pkgbase = bashd-ls
+	pkgdesc = Bash language server
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/matkrin/bashd
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = go
+	depends = glibc
+	optdepends = shellcheck: The shellcheck integration
+	source = bashd-0.2.3.tar.gz::https://github.com/matkrin/bashd/archive/refs/tags/v0.2.3.tar.gz
+	sha256sums = dcd7f252e41f221d59506fdee44c7fa5a344aef3bd42ce66be4ba26ac3a48057
+
+pkgname = bashd-ls
