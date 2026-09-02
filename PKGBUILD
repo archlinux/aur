@@ -3,15 +3,17 @@
 _name=pytnl
 pkgbase=python-$_name
 pkgname=($pkgbase $pkgbase-cuda)
-pkgver=0.0.11
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="Python bindings for the Template Numerical Library"
 arch=(x86_64)
 url="https://gitlab.com/tnl-project/pytnl"
 license=(MIT)
 depends=(
-  gcc-libs
   glibc
+  libgcc
+  libgomp
+  libstdc++
   openmpi
   python
   tinyxml2
@@ -34,7 +36,7 @@ checkdepends=(
   python-numpy
 )
 source=($url/-/archive/$pkgver/$_name-$pkgver.tar.gz)
-b2sums=('02313e38fb9c4eccb6eaf0fe26f400f75363afeaeb9cb13c7e136db10e3d1967f949c685f38c0290e54ec07e1f3a31b3846e0e72527e1f62ac68d8b48d656804')
+b2sums=('d8bf3db3bb708524eb2f52c7593e24431615c7899a81bf4abbe6e96844757dd4b06f8bd4709f3a842d5ea9578ab8eee5a97db7db1349d5ca4af40842f49fb0bf')
 
 _pick() {
   local p="$1" f d; shift
