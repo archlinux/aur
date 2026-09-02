@@ -1,6 +1,6 @@
 pkgbase = gistui
 	pkgdesc = A terminal UI for managing GitHub Gists
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://github.com/akunzai/gistui
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gistui
 	depends = glibc
 	depends = libgcc
 	provides = gistui
-	source = gistui-0.19.0.tgz::https://github.com/akunzai/gistui/archive/v0.19.0.tar.gz
-	sha256sums = f28d26a893a042a9aaf6e7abf21f6d56d7698809891ebc575e81437b6ad86841
+	source = gistui-0.20.0.tgz::https://github.com/akunzai/gistui/archive/v0.20.0.tar.gz
+	sha256sums = 6a90c9a1e3ba3fba8e8c1f642ca7d33f37f74e67674b1a5347db9c5eb6811408
 
 pkgname = gistui
