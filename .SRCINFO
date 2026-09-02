@@ -1,7 +1,7 @@
 pkgbase = otr
 	pkgdesc = Decode and cut video files from Online TV Recorder (OTR)
 	pkgver = 0.11.11
-	pkgrel = 1
+	pkgrel = 2
 	arch = aarch64
 	arch = x86_64
 	license = GPL3
@@ -13,8 +13,8 @@ pkgbase = otr
 	depends = ffms2
 	conflicts = otr-git
 	options = !debug
-	source = https://codeberg.org/mipi/otr/archive/0.11.11.tar.gz
+	source = otr-0.11.11.tar.gz::https://codeberg.org/mipi/otr/archive/0.11.11.tar.gz
 	validpgpkeys = 11ECD6695134183B3E7AF1C2223AAA374A1D59CE
-	sha256sums = 95542a246c9ad2db5d2c46c93b0abc46e2e6b7d7b20b7fe8aafe597431036c5e
+	sha256sums = c23cbf1114822bb509cff884737f1b2dd208911ebb683688ec2ae519e2cb326b
 
 pkgname = otr
