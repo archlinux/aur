@@ -1,6 +1,6 @@
 pkgbase = prism-harness-suite
 	pkgdesc = PRISM harness suite for AI coding agents: doctrine rules, review steering, overnight loops, model routing and security gates on one Bun runtime
-	pkgver = 1.0.0_beta.8
+	pkgver = 1.0.0_rc.3
 	pkgrel = 1
 	url = https://getharness.app
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = prism-harness-suite
 	conflicts = prism-proxy
 	conflicts = prism-route
 	conflicts = prism-sober
-	source = git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v1.0.0-beta.8
+	source = git+https://git.sovereign-society.org/prism/prism-harness.git#tag=v1.0.0-rc.3
 	sha256sums = SKIP
 
 pkgname = prism-harness-suite
