@@ -1,7 +1,7 @@
 # Maintainer: Zach Hoffman <zach@zrhoffman.net>
 pkgname=f5fpc
-pkgver=7271.0.0.4
-pkgrel=3
+pkgver=7272.0.0.2
+pkgrel=1
 pkgdesc='Command-line VPN client using FastPPP to connect to F5Networks BIG-IP APM 13.0'
 arch=(aarch64 x86_64)
 
@@ -9,12 +9,12 @@ source=('license.html::https://cdn.f5.com/product/apm/apps/eula.html')
 mirror=vpn.f5networks.net
 source_aarch64=("linux_f5cli-${pkgver}.aarch64.deb::https://${mirror}/public/download/linux_f5cli.aarch64.deb")
 source_x86_64=("linux_f5cli-${pkgver}.x86_64.deb::https://${mirror}/public/download/linux_f5cli.x86_64.deb")
-sha256sums=('4507e09374f3e6044952f375e4a1af31505b267c4e0bb066ff159e85694a3d6e')
-sha256sums_aarch64=('92cb4ed4b923e1878a887091a97fcde170477549c6765753fa0b484687465299')
-sha256sums_x86_64=('e6b33c2c2d36a0b79271c634f83188bcf9762d749887f2f6d304e466312a18cf')
-b2sums=('234729d2ff102638d649e46aa7da193f3a46af396cf063876cbabb71b946ef2df4731519acc48f87e2a2d51f52e45ce494e04320a3fa006fbe5fb734820f51d8')
-b2sums_aarch64=('6397d561d68c1583b6190813ce4db4463070194d2ba72f211034647442418da936eb96bf60617904706e1d6990c6c9c32ef060627fa55bcc2f3ab2c9d81fff16')
-b2sums_x86_64=('159952b9de520a98a9ff6d4a4f855809e4ec2016c5f2918a5d19871a8574b2434aa4499ed991fc80268c27caf55ac0866d463ddce2fbbeb4de28e0026a986d9d')
+sha256sums=('SKIP')
+sha256sums_aarch64=('2a8886a9816b1e81d2e3f2b1a7e11ad77aa504110793d901fa4cf1a82f4556c4')
+sha256sums_x86_64=('f9b436e892775b774a83ab7be9c0cc2009f65caf3aec21c68a28450093ceaf24')
+b2sums=('SKIP')
+b2sums_aarch64=('3845e1caae7a9140bfe8fbe03a03240a5716ed55bbf343b7d3099ba3363806a442a63c45e063588c5da8d80749937a7d2d6be41393cb511c80b3001ad6298144')
+b2sums_x86_64=('a6a5b9e0753372740c16791efe825dd4ad39a41ffc6cadc964264d16a47ceb0470c4481740270f192a697a18d513d690f2196b2bbe232f8c2909795d9e09fb1b')
 
 depends=(openssl)
 makedepends=(tar)
