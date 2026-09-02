@@ -1,0 +1,13 @@
+pkgbase = maki-dbdr-bin
+	pkgdesc = An efficient AI coding agent extendable by neovim like Lua plugins (dbdr-fork)
+	pkgver = 0.4.12
+	pkgrel = 1
+	url = https://github.com/deep-blue-dark-red/maki-dbdr
+	arch = x86_64
+	license = MIT
+	conflicts = maki-bin
+	options = !debug
+	source = https://github.com/deep-blue-dark-red/maki-dbdr/releases/download/v0.4.12-dbdr/maki-v0.4.12-dbdr-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = d3c74c4206f4147935c8e5aa57fc48064e4afd362235bdd1eb3ebd7ef7bf6d1d
+
+pkgname = maki-dbdr-bin

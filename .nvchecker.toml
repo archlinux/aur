@@ -1,0 +1,4 @@
+[maki-dbdr-bin]
+source = "git"
+git = "https://github.com/deep-blue-dark-red/maki-dbdr.git"
+prefix = "v"
