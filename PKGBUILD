@@ -10,7 +10,7 @@
 # versions and checksums deliberately do not live in this source repository.
 
 pkgname=thumbgrid-bin
-pkgver=2026.8.2
+pkgver=2026.9.1
 pkgrel=1
 # pkgrel of the upstream thumbgrid release asset being repackaged.
 _srcrel=1
@@ -22,6 +22,12 @@ depends=(
   'qt6-base'
   'qt6-svg'
   'qt6-imageformats'
+  # kimageformats supplies the Qt plugin that decodes heif/heic (and avif, jxl,
+  # raw). Its codec backends are dlopened, so Arch lists them as optdepends of
+  # kimageformats - libheif has to be named here or heic silently stays
+  # unreadable on a clean install.
+  'kimageformats'
+  'libheif'
   'exiv2'
   'opencv'
   'mpv'
@@ -30,7 +36,7 @@ provides=('thumbgrid')
 conflicts=('thumbgrid')
 options=('!strip' '!debug')
 source=("thumbgrid-$pkgver-$_srcrel-x86_64.pkg.tar.zst::https://github.com/do-i/thumbgrid/releases/download/v$pkgver/thumbgrid-$pkgver-$_srcrel-x86_64.pkg.tar.zst")
-sha256sums=('e79c93c7ec7dc2a67f8c5c8bb67b8c1177618e8e62df892327a051602822296a')
+sha256sums=('729870fc0066ab24b08048f6d71b9d86d457196df7beed9bea00df99622a30ca')
 
 package() {
   # The download is itself a complete pacman package; unpack it as-is and
