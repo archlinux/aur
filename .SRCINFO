@@ -1,7 +1,7 @@
 pkgbase = dmlc-core-git
 	pkgdesc = A common bricks library for building scalable and portable distributed machine learning.
-	pkgver = 0.5.r44.gcbab4ef
-	pkgrel = 2
+	pkgver = 0.6.dev20260902004228.r0.g905766e
+	pkgrel = 1
 	url = https://github.com/dmlc/dmlc-core
 	arch = x86_64
 	license = Apache-2.0

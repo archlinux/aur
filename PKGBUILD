@@ -2,8 +2,8 @@
 
 pkgbase=dmlc-core-git
 pkgname=dmlc-core-git
-pkgver=0.5.r44.gcbab4ef
-pkgrel=2
+pkgver=0.6.dev20260902004228.r0.g905766e
+pkgrel=1
 pkgdesc="A common bricks library for building scalable and portable distributed machine learning."
 arch=($CARCH)
 url="https://github.com/dmlc/dmlc-core"
@@ -12,8 +12,7 @@ groups=()
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 replaces=()
-depends=(
-)
+depends=()
 makedepends=(
     cmake
     dlpack
@@ -50,7 +49,7 @@ build() {
 
     cmake -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -Wno-dev \
+        -Wno-author \
         -B build \
         -G Ninja
 
