@@ -13,7 +13,7 @@
 pkgbase=slipmat-git
 pkgname=('slipmat-daemon-git' 'slipmat-git' 'climat-git')
 _pkgname=slipmat
-pkgver=0.10.0.r106.ga83d49f
+pkgver=0.10.0.r143.g11064e0
 pkgrel=1
 arch=('x86_64')          # Widevine on Linux is x86_64 only
 url="https://github.com/SoftARV/Slipmat"
@@ -100,6 +100,7 @@ package_slipmat-daemon-git() {
   # needs to write inside this directory.
   install -d "$pkgdir/usr/share/slipmat/sidecar"
   cp -r sidecar/package.json sidecar/main.js sidecar/preload.js \
+        sidecar/queue-identity.js \
         sidecar/node_modules "$pkgdir/usr/share/slipmat/sidecar/"
 
   # Prebuilt binaries for architectures this package is not for — 7 MB of
