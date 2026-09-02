@@ -1,7 +1,7 @@
 # Maintainer: MotherSphere <mothersphere.colony@gmail.com>
 pkgname=colony-bin
 _pkgname=colony
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Application launcher for the Project-Colony ecosystem (prebuilt binary)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=("${_pkgname}-${pkgver}::${url}/releases/download/v${pkgver}/colony-linux
 noextract=("${_pkgname}-${pkgver}")
 # Split sums so the release automation can update the binary's hash with a
 # simple line-anchored sed without touching the (stable) icon hash.
-_binsha='6bbc11912e6a5fd2e9ef888c2175dc2338f55e31a461522d82b6de8fd147b61b'
+_binsha='c0ba9a7d462e79c3e4e6503cf14011d510dac789266ce425518ea4a95a9aa079'
 _iconsha='b2a6ae79e9cea7718d0457f9e2623d3a62a2fc4978f4ff0ef5457c1b865b3af4'
 sha256sums=("${_binsha}" "${_iconsha}")
 
