@@ -49,6 +49,9 @@ validpgpkeys=(
 _github="https://github.com/peteonrails/voxtype/releases/download/v$pkgver"
 source=(
     # Whisper binaries
+    # baseline: x86-64-v2, for pre-AVX2 CPUs (#612). New in 1.1.0.
+    "voxtype-$pkgver-baseline::$_github/voxtype-$pkgver-linux-x86_64-baseline"
+    "voxtype-$pkgver-baseline.asc::$_github/voxtype-$pkgver-linux-x86_64-baseline.asc"
     "voxtype-$pkgver-avx2::$_github/voxtype-$pkgver-linux-x86_64-avx2"
     "voxtype-$pkgver-avx2.asc::$_github/voxtype-$pkgver-linux-x86_64-avx2.asc"
     "voxtype-$pkgver-avx512::$_github/voxtype-$pkgver-linux-x86_64-avx512"
@@ -119,6 +122,8 @@ source=(
 )
 sha256sums=(
     # Whisper binaries
+    'SKIP'  # voxtype-baseline - PLACEHOLDER: real sum required at the version bump; never publish a binary with SKIP
+    'SKIP'  # voxtype-baseline.asc
     'cb3843a894ef47aca230b30bb1c45c2ef8e0d015adf2fa754d60e55123165fd0'  # voxtype-avx2
     'SKIP'                                                             # voxtype-avx2.asc
     '77d49275ae4c3a6d93671014278b0dabd69ba52e65d2ee6ab3ec1bff0af34d55'  # voxtype-avx512
@@ -174,6 +179,7 @@ sha256sums=(
 
 package() {
     # Install Whisper CPU binaries to /usr/lib/voxtype/
+    install -Dm755 "$srcdir/voxtype-$pkgver-baseline" "$pkgdir/usr/lib/voxtype/voxtype-baseline"
     install -Dm755 "$srcdir/voxtype-$pkgver-avx2" "$pkgdir/usr/lib/voxtype/voxtype-avx2"
     install -Dm755 "$srcdir/voxtype-$pkgver-avx512" "$pkgdir/usr/lib/voxtype/voxtype-avx512"
 
