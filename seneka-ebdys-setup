@@ -2,11 +2,16 @@
 set -euo pipefail
 
 readonly pkgname='seneka-ebdys-maltepe'
+readonly runtime_revision='6'
 readonly app_url="${SENEKA_APP_URL:-https://ebys.maltepe.edu.tr/Ebys/Seneka.Ebdys.Client.Host.application}"
 readonly data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
 readonly state_home="${XDG_STATE_HOME:-$HOME/.local/state}"
+readonly cache_home="${XDG_CACHE_HOME:-$HOME/.cache}"
 readonly prefix="${SENEKA_WINEPREFIX:-$data_home/wineprefixes/$pkgname}"
 readonly state_dir="$state_home/$pkgname"
+readonly runtime_marker="$prefix/.runtime-fixes-$runtime_revision"
+readonly ppt_viewer_url='https://archive.org/download/PowerPointViewer_201801/PowerPointViewer.exe'
+readonly ppt_viewer_sha256='249473568eba7a1e4f95498acba594e0f42e6581add4dead70c1dfb908a09423'
 
 export WINEPREFIX="$prefix"
 export WINEDEBUG="${WINEDEBUG:--all}"
@@ -16,17 +21,79 @@ find_appref() {
     2>/dev/null || true
 }
 
-run_setup() {
+lock_setup() {
   mkdir -p "$prefix" "$state_dir"
-
   exec 9>"$state_dir/setup.lock"
   flock 9
+}
+
+ensure_powerpoint_viewer() {
+  local cache_dir="$cache_home/winetricks/PowerPointViewer"
+  local archive="$cache_dir/PowerPointViewer.exe"
+  local temporary
+
+  mkdir -p "$cache_dir"
+  if [[ -f "$archive" ]] && \
+     printf '%s  %s\n' "$ppt_viewer_sha256" "$archive" | sha256sum --check --status; then
+    return 0
+  fi
+
+  temporary="$(mktemp --tmpdir="$cache_dir" '.PowerPointViewer.XXXXXX')"
+  if ! curl --fail --location --retry 3 --connect-timeout 15 \
+       --output "$temporary" "$ppt_viewer_url"; then
+    rm -f "$temporary"
+    return 1
+  fi
+
+  if ! printf '%s  %s\n' "$ppt_viewer_sha256" "$temporary" | \
+       sha256sum --check --status; then
+    rm -f "$temporary"
+    printf 'PowerPoint font arşivinin SHA-256 doğrulaması başarısız oldu.\n' >&2
+    return 1
+  fi
+
+  mv -f "$temporary" "$archive"
+}
+
+apply_registry_fixes() {
+  local avalon_key='HKCU\Software\Microsoft\Avalon.Graphics'
+  local replacement_key='HKCU\Software\Wine\Fonts\Replacements'
+  local family
+
+  wine reg add "$avalon_key" /v DisableHWAcceleration \
+    /t REG_DWORD /d 1 /f
+
+  for family in 'Segoe UI' 'Segoe UI Light' 'Segoe UI Semilight' 'Segoe UI Semibold'; do
+    wine reg add "$replacement_key" /v "$family" /t REG_SZ /d Tahoma /f
+  done
+}
+
+install_runtime_fixes() {
+  printf 'Seneka tarafından kullanılan Windows fontları kuruluyor. Bu işlem 10 dakikaya kadar sürebilir.\n'
+  ensure_powerpoint_viewer
+  winetricks -q corefonts tahoma pptfonts lucida fontsmooth=rgb
+
+  printf 'WPF açılır pencere ve Türkçe font düzeltmeleri uygulanıyor.\n'
+  apply_registry_fixes
+  touch "$runtime_marker"
+}
+
+run_runtime_update() {
+  lock_setup
+  wineboot -u
+  install_runtime_fixes
+  printf 'Seneka EBDYS çalışma ortamı güncellendi.\n'
+}
+
+run_setup() {
+  lock_setup
 
   printf 'Wine öneki hazırlanıyor: %s\n' "$prefix"
   wineboot -u
 
   printf '.NET Framework ve Windows çalışma bileşenleri kuruluyor. İlk kurulum 10 dakikaya kadar sürebilir.\n'
   winetricks -q win7 corefonts dotnet48 msxml6
+  install_runtime_fixes
 
   printf 'İmzalı Seneka ClickOnce dağıtımı kuruluyor.\n'
   printf 'Wine hata penceresi gösterirse yalnız o pencerede Quit, ardından arkadaki pencerede Install seçin.\n'
@@ -44,14 +111,38 @@ run_setup() {
   return 1
 }
 
-if [[ "${1:-}" == '--no-gui' ]] || ! command -v zenity >/dev/null || \
+mode='setup'
+no_gui='false'
+for argument in "$@"; do
+  case "$argument" in
+    --runtime-update) mode='runtime-update' ;;
+    --no-gui) no_gui='true' ;;
+    *) printf 'Bilinmeyen seçenek: %s\n' "$argument" >&2; exit 2 ;;
+  esac
+done
+
+if [[ "$mode" == 'runtime-update' ]]; then
+  runner='run_runtime_update'
+  progress_title='Seneka EBDYS güncelleniyor'
+  progress_text='Gerekli fontlar ve Wine düzeltmeleri kuruluyor. Bu işlem 10 dakikaya kadar sürebilir.'
+  success_text='Fontlar ve Wine uyumluluk düzeltmeleri kuruldu.'
+else
+  runner='run_setup'
+  progress_title='Seneka EBDYS kurulumu'
+  progress_text='Wine ve Seneka EBDYS hazırlanıyor. İlk kurulum 10 dakikaya kadar sürebilir.'
+  success_text='Kurulum tamamlandı. EBYS şimdi açılabilir.'
+fi
+
+if [[ "$no_gui" == 'true' ]] || ! command -v zenity >/dev/null || \
    [[ -z "${DISPLAY:-}${WAYLAND_DISPLAY:-}" ]]; then
-  run_setup
+  "$runner"
   exit
 fi
 
-zenity --info --title='Seneka EBDYS ilk kurulumu' \
-  --text='ClickOnce aşamasında bir Wine hata penceresi açılırsa yalnız o pencerede “Quit”, ardından arkadaki güvenlik penceresinde “Install” seçin.'
+if [[ "$mode" == 'setup' ]]; then
+  zenity --info --title='Seneka EBDYS ilk kurulumu' \
+    --text='ClickOnce aşamasında bir Wine hata penceresi açılırsa yalnız o pencerede “Quit”, ardından arkadaki güvenlik penceresinde “Install” seçin.'
+fi
 
 log_file="$(mktemp --tmpdir "${pkgname}.XXXXXX.log")"
 status_file="$(mktemp --tmpdir "${pkgname}.XXXXXX.status")"
@@ -59,11 +150,11 @@ trap 'rm -f "$status_file"' EXIT
 
 (
   set +e
-  run_setup >"$log_file" 2>&1
+  "$runner" >"$log_file" 2>&1
   printf '%s\n' "$?" >"$status_file"
 ) | zenity --progress --pulsate --auto-close --no-cancel \
-  --title='Seneka EBDYS kurulumu' \
-  --text='Wine ve Seneka EBDYS hazırlanıyor. İlk kurulum 10 dakikaya kadar sürebilir.'
+  --title="$progress_title" \
+  --text="$progress_text"
 
 status="$(cat "$status_file" 2>/dev/null || printf '1')"
 if [[ "$status" != '0' ]]; then
@@ -73,5 +164,4 @@ if [[ "$status" != '0' ]]; then
 fi
 
 rm -f "$log_file"
-zenity --info --title='Seneka EBDYS kurulumu' \
-  --text='Kurulum tamamlandı. EBYS şimdi açılabilir.'
+zenity --info --title="$progress_title" --text="$success_text"

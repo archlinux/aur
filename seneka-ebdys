@@ -2,8 +2,10 @@
 set -euo pipefail
 
 readonly pkgname='seneka-ebdys-maltepe'
+readonly runtime_revision='6'
 readonly data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
 readonly prefix="${SENEKA_WINEPREFIX:-$data_home/wineprefixes/$pkgname}"
+readonly runtime_marker="$prefix/.runtime-fixes-$runtime_revision"
 
 find_appref() {
   find "$prefix/drive_c/users" -type f -iname '*.appref-ms' -print -quit \
@@ -14,6 +16,10 @@ appref="$(find_appref)"
 if [[ -z "$appref" ]]; then
   seneka-ebdys-setup
   appref="$(find_appref)"
+fi
+
+if [[ ! -f "$runtime_marker" ]]; then
+  seneka-ebdys-setup --runtime-update
 fi
 
 if [[ -z "$appref" ]]; then

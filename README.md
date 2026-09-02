@@ -9,7 +9,8 @@ ClickOnce deployment from Maltepe University's EBYS server.
 
 Run `seneka-ebdys` or choose **Maltepe Üniversitesi EBYS** from the application
 menu. The first launch downloads and installs .NET Framework and the EBDYS
-client, so it can take up to 10 minutes.
+client, the Microsoft fonts used by Seneka, and the Wine compatibility fixes,
+so it can take up to 10 minutes.
 
 Wine 11 may display an unhandled-exception dialog over the first ClickOnce
 security prompt. Choose **Quit** only on that error dialog, then choose
@@ -17,6 +18,12 @@ security prompt. Choose **Quit** only on that error dialog, then choose
 installation.
 
 To rerun setup or repair the prefix, run `seneka-ebdys-setup`.
+
+The dedicated prefix enables WPF software rendering to fix transparent popup
+windows under Wine, enables RGB font smoothing, and installs the font families
+referenced by the Seneka, Telerik, and document-viewer assemblies. Missing
+Segoe UI text variants are mapped to Tahoma inside this prefix only. Existing
+prefixes receive this migration once after upgrading to package release 6.
 
 Runtime data is kept under:
 
