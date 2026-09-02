@@ -1,6 +1,6 @@
 pkgbase = chameleos
 	pkgdesc = Screen annotation tool for niri and Hyprland
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Treeniks/chameleos
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = chameleos
 	conflicts = chameleos-bin
 	conflicts = chameleos-git
 	options = !debug
-	source = chameleos-0.2.0.tar.gz::https://github.com/Treeniks/chameleos/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 5ca73c3d8912ff9b2d025c29d7bcaf21dd6f04bb2c657bf3bcf8c92ef216f962
+	source = chameleos-0.2.1.tar.gz::https://github.com/Treeniks/chameleos/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = f763bf4cd16e766773f1a326458c55a506c151b99f9330284d1e3ece5f08ae5d
 
 pkgname = chameleos

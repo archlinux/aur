@@ -1,7 +1,7 @@
 # Maintainer: Thomas Lindae <thomas.lindae@in.tum.de>
 
 pkgname=chameleos
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Screen annotation tool for niri and Hyprland'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=('chameleos' 'chamel')
 conflicts=('chameleos-bin' 'chameleos-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 options=(!debug)
-sha256sums=('5ca73c3d8912ff9b2d025c29d7bcaf21dd6f04bb2c657bf3bcf8c92ef216f962')
+sha256sums=('f763bf4cd16e766773f1a326458c55a506c151b99f9330284d1e3ece5f08ae5d')
 
 prepare() {
     cd "$pkgname-$pkgver"
