@@ -2,8 +2,8 @@
 _pkgname=tldr
 pkgname=tldr-pages-git
 pkgver=2.3.r6598.g17d7177
-pkgrel=1
-pkgdesc='The actual tldr pages. Currently compatible only with the python client'
+pkgrel=2
+pkgdesc='The actual tldr pages installed in a system directory. Currently compatible only with the python client'
 arch=('any')
 url=https://github.com/tldr-pages/tldr
 license=('CC-BY-4.0')
