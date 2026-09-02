@@ -7,7 +7,7 @@
 _pkgbasename=ffmpeg
 pkgname=("lib32-$_pkgbasename")
 pkgver=9.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -102,6 +102,7 @@ makedepends=(
   'lib32-zeromq'
   'nasm'
   'opencl-headers'
+  'spirv-headers'
   'vulkan-headers'
 )
 optdepends=(
