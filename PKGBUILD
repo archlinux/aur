@@ -1,5 +1,5 @@
-# Maintainer: Oystein Sture <oysstu@gmail.com>
-# Contributor: 
+# Maintainer: 
+# Contributor: Oystein Sture <oysstu@gmail.com>
 pkgname=xsens-device-api
 pkgver=2022.0.0
 pkgrel=1
