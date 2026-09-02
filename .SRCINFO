@@ -1,0 +1,17 @@
+pkgbase = alenia-zenith
+	pkgdesc = Zero-latency boot infrastructure for Python 3.14+ utilizing speculative dependency pre-loading and free-threading
+	pkgver = 1.2.9
+	pkgrel = 1
+	url = https://github.com/Kaia-Alenia/alenia-zenith
+	arch = any
+	license = GPL-3.0
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	provides = zenith
+	source = https://files.pythonhosted.org/packages/source/a/alenia_zenith/alenia_zenith-1.2.9.tar.gz
+	sha256sums = 2d81f08be6337c29788ead9ecb895005e10f9fda264478223cfcce1f5718cddc
+
+pkgname = alenia-zenith
