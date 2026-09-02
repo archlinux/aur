@@ -1,6 +1,6 @@
 pkgbase = fabric-server
 	pkgdesc = A Fabric (a modular, lightweight mod loader) enabled Minecraft server
-	pkgver = 26.2_0.19.3_1.1.1
+	pkgver = 26.2_0.19.5_1.1.2
 	pkgrel = 1
 	url = https://fabricmc.net
 	install = fabric-server.install
@@ -14,12 +14,12 @@ pkgbase = fabric-server
 	depends = sed
 	optdepends = tar: required in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
-	provides = fabric-server=26.2_0.19.3_1.1.1
-	noextract = fabric-26.2_0.19.3_1.1.1.jar
+	provides = fabric-server=26.2_0.19.5_1.1.2
+	noextract = fabric-26.2_0.19.5_1.1.2.jar
 	backup = etc/conf.d/fabric
 	source = minecraft-server-1.0.4.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.4.tar.gz
-	source = fabric-installer-1.1.1.jar::https://maven.fabricmc.net/net/fabricmc/fabric-installer/1.1.1/fabric-installer-1.1.1.jar
+	source = fabric-installer-1.1.2.jar::https://maven.fabricmc.net/net/fabricmc/fabric-installer/1.1.2/fabric-installer-1.1.2.jar
 	sha512sums = dd4d68ca061c97a1e3cb5c0bb68439f7d8d45b15092344f3c4dbd4f7f39fef433d566670ad440970061007d93055183b570c7bf98f09c111ecdf8ab0f208f556
-	sha512sums = f95731a5f7b950f309f5b7d367c377727ceca6484fbde3c513e16b508d840ec4dfeb8471a9122a07a029d62cacd8b5d0726c60e27edc0d9a93ad928e34f5e24e
+	sha512sums = 3cbe7b69498c44d814fc95e71cd9ce9c12c45a9e1dcf01085cb3e9aaf6fe63134b701065167be1fa6e4c2df19dfa5400bc5b6b1b7fb5e99e334d24dcdca55c20
 
 pkgname = fabric-server

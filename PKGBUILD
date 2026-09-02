@@ -14,8 +14,8 @@
 ## Contributor: sowieso <sowieso@dukun.de>
 
 _minecraft_ver="26.2"
-_fabric_ver="1.1.1"
-_fabric_loader_ver="0.19.3"
+_fabric_ver="1.1.2"
+_fabric_loader_ver="0.19.5"
 _mng_ver=1.0.4
 
 pkgname="fabric-server"
@@ -40,7 +40,7 @@ source=(
 noextract=("fabric-${pkgver}.jar")
 sha512sums=(
 	'dd4d68ca061c97a1e3cb5c0bb68439f7d8d45b15092344f3c4dbd4f7f39fef433d566670ad440970061007d93055183b570c7bf98f09c111ecdf8ab0f208f556'
-	'f95731a5f7b950f309f5b7d367c377727ceca6484fbde3c513e16b508d840ec4dfeb8471a9122a07a029d62cacd8b5d0726c60e27edc0d9a93ad928e34f5e24e'
+	'3cbe7b69498c44d814fc95e71cd9ce9c12c45a9e1dcf01085cb3e9aaf6fe63134b701065167be1fa6e4c2df19dfa5400bc5b6b1b7fb5e99e334d24dcdca55c20'
 )
 
 _game="fabric"
