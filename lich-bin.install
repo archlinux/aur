@@ -1,0 +1,17 @@
+# Shipped to the AUR next to the PKGBUILD by .github/workflows/release.yml.
+# pacman cannot express "any one of these packages" as a hard dependency, so
+# the browser stays an optdepends and this hook is the install-time check:
+# lich bundles no browser runtime (no Electron, no webview) and opens its
+# window in a Chromium-family browser already on the machine.
+post_install() {
+  for b in chromium chromium-browser google-chrome-stable google-chrome helium-browser brave; do
+    command -v "$b" >/dev/null 2>&1 && return 0
+  done
+  echo "==> lich opens its window in a Chromium-family browser installed on this"
+  echo "==> machine; none was found on PATH. Install one before launching lich:"
+  echo "==>   chromium, google-chrome, brave, or helium-browser"
+}
+
+post_upgrade() {
+  post_install
+}
