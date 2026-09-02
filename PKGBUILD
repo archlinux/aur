@@ -8,6 +8,7 @@ pkgdesc="A finite element software for multiphysical problems (without GUI and I
 arch=('x86_64')
 url="https://www.elmerfem.org"
 license=('GPL-2.0-only AND LGPL-2.1-only AND LicenseRef-Elmer')
+options=('!debug')
 provides=('elmerfem-base')
 conflicts=('elmerfem-base' 'elmerfem-git' 'elemerfem')
 depends=(
