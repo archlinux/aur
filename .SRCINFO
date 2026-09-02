@@ -1,5 +1,5 @@
 pkgbase = cbzview-git
-	pkgdesc = fast Linux CBZ comic & manga viewer with mmap, PBO streaming, and bicubic screentone anti-aliasing
+	pkgdesc = A fast Linux CBZ comic & manga viewer with mmap, PBO streaming, and bicubic screentone anti-aliasing
 	pkgver = r3.7f6fe0e
 	pkgrel = 1
 	url = https://github.com/alexantSWE/cbzview
