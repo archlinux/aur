@@ -1,7 +1,7 @@
 pkgbase = sasl-xoauth2-git
 	pkgdesc = SASL plugin that enables client-side use of OAuth 2.0
-	pkgver = r203.47ff232
-	pkgrel = 2
+	pkgver = r235.1f5d78c
+	pkgrel = 1
 	url = https://github.com/tarickb/sasl-xoauth2
 	arch = x86_64
 	license = Apache
