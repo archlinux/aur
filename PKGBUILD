@@ -3,7 +3,7 @@
 
 pkgname="ghex-git"
 _appname="ghex"
-pkgver=50.0.r19.g123afe35
+pkgver=50.0.r23.g4c8cebc0
 pkgrel=1
 pkgdesc='a hex editor for the GNOME desktop'
 url='https://gitlab.gnome.org/GNOME/ghex'
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 provides=('ghex')
 conflicts=('ghex')
 depends=('gtk4' 'libadwaita')
-makedepends=('itstool' 'git' 'gobject-introspection' 'meson' 'ninja')
+makedepends=('itstool' 'git' 'gobject-introspection' 'meson' 'ninja' 'pkgconf')
 
 pkgver() {
 	cd "${srcdir}/${_appname}"
