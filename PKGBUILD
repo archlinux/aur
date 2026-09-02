@@ -1,5 +1,5 @@
 pkgname=lazyverilog
-pkgver=1.3.6
+pkgver=2.0.0
 pkgrel=1
 epoch=
 pkgdesc="A fast, practical SystemVerilog LSP for RTL coding."
@@ -34,4 +34,4 @@ package() {
 	install -Dm755 lazyverilog-lsp "$pkgdir/usr/bin/lazyverilog-lsp"
 }
 
-md5sums=('459975bc5ff47e549b9eda6c21a4f10b')
+sha256sums=('4a1d0486c364c867792f599348ae0508ab4174cdf47cd936056f64c8231d3c0b')
