@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=mimo-code-bin
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Next-generation AI coding assistant for developers with unlimited context"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('mimo-code')
 conflicts=('mimo-code')
 source_x86_64=("${pkgname}-amd64-${pkgver}.tar.gz::https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v${pkgver}/mimocode-linux-x64.tar.gz")
 source_aarch64=("${pkgname}-arm64-${pkgver}.tar.gz::https://github.com/XiaomiMiMo/MiMo-Code/releases/download/v${pkgver}/mimocode-linux-arm64.tar.gz")
-sha256sums_x86_64=('0997a43647a99969d0194fad71af1fd6112aa8220e24a4562aea63953b1e1ada')
-sha256sums_aarch64=('7000a32f12aaa0936f6b0536fad5cd4fe465820eee99c7f86fb4b6278ef735a2')
+sha256sums_x86_64=('bba0b4d5888e6834bbc155acea4e86992df6e7f680e0ba4de68b3cff7b67ac22')
+sha256sums_aarch64=('e4b3ff5b90cacd39076e5dc65fa0f630fcc796b3fecefb09a61d535802236d9f')
 
 package() {
     install -Dm755 "${srcdir}/mimo" "${pkgdir}/usr/bin/mimo"
