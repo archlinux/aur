@@ -1,7 +1,7 @@
 pkgbase = linuxmix-git
 	pkgdesc = Implements SteelSeries' ChatMix feature in Linux.
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Birbwell/linuxmix
 	install = linuxmix.install
 	arch = any
