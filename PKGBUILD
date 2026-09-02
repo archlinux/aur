@@ -3,7 +3,7 @@
 
 pkgname=jcodemunch-mcp
 _pkgname=jcodemunch_mcp
-pkgver=1.108.205
+pkgver=1.108.315
 pkgrel=1
 pkgdesc="Token-efficient MCP server for source code exploration via tree-sitter AST parsing"
 arch=(any)
@@ -44,8 +44,8 @@ source=(
   "https://files.pythonhosted.org/packages/source/${_pkgname::1}/$pkgname/$_pkgname-$pkgver.tar.gz"
   use-installed-binary.patch
 )
-sha256sums=('0dde2de93ee0ff6c1ea7b1c8cdccf53cc1352f6890525715604ae6c027aa6ff4'
-            'be3cfbcec8e4008d967ac9d5ebf7015c5eb7739381d5fe2976060961be6fbef0')
+sha256sums=('caaec7d5b2e0add2b1e6b7a51dab336162ca04ea33b8b78a4351abd996592ceb'
+            '2c9366c1b19aa5afd196a197e07bb7c54f57daedc13be7de1dada4c3261642bd')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -54,6 +54,20 @@ prepare() {
   # be absent), and even when present it fetches a separate copy from PyPI
   # instead of this installed package. Point the configs at the installed binary.
   patch -Np1 -i "$srcdir/use-installed-binary.patch"
+
+  # Post-condition, not paranoia: upstream keeps ADDING clients (1.108.315 added
+  # a VS Code writer), and each new one arrives hardcoded to uvx. The patch can
+  # only fix the sites that existed when it was written, and a new site is
+  # invisible -- the build stays green and the bad config only shows up on a
+  # user's machine. Assert that no launch site survives, so that lands here.
+  local leftover
+  leftover=$(grep -n '"uvx"' src/jcodemunch_mcp/cli/init.py || true)
+  if [[ -n $leftover ]]; then
+    echo "==> ERROR: unpatched uvx launch site(s) in init.py:" >&2
+    echo "$leftover" >&2
+    echo "==> Update use-installed-binary.patch to cover them." >&2
+    return 1
+  fi
 }
 
 build() {
