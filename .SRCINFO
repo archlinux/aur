@@ -1,7 +1,7 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
 	pkgver = 1.8.16.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openafs.org
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,10 @@ pkgbase = openafs-modules-dkms
 	source = http://openafs.org/dl/openafs/1.8.16.1/openafs-1.8.16.1-src.tar.bz2
 	source = dkms.conf
 	source = 0001-cf-Ensure-BTF-info-is-created-in-tests-for-Linux.patch
+	source = 0002-linux-replace-strncpy-with-strscpy.patch
 	sha256sums = cf59067589a295471e3f10f644f0f2165113347cc8b0ad0fbb4123259a2af0a2
 	sha256sums = 306408d644e8781f13e09021449cb1ccbba60f69d1d24eca5f8138e9b3e47d8e
-	sha256sums = bcd276a3e41d5c5a7eb437718c4143b63ac36ed851df9db091653754d4b294d3
+	sha256sums = cce37a4d4da631d3e58d547268e1663640d820c69e3b652d9691b44bcbcbb37b
+	sha256sums = 655b91807f6eefe28a6e7fe101baf337d5cc6cd5e6a7eb714ce638920a413fa2
 
 pkgname = openafs-modules-dkms

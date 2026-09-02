@@ -1,0 +1,77 @@
+From b4cc3ee0ac1fd5fca773dc1d876c9f0de24f0d15 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Tue, 7 Jul 2026 15:53:16 -0600
+Subject: [PATCH 2/2] linux: replace strncpy with strscpy
+
+The Linux 7.2 commit:
+    'string: Remove strncpy() from the kernel' (079a028d6327e)
+removed the strncpy() function.
+
+As a replacement, we can use the strscpy() function that was introduced
+by the Linux 4.3 commit:
+    'string: provide strscpy()' (30035e45753b7)
+
+strncpy() is only used on LINUX in the macro osi_procname(), and
+osi_procname() is only used to log the process name with afs_warn().
+We don't need the NUL-padding behavior or the return value of strncpy(),
+so using strscpy() as a drop-in replacement for strncpy() is fine.
+
+Add a configure test to verify that strscpy is available in the Linux
+kernel headers and update the 'osi_procname' macro to use strscpy()
+instead of strncpy() when it is available.
+
+Note, since strscpy() was introduced in Linux 4.3, this commit is
+retroactive.
+
+Reviewed-on: https://gerrit.openafs.org/16872
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Marcio Brito Barbosa <mbarbosa@sinenomine.net>
+(cherry picked from commit c4387834c5e5a33847c68be9564a5d5535523cf8)
+
+Change-Id: I544cc248e2a248d1d3d6ebd167266e9ef680aa6a
+---
+ src/afs/LINUX/osi_machdep.h | 8 +++++---
+ src/cf/linux-kernel-func.m4 | 8 ++++++++
+ 2 files changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/src/afs/LINUX/osi_machdep.h b/src/afs/LINUX/osi_machdep.h
+index 263c8633c..435852859 100644
+--- a/src/afs/LINUX/osi_machdep.h
++++ b/src/afs/LINUX/osi_machdep.h
+@@ -498,7 +498,9 @@ do { \
+ #  define __NR_ia32_unlink 10
+ # endif
+ #endif
+-
+-#define osi_procname(procname, size) strncpy(procname, current->comm, size)
+-
++#if defined(HAVE_LINUX_STRSCPY)
++# define osi_procname(procname, size) strscpy(procname, current->comm, size)
++#else
++# define osi_procname(procname, size) strncpy(procname, current->comm, size)
++#endif
+ #endif /* OSI_MACHDEP_H_ */
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index 20f659da4..4000e5ce0 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -173,6 +173,14 @@ AC_CHECK_LINUX_FUNC([lru_cache_add_file],
+                     [#include <linux/swap.h>],
+                     [lru_cache_add_file(NULL);])
+ 
++dnl Linux 4.3 introduced strscpy()
++AC_CHECK_LINUX_FUNC([strscpy],
++		    [[#include <linux/string.h>
++		      char buff1[32];
++		      char buff2[32];]],
++		    [[static size_t code;
++		      code = strscpy(buff1, buff2, sizeof(buff1));]])
++
+ dnl Linux 4.6 introduced in_compat_syscall as replacement for is_compat_task
+ dnl for certain platforms.
+ AC_CHECK_LINUX_FUNC([in_compat_syscall],
+-- 
+2.55.0
+

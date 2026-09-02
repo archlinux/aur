@@ -1,7 +1,7 @@
 From 565cca710f7d88e6d56776dddc8adda5c99026f9 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Fri, 15 May 2026 09:01:07 -0600
-Subject: [PATCH] cf: Ensure BTF info is created in tests for Linux
+Subject: [PATCH 1/2] cf: Ensure BTF info is created in tests for Linux
 
 The OpenAFS configure build step fails on an ArchLinux system with a
 7.0.5-arch1-1 Linux kernel.
@@ -68,5 +68,5 @@ index fbe3c1aa8..23221ae44 100644
  MODULE_DESCRIPTION("openafs conftest");
  _ACEOF
 -- 
-2.54.0
+2.55.0
 

@@ -7,7 +7,7 @@
 pkgname=openafs-modules-dkms
 _srcname=openafs
 pkgver=1.8.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -18,16 +18,21 @@ conflicts=('openafs-features-libafs' 'openafs-modules' 'openafs<1.6.6-2')
 options=(!emptydirs)
 source=(http://openafs.org/dl/openafs/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
         dkms.conf
-        0001-cf-Ensure-BTF-info-is-created-in-tests-for-Linux.patch)
+        0001-cf-Ensure-BTF-info-is-created-in-tests-for-Linux.patch
+        0002-linux-replace-strncpy-with-strscpy.patch)
 sha256sums=('cf59067589a295471e3f10f644f0f2165113347cc8b0ad0fbb4123259a2af0a2'
             '306408d644e8781f13e09021449cb1ccbba60f69d1d24eca5f8138e9b3e47d8e'
-            'bcd276a3e41d5c5a7eb437718c4143b63ac36ed851df9db091653754d4b294d3')
+            'cce37a4d4da631d3e58d547268e1663640d820c69e3b652d9691b44bcbcbb37b'
+            '655b91807f6eefe28a6e7fe101baf337d5cc6cd5e6a7eb714ce638920a413fa2')
 
 prepare() {
   cd "${srcdir}/${_srcname}-${pkgver}"
 
   # Fix configure checks on Arch Linux
   patch -p1 < "${srcdir}"/0001-cf-Ensure-BTF-info-is-created-in-tests-for-Linux.patch
+
+  # Add patch for Linux 7.2
+  patch -p1 < "${srcdir}"/0002-linux-replace-strncpy-with-strscpy.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q
