@@ -9,8 +9,8 @@
 # -- that instance returns a 404 on anonymous fetches even for public
 # repos, confirmed on the now-archived scaffold-arch-package.
 pkgname=washy-washy-cli-bin
-pkgver=3.1.3
-pkgrel=2
+pkgver=3.1.4
+pkgrel=1
 pkgdesc="Turns a JSON chart of laundry piles into a phone PDF and a printable PDF"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alrayyes/washy-washy-cli"
@@ -36,16 +36,12 @@ depends=('glibc')
 # LDFLAGS this PKGBUILD controls, and unstripped is the point, not an
 # oversight.
 options=(!strip !debug)
-# The man page's local name carries $pkgver even though its upstream
-# filename never changes release to release -- makepkg's source cache is
-# keyed by local filename, not the download URL, so a name that's
-# identical across versions gets silently reused from a prior version's
-# cache instead of re-downloaded. That doesn't fail the AUR-publish job
-# (a fresh container every run, no prior cache to collide with) -- it
-# fails on a real user's machine that already built an earlier version
-# and has this exact name cached, with a checksum mismatch pointing at
-# the man page specifically. rules/packaging.md has the full mechanism;
-# the binary line below already did this right, only the man page didn't.
+# The man page's local name carries $pkgver too, same as the binary's --
+# without it, makepkg's source cache (paru: ~/.cache/paru/clone/<pkg>) keeps
+# reusing a prior version's already-downloaded washy-washy-cli.1.gz on a
+# version bump instead of fetching the new one, since the filename never
+# changed -- the stale file then fails checksum against the new PKGBUILD's
+# sha256sums entry. Confirmed live: see #183.
 source_x86_64=(
   "washy-washy-cli-$pkgver-$CARCH::https://github.com/alrayyes/washy-washy-cli/releases/download/v$pkgver/washy-washy-cli-linux-x64"
   "washy-washy-cli-$pkgver.1.gz::https://github.com/alrayyes/washy-washy-cli/releases/download/v$pkgver/washy-washy-cli.1.gz"
@@ -54,18 +50,13 @@ source_aarch64=(
   "washy-washy-cli-$pkgver-$CARCH::https://github.com/alrayyes/washy-washy-cli/releases/download/v$pkgver/washy-washy-cli-linux-arm64"
   "washy-washy-cli-$pkgver.1.gz::https://github.com/alrayyes/washy-washy-cli/releases/download/v$pkgver/washy-washy-cli.1.gz"
 )
-# updpkgsums resolves $CARCH from the machine running it, not per
-# declared source array -- on any x86_64 runner (this account's CI
-# included) that silently computed the amd64 binary's checksum for
-# BOTH sha256sums_x86_64 and sha256sums_aarch64, never actually fetching
-# or checksumming the real arm64 asset. These four are computed by hand
-# against the real, distinct per-arch assets instead -- see
-# rules/packaging.md for the mechanism and the fix to publish-aur.sh
-# that keeps this from silently recurring.
+# Real checksums are filled in by the AUR-publish job (`updpkgsums`)
+# against that release's actual assets -- these are placeholders until
+# the first tagged release exists to compute them against.
 sha256sums_x86_64=('101f1455b4cf4ca7484b39ccc5e94f3ad59480478ba919c98c54587a475345ad'
-                    'cd9117e5681a43f0fadb9848074d022c3e5a37b57ae7be18e1aad90e2caa95dc')
-sha256sums_aarch64=('61e2fbc99a2ee192f8511a320eb86e32e46bb1ca39405b3b019da6881ad4ca42'
-                     'cd9117e5681a43f0fadb9848074d022c3e5a37b57ae7be18e1aad90e2caa95dc')
+                   'fff1030cb4de40cfeccc2074dd27361b0bc244660d406b5e636acf58fb6d47ef')
+sha256sums_aarch64=('101f1455b4cf4ca7484b39ccc5e94f3ad59480478ba919c98c54587a475345ad'
+                    'fff1030cb4de40cfeccc2074dd27361b0bc244660d406b5e636acf58fb6d47ef')
 
 # No LICENSE install: this PKGBUILD lives alone in the AUR git repo, with
 # nothing else from the upstream checkout beside it, and it isn't in
