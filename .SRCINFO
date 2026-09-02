@@ -1,6 +1,6 @@
 pkgbase = noctalia-greeter
 	pkgdesc = Minimal greetd login greeter with a bundled wlroots compositor
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/noctalia-dev/noctalia-greeter
 	install = noctalia-greeter.install
@@ -33,7 +33,7 @@ pkgbase = noctalia-greeter
 	conflicts = noctalia-greeter-git
 	conflicts = noctalia-greeter-bin
 	options = !debug
-	source = noctalia-greeter-1.3.0.tar.gz::https://github.com/noctalia-dev/noctalia-greeter/archive/refs/tags/v1.3.0.tar.gz
-	sha256sums = e5b8c3ff4b8acadf3760c359e3c7cb655ff92b202c0759f95a34e61012ffcdc5
+	source = noctalia-greeter-1.3.1.tar.gz::https://github.com/noctalia-dev/noctalia-greeter/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = c3a2fce1d15efcf9c87f22b149d03c7dd378f273290c1488190cf8445edbc14d
 
 pkgname = noctalia-greeter
