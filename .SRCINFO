@@ -6,6 +6,7 @@ pkgbase = perl-string-license
 	arch = any
 	license = AGPL-3.0-or-later
 	checkdepends = perl-file-basedir
+	checkdepends = perl-regexp-pattern-license>=3.11.3
 	checkdepends = perl-software-license>=0.104006
 	checkdepends = perl-yaml-libyaml
 	checkdepends = perl-test-simple>=1.302200

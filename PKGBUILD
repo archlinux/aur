@@ -32,7 +32,7 @@ depends=(
 checkdepends=(
   ## test::recommends
   'perl-file-basedir'
-  #'perl-regexp-pattern-license>=3.11.3' ## waiting update...
+  'perl-regexp-pattern-license>=3.11.3'
   'perl-software-license>=0.104006' # "Software::LicenseUtils"
   'perl-yaml-libyaml' # "YAML::XS"
 
