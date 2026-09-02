@@ -4,7 +4,7 @@
 
 _srcname=todo.txt-cli
 pkgname=todotxt
-pkgver=2.13.0
+pkgver=2.14.0
 pkgrel=1
 pkgdesc='Simple and extensible shell script for managing your todo.txt file'
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(git)
 optdepends=('bash-completion: tab completion')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('848a07b7dc9a156bea372922a0cfafc9e761c9b18d8b0809703bc1bc98363605')
+sha256sums=('fb1a783a24c908419f3b43f855ef5749db7e90ed55ba4cd4cbd9cea2b1537e8c')
 
 prepare() {
   # Rename completion file to "todo.sh"
