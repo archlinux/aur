@@ -3,7 +3,7 @@
 _pkgname=hunk
 pkgname=hunk-bin
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Review-first terminal diff viewer for agentic coders"
 arch=('x86_64' 'aarch64')
 url="https://github.com/modem-dev/hunk"
@@ -35,14 +35,22 @@ package() {
   fi
 
   # The bundled `hunk skill path` command walks up the ancestors of the
-  # binary's resolved exec path looking for `skills/hunk-review/SKILL.md`,
-  # so we install both side-by-side under /usr/lib/hunkdiff and expose the
-  # binary on PATH via a symlink in /usr/bin.
+  # binary's resolved exec path looking for `skills/<name>/SKILL.md`, so we
+  # install both side-by-side under /usr/lib/hunkdiff and expose the binary
+  # on PATH via a wrapper in /usr/bin.
   install -Dm755 "${_srcdir}/hunk" "${_libdir}/${_pkgname}"
   install -Dm644 "${_srcdir}/skills/hunk-review/SKILL.md" "${_libdir}/skills/hunk-review/SKILL.md"
+  install -Dm644 "${_srcdir}/skills/hunk-extensions/SKILL.md" "${_libdir}/skills/hunk-extensions/SKILL.md"
 
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -s "../lib/hunkdiff/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  # Without HUNK_INSTALL_SOURCE the binary guesses it was installed from npm,
+  # so `hunk update` tries to overwrite the pacman-owned files and every start
+  # nags about new releases. Declaring pacman makes it defer to the package
+  # manager and stay quiet.
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<WRAPPER
+#!/bin/sh
+export HUNK_INSTALL_SOURCE=pacman
+exec /usr/lib/hunkdiff/${_pkgname} "\$@"
+WRAPPER
 
   install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
