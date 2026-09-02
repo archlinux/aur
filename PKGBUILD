@@ -11,7 +11,7 @@ _svcname=vanta-agent
 pkgname=vanta-agent
 # https://app.vanta.com/downloads
 pkgver=2.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Vanta agent"
 arch=('x86_64')
 url="https://www.vanta.com/"

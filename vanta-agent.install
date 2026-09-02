@@ -12,6 +12,9 @@ post_install() {
 post_upgrade() {
   if systemctl is-active --quiet vanta-agent; then
     echo ">>> Restarting Vanta Agent..."
+    # pacman's daemon-reload hook only runs after the transaction, so reload here
+    # to make sure the restart picks up any unit-file changes from this upgrade
+    systemctl daemon-reload
     systemctl restart vanta-agent
   fi
 }
