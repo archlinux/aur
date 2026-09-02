@@ -7,8 +7,8 @@ pkgname=${_appname}-bin
 pkgdesc="A modern, intuitive, terminal text editor. Single file. No dependencies. No config."
 
 pkgver=2026.09.02
-pkgrel=6
-_gitversion=6c028f6
+pkgrel=7
+_gitversion=f2f847b
 
 arch=('any')
 
