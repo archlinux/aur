@@ -1,6 +1,6 @@
 pkgbase = alenia-nerve
 	pkgdesc = Ultra-fast local communication engine based on Unix Domain Sockets for sovereign creators
-	pkgver = 1.6.3
+	pkgver = 1.6.8
 	pkgrel = 1
 	url = https://github.com/Kaia-Alenia/alenia-nerve
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = alenia-nerve
 	depends = python-websockets
 	depends = python-argon2-cffi
 	provides = nerve
-	source = https://files.pythonhosted.org/packages/source/a/alenia_nerve/alenia_nerve-1.6.3.tar.gz
-	sha256sums = e1a40e146a351352d1fc251373718881996e236a0f82639b34c38406d756fc1e
+	source = https://files.pythonhosted.org/packages/source/a/alenia_nerve/alenia_nerve-1.6.8.tar.gz
+	sha256sums = 9469926714b712359f51e8ea90b100a30a8d1adf5a85559f182fc60157b9fba4
 
 pkgname = alenia-nerve
