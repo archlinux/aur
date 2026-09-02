@@ -11,7 +11,7 @@ options=('!lto' '!strip')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-5compat')
-makedepends=('rust' 'cargo' 'pkgconf' 'cmake' 'git' 'qt6-shadertools' 'protobuf')
+makedepends=('rust' 'cargo' 'pkgconf' 'cmake' 'git' 'qt6-shadertools' 'qt6-tools' 'protobuf')
 source=("$_pkgname::git+https://github.com/reakjra/omikuji.git")
 sha256sums=('SKIP')
 
