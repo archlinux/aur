@@ -1,6 +1,6 @@
 # Maintainer: melqtx <melqtx@users.noreply.github.com>
 pkgname=tork
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Terminal torrent search and download client"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e4925cd2fc8beca00e6041e4200a8b94df989a92dfc290feefb2bc8ac28c04ba')
+sha256sums=('5c32c3bbb5317ad2cee53287b4314514a9e29363b691e4f00ad1e2d51e4036a3')
 
 build() {
   cd "${pkgname}-${pkgver}"
