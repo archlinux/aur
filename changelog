@@ -1,3 +1,11 @@
+2026-08-24 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.3.9.6-1:
+    Added support for different formatting methods in our Monitoring plugin. Since this has a potential to be a breaking change, we recommend our users to read up updated docs about this feature (@JustArchi #3607).
+    Internal performance improvements for ASF STM listing in ItemsMatcher plugin (@JustArchi).
+    Fixed recent Steam breaking change that caused inventory command to no longer work (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2026-08-02 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.3.8.4-1:
     Fixed recent Steam breaking change that caused loot offers to no longer work (@JustArchi).

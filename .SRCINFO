@@ -1,5 +1,5 @@
 pkgbase = asf
-	pkgver = 6.3.8.4
+	pkgver = 6.3.9.6
 	pkgrel = 1
 	url = https://github.com/JustArchiNET/ArchiSteamFarm
 	install = asf.install
@@ -9,15 +9,15 @@ pkgbase = asf
 	arch = aarch64
 	license = Apache-2.0
 	makedepends = git
-	makedepends = dotnet-sdk>=10
-	makedepends = aspnet-runtime>=10
-	source = asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=6.3.8.4?signed
+	makedepends = dotnet-sdk-bin>=10
+	makedepends = aspnet-runtime-bin>=10
+	source = asf::git+https://github.com/JustArchiNET/ArchiSteamFarm.git#tag=6.3.9.6?signed
 	source = service.patch
 	source = asf.env
 	source = ASF.json
 	source = NLog.config
 	validpgpkeys = 1268A81616AFDC20C55779ED6B138B4C64555AEA
-	sha256sums = c3e0f4beb9c62b10e76007676bf4c759d73ba4e695c1160a5cbad741803e2208
+	sha256sums = 5c5ab7abe524dcafe48d1ef5124fa3b0df293fad2e3af07f247f5c0a58412f12
 	sha256sums = 1728ccf7d02974b779ec794df400fec57b9a98869d319bea7f98d6c1ce4a9d3e
 	sha256sums = ec82f54a9b362e2305a775eb1473522636ab724f18d846828410c39344801db4
 	sha256sums = c300c5ce63c0237d7558b5b303159b8e2a8e5323f581cc8435dd2a6f1ead5332
