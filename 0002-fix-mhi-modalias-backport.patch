@@ -1,0 +1,32 @@
+--- a/usr/src/qaic-1.21.6.0/dkms_prebuild.sh
++++ b/usr/src/qaic-1.21.6.0/dkms_prebuild.sh
+@@ -619,9 +619,11 @@
+ [ -z "$ENABLE" ] && en_flag "_QBP_NEED_MEMDUP_ARR_USR"
+ 
+ ## _QBP_NEED_MHI_MODALIAS_DEV_ID ##
+-#defined if include/linux/mod_devicetable.h does NOT have 'struct mhi_device_id' and 'define MHI_DEVICE_MODALIAS_FMT'
+-ENA=$(chk_file "struct mhi_device_id" "$inc_linux/mod_devicetable.h")
+-BLE=$(chk_file "define MHI_DEVICE_MODALIAS_FMT" "$inc_linux/mod_devicetable.h")
++#defined if the kernel does NOT provide 'struct mhi_device_id' / 'MHI_DEVICE_MODALIAS_FMT'.
++#Since v6.x these moved from include/linux/mod_devicetable.h to include/linux/device-id/mhi.h,
++#so check both locations before deciding a backport is needed.
++ENA=$(chk_few_files "$inc_linux/mod_devicetable.h" "$inc_linux/device-id/mhi.h" "+" "chk_file" "struct mhi_device_id")
++BLE=$(chk_few_files "$inc_linux/mod_devicetable.h" "$inc_linux/device-id/mhi.h" "+" "chk_file" "define MHI_DEVICE_MODALIAS_FMT")
+ [ -z "$ENA" ] && [ -z "$BLE" ] && en_flag "_QBP_NEED_MHI_MODALIAS_DEV_ID"
+ 
+ ## _QBP_NEED_NONCONST_BUS_REGISTER ##
+--- a/usr/src/qaic-1.21.6.0/include/linux/mhi.h
++++ b/usr/src/qaic-1.21.6.0/include/linux/mhi.h
+@@ -32,6 +32,12 @@
+ 	const char chan[MHI_NAME_SIZE];
+ 	kernel_ulong_t driver_data;
+ };
++#else
++/* The kernel already provides struct mhi_device_id (since v6.x it lives in
++ * include/linux/device-id/mhi.h, pulled in by mod_devicetable.h). Include it
++ * explicitly so the type is complete before it is used below.
++ */
++#include <linux/mod_devicetable.h>
+ #endif
+ /**
+  * enum mhi_callback - MHI callback

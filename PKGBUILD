@@ -3,7 +3,7 @@
 
 pkgname=qaic-platform-sdk
 pkgver=1.21.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Qualcomm AI Engine (QAIc) Platform SDK - firmware, kernel module (DKMS), and runtime tools"
 arch=(x86_64)
 url="https://quic.github.io/cloud-ai-sdk-pages/1.21/Getting-Started/Installation/download-sdks.html"
@@ -23,12 +23,14 @@ install="${pkgname}.install"
 source_x86_64=(
   "aic_platform.Core.${pkgver}.Linux-AnyCPU-aic_platform.Core.${pkgver}.Linux-AnyCPU.zip::local://aic_platform.Core.${pkgver}.Linux-AnyCPU-aic_platform.Core.${pkgver}.Linux-AnyCPU.zip"
   "PowerStress"
-  "0001-fix-dkms.conf-kernel-source-fallback.patch"
+  "0001-fix-dkms.conf.patch"
+  "0002-fix-mhi-modalias-backport.patch"
 )
 sha256sums_x86_64=(
   "eaccd02e8911c6e16a179b8352a30b6d01c915a135945bb18cf22ad58e28669b"
   "b8c14d64079394cbdd4b61c14afda1bb4e0c90394f15aa54f06b789e22a3e000"
-  "c3a82d8530f3dbd24a7d447c638197f4b62c058a57728cc2f08758dcb6cd0c76"
+  "76e542b6a21e49215734c9e2d77c8943180f3e814796a09856b9cff41f584432"
+  "bee121cb1ddcc405cb639c377a430a6aea5e1024f6cf70f41680a691391d9d7e"
 )
 
 prepare() {
@@ -51,7 +53,8 @@ prepare() {
   ar x "${deb_dir}/qaic-kmd_${pkgver}_all.deb"
   tar xf data.tar.*
   cd "${srcdir}/kmd"
-  patch -p1 < "${srcdir}/0001-fix-dkms.conf-kernel-source-fallback.patch"
+  patch -p1 < "${srcdir}/0001-fix-dkms.conf.patch"
+  patch -p1 < "${srcdir}/0002-fix-mhi-modalias-backport.patch"
 
   # Extract qaic-rt
   cd ../rt

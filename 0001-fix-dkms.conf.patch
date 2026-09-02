@@ -1,0 +1,53 @@
+--- a/usr/src/qaic-1.21.6.0/dkms.conf	2026-07-17 02:00:33.531413343 +0200
++++ b/usr/src/qaic-1.21.6.0/dkms.conf	2026-07-17 02:08:39.835661351 +0200
+@@ -4,22 +4,22 @@
+ MOD_ID=0
+ BUILT_MODULE_NAME[$MOD_ID]="mhi"
+ BUILT_MODULE_LOCATION[$MOD_ID]="mhi/host/"
+-DEST_MODULE_LOCATION[$MOD_ID]="/kernel/qaic/"
++DEST_MODULE_LOCATION[$MOD_ID]="/updates/dkms"
+ 
+ ((MOD_ID++))
+ BUILT_MODULE_NAME[$MOD_ID]="qaic"
+ BUILT_MODULE_LOCATION[$MOD_ID]="qaic/"
+-DEST_MODULE_LOCATION[$MOD_ID]="/kernel/qaic/"
++DEST_MODULE_LOCATION[$MOD_ID]="/updates/dkms"
+ 
+ ((MOD_ID++))
+ BUILT_MODULE_NAME[$MOD_ID]="qrtr-mhi"
+ BUILT_MODULE_LOCATION[$MOD_ID]="qrtr/"
+-DEST_MODULE_LOCATION[$MOD_ID]="/kernel/qaic/"
++DEST_MODULE_LOCATION[$MOD_ID]="/updates/dkms"
+ 
+ ((MOD_ID++))
+ BUILT_MODULE_NAME[$MOD_ID]="switchtec"
+ BUILT_MODULE_LOCATION[$MOD_ID]="switch/"
+-DEST_MODULE_LOCATION[$MOD_ID]="/kernel/qaic/"
++DEST_MODULE_LOCATION[$MOD_ID]="/updates/dkms"
+ 
+ #$kernel_config can be "" from DKMS (likely if using old DKMS with new .config-less kernel)
+ #  This will cause it to not be able to sign modules, and will be more likely to have issues with
+@@ -33,19 +33,19 @@
+   dot_config="$kernel_source_dir/$auto_conf_path"
+ fi
+ 
+-if ! grep -q "CONFIG_QRTR=[ym]" $dot_config ; then
++if [[ -f $dot_config ]] && ! grep -q "CONFIG_QRTR=[ym]" $dot_config ; then
+   ((MOD_ID++))
+   BUILT_MODULE_NAME[$MOD_ID]="qrtr"
+   BUILT_MODULE_LOCATION[$MOD_ID]="qrtr/"
+-  DEST_MODULE_LOCATION[$MOD_ID]="/kernel/qaic/"
++  DEST_MODULE_LOCATION[$MOD_ID]="/updates/dkms"
+ fi
+ 
+-if ! grep -q "CONFIG_DRM_SCHED=[ym]" $dot_config ; then
++if [[ -f $dot_config ]] && ! grep -q "CONFIG_DRM_SCHED=[ym]" $dot_config ; then
+   if grep -q "select DRM_SCHED" $source_tree/qaic-${PACKAGE_VERSION}/qaic/Kconfig ; then
+     ((MOD_ID++))
+     BUILT_MODULE_NAME[$MOD_ID]="gpu-sched"
+     BUILT_MODULE_LOCATION[$MOD_ID]="scheduler/"
+-    DEST_MODULE_LOCATION[$MOD_ID]="/kernel/qaic/"
++    DEST_MODULE_LOCATION[$MOD_ID]="/updates/dkms"
+   fi
+ fi
+ 

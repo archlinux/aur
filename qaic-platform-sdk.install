@@ -19,6 +19,8 @@ QAIc Platform SDK installed.
 
 DKMS will build the kernel module automatically on next boot
 or when a kernel is installed/updated (pacman hook).
+Modules are installed in /updates/dkms/ and take precedence
+over built-in kernel modules.
 
 To reset devices after installation:
   /opt/qti-aic/scripts/soc_reset.sh
