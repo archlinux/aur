@@ -3,7 +3,7 @@
 # pushed version tag, resets pkgrel to 1, verifies the resulting source, and
 # builds it before push.
 pkgname=sway-title-animator
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Animated Unicode titlebars for Sway"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,7 @@ optdepends=(
 makedepends=('go>=1.26.5')
 options=('!debug')
 source=("sway-title-animator-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('483df239cfaec244fbfe40ea4d6487dcc0c15bf20cdb23efb452a6891d3a9655')
+sha256sums=('dd285f3f961ed381485487a731171ef122e19557f616ecd8abbb6428df076419')
 
 _go_build_flags=(-buildmode=pie -trimpath -buildvcs=false -mod=readonly -modcacherw)
 _go_ldflags=(-s -w -buildid=)
