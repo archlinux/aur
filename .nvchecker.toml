@@ -1,0 +1,4 @@
+[zorite]
+source = "git"
+git = "https://github.com/packetThrower/zorite.git"
+prefix = "v"
