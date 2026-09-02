@@ -51,8 +51,6 @@ pkgbase = purelive-bin
 	options = !strip
 	options = !debug
 	source_x86_64 = purelive-bin-3.0.9.tar.gz::https://github.com/liuchuancong/pure_live/releases/download/v3.0.9/PureLive-3.0.9-4097-linux-x64.tar.gz
-	source_x86_64 = icon.png::https://raw.githubusercontent.com/liuchuancong/pure_live/master/assets/icons/icon.png
 	sha256sums_x86_64 = 9b04f579b66cf4dd0395993a974f22554b70d6c7b3c57913071357eebc6a11e3
-	sha256sums_x86_64 = SKIP
 
 pkgname = purelive-bin

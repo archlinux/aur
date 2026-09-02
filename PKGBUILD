@@ -26,11 +26,9 @@ conflicts=("purelive")
 options=('!strip' '!debug')
 source_x86_64=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/liuchuancong/pure_live/releases/download/v${pkgver}/PureLive-${pkgver}-${_buildnum}-linux-x64.tar.gz"
-    "icon.png::https://raw.githubusercontent.com/liuchuancong/pure_live/master/assets/icons/icon.png"
 )
 sha256sums_x86_64=(
     '9b04f579b66cf4dd0395993a974f22554b70d6c7b3c57913071357eebc6a11e3'
-    'SKIP'
 )
 
 package() {
@@ -66,8 +64,9 @@ Type=Application
 Categories=AudioVideo;Network;
 EOF
 
-    # 安装图标
-    install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/purelive.png"
+    # 从解压的包内安装图标
+    install -Dm644 "${srcdir}/pure_live/data/flutter_assets/assets/icons/icon.png" \
+        "${pkgdir}/usr/share/pixmaps/purelive.png"
 
     # 安装许可证
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<'EOF'
