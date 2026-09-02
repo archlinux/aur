@@ -1,8 +1,8 @@
 # Maintainer: Raphael <raphamzn@gmail.com>
 pkgname=seraph-git
-pkgver=r319.gc112121
+pkgver=r321.gffc68c7
 pkgrel=1
-pkgdesc="A lightweight Qt6/QML file manager for Hyprland"
+pkgdesc="A lightweight Qt6/QML file manager for Hyprland and niri"
 arch=('x86_64' 'aarch64')
 url="https://github.com/raphamzn/seraph"
 license=('MIT')
