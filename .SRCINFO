@@ -1,0 +1,17 @@
+pkgbase = skwd-lens-model
+	pkgdesc = Default SigLIP 2 semantic model pack for Skwd Lens
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/liixini/skwd-lens
+	arch = x86_64
+	license = Apache-2.0
+	license = CC-BY-4.0
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	options = !strip
+	options = !debug
+	source = skwd-lens-model-1.0.0-1.fc44.src.rpm::https://download.copr.fedorainfracloud.org/results/piixini/skwd-wall-v2/srpm-builds/10933293/skwd-lens-model-1.0.0-1.fc44.src.rpm
+	sha256sums = 0d4da8b8432a5b1ff68ec2840b1f232a4d2707eb487e424a50ef518d7ab32490
+
+pkgname = skwd-lens-model
