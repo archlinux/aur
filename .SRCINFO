@@ -1,16 +1,19 @@
 pkgbase = nvidia-pstated
 	pkgdesc = A daemon that automatically manages the performance states of NVIDIA GPUs
 	pkgver = 1.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sasha0552/nvidia-pstated
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cmake
 	makedepends = cuda
 	depends = nvidia-utils
+	backup = etc/conf.d/nvidia-pstated
 	source = nvidia-pstated-1.0.9.tar.gz::https://github.com/sasha0552/nvidia-pstated/archive/refs/tags/v1.0.9.tar.gz
 	source = nvidia-pstated.service
+	source = nvidia-pstated.conf
 	sha256sums = 6c566f93baeed37db6e042f8516a574ec28e4744936fa9876f2e87648bad7aea
-	sha256sums = a10ea6fccb64b0b598d6d8fd680ff21c0163d7abb36cc39cf7bbe4f6028a6891
+	sha256sums = c9676918ce0fa92700953554bf0ce4fe8080be74c2e65e36a94d25b6bbd208a4
+	sha256sums = 4c8c11832a0f02ce7e9376f56ff95a5a723fb4073964fe62ad98e969f0ddbe1f
 
 pkgname = nvidia-pstated
