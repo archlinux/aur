@@ -1,13 +1,27 @@
-# Local exact-context rebase for llama.cpp b10739.
+# Local exact-context rebase for llama.cpp b10751.
+--- a/src/llama-model.cpp
++++ b/src/llama-model.cpp
+@@ -1224,6 +1224,10 @@
+     GGML_ASSERT(hparams.n_layer_all > 0 && hparams.n_layer_all <= LLAMA_MAX_LAYERS);
+     ml.get_key(LLM_KV_NEXTN_PREDICT_LAYERS,    hparams.n_layer_nextn,   false);
+-    GGML_ASSERT(hparams.n_layer_nextn <= hparams.n_layer_all);
++    if (hparams.n_layer_nextn > hparams.n_layer_all) {
++        throw std::runtime_error(format("%s must not exceed block_count (%u), got %u",
++                                        ml.llm_kv(LLM_KV_NEXTN_PREDICT_LAYERS).c_str(),
++                                        hparams.n_layer_all, hparams.n_layer_nextn));
++    }
+     ml.get_key(LLM_KV_EXPERT_COUNT,            hparams.n_expert,        false);
+     ml.get_key(LLM_KV_EXPERT_USED_COUNT,       hparams.n_expert_used,   false);
+     ml.get_key(LLM_KV_EXPERT_GROUP_COUNT,      hparams.n_expert_groups, false);
+
 --- a/src/models/qwen4exp.cpp
 +++ b/src/models/qwen4exp.cpp
-@@ -24,6 +24,20 @@
+@@ -24,6 +24,19 @@
  }
  
  void llama_model_qwen4exp::load_arch_hparams(llama_model_loader & ml) {
-+    // NextN/MTP: an extra decoder block appended past the trunk. Read this first, since
-+    // n_layer() == n_layer_all - n_layer_nextn feeds every per-layer array below.
-+    ml.get_key(LLM_KV_NEXTN_PREDICT_LAYERS, hparams.n_layer_nextn, false);
++    // NextN/MTP: an extra decoder block appended past the trunk. Generic metadata loading
++    // has already populated n_layer_nextn; qwen4exp currently supports at most one such block.
 +    if (hparams.n_layer_nextn >= hparams.n_layer_all) {
 +        throw std::runtime_error(format("%s must be less than block_count (%u), got %u",
 +                                        ml.llm_kv(LLM_KV_NEXTN_PREDICT_LAYERS).c_str(),
