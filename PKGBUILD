@@ -2,7 +2,7 @@
 # Maintainer: hzerrad <contact@hzerrad.dev>
 
 pkgname='cronkit-bin'
-pkgver=0.1.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='Make cron human again - CLI tool for cron job management'
 url='https://github.com/hzerrad/cronkit'
@@ -12,10 +12,10 @@ provides=('cronkit')
 conflicts=('cronkit')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/hzerrad/cronkit/releases/download/v${pkgver}/cronkit_linux_arm64.tar.gz")
-sha256sums_aarch64=('97b91158d33a5f4c5caa89ca15ff3417999769702d324e8bb4cd6bee7cf8c600')
+sha256sums_aarch64=('5c1caf2ff2d331e2788bf1a1b301066000b343e7a6de9b3b9062c2da13dcf2e3')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/hzerrad/cronkit/releases/download/v${pkgver}/cronkit_linux_amd64.tar.gz")
-sha256sums_x86_64=('2eb8dec964efd56bdbef8d10e716253d2f78be115220b5e3ad6075bab5c74d13')
+sha256sums_x86_64=('befa612ea41674f64997afb8248d3129793d15e6c79d68756f6b4c5a9b369d72')
 
 package() {
   install -Dm755 "./cronkit" "${pkgdir}/usr/bin/cronkit"
