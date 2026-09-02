@@ -1,6 +1,6 @@
 pkgbase = mldy
 	pkgdesc = Terminal UI for downloading videos using yt-dlp
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/milkyicedtea/mldy
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = mldy
 	depends = go
 	depends = yt-dlp
 	depends = ffmpeg
-	source = https://github.com/milkyicedtea/mldy/archive/refs/tags/v1.1.tar.gz
+	source = https://github.com/milkyicedtea/mldy/archive/refs/tags/v1.2.tar.gz
 	sha256sums = b80cbc1eff94f89577c6a0601cfa5827a8aa67b3bad7a4480ee10904a75864f6
 
 pkgname = mldy

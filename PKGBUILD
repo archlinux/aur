@@ -1,5 +1,5 @@
 pkgname=mldy
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Terminal UI for downloading videos using yt-dlp"
 arch=('x86_64')
