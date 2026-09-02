@@ -1,13 +1,13 @@
 pkgbase = zish
 	pkgdesc = fast, familiar POSIX/bash shell in Zig with kernel-enforced (Landlock+seccomp) sandboxing
-	pkgver = 0.17.4
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://github.com/rotkonetworks/zish
 	arch = x86_64
 	license = MIT
 	makedepends = zig>=0.16.0
 	depends = glibc
-	source = zish-0.17.4.tar.gz::https://github.com/rotkonetworks/zish/archive/v0.17.4.tar.gz
-	sha256sums = 5dbabfac34b60d7bc52b541d01576181dea7de947a247d3542278358d364be5b
+	source = zish-0.20.1.tar.gz::https://github.com/rotkonetworks/zish/archive/v0.20.1.tar.gz
+	sha256sums = 58b6bfba6cfd260fc0ceb97d6ca0afb941e34066d5e04f7599fa607de6ebf4a8
 
 pkgname = zish
