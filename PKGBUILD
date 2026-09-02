@@ -1,8 +1,8 @@
 # Maintainer: Oystein Sture <oysstu at protonmail.com>
 
 pkgname=('python-vcs2l')
-pkgver='1.1.6'
-pkgrel=2
+pkgver='1.1.7'
+pkgrel=1
 pkgdesc='A version control system tool designed to make working with multiple repositories easier (python-vsctool fork)'
 arch=('any')
 url='https://github.com/ros-infrastructure/vcs2l'
@@ -13,7 +13,7 @@ provides=('python-vcstool')
 conflicts=('python-vcstool')
 
 source=("https://github.com/ros-infrastructure/vcs2l/archive/${pkgver}.tar.gz")
-sha256sums=('d7e545b0a69e860eaed36eec9bb824935e01fa03693d6bb50e3ddeb95408f615')
+sha256sums=('7c61d250bc0c8188bb7d2a7f63e2d7ed66274eb8424eeb1c40cf7796e2485839')
 
 _pkgbase=${pkgname#python-}
 
