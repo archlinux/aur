@@ -1,10 +1,18 @@
 # Maintainer: fm39hz <fm39hz@gmail.com>
 # AUR package — upstream PKGBUILD in repo root.
-# CI bumps pkgver and regenerates sha256sums (updpkgsums) on each release.
+# This file is a template: release.yml rewrites both version fields and
+# regenerates sha256sums (updpkgsums) before pushing, so the values below are
+# never what AUR actually serves.
+#
+# Two orthogonal axes, deliberately not merged:
+#   pkgver = which code   (a v* tag; reset pkgrel to 1 whenever it moves)
+#   pkgrel = which recipe (bumped alone when only the packaging layer changes
+#            — vercmp reports "0.4.5" == "0.4.5-1", so without it pacman would
+#            silently refuse the corrected package)
 
 pkgname=gotomux
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Fuzzy tmux session picker with presets, zoxide and daemon-assisted cold start'
 arch=('x86_64' 'aarch64')
 url='https://github.com/fm39hz/gotomux'
