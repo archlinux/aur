@@ -77,7 +77,7 @@ build() {
 }
 
 package() {
-  install -vD -m644 build/bin/compressonatorcli-bin \
+  install -vD -m755 build/bin/compressonatorcli-bin \
     -T "${pkgdir}/usr/bin/compressonatorcli"
 
   install -vd "${pkgdir}/usr/share/doc"
