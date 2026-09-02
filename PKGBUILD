@@ -5,7 +5,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-pure
-pkgver=153.0
+pkgver=155.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.firefox.com"
@@ -40,7 +40,6 @@ depends=(
   zlib
 )
 makedepends=(
-  cage
   cbindgen
   clang
   diffutils
@@ -57,12 +56,14 @@ makedepends=(
   wasi-libc
   wasi-libc++
   wasi-libc++abi
+  cage
   xorg-xwayland
   yasm
   zip
 )
 optdepends=(
-  'hunspell-en_US: Spell checking, American English'
+  'firefox-i18n: Localizations'
+  'hunspell-dictionary: Spell checking, American English'
   'libnotify: Notification integration'
   'xdg-desktop-portal: Screensharing with Wayland'
 )
@@ -80,15 +81,15 @@ source=(
   "firefox.desktop"
   "org.mozilla.firefox.metainfo.xml"
   "0001-Install-under-remoting-name.patch"
-  "https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-153-patches-01.tar.xz"
+  "https://dev.gentoo.org/~juippis/mozilla/patchsets/firefox-155-patches-01.tar.xz"
 )
 sha256sums=(
-  'bc510f74c8c4c692d31e559aeb5850849d13bc98214ac81e004f66f819a55522'
+  'c57fd59835f8c5b9c7f68bead2782238c11d8626b57509cc809915b0b4d70dfb'
   'cb00ea359d6daf37900102307be4f515f1b7ef9c98825c64cc55bb562449d0d8'
   '71fe797430198ac8c00b538dce537284cf526e48be0496698cf5a980d70c16da'
   '4e01a62e20026b67466943bad9dfba47874c5e1492375f8293aeb85ecedf2288'
   'a7364ddb3b6eab922873f35731ed5cfb61e8022a35d54edd2f80b95a4f5625ed'
-  '9dc3e9423eea9b8bf16cd7cc2545a539717e9b32c1e4242a332988ff0add923e'
+  'dec9c3044c672ac7cd2987cf4d5fc6257a889abc3e541b0a2da7f3f2ca3cd057'
 )
 
 prepare() {
