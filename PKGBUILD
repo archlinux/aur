@@ -1,11 +1,13 @@
-# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+# Maintainer: Vendicated <vendicated@riseup.net>
+# Maintainer: Kylie C <kyliepc@proton.me>
+# Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: HentaiShiroYuki <hentaishiroyuki at gmail dot com>
 # Contributor: Sofia Lima
 pkgname=vesktop-bin
 _pkgname=vesktop
 _appname=vencord-desktop
 pkgver=1.6.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross platform electron-based desktop app aiming to give you a snappier Discord experience with Vencord pre-installed."
 arch=(
     'aarch64'
@@ -37,9 +39,11 @@ source=(
     "https://raw.githubusercontent.com/Vencord/Vesktop/refs/heads/main/build/icon.svg"
 )
 noextract=("${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
-sha256sums_aarch64=('642473098904feb424aafc0d97d33d20d8c2596186cdfc6e9866fa6bfc6d531d')
-sha256sums_x86_64=('0569c8a8956f161a28b82c6fba667e7ee6828df8856247f5c08f18c1b1b0b8fc')
+sha256sums=('49d5f14ead3caa2b5ec11ae2496c053866d873eedcb14c1424b32132b0cd109b'
+            '455c00b862aa0a7e18ca8e23d65d5c5ee4506cdfb15f1bf6f622cce39827de46'
+            '7d0f9dbdb3c86f800577d7fb26a22defeb7025d10c405f634d3c2b939a75be7f')
+sha256sums_aarch64=('152786c72cf97f510b3a527829568083dd5c79b723cf459c13d430b6ca385b66')
+sha256sums_x86_64=('152786c72cf97f510b3a527829568083dd5c79b723cf459c13d430b6ca385b66')
 
 prepare() {
     sed -i -e "

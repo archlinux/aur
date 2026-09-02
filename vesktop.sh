@@ -1,26 +1,6 @@
 #!/bin/sh
 set -e
 
-# 1. Desktop Environment (DE) Compatibility
-# Set CHROME_DESKTOP to match the .desktop file for correct taskbar icon grouping
-export CHROME_DESKTOP="@appname@.desktop"
-
-# Fix for Electron's trash implementation on different DEs
-case "${XDG_CURRENT_DESKTOP}" in
-    KDE)
-        export ELECTRON_TRASH="kioclient5"
-        ;;
-    GNOME)
-        export ELECTRON_TRASH="gio"
-        ;;
-    XFCE)
-        export ELECTRON_TRASH="gvfs-trash"
-        ;;
-    *)
-        # Default fallback
-        ;;
-esac
-
 # 2. Load user-defined flags
 # The script checks for flags in the following order (later files override/append to earlier ones):
 # 1. System-wide Electron flags: $XDG_CONFIG_HOME/electron-flags.conf
