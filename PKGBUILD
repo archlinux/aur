@@ -1,6 +1,6 @@
 # Maintainer: andeen171 <zeanderpreys@gmail.com>
 pkgname=g15-cli
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Keyboard backlight, fan and power control for Dell G15 laptops (AW-ELC 187c:0550)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
   'polkit: password prompt for the power and fan controls in the bar plugin'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e996ad4bf99d98611d1f4868fc5c6718b75294f121e5fc0573a220b66aed5d79')
+sha256sums=('117922611f966816a1edc6dcc2bcb2ff43bfb1866574b89056b9bf1436cbf275')
 
 prepare() {
   cd "$pkgname-$pkgver"
