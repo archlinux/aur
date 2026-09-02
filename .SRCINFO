@@ -1,0 +1,20 @@
+pkgbase = elmerfem-base-bin
+	pkgdesc = A finite element software for multiphysical problems (without GUI and Ice, precompiled)
+	pkgver = 26.2.1
+	pkgrel = 1
+	url = https://www.elmerfem.org
+	arch = x86_64
+	license = GPL-2.0-only AND LGPL-2.1-only AND LicenseRef-Elmer
+	depends = arpack
+	depends = blas-openblas
+	depends = hypre
+	depends = openmp
+	depends = openmpi
+	provides = elmerfem-base
+	conflicts = elmerfem-base
+	conflicts = elmerfem-git
+	conflicts = elemerfem
+	source = https://github.com/tubbywrestler/elmerfem-base-bin/releases/download/26.2.1-1/elmerfem-base-26.2.1-1-x86_64.pkg.tar.zst
+	sha256sums = 34301b1db539ed5f1fbca857cb40f297c06583c5d68d271a5fa2ee7dfb3ca518
+
+pkgname = elmerfem-base-bin
