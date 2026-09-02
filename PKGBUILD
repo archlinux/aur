@@ -3,17 +3,18 @@
 pkgname=python-pwnv
 _name=${pkgname#python-}
 pkgver=0.6.0
-pkgrel=1
+pkgrel=3
 pkgdesc="CLI tool for CTF management"
 provides=(${pkgname})
 conflicts=(${pkgname})
 arch=('any')
 url="https://github.com/CarixoHD/pwnv"
 _pydeps=(
+    click
     dotenv
     filelock
-    inquirer
     inquirerpy
+    prompt_toolkit
     pydantic
     rich
     typer
