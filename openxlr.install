@@ -12,4 +12,13 @@ MSG
 post_upgrade() {
   udevadm control --reload || true
   sysctl -q -w net.ipv4.ip_local_reserved_ports=37890 || true
+  if (( $(vercmp "$2" 0.1.9) < 0 )); then
+    cat <<'MSG'
+==> OpenXLR: before 0.1.9, "Start daemon at login" in Options wrote a broken
+==> ~/.config/systemd/user/openxlr-daemon.service that shadows the packaged
+==> unit and fails after a reboot. Opening the mixer once repairs it; or by hand:
+==>   rm ~/.config/systemd/user/openxlr-daemon.service
+==>   systemctl --user daemon-reload && systemctl --user enable --now openxlr-daemon
+MSG
+  fi
 }
