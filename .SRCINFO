@@ -1,6 +1,6 @@
 pkgbase = linux-cachyos-cjktty
 	pkgdesc = CachyOS Linux kernel with cjktty patches
-	pkgver = 7.2.2
+	pkgver = 7.3.rc1
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -30,13 +30,13 @@ pkgbase = linux-cachyos-cjktty
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.2.2-1/cachyos-7.2.2-1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.3-rc1-1/cachyos-7.3-rc1-1.tar.gz
 	source = config
 	source = https://raw.githubusercontent.com/Capricornus007/cjktty-patches/master/v7.x/cjktty-7.2-rc7.patch
 	source = https://raw.githubusercontent.com/Capricornus007/cjktty-patches/master/cjktty-add-cjk32x32-font-data.patch
-	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.2/misc/dkms-clang.patch
-	b2sums = ef0dd68d31a0c51ec09c7025331ed821833965d04bead87151ec03e884ac48d699c098beea177e9a098d74d6f1c929def8052d1973712d60d213708f7c51d4ee
-	b2sums = 60bd8be927bd3e0c58d8add4fc5f8cfd381598cf800f8833e0b9c6d0f98cee857bc404e4fabbb300edce7c180cd8844f5247ab6f0060727a744cb1d1d257978e
+	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.3/misc/dkms-clang.patch
+	b2sums = fa717b3b73d7fd8cf49fc05b6a860026267508ef5e9c7e09435256158f1af6c29ccfd011f950250879ffe735aedfd1ad60f8faf6e2b1377f20c40f63f6ef1b2d
+	b2sums = 4165667205ba90d93dfbeb0ae6df3f4b0e1cd3d9348c1eac5dea259723d8c6d6e0af2d8c1b52f643a291bb39e8468f6b3e847506dc793e9037722f3a64bb18d2
 	b2sums = eb7ad3aa7b873786cb084247edfc8e8029edaf819d2f25e08e91f36c58e76fd225561bb526287b53353079ace71afae7821d1259b7156d15d2de0a14e7da0a35
 	b2sums = 101996793aeede5e456b23b35c2fd4af5c38fd363473dcdda0bce6e21d110a9f88a67e325b1ebf8efef4a7511f135c4f64ff1fc54b8ef925a5df8d6292ba7678
 	b2sums = c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e
@@ -57,7 +57,7 @@ pkgname = linux-cachyos-cjktty
 	provides = NTSYNC-MODULE
 	provides = VHBA-MODULE
 	provides = ADIOS-MODULE
-	provides = linux-cachyos-cjktty-lto=7.2.2-1
+	provides = linux-cachyos-cjktty-lto=7.3.rc1-1
 	replaces = linux-cachyos-cjktty-lto
 
 pkgname = linux-cachyos-cjktty-headers
@@ -76,5 +76,5 @@ pkgname = linux-cachyos-cjktty-headers
 	depends = llvm
 	depends = lld
 	provides = LINUX-HEADERS
-	provides = linux-cachyos-cjktty-lto-headers=7.2.2-1
+	provides = linux-cachyos-cjktty-lto-headers=7.3.rc1-1
 	replaces = linux-cachyos-cjktty-lto-headers
