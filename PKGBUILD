@@ -50,6 +50,10 @@ package() {
   install -d "$pkgdir/usr/share/slipmat/sidecar"
   cp -r sidecar/package.json sidecar/main.js sidecar/preload.js \
         sidecar/node_modules "$pkgdir/usr/share/slipmat/sidecar/"
+  if [[ -f sidecar/queue-identity.js ]]; then
+    install -Dm644 sidecar/queue-identity.js \
+      "$pkgdir/usr/share/slipmat/sidecar/queue-identity.js"
+  fi
 
   # Prebuilt binaries for architectures this package is not for — 7 MB of
   # arm64, ia32, darwin and win32 shipped inside one npm dependency. They also
