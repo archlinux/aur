@@ -1,0 +1,12 @@
+pkgbase = ctex2png
+	pkgdesc = A Python tool to convert CTEX files to PNG images.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/grandwo/ctex2png
+	arch = any
+	license = custom
+	depends = python-pillow
+	source = git+https://github.com/grandwo/ctex2png.git
+	sha256sums = SKIP
+
+pkgname = ctex2png
