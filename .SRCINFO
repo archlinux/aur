@@ -1,7 +1,7 @@
 pkgbase = waylyrics
 	pkgdesc = the furry way to show desktop lyrics
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/waylyrics/waylyrics
 	arch = x86_64
 	arch = aarch64
