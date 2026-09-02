@@ -1,6 +1,6 @@
 pkgbase = sway-title-animator
 	pkgdesc = Animated Unicode titlebars for Sway
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/marang/sway-title-animator
 	arch = x86_64
@@ -10,13 +10,14 @@ pkgbase = sway-title-animator
 	depends = sway
 	optdepends = libpulse: sound-reactive animation presets via parec
 	optdepends = alacritty: persistent work-session windows
+	optdepends = foot: optional typed terminal adapter for persistent work-session windows
 	optdepends = herdr>=0.8.2: persistent terminal panes, history, and agent sessions
 	optdepends = flatpak: restore explicitly registered Flatpak desktop applications
 	optdepends = glib2: restore desktop-entry applications through gio
 	optdepends = noto-fonts: recommended Noto Sans Mono glyph coverage for desktop-app indicators
 	optdepends = apparmor: secure Codex resume boundary
 	options = !debug
-	source = sway-title-animator-0.4.1.tar.gz::https://github.com/marang/sway-title-animator/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = e9131d9e478e5c2fd7560fd8d30352ce204d0a0a23a79f3d427e65e3c5cd8cc1
+	source = sway-title-animator-0.5.0.tar.gz::https://github.com/marang/sway-title-animator/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 516afdaf9e85f7f3fe6a600a684cad157a6c86bf6f287e5a0eb8d11c92b5cc71
 
 pkgname = sway-title-animator
