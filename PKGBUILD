@@ -6,7 +6,10 @@ pkgrel='1'
 _commit='263ccc91cf7465c79cb46c04d237ed26e2530641'
 arch=('any')
 url="https://github.com/euler357/TrueRNG"
-#license=('unknown')
+# Although no license is directly attached to the upstream repository,
+# MIT is the official designation:
+# https://github.com/euler357/TrueRNG/issues/9
+license=('MIT')
 depends=('udev')
 source=("${url}/raw/${_commit}/udev_rules/99-TrueRNG.rules")
 b2sums=('72eb469e9797edc5d2ab35231656f377826adb5aa260d509f55cc03dd3bc8cf8d7ec1f3c7764f2e49d180bf1db65e0a3e8a9ee77a60c0e6d3d71d9b79ade0028')
