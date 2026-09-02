@@ -11,6 +11,7 @@ pkgbase = gama-bin
 	depends = gcc-libs
 	provides = gama
 	conflicts = gama
+	options = !debug
 	source = https://github.com/tubbywrestler/gama-bin/releases/download/2.33-1/gama-2.33-1-x86_64.pkg.tar.zst
 	sha256sums = 5eddaa2ef59502fb03342bf747429286adf364d1b1418b1c4a9e005a9a15be34
 

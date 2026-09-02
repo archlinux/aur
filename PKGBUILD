@@ -8,6 +8,7 @@ pkgdesc="Package dedicated to the adjustment of surveying networks. (precompiled
 arch=('x86_64')
 url="https://www.gnu.org/software/gama/"
 license=('GPL-3.0-or-later')
+options=('!debug')
 provides=('gama')
 conflicts=('gama')
 depends=('expat' 'glibc' 'sqlite' 'gcc-libs')
