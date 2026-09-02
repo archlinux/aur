@@ -2,7 +2,7 @@
 
 pkgname=appimg-bin
 _pkgname=appimg
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Install, update and remove AppImages as proper desktop applications (prebuilt binary)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('fuse2: needed by most AppImages at runtime'
             'desktop-file-utils: desktop database updates'
             'gtk-update-icon-cache: icon cache updates')
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/appimg-$pkgver-$CARCH-linux-musl.tar.gz")
-sha256sums=('60b71c37728cae570cc956b7fe4d3e37b42746f12203de05e083ebf87558c477')
+sha256sums=('fe7658c0c0c8f51490fc997c1bafb9e225836373bc60cf2633275740ab453fac')
 
 package() {
 	cd "appimg-$pkgver-$CARCH-linux-musl"
