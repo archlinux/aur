@@ -1,0 +1,22 @@
+pkgbase = tidy-cleaner-bin
+	pkgdesc = Modern, ultra-fast, and safe system cleaner, manager, and hardware telemetry dashboard for Linux (precompiled binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Matvel007/Tidy-Cleaner
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	optdepends = polkit: Elevated privilege actions (system-wide uninstallation)
+	optdepends = nvidia-utils: GPU telemetry for NVIDIA graphics cards
+	optdepends = flatpak: Flatpak application management
+	optdepends = snapd: Snap application management
+	optdepends = yay: AUR package management
+	optdepends = paru: AUR package management
+	provides = tidy-cleaner
+	conflicts = tidy-cleaner
+	conflicts = tidy-cleaner-git
+	source_x86_64 = tidy-cleaner-bin-0.1.0.tar.gz::https://github.com/Matvel007/Tidy-Cleaner/releases/download/v0.1.0/tidy-cleaner-v0.1.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 650cbeb4dfad6fc4c6d3182b8f8045610ec870102641a27e7d41f3914a1a5b81
+
+pkgname = tidy-cleaner-bin
