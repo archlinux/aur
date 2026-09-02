@@ -1,6 +1,6 @@
 # Maintainer: amoyrlet <amoyrlet@proton.me>
 pkgname=fygram-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Desktop music player that indexes and plays audio from your Telegram channels"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('webkit2gtk-4.1' 'gtk3' 'alsa-lib' 'openssl' 'hicolor-icon-theme')
 # package at, so makepkg's defaults only produce a broken fygram-bin-debug
 options=('!strip' '!debug')
 source=("fygram-arch-installer-${pkgver}.tar.gz::https://github.com/amoyrlet-tg/fygram/releases/download/v${pkgver}/fygram-arch-installer.tar.gz")
-sha256sums=('2b5f8948c02270ca70159761b513c8da79d993b2f737f11b90ed3eefdd4857f7')
+sha256sums=('f9b370348efbd2e31808e901e264f447a464baf7d0d736bb0eb45e29fde242a3')
 
 package() {
   cd "$srcdir/fygram-arch"
