@@ -19,7 +19,7 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/tidy-cleaner-v$pkgver-linux-x86_64.tar.gz")
-sha256sums_x86_64=('650cbeb4dfad6fc4c6d3182b8f8045610ec870102641a27e7d41f3914a1a5b81')
+sha256sums_x86_64=('650cbeb4dfad6fc4c6d318208a0d16e2bf8516e12692a85e48c115a5ff065371')
 
 package() {
     cd "$srcdir/tidy-cleaner"

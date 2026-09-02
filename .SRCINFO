@@ -17,6 +17,6 @@ pkgbase = tidy-cleaner-bin
 	conflicts = tidy-cleaner
 	conflicts = tidy-cleaner-git
 	source_x86_64 = tidy-cleaner-bin-0.1.0.tar.gz::https://github.com/Matvel007/Tidy-Cleaner/releases/download/v0.1.0/tidy-cleaner-v0.1.0-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 650cbeb4dfad6fc4c6d3182b8f8045610ec870102641a27e7d41f3914a1a5b81
+	sha256sums_x86_64 = 650cbeb4dfad6fc4c6d318208a0d16e2bf8516e12692a85e48c115a5ff065371
 
 pkgname = tidy-cleaner-bin
