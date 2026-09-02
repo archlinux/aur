@@ -2,7 +2,7 @@
 
 _pkgname=smuview
 pkgname=${_pkgname}-git
-pkgver=0.0.4.r406.g7ea4b33
+pkgver=0.0.4.r420.g0927de3
 pkgrel=1
 pkgdesc="SmuView is a Qt-based source measurement unit GUI for sigrok."
 arch=($CARCH)
@@ -65,13 +65,13 @@ build() {
         -DENABLE_TESTS=TRUE \
         -B build \
         -G Ninja \
-        -Wno-dev
+        -Wno-author
     ninja -C build
 
     cd manual
     cmake -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -Wno-dev
+        -Wno-author
     make manual
     make manual-publish
 
