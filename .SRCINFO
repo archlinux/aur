@@ -1,6 +1,6 @@
 pkgbase = multica-bin
 	pkgdesc = The open-source managed agents platform. Turn coding agents into real teammates — assign tasks, track progress, compound skills
-	pkgver = 0.4.37
+	pkgver = 0.4.38
 	pkgrel = 1
 	url = https://github.com/multica-ai/multica
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = multica-bin
 	conflicts = multica
 	options = !strip
 	options = !debug
-	source = https://github.com/multica-ai/multica/releases/download/v0.4.37/multica-cli-0.4.37-linux-amd64.tar.gz
-	sha256sums = b515b3c86b723ecfac36bd8945b9c9a7ef725aa5b8facd21dcd121b76efcce00
+	source = https://github.com/multica-ai/multica/releases/download/v0.4.38/multica-cli-0.4.38-linux-amd64.tar.gz
+	sha256sums = 55f494ba058108f0fc3d684d711484fda9e0abafc61ceab06666dcbb5d4c6062
 
 pkgname = multica-bin
