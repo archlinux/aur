@@ -1,8 +1,8 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=serial-studio
-pkgver=4.0.3
-pkgrel=3
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="Multi-purpose serial data visualization & processing program"
 arch=($CARCH)
 url="https://github.com/Serial-Studio/Serial-Studio"
@@ -10,24 +10,37 @@ license=('GPL-3.0-only')
 groups=()
 _qt=qt6
 depends=(
+    abseil-cpp
+    c-ares
     expat
+    glibc
+    libgcc
+    libglvnd
+    libstdc++
     grpc
+    openssl
     protobuf
     $_qt-5compat
     $_qt-base
     $_qt-declarative
     $_qt-connectivity
     $_qt-graphs
+    $_qt-quick3d
+    $_qt-positioning
     $_qt-serialport
+    $_qt-shadertools
     $_qt-svg
+    $_qt-webchannel
     $_qt-webengine
+    $_qt-websockets
+    re2
+    systemd-libs
     zlib
 )
 makedepends=(
     cmake
     git
     ninja
-    openssl
     $_qt-canvaspainter 
     $_qt-tools
     pkgconf
@@ -37,35 +50,31 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 replaces=()
 backup=()
-options=()
+options=(!lto)
 install=
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('772f785285eccbb69a0e39695c4317c9a64554f933afbec3889c91dcccb6f013')
+sha256sums=('da883c111e1edd0c79add96ec85273410498cddd93687c1ab8e82a714ea9e9ac')
 noextract=()
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}"
     sed -i -e 's/^X-AppImage.*//g' app/deploy/linux/serial-studio-gpl3.desktop
+
+    git cherry-pick -n 7678839b8c835fb9a5be7d2573b4cee550aba23c
 }
 
 build() {
     cd "$srcdir/${pkgname}"
 
     cmake -DCMAKE_BUILD_TYPE=Release \
-        -DPRODUCTION_OPTIMIZATION=ON \
-        -DENABLE_HARDENING=ON \
         -DENABLE_GRPC=ON \
-        -DENABLE_PGO=ON \
-        -DPGO_STAGE=GENERATE \
         -DUSE_SYSTEM_ZLIB=ON \
         -DUSE_SYSTEM_EXPAT=ON \
-        -DSS_USE_MIMALLOC=OFF \
-        -DWITH_WEBENGINE=ON \
         -DCMAKE_SKIP_RPATH=OFF \
         -B build \
         -G Ninja \
-        -Wno-dev
+        -Wno-author
 
     ninja -C build
 }
