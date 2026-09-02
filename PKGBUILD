@@ -12,11 +12,11 @@ depends=(
     'python-bleak'
     'python-crccheck'
     'python-pillow'
-    'python-rich'
-    'python-textual'
-    'python-websockets'
 )
 optdepends=(
+    'python-rich: enhanced CLI output and status spinner'
+    'python-textual: interactive font configuration TUI (--font-config)'
+    'python-websockets: WebSocket server bridge'
     'python-pillow-heif: HEIF/HEIC image format support'
 )
 makedepends=(

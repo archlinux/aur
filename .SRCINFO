@@ -15,9 +15,9 @@ pkgbase = python-pypixelcolor-git
 	depends = python-bleak
 	depends = python-crccheck
 	depends = python-pillow
-	depends = python-rich
-	depends = python-textual
-	depends = python-websockets
+	optdepends = python-rich: enhanced CLI output and status spinner
+	optdepends = python-textual: interactive font configuration TUI (--font-config)
+	optdepends = python-websockets: WebSocket server bridge
 	optdepends = python-pillow-heif: HEIF/HEIC image format support
 	provides = python-pypixelcolor=0.4.0.r13.ga9e9a7c
 	provides = pypixelcolor=0.4.0.r13.ga9e9a7c
