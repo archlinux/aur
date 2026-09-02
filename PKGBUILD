@@ -1,8 +1,12 @@
 # Maintainer: Abdelzaher Abdelgwad <abdelzaher.abdelgwad@gmail.com>
 # Auto-generated from packaging/aur/PKGBUILD.template by .github/workflows/release.yml
 pkgname=csm-bin
-pkgver=0.3.0
+pkgver=0.2.1
 pkgrel=1
+# v0.3.0 was published to the AUR and then withdrawn in favour of v0.2.1.
+# AUR versions only move forward, so without an epoch pacman would treat the
+# replacement as older than what it withdrew and never offer the upgrade.
+epoch=1
 pkgdesc="Terminal UI for running multiple Claude Code sessions as tabs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/AbdelzaherAbdelgwad/claude-sessions-manager-tui"
