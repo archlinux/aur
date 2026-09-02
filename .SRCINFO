@@ -1,0 +1,27 @@
+pkgbase = cisco-secure-client-nus-bin
+	pkgdesc = Cisco Secure Client (formerly AnyConnect) VPN and DART (NUS predeploy)
+	pkgver = 5.1.8.122
+	pkgrel = 1
+	url = https://www.cisco.com/site/us/en/products/security/secure-client/index.html
+	install = cisco-secure-client-nus-bin.install
+	arch = x86_64
+	license = LicenseRef-Cisco
+	depends = boost-libs
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libxml2-legacy
+	depends = polkit
+	depends = webkit2gtk-4.1
+	depends = zlib
+	provides = cisco-secure-client
+	provides = cisco-secure-client-vpn
+	provides = cisco-secure-client-dart
+	conflicts = cisco-secure-client
+	conflicts = cisco-anyconnect-vpn
+	conflicts = cisco-anyconnect-dart
+	options = !strip
+	source = file://cisco-secure-client-linux64-5.1.8.122-predeploy-deb-k9.tar.gz
+	sha256sums = SKIP
+
+pkgname = cisco-secure-client-nus-bin

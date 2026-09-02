@@ -1,0 +1,35 @@
+post_install() {
+    # Generate default local policy if it doesn't already exist
+    if [ ! -f /opt/cisco/secureclient/AnyConnectLocalPolicy.xml ]; then
+        if [ -x /opt/cisco/secureclient/bin/acinstallhelper ]; then
+            /opt/cisco/secureclient/bin/acinstallhelper -acpolgen >/dev/null 2>&1 || true
+        fi
+    fi
+
+    # Update VPN manifest
+    if [ -x /opt/cisco/secureclient/bin/manifesttool_vpn ]; then
+        /opt/cisco/secureclient/bin/manifesttool_vpn -i /opt/cisco/secureclient /opt/cisco/secureclient/ACManifestVPN.xml >/dev/null 2>&1 || true
+    fi
+
+    # Update DART manifest
+    if [ -x /opt/cisco/secureclient/bin/manifesttool_dart ]; then
+        /opt/cisco/secureclient/bin/manifesttool_dart -i /opt/cisco/secureclient /opt/cisco/secureclient/ACManifestDART.xml >/dev/null 2>&1 || true
+    fi
+
+    echo "==> Cisco Secure Client installed."
+    echo "==> To enable and start the vpnagentd service, run:"
+    echo "==>   sudo systemctl enable --now vpnagentd.service"
+}
+
+post_upgrade() {
+    post_install
+    echo "==> If upgrading from a previous version, remember to restart the service:"
+    echo "==>   sudo systemctl restart vpnagentd.service"
+}
+
+pre_remove() {
+    if [ -d /run/systemd/system ]; then
+        systemctl stop vpnagentd.service >/dev/null 2>&1 || true
+    fi
+}
+
