@@ -1,7 +1,7 @@
 # Maintainer: ELECTRO <electro@electris.net>
 
 pkgname=rustypaint
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Paint 3D's 2D editor, without the 3D"
 arch=('x86_64')

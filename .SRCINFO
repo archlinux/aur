@@ -1,6 +1,6 @@
 pkgbase = rustypaint
 	pkgdesc = Paint 3D's 2D editor, without the 3D
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/ItzELECTR0/RustyPaint
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = rustypaint
 	optdepends = nvidia-utils: NVIDIA GPU driver
 	optdepends = vulkan-intel: Intel GPU driver
 	options = !debug
-	source = rustypaint::git+https://github.com/ItzELECTR0/RustyPaint.git#tag=v0.2.1
+	source = rustypaint::git+https://github.com/ItzELECTR0/RustyPaint.git#tag=v0.2.2
 	b2sums = SKIP
 
 pkgname = rustypaint
