@@ -1,7 +1,7 @@
 pkgbase = pokerth
 	pkgdesc = Client to online Poker game written in C++/Qt
-	pkgver = 2.1.7
-	pkgrel = 3
+	pkgver = 2.1.8
+	pkgrel = 1
 	url = http://www.pokerth.net/
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -17,7 +17,7 @@ pkgbase = pokerth
 	depends = qt6-multimedia
 	depends = boost-libs
 	depends = protobuf
-	source = pokerth-2.1.7.tar.gz::https://github.com/pokerth/pokerth/archive/refs/tags/v2.1.7.tar.gz
-	md5sums = 0a3e1b514a258f25ccc4a72627d6201d
+	source = pokerth-2.1.8.tar.gz::https://github.com/pokerth/pokerth/archive/refs/tags/v2.1.8.tar.gz
+	md5sums = fc055c8e26922d57c7ebb527a7cd6b8b
 
 pkgname = pokerth
