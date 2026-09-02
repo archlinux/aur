@@ -7,7 +7,7 @@
 _pkgname=linuxqq
 pkgname=linuxqq-nt
 install=linuxqq-nt.install
-pkgver=3.2.32_260812
+pkgver=3.2.33_260902
 pkgrel=1
 epoch=5
 pkgdesc="New Linux QQ based on Electron"
@@ -20,14 +20,14 @@ depends=('nss' 'alsa-lib' 'gtk3' 'at-spi2-core' 'pulse-native-provider')
 optdepends=('libappindicator-gtk3: System tray support'
             'gjs: Screen sharing support')
 source=("${_pkgname}.sh" "linuxqq-get-url.sh")
-source_x86_64=("https://qqdl.gtimg.cn/qqfile/QQNT/9.9.33/release/3f89efc5/QQ_3.2.32_260812_amd64_01.deb")
-source_aarch64=("https://qqdl.gtimg.cn/qqfile/QQNT/9.9.33/release/3f89efc5/QQ_3.2.32_260812_arm64_01.deb")
-source_loong64=("https://qqdl.gtimg.cn/qqfile/QQNT/9.9.33/release/3f89efc5/QQ_3.2.32_260812_loongarch64_01.deb")
+source_x86_64=("https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.35/release/1763096b/QQ_3.2.33_260902_amd64_01.deb")
+source_aarch64=("https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.35/release/1763096b/QQ_3.2.33_260902_arm64_01.deb")
+source_loong64=("https://qqdl.gtimg.cn/qqfile/QQNTV2/9.9.35/release/1763096b/QQ_3.2.33_260902_loongarch64_01.deb")
 b2sums=('714b68e91bdb5a24b5d92e9dd94490b32e0fb136de840fc87331f91ec5517db491c49dcf3f376083f4be79ed9da8795f60c0de34fb95ea868ae6130004b02991'
          '4b91ac5dcab7b2f92084bab0c81573efcc00b4c2b006be7abb9d6a35bdfcfe640b3a48e79008a08534571598f17f999533941b1a0529531468d48a3d5fbb70df')
-b2sums_x86_64=('1185004eb2c9539bde5feea59c8902a2f6f997cb0d215918bfd8b16b26000c6425529ea7309c54659e1dc00e022f7afc4feea16237f21ab6995900479eab1054')
-b2sums_aarch64=('b39bfa2d8e25fd4f85e17011a474cccd8b55a4ea2beb4f8582bcf9b2f3b889d5c393979abdfde80e224cfa5d73a5cfe7f5895051177113c4b8d40999f737d92d')
-b2sums_loong64=('636ca3472f33ec170c8aa77de1405f973eb8c29fab1101828318266958ff1f988e11f7cfda89998bb4b7278c12d9d71ee5953d6f6b7a136e890effb53ffe6706')
+b2sums_x86_64=('6b853b0f110de61ea7661637d9cd120423c794c0a1431314762cb83769900d5c1935dd28e9bbcd1bdf4a266aa4e8b1ab7a2e8d6681df6250280a540560be0fb1')
+b2sums_aarch64=('c9b4caf81886b08d6cec8f9f40d0c54c5ed723d287f1c90f11fc61ca49959ee585e6f55b8d9711c5426f3f316dbae1c8d343b29ffb0216d99f3f1248863226e2')
+b2sums_loong64=('442870b54a2f071a2370a13bc3de8a1d677933e2678ad6b496516097e15efd1200e08c93d233fee87b3010b6dbb88f53a83625c4a1754f4e41307a7931860803')
 options=('!strip' '!debug')
 
 # QQ 的 deb 包下载需先经 im.qq.com 的 GetSign 签名，直接请求 qqdl.gtimg.cn 上的原始 URL 会被拒绝。
