@@ -65,6 +65,7 @@ After=network.target
 Type=simple
 ExecStart=/opt/CypherGate/cyphergated
 Restart=always
+KillMode=control-group
 
 User=root
 Group=cyphergate
