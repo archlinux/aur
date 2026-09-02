@@ -11,7 +11,7 @@ provides=(konform-browser)
 conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
-: ${_ffsrcvername:=140.14.0esr}
+: ${_ffsrcvername:=140.15.0esr}
 : ${_ffbuild:=1}
 : ${_lwrelver:=100}
 : ${_l10n_commit=5db0b9bd7b7bdb9a5671cc504da09caf65d5d3b1}
@@ -23,7 +23,7 @@ else
 fi
 _ffsrcver="${_ffsrcver%b*}"
 pkgver="${_srcver}.${_lwrelver}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -147,21 +147,21 @@ source=(
   "firefox-l10n-${_l10n_commit}.tar.gz"::"https://github.com/mozilla-l10n/firefox-l10n/archive/$_l10n_commit.tar.gz"
   "${__pkgname}.desktop"
   "default192x192.png"
-  "security-state--intermediates.zip::https://codeberg.org/konform-browser/source/releases/download/${_tag}/security-state--intermediates.zip"
+  "security-state--intermediates-${_tag}.zip::https://codeberg.org/konform-browser/source/releases/download/${_tag}/security-state--intermediates.zip"
   "0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
   "0002-Use-wasm32-wasip1-target.patch"
   "0003-update-rust-bindgen-to-fix-clang22-build.patch.xz"
   "0004-skia-m142-update.patch.xz"
   "0005-rust-1_98-compat.patch"
 )
-noextract=("security-state--intermediates.zip")
-sha256sums=('a964d5bc5fcecb35701396493dcdaad6ddbc6dffe80d17051e82b15178e8d5a9'
-            '28006bd454e703932e1ea804918165774a1e21478b18e551cd1b38111d664239'
+noextract=("security-state--intermediates-${_tag}.zip")
+sha256sums=('5a0229695e522b1da22dad9cc2a8522b2e68b2308e3a81a146c57f778cc0ee52'
+            '358bb03c550f95172f1e31694e4287da3411560df91e931cb25210efdf90e524'
             'SKIP'
             '50b9d366fb58a45ba7dd3949e08600f6bebf0ead86cc35e9c2f5c20b624de512'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
-            '724db1742a08265e82bfbdffd7ee3ea2d323dae0c4ef55bc3497e5c6d663f2eb'
+            '8d399a10e4ed10ea4b6ef4c9ab01e56d34d5482b48b284ce10b71aaaa8de3fd0'
             '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
             'baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba'
             '8f9b7458760b37766a73d4d2c0e93dc810e59d3844495b9d52b3b61dde59c05d'
@@ -195,7 +195,7 @@ prepare() {
   mv "../firefox-l10n-${_l10n_commit}" "${_srcdir}/lw/l10n"
 
   mkdir -p services/settings/dumps/security-state/intermediates/
-  mv ../security-state--intermediates.zip services/settings/dumps/security-state/intermediates/
+  mv "../security-state--intermediates-${_tag}.zip" services/settings/dumps/security-state/intermediates/security-state--intermediates.zip
   pushd services/settings/dumps/security-state/intermediates/
   sha512sum security-state--intermediates.zip > security-state--intermediates.zip.sha512sum
   popd
