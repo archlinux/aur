@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aionui
 _pkgname=AionUi
-pkgver=2.1.61
+pkgver=2.2.1
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -17,7 +17,9 @@ conflicts=("${pkgname}-bin")
 depends=(
     "electron${_electronversion}"
     'python'
-    'libsecret'
+    'nodejs'
+    'python-typing_extensions'
+    'python-packaging'
 )
 makedepends=(
     'bun'
@@ -31,7 +33,7 @@ source=(
     "${pkgname}-${pkgver}.tar.gz::${_ghurl}/archive/refs/tags/v${pkgver}.tar.gz"
     "${pkgname}.sh"
 )
-sha256sums=('cbf788ae0bcd75e80c691dcca0f918b168716ad7d56de7de511792ae13f06819'
+sha256sums=('d14b551a73d8b2992a1ee6d7a0be9ca5df7c390495e76904b353a25d34033753'
             'a774c2f54fbbeeaac3cefc0f7250796d30c86d27f0fd40b7eaf9c0fdb021623d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -83,6 +85,7 @@ prepare() {
         --exec="${pkgname} %U"
     _set_build_env
     _ensure_local_nvm
+    find packages -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname}\'/g" {} +
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     bun run postinstall || true
     bunx electron-builder install-app-deps
@@ -90,14 +93,31 @@ prepare() {
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     _set_build_env
-    _ensure_local_nvm   
-    bun run dist:linux
+    _ensure_local_nvm
+    
+    # Determine target architecture
+    if [[ "${CARCH}" == "x86_64" ]]; then
+        TARGET_ARCH="x64"
+    elif [[ "${CARCH}" == "aarch64" ]]; then
+        TARGET_ARCH="arm64"
+    else
+        TARGET_ARCH="x64"
+    fi
+    
+    bunx electron-vite build --config packages/desktop/electron.vite.config.ts
+    node scripts/build-mcp-servers.js
+    node -e "const { prepareAioncore } = require('./packages/shared-scripts/src/prepare-aioncore.js'); \
+        const { resolveAioncoreVersion } = require('./scripts/resolveAioncoreVersion.js'); \
+        prepareAioncore({ projectRoot: process.cwd(), platform: 'linux', arch: '${TARGET_ARCH}'});"
+    node scripts/prepareHubResources.js
+    bunx electron-builder --linux dir --"${TARGET_ARCH}" -c.electronDist="${ELECTRON_DIST}" --config packages/desktop/electron-builder.yml
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
     local _app_dir=$(_get_app_dir)
     cp -a "${_app_dir}/resources/"* "${pkgdir}/usr/lib/${pkgname}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname}/default_app.asar"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/resources/app.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
