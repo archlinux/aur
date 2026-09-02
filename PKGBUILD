@@ -6,7 +6,7 @@
 
 _pkgname="icecat"
 pkgname="$_pkgname-bin"
-pkgver=140.14.0
+pkgver=140.15.0
 pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://codeberg.org/jessienab/icecat-bin"
