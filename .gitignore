@@ -1,0 +1,8 @@
+*.deb
+*.log
+*.rpm
+*.pkg.tar.*
+*.src.tar.*
+install-linux.sh
+pkg/
+src/

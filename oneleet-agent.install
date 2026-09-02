@@ -1,0 +1,13 @@
+post_install() {
+  printf '\n'
+  printf '%s\n' '==> Manual action required: enable and start the Oneleet background service:'
+  printf '%s\n' '    sudo systemctl enable --now oneleet-daemon.service'
+  printf '\n'
+}
+
+post_upgrade() {
+  printf '\n'
+  printf '%s\n' '==> Manual action required: restart the Oneleet background service:'
+  printf '%s\n' '    sudo systemctl restart oneleet-daemon.service'
+  printf '\n'
+}
