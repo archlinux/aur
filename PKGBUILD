@@ -1,6 +1,6 @@
 # Maintainer: Emanuele Sparvoli <sparvoli@gmail.com>
 pkgname=openxlr
-pkgver=0.1.10
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Control suite and PipeWire submixer for Elgato XLR interfaces, with an OpenDeck plugin"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('swh-plugins: software ClipGuard for the XLR Dock'
             'opendeck: Stream Deck control through the bundled plugin')
 install=openxlr.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/emaspa/openxlr/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('839ea221edd45e12f56b2a73a80cecadb267638b1241db0a43f81d3e04c5f2bf')
+sha256sums=('589046f70c3e8565a4dd3306242d70039a22192970925fbc027e01a291478c35')
 
 build() {
   cd "$pkgname-$pkgver/src"
