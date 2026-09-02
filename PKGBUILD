@@ -9,7 +9,7 @@
 # -- that instance returns a 404 on anonymous fetches even for public
 # repos, confirmed on the now-archived scaffold-arch-package.
 pkgname=washy-washy-cli-bin
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="Turns a JSON chart of laundry piles into a phone PDF and a printable PDF"
 arch=('x86_64' 'aarch64')
@@ -54,9 +54,9 @@ source_aarch64=(
 # against that release's actual assets -- these are placeholders until
 # the first tagged release exists to compute them against.
 sha256sums_x86_64=('101f1455b4cf4ca7484b39ccc5e94f3ad59480478ba919c98c54587a475345ad'
-                   'fff1030cb4de40cfeccc2074dd27361b0bc244660d406b5e636acf58fb6d47ef')
-sha256sums_aarch64=('101f1455b4cf4ca7484b39ccc5e94f3ad59480478ba919c98c54587a475345ad'
-                    'fff1030cb4de40cfeccc2074dd27361b0bc244660d406b5e636acf58fb6d47ef')
+                    'b9a18e292c66e20fc41e7294d7dff1c4a600cd80a03d913a9404fcdc5614315d')
+sha256sums_aarch64=('61e2fbc99a2ee192f8511a320eb86e32e46bb1ca39405b3b019da6881ad4ca42'
+                    'b9a18e292c66e20fc41e7294d7dff1c4a600cd80a03d913a9404fcdc5614315d')
 
 # No LICENSE install: this PKGBUILD lives alone in the AUR git repo, with
 # nothing else from the upstream checkout beside it, and it isn't in
