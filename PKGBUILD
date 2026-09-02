@@ -6,7 +6,7 @@
 
 pkgname=unified-floppy-tool-git
 _pkgname=UnifiedFloppyTool
-pkgver=4.1.3.r100.g02297a0c
+pkgver=4.1.6.r153.gfe18ecd1
 #pkg_name_ver="${_pkgname}-${pkgver}"
 pkg_name_ver="${_pkgname}"
 pkgrel=1
@@ -14,7 +14,7 @@ pkgdesc="Toolkit for preserving and recovering vintage floppy disks - including 
 arch=('x86_64')
 url="https://github.com/Axel051171/UnifiedFloppyTool"
 license=('GPL-2.0-or-later')
-depends=('qt6-base' 'qt6-serialport' 'libglvnd' 'glibc' 'libgcc' 'libstdc++')
+depends=('qt6-base' 'qt6-serialport' 'libusb' 'libglvnd' 'glibc' 'libgcc' 'libstdc++')
 makedepends=()
 provides=("unified-floppy-tool")
 conflicts=("unified-floppy-tool")
