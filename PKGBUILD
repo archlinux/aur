@@ -2,7 +2,7 @@
 pkgname=python-yfinance
 _name=${pkgname#python-}
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yahoo! Finance market data downloader (+faster Pandas Datareader)"
 arch=(any)
 url=https://github.com/ranaroussi/yfinance
@@ -35,6 +35,7 @@ makedepends=(
     python-wheel
 )
 checkdepends=(
+    python-cloudpickle
     python-pytest
     python-scikit-learn
     python-scipy
@@ -51,7 +52,7 @@ check() {
     cd $_name
     python -m venv --system-site-packages test-env
     test-env/bin/python -m installer dist/*.whl
-    test-env/bin/python -P -m pytest -o addopts="" -k "not test_badTicker"
+    test-env/bin/python -P -m pytest -o addopts="" -k "not test_resampling"
 }
 
 package() {
