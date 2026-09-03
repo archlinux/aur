@@ -1,14 +1,19 @@
 pkgbase = resonanceid-cli
 	pkgdesc = Shazam-style audio fingerprinting CLI that identifies songs from song clips
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/rugbedbugg/ResonanceID-cli
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = alsa-lib
 	optdepends = ffmpeg: audio conversion for the import command
-	source = resonanceid-cli-1.0.0.tar.gz::https://github.com/rugbedbugg/ResonanceID-cli/archive/v1.0.0.tar.gz
-	sha256sums = 65ae505849ad38a05d5407daf0001187054a1a4ac33602f6ee6bd3f8fbf38f7e
+	options = !lto
+	options = !debug
+	source = resonanceid-cli-1.0.1.tar.gz::https://github.com/rugbedbugg/ResonanceID-cli/archive/v1.0.1.tar.gz
+	sha256sums = 8a1ed67e93ec3e2453c24db2e8739c4084d306d39f60a1f907cea0a7cf03ec17
 
 pkgname = resonanceid-cli
