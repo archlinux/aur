@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-math8
-pkgver=8.3.0
+pkgver=8.4.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -25,7 +25,7 @@ makedepends=(
 provides=("${_pkgbase}=${_pkgmaj}")
 conflicts=("${_pkgbase}")   # Ruby bindings are unversioned and conflicts (ruby/gz/math.so)
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('011012d3c5108b07584744b82a1c6e81c152fd64b4b585bc98cd95101d36f8a8')
+sha256sums=('36002123cd6383bf70309f744571a1d70c699d2c0af16446d4f81f4e20623736')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
