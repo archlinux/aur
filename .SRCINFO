@@ -35,7 +35,7 @@ pkgbase = polland-de-basic
 	depends = wl-clipboard
 	provides = polland-de
 	conflicts = polland-de
-	source = git+https://github.com/Pol-Jak-295/PolLand.git
+	source = git+https://github.com/Pol-Jak-295/polland.git
 	sha256sums = SKIP
 
 pkgname = polland-de-basic
