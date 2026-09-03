@@ -4,7 +4,7 @@
 # .github/workflows/release.yml on every non-prerelease GitHub release. Edit the
 # render script rather than this file; CI overwrites it on the next release.
 pkgname=geolibre-bin
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Lightweight, cloud-native GIS platform for visualizing and analyzing geospatial data"
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('geolibre')
 conflicts=('geolibre')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::https://github.com/opengeos/GeoLibre/releases/download/v${pkgver}/GeoLibre.Desktop_${pkgver}_amd64.deb")
-sha256sums=('212a16cdb12c405dcd87d93907cff023ca14d8abc039c59cb0ae6b1c1a691cb6')
+sha256sums=('bda214a912773675736517d3c7031cdef18263aeb007e437dc69ce6fa8258a4b')
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
