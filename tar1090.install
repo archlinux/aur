@@ -1,0 +1,16 @@
+post_install() {
+    cat <<'MSG'
+tar1090 reads dump1090's JSON from /run/dump1090 (SOURCE_DIR in /etc/default/tar1090).
+To serve it:
+  1. lighttpd: add to /etc/lighttpd/lighttpd.conf
+       server.modules += ("mod_alias", "mod_redirect", "mod_setenv")
+       include "conf.d/tar1090.conf"
+     nginx: include /usr/share/doc/tar1090/nginx-tar1090.conf in your server {} block.
+  2. systemctl enable --now tar1090   (track history; the map works without it)
+Web interface: http://<host>/tar1090/
+MSG
+}
+
+post_upgrade() {
+    systemctl try-restart tar1090.service 2>/dev/null || true
+}
