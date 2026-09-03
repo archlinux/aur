@@ -1,0 +1,12 @@
+pkgbase = galleon-bin
+	pkgdesc = Provisioning tool designed to create and maintain software distributions that consist of one or more products
+	pkgver = 7.0.10
+	pkgrel = 1
+	url = https://github.com/wildfly/galleon
+	arch = x86_64
+	license = custom
+	depends = java-runtime>=25
+	source = https://github.com/wildfly/galleon/releases/download/7.0.10.Final/galleon-7.0.10.Final.zip
+	sha256sums = 5723246fb4b38aced727d48a2ed8f191f8b2a5816bcf58937746418e3db0b3d6
+
+pkgname = galleon-bin
