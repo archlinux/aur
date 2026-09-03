@@ -10,6 +10,7 @@ pkgbase = portage-manifest
 	depends = pacman
 	depends = yay
 	depends = flatpak
+	provides = portage-manifest
 	source = portage-manifest-1.0.2.tar.gz::https://github.com/Pol-Jak-295/portage-manifest/archive/refs/tags/v1.0.2.tar.gz
 	source = portage-manifest.desktop
 	sha256sums = SKIP

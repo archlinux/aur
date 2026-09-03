@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Pol-Jak-295/portage-manifes
         "$pkgname.desktop")
 sha256sums=('SKIP'
             'SKIP')
-
+	    provides=("portage-manifest")
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   npm install
