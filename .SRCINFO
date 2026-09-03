@@ -1,7 +1,7 @@
 pkgbase = paseo-desktop-bin
 	pkgdesc = One interface for all your Claude Code, Codex and OpenCode agents.
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://paseo.sh
 	arch = x86_64
 	license = AGPL-3.0-only

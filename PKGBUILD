@@ -1,7 +1,7 @@
 # Maintainer: huochenghai <huochenghai@gmail.com>
 pkgname="paseo-desktop-bin"
 pkgver="0.7.2"
-pkgrel=1
+pkgrel=2
 pkgdesc="One interface for all your Claude Code, Codex and OpenCode agents."
 arch=("x86_64")
 url="https://paseo.sh"
@@ -22,4 +22,7 @@ package() {
         cd $srcdir
         cp -R usr ${pkgdir}
         cp -R opt ${pkgdir}
+	
+        install -d "$pkgdir/usr/bin"
+        ln -s /opt/Paseo/resources/bin/paseo "$pkgdir/usr/bin/paseo"
 }
