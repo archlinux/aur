@@ -5,7 +5,7 @@ _gitname="CmdBox"
 _gitexec="cb"
 
 pkgname=${_gitname,,}
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A cross-platform command manager for terminal workflows"
 
@@ -25,7 +25,7 @@ depends=('python' 'python-peewee' 'python-rich' 'python-psutil' 'python-tomlkit'
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b4de21d061d489d73e75d96eb4c9c720c2deec3c0d6012fa56719ba84621a144')
+sha256sums=('dc53126622a498ea127e98b4db37812581850e83034134c255ac73bac38d84f7')
 
 prepare() {
     cd "${srcdir}/${_pypi_package//-/_}-${_pypi_version}/" || exit
