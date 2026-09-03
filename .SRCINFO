@@ -1,6 +1,6 @@
 pkgbase = python-bflb-mcu-tool-uart
 	pkgdesc = Bouffalolab Mcu Tool uart
-	pkgver = 1.10.0
+	pkgver = 1.10.1
 	pkgrel = 1
 	url = https://pypi.org/project/bflb-mcu-tool-uart
 	arch = any
@@ -19,9 +19,15 @@ pkgbase = python-bflb-mcu-tool-uart
 	depends = python-portalocker
 	optdepends = python-bflb-flash-command-uart: Bouffalolab Flash Command Tool
 	optdepends = python-bflb-fw-post-proc: Bouffalolab Firmware Post Proc
+	optdepends = python-bflb-mcu-tool: BOUFFALOLAB MCU TOOL
 	optdepends = python-bflb-iot-tool: BOUFFALOLAB IOT TOOL
+	optdepends = python-bflb-iot-tool-uart: Bouffalolab Mcu Tool uart
+	provides = python-bflb-mcu-tool
+	provides = bflb-mcu-tool-uart
+	conflicts = python-bflb-mcu-tool
+	conflicts = bflb-mcu-tool-uart
 	options = !strip
-	source = bflb-mcu-tool-uart-1.10.0.tar.gz::https://files.pythonhosted.org/packages/source/b/bflb-mcu-tool-uart/bflb-mcu-tool-uart-1.10.0.tar.gz
-	sha256sums = d98dce1d9900c3410bd65aa7dde8ef78511bc8807041de3237e4d7abf008c07c
+	source = bflb-mcu-tool-uart-1.10.1.tar.gz::https://files.pythonhosted.org/packages/source/b/bflb-mcu-tool-uart/bflb-mcu-tool-uart-1.10.1.tar.gz
+	sha256sums = ecbc935688486d8fa61c6c1c85a26ff6ccd2fc461b719b9bbcae9537957665a4
 
 pkgname = python-bflb-mcu-tool-uart
