@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-nlopt
 	pkgdesc = nonlinear optimization library (mingw-w64)
 	pkgver = 2.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ab-initio.mit.edu/wiki/index.php/NLopt
 	arch = any
 	license = LGPL

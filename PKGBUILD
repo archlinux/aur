@@ -1,6 +1,6 @@
 pkgname=mingw-w64-nlopt
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="nonlinear optimization library (mingw-w64)"
 arch=(any)
 url="http://ab-initio.mit.edu/wiki/index.php/NLopt"
