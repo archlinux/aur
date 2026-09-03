@@ -1,7 +1,7 @@
 # Maintainer: Radon Rosborough <radon@radian.codes>
 
 pkgname=signal-export
-pkgver=3.9.2
+pkgver=3.9.3
 pkgrel=1
 pkgdesc='Export your Signal chats to markdown files with attachments'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
     'python-emoji<3.0'
     'python-markdown>=3.8.1'
     'python-markdown<4.0'
-    'python-typer>=0.12.1'
+    'python-typer>=0.16.0'
     'python-pycryptodome>=3.20'
     'python-pycryptodome<4.0'
     'python-sqlcipher3>=0.5.4'
@@ -25,7 +25,7 @@ depends=(
 makedepends=(python-build python-installer python-pdm-backend)
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('749af20fd848ffa35dadd62e50064cab3180ed774d62c06b89b41669ddc89b6a')
+sha256sums=('decb59e547cc1f6fbc23f2577e63c820f501cea240af58384c7add1acce5ce2c')
 
 check() {
     cd $pkgname-$pkgver
