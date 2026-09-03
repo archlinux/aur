@@ -1,6 +1,6 @@
 pkgbase = hyprmural-git
 	pkgdesc = Per-workspace wallpaper tool for Hyprland (multi-output, layer-shell, GLES2)
-	pkgver = r21.a04f2ef
+	pkgver = r22.8584d02
 	pkgrel = 1
 	url = https://github.com/fnrhombus/hyprmural
 	arch = x86_64
