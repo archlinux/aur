@@ -1,6 +1,6 @@
 pkgbase = fygram-bin
 	pkgdesc = Desktop music player that indexes and plays audio from your Telegram channels
-	pkgver = 0.3.1
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/amoyrlet-tg/fygram
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = fygram-bin
 	conflicts = fygram
 	options = !strip
 	options = !debug
-	source = fygram-arch-installer-0.3.1.tar.gz::https://github.com/amoyrlet-tg/fygram/releases/download/v0.3.1/fygram-arch-installer.tar.gz
-	sha256sums = f9b370348efbd2e31808e901e264f447a464baf7d0d736bb0eb45e29fde242a3
+	source = fygram-arch-installer-0.4.0.tar.gz::https://github.com/amoyrlet-tg/fygram/releases/download/v0.4.0/fygram-arch-installer.tar.gz
+	sha256sums = 711c751583b024389ff5c83f3e91e6d5e49227d3fd9c0fbf598b35bfcf8179bc
 
 pkgname = fygram-bin
