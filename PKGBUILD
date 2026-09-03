@@ -13,7 +13,11 @@ sha512sums=('aee33de6696794f4a6de095227b2dce9cb4633a222b499cc87469a7a62c09e6a0f4
 
 build() {
     cd "$pkgname-$pkgver"
-    go build -trimpath -ldflags "-buildid= -s -w" -o age-plugin-sshagent .
+
+    go build \
+        -trimpath \
+        -ldflags="-buildid= -s -w" \
+        -o age-plugin-sshagent .
 }
 
 check() {
