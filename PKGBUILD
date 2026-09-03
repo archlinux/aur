@@ -1,6 +1,6 @@
 # Maintainer: Teez <dmedoro13@gmail.com>
 pkgname=crux-shell-git
-pkgver=r1.0000000
+pkgver=r128.c38d19c
 pkgrel=1
 pkgdesc="A personal QuickShell desktop shell for Hyprland"
 arch=('any')
@@ -56,7 +56,10 @@ package() {
   local dest="$pkgdir/etc/xdg/quickshell/crux"
   install -dm755 "$dest"
 
-  cp -r shell.qml Commons Modules Assets bin "$dest/"
+  # Every top-level QML module directory has to be listed here. Missing one
+  # doesn't fail the build — it fails at runtime, on the user's machine,
+  # with `module "qs.<Name>" is not installed`.
+  cp -r shell.qml Commons Modules Widgets Assets bin "$dest/"
 
   # bin/ holds a couple of Python/bash helper scripts crux shells out to
   # (matugen post-hooks, wallpaper-picker glue) — keep them executable.
