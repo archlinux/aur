@@ -1,0 +1,13 @@
+pkgbase = age-plugin-sshagent
+	pkgdesc = age plugin deriving X25519 identities from deterministic ssh-agent signatures
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/eszio/age-plugin-sshagent
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = go
+	depends = glibc
+	source = age-plugin-sshagent-0.1.1.tar.gz::https://github.com/eszio/age-plugin-sshagent/archive/refs/tags/v0.1.1.tar.gz
+	sha512sums = aee33de6696794f4a6de095227b2dce9cb4633a222b499cc87469a7a62c09e6a0f46a1a911b9ef11182280935c67990137771db02b118f696387564f84dd65e4
+
+pkgname = age-plugin-sshagent
