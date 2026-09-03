@@ -5,7 +5,7 @@
 _pkgname=eden
 pkgname=$_pkgname-git
 epoch=1
-pkgver=0.2.0.r273.g858f9e5
+pkgver=0.2.0.r276.g1dcc574
 pkgrel=1
 pkgdesc="Nintendo Switch emulator forked from yuzu."
 arch=('x86_64' 'aarch64')
@@ -13,10 +13,10 @@ url=https://eden-emulator.github.io/
 license=('GPL-3.0-or-later')
 provides=('eden')
 conflicts=('eden' 'eden-beta' 'eden-bin' 'eden-preview-bin')
-depends=('libusb' 'libva' 'qt6-webengine' 'brotli' 'qt6-charts' 'hicolor-icon-theme'
-	'qt6-base' 'sdl3' 'quazip-qt6' 'qt6-multimedia' 'fmt' 'boost-libs' 'opus' 'libdrm'
-	'enet' 'cubeb' 'game-devices-udev' 'zlib' 'openssl' 'libx11' 'libgcc'
-	'libstdc++' 'lz4' 'glibc' 'zstd' 'cpp-jwt'
+depends=('libusb' 'qt6-webengine' 'brotli' 'qt6-charts' 'hicolor-icon-theme'
+	'qt6-base' 'sdl3' 'quazip-qt6' 'qt6-multimedia' 'fmt' 'boost-libs' 'opus'
+	'enet' 'cubeb' 'game-devices-udev' 'zlib' 'openssl' 'libgcc'
+	'libstdc++' 'lz4' 'glibc' 'zstd' 'ffmpeg'
 )
 makedepends=('git' 'cmake' 'catch2' 'boost' 'spirv-headers' 'vulkan-headers'
 	     'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'gamemode'
@@ -29,13 +29,17 @@ pkgver() {
 	cd "$_pkgname"
 	git describe --long --tags --abbrev=7 | sed 's/^v//;s/-\(rc[0-9]*\)/\1/;s/\([^-]*-g\)/r\1/;s/-/./g;s/.git//'
 }
+
 build() {
 	cd "$srcdir"
+	export CFLAGS="${CFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}"
+	export CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}"
 	cmake -B build -S $_pkgname -GNinja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=None \
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
+		-DYUZU_USE_BUNDLED_SDL3=OFF \
 		-DDiscordRPC_FORCE_BUNDLED=ON \
 		-DYUZU_USE_BUNDLED_QT=OFF \
 		-Dxbyak_FORCE_BUNDLED=ON \
