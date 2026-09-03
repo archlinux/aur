@@ -1,0 +1,17 @@
+pkgbase = omniorb-bin
+	pkgdesc = A CORBA object request broker for C++ and Python. (precompiled)
+	pkgver = 4.3.4
+	pkgrel = 1
+	url = http://omniorb.sourceforge.net/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
+	depends = python
+	depends = zstd
+	provides = omniorb
+	conflicts = omniorb
+	options = !debug
+	source = https://github.com/tubbywrestler/omniorb-bin/releases/download/4.3.4-1/omniorb-4.3.4-1-x86_64.pkg.tar.zst
+	sha256sums = 881f3851d68bc4e9c703d13edee13910ac79d9037b6e97f03879ce01c58f4a37
+
+pkgname = omniorb-bin
