@@ -3,7 +3,7 @@
 
 _pkgname='docling-ibm-models'
 pkgname="python-${_pkgname}"
-pkgver='4.0.1'
+pkgver='4.0.2'
 pkgrel=1
 pkgdesc='AI models used by the Docling PDF conversion package'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
 	'python-pillow>=10.0.0'
 	'python-huggingface-hub>=0.23.0'
 	'python-safetensors>=0.4.3'
-	'python-transformers>=5.4.0'
+	'python-transformers>=4.42.0'
 	'python-numpy>=1.24.4'
 )
 conflicts=('python-transformers=5.13.0')
@@ -29,7 +29,7 @@ makedepends=(
 checkdepends=('python-pytest')
 optdepends=('python-opencv>=4.6.0: legacy TableFormer image preprocessing')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('c0185c9bbc4d172c30635a6eabdfea1e6c77a0ba0264fea3714ebf26475b20adc19ded7c8aae739c78338e2fd48730fbf0407c350bd7e07c5b61068268ff60aa')
+b2sums=('e4e1e743e7178e5474d1dcfd2c46d01b0a6404b4c54449730ca46f24ca4147fd1f13b748c83c97fd0783378b5ee775bd2ed252406d4ac464833f6bd808260d53')
 
 build() {
 	cd -- "${_pkgname}-${pkgver}" || return 1
