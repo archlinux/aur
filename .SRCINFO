@@ -1,0 +1,21 @@
+pkgbase = graphs1090-git
+	pkgdesc = Graphs for dump1090: message rate, aircraft, range, signal, gain, CPU and temperature over time
+	pkgver = 1.0.1.r462.g426c70c
+	pkgrel = 1
+	url = https://github.com/wiedehopf/graphs1090
+	install = graphs1090.install
+	arch = any
+	license = MIT
+	depends = bash
+	depends = collectd
+	depends = rrdtool
+	depends = python
+	depends = dump1090
+	optdepends = lighttpd: serve the web interface
+	optdepends = nginx: serve the web interface
+	backup = etc/default/graphs1090
+	backup = etc/lighttpd/conf.d/graphs1090.conf
+	source = graphs1090::git+https://github.com/wiedehopf/graphs1090.git
+	sha256sums = SKIP
+
+pkgname = graphs1090-git

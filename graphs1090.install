@@ -1,0 +1,18 @@
+post_install() {
+    cat <<'MSG'
+graphs1090 collects through collectd and reads dump1090's stats from /run/dump1090. To finish:
+  1. cp /usr/share/graphs1090/collectd.conf /etc/collectd.conf
+  2. lighttpd: add to /etc/lighttpd/lighttpd.conf
+       server.modules += ("mod_alias", "mod_redirect", "mod_setenv")
+       include "conf.d/graphs1090.conf"
+     nginx: include /usr/share/doc/graphs1090/nginx-graphs1090.conf in your server {} block.
+  3. systemctl enable --now collectd graphs1090
+Optional: /usr/share/graphs1090/malarky.sh keeps the RRD files in RAM and flushes them when collectd
+stops, sparing the SD card; it schedules a nightly collectd restart through cron.d, which needs cronie.
+Graphs: http://<host>/graphs1090/  (first data after about 10 minutes)
+MSG
+}
+
+post_upgrade() {
+    systemctl try-restart graphs1090.service 2>/dev/null || true
+}
