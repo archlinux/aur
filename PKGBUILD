@@ -2,7 +2,7 @@
 # Contributor: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname=goenv
-pkgver=3.1.5
+pkgver=3.1.7
 pkgrel=1
 pkgdesc="Like pyenv and rbenv, but for Go."
 license=(MIT)
@@ -12,7 +12,7 @@ depends=(bash)
 makedepends=(go)
 checkdepends=(git)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('5d07fea064fd237b6a8ce1bfbc287af5f93f721c657643c205baacb2713788da')
+sha256sums=('69c65764e3e3f320656a740e2bb4a8a17b433ed46d0c6bbc4c2afb4914e19f75')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
