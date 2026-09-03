@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey+aur@gmail.com>
 
 pkgname=tailcat
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="like netcat, but over Tailscale's data plane, without Tailscale's control plane"
 url='https://github.com/tailscale/tailcat'
@@ -10,7 +10,7 @@ license=(BSD-3-Clause)
 depends=(glibc)
 makedepends=(go)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f3e87753aa45f8be249a2708a4220748fd8613f9ea0d0435a48ffedf8d724247')
+sha256sums=('a2177d257ac7a02d8ba0fdfcfa341113d97ea0cf7597dbb0fff851d8c341d8e9')
 
 prepare() {
   cd "${pkgname}-${pkgver}/cmd/$pkgname"
