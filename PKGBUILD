@@ -44,9 +44,12 @@ options=(!debug)
 # List of maintainer pubkeys, see https://github.com/lightningnetwork/lnd/tree/master/scripts/keys
 validpgpkeys=(
     '9FC6B0BFD597A94DBF09708280E5375C094198D8' # bhandras
+    'BCEE34B0F9CD832214CE53005EA98470361ACB4F' # boris
     '15E7ECF257098A4EF91655EB4CA7FE54A6213C91' # carlaKC
     '26984CB69EB8C4A26196F7A4D7D916376026F177' # ellemouton
     'C97AAA1470F979878F7A6DEDC3440ACF100A33B4' # ffranr
+    '1583B601BB57CC7CD2DF8A87E08DEA9B12B66AF6' # georgetsagk
+    '7530B54D5E45A68760E68926019A44857735FD20' # gijswijs
     'F4FC70F07310028424EFC20A8E4256593F177720' # guggero
     '32F7EA1E7A0339F7D37164B9F82D456EA023C9BF' # hieblmi
     '5295A477FFC8064D7057B191FA7E65C951F12439' # proofofkeags
@@ -70,9 +73,12 @@ prepare() {
 
     maintainers=(
         'bhandras'
+        'boris'
         'carlaKC'
         'ellemouton'
         'ffranr'
+        'georgetsagk'
+        'gijswijs'
         'guggero'
         'hieblmi'
         'proofofkeags'
