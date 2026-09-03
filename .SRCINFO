@@ -1,6 +1,6 @@
 pkgbase = gz-physics9
 	pkgdesc = Abstract physics interface designed to support simulation and rapid development of robot applications.
-	pkgver = 9.4.0
+	pkgver = 9.5.1
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-physics
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = gz-physics9
 	depends = bullet
 	depends = libdart
 	provides = gz-physics=9
-	source = https://github.com/gazebosim/gz-physics/archive/gz-physics9_9.4.0.tar.gz
-	sha256sums = 31f2b4862590c1133fc8ca55efe019477c0bc51cc6a13d0a820a94162ba012ff
+	source = https://github.com/gazebosim/gz-physics/archive/gz-physics9_9.5.1.tar.gz
+	sha256sums = ce1c1aa9677dae333008789e2cd00c76e1a8841903d2cb4b49fc0347337425d3
 
 pkgname = gz-physics9
