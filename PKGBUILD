@@ -1,7 +1,7 @@
 # Maintainer: czyt <czytcn@gmail.com>
 
 pkgname=minke-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Minke desktop agent powered by DeepSeek Harness"
 arch=('x86_64')
@@ -53,7 +53,7 @@ options=('!debug' '!strip')
 _deb="Minke-linux-x64-${pkgver}.deb"
 source=("${_deb}::https://github.com/lencx/Minke/releases/download/v${pkgver}/Minke-linux-x64.deb")
 noextract=("${_deb}")
-sha256sums=('5d1a55b984c591f396b5a41e23786ea9ca05f20b3faab405de073378e42265f9')
+sha256sums=('82976388514b9f2da6fa28415adb05d8ed2a3638b13fa6dfc0e255e96bdaccfe')
 
 package() {
   local data_archive
