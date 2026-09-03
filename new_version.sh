@@ -12,6 +12,7 @@ if curl --fail "https://git.sr.ht/~aeldit/aeosd/archive/$FILE" -o "$FILE"; then
     CHECKSUM=$(sha256sum "$FILE" | cut -d' ' -f1)
     # Update PKGBUILD's contents
     sed -i "4s/.*/pkgver=$1/" PKGBUILD
+    sed -i "5s/.*/pkgrel=1/" PKGBUILD
     sed -i "16s/.*/sha256sums=(\"$CHECKSUM\")/" PKGBUILD
     makepkg --printsrcinfo >.SRCINFO
     rm "$FILE"
