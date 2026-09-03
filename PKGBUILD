@@ -4,7 +4,7 @@
 pkgname=mpv-anime-build
 _pkgname=mpv-anime-build
 pkgver=5.2
-pkgrel=1
+pkgrel=3
 pkgdesc="Advanced MPV configuration build optimized for anime and high-quality video playback"
 arch=('any')
 url="https://github.com/Chinna95P/mpv-anime-build"
@@ -14,6 +14,7 @@ optdepends=(
   'yt-dlp: for streaming and downloading YouTube/web videos'
   'ffmpeg: for video filtering and thumbnail cache support'
   'vapoursynth: for advanced frame interpolation and filtering'
+  'svp: for SmoothVideo Project 4 (SVP4) motion interpolation'
 )
 provides=('mpv-anime-build')
 conflicts=('mpv-anime-build')
