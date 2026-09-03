@@ -1,6 +1,6 @@
 pkgbase = khushu-bin
 	pkgdesc = An all-in-one Muslim app for Linux (prebuilt binary)
-	pkgver = 1.3.2
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://github.com/sniper1720/khushu
 	arch = x86_64
@@ -12,12 +12,12 @@ pkgbase = khushu-bin
 	depends = gcc-libs
 	depends = alsa-lib
 	optdepends = xdg-desktop-portal: autostart portal support
-	provides = khushu=1.3.2
+	provides = khushu=1.3.4
 	conflicts = khushu
 	options = !debug
-	source_x86_64 = khushu_1.3.2_amd64.deb::https://github.com/sniper1720/khushu/releases/download/v1.3.2/khushu_1.3.2_amd64.deb
-	sha256sums_x86_64 = 43325d9764a4cc1c88e7ac9586a2d440813a95518eaeb40739f4a307aff78813
-	source_aarch64 = khushu_1.3.2_arm64.deb::https://github.com/sniper1720/khushu/releases/download/v1.3.2/khushu_1.3.2_arm64.deb
-	sha256sums_aarch64 = ca8cee239eb773bd649739d3e737c3dc47ec0559d8969470503d8d04442387db
+	source_x86_64 = khushu_1.3.4_amd64.deb::https://github.com/sniper1720/khushu/releases/download/v1.3.4/khushu_1.3.4_amd64.deb
+	sha256sums_x86_64 = 60d65cd9f3055815e4b4c12aba6cd4306b83ceaed27f3b5001b1b63568172c9d
+	source_aarch64 = khushu_1.3.4_arm64.deb::https://github.com/sniper1720/khushu/releases/download/v1.3.4/khushu_1.3.4_arm64.deb
+	sha256sums_aarch64 = 80e37ee37e85bf5750221d6ee69deb70df3885e0981f35fbd6e3d453dd49c4e1
 
 pkgname = khushu-bin
