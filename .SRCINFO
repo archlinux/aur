@@ -1,6 +1,6 @@
 pkgbase = python-xhtml2pdf
 	pkgdesc = A library for converting HTML into PDFs using ReportLab
-	pkgver = 0.2.17
+	pkgver = 0.2.18
 	pkgrel = 1
 	url = https://github.com/xhtml2pdf/xhtml2pdf
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = python-xhtml2pdf
 	depends = python-reportlab
 	depends = python-svglib
 	depends = python-typing_extensions
-	source = python-xhtml2pdf-0.2.17.tar.gz::https://files.pythonhosted.org/packages/source/x/xhtml2pdf/xhtml2pdf-0.2.17.tar.gz
-	sha256sums = 09ddbc31aa0e38a16f2f3cb73be89af5f7c968c17a564afdd685d280e39c526d
+	source = python-xhtml2pdf-0.2.18.tar.gz::https://files.pythonhosted.org/packages/source/x/xhtml2pdf/xhtml2pdf-0.2.18.tar.gz
+	sha256sums = 2e1a8ec7a060497deaaeb87a607bdf1e6a23f69bb16edb25937b081b3aedd059
 
 pkgname = python-xhtml2pdf
