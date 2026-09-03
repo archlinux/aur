@@ -1,5 +1,4 @@
 [openshot]
-source = "github"
-github = "OpenShot/openshot-qt"
+source = "git"
+git = "https://github.com/OpenShot/openshot-qt.git"
 prefix = "v"
-use_max_tag = true
