@@ -6,10 +6,10 @@
  
 pkgname=thunderbird-esr-bin
 _pkgname=thunderbird
-pkgver=140.14.1
+pkgver=153.2.0
 pkgrel=1
 pkgdesc="Standalone Mail/News reader - binary version"
-arch=('x86_64' 'pentium4' 'i686')
+arch=('x86_64')
 url="https://www.mozilla.org/thunderbird"
 license=('GPL' 'LGPL' 'MPL')
 depends=('dbus-glib' 'gtk3' 'libxt' 'nss')
@@ -17,7 +17,7 @@ optdepends=('hunspell: Spell checking'
             'hyphen: Hyphenation'
             'libcanberra: Sound support')
 provides=("thunderbird=$pkgver")
-conflicts=('thunderbird' 'thunderbird-bin')
+conflicts=('thunderbird' 'thunderbird-bin' 'thunderbird-esr140-bin')
 install=$pkgname.install
 options=(!strip !debug)
 source=(
@@ -29,23 +29,11 @@ source_x86_64=(
   thunderbird-${pkgver}esr-x86_64.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-x86_64/en-US/thunderbird-${pkgver}esr.tar.xz
   thunderbird-${pkgver}esr-x86_64.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-x86_64/en-US/thunderbird-${pkgver}esr.tar.xz.asc
 )
-source_pentium4=(
-  thunderbird-${pkgver}esr-pentium4.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.xz
-  thunderbird-${pkgver}esr-pentium4.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.xz.asc
-)
-source_i686=(
-  thunderbird-${pkgver}esr-i686.tar.xz::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.xz
-  thunderbird-${pkgver}esr-i686.tar.xz.asc::https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}esr/linux-i686/en-US/thunderbird-${pkgver}esr.tar.xz.asc
-)
 
 sha512sums=('510ac3042dffcaf40938047906f3beaf6d51f4d64e65ab302abe11e6a6018289a62586ee7b162ca6b587bd7390efe453f17919fcdbb940590334bc72c9d292b6'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_x86_64=('06dc713d814dbefe7101768e2b6e46cd7e37ebd546b821bb9af744c084cb907457f7fdbc80d7cf23eb68517de55aace0431a5126a8eb0120919c1445ee61f9f5'
+sha512sums_x86_64=('b301e20b68ed44dbb8a1ffafb37a52e68c9fb8a5407ecd2a3e78b3af5339b2a14c0883ccc9a09f245a52647e9308db4a1b65c6d63fe39440af71fb493845ce31'
                    'SKIP')
-sha512sums_pentium4=('954819ebff3f7937c2fa119b5ae334465a882ded03f970b4c2f1383cef66f8f3b0f176bb0476572d43a356c6937e48ea240f71e6e6f6014534550719ff03f41a'
-                     'SKIP')
-sha512sums_i686=('954819ebff3f7937c2fa119b5ae334465a882ded03f970b4c2f1383cef66f8f3b0f176bb0476572d43a356c6937e48ea240f71e6e6f6014534550719ff03f41a'
-                 'SKIP')
 
 validpgpkeys=(14F26682D0916CDD81E37B6D61B7B526D98F0353) # Mozilla Software Releases <release@mozilla.com>
 
