@@ -271,6 +271,19 @@ package() {
     find "$pkgdir/usr/share/voxtype/quickshell" -type f -exec chmod 644 {} +
     find "$pkgdir/usr/share/voxtype/quickshell" -type d -exec chmod 755 {} +
 
+    # OSD style packages and recipes. The style resolver searches
+    # /usr/share/voxtype/osd/<name> after the user paths, so shipping the
+    # example packages gives [osd] style = "<name>" something to resolve out
+    # of the box; a user copy in ~/.config or ~/.local/share still shadows
+    # them. Whole trees from the same source tarball, no extra sources.
+    install -d "$pkgdir/usr/share/voxtype/osd" "$pkgdir/usr/share/voxtype/osd-recipes"
+    cp -a "$srcdir/voxtype-$pkgver/examples/osd-packages/." "$pkgdir/usr/share/voxtype/osd/"
+    find "$pkgdir/usr/share/voxtype/osd" -type f -exec chmod 644 {} +
+    find "$pkgdir/usr/share/voxtype/osd" -type d -exec chmod 755 {} +
+    cp -a "$srcdir/voxtype-$pkgver/examples/osd-recipes/." "$pkgdir/usr/share/voxtype/osd-recipes/"
+    find "$pkgdir/usr/share/voxtype/osd-recipes" -type f -exec chmod 644 {} +
+    find "$pkgdir/usr/share/voxtype/osd-recipes" -type d -exec chmod 755 {} +
+
     # Desktop entry for the TUI configure command, surfaced in walker/rofi/fuzzel/etc.
     # The launcher discovers a terminal emulator and runs `voxtype configure` inside it.
     install -Dm755 "$srcdir/voxtype-configure-launcher-$pkgver" \
