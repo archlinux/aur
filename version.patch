@@ -1,0 +1,10 @@
+--- timewarrior-jirapush-v0.6.0.org/Cargo.toml	2025-04-01 20:46:26.000000000 +0200
++++ timewarrior-jirapush-v0.6.0/Cargo.toml	2025-08-15 10:06:42.070675848 +0200
+@@ -1,6 +1,6 @@
+ [package]
+ name = "timewarrior_jirapush"
+-version = "0.5.0"
++version = "0.6.0"
+ authors = ["Forest Ames <fox.ames@t7c.dev>"]
+ edition = "2021"
+ description = "TimeWarrior-JiraPush is a configurable TimeWarrior Extension that uploads timewarrior intervals to Jira as work logs."

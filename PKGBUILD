@@ -14,20 +14,30 @@ optdepends=(
 )
 source=(
   "${pkgname}-v${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz"
+  "timeout.patch"
+  "version.patch"
 )
 
-sha512sums=('42ea4864bde80e890d625db5c15d5f7529f77ee0901609615a47fa242befbabf092666f10ae71ec83b822b528b24898565560ab833376b2dd9b16c652ac36740')
+sha512sums=('42ea4864bde80e890d625db5c15d5f7529f77ee0901609615a47fa242befbabf092666f10ae71ec83b822b528b24898565560ab833376b2dd9b16c652ac36740'
+            '79b04a3bfdd88a317d906fc17f15f85a12d8ea4cf77d8acd18a0efc556c8c500562f79c949894ddcc901d8ba13c5a3099a9711859c98b8a644fbe0fd91d9b2de'
+            '40cadf2eea7c52e3c244572c9c161ed4574463c4998c08ff0b01a00a16deff3d895ac2c2321899c7cafb3738d6a3f7a1c38f936e69e194bbc4f31fff57e9255a')
+
+prepare() {
+  cd "${pkgname}-v${pkgver}"
+  patch -p1 < ../timeout.patch
+  patch -p1 < ../version.patch
+}
 
 build() {
   cd "${pkgname}-v${pkgver}"
 
-  cargo build --release --locked
+  cargo build --release
 }
 
 check() {
   cd "${pkgname}-v${pkgver}"
 
-  cargo test --release --locked
+  cargo test --release
 }
 
 package() {

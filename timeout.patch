@@ -1,0 +1,48 @@
+diff -Nur timewarrior-jirapush-v0.6.0.org/src/jira.rs timewarrior-jirapush-v0.6.0/src/jira.rs
+--- timewarrior-jirapush-v0.6.0.org/src/jira.rs	2025-04-01 20:46:26.000000000 +0200
++++ timewarrior-jirapush-v0.6.0/src/jira.rs	2025-08-15 21:48:17.491867506 +0200
+@@ -2,6 +2,7 @@
+ use reqwest::header;
+ use reqwest::{Client, RequestBuilder, Response};
+ use serde::{Deserialize, Serialize};
++use std::time::Duration;
+ 
+ /// Jira instance connection information
+ #[derive(Clone, Debug)]
+@@ -9,6 +10,7 @@
+     pub user: String,
+     pub token: String,
+     pub is_pat: bool,
++    pub timeout: Duration,
+     pub instance_url: String,
+ }
+ 
+@@ -64,6 +66,7 @@
+         )),
+         &jc,
+     )
++    .timeout(jc.timeout)
+     .query(query)
+     .send()
+     .await
+@@ -85,6 +88,7 @@
+         &jc,
+     )
+     .header("Content-Type", "application/json")
++    .timeout(jc.timeout)
+     .body(body)
+     .send()
+     .await
+diff -Nur timewarrior-jirapush-v0.6.0.org/src/main.rs timewarrior-jirapush-v0.6.0/src/main.rs
+--- timewarrior-jirapush-v0.6.0.org/src/main.rs	2025-04-01 20:46:26.000000000 +0200
++++ timewarrior-jirapush-v0.6.0/src/main.rs	2025-08-15 21:53:56.423905836 +0200
+@@ -91,6 +91,9 @@
+         let jc = jira::JiraConnection {
+             user: tw_conf["twjp.user"].clone(),
+             token: tw_conf["twjp.token"].clone(),
++            timeout: Duration::from_millis(
++                tw_conf.get("twjp.timeout").unwrap_or(&"30_000".to_string()).parse::<u64>().unwrap()
++            ),
+             is_pat: is_pat,
+             instance_url: tw_conf["twjp.url"].clone(),
+         };
