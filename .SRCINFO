@@ -1,0 +1,16 @@
+pkgbase = agent-pwa-notifications
+	pkgdesc = CLI for a self-hosted Agent Notifications hub: connect an agent, mint a sign-in link, send updates and questions
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Qu4tro/agent-pwa-notifications
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=20
+	provides = agent-notify-pwa
+	options = !strip
+	options = !debug
+	source = agent-pwa-notifications-1.0.0.tar.gz::https://github.com/Qu4tro/agent-pwa-notifications/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = b399d4baf7d4a6f8b68db3e7caa41e1d0639936abcefd33e4486f9c1d26a263d
+
+pkgname = agent-pwa-notifications
