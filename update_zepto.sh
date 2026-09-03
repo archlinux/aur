@@ -38,13 +38,11 @@ if [ "${MAJOR_VERSION_UPGRADE}" == "true" ] || [ "${MINOR_VERSION_UPGRADE}" == "
     sed -i "s/^[[:space:]]*_gitversion=.*/_gitversion=${NEW_GIT_VERSION}/" ./PKGBUILD
 
     if [ "${MINOR_VERSION_UPGRADE}" == "true" ]; then
+        NEW_PKGREL=$(($(grep -E '^\s*pkgrel=' ./PKGBUILD | sed -E 's/pkgrel=["'\'' ]*([^"'\'' ]*).*/\1/') + 1))
         NEW_PKGVER=${NEW_VERSION}
 
-        CURRENT_PKGREL=$(grep -E '^\s*pkgrel=' ./PKGBUILD | sed -E 's/pkgrel=["'\'' ]*([^"'\'' ]*).*/\1/')
-        NEW_PKGREL=$((CURRENT_PKGREL + 1))
-
-        sed -i "s/^[[:space:]]*pkgver=.*/pkgver=${NEW_PKGVER}/" ./PKGBUILD
         sed -i "s/^[[:space:]]*pkgrel=.*/pkgrel=${NEW_PKGREL}/" ./PKGBUILD
+        sed -i "s/^[[:space:]]*pkgver=.*/pkgver=${NEW_PKGVER}/" ./PKGBUILD
     fi
 
     if [ "${MAJOR_VERSION_UPGRADE}" == "true" ]; then
@@ -57,7 +55,7 @@ if [ "${MAJOR_VERSION_UPGRADE}" == "true" ] || [ "${MINOR_VERSION_UPGRADE}" == "
 
     updpkgsums && makepkg -o && makepkg --printsrcinfo > .SRCINFO
 
-    echo -e "\nNew version: $(grep -E '^\s*pkgver=' ./PKGBUILD | sed -E 's/pkgver=["'\'' ]*([^"'\'' ]*).*/\1/') !"
+    echo -e "\nNew version: ${NEW_PKGVER}-${NEW_PKGREL}"
 else
     echo -e "\nAlready updated!"
 fi
