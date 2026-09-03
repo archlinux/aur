@@ -2,7 +2,7 @@
 
 _pkgname=MangoHud
 pkgname=lib32-mangohud-git
-pkgver=0.8.4.r93.g4781042
+pkgver=0.8.4.r116.g00b6371
 pkgrel=1
 pkgdesc="32-bit libraries for MangoHud and MangoApp"
 url='https://github.com/flightlessmango/MangoHud'
@@ -14,6 +14,7 @@ makedepends=(
     'glfw'
     'glslang'
     'lib32-cmocka'
+    'lib32-libcap'
     'lib32-libxrandr'
     'libxnvctrl'
     'meson'
@@ -25,6 +26,7 @@ makedepends=(
 depends=(
     'lib32-gcc-libs'
     'lib32-glibc'
+    'lib32-libcap'
     'lib32-libglvnd'
     'lib32-libxkbcommon'
     'lib32-systemd'
