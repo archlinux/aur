@@ -5,7 +5,7 @@ _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
 pkgver=2.5.3
 _pkgver="v$pkgver"
-pkgrel=2
+pkgrel=3
 pkgdesc="Mario Kart Mod Manager & Retro Rewind Auto Updater"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Team${_name}/${_name}"
@@ -20,7 +20,8 @@ depends=("dotnet-sdk-${_dotnet_ver}"
          'hicolor-icon-theme'
          'libgcc'
          'libstdc++'
-         'libx11')
+         'libx11'
+         'ttf-font')
 optdepends=('dolphin-emu: native Dolphin support'
             'flatpak: Flatpak Dolphin support')
 provides=(${pkgname})

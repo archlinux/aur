@@ -1,7 +1,7 @@
 pkgbase = wheelwizard
 	pkgdesc = Mario Kart Mod Manager & Retro Rewind Auto Updater
 	pkgver = 2.5.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/TeamWheelWizard/WheelWizard
 	arch = x86_64
 	arch = aarch64
@@ -13,12 +13,13 @@ pkgbase = wheelwizard
 	depends = libgcc
 	depends = libstdc++
 	depends = libx11
+	depends = ttf-font
 	optdepends = dolphin-emu: native Dolphin support
 	optdepends = flatpak: Flatpak Dolphin support
 	provides = wheelwizard
 	conflicts = wheelwizard
 	options = !strip
-	source = WheelWizard-2.5.3-2.tar.gz::https://github.com/TeamWheelWizard/WheelWizard/archive/refs/tags/v2.5.3.tar.gz
+	source = WheelWizard-2.5.3-3.tar.gz::https://github.com/TeamWheelWizard/WheelWizard/archive/refs/tags/v2.5.3.tar.gz
 	b2sums = 8a000d52ad931584c186c88b3fc7629dfd11f4e9a9bdb6ee910bd480d839aa7d5aaacc0e22e79eba2888ad9ef02b8606b637b5919832251cf7391362ad3c294c
 
 pkgname = wheelwizard
