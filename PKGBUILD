@@ -32,7 +32,10 @@ conflicts=(
 
 install="${pkgname}.install"
 options=('!strip')
-source=("file://cisco-secure-client-linux64-${pkgver}-predeploy-deb-k9.tar.gz")
+source=(
+    "file://cisco-secure-client-linux64-${pkgver}-predeploy-deb-k9.tar.gz"
+    "cisco-secure-client-nus-bin.install"
+    )
 sha256sums=('SKIP')
 
 prepare() {

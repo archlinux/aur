@@ -22,6 +22,7 @@ pkgbase = cisco-secure-client-nus-bin
 	conflicts = cisco-anyconnect-dart
 	options = !strip
 	source = file://cisco-secure-client-linux64-5.1.8.122-predeploy-deb-k9.tar.gz
+	source = cisco-secure-client-nus-bin.install
 	sha256sums = SKIP
 
 pkgname = cisco-secure-client-nus-bin
