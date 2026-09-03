@@ -1,6 +1,6 @@
 # Maintainer: Snd <snd.scrape (at) gmail dot com>
 pkgname=komelia
-pkgver=0.18.5
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Komga media client"
 arch=('x86_64')
@@ -12,10 +12,10 @@ optdepends=(
 	'webkit2gtk-4.1: epub reader support'
 )
 source=(
-	'git+https://github.com/Snd-R/Komelia.git#commit=0e6428ec847f775add0d4e6b46f218ee70e01d78'
-	'git+https://github.com/Snd-R/ChipTextField.git#commit=a06f5f356cd0daa698404808100eade87d2614d8'
-	'git+https://github.com/Snd-R/compose-sonner.git#commit=486fbd06c42c0c4e930c4642a5d80dd767e3c2d0'
-	'git+https://github.com/Snd-R/secret-service.git#commit=cf21890a678f5f5c0da5f488c044903e66b835c7'
+	'git+https://github.com/Snd-R/Komelia.git#commit=65f92fde60b7b7b62b85a55ceb80b92adf50eec8'
+	'git+https://github.com/Snd-R/ChipTextField.git#commit=7c575c550c83e95fb2c9eb44ffa35264becd8739'
+	'git+https://github.com/Snd-R/compose-sonner.git#commit=92c5c82d175a106f9779c8fad886679bf430d484'
+	'git+https://github.com/Snd-R/secret-service.git#commit=907b46e55a9bd4f5c7df795a17f1e09f2fee70cb'
 )
 
 sha256sums=('SKIP'
@@ -30,7 +30,9 @@ prepare() {
     git -C Komelia config --local submodule.third_party/secret-service.url "${srcdir}/secret-service"
     git -C Komelia config --local submodule.third_party/compose-sonner.url "${srcdir}/compose-sonner"
     git -C Komelia config --local submodule.third_party/ChipTextField.url "${srcdir}/ChipTextField"
-    git -C Komelia -c protocol.file.allow='always' submodule update
+    git -C Komelia -c protocol.file.allow='always' submodule update ./third_party/secret-service
+    git -C Komelia -c protocol.file.allow='always' submodule update ./third_party/compose-sonner
+    git -C Komelia -c protocol.file.allow='always' submodule update ./third_party/ChipTextField
 }
 
 build() {
@@ -46,11 +48,11 @@ build() {
 
     cd "${srcdir}/Komelia"
     ./gradlew komeliaBuildNonJvmDependencies
-    ./gradlew :komelia-app:packageReleaseUberJarForCurrentOS
+    ./gradlew :komelia-app:desktopApp:packageReleaseUberJarForCurrentOS
 }
 
 package() {
-	install -Dm755 "${srcdir}/Komelia/komelia-app/build/compose/jars/Komelia-linux-x64-${pkgver}-release.jar" "${pkgdir}/opt/komelia/komelia.jar"
+	install -Dm755 "${srcdir}/Komelia/komelia-app/desktopApp/build/compose/jars/Komelia-linux-x64-${pkgver}-release.jar" "${pkgdir}/opt/komelia/komelia.jar"
 	install -Dm644 "${srcdir}/Komelia/fastlane/metadata/android/en-US/images/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/komelia.png"
 	install -Dm755 "../komelia" -t "${pkgdir}/usr/bin"
 	install -Dm644 "../komelia.desktop" "${pkgdir}/usr/share/applications/komelia.desktop"
