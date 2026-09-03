@@ -1,0 +1,17 @@
+pkgbase = thinkpoint
+	pkgdesc = TUI for TrackPoint tuning, pointer button maps and libinput properties
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/CryptLabs/ThinkPoint
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	optdepends = xorg-xinput: button maps, libinput properties, the detector and the meter
+	optdepends = sudo: writing sysfs values and the udev rule
+	source = thinkpoint-0.2.0.tar.gz::https://github.com/CryptLabs/ThinkPoint/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 9aebcc6180945c8812e89b5ee72cf3f9f55e8163f827de6c186105f097793b2e
+
+pkgname = thinkpoint
