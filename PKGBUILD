@@ -11,7 +11,7 @@ options=('!strip' '!buildflags' 'staticlibs')
 source=("https://gitlab.com/libeigen/eigen/-/archive/${pkgver}/eigen-${pkgver}.tar.bz2")
 sha256sums=('e4de6b08f33fd8b8985d2f204381408c660bffa6170ac65b68ae1bd3cd575c0a')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd "$srcdir"/eigen-${pkgver}
