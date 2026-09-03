@@ -1,0 +1,29 @@
+pkgbase = python-h5json
+	pkgdesc = Specification and tools for representing HDF5 in JSON
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://support.hdfgroup.org/documentation/hdf5-json/latest
+	arch = any
+	license = LicenseRef-HDF5
+	checkdepends = python-pytest
+	checkdepends = python-pytz
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx-copybutton
+	makedepends = python-sphinx-book-theme
+	makedepends = python-myst-parser
+	makedepends = python-h5py
+	source = https://github.com/HDFGroup/hdf5-json/archive/refs/tags/v2.0.0.tar.gz
+	md5sums = ceb458150ade863a09acf843e474d2cd
+
+pkgname = python-h5json
+	depends = python>=3.11
+	depends = python-h5py>=3.10
+	depends = python-numpy>=2.0
+	depends = python-jsonschema>=4.4.0
+	depends = python-pytz
+	optdepends = python-h5json-doc: Documentation for HDF5-JSON
+
+pkgname = python-h5json-doc
+	pkgdesc = Documentation for Python HDF5-JSON
