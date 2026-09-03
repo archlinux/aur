@@ -22,12 +22,12 @@
 : ${_build_lto:=false}        # link-time optimization; may cause spurious errors
 : ${_build_system_libs:=true} # use system libraries, reduces build time
 
-: ${_build_limit_cores:=true} # detect usable cores for parallelism, limited by RAM
+: ${_build_limit_cores:=auto} # number of cores for parallelism; or auto, limited by RAM
 
 ## update
-_icver="140.14.0-1"
-_commit="c30067bdb3fc64b60acede199896d1187f4fd42b"
-_ffsum="28006bd454e703932e1ea804918165774a1e21478b18e551cd1b38111d664239"
+_icver="140.15.0-1"
+_commit="55f4022a5d5703cbc6877cb470d2b2dfba8e521d"
+_ffsum="358bb03c550f95172f1e31694e4287da3411560df91e931cb25210efdf90e524"
 
 ## package
 _pkgname="icecat"
@@ -370,27 +370,29 @@ ac_add_options --enable-lto=cross,full
 END
   fi
 
-  # build paralleism
-  local _mem _nproc _cores
-  _mem=$(grep -Pom1 '^MemFree.*\b\K[0-9]+' /proc/meminfo)
-  _nproc=$(nproc)
+  # build parallelism
+  local _mem _threads _cores _jobs
+  _mem=$(grep -Pom1 '^MemAvailable:\s*\K[0-9]+' /proc/meminfo)
+  _cores=$(lscpu | grep -Pom1 'per socket:\s*\K[0-9]+')
+  _threads=$(nproc)
+  _jobs="auto"
 
-  if [[ "${_build_limit_cores::1}" == "t" ]]; then
+  if [[ "${_build_limit_cores}" =~ ^[at] ]]; then
     # calculate core availability based on free RAM and CPU count
-    _cores=$((_mem / (1024 * 1024) < _nproc ? _mem / (1024 * 1024) : _nproc))
-    _cores=$((_cores < 1 ? 1 : _cores))
+    _jobs=$((_mem / (1024 * 1024) < _cores ? _mem / (1024 * 1024) : _cores - 1))
+    _jobs=$((_jobs < 1 ? 1 : _jobs))
   elif ((${_build_limit_cores:-0} > 0)); then
     # user-specified, capped by CPU count
-    _cores=$((_build_limit_cores > _nproc ? _nproc : _build_limit_cores))
+    _jobs=$((_build_limit_cores > _threads ? _threads : _build_limit_cores))
+    _jobs=$((_jobs < 1 ? 1 : _jobs))
   fi
 
-  if [ -n "${_cores:-}" ]; then
-    printf '\nFree RAM: %s\nCores: %s\nUsing: %s\n\n' "$((_mem / (1024 * 1024)))" "$_nproc" "$_cores"
+  printf '\n:: Free RAM: %-5s Cores: %-5s Threads: %-5s Jobs: %-5s\n\n' "$((_mem / (1024 * 1024)))" "$_cores" "$_threads" "$_jobs"
+
+  if [[ "$_jobs" =~ ^[0-9]+$ ]]; then
     cat >> ../mozconfig << END
-mk_add_options MOZ_PARALLEL_BUILD=${_cores}
+mk_add_options MOZ_PARALLEL_BUILD=${_jobs}
 END
-  else
-    printf '\nFree RAM: %s\nCores: %s\nUsing: auto\n\n' "$((_mem / (1024 * 1024)))" "$_nproc"
   fi
 
   # apply patches

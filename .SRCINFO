@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox ESR browser
-	pkgver = 140.14.0
+	pkgver = 140.15.0
 	pkgrel = 1
 	url = https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git
 	arch = x86_64
@@ -56,14 +56,14 @@ pkgbase = icecat
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	noextract = firefox-esr-140.14.0-1-source.tar.xz
+	noextract = firefox-esr-140.15.0-1-source.tar.xz
 	options = !debug
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = gnuzilla::git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=c30067bdb3fc64b60acede199896d1187f4fd42b
-	source = firefox-esr-140.14.0-1-source.tar.xz::https://ftp.mozilla.org/pub/firefox/candidates/140.14.0esr-candidates/build1/source/firefox-140.14.0esr.source.tar.xz
+	source = gnuzilla::git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=55f4022a5d5703cbc6877cb470d2b2dfba8e521d
+	source = firefox-esr-140.15.0-1-source.tar.xz::https://ftp.mozilla.org/pub/firefox/candidates/140.15.0esr-candidates/build1/source/firefox-140.15.0esr.source.tar.xz
 	source = 0000-parallelize-makeicecat.diff
 	source = 1001-python_3.14-5fcff175718cd308bc6d6f2996de14eb8a93e2a2.patch
 	source = 1002-python_3.14-23efd75219786d71acff0b4e7c1b0de297b84c4e.patch
@@ -78,7 +78,7 @@ pkgbase = icecat
 	source = 0006-Add-FFmpeg-63-support.patch.xz
 	source = 0007-fix-rust-1.98-targets.patch
 	sha256sums = SKIP
-	sha256sums = 28006bd454e703932e1ea804918165774a1e21478b18e551cd1b38111d664239
+	sha256sums = 358bb03c550f95172f1e31694e4287da3411560df91e931cb25210efdf90e524
 	sha256sums = 1f1b71fcc22fe5e12bd57e7dcc544599e99071eb17b843b261c77fb86f943288
 	sha256sums = 10e928127276c934a51c053d3f7ceb247344afd2e82186e12c4f188dd743bc49
 	sha256sums = 6479aa1df3fda931d0e261edaffdcac2d162c0166c5cfd6adf6f45ccf632b852
