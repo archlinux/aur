@@ -1,6 +1,6 @@
 # Maintainer: Byeonghoon Yoo <bh322yoo@gmail.com>
 pkgname=posthog-cli-bin
-pkgver=0.16.2
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="PostHog CLI tool for feature flags, experiments, and analytics"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ _base_url="${url}/releases/download/posthog-cli/v${pkgver}"
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_base_url}/posthog-cli-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_base_url}/posthog-cli-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('e3c849583b62bd81dba5be1bf4d832221fffe916badffcc416baea294009c1c7')
-sha256sums_aarch64=('8ea0e5f3ccb6e1aa4639f9767d7f24cecaf91430fa20f852f65eb05deb75d673')
+sha256sums_x86_64=('b6f6782120f9c0650bc5a7d5a857615d1fa5aced4f20e8a22b3563aea7ea2b2f')
+sha256sums_aarch64=('e8372b24c0ac47282c3ce43f3de53437f1d59f7cbabac890061c4047079e1a1a')
 
 package() {
     install -Dm755 "posthog-cli-${CARCH}-unknown-linux-gnu/posthog-cli" \
