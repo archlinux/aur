@@ -10,7 +10,7 @@ pkgname='wg-client'
 pkgdesc='Linux Wireguard client (command line and gui)'
 _gitname='wg-client'
 
-pkgver="8.0.2"
+pkgver="8.0.3"
 pkgrel=1
 url="https://github.com/gene-git/wg-client"
 
