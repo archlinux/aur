@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=chk
-_pkgver=0.10.0
+_pkgver=0.11.0
 pkgname=r-${_pkgname,,}
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Check User-Supplied Function Arguments'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('5b08cdfa691f65febbc939fc1f45a2b6ffbb446c6b554732a1cd7214fdabd384')
+sha256sums=('fbd1f9048e40bb24317d6b87cdb84627db816d3006c40ba0dd050d23acf87032')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

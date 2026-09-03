@@ -1,6 +1,6 @@
 pkgbase = r-chk
 	pkgdesc = Check User-Supplied Function Arguments
-	pkgver = 0.10.0
+	pkgver = 0.11.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=chk
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-chk
 	optdepends = r-rmarkdown
 	optdepends = r-testthat
 	optdepends = r-withr
-	source = https://cran.r-project.org/src/contrib/chk_0.10.0.tar.gz
-	sha256sums = 5b08cdfa691f65febbc939fc1f45a2b6ffbb446c6b554732a1cd7214fdabd384
+	source = https://cran.r-project.org/src/contrib/chk_0.11.0.tar.gz
+	sha256sums = fbd1f9048e40bb24317d6b87cdb84627db816d3006c40ba0dd050d23acf87032
 
 pkgname = r-chk
