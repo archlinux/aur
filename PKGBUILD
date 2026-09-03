@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=android-messages-desktop
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=1
 _nodeversion=24
 _electronversion=41
@@ -17,7 +17,7 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('ac5e177a8c297d2ef40ee4fc647e20a3c72b62524370d26096159671df6b0617'
+sha256sums=('f8809c0d7cfcd79c2f8b1803dba7850e865e37f43abb84dc75545e4eb4ba961f'
             'e8b021832cbf8a6759f7808f5e667c91dbb6d8d1f973ea0bc6578c2c52674bcb'
             '5424bdbff21eae2161c072707ef2d5adb54a040c0aad9df13fb3576a74f02217')
 
