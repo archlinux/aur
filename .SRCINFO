@@ -1,0 +1,25 @@
+pkgbase = omarchy-share-picker-git
+	pkgdesc = Share picker for xdg-desktop-portal-hyprland (screen, window, region)
+	pkgver = 0.1.0.r6.g75155e9
+	pkgrel = 1
+	url = https://github.com/falser101/omarchy-share-picker
+	install = omarchy-share-picker-git.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	makedepends = wayland
+	depends = gcc-libs
+	depends = glibc
+	depends = grim
+	depends = hyprland
+	depends = slurp
+	depends = xdg-desktop-portal-hyprland
+	provides = omarchy-share-picker
+	conflicts = omarchy-share-picker
+	source = git+https://github.com/falser101/omarchy-share-picker.git
+	sha256sums = SKIP
+
+pkgname = omarchy-share-picker-git
