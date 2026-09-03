@@ -1,0 +1,14 @@
+pkgbase = ros2-jazzy-angles
+	pkgdesc = This package provides a set of simple math utilities to work with angles
+	pkgver = 1.16.1
+	pkgrel = 1
+	url = https://index.ros.org/p/angles/
+	arch = any
+	license = BSD-3-Clause
+	makedepends = cmake
+	makedepends = python-setuptools
+	depends = ros2-jazzy
+	source = angles-1.16.1.tar.gz::https://github.com/ros/angles/archive/1.16.1.tar.gz
+	sha256sums = 2bd37cba18f7cc4003712ad951237fb3cff5cc6d2bfd59a12ce3c558170e5fc2
+
+pkgname = ros2-jazzy-angles
