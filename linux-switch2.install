@@ -1,0 +1,43 @@
+post_install() {
+    echo
+    echo "==> linux-switch2 has been installed."
+    echo "==>"
+    echo "==> The kernel modules were installed for the kernel against which"
+    echo "==> this package was built."
+    echo "==>"
+    echo "==> Arch's pacman hooks automatically run depmod and reload udev rules."
+    echo "==> Reconnect the Joy-Con 2 controllers to apply the new udev permissions."
+    echo "==>"
+    echo "==> To load the modules now:"
+    echo "==>"
+    echo "==>   sudo modprobe hid_switch2"
+    echo "==>   sudo modprobe switch2_usb"
+    echo
+}
+
+post_upgrade() {
+    echo
+    echo "==> linux-switch2 has been updated."
+    echo "==>"
+    echo "==> Arch's pacman hooks automatically run depmod and reload udev rules."
+    echo "==>"
+    echo "==> If the previous driver modules are currently loaded, the running"
+    echo "==> kernel is still using those old module instances. Reload them with:"
+    echo "==>"
+    echo "==>   sudo modprobe -r switch2_usb"
+    echo "==>   sudo modprobe -r hid_switch2"
+    echo "==>   sudo modprobe hid_switch2"
+    echo "==>   sudo modprobe switch2_usb"
+    echo "==>"
+    echo "==> Reconnect the controllers if necessary."
+    echo
+}
+
+post_remove() {
+    echo
+    echo "==> linux-switch2 has been removed."
+    echo "==>"
+    echo "==> Any currently loaded switch2 modules remain in the running kernel"
+    echo "==> until they are unloaded or the system is rebooted."
+    echo
+}

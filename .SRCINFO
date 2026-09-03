@@ -1,0 +1,19 @@
+pkgbase = linux-switch2
+	pkgdesc = Linux kernel drivers for Nintendo Switch 2 controllers
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/novakpetya/linux-switch2
+	install = linux-switch2.install
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = linux-headers
+	depends = linux
+	depends = systemd
+	optdepends = bluez-switch2: Bluetooth LE transport support for Nintendo Switch 2 Joy-Con controllers on Linux
+	conflicts = hid-switch2-dkms
+	options = !strip
+	source = linux-switch2::git+https://github.com/novakpetya/linux-switch2.git
+	sha256sums = SKIP
+
+pkgname = linux-switch2
