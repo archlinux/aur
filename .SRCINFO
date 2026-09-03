@@ -1,6 +1,6 @@
 pkgbase = gz-common6
 	pkgdesc = Gazebo Common, a component of Gazebo, provides a set of libraries that cover many different use cases.
-	pkgver = 6.3.0
+	pkgver = 6.4.0
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-common
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = gz-common6
 	depends = tinyxml2
 	depends = util-linux-libs
 	provides = gz-common=6
-	source = https://github.com/gazebosim/gz-common/archive/gz-common6_6.3.0.tar.gz
-	sha256sums = 42b84acd4101a66ca9b08436e2b3368f0cd7dae4ea7335524f2c65d75121397b
+	source = https://github.com/gazebosim/gz-common/archive/gz-common6_6.4.0.tar.gz
+	sha256sums = 796f91d56a340ab96d5e0d3020e56386cb2299c00835953386ba2e2ee10b41bc
 
 pkgname = gz-common6
