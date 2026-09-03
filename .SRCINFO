@@ -1,0 +1,17 @@
+pkgbase = noyalib-bin
+	pkgdesc = YAML formatter (noyafmt) and JSON-Schema validator (noyavalidate) built on the noyalib library
+	pkgver = 0.0.31
+	pkgrel = 1
+	url = https://github.com/sebastienrousseau/noya-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	provides = noyafmt
+	provides = noyavalidate
+	conflicts = noyalib
+	source_x86_64 = https://github.com/sebastienrousseau/noya-cli/releases/download/v0.0.31/noya-cli-0.0.31-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = fcb74e4bde36ac7b897414aece695ebdb713fc8c5904fbb5f09c9796d00e29de
+	source_aarch64 = https://github.com/sebastienrousseau/noya-cli/releases/download/v0.0.31/noya-cli-0.0.31-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 3330c272eb5afc1eaef83952b4629cae1ebb11dd6ecd9b116fa5a3c9db098efe
+
+pkgname = noyalib-bin
