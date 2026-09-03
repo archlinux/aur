@@ -1,14 +1,15 @@
 pkgbase = screenshot-niri
-	pkgdesc = Screenshot tool for niri compositor — normal and long/scroll capture with frozen-background selection overlay
+	pkgdesc = Screenshot tool for niri compositor — normal and long/scroll capture with frozen-background selection overlay (prebuilt)
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/xander-lin/screenshot-niri
 	arch = x86_64
+	arch = aarch64
 	license = MIT
-	makedepends = cargo
-	makedepends = git
 	conflicts = screenshot-plain
-	source = screenshot-niri::git+https://github.com/xander-lin/screenshot-niri.git
-	sha256sums = SKIP
+	source_x86_64 = screenshot-niri-0.1.0-x86_64.tar.gz::https://github.com/xander-lin/screenshot-niri/releases/download/v0.1.0-niri/screenshot-niri-0.1.0-x86_64.tar.gz
+	sha256sums_x86_64 = 552e73bca25e8bd5af7d1548062c185674ef0b83a2d8d42817d4b6b9f88c2e78
+	source_aarch64 = screenshot-niri-0.1.0-aarch64.tar.gz::https://github.com/xander-lin/screenshot-niri/releases/download/v0.1.0-niri/screenshot-niri-0.1.0-aarch64.tar.gz
+	sha256sums_aarch64 = 85f41b8aa2dd3c441f92c2d658481d4c75ede47097e001ffe1aa8992dcca9c42
 
 pkgname = screenshot-niri
