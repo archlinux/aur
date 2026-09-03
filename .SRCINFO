@@ -1,0 +1,23 @@
+pkgbase = flea
+	pkgdesc = Fast, keyboard-first file manager for Omarchy
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/thisisgm/flea
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = bubblewrap
+	depends = glib2
+	depends = omarchy
+	depends = quickshell
+	depends = shared-mime-info
+	depends = xdg-utils
+	optdepends = libarchive: archive listing and extraction
+	optdepends = 7zip: 7z archive support
+	optdepends = imagemagick: image conversion
+	optdepends = tailscale: Taildrop sharing
+	options = !debug
+	source = flea-0.1.2.tar.gz::https://github.com/thisisgm/flea/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 3788a735be2cb6eef0c1770833c82bc6591e20b7681fe02172aaea21c2a2d8fb
+
+pkgname = flea
