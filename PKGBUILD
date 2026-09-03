@@ -3,7 +3,7 @@
 # Contributor: Stephanie Wilde-Hobbs (RX14) <steph@rx14.co.uk>
 
 pkgname=mcstatus
-pkgver=14.1.0
+pkgver=14.2.0
 pkgrel=1
 pkgdesc="Provides an easy way to query Minecraft servers for any information they can expose."
 arch=(any)
@@ -12,7 +12,7 @@ license=('Apache-2.0')
 depends=(python python-dnspython python-asyncio-dgram python-typing_extensions)
 makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-uv-dynamic-versioning')
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/m/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('4f9bd17ecf29b3bad9af8811b33126e996e197526d1d72554dc4f1f7e86a2fb0')
+sha256sums=('ab1a3145dc6b22b8051ea087a87e5b26cf91abfb8e1808539a2526bbfaaa0167')
 
 latestver() {
     gh api repos/py-mine/mcstatus/releases/latest --jq '.tag_name' | sed 's/^v//'
