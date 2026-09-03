@@ -1,0 +1,19 @@
+pkgbase = scalapack-bin
+	pkgdesc = Subset of scalable LAPACK routines redesigned for distributed memory computers (precompiled)
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = http://www.netlib.org/scalapack
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = glibc
+	depends = openmpi
+	depends = blas
+	depends = lapack
+	provides = scalapack
+	provides = blacs
+	conflicts = scalapack
+	options = !debug
+	source = https://github.com/tubbywrestler/scalapack-bin/releases/download/2.2.3-1/scalapack-2.2.3-1-x86_64.pkg.tar.zst
+	sha256sums = 771086d5720ec038d83bbe274c8a0c72f5e8920ad3b588a8f1e7206554e5d073
+
+pkgname = scalapack-bin
