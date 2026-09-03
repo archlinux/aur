@@ -1,7 +1,7 @@
 pkgbase = grok-bot-bin
 	pkgdesc = Grok Bot desktop agent
 	pkgver = 0.36.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://cursor.com
 	arch = x86_64
 	license = LicenseRef-Proprietary

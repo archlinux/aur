@@ -1,7 +1,7 @@
 # Maintainer: falser <zjf_0731@163.com>
 pkgname=grok-bot-bin
 pkgver=0.36.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Grok Bot desktop agent'
 arch=('x86_64')
 url='https://cursor.com'
