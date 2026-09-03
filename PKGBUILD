@@ -11,7 +11,7 @@ options=('!buildflags' 'staticlibs' '!strip')
 source=("https://github.com/lz4/lz4/archive/v${pkgver}.tar.gz")
 sha256sums=('537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd lz4-${pkgver}
