@@ -1,7 +1,7 @@
 # Maintainer: falser <zjf_0731@163.com>
 pkgname=grok-bot-bin
-pkgver=0.30.0
-pkgrel=3
+pkgver=0.36.0
+pkgrel=1
 pkgdesc='Grok Bot desktop agent'
 arch=('x86_64')
 url='https://cursor.com'
@@ -21,11 +21,12 @@ depends=(
     libappindicator
 )
 makedepends=('python')
+optdepends=('apparmor: load the shipped userns profile')
 provides=('sand' 'grok-bot')
 conflicts=('sand' 'grok-bot' 'grokbot-linux-port' 'grokbot-linux-port-bin')
 replaces=('grok-bot')
 options=('!strip' '!debug')
-_commit=2385d097738b3719cc5ecd9281a107aa106215f1
+_commit=9465f3ae75550511296fabbb7a4b6fc8afe9e408
 source=(
     "grok-bot_${pkgver}_amd64.deb::https://downloads.cursor.com/grokbot/stable/${_commit}/linux/x64/grok-bot_${pkgver}_amd64.deb"
     grok-bot.sh
@@ -33,7 +34,7 @@ source=(
     extract-asar.py
 )
 sha256sums=(
-    'fb888b2204c8a51c71a9f5f9a2913ac10561f3ef6939c1245ecae4e837d4ada2'
+    '948b4177667d9a03915c1aee497e7c5438705393da8083a6af0177288512d07e'
     '9b3cccfada1dbe44ce794177181515aaf328603484327ef72a914234544bfbf8'
     '9ea1f1939677ec7364bc024ec4b87f8873ef41e6b1b5cec407d0a022ca3678f6'
     '183e572725d5b9ffe618a3fc00f32916feb21e38d59733bc98ce3bbcda147da1'
@@ -61,6 +62,11 @@ data = json.loads(path.read_text())
 data["main"] = "dist/electron-main/linux-tray.cjs"
 path.write_text(json.dumps(data, indent=2) + "\n")
 PY
+
+    # electron-builder now ships an unconfined userns profile. Debian
+    # postinst copies it to /etc/apparmor.d; pacman never runs that.
+    install -Dm644 "${_res}/apparmor-profile" \
+        "${pkgdir}/etc/apparmor.d/${pkgname%-bin}"
 
     # Debian postinst uses update-alternatives; pacman never runs it.
     install -Dm755 grok-bot.sh "${pkgdir}/usr/bin/grok-bot"
