@@ -1,7 +1,7 @@
 # Maintainer: Wellinton Vieira <wellintonvieira.office@gmail.com>
 
 pkgname="aurup"
-pkgver="1.84"
+pkgver="1.86"
 pkgrel=1
 pkgdesc="The simplify finding and installing packages AUR helper"
 arch=("any")
@@ -10,7 +10,7 @@ license=("GPL-3.0-or-later")
 depends=("bash-completion" "curl" "diffutils" "jq" "tar")
 makedepends=("git")
 source=("git+https://github.com/nellowint/$pkgname.git#tag=v$pkgver")
-sha256sums=('0adf5e1f7bbd16a2c45f5f912c32fa5a2b163747145b032e00f4e557028cf946')
+sha256sums=('c873bda4de72acea5bc650e76955dde0aa74adf1569d9636db7406cfe8911a96')
 
 package() {
 	cd "$pkgname"
