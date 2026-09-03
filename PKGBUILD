@@ -1,6 +1,6 @@
 # Maintainer: Frederick Martel
 pkgname=aspm27-server
-pkgver=0.2.10
+pkgver=0.2.11
 pkgrel=1
 pkgdesc="Server component of aspm - a slick, modern messenger focused on simplicity, security and speed"
 arch=('x86_64' 'aarch64')
