@@ -1,6 +1,6 @@
 pkgbase = mw-timetrack-bin
 	pkgdesc = Simple, offline-first desktop application to track your time on different projects and tasks.
-	pkgver = 5.16.1
+	pkgver = 5.16.2
 	pkgrel = 1
 	url = https://github.com/mistweaverco/timetrack
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = mw-timetrack-bin
 	depends = libxtst
 	provides = timetrack
 	conflicts = timetrack
-	source = https://github.com/mistweaverco/timetrack/releases/download/v5.16.1/timetrack_amd64.deb
-	sha256sums = 3841cc7e68a8f6de40340ceefb018fd50a4f1cce8fff2fbf30fca5374b3d8b96
+	source = https://github.com/mistweaverco/timetrack/releases/download/v5.16.2/timetrack_amd64.deb
+	sha256sums = fe5e1052c91909862422ff4423125ea6821bbe4d763c0bbc19423fd9e46cefc4
 
 pkgname = mw-timetrack-bin
