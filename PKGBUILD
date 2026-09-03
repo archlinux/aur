@@ -1,4 +1,4 @@
-# Maintainer: piratecarrot
+# Maintainer: pineappletoad
 
 pkgname=can-utils-bin
 pkgver=2025.01
