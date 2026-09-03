@@ -15,4 +15,3 @@ pkgbase = mingw-w64-coin-or-vol
 	sha256sums = dbcd822cb42c596990444c9db8b65e77ec71f98c8550e1212f9e8c1a7cba6930
 
 pkgname = mingw-w64-coin-or-vol
-

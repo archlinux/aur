@@ -13,7 +13,7 @@ options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Vol/Vol-${pkgver}.tgz")
 sha256sums=('dbcd822cb42c596990444c9db8b65e77ec71f98c8550e1212f9e8c1a7cba6930')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd Vol-$pkgver
