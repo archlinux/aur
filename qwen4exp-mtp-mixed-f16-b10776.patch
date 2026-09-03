@@ -1,4 +1,4 @@
-# Local exact-context compatibility fix for llama.cpp b10760.
+# Local exact-context compatibility fix for llama.cpp b10776.
 # Based on https://github.com/ggml-org/llama.cpp/pull/27836#issuecomment-5508708675
 --- a/src/models/qwen4exp.cpp
 +++ b/src/models/qwen4exp.cpp

@@ -1,0 +1,11 @@
+# Local exact-context correctness guard for llama.cpp b10776.
+# Based on https://github.com/ggml-org/llama.cpp/issues/28113
+--- a/ggml/src/ggml-cuda/ggml-cuda.cu
++++ b/ggml/src/ggml-cuda/ggml-cuda.cu
+@@ -1811 +1811,5 @@ static bool ggml_cuda_should_fuse_mul_mat_vec_q(const ggml_tensor * tensor) {
+-    if (tensor->op == GGML_OP_MUL_MAT_ID && dst->ne[2] > get_mmvq_mmid_max_batch(src0->type, cc)) {
++    // The multi-token quantized MoE fusion produces incorrect logits on
++    // RDNA3.5. Keep the upstream limit on other architectures, but restore
++    // the pre-#27621 single-token-only route on gfx1150/gfx1151.
++    if (tensor->op == GGML_OP_MUL_MAT_ID && (GGML_CUDA_CC_IS_RDNA3_5(cc)
++            ? dst->ne[2] != 1 : dst->ne[2] > get_mmvq_mmid_max_batch(src0->type, cc))) {
