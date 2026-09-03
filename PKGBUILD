@@ -1,7 +1,7 @@
 pkgname=mingw-w64-boost
 pkgver=1.92.0
 _boostver=${pkgver//./_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
 arch=('any')
 url="http://www.boost.org/"
