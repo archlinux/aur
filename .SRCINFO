@@ -1,0 +1,20 @@
+pkgbase = python-aws-sso-lib
+	pkgdesc = Library for programmatic interaction with AWS IAM Identity Center
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = https://github.com/61418/aws-sso-util
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	makedepends = python-wheel
+	depends = python
+	depends = python-aws-error-utils
+	depends = python-boto3
+	source = https://files.pythonhosted.org/packages/source/a/aws-sso-lib/aws_sso_lib-1.14.0.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/61418/aws-sso-util/lib-v1.14/LICENSE
+	sha256sums = b0203a64ccb66ba78f99ef3d0eb669affe7bc323f6ab9caac97f35c21a03cea5
+	sha256sums = f63f11a8ef1b3c5aa7e1ab83a16a5e82cb0c1414a5af0e761284403b83c9c8e0
+
+pkgname = python-aws-sso-lib
