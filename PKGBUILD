@@ -1,6 +1,6 @@
 # Maintainer: Philipp Wagner <philipp@wagnersnetz.de>
 pkgname=kst4contest
-pkgver=1.42.0
+pkgver=1.43.0
 pkgrel=1
 pkgdesc="ON4KST Chat Client for VHF/UHF contest operation"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('java-environment=21' 'maven')
 provides=('kst4contest')
 conflicts=('kst4contest-bin' 'kst4contest-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/praktimarc/kst4contest/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('bd396387b8de41aac706458d5ebf64140ab3e83b8a7c710b66aa802bd48e804e')
+sha256sums=('75d0a872d126f46a9e64497a9bae247f741b31183be9b12079e1c57bf12d5c71')
 
 build() {
     cd "${srcdir}/kst4contest-${pkgver}"
