@@ -7,7 +7,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="A minimal CLI tool for managing and executing SQL queries across multiple databases"
 
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 _pkgvername=v${pkgver}-beta
 
@@ -29,9 +29,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}")
 sha256sums=('f87660b383928d6c66256ff89cc4c441e041b16fc786760822bd49567e33fcde'
-            'f2366564422ba22ba00b6440bbdff18f1e3ee126f15b2fe48e1c2fa7031573e2')
-sha256sums_x86_64=('7e37f231bac44355a2bb495230876d24ce8e32fa020ef3ec501b8a66567563bc')
-sha256sums_aarch64=('1d9bcab06b34ecfdfcfcd610e6c843c0b05bed812933028f924c9a8e2d32173f')
+            'f2c6f4879e00f2a134d1aa7fdd8b16d9fffca3b7f54931a43d77fbf13cfbe753')
+sha256sums_x86_64=('5f180db8cf9f05e323161a6dca53477ccbf7c14850f47866f6464d4c4c973594')
+sha256sums_aarch64=('353d041d536e4428a7d0831a744b517bfb08666e29c13c7880a8bed6475820a7')
 
 
 package() {
