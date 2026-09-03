@@ -1,4 +1,5 @@
-# Maintainer: Romain Bazile <gromain dot baz at gmail dot com>
+# Maintainer: Maxim De Clercq <maximdeclercq00 at gmail dot com>
+# Contributor: Romain Bazile <gromain dot baz at gmail dot com>
 
 pkgname=amap-bin
 pkgver=0.34
