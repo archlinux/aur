@@ -12,7 +12,7 @@ options=('!buildflags' '!strip' 'staticlibs')
 source=("http://geuz.org/gl2ps/src/gl2ps-${pkgver}.tgz")
 sha256sums=('8d1c00c1018f96b4b97655482e57dcb0ce42ae2f1d349cd6d4191e7848d9ffe9')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd "${srcdir}/gl2ps-${pkgver}"
