@@ -1,6 +1,6 @@
 pkgbase = omarchy-share-picker-git
 	pkgdesc = Share picker for xdg-desktop-portal-hyprland (screen, window, region)
-	pkgver = 0.1.0.r8.g42fcd4a
+	pkgver = 0.1.0.r11.g2bd6f19
 	pkgrel = 1
 	url = https://github.com/falser101/omarchy-share-picker
 	install = omarchy-share-picker-git.install

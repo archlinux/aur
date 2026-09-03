@@ -1,7 +1,7 @@
 # Maintainer: falser <zhangjf@tongtech.com>
 pkgname=omarchy-share-picker-git
 _pkgname=omarchy-share-picker
-pkgver=0.1.0.r8.g42fcd4a
+pkgver=0.1.0.r11.g2bd6f19
 pkgrel=1
 pkgdesc="Share picker for xdg-desktop-portal-hyprland (screen, window, region)"
 arch=('x86_64' 'aarch64')
