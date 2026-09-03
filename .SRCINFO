@@ -1,0 +1,14 @@
+pkgbase = zg
+	pkgdesc = Local-first search across your workspace, built for humans and AI agents
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/zvec-ai/zvec-grep
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs>=22
+	source = zg-0.2.0.tar.gz::https://github.com/zvec-ai/zvec-grep/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 5162be1998ece6c4f2177e22643cc14abfa0a1077522cb764dfe49ceb45e9dc1
+
+pkgname = zg
