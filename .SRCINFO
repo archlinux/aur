@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-ru-ca-bin
 	pkgdesc = Custom binary build of ungoogled-chromium with support for TLS certificates issued by CA of Russian Ministry of Digital Development
 	pkgver = 151.0.7922.173
-	pkgrel = 4
+	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
 	license = BSD
