@@ -1,7 +1,7 @@
 # Maintainer: rnestler
 
 pkgname=reboot-arch-btw
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Check if you need to reboot due to an updated kernel'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo')
 depends=('dbus' 'pacman>6')
 replaces=('kernel-updated')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('25a72bde0e4255eed3cc82879392fcd64f5aecf6fbb31a159fe58b7dd97e1b2d')
+sha256sums=('911991efee818e78a203e7956d600c85e3c72a06635abfe520137937366b4649')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
