@@ -1,6 +1,6 @@
 pkgbase = movie-planner
 	pkgdesc = CLI that logs watched movies and syncs them to a CalDAV calendar
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/alrayyes/movie-planner
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = movie-planner
 	depends = python-questionary
 	depends = python-rapidfuzz
 	depends = python-typer
-	source = movie-planner-0.10.0.tar.gz::https://github.com/alrayyes/movie-planner/archive/movie-planner-v0.10.0.tar.gz
-	sha256sums = c0ab8f07938d3db7aae61aa9ec21c02163cafda554c258a6c14d6ca373e50584
+	source = movie-planner-0.10.1.tar.gz::https://github.com/alrayyes/movie-planner/archive/movie-planner-v0.10.1.tar.gz
+	sha256sums = 8ac5dff4189dd1a07997016e25daea09dc4c06de46ed345d4c054cde0c113940
 
 pkgname = movie-planner
