@@ -1,7 +1,7 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastpotify
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/fastpotify"
@@ -17,7 +17,7 @@ conflicts=('fastpotify-bin' 'fastpotify-git')
 # undefined ring_core_* symbols.
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ed498e33283937de57f883987bd60d65b275572d2d17ad88d922bc22275c440c')
+sha256sums=('42311ed2bd46ff989be19c355f0da514b844e5160ba7e987784a13e1b25c7cf4')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
