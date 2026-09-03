@@ -1,6 +1,6 @@
 pkgbase = rhisper
 	pkgdesc = Dictation at cursor for Linux
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/lv10/rhisper
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = rhisper
 	depends = ffmpeg
 	options = !lto
 	backup = usr/share/rhisper/rhisperrc.default
-	source = rhisper-0.2.6.tar.gz::https://github.com/lv10/rhisper/archive/refs/tags/v0.2.6.tar.gz
-	sha256sums = 1537c88bb5fa83ed4a8a307790ce8f552e1d7055c62c2bc5c1a01fa8f4f7a8c4
+	source = rhisper-0.2.7.tar.gz::https://github.com/lv10/rhisper/archive/refs/tags/v0.2.7.tar.gz
+	sha256sums = d61bce9d626d87a15bac849cb4f14fb16aea8d037f50fe0c9c34126e18073a5e
 
 pkgname = rhisper
