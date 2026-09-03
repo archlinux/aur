@@ -1,6 +1,6 @@
 # Maintainer: aitasks maintainers <noreply@aitasks.io>
 pkgname=aitasks
-pkgver=0.34.0
+pkgver=0.34.1
 pkgrel=1
 pkgdesc="Agentic IDE in your terminal: markdown tasks, YAML frontmatter, git-native"
 arch=('any')
