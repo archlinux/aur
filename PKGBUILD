@@ -1,6 +1,6 @@
 # Maintainer: Thomas Butler <goliyth@gmail.com>
 pkgname=hyprmural-git
-pkgver=r20.dc03e3f
+pkgver=r21.a04f2ef
 pkgrel=1
 pkgdesc="Per-workspace wallpaper tool for Hyprland (multi-output, layer-shell, GLES2)"
 arch=('x86_64' 'aarch64')
