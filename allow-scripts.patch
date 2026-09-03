@@ -1,0 +1,12 @@
+diff -ura a/agent/package.json b/agent/package.json
+--- a/agent/package.json	2026-06-02 02:13:21.000000000 -0700
++++ b/agent/package.json	2026-09-02 21:08:28.112005486 -0700
+@@ -40,5 +40,8 @@
+     "@types/node": "^24",
+     "frida-compile": "^19",
+     "tslint": "^6"
++  },
++  "allowScripts": {
++    "frida@17.5.1": true
+   }
+ }
