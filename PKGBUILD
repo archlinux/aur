@@ -3,8 +3,8 @@
 
 pkgname=nextcloud-app-maps
 _name=maps
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="OpenStreetMap layers including POIs"
 arch=('any')
 url="https://github.com/nextcloud/maps"
@@ -13,7 +13,7 @@ depends=('nextcloud')
 makedepends=('ripgrep' 'yq' 'composer' 'npm')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nextcloud-releases/maps/releases/download/v$pkgver/maps-v$pkgver.tar.gz")
-sha256sums=('470b73a2ecf834415954ee95f18bc873d0b29ff28167e800632e427050ef46f7')
+sha256sums=('4e44ea40268d2f942967b847840e18c37318a0d1ca1c1572e7f635ce3ac32c04')
 
 _get_nextcloud_versions() {
   _app_min_major_version="$(xq '.info.dependencies.nextcloud["@min-version"]' "${_name}/appinfo/info.xml"| sed 's/"//g')"
