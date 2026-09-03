@@ -1,7 +1,7 @@
 # Maintainer: jinzhongjia <mail@nvimer.org>
 
 pkgname=dbx-mcp-server-git
-pkgver=0.4.78.r5994.g4b7b72dc6
+pkgver=0.4.79.r6016.g767cc809a
 pkgrel=1
 pkgdesc="MCP server for DBX — query databases from Claude Code, Cursor, and other AI agents (built from git)"
 arch=('x86_64' 'aarch64')
@@ -34,6 +34,14 @@ prepare() {
     cd "${srcdir}/dbx"
     # Keep cargo state inside $srcdir; never touch ~/.cargo.
     export CARGO_HOME="${srcdir}/.cargo"
+    # Use Arch's openssl dependency instead of upstream's vendored feature:
+    # the latter embeds a temporary $srcdir OpenSSL install path.
+    sed -i 's/openssl = { version = "0.10", features = \["vendored"\] }/openssl = "0.10"/' \
+        crates/dbx-core/Cargo.toml
+    # This upstream-only workspace fallback embeds $srcdir through
+    # env!("CARGO_MANIFEST_DIR") in release binaries.
+    sed -i '/CARGO_MANIFEST_DIR/,+2d' crates/dbx-core/src/agent_service.rs
+
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/^host: //p')"
 }
 
@@ -43,8 +51,9 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_PROFILE_RELEASE_LTO=false
     # Strip $srcdir from panic-message paths so makepkg doesn't warn about a
-    # reference to $srcdir, and remap the registry for reproducibility.
-    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/dbx=/build/dbx --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry"
+    # reference to $srcdir, and remap Cargo's registry and Git source trees
+    # for reproducibility.
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}/dbx=/build/dbx --remap-path-prefix=${srcdir}/.cargo/registry=/cargo-registry --remap-path-prefix=${srcdir}/.cargo/git=/cargo-git"
 
     # dbx-mcp pulls dbx-core with default-features=false, so the heavy
     # sqlcipher/duckdb native builds are skipped — only this crate is built.
