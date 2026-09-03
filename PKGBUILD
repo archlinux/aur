@@ -1,6 +1,6 @@
 # Maintainer: Teez <dmedoro13@gmail.com>
 pkgname=crux-shell-git
-pkgver=r128.c38d19c
+pkgver=r1.0000000
 pkgrel=1
 pkgdesc="A personal QuickShell desktop shell for Hyprland"
 arch=('any')
