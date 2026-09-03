@@ -1,7 +1,6 @@
-
 pkgname=mingw-w64-glpk
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Linear Programming Kit : solve LP, MIP and other problems. (mingw-w64)"
 arch=('any')
 url="http://www.gnu.org/software/glpk/glpk.html"
