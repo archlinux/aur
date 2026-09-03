@@ -2,9 +2,8 @@
 # Contributor: Majorx234 <majorx234@gmail.com>
 
 _pkgname='docling-ibm-models'
-_pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver='3.14.0'
+pkgver='4.0.1'
 pkgrel=1
 pkgdesc='AI models used by the Docling PDF conversion package'
 arch=('any')
@@ -12,21 +11,15 @@ url="https://github.com/docling-project/${_pkgname}"
 license=('MIT')
 depends=(
 	'python>=3.10'
-	'python<4.0'
 	'python-pytorch>=2.2.2'
 	'python-torchvision'
-	'python-jsonlines>=3.1.0'
 	'python-pillow>=10.0.0'
-	'python-tqdm>=4.64.0'
 	'python-huggingface-hub>=0.23.0'
 	'python-safetensors>=0.4.3'
-	'python-pydantic>=2.0.0'
-	'python-docling-core>=2.19.0'
 	'python-transformers>=5.4.0'
 	'python-numpy>=1.24.4'
-	'python-rtree>=1.0.0'
-	'python-accelerate>=1.2.1'
 )
+conflicts=('python-transformers=5.13.0')
 makedepends=(
 	'python-build'
 	'python-installer'
@@ -35,23 +28,25 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 optdepends=('python-opencv>=4.6.0: legacy TableFormer image preprocessing')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-b2sums=('126d21f2e38bd8ba7acec86e06495e84b8494961c1e2b7def08b4466bebbed17e5785f0598a4c35fd8a8d9a1bf1a0fd82f782b88da7c9de9f1958235ba2c57d8')
+source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('c0185c9bbc4d172c30635a6eabdfea1e6c77a0ba0264fea3714ebf26475b20adc19ded7c8aae739c78338e2fd48730fbf0407c350bd7e07c5b61068268ff60aa')
 
 build() {
-	cd -- "${_pipname}-${pkgver}" || return 1
+	cd -- "${_pkgname}-${pkgver}" || return 1
 	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd -- "${_pipname}-${pkgver}" || return 1
+	cd -- "${_pkgname}-${pkgver}" || return 1
 	HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 python -m pytest -q \
 		tests/test_common.py \
-		tests/test_listitem_marker_model.py
+		tests/test_matching_post_processor.py \
+		tests/test_matching_post_processor_orphans.py \
+		tests/test_tf_predictor_indexes.py
 }
 
 package() {
-	cd -- "${_pipname}-${pkgver}" || return 1
+	cd -- "${_pkgname}-${pkgver}" || return 1
 	python -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
 	install -D -m644 -- LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
