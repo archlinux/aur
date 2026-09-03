@@ -1,6 +1,6 @@
 pkgbase = typst-ide
 	pkgdesc = A modern IDE for Typst
-	pkgver = 1.2.6
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/gnoooo/typst-ide
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = typst-ide
 	depends = pango
 	depends = webkit2gtk-4.1
 	options = !strip
-	source = https://github.com/gnoooo/typst-ide/archive/v1.2.6.tar.gz
+	source = https://github.com/gnoooo/typst-ide/archive/v1.5.2.tar.gz
 	source = typst-ide.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
