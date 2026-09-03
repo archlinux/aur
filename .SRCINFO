@@ -1,7 +1,7 @@
 pkgbase = idrive-bin
 	pkgdesc = IDrive cloud backup for Linux - official interactive menu (idrive) and idevsutil engines
-	pkgver = 3.12.0
-	pkgrel = 2
+	pkgver = 3.15.0
+	pkgrel = 1
 	url = https://www.idrive.com/online-backup-linux-scripts
 	install = idrive-bin.install
 	arch = x86_64
@@ -10,12 +10,15 @@ pkgbase = idrive-bin
 	depends = curl
 	depends = cronie
 	depends = which
+	optdepends = valkey: Cloud Drive sync (redis-compatible server)
+	optdepends = python: Cloud Drive sync
+	optdepends = python-psutil: Cloud Drive sync
 	provides = idrive
 	conflicts = idrive
 	options = !strip
 	options = !emptydirs
 	options = staticlibs
-	source = idriveforlinux.bin::https://www.idrivedownloads.com/downloads/linux/download-for-linux/linux-bin/idriveforlinux.bin
+	source = idriveforlinux.bin::https://www.idrivedownloads.com/downloads/linux/linux-bin/idriveforlinux.bin
 	sha256sums = SKIP
 
 pkgname = idrive-bin

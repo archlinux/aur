@@ -1,7 +1,7 @@
 # Maintainer: Andy <this.is.apb@gmail.com>
 pkgname=idrive-bin
-pkgver=3.12.0
-pkgrel=2
+pkgver=3.15.0
+pkgrel=1
 pkgdesc="IDrive cloud backup for Linux - official interactive menu (idrive) and idevsutil engines"
 arch=('x86_64')
 url="https://www.idrive.com/online-backup-linux-scripts"
@@ -9,6 +9,12 @@ license=('LicenseRef-IDrive')
 # popt: required by the idevsutil/idevsutil_dedup transfer engines (not part of
 # base). curl/cronie/which: used by idrive at runtime for transfers and scheduling.
 depends=('popt' 'curl' 'cronie' 'which')
+# Cloud Drive (3.15.0+) is enabled from the idrive menu; its bundled install.sh
+# would otherwise pull these in itself via `pacman -Sy`, which is a partial
+# upgrade. Install them with pacman first instead.
+optdepends=('valkey: Cloud Drive sync (redis-compatible server)'
+            'python: Cloud Drive sync'
+            'python-psutil: Cloud Drive sync')
 provides=('idrive')
 conflicts=('idrive')
 # Vendored prebuilt binaries: don't strip/relink, and skip the static-lib check.
@@ -16,7 +22,7 @@ options=('!strip' '!emptydirs' 'staticlibs')
 install="$pkgname.install"
 # Upstream serves a single, unversioned "latest" installer, so the checksum
 # cannot be pinned; pkgver() below reads the real version out of it after download.
-source=("idriveforlinux.bin::https://www.idrivedownloads.com/downloads/linux/download-for-linux/linux-bin/idriveforlinux.bin")
+source=("idriveforlinux.bin::https://www.idrivedownloads.com/downloads/linux/linux-bin/idriveforlinux.bin")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -43,6 +49,17 @@ package() {
 	tar xzf "$deps/linuxbin/k3/$CARCH/idrive.tar.gz" --no-same-owner -C "$dest/bin/"
 	chmod 0755 "$dest/bin/idrive"
 	rm -rf "$deps/linuxbin"
+
+	# Same for the Cloud Drive binary (x86_64 only, hence the guard): the
+	# installer unpacks it next to the install.sh/uninstall.sh helpers that
+	# already ship in dependencies/cloud-drive, then drops the per-arch dir.
+	if [ -f "$deps/cloudbin/k3/$CARCH/cloud-drive.tar.gz" ]; then
+		tar xzf "$deps/cloudbin/k3/$CARCH/cloud-drive.tar.gz" \
+			--no-same-owner -C "$deps/cloud-drive/"
+		chmod 0755 "$deps/cloud-drive/cloud-drive"
+	fi
+	chmod 0755 "$deps/cloud-drive/install.sh" "$deps/cloud-drive/uninstall.sh"
+	rm -rf "$deps/cloudbin"
 
 	# Keep only the generic Linux transfer engines; the NAS-appliance variants
 	# (QNAP/Synology/Netgear/Vault) are useless on a desktop/server install.

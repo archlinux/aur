@@ -6,6 +6,14 @@ Run `idrive` and choose "Configure/Reconfigure your account" to set up your
 account, backup sets, and schedule. idrive stores its state under /opt and
 schedules root cron jobs, so it runs as root (the `idrive` command escalates
 via sudo automatically).
+
+Before enabling Cloud Drive from the menu, install its optional dependencies
+with pacman:
+
+    sudo pacman -S valkey python python-psutil
+
+The bundled Cloud Drive installer otherwise tries to fetch them itself with
+`pacman -Sy`, which is a partial upgrade and can break the system.
 EOF
 }
 
@@ -24,6 +32,7 @@ idrive-bin removed. Account configuration, logs, and any backup schedule it
 created at first run are NOT removed automatically. To fully purge:
 
     sudo rm -rf /opt/IDriveForLinux
+    sudo rm -rf /opt/cloud-drive   # if Cloud Drive was enabled
     sudo crontab -l        # check for and remove any idrive cron entries
 
 EOF
