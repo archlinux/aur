@@ -1,6 +1,6 @@
 pkgname=mingw-w64-abseil-cpp
 pkgver=20260817.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Collection of C++ library code designed to augment the C++ standard library (mingw-w64)'
 arch=('any')
 url='https://abseil.io'
