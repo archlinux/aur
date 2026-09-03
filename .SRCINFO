@@ -1,0 +1,37 @@
+pkgbase = kotonoha
+	pkgdesc = Wayland lyrics overlay for MPRIS-compatible media players
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/locez/kotonoha
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	license = MIT AND ISC
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = qt6-svg
+	makedepends = qt6-wayland
+	makedepends = pkgconf
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-scikit-build-core
+	makedepends = python-wheel
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-base
+	depends = layer-shell-qt
+	depends = wayland
+	depends = python
+	depends = python-aiohttp
+	depends = python-dbus-fast
+	depends = python-mutagen
+	depends = python-pyqt6
+	depends = python-qasync
+	provides = kotonoha
+	conflicts = kotonoha
+	source = kotonoha::git+https://github.com/locez/kotonoha.git#tag=v0.2.0
+	sha256sums = 0f948acf4e576e5366765b7c8ca6a9b8a46914100f1fc9bdd49cf93cdb2891f9
+
+pkgname = kotonoha
