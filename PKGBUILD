@@ -2,7 +2,7 @@
 pkgname=python-yfinance
 _name=${pkgname#python-}
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Yahoo! Finance market data downloader (+faster Pandas Datareader)"
 arch=(any)
 url=https://github.com/ranaroussi/yfinance
@@ -35,7 +35,6 @@ makedepends=(
     python-wheel
 )
 checkdepends=(
-    python-cloudpickle
     python-pytest
     python-scikit-learn
     python-scipy
