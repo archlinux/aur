@@ -1,9 +1,9 @@
 # Maintainer: Cyril Waechter <cyril[at]biminsight[dot]ch>
 pkgname=ifcopenshell
-_pkgver=0.8.6-alpha2607231304
+_pkgver=0.9.0-alpha2609021508
 pkgver=${_pkgver//-/_}
 _vername=bonsai
-pkgrel=2
+pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="https://ifcopenshell.org/"
@@ -67,24 +67,18 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
   "git+https://github.com/svgpp/svgpp.git"
   "bpypolyskel-1.1.3.tar.gz::https://github.com/prochitecture/bpypolyskel/archive/refs/tags/v1.1.3.tar.gz"
 
-  "001-skip-install-python-wrapper.patch::${_patch_url_prefix}/0f9398eca788c3c14b148a5ef3d6cb63b6d9cd90.patch"
-  "002-add-shared-libs.patch::${_patch_url_prefix}/2758cd04359e3dee8cdc9abea7263587a1ac720c.patch"
-  "003-fix-boost-export-config.patch::${_patch_url_prefix}/ba313e55ea96ce280a02c99a8e249c5d475311d2.patch"
-  "004-use-spdx-license.patch::${_patch_url_prefix}/67cad605bbea4af0d086fddc2adf7b1bc143ebdb.patch"
-  "005-fix-boost-explicit-optional.patch::${_patch_url_prefix}/f68094688ce7106597a656f8bc31295bc074decd.patch"
-  "006-fix-swig-45-compat.patch"
+  001-Skip-installing-Python-source-modules.patch::${_patch_url_prefix}/1903ed7d.patch
+  002-Drop-Boost.System-from-exported-config.patch::${_patch_url_prefix}/51f6e60.patch
+  003-Use-SPDX-license-expressions.patch::${_patch_url_prefix}/a093c3486.patch
   "007-fix-pyradiance-chmod.patch"
 
 )
-sha256sums=('07d1babebde5c8b53092ad54f7091de3bce0208b4af85ce514280a181c820441'
+sha256sums=('26102b5869ce9cb285d770add1bb439aeeadaec2fea1ca293bc7242114bfbdad'
             'SKIP'
             'c774454e31757796cf02078cc04d4f27b6180d718e1edab4148340879a6b64c5'
-            'c39481f101cb8f6f3a6ea7301863d16844cee38736835143c71fe52010534077'
-            'e3396fedc745d1fdc8428a9171376fc66bcbb0e834f5757f68ba715f020e7d22'
-            'afbec2fb625774c407c77151a17c9c47d328b5e6febd984f6d7a73e201bdd095'
-            'b54ec67a6bee7f61ae7ae3a764fdfb6152d44709cd3c351371d7d5e2b00fbbbf'
-            'a1d3fc8e9e3e5c84f8736567fd90e50b4ff95c5e190ee908a388106b8e0910be'
-            'f0997e276e3e344184321a7a6682d6d20b1b1193fc53e91a45498ac76acd1fec'
+            '13b11acbf62ba566addf2ad774c52d292c3f7032e7843e4eda36e8f785ae8c4f'
+            '40bb40efb4bd8e7d39efcfd64e6dad969b958840afd1d2abdae8e97d43008f86'
+            'c7ae9b4fc2c2edbba4d47b83f437fb75cb94d8f6857f7504d98ab8d9790f23a8'
             '32f28c4f31877a871ea1ce182e78e1e84e05030db2ab609b10dd9de48d34f7c7')
 options=("!lto")
 
