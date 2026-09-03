@@ -3,7 +3,7 @@
 # shellcheck disable=2148
 
 pkgname=diamond
-pkgver=2.2.4
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="High performance sequence aligner for protein and translated DNA searches with big sequence data. https://doi.org/10.1038/s41592-021-01101-x"
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('gcc-libs' 'zlib' 'zstd' 'glibc' 'sqlite')
 makedepends=('cmake' 'mold')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bbuchfink/diamond/archive/v$pkgver.tar.gz"
         "fix_crash.patch")
-sha256sums=('11c593677b67ef541095122c243eed384bb9933da12fffc676ad7b35a3e4dc44'
-            '44de13da6132aaac050eb1e0988e658999e99540e6ff55ed5a1d0816529c9112')
+sha256sums=('4be3298f3331bece6a5a436987f2c9965b3807ade89fb808b89d905b6f6291e4'
+            '9ae376442a9eece52b246549daf30a8fd1becd73bd40da25928fdd9590eb80d2')
 
 prepare() {
     cd $pkgname-$pkgver
@@ -34,7 +34,7 @@ build() {
     -DWITH_ZSTD=ON \
     -DZSTD_LIBRARY=/usr/lib/libzstd.so \
     -DZLIB_INCLUDE_DIR=/usr/include \
-    -W no-dev
+    -W no-author
   cmake --build build
 }
 
