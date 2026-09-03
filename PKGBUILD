@@ -4,6 +4,7 @@ pkgname=ungoogled-chromium-ru-ca-bin
 pkgver=151.0.7922.173
 pkgrel=1
 pkgdesc="Custom binary build of ungoogled-chromium with support for TLS certificates issued by CA of Russian Ministry of Digital Development"
+keywords=('chromium' 'ungoogled-chromium' 'browser' 'russia' 'yandex' 'yandex-browser')
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
 license=('BSD')
