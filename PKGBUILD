@@ -1,7 +1,7 @@
 # Maintainer: gnoooo
 
 pkgname=typst-ide
-pkgver=1.4.3
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A modern IDE for Typst"
 arch=('x86_64')
@@ -45,7 +45,7 @@ build() {
   export CFLAGS="${CFLAGS/-flto=auto}"
   export RUSTFLAGS="${RUSTFLAGS:-} -C linker=cc -C link-arg=-Wl,--no-as-needed"
 
-  cargo build --release -p typst-ide
+  cargo build --release -p typst-ide-app
 }
 
 package() {
