@@ -1,7 +1,7 @@
 pkgbase = voe-dl-git
 	pkgdesc = A Python-based downloader for videos hosted on voe.sx.
 	pkgver = 1.9.0.r2.gb82c920
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/p4ul17/voe-dl
 	arch = any
 	license = GPL-3.0-only
@@ -16,7 +16,7 @@ pkgbase = voe-dl-git
 	depends = python-wget
 	provides = voe-dl
 	conflicts = voe-dl
-	source = voe-dl::git+https://github.com/p4ul17/voe-dl.git
+	source = voe-dl-p4ul17::git+https://github.com/p4ul17/voe-dl.git
 	sha256sums = SKIP
 
 pkgname = voe-dl-git

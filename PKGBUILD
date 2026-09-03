@@ -1,8 +1,9 @@
 # Maintainer: Vincent Schult <viboschu@gmail.com>
 
 pkgname=voe-dl-git
+_srcname=voe-dl-p4ul17
 pkgver=1.9.0.r2.gb82c920
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python-based downloader for videos hosted on voe.sx."
 arch=('any')
 url="https://github.com/p4ul17/voe-dl"
@@ -26,21 +27,21 @@ makedepends=(
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-source=("${pkgname%-git}::git+$url.git")
+source=("${_srcname}::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver(){
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${_srcname}"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${_srcname}"
   python -m build --wheel --no-isolation
 }
 
 package(){
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${_srcname}"
 
   python -m pip install --root="$pkgdir" --prefix=/usr --no-deps --no-index --find-links=dist --ignore-installed --no-compile --root-user-action=ignore voe-dl
 }
