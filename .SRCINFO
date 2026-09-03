@@ -1,5 +1,5 @@
 pkgbase = shotdock
-	pkgdesc = macOS CleanShot & Ray.so style floating screenshot and screen recording toolbar for Wayland
+	pkgdesc = Modern floating screenshot and screen recording toolbar for Wayland
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/sirrryasir/shotdock
@@ -20,6 +20,6 @@ pkgbase = shotdock
 	optdepends = wf-recorder: Screen and region video recording
 	optdepends = swappy: Screenshot annotation editor
 	source = shotdock-0.1.0.tar.gz::https://github.com/sirrryasir/shotdock/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 01e568320da4ff8efbee575e59604674a888abdc7dcd721a60d793f8b95b3e56
+	sha256sums = 470b6c8439f65d2dfcdff5750a3bfa58cdacb6fef4169e9d119eb9893707b41d
 
 pkgname = shotdock

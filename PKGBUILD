@@ -2,7 +2,7 @@
 pkgname=shotdock
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="macOS CleanShot & Ray.so style floating screenshot and screen recording toolbar for Wayland"
+pkgdesc="Modern floating screenshot and screen recording toolbar for Wayland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/sirrryasir/shotdock"
 license=('MIT')
@@ -15,7 +15,7 @@ optdepends=(
 )
 makedepends=('cargo' 'git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('01e568320da4ff8efbee575e59604674a888abdc7dcd721a60d793f8b95b3e56')
+sha256sums=('470b6c8439f65d2dfcdff5750a3bfa58cdacb6fef4169e9d119eb9893707b41d')
 
 prepare() {
     cd "$pkgname-$pkgver"
