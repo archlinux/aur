@@ -1,0 +1,16 @@
+pkgbase = uutils-grep-bin
+	pkgdesc = A Rust implementation of GNU Grep
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/uutils/grep
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = uutils-grep=0.2.0
+	conflicts = uutils-grep
+	options = !debug
+	source_x86_64 = uu_grep-x86_64-unknown-linux-gnu-0.2.0.tar.xz::https://github.com/uutils/grep/releases/download/0.2.0/uu_grep-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 7ffdf7ef9fee0fc07b6a389f14fad0b5236011cf1d08885ffe69f0831f2923e5
+
+pkgname = uutils-grep-bin
