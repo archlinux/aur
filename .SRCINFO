@@ -1,0 +1,36 @@
+pkgbase = bluez-switch2
+	pkgdesc = Bluetooth LE transport support for Nintendo Switch 2 Joy-Con controllers on Linux
+	pkgver = 5.87.switch2.0.1.0
+	pkgrel = 1
+	url = https://github.com/novakpetya/bluez-switch2
+	install = bluez-switch2.install
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = alsa-lib
+	makedepends = cups
+	makedepends = dbus
+	makedepends = ell
+	makedepends = git
+	makedepends = json-c
+	makedepends = libical
+	makedepends = python-docutils
+	makedepends = python-pygments
+	makedepends = readline
+	makedepends = systemd
+	depends = alsa-lib
+	depends = dbus
+	depends = glib2
+	depends = glibc
+	depends = systemd-libs
+	provides = bluez=5.87
+	conflicts = bluez
+	options = !debug
+	backup = etc/bluetooth/main.conf
+	backup = etc/bluetooth/input.conf
+	backup = etc/bluetooth/network.conf
+	source = bluez::git+https://github.com/bluez/bluez.git#tag=5.87
+	source = bluez-switch2::git+https://github.com/novakpetya/bluez-switch2.git#tag=v0.1.0
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bluez-switch2

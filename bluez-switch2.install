@@ -1,0 +1,9 @@
+post_install() {
+    echo "Restart bluetooth.service to load the new bluetoothd:"
+    echo "  sudo systemctl daemon-reload"
+    echo "  sudo systemctl restart bluetooth.service"
+}
+
+post_upgrade() {
+    post_install
+}
