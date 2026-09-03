@@ -1,0 +1,17 @@
+pkgbase = wayoled-git
+	pkgdesc = OLED care daemon for wlroots Wayland compositors.
+	pkgver = 0.1.0.r1.g0ad43b0
+	pkgrel = 1
+	url = https://github.com/Youwes09/WayOLED
+	arch = x86_64
+	license = MIT
+	makedepends = meson
+	makedepends = git
+	depends = wayland
+	depends = glibc
+	provides = wayoled
+	conflicts = wayoled
+	source = wayoled-git::git+https://github.com/Youwes09/WayOLED.git
+	sha256sums = SKIP
+
+pkgname = wayoled-git
