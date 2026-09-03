@@ -1,6 +1,6 @@
 pkgbase = picot-bin
 	pkgdesc = Local Codex-style desktop GUI for the Pi coding agent
-	pkgver = 0.4.2
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/shixin-guo/picot
 	arch = x86_64
@@ -24,9 +24,10 @@ pkgbase = picot-bin
 	replaces = pi-studio-bin
 	options = !strip
 	options = !debug
-	source_x86_64 = picot-bin-0.4.2-x86_64.deb::https://github.com/shixin-guo/picot/releases/download/v0.4.2/Picot_0.4.2_amd64.deb
-	sha256sums_x86_64 = 80adaab6b1cf4cad68f6a7b5d4d380d8b5ef835248f484956b0a9aa3753de635
-	source_aarch64 = picot-bin-0.4.2-aarch64.deb::https://github.com/shixin-guo/picot/releases/download/v0.4.2/Picot_0.4.2_arm64.deb
-	sha256sums_aarch64 = 8ef0a2f048e51d39f5224b5036eeb36eb6eae47dbb24bb4ccdb874f0e04c6fca
+	source_x86_64 = picot-bin-0.5.1-x86_64.deb::https://github.com/shixin-guo/picot/releases/download/v0.5.1/Picot_0.5.1_amd64.deb
+	sha256sums_x86_64 = ffeae8db1839d1c88023c7ca5b3641d89bf91d064360fae48e1c6ad5611aae87
+	source_aarch64 = picot-bin-0.5.1-aarch64.deb::https://github.com/shixin-guo/picot/releases/download/v0.5.1/Picot_0.5.1_arm64.deb
+	sha256sums_aarch64 = 2018bddab48fb7228d5d828b3badd126b087b56d3a9cd8bb005dd28f8ada6a92
 
 pkgname = picot-bin
+
