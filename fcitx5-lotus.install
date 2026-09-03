@@ -5,8 +5,6 @@ green='\e[1;32m'
 
 post_install() {
     echo -e "${blue}--- Cấu hình Bộ gõ Lotus ---${all_off}"
-    
-    modprobe uinput || true
     udevadm control --reload-rules
     udevadm trigger
     
