@@ -5,3 +5,4 @@ pkg
 *.tar.gz
 *.tar.zst
 *.log
+*.patch

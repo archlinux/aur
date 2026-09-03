@@ -2,7 +2,7 @@
 
 pkgname=tp_smapi-dkms
 pkgver=0.45
-pkgrel=2
+pkgrel=3
 pkgdesc="DKMS controlled modules for ThinkPad's SMAPI functionality"
 arch=(any)
 url="https://github.com/linux-thinkpad/tp_smapi"
@@ -14,12 +14,15 @@ options=(!strip)
 source=(
   "$pkgname-$pkgver.tgz::$url/releases/download/tp-smapi/$pkgver/${pkgname%-*}-$pkgver.tgz"
   'dkms.conf'
+  strncpy_strscpy.patch::https://patch-diff.githubusercontent.com/raw/linux-thinkpad/tp_smapi/pull/81.patch
 )
 sha256sums=('627b15affc3ed993d633be1421b66db8c96789464390029b86bb16b00239bb24'
-            'e5874442a51bc1cb0c90c6e9289ebe4b1cccf4ea60716c823d0beaa5ce1b361b')
+            'e5874442a51bc1cb0c90c6e9289ebe4b1cccf4ea60716c823d0beaa5ce1b361b'
+            '666520539892153574d415df43d2a3ac7cdccf1593691cc48334e2ae3d4ba5f3')
 
 prepare() {
   cd "${pkgname%-*}-$pkgver"
+  patch -p1 < ../strncpy_strscpy.patch
   sed -ri 's/^(PACKAGE_VERSION=).*/\1'${pkgver}'/g' "${srcdir}"/dkms.conf
 }
 
