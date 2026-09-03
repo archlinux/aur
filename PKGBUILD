@@ -3,12 +3,12 @@
 # other channel. Version + checksums are bumped automatically by the
 # publish-aur job in the repo's release workflow (updpkgsums).
 pkgname=agent-console-bin
-pkgver=0.75.0
+pkgver=0.76.0
 pkgrel=1
 pkgdesc="Minimalist AI-native console for directing coding agents inside a repository"
 arch=('x86_64')
 url="https://github.com/cyl-castillo/agent-console"
-license=('MIT')
+license=('AGPL-3.0-only')
 depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'alsa-lib' 'nodejs' 'git')
 optdepends=('npm: to install the Claude Code CLI (npm i -g @anthropic-ai/claude-code)')
 provides=('agent-console')
@@ -16,8 +16,8 @@ conflicts=('agent-console')
 options=('!strip')
 source=("$url/releases/download/v$pkgver/Agent.Console_${pkgver}_amd64.deb"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/cyl-castillo/agent-console/v$pkgver/LICENSE")
-sha256sums=('46558c3b416a8cf5e4af544c3261370e096a100149e39159f6e84bdfea6fe900'
-            'bdf1d8fe99335432f1cf4e9bf20da2795f3bdb11f72f84e2a2edb5037664ad8e')
+sha256sums=('7815756c23ce7b1344de5cf400166ee5ff3cf624ba9ee24a9f415e68ba8206d5'
+            '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
 
 package() {
     # makepkg already unpacked the .deb (ar archive) into $srcdir; the payload
