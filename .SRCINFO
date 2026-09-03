@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-suitesparse
 	pkgdesc = A collection of sparse matrix libraries (mingw-w64)
 	pkgver = 7.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://people.engr.tamu.edu/davis/suitesparse.html
 	arch = any
 	license = GPL
