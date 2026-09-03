@@ -1,6 +1,6 @@
 pkgbase = ee-bin
 	pkgdesc = A quick simple editor for your needs. Aims to be smooth like butter when opening large files.
-	pkgver = 0.11.5
+	pkgver = 0.11.8
 	pkgrel = 1
 	url = https://github.com/ffimnsr/ee
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ee-bin
 	provides = ee
 	conflicts = ee
 	options = !strip
-	source_x86_64 = ee-x86_64-0.11.5.tgz::https://github.com/ffimnsr/ee/releases/download/v0.11.5/ee-0.11.5-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = a3beb333bed46c0ed38008c5afb2a29aff7984f0fba11626fcc168bb95b57390
+	source_x86_64 = ee-x86_64-0.11.8.tgz::https://github.com/ffimnsr/ee/releases/download/v0.11.8/ee-0.11.8-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = eacc1240b2ac3be559f294d5dfba9acea788835106fa20b71100c16b5167880b
 
 pkgname = ee-bin
