@@ -1,7 +1,7 @@
 # Maintainer: Aditya Hebballe <adityahebballe@proton.me>
 pkgname=harbor-stremio-beta-bin
 _pkgname=harbor
-pkgver=0.9.121
+pkgver=0.9.122
 pkgrel=1
 pkgdesc='A Stremio client built for adventure (beta binary release)'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('ffmpeg' 'gst-libav' 'gst-plugins-bad' 'gst-plugins-good' 'gtk3' 'libay
 makedepends=('libarchive')
 provides=('harbor-stremio-beta' 'harbor')
 conflicts=('harbor-stremio-bin' 'harbor-stremio' 'harbor' 'harbor-stremio-git')
-source=("Harbor_${pkgver}-${pkgrel}_amd64.deb::https://github.com/harborstremio-linux/harbor-linux-builds/releases/download/beta-v0.9.121/Harbor_0.9.121-1_amd64.deb")
-sha256sums=('18d4f08a3199d76d83fb84a2a2756905ba50ba4c78db0ba8e722ca73d577507d')
+source=("Harbor_${pkgver}-${pkgrel}_amd64.deb::https://github.com/harborstremio-linux/harbor-linux-builds/releases/download/beta-v0.9.122/Harbor_0.9.122-1_amd64.deb")
+sha256sums=('8dae2293632b2496b36b215f1d2444d61316de011b84ed64b26aaea15b3bf04c')
 package() {
   local extract="$srcdir/deb-extract"
   rm -rf "$extract"; mkdir -p "$extract"
