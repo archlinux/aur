@@ -1,6 +1,6 @@
 pkgbase = proton-cli-bin
 	pkgdesc = Unofficial, end-to-end encrypted CLI for Proton Mail, Drive, Calendar, Pass and Contacts.
-	pkgver = 3.1.0
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/roman-16/proton-cli
 	license = MIT
@@ -9,10 +9,10 @@ pkgbase = proton-cli-bin
 	conflicts = proton-cli
 	provides = proton-cli
 	arch = aarch64
-	source_aarch64 = https://github.com/roman-16/proton-cli/releases/download/v3.1.0/proton-cli_3.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8e3744ce24271663c5763d55137450c012a660ca8c8bdadcfb883c07bc9cc552
+	source_aarch64 = https://github.com/roman-16/proton-cli/releases/download/v3.2.0/proton-cli_3.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3f297addeea6c9314efcb5529d81c36537d23f4c1d9b383ec246edcd5f3a1bd6
 	arch = x86_64
-	source_x86_64 = https://github.com/roman-16/proton-cli/releases/download/v3.1.0/proton-cli_3.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = bfd8655b603bfac96c130f41656a4abd89a22642c8320baaf5ee7ff20f04ef31
+	source_x86_64 = https://github.com/roman-16/proton-cli/releases/download/v3.2.0/proton-cli_3.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = dda4a0832cd25a92d02521067dc8c78af5528abdf9d868ba25f20c8acf47e365
 	
 pkgname = proton-cli-bin
