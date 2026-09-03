@@ -1,0 +1,37 @@
+_skwd_user_systemctl() {
+    local runtime uid owner record user
+
+    for runtime in /run/user/[0-9]*; do
+        [ -d "$runtime" ] || continue
+        [ ! -L "$runtime" ] || continue
+        [ -S "$runtime/bus" ] || continue
+        uid=${runtime##*/}
+        owner=$(stat -c %u "$runtime" 2>/dev/null) || continue
+        [ "$owner" = "$uid" ] || continue
+        record=$(getent passwd "$uid") || continue
+        user=${record%%:*}
+        runuser -u "$user" -- env \
+            XDG_RUNTIME_DIR="$runtime" \
+            DBUS_SESSION_BUS_ADDRESS="unix:path=$runtime/bus" \
+            systemctl --user "$@" >/dev/null 2>&1 || true
+    done
+}
+
+pre_remove() {
+    local attempt=0
+
+    _skwd_user_systemctl disable --now skwd-walld.service
+    pkill -TERM -x skwd-walld >/dev/null 2>&1 || true
+    while pgrep -x skwd-walld >/dev/null 2>&1 && [ "$attempt" -lt 50 ]; do
+        sleep 0.1
+        attempt=$((attempt + 1))
+    done
+    pkill -KILL -x skwd-walld >/dev/null 2>&1 || true
+    return 0
+}
+
+post_remove() {
+    _skwd_user_systemctl daemon-reload
+    _skwd_user_systemctl reset-failed skwd-walld.service
+    return 0
+}

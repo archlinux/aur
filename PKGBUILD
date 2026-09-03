@@ -57,6 +57,7 @@ package_skwd-wall-v2-bin() {
 
 package_skwd-deck-bin() {
   pkgdesc='Prebuilt control daemon and tools for the Skwd wallpaper suite'
+  install=skwd-deck.install
   depends=(gcc-libs skwd-paper-bin=1.0.0_beta.4)
   optdepends=('skwd-deck-steamworks: Steam Client Workshop backend' 'skwd-lens-bin: semantic wallpaper search' 'steamcmd: alternative Steam Workshop backend')
   provides=("skwd-deck=$pkgver")
