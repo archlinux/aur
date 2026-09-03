@@ -47,6 +47,13 @@ package() {
 	# The Electron sandbox helper must be setuid root.
 	chmod 4755 "$pkgdir/opt/IDriveForLinux/chrome-sandbox"
 
+	# The Cloud Sync daemon reads this seed blob (JUNK_PATH in sync-daemon);
+	# only the upstream postinst writes it, so lay it down here verbatim.
+	install -d "$pkgdir/opt/IDriveForLinux/.config/cloud-drive"
+	printf '%s' 'aJF6Q4IP7IDO1moUhUHwVQ==:Y7B0vLir0nPK/saicnTvGldpsR8HoJWuc5/dVW0A0Xo=' \
+		> "$pkgdir/opt/IDriveForLinux/.config/cloud-drive/.junk.txt"
+	chmod 644 "$pkgdir/opt/IDriveForLinux/.config/cloud-drive/.junk.txt"
+
 	# Launcher on PATH (the .desktop already points at the absolute path).
 	install -d "$pkgdir/usr/bin"
 	ln -s /opt/IDriveForLinux/idriveforlinux "$pkgdir/usr/bin/idriveforlinux"
