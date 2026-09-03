@@ -4,7 +4,7 @@ pkgbase=dms-shell-git
 _pkgbase=${pkgbase%-git}
 _pkgname=DankMaterialShell
 pkgname=($_pkgbase-git)
-pkgver=1.5.0.r401.g778efb8
+pkgver=1.6.0.r1.g8a871aa
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -36,7 +36,7 @@ source=(
         "com.danklinux.dms.desktop"
         "com.danklinux.dms.notepad.desktop")
 sha256sums=('SKIP'
-            '83587bdffdead80bf25f8164fedb267138edae12ca73da4be7833650ff4124c6'
+            '0fae6605c45847b2c81da62d0cc98b936eb17c2643f6f269934198d66a18d347'
             '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
             '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
             '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
@@ -44,6 +44,7 @@ sha256sums=('SKIP'
             '16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d'
             '52a575af9fc0eaad3e320a4374203653a7add7c2c427bd069cb3bd9a8eff1183'
             '9d79626368818526b563687e56203cad97dcd9482a3e099e8f29cfc317c0f2ae')
+
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags --abbrev=7 --match="v*" HEAD 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || echo "0.0.0.r0.$(git rev-parse --short=7 HEAD)"
