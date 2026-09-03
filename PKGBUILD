@@ -1,7 +1,7 @@
 pkgname=mingw-w64-mpfr
 _pkgver=4.2.2
 pkgver=$_pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiple-precision floating-point library (mingw-w64)"
 arch=(any)
 url="http://www.mpfr.org"
