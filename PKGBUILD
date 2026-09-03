@@ -6,7 +6,7 @@
 
 pkgname=btrfs-progs-git
 _gitname=${pkgname%-git}
-pkgver=7954_7.1_r27_gdca08741
+pkgver=7978_7.1_r51_gfac7d38d
 pkgrel=1
 pkgdesc="Btrfs filesystem utilities"
 arch=("i686" "x86_64")
@@ -69,7 +69,7 @@ build() {
   cd ${_gitname}
   ./configure --prefix=/usr
   make
-  make hash-speedtest
+  make hash-speedtest btrfs-sb-mod
 }
 
 package() {
@@ -89,6 +89,15 @@ package() {
 
   # install hash-speedtest
   install -Dm755 hash-speedtest "${pkgdir}/usr/bin/hash-speedtest"
+
+  # install btrfs-corrupt-block
+  install -Dm755 btrfs-corrupt-block "${pkgdir}/usr/bin/btrfs-corrupt-block"
+
+  # install btrfs-sb-mod
+  install -Dm755 btrfs-sb-mod "${pkgdir}/usr/bin/btrfs-sb-mod"
+
+  # install standalone btrfsck binary (NOTE: by default `btrfsck` is a symlink to `btrfs check`)
+  #install -Dm755 btrfsck "${pkgdir}/usr/bin/btrfsck"
 }
 
 check() {
