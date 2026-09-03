@@ -1,0 +1,21 @@
+pkgbase = leothecat
+	pkgdesc = A terminal cat companion named Leo with 25+ moods, achievements, and interactive commands!
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/homekhaneh8-art/leothecat
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	optdepends = fish: for fish shell completions
+	optdepends = zsh: for zsh shell completions
+	optdepends = bash: for bash completions
+	provides = leothecat
+	source = leothecat-2.0.0.tar.gz::https://github.com/homekhaneh8-art/leothecat/archive/v2.0.0.tar.gz
+	sha256sums = df8210ddceb3ab4f15d9b3d8e28257a5ee5e6eaa405f0ac03dc7c1df4e19f2a0
+
+pkgname = leothecat

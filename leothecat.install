@@ -1,0 +1,40 @@
+post_install() {
+    echo ""
+    echo "🐱 ██╗     ███████╗ ██████╗     ██╗  ██╗ █████╗ ███████╗"
+    echo "🐱 ██║     ██╔════╝██╔═══██╗    ██║  ██║██╔══██╗██╔════╝"
+    echo "🐱 ██║     █████╗  ██║   ██║    ███████║███████║███████╗"
+    echo "🐱 ██║     ██╔══╝  ██║   ██║    ██╔══██║██╔══██║╚════██║"
+    echo "🐱 ███████╗███████╗╚██████╔╝    ██║  ██║██║  ██║███████║"
+    echo "🐱 ╚══════╝╚══════╝ ╚═════╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝"
+    echo ""
+    echo "🐱 Leo has been installed successfully!"
+    echo ""
+    echo "📖 Quick start:"
+    echo "   leothecat          # Meet Leo!"
+    echo "   leothecat help     # Show all commands"
+    echo "   leothecat feed     # Feed Leo"
+    echo "   leothecat play     # Play with Leo"
+    echo "   leothecat train    # Train Leo (improves trick skill)"
+    echo "   leothecat explore  # Send Leo on an adventure"
+    echo "   leothecat achievements  # View unlocked achievements"
+    echo ""
+    echo "✨ Easter eggs: Try renaming to 'Garfield' or 'Nyan'!"
+    echo "📁 Config saved at: ~/.config/leothecat/"
+    echo ""
+    echo "Have fun with your new terminal cat companion! 🐾"
+}
+
+post_upgrade() {
+    echo ""
+    echo "🐱 Leo has been updated to version ${2}!"
+    echo "Check 'leothecat help' for new features!"
+    echo ""
+}
+
+pre_remove() {
+    echo ""
+    echo "😢 Are you sure you want to remove Leo?"
+    echo "Your config will remain at ~/.config/leothecat/"
+    echo "To completely remove: rm -rf ~/.config/leothecat/"
+    echo ""
+}
