@@ -1,0 +1,56 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index bfc2c9c..5a477f7 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -10,28 +10,30 @@ arch=('x86_64')
+ license=('MIT')
+ depends=('libpsl' 'lib32-glibc' 'lib32-libidn2' 'lib32-libunistring')
+ makedepends=('git' 'libxslt' 'meson' 'ninja' 'python' 'publicsuffix-list')
++options=(staticlibs '!lto')
+ provides=('libpsl.so')
+ source=(https://github.com/rockdaboot/libpsl/releases/download/${pkgver}/libpsl-${pkgver}.tar.gz)
+ sha512sums=('c14d575cecc0f1693894dd79565b6b9220084ddfa43b908a1cefe16d147cdd5ec47796eb0c2135e2f829a951abaf39d8a371ab5c1352f57b36e610e25adf91f5')
+
+ prepare() {
+   cd libpsl-$pkgver
+-
+-  rm -frv list
+ }
+
+ build() {
+   export CC='gcc -m32'
+   export CXX='g++ -m32'
+-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
++  export CFLAGS+=" -fPIC"
++  export CXXFLAGS+=" -fPIC"
++  export PKG_CONFIG_PATH=''
+
+   arch-meson libpsl-$pkgver build \
+     --libdir=/usr/lib32 \
+-    -Dbuiltin=true \
+-    -Druntime=libidn2 \
+-    -Dpsl_file=/usr/share/publicsuffix/effective_tld_names.dat \
+-    -Dpsl_distfile=/usr/share/publicsuffix/public_suffix_list.dat \
+-    -Dpsl_testfile=/usr/share/publicsuffix/test_psl.txt
++    -Ddefault_library=static \
++    -Db_staticpic=true \
++    -Dbuiltin=false \
++    -Druntime=no \
++    -Ddocs=false \
++    -Dtests=false
+   ninja -C build
+ }
+
+@@ -41,10 +43,9 @@ check() {
+
+ package() {
+   DESTDIR="${pkgdir}" ninja -C build install
+-  rm -rf "${pkgdir}"/usr/{bin,include,share}
++  rm -rf "${pkgdir}"/usr/{bin,share}
+
+-  install -dm 755 "${pkgdir}"/usr/share/licenses
+-  ln -s libpsl "${pkgdir}"/usr/share/licenses/lib32-libpsl
++  install -Dm644 libpsl-$pkgver/COPYING "${pkgdir}/usr/share/licenses/lib32-libpsl/COPYING"
+ }
+
+ # vim: ts=2 sw=2 et:

@@ -1,0 +1,40 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 7d17447..dc36804 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -11,7 +11,8 @@ url=https://sourceware.org/libffi/
+ _url="https://github.com/libffi/libffi"
+ license=(MIT)
+ depends=(lib32-glibc $_name=$pkgver)
+-provides=(libffi.so)
++options=(staticlibs '!lto')
++# static-only compat build
+ source=($_name-$pkgver.tar.gz::$_url/archive/refs/tags/v$pkgver.tar.gz)
+ sha256sums=('bf40d752d8f5fd4505bcd1c7d4208ea87fd12c91f087e359651c776748352dc0')
+ b2sums=('1130b4d585fc56543291df3550daa9085b185c2162817793d0caa107bf68bc421a9f1be9f62a7d3b52fda26b120dd6260821c80e394af7d546688aaad4b162a5')
+@@ -27,13 +28,15 @@ build() {
+     --build=i686-pc-linux-gnu
+     --disable-exec-static-tramp
+     --disable-multi-os-directory
+-    --disable-static
++    --disable-shared
++    --enable-static
++    --with-pic
+     --enable-pax_emutramp
+     --libdir=/usr/lib32
+     --prefix=/usr
+   )
+
+-  export CFLAGS+=" -m32"
++  export CFLAGS+=" -m32 -fPIC"
+   export CXXFLAGS+=" -m32"
+   export LDFLAGS+=" -m32"
+   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+@@ -46,7 +49,7 @@ build() {
+ package() {
+   cd $_name-$pkgver
+   make DESTDIR="$pkgdir" install
+-  rm -r "$pkgdir"/usr/{include,share}
++  rm -r "$pkgdir"/usr/share
+   install -Dm 644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
+ }

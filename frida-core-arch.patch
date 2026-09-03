@@ -1,0 +1,32 @@
+--- a/subprojects/frida-core/compat/build.py
++++ b/subprojects/frida-core/compat/build.py
+@@ -515,11 +515,16 @@
+                     options += [f"-Dfrida_version={state.frida_version}"]
+
+             host_machine = MachineSpec(state.host_os, group.arch, state.host_config, group.triplet)
++            compat_environ = {**build_env, **group.extra_environ}
++            compat_pkg_config = os.environ.get("FRIDA_COMPAT_PKG_CONFIG")
++            if compat_pkg_config is not None and group.arch == "x86":
++                compat_environ["PKG_CONFIG"] = compat_pkg_config
++                compat_environ["PKG_CONFIG_FOR_BUILD"] = os.environ.get("PKG_CONFIG", "pkg-config")
++            compat_sdk = os.environ.get("FRIDA_COMPAT_SDK")
++            if compat_sdk is not None and state.host_os == "linux" and group.arch == "x86_64":
++                compat_environ["FRIDA_SDK_PREFIX"] = compat_sdk
+
+-            if state.glib_flavor == "upstream":
+-                allowed = None
+-            else:
+-                allowed = state.allowed_prebuilds
++            allowed = state.allowed_prebuilds
+
+             if state.glib_flavor == "upstream":
+                 forwarded_options = [o for o in options if not is_stripped_compat_option(o)]
+@@ -532,7 +537,7 @@
+             configure(sourcedir=REPO_ROOT,
+                       builddir=workdir,
+                       host_machine=host_machine,
+-                      environ={**build_env, **group.extra_environ},
++                      environ=compat_environ,
+                       allowed_prebuilds=allowed,
+                       apple_min_os=detect_parent_apple_min_os(top_builddir, state.host_os, state.host_os_family),
+                       extra_meson_options=[

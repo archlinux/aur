@@ -1,0 +1,53 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index bba96fb..66507ee 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -10,6 +10,7 @@ url='https://tukaani.org/xz/'
+ license=("GPL-2.0-or-later AND 0BSD AND LicenseRef-Public-Domain AND LGPL-2.1-or-later")
+ depends=('lib32-glibc' 'xz')
+ makedepends=('git' 'po4a' 'doxygen')
++options=(staticlibs '!lto')
+ provides=('liblzma.so')
+ validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620') # Lasse Collin <lasse.collin@tukaani.org>
+ source=("git+https://github.com/tukaani-project/xz?signed#tag=v${pkgver}")
+@@ -19,21 +20,26 @@ sha512sums=('47f7d0cdd200c0db0bee0cf5d1419993d02219ee7c52dc3ea017a9b6af5c2dc5c0d
+ prepare() {
+   cd xz
+
+-  ./autogen.sh
++  ./autogen.sh --no-po4a
+ }
+
+ build() {
+   cd xz
+
+   export CC='gcc -m32'
++  export CFLAGS+=" -fPIC"
+   export PKG_CONFIG='i686-pc-linux-gnu-pkg-config'
+
+   ./configure \
++    --build="$CHOST" \
++    --host=i686-pc-linux-gnu \
+     --prefix=/usr \
+     --libdir=/usr/lib32 \
+     --disable-rpath \
++    --disable-shared \
++    --enable-static \
+     --enable-werror
+-  make
++  make -j1
+ }
+
+ check() {
+@@ -47,7 +53,8 @@ package() {
+
+   make DESTDIR="${pkgdir}" install
+
+-  rm -rf "${pkgdir}"/usr/{bin,include,share}
+-  install -d -m0755 "${pkgdir}"/usr/share/licenses
+-  ln -s xz "${pkgdir}"/usr/share/licenses/lib32-xz
++  rm -rf "${pkgdir}"/usr/{bin,share}
++  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/lib32-xz/COPYING"
++  install -Dm644 COPYING.0BSD "${pkgdir}/usr/share/licenses/lib32-xz/COPYING.0BSD"
++  install -Dm644 COPYING.LGPLv2.1 "${pkgdir}/usr/share/licenses/lib32-xz/COPYING.LGPLv2.1"
+ }

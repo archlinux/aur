@@ -1,0 +1,38 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 4ff6f24..7aa1325 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -19,6 +19,7 @@ makedepends=(
+   cmake
+   git
+ )
++options=(staticlibs '!lto')
+ provides=(
+   libbrotli{common,dec,enc}.so
+ )
+@@ -32,8 +33,9 @@ build() {
+   cmake -S brotli -B build \
+     -DCMAKE_BUILD_TYPE=Release \
+     -DCMAKE_INSTALL_PREFIX=/usr \
+-    -DBUILD_SHARED_LIBS=True \
+-    -DCMAKE_C_FLAGS="$CFLAGS -ffat-lto-objects" \
++    -DBUILD_SHARED_LIBS=False \
++    -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
++    -DCMAKE_C_FLAGS="$CFLAGS -fPIC" \
+     -DCMAKE_INSTALL_LIBDIR=/usr/lib32 \
+     -DBROTLI_BUILD_TOOLS=OFF
+   cmake --build build -v
+@@ -46,9 +48,10 @@ check() {
+
+ package() {
+   DESTDIR="$pkgdir" cmake --install build
+-  rm -rf "${pkgdir}"/usr/{bin,include,lib32/*.a,share}
+-  install -dm 755 "${pkgdir}"/usr/share/licenses
+-  ln -s brotli "${pkgdir}"/usr/share/licenses/lib32-brotli
++  rm -rf "${pkgdir}"/usr/{bin,share}
++  sed -i 's/^Requires.private: libbrotlicommon/Requires: libbrotlicommon/' \
++    "${pkgdir}/usr/lib32/pkgconfig/libbrotlidec.pc"
++  install -Dm644 brotli/LICENSE "${pkgdir}/usr/share/licenses/lib32-brotli/LICENSE"
+ }
+
+ # vim:set sw=2 sts=-1 et:

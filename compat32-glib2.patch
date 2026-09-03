@@ -1,0 +1,138 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index cf52630..ba6a88f 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -7,12 +7,13 @@ pkgbase=lib32-glib2
+ pkgname=(
+   lib32-glib2
+ )
+-pkgver=2.88.3
++pkgver=2.75.0
+ pkgrel=1
+ pkgdesc="Low level core library - 32-bit"
+-url="https://gitlab.gnome.org/GNOME/glib"
++url="https://github.com/frida/glib"
+ license=(LGPL-2.1-or-later)
+ arch=(x86_64)
++options=(staticlibs '!lto')
+ depends=(
+   glib2
+   lib32-gcc-libs
+@@ -37,85 +38,59 @@ checkdepends=(
+   desktop-file-utils
+   lib32-glib2
+ )
++_frida_glib_commit=790ffa82e80d99fba8a3db494e46f907d560893c
++_frida_gvdb_commit=0854af0fdb6d527a8d1999835ac2c5059976c210
+ source=(
+-  "git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=$pkgver"
+-  "git+https://gitlab.gnome.org/GNOME/gvdb.git"
+-  0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
+-  0002-gdesktopappinfo-Add-more-known-terminals.patch
+-  gio-querymodules-32.hook
+-  gio-remove-module-cache-32.hook
++  "glib-${_frida_glib_commit}.tar.gz"
++  "gvdb-${_frida_gvdb_commit}.tar.gz"
+ )
+-b2sums=('9239e87c1133864340fda4ba99c53cd1684f421f7fb9a90299b6a25f582db3f70e7aab6988a7943934ece0d48246bc61c764cd08ef98f6bec3d4383a3f1bf679'
+-        'SKIP'
+-        '4ddbd31f5f466fce99d82890292ff922555a9ab379d22202aeea5127f58798668f871dea0485cc0f458069276ad512412285ede6c8f3e36bea899358f49e931a'
+-        'f749220228e18f49c38a03d9b42ebbd2c8723c0f668eedf966339176ad946a82e0f0c605e6cb8f4a0d0ccc1777fc12dece36f4e9015c24879d48889a9e944c91'
+-        '678ea2d010fd64b6c55106510096363c54c357d65615c666e9cc3a0e280c0878257a45e646dd88f6bdd0623f7268c4afd2d4f98f82a5489bbfc028c5864252f1'
+-        '0971103c526d72196bd56fe4733bb1edd104e198ad2371929dd90745f5717e650bd2340e3040b720bcf3741946f1dcf2ab246b7837a25312932c0e008c558a39')
+-validpgpkeys=(
+-  53EF3DC3B63E2899271BD26322E8091EEA11BBB7 # Emmanuele Bassi <ebassi@gnome.org>
+-  923B7025EE03C1C59F42684CF0942E894B2EAFA0 # Philip Withnall <pwithnall@gnome.org>
++b2sums=(
++  '8dd7ab20d53ea03df8b939611a4bd7b6d165bbd659eab7ddaae8ed19c55181f571a322771e91beaea619cf13a02e7dec6ed4d8959cc54d3dda4dfcd3f36c523f'
++  '6f0dc922a7df8bcbf98600a152b17e8e20ff6a3d0531fbe41475a58159cde99a4045e733f9d3548e4b3302fb23019ef4975dd48b040a4e97edf6429235d2cfe2'
+ )
+
+ prepare() {
+-  cd glib
+-
+-  # Suppress noise from glib-compile-schemas.hook
+-  git apply -3 ../0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
+-
+-  # Add ghostty and ptyxis to known terminals list
+-  # This is a downstream only patch; GNOME will not add new terminal emulators.
+-  # https://gitlab.gnome.org/GNOME/glib/-/issues/338#note_1076172
+-  git apply -3 ../0002-gdesktopappinfo-Add-more-known-terminals.patch
+-
+-  git submodule init
+-  git submodule set-url subprojects/gvdb "$srcdir/gvdb"
+-  git -c protocol.file.allow=always -c protocol.allow=never submodule update
++  rm -rf "$srcdir/glib-${_frida_glib_commit}/subprojects/gvdb"
++  mv "$srcdir/gvdb-${_frida_gvdb_commit}" "$srcdir/glib-${_frida_glib_commit}/subprojects/gvdb"
+ }
+
+ build() {
+   local meson_options=(
+     --cross-file lib32
+-    -D documentation=false
+-    -D dtrace=disabled
++    -D b_staticpic=true
++    -D default_library=static
++    -D c_std=gnu17
++    -D cocoa=disabled
++    -D libmount=disabled
++    -D libelf=disabled
++    -D tests=false
++    -D installed_tests=false
++    -D xattr=false
++    -D nls=disabled
+     -D glib_debug=disabled
+-    -D introspection=disabled
+-    -D man-pages=disabled
++    -D glib_assert=false
++    -D glib_checks=false
+     -D selinux=disabled
+     -D sysprof=disabled
+-    -D systemtap=disabled
++    -D dtrace=false
++    -D systemtap=false
++    -D gtk_doc=false
++    -D man=false
+   )
+
+-  # Produce more debug info: GLib has a lot of useful macros
+-  CFLAGS+=" -g3"
+-  CXXFLAGS+=" -g3"
+-
+-  # Avoid crashing some old binaries
+-  CFLAGS+=" -mstackrealign"
+-  CXXFLAGS+=" -mstackrealign"
+-
+-  arch-meson glib build "${meson_options[@]}"
+-  meson compile -C build
++  arch-meson "$srcdir/glib-${_frida_glib_commit}" "$srcdir/build" "${meson_options[@]}"
++  meson compile -C "$srcdir/build"
+ }
+
+ check() {
+-  meson test -C build --no-suite flaky --no-suite slow --print-errorlogs
++  meson test -C "$srcdir/build" --no-suite flaky --no-suite slow --print-errorlogs
+ }
+
+ package_lib32-glib2() {
+-  depends+=(
+-    libffi.so
+-    libmount.so
+-  )
+-  provides+=(libg{lib,io,irepository,module,object,thread}-2.0.so)
+-
+-  meson install -C build --destdir "$pkgdir"
+-
+-  rm -r "$pkgdir"/usr/{lib,share,include}
+-  find "$pkgdir/usr/bin" -type f -not -name gio-querymodules -printf 'Removing %P\n' -delete
+-  mv "$pkgdir"/usr/bin/gio-querymodules{,-32}
+-
+-  install -Dt "$pkgdir/usr/share/libalpm/hooks" -m644 *.hook
+-  touch "$pkgdir/usr/lib32/gio/modules/.keep"
++  meson install -C "$srcdir/build" --destdir "$pkgdir" --no-rebuild --tags devel
++  rm -rf "$pkgdir/usr/share"
++  install -Dm644 "$srcdir/glib-${_frida_glib_commit}/COPYING" \
++    "$pkgdir/usr/share/licenses/lib32-glib2/COPYING"
+ }
+
+ # vim:set sw=2 sts=-1 et:

@@ -1,0 +1,43 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 487c8c7..68b767a 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -16,6 +16,7 @@ depends=(
+   libunwind
+ )
+ makedepends=()
++options=(staticlibs '!lto')
+ provides=(
+   libunwind-{coredump,ptrace,setjmp,x86}.so
+   libunwind.so
+@@ -43,10 +44,19 @@ build() {
+     --localstatedir=/var
+     --disable-documentation
+     --disable-tests
++    --disable-shared
++    --enable-static
++    --disable-coredump
++    --disable-ptrace
++    --disable-setjmp
++    --enable-minidebuginfo
++    --enable-zlibdebuginfo
+   )
+
+   export CC="gcc -m32"
+   export CXX="g++ -m32"
++  export CFLAGS+=" -fPIC"
++  export CXXFLAGS+=" -fPIC"
+   export PKG_CONFIG="i686-pc-linux-gnu-pkg-config"
+
+   cd libunwind-$pkgver
+@@ -64,9 +74,7 @@ check() {
+ package() {
+   cd libunwind-$pkgver
+   make DESTDIR="$pkgdir" install
+-
+-  # we need one specific include file for the i686 platform
+-  find "$pkgdir/usr/include" -type f -not -name "*x86*" -exec rm {} \;
++  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/lib32-libunwind/COPYING"
+ }
+
+ # vim:set sw=2 sts=-1 et:

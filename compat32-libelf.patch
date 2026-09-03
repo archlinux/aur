@@ -1,0 +1,62 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index cb21d81..9022b56 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -26,6 +26,7 @@ makedepends=(
+   lib32-libarchive
+   lib32-gcc-libs
+ )
++options=(staticlibs '!lto')
+ # NOTE: the shared objects can not be added to provides as they are not versioned
+ source=($_name::git+$_url?signed#tag=$_name-$pkgver)
+ sha512sums=('ea440d94638326902e89506ab4a6e878f7ec9ae4c3672360bcc67511ca28b31fca8c0c7ef4ad1ae3463f635250ec745d55ce6afe3861ff63c90eb503ac63a47a')
+@@ -51,7 +52,12 @@ build() {
+     --enable-deterministic-archives
+     --enable-maintainer-mode
+     --disable-debuginfod
+-    --disable-static
++    --disable-libdebuginfod
++    --disable-nls
++    --without-bzlib
++    --without-lzma
++    --without-zstd
++    --without-libarchive
+   )
+
+   export CC="gcc -m32"
+@@ -60,11 +66,12 @@ build() {
+   export PKG_CONFIG=i686-pc-linux-gnu-pkg-config
+
+   # debugging information is required for test-suite
+-  CFLAGS+=" -g"
++  CFLAGS+=" -g -fPIC"
+
+   cd $_name
+   ./configure "${configure_options[@]}"
+-  make
++  make -C lib libeu.a
++  make -C libelf libelf.a
+ }
+
+ check() {
+@@ -75,10 +82,16 @@ check() {
+ }
+
+ package() {
+-  make DESTDIR="$pkgdir" install -C $_name
+-
+-  # remove anything that would conflict with elfutils' packages
+-  rm -rf "$pkgdir/"{etc,usr/{bin,include,share}}
++  make DESTDIR="$pkgdir" -C $_name/libelf \
++    install-libLIBRARIES \
++    install-includeHEADERS \
++    install-pkgincludeHEADERS
++  install -Dm644 "$_name/config/libelf.pc" \
++    "$pkgdir/usr/lib32/pkgconfig/libelf.pc"
++  install -Dm644 "$_name/COPYING-GPLV2" \
++    "$pkgdir/usr/share/licenses/lib32-libelf/COPYING-GPLV2"
++  install -Dm644 "$_name/COPYING-LGPLV3" \
++    "$pkgdir/usr/share/licenses/lib32-libelf/COPYING-LGPLV3"
+ }
+
+ # vim:set sw=2 sts=-1 et:

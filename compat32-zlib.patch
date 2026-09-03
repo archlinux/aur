@@ -1,0 +1,40 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 3f20f08..e52ccdc 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -14,7 +14,8 @@ depends=(
+   lib32-glibc
+   $_name
+ )
+-provides=(libz.so)
++options=(staticlibs '!lto')
++# static-only compat build
+ source=(https://github.com/madler/zlib/releases/download/v$pkgver/$_name-$pkgver.tar.xz{,.asc})
+ sha512sums=('cf3d49fbabddc57cca99858feeca8f910e9de42a16014cddd406814d2d24ee33fee2af3805d7efbb1b04b05f55818092b000daf82502b675df65f2512c353f73'
+             'SKIP')
+@@ -23,14 +24,14 @@ b2sums=('fd3a6e4c275a925f4814de487075c136e28421ea34ca7f93141781e7a414b392cd849fb
+ validpgpkeys=('5ED46A6721D365587791E2AA783FCD8E58BCAFBA') # Mark Adler <madler@alumni.caltech.edu>
+
+ build() {
+-  export CFLAGS+=" -m32"
++  export CFLAGS+=" -m32 -fPIC"
+   export CXXFLAGS+=" -m32"
+   export LDFLAGS+=" -m32"
+   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+
+   cd $_name-$pkgver
+-  ./configure --prefix=/usr --libdir=/usr/lib32
+-  make
++  ./configure --static --prefix=/usr --libdir=/usr/lib32
++  make -j1
+ }
+
+ check() {
+@@ -40,6 +41,6 @@ check() {
+ package() {
+   make install DESTDIR="$pkgdir" -C $_name-$pkgver
+
+-  rm -rf "$pkgdir"/usr/{include,share,bin}
++  rm -rf "$pkgdir"/usr/{share,bin}
+   install -vDm 644 $_name-$pkgver/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+ }

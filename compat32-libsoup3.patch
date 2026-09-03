@@ -1,0 +1,52 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index 493c5f6..94592e6 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -35,6 +35,7 @@ checkdepends=(
+   apache
+   php-apache
+ )
++options=(staticlibs '!lto')
+ source=("git+https://gitlab.gnome.org/GNOME/libsoup.git#tag=$pkgver")
+ b2sums=('2578d5f18b5bb633dfa593fc098053f720623cbc98e572539d19109442076f4bd3cb9d81ba952d371fc48511eff3cacd7efc0189910a872914e28c298646e5a6')
+
+@@ -52,15 +53,23 @@ prepare() {
+ build() {
+   local meson_options=(
+     --cross-file lib32
++    -D default_library=static
++    -D b_staticpic=true
+     -D autobahn=disabled
++    -D brotli=enabled
+     -D docs=disabled
++    -D gssapi=disabled
+     -D introspection=disabled
++    -D ntlm=disabled
+     -D sysprof=disabled
++    -D tests=false
++    -D pkcs11_tests=disabled
++    -D tls_check=false
+     -D vapi=disabled
+   )
+
+-  arch-meson libsoup build "${meson_options[@]}"
+-  meson compile -C build
++  arch-meson "${srcdir}/libsoup" "${srcdir}/build" "${meson_options[@]}"
++  meson compile -C "${srcdir}/build" soup-3.0
+ }
+
+ check() {
+@@ -79,9 +88,11 @@ package_lib32-libsoup3() {
+   optdepends=('samba: Windows Domain SSO')
+   provides+=(libsoup-3.0.so)
+
+-  meson install -C build --destdir "$pkgdir"
++  meson install -C "${srcdir}/build" --destdir "$pkgdir" --no-rebuild --tags devel
+
+-  rm -r "$pkgdir"/usr/{include,share}
++  rm -rf "$pkgdir"/usr/share
++  install -Dm644 "${srcdir}/libsoup/COPYING" \
++    "$pkgdir/usr/share/licenses/lib32-libsoup3/COPYING"
+ }
+
+ # vim:set sw=2 sts=-1 et:

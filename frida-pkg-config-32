@@ -1,0 +1,8 @@
+#!/bin/sh
+
+: "${FRIDA_COMPAT_SYSROOT:?FRIDA_COMPAT_SYSROOT is required}"
+
+export PKG_CONFIG_PATH=''
+export PKG_CONFIG_LIBDIR="${FRIDA_COMPAT_SYSROOT}/usr/lib32/pkgconfig"
+export PKG_CONFIG_SYSROOT_DIR="${FRIDA_COMPAT_SYSROOT}"
+exec /usr/bin/pkg-config --static "$@"

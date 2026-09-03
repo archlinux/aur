@@ -1,0 +1,166 @@
+--- a/releng/frida_version.py
++++ b/releng/frida_version.py
+@@ -41,6 +41,22 @@
+     nano = 0
+     commit = ""
+
++    override = os.environ.get("FRIDA_VERSION")
++    if override is not None:
++        m = re.fullmatch(r"(\d+)\.(\d+)\.(\d+)(?:-(.+))?", override)
++        if m is None:
++            raise VersionParseError(
++                f"FRIDA_VERSION does not match expected semver pattern: {override!r}"
++            )
++        return FridaVersion(
++            override,
++            int(m.group(1)),
++            int(m.group(2)),
++            int(m.group(3)),
++            0,
++            "",
++        )
++
+     if not (repo / ".git").exists():
+         return FridaVersion(version_name, major, minor, micro, nano, commit)
+
+--- a/releng/meson_make.py
++++ b/releng/meson_make.py
+@@ -48,6 +48,9 @@
+         configure(sourcedir, builddir, environ=environ)
+
+     compile_options = []
++    jobs = environ.get("FRIDA_MAKE_JOBS")
++    if jobs:
++        compile_options += ["--jobs", jobs]
+     if environ.get("V") == "1":
+         compile_options += ["-v"]
+
+--- a/releng/deps.py
++++ b/releng/deps.py
+@@ -441,13 +441,18 @@
+         return eval(cond, global_vars)
+
+     def _prepare(self):
+-        self._toolchain_prefix, toolchain_state = \
+-                ensure_toolchain(self._build_machine,
+-                                 self._cachedir,
+-                                 version=self._params.bootstrap_version)
+-        if toolchain_state == SourceState.MODIFIED:
+-            self._wipe_build_state()
+-
++        toolchain_override = os.environ.get("FRIDA_DEPS_TOOLCHAIN_PREFIX")
++        if toolchain_override is not None:
++            self._toolchain_prefix = Path(toolchain_override).resolve()
++            if not self._toolchain_prefix.is_dir():
++                raise CommandError(f"missing toolchain prefix: {self._toolchain_prefix}")
++        else:
++            self._toolchain_prefix, toolchain_state = \
++                    ensure_toolchain(self._build_machine,
++                                     self._cachedir,
++                                     version=self._params.bootstrap_version)
++            if toolchain_state == SourceState.MODIFIED:
++                self._wipe_build_state()
+         envdir = self._get_builddir_container()
+         envdir.mkdir(parents=True, exist_ok=True)
+
+@@ -513,6 +518,27 @@
+
+     def _clone_repo_if_needed(self, pkg: PackageSpec):
+         sourcedir = self._get_sourcedir(pkg)
++        raw_source_root = os.environ.get("FRIDA_DEPS_SOURCE_ROOT")
++        if raw_source_root is not None:
++            local_source = Path(raw_source_root) / pkg.identifier
++            if not local_source.is_dir():
++                raise CommandError(f"missing local dependency source: {local_source}")
++            revision_marker = local_source / ".frida-source-revision"
++            try:
++                current_rev = revision_marker.read_text(encoding="utf-8").strip()
++            except FileNotFoundError as e:
++                raise CommandError(f"missing staged source revision: {revision_marker}") from e
++            if current_rev != pkg.version:
++                raise CommandError(
++                    f"staged source revision mismatch for {pkg.identifier}: "
++                    f"expected {pkg.version}, got {current_rev}"
++                )
++            if not sourcedir.exists():
++                self._print_status(pkg.name, "Copying local source")
++                shutil.copytree(local_source, sourcedir, symlinks=True)
++            else:
++                self._print_status(pkg.name, "Reusing local source")
++            return
+
+         git = lambda *args, **kwargs: subprocess.run(["git", *args],
+                                                      **kwargs,
+@@ -592,7 +618,15 @@
+                          cwd=sourcedir,
+                          **meson_kwargs)
+
+-        self._call_meson(["install"],
++        compile_options = ["compile", "-C", builddir]
++        jobs = os.environ.get("FRIDA_MAKE_JOBS")
++        if jobs:
++            compile_options += ["--jobs", jobs]
++        self._call_meson(compile_options,
++                         cwd=sourcedir,
++                         **meson_kwargs)
++
++        self._call_meson(["install", "--no-rebuild"],
+                          cwd=builddir,
+                          **meson_kwargs)
+
+--- a/releng/meson_configure.py
++++ b/releng/meson_configure.py
+@@ -193,22 +193,39 @@
+
+     is_cross_build = host_machine != build_machine
+
+-    build_sdk_prefix = None
+-    required = {"sdk:build"}
+-    if not is_cross_build:
+-        required.add("sdk:host")
+-    if allowed_prebuilds.issuperset(required):
++    sdk_override = environ.get("FRIDA_SDK_PREFIX")
++    if sdk_override is not None:
++        if is_cross_build:
++            raise ValueError("FRIDA_SDK_PREFIX is only supported for native builds")
++        build_sdk_prefix = Path(sdk_override).resolve()
++        version_file = build_sdk_prefix / "VERSION.txt"
++        expected_version = deps.load_dependency_parameters().deps_version
+         try:
+-            build_sdk_prefix, _ = deps.ensure_sdk(build_machine, deps_dir, on_progress=on_progress)
+-        except deps.BundleNotFoundError as e:
+-            raise_sdk_not_found(e, "build", build_machine)
++            actual_version = version_file.read_text(encoding="utf-8").strip()
++        except FileNotFoundError as e:
++            raise ValueError(f"missing Frida SDK version file: {version_file}") from e
++        if actual_version != expected_version:
++            raise ValueError(
++                f"Frida SDK version mismatch: expected {expected_version}, got {actual_version}"
++            )
++        host_sdk_prefix = None
++    else:
++        build_sdk_prefix = None
++        required = {"sdk:build"}
++        if not is_cross_build:
++            required.add("sdk:host")
++        if allowed_prebuilds.issuperset(required):
++            try:
++                build_sdk_prefix, _ = deps.ensure_sdk(build_machine, deps_dir, on_progress=on_progress)
++            except deps.BundleNotFoundError as e:
++                raise_sdk_not_found(e, "build", build_machine)
+
+-    host_sdk_prefix = None
+-    if is_cross_build and "sdk:host" in allowed_prebuilds:
+-        try:
+-            host_sdk_prefix, _ = deps.ensure_sdk(host_machine, deps_dir, on_progress=on_progress)
+-        except deps.BundleNotFoundError as e:
+-            raise_sdk_not_found(e, "host", host_machine)
++        host_sdk_prefix = None
++        if is_cross_build and "sdk:host" in allowed_prebuilds:
++            try:
++                host_sdk_prefix, _ = deps.ensure_sdk(host_machine, deps_dir, on_progress=on_progress)
++            except deps.BundleNotFoundError as e:
++                raise_sdk_not_found(e, "host", host_machine)
+
+     build_config, host_config = \
+             env.generate_machine_configs(build_machine,

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+export LD_LIBRARY_PATH='@TOOLCHAIN_PREFIX@/lib:@TOOLCHAIN_PREFIX@/lib/vala-0.58:@VALA_BUILDDIR@/codegen':"${LD_LIBRARY_PATH:-}"
+exec '@TOOLCHAIN_PREFIX@/bin/valac-0.58' '--vapidir=@TOOLCHAIN_PREFIX@/share/vala-0.58/vapi' "$@"

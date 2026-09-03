@@ -1,0 +1,59 @@
+diff --git a/PKGBUILD b/PKGBUILD
+index a357d9e..b9302d7 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -21,10 +21,11 @@ makedepends=(
+   lib32-readline
+   lib32-zlib
+ )
+-provides=(libpcre2-{8,16,32,posix}.so)
++options=(staticlibs '!lto')
++# static-only compat build
+ source=(
+   $_name::git+$url?signed#tag=$_name-$pkgver
+-  sljit::git+https://github.com/zherczeg/sljit.git
++  sljit::git+https://github.com/zherczeg/sljit.git#commit=45f910b78c6605ebf5b53d3ec7cb00f2312fe417
+ )
+ sha512sums=('5410982555171a3ab0713d04e0cac56f4d45c28cf7b89b4a39dd81ce6b3a19c665b1f0e63ea27deb89f2b9b85e0b959727a048958ba49d98c2b8d4d736578340'
+             'SKIP')
+@@ -53,24 +54,24 @@ prepare() {
+ build() {
+   local configure_options=(
+     --enable-jit
+-    --enable-pcre2-16
+-    --enable-pcre2-32
+-    --enable-pcre2grep-libbz2
+-    --enable-pcre2grep-libz
+-    --enable-pcre2test-libreadline
++    --disable-shared
++    --enable-static
++    --disable-pcre2grep-libbz2
++    --disable-pcre2grep-libz
++    --disable-pcre2test-libreadline
+     --libdir=/usr/lib32
+     --prefix=/usr
+   )
+
+   cd $_name
+
+-  export CFLAGS+=" -m32"
++  export CFLAGS+=" -m32 -fPIC"
+   export CXXFLAGS+=" -m32"
+   export LDFLAGS+=" -m32"
+   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+
+   ./configure "${configure_options[@]}"
+-  make
++  make -j1
+ }
+
+ check() {
+@@ -80,7 +81,7 @@ check() {
+ package() {
+   make DESTDIR="$pkgdir" install -C $_name
+
+-  rm -rv "$pkgdir"/usr/{bin,share,include}
++  rm -rv "$pkgdir"/usr/{bin,share}
+
+   install -Dm644 ./*.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+ }

@@ -1,0 +1,23 @@
+--- a/glib/meson.build
++++ b/glib/meson.build
+@@ -136 +136 @@
+-glib_localstatedir = get_option('localstatedir')
++glib_localstatedir = '/var'
+@@ -2231 +2231 @@
+-glib_conf.set_quoted('GLIB_LOCALE_DIR', join_paths(glib_datadir, 'locale'))
++glib_conf.set_quoted('GLIB_LOCALE_DIR', '/usr/share/locale')
+--- a/json-glib/meson.build
++++ b/json-glib/meson.build
+@@ -44 +44 @@
+-json_localedir = get_option('prefix') / get_option('localedir')
++json_localedir = '/usr/share/locale'
+--- a/glib-networking/meson.build
++++ b/glib-networking/meson.build
+@@ -13 +13 @@
+-localedir = join_paths(prefix, get_option('localedir'))
++localedir = '/usr/share/locale'
+--- a/tinycc/meson.build
++++ b/tinycc/meson.build
+@@ -20 +20 @@
+-cdata.set_quoted('CONFIG_TCCDIR', tccdir)
++cdata.set_quoted('CONFIG_TCCDIR', '/usr/lib/frida/tcc')
