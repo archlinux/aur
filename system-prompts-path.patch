@@ -1,0 +1,13 @@
+diff --git a/src-tauri/src/lib.rs b/src-tauri/src/lib.rs
+index 80c3c76..da0094b 100644
+--- a/src-tauri/src/lib.rs
++++ b/src-tauri/src/lib.rs
+@@ -737,7 +737,7 @@ fn run_mcp_stdio() {
+                 .await
+                 .expect("Failed to init store"),
+         );
+-        let prompts_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("resources/prompts");
++        let prompts_dir = PathBuf::from("/usr/lib/DataZen/prompts");
+         let app_state = match build_app_state(store, Some(prompts_dir)).await {
+             Ok(s) => s,
+             Err(e) => {
