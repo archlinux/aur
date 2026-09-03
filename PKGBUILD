@@ -1,5 +1,5 @@
 pkgname=gnome-shell-extension-better-tray-icons
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Brings tray icons back to the GNOME top panel, with an overflow popup behind a toggle button, per-app renaming and icon overrides, configurable click actions and settings sync. Wayland only."
 arch=('any')
@@ -10,7 +10,7 @@ conflicts=("${pkgname}-git")
 _uuid='BetterTrayIcons@nexaknight.com'
 source=("${_uuid}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_uuid}.zip")
 noextract=("${_uuid}-${pkgver}.zip")
-sha256sums=('d10d09eb3fa004caeb152bf1d7e6527ff8d6da30bee6b87c7830264686fcf759')
+sha256sums=('2e56416ab91268a78e6a9bd44baaf55ba8e79b34d7d84a9399320214c6e0c537')
 
 package() {
   local extension_dir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
