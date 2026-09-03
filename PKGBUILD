@@ -1,6 +1,6 @@
 # Maintainer: Sean Brar <contact@seanbrar.com>
 pkgname=igir-bin
-pkgver=5.4.0
+pkgver=5.4.1
 pkgrel=1
 pkgdesc="A zero-setup ROM collection manager"
 arch=('x86_64' 'aarch64')
@@ -18,8 +18,8 @@ source=("LICENSE::https://raw.githubusercontent.com/emmercm/igir/v${pkgver}/LICE
 source_x86_64=("igir-${pkgver}-Linux-amd64.tar.gz::${url}/releases/download/v${pkgver}/igir-${pkgver}-Linux-amd64.tar.gz")
 source_aarch64=("igir-${pkgver}-Linux-arm64v8.tar.gz::${url}/releases/download/v${pkgver}/igir-${pkgver}-Linux-arm64v8.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('973562b1b969af6fe052ad0d55c9116e2246ded6994f143173e2eddc184fe8a5')
-sha256sums_aarch64=('6c67aa978446b5c701e8fd68a075242cfa8c39ca7f1f2d76a56820444342094b')
+sha256sums_x86_64=('6fd43234a8de47d9d00a427845640b7d5bd87a1d3653573f0b38d1fbfba9e04c')
+sha256sums_aarch64=('417f21379cb3d87ee0586294af0b52641159b442727b88475839fd8103fe5215')
 
 package() {
     cd "${srcdir}"
