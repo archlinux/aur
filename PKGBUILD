@@ -3,7 +3,7 @@
 pkgname=yt-collate
 _name=${pkgname//-/_}
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Efficient, well-rounded YouTube Music TUI client"
 arch=('any')
 url="https://github.com/indigo0445/yt-collate"
@@ -16,7 +16,7 @@ depends=(
   python-pydantic-settings
   python-pypresence
   mpv
-  yt-dlp-nightly-bin
+  yt-dlp
   nodejs
   ffmpeg
 )
