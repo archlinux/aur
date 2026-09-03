@@ -1,6 +1,6 @@
 pkgbase = hydrus
 	pkgdesc = Danbooru-like image tagging and searching system for the desktop
-	pkgver = 685
+	pkgver = 686
 	pkgrel = 1
 	url = http://hydrusnetwork.github.io/hydrus/
 	arch = any
@@ -49,7 +49,7 @@ pkgbase = hydrus
 	optdepends = python-curl_cffi: to use curl_cffi for http 2 and 3 support
 	conflicts = hydrus-docs-dummy
 	options = !strip
-	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=bbb8a21245392a54e27f55be6b17d6f67b7a5d03
+	source = hydrus::git+https://github.com/hydrusnetwork/hydrus.git#commit=3bdbe7ba20e744af14818395f3787cfaefa7a627
 	source = paths-in-opt.patch
 	source = hydrus-client
 	source = hydrus-server
