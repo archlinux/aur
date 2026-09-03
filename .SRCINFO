@@ -1,0 +1,24 @@
+pkgbase = dspoh
+	pkgdesc = Linux tray app that shows DeepSeek peak/off-peak pricing and time until the next change
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bokic/dspho
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = glibc
+	depends = glib2
+	depends = cairo
+	depends = pango
+	depends = sdl3
+	options = !debug
+	source = dspoh-1.0.0.tar.gz::https://github.com/bokic/dspho/archive/refs/tags/1.0.0.tar.gz
+	sha512sums = ba93aec7471d9c710136175685291daf8bed5f17eb8743ed0c6a6cc23bada8048d573ae6596c893adc7e615f6d2bd3fa3beac838fe46781787cf61ba2a09c6cd
+
+pkgname = dspoh
