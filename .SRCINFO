@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-google-glog
 	pkgdesc = Logging library for C++ (mingw-w64)
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/glog
 	arch = any
 	license = custom:BSD3
