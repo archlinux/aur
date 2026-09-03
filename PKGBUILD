@@ -11,7 +11,7 @@ options=(!strip !buildflags staticlibs)
 source=("https://downloads.sourceforge.net/freeglut/freeglut-${pkgver}.tar.gz")
 sha256sums=('674dcaff25010e09e450aec458b8870d9e98c46f99538db457ab659b321d9989')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 build() {
   cd "${srcdir}/freeglut-${pkgver}"
