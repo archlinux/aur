@@ -33,7 +33,7 @@ if [ "${CURRENT_SUBVERSION_REMOTE_APP}" != "${NEW_SUBVERSION_REMOTE_APP}" ] || [
 
         updpkgsums && makepkg -o && makepkg --printsrcinfo > .SRCINFO
 
-        echo -e "\nNew version: ${NEW_PKGVER}-${NEW_PKGREL} !"
+        echo -e "\nNew version: ${NEW_PKGVER}-${NEW_PKGREL}"
     else
         echo -e "\nUnable to update!"
     fi
