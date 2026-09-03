@@ -3,7 +3,7 @@ pkgname=ifcopenshell
 _pkgver=0.8.6-alpha2607231304
 pkgver=${_pkgver//-/_}
 _vername=bonsai
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source IFC library and geometry engine. Provides static libraries, python3 wrapper and blender addon."
 arch=('x86_64' 'i686')
 url="https://ifcopenshell.org/"
@@ -79,10 +79,10 @@ source=("https://github.com/IfcOpenShell/IfcOpenShell/archive/refs/tags/${_verna
 sha256sums=('07d1babebde5c8b53092ad54f7091de3bce0208b4af85ce514280a181c820441'
             'SKIP'
             'c774454e31757796cf02078cc04d4f27b6180d718e1edab4148340879a6b64c5'
-            '0fd9a6ae4ded60e438172699c8399fbe10e5ca2b00c69371a25d113bbda6406b'
+            'c39481f101cb8f6f3a6ea7301863d16844cee38736835143c71fe52010534077'
             'e3396fedc745d1fdc8428a9171376fc66bcbb0e834f5757f68ba715f020e7d22'
             'afbec2fb625774c407c77151a17c9c47d328b5e6febd984f6d7a73e201bdd095'
-            'bade9878f7d916ff4669d29ed488d932a88218372854216754f90339a5491415'
+            'b54ec67a6bee7f61ae7ae3a764fdfb6152d44709cd3c351371d7d5e2b00fbbbf'
             'a1d3fc8e9e3e5c84f8736567fd90e50b4ff95c5e190ee908a388106b8e0910be'
             'f0997e276e3e344184321a7a6682d6d20b1b1193fc53e91a45498ac76acd1fec'
             '32f28c4f31877a871ea1ce182e78e1e84e05030db2ab609b10dd9de48d34f7c7')
