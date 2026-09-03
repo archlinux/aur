@@ -1,15 +1,15 @@
 # Maintainer: fuero <fuerob@gmail.com>
 pkgname=x86-64-level
-# renovate: datasource=github-releases depName=HenrikBengtsson/x86-64-level
-pkgver=0.2.2
-pkgrel=2
-pkgdesc='Get the x86-64 Microarchitecture Level on the Current Machine'
+# renovate: datasource=github-tags depName=HenrikBengtsson/x86-64-level
+pkgver=0.3.0
+pkgrel=1
+pkgdesc='Get the x86-64 microarchitecture level on the current machine'
 arch=('any')
 url="https://github.com/HenrikBengtsson/x86-64-level"
 source=(
-  ${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz
+  "${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 )
-sha256sums=('3fcefeb1db094ce069dd6a4ddfd85ef92fc572dabbc3e430d32a1903e7d28f82')
+sha256sums=('d0e9fd8c1181e4a43390e84992b4e0398a398ae069235c6c4b23c23da7df265e')
 license=('CC-BY-SA-4.0')
 depends=(
   bash
@@ -20,15 +20,15 @@ checkdepends=(
 )
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm0755 $pkgname "${pkgdir}/usr/bin/${pkgname}"
+  cd "${pkgname}-${pkgver}"
+  install -Dm0755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   for _file in *.md
   do
-    install -Dm644 "${_file}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename ${_file})"
+    install -Dm644 "${_file}" "${pkgdir}/usr/share/doc/${pkgname}/$(basename "${_file}")"
   done
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
   make check
 }

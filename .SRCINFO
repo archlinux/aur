@@ -1,14 +1,14 @@
 pkgbase = x86-64-level
-	pkgdesc = Get the x86-64 Microarchitecture Level on the Current Machine
-	pkgver = 0.2.2
-	pkgrel = 2
+	pkgdesc = Get the x86-64 microarchitecture level on the current machine
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/HenrikBengtsson/x86-64-level
 	arch = any
 	license = CC-BY-SA-4.0
 	checkdepends = make
 	checkdepends = shellcheck
 	depends = bash
-	source = x86-64-level-0.2.2.tar.gz::https://github.com/HenrikBengtsson/x86-64-level/archive/refs/tags/0.2.2.tar.gz
-	sha256sums = 3fcefeb1db094ce069dd6a4ddfd85ef92fc572dabbc3e430d32a1903e7d28f82
+	source = x86-64-level-0.3.0.tar.gz::https://github.com/HenrikBengtsson/x86-64-level/archive/refs/tags/0.3.0.tar.gz
+	sha256sums = d0e9fd8c1181e4a43390e84992b4e0398a398ae069235c6c4b23c23da7df265e
 
 pkgname = x86-64-level
