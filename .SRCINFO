@@ -1,6 +1,6 @@
 pkgbase = dbx-mcp-server-bin
 	pkgdesc = MCP server for DBX — query databases from Claude Code, Cursor, and other AI agents
-	pkgver = 0.4.78
+	pkgver = 0.4.79
 	pkgrel = 1
 	url = https://github.com/t8y2/dbx/tree/main/packages/mcp-server
 	arch = x86_64
@@ -13,12 +13,11 @@ pkgbase = dbx-mcp-server-bin
 	conflicts = dbx-mcp-server
 	options = !strip
 	options = !debug
-	source = dbx-mcp-server-bin-0.4.78-license.tgz::https://registry.npmjs.org/@dbx-app/mcp-server/-/mcp-server-0.4.78.tgz
-	sha256sums = 2821e1d4f3887bd6ba17906b3f53098a0518ffd930857ab40e489b99be09c938
-	source_x86_64 = dbx-mcp-server-bin-0.4.78-x64.tgz::https://registry.npmjs.org/@dbx-app/mcp-linux-x64-gnu/-/mcp-linux-x64-gnu-0.4.78.tgz
-	sha256sums_x86_64 = 09c95b146022e5bcc5ed5e52959269d3ab68840b26fb2bc37d8fe6b1581f0d79
-	source_aarch64 = dbx-mcp-server-bin-0.4.78-arm64.tgz::https://registry.npmjs.org/@dbx-app/mcp-linux-arm64-gnu/-/mcp-linux-arm64-gnu-0.4.78.tgz
-	sha256sums_aarch64 = 0e90028fc0f51a13abbc21843c6dd338c9421c10152c36b7054ebcf347912f8e
+	source = dbx-mcp-server-bin-0.4.79-license.tgz::https://registry.npmjs.org/@dbx-app/mcp-server/-/mcp-server-0.4.79.tgz
+	sha256sums = 72829fa20813a5a67ce6c0758c52b82307bc2e88749077fa8464ad5b7d4410a2
+	source_x86_64 = dbx-mcp-server-bin-0.4.79-x64.tgz::https://registry.npmjs.org/@dbx-app/mcp-linux-x64-gnu/-/mcp-linux-x64-gnu-0.4.79.tgz
+	sha256sums_x86_64 = 0a42ffc17bf10c6ac60911d5f20a091101ae8c2baa43ac1603b0f8ecc9fefc48
+	source_aarch64 = dbx-mcp-server-bin-0.4.79-arm64.tgz::https://registry.npmjs.org/@dbx-app/mcp-linux-arm64-gnu/-/mcp-linux-arm64-gnu-0.4.79.tgz
+	sha256sums_aarch64 = 2a0e49164fe1e86bd9a4c926a42a131244d6ea5364a5c94885ff6beebeca43cc
 
 pkgname = dbx-mcp-server-bin
-
