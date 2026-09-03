@@ -33,6 +33,7 @@ pkgbase = polland-de-basic
 	depends = hyprpolkitagent
 	depends = xdg-desktop-portal-hyprland
 	depends = wl-clipboard
+	depends = fastfetch
 	provides = polland-de
 	conflicts = polland-de
 	source = git+https://github.com/Pol-Jak-295/polland.git
