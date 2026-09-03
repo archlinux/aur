@@ -1,6 +1,6 @@
 pkgbase = borg2
 	pkgdesc = Deduplicating backup program with compression and authenticated encryption
-	pkgver = 2.0.0b23
+	pkgver = 2.0.0b24
 	pkgrel = 1
 	url = https://borgbackup.org
 	arch = x86_64
@@ -43,8 +43,8 @@ pkgbase = borg2
 	provides = borgbackup
 	conflicts = borg
 	conflicts = borgbackup
-	source = https://github.com/borgbackup/borg/releases/download/2.0.0b23/borgbackup-2.0.0b23.tar.gz
+	source = https://github.com/borgbackup/borg/releases/download/2.0.0b24/borgbackup-2.0.0b24.tar.gz
 	validpgpkeys = 6D5BEF9ADD2075805747B70F9F88FB52FAF7B393
-	b2sums = 0e516a57bc01bc9ce65e74e138492d95b1cd96aab12d09b75cd9b2f6f32a98eb1793480953d8b68a8aa242c8762f12e80e65d1737d8b5d33c7f5b333ef3f3e97
+	b2sums = 9f4134b1c84ebece62d23e4af1ee7d2f19af15de7cb731a9bde9eaf2936d629a16dab863cab267f78d0b6841978ea44c9fa24560fa3368bd8ad2fd55effab7ce
 
 pkgname = borg2

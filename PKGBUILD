@@ -11,7 +11,7 @@ pkgname=borg2
 _pkgname=borgbackup
 _borgstore_pkgver=0.6.1
 _borghash_pkgver=0.2.0
-pkgver=2.0.0b23
+pkgver=2.0.0b24
 pkgrel=1
 pkgdesc='Deduplicating backup program with compression and authenticated encryption'
 url='https://borgbackup.org'
@@ -65,7 +65,7 @@ _src='https://github.com/borgbackup/borg'
 source=("$_src/releases/download/$pkgver/$_pkgname-$pkgver.tar.gz" #{,.asc}
 #	"${_src}store/releases/download/$_borgstore_pkgver/borgstore-$_borgstore_pkgver.tar.gz"
 )
-b2sums=('0e516a57bc01bc9ce65e74e138492d95b1cd96aab12d09b75cd9b2f6f32a98eb1793480953d8b68a8aa242c8762f12e80e65d1737d8b5d33c7f5b333ef3f3e97')
+b2sums=('9f4134b1c84ebece62d23e4af1ee7d2f19af15de7cb731a9bde9eaf2936d629a16dab863cab267f78d0b6841978ea44c9fa24560fa3368bd8ad2fd55effab7ce')
 validpgpkeys=('6D5BEF9ADD2075805747B70F9F88FB52FAF7B393') # Thomas Waldmann <tw@waldmann-edv.de>
 
 build() {
@@ -79,10 +79,11 @@ check() {
 	#python-venv/bin/python -m pip install borgstore-${_borgstore_pkgver}/dist/borgstore-${_borgstore_pkgver}-py3-none-any.whl 
 	python-venv/bin/python -m pip install $_pkgname-$pkgver/dist/$_pkgname-$pkgver-*.whl pytest pytest-cov pytest-benchmark msgpack
 	cd "$_pkgname-$pkgver/build/lib.linux-$CARCH-"*/
-	local skip='not test_non_ascii_acl and not test_with_socket and not test_socket_permissions'
-	skip+=' and not shell_completions_test and not test_rclone_repo_basics and not test_zsh_completion_syntax'
-	skip+=' and not test_prune_repository_example_interval and not test_prune_retain_and_expire_oldest'
-	skip+=' and not test_spinner_colour'
+#	local skip='not test_non_ascii_acl and not test_with_socket and not test_socket_permissions'
+#	skip+=' and not shell_completions_test and not test_rclone_repo_basics and not test_zsh_completion_syntax'
+#	skip+=' and not test_prune_repository_example_interval and not test_prune_retain_and_expire_oldest'
+#	skip+=' and not test_spinner_colour'
+	local skip='not test_prune_repository_example_interval and not test_prune_retain_and_expire_oldest'
 	env LANG=en_US.UTF-8 PYTHONPATH="$PWD:$PYTHONPATH" "$srcdir/python-venv/bin/python" \
         -m pytest --cov=borg --benchmark-skip --pyargs borg.testsuite -v -k "$skip"
 	deactivate
@@ -96,8 +97,8 @@ package() {
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
 	cd "$pkgdir/usr/bin/"
-	./borg completion bash 2>/dev/null | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/borg"
-	./borg completion fish 2>/dev/null | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/borg.fish"
-	./borg completion tcsh 2>/dev/null | install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/borg.tcsh"
-	./borg completion zsh  2>/dev/null | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_borg"
+	./borg completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/borg"
+	./borg completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/borg.fish"
+	./borg completion tcsh | install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/borg.csh"
+	./borg completion zsh  | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_borg"
 }
