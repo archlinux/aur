@@ -6,7 +6,7 @@
 pkgname='python-qh3-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
-pkgver=1.9.3.r0.gcc63dc9
+pkgver=2.0.3.r0.gbeb0837
 pkgrel=1
 pkgdesc='Lightweight QUIC and HTTP/3 implementation in Python (development version)'
 arch=('aarch64' 'x86_64')
@@ -43,7 +43,7 @@ prepare() {
   cd "$_srcname"
 
   # Relax maturin requirements
-  sed -i 's/,<1.14"/,<=1.14.1"/g' pyproject.toml
+  sed -i 's/,<1.14"/,<=1.15.0"/g' pyproject.toml
 }
 
 pkgver() {
