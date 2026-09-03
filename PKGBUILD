@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-tools2
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -17,7 +17,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('1ad95ad989bf986ea1fcd76be6d25b5d08199aa0363073606ff2afc7d62e1c6c')
+sha256sums=('ec95aa95119d922d6f53498d5981150b3b233ae11fcdbb8ec394d051f1880147')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
