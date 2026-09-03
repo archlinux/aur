@@ -1,0 +1,26 @@
+pkgbase = flea-git
+	pkgdesc = Fast, keyboard-first file manager for Omarchy (git version)
+	pkgver = 0.1.2.r3.g0654cf1
+	pkgrel = 1
+	url = https://github.com/thisisgm/flea
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = bubblewrap
+	depends = glib2
+	depends = omarchy
+	depends = quickshell
+	depends = shared-mime-info
+	depends = xdg-utils
+	optdepends = libarchive: archive listing and extraction
+	optdepends = 7zip: 7z archive support
+	optdepends = imagemagick: image conversion
+	optdepends = tailscale: Taildrop sharing
+	provides = flea
+	conflicts = flea
+	options = !debug
+	source = flea-git::git+https://github.com/thisisgm/flea.git
+	sha256sums = SKIP
+
+pkgname = flea-git
