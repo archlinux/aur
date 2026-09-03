@@ -7,7 +7,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="The code review workbench"
 
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -31,7 +31,7 @@ source_x86_64=("${_appname}-${arch[0]}-${pkgver}.deb::${_ghurl}/releases/downloa
 sha256sums=('ac124c5e504c6e91bf813c265d8d2829ba3e3efff38a5c851f8a3fb8064254b5'
             'f07118dec05cd4d1b23459e754d7b8ccd948d3ef851aa558ddb46154a67594cd'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('7262b7dc531648208e3b42a838735cdb93a850274742ac0695ec4f4cc3c1ecd3')
+sha256sums_x86_64=('89ab6ce5f28c4ea3316839ae903061726e923ff2bbfed22c8c5db50eca98e397')
 
 
 package() {
