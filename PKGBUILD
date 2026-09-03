@@ -1,6 +1,6 @@
 pkgname=emu80-git
-_commit=618b964
-_pkgver=4.0.568
+_commit=536200e
+_pkgver=4.0.569
 pkgver=${_pkgver}.${_commit}
 pkgrel=1
 pkgdesc="Emulator for bunch of Soviet PCs. Git version"
