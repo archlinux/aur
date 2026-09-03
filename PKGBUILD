@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=matchmaker
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='A fast, configurable and intuitive fuzzy searcher.'
 arch=(
@@ -15,7 +15,7 @@ options=(!lto)
 provides=('mm')
 conflicts=('matchmaker-git' 'matchmaker-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2923df47ff57dfe10c3059b9409921785d6ec03249dc692f70361bccfa4df545')
+sha256sums=('93fd4358aad802e00f436dcdbf9062bdea3cc2de8139ed3ff031116cc787217d')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -35,7 +35,7 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/bash-completion/completions" matchmaker-cli/assets/completions/mm.bash
     install -Dm644 -t "$pkgdir/usr/share/zsh/site-functions" matchmaker-cli/assets/completions/_mm
     install -Dm644 -t "$pkgdir/usr/share/fish/vendor_completions.d" matchmaker-cli/assets/completions/mm.fish
-    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" matchmaker-cli/LICENSE
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" matchmaker-lib/LICENSE
     install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" matchmaker-cli/README.md
 }
 
