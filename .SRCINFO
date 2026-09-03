@@ -1,0 +1,17 @@
+pkgbase = ros2-jazzy-behaviortree-cpp-v3
+	pkgdesc = Behavior Trees Library in C++. Batteries included.
+	pkgver = 3.8.8
+	pkgrel = 1
+	url = https://index.ros.org/p/behaviortree_cpp/
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = boost
+	depends = ros2-jazzy
+	depends = boost-libs
+	depends = zeromq
+	depends = ncurses
+	source = ros2-jazzy-behaviortree-cpp-v3-3.8.8.tar.gz::https://github.com/BehaviorTree/BehaviorTree.CPP/archive/refs/tags/3.8.8.tar.gz
+	sha256sums = 7b87e4819f0c482639c30fa6a6f06ab4c83c10e3362032cfc3beff4d827205af
+
+pkgname = ros2-jazzy-behaviortree-cpp-v3
