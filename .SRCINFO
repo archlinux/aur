@@ -1,6 +1,6 @@
 pkgbase = kst4contest-bin
 	pkgdesc = ON4KST Chat Client for VHF/UHF contest operation (pre-built)
-	pkgver = 1.43.0
+	pkgver = 1.43.1
 	pkgrel = 1
 	url = https://github.com/praktimarc/kst4contest
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kst4contest-bin
 	provides = kst4contest
 	conflicts = kst4contest
 	conflicts = kst4contest-git
-	source = KST4Contest-v1.43.0-archlinux-x86_64.pkg.tar.zst::https://github.com/praktimarc/kst4contest/releases/download/v1.43.0/KST4Contest-v1.43.0-archlinux-x86_64.pkg.tar.zst
-	sha256sums = 5116d1ec8dac7dfe96976bdf9bc23b767e4ff53832a91c4af26482db7a32dab5
+	source = KST4Contest-v1.43.1-archlinux-x86_64.pkg.tar.zst::https://github.com/praktimarc/kst4contest/releases/download/v1.43.1/KST4Contest-v1.43.1-archlinux-x86_64.pkg.tar.zst
+	sha256sums = 99cff343005b2e14c240928552a3cc98e1115014a80b1b8b41cbc86a082eb10c
 
 pkgname = kst4contest-bin
