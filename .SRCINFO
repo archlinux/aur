@@ -1,0 +1,16 @@
+pkgbase = fapolicyd
+	pkgdesc = File Access Policy Daemon
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/linux-application-whitelisting/fapolicyd
+	arch = x86_64
+	license = GPL-3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	depends = uthash
+	backup = etc/fapolicyd/fapolicyd.conf
+	source = fapolicyd-v2.0.1.tar.gz::https://github.com/linux-application-whitelisting/fapolicyd/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 2db6d2d69c62945a971670b80ac72779609ebad93240de82ca902d01a679ceab
+
+pkgname = fapolicyd
