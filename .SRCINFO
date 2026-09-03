@@ -1,27 +1,12 @@
 pkgbase = python-frida
-	pkgdesc = Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android. Python 3 version from PyPi
-	pkgver = 17.7.2
+	pkgdesc = Temporary transition package for the python-frida package-base migration
+	pkgver = 17.17.0
 	pkgrel = 1
-	url = https://www.frida.re
-	arch = i686
-	arch = x86_64
-	arch = armv7h
-	arch = aarch64
-	license = custom:wxWindows Library License, Version 3.1
-	makedepends = python-build
-	makedepends = python-installer
-	makedepends = python-wheel
-	makedepends = python-setuptools
-	makedepends = git
-	depends = python
-	depends = nodejs
-	depends = npm
-	optdepends = python-typing_extensions: for Python <3.11
-	optdepends = rustup: for injecting Rust code into targets
-	conflicts = python2-frida
-	source = https://files.pythonhosted.org/packages/source/f/frida/frida-17.7.2.tar.gz
-	source = COPYING
-	sha256sums = 3dcb095ffa2892a20a63238a49c909448af667018effb795ecbe19f6bb314a3c
-	sha256sums = 5ea1544b51a28bc823b03159190d4108f9fb4f4ef912389f5137c6d295e175b2
+	url = https://github.com/frida/frida
+	arch = any
+	license = LGPL-2.0-or-later WITH WxWindows-exception-3.1
+	depends = python-frida=17.17.0-1
+	source = COPYING-17.17.0::https://raw.githubusercontent.com/frida/frida/17.17.0/COPYING
+	b2sums = 1957df7ba5ebe73b9d42f0281e65d176675a233db748d9ec0d386e164fb026815f013c648f6120d89a9f0150eecf04fed04454e28b7199fd9f90ecfcecd56d6d
 
-pkgname = python-frida
+pkgname = python-frida-old
