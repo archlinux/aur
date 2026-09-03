@@ -1,6 +1,6 @@
 pkgbase = nyaterm-bin
 	pkgdesc = A modern, high-performance terminal workspace built with Tauri 2, React, and Rust
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://github.com/nyakang/nyaterm
 	arch = x86_64
@@ -18,13 +18,13 @@ pkgbase = nyaterm-bin
 	depends = systemd-libs
 	depends = webkit2gtk-4.1
 	options = !debug
-	source = LICENSE-MIT::https://github.com/nyakang/nyaterm/raw/v1.2.7/LICENSE
+	source = LICENSE-MIT::https://github.com/nyakang/nyaterm/raw/v1.2.8/LICENSE
 	source = nyaterm.sh
 	sha256sums = baa8a0ccd4a43e998a0bd47172f03f548bcd0e8cb0f6689ca9ba8973b4d5ca49
 	sha256sums = aa3c571e680b3023cb62778c9c15e80491abaf23bd794018be1801ef581b6d49
-	source_x86_64 = nyaterm-bin-1.2.7-x86_64.deb::https://github.com/nyakang/nyaterm/releases/download/v1.2.7/NyaTerm_1.2.7_linux_x64.deb
-	sha256sums_x86_64 = 335dfebdd16b5987159367be29f4cf8147ae0ec22ef7e81e476186f30384221a
-	source_aarch64 = nyaterm-bin-1.2.7-aarch64.deb::https://github.com/nyakang/nyaterm/releases/download/v1.2.7/NyaTerm_1.2.7_linux_arm64.deb
-	sha256sums_aarch64 = 3cfb6ee0f33d1633c83bef9118ccb16578d96cd9e150d482ea080c6b69bb980d
+	source_x86_64 = nyaterm-bin-1.2.8-x86_64.deb::https://github.com/nyakang/nyaterm/releases/download/v1.2.8/NyaTerm_1.2.8_linux_x64.deb
+	sha256sums_x86_64 = 4a52661a67482cf33b91d6fc3fccdae79d5ca0067da598cf40f505aa6928a7cb
+	source_aarch64 = nyaterm-bin-1.2.8-aarch64.deb::https://github.com/nyakang/nyaterm/releases/download/v1.2.8/NyaTerm_1.2.8_linux_arm64.deb
+	sha256sums_aarch64 = 5c4a2119a97d9adcffdc93889323fd74ac87cd50888b43032c972b769ebb9da7
 
 pkgname = nyaterm-bin
