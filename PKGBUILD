@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=freerouting-zh-cn
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 _jrever=25
 _jdkver=25
@@ -33,7 +33,7 @@ backup=()
 options=('!strip' '!debug')
 #install=${pkgname}.install
 source=("${pkgname%-zh-cn}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('be0376425f8cd2042063b77c00130501e379a317bfd2516f71c9231c1c815315')
+sha256sums=('471a17b6c5297a485d639cfeac3bc9296f0fee281fd7fba9ac330cf43a3a7f96')
 
 prepare() {
     git -C "${srcdir}/${pkgname%-zh-cn}" clean -dfx
