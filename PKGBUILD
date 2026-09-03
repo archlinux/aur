@@ -6,14 +6,15 @@
 # flake.nix does, and Arch's python-* packages track upstream closely
 # enough that the naming/version-skew problem the .deb/.rpm path
 # sidesteps with a frozen binary doesn't apply here. See
-# openspec/changes/add-os-packaging/design.md for the full reasoning.
+# openspec/changes/archive/2026-09-01-add-os-packaging/design.md for the
+# full reasoning.
 #
 # Lives in this repo only for reference/review — the actual AUR
 # package is maintained in its own git repo
 # (ssh://aur@aur.archlinux.org/movie-planner.git), pushed there by
 # the release job, not from here.
 pkgname=movie-planner
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="CLI that logs watched movies and syncs them to a CalDAV calendar"
 arch=('any')
@@ -38,7 +39,7 @@ makedepends=(
 _tag="movie-planner-v${pkgver}"
 _srcdir="movie-planner-${_tag}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alrayyes/movie-planner/archive/${_tag}.tar.gz")
-sha256sums=('8ac5dff4189dd1a07997016e25daea09dc4c06de46ed345d4c054cde0c113940')
+sha256sums=('45e8b1a7c9467003a21561dfef66a77dd4d4ec82c8854a1a1f4631df6f994c5e')
 
 build() {
   cd "$_srcdir"
