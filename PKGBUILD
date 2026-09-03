@@ -32,5 +32,5 @@ package() {
 
     install -d "$pkgdir/usr/bin"
 
-    ln -s EternalTerminalApp "$pkgdir/usr/bin/eternal-terminal"
+    ln -s eternal-terminal "$pkgdir/usr/bin/eternal-terminal"
 }
