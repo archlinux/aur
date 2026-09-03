@@ -12,7 +12,7 @@ options=('staticlibs' '!buildflags' '!strip')
 source=("http://www.coin-or.org/download/source/Bcp/Bcp-${pkgver}.tgz")
 sha256sums=('8b490ad35c28a79806f84dacbdc36d602ce0a3a4e32c3575f99495c6e6b4906e')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 prepare() {
   cd "$srcdir/Bcp-$pkgver"
