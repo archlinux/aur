@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="python-mthds"
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="The Python interface for methods — base structures for structured outputs and the base runner for executing methods via API"
 
@@ -17,7 +17,7 @@ depends=('python' 'python-semantic-version' 'python-pydantic' 'python-pydantic-c
 
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${_pypi_version}.tar.gz")
 # source=("${_pypi_package}-${_pypi_version}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('b47437ff6aa47299e112a0d9a77de0524b9d0ac7622f1b52a05a84de2dcfe25f')
+sha256sums=('ef59ffa94902da72371390cc39d8c0d85dfd2a524dbca2a8909a0a1ba6255607')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${_pypi_version}/"
