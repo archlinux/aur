@@ -1,6 +1,6 @@
 pkgname=sparkle-electron-git
 _pkgname=${pkgname%-electron-git}
-pkgver=1.26.7.r20.g109cc1d
+pkgver=1.26.8.r1.gd414486
 pkgrel=1
 pkgdesc="Another Mihomo GUI"
 arch=('x86_64' 'aarch64')
