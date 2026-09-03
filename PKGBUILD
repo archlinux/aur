@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=mise-bin
-pkgver=2026.9.0
+pkgver=2026.9.1
 pkgrel=1
 pkgdesc="dev tools, env vars, task runner"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ conflicts=('mise' 'mise-musl-bin' 'rtx')
 replaces=('rtx')
 source_x86_64=("https://github.com/jdx/mise/releases/download/v${pkgver}/mise-v${pkgver}-linux-x64.tar.xz")
 source_aarch64=("https://github.com/jdx/mise/releases/download/v${pkgver}/mise-v${pkgver}-linux-arm64.tar.xz")
-sha256sums_x86_64=('a49a0f90ae6e61391df25bc833e427f9d2980351c736cf6abee4aa48432f0a49')
-sha256sums_aarch64=('41e75eda5eaa49043af602f0bb6dac0504756251ccf4889fcb226b395de5da6a')
+sha256sums_x86_64=('bbc21f8fe9b2aa09f74250be15f9bf32e87562e1039d858ad91d7944f057c8e2')
+sha256sums_aarch64=('7d0c28d44bd7e1c5444a7d867146afabe43592c728329bc0ed5ec59ca7106c48')
 
 package() {
     install -Dm755 "${srcdir}/mise/bin/mise" "${pkgdir}/usr/bin/mise"
