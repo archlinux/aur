@@ -1,13 +1,15 @@
 pkgbase = fastpotify
 	pkgdesc = Native Spotify client
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/crmne/fastpotify
 	install = fastpotify.install
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
+	makedepends = cmake
+	makedepends = clang
 	depends = alsa-lib
 	depends = libpulse
 	depends = libglvnd

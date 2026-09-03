@@ -1,14 +1,14 @@
 # Maintainer: Carmine Paolino <carmine@paolino.me>
 pkgname=fastpotify
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Spotify client"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/fastpotify"
 license=('MIT')
 install="${pkgname}.install"
 depends=('alsa-lib' 'libpulse' 'libglvnd' 'libxkbcommon' 'wayland' 'libx11')
-makedepends=('cargo')
+makedepends=('cargo' 'cmake' 'clang')
 optdepends=('libxkbcommon-x11: keyboard handling in X11 sessions'
             'pipewire-pulse: PipeWire as the PulseAudio server')
 conflicts=('fastpotify-bin' 'fastpotify-git')
