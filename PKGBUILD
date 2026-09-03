@@ -1,7 +1,7 @@
 # Maintainer: oysstu <oysstu at gmail dot com>
 
 pkgname=gz-common7
-pkgver=7.3.1
+pkgver=7.4.0
 pkgrel=1
 _pkgmaj=${pkgver%%.*}
 _pkgbase=${pkgname::-${#_pkgmaj}}
@@ -27,7 +27,7 @@ makedepends=(
   )
 provides=("${_pkgbase}=${_pkgmaj}")
 source=("https://github.com/gazebosim/${_pkgbase}/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('90e7d2e8e62788111b6005431383c855759c2e6e12417270b1f1f3804c60bacb')
+sha256sums=('3798e5dc4eba750150bb3f5cef5d662b6e962221817b923aa4a429d77e3f8e92')
 
 build() {
   cmake -B build -S "${_pkgbase}-${pkgname}_${pkgver}" \
