@@ -3,16 +3,16 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=14.0.0
+pkgver=14.0.2
 pkgrel=1
 pkgdesc="A free, open-source application for downloading and managing your Audible audiobooks"
 arch=('x86_64')
 url="https://getlibation.com"
 license=('GPL-3.0-only')
-depends=('bash' 'dotnet-runtime' 'fontconfig' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++')
-makedepends=('dotnet-sdk>=10')
+depends=('bash' 'dotnet-runtime=10.0' 'fontconfig' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++')
+makedepends=('dotnet-sdk=10.0')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rmcrackan/Libation/archive/v${pkgver}.tar.gz")
-sha256sums=('7323900efa676b015bdb7a6c0aa93d55479f25a9d2f9a3613023f91348a85504')
+sha256sums=('dfba90475cfe0f12b20a35f4da90985f0f0b8fc594dfa176e494fbc2687a8e18')
 
 prepare() {
     cd "${pkgname^}-${pkgver}"
@@ -38,11 +38,11 @@ build() {
 
 package() {
     cd "${pkgname^}-${pkgver}"
-    install -Dm755 build/* -t "${pkgdir}/usr/lib/${pkgname}"
+    install -d "${pkgdir}/usr/lib" "${pkgdir}/usr/bin"
+    cp -r build "${pkgdir}/usr/lib/${pkgname}"
     install -Dm644 Source/LoadByOS/LinuxConfigApp/Libation.desktop -t "${pkgdir}/usr/share/applications"
     install -Dm644 Images/libation_glass.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
-    install -d "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/${pkgname}/Libation" "${pkgdir}/usr/bin/libation"
     ln -s "/usr/lib/${pkgname}/Hangover" "${pkgdir}/usr/bin/hangover"
+    ln -s "/usr/lib/${pkgname}/Libation" "${pkgdir}/usr/bin/libation"
     ln -s "/usr/lib/${pkgname}/LibationCli" "${pkgdir}/usr/bin/libationcli"
 }
