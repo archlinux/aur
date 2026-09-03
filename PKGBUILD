@@ -6,7 +6,7 @@
 # The actual application is called "timetrack", and that's what the binary will be named.
 pkgname=mw-timetrack-bin
 _pkgname=timetrack
-pkgver=5.16.0
+pkgver=5.16.1
 pkgrel=1
 pkgdesc="Simple, offline-first desktop application to track your time on different projects and tasks."
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=('nss' 'at-spi2-core' 'libxss' 'gtk3' 'alsa-lib' 'libxtst')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("https://github.com/mistweaverco/timetrack/releases/download/v${pkgver}/timetrack_amd64.deb")
-sha256sums=('8a799935861a725ba4cecff16435caa43c4f4206dfb8bedb8382f38c849735e6')
+sha256sums=('3841cc7e68a8f6de40340ceefb018fd50a4f1cce8fff2fbf30fca5374b3d8b96')
 
 package() {
   if [ -f "data.tar.xz" ]; then
