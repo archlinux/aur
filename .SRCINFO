@@ -1,0 +1,23 @@
+pkgbase = mumps-bin
+	pkgdesc = Sparse solver library using Gaussian elimination (precompiled)
+	pkgver = 5.9.1
+	pkgrel = 1
+	url = https://mumps-solver.org
+	arch = x86_64
+	license = custom
+	depends = lapack
+	depends = openmpi
+	depends = scotch
+	depends = scalapack
+	depends = metis
+	depends = zlib
+	depends = bzip2
+	provides = mumps
+	conflicts = mumps
+	conflicts = mumps-par
+	conflicts = mumps4
+	options = !debug
+	source = https://github.com/tubbywrestler/mumps-bin/releases/download/5.9.1-1/mumps-5.9.1-1-x86_64.pkg.tar.zst
+	sha256sums = 487d8667f8b9d6a88041b750d921acca05861bfc9912d1b7b579ec3d4e04fe83
+
+pkgname = mumps-bin
