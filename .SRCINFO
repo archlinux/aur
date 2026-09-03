@@ -1,0 +1,27 @@
+pkgbase = python-bflb-mcu-tool-uart
+	pkgdesc = Bouffalolab Mcu Tool uart
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://pypi.org/project/bflb-mcu-tool-uart
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = pyside6
+	depends = python
+	depends = python-cryptography
+	depends = python-pylink-square
+	depends = python-pyserial
+	depends = python-standard-telnetlib
+	depends = python-pycklink
+	depends = python-portalocker
+	optdepends = python-bflb-flash-command-uart: Bouffalolab Flash Command Tool
+	optdepends = python-bflb-fw-post-proc: Bouffalolab Firmware Post Proc
+	optdepends = python-bflb-iot-tool: BOUFFALOLAB IOT TOOL
+	options = !strip
+	source = bflb-mcu-tool-uart-1.10.0.tar.gz::https://files.pythonhosted.org/packages/source/b/bflb-mcu-tool-uart/bflb-mcu-tool-uart-1.10.0.tar.gz
+	sha256sums = d98dce1d9900c3410bd65aa7dde8ef78511bc8807041de3237e4d7abf008c07c
+
+pkgname = python-bflb-mcu-tool-uart
