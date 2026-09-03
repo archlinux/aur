@@ -1,0 +1,26 @@
+pkgbase = codemotion-bin
+	pkgdesc = CodeMotion - IDE for web-developers (binary)
+	pkgver = 0.0.9.4
+	pkgrel = 1
+	url = https://github.com/cdmtn/CodeMotion
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux
+	depends = libsecret
+	provides = codemotion
+	conflicts = codemotion
+	options = !strip
+	options = !debug
+	source = codemotion-0.0.9.4.tar.gz::https://github.com/cdmtn/CodeMotion/releases/download/v0.0.9.4/codemotion-app-0.0.9-alpha.dev.tar.gz
+	source = codemotion.desktop
+	sha256sums = 8d22ced35388fd2b31c9e8fde786aee7c92b58c486a9d0291027f0846ce3b60c
+	sha256sums = 1d14cc45fad1a7018f04fb691b069edcee84ef1a0b35971c50d08514bb85ff82
+
+pkgname = codemotion-bin

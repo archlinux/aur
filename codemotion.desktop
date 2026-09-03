@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=CodeMotion
+Comment=Web-First Code Editor
+Exec=/opt/codemotion/codemotion-app %U
+Icon=com.codemotion.CodeMotion
+Type=Application
+Categories=Development;IDE;TextEditor;
+MimeType=text/plain;application/javascript;text/x-python;text/x-java;text/x-csrc;text/x-chdr;text/x-csharp;text/x-go;text/x-rust;text/x-tex;application/json;application/xml;text/html;text/css;text/x-shellscript;
+Keywords=code;editor;ide;development;programming;
+StartupNotify=true
+StartupWMClass=codemotion
