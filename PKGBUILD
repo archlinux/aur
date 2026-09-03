@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}-bin
 pkgdesc="Conventional commits, changelog, versioning, validation"
 
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -27,8 +27,8 @@ options=(!strip)
 
 source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${_ghurl}/releases/download/${_gitversion}/${_appname}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('301c52cf3825cf9bdc66832bc2936c31816e5b468d02f125469ca3b489cbce72')
-sha256sums_aarch64=('9921caf7c9bdb7472b1aa438042672db7be1a78f2a03aad1164db89d44382469')
+sha256sums_x86_64=('f9cfad24af372018f4b8d430cf86d1b7b9b36fcb7e1db5dd30c54b2eed7dde75')
+sha256sums_aarch64=('7a4523573a81d24f37aa4d22aa26d8a3083188422213efe0274a7fbbd840c741')
 
 
 case ${CARCH} in
