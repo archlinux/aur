@@ -7,20 +7,18 @@ arch=('x86_64')
 url="https://github.com/liuchuancong/pure_live"
 license=('AGPL-3.0-or-later')
 depends=(
-    'gtk3' 'glib2' 'pango' 'cairo' 'gdk-pixbuf2'
-    'libepoxy' 'libglvnd' 'alsa-lib' 'libpulse'
-    'libayatana-appindicator' 'libayatana-indicator' 'libdbusmenu-glib'
-    'libxkbcommon' 'libva' 'libvdpau' 'libxss'
-    'libxv' 'mesa' 'wayland'
-    'libxrandr' 'libxcb' 'freetype2' 'ayatana-ido'
-    'libx11' 'libdrm' 'harfbuzz' 'libxext' 'xz' 'lcms2'
-    'gcc-libs' 'at-spi2-core' 'fribidi' 'gnutls' 'libxfixes'
-    'glibc' 'libunwind' 'fontconfig' 'zlib' 'libarchive'
+    'gtk3' 'libayatana-appindicator' 'libayatana-indicator' 'libpulse' 
+    'alsa-lib' 'gnutls'
 )
 optdepends=(
-    'mpv: external player support'
-    'java-runtime: for dart JNI plugin (libdartjni.so)'
+    'mpv: external MPV player support as alternative decoder'
+    'java-runtime: Dart JNI plugin support (for libdartjni.so)'
+    'libva: VA-API hardware decoding interface (Intel/AMD)'
+    'libvdpau: NVIDIA VDPAU hardware decoding acceleration'
+    'libva-intel-driver: VA-API driver for Intel GPUs'
+    'libva-mesa-driver: VA-API driver for AMD/Mesa GPUs'
 )
+
 provides=("purelive=${pkgver}")
 conflicts=("purelive")
 options=('!strip' '!debug')
@@ -65,7 +63,7 @@ Categories=AudioVideo;Network;
 EOF
 
     # 从解压的包内安装图标
-    install -Dm644 "${srcdir}/pure_live/data/flutter_assets/assets/icons/icon.png" \
+    install -Dm644 "${srcdir}/data/flutter_assets/assets/icons/icon.png" \
         "${pkgdir}/usr/share/pixmaps/purelive.png"
 
     # 安装许可证
