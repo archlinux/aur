@@ -1,0 +1,19 @@
+pkgbase = treemp-git
+	pkgdesc = ncurses/python directory based CLI music player, based on mutagen and libav/soundcard
+	pkgver = r.
+	pkgrel = 1
+	url = https://gitlab.com/djvs/treemp
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-av
+	depends = python-mutagen
+	depends = python-soundcard
+	provides = treemp
+	conflicts = treemp
+	source = treemp::git+https://gitlab.com/djvs/treemp.git#branch=main
+	md5sums = SKIP
+	sha256sums = SKIP
+
+pkgname = treemp-git
