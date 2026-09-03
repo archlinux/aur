@@ -1,17 +1,17 @@
 pkgbase = sct-rs-bin
 	pkgdesc = Local-first SNOMED CT toolchain
-	pkgver = 0.24.4
+	pkgver = 0.25.0
 	pkgrel = 1
 	url = https://github.com/pacharanero/sct
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0-or-later
-	provides = sct-rs=0.24.4
+	provides = sct-rs=0.25.0
 	conflicts = sct-rs
 	conflicts = sct
-	source_x86_64 = sct-rs-bin-0.24.4-x86_64.tar.gz::https://github.com/pacharanero/sct/releases/download/v0.24.4/sct-linux-x86_64.tar.gz
-	sha256sums_x86_64 = a1cf51a866aca60d0d385ff461548f6a49e13aa918699a4f9fa1024d53c43f88
-	source_aarch64 = sct-rs-bin-0.24.4-aarch64.tar.gz::https://github.com/pacharanero/sct/releases/download/v0.24.4/sct-linux-aarch64.tar.gz
-	sha256sums_aarch64 = a9127476ab0e9648ffdd4a2f2ba16e3d9785b7ddf910e262a375ba007ff71d0e
+	source_x86_64 = sct-rs-bin-0.25.0-x86_64.tar.gz::https://github.com/pacharanero/sct/releases/download/v0.25.0/sct-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5d8f70b011b0c2b193520a7c92f3a300e214be57d6a89ab0c58c083a2c6c239d
+	source_aarch64 = sct-rs-bin-0.25.0-aarch64.tar.gz::https://github.com/pacharanero/sct/releases/download/v0.25.0/sct-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 917235ac7da18d13da7d5b9f41915e3ecbf4837f4a803f0759c83712904bbb46
 
 pkgname = sct-rs-bin
