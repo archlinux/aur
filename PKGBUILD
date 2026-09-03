@@ -1,7 +1,7 @@
 # Maintainer: Greg Lamberson <greg at lamco dot io>
 pkgname=lamco-rdp-server
-pkgver=1.4.4
-pkgrel=2
+pkgver=1.4.5
+pkgrel=1
 pkgdesc="Native Wayland RDP server for GNOME, KDE, Sway, and Hyprland with H.264 encoding and VA-API acceleration"
 arch=('x86_64' 'aarch64')
 url="https://github.com/lamco-admin/lamco-rdp-server"
@@ -16,6 +16,7 @@ depends=(
     'libxkbcommon'
     'pam'
     'fuse3'
+    'libva'
 )
 makedepends=(
     'cargo'
@@ -26,7 +27,6 @@ makedepends=(
     'pkg-config'
 )
 optdepends=(
-    'libva: VA-API hardware-accelerated H.264 encoding'
     'vulkan-icd-loader: GPU-accelerated GUI rendering via wgpu'
     'xdg-desktop-portal-gnome: screen capture and remote input for GNOME'
     'xdg-desktop-portal-kde: screen capture and remote input for KDE Plasma'
@@ -38,8 +38,19 @@ optdepends=(
 # C libraries (aws-lc-sys, ring, opus) is invisible to the Rust linker.
 options=(!lto)
 backup=('etc/dbus-1/system.d/io.lamco.RdpServer.System.conf')
-source=("$pkgname-$pkgver.tar.xz::https://github.com/lamco-admin/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('80cab3847169bd1a99aa13f55c0a8c3b7b5441133a851579ca1afb4ca11ec9e9')
+install=lamco-rdp-server.install
+source=("$pkgname-$pkgver.tar.xz::https://github.com/lamco-admin/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
+        "cros-libva-vp9-compat.patch")
+sha256sums=('bf8e481a655b0d69ad770949a31e840b0069166aa87a8f14d38221ef897aa8bd'
+            '082ac1b7126c5106641db40790d34d97b573cc4995e47a54abeff84a21ca4bd2')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    # libva 2.23+ added fields to VAEncPictureParameterBufferVP9 that the
+    # vendored cros-libva 0.0.13 does not initialize; same patch OBS and
+    # RPM Fusion carry.
+    patch -Np1 -i "$srcdir/cros-libva-vp9-compat.patch"
+}
 
 build() {
     cd "$pkgname-$pkgver"
@@ -52,7 +63,7 @@ build() {
     export CARGO_PROFILE_RELEASE_LTO=thin
     export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=4
     # Vendored tarball: dependencies already in vendor/ with .cargo/config.toml
-    cargo build --frozen --release --no-default-features --features "pam-auth,h264,gui,wayland,libei,wl-clipboard"
+    cargo build --frozen --release --no-default-features --features "pam-auth,h264,vaapi,opus-libopus,gui,wayland,libei,wl-clipboard,portal-generic"
 }
 
 check() {
@@ -60,7 +71,7 @@ check() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     # Some tests require a Wayland session; allow failure in chroot builds
-    cargo test --frozen --no-default-features --features "pam-auth,h264,gui,wayland,libei,wl-clipboard" || true
+    cargo test --frozen --no-default-features --features "pam-auth,h264,vaapi,opus-libopus,gui,wayland,libei,wl-clipboard,portal-generic" || true
 }
 
 package() {
@@ -71,8 +82,8 @@ package() {
     install -Dm755 target/release/lamco-rdp-server-gui "$pkgdir/usr/bin/lamco-rdp-server-gui"
 
     # Systemd user service
-    install -Dm644 packaging/systemd/lamco-rdp-server.service \
-        "$pkgdir/usr/lib/systemd/user/lamco-rdp-server.service"
+    install -Dm644 packaging/systemd/app-io.lamco.rdp-server.service \
+        "$pkgdir/usr/lib/systemd/user/app-io.lamco.rdp-server.service"
 
     # D-Bus service file (session bus activation)
     install -Dm644 packaging/dbus/io.lamco.RdpServer.service \

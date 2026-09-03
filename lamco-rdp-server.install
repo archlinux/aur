@@ -1,0 +1,23 @@
+post_upgrade() {
+    # The systemd user unit was renamed from lamco-rdp-server.service to
+    # app-io.lamco.rdp-server.service so xdg-desktop-portal can derive a real
+    # app id from it. Anyone who enabled the old unit needs that enabled state
+    # carried over, or the service silently stops autostarting at login. This
+    # can only reach users with an active systemd --user manager right now;
+    # anyone not logged in during the upgrade needs to re-enable manually.
+    local old_unit="lamco-rdp-server.service"
+    local new_unit="app-io.lamco.rdp-server.service"
+    local socket uid user
+
+    for socket in /run/user/*/systemd/private; do
+        [ -S "$socket" ] || continue
+        uid="${socket#/run/user/}"
+        uid="${uid%%/*}"
+        user="$(getent passwd "$uid" | cut -d: -f1)"
+        [ -n "$user" ] || continue
+        if systemctl --user --machine="${user}@" is-enabled "$old_unit" >/dev/null 2>&1; then
+            systemctl --user --machine="${user}@" disable "$old_unit" >/dev/null 2>&1 || true
+            systemctl --user --machine="${user}@" enable "$new_unit" >/dev/null 2>&1 || true
+        fi
+    done
+}
