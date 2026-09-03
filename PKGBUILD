@@ -12,7 +12,7 @@ options=('!buildflags' 'staticlibs' '!strip')
 source=("git+https://github.com/kobalicek/asmjit.git")
 md5sums=('SKIP')
 
-_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_architectures=${MINGW_W64_ARCHS:-x86_64-w64-mingw32}
 
 pkgver() {
   cd "$srcdir/asmjit"
