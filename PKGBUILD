@@ -1,4 +1,4 @@
-# Maintainer: GM <gianmarcomorales@icloud.com>
+# Maintainer: taxin-404 <taxin404@duck.com>
 
 pkgname=flea
 pkgver=0.1.2
