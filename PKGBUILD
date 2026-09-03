@@ -3,12 +3,14 @@
 pkgname=python-bflb-iot-tool-uart
 _name=${pkgname#python-}
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bouffalolab Iot Tool uart"
 arch=('any')
 url="https://pypi.org/project/${_name}"
 license=('MIT')
 groups=()
+provides=(${pkgname%-uart} ${_name})
+conflicts=(${pkgname%-uart} ${_name})
 _pydeps=(
     cryptography
     pylink-square
@@ -35,9 +37,9 @@ makedepends=(
 optdepends=(
     "python-bflb-flash-command-uart: Bouffalolab Flash Command Tool"
     "python-bflb-fw-post-proc: Bouffalolab Firmware Post Proc"
-    "python-bflb-iot-tool: BOUFFALOLAB IOT TOOL"
     "python-bflb-mcu-tool: BOUFFALOLAB MCU TOOL"
-    "python-bflb-mcu-tool: Bouffalolab Mcu Tool uart"
+	"python-bflb-mcu-tool-uart: Bouffalolab Iot Tool uart"
+	"python-bflb-iot-tool: BOUFFALOLAB IOT TOOL"
 )
 options=('!strip')
 optdepends=("jlink-software-and-documentation: Segger JLink software & documentation pack for Linux")
