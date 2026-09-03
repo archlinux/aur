@@ -1,7 +1,7 @@
 # Maintainer: hyperpuncher
 
 pkgname=pi-ui-bin
-pkgver=0.39.4
+pkgver=0.40.0
 pkgrel=1
 pkgdesc="Use pi-ui in your browser"
 arch=('x86_64' 'aarch64')
@@ -16,10 +16,10 @@ source=("LICENSE")
 sha256sums=('6b7faf66323093e92a63a7d6d0cd20ef3718b77a2192e06cb00466fe870f14cf')
 
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-x64.tar.zst")
-sha256sums_x86_64=('f076fd9b89166de8596f9cfb0e63bfe4e56c07ba351d4b6b0d4f5f27b8a9fc5d')
+sha256sums_x86_64=('6778c4ced53ac76939b1130dc1735244ca7e7c142a3240a778b361963b3c6e7f')
 
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.zst::https://github.com/hyperpuncher/pi-ui/releases/download/v$pkgver/pi-ui-linux-arm64.tar.zst")
-sha256sums_aarch64=('0c084166872fa31664e18f4d31e7a58029a156db03f8c48681cbc1b41599dca2')
+sha256sums_aarch64=('4dc63d392a66724b2d98be44ba7917204372b80512a5b6ef874a7f12d8662f5a')
 
 package() {
   install -Dm755 "$srcdir/pi-ui" "$pkgdir/usr/bin/pi-ui"
