@@ -1,6 +1,6 @@
 pkgbase = onorca-bin
 	pkgdesc = Orca - next-gen IDE for working with a fleet of parallel coding agents
-	pkgver = 1.4.195
+	pkgver = 1.4.196
 	pkgrel = 1
 	url = https://github.com/stablyai/orca
 	arch = x86_64
@@ -39,12 +39,12 @@ pkgbase = onorca-bin
 	conflicts = orca-ide
 	options = !strip
 	options = !debug
-	source = LICENSE-1.4.195::https://raw.githubusercontent.com/stablyai/orca/v1.4.195/LICENSE
+	source = LICENSE-1.4.196::https://raw.githubusercontent.com/stablyai/orca/v1.4.196/LICENSE
 	sha256sums = ff1b611f80580d49f4b97e93a97b24eb050b0671b26b8afe16341fab699112f3
-	source_x86_64 = onorca-bin-1.4.195-x86_64.deb::https://github.com/stablyai/orca/releases/download/v1.4.195/orca-ide_1.4.195_amd64.deb
-	sha256sums_x86_64 = 44b878c64e3d369db0759efb40545c291b3ebcb95ad2aacb3f1bc3f249fae99b
-	source_aarch64 = onorca-bin-1.4.195-aarch64.deb::https://github.com/stablyai/orca/releases/download/v1.4.195/orca-ide_1.4.195_arm64.deb
-	sha256sums_aarch64 = f34b2d0b6c500e4eb5db68b15d0f184f111d55f5b044691fb02973f3c8673d12
+	source_x86_64 = onorca-bin-1.4.196-x86_64.deb::https://github.com/stablyai/orca/releases/download/v1.4.196/orca-ide_1.4.196_amd64.deb
+	sha256sums_x86_64 = 834682f29b24853e931d3fa256d9acd23f0f5947c6b571563ad86633b17f9026
+	source_aarch64 = onorca-bin-1.4.196-aarch64.deb::https://github.com/stablyai/orca/releases/download/v1.4.196/orca-ide_1.4.196_arm64.deb
+	sha256sums_aarch64 = 10f7bce49cea659e3f9ef9786ae7795392ca4dc79089cd52c9db0268e2cc52fb
 
 pkgname = onorca-bin
 
