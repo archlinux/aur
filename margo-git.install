@@ -1,0 +1,20 @@
+# margo-git — post-transaction hooks.
+#
+# mtune (folder-first music player) ships a /usr/share/applications
+# entry, a D-Bus service, hicolor icons, and — load-bearing — a
+# GSettings schema (`org.margo.Tune`) that must be compiled into the
+# shared schemas cache or the app aborts at startup.
+
+_refresh() {
+  glib-compile-schemas /usr/share/glib-2.0/schemas &>/dev/null || true
+  update-desktop-database -q /usr/share/applications &>/dev/null || true
+  if command -v gtk4-update-icon-cache &>/dev/null; then
+    gtk4-update-icon-cache -q -t -f /usr/share/icons/hicolor &>/dev/null || true
+  else
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor &>/dev/null || true
+  fi
+}
+
+post_install() { _refresh; }
+post_upgrade() { _refresh; }
+post_remove()  { _refresh; }
