@@ -5,15 +5,15 @@
 #
 
 pkgname=atf
-pkgver=0.23
+pkgver=0.24
 pkgrel=1
-pkgdesc="Automated Testing Framework libs to write tests in C, C++ and shell "
+pkgdesc="Automated Testing Framework libs to write tests in C, C++ and shell"
 arch=(i686 x86_64)
-url='https://github.com/freebsd/atf'
+url="https://github.com/freebsd/atf"
 depends=(glibc libgcc libstdc++)
 license=(LicenseRef-custom)
 source=(https://github.com/freebsd/atf/archive/atf-${pkgver}.zip)
-sha256sums=('6a26374943d65837c26a2c2158fda0471e3ef866e260287de21e908c2f15ca82')
+sha256sums=("a3ee51279162173a7920c1481804cc4695e416ea8e8820e4689b1ef98bf1d732")
 
 prepare()
 {
