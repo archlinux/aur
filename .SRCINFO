@@ -1,6 +1,6 @@
 pkgbase = gz-sensors10
 	pkgdesc = Provides numerous sensor models designed to generate realistic data from simulation environments.
-	pkgver = 10.0.2
+	pkgver = 10.1.1
 	pkgrel = 1
 	url = https://github.com/gazebosim/gz-sensors
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = gz-sensors10
 	depends = protobuf
 	depends = sdformat=16
 	provides = gz-sensors=10
-	source = https://github.com/gazebosim/gz-sensors/archive/gz-sensors10_10.0.2.tar.gz
-	sha256sums = f10f872de954977483927e3bff367da8ac1b5e64bc912eb78dcc350bd69d43b3
+	source = https://github.com/gazebosim/gz-sensors/archive/gz-sensors10_10.1.1.tar.gz
+	sha256sums = 52a74fbac457a3fc2a8bd90fc5737632fb4d6fbe6f65987cb95150dbde02223b
 
 pkgname = gz-sensors10
