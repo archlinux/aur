@@ -6,7 +6,7 @@ _appname=${_gitname}
 pkgname=${_appname}
 pkgdesc="Local state checkpointing and rollback system for AI agents and automated tools"
 
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 _gitversion=v${pkgver}
 
@@ -26,7 +26,7 @@ depends=('glibc' 'libgcc')
 options=('!lto' '!strip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('11dc8cbc1888a30dbebd2d23dab19e9bdfd2c71a19fc2a778daa92d162488466')
+sha256sums=('b45553e8ca6435fb7b8ab27c15acea52e644a107a24e0755794a68f3c5b17f39')
 
 
 prepare() {
