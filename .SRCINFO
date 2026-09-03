@@ -1,7 +1,7 @@
 pkgbase = jwtd
 	pkgdesc = Minimal TUI for decoding JWT
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/caskstrength/jwtd
 	arch = x86_64
 	license = MIT
