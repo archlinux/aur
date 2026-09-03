@@ -1,11 +1,11 @@
 # Maintainer: Vincent Schult <viboschu@gmail.com>
 
 pkgname=voe-dl-git
-pkgver=1.9.0.r0.g8d27ec3
+pkgver=1.9.0.r2.gb82c920
 pkgrel=1
 pkgdesc="A Python-based downloader for videos hosted on voe.sx."
 arch=('any')
-url="https://github.com/MPZ-00/voe-dl"
+url="https://github.com/p4ul17/voe-dl"
 license=(GPL-3.0-only)
 
 depends=(
