@@ -2,8 +2,8 @@
 # Contributor: lth <manuelung@gmail.com>
 # Contributor: nizox <nizzox@gmail.com>
 pkgname=dhcpcd-ui
-pkgver=0.7.9
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="dhcpcd Monitor in GTK+"
 url="http://roy.marples.name/projects/dhcpcd-ui"
 license=(BSD-2-Clause)
@@ -12,7 +12,7 @@ makedepends=("python-cairosvg" "python-xcffib")
 #source=(http://roy.marples.name/downloads/dhcpcd/$pkgname-$pkgver.tar.xz)
 source=("https://github.com/NetworkConfiguration/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
 arch=(i686 x86_64)
-md5sums=('e3b0b1506688c71742a65a76c740a0e0')
+md5sums=('c85a624c08a63b6a4ded16723a7ebdfa')
 
 build() {
   cd $srcdir/$pkgname-$pkgver

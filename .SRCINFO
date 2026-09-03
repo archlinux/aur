@@ -1,7 +1,7 @@
 pkgbase = dhcpcd-ui
 	pkgdesc = dhcpcd Monitor in GTK+
-	pkgver = 0.7.9
-	pkgrel = 2
+	pkgver = 0.8.0
+	pkgrel = 1
 	url = http://roy.marples.name/projects/dhcpcd-ui
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dhcpcd-ui
 	depends = gtk2
 	depends = libnotify
 	depends = hicolor-icon-theme
-	source = https://github.com/NetworkConfiguration/dhcpcd-ui/releases/download/v0.7.9/dhcpcd-ui-0.7.9.tar.xz
-	md5sums = e3b0b1506688c71742a65a76c740a0e0
+	source = https://github.com/NetworkConfiguration/dhcpcd-ui/releases/download/v0.8.0/dhcpcd-ui-0.8.0.tar.xz
+	md5sums = c85a624c08a63b6a4ded16723a7ebdfa
 
 pkgname = dhcpcd-ui
